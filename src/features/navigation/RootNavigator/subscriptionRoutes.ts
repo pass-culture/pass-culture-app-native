@@ -9,14 +9,16 @@ import { IdentityCheckEduConnectForm } from 'features/identityCheck/pages/identi
 import { IdentityCheckValidation } from 'features/identityCheck/pages/identification/educonnect/IdentityCheckValidation'
 import { withEduConnectErrorBoundary } from 'features/identityCheck/pages/identification/errors/eduConnect/EduConnectErrorBoundary'
 import { EduConnectErrors } from 'features/identityCheck/pages/identification/errors/eduConnect/EduConnectErrors'
-import { ComeBackLater } from 'features/identityCheck/pages/identification/identificationStart/ComeBackLater'
-import { ExpiredOrLostID } from 'features/identityCheck/pages/identification/identificationStart/ExpiredOrLostID'
-import { SelectIDOrigin } from 'features/identityCheck/pages/identification/identificationStart/SelectIDOrigin'
-import { SelectIDStatus } from 'features/identityCheck/pages/identification/identificationStart/SelectIDStatus'
-import { SelectPhoneStatus } from 'features/identityCheck/pages/identification/identificationStart/SelectPhoneStatus.web'
+import { IdentificationForkEduconnect } from 'features/identityCheck/pages/identification/IdentificationForkEduconnect'
+import { IdentificationForkUbble } from 'features/identityCheck/pages/identification/IdentificationForkUbble'
 import { IdentityCheckUnavailable } from 'features/identityCheck/pages/identification/IdentityCheckUnavailable'
+import { ComeBackLater } from 'features/identityCheck/pages/identification/ubble/ComeBackLater'
+import { ExpiredOrLostID } from 'features/identityCheck/pages/identification/ubble/ExpiredOrLostID'
 import { IdentityCheckEnd } from 'features/identityCheck/pages/identification/ubble/IdentityCheckEnd'
 import { IdentityCheckPending } from 'features/identityCheck/pages/identification/ubble/IdentityCheckPending'
+import { SelectIDOrigin } from 'features/identityCheck/pages/identification/ubble/SelectIDOrigin'
+import { SelectIDStatus } from 'features/identityCheck/pages/identification/ubble/SelectIDStatus'
+import { SelectPhoneStatus } from 'features/identityCheck/pages/identification/ubble/SelectPhoneStatus.web'
 import { UbbleWebview } from 'features/identityCheck/pages/identification/ubble/UbbleWebview'
 import { PhoneValidationTooManyAttempts } from 'features/identityCheck/pages/phoneValidation/errors/PhoneValidationTooManyAttempts'
 import { PhoneValidationTooManySMSSent } from 'features/identityCheck/pages/phoneValidation/errors/PhoneValidationTooManySMSSent'
@@ -190,6 +192,18 @@ export const subscriptionRoutes: GenericRoute<SubscriptionRootStackParamList>[] 
     component: IdentityCheckDMS,
     path: 'verification-identite/demarches-simplifiees',
     options: { title: 'Démarches-Simplifiées' },
+  },
+  {
+    name: 'IdentificationForkUbble',
+    component: IdentificationForkUbble,
+    path: 'identification/fourche-ubble',
+    options: { title: 'Identification' },
+  },
+  {
+    name: 'IdentificationForkEduconnect',
+    component: IdentificationForkEduconnect,
+    path: 'identification/fourche-educonnect',
+    options: { title: 'Identification' },
   },
   // Confirmation
   {

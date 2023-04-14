@@ -90,7 +90,6 @@ export type SubscriptionRootStackParamList = {
   ComeBackLater: undefined
   DMSIntroduction: { isForeignDMSInformation: boolean }
   ExpiredOrLostID: undefined
-  IdentityCheckStart: undefined
   UbbleWebview: undefined
   IdentityCheckEnd: undefined
   IdentityCheckUnavailable: { withDMS?: boolean }
@@ -105,6 +104,8 @@ export type SubscriptionRootStackParamList = {
   SelectIDOrigin: undefined
   SelectIDStatus: undefined
   SelectPhoneStatus: undefined
+  IdentificationForkUbble: undefined
+  IdentificationForkEduconnect: undefined
   // TODO(PC-12433): this duplicate route is required until we solve PC-12433
   Validation: {
     firstName?: string

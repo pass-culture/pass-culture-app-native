@@ -41,15 +41,17 @@ describe('18YearsRegistration', () => {
     let registrationDate = new Date()
     let registrationConfirmationEmail: RegistrationConfirmationEmail
 
-    it('should click on "Créer un compte"', async () => {
+    beforeEach(() => {
       didFirstLaunch(ok)
+    })
+
+    it('should click on "Créer un compte"', async () => {
       await ProfileScreen.waitForIsShown(true)
       await ProfileScreen.createAccount.click()
       await ProfileScreen.waitForIsShown(false)
     })
 
     it('should set email and randomly accept newsletter checkbox', async () => {
-      didFirstLaunch(ok)
       await SignupScreens.waitForIsShown(true)
       await SignupScreens.emailScreen.waitForIsShown(true)
       await SignupScreens.emailScreen.email.setValue(email)
@@ -62,7 +64,6 @@ describe('18YearsRegistration', () => {
     })
 
     it('should set password', async () => {
-      didFirstLaunch(ok)
       await SignupScreens.waitForIsShown(true)
       await SignupScreens.passwordScreen.waitForIsShown(true)
       await SignupScreens.passwordScreen.password.waitForEnabled()
@@ -72,7 +73,6 @@ describe('18YearsRegistration', () => {
     })
 
     it('should set birthdate to 18 years old', async () => {
-      didFirstLaunch(ok)
       const birthDate = new Date(
         new Date().getFullYear() - 18, // year (18 year's old)
         getRandomInt(0, new Date().getMonth()), // monthIndex
@@ -86,7 +86,6 @@ describe('18YearsRegistration', () => {
     })
 
     it('should pass recaptcha and post account registration to pcapi', async () => {
-      didFirstLaunch(ok)
       await SignupScreens.acceptCguScreen.waitForIsShown(true)
       registrationDate = new Date()
       await SignupScreens.acceptCguScreen.submit.click()
@@ -99,7 +98,6 @@ describe('18YearsRegistration', () => {
     })
 
     it('should receive registration confirmation email', async () => {
-      didFirstLaunch(ok)
       registrationConfirmationEmail = (await gmailClient.getRegistrationConfirmationEmail({
         dateFrom: registrationDate,
         username: email,
@@ -109,7 +107,6 @@ describe('18YearsRegistration', () => {
     })
 
     it('should open registration confirmation email link and perform log in', async () => {
-      didFirstLaunch(ok)
       const url = new URL(registrationConfirmationEmail.params.CONFIRMATION_LINK)
       await openDeepLinkUrl(url.href)
       await SignupScreens.signupConfirmationEmailSentScreen.waitForIsShown(false)

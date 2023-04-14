@@ -1,8 +1,8 @@
-name: Tests e2e iOS Browser
+name: Tests e2e Browser
 
 on:
   schedule:
-    - cron: '5 4 * * *'
+    - cron: '0 4 * * 1-5' # “At 4AM everyday from Monday through Friday.
 
   workflow_dispatch:
     inputs:
@@ -32,20 +32,17 @@ env:
   PCAPI_BASE_URL: http://127.0.0.1:6001
 
 jobs:
-  e2e-ios-browser:
+  e2e-browser:
     strategy:
       fail-fast: false
       matrix:
         include:
-          - osVersion: '15.2'
-            os: 'iOS'
-            model: 'iPhone 13'
+          - browserName: 'chrome'
+          - browserName: 'firefox'
+          - browserName: 'safari'
     env:
       CI: true
-      APPIUM_TEST_SERVER_PORT: 4723
-      APPIUM_TEST_SERVER_HOST: 127.0.0.1
-      APPIUM_STARTUP_TIMEOUT_SEC: 30
-      DEV_TEST_SERVER_HOST: localhost
+      DEV_TEST_SERVER_HOST: 127.0.0.1
       DEV_TEST_SERVER_PORT: 3000
       DEV_TEST_SERVER_STARTUP_TIMEOUT_SEC: 60
       _FORCE_LOGS: 1
@@ -59,7 +56,7 @@ jobs:
       # useful for Slack reports
       GITHUB_SERVER_URL: ${{ github.server_url }}
       GITHUB_RUN_ID: ${{ github.run_id }}
-    runs-on: macos-11
+    runs-on: macos-latest
     environment: ${{ inputs.environment || 'staging' }}
     permissions:
       id-token: write
@@ -73,12 +70,19 @@ jobs:
 
       - uses: actions/checkout@v3
 
+      - uses: actions/setup-node@v3
+        with:
+          node-version-file: '.nvmrc'
+
+      - name: Install dependencies
+        run: yarn install
+
       - name: Decode Gmail token
         env:
           END_TO_END_TESTS_EMAIL_ADDRESS_TOKEN: ${{ secrets.END_TO_END_TESTS_EMAIL_ADDRESS_TOKEN }}
         run: echo $END_TO_END_TESTS_EMAIL_ADDRESS_TOKEN | base64 -d > token.json
 
-      - name: "Install and start Docker engine"
+      - name: 'Install and start Docker engine'
         run: |
           brew install colima
           brew install docker docker-compose
@@ -87,7 +91,7 @@ jobs:
           colima start
 
       - id: openid-auth
-        name: "OpenID Connect Authentication"
+        name: 'OpenID Connect Authentication'
         uses: 'google-github-actions/auth@v1'
         with:
           create_credentials_file: false
@@ -103,7 +107,7 @@ jobs:
           username: 'oauth2accesstoken'
           password: '${{ steps.openid-auth.outputs.access_token }}'
 
-      - name: "Start pcapi backend"
+      - name: 'Start pcapi backend'
         env:
           SENDINBLUE_API_KEY: ${{ secrets.EHP_SENDINBLUE_API_KEY }}
           END_TO_END_TESTS_EMAIL_ADDRESS: ${{ secrets.END_TO_END_TESTS_EMAIL_ADDRESS }}
@@ -111,27 +115,13 @@ jobs:
           ./e2e/generate-env.sh
           docker-compose -f e2e/docker-compose-e2e.yml up -d
 
-      - uses: actions/setup-node@v3
-        with:
-          node-version-file: '.nvmrc'
+      - uses: browser-actions/setup-chrome@latest
+        if: ${{ matrix.browserName == 'chrome' }}
 
-      - uses: futureware-tech/simulator-action@v2
-        with:
-          model: ${{ matrix.model }}
-          os: ${{ matrix.os }}
-          os_version: ${{ matrix.os_version }}
+      - uses: browser-actions/setup-firefox@latest
+        if: ${{ matrix.browserName == 'firefox' }}
 
-      - name: Install dependencies
-        run: yarn install
-
-      - name: Install extraneous dev dependencies
-        run: |
-          npm config set legacy-peer-deps true
-          npm install -g appium@next
-          appium driver install xcuitest
-          appium driver install safari
-
-      - name: Start Local dev server
+      - name: Start local dev server
         env:
           NODE_OPTIONS: '--openssl-legacy-provider --max-old-space-size=4096'
         run: |
@@ -149,44 +139,13 @@ jobs:
             sleep 5
           done
 
-      - name: Start Appium server
-        run: |
-          cwd=$(pwd)
-          pushd "$cwd"
-          cd ~
-          nohup appium server \
-            --port=$APPIUM_TEST_SERVER_PORT \
-            --address=$APPIUM_TEST_SERVER_HOST \
-            --relaxed-security \
-            --allow-cors \
-            2>&1 > "$cwd/appium.log" &
-          popd
-
-      - name: Wait for Appium server startup
-        run: |
-          seconds_started=$(date +%s)
-          while ! nc -z $APPIUM_TEST_SERVER_HOST $APPIUM_TEST_SERVER_PORT; do
-            sleep 0.1
-            seconds_elapsed=$(( $(date +%s) - seconds_started ))
-            if [[ $seconds_elapsed -gt $APPIUM_STARTUP_TIMEOUT_SEC ]]; then
-              echo "Appium server was unable to start within $APPIUM_STARTUP_TIMEOUT_SEC seconds timeout"
-              exit 1
-            fi
-          done
-
-      - name: Run end-to-end tests osVersion-${{ matrix.osVersion }}
+      - name: Run end-to-end ${{ matrix.browserName }} tests
         env:
-          WDIO_BASE_URL: "http://${{ env.DEV_TEST_SERVER_HOST }}:${{ env.DEV_TEST_SERVER_PORT }}"
+          WDIO_BASE_URL: 'http://${{ env.DEV_TEST_SERVER_HOST }}:${{ env.DEV_TEST_SERVER_PORT }}'
           END_TO_END_TESTS_EMAIL_ADDRESS: ${{ secrets.END_TO_END_TESTS_EMAIL_ADDRESS }}
           API_BASE_URL: ${{ env.PCAPI_BASE_URL }}
           ENVIRONMENT: ${{ env.ENVIRONMENT }}
-          IOS_DEVICE_NAME: "${{ matrix.model }}"
-          IOS_PLATFORM_VERSION: "${{ matrix.osVersion }}"
-        run: yarn e2e:ios.browser
-
-      - name: Show appium server output
-        if: ${{ always() }}
-        run: cat appium.log
+        run: yarn e2e:browser.${{ matrix.browserName }}
 
       - name: Show pcapi server output
         if: ${{ always() }}
@@ -195,7 +154,7 @@ jobs:
       - uses: actions/upload-artifact@v3
         if: ${{ always() }}
         with:
-          name: fail-screenshots-videos-${{ matrix.apiLevel }}
+          name: fail-screenshots-videos-${{ matrix.browserName }}
           path: e2e/output
           if-no-files-found: ignore
 
@@ -204,7 +163,7 @@ jobs:
         uses: slackapi/slack-github-action@v1.23.0
         if: ${{ always() }}
         with:
-          channel-id:  ${{ fromJSON('["C04D6R9MQKS", "C04EU7U4JTE"]')[inputs.environment != ''] }}
+          channel-id: ${{ fromJSON('["C04D6R9MQKS", "C04EU7U4JTE"]')[inputs.environment != ''] }}
           payload: |
             {
               "attachments": [
@@ -214,9 +173,9 @@ jobs:
                   "author_name": "${{github.actor}}",
                   "author_link": "https://github.com/${{github.actor}}",
                   "author_icon": "https://github.com/${{github.actor}}.png",
-                  "title": "e2e ios.browser",
+                  "title": "e2e browser.${{matrix.browserName}}",
                   "title_link": "https://github.com/${{github.repository}}/actions/runs/${{github.run_id}}",
-                  "text": "Les tests `e2e:ios.browser` ${{ env.ENVIRONMENT }} ont ${{ fromJSON('["réussi", "échoué"]')[job.status != 'success'] }} sur la branche <https://github.com/${{github.repository}}/tree/${{github.ref_name}}|${{github.ref_name}}>"
+                  "text": "Les tests `e2e:browser.${{matrix.browserName}}` ${{ env.ENVIRONMENT }} ont ${{ fromJSON('["réussi", "échoué"]')[job.status != 'success'] }} sur la branche <https://github.com/${{github.repository}}/tree/${{github.ref_name}}|${{github.ref_name}}>"
                 }
               ],
               "unfurl_links": false,

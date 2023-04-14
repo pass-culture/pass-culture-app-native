@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { ComeBackLater } from 'features/identityCheck/pages/identification/identificationStart/ComeBackLater'
+import { ComeBackLater } from 'features/identityCheck/pages/identification/ubble/ComeBackLater'
 import { navigateToHomeConfig } from 'features/navigation/helpers'
 import { navigateFromRef } from 'features/navigation/navigationRef'
 import { amplitude } from 'libs/amplitude'
