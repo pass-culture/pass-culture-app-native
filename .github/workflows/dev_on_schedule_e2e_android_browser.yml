@@ -1,8 +1,8 @@
-name: Tests e2e Android App
+name: Tests e2e Android Browser
 
 on:
   schedule:
-    - cron: '5 4 * * *'
+    - cron: '0 4 * * 1-5' # “At 4AM everyday from Monday through Friday.
 
   workflow_dispatch:
     inputs:
@@ -11,21 +11,6 @@ on:
         description: Select the environment
         required: true
         default: staging
-      build-type:
-        type: choice
-        description: |
-          Distribution use Appcenter packages (faster) -
-          Local will build app from current ref
-        required: true
-        default: local
-        options:
-          - local
-          - distribution
-      dist-version:
-        type: string
-        description: |
-          Appcenter version - native distribution build optional [default: latest]
-        required: false
       specs:
         type: string
         description: |
@@ -47,12 +32,12 @@ env:
   PCAPI_BASE_URL: http://127.0.0.1:6001
 
 jobs:
-  e2e-android-app:
+  e2e-android-browser:
     strategy:
       fail-fast: false
       matrix:
         include:
-          - chromedriverVersion: "74.0.3729.6"
+          - chromedriverVersion: '74.0.3729.6'
             platformVersion: 10 # must match the apiLevel
             apiLevel: 29
             emuTag: google_apis
@@ -63,12 +48,13 @@ jobs:
       ANDROID_DEVICE_NAME: pixel_xl
       APPIUM_TEST_SERVER_PORT: 4723
       APPIUM_TEST_SERVER_HOST: 127.0.0.1
+      DEV_TEST_SERVER_HOST_WITHIN_EMULATOR: 10.0.2.2
+      DEV_TEST_SERVER_HOST: localhost
+      DEV_TEST_SERVER_PORT: 3000
+      DEV_TEST_SERVER_STARTUP_TIMEOUT_SEC: 60
       _FORCE_LOGS: 1
       # if inputs.* are not defined, it is because it is scheduled, and fallback here are for scheduled task
-      BUILD_TYPE: ${{ inputs.build-type || 'local' }}
       ENVIRONMENT: ${{ inputs.environment || 'staging' }}
-      DIST_VERSION: ${{ inputs.dist-version }}
-      APPCENTER_RO_API_TOKEN: ${{ secrets.APPCENTER_RO_API_TOKEN }}
       SPECS: ${{ inputs.specs }}
       PC_API_DOCKER_TAG: ${{ inputs.pcapi-docker-tag }}
       GITHUB_EVENT_NAME: ${{ github.event_name }}
@@ -98,7 +84,7 @@ jobs:
           END_TO_END_TESTS_EMAIL_ADDRESS_TOKEN: ${{ secrets.END_TO_END_TESTS_EMAIL_ADDRESS_TOKEN }}
         run: echo $END_TO_END_TESTS_EMAIL_ADDRESS_TOKEN | base64 -d > token.json
 
-      - name: "Install and start Docker engine"
+      - name: 'Install and start Docker engine'
         run: |
           brew install colima
           brew install docker docker-compose
@@ -107,7 +93,7 @@ jobs:
           colima start
 
       - id: openid-auth
-        name: "OpenID Connect Authentication"
+        name: 'OpenID Connect Authentication'
         uses: 'google-github-actions/auth@v1'
         with:
           create_credentials_file: false
@@ -123,7 +109,7 @@ jobs:
           username: 'oauth2accesstoken'
           password: '${{ steps.openid-auth.outputs.access_token }}'
 
-      - name: "Start pcapi backend"
+      - name: 'Start pcapi backend'
         env:
           SENDINBLUE_API_KEY: ${{ secrets.EHP_SENDINBLUE_API_KEY }}
           END_TO_END_TESTS_EMAIL_ADDRESS: ${{ secrets.END_TO_END_TESTS_EMAIL_ADDRESS }}
@@ -136,85 +122,13 @@ jobs:
         with:
           node-version-file: '.nvmrc'
 
-      - name: Install dependencies
-        run: yarn install
-
       - uses: actions/setup-java@v3
         with:
           distribution: 'temurin'
           java-version: '11'
 
-      ## Distribution build
-
-      - name: Download distribution package from appcenter
-        if: ${{ env.BUILD_TYPE == 'distribution' }}
-        run: |
-          echo "It will download Appcenter $BUILD_TYPE build $DIST_VERSION"
-          APPCENTER_USER_API_TOKEN=${{ env.APPCENTER_RO_API_TOKEN }} \
-          REMOVE_APK_AFTER_INSTALL=false \
-          LAUNCH=false \
-          INSTALL=false \
-          UNINSTALL=false \
-          yarn appcenter:install ${{ env.ENVIRONMENT }} android ${{ env.DIST_VERSION }}
-
-      ## Local build
-
-      - name: Setup sentry credentials
-        if: ${{ env.BUILD_TYPE == 'local' }}
-        env:
-          SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }}
-        run: |
-          cat <<EOT >> ~/.sentryclirc
-          [defaults]
-          url=https://sentry.passculture.team/
-          org=sentry
-          project=application-native
-          [auth]
-          token=${SENTRY_AUTH_TOKEN}
-          EOT
-
-      - name: Setup android keystore for ${{ env.ENVIRONMENT }} environment
-        if: ${{ env.BUILD_TYPE == 'local' }}
-        env:
-          ANDROID_KEYSTORE: ${{ secrets.ANDROID_KEYSTORE }}
-          ANDROID_KEYSTORE_STORE_PASSWORD: ${{ secrets.ANDROID_KEYSTORE_STORE_PASSWORD }}
-          ANDROID_KEYSTORE_KEY_PASSWORD: ${{ secrets.ANDROID_KEYSTORE_KEY_PASSWORD }}
-        run: |
-          mkdir -p android/keystores
-          echo "${ANDROID_KEYSTORE}" | sed 's/[^A-Za-z0-9+/=]//g' | base64 -d > android/keystores/${{ env.ENVIRONMENT }}.keystore
-          cat <<EOT >> android/keystores/${{ env.ENVIRONMENT }}.keystore.properties
-          keyAlias=passculture
-          storeFile=${{ env.ENVIRONMENT }}.keystore
-          storePassword=${ANDROID_KEYSTORE_STORE_PASSWORD}
-          keyPassword=${ANDROID_KEYSTORE_KEY_PASSWORD}
-          EOT
-
-      - name: Setup android Google services config
-        if: ${{ env.BUILD_TYPE == 'local' }}
-        env:
-          ANDROID_GOOGLE_SERVICES_JSON: ${{ secrets.ANDROID_GOOGLE_SERVICES_JSON }}
-        run: echo ${ANDROID_GOOGLE_SERVICES_JSON} > android/app/google-services.json
-
-      - name: Build Android app for ${{ env.ENVIRONMENT }} environment
-        if: ${{ env.BUILD_TYPE == 'local' }}
-        run: |
-          if [[ "${{ env.ENVIRONMENT }}" = "testing" ]]; then
-            ANDROID_GRADLE_TASK=assembleApptestingRelease
-          else
-            ANDROID_GRADLE_TASK=assembleStagingRelease
-          fi
-          echo "It will run ${ANDROID_GRADLE_TASK} gradle task"
-          ./android/gradlew ${ANDROID_GRADLE_TASK} -p android
-
-      - name: Sets apk location for local or distributed build
-        run: |
-          if [[ "${{ env.BUILD_TYPE }}" = "distribution" ]]; then
-            echo "ANDROID_APK_PATH=app-${{ env.ENVIRONMENT }}-android.apk" >> $GITHUB_ENV
-          elif [[ "${{ env.ENVIRONMENT }}" = "testing" ]]; then
-            echo "ANDROID_APK_PATH=./android/app/build/outputs/apk/apptesting/release/app-apptesting-release.apk" >> $GITHUB_ENV
-          elif [[ "${{ env.ENVIRONMENT }}" = "staging" ]]; then
-            echo "ANDROID_APK_PATH=./android/app/build/outputs/apk/staging/release/app-staging-release.apk" >> $GITHUB_ENV
-          fi
+      - name: Install dependencies
+        run: yarn install
 
       - name: Install extraneous dev dependencies
         run: |
@@ -223,6 +137,24 @@ jobs:
           npm install --chromedriver_version="${{ matrix.chromedriverVersion }}"
           npm install --no-save mjpeg-consumer
           appium driver install uiautomator2
+
+      - name: Start Local dev server
+        env:
+          NODE_OPTIONS: '--openssl-legacy-provider --max-old-space-size=4096'
+        run: |
+          cwd=$(pwd)
+          pushd "$cwd"
+          nohup yarn start:web:${{ env.ENVIRONMENT }} \
+            2>&1 > "$cwd/webpack-dev-server.log" &
+          popd
+
+      - name: Wait for local dev server
+        timeout-minutes: 15
+        run: |
+          until curl --output /dev/null --silent --head --fail http://${{ env.DEV_TEST_SERVER_HOST }}:${{ env.DEV_TEST_SERVER_PORT }}; do
+            printf '.'
+            sleep 5
+          done
 
       - name: Start Appium server
         run: |
@@ -243,14 +175,14 @@ jobs:
       - uses: reactivecircus/android-emulator-runner@v2
         name: Run end-to-end tests apiLevel-${{ matrix.apiLevel }}
         env:
+          WDIO_BASE_URL: 'http://${{ env.DEV_TEST_SERVER_HOST_WITHIN_EMULATOR }}:${{ env.DEV_TEST_SERVER_PORT }}'
           END_TO_END_TESTS_EMAIL_ADDRESS: ${{ secrets.END_TO_END_TESTS_EMAIL_ADDRESS }}
           API_BASE_URL: ${{ env.PCAPI_BASE_URL }}
           ENVIRONMENT: ${{ env.ENVIRONMENT }}
-          ANDROID_DEVICE_NAME: ${{ env.ANDROID_DEVICE_NAME }}
-          ANDROID_PLATFORM_VERSION: ${{ matrix.platformVersion }}
-          APPIUM_APP: ${{ env.ANDROID_APK_PATH }}
+          ANDROID_DEVICE_NAME: '${{ env.ANDROID_DEVICE_NAME }}'
+          ANDROID_PLATFORM_VERSION: '${{ matrix.platformVersion }}'
         with:
-          script: yarn e2e:android.app
+          script: yarn e2e:android.browser
           avd-name: ${{ env.ANDROID_DEVICE_NAME }}
           sdcard-path-or-size: 1500M
           api-level: ${{ matrix.apiLevel }}
@@ -283,7 +215,7 @@ jobs:
         uses: slackapi/slack-github-action@v1.23.0
         if: ${{ always() }}
         with:
-          channel-id:  ${{ fromJSON('["C04D6R9MQKS", "C04EU7U4JTE"]')[inputs.environment != ''] }}
+          channel-id: ${{ fromJSON('["C04D6R9MQKS", "C04EU7U4JTE"]')[inputs.environment != ''] }}
           payload: |
             {
               "attachments": [
@@ -293,9 +225,9 @@ jobs:
                   "author_name": "${{github.actor}}",
                   "author_link": "https://github.com/${{github.actor}}",
                   "author_icon": "https://github.com/${{github.actor}}.png",
-                  "title": "e2e android.app",
+                  "title": "e2e android.browser",
                   "title_link": "https://github.com/${{github.repository}}/actions/runs/${{github.run_id}}",
-                  "text": "Les tests `e2e:android.app` ${{ env.ENVIRONMENT }} ont ${{ fromJSON('["réussi", "échoué"]')[job.status != 'success'] }} sur la branche <https://github.com/${{github.repository}}/tree/${{github.ref_name}}|${{github.ref_name}}>"
+                  "text": "Les tests `e2e:android.browser` ${{ env.ENVIRONMENT }} ont ${{ fromJSON('["réussi", "échoué"]')[job.status != 'success'] }} sur la branche <https://github.com/${{github.repository}}/tree/${{github.ref_name}}|${{github.ref_name}}>"
                 }
               ],
               "unfurl_links": false,
