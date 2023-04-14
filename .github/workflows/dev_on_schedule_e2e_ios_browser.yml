@@ -1,8 +1,8 @@
-name: Tests e2e Android Browser
+name: Tests e2e iOS Browser
 
 on:
   schedule:
-    - cron: '5 4 * * *'
+    - cron: '0 4 * * 1-5' # “At 4AM everyday from Monday through Friday.
 
   workflow_dispatch:
     inputs:
@@ -32,23 +32,19 @@ env:
   PCAPI_BASE_URL: http://127.0.0.1:6001
 
 jobs:
-  e2e-android-browser:
+  e2e-ios-browser:
     strategy:
       fail-fast: false
       matrix:
         include:
-          - chromedriverVersion: "74.0.3729.6"
-            platformVersion: 10 # must match the apiLevel
-            apiLevel: 29
-            emuTag: google_apis
-            arch: x86
-            profile: pixel_xl
+          - osVersion: '15.2'
+            os: 'iOS'
+            model: 'iPhone 13'
     env:
       CI: true
-      ANDROID_DEVICE_NAME: pixel_xl
       APPIUM_TEST_SERVER_PORT: 4723
       APPIUM_TEST_SERVER_HOST: 127.0.0.1
-      DEV_TEST_SERVER_HOST_WITHIN_EMULATOR: 10.0.2.2
+      APPIUM_STARTUP_TIMEOUT_SEC: 30
       DEV_TEST_SERVER_HOST: localhost
       DEV_TEST_SERVER_PORT: 3000
       DEV_TEST_SERVER_STARTUP_TIMEOUT_SEC: 60
@@ -63,9 +59,7 @@ jobs:
       # useful for Slack reports
       GITHUB_SERVER_URL: ${{ github.server_url }}
       GITHUB_RUN_ID: ${{ github.run_id }}
-    # No hardware acceleration is available for emulators on Ubuntu:
-    # https://github.com/marketplace/actions/android-emulator-runner#can-i-use-this-action-on-linux-vms
-    runs-on: macos-latest
+    runs-on: macos-11
     environment: ${{ inputs.environment || 'staging' }}
     permissions:
       id-token: write
@@ -84,7 +78,7 @@ jobs:
           END_TO_END_TESTS_EMAIL_ADDRESS_TOKEN: ${{ secrets.END_TO_END_TESTS_EMAIL_ADDRESS_TOKEN }}
         run: echo $END_TO_END_TESTS_EMAIL_ADDRESS_TOKEN | base64 -d > token.json
 
-      - name: "Install and start Docker engine"
+      - name: 'Install and start Docker engine'
         run: |
           brew install colima
           brew install docker docker-compose
@@ -93,7 +87,7 @@ jobs:
           colima start
 
       - id: openid-auth
-        name: "OpenID Connect Authentication"
+        name: 'OpenID Connect Authentication'
         uses: 'google-github-actions/auth@v1'
         with:
           create_credentials_file: false
@@ -109,11 +103,10 @@ jobs:
           username: 'oauth2accesstoken'
           password: '${{ steps.openid-auth.outputs.access_token }}'
 
-      - name: "Start pcapi backend"
+      - name: 'Start pcapi backend'
         env:
           SENDINBLUE_API_KEY: ${{ secrets.EHP_SENDINBLUE_API_KEY }}
           END_TO_END_TESTS_EMAIL_ADDRESS: ${{ secrets.END_TO_END_TESTS_EMAIL_ADDRESS }}
-          ANDROID: true
         run: |
           ./e2e/generate-env.sh
           docker-compose -f e2e/docker-compose-e2e.yml up -d
@@ -122,10 +115,11 @@ jobs:
         with:
           node-version-file: '.nvmrc'
 
-      - uses: actions/setup-java@v3
+      - uses: futureware-tech/simulator-action@v2
         with:
-          distribution: 'temurin'
-          java-version: '11'
+          model: ${{ matrix.model }}
+          os: ${{ matrix.os }}
+          os_version: ${{ matrix.os_version }}
 
       - name: Install dependencies
         run: yarn install
@@ -134,9 +128,8 @@ jobs:
         run: |
           npm config set legacy-peer-deps true
           npm install -g appium@next
-          npm install --chromedriver_version="${{ matrix.chromedriverVersion }}"
-          npm install --no-save mjpeg-consumer
-          appium driver install uiautomator2
+          appium driver install xcuitest
+          appium driver install safari
 
       - name: Start Local dev server
         env:
@@ -169,31 +162,27 @@ jobs:
             2>&1 > "$cwd/appium.log" &
           popd
 
-      - run: nohup adb logcat > logcat.log &
-        name: Capture logcat
+      - name: Wait for Appium server startup
+        run: |
+          seconds_started=$(date +%s)
+          while ! nc -z $APPIUM_TEST_SERVER_HOST $APPIUM_TEST_SERVER_PORT; do
+            sleep 0.1
+            seconds_elapsed=$(( $(date +%s) - seconds_started ))
+            if [[ $seconds_elapsed -gt $APPIUM_STARTUP_TIMEOUT_SEC ]]; then
+              echo "Appium server was unable to start within $APPIUM_STARTUP_TIMEOUT_SEC seconds timeout"
+              exit 1
+            fi
+          done
 
-      - uses: reactivecircus/android-emulator-runner@v2
-        name: Run end-to-end tests apiLevel-${{ matrix.apiLevel }}
+      - name: Run end-to-end tests osVersion-${{ matrix.osVersion }}
         env:
-          WDIO_BASE_URL: "http://${{ env.DEV_TEST_SERVER_HOST_WITHIN_EMULATOR }}:${{ env.DEV_TEST_SERVER_PORT }}"
+          WDIO_BASE_URL: 'http://${{ env.DEV_TEST_SERVER_HOST }}:${{ env.DEV_TEST_SERVER_PORT }}'
           END_TO_END_TESTS_EMAIL_ADDRESS: ${{ secrets.END_TO_END_TESTS_EMAIL_ADDRESS }}
           API_BASE_URL: ${{ env.PCAPI_BASE_URL }}
           ENVIRONMENT: ${{ env.ENVIRONMENT }}
-          ANDROID_DEVICE_NAME: "${{ env.ANDROID_DEVICE_NAME }}"
-          ANDROID_PLATFORM_VERSION: "${{ matrix.platformVersion }}"
-        with:
-          script: yarn e2e:android.browser
-          avd-name: ${{ env.ANDROID_DEVICE_NAME }}
-          sdcard-path-or-size: 1500M
-          api-level: ${{ matrix.apiLevel }}
-          disable-spellchecker: true
-          target: ${{ matrix.emuTag }}
-          arch: ${{ matrix.arch }}
-          profile: ${{ matrix.profile }}
-
-      - name: Show logcat server output
-        if: ${{ always() }}
-        run: cat logcat.log
+          IOS_DEVICE_NAME: '${{ matrix.model }}'
+          IOS_PLATFORM_VERSION: '${{ matrix.osVersion }}'
+        run: yarn e2e:ios.browser
 
       - name: Show appium server output
         if: ${{ always() }}
@@ -215,7 +204,7 @@ jobs:
         uses: slackapi/slack-github-action@v1.23.0
         if: ${{ always() }}
         with:
-          channel-id:  ${{ fromJSON('["C04D6R9MQKS", "C04EU7U4JTE"]')[inputs.environment != ''] }}
+          channel-id: ${{ fromJSON('["C04D6R9MQKS", "C04EU7U4JTE"]')[inputs.environment != ''] }}
           payload: |
             {
               "attachments": [
@@ -225,9 +214,9 @@ jobs:
                   "author_name": "${{github.actor}}",
                   "author_link": "https://github.com/${{github.actor}}",
                   "author_icon": "https://github.com/${{github.actor}}.png",
-                  "title": "e2e android.browser",
+                  "title": "e2e ios.browser",
                   "title_link": "https://github.com/${{github.repository}}/actions/runs/${{github.run_id}}",
-                  "text": "Les tests `e2e:android.browser` ${{ env.ENVIRONMENT }} ont ${{ fromJSON('["réussi", "échoué"]')[job.status != 'success'] }} sur la branche <https://github.com/${{github.repository}}/tree/${{github.ref_name}}|${{github.ref_name}}>"
+                  "text": "Les tests `e2e:ios.browser` ${{ env.ENVIRONMENT }} ont ${{ fromJSON('["réussi", "échoué"]')[job.status != 'success'] }} sur la branche <https://github.com/${{github.repository}}/tree/${{github.ref_name}}|${{github.ref_name}}>"
                 }
               ],
               "unfurl_links": false,
