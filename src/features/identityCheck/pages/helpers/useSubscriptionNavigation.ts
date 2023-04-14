@@ -51,7 +51,10 @@ export const useSubscriptionNavigation = (): {
 
   const saveCheckpoint = async (nextStep: DeprecatedIdentityCheckStep | IdentityCheckStep) => {
     try {
-      if (currentStep === (DeprecatedIdentityCheckStep.PROFILE || IdentityCheckStep.PROFILE)) {
+      if (
+        currentStep === DeprecatedIdentityCheckStep.PROFILE ||
+        currentStep === IdentityCheckStep.PROFILE
+      ) {
         setIsSavingCheckpoint(true)
         await patchProfile()
       }
