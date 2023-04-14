@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { SelectIDStatus } from 'features/identityCheck/pages/identification/identificationStart/SelectIDStatus'
+import { SelectIDStatus } from 'features/identityCheck/pages/identification/ubble/SelectIDStatus'
 import { render, checkAccessibilityFor } from 'tests/utils/web'
 
 describe('SelectIDStatus', () => {

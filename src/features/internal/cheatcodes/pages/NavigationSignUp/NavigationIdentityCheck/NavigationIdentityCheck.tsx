@@ -56,7 +56,6 @@ export function NavigationIdentityCheck(): JSX.Element {
           onPress={() => navigate('SetPhoneValidationCode')}
         />
         <LinkToComponent name="IdentityCheckStatus" title="SetStatus" />
-        <LinkToComponent name="IdentityCheckStart" />
         <LinkToComponent name="IdentityCheckUnavailable" />
         <LinkToComponent name="IdentityCheckPending" />
         <LinkToComponent name="SetName" />
@@ -116,6 +115,8 @@ export function NavigationIdentityCheck(): JSX.Element {
             onPress={() => navigate('BeneficiaryRequestSent')}
           />
         </Row>
+        <LinkToComponent name="IdentificationForkUbble" />
+        <LinkToComponent name="IdentificationForkEduconnect" />
       </StyledContainer>
       <Spacer.BottomScreen />
       <FastEduconnectConnectionRequestModal
