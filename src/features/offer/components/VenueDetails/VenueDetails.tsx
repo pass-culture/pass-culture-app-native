@@ -43,7 +43,7 @@ export function VenueDetails({
 
         {distance ? (
           <React.Fragment>
-            <Spacer.Flex />
+            <Spacer.Column numberOfSpaces={4} />
             <DistanceTag distance={distance} />
           </React.Fragment>
         ) : null}
@@ -74,7 +74,10 @@ const LeftContent = styled.View({
   flexShrink: 1,
 })
 
-const Title = styled(Typo.ButtonText)<{ isHover?: boolean }>(({ theme, isHover }) => ({
+const Title = styled(Typo.ButtonText).attrs({
+  numberOfLines: 2,
+  ellipsizeMode: 'tail',
+})<{ isHover?: boolean }>(({ theme, isHover }) => ({
   ...getHoverStyle(theme.colors.black, isHover),
 }))
 
@@ -88,15 +91,15 @@ const VenueAddress = styled(Typo.Caption).attrs({
 
 const VenueImage = styled(ResizedFastImage)({
   borderRadius: getSpacing(1),
-  width: getSpacing(24),
-  height: getSpacing(24),
+  width: getSpacing(29),
+  height: getSpacing(29),
 })
 
 const PlaceholderWrapper = styled.View(({ theme }) => ({
   backgroundColor: theme.colors.greyLight,
   borderRadius: getSpacing(1),
-  width: getSpacing(24),
-  height: getSpacing(24),
+  width: getSpacing(29),
+  height: getSpacing(29),
   justifyContent: 'center',
   alignItems: 'center',
 }))
