@@ -32,8 +32,7 @@ export const HomeHeader: FunctionComponent = function () {
   const { data } = useHomeBanner(isGeolocated)
   const homeBanner = data?.banner
 
-  const welcomeTitle =
-    user?.firstName && isLoggedIn ? `Bonjour ${user.firstName}` : 'Bienvenue\u00a0!'
+  const welcomeTitle = user?.firstName && isLoggedIn ? `Bonjour ${user.firstName}` : 'Coucou\u00a0!'
 
   // we distinguish three different cases:
   // - not connected OR eligible-to-credit users
@@ -42,7 +41,8 @@ export const HomeHeader: FunctionComponent = function () {
   const getSubtitle = () => {
     const shouldSeeDefaultSubtitle =
       !isLoggedIn || !user || !isUserBeneficiary(user) || user.isEligibleForBeneficiaryUpgrade
-    if (shouldSeeDefaultSubtitle) return 'Toute la culture à portée de main'
+    if (shouldSeeDefaultSubtitle)
+      return 'Vive le uzbifbkzbfbzobf ojbnafljbq oqiobqn lknqf eoinz pass\u00a0!'
 
     const shouldSeeBeneficiarySubtitle =
       isUserBeneficiary(user) && !!availableCredit && !availableCredit.isExpired
