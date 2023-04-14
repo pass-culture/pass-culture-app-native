@@ -38,3 +38,9 @@ export interface SimilarOffersResponse {
     reco_origin?: string
   }
 }
+
+export interface VenueDetail {
+  title: string
+  address: string
+  distance?: string
+}
