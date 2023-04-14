@@ -6,7 +6,7 @@ import { UseQueryResult } from 'react-query'
 
 import { push } from '__mocks__/@react-navigation/native'
 import { api } from 'api/api'
-import { UserReportedOffersResponse } from 'api/gen'
+import { SubcategoryIdEnum, UserReportedOffersResponse } from 'api/gen'
 import { mockDigitalOffer, mockOffer } from 'features/bookOffer/fixtures/offer'
 import * as ReportedOffersAPI from 'features/offer/api/useReportedOffers'
 import { OfferBody } from 'features/offer/components/OfferBody/OfferBody'
@@ -19,6 +19,7 @@ import {
   mockedAlgoliaResponse,
   moreHitsForSimilarOffersPlaylist,
 } from 'libs/algolia/__mocks__/mockedAlgoliaResponse'
+import * as useFeatureFlag from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { NetInfoWrapper } from 'libs/network/NetInfoWrapper'
 import { placeholderData } from 'libs/subcategories/placeholderData'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
@@ -92,6 +93,8 @@ const mockUseNetInfo = jest.fn().mockReturnValue({ isConnected: true, isInternet
 jest.mock('libs/network/useNetInfo', () => ({
   useNetInfo: () => mockUseNetInfo(),
 }))
+
+const useFeatureFlagSpy = jest.spyOn(useFeatureFlag, 'useFeatureFlag').mockReturnValue(false)
 
 const onScroll = jest.fn()
 
@@ -396,6 +399,116 @@ describe('<OfferBody />', () => {
       await screen.findByTestId('offer-container')
 
       expect(api.getnativev1offersreports).not.toBeCalled()
+    })
+  })
+
+  describe('When wipEnableMultivenueOffer feature flag descativated', () => {
+    beforeEach(() => {
+      useFeatureFlagSpy.mockReturnValueOnce(false)
+      // Mock useReportedOffer to avoid re-render
+      useReportedOffersMock.mockReturnValueOnce({
+        data: { reportedOffers: [] },
+      } as unknown as UseQueryResult<UserReportedOffersResponse>)
+    })
+
+    it('should not display other venues available button when offer subcategory is "Livres audio physiques" and offer has an ISBN', async () => {
+      mockUseOffer.mockReturnValueOnce({
+        data: {
+          ...mockOffer,
+          subcategoryId: SubcategoryIdEnum.LIVRE_AUDIO_PHYSIQUE,
+          extraData: { isbn: '2765410054' },
+        },
+      })
+      renderOfferBody()
+
+      await screen.findByTestId('offer-container')
+      expect(screen.queryByText('Voir d’autres lieux disponibles')).toBeNull()
+    })
+
+    it('should not display other venues available button when offer subcategory is "Livres papier" and offer has an ISBN', async () => {
+      mockUseOffer.mockReturnValueOnce({
+        data: {
+          ...mockOffer,
+          subcategoryId: SubcategoryIdEnum.LIVRE_PAPIER,
+          extraData: { isbn: '2765410054' },
+        },
+      })
+      renderOfferBody()
+
+      await screen.findByTestId('offer-container')
+      expect(screen.queryByText('Voir d’autres lieux disponibles')).toBeNull()
+    })
+
+    it('should not display other venues available button when offer subcategory is not "Livres papier" or "Livres audio physiques"', async () => {
+      renderOfferBody()
+
+      await screen.findByTestId('offer-container')
+      expect(screen.queryByText('Voir d’autres lieux disponibles')).toBeNull()
+    })
+  })
+
+  describe('When wipEnableMultivenueOffer feature flag activated', () => {
+    beforeEach(() => {
+      useFeatureFlagSpy.mockReturnValueOnce(true)
+      // Mock useReportedOffer to avoid re-render
+      useReportedOffersMock.mockReturnValueOnce({
+        data: { reportedOffers: [] },
+      } as unknown as UseQueryResult<UserReportedOffersResponse>)
+    })
+
+    it('should display other venues available button when offer subcategory is "Livres audio physiques" and offer has an ISBN', async () => {
+      mockUseOffer.mockReturnValueOnce({
+        data: {
+          ...mockOffer,
+          subcategoryId: SubcategoryIdEnum.LIVRE_AUDIO_PHYSIQUE,
+          extraData: { isbn: '2765410054' },
+        },
+      })
+      renderOfferBody()
+
+      await screen.findByTestId('offer-container')
+      expect(screen.getByText('Voir d’autres lieux disponibles')).toBeTruthy()
+    })
+
+    it('should not display other venues available button when offer subcategory is "Livres audio physiques" and offer has not an ISBN', async () => {
+      mockUseOffer.mockReturnValueOnce({
+        data: { ...mockOffer, subcategoryId: SubcategoryIdEnum.LIVRE_AUDIO_PHYSIQUE },
+      })
+      renderOfferBody()
+
+      await screen.findByTestId('offer-container')
+      expect(screen.queryByText('Voir d’autres lieux disponibles')).toBeNull()
+    })
+
+    it('should display other venues available button when offer subcategory is "Livres papier" and offer has an ISBN', async () => {
+      mockUseOffer.mockReturnValueOnce({
+        data: {
+          ...mockOffer,
+          subcategoryId: SubcategoryIdEnum.LIVRE_PAPIER,
+          extraData: { isbn: '2765410054' },
+        },
+      })
+      renderOfferBody()
+
+      await screen.findByTestId('offer-container')
+      expect(screen.getByText('Voir d’autres lieux disponibles')).toBeTruthy()
+    })
+
+    it('should not display other venues available button when offer subcategory is "Livres papier" and offer has not an ISBN', async () => {
+      mockUseOffer.mockReturnValueOnce({
+        data: { ...mockOffer, subcategoryId: SubcategoryIdEnum.LIVRE_PAPIER },
+      })
+      renderOfferBody()
+
+      await screen.findByTestId('offer-container')
+      expect(screen.queryByText('Voir d’autres lieux disponibles')).toBeNull()
+    })
+
+    it('should not display other venues available button when offer subcategory is not "Livres papier" or "Livres audio physiques"', async () => {
+      renderOfferBody()
+
+      await screen.findByTestId('offer-container')
+      expect(screen.queryByText('Voir d’autres lieux disponibles')).toBeNull()
     })
   })
 })

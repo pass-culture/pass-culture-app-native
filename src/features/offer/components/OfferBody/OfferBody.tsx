@@ -3,7 +3,7 @@ import React, { FunctionComponent, useCallback, useRef, useState } from 'react'
 import { ScrollView } from 'react-native'
 import styled from 'styled-components/native'
 
-import { ReportedOffer } from 'api/gen'
+import { ReportedOffer, SubcategoryIdEnum } from 'api/gen'
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { UseRouteType } from 'features/navigation/RootNavigator/types'
 import { useOffer } from 'features/offer/api/useOffer'
@@ -26,6 +26,8 @@ import {
 import { SearchHit } from 'libs/algolia'
 import { getPlaylistItemDimensionsFromLayout } from 'libs/contentful/dimensions'
 import { analytics } from 'libs/firebase/analytics'
+import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
+import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { useGeolocation } from 'libs/geolocation'
 import { WhereSection } from 'libs/geolocation/components/WhereSection'
 import { formatDates, formatDistance, getDisplayPrice, getFormattedDates } from 'libs/parsers'
@@ -37,6 +39,7 @@ import {
 } from 'libs/subcategories'
 import { AccessibilityBlock } from 'ui/components/accessibility/AccessibilityBlock'
 import { AccordionItem } from 'ui/components/AccordionItem'
+import { ButtonSecondary } from 'ui/components/buttons/ButtonSecondary'
 import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
 import { Hero } from 'ui/components/hero/Hero'
 import { PassPlaylist } from 'ui/components/PassPlaylist'
@@ -73,6 +76,14 @@ export const OfferBody: FunctionComponent<Props> = ({
   const { user } = useAuthContext()
   const scrollViewRef = useRef<ScrollView | null>(null)
   const mapping = useSubcategoriesMapping()
+  const enableMultivenueOffer = useFeatureFlag(RemoteStoreFeatureFlags.WIP_ENABLE_MULTIVENUE_OFFER)
+  const isMultivenueCompatibleOffer = Boolean(
+    offer?.subcategoryId === SubcategoryIdEnum.LIVRE_PAPIER ||
+      offer?.subcategoryId === SubcategoryIdEnum.LIVRE_AUDIO_PHYSIQUE
+  )
+  const shouldDisplayOtherVenuesAvailableButton = Boolean(
+    enableMultivenueOffer && isMultivenueCompatibleOffer && offer?.extraData?.isbn
+  )
 
   const {
     getPositionOnLayout: setAccessibilityAccordionPosition,
@@ -214,6 +225,15 @@ export const OfferBody: FunctionComponent<Props> = ({
           locationCoordinates={venue.coordinates}
           showVenueBanner={showVenueBanner}
         />
+        {shouldDisplayOtherVenuesAvailableButton ? (
+          <React.Fragment>
+            <Spacer.Column numberOfSpaces={2} />
+            <ButtonSecondary wording="Voir d’autres lieux disponibles" fullWidth />
+            <Spacer.Column numberOfSpaces={6} />
+          </React.Fragment>
+        ) : (
+          <React.Fragment />
+        )}
       </SectionWithDivider>
 
       <SectionWithDivider visible margin>
