@@ -1,5 +1,4 @@
 import React, { CSSProperties } from 'react'
-import { View } from 'react-native'
 import styled, { DefaultTheme } from 'styled-components/native'
 
 import { useHandleFocus } from 'libs/hooks/useHandleFocus'
@@ -63,7 +62,7 @@ const Wrapper = styled(TouchableOpacity)<{
   isSelected?: boolean
 }>(({ theme, isFocus, isSelected }) => {
   return {
-    backgroundColor: '#fff',
+    backgroundColor: theme.colors.white,
     borderRadius: getSpacing(2),
     borderStyle: 'solid',
     flexDirection: 'row',
@@ -74,11 +73,11 @@ const Wrapper = styled(TouchableOpacity)<{
   }
 })
 
-const InnerWrapper = styled(View)`
-  flex: 1;
-`
+const InnerWrapper = styled.View({
+  flex: 1,
+})
 
-const RadioWrapper = styled(View)<{ isSelected?: boolean }>(({ theme, isSelected }) => ({
+const RadioWrapper = styled.View<{ isSelected?: boolean }>(({ theme, isSelected }) => ({
   width: getSpacing(4),
   height: getSpacing(4),
   borderRadius: getSpacing(2),
@@ -90,7 +89,7 @@ const RadioWrapper = styled(View)<{ isSelected?: boolean }>(({ theme, isSelected
   marginRight: getSpacing(4),
 }))
 
-const RadioInner = styled(View)<{ isSelected?: boolean }>(({ theme, isSelected }) => ({
+const RadioInner = styled.View<{ isSelected?: boolean }>(({ theme, isSelected }) => ({
   width: getSpacing(2),
   height: getSpacing(2),
   backgroundColor: isSelected ? theme.colors.primary : 'transparent',

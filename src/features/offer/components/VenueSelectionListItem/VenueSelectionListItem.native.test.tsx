@@ -6,19 +6,6 @@ import { theme } from 'theme'
 import { VenueSelectionListItem } from './VenueSelectionListItem'
 
 describe('<VenueSelectionListItem />', () => {
-  it('should render without problem', () => {
-    render(
-      <VenueSelectionListItem
-        venueType={null}
-        title="Jest"
-        address="Somewhere in you memory"
-        onSelect={jest.fn()}
-      />
-    )
-
-    expect(screen.getByTestId('venue-selection-list-item')).toBeTruthy()
-  })
-
   it('should apply different styles when selected', () => {
     render(
       <VenueSelectionListItem
@@ -62,7 +49,7 @@ describe('<VenueSelectionListItem />', () => {
       />
     )
 
-    fireEvent.press(screen.getByTestId('venue-selection-list-item'))
+    fireEvent.press(screen.getByText('Jest'))
 
     expect(onSelect).toHaveBeenCalledTimes(1)
   })

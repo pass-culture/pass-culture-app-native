@@ -26,8 +26,7 @@ export function VenueCard({ onPress, ...props }: VenueCardProps) {
       isFocus={isFocus}
       // @ts-ignore It exists but not recognized by TypeScript
       onMouseEnter={onMouseEnter}
-      onMouseLeave={onMouseLeave}
-      testID="venue-card">
+      onMouseLeave={onMouseLeave}>
       <VenueDetails {...props} isHover={isHover} />
     </Wrapper>
   )
@@ -36,7 +35,7 @@ export function VenueCard({ onPress, ...props }: VenueCardProps) {
 const Wrapper = styled(TouchableOpacity)<{
   isFocus?: boolean
 }>(({ theme, isFocus }) => ({
-  backgroundColor: '#fff',
+  backgroundColor: theme.colors.white,
   borderRadius: getSpacing(2),
   borderWidth: 1,
   borderStyle: 'solid',

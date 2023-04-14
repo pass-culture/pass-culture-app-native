@@ -16,14 +16,14 @@ export function DistanceTag({ distance, ...props }: DistanceTagProps) {
   )
 }
 
-const Wrapper = styled(View)`
-  border-radius: 6px;
-  background-color: #c1a3ff33;
-  padding-inline: ${getSpacing(2)}px;
-  padding-block: ${getSpacing(1)}px;
-  align-self: baseline;
-`
+const Wrapper = styled(View)({
+  borderRadius: 6,
+  backgroundColor: '#c1a3ff33',
+  paddingVertical: getSpacing(1),
+  paddingHorizontal: getSpacing(2),
+  alignSelf: 'baseline',
+})
 
-const DistanceText = styled(Typo.Caption)`
-  color: ${({ theme }) => theme.colors.secondary};
-`
+const DistanceText = styled(Typo.Caption)(({ theme }) => ({
+  color: theme.colors.secondary,
+}))

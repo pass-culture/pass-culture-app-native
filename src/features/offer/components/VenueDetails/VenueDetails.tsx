@@ -33,7 +33,7 @@ export function VenueDetails({
   const Icon = mapVenueTypeToIcon(venueType)
 
   return (
-    <Wrapper {...props} testID="venue-details">
+    <Wrapper {...props}>
       <LeftContent>
         <View>
           <Title isHover={isHover}>{title}</Title>
@@ -62,17 +62,17 @@ export function VenueDetails({
   )
 }
 
-const Wrapper = styled(View)`
-  flex-direction: row;
-  flex-grow: 1;
-  gap: ${getSpacing(2)}px;
-`
+const Wrapper = styled(View)({
+  flexDirection: 'row',
+  flexGrow: 1,
+  gap: getSpacing(2),
+})
 
-const LeftContent = styled(View)`
-  justify-content: center;
-  flex-grow: 1;
-  flex-shrink: 1;
-`
+const LeftContent = styled.View({
+  justifyContent: 'center',
+  flexGrow: 1,
+  flexShrink: 1,
+})
 
 const Title = styled(Typo.ButtonText)<{ isHover?: boolean }>(({ theme, isHover }) => ({
   ...getHoverStyle(theme.colors.black, isHover),
@@ -86,17 +86,17 @@ const VenueAddress = styled(Typo.Caption).attrs({
   ...getHoverStyle(theme.colors.black, isHover),
 }))
 
-const VenueImage = styled(ResizedFastImage)`
-  border-radius: ${getSpacing(1)}px;
-  width: ${getSpacing(24)}px;
-  height: ${getSpacing(24)}px;
-`
+const VenueImage = styled(ResizedFastImage)({
+  borderRadius: getSpacing(1),
+  width: getSpacing(24),
+  height: getSpacing(24),
+})
 
-const PlaceholderWrapper = styled.View`
-  background-color: ${({ theme }) => theme.colors.greyLight};
-  border-radius: ${getSpacing(1)}px;
-  width: ${getSpacing(24)}px;
-  height: ${getSpacing(24)}px;
-  justify-content: center;
-  align-items: center;
-`
+const PlaceholderWrapper = styled.View(({ theme }) => ({
+  backgroundColor: theme.colors.greyLight,
+  borderRadius: getSpacing(1),
+  width: getSpacing(24),
+  height: getSpacing(24),
+  justifyContent: 'center',
+  alignItems: 'center',
+}))
