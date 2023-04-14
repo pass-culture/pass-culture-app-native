@@ -1,6 +1,6 @@
-import React from 'react'
+import React, { CSSProperties } from 'react'
 import { View } from 'react-native'
-import styled from 'styled-components/native'
+import styled, { DefaultTheme } from 'styled-components/native'
 
 import { useHandleFocus } from 'libs/hooks/useHandleFocus'
 import { useHandleHover } from 'libs/hooks/useHandleHover'
@@ -33,7 +33,8 @@ export function VenueSelectionListItem({
       isSelected={isSelected}
       // @ts-ignore It exists but not recognized by TypeScript
       onMouseEnter={onMouseEnter}
-      onMouseLeave={onMouseLeave}>
+      onMouseLeave={onMouseLeave}
+      testID="venue-selection-list-item">
       <RadioWrapper isSelected={isSelected}>
         <RadioInner isSelected={isSelected} />
       </RadioWrapper>
@@ -45,27 +46,39 @@ export function VenueSelectionListItem({
   )
 }
 
+const selectedStyles = (theme: DefaultTheme): CSSProperties => ({
+  borderWidth: 2,
+  borderColor: theme.colors.black,
+  padding: getSpacing(4) - 1, // to avoid getting a jumping component
+})
+
+const unselectedStyles = (theme: DefaultTheme): CSSProperties => ({
+  borderWidth: 1,
+  borderColor: theme.colors.greySemiDark,
+  padding: getSpacing(4),
+})
+
 const Wrapper = styled(TouchableOpacity)<{
   isFocus?: boolean
   isSelected?: boolean
-}>(({ theme, isFocus, isSelected = false }) => ({
-  backgroundColor: '#fff',
-  borderRadius: getSpacing(2),
-  borderWidth: isSelected ? 2 : 1,
-  borderStyle: 'solid',
-  borderColor: isSelected ? theme.colors.black : theme.colors.greySemiDark,
-  padding: getSpacing(4) - (isSelected ? 1 : 0),
-  flexDirection: 'row',
-  alignItems: 'center',
-  flexGrow: 1,
-  ...customFocusOutline({ color: theme.colors.black, isFocus }),
-}))
+}>(({ theme, isFocus, isSelected }) => {
+  return {
+    backgroundColor: '#fff',
+    borderRadius: getSpacing(2),
+    borderStyle: 'solid',
+    flexDirection: 'row',
+    alignItems: 'center',
+    flexGrow: 1,
+    ...customFocusOutline({ color: theme.colors.black, isFocus }),
+    ...(isSelected ? selectedStyles(theme) : unselectedStyles(theme)),
+  }
+})
 
 const InnerWrapper = styled(View)`
   flex: 1;
 `
 
-const RadioWrapper = styled(View)<{ isSelected?: boolean }>(({ theme, isSelected = false }) => ({
+const RadioWrapper = styled(View)<{ isSelected?: boolean }>(({ theme, isSelected }) => ({
   width: getSpacing(4),
   height: getSpacing(4),
   borderRadius: getSpacing(2),
@@ -77,7 +90,7 @@ const RadioWrapper = styled(View)<{ isSelected?: boolean }>(({ theme, isSelected
   marginRight: getSpacing(4),
 }))
 
-const RadioInner = styled(View)<{ isSelected?: boolean }>(({ theme, isSelected = false }) => ({
+const RadioInner = styled(View)<{ isSelected?: boolean }>(({ theme, isSelected }) => ({
   width: getSpacing(2),
   height: getSpacing(2),
   backgroundColor: isSelected ? theme.colors.primary : 'transparent',
