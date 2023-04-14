@@ -7,17 +7,17 @@ import { VenueDetail } from 'features/offer/types'
 import { getSpacing } from 'ui/theme'
 
 export type VenueListItem = VenueDetail & {
-  offerId: string
+  offerId: number
 }
 
 export type VenueSelectionListProps = ViewProps & {
-  selectedItem?: string
-  onItemSelect: (itemOfferId: string) => void
+  selectedItem?: number
+  onItemSelect: (itemOfferId: number) => void
   items: VenueListItem[]
 }
 
 function keyExtractor(item: VenueListItem) {
-  return item.offerId
+  return String(item.offerId)
 }
 
 export function VenueSelectionList({

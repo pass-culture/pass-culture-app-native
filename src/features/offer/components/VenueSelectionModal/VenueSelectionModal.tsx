@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useCallback, useState } from 'react'
 import styled, { useTheme } from 'styled-components/native'
 
 import {
@@ -13,20 +13,31 @@ import { getSpacing } from 'ui/theme'
 type VenueSelectionModalProps = {
   isVisible: boolean
   items: VenueSelectionListProps['items']
-  onItemSelect: (itemOfferId: string) => void
-  onSubmit: VoidFunction
-  selectedItem?: string
+  onSubmit: (selectedOfferId: number) => void
   onClosePress: VoidFunction
 }
 
 export function VenueSelectionModal({
   isVisible,
   items,
-  selectedItem,
-  onItemSelect,
   onSubmit,
   onClosePress,
 }: VenueSelectionModalProps) {
+  const [selectedOffer, setSelectedOffer] = useState<number>()
+
+  const handleSubmit = useCallback(
+    function handleSubmit() {
+      /**
+       * `selectedOffer` would always be there since submit is disabled otherwise,
+       * but TypeScript can't understand this so a check is necessary.
+       */
+      if (selectedOffer) {
+        onSubmit(selectedOffer)
+      }
+    },
+    [onSubmit, selectedOffer]
+  )
+
   const { modal } = useTheme()
   return (
     <AppModal
@@ -40,10 +51,18 @@ export function VenueSelectionModal({
       rightIconAccessibilityLabel="Annuler le choix de lieu"
       fixedModalBottom={
         <BottomWrapper>
-          <ButtonPrimary wording="Choisir ce lieu" onPress={onSubmit} disabled={!selectedItem} />
+          <ButtonPrimary
+            wording="Choisir ce lieu"
+            onPress={handleSubmit}
+            disabled={!selectedOffer}
+          />
         </BottomWrapper>
       }>
-      <VenueSelectionList onItemSelect={onItemSelect} items={items} selectedItem={selectedItem} />
+      <VenueSelectionList
+        onItemSelect={setSelectedOffer}
+        items={items}
+        selectedItem={selectedOffer}
+      />
     </AppModal>
   )
 }
