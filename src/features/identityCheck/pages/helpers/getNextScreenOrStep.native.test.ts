@@ -1,52 +1,52 @@
-import { deprecatedGetNextScreenOrStep } from 'features/identityCheck/pages/helpers/getNextScreenOrStep'
-import { DeprecatedIdentityCheckStep, DeprecatedStepConfig } from 'features/identityCheck/types'
+import { getNextScreenOrStep } from 'features/identityCheck/pages/helpers/getNextScreenOrStep'
+import { IdentityCheckStep, StepDetails } from 'features/identityCheck/types'
 
 const steps = [
   {
-    name: DeprecatedIdentityCheckStep.PROFILE,
+    name: IdentityCheckStep.PROFILE,
     screens: ['SetName', 'IdentityCheckCity', 'IdentityCheckAddress', 'IdentityCheckStatus'],
   },
   {
-    name: DeprecatedIdentityCheckStep.IDENTIFICATION,
+    name: IdentityCheckStep.IDENTIFICATION,
     screens: ['UbbleWebview', 'IdentityCheckEnd'],
   },
   {
-    name: DeprecatedIdentityCheckStep.CONFIRMATION,
+    name: IdentityCheckStep.CONFIRMATION,
     screens: ['IdentityCheckHonor'],
   },
-] as DeprecatedStepConfig[]
+] as StepDetails[]
 
 describe('getNextScreenOrStep', () => {
   it('should get the next screen on same step', () => {
     // Profile
-    expect(deprecatedGetNextScreenOrStep(steps, 'SetName')).toEqual({
+    expect(getNextScreenOrStep(steps, 'SetName')).toEqual({
       screen: 'IdentityCheckCity',
     })
-    expect(deprecatedGetNextScreenOrStep(steps, 'IdentityCheckCity')).toEqual({
+    expect(getNextScreenOrStep(steps, 'IdentityCheckCity')).toEqual({
       screen: 'IdentityCheckAddress',
     })
-    expect(deprecatedGetNextScreenOrStep(steps, 'IdentityCheckAddress')).toEqual({
+    expect(getNextScreenOrStep(steps, 'IdentityCheckAddress')).toEqual({
       screen: 'IdentityCheckStatus',
     })
     // Identification
 
-    expect(deprecatedGetNextScreenOrStep(steps, 'UbbleWebview')).toEqual({
+    expect(getNextScreenOrStep(steps, 'UbbleWebview')).toEqual({
       screen: 'IdentityCheckEnd',
     })
   })
 
   it('should return next step if last screen of step', () => {
     // Profile
-    expect(deprecatedGetNextScreenOrStep(steps, 'IdentityCheckStatus')).toEqual({
-      step: DeprecatedIdentityCheckStep.IDENTIFICATION,
+    expect(getNextScreenOrStep(steps, 'IdentityCheckStatus')).toEqual({
+      step: IdentityCheckStep.IDENTIFICATION,
     })
     // Identification
-    expect(deprecatedGetNextScreenOrStep(steps, 'IdentityCheckEnd')).toEqual({
-      step: DeprecatedIdentityCheckStep.CONFIRMATION,
+    expect(getNextScreenOrStep(steps, 'IdentityCheckEnd')).toEqual({
+      step: IdentityCheckStep.CONFIRMATION,
     })
     // Confirmation
-    expect(deprecatedGetNextScreenOrStep(steps, 'IdentityCheckHonor')).toEqual({
-      step: DeprecatedIdentityCheckStep.END,
+    expect(getNextScreenOrStep(steps, 'IdentityCheckHonor')).toEqual({
+      step: IdentityCheckStep.END,
     })
   })
 })
