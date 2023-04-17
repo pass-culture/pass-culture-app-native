@@ -8,7 +8,7 @@ import { getNextScreenOrStep } from 'features/identityCheck/pages/helpers/getNex
 import { invalidateStepperInfoQuery } from 'features/identityCheck/pages/helpers/invalidateStepperQuery'
 import { isSubscriptionRoute } from 'features/identityCheck/pages/helpers/isSubscriptionRoute'
 import { useCurrentSubscriptionStep } from 'features/identityCheck/pages/helpers/useCurrentSubscriptionStep'
-import { useSubscriptionSteps } from 'features/identityCheck/pages/helpers/useSubscriptionSteps'
+import { useStepperInfo } from 'features/identityCheck/pages/helpers/useStepperInfo'
 import {
   DeprecatedIdentityCheckStep,
   IdentityCheckStep,
@@ -20,9 +20,9 @@ import { QueryKeys } from 'libs/queryKeys'
 
 const useNextScreenOrStep = (): NextScreenOrStep => {
   const { name } = useRoute()
-  const steps = useSubscriptionSteps()
+  const { stepsDetails } = useStepperInfo()
   const currentRoute = isSubscriptionRoute(name) ? name : null
-  return getNextScreenOrStep(steps, currentRoute)
+  return getNextScreenOrStep(stepsDetails, currentRoute)
 }
 
 export const useSubscriptionNavigation = (): {
@@ -41,7 +41,10 @@ export const useSubscriptionNavigation = (): {
 
   const saveCheckpoint = async (nextStep: DeprecatedIdentityCheckStep | IdentityCheckStep) => {
     try {
-      if (currentStep === (DeprecatedIdentityCheckStep.PROFILE || IdentityCheckStep.PROFILE)) {
+      if (
+        currentStep === DeprecatedIdentityCheckStep.PROFILE ||
+        currentStep === IdentityCheckStep.PROFILE
+      ) {
         setIsSavingCheckpoint(true)
         await patchProfile()
       }

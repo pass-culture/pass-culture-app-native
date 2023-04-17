@@ -42,7 +42,7 @@ export interface StepDetails {
 
 export type NextScreenOrStep =
   | { screen: SubscriptionScreen }
-  | { step: DeprecatedIdentityCheckStep }
+  | { step: DeprecatedIdentityCheckStep | IdentityCheckStep }
   | null
 
 export enum StepButtonState {

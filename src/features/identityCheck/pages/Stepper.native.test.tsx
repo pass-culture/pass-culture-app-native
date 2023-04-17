@@ -8,18 +8,15 @@ import { useSubscriptionContext } from 'features/identityCheck/context/Subscript
 import { nextSubscriptionStepFixture as mockStep } from 'features/identityCheck/fixtures/nextSubscriptionStepFixture'
 import { stepsDetailsFixture } from 'features/identityCheck/pages/helpers/stepDetails.fixture'
 import { useStepperInfo } from 'features/identityCheck/pages/helpers/useStepperInfo'
-import { useSubscriptionSteps } from 'features/identityCheck/pages/helpers/useSubscriptionSteps'
 import { IdentityCheckStepper } from 'features/identityCheck/pages/Stepper'
 import {
   DeprecatedIdentityCheckStep,
   IdentityCheckStep,
   StepButtonState,
-  DeprecatedStepConfig,
 } from 'features/identityCheck/types'
 import { amplitude } from 'libs/amplitude'
 import * as useFeatureFlag from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { fireEvent, render, waitFor, screen } from 'tests/utils'
-import { BicolorProfile } from 'ui/svg/icons/BicolorProfile'
 
 let mockNextSubscriptionStep = mockStep
 const mockIdentityCheckDispatch = jest.fn()
@@ -55,56 +52,6 @@ mockedUseSubscriptionContext.mockReturnValue({
   step: null,
   identification: { method: null },
 })
-
-jest.mock('features/identityCheck/pages/helpers/useSubscriptionSteps')
-const mockUseSubscriptionSteps = useSubscriptionSteps as jest.Mock
-const mockStepConfig: Partial<DeprecatedStepConfig[]> = [
-  {
-    name: DeprecatedIdentityCheckStep.PHONE_VALIDATION,
-    label: 'Numéro de téléphone',
-    icon: {
-      disabled: BicolorProfile,
-      current: BicolorProfile,
-      completed: BicolorProfile,
-      retry: BicolorProfile,
-    },
-    screens: [],
-  },
-  {
-    name: DeprecatedIdentityCheckStep.IDENTIFICATION,
-    label: 'Identification',
-    icon: {
-      disabled: BicolorProfile,
-      current: BicolorProfile,
-      completed: BicolorProfile,
-      retry: BicolorProfile,
-    },
-    screens: [],
-  },
-  {
-    name: DeprecatedIdentityCheckStep.PROFILE,
-    label: 'Profil',
-    icon: {
-      disabled: BicolorProfile,
-      current: BicolorProfile,
-      completed: BicolorProfile,
-      retry: BicolorProfile,
-    },
-    screens: [],
-  },
-  {
-    name: DeprecatedIdentityCheckStep.CONFIRMATION,
-    label: 'Confirmation',
-    icon: {
-      disabled: BicolorProfile,
-      current: BicolorProfile,
-      completed: BicolorProfile,
-      retry: BicolorProfile,
-    },
-    screens: [],
-  },
-]
-mockUseSubscriptionSteps.mockReturnValue(mockStepConfig)
 
 jest.mock('features/identityCheck/pages/helpers/useStepperInfo')
 const mockUseStepperInfo = useStepperInfo as jest.Mock
@@ -232,7 +179,6 @@ describe('Stepper navigation', () => {
       fireEvent.press(stepButton)
 
       expect(amplitude.logEvent).toHaveBeenNthCalledWith(1, eventName, eventParam)
-      mockUseSubscriptionSteps.mockClear()
     }
   )
 })

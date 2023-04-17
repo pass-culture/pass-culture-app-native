@@ -211,7 +211,7 @@ Array [
                   </View>
                 </View>
                 <Text
-                  state="completed"
+                  stepState="completed"
                   style={
                     Array [
                       Object {
@@ -331,7 +331,7 @@ Array [
                   }
                 >
                   <Text
-                    state="current"
+                    stepState="current"
                     style={
                       Array [
                         Object {
@@ -346,7 +346,7 @@ Array [
                     Identification
                   </Text>
                   <Text
-                    state="current"
+                    stepState="current"
                     style={
                       Array [
                         Object {
@@ -466,7 +466,7 @@ Array [
                   </View>
                 </View>
                 <Text
-                  state="disabled"
+                  stepState="disabled"
                   style={
                     Array [
                       Object {
@@ -575,7 +575,7 @@ Array [
                   </View>
                 </View>
                 <Text
-                  state="disabled"
+                  stepState="disabled"
                   style={
                     Array [
                       Object {
