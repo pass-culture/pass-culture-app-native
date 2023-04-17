@@ -19,6 +19,8 @@ import {
 
 const GeolocationContext = React.createContext<IGeolocationContext>({
   userPosition: undefined,
+  customPosition: undefined,
+  setCustomPosition: () => null,
   userPositionError: null,
   permissionState: undefined,
   requestGeolocPermission: async () => {
@@ -35,6 +37,7 @@ export const GeolocationWrapper = memo(function GeolocationWrapper({
   children: JSX.Element
 }) {
   const [userPosition, setUserPosition] = useSafeState<Position>(undefined)
+  const [customPosition, setCustomPosition] = useSafeState<Position>(undefined)
   const [userPositionError, setUserPositionError] = useSafeState<GeolocationError | null>(null)
   const [permissionState, setPermissionState] = useSafeState<GeolocPermissionState | undefined>(
     undefined
@@ -127,6 +130,8 @@ export const GeolocationWrapper = memo(function GeolocationWrapper({
     () => ({
       userPosition,
       userPositionError,
+      customPosition,
+      setCustomPosition,
       permissionState,
       requestGeolocPermission: contextualRequestGeolocPermission,
       triggerPositionUpdate,
@@ -134,6 +139,8 @@ export const GeolocationWrapper = memo(function GeolocationWrapper({
       onPressGeolocPermissionModalButton,
     }),
     [
+      setCustomPosition,
+      customPosition,
       contextualRequestGeolocPermission,
       permissionState,
       userPosition,
