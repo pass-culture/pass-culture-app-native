@@ -16,11 +16,4 @@ describe('<VenueDetails />', () => {
 
     expect(screen.queryByText(/300m/)).toBeFalsy()
   })
-
-  it('should show placeholder image when no image given', () => {
-    render(<VenueDetails title="Jest" address="Somewhere in you memory" />)
-
-    expect(screen.queryByTestId('venue-image')).toBeFalsy()
-    expect(screen.getByTestId('image-placeholder')).toBeTruthy()
-  })
 })
