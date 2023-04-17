@@ -6,6 +6,7 @@ import {
   NativeSyntheticEvent,
   Platform,
   ScrollView,
+  useWindowDimensions,
 } from 'react-native'
 import styled from 'styled-components/native'
 
@@ -19,7 +20,6 @@ import useFunctionOnce from 'libs/hooks/useFunctionOnce'
 import { useNetInfoContext } from 'libs/network/NetInfoWrapper'
 import { OfflinePage } from 'libs/network/OfflinePage'
 import { BatchEvent, BatchUser } from 'libs/react-native-batch'
-import { theme } from 'theme'
 import { ScrollToTopButton } from 'ui/components/ScrollToTopButton'
 import { Spinner } from 'ui/components/Spinner'
 import { getSpacing, Spacer } from 'ui/theme'
@@ -36,18 +36,21 @@ const renderModule = ({ item, index }: { item: HomepageModule; index: number }, 
   <HomeModule item={item} index={index} homeEntryId={homeId} />
 )
 
-const FooterComponent = ({ isLoading }: { isLoading: boolean }) => {
+const FooterComponent = ({ hasShownAll }: { hasShownAll: boolean }) => {
   return (
     <React.Fragment>
-      {!!isLoading && (
+      {/* As long as all modules are not shown, we keep the spinner */}
+      {!hasShownAll && (
         <FooterContainer>
-          <Spinner />
+          <Spinner testID="spinner" />
         </FooterContainer>
       )}
       <Spacer.TabBar />
     </React.Fragment>
   )
 }
+
+const MODULES_TIMEOUT_VALUE_IN_MS = 3000
 
 export const OnlineHome: FunctionComponent<GenericHomeProps> = ({
   Header,
@@ -64,6 +67,8 @@ export const OnlineHome: FunctionComponent<GenericHomeProps> = ({
   const maxToRenderPerBatch = 5
   const [maxIndex, setMaxIndex] = useState(initialNumToRender)
   const [isLoading, setIsLoading] = useState(false)
+  const { height: screenHeight } = useWindowDimensions()
+  const modulesIntervalId = useRef(0)
 
   const modulesToDisplay = Platform.OS === 'web' ? modules : modules.slice(0, maxIndex)
 
@@ -72,7 +77,8 @@ export const OnlineHome: FunctionComponent<GenericHomeProps> = ({
 
   const scrollListener = useCallback(
     ({ nativeEvent }: NativeSyntheticEvent<NativeScrollEvent>) => {
-      if (isCloseToBottom({ ...nativeEvent, padding: theme.minScreenHeight * 2 })) {
+      // Load more modules when we are one screen away from the end
+      if (isCloseToBottom({ ...nativeEvent, padding: screenHeight })) {
         if (Platform.OS !== 'web' && maxIndex < modules.length) {
           setIsLoading(true)
           setMaxIndex(maxIndex + maxToRenderPerBatch)
@@ -88,25 +94,32 @@ export const OnlineHome: FunctionComponent<GenericHomeProps> = ({
   )
   const { onScroll, scrollButtonTransition } = useOnScroll(scrollListener)
 
+  const onContentSizeChange = () => setIsLoading(false)
+
+  useEffect(() => {
+    return () => clearInterval(modulesIntervalId.current)
+  }, [])
+
   useEffect(() => {
     // We use this to load more modules, in case the content size doesn't change after the load triggered by onEndReached (i.e. no new modules were shown).
-    const loadMore = setInterval(() => {
+    modulesIntervalId.current = setInterval(() => {
       if (maxIndex < modules.length && isLoading) {
         setMaxIndex(maxIndex + maxToRenderPerBatch)
       } else {
         setIsLoading(false)
       }
-    }, 3000)
+    }, MODULES_TIMEOUT_VALUE_IN_MS)
 
-    return () => clearInterval(loadMore)
+    return () => {
+      clearInterval(modulesIntervalId.current)
+      modulesIntervalId.current = 0
+    }
   }, [modules.length, isLoading, maxIndex])
 
   const renderItem = useCallback(
     ({ item, index }) => renderModule({ item, index }, homeId),
     [homeId]
   )
-
-  const onContentSizeChange = () => setTimeout(() => setIsLoading(false), 1000)
 
   return (
     <Container>
@@ -127,12 +140,13 @@ export const OnlineHome: FunctionComponent<GenericHomeProps> = ({
           data={modulesToDisplay}
           renderItem={renderItem}
           keyExtractor={keyExtractor}
-          ListFooterComponent={<FooterComponent isLoading={isLoading} />}
+          ListFooterComponent={<FooterComponent hasShownAll={maxIndex >= modules.length} />}
           ListHeaderComponent={Header}
           initialNumToRender={initialNumToRender}
           removeClippedSubviews={false}
           onContentSizeChange={onContentSizeChange}
           bounces
+          scrollEventThrottle={200} // Fire onscroll event when scrolling every 200ms
         />
         {shouldDisplayScrollToTop ? (
           <ScrollToTopContainer>

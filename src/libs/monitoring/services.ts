@@ -1,6 +1,8 @@
 import { CaptureContext, User, Event, SeverityLevel, Breadcrumb, Hub } from '@sentry/types'
+import { Platform } from 'react-native'
 
 import { getSentryConfig } from 'libs/monitoring/config'
+import { getUniqueId } from 'libs/react-native-device-info/getUniqueId'
 
 import * as SentryModule from './sentry'
 
@@ -28,5 +30,8 @@ export const eventMonitoring: EventMonitoring = {
     if (!enabled) return
     const config = await getSentryConfig()
     SentryModule.init(config)
+    SentryModule.configureScope(async (scope) => {
+      scope.setExtras({ platform: Platform.OS, deviceId: await getUniqueId() })
+    })
   },
 }

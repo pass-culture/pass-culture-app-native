@@ -4,6 +4,7 @@ import styled from 'styled-components/native'
 import { styledButton } from 'ui/components/buttons/styledButton'
 import { IconWithCaption } from 'ui/components/IconWithCaption'
 import { Touchable } from 'ui/components/touchable/Touchable'
+import { GoogleMessagesRound } from 'ui/svg/icons/socialNetwork/GoogleMessagesRound'
 import { IMessageRound } from 'ui/svg/icons/socialNetwork/IMessage'
 import { InstagramRound } from 'ui/svg/icons/socialNetwork/InstagramRound'
 import { MessengerRound } from 'ui/svg/icons/socialNetwork/MessengerRound'
@@ -29,33 +30,37 @@ export const ShareMessagingApp: React.FC<ShareMessagingAppProps> = ({
     size: theme.buttons.buttonHeights.tall,
   }))``
 
+  const caption = network === Network.googleMessages ? 'Envoyer par' : 'Envoyer sur'
+
   return (
     <MessagingAppButtonContainer onPress={onPress}>
-      <IconWithCaption Icon={StyledIcon} caption={'Envoyer sur' + LINE_BREAK + network} />
+      <IconWithCaption Icon={StyledIcon} caption={caption + LINE_BREAK + network} />
     </MessagingAppButtonContainer>
   )
 }
 
 export enum Network {
+  googleMessages = 'SMS',
   imessage = 'iMessage',
   instagram = 'Instagram',
   messenger = 'Messenger',
   snapchat = 'Snapchat',
   telegram = 'Telegram',
+  twitter = 'Twitter',
   viber = 'Viber',
   whatsapp = 'WhatsApp',
-  twitter = 'Twitter',
 }
 
 const mapNetworkToRoundIcon: Record<Network, React.FC<AccessibleIcon>> = {
+  [Network.googleMessages]: GoogleMessagesRound,
+  [Network.imessage]: IMessageRound,
   [Network.instagram]: InstagramRound,
   [Network.messenger]: MessengerRound,
   [Network.snapchat]: SnapchatRound,
-  [Network.whatsapp]: WhatsAppRound,
   [Network.telegram]: Telegram,
-  [Network.viber]: ViberRound,
-  [Network.imessage]: IMessageRound,
   [Network.twitter]: TwitterRound,
+  [Network.viber]: ViberRound,
+  [Network.whatsapp]: WhatsAppRound,
 }
 
 const MESSAGING_BUTTON_HEIGHT = getSpacing(24)

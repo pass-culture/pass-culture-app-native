@@ -15,6 +15,13 @@ describe('checkInstalledApps', () => {
 
       expect(apps[Network.snapchat]).toBeFalsy()
     })
+
+    it('should always consider google messages uninstalled', async () => {
+      canOpenURLSpy.mockResolvedValueOnce(true)
+      const apps = await checkInstalledApps()
+
+      expect(apps[Network.googleMessages]).toBeFalsy()
+    })
   })
 
   describe('Android', () => {
