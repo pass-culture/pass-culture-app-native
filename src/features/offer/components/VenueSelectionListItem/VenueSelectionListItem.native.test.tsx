@@ -9,7 +9,6 @@ describe('<VenueSelectionListItem />', () => {
   it('should apply different styles when selected', () => {
     render(
       <VenueSelectionListItem
-        venueType={null}
         title="Jest"
         address="Somewhere in you memory"
         onSelect={jest.fn()}
@@ -24,12 +23,7 @@ describe('<VenueSelectionListItem />', () => {
 
   it('should set `isSelected` to `false` by default', () => {
     render(
-      <VenueSelectionListItem
-        venueType={null}
-        title="Jest"
-        address="Somewhere in you memory"
-        onSelect={jest.fn()}
-      />
+      <VenueSelectionListItem title="Jest" address="Somewhere in you memory" onSelect={jest.fn()} />
     )
 
     expect(screen.getByTestId('venue-selection-list-item')).toHaveStyle({
@@ -41,12 +35,7 @@ describe('<VenueSelectionListItem />', () => {
     const onSelect = jest.fn()
 
     render(
-      <VenueSelectionListItem
-        venueType={null}
-        title="Jest"
-        address="Somewhere in you memory"
-        onSelect={onSelect}
-      />
+      <VenueSelectionListItem title="Jest" address="Somewhere in you memory" onSelect={onSelect} />
     )
 
     fireEvent.press(screen.getByText('Jest'))

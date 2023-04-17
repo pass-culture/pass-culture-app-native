@@ -3,8 +3,6 @@ import { ComponentStory } from '@storybook/react'
 import React from 'react'
 import { StyleSheet, View } from 'react-native'
 
-import { VenueTypeCodeKey } from 'api/gen'
-
 import { VenueSelectionListItem } from './VenueSelectionListItem'
 
 export default {
@@ -27,8 +25,6 @@ Default.args = {
   title: 'Title',
   address: 'Ivry-sur-Seine 94200, 16 rue Gabriel Peri',
   distance: '500m',
-  venueType: VenueTypeCodeKey.MUSEUM,
-  imageUrl: 'https://www.luxetdeco.fr/13030-thickbox_default/livre-lumineux-iron-man-marvel.jpg',
   isSelected: false,
   onSelect: action('select'),
 }
@@ -38,8 +34,6 @@ Wrapped.args = {
   title: 'Title',
   address: 'Ivry-sur-Seine 94200, 16 rue Gabriel Peri',
   distance: '500m',
-  venueType: VenueTypeCodeKey.MUSEUM,
-  imageUrl: 'https://www.luxetdeco.fr/13030-thickbox_default/livre-lumineux-iron-man-marvel.jpg',
   isSelected: false,
   onSelect: action('select'),
 }

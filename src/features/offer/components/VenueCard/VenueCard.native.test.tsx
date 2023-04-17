@@ -7,14 +7,7 @@ describe('<VenueCard />', () => {
   it('should handle on press', async () => {
     const onPress = jest.fn()
 
-    render(
-      <VenueCard
-        title="Jest"
-        address="Somewhere in your memory"
-        venueType={null}
-        onPress={onPress}
-      />
-    )
+    render(<VenueCard title="Jest" address="Somewhere in your memory" onPress={onPress} />)
 
     await fireEvent.press(screen.getByText('Jest'))
     expect(onPress).toHaveBeenCalledTimes(1)
