@@ -341,12 +341,14 @@ export const OfferBody: FunctionComponent<Props> = ({
         <Spacer.Column numberOfSpaces={6} />
       </SectionWithDivider>
 
-      <VenueSelectionModal
-        isVisible={isChangeVenueModalVisible}
-        items={[]}
-        onSubmit={onNewOfferVenueSelected}
-        onClosePress={hideChangeVenueModal}
-      />
+      {shouldDisplayOtherVenuesAvailableButton ? (
+        <VenueSelectionModal
+          isVisible={isChangeVenueModalVisible}
+          items={[]}
+          onSubmit={onNewOfferVenueSelected}
+          onClosePress={hideChangeVenueModal}
+        />
+      ) : null}
     </Container>
   )
 }
