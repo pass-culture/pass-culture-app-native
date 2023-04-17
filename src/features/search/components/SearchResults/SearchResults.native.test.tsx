@@ -11,13 +11,13 @@ import { MAX_RADIUS } from 'features/search/helpers/reducer.helpers'
 import { LocationFilter, SearchState, UserData } from 'features/search/types'
 import { Venue } from 'features/venue/types'
 import { beneficiaryUser, nonBeneficiaryUser } from 'fixtures/user'
-import { SearchHit } from 'libs/algolia'
 import { mockedAlgoliaResponse } from 'libs/algolia/__mocks__/mockedAlgoliaResponse'
 import { analytics } from 'libs/firebase/analytics'
 import { GeoCoordinates, Position } from 'libs/geolocation'
 import { SuggestedPlace } from 'libs/place'
 import { placeholderData as mockSubcategoriesData } from 'libs/subcategories/placeholderData'
 import { mockedSuggestedVenues } from 'libs/venue/fixtures/mockedSuggestedVenues'
+import { Offer } from 'shared/offer/types'
 import { fireEvent, render, act, waitFor, screen } from 'tests/utils'
 import { theme } from 'theme'
 
@@ -54,7 +54,7 @@ const mockData = {
     },
   ],
 }
-let mockHits: SearchHit[] = []
+let mockHits: Offer[] = []
 let mockNbHits = 0
 const mockHasNextPage = true
 const mockFetchNextPage = jest.fn()

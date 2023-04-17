@@ -6,16 +6,13 @@ import { useAuthContext } from 'features/auth/context/AuthContext'
 import { OffersModuleParameters } from 'features/home/types'
 import { useIsUserUnderage } from 'features/profile/helpers/useIsUserUnderage'
 import { SearchState } from 'features/search/types'
-import { SearchHit } from 'libs/algolia'
-import {
-  fetchMultipleOffers,
-  filterOfferHit,
-  useTransformOfferHits,
-} from 'libs/algolia/fetchAlgolia'
+import { fetchMultipleOffers } from 'libs/algolia/fetchAlgolia/fetchMultipleOffers/fetchMultipleOffers'
 import { useAdaptOffersPlaylistParameters } from 'libs/algolia/fetchAlgolia/fetchMultipleOffers/helpers/useAdaptOffersPlaylistParameters'
+import { filterOfferHit, useTransformOfferHits } from 'libs/algolia/fetchAlgolia/transformOfferHit'
 import { useGeolocation } from 'libs/geolocation'
 import { useNetInfoContext } from 'libs/network/NetInfoWrapper'
 import { QueryKeys } from 'libs/queryKeys'
+import { Offer } from 'shared/offer/types'
 
 const isSearchState = (parameter: unknown): parameter is SearchState =>
   typeof parameter === 'object' && parameter !== null
@@ -28,7 +25,7 @@ interface UseOfferModuleProps {
 export const useOfferModule = ({
   search,
   moduleId,
-}: UseOfferModuleProps): { hits: SearchHit[]; nbHits: number } | undefined => {
+}: UseOfferModuleProps): { hits: Offer[]; nbHits: number } | undefined => {
   const { position } = useGeolocation()
   const transformHits = useTransformOfferHits()
 
@@ -60,7 +57,7 @@ export const useOfferModule = ({
 
     const hits = data.hits.filter(filterOfferHit).map(transformHits)
     return {
-      hits: uniqBy(hits, 'objectID') as SearchHit[],
+      hits: uniqBy(hits, 'objectID') as Offer[],
       nbHits: data.nbHits,
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps

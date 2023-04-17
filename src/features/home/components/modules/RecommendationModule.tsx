@@ -4,7 +4,6 @@ import { useAuthContext } from 'features/auth/context/AuthContext'
 import { useHomeRecommendedHits } from 'features/home/api/useHomeRecommendedHits'
 import { HomeOfferTile } from 'features/home/components/HomeOfferTile'
 import { RecommendedOffersModule } from 'features/home/types'
-import { SearchHit } from 'libs/algolia'
 import { ContentTypes, DisplayParametersFields } from 'libs/contentful'
 import { getPlaylistItemDimensionsFromLayout } from 'libs/contentful/dimensions'
 import { analytics } from 'libs/firebase/analytics'
@@ -12,6 +11,7 @@ import { useGeolocation } from 'libs/geolocation'
 import useFunctionOnce from 'libs/hooks/useFunctionOnce'
 import { formatDates, formatDistance, getDisplayPrice } from 'libs/parsers'
 import { useCategoryIdMapping, useCategoryHomeLabelMapping } from 'libs/subcategories'
+import { Offer } from 'shared/offer/types'
 import { PassPlaylist } from 'ui/components/PassPlaylist'
 import { CustomListRenderItem } from 'ui/components/Playlist'
 
@@ -23,7 +23,7 @@ type RecommendationModuleProps = {
   homeEntryId: string | undefined
 }
 
-const keyExtractor = (item: SearchHit) => item.objectID
+const keyExtractor = (item: Offer) => item.objectID
 
 export const RecommendationModule = (props: RecommendationModuleProps) => {
   const { displayParameters, index, recommendationParameters, moduleId, homeEntryId } = props
@@ -53,7 +53,7 @@ export const RecommendationModule = (props: RecommendationModuleProps) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [shouldModuleBeDisplayed])
 
-  const renderItem: CustomListRenderItem<SearchHit> = useCallback(
+  const renderItem: CustomListRenderItem<Offer> = useCallback(
     ({ item, width, height }) => {
       const timestampsInMillis = item.offer.dates?.map((timestampInSec) => timestampInSec * 1000)
       return (

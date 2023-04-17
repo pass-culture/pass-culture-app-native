@@ -2,14 +2,13 @@ import { useMemo } from 'react'
 import { useQuery } from 'react-query'
 
 import { useIsUserUnderage } from 'features/profile/helpers/useIsUserUnderage'
-import { IncompleteSearchHit, SearchHit } from 'libs/algolia'
-import { fetchOfferHits, filterOfferHit, useTransformOfferHits } from 'libs/algolia/fetchAlgolia'
+import { IncompleteSearchHit } from 'libs/algolia'
+import { fetchOfferHits } from 'libs/algolia/fetchAlgolia/fetchOfferHits'
+import { useTransformOfferHits, filterOfferHit } from 'libs/algolia/fetchAlgolia/transformOfferHit'
 import { QueryKeys } from 'libs/queryKeys'
+import { Offer } from 'shared/offer/types'
 
-export const useAlgoliaRecommendedHits = (
-  ids: string[],
-  moduleId: string
-): SearchHit[] | undefined => {
+export const useAlgoliaRecommendedHits = (ids: string[], moduleId: string): Offer[] | undefined => {
   const isUserUnderage = useIsUserUnderage()
   const transformHits = useTransformOfferHits()
 
@@ -23,6 +22,6 @@ export const useAlgoliaRecommendedHits = (
   return useMemo(() => {
     if (!hits || hits.length === 0) return
 
-    return (hits as IncompleteSearchHit[]).filter(filterOfferHit).map(transformHits) as SearchHit[]
+    return (hits as IncompleteSearchHit[]).filter(filterOfferHit).map(transformHits) as Offer[]
   }, [hits, transformHits])
 }

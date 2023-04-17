@@ -2,7 +2,7 @@ import { Hit } from 'instantsearch.js'
 
 import { NativeCategoryIdEnumv2, SearchGroupNameEnumv2, SubcategoryIdEnum } from 'api/gen'
 
-interface Offer {
+interface AlgoliaOffer {
   dates?: number[]
   isDigital?: boolean
   isDuo?: boolean
@@ -20,7 +20,7 @@ export interface Geoloc {
 }
 
 export interface AlgoliaHit {
-  offer: Offer
+  offer: AlgoliaOffer
   _geoloc: Geoloc
   objectID: string
 }

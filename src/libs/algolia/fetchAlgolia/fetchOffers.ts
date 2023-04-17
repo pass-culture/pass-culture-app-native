@@ -1,7 +1,6 @@
 import { Hit } from '@algolia/client-search'
 
 import { Response } from 'features/search/api/useSearchResults/useSearchResults'
-import { SearchHit } from 'libs/algolia'
 import { captureAlgoliaError } from 'libs/algolia/fetchAlgolia/AlgoliaError'
 import { buildOfferSearchParameters } from 'libs/algolia/fetchAlgolia/buildAlgoliaParameters/buildOfferSearchParameters.ts'
 import { offerAttributesToRetrieve } from 'libs/algolia/fetchAlgolia/buildAlgoliaParameters/offerAttributesToRetrieve'
@@ -10,6 +9,7 @@ import { buildHitsPerPage } from 'libs/algolia/fetchAlgolia/utils'
 import { SearchParametersQuery } from 'libs/algolia/types'
 import { env } from 'libs/environment'
 import { Position } from 'libs/geolocation'
+import { Offer } from 'shared/offer/types'
 
 type FetchOfferArgs = {
   parameters: SearchParametersQuery
@@ -20,7 +20,7 @@ type FetchOfferArgs = {
   indexSearch?: string
 }
 
-export const fetchOffer = async ({
+export const fetchOffers = async ({
   parameters,
   userLocation,
   isUserUnderage,
@@ -31,7 +31,7 @@ export const fetchOffer = async ({
   const index = client.initIndex(indexSearch)
 
   try {
-    const response = await index.search<SearchHit>(parameters.query || '', {
+    const response = await index.search<Offer>(parameters.query || '', {
       page: parameters.page || 0,
       ...buildHitsPerPage(parameters.hitsPerPage),
       ...searchParameters,
@@ -47,6 +47,6 @@ export const fetchOffer = async ({
     return response
   } catch (error) {
     captureAlgoliaError(error)
-    return { hits: [] as Hit<SearchHit>[], nbHits: 0, page: 0, nbPages: 0 }
+    return { hits: [] as Hit<Offer>[], nbHits: 0, page: 0, nbPages: 0 }
   }
 }

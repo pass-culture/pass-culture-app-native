@@ -5,12 +5,12 @@ import { OfferBody } from 'features/offer/components/OfferBody/OfferBody'
 import { offerResponseSnap } from 'features/offer/fixtures/offerResponse'
 import * as InstalledAppsCheck from 'features/offer/helpers/checkInstalledApps/checkInstalledApps'
 import { offerId } from 'features/offer/helpers/renderOfferPageTestUtil'
-import { SearchHit } from 'libs/algolia'
 import {
   mockedAlgoliaResponse,
   moreHitsForSimilarOffersPlaylist,
 } from 'libs/algolia/__mocks__/mockedAlgoliaResponse'
 import { analytics } from 'libs/firebase/analytics'
+import { Offer } from 'shared/offer/types'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, fireEvent, render, screen } from 'tests/utils'
 import { Network } from 'ui/components/ShareMessagingApp'
@@ -19,10 +19,7 @@ const mockCheckInstalledApps = jest.spyOn(InstalledAppsCheck, 'checkInstalledApp
 
 jest.mock('features/auth/context/AuthContext')
 
-const mockSearchHits: SearchHit[] = [
-  ...mockedAlgoliaResponse.hits,
-  ...moreHitsForSimilarOffersPlaylist,
-]
+const mockSearchHits: Offer[] = [...mockedAlgoliaResponse.hits, ...moreHitsForSimilarOffersPlaylist]
 
 describe('<OfferBody /> - Analytics', () => {
   beforeAll(() => {
@@ -163,8 +160,8 @@ describe('<OfferBody /> - Analytics', () => {
 const onScroll = jest.fn()
 const renderOfferBodyForAnalytics = (
   additionalProps: {
-    sameCategorySimilarOffers?: SearchHit[]
-    otherCategoriesSimilarOffers?: SearchHit[]
+    sameCategorySimilarOffers?: Offer[]
+    otherCategoriesSimilarOffers?: Offer[]
   } = {}
 ) =>
   render(

@@ -14,7 +14,6 @@ import { MAX_NB_OF_SOCIALS_TO_SHOW } from 'features/offer/components/shareMessag
 import * as InstalledAppsCheck from 'features/offer/helpers/checkInstalledApps/checkInstalledApps'
 import { getOfferUrl } from 'features/share/helpers/getOfferUrl'
 import { beneficiaryUser, nonBeneficiaryUser } from 'fixtures/user'
-import { SearchHit } from 'libs/algolia'
 import {
   mockedAlgoliaResponse,
   moreHitsForSimilarOffersPlaylist,
@@ -22,6 +21,7 @@ import {
 import * as useFeatureFlag from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { NetInfoWrapper } from 'libs/network/NetInfoWrapper'
 import { placeholderData } from 'libs/subcategories/placeholderData'
+import { Offer } from 'shared/offer/types'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, fireEvent, render, screen, waitFor } from 'tests/utils'
 import { Network } from 'ui/components/ShareMessagingApp'
@@ -57,7 +57,7 @@ jest.mock('features/offer/helpers/useReasonsForReporting/useReasonsForReporting'
     },
   })),
 }))
-let mockSearchHits: SearchHit[] = []
+let mockSearchHits: Offer[] = []
 jest.mock('features/offer/api/useSimilarOffers', () => ({
   useSimilarOffers: jest.fn(() => mockSearchHits),
 }))
@@ -515,8 +515,8 @@ describe('<OfferBody />', () => {
 
 export const renderOfferBody = (
   additionalProps: {
-    sameCategorySimilarOffers?: SearchHit[]
-    otherCategoriesSimilarOffers?: SearchHit[]
+    sameCategorySimilarOffers?: Offer[]
+    otherCategoriesSimilarOffers?: Offer[]
   } = {}
 ) =>
   render(

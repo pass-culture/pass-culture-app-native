@@ -6,15 +6,16 @@ import { useInfiniteQuery } from 'react-query'
 import { useIsUserUnderage } from 'features/profile/helpers/useIsUserUnderage'
 import { useSearch } from 'features/search/context/SearchWrapper'
 import { SearchState } from 'features/search/types'
-import { SearchHit } from 'libs/algolia'
 import { useSearchAnalyticsState } from 'libs/algolia/analytics/SearchAnalyticsWrapper'
-import { fetchOffer, useTransformOfferHits } from 'libs/algolia/fetchAlgolia'
+import { fetchOffers } from 'libs/algolia/fetchAlgolia/fetchOffers'
+import { useTransformOfferHits } from 'libs/algolia/fetchAlgolia/transformOfferHit'
 import { analytics } from 'libs/firebase/analytics'
 import { useGeolocation } from 'libs/geolocation'
 import { QueryKeys } from 'libs/queryKeys'
+import { Offer } from 'shared/offer/types'
 
 export type Response = Pick<
-  SearchResponse<SearchHit>,
+  SearchResponse<Offer>,
   'hits' | 'nbHits' | 'page' | 'nbPages' | 'userData'
 >
 
@@ -28,7 +29,7 @@ export const useSearchInfiniteQuery = (searchState: SearchState) => {
   const { data, ...infiniteQuery } = useInfiniteQuery<Response>(
     [QueryKeys.SEARCH_RESULTS, searchState],
     async ({ pageParam: page = 0 }) => {
-      const response = await fetchOffer({
+      const response = await fetchOffers({
         parameters: { page, ...searchState },
         userLocation: position,
         isUserUnderage,
@@ -49,7 +50,7 @@ export const useSearchInfiniteQuery = (searchState: SearchState) => {
     () =>
       flatten(data?.pages.map((page) => page.hits.map(transformHits))).filter(
         (hit) => typeof hit.offer.subcategoryId !== 'undefined'
-      ) as SearchHit[],
+      ) as Offer[],
     // eslint-disable-next-line react-hooks/exhaustive-deps
     [data?.pages]
   )

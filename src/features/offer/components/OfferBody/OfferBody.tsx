@@ -23,7 +23,6 @@ import {
   formatFullAddress,
   formatFullAddressWithVenueName,
 } from 'libs/address/useFormatFullAddress'
-import { SearchHit } from 'libs/algolia'
 import { getPlaylistItemDimensionsFromLayout } from 'libs/contentful/dimensions'
 import { analytics } from 'libs/firebase/analytics'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
@@ -37,6 +36,7 @@ import {
   useCategoryIdMapping,
   useSubcategoriesMapping,
 } from 'libs/subcategories'
+import { Offer } from 'shared/offer/types'
 import { AccessibilityBlock } from 'ui/components/accessibility/AccessibilityBlock'
 import { AccordionItem } from 'ui/components/AccordionItem'
 import { ButtonSecondary } from 'ui/components/buttons/ButtonSecondary'
@@ -53,12 +53,12 @@ import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 interface Props {
   offerId: number
   onScroll: () => void
-  sameCategorySimilarOffers?: SearchHit[]
-  otherCategoriesSimilarOffers?: SearchHit[]
+  sameCategorySimilarOffers?: Offer[]
+  otherCategoriesSimilarOffers?: Offer[]
   shouldUseAlgoliaRecommend?: boolean
 }
 
-const keyExtractor = (item: SearchHit) => item.objectID
+const keyExtractor = (item: Offer) => item.objectID
 
 function isArrayNotEmpty<T>(data: T[] | undefined): data is T[] {
   return Boolean(data?.length)
@@ -113,7 +113,7 @@ export const OfferBody: FunctionComponent<Props> = ({
 
   const { itemWidth, itemHeight } = getPlaylistItemDimensionsFromLayout('two-items')
 
-  const renderItem: CustomListRenderItem<SearchHit> = useCallback(
+  const renderItem: CustomListRenderItem<Offer> = useCallback(
     ({ item, width, height, playlistType }) => {
       const timestampsInMillis = item.offer.dates?.map((timestampInSec) => timestampInSec * 1000)
       return (
