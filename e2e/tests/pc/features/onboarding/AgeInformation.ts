@@ -1,5 +1,5 @@
 import AppScreen from '../../screenobjects/AppScreen'
-import { $$$ } from '../../helpers/utils/selector'
+import { find } from '../../helpers/utils/selector'
 
 class AgeInformation extends AppScreen {
   constructor() {
@@ -7,17 +7,17 @@ class AgeInformation extends AppScreen {
   }
 
   get signup() {
-    return $$$('Créer un compte')
+    return find('Créer un compte')
   }
 
   get later() {
-    return $$$('Plus tard')
+    return find('Plus tard')
   }
 
   async proceed() {
-    await this.waitForIsShown(true)
+    await this.waitForIsShown()
     await this.later.click()
-    await this.waitForIsShown(false)
+    await this.waitForIsHidden()
   }
 }
 

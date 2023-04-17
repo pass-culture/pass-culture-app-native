@@ -1,5 +1,5 @@
 import AppScreen from '../../screenobjects/AppScreen'
-import { $$$ } from '../../helpers/utils/selector'
+import { find } from '../../helpers/utils/selector'
 import { flags } from '../../helpers/utils/platform'
 import { DefaultTheme } from '../../helpers/utils/theme'
 import { timeout } from '../../helpers/utils/time'
@@ -34,21 +34,21 @@ class RegistrationEmail extends AppScreen {
     super('Entrée pour l’email', true)
   }
   get email() {
-    return $$$('Entrée pour l’email')
+    return find('Entrée pour l’email')
   }
 
   get newsletterCheckbox() {
-    return $$$(
+    return find(
       'J’accepte de recevoir les newsletters, bons plans et recommandations personnalisées du pass Culture.'
     )
   }
 
   get submit() {
-    return $$$('Continuer vers l’étape Mot de passe')
+    return find('Continuer vers l’étape Mot de passe')
   }
 
   get goToLogin() {
-    return $$$('Se connecter')
+    return find('Se connecter')
   }
 }
 
@@ -58,15 +58,15 @@ class RegistrationPassword extends AppScreen {
   }
 
   get password() {
-    return $$$('Mot de passe')
+    return find('Mot de passe')
   }
 
   get togglePasswordVisibility() {
-    return $$$('Afficher le mot de passe')
+    return find('Afficher le mot de passe')
   }
 
   get submit() {
-    return $$$('Continuer vers l’étape Date de naissance')
+    return find('Continuer vers l’étape Date de naissance')
   }
 }
 
@@ -97,16 +97,16 @@ export class RegistrationBirthDate extends AppScreen {
   setBirthDate = async (birthDate: Date, theme: DefaultTheme) => {
     if (flags.isWeb) {
       if (theme.isTouch) {
-        const hiddenInput = $$$('hidden-input-birthdate')
+        const hiddenInput = find('hidden-input-birthdate')
         await hiddenInput.clearValue()
         await hiddenInput.setValue(birthDate.toISOString())
       } else {
-        await $$$('select-Année').selectByAttribute('value', String(birthDate.getFullYear()))
-        await $$$('select-Mois').selectByAttribute(
+        await find('select-Année').selectByAttribute('value', String(birthDate.getFullYear()))
+        await find('select-Mois').selectByAttribute(
           'value',
           RegistrationBirthDate.MONTHS_BROWSER_DESKTOP[birthDate.getMonth()]
         )
-        await $$$('select-Jour').selectByAttribute('value', String(birthDate.getDate()))
+        await find('select-Jour').selectByAttribute('value', String(birthDate.getDate()))
       }
     } else if (flags.isAndroid) {
       const buttons = $$('android.widget.Button')
@@ -185,21 +185,21 @@ export class RegistrationBirthDate extends AppScreen {
   }
 
   get submit() {
-    return $$$('Continuer vers l’étape CGU & Données')
+    return find('Continuer vers l’étape CGU & Données')
   }
 }
 
 class RegistrationAcceptCgu extends AppScreen {
   constructor() {
     super(
-      "Accepter les conditions générales d’utilisation et la politique de confidentialité pour s’inscrire",
+      'Accepter les conditions générales d’utilisation et la politique de confidentialité pour s’inscrire',
       true
     )
   }
 
   get submit() {
-    return $$$(
-      "Accepter les conditions générales d’utilisation et la politique de confidentialité pour s’inscrire"
+    return find(
+      'Accepter les conditions générales d’utilisation et la politique de confidentialité pour s’inscrire'
     )
   }
 }
@@ -210,11 +210,11 @@ class SignupConfirmationEmailSent extends AppScreen {
   }
 
   get close() {
-    return $$$('Abandonner l’inscription')
+    return find('Abandonner l’inscription')
   }
 
   get back() {
-    return $$$('Revenir en arrière')
+    return find('Revenir en arrière')
   }
 }
 

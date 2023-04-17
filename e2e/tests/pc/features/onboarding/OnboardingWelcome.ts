@@ -1,5 +1,5 @@
 import AppScreen from '../../screenobjects/AppScreen'
-import { $$$ } from '../../helpers/utils/selector'
+import { find } from '../../helpers/utils/selector'
 
 class OnboardingWelcome extends AppScreen {
   constructor() {
@@ -7,17 +7,17 @@ class OnboardingWelcome extends AppScreen {
   }
 
   get start() {
-    return $$$('C’est parti\u00a0!')
+    return find('C’est parti\u00a0!')
   }
 
   get login() {
-    return $$$('Se connecter')
+    return find('Se connecter')
   }
 
   async proceed() {
-    await this.waitForIsShown(true)
+    await this.waitForIsShown()
     await this.start.click()
-    await this.waitForIsShown(false)
+    await this.waitForIsHidden()
   }
 }
 

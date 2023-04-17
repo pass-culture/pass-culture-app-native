@@ -1,5 +1,5 @@
 import AppScreen from '../../screenobjects/AppScreen'
-import { $$$ } from '../../helpers/utils/selector'
+import { find } from '../../helpers/utils/selector'
 
 class OnboardingGeolocation extends AppScreen {
   constructor() {
@@ -7,17 +7,17 @@ class OnboardingGeolocation extends AppScreen {
   }
 
   get skip() {
-    return $$$('Aller à l’écran suivant')
+    return find('Aller à l’écran suivant')
   }
 
   get useGeolocation() {
-    return $$$('Utiliser ma position')
+    return find('Utiliser ma position')
   }
 
   async proceed() {
-    await this.waitForIsShown(true)
+    await this.waitForIsShown()
     await this.skip.click()
-    await this.waitForIsShown(false)
+    await this.waitForIsHidden()
   }
 }
 

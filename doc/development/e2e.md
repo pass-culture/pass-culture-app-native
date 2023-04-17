@@ -59,24 +59,24 @@ You can name it APPCENTER_USER_API_TOKEN
 
 We use environment variable to customize the configuration:
 
-| Environment variable             | Type      | Required | Default                 | Description                                             |
-|----------------------------------|-----------|----------|-------------------------|---------------------------------------------------------|
-| `CI`                             | `boolean` |          | `false`                 | Define if in a CI environment                           |
-| `ENVIRONMENT`                    | `string`  | yes      | `staging`               | Define the application environment                      |
+| Environment variable             | Type      | Required | Default                 | Description                                                                                                                                                                                                                                  |
+| -------------------------------- | --------- | -------- | ----------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `CI`                             | `boolean` |          | `false`                 | Define if in a CI environment                                                                                                                                                                                                                |
+| `ENVIRONMENT`                    | `string`  | yes      | `staging`               | Define the application environment                                                                                                                                                                                                           |
 | `SPECS`                          | `string`  |          |                         | Define specs for test execution. You can either specify a glob pattern to match multiple files at once or wrap a glob or set of paths into an array using "," delimiter to run them within a single worker process. [Default: run all tests] |
-| `WDIO_BASE_URL`                  | `string`  | yes      |                         | URL of the Website to test                              |
-| `ANDROID_DEVICE_NAME`            | `string`  |          | `pixel_xl`              | Android device name                                     |
-| `ANDROID_PLATFORM_VERSION`       | `string`  |          | `10.0`                  | Android platform version                                |
-| `IOS_DEVICE_NAME`                | `string`  |          | `iPhone 13`             | iOS Device Name                                         |
-| `IOS_PLATFORM_VERSION`           | `string`  |          | `15.2`                  | iOS platform version                                    |
-| `APPIUM_TEST_SERVER_PORT`        | `number`  |          | `4723`                  | Appium service port (if you don't use the default)      |
-| `APPIUM_TEST_SERVER_HOST`        | `string`  |          | `127.0.0.1`             | Appium listening interface                              |
-| `APPIUM_APP`                     | `string`  | yes      |                         | ipa or apk application to install before running test. Or iOS bundle id if already installed  |
-| `APPIUM_APP_WAIT_ACTIVITY`       | `string`  |          |                         | The android apk main activity to start (default: auto)  |
-| `APPIUM_APP_PACKAGE`             | `string`  |          |                         | Android bundle id (if app is already installed)         | 
-| `APPIUM_APP_ACTIVITY`            | `string`  |          |                         | Android package activity (if app is already installed)  |
-| `API_BASE_URL`                   | `string`  |          | `http://127.0.0.1:6001` | API base URL needed when e2e toggle features            |
-| `END_TO_END_TESTS_EMAIL_ADDRESS` | `string`  | yes      |                         | End to end whitelisted email address                    |
+| `WDIO_BASE_URL`                  | `string`  | yes      |                         | URL of the Website to test                                                                                                                                                                                                                   |
+| `ANDROID_DEVICE_NAME`            | `string`  |          | `pixel_xl`              | Android device name                                                                                                                                                                                                                          |
+| `ANDROID_PLATFORM_VERSION`       | `string`  |          | `10.0`                  | Android platform version                                                                                                                                                                                                                     |
+| `IOS_DEVICE_NAME`                | `string`  |          | `iPhone 13`             | iOS Device Name                                                                                                                                                                                                                              |
+| `IOS_PLATFORM_VERSION`           | `string`  |          | `15.2`                  | iOS platform version                                                                                                                                                                                                                         |
+| `APPIUM_TEST_SERVER_PORT`        | `number`  |          | `4723`                  | Appium service port (if you don't use the default)                                                                                                                                                                                           |
+| `APPIUM_TEST_SERVER_HOST`        | `string`  |          | `127.0.0.1`             | Appium listening interface                                                                                                                                                                                                                   |
+| `APPIUM_APP`                     | `string`  | yes      |                         | ipa or apk application to install before running test. Or iOS bundle id if already installed                                                                                                                                                 |
+| `APPIUM_APP_WAIT_ACTIVITY`       | `string`  |          |                         | The android apk main activity to start (default: auto)                                                                                                                                                                                       |
+| `APPIUM_APP_PACKAGE`             | `string`  |          |                         | Android bundle id (if app is already installed)                                                                                                                                                                                              |
+| `APPIUM_APP_ACTIVITY`            | `string`  |          |                         | Android package activity (if app is already installed)                                                                                                                                                                                       |
+| `API_BASE_URL`                   | `string`  |          | `http://127.0.0.1:6001` | API base URL needed when e2e toggle features                                                                                                                                                                                                 |
+| `END_TO_END_TESTS_EMAIL_ADDRESS` | `string`  | yes      |                         | End to end whitelisted email address                                                                                                                                                                                                         |
 
 For instance, if you wish to run test for a different android emulator:
 
@@ -88,7 +88,6 @@ yarn e2e:android.app
 ```
 
 Or if you wish to test http://127.0.0.1:3000:
-
 
 ```bash
 API_BASE_URL=${API_BASE_URL} \
@@ -118,7 +117,7 @@ Refer to google to get installation instruction for your system.
 In order to login to the e2e mailbox, you must have in the root of the repository:
 
 - `credentials.json`: OAuth2 client (require interactive login)
-- `token.json`: OAuth2 Gmail API JWT (can be generated if you have `credentials.json`) 
+- `token.json`: OAuth2 Gmail API JWT (can be generated if you have `credentials.json`)
 
 Only one of the two is required.
 
@@ -164,11 +163,13 @@ ANDROID=true \
 
 **To start all the containers**
 
-If you are not already logged in to Google Cloud using command line you need to login using the following commands : 
+If you are not already logged in to Google Cloud using command line you need to login using the following commands :
+
 ```bash
 gcloud auth configure-docker europe-west1-docker.pkg.dev
 gcloud auth login
 ```
+
 This will open a window where you can login using your pass Culture account.
 
 Then, to start all the containers, using the `staging` pcapi version for example:
@@ -238,7 +239,7 @@ END_TO_END_TESTS_EMAIL_ADDRESS=${END_TO_END_TESTS_EMAIL_ADDRESS} \
 APPIUM_APP_PACKAGE="app.passculture.staging" \
 APPIUM_APP_ACTIVITY="com.passculture.MainActivity" \
 yarn e2e:android.app
-``` 
+```
 
 It will use capability `appium:noReset` to `true`, read more here: https://github.com/appium/appium-uiautomator2-driver#general
 
@@ -271,7 +272,7 @@ If the application is already installed, you can inspect it (with Appium Inspect
 ```bash
 # or for testing: app.passculture.test
 APPIUM_APP="app.passculture.staging" yarn e2e:ios.app
-``` 
+```
 
 ### Writing tests
 
@@ -333,7 +334,7 @@ This is the documentation of selector: https://webdriver.io/docs/selectors/#acce
 We also have a useful cross platforms selector:
 
 ```ts
-$$$('Accueil')
+find('Accueil')
 ```
 
 Is equivalent to, on `app` (iOS and Android):
@@ -348,7 +349,7 @@ and `browser`:
 $('[data-testid="Accueil"]')
 ```
 
-We could have used `flags.isWeb` to decide which one to use, but this is exactly what does `$$$`
+We could have used `flags.isWeb` to decide which one to use, but this is exactly what does `find`
 and this allow to write less verbose selector for our cross platforms cases.
 
 ### ~ Selector
@@ -369,7 +370,6 @@ We have two utilities that can be used:
 1. `accessibilityAndTestId`: utilities
 2. `useE2eTestId`: react hook
 
-
 (1) `accessibilityAndTestId` can be used as follows:
 
 ```tsx
@@ -379,7 +379,6 @@ function ExampleComponent() {
 ```
 
 Use `accessibilityAndTestId` only if you want `accessibilityLabel` to be set outside e2e execution, **it will then be read by screen readers**.
-
 
 (2) `useE2eTestId` can be used as follows:
 
@@ -392,11 +391,10 @@ function ExampleComponent() {
 
 Use `useE2eTestId` hook only if you don't want `accessibilityLabel` to be set outside e2e execution, **it will never read by screen readers**.
 
-
 **Some components already implement a cross-platform selector:**
 
 - `AppButton`, `ButtonInsideText`, `ButtonWithLinearGradient`: The `accessibilityLabel` and `testID` are automatically set to the `wording` prop, or to `accessibilityLabel` prop if given. This means that `accessibility id` is the `wording` or `accessibilityLabel`, which allow us to have a cross-platform selector.
-- `TouchableOpacity`, `Touchable`, `InternalTouchableLink`, `ExternalTouchableLink`:  The `testID` is automatically set to the `accessibilityLabel` prop. This means that this element needs to have an `accessibilityLabel` if we  want to have a cross-platform selector.
+- `TouchableOpacity`, `Touchable`, `InternalTouchableLink`, `ExternalTouchableLink`: The `testID` is automatically set to the `accessibilityLabel` prop. This means that this element needs to have an `accessibilityLabel` if we want to have a cross-platform selector.
 
 For more information on selectors, please check [this notion page](https://www.notion.so/passcultureapp/Documentation-E2E-S-lecteurs-42cd859559454454a3a4a37ef1e86f41).
 
@@ -432,5 +430,3 @@ we have found an active community on Gitter.im:
 
 - https://gitter.im/webdriverio/webdriverio
 - https://gitter.im/appium/appium
-
-

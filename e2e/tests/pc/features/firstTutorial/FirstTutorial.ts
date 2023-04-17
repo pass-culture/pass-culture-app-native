@@ -1,5 +1,5 @@
 import AppScreen from '../../screenobjects/AppScreen'
-import { $$$ } from '../../helpers/utils/selector'
+import { find } from '../../helpers/utils/selector'
 
 class FirstTutorial extends AppScreen {
   constructor() {
@@ -7,25 +7,25 @@ class FirstTutorial extends AppScreen {
   }
 
   get continue() {
-    return $$$('Continuer')
+    return find('Continuer')
   }
 
   get skipAll() {
-    return $$$('Tout passer')
+    return find('Tout passer')
   }
 
   get usePosition() {
-    return $$$('Utiliser ma position')
+    return find('Utiliser ma position')
   }
 
   get discover() {
-    return $$$('Découvrir')
+    return find('Découvrir')
   }
 
   async proceed() {
-    await this.waitForIsShown(true)
+    await this.waitForIsShown()
     await this.skipAll.click()
-    await this.waitForIsShown(false)
+    await this.waitForIsHidden()
   }
 }
 
