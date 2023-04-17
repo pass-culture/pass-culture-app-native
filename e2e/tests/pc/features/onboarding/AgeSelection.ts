@@ -1,5 +1,5 @@
 import AppScreen from '../../screenobjects/AppScreen'
-import { $$$ } from '../../helpers/utils/selector'
+import { find } from '../../helpers/utils/selector'
 
 class AgeSelection extends AppScreen {
   constructor() {
@@ -7,23 +7,23 @@ class AgeSelection extends AppScreen {
   }
 
   get fifteenYO() {
-    return $$$('j’ai 15 ans')
+    return find('j’ai 15 ans')
   }
 
   get sixteenYO() {
-    return $$$('j’ai 16 ans')
+    return find('j’ai 16 ans')
   }
 
   get seventeenYO() {
-    return $$$('j’ai 17 ans')
+    return find('j’ai 17 ans')
   }
 
   get eighteenYO() {
-    return $$$('j’ai 18 ans')
+    return find('j’ai 18 ans')
   }
 
   get nonEligible() {
-    return $$$('Autre')
+    return find('Autre')
   }
 
   async chooseAge() {

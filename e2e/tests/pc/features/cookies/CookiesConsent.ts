@@ -1,5 +1,5 @@
 import AppScreen from '../../screenobjects/AppScreen'
-import { $$$ } from '../../helpers/utils/selector'
+import { find } from '../../helpers/utils/selector'
 
 class CookiesConsent extends AppScreen {
   constructor() {
@@ -7,15 +7,15 @@ class CookiesConsent extends AppScreen {
   }
 
   get accept() {
-    return $$$('Tout accepter')
+    return find('Tout accepter')
   }
 
   get refuse() {
-    return $$$('Tout refuser')
+    return find('Tout refuser')
   }
 
   get choose() {
-    return $$$('Choisir les cookies')
+    return find('Choisir les cookies')
   }
 
   async acceptCookies() {

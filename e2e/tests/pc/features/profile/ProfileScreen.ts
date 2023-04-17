@@ -1,5 +1,5 @@
 import AppScreen from '../../screenobjects/AppScreen'
-import { $$$ } from '../../helpers/utils/selector'
+import { find } from '../../helpers/utils/selector'
 
 class ProfileScreen extends AppScreen {
   constructor() {
@@ -7,7 +7,7 @@ class ProfileScreen extends AppScreen {
   }
 
   get createAccount() {
-    return $$$('Créer un compte')
+    return find('Créer un compte')
   }
 }
 
