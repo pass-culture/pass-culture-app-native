@@ -2,6 +2,7 @@ import * as SentryModule from '@sentry/react-native'
 import { Platform } from 'react-native'
 
 import { env } from 'libs/environment'
+import { waitFor } from 'tests/utils'
 
 import { version, build } from '../../../../package.json'
 import { eventMonitoring } from '../services'
@@ -23,6 +24,14 @@ describe('eventMonitoring', () => {
     it("should NOT call sentry's init() when disabled", () => {
       eventMonitoring.init({ enabled: false })
       expect(SentryModule.init).not.toBeCalled()
+    })
+
+    it('should set additional context on initialisation', async () => {
+      eventMonitoring.init({ enabled: true })
+
+      await waitFor(() => {
+        expect(SentryModule.configureScope).toHaveBeenCalledTimes(1)
+      })
     })
   })
 })
