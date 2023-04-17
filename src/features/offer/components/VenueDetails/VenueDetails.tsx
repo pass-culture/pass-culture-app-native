@@ -8,6 +8,7 @@ import { getSpacing, Spacer, Typo } from 'ui/theme'
 import { getHoverStyle } from 'ui/theme/getHoverStyle/getHoverStyle'
 
 export interface VenueDetailsProps extends VenueDetail, ViewProps {
+  // only used by venue card
   isHover?: boolean
 }
 

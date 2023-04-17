@@ -9,7 +9,7 @@ import { customFocusOutline } from 'ui/theme/customFocusOutline/customFocusOutli
 
 import { VenueDetails, VenueDetailsProps } from '../VenueDetails/VenueDetails'
 
-export type VenueCardProps = VenueDetailsProps & {
+export type VenueCardProps = Omit<VenueDetailsProps, 'isHover'> & {
   onPress: VoidFunction
 }
 
