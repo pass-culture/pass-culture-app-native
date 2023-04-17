@@ -80,9 +80,7 @@ const mapNetworkToSocial: Record<
   [Network.snapchat]: { social: Social.Snapchat },
   [Network.googleMessages]: {
     social: Social.Sms,
-    isNative: true,
-    supportsURL: false,
-    url: 'sms://&body=',
+    recipient: '',
   },
   [Network.whatsapp]: {
     social: Social.Whatsapp,
