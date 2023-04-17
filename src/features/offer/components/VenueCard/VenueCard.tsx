@@ -19,6 +19,7 @@ export function VenueCard({ onPress, ...props }: VenueCardProps) {
 
   return (
     <Wrapper
+      testID="venue-card"
       activeOpacity={0.5}
       onFocus={onFocus}
       onBlur={onBlur}
