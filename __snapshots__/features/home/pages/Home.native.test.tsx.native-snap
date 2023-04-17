@@ -26,7 +26,7 @@ exports[`Home page should render correctly 1`] = `
     <RCTScrollView
       ListFooterComponent={
         <FooterComponent
-          isLoading={false}
+          hasShownAll={true}
         />
       }
       ListHeaderComponent={<Header />}
@@ -86,7 +86,7 @@ exports[`Home page should render correctly 1`] = `
       onScrollEndDrag={[Function]}
       removeClippedSubviews={false}
       renderItem={[Function]}
-      scrollEventThrottle={50}
+      scrollEventThrottle={200}
       stickyHeaderIndices={Array []}
       testID="homeBodyScrollView"
       viewabilityConfigCallbackPairs={Array []}
