@@ -25,7 +25,6 @@ class NativeAlert {
     return $(selector).waitForExist({
       timeout: 11000,
       ...options,
-      reverse: false,
     })
   }
 

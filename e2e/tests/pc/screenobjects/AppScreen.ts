@@ -5,20 +5,18 @@ export default class AppScreen {
   /** find selector is a cross platform selector
    * It use data-testid in web and testID in native
    */
-  isFindSelector?: boolean
-  constructor(selector: string, isFindSelector?: boolean) {
+  isCrossPlatformSelector?: boolean
+  constructor(selector: string, isCrossPlatformSelector?: boolean) {
     this.selector = selector
-    this.isFindSelector = isFindSelector
+    this.isCrossPlatformSelector = isCrossPlatformSelector
   }
 
   async waitForIsShown(): Promise<boolean | void> {
-    return (this.isFindSelector ? find : $)(this.selector).waitForDisplayed({
-      reverse: false,
-    })
+    return (this.isCrossPlatformSelector ? find : $)(this.selector).waitForDisplayed()
   }
 
   async waitForIsHidden(): Promise<boolean | void> {
-    return (this.isFindSelector ? find : $)(this.selector).waitForDisplayed({
+    return (this.isCrossPlatformSelector ? find : $)(this.selector).waitForDisplayed({
       reverse: true,
     })
   }
