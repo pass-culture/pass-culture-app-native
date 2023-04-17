@@ -7,7 +7,7 @@ import { analytics } from 'libs/firebase/analytics'
 import { useNetInfoContext as useNetInfoContextDefault } from 'libs/network/NetInfoWrapper'
 import { BatchUser } from 'libs/react-native-batch'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { render, waitFor, screen, fireEvent } from 'tests/utils'
+import { render, waitFor, screen, fireEvent, act } from 'tests/utils'
 import { Typo } from 'ui/theme'
 
 const useShowSkeletonSpy = jest.spyOn(showSkeletonAPI, 'useShowSkeleton')
@@ -19,7 +19,7 @@ jest.mock('features/auth/context/AuthContext', () => ({
   useAuthContext: jest.fn(() => ({ isLoggedIn: true })),
 }))
 
-const modules = [formattedVenuesModule]
+const defaultModules = [formattedVenuesModule]
 const homeId = 'fake-id'
 const Header = <Typo.Title1>Header</Typo.Title1>
 
@@ -123,9 +123,34 @@ describe('GenericHome page - Analytics', () => {
 
     expect(analytics.logAllModulesSeen).not.toHaveBeenCalled()
   })
+
+  it('should display spinner when end is reached', async () => {
+    // To simulate progressive loading we need at least 11 modules
+    const modules = [
+      formattedVenuesModule,
+      { ...formattedVenuesModule, id: Math.random().toString() },
+      { ...formattedVenuesModule, id: Math.random().toString() },
+      { ...formattedVenuesModule, id: Math.random().toString() },
+      { ...formattedVenuesModule, id: Math.random().toString() },
+      { ...formattedVenuesModule, id: Math.random().toString() },
+      { ...formattedVenuesModule, id: Math.random().toString() },
+      { ...formattedVenuesModule, id: Math.random().toString() },
+      { ...formattedVenuesModule, id: Math.random().toString() },
+      { ...formattedVenuesModule, id: Math.random().toString() },
+      { ...formattedVenuesModule, id: Math.random().toString() },
+    ]
+    renderGenericHome(modules)
+
+    act(() => {
+      const scrollView = screen.queryByTestId('homeBodyScrollView')
+      scrollView && scrollView.props.onScroll(scrollEventBottom)
+    })
+
+    expect(await screen.findByTestId('spinner')).toBeTruthy()
+  })
 })
 
-function renderGenericHome() {
+function renderGenericHome(modules = defaultModules) {
   return render(
     // eslint-disable-next-line local-rules/no-react-query-provider-hoc
     reactQueryProviderHOC(<GenericHome modules={modules} Header={Header} homeId={homeId} />)

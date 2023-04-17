@@ -7,7 +7,7 @@ import { IconInterface } from 'ui/svg/icons/types'
 
 const USE_NATIVE_DRIVER = Platform.select({ default: false, ios: true, android: true })
 
-function NotMemoizedSpinner({ size, color }: IconInterface) {
+function NotMemoizedSpinner({ size, color, testID }: IconInterface) {
   const animatedValue = useRef(new Animated.Value(0)).current
   const spin = animatedValue.interpolate({
     inputRange: [0, 1],
@@ -26,7 +26,7 @@ function NotMemoizedSpinner({ size, color }: IconInterface) {
   }, [animatedValue])
 
   return (
-    <SpinnerContainer>
+    <SpinnerContainer testID={testID}>
       <Animated.View style={{ width: size, transform: [{ rotate: spin }] }}>
         <Logo size={size} color={color} />
       </Animated.View>
