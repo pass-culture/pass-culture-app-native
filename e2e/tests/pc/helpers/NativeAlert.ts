@@ -11,6 +11,8 @@ export const NATIVE_ALERT_SELECTORS = {
   },
 }
 
+const TIMEOUT_IN_MS = 11000
+
 class NativeAlert {
   /**
    * Wait for the alert to exist.
@@ -23,7 +25,7 @@ class NativeAlert {
       : NATIVE_ALERT_SELECTORS.IOS.ALERT
 
     return $(selector).waitForExist({
-      timeout: 11000,
+      timeout: TIMEOUT_IN_MS,
       ...options,
     })
   }
@@ -34,7 +36,7 @@ class NativeAlert {
       : NATIVE_ALERT_SELECTORS.IOS.ALERT
 
     return $(selector).waitForExist({
-      timeout: 11000,
+      timeout: TIMEOUT_IN_MS,
       ...options,
       reverse: true,
     })
