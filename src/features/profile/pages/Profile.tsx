@@ -50,7 +50,7 @@ const OnlineProfile: React.FC = () => {
   const scrollViewRef = useRef<ScrollView | null>(null)
   const locationActivationErrorId = uuidv4()
 
-  const { positionError, permissionState, requestGeolocPermission, showGeolocPermissionModal } =
+  const { userPositionError, permissionState, requestGeolocPermission, showGeolocPermissionModal } =
     useGeolocation()
   const [isGeolocSwitchActive, setIsGeolocSwitchActive] = useState<boolean>(
     permissionState === GeolocPermissionState.GRANTED
@@ -64,7 +64,7 @@ const OnlineProfile: React.FC = () => {
         setIsGeolocSwitchActive(false)
       }
       // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [positionError, permissionState])
+    }, [userPositionError, permissionState])
   )
 
   const switchGeolocation = useCallback(async () => {
@@ -156,8 +156,8 @@ const OnlineProfile: React.FC = () => {
                 toggleLabel="Partager ma position"
               />
               <InputError
-                visible={!!positionError}
-                messageId={positionError?.message}
+                visible={!!userPositionError}
+                messageId={userPositionError?.message}
                 numberOfSpacesTop={1}
                 relatedInputId={locationActivationErrorId}
               />

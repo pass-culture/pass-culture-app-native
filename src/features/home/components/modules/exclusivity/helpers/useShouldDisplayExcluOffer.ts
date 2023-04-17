@@ -10,7 +10,7 @@ export function useShouldDisplayExcluOffer(
   display: ExclusivityModule['displayParameters'],
   offerId: number
 ) {
-  const { position } = useGeolocation()
+  const { userPosition: position } = useGeolocation()
   const maxPrice = useMaxPrice()
   const { data: offer } = useExcluOffer(offerId)
 

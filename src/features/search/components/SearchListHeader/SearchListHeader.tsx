@@ -25,7 +25,7 @@ export interface SearchListHeaderProps extends ScrollViewProps {
 }
 
 export const SearchListHeader: React.FC<SearchListHeaderProps> = ({ nbHits, userData }) => {
-  const { position, showGeolocPermissionModal } = useGeolocation()
+  const { userPosition: position, showGeolocPermissionModal } = useGeolocation()
   const { params } = useRoute<UseRouteType<'Search'>>()
   const shouldDisplayUnavailableOfferMessage = userData && userData.length > 0
   const unavailableOfferMessage = shouldDisplayUnavailableOfferMessage ? userData[0]?.message : ''

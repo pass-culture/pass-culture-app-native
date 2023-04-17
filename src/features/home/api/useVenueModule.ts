@@ -12,7 +12,7 @@ export const useVenueModule = ({
   venuesParameters,
   id,
 }: Pick<VenuesModule, 'venuesParameters' | 'id'>): VenueHit[] | undefined => {
-  const { position } = useGeolocation()
+  const { userPosition: position } = useGeolocation()
   const netInfo = useNetInfoContext()
 
   const { data, refetch } = useQuery(

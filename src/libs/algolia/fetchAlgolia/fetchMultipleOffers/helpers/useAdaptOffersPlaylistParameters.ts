@@ -8,7 +8,7 @@ import { useGeolocation } from 'libs/geolocation'
 import { useGenreTypeMapping, useSubcategoryLabelMapping } from 'libs/subcategories/mappings'
 
 export const useAdaptOffersPlaylistParameters = () => {
-  const { position } = useGeolocation()
+  const { userPosition: position } = useGeolocation()
   const defaultPriceMax = useMaxPrice()
   const subcategoryLabelMapping = useSubcategoryLabelMapping()
   const genreTypeMapping = useGenreTypeMapping()

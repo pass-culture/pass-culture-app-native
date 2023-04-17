@@ -106,8 +106,8 @@ export const LocationModal: FunctionComponent<LocationModalProps> = ({
   const { navigate } = useNavigation<UseNavigationType>()
   const { isDesktopViewport, modal } = useTheme()
   const {
-    position,
-    positionError,
+    userPosition: position,
+    userPositionError: positionError,
     permissionState,
     requestGeolocPermission,
     onPressGeolocPermissionModalButton: onPressGeolocPermissionModalButtonDefault,

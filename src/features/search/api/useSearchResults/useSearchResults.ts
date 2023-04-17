@@ -20,7 +20,7 @@ export type Response = Pick<
 >
 
 export const useSearchInfiniteQuery = (searchState: SearchState) => {
-  const { position } = useGeolocation()
+  const { userPosition: position } = useGeolocation()
   const isUserUnderage = useIsUserUnderage()
   const transformHits = useTransformOfferHits()
   const { setCurrentQueryID } = useSearchAnalyticsState()

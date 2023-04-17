@@ -26,7 +26,7 @@ export const useOfferModule = ({
   search,
   moduleId,
 }: UseOfferModuleProps): { hits: Offer[]; nbHits: number } | undefined => {
-  const { position } = useGeolocation()
+  const { userPosition: position } = useGeolocation()
   const transformHits = useTransformOfferHits()
 
   const adaptedPlaylistParameters = useAdaptOffersPlaylistParameters()

@@ -33,7 +33,7 @@ const keyExtractor = (item: Offer) => item.objectID
 export const OffersModule = (props: OffersModuleProps) => {
   const { cover, display, search, index, moduleId, homeEntryId } = props
   const data = useOfferModule({ search, moduleId })
-  const { position } = useGeolocation()
+  const { userPosition: position } = useGeolocation()
 
   const adaptedPlaylistParameters = useAdaptOffersPlaylistParameters()
   const mapping = useCategoryIdMapping()

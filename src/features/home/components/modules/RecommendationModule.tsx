@@ -27,7 +27,7 @@ const keyExtractor = (item: Offer) => item.objectID
 
 export const RecommendationModule = (props: RecommendationModuleProps) => {
   const { displayParameters, index, recommendationParameters, moduleId, homeEntryId } = props
-  const { position } = useGeolocation()
+  const { userPosition: position } = useGeolocation()
   const { user: profile } = useAuthContext()
   const mapping = useCategoryIdMapping()
   const labelMapping = useCategoryHomeLabelMapping()

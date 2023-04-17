@@ -30,7 +30,7 @@ export const VenuesModule = ({
   index,
   homeEntryId,
 }: VenuesModuleProps) => {
-  const { position } = useGeolocation()
+  const { userPosition: position } = useGeolocation()
   const moduleName = display.title
   const hits = useVenueModule({ venuesParameters: search, id: moduleId }) || []
 

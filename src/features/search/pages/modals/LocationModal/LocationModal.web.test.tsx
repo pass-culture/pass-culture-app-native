@@ -11,7 +11,7 @@ import { act, checkAccessibilityFor, fireEvent, render, screen, waitFor } from '
 const mockPosition: Position = { latitude: 2, longitude: 40 }
 jest.mock('libs/geolocation/GeolocationWrapper', () => ({
   useGeolocation: () => ({
-    position: mockPosition,
+    userPosition: mockPosition,
   }),
 }))
 
