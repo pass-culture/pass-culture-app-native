@@ -15,9 +15,9 @@ class AgeInformation extends AppScreen {
   }
 
   async proceed() {
-    await this.waitForIsShown(true)
+    await this.waitForIsShown()
     await this.later.click()
-    await this.waitForIsShown(false)
+    await this.waitForIsHidden()
   }
 }
 

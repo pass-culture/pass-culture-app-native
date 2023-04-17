@@ -17,7 +17,7 @@ class NativeAlert {
    *
    * The selector for Android differs from iOS
    */
-  static async waitForIsShown(isShown = true, options?: WaitForOptions) {
+  static async waitForIsShown(options?: WaitForOptions) {
     const selector = driver.isAndroid
       ? NATIVE_ALERT_SELECTORS.ANDROID.ALERT_TITLE
       : NATIVE_ALERT_SELECTORS.IOS.ALERT
@@ -25,7 +25,19 @@ class NativeAlert {
     return $(selector).waitForExist({
       timeout: 11000,
       ...options,
-      reverse: !isShown,
+      reverse: false,
+    })
+  }
+
+  static async waitForIsHidden(options?: WaitForOptions) {
+    const selector = driver.isAndroid
+      ? NATIVE_ALERT_SELECTORS.ANDROID.ALERT_TITLE
+      : NATIVE_ALERT_SELECTORS.IOS.ALERT
+
+    return $(selector).waitForExist({
+      timeout: 11000,
+      ...options,
+      reverse: true,
     })
   }
 

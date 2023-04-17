@@ -23,9 +23,9 @@ class FirstTutorial extends AppScreen {
   }
 
   async proceed() {
-    await this.waitForIsShown(true)
+    await this.waitForIsShown()
     await this.skipAll.click()
-    await this.waitForIsShown(false)
+    await this.waitForIsHidden()
   }
 }
 

@@ -27,9 +27,9 @@ class AgeSelection extends AppScreen {
   }
 
   async chooseAge() {
-    await this.waitForIsShown(true)
+    await this.waitForIsShown()
     await this.eighteenYO.click()
-    await this.waitForIsShown(false)
+    await this.waitForIsHidden()
   }
 }
 

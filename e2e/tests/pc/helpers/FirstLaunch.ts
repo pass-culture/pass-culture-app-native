@@ -7,7 +7,7 @@ import AgeInformation from '../features/onboarding/AgeInformation'
 import OnboardingWelcome from '../features/onboarding/OnboardingWelcome'
 import OnboardingGeolocation from '../features/onboarding/OnboardingGeolocation'
 import Browser from './Browser'
-import {timeout} from "./utils/time";
+import { timeout } from './utils/time'
 
 class FirstLaunch {
   async allowIOSAlert() {
@@ -18,9 +18,9 @@ class FirstLaunch {
     while (retries && !nativeModalPassed) {
       try {
         retries--
-        await NativeAlert.waitForIsShown(true)
+        await NativeAlert.waitForIsShown()
         await NativeAlert.topOnButtonWithText('Allow')
-        await NativeAlert.waitForIsShown(false)
+        await NativeAlert.waitForIsHidden()
         nativeModalPassed = true
       } catch (err) {
         // ignore err
@@ -49,7 +49,7 @@ class FirstLaunch {
       await AgeInformation.proceed()
     }
     await timeout(1000)
-    await tabBar.waitForIsShown(true)
+    await tabBar.waitForIsShown()
     return true
   }
 }

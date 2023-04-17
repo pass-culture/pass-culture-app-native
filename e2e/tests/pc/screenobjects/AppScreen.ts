@@ -11,14 +11,15 @@ export default class AppScreen {
     this.is$$$selector = is$$$selector
   }
 
-  /**
-   * Wait for the screen to be visible
-   *
-   * @param {boolean} isShown
-   */
-  async waitForIsShown(isShown = true): Promise<boolean | void> {
+  async waitForIsShown(): Promise<boolean | void> {
     return (this.is$$$selector ? $$$ : $)(this.selector).waitForDisplayed({
-      reverse: !isShown,
+      reverse: false,
+    })
+  }
+
+  async waitForIsHidden(): Promise<boolean | void> {
+    return (this.is$$$selector ? $$$ : $)(this.selector).waitForDisplayed({
+      reverse: true,
     })
   }
 }

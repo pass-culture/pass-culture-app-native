@@ -19,9 +19,9 @@ class CookiesConsent extends AppScreen {
   }
 
   async acceptCookies() {
-    await this.waitForIsShown(true)
+    await this.waitForIsShown()
     await this.accept.click()
-    await this.waitForIsShown(false)
+    await this.waitForIsHidden()
   }
 }
 

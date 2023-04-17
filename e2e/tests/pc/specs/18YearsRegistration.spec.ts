@@ -46,30 +46,30 @@ describe('18YearsRegistration', () => {
     })
 
     it('should click on "Créer un compte"', async () => {
-      await ProfileScreen.waitForIsShown(true)
+      await ProfileScreen.waitForIsShown()
       await ProfileScreen.createAccount.click()
-      await ProfileScreen.waitForIsShown(false)
+      await ProfileScreen.waitForIsHidden()
     })
 
     it('should set email and randomly accept newsletter checkbox', async () => {
-      await SignupScreens.waitForIsShown(true)
-      await SignupScreens.emailScreen.waitForIsShown(true)
+      await SignupScreens.waitForIsShown()
+      await SignupScreens.emailScreen.waitForIsShown()
       await SignupScreens.emailScreen.email.setValue(email)
 
       await SignupScreens.emailScreen.newsletterCheckbox.click()
 
       await timeout(2000)
       await SignupScreens.emailScreen.submit.click()
-      await SignupScreens.emailScreen.waitForIsShown(false)
+      await SignupScreens.emailScreen.waitForIsHidden()
     })
 
     it('should set password', async () => {
-      await SignupScreens.waitForIsShown(true)
-      await SignupScreens.passwordScreen.waitForIsShown(true)
+      await SignupScreens.waitForIsShown()
+      await SignupScreens.passwordScreen.waitForIsShown()
       await SignupScreens.passwordScreen.password.waitForEnabled()
       await SignupScreens.passwordScreen.password.setValue(password)
       await SignupScreens.passwordScreen.submit.click()
-      await SignupScreens.passwordScreen.waitForIsShown(false)
+      await SignupScreens.passwordScreen.waitForIsHidden()
     })
 
     it('should set birthdate to 18 years old', async () => {
@@ -79,19 +79,19 @@ describe('18YearsRegistration', () => {
         getRandomInt(1, new Date().getDay()) // day
       )
 
-      await SignupScreens.birthDateScreen.waitForIsShown(true)
+      await SignupScreens.birthDateScreen.waitForIsShown()
       await SignupScreens.birthDateScreen.setBirthDate(birthDate, theme)
       await SignupScreens.birthDateScreen.submit.click()
-      await SignupScreens.birthDateScreen.waitForIsShown(false)
+      await SignupScreens.birthDateScreen.waitForIsHidden()
     })
 
     it('should pass recaptcha and post account registration to pcapi', async () => {
-      await SignupScreens.acceptCguScreen.waitForIsShown(true)
+      await SignupScreens.acceptCguScreen.waitForIsShown()
       registrationDate = new Date()
       await SignupScreens.acceptCguScreen.submit.click()
-      await SignupScreens.acceptCguScreen.waitForIsShown(false)
+      await SignupScreens.acceptCguScreen.waitForIsHidden()
       try {
-        await SignupScreens.signupConfirmationEmailSentScreen.waitForIsShown(true)
+        await SignupScreens.signupConfirmationEmailSentScreen.waitForIsShown()
       } catch {
         throw new Error('Re-CAPTCHA challenge not disabled')
       }
@@ -103,13 +103,13 @@ describe('18YearsRegistration', () => {
         username: email,
       })) as RegistrationConfirmationEmail
       expect(registrationConfirmationEmail).toBeDefined()
-      await SignupScreens.signupConfirmationEmailSentScreen.waitForIsShown(true)
+      await SignupScreens.signupConfirmationEmailSentScreen.waitForIsShown()
     })
 
     it('should open registration confirmation email link and perform log in', async () => {
       const url = new URL(registrationConfirmationEmail.params.CONFIRMATION_LINK)
       await openDeepLinkUrl(url.href)
-      await SignupScreens.signupConfirmationEmailSentScreen.waitForIsShown(false)
+      await SignupScreens.signupConfirmationEmailSentScreen.waitForIsHidden()
     })
   })
 })
