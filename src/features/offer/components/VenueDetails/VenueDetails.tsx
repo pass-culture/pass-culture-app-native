@@ -40,7 +40,7 @@ const Wrapper = styled(View)({
 })
 
 const Title = styled(Typo.ButtonText).attrs({
-  numberOfLines: 2,
+  numberOfLines: 1,
   ellipsizeMode: 'tail',
 })<{ isHover?: boolean }>(({ theme, isHover }) => ({
   ...getHoverStyle(theme.colors.black, isHover),
