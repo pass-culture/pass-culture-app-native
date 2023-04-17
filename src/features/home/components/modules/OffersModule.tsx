@@ -3,6 +3,7 @@ import React, { useCallback, useEffect } from 'react'
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { useOfferModule } from 'features/home/api/useOfferModule'
 import { HomeOfferTile } from 'features/home/components/HomeOfferTile'
+import { useHomePosition } from 'features/home/helpers/useHomePosition'
 import { OffersModule as OffersModuleType } from 'features/home/types'
 import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
 import { SearchView } from 'features/search/types'
@@ -10,7 +11,6 @@ import { useAdaptOffersPlaylistParameters } from 'libs/algolia/fetchAlgolia/fetc
 import { ContentTypes } from 'libs/contentful'
 import { getPlaylistItemDimensionsFromLayout } from 'libs/contentful/dimensions'
 import { analytics } from 'libs/firebase/analytics'
-import { useGeolocation } from 'libs/geolocation'
 import useFunctionOnce from 'libs/hooks/useFunctionOnce'
 import { formatDates, formatDistance, getDisplayPrice } from 'libs/parsers'
 import { useCategoryIdMapping, useCategoryHomeLabelMapping } from 'libs/subcategories'
@@ -33,7 +33,7 @@ const keyExtractor = (item: Offer) => item.objectID
 export const OffersModule = (props: OffersModuleProps) => {
   const { cover, display, search, index, moduleId, homeEntryId } = props
   const data = useOfferModule({ search, moduleId })
-  const { userPosition: position } = useGeolocation()
+  const { position } = useHomePosition()
 
   const adaptedPlaylistParameters = useAdaptOffersPlaylistParameters()
   const mapping = useCategoryIdMapping()

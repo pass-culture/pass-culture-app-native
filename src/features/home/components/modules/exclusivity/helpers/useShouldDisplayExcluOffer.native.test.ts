@@ -15,8 +15,8 @@ let display: ExclusivityModule['displayParameters'] = {
 }
 
 let mockPosition: Position = null
-jest.mock('libs/geolocation/GeolocationWrapper', () => ({
-  useGeolocation: () => ({
+jest.mock('features/home/helpers/useHomePosition', () => ({
+  useHomePosition: () => ({
     position: mockPosition,
   }),
 }))

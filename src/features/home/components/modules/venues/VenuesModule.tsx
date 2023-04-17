@@ -2,10 +2,10 @@ import React, { useCallback, useEffect } from 'react'
 
 import { useVenueModule } from 'features/home/api/useVenueModule'
 import { VenueTile } from 'features/home/components/modules/venues/VenueTile'
+import { useHomePosition } from 'features/home/helpers/useHomePosition'
 import { VenueHit } from 'libs/algolia'
 import { ContentTypes, DisplayParametersFields, VenuesParametersFields } from 'libs/contentful'
 import { analytics } from 'libs/firebase/analytics'
-import { useGeolocation } from 'libs/geolocation'
 import { PassPlaylist } from 'ui/components/PassPlaylist'
 import { CustomListRenderItem } from 'ui/components/Playlist'
 import { LENGTH_S } from 'ui/theme'
@@ -30,7 +30,7 @@ export const VenuesModule = ({
   index,
   homeEntryId,
 }: VenuesModuleProps) => {
-  const { userPosition: position } = useGeolocation()
+  const { position } = useHomePosition()
   const moduleName = display.title
   const hits = useVenueModule({ venuesParameters: search, id: moduleId }) || []
 
