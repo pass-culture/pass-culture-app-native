@@ -8,6 +8,7 @@ import { useSubscriptionContext } from 'features/identityCheck/context/Subscript
 import { computeIdentificationMethod } from 'features/identityCheck/pages/helpers/computeIdentificationMethod'
 import { mapStepsDetails } from 'features/identityCheck/pages/helpers/mapStepsDetails'
 import { IdentityCheckStep, StepConfig, StepDetails } from 'features/identityCheck/types'
+import { useRemoteConfigContext } from 'libs/firebase/remoteConfig'
 import { theme } from 'theme'
 import { BicolorIdCard } from 'ui/svg/icons/BicolorIdCard'
 import { BicolorLegal } from 'ui/svg/icons/BicolorLegal'
@@ -27,6 +28,7 @@ export const useStepperInfo = (): {
   const { remainingAttempts } = usePhoneValidationRemainingAttempts()
   const { stepToDisplay, title, subtitle, errorMessage, identificationMethods } =
     useGetStepperInfo()
+  const { identificationMethodFork } = useRemoteConfigContext()
 
   const stepsConfig: StepConfig[] = [
     {
@@ -55,7 +57,7 @@ export const useStepperInfo = (): {
         completed: () => <IconStepDone Icon={BicolorIdCard} testID="identification-step-done" />,
         retry: () => <IconRetryStep Icon={BicolorIdCard} testID="identification-retry-step" />,
       },
-      screens: computeIdentificationMethod(identificationMethods),
+      screens: computeIdentificationMethod(identificationMethods, identificationMethodFork),
     },
     {
       name: IdentityCheckStep.CONFIRMATION,

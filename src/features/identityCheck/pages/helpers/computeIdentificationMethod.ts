@@ -9,14 +9,21 @@ const educonnectFlow: (keyof SubscriptionRootStackParamList)[] = [
 
 const ubbleFlow: (keyof SubscriptionRootStackParamList)[] = ['SelectIDOrigin']
 
-const forkFlow: (keyof SubscriptionRootStackParamList)[] = ['IdentificationForkUbble']
+const ubbleForkFlow: (keyof SubscriptionRootStackParamList)[] = ['IdentificationForkUbble']
+
+const educonnectForkFlow: (keyof SubscriptionRootStackParamList)[] = [
+  'IdentificationForkEduconnect',
+]
 
 export const computeIdentificationMethod = (
-  identificationMethods?: IdentityCheckMethod[] | null
+  identificationMethods?: IdentityCheckMethod[] | null,
+  identificationMethodFork?: string | null
 ) => {
   if (identificationMethods) {
     if (identificationMethods.length === 2) {
-      return forkFlow
+      return identificationMethodFork === IdentityCheckMethod.educonnect
+        ? educonnectForkFlow
+        : ubbleForkFlow
     }
 
     if (
