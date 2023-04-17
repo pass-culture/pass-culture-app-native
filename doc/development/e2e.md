@@ -335,18 +335,24 @@ We also have a useful cross platforms selector:
 
 ```ts
 find('Accueil')
+// or
+findAll('Accueil')
 ```
 
 Is equivalent to, on `app` (iOS and Android):
 
 ```ts
 $('~Acceuil')
+// or
+$$('~Acceuil')
 ```
 
 and `browser`:
 
 ```ts
 $('[data-testid="Accueil"]')
+// or
+$$('[data-testid="Accueil"]')
 ```
 
 We could have used `flags.isWeb` to decide which one to use, but this is exactly what does `find`
