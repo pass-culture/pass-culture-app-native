@@ -40,7 +40,7 @@ describe('<VenueSelectionList />', () => {
 
     fireEvent.press(screen.getByText('Envie de lire'))
 
-    expect(onItemSelect).toHaveBeenNthCalledWith(1, '1')
+    expect(onItemSelect).toHaveBeenNthCalledWith(1, 1)
   })
 
   it('should mark item as selected', () => {

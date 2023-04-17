@@ -23,6 +23,7 @@ export function VenueSelectionModal({
   onSubmit,
   onClosePress,
 }: VenueSelectionModalProps) {
+  const { modal } = useTheme()
   const [selectedOffer, setSelectedOffer] = useState<number>()
 
   const handleSubmit = useCallback(
@@ -31,14 +32,11 @@ export function VenueSelectionModal({
        * `selectedOffer` would always be there since submit is disabled otherwise,
        * but TypeScript can't understand this so a check is necessary.
        */
-      if (selectedOffer) {
-        onSubmit(selectedOffer)
-      }
+      onSubmit(selectedOffer as number)
     },
     [onSubmit, selectedOffer]
   )
 
-  const { modal } = useTheme()
   return (
     <AppModal
       title="Lieu de retrait"
