@@ -248,7 +248,9 @@ const OnlineProfile: React.FC = () => {
         )}
         <Section>
           <Spacer.Column numberOfSpaces={4} />
-          <Typo.CaptionNeutralInfo>{version}</Typo.CaptionNeutralInfo>
+          <Typo.CaptionNeutralInfo>
+            {version} {env.COMMIT_HASH || 'no-commit-hash'}
+          </Typo.CaptionNeutralInfo>
           <Spacer.Column numberOfSpaces={4} />
           <LogoMinistereContainer>
             <LogoMinistere />

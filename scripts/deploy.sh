@@ -8,6 +8,8 @@ GREEN='\033[0;32m'
 YELLOW='\033[0;33m'
 NO_COLOR='\033[0m'
 
+export COMMIT_HASH=$(git rev-parse --short HEAD)
+
 PROJECT_DIR="$(dirname "${BASH_SOURCE[0]}")/.."
 CURRENT_BRANCH=$(git rev-parse --abbrev-ref HEAD)
 
