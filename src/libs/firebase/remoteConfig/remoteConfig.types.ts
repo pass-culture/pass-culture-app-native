@@ -10,6 +10,7 @@ export type CustomRemoteConfig = {
   homeEntryId_18: string
   homeEntryId_15_17: string
   shouldUseAlgoliaRecommend: boolean
+  identificationMethodFork: string
 }
 
 /* The purpose of GenericRemoteConfig is only to resolve type conflicts.
