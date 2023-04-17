@@ -1,14 +1,13 @@
 import React from 'react'
 
-import { IdentityCheckMethod } from 'api/gen'
 import { useGetStepperInfo } from 'features/identityCheck/api/useGetStepperInfo'
 import { usePhoneValidationRemainingAttempts } from 'features/identityCheck/api/usePhoneValidationRemainingAttempts'
 import { IconRetryStep } from 'features/identityCheck/components/IconRetryStep'
 import { IconStepDone } from 'features/identityCheck/components/IconStepDone'
 import { useSubscriptionContext } from 'features/identityCheck/context/SubscriptionContextProvider'
+import { computeIdentificationMethod } from 'features/identityCheck/pages/helpers/computeIdentificationMethod'
 import { mapStepsDetails } from 'features/identityCheck/pages/helpers/mapStepsDetails'
 import { IdentityCheckStep, StepConfig, StepDetails } from 'features/identityCheck/types'
-import { SubscriptionRootStackParamList } from 'features/navigation/RootNavigator/types'
 import { theme } from 'theme'
 import { BicolorIdCard } from 'ui/svg/icons/BicolorIdCard'
 import { BicolorLegal } from 'ui/svg/icons/BicolorLegal'
@@ -23,18 +22,11 @@ export const useStepperInfo = (): {
   subtitle?: string | null
   errorMessage?: string | null
 } => {
-  const { profile, identification } = useSubscriptionContext()
+  const { profile } = useSubscriptionContext()
   const hasSchoolTypes = profile.hasSchoolTypes
   const { remainingAttempts } = usePhoneValidationRemainingAttempts()
-  const { stepToDisplay, title, subtitle, errorMessage } = useGetStepperInfo()
-
-  const educonnectFlow: (keyof SubscriptionRootStackParamList)[] = [
-    'IdentityCheckEduConnect',
-    'IdentityCheckEduConnectForm',
-    'IdentityCheckValidation',
-  ]
-
-  const ubbleFlow: (keyof SubscriptionRootStackParamList)[] = ['SelectIDOrigin']
+  const { stepToDisplay, title, subtitle, errorMessage, identificationMethods } =
+    useGetStepperInfo()
 
   const stepsConfig: StepConfig[] = [
     {
@@ -63,8 +55,7 @@ export const useStepperInfo = (): {
         completed: () => <IconStepDone Icon={BicolorIdCard} testID="identification-step-done" />,
         retry: () => <IconRetryStep Icon={BicolorIdCard} testID="identification-retry-step" />,
       },
-      screens:
-        identification.method === IdentityCheckMethod.educonnect ? educonnectFlow : ubbleFlow,
+      screens: computeIdentificationMethod(identificationMethods),
     },
     {
       name: IdentityCheckStep.CONFIRMATION,
