@@ -6,3 +6,7 @@ import { flags } from './platform'
 export function find(selector: string) {
   return $(flags.isWeb ? `[data-testid="${selector}"]` : `~${selector}`)
 }
+
+export function findAll(selector: string) {
+  return $$(flags.isWeb ? `[data-testid="${selector}"]` : `~${selector}`)
+}
