@@ -9,24 +9,33 @@ const educonnectFlow: (keyof SubscriptionRootStackParamList)[] = [
 ]
 
 const ubbleFlow: (keyof SubscriptionRootStackParamList)[] = ['SelectIDOrigin']
-
-const forkFlow: (keyof SubscriptionRootStackParamList)[] = ['IdentificationForkUbble']
+const ubbleForkFlow: (keyof SubscriptionRootStackParamList)[] = ['IdentificationForkUbble']
+const educonnectForkFlow: (keyof SubscriptionRootStackParamList)[] = [
+  'IdentificationForkEduconnect',
+]
 
 const educonnectOnlyMethod = [IdentityCheckMethod.educonnect]
-
 const ubbleOnlyMethod = [IdentityCheckMethod.ubble]
-
-const twoMethods = [IdentityCheckMethod.ubble, IdentityCheckMethod.educonnect]
+const bothMethodsAllowed = [IdentityCheckMethod.ubble, IdentityCheckMethod.educonnect]
 
 describe('computeIdentificationMethod', () => {
-  it('should return a flow', () => {
-    // Fork
-    expect(computeIdentificationMethod(twoMethods)).toEqual(forkFlow)
-    // Only Ubble allowed
+  it('should return ubble fork flow with two methods allowed and ubble AB testing param', () => {
+    expect(computeIdentificationMethod(bothMethodsAllowed, IdentityCheckMethod.ubble)).toEqual(
+      ubbleForkFlow
+    )
+  })
+  it('should return educonnect fork flow with two methods allowed and educonnect AB testing param', () => {
+    expect(computeIdentificationMethod(bothMethodsAllowed, IdentityCheckMethod.educonnect)).toEqual(
+      educonnectForkFlow
+    )
+  })
+  it('should return ubble flow with if only ubble method is allowed', () => {
     expect(computeIdentificationMethod(ubbleOnlyMethod)).toEqual(ubbleFlow)
-    // Only Educonnect allowed
+  })
+  it('should return educonnect flow with if only educonnect method is allowed', () => {
     expect(computeIdentificationMethod(educonnectOnlyMethod)).toEqual(educonnectFlow)
-    // Default case
+  })
+  it('should return ubble flow by default', () => {
     expect(computeIdentificationMethod()).toEqual(ubbleFlow)
   })
 })
