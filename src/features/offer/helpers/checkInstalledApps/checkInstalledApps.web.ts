@@ -7,6 +7,7 @@ export const checkInstalledApps: () => Promise<Record<Network, boolean>> = async
     [Network.snapchat]: false,
     [Network.instagram]: false,
     [Network.whatsapp]: true,
+    [Network.googleMessages]: false,
     [Network.imessage]: false,
     [Network.messenger]: false,
     [Network.telegram]: true,

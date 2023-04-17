@@ -78,6 +78,12 @@ const mapNetworkToSocial: Record<
   [Network.instagram]: { social: Social.Instagram, supportsURL: false, shouldEncodeURI: true },
   [Network.messenger]: { social: Social.Messenger },
   [Network.snapchat]: { social: Social.Snapchat },
+  [Network.googleMessages]: {
+    social: Social.Sms,
+    isNative: true,
+    supportsURL: false,
+    url: 'sms://&body=',
+  },
   [Network.whatsapp]: {
     social: Social.Whatsapp,
     webUrl: 'https://api.whatsapp.com/send?text=',
