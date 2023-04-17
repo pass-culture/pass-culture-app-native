@@ -18,38 +18,49 @@ import {
   isThematicHighlightContentModel,
   isCategoryListContentModel,
 } from 'libs/contentful/types'
+import { eventMonitoring } from 'libs/monitoring'
 
 export const adaptHomepageNatifModules = (modules: HomepageNatifModule[]): HomepageModule[] => {
   const adaptedHomepageNatifModules = modules.map((module) => {
     const { fields } = module
     if (!fields || isEmpty(fields)) return null
 
-    if (isAlgoliaContentModel(module)) {
-      return adaptOffersModule(module)
-    }
+    try {
+      if (isAlgoliaContentModel(module)) {
+        return adaptOffersModule(module)
+      }
 
-    if (isBusinessContentModel(module)) {
-      return adaptBusinessModule(module)
-    }
+      if (isBusinessContentModel(module)) {
+        return adaptBusinessModule(module)
+      }
 
-    if (isRecommendationContentModel(module)) {
-      return adaptRecommendationModule(module)
-    }
+      if (isRecommendationContentModel(module)) {
+        return adaptRecommendationModule(module)
+      }
 
-    if (isThematicHighlightContentModel(module)) {
-      return adaptThematicHighlightModule(module)
-    }
+      if (isThematicHighlightContentModel(module)) {
+        return adaptThematicHighlightModule(module)
+      }
 
-    if (isVenuesContentModel(module)) {
-      return adaptVenuesModule(module)
-    }
+      if (isVenuesContentModel(module)) {
+        return adaptVenuesModule(module)
+      }
 
-    if (isExclusivityContentModel(module)) {
-      return adaptExclusivityModule(module)
-    }
+      if (isExclusivityContentModel(module)) {
+        return adaptExclusivityModule(module)
+      }
 
-    if (isCategoryListContentModel(module)) {
-      return adaptCategoryListModule(module)
+      if (isCategoryListContentModel(module)) {
+        return adaptCategoryListModule(module)
+      }
+    } catch (error) {
+      console.warn(
+        `Error while computing home modules, by the module of ID: ${module.sys.id}`,
+        error
+      )
+      eventMonitoring.captureException(
+        `Error while computing home modules, by the module of ID: ${module.sys.id}`
+      )
     }
 
     return null
