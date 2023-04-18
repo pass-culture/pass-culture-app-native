@@ -1,5 +1,5 @@
-import React from 'react'
-import { FlatList, View, ViewProps } from 'react-native'
+import React, { useCallback } from 'react'
+import { FlatList, ListRenderItem, View, ViewProps } from 'react-native'
 import styled from 'styled-components/native'
 
 import { VenueSelectionListItem } from 'features/offer/components/VenueSelectionListItem/VenueSelectionListItem'
@@ -26,21 +26,24 @@ export function VenueSelectionList({
   onItemSelect,
   ...props
 }: VenueSelectionListProps) {
+  const renderItem: ListRenderItem<VenueListItem> = useCallback(
+    ({ item }) => {
+      return (
+        <ItemWrapper>
+          <VenueSelectionListItem
+            {...item}
+            onSelect={() => onItemSelect(item.offerId)}
+            isSelected={selectedItem === item.offerId}
+          />
+        </ItemWrapper>
+      )
+    },
+    [onItemSelect, selectedItem]
+  )
+
   return (
     <View {...props}>
-      <FlatList
-        keyExtractor={keyExtractor}
-        data={items}
-        renderItem={({ item }) => (
-          <ItemWrapper>
-            <VenueSelectionListItem
-              {...item}
-              onSelect={() => onItemSelect(item.offerId)}
-              isSelected={selectedItem === item.offerId}
-            />
-          </ItemWrapper>
-        )}
-      />
+      <FlatList keyExtractor={keyExtractor} data={items} renderItem={renderItem} />
     </View>
   )
 }
