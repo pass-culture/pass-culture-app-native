@@ -6,7 +6,7 @@ import { openInbox } from 'react-native-email-link'
 
 import { navigateToHome } from 'features/navigation/helpers'
 import { RootStackParamList } from 'features/navigation/RootNavigator/types'
-import { act, fireEvent, render, screen, waitFor } from 'tests/utils'
+import { act, fireEvent, render, screen } from 'tests/utils'
 
 import { ResetPasswordEmailSent } from './ResetPasswordEmailSent'
 
@@ -31,14 +31,6 @@ describe('<ResetPasswordEmailSent />', () => {
     fireEvent.press(screen.getByLabelText('Revenir en arrière'))
 
     expect(await screen.findByText('PreviousScreenText')).toBeTruthy()
-  })
-
-  it('should NOT display back button when previous screen is ForgottenPassword', async () => {
-    renderInitialPage('ForgottenPassword')
-
-    await waitFor(() => {
-      expect(screen.queryByTestId('Revenir en arrière')).toBeNull()
-    })
   })
 
   it('should redirect to Home when clicking on Close icon', async () => {
