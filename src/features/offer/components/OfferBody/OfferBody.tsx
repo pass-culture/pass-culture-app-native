@@ -365,6 +365,7 @@ export const OfferBody: FunctionComponent<Props> = ({
         <VenueSelectionModal
           isVisible={isChangeVenueModalVisible}
           items={[]}
+          title={getVenueSectionTitle()}
           onSubmit={onNewOfferVenueSelected}
           onClosePress={hideChangeVenueModal}
         />

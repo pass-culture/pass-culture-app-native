@@ -29,7 +29,13 @@ describe('<VenueSelectionModal />', () => {
 
   it('should render items', () => {
     render(
-      <VenueSelectionModal isVisible items={items} onSubmit={jest.fn()} onClosePress={jest.fn()} />
+      <VenueSelectionModal
+        isVisible
+        items={items}
+        title="Lieu de retrait"
+        onSubmit={jest.fn()}
+        onClosePress={jest.fn()}
+      />
     )
 
     expect(screen.queryAllByTestId('venue-selection-list-item')).toHaveLength(3)
@@ -39,7 +45,13 @@ describe('<VenueSelectionModal />', () => {
     const onClose = jest.fn()
 
     render(
-      <VenueSelectionModal isVisible items={items} onSubmit={jest.fn()} onClosePress={onClose} />
+      <VenueSelectionModal
+        isVisible
+        items={items}
+        title="Lieu de retrait"
+        onSubmit={jest.fn()}
+        onClosePress={onClose}
+      />
     )
 
     fireEvent.press(screen.getByRole('button'))
@@ -51,7 +63,13 @@ describe('<VenueSelectionModal />', () => {
     const onSubmit = jest.fn()
 
     render(
-      <VenueSelectionModal isVisible items={items} onSubmit={onSubmit} onClosePress={jest.fn()} />
+      <VenueSelectionModal
+        isVisible
+        items={items}
+        title="Lieu de retrait"
+        onSubmit={onSubmit}
+        onClosePress={jest.fn()}
+      />
     )
 
     fireEvent.press(screen.getByText('Choisir ce lieu'))
@@ -63,7 +81,13 @@ describe('<VenueSelectionModal />', () => {
     const onSubmit = jest.fn()
 
     render(
-      <VenueSelectionModal isVisible items={items} onSubmit={onSubmit} onClosePress={jest.fn()} />
+      <VenueSelectionModal
+        isVisible
+        items={items}
+        title="Lieu de retrait"
+        onSubmit={onSubmit}
+        onClosePress={jest.fn()}
+      />
     )
 
     fireEvent.press(screen.getByText('Hachette Livre'))
