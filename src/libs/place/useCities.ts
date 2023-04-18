@@ -1,4 +1,4 @@
-import { useQuery } from 'react-query'
+import { useQuery } from '@tanstack/react-query'
 
 import { useNetInfoContext } from 'libs/network/NetInfoWrapper'
 import { SuggestedCity } from 'libs/place'

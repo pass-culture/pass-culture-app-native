@@ -1,6 +1,6 @@
+import { useQueryClient } from '@tanstack/react-query'
 import React, { memo } from 'react'
 import { PixelRatio, View } from 'react-native'
-import { useQueryClient } from 'react-query'
 import styled from 'styled-components/native'
 
 import { ExpenseDomain, OfferResponse, OfferStockResponse, OfferVenueResponse } from 'api/gen'

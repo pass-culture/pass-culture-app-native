@@ -5,7 +5,7 @@ import { EduConnectError } from 'features/identityCheck/pages/identification/err
 import { eventMonitoring } from 'libs/monitoring'
 import { render } from 'tests/utils'
 
-jest.mock('react-query')
+jest.mock('@tanstack/react-query')
 
 describe('EduConnectErrorBoundary component', () => {
   it('should not log error on sentry when error is an expected EduConnectError', () => {

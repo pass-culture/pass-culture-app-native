@@ -3,7 +3,8 @@ import { rest } from 'msw'
 import React from 'react'
 
 import { navigate, replace, useRoute } from '__mocks__/@react-navigation/native'
-import { UserProfileResponse } from 'api/gen'
+import { EligibilityType, UserProfileResponse, YoungStatusType } from 'api/gen'
+import { SubscriptionStatus } from 'api/gen'
 import * as Login from 'features/auth/helpers/useLoginRoutine'
 import { homeNavConfig } from 'features/navigation/TabBar/helpers'
 import { nonBeneficiaryUser } from 'fixtures/user'
@@ -13,16 +14,19 @@ import { env } from 'libs/environment'
 import { analytics } from 'libs/firebase/analytics'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { server } from 'tests/server'
-import { render, waitFor } from 'tests/utils'
+import { act, render, waitFor } from 'tests/utils'
 import { SnackBarHelperSettings } from 'ui/components/snackBar/types'
 
-import { AfterSignupEmailValidationBuffer } from './AfterSignupEmailValidationBuffer'
+import {
+  AfterSignupEmailValidationBuffer,
+  DELAY_DURATION,
+} from './AfterSignupEmailValidationBuffer'
 
 mockdate.set(new Date('2020-12-01T00:00:00Z'))
 
 jest.mock('features/auth/helpers/useLoginRoutine')
 const loginRoutine = jest.fn()
-const mockLoginRoutine = Login.useLoginRoutine as jest.Mock
+const mockLoginRoutine = jest.spyOn(Login, 'useLoginRoutine')
 
 const mockShowInfoSnackBar = jest.fn()
 jest.mock('ui/components/snackBar/SnackBarContext', () => ({
@@ -33,6 +37,30 @@ jest.mock('ui/components/snackBar/SnackBarContext', () => ({
 
 // eslint-disable-next-line local-rules/no-react-query-provider-hoc
 const renderPage = () => render(reactQueryProviderHOC(<AfterSignupEmailValidationBuffer />))
+
+function generateResponse(options: Partial<UserProfileResponse> = {}): UserProfileResponse {
+  return {
+    email: 'email@domain.ext',
+    firstName: 'Jean',
+    eligibility: EligibilityType['age-18'],
+    isEligibleForBeneficiaryUpgrade: true,
+    bookedOffers: {},
+    id: 0,
+    isBeneficiary: false,
+    needsToFillCulturalSurvey: false,
+    roles: [],
+    showEligibleCard: false,
+    status: {
+      statusType: YoungStatusType.eligible,
+      subscriptionStatus: SubscriptionStatus.has_to_complete_subscription,
+    },
+    subscriptions: {
+      marketingEmail: true,
+      marketingPush: true,
+    },
+    ...options,
+  }
+}
 
 describe('<AfterSignupEmailValidationBuffer />', () => {
   beforeAll(() => {
@@ -45,60 +73,76 @@ describe('<AfterSignupEmailValidationBuffer />', () => {
     }))
   })
 
+  beforeEach(() => {
+    jest.useFakeTimers('legacy')
+  })
+
   afterEach(() => {
     navigate.mockRestore()
+    loginRoutine.mockRestore()
+    jest.useRealTimers()
   })
 
   describe('when timestamp is NOT expired', () => {
     it('should redirect to AccountCreated when isEligibleForBeneficiaryUpgrade is false', async () => {
       server.use(
-        rest.get<UserProfileResponse>(env.API_BASE_URL + '/native/v1/me', (_req, res, ctx) =>
-          res.once(
-            ctx.status(200),
-            ctx.json({
-              email: 'email@domain.ext',
-              firstName: 'Jean',
-              eligibility: 'age-18',
-              isEligibleForBeneficiaryUpgrade: false,
-            })
-          )
-        )
+        rest.get<UserProfileResponse>(env.API_BASE_URL + '/native/v1/me', (_req, res, ctx) => {
+          const toto: UserProfileResponse = {
+            email: 'email@domain.ext',
+            firstName: 'Jean',
+            eligibility: EligibilityType['age-18'],
+            isEligibleForBeneficiaryUpgrade: false,
+            bookedOffers: {},
+            id: 0,
+            isBeneficiary: false,
+            needsToFillCulturalSurvey: false,
+            roles: [],
+            showEligibleCard: false,
+            status: {
+              statusType: YoungStatusType.eligible,
+              subscriptionStatus: SubscriptionStatus.has_to_complete_subscription,
+            },
+            subscriptions: {
+              marketingEmail: true,
+              marketingPush: true,
+            },
+          }
+          return res.once(ctx.status(200), ctx.json(toto))
+        })
       )
-      mockLoginRoutine.mockImplementationOnce(() => loginRoutine)
+      mockLoginRoutine.mockImplementationOnce(loginRoutine)
       renderPage()
+
+      act(() => {
+        jest.advanceTimersByTime(DELAY_DURATION)
+      })
 
       await waitFor(() => {
         expect(loginRoutine).toBeCalledTimes(1)
-        expect(replace).toBeCalledTimes(1)
-        expect(replace).toHaveBeenCalledWith('AccountCreated')
+        expect(replace).toHaveBeenNthCalledWith(1, 'AccountCreated')
       })
-      loginRoutine.mockRestore()
     })
 
     it('should redirect to Verify Eligibility when isEligibleForBeneficiaryUpgrade and user is 18 yo', async () => {
       server.use(
-        rest.get<UserProfileResponse>(env.API_BASE_URL + '/native/v1/me', (_req, res, ctx) =>
-          res.once(
-            ctx.status(200),
-            ctx.json({
-              email: 'email@domain.ext',
-              firstName: 'Jean',
-              eligibility: 'age-18',
-              isEligibleForBeneficiaryUpgrade: true,
-            })
-          )
-        )
+        rest.get<UserProfileResponse>(env.API_BASE_URL + '/native/v1/me', (_req, res, ctx) => {
+          const toto = generateResponse()
+          return res.once(ctx.status(200), ctx.json(toto))
+        })
       )
-      mockLoginRoutine.mockImplementationOnce(() => loginRoutine)
+      mockLoginRoutine.mockImplementationOnce(loginRoutine)
       renderPage()
+
+      act(() => {
+        jest.advanceTimersByTime(DELAY_DURATION)
+      })
 
       await waitFor(() => {
         expect(loginRoutine).toBeCalledTimes(1)
-        expect(replace).toBeCalledTimes(1)
-        expect(replace).toHaveBeenCalledWith('VerifyEligibility')
+        expect(replace).toHaveBeenNthCalledWith(1, 'VerifyEligibility')
       })
-      loginRoutine.mockRestore()
     })
+
     it('should redirect to AccountCreated when not isEligibleForBeneficiaryUpgrade and user is not future eligible', async () => {
       server.use(
         rest.get<UserProfileResponse>(env.API_BASE_URL + '/native/v1/me', (_req, res, ctx) =>

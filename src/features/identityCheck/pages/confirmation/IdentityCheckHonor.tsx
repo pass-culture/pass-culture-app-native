@@ -1,6 +1,6 @@
 import { useNavigation } from '@react-navigation/native'
+import { useQueryClient } from '@tanstack/react-query'
 import React, { useEffect } from 'react'
-import { useQueryClient } from 'react-query'
 import styled, { useTheme } from 'styled-components/native'
 
 import { extractApiErrorMessage } from 'api/apiHelpers'

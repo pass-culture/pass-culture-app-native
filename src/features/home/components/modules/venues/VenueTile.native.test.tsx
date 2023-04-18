@@ -7,7 +7,7 @@ import { fireEvent, render, waitFor } from 'tests/utils'
 
 import { VenueTile, VenueTileProps } from './VenueTile'
 
-jest.mock('react-query')
+jest.mock('@tanstack/react-query')
 
 const venue = mockVenues.hits[0]
 

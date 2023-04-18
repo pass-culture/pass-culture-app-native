@@ -7,7 +7,7 @@ import { flushAllPromisesWithAct, render } from 'tests/utils'
 
 import { RecreditBirthdayNotification } from './RecreditBirthdayNotification'
 
-jest.mock('react-query')
+jest.mock('@tanstack/react-query')
 jest.mock('features/auth/context/AuthContext')
 jest.mock('features/profile/api/useUpdateProfileMutation', () => ({
   useResetRecreditAmountToShow: jest.fn().mockReturnValue({

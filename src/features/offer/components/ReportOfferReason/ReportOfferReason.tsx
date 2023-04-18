@@ -1,5 +1,5 @@
+import { useQueryClient } from '@tanstack/react-query'
 import React, { FunctionComponent, useState } from 'react'
-import { useQueryClient } from 'react-query'
 import styled from 'styled-components/native'
 
 import { extractApiErrorMessage } from 'api/apiHelpers'

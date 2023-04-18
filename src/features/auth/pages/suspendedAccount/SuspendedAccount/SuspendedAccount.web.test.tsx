@@ -4,7 +4,7 @@ import { render, checkAccessibilityFor } from 'tests/utils/web'
 
 import { SuspendedAccount } from './SuspendedAccount'
 
-jest.mock('react-query')
+jest.mock('@tanstack/react-query')
 
 describe('<SuspendedAccount/>', () => {
   describe('Accessibility', () => {

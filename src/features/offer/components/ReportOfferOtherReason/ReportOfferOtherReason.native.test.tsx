@@ -1,12 +1,12 @@
+import { useMutation, useQueryClient } from '@tanstack/react-query'
 import React from 'react'
-import { useMutation, useQueryClient } from 'react-query'
 
 import { ReportOfferOtherReason } from 'features/offer/components/ReportOfferOtherReason/ReportOfferOtherReason'
 import { QueryKeys } from 'libs/queryKeys'
 import { fireEvent, render, screen, waitFor, useMutationFactory } from 'tests/utils'
 import { SnackBarHelperSettings } from 'ui/components/snackBar/types'
 
-jest.mock('react-query')
+jest.mock('@tanstack/react-query')
 
 const mockedUseMutation = jest.mocked(useMutation)
 const mockDismissModal = jest.fn()

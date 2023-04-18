@@ -6,7 +6,7 @@ import { mockedAlgoliaResponse } from 'libs/algolia/__mocks__/mockedAlgoliaRespo
 import { Offer } from 'shared/offer/types'
 import { render } from 'tests/utils'
 
-jest.mock('react-query')
+jest.mock('@tanstack/react-query')
 
 const mockHits: Offer[] = mockedAlgoliaResponse.hits
 const mockNbHits = mockedAlgoliaResponse.nbHits

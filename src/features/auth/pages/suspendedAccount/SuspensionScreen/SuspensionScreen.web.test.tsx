@@ -4,7 +4,7 @@ import { render, checkAccessibilityFor } from 'tests/utils/web'
 
 import { SuspensionScreen } from './SuspensionScreen'
 
-jest.mock('react-query')
+jest.mock('@tanstack/react-query')
 
 describe('<SuspensionScreen/>', () => {
   describe('Accessibility', () => {

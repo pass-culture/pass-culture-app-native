@@ -25,7 +25,7 @@ jest.mock('features/identityCheck/context/SubscriptionContextProvider')
 
 jest.spyOn(useFeatureFlag, 'useFeatureFlag').mockReturnValue(true)
 
-jest.mock('react-query')
+jest.mock('@tanstack/react-query')
 
 jest.mock('features/identityCheck/pages/helpers/useStepperInfo')
 const mockUseStepperInfo = useStepperInfo as jest.Mock

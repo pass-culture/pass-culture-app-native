@@ -22,7 +22,7 @@ const mockUseAuthContext = useAuthContext as jest.MockedFunction<typeof useAuthC
 jest.mock('libs/network/useNetInfo', () => jest.requireMock('@react-native-community/netinfo'))
 const mockUseNetInfoContext = useNetInfoContextDefault as jest.Mock
 
-jest.unmock('react-query')
+jest.unmock('@tanstack/react-query')
 const offerId = 116656
 
 interface Options {

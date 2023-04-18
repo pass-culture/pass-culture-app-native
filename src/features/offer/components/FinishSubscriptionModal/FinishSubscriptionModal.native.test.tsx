@@ -6,7 +6,7 @@ import { fireEvent, render } from 'tests/utils'
 
 import { FinishSubscriptionModal } from './FinishSubscriptionModal'
 
-jest.mock('react-query')
+jest.mock('@tanstack/react-query')
 jest.mock('features/navigation/navigationRef')
 
 let mockDepositAmounts: string | undefined = '300\u00a0€'

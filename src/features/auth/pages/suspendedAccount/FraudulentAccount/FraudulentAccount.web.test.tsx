@@ -4,7 +4,7 @@ import { render, checkAccessibilityFor } from 'tests/utils/web'
 
 import { FraudulentAccount } from './FraudulentAccount'
 
-jest.mock('react-query')
+jest.mock('@tanstack/react-query')
 
 describe('<FraudulentAccount/>', () => {
   describe('Accessibility', () => {

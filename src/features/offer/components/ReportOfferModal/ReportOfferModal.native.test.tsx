@@ -3,7 +3,7 @@ import React from 'react'
 import { ReportOfferModal } from 'features/offer/components/ReportOfferModal/ReportOfferModal'
 import { fireEvent, render } from 'tests/utils'
 
-jest.mock('react-query')
+jest.mock('@tanstack/react-query')
 jest.mock('features/offer/api/useReportOffer')
 
 describe('ReportOffer', () => {

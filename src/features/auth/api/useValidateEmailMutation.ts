@@ -1,4 +1,4 @@
-import { useMutation } from 'react-query'
+import { useMutation } from '@tanstack/react-query'
 
 import { api } from 'api/api'
 import { ValidateEmailRequest, ValidateEmailResponse } from 'api/gen'

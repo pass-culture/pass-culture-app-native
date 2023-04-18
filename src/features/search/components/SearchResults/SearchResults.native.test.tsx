@@ -21,7 +21,7 @@ import { Offer } from 'shared/offer/types'
 import { fireEvent, render, act, waitFor, screen } from 'tests/utils'
 import { theme } from 'theme'
 
-jest.mock('react-query')
+jest.mock('@tanstack/react-query')
 
 const searchId = uuidv4()
 const searchState = { ...initialSearchState, searchId }

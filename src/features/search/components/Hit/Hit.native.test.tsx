@@ -15,7 +15,7 @@ let mockDistance: string | null = null
 jest.mock('libs/geolocation/hooks/useDistance', () => ({
   useDistance: () => mockDistance,
 }))
-jest.mock('react-query')
+jest.mock('@tanstack/react-query')
 
 const spyLogClickOnOffer = jest.fn()
 const mockUseLogClickOnOffer = jest.spyOn(logClickOnProductAPI, 'useLogClickOnOffer')

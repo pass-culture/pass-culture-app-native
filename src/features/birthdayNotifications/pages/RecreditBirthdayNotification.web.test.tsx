@@ -4,7 +4,7 @@ import { render, checkAccessibilityFor, screen } from 'tests/utils/web'
 
 import { RecreditBirthdayNotification } from './RecreditBirthdayNotification'
 
-jest.mock('react-query')
+jest.mock('@tanstack/react-query')
 
 describe('<RecreditBirthdayNotification/>', () => {
   describe('Accessibility', () => {

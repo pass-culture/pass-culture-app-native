@@ -1,6 +1,6 @@
+import { UseQueryResult } from '@tanstack/react-query'
 import mockdate from 'mockdate'
 import React from 'react'
-import { UseQueryResult } from 'react-query'
 
 import { useRoute } from '__mocks__/@react-navigation/native'
 import { VenueResponse } from 'api/gen'
@@ -15,7 +15,7 @@ import { render, waitFor } from 'tests/utils'
 
 mockdate.set(new Date('2021-08-15T00:00:00Z'))
 
-jest.mock('react-query')
+jest.mock('@tanstack/react-query')
 
 jest.mock('features/venue/api/useVenueOffers')
 jest.mock('features/venue/api/useVenue')

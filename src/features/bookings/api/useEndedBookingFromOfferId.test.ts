@@ -10,7 +10,7 @@ import { server } from 'tests/server'
 import { renderHook, waitFor } from 'tests/utils'
 
 jest.mock('libs/react-query/usePersistQuery', () => ({
-  usePersistQuery: jest.requireActual('react-query').useQuery,
+  usePersistQuery: jest.requireActual('@tanstack/react-query').useQuery,
 }))
 
 server.use(

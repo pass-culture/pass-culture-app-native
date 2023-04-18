@@ -8,7 +8,7 @@ import { render } from 'tests/utils'
 
 import { NumberOfResults } from './NumberOfResults'
 
-jest.mock('react-query')
+jest.mock('@tanstack/react-query')
 
 const mockPosition: Position = null
 jest.mock('libs/geolocation', () => ({

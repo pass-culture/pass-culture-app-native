@@ -26,7 +26,7 @@ jest.mock('features/search/context/SearchWrapper', () => ({
 
 jest.mock('features/auth/context/AuthContext')
 
-jest.mock('react-query')
+jest.mock('@tanstack/react-query')
 
 jest.mock('features/search/api/useSearchResults/useSearchResults', () => ({
   useSearchResults: () => ({

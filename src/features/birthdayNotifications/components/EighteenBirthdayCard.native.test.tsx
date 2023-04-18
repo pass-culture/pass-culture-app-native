@@ -10,7 +10,7 @@ import { EighteenBirthdayCard } from './EighteenBirthdayCard'
 
 const mockShowInfoSnackBar = jest.fn()
 
-jest.mock('react-query')
+jest.mock('@tanstack/react-query')
 jest.mock('features/auth/helpers/useBeneficiaryValidationNavigation')
 jest.mock('ui/components/snackBar/SnackBarContext', () => ({
   useSnackBarContext: () => ({

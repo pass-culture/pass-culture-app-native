@@ -1,4 +1,4 @@
-import { useQueryClient, useMutation } from 'react-query'
+import { useQueryClient, useMutation } from '@tanstack/react-query'
 
 import { api } from 'api/api'
 import { QueryKeys } from 'libs/queryKeys'
@@ -6,7 +6,7 @@ import { QueryKeys } from 'libs/queryKeys'
 import { useCancelBookingMutation } from './useCancelBookingMutation'
 
 jest.mock('api/api')
-jest.mock('react-query')
+jest.mock('@tanstack/react-query')
 
 describe('[hook] useCancelBookingMutation', () => {
   const onSuccess = jest.fn()

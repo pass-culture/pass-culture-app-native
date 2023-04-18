@@ -1,5 +1,5 @@
+import { useMutation, useQueryClient } from '@tanstack/react-query'
 import React from 'react'
-import { useMutation, useQueryClient } from 'react-query'
 
 import { navigate, replace } from '__mocks__/@react-navigation/native'
 import { queriesToInvalidateOnUnsuspend } from 'features/auth/api/useAccountUnsuspend'
@@ -21,7 +21,7 @@ jest.mock('features/auth/helpers/useLogoutRoutine', () => ({
   useLogoutRoutine: jest.fn(() => mockSignOut.mockResolvedValueOnce(jest.fn())),
 }))
 
-jest.mock('react-query')
+jest.mock('@tanstack/react-query')
 const mockedUseMutation = jest.mocked(useMutation)
 
 const mockShowErrorSnackBar = jest.fn()
@@ -49,17 +49,15 @@ describe('<SuspendedAccount />', () => {
     mockedUseMutation.mockImplementationOnce(useMutationFactory(useMutationCallbacks))
     render(<SuspendedAccount />)
 
-    fireEvent.press(screen.getByText('Réactiver mon compte'))
+    fireEvent.press(await screen.findByText('Réactiver mon compte'))
 
     expect(analytics.logAccountReactivation).toBeCalledWith('suspendedaccount')
 
     useMutationCallbacks.onSuccess()
-    await waitFor(() => {
-      queriesToInvalidateOnUnsuspend.forEach((queryKey) =>
-        expect(queryClient.invalidateQueries).toHaveBeenCalledWith([queryKey])
-      )
-      expect(replace).toHaveBeenNthCalledWith(1, 'AccountReactivationSuccess')
-    })
+    queriesToInvalidateOnUnsuspend.forEach((queryKey) =>
+      expect(queryClient.invalidateQueries).toHaveBeenCalledWith([queryKey])
+    )
+    expect(replace).toHaveBeenNthCalledWith(1, 'AccountReactivationSuccess')
   })
 
   it('should log analytics and show error snackbar on error', async () => {

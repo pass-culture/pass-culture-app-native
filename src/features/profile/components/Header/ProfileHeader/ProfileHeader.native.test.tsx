@@ -7,7 +7,7 @@ import { domains_credit_v1 } from 'features/profile/fixtures/domainsCredit'
 import { isUserUnderageBeneficiary } from 'features/profile/helpers/isUserUnderageBeneficiary'
 import { render } from 'tests/utils'
 
-jest.mock('react-query')
+jest.mock('@tanstack/react-query')
 
 const user: UserProfileResponse = {
   bookedOffers: {},

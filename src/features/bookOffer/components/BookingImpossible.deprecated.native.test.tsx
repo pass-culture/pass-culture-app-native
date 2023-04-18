@@ -1,6 +1,6 @@
+import { QueryClient } from '@tanstack/react-query'
 import { rest } from 'msw'
 import * as React from 'react'
-import { QueryClient } from 'react-query'
 
 import { FavoriteResponse } from 'api/gen'
 import { favoriteResponseSnap } from 'features/favorites/fixtures/favoriteResponseSnap'

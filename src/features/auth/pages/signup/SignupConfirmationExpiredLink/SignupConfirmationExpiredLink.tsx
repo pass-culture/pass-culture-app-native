@@ -1,7 +1,7 @@
 import { useNavigation } from '@react-navigation/native'
 import { StackScreenProps } from '@react-navigation/stack'
+import { useQuery } from '@tanstack/react-query'
 import React, { useCallback } from 'react'
-import { useQuery } from 'react-query'
 
 import { api } from 'api/api'
 import { RootStackParamList, UseNavigationType } from 'features/navigation/RootNavigator/types'
@@ -34,6 +34,7 @@ export function SignupConfirmationExpiredLink(props: Props) {
       return result
     } catch (err) {
       throw new AsyncError('NETWORK_REQUEST_FAILED', signupConfirmationExpiredLinkQuery)
+      return null
     }
   }
 

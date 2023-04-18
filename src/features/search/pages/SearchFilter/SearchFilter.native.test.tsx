@@ -8,7 +8,6 @@ import { MAX_RADIUS } from 'features/search/helpers/reducer.helpers'
 import { SearchView } from 'features/search/types'
 import { analytics } from 'libs/firebase/analytics'
 import { GeoCoordinates, Position } from 'libs/geolocation'
-import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { fireEvent, render, screen, waitFor } from 'tests/utils'
 
 import { SearchFilter } from './SearchFilter'
@@ -30,6 +29,8 @@ jest.mock('libs/geolocation/GeolocationWrapper', () => ({
   }),
 }))
 
+jest.mock('@tanstack/react-query')
+
 describe('<SearchFilter/>', () => {
   afterEach(() => {
     mockPosition = DEFAULT_POSITION
@@ -40,10 +41,10 @@ describe('<SearchFilter/>', () => {
       locationType: LocationType.AROUND_ME,
       aroundRadius: 100,
     }
-    const { toJSON } = renderSearchFilter()
+    render(<SearchFilter />)
 
     await waitFor(() => {
-      expect(toJSON()).toMatchSnapshot()
+      expect(screen.toJSON()).toMatchSnapshot()
     })
   })
 
@@ -51,7 +52,7 @@ describe('<SearchFilter/>', () => {
     useRoute.mockReturnValueOnce({
       params: { offerCategories: [SearchGroupNameEnumv2.CD_VINYLE_MUSIQUE_EN_LIGNE] },
     })
-    renderSearchFilter()
+    render(<SearchFilter />)
 
     await waitFor(() => {
       expect(mockStateDispatch).toHaveBeenCalledWith({
@@ -64,7 +65,7 @@ describe('<SearchFilter/>', () => {
   describe('should navigate on search results with the current search state', () => {
     it('when pressing go back', async () => {
       useRoute.mockReturnValueOnce({ params: initialSearchState })
-      renderSearchFilter()
+      render(<SearchFilter />)
 
       fireEvent.press(screen.getByTestId('Fermer'))
 
@@ -77,7 +78,7 @@ describe('<SearchFilter/>', () => {
     })
 
     it('when pressing Rechercher', async () => {
-      renderSearchFilter()
+      render(<SearchFilter />)
 
       fireEvent.press(screen.getByText('Rechercher'))
 
@@ -92,7 +93,7 @@ describe('<SearchFilter/>', () => {
 
   describe('should update the state when pressing the reset button', () => {
     it('and position is not null', async () => {
-      renderSearchFilter()
+      render(<SearchFilter />)
 
       fireEvent.press(screen.getByText('Réinitialiser'))
 
@@ -113,7 +114,7 @@ describe('<SearchFilter/>', () => {
 
     it('and position is null', async () => {
       mockPosition = null
-      renderSearchFilter()
+      render(<SearchFilter />)
 
       fireEvent.press(screen.getByText('Réinitialiser'))
 
@@ -134,7 +135,7 @@ describe('<SearchFilter/>', () => {
   })
 
   it('should log analytics when clicking on the reset button', async () => {
-    renderSearchFilter()
+    render(<SearchFilter />)
 
     fireEvent.press(screen.getByText('Réinitialiser'))
 
@@ -144,7 +145,7 @@ describe('<SearchFilter/>', () => {
   })
 
   it('should display close button on header', async () => {
-    renderSearchFilter()
+    render(<SearchFilter />)
 
     await waitFor(() => {
       expect(screen.getByTestId('Fermer')).toBeTruthy()
@@ -152,13 +153,10 @@ describe('<SearchFilter/>', () => {
   })
 
   it('should not display back button on header', async () => {
-    renderSearchFilter()
+    render(<SearchFilter />)
 
     await waitFor(() => {
       expect(screen.queryByTestId('Revenir en arrière')).toBeFalsy()
     })
   })
 })
-
-// eslint-disable-next-line local-rules/no-react-query-provider-hoc
-const renderSearchFilter = () => render(reactQueryProviderHOC(<SearchFilter />))

@@ -1,4 +1,4 @@
-import { useQuery } from 'react-query'
+import { useQuery } from '@tanstack/react-query'
 
 import { api } from 'api/api'
 import { ProfileOptionsResponse } from 'api/gen'

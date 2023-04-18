@@ -1,5 +1,5 @@
 import AsyncStorage from '@react-native-async-storage/async-storage'
-import { useQueryClient } from 'react-query'
+import { useQueryClient } from '@tanstack/react-query'
 
 import { BatchUser } from '__mocks__/libs/react-native-batch'
 import { analytics } from 'libs/firebase/analytics'
@@ -9,8 +9,8 @@ import { renderHook } from 'tests/utils'
 import { LoggedInQueryKeys, useLogoutRoutine } from './useLogoutRoutine'
 
 jest.mock('api/api')
-jest.mock('react-query', () => ({
-  ...jest.requireActual('react-query'),
+jest.mock('@tanstack/react-query', () => ({
+  ...jest.requireActual('@tanstack/react-query'),
   useQueryClient: jest.fn().mockReturnValue({ removeQueries: jest.fn() }),
   usePersistQuery: jest.fn(),
 }))

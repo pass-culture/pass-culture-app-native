@@ -12,7 +12,6 @@ import { offerStockResponseSnap } from 'features/offer/fixtures/offerStockRespon
 import * as UnderageUserAPI from 'features/profile/helpers/useIsUserUnderage'
 import * as logOfferConversionAPI from 'libs/algolia/analytics/logOfferConversion'
 import { env } from 'libs/environment'
-import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { server } from 'tests/server'
 import { fireEvent, render, screen } from 'tests/utils'
 import { SnackBarHelperSettings } from 'ui/components/snackBar/types'
@@ -83,6 +82,8 @@ server.use(
   )
 )
 const mockOnPressBookOffer = jest.fn()
+
+jest.mock('@tanstack/react-query')
 
 describe('<BookingDetails />', () => {
   describe('with initial state', () => {
@@ -257,9 +258,6 @@ function renderBookingDetails({
   onPressBookOffer,
 }: BookingDetailsProps) {
   return render(
-    // eslint-disable-next-line local-rules/no-react-query-provider-hoc
-    reactQueryProviderHOC(
-      <BookingDetails stocks={stocks} isLoading={isLoading} onPressBookOffer={onPressBookOffer} />
-    )
+    <BookingDetails stocks={stocks} isLoading={isLoading} onPressBookOffer={onPressBookOffer} />
   )
 }

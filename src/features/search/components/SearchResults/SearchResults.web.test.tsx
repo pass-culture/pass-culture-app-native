@@ -5,7 +5,7 @@ import { render, screen } from 'tests/utils/web'
 
 import { SearchResults } from './SearchResults'
 
-jest.mock('react-query')
+jest.mock('@tanstack/react-query')
 
 const mockData = { pages: [{ nbHits: 0, hits: [], page: 0 }] }
 const mockHasNextPage = true

@@ -1,1 +1,1 @@
-export { useQuery as usePersistQuery } from 'react-query'
+export { useQuery as usePersistQuery } from '@tanstack/react-query'

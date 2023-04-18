@@ -8,7 +8,7 @@ import { render, checkAccessibilityFor } from 'tests/utils/web'
 
 import { BookingOfferModalComponent } from './BookingOfferModal'
 
-jest.mock('react-query')
+jest.mock('@tanstack/react-query')
 jest.mock('features/auth/context/AuthContext')
 jest.mock('features/bookOffer/helpers/useBookingStock')
 

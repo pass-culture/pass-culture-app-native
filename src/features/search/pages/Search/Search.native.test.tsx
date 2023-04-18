@@ -30,7 +30,7 @@ jest.mock('features/search/context/SearchWrapper', () => ({
   useSearch: () => ({ searchState: mockSearchState, dispatch: mockDispatch }),
 }))
 
-jest.mock('react-query')
+jest.mock('@tanstack/react-query')
 
 const mockData = { pages: [{ nbHits: 0, hits: [], page: 0 }] }
 const mockHasNextPage = true

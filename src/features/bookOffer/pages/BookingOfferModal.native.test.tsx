@@ -60,7 +60,7 @@ jest.spyOn(Auth, 'useAuthContext').mockReturnValue({
   setIsLoggedIn: jest.fn(),
 }) as jest.Mock
 
-jest.mock('react-query')
+jest.mock('@tanstack/react-query')
 
 const useFeatureFlagSpy = jest.spyOn(useFeatureFlag, 'useFeatureFlag').mockReturnValue(false)
 

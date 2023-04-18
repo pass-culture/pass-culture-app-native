@@ -1,6 +1,6 @@
+import { useQuery } from '@tanstack/react-query'
 import uniqBy from 'lodash/uniqBy'
 import { useEffect, useMemo } from 'react'
-import { useQuery } from 'react-query'
 
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { OffersModuleParameters } from 'features/home/types'

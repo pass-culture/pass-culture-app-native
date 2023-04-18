@@ -1,4 +1,4 @@
-import { QueryCache, QueryClient } from 'react-query'
+import { QueryCache, QueryClient } from '@tanstack/react-query'
 // every query is considered stale once it's triggered. As a result,
 // every time we consult an offer, the request will be made to the server
 // this allows us to have a direct feedback when changing home playlist for instance

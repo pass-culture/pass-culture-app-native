@@ -4,7 +4,7 @@ import { render, checkAccessibilityFor, act } from 'tests/utils/web'
 
 import { BookingConfirmation } from './BookingConfirmation'
 
-jest.mock('react-query')
+jest.mock('@tanstack/react-query')
 
 jest.mock('shared/user/useAvailableCredit', () => ({
   useAvailableCredit: jest.fn(() => ({ isExpired: false, amount: 2000 })),

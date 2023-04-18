@@ -5,7 +5,7 @@ import { render, checkAccessibilityFor } from 'tests/utils/web'
 
 import { ReinitializePassword } from './ReinitializePassword'
 
-jest.mock('react-query')
+jest.mock('@tanstack/react-query')
 
 jest.mock('uuid', () => {
   let value = 0

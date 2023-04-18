@@ -77,7 +77,7 @@ describe('<OfferHeader />', () => {
 
   it('should fully display the title at the end of the animation', async () => {
     const { animatedValue } = renderOfferHeader()
-    expect(screen.getByTestId('offerHeaderName').props.accessibilityHidden).toBeTruthy()
+    expect((await screen.findByTestId('offerHeaderName')).props.accessibilityHidden).toBeTruthy()
     expect(screen.getByTestId('offerHeaderName').props.style.opacity).toBe(0)
 
     act(() => {
@@ -85,10 +85,8 @@ describe('<OfferHeader />', () => {
       jest.advanceTimersByTime(100)
     })
 
-    await waitFor(() => {
-      expect(screen.getByTestId('offerHeaderName').props.accessibilityHidden).toBeFalsy()
-      expect(screen.getByTestId('offerHeaderName').props.style.opacity).toBe(1)
-    })
+    expect(screen.getByTestId('offerHeaderName').props.accessibilityHidden).toBeFalsy()
+    expect(screen.getByTestId('offerHeaderName').props.style.opacity).toBe(1)
   })
 
   it('should display SignIn modal when pressing Favorite - not logged in users', async () => {

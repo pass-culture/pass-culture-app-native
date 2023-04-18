@@ -371,7 +371,7 @@ describe('<Offer />', () => {
 
     renderOfferPage(mockedBookingApi.id)
 
-    fireEvent.press(screen.getByText('Voir les disponibilités'))
+    fireEvent.press(await screen.findByText('Voir les disponibilités'))
 
     await waitFor(() => {
       expect(screen.queryByText('Réservation impossible')).toBeTruthy()

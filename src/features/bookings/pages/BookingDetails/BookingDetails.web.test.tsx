@@ -1,5 +1,5 @@
+import { UseQueryResult } from '@tanstack/react-query'
 import React from 'react'
-import { UseQueryResult } from 'react-query'
 
 import { useRoute } from '__mocks__/@react-navigation/native'
 import { BookingReponse } from 'api/gen'

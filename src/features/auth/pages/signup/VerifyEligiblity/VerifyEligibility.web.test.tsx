@@ -4,7 +4,7 @@ import { render, checkAccessibilityFor } from 'tests/utils/web'
 
 import { VerifyEligibility } from './VerifyEligibility'
 
-jest.mock('react-query')
+jest.mock('@tanstack/react-query')
 
 describe('<VerifyEligibility/>', () => {
   describe('Accessibility', () => {

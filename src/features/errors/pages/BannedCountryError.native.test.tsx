@@ -4,7 +4,7 @@ import { render } from 'tests/utils'
 
 import { BannedCountryError } from './BannedCountryError'
 
-jest.mock('react-query')
+jest.mock('@tanstack/react-query')
 
 describe('BannedCountryError', () => {
   it('should render correctly', () => {

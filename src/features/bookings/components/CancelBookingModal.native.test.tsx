@@ -1,5 +1,5 @@
+import { useMutation } from '@tanstack/react-query'
 import React from 'react'
-import { useMutation } from 'react-query'
 
 import { navigate } from '__mocks__/@react-navigation/native'
 import { CancelBookingModal } from 'features/bookings/components/CancelBookingModal'
@@ -11,7 +11,7 @@ import { fireEvent, render, useMutationFactory } from 'tests/utils'
 import { SNACK_BAR_TIME_OUT } from 'ui/components/snackBar/SnackBarContext'
 import { SnackBarHelperSettings } from 'ui/components/snackBar/types'
 
-jest.mock('react-query')
+jest.mock('@tanstack/react-query')
 
 const mockedUseMutation = jest.mocked(useMutation)
 const mockDismissModal = jest.fn()

@@ -1,6 +1,6 @@
+import { useQueryErrorResetBoundary } from '@tanstack/react-query'
 import React, { ReactNode, useEffect } from 'react'
 import { FallbackProps } from 'react-error-boundary'
-import { useQueryErrorResetBoundary } from 'react-query'
 import styled from 'styled-components/native'
 
 import { homeNavConfig } from 'features/navigation/TabBar/helpers'

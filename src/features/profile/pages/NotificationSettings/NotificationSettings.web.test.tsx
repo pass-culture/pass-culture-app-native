@@ -4,7 +4,7 @@ import { render, checkAccessibilityFor, act } from 'tests/utils/web'
 
 import { NotificationSettings } from './NotificationSettings'
 
-jest.mock('react-query')
+jest.mock('@tanstack/react-query')
 
 describe('<NotificationSettings/>', () => {
   describe('Accessibility', () => {

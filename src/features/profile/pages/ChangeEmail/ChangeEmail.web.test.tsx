@@ -4,7 +4,7 @@ import { render, checkAccessibilityFor } from 'tests/utils/web'
 
 import { ChangeEmail } from './ChangeEmail'
 
-jest.mock('react-query')
+jest.mock('@tanstack/react-query')
 
 const mockV4 = jest.fn()
 jest.mock('uuid', () => ({

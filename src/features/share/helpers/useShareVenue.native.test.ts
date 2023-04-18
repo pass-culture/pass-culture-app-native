@@ -7,7 +7,7 @@ import { DOUBLE_LINE_BREAK } from 'ui/theme/constants'
 
 import { useShareVenue } from './useShareVenue'
 
-jest.mock('react-query')
+jest.mock('@tanstack/react-query')
 jest.mock('features/venue/api/useVenue')
 
 const mockShare = jest

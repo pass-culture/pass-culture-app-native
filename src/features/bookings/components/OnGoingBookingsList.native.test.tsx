@@ -1,5 +1,5 @@
+import { UseQueryResult } from '@tanstack/react-query'
 import React from 'react'
-import { UseQueryResult } from 'react-query'
 
 import { BookingsResponse, SubcategoriesResponseModelv2 } from 'api/gen'
 import { useBookings } from 'features/bookings/api'
@@ -13,7 +13,7 @@ import { SNACK_BAR_TIME_OUT } from 'ui/components/snackBar/SnackBarContext'
 
 import { OnGoingBookingsList } from './OnGoingBookingsList'
 
-jest.mock('react-query')
+jest.mock('@tanstack/react-query')
 
 jest.mock('features/bookings/api')
 const mockUseBookings = jest.mocked(useBookings)

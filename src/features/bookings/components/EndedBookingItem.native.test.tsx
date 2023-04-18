@@ -9,7 +9,7 @@ import { fireEvent, render, screen } from 'tests/utils'
 
 import { EndedBookingItem } from './EndedBookingItem'
 
-jest.mock('react-query')
+jest.mock('@tanstack/react-query')
 
 describe('EndedBookingItem', () => {
   it('should display offer title', () => {

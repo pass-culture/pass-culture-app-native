@@ -4,7 +4,7 @@ import { render, checkAccessibilityFor, act } from 'tests/utils/web'
 
 import { ConsentSettings } from './ConsentSettings'
 
-jest.mock('react-query')
+jest.mock('@tanstack/react-query')
 
 const mockNavigate = jest.fn()
 jest.mock('@react-navigation/native', () => ({
