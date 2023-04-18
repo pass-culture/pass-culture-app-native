@@ -1,5 +1,4 @@
 import { RouteProp } from '@react-navigation/native'
-import { StackNavigationProp } from '@react-navigation/stack'
 import React from 'react'
 import { openInbox } from 'react-native-email-link'
 
@@ -17,36 +16,15 @@ const routeMock: RouteProp<RootStackParamList, 'ResetPasswordEmailSent'> = {
   name: 'ResetPasswordEmailSent',
   params: { email: 'john.doe@gmail.com' },
 }
-
-const navigationMock: StackNavigationProp<RootStackParamList, 'ResetPasswordEmailSent', undefined> =
-  {
-    navigate: jest.fn(),
-    goBack: jest.fn(),
-    isFocused: jest.fn(),
-    dispatch: jest.fn(),
-    reset: jest.fn(),
-    canGoBack: jest.fn(),
-    getId: jest.fn(),
-    getState: jest.fn(),
-    getParent: jest.fn(),
-    setParams: jest.fn(),
-    setOptions: jest.fn(),
-    addListener: jest.fn(),
-    removeListener: jest.fn(),
-    replace: jest.fn(),
-    push: jest.fn(),
-    pop: jest.fn(),
-    popToTop: jest.fn(),
-  }
 describe('<ResetPasswordEmailSent />', () => {
   it('should match snapshot', () => {
-    render(<ResetPasswordEmailSent route={routeMock} navigation={navigationMock} />)
+    render(<ResetPasswordEmailSent route={routeMock} />)
 
     expect(screen).toMatchSnapshot()
   })
 
   it('should redirect to previous screen when clicking on ArrowPrevious icon', async () => {
-    render(<ResetPasswordEmailSent route={routeMock} navigation={navigationMock} />)
+    render(<ResetPasswordEmailSent route={routeMock} />)
 
     fireEvent.press(screen.getByLabelText('Revenir en arrière'))
 
@@ -54,7 +32,7 @@ describe('<ResetPasswordEmailSent />', () => {
   })
 
   it('should redirect to Home when clicking on Close icon', async () => {
-    render(<ResetPasswordEmailSent route={routeMock} navigation={navigationMock} />)
+    render(<ResetPasswordEmailSent route={routeMock} />)
 
     fireEvent.press(await screen.findByLabelText('Revenir à l’accueil'))
 
@@ -62,7 +40,7 @@ describe('<ResetPasswordEmailSent />', () => {
   })
 
   it('should open mail app when clicking on check email button', async () => {
-    render(<ResetPasswordEmailSent route={routeMock} navigation={navigationMock} />)
+    render(<ResetPasswordEmailSent route={routeMock} />)
 
     const checkEmailsButton = await screen.findByText('Consulter mes e-mails')
     fireEvent.press(checkEmailsButton)

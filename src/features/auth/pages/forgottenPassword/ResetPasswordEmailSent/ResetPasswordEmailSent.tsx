@@ -17,7 +17,7 @@ import { Close } from 'ui/svg/icons/Close'
 import { ExternalSite } from 'ui/svg/icons/ExternalSite'
 import { padding, Spacer, Typo } from 'ui/theme'
 
-type Props = StackScreenProps<RootStackParamList, 'ResetPasswordEmailSent'>
+type Props = Pick<StackScreenProps<RootStackParamList, 'ResetPasswordEmailSent'>, 'route'>
 
 export const ResetPasswordEmailSent: FunctionComponent<Props> = ({ route }) => {
   const { goBack } = useGoBack('Login', undefined)
