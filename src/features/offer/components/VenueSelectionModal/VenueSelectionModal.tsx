@@ -26,16 +26,13 @@ export function VenueSelectionModal({
   const { modal } = useTheme()
   const [selectedOffer, setSelectedOffer] = useState<number>()
 
-  const handleSubmit = useCallback(
-    function handleSubmit() {
-      /**
-       * `selectedOffer` would always be there since submit is disabled otherwise,
-       * but TypeScript can't understand this so a check is necessary.
-       */
-      onSubmit(selectedOffer as number)
-    },
-    [onSubmit, selectedOffer]
-  )
+  const handleSubmit = useCallback(() => {
+    /**
+     * `selectedOffer` would always be there since submit is disabled otherwise,
+     * but TypeScript can't understand this so a check is necessary.
+     */
+    onSubmit(selectedOffer as number)
+  }, [onSubmit, selectedOffer])
 
   return (
     <AppModal
