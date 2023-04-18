@@ -1,11 +1,11 @@
-import { useRoute } from '@react-navigation/native'
+import { useNavigation, useRoute } from '@react-navigation/native'
 import React, { FunctionComponent, useCallback, useRef, useState } from 'react'
 import { ScrollView } from 'react-native'
 import styled from 'styled-components/native'
 
 import { ReportedOffer, SubcategoryIdEnum } from 'api/gen'
 import { useAuthContext } from 'features/auth/context/AuthContext'
-import { UseRouteType } from 'features/navigation/RootNavigator/types'
+import { UseNavigationType, UseRouteType } from 'features/navigation/RootNavigator/types'
 import { useOffer } from 'features/offer/api/useOffer'
 import { useReportedOffers } from 'features/offer/api/useReportedOffers'
 import { LocationCaption } from 'features/offer/components/LocationCaption'
@@ -14,6 +14,7 @@ import { OfferPartialDescription } from 'features/offer/components/OfferPartialD
 import { OfferTile } from 'features/offer/components/OfferTile/OfferTile'
 import { ReportOfferModal } from 'features/offer/components/ReportOfferModal/ReportOfferModal'
 import { MessagingApps } from 'features/offer/components/shareMessagingOffer/MessagingApps'
+import { VenueSelectionModal } from 'features/offer/components/VenueSelectionModal/VenueSelectionModal'
 import { PlaylistType } from 'features/offer/enums'
 import { useTrackOfferSeenDuration } from 'features/offer/helpers/useTrackOfferSeenDuration'
 import { isUserBeneficiary } from 'features/profile/helpers/isUserBeneficiary'
@@ -42,6 +43,7 @@ import { AccordionItem } from 'ui/components/AccordionItem'
 import { ButtonSecondary } from 'ui/components/buttons/ButtonSecondary'
 import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
 import { Hero } from 'ui/components/hero/Hero'
+import { useModal } from 'ui/components/modals/useModal'
 import { PassPlaylist } from 'ui/components/PassPlaylist'
 import { CustomListRenderItem } from 'ui/components/Playlist'
 import { SectionWithDivider } from 'ui/components/SectionWithDivider'
@@ -71,6 +73,7 @@ export const OfferBody: FunctionComponent<Props> = ({
   otherCategoriesSimilarOffers,
   shouldUseAlgoliaRecommend,
 }) => {
+  const { navigate } = useNavigation<UseNavigationType>()
   const route = useRoute<UseRouteType<'Offer'>>()
   const { data: offer } = useOffer({ offerId })
   const { user } = useAuthContext()
@@ -144,6 +147,19 @@ export const OfferBody: FunctionComponent<Props> = ({
   const { data: reportedOffersResponse } = useReportedOffers()
   const isOfferAlreadyReported = reportedOffersResponse?.reportedOffers?.find(
     (reportedOffer: ReportedOffer) => reportedOffer.offerId === offerId
+  )
+
+  const {
+    visible: isChangeVenueModalVisible,
+    showModal: showChangeVenueModal,
+    hideModal: hideChangeVenueModal,
+  } = useModal(false)
+
+  const onNewOfferVenueSelected = useCallback(
+    (nextOfferId: number) => {
+      navigate('Offer', { fromOfferId: offerId, id: nextOfferId })
+    },
+    [navigate, offerId]
   )
 
   if (!offer) return <React.Fragment></React.Fragment>
@@ -228,7 +244,11 @@ export const OfferBody: FunctionComponent<Props> = ({
         {shouldDisplayOtherVenuesAvailableButton ? (
           <React.Fragment>
             <Spacer.Column numberOfSpaces={2} />
-            <ButtonSecondary wording="Voir d’autres lieux disponibles" fullWidth />
+            <ButtonSecondary
+              wording="Voir d’autres lieux disponibles"
+              fullWidth
+              onPress={showChangeVenueModal}
+            />
             <Spacer.Column numberOfSpaces={6} />
           </React.Fragment>
         ) : (
@@ -320,6 +340,15 @@ export const OfferBody: FunctionComponent<Props> = ({
       <SectionWithDivider visible>
         <Spacer.Column numberOfSpaces={6} />
       </SectionWithDivider>
+
+      {shouldDisplayOtherVenuesAvailableButton ? (
+        <VenueSelectionModal
+          isVisible={isChangeVenueModalVisible}
+          items={[]}
+          onSubmit={onNewOfferVenueSelected}
+          onClosePress={hideChangeVenueModal}
+        />
+      ) : null}
     </Container>
   )
 }

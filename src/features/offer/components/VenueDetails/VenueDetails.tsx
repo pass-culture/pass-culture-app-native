@@ -3,13 +3,11 @@ import { View, ViewProps } from 'react-native'
 import styled from 'styled-components/native'
 
 import { DistanceTag } from 'features/offer/components/DistanceTag/DistanceTag'
+import { VenueDetail } from 'features/offer/types'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 import { getHoverStyle } from 'ui/theme/getHoverStyle/getHoverStyle'
 
-export interface VenueDetailsProps extends ViewProps {
-  title: string
-  address: string
-  distance?: string
+export interface VenueDetailsProps extends VenueDetail, ViewProps {
   isHover?: boolean
 }
 
