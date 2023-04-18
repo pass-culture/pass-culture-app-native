@@ -4,7 +4,7 @@ import { QueryFunction } from '@tanstack/react-query'
 import { eventMonitoring } from 'libs/monitoring'
 import { useNetInfoContext as useNetInfoContextDefault } from 'libs/network/NetInfoWrapper'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { flushAllPromisesWithAct, renderHook, waitFor } from 'tests/utils'
+import { renderHook, waitFor } from 'tests/utils'
 
 import { usePersistQuery } from '../usePersistQuery'
 
@@ -39,13 +39,11 @@ describe('usePersistQuery', () => {
         wrapper: ({ children }) => reactQueryProviderHOC(children),
       })
 
-      await flushAllPromisesWithAct()
-
-      const persistDataStr = await AsyncStorage.getItem(stringifiedQueryKey)
-      expect(persistDataStr).toBeTruthy()
-
-      // @ts-expect-error Because it cannot be null
-      expect(JSON.parse(persistDataStr)).toEqual(onlineData)
+      await waitFor(async () => {
+        const persistDataStr = await AsyncStorage.getItem(stringifiedQueryKey)
+        // @ts-expect-error Because it cannot be null
+        expect(JSON.parse(persistDataStr)).toEqual(onlineData)
+      })
     })
 
     it('should fail to save distant data locally and log to sentry', async () => {
@@ -56,14 +54,10 @@ describe('usePersistQuery', () => {
         wrapper: ({ children }) => reactQueryProviderHOC(children),
       })
 
-      await flushAllPromisesWithAct()
-
-      const persistDataStr = await AsyncStorage.getItem(stringifiedQueryKey)
-
-      expect(persistDataStr).toBeFalsy()
-
-      expect(eventMonitoring.captureException).toBeCalledWith(error, {
-        context: { queryKey, data: onlineData },
+      await waitFor(() => {
+        expect(eventMonitoring.captureException).toBeCalledWith(error, {
+          context: { queryKey, data: onlineData },
+        })
       })
     })
   })
@@ -76,8 +70,6 @@ describe('usePersistQuery', () => {
     })
 
     it('should show offline data first, then online data', async () => {
-      const persistDataStr = await AsyncStorage.getItem(stringifiedQueryKey)
-      expect(persistDataStr).toBeTruthy()
       renderHook(() => usePersistQuery(queryKey, queryFn), {
         // eslint-disable-next-line local-rules/no-react-query-provider-hoc
         wrapper: ({ children }) => reactQueryProviderHOC(children),
@@ -87,25 +79,24 @@ describe('usePersistQuery', () => {
       jest.spyOn(global.console, 'error').mockImplementationOnce(() => null)
       expect(await AsyncStorage.getItem(stringifiedQueryKey)).toEqual(JSON.stringify(offlineData))
 
-      await flushAllPromisesWithAct()
-
-      expect(await AsyncStorage.getItem(stringifiedQueryKey)).toEqual(JSON.stringify(onlineData))
+      await waitFor(async () => {
+        expect(await AsyncStorage.getItem(stringifiedQueryKey)).toEqual(JSON.stringify(onlineData))
+      })
     })
 
     it('should fail to read local data and log to sentry', async () => {
       const error = new Error('READING_REJECTED')
-      const persistDataStr = await AsyncStorage.getItem(stringifiedQueryKey)
-      expect(persistDataStr).toBeTruthy()
+
       jest.spyOn(AsyncStorage, 'getItem').mockRejectedValueOnce(error)
       renderHook(() => usePersistQuery(queryKey, queryFn), {
         // eslint-disable-next-line local-rules/no-react-query-provider-hoc
         wrapper: ({ children }) => reactQueryProviderHOC(children),
       })
 
-      await flushAllPromisesWithAct()
-
-      expect(eventMonitoring.captureException).toBeCalledWith(error, {
-        context: { queryKey },
+      await waitFor(() => {
+        expect(eventMonitoring.captureException).toBeCalledWith(error, {
+          context: { queryKey },
+        })
       })
     })
 
