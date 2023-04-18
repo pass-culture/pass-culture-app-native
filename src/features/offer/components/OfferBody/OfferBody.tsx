@@ -14,6 +14,7 @@ import { OfferPartialDescription } from 'features/offer/components/OfferPartialD
 import { OfferTile } from 'features/offer/components/OfferTile/OfferTile'
 import { ReportOfferModal } from 'features/offer/components/ReportOfferModal/ReportOfferModal'
 import { MessagingApps } from 'features/offer/components/shareMessagingOffer/MessagingApps'
+import { VenueSection } from 'features/offer/components/VenueSection/VenueSection'
 import { VenueSelectionModal } from 'features/offer/components/VenueSelectionModal/VenueSelectionModal'
 import { PlaylistType } from 'features/offer/enums'
 import { useTrackOfferSeenDuration } from 'features/offer/helpers/useTrackOfferSeenDuration'
@@ -194,6 +195,12 @@ export const OfferBody: FunctionComponent<Props> = ({
       ? formattedDate.charAt(0).toUpperCase() + formattedDate.slice(1)
       : formattedDate
 
+  const getVenueSectionTitle = () => {
+    if (offer.subcategoryId === SubcategoryIdEnum.SEANCE_CINE) return 'Lieu de projection'
+    if (isEvent) return 'Lieu de l’événement'
+    return 'Lieu de retrait'
+  }
+
   return (
     <Container
       testID="offer-container"
@@ -232,15 +239,28 @@ export const OfferBody: FunctionComponent<Props> = ({
       </SectionWithDivider>
 
       <SectionWithDivider visible={!offer.isDigital} margin>
-        <WhereSection
-          beforeNavigateToItinerary={() =>
-            analytics.logConsultItinerary({ offerId: offer.id, from: 'offer' })
-          }
-          venue={venue}
-          address={fullAddress}
-          locationCoordinates={venue.coordinates}
-          showVenueBanner={showVenueBanner}
-        />
+        {enableMultivenueOffer ? (
+          <VenueSection
+            beforeNavigateToItinerary={() =>
+              analytics.logConsultItinerary({ offerId: offer.id, from: 'offer' })
+            }
+            venue={venue}
+            locationCoordinates={venue.coordinates}
+            showVenueBanner={showVenueBanner}
+            title={getVenueSectionTitle()}
+          />
+        ) : (
+          <WhereSection
+            beforeNavigateToItinerary={() =>
+              analytics.logConsultItinerary({ offerId: offer.id, from: 'offer' })
+            }
+            venue={venue}
+            address={fullAddress}
+            locationCoordinates={venue.coordinates}
+            showVenueBanner={showVenueBanner}
+          />
+        )}
+
         {shouldDisplayOtherVenuesAvailableButton ? (
           <React.Fragment>
             <Spacer.Column numberOfSpaces={2} />
