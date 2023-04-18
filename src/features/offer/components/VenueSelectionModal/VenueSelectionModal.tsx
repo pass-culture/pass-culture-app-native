@@ -43,7 +43,7 @@ export function VenueSelectionModal({
       modalSpacing={modal.spacing.MD}
       rightIcon={Close}
       onRightIconPress={onClosePress}
-      rightIconAccessibilityLabel="Annuler le choix de lieu"
+      rightIconAccessibilityLabel="Ne pas sélectionner un autre lieu"
       fixedModalBottom={
         <BottomWrapper>
           <ButtonPrimary
