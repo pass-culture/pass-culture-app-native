@@ -285,6 +285,8 @@ const logEventAnalytics = {
   logOfferSeenDuration: (offerId: number, duration: number) =>
     analyticsProvider.logEvent(AnalyticsEvent.OFFER_SEEN_DURATION, { offerId, duration }),
   logOnboardingStarted: () => analyticsProvider.logEvent(AnalyticsEvent.ONBOARDING_STARTED),
+  logOpenApp: (params: { appsFlyerUserId?: string }) =>
+    analyticsProvider.logEvent(AnalyticsEvent.OPEN_APP, params),
   logOpenDMSForeignCitizenURL: () =>
     analyticsProvider.logEvent(AnalyticsEvent.OPEN_DMS_FOREIGN_CITIZEN_URL),
   logOpenDMSFrenchCitizenURL: () =>

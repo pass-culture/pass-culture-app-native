@@ -93,6 +93,7 @@ export enum AnalyticsEvent {
   NOTIFICATION_TOGGLE = 'NotificationToggle',
   OFFER_SEEN_DURATION = 'OfferSeenDuration',
   ONBOARDING_STARTED = 'OnboardingStarted',
+  OPEN_APP = 'OpenApp',
   OPEN_DMS_FOREIGN_CITIZEN_URL = 'OpenDMSForeignCitizenURL',
   OPEN_DMS_FRENCH_CITIZEN_URL = 'OpenDMSFrenchCitizenURL',
   OPEN_EXTERNAL_URL = 'OpenExternalURL',

@@ -12,16 +12,32 @@ describe('logOpenApp', () => {
     logOpenAppRef.hasLoggedOpenApp = false
   })
 
-  it.each(acceptedTracking)('should log open app event when status is %s', async (status) => {
-    await logOpenApp(status)
-    expect(campaignTracker.logEvent).toHaveBeenNthCalledWith(1, CampaignEvents.OPEN_APP, {
-      af_firebase_pseudo_id: await analytics.getAppInstanceId(),
+  describe('for appsFlyer', () => {
+    it.each(acceptedTracking)('should log open app event when status is %s', async (status) => {
+      await logOpenApp(status)
+      expect(campaignTracker.logEvent).toHaveBeenNthCalledWith(1, CampaignEvents.OPEN_APP, {
+        af_firebase_pseudo_id: await analytics.getAppInstanceId(),
+      })
+    })
+
+    it.each(refusedTracking)('should not log open event when status is %s', async (status) => {
+      await logOpenApp(status)
+      expect(campaignTracker.logEvent).not.toHaveBeenCalled()
     })
   })
 
-  it.each(refusedTracking)('should not log open event when status is %s', async (status) => {
-    await logOpenApp(status)
-    expect(campaignTracker.logEvent).not.toHaveBeenCalled()
+  describe('for firebase', () => {
+    it.each(acceptedTracking)('should log open app event when status is %s', async (status) => {
+      await logOpenApp(status)
+      expect(analytics.logOpenApp).toHaveBeenNthCalledWith(1, {
+        appsFlyerUserId: 'uniqueCustomerId',
+      })
+    })
+
+    it.each(refusedTracking)('should not log open event when status is %s', async (status) => {
+      await logOpenApp(status)
+      expect(analytics.logOpenApp).not.toHaveBeenCalled()
+    })
   })
 
   it.each(acceptedTracking)(

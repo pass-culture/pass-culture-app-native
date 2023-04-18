@@ -12,6 +12,8 @@ export const logOpenApp = async (trackingStatus: TrackingStatus) => {
   if (['authorized', 'unavailable'].includes(trackingStatus) && !logOpenAppRef.hasLoggedOpenApp) {
     logOpenAppRef.hasLoggedOpenApp = true
     const firebasePseudoId = await analytics.getAppInstanceId()
+    const appsFlyerUserId = await campaignTracker.getUserId()
+    await analytics.logOpenApp({ appsFlyerUserId })
     await campaignTracker.logEvent(CampaignEvents.OPEN_APP, {
       af_firebase_pseudo_id: firebasePseudoId,
     })
