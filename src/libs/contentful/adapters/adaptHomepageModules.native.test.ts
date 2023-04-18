@@ -49,19 +49,20 @@ describe('adaptHomepageModules', () => {
       const spyWarn = jest.spyOn(global.console, 'warn').mockImplementationOnce(() => null)
 
       const contentModel = cloneDeep(businessNatifModuleFixture)
-      // @ts-ignore: the given content model is voluntarily broken (as it happened in the past), cf. PC-21362
+      // @ts-ignore: the following content model is voluntarily broken (as it happened in the past), cf. PC-21362
       contentModel.fields.image.fields = undefined
 
       adaptHomepageNatifModules([contentModel])
 
       expect(spyWarn).toHaveBeenNthCalledWith(
         1,
-        'Error while computing home modules, by the module of ID: 20SId61p6EFTG7kgBTFrOa',
+        'Error while computing home modules, with module of ID: 20SId61p6EFTG7kgBTFrOa',
         expect.objectContaining({}) // is supposed to be a TypeError, but we don't care
       )
       expect(eventMonitoring.captureException).toHaveBeenNthCalledWith(
         1,
-        'Error while computing home modules, by the module of ID: 20SId61p6EFTG7kgBTFrOa'
+        'Error while computing home modules',
+        { extra: { moduleId: '20SId61p6EFTG7kgBTFrOa' } }
       )
     })
 })
