@@ -20,6 +20,7 @@ import {
   SigninRequest,
   SigninResponse,
   SubcategoriesResponseModelv2,
+  SubscriptionStepperResponse,
   UserProfileResponse,
   UserReportedOffersResponse,
   ValidateEmailRequest,
@@ -29,6 +30,7 @@ import {
 import { mockDefaultSettings } from 'features/auth/context/__mocks__/SettingsContext'
 import { bookingsSnap } from 'features/bookings/fixtures/bookingsSnap'
 import { paginatedFavoritesResponseSnap } from 'features/favorites/fixtures/paginatedFavoritesResponseSnap'
+import { SubscriptionStepperResponseFixture } from 'features/identityCheck/pages/helpers/stepperInfo.fixture'
 import { SchoolTypesSnap } from 'features/identityCheck/pages/profile/fixtures/mockedSchoolTypes'
 import { offerResponseSnap } from 'features/offer/fixtures/offerResponse'
 import { venueResponseSnap } from 'features/venue/fixtures/venueResponseSnap'
@@ -113,6 +115,10 @@ export const server = setupServer(
           nextSubscriptionStep: null,
         })
       )
+  ),
+  rest.get<SubscriptionStepperResponse>(
+    env.API_BASE_URL + '/native/v1/subscription/stepper',
+    (_req, res, ctx) => res(ctx.status(200), ctx.json(SubscriptionStepperResponseFixture))
   ),
   rest.get<Array<FavoriteResponse>>(
     `${env.API_BASE_URL}/native/v1/me/favorites`,
