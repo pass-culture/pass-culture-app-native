@@ -32,6 +32,48 @@ describe('<VenueSection />', () => {
     expect(screen.queryByText('Voir l’itinéraire')).toBeTruthy()
   })
 
+  it('should display public venue name when specified', () => {
+    render(
+      <VenueSection
+        venue={{ ...venue, publicName: 'Le Petit Rintintin' }}
+        locationCoordinates={{ latitude: 2, longitude: 4 }}
+        beforeNavigateToItinerary={beforeNavigateToItinerary}
+        showVenueBanner
+        title="Lieu de retrait"
+      />
+    )
+
+    expect(screen.queryByText('Le Petit Rintintin')).toBeTruthy()
+  })
+
+  it('should not display venue name when public venue name specified', () => {
+    render(
+      <VenueSection
+        venue={{ ...venue, publicName: 'Le Petit Rintintin' }}
+        locationCoordinates={{ latitude: 2, longitude: 4 }}
+        beforeNavigateToItinerary={beforeNavigateToItinerary}
+        showVenueBanner
+        title="Lieu de retrait"
+      />
+    )
+
+    expect(screen.queryByText('Le Petit Rintintin 1')).toBeNull()
+  })
+
+  it('should display venue name when public venue name unspecified', () => {
+    render(
+      <VenueSection
+        venue={{ ...venue, publicName: undefined }}
+        locationCoordinates={{ latitude: 2, longitude: 4 }}
+        beforeNavigateToItinerary={beforeNavigateToItinerary}
+        showVenueBanner
+        title="Lieu de retrait"
+      />
+    )
+
+    expect(screen.queryByText('Le Petit Rintintin 1')).toBeTruthy()
+  })
+
   it('should not display "Voir l’itinéraire" button when venue address unspecified', () => {
     render(
       <VenueSection
