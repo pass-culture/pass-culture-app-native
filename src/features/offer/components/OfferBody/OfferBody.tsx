@@ -17,6 +17,7 @@ import { MessagingApps } from 'features/offer/components/shareMessagingOffer/Mes
 import { VenueSection } from 'features/offer/components/VenueSection/VenueSection'
 import { VenueSelectionModal } from 'features/offer/components/VenueSelectionModal/VenueSelectionModal'
 import { PlaylistType } from 'features/offer/enums'
+import { getVenueSectionTitle } from 'features/offer/helpers/getVenueSectionTitle/getVenueSectionTitle'
 import { useTrackOfferSeenDuration } from 'features/offer/helpers/useTrackOfferSeenDuration'
 import { isUserBeneficiary } from 'features/profile/helpers/isUserBeneficiary'
 import { isUserExBeneficiary } from 'features/profile/helpers/isUserExBeneficiary'
@@ -195,11 +196,7 @@ export const OfferBody: FunctionComponent<Props> = ({
       ? formattedDate.charAt(0).toUpperCase() + formattedDate.slice(1)
       : formattedDate
 
-  const getVenueSectionTitle = () => {
-    if (offer.subcategoryId === SubcategoryIdEnum.SEANCE_CINE) return 'Lieu de projection'
-    if (isEvent) return 'Lieu de l’événement'
-    return 'Lieu de retrait'
-  }
+  const venueSectionTitle = getVenueSectionTitle(offer.subcategoryId, isEvent)
 
   return (
     <Container
@@ -247,7 +244,7 @@ export const OfferBody: FunctionComponent<Props> = ({
             venue={venue}
             locationCoordinates={venue.coordinates}
             showVenueBanner={showVenueBanner}
-            title={getVenueSectionTitle()}
+            title={venueSectionTitle}
           />
         ) : (
           <WhereSection
@@ -365,7 +362,7 @@ export const OfferBody: FunctionComponent<Props> = ({
         <VenueSelectionModal
           isVisible={isChangeVenueModalVisible}
           items={[]}
-          title={getVenueSectionTitle()}
+          title={venueSectionTitle}
           onSubmit={onNewOfferVenueSelected}
           onClosePress={hideChangeVenueModal}
         />
