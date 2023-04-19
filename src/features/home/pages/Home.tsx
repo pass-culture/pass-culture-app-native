@@ -35,10 +35,13 @@ export const Home: FunctionComponent = () => {
     if (id) {
       analytics.logConsultHome({ homeEntryId: id })
     }
+  }, [id])
+
+  useEffect(() => {
     if (params?.latitude && params?.longitude) {
       setCustomPosition({ latitude: params.latitude, longitude: params.longitude })
     }
-  }, [id, params, params?.latitude, params?.longitude, setCustomPosition])
+  }, [params?.latitude, params?.longitude, setCustomPosition])
 
   return (
     <GenericHome
