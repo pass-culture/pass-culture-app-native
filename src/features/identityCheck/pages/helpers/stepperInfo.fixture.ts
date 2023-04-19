@@ -35,7 +35,7 @@ export const SubscriptionStepperResponseFixture: SubscriptionStepperResponse = {
       subtitle: 'Maintenance',
     },
   ],
-  allowedIdentityCheckMethods: [IdentityCheckMethod.educonnect]
+  allowedIdentityCheckMethods: [IdentityCheckMethod.ubble, IdentityCheckMethod.educonnect],
 }
 
 export const SubscriptionStepperErrorResponseFixture: SubscriptionStepperResponse = {
