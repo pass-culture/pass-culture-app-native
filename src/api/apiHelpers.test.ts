@@ -287,6 +287,15 @@ describe('[api] helpers', () => {
 
       expect(result).toEqual({ error: 'Le refresh token est expiré' })
     })
+
+    it("should log to sentry when can't refresh token", async () => {
+      const error = new Error('Error')
+      mockFetch.mockRejectedValueOnce(error)
+
+      await refreshAccessToken(api, 0)
+
+      expect(eventMonitoring.captureException).toHaveBeenCalledWith(error)
+    })
   })
 
   describe('handleGeneratedApiResponse', () => {
