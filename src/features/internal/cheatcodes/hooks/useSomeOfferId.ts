@@ -15,7 +15,7 @@ export const useSomeOfferId = () => {
       isUserUnderage: false,
       userLocation: { latitude: 1, longitude: 1 },
     })
-      .then((response) => setOfferId(Number.parseInt(response.hits[0].objectID)))
+      .then((response) => setOfferId(Number.parseInt(response.offers[0].objectID)))
       .catch(() => {
         // The cheatcodes are only in testing
         // eslint-disable-next-line no-console
