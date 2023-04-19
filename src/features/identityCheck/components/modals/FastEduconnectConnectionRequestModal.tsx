@@ -11,13 +11,13 @@ import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { ButtonQuaternaryBlack } from 'ui/components/buttons/ButtonQuaternaryBlack'
 import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
 import { AppModal } from 'ui/components/modals/AppModal'
-import { OrSeparator } from 'ui/components/OrSeparator'
+import { SeparatorWithText } from 'ui/components/SeparatorWithText'
 import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouchableLink'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { Close } from 'ui/svg/icons/Close'
 import { EditPen } from 'ui/svg/icons/EditPen'
 import { InfoPlain } from 'ui/svg/icons/InfoPlain'
-import { Spacer, Typo } from 'ui/theme'
+import { getSpacing, Spacer, Typo } from 'ui/theme'
 
 interface FastEduconnectConnectionRequestModalProps {
   visible: boolean
@@ -78,7 +78,9 @@ export const FastEduconnectConnectionRequestModal: React.FC<
         onBeforeNavigate={onPressEduConnect}
       />
 
-      <OrSeparator />
+      <StyledSeparatorWithText>
+        <SeparatorWithText label="ou" />
+      </StyledSeparatorWithText>
 
       <InternalTouchableLink
         as={ButtonTertiaryBlack}
@@ -96,6 +98,10 @@ const StyledBody = styled(Typo.Body)(({ theme }) => ({
   textAlign: 'center',
   color: theme.colors.greyDark,
 }))
+
+const StyledSeparatorWithText = styled.View({
+  marginVertical: getSpacing(6),
+})
 
 const DurationInfoText = styled(Typo.Body)(({ theme }) => ({
   textAlign: 'center',
