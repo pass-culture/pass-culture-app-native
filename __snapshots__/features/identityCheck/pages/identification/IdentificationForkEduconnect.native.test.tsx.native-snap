@@ -504,11 +504,7 @@ exports[`<IdentificationForkEduconnect /> should render correctly 1`] = `
                 style={
                   Array [
                     Object {
-                      "alignItems": "center",
-                      "alignSelf": "stretch",
-                      "justifyContent": "center",
                       "marginVertical": 24,
-                      "position": "relative",
                     },
                   ]
                 }
@@ -517,40 +513,56 @@ exports[`<IdentificationForkEduconnect /> should render correctly 1`] = `
                   style={
                     Array [
                       Object {
-                        "backgroundColor": "#CBCDD2",
-                        "height": 1,
-                        "left": 0,
-                        "position": "absolute",
-                        "right": 0,
-                      },
-                    ]
-                  }
-                />
-                <View
-                  style={
-                    Array [
-                      Object {
-                        "backgroundColor": "#ffffff",
-                        "paddingHorizontal": 10,
+                        "alignItems": "center",
+                        "flexDirection": "row",
+                        "paddingHorizontal": 4,
                       },
                     ]
                   }
                 >
+                  <View
+                    style={
+                      Array [
+                        Object {
+                          "backgroundColor": "#90949D",
+                          "flexBasis": 0,
+                          "flexGrow": 1,
+                          "flexShrink": 1,
+                          "height": 1,
+                          "width": "100%",
+                        },
+                      ]
+                    }
+                  />
                   <Text
                     style={
                       Array [
                         Object {
                           "color": "#161617",
-                          "fontFamily": "Montserrat-Regular",
-                          "fontSize": 15,
-                          "lineHeight": 20,
-                          "textAlign": "center",
+                          "fontFamily": "Montserrat-SemiBold",
+                          "fontSize": 12,
+                          "lineHeight": 16,
+                          "marginHorizontal": 10,
                         },
                       ]
                     }
                   >
                     ou
                   </Text>
+                  <View
+                    style={
+                      Array [
+                        Object {
+                          "backgroundColor": "#90949D",
+                          "flexBasis": 0,
+                          "flexGrow": 1,
+                          "flexShrink": 1,
+                          "height": 1,
+                          "width": "100%",
+                        },
+                      ]
+                    }
+                  />
                 </View>
               </View>
               <View

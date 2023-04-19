@@ -11,7 +11,7 @@ export const SeparatorWithText: FunctionComponent<SeparatorWithTextProps> = ({ l
   return (
     <Container>
       <StyledSeparator />
-      <StyledBody>{label}</StyledBody>
+      <StyledLabel>{label}</StyledLabel>
       <StyledSeparator />
     </Container>
   )
@@ -23,7 +23,7 @@ const Container = styled.View({
   paddingHorizontal: getSpacing(1),
 })
 
-const StyledBody = styled(Typo.Body)({
+const StyledLabel = styled(Typo.Caption)({
   marginHorizontal: getSpacing(2.5),
 })
 

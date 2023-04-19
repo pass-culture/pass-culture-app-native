@@ -7,7 +7,7 @@ import { PageWithHeader } from 'features/identityCheck/components/layout/PageWit
 import { env } from 'libs/environment'
 import { theme } from 'theme'
 import { ButtonQuaternaryBlack } from 'ui/components/buttons/ButtonQuaternaryBlack'
-import { OrSeparator } from 'ui/components/OrSeparator'
+import { SeparatorWithText } from 'ui/components/SeparatorWithText'
 import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouchableLink'
 import { InfoPlain } from 'ui/svg/icons/InfoPlain'
 import { Mariane } from 'ui/svg/icons/Mariane'
@@ -31,7 +31,9 @@ const IdentificationForkUbbleContent: FunctionComponent = () => {
         navigateTo={{ screen: 'SelectIDOrigin' }}
         key={0}
       />
-      <OrSeparator />
+      <StyledSeparatorWithText>
+        <SeparatorWithText label="ou" />
+      </StyledSeparatorWithText>
       <IdentificationForkButton
         Title={<Typo.ButtonText>Mes codes ÉduConnect</Typo.ButtonText>}
         Subtitle={<StyledCaption>Fournis par ton établissement scolaire</StyledCaption>}
@@ -55,6 +57,10 @@ const IdentificationForkUbbleContent: FunctionComponent = () => {
 const Container = styled.View({
   marginHorizontal: getSpacing(1),
   marginVertical: getSpacing(3),
+})
+
+const StyledSeparatorWithText = styled.View({
+  marginVertical: getSpacing(6),
 })
 
 const StyledExternalTouchableLinkContainer = styled.View({

@@ -6,7 +6,7 @@ import { PageWithHeader } from 'features/identityCheck/components/layout/PageWit
 import { env } from 'libs/environment'
 import { analytics } from 'libs/firebase/analytics'
 import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
-import { OrSeparator } from 'ui/components/OrSeparator'
+import { SeparatorWithText } from 'ui/components/SeparatorWithText'
 import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouchableLink'
 import { BicolorIdCardWithMagnifyingGlass } from 'ui/svg/icons/BicolorIdCardWithMagnifyingGlass'
 import { ExternalSiteFilled } from 'ui/svg/icons/ExternalSiteFilled'
@@ -47,7 +47,9 @@ export const IdentityCheckDMS = () => {
               icon={ExternalSiteFilled}
             />
             <StyledCaption>Carte d’identité ou passeport.</StyledCaption>
-            <OrSeparator />
+            <StyledSeparatorWithText>
+              <SeparatorWithText label="ou" />
+            </StyledSeparatorWithText>
             <ExternalTouchableLink
               as={ButtonTertiaryBlack}
               wording="Je suis de nationalité étrangère"
@@ -76,7 +78,12 @@ const StyledBody = styled(Typo.Body)(({ theme }) => ({
   textAlign: 'center',
   color: theme.colors.greyDark,
 }))
+
 const ButtonContainer = styled.View({ padding: getSpacing(10) })
+
+const StyledSeparatorWithText = styled.View({
+  marginVertical: getSpacing(6),
+})
 
 const StyledCaption = styled(Typo.CaptionNeutralInfo)({
   textAlign: 'center',

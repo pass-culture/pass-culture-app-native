@@ -502,9 +502,9 @@ exports[`SelectIDOrigin should render correctly 1`] = `
                     Array [
                       Object {
                         "color": "#161617",
-                        "fontFamily": "Montserrat-Regular",
-                        "fontSize": 15,
-                        "lineHeight": 20,
+                        "fontFamily": "Montserrat-SemiBold",
+                        "fontSize": 12,
+                        "lineHeight": 16,
                         "marginHorizontal": 10,
                       },
                     ]
