@@ -19,11 +19,10 @@ jest.mock('libs/geolocation/hooks/useDistance', () => ({
 const beforeNavigateToItinerary = jest.fn()
 
 describe('<VenueSection />', () => {
-  it('should display "Voir l’itinéraire" button when venue address specified', () => {
+  it('should display "Voir l’itinéraire" button when complete venue address specified', () => {
     render(
       <VenueSection
         venue={venue}
-        locationCoordinates={{ latitude: 2, longitude: 4 }}
         beforeNavigateToItinerary={beforeNavigateToItinerary}
         showVenueBanner
         title="Lieu de retrait"
@@ -36,7 +35,6 @@ describe('<VenueSection />', () => {
     render(
       <VenueSection
         venue={{ ...venue, publicName: 'Le Petit Rintintin' }}
-        locationCoordinates={{ latitude: 2, longitude: 4 }}
         beforeNavigateToItinerary={beforeNavigateToItinerary}
         showVenueBanner
         title="Lieu de retrait"
@@ -50,7 +48,6 @@ describe('<VenueSection />', () => {
     render(
       <VenueSection
         venue={{ ...venue, publicName: 'Le Petit Rintintin' }}
-        locationCoordinates={{ latitude: 2, longitude: 4 }}
         beforeNavigateToItinerary={beforeNavigateToItinerary}
         showVenueBanner
         title="Lieu de retrait"
@@ -64,7 +61,6 @@ describe('<VenueSection />', () => {
     render(
       <VenueSection
         venue={{ ...venue, publicName: undefined }}
-        locationCoordinates={{ latitude: 2, longitude: 4 }}
         beforeNavigateToItinerary={beforeNavigateToItinerary}
         showVenueBanner
         title="Lieu de retrait"
@@ -74,24 +70,96 @@ describe('<VenueSection />', () => {
     expect(screen.queryByText('Le Petit Rintintin 1')).toBeTruthy()
   })
 
-  it('should not display "Voir l’itinéraire" button when venue address unspecified', () => {
-    render(
-      <VenueSection
-        venue={{ ...venue, address: '' }}
-        locationCoordinates={{ latitude: 2, longitude: 4 }}
-        beforeNavigateToItinerary={beforeNavigateToItinerary}
-        showVenueBanner
-        title="Lieu de retrait"
-      />
-    )
-    expect(screen.queryByText('Voir l’itinéraire')).toBeNull()
+  describe('should not display "Voir l’itinéraire" button', () => {
+    it('when complete venue address unspecified', () => {
+      render(
+        <VenueSection
+          venue={{ ...venue, address: '', city: '', postalCode: '' }}
+          beforeNavigateToItinerary={beforeNavigateToItinerary}
+          showVenueBanner
+          title="Lieu de retrait"
+        />
+      )
+      expect(screen.queryByText('Voir l’itinéraire')).toBeNull()
+    })
+
+    it('when only venue address specified', () => {
+      render(
+        <VenueSection
+          venue={{ ...venue, city: '', postalCode: '' }}
+          beforeNavigateToItinerary={beforeNavigateToItinerary}
+          showVenueBanner
+          title="Lieu de retrait"
+        />
+      )
+      expect(screen.queryByText('Voir l’itinéraire')).toBeNull()
+    })
+
+    it('when only venue postal code specified', () => {
+      render(
+        <VenueSection
+          venue={{ ...venue, address: '', city: '' }}
+          beforeNavigateToItinerary={beforeNavigateToItinerary}
+          showVenueBanner
+          title="Lieu de retrait"
+        />
+      )
+      expect(screen.queryByText('Voir l’itinéraire')).toBeNull()
+    })
+
+    it('when only venue city specified', () => {
+      render(
+        <VenueSection
+          venue={{ ...venue, address: '', postalCode: '' }}
+          beforeNavigateToItinerary={beforeNavigateToItinerary}
+          showVenueBanner
+          title="Lieu de retrait"
+        />
+      )
+      expect(screen.queryByText('Voir l’itinéraire')).toBeNull()
+    })
+
+    it('when only venue city and postal code specified', () => {
+      render(
+        <VenueSection
+          venue={{ ...venue, address: '' }}
+          beforeNavigateToItinerary={beforeNavigateToItinerary}
+          showVenueBanner
+          title="Lieu de retrait"
+        />
+      )
+      expect(screen.queryByText('Voir l’itinéraire')).toBeNull()
+    })
+
+    it('when only venue city and address specified', () => {
+      render(
+        <VenueSection
+          venue={{ ...venue, postalCode: '' }}
+          beforeNavigateToItinerary={beforeNavigateToItinerary}
+          showVenueBanner
+          title="Lieu de retrait"
+        />
+      )
+      expect(screen.queryByText('Voir l’itinéraire')).toBeNull()
+    })
+
+    it('when only venue postal code and address specified', () => {
+      render(
+        <VenueSection
+          venue={{ ...venue, city: '' }}
+          beforeNavigateToItinerary={beforeNavigateToItinerary}
+          showVenueBanner
+          title="Lieu de retrait"
+        />
+      )
+      expect(screen.queryByText('Voir l’itinéraire')).toBeNull()
+    })
   })
 
   it('should call `beforeNavigateToItinerary` function when pressing on "Voir l’itinéraire"', () => {
     render(
       <VenueSection
         venue={venue}
-        locationCoordinates={{ latitude: 2, longitude: 4 }}
         beforeNavigateToItinerary={beforeNavigateToItinerary}
         showVenueBanner
         title="Lieu de retrait"
@@ -108,7 +176,6 @@ describe('<VenueSection />', () => {
       render(
         <VenueSection
           venue={venue}
-          locationCoordinates={{ latitude: 2, longitude: 4 }}
           beforeNavigateToItinerary={beforeNavigateToItinerary}
           showVenueBanner
           title="Lieu de retrait"
@@ -121,7 +188,6 @@ describe('<VenueSection />', () => {
       render(
         <VenueSection
           venue={venue}
-          locationCoordinates={{ latitude: 2, longitude: 4 }}
           beforeNavigateToItinerary={beforeNavigateToItinerary}
           showVenueBanner
           title="Lieu de retrait"
@@ -134,7 +200,6 @@ describe('<VenueSection />', () => {
       render(
         <VenueSection
           venue={venue}
-          locationCoordinates={{ latitude: 2, longitude: 4 }}
           beforeNavigateToItinerary={beforeNavigateToItinerary}
           showVenueBanner
           title="Lieu de retrait"
@@ -153,7 +218,6 @@ describe('<VenueSection />', () => {
       render(
         <VenueSection
           venue={venue}
-          locationCoordinates={{ latitude: 2, longitude: 4 }}
           beforeNavigateToItinerary={beforeNavigateToItinerary}
           showVenueBanner
           title="Lieu de retrait"
@@ -171,7 +235,6 @@ describe('<VenueSection />', () => {
       render(
         <VenueSection
           venue={{ ...venue, isPermanent: false }}
-          locationCoordinates={{ latitude: 2, longitude: 4 }}
           beforeNavigateToItinerary={beforeNavigateToItinerary}
           title="Lieu de retrait"
         />
@@ -183,7 +246,6 @@ describe('<VenueSection />', () => {
       render(
         <VenueSection
           venue={{ ...venue, isPermanent: false }}
-          locationCoordinates={{ latitude: 2, longitude: 4 }}
           beforeNavigateToItinerary={beforeNavigateToItinerary}
           title="Lieu de retrait"
         />

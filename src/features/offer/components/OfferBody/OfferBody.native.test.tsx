@@ -532,6 +532,38 @@ describe('<OfferBody />', () => {
       await screen.findByTestId('offer-container')
       expect(screen.queryByText('Où\u00a0?')).toBeNull()
     })
+
+    describe('should display new venue section', () => {
+      it('With "Lieu de retrait" in title by default', async () => {
+        mockUseOffer.mockReturnValueOnce({
+          data: { ...mockOffer, subcategoryId: SubcategoryIdEnum.LIVRE_PAPIER },
+        })
+        renderOfferBody()
+
+        await screen.findByTestId('offer-container')
+        expect(screen.queryByText('Lieu de retrait')).toBeTruthy()
+      })
+
+      it('With "Lieu de l’événement" in title when event offer', async () => {
+        mockUseOffer.mockReturnValueOnce({
+          data: { ...mockOffer, subcategoryId: SubcategoryIdEnum.CONCERT },
+        })
+        renderOfferBody()
+
+        await screen.findByTestId('offer-container')
+        expect(screen.queryByText('Lieu de l’événement')).toBeTruthy()
+      })
+
+      it('With "Lieu de projection" in title when offer subcategory is "Séances de cinéma"', async () => {
+        mockUseOffer.mockReturnValueOnce({
+          data: { ...mockOffer, subcategoryId: SubcategoryIdEnum.SEANCE_CINE },
+        })
+        renderOfferBody()
+
+        await screen.findByTestId('offer-container')
+        expect(screen.queryByText('Lieu de projection')).toBeTruthy()
+      })
+    })
   })
 })
 

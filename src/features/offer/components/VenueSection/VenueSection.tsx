@@ -1,9 +1,9 @@
 import { useNavigation } from '@react-navigation/native'
-import React from 'react'
+import React, { useCallback } from 'react'
 import { View } from 'react-native'
 import { useQueryClient } from 'react-query'
 
-import { Coordinates, OfferVenueResponse, VenueResponse } from 'api/gen'
+import { OfferVenueResponse, VenueResponse } from 'api/gen'
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { formatFullAddressStartsWithPostalCode } from 'libs/address/useFormatFullAddress'
 import { analytics } from 'libs/firebase/analytics'
@@ -20,8 +20,7 @@ import { VenueDetails } from '../VenueDetails/VenueDetails'
 
 type Props = {
   beforeNavigateToItinerary?: () => Promise<void> | void
-  venue: OfferVenueResponse | VenueResponse
-  locationCoordinates: Coordinates
+  venue: OfferVenueResponse
   title: string
   showVenueBanner?: boolean
 }
@@ -44,29 +43,24 @@ const mergeVenueData =
     ...(prevData || {}),
   })
 
-export function VenueSection({
-  beforeNavigateToItinerary,
-  venue,
-  showVenueBanner,
-  locationCoordinates,
-  title,
-}: Props) {
+export function VenueSection({ beforeNavigateToItinerary, venue, showVenueBanner, title }: Props) {
   const { navigate } = useNavigation<UseNavigationType>()
   const queryClient = useQueryClient()
-  const { latitude: lat, longitude: lng } = locationCoordinates
+  const { latitude: lat, longitude: lng } = venue.coordinates
   const distanceToLocation = useDistance({ lat, lng })
   const venueFullAddress = formatFullAddressStartsWithPostalCode(
     venue.address,
     venue.postalCode,
     venue.city
   )
+  const shouldDisplaySeeItineraryButton = Boolean(venue.address && venue.postalCode && venue.city)
 
-  const onVenuePress = () => {
+  const onVenuePress = useCallback(() => {
     // We pre-populate the query-cache with the data from the search result for a smooth transition
     queryClient.setQueryData([QueryKeys.VENUE, venue.id], mergeVenueData(venue))
     analytics.logConsultVenue({ venueId: venue.id, from: 'offer' })
     navigate('Venue', { id: venue.id })
-  }
+  }, [navigate, queryClient, venue])
 
   return (
     <React.Fragment>
@@ -98,7 +92,7 @@ export function VenueSection({
           <Spacer.Column numberOfSpaces={1} />
         </View>
       )}
-      {!!venue.address && (
+      {!!shouldDisplaySeeItineraryButton && (
         <React.Fragment>
           <Spacer.Column numberOfSpaces={4} />
           <SeeItineraryButton

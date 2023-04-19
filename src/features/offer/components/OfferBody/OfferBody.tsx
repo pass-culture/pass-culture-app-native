@@ -244,7 +244,6 @@ export const OfferBody: FunctionComponent<Props> = ({
           <VenueSection
             beforeNavigateToItinerary={handleBeforeNavigateToItinerary}
             venue={venue}
-            locationCoordinates={venue.coordinates}
             showVenueBanner={showVenueBanner}
             title={venueSectionTitle}
           />
