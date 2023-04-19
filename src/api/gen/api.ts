@@ -2650,6 +2650,11 @@ export enum SubscriptionStepTitle {
  */
 export interface SubscriptionStepperResponse {
   /**
+   * @type {Array<IdentityCheckMethod>}
+   * @memberof SubscriptionStepperResponse
+   */
+  allowedIdentityCheckMethods: Array<IdentityCheckMethod>
+  /**
    * @type {string}
    * @memberof SubscriptionStepperResponse
    */

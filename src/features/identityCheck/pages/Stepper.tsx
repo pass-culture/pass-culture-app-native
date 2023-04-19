@@ -6,13 +6,11 @@ import { extractApiErrorMessage } from 'api/apiHelpers'
 import { MaintenancePageType, SubscriptionStep } from 'api/gen'
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { ErrorBanner } from 'features/identityCheck/components/ErrorBanner'
-import { FastEduconnectConnectionRequestModal } from 'features/identityCheck/components/modals/FastEduconnectConnectionRequestModal'
 import { QuitIdentityCheckModal } from 'features/identityCheck/components/modals/QuitIdentityCheckModal'
 import { StepButton } from 'features/identityCheck/components/StepButton'
 import { useSubscriptionContext } from 'features/identityCheck/context/SubscriptionContextProvider'
 import { useSetSubscriptionStepAndMethod } from 'features/identityCheck/pages/helpers/useSetCurrentSubscriptionStep'
 import { useStepperInfo } from 'features/identityCheck/pages/helpers/useStepperInfo'
-import { IdentityCheckStep } from 'features/identityCheck/types'
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { amplitude } from 'libs/amplitude'
 import { analytics } from 'libs/firebase/analytics'
@@ -44,11 +42,6 @@ export const IdentityCheckStepper = () => {
   const { refetchUser } = useAuthContext()
 
   const { visible, showModal, hideModal } = useModal(false)
-  const {
-    visible: isEduConnectModalVisible,
-    showModal: showEduConnectModal,
-    hideModal: hideEduConnectModal,
-  } = useModal(false)
 
   useEffect(() => {
     const showMaintenance = () => {
@@ -95,26 +88,14 @@ export const IdentityCheckStepper = () => {
       {steps.map((step) => (
         <Li key={step.name}>
           <StepButtonContainer>
-            {step.name === IdentityCheckStep.IDENTIFICATION &&
-            context.identification.method === null ? (
-              <StepButton
-                step={step}
-                onPress={() => {
-                  amplitude.logEvent('stepper_clicked', { step: step.name })
-                  analytics.logIdentityCheckStep(step.name)
-                  showEduConnectModal()
-                }}
-              />
-            ) : (
-              <StepButton
-                step={step}
-                navigateTo={{ screen: step.screens[0] }}
-                onPress={() => {
-                  amplitude.logEvent('stepper_clicked', { step: step.name })
-                  analytics.logIdentityCheckStep(step.name)
-                }}
-              />
-            )}
+            <StepButton
+              step={step}
+              navigateTo={{ screen: step.screens[0] }}
+              onPress={() => {
+                amplitude.logEvent('stepper_clicked', { step: step.name })
+                analytics.logIdentityCheckStep(step.name)
+              }}
+            />
           </StepButtonContainer>
         </Li>
       ))}
@@ -149,10 +130,6 @@ export const IdentityCheckStepper = () => {
         visible={visible}
         hideModal={hideModal}
         testIdSuffix="quit-identity-check-stepper"
-      />
-      <FastEduconnectConnectionRequestModal
-        visible={isEduConnectModalVisible}
-        hideModal={hideEduConnectModal}
       />
     </React.Fragment>
   )

@@ -24,6 +24,7 @@ describe('useGetStepperInfo', () => {
         stepToDisplay: SubscriptionStepperResponseFixture.subscriptionStepsToDisplay,
         title: 'Titre Stepper',
         subtitle: 'Sous titre Stepper',
+        identificationMethods: SubscriptionStepperResponseFixture.allowedIdentityCheckMethods,
       })
     })
   })
@@ -41,6 +42,7 @@ describe('useGetStepperInfo', () => {
         title: 'Titre Stepper',
         subtitle: null,
         errorMessage: 'Tu n’as pas fournis les bons documents',
+        identificationMethods: SubscriptionStepperResponseFixture.allowedIdentityCheckMethods,
       })
     })
   })
