@@ -196,29 +196,14 @@ export async function handleGeneratedApiResponse(response: Response): Promise<an
     response.status === NeedsAuthenticationResponse.status &&
     response.statusText === NeedsAuthenticationResponse.statusText
   ) {
-    try {
-      const json = await response.json()
-      eventMonitoring.captureException(new Error(NeedsAuthenticationResponse.statusText), {
-        extra: {
-          url: response.url,
-          status: response.status,
-          statusText: response.statusText,
-          json,
-        },
-      })
-    } catch (error) {
-      eventMonitoring.captureException(
-        new Error(NeedsAuthenticationResponse.statusText, { cause: error }),
-        {
-          extra: {
-            scope: 'NeedsAuthenticationResponseCannotParseJSON',
-            url: response.url,
-            status: response.status,
-            statusText: response.statusText,
-          },
-        }
-      )
-    }
+    eventMonitoring.captureMessage(NeedsAuthenticationResponse.statusText, {
+      extra: {
+        url: await response.text(),
+        status: response.status,
+        statusText: response.statusText,
+      },
+    })
+
     navigateToLogin()
     return {}
   }
