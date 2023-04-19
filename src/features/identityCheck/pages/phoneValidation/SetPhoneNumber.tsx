@@ -20,6 +20,7 @@ import { PhoneValidationTipsModal } from 'features/identityCheck/pages/phoneVali
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { homeNavConfig } from 'features/navigation/TabBar/helpers'
 import { useGoBack } from 'features/navigation/useGoBack'
+// eslint-disable-next-line no-restricted-imports
 import { amplitude } from 'libs/amplitude'
 import { analytics } from 'libs/analytics'
 import { useSafeState } from 'libs/hooks'

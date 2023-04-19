@@ -12,6 +12,7 @@ import { useSubscriptionNavigation } from 'features/identityCheck/pages/helpers/
 import { activityHasSchoolTypes } from 'features/identityCheck/pages/profile/helpers/schoolTypes'
 import { useIsUserUnderage } from 'features/profile/helpers/useIsUserUnderage'
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
+// eslint-disable-next-line no-restricted-imports
 import { amplitude } from 'libs/amplitude'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { Form } from 'ui/components/Form'

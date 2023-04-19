@@ -11,6 +11,7 @@ import { Declaration } from 'features/identityCheck/components/Declaration'
 import { PageWithHeader } from 'features/identityCheck/components/layout/PageWithHeader'
 import { useSubscriptionNavigation } from 'features/identityCheck/pages/helpers/useSubscriptionNavigation'
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
+// eslint-disable-next-line no-restricted-imports
 import { amplitude } from 'libs/amplitude'
 import { QueryKeys } from 'libs/queryKeys'
 import { hasOngoingCredit } from 'shared/user/useAvailableCredit'

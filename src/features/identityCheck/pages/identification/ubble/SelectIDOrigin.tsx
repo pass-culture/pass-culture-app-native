@@ -5,6 +5,7 @@ import styled from 'styled-components/native'
 import { HeroButtonList } from 'features/identityCheck/components/HeroButtonList'
 import { PageWithHeader } from 'features/identityCheck/components/layout/PageWithHeader'
 import { SecondButtonList } from 'features/identityCheck/components/SecondButtonList'
+// eslint-disable-next-line no-restricted-imports
 import { amplitude } from 'libs/amplitude'
 import { SeparatorWithText } from 'ui/components/SeparatorWithText'
 import { BicolorEarth } from 'ui/svg/icons/BicolorEarth'

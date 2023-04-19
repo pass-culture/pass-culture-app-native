@@ -94,6 +94,10 @@ module.exports = {
             name: 'libs/firebase/analytics',
             message: 'Use analytics from libs/analytics instead, unless you want to use a firebase/amplitude-specific method'
           },
+          {
+            name: 'libs/amplitude',
+            message: 'Use analytics from libs/analytics instead, unless you want to use a firebase/amplitude-specific method'
+          },
           { name: 'ui/theme/shadow.ios', message: 'use ui/theme instead' },
           { name: 'ui/theme/shadow.android', message: 'use ui/theme instead' },
           {

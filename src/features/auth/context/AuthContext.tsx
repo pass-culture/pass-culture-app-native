@@ -6,6 +6,7 @@ import { api } from 'api/api'
 import { refreshAccessToken } from 'api/apiHelpers'
 import { UserProfileResponse } from 'api/gen'
 import { useCookies } from 'features/cookies/helpers/useCookies'
+// eslint-disable-next-line no-restricted-imports
 import { amplitude } from 'libs/amplitude'
 import { useAppStateChange } from 'libs/appState'
 // eslint-disable-next-line no-restricted-imports

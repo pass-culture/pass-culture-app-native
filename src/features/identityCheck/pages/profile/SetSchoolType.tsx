@@ -13,6 +13,7 @@ import {
   mapSchoolTypeIdToLabelAndDescription,
 } from 'features/identityCheck/pages/profile/helpers/schoolTypes'
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
+// eslint-disable-next-line no-restricted-imports
 import { amplitude } from 'libs/amplitude'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { Form } from 'ui/components/Form'

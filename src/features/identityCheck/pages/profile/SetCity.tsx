@@ -11,6 +11,7 @@ import { useSubscriptionContext } from 'features/identityCheck/context/Subscript
 import { useSubscriptionNavigation } from 'features/identityCheck/pages/helpers/useSubscriptionNavigation'
 import { IdentityCheckError } from 'features/identityCheck/pages/profile/errors'
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
+// eslint-disable-next-line no-restricted-imports
 import { amplitude } from 'libs/amplitude'
 import { eventMonitoring } from 'libs/monitoring'
 import { SuggestedCity } from 'libs/place'

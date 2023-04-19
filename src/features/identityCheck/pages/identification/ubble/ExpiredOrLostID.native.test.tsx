@@ -2,6 +2,7 @@ import React from 'react'
 
 import { ExpiredOrLostID } from 'features/identityCheck/pages/identification/ubble/ExpiredOrLostID'
 import * as NavigationHelpers from 'features/navigation/helpers/openUrl'
+// eslint-disable-next-line no-restricted-imports
 import { amplitude } from 'libs/amplitude'
 import { env } from 'libs/environment'
 import { BatchEvent, BatchUser } from 'libs/react-native-batch'

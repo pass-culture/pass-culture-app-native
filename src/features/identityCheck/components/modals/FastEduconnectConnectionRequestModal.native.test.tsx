@@ -4,6 +4,7 @@ import { navigate } from '__mocks__/@react-navigation/native'
 import { IdentityCheckMethod } from 'api/gen'
 import { FastEduconnectConnectionRequestModal } from 'features/identityCheck/components/modals/FastEduconnectConnectionRequestModal'
 import { initialSubscriptionState as mockState } from 'features/identityCheck/context/reducer'
+// eslint-disable-next-line no-restricted-imports
 import { amplitude } from 'libs/amplitude'
 import * as useFeatureFlag from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { fireEvent, render } from 'tests/utils'

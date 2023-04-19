@@ -11,6 +11,7 @@ import { PreValidationSignupStepProps, SignupData } from 'features/auth/types'
 import { RootStackParamList } from 'features/navigation/RootNavigator/types'
 import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
 import { useGoBack } from 'features/navigation/useGoBack'
+// eslint-disable-next-line no-restricted-imports
 import { amplitude } from 'libs/amplitude'
 import { analytics } from 'libs/analytics'
 import { AsyncError, eventMonitoring } from 'libs/monitoring'

@@ -5,6 +5,7 @@ import { NextSubscriptionStepResponse, SubscriptionStep } from 'api/gen'
 import { nextSubscriptionStepFixture as mockStep } from 'features/identityCheck/fixtures/nextSubscriptionStepFixture'
 import { IdentityCheckEnd } from 'features/identityCheck/pages/identification/ubble/IdentityCheckEnd'
 import { navigateToHome } from 'features/navigation/helpers'
+// eslint-disable-next-line no-restricted-imports
 import { amplitude } from 'libs/amplitude'
 import { render, waitFor } from 'tests/utils'
 

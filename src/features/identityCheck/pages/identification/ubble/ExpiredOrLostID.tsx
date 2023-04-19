@@ -2,6 +2,7 @@ import React, { useEffect } from 'react'
 import { View } from 'react-native'
 import styled from 'styled-components/native'
 
+// eslint-disable-next-line no-restricted-imports
 import { amplitude } from 'libs/amplitude'
 import { env } from 'libs/environment'
 import { BatchEvent, BatchUser } from 'libs/react-native-batch'

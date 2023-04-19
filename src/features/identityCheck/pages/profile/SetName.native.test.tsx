@@ -2,6 +2,7 @@ import React from 'react'
 
 import { initialSubscriptionState as mockState } from 'features/identityCheck/context/reducer'
 import { SetName } from 'features/identityCheck/pages/profile/SetName'
+// eslint-disable-next-line no-restricted-imports
 import { amplitude } from 'libs/amplitude'
 import { fireEvent, render, screen, waitFor } from 'tests/utils'
 

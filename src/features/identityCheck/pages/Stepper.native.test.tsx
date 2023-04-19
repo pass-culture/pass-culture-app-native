@@ -14,6 +14,7 @@ import {
   IdentityCheckStep,
   StepButtonState,
 } from 'features/identityCheck/types'
+// eslint-disable-next-line no-restricted-imports
 import { amplitude } from 'libs/amplitude'
 import * as useFeatureFlag from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { fireEvent, render, waitFor, screen } from 'tests/utils'

@@ -5,6 +5,7 @@ import { initialSubscriptionState as mockState } from 'features/identityCheck/co
 import { useSubscriptionContext } from 'features/identityCheck/context/SubscriptionContextProvider'
 import { SchoolTypesSnap } from 'features/identityCheck/pages/profile/fixtures/mockedSchoolTypes'
 import { SetSchoolType } from 'features/identityCheck/pages/profile/SetSchoolType'
+// eslint-disable-next-line no-restricted-imports
 import { amplitude } from 'libs/amplitude'
 import { fireEvent, render, waitFor } from 'tests/utils'
 

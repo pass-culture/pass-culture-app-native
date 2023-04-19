@@ -3,6 +3,7 @@ import styled from 'styled-components/native'
 
 import { IdentityCheckMethod } from 'api/gen'
 import { useSubscriptionContext } from 'features/identityCheck/context/SubscriptionContextProvider'
+// eslint-disable-next-line no-restricted-imports
 import { amplitude } from 'libs/amplitude'
 import { analytics } from 'libs/analytics'
 import { env } from 'libs/environment'

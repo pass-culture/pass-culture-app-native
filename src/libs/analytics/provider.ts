@@ -1,3 +1,4 @@
+// eslint-disable-next-line no-restricted-imports
 import { amplitude } from 'libs/amplitude'
 import { logEventAnalytics } from 'libs/analytics/logEventAnalytics'
 import { AnalyticsProvider } from 'libs/analytics/types'

@@ -3,6 +3,7 @@ import React, { FC, useEffect } from 'react'
 import styled from 'styled-components/native'
 
 import { UseRouteType } from 'features/navigation/RootNavigator/types'
+// eslint-disable-next-line no-restricted-imports
 import { amplitude } from 'libs/amplitude'
 import { analytics } from 'libs/analytics'
 import { env } from 'libs/environment'

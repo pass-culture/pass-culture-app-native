@@ -5,6 +5,7 @@ import { useNextSubscriptionStep } from 'features/auth/api/useNextSubscriptionSt
 import { invalidateStepperInfoQuery } from 'features/identityCheck/pages/helpers/invalidateStepperQuery'
 import { navigateToHome } from 'features/navigation/helpers'
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
+// eslint-disable-next-line no-restricted-imports
 import { amplitude } from 'libs/amplitude'
 import { GenericInfoPage } from 'ui/pages/GenericInfoPage'
 import { EmailSent } from 'ui/svg/icons/EmailSent'

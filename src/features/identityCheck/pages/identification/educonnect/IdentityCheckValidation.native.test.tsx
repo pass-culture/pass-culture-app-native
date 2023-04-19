@@ -3,6 +3,7 @@ import React from 'react'
 import { useRoute } from '__mocks__/@react-navigation/native'
 import { navigate } from '__mocks__/@react-navigation/native'
 import { DeprecatedIdentityCheckStep } from 'features/identityCheck/types'
+// eslint-disable-next-line no-restricted-imports
 import { amplitude } from 'libs/amplitude'
 import { fireEvent, render } from 'tests/utils'
 

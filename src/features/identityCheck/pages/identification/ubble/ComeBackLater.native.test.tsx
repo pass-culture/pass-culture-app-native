@@ -3,6 +3,7 @@ import React from 'react'
 import { ComeBackLater } from 'features/identityCheck/pages/identification/ubble/ComeBackLater'
 import { navigateToHomeConfig } from 'features/navigation/helpers'
 import { navigateFromRef } from 'features/navigation/navigationRef'
+// eslint-disable-next-line no-restricted-imports
 import { amplitude } from 'libs/amplitude'
 import { BatchEvent, BatchUser } from 'libs/react-native-batch'
 import { fireEvent, render, waitFor } from 'tests/utils'

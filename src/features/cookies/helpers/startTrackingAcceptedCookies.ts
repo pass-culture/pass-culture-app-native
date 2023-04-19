@@ -1,6 +1,7 @@
 import { CookieNameEnum } from 'features/cookies/enums'
 import { removeGeneratedStorageKey } from 'features/cookies/helpers/removeGeneratedStorageKey'
 import { Cookies } from 'features/cookies/types'
+// eslint-disable-next-line no-restricted-imports
 import { amplitude } from 'libs/amplitude'
 import { campaignTracker } from 'libs/campaign'
 // eslint-disable-next-line no-restricted-imports

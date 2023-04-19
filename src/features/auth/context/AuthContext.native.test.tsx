@@ -5,6 +5,7 @@ import React from 'react'
 import { UserProfileResponse } from 'api/gen'
 import { CURRENT_DATE } from 'features/auth/fixtures/fixtures'
 import { beneficiaryUser, nonBeneficiaryUser } from 'fixtures/user'
+// eslint-disable-next-line no-restricted-imports
 import { amplitude } from 'libs/amplitude'
 import { env } from 'libs/environment'
 import { NetInfoWrapper } from 'libs/network/NetInfoWrapper'

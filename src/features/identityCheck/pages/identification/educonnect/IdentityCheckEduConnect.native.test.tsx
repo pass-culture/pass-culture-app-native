@@ -4,6 +4,7 @@ import { navigate } from '__mocks__/@react-navigation/native'
 import * as useEduConnectLoginAPI from 'features/identityCheck/api/useEduConnectLogin'
 import { initialSubscriptionState as mockState } from 'features/identityCheck/context/reducer'
 import { IdentityCheckEduConnect } from 'features/identityCheck/pages/identification/educonnect/IdentityCheckEduConnect'
+// eslint-disable-next-line no-restricted-imports
 import { amplitude } from 'libs/amplitude'
 import { fireEvent, render } from 'tests/utils'
 

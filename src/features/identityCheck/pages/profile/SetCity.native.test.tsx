@@ -3,6 +3,7 @@ import React from 'react'
 
 import { initialSubscriptionState as mockState } from 'features/identityCheck/context/reducer'
 import { SetCity } from 'features/identityCheck/pages/profile/SetCity'
+// eslint-disable-next-line no-restricted-imports
 import { amplitude } from 'libs/amplitude'
 import { CITIES_API_URL } from 'libs/place'
 import { mockedSuggestedCities } from 'libs/place/fixtures/mockedSuggestedCities'
