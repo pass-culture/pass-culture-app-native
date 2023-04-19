@@ -1,4 +1,5 @@
 import {
+  IdentityCheckMethod,
   SubscriptionStep,
   SubscriptionStepCompletionState,
   SubscriptionStepperResponse,
@@ -34,6 +35,7 @@ export const SubscriptionStepperResponseFixture: SubscriptionStepperResponse = {
       subtitle: 'Maintenance',
     },
   ],
+  allowedIdentityCheckMethods: [IdentityCheckMethod.educonnect]
 }
 
 export const SubscriptionStepperErrorResponseFixture: SubscriptionStepperResponse = {

@@ -9,6 +9,7 @@ export const useGetStepperInfo = (): {
   title: SubscriptionStepperResponse['title']
   subtitle?: SubscriptionStepperResponse['subtitle'] | null
   errorMessage?: SubscriptionStepperResponse['errorMessage'] | null
+  identificationMethods?: SubscriptionStepperResponse['allowedIdentityCheckMethods'] | null
 } => {
   const { data } = useQuery([QueryKeys.STEPPER_INFO], () => api.getnativev1subscriptionstepper())
   if (data === undefined) {
@@ -20,5 +21,6 @@ export const useGetStepperInfo = (): {
     title: data.title,
     subtitle: data.subtitle,
     errorMessage: data.errorMessage,
+    identificationMethods: data.allowedIdentityCheckMethods,
   }
 }
