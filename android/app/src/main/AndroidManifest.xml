@@ -27,8 +27,10 @@
     <queries>
       <package android:name="com.instagram.android" />
       <package android:name="com.facebook.orca" />
+      <package android:name="com.google.android.apps.messaging" />
       <package android:name="com.snapchat.android" />
       <package android:name="org.telegram.messenger" />
+      <package android:name="org.thoughtcrime.securesms" />
       <package android:name="com.viber.voip" />
       <package android:name="com.whatsapp" />
   </queries>
