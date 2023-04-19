@@ -3,7 +3,7 @@ import { SearchResponse } from '@algolia/client-search'
 import { SubcategoryIdEnum } from 'api/gen'
 import { Offer } from 'shared/offer/types'
 
-export const mockedAlgoliaResponse: SearchResponse<Offer> = {
+export const mockedAlgoliaHitsResponse: SearchResponse<Offer> = {
   hits: [
     {
       offer: {

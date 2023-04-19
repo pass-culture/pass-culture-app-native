@@ -6,9 +6,9 @@ import { offerResponseSnap } from 'features/offer/fixtures/offerResponse'
 import * as InstalledAppsCheck from 'features/offer/helpers/checkInstalledApps/checkInstalledApps'
 import { offerId } from 'features/offer/helpers/renderOfferPageTestUtil'
 import {
-  mockedAlgoliaResponse,
+  mockedAlgoliaHitsResponse,
   moreHitsForSimilarOffersPlaylist,
-} from 'libs/algolia/__mocks__/mockedAlgoliaResponse'
+} from 'libs/algolia/__mocks__/mockedAlgoliaHitResponse'
 import { analytics } from 'libs/firebase/analytics'
 import { Offer } from 'shared/offer/types'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
@@ -19,7 +19,10 @@ const mockCheckInstalledApps = jest.spyOn(InstalledAppsCheck, 'checkInstalledApp
 
 jest.mock('features/auth/context/AuthContext')
 
-const mockSearchHits: Offer[] = [...mockedAlgoliaResponse.hits, ...moreHitsForSimilarOffersPlaylist]
+const mockSearchHits: Offer[] = [
+  ...mockedAlgoliaHitsResponse.hits,
+  ...moreHitsForSimilarOffersPlaylist,
+]
 
 describe('<OfferBody /> - Analytics', () => {
   beforeAll(() => {

@@ -15,9 +15,9 @@ import * as InstalledAppsCheck from 'features/offer/helpers/checkInstalledApps/c
 import { getOfferUrl } from 'features/share/helpers/getOfferUrl'
 import { beneficiaryUser, nonBeneficiaryUser } from 'fixtures/user'
 import {
-  mockedAlgoliaResponse,
+  mockedAlgoliaHitsResponse,
   moreHitsForSimilarOffersPlaylist,
-} from 'libs/algolia/__mocks__/mockedAlgoliaResponse'
+} from 'libs/algolia/__mocks__/mockedAlgoliaHitResponse'
 import * as useFeatureFlag from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { NetInfoWrapper } from 'libs/network/NetInfoWrapper'
 import { placeholderData } from 'libs/subcategories/placeholderData'
@@ -132,7 +132,7 @@ describe('<OfferBody />', () => {
 
   describe('similar offers', () => {
     beforeAll(() => {
-      mockSearchHits = [...mockedAlgoliaResponse.hits, ...moreHitsForSimilarOffersPlaylist]
+      mockSearchHits = [...mockedAlgoliaHitsResponse.hits, ...moreHitsForSimilarOffersPlaylist]
     })
 
     it('should not display similar offers lists when offer has not it', async () => {

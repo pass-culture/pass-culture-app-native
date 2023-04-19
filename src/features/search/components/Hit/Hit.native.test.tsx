@@ -1,14 +1,14 @@
 import React from 'react'
 
 import { navigate } from '__mocks__/@react-navigation/native'
-import { mockedAlgoliaResponse } from 'libs/algolia/__mocks__/mockedAlgoliaResponse'
+import { mockedAlgoliaHitsResponse } from 'libs/algolia/__mocks__/mockedAlgoliaHitResponse'
 import * as logClickOnProductAPI from 'libs/algolia/analytics/logClickOnOffer'
 import { analytics } from 'libs/firebase/analytics'
 import { fireEvent, render, screen } from 'tests/utils'
 
 import { Hit } from './Hit'
 
-const mockHit = mockedAlgoliaResponse.hits[0]
+const mockHit = mockedAlgoliaHitsResponse.hits[0]
 const offerId = Number(mockHit.objectID)
 
 let mockDistance: string | null = null

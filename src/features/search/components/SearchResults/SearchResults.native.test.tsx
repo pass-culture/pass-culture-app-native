@@ -11,7 +11,7 @@ import { MAX_RADIUS } from 'features/search/helpers/reducer.helpers'
 import { LocationFilter, SearchState, UserData } from 'features/search/types'
 import { Venue } from 'features/venue/types'
 import { beneficiaryUser, nonBeneficiaryUser } from 'fixtures/user'
-import { mockedAlgoliaResponse } from 'libs/algolia/__mocks__/mockedAlgoliaResponse'
+import { mockedAlgoliaHitsResponse } from 'libs/algolia/__mocks__/mockedAlgoliaHitResponse'
 import { analytics } from 'libs/firebase/analytics'
 import { GeoCoordinates, Position } from 'libs/geolocation'
 import { SuggestedPlace } from 'libs/place'
@@ -126,8 +126,8 @@ describe('SearchResults component', () => {
     useRoute.mockReturnValueOnce({
       params: { searchId },
     })
-    mockHits = mockedAlgoliaResponse.hits
-    mockNbHits = mockedAlgoliaResponse.nbHits
+    mockHits = mockedAlgoliaHitsResponse.hits
+    mockNbHits = mockedAlgoliaHitsResponse.nbHits
 
     render(<SearchResults />)
 
@@ -456,8 +456,8 @@ describe('SearchResults component', () => {
 
   it('should open geolocation activation incitation modal when pressing geolocation incitation button', async () => {
     mockPosition = null
-    mockHits = mockedAlgoliaResponse.hits
-    mockNbHits = mockedAlgoliaResponse.nbHits
+    mockHits = mockedAlgoliaHitsResponse.hits
+    mockNbHits = mockedAlgoliaHitsResponse.nbHits
     render(<SearchResults />)
 
     await waitFor(() => {
@@ -469,8 +469,8 @@ describe('SearchResults component', () => {
 
   it('should log open geolocation activation incitation modal when pressing geolocation incitation button', async () => {
     mockPosition = null
-    mockHits = mockedAlgoliaResponse.hits
-    mockNbHits = mockedAlgoliaResponse.nbHits
+    mockHits = mockedAlgoliaHitsResponse.hits
+    mockNbHits = mockedAlgoliaHitsResponse.nbHits
     render(<SearchResults />)
 
     await waitFor(() => {
@@ -483,8 +483,8 @@ describe('SearchResults component', () => {
   describe('should display geolocation incitation button', () => {
     beforeAll(() => {
       mockPosition = null
-      mockHits = mockedAlgoliaResponse.hits
-      mockNbHits = mockedAlgoliaResponse.nbHits
+      mockHits = mockedAlgoliaHitsResponse.hits
+      mockNbHits = mockedAlgoliaHitsResponse.nbHits
     })
 
     it('when position is null', async () => {
@@ -508,8 +508,8 @@ describe('SearchResults component', () => {
 
   describe('Offer unavailable message', () => {
     it('should display when query is an unavailable offer', async () => {
-      mockHits = mockedAlgoliaResponse.hits
-      mockNbHits = mockedAlgoliaResponse.nbHits
+      mockHits = mockedAlgoliaHitsResponse.hits
+      mockNbHits = mockedAlgoliaHitsResponse.nbHits
       mockUserData = [{ message: 'Offre non disponible sur le pass Culture.' }]
       mockSearchState = { ...searchState, query: 'iPhone' }
       render(<SearchResults />)
@@ -520,8 +520,8 @@ describe('SearchResults component', () => {
     })
 
     it('should not display when query is an available offer', async () => {
-      mockHits = mockedAlgoliaResponse.hits
-      mockNbHits = mockedAlgoliaResponse.nbHits
+      mockHits = mockedAlgoliaHitsResponse.hits
+      mockNbHits = mockedAlgoliaHitsResponse.nbHits
       mockUserData = []
       mockSearchState = { ...searchState, query: 'Deezer' }
       render(<SearchResults />)

@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { mockedAlgoliaResponse } from 'libs/algolia/__mocks__/mockedAlgoliaResponse'
+import { mockedAlgoliaHitsResponse } from 'libs/algolia/__mocks__/mockedAlgoliaHitResponse'
 import { ContentTypes, DisplayParametersFields } from 'libs/contentful'
 import { analytics } from 'libs/firebase/analytics'
 import { render } from 'tests/utils'
@@ -15,7 +15,7 @@ const displayParameters: DisplayParametersFields = {
 
 jest.mock('react-query')
 jest.mock('features/home/api/useHomeRecommendedHits', () => ({
-  useHomeRecommendedHits: jest.fn(() => mockedAlgoliaResponse.hits),
+  useHomeRecommendedHits: jest.fn(() => mockedAlgoliaHitsResponse.hits),
 }))
 
 describe('RecommendationModule', () => {
@@ -39,7 +39,7 @@ describe('RecommendationModule', () => {
   })
 
   it('should not trigger logEvent "ModuleDisplayedOnHomepage" when shouldModuleBeDisplayed is false', () => {
-    const minOffers = mockedAlgoliaResponse.hits.length + 1
+    const minOffers = mockedAlgoliaHitsResponse.hits.length + 1
     render(
       <RecommendationModule
         displayParameters={{ ...displayParameters, minOffers }}
