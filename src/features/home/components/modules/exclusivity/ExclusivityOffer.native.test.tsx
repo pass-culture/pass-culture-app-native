@@ -25,12 +25,6 @@ const props = {
   index: 1,
 }
 
-const mockPosition = {
-  latitude: mockOffer.venue.coordinates.latitude || 0 + 0.0001,
-  longitude: mockOffer.venue.coordinates.latitude || 0 + 0.0001,
-}
-jest.mock('libs/geolocation', () => ({ useGeolocation: () => ({ position: mockPosition }) }))
-
 describe('ExclusivityModule component', () => {
   const excluOfferAPISpy = jest.spyOn(excluOfferAPI, 'useExcluOffer')
   beforeEach(() => {
