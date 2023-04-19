@@ -1,6 +1,7 @@
 import { rest } from 'msw'
 
 import { env } from 'libs/environment'
+// eslint-disable-next-line no-restricted-imports
 import { firebaseAnalytics } from 'libs/firebase/analytics'
 import { server } from 'tests/server'
 

@@ -9,6 +9,7 @@ import { UseNavigationType, UseRouteType } from 'features/navigation/RootNavigat
 import { homeNavConfig } from 'features/navigation/TabBar/helpers'
 import { CampaignEvents, campaignTracker } from 'libs/campaign'
 import { isTimestampExpired } from 'libs/dates'
+// eslint-disable-next-line no-restricted-imports
 import { firebaseAnalytics } from 'libs/firebase/analytics'
 import { LoadingPage } from 'ui/components/LoadingPage'
 import { useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'

@@ -4,6 +4,7 @@ import { AccountState } from 'api/gen'
 import { useLoginRoutine } from 'features/auth/helpers/useLoginRoutine'
 import { COOKIES_BY_CATEGORY, ALL_OPTIONAL_COOKIES } from 'features/cookies/CookiesPolicy'
 import { CookiesConsent } from 'features/cookies/types'
+// eslint-disable-next-line no-restricted-imports
 import { firebaseAnalytics } from 'libs/firebase/analytics'
 import * as Keychain from 'libs/keychain'
 import { storage } from 'libs/storage'

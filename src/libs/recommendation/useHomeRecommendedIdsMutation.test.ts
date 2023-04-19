@@ -2,6 +2,7 @@
 import { rest } from 'msw'
 import * as reactQueryAPI from 'react-query'
 
+// eslint-disable-next-line no-restricted-imports
 import { firebaseAnalytics } from 'libs/firebase/analytics'
 import { eventMonitoring } from 'libs/monitoring'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'

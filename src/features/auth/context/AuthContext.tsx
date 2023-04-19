@@ -8,6 +8,7 @@ import { UserProfileResponse } from 'api/gen'
 import { useCookies } from 'features/cookies/helpers/useCookies'
 import { amplitude } from 'libs/amplitude'
 import { useAppStateChange } from 'libs/appState'
+// eslint-disable-next-line no-restricted-imports
 import { firebaseAnalytics } from 'libs/firebase/analytics'
 import { getAccessTokenStatus, getUserIdFromAccesstoken } from 'libs/jwt'
 import { eventMonitoring } from 'libs/monitoring'

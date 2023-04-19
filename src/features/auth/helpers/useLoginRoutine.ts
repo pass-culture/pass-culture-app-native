@@ -4,6 +4,7 @@ import {
   useConnectServicesRequiringUserId,
 } from 'features/auth/context/AuthContext'
 import { useResetContexts } from 'features/auth/context/useResetContexts'
+// eslint-disable-next-line no-restricted-imports
 import { LoginRoutineMethod, firebaseAnalytics } from 'libs/firebase/analytics'
 import { saveRefreshToken } from 'libs/keychain'
 import { storage } from 'libs/storage'

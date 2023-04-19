@@ -1,6 +1,7 @@
 import { ALL_OPTIONAL_COOKIES, COOKIES_BY_CATEGORY } from 'features/cookies/CookiesPolicy'
 import { setMarketingParams } from 'features/cookies/helpers/setMarketingParams'
 import * as StateFromPath from 'features/navigation/RootNavigator/linking/getStateFromPath'
+// eslint-disable-next-line no-restricted-imports
 import { firebaseAnalytics } from 'libs/firebase/analytics'
 import { storage, StorageKey } from 'libs/storage'
 

@@ -1,6 +1,7 @@
 import { amplitude } from 'libs/amplitude'
 import { logEventAnalytics } from 'libs/analytics/logEventAnalytics'
 import { AnalyticsProvider } from 'libs/analytics/types'
+// eslint-disable-next-line no-restricted-imports
 import { firebaseAnalytics } from 'libs/firebase/analytics'
 
 export const analytics: AnalyticsProvider = {

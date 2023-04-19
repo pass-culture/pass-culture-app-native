@@ -12,6 +12,7 @@ import {
   useSimilarOffers,
 } from 'features/offer/api/useSimilarOffers'
 import { env } from 'libs/environment'
+// eslint-disable-next-line no-restricted-imports
 import { firebaseAnalytics } from 'libs/firebase/analytics'
 import { eventMonitoring } from 'libs/monitoring'
 import { placeholderData } from 'libs/subcategories/placeholderData'

@@ -1,3 +1,4 @@
+// eslint-disable-next-line no-restricted-imports
 import { firebaseAnalytics } from 'libs/firebase/analytics'
 
 describe('analytics - getAppInstanceId', () => {

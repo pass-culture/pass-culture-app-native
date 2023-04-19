@@ -1,6 +1,7 @@
 import { amplitude } from 'libs/amplitude'
 import { AmplitudeEvent } from 'libs/amplitude/events'
 import { analytics } from 'libs/analytics'
+// eslint-disable-next-line no-restricted-imports
 import { firebaseAnalytics } from 'libs/firebase/analytics'
 import { AnalyticsEvent } from 'libs/firebase/analytics/events'
 
