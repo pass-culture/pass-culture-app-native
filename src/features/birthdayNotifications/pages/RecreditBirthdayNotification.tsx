@@ -51,7 +51,7 @@ export const RecreditBirthdayNotification = () => {
 
   useEffect(() => {
     storage.saveObject('has_seen_birthday_notification_card', true)
-    analytics.logScreenView('BirthdayNotification')
+    analytics.logScreenView('RecreditBirthdayNotification')
   }, [])
 
   const playAnimation = useCallback(() => {

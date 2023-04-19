@@ -2,6 +2,7 @@ import React, { FunctionComponent, RefObject, useCallback, useEffect, useMemo } 
 import Swiper from 'react-native-web-swiper'
 import styled, { useTheme } from 'styled-components/native'
 
+import { ScreenNames } from 'features/navigation/RootNavigator/types'
 import { analytics } from 'libs/analytics'
 import { useAppStateChange } from 'libs/appState'
 import LottieView from 'libs/lottie'
@@ -20,7 +21,7 @@ export type AchievementCardKeyProps = {
   activeIndex?: number
   index?: number
   key?: number
-  name?: string
+  name?: ScreenNames
   swiperRef?: RefObject<Swiper>
   lastIndex?: number
   skip?: () => void

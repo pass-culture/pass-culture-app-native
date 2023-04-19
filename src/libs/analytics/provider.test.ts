@@ -5,7 +5,7 @@ import { firebaseAnalytics } from 'libs/firebase/analytics'
 import { AnalyticsEvent } from 'libs/firebase/analytics/events'
 
 const EVENT_PARAMS = { param: 1 }
-const SCREEN_NAME = 'screenname'
+const SCREEN_NAME = 'Home'
 
 jest.unmock('libs/analytics/provider')
 

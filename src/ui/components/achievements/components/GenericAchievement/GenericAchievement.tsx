@@ -118,7 +118,7 @@ export const GenericAchievement: FunctionComponent<Props> = ({
                 swiperRef,
                 name:
                   (card as ReactElement<AchievementCardKeyProps>).props.name ||
-                  `${screenName}${index + 1}`,
+                  (`${screenName}${index + 1}` as ScreenNames),
                 lastIndex,
                 skip: skipGenericAchievement,
               })

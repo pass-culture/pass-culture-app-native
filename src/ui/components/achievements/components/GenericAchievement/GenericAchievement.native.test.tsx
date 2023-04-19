@@ -108,7 +108,7 @@ describe('<GenericAchievement />', () => {
   })
 
   it('should trigger analytics with a custom name instead of Achievement1', () => {
-    const cardCustomName = 'CustomName'
+    const cardCustomName = 'Profile'
     renderGenericAchievementComponent({
       screenName: 'FirstTutorial',
       children: [
