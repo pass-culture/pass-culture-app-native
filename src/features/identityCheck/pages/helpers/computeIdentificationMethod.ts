@@ -9,6 +9,7 @@ const educonnectFlow: (keyof SubscriptionRootStackParamList)[] = [
 
 const ubbleFlow: (keyof SubscriptionRootStackParamList)[] = ['SelectIDOrigin']
 
+// Two screen flows are declared for the purpose of an AB testing
 const ubbleForkFlow: (keyof SubscriptionRootStackParamList)[] = ['IdentificationForkUbble']
 
 const educonnectForkFlow: (keyof SubscriptionRootStackParamList)[] = [
