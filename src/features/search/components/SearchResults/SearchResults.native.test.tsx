@@ -11,7 +11,7 @@ import { MAX_RADIUS } from 'features/search/helpers/reducer.helpers'
 import { LocationFilter, SearchState, UserData } from 'features/search/types'
 import { Venue } from 'features/venue/types'
 import { beneficiaryUser, nonBeneficiaryUser } from 'fixtures/user'
-import { mockedAlgoliaHitsResponse } from 'libs/algolia/__mocks__/mockedAlgoliaHitResponse'
+import { OffersWithPageFixture } from 'libs/algolia/fetchAlgolia/fetchOffers/fixtures/offersWithPageFixture'
 import { analytics } from 'libs/firebase/analytics'
 import { GeoCoordinates, Position } from 'libs/geolocation'
 import { SuggestedPlace } from 'libs/place'
@@ -54,16 +54,16 @@ const mockData = {
     },
   ],
 }
-let mockHits: Offer[] = []
-let mockNbHits = 0
+let mockOffers: Offer[] = []
+let mockNbOffers = 0
 const mockHasNextPage = true
 const mockFetchNextPage = jest.fn()
 let mockUserData: UserData[] = []
 jest.mock('features/search/api/useSearchResults/useSearchResults', () => ({
   useSearchResults: () => ({
     data: mockData,
-    hits: mockHits,
-    nbHits: mockNbHits,
+    hits: mockOffers,
+    nbHits: mockNbOffers,
     isFetching: false,
     isLoading: false,
     hasNextPage: mockHasNextPage,
@@ -104,13 +104,13 @@ const venue: Venue = mockedSuggestedVenues[0]
 
 describe('SearchResults component', () => {
   beforeAll(() => {
-    mockHits = []
-    mockNbHits = 0
+    mockOffers = []
+    mockNbOffers = 0
   })
 
   afterEach(() => {
-    mockHits = []
-    mockNbHits = 0
+    mockOffers = []
+    mockNbOffers = 0
   })
 
   it('should render correctly', async () => {
@@ -126,8 +126,8 @@ describe('SearchResults component', () => {
     useRoute.mockReturnValueOnce({
       params: { searchId },
     })
-    mockHits = mockedAlgoliaHitsResponse.hits
-    mockNbHits = mockedAlgoliaHitsResponse.nbHits
+    mockOffers = OffersWithPageFixture.offers
+    mockNbOffers = OffersWithPageFixture.nbOffers
 
     render(<SearchResults />)
 
@@ -456,8 +456,8 @@ describe('SearchResults component', () => {
 
   it('should open geolocation activation incitation modal when pressing geolocation incitation button', async () => {
     mockPosition = null
-    mockHits = mockedAlgoliaHitsResponse.hits
-    mockNbHits = mockedAlgoliaHitsResponse.nbHits
+    mockOffers = OffersWithPageFixture.offers
+    mockNbOffers = OffersWithPageFixture.nbOffers
     render(<SearchResults />)
 
     await waitFor(() => {
@@ -469,8 +469,8 @@ describe('SearchResults component', () => {
 
   it('should log open geolocation activation incitation modal when pressing geolocation incitation button', async () => {
     mockPosition = null
-    mockHits = mockedAlgoliaHitsResponse.hits
-    mockNbHits = mockedAlgoliaHitsResponse.nbHits
+    mockOffers = OffersWithPageFixture.offers
+    mockNbOffers = OffersWithPageFixture.nbOffers
     render(<SearchResults />)
 
     await waitFor(() => {
@@ -483,8 +483,8 @@ describe('SearchResults component', () => {
   describe('should display geolocation incitation button', () => {
     beforeAll(() => {
       mockPosition = null
-      mockHits = mockedAlgoliaHitsResponse.hits
-      mockNbHits = mockedAlgoliaHitsResponse.nbHits
+      mockOffers = OffersWithPageFixture.offers
+      mockNbOffers = OffersWithPageFixture.nbOffers
     })
 
     it('when position is null', async () => {
@@ -508,8 +508,8 @@ describe('SearchResults component', () => {
 
   describe('Offer unavailable message', () => {
     it('should display when query is an unavailable offer', async () => {
-      mockHits = mockedAlgoliaHitsResponse.hits
-      mockNbHits = mockedAlgoliaHitsResponse.nbHits
+      mockOffers = OffersWithPageFixture.offers
+      mockNbOffers = OffersWithPageFixture.nbOffers
       mockUserData = [{ message: 'Offre non disponible sur le pass Culture.' }]
       mockSearchState = { ...searchState, query: 'iPhone' }
       render(<SearchResults />)
@@ -520,8 +520,8 @@ describe('SearchResults component', () => {
     })
 
     it('should not display when query is an available offer', async () => {
-      mockHits = mockedAlgoliaHitsResponse.hits
-      mockNbHits = mockedAlgoliaHitsResponse.nbHits
+      mockOffers = OffersWithPageFixture.offers
+      mockNbOffers = OffersWithPageFixture.nbOffers
       mockUserData = []
       mockSearchState = { ...searchState, query: 'Deezer' }
       render(<SearchResults />)

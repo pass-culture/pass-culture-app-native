@@ -3,12 +3,13 @@ import React from 'react'
 import { SearchList } from 'features/search/components/SearchList/SearchList'
 import { SearchListProps } from 'features/search/types'
 import { mockedAlgoliaHitsResponse } from 'libs/algolia/__mocks__/mockedAlgoliaHitResponse'
+import { OffersWithPageFixture } from 'libs/algolia/fetchAlgolia/fetchOffers/fixtures/offersWithPageFixture'
 import { Offer } from 'shared/offer/types'
 import { render } from 'tests/utils'
 
 jest.mock('react-query')
 
-const mockHits: Offer[] = mockedAlgoliaHitsResponse.hits
+const mockHits: Offer[] = OffersWithPageFixture.offers
 const mockNbHits = mockedAlgoliaHitsResponse.nbHits
 
 describe('<SearchList />', () => {

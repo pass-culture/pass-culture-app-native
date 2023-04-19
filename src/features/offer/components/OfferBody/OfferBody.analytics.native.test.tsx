@@ -5,10 +5,8 @@ import { OfferBody } from 'features/offer/components/OfferBody/OfferBody'
 import { offerResponseSnap } from 'features/offer/fixtures/offerResponse'
 import * as InstalledAppsCheck from 'features/offer/helpers/checkInstalledApps/checkInstalledApps'
 import { offerId } from 'features/offer/helpers/renderOfferPageTestUtil'
-import {
-  mockedAlgoliaHitsResponse,
-  moreHitsForSimilarOffersPlaylist,
-} from 'libs/algolia/__mocks__/mockedAlgoliaHitResponse'
+import { moreHitsForSimilarOffersPlaylist } from 'libs/algolia/__mocks__/mockedAlgoliaHitResponse'
+import { OffersWithPageFixture } from 'libs/algolia/fetchAlgolia/fetchOffers/fixtures/offersWithPageFixture'
 import { analytics } from 'libs/firebase/analytics'
 import { Offer } from 'shared/offer/types'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
@@ -20,7 +18,7 @@ const mockCheckInstalledApps = jest.spyOn(InstalledAppsCheck, 'checkInstalledApp
 jest.mock('features/auth/context/AuthContext')
 
 const mockSearchHits: Offer[] = [
-  ...mockedAlgoliaHitsResponse.hits,
+  ...OffersWithPageFixture.offers,
   ...moreHitsForSimilarOffersPlaylist,
 ]
 
