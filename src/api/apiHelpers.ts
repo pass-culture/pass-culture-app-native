@@ -29,10 +29,13 @@ export async function getAuthenticationHeaders(options?: RequestInit): Promise<H
 // response that we then catch to redirect to the login page.
 // this happens when there is a problem retrieving or refreshing
 // the access token.
-export const NeedsAuthenticationResponse = new Response('', {
+const NeedsAuthenticationStatus = {
   status: 401,
   statusText: 'NeedsAuthenticationResponse',
-})
+}
+
+export const createNeedsAuthenticationResponse = (url: string) =>
+  new Response(url, NeedsAuthenticationStatus)
 
 export const RefreshTokenExpiredResponse = new Response('', {
   status: 401,
@@ -73,7 +76,7 @@ export const safeFetch = async (
   const accessTokenStatus = getAccessTokenStatus(token)
 
   if (accessTokenStatus === 'unknown') {
-    return NeedsAuthenticationResponse
+    return createNeedsAuthenticationResponse(url)
   }
 
   // If the token is expired, we refresh it before calling the backend
@@ -86,7 +89,7 @@ export const safeFetch = async (
 
       if (error) {
         eventMonitoring.captureException(new Error(`safeFetch ${error}`))
-        return NeedsAuthenticationResponse
+        return createNeedsAuthenticationResponse(url)
       }
 
       runtimeOptions = {
@@ -101,7 +104,7 @@ export const safeFetch = async (
       // But the access token is expired and cannot be refreshed.
       // In this case, we cleared the access token and we need to login again
       eventMonitoring.captureException(new Error(`safeFetch ${error}`))
-      return NeedsAuthenticationResponse
+      return createNeedsAuthenticationResponse(url)
     }
   }
 
@@ -194,10 +197,10 @@ export async function handleGeneratedApiResponse(response: Response): Promise<an
   // We are not suppose to have side-effects in this function but this is a special case
   // where the access token is corrupted and we need to recreate it by logging-in again
   if (
-    response.status === NeedsAuthenticationResponse.status &&
-    response.statusText === NeedsAuthenticationResponse.statusText
+    response.status === NeedsAuthenticationStatus.status &&
+    response.statusText === NeedsAuthenticationStatus.statusText
   ) {
-    eventMonitoring.captureMessage(NeedsAuthenticationResponse.statusText, {
+    eventMonitoring.captureMessage(NeedsAuthenticationStatus.statusText, {
       extra: {
         url: await response.text(),
         status: response.status,

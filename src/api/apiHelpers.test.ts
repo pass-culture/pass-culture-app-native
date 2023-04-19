@@ -10,8 +10,8 @@ import { server } from 'tests/server'
 
 import {
   ApiError,
+  createNeedsAuthenticationResponse,
   handleGeneratedApiResponse,
-  NeedsAuthenticationResponse,
   refreshAccessToken,
   RefreshTokenExpiredResponse,
   safeFetch,
@@ -40,6 +40,7 @@ const respondWith = async (
 }
 
 const accessToken = 'some fake access token'
+const apiUrl = '/native/v1/me'
 const optionsWithAccessToken = {
   headers: {
     Authorization: `Bearer ${accessToken}`,
@@ -93,9 +94,9 @@ describe('[api] helpers', () => {
 
       mockGetAccessTokenStatus.mockReturnValueOnce('expired')
 
-      const response = await safeFetch('/native/v1/me', optionsWithAccessToken, api)
+      const response = await safeFetch(apiUrl, optionsWithAccessToken, api)
 
-      expect(response).toEqual(NeedsAuthenticationResponse)
+      expect(response).toEqual(createNeedsAuthenticationResponse(apiUrl))
     })
 
     it('forces user to login when refresh token is expired', async () => {
@@ -105,13 +106,12 @@ describe('[api] helpers', () => {
       // mock refresh access token response for the retry
       mockFetch.mockRejectedValueOnce(new ApiError(401, 'unauthorized'))
 
-      const response = await safeFetch('/native/v1/me', optionsWithAccessToken, api)
+      const response = await safeFetch(apiUrl, optionsWithAccessToken, api)
 
       expect(response).toEqual(RefreshTokenExpiredResponse)
     })
 
     it('regenerates the access token and fetch the real url after when the access token is expired', async () => {
-      const apiUrl = '/native/v1/me'
       mockGetAccessTokenStatus.mockReturnValueOnce('expired')
       const expectedResponse = respondWith('some api response')
       mockFetch
@@ -134,9 +134,9 @@ describe('[api] helpers', () => {
     it('needs authentication response when there is no access token', async () => {
       mockGetAccessTokenStatus.mockReturnValueOnce('unknown')
 
-      const response = await safeFetch('/native/v1/me', {}, api)
+      const response = await safeFetch(apiUrl, {}, api)
 
-      expect(response).toEqual(NeedsAuthenticationResponse)
+      expect(response).toEqual(createNeedsAuthenticationResponse(apiUrl))
       expect(mockFetch).not.toHaveBeenCalled()
     })
 
@@ -144,14 +144,13 @@ describe('[api] helpers', () => {
       mockGetAccessTokenStatus.mockReturnValueOnce('expired')
       mockGetRefreshToken.mockResolvedValueOnce(null)
 
-      const response = await safeFetch('/native/v1/me', optionsWithAccessToken, api)
+      const response = await safeFetch(apiUrl, optionsWithAccessToken, api)
 
-      expect(response).toEqual(NeedsAuthenticationResponse)
+      expect(response).toEqual(createNeedsAuthenticationResponse(apiUrl))
       expect(mockFetch).not.toHaveBeenCalled()
     })
 
     it('retries to regenerate the access token when the access token is expired and the first try to regenerate fails', async () => {
-      const apiUrl = '/native/v1/me'
       mockGetAccessTokenStatus.mockReturnValueOnce('expired')
       const password = 'refreshToken'
       mockGetRefreshToken.mockResolvedValueOnce(password).mockResolvedValueOnce(password)
@@ -363,21 +362,13 @@ describe('[api] helpers', () => {
     })
 
     it('should navigate to login when access token is invalid', async () => {
-      const response = await respondWith(
-        '{ test: true }',
-        NeedsAuthenticationResponse.status,
-        NeedsAuthenticationResponse.statusText
-      )
+      const result = await handleGeneratedApiResponse(createNeedsAuthenticationResponse(apiUrl))
 
-      const result = await handleGeneratedApiResponse(response)
-
-      const error = new Error(NeedsAuthenticationResponse.statusText)
-      expect(eventMonitoring.captureException).toBeCalledWith(error, {
+      expect(eventMonitoring.captureMessage).toBeCalledWith('NeedsAuthenticationResponse', {
         extra: {
-          json: '{ test: true }',
           status: 401,
           statusText: 'NeedsAuthenticationResponse',
-          url: '',
+          url: apiUrl,
         },
       })
       expect(navigateFromRef).toHaveBeenCalledWith('Login', undefined)
