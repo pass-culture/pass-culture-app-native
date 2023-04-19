@@ -23,7 +23,7 @@ type Props = {
   venue: OfferVenueResponse | VenueResponse
   locationCoordinates: Coordinates
   title: string
-  showVenueBanner?: boolean | false
+  showVenueBanner?: boolean
 }
 
 type PartialVenue = Pick<
@@ -55,9 +55,11 @@ export function VenueSection({
   const queryClient = useQueryClient()
   const { latitude: lat, longitude: lng } = locationCoordinates
   const distanceToLocation = useDistance({ lat, lng })
-  const venueFullAddress = venue.address
-    ? formatFullAddressStartsWithPostalCode(venue.address, venue.postalCode, venue.city)
-    : ''
+  const venueFullAddress = formatFullAddressStartsWithPostalCode(
+    venue.address,
+    venue.postalCode,
+    venue.city
+  )
 
   const onVenuePress = () => {
     // We pre-populate the query-cache with the data from the search result for a smooth transition
@@ -96,7 +98,7 @@ export function VenueSection({
           <Spacer.Column numberOfSpaces={1} />
         </View>
       )}
-      {!!venueFullAddress && (
+      {!!venue.address && (
         <React.Fragment>
           <Spacer.Column numberOfSpaces={4} />
           <SeeItineraryButton

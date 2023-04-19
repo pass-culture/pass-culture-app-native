@@ -87,8 +87,8 @@ describe('<VenueSection />', () => {
     expect(screen.queryByText('Voir l’itinéraire')).toBeNull()
   })
 
-  it('should log ConsultLocationItinerary analytics when pressing on "Voir l’itinéraire"', () => {
-    const { getByText } = render(
+  it('should call `beforeNavigateToItinerary` function when pressing on "Voir l’itinéraire"', () => {
+    render(
       <VenueSection
         venue={venue}
         locationCoordinates={{ latitude: 2, longitude: 4 }}
@@ -98,7 +98,7 @@ describe('<VenueSection />', () => {
       />
     )
 
-    fireEvent.press(getByText('Voir l’itinéraire'))
+    fireEvent.press(screen.getByText('Voir l’itinéraire'))
 
     expect(beforeNavigateToItinerary).toHaveBeenCalledTimes(1)
   })

@@ -8,7 +8,11 @@ import { getSpacing, Spacer, Typo } from 'ui/theme'
 import { getHoverStyle } from 'ui/theme/getHoverStyle/getHoverStyle'
 
 export interface VenueDetailsProps extends VenueDetail, ViewProps {
-  // only used by venue card
+  /**
+   * This prop is for internal usage only.
+   * It is used by `<VenueCard />` component and should not be used by
+   * developers outside this component.
+   */
   isHover?: boolean
 }
 

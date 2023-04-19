@@ -164,6 +164,10 @@ export const OfferBody: FunctionComponent<Props> = ({
     [navigate, offerId]
   )
 
+  const handleBeforeNavigateToItinerary = useCallback(() => {
+    analytics.logConsultItinerary({ offerId, from: 'offer' })
+  }, [offerId])
+
   if (!offer) return <React.Fragment></React.Fragment>
   const { accessibility, venue } = offer
   const { categoryId, isEvent, appLabel } = mapping[offer.subcategoryId]
@@ -238,9 +242,7 @@ export const OfferBody: FunctionComponent<Props> = ({
       <SectionWithDivider visible={!offer.isDigital} margin>
         {enableMultivenueOffer ? (
           <VenueSection
-            beforeNavigateToItinerary={() =>
-              analytics.logConsultItinerary({ offerId: offer.id, from: 'offer' })
-            }
+            beforeNavigateToItinerary={handleBeforeNavigateToItinerary}
             venue={venue}
             locationCoordinates={venue.coordinates}
             showVenueBanner={showVenueBanner}
@@ -248,9 +250,7 @@ export const OfferBody: FunctionComponent<Props> = ({
           />
         ) : (
           <WhereSection
-            beforeNavigateToItinerary={() =>
-              analytics.logConsultItinerary({ offerId: offer.id, from: 'offer' })
-            }
+            beforeNavigateToItinerary={handleBeforeNavigateToItinerary}
             venue={venue}
             address={fullAddress}
             locationCoordinates={venue.coordinates}

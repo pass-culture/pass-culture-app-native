@@ -35,9 +35,7 @@ export function formatFullAddressStartsWithPostalCode(
 
   const firstPart = [postalCode, city].filter(Boolean).join(' ')
 
-  if (firstPart && !address) return firstPart
-
-  return [firstPart, address].join(', ')
+  return [firstPart, address].filter(Boolean).join(', ')
 }
 
 export function formatFullAddressWithVenueName(
