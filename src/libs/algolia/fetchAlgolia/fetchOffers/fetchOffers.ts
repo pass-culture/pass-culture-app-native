@@ -11,7 +11,7 @@ import { env } from 'libs/environment'
 import { Position } from 'libs/geolocation'
 import { Offer } from 'shared/offer/types'
 
-type FetchOfferArgs = {
+type FetchOfferParameters = {
   parameters: SearchParametersQuery
   userLocation: Position
   isUserUnderage: boolean
@@ -26,7 +26,7 @@ export const fetchOffers = async ({
   isUserUnderage,
   storeQueryID,
   indexSearch = env.ALGOLIA_OFFERS_INDEX_NAME,
-}: FetchOfferArgs): Promise<Response> => {
+}: FetchOfferParameters): Promise<Response> => {
   const searchParameters = buildOfferSearchParameters(parameters, userLocation, isUserUnderage)
   const index = client.initIndex(indexSearch)
 
