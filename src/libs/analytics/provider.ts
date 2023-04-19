@@ -16,8 +16,12 @@ export const analytics: AnalyticsProvider = {
     firebaseAnalytics.logScreenView(screenName)
   },
   logEvent: async (eventName, params) => {
-    eventName.firebase && firebaseAnalytics.logEvent(eventName.firebase, params)
-    eventName.amplitude && amplitude.logEvent(eventName.amplitude, params)
+    if (eventName.firebase) {
+      firebaseAnalytics.logEvent(eventName.firebase, params)
+    }
+    if (eventName.amplitude) {
+      amplitude.logEvent(eventName.amplitude, params)
+    }
   },
   ...logEventAnalytics,
 }
