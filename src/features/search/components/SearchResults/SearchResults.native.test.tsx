@@ -62,8 +62,8 @@ let mockUserData: UserData[] = []
 jest.mock('features/search/api/useSearchResults/useSearchResults', () => ({
   useSearchResults: () => ({
     data: mockData,
-    hits: mockOffers,
-    nbHits: mockNbOffers,
+    offers: mockOffers,
+    nbOffers: mockNbOffers,
     isFetching: false,
     isLoading: false,
     hasNextPage: mockHasNextPage,

@@ -4,7 +4,6 @@ import {
 } from 'features/search/api/useSearchResults/useSearchResults'
 import { initialSearchState } from 'features/search/context/reducer'
 import { SearchState, SearchView } from 'features/search/types'
-import { mockedAlgoliaHitsResponse } from 'libs/algolia/__mocks__/mockedAlgoliaHitResponse'
 import * as fetchAlgoliaOffer from 'libs/algolia/fetchAlgolia/fetchOffers/fetchOffers'
 import { OffersWithPageFixture } from 'libs/algolia/fetchAlgolia/fetchOffers/fixtures/offersWithPageFixture'
 import { analytics } from 'libs/firebase/analytics'
@@ -42,7 +41,7 @@ describe('useSearchResults', () => {
       expect(analytics.logPerformSearch).toHaveBeenNthCalledWith(
         1,
         initialSearchState,
-        mockedAlgoliaHitsResponse.nbHits
+        OffersWithPageFixture.nbOffers
       )
     })
 
