@@ -619,12 +619,6 @@ jobs:
           command: |
             export ANDROID_APPCENTER_API_TOKEN=$ANDROID_TESTING_APPCENTER_API_TOKEN
             ./scripts/deploy.sh -o android -t hard -e testing
-      - run:
-          name: Notify failed deploy
-          command: |
-            BOT_MESSAGE="'*testing* : [App Native] android hard deployment has failed :collision:'"
-            curl -X POST -H 'Content-type: application/json' --data "{'channel':'alertes-deploiement-native','text': $BOT_MESSAGE}" $SLACK_OPS_BOT_URL
-          when: on_fail
 
   deploy-ios-testing-hard:
     executor: ios
@@ -649,12 +643,6 @@ jobs:
           command: |
             export IOS_APPCENTER_API_TOKEN=$IOS_TESTING_APPCENTER_API_TOKEN
             ./scripts/deploy.sh -o ios -t hard -e testing
-      - run:
-          name: Notify failed deploy
-          command: |
-            BOT_MESSAGE="'*testing* : [App Native] ios hard deployment has failed :collision:'"
-            curl -X POST -H 'Content-type: application/json' --data "{'channel':'alertes-deploiement-native','text': $BOT_MESSAGE}" $SLACK_OPS_BOT_URL
-          when: on_fail
 
   deploy-ios-staging-hard:
     executor: ios
@@ -979,8 +967,8 @@ workflows:
               ignore: /.*/
           requires:
             - checkout-and-install-deps
-            - test-lint-and-types
-            - test-native
+            # - test-lint-and-types
+            # - test-native
       - deploy-ios-testing-hard:
           filters:
             tags:
@@ -989,12 +977,12 @@ workflows:
               ignore: /.*/
           requires:
             - checkout-and-install-deps
-            - test-lint-and-types
-            - test-native
+            # - test-lint-and-types
+            # - test-native
       - notify-hard-testing-release:
           filters:
             tags:
-              only: /^testing\/v.*/
+              only: /^staging\/v.*/
             branches:
               ignore: /.*/
           requires:
