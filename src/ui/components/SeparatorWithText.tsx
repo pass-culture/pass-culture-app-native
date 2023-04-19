@@ -23,7 +23,7 @@ const Container = styled.View({
   paddingHorizontal: getSpacing(1),
 })
 
-const StyledBody = styled(Typo.Body)({
+const StyledBody = styled(Typo.Caption)({
   marginHorizontal: getSpacing(2.5),
 })
 
