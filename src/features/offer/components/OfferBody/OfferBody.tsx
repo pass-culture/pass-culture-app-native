@@ -14,8 +14,10 @@ import { OfferPartialDescription } from 'features/offer/components/OfferPartialD
 import { OfferTile } from 'features/offer/components/OfferTile/OfferTile'
 import { ReportOfferModal } from 'features/offer/components/ReportOfferModal/ReportOfferModal'
 import { MessagingApps } from 'features/offer/components/shareMessagingOffer/MessagingApps'
+import { VenueSection } from 'features/offer/components/VenueSection/VenueSection'
 import { VenueSelectionModal } from 'features/offer/components/VenueSelectionModal/VenueSelectionModal'
 import { PlaylistType } from 'features/offer/enums'
+import { getVenueSectionTitle } from 'features/offer/helpers/getVenueSectionTitle/getVenueSectionTitle'
 import { useTrackOfferSeenDuration } from 'features/offer/helpers/useTrackOfferSeenDuration'
 import { isUserBeneficiary } from 'features/profile/helpers/isUserBeneficiary'
 import { isUserExBeneficiary } from 'features/profile/helpers/isUserExBeneficiary'
@@ -162,6 +164,10 @@ export const OfferBody: FunctionComponent<Props> = ({
     [navigate, offerId]
   )
 
+  const handleBeforeNavigateToItinerary = useCallback(() => {
+    analytics.logConsultItinerary({ offerId, from: 'offer' })
+  }, [offerId])
+
   if (!offer) return <React.Fragment></React.Fragment>
   const { accessibility, venue } = offer
   const { categoryId, isEvent, appLabel } = mapping[offer.subcategoryId]
@@ -193,6 +199,8 @@ export const OfferBody: FunctionComponent<Props> = ({
     typeof formattedDate === 'string'
       ? formattedDate.charAt(0).toUpperCase() + formattedDate.slice(1)
       : formattedDate
+
+  const venueSectionTitle = getVenueSectionTitle(offer.subcategoryId, isEvent)
 
   return (
     <Container
@@ -232,15 +240,23 @@ export const OfferBody: FunctionComponent<Props> = ({
       </SectionWithDivider>
 
       <SectionWithDivider visible={!offer.isDigital} margin>
-        <WhereSection
-          beforeNavigateToItinerary={() =>
-            analytics.logConsultItinerary({ offerId: offer.id, from: 'offer' })
-          }
-          venue={venue}
-          address={fullAddress}
-          locationCoordinates={venue.coordinates}
-          showVenueBanner={showVenueBanner}
-        />
+        {enableMultivenueOffer ? (
+          <VenueSection
+            beforeNavigateToItinerary={handleBeforeNavigateToItinerary}
+            venue={venue}
+            showVenueBanner={showVenueBanner}
+            title={venueSectionTitle}
+          />
+        ) : (
+          <WhereSection
+            beforeNavigateToItinerary={handleBeforeNavigateToItinerary}
+            venue={venue}
+            address={fullAddress}
+            locationCoordinates={venue.coordinates}
+            showVenueBanner={showVenueBanner}
+          />
+        )}
+
         {shouldDisplayOtherVenuesAvailableButton ? (
           <React.Fragment>
             <Spacer.Column numberOfSpaces={2} />
@@ -345,6 +361,7 @@ export const OfferBody: FunctionComponent<Props> = ({
         <VenueSelectionModal
           isVisible={isChangeVenueModalVisible}
           items={[]}
+          title={venueSectionTitle}
           onSubmit={onNewOfferVenueSelected}
           onClosePress={hideChangeVenueModal}
         />

@@ -9,7 +9,7 @@ import { customFocusOutline } from 'ui/theme/customFocusOutline/customFocusOutli
 
 import { VenueDetails, VenueDetailsProps } from '../VenueDetails/VenueDetails'
 
-export type VenueCardProps = VenueDetailsProps & {
+export type VenueCardProps = Omit<VenueDetailsProps, 'isHover'> & {
   onPress: VoidFunction
 }
 
@@ -19,6 +19,7 @@ export function VenueCard({ onPress, ...props }: VenueCardProps) {
 
   return (
     <Wrapper
+      testID="venue-card"
       activeOpacity={0.5}
       onFocus={onFocus}
       onBlur={onBlur}

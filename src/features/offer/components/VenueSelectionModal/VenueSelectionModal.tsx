@@ -13,6 +13,7 @@ import { getSpacing } from 'ui/theme'
 type VenueSelectionModalProps = {
   isVisible: boolean
   items: VenueSelectionListProps['items']
+  title: string
   onSubmit: (selectedOfferId: number) => void
   onClosePress: VoidFunction
 }
@@ -20,6 +21,7 @@ type VenueSelectionModalProps = {
 export function VenueSelectionModal({
   isVisible,
   items,
+  title,
   onSubmit,
   onClosePress,
 }: VenueSelectionModalProps) {
@@ -36,7 +38,7 @@ export function VenueSelectionModal({
 
   return (
     <AppModal
-      title="Lieu de retrait"
+      title={title}
       visible={isVisible}
       isFullscreen
       noPadding

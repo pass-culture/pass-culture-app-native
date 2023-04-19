@@ -10,6 +10,7 @@ export default {
   component: VenueSelectionModal,
   args: {
     isVisible: true,
+    title: 'Lieu de retrait',
     onSubmit: action('selected'),
     onClosePress: action('close modal'),
   },

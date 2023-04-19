@@ -30,7 +30,13 @@ describe('<VenueSelectionModal />', () => {
 
   it('should not have any accessibility violations', async () => {
     const { container } = render(
-      <VenueSelectionModal isVisible items={items} onSubmit={jest.fn()} onClosePress={jest.fn()} />
+      <VenueSelectionModal
+        isVisible
+        items={items}
+        title="Lieu de retrait"
+        onSubmit={jest.fn()}
+        onClosePress={jest.fn()}
+      />
     )
 
     const results = await checkAccessibilityFor(container)
