@@ -150,6 +150,15 @@ describe('[api] helpers', () => {
       expect(mockFetch).not.toHaveBeenCalled()
     })
 
+    it('needs authentication response when cannot get refresh token', async () => {
+      mockGetAccessTokenStatus.mockReturnValueOnce('expired')
+      mockGetRefreshToken.mockRejectedValueOnce(new Error())
+
+      const response = await safeFetch(apiUrl, optionsWithAccessToken, api)
+
+      expect(response).toEqual(createNeedsAuthenticationResponse(apiUrl))
+    })
+
     it('retries to regenerate the access token when the access token is expired and the first try to regenerate fails', async () => {
       mockGetAccessTokenStatus.mockReturnValueOnce('expired')
       const password = 'refreshToken'
