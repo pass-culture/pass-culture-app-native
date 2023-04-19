@@ -4,18 +4,18 @@ import { AnalyticsProvider } from 'libs/analytics/types'
 import { firebaseAnalytics } from 'libs/firebase/analytics'
 
 export const analytics: AnalyticsProvider = {
-  enableCollection: () => {
+  enableCollection: async () => {
     firebaseAnalytics.enableCollection()
     amplitude.enableCollection()
   },
-  disableCollection: () => {
+  disableCollection: async () => {
     firebaseAnalytics.disableCollection()
     amplitude.disableCollection()
   },
-  logScreenView: (screenName) => {
+  logScreenView: async (screenName) => {
     firebaseAnalytics.logScreenView(screenName)
   },
-  logEvent: (eventName, params) => {
+  logEvent: async (eventName, params) => {
     eventName.firebase && firebaseAnalytics.logEvent(eventName.firebase, params)
     eventName.amplitude && amplitude.logEvent(eventName.amplitude, params)
   },
