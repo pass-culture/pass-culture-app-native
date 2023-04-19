@@ -11,17 +11,45 @@ import { PlaylistType } from 'features/offer/enums'
 import { SearchState } from 'features/search/types'
 import { ShareAppModalType } from 'features/share/helpers/shareAppModalInformations'
 import { AmplitudeEvent } from 'libs/amplitude/events'
-import {
-  analytics,
-  ChangeSearchLocationParam,
-  ConsultHomeParams,
-  OfferAnalyticsData,
-  OfferIdOrVenueId,
-  buildPerformSearchState,
-  urlWithValueMaxLength,
-} from 'libs/analytics'
+import { analytics, buildPerformSearchState, urlWithValueMaxLength } from 'libs/analytics'
 import { ContentTypes } from 'libs/contentful'
 import { AnalyticsEvent } from 'libs/firebase/analytics/events'
+
+type BaseThematicHome = {
+  homeEntryId: string
+  from?: never
+  moduleId?: never
+  moduleListId?: never
+}
+
+type CategoryBlockThematicHome = {
+  homeEntryId: string
+  from: 'category_block'
+  moduleId: string
+  moduleListId: string
+}
+
+type HighlightThematicBlockThematicHome = {
+  homeEntryId: string
+  from: 'highlight_thematic_block'
+  moduleId: string
+  moduleListId?: never
+}
+
+export type ChangeSearchLocationParam =
+  | { type: 'place' | 'everywhere' | 'aroundMe'; venueId?: never }
+  | { type: 'venue'; venueId: number | null }
+
+type ConsultHomeParams =
+  | BaseThematicHome
+  | CategoryBlockThematicHome
+  | HighlightThematicBlockThematicHome
+
+export type OfferAnalyticsData = {
+  offerId?: number
+}
+
+type OfferIdOrVenueId = { offerId: number; venueId?: never } | { venueId: number; offerId?: never }
 
 export const logEventAnalytics = {
   logAcceptNotifications: () =>

@@ -9,7 +9,7 @@ import { MAX_RADIUS } from 'features/search/helpers/reducer.helpers'
 import { LocationFilter, SearchState, SearchView } from 'features/search/types'
 import { Venue } from 'features/venue/types'
 import { analytics } from 'libs/analytics'
-import { ChangeSearchLocationParam } from 'libs/analytics'
+import { ChangeSearchLocationParam } from 'libs/analytics/logEventAnalytics'
 import {
   GeoCoordinates,
   GEOLOCATION_USER_ERROR_MESSAGE,

@@ -7,11 +7,4 @@ export {
   prepareLogEventParams,
   urlWithValueMaxLength,
 } from './utils'
-export type {
-  AnalyticsProvider,
-  ChangeSearchLocationParam,
-  ConsultHomeParams,
-  OfferAnalyticsData,
-  OfferIdOrVenueId,
-  PerformSearchState,
-} from './types'
+export type { AnalyticsProvider } from './types'

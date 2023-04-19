@@ -2,9 +2,25 @@ import { NativeSyntheticEvent, NativeScrollEvent } from 'react-native'
 
 import { LocationType } from 'features/search/enums'
 import { LocationFilter, SearchState } from 'features/search/types'
-import { PerformSearchState } from 'libs/analytics/types'
 
 type Props = NativeSyntheticEvent<NativeScrollEvent>['nativeEvent'] & { padding?: number }
+
+type PerformSearchState = {
+  searchLocationFilter: string
+  searchView: string
+  searchId?: string
+  searchDate?: string
+  searchIsAutocomplete?: boolean
+  searchMaxPrice?: string
+  searchMinPrice?: string
+  searchCategories?: string
+  searchGenreTypes?: string
+  searchOfferIsDuo?: boolean
+  searchOfferIsFree?: boolean
+  searchNativeCategories?: string
+  searchQuery?: string
+  searchTimeRange?: string
+}
 
 export const isCloseToBottom = ({
   layoutMeasurement,

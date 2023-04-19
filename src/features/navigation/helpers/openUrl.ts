@@ -2,7 +2,8 @@ import { Alert, Linking } from 'react-native'
 
 import { getScreenFromDeeplink } from 'features/deeplinks/helpers'
 import { navigateFromRef } from 'features/navigation/navigationRef'
-import { analytics, OfferAnalyticsData } from 'libs/analytics'
+import { analytics } from 'libs/analytics'
+import { OfferAnalyticsData } from 'libs/analytics/logEventAnalytics'
 import { captureMonitoringError } from 'libs/monitoring'
 
 import { isAppUrl } from './isAppUrl'
