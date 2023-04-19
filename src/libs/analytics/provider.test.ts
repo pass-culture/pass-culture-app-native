@@ -20,7 +20,7 @@ describe('analyticsProvider - logEvent', () => {
     })
 
     it('should not log event when firebase event name is not specified', () => {
-      analytics.logEvent({})
+      analytics.logEvent({ amplitude: AmplitudeEvent.ONBOARDING_WELCOME })
       expect(firebaseAnalytics.logEvent).not.toHaveBeenCalled()
     })
 
@@ -40,7 +40,7 @@ describe('analyticsProvider - logEvent', () => {
     })
 
     it('should not log event when amplitude event name is not specified', () => {
-      analytics.logEvent({})
+      analytics.logEvent({ firebase: AnalyticsEvent.CONSULT_OFFER })
       expect(amplitude.logEvent).not.toHaveBeenCalledWith()
     })
 
