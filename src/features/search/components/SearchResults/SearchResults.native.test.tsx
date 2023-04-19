@@ -84,7 +84,7 @@ const mockShowGeolocPermissionModal = jest.fn()
 
 jest.mock('libs/geolocation/GeolocationWrapper', () => ({
   useGeolocation: () => ({
-    position: mockPosition,
+    userPosition: mockPosition,
     showGeolocPermissionModal: mockShowGeolocPermissionModal,
   }),
 }))

@@ -28,7 +28,7 @@ export const SearchFilter: React.FC = () => {
   const logReinitializeFilters = useFunctionOnce(() => {
     analytics.logReinitializeFilters(searchState.searchId)
   })
-  const { position } = useGeolocation()
+  const { userPosition: position } = useGeolocation()
   const { user } = useAuthContext()
   const { params } = useRoute<UseRouteType<'SearchFilter'>>()
   const { isDesktopViewport, isMobileViewport } = useTheme()

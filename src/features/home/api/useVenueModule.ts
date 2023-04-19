@@ -1,10 +1,10 @@
 import { useEffect } from 'react'
 import { useQuery } from 'react-query'
 
+import { useHomePosition } from 'features/home/helpers/useHomePosition'
 import { VenuesModule } from 'features/home/types'
 import { VenueHit } from 'libs/algolia'
 import { fetchMultipleVenues } from 'libs/algolia/fetchAlgolia/fetchMultipleVenues'
-import { useGeolocation } from 'libs/geolocation'
 import { useNetInfoContext } from 'libs/network/NetInfoWrapper'
 import { QueryKeys } from 'libs/queryKeys'
 
@@ -12,7 +12,7 @@ export const useVenueModule = ({
   venuesParameters,
   id,
 }: Pick<VenuesModule, 'venuesParameters' | 'id'>): VenueHit[] | undefined => {
-  const { position } = useGeolocation()
+  const { position } = useHomePosition()
   const netInfo = useNetInfoContext()
 
   const { data, refetch } = useQuery(

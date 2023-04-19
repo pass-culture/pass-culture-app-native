@@ -3,11 +3,11 @@ import React, { useCallback, useEffect } from 'react'
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { useHomeRecommendedHits } from 'features/home/api/useHomeRecommendedHits'
 import { HomeOfferTile } from 'features/home/components/HomeOfferTile'
+import { useHomePosition } from 'features/home/helpers/useHomePosition'
 import { RecommendedOffersModule } from 'features/home/types'
 import { ContentTypes, DisplayParametersFields } from 'libs/contentful'
 import { getPlaylistItemDimensionsFromLayout } from 'libs/contentful/dimensions'
 import { analytics } from 'libs/firebase/analytics'
-import { useGeolocation } from 'libs/geolocation'
 import useFunctionOnce from 'libs/hooks/useFunctionOnce'
 import { formatDates, formatDistance, getDisplayPrice } from 'libs/parsers'
 import { useCategoryIdMapping, useCategoryHomeLabelMapping } from 'libs/subcategories'
@@ -27,7 +27,7 @@ const keyExtractor = (item: Offer) => item.objectID
 
 export const RecommendationModule = (props: RecommendationModuleProps) => {
   const { displayParameters, index, recommendationParameters, moduleId, homeEntryId } = props
-  const { position } = useGeolocation()
+  const { position } = useHomePosition()
   const { user: profile } = useAuthContext()
   const mapping = useCategoryIdMapping()
   const labelMapping = useCategoryHomeLabelMapping()

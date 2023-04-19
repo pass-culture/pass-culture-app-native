@@ -108,7 +108,7 @@ export const OfferBody: FunctionComponent<Props> = ({
 
   const categoryMapping = useCategoryIdMapping()
   const labelMapping = useCategoryHomeLabelMapping()
-  const { position } = useGeolocation()
+  const { userPosition: position } = useGeolocation()
 
   const fromOfferId = route.params?.fromOfferId
 

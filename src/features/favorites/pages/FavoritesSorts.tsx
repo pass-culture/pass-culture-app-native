@@ -29,8 +29,8 @@ const SORT_OPTIONS_LIST = Object.entries(SORT_OPTIONS) as Array<[FavoriteSortBy,
 export const FavoritesSorts: React.FC = () => {
   const { goBack } = useGoBack(...getTabNavConfig('Favorites'))
   const {
-    position,
-    positionError,
+    userPosition: position,
+    userPositionError: positionError,
     permissionState,
     requestGeolocPermission,
     showGeolocPermissionModal,

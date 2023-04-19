@@ -18,8 +18,10 @@ import {
 } from './types'
 
 const GeolocationContext = React.createContext<IGeolocationContext>({
-  position: undefined,
-  positionError: null,
+  userPosition: undefined,
+  customPosition: undefined,
+  setCustomPosition: () => null,
+  userPositionError: null,
   permissionState: undefined,
   requestGeolocPermission: async () => {
     // nothing
@@ -34,8 +36,9 @@ export const GeolocationWrapper = memo(function GeolocationWrapper({
 }: {
   children: JSX.Element
 }) {
-  const [position, setPosition] = useSafeState<Position>(undefined)
-  const [positionError, setPositionError] = useSafeState<GeolocationError | null>(null)
+  const [userPosition, setUserPosition] = useSafeState<Position>(undefined)
+  const [customPosition, setCustomPosition] = useSafeState<Position>(undefined)
+  const [userPositionError, setUserPositionError] = useSafeState<GeolocationError | null>(null)
   const [permissionState, setPermissionState] = useSafeState<GeolocPermissionState | undefined>(
     undefined
   )
@@ -54,15 +57,15 @@ export const GeolocationWrapper = memo(function GeolocationWrapper({
   const triggerPositionUpdate = useCallback(async () => {
     try {
       const newPosition = await getPosition()
-      setPosition(newPosition)
-      setPositionError(null)
+      setUserPosition(newPosition)
+      setUserPositionError(null)
       return newPosition
     } catch (newPositionError) {
-      setPosition(null)
-      setPositionError(newPositionError as GeolocationError)
+      setUserPosition(null)
+      setUserPositionError(newPositionError as GeolocationError)
       return null
     }
-  }, [setPosition, setPositionError])
+  }, [setUserPosition, setUserPositionError])
 
   // this function is used to set OS permissions according to user choice on native geolocation popup
   const contextualRequestGeolocPermission = useCallback(
@@ -110,8 +113,8 @@ export const GeolocationWrapper = memo(function GeolocationWrapper({
 
   useEffect(() => {
     if (isRejected(permissionState)) {
-      setPosition(null)
-      setPositionError(null)
+      setUserPosition(null)
+      setUserPositionError(null)
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [permissionState])
@@ -125,8 +128,10 @@ export const GeolocationWrapper = memo(function GeolocationWrapper({
 
   const value = useMemo(
     () => ({
-      position,
-      positionError,
+      userPosition,
+      userPositionError,
+      customPosition,
+      setCustomPosition,
       permissionState,
       requestGeolocPermission: contextualRequestGeolocPermission,
       triggerPositionUpdate,
@@ -134,10 +139,12 @@ export const GeolocationWrapper = memo(function GeolocationWrapper({
       onPressGeolocPermissionModalButton,
     }),
     [
+      setCustomPosition,
+      customPosition,
       contextualRequestGeolocPermission,
       permissionState,
-      position,
-      positionError,
+      userPosition,
+      userPositionError,
       showGeolocPermissionModal,
       triggerPositionUpdate,
       onPressGeolocPermissionModalButton,

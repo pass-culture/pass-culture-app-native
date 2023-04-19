@@ -6,7 +6,7 @@ import { useVenue } from 'features/venue/api/useVenue'
 import { useGeolocation } from 'libs/geolocation'
 
 export const useVenueSearchParameters = (venueId: number): SearchState => {
-  const { position } = useGeolocation()
+  const { userPosition: position } = useGeolocation()
   const { data: venue } = useVenue(venueId)
   const maxPrice = useMaxPrice()
 

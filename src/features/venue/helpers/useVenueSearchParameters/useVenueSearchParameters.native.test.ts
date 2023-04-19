@@ -8,7 +8,7 @@ import { renderHook } from 'tests/utils'
 
 let mockPosition: Position = null
 jest.mock('libs/geolocation', () => ({
-  useGeolocation: jest.fn(() => ({ position: mockPosition })),
+  useGeolocation: jest.fn(() => ({ userPosition: mockPosition })),
 }))
 const mockVenue: VenueResponse = venue
 const invalidId = venue.id + 2

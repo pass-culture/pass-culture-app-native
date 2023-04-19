@@ -13,7 +13,7 @@ const offerPosition = { lat: 31, long: 56 }
 describe('useDistance()', () => {
   it('should call useGeolocation and formatDistance when geolocation is on', () => {
     // eslint-disable-next-line local-rules/independent-mocks
-    mockUseGeolocation.mockReturnValue({ position } as IGeolocationContext)
+    mockUseGeolocation.mockReturnValue({ userPosition: position } as IGeolocationContext)
     useDistance(offerPosition)
     expect(useGeolocation).toBeCalledWith()
     expect(formatDistance).toBeCalledWith(offerPosition, position)
@@ -27,7 +27,7 @@ describe('useDistance()', () => {
   })
   it('should return undefined when position is null', () => {
     // eslint-disable-next-line local-rules/independent-mocks
-    mockUseGeolocation.mockReturnValue({ position: null } as IGeolocationContext)
+    mockUseGeolocation.mockReturnValue({ userPosition: null } as IGeolocationContext)
     useDistance(offerPosition)
     expect(useGeolocation).toBeCalledWith()
     expect(formatDistance).not.toBeCalled()

@@ -1,3 +1,5 @@
+import { Dispatch, SetStateAction } from 'react'
+
 import { GeolocPermissionState, GeolocPositionError } from './enums'
 
 export type GeolocationError = {
@@ -22,8 +24,10 @@ export type AskGeolocPermission = () => Promise<GeolocPermissionState>
 export type ReadGeolocPermission = () => Promise<GeolocPermissionState>
 
 export type IGeolocationContext = {
-  position: Position
-  positionError: GeolocationError | null
+  userPosition: Position
+  customPosition: Position
+  setCustomPosition: Dispatch<SetStateAction<Position>>
+  userPositionError: GeolocationError | null
   permissionState: GeolocPermissionState | undefined
   requestGeolocPermission: (params?: RequestGeolocPermissionParams) => Promise<void>
   triggerPositionUpdate: () => void

@@ -34,7 +34,7 @@ const keyExtractor = (item: Offer) => item.objectID
 export const VenueOffers: React.FC<Props> = ({ venueId, layout = 'two-items' }) => {
   const { data: venue } = useVenue(venueId)
   const { data: venueOffers } = useVenueOffers(venueId)
-  const { position } = useGeolocation()
+  const { userPosition: position } = useGeolocation()
   const params = useVenueSearchParameters(venueId)
   const searchTabNavConfig = useMemo(() => {
     return getTabNavConfig('Search', {

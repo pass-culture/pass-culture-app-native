@@ -4,7 +4,7 @@ import { useGeolocation } from 'libs/geolocation'
 
 export const useHasPosition = () => {
   const { searchState } = useSearch()
-  const { position } = useGeolocation()
+  const { userPosition: position } = useGeolocation()
 
   const isEverywhereSearch = searchState.locationFilter?.locationType === LocationType.EVERYWHERE
   const isGeolocatedUser = !!position

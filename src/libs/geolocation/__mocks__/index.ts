@@ -11,10 +11,13 @@ export const requestGeolocPermission = jest.fn()
 export const triggerPositionUpdate = jest.fn()
 export const showGeolocPermissionModal = jest.fn()
 export const onPressGeolocPermissionModalButton = jest.fn()
+export const setCustomPosition = jest.fn()
 
 const geolocationContext: IGeolocationContext = {
-  position: { longitude: 90, latitude: 90 },
-  positionError: null,
+  userPosition: { longitude: 90, latitude: 90 },
+  userPositionError: null,
+  customPosition: null,
+  setCustomPosition,
   permissionState: GeolocPermissionState.GRANTED,
   requestGeolocPermission,
   triggerPositionUpdate,

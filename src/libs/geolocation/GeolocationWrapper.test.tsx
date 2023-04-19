@@ -33,7 +33,7 @@ describe('useGeolocation()', () => {
 
     await waitFor(() => {
       expect(result.current.permissionState).toEqual(GeolocPermissionState.GRANTED)
-      expect(result.current.position).toBe(MOCK_POSITION)
+      expect(result.current.userPosition).toBe(MOCK_POSITION)
       expect(onSubmit).toHaveBeenCalledTimes(1)
       expect(onRefusal).not.toHaveBeenCalled()
       expect(onAcceptance).toHaveBeenCalledTimes(1)
@@ -47,7 +47,7 @@ describe('useGeolocation()', () => {
 
     await waitFor(() => {
       expect(result.current.permissionState).toEqual(GeolocPermissionState.DENIED)
-      expect(result.current.position).toBe(null)
+      expect(result.current.userPosition).toBe(null)
       expect(onSubmit).toHaveBeenCalledTimes(1)
       expect(onRefusal).toHaveBeenCalledTimes(1)
       expect(onAcceptance).not.toHaveBeenCalled()
@@ -61,7 +61,7 @@ describe('useGeolocation()', () => {
 
     await waitFor(() => {
       expect(result.current.permissionState).toEqual(GeolocPermissionState.NEVER_ASK_AGAIN)
-      expect(result.current.position).toBe(null)
+      expect(result.current.userPosition).toBe(null)
       expect(onSubmit).toHaveBeenCalledTimes(1)
       expect(onRefusal).toHaveBeenCalledTimes(1)
       expect(onAcceptance).not.toHaveBeenCalled()
@@ -75,7 +75,7 @@ describe('useGeolocation()', () => {
 
     await waitFor(() => {
       expect(result.current.permissionState).toEqual(GeolocPermissionState.GRANTED)
-      expect(result.current.position).toBe(MOCK_POSITION)
+      expect(result.current.userPosition).toBe(MOCK_POSITION)
       expect(onSubmit).toHaveBeenCalledTimes(1)
       expect(onRefusal).not.toHaveBeenCalled()
       expect(onAcceptance).toHaveBeenCalledTimes(1)
@@ -90,7 +90,7 @@ describe('useGeolocation()', () => {
 
     await waitFor(() => {
       expect(result.current.permissionState).toEqual(GeolocPermissionState.NEVER_ASK_AGAIN)
-      expect(result.current.position).toBe(null)
+      expect(result.current.userPosition).toBe(null)
       expect(onSubmit).toHaveBeenCalledTimes(1)
       expect(onRefusal).toHaveBeenCalledTimes(1)
       expect(onAcceptance).not.toHaveBeenCalled()

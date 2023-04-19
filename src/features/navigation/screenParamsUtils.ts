@@ -94,6 +94,9 @@ export const screenParamsParser: ParamsParsers = {
   },
   Home: {
     entryId: identityFn,
+
+    latitude: Number,
+    longitude: Number,
   },
   ReinitializePassword: {
     token: identityFn,

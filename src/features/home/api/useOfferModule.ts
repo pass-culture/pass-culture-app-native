@@ -3,13 +3,13 @@ import { useEffect, useMemo } from 'react'
 import { useQuery } from 'react-query'
 
 import { useAuthContext } from 'features/auth/context/AuthContext'
+import { useHomePosition } from 'features/home/helpers/useHomePosition'
 import { OffersModuleParameters } from 'features/home/types'
 import { useIsUserUnderage } from 'features/profile/helpers/useIsUserUnderage'
 import { SearchState } from 'features/search/types'
 import { fetchMultipleOffers } from 'libs/algolia/fetchAlgolia/fetchMultipleOffers/fetchMultipleOffers'
 import { useAdaptOffersPlaylistParameters } from 'libs/algolia/fetchAlgolia/fetchMultipleOffers/helpers/useAdaptOffersPlaylistParameters'
 import { filterOfferHit, useTransformOfferHits } from 'libs/algolia/fetchAlgolia/transformOfferHit'
-import { useGeolocation } from 'libs/geolocation'
 import { useNetInfoContext } from 'libs/network/NetInfoWrapper'
 import { QueryKeys } from 'libs/queryKeys'
 import { Offer } from 'shared/offer/types'
@@ -26,7 +26,7 @@ export const useOfferModule = ({
   search,
   moduleId,
 }: UseOfferModuleProps): { hits: Offer[]; nbHits: number } | undefined => {
-  const { position } = useGeolocation()
+  const { position } = useHomePosition()
   const transformHits = useTransformOfferHits()
 
   const adaptedPlaylistParameters = useAdaptOffersPlaylistParameters()
