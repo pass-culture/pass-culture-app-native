@@ -1,9 +1,11 @@
-import React, { FunctionComponent } from 'react'
+import React, { FunctionComponent, useEffect } from 'react'
 import styled from 'styled-components/native'
 
+import { IdentityCheckMethod } from 'api/gen'
 import { IdentificationForkButton } from 'features/identityCheck/components/IdentificationForkButton'
 import { JustifiedLeftTitle } from 'features/identityCheck/components/JustifiedLeftTitle'
 import { PageWithHeader } from 'features/identityCheck/components/layout/PageWithHeader'
+import { amplitude } from 'libs/amplitude'
 import { env } from 'libs/environment'
 import { theme } from 'theme'
 import { ButtonQuaternaryBlack } from 'ui/components/buttons/ButtonQuaternaryBlack'
@@ -15,6 +17,10 @@ import { Ubble } from 'ui/svg/icons/Ubble'
 import { getSpacing, Typo } from 'ui/theme'
 
 export const IdentificationForkUbble: FunctionComponent = () => {
+  useEffect(() => {
+    amplitude.logEvent('screen_view_fork_ubble')
+  }, [])
+
   return (
     <PageWithHeader title={'Identification'} scrollChildren={<IdentificationForkUbbleContent />} />
   )
@@ -29,6 +35,9 @@ const IdentificationForkUbbleContent: FunctionComponent = () => {
         Subtitle={<StyledCaption>Carte d’identité ou passeport</StyledCaption>}
         icon={Ubble}
         navigateTo={{ screen: 'SelectIDOrigin' }}
+        onBeforeNavigate={() =>
+          amplitude.logEvent('choose_method_ubble', { fork_origin: IdentityCheckMethod.ubble })
+        }
         key={0}
       />
       <StyledSeparatorWithText>
@@ -39,12 +48,20 @@ const IdentificationForkUbbleContent: FunctionComponent = () => {
         Subtitle={<StyledCaption>Fournis par ton établissement scolaire</StyledCaption>}
         icon={Mariane}
         navigateTo={{ screen: 'IdentityCheckEduConnect' }}
+        onBeforeNavigate={() =>
+          amplitude.logEvent('choose_method_educonnect', { fork_origin: IdentityCheckMethod.ubble })
+        }
         key={1}
       />
       <StyledExternalTouchableLinkContainer>
         <ExternalTouchableLink
           as={ButtonQuaternaryBlack}
           externalNav={{ url: env.FAQ_LINK_EDUCONNECT_URL }}
+          onBeforeNavigate={() => {
+            amplitude.logEvent('educonnect_explanation_clicked', {
+              fork_origin: IdentityCheckMethod.ubble,
+            })
+          }}
           icon={InfoPlain}
           wording="C’est quoi ÉduConnect&nbsp;?"
           inline
