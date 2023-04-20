@@ -2,14 +2,14 @@ import React from 'react'
 
 import { SearchList } from 'features/search/components/SearchList/SearchList'
 import { SearchListProps } from 'features/search/types'
-import { OffersWithPageFixture } from 'libs/algolia/fetchAlgolia/fetchOffers/fixtures/offersWithPageFixture'
+import { offersWithPageFixture } from 'libs/algolia/fetchAlgolia/fetchOffers/fixtures/offersWithPageFixture'
 import { Offer } from 'shared/offer/types'
 import { render } from 'tests/utils'
 
 jest.mock('react-query')
 
-const mockHits: Offer[] = OffersWithPageFixture.offers
-const mockNbHits = OffersWithPageFixture.nbOffers
+const mockHits: Offer[] = offersWithPageFixture.offers
+const mockNbHits = offersWithPageFixture.nbOffers
 
 describe('<SearchList />', () => {
   const renderItem = jest.fn()
@@ -30,7 +30,7 @@ describe('<SearchList />', () => {
     render(<SearchList {...props} />)
 
     expect(renderItem).toHaveBeenCalledWith({
-      item: OffersWithPageFixture.offers[0],
+      item: offersWithPageFixture.offers[0],
       index: 0,
       target: 'Cell',
     })

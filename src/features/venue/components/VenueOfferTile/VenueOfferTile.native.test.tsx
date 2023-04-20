@@ -3,12 +3,12 @@ import React from 'react'
 import { push } from '__mocks__/@react-navigation/native'
 import { CategoryIdEnum, HomepageLabelNameEnum } from 'api/gen'
 import { VenueOfferTile } from 'features/venue/components/VenueOfferTile/VenueOfferTile'
-import { OffersWithPageFixture } from 'libs/algolia/fetchAlgolia/fetchOffers/fixtures/offersWithPageFixture'
+import { offersWithPageFixture } from 'libs/algolia/fetchAlgolia/fetchOffers/fixtures/offersWithPageFixture'
 import { analytics } from 'libs/firebase/analytics'
 import { queryCache, reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { fireEvent, render } from 'tests/utils'
 
-const offer = OffersWithPageFixture.offers[0].offer
+const offer = offersWithPageFixture.offers[0].offer
 const offerId = 116656
 const venueId = 34
 

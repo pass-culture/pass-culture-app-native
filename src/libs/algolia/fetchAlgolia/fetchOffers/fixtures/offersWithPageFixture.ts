@@ -1,7 +1,7 @@
 import { SubcategoryIdEnum } from 'api/gen'
 import { OffersWithPage } from 'shared/offer/types'
 
-export const OffersWithPageFixture: OffersWithPage = {
+export const offersWithPageFixture: OffersWithPage = {
   offers: [
     {
       objectID: '102280',
