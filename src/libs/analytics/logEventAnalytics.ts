@@ -353,28 +353,25 @@ export const logEventAnalytics = {
     analytics.logEvent({ firebase: AnalyticsEvent.OFFER_SEEN_DURATION }, { offerId, duration }),
   logOnboardingAgeInformationClicked: (params: {
     type: 'account_creation' | 'account_creation_skipped'
-  }) => {
+  }) =>
     analytics.logEvent(
       {
         amplitude: AmplitudeEvent.ONBOARDING_AGE_INFORMATION_CLICKED,
       },
       params
-    )
-  },
-  logOnboardingGeolocationClicked: (params: { type: 'use_my_position' | 'skipped' }) => {
+    ),
+  logOnboardingGeolocationClicked: (params: { type: 'use_my_position' | 'skipped' }) =>
     analytics.logEvent(
       {
         amplitude: AmplitudeEvent.ONBOARDING_GEOLOCATION_CLICKED,
       },
       params
-    )
-  },
-  logOnboardingStarted: () => {
+    ),
+  logOnboardingStarted: () =>
     analytics.logEvent({
       firebase: AnalyticsEvent.ONBOARDING_STARTED,
       amplitude: AmplitudeEvent.ONBOARDING_WELCOME,
-    })
-  },
+    }),
   logOpenApp: (params: { appsFlyerUserId?: string }) =>
     analytics.logEvent({ firebase: AnalyticsEvent.OPEN_APP }, params),
   logOpenDMSForeignCitizenURL: () =>
