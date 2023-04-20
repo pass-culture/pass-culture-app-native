@@ -17,11 +17,7 @@ export const BodySearch = memo(function BodySearch({ view }: BodySearchProps) {
   const showResultsForCategory = useShowResultsForCategory()
 
   if (view === SearchView.Suggestions) {
-    return (
-      <React.Fragment>
-        <SearchAutocomplete hitComponent={Hit} />
-      </React.Fragment>
-    )
+    return <SearchAutocomplete hitComponent={Hit} />
   } else if (view === SearchView.Results) {
     return <SearchResults />
   }
