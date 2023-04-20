@@ -121,13 +121,13 @@ Object {
   cursor: pointer;
 }
 
-.c4 {
-  width: 100%;
-}
-
 .c2 {
   width: 100%;
   max-width: 500px;
+}
+
+.c4 {
+  width: 100%;
 }
 
 <body>
@@ -440,13 +440,13 @@ Object {
   cursor: pointer;
 }
 
-.c4 {
-  width: 100%;
-}
-
 .c2 {
   width: 100%;
   max-width: 500px;
+}
+
+.c4 {
+  width: 100%;
 }
 
 <div>
