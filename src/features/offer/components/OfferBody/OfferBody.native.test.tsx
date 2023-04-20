@@ -14,10 +14,8 @@ import { MAX_NB_OF_SOCIALS_TO_SHOW } from 'features/offer/components/shareMessag
 import * as InstalledAppsCheck from 'features/offer/helpers/checkInstalledApps/checkInstalledApps'
 import { getOfferUrl } from 'features/share/helpers/getOfferUrl'
 import { beneficiaryUser, nonBeneficiaryUser } from 'fixtures/user'
-import {
-  mockedAlgoliaResponse,
-  moreHitsForSimilarOffersPlaylist,
-} from 'libs/algolia/__mocks__/mockedAlgoliaResponse'
+import { moreHitsForSimilarOffersPlaylist } from 'libs/algolia/__mocks__/mockedAlgoliaHitResponse'
+import { offersWithPageFixture } from 'libs/algolia/fetchAlgolia/fetchOffers/fixtures/offersWithPageFixture'
 import * as useFeatureFlag from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { NetInfoWrapper } from 'libs/network/NetInfoWrapper'
 import { placeholderData } from 'libs/subcategories/placeholderData'
@@ -132,7 +130,7 @@ describe('<OfferBody />', () => {
 
   describe('similar offers', () => {
     beforeAll(() => {
-      mockSearchHits = [...mockedAlgoliaResponse.hits, ...moreHitsForSimilarOffersPlaylist]
+      mockSearchHits = [...offersWithPageFixture.offers, ...moreHitsForSimilarOffersPlaylist]
     })
 
     it('should not display similar offers lists when offer has not it', async () => {
