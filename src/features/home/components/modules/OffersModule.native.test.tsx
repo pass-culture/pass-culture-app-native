@@ -9,7 +9,7 @@ import { DisplayParametersFields, ContentTypes } from 'libs/contentful/types'
 import { analytics } from 'libs/firebase/analytics'
 import { placeholderData } from 'libs/subcategories/placeholderData'
 import { Offer } from 'shared/offer/types'
-import { flushAllPromises, act, fireEvent, render } from 'tests/utils'
+import { act, fireEvent, render } from 'tests/utils'
 
 import { OffersModule } from './OffersModule'
 
@@ -69,7 +69,6 @@ describe('OffersModule component - Analytics', () => {
     await act(async () => {
       // 1st scroll to last item => trigger
       await scrollView.props.onScroll({ nativeEvent: nativeEventEnd })
-      await flushAllPromises()
     })
     expect(analytics.logAllTilesSeen).toHaveBeenCalledWith(props.display.title, mockNbHits)
     expect(analytics.logAllTilesSeen).toHaveBeenCalledTimes(1)

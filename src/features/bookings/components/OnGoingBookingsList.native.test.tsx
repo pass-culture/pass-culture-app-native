@@ -7,7 +7,7 @@ import { bookingsSnap as mockBookings } from 'features/bookings/fixtures/booking
 import { analytics } from 'libs/firebase/analytics'
 import { useNetInfoContext as useNetInfoContextDefault } from 'libs/network/NetInfoWrapper'
 import { useSubcategories } from 'libs/subcategories/useSubcategories'
-import { flushAllPromises, render, act } from 'tests/utils'
+import { render, act } from 'tests/utils'
 import { showErrorSnackBar } from 'ui/components/snackBar/__mocks__/SnackBarContext'
 import { SNACK_BAR_TIME_OUT } from 'ui/components/snackBar/SnackBarContext'
 
@@ -149,7 +149,6 @@ describe('<OnGoingBookingsList /> - Analytics', () => {
     // 2nd scroll to bottom => NOT trigger
     flatList.props.onScroll({ nativeEvent: nativeEventMiddle })
     flatList.props.onScroll({ nativeEvent: nativeEventBottom })
-    flushAllPromises()
 
     expect(analytics.logBookingsScrolledToBottom).toHaveBeenCalledTimes(1)
   })
