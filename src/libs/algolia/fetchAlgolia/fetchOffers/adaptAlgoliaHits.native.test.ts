@@ -1,5 +1,5 @@
 import { SubcategoryIdEnum } from 'api/gen'
-import { AlgoliaHit } from 'libs/algolia'
+import { AlgoliaOfferHit } from 'libs/algolia'
 import {
   adaptAlgoliaHit,
   parseThumbUrl,
@@ -8,7 +8,7 @@ import { offersFixture } from 'libs/algolia/fetchAlgolia/fetchOffers/fixtures/of
 
 describe('adaptAlgoliaHits', () => {
   it('should correctly adapt algolia hits ', () => {
-    const algoliaHits: AlgoliaHit[] = [
+    const algoliaHits: AlgoliaOfferHit[] = [
       {
         offer: {
           dates: [1682539200],
@@ -30,7 +30,7 @@ describe('adaptAlgoliaHits', () => {
     expect(adaptedOffer).toStrictEqual([offersFixture[0]])
   })
   it('should correctly adapt geolocation of digital hits ', () => {
-    const algoliaHits: AlgoliaHit[] = [
+    const algoliaHits: AlgoliaOfferHit[] = [
       {
         _geoloc: { lat: 48.87004, lng: 2.3785 },
         objectID: '13848',

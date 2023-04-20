@@ -1,9 +1,9 @@
 import { SubcategoryIdEnum } from 'api/gen'
-import { AlgoliaHit } from 'libs/algolia'
+import { AlgoliaOfferHit } from 'libs/algolia'
 import { convertEuroToCents } from 'libs/parsers/pricesConversion'
 import { Offer, OfferAttributes } from 'shared/offer/types'
 
-export const adaptAlgoliaHit = (algoliaHits: AlgoliaHit[], urlPrefix?: string): Offer[] => {
+export const adaptAlgoliaHit = (algoliaHits: AlgoliaOfferHit[], urlPrefix?: string): Offer[] => {
   const adaptedOffers = algoliaHits.map((algoliaHit) => ({
     objectID: algoliaHit.objectID,
     _geoloc: getOfferGeoloc(algoliaHit),
@@ -22,11 +22,11 @@ export const adaptAlgoliaHit = (algoliaHits: AlgoliaHit[], urlPrefix?: string): 
 // The _geoloc is hardcoded for digital offers (without position) so that the results appear in the Search:
 // original PR: https://github.com/pass-culture/pass-culture-api/pull/1334
 // Here we dehardcode those coordinates, so that we don't show a wrong distance to the user.
-const getOfferGeoloc = (algoliaHit: AlgoliaHit): Offer['_geoloc'] =>
+const getOfferGeoloc = (algoliaHit: AlgoliaOfferHit): Offer['_geoloc'] =>
   algoliaHit.offer.isDigital ? { lat: null, lng: null } : algoliaHit._geoloc
 
 export const parseThumbUrl = (
-  thumbUrl: AlgoliaHit['offer']['thumbUrl'],
+  thumbUrl: AlgoliaOfferHit['offer']['thumbUrl'],
   urlPrefix?: string
 ): Offer['offer']['thumbUrl'] => {
   if (!thumbUrl) return undefined

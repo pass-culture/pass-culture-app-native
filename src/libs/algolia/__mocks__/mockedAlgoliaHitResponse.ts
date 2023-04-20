@@ -1,9 +1,9 @@
 import { SearchResponse } from '@algolia/client-search'
 
 import { SubcategoryIdEnum } from 'api/gen'
-import { AlgoliaHit } from 'libs/algolia'
+import { AlgoliaOfferHit } from 'libs/algolia'
 
-export const mockedAlgoliaHitsResponse: SearchResponse<AlgoliaHit> = {
+export const mockedAlgoliaHitsResponse: SearchResponse<AlgoliaOfferHit> = {
   hits: [
     {
       offer: {
