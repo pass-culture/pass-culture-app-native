@@ -139,23 +139,27 @@ export const useSimilarOffers = ({
   )
 
   const { user: profile } = useAuthContext()
+  // API called when offer position loaded
+  const isLoadedOfferPosition = Boolean(
+    position?.latitude !== undefined && position?.longitude !== undefined
+  )
   const similarOffersEndpoint = getSimilarOffersEndpoint(offerId, profile?.id, position, categories)
   const [similarOffersIds, setSimilarOffersIds] = useState<string[]>()
 
   const fetchAlgolia = useCallback(async () => {
-    if (!offerId) return
+    if (!offerId || (categoryIncluded && !isLoadedOfferPosition)) return
     const { queryParameters, fallbackParameters } = getAlgoliaRecommendParams(position, categories)
     setSimilarOffersIds(
       categoryIncluded
         ? await getAlgoliaRelatedProducts(String(offerId), queryParameters, fallbackParameters)
         : await getAlgoliaFrequentlyBoughtTogether(String(offerId), queryParameters)
     )
-  }, [categories, categoryIncluded, offerId, position])
+  }, [categories, categoryIncluded, isLoadedOfferPosition, offerId, position])
 
   const fetchApiReco = useCallback(async () => {
-    if (!similarOffersEndpoint) return
+    if (!similarOffersEndpoint || !isLoadedOfferPosition) return
     setSimilarOffersIds(await getApiRecoSimilarOffers(similarOffersEndpoint))
-  }, [similarOffersEndpoint])
+  }, [isLoadedOfferPosition, similarOffersEndpoint])
 
   useEffect(() => {
     const fetchSimilarOffers = async () => {

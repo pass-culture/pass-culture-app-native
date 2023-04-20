@@ -111,12 +111,36 @@ describe('useSimilarOffers', () => {
       expect(fetchApiRecoSpy).not.toHaveBeenCalled()
     })
 
-    it('should call similar offers API when offer id provided', () => {
+    it('should not call similair offers API when offer provided and offer position not loaded', () => {
       renderHook(() =>
         useSimilarOffers({
           offerId: mockOfferId,
           categoryIncluded: SearchGroupNameEnumv2.FILMS_SERIES_CINEMA,
           shouldUseAlgoliaRecommend: false,
+        })
+      )
+      expect(fetchApiRecoSpy).not.toHaveBeenCalled()
+    })
+
+    it('should call similar offers API when offer id provided and shared offer position loaded', () => {
+      renderHook(() =>
+        useSimilarOffers({
+          offerId: mockOfferId,
+          categoryIncluded: SearchGroupNameEnumv2.FILMS_SERIES_CINEMA,
+          shouldUseAlgoliaRecommend: false,
+          position: { latitude: 10, longitude: 15 },
+        })
+      )
+      expect(fetchApiRecoSpy).toHaveBeenCalledTimes(1)
+    })
+
+    it('should call similar offers API when offer id provided and not shared offer position loaded ', () => {
+      renderHook(() =>
+        useSimilarOffers({
+          offerId: mockOfferId,
+          categoryIncluded: SearchGroupNameEnumv2.FILMS_SERIES_CINEMA,
+          shouldUseAlgoliaRecommend: false,
+          position: { latitude: null, longitude: null },
         })
       )
       expect(fetchApiRecoSpy).toHaveBeenCalledTimes(1)
@@ -128,6 +152,27 @@ describe('useSimilarOffers', () => {
       it('when no offer provided', () => {
         renderHook(() =>
           useSimilarOffers({
+            categoryIncluded: SearchGroupNameEnumv2.FILMS_SERIES_CINEMA,
+            shouldUseAlgoliaRecommend: true,
+          })
+        )
+        expect(getRelatedProductsSpy).not.toHaveBeenCalled()
+      })
+
+      it('when no offer provided and offer position not loaded', () => {
+        renderHook(() =>
+          useSimilarOffers({
+            categoryIncluded: SearchGroupNameEnumv2.FILMS_SERIES_CINEMA,
+            shouldUseAlgoliaRecommend: true,
+          })
+        )
+        expect(getRelatedProductsSpy).not.toHaveBeenCalled()
+      })
+
+      it('when offer provided and offer position not loaded', () => {
+        renderHook(() =>
+          useSimilarOffers({
+            offerId: mockOfferId,
             categoryIncluded: SearchGroupNameEnumv2.FILMS_SERIES_CINEMA,
             shouldUseAlgoliaRecommend: true,
           })
@@ -170,12 +215,25 @@ describe('useSimilarOffers', () => {
       })
     })
 
-    it('should call related products API when offer and category included provided', () => {
+    it('should call related products API when offer and category included provided and shared offer position loaded', () => {
       renderHook(() =>
         useSimilarOffers({
           offerId: mockOfferId,
           categoryIncluded: SearchGroupNameEnumv2.FILMS_SERIES_CINEMA,
           shouldUseAlgoliaRecommend: true,
+          position: { latitude: 10, longitude: 15 },
+        })
+      )
+      expect(getRelatedProductsSpy).toHaveBeenCalledTimes(1)
+    })
+
+    it('should call related products API when offer and category included provided and not shared offer position loaded', () => {
+      renderHook(() =>
+        useSimilarOffers({
+          offerId: mockOfferId,
+          categoryIncluded: SearchGroupNameEnumv2.FILMS_SERIES_CINEMA,
+          shouldUseAlgoliaRecommend: true,
+          position: { latitude: null, longitude: null },
         })
       )
       expect(getRelatedProductsSpy).toHaveBeenCalledTimes(1)
