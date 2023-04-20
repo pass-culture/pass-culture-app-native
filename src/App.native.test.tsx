@@ -2,7 +2,7 @@ import React from 'react'
 
 import { campaignTracker } from 'libs/campaign'
 import { BatchMessaging, BatchPush } from 'libs/react-native-batch'
-import { flushAllPromisesWithAct, render } from 'tests/utils'
+import { render } from 'tests/utils'
 
 import { App } from './App'
 
@@ -29,6 +29,5 @@ describe('<App /> with mocked RootNavigator', () => {
 
 const renderApp = async () => {
   const wrapper = render(<App />)
-  await flushAllPromisesWithAct()
   return wrapper
 }

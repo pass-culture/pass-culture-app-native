@@ -14,7 +14,7 @@ import { analytics } from 'libs/firebase/analytics'
 import * as OpenItinerary from 'libs/itinerary/useOpenItinerary'
 import { useNetInfoContext as useNetInfoContextDefault } from 'libs/network/NetInfoWrapper'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { act, flushAllPromisesWithAct, fireEvent, render, waitFor, screen } from 'tests/utils'
+import { act, fireEvent, render, waitFor, screen } from 'tests/utils'
 import { SNACK_BAR_TIME_OUT } from 'ui/components/snackBar/SnackBarContext'
 
 import { BookingDetails as BookingDetailsDefault } from './BookingDetails'
@@ -496,7 +496,6 @@ describe('BookingDetails', () => {
       renderBookingDetails(booking)
 
       const scrollView = screen.getByTestId('BookingDetailsScrollView')
-      await flushAllPromisesWithAct()
 
       await act(async () => {
         await scrollView.props.onScroll({ nativeEvent: nativeEventMiddle })

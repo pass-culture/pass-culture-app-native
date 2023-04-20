@@ -6,7 +6,7 @@ import * as Cookies from 'features/cookies/helpers/useCookies'
 import * as CookiesUpToDate from 'features/cookies/helpers/useIsCookiesListUpToDate'
 import { ConsentStatus } from 'features/cookies/types'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { flushAllPromisesWithAct, render } from 'tests/utils'
+import { render } from 'tests/utils'
 
 import { PrivacyPolicy } from './PrivacyPolicy'
 
@@ -89,6 +89,5 @@ const renderPrivacyPolicy = async () => {
     // eslint-disable-next-line local-rules/no-react-query-provider-hoc
     wrapper: ({ children }) => reactQueryProviderHOC(children),
   })
-  await flushAllPromisesWithAct()
   return renderAPI
 }

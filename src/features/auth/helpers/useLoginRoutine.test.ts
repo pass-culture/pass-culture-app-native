@@ -8,7 +8,7 @@ import { analytics } from 'libs/firebase/analytics'
 import * as Keychain from 'libs/keychain'
 import { storage } from 'libs/storage'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { act, renderHook, superFlushWithAct } from 'tests/utils'
+import { act, renderHook } from 'tests/utils'
 
 const method = 'fromLogin'
 const accessToken = 'access_token'
@@ -120,5 +120,4 @@ const renderUseLoginRoutine = async () => {
       method
     )
   })
-  await superFlushWithAct()
 }
