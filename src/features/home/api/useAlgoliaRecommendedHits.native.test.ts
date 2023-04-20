@@ -1,5 +1,5 @@
 import { useAlgoliaRecommendedHits } from 'features/home/api/useAlgoliaRecommendedHits'
-import { mockedAlgoliaResponse } from 'libs/algolia/__mocks__/mockedAlgoliaResponse'
+import { mockedAlgoliaHitsResponse } from 'libs/algolia/__mocks__/mockedAlgoliaHitResponse'
 import * as fetchOfferHitsAPI from 'libs/algolia/fetchAlgolia/fetchOfferHits'
 import * as filterOfferHitAPI from 'libs/algolia/fetchAlgolia/transformOfferHit'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
@@ -7,7 +7,7 @@ import { renderHook, waitFor } from 'tests/utils'
 
 const ids = ['102280', '102272', '102249', '102310']
 describe('useAlgoliaRecommendedHits', () => {
-  const mockFetchAlgoliaHits = jest.fn().mockResolvedValue(mockedAlgoliaResponse.hits)
+  const mockFetchAlgoliaHits = jest.fn().mockResolvedValue(mockedAlgoliaHitsResponse.hits)
   const fetchAlgoliaHitsSpy = jest
     .spyOn(fetchOfferHitsAPI, 'fetchOfferHits')
     .mockImplementation(mockFetchAlgoliaHits)
@@ -32,7 +32,7 @@ describe('useAlgoliaRecommendedHits', () => {
       wrapper: ({ children }) => reactQueryProviderHOC(children),
     })
     await waitFor(() => {
-      expect(filterAlgoliaHitSpy).toHaveBeenCalledTimes(mockedAlgoliaResponse.hits.length)
+      expect(filterAlgoliaHitSpy).toHaveBeenCalledTimes(mockedAlgoliaHitsResponse.hits.length)
     })
   })
 
