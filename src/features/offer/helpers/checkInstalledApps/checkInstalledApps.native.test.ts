@@ -27,12 +27,6 @@ describe('checkInstalledApps', () => {
   describe('Android', () => {
     beforeEach(() => (Platform.OS = 'android'))
 
-    it('should always consider instagram uninstalled', async () => {
-      const apps = await checkInstalledApps()
-
-      expect(apps[Network.instagram]).toBeFalsy()
-    })
-
     it('should always consider imessage uninstalled', async () => {
       const apps = await checkInstalledApps()
 
@@ -41,18 +35,18 @@ describe('checkInstalledApps', () => {
   })
 
   it('should be false for network when it is uninstalled', async () => {
-    canOpenURLSpy.mockResolvedValueOnce(false).mockResolvedValueOnce(false) // first mock for snapchat or instagram, second for messenger
+    canOpenURLSpy.mockResolvedValueOnce(false).mockResolvedValueOnce(false) // first mock for snapchat, second for instagram
 
     const apps = await checkInstalledApps()
 
-    expect(apps[Network.whatsapp]).toBeFalsy()
+    expect(apps[Network.instagram]).toBeFalsy()
   })
 
   it('should be true for network when it is installed', async () => {
-    canOpenURLSpy.mockResolvedValueOnce(true).mockResolvedValueOnce(true) // first mock for snapchat or instagram, second for whatsapp
+    canOpenURLSpy.mockResolvedValueOnce(true).mockResolvedValueOnce(true) // first mock for snapchat, second for instagram
 
     const apps = await checkInstalledApps()
 
-    expect(apps[Network.whatsapp]).toBeTruthy()
+    expect(apps[Network.instagram]).toBeTruthy()
   })
 })

@@ -75,7 +75,12 @@ const mapNetworkToSocial: Record<
     webUrl?: string
   }
 > = {
-  [Network.instagram]: { social: Social.Instagram, supportsURL: false, shouldEncodeURI: true },
+  [Network.instagram]: {
+    social: Social.Instagram,
+    supportsURL: false,
+    shouldEncodeURI: Platform.OS === 'ios',
+    type: 'text',
+  },
   [Network.messenger]: { social: Social.Messenger },
   [Network.snapchat]: { social: Social.Snapchat },
   [Network.googleMessages]: {
