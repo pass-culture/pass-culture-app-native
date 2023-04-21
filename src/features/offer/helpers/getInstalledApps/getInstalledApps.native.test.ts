@@ -36,9 +36,9 @@ describe('getInstalledApps', () => {
   it('should get installed networks', async () => {
     canOpenURLSpy.mockImplementation(async (url: string): Promise<boolean> => {
       switch (url) {
+        case 'instagram://user/':
         case 'whatsapp://send/':
         case 'fb-messenger://':
-        case 'tg://':
           return true
         default:
           return false
@@ -47,7 +47,7 @@ describe('getInstalledApps', () => {
 
     const result = await getInstalledApps()
 
-    expect(result).toEqual([Network.whatsapp, Network.messenger, Network.telegram])
+    expect(result).toEqual([Network.instagram, Network.whatsapp, Network.messenger])
   })
 
   it('should limit to 3 networks', async () => {
@@ -69,6 +69,7 @@ describe('getInstalledApps', () => {
 
         expect(result).toEqual([
           Network.snapchat,
+          Network.instagram,
           Network.whatsapp,
           Network.googleMessages,
           Network.messenger,
@@ -105,21 +106,6 @@ describe('getInstalledApps', () => {
         const result = await getInstalledApps()
 
         expect(result).toEqual([Network.googleMessages])
-      })
-
-      it('should not support share on instagram because it does not work', async () => {
-        canOpenURLSpy.mockImplementation(async (url: string): Promise<boolean> => {
-          switch (url) {
-            case 'instagram://user/':
-              return true
-            default:
-              return false
-          }
-        })
-
-        const result = await getInstalledApps()
-
-        expect(result).toEqual([])
       })
     })
 
