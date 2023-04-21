@@ -1,15 +1,16 @@
 import { rest } from 'msw'
 import React from 'react'
-import { Linking } from 'react-native'
 
 import { useRoute } from '__mocks__/@react-navigation/native'
 import { offerResponseSnap } from 'features/offer/fixtures/offerResponse'
+import * as GetInstalledAppsAPI from 'features/offer/helpers/getInstalledApps/getInstalledApps'
 import { Offer } from 'features/offer/pages/Offer/Offer'
 import { mockedAlgoliaResponse } from 'libs/algolia/__mocks__/mockedAlgoliaResponse'
 import { env } from 'libs/environment/__mocks__/envFixtures'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { server } from 'tests/server'
 import { measurePerformance, screen } from 'tests/utils'
+import { Network } from 'ui/components/ShareMessagingApp'
 
 useRoute.mockReturnValue({
   params: {
@@ -26,7 +27,8 @@ server.use(
 )
 
 // Mock to display one messaging app button
-jest.spyOn(Linking, 'canOpenURL').mockResolvedValueOnce(true)
+const mockGetInstalledApps = jest.spyOn(GetInstalledAppsAPI, 'getInstalledApps') as jest.Mock
+mockGetInstalledApps.mockResolvedValue([Network.snapchat])
 
 // Performance measuring is run 10 times so we need to increase the timeout
 const TEST_TIMEOUT_IN_MS = 20000
