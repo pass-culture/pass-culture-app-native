@@ -1,71 +1,161 @@
+import { rest } from 'msw'
 import * as React from 'react'
-import { useMutation } from 'react-query'
 
+import { api } from 'api/api'
+import { FavoriteResponse, PaginatedFavoritesResponse } from 'api/gen'
 import { initialBookingState, Step } from 'features/bookOffer/context/reducer'
-import { fireEvent, render, screen, useMutationFactory } from 'tests/utils'
+import { favoriteResponseSnap } from 'features/favorites/fixtures/favoriteResponseSnap'
+import { env } from 'libs/environment'
+import { analytics } from 'libs/firebase/analytics'
+import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
+import { server } from 'tests/server'
+import { act, fireEvent, render, screen, waitFor } from 'tests/utils'
 
 import { BookingImpossible } from './BookingImpossible'
-
-jest.mock('react-query')
-const mockedUseMutation = jest.mocked(useMutation)
 
 jest.mock('features/auth/context/AuthContext', () => ({
   useAuthContext: jest.fn(() => ({ isLoggedIn: true })),
 }))
 
-const mockInitialBookingState = initialBookingState
+const mockOfferId = favoriteResponseSnap.offer.id
 
+const mockInitialBookingState = initialBookingState
 const mockDismissModal = jest.fn()
 const mockDispatch = jest.fn()
 jest.mock('features/bookOffer/context/useBookingContext', () => ({
   useBookingContext: jest.fn(() => ({
-    bookingState: { ...mockInitialBookingState, offerId: 20 },
+    bookingState: { ...mockInitialBookingState, offerId: mockOfferId },
     dismissModal: mockDismissModal,
     dispatch: mockDispatch,
   })),
 }))
 
+const mockPostnativev1sendOfferWebappLinkByEmailofferId = jest.spyOn(
+  api,
+  'postnativev1sendOfferWebappLinkByEmailofferId'
+)
+
+const mockPostnativev1sendOfferLinkByPushofferId = jest.spyOn(
+  api,
+  'postnativev1sendOfferLinkByPushofferId'
+)
+
 describe('<BookingImpossible />', () => {
-  it('should call notifyWebappLinkSent when adding to favorites', async () => {
-    const useMutationAddFavoriteCallbacks: Parameters<typeof useMutationFactory>[0] = {
-      onSuccess: () => {},
-      onError: () => {},
-    }
-    const useMutationNotifyWebappLinkSentCallbacks: Parameters<typeof useMutationFactory>[0] = {
-      onSuccess: () => {},
-      onError: () => {},
-    }
+  describe('When offer is already favorite', () => {
+    beforeAll(() => {
+      const favoritesResponseWithOfferIn: PaginatedFavoritesResponse = {
+        page: 1,
+        nbFavorites: 1,
+        favorites: [favoriteResponseSnap],
+      }
+      server.use(
+        rest.get<Array<FavoriteResponse>>(
+          `${env.API_BASE_URL}/native/v1/me/favorites`,
+          (_req, res, ctx) => res(ctx.status(200), ctx.json(favoritesResponseWithOfferIn))
+        )
+      )
+    })
+    afterAll(() => {
+      server.resetHandlers()
+    })
+    it('should render without CTAs', async () => {
+      // eslint-disable-next-line local-rules/no-react-query-provider-hoc
+      render(reactQueryProviderHOC(<BookingImpossible />))
 
-    const mockUseMutationNotifyWebappLinkSent = useMutationFactory(
-      useMutationNotifyWebappLinkSentCallbacks
-    )
+      await screen.findByLabelText('Voir le détail de l’offre')
 
-    mockedUseMutation
-      // @ts-expect-error ts(2345)
-      .mockImplementationOnce(mockUseMutationNotifyWebappLinkSent)
-      // @ts-expect-error ts(2345)
-      .mockImplementationOnce(useMutationFactory(useMutationAddFavoriteCallbacks))
+      expect(screen).toMatchSnapshot()
+    })
 
-    render(<BookingImpossible />)
+    it("should log 'BookingImpossibleiOS' on mount", async () => {
+      // eslint-disable-next-line local-rules/no-react-query-provider-hoc
+      render(reactQueryProviderHOC(<BookingImpossible />))
 
-    const addToFavoriteButton = screen.getByText('Mettre en favoris')
+      await screen.findByLabelText('Voir le détail de l’offre')
 
-    fireEvent.press(addToFavoriteButton)
+      expect(analytics.logBookingImpossibleiOS).toHaveBeenCalledTimes(1)
+    })
 
-    useMutationAddFavoriteCallbacks.onSuccess()
-    expect(
-      mockUseMutationNotifyWebappLinkSent(() => {}, {
-        onSuccess: () => {},
-        onError: () => {},
-      }).mutate
-    ).toHaveBeenCalledTimes(1)
+    it("should dismiss modal when clicking on 'Retourner à l'offre'", async () => {
+      // eslint-disable-next-line local-rules/no-react-query-provider-hoc
+      render(reactQueryProviderHOC(<BookingImpossible />))
+
+      fireEvent.press(screen.getByText('Retourner à l’offre'))
+
+      await waitFor(() => {
+        expect(mockDismissModal).toHaveBeenCalledTimes(1)
+      })
+    })
   })
 
-  it('should change booking step from date to confirmation', () => {
-    render(<BookingImpossible />)
-    expect(mockDispatch).toHaveBeenNthCalledWith(1, {
-      type: 'CHANGE_STEP',
-      payload: Step.CONFIRMATION,
+  describe('When offer is not yet favorite', () => {
+    beforeAll(() => {
+      const favoriteResponse: FavoriteResponse = favoriteResponseSnap
+
+      server.use(
+        rest.post(`${env.API_BASE_URL}/native/v1/me/favorites`, (_req, res, ctx) =>
+          res(ctx.status(200), ctx.json(favoriteResponse))
+        ),
+        rest.post(
+          `${env.API_BASE_URL}/native/v1/send_offer_link_by_push/${mockOfferId}`,
+          (_req, res, ctx) => res(ctx.status(200), ctx.json({}))
+        ),
+        rest.post(
+          `${env.API_BASE_URL}/native/v1/send_offer_webapp_link_by_email/${mockOfferId}`,
+          (_req, res, ctx) => res(ctx.status(200), ctx.json({}))
+        )
+      )
+    })
+
+    it('should render with CTAs', async () => {
+      // eslint-disable-next-line local-rules/no-react-query-provider-hoc
+      render(reactQueryProviderHOC(<BookingImpossible />))
+
+      await screen.findByLabelText('Mettre en favoris')
+
+      expect(screen).toMatchSnapshot()
+    })
+
+    it('should send email/push notification when adding to favorites', async () => {
+      // eslint-disable-next-line local-rules/no-react-query-provider-hoc
+      render(reactQueryProviderHOC(<BookingImpossible />))
+
+      await act(async () => {
+        const addToFavoriteButton = await screen.findByLabelText('Mettre en favoris')
+
+        fireEvent.press(addToFavoriteButton)
+      })
+
+      expect(mockPostnativev1sendOfferWebappLinkByEmailofferId).toHaveBeenCalledWith(mockOfferId)
+      expect(mockPostnativev1sendOfferLinkByPushofferId).toHaveBeenCalledWith(mockOfferId)
+    })
+
+    it('should log analytics event when adding to favorites', async () => {
+      // eslint-disable-next-line local-rules/no-react-query-provider-hoc
+      render(reactQueryProviderHOC(<BookingImpossible />))
+
+      fireEvent.press(screen.getByText('Mettre en favoris'))
+
+      await waitFor(() => {
+        expect(analytics.logHasAddedOfferToFavorites).toHaveBeenCalledTimes(1)
+        expect(analytics.logHasAddedOfferToFavorites).toHaveBeenCalledWith({
+          from: 'bookingimpossible',
+          offerId: mockOfferId,
+        })
+        expect(mockDismissModal).toHaveBeenCalledTimes(1)
+      })
+    })
+
+    it('should change booking step from date to confirmation', async () => {
+      // eslint-disable-next-line local-rules/no-react-query-provider-hoc
+      render(reactQueryProviderHOC(<BookingImpossible />))
+
+      await screen.findByLabelText('Mettre en favoris')
+
+      expect(mockDispatch).toHaveBeenNthCalledWith(1, {
+        type: 'CHANGE_STEP',
+        payload: Step.CONFIRMATION,
+      })
     })
   })
 })
