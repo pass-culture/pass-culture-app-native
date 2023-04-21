@@ -1,7 +1,7 @@
 import { RecommendSearchOptions } from '@algolia/recommend'
 
 import { Coordinates, SearchGroupNameEnumv2 } from 'api/gen'
-import { buildOfferCategoriesPredicate } from 'libs/algolia/fetchAlgolia/buildAlgoliaParameters/buildFacetFilters'
+import { buildOfferCategoriesPredicate } from 'libs/algolia/fetchAlgolia/buildAlgoliaParameters/helpers/buildFacetFiltersHelpers/buildFacetFiltersHelpers'
 
 export const getAlgoliaRecommendParams = (
   position?: Coordinates,
