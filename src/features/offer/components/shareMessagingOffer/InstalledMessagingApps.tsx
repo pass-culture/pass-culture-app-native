@@ -3,14 +3,13 @@ import { Linking, Platform } from 'react-native'
 import Share, { ShareSingleOptions, Social } from 'react-native-share'
 
 import { MessagingAppContainer } from 'features/offer/components/shareMessagingOffer/MessagingAppContainer'
-import { checkInstalledApps } from 'features/offer/helpers/checkInstalledApps/checkInstalledApps'
+import { getInstalledApps } from 'features/offer/helpers/getInstalledApps/getInstalledApps'
 import { getOfferUrl } from 'features/share/helpers/getOfferUrl'
 import { useShareOfferMessage } from 'features/share/helpers/useShareOfferMessage'
 import { analytics } from 'libs/analytics'
 import { Network, ShareMessagingApp } from 'ui/components/ShareMessagingApp'
 
 const isWeb = Platform.OS === 'web'
-export const MAX_NB_OF_SOCIALS_TO_SHOW = 3
 
 export const InstalledMessagingApps = ({ offerId }: { offerId: number }) => {
   const [installedApps, setInstalledApps] = useState<Network[]>([])
@@ -18,14 +17,7 @@ export const InstalledMessagingApps = ({ offerId }: { offerId: number }) => {
   const shareUrl = getOfferUrl(offerId)
 
   useEffect(() => {
-    checkInstalledApps()
-      .then((result) => {
-        const apps = Object.keys(result) as Network[]
-        setInstalledApps(apps.filter((app) => result[app]).slice(0, MAX_NB_OF_SOCIALS_TO_SHOW))
-      })
-      .catch((error) => {
-        throw new Error(error)
-      })
+    getInstalledApps().then(setInstalledApps)
   }, [])
 
   if (!shareMessage) return null

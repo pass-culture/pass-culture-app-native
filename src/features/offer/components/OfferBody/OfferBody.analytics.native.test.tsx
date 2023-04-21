@@ -1,9 +1,9 @@
 import React from 'react'
+import { Linking } from 'react-native'
 import { ReactTestInstance } from 'react-test-renderer'
 
 import { OfferBody } from 'features/offer/components/OfferBody/OfferBody'
 import { offerResponseSnap } from 'features/offer/fixtures/offerResponse'
-import * as InstalledAppsCheck from 'features/offer/helpers/checkInstalledApps/checkInstalledApps'
 import { offerId } from 'features/offer/helpers/renderOfferPageTestUtil'
 import {
   mockedAlgoliaResponse,
@@ -15,7 +15,7 @@ import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, fireEvent, render, screen } from 'tests/utils'
 import { Network } from 'ui/components/ShareMessagingApp'
 
-const mockCheckInstalledApps = jest.spyOn(InstalledAppsCheck, 'checkInstalledApps') as jest.Mock
+const canOpenURLSpy = jest.spyOn(Linking, 'canOpenURL')
 
 jest.mock('features/auth/context/AuthContext')
 
@@ -68,20 +68,18 @@ describe('<OfferBody /> - Analytics', () => {
     expect(analytics.logConsultWithdrawal).toHaveBeenCalledTimes(1)
   })
 
-  it('should log when the user share the offer on a certain medium', async () => {
-    mockCheckInstalledApps.mockResolvedValueOnce({
-      [Network.snapchat]: true,
-    })
+  it('should log when the user shares the offer on a certain medium', async () => {
+    canOpenURLSpy.mockResolvedValueOnce(true)
     renderOfferBodyForAnalytics()
 
-    const socialMediumButton = await screen.findByText(`Envoyer sur ${[Network.snapchat]}`)
+    const socialMediumButton = await screen.findByText(`Envoyer sur ${[Network.instagram]}`)
     fireEvent.press(socialMediumButton)
 
     expect(analytics.logShare).toHaveBeenNthCalledWith(1, {
       type: 'Offer',
       from: 'offer',
       id: offerId,
-      social: Network.snapchat,
+      social: Network.instagram,
     })
   })
 
