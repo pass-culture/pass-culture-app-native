@@ -16,8 +16,6 @@ import {
 } from 'libs/algolia/fetchAlgolia/buildAlgoliaParameters/helpers/buildFacetFiltersHelpers/buildFacetFiltersHelpers'
 import { eventMonitoring } from 'libs/monitoring'
 
-describe('buildFacetFilters', () => {})
-
 describe('buildOfferCategoriesPredicate', () => {
   it('should return an offer categories predicate formatted for Algolia API', () => {
     const offerCategoriesPredicate = buildOfferCategoriesPredicate([
