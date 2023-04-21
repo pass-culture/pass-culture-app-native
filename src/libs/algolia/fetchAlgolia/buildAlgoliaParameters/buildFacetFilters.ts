@@ -85,6 +85,5 @@ export const buildFacetFilters = ({
   )
     facetFilters.push([`${FACETS_FILTERS_ENUM.VENUE_ID}:${locationFilter.venue.venueId}`])
 
-  const atLeastOneFacetFilter = facetFilters.length > 0
-  return atLeastOneFacetFilter ? { facetFilters } : null
+  return { facetFilters }
 }
