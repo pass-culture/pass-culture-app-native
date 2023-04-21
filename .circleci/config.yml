@@ -254,6 +254,17 @@ commands:
             rvm use "ruby-$(cat .ruby-version)"
             echo . $(rvm $(cat .ruby-version) do rvm env --path) >> $BASH_ENV
 
+  # xcode 14.2 requires ruby manual installation https://circleci.com/docs/testing-ios/#switching-rubies-manually
+  install_ruby_version_ios:
+    description: Install ruby version with rbenv
+    steps:
+      - run:
+          name: Install ruby version with rbenv
+          command: |
+            rbenv install "$(cat .ruby-version)"
+            rbenv global "$(cat .ruby-version)" && rbenv rehash
+
+
   install_ruby_modules:
     description: Install Ruby Dependencies
     steps:
@@ -636,6 +647,7 @@ jobs:
             - 'c4:20:41:81:06:31:e2:3c:b4:1e:a2:5a:11:d1:39:e1'
       - install_node_version
       - install_node_modules
+      - install_ruby_version_ios
       - install_ruby_modules
       - install_cocoapods
       - decode_match_secrets
@@ -666,6 +678,7 @@ jobs:
             - 'c4:20:41:81:06:31:e2:3c:b4:1e:a2:5a:11:d1:39:e1'
       - install_node_version
       - install_node_modules
+      - install_ruby_version_ios
       - install_ruby_modules
       - install_cocoapods
       - decode_match_secrets
@@ -767,6 +780,7 @@ jobs:
             - 'c4:20:41:81:06:31:e2:3c:b4:1e:a2:5a:11:d1:39:e1'
       - install_node_version
       - install_node_modules
+      - install_ruby_version_ios
       - install_ruby_modules
       - install_cocoapods
       - decode_match_secrets
