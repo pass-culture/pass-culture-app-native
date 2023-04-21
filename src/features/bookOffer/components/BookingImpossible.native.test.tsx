@@ -6,9 +6,10 @@ import { FavoriteResponse, PaginatedFavoritesResponse } from 'api/gen'
 import { initialBookingState, Step } from 'features/bookOffer/context/reducer'
 import { favoriteResponseSnap } from 'features/favorites/fixtures/favoriteResponseSnap'
 import { env } from 'libs/environment'
+import { analytics } from 'libs/firebase/analytics'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { server } from 'tests/server'
-import { act, fireEvent, render, screen } from 'tests/utils'
+import { act, fireEvent, render, screen, waitFor } from 'tests/utils'
 
 import { BookingImpossible } from './BookingImpossible'
 
@@ -65,6 +66,26 @@ describe('<BookingImpossible />', () => {
 
       expect(screen).toMatchSnapshot()
     })
+
+    it("should log 'BookingImpossibleiOS' on mount", async () => {
+      // eslint-disable-next-line local-rules/no-react-query-provider-hoc
+      render(reactQueryProviderHOC(<BookingImpossible />))
+
+      await screen.findByLabelText('Voir le détail de l’offre')
+
+      expect(analytics.logBookingImpossibleiOS).toHaveBeenCalledTimes(1)
+    })
+
+    it("should dismiss modal when clicking on 'Retourner à l'offre'", async () => {
+      // eslint-disable-next-line local-rules/no-react-query-provider-hoc
+      render(reactQueryProviderHOC(<BookingImpossible />))
+
+      fireEvent.press(screen.getByText('Retourner à l’offre'))
+
+      await waitFor(() => {
+        expect(mockDismissModal).toHaveBeenCalledTimes(1)
+      })
+    })
   })
 
   describe('When offer is not yet favorite', () => {
@@ -107,6 +128,22 @@ describe('<BookingImpossible />', () => {
 
       expect(mockPostnativev1sendOfferWebappLinkByEmailofferId).toHaveBeenCalledWith(mockOfferId)
       expect(mockPostnativev1sendOfferLinkByPushofferId).toHaveBeenCalledWith(mockOfferId)
+    })
+
+    it('should log analytics event when adding to favorites', async () => {
+      // eslint-disable-next-line local-rules/no-react-query-provider-hoc
+      render(reactQueryProviderHOC(<BookingImpossible />))
+
+      fireEvent.press(screen.getByText('Mettre en favoris'))
+
+      await waitFor(() => {
+        expect(analytics.logHasAddedOfferToFavorites).toHaveBeenCalledTimes(1)
+        expect(analytics.logHasAddedOfferToFavorites).toHaveBeenCalledWith({
+          from: 'bookingimpossible',
+          offerId: mockOfferId,
+        })
+        expect(mockDismissModal).toHaveBeenCalledTimes(1)
+      })
     })
 
     it('should change booking step from date to confirmation', async () => {
