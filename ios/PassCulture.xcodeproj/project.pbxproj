@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		042C3F171E8246C0835AF4E6 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 65C1955A99E745B9B354F57A /* AppDelegate.m */; };
+		042C3F171E8246C0835AF4E6 /* AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = 65C1955A99E745B9B354F57A /* AppDelegate.mm */; };
 		1B1270E728F945AD00A01C30 /* splashscreen.json in Resources */ = {isa = PBXBuildFile; fileRef = 1B1270E628F945AD00A01C30 /* splashscreen.json */; };
 		1B9CDB3328FDA0E60060BC63 /* SplashScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1B9CDB3228FDA0E60060BC63 /* SplashScreen.storyboard */; };
 		1BB62F9328DDAB680045698F /* Dynamic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BB62F9228DDAB680045698F /* Dynamic.swift */; };
@@ -57,7 +57,7 @@
 		4C7D886722584EDD87A2BB44 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = PassCulture/main.m; sourceTree = "<group>"; };
 		4CAEF50B8632400B8EEB6469 /* PassCulture.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PassCulture.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5F350A4B89F548B599D643BB /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "PassCulture/GoogleService-Info.plist"; sourceTree = "<group>"; };
-		65C1955A99E745B9B354F57A /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AppDelegate.m; path = PassCulture/AppDelegate.m; sourceTree = "<group>"; };
+		65C1955A99E745B9B354F57A /* AppDelegate.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = AppDelegate.mm; path = PassCulture/AppDelegate.mm; sourceTree = "<group>"; };
 		6D144DC8254C2B760060E0BD /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		72D36AF6AC0347509FF395EE /* Montserrat-Bold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Montserrat-Bold.ttf"; path = "../assets/fonts/Montserrat/Montserrat-Bold.ttf"; sourceTree = "<group>"; };
 		7365A19A886E4D88A9D9D4C2 /* PassCulture-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "PassCulture-Bridging-Header.h"; sourceTree = "<group>"; };
@@ -123,7 +123,7 @@
 				1B1270E628F945AD00A01C30 /* splashscreen.json */,
 				866FC5E348B2460296FB5F7B /* main.jsbundle */,
 				030D8707D3F8414C91A9D78A /* AppDelegate.h */,
-				65C1955A99E745B9B354F57A /* AppDelegate.m */,
+				65C1955A99E745B9B354F57A /* AppDelegate.mm */,
 				A8881E10DAB84DAA99A29F65 /* Images.xcassets */,
 				3746B404099846C48BD4E3A3 /* Info.plist */,
 				4C7D886722584EDD87A2BB44 /* main.m */,
@@ -394,7 +394,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				042C3F171E8246C0835AF4E6 /* AppDelegate.m in Sources */,
+				042C3F171E8246C0835AF4E6 /* AppDelegate.mm in Sources */,
 				1BB62F9328DDAB680045698F /* Dynamic.swift in Sources */,
 				D554C848268F69C300C16018 /* File.swift in Sources */,
 				7323393B84C441F488A4C363 /* main.m in Sources */,
@@ -490,7 +490,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LANGUAGE_STANDARD = "c++17";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
@@ -546,6 +546,12 @@
 				);
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
+				OTHER_CPLUSPLUSFLAGS = (
+					"$(OTHER_CFLAGS)",
+					"-DFOLLY_NO_CONFIG",
+					"-DFOLLY_MOBILE=1",
+					"-DFOLLY_USE_LIBCPP=1",
+				);
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -556,7 +562,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LANGUAGE_STANDARD = "c++17";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
@@ -604,6 +610,12 @@
 					"\"$(inherited)\"",
 				);
 				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_CPLUSPLUSFLAGS = (
+					"$(OTHER_CFLAGS)",
+					"-DFOLLY_NO_CONFIG",
+					"-DFOLLY_MOBILE=1",
+					"-DFOLLY_USE_LIBCPP=1",
+				);
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
