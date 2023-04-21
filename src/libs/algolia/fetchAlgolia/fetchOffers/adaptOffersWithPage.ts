@@ -11,7 +11,7 @@ export const adaptOffersWithPage = ({
   nbOffers: number
   page: number
   nbPages: number
-  userData?: any
+  userData?: unknown
 }): OffersWithPage => ({
   offers,
   nbOffers,
