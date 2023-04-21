@@ -24,5 +24,5 @@ export interface OffersWithPage {
   nbOffers: number
   page: number
   nbPages: number
-  userData?: any
+  userData?: unknown
 }
