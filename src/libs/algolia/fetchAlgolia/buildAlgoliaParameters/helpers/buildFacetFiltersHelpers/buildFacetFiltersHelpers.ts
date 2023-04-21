@@ -59,15 +59,12 @@ export const buildOfferTypesPredicate = (
   const EVENT = `${FACETS_FILTERS_ENUM.OFFER_IS_EVENT}:${isEvent}`
   const THING = `${FACETS_FILTERS_ENUM.OFFER_IS_THING}:${isThing}`
 
-  if (isDigital) {
-    if (!isEvent && !isThing) return [[DIGITAL]]
-    if (!isEvent && isThing) return [[THING]]
-    if (isEvent && !isThing) return [[DIGITAL, EVENT]]
-  } else {
-    if (!isEvent && isThing) return [[DIGITAL], [THING]]
-    if (isEvent && !isThing) return [[EVENT]]
-    if (isEvent && isThing) return [[DIGITAL]]
-  }
+  if ((isDigital && !isEvent && !isThing) || (!isDigital && isEvent && isThing)) return [[DIGITAL]]
+  else if (isDigital && !isEvent && isThing) return [[THING]]
+  else if (isDigital && isEvent && !isThing) return [[DIGITAL, EVENT]]
+  else if (!isDigital && !isEvent && isThing) return [[DIGITAL], [THING]]
+  else if (!isDigital && isEvent && !isThing) return [[EVENT]]
+
   return undefined
 }
 
