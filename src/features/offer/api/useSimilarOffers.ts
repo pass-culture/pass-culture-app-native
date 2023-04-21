@@ -42,7 +42,7 @@ export const getSimilarOffersEndpoint = (
   const urlParams = new URLSearchParams()
   urlParams.append('token', env.RECOMMENDATION_TOKEN)
   if (userId) urlParams.append('userId', String(userId))
-  if (position) {
+  if (position?.latitude && position?.longitude) {
     urlParams.append('longitude', String(position.longitude))
     urlParams.append('latitude', String(position.latitude))
   }

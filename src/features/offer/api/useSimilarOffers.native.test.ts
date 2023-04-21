@@ -276,10 +276,20 @@ describe('getSimilarOffersEndpoint', () => {
       )
     })
 
-    it('with latitude and longitude query params when they are provided', () => {
+    it('with latitude and longitude query params when there are provided', () => {
       const endpoint = getSimilarOffersEndpoint(mockOfferId, undefined, position)
       expect(endpoint).toEqual(
         `${env.RECOMMENDATION_ENDPOINT}/similar_offers/${mockOfferId}?token=${env.RECOMMENDATION_TOKEN}&longitude=${position.longitude}&latitude=${position.latitude}`
+      )
+    })
+
+    it('without latitude and longitude query params when there are null', () => {
+      const endpoint = getSimilarOffersEndpoint(mockOfferId, undefined, {
+        latitude: null,
+        longitude: null,
+      })
+      expect(endpoint).toEqual(
+        `${env.RECOMMENDATION_ENDPOINT}/similar_offers/${mockOfferId}?token=${env.RECOMMENDATION_TOKEN}`
       )
     })
 
