@@ -10,6 +10,7 @@ import { SubcategoryIdEnum, UserReportedOffersResponse } from 'api/gen'
 import { mockDigitalOffer, mockOffer } from 'features/bookOffer/fixtures/offer'
 import * as ReportedOffersAPI from 'features/offer/api/useReportedOffers'
 import { OfferBody } from 'features/offer/components/OfferBody/OfferBody'
+import * as GetInstalledAppsAPI from 'features/offer/helpers/getInstalledApps/getInstalledApps'
 import { getOfferUrl } from 'features/share/helpers/getOfferUrl'
 import { beneficiaryUser, nonBeneficiaryUser } from 'fixtures/user'
 import {
@@ -17,6 +18,7 @@ import {
   moreHitsForSimilarOffersPlaylist,
 } from 'libs/algolia/__mocks__/mockedAlgoliaResponse'
 import * as useFeatureFlag from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
+import { eventMonitoring } from 'libs/monitoring'
 import { NetInfoWrapper } from 'libs/network/NetInfoWrapper'
 import { placeholderData } from 'libs/subcategories/placeholderData'
 import { Offer } from 'shared/offer/types'
@@ -71,6 +73,7 @@ jest.mock('libs/subcategories/useSubcategories', () => ({
   }),
 }))
 
+const getInstalledAppsMock = jest.spyOn(GetInstalledAppsAPI, 'getInstalledApps')
 const canOpenURLSpy = jest.spyOn(Linking, 'canOpenURL')
 const mockShareSingle = jest.spyOn(Share, 'shareSingle')
 const mockNativeShare = jest.spyOn(NativeShare, 'share')
@@ -277,6 +280,16 @@ describe('<OfferBody />', () => {
       })
 
       expect(mockNativeShare).toHaveBeenCalledTimes(1)
+    })
+
+    it('should log to sentry when an error occurs during installed apps check', async () => {
+      const error = new Error('error message')
+      getInstalledAppsMock.mockRejectedValueOnce(error)
+      renderOfferBody()
+
+      await screen.findByText('Plus d’options')
+
+      expect(eventMonitoring.captureException).toHaveBeenCalledWith(`Installed apps: ${error}`)
     })
   })
 

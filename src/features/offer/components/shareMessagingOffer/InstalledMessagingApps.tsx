@@ -7,6 +7,7 @@ import { getInstalledApps } from 'features/offer/helpers/getInstalledApps/getIns
 import { getOfferUrl } from 'features/share/helpers/getOfferUrl'
 import { useShareOfferMessage } from 'features/share/helpers/useShareOfferMessage'
 import { analytics } from 'libs/analytics'
+import { eventMonitoring } from 'libs/monitoring'
 import { Network, ShareMessagingApp } from 'ui/components/ShareMessagingApp'
 
 const isWeb = Platform.OS === 'web'
@@ -17,7 +18,9 @@ export const InstalledMessagingApps = ({ offerId }: { offerId: number }) => {
   const shareUrl = getOfferUrl(offerId)
 
   useEffect(() => {
-    getInstalledApps().then(setInstalledApps)
+    getInstalledApps()
+      .then(setInstalledApps)
+      .catch((e) => eventMonitoring.captureException(`Installed apps: ${e}`))
   }, [])
 
   if (!shareMessage) return null
