@@ -1,5 +1,7 @@
 import AsyncStorage from '@react-native-async-storage/async-storage'
 import { rest } from 'msw'
+import { Platform } from 'react-native'
+import CodePush from 'react-native-code-push'
 
 import * as NavigationRef from 'features/navigation/navigationRef'
 import { env } from 'libs/environment'
@@ -47,6 +49,8 @@ const optionsWithAccessToken = {
   },
 }
 
+jest.spyOn(CodePush, 'getUpdateMetadata').mockResolvedValue(null)
+
 describe('[api] helpers', () => {
   const mockFetch = jest.spyOn(global, 'fetch')
   const mockGetAccessTokenStatus = jest.spyOn(jwt, 'getAccessTokenStatus')
@@ -62,7 +66,10 @@ describe('[api] helpers', () => {
         headers: {
           Authorization: `Bearer ${accessToken}`,
           'app-version': '1.10.5',
+          'code-push-id': '',
+          'commit-hash': env.COMMIT_HASH,
           'device-id': 'ad7b7b5a169641e27cadbdb35adad9c4ca23099a',
+          platform: Platform.OS,
           'request-id': 'testUuidV4',
         },
       })
@@ -77,7 +84,10 @@ describe('[api] helpers', () => {
         headers: {
           Authorization: `Bearer ${accessToken}`,
           'app-version': '1.10.5',
+          'code-push-id': '',
+          'commit-hash': env.COMMIT_HASH,
           'device-id': 'ad7b7b5a169641e27cadbdb35adad9c4ca23099a',
+          platform: Platform.OS,
           'request-id': 'testUuidV4',
         },
       })
@@ -124,7 +134,10 @@ describe('[api] helpers', () => {
         headers: {
           Authorization: `Bearer ${accessToken}`,
           'app-version': '1.10.5',
+          'code-push-id': '',
+          'commit-hash': env.COMMIT_HASH,
           'device-id': 'ad7b7b5a169641e27cadbdb35adad9c4ca23099a',
+          platform: Platform.OS,
           'request-id': 'testUuidV4',
         },
       })
@@ -175,7 +188,10 @@ describe('[api] helpers', () => {
         headers: {
           Authorization: `Bearer ${password}`,
           'app-version': '1.10.5',
+          'code-push-id': '',
+          'commit-hash': env.COMMIT_HASH,
           'device-id': 'ad7b7b5a169641e27cadbdb35adad9c4ca23099a',
+          platform: Platform.OS,
           'request-id': 'testUuidV4',
         },
         credentials: 'omit',
@@ -185,7 +201,10 @@ describe('[api] helpers', () => {
         headers: {
           Authorization: `Bearer ${password}`,
           'app-version': '1.10.5',
+          'code-push-id': '',
+          'commit-hash': env.COMMIT_HASH,
           'device-id': 'ad7b7b5a169641e27cadbdb35adad9c4ca23099a',
+          platform: Platform.OS,
           'request-id': 'testUuidV4',
         },
         credentials: 'omit',
@@ -195,7 +214,10 @@ describe('[api] helpers', () => {
         headers: {
           Authorization: `Bearer ${accessToken}`,
           'app-version': '1.10.5',
+          'code-push-id': '',
+          'commit-hash': env.COMMIT_HASH,
           'device-id': 'ad7b7b5a169641e27cadbdb35adad9c4ca23099a',
+          platform: Platform.OS,
           'request-id': 'testUuidV4',
         },
       })

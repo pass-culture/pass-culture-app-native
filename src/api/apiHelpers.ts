@@ -1,7 +1,10 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
+import { Platform } from 'react-native'
 import { v4 as uuidv4 } from 'uuid'
 
+import { getCodePushId } from 'api/getCodePushId'
 import { navigateFromRef } from 'features/navigation/navigationRef'
+import { env } from 'libs/environment'
 import { Headers } from 'libs/fetch'
 import { getAccessTokenStatus } from 'libs/jwt'
 import { clearRefreshToken, getRefreshToken } from 'libs/keychain'
@@ -60,8 +63,11 @@ export const safeFetch = async (
     ...options,
     headers: {
       ...options.headers,
-      'device-id': await getUniqueId(),
       'app-version': Package.version,
+      'code-push-id': await getCodePushId(),
+      'commit-hash': env.COMMIT_HASH,
+      'device-id': await getUniqueId(),
+      platform: Platform.OS,
       'request-id': uuidv4(),
     },
   }

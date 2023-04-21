@@ -10,6 +10,7 @@ NO_COLOR='\033[0m'
 
 PROJECT_DIR="$(dirname "${BASH_SOURCE[0]}")/.."
 CURRENT_BRANCH=$(git rev-parse --abbrev-ref HEAD)
+COMMIT_HASH=$(git rev-parse --short HEAD)
 
 . "${PROJECT_DIR}/scripts/upload_sourcemaps_to_sentry.sh"
 
@@ -97,6 +98,8 @@ while getopts ":e:o:t:h:d" opt; do
 done
 
 check_dependency
+
+echo "COMMIT_HASH=$COMMIT_HASH" >> .env."${APP_ENV}"
 
 [[ -z $(git status -s --assume-unchanged ../.env.*) ]] || warn 'Please make sure you deploy with no changes or untracked files. You can run *git stash --include-untracked*.'
 
