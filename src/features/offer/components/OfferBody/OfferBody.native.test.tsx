@@ -291,6 +291,20 @@ describe('<OfferBody />', () => {
 
       expect(eventMonitoring.captureException).toHaveBeenCalledWith(`Installed apps: ${error}`)
     })
+
+    it('should log to sentry when an error occurs when clicking on messaging app', async () => {
+      const error = new Error('error message')
+      mockShareSingle.mockRejectedValueOnce(error)
+      canOpenURLSpy.mockResolvedValueOnce(true)
+      renderOfferBody()
+
+      await act(async () => {
+        const socialMediumButton = await screen.findByText(`Envoyer sur ${[Network.instagram]}`)
+        fireEvent.press(socialMediumButton)
+      })
+
+      expect(eventMonitoring.captureException).toHaveBeenCalledWith(`MessagingApp click: ${error}`)
+    })
   })
 
   describe('Accessibility details', () => {

@@ -4,6 +4,7 @@ import Share, { ShareSingleOptions, Social } from 'react-native-share'
 
 import { MessagingAppContainer } from 'features/offer/components/shareMessagingOffer/MessagingAppContainer'
 import { analytics } from 'libs/analytics'
+import { eventMonitoring } from 'libs/monitoring'
 import { Network, ShareMessagingApp } from 'ui/components/ShareMessagingApp'
 
 type MessagingAppsButtonProps = {
@@ -33,15 +34,19 @@ export const MessagingAppButton = ({
   const message = supportsURL && !isWeb ? shareMessage : shareMessage + '\n' + shareUrl
 
   const onPress = async () => {
-    analytics.logShare({ type: 'Offer', id: offerId, from: 'offer', social: options.social })
-    if (isWeb && webUrl) await Linking.openURL(webUrl + encodeURIComponent(message))
-    else if (isNative && options.url) await Linking.openURL(options.url + message)
-    else {
-      await Share.shareSingle({
-        message: shouldEncodeURI ? encodeURI(message) : message,
-        url: supportsURL ? shareUrl : undefined,
-        ...options,
-      })
+    try {
+      analytics.logShare({ type: 'Offer', id: offerId, from: 'offer', social: options.social })
+      if (isWeb && webUrl) await Linking.openURL(webUrl + encodeURIComponent(message))
+      else if (isNative && options.url) await Linking.openURL(options.url + message)
+      else {
+        await Share.shareSingle({
+          message: shouldEncodeURI ? encodeURI(message) : message,
+          url: supportsURL ? shareUrl : undefined,
+          ...options,
+        })
+      }
+    } catch (e) {
+      eventMonitoring.captureException(`MessagingApp click: ${e}`)
     }
   }
 
