@@ -5,7 +5,7 @@ PODS:
     - AppsFlyerFramework/Main (= 6.4.4)
   - AppsFlyerFramework/Main (6.4.4)
   - Base64 (1.1.2)
-  - Batch (1.19.0)
+  - Batch (1.19.5)
   - BatchFirebaseDispatcher (3.0.0):
     - Batch (~> 1.19)
     - Firebase/Analytics
@@ -614,7 +614,7 @@ PODS:
   - RNSentry (4.2.2):
     - React-Core
     - Sentry (= 7.22.0)
-  - RNShare (8.1.0):
+  - RNShare (8.2.2):
     - React-Core
   - RNSVG (13.6.0):
     - React-Core
@@ -635,7 +635,6 @@ PODS:
 
 DEPENDENCIES:
   - "amplitude-react-native (from `../node_modules/@amplitude/analytics-react-native`)"
-  - Batch (~> 1.17)
   - BatchFirebaseDispatcher
   - boost (from `../node_modules/react-native/third-party-podspecs/boost.podspec`)
   - BVLinearGradient (from `../node_modules/react-native-linear-gradient`)
@@ -937,7 +936,7 @@ SPEC CHECKSUMS:
   amplitude-react-native: 77be2d0a6b5a0900f01fa99f4ec198134231255f
   AppsFlyerFramework: 6ea252ecb04cf443550576922cddb95b35c958ed
   Base64: cecfb41a004124895a7bcee567a89bae5a89d49b
-  Batch: 9e55d8217609dfe8f11cd5e78ca88ebffd9e5115
+  Batch: 0a7afbf8bcbc2f1a97c7a599760ad998e5ee4ebb
   BatchFirebaseDispatcher: 6758d8dc969b75c667908d922b708ab942690fc0
   boost: a7c83b31436843459a1961bfd74b96033dc77234
   BVLinearGradient: e3aad03778a456d77928f594a649e96995f1c872
@@ -1038,7 +1037,7 @@ SPEC CHECKSUMS:
   RNPermissions: 215c54462104b3925b412b0fb3c9c497b21c358b
   RNScreens: 34cc502acf1b916c582c60003dc3089fa01dc66d
   RNSentry: f03937a2cf86c7029ba31fbbf5618c55d223cd62
-  RNShare: 48b3113cd089a2be8ff0515c3ae7a46a4db8a76b
+  RNShare: d82e10f6b7677f4b0048c23709bd04098d5aee6c
   RNSVG: 3a79c0c4992213e4f06c08e62730c5e7b9e4dc17
   SDWebImage: a7f831e1a65eb5e285e3fb046a23fcfbf08e696d
   SDWebImageWebPCoder: f93010f3f6c031e2f8fb3081ca4ee6966c539815
@@ -1048,6 +1047,6 @@ SPEC CHECKSUMS:
   Yoga: c4d61225a466f250c35c1ee78d2d0b3d41fe661c
   YogaKit: f782866e155069a2cca2517aafea43200b01fd5a
 
-PODFILE CHECKSUM: d2e6c254e23ffcef4e399a0305138caa5508ca9f
+PODFILE CHECKSUM: 733dfee6bb571ea42f53824ccde4e72e29b130a3
 
 COCOAPODS: 1.11.3

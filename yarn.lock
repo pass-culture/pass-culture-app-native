@@ -3448,10 +3448,10 @@
   resolved "https://registry.yarnpkg.com/@base2/pretty-print-object/-/pretty-print-object-1.0.1.tgz#371ba8be66d556812dc7fb169ebc3c08378f69d4"
   integrity sha512-4iri8i1AqYHJE2DstZYkyEprg6Pq6sKx3xn5FpySk9sNhH7qN2LLlHJCfDTZRILNwQNPD7mATWM0TBui7uC1pA==
 
-"@batch.com/react-native-plugin@^8.1.0":
-  version "8.1.0"
-  resolved "https://registry.yarnpkg.com/@batch.com/react-native-plugin/-/react-native-plugin-8.1.0.tgz#54a92424cb11ebd05a3369166bc387d25bd2b0e5"
-  integrity sha512-05VuD6MT+fcCySvekgIk3OsaHEfhLb5Wvad/DpnWcYZZHBV/UBpI62QJP4AX5OPbwmfALolzRh76L3JSxKwVcw==
+"@batch.com/react-native-plugin@^8.1.2":
+  version "8.1.2"
+  resolved "https://registry.yarnpkg.com/@batch.com/react-native-plugin/-/react-native-plugin-8.1.2.tgz#b7cd12f04900da9a5d288ec5d4e08d27014af309"
+  integrity sha512-dW6z9T6RSPy8H1ImS9qpqUJSxch5geSeVlBxplGL3jFQm+2BkKnRHRs49w1vqweDzdDzhhtbu8yV+aOtdVDlPw==
 
 "@bcoe/v8-coverage@^0.2.3":
   version "0.2.3"

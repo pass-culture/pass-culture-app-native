@@ -8,7 +8,7 @@
 
 #import "RNSplashScreen.h" // react-native-lottie-splash-screen
 #import <CodePush/CodePush.h> // @codepush
-#import "RNBatch.h"
+#import <RNBatchPush/RNBatch.h>
 #import <Firebase.h>
 #import <React/RCTLinkingManager.h>
 #import "BatchFirebaseDispatcher.h"
