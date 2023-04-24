@@ -3,14 +3,17 @@ import { AlgoliaOfferHit } from 'libs/algolia'
 import { convertEuroToCents } from 'libs/parsers/pricesConversion'
 import { Offer, OfferAttributes } from 'shared/offer/types'
 
-export const adaptAlgoliaHit = (algoliaHits: AlgoliaOfferHit[], urlPrefix?: string): Offer[] => {
+export const adaptAlgoliaHit = (
+  algoliaHits: AlgoliaOfferHit[],
+  imageUrlPrefix?: string
+): Offer[] => {
   const adaptedOffers = algoliaHits.map((algoliaHit) => ({
     objectID: algoliaHit.objectID,
     _geoloc: getOfferGeoloc(algoliaHit),
     offer: {
       ...algoliaHit.offer,
       prices: algoliaHit.offer.prices ? algoliaHit.offer.prices.map(convertEuroToCents) : undefined,
-      thumbUrl: parseThumbUrl(algoliaHit.offer.thumbUrl, urlPrefix),
+      thumbUrl: parseThumbUrl(algoliaHit.offer.thumbUrl, imageUrlPrefix),
     },
   }))
 
