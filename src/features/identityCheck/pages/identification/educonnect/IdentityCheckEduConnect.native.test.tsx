@@ -1,5 +1,6 @@
 import React from 'react'
 
+import { navigate } from '__mocks__/@react-navigation/native'
 import * as useEduConnectLoginAPI from 'features/identityCheck/api/useEduConnectLogin'
 import { initialSubscriptionState as mockState } from 'features/identityCheck/context/reducer'
 import { IdentityCheckEduConnect } from 'features/identityCheck/pages/identification/educonnect/IdentityCheckEduConnect'
@@ -11,13 +12,6 @@ jest.mock('features/identityCheck/context/SubscriptionContextProvider', () => ({
     dispatch: jest.fn(),
     ...mockState,
   })),
-}))
-
-const mockNavigateToNextScreen = jest.fn()
-jest.mock('features/identityCheck/pages/helpers/useSubscriptionNavigation', () => ({
-  useSubscriptionNavigation: () => ({
-    navigateToNextScreen: mockNavigateToNextScreen,
-  }),
 }))
 
 jest.spyOn(useEduConnectLoginAPI, 'useEduConnectLogin').mockReturnValue({
@@ -38,7 +32,7 @@ describe('<IdentityCheckEduConnect />', () => {
 
     fireEvent.press(button)
 
-    expect(mockNavigateToNextScreen).toHaveBeenCalledTimes(1)
+    expect(navigate).toHaveBeenCalledWith('IdentityCheckEduConnectForm')
   })
   it("should trigger an amplitude tracker when 'Connexion avec ÉduConnect' button is pressed", () => {
     const { getByText } = render(<IdentityCheckEduConnect />)

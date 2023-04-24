@@ -1,3 +1,4 @@
+import { useNavigation } from '@react-navigation/native'
 import { parse, format } from 'date-fns'
 import React from 'react'
 import styled from 'styled-components/native'
@@ -5,23 +6,37 @@ import styled from 'styled-components/native'
 import { CenteredTitle } from 'features/identityCheck/components/CenteredTitle'
 import { PageWithHeader } from 'features/identityCheck/components/layout/PageWithHeader'
 import { useSubscriptionContext } from 'features/identityCheck/context/SubscriptionContextProvider'
-import { useSubscriptionNavigation } from 'features/identityCheck/pages/helpers/useSubscriptionNavigation'
+import { invalidateStepperInfoQuery } from 'features/identityCheck/pages/helpers/invalidateStepperQuery'
 import { DeprecatedIdentityCheckStep } from 'features/identityCheck/types'
+import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { amplitude } from 'libs/amplitude'
+import { eventMonitoring } from 'libs/monitoring'
+import { QueryKeys } from 'libs/queryKeys'
+import { queryClient } from 'libs/react-query/queryClient'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { Spacer, Typo } from 'ui/theme'
 
 export function IdentityCheckValidation() {
   const { dispatch, identification } = useSubscriptionContext()
-  const { navigateToNextScreen } = useSubscriptionNavigation()
+  const { navigate } = useNavigation<UseNavigationType>()
+
+  const saveCheckpoint = async () => {
+    try {
+      await queryClient.invalidateQueries([QueryKeys.NEXT_SUBSCRIPTION_STEP])
+      invalidateStepperInfoQuery()
+      dispatch({ type: 'SET_STEP', payload: DeprecatedIdentityCheckStep.CONFIRMATION })
+    } catch (error) {
+      eventMonitoring.captureException(error)
+    }
+  }
 
   const birthDate = identification.birthDate
     ? format(parse(identification.birthDate, 'yyyy-MM-dd', new Date()), 'dd/MM/yyyy')
     : ''
 
   const navigateToNextEduConnectStep = async () => {
-    dispatch({ type: 'SET_STEP', payload: DeprecatedIdentityCheckStep.CONFIRMATION })
-    navigateToNextScreen()
+    saveCheckpoint()
+    navigate('IdentityCheckStepper')
   }
 
   const onValidateInformation = async () => {

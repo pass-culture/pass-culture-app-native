@@ -1,4 +1,5 @@
 import { useFocusEffect } from '@react-navigation/native'
+import { useNavigation } from '@react-navigation/native'
 import React, { useCallback, useRef, useState } from 'react'
 import { ErrorBoundary } from 'react-error-boundary'
 import { URL } from 'react-native-url-polyfill'
@@ -9,14 +10,14 @@ import styled from 'styled-components/native'
 import { ErrorTrigger } from 'features/identityCheck/components/ErrorTrigger'
 import { PageWithHeader } from 'features/identityCheck/components/layout/PageWithHeader'
 import { useSubscriptionContext } from 'features/identityCheck/context/SubscriptionContextProvider'
-import { useSubscriptionNavigation } from 'features/identityCheck/pages/helpers/useSubscriptionNavigation'
 import { EduConnectErrorBoundary } from 'features/identityCheck/pages/identification/errors/eduConnect/EduConnectErrorBoundary'
 import { EduConnectError } from 'features/identityCheck/pages/identification/errors/eduConnect/types'
 import { EduConnectErrorMessageEnum } from 'features/identityCheck/pages/identification/errors/hooks/useNotEligibleEduConnectErrorData'
+import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { eduConnectClient } from 'libs/eduConnectClient'
 
 export const IdentityCheckEduConnectForm = () => {
-  const { navigateToNextScreen } = useSubscriptionNavigation()
+  const { navigate } = useNavigation<UseNavigationType>()
   const { dispatch } = useSubscriptionContext()
 
   const webViewRef = useRef<WebView>(null)
@@ -73,7 +74,7 @@ export const IdentityCheckEduConnectForm = () => {
           birthDate: url.searchParams.get('dateOfBirth') ?? null,
         },
       })
-      navigateToNextScreen()
+      navigate('IdentityCheckValidation', {})
     }
   }
 

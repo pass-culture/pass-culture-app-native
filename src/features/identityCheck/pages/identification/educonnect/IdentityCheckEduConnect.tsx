@@ -1,3 +1,4 @@
+import { useNavigation } from '@react-navigation/native'
 import React from 'react'
 import { Platform } from 'react-native'
 import styled from 'styled-components/native'
@@ -6,7 +7,7 @@ import { useEduConnectLogin } from 'features/identityCheck/api/useEduConnectLogi
 import { CenteredTitle } from 'features/identityCheck/components/CenteredTitle'
 import { PageWithHeader } from 'features/identityCheck/components/layout/PageWithHeader'
 import { useSubscriptionContext } from 'features/identityCheck/context/SubscriptionContextProvider'
-import { useSubscriptionNavigation } from 'features/identityCheck/pages/helpers/useSubscriptionNavigation'
+import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { homeNavConfig } from 'features/navigation/TabBar/helpers'
 import { useGoBack } from 'features/navigation/useGoBack'
 import { amplitude } from 'libs/amplitude'
@@ -17,7 +18,7 @@ import { ExternalSite } from 'ui/svg/icons/ExternalSite'
 import { Spacer, Typo } from 'ui/theme'
 
 export const IdentityCheckEduConnect = () => {
-  const { navigateToNextScreen } = useSubscriptionNavigation()
+  const { navigate } = useNavigation<UseNavigationType>()
   const { dispatch } = useSubscriptionContext()
   const { goBack } = useGoBack(...homeNavConfig)
 
@@ -29,7 +30,7 @@ export const IdentityCheckEduConnect = () => {
   }
 
   const onSubmit = () => {
-    navigateToNextScreen()
+    navigate('IdentityCheckEduConnectForm')
     amplitude.logEvent('connect_with_Educonnect_clicked')
     if (Platform.OS === 'web') {
       openEduConnectTab()

@@ -12,13 +12,6 @@ jest.mock('features/identityCheck/context/SubscriptionContextProvider', () => ({
   })),
 }))
 
-const mockNavigateToNextScreen = jest.fn()
-jest.mock('features/identityCheck/pages/helpers/useSubscriptionNavigation', () => ({
-  useSubscriptionNavigation: () => ({
-    navigateToNextScreen: mockNavigateToNextScreen,
-  }),
-}))
-
 const mockOpenEduConnectTab = jest.fn()
 jest.spyOn(useEduConnectLoginAPI, 'useEduConnectLogin').mockReturnValue({
   openEduConnectTab: mockOpenEduConnectTab,
@@ -33,7 +26,6 @@ describe('<IdentityCheckEduConnect />', () => {
 
     fireEvent.click(button)
 
-    expect(mockNavigateToNextScreen).toHaveBeenCalledTimes(1)
     expect(mockOpenEduConnectTab).toHaveBeenCalledTimes(1)
   })
 

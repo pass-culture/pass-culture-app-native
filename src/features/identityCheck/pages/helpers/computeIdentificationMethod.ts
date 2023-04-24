@@ -10,9 +10,8 @@ const educonnectFlow: (keyof SubscriptionRootStackParamList)[] = [
 const ubbleFlow: (keyof SubscriptionRootStackParamList)[] = ['SelectIDOrigin']
 
 // Two screen flows are declared for the purpose of an AB testing
-const ubbleForkFlow: (keyof SubscriptionRootStackParamList)[] = ['IdentificationForkUbble']
-
-const educonnectForkFlow: (keyof SubscriptionRootStackParamList)[] = [
+const ubbleOnTopForkFlow: (keyof SubscriptionRootStackParamList)[] = ['IdentificationForkUbble']
+const educonnectOnTopForkFlow: (keyof SubscriptionRootStackParamList)[] = [
   'IdentificationForkEduconnect',
 ]
 
@@ -23,8 +22,8 @@ export const computeIdentificationMethod = (
   if (identificationMethods) {
     if (identificationMethods.length === 2) {
       return identificationMethodFork === IdentityCheckMethod.educonnect
-        ? educonnectForkFlow
-        : ubbleForkFlow
+        ? educonnectOnTopForkFlow
+        : ubbleOnTopForkFlow
     }
 
     if (
