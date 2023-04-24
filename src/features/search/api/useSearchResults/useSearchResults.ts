@@ -2,6 +2,7 @@ import { SearchResponse } from '@algolia/client-search'
 import { useRef } from 'react'
 import { useInfiniteQuery } from 'react-query'
 
+import { useSettingsContext } from 'features/auth/context/SettingsContext'
 import { useIsUserUnderage } from 'features/profile/helpers/useIsUserUnderage'
 import { useSearch } from 'features/search/context/SearchWrapper'
 import { SearchState } from 'features/search/types'
@@ -22,6 +23,8 @@ export const useSearchInfiniteQuery = (searchState: SearchState) => {
   const isUserUnderage = useIsUserUnderage()
   const { setCurrentQueryID } = useSearchAnalyticsState()
   const previousPageObjectIds = useRef<string[]>([])
+  const { data: settings } = useSettingsContext()
+  const { objectStorageUrl: urlPrefix } = settings || {}
 
   const { data, ...infiniteQuery } = useInfiniteQuery<OffersWithPage>(
     [QueryKeys.SEARCH_RESULTS, { ...searchState, view: undefined }],
@@ -32,6 +35,7 @@ export const useSearchInfiniteQuery = (searchState: SearchState) => {
         isUserUnderage,
         storeQueryID: setCurrentQueryID,
         excludedObjectIds: previousPageObjectIds.current,
+        urlPrefix,
       })
 
       analytics.logPerformSearch(searchState, response.nbOffers)
