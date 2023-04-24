@@ -41,7 +41,7 @@ const filterOffer = (offer: OfferWithOptionnalSubcategoryIds): offer is Offer =>
 
 type OfferWithOptionnalSubcategoryIds = {
   offer: Omit<OfferAttributes, 'subcategoryId'> & {
-    subcategoryId?: SubcategoryIdEnum | undefined
+    subcategoryId?: SubcategoryIdEnum
   }
   objectID: Offer['objectID']
   _geoloc: Offer['_geoloc']
