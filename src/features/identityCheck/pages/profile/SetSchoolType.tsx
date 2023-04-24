@@ -13,7 +13,7 @@ import {
   mapSchoolTypeIdToLabelAndDescription,
 } from 'features/identityCheck/pages/profile/helpers/schoolTypes'
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
-import { amplitude } from 'libs/amplitude'
+import { analytics } from 'libs/analytics'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { Form } from 'ui/components/Form'
 import { Li } from 'ui/components/Li'
@@ -31,13 +31,13 @@ export const SetSchoolType = () => {
   const { navigateToNextScreen, isSavingCheckpoint } = useSubscriptionNavigation()
 
   useEffect(() => {
-    amplitude.logEvent('screen_view_set_school_type')
+    analytics.logScreenViewSetSchoolType()
   }, [])
 
   const onPressContinue = async () => {
     if (!selectedSchoolTypeId) return
     await dispatch({ type: 'SET_SCHOOL_TYPE', payload: selectedSchoolTypeId })
-    amplitude.logEvent('set_school_type_clicked')
+    analytics.logSetSchoolTypeClicked()
     navigateToNextScreen()
   }
 

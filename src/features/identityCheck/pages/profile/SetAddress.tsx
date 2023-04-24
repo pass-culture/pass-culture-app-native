@@ -12,7 +12,7 @@ import { useSubscriptionContext } from 'features/identityCheck/context/Subscript
 import { useSubscriptionNavigation } from 'features/identityCheck/pages/helpers/useSubscriptionNavigation'
 import { IdentityCheckError } from 'features/identityCheck/pages/profile/errors'
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
-import { amplitude } from 'libs/amplitude'
+import { analytics } from 'libs/analytics'
 import { eventMonitoring } from 'libs/monitoring'
 import { useAddresses } from 'libs/place'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
@@ -55,7 +55,7 @@ export const SetAddress = () => {
   })
 
   useEffect(() => {
-    amplitude.logEvent('screen_view_set_address')
+    analytics.logScreenViewSetAddress()
   }, [])
 
   useEffect(() => {
@@ -102,7 +102,7 @@ export const SetAddress = () => {
   const submitAddress = () => {
     if (!enabled) return
     dispatch({ type: 'SET_ADDRESS', payload: selectedAddress || query })
-    amplitude.logEvent('set_address_clicked')
+    analytics.logSetAddressClicked()
     navigateToNextScreen()
   }
 

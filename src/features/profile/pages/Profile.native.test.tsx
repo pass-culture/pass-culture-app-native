@@ -8,8 +8,8 @@ import * as NavigationHelpers from 'features/navigation/helpers/openUrl'
 import { TabStack } from 'features/navigation/TabBar/Stack'
 import * as Share from 'features/share/helpers/shareApp'
 import { nonBeneficiaryUser } from 'fixtures/user'
+import { analytics } from 'libs/analytics'
 import { env } from 'libs/environment'
-import { analytics } from 'libs/firebase/analytics'
 import {
   GeolocPositionError,
   GeolocPermissionState,

@@ -4,7 +4,8 @@ import { AccountState } from 'api/gen'
 import { useLoginRoutine } from 'features/auth/helpers/useLoginRoutine'
 import { COOKIES_BY_CATEGORY, ALL_OPTIONAL_COOKIES } from 'features/cookies/CookiesPolicy'
 import { CookiesConsent } from 'features/cookies/types'
-import { analytics } from 'libs/firebase/analytics'
+// eslint-disable-next-line no-restricted-imports
+import { firebaseAnalytics } from 'libs/firebase/analytics'
 import * as Keychain from 'libs/keychain'
 import { storage } from 'libs/storage'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
@@ -55,7 +56,7 @@ describe('useLoginRoutine', () => {
   it('should log login analytics', async () => {
     await renderUseLoginRoutine()
 
-    expect(analytics.logLogin).toHaveBeenNthCalledWith(1, { method })
+    expect(firebaseAnalytics.logLogin).toHaveBeenNthCalledWith(1, { method })
   })
 
   it('should save access token to storage', async () => {
@@ -75,7 +76,7 @@ describe('useLoginRoutine', () => {
     it('should log set user id analytics', async () => {
       await renderUseLoginRoutine()
 
-      expect(analytics.setUserId).toHaveBeenCalledWith(FAKE_USER_ID)
+      expect(firebaseAnalytics.setUserId).toHaveBeenCalledWith(FAKE_USER_ID)
     })
 
     it('should set user id in cookies consent storage', async () => {

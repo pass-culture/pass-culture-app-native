@@ -7,7 +7,7 @@ import {
   CodeNotReceivedModal,
   CodeNotReceivedModalProps,
 } from 'features/identityCheck/pages/phoneValidation/CodeNotReceivedModal'
-import { analytics } from 'libs/firebase/analytics'
+import { analytics } from 'libs/analytics'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { fireEvent, render, waitFor } from 'tests/utils'
 import { SNACK_BAR_TIME_OUT } from 'ui/components/snackBar/SnackBarContext'

@@ -6,7 +6,7 @@ import { contactSupport } from 'features/auth/helpers/contactSupport'
 import { mockGoBack } from 'features/navigation/__mocks__/useGoBack'
 import { usePreviousRoute, navigateToHome, openUrl } from 'features/navigation/helpers'
 import { RootStackParamList } from 'features/navigation/RootNavigator/types'
-import { analytics } from 'libs/firebase/analytics'
+import { analytics } from 'libs/analytics'
 import { fireEvent, render, screen, waitFor } from 'tests/utils'
 
 import { SignupConfirmationEmailSent } from './SignupConfirmationEmailSent'

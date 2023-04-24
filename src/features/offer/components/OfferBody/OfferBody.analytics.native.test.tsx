@@ -7,7 +7,7 @@ import * as InstalledAppsCheck from 'features/offer/helpers/checkInstalledApps/c
 import { offerId } from 'features/offer/helpers/renderOfferPageTestUtil'
 import { moreHitsForSimilarOffersPlaylist } from 'libs/algolia/__mocks__/mockedAlgoliaHitResponse'
 import { offersWithPageFixture } from 'libs/algolia/fetchAlgolia/fetchOffers/fixtures/offersWithPageFixture'
-import { analytics } from 'libs/firebase/analytics'
+import { analytics } from 'libs/analytics'
 import { Offer } from 'shared/offer/types'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, fireEvent, render, screen } from 'tests/utils'

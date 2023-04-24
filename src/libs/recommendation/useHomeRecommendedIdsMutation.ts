@@ -1,6 +1,7 @@
 import { useMutation } from 'react-query'
 
-import { analytics } from 'libs/firebase/analytics'
+// eslint-disable-next-line no-restricted-imports
+import { firebaseAnalytics } from 'libs/firebase/analytics'
 import { eventMonitoring } from 'libs/monitoring'
 import { QueryKeys } from 'libs/queryKeys'
 import { RecommendedIdsRequest, RecommendedIdsResponse } from 'libs/recommendation/types'
@@ -23,7 +24,7 @@ export const useHomeRecommendedIdsMutation = () => {
           throw new Error('Failed to fetch recommendation')
         }
         const responseBody: RecommendedIdsResponse = await response.json()
-        analytics.setDefaultEventParameters(responseBody.params)
+        firebaseAnalytics.setDefaultEventParameters(responseBody.params)
         return responseBody
       } catch (err) {
         eventMonitoring.captureException(new Error('Error with recommendation endpoint'), {

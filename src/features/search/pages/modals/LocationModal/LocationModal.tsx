@@ -20,7 +20,7 @@ import { useSetFocusWithCondition } from 'features/search/helpers/useSetFocusWit
 import { SuggestedPlaces } from 'features/search/pages/SuggestedPlaces/SuggestedPlaces'
 import { SearchState } from 'features/search/types'
 import { Venue } from 'features/venue/types'
-import { analytics } from 'libs/firebase/analytics'
+import { analytics } from 'libs/analytics'
 import { GeolocPermissionState, useGeolocation } from 'libs/geolocation'
 import { GeolocationActivationModal } from 'libs/geolocation/components/GeolocationActivationModal'
 import { SuggestedPlace } from 'libs/place'

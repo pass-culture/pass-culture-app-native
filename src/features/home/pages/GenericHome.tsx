@@ -15,7 +15,7 @@ import { HomeBodyPlaceholder } from 'features/home/components/HomeBodyPlaceholde
 import { HomeModule } from 'features/home/components/modules/HomeModule'
 import { useOnScroll } from 'features/home/pages/helpers/useOnScroll'
 import { HomepageModule } from 'features/home/types'
-import { analytics, isCloseToBottom } from 'libs/firebase/analytics'
+import { analytics, isCloseToBottom } from 'libs/analytics'
 import useFunctionOnce from 'libs/hooks/useFunctionOnce'
 import { useNetInfoContext } from 'libs/network/NetInfoWrapper'
 import { OfflinePage } from 'libs/network/OfflinePage'

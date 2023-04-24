@@ -7,7 +7,7 @@ import {
   shareAppModalInformations,
   ShareAppModalType,
 } from 'features/share/helpers/shareAppModalInformations'
-import { analytics } from 'libs/firebase/analytics'
+import { analytics } from 'libs/analytics'
 import { ButtonQuaternaryBlack } from 'ui/components/buttons/ButtonQuaternaryBlack'
 import { ButtonWithLinearGradient } from 'ui/components/buttons/buttonWithLinearGradient/ButtonWithLinearGradient'
 import { MarketingModal } from 'ui/components/modals/MarketingModal'

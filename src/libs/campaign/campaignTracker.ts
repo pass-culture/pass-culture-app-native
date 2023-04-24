@@ -1,10 +1,10 @@
 import appsFlyer from 'react-native-appsflyer'
 import { getTrackingStatus } from 'react-native-tracking-transparency'
 
+import { analytics } from 'libs/analytics'
 import { isAppsFlyerTrackingEnabled } from 'libs/campaign/isAppsFlyerTrackingEnabled'
 import { logOpenApp } from 'libs/campaign/logOpenApp'
 import { env } from 'libs/environment'
-import { analytics } from 'libs/firebase/analytics'
 import { captureMonitoringError } from 'libs/monitoring'
 import { requestIDFATrackingConsent } from 'libs/trackingConsent/useTrackingConsent'
 

@@ -4,7 +4,7 @@ import { navigate } from '__mocks__/@react-navigation/native'
 import { BookingCancellationReasons } from 'api/gen'
 import { bookingsSnap } from 'features/bookings/fixtures/bookingsSnap'
 import { Booking } from 'features/bookings/types'
-import { analytics } from 'libs/firebase/analytics'
+import { analytics } from 'libs/analytics'
 import { fireEvent, render, screen } from 'tests/utils'
 
 import { EndedBookingItem } from './EndedBookingItem'

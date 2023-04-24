@@ -2,7 +2,7 @@ import React from 'react'
 
 import { ExpiredOrLostID } from 'features/identityCheck/pages/identification/ubble/ExpiredOrLostID'
 import * as NavigationHelpers from 'features/navigation/helpers/openUrl'
-import { amplitude } from 'libs/amplitude'
+import { analytics } from 'libs/analytics'
 import { env } from 'libs/environment'
 import { BatchEvent, BatchUser } from 'libs/react-native-batch'
 import { fireEvent, render, waitFor } from 'tests/utils'
@@ -24,12 +24,10 @@ describe('ExpiredOrLostID', () => {
     expect(openUrl).toHaveBeenCalledWith(env.DMS_FRENCH_CITIZEN_URL, undefined, true)
   })
 
-  it('should send a amplitude event when the screen is mounted', async () => {
+  it('should log screen view when the screen is mounted', async () => {
     render(<ExpiredOrLostID />)
 
-    await waitFor(() =>
-      expect(amplitude.logEvent).toHaveBeenNthCalledWith(1, 'screen_view_expired_or_lost_id')
-    )
+    await waitFor(() => expect(analytics.logScreenViewExpiredOrLostId).toHaveBeenCalledTimes(1))
   })
   it('should send a batch event when the screen is mounted', async () => {
     render(<ExpiredOrLostID />)

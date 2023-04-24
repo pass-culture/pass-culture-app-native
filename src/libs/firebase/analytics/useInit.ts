@@ -1,6 +1,6 @@
 import { useEffect } from 'react'
 
-import { analytics } from 'libs/firebase/analytics/analytics'
+import { firebaseAnalytics } from 'libs/firebase/analytics/analytics'
 import { useUtmParams } from 'libs/utm'
 
 export const setFirebaseParams = (campaignDate?: Date | null) => {
@@ -9,7 +9,7 @@ export const setFirebaseParams = (campaignDate?: Date | null) => {
 
   // If the user has clicked on marketing link 24h ago, we want to remove the marketing params
   if (campaignDate && campaignDate < ago24Hours) {
-    analytics.setDefaultEventParameters(undefined)
+    firebaseAnalytics.setDefaultEventParameters(undefined)
   }
 }
 

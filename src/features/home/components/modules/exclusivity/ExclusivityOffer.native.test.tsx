@@ -6,8 +6,8 @@ import { OfferResponse } from 'api/gen'
 import * as excluOfferAPI from 'features/home/api/useExcluOffer'
 import { ExclusivityOffer } from 'features/home/components/modules/exclusivity/ExclusivityOffer'
 import { offerResponseSnap as mockOffer } from 'features/offer/fixtures/offerResponse'
+import { analytics } from 'libs/analytics'
 import { ContentTypes } from 'libs/contentful'
-import { analytics } from 'libs/firebase/analytics'
 import { render, fireEvent } from 'tests/utils'
 
 jest.mock('features/search/helpers/useMaxPrice/useMaxPrice', () => ({

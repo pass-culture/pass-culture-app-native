@@ -4,7 +4,7 @@ import { navigate } from '__mocks__/@react-navigation/native'
 import * as useEduConnectLoginAPI from 'features/identityCheck/api/useEduConnectLogin'
 import { initialSubscriptionState as mockState } from 'features/identityCheck/context/reducer'
 import { IdentityCheckEduConnect } from 'features/identityCheck/pages/identification/educonnect/IdentityCheckEduConnect'
-import { amplitude } from 'libs/amplitude'
+import { analytics } from 'libs/analytics'
 import { fireEvent, render } from 'tests/utils'
 
 jest.mock('features/identityCheck/context/SubscriptionContextProvider', () => ({
@@ -34,12 +34,12 @@ describe('<IdentityCheckEduConnect />', () => {
 
     expect(navigate).toHaveBeenCalledWith('IdentityCheckEduConnectForm')
   })
-  it("should trigger an amplitude tracker when 'Connexion avec ÉduConnect' button is pressed", () => {
+  it("should trigger tracker when 'Connexion avec ÉduConnect' button is pressed", () => {
     const { getByText } = render(<IdentityCheckEduConnect />)
     const button = getByText('Connexion avec ÉduConnect')
 
     fireEvent.press(button)
 
-    expect(amplitude.logEvent).toHaveBeenNthCalledWith(1, 'connect_with_Educonnect_clicked')
+    expect(analytics.logConnectWithEduconnectClicked).toHaveBeenCalledTimes(1)
   })
 })

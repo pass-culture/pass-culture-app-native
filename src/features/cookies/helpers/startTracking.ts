@@ -1,18 +1,20 @@
+// eslint-disable-next-line no-restricted-imports
 import { amplitude } from 'libs/amplitude'
 import { campaignTracker } from 'libs/campaign'
-import { analytics } from 'libs/firebase/analytics'
+// eslint-disable-next-line no-restricted-imports
+import { firebaseAnalytics } from 'libs/firebase/analytics'
 import { Batch } from 'libs/react-native-batch'
 
 export const startTracking = (enabled: boolean) => {
   if (enabled) {
     amplitude.enableCollection()
-    analytics.enableCollection()
+    firebaseAnalytics.enableCollection()
     campaignTracker.useInit(true)
     campaignTracker.startAppsFlyer(true)
     Batch.optIn()
   } else {
     amplitude.disableCollection()
-    analytics.disableCollection()
+    firebaseAnalytics.disableCollection()
     campaignTracker.startAppsFlyer(false)
     Batch.optOut()
   }

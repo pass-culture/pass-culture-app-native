@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { analytics } from 'libs/firebase/analytics'
+import { analytics } from 'libs/analytics'
 import { fireEvent, render } from 'tests/utils'
 
 import { OfferSeeMore } from './OfferSeeMore'

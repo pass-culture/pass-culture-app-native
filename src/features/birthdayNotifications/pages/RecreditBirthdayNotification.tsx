@@ -5,7 +5,6 @@ import { useAuthContext } from 'features/auth/context/AuthContext'
 import { navigateToHome } from 'features/navigation/helpers'
 import { useResetRecreditAmountToShow } from 'features/profile/api/useResetRecreditAmountToShow'
 import { useAppStateChange } from 'libs/appState'
-import { analytics } from 'libs/firebase/analytics'
 import LottieView from 'libs/lottie'
 import { formatToFrenchDecimal } from 'libs/parsers'
 import { storage } from 'libs/storage'
@@ -51,7 +50,6 @@ export const RecreditBirthdayNotification = () => {
 
   useEffect(() => {
     storage.saveObject('has_seen_birthday_notification_card', true)
-    analytics.logScreenView('BirthdayNotification')
   }, [])
 
   const playAnimation = useCallback(() => {

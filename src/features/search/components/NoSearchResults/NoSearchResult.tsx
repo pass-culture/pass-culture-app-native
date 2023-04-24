@@ -5,7 +5,7 @@ import styled from 'styled-components/native'
 
 import { UseNavigationType, UseRouteType } from 'features/navigation/RootNavigator/types'
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
-import { analytics } from 'libs/firebase/analytics'
+import { analytics } from 'libs/analytics'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { NoOffer } from 'ui/svg/icons/NoOffer'
 import { getSpacing, Spacer, Typo } from 'ui/theme'

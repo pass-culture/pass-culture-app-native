@@ -1,12 +1,12 @@
 import { Platform } from 'react-native'
 
+import { prepareLogEventParams } from 'libs/analytics'
 import { env } from 'libs/environment'
 import {
   AGENT_TYPE,
   EVENT_PAGE_VIEW_NAME,
   EVENT_PAGE_VIEW_PARAM_KEY,
 } from 'libs/firebase/analytics/constants'
-import { prepareLogEventParams } from 'libs/firebase/analytics/utils'
 import firebaseAnalyticsModule from 'libs/firebase/shims/analytics'
 
 import { version } from '../../../../package.json'
@@ -16,36 +16,36 @@ import { AnalyticsProvider } from './types'
 const firebaseAnalytics = firebaseAnalyticsModule()
 firebaseAnalytics.setAnalyticsCollectionEnabled(false)
 
-export const analyticsProvider: AnalyticsProvider = {
-  enableCollection() {
+export const firebaseAnalyticsProvider: AnalyticsProvider = {
+  async enableCollection() {
     firebaseAnalytics.setAnalyticsCollectionEnabled(true)
   },
-  disableCollection() {
+  async disableCollection() {
     firebaseAnalytics.setAnalyticsCollectionEnabled(false)
   },
-  getAppInstanceId() {
+  async getAppInstanceId() {
     if (Platform.OS === 'web') return Promise.resolve(null)
     return firebaseAnalytics.getAppInstanceId()
   },
-  setDefaultEventParameters(params: Record<string, unknown> | undefined) {
+  async setDefaultEventParameters(params: Record<string, unknown> | undefined) {
     // only apply on native devices, does not exist on the Web
     if (Platform.OS !== 'web') {
       firebaseAnalytics.setDefaultEventParameters(params)
     }
   },
-  setUserId(userId) {
+  async setUserId(userId) {
     firebaseAnalytics.setUserId(userId.toString())
   },
-  logScreenView(screenName) {
+  async logScreenView(screenName) {
     firebaseAnalytics.logEvent(EVENT_PAGE_VIEW_NAME, {
       [EVENT_PAGE_VIEW_PARAM_KEY]: screenName,
       screen_class: screenName,
     })
   },
-  logLogin({ method }) {
+  async logLogin({ method }) {
     firebaseAnalytics.logEvent('login', { method })
   },
-  logEvent(name, params) {
+  async logEvent(name, params) {
     const newParams = params ? prepareLogEventParams(params) : {}
     newParams['agentType'] = AGENT_TYPE
     if (Platform.OS === 'web') {

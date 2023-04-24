@@ -7,7 +7,7 @@ import { useVenue } from 'features/venue/api/useVenue'
 import { VenueBody } from 'features/venue/components/VenueBody/VenueBody'
 import { VenueHeader } from 'features/venue/components/VenueHeader/VenueHeader'
 import { VenueWebHeader } from 'features/venue/components/VenueWebHeader'
-import { analytics } from 'libs/firebase/analytics'
+import { analytics } from 'libs/analytics'
 import { useOpacityTransition } from 'ui/animations/helpers/useOpacityTransition'
 
 export const Venue: FunctionComponent = () => {

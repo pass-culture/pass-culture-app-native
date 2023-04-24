@@ -10,7 +10,7 @@ import {
   FUTUR_DATE,
   NOT_ELIGIBLE_YOUNGEST_AGE_DATE,
 } from 'features/auth/fixtures/fixtures'
-import { analytics } from 'libs/firebase/analytics'
+import { analytics } from 'libs/analytics'
 import { renderHook } from 'tests/utils'
 
 import { useDatePickerErrorHandler } from './useDatePickerErrorHandler'

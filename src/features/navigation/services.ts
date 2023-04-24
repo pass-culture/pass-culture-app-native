@@ -3,7 +3,7 @@ import { Platform } from 'react-native'
 
 import { getNestedNavigationFromState } from 'features/navigation/RootNavigator/linking/getNestedNavigationFromState'
 import { sanitizeNavigationState } from 'features/navigation/sanitizeNavigationState'
-import { analytics } from 'libs/firebase/analytics'
+import { analytics } from 'libs/analytics'
 import { storage } from 'libs/storage'
 
 export function onNavigationStateChange(state: NavigationState): void {

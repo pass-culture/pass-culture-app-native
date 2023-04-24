@@ -4,7 +4,7 @@ import styled from 'styled-components/native'
 
 import { Coordinates, OfferVenueResponse, VenueResponse } from 'api/gen'
 import { formatFullAddress } from 'libs/address/useFormatFullAddress'
-import { analytics } from 'libs/firebase/analytics'
+import { analytics } from 'libs/analytics'
 import { useDistance } from 'libs/geolocation/hooks/useDistance'
 import { SeeItineraryButton } from 'libs/itinerary/components/SeeItineraryButton'
 import { getGoogleMapsItineraryUrl } from 'libs/itinerary/openGoogleMapsItinerary'

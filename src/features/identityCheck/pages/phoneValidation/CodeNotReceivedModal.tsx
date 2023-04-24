@@ -8,7 +8,7 @@ import { useSendPhoneValidationMutation } from 'features/identityCheck/api/useSe
 import { useSubscriptionContext } from 'features/identityCheck/context/SubscriptionContextProvider'
 import { formatPhoneNumberWithPrefix } from 'features/identityCheck/pages/phoneValidation/helpers/formatPhoneNumber'
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
-import { analytics } from 'libs/firebase/analytics'
+import { analytics } from 'libs/analytics'
 import { plural } from 'libs/plural'
 import { QueryKeys } from 'libs/queryKeys'
 import { queryClient } from 'libs/react-query/queryClient'

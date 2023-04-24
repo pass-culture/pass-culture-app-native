@@ -2,7 +2,7 @@ import React from 'react'
 
 import * as NavigationHelpers from 'features/navigation/helpers/openUrl'
 import { venueResponseSnap } from 'features/venue/fixtures/venueResponseSnap'
-import { analytics } from 'libs/firebase/analytics'
+import { analytics } from 'libs/analytics'
 import { fireEvent, render } from 'tests/utils'
 import * as ContactHelpers from 'ui/components/contact/helpers'
 

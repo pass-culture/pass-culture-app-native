@@ -5,7 +5,7 @@ import { useRoute } from '__mocks__/@react-navigation/native'
 import { Referrals } from 'features/navigation/RootNavigator/types'
 import { venueResponseSnap } from 'features/venue/fixtures/venueResponseSnap'
 import { Venue } from 'features/venue/pages/Venue/Venue'
-import { analytics } from 'libs/firebase/analytics'
+import { analytics } from 'libs/analytics'
 import { placeholderData } from 'libs/subcategories/placeholderData'
 import { render, waitFor } from 'tests/utils'
 

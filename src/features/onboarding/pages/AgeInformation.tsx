@@ -14,7 +14,7 @@ import { AgeSeparator } from 'features/onboarding/components/AgeSeparator'
 import { CreditBlock } from 'features/onboarding/components/CreditBlock'
 import { getCreditStatusFromAge } from 'features/onboarding/helpers/getCreditStatusFromAge'
 import { OnboardingPage } from 'features/onboarding/pages/OnboardingPage'
-import { analytics } from 'libs/firebase/analytics'
+import { analytics } from 'libs/analytics'
 import { useDepositAmountsByAge } from 'shared/user/useDepositAmountsByAge'
 import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
 import { ButtonWithLinearGradient } from 'ui/components/buttons/buttonWithLinearGradient/ButtonWithLinearGradient'
@@ -27,6 +27,10 @@ type AgeInformationProps = StackScreenProps<OnboardingRootStackParamList, 'AgeIn
 
 const logTrySelectDeposit = (age: number) => {
   analytics.logTrySelectDeposit(age)
+}
+
+const onSignupPress = () => {
+  analytics.logOnboardingAgeInformationClicked({ type: 'account_creation' })
 }
 
 export const AgeInformation = ({ route }: AgeInformationProps): JSX.Element => {
@@ -48,6 +52,7 @@ export const AgeInformation = ({ route }: AgeInformationProps): JSX.Element => {
   const eighteenYearOldInfo = { age: 18, deposit: eighteenYearsOldDeposit }
 
   const onLaterPress = () => {
+    analytics.logOnboardingAgeInformationClicked({ type: 'account_creation_skipped' })
     reset({ index: 0, routes: [{ name: homeNavConfig[0] }] })
   }
 
@@ -56,6 +61,7 @@ export const AgeInformation = ({ route }: AgeInformationProps): JSX.Element => {
       key={1}
       as={ButtonWithLinearGradient}
       wording="Créer un compte"
+      onBeforeNavigate={onSignupPress}
       navigateTo={{ screen: 'SignupForm', params: { preventCancellation: true } }}
     />,
     <InternalTouchableLink

@@ -19,8 +19,7 @@ import {
   SubscriptionRootStackParamList,
   UseNavigationType,
 } from 'features/navigation/RootNavigator/types'
-import { amplitude } from 'libs/amplitude'
-import { analytics } from 'libs/firebase/analytics'
+import { analytics } from 'libs/analytics'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
 import { Form } from 'ui/components/Form'
@@ -37,7 +36,7 @@ export type SetPhoneValidationCodeProps = StackScreenProps<
 
 export const SetPhoneValidationCode = () => {
   useEffect(() => {
-    amplitude.logEvent('screen_view_set_phone_validation_code')
+    analytics.logScreenViewSetPhoneValidationCode()
   }, [])
 
   const { phoneValidation } = useSubscriptionContext()
@@ -115,7 +114,7 @@ export const SetPhoneValidationCode = () => {
       }
     }
 
-    amplitude.logEvent('phone_validation_code_clicked')
+    analytics.logPhoneValidationCodeClicked()
   }
 
   const enterCodeInstructions =

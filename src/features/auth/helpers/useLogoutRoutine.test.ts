@@ -2,7 +2,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage'
 import { useQueryClient } from 'react-query'
 
 import { BatchUser } from '__mocks__/libs/react-native-batch'
-import { analytics } from 'libs/firebase/analytics'
+import { analytics } from 'libs/analytics'
 import * as Keychain from 'libs/keychain'
 import { renderHook } from 'tests/utils'
 

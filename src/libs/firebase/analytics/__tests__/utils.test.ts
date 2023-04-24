@@ -4,11 +4,7 @@ import { GenreType, SearchGroupNameEnumv2, NativeCategoryIdEnumv2 } from 'api/ge
 import { initialSearchState } from 'features/search/context/reducer'
 import { DATE_FILTER_OPTIONS, LocationType } from 'features/search/enums'
 import { LocationFilter, SearchView } from 'features/search/types'
-import {
-  buildLocationFilterParam,
-  buildPerformSearchState,
-  isCloseToBottom,
-} from 'libs/firebase/analytics/utils'
+import { buildLocationFilterParam, buildPerformSearchState, isCloseToBottom } from 'libs/analytics'
 
 const TODAY = new Date(2023, 0, 3)
 

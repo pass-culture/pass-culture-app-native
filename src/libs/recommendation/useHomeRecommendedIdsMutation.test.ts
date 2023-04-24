@@ -2,7 +2,8 @@
 import { rest } from 'msw'
 import * as reactQueryAPI from 'react-query'
 
-import { analytics } from 'libs/firebase/analytics'
+// eslint-disable-next-line no-restricted-imports
+import { firebaseAnalytics } from 'libs/firebase/analytics'
 import { eventMonitoring } from 'libs/monitoring'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { server } from 'tests/server'
@@ -105,7 +106,7 @@ describe('useHomeRecommendedIdsMutation', () => {
     })
     result.current.mutate({ endpointUrl: 'http://passculture.reco' })
     await waitFor(() => {
-      expect(analytics.setDefaultEventParameters).toHaveBeenCalledWith(params)
+      expect(firebaseAnalytics.setDefaultEventParameters).toHaveBeenCalledWith(params)
     })
   })
 })

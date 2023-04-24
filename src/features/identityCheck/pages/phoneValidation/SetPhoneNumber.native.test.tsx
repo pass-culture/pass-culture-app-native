@@ -4,8 +4,7 @@ import { navigate } from '__mocks__/@react-navigation/native'
 import { ApiError } from 'api/apiHelpers'
 import { usePhoneValidationRemainingAttempts } from 'features/identityCheck/api/usePhoneValidationRemainingAttempts'
 import { SetPhoneNumber } from 'features/identityCheck/pages/phoneValidation/SetPhoneNumber'
-import { amplitude } from 'libs/amplitude'
-import { analytics } from 'libs/firebase/analytics'
+import { analytics } from 'libs/analytics'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { fireEvent, render, waitFor } from 'tests/utils'
 import { theme } from 'theme'
@@ -83,12 +82,10 @@ describe('SetPhoneNumber', () => {
     })
   })
 
-  it('should send a amplitude event when the screen is mounted', async () => {
+  it('should log screen view when the screen is mounted', async () => {
     renderSetPhoneNumber()
 
-    await waitFor(() =>
-      expect(amplitude.logEvent).toHaveBeenNthCalledWith(1, 'screen_view_set_phone_number')
-    )
+    await waitFor(() => expect(analytics.logScreenViewSetPhoneNumber).toHaveBeenCalledTimes(1))
   })
   describe('continue button', () => {
     const mockFetch = jest.spyOn(global, 'fetch')
@@ -192,17 +189,14 @@ describe('SetPhoneNumber', () => {
       await waitFor(() => expect(analytics.logHasRequestedCode).toHaveBeenCalledTimes(1))
     })
 
-    it('should log amplitude event phone_number_clicked when pressing "Continuer" button', async () => {
+    it('should log analytics when pressing "Continuer" button', async () => {
       const { getByTestId, getByText } = renderSetPhoneNumber()
 
       const input = getByTestId('Entrée pour le numéro de téléphone')
       fireEvent.changeText(input, '612345678')
       fireEvent.press(getByText('Continuer'))
 
-      await waitFor(() =>
-        // first call will be the event screen_view_set_phone_number on mount
-        expect(amplitude.logEvent).toHaveBeenNthCalledWith(2, 'phone_number_clicked')
-      )
+      await waitFor(() => expect(analytics.logPhoneNumberClicked).toHaveBeenCalledTimes(1))
     })
   })
 })

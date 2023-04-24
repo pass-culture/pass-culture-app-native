@@ -1,8 +1,8 @@
 import React from 'react'
 
 import { mockedAlgoliaHitsResponse } from 'libs/algolia/__mocks__/mockedAlgoliaHitResponse'
+import { analytics } from 'libs/analytics'
 import { ContentTypes, DisplayParametersFields } from 'libs/contentful'
-import { analytics } from 'libs/firebase/analytics'
 import { render } from 'tests/utils'
 
 import { RecommendationModule } from './RecommendationModule'

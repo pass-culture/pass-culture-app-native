@@ -27,7 +27,8 @@ import { SearchAnalyticsWrapper } from 'libs/algolia/analytics/SearchAnalyticsWr
 import { AutoImmediate, NextRestart } from 'libs/codepush/options'
 import { E2eContextProvider } from 'libs/e2e/E2eContextProvider'
 import { env } from 'libs/environment'
-import { analytics } from 'libs/firebase/analytics'
+// eslint-disable-next-line no-restricted-imports
+import { firebaseAnalytics } from 'libs/firebase/analytics'
 import { RemoteConfigProvider } from 'libs/firebase/remoteConfig'
 import { GeolocationWrapper } from 'libs/geolocation'
 import { eventMonitoring } from 'libs/monitoring'
@@ -60,7 +61,7 @@ const App: FunctionComponent = function () {
     }
   }, [])
 
-  analytics.useInit()
+  firebaseAnalytics.useInit()
 
   useEffect(() => {
     eventMonitoring.init({ enabled: !__DEV__ })

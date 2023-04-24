@@ -26,8 +26,8 @@ import {
   formatFullAddress,
   formatFullAddressWithVenueName,
 } from 'libs/address/useFormatFullAddress'
+import { analytics } from 'libs/analytics'
 import { getPlaylistItemDimensionsFromLayout } from 'libs/contentful/dimensions'
-import { analytics } from 'libs/firebase/analytics'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { useGeolocation } from 'libs/geolocation'

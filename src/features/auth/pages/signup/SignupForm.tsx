@@ -11,8 +11,7 @@ import { PreValidationSignupStepProps, SignupData } from 'features/auth/types'
 import { RootStackParamList } from 'features/navigation/RootNavigator/types'
 import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
 import { useGoBack } from 'features/navigation/useGoBack'
-import { amplitude } from 'libs/amplitude'
-import { analytics } from 'libs/firebase/analytics'
+import { analytics } from 'libs/analytics'
 import { AsyncError, eventMonitoring } from 'libs/monitoring'
 import { BottomCardContentContainer } from 'ui/components/BottomCardContentContainer'
 import { BottomContentPage } from 'ui/components/BottomContentPage'
@@ -42,7 +41,6 @@ const SIGNUP_STEP_CONFIG: SignupStepConfig[] = [
     headerTitle: 'Crée-toi un compte',
     Component: SetEmail,
     tracker: async () => {
-      await amplitude.logEvent('user_set_email_clicked_front')
       await analytics.logContinueSetEmail()
     },
   },
@@ -120,7 +118,7 @@ export const SignupForm: FunctionComponent<Props> = ({ navigation, route }) => {
       }
       navigation.navigate('SignupConfirmationEmailSent', { email: signupData.email })
 
-      await amplitude.logEvent('user_accepted_terms_clicked_front')
+      analytics.logAcceptedTerms()
     } catch (error) {
       ;(error as Error).name = 'SignUpError'
       eventMonitoring.captureException(error)

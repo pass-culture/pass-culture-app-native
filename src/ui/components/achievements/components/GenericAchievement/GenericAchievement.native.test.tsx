@@ -3,7 +3,7 @@ import { Text, View } from 'react-native'
 
 import { reset } from '__mocks__/@react-navigation/native'
 import { homeNavConfig } from 'features/navigation/TabBar/helpers'
-import { analytics } from 'libs/firebase/analytics'
+import { analytics } from 'libs/analytics'
 import { fireEvent, render, screen } from 'tests/utils'
 import IlluminatedSmileyAnimation from 'ui/animations/lottie_illuminated_smiley.json'
 
@@ -108,7 +108,7 @@ describe('<GenericAchievement />', () => {
   })
 
   it('should trigger analytics with a custom name instead of Achievement1', () => {
-    const cardCustomName = 'CustomName'
+    const cardCustomName = 'Profile'
     renderGenericAchievementComponent({
       screenName: 'FirstTutorial',
       children: [

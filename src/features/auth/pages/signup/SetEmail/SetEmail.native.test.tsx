@@ -2,8 +2,10 @@ import React from 'react'
 
 import { navigate, useRoute } from '__mocks__/@react-navigation/native'
 import * as OpenUrlAPI from 'features/navigation/helpers/openUrl'
+import { analytics } from 'libs/analytics'
 import { env } from 'libs/environment/__mocks__/envFixtures'
-import { analytics } from 'libs/firebase/analytics'
+// eslint-disable-next-line no-restricted-imports
+import { firebaseAnalytics } from 'libs/firebase/analytics'
 import { act, fireEvent, render, screen } from 'tests/utils'
 import { SUGGESTION_DELAY_IN_MS } from 'ui/components/inputs/EmailInputWithSpellingHelp/useEmailSpellingHelp'
 
@@ -127,7 +129,7 @@ describe('<SetEmail />', () => {
       fireEvent.press(loginButton)
     })
 
-    expect(analytics.logLogin).toHaveBeenNthCalledWith(1, { method: 'fromSetEmail' })
+    expect(firebaseAnalytics.logLogin).toHaveBeenNthCalledWith(1, { method: 'fromSetEmail' })
   })
 
   it('should display suggestion with a corrected email when the email is mistyped', async () => {

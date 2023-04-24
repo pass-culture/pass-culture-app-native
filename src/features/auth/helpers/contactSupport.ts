@@ -1,5 +1,5 @@
+import { analytics } from 'libs/analytics'
 import { env } from 'libs/environment'
-import { analytics } from 'libs/firebase/analytics'
 import { eventMonitoring } from 'libs/monitoring'
 import { ExternalNavigationProps } from 'ui/components/touchableLink/types'
 

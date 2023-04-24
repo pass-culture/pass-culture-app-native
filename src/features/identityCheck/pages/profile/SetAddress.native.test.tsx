@@ -4,7 +4,7 @@ import React from 'react'
 import { SettingsWrapper } from 'features/auth/context/SettingsContext'
 import { initialSubscriptionState as mockState } from 'features/identityCheck/context/reducer'
 import { SetAddress } from 'features/identityCheck/pages/profile/SetAddress'
-import { amplitude } from 'libs/amplitude'
+import { analytics } from 'libs/analytics'
 import { useNetInfoContext as useNetInfoContextDefault } from 'libs/network/NetInfoWrapper'
 import { mockedSuggestedPlaces } from 'libs/place/fixtures/mockedSuggestedPlaces'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
@@ -84,15 +84,13 @@ describe('<SetAddress/>', () => {
     expect(mockNavigateToNextScreen).toBeCalledTimes(1)
   })
 
-  it('should send a amplitude event when the screen is mounted', async () => {
+  it('should log screen view when the screen is mounted', async () => {
     renderSetAddress()
 
-    await waitFor(() =>
-      expect(amplitude.logEvent).toHaveBeenNthCalledWith(1, 'screen_view_set_address')
-    )
+    await waitFor(() => expect(analytics.logScreenViewSetAddress).toHaveBeenCalledTimes(1))
   })
 
-  it('should send a amplitude event set_address_clicked on press Continuer', async () => {
+  it('should log analytics on press Continuer', async () => {
     renderSetAddress()
 
     const input = screen.getByPlaceholderText('Ex\u00a0: 34 avenue de l’Opéra')
@@ -100,10 +98,7 @@ describe('<SetAddress/>', () => {
 
     fireEvent.press(screen.getByText('Continuer'))
 
-    await waitFor(() =>
-      // first call will be the event screen_view_set_address on mount
-      expect(amplitude.logEvent).toHaveBeenNthCalledWith(2, 'set_address_clicked')
-    )
+    await waitFor(() => expect(analytics.logSetAddressClicked).toHaveBeenCalledTimes(1))
   })
 })
 

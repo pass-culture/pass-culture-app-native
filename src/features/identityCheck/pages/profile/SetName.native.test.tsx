@@ -2,7 +2,7 @@ import React from 'react'
 
 import { initialSubscriptionState as mockState } from 'features/identityCheck/context/reducer'
 import { SetName } from 'features/identityCheck/pages/profile/SetName'
-import { amplitude } from 'libs/amplitude'
+import { analytics } from 'libs/analytics'
 import { fireEvent, render, screen, waitFor } from 'tests/utils'
 
 const mockDispatch = jest.fn()
@@ -63,13 +63,13 @@ describe('<SetName/>', () => {
     expect(mockNavigateToNextScreen).toBeCalledTimes(1)
   })
 
-  it('should send a amplitude event when the screen is mounted', () => {
+  it('should log screen view when the screen is mounted', () => {
     render(<SetName />)
 
-    expect(amplitude.logEvent).toHaveBeenNthCalledWith(1, 'screen_view_set_name')
+    expect(analytics.logScreenViewSetName).toHaveBeenCalledTimes(1)
   })
 
-  it('should send a amplitude event set_name_clicked on press Continuer', async () => {
+  it('should log analytics on press Continuer', async () => {
     render(<SetName />)
 
     const firstNameInput = screen.getByPlaceholderText('Ton prénom')
@@ -81,7 +81,6 @@ describe('<SetName/>', () => {
     const continueButton = await screen.findByText('Continuer')
     fireEvent.press(continueButton)
 
-    // first call will be the event screen_view_set_name on mount
-    expect(amplitude.logEvent).toHaveBeenNthCalledWith(2, 'set_name_clicked')
+    expect(analytics.logSetNameClicked).toHaveBeenCalledTimes(1)
   })
 })

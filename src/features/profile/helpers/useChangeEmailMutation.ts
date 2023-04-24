@@ -7,7 +7,7 @@ import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
 import { CHANGE_EMAIL_ERROR_CODE } from 'features/profile/enums'
 import { ChangeEmailRequest } from 'features/profile/types'
-import { analytics } from 'libs/firebase/analytics'
+import { analytics } from 'libs/analytics'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 
 export const useChangeEmailMutation = ({

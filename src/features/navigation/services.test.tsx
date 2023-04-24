@@ -3,7 +3,7 @@ import { NavigationContainer, createNavigationContainerRef } from '@react-naviga
 import { createStackNavigator } from '@react-navigation/stack'
 import React from 'react'
 
-import { analytics } from 'libs/firebase/analytics'
+import { analytics } from 'libs/analytics'
 import { flushAllPromises, act, render } from 'tests/utils'
 
 import { onNavigationStateChange } from './services'

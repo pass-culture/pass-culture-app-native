@@ -2,7 +2,7 @@ import React from 'react'
 import { Linking } from 'react-native'
 import * as Permissions from 'react-native-permissions'
 
-import { analytics } from 'libs/firebase/analytics'
+import { analytics } from 'libs/analytics'
 import { BatchPush } from 'libs/react-native-batch'
 import { fireEvent, render, screen, waitFor } from 'tests/utils'
 

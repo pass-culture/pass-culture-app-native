@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 import styled from 'styled-components/native'
 
-import { analytics } from 'libs/firebase/analytics'
+import { analytics } from 'libs/analytics'
 import { BicolorClock } from 'ui/svg/icons/BicolorClock'
 import { getSpacingString, Spacer, Typo } from 'ui/theme'
 

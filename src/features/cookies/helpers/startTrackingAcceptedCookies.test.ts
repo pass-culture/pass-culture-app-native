@@ -1,3 +1,4 @@
+/* eslint-disable no-restricted-imports */
 import { ALL_OPTIONAL_COOKIES, COOKIES_BY_CATEGORY } from 'features/cookies/CookiesPolicy'
 import { removeGeneratedStorageKey } from 'features/cookies/helpers/removeGeneratedStorageKey'
 import {
@@ -6,7 +7,7 @@ import {
 } from 'features/cookies/helpers/startTrackingAcceptedCookies'
 import { amplitude } from 'libs/amplitude'
 import { campaignTracker } from 'libs/campaign'
-import { analytics } from 'libs/firebase/analytics'
+import { firebaseAnalytics } from 'libs/firebase/analytics'
 import { Batch } from 'libs/react-native-batch'
 
 jest.mock('features/cookies/helpers/removeGeneratedStorageKey')
@@ -17,7 +18,7 @@ describe('startTrackingAcceptedCookies', () => {
     startTrackingAcceptedCookies([])
 
     expect(amplitude.disableCollection).toHaveBeenCalledTimes(1)
-    expect(analytics.disableCollection).toHaveBeenCalledTimes(1)
+    expect(firebaseAnalytics.disableCollection).toHaveBeenCalledTimes(1)
     expect(campaignTracker.startAppsFlyer).toHaveBeenCalledWith(false)
     expect(Batch.optOut).toHaveBeenCalledTimes(1)
   })
@@ -26,7 +27,7 @@ describe('startTrackingAcceptedCookies', () => {
     startTrackingAcceptedCookies(ALL_OPTIONAL_COOKIES)
 
     expect(amplitude.enableCollection).toHaveBeenCalledTimes(1)
-    expect(analytics.enableCollection).toHaveBeenCalledTimes(1)
+    expect(firebaseAnalytics.enableCollection).toHaveBeenCalledTimes(1)
     expect(campaignTracker.startAppsFlyer).toHaveBeenCalledWith(true)
     expect(Batch.optIn).toHaveBeenCalledTimes(1)
   })
@@ -35,7 +36,7 @@ describe('startTrackingAcceptedCookies', () => {
     const googleAnalyticsAccepted = COOKIES_BY_CATEGORY.performance
     startTrackingAcceptedCookies(googleAnalyticsAccepted)
 
-    expect(analytics.enableCollection).toHaveBeenCalledTimes(1)
+    expect(firebaseAnalytics.enableCollection).toHaveBeenCalledTimes(1)
   })
 
   it('should enable Amplitude when performance cookies are accepted', () => {
@@ -73,7 +74,7 @@ describe('startTrackingAcceptedCookies', () => {
 
     expect(Batch.optOut).toHaveBeenCalledTimes(1)
     expect(amplitude.disableCollection).toHaveBeenCalledTimes(1)
-    expect(analytics.disableCollection).toHaveBeenCalledTimes(1)
+    expect(firebaseAnalytics.disableCollection).toHaveBeenCalledTimes(1)
   })
 
   it('should not init AppsFlyers when marketing cookies are refused', () => {

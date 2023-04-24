@@ -1,7 +1,8 @@
+/* eslint-disable no-restricted-imports */
 import { startTracking } from 'features/cookies/helpers/startTracking'
 import { amplitude } from 'libs/amplitude'
 import { campaignTracker } from 'libs/campaign'
-import { analytics } from 'libs/firebase/analytics'
+import { firebaseAnalytics } from 'libs/firebase/analytics'
 import { Batch } from 'libs/react-native-batch'
 
 describe('startTracking', () => {
@@ -9,7 +10,7 @@ describe('startTracking', () => {
     startTracking(false)
 
     expect(amplitude.disableCollection).toHaveBeenCalledTimes(1)
-    expect(analytics.disableCollection).toHaveBeenCalledTimes(1)
+    expect(firebaseAnalytics.disableCollection).toHaveBeenCalledTimes(1)
     expect(campaignTracker.startAppsFlyer).toHaveBeenCalledWith(false)
     expect(Batch.optOut).toHaveBeenCalledTimes(1)
   })
@@ -18,7 +19,7 @@ describe('startTracking', () => {
     startTracking(true)
 
     expect(amplitude.enableCollection).toHaveBeenCalledTimes(1)
-    expect(analytics.enableCollection).toHaveBeenCalledTimes(1)
+    expect(firebaseAnalytics.enableCollection).toHaveBeenCalledTimes(1)
     expect(campaignTracker.useInit).toHaveBeenCalledWith(true)
     expect(campaignTracker.startAppsFlyer).toHaveBeenCalledWith(true)
     expect(Batch.optIn).toHaveBeenCalledTimes(1)

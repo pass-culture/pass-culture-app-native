@@ -3,9 +3,8 @@ import React, { FC, useEffect } from 'react'
 import styled from 'styled-components/native'
 
 import { UseRouteType } from 'features/navigation/RootNavigator/types'
-import { amplitude } from 'libs/amplitude'
+import { analytics } from 'libs/analytics'
 import { env } from 'libs/environment'
-import { analytics } from 'libs/firebase/analytics'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { InformationWithIcon } from 'ui/components/InformationWithIcon'
 import { Li } from 'ui/components/Li'
@@ -23,7 +22,7 @@ import { getSpacing, Spacer, Typo } from 'ui/theme'
 
 export const DMSIntroduction = (): JSX.Element => {
   useEffect(() => {
-    amplitude.logEvent('screen_view_dms_introduction')
+    analytics.logScreenViewDMSIntroduction()
   }, [])
   const { params } = useRoute<UseRouteType<'DMSIntroduction'>>()
 

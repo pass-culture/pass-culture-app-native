@@ -6,7 +6,7 @@ import { MessagingAppContainer } from 'features/offer/components/shareMessagingO
 import { checkInstalledApps } from 'features/offer/helpers/checkInstalledApps/checkInstalledApps'
 import { getOfferUrl } from 'features/share/helpers/getOfferUrl'
 import { useShareOfferMessage } from 'features/share/helpers/useShareOfferMessage'
-import { analytics } from 'libs/firebase/analytics'
+import { analytics } from 'libs/analytics'
 import { Network, ShareMessagingApp } from 'ui/components/ShareMessagingApp'
 
 const isWeb = Platform.OS === 'web'

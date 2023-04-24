@@ -11,7 +11,7 @@ import { useFavoriteFormattedDate } from 'features/favorites/helpers/useFavorite
 import { mergeOfferData } from 'features/offer/components/OfferTile/OfferTile'
 import { useShareOffer } from 'features/share/helpers/useShareOffer'
 import { WebShareModal } from 'features/share/pages/WebShareModal'
-import { analytics } from 'libs/firebase/analytics'
+import { analytics } from 'libs/analytics'
 import { useDistance } from 'libs/geolocation/hooks/useDistance'
 import { QueryKeys } from 'libs/queryKeys'
 import { useSearchGroupLabel, useSubcategory } from 'libs/subcategories'

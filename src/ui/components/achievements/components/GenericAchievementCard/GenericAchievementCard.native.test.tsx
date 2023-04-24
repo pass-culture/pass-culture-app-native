@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { analytics } from 'libs/firebase/analytics'
+import { analytics } from 'libs/analytics'
 import { fireEvent, render, screen, waitFor } from 'tests/utils'
 import GeolocationAnimation from 'ui/animations/geolocalisation.json'
 

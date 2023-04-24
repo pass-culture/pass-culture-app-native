@@ -6,9 +6,9 @@ import { OnboardingRootStackParamList } from 'features/navigation/RootNavigator/
 import { homeNavConfig } from 'features/navigation/TabBar/helpers'
 import { AgeInformation } from 'features/onboarding/pages/AgeInformation'
 import { CreditStatus } from 'features/onboarding/types'
-import { analytics } from 'libs/firebase/analytics'
+import { analytics } from 'libs/analytics'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { fireEvent, render } from 'tests/utils'
+import { fireEvent, render, waitFor } from 'tests/utils'
 
 const AGES = [15, 16, 17, 18]
 
@@ -41,12 +41,15 @@ describe('AgeInformation', () => {
 
   it.each(AGES)(
     'should navigate to SignupForm when pressing "Créer un compte" for %s-year-old',
-    (age) => {
+    async (age) => {
       const { getByTestId } = renderAgeInformation({ age })
       const signupButton = getByTestId('Créer un compte')
 
       fireEvent.press(signupButton)
-      expect(navigate).toHaveBeenCalledWith('SignupForm', { preventCancellation: true })
+
+      await waitFor(() => {
+        expect(navigate).toHaveBeenCalledWith('SignupForm', { preventCancellation: true })
+      })
     }
   )
 
@@ -68,6 +71,28 @@ describe('AgeInformation', () => {
 
     fireEvent.press(creditBlock)
     expect(analytics.logTrySelectDeposit).toHaveBeenCalledWith(age)
+  })
+
+  it.each(AGES)('should log analytics when clicking on signup button', (age) => {
+    const { getByText } = renderAgeInformation({ age })
+
+    const signupButton = getByText('Créer un compte')
+
+    fireEvent.press(signupButton)
+    expect(analytics.logOnboardingAgeInformationClicked).toHaveBeenNthCalledWith(1, {
+      type: 'account_creation',
+    })
+  })
+
+  it.each(AGES)('should log analytics when clicking on skip button', (age) => {
+    const { getByText } = renderAgeInformation({ age })
+
+    const laterButton = getByText('Plus tard')
+
+    fireEvent.press(laterButton)
+    expect(analytics.logOnboardingAgeInformationClicked).toHaveBeenNthCalledWith(1, {
+      type: 'account_creation_skipped',
+    })
   })
 })
 

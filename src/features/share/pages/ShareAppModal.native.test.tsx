@@ -2,7 +2,7 @@ import React from 'react'
 
 import * as Share from 'features/share/helpers/shareApp'
 import { ShareAppModalType } from 'features/share/helpers/shareAppModalInformations'
-import { analytics } from 'libs/firebase/analytics'
+import { analytics } from 'libs/analytics'
 import { fireEvent, render, screen, waitFor } from 'tests/utils'
 
 import { ShareAppModal } from './ShareAppModal'

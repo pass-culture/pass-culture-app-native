@@ -11,7 +11,7 @@ import { useSubscriptionContext } from 'features/identityCheck/context/Subscript
 import { useSubscriptionNavigation } from 'features/identityCheck/pages/helpers/useSubscriptionNavigation'
 import { IdentityCheckError } from 'features/identityCheck/pages/profile/errors'
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
-import { amplitude } from 'libs/amplitude'
+import { analytics } from 'libs/analytics'
 import { eventMonitoring } from 'libs/monitoring'
 import { SuggestedCity } from 'libs/place'
 import { useCities } from 'libs/place/useCities'
@@ -44,7 +44,7 @@ export const SetCity = () => {
   const [errorMessage, setErrorMessage] = useState<string | null>(null)
 
   useEffect(() => {
-    amplitude.logEvent('screen_view_set_city')
+    analytics.logScreenViewSetCity()
   }, [])
 
   const postalCodeInputErrorId = uuidv4()
@@ -88,7 +88,7 @@ export const SetCity = () => {
   const submitCity = () => {
     if (selectedCity === null) return
     dispatch({ type: 'SET_CITY', payload: selectedCity })
-    amplitude.logEvent('set_postal_code_clicked')
+    analytics.logSetPostalCodeClicked()
     navigateToNextScreen()
   }
 

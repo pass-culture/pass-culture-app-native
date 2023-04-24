@@ -1,7 +1,9 @@
 import { COOKIES_BY_CATEGORY } from 'features/cookies/CookiesPolicy'
 import { linking } from 'features/navigation/RootNavigator/linking'
 import { customGetStateFromPath } from 'features/navigation/RootNavigator/linking/getStateFromPath'
-import { analytics } from 'libs/firebase/analytics'
+import { analytics } from 'libs/analytics'
+// eslint-disable-next-line no-restricted-imports
+import { firebaseAnalytics } from 'libs/firebase/analytics'
 import { storage } from 'libs/storage'
 import { storeUtmParams } from 'libs/utm'
 import { waitFor } from 'tests/utils'
@@ -63,7 +65,7 @@ describe('getStateFromPath()', () => {
             source: 'push',
             medium: 'batch',
           })
-          expect(analytics.setDefaultEventParameters).toBeCalledWith({
+          expect(firebaseAnalytics.setDefaultEventParameters).toBeCalledWith({
             traffic_campaign: 'push_offre_local',
             traffic_source: 'push',
             traffic_medium: 'batch',
@@ -76,7 +78,7 @@ describe('getStateFromPath()', () => {
 
         await waitFor(() => {
           expect(storeUtmParams).toBeCalledWith({ campaign: 'push_offre' })
-          expect(analytics.setDefaultEventParameters).toBeCalledWith({
+          expect(firebaseAnalytics.setDefaultEventParameters).toBeCalledWith({
             traffic_campaign: 'push_offre',
             traffic_source: undefined,
             traffic_medium: undefined,
@@ -89,7 +91,7 @@ describe('getStateFromPath()', () => {
 
         await waitFor(() => {
           expect(storeUtmParams).not.toBeCalled()
-          expect(analytics.setDefaultEventParameters).toBeCalledWith({
+          expect(firebaseAnalytics.setDefaultEventParameters).toBeCalledWith({
             traffic_campaign: undefined,
             traffic_source: undefined,
             traffic_medium: undefined,
@@ -117,7 +119,7 @@ describe('getStateFromPath()', () => {
 
         await waitFor(() => {
           expect(storeUtmParams).not.toHaveBeenCalled()
-          expect(analytics.setDefaultEventParameters).toBeCalledWith({
+          expect(firebaseAnalytics.setDefaultEventParameters).toBeCalledWith({
             traffic_campaign: undefined,
             traffic_source: undefined,
             traffic_medium: undefined,

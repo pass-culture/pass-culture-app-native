@@ -1,7 +1,9 @@
 import { getStateFromPath } from '@react-navigation/native'
 
 import { isScreen, RootNavigateParams } from 'features/navigation/RootNavigator/types'
-import { analytics } from 'libs/firebase/analytics'
+import { analytics } from 'libs/analytics'
+// eslint-disable-next-line no-restricted-imports
+import { firebaseAnalytics } from 'libs/firebase/analytics'
 import { storeUtmParams } from 'libs/utm'
 import { getUtmParamsConsent } from 'libs/utm/getUtmParamsConsent'
 
@@ -41,7 +43,7 @@ export async function setUtmParameters(queryParams: QueryParams) {
   if (campaign || medium || source) {
     await storeUtmParams({ campaign, medium, source })
   }
-  analytics.setDefaultEventParameters({
+  firebaseAnalytics.setDefaultEventParameters({
     traffic_campaign: campaign,
     traffic_source: source,
     traffic_medium: medium,

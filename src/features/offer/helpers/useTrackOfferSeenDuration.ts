@@ -1,7 +1,7 @@
 import { useRef, useEffect } from 'react'
 
+import { analytics } from 'libs/analytics'
 import { useAppStateChange } from 'libs/appState'
-import { analytics } from 'libs/firebase/analytics'
 
 export const useTrackOfferSeenDuration = (offerId: number) => {
   const timeInBackground = useRef(0)

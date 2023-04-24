@@ -1,7 +1,7 @@
 import React from 'react'
 
 import { FavoriteListOfferModal } from 'features/favorites/favoriteList/FakeDoor/FavoriteListOfferModal'
-import { analytics } from 'libs/firebase/analytics'
+import { analytics } from 'libs/analytics'
 import { fireEvent, render, screen } from 'tests/utils'
 
 describe('<FavoriteListOfferModal />', () => {

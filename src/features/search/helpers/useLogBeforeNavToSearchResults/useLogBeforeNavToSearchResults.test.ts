@@ -1,6 +1,6 @@
 import { initialSearchState } from 'features/search/context/reducer'
 import { useLogBeforeNavToSearchResults } from 'features/search/helpers/useLogBeforeNavToSearchResults/useLogBeforeNavToSearchResults'
-import { analytics } from 'libs/firebase/analytics'
+import { analytics } from 'libs/analytics'
 import { renderHook } from 'tests/utils'
 
 const mockSearchState = initialSearchState

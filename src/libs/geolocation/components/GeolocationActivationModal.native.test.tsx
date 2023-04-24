@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { analytics } from 'libs/firebase/analytics'
+import { analytics } from 'libs/analytics'
 import { GeolocPermissionState } from 'libs/geolocation'
 import { GeolocationActivationModal } from 'libs/geolocation/components/GeolocationActivationModal'
 import { fireEvent, render } from 'tests/utils'

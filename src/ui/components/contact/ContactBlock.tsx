@@ -3,7 +3,7 @@ import styled from 'styled-components/native'
 
 import { openUrl } from 'features/navigation/helpers'
 import { useVenue } from 'features/venue/api/useVenue'
-import { analytics } from 'libs/firebase/analytics'
+import { analytics } from 'libs/analytics'
 import { isValidFrenchPhoneNumber, openPhoneNumber, openMail } from 'ui/components/contact/helpers'
 import { TouchableOpacity } from 'ui/components/TouchableOpacity'
 import { EmailFilled } from 'ui/svg/icons/EmailFilled'

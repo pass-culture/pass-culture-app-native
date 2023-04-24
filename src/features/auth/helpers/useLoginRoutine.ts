@@ -4,7 +4,8 @@ import {
   useConnectServicesRequiringUserId,
 } from 'features/auth/context/AuthContext'
 import { useResetContexts } from 'features/auth/context/useResetContexts'
-import { analytics, LoginRoutineMethod } from 'libs/firebase/analytics'
+// eslint-disable-next-line no-restricted-imports
+import { LoginRoutineMethod, firebaseAnalytics } from 'libs/firebase/analytics'
 import { saveRefreshToken } from 'libs/keychain'
 import { storage } from 'libs/storage'
 
@@ -23,7 +24,7 @@ export function useLoginRoutine() {
     connectServicesRequiringUserId(response.accessToken)
     await saveRefreshToken(response.refreshToken)
     await storage.saveString('access_token', response.accessToken)
-    analytics.logLogin({ method })
+    firebaseAnalytics.logLogin({ method })
     setIsLoggedIn(true)
     resetContexts()
   }

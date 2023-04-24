@@ -9,7 +9,7 @@ import { useSubscriptionContext } from 'features/identityCheck/context/Subscript
 import { invalidateStepperInfoQuery } from 'features/identityCheck/pages/helpers/invalidateStepperQuery'
 import { DeprecatedIdentityCheckStep } from 'features/identityCheck/types'
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
-import { amplitude } from 'libs/amplitude'
+import { analytics } from 'libs/analytics'
 import { eventMonitoring } from 'libs/monitoring'
 import { QueryKeys } from 'libs/queryKeys'
 import { queryClient } from 'libs/react-query/queryClient'
@@ -40,7 +40,7 @@ export function IdentityCheckValidation() {
   }
 
   const onValidateInformation = async () => {
-    amplitude.logEvent('check_Educonnect_data_clicked')
+    analytics.logCheckEduconnectDataClicked()
     await navigateToNextEduConnectStep()
   }
 
