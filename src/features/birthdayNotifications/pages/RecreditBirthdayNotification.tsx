@@ -4,7 +4,6 @@ import styled, { useTheme } from 'styled-components/native'
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { navigateToHome } from 'features/navigation/helpers'
 import { useResetRecreditAmountToShow } from 'features/profile/api/useResetRecreditAmountToShow'
-import { analytics } from 'libs/analytics'
 import { useAppStateChange } from 'libs/appState'
 import LottieView from 'libs/lottie'
 import { formatToFrenchDecimal } from 'libs/parsers'
@@ -51,7 +50,6 @@ export const RecreditBirthdayNotification = () => {
 
   useEffect(() => {
     storage.saveObject('has_seen_birthday_notification_card', true)
-    analytics.logScreenView('RecreditBirthdayNotification')
   }, [])
 
   const playAnimation = useCallback(() => {
