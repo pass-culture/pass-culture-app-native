@@ -21,6 +21,7 @@ jest.mock('uuid', () => ({
 const venueId = venueResponseSnap.id
 
 // TODO(PC-21801): temporary skip this flaky test until github actions migration
+// eslint-disable-next-line jest/no-disabled-tests
 describe.skip('<Venue />', () => {
   useRoute.mockImplementation(() => ({ params: { venueId } }))
 
