@@ -78,10 +78,10 @@ describe('getInstalledApps', () => {
         ])
       })
 
-      it('should not consider twitter installed', async () => {
+      it('should never consider twitter installed', async () => {
         canOpenURLSpy.mockImplementation(async (url: string): Promise<boolean> => {
           switch (url) {
-            case 'snapchat://':
+            case 'twitter://':
               return true
             default:
               return false
@@ -90,7 +90,7 @@ describe('getInstalledApps', () => {
 
         const result = await getInstalledApps()
 
-        expect(result).toEqual([Network.snapchat])
+        expect(result).toEqual([])
       })
 
       it('should consider google message as the default messaging app', async () => {
@@ -127,10 +127,10 @@ describe('getInstalledApps', () => {
         ])
       })
 
-      it('should not consider twitter installed', async () => {
+      it('should never consider twitter installed', async () => {
         canOpenURLSpy.mockImplementation(async (url: string): Promise<boolean> => {
           switch (url) {
-            case 'instagram://user/':
+            case 'twitter://':
               return true
             default:
               return false
@@ -139,7 +139,7 @@ describe('getInstalledApps', () => {
 
         const result = await getInstalledApps()
 
-        expect(result).toEqual([Network.instagram])
+        expect(result).toEqual([])
       })
 
       it('should not support share on snapchat because it does not work', async () => {
