@@ -183,12 +183,6 @@ describe('getInstalledApps', () => {
 
         expect(result).toEqual([Network.whatsapp, Network.telegram, Network.twitter])
       })
-
-      it('should consider iMessage as the default messaging app', async () => {
-        const result = await getInstalledApps()
-
-        expect(result).toEqual([Network.whatsapp, Network.telegram, Network.twitter])
-      })
     })
   })
 })
