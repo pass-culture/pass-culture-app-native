@@ -1,18 +1,12 @@
 import React from 'react'
 
 import { useRoute } from '__mocks__/@react-navigation/native'
+import { navigate } from '__mocks__/@react-navigation/native'
 import { DeprecatedIdentityCheckStep } from 'features/identityCheck/types'
 import { amplitude } from 'libs/amplitude'
 import { fireEvent, render } from 'tests/utils'
 
 import { IdentityCheckValidation } from './IdentityCheckValidation'
-
-const mockNavigateToNextScreen = jest.fn()
-jest.mock('features/identityCheck/pages/helpers/useSubscriptionNavigation', () => ({
-  useSubscriptionNavigation: () => ({
-    navigateToNextScreen: mockNavigateToNextScreen,
-  }),
-}))
 
 const mockDispatch = jest.fn()
 jest.mock('features/identityCheck/context/SubscriptionContextProvider', () => ({
@@ -43,8 +37,7 @@ describe('<IdentityCheckValidation />', () => {
     fireEvent.press(validateButton)
     // wait for localStorage to have been updated
     await flushPromises
-    expect(mockNavigateToNextScreen).toBeCalledTimes(1)
-    expect(mockNavigateToNextScreen).toHaveBeenCalledWith()
+    expect(navigate).toHaveBeenCalledWith('IdentityCheckStepper')
     expect(mockDispatch).toHaveBeenNthCalledWith(1, {
       payload: DeprecatedIdentityCheckStep.CONFIRMATION,
       type: 'SET_STEP',

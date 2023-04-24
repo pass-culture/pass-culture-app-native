@@ -9,8 +9,8 @@ const educonnectFlow: (keyof SubscriptionRootStackParamList)[] = [
 ]
 
 const ubbleFlow: (keyof SubscriptionRootStackParamList)[] = ['SelectIDOrigin']
-const ubbleForkFlow: (keyof SubscriptionRootStackParamList)[] = ['IdentificationForkUbble']
-const educonnectForkFlow: (keyof SubscriptionRootStackParamList)[] = [
+const ubbleOnTopForkFlow: (keyof SubscriptionRootStackParamList)[] = ['IdentificationForkUbble']
+const educonnectOnTopForkFlow: (keyof SubscriptionRootStackParamList)[] = [
   'IdentificationForkEduconnect',
 ]
 
@@ -21,12 +21,12 @@ const bothMethodsAllowed = [IdentityCheckMethod.ubble, IdentityCheckMethod.educo
 describe('computeIdentificationMethod', () => {
   it('should return ubble fork flow with two methods allowed and ubble AB testing param', () => {
     expect(computeIdentificationMethod(bothMethodsAllowed, IdentityCheckMethod.ubble)).toEqual(
-      ubbleForkFlow
+      ubbleOnTopForkFlow
     )
   })
   it('should return educonnect fork flow with two methods allowed and educonnect AB testing param', () => {
     expect(computeIdentificationMethod(bothMethodsAllowed, IdentityCheckMethod.educonnect)).toEqual(
-      educonnectForkFlow
+      educonnectOnTopForkFlow
     )
   })
   it('should return ubble flow with if only ubble method is allowed', () => {
