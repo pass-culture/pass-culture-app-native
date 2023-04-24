@@ -48,15 +48,22 @@ For iOS, you will need to:
    ```sh
    brew install node
    ```
+  - then we will use node v16 and put it by default:
+   ```
+   nvm install v16.13.2
+   nvm use v16.13.2
+   nvm alias default v16.13.2
+   ```
 
-- install Xcode and its command line tools
+- install Xcode v14.2 [here][2] and its command line tools
 - Install a simulator if not already in Xcode
 - install Cocoapods
 
 ### Test setup
 
-To make sure your environment is set up correctly, try to run a template application with [Create React Native App][2] or with [react-native-cli][3].
+To make sure your environment is set up correctly, try to run a template application with [Create React Native App][3] or with [react-native-cli][4].
 
 [1]: https://reactnative.dev/docs/environment-setup
-[2]: https://github.com/expo/create-react-native-app
-[3]: https://github.com/react-native-community/cli
+[2]: https://developer.apple.com/download/all/?q=xcode%2014.2
+[3]: https://github.com/expo/create-react-native-app
+[4]: https://github.com/react-native-community/cli
