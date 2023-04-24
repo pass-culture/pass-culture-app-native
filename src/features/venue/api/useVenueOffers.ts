@@ -1,6 +1,7 @@
 import uniqBy from 'lodash/uniqBy'
 import { useQuery } from 'react-query'
 
+import { useSettingsContext } from 'features/auth/context/SettingsContext'
 import { useIsUserUnderage } from 'features/profile/helpers/useIsUserUnderage'
 import { useVenueSearchParameters } from 'features/venue/helpers/useVenueSearchParameters/useVenueSearchParameters'
 import { useSearchAnalyticsState } from 'libs/algolia/analytics/SearchAnalyticsWrapper'
@@ -12,6 +13,8 @@ export const useVenueOffers = (venueId: number) => {
   const params = useVenueSearchParameters(venueId)
   const isUserUnderage = useIsUserUnderage()
   const netInfo = useNetInfoContext()
+  const { data: settings } = useSettingsContext()
+  const { objectStorageUrl: urlPrefix } = settings || {}
 
   const { setCurrentQueryID } = useSearchAnalyticsState()
 
@@ -24,6 +27,7 @@ export const useVenueOffers = (venueId: number) => {
         isUserUnderage,
         storeQueryID: setCurrentQueryID,
         indexSearch: env.ALGOLIA_VENUE_OFFERS_INDEX_NAME,
+        urlPrefix,
       }),
     {
       enabled: !!netInfo.isConnected,
