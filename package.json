@@ -88,7 +88,7 @@
     "e2e:types": "tsc -p e2e/tsconfig.json"
   },
   "dependencies": {
-    "@algolia/client-search": "^4.6.0",
+    "@algolia/client-search": "^4.17.0",
     "@algolia/recommend": "^4.14.3",
     "@algolia/recommend-core": "^1.8.1",
     "@amplitude/analytics-react-native": "^1.0.1",
