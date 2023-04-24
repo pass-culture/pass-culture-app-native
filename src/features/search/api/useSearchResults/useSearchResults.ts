@@ -24,7 +24,7 @@ export const useSearchInfiniteQuery = (searchState: SearchState) => {
   const { setCurrentQueryID } = useSearchAnalyticsState()
   const previousPageObjectIds = useRef<string[]>([])
   const { data: settings } = useSettingsContext()
-  const { objectStorageUrl: urlPrefix } = settings || {}
+  const { objectStorageUrl: imageUrlPrefix } = settings || {}
 
   const { data, ...infiniteQuery } = useInfiniteQuery<OffersWithPage>(
     [QueryKeys.SEARCH_RESULTS, { ...searchState, view: undefined }],
@@ -35,7 +35,7 @@ export const useSearchInfiniteQuery = (searchState: SearchState) => {
         isUserUnderage,
         storeQueryID: setCurrentQueryID,
         excludedObjectIds: previousPageObjectIds.current,
-        urlPrefix,
+        imageUrlPrefix,
       })
 
       analytics.logPerformSearch(searchState, response.nbOffers)

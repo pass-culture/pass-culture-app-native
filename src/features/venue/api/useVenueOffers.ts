@@ -9,12 +9,13 @@ import { fetchOffers } from 'libs/algolia/fetchAlgolia/fetchOffers/fetchOffers'
 import { env } from 'libs/environment'
 import { useNetInfoContext } from 'libs/network/NetInfoWrapper'
 import { QueryKeys } from 'libs/queryKeys'
+
 export const useVenueOffers = (venueId: number) => {
   const params = useVenueSearchParameters(venueId)
   const isUserUnderage = useIsUserUnderage()
   const netInfo = useNetInfoContext()
   const { data: settings } = useSettingsContext()
-  const { objectStorageUrl: urlPrefix } = settings || {}
+  const { objectStorageUrl: imageUrlPrefix } = settings || {}
 
   const { setCurrentQueryID } = useSearchAnalyticsState()
 
@@ -27,7 +28,7 @@ export const useVenueOffers = (venueId: number) => {
         isUserUnderage,
         storeQueryID: setCurrentQueryID,
         indexSearch: env.ALGOLIA_VENUE_OFFERS_INDEX_NAME,
-        urlPrefix,
+        imageUrlPrefix,
       }),
     {
       enabled: !!netInfo.isConnected,
