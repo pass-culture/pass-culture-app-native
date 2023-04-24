@@ -5,8 +5,7 @@ import { useNextSubscriptionStep } from 'features/auth/api/useNextSubscriptionSt
 import { invalidateStepperInfoQuery } from 'features/identityCheck/pages/helpers/invalidateStepperQuery'
 import { navigateToHome } from 'features/navigation/helpers'
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
-// eslint-disable-next-line no-restricted-imports
-import { amplitude } from 'libs/amplitude'
+import { analytics } from 'libs/analytics'
 import { GenericInfoPage } from 'ui/pages/GenericInfoPage'
 import { EmailSent } from 'ui/svg/icons/EmailSent'
 
@@ -20,7 +19,7 @@ export const IdentityCheckEnd = () => {
   }
 
   useEffect(() => {
-    amplitude.logEvent('screen_view_identity_check_end')
+    analytics.logScreenViewIdentityCheckEnd()
   }, [])
 
   useEffect(() => {

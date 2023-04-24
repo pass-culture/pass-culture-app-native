@@ -5,8 +5,7 @@ import styled from 'styled-components/native'
 import { HeroButtonList } from 'features/identityCheck/components/HeroButtonList'
 import { PageWithHeader } from 'features/identityCheck/components/layout/PageWithHeader'
 import { SecondButtonList } from 'features/identityCheck/components/SecondButtonList'
-// eslint-disable-next-line no-restricted-imports
-import { amplitude } from 'libs/amplitude'
+import { analytics } from 'libs/analytics'
 import { AccessibilityList } from 'ui/components/accessibility/AccessibilityList'
 import { SeparatorWithText } from 'ui/components/SeparatorWithText'
 import { BicolorIdCard } from 'ui/svg/icons/BicolorIdCard'
@@ -15,19 +14,19 @@ import { BicolorNoId } from 'ui/svg/icons/BicolorNoId'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
-enum IDStatus {
+export enum IDStatus {
   'ID_OK' = 'id_ok',
   'NO_ID' = 'no_id',
   'EXPIRED_OR_LOST' = 'expired_or_lost',
 }
 
 const logEventSelectIdStatusClicked = (type: IDStatus) => {
-  amplitude.logEvent('select_id_status_clicked', { type })
+  analytics.logSelectIdStatusClicked(type)
 }
 
 export const SelectIDStatus: FunctionComponent = () => {
   useEffect(() => {
-    amplitude.logEvent('screen_view_select_id_status')
+    analytics.logScreenViewSelectIdStatus()
   }, [])
   return <PageWithHeader title="Identification" scrollChildren={<SelectIDStatusContent />} />
 }

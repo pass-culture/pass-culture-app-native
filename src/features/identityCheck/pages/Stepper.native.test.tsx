@@ -14,8 +14,7 @@ import {
   IdentityCheckStep,
   StepButtonState,
 } from 'features/identityCheck/types'
-// eslint-disable-next-line no-restricted-imports
-import { amplitude } from 'libs/amplitude'
+import { analytics } from 'libs/analytics'
 import * as useFeatureFlag from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { fireEvent, render, waitFor, screen } from 'tests/utils'
 
@@ -135,17 +134,16 @@ describe('Stepper navigation', () => {
   })
 
   it.each`
-    subscriptionStep                      | stepperLabel             | eventName            | eventParam
-    ${IdentityCheckStep.PHONE_VALIDATION} | ${'Numéro de téléphone'} | ${'stepper_clicked'} | ${{ step: IdentityCheckStep.PHONE_VALIDATION }}
-    ${IdentityCheckStep.IDENTIFICATION}   | ${'Identification'}      | ${'stepper_clicked'} | ${{ step: IdentityCheckStep.IDENTIFICATION }}
-    ${IdentityCheckStep.CONFIRMATION}     | ${'Confirmation'}        | ${'stepper_clicked'} | ${{ step: IdentityCheckStep.CONFIRMATION }}
-    ${IdentityCheckStep.PROFILE}          | ${'Profil'}              | ${'stepper_clicked'} | ${{ step: IdentityCheckStep.PROFILE }}
+    subscriptionStep                      | stepperLabel             | eventParam
+    ${IdentityCheckStep.PHONE_VALIDATION} | ${'Numéro de téléphone'} | ${IdentityCheckStep.PHONE_VALIDATION}
+    ${IdentityCheckStep.IDENTIFICATION}   | ${'Identification'}      | ${IdentityCheckStep.IDENTIFICATION}
+    ${IdentityCheckStep.CONFIRMATION}     | ${'Confirmation'}        | ${IdentityCheckStep.CONFIRMATION}
+    ${IdentityCheckStep.PROFILE}          | ${'Profil'}              | ${IdentityCheckStep.PROFILE}
   `(
-    'should trigger $eventName amplitude event with the $eventParam parameter',
+    'should trigger analytics with the $eventParam parameter',
     ({
       subscriptionStep,
       stepperLabel,
-      eventName,
       eventParam,
     }: {
       subscriptionStep: SubscriptionStep
@@ -179,7 +177,7 @@ describe('Stepper navigation', () => {
       const stepButton = stepper.getByText(stepperLabel)
       fireEvent.press(stepButton)
 
-      expect(amplitude.logEvent).toHaveBeenNthCalledWith(1, eventName, eventParam)
+      expect(analytics.logIdentityCheckStep).toHaveBeenNthCalledWith(1, eventParam)
     }
   )
 })

@@ -3,8 +3,7 @@ import { View } from 'react-native'
 import styled from 'styled-components/native'
 
 import { navigateToHomeConfig } from 'features/navigation/helpers'
-// eslint-disable-next-line no-restricted-imports
-import { amplitude } from 'libs/amplitude'
+import { analytics } from 'libs/analytics'
 import { BatchEvent, BatchUser } from 'libs/react-native-batch'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
@@ -15,7 +14,7 @@ import { getSpacing, Spacer, Typo } from 'ui/theme'
 export const ComeBackLater: FunctionComponent = () => {
   useEffect(() => {
     BatchUser.trackEvent(BatchEvent.screenViewComeBackLater)
-    amplitude.logEvent('screen_view_come_back_later')
+    analytics.logScreenViewComeBackLater()
   }, [])
 
   return (
@@ -39,7 +38,7 @@ export const ComeBackLater: FunctionComponent = () => {
           as={ButtonPrimary}
           wording="M’identifier plus tard"
           navigateTo={navigateToHomeConfig}
-          onBeforeNavigate={() => amplitude.logEvent('come_back_later_clicked')}
+          onBeforeNavigate={() => analytics.logComeBackLaterClicked()}
         />
       </View>
     </GenericInfoPageWhite>

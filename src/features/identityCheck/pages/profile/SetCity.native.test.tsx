@@ -3,8 +3,7 @@ import React from 'react'
 
 import { initialSubscriptionState as mockState } from 'features/identityCheck/context/reducer'
 import { SetCity } from 'features/identityCheck/pages/profile/SetCity'
-// eslint-disable-next-line no-restricted-imports
-import { amplitude } from 'libs/amplitude'
+import { analytics } from 'libs/analytics'
 import { CITIES_API_URL } from 'libs/place'
 import { mockedSuggestedCities } from 'libs/place/fixtures/mockedSuggestedCities'
 import { CitiesResponse } from 'libs/place/useCities'
@@ -84,13 +83,13 @@ describe('<SetCity/>', () => {
     })
   })
 
-  it('should send a amplitude event when the screen is mounted', async () => {
+  it('should log screen view when the screen is mounted', async () => {
     renderSetCity()
 
-    expect(amplitude.logEvent).toHaveBeenNthCalledWith(1, 'screen_view_set_city')
+    expect(analytics.logScreenViewSetCity).toHaveBeenCalledTimes(1)
   })
 
-  it('should send an amplitude event set_postal_code_clicked on press Continuer', async () => {
+  it('should log analytics on press Continuer', async () => {
     const city = mockedSuggestedCities[0]
     mockCitiesApiCall(mockedSuggestedCities)
     renderSetCity()
@@ -104,8 +103,7 @@ describe('<SetCity/>', () => {
     const ContinueButton = screen.getByText('Continuer')
     fireEvent.press(ContinueButton)
 
-    // first call will be the event screen_view_set_city on mount
-    expect(amplitude.logEvent).toHaveBeenNthCalledWith(2, 'set_postal_code_clicked')
+    expect(analytics.logSetPostalCodeClicked).toHaveBeenCalledTimes(1)
   })
 })
 

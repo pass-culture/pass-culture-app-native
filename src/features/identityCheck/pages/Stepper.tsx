@@ -12,8 +12,6 @@ import { useSubscriptionContext } from 'features/identityCheck/context/Subscript
 import { useSetSubscriptionStepAndMethod } from 'features/identityCheck/pages/helpers/useSetCurrentSubscriptionStep'
 import { useStepperInfo } from 'features/identityCheck/pages/helpers/useStepperInfo'
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
-// eslint-disable-next-line no-restricted-imports
-import { amplitude } from 'libs/amplitude'
 import { analytics } from 'libs/analytics'
 import { hasOngoingCredit } from 'shared/user/useAvailableCredit'
 import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
@@ -93,7 +91,6 @@ export const IdentityCheckStepper = () => {
               step={step}
               navigateTo={{ screen: step.screens[0] }}
               onPress={() => {
-                amplitude.logEvent('stepper_clicked', { step: step.name })
                 analytics.logIdentityCheckStep(step.name)
               }}
             />

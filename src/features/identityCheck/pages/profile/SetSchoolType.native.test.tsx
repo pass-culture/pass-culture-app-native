@@ -5,8 +5,7 @@ import { initialSubscriptionState as mockState } from 'features/identityCheck/co
 import { useSubscriptionContext } from 'features/identityCheck/context/SubscriptionContextProvider'
 import { SchoolTypesSnap } from 'features/identityCheck/pages/profile/fixtures/mockedSchoolTypes'
 import { SetSchoolType } from 'features/identityCheck/pages/profile/SetSchoolType'
-// eslint-disable-next-line no-restricted-imports
-import { amplitude } from 'libs/amplitude'
+import { analytics } from 'libs/analytics'
 import { fireEvent, render, waitFor } from 'tests/utils'
 
 jest.mock('features/identityCheck/context/SubscriptionContextProvider', () => ({
@@ -70,24 +69,19 @@ describe('<SetSchoolType />', () => {
     expect(queryByText('Continuer')).toBeFalsy()
   })
 
-  it('should send a amplitude event when the screen is mounted', async () => {
+  it('should log screen view when the screen is mounted', async () => {
     render(<SetSchoolType />)
 
-    await waitFor(() =>
-      expect(amplitude.logEvent).toHaveBeenNthCalledWith(1, 'screen_view_set_school_type')
-    )
+    await waitFor(() => expect(analytics.logScreenViewSetSchoolType).toHaveBeenCalledTimes(1))
   })
 
-  it('should send a amplitude event set_school_type_clicked on press Continuer', async () => {
+  it('should log analytics on press Continuer', async () => {
     mockIsSavingCheckpoint = false
     const { getByText } = render(<SetSchoolType />)
 
     fireEvent.press(getByText(SchoolTypesSnap.school_types[3].label))
     fireEvent.press(getByText('Continuer'))
 
-    await waitFor(() =>
-      // first call will be the event screen_view_set_school_type on mount
-      expect(amplitude.logEvent).toHaveBeenNthCalledWith(1, 'screen_view_set_school_type')
-    )
+    await waitFor(() => expect(analytics.logSetSchoolTypeClicked).toHaveBeenCalledTimes(1))
   })
 })

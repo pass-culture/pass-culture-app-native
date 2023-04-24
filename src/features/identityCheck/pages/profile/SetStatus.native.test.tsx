@@ -5,8 +5,7 @@ import { SchoolTypesSnap } from 'features/identityCheck/pages/profile/fixtures/m
 import { activityHasSchoolTypes } from 'features/identityCheck/pages/profile/helpers/schoolTypes'
 import { SetStatus } from 'features/identityCheck/pages/profile/SetStatus'
 import { useIsUserUnderage } from 'features/profile/helpers/useIsUserUnderage'
-// eslint-disable-next-line no-restricted-imports
-import { amplitude } from 'libs/amplitude'
+import { analytics } from 'libs/analytics'
 import { fireEvent, render, screen, waitFor } from 'tests/utils'
 
 jest.mock('react-query')
@@ -95,15 +94,13 @@ describe('<SetStatus/>', () => {
     expect(screen.queryByText('Continuer')).toBeFalsy()
   })
 
-  it('should send a amplitude event when the screen is mounted', async () => {
+  it('should log screen view when the screen is mounted', async () => {
     render(<SetStatus />)
 
-    await waitFor(() =>
-      expect(amplitude.logEvent).toHaveBeenNthCalledWith(1, 'screen_view_set_status')
-    )
+    await waitFor(() => expect(analytics.logScreenViewSetStatus).toHaveBeenCalledTimes(1))
   })
 
-  it('should send a amplitude event set_status_clicked on press Continuer', async () => {
+  it('should log analytics on press Continuer', async () => {
     mockIsSavingCheckpoint = false
     render(<SetStatus />)
 
@@ -111,8 +108,7 @@ describe('<SetStatus/>', () => {
     fireEvent.press(screen.getByText('Continuer'))
 
     await waitFor(() => {
-      // first call will be the event screen_view_set_status on mount
-      expect(amplitude.logEvent).toHaveBeenNthCalledWith(2, 'set_status_clicked')
+      expect(analytics.logSetStatusClicked).toHaveBeenCalledTimes(1)
     })
   })
 })

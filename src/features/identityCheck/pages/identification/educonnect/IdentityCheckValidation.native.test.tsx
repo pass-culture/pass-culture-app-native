@@ -3,8 +3,7 @@ import React from 'react'
 import { useRoute } from '__mocks__/@react-navigation/native'
 import { navigate } from '__mocks__/@react-navigation/native'
 import { DeprecatedIdentityCheckStep } from 'features/identityCheck/types'
-// eslint-disable-next-line no-restricted-imports
-import { amplitude } from 'libs/amplitude'
+import { analytics } from 'libs/analytics'
 import { fireEvent, render } from 'tests/utils'
 
 import { IdentityCheckValidation } from './IdentityCheckValidation'
@@ -56,13 +55,13 @@ describe('<IdentityCheckValidation />', () => {
     expect(getByText('Doe')).toBeTruthy()
     expect(getByText('28/01/1993')).toBeTruthy()
   })
-  it("should trigger an amplitude tracker when the 'Valider mes informations' button is pressed", () => {
+  it("should trigger tracker when the 'Valider mes informations' button is pressed", () => {
     const { getByText } = render(<IdentityCheckValidation />)
 
     const button = getByText('Valider mes informations')
 
     fireEvent.press(button)
 
-    expect(amplitude.logEvent).toHaveBeenNthCalledWith(1, 'check_Educonnect_data_clicked')
+    expect(analytics.logCheckEduconnectDataClicked).toHaveBeenCalledTimes(1)
   })
 })

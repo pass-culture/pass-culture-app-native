@@ -5,8 +5,7 @@ import styled from 'styled-components/native'
 import { HeroButtonList } from 'features/identityCheck/components/HeroButtonList'
 import { PageWithHeader } from 'features/identityCheck/components/layout/PageWithHeader'
 import { SecondButtonList } from 'features/identityCheck/components/SecondButtonList'
-// eslint-disable-next-line no-restricted-imports
-import { amplitude } from 'libs/amplitude'
+import { analytics } from 'libs/analytics'
 import { SeparatorWithText } from 'ui/components/SeparatorWithText'
 import { BicolorEarth } from 'ui/svg/icons/BicolorEarth'
 import { BicolorFrance } from 'ui/svg/icons/BicolorFrance'
@@ -14,14 +13,14 @@ import { BicolorIdCardWithMagnifyingGlass } from 'ui/svg/icons/BicolorIdCardWith
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
-enum IDOrigin {
+export enum IDOrigin {
   'FRANCE' = 'France',
   'FOREIGN' = 'Foreign',
 }
 
 export const SelectIDOrigin: FunctionComponent = () => {
   useEffect(() => {
-    amplitude.logEvent('screen_view_select_id_origin')
+    analytics.logScreenViewSelectIdOrigin()
   }, [])
   return <PageWithHeader title={'Identification'} scrollChildren={<SelectIDOriginContent />} />
 }
@@ -48,9 +47,7 @@ const SelectIDOriginContent: FunctionComponent = () => {
         navigateTo={{ screen: Platform.OS === 'web' ? 'SelectPhoneStatus' : 'SelectIDStatus' }}
         key={1}
         accessibilityLabel="J’ai une carte d’identité ou un passeport français"
-        onBeforeNavigate={() =>
-          amplitude.logEvent('set_id_origin_clicked', { type: IDOrigin.FRANCE })
-        }
+        onBeforeNavigate={() => analytics.logSetIdOriginClicked(IDOrigin.FRANCE)}
       />
       <Spacer.Column numberOfSpaces={7} />
       <SeparatorWithText label="ou" />
@@ -59,9 +56,7 @@ const SelectIDOriginContent: FunctionComponent = () => {
         label="J’ai un titre de séjour, une carte d’identité ou un passeport étranger."
         leftIcon={StyledBicolorEarth}
         navigateTo={{ screen: 'DMSIntroduction', params: { isForeignDMSInformation: true } }}
-        onBeforeNavigate={() =>
-          amplitude.logEvent('set_id_origin_clicked', { type: IDOrigin.FOREIGN })
-        }
+        onBeforeNavigate={() => analytics.logSetIdOriginClicked(IDOrigin.FOREIGN)}
       />
     </Container>
   )

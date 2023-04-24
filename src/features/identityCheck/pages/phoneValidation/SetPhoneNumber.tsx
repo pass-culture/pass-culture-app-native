@@ -20,8 +20,6 @@ import { PhoneValidationTipsModal } from 'features/identityCheck/pages/phoneVali
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { homeNavConfig } from 'features/navigation/TabBar/helpers'
 import { useGoBack } from 'features/navigation/useGoBack'
-// eslint-disable-next-line no-restricted-imports
-import { amplitude } from 'libs/amplitude'
 import { analytics } from 'libs/analytics'
 import { useSafeState } from 'libs/hooks'
 import { plural } from 'libs/plural'
@@ -38,7 +36,7 @@ const INITIAL_COUNTRY = METROPOLITAN_FRANCE
 
 export const SetPhoneNumber = () => {
   useEffect(() => {
-    amplitude.logEvent('screen_view_set_phone_number')
+    analytics.logScreenViewSetPhoneNumber()
   }, [])
   const titleID = uuidv4()
   const { dispatch, phoneValidation } = useSubscriptionContext()
@@ -111,7 +109,7 @@ export const SetPhoneNumber = () => {
       sendPhoneValidationCode(phoneNumberWithPrefix)
     }
 
-    amplitude.logEvent('phone_number_clicked')
+    analytics.logPhoneNumberClicked()
   }
 
   const LeftCountryPicker = <CountryPicker initialCountry={INITIAL_COUNTRY} onSelect={setCountry} />

@@ -5,8 +5,7 @@ import { CenteredTitle } from 'features/identityCheck/components/CenteredTitle'
 import { PageWithHeader } from 'features/identityCheck/components/layout/PageWithHeader'
 import { useSubscriptionContext } from 'features/identityCheck/context/SubscriptionContextProvider'
 import { useSubscriptionNavigation } from 'features/identityCheck/pages/helpers/useSubscriptionNavigation'
-// eslint-disable-next-line no-restricted-imports
-import { amplitude } from 'libs/amplitude'
+import { analytics } from 'libs/analytics'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { Form } from 'ui/components/Form'
 import { InfoBanner } from 'ui/components/InfoBanner'
@@ -24,7 +23,7 @@ export const SetName = () => {
   const { navigateToNextScreen } = useSubscriptionNavigation()
 
   useEffect(() => {
-    amplitude.logEvent('screen_view_set_name')
+    analytics.logScreenViewSetName()
   }, [])
 
   const isValidFirstName = isNameValid(firstName)
@@ -39,7 +38,7 @@ export const SetName = () => {
   function submitName() {
     if (disabled) return
     dispatch({ type: 'SET_NAME', payload: { firstName, lastName } })
-    amplitude.logEvent('set_name_clicked')
+    analytics.logSetNameClicked()
     navigateToNextScreen()
   }
 

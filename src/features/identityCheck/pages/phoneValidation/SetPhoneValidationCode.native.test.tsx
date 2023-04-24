@@ -8,8 +8,6 @@ import {
   hasCodeCorrectFormat,
   SetPhoneValidationCode,
 } from 'features/identityCheck/pages/phoneValidation/SetPhoneValidationCode'
-// eslint-disable-next-line no-restricted-imports
-import { amplitude } from 'libs/amplitude'
 import { analytics } from 'libs/analytics'
 import { env } from 'libs/environment'
 import { EmptyResponse } from 'libs/fetch'
@@ -169,15 +167,15 @@ describe('SetPhoneValidationCode', () => {
     expect(analytics.logHasClickedMissingCode).toHaveBeenCalledTimes(1)
   })
 
-  it('should send a amplitude event when the screen is mounted', async () => {
+  it('should log screen view when the screen is mounted', async () => {
     renderSetPhoneValidationCode()
 
     await waitFor(() =>
-      expect(amplitude.logEvent).toHaveBeenNthCalledWith(1, 'screen_view_set_phone_validation_code')
+      expect(analytics.logScreenViewSetPhoneValidationCode).toHaveBeenCalledTimes(1)
     )
   })
 
-  it('should log an amplitude event phone_validation_code_clicked on press continue', async () => {
+  it('should log analytics on press continue', async () => {
     const { getByTestId, getByPlaceholderText } = renderSetPhoneValidationCode()
 
     const continueButton = getByTestId('Continuer')
@@ -187,8 +185,7 @@ describe('SetPhoneValidationCode', () => {
     fireEvent.press(continueButton)
 
     await waitFor(() => {
-      // first call will be the event screen_view_set_phone_validation_code on mount
-      expect(amplitude.logEvent).toHaveBeenNthCalledWith(2, 'phone_validation_code_clicked')
+      expect(analytics.logPhoneValidationCodeClicked).toHaveBeenCalledTimes(1)
     })
   })
 })

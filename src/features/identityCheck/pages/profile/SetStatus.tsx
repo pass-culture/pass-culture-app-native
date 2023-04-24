@@ -12,8 +12,7 @@ import { useSubscriptionNavigation } from 'features/identityCheck/pages/helpers/
 import { activityHasSchoolTypes } from 'features/identityCheck/pages/profile/helpers/schoolTypes'
 import { useIsUserUnderage } from 'features/profile/helpers/useIsUserUnderage'
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
-// eslint-disable-next-line no-restricted-imports
-import { amplitude } from 'libs/amplitude'
+import { analytics } from 'libs/analytics'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { Form } from 'ui/components/Form'
 import { Li } from 'ui/components/Li'
@@ -39,7 +38,7 @@ export const SetStatus = () => {
   })
 
   useEffect(() => {
-    amplitude.logEvent('screen_view_set_status')
+    analytics.logScreenViewSetStatus()
   }, [])
 
   const selectedStatus = watch('selectedStatus')
@@ -64,7 +63,7 @@ export const SetStatus = () => {
     async (formValues: StatusForm) => {
       if (!formValues.selectedStatus) return
       dispatch({ type: 'SET_STATUS', payload: formValues.selectedStatus })
-      amplitude.logEvent('set_status_clicked')
+      analytics.logSetStatusClicked()
       navigateToNextScreen()
     },
     [dispatch, navigateToNextScreen]

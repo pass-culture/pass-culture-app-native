@@ -3,8 +3,6 @@ import React from 'react'
 import { useRoute } from '__mocks__/@react-navigation/native'
 import { DMSIntroduction } from 'features/identityCheck/pages/identification/dms/DMSIntroduction'
 import * as NavigationHelpers from 'features/navigation/helpers/openUrl'
-// eslint-disable-next-line no-restricted-imports
-import { amplitude } from 'libs/amplitude'
 import { analytics } from 'libs/analytics'
 import { env } from 'libs/environment'
 import { fireEvent, render, waitFor } from 'tests/utils'
@@ -12,12 +10,10 @@ import { fireEvent, render, waitFor } from 'tests/utils'
 const openUrl = jest.spyOn(NavigationHelpers, 'openUrl')
 
 describe('DMSIntroduction', () => {
-  it('should send a amplitude event when the screen is mounted', async () => {
+  it('should log screen view when the screen is mounted', async () => {
     render(<DMSIntroduction />)
 
-    await waitFor(() =>
-      expect(amplitude.logEvent).toHaveBeenNthCalledWith(1, 'screen_view_dms_introduction')
-    )
+    await waitFor(() => expect(analytics.logScreenViewDMSIntroduction).toHaveBeenCalledTimes(1))
   })
   describe('french version', () => {
     beforeEach(() => {

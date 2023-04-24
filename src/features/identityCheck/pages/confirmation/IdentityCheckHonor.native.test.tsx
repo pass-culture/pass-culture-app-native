@@ -6,8 +6,7 @@ import { navigate } from '__mocks__/@react-navigation/native'
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { IdentityCheckHonor } from 'features/identityCheck/pages/confirmation/IdentityCheckHonor'
 import { beneficiaryUser, nonBeneficiaryUser } from 'fixtures/user'
-// eslint-disable-next-line no-restricted-imports
-import { amplitude } from 'libs/amplitude'
+import { analytics } from 'libs/analytics'
 import { fireEvent, render, useMutationFactory, waitFor } from 'tests/utils'
 
 jest.mock('react-query')
@@ -97,11 +96,9 @@ describe('<IdentityCheckHonor/>', () => {
     })
   })
 
-  it('should send a amplitude event when the screen is mounted', async () => {
+  it('should log analytics when the screen is mounted', async () => {
     render(<IdentityCheckHonor />)
 
-    await waitFor(() =>
-      expect(amplitude.logEvent).toHaveBeenNthCalledWith(1, 'screen_view_identity_check_honor')
-    )
+    await waitFor(() => expect(analytics.logScreenViewIdentityCheckHonor).toHaveBeenCalledTimes(1))
   })
 })

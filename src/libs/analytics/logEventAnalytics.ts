@@ -5,6 +5,8 @@ import { IdentityCheckMethod, VenueContactModel } from 'api/gen'
 import { Step, STEP_LABEL } from 'features/bookOffer/context/reducer'
 import { CookiesChoiceByCategory } from 'features/cookies/types'
 import { FavoriteSortBy } from 'features/favorites/types'
+import { IDOrigin } from 'features/identityCheck/pages/identification/ubble/SelectIDOrigin'
+import { IDStatus } from 'features/identityCheck/pages/identification/ubble/SelectIDStatus'
 import { DeprecatedIdentityCheckStep, IdentityCheckStep } from 'features/identityCheck/types'
 import { Referrals } from 'features/navigation/RootNavigator/types'
 import { PlaylistType } from 'features/offer/enums'
@@ -54,6 +56,8 @@ type OfferIdOrVenueId = { offerId: number; venueId?: never } | { venueId: number
 export const logEventAnalytics = {
   logAcceptNotifications: () =>
     analytics.logEvent({ firebase: AnalyticsEvent.ACCEPT_NOTIFICATIONS }),
+  logAcceptedTerms: () =>
+    analytics.logEvent({ amplitude: AmplitudeEvent.USER_ACCEPTED_TERMS_CLICKED_FRONT }),
   logAccountDeletion: () => analytics.logEvent({ firebase: AnalyticsEvent.ACCOUNT_DELETION }),
   logAccountReactivation: (from: Referrals) =>
     analytics.logEvent({ firebase: AnalyticsEvent.ACCOUNT_REACTIVATION }, { from }),
@@ -131,19 +135,38 @@ export const logEventAnalytics = {
         ...(params.type === 'venue' && { venueId: params.venueId }),
       }
     ),
-  logChooseEduConnectMethod: () =>
-    analytics.logEvent({ firebase: AnalyticsEvent.CHOOSE_EDUCONNECT_METHOD }),
-  logChooseUbbleMethod: () => analytics.logEvent({ firebase: AnalyticsEvent.CHOOSE_UBBLE_METHOD }),
+  logCheckEduconnectDataClicked: () =>
+    analytics.logEvent({ amplitude: AmplitudeEvent.CHECK_EDUCONNECT_DATA_CLICKED }),
+  logChooseEduConnectMethod: (origin?: IdentityCheckMethod) =>
+    analytics.logEvent(
+      {
+        firebase: AnalyticsEvent.CHOOSE_EDUCONNECT_METHOD,
+        amplitude: AmplitudeEvent.CHOOSE_METHOD_EDUCONNECT,
+      },
+      { fork_origin: origin }
+    ),
+  logChooseUbbleMethod: (origin?: IdentityCheckMethod) =>
+    analytics.logEvent(
+      {
+        firebase: AnalyticsEvent.CHOOSE_UBBLE_METHOD,
+        amplitude: AmplitudeEvent.CHOOSE_METHOD_UBBLE,
+      },
+      { fork_origin: origin }
+    ),
   logClickBookOffer: (offerId: number) =>
     analytics.logEvent({ firebase: AnalyticsEvent.CLICK_BOOK_OFFER }, { offerId }),
   logClickSeeMore: (params: { moduleName: string; moduleId: string }) =>
     analytics.logEvent({ firebase: AnalyticsEvent.SEE_MORE_CLICKED }, params),
   logClickSocialNetwork: (network: string) =>
     analytics.logEvent({ firebase: AnalyticsEvent.CLICK_SOCIAL_NETWORK }, { network }),
+  logComeBackLaterClicked: () =>
+    analytics.logEvent({ amplitude: AmplitudeEvent.COME_BACK_LATER_CLICKED }),
   logConfirmBookingCancellation: (offerId: number) =>
     analytics.logEvent({ firebase: AnalyticsEvent.CONFIRM_BOOKING_CANCELLATION }, { offerId }),
   logConfirmQuitIdentityCheck: (nextStep: DeprecatedIdentityCheckStep | IdentityCheckStep) =>
     analytics.logEvent({ firebase: AnalyticsEvent.QUIT_IDENTITY_CHECK }, { nextStep }),
+  logConnectWithEduconnectClicked: () =>
+    analytics.logEvent({ amplitude: AmplitudeEvent.CONNECT_WITH_EDUCONNECT_CLICKED }),
   logConsultAccessibility: (params: OfferIdOrVenueId) =>
     analytics.logEvent({ firebase: AnalyticsEvent.CONSULT_ACCESSIBILITY_MODALITIES }, params),
   logConsultApplicationProcessingModal: (offerId: number) =>
@@ -212,7 +235,11 @@ export const logEventAnalytics = {
   logContinueCGU: () => analytics.logEvent({ firebase: AnalyticsEvent.CONTINUE_CGU }),
   logContinueIdentityCheck: () =>
     analytics.logEvent({ firebase: AnalyticsEvent.CONTINUE_IDENTITY_CHECK }),
-  logContinueSetEmail: () => analytics.logEvent({ firebase: AnalyticsEvent.CONTINUE_SET_EMAIL }),
+  logContinueSetEmail: () =>
+    analytics.logEvent({
+      firebase: AnalyticsEvent.CONTINUE_SET_EMAIL,
+      amplitude: AmplitudeEvent.USER_SET_EMAIL_CLICKED_FRONT,
+    }),
   logContinueSetPassword: () =>
     analytics.logEvent({ firebase: AnalyticsEvent.CONTINUE_SET_PASSWORD }),
   logContinueSetBirthday: () =>
@@ -226,6 +253,11 @@ export const logEventAnalytics = {
     analytics.logEvent({ firebase: AnalyticsEvent.DISMISS_NOTIFICATIONS }),
   logDismissShareApp: (type: ShareAppModalType) =>
     analytics.logEvent({ firebase: AnalyticsEvent.DISMISS_SHARE_APP }, { type }),
+  logEduconnectExplanationClicked: (origin: IdentityCheckMethod) =>
+    analytics.logEvent(
+      { amplitude: AmplitudeEvent.EDUCONNECT_EXPLANATION_CLICKED },
+      { fork_origin: origin }
+    ),
   logErrorSavingNewEmail: (errorCode: string) =>
     analytics.logEvent({ firebase: AnalyticsEvent.ERROR_SAVING_NEW_EMAIL }, { code: errorCode }),
   logExclusivityBlockClicked: (params: {
@@ -311,7 +343,10 @@ export const logEventAnalytics = {
     errorType: string | null
   }) => analytics.logEvent({ firebase: AnalyticsEvent.IDENTITY_CHECK_ABORT }, params),
   logIdentityCheckStep: (nextStep: DeprecatedIdentityCheckStep | IdentityCheckStep) =>
-    analytics.logEvent({ firebase: AnalyticsEvent.IDENTITY_CHECK_STEP }, { nextStep }),
+    analytics.logEvent(
+      { firebase: AnalyticsEvent.IDENTITY_CHECK_STEP, amplitude: AmplitudeEvent.STEPPER_CLICKED },
+      { nextStep, step: nextStep }
+    ),
   logIdentityCheckSuccess: (params: { method: IdentityCheckMethod }) =>
     analytics.logEvent({ firebase: AnalyticsEvent.IDENTITY_CHECK_SUCCESS }, params),
   logLocationToggle: (enabled: boolean) =>
@@ -390,6 +425,10 @@ export const logEventAnalytics = {
     analytics.logEvent({ firebase: AnalyticsEvent.OPEN_LOCATION_SETTINGS }),
   logOpenNotificationSettings: () =>
     analytics.logEvent({ firebase: AnalyticsEvent.OPEN_NOTIFICATION_SETTINGS }),
+  logPhoneNumberClicked: () =>
+    analytics.logEvent({ amplitude: AmplitudeEvent.PHONE_NUMBER_CLICKED }),
+  logPhoneValidationCodeClicked: () =>
+    analytics.logEvent({ amplitude: AmplitudeEvent.PHONE_VALIDATION_CODE_CLICKED }),
   logProfilScrolledToBottom: () =>
     analytics.logEvent({ firebase: AnalyticsEvent.PROFIL_SCROLLED_TO_BOTTOM }),
   logProfilSignUp: () => analytics.logEvent({ firebase: AnalyticsEvent.PROFIL_SIGN_UP }),
@@ -412,6 +451,38 @@ export const logEventAnalytics = {
       firebase: AnalyticsEvent.RESEND_EMAIL_SIGNUP_CONFIRMATION_EXPIRED_LINK,
     }),
   logSaveNewMail: () => analytics.logEvent({ firebase: AnalyticsEvent.SAVE_NEW_MAIL }),
+  logScreenViewSetAddress: () =>
+    analytics.logEvent({ amplitude: AmplitudeEvent.SCREEN_VIEW_SET_ADDRESS }),
+  logScreenViewSetCity: () =>
+    analytics.logEvent({ amplitude: AmplitudeEvent.SCREEN_VIEW_SET_CITY }),
+  logScreenViewComeBackLater: () =>
+    analytics.logEvent({ amplitude: AmplitudeEvent.SCREEN_VIEW_COME_BACK_LATER }),
+  logScreenViewDMSIntroduction: () =>
+    analytics.logEvent({ amplitude: AmplitudeEvent.SCREEN_VIEW_DMS_INTRODUCTION }),
+  logScreenViewExpiredOrLostId: () =>
+    analytics.logEvent({ amplitude: AmplitudeEvent.SCREEN_VIEW_EXPIRED_OR_LOST_ID }),
+  logScreenViewForkEduconnect: () =>
+    analytics.logEvent({ amplitude: AmplitudeEvent.SCREEN_VIEW_FORK_EDUCONNECT }),
+  logScreenViewForkUbble: () =>
+    analytics.logEvent({ amplitude: AmplitudeEvent.SCREEN_VIEW_FORK_UBBLE }),
+  logScreenViewIdentityCheckEnd: () =>
+    analytics.logEvent({ amplitude: AmplitudeEvent.SCREEN_VIEW_IDENTITY_CHECK_END }),
+  logScreenViewIdentityCheckHonor: () =>
+    analytics.logEvent({ amplitude: AmplitudeEvent.SCREEN_VIEW_IDENTITY_CHECK_HONOR }),
+  logScreenViewSelectIdOrigin: () =>
+    analytics.logEvent({ amplitude: AmplitudeEvent.SCREEN_VIEW_SELECT_ID_ORIGIN }),
+  logScreenViewSelectIdStatus: () =>
+    analytics.logEvent({ amplitude: AmplitudeEvent.SCREEN_VIEW_SELECT_ID_STATUS }),
+  logScreenViewSetName: () =>
+    analytics.logEvent({ amplitude: AmplitudeEvent.SCREEN_VIEW_SET_NAME }),
+  logScreenViewSetPhoneNumber: () =>
+    analytics.logEvent({ amplitude: AmplitudeEvent.SCREEN_VIEW_SET_PHONE_NUMBER }),
+  logScreenViewSetPhoneValidationCode: () =>
+    analytics.logEvent({ amplitude: AmplitudeEvent.SCREEN_VIEW_SET_PHONE_VALIDATION_CODE }),
+  logScreenViewSetSchoolType: () =>
+    analytics.logEvent({ amplitude: AmplitudeEvent.SCREEN_VIEW_SET_SCHOOL_TYPE }),
+  logScreenViewSetStatus: () =>
+    analytics.logEvent({ amplitude: AmplitudeEvent.SCREEN_VIEW_SET_STATUS }),
   logPerformSearch: (searchState: SearchState, nbHits: number) =>
     analytics.logEvent(
       { firebase: AnalyticsEvent.PERFORM_SEARCH },
@@ -439,6 +510,17 @@ export const logEventAnalytics = {
         times: numberOfTimes,
       }
     ),
+  logSelectIdStatusClicked: (type: IDStatus) =>
+    analytics.logEvent({ amplitude: AmplitudeEvent.SELECT_ID_STATUS_CLICKED }, { type }),
+  logSetAddressClicked: () => analytics.logEvent({ amplitude: AmplitudeEvent.SET_ADDRESS_CLICKED }),
+  logSetIdOriginClicked: (type: IDOrigin) =>
+    analytics.logEvent({ amplitude: AmplitudeEvent.SET_ID_ORIGIN_CLICKED }, { type }),
+  logSetNameClicked: () => analytics.logEvent({ amplitude: AmplitudeEvent.SET_NAME_CLICKED }),
+  logSetPostalCodeClicked: () =>
+    analytics.logEvent({ amplitude: AmplitudeEvent.SET_POSTAL_CODE_CLICKED }),
+  logSetSchoolTypeClicked: () =>
+    analytics.logEvent({ amplitude: AmplitudeEvent.SET_SCHOOL_TYPE_CLICKED }),
+  logSetStatusClicked: () => analytics.logEvent({ amplitude: AmplitudeEvent.SET_STATUS_CLICKED }),
   logShare: (params: {
     type: 'App' | 'Offer' | 'Venue'
     from: Referrals

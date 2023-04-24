@@ -4,7 +4,7 @@ import { navigate } from '__mocks__/@react-navigation/native'
 import { initialSubscriptionState as mockState } from 'features/identityCheck/context/reducer'
 import { SelectIDOrigin } from 'features/identityCheck/pages/identification/ubble/SelectIDOrigin'
 // eslint-disable-next-line no-restricted-imports
-import { amplitude } from 'libs/amplitude'
+import { analytics } from 'libs/analytics'
 import { fireEvent, render, waitFor } from 'tests/utils'
 
 jest.mock('features/identityCheck/context/SubscriptionContextProvider', () => ({
@@ -41,29 +41,24 @@ describe('SelectIDOrigin', () => {
     )
   })
 
-  it('should send a amplitude event when the screen is mounted', async () => {
+  it('should log screen view when the screen is mounted', async () => {
     render(<SelectIDOrigin />)
 
-    await waitFor(() =>
-      expect(amplitude.logEvent).toHaveBeenNthCalledWith(1, 'screen_view_select_id_origin')
-    )
+    await waitFor(() => expect(analytics.logScreenViewSelectIdOrigin).toHaveBeenCalledTimes(1))
   })
 
-  it('should send an amplitude event set_id_origin_clicked with french type on press french HeroButtonList', async () => {
+  it('should log analytics with french type on press french HeroButtonList', async () => {
     const { getByTestId } = render(<SelectIDOrigin />)
 
     const HeroButtonListFrench = getByTestId('J’ai une carte d’identité ou un passeport français')
     fireEvent.press(HeroButtonListFrench)
 
     await waitFor(() =>
-      // first call will be the event screen_view_select_id_origin on mount
-      expect(amplitude.logEvent).toHaveBeenNthCalledWith(2, 'set_id_origin_clicked', {
-        type: 'France',
-      })
+      expect(analytics.logSetIdOriginClicked).toHaveBeenNthCalledWith(1, 'France')
     )
   })
 
-  it('should send an amplitude event set_id_origin_clicked with foregin type on press foreign HeroButtonList', async () => {
+  it('should log analytics with foregin type on press foreign HeroButtonList', async () => {
     const { getByText } = render(<SelectIDOrigin />)
 
     const ButtonForeign = getByText(
@@ -72,10 +67,7 @@ describe('SelectIDOrigin', () => {
     fireEvent.press(ButtonForeign)
 
     await waitFor(() =>
-      // first call will be the event screen_view_select_id_origin on mount
-      expect(amplitude.logEvent).toHaveBeenNthCalledWith(2, 'set_id_origin_clicked', {
-        type: 'Foreign',
-      })
+      expect(analytics.logSetIdOriginClicked).toHaveBeenNthCalledWith(1, 'Foreign')
     )
   })
 })
