@@ -10,6 +10,7 @@ import { openDeepLinkUrl } from '../helpers/utils/deeplink'
 import { timeout } from '../helpers/utils/time'
 import VerifyEligibility from '../features/auth/VerifyEligibility'
 import IdentityCheckStepper from '../features/identityCheck/IdentityCheckStepper'
+import SetName from '../features/identityCheck/SetName'
 
 type RegistrationConfirmationEmail = Omit<Email, 'params'> & {
   params: {
@@ -126,6 +127,15 @@ describe('18YearsRegistration', () => {
       await IdentityCheckStepper.waitForIsShown()
       await IdentityCheckStepper.profileButton.click()
       await IdentityCheckStepper.waitForIsHidden()
+    })
+
+    it('should set first name and last name', async () => {
+      didFirstLaunch(ok)
+      await SetName.waitForIsShown()
+      await SetName.firstNameInput.setValue('John')
+      await SetName.lastNameInput.setValue('Doe')
+      await SetName.continueButton.click()
+      await SetName.waitForIsHidden()
     })
   })
 })
