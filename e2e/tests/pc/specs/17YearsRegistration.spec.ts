@@ -8,6 +8,7 @@ import { getRandomInt } from '../helpers/utils/number'
 import GmailClient, { Email } from '../helpers/GmailClient'
 import { openDeepLinkUrl } from '../helpers/utils/deeplink'
 import { timeout } from '../helpers/utils/time'
+import VerifyEligibility from '../features/auth/VerifyEligibility'
 
 type RegistrationConfirmationEmail = Omit<Email, 'params'> & {
   params: {
@@ -110,6 +111,13 @@ describe('18YearsRegistration', () => {
       const url = new URL(registrationConfirmationEmail.params.CONFIRMATION_LINK)
       await openDeepLinkUrl(url.href)
       await SignupScreens.signupConfirmationEmailSentScreen.waitForIsHidden()
+    })
+
+    it('should click on start verification', async () => {
+      didFirstLaunch(ok)
+      await VerifyEligibility.waitForIsShown()
+      await VerifyEligibility.start.click()
+      await VerifyEligibility.waitForIsHidden()
     })
   })
 })
