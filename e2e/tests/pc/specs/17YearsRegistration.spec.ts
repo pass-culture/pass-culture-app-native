@@ -13,6 +13,7 @@ import IdentityCheckStepper from '../features/identityCheck/IdentityCheckStepper
 import SetName from '../features/identityCheck/SetName'
 import SetCity from '../features/identityCheck/SetCity'
 import SetAddress from '../features/identityCheck/SetAddress'
+import SetStatus from '../features/identityCheck/SetStatus'
 
 type RegistrationConfirmationEmail = Omit<Email, 'params'> & {
   params: {
@@ -156,6 +157,14 @@ describe('18YearsRegistration', () => {
       await SetAddress.addressInput.setValue('25 rue de la Boétie')
       await SetAddress.submitButton.click()
       await SetAddress.waitForIsHidden()
+    })
+
+    it('should set status', async () => {
+      didFirstLaunch(ok)
+      await SetStatus.waitForIsShown()
+      await SetStatus.statusOption.click()
+      await SetStatus.submitButton.click()
+      await SetStatus.waitForIsHidden()
     })
   })
 })
