@@ -1,8 +1,8 @@
-## e2e
+# e2e
 
 We use webdriver.io as automation framework to test our Web and mobile application.
 
-### Appium
+## Appium
 
 To run app and browser tests on Mobile, you need to run an appium server.
 
@@ -50,12 +50,16 @@ npm install @appium/doctor --location=global
 appium-doctor
 ```
 
-### App center
+---
+
+## App center
 
 You can create an user API token in Account => Account Settings => User API tokens
 You can name it APPCENTER_USER_API_TOKEN
 
-### Configuration
+---
+
+## Configuration
 
 We use environment variable to customize the configuration:
 
@@ -102,6 +106,8 @@ iOS simulator use the same interface as your host, it is fine to use `127.0.0.1`
 
 You can view all available options in [`e2e/config/environment/env.ts`](../../e2e/config/environment/env.ts).
 
+---
+
 ## Peer dependencies
 
 On your desktop, you must install browser's driver that match your version in order to use test automation, respectively:
@@ -123,7 +129,9 @@ Only one of the two is required.
 
 **Each of them must be in your `PATH` system**
 
-### Services dependencies
+---
+
+## Services dependencies
 
 We use an isolated backend service that doesn't depend on any environment, for this reason you must run 3 services:
 
@@ -203,11 +211,13 @@ docker-compose -f e2e/docker-compose-e2e.yml stop && \
 docker-compose -f e2e/docker-compose-e2e.yml rm -fv
 ```
 
-### Testing on Android
+---
+
+## Testing on Android
 
 Two options, either the application is already installed, or you have to provide an apk
 
-#### Provide an apk
+### Provide an apk
 
 You can use an apk, either from appcenter, either one created by building locally.
 
@@ -243,7 +253,9 @@ yarn e2e:android.app
 
 It will use capability `appium:noReset` to `true`, read more here: https://github.com/appium/appium-uiautomator2-driver#general
 
-### Testing on iOS
+---
+
+## Testing on iOS
 
 - It is not possible to use the `ipa` from appcenter.
 - You must use a iOS simulator.
@@ -274,7 +286,9 @@ If the application is already installed, you can inspect it (with Appium Inspect
 APPIUM_APP="app.passculture.staging" yarn e2e:ios.app
 ```
 
-### Writing tests
+---
+
+## Writing tests
 
 We have two types of tests: `app` and `browser`
 
@@ -308,7 +322,9 @@ describe('TabBar', () => {
 })
 ```
 
-### GUI Tools
+---
+
+## GUI Tools
 
 You can try those:
 
@@ -316,7 +332,9 @@ You can try those:
 - Server with GUI in replacement: https://github.com/appium/appium-desktop/releases
 - Alternative GUI inspector for mobile apps: https://digital.ai/products/continuous-testing/appium-studio/
 
-#### Convention
+---
+
+## Convention
 
 We usually write cross platforms tests (for both `app` and `browser`),
 but we also support `app` or `browser` specific tests.
@@ -327,7 +345,9 @@ Use the following file name convention:
 - `app`: `*.app.spec.ts`
 - `browser`: `*.browser.spec.ts`
 
-#### Utils
+---
+
+## Utils
 
 This is the documentation of selector: https://webdriver.io/docs/selectors/#accessibility-id
 
@@ -410,7 +430,9 @@ All UI components imported from react-native, will have a `data-testid` attribut
 
 If you have a web only component, you will have to manually set the `data-testid` to it, or use the `accessibilityAndTestId` utils.
 
-### Troubleshooting
+---
+
+## Troubleshooting
 
 **Safari**
 
