@@ -60,8 +60,6 @@ export interface Environment {
   SITE_KEY: string
   SUPPORT_EMAIL_ADDRESS: string
   FRAUD_EMAIL_ADDRESS: string
-  TMX_FPSERVER: string
-  TMX_ORGID: string
   URL_PREFIX: string
   WEBAPP_V2_DOMAIN: string
   // Below envs are injected by webpack and are defined only on the Webapp

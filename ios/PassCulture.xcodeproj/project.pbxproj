@@ -15,10 +15,6 @@
 		3F5E592198CE4F0F8395279F /* Montserrat-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CB19317735324C5D90C97D11 /* Montserrat-SemiBold.ttf */; };
 		6D144DC9254C2B760060E0BD /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6D144DC8254C2B760060E0BD /* GoogleService-Info.plist */; };
 		7323393B84C441F488A4C363 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C7D886722584EDD87A2BB44 /* main.m */; };
-		784AD86F267B9F1300A0EF45 /* TMXProfiling.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 784AD86B267B9F0B00A0EF45 /* TMXProfiling.xcframework */; };
-		784AD870267B9F1300A0EF45 /* TMXProfiling.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 784AD86B267B9F0B00A0EF45 /* TMXProfiling.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		784AD871267B9F1600A0EF45 /* TMXProfilingConnections.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 784AD86D267B9F0F00A0EF45 /* TMXProfilingConnections.xcframework */; };
-		784AD872267B9F1600A0EF45 /* TMXProfilingConnections.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 784AD86D267B9F0F00A0EF45 /* TMXProfilingConnections.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		94D55C9476A7485C9076C139 /* Montserrat-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F423851ED1194E90940E001F /* Montserrat-Regular.ttf */; };
 		972CA2E0050DB219476B125B /* libPods-PassCulture.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 991BBD7386FB9CAB11FACBAE /* libPods-PassCulture.a */; };
 		98F5A3B1CBFA4421965B8CA8 /* Montserrat-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 72D36AF6AC0347509FF395EE /* Montserrat-Bold.ttf */; };
@@ -28,21 +24,6 @@
 		DC3FC3142D9D4BD68F82D428 /* react-native-config.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = A5AEB52C0E7D445DA62F0A79 /* react-native-config.xcconfig */; };
 		F4E8C120AED243C7AB108C37 /* Montserrat-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 90F0B6E8B6EC45D6AA53F147 /* Montserrat-Medium.ttf */; };
 /* End PBXBuildFile section */
-
-/* Begin PBXCopyFilesBuildPhase section */
-		78212E04267B904800A8913E /* Embed Frameworks */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-				784AD872267B9F1600A0EF45 /* TMXProfilingConnections.xcframework in Embed Frameworks */,
-				784AD870267B9F1300A0EF45 /* TMXProfiling.xcframework in Embed Frameworks */,
-			);
-			name = "Embed Frameworks";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		030D8707D3F8414C91A9D78A /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = PassCulture/AppDelegate.h; sourceTree = "<group>"; };
@@ -61,8 +42,6 @@
 		6D144DC8254C2B760060E0BD /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		72D36AF6AC0347509FF395EE /* Montserrat-Bold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Montserrat-Bold.ttf"; path = "../assets/fonts/Montserrat/Montserrat-Bold.ttf"; sourceTree = "<group>"; };
 		7365A19A886E4D88A9D9D4C2 /* PassCulture-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "PassCulture-Bridging-Header.h"; sourceTree = "<group>"; };
-		784AD86B267B9F0B00A0EF45 /* TMXProfiling.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = TMXProfiling.xcframework; sourceTree = SOURCE_ROOT; };
-		784AD86D267B9F0F00A0EF45 /* TMXProfilingConnections.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = TMXProfilingConnections.xcframework; sourceTree = SOURCE_ROOT; };
 		866FC5E348B2460296FB5F7B /* main.jsbundle */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = main.jsbundle; sourceTree = "<group>"; };
 		90F0B6E8B6EC45D6AA53F147 /* Montserrat-Medium.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Montserrat-Medium.ttf"; path = "../assets/fonts/Montserrat/Montserrat-Medium.ttf"; sourceTree = "<group>"; };
 		92C2C64507192C83595EF356 /* Pods-PassCulture.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PassCulture.release.xcconfig"; path = "Target Support Files/Pods-PassCulture/Pods-PassCulture.release.xcconfig"; sourceTree = "<group>"; };
@@ -82,8 +61,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				784AD871267B9F1600A0EF45 /* TMXProfilingConnections.xcframework in Frameworks */,
-				784AD86F267B9F1300A0EF45 /* TMXProfiling.xcframework in Frameworks */,
 				972CA2E0050DB219476B125B /* libPods-PassCulture.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -152,8 +129,6 @@
 		77E58495325A4481BF007316 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				784AD86B267B9F0B00A0EF45 /* TMXProfiling.xcframework */,
-				784AD86D267B9F0F00A0EF45 /* TMXProfilingConnections.xcframework */,
 				C3EB4C7EF21447BFA7F60E12 /* JavaScriptCore.framework */,
 				22B7F87517A74CA28F4E566F /* JavaScriptCore.framework */,
 				991BBD7386FB9CAB11FACBAE /* libPods-PassCulture.a */,
@@ -191,7 +166,6 @@
 				FF9265DAA24E49F5A7E5EDBC /* Frameworks */,
 				E9A16669FD424A8AA0F84376 /* Resources */,
 				9603618410A54CC49C747AE9 /* Bundle React Native code and images */,
-				78212E04267B904800A8913E /* Embed Frameworks */,
 				260533F25B7E4D4284853996 /* Upload Debug Symbols to Sentry */,
 				62B05EC9D758E294D517745E /* [CP] Embed Pods Frameworks */,
 				E36A64123A27747DC3C3057F /* [CP] Copy Pods Resources */,
