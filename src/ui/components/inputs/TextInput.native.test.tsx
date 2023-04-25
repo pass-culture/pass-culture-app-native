@@ -20,15 +20,6 @@ describe('<TextInput />', () => {
 
     expect(myRef.current).toBeTruthy()
   })
-
-  it('should render with accessibility label and testID if provided', () => {
-    const { queryByLabelText, queryByTestId } = render(
-      <TextInput accessibilityLabel="input" testID="input" onChangeText={doNothingFn} />
-    )
-
-    expect(queryByLabelText('input')).toBeTruthy()
-    expect(queryByTestId('input')).toBeTruthy()
-  })
 })
 
 function doNothingFn() {

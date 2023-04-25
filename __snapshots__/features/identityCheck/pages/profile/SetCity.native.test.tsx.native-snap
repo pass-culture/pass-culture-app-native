@@ -400,7 +400,7 @@ exports[`<SetCity/> should render correctly 1`] = `
                     Object {},
                   ]
                 }
-                testID="searchInput"
+                testID="Entrée pour la ville"
                 textContentType="postalCode"
                 value=""
               />

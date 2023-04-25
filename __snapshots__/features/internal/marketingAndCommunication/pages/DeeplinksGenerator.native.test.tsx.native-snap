@@ -1469,6 +1469,7 @@ Array [
                         },
                       ]
                     }
+                    testID="Champ de texte"
                   />
                 </View>
               </View>
@@ -1712,6 +1713,7 @@ Array [
                         },
                       ]
                     }
+                    testID="Champ de texte"
                   />
                 </View>
               </View>
@@ -1829,6 +1831,7 @@ Array [
                         },
                       ]
                     }
+                    testID="Champ de texte"
                   />
                 </View>
               </View>
@@ -1946,6 +1949,7 @@ Array [
                         },
                       ]
                     }
+                    testID="Champ de texte"
                   />
                 </View>
               </View>
@@ -2063,6 +2067,7 @@ Array [
                         },
                       ]
                     }
+                    testID="Champ de texte"
                   />
                 </View>
               </View>
@@ -2306,6 +2311,7 @@ Array [
                         },
                       ]
                     }
+                    testID="Champ de texte"
                   />
                 </View>
               </View>

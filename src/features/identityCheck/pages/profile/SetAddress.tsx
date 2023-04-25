@@ -125,6 +125,7 @@ export const SetAddress = () => {
             accessibilityDescribedBy={adressInputErrorId}
             onPressRightIcon={resetSearch}
             returnKeyType="next"
+            testID="Entrée pour l’adresse"
           />
           <InputError
             visible={hasError}

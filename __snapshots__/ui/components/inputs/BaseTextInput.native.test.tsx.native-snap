@@ -24,6 +24,7 @@ exports[`<BaseTextInput /> should render correctly 1`] = `
       },
     ]
   }
+  testID="Champ de texte"
   value="value"
 />
 `;

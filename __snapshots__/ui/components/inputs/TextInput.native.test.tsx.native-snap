@@ -67,6 +67,7 @@ exports[`<TextInput /> should render correctly when NOT focused 1`] = `
           },
         ]
       }
+      testID="Champ de texte"
     />
   </View>
 </View>
