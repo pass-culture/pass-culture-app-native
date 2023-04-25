@@ -2,7 +2,7 @@ import { SearchGroupNameEnumv2 } from 'api/gen'
 import { initialSearchState } from 'features/search/context/reducer'
 import { DATE_FILTER_OPTIONS, LocationType } from 'features/search/enums'
 import { LocationFilter } from 'features/search/types'
-import { buildOfferSearchParameters } from 'libs/algolia/fetchAlgolia/buildAlgoliaParameters/buildOfferSearchParameters.ts'
+import { buildOfferSearchParameters } from 'libs/algolia/fetchAlgolia/buildAlgoliaParameters/buildOfferSearchParameters'
 
 describe('buildOfferSearchParameters', () => {
   const userLocation = {
