@@ -3,7 +3,7 @@ import React from 'react'
 
 import { useRoute } from '__mocks__/@react-navigation/native'
 import { offerResponseSnap } from 'features/offer/fixtures/offerResponse'
-import * as InstalledAppsCheck from 'features/offer/helpers/checkInstalledApps/checkInstalledApps'
+import * as GetInstalledAppsAPI from 'features/offer/helpers/getInstalledApps/getInstalledApps'
 import { Offer } from 'features/offer/pages/Offer/Offer'
 import { mockedAlgoliaResponse } from 'libs/algolia/__mocks__/mockedAlgoliaResponse'
 import { env } from 'libs/environment/__mocks__/envFixtures'
@@ -26,10 +26,9 @@ server.use(
   )
 )
 
-const mockCheckInstalledApps = jest.spyOn(InstalledAppsCheck, 'checkInstalledApps') as jest.Mock
-mockCheckInstalledApps.mockResolvedValue({
-  [Network.snapchat]: true,
-})
+// Mock to display one messaging app button
+const mockGetInstalledApps = jest.spyOn(GetInstalledAppsAPI, 'getInstalledApps') as jest.Mock
+mockGetInstalledApps.mockResolvedValue([Network.snapchat])
 
 // Performance measuring is run 10 times so we need to increase the timeout
 const TEST_TIMEOUT_IN_MS = 20000

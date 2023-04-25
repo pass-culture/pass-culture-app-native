@@ -1,6 +1,6 @@
 import mockdate from 'mockdate'
 import React from 'react'
-import { Share as NativeShare } from 'react-native'
+import { Linking, Share as NativeShare } from 'react-native'
 import Share, { Social } from 'react-native-share'
 import { UseQueryResult } from 'react-query'
 
@@ -10,8 +10,7 @@ import { SubcategoryIdEnum, UserReportedOffersResponse } from 'api/gen'
 import { mockDigitalOffer, mockOffer } from 'features/bookOffer/fixtures/offer'
 import * as ReportedOffersAPI from 'features/offer/api/useReportedOffers'
 import { OfferBody } from 'features/offer/components/OfferBody/OfferBody'
-import { MAX_NB_OF_SOCIALS_TO_SHOW } from 'features/offer/components/shareMessagingOffer/InstalledMessagingApps'
-import * as InstalledAppsCheck from 'features/offer/helpers/checkInstalledApps/checkInstalledApps'
+import * as GetInstalledAppsAPI from 'features/offer/helpers/getInstalledApps/getInstalledApps'
 import { getOfferUrl } from 'features/share/helpers/getOfferUrl'
 import { beneficiaryUser, nonBeneficiaryUser } from 'fixtures/user'
 import {
@@ -19,6 +18,7 @@ import {
   moreHitsForSimilarOffersPlaylist,
 } from 'libs/algolia/__mocks__/mockedAlgoliaResponse'
 import * as useFeatureFlag from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
+import { eventMonitoring } from 'libs/monitoring'
 import { NetInfoWrapper } from 'libs/network/NetInfoWrapper'
 import { placeholderData } from 'libs/subcategories/placeholderData'
 import { Offer } from 'shared/offer/types'
@@ -73,7 +73,8 @@ jest.mock('libs/subcategories/useSubcategories', () => ({
   }),
 }))
 
-const mockCheckInstalledApps = jest.spyOn(InstalledAppsCheck, 'checkInstalledApps') as jest.Mock
+const getInstalledAppsMock = jest.spyOn(GetInstalledAppsAPI, 'getInstalledApps')
+const canOpenURLSpy = jest.spyOn(Linking, 'canOpenURL')
 const mockShareSingle = jest.spyOn(Share, 'shareSingle')
 const mockNativeShare = jest.spyOn(NativeShare, 'share')
 
@@ -193,45 +194,39 @@ describe('<OfferBody />', () => {
 
   describe('share on social media', () => {
     it('should hide social medium when not installed', async () => {
-      mockCheckInstalledApps.mockResolvedValueOnce({
-        [Network.snapchat]: false,
-      })
+      canOpenURLSpy.mockResolvedValueOnce(false)
       renderOfferBody()
 
       await waitFor(() => {
-        expect(screen.queryByText(`Envoyer sur ${[Network.snapchat]}`)).toBeFalsy()
+        expect(screen.queryByText(`Envoyer sur ${[Network.instagram]}`)).toBeNull()
       })
     })
 
     it('should display social medium when installed', async () => {
-      mockCheckInstalledApps.mockResolvedValueOnce({
-        [Network.snapchat]: true,
-      })
+      canOpenURLSpy.mockResolvedValueOnce(true)
       renderOfferBody()
 
       await waitFor(() => {
-        expect(screen.queryByText(`Envoyer sur ${[Network.snapchat]}`)).toBeTruthy()
+        expect(screen.queryByText(`Envoyer sur ${[Network.instagram]}`)).toBeTruthy()
       })
     })
 
-    it(`should not display more than ${MAX_NB_OF_SOCIALS_TO_SHOW} social media apps`, async () => {
-      mockCheckInstalledApps.mockResolvedValueOnce({
-        [Network.instagram]: true,
-        [Network.snapchat]: true,
-        [Network.whatsapp]: true,
-        [Network.telegram]: true,
-      })
+    it(`should not display more than 3 social media apps`, async () => {
+      canOpenURLSpy
+        .mockResolvedValueOnce(true)
+        .mockResolvedValueOnce(true)
+        .mockResolvedValueOnce(true)
+        .mockResolvedValueOnce(true)
+
       renderOfferBody()
 
       await waitFor(() => {
-        expect(screen.queryAllByText(/Envoyer sur/)).toHaveLength(MAX_NB_OF_SOCIALS_TO_SHOW)
+        expect(screen.queryAllByText(/Envoyer sur/)).toHaveLength(3)
       })
     })
 
     it.each([true, false])(`should always display "Plus d’options" button`, async (hasSocial) => {
-      mockCheckInstalledApps.mockResolvedValueOnce({
-        [Network.snapchat]: hasSocial,
-      })
+      canOpenURLSpy.mockResolvedValueOnce(hasSocial)
       renderOfferBody()
 
       await waitFor(() => {
@@ -240,27 +235,28 @@ describe('<OfferBody />', () => {
     })
 
     it('should open social medium on share button press', async () => {
-      mockCheckInstalledApps.mockResolvedValueOnce({
-        [Network.snapchat]: true,
-      })
+      canOpenURLSpy.mockResolvedValueOnce(true)
       renderOfferBody()
 
       await act(async () => {
-        const socialMediumButton = await screen.findByText(`Envoyer sur ${[Network.snapchat]}`)
+        const socialMediumButton = await screen.findByText(`Envoyer sur ${[Network.instagram]}`)
         fireEvent.press(socialMediumButton)
       })
 
       expect(mockShareSingle).toHaveBeenCalledWith({
-        social: Social.Snapchat,
-        message: `Retrouve "${mockOffer.name}" chez "${mockOffer.venue.name}" sur le pass Culture`,
-        url: getOfferUrl(offerId),
+        social: Social.Instagram,
+        message: encodeURI(
+          `Retrouve "${mockOffer.name}" chez "${
+            mockOffer.venue.name
+          }" sur le pass Culture\n${getOfferUrl(offerId)}`
+        ),
+        type: 'text',
+        url: undefined,
       })
     })
 
     it('should open social medium on share button press with offer url even when web url is defined', async () => {
-      mockCheckInstalledApps.mockResolvedValueOnce({
-        [Network.whatsapp]: true,
-      })
+      canOpenURLSpy.mockResolvedValueOnce(true).mockResolvedValueOnce(true) // First mock for Instagram, second for Whatsapp
       renderOfferBody()
 
       await act(async () => {
@@ -276,9 +272,6 @@ describe('<OfferBody />', () => {
     })
 
     it('should open native share modal on "Plus d’options" press', async () => {
-      mockCheckInstalledApps.mockResolvedValueOnce({
-        [Network.snapchat]: true,
-      })
       renderOfferBody()
 
       await act(async () => {
@@ -287,6 +280,30 @@ describe('<OfferBody />', () => {
       })
 
       expect(mockNativeShare).toHaveBeenCalledTimes(1)
+    })
+
+    it('should log to sentry when an error occurs during installed apps check', async () => {
+      const error = new Error('error message')
+      getInstalledAppsMock.mockRejectedValueOnce(error)
+      renderOfferBody()
+
+      await screen.findByText('Plus d’options')
+
+      expect(eventMonitoring.captureException).toHaveBeenCalledWith(`Installed apps: ${error}`)
+    })
+
+    it('should log to sentry when an error occurs when clicking on messaging app', async () => {
+      const error = new Error('error message')
+      mockShareSingle.mockRejectedValueOnce(error)
+      canOpenURLSpy.mockResolvedValueOnce(true)
+      renderOfferBody()
+
+      await act(async () => {
+        const socialMediumButton = await screen.findByText(`Envoyer sur ${[Network.instagram]}`)
+        fireEvent.press(socialMediumButton)
+      })
+
+      expect(eventMonitoring.captureException).toHaveBeenCalledWith(`MessagingApp click: ${error}`)
     })
   })
 
