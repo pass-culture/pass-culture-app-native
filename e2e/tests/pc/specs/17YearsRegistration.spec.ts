@@ -11,6 +11,7 @@ import { timeout } from '../helpers/utils/time'
 import VerifyEligibility from '../features/auth/VerifyEligibility'
 import IdentityCheckStepper from '../features/identityCheck/IdentityCheckStepper'
 import SetName from '../features/identityCheck/SetName'
+import SetCity from '../features/identityCheck/SetCity'
 
 type RegistrationConfirmationEmail = Omit<Email, 'params'> & {
   params: {
@@ -136,6 +137,16 @@ describe('18YearsRegistration', () => {
       await SetName.lastNameInput.setValue('Doe')
       await SetName.continueButton.click()
       await SetName.waitForIsHidden()
+    })
+
+    it('should set postal code and select city', async () => {
+      didFirstLaunch(ok)
+      await SetCity.waitForIsShown()
+      await SetCity.postalCodeInput.setValue('75017')
+      await SetCity.cityOption.waitForDisplayed()
+      await SetCity.cityOption.click()
+      await SetCity.submitButton.click()
+      await SetCity.waitForIsHidden()
     })
   })
 })
