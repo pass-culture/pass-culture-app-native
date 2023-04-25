@@ -15,7 +15,7 @@ type FetchOfferParameters = {
   storeQueryID?: (queryID?: string) => void
   excludedObjectIds?: string[]
   indexSearch?: string
-  imageUrlPrefix?: string
+  urlPrefix?: string
 }
 
 export const fetchOffers = async ({
@@ -24,7 +24,7 @@ export const fetchOffers = async ({
   isUserUnderage,
   storeQueryID,
   indexSearch = env.ALGOLIA_OFFERS_INDEX_NAME,
-  imageUrlPrefix,
+  urlPrefix,
 }: FetchOfferParameters): Promise<OffersWithPage> => {
   const index = client.initIndex(indexSearch)
 
@@ -42,7 +42,7 @@ export const fetchOffers = async ({
 
     if (storeQueryID) storeQueryID(response.queryID)
 
-    const adaptedOffers: Offer[] = adaptAlgoliaHit(response.hits, imageUrlPrefix)
+    const adaptedOffers: Offer[] = adaptAlgoliaHit(response.hits, urlPrefix)
     const adaptedOffersWithPage: OffersWithPage = adaptOffersWithPage({
       offers: adaptedOffers,
       nbOffers: adaptedOffers.length,
