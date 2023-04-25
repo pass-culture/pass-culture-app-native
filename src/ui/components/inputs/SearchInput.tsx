@@ -89,7 +89,7 @@ const WithRefSearchInput: React.ForwardRefRenderFunction<RNTextInput, SearchInpu
           accessibilityDescribedBy={accessibilityDescribedBy}
           accessibilityRequired={isRequiredField}
           enablesReturnKeyAutomatically
-          testID="searchInput"
+          testID={nativeProps.testID || 'searchInput'}
         />
         {children}
         {value.length > 0 && (
