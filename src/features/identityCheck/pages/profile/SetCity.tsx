@@ -113,6 +113,7 @@ export const SetCity = () => {
             onPressRightIcon={resetSearch}
             keyboardType="number-pad"
             accessibilityDescribedBy={postalCodeInputErrorId}
+            testID="Entrée pour la ville"
           />
           <InputError
             messageId={errorMessage}
