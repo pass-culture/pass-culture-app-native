@@ -5,7 +5,7 @@ import { useRoute } from '__mocks__/@react-navigation/native'
 import { offerResponseSnap } from 'features/offer/fixtures/offerResponse'
 import * as InstalledAppsCheck from 'features/offer/helpers/checkInstalledApps/checkInstalledApps'
 import { Offer } from 'features/offer/pages/Offer/Offer'
-import { mockedAlgoliaHitsResponse } from 'libs/algolia/__mocks__/mockedAlgoliaHitResponse'
+import { mockedAlgoliaResponse } from 'libs/algolia/__mocks__/mockedAlgoliaResponse'
 import { env } from 'libs/environment/__mocks__/envFixtures'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { server } from 'tests/server'
@@ -22,7 +22,7 @@ useRoute.mockReturnValue({
 server.use(
   rest.get(
     `${env.RECOMMENDATION_ENDPOINT}/similar_offers/${offerResponseSnap.id}`,
-    (_req, res, ctx) => res(ctx.status(200), ctx.json(mockedAlgoliaHitsResponse.hits))
+    (_req, res, ctx) => res(ctx.status(200), ctx.json(mockedAlgoliaResponse.hits))
   )
 )
 

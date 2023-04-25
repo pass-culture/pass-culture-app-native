@@ -4,14 +4,14 @@ import { push } from '__mocks__/@react-navigation/native'
 import { CategoryIdEnum, HomepageLabelNameEnum } from 'api/gen'
 import { Referrals } from 'features/navigation/RootNavigator/types'
 import { PlaylistType } from 'features/offer/enums'
-import { offersWithPageFixture } from 'libs/algolia/fetchAlgolia/fetchOffers/fixtures/offersWithPageFixture'
+import { mockedAlgoliaResponse } from 'libs/algolia/__mocks__/mockedAlgoliaResponse'
 import { analytics } from 'libs/analytics'
 import { queryCache, reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { fireEvent, render } from 'tests/utils'
 
 import { OfferTile } from './OfferTile'
 
-const offer = offersWithPageFixture.offers[0].offer
+const offer = mockedAlgoliaResponse.hits[0].offer
 const offerId = 116656
 
 const props = {

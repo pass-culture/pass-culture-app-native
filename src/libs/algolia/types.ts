@@ -2,7 +2,7 @@ import { SearchOptions } from '@algolia/client-search'
 
 import { VenueResponse } from 'api/gen'
 import { SearchState } from 'features/search/types'
-import { AlgoliaOfferHit } from 'libs/algolia'
+import { AlgoliaHit } from 'libs/algolia'
 import { Geoloc as AlgoliaGeoloc } from 'libs/algolia/algolia.d'
 import { transformOfferHit } from 'libs/algolia/fetchAlgolia/transformOfferHit'
 import { Position } from 'libs/geolocation'
@@ -22,7 +22,7 @@ export interface SearchParametersQuery extends SearchState {
 export const transformHit = transformOfferHit
 
 // An incomplete search hit may not have a subcategoryId (for retrocompatibility)
-export type IncompleteSearchHit = AlgoliaOfferHit
+export type IncompleteSearchHit = AlgoliaHit
 
 export type Geoloc = AlgoliaGeoloc
 
