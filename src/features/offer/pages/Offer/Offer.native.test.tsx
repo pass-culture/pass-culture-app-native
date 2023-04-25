@@ -8,7 +8,7 @@ import { PlaylistType } from 'features/offer/enums'
 import { offerResponseSnap } from 'features/offer/fixtures/offerResponse'
 import { offerId, renderOfferPage } from 'features/offer/helpers/renderOfferPageTestUtil'
 import { beneficiaryUser } from 'fixtures/user'
-import { offersWithPageFixture } from 'libs/algolia/fetchAlgolia/fetchOffers/fixtures/offersWithPageFixture'
+import { mockedAlgoliaResponse } from 'libs/algolia/__mocks__/mockedAlgoliaResponse'
 import { env } from 'libs/environment'
 import { analytics } from 'libs/firebase/analytics'
 import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
@@ -111,8 +111,8 @@ describe('<Offer />', () => {
     })
 
     it('should log two logPlaylistVerticalScroll events when scrolling vertical and reaching the bottom when there are 2 playlists', async () => {
-      useSimilarOffersSpy.mockReturnValueOnce(offersWithPageFixture.offers)
-      useSimilarOffersSpy.mockReturnValueOnce(offersWithPageFixture.offers)
+      useSimilarOffersSpy.mockReturnValueOnce(mockedAlgoliaResponse.hits)
+      useSimilarOffersSpy.mockReturnValueOnce(mockedAlgoliaResponse.hits)
 
       const { getByTestId } = renderOfferPage()
       const scrollView = getByTestId('offer-container')
@@ -161,7 +161,7 @@ describe('<Offer />', () => {
 
     describe('When there is only same category similar offers playlist', () => {
       beforeAll(() => {
-        useSimilarOffersSpy.mockReturnValueOnce(offersWithPageFixture.offers)
+        useSimilarOffersSpy.mockReturnValueOnce(mockedAlgoliaResponse.hits)
         useSimilarOffersSpy.mockReturnValueOnce([])
       })
 
@@ -201,7 +201,7 @@ describe('<Offer />', () => {
     describe('When there is only other categories similar offers playlist', () => {
       beforeAll(() => {
         useSimilarOffersSpy.mockReturnValueOnce([])
-        useSimilarOffersSpy.mockReturnValueOnce(offersWithPageFixture.offers)
+        useSimilarOffersSpy.mockReturnValueOnce(mockedAlgoliaResponse.hits)
       })
 
       it('should log logPlaylistVerticalScroll event with other categories similar offers playlist param when scrolling vertical and reaching the bottom', async () => {
@@ -238,8 +238,8 @@ describe('<Offer />', () => {
     })
 
     it('should not log logPlaylistVerticalScroll event when scrolling vertical and not reaching the bottom', async () => {
-      useSimilarOffersSpy.mockReturnValueOnce(offersWithPageFixture.offers)
-      useSimilarOffersSpy.mockReturnValueOnce(offersWithPageFixture.offers)
+      useSimilarOffersSpy.mockReturnValueOnce(mockedAlgoliaResponse.hits)
+      useSimilarOffersSpy.mockReturnValueOnce(mockedAlgoliaResponse.hits)
       renderOfferPage()
       const scrollView = screen.getByTestId('offer-container')
 
@@ -262,8 +262,8 @@ describe('<Offer />', () => {
     })
 
     it('should log logPlaylistVerticalScroll with the event param fromOfferId & offerId', async () => {
-      useSimilarOffersSpy.mockReturnValueOnce(offersWithPageFixture.offers)
-      useSimilarOffersSpy.mockReturnValueOnce(offersWithPageFixture.offers)
+      useSimilarOffersSpy.mockReturnValueOnce(mockedAlgoliaResponse.hits)
+      useSimilarOffersSpy.mockReturnValueOnce(mockedAlgoliaResponse.hits)
       const fromOfferId = 1
       const offerId = 116656
       renderOfferPage(fromOfferId)
@@ -292,8 +292,8 @@ describe('<Offer />', () => {
         mockShouldUseAlgoliaRecommend = true
       })
       it('should log two logPlaylistVerticalScroll events when scrolling vertical and reaching the bottom when there are 2 playlists when A/B Testing activated', async () => {
-        useSimilarOffersSpy.mockReturnValueOnce(offersWithPageFixture.offers)
-        useSimilarOffersSpy.mockReturnValueOnce(offersWithPageFixture.offers)
+        useSimilarOffersSpy.mockReturnValueOnce(mockedAlgoliaResponse.hits)
+        useSimilarOffersSpy.mockReturnValueOnce(mockedAlgoliaResponse.hits)
         const { getByTestId } = renderOfferPage()
         const scrollView = getByTestId('offer-container')
 
