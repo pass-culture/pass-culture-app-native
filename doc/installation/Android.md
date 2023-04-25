@@ -6,7 +6,7 @@ First, open the project `android` in Android Studio. Then open the Android Virtu
 
 ### ✍️ Code signing
 
-Download the appropriate keystore file from 1password, for example `testing.keystore` by searching keystore, and place it inside the `/android/keystores` directory. If you do not find the `testing.keystore`, then you do not have access to the right vault.
+Download the appropriate keystore file from 1password, for example `testing.keystore` by searching keystore, and place it inside the `/android/keystores` directory. If you do not find `testing.keystore`, contact an admin.
 
 Then create a `keystores/testing.keystore.properties` file in `/android/keystores` directory with this configuration (required in `build.gradle`):
 

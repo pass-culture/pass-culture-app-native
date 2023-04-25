@@ -50,9 +50,9 @@ For iOS, you will need to:
    ```
   - then we will use node v16 and put it by default:
    ```
-   nvm install v16.13.2
-   nvm use v16.13.2
-   nvm alias default v16.13.2
+   nvm install v16
+   nvm use v16
+   nvm alias default v16
    ```
 
 - install Xcode v14.2 [here][2] and its command line tools
