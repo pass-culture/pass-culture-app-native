@@ -66,8 +66,6 @@ export const env: Environment = {
   SITE_KEY: 'SITE_KEY',
   SUPPORT_EMAIL_ADDRESS: 'support@test.passculture.app',
   FRAUD_EMAIL_ADDRESS: 'service.fraude@test.passculture.app',
-  TMX_FPSERVER: 'test.pc',
-  TMX_ORGID: 'xyzt',
   URL_PREFIX: 'passculture',
   WEBAPP_V2_DOMAIN: 'webapp-v2.example.com',
   COMMIT_HASH: '13371337',
