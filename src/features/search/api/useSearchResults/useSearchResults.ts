@@ -1,16 +1,18 @@
 import { SearchResponse } from '@algolia/client-search'
-import { useRef } from 'react'
+import flatten from 'lodash/flatten'
+import { useMemo, useRef } from 'react'
 import { useInfiniteQuery } from 'react-query'
 
 import { useIsUserUnderage } from 'features/profile/helpers/useIsUserUnderage'
 import { useSearch } from 'features/search/context/SearchWrapper'
 import { SearchState } from 'features/search/types'
 import { useSearchAnalyticsState } from 'libs/algolia/analytics/SearchAnalyticsWrapper'
-import { fetchOffers } from 'libs/algolia/fetchAlgolia/fetchOffers/fetchOffers'
+import { fetchOffers } from 'libs/algolia/fetchAlgolia/fetchOffers'
+import { useTransformOfferHits } from 'libs/algolia/fetchAlgolia/transformOfferHit'
 import { analytics } from 'libs/analytics'
 import { useGeolocation } from 'libs/geolocation'
 import { QueryKeys } from 'libs/queryKeys'
-import { Offer, OffersWithPage } from 'shared/offer/types'
+import { Offer } from 'shared/offer/types'
 
 export type Response = Pick<
   SearchResponse<Offer>,
@@ -20,10 +22,11 @@ export type Response = Pick<
 export const useSearchInfiniteQuery = (searchState: SearchState) => {
   const { userPosition: position } = useGeolocation()
   const isUserUnderage = useIsUserUnderage()
+  const transformHits = useTransformOfferHits()
   const { setCurrentQueryID } = useSearchAnalyticsState()
   const previousPageObjectIds = useRef<string[]>([])
 
-  const { data, ...infiniteQuery } = useInfiniteQuery<OffersWithPage>(
+  const { data, ...infiniteQuery } = useInfiniteQuery<Response>(
     [QueryKeys.SEARCH_RESULTS, { ...searchState, view: undefined }],
     async ({ pageParam: page = 0 }) => {
       const response = await fetchOffers({
@@ -34,22 +37,27 @@ export const useSearchInfiniteQuery = (searchState: SearchState) => {
         excludedObjectIds: previousPageObjectIds.current,
       })
 
-      analytics.logPerformSearch(searchState, response.nbOffers)
+      analytics.logPerformSearch(searchState, response.nbHits)
 
-      previousPageObjectIds.current = response.offers.map((offer) => offer.objectID)
+      previousPageObjectIds.current = response.hits.map((hit) => hit.objectID)
       return response
     },
     // first page is 0
     { getNextPageParam }
   )
 
-  const { nbOffers, userData, offers } = data?.pages[0] || {
-    nbOffers: 0,
-    userData: [],
-    offers: [] as Offer[],
-  }
+  const hits = useMemo(
+    () =>
+      flatten(data?.pages.map((page) => page.hits.map(transformHits))).filter(
+        (hit) => typeof hit.offer.subcategoryId !== 'undefined'
+      ) as Offer[],
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [data?.pages]
+  )
 
-  return { data, offers, nbOffers, userData, ...infiniteQuery }
+  const { nbHits, userData } = data?.pages[0] || { nbHits: 0, userData: [] }
+
+  return { data, hits, nbHits, userData, ...infiniteQuery }
 }
 
 export const useSearchResults = () => {

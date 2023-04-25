@@ -4,11 +4,15 @@ import { useQuery } from 'react-query'
 import { useIsUserUnderage } from 'features/profile/helpers/useIsUserUnderage'
 import { useVenueSearchParameters } from 'features/venue/helpers/useVenueSearchParameters/useVenueSearchParameters'
 import { useSearchAnalyticsState } from 'libs/algolia/analytics/SearchAnalyticsWrapper'
-import { fetchOffers } from 'libs/algolia/fetchAlgolia/fetchOffers/fetchOffers'
+import { fetchOffers } from 'libs/algolia/fetchAlgolia/fetchOffers'
+import { useTransformOfferHits, filterOfferHit } from 'libs/algolia/fetchAlgolia/transformOfferHit'
 import { env } from 'libs/environment'
 import { useNetInfoContext } from 'libs/network/NetInfoWrapper'
 import { QueryKeys } from 'libs/queryKeys'
+import { Offer } from 'shared/offer/types'
+
 export const useVenueOffers = (venueId: number) => {
+  const transformHits = useTransformOfferHits()
   const params = useVenueSearchParameters(venueId)
   const isUserUnderage = useIsUserUnderage()
   const netInfo = useNetInfoContext()
@@ -27,9 +31,9 @@ export const useVenueOffers = (venueId: number) => {
       }),
     {
       enabled: !!netInfo.isConnected,
-      select: ({ offers, nbOffers }) => ({
-        hits: uniqBy(offers, 'objectID'),
-        nbHits: nbOffers,
+      select: ({ hits, nbHits }) => ({
+        hits: uniqBy(hits.filter(filterOfferHit).map(transformHits), 'objectID') as Offer[],
+        nbHits,
       }),
     }
   )

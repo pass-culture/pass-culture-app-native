@@ -1,15 +1,14 @@
 import React from 'react'
 
-import { mockedAlgoliaHitsResponse } from 'libs/algolia/__mocks__/mockedAlgoliaHitResponse'
-import { offersWithPageFixture } from 'libs/algolia/fetchAlgolia/fetchOffers/fixtures/offersWithPageFixture'
+import { mockedAlgoliaResponse } from 'libs/algolia/__mocks__/mockedAlgoliaResponse'
 import { fireEvent, render, screen } from 'tests/utils/web'
 
 import { SearchListFooter, SearchListFooterProps } from './SearchListFooter.web'
 
 const defaultProps: SearchListFooterProps = {
   isFetchingNextPage: false,
-  hits: offersWithPageFixture.offers,
-  nbHits: mockedAlgoliaHitsResponse.nbHits,
+  hits: mockedAlgoliaResponse.hits,
+  nbHits: mockedAlgoliaResponse.nbHits,
   autoScrollEnabled: false,
   onPress: jest.fn(),
 }

@@ -19,7 +19,7 @@ export interface Geoloc {
   lng?: number | null
 }
 
-export interface AlgoliaOfferHit {
+export interface AlgoliaHit {
   offer: AlgoliaOffer
   _geoloc: Geoloc
   objectID: string
