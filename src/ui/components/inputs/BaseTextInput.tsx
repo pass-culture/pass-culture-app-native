@@ -3,13 +3,16 @@ import React, { forwardRef, useEffect, useRef } from 'react'
 import { Platform, TextInput as RNTextInput } from 'react-native'
 import styled from 'styled-components/native'
 
+import { useE2eTestId } from 'libs/e2e/useE2eTestId'
+
 import { RNTextInputProps } from './types'
 
 export const BaseTextInput = forwardRef<RNTextInput, RNTextInputProps>(function BaseTextInput(
-  { nativeAutoFocus, autoFocus, ...props },
+  { nativeAutoFocus, autoFocus, testID, ...props },
   forwardedRef
 ) {
   const inputRef = useRef<RNTextInput>(null)
+  const e2eSelectors = useE2eTestId(testID || 'Champ de texte')
 
   useEffect(() => {
     if (!inputRef || !inputRef.current) {
@@ -47,9 +50,9 @@ export const BaseTextInput = forwardRef<RNTextInput, RNTextInputProps>(function 
   return (
     <StyledTextInput
       {...props}
+      {...e2eSelectors}
       autoFocus={nativeAutoFocus ? autoFocus : undefined}
       editable={!props.disabled}
-      testID={props.testID}
       isEmpty={!props.value}
       placeholder={props.placeholder || ''}
       returnKeyType={props.returnKeyType ?? 'next'}
