@@ -447,6 +447,7 @@ Array [
         },
       ]
     }
+    testID="address"
   >
     <View
       style={
@@ -705,6 +706,7 @@ Array [
         },
       ]
     }
+    testID="address"
   >
     <View
       style={
@@ -1075,6 +1077,7 @@ Array [
         },
       ]
     }
+    testID="address"
   >
     <View
       style={
@@ -1461,6 +1464,7 @@ Array [
         },
       ]
     }
+    testID="address"
   >
     <View
       style={
@@ -1976,6 +1980,7 @@ Array [
         },
       ]
     }
+    testID="address"
   >
     <View
       style={
