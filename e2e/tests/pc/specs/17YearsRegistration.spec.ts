@@ -9,6 +9,7 @@ import GmailClient, { Email } from '../helpers/GmailClient'
 import { openDeepLinkUrl } from '../helpers/utils/deeplink'
 import { timeout } from '../helpers/utils/time'
 import VerifyEligibility from '../features/auth/VerifyEligibility'
+import IdentityCheckStepper from '../features/identityCheck/IdentityCheckStepper'
 
 type RegistrationConfirmationEmail = Omit<Email, 'params'> & {
   params: {
@@ -118,6 +119,13 @@ describe('18YearsRegistration', () => {
       await VerifyEligibility.waitForIsShown()
       await VerifyEligibility.start.click()
       await VerifyEligibility.waitForIsHidden()
+    })
+
+    it('should click on profile step button', async () => {
+      didFirstLaunch(ok)
+      await IdentityCheckStepper.waitForIsShown()
+      await IdentityCheckStepper.profileButton.click()
+      await IdentityCheckStepper.waitForIsHidden()
     })
   })
 })
