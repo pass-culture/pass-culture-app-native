@@ -14,6 +14,7 @@ import SetName from '../features/identityCheck/SetName'
 import SetCity from '../features/identityCheck/SetCity'
 import SetAddress from '../features/identityCheck/SetAddress'
 import SetStatus from '../features/identityCheck/SetStatus'
+import SetSchoolType from '../features/identityCheck/SetSchoolType'
 
 type RegistrationConfirmationEmail = Omit<Email, 'params'> & {
   params: {
@@ -165,6 +166,14 @@ describe('18YearsRegistration', () => {
       await SetStatus.statusOption.click()
       await SetStatus.submitButton.click()
       await SetStatus.waitForIsHidden()
+    })
+
+    it('should set school type', async () => {
+      didFirstLaunch(ok)
+      await SetSchoolType.waitForIsShown()
+      await SetSchoolType.schoolTypeOption.click()
+      await SetSchoolType.submitButton.click()
+      await SetSchoolType.waitForIsHidden()
     })
   })
 })
