@@ -40,7 +40,7 @@ export const buildGeolocationParameter = (
   }
 }
 
-const computeAroundRadiusInMeters = (
+export const computeAroundRadiusInMeters = (
   aroundRadius: number | null,
   locationType: LocationType
 ): number | 'all' => {
