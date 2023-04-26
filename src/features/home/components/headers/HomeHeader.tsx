@@ -69,7 +69,7 @@ export const HomeHeader: FunctionComponent = function () {
           <ActivationBanner
             title={homeBanner.title}
             subtitle={homeBanner.text}
-            icon={StyledBicolorUnlock}
+            icon={BicolorUnlock}
           />
         </BannerContainer>
       )
@@ -84,11 +84,7 @@ export const HomeHeader: FunctionComponent = function () {
     if (homeBanner?.name === BannerName.retry_identity_check_banner)
       return (
         <BannerContainer>
-          <ActivationBanner
-            title={homeBanner.title}
-            subtitle={homeBanner.text}
-            icon={StyledArrowAgain}
-          />
+          <ActivationBanner title={homeBanner.title} subtitle={homeBanner.text} icon={ArrowAgain} />
         </BannerContainer>
       )
 
@@ -98,7 +94,7 @@ export const HomeHeader: FunctionComponent = function () {
           <ActivationBanner
             title={homeBanner.title}
             subtitle={homeBanner.text}
-            icon={StyledBirthdayCake}
+            icon={BirthdayCake}
           />
         </BannerContainer>
       )
@@ -140,16 +136,3 @@ const CheatCodeButtonContainer = styled(TouchableOpacity)(({ theme }) => ({
 const BannerContainer = styled.View({
   marginBottom: getSpacing(8),
 })
-
-export const StyledBicolorUnlock = styled(BicolorUnlock).attrs(({ theme }) => ({
-  color: theme.colors.white,
-  color2: theme.colors.white,
-}))``
-
-const StyledArrowAgain = styled(ArrowAgain).attrs(({ theme }) => ({
-  color: theme.colors.white,
-}))``
-
-const StyledBirthdayCake = styled(BirthdayCake).attrs(({ theme }) => ({
-  color: theme.colors.white,
-}))``
