@@ -58,7 +58,7 @@ describe('17YearsRegistration', () => {
       await ProfileScreen.waitForIsHidden()
     })
 
-    it('should set email and randomly accept newsletter checkbox', async () => {
+    it('should set email and accept newsletter checkbox', async () => {
       await SignupScreens.waitForIsShown()
       await SignupScreens.emailScreen.waitForIsShown()
       await SignupScreens.emailScreen.email.setValue(email)
