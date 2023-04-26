@@ -36,7 +36,7 @@ export const EditButton = ({
       icon={EditPen}
       inline
       accessibilityLabel={accessibilityLabel}
-      handleNavigation={onPress !== undefined ? onPress : () => undefined}
+      handleNavigation={onPress ? onPress : () => undefined}
     />
   )
 }

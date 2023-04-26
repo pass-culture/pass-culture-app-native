@@ -18,10 +18,6 @@ export type VenueSelectionListProps = ViewProps & {
   items: VenueListItem[]
 }
 
-function keyExtractor(item: VenueListItem) {
-  return String(item.offerId)
-}
-
 export function VenueSelectionList({
   items,
   selectedItem,
@@ -48,7 +44,7 @@ export function VenueSelectionList({
       {items.length > 0 && (
         <VerticalUl>
           {items.map((item) => (
-            <Li key={keyExtractor(item)}>{renderItem(item)}</Li>
+            <Li key={item.offerId}>{renderItem(item)}</Li>
           ))}
         </VerticalUl>
       )}
