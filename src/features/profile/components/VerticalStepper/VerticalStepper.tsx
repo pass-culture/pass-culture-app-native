@@ -37,52 +37,72 @@ export type VerticalStepperProps = (
   variant: VerticalStepperVariant
 }
 
+type CustomComponentProps = {
+  testID?: string
+}
+
 export const VerticalStepper = memo(function VerticalStepper({ variant }: VerticalStepperProps) {
   const theme = useTheme()
 
-  const Icon = useCallback(() => {
-    if (variant === VerticalStepperVariant.complete)
-      return <Validate color={theme.colors.greenValid} color2={theme.colors.white} size={20} />
+  const Icon = useCallback(
+    (props: CustomComponentProps) => {
+      if (variant === VerticalStepperVariant.complete)
+        return (
+          <Validate
+            color={theme.colors.greenValid}
+            color2={theme.colors.white}
+            size={20}
+            {...props}
+          />
+        )
 
-    if (variant === VerticalStepperVariant.in_progress) return <InProgressIcon />
-    if (variant === VerticalStepperVariant.future) return <FutureIcon />
+      if (variant === VerticalStepperVariant.in_progress) return <InProgressIcon {...props} />
+      if (variant === VerticalStepperVariant.future) return <FutureIcon {...props} />
 
-    return null
-  }, [theme.colors.greenValid, theme.colors.white, variant])
+      return null
+    },
+    [theme.colors.greenValid, theme.colors.white, variant]
+  )
 
-  const TopLine = useCallback(() => {
-    switch (variant) {
-      case VerticalStepperVariant.complete:
-      case VerticalStepperVariant.in_progress:
-        return <FilledLine />
+  const TopLine = useCallback(
+    (props: CustomComponentProps) => {
+      switch (variant) {
+        case VerticalStepperVariant.complete:
+        case VerticalStepperVariant.in_progress:
+          return <FilledLine {...props} />
 
-      case VerticalStepperVariant.future:
-        return <DottedLine />
+        case VerticalStepperVariant.future:
+          return <DottedLine {...props} />
 
-      default:
-        return null
-    }
-  }, [variant])
+        default:
+          return null
+      }
+    },
+    [variant]
+  )
 
-  const BottomLine = useCallback(() => {
-    switch (variant) {
-      case VerticalStepperVariant.complete:
-        return <FilledLine />
+  const BottomLine = useCallback(
+    (props: CustomComponentProps) => {
+      switch (variant) {
+        case VerticalStepperVariant.complete:
+          return <FilledLine testID="bottom-line" {...props} />
 
-      case VerticalStepperVariant.in_progress:
-      case VerticalStepperVariant.future:
-        return <DottedLine />
+        case VerticalStepperVariant.in_progress:
+        case VerticalStepperVariant.future:
+          return <DottedLine testID="bottom-line" {...props} />
 
-      default:
-        return null
-    }
-  }, [variant])
+        default:
+          return null
+      }
+    },
+    [variant]
+  )
 
   return (
     <Wrapper>
-      <TopLine />
-      <Icon />
-      <BottomLine />
+      <TopLine testID="top-line" />
+      <Icon testID="icon" />
+      <BottomLine testID="bottom-line" />
     </Wrapper>
   )
 })
