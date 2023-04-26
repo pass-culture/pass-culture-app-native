@@ -12,7 +12,7 @@ describe('buildOfferSearchParameters', () => {
 
   const isUserUnderage = false
 
-  it('should return expected output', () => {
+  it('should return expected offer search parameters to build Algolia API call', () => {
     const searchState = {
       ...initialSearchState,
     }
