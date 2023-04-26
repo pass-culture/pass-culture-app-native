@@ -6,6 +6,19 @@ After setting up your [environment][1], you can follow the steps below to run th
 
 To install iOS modules (pods), we use Cocoapods (dependency manager). It is built with Ruby, so make sure it is installed on your computer.
 
+Install RVM (Ruby Version Manager) with this command :
+
+```sh
+curl -sSL https://raw.githubusercontent.com/rvm/rvm/master/binscripts/rvm-installer | bash -s stable
+```
+
+Install a version of Ruby that's 2.7.5 or higher (version of Ruby is indicated in the Gemfile on the root of the repo) with :
+
+   ```sh
+   rvm install "version"
+   rvm use "version"
+   ```
+
 We use [bundler][2] to install our Ruby gems. You can install it with `gem install bundler`.
 
 Now you can install Cocoapods with `bundle install`. This will install the gems.
@@ -15,6 +28,8 @@ To install the pods, and create the Pods folder, run:
 - `bundle exec pod install` inside the folder `ios`
 - you may be asked to run `bundle exec pod repo update`
 
+If `bundle exec pod install` didn't work, check in Xcode -> Settings -> Locations if you have a Command line tools installed, then revalidate the Command line tools by clicking it.
+
 ### 🔥 Firebase setup
 
 You will need to add the `GoogleService-Info.plist` file in the `ios` directory. You can get a copy of the testing configuration one through the password manager, or directly through the Firebase console inside `Project Settings`.
@@ -22,6 +37,8 @@ You will need to add the `GoogleService-Info.plist` file in the `ios` directory.
 ### Setup Xcode to launch the app in the Simulator or on your external device
 
 In order to launch the app in your Apple device, you need to follow these steps:
+
+You need to use the 14.2 Xcode version, you can install it [here][3] with an Apple Developer account (follow the 1st step).
 
 Download the iOS certificates to your computer:
 
@@ -44,11 +61,11 @@ For example :
 
 - For Apple External Device
 
-Connect your device to the computer and run `yarn ios:testing --device` or use the Xcode interface. Choose a scheme (your device) and click the Run button in the toolbar. More info [here][3].
+Connect your device to the computer and run `yarn ios:testing --device` or use the Xcode interface. Choose a scheme (your device) and click the Run button in the toolbar.
 
 - For Xcode Simulator
 
-Run `yarn ios:testing` or use the Xcode interface. More info [here][3].
+Run `yarn ios:testing` or use the Xcode interface. 
 This will also start the metro server. If not, run `yarn start` in another tab.
 
 ### 😤 Troubleshooting
@@ -100,4 +117,4 @@ Make sure you installed jq so the CFBundleVersion can be automatically filled.
 
 [1]: ./setup.md
 [2]: https://bundler.io/bundle_install.html
-[3]: https://developer.apple.com/documentation/xcode/running-your-app-in-the-simulator-or-on-a-device
+[3]: https://developer.apple.com/download/all/?q=xcode%2014.2

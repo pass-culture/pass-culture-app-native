@@ -6,7 +6,7 @@ First, open the project `android` in Android Studio. Then open the Android Virtu
 
 ### ✍️ Code signing
 
-Download the appropriate keystore file from 1password, for example `testing.keystore`, and place it inside the `/android/keystores` directory.
+Download the appropriate keystore file from 1password, for example `testing.keystore` by searching keystore, and place it inside the `/android/keystores` directory. If you do not find `testing.keystore`, contact an admin.
 
 Then create a `keystores/testing.keystore.properties` file in `/android/keystores` directory with this configuration (required in `build.gradle`):
 
@@ -38,11 +38,24 @@ En cas de soucis avec le JDK installer via `brew install --cask zulu11` et ajout
 </details>
 <br/>
 <details>
-  <summary>[M1 processor] Error while building the app on android : `Android Studio-- Cause: error=86, Bad CPU type in executable`</summary>
+  <summary>General error for building the app on Android Studio</summary>
 
-If you get this error on M1 Mac, installing Rosetta 2 should solve the issue. You can install it with this command : `softwareupdate --install-rosetta`.
+These are the general solutions for errors :
 
-Rosetta will allow applications requiring Intel processor to run on M1 Mac.
+run `cd android && ./gradlew clean` to clear the build directory.
+
+on the root of the repository : `rm -rf node_modules` then `yarn` or `yarn install`, this will delete all the installed modules from the repo then reinstalled it.
+
+If you're on M1 or M2 Mac and the problem still remains, see the error below.
+
+</details>
+<br/>
+<details>
+  <summary>[M1 & M2 processor] Error while building the app on android with Android Studio : `Android Studio-- Cause: error=86, Bad CPU type in executable` or `Task :app:processApptestingDebugResources FAILED`</summary>
+
+If you get this error on M1 or M2 Mac, installing Rosetta 2 should solve the issue. You can install it with this command : `softwareupdate --install-rosetta`.
+
+Rosetta will allow applications requiring Intel processor to run on M1 & M2 Mac.
 
 </details>
 
