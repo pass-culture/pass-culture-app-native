@@ -1,6 +1,6 @@
-# e2e
+# **E2E Testing**
 
-We use webdriver.io as automation framework to test our Web and mobile application.
+We use Webdriver.IO as automation framework to test our Web and mobile application.
 
 ## Appium
 
@@ -54,7 +54,7 @@ appium-doctor
 
 ## App center
 
-You can create an user API token in Account => Account Settings => User API tokens
+If you want to download apps from AppCenter, you can create an user API token in Account => Account Settings => User API tokens
 You can name it APPCENTER_USER_API_TOKEN
 
 ---
@@ -120,12 +120,10 @@ Refer to google to get installation instruction for your system.
 
 **Gmail Client**
 
-In order to login to the e2e mailbox, you must have in the root of the repository:
+In order to login to the e2e mailbox, you must have in the root of the repository one of these two files:
 
 - `credentials.json`: OAuth2 client (require interactive login)
 - `token.json`: OAuth2 Gmail API JWT (can be generated if you have `credentials.json`)
-
-Only one of the two is required.
 
 **Each of them must be in your `PATH` system**
 
@@ -354,25 +352,25 @@ This is the documentation of selector: https://webdriver.io/docs/selectors/#acce
 We also have a useful cross platforms selector:
 
 ```ts
-find('Accueil')
+find('Accueil') // to retrieve one element (the first one in the DOM on Web)
 // or
-findAll('Accueil')
+findAll('Accueil') // to retrieve list of elements (sorted by order of appearance in the DOM on Web)
 ```
 
 Is equivalent to, on `app` (iOS and Android):
 
 ```ts
-$('~Acceuil')
+$('~Acceuil') // to retrieve one element (the first one in the DOM on Web)
 // or
-$$('~Acceuil')
+$$('~Acceuil') // to retrieve list of elements (sorted by order of appearance in the DOM on Web)
 ```
 
 and `browser`:
 
 ```ts
-$('[data-testid="Accueil"]')
+$('[data-testid="Accueil"]')  // to retrieve the first one in the DOM
 // or
-$$('[data-testid="Accueil"]')
+$$('[data-testid="Accueil"]') // to retrieve list of elements (sorted by order of appearance in the DOM)
 ```
 
 We could have used `flags.isWeb` to decide which one to use, but this is exactly what does `find`
@@ -444,17 +442,27 @@ ERROR webdriver: Request failed with status 500 due to session not created: Coul
 
 This can be solved by opening Safari, Develop Menu, then check `Allow Remote Automation`
 
+**Chrome**
+
+This prompt may appear when running `yarn e2e:browser.chrome`:
+
+> “chromedriver” cannot be opened because the developer cannot be verified.
+
+In order to authorize chromedriver to be opened, you need to go System Preferences > Security & Privacy and click "Open Anyway" to confirm your intent to open the app.
+
 ### Useful ressources
 
-- https://webdriver.io/docs/what-is-webdriverio
-- https://appium.github.io/appium/docs/en/2.0/
-- https://github.com/webdriverio/appium-boilerplate
-- https://chromedriver.chromium.org/downloads
+E2E presentation and other useful documentation can be found here :
+- [E2E tests presentation](https://docs.google.com/presentation/d/1_6polpPB7lFWTgtxE3hX33xuo7BvyrEcyMSJPpF_Yrg/edit?usp=sharing)
+- [Webdriver.IO documentation](https://webdriver.io/docs/what-is-webdriverio)
+- [Appium documentation](https://appium.github.io/appium/docs/en/2.0/)
+- [Webdriver.IO - Appium Boilerplate](https://github.com/webdriverio/appium-boilerplate)
+- [Chrome Driver releases](https://chromedriver.chromium.org/downloads)
 
 ### Community
 
 If you wish to learn how to write tests, beside GitHub and StackOverflow,
 we have found an active community on Gitter.im:
 
-- https://gitter.im/webdriverio/webdriverio
-- https://gitter.im/appium/appium
+- [Webdriver.IO Gitter](https://gitter.im/webdriverio/webdriverio)
+- [Appium Gitter](https://gitter.im/appium/appium)
