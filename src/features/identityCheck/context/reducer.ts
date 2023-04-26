@@ -50,6 +50,16 @@ export const SubscriptionReducer = (
       return { ...state, identification: { ...state.identification, ...action.payload } }
     case 'SET_METHOD':
       return { ...state, identification: { ...state.identification, method: action.payload } }
+    case 'SET_PROFILE_INFO':
+      return {
+        ...state,
+        profile: {
+          ...state.profile,
+          name: action.payload.name,
+          city: action.payload.city,
+          address: action.payload.address,
+        },
+      }
     default:
       return state
   }

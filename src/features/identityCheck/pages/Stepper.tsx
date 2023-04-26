@@ -9,6 +9,7 @@ import { ErrorBanner } from 'features/identityCheck/components/ErrorBanner'
 import { QuitIdentityCheckModal } from 'features/identityCheck/components/modals/QuitIdentityCheckModal'
 import { StepButton } from 'features/identityCheck/components/StepButton'
 import { useSubscriptionContext } from 'features/identityCheck/context/SubscriptionContextProvider'
+import { useRehydrateProfile } from 'features/identityCheck/pages/helpers/useRehydrateProfile'
 import { useSetSubscriptionStepAndMethod } from 'features/identityCheck/pages/helpers/useSetCurrentSubscriptionStep'
 import { useStepperInfo } from 'features/identityCheck/pages/helpers/useStepperInfo'
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
@@ -39,6 +40,7 @@ export const IdentityCheckStepper = () => {
   const { subscription } = useSetSubscriptionStepAndMethod()
   const { showErrorSnackBar } = useSnackBarContext()
   const { refetchUser } = useAuthContext()
+  useRehydrateProfile()
 
   const { visible, showModal, hideModal } = useModal(false)
 
