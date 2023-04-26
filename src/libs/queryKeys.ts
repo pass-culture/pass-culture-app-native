@@ -36,6 +36,7 @@ export enum QueryKeys {
   VENUE = 'venue',
   VENUES = 'venues',
   VENUE_OFFERS = 'venueOffers',
+  SUBSCRIPTION_PROFILE_INFO = 'subscriptionProfileInfo',
 }
 
 export enum MutationKeys {

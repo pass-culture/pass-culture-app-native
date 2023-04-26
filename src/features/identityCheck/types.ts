@@ -51,3 +51,13 @@ export enum StepButtonState {
   'DISABLED' = 'disabled',
   'RETRY' = 'retry',
 }
+
+export interface RehydrationProfile {
+  activity: string
+  address: string
+  city: string
+  firstName: string
+  lastName: string
+  postalCode: string
+  schoolType: string
+}
