@@ -29,7 +29,6 @@ export type Layout = 'two-items' | 'one-item-medium'
 export interface Entry<T, ContentType extends ContentTypes> {
   sys: Sys<ContentType>
   fields: T
-  update(): Promise<Entry<T, ContentType>>
 }
 
 interface EntryCollectionInclusions<T, ContentType extends ContentTypes> {
@@ -107,78 +106,50 @@ interface EntryCollectionError {
   }
 }
 
-export interface AlgoliaParameters {
-  sys: Sys<typeof ContentTypes.ALGOLIA_PARAMETERS>
-  fields: SearchParametersFields
-}
+export type AlgoliaParameters = Entry<SearchParametersFields, ContentTypes.ALGOLIA_PARAMETERS>
 
-export interface VenuesParameters {
-  sys: Sys<typeof ContentTypes.VENUES_PARAMETERS>
-  fields: VenuesParametersFields
-}
+export type VenuesParameters = Entry<VenuesParametersFields, ContentTypes.VENUES_PARAMETERS>
 
-export interface DisplayParameters {
-  sys: Sys<typeof ContentTypes.DISPLAY_PARAMETERS>
-  fields: DisplayParametersFields
-}
+export type DisplayParameters = Entry<DisplayParametersFields, ContentTypes.DISPLAY_PARAMETERS>
 
-export interface ExcluDisplayParameters {
-  sys: Sys<typeof ContentTypes.EXCLUSIVITY_DISPLAY_PARAMETERS>
-  fields: ExclusivityDisplayParametersFields
-}
+export type ExcluDisplayParameters = Entry<
+  ExclusivityDisplayParametersFields,
+  ContentTypes.EXCLUSIVITY_DISPLAY_PARAMETERS
+>
 
-export interface RecommendationParameters {
-  sys: Sys<typeof ContentTypes.RECOMMENDATION_PARAMETERS>
-  fields: RecommendationParametersFields
-}
+export type RecommendationParameters = Entry<
+  RecommendationParametersFields,
+  ContentTypes.RECOMMENDATION_PARAMETERS
+>
 
-export interface Subcategories {
-  sys: Sys<typeof ContentTypes.SUBCATEGORIES>
-  fields: SubcategoriesFields
-}
-export interface Categories {
-  sys: Sys<typeof ContentTypes.CATEGORIES>
-  fields: CategoriesFields
-}
+export type Subcategories = Entry<SubcategoriesFields, ContentTypes.SUBCATEGORIES>
 
-export interface MovieGenres {
-  sys: Sys<typeof ContentTypes.MOVIE_GENRES>
-  fields: MovieGenresFields
-}
-export interface MusicTypes {
-  sys: Sys<typeof ContentTypes.MUSIC_TYPES>
-  fields: MusicTypesFields
-}
+export type Categories = Entry<CategoriesFields, ContentTypes.CATEGORIES>
 
-export interface ShowTypes {
-  sys: Sys<typeof ContentTypes.SHOW_TYPES>
-  fields: ShowTypesFields
-}
+export type MovieGenres = Entry<MovieGenresFields, ContentTypes.MOVIE_GENRES>
 
-export interface BookTypes {
-  sys: Sys<typeof ContentTypes.BOOK_TYPES>
-  fields: BookTypesFields
-}
+export type MusicTypes = Entry<MusicTypesFields, ContentTypes.MUSIC_TYPES>
 
-export interface ThematicCategoryInfo {
-  sys: Sys<typeof ContentTypes.THEMATIC_CATEGORY_INFO>
-  fields: ThematicCategoryInfoFields
-}
+export type ShowTypes = Entry<ShowTypesFields, ContentTypes.SHOW_TYPES>
 
-export interface ThematicHighlightInfo {
-  sys: Sys<typeof ContentTypes.THEMATIC_HIGHLIGHT_INFO>
-  fields: ThematicHighlightInfoFields
-}
+export type BookTypes = Entry<BookTypesFields, ContentTypes.BOOK_TYPES>
 
-export interface ThematicHighlightParameters {
-  sys: Sys<typeof ContentTypes.THEMATIC_HIGHLIGHT>
-  fields: ThematicHighlightFields
-}
+export type ThematicCategoryInfo = Entry<
+  ThematicCategoryInfoFields,
+  ContentTypes.THEMATIC_CATEGORY_INFO
+>
 
-export interface Cover {
-  sys: Sys<typeof ContentTypes.INFORMATION>
-  fields: CoverFields
-}
+export type ThematicHighlightInfo = Entry<
+  ThematicHighlightInfoFields,
+  ContentTypes.THEMATIC_HIGHLIGHT_INFO
+>
+
+export type ThematicHighlightParameters = Entry<
+  ThematicHighlightFields,
+  ContentTypes.THEMATIC_HIGHLIGHT
+>
+
+export type Cover = Entry<CoverFields, ContentTypes.INFORMATION>
 
 // Taken from https://app.contentful.com/spaces/2bg01iqy0isv/content_types/cover/fields
 interface CoverFields {
@@ -357,10 +328,7 @@ export interface CategoryListFields {
   categoryBlockList: CategoryBlockContentModel[]
 }
 
-export interface CategoryBlockContentModel {
-  sys: Sys<typeof ContentTypes.CATEGORY_BLOCK>
-  fields: CategoryBlockFields
-}
+export type CategoryBlockContentModel = Entry<CategoryBlockFields, ContentTypes.CATEGORY_BLOCK>
 
 export interface CategoryBlockFields {
   title: string
@@ -368,9 +336,8 @@ export interface CategoryBlockFields {
   thematicCategoryInfo: ThematicCategoryInfo
 }
 
-export interface Image {
-  sys: Sys<typeof ContentTypes.INFORMATION>
-  fields: {
+export type Image = Entry<
+  {
     title: string
     description?: string
     file: {
@@ -385,8 +352,9 @@ export interface Image {
       fileName: string
       contentType: string
     }
-  }
-}
+  },
+  ContentTypes.INFORMATION
+>
 
 // List available here https://app.contentful.com/spaces/2bg01iqy0isv/environments/testing/settings/tags
 export type TagId = 'master' | 'usergrandpublic' | 'userunderage'
@@ -420,29 +388,22 @@ export type HomepageNatifModule =
   | VenuesContentModel
   | CategoryListContentModel
 
-export type AlgoliaContentModel = { sys: Sys<ContentTypes.ALGOLIA>; fields: AlgoliaFields }
+export type AlgoliaContentModel = Entry<AlgoliaFields, ContentTypes.ALGOLIA>
 
-export type BusinessContentModel = { sys: Sys<ContentTypes.BUSINESS>; fields: BusinessFields }
+export type BusinessContentModel = Entry<BusinessFields, ContentTypes.BUSINESS>
 
-export type ExclusivityContentModel = {
-  sys: Sys<ContentTypes.EXCLUSIVITY>
-  fields: ExclusivityFields
-}
+export type ExclusivityContentModel = Entry<ExclusivityFields, ContentTypes.EXCLUSIVITY>
 
-export type RecommendationContentModel = {
-  sys: Sys<ContentTypes.RECOMMENDATION>
-  fields: RecommendationFields
-}
-export type ThematicHighlightContentModel = {
-  sys: Sys<ContentTypes.THEMATIC_HIGHLIGHT>
-  fields: ThematicHighlightFields
-}
-export type VenuesContentModel = { sys: Sys<ContentTypes.VENUES_PLAYLIST>; fields: VenuesFields }
+export type RecommendationContentModel = Entry<RecommendationFields, ContentTypes.RECOMMENDATION>
 
-export type CategoryListContentModel = {
-  sys: Sys<typeof ContentTypes.CATEGORY_LIST>
-  fields: CategoryListFields
-}
+export type ThematicHighlightContentModel = Entry<
+  ThematicHighlightFields,
+  ContentTypes.THEMATIC_HIGHLIGHT
+>
+
+export type VenuesContentModel = Entry<VenuesFields, ContentTypes.VENUES_PLAYLIST>
+
+export type CategoryListContentModel = Entry<CategoryListFields, ContentTypes.CATEGORY_LIST>
 
 export const isAlgoliaContentModel = (
   module: HomepageNatifModule
