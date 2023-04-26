@@ -57,9 +57,8 @@ export const VerticalStepper = memo(function VerticalStepper({ variant }: Vertic
         )
 
       if (variant === VerticalStepperVariant.in_progress) return <InProgressIcon {...props} />
-      if (variant === VerticalStepperVariant.future) return <FutureIcon {...props} />
 
-      return null
+      return <FutureIcon {...props} />
     },
     [theme.colors.greenValid, theme.colors.white, variant]
   )
@@ -71,11 +70,9 @@ export const VerticalStepper = memo(function VerticalStepper({ variant }: Vertic
         case VerticalStepperVariant.in_progress:
           return <FilledLine {...props} />
 
-        case VerticalStepperVariant.future:
-          return <DottedLine {...props} />
-
+        // Only VerticalStepperVariant.future in this default case
         default:
-          return null
+          return <DottedLine {...props} />
       }
     },
     [variant]
@@ -84,15 +81,13 @@ export const VerticalStepper = memo(function VerticalStepper({ variant }: Vertic
   const BottomLine = useCallback(
     (props: CustomComponentProps) => {
       switch (variant) {
-        case VerticalStepperVariant.complete:
-          return <FilledLine testID="bottom-line" {...props} />
-
         case VerticalStepperVariant.in_progress:
         case VerticalStepperVariant.future:
           return <DottedLine testID="bottom-line" {...props} />
 
+        // Only VerticalStepperVariant.complete in this default case
         default:
-          return null
+          return <FilledLine testID="bottom-line" {...props} />
       }
     },
     [variant]
