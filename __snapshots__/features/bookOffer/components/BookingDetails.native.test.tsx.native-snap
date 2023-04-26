@@ -70,16 +70,40 @@ exports[`<BookingDetails /> when user has selected options should render correct
         }
         textColor="#161617"
       >
-        Les réservations effectuées sur le pass Culture sont destinées à un usage strictement personnel et ne peuvent faire l’objet de revente.
+        Les biens acquis ou réservés sur le pass Culture sont destinés à un usage strictement personnel et ne peuvent faire l’objet de revente.
       </Text>
     </View>
   </View>
   <View
-    numberOfSpaces={4}
+    numberOfSpaces={6}
     style={
       Array [
         Object {
-          "height": 16,
+          "height": 24,
+        },
+      ]
+    }
+  />
+  <Text
+    style={
+      Array [
+        Object {
+          "color": "#161617",
+          "fontFamily": "Montserrat-Medium",
+          "fontSize": 18,
+          "lineHeight": 22,
+        },
+      ]
+    }
+  >
+    Informations
+  </Text>
+  <View
+    numberOfSpaces={6}
+    style={
+      Array [
+        Object {
+          "height": 24,
         },
       ]
     }
@@ -253,6 +277,7 @@ exports[`<BookingDetails /> when user has selected options should render correct
         },
       ]
     }
+    testID="address"
   >
     <View
       style={
@@ -431,11 +456,11 @@ exports[`<BookingDetails /> when user has selected options should render correct
     </Text>
   </View>
   <View
-    numberOfSpaces={4}
+    numberOfSpaces={6}
     style={
       Array [
         Object {
-          "height": 16,
+          "height": 24,
         },
       ]
     }
@@ -451,11 +476,11 @@ exports[`<BookingDetails /> when user has selected options should render correct
     }
   />
   <View
-    numberOfSpaces={4}
+    numberOfSpaces={6}
     style={
       Array [
         Object {
-          "height": 16,
+          "height": 24,
         },
       ]
     }
@@ -664,16 +689,40 @@ exports[`<BookingDetails /> when user has selected options should render disable
         }
         textColor="#161617"
       >
-        Les réservations effectuées sur le pass Culture sont destinées à un usage strictement personnel et ne peuvent faire l’objet de revente.
+        Les biens acquis ou réservés sur le pass Culture sont destinés à un usage strictement personnel et ne peuvent faire l’objet de revente.
       </Text>
     </View>
   </View>
   <View
-    numberOfSpaces={4}
+    numberOfSpaces={6}
     style={
       Array [
         Object {
-          "height": 16,
+          "height": 24,
+        },
+      ]
+    }
+  />
+  <Text
+    style={
+      Array [
+        Object {
+          "color": "#161617",
+          "fontFamily": "Montserrat-Medium",
+          "fontSize": 18,
+          "lineHeight": 22,
+        },
+      ]
+    }
+  >
+    Informations
+  </Text>
+  <View
+    numberOfSpaces={6}
+    style={
+      Array [
+        Object {
+          "height": 24,
         },
       ]
     }
@@ -847,6 +896,7 @@ exports[`<BookingDetails /> when user has selected options should render disable
         },
       ]
     }
+    testID="address"
   >
     <View
       style={
@@ -1025,11 +1075,11 @@ exports[`<BookingDetails /> when user has selected options should render disable
     </Text>
   </View>
   <View
-    numberOfSpaces={4}
+    numberOfSpaces={6}
     style={
       Array [
         Object {
-          "height": 16,
+          "height": 24,
         },
       ]
     }
@@ -1045,11 +1095,11 @@ exports[`<BookingDetails /> when user has selected options should render disable
     }
   />
   <View
-    numberOfSpaces={4}
+    numberOfSpaces={6}
     style={
       Array [
         Object {
-          "height": 16,
+          "height": 24,
         },
       ]
     }

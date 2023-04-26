@@ -170,4 +170,17 @@ describe('<BookingInformations />', () => {
     const myComponent = render(<BookingInformations />)
     expect(myComponent).toMatchSnapshot()
   })
+
+  it('should not display address when shouldDisplayAddress = false', () => {
+    // @ts-expect-error mock is not real type
+    mockedUseBookingOffer.mockReturnValueOnce({
+      isDigital: true,
+      subcategoryId: SubcategoryIdEnum.CARTE_CINE_ILLIMITE,
+      name: 'mon nom',
+      stocks: [],
+      venue: mockOffer.venue,
+    })
+    render(<BookingInformations shouldDisplayAddress={false} />)
+    expect(screen.queryByText('RUE DE CALI')).toBeNull()
+  })
 })

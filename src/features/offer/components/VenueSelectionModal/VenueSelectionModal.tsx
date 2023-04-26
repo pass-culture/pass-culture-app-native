@@ -1,4 +1,5 @@
-import React, { useCallback, useState } from 'react'
+import React, { useCallback, useMemo, useState } from 'react'
+import { View } from 'react-native'
 import styled, { useTheme } from 'styled-components/native'
 
 import {
@@ -7,8 +8,10 @@ import {
 } from 'features/offer/components/VenueSelectionList/VenueSelectionList'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { AppModal } from 'ui/components/modals/AppModal'
+import { ModalHeader } from 'ui/components/modals/ModalHeader'
 import { Close } from 'ui/svg/icons/Close'
-import { getSpacing } from 'ui/theme'
+import { Spacer, getSpacing } from 'ui/theme'
+import { useCustomSafeInsets } from 'ui/theme/useCustomSafeInsets'
 
 type VenueSelectionModalProps = {
   isVisible: boolean
@@ -18,6 +21,8 @@ type VenueSelectionModalProps = {
   onClosePress: VoidFunction
 }
 
+const HEIGHT_CONTAINER = getSpacing(6)
+
 export function VenueSelectionModal({
   isVisible,
   items,
@@ -25,8 +30,9 @@ export function VenueSelectionModal({
   onSubmit,
   onClosePress,
 }: VenueSelectionModalProps) {
-  const { modal } = useTheme()
+  const { modal, isDesktopViewport } = useTheme()
   const [selectedOffer, setSelectedOffer] = useState<number>()
+  const { top } = useCustomSafeInsets()
 
   const handleSubmit = useCallback(() => {
     /**
@@ -35,6 +41,21 @@ export function VenueSelectionModal({
      */
     onSubmit(selectedOffer as number)
   }, [onSubmit, selectedOffer])
+
+  const customHeader = useMemo(() => {
+    return (
+      <HeaderContainer>
+        <View style={{ height: HEIGHT_CONTAINER + top }} />
+        <ModalHeader
+          title={title}
+          rightIconAccessibilityLabel="Ne pas sélectionner un autre lieu"
+          rightIcon={Close}
+          onRightIconPress={onClosePress}
+        />
+        <Spacer.Column numberOfSpaces={6} />
+      </HeaderContainer>
+    )
+  }, [onClosePress, title, top])
 
   return (
     <AppModal
@@ -46,6 +67,7 @@ export function VenueSelectionModal({
       rightIcon={Close}
       onRightIconPress={onClosePress}
       rightIconAccessibilityLabel="Ne pas sélectionner un autre lieu"
+      customModalHeader={isDesktopViewport ? undefined : customHeader}
       fixedModalBottom={
         <BottomWrapper>
           <ButtonPrimary
@@ -68,3 +90,8 @@ const BottomWrapper = styled.View(({ theme }) => ({
   paddingTop: getSpacing(4),
   paddingHorizontal: theme.modal.spacing.MD,
 }))
+
+const HeaderContainer = styled.View({
+  width: '100%',
+  paddingHorizontal: getSpacing(6),
+})
