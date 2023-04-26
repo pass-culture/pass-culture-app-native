@@ -42,7 +42,7 @@ En cas de soucis avec le JDK installer via `brew install --cask zulu11` et ajout
 
 These are the general solutions for errors :
 
-on "project/android : `./gradlew clean`, clear the build directory
+run `cd android && ./gradlew clean` to clear the build directory.
 
 on the root of the repository : `rm -rf node_modules` then `yarn` or `yarn install`, this will delete all the installed modules from the repo then reinstalled it.
 
