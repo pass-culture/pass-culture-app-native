@@ -22,7 +22,7 @@ type RegistrationConfirmationEmail = Omit<Email, 'params'> & {
   }
 }
 
-describe('18YearsRegistration', () => {
+describe('17YearsRegistration', () => {
   let ok = false
   let tabBar: TabBar
   let theme: DefaultTheme
@@ -58,7 +58,7 @@ describe('18YearsRegistration', () => {
       await ProfileScreen.waitForIsHidden()
     })
 
-    it('should set email and randomly accept newsletter checkbox', async () => {
+    it('should set email and accept newsletter checkbox', async () => {
       await SignupScreens.waitForIsShown()
       await SignupScreens.emailScreen.waitForIsShown()
       await SignupScreens.emailScreen.email.setValue(email)
@@ -79,7 +79,7 @@ describe('18YearsRegistration', () => {
       await SignupScreens.passwordScreen.waitForIsHidden()
     })
 
-    it('should set birthdate to 18 years old', async () => {
+    it('should set birthdate to 17 years old', async () => {
       const birthDate = new Date(
         new Date().getFullYear() - 17, // year (17 years old)
         getRandomInt(0, new Date().getMonth()), // monthIndex
