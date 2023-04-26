@@ -14,7 +14,7 @@ import { analytics } from 'libs/analytics'
 import { env } from 'libs/environment'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { server } from 'tests/server'
-import { fireEvent, render, screen, flushAllPromisesWithAct } from 'tests/utils'
+import { fireEvent, render, screen, act } from 'tests/utils'
 
 import { NotificationSettings } from './NotificationSettings'
 
@@ -189,15 +189,13 @@ describe('NotificationSettings', () => {
       const toggleSwitch = screen.getAllByTestId('Interrupteur')[0]
       fireEvent.press(toggleSwitch)
 
-      let saveButton: ReactTestInstance | null = null
-      saveButton = screen.getByTestId('Enregistrer les modifications')
+      const saveButton = screen.getByTestId('Enregistrer les modifications')
       expect(saveButton).toBeEnabled()
 
-      fireEvent.press(saveButton)
+      await act(async () => {
+        fireEvent.press(saveButton)
+      })
 
-      await flushAllPromisesWithAct()
-
-      saveButton = screen.getByTestId('Enregistrer les modifications')
       expect(saveButton).toBeDisabled()
     })
 
@@ -225,13 +223,12 @@ describe('NotificationSettings', () => {
       const toggleSwitch = screen.getAllByTestId('Interrupteur')[1]
       fireEvent.press(toggleSwitch)
 
-      let saveButton: ReactTestInstance | null = null
-      saveButton = screen.getByTestId('Enregistrer les modifications')
+      const saveButton = screen.getByTestId('Enregistrer les modifications')
       expect(saveButton).toBeEnabled()
 
-      fireEvent.press(saveButton)
-
-      await flushAllPromisesWithAct()
+      await act(async () => {
+        fireEvent.press(saveButton)
+      })
 
       expect(screen.getByTestId('Enregistrer les modifications')).toBeDisabled()
       expect(analytics.logNotificationToggle).toBeCalledWith(false, false)

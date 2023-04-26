@@ -12,14 +12,7 @@ import { analytics } from 'libs/analytics'
 import { campaignTracker } from 'libs/campaign/__mocks__'
 import { storage } from 'libs/storage'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import {
-  render,
-  fireEvent,
-  superFlushWithAct,
-  act,
-  flushAllPromisesWithAct,
-  screen,
-} from 'tests/utils'
+import { render, fireEvent, act, screen } from 'tests/utils'
 
 const COOKIES_CONSENT_KEY = 'cookies'
 const hideModal = jest.fn()
@@ -67,13 +60,12 @@ describe('<CookiesConsent/>', () => {
 
   describe('accept all cookies', () => {
     it('should persist cookies consent information', async () => {
-      const { getByText } = await renderCookiesConsent()
+      const { getByText } = renderCookiesConsent()
       const acceptAllButton = getByText('Tout accepter')
 
-      act(() => {
+      await act(async () => {
         fireEvent.press(acceptAllButton)
       })
-      await superFlushWithAct()
 
       const storageContent = {
         buildVersion: Package.build,
@@ -89,61 +81,56 @@ describe('<CookiesConsent/>', () => {
     })
 
     it('should enable tracking', async () => {
-      const { getByText } = await renderCookiesConsent()
+      const { getByText } = renderCookiesConsent()
       const acceptAllButton = getByText('Tout accepter')
 
-      act(() => {
+      await act(async () => {
         fireEvent.press(acceptAllButton)
       })
-      await superFlushWithAct()
 
       expect(mockStartTracking).toHaveBeenCalledWith(true)
     })
 
     it('should log analytics', async () => {
-      const { getByText } = await renderCookiesConsent()
+      const { getByText } = renderCookiesConsent()
       const acceptAllButton = getByText('Tout accepter')
 
-      act(() => {
+      await act(async () => {
         fireEvent.press(acceptAllButton)
       })
-      await superFlushWithAct()
 
       expect(analytics.logHasAcceptedAllCookies).toHaveBeenCalledTimes(1)
     })
 
     it('should init AppsFlyer', async () => {
-      const { getByText } = await renderCookiesConsent()
+      const { getByText } = renderCookiesConsent()
       const acceptAllButton = getByText('Tout accepter')
 
-      act(() => {
+      await act(async () => {
         fireEvent.press(acceptAllButton)
       })
-      await superFlushWithAct()
 
       expect(campaignTracker.useInit).toHaveBeenNthCalledWith(1, true)
     })
 
     it('should save UTM params', async () => {
-      const { getByText } = await renderCookiesConsent()
+      const { getByText } = renderCookiesConsent()
       const acceptAllButton = getByText('Tout accepter')
 
-      act(() => {
+      await act(async () => {
         fireEvent.press(acceptAllButton)
       })
-      await superFlushWithAct()
 
       expect(setMarketingParamsSpy).toHaveBeenNthCalledWith(1, UTM_PARAMS, ALL_OPTIONAL_COOKIES)
     })
 
     it('should hide modal', async () => {
-      const { getByText } = await renderCookiesConsent()
+      const { getByText } = renderCookiesConsent()
       const acceptAllButton = getByText('Tout accepter')
 
-      act(() => {
+      await act(async () => {
         fireEvent.press(acceptAllButton)
       })
-      await superFlushWithAct()
 
       expect(hideModal).toHaveBeenCalledTimes(1)
     })
@@ -151,13 +138,12 @@ describe('<CookiesConsent/>', () => {
 
   describe('refuse all cookies', () => {
     it('should persist cookies consent information', async () => {
-      const { getByText } = await renderCookiesConsent()
+      const { getByText } = renderCookiesConsent()
       const declineAllButton = getByText('Tout refuser')
 
-      act(() => {
+      await act(async () => {
         fireEvent.press(declineAllButton)
       })
-      await superFlushWithAct()
 
       const storageContent = {
         buildVersion: Package.build,
@@ -173,49 +159,45 @@ describe('<CookiesConsent/>', () => {
     })
 
     it('should disable tracking', async () => {
-      const { getByText } = await renderCookiesConsent()
+      const { getByText } = renderCookiesConsent()
       const declineAllButton = getByText('Tout refuser')
 
-      act(() => {
+      await act(async () => {
         fireEvent.press(declineAllButton)
       })
-      await superFlushWithAct()
 
       expect(mockStartTracking).toHaveBeenCalledWith(false)
     })
 
     it('should not init AppsFlyer', async () => {
-      const { getByText } = await renderCookiesConsent()
+      const { getByText } = renderCookiesConsent()
       const declineAllButton = getByText('Tout refuser')
 
-      act(() => {
+      await act(async () => {
         fireEvent.press(declineAllButton)
       })
-      await superFlushWithAct()
 
       expect(campaignTracker.useInit).not.toHaveBeenCalled()
     })
 
     it('should not set marketing params', async () => {
-      const { getByText } = await renderCookiesConsent()
+      const { getByText } = renderCookiesConsent()
       const declineAllButton = getByText('Tout refuser')
 
-      act(() => {
+      await act(async () => {
         fireEvent.press(declineAllButton)
       })
-      await superFlushWithAct()
 
       expect(setMarketingParamsSpy).not.toHaveBeenCalled()
     })
 
     it('should hide modal', async () => {
-      const { getByText } = await renderCookiesConsent()
+      const { getByText } = renderCookiesConsent()
       const declineAllButton = getByText('Tout refuser')
 
-      act(() => {
+      await act(async () => {
         fireEvent.press(declineAllButton)
       })
-      await superFlushWithAct()
 
       expect(hideModal).toHaveBeenCalledTimes(1)
     })
@@ -223,7 +205,7 @@ describe('<CookiesConsent/>', () => {
 
   describe('make detailled cookie choice', () => {
     it('should persist cookies consent information when user partially accepts cookies', async () => {
-      const { getByText, getByTestId } = await renderCookiesConsent()
+      const { getByText, getByTestId } = renderCookiesConsent()
 
       const chooseCookies = getByText('Choisir les cookies')
       fireEvent.press(chooseCookies)
@@ -232,8 +214,9 @@ describe('<CookiesConsent/>', () => {
       fireEvent.press(performanceSwitch)
 
       const saveChoice = getByText('Enregistrer mes choix')
-      fireEvent.press(saveChoice)
-      await flushAllPromisesWithAct()
+      await act(async () => {
+        fireEvent.press(saveChoice)
+      })
 
       const storageContent = {
         buildVersion: Package.build,
@@ -249,20 +232,21 @@ describe('<CookiesConsent/>', () => {
     })
 
     it('should call startTrackingAcceptedCookies with empty array if all cookies are refused', async () => {
-      const { getByText } = await renderCookiesConsent()
+      const { getByText } = renderCookiesConsent()
 
       const chooseCookies = getByText('Choisir les cookies')
       fireEvent.press(chooseCookies)
 
       const saveChoice = getByText('Enregistrer mes choix')
-      fireEvent.press(saveChoice)
-      await superFlushWithAct()
+      await act(async () => {
+        fireEvent.press(saveChoice)
+      })
 
       expect(mockStartTrackingAcceptedCookies).toHaveBeenCalledWith([])
     })
 
     it('should call startTrackingAcceptedCookies with performance if performance cookies are accepted', async () => {
-      const { getByText, getByTestId } = await renderCookiesConsent()
+      const { getByText, getByTestId } = renderCookiesConsent()
 
       const chooseCookies = getByText('Choisir les cookies')
       fireEvent.press(chooseCookies)
@@ -271,14 +255,15 @@ describe('<CookiesConsent/>', () => {
       fireEvent.press(performanceSwitch)
 
       const saveChoice = getByText('Enregistrer mes choix')
-      fireEvent.press(saveChoice)
-      await superFlushWithAct()
+      await act(async () => {
+        fireEvent.press(saveChoice)
+      })
 
       expect(mockStartTrackingAcceptedCookies).toHaveBeenCalledWith(COOKIES_BY_CATEGORY.performance)
     })
 
     it('should log analytics if performance cookies are accepted', async () => {
-      const { getByText, getByTestId } = await renderCookiesConsent()
+      const { getByText, getByTestId } = renderCookiesConsent()
 
       const chooseCookies = getByText('Choisir les cookies')
       fireEvent.press(chooseCookies)
@@ -287,9 +272,10 @@ describe('<CookiesConsent/>', () => {
       fireEvent.press(performanceSwitch)
 
       const saveChoice = getByText('Enregistrer mes choix')
-      fireEvent.press(saveChoice)
+      await act(async () => {
+        fireEvent.press(saveChoice)
+      })
 
-      await superFlushWithAct()
       expect(analytics.logHasMadeAChoiceForCookies).toHaveBeenCalledWith({
         from: 'Modal',
         type: { performance: true, customization: false, marketing: false },
@@ -297,20 +283,21 @@ describe('<CookiesConsent/>', () => {
     })
 
     it('should call setMarketingParams with empty array when all cookies are refused', async () => {
-      const { getByText } = await renderCookiesConsent()
+      const { getByText } = renderCookiesConsent()
 
       const chooseCookies = getByText('Choisir les cookies')
       fireEvent.press(chooseCookies)
 
       const saveChoice = getByText('Enregistrer mes choix')
-      fireEvent.press(saveChoice)
-      await superFlushWithAct()
+      await act(async () => {
+        fireEvent.press(saveChoice)
+      })
 
       expect(setMarketingParamsSpy).toHaveBeenNthCalledWith(1, UTM_PARAMS, [])
     })
 
     it('should call setMarketingParams with customization cookies when they are accepted', async () => {
-      const { getByTestId, getByText } = await renderCookiesConsent()
+      const { getByTestId, getByText } = renderCookiesConsent()
 
       const chooseCookies = getByText('Choisir les cookies')
       fireEvent.press(chooseCookies)
@@ -319,8 +306,9 @@ describe('<CookiesConsent/>', () => {
       fireEvent.press(customizationSwitch)
 
       const saveChoice = getByText('Enregistrer mes choix')
-      fireEvent.press(saveChoice)
-      await superFlushWithAct()
+      await act(async () => {
+        fireEvent.press(saveChoice)
+      })
 
       expect(setMarketingParamsSpy).toHaveBeenNthCalledWith(
         1,
@@ -330,25 +318,25 @@ describe('<CookiesConsent/>', () => {
     })
 
     it('should hide modale when user saves cookies choice', async () => {
-      const { getByText } = await renderCookiesConsent()
+      const { getByText } = renderCookiesConsent()
 
       const chooseCookies = getByText('Choisir les cookies')
       fireEvent.press(chooseCookies)
 
       const saveChoice = getByText('Enregistrer mes choix')
-      fireEvent.press(saveChoice)
-      await superFlushWithAct()
+      await act(async () => {
+        fireEvent.press(saveChoice)
+      })
 
       expect(hideModal).toHaveBeenCalledTimes(1)
     })
   })
 })
 
-const renderCookiesConsent = async () => {
+const renderCookiesConsent = () => {
   const renderAPI = render(<CookiesConsent visible hideModal={hideModal} />, {
     // eslint-disable-next-line local-rules/no-react-query-provider-hoc
     wrapper: ({ children }) => reactQueryProviderHOC(children),
   })
-  await flushAllPromisesWithAct()
   return renderAPI
 }
