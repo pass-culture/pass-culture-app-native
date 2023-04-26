@@ -92,7 +92,6 @@ export const SuggestedPlaces: FunctionComponent<Props> = ({ query, setSelectedPl
       </View>
       {filteredPlaces.length > 0 && (
         <React.Fragment>
-          {/*<Spacer.Column numberOfSpaces={6} />*/}
           <VerticalUl>
             {filteredPlaces.map((item, index) => (
               <Li key={keyExtractor(item)}>
