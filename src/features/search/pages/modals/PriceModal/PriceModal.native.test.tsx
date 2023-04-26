@@ -8,7 +8,7 @@ import { FilterBehaviour } from 'features/search/enums'
 import { MAX_PRICE } from 'features/search/helpers/reducer.helpers'
 import { SearchState, SearchView } from 'features/search/types'
 import { beneficiaryUser } from 'fixtures/user'
-import { fireEvent, render, act, superFlushWithAct, waitFor, screen } from 'tests/utils'
+import { fireEvent, render, act, waitFor, screen } from 'tests/utils'
 
 import { PriceModal, PriceModalProps } from './PriceModal'
 
@@ -55,12 +55,10 @@ describe('<PriceModal/>', () => {
   })
 
   it('should render modal correctly after animation and with enabled submit', async () => {
-    jest.useFakeTimers('legacy')
     const renderAPI = renderSearchPrice()
-    await superFlushWithAct()
-    jest.advanceTimersByTime(2000)
+    await screen.findByText('Prix')
+
     expect(renderAPI).toMatchSnapshot()
-    jest.useRealTimers()
   })
 
   describe('without previous value in the search state', () => {
@@ -500,7 +498,7 @@ describe('<PriceModal/>', () => {
     it('when pressing the search button', async () => {
       renderSearchPrice()
 
-      await superFlushWithAct()
+      await screen.findByText('Prix')
 
       const searchButton = screen.getByTestId('Rechercher')
 
@@ -514,7 +512,7 @@ describe('<PriceModal/>', () => {
     it('when pressing previous button', async () => {
       renderSearchPrice()
 
-      await superFlushWithAct()
+      await screen.findByText('Prix')
 
       const previousButton = screen.getByTestId('Fermer')
       fireEvent.press(previousButton)
@@ -588,7 +586,7 @@ describe('<PriceModal/>', () => {
     it('should not display limit credit search toggle', async () => {
       renderSearchPrice()
 
-      await superFlushWithAct()
+      await screen.findByText('Prix')
 
       const toggleLimitCreditSearch = screen.queryByTestId('Interrupteur-limitCreditSearch')
 
@@ -690,7 +688,7 @@ describe('<PriceModal/>', () => {
         filterBehaviour: FilterBehaviour.APPLY_WITHOUT_SEARCHING,
       })
 
-      await superFlushWithAct()
+      await screen.findByText('Prix')
 
       const maxPriceInput = screen.getByPlaceholderText('80')
       await act(async () => {
@@ -873,7 +871,7 @@ describe('<PriceModal/>', () => {
         onClose: mockOnClose,
       })
 
-      await superFlushWithAct()
+      await screen.findByText('Prix')
 
       const closeButton = screen.getByTestId('Fermer')
       fireEvent.press(closeButton)
@@ -884,7 +882,7 @@ describe('<PriceModal/>', () => {
     it('should only close the modal when pressing close button when the modal is opening from search results', async () => {
       renderSearchPrice()
 
-      await superFlushWithAct()
+      await screen.findByText('Prix')
 
       const closeButton = screen.getByTestId('Fermer')
       fireEvent.press(closeButton)

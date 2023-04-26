@@ -12,7 +12,14 @@ import { analytics } from 'libs/analytics'
 import { campaignTracker } from 'libs/campaign/__mocks__'
 import { storage } from 'libs/storage'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { render, fireEvent, superFlushWithAct, act, flushAllPromisesWithAct } from 'tests/utils'
+import {
+  render,
+  fireEvent,
+  superFlushWithAct,
+  act,
+  flushAllPromisesWithAct,
+  screen,
+} from 'tests/utils'
 
 const COOKIES_CONSENT_KEY = 'cookies'
 const hideModal = jest.fn()
@@ -52,7 +59,9 @@ describe('<CookiesConsent/>', () => {
   beforeEach(() => storage.clear(COOKIES_CONSENT_KEY))
 
   it('should render correctly', async () => {
-    const renderAPI = await renderCookiesConsent()
+    const renderAPI = renderCookiesConsent()
+
+    await screen.findByText('Tout accepter')
     expect(renderAPI).toMatchSnapshot()
   })
 

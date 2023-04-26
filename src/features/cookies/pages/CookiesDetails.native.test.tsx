@@ -1,13 +1,13 @@
 import React from 'react'
 
 import { CookiesDetails } from 'features/cookies/pages/CookiesDetails'
-import { flushAllPromisesWithAct, render } from 'tests/utils'
+import { screen, render } from 'tests/utils'
 
 jest.mock('features/profile/api/useUpdateProfileMutation')
 
 describe('<CookiesDetails/>', () => {
   it('should render correctly', async () => {
-    const renderAPI = render(
+    render(
       <CookiesDetails
         settingsCookiesChoice={{
           marketing: false,
@@ -17,8 +17,9 @@ describe('<CookiesDetails/>', () => {
         setSettingsCookiesChoice={jest.fn()}
       />
     )
-    await flushAllPromisesWithAct()
 
-    expect(renderAPI).toMatchSnapshot()
+    await screen.findByText('Pour plus d’informations, nous t’invitons à consulter notre')
+
+    expect(screen).toMatchSnapshot()
   })
 })

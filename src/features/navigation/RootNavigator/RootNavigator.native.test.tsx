@@ -3,7 +3,7 @@ import React from 'react'
 
 import { useMustUpdateApp } from 'features/forceUpdate/helpers/useMustUpdateApp'
 import { useSplashScreenContext } from 'libs/splashscreen'
-import { render, flushAllPromisesWithAct } from 'tests/utils'
+import { render, screen } from 'tests/utils'
 
 import { RootNavigator } from './RootNavigator'
 
@@ -34,9 +34,9 @@ describe('<RootNavigator />', () => {
   it('should NOT display PrivacyPolicy if splash screen is not yet hidden', async () => {
     mockedUseMustUpdateApp.mockReturnValueOnce(false)
     mockUseSplashScreenContext.mockReturnValueOnce({ isSplashScreenHidden: false })
-    const renderAPI = await renderRootNavigator()
+    renderRootNavigator()
 
-    const privacyPolicyTitle = renderAPI.queryByText('Respect de ta vie privée')
+    const privacyPolicyTitle = screen.queryByText('Respect de ta vie privée')
     expect(privacyPolicyTitle).toBeFalsy()
   })
 
@@ -44,37 +44,39 @@ describe('<RootNavigator />', () => {
     mockedUseMustUpdateApp.mockReturnValueOnce(false)
     mockUseSplashScreenContext.mockReturnValueOnce({ isSplashScreenHidden: true })
 
-    const renderAPI = await renderRootNavigator()
+    renderRootNavigator()
 
-    const privacyPolicyTitle = renderAPI.queryByText('Respect de ta vie privée')
+    const privacyPolicyTitle = await screen.findByText('Respect de ta vie privée')
     expect(privacyPolicyTitle).toBeTruthy()
   })
 
   it('should not display quick access button in native', async () => {
     mockUseSplashScreenContext.mockReturnValueOnce({ isSplashScreenHidden: true })
 
-    const renderAPI = await renderRootNavigator()
+    renderRootNavigator()
 
-    const quickAccessButton = renderAPI.queryByText('Accéder au menu de navigation')
+    await screen.findByText('Respect de ta vie privée')
+
+    const quickAccessButton = screen.queryByText('Accéder au menu de navigation')
     expect(quickAccessButton).toBeNull()
   })
 })
 
 describe('ForceUpdate display logic', () => {
   it('should display force update page when global variable is set', async () => {
-    const rootNavigator = await renderRootNavigator()
+    mockUseSplashScreenContext.mockReturnValueOnce({ isSplashScreenHidden: true })
+    renderRootNavigator()
 
-    expect(rootNavigator.queryAllByText('Mise à jour de l’application')).toBeTruthy()
+    await screen.findByText('Respect de ta vie privée')
+
+    expect(screen.queryAllByText('Mise à jour de l’application')).toBeTruthy()
   })
 })
 
-async function renderRootNavigator() {
-  const renderAPI = render(
+function renderRootNavigator() {
+  render(
     <NavigationContainer>
       <RootNavigator />
     </NavigationContainer>
   )
-
-  await flushAllPromisesWithAct()
-  return renderAPI
 }

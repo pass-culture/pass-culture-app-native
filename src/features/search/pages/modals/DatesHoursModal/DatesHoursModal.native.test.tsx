@@ -14,7 +14,7 @@ import {
 } from 'features/search/pages/modals/DatesHoursModal/DatesHoursModal'
 import { SearchState, SearchView } from 'features/search/types'
 import { formatToCompleteFrenchDate } from 'libs/parsers'
-import { act, fireEvent, render, screen, superFlushWithAct, waitFor } from 'tests/utils'
+import { act, fireEvent, render, screen, waitFor } from 'tests/utils'
 
 const searchId = uuidv4()
 const searchState = { ...initialSearchState, searchId }
@@ -40,9 +40,9 @@ describe('<DatesHoursModal/>', () => {
   })
 
   it('should render modal correctly after animation and with enabled submit', async () => {
-    jest.useFakeTimers('legacy')
     const renderAPI = renderDatesHoursModal()
-    await superFlushWithAct()
+    await screen.findByText('Dates & heures')
+
     expect(renderAPI).toMatchSnapshot()
   })
 
@@ -278,7 +278,7 @@ describe('<DatesHoursModal/>', () => {
   it('should close the modal when pressing previous button', async () => {
     renderDatesHoursModal()
 
-    await superFlushWithAct()
+    await screen.findByText('Dates & heures')
 
     const previousButton = screen.getByTestId('Fermer')
     fireEvent.press(previousButton)
@@ -393,7 +393,7 @@ describe('<DatesHoursModal/>', () => {
         }
         renderDatesHoursModal()
 
-        await superFlushWithAct()
+        await screen.findByText('Dates & heures')
 
         const searchButton = screen.getByText('Rechercher')
         await act(async () => {
@@ -482,7 +482,7 @@ describe('<DatesHoursModal/>', () => {
         }
         renderDatesHoursModal()
 
-        await superFlushWithAct()
+        await screen.findByText('Dates & heures')
 
         const searchButton = screen.getByText('Rechercher')
         await act(async () => {
@@ -519,7 +519,7 @@ describe('<DatesHoursModal/>', () => {
         onClose: mockOnClose,
       })
 
-      await superFlushWithAct()
+      await screen.findByText('Dates & heures')
 
       const closeButton = screen.getByTestId('Fermer')
       fireEvent.press(closeButton)
@@ -530,7 +530,7 @@ describe('<DatesHoursModal/>', () => {
     it('should only close the modal when pressing close button when the modal is opening from search results', async () => {
       renderDatesHoursModal()
 
-      await superFlushWithAct()
+      await screen.findByText('Dates & heures')
 
       const closeButton = screen.getByTestId('Fermer')
       fireEvent.press(closeButton)

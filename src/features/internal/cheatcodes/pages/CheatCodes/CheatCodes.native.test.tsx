@@ -3,7 +3,7 @@ import React from 'react'
 import { BatchUser } from '__mocks__/libs/react-native-batch'
 import { env } from 'libs/environment'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { flushAllPromisesWithAct, render } from 'tests/utils'
+import { render, screen } from 'tests/utils'
 
 import { CheatCodes } from './CheatCodes'
 
@@ -35,7 +35,8 @@ describe('CheatCodes component', () => {
     // eslint-disable-next-line local-rules/no-react-query-provider-hoc
     const instance = renderCheatCodes()
 
-    await flushAllPromisesWithAct()
+    await screen.findByText('CheatCodes')
+
     buttonIsdisplayed
       ? expect(instance.queryByText('Check update')).toBeTruthy()
       : expect(instance.queryByText('Check update')).toBeNull()
@@ -44,12 +45,10 @@ describe('CheatCodes component', () => {
 
   it('should call installationID and display it', async () => {
     // eslint-disable-next-line local-rules/no-react-query-provider-hoc
-    const { queryByText } = renderCheatCodes()
-
-    await flushAllPromisesWithAct()
+    renderCheatCodes()
 
     expect(BatchUser.getInstallationID).toHaveBeenCalledTimes(1)
-    expect(queryByText(`Batch installation ID: ${installationID}`)).toBeTruthy()
+    expect(await screen.findByText(`Batch installation ID: ${installationID}`)).toBeTruthy()
   })
 })
 

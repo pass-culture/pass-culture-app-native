@@ -11,7 +11,7 @@ import {
 } from 'features/search/pages/modals/OfferDuoModal/OfferDuoModal'
 import { SearchState, SearchView } from 'features/search/types'
 import { beneficiaryUser } from 'fixtures/user'
-import { fireEvent, render, screen, superFlushWithAct, waitFor } from 'tests/utils'
+import { fireEvent, render, screen, waitFor } from 'tests/utils'
 
 const searchId = uuidv4()
 const searchState = { ...initialSearchState, searchId }
@@ -47,12 +47,10 @@ const mockOnClose = jest.fn()
 
 describe('<OfferDuoModal/>', () => {
   it('should render modal correctly after animation and with enabled submit', async () => {
-    jest.useFakeTimers('legacy')
     const renderAPI = renderOfferDuoModal()
-    await superFlushWithAct()
-    jest.advanceTimersByTime(2000)
+    await screen.findByText('Uniquement les offres duo')
+
     expect(renderAPI).toMatchSnapshot()
-    jest.useRealTimers()
   })
 
   describe('modal header', () => {
