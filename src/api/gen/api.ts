@@ -3546,6 +3546,24 @@ export const DefaultApiFetchParamCreator = function (configuration?: Configurati
       }
     },
     /**
+     * @summary get_profile <GET>
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async getnativev1subscriptionprofile(options: any = {}): Promise<FetchArgs> {
+      const pathname = `/native/v1/subscription/profile`
+      let secureOptions = Object.assign(options, { credentials: 'omit' })
+      // authentication JWTAuth required
+      secureOptions = Object.assign(secureOptions, { credentials: 'include' })
+      const localVarRequestOptions = Object.assign({ method: 'GET' }, secureOptions)
+      const localVarHeaderParameter = await getAuthenticationHeaders(secureOptions)
+      localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers)
+      return {
+        url: pathname,
+        options: localVarRequestOptions,
+      }
+    },
+    /**
      * @summary get_profile_options <GET>
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
@@ -3568,24 +3586,6 @@ export const DefaultApiFetchParamCreator = function (configuration?: Configurati
      */
     async getnativev1subscriptionstepper(options: any = {}): Promise<FetchArgs> {
       const pathname = `/native/v1/subscription/stepper`
-      let secureOptions = Object.assign(options, { credentials: 'omit' })
-      // authentication JWTAuth required
-      secureOptions = Object.assign(secureOptions, { credentials: 'include' })
-      const localVarRequestOptions = Object.assign({ method: 'GET' }, secureOptions)
-      const localVarHeaderParameter = await getAuthenticationHeaders(secureOptions)
-      localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers)
-      return {
-        url: pathname,
-        options: localVarRequestOptions,
-      }
-    },
-    /**
-     * @summary Generate a unique hash which will be used as an identifier for user profiling
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    async getnativev1userProfilingsessionId(options: any = {}): Promise<FetchArgs> {
-      const pathname = `/native/v1/user_profiling/session_id`
       let secureOptions = Object.assign(options, { credentials: 'omit' })
       // authentication JWTAuth required
       secureOptions = Object.assign(secureOptions, { credentials: 'include' })
@@ -4498,6 +4498,17 @@ export const DefaultApiFp = function(api: DefaultApi, configuration?: Configurat
     },
     /**
      * 
+     * @summary get_profile <GET>
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async getnativev1subscriptionprofile(options?: any): Promise<EmptyResponse> {
+      const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).getnativev1subscriptionprofile(options)
+      const response = await safeFetch(configuration?.basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
+      return handleGeneratedApiResponse(response)
+    },
+    /**
+     * 
      * @summary get_profile_options <GET>
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
@@ -4515,17 +4526,6 @@ export const DefaultApiFp = function(api: DefaultApi, configuration?: Configurat
      */
     async getnativev1subscriptionstepper(options?: any): Promise<SubscriptionStepperResponse> {
       const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).getnativev1subscriptionstepper(options)
-      const response = await safeFetch(configuration?.basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
-      return handleGeneratedApiResponse(response)
-    },
-    /**
-     * 
-     * @summary Generate a unique hash which will be used as an identifier for user profiling
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    async getnativev1userProfilingsessionId(options?: any): Promise<UserProfilingSessionIdResponse> {
-      const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).getnativev1userProfilingsessionId(options)
       const response = await safeFetch(configuration?.basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
       return handleGeneratedApiResponse(response)
     },
@@ -5111,6 +5111,17 @@ export class DefaultApi extends BaseAPI {
   }
   /**
     * 
+    * @summary get_profile <GET>
+    * @param {*} [options] Override http request option.
+    * @throws {RequiredError}
+    * @memberof DefaultApi
+    */
+  public async getnativev1subscriptionprofile(options?: any) {
+    const configuration = await this.getConfiguration()
+    return DefaultApiFp(this, configuration).getnativev1subscriptionprofile(options)
+  }
+  /**
+    * 
     * @summary get_profile_options <GET>
     * @param {*} [options] Override http request option.
     * @throws {RequiredError}
@@ -5130,17 +5141,6 @@ export class DefaultApi extends BaseAPI {
   public async getnativev1subscriptionstepper(options?: any) {
     const configuration = await this.getConfiguration()
     return DefaultApiFp(this, configuration).getnativev1subscriptionstepper(options)
-  }
-  /**
-    * 
-    * @summary Generate a unique hash which will be used as an identifier for user profiling
-    * @param {*} [options] Override http request option.
-    * @throws {RequiredError}
-    * @memberof DefaultApi
-    */
-  public async getnativev1userProfilingsessionId(options?: any) {
-    const configuration = await this.getConfiguration()
-    return DefaultApiFp(this, configuration).getnativev1userProfilingsessionId(options)
   }
   /**
     * 
