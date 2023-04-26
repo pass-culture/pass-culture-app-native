@@ -67,7 +67,7 @@ export const SearchBox: React.FunctionComponent<Props> = ({
     debounce(setAutocompleteQuery, SEARCH_DEBOUNCE_MS)
   ).current
   const { data: appSettings } = useSettingsContext()
-  const appEnableAutocomplete = appSettings?.appEnableAutocomplete ?? false
+  const appEnableAutocomplete = appSettings?.appEnableAutocomplete
   const isLandingOrResults =
     params === undefined || params.view === SearchView.Landing || params.view === SearchView.Results
 
@@ -118,6 +118,7 @@ export const SearchBox: React.FunctionComponent<Props> = ({
   }, [params?.query])
 
   useEffect(() => {
+    if (appEnableAutocomplete === undefined) return
     if (!params?.noFocus && params?.view === SearchView.Results && !appEnableAutocomplete) {
       inputRef.current?.focus()
     }

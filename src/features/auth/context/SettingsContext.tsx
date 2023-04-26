@@ -7,8 +7,8 @@ import { useNetInfoContext } from 'libs/network/NetInfoWrapper'
 import { QueryKeys } from 'libs/queryKeys'
 
 interface ISettingsContext {
-  data: UseQueryResult<SettingsResponse, unknown>['data']
-  isLoading: UseQueryResult<SettingsResponse, unknown>['isLoading']
+  data: UseQueryResult<SettingsResponse>['data']
+  isLoading: UseQueryResult<SettingsResponse>['isLoading']
 }
 
 const SettingsContext = React.createContext<ISettingsContext>({
