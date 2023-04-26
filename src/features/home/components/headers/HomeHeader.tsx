@@ -8,7 +8,7 @@ import { useAuthContext } from 'features/auth/context/AuthContext'
 import { useHomeBanner } from 'features/home/api/useHomeBanner'
 import { ActivationBanner } from 'features/home/components/banners/ActivationBanner'
 import { GeolocationBanner } from 'features/home/components/banners/GeolocationBanner'
-import { RetryActivationBanner } from 'features/home/components/banners/RetryActivationBanner'
+//import { RetryActivationBanner } from 'features/home/components/banners/RetryActivationBanner'
 import { SignupBanner } from 'features/home/components/banners/SignupBanner'
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { isUserBeneficiary } from 'features/profile/helpers/isUserBeneficiary'
@@ -64,7 +64,7 @@ export const HomeHeader: FunctionComponent = function () {
     if (homeBanner?.name === BannerName.activation_banner)
       return (
         <BannerContainer>
-          <ActivationBanner title={homeBanner.title} subtitle={homeBanner.text} />
+          <ActivationBanner title={homeBanner.title} subtitle={homeBanner.text} icon={"BicolorUnlock"} />
         </BannerContainer>
       )
 
@@ -78,7 +78,14 @@ export const HomeHeader: FunctionComponent = function () {
     if (homeBanner?.name === BannerName.retry_identity_check_banner)
       return (
         <BannerContainer>
-          <RetryActivationBanner title={homeBanner.title} subtitle={homeBanner.text} />
+          <ActivationBanner title={homeBanner.title} subtitle={homeBanner.text} icon={"ArrowAgain"} />
+        </BannerContainer>
+      )
+
+    if (homeBanner?.name === BannerName.transition_17_18_banner)
+      return (
+        <BannerContainer>
+          <ActivationBanner title={homeBanner.title} subtitle={homeBanner.text} icon={"BirthdayCake"} />
         </BannerContainer>
       )
 
