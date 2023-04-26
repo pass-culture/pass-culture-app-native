@@ -53,6 +53,15 @@ export const SetCity = () => {
   const { data: cities = [], isLoading, isError, isSuccess } = useCities(debouncedPostalCode)
 
   useEffect(() => {
+    if (profile.city?.name) {
+      const city = cities.find(
+        (suggestedCity: SuggestedCity) => suggestedCity.name === profile.city?.name
+      )
+      setSelectedCity(city || null)
+    }
+  }, [cities, profile])
+
+  useEffect(() => {
     if (!isError) return
     showErrorSnackBar({ message: snackbarMessage, timeout: SNACK_BAR_TIME_OUT })
     eventMonitoring.captureException(new IdentityCheckError(exception))
