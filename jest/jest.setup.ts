@@ -1,5 +1,10 @@
 /* eslint-disable no-undef */
 import 'cross-fetch/polyfill'
+
+// @ts-ignore jest can have access to this file but typescript does not know it
+// We can see it
+import mockRNDeviceInfo from 'react-native-device-info/jest/react-native-device-info-mock'
+
 jest.unmock('react-query')
 /* We disable the following warning, which can be safely ignored as the code
   is not executed on a device :
@@ -85,6 +90,8 @@ jest.mock('libs/amplitude/amplitude')
 jest.mock('libs/react-native-device-info/getUniqueId')
 
 jest.mock('libs/keychain')
+
+jest.mock('react-native-device-info', () => mockRNDeviceInfo)
 
 /* See the corresponding mock in libs/network/__mocks__ */
 jest.mock('libs/network/NetInfoWrapper')
