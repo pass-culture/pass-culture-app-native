@@ -209,21 +209,31 @@ exports[`Stepper navigation should render correctly 1`] = `
                   </Text>
                 </View>
               </View>
-              <Text
-                stepState="completed"
+              <View
                 style={
                   Array [
                     Object {
-                      "color": "#696A6F",
-                      "fontFamily": "Montserrat-Bold",
-                      "fontSize": 15,
-                      "lineHeight": 20,
+                      "flexDirection": "column",
                     },
                   ]
                 }
               >
-                Numéro de téléphone
-              </Text>
+                <Text
+                  stepState="completed"
+                  style={
+                    Array [
+                      Object {
+                        "color": "#696A6F",
+                        "fontFamily": "Montserrat-Bold",
+                        "fontSize": 15,
+                        "lineHeight": 20,
+                      },
+                    ]
+                  }
+                >
+                  Numéro de téléphone
+                </Text>
+              </View>
             </View>
           </View>
         </View>
@@ -465,21 +475,31 @@ exports[`Stepper navigation should render correctly 1`] = `
                   </Text>
                 </View>
               </View>
-              <Text
-                stepState="disabled"
+              <View
                 style={
                   Array [
                     Object {
-                      "color": "#696A6F",
-                      "fontFamily": "Montserrat-Bold",
-                      "fontSize": 15,
-                      "lineHeight": 20,
+                      "flexDirection": "column",
                     },
                   ]
                 }
               >
-                Profil
-              </Text>
+                <Text
+                  stepState="disabled"
+                  style={
+                    Array [
+                      Object {
+                        "color": "#696A6F",
+                        "fontFamily": "Montserrat-Bold",
+                        "fontSize": 15,
+                        "lineHeight": 20,
+                      },
+                    ]
+                  }
+                >
+                  Profil
+                </Text>
+              </View>
             </View>
           </View>
         </View>
@@ -574,21 +594,31 @@ exports[`Stepper navigation should render correctly 1`] = `
                   </Text>
                 </View>
               </View>
-              <Text
-                stepState="disabled"
+              <View
                 style={
                   Array [
                     Object {
-                      "color": "#696A6F",
-                      "fontFamily": "Montserrat-Bold",
-                      "fontSize": 15,
-                      "lineHeight": 20,
+                      "flexDirection": "column",
                     },
                   ]
                 }
               >
-                Confirmation
-              </Text>
+                <Text
+                  stepState="disabled"
+                  style={
+                    Array [
+                      Object {
+                        "color": "#696A6F",
+                        "fontFamily": "Montserrat-Bold",
+                        "fontSize": 15,
+                        "lineHeight": 20,
+                      },
+                    ]
+                  }
+                >
+                  Confirmation
+                </Text>
+              </View>
             </View>
           </View>
         </View>
