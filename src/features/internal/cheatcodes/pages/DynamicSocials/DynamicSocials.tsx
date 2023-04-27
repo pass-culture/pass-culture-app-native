@@ -16,7 +16,7 @@ export const DynamicSocials: FunctionComponent<Props> = () => {
     <React.Fragment>
       <PageHeaderSecondary title="Spike réseaux sociaux dynamiques" />
       <Container>
-        <InstalledMessagingApps offerId={offerId} />
+        <InstalledMessagingApps offerId={offerId} urlType="universal" />
       </Container>
     </React.Fragment>
   )
