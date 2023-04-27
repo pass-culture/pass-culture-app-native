@@ -13,7 +13,7 @@ export const useSortedSearchCategories = (
 
   return categories
     .map((category) => ({
-      label: searchGroupLabelMapping[category.facetFilter],
+      label: searchGroupLabelMapping?.[category.facetFilter] || '',
       Icon: category.icon,
       onPress() {
         onPressCategory(category.facetFilter)
