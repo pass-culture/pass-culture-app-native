@@ -24,7 +24,7 @@ export const checkIsInstalled = async () => {
   ) as Network[]
 }
 
-const MAX_NB_OF_SOCIALS_TO_SHOW = 3
+const MAX_NB_OF_SOCIALS_TO_SHOW = 10
 export const getInstalledApps = async () => {
   return (await checkIsInstalled()).slice(0, MAX_NB_OF_SOCIALS_TO_SHOW)
 }
