@@ -68,7 +68,7 @@ interface Asset<ContentType extends ContentTypes> {
   }
 }
 
-interface Sys<ContentType extends ContentTypes> {
+export interface Sys<ContentType extends ContentTypes> {
   type: string
   id: string
   createdAt: string

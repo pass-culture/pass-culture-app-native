@@ -4,7 +4,7 @@ import { movieGenresFixture } from 'libs/contentful/fixtures/movieGenres.fixture
 import { musicTypesFixture } from 'libs/contentful/fixtures/musicTypes.fixture'
 import { showTypesFixture } from 'libs/contentful/fixtures/showTypes.fixture'
 import { subcategoriesFixture } from 'libs/contentful/fixtures/subcategoriesEntry.fixture'
-import { AlgoliaContentModel, AlgoliaParameters, ContentTypes } from 'libs/contentful/types'
+import { AlgoliaContentModel, AlgoliaParameters, ContentTypes, Cover } from 'libs/contentful/types'
 
 // This fixture reflects the contentful data after the resolveResponse formatting
 export const algoliaNatifModuleFixture: AlgoliaContentModel = {
@@ -137,7 +137,7 @@ export const additionalAlgoliaParametersWithOffersFixture: AlgoliaParameters[] =
   },
 ]
 
-export const algoliaNatifModuleCoverFixture: AlgoliaContentModel['fields']['cover'] = {
+export const algoliaNatifModuleCoverFixture: Cover = {
   sys: {
     space: { sys: { type: 'Link', linkType: 'Space', id: '2bg01iqy0isv' } },
     id: '1ZGleldomxaHjZeVZs6wCM',
