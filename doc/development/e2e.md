@@ -52,6 +52,18 @@ appium-doctor
 
 ---
 
+## Peer dependencies
+
+On your desktop, you must install browser's driver that match your version in order to use test automation, respectively:
+
+- `chromedriver` for Chrome (For Mac users: `brew install cask chromedriver`)
+- `safaridriver` for Safari
+- `geckodriver` for Firefox (For Mac users: `brew install geckodriver`)
+
+Refer to google to get installation instruction for your system.
+
+---
+
 ## App center
 
 If you want to download apps from AppCenter, you can create an user API token in Account => Account Settings => User API tokens
@@ -105,18 +117,6 @@ Android `127.0.0.1` map to its own interface, while `10.0.2.2` target your `127.
 iOS simulator use the same interface as your host, it is fine to use `127.0.0.1`.
 
 You can view all available options in [`e2e/config/environment/env.ts`](../../e2e/config/environment/env.ts).
-
----
-
-## Peer dependencies
-
-On your desktop, you must install browser's driver that match your version in order to use test automation, respectively:
-
-- `chromedriver` for Chrome (For Mac users: `brew install cask chromedriver`)
-- `safaridriver` for Safari
-- `geckodriver` for Firefox (For Mac users: `brew install geckodriver`)
-
-Refer to google to get installation instruction for your system.
 
 **Gmail Client**
 
