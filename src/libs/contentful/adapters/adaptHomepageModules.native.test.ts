@@ -49,8 +49,8 @@ describe('adaptHomepageModules', () => {
       const spyWarn = jest.spyOn(global.console, 'warn').mockImplementationOnce(() => null)
 
       const contentModel = cloneDeep(businessNatifModuleFixture)
-      // @ts-ignore: the following content model is voluntarily broken (as it happened in the past), cf. PC-21362
-      contentModel.fields.image.fields = undefined
+      // @ts-ignore: the following content model is voluntarily broken, cf. PC-21362
+      contentModel.fields.image = undefined
 
       adaptHomepageNatifModules([contentModel])
 
