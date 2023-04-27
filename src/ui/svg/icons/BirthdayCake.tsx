@@ -25,6 +25,6 @@ const BirthdayCakeSvg: React.FunctionComponent<AccessibleIcon> = ({
 )
 
 export const BirthdayCake = styled(BirthdayCakeSvg).attrs(({ color, size, theme }) => ({
-  color: color ?? theme.colors.black,
+  color: color ?? theme.colors.primary,
   size: size ?? theme.icons.sizes.standard,
 }))``

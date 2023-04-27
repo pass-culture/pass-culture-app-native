@@ -18,9 +18,7 @@ export const ActivationBanner = ({ title, subtitle, icon }: ActivationBannerProp
   }))``
 
   return (
-    <BannerWithBackground
-      leftIcon={StyledIcon}
-      navigateTo={{ screen: 'IdentityCheckStepper' }}>
+    <BannerWithBackground leftIcon={StyledIcon} navigateTo={{ screen: 'IdentityCheckStepper' }}>
       <StyledButtonText>{title}</StyledButtonText>
       <StyledBodyText>{subtitle}</StyledBodyText>
     </BannerWithBackground>

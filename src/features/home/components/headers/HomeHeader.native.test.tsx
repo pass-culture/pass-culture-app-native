@@ -205,7 +205,6 @@ describe('HomeHeader', () => {
   })
 })
 
-
 function renderHomeHeader() {
   return render(<HomeHeader />, {
     // eslint-disable-next-line local-rules/no-react-query-provider-hoc

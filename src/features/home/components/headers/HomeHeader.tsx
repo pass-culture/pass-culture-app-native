@@ -66,7 +66,11 @@ export const HomeHeader: FunctionComponent = function () {
     if (homeBanner?.name === BannerName.activation_banner)
       return (
         <BannerContainer>
-          <ActivationBanner title={homeBanner.title} subtitle={homeBanner.text} icon={StyledBicolorUnlock} />
+          <ActivationBanner
+            title={homeBanner.title}
+            subtitle={homeBanner.text}
+            icon={StyledBicolorUnlock}
+          />
         </BannerContainer>
       )
 
@@ -80,14 +84,22 @@ export const HomeHeader: FunctionComponent = function () {
     if (homeBanner?.name === BannerName.retry_identity_check_banner)
       return (
         <BannerContainer>
-          <ActivationBanner title={homeBanner.title} subtitle={homeBanner.text} icon={StyledArrowAgain} />
+          <ActivationBanner
+            title={homeBanner.title}
+            subtitle={homeBanner.text}
+            icon={StyledArrowAgain}
+          />
         </BannerContainer>
       )
 
     if (homeBanner?.name === BannerName.transition_17_18_banner)
       return (
         <BannerContainer>
-          <ActivationBanner title={homeBanner.title} subtitle={homeBanner.text} icon={StyledBirthdayCake} />
+          <ActivationBanner
+            title={homeBanner.title}
+            subtitle={homeBanner.text}
+            icon={StyledBirthdayCake}
+          />
         </BannerContainer>
       )
 
