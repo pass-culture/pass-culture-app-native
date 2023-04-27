@@ -1,15 +1,11 @@
 import React, { memo, useCallback } from 'react'
 import styled, { useTheme } from 'styled-components/native'
 
+import { FirstOrLastProps, StepVariantProps } from 'features/profile/types'
 import { Validate } from 'ui/svg/icons/Validate'
 import { getSpacing } from 'ui/theme'
 
-import {
-  FirstVerticalStepperProps,
-  LastVerticalStepperProps,
-  NeitherFirstOrLastVerticalStepperProps,
-  StepVariant,
-} from './types'
+import { StepVariant } from './types'
 
 /**
  * I give the ability to know if this is the first or last item of the stepper
@@ -18,36 +14,25 @@ import {
  * We may also want to do something else in this case, so TypeScript is ready to handle
  * these cases!
  */
-export type VerticalStepperProps = (
-  | FirstVerticalStepperProps
-  | LastVerticalStepperProps
-  | NeitherFirstOrLastVerticalStepperProps
-) & {
-  /**
-   * Use this prop to handle correct stepper step.
-   *
-   * There is 3 variants available:
-   * - `VerticalStepperVariant.complete` for completed step
-   * - `VerticalStepperVariant.in_progress` for in-progress step
-   * - `VerticalStepperVariant.future` for future step
-   *
-   * Each one has its own styling, and it should always be only one "in-progress" step.
-   * It may exist 0 or more completed and future steps.
-   */
-  variant: StepVariant
-  /**
-   * Use this if you want to override middle icon.
-   */
-  iconComponent?: JSX.Element
-}
+export type VerticalStepperProps = FirstOrLastProps &
+  StepVariantProps & {
+    /**
+     * Use this if you want to override middle icon.
+     */
+    iconComponent?: JSX.Element
+  }
 
-type CustomComponentProps = {
+type CustomComponentProps = FirstOrLastProps & {
   testID?: string
 }
+
+export const DOT_SIZE = getSpacing(1)
 
 export const VerticalStepper = memo(function VerticalStepper({
   variant,
   iconComponent,
+  isFirst,
+  isLast,
 }: VerticalStepperProps) {
   const theme = useTheme()
 
@@ -77,7 +62,7 @@ export const VerticalStepper = memo(function VerticalStepper({
       switch (variant) {
         case StepVariant.complete:
         case StepVariant.in_progress:
-          return <FilledLine {...props} />
+          return <TopFilledLine {...props} />
 
         // Only VerticalStepperVariant.future in this default case
         default:
@@ -96,7 +81,7 @@ export const VerticalStepper = memo(function VerticalStepper({
 
         // Only VerticalStepperVariant.complete in this default case
         default:
-          return <FilledLine testID="bottom-line" {...props} />
+          return <BottomFilledLine testID="bottom-line" {...props} />
       }
     },
     [variant]
@@ -104,9 +89,9 @@ export const VerticalStepper = memo(function VerticalStepper({
 
   return (
     <Wrapper>
-      <TopLine testID="top-line" />
+      <TopLine testID="top-line" isFirst={isFirst} isLast={isLast} />
       <Icon testID="icon" />
-      <BottomLine testID="bottom-line" />
+      <BottomLine testID="bottom-line" isFirst={isFirst} isLast={isLast} />
     </Wrapper>
   )
 })
@@ -127,10 +112,20 @@ const FilledLine = styled.View(({ theme }) => ({
   flexGrow: 1,
 }))
 
+const TopFilledLine = styled(FilledLine)<FirstOrLastProps>(({ isFirst }) => ({
+  borderTopLeftRadius: isFirst ? 2 : 0,
+  borderTopRightRadius: isFirst ? 2 : 0,
+}))
+
+const BottomFilledLine = styled(FilledLine)<FirstOrLastProps>(({ isLast }) => ({
+  borderBottomLeftRadius: isLast ? 2 : 0,
+  borderBottomRightRadius: isLast ? 2 : 0,
+}))
+
 const DottedLine = styled.View(({ theme }) => ({
-  width: 0,
+  width: DOT_SIZE,
   flexGrow: 1,
-  borderLeftWidth: 4,
+  borderLeftWidth: DOT_SIZE,
   borderLeftColor: theme.colors.greyMedium,
   borderStyle: 'dotted',
 }))
