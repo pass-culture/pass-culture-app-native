@@ -32,6 +32,11 @@ export interface Entry<T, ContentType extends ContentTypes> {
   fields?: T
 }
 
+type ProvidedEntry<T, ContentType extends ContentTypes> = {
+  sys: Sys<ContentType>
+  fields: T
+}
+
 interface EntryCollectionInclusions<T, ContentType extends ContentTypes> {
   string: Array<Asset<ContentType> | Entry<T, ContentType>>
 }
@@ -108,8 +113,16 @@ interface EntryCollectionError {
 }
 
 export type AlgoliaParameters = Entry<SearchParametersFields, ContentTypes.ALGOLIA_PARAMETERS>
+export type ProvidedAlgoliaParameters = ProvidedEntry<
+  SearchParametersFields,
+  ContentTypes.ALGOLIA_PARAMETERS
+>
 
 export type VenuesParameters = Entry<VenuesParametersFields, ContentTypes.VENUES_PARAMETERS>
+export type ProvidedVenuesParameters = ProvidedEntry<
+  VenuesParametersFields,
+  ContentTypes.VENUES_PARAMETERS
+>
 
 export type DisplayParameters = Entry<DisplayParametersFields, ContentTypes.DISPLAY_PARAMETERS>
 
@@ -136,6 +149,10 @@ export type ShowTypes = Entry<ShowTypesFields, ContentTypes.SHOW_TYPES>
 export type BookTypes = Entry<BookTypesFields, ContentTypes.BOOK_TYPES>
 
 export type ThematicCategoryInfo = Entry<
+  ThematicCategoryInfoFields,
+  ContentTypes.THEMATIC_CATEGORY_INFO
+>
+export type ProvidedThematicCategoryInfo = ProvidedEntry<
   ThematicCategoryInfoFields,
   ContentTypes.THEMATIC_CATEGORY_INFO
 >
@@ -330,6 +347,10 @@ export interface CategoryListFields {
 }
 
 export type CategoryBlockContentModel = Entry<CategoryBlockFields, ContentTypes.CATEGORY_BLOCK>
+export type ProvidedCategoryBlockContentModel = ProvidedEntry<
+  CategoryBlockFields & { thematicCategoryInfo: ProvidedThematicCategoryInfo },
+  ContentTypes.CATEGORY_BLOCK
+>
 
 export interface CategoryBlockFields {
   title: string

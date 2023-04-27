@@ -1,5 +1,3 @@
-import isEmpty from 'lodash/isEmpty'
-
 import { HomepageModuleType, OffersModule } from 'features/home/types'
 import { buildImageUrl } from 'libs/contentful/adapters/helpers/buildImageUrl'
 import {
@@ -10,14 +8,22 @@ import {
   mapMusicTypes,
   mapBookTypes,
 } from 'libs/contentful/adapters/modules/helpers/offersModuleMappers'
-import { AlgoliaContentModel, AlgoliaParameters } from 'libs/contentful/types'
+import {
+  ProvidedAlgoliaParameters,
+  AlgoliaContentModel,
+  AlgoliaParameters,
+} from 'libs/contentful/types'
+
+const parametersHaveFields = (
+  parameters: AlgoliaParameters
+): parameters is ProvidedAlgoliaParameters => !!parameters?.fields
 
 const buildOffersParams = (
   firstParams: AlgoliaParameters,
   additionalParams: AlgoliaParameters[]
 ): OffersModule['offersModuleParameters'] =>
   [firstParams, ...additionalParams]
-    .filter((params) => params.fields && !isEmpty(params.fields))
+    .filter(parametersHaveFields)
     .map(
       ({
         fields: {
