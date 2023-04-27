@@ -25,6 +25,7 @@ export const MessagingAppButton = ({
   const {
     shouldEncodeURI,
     supportsURL = true,
+    shouldEncodeURL = Platform.OS === 'ios',
     isNative,
     webUrl,
     ...options
@@ -37,11 +38,18 @@ export const MessagingAppButton = ({
     try {
       analytics.logShare({ type: 'Offer', id: offerId, from: 'offer', social: options.social })
       if (isWeb && webUrl) await Linking.openURL(webUrl + encodeURIComponent(message))
-      else if (isNative && options.url) await Linking.openURL(options.url + message)
+      else if (isNative && options.url)
+        await Linking.openURL(
+          options.url + (shouldEncodeURI ? encodeURIComponent(message) : message)
+        )
       else {
         await Share.shareSingle({
           message: shouldEncodeURI ? encodeURIComponent(message) : message,
-          url: supportsURL ? shareUrl : undefined,
+          url: supportsURL
+            ? shouldEncodeURL
+              ? encodeURIComponent(shareUrl)
+              : shareUrl
+            : undefined,
           ...options,
         })
       }
@@ -61,6 +69,7 @@ const mapNetworkToSocial: Record<
   Network,
   ShareSingleOptions & {
     shouldEncodeURI?: boolean
+    shouldEncodeURL?: boolean
     supportsURL?: boolean
     isNative?: boolean
     webUrl?: string
@@ -80,10 +89,12 @@ const mapNetworkToSocial: Record<
   },
   [Network.whatsapp]: {
     social: Social.Whatsapp,
+    shouldEncodeURL: false,
     webUrl: 'https://api.whatsapp.com/send?text=',
   },
   [Network.telegram]: {
     social: Social.Telegram,
+    supportsURL: false,
     webUrl: 'https://telegram.me/share/msg?url=',
   },
   [Network.viber]: {
@@ -94,6 +105,7 @@ const mapNetworkToSocial: Record<
     social: Social.Sms,
     isNative: true,
     supportsURL: false,
+    shouldEncodeURI: true,
     url: 'sms://&body=',
   },
   [Network.twitter]: {
