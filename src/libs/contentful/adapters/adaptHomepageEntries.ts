@@ -24,6 +24,8 @@ const adaptThematicHeader = (homepageEntry: HomepageNatifEntry) => {
 
   if (isThematicHighlightInfo(thematicHeader)) {
     const thematicHeaderFields = thematicHeader.fields
+    if (thematicHeaderFields?.image.fields === undefined) return adaptDefaultHeader(homepageEntry)
+
     return {
       type: ThematicHeaderType.Highlight,
       title: thematicHeaderFields.displayedTitle,
@@ -38,6 +40,8 @@ const adaptThematicHeader = (homepageEntry: HomepageNatifEntry) => {
 
   if (isThematicCategoryInfo(thematicHeader)) {
     const thematicHeaderFields = thematicHeader.fields
+    if (thematicHeaderFields?.image.fields === undefined) return adaptDefaultHeader(homepageEntry)
+
     return {
       type: ThematicHeaderType.Category,
       title: thematicHeaderFields.displayedTitle,
