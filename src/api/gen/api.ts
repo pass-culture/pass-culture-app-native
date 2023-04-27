@@ -224,6 +224,7 @@ export enum BannerName {
   'geolocation_banner' = 'geolocation_banner',
   'activation_banner' = 'activation_banner',
   'retry_identity_check_banner' = 'retry_identity_check_banner',
+  'transition_17_18_banner' = 'transition_17_18_banner',
 }
 /**
  * @export

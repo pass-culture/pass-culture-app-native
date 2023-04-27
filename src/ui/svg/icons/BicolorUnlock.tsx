@@ -12,7 +12,7 @@ const BicolorUnlockSvg: React.FC<AccessibleBicolorIconInterface> = ({
   color,
   color2,
   accessibilityLabel,
-  testID,
+  testID = 'BicolorUnlock',
 }) => {
   const { id: gradientId, fill: gradientFill } = svgIdentifier()
 
