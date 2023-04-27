@@ -13,6 +13,12 @@ import {
   isThematicHighlightInfo,
 } from 'libs/contentful/types'
 
+const adaptDefaultHeader = (homepageEntry: HomepageNatifEntry): DefaultThematicHeader => ({
+  type: ThematicHeaderType.Default,
+  title: homepageEntry.fields.thematicHeaderTitle,
+  subtitle: homepageEntry.fields.thematicHeaderSubtitle,
+})
+
 const adaptThematicHeader = (homepageEntry: HomepageNatifEntry) => {
   const thematicHeader = homepageEntry.fields.thematicHeader
 
@@ -40,11 +46,7 @@ const adaptThematicHeader = (homepageEntry: HomepageNatifEntry) => {
     } as CategoryThematicHeader
   }
 
-  return {
-    type: ThematicHeaderType.Default,
-    title: homepageEntry.fields.thematicHeaderTitle,
-    subtitle: homepageEntry.fields.thematicHeaderSubtitle,
-  } as DefaultThematicHeader
+  return adaptDefaultHeader(homepageEntry)
 }
 
 export const adaptHomepageEntries = (homepageNatifEntries: HomepageNatifEntry[]): Homepage[] => {
