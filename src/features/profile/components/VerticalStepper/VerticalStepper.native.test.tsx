@@ -1,4 +1,5 @@
 import React from 'react'
+import { View } from 'react-native'
 
 import { render, screen } from 'tests/utils'
 import { theme } from 'theme'
@@ -43,5 +44,21 @@ describe('<VerticalStepper />', () => {
 
     expect(screen.getByTestId('top-line')).toHaveStyle(dottedStyle)
     expect(screen.getByTestId('bottom-line')).toHaveStyle(dottedStyle)
+  })
+
+  it('should render custom icon component', () => {
+    const customComponent = (
+      <View
+        testID="custom-icon-component"
+        // eslint-disable-next-line react-native/no-color-literals, react-native/no-inline-styles
+        style={{ width: 20, height: 20, backgroundColor: 'blue' }}
+      />
+    )
+
+    render(
+      <VerticalStepper variant={VerticalStepperVariant.future} iconComponent={customComponent} />
+    )
+
+    expect(screen.getByTestId('custom-icon-component')).toBeTruthy()
   })
 })

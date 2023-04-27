@@ -26,6 +26,10 @@ It may exist 0 or more completed and future steps.`,
       options: ['normal', 'large', 'small'],
       description: 'ONLY USED IN STORYBOOK. NOT AVAILABLE IN THE COMPONENT',
     },
+    iconComponent: {
+      description: 'Use this if you want to override middle icon.',
+      control: { disable: true },
+    },
   },
 } as ComponentMeta<typeof VerticalStepper>
 
@@ -60,6 +64,13 @@ export const Future = WrapperTemplate.bind({})
 Future.args = {
   variant: VerticalStepperVariant.future,
   wrapper: 'normal',
+}
+
+export const WithCustomComponent = WrapperTemplate.bind({})
+WithCustomComponent.args = {
+  ...Complete.args,
+  // eslint-disable-next-line react-native/no-color-literals, react-native/no-inline-styles
+  iconComponent: <View style={{ width: 20, height: 20, backgroundColor: 'blue' }} />,
 }
 
 /**

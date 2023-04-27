@@ -35,17 +35,26 @@ export type VerticalStepperProps = (
    * It may exist 0 or more completed and future steps.
    */
   variant: VerticalStepperVariant
+  /**
+   * Use this if you want to override middle icon.
+   */
+  iconComponent?: JSX.Element
 }
 
 type CustomComponentProps = {
   testID?: string
 }
 
-export const VerticalStepper = memo(function VerticalStepper({ variant }: VerticalStepperProps) {
+export const VerticalStepper = memo(function VerticalStepper({
+  variant,
+  iconComponent,
+}: VerticalStepperProps) {
   const theme = useTheme()
 
   const Icon = useCallback(
     (props: CustomComponentProps) => {
+      if (iconComponent) return iconComponent
+
       if (variant === VerticalStepperVariant.complete)
         return (
           <Validate
@@ -60,7 +69,7 @@ export const VerticalStepper = memo(function VerticalStepper({ variant }: Vertic
 
       return <FutureIcon {...props} />
     },
-    [theme.colors.greenValid, theme.colors.white, variant]
+    [iconComponent, theme.colors.greenValid, theme.colors.white, variant]
   )
 
   const TopLine = useCallback(
@@ -102,14 +111,6 @@ export const VerticalStepper = memo(function VerticalStepper({ variant }: Vertic
   )
 })
 
-const DottedLine = styled.View(({ theme }) => ({
-  width: 0,
-  flex: 1,
-  borderLeftWidth: 4,
-  borderLeftColor: theme.colors.greyMedium,
-  borderStyle: 'dotted',
-}))
-
 const Wrapper = styled.View({
   display: 'flex',
   flexDirection: 'column',
@@ -124,6 +125,14 @@ const FilledLine = styled.View(({ theme }) => ({
   width: getSpacing(1),
   borderRadius: 2,
   flex: 1,
+}))
+
+const DottedLine = styled.View(({ theme }) => ({
+  width: 0,
+  flex: 1,
+  borderLeftWidth: 4,
+  borderLeftColor: theme.colors.greyMedium,
+  borderStyle: 'dotted',
 }))
 
 const InProgressIcon = styled.View(({ theme }) => ({
