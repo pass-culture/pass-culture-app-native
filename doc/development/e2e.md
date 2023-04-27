@@ -2,7 +2,7 @@
 
 We use Webdriver.IO as automation framework to test our Web and mobile application.
 
-## Appium
+## **Appium**
 
 To run app and browser tests on Mobile, you need to run an appium server.
 
@@ -52,7 +52,7 @@ appium-doctor
 
 ---
 
-## Peer dependencies
+## **Peer dependencies**
 
 On your desktop, you must install browser's driver that match your version in order to use test automation, respectively:
 
@@ -64,14 +64,14 @@ Refer to google to get installation instruction for your system.
 
 ---
 
-## App center
+## **App center**
 
 If you want to download apps from AppCenter, you can create an user API token in Account => Account Settings => User API tokens
 You can name it APPCENTER_USER_API_TOKEN
 
 ---
 
-## Configuration
+## **Configuration**
 
 We use environment variable to customize the configuration:
 
@@ -111,14 +111,14 @@ WDIO_BASE_URL=http://10.0.2.2:3000 \
 yarn e2e:android.browser
 ```
 
-**Android emulator vs iOS simulator network**
+### **Android emulator vs iOS simulator network**
 
 Android `127.0.0.1` map to its own interface, while `10.0.2.2` target your `127.0.0.1`.
 iOS simulator use the same interface as your host, it is fine to use `127.0.0.1`.
 
 You can view all available options in [`e2e/config/environment/env.ts`](../../e2e/config/environment/env.ts).
 
-**Gmail Client**
+###  **Gmail Client**
 
 In order to login to the e2e mailbox, you must have in the root of the repository one of these two files:
 
@@ -129,7 +129,7 @@ In order to login to the e2e mailbox, you must have in the root of the repositor
 
 ---
 
-## Services dependencies
+## **Services dependencies**
 
 We use an isolated backend service that doesn't depend on any environment, for this reason you must run 3 services:
 
@@ -139,12 +139,12 @@ We use an isolated backend service that doesn't depend on any environment, for t
 
 We use `docker-compose` to start those service.
 
-**Why fixed Port?**
+### **Why fixed Port?**
 
 App Native e2e tests expect you to use `.env.staging` or `.env.testing` environment/conf.
 During e2e tests, the app native api client will automatically switch to use the e2e backend.
 
-**Generate env file for configuring the pc-api service**
+### **Generate env file for configuring the pc-api service**
 
 First, you need to generate pc-api configuration using `./e2e/generate-env.sh` script.
 
@@ -167,7 +167,7 @@ ANDROID=true \
 ./e2e/generate-env.sh
 ```
 
-**To start all the containers**
+### **To start all the containers**
 
 If you are not already logged in to Google Cloud using command line you need to login using the following commands :
 
@@ -194,14 +194,14 @@ docker-compose -f e2e/docker-compose-e2e.yml up
 
 > Set `PCAPI_DOCKER_TAG` to any valid tag. Each commit of main correspond to tag, as well as commit from PRs.
 
-**To stop all the containers**
+### **To stop all the containers**
 
 ```bash
 PCAPI_DOCKER_TAG=$(curl -sS https://backend.staging.passculture.team/health/api) \
 docker-compose -f e2e/docker-compose-e2e.yml stop
 ```
 
-**To remove all the containers**
+### **To remove all the containers**
 
 ```bash
 PCAPI_DOCKER_TAG=$(curl -sS https://backend.staging.passculture.team/health/api) \
@@ -211,11 +211,11 @@ docker-compose -f e2e/docker-compose-e2e.yml rm -fv
 
 ---
 
-## Testing on Android
+## **Testing on Android**
 
 Two options, either the application is already installed, or you have to provide an apk
 
-### Provide an apk
+### **Provide an apk**
 
 You can use an apk, either from appcenter, either one created by building locally.
 
@@ -237,7 +237,7 @@ END_TO_END_TESTS_EMAIL_ADDRESS=${END_TO_END_TESTS_EMAIL_ADDRESS} \
 yarn e2e:android.app
 ```
 
-#### Using already installed application
+### **Using already installed application**
 
 If the application is already installed, you can test it without providing an apk to install, for instance, for staging app you will do:
 
@@ -253,7 +253,7 @@ It will use capability `appium:noReset` to `true`, read more here: https://githu
 
 ---
 
-## Testing on iOS
+## **Testing on iOS**
 
 - It is not possible to use the `ipa` from appcenter.
 - You must use a iOS simulator.
@@ -286,7 +286,7 @@ APPIUM_APP="app.passculture.staging" yarn e2e:ios.app
 
 ---
 
-## Writing tests
+## **Writing tests**
 
 We have two types of tests: `app` and `browser`
 
@@ -322,7 +322,7 @@ describe('TabBar', () => {
 
 ---
 
-## GUI Tools
+## **GUI Tools**
 
 You can try those:
 
@@ -332,7 +332,7 @@ You can try those:
 
 ---
 
-## Convention
+## **Convention**
 
 We usually write cross platforms tests (for both `app` and `browser`),
 but we also support `app` or `browser` specific tests.
@@ -345,7 +345,7 @@ Use the following file name convention:
 
 ---
 
-## Utils
+## **Utils**
 
 This is the documentation of selector: https://webdriver.io/docs/selectors/#accessibility-id
 
@@ -376,7 +376,7 @@ $$('[data-testid="Accueil"]') // to retrieve list of elements (sorted by order o
 We could have used `flags.isWeb` to decide which one to use, but this is exactly what does `find`
 and this allow to write less verbose selector for our cross platforms cases.
 
-### ~ Selector
+### **~ Selector**
 
 The selector used to access component is the `accessibility id` :
 
@@ -387,7 +387,7 @@ The selector used to access component is the `accessibility id` :
 
 If this is not possible, you will have to write platform specific selectors within your e2e tests (for example, for our SetBirthDate, we use 4 different date pickers)
 
-**How to add cross platforms markers in the source code ?**
+### **How to add cross platforms markers in the source code ?**
 
 We have two utilities that can be used:
 
@@ -430,9 +430,9 @@ If you have a web only component, you will have to manually set the `data-testid
 
 ---
 
-## Troubleshooting
+## **Troubleshooting**
 
-**Safari**
+### **Safari**
 
 You might have this error when running `yarn e2e:browser.safari`:
 
@@ -442,7 +442,7 @@ ERROR webdriver: Request failed with status 500 due to session not created: Coul
 
 This can be solved by opening Safari, Develop Menu, then check `Allow Remote Automation`
 
-**Chrome**
+### **Chrome**
 
 This prompt may appear when running `yarn e2e:browser.chrome`:
 
@@ -450,7 +450,8 @@ This prompt may appear when running `yarn e2e:browser.chrome`:
 
 In order to authorize chromedriver to be opened, you need to go System Preferences > Security & Privacy and click "Open Anyway" to confirm your intent to open the app.
 
-### Useful ressources
+---
+## **Useful ressources**
 
 E2E presentation and other useful documentation can be found here :
 - [E2E tests presentation](https://docs.google.com/presentation/d/1_6polpPB7lFWTgtxE3hX33xuo7BvyrEcyMSJPpF_Yrg/edit?usp=sharing)
@@ -459,7 +460,7 @@ E2E presentation and other useful documentation can be found here :
 - [Webdriver.IO - Appium Boilerplate](https://github.com/webdriverio/appium-boilerplate)
 - [Chrome Driver releases](https://chromedriver.chromium.org/downloads)
 
-### Community
+### **Community**
 
 If you wish to learn how to write tests, beside GitHub and StackOverflow,
 we have found an active community on Gitter.im:
