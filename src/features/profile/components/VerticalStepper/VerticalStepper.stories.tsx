@@ -3,7 +3,7 @@ import { Story } from '@storybook/react/dist/ts3.9/client/preview/types-6-0'
 import React, { ComponentProps } from 'react'
 import { StyleSheet, View } from 'react-native'
 
-import { VerticalStepperVariant } from 'features/profile/components/VerticalStepper/types'
+import { StepVariant } from 'features/profile/components/VerticalStepper/types'
 import { VerticalStepper } from 'features/profile/components/VerticalStepper/VerticalStepper'
 
 export default {
@@ -50,19 +50,19 @@ const WrapperTemplate: Story<
 
 export const Complete = WrapperTemplate.bind({})
 Complete.args = {
-  variant: VerticalStepperVariant.complete,
+  variant: StepVariant.complete,
   wrapper: 'normal',
 }
 
 export const InProgress = WrapperTemplate.bind({})
 InProgress.args = {
-  variant: VerticalStepperVariant.in_progress,
+  variant: StepVariant.in_progress,
   wrapper: 'normal',
 }
 
 export const Future = WrapperTemplate.bind({})
 Future.args = {
-  variant: VerticalStepperVariant.future,
+  variant: StepVariant.future,
   wrapper: 'normal',
 }
 
