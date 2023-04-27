@@ -77,6 +77,7 @@ platform :ios do
       if ENV['DEPLOYMENT_PLATFORM'] === 'appcenter' then
         deploy_appCenter
       else
+        ENV['ITMSTRANSPORTER_FORCE_ITMS_PACKAGE_UPLOAD'] = 'false'
         pilot(
           username: ENV['APPLE_ACCOUNT_USERNAME'],
           distribute_external: false,
