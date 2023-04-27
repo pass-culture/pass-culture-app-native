@@ -4,6 +4,9 @@ import { HomepageModuleType, VenuesModule } from 'features/home/types'
 import { VenuesContentModel } from 'libs/contentful/types'
 
 export const adaptVenuesModule = (modules: VenuesContentModel): VenuesModule | null => {
+  if (modules.fields === undefined) return null
+  if (modules.fields.displayParameters.fields === undefined) return null
+
   const venuesParameters = modules.fields.venuesSearchParameters
     .filter((params) => params.fields && !isEmpty(params.fields))
     .map(({ fields }) => fields)

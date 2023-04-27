@@ -2,7 +2,11 @@ import { CategoryBlock, CategoryListModule, HomepageModuleType } from 'features/
 import { buildImageUrl } from 'libs/contentful/adapters/helpers/buildImageUrl'
 import { CategoryBlockContentModel, CategoryListContentModel } from 'libs/contentful/types'
 
-export const adaptCategoryListModule = (module: CategoryListContentModel): CategoryListModule => {
+export const adaptCategoryListModule = (
+  module: CategoryListContentModel
+): CategoryListModule | null => {
+  if (module.fields === undefined) return null
+
   return {
     id: module.sys.id,
     type: HomepageModuleType.CategoryListModule,

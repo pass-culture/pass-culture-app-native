@@ -41,6 +41,9 @@ const buildOffersParams = (
     )
 
 export const adaptOffersModule = (module: AlgoliaContentModel): OffersModule | null => {
+  if (module.fields === undefined) return null
+  if (module.fields.displayParameters.fields === undefined) return null
+
   const additionalAlgoliaParameters = module.fields.additionalAlgoliaParameters ?? []
 
   const offersList = buildOffersParams(module.fields.algoliaParameters, additionalAlgoliaParameters)

@@ -3,13 +3,18 @@ import { buildImageUrl } from 'libs/contentful/adapters/helpers/buildImageUrl'
 import { parseStringToNumber } from 'libs/contentful/adapters/helpers/parseStringToNumber'
 import { ExclusivityContentModel } from 'libs/contentful/types'
 
-export const adaptExclusivityModule = (modules: ExclusivityContentModel): ExclusivityModule => {
+export const adaptExclusivityModule = (
+  modules: ExclusivityContentModel
+): ExclusivityModule | null => {
+  if (modules.fields === undefined) return null
+  if (modules.fields.image.fields === undefined) return null
+
   return {
     type: HomepageModuleType.ExclusivityModule,
     id: modules.sys.id,
     title: modules.fields.title,
     alt: modules.fields.alt,
-    image: buildImageUrl(modules.fields.image?.fields.file.url),
+    image: buildImageUrl(modules.fields.image.fields.file.url),
     url: modules.fields.url,
     displayParameters: modules.fields.displayParameters?.fields
       ? {

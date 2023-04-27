@@ -4,8 +4,11 @@ import { ThematicHighlightContentModel } from 'libs/contentful/types'
 
 export const adaptThematicHighlightModule = (
   module: ThematicHighlightContentModel
-): ThematicHighlightModule => {
+): ThematicHighlightModule | null => {
+  if (module.fields === undefined) return null
+
   const thematicHighlightInfo = module.fields.thematicHighlightInfo.fields
+  if (thematicHighlightInfo?.image.fields === undefined) return null
   const imageUrl = buildImageUrl(thematicHighlightInfo.image.fields.file.url)
 
   return {
