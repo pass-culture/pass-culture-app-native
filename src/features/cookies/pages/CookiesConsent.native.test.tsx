@@ -52,16 +52,16 @@ describe('<CookiesConsent/>', () => {
   beforeEach(() => storage.clear(COOKIES_CONSENT_KEY))
 
   it('should render correctly', async () => {
-    const renderAPI = renderCookiesConsent()
+    renderCookiesConsent()
 
     await screen.findByText('Tout accepter')
-    expect(renderAPI).toMatchSnapshot()
+    expect(screen).toMatchSnapshot()
   })
 
   describe('accept all cookies', () => {
     it('should persist cookies consent information', async () => {
-      const { getByText } = renderCookiesConsent()
-      const acceptAllButton = getByText('Tout accepter')
+      renderCookiesConsent()
+      const acceptAllButton = screen.getByText('Tout accepter')
 
       await act(async () => {
         fireEvent.press(acceptAllButton)
@@ -81,8 +81,8 @@ describe('<CookiesConsent/>', () => {
     })
 
     it('should enable tracking', async () => {
-      const { getByText } = renderCookiesConsent()
-      const acceptAllButton = getByText('Tout accepter')
+      renderCookiesConsent()
+      const acceptAllButton = screen.getByText('Tout accepter')
 
       await act(async () => {
         fireEvent.press(acceptAllButton)
@@ -92,8 +92,8 @@ describe('<CookiesConsent/>', () => {
     })
 
     it('should log analytics', async () => {
-      const { getByText } = renderCookiesConsent()
-      const acceptAllButton = getByText('Tout accepter')
+      renderCookiesConsent()
+      const acceptAllButton = screen.getByText('Tout accepter')
 
       await act(async () => {
         fireEvent.press(acceptAllButton)
@@ -103,8 +103,8 @@ describe('<CookiesConsent/>', () => {
     })
 
     it('should init AppsFlyer', async () => {
-      const { getByText } = renderCookiesConsent()
-      const acceptAllButton = getByText('Tout accepter')
+      renderCookiesConsent()
+      const acceptAllButton = screen.getByText('Tout accepter')
 
       await act(async () => {
         fireEvent.press(acceptAllButton)
@@ -114,8 +114,8 @@ describe('<CookiesConsent/>', () => {
     })
 
     it('should save UTM params', async () => {
-      const { getByText } = renderCookiesConsent()
-      const acceptAllButton = getByText('Tout accepter')
+      renderCookiesConsent()
+      const acceptAllButton = screen.getByText('Tout accepter')
 
       await act(async () => {
         fireEvent.press(acceptAllButton)
@@ -125,8 +125,8 @@ describe('<CookiesConsent/>', () => {
     })
 
     it('should hide modal', async () => {
-      const { getByText } = renderCookiesConsent()
-      const acceptAllButton = getByText('Tout accepter')
+      renderCookiesConsent()
+      const acceptAllButton = screen.getByText('Tout accepter')
 
       await act(async () => {
         fireEvent.press(acceptAllButton)
@@ -138,8 +138,8 @@ describe('<CookiesConsent/>', () => {
 
   describe('refuse all cookies', () => {
     it('should persist cookies consent information', async () => {
-      const { getByText } = renderCookiesConsent()
-      const declineAllButton = getByText('Tout refuser')
+      renderCookiesConsent()
+      const declineAllButton = screen.getByText('Tout refuser')
 
       await act(async () => {
         fireEvent.press(declineAllButton)
@@ -159,8 +159,8 @@ describe('<CookiesConsent/>', () => {
     })
 
     it('should disable tracking', async () => {
-      const { getByText } = renderCookiesConsent()
-      const declineAllButton = getByText('Tout refuser')
+      renderCookiesConsent()
+      const declineAllButton = screen.getByText('Tout refuser')
 
       await act(async () => {
         fireEvent.press(declineAllButton)
@@ -170,8 +170,8 @@ describe('<CookiesConsent/>', () => {
     })
 
     it('should not init AppsFlyer', async () => {
-      const { getByText } = renderCookiesConsent()
-      const declineAllButton = getByText('Tout refuser')
+      renderCookiesConsent()
+      const declineAllButton = screen.getByText('Tout refuser')
 
       await act(async () => {
         fireEvent.press(declineAllButton)
@@ -181,8 +181,8 @@ describe('<CookiesConsent/>', () => {
     })
 
     it('should not set marketing params', async () => {
-      const { getByText } = renderCookiesConsent()
-      const declineAllButton = getByText('Tout refuser')
+      renderCookiesConsent()
+      const declineAllButton = screen.getByText('Tout refuser')
 
       await act(async () => {
         fireEvent.press(declineAllButton)
@@ -192,8 +192,8 @@ describe('<CookiesConsent/>', () => {
     })
 
     it('should hide modal', async () => {
-      const { getByText } = renderCookiesConsent()
-      const declineAllButton = getByText('Tout refuser')
+      renderCookiesConsent()
+      const declineAllButton = screen.getByText('Tout refuser')
 
       await act(async () => {
         fireEvent.press(declineAllButton)
@@ -205,15 +205,15 @@ describe('<CookiesConsent/>', () => {
 
   describe('make detailled cookie choice', () => {
     it('should persist cookies consent information when user partially accepts cookies', async () => {
-      const { getByText, getByTestId } = renderCookiesConsent()
+      renderCookiesConsent()
 
-      const chooseCookies = getByText('Choisir les cookies')
+      const chooseCookies = screen.getByText('Choisir les cookies')
       fireEvent.press(chooseCookies)
 
-      const performanceSwitch = getByTestId('Interrupteur-performance')
+      const performanceSwitch = screen.getByTestId('Interrupteur-performance')
       fireEvent.press(performanceSwitch)
 
-      const saveChoice = getByText('Enregistrer mes choix')
+      const saveChoice = screen.getByText('Enregistrer mes choix')
       await act(async () => {
         fireEvent.press(saveChoice)
       })
@@ -232,12 +232,12 @@ describe('<CookiesConsent/>', () => {
     })
 
     it('should call startTrackingAcceptedCookies with empty array if all cookies are refused', async () => {
-      const { getByText } = renderCookiesConsent()
+      renderCookiesConsent()
 
-      const chooseCookies = getByText('Choisir les cookies')
+      const chooseCookies = screen.getByText('Choisir les cookies')
       fireEvent.press(chooseCookies)
 
-      const saveChoice = getByText('Enregistrer mes choix')
+      const saveChoice = screen.getByText('Enregistrer mes choix')
       await act(async () => {
         fireEvent.press(saveChoice)
       })
@@ -246,15 +246,15 @@ describe('<CookiesConsent/>', () => {
     })
 
     it('should call startTrackingAcceptedCookies with performance if performance cookies are accepted', async () => {
-      const { getByText, getByTestId } = renderCookiesConsent()
+      renderCookiesConsent()
 
-      const chooseCookies = getByText('Choisir les cookies')
+      const chooseCookies = screen.getByText('Choisir les cookies')
       fireEvent.press(chooseCookies)
 
-      const performanceSwitch = getByTestId('Interrupteur-performance')
+      const performanceSwitch = screen.getByTestId('Interrupteur-performance')
       fireEvent.press(performanceSwitch)
 
-      const saveChoice = getByText('Enregistrer mes choix')
+      const saveChoice = screen.getByText('Enregistrer mes choix')
       await act(async () => {
         fireEvent.press(saveChoice)
       })
@@ -263,15 +263,15 @@ describe('<CookiesConsent/>', () => {
     })
 
     it('should log analytics if performance cookies are accepted', async () => {
-      const { getByText, getByTestId } = renderCookiesConsent()
+      renderCookiesConsent()
 
-      const chooseCookies = getByText('Choisir les cookies')
+      const chooseCookies = screen.getByText('Choisir les cookies')
       fireEvent.press(chooseCookies)
 
-      const performanceSwitch = getByTestId('Interrupteur-performance')
+      const performanceSwitch = screen.getByTestId('Interrupteur-performance')
       fireEvent.press(performanceSwitch)
 
-      const saveChoice = getByText('Enregistrer mes choix')
+      const saveChoice = screen.getByText('Enregistrer mes choix')
       await act(async () => {
         fireEvent.press(saveChoice)
       })
@@ -283,12 +283,12 @@ describe('<CookiesConsent/>', () => {
     })
 
     it('should call setMarketingParams with empty array when all cookies are refused', async () => {
-      const { getByText } = renderCookiesConsent()
+      renderCookiesConsent()
 
-      const chooseCookies = getByText('Choisir les cookies')
+      const chooseCookies = screen.getByText('Choisir les cookies')
       fireEvent.press(chooseCookies)
 
-      const saveChoice = getByText('Enregistrer mes choix')
+      const saveChoice = screen.getByText('Enregistrer mes choix')
       await act(async () => {
         fireEvent.press(saveChoice)
       })
@@ -297,15 +297,15 @@ describe('<CookiesConsent/>', () => {
     })
 
     it('should call setMarketingParams with customization cookies when they are accepted', async () => {
-      const { getByTestId, getByText } = renderCookiesConsent()
+      renderCookiesConsent()
 
-      const chooseCookies = getByText('Choisir les cookies')
+      const chooseCookies = screen.getByText('Choisir les cookies')
       fireEvent.press(chooseCookies)
 
-      const customizationSwitch = getByTestId('Interrupteur-customization')
+      const customizationSwitch = screen.getByTestId('Interrupteur-customization')
       fireEvent.press(customizationSwitch)
 
-      const saveChoice = getByText('Enregistrer mes choix')
+      const saveChoice = screen.getByText('Enregistrer mes choix')
       await act(async () => {
         fireEvent.press(saveChoice)
       })
@@ -318,12 +318,12 @@ describe('<CookiesConsent/>', () => {
     })
 
     it('should hide modale when user saves cookies choice', async () => {
-      const { getByText } = renderCookiesConsent()
+      renderCookiesConsent()
 
-      const chooseCookies = getByText('Choisir les cookies')
+      const chooseCookies = screen.getByText('Choisir les cookies')
       fireEvent.press(chooseCookies)
 
-      const saveChoice = getByText('Enregistrer mes choix')
+      const saveChoice = screen.getByText('Enregistrer mes choix')
       await act(async () => {
         fireEvent.press(saveChoice)
       })
@@ -334,9 +334,8 @@ describe('<CookiesConsent/>', () => {
 })
 
 const renderCookiesConsent = () => {
-  const renderAPI = render(<CookiesConsent visible hideModal={hideModal} />, {
+  render(<CookiesConsent visible hideModal={hideModal} />, {
     // eslint-disable-next-line local-rules/no-react-query-provider-hoc
     wrapper: ({ children }) => reactQueryProviderHOC(children),
   })
-  return renderAPI
 }
