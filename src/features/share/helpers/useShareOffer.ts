@@ -16,7 +16,10 @@ const shareOptions = {
   dialogTitle: shareTitle, // android only
 }
 
-export const useShareOffer = (offerId: number): ShareOutput => {
+export const useShareOffer = (
+  offerId: number,
+  urlType: 'universal' | 'dynamic' = 'universal'
+): ShareOutput => {
   const message = useShareOfferMessage(offerId)
 
   if (!message)
@@ -25,7 +28,7 @@ export const useShareOffer = (offerId: number): ShareOutput => {
       shareContent: undefined,
     }
 
-  const shareUrl = getOfferUrl(offerId)
+  const shareUrl = getOfferUrl(offerId, urlType)
   const shareAndroidMessage = message + DOUBLE_LINE_BREAK + shareUrl
   // url share content param is only for iOS, so we add url in message for android
   const shareMessage = Platform.OS === 'android' ? shareAndroidMessage : message

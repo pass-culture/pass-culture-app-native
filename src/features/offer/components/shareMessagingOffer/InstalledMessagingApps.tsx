@@ -7,10 +7,16 @@ import { useShareOfferMessage } from 'features/share/helpers/useShareOfferMessag
 import { eventMonitoring } from 'libs/monitoring'
 import { Network } from 'ui/components/ShareMessagingApp'
 
-export const InstalledMessagingApps = ({ offerId }: { offerId: number }) => {
+export const InstalledMessagingApps = ({
+  offerId,
+  urlType,
+}: {
+  offerId: number
+  urlType: 'dynamic' | 'universal'
+}) => {
   const [installedApps, setInstalledApps] = useState<Network[]>([])
   const shareMessage = useShareOfferMessage(offerId)
-  const shareUrl = getOfferUrl(offerId)
+  const shareUrl = getOfferUrl(offerId, urlType)
 
   useEffect(() => {
     getInstalledApps()

@@ -40,7 +40,7 @@ export const MessagingAppButton = ({
       else if (isNative && options.url) await Linking.openURL(options.url + message)
       else {
         await Share.shareSingle({
-          message: shouldEncodeURI ? encodeURI(message) : message,
+          message: shouldEncodeURI ? encodeURIComponent(message) : message,
           url: supportsURL ? shareUrl : undefined,
           ...options,
         })

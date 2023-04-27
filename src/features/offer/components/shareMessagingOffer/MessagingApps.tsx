@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react'
+import React, { useCallback, useState } from 'react'
 import styled from 'styled-components/native'
 
 import { InstalledMessagingApps } from 'features/offer/components/shareMessagingOffer/InstalledMessagingApps'
@@ -7,6 +7,7 @@ import { useShareOffer } from 'features/share/helpers/useShareOffer'
 import { WebShareModal } from 'features/share/pages/WebShareModal'
 import { analytics } from 'libs/analytics'
 import { useModal } from 'ui/components/modals/useModal'
+import { RadioButton } from 'ui/components/radioButtons/RadioButton'
 import { ShareMessagingAppOther } from 'ui/components/ShareMessagingAppOther'
 import { Ul } from 'ui/components/Ul'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
@@ -19,7 +20,8 @@ type MessagingAppsProps = {
 
 export const MessagingApps = ({ isEvent, offerId }: MessagingAppsProps) => {
   const title = isEvent ? 'Vas-y en bande organisée\u00a0!' : 'Partage ce bon plan\u00a0!'
-  const { share, shareContent } = useShareOffer(offerId)
+  const [urlType, setUrlType] = useState<'universal' | 'dynamic'>('universal')
+  const { share, shareContent } = useShareOffer(offerId, urlType)
   const {
     visible: shareOfferModalVisible,
     showModal: showShareOfferModal,
@@ -35,9 +37,28 @@ export const MessagingApps = ({ isEvent, offerId }: MessagingAppsProps) => {
   return (
     <React.Fragment>
       <StyledTitle4>{title}</StyledTitle4>
+      <Container>
+        <StyledView>
+          <RadioButton
+            label="Universal Link"
+            description="Lien classique"
+            isSelected={urlType === 'universal'}
+            onSelect={() => setUrlType('universal')}
+          />
+        </StyledView>
+        <Separator />
+        <StyledView>
+          <RadioButton
+            label="Firebase Link"
+            description="Lien dynamique"
+            isSelected={urlType === 'dynamic'}
+            onSelect={() => setUrlType('dynamic')}
+          />
+        </StyledView>
+      </Container>
       <IconsWrapper>
         <StyledUl>
-          <InstalledMessagingApps offerId={offerId} />
+          <InstalledMessagingApps offerId={offerId} urlType={urlType} />
           <MessagingAppContainer>
             <ShareMessagingAppOther onPress={onOtherPress} />
           </MessagingAppContainer>
@@ -72,3 +93,20 @@ const StyledTitle4 = styled(Typo.Title4).attrs(getHeadingAttrs(2))({
   paddingTop: getSpacing(6),
   paddingBottom: getSpacing(4),
 })
+
+const Container = styled.View({
+  flexDirection: 'row',
+  marginTop: getSpacing(2),
+  marginBottom: getSpacing(5),
+  alignItems: 'center',
+})
+
+const StyledView = styled.View({ flex: 0.5 })
+
+const Separator = styled.View(({ theme }) => ({
+  width: 1,
+  height: '92%',
+  backgroundColor: theme.colors.greyMedium,
+  marginHorizontal: getSpacing(4),
+  alignSelf: 'center',
+}))
