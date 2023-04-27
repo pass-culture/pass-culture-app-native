@@ -14,7 +14,7 @@ const filledStyle = {
 }
 
 const dottedStyle = {
-  width: 0,
+  width: 4,
   borderLeftWidth: 4,
   borderLeftColor: theme.colors.greyMedium,
   borderStyle: 'dotted',

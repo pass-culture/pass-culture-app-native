@@ -88,7 +88,7 @@ export const VerticalStepper = memo(function VerticalStepper({
   )
 
   return (
-    <Wrapper>
+    <Wrapper testID={`vertical-stepper-${variant}`}>
       <TopLine testID="top-line" isFirst={isFirst} isLast={isLast} />
       <Icon testID="icon" />
       <BottomLine testID="bottom-line" isFirst={isFirst} isLast={isLast} />
