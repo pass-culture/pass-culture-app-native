@@ -10,7 +10,7 @@ const ArrowAgainSvg: React.FunctionComponent<AccessibleIcon> = ({
   size,
   color,
   accessibilityLabel,
-  testID,
+  testID = 'ArrowAgain',
 }) => (
   <AccessibleSvg
     width={size}

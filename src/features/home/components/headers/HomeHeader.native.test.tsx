@@ -158,6 +158,7 @@ describe('HomeHeader', () => {
 
     expect(await screen.findByText('Débloque tes 1000\u00a0€')).toBeTruthy()
     expect(screen.getByText('à dépenser sur l’application')).toBeTruthy()
+    expect(screen.getByTestId('BicolorUnlock')).toBeTruthy()
   })
 
   it('should display activation banner with ArrowAgain icon when banner api call return retry_identity_check_banner', async () => {
@@ -180,6 +181,7 @@ describe('HomeHeader', () => {
 
     expect(await screen.findByText('Retente ubble')).toBeTruthy()
     expect(screen.getByText('pour débloquer ton crédit')).toBeTruthy()
+    expect(screen.getByTestId('ArrowAgain')).toBeTruthy()
   })
 
   it('should display activation banner with BirthdayCake icon when banner api call return transition_17_18_banner', async () => {
@@ -202,6 +204,7 @@ describe('HomeHeader', () => {
 
     expect(await screen.findByText('Débloque tes 600\u00a0€')).toBeTruthy()
     expect(screen.getByText('Confirme tes informations')).toBeTruthy()
+    expect(screen.getByTestId('BirthdayCake')).toBeTruthy()
   })
 })
 

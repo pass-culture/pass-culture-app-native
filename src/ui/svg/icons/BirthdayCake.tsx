@@ -9,7 +9,7 @@ const BirthdayCakeSvg: React.FunctionComponent<AccessibleIcon> = ({
   size,
   color,
   accessibilityLabel,
-  testID,
+  testID = 'BirthdayCake',
 }) => (
   <AccessibleSvg
     width={size}
