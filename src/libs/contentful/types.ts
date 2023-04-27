@@ -28,7 +28,8 @@ export type Layout = 'two-items' | 'one-item-medium'
 
 export interface Entry<T, ContentType extends ContentTypes> {
   sys: Sys<ContentType>
-  fields: T
+  // if the content model is unpublished/deleted, `fields` won't be provided
+  fields?: T
 }
 
 interface EntryCollectionInclusions<T, ContentType extends ContentTypes> {
