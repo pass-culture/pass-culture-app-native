@@ -77,6 +77,10 @@ platform :ios do
       if ENV['DEPLOYMENT_PLATFORM'] === 'appcenter' then
         deploy_appCenter
       else
+        # after upgrading fastlane to version 2.212.2, an error occured "Could not determine the package’s bundle ID. The package is missing an Info.plist
+        # or the CFBundlePackageType is not ‘APPL’ or ‘FMWK’. Unable to validate your application.".
+        # This parameters fixes it (see https://github.com/fastlane/fastlane/issues/20741)
+        ENV['ITMSTRANSPORTER_FORCE_ITMS_PACKAGE_UPLOAD'] = 'false'
         pilot(
           username: ENV['APPLE_ACCOUNT_USERNAME'],
           distribute_external: false,
