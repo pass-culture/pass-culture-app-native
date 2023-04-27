@@ -8,7 +8,7 @@ import {
   FirstVerticalStepperProps,
   LastVerticalStepperProps,
   NeitherFirstOrLastVerticalStepperProps,
-  VerticalStepperVariant,
+  StepVariant,
 } from './types'
 
 /**
@@ -34,7 +34,7 @@ export type VerticalStepperProps = (
    * Each one has its own styling, and it should always be only one "in-progress" step.
    * It may exist 0 or more completed and future steps.
    */
-  variant: VerticalStepperVariant
+  variant: StepVariant
   /**
    * Use this if you want to override middle icon.
    */
@@ -55,7 +55,7 @@ export const VerticalStepper = memo(function VerticalStepper({
     (props: CustomComponentProps) => {
       if (iconComponent) return iconComponent
 
-      if (variant === VerticalStepperVariant.complete)
+      if (variant === StepVariant.complete)
         return (
           <Validate
             color={theme.colors.greenValid}
@@ -65,7 +65,7 @@ export const VerticalStepper = memo(function VerticalStepper({
           />
         )
 
-      if (variant === VerticalStepperVariant.in_progress) return <InProgressIcon {...props} />
+      if (variant === StepVariant.in_progress) return <InProgressIcon {...props} />
 
       return <FutureIcon {...props} />
     },
@@ -75,8 +75,8 @@ export const VerticalStepper = memo(function VerticalStepper({
   const TopLine = useCallback(
     (props: CustomComponentProps) => {
       switch (variant) {
-        case VerticalStepperVariant.complete:
-        case VerticalStepperVariant.in_progress:
+        case StepVariant.complete:
+        case StepVariant.in_progress:
           return <FilledLine {...props} />
 
         // Only VerticalStepperVariant.future in this default case
@@ -90,8 +90,8 @@ export const VerticalStepper = memo(function VerticalStepper({
   const BottomLine = useCallback(
     (props: CustomComponentProps) => {
       switch (variant) {
-        case VerticalStepperVariant.in_progress:
-        case VerticalStepperVariant.future:
+        case StepVariant.in_progress:
+        case StepVariant.future:
           return <DottedLine testID="bottom-line" {...props} />
 
         // Only VerticalStepperVariant.complete in this default case
@@ -115,7 +115,7 @@ const Wrapper = styled.View({
   display: 'flex',
   flexDirection: 'column',
   alignItems: 'center',
-  flex: 1,
+  flexGrow: 1,
   gap: getSpacing(1),
   overflow: 'hidden',
 })
@@ -124,12 +124,12 @@ const FilledLine = styled.View(({ theme }) => ({
   backgroundColor: theme.colors.greyMedium,
   width: getSpacing(1),
   borderRadius: 2,
-  flex: 1,
+  flexGrow: 1,
 }))
 
 const DottedLine = styled.View(({ theme }) => ({
   width: 0,
-  flex: 1,
+  flexGrow: 1,
   borderLeftWidth: 4,
   borderLeftColor: theme.colors.greyMedium,
   borderStyle: 'dotted',
@@ -140,6 +140,7 @@ const InProgressIcon = styled.View(({ theme }) => ({
   width: getSpacing(3),
   height: getSpacing(3),
   borderRadius: getSpacing(2),
+  marginHorizontal: getSpacing(1),
 }))
 
 const FutureIcon = styled(InProgressIcon)(({ theme }) => ({
