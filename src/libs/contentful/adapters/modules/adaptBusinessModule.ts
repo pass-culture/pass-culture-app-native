@@ -6,7 +6,7 @@ export const adaptBusinessModule = (module: BusinessContentModel): BusinessModul
   if (module.fields === undefined) return null
   if (module.fields.image.fields === undefined) return null
 
-  const leftIcon = module.fields?.leftIcon?.fields?.file.url
+  const leftIcon = module.fields.leftIcon?.fields?.file.url
     ? buildImageUrl(module.fields.leftIcon.fields.file.url)
     : undefined
   const image = buildImageUrl(module.fields.image.fields.file.url)
