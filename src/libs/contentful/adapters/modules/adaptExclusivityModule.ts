@@ -7,14 +7,16 @@ export const adaptExclusivityModule = (
   modules: ExclusivityContentModel
 ): ExclusivityModule | null => {
   if (modules.fields === undefined) return null
-  if (modules.fields.image.fields === undefined) return null
+
+  const image = buildImageUrl(modules.fields.image.fields?.file.url)
+  if (image === undefined) return null
 
   return {
     type: HomepageModuleType.ExclusivityModule,
     id: modules.sys.id,
     title: modules.fields.title,
     alt: modules.fields.alt,
-    image: buildImageUrl(modules.fields.image.fields.file.url),
+    image,
     url: modules.fields.url,
     displayParameters: modules.fields.displayParameters?.fields
       ? {

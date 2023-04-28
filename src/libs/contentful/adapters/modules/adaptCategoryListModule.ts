@@ -29,7 +29,7 @@ const adaptCategoryBlock = (CategoryBlockList: CategoryBlockContentModel[]): Cat
     const { displayedTitle: title, image } = bloc.fields.thematicCategoryInfo.fields
     return {
       id: bloc.sys.id,
-      image: image?.fields ? buildImageUrl(image.fields.file.url) : undefined,
+      image: buildImageUrl(image.fields?.file.url),
       homeEntryId: bloc.fields.homeEntryId,
       title: title,
     }

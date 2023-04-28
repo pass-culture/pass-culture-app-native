@@ -4,12 +4,11 @@ import { BusinessContentModel } from 'libs/contentful/types'
 
 export const adaptBusinessModule = (module: BusinessContentModel): BusinessModule | null => {
   if (module.fields === undefined) return null
-  if (module.fields.image.fields === undefined) return null
 
-  const leftIcon = module.fields.leftIcon?.fields?.file.url
-    ? buildImageUrl(module.fields.leftIcon.fields.file.url)
-    : undefined
-  const image = buildImageUrl(module.fields.image.fields.file.url)
+  const image = buildImageUrl(module.fields.image.fields?.file.url)
+  if (image === undefined) return null
+
+  const leftIcon = buildImageUrl(module.fields.leftIcon?.fields?.file.url)
   return {
     type: HomepageModuleType.BusinessModule,
     id: module.sys.id,

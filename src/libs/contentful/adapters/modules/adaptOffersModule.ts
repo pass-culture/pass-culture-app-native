@@ -56,9 +56,7 @@ export const adaptOffersModule = (module: AlgoliaContentModel): OffersModule | n
 
   if (offersList.length === 0) return null
 
-  const coverUrl = module.fields.cover?.fields?.image.fields
-    ? buildImageUrl(module.fields.cover.fields.image.fields.file.url)
-    : undefined
+  const coverUrl = buildImageUrl(module.fields.cover?.fields?.image.fields?.file.url)
 
   return {
     type: HomepageModuleType.OffersModule,

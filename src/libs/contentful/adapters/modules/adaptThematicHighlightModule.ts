@@ -8,8 +8,10 @@ export const adaptThematicHighlightModule = (
   if (module.fields === undefined) return null
 
   const thematicHighlightInfo = module.fields.thematicHighlightInfo.fields
-  if (thematicHighlightInfo?.image.fields === undefined) return null
-  const imageUrl = buildImageUrl(thematicHighlightInfo.image.fields.file.url)
+  if (thematicHighlightInfo === undefined) return null
+
+  const imageUrl = buildImageUrl(thematicHighlightInfo.image.fields?.file.url)
+  if (imageUrl === undefined) return null
 
   return {
     id: module.sys.id,
