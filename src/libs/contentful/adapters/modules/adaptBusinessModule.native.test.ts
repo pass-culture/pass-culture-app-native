@@ -23,4 +23,10 @@ describe('adaptBusinessModule', () => {
     expect(isBusinessContentModel(rawBusinessModule)).toBeTruthy()
     expect(adaptBusinessModule(rawBusinessModule)).toEqual(formattedBusinessModule)
   })
+
+  it('should return null when the module is not provided', () => {
+    const rawBusinessModule = { ...businessNatifModuleFixture, fields: undefined }
+
+    expect(adaptBusinessModule(rawBusinessModule)).toEqual(null)
+  })
 })
