@@ -24,6 +24,7 @@ const adaptThematicHeader = (homepageEntry: HomepageNatifEntry) => {
 
   if (isThematicHighlightInfo(thematicHeader)) {
     const thematicHeaderFields = thematicHeader.fields
+    // if a mandatory module is unpublished/deleted, we can't handle the header, so we return the default one
     if (thematicHeaderFields?.image.fields === undefined) return adaptDefaultHeader(homepageEntry)
 
     return {
@@ -40,6 +41,7 @@ const adaptThematicHeader = (homepageEntry: HomepageNatifEntry) => {
 
   if (isThematicCategoryInfo(thematicHeader)) {
     const thematicHeaderFields = thematicHeader.fields
+    // if a mandatory module is unpublished/deleted, we can't handle the header, so we return the default one
     if (thematicHeaderFields?.image.fields === undefined) return adaptDefaultHeader(homepageEntry)
 
     return {

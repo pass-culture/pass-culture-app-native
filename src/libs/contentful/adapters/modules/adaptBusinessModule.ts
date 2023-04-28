@@ -3,6 +3,7 @@ import { buildImageUrl } from 'libs/contentful/adapters/helpers/buildImageUrl'
 import { BusinessContentModel } from 'libs/contentful/types'
 
 export const adaptBusinessModule = (module: BusinessContentModel): BusinessModule | null => {
+  // if a mandatory module is unpublished/deleted, we can't handle the module, so we return null
   if (module.fields === undefined) return null
 
   const image = buildImageUrl(module.fields.image.fields?.file.url)
