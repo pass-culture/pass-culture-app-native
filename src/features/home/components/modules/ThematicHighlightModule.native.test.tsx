@@ -83,7 +83,9 @@ describe('ThematicHighlightModule', () => {
     render(<ThematicHighlightModule index={0} {...baseThematicHighlightModule} />)
     const thematicHighlightModule = screen.getByText(formattedThematicHighlightModule.title)
 
-    await act(async () => fireEvent.press(thematicHighlightModule))
+    await act(async () => {
+      fireEvent.press(thematicHighlightModule)
+    })
 
     expect(navigate).toHaveBeenNthCalledWith(1, 'ThematicHome', {
       homeId: '6DCThxvbPFKAo04SVRZtwY',
