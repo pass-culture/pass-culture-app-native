@@ -228,6 +228,10 @@ export async function handleGeneratedApiResponse(response: Response): Promise<an
 
   const responseBody = await extractResponseBody(response)
 
+  if (!isApiCapturedException(response.status)) {
+    return {}
+  }
+
   if (!response.ok) {
     throw new ApiError(
       response.status,
@@ -267,4 +271,10 @@ export function extractApiErrorMessage(error: unknown) {
     }
   }
   return message
+}
+
+export function isApiCapturedException(statusCode: number) {
+  return Boolean(
+    statusCode !== 500 && statusCode !== 502 && statusCode !== 503 && statusCode !== 504
+  )
 }

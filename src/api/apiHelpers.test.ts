@@ -14,6 +14,7 @@ import {
   ApiError,
   createNeedsAuthenticationResponse,
   handleGeneratedApiResponse,
+  isApiCapturedException,
   refreshAccessToken,
   RefreshTokenExpiredResponse,
   safeFetch,
@@ -376,8 +377,6 @@ describe('[api] helpers', () => {
       400, // Bad Request
       401, // Unauthorized
       404, // Not Found
-      500, // Internal Server Error
-      503, // Service Unavailable
     ])('should throw error if status is not ok', async (statusCode) => {
       const response = await respondWith('apiResponse', statusCode)
 
@@ -391,6 +390,21 @@ describe('[api] helpers', () => {
       )
       await expect(getResult).rejects.toThrow(error)
     })
+
+    it.each([
+      500, // Internal Server Error
+      502, // Bad Gateway
+      503, // Service Unavailable
+      504, // Gateway Timeout
+    ])(
+      'should not throw error when status is not ok and is an error code whose exception is not captured',
+      async (statusCode) => {
+        const response = await respondWith('', statusCode)
+
+        const result = await handleGeneratedApiResponse(response)
+        expect(result).toEqual({})
+      }
+    )
 
     it('should navigate to login when access token is invalid', async () => {
       const result = await handleGeneratedApiResponse(createNeedsAuthenticationResponse(apiUrl))
@@ -413,6 +427,21 @@ describe('[api] helpers', () => {
 
       expect(navigateFromRef).toHaveBeenCalledWith('Login', { displayForcedLoginHelpMessage: true })
       expect(result).toEqual({})
+    })
+  })
+
+  describe('isApiCapturedException', () => {
+    it('should return true when error code is 400', () => {
+      expect(isApiCapturedException(400)).toEqual(true)
+    })
+
+    it.each([
+      500, // Internal Server Error
+      502, // Bad Gateway
+      503, // Service Unavailable
+      504, // Gateway Timeout
+    ])('should return true when error code is %s', (statusCode) => {
+      expect(isApiCapturedException(statusCode)).toEqual(false)
     })
   })
 })
