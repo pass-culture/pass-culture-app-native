@@ -18,7 +18,7 @@ describe('<CookiesDetails/>', () => {
       />
     )
 
-    await screen.findByText('Pour plus d’informations, nous t’invitons à consulter notre')
+    await screen.findByText('À quoi servent tes cookies et tes données ?')
 
     expect(screen).toMatchSnapshot()
   })
