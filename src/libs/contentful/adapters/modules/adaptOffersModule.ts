@@ -1,5 +1,3 @@
-import isEmpty from 'lodash/isEmpty'
-
 import { HomepageModuleType, OffersModule } from 'features/home/types'
 import { buildImageUrl } from 'libs/contentful/adapters/helpers/buildImageUrl'
 import {
@@ -10,14 +8,22 @@ import {
   mapMusicTypes,
   mapBookTypes,
 } from 'libs/contentful/adapters/modules/helpers/offersModuleMappers'
-import { AlgoliaContentModel, AlgoliaParameters } from 'libs/contentful/types'
+import {
+  ProvidedAlgoliaParameters,
+  AlgoliaContentModel,
+  AlgoliaParameters,
+} from 'libs/contentful/types'
+
+const parametersHaveFields = (
+  parameters: AlgoliaParameters
+): parameters is ProvidedAlgoliaParameters => !!parameters?.fields
 
 const buildOffersParams = (
   firstParams: AlgoliaParameters,
   additionalParams: AlgoliaParameters[]
 ): OffersModule['offersModuleParameters'] =>
   [firstParams, ...additionalParams]
-    .filter((params) => params.fields && !isEmpty(params.fields))
+    .filter(parametersHaveFields)
     .map(
       ({
         fields: {
@@ -41,15 +47,17 @@ const buildOffersParams = (
     )
 
 export const adaptOffersModule = (module: AlgoliaContentModel): OffersModule | null => {
+  // if a mandatory module is unpublished/deleted, we can't handle the module, so we return null
+  if (module.fields === undefined) return null
+  if (module.fields.displayParameters.fields === undefined) return null
+
   const additionalAlgoliaParameters = module.fields.additionalAlgoliaParameters ?? []
 
   const offersList = buildOffersParams(module.fields.algoliaParameters, additionalAlgoliaParameters)
 
   if (offersList.length === 0) return null
 
-  const coverUrl = module.fields.cover
-    ? buildImageUrl(module.fields.cover.fields.image?.fields.file.url)
-    : undefined
+  const coverUrl = buildImageUrl(module.fields.cover?.fields?.image.fields?.file.url)
 
   return {
     type: HomepageModuleType.OffersModule,

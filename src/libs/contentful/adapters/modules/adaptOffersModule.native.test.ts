@@ -7,7 +7,7 @@ import {
   algoliaNatifModuleCoverFixture,
   algoliaNatifModuleFixture,
 } from 'libs/contentful/fixtures/algoliaModules.fixture'
-import { AlgoliaParameters, isAlgoliaContentModel } from 'libs/contentful/types'
+import { AlgoliaFields, AlgoliaParameters, isAlgoliaContentModel } from 'libs/contentful/types'
 
 describe('adaptOffersModule', () => {
   it('should adapt an offers module without additional offers', () => {
@@ -22,7 +22,7 @@ describe('adaptOffersModule', () => {
     const rawAlgoliaNatifModule = {
       ...algoliaNatifModuleFixture,
       fields: {
-        ...algoliaNatifModuleFixture.fields,
+        ...(algoliaNatifModuleFixture.fields as AlgoliaFields),
         additionalAlgoliaParameters: additionalAlgoliaParametersWithOffersFixture,
       },
     }
@@ -73,7 +73,7 @@ describe('adaptOffersModule', () => {
     const rawAlgoliaNatifModule = {
       ...algoliaNatifModuleFixture,
       fields: {
-        ...algoliaNatifModuleFixture.fields,
+        ...(algoliaNatifModuleFixture.fields as AlgoliaFields),
         additionalAlgoliaParameters:
           additionalAlgoliaParametersWithoutOffersFixture as unknown as AlgoliaParameters[],
       },
@@ -86,7 +86,7 @@ describe('adaptOffersModule', () => {
     const rawAlgoliaNatifModule = {
       ...algoliaNatifModuleFixture,
       fields: {
-        ...algoliaNatifModuleFixture.fields,
+        ...(algoliaNatifModuleFixture.fields as AlgoliaFields),
         cover: algoliaNatifModuleCoverFixture,
       },
     }

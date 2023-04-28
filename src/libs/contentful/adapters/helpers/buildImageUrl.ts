@@ -1,3 +1,3 @@
-export const buildImageUrl = (url: string): string => {
-  return `https:${url}`
+export const buildImageUrl = (url?: string): string | undefined => {
+  return url ? `https:${url}` : undefined
 }

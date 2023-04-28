@@ -7,4 +7,14 @@ describe('buildImageUrl', () => {
 
     expect(buildImageUrl(rawUrl)).toEqual(formattedUrl)
   })
+
+  it('should return undefined when an empty string is provided', () => {
+    const rawUrl = ''
+
+    expect(buildImageUrl(rawUrl)).toEqual(undefined)
+  })
+
+  it('should return undefined when nothing is provided', () => {
+    expect(buildImageUrl(undefined)).toEqual(undefined)
+  })
 })

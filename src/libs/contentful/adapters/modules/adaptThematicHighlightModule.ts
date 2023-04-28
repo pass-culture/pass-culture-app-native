@@ -4,9 +4,15 @@ import { ThematicHighlightContentModel } from 'libs/contentful/types'
 
 export const adaptThematicHighlightModule = (
   module: ThematicHighlightContentModel
-): ThematicHighlightModule => {
+): ThematicHighlightModule | null => {
+  // if a mandatory module is unpublished/deleted, we can't handle the module, so we return null
+  if (module.fields === undefined) return null
+
   const thematicHighlightInfo = module.fields.thematicHighlightInfo.fields
-  const imageUrl = buildImageUrl(thematicHighlightInfo.image.fields.file.url)
+  if (thematicHighlightInfo === undefined) return null
+
+  const imageUrl = buildImageUrl(thematicHighlightInfo.image.fields?.file.url)
+  if (imageUrl === undefined) return null
 
   return {
     id: module.sys.id,
