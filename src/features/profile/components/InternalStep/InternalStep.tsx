@@ -12,7 +12,7 @@ export type InternalStepProps = StepProps & FirstOrLastProps & StepVariantProps
 
 export function InternalStep({ variant, children, isFirst, isLast }: InternalStepProps) {
   return (
-    <Wrapper>
+    <Wrapper isFirst={isFirst}>
       <View>
         <VerticalStepper variant={variant} isFirst={isFirst} isLast={isLast} />
       </View>
@@ -26,12 +26,12 @@ export function InternalStep({ variant, children, isFirst, isLast }: InternalSte
  * are too close one to other when Step components are one below others.
  */
 
-const Wrapper = styled.View({
+const Wrapper = styled.View<FirstOrLastProps>(({ isFirst }) => ({
   flexGrow: 1,
   flexDirection: 'row',
   gap: getSpacing(2),
-  marginTop: -DOT_SIZE,
-})
+  marginTop: isFirst ? 0 : -DOT_SIZE,
+}))
 
 const Content = styled.View({
   flexGrow: 1,
