@@ -6,7 +6,7 @@ import { BicolorAroundMe } from 'ui/svg/icons/BicolorAroundMe'
 import { StepCard } from './StepCard'
 
 export default {
-  title: 'ui/StepCard',
+  title: 'features/profile/StepCard',
   component: StepCard,
 } as ComponentMeta<typeof StepCard>
 

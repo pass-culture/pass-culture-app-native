@@ -16,17 +16,17 @@ export const StepCard: React.FC<StepCardProps> = ({ title, subtitle, icon, disab
   const iconElement = getIconWithColors(icon, disabled, theme)
 
   return (
-    <StepCardContainer disabled={disabled} hasSubtitle={hasSubtitle} testID="stepcard-container">
-      <StepCardIcon testID="stepcard-icon">{iconElement}</StepCardIcon>
-      <StepCardTextContainter>
-        <StepCardTitle disabled={disabled}>{title}</StepCardTitle>
-        {!disabled && !!hasSubtitle ? <StepCardSubtitle>{subtitle}</StepCardSubtitle> : null}
-      </StepCardTextContainter>
-    </StepCardContainer>
+    <Container disabled={disabled} hasSubtitle={hasSubtitle} testID="stepcard-container">
+      <Icon testID="stepcard-icon">{iconElement}</Icon>
+      <TextContainter>
+        <Title disabled={disabled}>{title}</Title>
+        {!disabled && !!hasSubtitle ? <Subtitle>{subtitle}</Subtitle> : null}
+      </TextContainter>
+    </Container>
   )
 }
 
-const StepCardContainer = styled.View<{ disabled?: boolean; hasSubtitle?: boolean }>(
+const Container = styled.View<{ disabled?: boolean; hasSubtitle?: boolean }>(
   ({ theme, disabled, hasSubtitle }) => ({
     flexDirection: 'row',
     borderWidth: 1,
@@ -40,21 +40,21 @@ const StepCardContainer = styled.View<{ disabled?: boolean; hasSubtitle?: boolea
   })
 )
 
-const StepCardIcon = styled.View({
+const Icon = styled.View({
   justifyContent: 'center',
 })
 
-const StepCardTextContainter = styled.View({
+const TextContainter = styled.View({
   flex: 1,
   marginLeft: getSpacing(4),
   justifyContent: 'center',
 })
 
-const StepCardTitle = styled(Typo.ButtonText)<{ disabled?: boolean }>(({ theme, disabled }) => ({
+const Title = styled(Typo.ButtonText)<{ disabled?: boolean }>(({ theme, disabled }) => ({
   color: disabled ? theme.colors.greyDark : theme.colors.black,
 }))
 
-const StepCardSubtitle = styled(Typo.Caption)(({ theme }) => ({
+const Subtitle = styled(Typo.Caption)(({ theme }) => ({
   color: theme.colors.greyDark,
 }))
 
