@@ -1,5 +1,5 @@
-import React, { ReactElement } from 'react'
-import styled, { DefaultTheme, useTheme } from 'styled-components/native'
+import React, { ReactElement, useMemo } from 'react'
+import styled, { useTheme } from 'styled-components/native'
 
 import { getSpacing, Typo } from 'ui/theme'
 
@@ -13,11 +13,14 @@ interface StepCardProps {
 export const StepCard: React.FC<StepCardProps> = ({ title, subtitle, icon, disabled = false }) => {
   const hasSubtitle = !!subtitle
   const theme = useTheme()
-  const iconElement = getIconWithColors(icon, disabled, theme)
+
+  const iconElement = useMemo(() => {
+    return getIconWithColors(icon, disabled, theme.colors.greyMedium)
+  }, [icon, disabled, theme.colors.greyMedium])
 
   return (
     <Container disabled={disabled} hasSubtitle={hasSubtitle} testID="stepcard-container">
-      <Icon testID="stepcard-icon">{iconElement}</Icon>
+      <IconContainer testID="stepcard-icon">{iconElement}</IconContainer>
       <TextContainter>
         <Title disabled={disabled}>{title}</Title>
         {!disabled && !!hasSubtitle ? <Subtitle>{subtitle}</Subtitle> : null}
@@ -33,20 +36,20 @@ const Container = styled.View<{ disabled?: boolean; hasSubtitle?: boolean }>(
     borderRadius: theme.borderRadius.radius,
     paddingTop: hasSubtitle ? getSpacing(5) : getSpacing(6),
     paddingBottom: hasSubtitle ? getSpacing(5) : getSpacing(6),
-    paddingLeft: getSpacing(3),
-    paddingRight: getSpacing(3),
+    paddingLeft: getSpacing(4),
+    paddingRight: getSpacing(4),
     borderColor: disabled ? theme.colors.greyMedium : theme.colors.black,
-    width: disabled ? '98%' : '100%',
+    margin: !disabled ? -4 : 0,
+    gap: getSpacing(4),
   })
 )
 
-const Icon = styled.View({
+const IconContainer = styled.View({
   justifyContent: 'center',
 })
 
 const TextContainter = styled.View({
   flex: 1,
-  marginLeft: getSpacing(4),
   justifyContent: 'center',
 })
 
@@ -58,8 +61,8 @@ const Subtitle = styled(Typo.Caption)(({ theme }) => ({
   color: theme.colors.greyDark,
 }))
 
-function getIconWithColors(icon: ReactElement, disabled: boolean, theme: DefaultTheme) {
-  const color1 = disabled ? theme.colors.greyMedium : theme.colors.primary
-  const color2 = disabled ? theme.colors.greyMedium : theme.colors.secondary
-  return React.cloneElement(icon, { color: color1, color2: color2 })
+function getIconWithColors(icon: ReactElement, disabled: boolean, disabledColor: string) {
+  if (!disabled) return icon
+
+  return React.cloneElement(icon, { color: disabledColor, color2: disabledColor })
 }
