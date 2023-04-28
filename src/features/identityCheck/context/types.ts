@@ -59,3 +59,11 @@ export type Action =
       }
     }
   | { type: 'SET_METHOD'; payload: IdentityCheckMethod | null }
+  | {
+      type: 'SET_PROFILE_INFO'
+      payload: {
+        name: Name | null
+        city: SuggestedCity | null
+        address: string | null
+      }
+    }

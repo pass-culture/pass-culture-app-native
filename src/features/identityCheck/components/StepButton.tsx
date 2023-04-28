@@ -91,7 +91,7 @@ const BaseContainer: FunctionComponent<BaseContainerProps> = ({ LeftIcon, style,
         <LeftIcon />
       </IconContainer>
     )}
-    {children}
+    <ChildrenContainer>{children}</ChildrenContainer>
   </BaseStyleComponent>
 )
 
@@ -126,6 +126,10 @@ const styleContainer = {
 }
 
 const IconContainer = styled.View({ padding: getSpacing(4) })
+
+const ChildrenContainer = styled.View({
+  flexDirection: 'column',
+})
 
 const StyledInternalTouchableLink: typeof InternalTouchableLink = styled(InternalTouchableLink)({
   width: '100%',
