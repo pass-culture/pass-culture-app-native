@@ -26,9 +26,9 @@ const mapShowTypes = (recoShowTypes: RecommendationParametersFields['showTypes']
   recoShowTypes?.fields?.showTypes
 
 const buildRecommendationParams = (
-  recommendationParams: RecommendationParameters
+  recommendationParams?: RecommendationParameters
 ): RecommendedOffersModule['recommendationParameters'] | undefined => {
-  if (recommendationParams.fields === undefined) return
+  if (recommendationParams?.fields === undefined) return undefined
 
   const {
     recommendationSubcategories,
@@ -57,9 +57,7 @@ export const adaptRecommendationModule = (
   if (modules.fields.displayParameters.fields === undefined) return null
 
   const { recommendationParameters } = modules.fields
-  const cleanRecommendationParameters = recommendationParameters
-    ? buildRecommendationParams(recommendationParameters)
-    : undefined
+  const cleanRecommendationParameters = buildRecommendationParams(recommendationParameters)
 
   return {
     type: HomepageModuleType.RecommendedOffersModule,
