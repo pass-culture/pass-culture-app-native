@@ -4,7 +4,7 @@ import { createStackNavigator } from '@react-navigation/stack'
 import React from 'react'
 
 import { analytics } from 'libs/analytics'
-import { flushAllPromises, act, render } from 'tests/utils'
+import { act, render } from 'tests/utils'
 
 import { onNavigationStateChange } from './services'
 
@@ -124,6 +124,5 @@ async function simulateNavigate<RouteName extends keyof StackParamList>(
 ) {
   await act(async () => {
     navigationRef.navigate(...args)
-    await flushAllPromises()
   })
 }

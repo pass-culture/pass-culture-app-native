@@ -5,7 +5,7 @@ import { CategoryListModule } from 'features/home/components/modules/categories/
 import { categoryBlockList } from 'features/home/fixtures/categoryBlockList.fixture'
 import { analytics } from 'libs/analytics'
 import { ContentTypes } from 'libs/contentful'
-import { fireEvent, flushAllPromisesWithAct, render } from 'tests/utils'
+import { act, fireEvent, render } from 'tests/utils'
 
 describe('CategoryListModule', () => {
   it('should call analytics when the module is displayed', () => {
@@ -62,8 +62,9 @@ describe('CategoryListModule', () => {
 
     const bloc = categoryListModule.getByText('Toto au cinéma')
 
-    fireEvent.press(bloc)
-    await flushAllPromisesWithAct()
+    await act(async () => {
+      fireEvent.press(bloc)
+    })
 
     expect(navigate).toHaveBeenCalledWith('ThematicHome', {
       homeId: '6DCThxvbPFKAo04SVRZtwY',

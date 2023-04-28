@@ -12,7 +12,7 @@ import { analytics } from 'libs/analytics'
 import { env } from 'libs/environment'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { server } from 'tests/server'
-import { render, fireEvent, screen, waitFor, flushAllPromisesWithAct } from 'tests/utils'
+import { render, fireEvent, screen, waitFor } from 'tests/utils'
 
 import { ResetPasswordExpiredLink } from './ResetPasswordExpiredLink'
 
@@ -63,9 +63,10 @@ describe('<ResetPasswordExpiredLink/>', () => {
     )
 
     fireEvent.press(screen.getByText(`Renvoyer l’email`))
-    await flushAllPromisesWithAct()
 
-    expect(useQuerySpy).toThrowError()
+    await waitFor(() => {
+      expect(useQuerySpy).toThrowError()
+    })
   })
 })
 

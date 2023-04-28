@@ -14,7 +14,7 @@ import { analytics } from 'libs/analytics'
 import { env } from 'libs/environment'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { server } from 'tests/server'
-import { fireEvent, render, screen, flushAllPromisesWithAct } from 'tests/utils'
+import { fireEvent, render, screen, act } from 'tests/utils'
 
 import { NotificationSettings } from './NotificationSettings'
 
@@ -38,9 +38,7 @@ describe('NotificationSettings', () => {
       Platform.OS = 'ios'
       renderNotificationSettings('granted', {} as UserProfileResponse)
 
-      await flushAllPromisesWithAct()
-
-      expect(screen.queryByText('Autoriser l’envoi d’e-mails')).toBeTruthy()
+      expect(await screen.findByText('Autoriser l’envoi d’e-mails')).toBeTruthy()
       expect(screen.queryByText('Autoriser les notifications marketing')).toBeTruthy()
     })
 
@@ -51,9 +49,7 @@ describe('NotificationSettings', () => {
       Platform.OS = 'android'
       renderNotificationSettings('granted', {} as UserProfileResponse)
 
-      await flushAllPromisesWithAct()
-
-      expect(screen.queryByText('Autoriser l’envoi d’e-mails')).toBeTruthy()
+      expect(await screen.findByText('Autoriser l’envoi d’e-mails')).toBeTruthy()
       expect(screen.queryByText('Autoriser les notifications marketing')).toBeFalsy()
     })
   })
@@ -68,7 +64,7 @@ describe('NotificationSettings', () => {
         },
       } as UserProfileResponse)
 
-      await flushAllPromisesWithAct()
+      await screen.findByText('Autoriser l’envoi d’e-mails')
 
       const pushSwitch = screen.getAllByTestId('Interrupteur')[1]
       expect(pushSwitch.parent?.props.accessibilityState.checked).toBeTruthy()
@@ -91,7 +87,7 @@ describe('NotificationSettings', () => {
           },
         } as UserProfileResponse)
 
-        await flushAllPromisesWithAct()
+        await screen.findByText('Autoriser l’envoi d’e-mails')
 
         const pushSwitch = screen.getAllByTestId('Interrupteur')[1]
         expect(pushSwitch.parent?.props.accessibilityState.checked).toBeFalsy()
@@ -108,12 +104,10 @@ describe('NotificationSettings', () => {
         },
       } as UserProfileResponse)
 
-      await flushAllPromisesWithAct()
+      await screen.findByText('Autoriser l’envoi d’e-mails')
 
       const toggleSwitch = screen.getAllByTestId('Interrupteur')[1]
       fireEvent.press(toggleSwitch)
-
-      await flushAllPromisesWithAct()
 
       expect(toggleSwitch.parent?.props.accessibilityState.checked).toBeTruthy()
       expect((toggleSwitch.children[0] as ReactTestInstance).props.active).toBeTruthy()
@@ -127,12 +121,10 @@ describe('NotificationSettings', () => {
         },
       } as UserProfileResponse)
 
-      await flushAllPromisesWithAct()
+      await screen.findByText('Autoriser l’envoi d’e-mails')
 
       const toggleSwitch = screen.getAllByTestId('Interrupteur')[1]
       fireEvent.press(toggleSwitch)
-
-      await flushAllPromisesWithAct()
 
       expect(toggleSwitch.parent?.props.accessibilityState.checked).toBeFalsy()
       expect((toggleSwitch.children[0] as ReactTestInstance).props.active).toBeFalsy()
@@ -148,10 +140,10 @@ describe('NotificationSettings', () => {
           },
         } as UserProfileResponse)
 
+        await screen.findByText('Autoriser l’envoi d’e-mails')
+
         const toggleSwitch = screen.getAllByTestId('Interrupteur')[1]
         fireEvent.press(toggleSwitch)
-
-        await flushAllPromisesWithAct()
 
         expect(screen.queryAllByTestId('modal-notifications-permission-modal')).toBeTruthy()
       }
@@ -167,10 +159,9 @@ describe('NotificationSettings', () => {
         } as UserProfileResponse,
         false
       )
-      let saveButton: ReactTestInstance | null = null
-      saveButton = screen.queryByTestId('Enregistrer les modifications')
+      await screen.findByText('Autoriser l’envoi d’e-mails')
 
-      await flushAllPromisesWithAct()
+      const saveButton = screen.queryByTestId('Enregistrer les modifications')
 
       expect(saveButton).toBeFalsy()
     })
@@ -193,20 +184,18 @@ describe('NotificationSettings', () => {
         true
       )
 
-      await flushAllPromisesWithAct()
+      await screen.findByText('Autoriser l’envoi d’e-mails')
 
       const toggleSwitch = screen.getAllByTestId('Interrupteur')[0]
       fireEvent.press(toggleSwitch)
 
-      let saveButton: ReactTestInstance | null = null
-      saveButton = screen.getByTestId('Enregistrer les modifications')
+      const saveButton = screen.getByTestId('Enregistrer les modifications')
       expect(saveButton).toBeEnabled()
 
-      fireEvent.press(saveButton)
+      await act(async () => {
+        fireEvent.press(saveButton)
+      })
 
-      await flushAllPromisesWithAct()
-
-      saveButton = screen.getByTestId('Enregistrer les modifications')
       expect(saveButton).toBeDisabled()
     })
 
@@ -229,18 +218,17 @@ describe('NotificationSettings', () => {
         true
       )
 
-      await flushAllPromisesWithAct()
+      await screen.findByText('Autoriser l’envoi d’e-mails')
 
       const toggleSwitch = screen.getAllByTestId('Interrupteur')[1]
       fireEvent.press(toggleSwitch)
 
-      let saveButton: ReactTestInstance | null = null
-      saveButton = screen.getByTestId('Enregistrer les modifications')
+      const saveButton = screen.getByTestId('Enregistrer les modifications')
       expect(saveButton).toBeEnabled()
 
-      fireEvent.press(saveButton)
-
-      await flushAllPromisesWithAct()
+      await act(async () => {
+        fireEvent.press(saveButton)
+      })
 
       expect(screen.getByTestId('Enregistrer les modifications')).toBeDisabled()
       expect(analytics.logNotificationToggle).toBeCalledWith(false, false)

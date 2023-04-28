@@ -5,7 +5,7 @@ import { navigate } from '__mocks__/@react-navigation/native'
 import { ThematicHighlightModule } from 'features/home/components/modules/ThematicHighlightModule'
 import { formattedThematicHighlightModule } from 'features/home/fixtures/homepage.fixture'
 import { analytics } from 'libs/analytics'
-import { fireEvent, flushAllPromisesWithAct, render, screen } from 'tests/utils'
+import { act, fireEvent, render, screen } from 'tests/utils'
 
 const CURRENT_DATE = new Date('2020-12-01T00:00:00.000Z')
 const PASSED_DATE = new Date('2020-11-30T00:00:00.000Z')
@@ -83,9 +83,10 @@ describe('ThematicHighlightModule', () => {
     render(<ThematicHighlightModule index={0} {...baseThematicHighlightModule} />)
     const thematicHighlightModule = screen.getByText(formattedThematicHighlightModule.title)
 
-    fireEvent.press(thematicHighlightModule)
+    await act(async () => {
+      fireEvent.press(thematicHighlightModule)
+    })
 
-    await flushAllPromisesWithAct()
     expect(navigate).toHaveBeenNthCalledWith(1, 'ThematicHome', {
       homeId: '6DCThxvbPFKAo04SVRZtwY',
       from: 'highlight_thematic_block',

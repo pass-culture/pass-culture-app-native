@@ -2,26 +2,25 @@ import React from 'react'
 
 import { METROPOLITAN_FRANCE } from 'features/identityCheck/components/countryPicker/constants'
 import { CountryPicker } from 'features/identityCheck/components/countryPicker/CountryPicker'
-import { act, flushAllPromisesWithAct, render, fireEvent } from 'tests/utils'
+import { act, render, fireEvent, screen } from 'tests/utils'
 
 const onSelectCountry = jest.fn()
 
 describe('<CountryPicker />', () => {
   it('should render correctly', async () => {
-    const renderAPI = render(
-      <CountryPicker initialCountry={METROPOLITAN_FRANCE} onSelect={onSelectCountry} />
-    )
-    await flushAllPromisesWithAct()
-    expect(renderAPI).toMatchSnapshot()
+    render(<CountryPicker initialCountry={METROPOLITAN_FRANCE} onSelect={onSelectCountry} />)
+    await screen.findByTestId('Ouvrir la modale de choix de l’indicatif téléphonique')
+
+    expect(screen).toMatchSnapshot()
   })
 
   it('should select the correct country calling code when the user select a calling code', async () => {
-    const { getByText, getByTestId } = render(
-      <CountryPicker initialCountry={METROPOLITAN_FRANCE} onSelect={onSelectCountry} />
+    render(<CountryPicker initialCountry={METROPOLITAN_FRANCE} onSelect={onSelectCountry} />)
+
+    fireEvent.press(
+      await screen.findByTestId('Ouvrir la modale de choix de l’indicatif téléphonique')
     )
-    await flushAllPromisesWithAct()
-    fireEvent.press(getByTestId('Ouvrir la modale de choix de l’indicatif téléphonique'))
-    fireEvent.press(getByText('Guadeloupe (+590)'))
+    fireEvent.press(screen.getByText('Guadeloupe (+590)'))
 
     await act(async () => {
       expect(onSelectCountry).toBeCalledWith({
