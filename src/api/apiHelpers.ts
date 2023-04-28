@@ -228,10 +228,6 @@ export async function handleGeneratedApiResponse(response: Response): Promise<an
 
   const responseBody = await extractResponseBody(response)
 
-  if (!isApiCapturedException(response.status)) {
-    return {}
-  }
-
   if (!response.ok) {
     throw new ApiError(
       response.status,

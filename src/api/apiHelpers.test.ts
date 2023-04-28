@@ -377,6 +377,10 @@ describe('[api] helpers', () => {
       400, // Bad Request
       401, // Unauthorized
       404, // Not Found
+      500, // Internal Server Error
+      502, // Bad Gateway
+      503, // Service Unavailable
+      504, // Gateway Timeout
     ])('should throw error if status is not ok', async (statusCode) => {
       const response = await respondWith('apiResponse', statusCode)
 
@@ -389,18 +393,6 @@ describe('[api] helpers', () => {
         `Échec de la requête ${response.url}, code: ${response.status}`
       )
       await expect(getResult).rejects.toThrow(error)
-    })
-
-    it.each([
-      500, // Internal Server Error
-      502, // Bad Gateway
-      503, // Service Unavailable
-      504, // Gateway Timeout
-    ])('should not throw error when API error code is %s', async (statusCode) => {
-      const response = await respondWith('', statusCode)
-
-      const result = await handleGeneratedApiResponse(response)
-      expect(result).toEqual({})
     })
 
     it('should navigate to login when access token is invalid', async () => {
