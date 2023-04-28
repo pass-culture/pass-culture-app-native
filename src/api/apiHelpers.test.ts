@@ -396,15 +396,12 @@ describe('[api] helpers', () => {
       502, // Bad Gateway
       503, // Service Unavailable
       504, // Gateway Timeout
-    ])(
-      'should not throw error when status is not ok and is an error code whose exception is not captured',
-      async (statusCode) => {
-        const response = await respondWith('', statusCode)
+    ])('should not throw error when API error code is %s', async (statusCode) => {
+      const response = await respondWith('', statusCode)
 
-        const result = await handleGeneratedApiResponse(response)
-        expect(result).toEqual({})
-      }
-    )
+      const result = await handleGeneratedApiResponse(response)
+      expect(result).toEqual({})
+    })
 
     it('should navigate to login when access token is invalid', async () => {
       const result = await handleGeneratedApiResponse(createNeedsAuthenticationResponse(apiUrl))
