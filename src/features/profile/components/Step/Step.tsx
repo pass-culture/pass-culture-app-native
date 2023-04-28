@@ -7,6 +7,11 @@ export interface StepProps {
   children: ReactNode
 }
 
+/**
+ * This component is a placeholder that user will give to `StepList`.
+ * It renders nothing since **InternalStep** will be used by **StepList**
+ * to render to the DOM.
+ */
 export function Step(_props: StepProps) {
   return null
 }

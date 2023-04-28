@@ -18,6 +18,23 @@ function getVariantFromIndex(activeStepIndex: number, stepIndex: number) {
   return StepVariant.complete
 }
 
+/**
+ * Create a step list that automatically assigns correct `StepVariant` based on
+ * `activeStepIndex` value.
+ *
+ * @example
+ * <StepList activeStepIndex={0}>
+ *   <Step>
+ *     <MyWonderfulComponent />
+ *   </Step>
+ *   <Step>
+ *     <AnotherComponent />
+ *   </Step>
+ *   <Step>
+ *     <FinalComponent />
+ *   </Step>
+ * </StepList>
+ */
 export function StepList({ activeStepIndex, children }: StepListProps) {
   if (activeStepIndex > children.length - 1) {
     console.warn(
