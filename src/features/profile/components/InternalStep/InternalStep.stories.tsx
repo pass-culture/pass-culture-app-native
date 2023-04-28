@@ -7,15 +7,15 @@ import { Typo } from 'ui/theme'
 
 import { StepVariant } from '../VerticalStepper/types'
 
-import { Step } from './Step'
+import { InternalStep } from './InternalStep'
 
 export default {
-  title: 'features/profile/Step',
-  component: Step,
+  title: 'features/profile/InternalStep',
+  component: InternalStep,
   argTypes: {},
-} as ComponentMeta<typeof Step>
+} as ComponentMeta<typeof InternalStep>
 
-const Template: Story<ComponentProps<typeof Step>> = (props) => <Step {...props} />
+const Template: Story<ComponentProps<typeof InternalStep>> = (props) => <InternalStep {...props} />
 
 const styles = StyleSheet.create({
   // eslint-disable-next-line react-native/no-color-literals
