@@ -335,7 +335,7 @@
     "wdio-video-reporter": "^3.3.0",
     "webpack": "^4.44.2",
     "webpack-bundle-analyzer": "^4.5.0",
-    "webpack-cli": "3.3.12",
+    "webpack-cli": "4.10.0",
     "webpack-dev-server": "^3.11.2",
     "webpack-manifest-plugin": "^2.2.0",
     "workbox-background-sync": "^6.1.5",
