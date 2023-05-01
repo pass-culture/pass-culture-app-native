@@ -268,14 +268,14 @@
   resolved "https://registry.yarnpkg.com/@algolia/ui-components-shared/-/ui-components-shared-1.2.1.tgz#62e3a04fc11623f149312942cd764d4528dd994c"
   integrity sha512-a7mYHf/GVQfhAx/HRiMveKkFvHspQv/REdG+C/FIOosiSmNZxX7QebDwJkrGSmDWdXO12D0Qv1xn3AytFcEDlQ==
 
-"@amplitude/analytics-client-common@^0.5.4":
-  version "0.5.4"
-  resolved "https://registry.yarnpkg.com/@amplitude/analytics-client-common/-/analytics-client-common-0.5.4.tgz#a62a140d4a8872deb1aa4a8d5bf183d158d7e06a"
-  integrity sha512-fhZO4ZimdqaR2VB3I8xKwbHA3oBPIxI+O53+U+Ky8SzNsHbDYGk6eCFByB+hB9VXsJAt53sT9YeSUG9Wsutwqg==
+"@amplitude/analytics-client-common@^0.6.5":
+  version "0.6.5"
+  resolved "https://registry.yarnpkg.com/@amplitude/analytics-client-common/-/analytics-client-common-0.6.5.tgz#19982b87bdf7f9cc5207ba1fa7e95d8960887556"
+  integrity sha512-5eSa9PeNNkL5z+48wxNcR8mVJCGS1w1ipvl0j+pYo/pernI00gwjWXpasezYgGH83J9miJS8KKrYhoY1zQ5+OQ==
   dependencies:
     "@amplitude/analytics-connector" "^1.4.5"
-    "@amplitude/analytics-core" "^0.11.4"
-    "@amplitude/analytics-types" "^0.16.0"
+    "@amplitude/analytics-core" "^0.13.2"
+    "@amplitude/analytics-types" "^0.19.0"
     tslib "^2.4.1"
 
 "@amplitude/analytics-connector@^1.4.5":
@@ -285,30 +285,30 @@
   dependencies:
     "@amplitude/ua-parser-js" "0.7.31"
 
-"@amplitude/analytics-core@^0.11.4":
-  version "0.11.4"
-  resolved "https://registry.yarnpkg.com/@amplitude/analytics-core/-/analytics-core-0.11.4.tgz#6928298d5138cf902af15f2917b76b0d9056c379"
-  integrity sha512-l/ov20SZJoMyHAtu2TZBnHn+IrfiBJnIf9xcPhSr5eyaiHv7h0e/N19nbr3g/cwKtWV/YBvDaUQDK8kmUbRmtg==
+"@amplitude/analytics-core@^0.13.2":
+  version "0.13.2"
+  resolved "https://registry.yarnpkg.com/@amplitude/analytics-core/-/analytics-core-0.13.2.tgz#92d97747c427ca4e0cb7fd2ed89062ee70b422ac"
+  integrity sha512-9jzTuMOFEXt3udMlHr6VgTcTeifPOwyKwf0R3XncnBfFWt5+M3+vDZoksGPLwTaQn/pukpw74jR0FzxNEh/jqw==
   dependencies:
-    "@amplitude/analytics-types" "^0.16.0"
+    "@amplitude/analytics-types" "^0.19.0"
     tslib "^2.4.1"
 
-"@amplitude/analytics-react-native@^1.0.1":
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/@amplitude/analytics-react-native/-/analytics-react-native-1.0.1.tgz#8210e457030bbf609117ae516d5892fe35f63934"
-  integrity sha512-1Gwwa0fFNt2Q2kqC+v7JfwGGaOzyY+Zoo9h0Fh89RuY3XfqUwbInodqI2yZ2Kf3jF852nXuxF+pewXgY1zFVpw==
+"@amplitude/analytics-react-native@^1.1.6":
+  version "1.1.6"
+  resolved "https://registry.yarnpkg.com/@amplitude/analytics-react-native/-/analytics-react-native-1.1.6.tgz#d4d0de8b2524174464e73801d0e9276e05000df3"
+  integrity sha512-SEafbxJ64vFJtA9gCCsqnFDUa5ksIK+pcS3U8WMNgAhwpmZIQ1dwz+rENkozIybkK9LZco1YpL5q60h8XLCmyg==
   dependencies:
-    "@amplitude/analytics-client-common" "^0.5.4"
-    "@amplitude/analytics-core" "^0.11.4"
-    "@amplitude/analytics-types" "^0.16.0"
+    "@amplitude/analytics-client-common" "^0.6.5"
+    "@amplitude/analytics-core" "^0.13.2"
+    "@amplitude/analytics-types" "^0.19.0"
     "@amplitude/ua-parser-js" "^0.7.31"
     "@react-native-async-storage/async-storage" "^1.17.11"
     tslib "^2.4.1"
 
-"@amplitude/analytics-types@^0.16.0":
-  version "0.16.0"
-  resolved "https://registry.yarnpkg.com/@amplitude/analytics-types/-/analytics-types-0.16.0.tgz#725277f7d7925f90bb60d8dc84ed6318161e25f8"
-  integrity sha512-GuXW2vhxosy91JMdIPTf+plwtdRlO/4oIUSPHBLCWJCZBJAojGuE+53pw9S4DliL8POH4nTm7b36UfbL5+GrCA==
+"@amplitude/analytics-types@^0.19.0":
+  version "0.19.0"
+  resolved "https://registry.yarnpkg.com/@amplitude/analytics-types/-/analytics-types-0.19.0.tgz#2864394a1dcd57f84ccfe84388af1444b70943be"
+  integrity sha512-xECFyB40KZdmlvlF76iLp+YO9Tpt2/Ha5S34MrE7Q26gzyTh+vgwGS8FaqYGBzcGeMqKFYDja1hoF/onS94GrA==
 
 "@amplitude/types@^1.9.2":
   version "1.9.2"

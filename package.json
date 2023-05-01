@@ -91,7 +91,7 @@
     "@algolia/client-search": "^4.6.0",
     "@algolia/recommend": "^4.14.3",
     "@algolia/recommend-core": "^1.8.1",
-    "@amplitude/analytics-react-native": "^1.0.1",
+    "@amplitude/analytics-react-native": "^1.1.6",
     "@bam.tech/react-native-config": "^1.4.5",
     "@batch.com/react-native-plugin": "^8.1.2",
     "@fingerprintjs/fingerprintjs": "^3.3.0",
