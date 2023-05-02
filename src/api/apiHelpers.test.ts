@@ -429,7 +429,7 @@ describe('[api] helpers', () => {
       502, // Bad Gateway
       503, // Service Unavailable
       504, // Gateway Timeout
-    ])('should return true when error code is %s', (statusCode) => {
+    ])('should return false when error code is %s', (statusCode) => {
       expect(isApiCapturedException(statusCode)).toEqual(false)
     })
   })

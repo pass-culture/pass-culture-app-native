@@ -37,12 +37,11 @@ export const AsyncErrorBoundaryWithoutNavigation = ({
     )
     // we already captures MonitoringError exceptions (in AsyncError constructor)
     // we don't need to capture those errors
-    // we don't to capture API errors 5xx
-    const shouldCaptureError = Boolean(
+    // we don't capture API errors 5xx
+    const shouldCaptureError =
       !(error instanceof MonitoringError) &&
-        !(error instanceof ScreenError) &&
-        !shouldNotCapturedApiError
-    )
+      !(error instanceof ScreenError) &&
+      !shouldNotCapturedApiError
 
     if (shouldCaptureError) {
       eventMonitoring.captureException(error)
