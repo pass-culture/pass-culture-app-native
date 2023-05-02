@@ -126,3 +126,7 @@ appium.log
 ./e2e/tests/wdio-demo
 e2e/output
 
+
+.lighthouseci
+.reassure
+token.json
