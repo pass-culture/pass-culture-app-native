@@ -20,6 +20,7 @@ export const nonBeneficiaryUser: UserProfileResponse = {
   firstName: 'Jean',
   isBeneficiary: false,
   needsToFillCulturalSurvey: true,
+  requiresIdCheck: false,
   roles: [],
   showEligibleCard: false,
   isEligibleForBeneficiaryUpgrade: false,
