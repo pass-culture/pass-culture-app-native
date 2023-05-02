@@ -126,7 +126,7 @@ export const subscriptionRoutes: GenericRoute<SubscriptionRootStackParamList>[] 
     secure: true,
   },
   {
-    name: 'IdentityCheckStatus',
+    name: 'SetStatus',
     component: SetStatus,
     path: 'verification-identite/profil/statut',
     options: { title: 'Ton statut | Profil' },

@@ -55,7 +55,7 @@ export function NavigationIdentityCheck(): JSX.Element {
           title={'New SetPhoneValidationCode'}
           onPress={() => navigate('SetPhoneValidationCode')}
         />
-        <LinkToComponent name="IdentityCheckStatus" title="SetStatus" />
+        <LinkToComponent name="SetStatus" title="SetStatus" />
         <LinkToComponent name="IdentityCheckUnavailable" />
         <LinkToComponent name="IdentityCheckPending" />
         <LinkToComponent name="SetName" />
