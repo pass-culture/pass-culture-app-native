@@ -36,7 +36,7 @@ export const FinishSubscriptionModal: FunctionComponent<Props> = ({
   const title = 'Débloque ton crédit' + LINE_BREAK + 'pour réserver cette offre'
 
   const depositAmountByAge = useGetDepositAmountsByAge(user?.birthDate)
-  const deposit = depositAmountByAge ? <Deposit depositAmoutByAge={depositAmountByAge} /> : SPACE
+  const deposit = depositAmountByAge ? <Deposit depositAmountByAge={depositAmountByAge} /> : SPACE
 
   return (
     <AppModalWithIllustration
@@ -57,10 +57,10 @@ export const FinishSubscriptionModal: FunctionComponent<Props> = ({
   )
 }
 
-const Deposit = ({ depositAmoutByAge }: { depositAmoutByAge: string }) => (
+const Deposit = ({ depositAmountByAge }: { depositAmountByAge: string }) => (
   <StyledBody>
     {SPACE}
-    de <Typo.ButtonText>{depositAmoutByAge}</Typo.ButtonText>
+    de <Typo.ButtonText>{depositAmountByAge}</Typo.ButtonText>
     {SPACE}
   </StyledBody>
 )
