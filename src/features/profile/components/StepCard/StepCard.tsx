@@ -16,12 +16,7 @@ interface StepCardProps {
   type?: StepCardType
 }
 
-export const StepCard: React.FC<StepCardProps> = ({
-  title,
-  subtitle,
-  icon,
-  type = StepCardType.ACTIVE,
-}) => {
+export function StepCard({ title, subtitle, icon, type = StepCardType.ACTIVE }: StepCardProps) {
   const hasSubtitle = !!subtitle
   const theme = useTheme()
 
@@ -76,19 +71,9 @@ const Subtitle = styled(Typo.Caption)<{ type: StepCardType }>(({ theme, type }) 
 }))
 
 function getIconWithColors(icon: ReactElement, type: StepCardType, theme: DefaultTheme) {
-  if (type === StepCardType.DISABLED) {
-    return React.cloneElement(icon, {
-      color: theme.colors.greyMedium,
-      color2: theme.colors.greyMedium,
-    })
-  }
-  if (type === StepCardType.DONE) {
-    return React.cloneElement(icon, {
-      color: theme.colors.greyDark,
-      color2: theme.colors.greyDark,
-    })
-  }
-  return icon
+  const color = getBorderColor(type, theme)
+
+  return type === StepCardType.ACTIVE ? icon : React.cloneElement(icon, { color, color2: color })
 }
 
 function getBorderColor(type: StepCardType, theme: DefaultTheme) {

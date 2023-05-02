@@ -7,9 +7,10 @@ import { BicolorAroundMe } from 'ui/svg/icons/BicolorAroundMe'
 import { StepCard, StepCardType } from './StepCard'
 
 describe('<StepCard />', () => {
-  it('should render title and icon', () => {
-    const title = 'This is a StepCard'
+  const title = 'This is a StepCard'
+  const subtitle = 'This is a subtitle'
 
+  it('should render title and icon', () => {
     render(<StepCard title={title} icon={<BicolorAroundMe />} />)
 
     expect(screen.getByText(title)).toBeTruthy()
@@ -17,17 +18,12 @@ describe('<StepCard />', () => {
   })
 
   it('should render subtitle', () => {
-    const title = 'This is a StepCard'
-    const subtitle = 'This is a subtitle'
-
     render(<StepCard title={title} subtitle={subtitle} icon={<BicolorAroundMe />} />)
 
     expect(screen.getByText(subtitle)).toBeTruthy()
   })
 
   it('should return the wrapper greyMedium when type is StepCardType.DISABLED', () => {
-    const title = 'This is a StepCard'
-
     render(<StepCard title={title} icon={<BicolorAroundMe />} type={StepCardType.DISABLED} />)
 
     expect(screen.getByTestId('stepcard-container')).toHaveStyle({
@@ -36,8 +32,6 @@ describe('<StepCard />', () => {
   })
 
   it('should return the wrapper greyDark when type is StepCardType.DONE', () => {
-    const title = 'This is a StepCard'
-
     render(<StepCard title={title} icon={<BicolorAroundMe />} type={StepCardType.DONE} />)
 
     expect(screen.getByTestId('stepcard-container')).toHaveStyle({
@@ -46,8 +40,6 @@ describe('<StepCard />', () => {
   })
 
   it('should return the title greyDark when type is StepCardType.DISABLED', () => {
-    const title = 'This is a StepCard'
-
     render(<StepCard title={title} icon={<BicolorAroundMe />} type={StepCardType.DISABLED} />)
 
     expect(screen.getByText(title)).toHaveStyle({
@@ -56,8 +48,6 @@ describe('<StepCard />', () => {
   })
 
   it('should return the title black when type is StepCardType.ACTIVE', () => {
-    const title = 'This is a StepCard'
-
     render(<StepCard title={title} icon={<BicolorAroundMe />} type={StepCardType.ACTIVE} />)
 
     expect(screen.getByText(title)).toHaveStyle({
@@ -66,8 +56,6 @@ describe('<StepCard />', () => {
   })
 
   it('should return the title greyDark when type is StepCardType.DONE', () => {
-    const title = 'This is a StepCard'
-
     render(<StepCard title={title} icon={<BicolorAroundMe />} type={StepCardType.DONE} />)
 
     expect(screen.getByText(title)).toHaveStyle({
@@ -76,9 +64,6 @@ describe('<StepCard />', () => {
   })
 
   it('should return the subtitle greyDark when type is StepCardType.ACTIVE', () => {
-    const title = 'This is a StepCard'
-    const subtitle = 'This is a subtitle'
-
     render(
       <StepCard
         title={title}
@@ -94,9 +79,6 @@ describe('<StepCard />', () => {
   })
 
   it('should return the subtitle greySemiDark when type is StepCardType.DONE', () => {
-    const title = 'This is a StepCard'
-    const subtitle = 'This is a subtitle'
-
     render(
       <StepCard
         title={title}
@@ -112,9 +94,6 @@ describe('<StepCard />', () => {
   })
 
   it('should return the subtitle greySemiDark when type is StepCardType.DISABLED', () => {
-    const title = 'This is a StepCard'
-    const subtitle = 'This is a subtitle'
-
     render(
       <StepCard
         title={title}
