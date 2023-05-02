@@ -7,7 +7,7 @@ import * as useFeatureFlag from 'libs/firebase/firestore/featureFlags/useFeature
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { checkAccessibilityFor, render } from 'tests/utils/web'
 
-import { IdentityCheckStepper } from './Stepper'
+import { Stepper } from './Stepper'
 
 mockdate.set(new Date('2020-12-01T00:00:00.000Z'))
 
@@ -36,11 +36,11 @@ mockUseStepperInfo.mockReturnValue({
   subtitle: 'Débloque ton crédit',
 })
 
-describe('<IdentityCheckStepper/>', () => {
+describe('<Stepper/>', () => {
   describe('Accessibility', () => {
     it('should not have basic accessibility issues', async () => {
       // eslint-disable-next-line local-rules/no-react-query-provider-hoc
-      const { container } = render(reactQueryProviderHOC(<IdentityCheckStepper />))
+      const { container } = render(reactQueryProviderHOC(<Stepper />))
       const results = await checkAccessibilityFor(container)
 
       expect(results).toHaveNoViolations()

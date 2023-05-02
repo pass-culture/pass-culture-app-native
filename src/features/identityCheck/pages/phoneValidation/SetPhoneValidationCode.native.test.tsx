@@ -154,7 +154,7 @@ describe('SetPhoneValidationCode', () => {
     fireEvent.press(continueButton)
 
     await waitFor(() => {
-      expect(navigate).toHaveBeenCalledWith('IdentityCheckStepper')
+      expect(navigate).toHaveBeenCalledWith('Stepper')
     })
   })
 

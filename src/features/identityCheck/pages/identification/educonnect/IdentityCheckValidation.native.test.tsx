@@ -37,7 +37,7 @@ describe('<IdentityCheckValidation />', () => {
     fireEvent.press(validateButton)
     // wait for localStorage to have been updated
     await flushPromises
-    expect(navigate).toHaveBeenCalledWith('IdentityCheckStepper')
+    expect(navigate).toHaveBeenCalledWith('Stepper')
     expect(mockDispatch).toHaveBeenNthCalledWith(1, {
       payload: DeprecatedIdentityCheckStep.CONFIRMATION,
       type: 'SET_STEP',

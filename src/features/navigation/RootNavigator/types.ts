@@ -74,7 +74,7 @@ export type SubscriptionRootStackParamList = {
   TrustedDevice: undefined
   DynamicSocials: undefined
   // Stepper
-  IdentityCheckStepper: undefined
+  Stepper: undefined
   // PhoneValidation
   SetPhoneNumber: undefined
   SetPhoneValidationCode: undefined

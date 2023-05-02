@@ -30,7 +30,7 @@ export const FinishSubscriptionModal: FunctionComponent<Props> = ({
   const navigateToProfile = useCallback(() => {
     analytics.logGoToProfil({ from: 'FinishSubscriptionModal', offerId })
     hideModal()
-    navigate('IdentityCheckStepper')
+    navigate('Stepper')
   }, [offerId, hideModal, navigate])
 
   const title = 'Débloque ton crédit' + LINE_BREAK + 'pour réserver cette offre'

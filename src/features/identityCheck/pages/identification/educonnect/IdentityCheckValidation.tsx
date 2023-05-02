@@ -36,7 +36,7 @@ export function IdentityCheckValidation() {
 
   const navigateToNextEduConnectStep = async () => {
     saveCheckpoint()
-    navigate('IdentityCheckStepper')
+    navigate('Stepper')
   }
 
   const onValidateInformation = async () => {

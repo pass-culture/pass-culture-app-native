@@ -33,7 +33,7 @@ export function IdentityCheckValidation() {
     // Therefore, the identity check context loses the state before educonnect login and we
     // cannot use navigateToNextScreen here. We need to navigated explicitely to next page.
     invalidateStepperInfoQuery()
-    navigate('IdentityCheckStepper')
+    navigate('Stepper')
   }
 
   useFocusEffect(

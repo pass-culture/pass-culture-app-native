@@ -15,7 +15,7 @@ export const IdentityCheckEnd = () => {
 
   const navigateToStepper = () => {
     invalidateStepperInfoQuery()
-    return navigate('IdentityCheckStepper')
+    return navigate('Stepper')
   }
 
   useEffect(() => {

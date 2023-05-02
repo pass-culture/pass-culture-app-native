@@ -36,7 +36,7 @@ export function NavigationIdentityCheck(): JSX.Element {
     <ScrollView>
       <PageHeaderSecondary title="IdentityCheck 🎨" />
       <StyledContainer>
-        <LinkToComponent name="IdentityCheckStepper" title="Stepper" />
+        <LinkToComponent name="Stepper" title="Stepper" />
         <LinkToComponent
           title={`Too many codes`}
           onPress={() => navigate('PhoneValidationTooManyAttempts')}

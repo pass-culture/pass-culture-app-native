@@ -29,7 +29,7 @@ import { SetCity } from 'features/identityCheck/pages/profile/SetCity'
 import { SetName } from 'features/identityCheck/pages/profile/SetName'
 import { SetSchoolType } from 'features/identityCheck/pages/profile/SetSchoolType'
 import { SetStatus } from 'features/identityCheck/pages/profile/SetStatus'
-import { IdentityCheckStepper } from 'features/identityCheck/pages/Stepper'
+import { Stepper } from 'features/identityCheck/pages/Stepper'
 import { NavigationErrors } from 'features/internal/cheatcodes/pages/NavigationErrors/NavigationErrors'
 import { NavigationSignUp } from 'features/internal/cheatcodes/pages/NavigationSignUp'
 import { NavigationIdentityCheck } from 'features/internal/cheatcodes/pages/NavigationSignUp/NavigationIdentityCheck'
@@ -71,8 +71,8 @@ export const subscriptionRoutes: GenericRoute<SubscriptionRootStackParamList>[] 
   },
   // Stepper
   {
-    name: 'IdentityCheckStepper',
-    component: IdentityCheckStepper,
+    name: 'Stepper',
+    component: Stepper,
     path: 'verification-identite',
     options: { title: 'Vérification d’identité' },
     secure: true,

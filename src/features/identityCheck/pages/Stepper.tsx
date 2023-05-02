@@ -24,7 +24,7 @@ import { Invalidate } from 'ui/svg/icons/Invalidate'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
-export const IdentityCheckStepper = () => {
+export const Stepper = () => {
   const theme = useTheme()
   const { navigate } = useNavigation<UseNavigationType>()
 
