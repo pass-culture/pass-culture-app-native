@@ -133,7 +133,7 @@ export const subscriptionRoutes: GenericRoute<SubscriptionRootStackParamList>[] 
     secure: true,
   },
   {
-    name: 'IdentityCheckSchoolType',
+    name: 'SetSchoolType',
     component: SetSchoolType,
     path: 'verification-identite/profil/type-etablissement',
     options: { title: 'Ton établissement | Profil' },

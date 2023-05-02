@@ -85,7 +85,7 @@ export type SubscriptionRootStackParamList = {
   SetCity: undefined
   SetAddress: undefined
   SetStatus: undefined
-  IdentityCheckSchoolType: undefined
+  SetSchoolType: undefined
   // Identification
   ComeBackLater: undefined
   DMSIntroduction: { isForeignDMSInformation: boolean }

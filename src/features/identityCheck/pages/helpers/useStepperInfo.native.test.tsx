@@ -87,7 +87,7 @@ describe('useStepperInfo', () => {
     expect(stepsDetails.length).toEqual(4)
   })
 
-  it('should include IdentityCheckSchoolType if reducer has school types', () => {
+  it('should include SetSchoolType if reducer has school types', () => {
     mockUseRemoteConfigContext.mockReturnValueOnce(defaultRemoteConfig)
     mockIdentityCheckState = {
       ...mockState,
@@ -95,10 +95,10 @@ describe('useStepperInfo', () => {
     }
     const { stepsDetails } = useStepperInfo()
     const profileStep = stepsDetails.find((step) => step.name === IdentityCheckStep.PROFILE)
-    expect(profileStep?.screens.includes('IdentityCheckSchoolType')).toEqual(true)
+    expect(profileStep?.screens.includes('SetSchoolType')).toEqual(true)
   })
 
-  it('should not include IdentityCheckSchoolType if reducer doesnnt have school types', () => {
+  it('should not include SetSchoolType if reducer doesnnt have school types', () => {
     mockUseRemoteConfigContext.mockReturnValueOnce(defaultRemoteConfig)
     mockIdentityCheckState = {
       ...mockState,
@@ -107,7 +107,7 @@ describe('useStepperInfo', () => {
     const { stepsDetails } = useStepperInfo()
     const profileStep = stepsDetails.find((step) => step.name === IdentityCheckStep.PROFILE)
 
-    expect(profileStep?.screens.includes('IdentityCheckSchoolType')).toEqual(false)
+    expect(profileStep?.screens.includes('SetSchoolType')).toEqual(false)
   })
 
   it('should include only PhoneValidationTooManySMSSent if no remaining attempts left', () => {

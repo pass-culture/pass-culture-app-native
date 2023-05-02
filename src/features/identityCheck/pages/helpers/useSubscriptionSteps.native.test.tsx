@@ -49,7 +49,7 @@ describe('useSubscriptionSteps', () => {
     expect(steps.length).toEqual(4)
   })
 
-  it('should include IdentityCheckSchoolType if reducer has school types', () => {
+  it('should include SetSchoolType if reducer has school types', () => {
     mockNextSubscriptionStep = {
       ...mockStep,
       stepperIncludesPhoneValidation: false,
@@ -59,16 +59,16 @@ describe('useSubscriptionSteps', () => {
       profile: { ...mockState.profile, hasSchoolTypes: true },
     }
     const steps = useSubscriptionSteps()
-    expect(steps[0].screens.includes('IdentityCheckSchoolType')).toEqual(true)
+    expect(steps[0].screens.includes('SetSchoolType')).toEqual(true)
   })
 
-  it('should not include IdentityCheckSchoolType if reducer doesnnt have school types', () => {
+  it('should not include SetSchoolType if reducer doesnnt have school types', () => {
     mockIdentityCheckState = {
       ...mockState,
       profile: { ...mockState.profile, hasSchoolTypes: false },
     }
     const steps = useSubscriptionSteps()
-    expect(steps[0].screens.includes('IdentityCheckSchoolType')).toEqual(false)
+    expect(steps[0].screens.includes('SetSchoolType')).toEqual(false)
   })
 
   it('should include only PhoneValidationTooManySMSSent if no remaining attempts left', () => {
