@@ -58,6 +58,8 @@ export const FinishSubscriptionModal: FunctionComponent<Props> = ({
         </StyledBody>
       )}
       <Spacer.Column numberOfSpaces={6} />
+      <Typo.Caption>Ton crédit précédent a été remis à 0&nbsp;€.</Typo.Caption>
+      <Spacer.Column numberOfSpaces={6} />
       <ButtonPrimary
         wording="Terminer mon inscription"
         accessibilityLabel="Aller vers la section profil"
