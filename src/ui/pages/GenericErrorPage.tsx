@@ -1,9 +1,8 @@
 import React, { ReactNode, FunctionComponent } from 'react'
 import styled, { useTheme } from 'styled-components/native'
 
-import { useWhiteStatusBarWithoutReactNavigation } from 'libs/hooks/useWhiteStatusBarWithoutReactNavigation'
 import { Helmet } from 'libs/react-helmet/Helmet'
-import { BackgroundWithDefaultStatusBar } from 'ui/svg/Background'
+import { BackgroundWithWhiteStatusBar } from 'ui/svg/Background'
 import { IconInterface } from 'ui/svg/icons/types'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
@@ -30,8 +29,6 @@ export const GenericErrorPage: FunctionComponent<Props> = ({
   buttons,
   noBackground,
 }) => {
-  useWhiteStatusBarWithoutReactNavigation(noBackground)
-
   const { isTouch } = useTheme()
   const Icon =
     !!icon &&
@@ -53,7 +50,7 @@ export const GenericErrorPage: FunctionComponent<Props> = ({
        *
        * BackgroundWithDefaultStatusBar is the same background but don't set the light nor dark theme
        */}
-      {!noBackground && <BackgroundWithDefaultStatusBar />}
+      {!noBackground && <BackgroundWithWhiteStatusBar />}
       {header}
       <Content>
         <Spacer.TopScreen />
