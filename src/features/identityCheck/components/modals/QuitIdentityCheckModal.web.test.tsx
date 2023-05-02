@@ -45,7 +45,7 @@ describe('<QuitIdentityCheckModal/>', () => {
     fireEvent.click(abandonButton)
 
     await waitFor(() => {
-      expect(analytics.logConfirmQuitIdentityCheck).toHaveBeenNthCalledWith(1, mockStep)
+      expect(analytics.logQuitIdentityCheck).toHaveBeenNthCalledWith(1, mockStep)
       expect(navigateToHome).toHaveBeenCalledTimes(1)
     })
   })

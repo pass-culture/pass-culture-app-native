@@ -165,8 +165,6 @@ export const logEventAnalytics = {
     analytics.logEvent({ amplitude: AmplitudeEvent.COME_BACK_LATER_CLICKED }),
   logConfirmBookingCancellation: (offerId: number) =>
     analytics.logEvent({ firebase: AnalyticsEvent.CONFIRM_BOOKING_CANCELLATION }, { offerId }),
-  logConfirmQuitIdentityCheck: (nextStep: DeprecatedIdentityCheckStep | IdentityCheckStep) =>
-    analytics.logEvent({ firebase: AnalyticsEvent.QUIT_IDENTITY_CHECK }, { nextStep }),
   logConnectWithEduconnectClicked: () =>
     analytics.logEvent({ amplitude: AmplitudeEvent.CONNECT_WITH_EDUCONNECT_CLICKED }),
   logConsultAccessibility: (params: OfferIdOrVenueId) =>

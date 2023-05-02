@@ -8,7 +8,6 @@ import { useAuthContext } from 'features/auth/context/AuthContext'
 import { ErrorBanner } from 'features/identityCheck/components/ErrorBanner'
 import { QuitIdentityCheckModal } from 'features/identityCheck/components/modals/QuitIdentityCheckModal'
 import { StepButton } from 'features/identityCheck/components/StepButton'
-import { useSubscriptionContext } from 'features/identityCheck/context/SubscriptionContextProvider'
 import { useRehydrateProfile } from 'features/identityCheck/pages/helpers/useRehydrateProfile'
 import { useSetSubscriptionStepAndMethod } from 'features/identityCheck/pages/helpers/useSetCurrentSubscriptionStep'
 import { useStepperInfo } from 'features/identityCheck/pages/helpers/useStepperInfo'
@@ -35,14 +34,12 @@ export const Stepper = () => {
     errorMessage,
   } = useStepperInfo()
 
-  const context = useSubscriptionContext()
-
   const { subscription } = useSetSubscriptionStepAndMethod()
   const { showErrorSnackBar } = useSnackBarContext()
   const { refetchUser } = useAuthContext()
   useRehydrateProfile()
 
-  const { visible, showModal, hideModal } = useModal(false)
+  const { visible, showModal: showQuitIdentityCheckModal, hideModal } = useModal(false)
 
   useEffect(() => {
     const showMaintenance = () => {
@@ -56,15 +53,10 @@ export const Stepper = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [subscription])
 
-  function showQuitIdentityCheckModal() {
-    if (context.step) analytics.logQuitIdentityCheck(context.step)
-    showModal()
-  }
   // TODO(yorickeando): this bit was done to ensure that DMS orphans did not have to go through the identity
   // check process twice if they submitted and validated through DMS before signing up on the app. In the future, after PC-14445,
   // we will prevent these users from even having to go through the Stepper process, so this extra navigation logic
   // can be removed.
-
   useEffect(() => {
     if (subscription?.nextSubscriptionStep === null) {
       refetchUser()
