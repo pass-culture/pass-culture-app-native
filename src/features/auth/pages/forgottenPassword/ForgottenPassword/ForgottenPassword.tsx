@@ -6,7 +6,7 @@ import styled from 'styled-components/native'
 import { v4 as uuidv4 } from 'uuid'
 
 import { api } from 'api/api'
-import { ApiError, isApiCapturedException } from 'api/apiHelpers'
+import { ApiError, isOnlyCapturedByAPIException } from 'api/apiHelpers'
 import { SettingsResponse } from 'api/gen'
 import { useSettingsContext } from 'features/auth/context/SettingsContext'
 import { navigateToHome } from 'features/navigation/helpers'
@@ -175,7 +175,7 @@ const useForgottenPasswordForm = (settings: UseQueryResult<SettingsResponse, unk
           'email',
           'Un problème est survenu pendant la réinitialisation, réessaie plus tard.'
         )
-        if (error instanceof ApiError && isApiCapturedException(error.statusCode)) {
+        if (error instanceof ApiError && !isOnlyCapturedByAPIException(error.statusCode)) {
           captureMonitoringError(error.message, 'ForgottenPasswordRequestResetError')
         }
       } finally {

@@ -269,8 +269,8 @@ export function extractApiErrorMessage(error: unknown) {
   return message
 }
 
-export function isApiCapturedException(statusCode: number) {
+export function isOnlyCapturedByAPIException(statusCode: number) {
   return Boolean(
-    statusCode !== 500 && statusCode !== 502 && statusCode !== 503 && statusCode !== 504
+    statusCode === 500 || statusCode === 502 || statusCode === 503 || statusCode === 504
   )
 }

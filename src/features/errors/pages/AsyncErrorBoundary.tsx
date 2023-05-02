@@ -3,7 +3,7 @@ import { FallbackProps } from 'react-error-boundary'
 import { useQueryErrorResetBoundary } from 'react-query'
 import styled from 'styled-components/native'
 
-import { ApiError, isApiCapturedException } from 'api/apiHelpers'
+import { ApiError, isOnlyCapturedByAPIException } from 'api/apiHelpers'
 import { homeNavConfig } from 'features/navigation/TabBar/helpers'
 import { useGoBack } from 'features/navigation/useGoBack'
 import { AsyncError, MonitoringError, eventMonitoring } from 'libs/monitoring'
@@ -33,7 +33,7 @@ export const AsyncErrorBoundaryWithoutNavigation = ({
 
   useEffect(() => {
     const shouldNotCapturedApiError = Boolean(
-      error instanceof ApiError && !isApiCapturedException(error.statusCode)
+      error instanceof ApiError && isOnlyCapturedByAPIException(error.statusCode)
     )
     // we already captures MonitoringError exceptions (in AsyncError constructor)
     // we don't need to capture those errors

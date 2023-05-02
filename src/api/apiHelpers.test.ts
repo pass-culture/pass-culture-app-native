@@ -14,7 +14,7 @@ import {
   ApiError,
   createNeedsAuthenticationResponse,
   handleGeneratedApiResponse,
-  isApiCapturedException,
+  isOnlyCapturedByAPIException,
   refreshAccessToken,
   RefreshTokenExpiredResponse,
   safeFetch,
@@ -419,18 +419,18 @@ describe('[api] helpers', () => {
     })
   })
 
-  describe('isApiCapturedException', () => {
-    it('should return true when error code is 400', () => {
-      expect(isApiCapturedException(400)).toEqual(true)
-    })
-
+  describe('isOnlyCapturedByAPIException', () => {
     it.each([
       500, // Internal Server Error
       502, // Bad Gateway
       503, // Service Unavailable
       504, // Gateway Timeout
-    ])('should return false when error code is %s', (statusCode) => {
-      expect(isApiCapturedException(statusCode)).toEqual(false)
+    ])('should return true when error code is %s', (statusCode) => {
+      expect(isOnlyCapturedByAPIException(statusCode)).toEqual(true)
+    })
+
+    it('should return false when error code is 400', () => {
+      expect(isOnlyCapturedByAPIException(400)).toEqual(false)
     })
   })
 })
