@@ -140,7 +140,9 @@ export const OnlineHome: FunctionComponent<GenericHomeProps> = ({
           data={modulesToDisplay}
           renderItem={renderItem}
           keyExtractor={keyExtractor}
-          ListFooterComponent={<FooterComponent hasShownAll={maxIndex >= modules.length} />}
+          ListFooterComponent={
+            <FooterComponent hasShownAll={modulesToDisplay.length >= modules.length} />
+          }
           ListHeaderComponent={Header}
           initialNumToRender={initialNumToRender}
           removeClippedSubviews={false}
