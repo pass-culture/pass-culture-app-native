@@ -3,7 +3,7 @@ import React from 'react'
 import { navigate } from '__mocks__/@react-navigation/native'
 import { analytics } from 'libs/analytics'
 import { useGetDepositAmountsByAge } from 'shared/user/useGetDepositAmountsByAge'
-import { fireEvent, render } from 'tests/utils'
+import { fireEvent, render, screen } from 'tests/utils'
 
 import { FinishSubscriptionModal } from './FinishSubscriptionModal'
 
@@ -19,44 +19,34 @@ describe('<FinishSubscriptionModal />', () => {
   it('should render correctly with undefined deposit amount', () => {
     mockDepositAmounts.mockReturnValueOnce(undefined)
 
-    const renderAPI = render(
-      <FinishSubscriptionModal visible={visible} hideModal={hideModal} offerId={offerId} />
-    )
-    expect(renderAPI).toMatchSnapshot()
+    render(<FinishSubscriptionModal visible={visible} hideModal={hideModal} offerId={offerId} />)
+    expect(screen).toMatchSnapshot()
   })
 
   it('should render correctly with eighteen years old deposit amount', () => {
-    const renderAPI = render(
-      <FinishSubscriptionModal visible={visible} hideModal={hideModal} offerId={offerId} />
-    )
-    expect(renderAPI).toMatchSnapshot()
+    render(<FinishSubscriptionModal visible={visible} hideModal={hideModal} offerId={offerId} />)
+    expect(screen).toMatchSnapshot()
   })
 
   it('should close modal and navigate to stepper when pressing "Terminer mon inscription" button', () => {
-    const { getByText } = render(
-      <FinishSubscriptionModal visible={visible} hideModal={hideModal} offerId={offerId} />
-    )
+    render(<FinishSubscriptionModal visible={visible} hideModal={hideModal} offerId={offerId} />)
 
-    fireEvent.press(getByText('Terminer mon inscription'))
+    fireEvent.press(screen.getByText('Terminer mon inscription'))
     expect(hideModal).toBeCalledTimes(1)
     expect(navigate).toBeCalledWith('IdentityCheckStepper')
   })
 
   it('should close modal when pressing right header icon', () => {
-    const { getByTestId } = render(
-      <FinishSubscriptionModal visible={visible} hideModal={hideModal} offerId={offerId} />
-    )
+    render(<FinishSubscriptionModal visible={visible} hideModal={hideModal} offerId={offerId} />)
 
-    fireEvent.press(getByTestId('Fermer la modale'))
+    fireEvent.press(screen.getByTestId('Fermer la modale'))
     expect(hideModal).toBeCalledTimes(1)
   })
 
   it('should log analytics when clicking on close button with label "Aller vers la section profil', async () => {
-    const { getByLabelText } = render(
-      <FinishSubscriptionModal visible={visible} hideModal={hideModal} offerId={offerId} />
-    )
+    render(<FinishSubscriptionModal visible={visible} hideModal={hideModal} offerId={offerId} />)
 
-    fireEvent.press(getByLabelText('Aller vers la section profil'))
+    fireEvent.press(screen.getByLabelText('Aller vers la section profil'))
 
     expect(analytics.logGoToProfil).toHaveBeenNthCalledWith(1, {
       from: 'FinishSubscriptionModal',
