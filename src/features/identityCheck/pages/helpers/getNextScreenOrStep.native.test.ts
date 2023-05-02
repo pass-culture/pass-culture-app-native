@@ -4,7 +4,7 @@ import { IdentityCheckStep, StepDetails } from 'features/identityCheck/types'
 const steps = [
   {
     name: IdentityCheckStep.PROFILE,
-    screens: ['SetName', 'IdentityCheckCity', 'IdentityCheckAddress', 'IdentityCheckStatus'],
+    screens: ['SetName', 'SetCity', 'IdentityCheckAddress', 'IdentityCheckStatus'],
   },
   {
     name: IdentityCheckStep.IDENTIFICATION,
@@ -20,9 +20,9 @@ describe('getNextScreenOrStep', () => {
   it('should get the next screen on same step', () => {
     // Profile
     expect(getNextScreenOrStep(steps, 'SetName')).toEqual({
-      screen: 'IdentityCheckCity',
+      screen: 'SetCity',
     })
-    expect(getNextScreenOrStep(steps, 'IdentityCheckCity')).toEqual({
+    expect(getNextScreenOrStep(steps, 'SetCity')).toEqual({
       screen: 'IdentityCheckAddress',
     })
     expect(getNextScreenOrStep(steps, 'IdentityCheckAddress')).toEqual({

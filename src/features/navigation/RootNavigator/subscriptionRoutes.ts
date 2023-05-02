@@ -112,7 +112,7 @@ export const subscriptionRoutes: GenericRoute<SubscriptionRootStackParamList>[] 
     secure: true,
   },
   {
-    name: 'IdentityCheckCity',
+    name: 'SetCity',
     component: SetCity,
     path: 'creation-profil/ville',
     options: { title: 'Ton code postal | Profil' },

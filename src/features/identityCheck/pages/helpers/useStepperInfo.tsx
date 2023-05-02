@@ -42,12 +42,12 @@ export const useStepperInfo = (): {
       screens: hasSchoolTypes
         ? [
             'SetName',
-            'IdentityCheckCity',
+            'SetCity',
             'IdentityCheckAddress',
             'IdentityCheckStatus',
             'IdentityCheckSchoolType',
           ]
-        : ['SetName', 'IdentityCheckCity', 'IdentityCheckAddress', 'IdentityCheckStatus'],
+        : ['SetName', 'SetCity', 'IdentityCheckAddress', 'IdentityCheckStatus'],
     },
     {
       name: IdentityCheckStep.IDENTIFICATION,

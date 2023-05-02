@@ -82,7 +82,7 @@ export type SubscriptionRootStackParamList = {
   PhoneValidationTooManySMSSent: undefined
   // Profile
   SetName: undefined
-  IdentityCheckCity: undefined
+  SetCity: undefined
   IdentityCheckAddress: undefined
   IdentityCheckStatus: undefined
   IdentityCheckSchoolType: undefined
