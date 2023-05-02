@@ -1,11 +1,17 @@
 import React from 'react'
 
 import { navigate } from '__mocks__/@react-navigation/native'
+import { useAuthContext } from 'features/auth/context/AuthContext'
+import { beneficiaryUser } from 'fixtures/user'
 import { analytics } from 'libs/analytics'
 import { useGetDepositAmountsByAge } from 'shared/user/useGetDepositAmountsByAge'
 import { fireEvent, render, screen } from 'tests/utils'
 
 import { FinishSubscriptionModal } from './FinishSubscriptionModal'
+
+jest.mock('features/auth/context/AuthContext')
+const mockUseAuthContext = useAuthContext as jest.Mock
+mockUseAuthContext.mockReturnValue({ user: beneficiaryUser })
 
 jest.mock('shared/user/useGetDepositAmountsByAge')
 const mockDepositAmounts = useGetDepositAmountsByAge as jest.Mock
@@ -24,6 +30,13 @@ describe('<FinishSubscriptionModal />', () => {
   })
 
   it('should render correctly with eighteen years old deposit amount', () => {
+    render(<FinishSubscriptionModal visible={visible} hideModal={hideModal} offerId={offerId} />)
+    expect(screen).toMatchSnapshot()
+  })
+
+  it('should display correct body when using id check and with eighteen years old deposit amount', async () => {
+    mockUseAuthContext.mockReturnValueOnce({ user: { ...beneficiaryUser, requiresIdCheck: true } })
+
     render(<FinishSubscriptionModal visible={visible} hideModal={hideModal} offerId={offerId} />)
     expect(screen).toMatchSnapshot()
   })
