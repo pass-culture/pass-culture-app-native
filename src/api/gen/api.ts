@@ -2594,7 +2594,6 @@ export enum SubscriptionStep {
   'phone-validation' = 'phone-validation',
   'profile-completion' = 'profile-completion',
   'identity-check' = 'identity-check',
-  'user-profiling' = 'user-profiling',
   'honor-statement' = 'honor-statement',
 }
 /**
@@ -2734,11 +2733,6 @@ export interface UserProfileResponse {
    */
   depositType?: DepositType | null
   /**
-   * @type {number}
-   * @memberof UserProfileResponse
-   */
-  depositVersion?: number | null
-  /**
    * @type {DomainsCredit}
    * @memberof UserProfileResponse
    */
@@ -2799,15 +2793,15 @@ export interface UserProfileResponse {
    */
   phoneNumber?: string | null
   /**
-   * @type {string}
-   * @memberof UserProfileResponse
-   */
-  pseudo?: string | null
-  /**
    * @type {number}
    * @memberof UserProfileResponse
    */
   recreditAmountToShow?: number | null
+  /**
+   * @type {boolean}
+   * @memberof UserProfileResponse
+   */
+  requiresIdCheck: boolean
   /**
    * @type {Array<UserRole>}
    * @memberof UserProfileResponse
@@ -2844,38 +2838,6 @@ export interface UserProfileUpdateRequest {
    * @memberof UserProfileUpdateRequest
    */
   subscriptions?: NotificationSubscriptions | null
-}
-/**
- * @export
- * @interface UserProfilingFraudRequest
- */
-export interface UserProfilingFraudRequest {
-  /**
-   * @type {AgentType}
-   * @memberof UserProfilingFraudRequest
-   */
-  agentType?: AgentType | null
-  /**
-   * @type {string}
-   * @memberof UserProfilingFraudRequest
-   */
-  sessionId?: string | null
-  /**
-   * @type {string}
-   * @memberof UserProfilingFraudRequest
-   */
-  session_id?: string | null
-}
-/**
- * @export
- * @interface UserProfilingSessionIdResponse
- */
-export interface UserProfilingSessionIdResponse {
-  /**
-   * @type {string}
-   * @memberof UserProfilingSessionIdResponse
-   */
-  sessionId: string
 }
 /**
  * @export
@@ -4205,28 +4167,6 @@ export const DefaultApiFetchParamCreator = function (configuration?: Configurati
       }
     },
     /**
-     * @summary profiling_fraud_score <POST>
-     * @param {UserProfilingFraudRequest} [body] 
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    async postnativev1userProfiling(body?: UserProfilingFraudRequest, options: any = {}): Promise<FetchArgs> {
-      const pathname = `/native/v1/user_profiling`
-      let secureOptions = Object.assign(options, { credentials: 'omit' })
-      // authentication JWTAuth required
-      secureOptions = Object.assign(secureOptions, { credentials: 'include' })
-      const localVarRequestOptions = Object.assign({ method: 'POST' }, secureOptions)
-      const localVarHeaderParameter = await getAuthenticationHeaders(secureOptions)
-      localVarHeaderParameter['Content-Type'] = 'application/json'
-      localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers)
-      const needsSerialization = (<any>"UserProfilingFraudRequest" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json'
-      localVarRequestOptions.body =  needsSerialization ? JSON.stringify(body || {}) : (body || "")
-      return {
-        url: pathname,
-        options: localVarRequestOptions,
-      }
-    },
-    /**
      * @summary validate_email <POST>
      * @param {ValidateEmailRequest} [body] 
      * @param {*} [options] Override http request option.
@@ -4853,18 +4793,6 @@ export const DefaultApiFp = function(api: DefaultApi, configuration?: Configurat
     },
     /**
      * 
-     * @summary profiling_fraud_score <POST>
-     * @param {UserProfilingFraudRequest} [body] 
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    async postnativev1userProfiling(body?: UserProfilingFraudRequest, options?: any): Promise<EmptyResponse> {
-      const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).postnativev1userProfiling(body, options)
-      const response = await safeFetch(configuration?.basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
-      return handleGeneratedApiResponse(response)
-    },
-    /**
-     * 
      * @summary validate_email <POST>
      * @param {ValidateEmailRequest} [body] 
      * @param {*} [options] Override http request option.
@@ -5463,18 +5391,6 @@ export class DefaultApi extends BaseAPI {
   public async postnativev1ubbleIdentification(body?: IdentificationSessionRequest, options?: any) {
     const configuration = await this.getConfiguration()
     return DefaultApiFp(this, configuration).postnativev1ubbleIdentification(body, options)
-  }
-  /**
-    * 
-    * @summary profiling_fraud_score <POST>
-    * @param {UserProfilingFraudRequest} [body] 
-    * @param {*} [options] Override http request option.
-    * @throws {RequiredError}
-    * @memberof DefaultApi
-    */
-  public async postnativev1userProfiling(body?: UserProfilingFraudRequest, options?: any) {
-    const configuration = await this.getConfiguration()
-    return DefaultApiFp(this, configuration).postnativev1userProfiling(body, options)
   }
   /**
     * 
