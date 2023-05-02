@@ -1,5 +1,6 @@
 import React from 'react'
 
+import { navigate } from '__mocks__/@react-navigation/native'
 import { initialSubscriptionState as mockState } from 'features/identityCheck/context/reducer'
 import { SetName } from 'features/identityCheck/pages/profile/SetName'
 import { analytics } from 'libs/analytics'
@@ -8,13 +9,6 @@ import { fireEvent, render, screen, waitFor } from 'tests/utils'
 const mockDispatch = jest.fn()
 jest.mock('features/identityCheck/context/SubscriptionContextProvider', () => ({
   useSubscriptionContext: () => ({ dispatch: mockDispatch, ...mockState }),
-}))
-
-const mockNavigateToNextScreen = jest.fn()
-jest.mock('features/identityCheck/pages/helpers/useSubscriptionNavigation', () => ({
-  useSubscriptionNavigation: () => ({
-    navigateToNextScreen: mockNavigateToNextScreen,
-  }),
 }))
 
 const firstName = 'John'
@@ -44,7 +38,7 @@ describe('<SetName/>', () => {
     })
   })
 
-  it('should navigate to next screen when submit name', async () => {
+  it('should navigate to SetCity when submit name', async () => {
     render(<SetName />)
 
     const firstNameInput = screen.getByPlaceholderText('Ton prénom')
@@ -60,7 +54,7 @@ describe('<SetName/>', () => {
       type: 'SET_NAME',
       payload: { firstName, lastName },
     })
-    expect(mockNavigateToNextScreen).toBeCalledTimes(1)
+    expect(navigate).toHaveBeenNthCalledWith(1, 'SetCity')
   })
 
   it('should log screen view when the screen is mounted', () => {

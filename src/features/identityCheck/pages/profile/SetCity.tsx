@@ -1,3 +1,4 @@
+import { useNavigation } from '@react-navigation/native'
 import debounce from 'lodash/debounce'
 import React, { useEffect, useRef, useState } from 'react'
 import { Keyboard, Platform } from 'react-native'
@@ -8,8 +9,8 @@ import { AddressOption } from 'features/identityCheck/components/AddressOption'
 import { CenteredTitle } from 'features/identityCheck/components/CenteredTitle'
 import { PageWithHeader } from 'features/identityCheck/components/layout/PageWithHeader'
 import { useSubscriptionContext } from 'features/identityCheck/context/SubscriptionContextProvider'
-import { useSubscriptionNavigation } from 'features/identityCheck/pages/helpers/useSubscriptionNavigation'
 import { IdentityCheckError } from 'features/identityCheck/pages/profile/errors'
+import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { analytics } from 'libs/analytics'
 import { eventMonitoring } from 'libs/monitoring'
@@ -36,7 +37,7 @@ const noPostalCodeFound =
 
 export const SetCity = () => {
   const { showErrorSnackBar } = useSnackBarContext()
-  const { navigateToNextScreen } = useSubscriptionNavigation()
+  const { navigate } = useNavigation<UseNavigationType>()
   const { dispatch, profile } = useSubscriptionContext()
   const [query, setQuery] = useState(profile.city?.postalCode ?? '')
   const [debouncedPostalCode, setDebouncedPostalCode] = useState<string>(query)
@@ -98,7 +99,7 @@ export const SetCity = () => {
     if (selectedCity === null) return
     dispatch({ type: 'SET_CITY', payload: selectedCity })
     analytics.logSetPostalCodeClicked()
-    navigateToNextScreen()
+    navigate('SetAddress')
   }
 
   const disabled = selectedCity === null

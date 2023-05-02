@@ -1,6 +1,7 @@
 import { rest } from 'msw'
 import React from 'react'
 
+import { navigate } from '__mocks__/@react-navigation/native'
 import { initialSubscriptionState as mockState } from 'features/identityCheck/context/reducer'
 import { SetCity } from 'features/identityCheck/pages/profile/SetCity'
 import { analytics } from 'libs/analytics'
@@ -15,13 +16,6 @@ const POSTAL_CODE = '83570'
 const mockDispatch = jest.fn()
 jest.mock('features/identityCheck/context/SubscriptionContextProvider', () => ({
   useSubscriptionContext: () => ({ dispatch: mockDispatch, ...mockState }),
-}))
-
-const mockNavigateToNextScreen = jest.fn()
-jest.mock('features/identityCheck/pages/helpers/useSubscriptionNavigation', () => ({
-  useSubscriptionNavigation: () => ({
-    navigateToNextScreen: mockNavigateToNextScreen,
-  }),
 }))
 
 describe('<SetCity/>', () => {
@@ -60,7 +54,7 @@ describe('<SetCity/>', () => {
     })
   })
 
-  it('should save city and navigate to next screen when clicking on "Continuer"', async () => {
+  it('should save city and navigate to SetAddress when clicking on "Continuer"', async () => {
     const city = mockedSuggestedCities[0]
     mockCitiesApiCall(mockedSuggestedCities)
     renderSetCity()
@@ -72,7 +66,7 @@ describe('<SetCity/>', () => {
     fireEvent.press(screen.getByText(city.nom))
     fireEvent.press(screen.getByText('Continuer'))
 
-    expect(mockNavigateToNextScreen).toBeCalledTimes(1)
+    expect(navigate).toHaveBeenNthCalledWith(1, 'SetAddress')
     expect(mockDispatch).toHaveBeenNthCalledWith(1, {
       type: 'SET_CITY',
       payload: {
