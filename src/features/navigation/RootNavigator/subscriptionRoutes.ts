@@ -119,7 +119,7 @@ export const subscriptionRoutes: GenericRoute<SubscriptionRootStackParamList>[] 
     secure: true,
   },
   {
-    name: 'IdentityCheckAddress',
+    name: 'SetAddress',
     component: SetAddress,
     path: 'creation-profil/adresse',
     options: { title: 'Ton adresse | Profil' },

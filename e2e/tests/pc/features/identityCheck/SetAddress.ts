@@ -3,7 +3,7 @@ import { find, findAll } from '../../helpers/utils/selector'
 
 class SetAddress extends AppScreen {
   constructor() {
-    super('IdentityCheckAddress', true)
+    super('SetAddress', true)
   }
 
   get addressInput() {

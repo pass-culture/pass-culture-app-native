@@ -83,7 +83,7 @@ export type SubscriptionRootStackParamList = {
   // Profile
   SetName: undefined
   SetCity: undefined
-  IdentityCheckAddress: undefined
+  SetAddress: undefined
   IdentityCheckStatus: undefined
   IdentityCheckSchoolType: undefined
   // Identification

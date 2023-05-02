@@ -59,7 +59,7 @@ export function NavigationIdentityCheck(): JSX.Element {
         <LinkToComponent name="IdentityCheckUnavailable" />
         <LinkToComponent name="IdentityCheckPending" />
         <LinkToComponent name="SetName" />
-        <LinkToComponent name="IdentityCheckAddress" title="SetAddress" />
+        <LinkToComponent name="SetAddress" title="SetAddress" />
         <LinkToComponent name="SetCity" title="SetCity" />
         <LinkToComponent name="IdentityCheckEnd" />
         <LinkToComponent name="IdentityCheckHonor" />
