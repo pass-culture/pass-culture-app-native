@@ -35,9 +35,9 @@ export const nonBeneficiaryUser: UserProfileResponse = {
 export const beneficiaryUser: UserProfileResponse = {
   ...nonBeneficiaryUser,
   domainsCredit: {
-    all: { initial: 30000, remaining: 25000 },
-    physical: { initial: 30000, remaining: 10000 },
-    digital: { initial: 30000, remaining: 20000 },
+    all: { initial: 300_00, remaining: 250_00 },
+    physical: { initial: 300_00, remaining: 100_00 },
+    digital: { initial: 300_00, remaining: 200_00 },
   },
   isBeneficiary: true,
   roles: [UserRole.BENEFICIARY],
