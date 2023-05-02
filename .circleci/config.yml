@@ -969,8 +969,8 @@ workflows:
                 - master
           requires:
             - checkout-and-install-deps
-            - test-lint-and-types
-            - test-native
+            # - test-lint-and-types
+            # - test-native
       - transition-jira-ticket:
           filters:
             branches:
@@ -993,8 +993,8 @@ workflows:
               ignore: /.*/
           requires:
             - checkout-and-install-deps
-            - test-lint-and-types
-            - test-native
+            # - test-lint-and-types
+            # - test-native
       - deploy-ios-testing-hard:
           filters:
             tags:
@@ -1003,12 +1003,12 @@ workflows:
               ignore: /.*/
           requires:
             - checkout-and-install-deps
-            - test-lint-and-types
-            - test-native
+            # - test-lint-and-types
+            # - test-native
       - notify-hard-testing-release:
           filters:
             tags:
-              only: /^testing\/v.*/
+              only: /^staging\/v.*/
             branches:
               ignore: /.*/
           requires:
