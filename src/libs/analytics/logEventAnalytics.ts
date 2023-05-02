@@ -405,7 +405,7 @@ export const logEventAnalytics = {
   logOnboardingStarted: () =>
     analytics.logEvent({
       firebase: AnalyticsEvent.ONBOARDING_STARTED,
-      amplitude: AmplitudeEvent.ONBOARDING_WELCOME,
+      amplitude: AmplitudeEvent.ONBOARDING_STARTED,
     }),
   logOpenApp: (params: { appsFlyerUserId?: string }) =>
     analytics.logEvent({ firebase: AnalyticsEvent.OPEN_APP }, params),
