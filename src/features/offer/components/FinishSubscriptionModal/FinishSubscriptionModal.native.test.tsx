@@ -34,7 +34,7 @@ describe('<FinishSubscriptionModal />', () => {
     expect(screen).toMatchSnapshot()
   })
 
-  it('should display correct body when using id check and with eighteen years old deposit amount', async () => {
+  it('should display correct body when user needs to verify his identity to activate his eighteen year old credit', async () => {
     mockUseAuthContext.mockReturnValueOnce({ user: { ...beneficiaryUser, requiresIdCheck: true } })
 
     render(<FinishSubscriptionModal visible={visible} hideModal={hideModal} offerId={offerId} />)
