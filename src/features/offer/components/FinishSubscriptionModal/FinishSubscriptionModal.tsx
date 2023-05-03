@@ -54,7 +54,7 @@ export const FinishSubscriptionModal: FunctionComponent<Props> = ({
         </StyledBody>
       ) : (
         <StyledBody>
-          Confirmes tes informations personnelles pour débloquer{deposit}et réserver cette offre.
+          Confirme tes informations personnelles pour débloquer{deposit}et réserver cette offre.
         </StyledBody>
       )}
       <Spacer.Column numberOfSpaces={6} />

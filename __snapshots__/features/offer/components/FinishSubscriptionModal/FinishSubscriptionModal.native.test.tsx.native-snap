@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<FinishSubscriptionModal /> should display correct body when using id check and with eighteen years old deposit amount 1`] = `
+exports[`<FinishSubscriptionModal /> should display correct body when user needs to verify his identity to activate his eighteen year old credit 1`] = `
 <Modal
   accessibilityLabelledBy="testUuidV4"
   accessibilityModal={true}
@@ -768,7 +768,7 @@ pour réserver cette offre
                   ]
                 }
               >
-                Confirmes tes informations personnelles pour débloquer
+                Confirme tes informations personnelles pour débloquer
                 <Text
                   style={
                     Array [
@@ -1216,7 +1216,7 @@ pour réserver cette offre
                   ]
                 }
               >
-                Confirmes tes informations personnelles pour débloquer
+                Confirme tes informations personnelles pour débloquer
                  ton crédit 
                 et réserver cette offre.
               </Text>
