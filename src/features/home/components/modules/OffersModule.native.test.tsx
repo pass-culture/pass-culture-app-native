@@ -9,11 +9,14 @@ import { analytics } from 'libs/analytics'
 import { DisplayParametersFields, ContentTypes } from 'libs/contentful/types'
 import { placeholderData } from 'libs/subcategories/placeholderData'
 import { Offer } from 'shared/offer/types'
-import { act, fireEvent, render } from 'tests/utils'
+import { act, fireEvent, render, screen } from 'tests/utils'
 
 import { OffersModule } from './OffersModule'
 
 mockdate.set(new Date(2020, 10, 16))
+
+const mockHits = mockedAlgoliaResponse.hits.map(transformHit('fakeUrlPrefix')) as Offer[]
+const mockNbHits = mockedAlgoliaResponse.nbHits
 
 const props = {
   search: [{} as OffersModuleParameters],
@@ -27,6 +30,7 @@ const props = {
   position: null,
   homeEntryId: 'fakeEntryId',
   index: 1,
+  data: { hits: mockHits, nbHits: mockNbHits, moduleId: 'fakeModuleId' },
 }
 
 const nativeEventEnd = {
@@ -35,11 +39,6 @@ const nativeEventEnd = {
   contentSize: { width: 1600 },
 } as NativeSyntheticEvent<NativeScrollEvent>['nativeEvent']
 
-const mockHits = mockedAlgoliaResponse.hits.map(transformHit('fakeUrlPrefix')) as Offer[]
-let mockNbHits = mockedAlgoliaResponse.nbHits
-jest.mock('features/home/api/useOfferModule', () => ({
-  useOfferModule: jest.fn(() => ({ hits: mockHits, nbHits: mockNbHits })),
-}))
 jest.mock('react-query')
 jest.mock('features/auth/context/AuthContext')
 
@@ -56,15 +55,20 @@ jest.mock('libs/subcategories/useSubcategories', () => ({
 
 describe('OffersModule component', () => {
   it('should render correctly', () => {
-    const component = render(<OffersModule {...props} index={1} />)
-    expect(component).toMatchSnapshot()
+    render(<OffersModule {...props} index={1} />)
+    expect(screen).toMatchSnapshot()
+  })
+
+  it('should not render if data is undefined', () => {
+    render(<OffersModule {...{ ...props, data: undefined }} />)
+    expect(screen.toJSON()).toBeNull()
   })
 })
 
 describe('OffersModule component - Analytics', () => {
   it('should trigger logEvent "AllTilesSeen" only once', async () => {
-    const component = render(<OffersModule {...props} index={1} />)
-    const scrollView = component.getByTestId('offersModuleList')
+    render(<OffersModule {...props} index={1} />)
+    const scrollView = screen.getByTestId('offersModuleList')
 
     await act(async () => {
       // 1st scroll to last item => trigger
@@ -103,11 +107,11 @@ describe('OffersModule component - Analytics', () => {
   })
 
   it('should trigger logEvent "SeeMoreHasBeenClicked" when we click on See More', () => {
-    mockNbHits = 10
-    const component = render(<OffersModule {...props} index={1} />)
+    const mockData = { hits: mockHits, nbHits: 10, moduleId: 'fakeModuleId' }
+    render(<OffersModule {...props} index={1} data={mockData} />)
 
     act(() => {
-      fireEvent.press(component.getByText('En voir plus'))
+      fireEvent.press(screen.getByText('En voir plus'))
     })
 
     expect(analytics.logClickSeeMore).toHaveBeenCalledWith({
