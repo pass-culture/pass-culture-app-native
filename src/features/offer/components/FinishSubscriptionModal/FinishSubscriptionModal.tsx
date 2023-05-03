@@ -4,7 +4,6 @@ import styled from 'styled-components/native'
 
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
-import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
 import { analytics } from 'libs/analytics'
 import { useGetDepositAmountsByAge } from 'shared/user/useGetDepositAmountsByAge'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
@@ -31,7 +30,7 @@ export const FinishSubscriptionModal: FunctionComponent<Props> = ({
   const navigateToProfile = useCallback(() => {
     analytics.logGoToProfil({ from: 'FinishSubscriptionModal', offerId })
     hideModal()
-    navigate(...getTabNavConfig('Profile'))
+    navigate('IdentityCheckStepper')
   }, [offerId, hideModal, navigate])
 
   const title = 'Débloque ton crédit' + LINE_BREAK + 'pour réserver cette offre'

@@ -34,14 +34,14 @@ describe('<FinishSubscriptionModal />', () => {
     expect(renderAPI).toMatchSnapshot()
   })
 
-  it('should close modal and navigate to profile when pressing "Terminer mon inscription" button', () => {
+  it('should close modal and navigate to stepper when pressing "Terminer mon inscription" button', () => {
     const { getByText } = render(
       <FinishSubscriptionModal visible={visible} hideModal={hideModal} offerId={offerId} />
     )
 
     fireEvent.press(getByText('Terminer mon inscription'))
     expect(hideModal).toBeCalledTimes(1)
-    expect(navigate).toBeCalledWith('TabNavigator', { screen: 'Profile' })
+    expect(navigate).toBeCalledWith('IdentityCheckStepper')
   })
 
   it('should close modal when pressing right header icon', () => {
