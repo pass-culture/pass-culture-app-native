@@ -3507,21 +3507,21 @@
     "@callstack/reassure-logger" "0.2.0"
     mathjs "^11.5.0"
 
-"@chanzuckerberg/axe-storybook-testing@^6.3.0":
-  version "6.3.0"
-  resolved "https://registry.yarnpkg.com/@chanzuckerberg/axe-storybook-testing/-/axe-storybook-testing-6.3.0.tgz#d0cb84de7f3bd5f388900a5493b503b4bc33cf36"
-  integrity sha512-h2hp7lpe0ZoLbVjEsSvVSmn7lXwNl//TQ7lkUUto/EnwqugMZ969juVT7NP4Ez7e+A5lcxZEc2vV3GPOGYOWpA==
+"@chanzuckerberg/axe-storybook-testing@^7.1.0":
+  version "7.1.0"
+  resolved "https://registry.yarnpkg.com/@chanzuckerberg/axe-storybook-testing/-/axe-storybook-testing-7.1.0.tgz#8bf665eee85d5e66dbccaa4682ec9a4581042284"
+  integrity sha512-wXSmxp1Jhz4vb+Jt/mD+NRlRZoNUkHiN6pc29UiH9HxfSaog3GQPeFmm7bOAntZs1pe1RgosY7LNFVlwJA19gg==
   dependencies:
     http-server "^14.1.1"
     indent-string "^4.0.0"
     lodash "^4.17.21"
     mocha "^10.2.0"
     p-timeout "^4.1.0"
-    playwright "^1.29.2"
+    playwright "^1.32.2"
     portfinder "^1.0.32"
     ts-dedent "^2.2.0"
-    yargs "^17.6.2"
-    zod "^3.20.2"
+    yargs "^17.7.1"
+    zod "^3.21.4"
 
 "@cnakazawa/watch@^1.0.3":
   version "1.0.4"
@@ -20092,10 +20092,10 @@ playwright-core@1.28.1:
   resolved "https://registry.yarnpkg.com/playwright-core/-/playwright-core-1.28.1.tgz#8400be9f4a8d1c0489abdb9e75a4cc0ffc3c00cb"
   integrity sha512-3PixLnGPno0E8rSBJjtwqTwJe3Yw72QwBBBxNoukIj3lEeBNXwbNiKrNuB1oyQgTBw5QHUhNO3SteEtHaMK6ag==
 
-playwright-core@1.31.1:
-  version "1.31.1"
-  resolved "https://registry.yarnpkg.com/playwright-core/-/playwright-core-1.31.1.tgz#4deeebbb8fb73b512593fe24bea206d8fd85ff7f"
-  integrity sha512-JTyX4kV3/LXsvpHkLzL2I36aCdml4zeE35x+G5aPc4bkLsiRiQshU5lWeVpHFAuC8xAcbI6FDcw/8z3q2xtJSQ==
+playwright-core@1.33.0:
+  version "1.33.0"
+  resolved "https://registry.yarnpkg.com/playwright-core/-/playwright-core-1.33.0.tgz#269efe29a927cd6d144d05f3c2d2f72bd72447a1"
+  integrity sha512-aizyPE1Cj62vAECdph1iaMILpT0WUDCq3E6rW6I+dleSbBoGbktvJtzS6VHkZ4DKNEOG9qJpiom/ZxO+S15LAw==
 
 playwright@^1.28.1:
   version "1.28.1"
@@ -20104,12 +20104,12 @@ playwright@^1.28.1:
   dependencies:
     playwright-core "1.28.1"
 
-playwright@^1.29.2:
-  version "1.31.1"
-  resolved "https://registry.yarnpkg.com/playwright/-/playwright-1.31.1.tgz#66164cdc1506bc883c7a98b44714dfea50b22d50"
-  integrity sha512-zKJabsIA2rvOwJ12lGTqWv4HVJzlfw2JtUvO4hAr7J8UXQZ1qEPpX20E1vcz/9fotnTkwgqp3CVdIBwptBN3Fg==
+playwright@^1.32.2:
+  version "1.33.0"
+  resolved "https://registry.yarnpkg.com/playwright/-/playwright-1.33.0.tgz#88df1cffe97718ab8a02303e12c9133681ec7fab"
+  integrity sha512-+zzU3V2TslRX2ETBRgQKsKytYBkJeLZ2xzUj4JohnZnxQnivoUvOvNbRBYWSYykQTO0Y4zb8NwZTYFUO+EpPBQ==
   dependencies:
-    playwright-core "1.31.1"
+    playwright-core "1.33.0"
 
 please-upgrade-node@^3.1.1:
   version "3.2.0"
@@ -26334,6 +26334,19 @@ yargs@^17.6.2:
     y18n "^5.0.5"
     yargs-parser "^21.1.1"
 
+yargs@^17.7.1:
+  version "17.7.2"
+  resolved "https://registry.yarnpkg.com/yargs/-/yargs-17.7.2.tgz#991df39aca675a192b816e1e0363f9d75d2aa269"
+  integrity sha512-7dSzzRQ++CKnNI/krKnYRV7JKKPUXMEh61soaHKg9mrWEhzFWhFnxPxGl+69cD1Ou63C13NUPCnmIcrvqCuM6w==
+  dependencies:
+    cliui "^8.0.1"
+    escalade "^3.1.1"
+    get-caller-file "^2.0.5"
+    require-directory "^2.1.1"
+    string-width "^4.2.3"
+    y18n "^5.0.5"
+    yargs-parser "^21.1.1"
+
 yarn-install@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/yarn-install/-/yarn-install-1.0.0.tgz#57f45050b82efd57182b3973c54aa05cb5d25230"
@@ -26394,6 +26407,11 @@ zod@^3.20.2:
   version "3.20.6"
   resolved "https://registry.yarnpkg.com/zod/-/zod-3.20.6.tgz#2f2f08ff81291d47d99e86140fedb4e0db08361a"
   integrity sha512-oyu0m54SGCtzh6EClBVqDDlAYRz4jrVtKwQ7ZnsEmMI9HnzuZFj8QFwAY1M5uniIYACdGvv0PBWPF2kO0aNofA==
+
+zod@^3.21.4:
+  version "3.21.4"
+  resolved "https://registry.yarnpkg.com/zod/-/zod-3.21.4.tgz#10882231d992519f0a10b5dd58a38c9dabbb64db"
+  integrity sha512-m46AKbrzKVzOzs/DZgVnG5H55N1sv1M8qZU3A8RIKbs3mrACDNeIOeilDymVb2HdmP8uwshOCF4uJ8uM9rCqJw==
 
 zwitch@^1.0.0:
   version "1.0.5"
