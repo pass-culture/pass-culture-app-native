@@ -1,7 +1,9 @@
 import config from './wdio.shared.local.appium.conf'
 import { env } from './environment/env'
 
-const specs = env.SPECS ? env.SPECS.split(',') : ['./e2e/tests/**/specs/**/*.spec.ts']
+const specs = env.SPECS
+  ? env.SPECS.split(',')
+  : ['./e2e/tests/**/specs/**/*.spec.ts', './e2e/tests/**/specs/**/*.spec.ios.ts']
 
 // ============
 // Specs
