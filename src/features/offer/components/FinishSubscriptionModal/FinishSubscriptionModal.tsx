@@ -36,7 +36,7 @@ export const FinishSubscriptionModal: FunctionComponent<Props> = ({
   const title = 'Débloque ton crédit' + LINE_BREAK + 'pour réserver cette offre'
 
   const depositAmountByAge = useGetDepositAmountsByAge(user?.birthDate)
-  const deposit = depositAmountByAge ? (
+  const depositLabel = depositAmountByAge ? (
     <Deposit depositAmountByAge={depositAmountByAge} />
   ) : (
     ' ton crédit '
@@ -50,11 +50,12 @@ export const FinishSubscriptionModal: FunctionComponent<Props> = ({
       hideModal={hideModal}>
       {user?.requiresIdCheck ? (
         <StyledBody>
-          Vérifie ton identité pour débloquer{deposit}et réserver cette offre.
+          Vérifie ton identité pour débloquer{depositLabel}et réserver cette offre.
         </StyledBody>
       ) : (
         <StyledBody>
-          Confirme tes informations personnelles pour débloquer{deposit}et réserver cette offre.
+          Confirme tes informations personnelles pour débloquer{depositLabel}et réserver cette
+          offre.
         </StyledBody>
       )}
       <Spacer.Column numberOfSpaces={6} />
