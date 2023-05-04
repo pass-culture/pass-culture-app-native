@@ -110,6 +110,17 @@ describe('AuthContext', () => {
           })
         })
       })
+
+    it('should set user id when user is logged in', async () => {
+      storage.saveString('access_token', 'token')
+      mockUserProfileInfo(nonBeneficiaryUser)
+
+      renderUseAuthContext()
+
+      await waitFor(() => {
+        expect(amplitude.setUserId).toHaveBeenCalledWith(nonBeneficiaryUser.id.toString())
+      })
+    })
   })
 })
 
