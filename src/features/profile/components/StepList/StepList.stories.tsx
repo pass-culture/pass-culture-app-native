@@ -1,4 +1,4 @@
-import { ComponentMeta } from '@storybook/react'
+import { ComponentMeta, ComponentStory } from '@storybook/react'
 import React from 'react'
 import { StyleSheet, View } from 'react-native'
 import styled from 'styled-components/native'
@@ -17,7 +17,7 @@ export default {
   title: 'features/profile/StepList',
   component: StepList,
   args: {
-    activeStepIndex: 1,
+    activeStepIndex: 0,
   },
   argTypes: {
     children: { control: { disable: true } },
@@ -39,7 +39,7 @@ const styles = StyleSheet.create({
   },
 })
 
-export function UsageExample({ activeStepIndex }: StepListProps) {
+export function UsageExample({ activeStepIndex = 0 }: StepListProps) {
   return (
     <StepList activeStepIndex={activeStepIndex}>
       <Step>
@@ -65,21 +65,24 @@ const StyleStepCard = styled(StepCard)({
   marginVertical: 12,
 })
 
-export function WithStepCard({ activeStepIndex }: StepListProps) {
-  return (
-    <StepList activeStepIndex={activeStepIndex}>
-      <Step>
-        <StyleStepCard title="Done" icon={<Email />} type={StepCardType.DONE} />
-      </Step>
-      <Step>
-        <StyleStepCard title="Active" subtitle="Renseigne ton email" icon={<BicolorAroundMe />} />
-      </Step>
-      <Step>
-        <StyleStepCard title="Disabled" icon={<Email />} type={StepCardType.DISABLED} />
-      </Step>
-      <Step>
-        <StyleStepCard title="Disabled" icon={<Email />} type={StepCardType.DISABLED} />
-      </Step>
-    </StepList>
-  )
+const Template: ComponentStory<typeof StepList> = ({ activeStepIndex = 1 }) => (
+  <StepList activeStepIndex={activeStepIndex}>
+    <Step>
+      <StyleStepCard title="Done" icon={<Email />} type={StepCardType.DONE} />
+    </Step>
+    <Step>
+      <StyleStepCard title="Active" subtitle="Renseigne ton email" icon={<BicolorAroundMe />} />
+    </Step>
+    <Step>
+      <StyleStepCard title="Disabled" icon={<Email />} type={StepCardType.DISABLED} />
+    </Step>
+    <Step>
+      <StyleStepCard title="Disabled" icon={<Email />} type={StepCardType.DISABLED} />
+    </Step>
+  </StepList>
+)
+
+export const WithStepCard = Template.bind({})
+WithStepCard.args = {
+  activeStepIndex: 1,
 }
