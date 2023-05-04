@@ -7,6 +7,7 @@ import FirstLaunch from '../helpers/FirstLaunch'
 import { didFirstLaunch } from '../helpers/utils/error'
 import { flags } from '../helpers/utils/platform'
 import { DefaultTheme, getTheme } from '../helpers/utils/theme'
+import RecommendedPaths from '../features/profile/RecommendedPaths'
 
 describe('Profile', () => {
   let ok = true
@@ -61,6 +62,13 @@ describe('Profile', () => {
         await AccessibilityScreen.accessibilityEngagementLink.click()
         await AccessibilityEngagement.waitForIsShown()
         await AccessibilityEngagement.goBack.click()
+        await AccessibilityScreen.waitForIsShown()
+      })
+
+      it('should navigate to recommended paths and go back to Accessibility screen', async () => {
+        await AccessibilityScreen.recommendedPathsLink.click()
+        await RecommendedPaths.waitForIsShown()
+        await RecommendedPaths.goBack.click()
         await AccessibilityScreen.waitForIsShown()
       })
     })
