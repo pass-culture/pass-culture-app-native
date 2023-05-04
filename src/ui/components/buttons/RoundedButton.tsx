@@ -28,6 +28,7 @@ interface Props {
   accessibilityRole?: AccessibilityRole
   accessibilityChecked?: boolean
   accessibilityLabel?: string
+  disabled?: boolean
 }
 
 const getIcon = (iconName: Props['iconName']): React.FC<IconInterface> => {
@@ -51,7 +52,11 @@ export const RoundedButton = (props: Props) => {
   }, [props.accessibilityRole, props.accessibilityChecked, props.accessibilityLabel])
 
   return (
-    <StyledTouchable activeOpacity={0.5} onPress={props.onPress} {...accessibilityProps}>
+    <StyledTouchable
+      activeOpacity={0.5}
+      onPress={props.onPress}
+      disabled={props.disabled}
+      {...accessibilityProps}>
       {props.animationState ? (
         <IconContainer
           testID="AnimatedHeaderIconRoundContainer"
