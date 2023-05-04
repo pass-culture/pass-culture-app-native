@@ -39,7 +39,7 @@ export function StepCard({
         </IconContainer>
         <TextContainter>
           <Title type={type}>{title}</Title>
-          {!!hasSubtitle && <Subtitle>{subtitle}</Subtitle>}
+          {!!hasSubtitle && <Typo.CaptionNeutralInfo>{subtitle}</Typo.CaptionNeutralInfo>}
         </TextContainter>
       </Container>
     </Parent>
@@ -74,10 +74,6 @@ const TextContainter = styled.View({
 
 const Title = styled(Typo.ButtonText)<{ type: StepCardType }>(({ theme, type }) => ({
   color: type === StepCardType.ACTIVE ? theme.colors.black : theme.colors.greyDark,
-}))
-
-const Subtitle = styled(Typo.Caption)(({ theme }) => ({
-  color: theme.colors.greyDark,
 }))
 
 function getIconWithColors(icon: ReactElement, type: StepCardType, theme: DefaultTheme) {
