@@ -19,12 +19,12 @@ describe('Profile', () => {
     await tabBar.profil.click()
   })
 
-  describe('offline', () => {
-    it('should display a disabled "Autoriser les notifications marketing" button on iOS', async () => {
+  describe('Offline', () => {
+    it('should display a disabled "Autoriser les notifications marketing" button', async () => {
       await ProfileScreen.waitForIsShown()
       await ProfileScreen.notificationsLink.click()
-      await NotificationScreen.marketingButton.waitForDisplayed()
-      expect(await NotificationScreen.marketingButton.isEnabled()).toEqual(false)
+      await NotificationScreen.marketingToggle.waitForDisplayed()
+      expect(await NotificationScreen.marketingToggle.isEnabled()).toEqual(false)
     })
   })
 })

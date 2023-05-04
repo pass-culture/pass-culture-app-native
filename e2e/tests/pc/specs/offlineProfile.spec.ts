@@ -39,10 +39,10 @@ describe('Profile', () => {
         await NotificationScreen.waitForIsShown()
         if (flags.isWeb) {
           expect(
-            await NotificationScreen.authorizeEmailButton.getAttribute('aria-disabled')
+            await NotificationScreen.authorizeEmailToggle.getAttribute('aria-disabled')
           ).toEqual('true')
         } else {
-          expect(await NotificationScreen.authorizeEmailButton.isEnabled()).toEqual(false)
+          expect(await NotificationScreen.authorizeEmailToggle.isEnabled()).toEqual(false)
         }
       })
 

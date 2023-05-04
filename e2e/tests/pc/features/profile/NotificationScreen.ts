@@ -6,11 +6,11 @@ class NotificationScreen extends AppScreen {
     super('Interrupteur-Autoriser l’envoi d’e-mails', true)
   }
 
-  get authorizeEmailButton() {
+  get authorizeEmailToggle() {
     return find('Interrupteur-Autoriser l’envoi d’e-mails')
   }
 
-  get marketingButton() {
+  get marketingToggle() {
     return find('Interrupteur-Autoriser les notifications marketing')
   }
 
