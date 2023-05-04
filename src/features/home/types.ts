@@ -1,3 +1,6 @@
+import { VenueHit } from 'libs/algolia'
+import { Offer } from 'shared/offer/types'
+
 export enum HomepageModuleType {
   'OffersModule' = 'OffersModule',
   'VenuesModule' = 'VenuesModule',
@@ -68,6 +71,7 @@ export type OffersModule = {
   offersModuleParameters: OffersModuleParameters[]
   displayParameters: DisplayParameters
   cover?: string | null
+  data?: OffersData
 }
 
 type DisplayParameters = {
@@ -102,6 +106,12 @@ export type OffersModuleParameters = {
   musicTypes?: string[]
   showTypes?: string[]
   bookTypes?: string[]
+}
+
+export type OffersData = {
+  hits: Offer[]
+  nbHits: number
+  moduleId: string
 }
 
 export type BusinessModule = {
@@ -176,6 +186,7 @@ export type VenuesModule = {
   id: string
   venuesParameters: VenuesParameters[]
   displayParameters: DisplayParameters
+  data?: VenuesData
 }
 
 type VenuesParameters = {
@@ -185,6 +196,11 @@ type VenuesParameters = {
   venueTypes?: string[]
   tags?: string[]
   hitsPerPage: number
+}
+
+export type VenuesData = {
+  hits: VenueHit[]
+  moduleId: string
 }
 
 export type CategoryListModule = {

@@ -2,14 +2,11 @@ import React from 'react'
 
 import { mockVenues } from 'libs/algolia/__mocks__/mockedVenues'
 import { DisplayParametersFields } from 'libs/contentful'
-import { render } from 'tests/utils'
+import { render, screen } from 'tests/utils'
 
 import { VenuesModule } from './VenuesModule'
 
 jest.mock('react-query')
-jest.mock('features/home/api/useVenueModule', () => ({
-  useVenueModule: jest.fn().mockReturnValue(mockVenues.hits),
-}))
 
 const props = {
   moduleId: 'fakemoduleid',
@@ -17,11 +14,17 @@ const props = {
   search: [],
   homeEntryId: 'fakeEntryId',
   index: 1,
+  data: { hits: mockVenues.hits, moduleId: 'fakemoduleid' },
 }
 
 describe('VenuesModule component', () => {
   it('should render correctly', () => {
-    const component = render(<VenuesModule {...props} />)
-    expect(component).toMatchSnapshot()
+    render(<VenuesModule {...props} />)
+    expect(screen).toMatchSnapshot()
+  })
+
+  it('should not render if data is undefined', () => {
+    render(<VenuesModule {...{ ...props, data: undefined }} />)
+    expect(screen.toJSON()).toBeNull()
   })
 })
