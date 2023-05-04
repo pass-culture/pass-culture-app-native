@@ -46,6 +46,7 @@ Tous les détails du film sur AlloCiné: https://www.allocine.fr/film/fichefilm_
   </head>
   <body>
     <p>Hello world</p>
+    <script type=\\"application/ld+json\\">{\\"@context\\":\\"https://schema.org\\",\\"@type\\":\\"Event\\",\\"name\\":\\"Sous les étoiles de Paris - VF\\",\\"location\\":{\\"@type\\":\\"Place\\",\\"name\\":\\"PATHE BEAUGRENELLE\\",\\"address\\":{\\"@type\\":\\"PostalAddress\\",\\"streetAddress\\":\\"2 RUE LAMENNAIS\\",\\"postalCode\\":\\"75008\\",\\"addressLocality\\":\\"PARIS 8\\"},\\"geo\\":{\\"@type\\":\\"GeoCoordinates\\",\\"latitude\\":\\"20\\",\\"longitude\\":\\"2\\"}}}</script>
   </body>
 </html>"
 `;

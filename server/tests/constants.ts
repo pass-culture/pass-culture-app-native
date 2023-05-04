@@ -102,6 +102,26 @@ export const OFFER_RESPONSE_SNAPSHOT = {
     isPermanent: true,
   },
   withdrawalDetails: 'How to withdraw, https://test.com',
+  metadata: {
+    '@context': 'https://schema.org',
+    '@type': 'Event',
+    name: 'Sous les étoiles de Paris - VF',
+    location: {
+      '@type': 'Place',
+      name: 'PATHE BEAUGRENELLE',
+      address: {
+        '@type': 'PostalAddress',
+        streetAddress: '2 RUE LAMENNAIS',
+        postalCode: '75008',
+        addressLocality: 'PARIS 8',
+      },
+      geo: {
+        '@type': 'GeoCoordinates',
+        latitude: '20',
+        longitude: '2',
+      },
+    },
+  },
 }
 
 export const VENUE_WITH_BANNER_RESPONSE_SNAPSHOT = {
