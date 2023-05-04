@@ -57,9 +57,11 @@ describe('Profile', () => {
         await AccessibilityScreen.waitForIsShown()
       })
 
-      it('should navigate to accessibility engagement', async () => {
+      it('should navigate to accessibility engagement and go back to Accessibility screen', async () => {
         await AccessibilityScreen.accessibilityEngagementLink.click()
         await AccessibilityEngagement.waitForIsShown()
+        await AccessibilityEngagement.goBack.click()
+        await AccessibilityScreen.waitForIsShown()
       })
     })
   })
