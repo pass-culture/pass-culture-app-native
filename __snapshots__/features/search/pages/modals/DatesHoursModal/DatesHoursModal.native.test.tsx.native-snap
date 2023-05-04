@@ -227,6 +227,7 @@ exports[`<DatesHoursModal/> should render modal correctly after animation and wi
                       },
                     ]
                   }
+                  testID="back-button-container"
                 />
                 <Text
                   nativeID="testUuidV4"
@@ -261,6 +262,7 @@ exports[`<DatesHoursModal/> should render modal correctly after animation and wi
                       },
                     ]
                   }
+                  testID="close-button-container"
                 >
                   <View
                     accessibilityLabel="Fermer"

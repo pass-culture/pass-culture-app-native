@@ -584,7 +584,7 @@ exports[`Profile component should render correctly 1`] = `
                                   "userSelect": "auto",
                                 }
                               }
-                              testID="Interrupteur"
+                              testID="Interrupteur-Partager ma position"
                             >
                               <View
                                 active={true}

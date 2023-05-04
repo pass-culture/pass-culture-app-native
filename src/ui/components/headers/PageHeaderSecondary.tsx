@@ -44,13 +44,13 @@ export const PageHeaderSecondary: React.FC<Props> = ({
         <Spacer.TopScreen />
         <Container>
           <Row>
-            <ButtonContainer positionInHeader="left">
+            <ButtonContainer positionInHeader="left" testID="back-button-container">
               {!!shouldDisplayBackButton && (
                 <BackButton onGoBack={onGoBack} color={ColorsEnum.WHITE} />
               )}
             </ButtonContainer>
             <Title nativeID={titleID}>{title}</Title>
-            <ButtonContainer positionInHeader="right">
+            <ButtonContainer positionInHeader="right" testID="close-button-container">
               {!!shouldDisplayCloseButton && (
                 <CloseButton onClose={onClose} color={ColorsEnum.WHITE} />
               )}

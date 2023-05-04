@@ -93,6 +93,7 @@ exports[`<FavoritesSorts/> should render correctly 1`] = `
                 },
               ]
             }
+            testID="back-button-container"
           >
             <View
               accessibilityLabel="Revenir en arrière"
@@ -174,6 +175,7 @@ exports[`<FavoritesSorts/> should render correctly 1`] = `
                 },
               ]
             }
+            testID="close-button-container"
           />
         </View>
       </View>

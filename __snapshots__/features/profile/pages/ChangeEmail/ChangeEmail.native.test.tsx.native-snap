@@ -82,6 +82,7 @@ Array [
                 },
               ]
             }
+            testID="back-button-container"
           >
             <View
               accessibilityLabel="Revenir en arrière"
@@ -163,6 +164,7 @@ Array [
                 },
               ]
             }
+            testID="close-button-container"
           />
         </View>
       </View>
@@ -821,6 +823,7 @@ Array [
                 },
               ]
             }
+            testID="back-button-container"
           >
             <View
               accessibilityLabel="Revenir en arrière"
@@ -902,6 +905,7 @@ Array [
                 },
               ]
             }
+            testID="close-button-container"
           />
         </View>
       </View>

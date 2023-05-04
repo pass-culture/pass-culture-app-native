@@ -95,6 +95,7 @@ exports[`<IdentityCheckEduConnectForm /> should render IdentityCheckEduConnectFo
                 },
               ]
             }
+            testID="back-button-container"
           >
             <View
               accessibilityLabel="Revenir en arrière"
@@ -176,6 +177,7 @@ exports[`<IdentityCheckEduConnectForm /> should render IdentityCheckEduConnectFo
                 },
               ]
             }
+            testID="close-button-container"
           />
         </View>
       </View>
