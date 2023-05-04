@@ -1,10 +1,9 @@
 import AppScreen from '../../screenobjects/AppScreen'
 import { find } from '../../helpers/utils/selector'
-import { flags } from '../../helpers/utils/platform'
 
 class ProfileScreen extends AppScreen {
   constructor() {
-    super('Créer un compte', true)
+    super('Profile', true)
   }
 
   get createAccount() {
@@ -23,8 +22,12 @@ class ProfileScreen extends AppScreen {
     return find('Informations légales')
   }
 
-  get privacyLink() {
+  get consentLink() {
     return find('Confidentialité')
+  }
+
+  get snackbarConsentSettings() {
+    return find('Supprimer le message\u00a0: Ton choix a bien été enregistré.')
   }
 }
 
