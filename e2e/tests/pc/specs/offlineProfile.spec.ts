@@ -3,6 +3,7 @@ import AccessibilityScreen from '../features/profile/AccessibilityScreen'
 import NotificationScreen from '../features/profile/NotificationScreen'
 import AccessibilityDeclaration from '../features/profile/AccessibilityDeclaration'
 import AccessibilityEngagement from '../features/profile/AccessibilityEngagement'
+import AccessibilityActionPlan from '../features/profile/AccessibilityActionPlan'
 import ProfileScreen from '../features/profile/ProfileScreen'
 import FirstLaunch from '../helpers/FirstLaunch'
 import { didFirstLaunch } from '../helpers/utils/error'
@@ -77,6 +78,13 @@ describe('Profile', () => {
         await AccessibilityScreen.accessibilityDeclarationLink.click()
         await AccessibilityDeclaration.waitForIsShown()
         await AccessibilityDeclaration.goBack.click()
+        await AccessibilityScreen.waitForIsShown()
+      })
+
+      it('should navigate to action plan and go back to Accessibility screen', async () => {
+        await AccessibilityScreen.actionPlanLink.click()
+        await AccessibilityActionPlan.waitForIsShown()
+        await AccessibilityActionPlan.goBack.click()
         await AccessibilityScreen.waitForIsShown()
       })
     })
