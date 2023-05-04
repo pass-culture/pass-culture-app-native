@@ -1,20 +1,20 @@
-import React, { memo, PropsWithChildren, useState } from 'react'
-import { View } from 'react-native'
+import React, { memo, PropsWithChildren } from 'react'
 import styled from 'styled-components/native'
 
+import { BannerName } from 'api/gen'
 import { useNextSubscriptionStep } from 'features/auth/api/useNextSubscriptionStep'
-import { useAuthContext } from 'features/auth/context/AuthContext'
-import { useBeneficiaryValidationNavigation } from 'features/auth/helpers/useBeneficiaryValidationNavigation'
+import { useHomeBanner } from 'features/home/api/useHomeBanner'
+import { ActivationBanner } from 'features/home/components/banners/ActivationBanner'
 import { IdentityCheckPendingBadge } from 'features/profile/components/Badges/IdentityCheckPendingBadge'
 import { SubscriptionMessageBadge } from 'features/profile/components/Badges/SubscriptionMessageBadge'
 import { YoungerBadge } from 'features/profile/components/Badges/YoungerBadge'
-import { Subtitle } from 'features/profile/components/Subtitle/Subtitle'
+import { EligibilityMessage } from 'features/profile/components/Header/NonBeneficiaryHeader/EligibilityMessage'
 import { formatToSlashedFrenchDate } from 'libs/dates'
-import { useGetDepositAmountsByAge } from 'shared/user/useGetDepositAmountsByAge'
+import { useGeolocation, GeolocPermissionState } from 'libs/geolocation'
 import { PageHeader } from 'ui/components/headers/PageHeader'
-import { BannerWithBackground } from 'ui/components/ModuleBanner/BannerWithBackground'
 import { BicolorUnlock } from 'ui/svg/icons/BicolorUnlock'
-import { Spacer, Typo } from 'ui/theme'
+import { BirthdayCake } from 'ui/svg/icons/BirthdayCake'
+import { Spacer } from 'ui/theme'
 
 interface NonBeneficiaryHeaderProps {
   eligibilityStartDatetime?: string
@@ -25,12 +25,15 @@ function NonBeneficiaryHeaderComponent({
   eligibilityEndDatetime,
   eligibilityStartDatetime,
 }: PropsWithChildren<NonBeneficiaryHeaderProps>) {
-  const [error, setError] = useState<Error | undefined>()
   const today = new Date()
   const { data: subscription } = useNextSubscriptionStep()
-  const { user } = useAuthContext()
 
-  const { nextBeneficiaryValidationStepNavConfig } = useBeneficiaryValidationNavigation(setError)
+  const { permissionState } = useGeolocation()
+  const isGeolocated = permissionState === GeolocPermissionState.GRANTED
+  const { data } = useHomeBanner(isGeolocated)
+  // eslint-disable-next-line
+  // console.log({ data })
+  const homeBanner = data?.banner
 
   const formattedEligibilityStartDatetime = eligibilityStartDatetime
     ? new Date(eligibilityStartDatetime)
@@ -39,11 +42,6 @@ function NonBeneficiaryHeaderComponent({
   const formattedEligibilityEndDatetime = eligibilityEndDatetime
     ? formatToSlashedFrenchDate(new Date(eligibilityEndDatetime).toISOString())
     : undefined
-
-  const userDeposit = useGetDepositAmountsByAge(user?.birthDate)
-  if (error) {
-    throw error
-  }
 
   const isUserTooYoungToBeEligible =
     formattedEligibilityStartDatetime && formattedEligibilityStartDatetime > today
@@ -65,29 +63,29 @@ function NonBeneficiaryHeaderComponent({
         </BannerContainer>
       )
     }
-    if (subscription?.nextSubscriptionStep) {
+
+    if (homeBanner?.name === BannerName.activation_banner) {
       return (
-        <BannerContainer>
-          <View testID="eligibility-banner-container">
-            {!!formattedEligibilityEndDatetime && (
-              <React.Fragment>
-                <Subtitle
-                  startSubtitle="Tu es éligible jusqu’au"
-                  boldEndSubtitle={formattedEligibilityEndDatetime}
-                />
-                <Spacer.Column numberOfSpaces={6} />
-              </React.Fragment>
-            )}
-            {!!nextBeneficiaryValidationStepNavConfig && (
-              <BannerWithBackground
-                navigateTo={nextBeneficiaryValidationStepNavConfig}
-                leftIcon={StyledBicolorUnlock}
-                testID="eligibility-banner">
-                <StyledButtonText>Débloque tes {userDeposit} </StyledButtonText>
-                <StyledBodyText>à dépenser sur l’application</StyledBodyText>
-              </BannerWithBackground>
-            )}
-          </View>
+        <BannerContainer testID="eligibility-banner-container">
+          <EligibilityMessage formattedEligibilityEndDatetime={formattedEligibilityEndDatetime} />
+          <ActivationBanner
+            title={homeBanner.title}
+            subtitle={homeBanner.text}
+            icon={BicolorUnlock}
+          />
+        </BannerContainer>
+      )
+    }
+
+    if (homeBanner?.name === BannerName.transition_17_18_banner) {
+      return (
+        <BannerContainer testID="eligibility-banner-container">
+          <EligibilityMessage formattedEligibilityEndDatetime={formattedEligibilityEndDatetime} />
+          <ActivationBanner
+            title={homeBanner.title}
+            subtitle={homeBanner.text}
+            icon={BirthdayCake}
+          />
         </BannerContainer>
       )
     }
@@ -117,16 +115,3 @@ const BannerContainer = styled.View(({ theme }) => ({
   paddingHorizontal: theme.contentPage.marginHorizontal,
   position: 'relative',
 }))
-
-const StyledButtonText = styled(Typo.ButtonText)(({ theme }) => ({
-  color: theme.colors.white,
-}))
-
-const StyledBodyText = styled(Typo.Body)(({ theme }) => ({
-  color: theme.colors.white,
-}))
-
-const StyledBicolorUnlock = styled(BicolorUnlock).attrs(({ theme }) => ({
-  color: theme.colors.white,
-  color2: theme.colors.white,
-}))``
