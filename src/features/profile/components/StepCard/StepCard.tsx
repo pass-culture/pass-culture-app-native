@@ -1,4 +1,5 @@
 import React, { ReactElement, useMemo } from 'react'
+import { View, ViewProps } from 'react-native'
 import styled, { DefaultTheme, useTheme } from 'styled-components/native'
 
 import { getSpacing, Typo } from 'ui/theme'
@@ -9,14 +10,20 @@ export enum StepCardType {
   DISABLED = 'disabled',
 }
 
-interface StepCardProps {
+interface StepCardProps extends ViewProps {
   title: string
   icon: ReactElement
   subtitle?: string
   type?: StepCardType
 }
 
-export function StepCard({ title, subtitle, icon, type = StepCardType.ACTIVE }: StepCardProps) {
+export function StepCard({
+  title,
+  subtitle,
+  icon,
+  type = StepCardType.ACTIVE,
+  ...props
+}: StepCardProps) {
   const hasSubtitle = !!subtitle
   const theme = useTheme()
 
@@ -25,29 +32,32 @@ export function StepCard({ title, subtitle, icon, type = StepCardType.ACTIVE }: 
   }, [icon, type, theme])
 
   return (
-    <Container type={type} hasSubtitle={hasSubtitle} testID="stepcard-container">
-      <IconContainer type={type} testID="stepcard-icon">
-        {iconElement}
-      </IconContainer>
-      <TextContainter>
-        <Title type={type}>{title}</Title>
-        <Subtitle type={type}>{subtitle}</Subtitle>
-      </TextContainter>
-    </Container>
+    <Parent type={type} {...props}>
+      <Container type={type} hasSubtitle={hasSubtitle} testID="stepcard-container">
+        <IconContainer type={type} testID="stepcard-icon">
+          {iconElement}
+        </IconContainer>
+        <TextContainter>
+          <Title type={type}>{title}</Title>
+          {!!hasSubtitle && <Subtitle>{subtitle}</Subtitle>}
+        </TextContainter>
+      </Container>
+    </Parent>
   )
 }
+
+const Parent = styled(View)<{ type: StepCardType }>(({ type }) => ({
+  paddingHorizontal: type === StepCardType.ACTIVE ? 0 : 4,
+}))
 
 const Container = styled.View<{ type: StepCardType; hasSubtitle?: boolean }>(
   ({ theme, type, hasSubtitle }) => ({
     flexDirection: 'row',
     borderWidth: 1,
     borderRadius: theme.borderRadius.radius,
-    paddingTop: hasSubtitle ? getSpacing(5) : getSpacing(6),
-    paddingBottom: hasSubtitle ? getSpacing(5) : getSpacing(6),
-    paddingLeft: getSpacing(4),
-    paddingRight: getSpacing(4),
+    paddingVertical: hasSubtitle ? getSpacing(5) : getSpacing(6),
+    paddingHorizontal: getSpacing(4),
     borderColor: getBorderColor(type, theme),
-    margin: type === StepCardType.ACTIVE ? -2 : 0,
     gap: getSpacing(4),
   })
 )
@@ -66,8 +76,8 @@ const Title = styled(Typo.ButtonText)<{ type: StepCardType }>(({ theme, type }) 
   color: type === StepCardType.ACTIVE ? theme.colors.black : theme.colors.greyDark,
 }))
 
-const Subtitle = styled(Typo.Caption)<{ type: StepCardType }>(({ theme, type }) => ({
-  color: type === StepCardType.ACTIVE ? theme.colors.greyDark : theme.colors.greySemiDark,
+const Subtitle = styled(Typo.Caption)(({ theme }) => ({
+  color: theme.colors.greyDark,
 }))
 
 function getIconWithColors(icon: ReactElement, type: StepCardType, theme: DefaultTheme) {

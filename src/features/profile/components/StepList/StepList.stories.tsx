@@ -1,8 +1,12 @@
 import { ComponentMeta } from '@storybook/react'
 import React from 'react'
 import { StyleSheet, View } from 'react-native'
+import styled from 'styled-components/native'
 
+import { StepCard, StepCardType } from 'features/profile/components/StepCard/StepCard'
 import { theme } from 'theme'
+import { BicolorAroundMe } from 'ui/svg/icons/BicolorAroundMe'
+import { Email } from 'ui/svg/icons/Email'
 import { Typo } from 'ui/theme'
 
 import { Step } from '../Step/Step'
@@ -13,7 +17,7 @@ export default {
   title: 'features/profile/StepList',
   component: StepList,
   args: {
-    activeStepIndex: 0,
+    activeStepIndex: 1,
   },
   argTypes: {
     children: { control: { disable: true } },
@@ -35,7 +39,7 @@ const styles = StyleSheet.create({
   },
 })
 
-export function UsageExample({ activeStepIndex = 0 }: StepListProps) {
+export function UsageExample({ activeStepIndex }: StepListProps) {
   return (
     <StepList activeStepIndex={activeStepIndex}>
       <Step>
@@ -52,6 +56,29 @@ export function UsageExample({ activeStepIndex = 0 }: StepListProps) {
         <View style={[styles.content, activeStepIndex === 2 && styles.contentActive]}>
           <Typo.Body>on Storybook</Typo.Body>
         </View>
+      </Step>
+    </StepList>
+  )
+}
+
+const StyleStepCard = styled(StepCard)({
+  marginVertical: 12,
+})
+
+export function WithStepCard({ activeStepIndex }: StepListProps) {
+  return (
+    <StepList activeStepIndex={activeStepIndex}>
+      <Step>
+        <StyleStepCard title="Done" icon={<Email />} type={StepCardType.DONE} />
+      </Step>
+      <Step>
+        <StyleStepCard title="Active" subtitle="Renseigne ton email" icon={<BicolorAroundMe />} />
+      </Step>
+      <Step>
+        <StyleStepCard title="Disabled" icon={<Email />} type={StepCardType.DISABLED} />
+      </Step>
+      <Step>
+        <StyleStepCard title="Disabled" icon={<Email />} type={StepCardType.DISABLED} />
       </Step>
     </StepList>
   )
