@@ -31,8 +31,6 @@ function NonBeneficiaryHeaderComponent({
   const { permissionState } = useGeolocation()
   const isGeolocated = permissionState === GeolocPermissionState.GRANTED
   const { data } = useHomeBanner(isGeolocated)
-  // eslint-disable-next-line
-  // console.log({ data })
   const homeBanner = data?.banner
 
   const formattedEligibilityStartDatetime = eligibilityStartDatetime

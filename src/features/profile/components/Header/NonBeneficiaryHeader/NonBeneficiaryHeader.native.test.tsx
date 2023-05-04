@@ -12,9 +12,9 @@ import { useAuthContext } from 'features/auth/context/AuthContext'
 import { nextSubscriptionStepFixture as mockStep } from 'features/identityCheck/fixtures/nextSubscriptionStepFixture'
 import { NonBeneficiaryHeader } from 'features/profile/components/Header/NonBeneficiaryHeader/NonBeneficiaryHeader'
 import { env } from 'libs/environment'
+import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { server } from 'tests/server'
 import { render, screen, waitFor } from 'tests/utils'
-import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 
 const mockedNavigate = jest.fn()
 jest.mock('@react-navigation/native', () => {
