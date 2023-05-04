@@ -31,7 +31,7 @@ export function IdentityCheckValidation() {
     dispatch({ type: 'SET_STEP', payload: DeprecatedIdentityCheckStep.CONFIRMATION })
     // in web context, we are redirected to this page after educonnect login in a new tab.
     // Therefore, the identity check context loses the state before educonnect login and we
-    // cannot use navigateToNextScreen here. We need to navigated explicitely to next page.
+    // cannot use navigateToNextScreen here. We need to navigated explicitly to next page.
     invalidateStepperInfoQuery()
     navigate('Stepper')
   }
