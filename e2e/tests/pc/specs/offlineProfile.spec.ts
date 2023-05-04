@@ -1,6 +1,7 @@
 import { TabBar } from '../features/navigation/TabBar'
 import AccessibilityScreen from '../features/profile/AccessibilityScreen'
 import NotificationScreen from '../features/profile/NotificationScreen'
+import AccessibilityDeclaration from '../features/profile/AccessibilityDeclaration'
 import AccessibilityEngagement from '../features/profile/AccessibilityEngagement'
 import ProfileScreen from '../features/profile/ProfileScreen'
 import FirstLaunch from '../helpers/FirstLaunch'
@@ -69,6 +70,13 @@ describe('Profile', () => {
         await AccessibilityScreen.recommendedPathsLink.click()
         await RecommendedPaths.waitForIsShown()
         await RecommendedPaths.goBack.click()
+        await AccessibilityScreen.waitForIsShown()
+      })
+
+      it('should navigate to accessibility declaration and go back to Accessibility screen', async () => {
+        await AccessibilityScreen.accessibilityDeclarationLink.click()
+        await AccessibilityDeclaration.waitForIsShown()
+        await AccessibilityDeclaration.goBack.click()
         await AccessibilityScreen.waitForIsShown()
       })
     })
