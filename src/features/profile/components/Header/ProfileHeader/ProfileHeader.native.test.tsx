@@ -21,6 +21,7 @@ const user: UserProfileResponse = {
   id: 1234,
   needsToFillCulturalSurvey: true,
   isEligibleForBeneficiaryUpgrade: false,
+  requiresIdCheck: false,
   roles: [],
   showEligibleCard: false,
   subscriptions: {

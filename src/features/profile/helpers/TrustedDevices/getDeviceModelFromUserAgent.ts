@@ -21,7 +21,7 @@ export const getDeviceModelFromUserAgent = (): string => {
   const isWeb = Platform.OS === 'web'
   if (!isWeb) return NO_DEVICE_MODEL_FOUND
 
-  const matchModel = navigator.userAgent.match(DEVICE_MODEL_REGEX)
+  const matchModel = DEVICE_MODEL_REGEX.exec(navigator.userAgent)
   if (matchModel) return matchModel[0].toString()
   return NO_DEVICE_MODEL_FOUND
 }

@@ -99,6 +99,7 @@ const userProfileAPIResponse: UserProfileResponse = {
   showEligibleCard: false,
   isEligibleForBeneficiaryUpgrade: false,
   id: 1234,
+  requiresIdCheck: false,
   roles: [],
   subscriptions: {
     marketingEmail: true,

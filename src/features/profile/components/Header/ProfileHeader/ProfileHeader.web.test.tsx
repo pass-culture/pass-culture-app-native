@@ -18,6 +18,7 @@ const user: UserProfileResponse = {
   id: 1234,
   isEligibleForBeneficiaryUpgrade: false,
   needsToFillCulturalSurvey: true,
+  requiresIdCheck: false,
   roles: [],
   showEligibleCard: false,
   subscriptions: {

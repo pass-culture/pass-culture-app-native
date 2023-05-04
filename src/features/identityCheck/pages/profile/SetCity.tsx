@@ -57,7 +57,7 @@ export const SetCity = () => {
       const city = cities.find(
         (suggestedCity: SuggestedCity) => suggestedCity.name === profile.city?.name
       )
-      setSelectedCity(city || null)
+      setSelectedCity(city ?? null)
     }
   }, [cities, profile])
 
