@@ -44,4 +44,7 @@ export const amplitude: AmplitudeClient = {
   setUserProperties: (properties) => {
     ampInstance.setUserProperties(properties)
   },
+  setUserId: (id) => {
+    ampInstance.setUserId(id)
+  },
 }

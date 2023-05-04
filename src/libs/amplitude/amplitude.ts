@@ -35,4 +35,7 @@ export const amplitude: AmplitudeClient = {
 
     amplitudeRN.identify(identifyProperties)
   },
+  setUserId: (id) => {
+    amplitudeRN.setUserId(id)
+  },
 }
