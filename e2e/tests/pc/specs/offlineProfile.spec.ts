@@ -1,6 +1,7 @@
 import { TabBar } from '../features/navigation/TabBar'
 import AccessibilityScreen from '../features/profile/AccessibilityScreen'
 import NotificationScreen from '../features/profile/NotificationScreen'
+import AccessibilityEngagement from '../features/profile/AccessibilityEngagement'
 import ProfileScreen from '../features/profile/ProfileScreen'
 import FirstLaunch from '../helpers/FirstLaunch'
 import { didFirstLaunch } from '../helpers/utils/error'
@@ -54,6 +55,11 @@ describe('Profile', () => {
       it('should display Accessibility screen', async () => {
         await ProfileScreen.accessibilityLink.click()
         await AccessibilityScreen.waitForIsShown()
+      })
+
+      it('should navigate to accessibility engagement', async () => {
+        await AccessibilityScreen.accessibilityEngagementLink.click()
+        await AccessibilityEngagement.waitForIsShown()
       })
     })
   })
