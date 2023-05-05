@@ -27,8 +27,8 @@ export const UbbleWebview: React.FC = () => {
     if (status === 'aborted') {
       analytics.logIdentityCheckAbort({
         method: IdentityCheckMethod.ubble,
-        reason: parsedUrlParams['return_reason'] || null,
-        errorType: parsedUrlParams['error_type'] || null,
+        reason: parsedUrlParams['return_reason'] ?? null,
+        errorType: parsedUrlParams['error_type'] ?? null,
       })
       navigateToHome()
     } else if (url.includes(REDIRECT_URL_UBBLE)) {

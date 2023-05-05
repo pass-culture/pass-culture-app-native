@@ -34,9 +34,9 @@ export const SetAddress = () => {
   const { dispatch, profile } = useSubscriptionContext()
   const { showErrorSnackBar } = useSnackBarContext()
   const { navigateToNextScreen } = useSubscriptionNavigation()
-  const [query, setQuery] = useState<string>(profile.address || '')
+  const [query, setQuery] = useState<string>(profile.address ?? '')
   const [debouncedQuery, setDebouncedQuery] = useState<string>(query)
-  const [selectedAddress, setSelectedAddress] = useState<string | null>(profile.address || null)
+  const [selectedAddress, setSelectedAddress] = useState<string | null>(profile.address ?? null)
   const debouncedSetQuery = useRef(debounce(setDebouncedQuery, 500)).current
   const adressInputErrorId = uuidv4()
 
@@ -101,7 +101,7 @@ export const SetAddress = () => {
 
   const submitAddress = () => {
     if (!enabled) return
-    dispatch({ type: 'SET_ADDRESS', payload: selectedAddress || query })
+    dispatch({ type: 'SET_ADDRESS', payload: selectedAddress ?? query })
     analytics.logSetAddressClicked()
     navigateToNextScreen()
   }

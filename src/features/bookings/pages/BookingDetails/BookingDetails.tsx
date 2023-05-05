@@ -65,12 +65,12 @@ export function BookingDetails() {
 
   const mapping = useSubcategoriesMapping()
 
-  const { venue, id: offerId } = booking?.stock.offer || {}
-  const { address, postalCode, city } = venue || {}
+  const { venue, id: offerId } = booking?.stock.offer ?? {}
+  const { address, postalCode, city } = venue ?? {}
   const venueFullAddress = address ? formatFullAddress(address, postalCode, city) : undefined
 
   const { data: bookings } = useBookings()
-  const { ended_bookings: endedBookings = emptyBookings } = bookings || {}
+  const { ended_bookings: endedBookings = emptyBookings } = bookings ?? {}
   const { showInfoSnackBar, showErrorSnackBar } = useSnackBarContext()
 
   const { navigate } = useNavigation<UseNavigationType>()

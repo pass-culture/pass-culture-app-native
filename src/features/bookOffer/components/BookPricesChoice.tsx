@@ -27,7 +27,7 @@ export const BookPricesChoice = ({ stocks, isDuo }: Props) => {
   const { bookingState, dispatch } = useBookingContext()
   const offerCredit = useCreditForOffer(bookingState.offerId)
   const titleID = uuidv4()
-  const selectedHour = bookingState.hour || ''
+  const selectedHour = bookingState.hour ?? ''
 
   const selectStock = (stockId: number) => {
     dispatch({ type: 'SELECT_STOCK', payload: stockId })
@@ -47,20 +47,18 @@ export const BookPricesChoice = ({ stocks, isDuo }: Props) => {
       <Spacer.Column numberOfSpaces={4} />
       <View accessibilityRole={AccessibilityRole.RADIOGROUP} accessibilityLabelledBy={titleID}>
         <VerticalUl>
-          {filteredStocks.map((stock) => {
-            return (
-              <Li key={stock.id}>
-                <RadioSelector
-                  label={stock.priceCategoryLabel || ''}
-                  onPress={() => selectStock(stock.id)}
-                  type={getRadioSelectorPriceState(stock, offerCredit, bookingState.stockId)}
-                  description={getPriceWording(stock, offerCredit)}
-                  price={formatToFrenchDecimal(stock.price).replace(' ', '')}
-                />
-                <Spacer.Column numberOfSpaces={2} />
-              </Li>
-            )
-          })}
+          {filteredStocks.map((stock) => (
+            <Li key={stock.id}>
+              <RadioSelector
+                label={stock.priceCategoryLabel ?? ''}
+                onPress={() => selectStock(stock.id)}
+                type={getRadioSelectorPriceState(stock, offerCredit, bookingState.stockId)}
+                description={getPriceWording(stock, offerCredit)}
+                price={formatToFrenchDecimal(stock.price).replace(' ', '')}
+              />
+              <Spacer.Column numberOfSpaces={2} />
+            </Li>
+          ))}
         </VerticalUl>
       </View>
     </React.Fragment>

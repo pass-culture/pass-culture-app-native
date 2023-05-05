@@ -55,7 +55,7 @@ export const useSelectHomepageEntry = (
 
       // If we are coming from a deeplink or firebase remote config we suppose the homepageEntryId exists
       if (homepageEntryId)
-        return homepageList.find(({ id }) => id === homepageEntryId) || firstHomepageEntry
+        return homepageList.find(({ id }) => id === homepageEntryId) ?? firstHomepageEntry
 
       const scoredEntries = homepageList
         .map((homepageEntry) => scoreHomepageByTags(homepageEntry, user))
@@ -72,15 +72,15 @@ export const useSelectHomepageEntry = (
           onboardingHomeEntryIds
         )
 
-        return homepageList.find(({ id }) => id === onboardingHomeEntryId) || defaultHomepageEntry
+        return homepageList.find(({ id }) => id === onboardingHomeEntryId) ?? defaultHomepageEntry
       }
 
       if (isUserUnderage(user)) {
         if (userHasBookings) {
-          return homepageList.find(({ id }) => id === homeEntryId_15_17) || defaultHomepageEntry
+          return homepageList.find(({ id }) => id === homeEntryId_15_17) ?? defaultHomepageEntry
         }
         return (
-          homepageList.find(({ id }) => id === homeEntryIdWithoutBooking_15_17) ||
+          homepageList.find(({ id }) => id === homeEntryIdWithoutBooking_15_17) ??
           defaultHomepageEntry
         )
       }
@@ -88,14 +88,14 @@ export const useSelectHomepageEntry = (
       const credit = getAvailableCredit(user)
       if (user?.eligibility === 'age-18' || (isUserBeneficiary18(user) && !credit.isExpired)) {
         if (userBookings?.hasBookingsAfter18) {
-          return homepageList.find(({ id }) => id === homeEntryId_18) || defaultHomepageEntry
+          return homepageList.find(({ id }) => id === homeEntryId_18) ?? defaultHomepageEntry
         }
         return (
-          homepageList.find(({ id }) => id === homeEntryIdWithoutBooking_18) || defaultHomepageEntry
+          homepageList.find(({ id }) => id === homeEntryIdWithoutBooking_18) ?? defaultHomepageEntry
         )
       }
 
-      return homepageList.find(({ id }) => id === homeEntryIdGeneral) || defaultHomepageEntry
+      return homepageList.find(({ id }) => id === homeEntryIdGeneral) ?? defaultHomepageEntry
     },
     [
       homepageEntryId,

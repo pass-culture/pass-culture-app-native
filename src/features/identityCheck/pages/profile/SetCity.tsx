@@ -38,9 +38,9 @@ export const SetCity = () => {
   const { showErrorSnackBar } = useSnackBarContext()
   const { navigateToNextScreen } = useSubscriptionNavigation()
   const { dispatch, profile } = useSubscriptionContext()
-  const [query, setQuery] = useState(profile.city?.postalCode || '')
+  const [query, setQuery] = useState(profile.city?.postalCode ?? '')
   const [debouncedPostalCode, setDebouncedPostalCode] = useState<string>(query)
-  const [selectedCity, setSelectedCity] = useState<SuggestedCity | null>(profile.city || null)
+  const [selectedCity, setSelectedCity] = useState<SuggestedCity | null>(profile.city ?? null)
   const [errorMessage, setErrorMessage] = useState<string | null>(null)
 
   useEffect(() => {
@@ -83,7 +83,7 @@ export const SetCity = () => {
     const city = cities.find(
       (suggestedCity: SuggestedCity) => keyExtractor(suggestedCity) === cityKey
     )
-    setSelectedCity(city || null)
+    setSelectedCity(city ?? null)
     Keyboard.dismiss()
   }
 

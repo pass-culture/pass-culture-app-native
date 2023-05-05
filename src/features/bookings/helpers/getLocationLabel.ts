@@ -9,6 +9,6 @@ export function getLocationLabel(
     return ''
   }
   const { venue } = stock.offer
-  const displayNameVenue = venue.publicName || venue.name
+  const displayNameVenue = venue.publicName ?? venue.name
   return displayNameVenue + (venue.city ? `, ${venue.city}` : '')
 }

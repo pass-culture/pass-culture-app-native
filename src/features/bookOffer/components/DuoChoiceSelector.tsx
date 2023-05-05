@@ -13,7 +13,7 @@ import { getSpacing } from 'ui/theme'
 
 export const DuoChoiceSelector: React.FC = () => {
   const { bookingState, dispatch } = useBookingContext()
-  const { isDuo } = useBookingOffer() || {}
+  const { isDuo } = useBookingOffer() ?? {}
   const stock = useBookingStock()
   const offerCredit = useCreditForOffer(bookingState.offerId)
 

@@ -40,7 +40,7 @@ export const useHomepageData = (paramsHomepageEntryId?: string): Homepage => {
   // this fetches all homepages available in contentful
   const homepages = useGetHomepageList()
 
-  const selectedHomepage = selectHomepageEntry(homepages || [])
+  const selectedHomepage = selectHomepageEntry(homepages ?? [])
   const homepage = selectedHomepage ? selectedHomepage : emptyHomepage
 
   return useMemo(() => homepage, [homepage])

@@ -29,7 +29,7 @@ export const useSetSubscriptionStepAndMethod = () => {
   const setCurrentStep = (susbcriptionResponse: NextSubscriptionStepResponse | undefined) => {
     setSubscription(susbcriptionResponse)
     const nextStep = susbcriptionResponse?.nextSubscriptionStep
-    const step = getIdentityCheckStep(nextStep || null)
+    const step = getIdentityCheckStep(nextStep ?? null)
     if (step) context.dispatch({ type: 'SET_STEP', payload: step })
   }
 
