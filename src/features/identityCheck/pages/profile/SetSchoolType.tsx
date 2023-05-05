@@ -26,7 +26,7 @@ export const SetSchoolType = () => {
 
   const { dispatch, profile } = useSubscriptionContext()
   const [selectedSchoolTypeId, setSelectedSchoolTypeId] = useState<SchoolTypesIdEnum | null>(
-    profile.schoolType || null
+    profile.schoolType ?? null
   )
   const { navigateToNextScreen, isSavingCheckpoint } = useSubscriptionNavigation()
 

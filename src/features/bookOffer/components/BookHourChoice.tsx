@@ -25,7 +25,7 @@ interface Props {
 
 export const BookHourChoice = ({ enablePricesByCategories }: Props) => {
   const { bookingState, dispatch } = useBookingContext()
-  const { isDuo, stocks = [] } = useBookingOffer() || {}
+  const { isDuo, stocks = [] } = useBookingOffer() ?? {}
   const bookingStock = useBookingStock()
   const offerCredit = useCreditForOffer(bookingState.offerId)
   const debouncedDispatch = useRef(debounce(dispatch, 300)).current

@@ -88,7 +88,7 @@ export const RecommendationModule = (props: RecommendationModuleProps) => {
       testID="recommendationModuleList"
       title={displayParameters.title}
       subtitle={displayParameters.subtitle}
-      data={hits || []}
+      data={hits ?? []}
       itemHeight={itemHeight}
       itemWidth={itemWidth}
       renderItem={renderItem}

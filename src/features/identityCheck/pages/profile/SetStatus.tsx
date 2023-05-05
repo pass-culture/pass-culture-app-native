@@ -33,7 +33,7 @@ export const SetStatus = () => {
   const { control, handleSubmit, watch } = useForm<StatusForm>({
     mode: 'onChange',
     defaultValues: {
-      selectedStatus: profile.status || null,
+      selectedStatus: profile.status ?? null,
     },
   })
 

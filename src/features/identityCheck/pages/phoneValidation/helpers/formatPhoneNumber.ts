@@ -11,5 +11,5 @@ export const formatPhoneNumberWithPrefix = (phoneNumber: string, countryCallingC
 // returns a formatted phone number like +33 X XX XX XX XX with unbreakable spaces for display
 export const formatPhoneNumberForDisplay = (phoneNumber: string, countryCode: CountryCode) => {
   const parsedPhoneNumber = parsePhoneNumber(phoneNumber, countryCode)
-  return parsedPhoneNumber?.formatInternational().replace(/ /g, '\u00a0') || ''
+  return parsedPhoneNumber?.formatInternational().replace(/ /g, '\u00a0') ?? ''
 }

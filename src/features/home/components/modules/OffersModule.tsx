@@ -50,14 +50,14 @@ export const OffersModule = (props: OffersModuleProps) => {
     view: SearchView.Results,
   }
   const searchTabConfig = getTabNavConfig('Search', searchParams)
-  const moduleName = display.title || parameters.title
+  const moduleName = display.title ?? parameters.title
   const logHasSeenAllTilesOnce = useFunctionOnce(() =>
     analytics.logAllTilesSeen(moduleName, hits.length)
   )
 
   const showSeeMore =
     hits.length < nbHits &&
-    !(parameters.tags || parameters.beginningDatetime || parameters.endingDatetime)
+    !(parameters.tags ?? parameters.beginningDatetime ?? parameters.endingDatetime)
 
   // eslint-disable-next-line react-hooks/exhaustive-deps
   const onPressSeeMore = showSeeMore

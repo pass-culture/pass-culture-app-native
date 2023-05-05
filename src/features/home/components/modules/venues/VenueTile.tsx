@@ -35,7 +35,7 @@ const mergeVenueData =
   (prevData: VenueResponse | undefined): VenueResponse => ({
     ...venueHit,
     isVirtual: false,
-    ...(prevData || {}),
+    ...(prevData ?? {}),
   })
 
 const UnmemoizedVenueTile = (props: VenueTileProps) => {

@@ -19,7 +19,7 @@ export const BookingButton: React.FC<Props> = (props) => {
   const isBookedOffer = getIsBookedOffer(props.offer.id, props.user.bookedOffers)
   const doesUserHaveEnoughCredit = hasEnoughCredit(
     props.offer.expenseDomains,
-    props.offer.price || props.offer.startPrice,
+    props.offer.price ?? props.offer.startPrice,
     props.user.domainsCredit
   )
 

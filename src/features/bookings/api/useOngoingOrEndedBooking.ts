@@ -14,7 +14,7 @@ export function useOngoingOrEndedBooking(id: number): UseQueryResult<BookingRepo
       )
       const endedBooking = bookings.ended_bookings?.find((item: BookingReponse) => item.id === id)
 
-      const selected = onGoingBooking || endedBooking
+      const selected = onGoingBooking ?? endedBooking
       if (!selected) {
         return null
       }

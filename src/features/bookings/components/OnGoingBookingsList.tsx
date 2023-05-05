@@ -42,7 +42,7 @@ export function OnGoingBookingsList() {
   const {
     ongoing_bookings: ongoingBookings = emptyBookings,
     ended_bookings: endedBookings = emptyBookings,
-  } = bookings || {}
+  } = bookings ?? {}
 
   const refetchOffline = useCallback(() => {
     showErrorSnackBar({

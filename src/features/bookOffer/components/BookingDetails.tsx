@@ -77,7 +77,7 @@ export const BookingDetails: React.FC<BookingDetailsProps> = ({
     enableMultivenueOffer && isMultivenueCompatibleOffer && offer?.extraData?.isbn
   )
 
-  const venueName = offer?.venue.publicName || offer?.venue.name
+  const venueName = offer?.venue.publicName ?? offer?.venue.name
   const venueFullAddress = formatFullAddressStartsWithPostalCode(
     offer?.venue.address,
     offer?.venue.postalCode,
