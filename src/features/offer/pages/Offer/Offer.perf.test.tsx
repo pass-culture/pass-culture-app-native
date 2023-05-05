@@ -34,7 +34,7 @@ mockGetInstalledApps.mockResolvedValue([Network.snapchat])
 const TEST_TIMEOUT_IN_MS = 20000
 jest.setTimeout(TEST_TIMEOUT_IN_MS)
 describe('<Offer />', () => {
-  it('Performance test', async () => {
+  it('Performance test for Offer page', async () => {
     // eslint-disable-next-line local-rules/no-react-query-provider-hoc
     await measurePerformance(reactQueryProviderHOC(<Offer />), {
       scenario: async () => {
