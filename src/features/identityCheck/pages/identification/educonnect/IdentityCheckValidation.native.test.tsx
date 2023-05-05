@@ -2,7 +2,7 @@ import React from 'react'
 
 import { CommonActions, dispatch, useRoute } from '__mocks__/@react-navigation/native'
 import { analytics } from 'libs/analytics'
-import { fireEvent, render } from 'tests/utils'
+import { fireEvent, render, waitFor } from 'tests/utils'
 
 import { IdentityCheckValidation } from './IdentityCheckValidation'
 
@@ -20,8 +20,6 @@ jest.mock('features/identityCheck/context/SubscriptionContextProvider', () => ({
   }),
 }))
 
-const flushPromises = new Promise(setImmediate)
-
 describe('<IdentityCheckValidation />', () => {
   beforeEach(() =>
     useRoute.mockImplementation(() => ({
@@ -33,12 +31,13 @@ describe('<IdentityCheckValidation />', () => {
     const { getByText } = render(<IdentityCheckValidation />)
     const validateButton = getByText('Valider mes informations')
     fireEvent.press(validateButton)
-    // wait for localStorage to have been updated
-    await flushPromises
-    expect(dispatch).toHaveBeenCalledTimes(1)
-    expect(CommonActions.reset).toHaveBeenCalledWith({
-      index: 1,
-      routes: [{ name: 'TabNavigator' }, { name: 'Stepper' }],
+
+    await waitFor(() => {
+      expect(dispatch).toHaveBeenCalledTimes(1)
+      expect(CommonActions.reset).toHaveBeenCalledWith({
+        index: 1,
+        routes: [{ name: 'TabNavigator' }, { name: 'Stepper' }],
+      })
     })
   })
 
