@@ -13,7 +13,7 @@ import { env } from 'libs/environment'
 import { EmptyResponse } from 'libs/fetch'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { server } from 'tests/server'
-import { fireEvent, render, waitFor } from 'tests/utils'
+import { fireEvent, render, screen, waitFor } from 'tests/utils'
 
 server.use(
   rest.post<ValidatePhoneNumberRequest, EmptyResponse>(
@@ -56,8 +56,8 @@ describe('SetPhoneValidationCode', () => {
   const mockFetch = jest.spyOn(global, 'fetch')
 
   it('should match snapshot', () => {
-    const SetPhoneValidationCodePage = renderSetPhoneValidationCode()
-    expect(SetPhoneValidationCodePage).toMatchSnapshot()
+    renderSetPhoneValidationCode()
+    expect(screen).toMatchSnapshot()
   })
 
   it.each(['111 111', '11111', 'BLABLA', '0909O9', '123456 ', ' 123456'])(
@@ -72,11 +72,11 @@ describe('SetPhoneValidationCode', () => {
     expect(isValid).toEqual(true)
   })
   it("should have 'Continue' button enabled according to code format", () => {
-    const { getByTestId, getByPlaceholderText } = renderSetPhoneValidationCode()
-    const continueButton = getByTestId('Continuer')
+    renderSetPhoneValidationCode()
+    const continueButton = screen.getByTestId('Continuer')
     expect(continueButton).toBeDisabled()
 
-    const input = getByPlaceholderText('012345')
+    const input = screen.getByPlaceholderText('012345')
     fireEvent.changeText(input, '000000 ')
     expect(continueButton).toBeDisabled()
 
@@ -85,13 +85,13 @@ describe('SetPhoneValidationCode', () => {
   })
 
   it("should have modal closed on render, and open modal when clicking on 'code non reçu'", async () => {
-    const CodePage = renderSetPhoneValidationCode()
+    renderSetPhoneValidationCode()
 
-    expect(CodePage.queryByText('Demander un autre code')).toBeNull()
+    expect(screen.queryByText('Demander un autre code')).toBeNull()
 
-    fireEvent.press(CodePage.getByText('Code non reçu\u00a0?'))
+    fireEvent.press(screen.getByText('Code non reçu\u00a0?'))
 
-    expect(CodePage.queryByText('Demander un autre code')).toBeTruthy()
+    expect(screen.queryByText('Demander un autre code')).toBeTruthy()
   })
   it('should display input error message if code request fails', async () => {
     mockFetch.mockRejectedValueOnce(
@@ -101,17 +101,17 @@ describe('SetPhoneValidationCode', () => {
         code: 'INVALID_VALIDATION_CODE',
       })
     )
-    const { getByTestId, getByPlaceholderText, getByText } = renderSetPhoneValidationCode()
+    renderSetPhoneValidationCode()
 
-    const continueButton = getByTestId('Continuer')
-    const input = getByPlaceholderText('012345')
+    const continueButton = screen.getByTestId('Continuer')
+    const input = screen.getByPlaceholderText('012345')
     fireEvent.changeText(input, '000000')
 
     fireEvent.press(continueButton)
 
     await waitFor(() => {
       expect(
-        getByText(
+        screen.getByText(
           'Le code est invalide. Saisis le dernier code reçu par SMS. Il te reste 4 tentatives.'
         )
       ).toBeTruthy()
@@ -124,10 +124,10 @@ describe('SetPhoneValidationCode', () => {
         code: 'TOO_MANY_VALIDATION_ATTEMPTS',
       })
     )
-    const { getByTestId, getByPlaceholderText } = renderSetPhoneValidationCode()
+    renderSetPhoneValidationCode()
 
-    const continueButton = getByTestId('Continuer')
-    const input = getByPlaceholderText('012345')
+    const continueButton = screen.getByTestId('Continuer')
+    const input = screen.getByPlaceholderText('012345')
     fireEvent.changeText(input, '000000')
 
     fireEvent.press(continueButton)
@@ -145,10 +145,10 @@ describe('SetPhoneValidationCode', () => {
         status: 200,
       })
     )
-    const { getByTestId, getByPlaceholderText } = renderSetPhoneValidationCode()
+    renderSetPhoneValidationCode()
 
-    const continueButton = getByTestId('Continuer')
-    const input = getByPlaceholderText('012345')
+    const continueButton = screen.getByTestId('Continuer')
+    const input = screen.getByPlaceholderText('012345')
     fireEvent.changeText(input, '000000')
 
     fireEvent.press(continueButton)
@@ -159,8 +159,8 @@ describe('SetPhoneValidationCode', () => {
   })
 
   it('should log event when pressing "Code non reçu ?" button', async () => {
-    const { getByText } = renderSetPhoneValidationCode()
-    const button = getByText('Code non reçu ?')
+    renderSetPhoneValidationCode()
+    const button = screen.getByText('Code non reçu ?')
 
     fireEvent.press(button)
 
@@ -176,10 +176,10 @@ describe('SetPhoneValidationCode', () => {
   })
 
   it('should log analytics on press continue', async () => {
-    const { getByTestId, getByPlaceholderText } = renderSetPhoneValidationCode()
+    renderSetPhoneValidationCode()
 
-    const continueButton = getByTestId('Continuer')
-    const input = getByPlaceholderText('012345')
+    const continueButton = screen.getByTestId('Continuer')
+    const input = screen.getByPlaceholderText('012345')
     fireEvent.changeText(input, '000000')
 
     fireEvent.press(continueButton)
