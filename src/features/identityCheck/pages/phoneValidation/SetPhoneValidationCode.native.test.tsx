@@ -117,7 +117,7 @@ describe('SetPhoneValidationCode', () => {
       ).toBeTruthy()
     })
   })
-  it('should dnavigate to TooManyAttempts if too many attempts', async () => {
+  it('should navigate to TooManyAttempts if too many attempts', async () => {
     mockFetch.mockRejectedValueOnce(
       new ApiError(400, {
         message: 'Le nombre de tentatives maximal est dépassé',
