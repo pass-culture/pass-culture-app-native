@@ -85,8 +85,7 @@ export const FavoritesResults: React.FC = React.memo(function FavoritesResults()
   const credit = useAvailableCredit()
 
   useEffect(() => {
-    if (flatListRef && flatListRef.current)
-      flatListRef.current.scrollToOffset({ animated: true, offset: 0 })
+    if (flatListRef?.current) flatListRef.current.scrollToOffset({ animated: true, offset: 0 })
   }, [favoritesState.sortBy])
 
   const renderItem = useCallback(
