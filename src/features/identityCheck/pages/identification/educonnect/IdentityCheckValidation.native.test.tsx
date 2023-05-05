@@ -1,8 +1,6 @@
 import React from 'react'
 
-import { useRoute } from '__mocks__/@react-navigation/native'
-import { navigate } from '__mocks__/@react-navigation/native'
-import { IdentityCheckStep } from 'features/identityCheck/types'
+import { CommonActions, dispatch, useRoute } from '__mocks__/@react-navigation/native'
 import { analytics } from 'libs/analytics'
 import { fireEvent, render } from 'tests/utils'
 
@@ -37,10 +35,10 @@ describe('<IdentityCheckValidation />', () => {
     fireEvent.press(validateButton)
     // wait for localStorage to have been updated
     await flushPromises
-    expect(navigate).toHaveBeenCalledWith('Stepper')
-    expect(mockDispatch).toHaveBeenNthCalledWith(1, {
-      payload: IdentityCheckStep.IDENTIFICATION,
-      type: 'SET_STEP',
+    expect(dispatch).toHaveBeenCalledTimes(1)
+    expect(CommonActions.reset).toHaveBeenCalledWith({
+      index: 1,
+      routes: [{ name: 'TabNavigator' }, { name: 'Stepper' }],
     })
   })
 
