@@ -4,6 +4,7 @@ export enum AmplitudeEvent {
   CHOOSE_METHOD_UBBLE = 'choose_method_ubble',
   COME_BACK_LATER_CLICKED = 'come_back_later_clicked',
   CONNECT_WITH_EDUCONNECT_CLICKED = 'connect_with_Educonnect_clicked',
+  CREATE_ACCOUNT_CLICKED = 'create_account_clicked',
   EDUCONNECT_EXPLANATION_CLICKED = 'educonnect_explanation_clicked',
   ONBOARDING_AGE_INFORMATION_CLICKED = 'onboarding_age_information_clicked',
   ONBOARDING_AGE_SELECTION_CLICKED = 'onboarding_age_selection_clicked',

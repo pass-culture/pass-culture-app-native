@@ -431,7 +431,11 @@ export const logEventAnalytics = {
     analytics.logEvent({ amplitude: AmplitudeEvent.PHONE_VALIDATION_CODE_CLICKED }),
   logProfilScrolledToBottom: () =>
     analytics.logEvent({ firebase: AnalyticsEvent.PROFIL_SCROLLED_TO_BOTTOM }),
-  logProfilSignUp: () => analytics.logEvent({ firebase: AnalyticsEvent.PROFIL_SIGN_UP }),
+  logProfilSignUp: () =>
+    analytics.logEvent({
+      firebase: AnalyticsEvent.PROFIL_SIGN_UP,
+      amplitude: AmplitudeEvent.CREATE_ACCOUNT_CLICKED,
+    }),
   logQuitAuthenticationMethodSelection: () =>
     analytics.logEvent({ firebase: AnalyticsEvent.QUIT_AUTHENTICATION_METHOD_SELECTION }),
   logQuitAuthenticationModal: (offerId: number) =>
