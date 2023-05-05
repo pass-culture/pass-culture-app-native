@@ -22,5 +22,5 @@ export const useUtmParams = (): ExtendedUtmParams => {
       })
   }, [])
 
-  return utmParams || {}
+  return utmParams ?? {}
 }

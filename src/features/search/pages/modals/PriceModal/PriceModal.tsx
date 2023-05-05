@@ -129,8 +129,8 @@ export const PriceModal: FunctionComponent<PriceModalProps> = ({
 
   const initialFormValues = useMemo(() => {
     return {
-      minPrice: searchState?.minPrice || '',
-      maxPrice: searchState?.maxPrice || '',
+      minPrice: searchState?.minPrice ?? '',
+      maxPrice: searchState?.maxPrice ?? '',
       isLimitCreditSearch: isLimitCreditSearchDefaultValue,
       isOnlyFreeOffersSearch: isOnlyFreeOffersSearchDefaultValue,
     }
@@ -196,8 +196,8 @@ export const PriceModal: FunctionComponent<PriceModalProps> = ({
 
   const closeModal = useCallback(() => {
     reset({
-      minPrice: searchState?.minPrice || '',
-      maxPrice: searchState?.maxPrice || '',
+      minPrice: searchState?.minPrice ?? '',
+      maxPrice: searchState?.maxPrice ?? '',
       isLimitCreditSearch: isLimitCreditSearchDefaultValue,
       isOnlyFreeOffersSearch: isOnlyFreeOffersSearchDefaultValue,
     })

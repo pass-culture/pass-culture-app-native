@@ -55,7 +55,7 @@ export const transformOfferHit =
 
 export const useTransformOfferHits = () => {
   const { data: settings } = useSettingsContext()
-  const { objectStorageUrl: urlPrefix } = settings || {}
+  const { objectStorageUrl: urlPrefix } = settings ?? {}
 
   // eslint-disable-next-line react-hooks/exhaustive-deps
   return useCallback(transformOfferHit(urlPrefix), [urlPrefix])

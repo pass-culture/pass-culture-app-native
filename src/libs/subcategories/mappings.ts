@@ -13,7 +13,7 @@ import { useSubcategories } from 'libs/subcategories/useSubcategories'
 
 export const useSubcategoriesMapping = (): SubcategoriesMapping => {
   const { data } = useSubcategories()
-  const { subcategories = [] } = data || {}
+  const { subcategories = [] } = data ?? {}
 
   return useMemo(() => {
     const mapping = {} as SubcategoriesMapping
@@ -28,7 +28,7 @@ export const useSubcategoriesMapping = (): SubcategoriesMapping => {
 
 export const useCategoryIdMapping = (): CategoryIdMapping => {
   const { data } = useSubcategories()
-  const { subcategories = [] } = data || {}
+  const { subcategories = [] } = data ?? {}
 
   return useMemo(() => {
     const mapping = {} as CategoryIdMapping
@@ -42,7 +42,7 @@ export const useCategoryIdMapping = (): CategoryIdMapping => {
 
 export const useSubcategoryLabelMapping = (): SubcategoryLabelMapping => {
   const { data } = useSubcategories()
-  const { subcategories = [] } = data || {}
+  const { subcategories = [] } = data ?? {}
 
   return useMemo(() => {
     const mapping = {} as SubcategoryLabelMapping
@@ -56,12 +56,12 @@ export const useSubcategoryLabelMapping = (): SubcategoryLabelMapping => {
 
 const useHomeLabelMapping = (): HomeLabelMapping => {
   const { data } = useSubcategories()
-  const { homepageLabels = [] } = data || {}
+  const { homepageLabels = [] } = data ?? {}
 
   return useMemo(() => {
     const mapping = {} as HomeLabelMapping
     homepageLabels.forEach((curr) => {
-      mapping[curr.name] = curr.value || null
+      mapping[curr.name] = curr.value ?? null
     })
     return mapping
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -71,7 +71,7 @@ const useHomeLabelMapping = (): HomeLabelMapping => {
 export const useCategoryHomeLabelMapping = (): CategoryHomeLabelMapping => {
   const homeLabelMapping = useHomeLabelMapping()
   const { data } = useSubcategories()
-  const { subcategories = [] } = data || {}
+  const { subcategories = [] } = data ?? {}
 
   return useMemo(() => {
     const mapping = {} as CategoryHomeLabelMapping
@@ -85,12 +85,12 @@ export const useCategoryHomeLabelMapping = (): CategoryHomeLabelMapping => {
 
 export const useSearchGroupLabelMapping = (): SearchGroupLabelMapping => {
   const { data } = useSubcategories()
-  const { searchGroups = [] } = data || {}
+  const { searchGroups = [] } = data ?? {}
 
   return useMemo(() => {
     const mapping = {} as SearchGroupLabelMapping
     searchGroups.forEach((curr) => {
-      mapping[curr.name] = curr.value || 'Toutes les catégories'
+      mapping[curr.name] = curr.value ?? 'Toutes les catégories'
     })
     return mapping
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -99,7 +99,7 @@ export const useSearchGroupLabelMapping = (): SearchGroupLabelMapping => {
 
 export const useGenreTypeMapping = (): GenreTypeMapping => {
   const { data } = useSubcategories()
-  const { genreTypes = [] } = data || {}
+  const { genreTypes = [] } = data ?? {}
 
   return useMemo(() => {
     const mapping = {} as GenreTypeMapping

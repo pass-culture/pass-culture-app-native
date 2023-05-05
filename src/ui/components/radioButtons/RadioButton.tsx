@@ -66,7 +66,7 @@ export function RadioButton(props: RadioButtonProps) {
     <StyledTouchableOpacity
       {...accessibleRadioProps({
         checked: props.isSelected,
-        label: props.accessibilityLabel || accessibilityLabel,
+        label: props.accessibilityLabel ?? accessibilityLabel,
       })}
       onPress={onPress}
       onFocus={onFocus}

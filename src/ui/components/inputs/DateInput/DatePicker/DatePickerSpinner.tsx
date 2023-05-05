@@ -13,13 +13,13 @@ export function DatePickerSpinner(props: DatePickerProps) {
   const birthdateInputErrorId = uuidv4()
 
   useEffect(() => {
-    props.onChange(date || props.defaultSelectedDate)
+    props.onChange(date ?? props.defaultSelectedDate)
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [date])
 
   return (
     <React.Fragment>
-      <DateInputDisplay date={date || props.defaultSelectedDate} isError={!!props.errorMessage} />
+      <DateInputDisplay date={date ?? props.defaultSelectedDate} isError={!!props.errorMessage} />
       <InputError
         visible={!!props.errorMessage}
         messageId={props.errorMessage}
@@ -29,7 +29,7 @@ export function DatePickerSpinner(props: DatePickerProps) {
       <Spacer.Column numberOfSpaces={5} />
       <SpinnerDatePicker
         testID="date-picker-spinner-native"
-        date={date || props.defaultSelectedDate}
+        date={date ?? props.defaultSelectedDate}
         onDateChange={setDate}
         mode="date"
         locale="fr-FR"

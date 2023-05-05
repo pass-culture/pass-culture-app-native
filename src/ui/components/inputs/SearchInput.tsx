@@ -77,7 +77,7 @@ const WithRefSearchInput: React.ForwardRefRenderFunction<RNTextInput, SearchInpu
         <BaseTextInput
           {...nativeProps}
           nativeID={searchInputID}
-          ref={forwardedRef || searchInput}
+          ref={forwardedRef ?? searchInput}
           onFocus={onFocus}
           onBlur={onBlur}
           autoCorrect={false}
@@ -89,7 +89,7 @@ const WithRefSearchInput: React.ForwardRefRenderFunction<RNTextInput, SearchInpu
           accessibilityDescribedBy={accessibilityDescribedBy}
           accessibilityRequired={isRequiredField}
           enablesReturnKeyAutomatically
-          testID={nativeProps.testID || 'searchInput'}
+          testID={nativeProps.testID ?? 'searchInput'}
         />
         {children}
         {value.length > 0 && (

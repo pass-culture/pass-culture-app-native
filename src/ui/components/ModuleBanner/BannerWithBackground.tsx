@@ -55,7 +55,7 @@ export const BannerWithBackground: FunctionComponent<BannerWithBackgroundProps> 
     <TouchableComponent {...touchableProps} testID={testID}>
       <ImageContainer>
         <ImageBackground
-          source={backgroundSource || BACKGROUND_IMAGE_SOURCE}
+          source={backgroundSource ?? BACKGROUND_IMAGE_SOURCE}
           testID="module-background">
           <GenericBanner LeftIcon={StyledLeftIcon} RightIcon={StyledRightIcon}>
             {children}

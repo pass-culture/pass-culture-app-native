@@ -43,7 +43,7 @@ export type SnackBarProps = {
 
 const _SnackBar = (props: SnackBarProps) => {
   const firstRender = useRef(true)
-  const animationDuration = props.animationDuration || 500
+  const animationDuration = props.animationDuration ?? 500
 
   const containerRef: RefType = useRef(null)
   const progressBarContainerRef: RefType = useRef(null)

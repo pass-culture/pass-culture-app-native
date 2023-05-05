@@ -33,9 +33,9 @@ const RIGHT_CURSOR = 'RIGHT_CURSOR'
 export function Slider(props: Props) {
   const sliderContainerRef = useRef<View | null>(null)
 
-  const min = props.min || DEFAULT_MIN
-  const max = props.max || DEFAULT_MAX
-  const step = props.step || DEFAULT_STEP
+  const min = props.min ?? DEFAULT_MIN
+  const max = props.max ?? DEFAULT_MAX
+  const step = props.step ?? DEFAULT_STEP
   const minLabel = props.minLabel ?? 'Minimum\u00a0:'
   const maxLabel = props.maxLabel ?? 'Maximum\u00a0:'
   const shouldShowMinMaxValues = props.shouldShowMinMaxValues ?? false

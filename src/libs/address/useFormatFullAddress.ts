@@ -45,7 +45,7 @@ export function formatFullAddressWithVenueName(
   publicName: FullAddressType,
   name: FullAddressType
 ) {
-  let fullAddress = `${publicName || name || ''}`
+  let fullAddress = `${publicName ?? name ?? ''}`
   const placeAddress = formatFullAddress(address, postalCode, city)
   if (isNotEmpty(placeAddress)) fullAddress = fullAddress.concat(`, ${placeAddress}`)
   return fullAddress

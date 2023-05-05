@@ -41,7 +41,7 @@ export function LayoutExpiredLink({
       ].filter(Boolean)}>
       <StyledBody>Le lien est expiré&nbsp;!</StyledBody>
       <StyledBody>
-        {customBodyText ||
+        {customBodyText ??
           'Clique sur «\u00a0Renvoyer l’e-mail\u00a0» pour recevoir un nouveau lien.'}
       </StyledBody>
       <Spacer.Column numberOfSpaces={6} />

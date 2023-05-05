@@ -18,8 +18,8 @@ export function SectionRow({
   ...props
 }: SectionRowProps) {
   const { activeOpacity } = useTheme()
-  const hasNavProps = navigateTo || externalNav
-  const label = accessibilityLabel || title
+  const hasNavProps = navigateTo ?? externalNav
+  const label = accessibilityLabel ?? title
   const externalLabel = `Nouvelle fenêtre\u00a0: ${label}`
   const touchableProps = {
     activeOpacity: onPress || hasNavProps ? activeOpacity : 1,

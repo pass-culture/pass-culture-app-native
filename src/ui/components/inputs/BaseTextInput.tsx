@@ -12,7 +12,7 @@ export const BaseTextInput = forwardRef<RNTextInput, RNTextInputProps>(function 
   forwardedRef
 ) {
   const inputRef = useRef<RNTextInput>(null)
-  const e2eSelectors = useE2eTestId(testID || 'Champ de texte')
+  const e2eSelectors = useE2eTestId(testID ?? 'Champ de texte')
 
   useEffect(() => {
     if (!inputRef || !inputRef.current) {
@@ -54,7 +54,7 @@ export const BaseTextInput = forwardRef<RNTextInput, RNTextInputProps>(function 
       autoFocus={nativeAutoFocus ? autoFocus : undefined}
       editable={!props.disabled}
       isEmpty={!props.value}
-      placeholder={props.placeholder || ''}
+      placeholder={props.placeholder ?? ''}
       returnKeyType={props.returnKeyType ?? 'next'}
       ref={(ref) => {
         if (ref) {

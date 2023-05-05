@@ -21,7 +21,7 @@ type Props = {
 } & SizeProps
 
 export const OfferImage: React.FC<Props> = ({ categoryId, imageUrl, size = 'small' }) => {
-  const Icon = mapCategoryToIcon(categoryId || null)
+  const Icon = mapCategoryToIcon(categoryId ?? null)
 
   return (
     <Container size={size}>

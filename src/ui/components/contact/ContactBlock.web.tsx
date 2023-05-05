@@ -5,7 +5,7 @@ import { Typo } from 'ui/theme'
 
 export const ContactBlock: React.FC<{ venueId: number }> = ({ venueId }) => {
   const { data: venue } = useVenue(venueId)
-  const { email, phoneNumber, website } = venue?.contact || {}
+  const { email, phoneNumber, website } = venue?.contact ?? {}
 
   return (
     <React.Fragment>

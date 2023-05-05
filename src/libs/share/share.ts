@@ -28,7 +28,7 @@ export async function share(
 const logShareAnalytics = (shareAction: ShareAction) => {
   if (Platform.OS === 'ios') {
     if (shareAction.action === Share.sharedAction) {
-      const activityType = shareAction.activityType?.replace('com.apple.', '') || ''
+      const activityType = shareAction.activityType?.replace('com.apple.', '') ?? ''
       analytics.logHasSharedApp(activityType)
     } else {
       analytics.logHasDismissedAppSharingModal()
