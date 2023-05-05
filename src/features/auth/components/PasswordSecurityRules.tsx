@@ -34,19 +34,19 @@ function isLongEnough(password: string): boolean {
 }
 
 function containsCapital(password: string): boolean {
-  return password.match(CAPITAL_REGEX) ? true : false
+  return CAPITAL_REGEX.test(password)
 }
 
 function containsLowercase(password: string): boolean {
-  return password.match(LOWERCASE_REGEX) ? true : false
+  return LOWERCASE_REGEX.test(password)
 }
 
 function containsNumber(password: string): boolean {
-  return password.match(NUMBER_REGEX) ? true : false
+  return NUMBER_REGEX.test(password)
 }
 
 function containsSpecialCharacter(password: string): boolean {
-  return password.match(SPECIAL_CHARACTER_REGEX) ? true : false
+  return SPECIAL_CHARACTER_REGEX.test(password)
 }
 
 export const PasswordSecurityRules: FunctionComponent<Props> = ({

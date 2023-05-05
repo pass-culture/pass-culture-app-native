@@ -1,8 +1,12 @@
-import { ComponentMeta } from '@storybook/react'
+import { ComponentMeta, ComponentStory } from '@storybook/react'
 import React from 'react'
 import { StyleSheet, View } from 'react-native'
+import styled from 'styled-components/native'
 
+import { StepCard, StepCardType } from 'features/profile/components/StepCard/StepCard'
 import { theme } from 'theme'
+import { BicolorAroundMe } from 'ui/svg/icons/BicolorAroundMe'
+import { Email } from 'ui/svg/icons/Email'
 import { Typo } from 'ui/theme'
 
 import { Step } from '../Step/Step'
@@ -55,4 +59,30 @@ export function UsageExample({ activeStepIndex = 0 }: StepListProps) {
       </Step>
     </StepList>
   )
+}
+
+const StyleStepCard = styled(StepCard)({
+  marginVertical: 12,
+})
+
+const Template: ComponentStory<typeof StepList> = ({ activeStepIndex = 1 }) => (
+  <StepList activeStepIndex={activeStepIndex}>
+    <Step>
+      <StyleStepCard title="Done" icon={<Email />} type={StepCardType.DONE} />
+    </Step>
+    <Step>
+      <StyleStepCard title="Active" subtitle="Renseigne ton email" icon={<BicolorAroundMe />} />
+    </Step>
+    <Step>
+      <StyleStepCard title="Disabled" icon={<Email />} type={StepCardType.DISABLED} />
+    </Step>
+    <Step>
+      <StyleStepCard title="Disabled" icon={<Email />} type={StepCardType.DISABLED} />
+    </Step>
+  </StepList>
+)
+
+export const WithStepCard = Template.bind({})
+WithStepCard.args = {
+  activeStepIndex: 1,
 }

@@ -89,7 +89,7 @@ describe('<StepCard />', () => {
     )
 
     expect(screen.getByText(subtitle)).toHaveStyle({
-      color: theme.colors.greySemiDark,
+      color: theme.colors.greyDark,
     })
   })
 
@@ -104,7 +104,7 @@ describe('<StepCard />', () => {
     )
 
     expect(screen.getByText(subtitle)).toHaveStyle({
-      color: theme.colors.greySemiDark,
+      color: theme.colors.greyDark,
     })
   })
 })
