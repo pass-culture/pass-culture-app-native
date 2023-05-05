@@ -272,6 +272,7 @@ export const logEventAnalytics = {
     ),
   logEmailConfirmationConsultEmailClicked: () =>
     analytics.logEvent({ amplitude: AmplitudeEvent.EMAIL_CONFIRMATION_CONSULT_EMAIL_CLICKED }),
+  logEmailValidated: () => analytics.logEvent({ amplitude: AmplitudeEvent.EMAIL_VALIDATED }),
   logErrorSavingNewEmail: (errorCode: string) =>
     analytics.logEvent({ firebase: AnalyticsEvent.ERROR_SAVING_NEW_EMAIL }, { code: errorCode }),
   logExclusivityBlockClicked: (params: {
