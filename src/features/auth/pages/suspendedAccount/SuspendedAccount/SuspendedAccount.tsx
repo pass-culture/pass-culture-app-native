@@ -52,7 +52,7 @@ export const SuspendedAccount = () => {
     unsuspendAccount()
   }
 
-  const unsuspensionDelay = settings?.accountUnsuspensionLimit || 60
+  const unsuspensionDelay = settings?.accountUnsuspensionLimit ?? 60
   let formattedDate = ''
 
   if (accountSuspensionDate?.date) {
