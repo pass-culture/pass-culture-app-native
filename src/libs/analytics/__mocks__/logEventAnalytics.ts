@@ -3,6 +3,7 @@ import { logEventAnalytics as actualLogEventAnalytics } from '../logEventAnalyti
 export const logEventAnalytics: typeof actualLogEventAnalytics = {
   logAcceptedTerms: jest.fn(),
   logAcceptNotifications: jest.fn(),
+  logAccountCreatedStartClicked: jest.fn(),
   logAccountDeletion: jest.fn(),
   logAccountReactivation: jest.fn(),
   logActivateGeolocfromSearchResults: jest.fn(),

@@ -58,6 +58,8 @@ export const logEventAnalytics = {
     analytics.logEvent({ firebase: AnalyticsEvent.ACCEPT_NOTIFICATIONS }),
   logAcceptedTerms: () =>
     analytics.logEvent({ amplitude: AmplitudeEvent.USER_ACCEPTED_TERMS_CLICKED_FRONT }),
+  logAccountCreatedStartClicked: () =>
+    analytics.logEvent({ amplitude: AmplitudeEvent.ACCOUNT_CREATED_START_CLICKED }),
   logAccountDeletion: () => analytics.logEvent({ firebase: AnalyticsEvent.ACCOUNT_DELETION }),
   logAccountReactivation: (from: Referrals) =>
     analytics.logEvent({ firebase: AnalyticsEvent.ACCOUNT_REACTIVATION }, { from }),

@@ -1,5 +1,6 @@
 export enum AmplitudeEvent {
   ACCEPT_CGU_CLICKED = 'accept_cgu_clicked',
+  ACCOUNT_CREATED_START_CLICKED = 'account_created_start_clicked',
   CHECK_EDUCONNECT_DATA_CLICKED = 'check_Educonnect_data_clicked',
   CHOOSE_METHOD_EDUCONNECT = 'choose_method_educonnect',
   CHOOSE_METHOD_UBBLE = 'choose_method_ubble',

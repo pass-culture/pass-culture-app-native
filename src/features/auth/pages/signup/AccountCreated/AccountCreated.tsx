@@ -5,6 +5,7 @@ import { useAuthContext } from 'features/auth/context/AuthContext'
 import { navigateToHomeConfig } from 'features/navigation/helpers'
 import { useShareAppContext } from 'features/share/context/ShareAppWrapper'
 import { ShareAppModalType } from 'features/share/helpers/shareAppModalInformations'
+import { analytics } from 'libs/analytics'
 import { BatchEvent, BatchUser } from 'libs/react-native-batch'
 import { shouldShowCulturalSurvey } from 'shared/culturalSurvey/shouldShowCulturalSurvey'
 import IlluminatedSmileyAnimation from 'ui/animations/lottie_illuminated_smiley.json'
@@ -22,6 +23,7 @@ export function AccountCreated() {
   const onBeforeNavigate = useCallback(() => {
     BatchUser.trackEvent(BatchEvent.hasValidatedAccount)
     showShareAppModal(ShareAppModalType.NOT_ELIGIBLE)
+    analytics.logAccountCreatedStartClicked()
   }, [showShareAppModal])
 
   return (
