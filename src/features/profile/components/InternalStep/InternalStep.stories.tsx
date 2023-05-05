@@ -3,6 +3,9 @@ import { Story } from '@storybook/react/dist/ts3.9/client/preview/types-6-0'
 import React, { ComponentProps } from 'react'
 import { StyleSheet, View } from 'react-native'
 
+import { StepCard, StepCardType } from 'features/profile/components/StepCard/StepCard'
+import { BicolorAroundMe } from 'ui/svg/icons/BicolorAroundMe'
+import { Email } from 'ui/svg/icons/Email'
 import { Typo } from 'ui/theme'
 
 import { StepVariant } from '../VerticalStepper/types'
@@ -45,4 +48,22 @@ export const Future = Template.bind({})
 Future.args = {
   ...Complete.args,
   variant: StepVariant.future,
+}
+
+export const WithActiveStepCard = Template.bind({})
+WithActiveStepCard.args = {
+  variant: StepVariant.in_progress,
+  children: <StepCard title="Active" icon={<BicolorAroundMe />} subtitle="Renseigne ton texte" />,
+}
+
+export const WithDoneStepCard = Template.bind({})
+WithDoneStepCard.args = {
+  variant: StepVariant.complete,
+  children: <StepCard title="Done" icon={<Email />} type={StepCardType.DONE} />,
+}
+
+export const WithDisabledStepCard = Template.bind({})
+WithDisabledStepCard.args = {
+  variant: StepVariant.future,
+  children: <StepCard title="Disabled" icon={<Email />} type={StepCardType.DISABLED} />,
 }
