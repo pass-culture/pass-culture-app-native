@@ -1,9 +1,13 @@
 export enum AmplitudeEvent {
+  ACCEPT_CGU_CLICKED = 'accept_cgu_clicked',
   CHECK_EDUCONNECT_DATA_CLICKED = 'check_Educonnect_data_clicked',
   CHOOSE_METHOD_EDUCONNECT = 'choose_method_educonnect',
   CHOOSE_METHOD_UBBLE = 'choose_method_ubble',
   COME_BACK_LATER_CLICKED = 'come_back_later_clicked',
   CONNECT_WITH_EDUCONNECT_CLICKED = 'connect_with_Educonnect_clicked',
+  CONTINUE_SET_BIRTHDAY = 'continue_set_birthday',
+  CONTINUE_SET_EMAIL = 'continue_set_email',
+  CONTINUE_SET_PASSWORD = 'continue_set_password',
   CREATE_ACCOUNT_CLICKED = 'create_account_clicked',
   EDUCONNECT_EXPLANATION_CLICKED = 'educonnect_explanation_clicked',
   ONBOARDING_AGE_INFORMATION_CLICKED = 'onboarding_age_information_clicked',

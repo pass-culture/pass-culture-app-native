@@ -232,18 +232,28 @@ export const logEventAnalytics = {
     analytics.logEvent({ firebase: AnalyticsEvent.CONSULT_WHOLE_OFFER }, { offerId }),
   logConsultWithdrawal: (params: OfferIdOrVenueId) =>
     analytics.logEvent({ firebase: AnalyticsEvent.CONSULT_WITHDRAWAL_MODALITIES }, params),
-  logContinueCGU: () => analytics.logEvent({ firebase: AnalyticsEvent.CONTINUE_CGU }),
+  logContinueCGU: () =>
+    analytics.logEvent({
+      firebase: AnalyticsEvent.CONTINUE_CGU,
+      amplitude: AmplitudeEvent.ACCEPT_CGU_CLICKED,
+    }),
   logContinueIdentityCheck: () =>
     analytics.logEvent({ firebase: AnalyticsEvent.CONTINUE_IDENTITY_CHECK }),
+  logContinueSetBirthday: () =>
+    analytics.logEvent({
+      firebase: AnalyticsEvent.CONTINUE_SET_BIRTHDAY,
+      amplitude: AmplitudeEvent.CONTINUE_SET_BIRTHDAY,
+    }),
   logContinueSetEmail: () =>
     analytics.logEvent({
       firebase: AnalyticsEvent.CONTINUE_SET_EMAIL,
-      amplitude: AmplitudeEvent.USER_SET_EMAIL_CLICKED_FRONT,
+      amplitude: AmplitudeEvent.CONTINUE_SET_EMAIL,
     }),
   logContinueSetPassword: () =>
-    analytics.logEvent({ firebase: AnalyticsEvent.CONTINUE_SET_PASSWORD }),
-  logContinueSetBirthday: () =>
-    analytics.logEvent({ firebase: AnalyticsEvent.CONTINUE_SET_BIRTHDAY }),
+    analytics.logEvent({
+      firebase: AnalyticsEvent.CONTINUE_SET_PASSWORD,
+      amplitude: AmplitudeEvent.CONTINUE_SET_PASSWORD,
+    }),
   logContinueSignup: () => analytics.logEvent({ firebase: AnalyticsEvent.CONTINUE_SIGNUP }),
   logCulturalSurveyScrolledToBottom: (params: { questionId: string }) =>
     analytics.logEvent({ firebase: AnalyticsEvent.CULTURAL_SURVEY_SCROLLED_TO_BOTTOM }, params),
