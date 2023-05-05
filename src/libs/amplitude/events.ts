@@ -10,6 +10,8 @@ export enum AmplitudeEvent {
   CONTINUE_SET_PASSWORD = 'continue_set_password',
   CREATE_ACCOUNT_CLICKED = 'create_account_clicked',
   EDUCONNECT_EXPLANATION_CLICKED = 'educonnect_explanation_clicked',
+  EMAIL_CONFIRMATION_CONSULT_EMAIL_CLICKED = 'email_confirmation_consult_email_clicked',
+  EMAIL_CONFIRMATION_HELPCENTER_CLICKED = 'email_confirmation_helpcenter_clicked',
   ONBOARDING_AGE_INFORMATION_CLICKED = 'onboarding_age_information_clicked',
   ONBOARDING_AGE_SELECTION_CLICKED = 'onboarding_age_selection_clicked',
   ONBOARDING_AGE_SELECTION_PARENT_CLICKED = 'onboarding_age_selection_parent_clicked',

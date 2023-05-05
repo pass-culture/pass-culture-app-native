@@ -80,7 +80,7 @@ export const SignupConfirmationEmailSent: FunctionComponent<Props> = ({ route })
           />
         </Description>
         <Spacer.Column numberOfSpaces={3} />
-        <OpenInboxButton />
+        <OpenInboxButton onAdditionalPress={analytics.logEmailConfirmationConsultEmailClicked} />
       </EmailSentModalContent>
     </BottomContentPage>
   )

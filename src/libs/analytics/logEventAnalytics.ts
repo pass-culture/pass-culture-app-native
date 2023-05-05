@@ -268,6 +268,8 @@ export const logEventAnalytics = {
       { amplitude: AmplitudeEvent.EDUCONNECT_EXPLANATION_CLICKED },
       { fork_origin: origin }
     ),
+  logEmailConfirmationConsultEmailClicked: () =>
+    analytics.logEvent({ amplitude: AmplitudeEvent.EMAIL_CONFIRMATION_CONSULT_EMAIL_CLICKED }),
   logErrorSavingNewEmail: (errorCode: string) =>
     analytics.logEvent({ firebase: AnalyticsEvent.ERROR_SAVING_NEW_EMAIL }, { code: errorCode }),
   logExclusivityBlockClicked: (params: {
@@ -344,6 +346,7 @@ export const logEventAnalytics = {
   logHelpCenterContactSignupConfirmationEmailSent: () =>
     analytics.logEvent({
       firebase: AnalyticsEvent.HELP_CENTER_CONTACT_SIGNUP_CONFIRMATION_EMAIL_SENT,
+      amplitude: AmplitudeEvent.EMAIL_CONFIRMATION_HELPCENTER_CLICKED,
     }),
   logHighlightBlockClicked: (params: { moduleId: string; entryId: string; toEntryId: string }) =>
     analytics.logEvent({ firebase: AnalyticsEvent.HIGHLIGHT_BLOCK_CLICKED }, params),
