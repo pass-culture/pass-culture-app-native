@@ -162,7 +162,7 @@ export const Offer: FunctionComponent = () => {
   if (!offerResponse) return null
 
   return (
-    <Container>
+    <Container key={offerId}>
       <OfferWebHead offer={offerResponse} />
       <OfferHeader
         title={offerResponse.name}
