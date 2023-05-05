@@ -26,7 +26,7 @@ type CustomComponentProps = FirstOrLastProps & {
   testID?: string
 }
 
-export const DOT_SIZE = getSpacing(1)
+export const DOT_SIZE = 2
 
 export const VerticalStepper = memo(function VerticalStepper({
   variant,
@@ -107,7 +107,7 @@ const Wrapper = styled.View({
 
 const FilledLine = styled.View(({ theme }) => ({
   backgroundColor: theme.colors.greyMedium,
-  width: getSpacing(1),
+  width: DOT_SIZE,
   borderRadius: 2,
   flexGrow: 1,
 }))
