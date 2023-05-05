@@ -1,34 +1,33 @@
 import { useEffect, useState } from 'react'
+// eslint-disable-next-line no-restricted-imports
+import { browserName } from 'react-device-detect'
 import DeviceInfo from 'react-native-device-info'
 
-import { getDeviceModelFromUserAgent } from 'features/profile/helpers/TrustedDevices/getDeviceModelFromUserAgent'
 import { getUniqueId } from 'libs/react-native-device-info/getUniqueId'
 
 export interface DeviceInformations {
-  deviceId: string
-  deviceOS: string
-  deviceModel: string
+  id?: string
+  os?: string
+  source?: string
 }
 
 export const useDeviceInfos = (): DeviceInformations => {
   const [deviceInfos, setDeviceInfos] = useState<DeviceInformations>({
-    deviceId: '',
-    deviceOS: '',
-    deviceModel: '',
+    id: undefined,
+    os: undefined,
+    source: undefined,
   })
 
   useEffect(() => {
     const getDeviceInfo = async () => {
-      const deviceId = await getUniqueId()
-      const deviceOsWeb = await DeviceInfo.getBaseOs()
-      const deviceOsNative = DeviceInfo.getSystemName()
-      const deviceModelWeb = getDeviceModelFromUserAgent()
-      const deviceModelNative = DeviceInfo.getModel()
+      const [deviceId, osWeb] = await Promise.all([getUniqueId(), DeviceInfo.getBaseOs()])
+      const osNative = DeviceInfo.getSystemName()
+      const modelNative = DeviceInfo.getModel()
 
       setDeviceInfos({
-        deviceId,
-        deviceOS: deviceOsNative !== 'unknown' ? deviceOsNative : deviceOsWeb,
-        deviceModel: deviceModelNative !== 'unknown' ? deviceModelNative : deviceModelWeb,
+        id: deviceId,
+        os: osNative !== 'unknown' ? osNative : osWeb,
+        source: modelNative !== 'unknown' ? modelNative : browserName,
       })
     }
     getDeviceInfo()

@@ -6,18 +6,18 @@ import { PageHeaderSecondary } from 'ui/components/headers/PageHeaderSecondary'
 import { Spacer, Typo } from 'ui/theme'
 
 export const TrustedDevice = () => {
-  const { deviceId, deviceModel, deviceOS } = useDeviceInfos()
+  const { id, source, os } = useDeviceInfos()
 
   return (
     <React.Fragment>
-      <PageHeaderSecondary title="Spike appareil de confiance" />
+      <PageHeaderSecondary title="Appareil de confiance" />
       <Spacer.Column numberOfSpaces={6} />
       <Container>
-        <Typo.Title3>useDeviceInfos()</Typo.Title3>
+        <Typo.Title3>Informations du device actuel</Typo.Title3>
         <Spacer.Column numberOfSpaces={2} />
-        <Data title="Device ID" data={deviceId} />
-        <Data title="Device Model" data={deviceModel} />
-        <Data title="Device OS" data={deviceOS} />
+        <Data title="Device ID" data={id} />
+        <Data title="Device Model ou Browser" data={source} />
+        <Data title="Device OS" data={os} />
       </Container>
     </React.Fragment>
   )
@@ -29,14 +29,18 @@ const Container = styled.View(({ theme }) => ({
 
 type DataProps = {
   title: string
-  data: string
+  data?: string
 }
 
 const Data = ({ title, data }: DataProps) => (
   <React.Fragment>
     <Spacer.Column numberOfSpaces={2} />
-    <Typo.ButtonText>{title} </Typo.ButtonText>
-    <Typo.ButtonTextPrimary>{data}</Typo.ButtonTextPrimary>
+    <Typo.ButtonText>{title}</Typo.ButtonText>
+    {data ? (
+      <Typo.ButtonTextSecondary>{data}</Typo.ButtonTextSecondary>
+    ) : (
+      <Typo.ButtonTextPrimary>Information non disponible</Typo.ButtonTextPrimary>
+    )}
     <Spacer.Column numberOfSpaces={2} />
   </React.Fragment>
 )
