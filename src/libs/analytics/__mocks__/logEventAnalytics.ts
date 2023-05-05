@@ -133,6 +133,7 @@ export const logEventAnalytics: typeof actualLogEventAnalytics = {
   logScreenViewSelectIdStatus: jest.fn(),
   logScreenViewSetAddress: jest.fn(),
   logScreenViewSetCity: jest.fn(),
+  logScreenViewSetEmail: jest.fn(),
   logScreenViewSetName: jest.fn(),
   logScreenViewSetPhoneNumber: jest.fn(),
   logScreenViewSetPhoneValidationCode: jest.fn(),

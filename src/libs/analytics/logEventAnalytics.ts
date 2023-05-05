@@ -455,10 +455,6 @@ export const logEventAnalytics = {
       firebase: AnalyticsEvent.RESEND_EMAIL_SIGNUP_CONFIRMATION_EXPIRED_LINK,
     }),
   logSaveNewMail: () => analytics.logEvent({ firebase: AnalyticsEvent.SAVE_NEW_MAIL }),
-  logScreenViewSetAddress: () =>
-    analytics.logEvent({ amplitude: AmplitudeEvent.SCREEN_VIEW_SET_ADDRESS }),
-  logScreenViewSetCity: () =>
-    analytics.logEvent({ amplitude: AmplitudeEvent.SCREEN_VIEW_SET_CITY }),
   logScreenViewComeBackLater: () =>
     analytics.logEvent({ amplitude: AmplitudeEvent.SCREEN_VIEW_COME_BACK_LATER }),
   logScreenViewDMSIntroduction: () =>
@@ -477,6 +473,12 @@ export const logEventAnalytics = {
     analytics.logEvent({ amplitude: AmplitudeEvent.SCREEN_VIEW_SELECT_ID_ORIGIN }),
   logScreenViewSelectIdStatus: () =>
     analytics.logEvent({ amplitude: AmplitudeEvent.SCREEN_VIEW_SELECT_ID_STATUS }),
+  logScreenViewSetAddress: () =>
+    analytics.logEvent({ amplitude: AmplitudeEvent.SCREEN_VIEW_SET_ADDRESS }),
+  logScreenViewSetCity: () =>
+    analytics.logEvent({ amplitude: AmplitudeEvent.SCREEN_VIEW_SET_CITY }),
+  logScreenViewSetEmail: () =>
+    analytics.logEvent({ amplitude: AmplitudeEvent.SCREEN_VIEW_SET_EMAIL }),
   logScreenViewSetName: () =>
     analytics.logEvent({ amplitude: AmplitudeEvent.SCREEN_VIEW_SET_NAME }),
   logScreenViewSetPhoneNumber: () =>

@@ -24,6 +24,7 @@ export enum AmplitudeEvent {
   SCREEN_VIEW_SELECT_ID_STATUS = 'screen_view_select_id_status',
   SCREEN_VIEW_SET_ADDRESS = 'screen_view_set_address',
   SCREEN_VIEW_SET_CITY = 'screen_view_set_city',
+  SCREEN_VIEW_SET_EMAIL = 'screen_view_set_email',
   SCREEN_VIEW_SET_NAME = 'screen_view_set_name',
   SCREEN_VIEW_SET_PHONE_NUMBER = 'screen_view_set_phone_number',
   SCREEN_VIEW_SET_PHONE_VALIDATION_CODE = 'screen_view_set_phone_validation_code',
