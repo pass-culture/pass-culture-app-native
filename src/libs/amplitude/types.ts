@@ -5,4 +5,5 @@ export interface AmplitudeClient {
   enableCollection(): void
   disableCollection(): void
   setUserProperties(properties: Record<string, Types.ValidPropertyType | null>): void
+  setUserId(id: string): void
 }

@@ -123,6 +123,7 @@ export const AuthWrapper = memo(function AuthWrapper({ children }: { children: J
       status: user.status?.statusType, // eligible, beneficiaire, suspendu, etc
       appVersion,
     })
+    amplitude.setUserId(user.id.toString())
   }, [user])
 
   useAppStateChange(readTokenAndConnectUser, () => void 0, [isLoggedIn])

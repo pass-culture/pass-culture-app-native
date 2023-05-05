@@ -3,4 +3,5 @@ export const amplitude = {
   disableCollection: jest.fn(),
   enableCollection: jest.fn(),
   setUserProperties: jest.fn(),
+  setUserId: jest.fn(),
 }

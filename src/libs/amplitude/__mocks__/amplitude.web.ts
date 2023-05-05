@@ -5,4 +5,5 @@ export const amplitude: AmplitudeClient = {
   enableCollection: jest.fn(),
   disableCollection: jest.fn(),
   setUserProperties: jest.fn(),
+  setUserId: jest.fn(),
 }
