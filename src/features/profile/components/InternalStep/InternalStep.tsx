@@ -24,9 +24,9 @@ export function InternalStep({ variant, children, isFirst, isLast }: InternalSte
 const Wrapper = styled.View({
   flexGrow: 1,
   flexDirection: 'row',
-  gap: getSpacing(2),
 })
 
 const Content = styled.View({
-  flexGrow: 1,
+  flex: 1,
+  marginLeft: getSpacing(2),
 })

@@ -45,17 +45,28 @@ export const VerticalStepper = memo(function VerticalStepper({
 
       if (variant === StepVariant.complete)
         return (
-          <ValidateIcon
-            color={theme.colors.greenValid}
-            color2={theme.colors.white}
-            size={20}
-            {...props}
-          />
+          <IconWrapper>
+            <ValidateIcon
+              color={theme.colors.greenValid}
+              color2={theme.colors.white}
+              size={20}
+              {...props}
+            />
+          </IconWrapper>
         )
 
-      if (variant === StepVariant.in_progress) return <InProgressIcon {...props} />
+      if (variant === StepVariant.in_progress)
+        return (
+          <IconWrapper>
+            <InProgressIcon {...props} />
+          </IconWrapper>
+        )
 
-      return <FutureIcon {...props} />
+      return (
+        <IconWrapper>
+          <FutureIcon {...props} />
+        </IconWrapper>
+      )
     },
     [iconComponent, theme.colors.greenValid, theme.colors.white, variant]
   )
@@ -115,11 +126,9 @@ export const VerticalStepper = memo(function VerticalStepper({
 })
 
 const Wrapper = styled.View({
-  display: 'flex',
   flexDirection: 'column',
   alignItems: 'center',
-  flexGrow: 1,
-  gap: getSpacing(1),
+  flex: 1,
   overflow: 'hidden',
 })
 
@@ -127,7 +136,7 @@ const FilledLine = styled.View(({ theme }) => ({
   backgroundColor: theme.colors.greyMedium,
   width: 2,
   borderRadius: 2,
-  flexGrow: 1,
+  flex: 1,
 }))
 
 const TopFilledLine = styled(FilledLine)<FirstOrLastProps>(({ isFirst }) => ({
@@ -153,3 +162,7 @@ const InProgressIcon = styled.View(({ theme }) => ({
 const FutureIcon = styled(InProgressIcon)(({ theme }) => ({
   backgroundColor: theme.colors.greyMedium,
 }))
+
+const IconWrapper = styled.View({
+  marginVertical: getSpacing(0.5),
+})
