@@ -47,7 +47,7 @@ mockUseIdentityCheckContext.mockImplementation(() => ({
 
 describe('<SetSchoolType />', () => {
   it('shoud render a list of middle school types if profile.status is middleSchoolStudent', () => {
-    const renderAPI = render(<SetSchoolType />)
+    const renderAPI = renderSetSchoolType()
     expect(renderAPI).toMatchSnapshot()
   })
 
@@ -58,7 +58,7 @@ describe('<SetSchoolType />', () => {
       profile: { ...mockState.profile, status: ActivityIdEnum.HIGH_SCHOOL_STUDENT },
     }))
 
-    const renderAPI = render(<SetSchoolType />)
+    const renderAPI = renderSetSchoolType()
     expect(renderAPI).toMatchSnapshot()
   })
   it('should not display "Continuer" if isSavingCheckpoint is true', async () => {
@@ -70,14 +70,14 @@ describe('<SetSchoolType />', () => {
   })
 
   it('should log screen view when the screen is mounted', async () => {
-    render(<SetSchoolType />)
+    renderSetSchoolType()
 
     await waitFor(() => expect(analytics.logScreenViewSetSchoolType).toHaveBeenCalledTimes(1))
   })
 
   it('should log analytics on press Continuer', async () => {
     mockIsSavingCheckpoint = false
-    const { getByText } = render(<SetSchoolType />)
+    const { getByText } = renderSetSchoolType()
 
     fireEvent.press(getByText(SchoolTypesSnap.school_types[3].label))
     fireEvent.press(getByText('Continuer'))
@@ -85,3 +85,8 @@ describe('<SetSchoolType />', () => {
     await waitFor(() => expect(analytics.logSetSchoolTypeClicked).toHaveBeenCalledTimes(1))
   })
 })
+
+function renderSetSchoolType() {
+  // eslint-disable-next-line local-rules/no-react-query-provider-hoc
+  return render(reactQueryProviderHOC(<SetSchoolType />))
+}
