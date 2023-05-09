@@ -5,6 +5,7 @@ import styled from 'styled-components/native'
 import { STORE_LINK, TITLE, BUTTON_TEXT, DESCRIPTION } from 'features/forceUpdate/constants'
 import { useMinimalBuildNumber } from 'features/forceUpdate/helpers/useMinimalBuildNumber'
 import { openUrl } from 'features/navigation/helpers'
+import { analytics } from 'libs/analytics'
 import { Helmet } from 'libs/react-helmet/Helmet'
 import { ButtonPrimaryWhite } from 'ui/components/buttons/ButtonPrimaryWhite'
 import { GenericInfoPage } from 'ui/pages/GenericInfoPage'
@@ -17,8 +18,13 @@ type ForceUpdateProps = {
   resetErrorBoundary: () => void
 }
 
+async function openStore() {
+  await analytics.logClickForceUpdate(build)
+  await openUrl(STORE_LINK)
+}
+
 const onPressStoreLink = Platform.select({
-  default: () => openUrl(STORE_LINK),
+  default: async () => await openStore(),
   web: () => globalThis?.window?.location?.reload(),
 })
 
