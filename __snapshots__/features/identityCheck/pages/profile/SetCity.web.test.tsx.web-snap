@@ -113,17 +113,17 @@ Object {
   background-color: #F1F1F4;
 }
 
+.c2 {
+  width: 100%;
+  max-width: 500px;
+}
+
 .c3 {
   font-family: Montserrat-Regular;
   font-size: 15px;
   line-height: 20px;
   color: #161617;
   cursor: pointer;
-}
-
-.c2 {
-  width: 100%;
-  max-width: 500px;
 }
 
 .c4 {
@@ -432,17 +432,17 @@ Object {
   background-color: #F1F1F4;
 }
 
+.c2 {
+  width: 100%;
+  max-width: 500px;
+}
+
 .c3 {
   font-family: Montserrat-Regular;
   font-size: 15px;
   line-height: 20px;
   color: #161617;
   cursor: pointer;
-}
-
-.c2 {
-  width: 100%;
-  max-width: 500px;
 }
 
 .c4 {
