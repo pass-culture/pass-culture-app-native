@@ -24,7 +24,11 @@ async function openStore() {
 }
 
 const onPressStoreLink = Platform.select({
-  default: async () => await openStore(),
+  default: () => {
+    void (async () => {
+      await openStore()
+    })()
+  },
   web: () => globalThis?.window?.location?.reload(),
 })
 
