@@ -1,4 +1,4 @@
-import { isAppUrl } from 'features/navigation/helpers'
+import { isAppUrl } from 'features/navigation/helpers/isAppUrl'
 
 const OPEN_INBOX_URL_PART = 'openInbox'
 

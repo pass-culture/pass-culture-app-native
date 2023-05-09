@@ -37,8 +37,7 @@ WithPopOverIcon.args = {
   },
 }
 
-// TODO(PC-17931): Fix this story
-const WithCTA = Template.bind({})
+export const WithCTA = Template.bind({})
 WithCTA.args = {
   subscriptionMessage: {
     userMessage: 'Dossier déposé, nous sommes en train de le traiter',
