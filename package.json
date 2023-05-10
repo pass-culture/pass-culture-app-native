@@ -359,7 +359,8 @@
     "recyclerlistview": "4.1.2",
     "tslib": "2.3.*",
     "validator": "^13.7.0",
-    "@react-navigation/core": "6.2.2"
+    "@react-navigation/core": "6.2.2",
+    "react-side-effect": "2.1.2"
   },
   "exports": {
     ".": "./index.js",
