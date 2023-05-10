@@ -15,7 +15,6 @@ import {
   isExclusivityModule,
   isHighlightOfferModule,
   isOffersModule,
-  isRecommendedOffersModule,
   isThematicHighlightModule,
   isVenuesModule,
   isVideoModule,
@@ -67,17 +66,6 @@ const UnmemoizedModule = ({
     )
   }
 
-  if (isRecommendedOffersModule(item)) {
-    return (
-      <RecommendationModule
-        moduleId={item.id}
-        index={index}
-        displayParameters={item.displayParameters}
-        recommendationParameters={item.recommendationParameters}
-        homeEntryId={homeEntryId}
-      />
-    )
-  }
   if (isExclusivityModule(item) && !enableNewExclusivityBlock) {
     return (
       <ExclusivityModule
@@ -116,6 +104,7 @@ const UnmemoizedModule = ({
   const modules = {
     [HomepageModuleType.BusinessModule]: BusinessModule,
     [HomepageModuleType.CategoryListModule]: CategoryListModule,
+    [HomepageModuleType.RecommendedOffersModule]: RecommendationModule,
   }
 
   const ComponentModule = modules[item.type]

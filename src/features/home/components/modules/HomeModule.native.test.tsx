@@ -8,9 +8,12 @@ import {
   formattedExclusivityModule,
   formattedBusinessModule,
   formattedCategoryListModule,
+  formattedRecommendedOffersModule,
 } from 'features/home/fixtures/homepage.fixture'
 import { HomepageModule } from 'features/home/types'
 import { offerResponseSnap } from 'features/offer/fixtures/offerResponse'
+import { SimilarOffersResponse } from 'features/offer/types'
+import { mockedAlgoliaResponse } from 'libs/algolia/__mocks__/mockedAlgoliaResponse'
 import { env } from 'libs/environment'
 import * as useFeatureFlag from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { offersFixture } from 'shared/offer/offer.fixture'
@@ -29,6 +32,10 @@ const useFeatureFlagSpy = jest.spyOn(useFeatureFlag, 'useFeatureFlag')
 
 jest.mock('features/home/api/useHighlightOffer')
 const mockUseHighlightOffer = useHighlightOffer as jest.Mock
+
+jest.mock('features/home/api/useAlgoliaRecommendedHits', () => ({
+  useAlgoliaRecommendedHits: jest.fn(() => mockedAlgoliaResponse.hits),
+}))
 
 describe('<HomeModule />', () => {
   it('should display old exclusivity module when feature flag is false', async () => {
@@ -86,6 +93,33 @@ describe('<HomeModule />', () => {
     renderHomeModule(formattedCategoryListModule)
 
     expect(await screen.findByText('Cette semaine sur le pass')).toBeTruthy()
+  })
+
+  it('should display RecommendationModule', async () => {
+    const recommendedOffers: SimilarOffersResponse = {
+      params: {
+        call_id: 'c2b19286-a4e9-4aef-9bab-3dcbbd631f0c',
+        filtered: true,
+        geo_located: true,
+        model_endpoint: 'default',
+        model_name: 'similar_offers_default_prod',
+        model_version: 'similar_offers_clicks_v2_1_prod_v_20230428T220000',
+        reco_origin: 'default',
+      },
+      results: ['102280', '102272'],
+    }
+
+    server.use(
+      rest.post(
+        env.RECOMMENDATION_ENDPOINT + '/playlist_recommendation/1234',
+        async (_, res, ctx) => res.once(ctx.status(200), ctx.json(recommendedOffers))
+      )
+    )
+
+    renderHomeModule(formattedRecommendedOffersModule)
+    await act(async () => {})
+
+    expect(screen.getByText('Tes évènements en ligne')).toBeTruthy()
   })
 })
 
