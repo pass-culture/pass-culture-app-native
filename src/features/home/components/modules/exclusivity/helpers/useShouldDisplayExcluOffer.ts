@@ -7,7 +7,7 @@ import { computeDistanceInMeters } from 'libs/parsers'
 import { convertCentsToEuros } from 'libs/parsers/pricesConversion'
 
 export function useShouldDisplayExcluOffer(
-  display: ExclusivityModule['displayParameters'],
+  displayParameters: ExclusivityModule['displayParameters'],
   offerId: number
 ) {
   const { position } = useHomePosition()
@@ -21,7 +21,7 @@ export function useShouldDisplayExcluOffer(
   if (price > maxPrice) return false
 
   // Exclu module is not geolocated
-  if (!display?.isGeolocated || !display?.aroundRadius) return true
+  if (!displayParameters?.isGeolocated || !displayParameters?.aroundRadius) return true
 
   // Exclu module is geolocated but we don't know the user's location
   if (!position) return false
@@ -36,5 +36,5 @@ export function useShouldDisplayExcluOffer(
     position.longitude
   )
 
-  return distance <= 1000 * display.aroundRadius
+  return distance <= 1000 * displayParameters.aroundRadius
 }
