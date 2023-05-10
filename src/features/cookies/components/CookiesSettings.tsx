@@ -74,6 +74,7 @@ export const CookiesSettings = ({
             accessibilityLabelledBy={labelID}
             checkboxID={checkboxID}
             toggle={toggleAll}
+            testID={inputLabel}
           />
         </AcceptAllContainer>
       </ChoiceContainer>
@@ -88,7 +89,7 @@ export const CookiesSettings = ({
               title={<Typo.Body>{info.title}</Typo.Body>}
               onOpenOnce={() => analytics.logHasOpenedCookiesAccordion(cookie)}
               switchProps={{
-                testID: cookie,
+                testID: info.title,
                 active: isEssential ? true : settingsCookiesChoice[cookie],
                 disabled: isEssential,
                 toggle: () =>

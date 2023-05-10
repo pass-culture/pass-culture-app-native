@@ -17,7 +17,6 @@ interface Props {
   toggle?: () => void
   toggleLabel?: string
   disabled?: boolean
-  testID?: string
 }
 
 export const SectionWithSwitch: React.FC<Props> = (props: Props) => {
@@ -33,9 +32,9 @@ export const SectionWithSwitch: React.FC<Props> = (props: Props) => {
     toggleLabel,
     disabled,
     accessibilityDescribedBy,
-    testID,
   } = props
   const Icon = icon
+
   return (
     <Container>
       <TitleContainer toggleLabel={!!toggleLabel}>
@@ -63,7 +62,7 @@ export const SectionWithSwitch: React.FC<Props> = (props: Props) => {
           disabled={disabled}
           accessibilityLabelledBy={labelID}
           accessibilityDescribedBy={accessibilityDescribedBy}
-          testID={testID ?? title}
+          testID={title}
         />
       </FilterSwitchLabelContainer>
     </Container>
