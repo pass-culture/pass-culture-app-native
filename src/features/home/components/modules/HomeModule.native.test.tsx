@@ -4,7 +4,11 @@ import React from 'react'
 import { OfferResponse } from 'api/gen'
 import { useHighlightOffer } from 'features/home/api/useHighlightOffer'
 import { highlightOfferModuleFixture } from 'features/home/fixtures/highlightOfferModule.fixture'
-import { formattedExclusivityModule } from 'features/home/fixtures/homepage.fixture'
+import {
+  formattedExclusivityModule,
+  formattedBusinessModule,
+  formattedCategoryListModule,
+} from 'features/home/fixtures/homepage.fixture'
 import { HomepageModule } from 'features/home/types'
 import { offerResponseSnap } from 'features/offer/fixtures/offerResponse'
 import { env } from 'libs/environment'
@@ -70,6 +74,18 @@ describe('<HomeModule />', () => {
     await waitFor(() => {
       expect(screen.queryByText(highlightOfferModuleFixture.highlightTitle)).toBeNull()
     })
+  })
+
+  it('should display BusinessModule', async () => {
+    renderHomeModule(formattedBusinessModule)
+
+    expect(await screen.findByText('Débloque ton crédit\u00a0! ')).toBeTruthy()
+  })
+
+  it('should display CategoryListModule', async () => {
+    renderHomeModule(formattedCategoryListModule)
+
+    expect(await screen.findByText('Cette semaine sur le pass')).toBeTruthy()
   })
 })
 

@@ -11,8 +11,7 @@ import { VenuesModule } from 'features/home/components/modules/venues/VenuesModu
 import { VideoModule } from 'features/home/components/modules/video/VideoModule'
 import {
   HomepageModule,
-  isBusinessModule,
-  isCategoryListModule,
+  HomepageModuleType,
   isExclusivityModule,
   isHighlightOfferModule,
   isOffersModule,
@@ -99,16 +98,8 @@ const UnmemoizedModule = ({
     return <HighlightOfferModule {...item} />
   }
 
-  if (isBusinessModule(item)) {
-    return <BusinessModule {...item} homeEntryId={homeEntryId} index={index} moduleId={item.id} />
-  }
-
   if (isThematicHighlightModule(item)) {
     return <ThematicHighlightModule {...item} homeEntryId={homeEntryId} index={index} />
-  }
-
-  if (isCategoryListModule(item)) {
-    return <CategoryListModule {...item} homeEntryId={homeEntryId} index={index} />
   }
 
   if (isVideoModule(item)) {
@@ -122,7 +113,13 @@ const UnmemoizedModule = ({
     )
   }
 
-  return <React.Fragment></React.Fragment>
+  const modules = {
+    [HomepageModuleType.BusinessModule]: BusinessModule,
+    [HomepageModuleType.CategoryListModule]: CategoryListModule,
+  }
+
+  const ComponentModule = modules[item.type]
+  return <ComponentModule {...item} homeEntryId={homeEntryId} index={index} moduleId={item.id} />
 }
 
 export const HomeModule = memo(UnmemoizedModule)
