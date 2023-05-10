@@ -6,42 +6,26 @@ import styled from 'styled-components/native'
 import { CenteredTitle } from 'features/identityCheck/components/CenteredTitle'
 import { PageWithHeader } from 'features/identityCheck/components/layout/PageWithHeader'
 import { useSubscriptionContext } from 'features/identityCheck/context/SubscriptionContextProvider'
-import { invalidateStepperInfoQuery } from 'features/identityCheck/pages/helpers/invalidateStepperQuery'
-import { DeprecatedIdentityCheckStep } from 'features/identityCheck/types'
+import { useSaveStep } from 'features/identityCheck/pages/helpers/useSaveStep'
+import { IdentityCheckStep } from 'features/identityCheck/types'
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { analytics } from 'libs/analytics'
-import { eventMonitoring } from 'libs/monitoring'
-import { QueryKeys } from 'libs/queryKeys'
-import { queryClient } from 'libs/react-query/queryClient'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { Spacer, Typo } from 'ui/theme'
 
 export function IdentityCheckValidation() {
-  const { dispatch, identification } = useSubscriptionContext()
+  const { identification } = useSubscriptionContext()
   const { navigate } = useNavigation<UseNavigationType>()
-
-  const saveCheckpoint = async () => {
-    try {
-      await queryClient.invalidateQueries([QueryKeys.NEXT_SUBSCRIPTION_STEP])
-      invalidateStepperInfoQuery()
-      dispatch({ type: 'SET_STEP', payload: DeprecatedIdentityCheckStep.CONFIRMATION })
-    } catch (error) {
-      eventMonitoring.captureException(error)
-    }
-  }
+  const saveStep = useSaveStep()
 
   const birthDate = identification.birthDate
     ? format(parse(identification.birthDate, 'yyyy-MM-dd', new Date()), 'dd/MM/yyyy')
     : ''
 
-  const navigateToNextEduConnectStep = async () => {
-    saveCheckpoint()
-    navigate('Stepper')
-  }
-
   const onValidateInformation = async () => {
     analytics.logCheckEduconnectDataClicked()
-    await navigateToNextEduConnectStep()
+    await saveStep(IdentityCheckStep.IDENTIFICATION)
+    navigate('Stepper')
   }
 
   return (
