@@ -155,6 +155,8 @@ export const logEventAnalytics = {
     ),
   logClickBookOffer: (offerId: number) =>
     analytics.logEvent({ firebase: AnalyticsEvent.CLICK_BOOK_OFFER }, { offerId }),
+  logClickForceUpdate: (appVersionId: number) =>
+    analytics.logEvent({ firebase: AnalyticsEvent.CLICK_FORCE_UPDATE }, { appVersionId }),
   logClickSeeMore: (params: { moduleName: string; moduleId: string }) =>
     analytics.logEvent({ firebase: AnalyticsEvent.SEE_MORE_CLICKED }, params),
   logClickSocialNetwork: (network: string) =>
