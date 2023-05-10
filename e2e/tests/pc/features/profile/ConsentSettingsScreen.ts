@@ -8,19 +8,19 @@ class ConsentSettingsScreen extends AppScreen {
   }
 
   get acceptEverythingToggle() {
-    return find('Interrupteur')
+    return find('Interrupteur Tout accepter')
   }
 
   get personalizeYourNavigationToggle() {
-    return find('Interrupteur-customization')
+    return find('Interrupteur Personnaliser ta navigation')
   }
 
   get saveNavigationStatsToggle() {
-    return find('Interrupteur-performance')
+    return find('Interrupteur Enregistrer des statistiques de navigation')
   }
 
   get measureProductsEffectivenessToggle() {
-    return find('Interrupteur-marketing')
+    return find('Interrupteur Mesurer l’efficacité de nos publicités')
   }
 
   get saveChoicesButton() {

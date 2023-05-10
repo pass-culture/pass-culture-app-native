@@ -3,15 +3,15 @@ import { find } from '../../helpers/utils/selector'
 
 class NotificationScreen extends AppScreen {
   constructor() {
-    super('Interrupteur-Autoriser l’envoi d’e-mails', true)
+    super('Interrupteur Autoriser l’envoi d’e-mails', true)
   }
 
   get authorizeEmailToggle() {
-    return find('Interrupteur-Autoriser l’envoi d’e-mails')
+    return find('Interrupteur Autoriser l’envoi d’e-mails')
   }
 
   get marketingToggle() {
-    return find('Interrupteur-Autoriser les notifications marketing')
+    return find('Interrupteur Autoriser les notifications marketing')
   }
 
   get goBackButton() {
