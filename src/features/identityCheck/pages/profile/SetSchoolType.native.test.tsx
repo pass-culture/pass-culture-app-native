@@ -10,7 +10,7 @@ import { analytics } from 'libs/analytics'
 import { env } from 'libs/environment'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { server } from 'tests/server'
-import { fireEvent, render, waitFor } from 'tests/utils'
+import { fireEvent, render, waitFor, screen } from 'tests/utils'
 import { SnackBarHelperSettings } from 'ui/components/snackBar/types'
 
 let mockStatus = ActivityIdEnum.MIDDLE_SCHOOL_STUDENT
@@ -61,15 +61,15 @@ server.use(
 
 describe('<SetSchoolType />', () => {
   it('shoud render a list of middle school types if profile.status is middleSchoolStudent', () => {
-    const renderAPI = renderSetSchoolType()
-    expect(renderAPI).toMatchSnapshot()
+    renderSetSchoolType()
+    expect(screen).toMatchSnapshot()
   })
 
   it('shoud render a list of high school types if profile.status is highSchoolStudent', () => {
     mockStatus = ActivityIdEnum.HIGH_SCHOOL_STUDENT
 
-    const renderAPI = renderSetSchoolType()
-    expect(renderAPI).toMatchSnapshot()
+    renderSetSchoolType()
+    expect(screen).toMatchSnapshot()
   })
 
   it('should log screen view when the screen is mounted', async () => {
@@ -79,19 +79,19 @@ describe('<SetSchoolType />', () => {
   })
 
   it('should log analytics on press Continuer', async () => {
-    const { getByText } = renderSetSchoolType()
+    renderSetSchoolType()
 
-    fireEvent.press(getByText(SchoolTypesSnap.school_types[0].label))
-    fireEvent.press(getByText('Continuer'))
+    fireEvent.press(screen.getByText(SchoolTypesSnap.school_types[0].label))
+    fireEvent.press(screen.getByText('Continuer'))
 
     await waitFor(() => expect(analytics.logSetSchoolTypeClicked).toHaveBeenCalledTimes(1))
   })
 
   it('should navigate to stepper on press continue button', async () => {
-    const { getByText } = renderSetSchoolType()
+    renderSetSchoolType()
 
-    fireEvent.press(getByText(SchoolTypesSnap.school_types[0].label))
-    fireEvent.press(getByText('Continuer'))
+    fireEvent.press(screen.getByText(SchoolTypesSnap.school_types[0].label))
+    fireEvent.press(screen.getByText('Continuer'))
 
     await waitFor(() => expect(navigate).toHaveBeenCalledWith('Stepper'))
   })
