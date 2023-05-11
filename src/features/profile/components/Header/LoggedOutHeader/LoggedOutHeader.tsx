@@ -10,7 +10,7 @@ import { getSpacing, Spacer, Typo } from 'ui/theme'
 
 const onBeforeNavigate = () => {
   analytics.logProfilSignUp()
-  analytics.logSignUpClicked({ from: 'Profile' })
+  analytics.logSignUpClicked({ from: 'profile' })
 }
 
 export function LoggedOutHeader() {

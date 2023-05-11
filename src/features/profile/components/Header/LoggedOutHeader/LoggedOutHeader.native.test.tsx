@@ -23,6 +23,6 @@ describe('LoggedOutHeader', () => {
     await fireEvent.press(signupButton)
 
     expect(analytics.logProfilSignUp).toHaveBeenCalledTimes(1)
-    expect(analytics.logSignUpClicked).toHaveBeenNthCalledWith(1, { from: 'Profile' })
+    expect(analytics.logSignUpClicked).toHaveBeenNthCalledWith(1, { from: 'profile' })
   })
 })
