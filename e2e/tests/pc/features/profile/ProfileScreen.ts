@@ -18,7 +18,7 @@ class ProfileScreen extends AppScreen {
     return find('Accessibilité')
   }
 
-  get legalInformationLink() {
+  get legalNoticesLink() {
     return find('Informations légales')
   }
 

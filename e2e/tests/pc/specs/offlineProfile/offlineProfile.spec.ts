@@ -10,6 +10,7 @@ import AccessibilityScreen from '../../features/profile/AccessibilityScreen'
 import FirstLaunch from '../../helpers/FirstLaunch'
 import ConsentSettingsScreen from '../../features/profile/ConsentSettingsScreen'
 import { scrollToBottom } from '../../helpers/utils/scrollToBottom'
+import LegalNoticesScreen from '../../features/profile/LegalNoticesScreen'
 
 describe('Profile', () => {
   let ok = false
@@ -72,10 +73,22 @@ describe('Profile', () => {
       })
     })
 
-    describe('Consent settings', () => {
-      it('should display consent settings screen', async () => {
+    describe('Legal notices', () => {
+      it('should display legal notices screen', async () => {
         await scrollToBottom()
 
+        await ProfileScreen.legalNoticesLink.click()
+        await LegalNoticesScreen.waitForIsShown()
+      })
+
+      it('should go back to profile', async () => {
+        await LegalNoticesScreen.goBack.click()
+        await ProfileScreen.waitForIsShown()
+      })
+    })
+
+    describe('Consent settings', () => {
+      it('should display consent settings screen', async () => {
         await ProfileScreen.consentLink.click()
         await ConsentSettingsScreen.waitForIsShown()
       })
