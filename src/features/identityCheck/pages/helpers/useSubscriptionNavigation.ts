@@ -4,6 +4,7 @@ import { useQueryClient } from 'react-query'
 
 import { usePatchProfile } from 'features/identityCheck/api/usePatchProfile'
 import { useSubscriptionContext } from 'features/identityCheck/context/SubscriptionContextProvider'
+import { useNavigateForwardToStepper } from 'features/identityCheck/helpers/useNavigateForwardToStepper'
 import { getNextScreenOrStep } from 'features/identityCheck/pages/helpers/getNextScreenOrStep'
 import { invalidateStepperInfoQuery } from 'features/identityCheck/pages/helpers/invalidateStepperQuery'
 import { isSubscriptionRoute } from 'features/identityCheck/pages/helpers/isSubscriptionRoute'
@@ -31,6 +32,8 @@ export const useSubscriptionNavigation = (): {
 } => {
   const { dispatch } = useSubscriptionContext()
   const { navigate } = useNavigation<UseNavigationType>()
+  const { navigateForwardToStepper } = useNavigateForwardToStepper()
+
   const currentStep = useCurrentSubscriptionStep()
   const nextScreenOrStep = useNextScreenOrStep()
   const queryClient = useQueryClient()
@@ -65,7 +68,7 @@ export const useSubscriptionNavigation = (): {
         navigate(nextScreenOrStep.screen)
       } else if ('step' in nextScreenOrStep) {
         await saveCheckpoint(nextScreenOrStep.step)
-        navigate('Stepper')
+        navigateForwardToStepper()
       }
     },
     isSavingCheckpoint,

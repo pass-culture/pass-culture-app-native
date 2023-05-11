@@ -51,3 +51,6 @@ export const useFocusEffect = useEffect
 export const NavigationContainer = jest.fn()
 export const useNavigationState = jest.fn()
 export const useScrollToTop = jest.fn()
+
+const commonActionsReset = jest.fn()
+export const CommonActions = { reset: commonActionsReset }

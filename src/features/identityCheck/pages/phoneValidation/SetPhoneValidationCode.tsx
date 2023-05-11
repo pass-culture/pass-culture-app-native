@@ -12,6 +12,7 @@ import { useValidatePhoneNumberMutation } from 'features/identityCheck/api/useVa
 import { CenteredTitle } from 'features/identityCheck/components/CenteredTitle'
 import { PageWithHeader } from 'features/identityCheck/components/layout/PageWithHeader'
 import { useSubscriptionContext } from 'features/identityCheck/context/SubscriptionContextProvider'
+import { useNavigateForwardToStepper } from 'features/identityCheck/helpers/useNavigateForwardToStepper'
 import { invalidateStepperInfoQuery } from 'features/identityCheck/pages/helpers/invalidateStepperQuery'
 import { CodeNotReceivedModal } from 'features/identityCheck/pages/phoneValidation/CodeNotReceivedModal'
 import { formatPhoneNumberForDisplay } from 'features/identityCheck/pages/phoneValidation/helpers/formatPhoneNumber'
@@ -47,6 +48,7 @@ export const SetPhoneValidationCode = () => {
       )
     : ''
   const { navigate, dispatch } = useNavigation<UseNavigationType>()
+  const { navigateForwardToStepper } = useNavigateForwardToStepper()
   const { remainingAttempts } = usePhoneValidationRemainingAttempts()
 
   // We amend our navigation history to replace "SetPhoneNumber" with "PhoneValidationTooManySMSSent"
@@ -86,7 +88,7 @@ export const SetPhoneValidationCode = () => {
   const { mutate: validatePhoneNumber, isLoading } = useValidatePhoneNumberMutation({
     onSuccess: async () => {
       invalidateStepperInfoQuery()
-      navigate('Stepper')
+      navigateForwardToStepper()
     },
     onError: (err: unknown | ApiError) => {
       const { content } = err as ApiError
