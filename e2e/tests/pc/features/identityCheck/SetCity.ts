@@ -3,7 +3,7 @@ import { find, findAll } from '../../helpers/utils/selector'
 
 class SetCity extends AppScreen {
   constructor() {
-    super('IdentityCheckCity', true)
+    super('SetCity', true)
   }
 
   get postalCodeInput() {

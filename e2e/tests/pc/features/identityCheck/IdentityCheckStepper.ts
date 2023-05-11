@@ -1,9 +1,9 @@
 import AppScreen from '../../screenobjects/AppScreen'
 import { find } from '../../helpers/utils/selector'
 
-class IdentityCheckStepper extends AppScreen {
+class Stepper extends AppScreen {
   constructor() {
-    super('IdentityCheckStepper', true)
+    super('Stepper', true)
   }
 
   get profileButton() {
@@ -11,4 +11,4 @@ class IdentityCheckStepper extends AppScreen {
   }
 }
 
-export default new IdentityCheckStepper()
+export default new Stepper()

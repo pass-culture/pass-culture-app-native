@@ -40,14 +40,8 @@ export const useStepperInfo = (): {
         retry: () => <IconRetryStep Icon={BicolorProfile} testID="profile-retry-step" />,
       },
       screens: hasSchoolTypes
-        ? [
-            'SetName',
-            'IdentityCheckCity',
-            'IdentityCheckAddress',
-            'IdentityCheckStatus',
-            'IdentityCheckSchoolType',
-          ]
-        : ['SetName', 'IdentityCheckCity', 'IdentityCheckAddress', 'IdentityCheckStatus'],
+        ? ['SetName', 'SetCity', 'SetAddress', 'SetStatus', 'SetSchoolType']
+        : ['SetName', 'SetCity', 'SetAddress', 'SetStatus'],
     },
     {
       name: IdentityCheckStep.IDENTIFICATION,

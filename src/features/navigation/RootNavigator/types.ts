@@ -74,7 +74,7 @@ export type SubscriptionRootStackParamList = {
   TrustedDevice: undefined
   DynamicSocials: undefined
   // Stepper
-  IdentityCheckStepper: undefined
+  Stepper: undefined
   // PhoneValidation
   SetPhoneNumber: undefined
   SetPhoneValidationCode: undefined
@@ -82,10 +82,10 @@ export type SubscriptionRootStackParamList = {
   PhoneValidationTooManySMSSent: undefined
   // Profile
   SetName: undefined
-  IdentityCheckCity: undefined
-  IdentityCheckAddress: undefined
-  IdentityCheckStatus: undefined
-  IdentityCheckSchoolType: undefined
+  SetCity: undefined
+  SetAddress: undefined
+  SetStatus: undefined
+  SetSchoolType: undefined
   // Identification
   ComeBackLater: undefined
   DMSIntroduction: { isForeignDMSInformation: boolean }

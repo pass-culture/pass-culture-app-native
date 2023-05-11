@@ -29,7 +29,7 @@ import { SetCity } from 'features/identityCheck/pages/profile/SetCity'
 import { SetName } from 'features/identityCheck/pages/profile/SetName'
 import { SetSchoolType } from 'features/identityCheck/pages/profile/SetSchoolType'
 import { SetStatus } from 'features/identityCheck/pages/profile/SetStatus'
-import { IdentityCheckStepper } from 'features/identityCheck/pages/Stepper'
+import { Stepper } from 'features/identityCheck/pages/Stepper'
 import { NavigationErrors } from 'features/internal/cheatcodes/pages/NavigationErrors/NavigationErrors'
 import { NavigationSignUp } from 'features/internal/cheatcodes/pages/NavigationSignUp'
 import { NavigationIdentityCheck } from 'features/internal/cheatcodes/pages/NavigationSignUp/NavigationIdentityCheck'
@@ -71,8 +71,8 @@ export const subscriptionRoutes: GenericRoute<SubscriptionRootStackParamList>[] 
   },
   // Stepper
   {
-    name: 'IdentityCheckStepper',
-    component: IdentityCheckStepper,
+    name: 'Stepper',
+    component: Stepper,
     path: 'verification-identite',
     options: { title: 'Vérification d’identité' },
     secure: true,
@@ -112,28 +112,28 @@ export const subscriptionRoutes: GenericRoute<SubscriptionRootStackParamList>[] 
     secure: true,
   },
   {
-    name: 'IdentityCheckCity',
+    name: 'SetCity',
     component: SetCity,
     path: 'creation-profil/ville',
     options: { title: 'Ton code postal | Profil' },
     secure: true,
   },
   {
-    name: 'IdentityCheckAddress',
+    name: 'SetAddress',
     component: SetAddress,
     path: 'creation-profil/adresse',
     options: { title: 'Ton adresse | Profil' },
     secure: true,
   },
   {
-    name: 'IdentityCheckStatus',
+    name: 'SetStatus',
     component: SetStatus,
     path: 'verification-identite/profil/statut',
     options: { title: 'Ton statut | Profil' },
     secure: true,
   },
   {
-    name: 'IdentityCheckSchoolType',
+    name: 'SetSchoolType',
     component: SetSchoolType,
     path: 'verification-identite/profil/type-etablissement',
     options: { title: 'Ton établissement | Profil' },

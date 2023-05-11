@@ -40,7 +40,7 @@ describe('<IdentityCheckEnd/>', () => {
     render(<IdentityCheckEnd />)
     expect(navigate).not.toHaveBeenCalled()
     jest.advanceTimersByTime(3000)
-    expect(navigate).toHaveBeenCalledWith('IdentityCheckStepper')
+    expect(navigate).toHaveBeenCalledWith('Stepper')
   })
 
   it('should navigate to home after timeout if nextSubscriptionStep is null', () => {

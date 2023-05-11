@@ -52,9 +52,9 @@ export const SetPhoneValidationCode = () => {
   // We amend our navigation history to replace "SetPhoneNumber" with "PhoneValidationTooManySMSSent"
   const goBackToPhoneValidationTooManySMSSent = () => {
     dispatch((state) => {
-      // Here we check the index of our 'IdentityCheckStepper' page in our navigation stack
-      const stepperIndex = state.routes.findIndex((route) => route.name === 'IdentityCheckStepper')
-      // Here we reset the routes parameter, taking all pages up to IdentityCheckStepper and adding 'PhoneValidationTooManySMSSent'
+      // Here we check the index of our 'Stepper' page in our navigation stack
+      const stepperIndex = state.routes.findIndex((route) => route.name === 'Stepper')
+      // Here we reset the routes parameter, taking all pages up to Stepper and adding 'PhoneValidationTooManySMSSent'
       // The ternary is used to prevent edge case crashes. stepperIndex could return -1 if we were brought to this page
       // without going through the stepper, e.g. through a deeplink.
       const routes =
@@ -86,7 +86,7 @@ export const SetPhoneValidationCode = () => {
   const { mutate: validatePhoneNumber, isLoading } = useValidatePhoneNumberMutation({
     onSuccess: async () => {
       invalidateStepperInfoQuery()
-      navigate('IdentityCheckStepper')
+      navigate('Stepper')
     },
     onError: (err: unknown | ApiError) => {
       const { content } = err as ApiError

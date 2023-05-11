@@ -65,7 +65,7 @@ export const useSubscriptionNavigation = (): {
         navigate(nextScreenOrStep.screen)
       } else if ('step' in nextScreenOrStep) {
         await saveCheckpoint(nextScreenOrStep.step)
-        navigate('IdentityCheckStepper')
+        navigate('Stepper')
       }
     },
     isSavingCheckpoint,

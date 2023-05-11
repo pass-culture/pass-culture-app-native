@@ -46,7 +46,7 @@ describe('<FinishSubscriptionModal />', () => {
 
     fireEvent.press(screen.getByText('Terminer mon inscription'))
     expect(hideModal).toBeCalledTimes(1)
-    expect(navigate).toBeCalledWith('IdentityCheckStepper')
+    expect(navigate).toBeCalledWith('Stepper')
   })
 
   it('should close modal when pressing right header icon', () => {

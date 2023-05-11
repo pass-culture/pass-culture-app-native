@@ -13,6 +13,6 @@ describe('ActivationBanner', () => {
 
     fireEvent.press(getByText('Débloque tes 300\u00a0€'))
 
-    await waitFor(() => expect(navigate).toHaveBeenCalledWith('IdentityCheckStepper', undefined))
+    await waitFor(() => expect(navigate).toHaveBeenCalledWith('Stepper', undefined))
   })
 })

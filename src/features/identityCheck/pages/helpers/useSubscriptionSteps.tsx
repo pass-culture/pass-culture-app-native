@@ -41,14 +41,8 @@ export const useSubscriptionSteps = (): DeprecatedStepConfig[] => {
       },
       label: 'Profil',
       screens: hasSchoolTypes
-        ? [
-            'SetName',
-            'IdentityCheckCity',
-            'IdentityCheckAddress',
-            'IdentityCheckStatus',
-            'IdentityCheckSchoolType',
-          ]
-        : ['SetName', 'IdentityCheckCity', 'IdentityCheckAddress', 'IdentityCheckStatus'],
+        ? ['SetName', 'SetCity', 'SetAddress', 'SetStatus', 'SetSchoolType']
+        : ['SetName', 'SetCity', 'SetAddress', 'SetStatus'],
     },
     {
       name: DeprecatedIdentityCheckStep.IDENTIFICATION,

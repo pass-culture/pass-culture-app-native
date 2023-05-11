@@ -2,7 +2,7 @@ import React from 'react'
 
 import { useRoute } from '__mocks__/@react-navigation/native'
 import { navigate } from '__mocks__/@react-navigation/native'
-import { DeprecatedIdentityCheckStep } from 'features/identityCheck/types'
+import { IdentityCheckStep } from 'features/identityCheck/types'
 import { analytics } from 'libs/analytics'
 import { fireEvent, render } from 'tests/utils'
 
@@ -37,9 +37,9 @@ describe('<IdentityCheckValidation />', () => {
     fireEvent.press(validateButton)
     // wait for localStorage to have been updated
     await flushPromises
-    expect(navigate).toHaveBeenCalledWith('IdentityCheckStepper')
+    expect(navigate).toHaveBeenCalledWith('Stepper')
     expect(mockDispatch).toHaveBeenNthCalledWith(1, {
-      payload: DeprecatedIdentityCheckStep.CONFIRMATION,
+      payload: IdentityCheckStep.IDENTIFICATION,
       type: 'SET_STEP',
     })
   })
