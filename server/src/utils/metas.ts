@@ -127,10 +127,10 @@ export async function replaceHtmlMetas(
 
   if (entity['metadata']) {
     html = html.replace(
-      '</body>',
+      '</head>',
       `  <script type="application/ld+json">${JSON.stringify(
         entity['metadata']
-      )}</script>\n  </body>`
+      )}</script>\n  </head>`
     )
   }
 
