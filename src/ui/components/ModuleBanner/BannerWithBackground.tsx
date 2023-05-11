@@ -14,6 +14,7 @@ import { BACKGROUND_IMAGE_SOURCE } from './backgroundImageSource'
 type TouchableProps =
   | {
       navigateTo: InternalNavigationProps['navigateTo']
+      onBeforeNavigate?: () => void
     }
   | {
       onPress: () => void

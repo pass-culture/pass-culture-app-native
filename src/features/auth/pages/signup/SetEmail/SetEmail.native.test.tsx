@@ -189,4 +189,10 @@ describe('<SetEmail />', () => {
 
     expect(openUrl).toHaveBeenNthCalledWith(1, env.FAQ_LINK_PERSONAL_DATA, undefined, true)
   })
+
+  it('should log screen view when the screen is mounted', () => {
+    render(<SetEmail {...props} />)
+
+    expect(analytics.logScreenViewSetEmail).toHaveBeenCalledTimes(1)
+  })
 })

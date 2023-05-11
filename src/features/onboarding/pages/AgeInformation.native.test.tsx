@@ -82,6 +82,9 @@ describe('AgeInformation', () => {
     expect(analytics.logOnboardingAgeInformationClicked).toHaveBeenNthCalledWith(1, {
       type: 'account_creation',
     })
+    expect(analytics.logSignUpClicked).toHaveBeenNthCalledWith(1, {
+      from: 'onboarding',
+    })
   })
 
   it.each(AGES)('should log analytics when clicking on skip button', (age) => {

@@ -1,6 +1,6 @@
 import { yupResolver } from '@hookform/resolvers/yup'
 import { useRoute } from '@react-navigation/native'
-import React, { FunctionComponent, useCallback } from 'react'
+import React, { FunctionComponent, useCallback, useEffect } from 'react'
 import {
   Controller,
   ControllerFieldState,
@@ -72,6 +72,10 @@ export const SetEmail: FunctionComponent<PreValidationSignupStepProps> = (props)
 
   const onLogHasCorrectedEmail = useCallback(() => {
     analytics.logHasCorrectedEmail({ from: 'setemail' })
+  }, [])
+
+  useEffect(() => {
+    analytics.logScreenViewSetEmail()
   }, [])
 
   return (

@@ -207,7 +207,7 @@ export const Login: FunctionComponent<Props> = memo(function Login(props) {
   }, [navigate])
 
   const onLogSignUpAnalytics = useCallback(() => {
-    analytics.logSignUp({ from: 'Login' })
+    analytics.logSignUpClicked({ from: 'login' })
   }, [])
 
   const rightIconProps = params?.preventCancellation

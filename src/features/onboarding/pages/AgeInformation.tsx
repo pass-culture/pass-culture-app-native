@@ -31,6 +31,7 @@ const logTrySelectDeposit = (age: number) => {
 
 const onSignupPress = () => {
   analytics.logOnboardingAgeInformationClicked({ type: 'account_creation' })
+  analytics.logSignUpClicked({ from: 'onboarding' })
 }
 
 export const AgeInformation = ({ route }: AgeInformationProps): JSX.Element => {

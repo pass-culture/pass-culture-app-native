@@ -39,6 +39,7 @@ describe('SignUpSignInChoiceOfferModal', () => {
 
     expect(navigate).toBeCalledWith('SignupForm', { preventCancellation: true, offerId: OFFER_ID })
     expect(analytics.logSignUpFromOffer).toHaveBeenNthCalledWith(1, OFFER_ID)
+    expect(analytics.logSignUpClicked).toHaveBeenNthCalledWith(1, { from: 'offer_favorite' })
   })
 
   it('should log analytics when quitting modal', async () => {

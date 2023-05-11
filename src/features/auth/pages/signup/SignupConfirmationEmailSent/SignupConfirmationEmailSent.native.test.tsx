@@ -71,6 +71,15 @@ describe('<SignupConfirmationEmailSent />', () => {
 
     expect(openInbox).toHaveBeenCalledTimes(1)
   })
+
+  it('should log analytics when clicking on check email button', async () => {
+    renderPage()
+
+    const checkEmailsButton = screen.getByText('Consulter mes e-mails')
+    await fireEvent.press(checkEmailsButton)
+
+    expect(analytics.logEmailConfirmationConsultEmailClicked).toHaveBeenCalledTimes(1)
+  })
 })
 
 function renderPage() {
