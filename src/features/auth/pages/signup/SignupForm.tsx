@@ -139,6 +139,7 @@ export const SignupForm: FunctionComponent<Props> = ({ navigation, route }) => {
   } = useModal(false)
 
   function showQuitSignupModal() {
+    analytics.logQuitSignup(stepConfig.Component.name)
     Keyboard.dismiss()
     showFullPageModal()
   }

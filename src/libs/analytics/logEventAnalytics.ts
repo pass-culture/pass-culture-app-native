@@ -460,6 +460,8 @@ export const logEventAnalytics = {
     analytics.logEvent({ firebase: AnalyticsEvent.QUIT_FAVORITE_MODAL_FOR_SIGN_IN }, { offerId }),
   logQuitIdentityCheck: (nextStep: DeprecatedIdentityCheckStep | IdentityCheckStep) =>
     analytics.logEvent({ firebase: AnalyticsEvent.QUIT_IDENTITY_CHECK }, { nextStep }),
+  logQuitSignup: (from: string) =>
+    analytics.logEvent({ amplitude: AmplitudeEvent.QUIT_SIGNUP }, { from }),
   logReinitializeFilters: (searchId?: string) =>
     analytics.logEvent({ firebase: AnalyticsEvent.REINITIALIZE_FILTERS }, { searchId }),
   logResendEmailResetPasswordExpiredLink: () =>

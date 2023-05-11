@@ -21,6 +21,7 @@ export enum AmplitudeEvent {
   ONBOARDING_STARTED = 'onboarding_started',
   PHONE_NUMBER_CLICKED = 'phone_number_clicked',
   PHONE_VALIDATION_CODE_CLICKED = 'phone_validation_code_clicked',
+  QUIT_SIGNUP = 'quit_signup',
   SCREEN_VIEW_COME_BACK_LATER = 'screen_view_come_back_later',
   SCREEN_VIEW_DMS_INTRODUCTION = 'screen_view_dms_introduction',
   SCREEN_VIEW_EXPIRED_OR_LOST_ID = 'screen_view_expired_or_lost_id',

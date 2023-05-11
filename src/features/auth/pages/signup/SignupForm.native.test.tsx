@@ -199,4 +199,12 @@ describe('<SignupForm />', () => {
       expect(analytics.logContinueCGU).toHaveBeenCalledTimes(1)
     })
   })
+
+  it('should log analytics when clicking on close icon', () => {
+    render(<SignupForm {...defaultProps} />)
+
+    fireEvent.press(screen.getByTestId('Abandonner l’inscription'))
+
+    expect(analytics.logQuitSignup).toHaveBeenNthCalledWith(1, 'SetEmail')
+  })
 })
