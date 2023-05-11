@@ -159,7 +159,7 @@ export const logEventAnalytics: typeof actualLogEventAnalytics = {
   logSignInFromAuthenticationModal: jest.fn(),
   logSignInFromFavorite: jest.fn(),
   logSignInFromOffer: jest.fn(),
-  logSignUp: jest.fn(),
+  logSignUpClicked: jest.fn(),
   logSignUpFromAuthenticationModal: jest.fn(),
   logSignUpFromFavorite: jest.fn(),
   logSignUpFromOffer: jest.fn(),

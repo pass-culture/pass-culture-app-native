@@ -8,6 +8,11 @@ import { ButtonWithLinearGradient } from 'ui/components/buttons/buttonWithLinear
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 
+const onBeforeNavigate = () => {
+  analytics.logProfilSignUp()
+  analytics.logSignUpClicked({ from: 'Profile' })
+}
+
 export function LoggedOutHeader() {
   const { isDesktopViewport, colors } = useTheme()
 
@@ -20,7 +25,7 @@ export function LoggedOutHeader() {
           as={ButtonWithLinearGradient}
           wording="Créer un compte"
           navigateTo={{ screen: 'SignupForm', params: { preventCancellation: true } }}
-          onBeforeNavigate={() => analytics.logProfilSignUp()}
+          onBeforeNavigate={onBeforeNavigate}
           fitContentWidth={isDesktopViewport}
         />
 

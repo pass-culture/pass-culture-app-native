@@ -13,7 +13,16 @@ describe('LoggedOutHeader', () => {
     const signupButton = getByText('Créer un compte')
     await fireEvent.press(signupButton)
 
-    expect(analytics.logProfilSignUp).toHaveBeenCalledTimes(1)
     expect(navigate).toBeCalledWith('SignupForm', { preventCancellation: true })
+  })
+
+  it('should log analytics when clicking on "Créer un compte"', async () => {
+    const { getByText } = render(<LoggedOutHeader />)
+
+    const signupButton = getByText('Créer un compte')
+    await fireEvent.press(signupButton)
+
+    expect(analytics.logProfilSignUp).toHaveBeenCalledTimes(1)
+    expect(analytics.logSignUpClicked).toHaveBeenNthCalledWith(1, { from: 'Profile' })
   })
 })

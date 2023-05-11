@@ -268,7 +268,7 @@ describe('<Login/>', () => {
       fireEvent.press(signupButton)
     })
 
-    expect(analytics.logSignUp).toHaveBeenNthCalledWith(1, { from: 'Login' })
+    expect(analytics.logSignUpClicked).toHaveBeenNthCalledWith(1, { from: 'Login' })
   })
 
   describe('Login comes from adding an offer to favorite', () => {

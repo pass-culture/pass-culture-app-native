@@ -450,7 +450,6 @@ export const logEventAnalytics = {
   logProfilSignUp: () =>
     analytics.logEvent({
       firebase: AnalyticsEvent.PROFIL_SIGN_UP,
-      amplitude: AmplitudeEvent.CREATE_ACCOUNT_CLICKED,
     }),
   logQuitAuthenticationMethodSelection: () =>
     analytics.logEvent({ firebase: AnalyticsEvent.QUIT_AUTHENTICATION_METHOD_SELECTION }),
@@ -564,8 +563,11 @@ export const logEventAnalytics = {
     analytics.logEvent({ firebase: AnalyticsEvent.SIGN_IN_FROM_FAVORITE }),
   logSignInFromOffer: (offerId: number) =>
     analytics.logEvent({ firebase: AnalyticsEvent.SIGN_IN_FROM_OFFER }, { offerId }),
-  logSignUp: ({ from }: { from: string }) =>
-    analytics.logEvent({ firebase: AnalyticsEvent.SIGN_UP }, { from }),
+  logSignUpClicked: ({ from }: { from: string }) =>
+    analytics.logEvent(
+      { firebase: AnalyticsEvent.SIGN_UP, amplitude: AmplitudeEvent.CREATE_ACCOUNT_CLICKED },
+      { from }
+    ),
   logSignUpFromAuthenticationModal: (offerId: number) =>
     analytics.logEvent(
       { firebase: AnalyticsEvent.SIGN_UP_FROM_AUTHENTICATION_MODAL },
