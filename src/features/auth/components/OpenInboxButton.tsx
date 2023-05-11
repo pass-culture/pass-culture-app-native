@@ -6,7 +6,7 @@ import { Email } from 'ui/svg/icons/Email'
 
 export const OpenInboxButton = ({ onAdditionalPress }: { onAdditionalPress?: () => void }) => {
   const onPress = async () => {
-    openInbox()
+    await openInbox()
     onAdditionalPress?.()
   }
 

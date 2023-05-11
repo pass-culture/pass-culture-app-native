@@ -40,33 +40,25 @@ const SIGNUP_STEP_CONFIG: SignupStepConfig[] = [
     name: PreValidationSignupStep.Email,
     headerTitle: 'Crée-toi un compte',
     Component: SetEmail,
-    tracker: async () => {
-      await analytics.logContinueSetEmail()
-    },
+    tracker: analytics.logContinueSetEmail,
   },
   {
     name: PreValidationSignupStep.Password,
     headerTitle: 'Mot de passe',
     Component: SetPassword,
-    tracker: async () => {
-      await analytics.logContinueSetPassword()
-    },
+    tracker: analytics.logContinueSetPassword,
   },
   {
     name: PreValidationSignupStep.Birthday,
     headerTitle: 'Date de naissance',
     Component: SetBirthday,
-    tracker: async () => {
-      await analytics.logContinueSetBirthday()
-    },
+    tracker: analytics.logContinueSetBirthday,
   },
   {
     name: PreValidationSignupStep.CGU,
     headerTitle: 'CGU & Données',
     Component: AcceptCgu,
-    tracker: async () => {
-      await analytics.logContinueCGU()
-    },
+    tracker: analytics.logContinueCGU,
   },
 ]
 const SIGNUP_STEP_CONFIG_MAX_INDEX = SIGNUP_STEP_CONFIG.length - 1
