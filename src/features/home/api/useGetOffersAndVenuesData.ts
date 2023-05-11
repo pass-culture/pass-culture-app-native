@@ -99,5 +99,7 @@ export const useGetOffersAndVenuesData = (modules: HomepageModule[]) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [!!position, user?.isBeneficiary])
 
-  return { modulesData: resultList }
+  const mergedData = mergeOffersAndVenuesData({ offersResultList, venuesResultList })
+
+  return { modulesData: mergedData }
 }
