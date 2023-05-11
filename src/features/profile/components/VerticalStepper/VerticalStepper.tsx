@@ -2,6 +2,7 @@ import React, { memo, useCallback } from 'react'
 import styled, { useTheme } from 'styled-components/native'
 
 import { ValidateIcon } from 'features/profile/components/ValidateIcon'
+import { DotSize, VerticalDots } from 'features/profile/components/VerticalDots/VerticalDots'
 import { FirstOrLastProps, StepVariantProps } from 'features/profile/types'
 import { getSpacing } from 'ui/theme'
 
@@ -26,7 +27,9 @@ type CustomComponentProps = FirstOrLastProps & {
   testID?: string
 }
 
-export const DOT_SIZE = 2
+export const IN_PROGRESS_ICON_SIZE = 10
+const DOT_SIZE: DotSize = { width: 2, height: 3 }
+const SPECIAL_DOT_SIZE: DotSize = { width: 2, height: 2.5 }
 
 export const VerticalStepper = memo(function VerticalStepper({
   variant,
@@ -66,7 +69,14 @@ export const VerticalStepper = memo(function VerticalStepper({
 
         // Only VerticalStepperVariant.future in this default case
         default:
-          return <DottedLine {...props} />
+          return (
+            <VerticalDots.Auto
+              dotSize={DOT_SIZE}
+              lastDotSize={SPECIAL_DOT_SIZE}
+              endsWithDot
+              {...props}
+            />
+          )
       }
     },
     [variant]
@@ -77,7 +87,15 @@ export const VerticalStepper = memo(function VerticalStepper({
       switch (variant) {
         case StepVariant.in_progress:
         case StepVariant.future:
-          return <DottedLine testID="bottom-line" {...props} />
+          return (
+            <VerticalDots.Auto
+              dotSize={DOT_SIZE}
+              firstDotSize={SPECIAL_DOT_SIZE}
+              endsWithDot={false}
+              testID="bottom-line"
+              {...props}
+            />
+          )
 
         // Only VerticalStepperVariant.complete in this default case
         default:
@@ -107,7 +125,7 @@ const Wrapper = styled.View({
 
 const FilledLine = styled.View(({ theme }) => ({
   backgroundColor: theme.colors.greyMedium,
-  width: DOT_SIZE,
+  width: 2,
   borderRadius: 2,
   flexGrow: 1,
 }))
@@ -122,20 +140,14 @@ const BottomFilledLine = styled(FilledLine)<FirstOrLastProps>(({ isLast }) => ({
   borderBottomRightRadius: isLast ? 2 : 0,
 }))
 
-const DottedLine = styled.View(({ theme }) => ({
-  width: DOT_SIZE,
-  flexGrow: 1,
-  borderLeftWidth: DOT_SIZE,
-  borderLeftColor: theme.colors.greyMedium,
-  borderStyle: 'dotted',
-}))
-
 const InProgressIcon = styled.View(({ theme }) => ({
   backgroundColor: theme.colors.black,
-  width: getSpacing(3),
-  height: getSpacing(3),
-  borderRadius: getSpacing(2),
-  marginHorizontal: getSpacing(1),
+  width: IN_PROGRESS_ICON_SIZE,
+  height: IN_PROGRESS_ICON_SIZE,
+  borderRadius: IN_PROGRESS_ICON_SIZE / 2,
+  marginHorizontal: (20 - IN_PROGRESS_ICON_SIZE) / 2,
+  borderWidth: 2,
+  borderColor: theme.colors.white,
 }))
 
 const FutureIcon = styled(InProgressIcon)(({ theme }) => ({
