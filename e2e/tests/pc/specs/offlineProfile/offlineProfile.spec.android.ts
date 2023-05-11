@@ -6,6 +6,7 @@ import FirstLaunch from '../../helpers/FirstLaunch'
 import ConsentSettingsScreen from '../../features/profile/ConsentSettingsScreen'
 import { scrollToBottom } from '../../helpers/utils/scrollToBottom'
 import NotificationScreen from '../../features/profile/NotificationScreen'
+import { timeout } from '../../helpers/utils/time'
 
 describe('Profile', () => {
   let ok = false
@@ -33,7 +34,7 @@ describe('Profile', () => {
         await ProfileScreen.notificationsLink.click()
 
         await NotificationScreen.waitForIsShown()
-        expect(await NotificationScreen.authorizeEmailToggle.isEnabled()).toBeFalsy()
+        expect(await NotificationScreen.authorizeEmailToggle.isEnabled()).toEqual(false)
       })
 
       it('should return on profile page when pressing go back button', async () => {
@@ -52,101 +53,109 @@ describe('Profile', () => {
       it('should display all toggle activated by default', async () => {
         expect(
           await ConsentSettingsScreen.acceptEverythingToggle.getAttribute('checked')
-        ).toBeTruthy()
+        ).toEqual('true')
         expect(
           await ConsentSettingsScreen.personalizeYourNavigationToggle.getAttribute('checked')
-        ).toBeTruthy()
+        ).toEqual('true')
         expect(
           await ConsentSettingsScreen.saveNavigationStatsToggle.getAttribute('checked')
-        ).toBeTruthy()
+        ).toEqual('true')
         expect(
           await ConsentSettingsScreen.measureProductsEffectivenessToggle.getAttribute('checked')
-        ).toBeTruthy()
+        ).toEqual('true')
       })
 
       it('should deactivate all toggle when pressing "Tout accepter" activated toggle', async () => {
         await ConsentSettingsScreen.acceptEverythingToggle.click()
+        await timeout(300)
 
         expect(
           await ConsentSettingsScreen.personalizeYourNavigationToggle.getAttribute('checked')
-        ).toBeFalsy()
+        ).toEqual('false')
         expect(
           await ConsentSettingsScreen.saveNavigationStatsToggle.getAttribute('checked')
-        ).toBeFalsy()
+        ).toEqual('false')
         expect(
           await ConsentSettingsScreen.measureProductsEffectivenessToggle.getAttribute('checked')
-        ).toBeFalsy()
+        ).toEqual('false')
       })
 
       it('should activate all toggle when pressing "Tout accepter" deactivated toggle', async () => {
         await ConsentSettingsScreen.acceptEverythingToggle.click()
+        await timeout(300)
 
         expect(
           await ConsentSettingsScreen.personalizeYourNavigationToggle.getAttribute('checked')
-        ).toBeTruthy()
+        ).toEqual('true')
         expect(
           await ConsentSettingsScreen.saveNavigationStatsToggle.getAttribute('checked')
-        ).toBeTruthy()
+        ).toEqual('true')
         expect(
           await ConsentSettingsScreen.measureProductsEffectivenessToggle.getAttribute('checked')
-        ).toBeTruthy()
+        ).toEqual('true')
       })
 
       it('should deactivate "Personnaliser ta navigation" and "Tout accepter" toggles when pressing "Personnaliser ta navigation" activated toggle', async () => {
         await ConsentSettingsScreen.personalizeYourNavigationToggle.click()
+        await timeout((300))
 
         expect(
           await ConsentSettingsScreen.personalizeYourNavigationToggle.getAttribute('checked')
-        ).toBeFalsy()
+        ).toEqual('false')
         expect(
           await ConsentSettingsScreen.acceptEverythingToggle.getAttribute('checked')
-        ).toBeFalsy()
+        ).toEqual('false')
       })
 
       it('should activate "Personnaliser ta navigation" toggle when pressing "Personnaliser ta navigation" deactivated toggle', async () => {
         await ConsentSettingsScreen.personalizeYourNavigationToggle.click()
+        await timeout(300)
 
         expect(
           await ConsentSettingsScreen.personalizeYourNavigationToggle.getAttribute('checked')
-        ).toBeTruthy()
+        ).toEqual('true')
       })
 
       it('should deactivate "Enregistrer des statistiques de navigation" and "Tout accepter" toggles when pressing "Enregistrer des statistiques de navigation" activated toggle', async () => {
         await ConsentSettingsScreen.saveNavigationStatsToggle.click()
+        await timeout(300)
 
         expect(
           await ConsentSettingsScreen.saveNavigationStatsToggle.getAttribute('checked')
-        ).toBeFalsy()
+        ).toEqual('false')
         expect(
           await ConsentSettingsScreen.acceptEverythingToggle.getAttribute('checked')
-        ).toBeFalsy()
+        ).toEqual('false')
       })
 
       it('should activate "Enregistrer des statistiques de navigation" toggle when pressing "Enregistrer des statistiques de navigation" deactivated toggle', async () => {
         await ConsentSettingsScreen.saveNavigationStatsToggle.click()
+        await timeout(300)
 
         expect(
           await ConsentSettingsScreen.saveNavigationStatsToggle.getAttribute('checked')
-        ).toBeTruthy()
+        ).toEqual('true')
       })
 
       it('should deactivate "Mesurer l’efficacité de nos publicités" and "Tout accepter" toggles when pressing "Mesurer l’efficacité de nos publicités" activated toggle', async () => {
         await ConsentSettingsScreen.measureProductsEffectivenessToggle.click()
+        await timeout(300)
 
         expect(
           await ConsentSettingsScreen.measureProductsEffectivenessToggle.getAttribute('checked')
-        ).toBeFalsy()
+        ).toEqual('false')
         expect(
           await ConsentSettingsScreen.acceptEverythingToggle.getAttribute('checked')
-        ).toBeFalsy()
+        ).toEqual('false')
       })
 
       it('should activate "Mesurer l’efficacité de nos publicités" toggle when pressing "Mesurer l’efficacité de nos publicités" deactivated toggle', async () => {
         await ConsentSettingsScreen.measureProductsEffectivenessToggle.click()
+        await timeout(300)
 
         expect(
           await ConsentSettingsScreen.measureProductsEffectivenessToggle.getAttribute('checked')
-        ).toBeTruthy()
+        ).toEqual('true')
       })
     })
   })
