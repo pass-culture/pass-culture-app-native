@@ -1,11 +1,15 @@
-import React from 'react'
+import React, { useMemo } from 'react'
 import styled from 'styled-components/native'
 
 import { useAuthContext } from 'features/auth/context/AuthContext'
+import { RootNavigateParams } from 'features/navigation/RootNavigator/types'
 import { EditButton } from 'features/profile/components/Buttons/EditButton/EditButton'
 import { PageProfileSection } from 'features/profile/components/PageProfileSection/PageProfileSection'
+import { useCheckHasCurrentEmailChange } from 'features/profile/helpers/useCheckHasCurrentEmailChange'
 import { analytics } from 'libs/analytics'
 import { env } from 'libs/environment'
+import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
+import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { ButtonQuaternarySecondary } from 'ui/components/buttons/ButtonQuarternarySecondary'
 import { InfoBanner } from 'ui/components/InfoBanner'
 import { SectionRow } from 'ui/components/SectionRow'
@@ -18,8 +22,19 @@ import { SECTION_ROW_ICON_SIZE } from 'ui/theme/constants'
 
 export function PersonalData() {
   const { user } = useAuthContext()
-
+  const enableChangeEmail = useFeatureFlag(RemoteStoreFeatureFlags.WIP_CHANGE_EMAIL)
   const fullname = String(user?.firstName + ' ' + user?.lastName).trim()
+
+  const onEmailChange = () => {
+    analytics.logModifyMail()
+  }
+
+  const { hasCurrentEmailChange } = useCheckHasCurrentEmailChange()
+
+  const updateEmailRoute = useMemo<RootNavigateParams[0]>(() => {
+    if (hasCurrentEmailChange) return 'TrackEmailChange'
+    return 'ChangeEmail'
+  }, [hasCurrentEmailChange])
 
   return (
     <PageProfileSection title="Informations personnelles">
@@ -36,6 +51,14 @@ export function PersonalData() {
       <Spacer.Column numberOfSpaces={2} />
       <EditContainer>
         <EditText>{user?.email}</EditText>
+        {!!enableChangeEmail && (
+          <EditButton
+            navigateTo={{ screen: updateEmailRoute }}
+            onPress={onEmailChange}
+            wording="Modifier"
+            accessibilityLabel="Modifier e-mail"
+          />
+        )}
       </EditContainer>
 
       <StyledSeparator />
