@@ -107,7 +107,7 @@ export const AuthWrapper = memo(function AuthWrapper({ children }: { children: J
   }, [readTokenAndConnectUser])
 
   useEffect(() => {
-    if (!user) return
+    if (!user?.id) return
 
     const partialUser = pick(user, [
       'depositType',
