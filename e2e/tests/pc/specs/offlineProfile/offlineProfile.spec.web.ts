@@ -107,10 +107,10 @@ describe('Profile', () => {
           await ConsentSettingsScreen.acceptEverythingToggle.getAttribute('aria-checked')
         ).toEqual('false')
         expect(
-          await ConsentSettingsScreen.personalizeYourNavigationToggle.getAttribute('value')
-        ).toEqual('checkbox, not checked')
-        expect(await ConsentSettingsScreen.acceptEverythingToggle.getAttribute('value')).toEqual(
-          'checkbox, not checked'
+          await ConsentSettingsScreen.personalizeYourNavigationToggle.getAttribute('aria-checked')
+        ).toEqual('false')
+        expect(await ConsentSettingsScreen.acceptEverythingToggle.getAttribute('aria-checked')).toEqual(
+          'false'
         )
       })
 
@@ -151,10 +151,10 @@ describe('Profile', () => {
           await ConsentSettingsScreen.acceptEverythingToggle.getAttribute('aria-checked')
         ).toEqual('false')
         expect(
-          await ConsentSettingsScreen.measureProductsEffectivenessToggle.getAttribute('value')
-        ).toEqual('checkbox, not checked')
-        expect(await ConsentSettingsScreen.acceptEverythingToggle.getAttribute('value')).toEqual(
-          'checkbox, not checked'
+          await ConsentSettingsScreen.measureProductsEffectivenessToggle.getAttribute('aria-checked')
+        ).toEqual('false')
+        expect(await ConsentSettingsScreen.acceptEverythingToggle.getAttribute('aria-checked')).toEqual(
+          'false'
         )
       })
 

@@ -111,8 +111,8 @@ describe('Profile', () => {
           await ConsentSettingsScreen.personalizeYourNavigationToggle.getAttribute('value')
         ).toEqual('checkbox, checked')
         expect(
-          await ConsentSettingsScreen.personalizeYourNavigationToggle.getAttribute('checked')
-        ).toBeTruthy()
+          await ConsentSettingsScreen.personalizeYourNavigationToggle.getAttribute('value')
+        ).toEqual('checkbox, checked')
       })
 
       it('should deactivate "Enregistrer des statistiques de navigation" and "Tout accepter" toggles when pressing "Enregistrer des statistiques de navigation" activated toggle', async () => {
