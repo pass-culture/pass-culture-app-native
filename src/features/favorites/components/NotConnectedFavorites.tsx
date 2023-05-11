@@ -9,6 +9,11 @@ import { GenericInfoPageWhite } from 'ui/pages/GenericInfoPageWhite'
 import { BicolorUserFavorite } from 'ui/svg/icons/BicolorUserFavorite'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 
+const onBeforeSignupNavigate = () => {
+  analytics.logSignUpFromFavorite()
+  analytics.logSignUpClicked({ from: 'favorite' })
+}
+
 export const NotConnectedFavorites = () => (
   <GenericInfoPageWhite
     title="Identifie-toi pour retrouver tes favoris"
@@ -24,7 +29,7 @@ export const NotConnectedFavorites = () => (
           as={ButtonWithLinearGradient}
           wording="Créer un compte"
           navigateTo={{ screen: 'SignupForm' }}
-          onBeforeNavigate={analytics.logSignUpFromFavorite}
+          onBeforeNavigate={onBeforeSignupNavigate}
           buttonHeight="tall"
         />
         <Spacer.Column numberOfSpaces={4} />

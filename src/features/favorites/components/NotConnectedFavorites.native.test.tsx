@@ -21,6 +21,7 @@ describe('NotConnectedFavorites component', () => {
     await waitFor(() => {
       expect(navigate).toBeCalledWith('SignupForm', undefined)
       expect(analytics.logSignUpFromFavorite).toBeCalledTimes(1)
+      expect(analytics.logSignUpClicked).toHaveBeenNthCalledWith(1, { from: 'favorite' })
     })
   })
 
