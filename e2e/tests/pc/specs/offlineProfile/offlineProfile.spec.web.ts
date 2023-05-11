@@ -5,6 +5,7 @@ import { DefaultTheme, getTheme } from '../../helpers/utils/theme'
 import FirstLaunch from '../../helpers/FirstLaunch'
 import ConsentSettingsScreen from '../../features/profile/ConsentSettingsScreen'
 import { scrollToBottom } from '../../helpers/utils/scrollToBottom'
+import NotificationScreen from '../../features/profile/NotificationScreen'
 
 describe('Profile', () => {
   let ok = false
@@ -27,6 +28,22 @@ describe('Profile', () => {
   })
 
   describe('Offline', () => {
+    describe('Notification', () => {
+      it('should display a disabled "Autoriser l’envoi d’e-mails" button', async () => {
+        await ProfileScreen.notificationsLink.click()
+
+        await NotificationScreen.waitForIsShown()
+        expect(
+          await NotificationScreen.authorizeEmailToggle.getAttribute('aria-disabled')
+        ).toBeTruthy()
+      })
+
+      it('should return on profile page when pressing go back button', async () => {
+        await NotificationScreen.goBackButton.click()
+        await ProfileScreen.waitForIsShown()
+      })
+    })
+
     describe('Consent settings', () => {
       it('should display consent settings screen', async () => {
         await scrollToBottom()

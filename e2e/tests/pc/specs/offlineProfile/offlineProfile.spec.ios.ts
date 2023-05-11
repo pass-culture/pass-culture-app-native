@@ -3,7 +3,6 @@ import ConsentSettingsScreen from '../../features/profile/ConsentSettingsScreen'
 import NotificationScreen from '../../features/profile/NotificationScreen'
 import ProfileScreen from '../../features/profile/ProfileScreen'
 import { didFirstLaunch } from '../../helpers/utils/error'
-import { flags } from '../../helpers/utils/platform'
 import { scrollToBottom } from '../../helpers/utils/scrollToBottom'
 import { DefaultTheme, getTheme } from '../../helpers/utils/theme'
 
@@ -23,11 +22,25 @@ describe('Profile', () => {
   })
 
   describe('Offline', () => {
-    it('should display a disabled "Autoriser les notifications marketing" button', async () => {
-      await ProfileScreen.waitForIsShown()
-      await ProfileScreen.notificationsLink.click()
-      await NotificationScreen.marketingToggle.waitForDisplayed()
-      expect(await NotificationScreen.marketingToggle.isEnabled()).toEqual(false)
+    describe('Notification', () => {
+      it('should display a disabled "Autoriser les notifications marketing" button', async () => {
+        await ProfileScreen.waitForIsShown()
+        await ProfileScreen.notificationsLink.click()
+        await NotificationScreen.marketingToggle.waitForDisplayed()
+        expect(await NotificationScreen.marketingToggle.isEnabled()).toEqual(false)
+      })
+
+      it('should display a disabled "Autoriser l’envoi d’e-mails" button', async () => {
+        await ProfileScreen.notificationsLink.click()
+
+        await NotificationScreen.waitForIsShown()
+        expect(await NotificationScreen.authorizeEmailToggle.isEnabled()).toBeFalsy()
+      })
+
+      it('should return on profile page when pressing go back button', async () => {
+        await NotificationScreen.goBackButton.click()
+        await ProfileScreen.waitForIsShown()
+      })
     })
 
     describe('Consent settings', () => {
