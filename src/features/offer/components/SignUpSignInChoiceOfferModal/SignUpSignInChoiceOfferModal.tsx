@@ -42,6 +42,7 @@ export const SignUpSignInChoiceOfferModal: FunctionComponent<Props> = ({
           navigateTo={{ screen: 'SignupForm', params: { preventCancellation: true, offerId } }}
           onBeforeNavigate={() => {
             analytics.logSignUpFromOffer(offerId)
+            analytics.logSignUpClicked({ from: 'offer_favorite' })
             dismissModal()
           }}
           fitContentWidth={theme.isDesktopViewport}
