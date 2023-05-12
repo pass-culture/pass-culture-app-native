@@ -9,6 +9,7 @@ import LottieView from 'libs/lottie'
 import { MonitoringError } from 'libs/monitoring'
 import { AnimatedView, AnimatedViewRefType } from 'libs/react-native-animatable'
 import { useMediaQuery } from 'libs/react-responsive/useMediaQuery'
+import { theme } from 'theme'
 import { AnimationObject } from 'ui/animations/type'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { ButtonPrimaryWhite } from 'ui/components/buttons/ButtonPrimaryWhite'
@@ -200,8 +201,9 @@ const StyledTitle = styled(Typo.Title1)({
   textAlign: 'center',
 })
 
-const StyledBody = styled(Typo.Body)({
+const StyledBody = styled(Typo.Caption)({
   textAlign: 'center',
+  color: theme.colors.greyDark,
 })
 
 const ContentContainer = styled.View({

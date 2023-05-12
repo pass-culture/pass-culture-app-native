@@ -122,9 +122,7 @@ describe('<Login/>', () => {
     fireEvent.press(renderAPI.getByText('Se connecter'))
 
     await waitFor(() => {
-      expect(navigate).toHaveBeenNthCalledWith(1, 'EighteenBirthday', {
-        idCheck: true,
-      })
+      expect(navigate).toHaveBeenCalledWith('EighteenBirthday')
     })
   })
 
@@ -156,9 +154,7 @@ describe('<Login/>', () => {
     fireEvent.press(renderAPI.getByText('Se connecter'))
 
     await waitFor(() => {
-      expect(navigate).toHaveBeenNthCalledWith(1, 'EighteenBirthday', {
-        idCheck: true,
-      })
+      expect(navigate).toHaveBeenCalledWith('EighteenBirthday')
     })
   })
 
