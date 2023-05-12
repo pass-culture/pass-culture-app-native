@@ -199,7 +199,7 @@ export type RootStackParamList = {
   VerifyEligibility: undefined
   NotYetUnderageEligibility: { eligibilityStartDatetime: string }
   FirstTutorial?: { shouldCloseAppOnBackAction: boolean }
-  EighteenBirthday: undefined
+  EighteenBirthday: { idCheck?: boolean }
   RecreditBirthdayNotification: undefined
   PageNotFound: undefined
   Venue: {

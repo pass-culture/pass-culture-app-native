@@ -192,8 +192,8 @@ exports[`<EighteenBirthday /> should render eighteen birthday 1`] = `
                       ]
                     }
                   >
-                    Bonne nouvelle !
-Tu as 18 ans...
+                    Tu as 18 ans !
+
                   </Text>
                   <View
                     numberOfSpaces={4}
@@ -218,7 +218,9 @@ Tu as 18 ans...
                       ]
                     }
                   >
-                    Tu pourras bénéficier des 300 € offerts par l’État dès que tu auras vérifié ton identité
+                    Vérifie ton identité pour débloquer tes 300 €.
+
+Ton crédit précédent a été remis à 0 €.
                   </Text>
                 </View>
                 <View

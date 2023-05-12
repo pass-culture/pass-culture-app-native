@@ -33,7 +33,7 @@ export type AchievementCardProps = AchievementCardKeyProps & {
   buttonText: string
   buttonAccessibilityLabel?: string
   pauseAnimationOnRenderAtFrame: number
-  subTitle: string
+  subTitle?: string
   centerChild?: (() => JSX.Element) | null
   text: string
   title: string

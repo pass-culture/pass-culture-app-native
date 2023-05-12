@@ -151,7 +151,7 @@ export function Navigation(): JSX.Element {
           <Row half>
             <ButtonPrimary
               wording="Eighteen Birthday"
-              onPress={() => navigate('EighteenBirthday')}
+              onPress={() => navigate('EighteenBirthday', { idCheck: false })}
             />
           </Row>
           <Row half>

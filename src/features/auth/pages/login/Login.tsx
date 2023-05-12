@@ -112,7 +112,7 @@ export const Login: FunctionComponent<Props> = memo(function Login(props) {
         if (user?.recreditAmountToShow) {
           navigate('RecreditBirthdayNotification')
         } else if (!hasSeenEligibleCard && user.showEligibleCard) {
-          navigate('EighteenBirthday')
+          navigate('EighteenBirthday', { idCheck: user.requiresIdCheck })
         } else if (shouldShowCulturalSurvey(user)) {
           navigate('CulturalSurveyIntro')
         } else if (offerId) {
