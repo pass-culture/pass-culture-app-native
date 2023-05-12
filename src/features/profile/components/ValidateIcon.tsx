@@ -31,7 +31,9 @@ const ValidateIconSvg: React.FunctionComponent<AccessibleIcon> = ({
   )
 }
 
-export const ValidateIcon = styled(ValidateIconSvg).attrs(({ color, size, theme }) => ({
-  color: color ?? theme.colors.black,
-  size: size ?? theme.icons.sizes.smaller,
-}))``
+export const ValidateIcon = styled(ValidateIconSvg).attrs(
+  ({ theme, size = theme.icons.sizes.smaller, color = theme.colors.black }) => ({
+    color,
+    size,
+  })
+)``
