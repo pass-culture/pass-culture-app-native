@@ -10,6 +10,7 @@ import AccessibilityScreen from '../../features/profile/AccessibilityScreen'
 import FirstLaunch from '../../helpers/FirstLaunch'
 import ConsentSettingsScreen from '../../features/profile/ConsentSettingsScreen'
 import { scrollToBottom } from '../../helpers/utils/scrollToBottom'
+import { timeout } from '../../helpers/utils/time'
 import LegalNoticesScreen from '../../features/profile/LegalNoticesScreen'
 
 describe('Profile', () => {
@@ -95,16 +96,14 @@ describe('Profile', () => {
         await ConsentSettingsScreen.waitForIsShown()
       })
 
-      it('should redirect to profile when pressing "Enregistrer mes choix" button', async () => {
+      it('should display success snackbar and redirect to profile when pressing “Enregistrer mes choix” button', async () => {
         await scrollToBottom()
 
+        await timeout(1000)
         await ConsentSettingsScreen.saveChoicesButton.click()
-        await ConsentSettingsScreen.waitForIsHidden()
-        await ProfileScreen.waitForIsShown()
-      })
 
-      it('should display "Ton choix a bien été enregistré" snackbar', async () => {
-        await ProfileScreen.snackbarConsentSettings.waitForDisplayed()
+        await ProfileScreen.snackbarConsentSettings.waitForExist({ interval: 50 }) // The snackbar is a temporary element so we use waitForExist instead of waitForDisplayed, with a short interval.
+        await ProfileScreen.waitForIsShown()
       })
     })
   })
