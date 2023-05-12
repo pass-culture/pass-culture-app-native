@@ -22,7 +22,7 @@ export const scrollToBottom = async (finalHeightPercentage: number = 0.9) => {
     {
       action: 'wait',
       options: {
-        ms: 100,
+        ms: 300,
       },
     },
     {
