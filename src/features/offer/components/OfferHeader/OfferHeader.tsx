@@ -73,7 +73,7 @@ export const OfferHeader: React.FC<Props> = (props) => {
   const [ariaHiddenTitle, setAriaHiddenTitle] = useState(true)
   headerTransition.addListener((opacity) => setAriaHiddenTitle(opacity.value !== 1))
 
-  const { mutate: addFavorite } = useAddFavorite({
+  const { mutate: addFavorite, isLoading: addFavoriteIsLoading } = useAddFavorite({
     onSuccess: () => {
       if (typeof offerId === 'number') {
         const { from, moduleName, moduleId, searchId } = params
@@ -82,7 +82,7 @@ export const OfferHeader: React.FC<Props> = (props) => {
     },
   })
 
-  const { mutate: removeFavorite } = useRemoveFavorite({
+  const { mutate: removeFavorite, isLoading: removeFavoriteIsLoading } = useRemoveFavorite({
     onError: () => {
       showErrorSnackBar({
         message: 'L’offre n’a pas été retirée de tes favoris',
@@ -165,6 +165,7 @@ export const OfferHeader: React.FC<Props> = (props) => {
             initialColor={favorite ? theme.colors.primary : undefined}
             iconName={favorite ? 'favorite-filled' : 'favorite'}
             onPress={pressFavorite}
+            disabled={removeFavoriteIsLoading || addFavoriteIsLoading}
             {...accessibleCheckboxProps({ checked: !!favorite, label: 'Mettre en favoris' })}
           />
           <Spacer.Row numberOfSpaces={6} />

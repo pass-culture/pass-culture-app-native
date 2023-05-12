@@ -5,6 +5,8 @@ import { Animated } from 'react-native'
 import { useRoute } from '__mocks__/@react-navigation/native'
 import { FavoriteResponse, OfferResponse, PaginatedFavoritesResponse } from 'api/gen'
 import { useAuthContext } from 'features/auth/context/AuthContext'
+import * as useAddFavoriteAPI from 'features/favorites/api/useAddFavorite'
+import * as useRemoveFavoriteAPI from 'features/favorites/api/useRemoveFavorite'
 import { favoriteResponseSnap } from 'features/favorites/fixtures/favoriteResponseSnap'
 import { paginatedFavoritesResponseSnap } from 'features/favorites/fixtures/paginatedFavoritesResponseSnap'
 import { mockGoBack } from 'features/navigation/__mocks__/useGoBack'
@@ -51,6 +53,24 @@ mockedUseSnackBarContext.mockReturnValue({
 })
 
 const useFeatureFlagSpy = jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockReturnValue(true)
+const useAddFavoriteSpy = jest.spyOn(useAddFavoriteAPI, 'useAddFavorite')
+const useRemoveFavoriteSpy = jest.spyOn(useRemoveFavoriteAPI, 'useRemoveFavorite')
+
+const mockUseAddFavorite = () => {
+  // @ts-ignore we don't use the other properties of UseMutationResult (such as failureCount)
+  useAddFavoriteSpy.mockImplementation(() => ({
+    mutate: jest.fn(),
+    isLoading: true,
+  }))
+}
+
+const mockUseRemoveFavorite = () => {
+  // @ts-ignore we don't use the other properties of UseMutationResult (such as failureCount)
+  useRemoveFavoriteSpy.mockImplementation(() => ({
+    mutate: jest.fn(),
+    isLoading: true,
+  }))
+}
 
 describe('<OfferHeader />', () => {
   beforeAll(() => {
@@ -120,12 +140,10 @@ describe('<OfferHeader />', () => {
     renderOfferHeader({
       id: favoriteResponseSnap.offer.id,
     })
-
     fireEvent.press(screen.getByTestId('animated-icon-favorite'))
 
     await waitFor(() => {
       expect(screen.getByTestId('animated-icon-favorite-filled')).toBeTruthy()
-
       const mutateData = queryCache.find(['favorites'])?.state?.data as PaginatedFavoritesResponse
       expect(
         mutateData.favorites?.find(
@@ -288,6 +306,22 @@ describe('<OfferHeader />', () => {
 
     await waitFor(() => {
       expect(screen.queryByText('Crée une liste de favoris !')).toBeNull()
+    })
+  })
+
+  it('should enable the favorites button when is not loading', async () => {
+    renderOfferHeader()
+    await waitFor(() => {
+      expect(screen.getByLabelText('Mettre en favoris')).not.toBeDisabled()
+    })
+  })
+
+  it('should disabled the favorites button when is loading', async () => {
+    mockUseAddFavorite()
+    mockUseRemoveFavorite()
+    renderOfferHeader()
+    await waitFor(() => {
+      expect(screen.getByLabelText('Mettre en favoris')).toBeDisabled()
     })
   })
 })
