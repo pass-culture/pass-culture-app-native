@@ -1,10 +1,10 @@
 import { BookingStockResponse, WithdrawalTypeEnum } from 'api/gen'
 import {
   getEventOnSiteWithdrawLabel,
-  getLocationLabel,
   getBookingLabelForActivationCode,
 } from 'features/bookings/helpers'
 import { Booking, BookingProperties } from 'features/bookings/types'
+import { formatFullAddressStartsWithPostalCode } from 'libs/address/useFormatFullAddress'
 import {
   formatToCompleteFrenchDate,
   formatToCompleteFrenchDateTime,
@@ -63,6 +63,10 @@ export function getBookingLabels(booking: Booking, properties: BookingProperties
   return {
     dateLabel: getDateLabel(booking, properties),
     withdrawLabel: getWithdrawLabel(booking, properties),
-    locationLabel: getLocationLabel(booking.stock, properties),
+    locationLabel: formatFullAddressStartsWithPostalCode(
+      booking?.stock.offer.venue.address,
+      booking?.stock.offer.venue.postalCode,
+      booking?.stock.offer.venue.city
+    ),
   }
 }
