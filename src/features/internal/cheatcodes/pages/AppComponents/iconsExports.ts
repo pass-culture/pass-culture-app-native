@@ -11,6 +11,8 @@ import { BicolorClock } from 'ui/svg/icons/BicolorClock'
 import { BicolorConfidentiality } from 'ui/svg/icons/BicolorConfidentiality'
 import { BicolorConfirmation } from 'ui/svg/icons/BicolorConfirmation'
 import { BicolorEarth } from 'ui/svg/icons/BicolorEarth'
+import { BicolorEmailIcon } from 'ui/svg/icons/BicolorEmailIcon'
+import { EmailIcon } from 'ui/svg/icons/BicolorEmailIcon'
 import { BicolorEverywhere } from 'ui/svg/icons/BicolorEverywhere'
 import { BicolorFavorite } from 'ui/svg/icons/BicolorFavorite'
 import { BicolorFrance } from 'ui/svg/icons/BicolorFrance'
@@ -21,8 +23,12 @@ import { BicolorLocationPointer } from 'ui/svg/icons/BicolorLocationPointer'
 import { BicolorLock } from 'ui/svg/icons/BicolorLock'
 import { BicolorLogo } from 'ui/svg/icons/BicolorLogo'
 import { BicolorLostId } from 'ui/svg/icons/BicolorLostId'
+import { BicolorNewIcon } from 'ui/svg/icons/BicolorNewIcon'
+import { NewIcon } from 'ui/svg/icons/BicolorNewIcon'
 import { BicolorNoId } from 'ui/svg/icons/BicolorNoId'
 import { BicolorNoPhone } from 'ui/svg/icons/BicolorNoPhone'
+import { BicolorPhoneIcon } from 'ui/svg/icons/BicolorPhoneIcon'
+import { PhoneIcon } from 'ui/svg/icons/BicolorPhoneIcon'
 import { BicolorProfile } from 'ui/svg/icons/BicolorProfile'
 import { BicolorSearch } from 'ui/svg/icons/BicolorSearch'
 import { BicolorShare } from 'ui/svg/icons/BicolorShare'
@@ -144,6 +150,7 @@ export const SecondaryAndBiggerIcons = {
   BicolorConfirmation,
   BicolorEarth,
   BicolorEverywhere,
+  BicolorEmailIcon,
   BicolorFavorite,
   BicolorFrance,
   BicolorIdCard,
@@ -153,8 +160,10 @@ export const SecondaryAndBiggerIcons = {
   BicolorLock,
   BicolorLogo,
   BicolorLostId,
+  BicolorNewIcon,
   BicolorNoId,
   BicolorNoPhone,
+  BicolorPhoneIcon,
   BicolorProfile,
   BicolorSearch,
   BicolorShare,
@@ -169,6 +178,7 @@ export const SecondaryAndBiggerIcons = {
   Close,
   Confidentiality,
   Duo,
+  EmailIcon,
   Email,
   Error,
   ExternalSite,
@@ -190,10 +200,12 @@ export const SecondaryAndBiggerIcons = {
   Logo,
   MagnifyingGlass,
   More,
+  NewIcon,
   OfferEvent,
   OrderPrice,
   OtherOffer,
   ProfileDeletion,
+  PhoneIcon,
   Quote,
   ScrollToTop,
   Share,
