@@ -35,6 +35,8 @@ describe('Profile', () => {
   describe('Offline', () => {
     describe('Accessibility', () => {
       it('should display Accessibility screen', async () => {
+        await scrollToBottom(0.7)
+        
         await ProfileScreen.accessibilityLink.click()
         await AccessibilityScreen.waitForIsShown()
       })
