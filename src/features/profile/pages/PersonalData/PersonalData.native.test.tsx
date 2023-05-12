@@ -21,6 +21,8 @@ const mockedIdentity: Partial<UserProfileResponse> = {
   phoneNumber: '+33685974563',
 }
 
+jest.mock('react-query')
+
 describe('PersonalData', () => {
   it('should render personal data success', () => {
     renderPersonalData({

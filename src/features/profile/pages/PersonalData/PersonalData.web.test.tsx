@@ -5,6 +5,7 @@ import { render, checkAccessibilityFor } from 'tests/utils/web'
 import { PersonalData } from './PersonalData'
 
 jest.mock('features/auth/context/AuthContext')
+jest.mock('react-query')
 
 describe('<PersonalData/>', () => {
   describe('Accessibility', () => {
