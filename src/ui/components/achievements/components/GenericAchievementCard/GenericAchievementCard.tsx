@@ -58,6 +58,9 @@ export const GenericAchievementCard: FunctionComponent<AchievementCardProps> = (
     [isSmallHeight]
   )
 
+  let title = props.title
+  if (props.subTitle) title += LINE_BREAK + props.subTitle
+
   if (props.index === undefined || props.lastIndex === undefined) {
     throw new MonitoringError(
       `You must use GenericAchievementCard as a children of GenericAchievement.
@@ -123,7 +126,7 @@ export const GenericAchievementCard: FunctionComponent<AchievementCardProps> = (
       </StyledLottieContainer>
       <Spacer.Flex flex={1} />
       <ContentContainer>
-        <StyledTitle>{props.title + LINE_BREAK + props.subTitle}</StyledTitle>
+        <StyledTitle>{title}</StyledTitle>
         <Spacer.Column numberOfSpaces={4} />
         {!!props.centerChild && (
           <React.Fragment>
