@@ -11708,7 +11708,7 @@ decompress-response@^6.0.0:
 dedent@^0.6.0:
   version "0.6.0"
   resolved "https://registry.yarnpkg.com/dedent/-/dedent-0.6.0.tgz#0e6da8f0ce52838ef5cec5c8f9396b0c1b64a3cb"
-  integrity sha1-Dm2o8M5Sg471zsXI+TlrDBtko8s=
+  integrity sha512-cSfRWjXJtZQeRuZGVvDrJroCR5V2UvBNUMHsPCdNYzuAG8b9V8aAy3KUcdQrGQPXs17Y+ojbPh1aOCplg9YR9g==
 
 dedent@^0.7.0:
   version "0.7.0"
@@ -17831,9 +17831,9 @@ lottie-ios@3.2.3:
   integrity sha512-mubYMN6+1HXa8z3EJKBvNBkl4UoVM4McjESeB2PgvRMSngmJtC5yUMRdhbbrIAn5Liu3hFGao/14s5hQIgtkRQ==
 
 lottie-react-native@^5.1.3:
-  version "5.1.3"
-  resolved "https://registry.yarnpkg.com/lottie-react-native/-/lottie-react-native-5.1.3.tgz#6f5d0867bb762cee1dfc0613845d50c73e138ddd"
-  integrity sha512-Ho+oM+D3if85I2EBn8c17tcg7pc880Sp/DOeNW5aWiNtlCJKX/kmlhoM19NLqjzkHEm96fTkTcTy82ZwYU3Kbg==
+  version "5.1.6"
+  resolved "https://registry.yarnpkg.com/lottie-react-native/-/lottie-react-native-5.1.6.tgz#6ae72829c3c0b95952dddd3d78c043f4dfbcb487"
+  integrity sha512-vhdeZstXMfuVKwnddYWjJgQ/1whGL58IJEJu/iSf0XQ5gAb4pp/+vy91mdYQLezlb8Aw4Vu3fKnqErJL2hwchg==
   dependencies:
     invariant "^2.2.2"
     react-native-safe-modules "^1.0.3"
