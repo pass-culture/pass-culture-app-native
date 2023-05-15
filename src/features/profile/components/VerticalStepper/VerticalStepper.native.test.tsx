@@ -9,13 +9,13 @@ import { VerticalStepper } from './VerticalStepper'
 
 const filledStyle = {
   backgroundColor: theme.colors.greyMedium,
-  width: 4,
+  width: 2,
   borderRadius: 2,
 }
 
 const dottedStyle = {
-  width: 4,
-  borderLeftWidth: 4,
+  width: 2,
+  borderLeftWidth: 2,
   borderLeftColor: theme.colors.greyMedium,
   borderStyle: 'dotted',
 }

@@ -6,13 +6,13 @@ import { FirstOrLastProps, StepVariantProps } from 'features/profile/types'
 import { getSpacing } from 'ui/theme'
 
 import { StepProps } from '../Step/Step'
-import { DOT_SIZE, VerticalStepper } from '../VerticalStepper/VerticalStepper'
+import { VerticalStepper } from '../VerticalStepper/VerticalStepper'
 
 export type InternalStepProps = StepProps & FirstOrLastProps & StepVariantProps
 
 export function InternalStep({ variant, children, isFirst, isLast }: InternalStepProps) {
   return (
-    <Wrapper isFirst={isFirst}>
+    <Wrapper>
       <View>
         <VerticalStepper variant={variant} isFirst={isFirst} isLast={isLast} />
       </View>
@@ -21,19 +21,12 @@ export function InternalStep({ variant, children, isFirst, isLast }: InternalSte
   )
 }
 
-/**
- * Margins are here to compensate the fact that dots in VerticalStepper
- * are too close one to other when Step components are one below others.
- */
-
-const Wrapper = styled.View<FirstOrLastProps>(({ isFirst }) => ({
+const Wrapper = styled.View({
   flexGrow: 1,
   flexDirection: 'row',
   gap: getSpacing(2),
-  marginTop: isFirst ? 0 : -DOT_SIZE,
-}))
+})
 
 const Content = styled.View({
   flexGrow: 1,
-  marginTop: DOT_SIZE,
 })
