@@ -12,6 +12,7 @@ import { useCookies } from 'features/cookies/helpers/useCookies'
 import { CookiesConsent } from 'features/cookies/types'
 import { eventMonitoring } from 'libs/monitoring'
 import { storage } from 'libs/storage'
+import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, flushAllPromisesWithAct, renderHook, superFlushWithAct, waitFor } from 'tests/utils'
 
 jest.mock('features/auth/context/AuthContext')
@@ -43,7 +44,7 @@ describe('useCookies', () => {
 
   describe('state', () => {
     it('should be undefined by default', async () => {
-      const { result } = renderHook(useCookies)
+      const { result } = renderUseCookies()
       const { cookiesConsent } = result.current
 
       expect(cookiesConsent).toEqual({ state: ConsentState.LOADING })
@@ -53,7 +54,7 @@ describe('useCookies', () => {
     })
 
     it('should write state', async () => {
-      const { result } = renderHook(useCookies)
+      const { result } = renderUseCookies()
       const { setCookiesConsent } = result.current
 
       await flushAllPromisesWithAct()
@@ -82,14 +83,14 @@ describe('useCookies', () => {
         userId: FAKE_USER_ID,
       })
 
-      renderHook(useCookies)
+      renderUseCookies()
       await superFlushWithAct()
 
       expect(mockStartTrackingAcceptedCookies).not.toHaveBeenCalled()
     })
 
     it('should save cookies consent in the storage', async () => {
-      const { result } = renderHook(useCookies)
+      const { result } = renderUseCookies()
       const { setCookiesConsent } = result.current
 
       await act(async () => {
@@ -125,7 +126,7 @@ describe('useCookies', () => {
         },
       })
 
-      const { result } = renderHook(useCookies)
+      const { result } = renderUseCookies()
 
       await waitFor(() => {
         expect(result.current.cookiesConsent).toEqual({
@@ -151,7 +152,7 @@ describe('useCookies', () => {
         },
       })
 
-      renderHook(useCookies)
+      renderUseCookies()
 
       await waitFor(() => {
         expect(mockStartTrackingAcceptedCookies).toHaveBeenCalledWith(ALL_OPTIONAL_COOKIES)
@@ -168,7 +169,7 @@ describe('useCookies', () => {
           refused: [],
         },
       })
-      const { result } = renderHook(useCookies)
+      const { result } = renderUseCookies()
       const { setCookiesConsent } = result.current
 
       await act(async () => {
@@ -195,7 +196,7 @@ describe('useCookies', () => {
         },
       })
 
-      renderHook(useCookies)
+      renderUseCookies()
       await superFlushWithAct()
 
       const cookiesConsent = await storage.readObject(COOKIES_CONSENT_KEY)
@@ -207,7 +208,7 @@ describe('useCookies', () => {
 
     describe('user ID', () => {
       it('can set user ID', async () => {
-        const { result } = renderHook(useCookies)
+        const { result } = renderUseCookies()
         const { setCookiesConsent, setUserId } = result.current
         await act(async () => {
           await setCookiesConsent({
@@ -239,7 +240,7 @@ describe('useCookies', () => {
         mockUseAuthContext.mockReturnValueOnce({
           user: { id: FAKE_USER_ID },
         })
-        const { result } = renderHook(useCookies)
+        const { result } = renderUseCookies()
         const { setCookiesConsent, setUserId } = result.current
         await act(async () => {
           await setUserId(FAKE_USER_ID)
@@ -268,7 +269,7 @@ describe('useCookies', () => {
       })
 
       it('store user ID when user has not give his cookie consent with no consent', async () => {
-        const { result } = renderHook(useCookies)
+        const { result } = renderUseCookies()
         const { setUserId } = result.current
 
         await act(async () => {
@@ -284,7 +285,7 @@ describe('useCookies', () => {
       })
 
       it('dont send user consent when user not give cookies consent', async () => {
-        const { result } = renderHook(useCookies)
+        const { result } = renderUseCookies()
         const { setUserId } = result.current
 
         await act(async () => {
@@ -295,7 +296,7 @@ describe('useCookies', () => {
       })
 
       it('should overwrite user ID when setting another user ID', async () => {
-        const { result } = renderHook(useCookies)
+        const { result } = renderUseCookies()
         const { setCookiesConsent, setUserId } = result.current
         await act(async () => {
           await setCookiesConsent({
@@ -332,7 +333,7 @@ describe('useCookies', () => {
 
   describe('log API', () => {
     it('should persist cookies consent', async () => {
-      const { result } = renderHook(useCookies)
+      const { result } = renderUseCookies()
       const { setCookiesConsent } = result.current
 
       await act(async () => {
@@ -355,7 +356,7 @@ describe('useCookies', () => {
     })
 
     it('should persist user ID', async () => {
-      const { result } = renderHook(useCookies)
+      const { result } = renderUseCookies()
       const { setCookiesConsent, setUserId } = result.current
       await act(async () => {
         await setCookiesConsent({
@@ -382,7 +383,7 @@ describe('useCookies', () => {
     })
 
     it('should not log cookies consent choice when user logs in with same account', async () => {
-      const { result } = renderHook(useCookies)
+      const { result } = renderUseCookies()
       const { setCookiesConsent, setUserId } = result.current
       await act(async () => {
         await setCookiesConsent({
@@ -416,7 +417,7 @@ describe('useCookies', () => {
       })
 
       it('should not throw errors', async () => {
-        const { result } = renderHook(useCookies)
+        const { result } = renderUseCookies()
         const { setCookiesConsent } = result.current
 
         await flushAllPromisesWithAct()
@@ -434,7 +435,7 @@ describe('useCookies', () => {
       })
 
       it('should notify sentry', async () => {
-        const { result } = renderHook(useCookies)
+        const { result } = renderUseCookies()
         const { setCookiesConsent } = result.current
 
         await act(async () => {
@@ -455,7 +456,7 @@ describe('useCookies', () => {
   it('should set once device ID per device', async () => {
     v4.mockReturnValueOnce('testUuidV4-first')
     v4.mockReturnValueOnce('testUuidV4-second')
-    const { result } = renderHook(useCookies)
+    const { result } = renderUseCookies()
     const { setCookiesConsent } = result.current
 
     await act(async () => {
@@ -472,6 +473,7 @@ describe('useCookies', () => {
     })
 
     const cookiesConsent = await storage.readObject(COOKIES_CONSENT_KEY)
+
     expect(cookiesConsent).toEqual({
       buildVersion: Package.build,
       deviceId: 'testUuidV4-first',
@@ -484,3 +486,9 @@ describe('useCookies', () => {
     })
   })
 })
+
+const renderUseCookies = () =>
+  renderHook(useCookies, {
+    /* eslint-disable local-rules/no-react-query-provider-hoc */
+    wrapper: ({ children }) => reactQueryProviderHOC(children),
+  })

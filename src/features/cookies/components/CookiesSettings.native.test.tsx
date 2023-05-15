@@ -4,6 +4,7 @@ import { cookiesInfo } from 'features/cookies/components/cookiesInfo'
 import { CookiesSettings } from 'features/cookies/components/CookiesSettings'
 import { CookieCategoriesEnum } from 'features/cookies/enums'
 import { analytics } from 'libs/analytics'
+import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { fireEvent, render, screen, waitFor } from 'tests/utils'
 
 jest.mock('features/profile/api/useUpdateProfileMutation')
@@ -47,12 +48,15 @@ describe('<CookiesSettings/>', () => {
 
 const renderCookiesSettings = () =>
   render(
-    <CookiesSettings
-      settingsCookiesChoice={{
-        marketing: false,
-        performance: false,
-        customization: false,
-      }}
-      setSettingsCookiesChoice={jest.fn()}
-    />
+    // eslint-disable-next-line local-rules/no-react-query-provider-hoc
+    reactQueryProviderHOC(
+      <CookiesSettings
+        settingsCookiesChoice={{
+          marketing: false,
+          performance: false,
+          customization: false,
+        }}
+        setSettingsCookiesChoice={jest.fn()}
+      />
+    )
   )

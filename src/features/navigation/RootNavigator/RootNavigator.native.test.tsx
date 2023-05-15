@@ -3,6 +3,7 @@ import React from 'react'
 
 import { useMustUpdateApp } from 'features/forceUpdate/helpers/useMustUpdateApp'
 import { useSplashScreenContext } from 'libs/splashscreen'
+import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { render, screen } from 'tests/utils'
 
 import { RootNavigator } from './RootNavigator'
@@ -75,8 +76,11 @@ describe('ForceUpdate display logic', () => {
 
 function renderRootNavigator() {
   render(
-    <NavigationContainer>
-      <RootNavigator />
-    </NavigationContainer>
+    // eslint-disable-next-line local-rules/no-react-query-provider-hoc
+    reactQueryProviderHOC(
+      <NavigationContainer>
+        <RootNavigator />
+      </NavigationContainer>
+    )
   )
 }
