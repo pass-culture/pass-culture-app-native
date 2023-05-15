@@ -420,10 +420,8 @@ describe('useCookies', () => {
         const { result } = renderUseCookies()
         const { setCookiesConsent } = result.current
 
-        await flushAllPromisesWithAct()
-
         let promise
-        act(() => {
+        await act(async () => {
           promise = setCookiesConsent({
             mandatory: COOKIES_BY_CATEGORY.essential,
             accepted: ALL_OPTIONAL_COOKIES,
