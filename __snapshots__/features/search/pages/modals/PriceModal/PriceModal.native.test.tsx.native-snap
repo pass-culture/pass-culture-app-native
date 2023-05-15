@@ -545,7 +545,7 @@ exports[`<PriceModal/> should render modal correctly after animation and with en
                         "userSelect": "auto",
                       }
                     }
-                    testID="Interrupteur-onlyFreeOffers"
+                    testID="Interrupteur onlyFreeOffers"
                   >
                     <View
                       active={false}
@@ -735,7 +735,7 @@ exports[`<PriceModal/> should render modal correctly after animation and with en
                         "userSelect": "auto",
                       }
                     }
-                    testID="Interrupteur-limitCreditSearch"
+                    testID="Interrupteur limitCreditSearch"
                   >
                     <View
                       active={false}

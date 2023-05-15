@@ -145,7 +145,7 @@ describe('Profile component', () => {
         mockPermissionState = GeolocPermissionState.GRANTED
         renderProfile()
 
-        const geolocSwitch = screen.getByTestId('Interrupteur')
+        const geolocSwitch = screen.getByTestId('Interrupteur Partager ma position')
         const positionErrorMessage = screen.queryByText(
           `La géolocalisation est temporairement inutilisable sur ton téléphone`
         )
@@ -169,7 +169,7 @@ describe('Profile component', () => {
         mockPermissionState = GeolocPermissionState.DENIED
         renderProfile()
 
-        const geolocSwitch = screen.getByTestId('Interrupteur')
+        const geolocSwitch = screen.getByTestId('Interrupteur Partager ma position')
         expect(geolocSwitch.parent?.props.accessibilityState.checked).toBeFalsy()
       })
 
@@ -180,7 +180,7 @@ describe('Profile component', () => {
           wrapper: FavoritesWrapper,
         })
 
-        fireEvent.press(screen.getByTestId('Interrupteur'))
+        fireEvent.press(screen.getByTestId('Interrupteur Partager ma position'))
 
         expect(mockFavoriteDispatch).toBeCalledWith({
           type: 'SET_SORT_BY',

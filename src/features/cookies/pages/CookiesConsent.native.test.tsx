@@ -210,7 +210,9 @@ describe('<CookiesConsent/>', () => {
       const chooseCookies = screen.getByText('Choisir les cookies')
       fireEvent.press(chooseCookies)
 
-      const performanceSwitch = screen.getByTestId('Interrupteur-performance')
+      const performanceSwitch = screen.getByTestId(
+        'Interrupteur Enregistrer des statistiques de navigation'
+      )
       fireEvent.press(performanceSwitch)
 
       const saveChoice = screen.getByText('Enregistrer mes choix')
@@ -251,7 +253,9 @@ describe('<CookiesConsent/>', () => {
       const chooseCookies = screen.getByText('Choisir les cookies')
       fireEvent.press(chooseCookies)
 
-      const performanceSwitch = screen.getByTestId('Interrupteur-performance')
+      const performanceSwitch = screen.getByTestId(
+        'Interrupteur Enregistrer des statistiques de navigation'
+      )
       fireEvent.press(performanceSwitch)
 
       const saveChoice = screen.getByText('Enregistrer mes choix')
@@ -268,7 +272,9 @@ describe('<CookiesConsent/>', () => {
       const chooseCookies = screen.getByText('Choisir les cookies')
       fireEvent.press(chooseCookies)
 
-      const performanceSwitch = screen.getByTestId('Interrupteur-performance')
+      const performanceSwitch = screen.getByTestId(
+        'Interrupteur Enregistrer des statistiques de navigation'
+      )
       fireEvent.press(performanceSwitch)
 
       const saveChoice = screen.getByText('Enregistrer mes choix')
@@ -302,7 +308,7 @@ describe('<CookiesConsent/>', () => {
       const chooseCookies = screen.getByText('Choisir les cookies')
       fireEvent.press(chooseCookies)
 
-      const customizationSwitch = screen.getByTestId('Interrupteur-customization')
+      const customizationSwitch = screen.getByTestId('Interrupteur Personnaliser ta navigation')
       fireEvent.press(customizationSwitch)
 
       const saveChoice = screen.getByText('Enregistrer mes choix')

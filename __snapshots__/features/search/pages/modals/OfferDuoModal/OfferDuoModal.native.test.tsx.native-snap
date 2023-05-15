@@ -482,7 +482,7 @@ exports[`<OfferDuoModal/> should render modal correctly after animation and with
                         "userSelect": "auto",
                       }
                     }
-                    testID="Interrupteur-limitDuoOfferSearch"
+                    testID="Interrupteur limitDuoOfferSearch"
                   >
                     <View
                       active={false}

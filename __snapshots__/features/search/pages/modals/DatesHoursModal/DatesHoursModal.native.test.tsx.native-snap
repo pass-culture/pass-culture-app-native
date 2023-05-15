@@ -491,7 +491,7 @@ exports[`<DatesHoursModal/> should render modal correctly after animation and wi
                           "userSelect": "auto",
                         }
                       }
-                      testID="Interrupteur-date"
+                      testID="Interrupteur date"
                     >
                       <View
                         active={false}
@@ -696,7 +696,7 @@ exports[`<DatesHoursModal/> should render modal correctly after animation and wi
                           "userSelect": "auto",
                         }
                       }
-                      testID="Interrupteur-hour"
+                      testID="Interrupteur hour"
                     >
                       <View
                         active={false}

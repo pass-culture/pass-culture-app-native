@@ -118,7 +118,7 @@ describe('<OfferDuoModal/>', () => {
     it('should toggle offerIsDuo', () => {
       const renderAPI = renderOfferDuoModal()
 
-      const toggle = renderAPI.getByTestId('Interrupteur-limitDuoOfferSearch')
+      const toggle = renderAPI.getByTestId('Interrupteur limitDuoOfferSearch')
 
       expect(toggle.props.accessibilityState).toEqual({
         disabled: false,
@@ -138,7 +138,7 @@ describe('<OfferDuoModal/>', () => {
     it('should disable duo offer when click on reset button', () => {
       const renderAPI = renderOfferDuoModal()
 
-      const toggle = renderAPI.getByTestId('Interrupteur-limitDuoOfferSearch')
+      const toggle = renderAPI.getByTestId('Interrupteur limitDuoOfferSearch')
 
       fireEvent.press(toggle)
 
@@ -191,7 +191,7 @@ describe('<OfferDuoModal/>', () => {
         filterBehaviour: FilterBehaviour.APPLY_WITHOUT_SEARCHING,
       })
 
-      const toggle = screen.getByTestId('Interrupteur-limitDuoOfferSearch')
+      const toggle = screen.getByTestId('Interrupteur limitDuoOfferSearch')
 
       fireEvent.press(toggle)
 
@@ -217,7 +217,7 @@ describe('<OfferDuoModal/>', () => {
   describe('with "Rechercher" button', () => {
     it('should navigate to Search results when selecting DUO offer and pressing button', async () => {
       renderOfferDuoModal()
-      const toggle = screen.getByTestId('Interrupteur-limitDuoOfferSearch')
+      const toggle = screen.getByTestId('Interrupteur limitDuoOfferSearch')
       const button = screen.getByText('Rechercher')
 
       fireEvent.press(toggle)

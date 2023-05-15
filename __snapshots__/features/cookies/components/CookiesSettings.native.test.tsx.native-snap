@@ -135,7 +135,7 @@ Array [
               "userSelect": "auto",
             }
           }
-          testID="Interrupteur"
+          testID="Interrupteur Tout accepter"
         >
           <View
             active={false}
@@ -263,7 +263,7 @@ Array [
               "userSelect": "auto",
             }
           }
-          testID="Interrupteur-customization"
+          testID="Interrupteur Personnaliser ta navigation"
         >
           <View
             active={false}
@@ -605,7 +605,7 @@ Array [
               "userSelect": "auto",
             }
           }
-          testID="Interrupteur-performance"
+          testID="Interrupteur Enregistrer des statistiques de navigation"
         >
           <View
             active={false}
@@ -947,7 +947,7 @@ Array [
               "userSelect": "auto",
             }
           }
-          testID="Interrupteur-marketing"
+          testID="Interrupteur Mesurer l’efficacité de nos publicités"
         >
           <View
             active={false}
@@ -1289,7 +1289,7 @@ Array [
               "userSelect": "auto",
             }
           }
-          testID="Interrupteur-essential"
+          testID="Interrupteur Assurer la sécurité, prévenir la fraude et corriger les bugs"
         >
           <View
             active={true}

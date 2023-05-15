@@ -44,7 +44,7 @@ describe('<ConsentSettings/>', () => {
   it('should persist cookies consent information when user partially accepts cookies', async () => {
     const { getByText, getByTestId } = renderConsentSettings()
 
-    const performanceSwitch = getByTestId('Interrupteur-performance')
+    const performanceSwitch = getByTestId('Interrupteur Enregistrer des statistiques de navigation')
     fireEvent.press(performanceSwitch)
 
     const saveChoice = getByText('Enregistrer mes choix')
@@ -79,7 +79,7 @@ describe('<ConsentSettings/>', () => {
   it('should call startTrackingAcceptedCookies with cookies performance if user accepts performance cookies', async () => {
     const { getByTestId, getByText } = renderConsentSettings()
 
-    const performanceSwitch = getByTestId('Interrupteur-performance')
+    const performanceSwitch = getByTestId('Interrupteur Enregistrer des statistiques de navigation')
     fireEvent.press(performanceSwitch)
 
     const saveChoice = getByText('Enregistrer mes choix')
@@ -93,7 +93,7 @@ describe('<ConsentSettings/>', () => {
   it('should log analytics if performance cookies are accepted', async () => {
     const { getByText, getByTestId } = renderConsentSettings()
 
-    const performanceSwitch = getByTestId('Interrupteur-performance')
+    const performanceSwitch = getByTestId('Interrupteur Enregistrer des statistiques de navigation')
     fireEvent.press(performanceSwitch)
 
     const saveChoice = getByText('Enregistrer mes choix')
