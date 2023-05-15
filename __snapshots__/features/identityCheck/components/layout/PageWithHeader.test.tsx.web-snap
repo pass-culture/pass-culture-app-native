@@ -93,6 +93,7 @@ exports[`<PageWithHeader/> should render correctly 1`] = `
         >
           <div
             className="css-view-175oi2r r-alignItems-1awozwy r-flexBasis-1iusvr4 r-flexDirection-18u37iz r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-justifyContent-1h0z5md r-paddingLeft-f727ji r-paddingRight-j2kj52"
+            data-testid="back-button-container"
             dir={null}
           >
             <button
@@ -134,6 +135,7 @@ exports[`<PageWithHeader/> should render correctly 1`] = `
           </h1>
           <div
             className="css-view-175oi2r r-alignItems-1awozwy r-flexBasis-1iusvr4 r-flexDirection-18u37iz r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-justifyContent-17s6mgv r-paddingLeft-f727ji r-paddingRight-j2kj52"
+            data-testid="close-button-container"
             dir={null}
           />
         </div>
