@@ -20,16 +20,22 @@ import { Trash } from 'ui/svg/icons/Trash'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 import { SECTION_ROW_ICON_SIZE } from 'ui/theme/constants'
 
+async function logModifyMail() {
+  return await analytics.logModifyMail()
+}
+
 export function PersonalData() {
   const { user } = useAuthContext()
   const enableChangeEmail = useFeatureFlag(RemoteStoreFeatureFlags.WIP_CHANGE_EMAIL)
   const fullname = String(user?.firstName + ' ' + user?.lastName).trim()
 
-  const onEmailChange = () => {
-    analytics.logModifyMail()
-  }
-
   const { hasCurrentEmailChange } = useCheckHasCurrentEmailChange()
+
+  const onEmailChange = () => {
+    void (async () => {
+      await logModifyMail()
+    })()
+  }
 
   const updateEmailRoute = useMemo<RootNavigateParams[0]>(() => {
     if (hasCurrentEmailChange) return 'TrackEmailChange'
