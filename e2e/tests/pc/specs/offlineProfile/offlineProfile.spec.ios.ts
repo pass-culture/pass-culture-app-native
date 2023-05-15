@@ -2,18 +2,23 @@ import { TabBar } from '../../features/navigation/TabBar'
 import ConsentSettingsScreen from '../../features/profile/ConsentSettingsScreen'
 import NotificationScreen from '../../features/profile/NotificationScreen'
 import ProfileScreen from '../../features/profile/ProfileScreen'
+import FirstLaunch from '../../helpers/FirstLaunch'
 import { didFirstLaunch } from '../../helpers/utils/error'
 import { scrollToBottom } from '../../helpers/utils/scrollToBottom'
 import { DefaultTheme, getTheme } from '../../helpers/utils/theme'
 
 describe('Profile', () => {
-  let ok = true
+  let ok = false
   let tabBar: TabBar
   let theme: DefaultTheme
 
   before(async () => {
     theme = getTheme(await browser.getWindowSize())
     tabBar = new TabBar(theme)
+  })
+
+  it('should first launch app', async () => {
+    ok = await FirstLaunch.init(tabBar)
   })
 
   it('should click on profile', async () => {
