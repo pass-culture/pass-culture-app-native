@@ -13,6 +13,8 @@ import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
 import { useGoBack } from 'features/navigation/useGoBack'
 import { useDeviceInfo } from 'features/profile/helpers/TrustedDevices/useDeviceInfo'
 import { analytics } from 'libs/analytics'
+import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
+import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { AsyncError, eventMonitoring } from 'libs/monitoring'
 import { BottomCardContentContainer } from 'ui/components/BottomCardContentContainer'
 import { BottomContentPage } from 'ui/components/BottomContentPage'
@@ -68,6 +70,7 @@ type Props = StackScreenProps<RootStackParamList, 'SignupForm'>
 export const SignupForm: FunctionComponent<Props> = ({ navigation, route }) => {
   const signUpApiCall = useSignUp()
   const trustedDevice = useDeviceInfo()
+  const enableTrustedDevice = useFeatureFlag(RemoteStoreFeatureFlags.WIP_ENABLE_TRUSTED_DEVICE)
 
   const [stepIndex, setStepIndex] = React.useState(0)
   const [signupData, setSignupData] = useState<SignupData>({
@@ -108,7 +111,7 @@ export const SignupForm: FunctionComponent<Props> = ({ navigation, route }) => {
       const signupResponse = await signUpApiCall({
         ...signupData,
         token,
-        trustedDevice,
+        trustedDevice: enableTrustedDevice ? trustedDevice : undefined,
       })
       if (!signupResponse?.isSuccess) {
         throw new AsyncError('NETWORK_REQUEST_FAILED')

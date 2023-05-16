@@ -9,6 +9,7 @@ import { PreValidationSignupStepProps } from 'features/auth/types'
 import { mockGoBack } from 'features/navigation/__mocks__/useGoBack'
 import { RootStackParamList } from 'features/navigation/RootNavigator/types'
 import { analytics } from 'libs/analytics'
+import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { fireEvent, render, screen } from 'tests/utils'
 import { theme } from 'theme'
 import { TouchableOpacity } from 'ui/components/TouchableOpacity'
@@ -41,6 +42,8 @@ jest.mock('./AcceptCgu/AcceptCgu', () => ({
 
 const getModelSpy = jest.spyOn(DeviceInfo, 'getModel')
 const getSystemNameSpy = jest.spyOn(DeviceInfo, 'getSystemName')
+
+const useFeatureFlagSpy = jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockReturnValue(false)
 
 const defaultProps = {
   navigation,
@@ -173,7 +176,13 @@ describe('<SignupForm />', () => {
     expect(analytics.logContinueSetBirthday).toHaveBeenCalledTimes(1)
   })
 
-  it('should create account when clicking on AcceptCgu button with trustedDevice', async () => {
+  it('should create account when clicking on AcceptCgu button with trustedDevice when feature flag is active', async () => {
+    useFeatureFlagSpy.mockReturnValueOnce(true) // mock for email step render
+    useFeatureFlagSpy.mockReturnValueOnce(true) // mock for device info rerender
+    useFeatureFlagSpy.mockReturnValueOnce(true) // mock for password step render
+    useFeatureFlagSpy.mockReturnValueOnce(true) // mock for set birthday step render
+    useFeatureFlagSpy.mockReturnValueOnce(true) // mock for accept cgu step render
+
     getModelSpy.mockReturnValueOnce('iPhone 13')
     getSystemNameSpy.mockReturnValueOnce('iOS')
 
@@ -199,6 +208,30 @@ describe('<SignupForm />', () => {
           os: 'iOS',
           source: 'iPhone 13',
         },
+      },
+      { credentials: 'omit' }
+    )
+  })
+
+  it('should create account when clicking on AcceptCgu button without trustedDevice when feature flag is disabled', async () => {
+    render(<SignupForm {...defaultProps} />)
+
+    fireEvent.press(await screen.findByTestId('goToNextStep'))
+    fireEvent.press(screen.getByTestId('goToNextStep'))
+    fireEvent.press(screen.getByTestId('goToNextStep'))
+    await fireEvent.press(screen.getByTestId('signUp'))
+
+    expect(api.postnativev1account).toHaveBeenCalledWith(
+      {
+        email: '',
+        marketingEmailSubscription: false,
+        password: '',
+        birthdate: '',
+        postalCode: '',
+        token: 'fakeToken',
+        appsFlyerPlatform: 'ios',
+        appsFlyerUserId: 'uniqueCustomerId',
+        trustedDevice: undefined,
       },
       { credentials: 'omit' }
     )

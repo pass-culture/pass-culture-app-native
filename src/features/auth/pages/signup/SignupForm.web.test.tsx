@@ -4,6 +4,7 @@ import { SafeAreaProvider } from 'react-native-safe-area-context'
 
 import { navigation } from '__mocks__/@react-navigation/native'
 import { RootStackParamList } from 'features/navigation/RootNavigator/types'
+import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { checkAccessibilityFor, render, screen } from 'tests/utils/web'
 
 import { SignupForm } from './SignupForm'
@@ -23,6 +24,8 @@ const defaultProps = {
 
 const realUseState = React.useState
 const mockUseState = jest.spyOn(React, 'useState')
+
+jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockReturnValue(false)
 
 describe('<SignupForm/>', () => {
   describe('Accessibility', () => {
