@@ -47,6 +47,4 @@ export enum AmplitudeEvent {
   SET_SCHOOL_TYPE_CLICKED = 'set_school_type_clicked',
   SET_STATUS_CLICKED = 'set_status_clicked',
   STEPPER_CLICKED = 'stepper_clicked',
-  USER_ACCEPTED_TERMS_CLICKED_FRONT = 'user_accepted_terms_clicked_front',
-  USER_SET_EMAIL_CLICKED_FRONT = 'user_set_email_clicked_front',
 }

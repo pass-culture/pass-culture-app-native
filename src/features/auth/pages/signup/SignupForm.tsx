@@ -108,8 +108,6 @@ export const SignupForm: FunctionComponent<Props> = ({ navigation, route }) => {
         throw new AsyncError('NETWORK_REQUEST_FAILED')
       }
       navigation.navigate('SignupConfirmationEmailSent', { email: signupData.email })
-
-      analytics.logAcceptedTerms()
     } catch (error) {
       ;(error as Error).name = 'SignUpError'
       eventMonitoring.captureException(error)
