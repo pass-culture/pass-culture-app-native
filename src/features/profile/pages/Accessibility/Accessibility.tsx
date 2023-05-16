@@ -43,9 +43,7 @@ const sections = [
 export function Accessibility() {
   return (
     <PageProfileSection title="Accessibilité">
-      <AccessibilityList items={sections} Separator={<StyledSeparator />} />
+      <AccessibilityList items={sections} Separator={<Separator />} />
     </PageProfileSection>
   )
 }
-
-const StyledSeparator = styled(Separator)({})
