@@ -15,34 +15,6 @@ import { BicolorPhoneIcon } from 'ui/svg/icons/BicolorPhoneIcon'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 import { useCustomSafeInsets } from 'ui/theme/useCustomSafeInsets'
 
-type GetTrackEmailStepsProps = {
-  currentEmail: string
-  newEmail: string
-}
-
-export const getTrackEmailSteps = ({ currentEmail }: GetTrackEmailStepsProps) => ({
-  sent: {
-    title: 'Envoie ta demande',
-    icon: <BicolorPhoneIcon />,
-    subtitle: '',
-  },
-  confirm: {
-    title: 'Confirme ta demande',
-    icon: <BicolorEmailIcon />,
-    subtitle: `Depuis l’email envoyé à ${currentEmail}`,
-  },
-  validate: {
-    title: 'Validation de ta nouvelle adresse',
-    icon: <BicolorEmailIcon />,
-    subtitle: 'Sur ta nouvelle adresse blabla',
-  },
-  connect: {
-    title: 'Connexion sur ta nouvelle adresse',
-    icon: <BicolorNewIcon />,
-    subtitle: '',
-  },
-})
-
 const HEADER_HEIGHT = getSpacing(8)
 
 export function TrackEmailChange() {
@@ -77,20 +49,35 @@ export function TrackEmailChange() {
       <Spacer.Column numberOfSpaces={10} />
       <StyledContainer>
         <StyledStepList activeStepIndex={currentStep}>
-          {Object.entries(getTrackEmailSteps({ currentEmail, newEmail: '' })).map(
-            ([stepKey, emailStep], index) => {
-              return (
-                <Step key={stepKey}>
-                  <StyledStepCard
-                    type={getStepCardType(index)}
-                    title={emailStep.title}
-                    subtitle={index === currentStep ? emailStep.subtitle : undefined}
-                    icon={emailStep.icon}
-                  />
-                </Step>
-              )
-            }
-          )}
+          <Step>
+            <StyledStepCard
+              type={getStepCardType(0)}
+              title="Envoie ta demande"
+              icon={<BicolorPhoneIcon />}
+            />
+          </Step>
+          <Step>
+            <StyledStepCard
+              type={getStepCardType(1)}
+              title="Confirme ta demande"
+              subtitle={currentStep === 1 ? `Depuis l’email envoyé à ${currentEmail}` : undefined}
+              icon={<BicolorEmailIcon />}
+            />
+          </Step>
+          <Step>
+            <StyledStepCard
+              type={getStepCardType(2)}
+              title="Validation de ta nouvelle adresse"
+              icon={<BicolorEmailIcon />}
+            />
+          </Step>
+          <Step>
+            <StyledStepCard
+              type={getStepCardType(3)}
+              title="Connexion sur ta nouvelle adresse"
+              icon={<BicolorNewIcon />}
+            />
+          </Step>
         </StyledStepList>
       </StyledContainer>
     </StyledScrollViewContainer>

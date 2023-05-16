@@ -45,28 +45,17 @@ export const VerticalStepper = memo(function VerticalStepper({
 
       if (variant === StepVariant.complete)
         return (
-          <IconWrapper>
-            <ValidateIcon
-              color={theme.colors.greenValid}
-              color2={theme.colors.white}
-              size={20}
-              {...props}
-            />
-          </IconWrapper>
+          <ValidateIcon
+            color={theme.colors.greenValid}
+            color2={theme.colors.white}
+            size={20}
+            {...props}
+          />
         )
 
-      if (variant === StepVariant.in_progress)
-        return (
-          <IconWrapper>
-            <InProgressIcon {...props} />
-          </IconWrapper>
-        )
+      if (variant === StepVariant.in_progress) return <InProgressIcon {...props} />
 
-      return (
-        <IconWrapper>
-          <FutureIcon {...props} />
-        </IconWrapper>
-      )
+      return <FutureIcon {...props} />
     },
     [iconComponent, theme.colors.greenValid, theme.colors.white, variant]
   )
@@ -119,14 +108,15 @@ export const VerticalStepper = memo(function VerticalStepper({
   return (
     <Wrapper testID={`vertical-stepper-${variant}`}>
       <TopLine testID="top-line" isFirst={isFirst} isLast={isLast} />
-      <Icon testID="icon" />
+      <IconWrapper>
+        <Icon testID="icon" />
+      </IconWrapper>
       <BottomLine testID="bottom-line" isFirst={isFirst} isLast={isLast} />
     </Wrapper>
   )
 })
 
 const Wrapper = styled.View({
-  flexDirection: 'column',
   alignItems: 'center',
   flex: 1,
   overflow: 'hidden',
