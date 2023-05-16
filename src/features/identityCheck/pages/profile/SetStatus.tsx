@@ -10,6 +10,7 @@ import { useProfileOptions } from 'features/identityCheck/api/useProfileOptions'
 import { CenteredTitle } from 'features/identityCheck/components/CenteredTitle'
 import { PageWithHeader } from 'features/identityCheck/components/layout/PageWithHeader'
 import { useSubscriptionContext } from 'features/identityCheck/context/SubscriptionContextProvider'
+import { useNavigateForwardToStepper } from 'features/identityCheck/helpers/useNavigateForwardToStepper'
 import { useSaveStep } from 'features/identityCheck/pages/helpers/useSaveStep'
 import { activityHasSchoolTypes } from 'features/identityCheck/pages/profile/helpers/schoolTypes'
 import { IdentityCheckStep } from 'features/identityCheck/types'
@@ -35,6 +36,7 @@ export const SetStatus = () => {
   const saveStep = useSaveStep()
   const { mutateAsync: patchProfile, isLoading } = usePatchProfile()
   const { navigate } = useNavigation<UseNavigationType>()
+  const { navigateForwardToStepper } = useNavigateForwardToStepper()
   const titleID = uuidv4()
   const { control, handleSubmit, watch } = useForm<StatusForm>({
     mode: 'onChange',
@@ -76,10 +78,10 @@ export const SetStatus = () => {
       } else {
         await patchProfile()
         await saveStep(IdentityCheckStep.PROFILE)
-        navigate('Stepper')
+        navigateForwardToStepper()
       }
     },
-    [dispatch, hasSchoolTypes, navigate, patchProfile, saveStep]
+    [dispatch, hasSchoolTypes, navigate, patchProfile, saveStep, navigateForwardToStepper]
   )
 
   return (
