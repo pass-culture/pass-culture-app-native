@@ -58,7 +58,6 @@ const SIGNUP_STEP_CONFIG: SignupStepConfig[] = [
     name: PreValidationSignupStep.CGU,
     headerTitle: 'CGU & Données',
     Component: AcceptCgu,
-    tracker: analytics.logContinueCGU,
   },
 ]
 const SIGNUP_STEP_CONFIG_MAX_INDEX = SIGNUP_STEP_CONFIG.length - 1

@@ -5,6 +5,7 @@ import { navigate } from '__mocks__/@react-navigation/native'
 import { AuthContext } from 'features/auth/context/AuthContext'
 import { contactSupport } from 'features/auth/helpers/contactSupport'
 import * as NavigationHelpers from 'features/navigation/helpers/openUrl'
+import { analytics } from 'libs/analytics'
 import { env } from 'libs/environment'
 import { captureMonitoringError } from 'libs/monitoring'
 import { useNetInfoContext as useNetInfoContextDefault } from 'libs/network/NetInfoWrapper'
@@ -73,6 +74,15 @@ describe('<AcceptCgu/>', () => {
     await waitFor(() => {
       expect(Linking.openURL).toHaveBeenCalledWith(env.PRIVACY_POLICY_LINK)
     })
+  })
+
+  it('should log analytics when pressing on signup button', () => {
+    simulateConnectedNetwork()
+    const renderAPI = renderAcceptCGU()
+
+    fireEvent.press(renderAPI.getByText('Accepter et s’inscrire'))
+
+    expect(analytics.logContinueCGU).toHaveBeenCalledTimes(1)
   })
 
   it("should NOT open reCAPTCHA challenge's modal when there is no network", async () => {

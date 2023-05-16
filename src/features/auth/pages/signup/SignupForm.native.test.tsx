@@ -182,24 +182,6 @@ describe('<SignupForm />', () => {
     })
   })
 
-  it('should call logContinueCGU when clicking on AcceptCgu button', async () => {
-    render(<SignupForm {...defaultProps} />)
-
-    fireEvent.press(screen.getByTestId('goToNextStep'))
-    fireEvent.press(screen.getByTestId('goToNextStep'))
-    fireEvent.press(screen.getByTestId('goToNextStep'))
-
-    screen.getByText('AcceptCgu')
-    fireEvent.press(screen.getByTestId('goToNextStep'))
-
-    await waitFor(() => {
-      expect(analytics.logContinueSetEmail).toHaveBeenCalledTimes(1)
-      expect(analytics.logContinueSetPassword).toHaveBeenCalledTimes(1)
-      expect(analytics.logContinueSetBirthday).toHaveBeenCalledTimes(1)
-      expect(analytics.logContinueCGU).toHaveBeenCalledTimes(1)
-    })
-  })
-
   it('should log analytics when clicking on close icon', () => {
     render(<SignupForm {...defaultProps} />)
 
