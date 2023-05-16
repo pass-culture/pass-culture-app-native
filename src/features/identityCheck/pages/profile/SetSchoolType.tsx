@@ -1,4 +1,3 @@
-import { useNavigation } from '@react-navigation/native'
 import React, { useEffect, useState } from 'react'
 import { View } from 'react-native'
 import { v4 as uuidv4 } from 'uuid'
@@ -9,13 +8,13 @@ import { useProfileOptions } from 'features/identityCheck/api/useProfileOptions'
 import { CenteredTitle } from 'features/identityCheck/components/CenteredTitle'
 import { PageWithHeader } from 'features/identityCheck/components/layout/PageWithHeader'
 import { useSubscriptionContext } from 'features/identityCheck/context/SubscriptionContextProvider'
+import { useNavigateForwardToStepper } from 'features/identityCheck/helpers/useNavigateForwardToStepper'
 import { useSaveStep } from 'features/identityCheck/pages/helpers/useSaveStep'
 import {
   getSchoolTypesIdsFromActivity,
   mapSchoolTypeIdToLabelAndDescription,
 } from 'features/identityCheck/pages/profile/helpers/schoolTypes'
 import { IdentityCheckStep } from 'features/identityCheck/types'
-import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { analytics } from 'libs/analytics'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
@@ -29,7 +28,7 @@ export const SetSchoolType = () => {
   const { schoolTypes, activities } = useProfileOptions()
   const saveStep = useSaveStep()
   const { mutateAsync: patchProfile, isLoading } = usePatchProfile()
-  const { navigate } = useNavigation<UseNavigationType>()
+  const { navigateForwardToStepper } = useNavigateForwardToStepper()
 
   const { dispatch, profile } = useSubscriptionContext()
   const [selectedSchoolTypeId, setSelectedSchoolTypeId] = useState<SchoolTypesIdEnum | null>(
@@ -47,7 +46,7 @@ export const SetSchoolType = () => {
 
     await patchProfile()
     await saveStep(IdentityCheckStep.PROFILE)
-    navigate('Stepper')
+    navigateForwardToStepper()
   }
 
   const activitySchoolTypes = activities
