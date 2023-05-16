@@ -6,7 +6,7 @@ import { PageHeaderSecondary } from 'ui/components/headers/PageHeaderSecondary'
 import { Spacer, Typo } from 'ui/theme'
 
 export const TrustedDevice = () => {
-  const { id, source, os } = useDeviceInfo()
+  const deviceInfo = useDeviceInfo()
 
   return (
     <React.Fragment>
@@ -15,9 +15,9 @@ export const TrustedDevice = () => {
       <Container>
         <Typo.Title3>Informations du device actuel</Typo.Title3>
         <Spacer.Column numberOfSpaces={2} />
-        <Data title="Device ID" data={id} />
-        <Data title="Device Model ou Browser" data={source} />
-        <Data title="Device OS" data={os} />
+        <Data title="Device ID" data={deviceInfo?.deviceId} />
+        <Data title="Device Model ou Browser" data={deviceInfo?.deviceId} />
+        <Data title="Device OS" data={deviceInfo?.deviceId} />
       </Container>
     </React.Fragment>
   )

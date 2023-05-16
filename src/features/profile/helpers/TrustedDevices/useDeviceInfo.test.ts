@@ -22,7 +22,7 @@ describe('useDeviceInfo', () => {
     const { result } = renderHook(useDeviceInfo)
 
     const expectedInfo: DeviceInformation = {
-      id: 'ad7b7b5a169641e27cadbdb35adad9c4ca23099a',
+      deviceId: 'ad7b7b5a169641e27cadbdb35adad9c4ca23099a',
       source: 'iPhone 13',
       os: 'iOS',
     }
@@ -40,7 +40,7 @@ describe('useDeviceInfo', () => {
     const { result } = renderHook(useDeviceInfo)
 
     const expectedInfo: DeviceInformation = {
-      id: 'ad7b7b5a169641e27cadbdb35adad9c4ca23099a',
+      deviceId: 'ad7b7b5a169641e27cadbdb35adad9c4ca23099a',
       source: 'Chrome',
       os: 'Mac OS',
     }
