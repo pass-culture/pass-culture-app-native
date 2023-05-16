@@ -22,7 +22,9 @@ describe('<CookiesSettings/>', () => {
 
     await screen.findAllByRole('checkbox')
 
-    const essentialToggle = screen.getByTestId('Interrupteur-essential')
+    const essentialToggle = screen.getByTestId(
+      'Interrupteur Assurer la sécurité, prévenir la fraude et corriger les bugs'
+    )
 
     expect(essentialToggle.props.accessibilityState).toEqual({
       disabled: true,

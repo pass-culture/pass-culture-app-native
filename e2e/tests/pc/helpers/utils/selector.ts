@@ -7,6 +7,10 @@ export function find(selector: string) {
   return $(flags.isWeb ? `[data-testid="${selector}"]` : `~${selector}`)
 }
 
+export function findElementInPage(selector: string, pageName: string) {
+  return find(pageName).$(flags.isWeb ? `[data-testid="${selector}"]` : `~${selector}`)
+}
+
 export function findAll(selector: string) {
   return $$(flags.isWeb ? `[data-testid="${selector}"]` : `~${selector}`)
 }

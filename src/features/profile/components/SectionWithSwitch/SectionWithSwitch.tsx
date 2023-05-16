@@ -34,6 +34,7 @@ export const SectionWithSwitch: React.FC<Props> = (props: Props) => {
     accessibilityDescribedBy,
   } = props
   const Icon = icon
+
   return (
     <Container>
       <TitleContainer toggleLabel={!!toggleLabel}>
@@ -61,6 +62,7 @@ export const SectionWithSwitch: React.FC<Props> = (props: Props) => {
           disabled={disabled}
           accessibilityLabelledBy={labelID}
           accessibilityDescribedBy={accessibilityDescribedBy}
+          testID={title}
         />
       </FilterSwitchLabelContainer>
     </Container>

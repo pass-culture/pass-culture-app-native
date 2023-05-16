@@ -133,7 +133,7 @@ describe('<DatesHoursModal/>', () => {
       }
       renderDatesHoursModal()
 
-      const toggleDate = screen.getByTestId('Interrupteur-date')
+      const toggleDate = screen.getByTestId('Interrupteur date')
       await act(async () => {
         fireEvent.press(toggleDate)
       })
@@ -152,7 +152,7 @@ describe('<DatesHoursModal/>', () => {
       }
       renderDatesHoursModal()
 
-      const toggleHour = screen.getByTestId('Interrupteur-hour')
+      const toggleHour = screen.getByTestId('Interrupteur hour')
       await act(async () => {
         fireEvent.press(toggleHour)
       })
@@ -175,7 +175,7 @@ describe('<DatesHoursModal/>', () => {
         }
         renderDatesHoursModal()
 
-        const toggleDate = screen.getByTestId('Interrupteur-date')
+        const toggleDate = screen.getByTestId('Interrupteur date')
         await act(async () => {
           fireEvent.press(toggleDate)
         })
@@ -204,7 +204,7 @@ describe('<DatesHoursModal/>', () => {
         }
         renderDatesHoursModal()
 
-        const toggleDate = screen.getByTestId('Interrupteur-date')
+        const toggleDate = screen.getByTestId('Interrupteur date')
         await act(async () => {
           fireEvent.press(toggleDate)
         })
@@ -230,7 +230,7 @@ describe('<DatesHoursModal/>', () => {
       }
       renderDatesHoursModal()
 
-      const toggleHour = screen.getByTestId('Interrupteur-hour')
+      const toggleHour = screen.getByTestId('Interrupteur hour')
       await act(async () => {
         fireEvent.press(toggleHour)
       })
@@ -256,7 +256,7 @@ describe('<DatesHoursModal/>', () => {
       }
       renderDatesHoursModal()
 
-      const toggleHour = screen.getByTestId('Interrupteur-hour')
+      const toggleHour = screen.getByTestId('Interrupteur hour')
       await act(async () => {
         fireEvent.press(toggleHour)
       })
@@ -294,7 +294,7 @@ describe('<DatesHoursModal/>', () => {
       }
       renderDatesHoursModal()
 
-      const toggleDate = screen.getByTestId('Interrupteur-date')
+      const toggleDate = screen.getByTestId('Interrupteur date')
 
       await act(async () => {
         expect(toggleDate.props.accessibilityState.checked).toEqual(true)
@@ -308,7 +308,7 @@ describe('<DatesHoursModal/>', () => {
       }
       renderDatesHoursModal()
 
-      const toggleHour = screen.getByTestId('Interrupteur-date')
+      const toggleHour = screen.getByTestId('Interrupteur date')
 
       await act(async () => {
         expect(toggleHour.props.accessibilityState.checked).toEqual(true)
@@ -353,7 +353,7 @@ describe('<DatesHoursModal/>', () => {
         filterBehaviour: FilterBehaviour.APPLY_WITHOUT_SEARCHING,
       })
 
-      const toggleDate = screen.getByTestId('Interrupteur-date')
+      const toggleDate = screen.getByTestId('Interrupteur date')
       await act(async () => {
         fireEvent.press(toggleDate)
       })
@@ -417,7 +417,7 @@ describe('<DatesHoursModal/>', () => {
           }
           renderDatesHoursModal()
 
-          const toggleDate = screen.getByTestId('Interrupteur-date')
+          const toggleDate = screen.getByTestId('Interrupteur date')
           await act(async () => {
             fireEvent.press(toggleDate)
           })
@@ -449,7 +449,7 @@ describe('<DatesHoursModal/>', () => {
         }
         renderDatesHoursModal()
 
-        const toggleHour = screen.getByTestId('Interrupteur-hour')
+        const toggleHour = screen.getByTestId('Interrupteur hour')
         await act(async () => {
           fireEvent.press(toggleHour)
         })

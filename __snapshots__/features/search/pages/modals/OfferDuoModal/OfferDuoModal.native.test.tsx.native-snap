@@ -227,6 +227,7 @@ exports[`<OfferDuoModal/> should render modal correctly after animation and with
                       },
                     ]
                   }
+                  testID="back-button-container"
                 />
                 <Text
                   nativeID="testUuidV4"
@@ -261,6 +262,7 @@ exports[`<OfferDuoModal/> should render modal correctly after animation and with
                       },
                     ]
                   }
+                  testID="close-button-container"
                 >
                   <View
                     accessibilityLabel="Fermer"
@@ -480,7 +482,7 @@ exports[`<OfferDuoModal/> should render modal correctly after animation and with
                         "userSelect": "auto",
                       }
                     }
-                    testID="Interrupteur-limitDuoOfferSearch"
+                    testID="Interrupteur limitDuoOfferSearch"
                   >
                     <View
                       active={false}

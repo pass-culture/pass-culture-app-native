@@ -66,7 +66,7 @@ describe('NotificationSettings', () => {
 
       await screen.findByText('Autoriser l’envoi d’e-mails')
 
-      const pushSwitch = screen.getAllByTestId('Interrupteur')[1]
+      const pushSwitch = screen.getByTestId('Interrupteur Autoriser les notifications marketing')
       expect(pushSwitch.parent?.props.accessibilityState.checked).toBeTruthy()
     })
 
@@ -89,7 +89,7 @@ describe('NotificationSettings', () => {
 
         await screen.findByText('Autoriser l’envoi d’e-mails')
 
-        const pushSwitch = screen.getAllByTestId('Interrupteur')[1]
+        const pushSwitch = screen.getByTestId('Interrupteur Autoriser l’envoi d’e-mails')
         expect(pushSwitch.parent?.props.accessibilityState.checked).toBeFalsy()
       }
     )
@@ -106,7 +106,7 @@ describe('NotificationSettings', () => {
 
       await screen.findByText('Autoriser l’envoi d’e-mails')
 
-      const toggleSwitch = screen.getAllByTestId('Interrupteur')[1]
+      const toggleSwitch = screen.getByTestId('Interrupteur Autoriser les notifications marketing')
       fireEvent.press(toggleSwitch)
 
       expect(toggleSwitch.parent?.props.accessibilityState.checked).toBeTruthy()
@@ -123,7 +123,7 @@ describe('NotificationSettings', () => {
 
       await screen.findByText('Autoriser l’envoi d’e-mails')
 
-      const toggleSwitch = screen.getAllByTestId('Interrupteur')[1]
+      const toggleSwitch = screen.getByTestId('Interrupteur Autoriser l’envoi d’e-mails')
       fireEvent.press(toggleSwitch)
 
       expect(toggleSwitch.parent?.props.accessibilityState.checked).toBeFalsy()
@@ -142,7 +142,7 @@ describe('NotificationSettings', () => {
 
         await screen.findByText('Autoriser l’envoi d’e-mails')
 
-        const toggleSwitch = screen.getAllByTestId('Interrupteur')[1]
+        const toggleSwitch = screen.getByTestId('Interrupteur Autoriser l’envoi d’e-mails')
         fireEvent.press(toggleSwitch)
 
         expect(screen.queryAllByTestId('modal-notifications-permission-modal')).toBeTruthy()
@@ -186,7 +186,7 @@ describe('NotificationSettings', () => {
 
       await screen.findByText('Autoriser l’envoi d’e-mails')
 
-      const toggleSwitch = screen.getAllByTestId('Interrupteur')[0]
+      const toggleSwitch = screen.getByTestId('Interrupteur Autoriser l’envoi d’e-mails')
       fireEvent.press(toggleSwitch)
 
       const saveButton = screen.getByTestId('Enregistrer les modifications')
@@ -220,7 +220,7 @@ describe('NotificationSettings', () => {
 
       await screen.findByText('Autoriser l’envoi d’e-mails')
 
-      const toggleSwitch = screen.getAllByTestId('Interrupteur')[1]
+      const toggleSwitch = screen.getByTestId('Interrupteur Autoriser les notifications marketing')
       fireEvent.press(toggleSwitch)
 
       const saveButton = screen.getByTestId('Enregistrer les modifications')
