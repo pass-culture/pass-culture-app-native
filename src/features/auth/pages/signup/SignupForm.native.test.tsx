@@ -3,6 +3,7 @@ import React from 'react'
 import { View, Text } from 'react-native'
 
 import { navigation } from '__mocks__/@react-navigation/native'
+import { api } from 'api/api'
 import { PreValidationSignupStepProps } from 'features/auth/types'
 import { mockGoBack } from 'features/navigation/__mocks__/useGoBack'
 import { RootStackParamList } from 'features/navigation/RootNavigator/types'
@@ -23,6 +24,7 @@ const mockSignupComponent = (name: string, props: PreValidationSignupStepProps) 
   )
 }
 
+jest.mock('api/api')
 jest.mock('./SetEmail/SetEmail', () => ({
   SetEmail: (props: PreValidationSignupStepProps) => mockSignupComponent('SetEmail', props),
 }))
@@ -165,6 +167,29 @@ describe('<SignupForm />', () => {
     expect(analytics.logContinueSetEmail).toHaveBeenCalledTimes(1)
     expect(analytics.logContinueSetPassword).toHaveBeenCalledTimes(1)
     expect(analytics.logContinueSetBirthday).toHaveBeenCalledTimes(1)
+  })
+
+  it('should create account when clicking on AcceptCgu button', async () => {
+    render(<SignupForm {...defaultProps} />)
+
+    fireEvent.press(await screen.findByTestId('goToNextStep'))
+    fireEvent.press(screen.getByTestId('goToNextStep'))
+    fireEvent.press(screen.getByTestId('goToNextStep'))
+    await fireEvent.press(screen.getByTestId('signUp'))
+
+    expect(api.postnativev1account).toHaveBeenCalledWith(
+      {
+        email: '',
+        marketingEmailSubscription: false,
+        password: '',
+        birthdate: '',
+        postalCode: '',
+        token: 'fakeToken',
+        appsFlyerPlatform: 'ios',
+        appsFlyerUserId: 'uniqueCustomerId',
+      },
+      { credentials: 'omit' }
+    )
   })
 
   it('should log analytics when clicking on close icon', async () => {
