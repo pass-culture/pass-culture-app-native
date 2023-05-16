@@ -56,8 +56,6 @@ type OfferIdOrVenueId = { offerId: number; venueId?: never } | { venueId: number
 export const logEventAnalytics = {
   logAcceptNotifications: () =>
     analytics.logEvent({ firebase: AnalyticsEvent.ACCEPT_NOTIFICATIONS }),
-  logAcceptedTerms: () =>
-    analytics.logEvent({ amplitude: AmplitudeEvent.USER_ACCEPTED_TERMS_CLICKED_FRONT }),
   logAccountCreatedStartClicked: () =>
     analytics.logEvent({ amplitude: AmplitudeEvent.ACCOUNT_CREATED_START_CLICKED }),
   logAccountDeletion: () => analytics.logEvent({ firebase: AnalyticsEvent.ACCOUNT_DELETION }),

@@ -5,6 +5,7 @@ import { v4 as uuidv4 } from 'uuid'
 import { useSettingsContext } from 'features/auth/context/SettingsContext'
 import { contactSupport } from 'features/auth/helpers/contactSupport'
 import { PreValidationSignupStepProps } from 'features/auth/types'
+import { analytics } from 'libs/analytics'
 import { env } from 'libs/environment'
 import { captureMonitoringError } from 'libs/monitoring'
 import { useNetInfoContext } from 'libs/network/NetInfoWrapper'
@@ -82,6 +83,7 @@ export const AcceptCgu: FC<PreValidationSignupStepProps> = ({ signUp }) => {
   )
 
   const onSubmit = useCallback(() => {
+    analytics.logContinueCGU()
     settings?.isRecaptchaEnabled ? openReCaptchaChallenge() : handleSignup('dummyToken')
   }, [settings?.isRecaptchaEnabled, openReCaptchaChallenge, handleSignup])
 

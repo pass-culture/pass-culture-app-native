@@ -1,7 +1,6 @@
 import { logEventAnalytics as actualLogEventAnalytics } from '../logEventAnalytics'
 
 export const logEventAnalytics: typeof actualLogEventAnalytics = {
-  logAcceptedTerms: jest.fn(),
   logAcceptNotifications: jest.fn(),
   logAccountCreatedStartClicked: jest.fn(),
   logAccountDeletion: jest.fn(),
