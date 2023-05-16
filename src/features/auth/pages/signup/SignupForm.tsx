@@ -11,6 +11,7 @@ import { PreValidationSignupStepProps, SignupData } from 'features/auth/types'
 import { RootStackParamList } from 'features/navigation/RootNavigator/types'
 import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
 import { useGoBack } from 'features/navigation/useGoBack'
+import { useDeviceInfo } from 'features/profile/helpers/TrustedDevices/useDeviceInfo'
 import { analytics } from 'libs/analytics'
 import { AsyncError, eventMonitoring } from 'libs/monitoring'
 import { BottomCardContentContainer } from 'ui/components/BottomCardContentContainer'
@@ -66,6 +67,7 @@ type Props = StackScreenProps<RootStackParamList, 'SignupForm'>
 
 export const SignupForm: FunctionComponent<Props> = ({ navigation, route }) => {
   const signUpApiCall = useSignUp()
+  const trustedDevice = useDeviceInfo()
 
   const [stepIndex, setStepIndex] = React.useState(0)
   const [signupData, setSignupData] = useState<SignupData>({
@@ -103,7 +105,11 @@ export const SignupForm: FunctionComponent<Props> = ({ navigation, route }) => {
 
   async function signUp(token: string) {
     try {
-      const signupResponse = await signUpApiCall({ ...signupData, token })
+      const signupResponse = await signUpApiCall({
+        ...signupData,
+        token,
+        trustedDevice,
+      })
       if (!signupResponse?.isSuccess) {
         throw new AsyncError('NETWORK_REQUEST_FAILED')
       }

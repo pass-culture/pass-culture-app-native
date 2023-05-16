@@ -1,6 +1,7 @@
 import { StackScreenProps } from '@react-navigation/stack'
 import React from 'react'
 import { View, Text } from 'react-native'
+import DeviceInfo from 'react-native-device-info'
 
 import { navigation } from '__mocks__/@react-navigation/native'
 import { api } from 'api/api'
@@ -37,6 +38,9 @@ jest.mock('./SetBirthday/SetBirthday', () => ({
 jest.mock('./AcceptCgu/AcceptCgu', () => ({
   AcceptCgu: (props: PreValidationSignupStepProps) => mockSignupComponent('AcceptCgu', props),
 }))
+
+const getModelSpy = jest.spyOn(DeviceInfo, 'getModel')
+const getSystemNameSpy = jest.spyOn(DeviceInfo, 'getSystemName')
 
 const defaultProps = {
   navigation,
@@ -169,7 +173,10 @@ describe('<SignupForm />', () => {
     expect(analytics.logContinueSetBirthday).toHaveBeenCalledTimes(1)
   })
 
-  it('should create account when clicking on AcceptCgu button', async () => {
+  it('should create account when clicking on AcceptCgu button with trustedDevice', async () => {
+    getModelSpy.mockReturnValueOnce('iPhone 13')
+    getSystemNameSpy.mockReturnValueOnce('iOS')
+
     render(<SignupForm {...defaultProps} />)
 
     fireEvent.press(await screen.findByTestId('goToNextStep'))
@@ -187,6 +194,11 @@ describe('<SignupForm />', () => {
         token: 'fakeToken',
         appsFlyerPlatform: 'ios',
         appsFlyerUserId: 'uniqueCustomerId',
+        trustedDevice: {
+          deviceId: 'ad7b7b5a169641e27cadbdb35adad9c4ca23099a',
+          os: 'iOS',
+          source: 'iPhone 13',
+        },
       },
       { credentials: 'omit' }
     )
