@@ -3,20 +3,13 @@ import { useEffect, useState } from 'react'
 import { browserName } from 'react-device-detect'
 import DeviceInfo from 'react-native-device-info'
 
+import { TrustedDevice } from 'api/gen'
 import { getUniqueId } from 'libs/react-native-device-info/getUniqueId'
 
-export interface DeviceInformations {
-  id?: string
-  os?: string
-  source?: string
-}
+export type DeviceInformation = TrustedDevice
 
-export const useDeviceInfos = (): DeviceInformations => {
-  const [deviceInfos, setDeviceInfos] = useState<DeviceInformations>({
-    id: undefined,
-    os: undefined,
-    source: undefined,
-  })
+export const useDeviceInfo = (): DeviceInformation | undefined => {
+  const [deviceInfo, setDeviceInfo] = useState<DeviceInformation | undefined>()
 
   useEffect(() => {
     const getDeviceInfo = async () => {
@@ -24,8 +17,8 @@ export const useDeviceInfos = (): DeviceInformations => {
       const osNative = DeviceInfo.getSystemName()
       const modelNative = DeviceInfo.getModel()
 
-      setDeviceInfos({
-        id: deviceId,
+      setDeviceInfo({
+        deviceId,
         os: osNative !== 'unknown' ? osNative : osWeb,
         source: modelNative !== 'unknown' ? modelNative : browserName,
       })
@@ -33,5 +26,5 @@ export const useDeviceInfos = (): DeviceInformations => {
     getDeviceInfo()
   }, [])
 
-  return deviceInfos
+  return deviceInfo
 }

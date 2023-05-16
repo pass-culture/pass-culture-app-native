@@ -118,6 +118,11 @@ export interface AccountRequest {
    * @memberof AccountRequest
    */
   token: string
+  /**
+   * @type {TrustedDevice}
+   * @memberof AccountRequest
+   */
+  trustedDevice?: TrustedDevice | null
 }
 /**
  * An enumeration.
@@ -2674,6 +2679,27 @@ export interface SubscriptionStepperResponse {
    * @memberof SubscriptionStepperResponse
    */
   title: string
+}
+/**
+ * @export
+ * @interface TrustedDevice
+ */
+export interface TrustedDevice {
+  /**
+   * @type {string}
+   * @memberof TrustedDevice
+   */
+  deviceId: string
+  /**
+   * @type {string}
+   * @memberof TrustedDevice
+   */
+  os?: string | null
+  /**
+   * @type {string}
+   * @memberof TrustedDevice
+   */
+  source?: string | null
 }
 /**
  * @export

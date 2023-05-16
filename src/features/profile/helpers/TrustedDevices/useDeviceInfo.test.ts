@@ -1,9 +1,9 @@
 import DeviceInfo from 'react-native-device-info'
 
 import {
-  DeviceInformations,
-  useDeviceInfos,
-} from 'features/profile/helpers/TrustedDevices/useDeviceInfos'
+  DeviceInformation,
+  useDeviceInfo,
+} from 'features/profile/helpers/TrustedDevices/useDeviceInfo'
 import { renderHook, waitFor } from 'tests/utils'
 
 jest.mock('react-native-device-info')
@@ -19,10 +19,10 @@ describe('useDeviceInfo', () => {
     getModelSpy.mockReturnValueOnce('iPhone 13')
     getBaseOsSpy.mockResolvedValueOnce('unknown')
     getSystemNameSpy.mockReturnValueOnce('iOS')
-    const { result } = renderHook(useDeviceInfos)
+    const { result } = renderHook(useDeviceInfo)
 
-    const expectedInfo: DeviceInformations = {
-      id: 'ad7b7b5a169641e27cadbdb35adad9c4ca23099a',
+    const expectedInfo: DeviceInformation = {
+      deviceId: 'ad7b7b5a169641e27cadbdb35adad9c4ca23099a',
       source: 'iPhone 13',
       os: 'iOS',
     }
@@ -37,10 +37,10 @@ describe('useDeviceInfo', () => {
     getModelSpy.mockReturnValueOnce('unknown')
     getSystemNameSpy.mockReturnValueOnce('unknown')
     getBaseOsSpy.mockResolvedValueOnce('Mac OS')
-    const { result } = renderHook(useDeviceInfos)
+    const { result } = renderHook(useDeviceInfo)
 
-    const expectedInfo: DeviceInformations = {
-      id: 'ad7b7b5a169641e27cadbdb35adad9c4ca23099a',
+    const expectedInfo: DeviceInformation = {
+      deviceId: 'ad7b7b5a169641e27cadbdb35adad9c4ca23099a',
       source: 'Chrome',
       os: 'Mac OS',
     }
