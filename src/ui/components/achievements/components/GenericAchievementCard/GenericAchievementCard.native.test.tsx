@@ -303,7 +303,7 @@ describe('<GenericAchievementCard />', () => {
       />
     )
 
-    const button = getByText('Passer')
+    const button = getByText('Plus tard')
     fireEvent.press(button)
 
     expect(skip).toHaveBeenCalledTimes(1)

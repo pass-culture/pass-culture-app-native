@@ -12,8 +12,9 @@ import { useMediaQuery } from 'libs/react-responsive/useMediaQuery'
 import { theme } from 'theme'
 import { AnimationObject } from 'ui/animations/type'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
-import { ButtonPrimaryWhite } from 'ui/components/buttons/ButtonPrimaryWhite'
+import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
 import { Spacer } from 'ui/components/spacer/Spacer'
+import { ClockFilled } from 'ui/svg/icons/ClockFilled'
 import { getSpacing, Typo } from 'ui/theme'
 import { LINE_BREAK } from 'ui/theme/constants'
 import { useGrid } from 'ui/theme/grid'
@@ -156,7 +157,7 @@ export const GenericAchievementCard: FunctionComponent<AchievementCardProps> = (
         </AnimatedView>
         {!props.lastIndex && (
           <FlexContainer marginTop={getSpacing(grid({ default: 4, sm: 2 }, 'height'))}>
-            <ButtonPrimaryWhite wording="Passer" onPress={props.skip} />
+            <ButtonTertiaryBlack wording="Plus tard" onPress={props.skip} icon={ClockFilled} />
           </FlexContainer>
         )}
       </BottomButtonsContainer>
