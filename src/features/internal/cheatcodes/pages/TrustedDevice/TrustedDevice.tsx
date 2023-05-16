@@ -1,12 +1,12 @@
 import React from 'react'
 import styled from 'styled-components/native'
 
-import { useDeviceInfos } from 'features/profile/helpers/TrustedDevices/useDeviceInfos'
+import { useDeviceInfo } from 'features/profile/helpers/TrustedDevices/useDeviceInfo'
 import { PageHeaderSecondary } from 'ui/components/headers/PageHeaderSecondary'
 import { Spacer, Typo } from 'ui/theme'
 
 export const TrustedDevice = () => {
-  const { id, source, os } = useDeviceInfos()
+  const { id, source, os } = useDeviceInfo()
 
   return (
     <React.Fragment>

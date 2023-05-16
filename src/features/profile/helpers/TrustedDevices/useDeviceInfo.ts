@@ -5,14 +5,14 @@ import DeviceInfo from 'react-native-device-info'
 
 import { getUniqueId } from 'libs/react-native-device-info/getUniqueId'
 
-export interface DeviceInformations {
+export interface DeviceInformation {
   id?: string
   os?: string
   source?: string
 }
 
-export const useDeviceInfos = (): DeviceInformations => {
-  const [deviceInfos, setDeviceInfos] = useState<DeviceInformations>({
+export const useDeviceInfo = (): DeviceInformation => {
+  const [deviceInfo, setDeviceInfo] = useState<DeviceInformation>({
     id: undefined,
     os: undefined,
     source: undefined,
@@ -24,7 +24,7 @@ export const useDeviceInfos = (): DeviceInformations => {
       const osNative = DeviceInfo.getSystemName()
       const modelNative = DeviceInfo.getModel()
 
-      setDeviceInfos({
+      setDeviceInfo({
         id: deviceId,
         os: osNative !== 'unknown' ? osNative : osWeb,
         source: modelNative !== 'unknown' ? modelNative : browserName,
@@ -33,5 +33,5 @@ export const useDeviceInfos = (): DeviceInformations => {
     getDeviceInfo()
   }, [])
 
-  return deviceInfos
+  return deviceInfo
 }
