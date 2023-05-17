@@ -16,7 +16,7 @@ export const mergeOffersAndVenuesData = ({ offersResultList, venuesResultList }:
         hits: venuesResultList.data.hits[i],
         nbHits: venuesResultList.data.hits.length,
         moduleId: venuesResultList.data.moduleId[i],
-      } as ModuleData)
+      })
     }
   }
 

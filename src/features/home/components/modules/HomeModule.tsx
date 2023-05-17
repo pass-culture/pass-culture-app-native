@@ -41,7 +41,7 @@ const UnmemoizedModule = ({
         cover={item.cover ?? null}
         index={index}
         homeEntryId={homeEntryId}
-        data={data as ModuleData | undefined}
+        data={data}
       />
     )
   }
@@ -53,7 +53,7 @@ const UnmemoizedModule = ({
         display={item.displayParameters}
         homeEntryId={homeEntryId}
         index={index}
-        data={data as ModuleData | undefined}
+        data={data}
       />
     )
   }
