@@ -37,4 +37,9 @@ describe('TrackEmailChange', () => {
 
     expect(screen.getByText('Depuis l’email envoyé à ')).toHaveTextContent('')
   })
+
+  it('should display the user email if is defined', () => {
+    render(<TrackEmailChange />)
+    expect(screen.getByText('Depuis l’email envoyé à example@example.com')).toBeTruthy()
+  })
 })
