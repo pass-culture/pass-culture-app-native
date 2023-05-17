@@ -38,7 +38,7 @@ describe('<EighteenBirthdayCard />', () => {
 
     renderEighteenBirthdayCard()
 
-    fireEvent.press(screen.getByText('Vérifier mon identité'))
+    fireEvent.press(screen.getByText('Confirmer mes informations'))
 
     expect(mockedNavigateToNextBeneficiaryValidationStep).toHaveBeenCalledTimes(1)
   })

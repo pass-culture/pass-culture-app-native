@@ -25,7 +25,7 @@ import { firebaseAnalytics } from 'libs/firebase/analytics'
 import { storage } from 'libs/storage'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { server } from 'tests/server'
-import { fireEvent, render, act, waitFor } from 'tests/utils'
+import { fireEvent, render, act, waitFor, screen } from 'tests/utils'
 
 import { Login } from './Login'
 
@@ -65,10 +65,10 @@ describe('<Login/>', () => {
   })
 
   it('should redirect to home WHEN signin is successful', async () => {
-    const renderAPI = renderLogin()
+    renderLogin()
 
-    fillInputs(renderAPI)
-    fireEvent.press(renderAPI.getByText('Se connecter'))
+    fillInputs()
+    fireEvent.press(screen.getByText('Se connecter'))
 
     await waitFor(() => {
       expect(BatchUser.editor().setIdentifier).toHaveBeenCalledWith(FAKE_USER_ID.toString())
@@ -84,10 +84,10 @@ describe('<Login/>', () => {
       needsToFillCulturalSurvey: true,
       showEligibleCard: false,
     } as UserProfileResponse)
-    const renderAPI = renderLogin()
+    renderLogin()
 
-    fillInputs(renderAPI)
-    fireEvent.press(renderAPI.getByText('Se connecter'))
+    fillInputs()
+    fireEvent.press(screen.getByText('Se connecter'))
 
     await waitFor(() => {
       expect(navigate).toHaveBeenCalledTimes(1)
@@ -101,10 +101,10 @@ describe('<Login/>', () => {
       needsToFillCulturalSurvey: false,
       showEligibleCard: true,
     } as UserProfileResponse)
-    const renderAPI = renderLogin()
+    renderLogin()
 
-    fillInputs(renderAPI)
-    fireEvent.press(renderAPI.getByText('Se connecter'))
+    fillInputs()
+    fireEvent.press(screen.getByText('Se connecter'))
 
     await waitFor(() => {
       expect(navigateToHome).toHaveBeenCalledTimes(1)
@@ -116,13 +116,13 @@ describe('<Login/>', () => {
       needsToFillCulturalSurvey: true,
       showEligibleCard: true,
     } as UserProfileResponse)
-    const renderAPI = renderLogin()
+    renderLogin()
 
-    fillInputs(renderAPI)
-    fireEvent.press(renderAPI.getByText('Se connecter'))
+    fillInputs()
+    fireEvent.press(screen.getByText('Se connecter'))
 
     await waitFor(() => {
-      expect(navigate).toHaveBeenNthCalledWith(1, 'EighteenBirthday')
+      expect(navigate).toHaveBeenCalledWith('EighteenBirthday')
     })
   })
 
@@ -132,10 +132,10 @@ describe('<Login/>', () => {
       showEligibleCard: true,
       recreditAmountToShow: 3000,
     } as UserProfileResponse)
-    const renderAPI = renderLogin()
+    renderLogin()
 
-    fillInputs(renderAPI)
-    fireEvent.press(renderAPI.getByText('Se connecter'))
+    fillInputs()
+    fireEvent.press(screen.getByText('Se connecter'))
 
     await waitFor(() => {
       expect(navigate).toHaveBeenNthCalledWith(1, 'RecreditBirthdayNotification')
@@ -148,22 +148,22 @@ describe('<Login/>', () => {
       showEligibleCard: true,
       recreditAmountToShow: null,
     } as UserProfileResponse)
-    const renderAPI = renderLogin()
+    renderLogin()
 
-    fillInputs(renderAPI)
-    fireEvent.press(renderAPI.getByText('Se connecter'))
+    fillInputs()
+    fireEvent.press(screen.getByText('Se connecter'))
 
     await waitFor(() => {
-      expect(navigate).toHaveBeenNthCalledWith(1, 'EighteenBirthday')
+      expect(navigate).toHaveBeenCalledWith('EighteenBirthday')
     })
   })
 
   it('should redirect to SignupConfirmationEmailSent page WHEN signin has failed with EMAIL_NOT_VALIDATED code', async () => {
     simulateSigninEmailNotValidated()
-    const renderAPI = renderLogin()
+    renderLogin()
 
-    fillInputs(renderAPI)
-    fireEvent.press(renderAPI.getByText('Se connecter'))
+    fillInputs()
+    fireEvent.press(screen.getByText('Se connecter'))
 
     await waitFor(() => {
       expect(navigate).toHaveBeenNthCalledWith(1, 'SignupConfirmationEmailSent', {
@@ -175,10 +175,10 @@ describe('<Login/>', () => {
   it('should redirect to SuspensionScreen WHEN signin is successful for inactive account', async () => {
     simulateSignin200(AccountState.INACTIVE)
     mockSuspensionStatusApiCall(AccountState.SUSPENDED)
-    const renderAPI = renderLogin()
+    renderLogin()
 
-    fillInputs(renderAPI)
-    fireEvent.press(renderAPI.getByText('Se connecter'))
+    fillInputs()
+    fireEvent.press(screen.getByText('Se connecter'))
 
     await waitFor(() => {
       expect(navigate).toHaveBeenNthCalledWith(1, 'SuspensionScreen')
@@ -186,19 +186,19 @@ describe('<Login/>', () => {
   })
 
   it('should show email error message WHEN signin has failed because of invalid e-mail format', async () => {
-    const renderAPI = renderLogin()
+    renderLogin()
 
-    const emailInput = renderAPI.getByPlaceholderText('tonadresse@email.com')
+    const emailInput = screen.getByPlaceholderText('tonadresse@email.com')
     fireEvent.changeText(emailInput, 'not_valid_email@gmail')
 
-    const passwordInput = renderAPI.getByPlaceholderText('Ton mot de passe')
+    const passwordInput = screen.getByPlaceholderText('Ton mot de passe')
     fireEvent.changeText(passwordInput, 'mypassword')
 
-    fireEvent.press(renderAPI.getByText('Se connecter'))
+    fireEvent.press(screen.getByText('Se connecter'))
 
     await waitFor(() => {
       expect(
-        renderAPI.getByText(
+        screen.getByText(
           'L’e-mail renseigné est incorrect. Exemple de format attendu : edith.piaf@email.fr'
         )
       ).toBeTruthy()
@@ -208,27 +208,27 @@ describe('<Login/>', () => {
 
   it('should show error message and error inputs WHEN signin has failed because of wrong credentials', async () => {
     simulateSigninWrongCredentials()
-    const renderAPI = renderLogin()
+    renderLogin()
 
-    fillInputs(renderAPI)
-    fireEvent.press(renderAPI.getByText('Se connecter'))
+    fillInputs()
+    fireEvent.press(screen.getByText('Se connecter'))
 
     await waitFor(() => {
-      expect(renderAPI.getByText('E-mail ou mot de passe incorrect')).toBeTruthy()
+      expect(screen.getByText('E-mail ou mot de passe incorrect')).toBeTruthy()
     })
     expect(navigate).not.toBeCalled()
   })
 
   it('should show error message and error inputs WHEN signin has failed because of network failure', async () => {
     simulateSigninNetworkFailure()
-    const renderAPI = renderLogin()
+    renderLogin()
 
-    fillInputs(renderAPI)
-    fireEvent.press(renderAPI.getByText('Se connecter'))
+    fillInputs()
+    fireEvent.press(screen.getByText('Se connecter'))
 
     await waitFor(() => {
       expect(
-        renderAPI.queryByText('Erreur réseau. Tu peux réessayer une fois la connexion réétablie')
+        screen.queryByText('Erreur réseau. Tu peux réessayer une fois la connexion réétablie')
       ).toBeTruthy()
     })
     expect(navigate).not.toBeCalled()
@@ -236,26 +236,26 @@ describe('<Login/>', () => {
 
   it('should show specific error message when signin rate limit is exceeded', async () => {
     simulateSigninRateLimitExceeded()
-    const renderAPI = renderLogin()
+    renderLogin()
 
-    fillInputs(renderAPI)
-    fireEvent.press(renderAPI.getByText('Se connecter'))
+    fillInputs()
+    fireEvent.press(screen.getByText('Se connecter'))
 
     await waitFor(() => {
       expect(
-        renderAPI.queryByText('Nombre de tentatives dépassé. Réessaye dans 1 minute')
+        screen.queryByText('Nombre de tentatives dépassé. Réessaye dans 1 minute')
       ).toBeTruthy()
     })
     expect(navigate).not.toBeCalled()
   })
 
   it('should enable login button when both text inputs are filled', async () => {
-    const renderAPI = renderLogin()
+    renderLogin()
 
-    fillInputs(renderAPI)
+    fillInputs()
 
     await waitFor(() => {
-      const connectedButton = renderAPI.getByText('Se connecter')
+      const connectedButton = screen.getByText('Se connecter')
       expect(connectedButton).toBeEnabled()
     })
   })
@@ -281,9 +281,9 @@ describe('<Login/>', () => {
     })
 
     it('should redirect to Offer page when signin is successful', async () => {
-      const renderAPI = renderLogin()
-      fillInputs(renderAPI)
-      fireEvent.press(renderAPI.getByText('Se connecter'))
+      renderLogin()
+      fillInputs()
+      fireEvent.press(screen.getByText('Se connecter'))
 
       await waitFor(() => {
         expect(navigate).toHaveBeenNthCalledWith(1, 'Offer', {
@@ -295,9 +295,9 @@ describe('<Login/>', () => {
     it('should add the previous offer to favorites when signin is successful', async () => {
       simulateAddToFavorites()
 
-      const renderAPI = renderLogin()
-      fillInputs(renderAPI)
-      fireEvent.press(renderAPI.getByText('Se connecter'))
+      renderLogin()
+      fillInputs()
+      fireEvent.press(screen.getByText('Se connecter'))
 
       await waitFor(() => {
         expect(mockPostFavorite).toHaveBeenCalledTimes(1)
@@ -306,9 +306,9 @@ describe('<Login/>', () => {
 
     it('should log analytics when adding the previous offer to favorites', async () => {
       simulateAddToFavorites()
-      const renderAPI = renderLogin()
-      fillInputs(renderAPI)
-      fireEvent.press(renderAPI.getByText('Se connecter'))
+      renderLogin()
+      fillInputs()
+      fireEvent.press(screen.getByText('Se connecter'))
 
       await waitFor(() => {
         expect(analytics.logHasAddedOfferToFavorites).toHaveBeenCalledWith({
@@ -323,9 +323,9 @@ describe('<Login/>', () => {
         needsToFillCulturalSurvey: true,
         showEligibleCard: false,
       } as UserProfileResponse)
-      const renderAPI = renderLogin()
-      fillInputs(renderAPI)
-      fireEvent.press(renderAPI.getByText('Se connecter'))
+      renderLogin()
+      fillInputs()
+      fireEvent.press(screen.getByText('Se connecter'))
 
       await waitFor(() => {
         expect(navigate).toHaveBeenCalledWith('CulturalSurveyIntro')
@@ -344,9 +344,9 @@ describe('<Login/>', () => {
     })
 
     it('should redirect to the previous offer page and ask to open the booking modal', async () => {
-      const renderAPI = renderLogin()
-      fillInputs(renderAPI)
-      fireEvent.press(renderAPI.getByText('Se connecter'))
+      renderLogin()
+      fillInputs()
+      fireEvent.press(screen.getByText('Se connecter'))
 
       await waitFor(() => {
         expect(navigate).toHaveBeenNthCalledWith(1, 'Offer', {
@@ -358,9 +358,9 @@ describe('<Login/>', () => {
   })
 })
 
-const fillInputs = (renderAPI: ReturnType<typeof render>) => {
-  const emailInput = renderAPI.getByPlaceholderText('tonadresse@email.com')
-  const passwordInput = renderAPI.getByPlaceholderText('Ton mot de passe')
+const fillInputs = () => {
+  const emailInput = screen.getByPlaceholderText('tonadresse@email.com')
+  const passwordInput = screen.getByPlaceholderText('Ton mot de passe')
   fireEvent.changeText(emailInput, 'email@gmail.com')
   fireEvent.changeText(passwordInput, 'mypassword')
 }

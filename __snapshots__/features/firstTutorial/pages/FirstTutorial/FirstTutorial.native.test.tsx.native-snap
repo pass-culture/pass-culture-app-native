@@ -271,10 +271,10 @@ c’est...
                     style={
                       Array [
                         Object {
-                          "color": "#161617",
-                          "fontFamily": "Montserrat-Regular",
-                          "fontSize": 15,
-                          "lineHeight": 20,
+                          "color": "#696A6F",
+                          "fontFamily": "Montserrat-SemiBold",
+                          "fontSize": 12,
+                          "lineHeight": 16,
                           "textAlign": "center",
                         },
                       ]
@@ -873,10 +873,10 @@ et si tu as...
                     style={
                       Array [
                         Object {
-                          "color": "#161617",
-                          "fontFamily": "Montserrat-Regular",
-                          "fontSize": 15,
-                          "lineHeight": 20,
+                          "color": "#696A6F",
+                          "fontFamily": "Montserrat-SemiBold",
+                          "fontSize": 12,
+                          "lineHeight": 16,
                           "textAlign": "center",
                         },
                       ]
@@ -1033,10 +1033,10 @@ près de chez toi
                     style={
                       Array [
                         Object {
-                          "color": "#161617",
-                          "fontFamily": "Montserrat-Regular",
-                          "fontSize": 15,
-                          "lineHeight": 20,
+                          "color": "#696A6F",
+                          "fontFamily": "Montserrat-SemiBold",
+                          "fontSize": 12,
+                          "lineHeight": 16,
                           "textAlign": "center",
                         },
                       ]
@@ -1193,10 +1193,10 @@ quotidiennes
                     style={
                       Array [
                         Object {
-                          "color": "#161617",
-                          "fontFamily": "Montserrat-Regular",
-                          "fontSize": 15,
-                          "lineHeight": 20,
+                          "color": "#696A6F",
+                          "fontFamily": "Montserrat-SemiBold",
+                          "fontSize": 12,
+                          "lineHeight": 16,
                           "textAlign": "center",
                         },
                       ]
