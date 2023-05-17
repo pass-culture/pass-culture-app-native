@@ -436,7 +436,7 @@ pour réserver cette offre
                     ]
                   }
                 >
-                  Terminer mon inscription
+                  Vérifier mon identité
                 </Text>
               </View>
             </View>
@@ -884,7 +884,7 @@ pour réserver cette offre
                     ]
                   }
                 >
-                  Terminer mon inscription
+                  Confirmer mes informations
                 </Text>
               </View>
             </View>
@@ -1302,7 +1302,7 @@ pour réserver cette offre
                     ]
                   }
                 >
-                  Terminer mon inscription
+                  Confirmer mes informations
                 </Text>
               </View>
             </View>

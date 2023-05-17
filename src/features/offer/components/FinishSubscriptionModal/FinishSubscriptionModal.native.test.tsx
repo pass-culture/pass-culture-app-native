@@ -41,10 +41,10 @@ describe('<FinishSubscriptionModal />', () => {
     expect(screen).toMatchSnapshot()
   })
 
-  it('should close modal and navigate to stepper when pressing "Terminer mon inscription" button', () => {
+  it('should close modal and navigate to stepper when pressing "Confirmer mes informations" button', () => {
     render(<FinishSubscriptionModal visible={visible} hideModal={hideModal} offerId={offerId} />)
 
-    fireEvent.press(screen.getByText('Terminer mon inscription'))
+    fireEvent.press(screen.getByText('Confirmer mes informations'))
     expect(hideModal).toBeCalledTimes(1)
     expect(navigate).toBeCalledWith('Stepper')
   })
