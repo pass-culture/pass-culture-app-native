@@ -4,6 +4,7 @@ import React from 'react'
 import { navigate, useRoute } from '__mocks__/@react-navigation/native'
 import { FAKE_USER_ID } from '__mocks__/jwt-decode'
 import { BatchUser } from '__mocks__/libs/react-native-batch'
+import * as API from 'api/api'
 import {
   AccountState,
   FavoriteRequest,
@@ -50,6 +51,8 @@ server.use(
   )
 )
 
+const apiSignInSpy = jest.spyOn(API.api, 'postnativev1signin')
+
 describe('<Login/>', () => {
   beforeEach(() => {
     simulateSignin200()
@@ -62,6 +65,21 @@ describe('<Login/>', () => {
 
   afterEach(async () => {
     await storage.clear('has_seen_eligible_card')
+  })
+
+  it('should sign in when "Se connecter" is clicked', async () => {
+    renderLogin()
+
+    fillInputs()
+    await act(() => fireEvent.press(screen.getByText('Se connecter')))
+
+    expect(apiSignInSpy).toHaveBeenCalledWith(
+      {
+        identifier: 'email@gmail.com',
+        password: 'mypassword',
+      },
+      { credentials: 'omit' }
+    )
   })
 
   it('should redirect to home WHEN signin is successful', async () => {
