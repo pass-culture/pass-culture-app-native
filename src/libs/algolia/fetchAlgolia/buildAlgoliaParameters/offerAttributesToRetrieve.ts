@@ -11,4 +11,5 @@ export const offerAttributesToRetrieve = [
   'offer.thumbUrl',
   'objectID',
   '_geoloc',
+  'venue',
 ]

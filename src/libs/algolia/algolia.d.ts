@@ -14,6 +14,16 @@ interface AlgoliaOffer {
   searchGroupName?: SearchGroupNameEnumv2
 }
 
+interface AlgoliaVenue {
+  departmentCode?: string
+  id?: number
+  name?: string
+  publicName?: string
+  address?: string
+  postalCode?: string
+  city?: string
+}
+
 export interface Geoloc {
   lat?: number | null
   lng?: number | null
@@ -23,6 +33,7 @@ export interface AlgoliaHit {
   offer: AlgoliaOffer
   _geoloc: Geoloc
   objectID: string
+  venue: AlgoliaVenue
 }
 
 export interface AlgoliaFacetsAnalyticsKey {

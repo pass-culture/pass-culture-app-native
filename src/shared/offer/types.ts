@@ -16,6 +16,15 @@ export interface Offer {
     lat?: number | null
     lng?: number | null
   }
+  venue: {
+    departmentCode?: string
+    id?: number
+    name?: string
+    publicName?: string
+    address?: string
+    postalCode?: string
+    city?: string
+  }
 }
 
 export interface OffersWithPage {

@@ -51,6 +51,7 @@ export const transformOfferHit =
       thumbUrl: parseThumbUrl(hit.offer.thumbUrl, urlPrefix),
     },
     _geoloc: parseGeoloc(hit),
+    venue: hit.venue,
   })
 
 export const useTransformOfferHits = () => {

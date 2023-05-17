@@ -18,6 +18,7 @@ export const mockedAlgoliaResponse: SearchResponse<Offer> = {
       },
       _geoloc: { lat: 48.94374, lng: 2.48171 },
       objectID: '102280',
+      venue: {},
     },
     {
       offer: {
@@ -32,6 +33,7 @@ export const mockedAlgoliaResponse: SearchResponse<Offer> = {
       },
       _geoloc: { lat: 48.91265, lng: 2.4513 },
       objectID: '102272',
+      venue: {},
     },
     {
       offer: {
@@ -46,6 +48,7 @@ export const mockedAlgoliaResponse: SearchResponse<Offer> = {
       },
       _geoloc: { lat: 4.90339, lng: -52.31663 },
       objectID: '102249',
+      venue: {},
     },
     {
       offer: {
@@ -60,6 +63,7 @@ export const mockedAlgoliaResponse: SearchResponse<Offer> = {
       },
       _geoloc: { lat: 4.90339, lng: -52.31663 },
       objectID: '102310',
+      venue: {},
     },
   ],
   nbHits: 4,
@@ -87,6 +91,7 @@ export const moreHitsForSimilarOffersPlaylist = [
     },
     _geoloc: { lat: 48.94374, lng: 2.48171 },
     objectID: '102281',
+    venue: {},
   },
   {
     offer: {
@@ -101,6 +106,7 @@ export const moreHitsForSimilarOffersPlaylist = [
     },
     _geoloc: { lat: 48.91265, lng: 2.4513 },
     objectID: '102273',
+    venue: {},
   },
   {
     offer: {
@@ -115,6 +121,7 @@ export const moreHitsForSimilarOffersPlaylist = [
     },
     _geoloc: { lat: 4.90339, lng: -52.31663 },
     objectID: '102250',
+    venue: {},
   },
   {
     offer: {
@@ -129,5 +136,6 @@ export const moreHitsForSimilarOffersPlaylist = [
     },
     _geoloc: { lat: 4.90339, lng: -52.31663 },
     objectID: '102311',
+    venue: {},
   },
 ]
