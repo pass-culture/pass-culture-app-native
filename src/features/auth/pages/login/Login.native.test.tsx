@@ -1,5 +1,6 @@
 import { rest } from 'msw'
 import React from 'react'
+import DeviceInfo from 'react-native-device-info'
 
 import { navigate, useRoute } from '__mocks__/@react-navigation/native'
 import { FAKE_USER_ID } from '__mocks__/jwt-decode'
@@ -52,6 +53,8 @@ server.use(
 )
 
 const apiSignInSpy = jest.spyOn(API.api, 'postnativev1signin')
+const getModelSpy = jest.spyOn(DeviceInfo, 'getModel')
+const getSystemNameSpy = jest.spyOn(DeviceInfo, 'getSystemName')
 
 describe('<Login/>', () => {
   beforeEach(() => {
@@ -67,8 +70,11 @@ describe('<Login/>', () => {
     await storage.clear('has_seen_eligible_card')
   })
 
-  it('should sign in when "Se connecter" is clicked', async () => {
+  it('should sign in when "Se connecter" is clicked with device info', async () => {
+    getModelSpy.mockReturnValueOnce('iPhone 13')
+    getSystemNameSpy.mockReturnValueOnce('iOS')
     renderLogin()
+    await screen.findByText('Connecte-toi !')
 
     fillInputs()
     await act(() => fireEvent.press(screen.getByText('Se connecter')))
@@ -77,6 +83,11 @@ describe('<Login/>', () => {
       {
         identifier: 'email@gmail.com',
         password: 'mypassword',
+        deviceInfo: {
+          deviceId: 'ad7b7b5a169641e27cadbdb35adad9c4ca23099a',
+          os: 'iOS',
+          source: 'iPhone 13',
+        },
       },
       { credentials: 'omit' }
     )

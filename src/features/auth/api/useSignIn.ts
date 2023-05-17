@@ -3,6 +3,7 @@ import { isApiError } from 'api/apiHelpers'
 import { AccountState, SigninRequest } from 'api/gen'
 import { useLoginRoutine } from 'features/auth/helpers/useLoginRoutine'
 import { SignInResponseFailure } from 'features/auth/types'
+import { useDeviceInfo } from 'features/profile/helpers/TrustedDevices/useDeviceInfo'
 
 type SignInResponse = SignInResponseSuccess | SignInResponseFailure
 
@@ -13,10 +14,14 @@ type SignInResponseSuccess = {
 
 export function useSignIn(): (data: SigninRequest) => Promise<SignInResponse> {
   const loginRoutine = useLoginRoutine()
+  const deviceInfo = useDeviceInfo()
 
   return async (body: SigninRequest) => {
     try {
-      const response = await api.postnativev1signin(body, { credentials: 'omit' })
+      const response = await api.postnativev1signin(
+        { ...body, deviceInfo },
+        { credentials: 'omit' }
+      )
       await loginRoutine(response, 'fromLogin')
       const successResponse: SignInResponseSuccess = {
         isSuccess: true,
