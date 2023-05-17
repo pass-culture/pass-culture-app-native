@@ -24,6 +24,7 @@ import { env } from 'libs/environment'
 import { EmptyResponse } from 'libs/fetch'
 // eslint-disable-next-line no-restricted-imports
 import { firebaseAnalytics } from 'libs/firebase/analytics'
+import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { storage } from 'libs/storage'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { server } from 'tests/server'
@@ -55,6 +56,7 @@ server.use(
 const apiSignInSpy = jest.spyOn(API.api, 'postnativev1signin')
 const getModelSpy = jest.spyOn(DeviceInfo, 'getModel')
 const getSystemNameSpy = jest.spyOn(DeviceInfo, 'getSystemName')
+const useFeatureFlagSpy = jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockReturnValue(false)
 
 describe('<Login/>', () => {
   beforeEach(() => {
@@ -70,7 +72,13 @@ describe('<Login/>', () => {
     await storage.clear('has_seen_eligible_card')
   })
 
-  it('should sign in when "Se connecter" is clicked with device info', async () => {
+  it('should sign in when "Se connecter" is clicked with device info when feature flag is active', async () => {
+    useFeatureFlagSpy.mockReturnValueOnce(true) // Mock for first render
+    useFeatureFlagSpy.mockReturnValueOnce(true) // Mock for Auth Context rerender
+    useFeatureFlagSpy.mockReturnValueOnce(true) // Mock for useDeviceInfo rerender
+    useFeatureFlagSpy.mockReturnValueOnce(true) // Mock for email input rerender
+    useFeatureFlagSpy.mockReturnValueOnce(true) // Mock for password input rerender
+
     getModelSpy.mockReturnValueOnce('iPhone 13')
     getSystemNameSpy.mockReturnValueOnce('iOS')
     renderLogin()
@@ -88,6 +96,23 @@ describe('<Login/>', () => {
           os: 'iOS',
           source: 'iPhone 13',
         },
+      },
+      { credentials: 'omit' }
+    )
+  })
+
+  it('should sign in when "Se connecter" is clicked without device info when feature flag is disabled', async () => {
+    renderLogin()
+    await screen.findByText('Connecte-toi !')
+
+    fillInputs()
+    await act(() => fireEvent.press(screen.getByText('Se connecter')))
+
+    expect(apiSignInSpy).toHaveBeenCalledWith(
+      {
+        identifier: 'email@gmail.com',
+        password: 'mypassword',
+        deviceInfo: undefined,
       },
       { credentials: 'omit' }
     )
