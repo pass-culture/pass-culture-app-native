@@ -7,6 +7,7 @@ import TutorialPassLogo from 'ui/animations/eighteen_birthday.json'
 import { AchievementCardKeyProps, GenericAchievementCard } from 'ui/components/achievements'
 import { Spacer } from 'ui/components/spacer/Spacer'
 import { Typo } from 'ui/theme'
+import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 const DescriptionText = (text: string) => {
   const Component = () => (
@@ -63,7 +64,7 @@ const CenterChildContainer = styled.View({
   justifyContent: 'center',
 })
 
-const StyledCenterChild = styled(Typo.Title4)({
+const StyledCenterChild = styled(Typo.Title4).attrs(getHeadingAttrs(2))({
   textAlign: 'center',
   alignSelf: 'center',
 })
