@@ -73,7 +73,7 @@ export type OffersModule = {
   offersModuleParameters: OffersModuleParameters[]
   displayParameters: DisplayParameters
   cover?: string | null
-  data?: OffersData
+  data?: ModuleData
 }
 
 type DisplayParameters = {
@@ -108,12 +108,6 @@ export type OffersModuleParameters = {
   musicTypes?: string[]
   showTypes?: string[]
   bookTypes?: string[]
-}
-
-export type OffersData = {
-  hits: Offer[]
-  nbHits: number
-  moduleId: string
 }
 
 export type BusinessModule = {
@@ -188,7 +182,7 @@ export type VenuesModule = {
   id: string
   venuesParameters: VenuesParameters[]
   displayParameters: DisplayParameters
-  data?: VenuesData
+  data?: ModuleData
 }
 
 export type VenuesParameters = {
@@ -200,8 +194,9 @@ export type VenuesParameters = {
   hitsPerPage: number
 }
 
-export type VenuesData = {
-  hits: VenueHit[]
+export type ModuleData = {
+  hits: VenueHit[] | Offer[]
+  nbHits: number
   moduleId: string
 }
 

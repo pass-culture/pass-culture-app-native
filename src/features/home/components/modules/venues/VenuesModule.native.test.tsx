@@ -14,7 +14,7 @@ const props = {
   search: [],
   homeEntryId: 'fakeEntryId',
   index: 1,
-  data: { hits: mockVenues.hits, moduleId: 'fakemoduleid' },
+  data: { hits: mockVenues.hits, nbHits: mockVenues.hits.length, moduleId: 'fakemoduleid' },
 }
 
 describe('VenuesModule component', () => {

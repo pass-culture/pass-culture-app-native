@@ -18,8 +18,7 @@ import {
   isRecommendedOffersModule,
   isThematicHighlightModule,
   isVenuesModule,
-  OffersData,
-  VenuesData,
+  ModuleData,
 } from 'features/home/types'
 
 const UnmemoizedModule = ({
@@ -31,7 +30,7 @@ const UnmemoizedModule = ({
   item: HomepageModule
   index: number
   homeEntryId: string
-  data?: OffersData | VenuesData
+  data?: ModuleData
 }) => {
   if (isOffersModule(item)) {
     return (
@@ -42,7 +41,7 @@ const UnmemoizedModule = ({
         cover={item.cover ?? null}
         index={index}
         homeEntryId={homeEntryId}
-        data={data as OffersData | undefined}
+        data={data as ModuleData | undefined}
       />
     )
   }
@@ -54,7 +53,7 @@ const UnmemoizedModule = ({
         display={item.displayParameters}
         homeEntryId={homeEntryId}
         index={index}
-        data={data as VenuesData | undefined}
+        data={data as ModuleData | undefined}
       />
     )
   }

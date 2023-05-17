@@ -5,7 +5,7 @@ import { useQueries, useQuery } from 'react-query'
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { mergeOffersAndVenuesData } from 'features/home/api/helpers/mergeOffersAndVenuesData'
 import { useHomePosition } from 'features/home/helpers/useHomePosition'
-import { HomepageModule, OffersData, isOffersModule, isVenuesModule } from 'features/home/types'
+import { HomepageModule, isOffersModule, isVenuesModule, ModuleData } from 'features/home/types'
 import { useIsUserUnderage } from 'features/profile/helpers/useIsUserUnderage'
 import { SearchState } from 'features/search/types'
 import { fetchMultipleOffers } from 'libs/algolia/fetchAlgolia/fetchMultipleOffers/fetchMultipleOffers'
@@ -71,7 +71,7 @@ export const useGetOffersAndVenuesData = (modules: HomepageModule[]) => {
 
   const offersQueriesWithoutUndefined = offersQueries.filter((q) => q !== undefined) as {
     queryKeys: string[]
-    queryFn: () => Promise<OffersData>
+    queryFn: () => Promise<ModuleData>
   }[]
 
   const offersResultList = useQueries(
