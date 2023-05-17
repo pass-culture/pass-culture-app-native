@@ -20,6 +20,10 @@ import { Trash } from 'ui/svg/icons/Trash'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 import { SECTION_ROW_ICON_SIZE } from 'ui/theme/constants'
 
+function onEmailChangeClick() {
+  void analytics.logModifyMail()
+}
+
 export function PersonalData() {
   const { user } = useAuthContext()
   const enableChangeEmail = useFeatureFlag(RemoteStoreFeatureFlags.WIP_CHANGE_EMAIL)
@@ -50,7 +54,7 @@ export function PersonalData() {
         {!!enableChangeEmail && (
           <EditButton
             navigateTo={{ screen: updateEmailRoute }}
-            onPress={void analytics.logModifyMail()}
+            onPress={onEmailChangeClick}
             wording="Modifier"
             accessibilityLabel="Modifier e-mail"
           />
