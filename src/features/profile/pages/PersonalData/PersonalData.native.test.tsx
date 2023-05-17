@@ -130,7 +130,7 @@ describe('PersonalData', () => {
     } as UserProfileResponse)
 
     fireEvent.press(screen.getByTestId('Modifier e-mail'))
-    expect(screen.queryByTestId('Modifier e-mail')).toBeTruthy()
+    expect(screen.getByTestId('Modifier e-mail')).toBeTruthy()
     expect(analytics.logModifyMail).toHaveBeenCalledTimes(1)
   })
 

@@ -27,12 +27,6 @@ export function PersonalData() {
 
   const { hasCurrentEmailChange } = useCheckHasCurrentEmailChange()
 
-  const onEmailChange = () => {
-    void (async () => {
-      await analytics.logModifyMail()
-    })()
-  }
-
   const updateEmailRoute = useMemo<RootNavigateParams[0]>(() => {
     if (hasCurrentEmailChange) return 'TrackEmailChange'
     return 'ChangeEmail'
@@ -56,7 +50,7 @@ export function PersonalData() {
         {!!enableChangeEmail && (
           <EditButton
             navigateTo={{ screen: updateEmailRoute }}
-            onPress={onEmailChange}
+            onPress={void analytics.logModifyMail()}
             wording="Modifier"
             accessibilityLabel="Modifier e-mail"
           />
