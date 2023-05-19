@@ -37,7 +37,7 @@ export const Default = Template.bind({})
 Default.args = {
   step: {
     name: IdentityCheckStep.IDENTIFICATION,
-    screens: ['SelectIDOrigin'],
+    firstScreen: 'SelectIDOrigin',
     stepState: StepButtonState.CURRENT,
     title: 'Identification',
     icon: {
@@ -55,7 +55,7 @@ DisabledStep.args = {
   step: {
     stepState: StepButtonState.DISABLED,
     name: IdentityCheckStep.IDENTIFICATION,
-    screens: ['SelectIDOrigin'],
+    firstScreen: 'SelectIDOrigin',
     title: 'Identification',
     icon: {
       disabled: DisabledIdCardIcon,
@@ -71,7 +71,7 @@ RetryStep.args = {
   step: {
     stepState: StepButtonState.RETRY,
     name: IdentityCheckStep.IDENTIFICATION,
-    screens: ['SelectIDOrigin'],
+    firstScreen: 'SelectIDOrigin',
     title: 'Identification',
     subtitle: 'Réessaie avec ta pièce d’identité en t’assurant qu’elle soit lisible.',
     icon: {
@@ -88,7 +88,7 @@ CompletedStep.args = {
   step: {
     stepState: StepButtonState.COMPLETED,
     name: IdentityCheckStep.IDENTIFICATION,
-    screens: ['SelectIDOrigin'],
+    firstScreen: 'SelectIDOrigin',
     title: 'Identification',
     icon: {
       disabled: DisabledIdCardIcon,

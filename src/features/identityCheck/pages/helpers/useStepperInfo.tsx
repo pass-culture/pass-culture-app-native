@@ -4,7 +4,6 @@ import { useGetStepperInfo } from 'features/identityCheck/api/useGetStepperInfo'
 import { usePhoneValidationRemainingAttempts } from 'features/identityCheck/api/usePhoneValidationRemainingAttempts'
 import { IconRetryStep } from 'features/identityCheck/components/IconRetryStep'
 import { IconStepDone } from 'features/identityCheck/components/IconStepDone'
-import { useSubscriptionContext } from 'features/identityCheck/context/SubscriptionContextProvider'
 import { computeIdentificationMethod } from 'features/identityCheck/pages/helpers/computeIdentificationMethod'
 import { mapStepsDetails } from 'features/identityCheck/pages/helpers/mapStepsDetails'
 import { IdentityCheckStep, StepConfig, StepDetails } from 'features/identityCheck/types'
@@ -23,8 +22,6 @@ export const useStepperInfo = (): {
   subtitle?: string | null
   errorMessage?: string | null
 } => {
-  const { profile } = useSubscriptionContext()
-  const hasSchoolTypes = profile.hasSchoolTypes
   const { remainingAttempts } = usePhoneValidationRemainingAttempts()
   const { stepToDisplay, title, subtitle, errorMessage, identificationMethods } =
     useGetStepperInfo()
@@ -39,9 +36,7 @@ export const useStepperInfo = (): {
         completed: () => <IconStepDone Icon={BicolorProfile} testID="profile-step-done" />,
         retry: () => <IconRetryStep Icon={BicolorProfile} testID="profile-retry-step" />,
       },
-      screens: hasSchoolTypes
-        ? ['SetName', 'SetCity', 'SetAddress', 'SetStatus', 'SetSchoolType']
-        : ['SetName', 'SetCity', 'SetAddress', 'SetStatus'],
+      firstScreen: 'SetName',
     },
     {
       name: IdentityCheckStep.IDENTIFICATION,
@@ -51,7 +46,7 @@ export const useStepperInfo = (): {
         completed: () => <IconStepDone Icon={BicolorIdCard} testID="identification-step-done" />,
         retry: () => <IconRetryStep Icon={BicolorIdCard} testID="identification-retry-step" />,
       },
-      screens: computeIdentificationMethod(identificationMethods, identificationMethodFork),
+      firstScreen: computeIdentificationMethod(identificationMethods, identificationMethodFork),
     },
     {
       name: IdentityCheckStep.CONFIRMATION,
@@ -61,7 +56,7 @@ export const useStepperInfo = (): {
         completed: () => <IconStepDone Icon={BicolorLegal} testID="confirmation-step-done" />,
         retry: () => <IconRetryStep Icon={BicolorLegal} testID="confirmation-retry-step" />,
       },
-      screens: ['IdentityCheckHonor', 'BeneficiaryRequestSent'],
+      firstScreen: 'IdentityCheckHonor',
     },
     {
       name: IdentityCheckStep.PHONE_VALIDATION,
@@ -75,10 +70,7 @@ export const useStepperInfo = (): {
           <IconRetryStep Icon={BicolorSmartphone} testID="phone-validation-retry-step" />
         ),
       },
-      screens:
-        remainingAttempts === 0
-          ? ['PhoneValidationTooManySMSSent']
-          : ['SetPhoneNumber', 'SetPhoneValidationCode'],
+      firstScreen: remainingAttempts === 0 ? 'PhoneValidationTooManySMSSent' : 'SetPhoneNumber',
     },
   ]
 
