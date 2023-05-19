@@ -1,9 +1,11 @@
 import { rest } from 'msw'
 import React from 'react'
+import DeviceInfo from 'react-native-device-info'
 
 import { navigate, useRoute } from '__mocks__/@react-navigation/native'
 import { FAKE_USER_ID } from '__mocks__/jwt-decode'
 import { BatchUser } from '__mocks__/libs/react-native-batch'
+import * as API from 'api/api'
 import {
   AccountState,
   FavoriteRequest,
@@ -22,10 +24,11 @@ import { env } from 'libs/environment'
 import { EmptyResponse } from 'libs/fetch'
 // eslint-disable-next-line no-restricted-imports
 import { firebaseAnalytics } from 'libs/firebase/analytics'
+import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { storage } from 'libs/storage'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { server } from 'tests/server'
-import { fireEvent, render, act, waitFor, screen } from 'tests/utils'
+import { fireEvent, render, act, screen } from 'tests/utils'
 
 import { Login } from './Login'
 
@@ -50,6 +53,11 @@ server.use(
   )
 )
 
+const apiSignInSpy = jest.spyOn(API.api, 'postnativev1signin')
+const getModelSpy = jest.spyOn(DeviceInfo, 'getModel')
+const getSystemNameSpy = jest.spyOn(DeviceInfo, 'getSystemName')
+const useFeatureFlagSpy = jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockReturnValue(false)
+
 describe('<Login/>', () => {
   beforeEach(() => {
     simulateSignin200()
@@ -64,19 +72,63 @@ describe('<Login/>', () => {
     await storage.clear('has_seen_eligible_card')
   })
 
+  it('should sign in when "Se connecter" is clicked with device info when feature flag is active', async () => {
+    useFeatureFlagSpy.mockReturnValueOnce(true) // Mock for first render
+    useFeatureFlagSpy.mockReturnValueOnce(true) // Mock for Auth Context rerender
+    useFeatureFlagSpy.mockReturnValueOnce(true) // Mock for useDeviceInfo rerender
+    useFeatureFlagSpy.mockReturnValueOnce(true) // Mock for email input rerender
+    useFeatureFlagSpy.mockReturnValueOnce(true) // Mock for password input rerender
+
+    getModelSpy.mockReturnValueOnce('iPhone 13')
+    getSystemNameSpy.mockReturnValueOnce('iOS')
+    renderLogin()
+    await screen.findByText('Connecte-toi !')
+
+    fillInputs()
+    await act(() => fireEvent.press(screen.getByText('Se connecter')))
+
+    expect(apiSignInSpy).toHaveBeenCalledWith(
+      {
+        identifier: 'email@gmail.com',
+        password: 'mypassword',
+        deviceInfo: {
+          deviceId: 'ad7b7b5a169641e27cadbdb35adad9c4ca23099a',
+          os: 'iOS',
+          source: 'iPhone 13',
+        },
+      },
+      { credentials: 'omit' }
+    )
+  })
+
+  it('should sign in when "Se connecter" is clicked without device info when feature flag is disabled', async () => {
+    renderLogin()
+    await screen.findByText('Connecte-toi !')
+
+    fillInputs()
+    await act(() => fireEvent.press(screen.getByText('Se connecter')))
+
+    expect(apiSignInSpy).toHaveBeenCalledWith(
+      {
+        identifier: 'email@gmail.com',
+        password: 'mypassword',
+        deviceInfo: undefined,
+      },
+      { credentials: 'omit' }
+    )
+  })
+
   it('should redirect to home WHEN signin is successful', async () => {
     renderLogin()
 
     fillInputs()
-    fireEvent.press(screen.getByText('Se connecter'))
+    await act(() => fireEvent.press(screen.getByText('Se connecter')))
 
-    await waitFor(() => {
-      expect(BatchUser.editor().setIdentifier).toHaveBeenCalledWith(FAKE_USER_ID.toString())
-      expect(firebaseAnalytics.setUserId).toHaveBeenCalledWith(FAKE_USER_ID)
-      expect(navigateToHome).toHaveBeenCalledTimes(1)
-      expect(mockSearchDispatch).toHaveBeenNthCalledWith(1, { type: 'INIT' })
-      expect(mockIdentityCheckDispatch).toHaveBeenNthCalledWith(1, { type: 'INIT' })
-    })
+    expect(BatchUser.editor().setIdentifier).toHaveBeenCalledWith(FAKE_USER_ID.toString())
+    expect(firebaseAnalytics.setUserId).toHaveBeenCalledWith(FAKE_USER_ID)
+    expect(navigateToHome).toHaveBeenCalledTimes(1)
+    expect(mockSearchDispatch).toHaveBeenNthCalledWith(1, { type: 'INIT' })
+    expect(mockIdentityCheckDispatch).toHaveBeenNthCalledWith(1, { type: 'INIT' })
   })
 
   it('should redirect to NATIVE Cultural Survey WHEN signin is successful and user needs to fill cultural survey', async () => {
@@ -87,12 +139,10 @@ describe('<Login/>', () => {
     renderLogin()
 
     fillInputs()
-    fireEvent.press(screen.getByText('Se connecter'))
+    await act(() => fireEvent.press(screen.getByText('Se connecter')))
 
-    await waitFor(() => {
-      expect(navigate).toHaveBeenCalledTimes(1)
-      expect(navigate).toHaveBeenCalledWith('CulturalSurveyIntro')
-    })
+    expect(navigate).toHaveBeenCalledTimes(1)
+    expect(navigate).toHaveBeenCalledWith('CulturalSurveyIntro')
   })
 
   it('should not redirect to EighteenBirthday WHEN signin is successful and user has already seen eligible card and needs to see it', async () => {
@@ -104,11 +154,9 @@ describe('<Login/>', () => {
     renderLogin()
 
     fillInputs()
-    fireEvent.press(screen.getByText('Se connecter'))
+    await act(() => fireEvent.press(screen.getByText('Se connecter')))
 
-    await waitFor(() => {
-      expect(navigateToHome).toHaveBeenCalledTimes(1)
-    })
+    expect(navigateToHome).toHaveBeenCalledTimes(1)
   })
 
   it('should redirect to EighteenBirthday WHEN signin is successful and user has not seen eligible card and needs to see it', async () => {
@@ -119,11 +167,9 @@ describe('<Login/>', () => {
     renderLogin()
 
     fillInputs()
-    fireEvent.press(screen.getByText('Se connecter'))
+    await act(() => fireEvent.press(screen.getByText('Se connecter')))
 
-    await waitFor(() => {
-      expect(navigate).toHaveBeenCalledWith('EighteenBirthday')
-    })
+    expect(navigate).toHaveBeenCalledWith('EighteenBirthday')
   })
 
   it('should redirect to RecreditBirthdayNotification WHEN signin is successful and user has recreditAmountToShow not null', async () => {
@@ -135,11 +181,9 @@ describe('<Login/>', () => {
     renderLogin()
 
     fillInputs()
-    fireEvent.press(screen.getByText('Se connecter'))
+    await act(() => fireEvent.press(screen.getByText('Se connecter')))
 
-    await waitFor(() => {
-      expect(navigate).toHaveBeenNthCalledWith(1, 'RecreditBirthdayNotification')
-    })
+    expect(navigate).toHaveBeenNthCalledWith(1, 'RecreditBirthdayNotification')
   })
 
   it('should not redirect to RecreditBirthdayNotification WHEN signin is successful and user has recreditAmountToShow to null', async () => {
@@ -151,11 +195,9 @@ describe('<Login/>', () => {
     renderLogin()
 
     fillInputs()
-    fireEvent.press(screen.getByText('Se connecter'))
+    await act(() => fireEvent.press(screen.getByText('Se connecter')))
 
-    await waitFor(() => {
-      expect(navigate).toHaveBeenCalledWith('EighteenBirthday')
-    })
+    expect(navigate).toHaveBeenCalledWith('EighteenBirthday')
   })
 
   it('should redirect to SignupConfirmationEmailSent page WHEN signin has failed with EMAIL_NOT_VALIDATED code', async () => {
@@ -163,12 +205,10 @@ describe('<Login/>', () => {
     renderLogin()
 
     fillInputs()
-    fireEvent.press(screen.getByText('Se connecter'))
+    await act(() => fireEvent.press(screen.getByText('Se connecter')))
 
-    await waitFor(() => {
-      expect(navigate).toHaveBeenNthCalledWith(1, 'SignupConfirmationEmailSent', {
-        email: 'email@gmail.com',
-      })
+    expect(navigate).toHaveBeenNthCalledWith(1, 'SignupConfirmationEmailSent', {
+      email: 'email@gmail.com',
     })
   })
 
@@ -178,11 +218,9 @@ describe('<Login/>', () => {
     renderLogin()
 
     fillInputs()
-    fireEvent.press(screen.getByText('Se connecter'))
+    await act(() => fireEvent.press(screen.getByText('Se connecter')))
 
-    await waitFor(() => {
-      expect(navigate).toHaveBeenNthCalledWith(1, 'SuspensionScreen')
-    })
+    expect(navigate).toHaveBeenNthCalledWith(1, 'SuspensionScreen')
   })
 
   it('should show email error message WHEN signin has failed because of invalid e-mail format', async () => {
@@ -194,15 +232,13 @@ describe('<Login/>', () => {
     const passwordInput = screen.getByPlaceholderText('Ton mot de passe')
     fireEvent.changeText(passwordInput, 'mypassword')
 
-    fireEvent.press(screen.getByText('Se connecter'))
+    await act(() => fireEvent.press(screen.getByText('Se connecter')))
 
-    await waitFor(() => {
-      expect(
-        screen.getByText(
-          'L’e-mail renseigné est incorrect. Exemple de format attendu : edith.piaf@email.fr'
-        )
-      ).toBeTruthy()
-    })
+    expect(
+      screen.getByText(
+        'L’e-mail renseigné est incorrect. Exemple de format attendu : edith.piaf@email.fr'
+      )
+    ).toBeTruthy()
     expect(navigate).not.toBeCalled()
   })
 
@@ -211,11 +247,9 @@ describe('<Login/>', () => {
     renderLogin()
 
     fillInputs()
-    fireEvent.press(screen.getByText('Se connecter'))
+    await act(() => fireEvent.press(screen.getByText('Se connecter')))
 
-    await waitFor(() => {
-      expect(screen.getByText('E-mail ou mot de passe incorrect')).toBeTruthy()
-    })
+    expect(screen.getByText('E-mail ou mot de passe incorrect')).toBeTruthy()
     expect(navigate).not.toBeCalled()
   })
 
@@ -224,13 +258,11 @@ describe('<Login/>', () => {
     renderLogin()
 
     fillInputs()
-    fireEvent.press(screen.getByText('Se connecter'))
+    await act(() => fireEvent.press(screen.getByText('Se connecter')))
 
-    await waitFor(() => {
-      expect(
-        screen.queryByText('Erreur réseau. Tu peux réessayer une fois la connexion réétablie')
-      ).toBeTruthy()
-    })
+    expect(
+      screen.queryByText('Erreur réseau. Tu peux réessayer une fois la connexion réétablie')
+    ).toBeTruthy()
     expect(navigate).not.toBeCalled()
   })
 
@@ -239,25 +271,20 @@ describe('<Login/>', () => {
     renderLogin()
 
     fillInputs()
-    fireEvent.press(screen.getByText('Se connecter'))
+    await act(() => fireEvent.press(screen.getByText('Se connecter')))
 
-    await waitFor(() => {
-      expect(
-        screen.queryByText('Nombre de tentatives dépassé. Réessaye dans 1 minute')
-      ).toBeTruthy()
-    })
+    expect(screen.queryByText('Nombre de tentatives dépassé. Réessaye dans 1 minute')).toBeTruthy()
     expect(navigate).not.toBeCalled()
   })
 
   it('should enable login button when both text inputs are filled', async () => {
     renderLogin()
+    await screen.findByText('Connecte-toi !')
 
     fillInputs()
 
-    await waitFor(() => {
-      const connectedButton = screen.getByText('Se connecter')
-      expect(connectedButton).toBeEnabled()
-    })
+    const connectedButton = screen.getByText('Se connecter')
+    expect(connectedButton).toBeEnabled()
   })
 
   it('should log analytics when clicking on "Créer un compte" button', async () => {
@@ -283,12 +310,12 @@ describe('<Login/>', () => {
     it('should redirect to Offer page when signin is successful', async () => {
       renderLogin()
       fillInputs()
-      fireEvent.press(screen.getByText('Se connecter'))
+      await act(async () => {
+        await fireEvent.press(screen.getByText('Se connecter'))
+      })
 
-      await waitFor(() => {
-        expect(navigate).toHaveBeenNthCalledWith(1, 'Offer', {
-          id: OFFER_ID,
-        })
+      expect(navigate).toHaveBeenNthCalledWith(1, 'Offer', {
+        id: OFFER_ID,
       })
     })
 
@@ -297,24 +324,24 @@ describe('<Login/>', () => {
 
       renderLogin()
       fillInputs()
-      fireEvent.press(screen.getByText('Se connecter'))
-
-      await waitFor(() => {
-        expect(mockPostFavorite).toHaveBeenCalledTimes(1)
+      await act(async () => {
+        await fireEvent.press(screen.getByText('Se connecter'))
       })
+
+      expect(mockPostFavorite).toHaveBeenCalledTimes(1)
     })
 
     it('should log analytics when adding the previous offer to favorites', async () => {
       simulateAddToFavorites()
       renderLogin()
       fillInputs()
-      fireEvent.press(screen.getByText('Se connecter'))
+      await act(async () => {
+        await fireEvent.press(screen.getByText('Se connecter'))
+      })
 
-      await waitFor(() => {
-        expect(analytics.logHasAddedOfferToFavorites).toHaveBeenCalledWith({
-          from: 'login',
-          offerId: OFFER_ID,
-        })
+      expect(analytics.logHasAddedOfferToFavorites).toHaveBeenCalledWith({
+        from: 'login',
+        offerId: OFFER_ID,
       })
     })
 
@@ -325,11 +352,11 @@ describe('<Login/>', () => {
       } as UserProfileResponse)
       renderLogin()
       fillInputs()
-      fireEvent.press(screen.getByText('Se connecter'))
-
-      await waitFor(() => {
-        expect(navigate).toHaveBeenCalledWith('CulturalSurveyIntro')
+      await act(async () => {
+        await fireEvent.press(screen.getByText('Se connecter'))
       })
+
+      expect(navigate).toHaveBeenCalledWith('CulturalSurveyIntro')
     })
   })
 
@@ -346,13 +373,13 @@ describe('<Login/>', () => {
     it('should redirect to the previous offer page and ask to open the booking modal', async () => {
       renderLogin()
       fillInputs()
-      fireEvent.press(screen.getByText('Se connecter'))
+      await act(async () => {
+        await fireEvent.press(screen.getByText('Se connecter'))
+      })
 
-      await waitFor(() => {
-        expect(navigate).toHaveBeenNthCalledWith(1, 'Offer', {
-          id: OFFER_ID,
-          openModalOnNavigation: true,
-        })
+      expect(navigate).toHaveBeenNthCalledWith(1, 'Offer', {
+        id: OFFER_ID,
+        openModalOnNavigation: true,
       })
     })
   })

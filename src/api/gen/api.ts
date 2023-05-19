@@ -2222,6 +2222,11 @@ export interface SettingsResponse {
  */
 export interface SigninRequest {
   /**
+   * @type {TrustedDevice}
+   * @memberof SigninRequest
+   */
+  deviceInfo?: TrustedDevice | null
+  /**
    * @type {string}
    * @memberof SigninRequest
    */
