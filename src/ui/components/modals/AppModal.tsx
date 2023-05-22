@@ -157,6 +157,31 @@ export const AppModal: FunctionComponent<Props> = ({
     modalContainerHeight = windowHeight
   }
 
+  const fullscreenModalBody = useMemo(() => {
+    return scrollEnabled ? (
+      <StyledScrollView
+        modalSpacing={modalSpacing}
+        testID="fullscreenModalScrollView"
+        ref={setFullscreenScrollViewRef}
+        onContentSizeChange={onContentSizeChangeFullscreenModal}
+        scrollEnabled={scrollEnabled}
+        keyboardShouldPersistTaps={keyboardShouldPersistTaps}>
+        {children}
+      </StyledScrollView>
+    ) : (
+      <StyledView modalSpacing={modalSpacing} testID="fullscreenModalView">
+        {children}
+      </StyledView>
+    )
+  }, [
+    children,
+    keyboardShouldPersistTaps,
+    modalSpacing,
+    onContentSizeChangeFullscreenModal,
+    scrollEnabled,
+    setFullscreenScrollViewRef,
+  ])
+
   return (
     <StyledModal
       animationOutTiming={animationOutTiming}
@@ -194,15 +219,7 @@ export const AppModal: FunctionComponent<Props> = ({
           />
         )}
         {isFullscreen || maxHeight ? (
-          <StyledScrollView
-            modalSpacing={modalSpacing}
-            testID="fullscreenModalScrollView"
-            ref={setFullscreenScrollViewRef}
-            onContentSizeChange={onContentSizeChangeFullscreenModal}
-            scrollEnabled={scrollEnabled}
-            keyboardShouldPersistTaps={keyboardShouldPersistTaps}>
-            {children}
-          </StyledScrollView>
+          fullscreenModalBody
         ) : (
           <React.Fragment>
             {!!shouldAddSpacerBetweenHeaderAndContent && (
@@ -295,6 +312,14 @@ const StyledScrollView = styled.ScrollView<{
   modalSpacing?: ModalSpacing
 }>(({ modalSpacing }) => ({
   width: '100%',
+  ...(modalSpacing ? { paddingHorizontal: modalSpacing } : {}),
+}))
+
+const StyledView = styled.View<{
+  modalSpacing?: ModalSpacing
+}>(({ modalSpacing }) => ({
+  width: '100%',
+  flex: 1,
   ...(modalSpacing ? { paddingHorizontal: modalSpacing } : {}),
 }))
 
