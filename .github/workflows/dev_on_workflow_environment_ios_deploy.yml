@@ -69,9 +69,8 @@ jobs:
           ssh-private-key: ${{  steps.secrets.outputs.MATCH_SSH_KEY }}
       - name: Deploy hard ios for ${{ inputs.ENV }}
         if: ${{ inputs.TYPE == 'hard'}}
-        run: echo ${{ inputs.TYPE }}
-        # run: |
-        #  bundle exec fastlane ios deploy --env ${{ inputs.ENV }} --verbose
+        run: |
+          bundle exec fastlane ios deploy --env ${{ inputs.ENV }} --verbose
         env:
           IOS_APPCENTER_API_TOKEN: ${{ steps.secrets.outputs.IOS_APPCENTER_API_TOKEN }}
           MATCH_PASSWORD: ${{ steps.secrets.outputs.MATCH_PASSWORD }}
