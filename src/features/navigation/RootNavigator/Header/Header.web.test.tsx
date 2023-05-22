@@ -1,11 +1,14 @@
 import { render } from '@testing-library/react'
+import { rest } from 'msw'
 import React from 'react'
 import { ThemeProvider as WebThemeProvider } from 'styled-components'
 import { ThemeProvider } from 'styled-components/native'
 
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { TabNavigationStateProvider } from 'features/navigation/TabBar/TabNavigationStateContext'
+import { env } from 'libs/environment'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
+import { server } from 'tests/server'
 import { screen } from 'tests/utils/web'
 import { theme } from 'theme'
 
@@ -13,6 +16,12 @@ import { Header } from './Header'
 
 const mockedUseAuthContext = useAuthContext as jest.Mock
 jest.mock('features/auth/context/AuthContext')
+
+server.use(
+  rest.get(env.API_BASE_URL + '/native/v1/me/favorites/count', (_req, res, ctx) =>
+    res(ctx.status(200), ctx.json({ count: 2 }))
+  )
+)
 
 jest.mock('features/navigation/RootNavigator/routes', () => ({
   routes: [
@@ -74,6 +83,15 @@ function renderHeader({
   isLoggedIn: boolean
   isBeneficiary: boolean
 }) {
+  // We mock the authContext 3 times due to multiple rerenders
+  mockedUseAuthContext.mockReturnValueOnce({
+    isLoggedIn,
+    user: { isBeneficiary },
+  })
+  mockedUseAuthContext.mockReturnValueOnce({
+    isLoggedIn,
+    user: { isBeneficiary },
+  })
   mockedUseAuthContext.mockReturnValueOnce({
     isLoggedIn,
     user: { isBeneficiary },

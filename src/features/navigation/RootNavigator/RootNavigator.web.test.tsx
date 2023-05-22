@@ -1,10 +1,13 @@
 import { NavigationContainer } from '@react-navigation/native'
+import { rest } from 'msw'
 import React from 'react'
 
 import { useMustUpdateApp } from 'features/forceUpdate/helpers/useMustUpdateApp'
 import { useCurrentRoute } from 'features/navigation/helpers'
+import { env } from 'libs/environment'
 import { useSplashScreenContext } from 'libs/splashscreen'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
+import { server } from 'tests/server'
 import { render, screen } from 'tests/utils/web'
 
 import { RootNavigator } from './RootNavigator'
@@ -30,6 +33,12 @@ jest.mock('features/navigation/RootNavigator/useInitialScreenConfig', () => ({
 jest.mock('features/navigation/helpers')
 jest.mock('features/navigation/navigationRef')
 jest.mock('libs/splashscreen')
+
+server.use(
+  rest.get(env.API_BASE_URL + '/native/v1/me/favorites/count', (_req, res, ctx) =>
+    res(ctx.status(200), ctx.json({ count: 2 }))
+  )
+)
 
 describe('<RootNavigator />', () => {
   beforeEach(() => {
