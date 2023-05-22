@@ -1,7 +1,4 @@
-import {
-  getNextPageParam,
-  useSearchInfiniteQuery,
-} from 'features/search/api/useSearchResults/useSearchResults'
+import { useSearchInfiniteQuery } from 'features/search/api/useSearchResults/useSearchResults'
 import { initialSearchState } from 'features/search/context/reducer'
 import { SearchState, SearchView } from 'features/search/types'
 import { mockedAlgoliaResponse } from 'libs/algolia/__mocks__/mockedAlgoliaResponse'
@@ -11,18 +8,6 @@ import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { flushAllPromisesWithAct, renderHook } from 'tests/utils'
 
 describe('useSearchResults', () => {
-  describe('getNextPageParam', () => {
-    it('should return page + 1 when page + 1 < nbPages', () => {
-      const page = getNextPageParam({ page: 0, nbPages: 2 })
-      expect(page).toStrictEqual(1)
-    })
-
-    it('should return undefined when page + 1 >= nbPages', () => {
-      const page = getNextPageParam({ page: 1, nbPages: 2 })
-      expect(page).toStrictEqual(undefined)
-    })
-  })
-
   describe('useSearchInfiniteQuery', () => {
     const fetchOfferSpy = jest
       .spyOn(fetchAlgoliaOffer, 'fetchOffers')

@@ -12,6 +12,7 @@ import { useTransformOfferHits } from 'libs/algolia/fetchAlgolia/transformOfferH
 import { analytics } from 'libs/analytics'
 import { useGeolocation } from 'libs/geolocation'
 import { QueryKeys } from 'libs/queryKeys'
+import { getNextPageParam } from 'shared/getNextPageParam/getNextPageParam'
 import { Offer } from 'shared/offer/types'
 
 export type Response = Pick<
@@ -64,7 +65,3 @@ export const useSearchResults = () => {
   const { searchState } = useSearch()
   return useSearchInfiniteQuery(searchState)
 }
-
-// first page is 0
-export const getNextPageParam = ({ page, nbPages }: { page: number; nbPages: number }) =>
-  page + 1 < nbPages ? page + 1 : undefined
