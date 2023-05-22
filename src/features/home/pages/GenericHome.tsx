@@ -81,7 +81,7 @@ export const OnlineHome: FunctionComponent<GenericHomeProps> = ({
 
   modulesToDisplay.forEach((module) => {
     if (isOffersModule(module) || isVenuesModule(module)) {
-      module.data = modulesData.find((mod) => mod.data?.moduleId === module.id)?.data
+      module.data = modulesData.find((mod) => mod.moduleId === module.id)
     }
   })
 

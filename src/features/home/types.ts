@@ -1,4 +1,6 @@
+import { VenueAccessibilityModel, VenueContactModel } from 'api/gen'
 import { VenueHit } from 'libs/algolia'
+import { VenueTypeCode } from 'libs/parsers'
 import { Offer } from 'shared/offer/types'
 
 export enum HomepageModuleType {
@@ -71,7 +73,7 @@ export type OffersModule = {
   offersModuleParameters: OffersModuleParameters[]
   displayParameters: DisplayParameters
   cover?: string | null
-  data?: OffersData
+  data?: ModuleData
 }
 
 type DisplayParameters = {
@@ -106,12 +108,6 @@ export type OffersModuleParameters = {
   musicTypes?: string[]
   showTypes?: string[]
   bookTypes?: string[]
-}
-
-export type OffersData = {
-  hits: Offer[]
-  nbHits: number
-  moduleId: string
 }
 
 export type BusinessModule = {
@@ -186,10 +182,10 @@ export type VenuesModule = {
   id: string
   venuesParameters: VenuesParameters[]
   displayParameters: DisplayParameters
-  data?: VenuesData
+  data?: ModuleData
 }
 
-type VenuesParameters = {
+export type VenuesParameters = {
   title: string
   isGeolocated?: boolean
   aroundRadius?: number
@@ -198,9 +194,23 @@ type VenuesParameters = {
   hitsPerPage: number
 }
 
-export type VenuesData = {
-  hits: VenueHit[]
+export type ModuleData = {
+  hits: VenueHit[] | Offer[]
+  nbHits: number
   moduleId: string
+}
+
+export type Venue = {
+  accessibility: VenueAccessibilityModel
+  description: string
+  contact: VenueContactModel
+  publicName: string
+  bannerUrl?: string
+  id: number
+  latitude?: number
+  longitude?: number
+  name: string
+  venueTypeCode: VenueTypeCode
 }
 
 export type CategoryListModule = {

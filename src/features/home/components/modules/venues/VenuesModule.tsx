@@ -2,7 +2,7 @@ import React, { useCallback, useEffect } from 'react'
 
 import { VenueTile } from 'features/home/components/modules/venues/VenueTile'
 import { useHomePosition } from 'features/home/helpers/useHomePosition'
-import { VenuesData } from 'features/home/types'
+import { ModuleData } from 'features/home/types'
 import { VenueHit } from 'libs/algolia'
 import { analytics } from 'libs/analytics'
 import { ContentTypes, DisplayParametersFields } from 'libs/contentful'
@@ -15,7 +15,7 @@ type VenuesModuleProps = {
   display: DisplayParametersFields
   homeEntryId: string | undefined
   index: number
-  data?: VenuesData
+  data?: ModuleData
 }
 
 const ITEM_HEIGHT = LENGTH_S
