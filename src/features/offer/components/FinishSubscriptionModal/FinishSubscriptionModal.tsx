@@ -42,6 +42,8 @@ export const FinishSubscriptionModal: FunctionComponent<Props> = ({
     ' ton crédit '
   )
 
+  const buttonLabel = user?.requiresIdCheck ? 'Vérifier mon identité' : 'Confirmer mes informations'
+
   return (
     <AppModalWithIllustration
       visible={visible}
@@ -59,10 +61,12 @@ export const FinishSubscriptionModal: FunctionComponent<Props> = ({
         </StyledBody>
       )}
       <Spacer.Column numberOfSpaces={6} />
-      <Typo.Caption>Ton crédit précédent a été remis à 0&nbsp;€.</Typo.Caption>
+      <Typo.CaptionNeutralInfo>
+        Ton crédit précédent a été remis à 0&nbsp;€.
+      </Typo.CaptionNeutralInfo>
       <Spacer.Column numberOfSpaces={6} />
       <ButtonPrimary
-        wording="Terminer mon inscription"
+        wording={buttonLabel}
         accessibilityLabel="Aller vers la section profil"
         onPress={navigateToProfile}
       />

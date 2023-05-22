@@ -368,7 +368,7 @@ pour réserver cette offre
                 style={
                   Array [
                     Object {
-                      "color": "#161617",
+                      "color": "#696A6F",
                       "fontFamily": "Montserrat-SemiBold",
                       "fontSize": 12,
                       "lineHeight": 16,
@@ -436,7 +436,7 @@ pour réserver cette offre
                     ]
                   }
                 >
-                  Terminer mon inscription
+                  Vérifier mon identité
                 </Text>
               </View>
             </View>
@@ -816,7 +816,7 @@ pour réserver cette offre
                 style={
                   Array [
                     Object {
-                      "color": "#161617",
+                      "color": "#696A6F",
                       "fontFamily": "Montserrat-SemiBold",
                       "fontSize": 12,
                       "lineHeight": 16,
@@ -884,7 +884,7 @@ pour réserver cette offre
                     ]
                   }
                 >
-                  Terminer mon inscription
+                  Confirmer mes informations
                 </Text>
               </View>
             </View>
@@ -1234,7 +1234,7 @@ pour réserver cette offre
                 style={
                   Array [
                     Object {
-                      "color": "#161617",
+                      "color": "#696A6F",
                       "fontFamily": "Montserrat-SemiBold",
                       "fontSize": 12,
                       "lineHeight": 16,
@@ -1302,7 +1302,7 @@ pour réserver cette offre
                     ]
                   }
                 >
-                  Terminer mon inscription
+                  Confirmer mes informations
                 </Text>
               </View>
             </View>
