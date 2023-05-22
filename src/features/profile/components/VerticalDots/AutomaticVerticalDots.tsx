@@ -30,4 +30,5 @@ export function AutomaticVerticalDots(props: AutomaticVerticalDotsProps) {
 
 const Wrapper = styled.View({
   flex: 1,
+  height: 0,
 })
