@@ -563,12 +563,12 @@ jobs:
       - checkout
       - transition-jira-ticket
 
-  notify-hard-staging-release:
-    executor: node
-    working_directory: ~/pass-culture
-    steps:
-      - notify-release-appcenter:
-          env: staging
+        #  notify-hard-staging-release:
+        #    executor: node
+        #    working_directory: ~/pass-culture
+        #    steps:
+        #      - notify-release-appcenter:
+        #          env: staging
 
   notify-hard-production-release:
     executor: node
@@ -668,80 +668,80 @@ jobs:
 #            curl -X POST -H 'Content-type: application/json' --data "{'channel':'alertes-deploiement-native','text': $BOT_MESSAGE}" $SLACK_OPS_BOT_URL
 #          when: on_fail
 
-  deploy-ios-staging-hard:
-    executor: ios
-    working_directory: ~/pass-culture
-    steps:
-      - checkout
-      - add_ssh_keys:
-          fingerprints:
-            - 'c4:20:41:81:06:31:e2:3c:b4:1e:a2:5a:11:d1:39:e1'
-      - install_node_version
-      - install_node_modules
-      - install_ruby_version_ios
-      - install_ruby_modules
-      - install_cocoapods
-      - decode_match_secrets
-      - setup_sentry
-      - run:
-          name: Setup iOS Google services config
-          command: echo $IOS_GOOGLE_SERVICES_PLIST_STAGING > ios/GoogleService-Info.plist
-      - run:
-          name: Deploy IOS App for staging environment
-          no_output_timeout: 30m
-          command: |
-            export IOS_APPCENTER_API_TOKEN=$IOS_STAGING_APPCENTER_API_TOKEN
-            ./scripts/deploy.sh -o ios -t hard -e staging
-
-  deploy-android-staging-hard:
-    executor: android
-    working_directory: ~/pass-culture
-    resource_class: medium+
-    steps:
-      - checkout
-      - install_node_version
-      - install_node_modules
-      - install_ruby_version
-      - install_ruby_modules
-      - setup_sentry
-      - run:
-          name: Setup android keystore for staging environment
-          command: |
-            mkdir -p android/keystores
-            echo $ANDROID_KEYSTORE_STAGING | base64 -di > android/keystores/staging.keystore
-            echo "keyAlias=passculture" >> android/keystores/staging.keystore.properties
-            echo "storeFile=staging.keystore" >> android/keystores/staging.keystore.properties
-            echo "storePassword=$ANDROID_KEYSTORE_STORE_PASSWORD_STAGING" >> android/keystores/staging.keystore.properties
-            echo "keyPassword=$ANDROID_KEYSTORE_KEY_PASSWORD_STAGING" >>  android/keystores/staging.keystore.properties
-      - setup_android_google_services_config
-      - run:
-          name: Deploy Android App for staging environment
-          command: |
-            export ANDROID_APPCENTER_API_TOKEN=$ANDROID_STAGING_APPCENTER_API_TOKEN
-            ./scripts/deploy.sh -o android -t hard -e staging
-
-  deploy-soft-staging:
-    executor: android
-    working_directory: ~/pass-culture
-    steps:
-      - checkout
-      - install_node_version
-      - install_node_modules
-      - install_ruby_version
-      - install_ruby_modules
-      - setup_sentry
-      - run:
-          name: Deploy Android Code push for staging environment
-          command: |
-            export ANDROID_APPCENTER_API_TOKEN=$ANDROID_STAGING_APPCENTER_API_TOKEN
-            ./scripts/deploy.sh -o android -t soft -e staging
-      - run:
-          name: Deploy IOS Code push for staging environment
-          command: |
-            export IOS_APPCENTER_API_TOKEN=$IOS_STAGING_APPCENTER_API_TOKEN
-            ./scripts/deploy.sh -o ios -t soft -e staging
-      - notify-soft-release:
-          env: staging
+        #  deploy-ios-staging-hard:
+        #    executor: ios
+        #    working_directory: ~/pass-culture
+        #    steps:
+        #      - checkout
+        #      - add_ssh_keys:
+        #          fingerprints:
+        #            - 'c4:20:41:81:06:31:e2:3c:b4:1e:a2:5a:11:d1:39:e1'
+        #      - install_node_version
+        #      - install_node_modules
+        #      - install_ruby_version_ios
+        #      - install_ruby_modules
+        #      - install_cocoapods
+        #      - decode_match_secrets
+        #      - setup_sentry
+        #      - run:
+        #          name: Setup iOS Google services config
+        #          command: echo $IOS_GOOGLE_SERVICES_PLIST_STAGING > ios/GoogleService-Info.plist
+        #      - run:
+        #          name: Deploy IOS App for staging environment
+        #          no_output_timeout: 30m
+        #          command: |
+        #            export IOS_APPCENTER_API_TOKEN=$IOS_STAGING_APPCENTER_API_TOKEN
+        #            ./scripts/deploy.sh -o ios -t hard -e staging
+        #
+        #  deploy-android-staging-hard:
+        #    executor: android
+        #    working_directory: ~/pass-culture
+        #    resource_class: medium+
+        #    steps:
+        #      - checkout
+        #      - install_node_version
+        #      - install_node_modules
+        #      - install_ruby_version
+        #      - install_ruby_modules
+        #      - setup_sentry
+        #      - run:
+        #          name: Setup android keystore for staging environment
+        #          command: |
+        #            mkdir -p android/keystores
+        #            echo $ANDROID_KEYSTORE_STAGING | base64 -di > android/keystores/staging.keystore
+        #            echo "keyAlias=passculture" >> android/keystores/staging.keystore.properties
+        #            echo "storeFile=staging.keystore" >> android/keystores/staging.keystore.properties
+        #            echo "storePassword=$ANDROID_KEYSTORE_STORE_PASSWORD_STAGING" >> android/keystores/staging.keystore.properties
+        #            echo "keyPassword=$ANDROID_KEYSTORE_KEY_PASSWORD_STAGING" >>  android/keystores/staging.keystore.properties
+        #      - setup_android_google_services_config
+        #      - run:
+        #          name: Deploy Android App for staging environment
+        #          command: |
+        #            export ANDROID_APPCENTER_API_TOKEN=$ANDROID_STAGING_APPCENTER_API_TOKEN
+        #            ./scripts/deploy.sh -o android -t hard -e staging
+        #
+        #  deploy-soft-staging:
+        #    executor: android
+        #    working_directory: ~/pass-culture
+        #    steps:
+        #      - checkout
+        #      - install_node_version
+        #      - install_node_modules
+        #      - install_ruby_version
+        #      - install_ruby_modules
+        #      - setup_sentry
+        #      - run:
+        #          name: Deploy Android Code push for staging environment
+        #          command: |
+        #            export ANDROID_APPCENTER_API_TOKEN=$ANDROID_STAGING_APPCENTER_API_TOKEN
+        #            ./scripts/deploy.sh -o android -t soft -e staging
+        #      - run:
+        #          name: Deploy IOS Code push for staging environment
+        #          command: |
+        #            export IOS_APPCENTER_API_TOKEN=$IOS_STAGING_APPCENTER_API_TOKEN
+        #            ./scripts/deploy.sh -o ios -t soft -e staging
+        #      - notify-soft-release:
+        #          env: staging
 
   deploy-android-production-hard:
     executor: android
@@ -817,21 +817,21 @@ jobs:
       - notify-soft-release:
           env: production
 
-  deploy-web-staging:
-    executor: gcp
-    working_directory: ~/pass-culture
-    resource_class: large
-    steps:
-      - checkout
-      - copy_assetlinks:
-          env: staging
-      - install_node_modules
-      - setup_sentry
-      - gcp-oidc-authenticate
-      - build_web:
-          env: staging
-      - push-to-bucket:
-          bucket_name: passculture-metier-ehp-staging-decliweb
+                #  deploy-web-staging:
+                #    executor: gcp
+                #    working_directory: ~/pass-culture
+                #    resource_class: large
+                #    steps:
+                #      - checkout
+                #      - copy_assetlinks:
+                #          env: staging
+                #      - install_node_modules
+                #      - setup_sentry
+                #      - gcp-oidc-authenticate
+                #      - build_web:
+                #          env: staging
+                #      - push-to-bucket:
+                #          bucket_name: passculture-metier-ehp-staging-decliweb
 
   deploy-web-integration:
     executor: gcp
@@ -870,12 +870,12 @@ jobs:
               #      - deploy-web-proxy:
               #          env: testing
 
-  deploy-web-proxy-staging:
-    executor: gcp
-    working_directory: ~/pass-culture
-    steps:
-      - deploy-web-proxy:
-          env: staging
+              #  deploy-web-proxy-staging:
+              #    executor: gcp
+              #    working_directory: ~/pass-culture
+              #    steps:
+              #      - deploy-web-proxy:
+              #          env: staging
 
   deploy-web-proxy-integration:
     executor: gcp
@@ -976,45 +976,45 @@ workflows:
               #       requires:
               #         - deploy-ios-testing-hard
               #         - deploy-android-testing-hard
-      - deploy-android-staging-hard:
-          filters:
-            tags:
-              only: /^(patch\/)?v.*/
-            branches:
-              ignore: /.*/
-          requires:
-            - checkout-and-install-deps
-            - test-lint-and-types
-            - test-native
-      - deploy-ios-staging-hard:
-          filters:
-            tags:
-              only: /^(patch\/)?v.*/
-            branches:
-              ignore: /.*/
-          requires:
-            - checkout-and-install-deps
-            - test-lint-and-types
-            - test-native
-      - notify-hard-staging-release:
-          filters:
-            tags:
-              only: /^(patch\/)?v.*/
-            branches:
-              ignore: /.*/
-          requires:
-            - deploy-ios-staging-hard
-            - deploy-android-staging-hard
-      - deploy-soft-staging:
-          filters:
-            tags:
-              only: /^hotfix-staging.*/
-            branches:
-              ignore: /.*/
-          requires:
-            - checkout-and-install-deps
-            - test-lint-and-types
-            - test-native
+              #      - deploy-android-staging-hard:
+              #          filters:
+              #            tags:
+              #              only: /^(patch\/)?v.*/
+              #            branches:
+              #              ignore: /.*/
+              #          requires:
+              #            - checkout-and-install-deps
+              #            - test-lint-and-types
+              #            - test-native
+              #      - deploy-ios-staging-hard:
+              #          filters:
+              #            tags:
+              #              only: /^(patch\/)?v.*/
+              #            branches:
+              #              ignore: /.*/
+              #          requires:
+              #            - checkout-and-install-deps
+              #            - test-lint-and-types
+              #            - test-native
+              #      - notify-hard-staging-release:
+              #          filters:
+              #            tags:
+              #              only: /^(patch\/)?v.*/
+              #            branches:
+              #              ignore: /.*/
+              #          requires:
+              #            - deploy-ios-staging-hard
+              #            - deploy-android-staging-hard
+              #      - deploy-soft-staging:
+              #          filters:
+              #            tags:
+              #              only: /^hotfix-staging.*/
+              #            branches:
+              #              ignore: /.*/
+              #          requires:
+              #            - checkout-and-install-deps
+              #            - test-lint-and-types
+              #            - test-native
       - deploy-android-production-hard:
           filters:
             tags:
@@ -1054,19 +1054,32 @@ workflows:
             - checkout-and-install-deps
             - test-lint-and-types
             - test-native
-      - deploy-web-staging:
-          filters:
-            tags:
-              only:
-                - /^(patch\/)?v.*/
-                - /^hotfix-staging.*/
-            branches:
-              ignore: /.*/
-          requires:
-            - wait_for_approval_web_to_deploy
-          context:
-            - GCP
-            - GCP_APP_NATIVE_EHP
+                  #     - deploy-web-testing:
+                  #         filters:
+                  #           tags:
+                  #             ignore: /.*/
+                  #           branches:
+                  #             only: master
+                  #         requires:
+                  #           - checkout-and-install-deps
+                  #           - test-lint-and-types
+                  #           - test-web
+                  #         context:
+                  #           - GCP
+                  #           - GCP_APP_NATIVE_EHP
+                  #      - deploy-web-staging:
+                  #          filters:
+                  #            tags:
+                  #              only:
+                  #                - /^(patch\/)?v.*/
+                  #                - /^hotfix-staging.*/
+                  #            branches:
+                  #              ignore: /.*/
+                  #          requires:
+                  #            - wait_for_approval_web_to_deploy
+                  #          context:
+                  #            - GCP
+                  #            - GCP_APP_NATIVE_EHP
       - deploy-web-integration:
           filters:
             tags:
@@ -1104,19 +1117,19 @@ workflows:
               #       context:
               #         - GCP
               #         - GCP_APP_NATIVE_EHP
-      - deploy-web-proxy-staging:
-          filters:
-            tags:
-              only:
-                - /^(patch\/)?v.*/
-                - /^hotfix-staging.*/
-            branches:
-              ignore: /.*/
-          requires:
-            - wait_for_approval_web_proxy_to_deploy
-          context:
-            - GCP
-            - GCP_APP_NATIVE_EHP
+              #      - deploy-web-proxy-staging:
+              #          filters:
+              #            tags:
+              #              only:
+              #                - /^(patch\/)?v.*/
+              #                - /^hotfix-staging.*/
+              #            branches:
+              #              ignore: /.*/
+              #          requires:
+              #            - wait_for_approval_web_proxy_to_deploy
+              #          context:
+              #            - GCP
+              #            - GCP_APP_NATIVE_EHP
       - deploy-web-proxy-integration:
           filters:
             tags:
@@ -1149,8 +1162,8 @@ workflows:
               only:
                 - /^prod-hard-deploy.*/
                 - /^hotfix-prod.*/
-                - /^(patch\/)?v.*/
-                - /^hotfix-staging.*/
+                  #                - /^(patch\/)?v.*/
+                  # - /^hotfix-staging.*/
             branches:
               ignore: /.*/
           type: approval
@@ -1164,8 +1177,8 @@ workflows:
               only:
                 - /^prod-hard-deploy.*/
                 - /^hotfix-prod.*/
-                - /^(patch\/)?v.*/
-                - /^hotfix-staging.*/
+                  #  - /^(patch\/)?v.*/
+                  # - /^hotfix-staging.*/
             branches:
               ignore: /.*/
           type: approval
