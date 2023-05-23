@@ -18,7 +18,14 @@ export const mockedAlgoliaResponse: SearchResponse<Offer> = {
       },
       _geoloc: { lat: 48.94374, lng: 2.48171 },
       objectID: '102280',
-      venue: {},
+      venue: {
+        id: 1,
+        name: 'Lieu 1',
+        publicName: 'Lieu 1',
+        address: '1 rue de la paix',
+        postalCode: '75000',
+        city: 'Paris',
+      },
     },
     {
       offer: {
@@ -33,7 +40,14 @@ export const mockedAlgoliaResponse: SearchResponse<Offer> = {
       },
       _geoloc: { lat: 48.91265, lng: 2.4513 },
       objectID: '102272',
-      venue: {},
+      venue: {
+        id: 2,
+        name: 'Lieu 2',
+        publicName: 'Lieu 2',
+        address: '2 rue de la paix',
+        postalCode: '75000',
+        city: 'Paris',
+      },
     },
     {
       offer: {
@@ -48,7 +62,14 @@ export const mockedAlgoliaResponse: SearchResponse<Offer> = {
       },
       _geoloc: { lat: 4.90339, lng: -52.31663 },
       objectID: '102249',
-      venue: {},
+      venue: {
+        id: 3,
+        name: 'Lieu 3',
+        publicName: 'Lieu 3',
+        address: '3 rue de la paix',
+        postalCode: '75000',
+        city: 'Paris',
+      },
     },
     {
       offer: {
@@ -63,7 +84,14 @@ export const mockedAlgoliaResponse: SearchResponse<Offer> = {
       },
       _geoloc: { lat: 4.90339, lng: -52.31663 },
       objectID: '102310',
-      venue: {},
+      venue: {
+        id: 4,
+        name: 'Lieu 4',
+        publicName: 'Lieu 4',
+        address: '4 rue de la paix',
+        postalCode: '75000',
+        city: 'Paris',
+      },
     },
   ],
   nbHits: 4,
