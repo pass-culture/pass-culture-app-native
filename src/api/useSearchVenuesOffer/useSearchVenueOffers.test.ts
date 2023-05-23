@@ -171,7 +171,7 @@ describe('useSearchVenueOffers', () => {
       .spyOn(fetchAlgoliaOffer, 'fetchOffers')
       .mockResolvedValue(mockedAlgoliaResponse)
 
-    it('should fetch offers', async () => {
+    it('should fetch offers when shouldExecuteQuery is true', async () => {
       renderHook(
         () =>
           useSearchVenueOffersInfiniteQuery({
@@ -179,6 +179,7 @@ describe('useSearchVenueOffers', () => {
             venueId: 1,
             query: '9782070584628',
             geolocation: { latitude: 48.94374, longitude: 2.48171 },
+            shouldExecuteQuery: true,
           }),
         {
           // eslint-disable-next-line local-rules/no-react-query-provider-hoc
@@ -187,6 +188,26 @@ describe('useSearchVenueOffers', () => {
       )
       await waitFor(() => {
         expect(fetchOfferSpy).toHaveBeenCalledTimes(1)
+      })
+    })
+
+    it('should not fetch offers when shouldExecuteQuery is false', async () => {
+      renderHook(
+        () =>
+          useSearchVenueOffersInfiniteQuery({
+            offerId: 10000,
+            venueId: 1,
+            query: '9782070584628',
+            geolocation: { latitude: 48.94374, longitude: 2.48171 },
+            shouldExecuteQuery: false,
+          }),
+        {
+          // eslint-disable-next-line local-rules/no-react-query-provider-hoc
+          wrapper: ({ children }) => reactQueryProviderHOC(children),
+        }
+      )
+      await waitFor(() => {
+        expect(fetchOfferSpy).not.toHaveBeenCalled()
       })
     })
   })

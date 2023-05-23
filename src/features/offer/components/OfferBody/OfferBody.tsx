@@ -91,6 +91,10 @@ export const OfferBody: FunctionComponent<Props> = ({
       offer?.subcategoryId === SubcategoryIdEnum.LIVRE_AUDIO_PHYSIQUE
   )
   const { userPosition: position } = useGeolocation()
+
+  const shouldFetchSearchVenueOffers = Boolean(
+    enableMultivenueOffer && isMultivenueCompatibleOffer && offer?.extraData?.isbn
+  )
   const { hasNextPage, fetchNextPage, refetch, data, offerVenues, isFetching, nbOfferVenues } =
     useSearchVenueOffers({
       offerId,
@@ -100,13 +104,11 @@ export const OfferBody: FunctionComponent<Props> = ({
         longitude: offer?.venue?.coordinates?.longitude ?? 0,
       },
       query: offer?.extraData?.isbn ?? '',
+      shouldExecuteQuery: shouldFetchSearchVenueOffers,
     })
 
   const shouldDisplayOtherVenuesAvailableButton = Boolean(
-    enableMultivenueOffer &&
-      isMultivenueCompatibleOffer &&
-      offer?.extraData?.isbn &&
-      nbOfferVenues > 0
+    shouldFetchSearchVenueOffers && nbOfferVenues > 0
   )
 
   const {

@@ -20,6 +20,7 @@ export type UseSearchVenueOffersType = {
   offerId: number
   query: string
   geolocation: Position
+  shouldExecuteQuery: boolean
   venueId?: number
 }
 
@@ -73,6 +74,7 @@ export const useSearchVenueOffersInfiniteQuery = ({
   venueId,
   query,
   geolocation,
+  shouldExecuteQuery,
 }: UseSearchVenueOffersType) => {
   const isUserUnderage = useIsUserUnderage()
   const transformHits = useTransformOfferHits()
@@ -95,7 +97,7 @@ export const useSearchVenueOffersInfiniteQuery = ({
       return response
     },
     // first page is 0
-    { getNextPageParam }
+    { getNextPageParam, enabled: shouldExecuteQuery }
   )
 
   const offerVenues = useMemo(() => {
@@ -116,6 +118,13 @@ export const useSearchVenueOffers = ({
   venueId,
   query,
   geolocation,
+  shouldExecuteQuery,
 }: UseSearchVenueOffersType) => {
-  return useSearchVenueOffersInfiniteQuery({ offerId, venueId, query, geolocation })
+  return useSearchVenueOffersInfiniteQuery({
+    offerId,
+    venueId,
+    query,
+    geolocation,
+    shouldExecuteQuery,
+  })
 }
