@@ -33,10 +33,11 @@ export function getOfferVenues(hits: Offer[]) {
 
   hits.forEach((hit) => {
     const venueAlreadyListedIndex = offerVenues.findIndex((venue) => venue.venueId === hit.venue.id)
+    const venueAlreadyListedPrice = offerVenues[venueAlreadyListedIndex]?.price ?? 0
     if (
       venueAlreadyListedIndex >= 0 &&
       hit.offer.prices?.length &&
-      offerVenues[venueAlreadyListedIndex].price > hit.offer.prices[0]
+      venueAlreadyListedPrice > hit.offer.prices[0]
     ) {
       offerVenues[venueAlreadyListedIndex].offerId = Number(hit.objectID)
       offerVenues[venueAlreadyListedIndex].price = hit.offer.prices[0]

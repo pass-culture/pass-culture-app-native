@@ -13,7 +13,7 @@ import { getSpacing } from 'ui/theme'
 
 export type VenueListItem = VenueDetail & {
   offerId: number
-  price: number
+  price?: number
   coordinates?: Geoloc
   venueId?: number
 }
