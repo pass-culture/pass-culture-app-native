@@ -80,6 +80,7 @@ export type SubscriptionRootStackParamList = {
   SetPhoneValidationCode: undefined
   PhoneValidationTooManyAttempts: undefined
   PhoneValidationTooManySMSSent: undefined
+  SignupProgressBar: undefined
   // Profile
   SetName: undefined
   SetCity: undefined
