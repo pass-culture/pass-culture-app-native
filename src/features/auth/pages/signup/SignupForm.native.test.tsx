@@ -75,26 +75,6 @@ describe('<SignupForm />', () => {
     expect(icon).toBeNull()
   })
 
-  it('should call logCancelSignup with Email when clicking on quit signup modal on first step', async () => {
-    render(<SignupForm {...defaultProps} />)
-
-    fireEvent.press(await screen.findByTestId('Abandonner l’inscription'))
-    fireEvent.press(screen.getByText('Abandonner l’inscription'))
-
-    expect(analytics.logCancelSignup).toHaveBeenNthCalledWith(1, 'Email')
-  })
-
-  it('should call logCancelSignup with Password when clicking on quit signup modal on second step', async () => {
-    render(<SignupForm {...defaultProps} />)
-
-    fillEmailInput()
-    await act(() => fireEvent.press(screen.getByTestId('Continuer vers l’étape Mot de passe')))
-    fireEvent.press(screen.getByTestId('Abandonner l’inscription'))
-    fireEvent.press(screen.getByText('Abandonner l’inscription'))
-
-    expect(analytics.logCancelSignup).toHaveBeenNthCalledWith(1, 'Password')
-  })
-
   it('should call goBack() when left icon is pressed from first step', async () => {
     render(<SignupForm {...defaultProps} />)
 
@@ -112,64 +92,6 @@ describe('<SignupForm />', () => {
     fireEvent.press(screen.getByTestId('Revenir en arrière'))
 
     expect(mockGoBack).toBeCalledTimes(0)
-  })
-
-  it('should call logContinueSetEmail when clicking on next step from SetEmail', async () => {
-    render(<SignupForm {...defaultProps} />)
-
-    fillEmailInput()
-    await act(() => fireEvent.press(screen.getByTestId('Continuer vers l’étape Mot de passe')))
-
-    expect(analytics.logContinueSetEmail).toHaveBeenCalledTimes(1)
-  })
-
-  it('should call logContinueSetPassword when clicking on next step from SetPassword', async () => {
-    render(<SignupForm {...defaultProps} />)
-
-    fillEmailInput()
-    await act(async () => {
-      fireEvent.press(screen.getByTestId('Continuer vers l’étape Mot de passe'))
-    })
-
-    await fillPasswordInput()
-    await act(async () =>
-      fireEvent.press(screen.getByTestId('Continuer vers l’étape Date de naissance'))
-    )
-
-    expect(analytics.logContinueSetPassword).toHaveBeenCalledTimes(1)
-  })
-
-  it('should call logContinueSetEmail twice if user goes back to SetEmail and clicks on next step again', async () => {
-    render(<SignupForm {...defaultProps} />)
-
-    fillEmailInput()
-    await act(async () => {
-      fireEvent.press(screen.getByTestId('Continuer vers l’étape Mot de passe'))
-      fireEvent.press(screen.getByTestId('Revenir en arrière'))
-      fireEvent.press(screen.getByTestId('Continuer vers l’étape Mot de passe'))
-    })
-
-    expect(analytics.logContinueSetEmail).toHaveBeenCalledTimes(2)
-    expect(analytics.logContinueSetPassword).not.toHaveBeenCalled()
-  })
-
-  it('should call logContinueSetBirthday when clicking on next step from SetBirthday', async () => {
-    render(<SignupForm {...defaultProps} />)
-
-    fillEmailInput()
-    await act(() => fireEvent.press(screen.getByTestId('Continuer vers l’étape Mot de passe')))
-
-    await fillPasswordInput()
-    await act(() => fireEvent.press(screen.getByTestId('Continuer vers l’étape Date de naissance')))
-
-    await fillBirthdayInput()
-    await act(async () =>
-      fireEvent.press(screen.getByTestId('Continuer vers l’étape CGU & Données'))
-    )
-
-    expect(analytics.logContinueSetEmail).toHaveBeenCalledTimes(1)
-    expect(analytics.logContinueSetPassword).toHaveBeenCalledTimes(1)
-    expect(analytics.logContinueSetBirthday).toHaveBeenCalledTimes(1)
   })
 
   it('should create account when clicking on AcceptCgu button with trustedDevice when feature flag is active', async () => {
@@ -256,12 +178,94 @@ describe('<SignupForm />', () => {
     )
   })
 
-  it('should log analytics when clicking on close icon', async () => {
-    render(<SignupForm {...defaultProps} />)
+  describe('Analytics', () => {
+    it('should call logCancelSignup with Email when clicking on quit signup modal on first step', async () => {
+      render(<SignupForm {...defaultProps} />)
 
-    fireEvent.press(await screen.findByTestId('Abandonner l’inscription'))
+      fireEvent.press(await screen.findByTestId('Abandonner l’inscription'))
+      fireEvent.press(screen.getByText('Abandonner l’inscription'))
 
-    expect(analytics.logQuitSignup).toHaveBeenNthCalledWith(1, 'SetEmail')
+      expect(analytics.logCancelSignup).toHaveBeenNthCalledWith(1, 'Email')
+    })
+
+    it('should call logCancelSignup with Password when clicking on quit signup modal on second step', async () => {
+      render(<SignupForm {...defaultProps} />)
+
+      fillEmailInput()
+      await act(() => fireEvent.press(screen.getByTestId('Continuer vers l’étape Mot de passe')))
+      fireEvent.press(screen.getByTestId('Abandonner l’inscription'))
+      fireEvent.press(screen.getByText('Abandonner l’inscription'))
+
+      expect(analytics.logCancelSignup).toHaveBeenNthCalledWith(1, 'Password')
+    })
+
+    it('should call logContinueSetEmail when clicking on next step from SetEmail', async () => {
+      render(<SignupForm {...defaultProps} />)
+
+      fillEmailInput()
+      await act(() => fireEvent.press(screen.getByTestId('Continuer vers l’étape Mot de passe')))
+
+      expect(analytics.logContinueSetEmail).toHaveBeenCalledTimes(1)
+    })
+
+    it('should call logContinueSetPassword when clicking on next step from SetPassword', async () => {
+      render(<SignupForm {...defaultProps} />)
+
+      fillEmailInput()
+      await act(async () => {
+        fireEvent.press(screen.getByTestId('Continuer vers l’étape Mot de passe'))
+      })
+
+      await fillPasswordInput()
+      await act(async () =>
+        fireEvent.press(screen.getByTestId('Continuer vers l’étape Date de naissance'))
+      )
+
+      expect(analytics.logContinueSetPassword).toHaveBeenCalledTimes(1)
+    })
+
+    it('should call logContinueSetEmail twice if user goes back to SetEmail and clicks on next step again', async () => {
+      render(<SignupForm {...defaultProps} />)
+
+      fillEmailInput()
+      await act(async () => {
+        fireEvent.press(screen.getByTestId('Continuer vers l’étape Mot de passe'))
+        fireEvent.press(screen.getByTestId('Revenir en arrière'))
+        fireEvent.press(screen.getByTestId('Continuer vers l’étape Mot de passe'))
+      })
+
+      expect(analytics.logContinueSetEmail).toHaveBeenCalledTimes(2)
+      expect(analytics.logContinueSetPassword).not.toHaveBeenCalled()
+    })
+
+    it('should call logContinueSetBirthday when clicking on next step from SetBirthday', async () => {
+      render(<SignupForm {...defaultProps} />)
+
+      fillEmailInput()
+      await act(() => fireEvent.press(screen.getByTestId('Continuer vers l’étape Mot de passe')))
+
+      await fillPasswordInput()
+      await act(() =>
+        fireEvent.press(screen.getByTestId('Continuer vers l’étape Date de naissance'))
+      )
+
+      await fillBirthdayInput()
+      await act(async () =>
+        fireEvent.press(screen.getByTestId('Continuer vers l’étape CGU & Données'))
+      )
+
+      expect(analytics.logContinueSetEmail).toHaveBeenCalledTimes(1)
+      expect(analytics.logContinueSetPassword).toHaveBeenCalledTimes(1)
+      expect(analytics.logContinueSetBirthday).toHaveBeenCalledTimes(1)
+    })
+
+    it('should log analytics when clicking on close icon', async () => {
+      render(<SignupForm {...defaultProps} />)
+
+      fireEvent.press(await screen.findByTestId('Abandonner l’inscription'))
+
+      expect(analytics.logQuitSignup).toHaveBeenNthCalledWith(1, 'SetEmail')
+    })
   })
 })
 
