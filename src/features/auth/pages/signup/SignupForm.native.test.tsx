@@ -10,7 +10,7 @@ import { mockGoBack } from 'features/navigation/__mocks__/useGoBack'
 import { RootStackParamList } from 'features/navigation/RootNavigator/types'
 import { analytics } from 'libs/analytics'
 import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
-import { fireEvent, render, screen } from 'tests/utils'
+import { fireEvent, render, screen, act } from 'tests/utils'
 import { theme } from 'theme'
 import { TouchableOpacity } from 'ui/components/TouchableOpacity'
 
@@ -27,9 +27,7 @@ const mockSignupComponent = (name: string, props: PreValidationSignupStepProps) 
 }
 
 jest.mock('api/api')
-jest.mock('./SetEmail/SetEmail', () => ({
-  SetEmail: (props: PreValidationSignupStepProps) => mockSignupComponent('SetEmail', props),
-}))
+
 jest.mock('./SetPassword/SetPassword', () => ({
   SetPassword: (props: PreValidationSignupStepProps) => mockSignupComponent('SetPassword', props),
 }))
@@ -54,7 +52,7 @@ describe('<SignupForm />', () => {
   it('should display 4 step dots with the first one as current step', async () => {
     render(<SignupForm {...defaultProps} />)
 
-    await screen.findByTestId('goToNextStep')
+    await screen.findByTestId('Continuer vers l’étape Mot de passe')
 
     const dots = screen.getAllByTestId('dot-icon')
     expect(dots.length).toBe(4)
@@ -65,11 +63,12 @@ describe('<SignupForm />', () => {
   })
 
   it('should display 4 step dots with the second one as current step', async () => {
-    const { getAllByTestId } = render(<SignupForm {...defaultProps} />)
+    render(<SignupForm {...defaultProps} />)
 
-    fireEvent.press(await screen.findByTestId('goToNextStep'))
+    fillEmailInput()
+    await act(() => fireEvent.press(screen.getByTestId('Continuer vers l’étape Mot de passe')))
 
-    const dots = getAllByTestId('dot-icon')
+    const dots = screen.getAllByTestId('dot-icon')
     expect(dots.length).toBe(4)
     expect(dots[0].props.borderColor).toEqual(theme.colors.greenValid)
     expect(dots[1].props.borderColor).toEqual(theme.colors.primary)
@@ -92,7 +91,7 @@ describe('<SignupForm />', () => {
     }
     render(<SignupForm {...props} />)
 
-    await screen.findByTestId('goToNextStep')
+    await screen.findByTestId('Continuer vers l’étape Mot de passe')
 
     const icon = screen.queryByTestId('Abandonner l’inscription')
     expect(icon).toBeNull()
@@ -110,7 +109,8 @@ describe('<SignupForm />', () => {
   it('should call logCancelSignup with Password when clicking on quit signup modal on second step', async () => {
     render(<SignupForm {...defaultProps} />)
 
-    fireEvent.press(await screen.findByTestId('goToNextStep'))
+    fillEmailInput()
+    await act(() => fireEvent.press(screen.getByTestId('Continuer vers l’étape Mot de passe')))
     fireEvent.press(screen.getByTestId('Abandonner l’inscription'))
     fireEvent.press(screen.getByText('Abandonner l’inscription'))
 
@@ -129,7 +129,8 @@ describe('<SignupForm />', () => {
   it('should go to previous step without calling goBack() when left icon is pressed from second step', async () => {
     render(<SignupForm {...defaultProps} />)
 
-    fireEvent.press(await screen.findByTestId('goToNextStep'))
+    fillEmailInput()
+    await act(() => fireEvent.press(screen.getByTestId('Continuer vers l’étape Mot de passe')))
     fireEvent.press(screen.getByTestId('Revenir en arrière'))
 
     expect(mockGoBack).toBeCalledTimes(0)
@@ -138,7 +139,8 @@ describe('<SignupForm />', () => {
   it('should call logContinueSetEmail when clicking on next step from SetEmail', async () => {
     render(<SignupForm {...defaultProps} />)
 
-    fireEvent.press(await screen.findByTestId('goToNextStep'))
+    fillEmailInput()
+    await act(() => fireEvent.press(screen.getByTestId('Continuer vers l’étape Mot de passe')))
 
     expect(analytics.logContinueSetEmail).toHaveBeenCalledTimes(1)
   })
@@ -146,7 +148,8 @@ describe('<SignupForm />', () => {
   it('should call logContinueSetPassword when clicking on next step from SetPassword', async () => {
     render(<SignupForm {...defaultProps} />)
 
-    fireEvent.press(await screen.findByTestId('goToNextStep'))
+    fillEmailInput()
+    await act(() => fireEvent.press(screen.getByTestId('Continuer vers l’étape Mot de passe')))
 
     fireEvent.press(screen.getByTestId('goToNextStep'))
 
@@ -156,9 +159,12 @@ describe('<SignupForm />', () => {
   it('should call logContinueSetEmail twice if user goes back to SetEmail and clicks on next step again', async () => {
     render(<SignupForm {...defaultProps} />)
 
-    fireEvent.press(await screen.findByTestId('goToNextStep'))
-    fireEvent.press(screen.getByTestId('Revenir en arrière'))
-    fireEvent.press(screen.getByTestId('goToNextStep'))
+    fillEmailInput()
+    await act(async () => {
+      fireEvent.press(screen.getByTestId('Continuer vers l’étape Mot de passe'))
+      fireEvent.press(screen.getByTestId('Revenir en arrière'))
+      fireEvent.press(screen.getByTestId('Continuer vers l’étape Mot de passe'))
+    })
 
     expect(analytics.logContinueSetEmail).toHaveBeenCalledTimes(2)
     expect(analytics.logContinueSetPassword).not.toHaveBeenCalled()
@@ -167,7 +173,8 @@ describe('<SignupForm />', () => {
   it('should call logContinueSetBirthday when clicking on next step from SetBirthday', async () => {
     render(<SignupForm {...defaultProps} />)
 
-    fireEvent.press(await screen.findByTestId('goToNextStep'))
+    fillEmailInput()
+    await act(() => fireEvent.press(screen.getByTestId('Continuer vers l’étape Mot de passe')))
     fireEvent.press(screen.getByTestId('goToNextStep'))
     fireEvent.press(screen.getByTestId('goToNextStep'))
 
@@ -178,6 +185,7 @@ describe('<SignupForm />', () => {
 
   it('should create account when clicking on AcceptCgu button with trustedDevice when feature flag is active', async () => {
     useFeatureFlagSpy.mockReturnValueOnce(true) // mock for email step render
+    useFeatureFlagSpy.mockReturnValueOnce(true) // mock for email input rerender
     useFeatureFlagSpy.mockReturnValueOnce(true) // mock for device info rerender
     useFeatureFlagSpy.mockReturnValueOnce(true) // mock for password step render
     useFeatureFlagSpy.mockReturnValueOnce(true) // mock for set birthday step render
@@ -188,14 +196,15 @@ describe('<SignupForm />', () => {
 
     render(<SignupForm {...defaultProps} />)
 
-    fireEvent.press(await screen.findByTestId('goToNextStep'))
+    fillEmailInput()
+    await act(() => fireEvent.press(screen.getByTestId('Continuer vers l’étape Mot de passe')))
     fireEvent.press(screen.getByTestId('goToNextStep'))
     fireEvent.press(screen.getByTestId('goToNextStep'))
     await fireEvent.press(screen.getByTestId('signUp'))
 
     expect(api.postnativev1account).toHaveBeenCalledWith(
       {
-        email: '',
+        email: 'email@gmail.com',
         marketingEmailSubscription: false,
         password: '',
         birthdate: '',
@@ -216,14 +225,15 @@ describe('<SignupForm />', () => {
   it('should create account when clicking on AcceptCgu button without trustedDevice when feature flag is disabled', async () => {
     render(<SignupForm {...defaultProps} />)
 
-    fireEvent.press(await screen.findByTestId('goToNextStep'))
+    fillEmailInput()
+    await act(() => fireEvent.press(screen.getByTestId('Continuer vers l’étape Mot de passe')))
     fireEvent.press(screen.getByTestId('goToNextStep'))
     fireEvent.press(screen.getByTestId('goToNextStep'))
     await fireEvent.press(screen.getByTestId('signUp'))
 
     expect(api.postnativev1account).toHaveBeenCalledWith(
       {
-        email: '',
+        email: 'email@gmail.com',
         marketingEmailSubscription: false,
         password: '',
         birthdate: '',
@@ -245,3 +255,8 @@ describe('<SignupForm />', () => {
     expect(analytics.logQuitSignup).toHaveBeenNthCalledWith(1, 'SetEmail')
   })
 })
+
+const fillEmailInput = () => {
+  const emailInput = screen.getByPlaceholderText('tonadresse@email.com')
+  fireEvent.changeText(emailInput, 'email@gmail.com')
+}
