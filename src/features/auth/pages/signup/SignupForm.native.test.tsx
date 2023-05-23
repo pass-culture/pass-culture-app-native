@@ -13,12 +13,11 @@ import { fireEvent, render, screen, act } from 'tests/utils'
 
 import { SignupForm } from './SignupForm'
 
-jest.mock('api/api')
-
 const getModelSpy = jest.spyOn(DeviceInfo, 'getModel')
 const getSystemNameSpy = jest.spyOn(DeviceInfo, 'getSystemName')
 
 const useFeatureFlagSpy = jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockReturnValue(false)
+const apiSignUpSpy = jest.spyOn(api, 'postnativev1account')
 
 const defaultProps = {
   navigation,
@@ -87,6 +86,29 @@ describe('<SignupForm />', () => {
     expect(mockGoBack).toBeCalledTimes(0)
   })
 
+  it('should redirect to SignupConfirmationEmailSent on signup success', async () => {
+    render(<SignupForm {...defaultProps} />)
+
+    fillEmailInput()
+    await act(() => fireEvent.press(screen.getByTestId('Continuer vers l’étape Mot de passe')))
+
+    await fillPasswordInput()
+    await act(async () =>
+      fireEvent.press(screen.getByTestId('Continuer vers l’étape Date de naissance'))
+    )
+
+    await fillBirthdayInput()
+    await act(async () =>
+      fireEvent.press(screen.getByTestId('Continuer vers l’étape CGU & Données'))
+    )
+
+    await act(async () => fireEvent.press(screen.getByText('Accepter et s’inscrire')))
+
+    expect(navigation.navigate).toHaveBeenCalledWith('SignupConfirmationEmailSent', {
+      email: 'email@gmail.com',
+    })
+  })
+
   describe('API', () => {
     it('should create account when clicking on AcceptCgu button with trustedDevice when feature flag is active', async () => {
       useFeatureFlagSpy.mockReturnValueOnce(true) // mock for email step render
@@ -118,7 +140,7 @@ describe('<SignupForm />', () => {
 
       await act(async () => fireEvent.press(screen.getByText('Accepter et s’inscrire')))
 
-      expect(api.postnativev1account).toHaveBeenCalledWith(
+      expect(apiSignUpSpy).toHaveBeenCalledWith(
         {
           email: 'email@gmail.com',
           marketingEmailSubscription: false,
@@ -156,7 +178,7 @@ describe('<SignupForm />', () => {
 
       await act(async () => fireEvent.press(screen.getByText('Accepter et s’inscrire')))
 
-      expect(api.postnativev1account).toHaveBeenCalledWith(
+      expect(apiSignUpSpy).toHaveBeenCalledWith(
         {
           email: 'email@gmail.com',
           marketingEmailSubscription: false,
