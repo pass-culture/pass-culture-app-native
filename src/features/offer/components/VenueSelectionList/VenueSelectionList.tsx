@@ -2,10 +2,11 @@ import React, { useCallback } from 'react'
 import { View, ViewProps } from 'react-native'
 import styled from 'styled-components/native'
 
+import { Coordinates } from 'api/gen'
 import { VenueSelectionListItem } from 'features/offer/components/VenueSelectionListItem/VenueSelectionListItem'
 import { VenueDetail } from 'features/offer/types'
-import { Li } from 'ui/components/Li'
-import { VerticalUl } from 'ui/components/Ul'
+import { Position, useGeolocation } from 'libs/geolocation'
+import { formatDistance } from 'libs/parsers'
 import { getSpacing } from 'ui/theme'
 
 export type VenueListItem = VenueDetail & {
@@ -16,6 +17,19 @@ export type VenueSelectionListProps = ViewProps & {
   selectedItem?: number
   onItemSelect: (itemOfferId: number) => void
   items: VenueListItem[]
+type GetVenueItemDistanceType = {
+  item: VenueListItem
+  userPosition: Position | null
+  offerVenueLocation?: Coordinates
+}
+export function getVenueItemDistance({
+  item,
+  userPosition,
+  offerVenueLocation,
+}: GetVenueItemDistanceType) {
+  return item.coordinates
+    ? formatDistance(item.coordinates, userPosition ?? (offerVenueLocation as Position))
+    : item.distance
 }
 
 export function VenueSelectionList({
