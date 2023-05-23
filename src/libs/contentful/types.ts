@@ -1,3 +1,5 @@
+import { Color } from 'features/home/types'
+
 export enum ContentTypes {
   ALGOLIA = 'algolia',
   ALGOLIA_PARAMETERS = 'algoliaParameters',
@@ -167,8 +169,6 @@ export type ThematicHighlightParameters = Entry<
   ThematicHighlightFields,
   ContentTypes.THEMATIC_HIGHLIGHT
 >
-
-type Color = 'Gold' | 'Aquamarine' | 'SkyBlue' | 'DeepPink' | 'Coral' | 'Lilac'
 
 export type VideoContentModel = Entry<VideoFields, ContentTypes.VIDEO>
 type VideoFields = {
