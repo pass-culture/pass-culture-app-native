@@ -22,6 +22,7 @@ export enum ContentTypes {
   MOVIE_GENRES = 'movieGenres',
   MUSIC_TYPES = 'musicTypes',
   SHOW_TYPES = 'showTypes',
+  VIDEO = 'video',
 }
 
 export type Layout = 'two-items' | 'one-item-medium'
@@ -166,6 +167,22 @@ export type ThematicHighlightParameters = Entry<
   ThematicHighlightFields,
   ContentTypes.THEMATIC_HIGHLIGHT
 >
+
+type Color = 'Gold' | 'Aquamarine' | 'SkyBlue' | 'DeepPink' | 'Coral' | 'Lilac'
+
+export type VideoContentModel = Entry<VideoFields, ContentTypes.VIDEO>
+type VideoFields = {
+  title: string
+  displayedTitle: string
+  videoTitle: string
+  videoThumbnail: Image
+  durationInMinutes: number
+  youtubeVideoId: string
+  algoliaParameters: AlgoliaParameters
+  color: Color
+  videoTag: string
+  offerTitle: string
+}
 
 export type Cover = Entry<CoverFields, ContentTypes.INFORMATION>
 
@@ -408,6 +425,7 @@ export type HomepageNatifModule =
   | RecommendationContentModel
   | ThematicHighlightContentModel
   | VenuesContentModel
+  | VideoContentModel
   | CategoryListContentModel
 
 export type AlgoliaContentModel = Entry<AlgoliaFields, ContentTypes.ALGOLIA>
@@ -477,4 +495,8 @@ export const isThematicCategoryInfo = (
   thematicHeader?: ThematicHeader
 ): thematicHeader is ThematicCategoryInfo => {
   return thematicHeader?.sys.contentType?.sys.id === ContentTypes.THEMATIC_CATEGORY_INFO
+}
+
+export const isVideoContentModel = (module: HomepageNatifModule): module is VideoContentModel => {
+  return module.sys.contentType?.sys.id === ContentTypes.VIDEO
 }
