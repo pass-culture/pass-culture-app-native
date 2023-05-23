@@ -63,11 +63,10 @@ export function VenueSelectionModal({
       visible={isVisible}
       isFullscreen
       noPadding
-      modalSpacing={modal.spacing.MD}
       rightIcon={Close}
       onRightIconPress={onClosePress}
       rightIconAccessibilityLabel="Ne pas sélectionner un autre lieu"
-      customModalHeader={isDesktopViewport ? undefined : customHeader}
+      customModalHeader={customHeader}
       fixedModalBottom={
         <BottomWrapper>
           <ButtonPrimary
@@ -76,7 +75,8 @@ export function VenueSelectionModal({
             disabled={!selectedOffer}
           />
         </BottomWrapper>
-      }>
+      }
+      scrollEnabled={false}>
       <VenueSelectionList
         onItemSelect={setSelectedOffer}
         items={items}
