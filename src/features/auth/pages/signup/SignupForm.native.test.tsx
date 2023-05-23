@@ -52,7 +52,7 @@ describe('<SignupForm />', () => {
     expect(screen.queryByLabelText('Étape 4 sur 4 à faire')).toBeTruthy()
   })
 
-  it('should open quit signup modal when preventCancellation route param is false', async () => {
+  it('should display quit button and open modal on click when preventCancellation route param is false', async () => {
     render(<SignupForm {...defaultProps} />)
 
     fireEvent.press(await screen.findByTestId('Abandonner l’inscription'))
@@ -60,7 +60,7 @@ describe('<SignupForm />', () => {
     expect(screen.queryByText('Veux-tu abandonner l’inscription ?')).toBeTruthy()
   })
 
-  it('should not open quit signup modal when preventCancellation route param is true', async () => {
+  it('should not display quit button when preventCancellation route param is true', async () => {
     const props = {
       ...defaultProps,
       route: { ...defaultProps.route, params: { preventCancellation: true } },
