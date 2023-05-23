@@ -4,6 +4,7 @@ import { ScrollView } from 'react-native'
 import styled from 'styled-components/native'
 
 import { ReportedOffer, SubcategoryIdEnum } from 'api/gen'
+import { useSearchVenueOffers } from 'api/useSearchVenuesOffer/useSearchVenueOffers'
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { UseNavigationType, UseRouteType } from 'features/navigation/RootNavigator/types'
 import { useOffer } from 'features/offer/api/useOffer'
@@ -21,6 +22,7 @@ import { getVenueSectionTitle } from 'features/offer/helpers/getVenueSectionTitl
 import { useTrackOfferSeenDuration } from 'features/offer/helpers/useTrackOfferSeenDuration'
 import { isUserBeneficiary } from 'features/profile/helpers/isUserBeneficiary'
 import { isUserExBeneficiary } from 'features/profile/helpers/isUserExBeneficiary'
+import { ANIMATION_DURATION } from 'features/venue/components/VenuePartialAccordionDescription/VenuePartialAccordionDescription'
 import { accessibilityAndTestId } from 'libs/accessibilityAndTestId'
 import {
   formatFullAddress,
@@ -32,6 +34,7 @@ import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureF
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { useGeolocation } from 'libs/geolocation'
 import { WhereSection } from 'libs/geolocation/components/WhereSection'
+import { useIsFalseWithDelay } from 'libs/hooks/useIsFalseWithDelay'
 import { formatDates, formatDistance, getDisplayPrice, getFormattedDates } from 'libs/parsers'
 import { highlightLinks } from 'libs/parsers/highlightLinks'
 import {
@@ -40,6 +43,7 @@ import {
   useSubcategoriesMapping,
 } from 'libs/subcategories'
 import { Offer } from 'shared/offer/types'
+import { useOpacityTransition } from 'ui/animations/helpers/useOpacityTransition'
 import { AccessibilityBlock } from 'ui/components/accessibility/AccessibilityBlock'
 import { AccordionItem } from 'ui/components/AccordionItem'
 import { ButtonSecondary } from 'ui/components/buttons/ButtonSecondary'
@@ -86,8 +90,23 @@ export const OfferBody: FunctionComponent<Props> = ({
     offer?.subcategoryId === SubcategoryIdEnum.LIVRE_PAPIER ||
       offer?.subcategoryId === SubcategoryIdEnum.LIVRE_AUDIO_PHYSIQUE
   )
+  const { userPosition: position } = useGeolocation()
+  const { hasNextPage, fetchNextPage, refetch, data, offerVenues, isFetching, nbOfferVenues } =
+    useSearchVenueOffers({
+      offerId,
+      venueId: offer?.venue?.id,
+      geolocation: position ?? {
+        latitude: offer?.venue?.coordinates?.latitude ?? 0,
+        longitude: offer?.venue?.coordinates?.longitude ?? 0,
+      },
+      query: offer?.extraData?.isbn || '',
+    })
+
   const shouldDisplayOtherVenuesAvailableButton = Boolean(
-    enableMultivenueOffer && isMultivenueCompatibleOffer && offer?.extraData?.isbn
+    enableMultivenueOffer &&
+      isMultivenueCompatibleOffer &&
+      offer?.extraData?.isbn &&
+      nbOfferVenues > 0
   )
 
   const {
@@ -108,7 +127,8 @@ export const OfferBody: FunctionComponent<Props> = ({
 
   const categoryMapping = useCategoryIdMapping()
   const labelMapping = useCategoryHomeLabelMapping()
-  const { userPosition: position } = useGeolocation()
+
+  const { onScroll: onScrollModal } = useOpacityTransition()
 
   const fromOfferId = route.params?.fromOfferId
 
@@ -167,6 +187,14 @@ export const OfferBody: FunctionComponent<Props> = ({
   const handleBeforeNavigateToItinerary = useCallback(() => {
     analytics.logConsultItinerary({ offerId, from: 'offer' })
   }, [offerId])
+
+  const onEndReached = useCallback(() => {
+    if (data && hasNextPage) {
+      fetchNextPage()
+    }
+  }, [data, fetchNextPage, hasNextPage])
+
+  const isRefreshing = useIsFalseWithDelay(isFetching, ANIMATION_DURATION)
 
   if (!offer) return <React.Fragment></React.Fragment>
   const { accessibility, venue } = offer
@@ -360,10 +388,15 @@ export const OfferBody: FunctionComponent<Props> = ({
       {shouldDisplayOtherVenuesAvailableButton ? (
         <VenueSelectionModal
           isVisible={isChangeVenueModalVisible}
-          items={[]}
+          items={offerVenues}
           title={venueSectionTitle}
           onSubmit={onNewOfferVenueSelected}
           onClosePress={hideChangeVenueModal}
+          onEndReached={onEndReached}
+          refreshing={isRefreshing}
+          onRefresh={refetch}
+          onScroll={onScrollModal}
+          offerVenueLocation={offer.venue.coordinates}
         />
       ) : null}
     </Container>

@@ -10,6 +10,7 @@ import { SubcategoryIdEnum, UserReportedOffersResponse } from 'api/gen'
 import { mockDigitalOffer, mockOffer } from 'features/bookOffer/fixtures/offer'
 import * as ReportedOffersAPI from 'features/offer/api/useReportedOffers'
 import { OfferBody } from 'features/offer/components/OfferBody/OfferBody'
+import { VenueListItem } from 'features/offer/components/VenueSelectionList/VenueSelectionList'
 import * as GetInstalledAppsAPI from 'features/offer/helpers/getInstalledApps/getInstalledApps'
 import { getOfferUrl } from 'features/share/helpers/getOfferUrl'
 import { beneficiaryUser, nonBeneficiaryUser } from 'fixtures/user'
@@ -95,6 +96,53 @@ jest.mock('libs/network/useNetInfo', () => ({
   useNetInfo: () => mockUseNetInfo(),
 }))
 
+const offerVenues = [
+  {
+    title: 'Envie de lire',
+    address: '94200 Ivry-sur-Seine, 16 rue Gabriel Peri',
+    distance: '500 m',
+    offerId: 1,
+    price: 1000,
+  },
+  {
+    title: 'Le Livre Éclaire',
+    address: '75013 Paris, 56 rue de Tolbiac',
+    distance: '1,5 km',
+    offerId: 2,
+    price: 1000,
+  },
+  {
+    title: 'Hachette Livre',
+    address: '94200 Ivry-sur-Seine, Rue Charles du Colomb',
+    distance: '2,4 km',
+    offerId: 3,
+    price: 1000,
+  },
+]
+const mockHasNextPage = true
+const mockFetchNextPage = jest.fn()
+const mockData = {
+  pages: [
+    {
+      nbHits: 0,
+      hits: [],
+      page: 0,
+    },
+  ],
+}
+let mockOfferVenues: VenueListItem[] = []
+let mockNbOfferVenues = 0
+jest.mock('api/useSearchVenuesOffer/useSearchVenueOffers', () => ({
+  useSearchVenueOffers: () => ({
+    hasNextPage: mockHasNextPage,
+    fetchNextPage: mockFetchNextPage,
+    data: mockData,
+    offerVenues: mockOfferVenues,
+    nbOfferVenues: mockNbOfferVenues,
+    isFetching: false,
+  }),
+}))
+
 const useFeatureFlagSpy = jest.spyOn(useFeatureFlag, 'useFeatureFlag').mockReturnValue(false)
 
 const onScroll = jest.fn()
@@ -104,6 +152,13 @@ const offerId = 1
 describe('<OfferBody />', () => {
   beforeAll(() => {
     mockdate.set(new Date('2021-01-01'))
+    mockOfferVenues = []
+    mockNbOfferVenues = 0
+  })
+
+  afterEach(() => {
+    mockOfferVenues = []
+    mockNbOfferVenues = 0
   })
 
   it('should match snapshot for physical offer', async () => {
@@ -488,7 +543,7 @@ describe('<OfferBody />', () => {
       } as unknown as UseQueryResult<UserReportedOffersResponse>)
     })
 
-    it('should display other venues available button when offer subcategory is "Livres audio physiques" and offer has an ISBN', async () => {
+    it('should display other venues available button when offer subcategory is "Livres audio physiques", offer has an ISBN and that there are other venues offering the same offer', async () => {
       mockUseOffer.mockReturnValueOnce({
         data: {
           ...mockOffer,
@@ -496,10 +551,28 @@ describe('<OfferBody />', () => {
           extraData: { isbn: '2765410054' },
         },
       })
+      mockNbOfferVenues = 2
+      mockOfferVenues = offerVenues
       renderOfferBody()
 
       await screen.findByTestId('offer-container')
       expect(screen.getByText('Voir d’autres lieux disponibles')).toBeTruthy()
+    })
+
+    it('should not display other venues available button when offer subcategory is "Livres audio physiques", offer has an ISBN and that there are not other venues offering the same offer', async () => {
+      mockUseOffer.mockReturnValueOnce({
+        data: {
+          ...mockOffer,
+          subcategoryId: SubcategoryIdEnum.LIVRE_AUDIO_PHYSIQUE,
+          extraData: { isbn: '2765410054' },
+        },
+      })
+      mockNbOfferVenues = 0
+      mockOfferVenues = []
+      renderOfferBody()
+
+      await screen.findByTestId('offer-container')
+      expect(screen.queryByText('Voir d’autres lieux disponibles')).toBeNull()
     })
 
     it('should not display other venues available button when offer subcategory is "Livres audio physiques" and offer has not an ISBN', async () => {
@@ -512,7 +585,7 @@ describe('<OfferBody />', () => {
       expect(screen.queryByText('Voir d’autres lieux disponibles')).toBeNull()
     })
 
-    it('should display other venues available button when offer subcategory is "Livres papier" and offer has an ISBN', async () => {
+    it('should display other venues available button when offer subcategory is "Livres papier", offer has an ISBN  and that there are other venues offering the same offer', async () => {
       mockUseOffer.mockReturnValueOnce({
         data: {
           ...mockOffer,
@@ -520,16 +593,36 @@ describe('<OfferBody />', () => {
           extraData: { isbn: '2765410054' },
         },
       })
+      mockNbOfferVenues = 2
+      mockOfferVenues = offerVenues
       renderOfferBody()
 
       await screen.findByTestId('offer-container')
       expect(screen.getByText('Voir d’autres lieux disponibles')).toBeTruthy()
     })
 
+    it('should not display other venues available button when offer subcategory is "Livres papier", offer has an ISBN  and that there are other venues offering the same offer', async () => {
+      mockUseOffer.mockReturnValueOnce({
+        data: {
+          ...mockOffer,
+          subcategoryId: SubcategoryIdEnum.LIVRE_PAPIER,
+          extraData: { isbn: '2765410054' },
+        },
+      })
+      mockNbOfferVenues = 0
+      mockOfferVenues = []
+      renderOfferBody()
+
+      await screen.findByTestId('offer-container')
+      expect(screen.queryByText('Voir d’autres lieux disponibles')).toBeNull()
+    })
+
     it('should not display other venues available button when offer subcategory is "Livres papier" and offer has not an ISBN', async () => {
       mockUseOffer.mockReturnValueOnce({
         data: { ...mockOffer, subcategoryId: SubcategoryIdEnum.LIVRE_PAPIER },
       })
+      mockNbOfferVenues = 2
+      mockOfferVenues = offerVenues
       renderOfferBody()
 
       await screen.findByTestId('offer-container')

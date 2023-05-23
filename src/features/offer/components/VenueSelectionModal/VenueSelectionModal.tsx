@@ -1,7 +1,8 @@
 import React, { useCallback, useMemo, useState } from 'react'
 import { View } from 'react-native'
-import styled, { useTheme } from 'styled-components/native'
+import styled from 'styled-components/native'
 
+import { Coordinates } from 'api/gen'
 import {
   VenueSelectionList,
   VenueSelectionListProps,
@@ -19,6 +20,11 @@ type VenueSelectionModalProps = {
   title: string
   onSubmit: (selectedOfferId: number) => void
   onClosePress: VoidFunction
+  onEndReached?: VoidFunction
+  refreshing?: boolean
+  onRefresh?: (() => void) | null | undefined
+  offerVenueLocation?: Coordinates
+  onScroll?: VoidFunction
 }
 
 const HEIGHT_CONTAINER = getSpacing(6)
@@ -29,8 +35,12 @@ export function VenueSelectionModal({
   title,
   onSubmit,
   onClosePress,
+  onEndReached,
+  refreshing,
+  onRefresh,
+  onScroll,
+  offerVenueLocation,
 }: VenueSelectionModalProps) {
-  const { modal, isDesktopViewport } = useTheme()
   const [selectedOffer, setSelectedOffer] = useState<number>()
   const { top } = useCustomSafeInsets()
 
@@ -81,6 +91,11 @@ export function VenueSelectionModal({
         onItemSelect={setSelectedOffer}
         items={items}
         selectedItem={selectedOffer}
+        onEndReached={onEndReached}
+        refreshing={refreshing}
+        onRefresh={onRefresh}
+        onScroll={onScroll}
+        offerVenueLocation={offerVenueLocation}
       />
     </AppModal>
   )

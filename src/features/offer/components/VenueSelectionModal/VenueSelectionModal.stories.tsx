@@ -13,6 +13,7 @@ export default {
     title: 'Lieu de retrait',
     onSubmit: action('selected'),
     onClosePress: action('close modal'),
+    onRefresh: undefined,
   },
   argTypes: {
     onSubmit: { control: { disable: true } },
@@ -38,18 +39,21 @@ Default.args = {
       address: '94200 Ivry-sur-Seine, 16 rue Gabriel Peri',
       distance: '500 m',
       offerId: 1,
+      price: 1000,
     },
     {
       title: 'Le Livre Éclaire',
       address: '75013 Paris, 56 rue de Tolbiac',
       distance: '1,5 km',
       offerId: 2,
+      price: 1000,
     },
     {
       title: 'Hachette Livre',
       address: '94200 Ivry-sur-Seine, Rue Charles du Colomb',
       distance: '2,4 km',
       offerId: 3,
+      price: 1000,
     },
   ],
 }

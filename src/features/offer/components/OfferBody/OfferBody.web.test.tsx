@@ -4,6 +4,7 @@ import { Linking } from 'react-native'
 
 import { mockOffer } from 'features/bookOffer/fixtures/offer'
 import { OfferBody } from 'features/offer/components/OfferBody/OfferBody'
+import { VenueListItem } from 'features/offer/components/VenueSelectionList/VenueSelectionList'
 import { getOfferUrl } from 'features/share/helpers/getOfferUrl'
 import { placeholderData } from 'libs/subcategories/placeholderData'
 import { act, fireEvent, render, screen } from 'tests/utils/web'
@@ -19,6 +20,30 @@ jest.mock('libs/subcategories/useSubcategories', () => ({
       subcategories: mockSubcategories,
       searchGroups: mockSearchGroups,
     },
+  }),
+}))
+
+const mockHasNextPage = true
+const mockFetchNextPage = jest.fn()
+const mockData = {
+  pages: [
+    {
+      nbHits: 0,
+      hits: [],
+      page: 0,
+    },
+  ],
+}
+const mockOfferVenues: VenueListItem[] = []
+const mockNbOfferVenues = 0
+jest.mock('api/useSearchVenuesOffer/useSearchVenueOffers', () => ({
+  useSearchVenueOffers: () => ({
+    hasNextPage: mockHasNextPage,
+    fetchNextPage: mockFetchNextPage,
+    data: mockData,
+    offerVenues: mockOfferVenues,
+    nbHits: mockNbOfferVenues,
+    isFetching: false,
   }),
 }))
 
