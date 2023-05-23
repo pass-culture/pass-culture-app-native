@@ -12,6 +12,16 @@ import { measurePerformance, screen } from 'tests/utils'
 const TEST_TIMEOUT_IN_MS = 30000
 jest.setTimeout(TEST_TIMEOUT_IN_MS)
 
+const offerIds = paginatedFavoritesResponseSnap.favorites.map((favorite) => favorite.offer.id)
+
+offerIds.map((offerId) => {
+  simulateBackend({
+    id: offerId,
+    hasAddFavoriteError: false,
+    hasRemoveFavoriteError: false,
+  })
+})
+
 describe('<Favorites />', () => {
   it('Performance test for Favorites page', async () => {
     storage.saveString('access_token', 'token')
@@ -24,17 +34,6 @@ describe('<Favorites />', () => {
       ),
       {
         scenario: async () => {
-          const offerIds = paginatedFavoritesResponseSnap.favorites.map(
-            (favorite) => favorite.offer.id
-          )
-
-          offerIds.map((offerId) => {
-            simulateBackend({
-              id: offerId,
-              hasAddFavoriteError: false,
-              hasRemoveFavoriteError: false,
-            })
-          })
           await screen.findByText(`4 favoris`, {}, { timeout: TEST_TIMEOUT_IN_MS })
         },
       }
