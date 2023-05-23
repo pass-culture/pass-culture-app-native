@@ -10,7 +10,6 @@ import { RootStackParamList } from 'features/navigation/RootNavigator/types'
 import { analytics } from 'libs/analytics'
 import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { fireEvent, render, screen, act } from 'tests/utils'
-import { theme } from 'theme'
 
 import { SignupForm } from './SignupForm'
 
@@ -27,31 +26,25 @@ const defaultProps = {
 } as unknown as StackScreenProps<RootStackParamList, 'SignupForm'>
 
 describe('<SignupForm />', () => {
-  it('should display 4 step dots with the first one as current step', async () => {
+  it('should have accessibility label indicating current step and total steps', async () => {
     render(<SignupForm {...defaultProps} />)
 
-    await screen.findByTestId('Continuer vers l’étape Mot de passe')
-
-    const dots = screen.getAllByTestId('dot-icon')
-    expect(dots.length).toBe(4)
-    expect(dots[0].props.borderColor).toEqual(theme.colors.primary)
-    expect(dots[1].props.borderColor).toEqual(theme.colors.greyDark)
-    expect(dots[2].props.borderColor).toEqual(theme.colors.greyDark)
-    expect(dots[3].props.borderColor).toEqual(theme.colors.greyDark)
+    expect(await screen.findByLabelText('Étape 1 sur 4 en cours')).toBeTruthy()
+    expect(screen.queryByLabelText('Étape 2 sur 4 à faire')).toBeTruthy()
+    expect(screen.queryByLabelText('Étape 3 sur 4 à faire')).toBeTruthy()
+    expect(screen.queryByLabelText('Étape 4 sur 4 à faire')).toBeTruthy()
   })
 
-  it('should display 4 step dots with the second one as current step', async () => {
+  it('should update accessibility label indicating current step and total steps when going to next step', async () => {
     render(<SignupForm {...defaultProps} />)
 
     fillEmailInput()
     await act(() => fireEvent.press(screen.getByTestId('Continuer vers l’étape Mot de passe')))
 
-    const dots = screen.getAllByTestId('dot-icon')
-    expect(dots.length).toBe(4)
-    expect(dots[0].props.borderColor).toEqual(theme.colors.greenValid)
-    expect(dots[1].props.borderColor).toEqual(theme.colors.primary)
-    expect(dots[2].props.borderColor).toEqual(theme.colors.greyDark)
-    expect(dots[3].props.borderColor).toEqual(theme.colors.greyDark)
+    expect(screen.queryByLabelText('Étape 1 sur 4 réalisée')).toBeTruthy()
+    expect(screen.queryByLabelText('Étape 2 sur 4 en cours')).toBeTruthy()
+    expect(screen.queryByLabelText('Étape 3 sur 4 à faire')).toBeTruthy()
+    expect(screen.queryByLabelText('Étape 4 sur 4 à faire')).toBeTruthy()
   })
 
   it('should open quit signup modal when preventCancellation route param is false', async () => {
