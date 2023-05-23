@@ -2,6 +2,7 @@ import { rest } from 'msw'
 import { setupServer } from 'msw/node'
 
 import {
+  AccountRequest,
   AccountState,
   BannerResponse,
   BookingsResponse,
@@ -42,6 +43,12 @@ import { EmptyResponse } from 'libs/fetch'
 import { placeholderData } from 'libs/subcategories/placeholderData'
 
 export const server = setupServer(
+  rest.post<AccountRequest, EmptyResponse>(
+    env.API_BASE_URL + '/native/v1/account',
+    (_req, res, ctx) => {
+      return res(ctx.status(200), ctx.json({}))
+    }
+  ),
   rest.post<SigninRequest, SigninResponse>(
     env.API_BASE_URL + '/native/v1/signin',
     (_req, res, ctx) => {
