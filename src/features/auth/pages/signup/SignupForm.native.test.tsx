@@ -1,14 +1,20 @@
 import { StackScreenProps } from '@react-navigation/stack'
+import { rest } from 'msw'
 import React from 'react'
 import DeviceInfo from 'react-native-device-info'
 
 import { navigation } from '__mocks__/@react-navigation/native'
 import { api } from 'api/api'
+import { AccountRequest } from 'api/gen'
 import { ELIGIBLE_AGE_DATE } from 'features/auth/fixtures/fixtures'
 import { mockGoBack } from 'features/navigation/__mocks__/useGoBack'
 import { RootStackParamList } from 'features/navigation/RootNavigator/types'
 import { analytics } from 'libs/analytics'
+import { env } from 'libs/environment'
+import { EmptyResponse } from 'libs/fetch'
 import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
+import { eventMonitoring } from 'libs/monitoring'
+import { server } from 'tests/server'
 import { fireEvent, render, screen, act } from 'tests/utils'
 
 import { SignupForm } from './SignupForm'
@@ -191,6 +197,38 @@ describe('<SignupForm />', () => {
           trustedDevice: undefined,
         },
         { credentials: 'omit' }
+      )
+    })
+
+    it('should log to sentry on API error', async () => {
+      server.use(
+        rest.post<AccountRequest, EmptyResponse>(
+          env.API_BASE_URL + '/native/v1/account',
+          (_req, res, ctx) => {
+            return res.once(ctx.status(400))
+          }
+        )
+      )
+
+      render(<SignupForm {...defaultProps} />)
+
+      fillEmailInput()
+      await act(() => fireEvent.press(screen.getByTestId('Continuer vers l’étape Mot de passe')))
+
+      await fillPasswordInput()
+      await act(async () =>
+        fireEvent.press(screen.getByTestId('Continuer vers l’étape Date de naissance'))
+      )
+
+      await fillBirthdayInput()
+      await act(async () =>
+        fireEvent.press(screen.getByTestId('Continuer vers l’étape CGU & Données'))
+      )
+
+      await act(async () => fireEvent.press(screen.getByText('Accepter et s’inscrire')))
+
+      expect(eventMonitoring.captureException).toHaveBeenCalledWith(
+        new Error('NETWORK_REQUEST_FAILED')
       )
     })
   })
