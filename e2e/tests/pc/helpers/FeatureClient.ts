@@ -14,7 +14,7 @@ const bright = '\x1b[1m'
 
 class FeatureClient {
   private static API_BASE_URL = env.API_BASE_URL
-  private static ENDPOINT = 'native/v1/features'
+  private static ENDPOINT = 'testing/features'
 
   private async patchFeatures(features: Features) {
     try {
