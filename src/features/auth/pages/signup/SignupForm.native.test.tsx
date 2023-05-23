@@ -94,88 +94,90 @@ describe('<SignupForm />', () => {
     expect(mockGoBack).toBeCalledTimes(0)
   })
 
-  it('should create account when clicking on AcceptCgu button with trustedDevice when feature flag is active', async () => {
-    useFeatureFlagSpy.mockReturnValueOnce(true) // mock for email step render
-    useFeatureFlagSpy.mockReturnValueOnce(true) // mock for email input rerender
-    useFeatureFlagSpy.mockReturnValueOnce(true) // mock for device info rerender
-    useFeatureFlagSpy.mockReturnValueOnce(true) // mock for password step render
-    useFeatureFlagSpy.mockReturnValueOnce(true) // mock for password input rerender
-    useFeatureFlagSpy.mockReturnValueOnce(true) // mock for set birthday step render
-    useFeatureFlagSpy.mockReturnValueOnce(true) // mock for set birthday input rerender
-    useFeatureFlagSpy.mockReturnValueOnce(true) // mock for accept cgu step render
+  describe('API', () => {
+    it('should create account when clicking on AcceptCgu button with trustedDevice when feature flag is active', async () => {
+      useFeatureFlagSpy.mockReturnValueOnce(true) // mock for email step render
+      useFeatureFlagSpy.mockReturnValueOnce(true) // mock for email input rerender
+      useFeatureFlagSpy.mockReturnValueOnce(true) // mock for device info rerender
+      useFeatureFlagSpy.mockReturnValueOnce(true) // mock for password step render
+      useFeatureFlagSpy.mockReturnValueOnce(true) // mock for password input rerender
+      useFeatureFlagSpy.mockReturnValueOnce(true) // mock for set birthday step render
+      useFeatureFlagSpy.mockReturnValueOnce(true) // mock for set birthday input rerender
+      useFeatureFlagSpy.mockReturnValueOnce(true) // mock for accept cgu step render
 
-    getModelSpy.mockReturnValueOnce('iPhone 13')
-    getSystemNameSpy.mockReturnValueOnce('iOS')
+      getModelSpy.mockReturnValueOnce('iPhone 13')
+      getSystemNameSpy.mockReturnValueOnce('iOS')
 
-    render(<SignupForm {...defaultProps} />)
+      render(<SignupForm {...defaultProps} />)
 
-    fillEmailInput()
-    await act(() => fireEvent.press(screen.getByTestId('Continuer vers l’étape Mot de passe')))
+      fillEmailInput()
+      await act(() => fireEvent.press(screen.getByTestId('Continuer vers l’étape Mot de passe')))
 
-    await fillPasswordInput()
-    await act(async () =>
-      fireEvent.press(screen.getByTestId('Continuer vers l’étape Date de naissance'))
-    )
+      await fillPasswordInput()
+      await act(async () =>
+        fireEvent.press(screen.getByTestId('Continuer vers l’étape Date de naissance'))
+      )
 
-    await fillBirthdayInput()
-    await act(async () =>
-      fireEvent.press(screen.getByTestId('Continuer vers l’étape CGU & Données'))
-    )
+      await fillBirthdayInput()
+      await act(async () =>
+        fireEvent.press(screen.getByTestId('Continuer vers l’étape CGU & Données'))
+      )
 
-    await act(async () => fireEvent.press(screen.getByText('Accepter et s’inscrire')))
+      await act(async () => fireEvent.press(screen.getByText('Accepter et s’inscrire')))
 
-    expect(api.postnativev1account).toHaveBeenCalledWith(
-      {
-        email: 'email@gmail.com',
-        marketingEmailSubscription: false,
-        password: 'user@AZERTY123',
-        birthdate: '2003-12-01',
-        postalCode: '',
-        token: 'dummyToken',
-        appsFlyerPlatform: 'ios',
-        appsFlyerUserId: 'uniqueCustomerId',
-        trustedDevice: {
-          deviceId: 'ad7b7b5a169641e27cadbdb35adad9c4ca23099a',
-          os: 'iOS',
-          source: 'iPhone 13',
+      expect(api.postnativev1account).toHaveBeenCalledWith(
+        {
+          email: 'email@gmail.com',
+          marketingEmailSubscription: false,
+          password: 'user@AZERTY123',
+          birthdate: '2003-12-01',
+          postalCode: '',
+          token: 'dummyToken',
+          appsFlyerPlatform: 'ios',
+          appsFlyerUserId: 'uniqueCustomerId',
+          trustedDevice: {
+            deviceId: 'ad7b7b5a169641e27cadbdb35adad9c4ca23099a',
+            os: 'iOS',
+            source: 'iPhone 13',
+          },
         },
-      },
-      { credentials: 'omit' }
-    )
-  })
+        { credentials: 'omit' }
+      )
+    })
 
-  it('should create account when clicking on AcceptCgu button without trustedDevice when feature flag is disabled', async () => {
-    render(<SignupForm {...defaultProps} />)
+    it('should create account when clicking on AcceptCgu button without trustedDevice when feature flag is disabled', async () => {
+      render(<SignupForm {...defaultProps} />)
 
-    fillEmailInput()
-    await act(() => fireEvent.press(screen.getByTestId('Continuer vers l’étape Mot de passe')))
+      fillEmailInput()
+      await act(() => fireEvent.press(screen.getByTestId('Continuer vers l’étape Mot de passe')))
 
-    await fillPasswordInput()
-    await act(async () =>
-      fireEvent.press(screen.getByTestId('Continuer vers l’étape Date de naissance'))
-    )
+      await fillPasswordInput()
+      await act(async () =>
+        fireEvent.press(screen.getByTestId('Continuer vers l’étape Date de naissance'))
+      )
 
-    await fillBirthdayInput()
-    await act(async () =>
-      fireEvent.press(screen.getByTestId('Continuer vers l’étape CGU & Données'))
-    )
+      await fillBirthdayInput()
+      await act(async () =>
+        fireEvent.press(screen.getByTestId('Continuer vers l’étape CGU & Données'))
+      )
 
-    await act(async () => fireEvent.press(screen.getByText('Accepter et s’inscrire')))
+      await act(async () => fireEvent.press(screen.getByText('Accepter et s’inscrire')))
 
-    expect(api.postnativev1account).toHaveBeenCalledWith(
-      {
-        email: 'email@gmail.com',
-        marketingEmailSubscription: false,
-        password: 'user@AZERTY123',
-        birthdate: '2003-12-01',
-        postalCode: '',
-        token: 'dummyToken',
-        appsFlyerPlatform: 'ios',
-        appsFlyerUserId: 'uniqueCustomerId',
-        trustedDevice: undefined,
-      },
-      { credentials: 'omit' }
-    )
+      expect(api.postnativev1account).toHaveBeenCalledWith(
+        {
+          email: 'email@gmail.com',
+          marketingEmailSubscription: false,
+          password: 'user@AZERTY123',
+          birthdate: '2003-12-01',
+          postalCode: '',
+          token: 'dummyToken',
+          appsFlyerPlatform: 'ios',
+          appsFlyerUserId: 'uniqueCustomerId',
+          trustedDevice: undefined,
+        },
+        { credentials: 'omit' }
+      )
+    })
   })
 
   describe('Analytics', () => {
