@@ -445,58 +445,44 @@ export type VenuesContentModel = Entry<VenuesFields, ContentTypes.VENUES_PLAYLIS
 
 export type CategoryListContentModel = Entry<CategoryListFields, ContentTypes.CATEGORY_LIST>
 
-export const isAlgoliaContentModel = (
-  module: HomepageNatifModule
-): module is AlgoliaContentModel => {
-  return module.sys.contentType?.sys.id === ContentTypes.ALGOLIA
-}
+export const isAlgoliaContentModel = (module: HomepageNatifModule): module is AlgoliaContentModel =>
+  module.sys.contentType?.sys.id === ContentTypes.ALGOLIA
 
 export const isBusinessContentModel = (
   module: HomepageNatifModule
-): module is BusinessContentModel => {
-  return module.sys.contentType?.sys.id === ContentTypes.BUSINESS
-}
+): module is BusinessContentModel => module.sys.contentType?.sys.id === ContentTypes.BUSINESS
 
 export const isExclusivityContentModel = (
   module: HomepageNatifModule
-): module is ExclusivityContentModel => {
-  return module.sys.contentType?.sys.id === ContentTypes.EXCLUSIVITY
-}
+): module is ExclusivityContentModel => module.sys.contentType?.sys.id === ContentTypes.EXCLUSIVITY
 
 export const isRecommendationContentModel = (
   module: HomepageNatifModule
-): module is RecommendationContentModel => {
-  return module.sys.contentType?.sys.id === ContentTypes.RECOMMENDATION
-}
+): module is RecommendationContentModel =>
+  module.sys.contentType?.sys.id === ContentTypes.RECOMMENDATION
 
 export const isThematicHighlightContentModel = (
   module: HomepageNatifModule
-): module is ThematicHighlightContentModel => {
-  return module.sys.contentType?.sys.id === ContentTypes.THEMATIC_HIGHLIGHT
-}
+): module is ThematicHighlightContentModel =>
+  module.sys.contentType?.sys.id === ContentTypes.THEMATIC_HIGHLIGHT
 
-export const isVenuesContentModel = (module: HomepageNatifModule): module is VenuesContentModel => {
-  return module.sys.contentType?.sys.id === ContentTypes.VENUES_PLAYLIST
-}
+export const isVenuesContentModel = (module: HomepageNatifModule): module is VenuesContentModel =>
+  module.sys.contentType?.sys.id === ContentTypes.VENUES_PLAYLIST
 
 export const isCategoryListContentModel = (
   module: HomepageNatifModule
-): module is CategoryListContentModel => {
-  return module.sys.contentType?.sys.id === ContentTypes.CATEGORY_LIST
-}
+): module is CategoryListContentModel =>
+  module.sys.contentType?.sys.id === ContentTypes.CATEGORY_LIST
 
 export const isThematicHighlightInfo = (
   thematicHeader?: ThematicHeader
-): thematicHeader is ThematicHighlightInfo => {
-  return thematicHeader?.sys.contentType?.sys.id === ContentTypes.THEMATIC_HIGHLIGHT_INFO
-}
+): thematicHeader is ThematicHighlightInfo =>
+  thematicHeader?.sys.contentType?.sys.id === ContentTypes.THEMATIC_HIGHLIGHT_INFO
 
 export const isThematicCategoryInfo = (
   thematicHeader?: ThematicHeader
-): thematicHeader is ThematicCategoryInfo => {
-  return thematicHeader?.sys.contentType?.sys.id === ContentTypes.THEMATIC_CATEGORY_INFO
-}
+): thematicHeader is ThematicCategoryInfo =>
+  thematicHeader?.sys.contentType?.sys.id === ContentTypes.THEMATIC_CATEGORY_INFO
 
-export const isVideoContentModel = (module: HomepageNatifModule): module is VideoContentModel => {
-  return module.sys.contentType?.sys.id === ContentTypes.VIDEO
-}
+export const isVideoContentModel = (module: HomepageNatifModule): module is VideoContentModel =>
+  module.sys.contentType?.sys.id === ContentTypes.VIDEO
