@@ -1,37 +1,20 @@
 import { StackScreenProps } from '@react-navigation/stack'
 import React from 'react'
-import { View, Text } from 'react-native'
 import DeviceInfo from 'react-native-device-info'
 
 import { navigation } from '__mocks__/@react-navigation/native'
 import { api } from 'api/api'
 import { ELIGIBLE_AGE_DATE } from 'features/auth/fixtures/fixtures'
-import { PreValidationSignupStepProps } from 'features/auth/types'
 import { mockGoBack } from 'features/navigation/__mocks__/useGoBack'
 import { RootStackParamList } from 'features/navigation/RootNavigator/types'
 import { analytics } from 'libs/analytics'
 import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { fireEvent, render, screen, act } from 'tests/utils'
 import { theme } from 'theme'
-import { TouchableOpacity } from 'ui/components/TouchableOpacity'
 
 import { SignupForm } from './SignupForm'
 
-const mockSignupComponent = (name: string, props: PreValidationSignupStepProps) => {
-  return (
-    <View>
-      <Text>{name}</Text>
-      <TouchableOpacity testID="goToNextStep" onPress={() => props.goToNextStep({})} />
-      <TouchableOpacity testID="signUp" onPress={() => props.signUp('fakeToken')} />
-    </View>
-  )
-}
-
 jest.mock('api/api')
-
-jest.mock('./AcceptCgu/AcceptCgu', () => ({
-  AcceptCgu: (props: PreValidationSignupStepProps) => mockSignupComponent('AcceptCgu', props),
-}))
 
 const getModelSpy = jest.spyOn(DeviceInfo, 'getModel')
 const getSystemNameSpy = jest.spyOn(DeviceInfo, 'getSystemName')
@@ -217,7 +200,7 @@ describe('<SignupForm />', () => {
       fireEvent.press(screen.getByTestId('Continuer vers l’étape CGU & Données'))
     )
 
-    await fireEvent.press(screen.getByTestId('signUp'))
+    await act(async () => fireEvent.press(screen.getByText('Accepter et s’inscrire')))
 
     expect(api.postnativev1account).toHaveBeenCalledWith(
       {
@@ -226,7 +209,7 @@ describe('<SignupForm />', () => {
         password: 'user@AZERTY123',
         birthdate: '2003-12-01',
         postalCode: '',
-        token: 'fakeToken',
+        token: 'dummyToken',
         appsFlyerPlatform: 'ios',
         appsFlyerUserId: 'uniqueCustomerId',
         trustedDevice: {
@@ -255,7 +238,7 @@ describe('<SignupForm />', () => {
       fireEvent.press(screen.getByTestId('Continuer vers l’étape CGU & Données'))
     )
 
-    await fireEvent.press(screen.getByTestId('signUp'))
+    await act(async () => fireEvent.press(screen.getByText('Accepter et s’inscrire')))
 
     expect(api.postnativev1account).toHaveBeenCalledWith(
       {
@@ -264,7 +247,7 @@ describe('<SignupForm />', () => {
         password: 'user@AZERTY123',
         birthdate: '2003-12-01',
         postalCode: '',
-        token: 'fakeToken',
+        token: 'dummyToken',
         appsFlyerPlatform: 'ios',
         appsFlyerUserId: 'uniqueCustomerId',
         trustedDevice: undefined,
