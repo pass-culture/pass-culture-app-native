@@ -5,6 +5,7 @@ import DeviceInfo from 'react-native-device-info'
 
 import { navigation } from '__mocks__/@react-navigation/native'
 import { api } from 'api/api'
+import { ELIGIBLE_AGE_DATE } from 'features/auth/fixtures/fixtures'
 import { PreValidationSignupStepProps } from 'features/auth/types'
 import { mockGoBack } from 'features/navigation/__mocks__/useGoBack'
 import { RootStackParamList } from 'features/navigation/RootNavigator/types'
@@ -28,9 +29,6 @@ const mockSignupComponent = (name: string, props: PreValidationSignupStepProps) 
 
 jest.mock('api/api')
 
-jest.mock('./SetBirthday/SetBirthday', () => ({
-  SetBirthday: (props: PreValidationSignupStepProps) => mockSignupComponent('SetBirthday', props),
-}))
 jest.mock('./AcceptCgu/AcceptCgu', () => ({
   AcceptCgu: (props: PreValidationSignupStepProps) => mockSignupComponent('AcceptCgu', props),
 }))
@@ -181,7 +179,10 @@ describe('<SignupForm />', () => {
     await fillPasswordInput()
     await act(() => fireEvent.press(screen.getByTestId('Continuer vers l’étape Date de naissance')))
 
-    fireEvent.press(screen.getByTestId('goToNextStep'))
+    await fillBirthdayInput()
+    await act(async () =>
+      fireEvent.press(screen.getByTestId('Continuer vers l’étape CGU & Données'))
+    )
 
     expect(analytics.logContinueSetEmail).toHaveBeenCalledTimes(1)
     expect(analytics.logContinueSetPassword).toHaveBeenCalledTimes(1)
@@ -195,6 +196,7 @@ describe('<SignupForm />', () => {
     useFeatureFlagSpy.mockReturnValueOnce(true) // mock for password step render
     useFeatureFlagSpy.mockReturnValueOnce(true) // mock for password input rerender
     useFeatureFlagSpy.mockReturnValueOnce(true) // mock for set birthday step render
+    useFeatureFlagSpy.mockReturnValueOnce(true) // mock for set birthday input rerender
     useFeatureFlagSpy.mockReturnValueOnce(true) // mock for accept cgu step render
 
     getModelSpy.mockReturnValueOnce('iPhone 13')
@@ -209,7 +211,12 @@ describe('<SignupForm />', () => {
     await act(async () =>
       fireEvent.press(screen.getByTestId('Continuer vers l’étape Date de naissance'))
     )
-    fireEvent.press(screen.getByTestId('goToNextStep'))
+
+    await fillBirthdayInput()
+    await act(async () =>
+      fireEvent.press(screen.getByTestId('Continuer vers l’étape CGU & Données'))
+    )
+
     await fireEvent.press(screen.getByTestId('signUp'))
 
     expect(api.postnativev1account).toHaveBeenCalledWith(
@@ -217,7 +224,7 @@ describe('<SignupForm />', () => {
         email: 'email@gmail.com',
         marketingEmailSubscription: false,
         password: 'user@AZERTY123',
-        birthdate: '',
+        birthdate: '2003-12-01',
         postalCode: '',
         token: 'fakeToken',
         appsFlyerPlatform: 'ios',
@@ -243,7 +250,11 @@ describe('<SignupForm />', () => {
       fireEvent.press(screen.getByTestId('Continuer vers l’étape Date de naissance'))
     )
 
-    fireEvent.press(screen.getByTestId('goToNextStep'))
+    await fillBirthdayInput()
+    await act(async () =>
+      fireEvent.press(screen.getByTestId('Continuer vers l’étape CGU & Données'))
+    )
+
     await fireEvent.press(screen.getByTestId('signUp'))
 
     expect(api.postnativev1account).toHaveBeenCalledWith(
@@ -251,7 +262,7 @@ describe('<SignupForm />', () => {
         email: 'email@gmail.com',
         marketingEmailSubscription: false,
         password: 'user@AZERTY123',
-        birthdate: '',
+        birthdate: '2003-12-01',
         postalCode: '',
         token: 'fakeToken',
         appsFlyerPlatform: 'ios',
@@ -279,4 +290,11 @@ const fillEmailInput = () => {
 const fillPasswordInput = async () => {
   const passwordInput = screen.getByPlaceholderText('Ton mot de passe')
   await act(async () => fireEvent.changeText(passwordInput, 'user@AZERTY123'))
+}
+
+const fillBirthdayInput = async () => {
+  const datePicker = screen.getByTestId('date-picker-spinner-native')
+  await act(async () =>
+    fireEvent(datePicker, 'onChange', { nativeEvent: { timestamp: ELIGIBLE_AGE_DATE } })
+  )
 }
