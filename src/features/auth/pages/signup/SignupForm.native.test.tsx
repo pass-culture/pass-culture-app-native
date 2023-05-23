@@ -28,9 +28,6 @@ const mockSignupComponent = (name: string, props: PreValidationSignupStepProps) 
 
 jest.mock('api/api')
 
-jest.mock('./SetPassword/SetPassword', () => ({
-  SetPassword: (props: PreValidationSignupStepProps) => mockSignupComponent('SetPassword', props),
-}))
 jest.mock('./SetBirthday/SetBirthday', () => ({
   SetBirthday: (props: PreValidationSignupStepProps) => mockSignupComponent('SetBirthday', props),
 }))
@@ -149,9 +146,14 @@ describe('<SignupForm />', () => {
     render(<SignupForm {...defaultProps} />)
 
     fillEmailInput()
-    await act(() => fireEvent.press(screen.getByTestId('Continuer vers l’étape Mot de passe')))
+    await act(async () => {
+      fireEvent.press(screen.getByTestId('Continuer vers l’étape Mot de passe'))
+    })
 
-    fireEvent.press(screen.getByTestId('goToNextStep'))
+    await fillPasswordInput()
+    await act(async () =>
+      fireEvent.press(screen.getByTestId('Continuer vers l’étape Date de naissance'))
+    )
 
     expect(analytics.logContinueSetPassword).toHaveBeenCalledTimes(1)
   })
@@ -175,7 +177,10 @@ describe('<SignupForm />', () => {
 
     fillEmailInput()
     await act(() => fireEvent.press(screen.getByTestId('Continuer vers l’étape Mot de passe')))
-    fireEvent.press(screen.getByTestId('goToNextStep'))
+
+    await fillPasswordInput()
+    await act(() => fireEvent.press(screen.getByTestId('Continuer vers l’étape Date de naissance')))
+
     fireEvent.press(screen.getByTestId('goToNextStep'))
 
     expect(analytics.logContinueSetEmail).toHaveBeenCalledTimes(1)
@@ -188,6 +193,7 @@ describe('<SignupForm />', () => {
     useFeatureFlagSpy.mockReturnValueOnce(true) // mock for email input rerender
     useFeatureFlagSpy.mockReturnValueOnce(true) // mock for device info rerender
     useFeatureFlagSpy.mockReturnValueOnce(true) // mock for password step render
+    useFeatureFlagSpy.mockReturnValueOnce(true) // mock for password input rerender
     useFeatureFlagSpy.mockReturnValueOnce(true) // mock for set birthday step render
     useFeatureFlagSpy.mockReturnValueOnce(true) // mock for accept cgu step render
 
@@ -198,7 +204,11 @@ describe('<SignupForm />', () => {
 
     fillEmailInput()
     await act(() => fireEvent.press(screen.getByTestId('Continuer vers l’étape Mot de passe')))
-    fireEvent.press(screen.getByTestId('goToNextStep'))
+
+    await fillPasswordInput()
+    await act(async () =>
+      fireEvent.press(screen.getByTestId('Continuer vers l’étape Date de naissance'))
+    )
     fireEvent.press(screen.getByTestId('goToNextStep'))
     await fireEvent.press(screen.getByTestId('signUp'))
 
@@ -206,7 +216,7 @@ describe('<SignupForm />', () => {
       {
         email: 'email@gmail.com',
         marketingEmailSubscription: false,
-        password: '',
+        password: 'user@AZERTY123',
         birthdate: '',
         postalCode: '',
         token: 'fakeToken',
@@ -227,7 +237,12 @@ describe('<SignupForm />', () => {
 
     fillEmailInput()
     await act(() => fireEvent.press(screen.getByTestId('Continuer vers l’étape Mot de passe')))
-    fireEvent.press(screen.getByTestId('goToNextStep'))
+
+    await fillPasswordInput()
+    await act(async () =>
+      fireEvent.press(screen.getByTestId('Continuer vers l’étape Date de naissance'))
+    )
+
     fireEvent.press(screen.getByTestId('goToNextStep'))
     await fireEvent.press(screen.getByTestId('signUp'))
 
@@ -235,7 +250,7 @@ describe('<SignupForm />', () => {
       {
         email: 'email@gmail.com',
         marketingEmailSubscription: false,
-        password: '',
+        password: 'user@AZERTY123',
         birthdate: '',
         postalCode: '',
         token: 'fakeToken',
@@ -259,4 +274,9 @@ describe('<SignupForm />', () => {
 const fillEmailInput = () => {
   const emailInput = screen.getByPlaceholderText('tonadresse@email.com')
   fireEvent.changeText(emailInput, 'email@gmail.com')
+}
+
+const fillPasswordInput = async () => {
+  const passwordInput = screen.getByPlaceholderText('Ton mot de passe')
+  await act(async () => fireEvent.changeText(passwordInput, 'user@AZERTY123'))
 }
