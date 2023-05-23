@@ -20,9 +20,9 @@ type VenueSelectionModalProps = {
   title: string
   onSubmit: (selectedOfferId: number) => void
   onClosePress: VoidFunction
-  onEndReached?: VoidFunction
+  onEndReached?: () => Promise<void>
   refreshing?: boolean
-  onRefresh?: (() => void) | null | undefined
+  onRefresh?: (() => void) | null
   offerVenueLocation?: Coordinates
   onScroll?: VoidFunction
 }

@@ -99,7 +99,7 @@ export const OfferBody: FunctionComponent<Props> = ({
         latitude: offer?.venue?.coordinates?.latitude ?? 0,
         longitude: offer?.venue?.coordinates?.longitude ?? 0,
       },
-      query: offer?.extraData?.isbn || '',
+      query: offer?.extraData?.isbn ?? '',
     })
 
   const shouldDisplayOtherVenuesAvailableButton = Boolean(
@@ -188,9 +188,9 @@ export const OfferBody: FunctionComponent<Props> = ({
     analytics.logConsultItinerary({ offerId, from: 'offer' })
   }, [offerId])
 
-  const onEndReached = useCallback(() => {
+  const onEndReached = useCallback(async () => {
     if (data && hasNextPage) {
-      fetchNextPage()
+      await fetchNextPage()
     }
   }, [data, fetchNextPage, hasNextPage])
 
@@ -394,7 +394,7 @@ export const OfferBody: FunctionComponent<Props> = ({
           onClosePress={hideChangeVenueModal}
           onEndReached={onEndReached}
           refreshing={isRefreshing}
-          onRefresh={refetch}
+          onRefresh={void refetch}
           onScroll={onScrollModal}
           offerVenueLocation={offer.venue.coordinates}
         />

@@ -1,7 +1,6 @@
 import React, { useCallback } from 'react'
 import { FlatList, View, ViewProps } from 'react-native'
-import styled from 'styled-components/native'
-import { useTheme } from 'styled-components/native'
+import styled, { useTheme } from 'styled-components/native'
 
 import { Coordinates } from 'api/gen'
 import { VenueSelectionListItem } from 'features/offer/components/VenueSelectionListItem/VenueSelectionListItem'
@@ -22,9 +21,9 @@ export type VenueSelectionListProps = ViewProps & {
   selectedItem?: number
   onItemSelect: (itemOfferId: number) => void
   items: VenueListItem[]
-  onEndReached?: VoidFunction
+  onEndReached?: () => Promise<void>
   refreshing?: boolean
-  onRefresh?: (() => void) | null | undefined
+  onRefresh?: (() => void) | null
   offerVenueLocation?: Coordinates
   onScroll?: VoidFunction
 }
