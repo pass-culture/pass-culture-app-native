@@ -6,15 +6,9 @@ import { nextSubscriptionStepFixture as mockStep } from 'features/identityCheck/
 import { IdentityCheckEnd } from 'features/identityCheck/pages/identification/ubble/IdentityCheckEnd'
 import { navigateToHome } from 'features/navigation/helpers'
 import { analytics } from 'libs/analytics'
-import { render, waitFor } from 'tests/utils'
+import { render, waitFor, screen } from 'tests/utils'
 
 jest.mock('features/navigation/helpers')
-const mockNavigateToNextScreen = jest.fn()
-jest.mock('features/identityCheck/pages/helpers/useSubscriptionNavigation', () => ({
-  useSubscriptionNavigation: () => ({
-    navigateToNextScreen: mockNavigateToNextScreen,
-  }),
-}))
 
 let mockNextSubscriptionStep: NextSubscriptionStepResponse = {
   ...mockStep,
@@ -32,8 +26,8 @@ describe('<IdentityCheckEnd/>', () => {
   afterAll(() => jest.useRealTimers())
 
   it('should render correctly', () => {
-    const renderAPI = render(<IdentityCheckEnd />)
-    expect(renderAPI).toMatchSnapshot()
+    render(<IdentityCheckEnd />)
+    expect(screen).toMatchSnapshot()
   })
 
   it('should navigate to stepper after timeout if nextSubscriptionStep is not null', () => {
