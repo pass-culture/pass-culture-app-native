@@ -6,7 +6,7 @@ import { InfiniteQueryObserverOptions, useInfiniteQuery } from 'react-query'
 import { VenueListItem } from 'features/offer/components/VenueSelectionList/VenueSelectionList'
 import { useIsUserUnderage } from 'features/profile/helpers/useIsUserUnderage'
 import { initialSearchState } from 'features/search/context/reducer'
-import { formatFullAddress } from 'libs/address/useFormatFullAddress'
+import { formatFullAddressStartsWithPostalCode } from 'libs/address/useFormatFullAddress'
 import { AlgoliaHit, Geoloc } from 'libs/algolia'
 import { useSearchAnalyticsState } from 'libs/algolia/analytics/SearchAnalyticsWrapper'
 import { fetchOffers } from 'libs/algolia/fetchAlgolia/fetchOffers'
@@ -63,7 +63,11 @@ export function getVenueList(hits: Offer[], geolocation: Position) {
       price: hit.offer.prices?.length ? hit.offer.prices[0] : 0,
       venueId: hit.venue.id,
       title: hit.venue.publicName ? hit.venue.publicName : hit.venue.name ?? '',
-      address: formatFullAddress(hit.venue.address, hit.venue.postalCode, hit.venue.city),
+      address: formatFullAddressStartsWithPostalCode(
+        hit.venue.address,
+        hit.venue.postalCode,
+        hit.venue.city
+      ),
       coordinates: hit._geoloc,
     })
   })

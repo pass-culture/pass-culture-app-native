@@ -17,25 +17,25 @@ describe('useSearchVenueOffers', () => {
       const offerVenues = getVenueList(mockedAlgoliaResponse.hits, position)
       expect(offerVenues).toEqual([
         {
-          address: '1 rue de la paix, 75000 Paris',
+          address: '75000 Paris, 1 rue de la paix',
           offerId: 102280,
           title: 'Lieu 1',
           distance: '4,5 km',
         },
         {
-          address: '2 rue de la paix, 75000 Paris',
+          address: '75000 Paris, 2 rue de la paix',
           offerId: 102272,
           title: 'Lieu 2',
           distance: '2,4 km',
         },
         {
-          address: '3 rue de la paix, 75000 Paris',
+          address: '75000 Paris, 3 rue de la paix',
           offerId: 102249,
           title: 'Lieu 3',
           distance: '900+ km',
         },
         {
-          address: '4 rue de la paix, 75000 Paris',
+          address: '75000 Paris, 4 rue de la paix',
           offerId: 102310,
           title: 'Lieu 4',
           distance: '900+ km',
@@ -93,7 +93,7 @@ describe('useSearchVenueOffers', () => {
       const offerVenues = getVenueList(hits, position)
       expect(offerVenues).toEqual([
         {
-          address: '1 rue de la paix, 75000 Paris',
+          address: '75000 Paris, 1 rue de la paix',
           offerId: 102281,
           title: 'Lieu 1',
           distance: '4,5 km',
