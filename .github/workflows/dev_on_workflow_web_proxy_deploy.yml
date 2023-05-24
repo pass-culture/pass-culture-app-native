@@ -40,11 +40,26 @@ jobs:
         uses: 'google-github-actions/get-secretmanager-secrets@v1'
         with:
           secrets: |-
-            SLACK_BOT_TOKEN:passculture-metier-ehp/passculture-app-native-slack-token
             SENTRY_AUTH_TOKEN:passculture-metier-ehp/passculture-app-native-sentry-token
       - name: 'Push proxy for input env'
         run: |
           yarn --cwd server deploy:${{ inputs.ENV }}
+  slack_notify:
+    runs-on: [self-hosted, linux, x64]
+    if: ${{ always() && github.ref == 'refs/heads/master' }}
+    needs: web_proxy_deploy
+    steps:
+      - name: Connect to Secret Manager
+        uses: 'google-github-actions/auth@v1'
+        with:
+          workload_identity_provider: ${{ secrets.GCP_EHP_WORKLOAD_IDENTITY_PROVIDER }}
+          service_account: ${{ secrets.GCP_EHP_SERVICE_ACCOUNT }}
+      - name: Get secrets for Slack
+        id: 'slack_secrets'
+        uses: 'google-github-actions/get-secretmanager-secrets@v1'
+        with:
+          secrets: |-
+            SLACK_BOT_TOKEN:passculture-metier-ehp/passculture-app-native-slack-token
       - uses: technote-space/workflow-conclusion-action@v3
         if: ${{ always() }}
       - name: Post to a Slack channel
@@ -53,7 +68,7 @@ jobs:
         uses: slackapi/slack-github-action@v1.23.0
         with:
           # channel #alertes-deploiement-native
-          channel-id: "C0309RP8K42"
+          channel-id: 'C0309RP8K42'
           payload: |
             {
               "attachments": [
@@ -72,5 +87,4 @@ jobs:
               "unfurl_media": false
             }
         env:
-          SLACK_BOT_TOKEN: ${{ steps.secrets.outputs.SLACK_BOT_TOKEN }}
-
+          SLACK_BOT_TOKEN: ${{ steps.slack_secrets.output.SLACK_BOT_TOKEN }}

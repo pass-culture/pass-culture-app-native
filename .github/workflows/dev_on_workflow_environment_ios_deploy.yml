@@ -54,7 +54,6 @@ jobs:
             MATCH_SSH_KEY:passculture-metier-ehp/passculture-app-native-match-ssh-key
             MATCH_USERNAME:passculture-metier-ehp/passculture-app-native-match-username
             SENTRY_AUTH_TOKEN:passculture-metier-ehp/passculture-app-native-sentry-token
-            SLACK_BOT_TOKEN:passculture-metier-ehp/passculture-app-native-slack-token
       - name: 'Render Template'
         run: |
           cp templates_github_ci/.sentryclirc .sentryclirc
@@ -76,6 +75,22 @@ jobs:
           MATCH_PASSWORD: ${{ steps.secrets.outputs.MATCH_PASSWORD }}
           MATCH_USERNAME: ${{ steps.secrets.outputs.MATCH_USERNAME }}
           MATCH_GIT_URL: ${{ steps.secrets.outputs.MATCH_GIT_URL }}
+  slack_notify:
+    runs-on: [self-hosted, linux, x64]
+    if: ${{ always() && github.ref == 'refs/heads/master' }}
+    needs: sentry_and_deploy
+    steps:
+      - name: Connect to Secret Manager
+        uses: 'google-github-actions/auth@v1'
+        with:
+          workload_identity_provider: ${{ secrets.GCP_EHP_WORKLOAD_IDENTITY_PROVIDER }}
+          service_account: ${{ secrets.GCP_EHP_SERVICE_ACCOUNT }}
+      - name: Get secrets for Slack
+        id: 'slack_secrets'
+        uses: 'google-github-actions/get-secretmanager-secrets@v1'
+        with:
+          secrets: |-
+            SLACK_BOT_TOKEN:passculture-metier-ehp/passculture-app-native-slack-token
       - uses: technote-space/workflow-conclusion-action@v3
         if: ${{ always() }}
       - name: Post to a Slack channel
@@ -84,7 +99,7 @@ jobs:
         uses: slackapi/slack-github-action@v1.23.0
         with:
           # channel #alertes-deploiement-native
-          channel-id: "C0309RP8K42"
+          channel-id: 'C0309RP8K42'
           payload: |
             {
               "attachments": [
@@ -96,12 +111,11 @@ jobs:
                       "author_icon": "https://github.com/${{github.actor}}.png",
                       "title": "PCAPPNATIVE Deployment",
                       "title_link": "https://github.com/${{github.repository}}/actions/runs/${{github.run_id}}",
-                      "text": "Le déploiement sur `${{ inputs.ENV }}` a échoué :boom:"
+                      "text": "Le déploiement ios sur `${{ inputs.ENV }}` a échoué :boom:"
                   }
               ],
               "unfurl_links": false,
               "unfurl_media": false
             }
         env:
-          SLACK_BOT_TOKEN: ${{ steps.secrets.outputs.SLACK_BOT_TOKEN }}
-
+          SLACK_BOT_TOKEN: ${{ steps.slack_secrets.output.SLACK_BOT_TOKEN }}
