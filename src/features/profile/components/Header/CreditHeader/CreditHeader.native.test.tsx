@@ -9,7 +9,7 @@ import {
   domains_exhausted_credit_v1,
 } from 'features/profile/fixtures/domainsCredit'
 import * as ProfileUtils from 'features/profile/helpers/useIsUserUnderageBeneficiary'
-import { formatToSlashedFrenchDate } from 'libs/dates'
+import { formatToSlashedFrenchDate, setDateOneDayEarlier } from 'libs/dates'
 import { render } from 'tests/utils'
 
 jest.mock('features/profile/api/useResetRecreditAmountToShow')
@@ -46,7 +46,9 @@ describe('CreditHeader', () => {
 
     it('should display deposit expiration date', () => {
       const { queryByText } = renderCreditHeader()
-      const depositExpirationDate = queryByText(formatToSlashedFrenchDate(dateInFuture))
+      const depositExpirationDate = queryByText(
+        formatToSlashedFrenchDate(setDateOneDayEarlier(dateInFuture))
+      )
       expect(depositExpirationDate).toBeTruthy()
     })
 
