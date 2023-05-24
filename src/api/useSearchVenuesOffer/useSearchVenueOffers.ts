@@ -108,7 +108,7 @@ export const useSearchVenueOffersInfiniteQuery = ({
     return getOfferVenues(flattenedHits)
   }, [data?.pages, offerId, transformHits, venueId])
 
-  const { nbHits: nbOfferVenues } = data?.pages[0] ?? { nbHits: 0 }
+  const nbOfferVenues = offerVenues.length
 
   return { data, offerVenues, nbOfferVenues, ...infiniteQuery }
 }
