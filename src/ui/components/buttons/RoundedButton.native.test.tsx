@@ -11,8 +11,9 @@ const animatedValue = new Animated.Value(0)
 const DummyComponent: React.FC = () => {
   const iconBackgroundColor = animatedValue.interpolate({
     inputRange: [0, 1],
-    outputRange: ['rgba(0, 255, 0, 1)', 'rgba(255, 0, 255, 0)'],
+    outputRange: ['rgba(255, 255, 255, 1)', 'rgba(0, 0, 0, 0)'],
   })
+
   const iconBorderColor = animatedValue.interpolate({
     inputRange: [0, 1],
     outputRange: ['rgba(0, 0, 0, 1)', 'rgba(255, 255, 255, 0)'],
@@ -60,7 +61,7 @@ describe('RoundedButton', () => {
       render(<DummyComponent />)
 
       const roundContainer = screen.getByTestId('AnimatedHeaderIconRoundContainer')
-      expect(roundContainer.props.style.backgroundColor).toBe('rgba(0, 255, 0, 1)')
+      expect(roundContainer.props.style.backgroundColor).toBe('rgba(255, 255, 255, 1)')
       expect(roundContainer.props.style.borderColor).toBe('rgba(0, 0, 0, 1)')
     })
 
@@ -71,7 +72,7 @@ describe('RoundedButton', () => {
 
       const roundContainer = screen.getByTestId('AnimatedHeaderIconRoundContainer')
       await waitFor(() => {
-        expect(roundContainer.props.style.backgroundColor).toBe('rgba(255, 0, 255, 0)')
+        expect(roundContainer.props.style.backgroundColor).toBe('rgba(0, 0, 0, 0)')
         expect(roundContainer.props.style.borderColor).toBe('rgba(255, 255, 255, 0)')
       })
     })

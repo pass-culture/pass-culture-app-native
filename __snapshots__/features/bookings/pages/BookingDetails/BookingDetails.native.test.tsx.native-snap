@@ -17,7 +17,10 @@ exports[`BookingDetails should render correctly 1`] = `
     collapsable={false}
     style={
       Object {
+        "backdropFilter": "blur(0px)",
         "backgroundColor": "rgba(255, 255, 255, 0)",
+        "borderBottomColor": "#F1F1F4",
+        "borderBottomWidth": 0,
         "position": "absolute",
         "top": 0,
         "width": "100%",
@@ -36,6 +39,40 @@ exports[`BookingDetails should render correctly 1`] = `
         ]
       }
     />
+    <View
+      collapsable={false}
+      safeAreaTop={16}
+      style={
+        Object {
+          "height": 80,
+          "left": 0,
+          "opacity": 0,
+          "overflow": "hidden",
+          "position": "absolute",
+          "right": 0,
+          "top": 0,
+        }
+      }
+    >
+      <BlurView
+        blurAmount={8}
+        blurType="light"
+        style={
+          Array [
+            Object {
+              "backgroundColor": "transparent",
+            },
+            Array [
+              Object {
+                "flexBasis": 0,
+                "flexGrow": 1,
+                "flexShrink": 1,
+              },
+            ],
+          ]
+        }
+      />
+    </View>
     <View
       numberOfSpaces={2}
       style={
@@ -94,7 +131,7 @@ exports[`BookingDetails should render correctly 1`] = `
               Object {
                 "alignItems": "center",
                 "aspectRatio": 1,
-                "backgroundColor": "rgba(255, 255, 255, 1)",
+                "backgroundColor": "#ffffff",
                 "borderColor": "rgba(241, 241, 244, 1)",
                 "borderRadius": 40,
                 "borderStyle": "solid",
@@ -177,7 +214,7 @@ exports[`BookingDetails should render correctly 1`] = `
       <Text
         accessibilityHidden={true}
         collapsable={false}
-        numberOfLines={1}
+        numberOfLines={2}
         style={
           Object {
             "flexBasis": 0,
@@ -193,7 +230,7 @@ exports[`BookingDetails should render correctly 1`] = `
           style={
             Array [
               Object {
-                "color": "#ffffff",
+                "color": "#161617",
                 "fontFamily": "Montserrat-Regular",
                 "fontSize": 15,
                 "lineHeight": 20,

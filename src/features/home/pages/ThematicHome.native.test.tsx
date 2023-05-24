@@ -28,10 +28,9 @@ describe('ThematicHome', () => {
   })
 
   it('should render correctly', async () => {
-    // eslint-disable-next-line local-rules/no-react-query-provider-hoc
-    const thematicHome = render(reactQueryProviderHOC(<ThematicHome />))
-    await screen.findByText('HeaderTitle')
-    expect(thematicHome).toMatchSnapshot()
+    renderThematicHome()
+    await screen.findByText('HeaderSubtitle')
+    expect(screen).toMatchSnapshot()
   })
 
   it('should render default header when provided', async () => {

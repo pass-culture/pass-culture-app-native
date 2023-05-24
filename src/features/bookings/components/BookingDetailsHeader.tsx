@@ -1,12 +1,15 @@
 import React, { useState } from 'react'
 import { Animated } from 'react-native'
+import { useSafeAreaInsets } from 'react-native-safe-area-context'
 import styled, { useTheme } from 'styled-components/native'
 
 import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
 import { useGoBack } from 'features/navigation/useGoBack'
 import { getAnimationState } from 'ui/animations/helpers/getAnimationState'
 import { RoundedButton } from 'ui/components/buttons/RoundedButton'
+import { BlurHeader } from 'ui/components/headers/BlurHeader'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
+
 interface Props {
   headerTransition: Animated.AnimatedInterpolation
   title: string
@@ -18,17 +21,24 @@ interface Props {
 export const BookingDetailsHeader: React.FC<Props> = (props) => {
   const theme = useTheme()
   const { headerTransition, title } = props
+  const { top } = useSafeAreaInsets()
   const { goBack } = useGoBack(...getTabNavConfig('Bookings'))
 
   const [accessibilityHiddenTitle, setAccessibilityHiddenTitle] = useState(true)
   headerTransition.addListener((opacity) => setAccessibilityHiddenTitle(opacity.value !== 1))
 
-  const { animationState, backgroundColor } = getAnimationState(theme, headerTransition)
+  const { animationState, containerStyle, blurContainerNative } = getAnimationState(
+    theme,
+    headerTransition
+  )
 
   return (
     <React.Fragment>
-      <HeaderContainer style={{ backgroundColor }}>
+      <HeaderContainer style={containerStyle}>
         <Spacer.TopScreen />
+        <BlurNativeContainer style={blurContainerNative} safeAreaTop={top}>
+          <BlurHeader blurAmount={8} />
+        </BlurNativeContainer>
         <Spacer.Column numberOfSpaces={2} />
         <Row>
           <IconContainer>
@@ -59,7 +69,20 @@ const HeaderContainer = styled(Animated.View)(({ theme }) => ({
   top: 0,
   width: '100%',
   zIndex: theme.zIndex.header,
+  borderBottomColor: theme.colors.greyLight,
+  borderBottomWidth: 1,
 }))
+
+const BlurNativeContainer = styled(Animated.View)<{ safeAreaTop: number }>(
+  ({ theme, safeAreaTop }) => ({
+    position: 'absolute',
+    height: theme.appBarHeight + safeAreaTop,
+    top: 0,
+    left: 0,
+    right: 0,
+    overflow: 'hidden',
+  })
+)
 
 const Row = styled.View({
   flexDirection: 'row',
@@ -72,7 +95,7 @@ const IconContainer = styled.View(({ theme }) => ({
 }))
 
 const Title = styled(Animated.Text).attrs({
-  numberOfLines: 1,
+  numberOfLines: 2,
 })({
   textAlign: 'center',
   flex: 5,
@@ -80,5 +103,5 @@ const Title = styled(Animated.Text).attrs({
 })
 
 const StyledBody = styled(Typo.Body)(({ theme }) => ({
-  color: theme.colors.white,
+  color: theme.colors.black,
 }))
