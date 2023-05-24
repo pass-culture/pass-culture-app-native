@@ -1,49 +1,23 @@
 import React, { useCallback } from 'react'
-import { FlatList, View, ViewProps } from 'react-native'
+import { FlatList, FlatListProps, View, ViewProps } from 'react-native'
 import styled, { useTheme } from 'styled-components/native'
 
-import { Coordinates } from 'api/gen'
 import { VenueSelectionListItem } from 'features/offer/components/VenueSelectionListItem/VenueSelectionListItem'
 import { VenueDetail } from 'features/offer/types'
-import { Geoloc } from 'libs/algolia'
-import { Position, useGeolocation } from 'libs/geolocation'
-import { formatDistance } from 'libs/parsers'
 import { getSpacing } from 'ui/theme'
 
 export type VenueListItem = VenueDetail & {
   offerId: number
-  price?: number
-  coordinates?: Geoloc
-  venueId?: number
 }
 
-export type VenueSelectionListProps = ViewProps & {
-  selectedItem?: number
-  onItemSelect: (itemOfferId: number) => void
-  items: VenueListItem[]
-  onEndReached?: () => Promise<void>
-  refreshing?: boolean
-  onRefresh?: (() => void) | null
-  offerVenueLocation?: Coordinates
-  onScroll?: VoidFunction
-}
+export type VenueSelectionListProps = ViewProps &
+  Pick<FlatListProps<VenueListItem>, 'onRefresh' | 'refreshing' | 'onEndReached' | 'onScroll'> & {
+    selectedItem?: number
+    onItemSelect: (itemOfferId: number) => void
+    items: VenueListItem[]
+  }
 
 const keyExtractor = (item: VenueListItem) => String(item.offerId)
-
-type GetVenueItemDistanceType = {
-  item: VenueListItem
-  userPosition: Position | null
-  offerVenueLocation?: Coordinates
-}
-export function getVenueItemDistance({
-  item,
-  userPosition,
-  offerVenueLocation,
-}: GetVenueItemDistanceType) {
-  return item.coordinates
-    ? formatDistance(item.coordinates, userPosition ?? (offerVenueLocation as Position))
-    : item.distance
-}
 
 export function VenueSelectionList({
   items,
@@ -53,11 +27,14 @@ export function VenueSelectionList({
   refreshing,
   onRefresh,
   onScroll,
-  offerVenueLocation,
   ...props
 }: VenueSelectionListProps) {
   const { modal } = useTheme()
-  const { userPosition: position } = useGeolocation()
+
+  const handleOnSelect = useCallback(
+    (itemOfferId: number) => onItemSelect(itemOfferId),
+    [onItemSelect]
+  )
 
   const renderItem = useCallback(
     ({ item }: { item: VenueListItem }) => {
@@ -65,14 +42,13 @@ export function VenueSelectionList({
         <ItemWrapper>
           <VenueSelectionListItem
             {...item}
-            distance={getVenueItemDistance({ item, userPosition: position, offerVenueLocation })}
-            onSelect={() => onItemSelect(item.offerId)}
+            onSelect={() => handleOnSelect(item.offerId)}
             isSelected={selectedItem === item.offerId}
           />
         </ItemWrapper>
       )
     },
-    [offerVenueLocation, onItemSelect, position, selectedItem]
+    [handleOnSelect, selectedItem]
   )
 
   return (

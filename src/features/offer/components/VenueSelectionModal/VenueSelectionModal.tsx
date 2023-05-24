@@ -1,9 +1,9 @@
 import React, { useCallback, useMemo, useState } from 'react'
-import { View } from 'react-native'
+import { FlatListProps, View } from 'react-native'
 import styled from 'styled-components/native'
 
-import { Coordinates } from 'api/gen'
 import {
+  VenueListItem,
   VenueSelectionList,
   VenueSelectionListProps,
 } from 'features/offer/components/VenueSelectionList/VenueSelectionList'
@@ -14,17 +14,15 @@ import { Close } from 'ui/svg/icons/Close'
 import { Spacer, getSpacing } from 'ui/theme'
 import { useCustomSafeInsets } from 'ui/theme/useCustomSafeInsets'
 
-type VenueSelectionModalProps = {
+type VenueSelectionModalProps = Pick<
+  FlatListProps<VenueListItem>,
+  'onRefresh' | 'refreshing' | 'onEndReached' | 'onScroll'
+> & {
   isVisible: boolean
   items: VenueSelectionListProps['items']
   title: string
   onSubmit: (selectedOfferId: number) => void
   onClosePress: VoidFunction
-  onEndReached?: () => Promise<void>
-  refreshing?: boolean
-  onRefresh?: (() => void) | null
-  offerVenueLocation?: Coordinates
-  onScroll?: VoidFunction
 }
 
 const HEIGHT_CONTAINER = getSpacing(6)
@@ -39,7 +37,6 @@ export function VenueSelectionModal({
   refreshing,
   onRefresh,
   onScroll,
-  offerVenueLocation,
 }: VenueSelectionModalProps) {
   const [selectedOffer, setSelectedOffer] = useState<number>()
   const { top } = useCustomSafeInsets()
@@ -95,7 +92,6 @@ export function VenueSelectionModal({
         refreshing={refreshing}
         onRefresh={onRefresh}
         onScroll={onScroll}
-        offerVenueLocation={offerVenueLocation}
       />
     </AppModal>
   )
