@@ -13,7 +13,8 @@ export default {
     title: 'Lieu de retrait',
     onSubmit: action('selected'),
     onClosePress: action('close modal'),
-    onRefresh: undefined,
+    onRefresh: action('refresh'),
+    refreshing: false,
   },
   argTypes: {
     onSubmit: { control: { disable: true } },
