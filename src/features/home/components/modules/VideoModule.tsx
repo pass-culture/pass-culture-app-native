@@ -8,6 +8,9 @@ import { Play } from 'ui/svg/icons/Play'
 import { Spacer, Typo, getSpacing } from 'ui/theme'
 
 const THUMBNAIL_HEIGHT = 180
+// We do not center the player icon, because when the title is 2-line long,
+// the title is to close to the player. So the player is closer to the top.
+const PLAYER_TOP_MARGIN = 50
 
 type Props = {
   title: string
@@ -74,9 +77,9 @@ const DurationCaption = styled(Typo.Caption)(({ theme }) => ({
 
 const PlayContainer = styled.View({
   position: 'absolute',
-  width: '100%',
-  height: '100%',
-  justifyContent: 'center',
+  top: PLAYER_TOP_MARGIN,
+  left: 0,
+  right: 0,
   alignItems: 'center',
 })
 
