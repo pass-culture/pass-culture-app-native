@@ -93,6 +93,7 @@ describe('<SignupForm />', () => {
   })
 
   it('should redirect to SignupConfirmationEmailSent on signup success', async () => {
+    simulateSignupSuccess()
     render(<SignupForm {...defaultProps} />)
 
     fillEmailInput()
@@ -117,6 +118,7 @@ describe('<SignupForm />', () => {
 
   describe('API', () => {
     it('should create account when clicking on AcceptCgu button with trustedDevice when feature flag is active', async () => {
+      simulateSignupSuccess()
       useFeatureFlagSpy.mockReturnValueOnce(true) // mock for email step render
       useFeatureFlagSpy.mockReturnValueOnce(true) // mock for email input rerender
       useFeatureFlagSpy.mockReturnValueOnce(true) // mock for device info rerender
@@ -167,6 +169,7 @@ describe('<SignupForm />', () => {
     })
 
     it('should create account when clicking on AcceptCgu button without trustedDevice when feature flag is disabled', async () => {
+      simulateSignupSuccess()
       render(<SignupForm {...defaultProps} />)
 
       fillEmailInput()
@@ -340,3 +343,13 @@ const fillBirthdayInput = async () => {
     fireEvent(datePicker, 'onChange', { nativeEvent: { timestamp: ELIGIBLE_AGE_DATE } })
   )
 }
+
+const simulateSignupSuccess = () =>
+  server.use(
+    rest.post<AccountRequest, EmptyResponse>(
+      env.API_BASE_URL + '/native/v1/account',
+      (_req, res, ctx) => {
+        return res.once(ctx.status(200), ctx.json({}))
+      }
+    )
+  )
