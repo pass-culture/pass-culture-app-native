@@ -12,9 +12,9 @@ const insertCaptcha = (): void => {
 
 export const useCaptcha = (): void => {
   useEffect(() => {
-    const isAlreadyInDom = !!document.querySelector(`script[src="${RECAPTCHA_URL}"]`)
+    const shouldBeInserted = !document.querySelector(`script[src="${RECAPTCHA_URL}"]`)
 
-    if (isAlreadyInDom === false) {
+    if (shouldBeInserted) {
       insertCaptcha()
     }
   }, [])
