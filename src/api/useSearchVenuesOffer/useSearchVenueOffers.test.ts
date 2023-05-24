@@ -2,7 +2,7 @@ import { SubcategoryIdEnum } from 'api/gen'
 import {
   filterVenueOfferHit,
   getOfferVenues,
-  useSearchVenueOffersInfiniteQuery,
+  useSearchVenueOffers,
 } from 'api/useSearchVenuesOffer/useSearchVenueOffers'
 import { mockedAlgoliaResponse } from 'libs/algolia/__mocks__/mockedAlgoliaResponse'
 import * as fetchAlgoliaOffer from 'libs/algolia/fetchAlgolia/fetchOffers'
@@ -166,7 +166,7 @@ describe('useSearchVenueOffers', () => {
     })
   })
 
-  describe('useSearchVenueOffersInfiniteQuery', () => {
+  describe('useSearchVenueOffers', () => {
     const fetchOfferSpy = jest
       .spyOn(fetchAlgoliaOffer, 'fetchOffers')
       .mockResolvedValue(mockedAlgoliaResponse)
@@ -174,7 +174,7 @@ describe('useSearchVenueOffers', () => {
     it('should fetch offers when shouldExecuteQuery is true', async () => {
       renderHook(
         () =>
-          useSearchVenueOffersInfiniteQuery({
+          useSearchVenueOffers({
             offerId: 10000,
             venueId: 1,
             query: '9782070584628',
@@ -194,7 +194,7 @@ describe('useSearchVenueOffers', () => {
     it('should not fetch offers when shouldExecuteQuery is false', async () => {
       renderHook(
         () =>
-          useSearchVenueOffersInfiniteQuery({
+          useSearchVenueOffers({
             offerId: 10000,
             venueId: 1,
             query: '9782070584628',

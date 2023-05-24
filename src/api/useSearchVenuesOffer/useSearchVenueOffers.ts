@@ -69,7 +69,7 @@ export const filterVenueOfferHit = ({ hit, offerId, venueId }: FilterVenueOfferT
   hit.objectID !== String(offerId) &&
   hit.venue.id !== venueId
 
-export const useSearchVenueOffersInfiniteQuery = ({
+export const useSearchVenueOffers = ({
   offerId,
   venueId,
   query,
@@ -111,20 +111,4 @@ export const useSearchVenueOffersInfiniteQuery = ({
   const nbOfferVenues = offerVenues.length
 
   return { data, offerVenues, nbOfferVenues, ...infiniteQuery }
-}
-
-export const useSearchVenueOffers = ({
-  offerId,
-  venueId,
-  query,
-  geolocation,
-  shouldExecuteQuery,
-}: UseSearchVenueOffersType) => {
-  return useSearchVenueOffersInfiniteQuery({
-    offerId,
-    venueId,
-    query,
-    geolocation,
-    shouldExecuteQuery,
-  })
 }
