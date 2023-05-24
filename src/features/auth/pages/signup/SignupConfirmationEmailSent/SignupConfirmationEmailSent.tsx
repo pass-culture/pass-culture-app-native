@@ -60,9 +60,7 @@ export const SignupConfirmationEmailSent: FunctionComponent<Props> = ({ route })
           </CenteredText>
           <Spacer.Column numberOfSpaces={5} />
           <CenteredText>
-            <Typo.Body>
-              L’e-mail peut prendre quelques minutes pour arriver.
-            </Typo.Body>
+            <Typo.Body>L’e-mail peut prendre quelques minutes pour arriver.</Typo.Body>
           </CenteredText>
           <Spacer.Column numberOfSpaces={5} />
           <CenteredText>
