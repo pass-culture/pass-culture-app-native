@@ -15,7 +15,7 @@ import { BackButton } from 'ui/components/headers/BackButton'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 import { useCustomSafeInsets } from 'ui/theme/useCustomSafeInsets'
 
-type HighligthThematicHeaderProps = Omit<HighlightThematicHeader, 'type'>
+type HighlightThematicHeaderProps = Omit<HighlightThematicHeader, 'type'>
 
 type IntroductionProps = {
   title: string
@@ -25,7 +25,7 @@ type IntroductionProps = {
 const DESKTOP_HEADER_HEIGHT = getSpacing(100)
 const MOBILE_HEADER_HEIGHT = getSpacing(70)
 
-export const HighlightThematicHomeHeader: FunctionComponent<HighligthThematicHeaderProps> = ({
+export const HighlightThematicHomeHeader: FunctionComponent<HighlightThematicHeaderProps> = ({
   title,
   subtitle,
   imageUrl,
