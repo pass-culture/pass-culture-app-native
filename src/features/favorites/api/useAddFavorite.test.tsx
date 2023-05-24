@@ -1,17 +1,12 @@
-import { rest } from 'msw'
 import * as React from 'react'
 import { View } from 'react-native'
 
-import { FavoriteResponse, OfferResponse } from 'api/gen'
+import { FavoriteResponse } from 'api/gen'
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { FavoritesWrapper } from 'features/favorites/context/FavoritesWrapper'
 import { favoriteResponseSnap } from 'features/favorites/fixtures/favoriteResponseSnap'
-import { paginatedFavoritesResponseSnap } from 'features/favorites/fixtures/paginatedFavoritesResponseSnap'
-import { offerResponseSnap } from 'features/offer/fixtures/offerResponse'
-import { env } from 'libs/environment'
-import { EmptyResponse } from 'libs/fetch'
+import { simulateBackend } from 'features/favorites/helpers/simulateBackend'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { server } from 'tests/server'
 import { renderHook, waitFor } from 'tests/utils'
 import {
   showSuccessSnackBar,
@@ -44,48 +39,6 @@ mockedUseSnackBarContext.mockReturnValue({
   showSuccessSnackBar,
   showErrorSnackBar,
 })
-
-interface Options {
-  id?: number
-  hasAddFavoriteError?: boolean
-  hasTooManyFavorites?: boolean
-  hasRemoveFavoriteError?: boolean
-}
-
-const defaultOptions = {
-  id: offerId,
-  hasAddFavoriteError: false,
-  hasTooManyFavorites: false,
-  hasRemoveFavoriteError: false,
-}
-
-function simulateBackend(options: Options = defaultOptions) {
-  const { id, hasAddFavoriteError, hasRemoveFavoriteError, hasTooManyFavorites } = {
-    ...defaultOptions,
-    ...options,
-  }
-  server.use(
-    rest.get<OfferResponse>(`${env.API_BASE_URL}/native/v1/offer/${id}`, (req, res, ctx) =>
-      res(ctx.status(200), ctx.json(offerResponseSnap))
-    ),
-    rest.post<EmptyResponse>(`${env.API_BASE_URL}/native/v1/me/favorites`, (req, res, ctx) => {
-      if (hasTooManyFavorites) {
-        return res(ctx.status(400), ctx.json({ code: 'MAX_FAVORITES_REACHED' }))
-      } else if (hasAddFavoriteError) {
-        return res(ctx.status(422), ctx.json({}))
-      } else {
-        return res(ctx.status(200), ctx.json(favoriteResponseSnap))
-      }
-    }),
-    rest.delete<EmptyResponse>(
-      `${env.API_BASE_URL}/native/v1/me/favorites/${
-        paginatedFavoritesResponseSnap.favorites.find((f) => f.offer.id === id)?.id
-      }`,
-      (req, res, ctx) =>
-        !hasRemoveFavoriteError ? res(ctx.status(204)) : res(ctx.status(422), ctx.json({}))
-    )
-  )
-}
 
 describe('useAddFavorite hook', () => {
   it('should add favorite', async () => {
