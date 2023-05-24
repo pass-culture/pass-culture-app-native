@@ -95,7 +95,7 @@ export const OfferBody: FunctionComponent<Props> = ({
   const shouldFetchSearchVenueOffers = Boolean(
     enableMultivenueOffer && isMultivenueCompatibleOffer && offer?.extraData?.isbn
   )
-  const { hasNextPage, fetchNextPage, refetch, data, offerVenues, isFetching, nbOfferVenues } =
+  const { hasNextPage, fetchNextPage, refetch, data, venueList, isFetching, nbVenueItems } =
     useSearchVenueOffers({
       offerId,
       venueId: offer?.venue?.id,
@@ -104,11 +104,11 @@ export const OfferBody: FunctionComponent<Props> = ({
         longitude: offer?.venue?.coordinates?.longitude ?? 0,
       },
       query: offer?.extraData?.isbn ?? '',
-      shouldExecuteQuery: shouldFetchSearchVenueOffers,
+      queryOptions: { enabled: shouldFetchSearchVenueOffers },
     })
 
   const shouldDisplayOtherVenuesAvailableButton = Boolean(
-    shouldFetchSearchVenueOffers && nbOfferVenues > 0
+    shouldFetchSearchVenueOffers && nbVenueItems > 0
   )
 
   const {
@@ -190,9 +190,9 @@ export const OfferBody: FunctionComponent<Props> = ({
     analytics.logConsultItinerary({ offerId, from: 'offer' })
   }, [offerId])
 
-  const onEndReached = useCallback(async () => {
+  const onEndReached = useCallback(() => {
     if (data && hasNextPage) {
-      await fetchNextPage()
+      fetchNextPage()
     }
   }, [data, fetchNextPage, hasNextPage])
 
@@ -390,7 +390,7 @@ export const OfferBody: FunctionComponent<Props> = ({
       {shouldDisplayOtherVenuesAvailableButton ? (
         <VenueSelectionModal
           isVisible={isChangeVenueModalVisible}
-          items={offerVenues}
+          items={venueList}
           title={venueSectionTitle}
           onSubmit={onNewOfferVenueSelected}
           onClosePress={hideChangeVenueModal}
@@ -398,7 +398,6 @@ export const OfferBody: FunctionComponent<Props> = ({
           refreshing={isRefreshing}
           onRefresh={void refetch}
           onScroll={onScrollModal}
-          offerVenueLocation={offer.venue.coordinates}
         />
       ) : null}
     </Container>

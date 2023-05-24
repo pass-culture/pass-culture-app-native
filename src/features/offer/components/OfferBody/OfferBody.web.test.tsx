@@ -34,15 +34,15 @@ const mockData = {
     },
   ],
 }
-const mockOfferVenues: VenueListItem[] = []
-const mockNbOfferVenues = 0
+const mockVenueList: VenueListItem[] = []
+const mockNbVenueItems = 0
 jest.mock('api/useSearchVenuesOffer/useSearchVenueOffers', () => ({
   useSearchVenueOffers: () => ({
     hasNextPage: mockHasNextPage,
     fetchNextPage: mockFetchNextPage,
     data: mockData,
-    offerVenues: mockOfferVenues,
-    nbHits: mockNbOfferVenues,
+    venueList: mockVenueList,
+    nbVenueItems: mockNbVenueItems,
     isFetching: false,
   }),
 }))

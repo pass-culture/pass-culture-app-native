@@ -1,17 +1,18 @@
 import { SearchResponse } from '@algolia/client-search'
 import { flatten } from 'lodash'
 import { useMemo, useRef } from 'react'
-import { useInfiniteQuery } from 'react-query'
+import { InfiniteQueryObserverOptions, useInfiniteQuery } from 'react-query'
 
 import { VenueListItem } from 'features/offer/components/VenueSelectionList/VenueSelectionList'
 import { useIsUserUnderage } from 'features/profile/helpers/useIsUserUnderage'
 import { initialSearchState } from 'features/search/context/reducer'
 import { formatFullAddress } from 'libs/address/useFormatFullAddress'
-import { AlgoliaHit } from 'libs/algolia'
+import { AlgoliaHit, Geoloc } from 'libs/algolia'
 import { useSearchAnalyticsState } from 'libs/algolia/analytics/SearchAnalyticsWrapper'
 import { fetchOffers } from 'libs/algolia/fetchAlgolia/fetchOffers'
 import { useTransformOfferHits } from 'libs/algolia/fetchAlgolia/transformOfferHit'
 import { Position } from 'libs/geolocation'
+import { formatDistance } from 'libs/parsers'
 import { QueryKeys } from 'libs/queryKeys'
 import { getNextPageParam } from 'shared/getNextPageParam/getNextPageParam'
 import { Offer } from 'shared/offer/types'
@@ -20,7 +21,13 @@ export type UseSearchVenueOffersType = {
   offerId: number
   query: string
   geolocation: Position
-  shouldExecuteQuery: boolean
+  queryOptions?: Omit<InfiniteQueryObserverOptions<Response>, 'getNextPageParam'>
+  venueId?: number
+}
+
+export type OfferVenueType = VenueListItem & {
+  price: number
+  coordinates: Geoloc
   venueId?: number
 }
 
@@ -29,8 +36,14 @@ export type Response = Pick<
   'hits' | 'nbHits' | 'page' | 'nbPages' | 'userData'
 >
 
-export function getOfferVenues(hits: Offer[]) {
-  const offerVenues: VenueListItem[] = []
+type FilterVenueOfferType = {
+  hit: AlgoliaHit
+  offerId: number
+  venueId: number | undefined
+}
+
+export function getVenueList(hits: Offer[], geolocation: Position) {
+  const offerVenues: OfferVenueType[] = []
 
   hits.forEach((hit) => {
     const venueAlreadyListedIndex = offerVenues.findIndex((venue) => venue.venueId === hit.venue.id)
@@ -55,13 +68,16 @@ export function getOfferVenues(hits: Offer[]) {
     })
   })
 
-  return offerVenues
-}
+  const venueList: VenueListItem[] = offerVenues.map((offerVenue) => {
+    return {
+      offerId: offerVenue.offerId,
+      title: offerVenue.title,
+      address: offerVenue.address,
+      distance: formatDistance(offerVenue.coordinates, geolocation),
+    }
+  })
 
-type FilterVenueOfferType = {
-  hit: AlgoliaHit
-  offerId: number
-  venueId: number | undefined
+  return venueList
 }
 
 export const filterVenueOfferHit = ({ hit, offerId, venueId }: FilterVenueOfferType): boolean =>
@@ -74,7 +90,7 @@ export const useSearchVenueOffers = ({
   venueId,
   query,
   geolocation,
-  shouldExecuteQuery,
+  queryOptions,
 }: UseSearchVenueOffersType) => {
   const isUserUnderage = useIsUserUnderage()
   const transformHits = useTransformOfferHits()
@@ -97,18 +113,18 @@ export const useSearchVenueOffers = ({
       return response
     },
     // first page is 0
-    { getNextPageParam, enabled: shouldExecuteQuery }
+    { getNextPageParam, ...queryOptions }
   )
 
-  const offerVenues = useMemo(() => {
+  const venueList = useMemo(() => {
     const flattenedHits = flatten(data?.pages.map((page) => page.hits.map(transformHits))).filter(
       (hit) => filterVenueOfferHit({ hit, offerId, venueId })
     ) as Offer[]
 
-    return getOfferVenues(flattenedHits)
-  }, [data?.pages, offerId, transformHits, venueId])
+    return getVenueList(flattenedHits, geolocation)
+  }, [data?.pages, geolocation, offerId, transformHits, venueId])
 
-  const nbOfferVenues = offerVenues.length
+  const nbVenueItems = venueList.length
 
-  return { data, offerVenues, nbOfferVenues, ...infiniteQuery }
+  return { data, venueList, nbVenueItems, ...infiniteQuery }
 }

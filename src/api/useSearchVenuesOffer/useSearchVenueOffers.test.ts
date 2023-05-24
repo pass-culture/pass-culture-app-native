@@ -1,62 +1,44 @@
 import { SubcategoryIdEnum } from 'api/gen'
 import {
   filterVenueOfferHit,
-  getOfferVenues,
+  getVenueList,
   useSearchVenueOffers,
 } from 'api/useSearchVenuesOffer/useSearchVenueOffers'
 import { mockedAlgoliaResponse } from 'libs/algolia/__mocks__/mockedAlgoliaResponse'
 import * as fetchAlgoliaOffer from 'libs/algolia/fetchAlgolia/fetchOffers'
+import { Position } from 'libs/geolocation'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { renderHook, waitFor } from 'tests/utils'
 
 describe('useSearchVenueOffers', () => {
-  describe('getOfferVenues', () => {
+  const position: Position = { latitude: 48.90374, longitude: 2.48171 }
+  describe('getVenueList', () => {
     it('should return an offer venues list', () => {
-      const offerVenues = getOfferVenues(mockedAlgoliaResponse.hits)
+      const offerVenues = getVenueList(mockedAlgoliaResponse.hits, position)
       expect(offerVenues).toEqual([
         {
           address: '1 rue de la paix, 75000 Paris',
-          coordinates: {
-            lat: 48.94374,
-            lng: 2.48171,
-          },
           offerId: 102280,
-          price: 28,
           title: 'Lieu 1',
-          venueId: 1,
+          distance: '4,5 km',
         },
         {
           address: '2 rue de la paix, 75000 Paris',
-          coordinates: {
-            lat: 48.91265,
-            lng: 2.4513,
-          },
           offerId: 102272,
-          price: 23,
           title: 'Lieu 2',
-          venueId: 2,
+          distance: '2,4 km',
         },
         {
           address: '3 rue de la paix, 75000 Paris',
-          coordinates: {
-            lat: 4.90339,
-            lng: -52.31663,
-          },
           offerId: 102249,
-          price: 34,
           title: 'Lieu 3',
-          venueId: 3,
+          distance: '900+ km',
         },
         {
           address: '4 rue de la paix, 75000 Paris',
-          coordinates: {
-            lat: 4.90339,
-            lng: -52.31663,
-          },
           offerId: 102310,
-          price: 28,
           title: 'Lieu 4',
-          venueId: 4,
+          distance: '900+ km',
         },
       ])
     })
@@ -108,18 +90,13 @@ describe('useSearchVenueOffers', () => {
           },
         },
       ]
-      const offerVenues = getOfferVenues(hits)
+      const offerVenues = getVenueList(hits, position)
       expect(offerVenues).toEqual([
         {
           address: '1 rue de la paix, 75000 Paris',
-          coordinates: {
-            lat: 48.94374,
-            lng: 2.48171,
-          },
           offerId: 102281,
-          price: 28,
           title: 'Lieu 1',
-          venueId: 1,
+          distance: '4,5 km',
         },
       ])
     })
@@ -171,7 +148,7 @@ describe('useSearchVenueOffers', () => {
       .spyOn(fetchAlgoliaOffer, 'fetchOffers')
       .mockResolvedValue(mockedAlgoliaResponse)
 
-    it('should fetch offers when shouldExecuteQuery is true', async () => {
+    it('should fetch offers when queryOptions.enabled is true', async () => {
       renderHook(
         () =>
           useSearchVenueOffers({
@@ -179,7 +156,7 @@ describe('useSearchVenueOffers', () => {
             venueId: 1,
             query: '9782070584628',
             geolocation: { latitude: 48.94374, longitude: 2.48171 },
-            shouldExecuteQuery: true,
+            queryOptions: { enabled: true },
           }),
         {
           // eslint-disable-next-line local-rules/no-react-query-provider-hoc
@@ -191,7 +168,7 @@ describe('useSearchVenueOffers', () => {
       })
     })
 
-    it('should not fetch offers when shouldExecuteQuery is false', async () => {
+    it('should not fetch offers when queryOptions.enabled is false', async () => {
       renderHook(
         () =>
           useSearchVenueOffers({
@@ -199,7 +176,7 @@ describe('useSearchVenueOffers', () => {
             venueId: 1,
             query: '9782070584628',
             geolocation: { latitude: 48.94374, longitude: 2.48171 },
-            shouldExecuteQuery: false,
+            queryOptions: { enabled: false },
           }),
         {
           // eslint-disable-next-line local-rules/no-react-query-provider-hoc

@@ -130,15 +130,15 @@ const mockData = {
     },
   ],
 }
-let mockOfferVenues: VenueListItem[] = []
-let mockNbOfferVenues = 0
+let mockVenueList: VenueListItem[] = []
+let mockNbVenueItems = 0
 jest.mock('api/useSearchVenuesOffer/useSearchVenueOffers', () => ({
   useSearchVenueOffers: () => ({
     hasNextPage: mockHasNextPage,
     fetchNextPage: mockFetchNextPage,
     data: mockData,
-    offerVenues: mockOfferVenues,
-    nbOfferVenues: mockNbOfferVenues,
+    venueList: mockVenueList,
+    nbVenueItems: mockNbVenueItems,
     isFetching: false,
   }),
 }))
@@ -152,13 +152,13 @@ const offerId = 1
 describe('<OfferBody />', () => {
   beforeAll(() => {
     mockdate.set(new Date('2021-01-01'))
-    mockOfferVenues = []
-    mockNbOfferVenues = 0
+    mockVenueList = []
+    mockNbVenueItems = 0
   })
 
   afterEach(() => {
-    mockOfferVenues = []
-    mockNbOfferVenues = 0
+    mockVenueList = []
+    mockNbVenueItems = 0
   })
 
   it('should match snapshot for physical offer', async () => {
@@ -551,8 +551,8 @@ describe('<OfferBody />', () => {
           extraData: { isbn: '2765410054' },
         },
       })
-      mockNbOfferVenues = 2
-      mockOfferVenues = offerVenues
+      mockNbVenueItems = 2
+      mockVenueList = offerVenues
       renderOfferBody()
 
       await screen.findByTestId('offer-container')
@@ -567,8 +567,8 @@ describe('<OfferBody />', () => {
           extraData: { isbn: '2765410054' },
         },
       })
-      mockNbOfferVenues = 0
-      mockOfferVenues = []
+      mockNbVenueItems = 0
+      mockVenueList = []
       renderOfferBody()
 
       await screen.findByTestId('offer-container')
@@ -593,8 +593,8 @@ describe('<OfferBody />', () => {
           extraData: { isbn: '2765410054' },
         },
       })
-      mockNbOfferVenues = 2
-      mockOfferVenues = offerVenues
+      mockNbVenueItems = 2
+      mockVenueList = offerVenues
       renderOfferBody()
 
       await screen.findByTestId('offer-container')
@@ -609,8 +609,8 @@ describe('<OfferBody />', () => {
           extraData: { isbn: '2765410054' },
         },
       })
-      mockNbOfferVenues = 0
-      mockOfferVenues = []
+      mockNbVenueItems = 0
+      mockVenueList = []
       renderOfferBody()
 
       await screen.findByTestId('offer-container')
@@ -621,8 +621,8 @@ describe('<OfferBody />', () => {
       mockUseOffer.mockReturnValueOnce({
         data: { ...mockOffer, subcategoryId: SubcategoryIdEnum.LIVRE_PAPIER },
       })
-      mockNbOfferVenues = 2
-      mockOfferVenues = offerVenues
+      mockNbVenueItems = 2
+      mockVenueList = offerVenues
       renderOfferBody()
 
       await screen.findByTestId('offer-container')
