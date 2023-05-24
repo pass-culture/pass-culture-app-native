@@ -66,6 +66,7 @@ export type HomepageModule =
   | ThematicHighlightModule
   | VenuesModule
   | CategoryListModule
+  | VideoModule
 
 export type OffersModule = {
   type: HomepageModuleType.OffersModule
@@ -281,4 +282,8 @@ export const isThematicHighlightModule = (
 
 export const isCategoryListModule = (module: HomepageModule): module is CategoryListModule => {
   return module.type === HomepageModuleType.CategoryListModule
+}
+
+export const isVideoModule = (module: HomepageModule): module is VideoModule => {
+  return module.type === HomepageModuleType.VideoModule
 }
