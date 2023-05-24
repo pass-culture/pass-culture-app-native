@@ -3,9 +3,9 @@ import { isBefore } from 'date-fns'
 import React, { FunctionComponent, useEffect } from 'react'
 import styled from 'styled-components/native'
 
-import { THEMATIC_HEADER_TEXT_BACKGROUND_OPACITY } from 'features/home/components/constants'
+import { BlackGradient } from 'features/home/components/BlackGradient'
+import { TEXT_BACKGROUND_OPACITY } from 'features/home/components/constants'
 import { computeDateRangeDisplay } from 'features/home/components/helpers/computeDateRangeDisplay'
-import { ThematicHighlightGradient } from 'features/home/components/ThematicHighlightGradient'
 import { analytics } from 'libs/analytics'
 import { ContentTypes } from 'libs/contentful'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
@@ -73,7 +73,7 @@ export const ThematicHighlightModule: FunctionComponent<Props> = ({
           <DateRangeCaption>{dateRange}</DateRangeCaption>
         </DateRangeCaptionContainer>
         <TextContainer>
-          <ThematicHighlightGradient />
+          <BlackGradient />
           <BlackBackground>
             {!!subtitle && (
               <React.Fragment>
@@ -123,7 +123,7 @@ const TextContainer = styled.View({ position: 'absolute', bottom: 0, left: 0, ri
 const BlackBackground = styled.View(({ theme }) => ({
   paddingHorizontal: getSpacing(4),
   paddingBottom: getSpacing(4),
-  backgroundColor: colorAlpha(theme.colors.black, THEMATIC_HEADER_TEXT_BACKGROUND_OPACITY),
+  backgroundColor: colorAlpha(theme.colors.black, TEXT_BACKGROUND_OPACITY),
 }))
 
 const Title = styled(Typo.Title3)(({ theme }) => ({

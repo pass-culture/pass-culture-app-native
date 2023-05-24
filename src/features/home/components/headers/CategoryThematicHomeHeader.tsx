@@ -3,10 +3,10 @@ import React, { FunctionComponent, useCallback } from 'react'
 import { StatusBar } from 'react-native'
 import styled from 'styled-components/native'
 
+import { BlackGradient } from 'features/home/components/BlackGradient'
 import { HEADER_BLACK_BACKGROUND_HEIGHT } from 'features/home/components/constants'
 import { BackButtonContainer } from 'features/home/components/headers/BackButtonContainer'
 import { BlackBackground } from 'features/home/components/headers/BlackBackground'
-import { ThematicHighlightGradient } from 'features/home/components/ThematicHighlightGradient'
 import { CategoryThematicHeader } from 'features/home/types'
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { homeNavConfig } from 'features/navigation/TabBar/helpers'
@@ -36,7 +36,7 @@ export const CategoryThematicHomeHeader: FunctionComponent<CategoryThematicHeade
           <BackButton onGoBack={onGoBack} />
         </BackButtonContainer>
         <TextContainer>
-          <ThematicHighlightGradient height={HEADER_BLACK_BACKGROUND_HEIGHT} />
+          <BlackGradient height={HEADER_BLACK_BACKGROUND_HEIGHT} />
           <BlackBackground>
             <TitleContainer>
               <Title numberOfLines={2}>{title}</Title>
