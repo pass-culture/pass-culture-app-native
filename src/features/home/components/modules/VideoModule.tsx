@@ -12,6 +12,8 @@ const THUMBNAIL_HEIGHT = 180
 // the title is to close to the player. So the player is closer to the top.
 const PLAYER_TOP_MARGIN = 50
 
+const PLAYER_SIZE = 58
+
 type Props = {
   title: string
   videoTitle: string
@@ -41,9 +43,9 @@ export const VideoModule: FunctionComponent<Props> = ({
             <VideoTitle numberOfLines={2}>{videoTitle}</VideoTitle>
           </BlackBackground>
         </TextContainer>
-        <PlayContainer>
-          <Play size={58} />
-        </PlayContainer>
+        <PlayerContainer>
+          <Player />
+        </PlayerContainer>
       </Thumbnail>
     </Container>
   )
@@ -75,13 +77,15 @@ const DurationCaption = styled(Typo.Caption)(({ theme }) => ({
   color: theme.colors.white,
 }))
 
-const PlayContainer = styled.View({
+const PlayerContainer = styled.View({
   position: 'absolute',
   top: PLAYER_TOP_MARGIN,
   left: 0,
   right: 0,
   alignItems: 'center',
 })
+
+const Player = styled(Play).attrs({ size: PLAYER_SIZE })({})
 
 const TextContainer = styled.View({ position: 'absolute', bottom: 0, left: 0, right: 0 })
 
