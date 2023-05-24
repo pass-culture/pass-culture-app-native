@@ -87,6 +87,7 @@ import { OtherOffer } from 'ui/svg/icons/OtherOffer'
 import { PhoneFilled } from 'ui/svg/icons/PhoneFilled'
 import { PlainArrowNext } from 'ui/svg/icons/PlainArrowNext'
 import { PlainArrowPrevious } from 'ui/svg/icons/PlainArrowPrevious'
+import { Play } from 'ui/svg/icons/Play'
 import { Plus } from 'ui/svg/icons/Plus'
 import { PlusLight } from 'ui/svg/icons/PlusLight'
 import { Profile } from 'ui/svg/icons/Profile'
@@ -236,6 +237,7 @@ export const TertiaryAndSmallerIcons = {
   PhoneFilled,
   PlainArrowNext,
   PlainArrowPrevious,
+  Play,
   Plus,
   PlusLight,
   Profile,
