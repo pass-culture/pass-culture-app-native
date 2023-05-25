@@ -8,7 +8,7 @@ import { PageHeaderSecondary } from 'ui/components/headers/PageHeaderSecondary'
 import { getSpacing } from 'ui/theme'
 
 export const SignupProgressBar = () => {
-  const [currentStep, updateStep] = useReducer((v: number, incr: number) => v + incr, 0)
+  const [currentStep, updateStep] = useReducer((v: number, incr: number) => v + incr, 1)
   const goToNextStep = () => updateStep(1)
   const goToPreviousStep = () => updateStep(-1)
 
@@ -20,7 +20,7 @@ export const SignupProgressBar = () => {
         <StyledButton
           wording="Previous Step"
           onPress={goToPreviousStep}
-          disabled={currentStep === 0}
+          disabled={currentStep === 1}
         />
         <StyledButton wording="Next Step" onPress={goToNextStep} disabled={currentStep === 5} />
       </ButtonContainer>

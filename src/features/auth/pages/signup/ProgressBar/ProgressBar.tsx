@@ -1,4 +1,4 @@
-import React, { useRef } from 'react'
+import React, { useEffect, useRef } from 'react'
 import styled from 'styled-components/native'
 
 import { AnimatedView, AnimatedViewRefType } from 'libs/react-native-animatable'
@@ -13,6 +13,12 @@ interface Props {
 export const ProgressBar = ({ currentStep, totalStep }: Props) => {
   const barRef = useRef<AnimatedViewRefType>(null)
   const progressionRatio = (currentStep / totalStep) * 100
+
+  useEffect(
+    () => barRef.current?.transition({ width: '0%' }, { width: `${progressionRatio}%` }),
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    []
+  )
 
   return (
     <React.Fragment>
