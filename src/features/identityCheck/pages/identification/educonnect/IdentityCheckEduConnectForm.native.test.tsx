@@ -1,17 +1,18 @@
 import React from 'react'
 
-import { render, superFlushWithAct, screen } from 'tests/utils'
+import { render, superFlushWithAct } from 'tests/utils'
 
 import { IdentityCheckEduConnectForm } from './IdentityCheckEduConnectForm'
 
 jest.mock('features/identityCheck/context/SubscriptionContextProvider')
+jest.mock('features/identityCheck/pages/helpers/useSubscriptionNavigation')
 jest.mock('libs/eduConnectClient')
 
 describe('<IdentityCheckEduConnectForm />', () => {
   it('should render IdentityCheckEduConnectForm', async () => {
-    render(<IdentityCheckEduConnectForm />)
+    const renderAPI = render(<IdentityCheckEduConnectForm />)
     superFlushWithAct()
 
-    expect(screen).toMatchSnapshot()
+    expect(renderAPI).toMatchSnapshot()
   })
 })

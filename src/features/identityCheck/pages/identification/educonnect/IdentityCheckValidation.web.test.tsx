@@ -5,6 +5,7 @@ import { checkAccessibilityFor, render, screen } from 'tests/utils/web'
 import { IdentityCheckValidation } from './IdentityCheckValidation'
 
 jest.mock('features/identityCheck/context/SubscriptionContextProvider')
+jest.mock('features/identityCheck/pages/helpers/useSubscriptionNavigation')
 jest.mock('features/auth/context/AuthContext')
 
 describe('<IdentityCheckValidation />', () => {

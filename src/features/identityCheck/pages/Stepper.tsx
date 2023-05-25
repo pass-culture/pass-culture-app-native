@@ -83,7 +83,7 @@ export const Stepper = () => {
           <StepButtonContainer>
             <StepButton
               step={step}
-              navigateTo={{ screen: step.firstScreen }}
+              navigateTo={{ screen: step.screens[0] }}
               onPress={() => {
                 analytics.logIdentityCheckStep(step.name)
               }}

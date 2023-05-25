@@ -20,6 +20,12 @@ jest.mock('features/identityCheck/context/SubscriptionContextProvider', () => ({
   }),
 }))
 
+jest.mock('features/identityCheck/pages/helpers/useSubscriptionNavigation', () => ({
+  useSubscriptionNavigation: () => ({
+    navigateToNextScreen: jest.fn(),
+  }),
+}))
+
 jest.mock('ui/components/modals/useModal', () => ({
   useModal: jest.fn().mockReturnValue({
     visible: false,
