@@ -13,10 +13,12 @@ import { METROPOLITAN_FRANCE } from 'features/identityCheck/components/countryPi
 import { CountryPicker } from 'features/identityCheck/components/countryPicker/CountryPicker'
 import { PageWithHeader } from 'features/identityCheck/components/layout/PageWithHeader'
 import { useSubscriptionContext } from 'features/identityCheck/context/SubscriptionContextProvider'
-import { useSubscriptionNavigation } from 'features/identityCheck/pages/helpers/useSubscriptionNavigation'
+import { useNavigateForwardToStepper } from 'features/identityCheck/helpers/useNavigateForwardToStepper'
+import { useSaveStep } from 'features/identityCheck/pages/helpers/useSaveStep'
 import { formatPhoneNumberWithPrefix } from 'features/identityCheck/pages/phoneValidation/helpers/formatPhoneNumber'
 import { isPhoneNumberValid } from 'features/identityCheck/pages/phoneValidation/helpers/isPhoneNumberValid'
 import { PhoneValidationTipsModal } from 'features/identityCheck/pages/phoneValidation/PhoneValidationTipsModal'
+import { IdentityCheckStep } from 'features/identityCheck/types'
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { homeNavConfig } from 'features/navigation/TabBar/helpers'
 import { useGoBack } from 'features/navigation/useGoBack'
@@ -40,12 +42,13 @@ export const SetPhoneNumber = () => {
   }, [])
   const titleID = uuidv4()
   const { dispatch, phoneValidation } = useSubscriptionContext()
+  const saveStep = useSaveStep()
+  const { navigateForwardToStepper } = useNavigateForwardToStepper()
   const [phoneNumber, setPhoneNumber] = useState(phoneValidation?.phoneNumber ?? '')
   const [invalidPhoneNumberMessage, setInvalidPhoneNumberMessage] = useSafeState('')
   const [country, setCountry] = useState<Country>(INITIAL_COUNTRY)
   const { navigate } = useNavigation<UseNavigationType>()
   const { goBack } = useGoBack(...homeNavConfig)
-  const { navigateToNextScreen } = useSubscriptionNavigation()
   const isContinueButtonEnabled = isPhoneNumberValid(phoneNumber)
 
   const { remainingAttempts, isLastAttempt } = usePhoneValidationRemainingAttempts()
@@ -71,7 +74,7 @@ export const SetPhoneNumber = () => {
   }
 
   const { mutate: sendPhoneValidationCode, isLoading } = useSendPhoneValidationMutation({
-    onSuccess: () => {
+    onSuccess: async () => {
       dispatch({
         type: 'SET_PHONE_NUMBER',
         payload: {
@@ -79,7 +82,8 @@ export const SetPhoneNumber = () => {
           country: { countryCode: country.cca2, callingCodes: country.callingCode },
         },
       })
-      navigateToNextScreen()
+      await saveStep(IdentityCheckStep.PHONE_VALIDATION)
+      navigateForwardToStepper()
       queryClient.invalidateQueries([QueryKeys.PHONE_VALIDATION_REMAINING_ATTEMPTS])
     },
     onError: (error: ApiError | unknown) => {

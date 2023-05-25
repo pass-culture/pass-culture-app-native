@@ -3,7 +3,7 @@ import React, { useCallback, useEffect } from 'react'
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { HomeOfferTile } from 'features/home/components/HomeOfferTile'
 import { useHomePosition } from 'features/home/helpers/useHomePosition'
-import { OffersData, OffersModule as OffersModuleType } from 'features/home/types'
+import { ModuleData, OffersModule as OffersModuleType } from 'features/home/types'
 import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
 import { SearchView } from 'features/search/types'
 import { useAdaptOffersPlaylistParameters } from 'libs/algolia/fetchAlgolia/fetchMultipleOffers/helpers/useAdaptOffersPlaylistParameters'
@@ -25,7 +25,7 @@ type OffersModuleProps = {
   cover: string | null
   index: number
   homeEntryId: string | undefined
-  data: OffersData | undefined
+  data: ModuleData | undefined
 }
 
 const keyExtractor = (item: Offer) => item.objectID

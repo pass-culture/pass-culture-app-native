@@ -38,10 +38,7 @@ exports[`GenericHome should display real content 1`] = `
       data={
         Array [
           Object {
-            "data": Object {
-              "hits": Array [],
-              "moduleId": "105MMz59tftcxXJICXt7ja",
-            },
+            "data": undefined,
             "displayParameters": Object {
               "layout": "one-item-medium",
               "minOffers": 1,
@@ -191,10 +188,7 @@ exports[`GenericHome should display skeleton 1`] = `
       data={
         Array [
           Object {
-            "data": Object {
-              "hits": Array [],
-              "moduleId": "105MMz59tftcxXJICXt7ja",
-            },
+            "data": undefined,
             "displayParameters": Object {
               "layout": "one-item-medium",
               "minOffers": 1,

@@ -108,18 +108,17 @@ export const VerticalStepper = memo(function VerticalStepper({
   return (
     <Wrapper testID={`vertical-stepper-${variant}`}>
       <TopLine testID="top-line" isFirst={isFirst} isLast={isLast} />
-      <Icon testID="icon" />
+      <IconWrapper>
+        <Icon testID="icon" />
+      </IconWrapper>
       <BottomLine testID="bottom-line" isFirst={isFirst} isLast={isLast} />
     </Wrapper>
   )
 })
 
 const Wrapper = styled.View({
-  display: 'flex',
-  flexDirection: 'column',
   alignItems: 'center',
-  flexGrow: 1,
-  gap: getSpacing(1),
+  flex: 1,
   overflow: 'hidden',
 })
 
@@ -127,7 +126,7 @@ const FilledLine = styled.View(({ theme }) => ({
   backgroundColor: theme.colors.greyMedium,
   width: 2,
   borderRadius: 2,
-  flexGrow: 1,
+  flex: 1,
 }))
 
 const TopFilledLine = styled(FilledLine)<FirstOrLastProps>(({ isFirst }) => ({
@@ -153,3 +152,7 @@ const InProgressIcon = styled.View(({ theme }) => ({
 const FutureIcon = styled(InProgressIcon)(({ theme }) => ({
   backgroundColor: theme.colors.greyMedium,
 }))
+
+const IconWrapper = styled.View({
+  marginVertical: getSpacing(0.5),
+})

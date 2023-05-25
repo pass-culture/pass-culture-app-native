@@ -51,6 +51,7 @@ import { TabNavigator } from 'features/navigation/TabBar/TabNavigator'
 import { Offer } from 'features/offer/pages/Offer/Offer'
 import { OfferDescription } from 'features/offer/pages/OfferDescription/OfferDescription'
 import { AfterChangeEmailValidationBuffer } from 'features/profile/pages/AfterChangeEmailValidationBuffer/AfterChangeEmailValidationBuffer'
+import { ChangeEmail } from 'features/profile/pages/ChangeEmail/ChangeEmail'
 import { ChangeEmailExpiredLink } from 'features/profile/pages/ChangeEmail/ChangeEmailExpiredLink'
 import { ChangePassword } from 'features/profile/pages/ChangePassword'
 import { ConsentSettings } from 'features/profile/pages/ConsentSettings/ConsentSettings'
@@ -59,6 +60,7 @@ import { DeleteProfileSuccess } from 'features/profile/pages/DeleteProfile/Delet
 import { LegalNotices } from 'features/profile/pages/LegalNotices/LegalNotices'
 import { NotificationSettings } from 'features/profile/pages/NotificationSettings/NotificationSettings'
 import { PersonalData } from 'features/profile/pages/PersonalData/PersonalData'
+import { TrackEmailChange } from 'features/profile/pages/TrackEmailChange/TrackEmailChange'
 import { SearchFilter } from 'features/search/pages/SearchFilter/SearchFilter'
 import { Venue } from 'features/venue/pages/Venue/Venue'
 import { ABTestingPOC } from 'libs/firebase/remoteConfig/ABTestingPOC'
@@ -284,6 +286,18 @@ export const routes: Route[] = [
     component: PersonalData,
     path: 'profil/donnees-personnelles',
     options: { title: 'Mes informations personnelles' },
+  },
+  {
+    name: 'ChangeEmail',
+    component: ChangeEmail,
+    path: 'profil/modification-email',
+    options: { title: 'Modification de l’e-mail' },
+  },
+  {
+    name: 'TrackEmailChange',
+    component: TrackEmailChange,
+    path: 'profil/suivi-modification-email',
+    options: { title: 'Suivi de ton changement d’e-mail' },
   },
   {
     name: 'ChangePassword',

@@ -3,6 +3,7 @@ import mockdate from 'mockdate'
 import { ALL_OPTIONAL_COOKIES, COOKIES_BY_CATEGORY } from 'features/cookies/CookiesPolicy'
 import { useCookies } from 'features/cookies/helpers/useCookies'
 import { storage } from 'libs/storage'
+import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, renderHook } from 'tests/utils'
 
 import { isAppsFlyerTrackingEnabled } from './isAppsFlyerTrackingEnabled'
@@ -25,7 +26,7 @@ describe('isAppsFlyerTrackingEnabled', () => {
   })
 
   it('should return true when all cookies are accepted', async () => {
-    const { result } = renderHook(useCookies)
+    const { result } = renderUseCookies()
     const { setCookiesConsent } = result.current
 
     await act(async () => {
@@ -41,7 +42,7 @@ describe('isAppsFlyerTrackingEnabled', () => {
   })
 
   it('should return false when all cookies are refused', async () => {
-    const { result } = renderHook(useCookies)
+    const { result } = renderUseCookies()
     const { setCookiesConsent } = result.current
 
     await act(async () => {
@@ -58,7 +59,7 @@ describe('isAppsFlyerTrackingEnabled', () => {
   })
 
   it('should return true when marketing cookies are accepted', async () => {
-    const { result } = renderHook(useCookies)
+    const { result } = renderUseCookies()
     const { setCookiesConsent } = result.current
 
     await act(async () => {
@@ -74,3 +75,9 @@ describe('isAppsFlyerTrackingEnabled', () => {
     expect(enabled).toBeTruthy()
   })
 })
+
+const renderUseCookies = () =>
+  renderHook(useCookies, {
+    /* eslint-disable local-rules/no-react-query-provider-hoc */
+    wrapper: ({ children }) => reactQueryProviderHOC(children),
+  })

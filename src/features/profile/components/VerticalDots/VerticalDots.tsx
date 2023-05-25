@@ -156,7 +156,7 @@ VerticalDots.Auto = AutomaticVerticalDots
 
 const Wrapper = styled.View({
   justifyContent: 'space-between',
-  flex: 1,
+  flexGrow: 1,
 })
 
 type DotProps = {

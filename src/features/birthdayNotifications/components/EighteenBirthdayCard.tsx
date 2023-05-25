@@ -1,14 +1,29 @@
 import React, { useState } from 'react'
+import styled from 'styled-components/native'
 
+import { useAuthContext } from 'features/auth/context/AuthContext'
 import { useBeneficiaryValidationNavigation } from 'features/auth/helpers/useBeneficiaryValidationNavigation'
-import { useDepositAmountsByAge } from 'shared/user/useDepositAmountsByAge'
 import TutorialPassLogo from 'ui/animations/eighteen_birthday.json'
 import { AchievementCardKeyProps, GenericAchievementCard } from 'ui/components/achievements'
+import { Spacer } from 'ui/components/spacer/Spacer'
+import { Typo } from 'ui/theme'
+import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
+
+const DescriptionText = (text: string) => {
+  const Component = () => (
+    <React.Fragment>
+      <CenterChildContainer>
+        <StyledCenterChild>{text}</StyledCenterChild>
+        <Spacer.Column numberOfSpaces={4} />
+      </CenterChildContainer>
+    </React.Fragment>
+  )
+  return Component
+}
 
 export function EighteenBirthdayCard(props: AchievementCardKeyProps) {
   const [error, setError] = useState<Error | undefined>()
-  const depositAmount = useDepositAmountsByAge().eighteenYearsOldDeposit
-  const deposit = depositAmount.replace(' ', '')
+  const { user } = useAuthContext()
 
   const { navigateToNextBeneficiaryValidationStep } = useBeneficiaryValidationNavigation(setError)
 
@@ -16,15 +31,23 @@ export function EighteenBirthdayCard(props: AchievementCardKeyProps) {
     throw error
   }
 
+  let text = 'Confirme tes informations personnelles pour débloquer tes 300\u00a0€.'
+  let buttonText = 'Confirmer mes informations'
+
+  if (user?.requiresIdCheck === true) {
+    text = 'Vérifie ton identité pour débloquer tes 300\u00a0€.'
+    buttonText = 'Vérifier mon identité'
+  }
+
   return (
     <GenericAchievementCard
       animation={TutorialPassLogo}
       buttonCallback={navigateToNextBeneficiaryValidationStep}
-      buttonText="Vérifier mon identité"
+      buttonText={buttonText}
       pauseAnimationOnRenderAtFrame={62}
-      subTitle="Tu as 18 ans..."
-      text={`Tu pourras bénéficier des ${deposit} offerts par l’État dès que tu auras vérifié ton identité`}
-      title="Bonne nouvelle&nbsp;!"
+      centerChild={DescriptionText(text)}
+      text={'Ton crédit précédent a été remis à 0\u00a0€.'}
+      title="Tu as 18 ans&nbsp;!"
       swiperRef={props.swiperRef}
       name={props.name}
       index={props.index}
@@ -35,3 +58,13 @@ export function EighteenBirthdayCard(props: AchievementCardKeyProps) {
     />
   )
 }
+
+const CenterChildContainer = styled.View({
+  flexDirection: 'column',
+  justifyContent: 'center',
+})
+
+const StyledCenterChild = styled(Typo.Title4).attrs(getHeadingAttrs(2))({
+  textAlign: 'center',
+  alignSelf: 'center',
+})

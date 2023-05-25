@@ -9,10 +9,12 @@ import LottieView from 'libs/lottie'
 import { MonitoringError } from 'libs/monitoring'
 import { AnimatedView, AnimatedViewRefType } from 'libs/react-native-animatable'
 import { useMediaQuery } from 'libs/react-responsive/useMediaQuery'
+import { theme } from 'theme'
 import { AnimationObject } from 'ui/animations/type'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
-import { ButtonPrimaryWhite } from 'ui/components/buttons/ButtonPrimaryWhite'
+import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
 import { Spacer } from 'ui/components/spacer/Spacer'
+import { ClockFilled } from 'ui/svg/icons/ClockFilled'
 import { getSpacing, Typo } from 'ui/theme'
 import { LINE_BREAK } from 'ui/theme/constants'
 import { useGrid } from 'ui/theme/grid'
@@ -33,7 +35,7 @@ export type AchievementCardProps = AchievementCardKeyProps & {
   buttonText: string
   buttonAccessibilityLabel?: string
   pauseAnimationOnRenderAtFrame: number
-  subTitle: string
+  subTitle?: string
   centerChild?: (() => JSX.Element) | null
   text: string
   title: string
@@ -57,6 +59,9 @@ export const GenericAchievementCard: FunctionComponent<AchievementCardProps> = (
     () => (isSmallHeight ? { height: '100%' } : undefined),
     [isSmallHeight]
   )
+
+  let title = props.title
+  if (props.subTitle) title += LINE_BREAK + props.subTitle
 
   if (props.index === undefined || props.lastIndex === undefined) {
     throw new MonitoringError(
@@ -123,7 +128,7 @@ export const GenericAchievementCard: FunctionComponent<AchievementCardProps> = (
       </StyledLottieContainer>
       <Spacer.Flex flex={1} />
       <ContentContainer>
-        <StyledTitle>{props.title + LINE_BREAK + props.subTitle}</StyledTitle>
+        <StyledTitle>{title}</StyledTitle>
         <Spacer.Column numberOfSpaces={4} />
         {!!props.centerChild && (
           <React.Fragment>
@@ -152,7 +157,7 @@ export const GenericAchievementCard: FunctionComponent<AchievementCardProps> = (
         </AnimatedView>
         {!props.lastIndex && (
           <FlexContainer marginTop={getSpacing(grid({ default: 4, sm: 2 }, 'height'))}>
-            <ButtonPrimaryWhite wording="Passer" onPress={props.skip} />
+            <ButtonTertiaryBlack wording="Plus tard" onPress={props.skip} icon={ClockFilled} />
           </FlexContainer>
         )}
       </BottomButtonsContainer>
@@ -197,8 +202,9 @@ const StyledTitle = styled(Typo.Title1)({
   textAlign: 'center',
 })
 
-const StyledBody = styled(Typo.Body)({
+const StyledBody = styled(Typo.Caption)({
   textAlign: 'center',
+  color: theme.colors.greyDark,
 })
 
 const ContentContainer = styled.View({

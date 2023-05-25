@@ -46,7 +46,7 @@ export const SignupConfirmationEmailSent: FunctionComponent<Props> = ({ route })
   return (
     <BottomContentPage>
       <ModalHeader
-        title="Confirme ton e-mail"
+        title="Confirme ton adresse e-mail"
         rightIconAccessibilityLabel="Abandonner l’inscription"
         rightIcon={Close}
         onRightIconPress={onClose}
@@ -54,16 +54,13 @@ export const SignupConfirmationEmailSent: FunctionComponent<Props> = ({ route })
       />
       <EmailSentModalContent>
         <Description>
-          <Typo.Body>Clique sur le lien reçu à l’adresse&nbsp;:</Typo.Body>
+          <Typo.Body>Tu as reçu un lien à l’adresse&nbsp;:</Typo.Body>
           <CenteredText>
             <Typo.Body>{route.params.email}</Typo.Body>
           </CenteredText>
           <Spacer.Column numberOfSpaces={5} />
           <CenteredText>
-            <Typo.Body>
-              Nous devons vérifier tes informations&nbsp;: l’email peut prendre quelques minutes
-              pour arriver.
-            </Typo.Body>
+            <Typo.Body>L’e-mail peut prendre quelques minutes pour arriver.</Typo.Body>
           </CenteredText>
           <Spacer.Column numberOfSpaces={5} />
           <CenteredText>

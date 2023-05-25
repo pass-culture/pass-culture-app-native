@@ -146,6 +146,7 @@ export type RootStackParamList = {
   BannedCountryError: undefined
   ChangePassword: undefined
   ChangeEmail: undefined
+  TrackEmailChange: undefined
   ChangeEmailExpiredLink: undefined
   CheatCodes: undefined
   CheatMenu: undefined

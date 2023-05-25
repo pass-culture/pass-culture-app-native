@@ -58,7 +58,6 @@ const Container = styled.View<{ type: StepCardType; hasSubtitle?: boolean }>(
     paddingVertical: hasSubtitle ? getSpacing(5) : getSpacing(6),
     paddingHorizontal: getSpacing(4),
     borderColor: getBorderColor(type, theme),
-    gap: getSpacing(4),
   })
 )
 
@@ -70,6 +69,7 @@ const IconContainer = styled.View<{ type: StepCardType }>(({ type }) => ({
 const TextContainter = styled.View({
   flex: 1,
   justifyContent: 'center',
+  marginLeft: getSpacing(4),
 })
 
 const Title = styled(Typo.ButtonText)<{ type: StepCardType }>(({ theme, type }) => ({

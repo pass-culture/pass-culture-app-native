@@ -65,22 +65,35 @@ const StyleStepCard = styled(StepCard)({
   marginVertical: 12,
 })
 
-const Template: ComponentStory<typeof StepList> = ({ activeStepIndex = 1 }) => (
-  <StepList activeStepIndex={activeStepIndex}>
-    <Step>
-      <StyleStepCard title="Done" icon={<Email />} type={StepCardType.DONE} />
-    </Step>
-    <Step>
-      <StyleStepCard title="Active" subtitle="Renseigne ton email" icon={<BicolorAroundMe />} />
-    </Step>
-    <Step>
-      <StyleStepCard title="Disabled" icon={<Email />} type={StepCardType.DISABLED} />
-    </Step>
-    <Step>
-      <StyleStepCard title="Disabled" icon={<Email />} type={StepCardType.DISABLED} />
-    </Step>
-  </StepList>
-)
+const Template: ComponentStory<typeof StepList> = ({ activeStepIndex = 0 }) => {
+  const getStepCardType = (stepIndex: number) => {
+    if (stepIndex === activeStepIndex) return StepCardType.ACTIVE
+    if (stepIndex < activeStepIndex) return StepCardType.DONE
+    return StepCardType.DISABLED
+  }
+
+  return (
+    <StepList activeStepIndex={activeStepIndex}>
+      <Step>
+        <StyleStepCard title="Done" icon={<Email />} type={getStepCardType(0)} />
+      </Step>
+      <Step>
+        <StyleStepCard
+          title="Active"
+          subtitle="Renseigne ton email"
+          icon={<BicolorAroundMe />}
+          type={getStepCardType(1)}
+        />
+      </Step>
+      <Step>
+        <StyleStepCard title="Disabled" icon={<Email />} type={getStepCardType(2)} />
+      </Step>
+      <Step>
+        <StyleStepCard title="Disabled" icon={<Email />} type={getStepCardType(3)} />
+      </Step>
+    </StepList>
+  )
+}
 
 export const WithStepCard = Template.bind({})
 WithStepCard.args = {

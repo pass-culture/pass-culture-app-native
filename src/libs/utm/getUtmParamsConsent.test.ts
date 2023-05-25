@@ -4,6 +4,7 @@ import { ALL_OPTIONAL_COOKIES, COOKIES_BY_CATEGORY } from 'features/cookies/Cook
 import { useCookies } from 'features/cookies/helpers/useCookies'
 import { storage } from 'libs/storage'
 import { getUtmParamsConsent } from 'libs/utm/getUtmParamsConsent'
+import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, flushAllPromisesWithAct, renderHook } from 'tests/utils'
 
 jest.mock('features/profile/api/useUpdateProfileMutation')
@@ -32,7 +33,7 @@ describe('getUtmParamsConsent', () => {
   })
 
   it('should return true for all params when cookies are accepted', async () => {
-    const { result } = renderHook(useCookies)
+    const { result } = renderUseCookies()
     const { setCookiesConsent } = result.current
 
     act(() => {
@@ -54,7 +55,7 @@ describe('getUtmParamsConsent', () => {
   })
 
   it('should return false for all params when cookies are refused', async () => {
-    const { result } = renderHook(useCookies)
+    const { result } = renderUseCookies()
     const { setCookiesConsent } = result.current
 
     act(() => {
@@ -76,7 +77,7 @@ describe('getUtmParamsConsent', () => {
   })
 
   it('should return true for all params when customization cookies are accepted', async () => {
-    const { result } = renderHook(useCookies)
+    const { result } = renderUseCookies()
     const { setCookiesConsent } = result.current
 
     act(() => {
@@ -97,3 +98,9 @@ describe('getUtmParamsConsent', () => {
     })
   })
 })
+
+const renderUseCookies = () =>
+  renderHook(useCookies, {
+    /* eslint-disable local-rules/no-react-query-provider-hoc */
+    wrapper: ({ children }) => reactQueryProviderHOC(children),
+  })

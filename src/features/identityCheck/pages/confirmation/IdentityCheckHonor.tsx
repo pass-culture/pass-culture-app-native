@@ -9,7 +9,9 @@ import { usePostHonorStatement } from 'features/identityCheck/api/usePostHonorSt
 import { CenteredTitle } from 'features/identityCheck/components/CenteredTitle'
 import { Declaration } from 'features/identityCheck/components/Declaration'
 import { PageWithHeader } from 'features/identityCheck/components/layout/PageWithHeader'
-import { useSubscriptionNavigation } from 'features/identityCheck/pages/helpers/useSubscriptionNavigation'
+import { useNavigateForwardToStepper } from 'features/identityCheck/helpers/useNavigateForwardToStepper'
+import { useSaveStep } from 'features/identityCheck/pages/helpers/useSaveStep'
+import { IdentityCheckStep } from 'features/identityCheck/types'
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { analytics } from 'libs/analytics'
 import { QueryKeys } from 'libs/queryKeys'
@@ -24,7 +26,8 @@ export const IdentityCheckHonor = () => {
     analytics.logScreenViewIdentityCheckHonor()
   }, [])
   const theme = useTheme()
-  const { navigateToNextScreen } = useSubscriptionNavigation()
+  const saveStep = useSaveStep()
+  const { navigateForwardToStepper } = useNavigateForwardToStepper()
   const { showErrorSnackBar } = useSnackBarContext()
   const queryClient = useQueryClient()
   const { navigate } = useNavigation<UseNavigationType>()
@@ -52,7 +55,8 @@ export const IdentityCheckHonor = () => {
       if (hasUserOngoingCredit) {
         navigate('BeneficiaryAccountCreated')
       } else {
-        navigateToNextScreen()
+        saveStep(IdentityCheckStep.CONFIRMATION)
+        navigateForwardToStepper()
       }
     },
     onError: (error) =>

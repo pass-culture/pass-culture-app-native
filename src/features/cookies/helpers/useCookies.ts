@@ -1,5 +1,6 @@
 import omit from 'lodash/omit'
 import { useEffect, useState, Dispatch, SetStateAction } from 'react'
+import { useMutation } from 'react-query'
 import { v4 as uuidv4 } from 'uuid'
 
 import { api } from 'api/api'
@@ -31,6 +32,7 @@ export const useCookies = () => {
     state: ConsentState.LOADING,
   })
   const { user: userProfileInfo } = useAuthContext()
+  const { mutate: persist } = usePersistCookieConsent()
 
   useEffect(() => {
     getCookiesChoice().then((cookies) => {
@@ -106,14 +108,19 @@ const setConsentAndChoiceDateTime = (
   }
 }
 
-const persist = async (cookiesChoice: CookiesConsent) => {
-  await storage.saveObject(COOKIES_CONSENT_KEY, cookiesChoice)
+const usePersistCookieConsent = () => {
+  return useMutation(
+    async (cookiesChoice: CookiesConsent) => {
+      await storage.saveObject(COOKIES_CONSENT_KEY, cookiesChoice)
 
-  try {
-    if (cookiesChoice.consent) {
-      await api.postnativev1cookiesConsent(omit(cookiesChoice, ['buildVersion']))
+      if (cookiesChoice.consent) {
+        await api.postnativev1cookiesConsent(omit(cookiesChoice, ['buildVersion']))
+      }
+    },
+    {
+      onError: () => {
+        eventMonitoring.captureException(new Error("can't log cookies consent choice"))
+      },
     }
-  } catch {
-    eventMonitoring.captureException(new Error("can't log cookies consent choice"))
-  }
+  )
 }

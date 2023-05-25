@@ -6,7 +6,7 @@ export const setIsLoggedIn = jest.fn()
 
 export const useAuthContext = jest.fn().mockReturnValue({
   setIsLoggedIn,
-  isLoggedIn: false,
+  isLoggedIn: true,
   user: beneficiaryUser,
   isUserLoading: false,
 }) as jest.MockedFunction<typeof actualUseAuthContext>
