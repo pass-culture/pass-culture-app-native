@@ -11,7 +11,10 @@ type Props = PropsWithChildren<{
 }>
 
 export function PageProfileSection({ title, scrollable = false, children }: Props) {
-  const Container: React.FC = scrollable ? ScrollableProfileContainer : ProfileContainer
+  const Container: React.JSXElementConstructor<PropsWithChildren> = scrollable
+    ? ScrollableProfileContainer
+    : ProfileContainer
+
   return (
     <React.Fragment>
       <PageHeaderSecondary title={title} />

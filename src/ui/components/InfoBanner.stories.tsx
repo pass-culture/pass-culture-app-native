@@ -36,7 +36,7 @@ WithIcon.args = {
   icon: BicolorClock,
 }
 
-const ActionButton = () => (
+const ActionButton = (
   <ButtonQuaternarySecondary
     numberOfLines={2}
     justifyContent="flex-start"

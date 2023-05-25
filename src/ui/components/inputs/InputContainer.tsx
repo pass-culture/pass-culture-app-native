@@ -12,6 +12,7 @@ type Props = {
   isDisabled?: boolean
   inputHeight?: 'small' | 'regular' | 'tall'
   style?: ViewStyle
+  children?: React.ReactNode
 }
 
 const defaultProps: Props = {

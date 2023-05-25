@@ -81,6 +81,7 @@ const BaseStyleComponent = styled.View(({ theme }) => ({
 }))
 
 type BaseContainerProps = {
+  children: React.ReactNode
   LeftIcon?: FunctionComponent<IconInterface>
   style?: StyleProp<ViewStyle>
 }

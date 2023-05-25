@@ -3,7 +3,10 @@ import { DefaultTheme, ThemeProvider as DefaultThemeProvider } from 'styled-comp
 
 import { useComputedTheme } from '../useComputedTheme'
 
-export const ThemeProvider: React.FC<{ theme: DefaultTheme }> = ({ children, theme }) => {
+export const ThemeProvider: React.FC<{ theme: DefaultTheme; children: React.ReactNode }> = ({
+  children,
+  theme,
+}) => {
   const computedTheme = useComputedTheme<DefaultTheme>(theme)
   return <DefaultThemeProvider theme={computedTheme}>{children}</DefaultThemeProvider>
 }

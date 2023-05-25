@@ -40,8 +40,14 @@ export const CreditBlock: FunctionComponent<Props> = ({
   creditStatus,
   onPress,
 }) => {
-  const TitleText = getTitleComponent(underage, creditStatus)
-  const AgeText = getAgeComponent(underage, creditStatus)
+  const TitleText: React.JSXElementConstructor<{ children: string }> = getTitleComponent(
+    underage,
+    creditStatus
+  )
+  const AgeText: React.JSXElementConstructor<{ children: string }> = getAgeComponent(
+    underage,
+    creditStatus
+  )
 
   const statusIsOngoing = creditStatus === CreditStatus.ONGOING
 

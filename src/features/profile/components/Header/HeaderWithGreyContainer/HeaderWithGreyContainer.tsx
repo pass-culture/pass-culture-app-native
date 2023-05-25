@@ -7,6 +7,7 @@ import { getSpacing, Typo } from 'ui/theme'
 type PropsWithChildren = {
   title: string
   subtitle?: ReactNode | string
+  children: React.ReactNode
 }
 
 export const HeaderWithGreyContainer: FunctionComponent<PropsWithChildren> = ({

@@ -14,6 +14,7 @@ type AgeButtonProps = {
   icon?: FunctionComponent<IconInterface>
   navigateTo: InternalNavigationProps['navigateTo']
   onBeforeNavigate?: () => void
+  children: React.ReactNode
 }
 
 export const AgeButton: FunctionComponent<AgeButtonProps> = ({

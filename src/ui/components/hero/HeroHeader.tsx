@@ -12,6 +12,7 @@ interface Props {
   imageHeight: number
   type: 'offer' | 'venue'
   minHeight?: number
+  children?: React.ReactNode
 }
 
 export const HeroHeader: React.FC<Props> = (props) => {

@@ -1,5 +1,5 @@
 import { useFocusEffect } from '@react-navigation/native'
-import React, { useCallback } from 'react'
+import React, { PropsWithChildren, useCallback } from 'react'
 import { View } from 'react-native'
 import styled from 'styled-components/native'
 import { v4 as uuidv4 } from 'uuid'
@@ -124,7 +124,7 @@ export const CookiesSettings = ({
   )
 }
 
-const InfoCaption: React.FC = ({ children }) => (
+const InfoCaption: React.FC<PropsWithChildren> = ({ children }) => (
   <View>
     <IconContainer>
       <StyledInfo />

@@ -1,4 +1,4 @@
-import React, { createContext, useContext, memo, useState, useMemo } from 'react'
+import React, { createContext, useContext, memo, useState, useMemo, PropsWithChildren } from 'react'
 
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { isPrivateScreen } from 'features/navigation/RootNavigator/linking/getScreensConfig'
@@ -40,29 +40,29 @@ export function useTabNavigationContext() {
   return useContext(TabNavigationContext)
 }
 
-export const TabNavigationStateProvider: React.FC = memo(function _TabNavigationStateProvider(
-  props
-) {
-  const { isLoggedIn, user } = useAuthContext()
-  const isBeneficiary = user ? user.isBeneficiary : false
-  const shouldDisplayTab = getShouldDisplayTab({ isLoggedIn, isBeneficiary })
+export const TabNavigationStateProvider: React.FC<PropsWithChildren> = memo(
+  function _TabNavigationStateProvider(props) {
+    const { isLoggedIn, user } = useAuthContext()
+    const isBeneficiary = user ? user.isBeneficiary : false
+    const shouldDisplayTab = getShouldDisplayTab({ isLoggedIn, isBeneficiary })
 
-  const [tabNavigationState, setTabNavigationState] = useState<TabNavigationStateType>(
-    DEFAULT_TAB_NAVIGATION_STATE
-  )
+    const [tabNavigationState, setTabNavigationState] = useState<TabNavigationStateType>(
+      DEFAULT_TAB_NAVIGATION_STATE
+    )
 
-  const tabNavigationContext = useMemo(() => {
-    const tabRoutes: TabStateRoute[] = []
-    tabNavigationState.routes.forEach((route, index) => {
-      if (isPrivateScreen(route.name) || !shouldDisplayTab(route.name)) return
-      tabRoutes.push({ ...route, isSelected: tabNavigationState.index === index })
-    })
-    return { tabRoutes, setTabNavigationState }
-  }, [shouldDisplayTab, tabNavigationState])
+    const tabNavigationContext = useMemo(() => {
+      const tabRoutes: TabStateRoute[] = []
+      tabNavigationState.routes.forEach((route, index) => {
+        if (isPrivateScreen(route.name) || !shouldDisplayTab(route.name)) return
+        tabRoutes.push({ ...route, isSelected: tabNavigationState.index === index })
+      })
+      return { tabRoutes, setTabNavigationState }
+    }, [shouldDisplayTab, tabNavigationState])
 
-  return (
-    <TabNavigationContext.Provider value={tabNavigationContext}>
-      {props.children}
-    </TabNavigationContext.Provider>
-  )
-})
+    return (
+      <TabNavigationContext.Provider value={tabNavigationContext}>
+        {props.children}
+      </TabNavigationContext.Provider>
+    )
+  }
+)

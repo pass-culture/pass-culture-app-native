@@ -7,6 +7,7 @@ import { AccessibleIcon } from 'ui/svg/icons/types'
 import { Spacer } from 'ui/theme'
 
 type Props = {
+  children: React.ReactNode
   visible: boolean
   title: string
   Illustration: React.FC<AccessibleIcon>

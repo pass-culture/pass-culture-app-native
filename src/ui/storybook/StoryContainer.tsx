@@ -9,6 +9,7 @@ type WithBackgroundProps = {
 }
 type Props = WithBackgroundProps & {
   title?: string
+  children: React.ReactNode
 }
 
 const CaptionInformation = 'Background is not a part of this component'

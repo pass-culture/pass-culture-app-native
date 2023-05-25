@@ -11,6 +11,7 @@ type ColorMessageProps = {
 type Props = ColorMessageProps & {
   message: string | ReactNode
   backgroundColor: string
+  children: React.ReactNode
   Icon?: FunctionComponent<IconInterface>
   testID?: string
 }

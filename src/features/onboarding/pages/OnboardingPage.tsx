@@ -14,6 +14,7 @@ export interface OnboardingPageProps {
   subtitle?: string
   buttons?: Array<ReactNode>
   onGoBack?: () => void
+  children?: React.ReactNode
 }
 
 const buttonsContainerAnimation = {

@@ -44,6 +44,7 @@ type Props = {
   shouldAddSpacerBetweenHeaderAndContent?: boolean
   testID?: string
   isUpToStatusBar?: boolean
+  children: React.ReactNode
 } & ModalIconProps
 
 // Without this, the margin is recomputed with arbitrary values

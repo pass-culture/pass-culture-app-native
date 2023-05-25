@@ -17,6 +17,7 @@ type Props = {
   icon?: FunctionComponent<IconInterface>
   title: string
   buttons?: Array<ReactNode>
+  children?: React.ReactNode
 }
 
 const ANIMATION_SIZE = getSpacing(45)

@@ -5,7 +5,11 @@ import { initialSearchState } from 'features/search/context/reducer'
 
 const { SearchWrapper: ActualSearchWrapper } = jest.requireActual('../SearchWrapper')
 
-export const SearchWrapper: typeof ActualSearchWrapper = memo(function SearchWrapper({ children }) {
+export const SearchWrapper: typeof ActualSearchWrapper = memo(function SearchWrapper({
+  children,
+}: {
+  children: React.ReactNode
+}) {
   return <View>{children}</View>
 })
 

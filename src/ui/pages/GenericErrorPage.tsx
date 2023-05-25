@@ -15,6 +15,7 @@ type Props = {
   title: string
   buttons?: Array<ReactNode>
   noBackground?: boolean
+  children?: React.ReactNode
 }
 
 // NEVER EVER USE NAVIGATION (OR ANYTHING FROM @react-navigation)

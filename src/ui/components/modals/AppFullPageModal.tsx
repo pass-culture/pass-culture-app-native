@@ -6,6 +6,7 @@ interface Props {
   visible: boolean
   testIdSuffix?: string
   onRequestClose: () => void
+  children: React.ReactNode
 }
 
 export const AppFullPageModal: FunctionComponent<Props> = ({

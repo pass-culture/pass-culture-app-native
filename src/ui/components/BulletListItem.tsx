@@ -11,6 +11,7 @@ export const BulletListItem: React.FC<{
   text?: string
   spacing?: number
   nestedListTexts?: string[]
+  children?: React.ReactNode
 }> = ({ text, spacing, nestedListTexts, children }) => {
   return (
     <Li>

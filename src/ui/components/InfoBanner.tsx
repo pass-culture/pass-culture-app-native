@@ -13,6 +13,7 @@ type Props = ColorMessageProps & {
   message: string | ReactNode
   icon?: FunctionComponent<IconInterface>
   testID?: string
+  children?: React.ReactNode
 }
 
 export const InfoBanner: FunctionComponent<Props> = ({
