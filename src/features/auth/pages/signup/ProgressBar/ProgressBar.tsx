@@ -15,13 +15,16 @@ interface Props {
 export const ProgressBar = ({ currentStep, totalStep }: Props) => {
   const barRef = useRef<AnimatedViewRefType>(null)
   const isComplete = currentStep === totalStep
-  const progressionRatio = (currentStep / totalStep) * 100
+  const isNotInRange = totalStep < 1 || currentStep > totalStep
+  const progressionRatio = isNotInRange ? 0 : (currentStep / totalStep) * 100
 
   useEffect(
     () => barRef.current?.transition({ width: '0%' }, { width: `${progressionRatio}%` }),
     // eslint-disable-next-line react-hooks/exhaustive-deps
     []
   )
+
+  if (isNotInRange) return null
 
   return (
     <BarBackground>
