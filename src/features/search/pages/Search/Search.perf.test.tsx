@@ -1,9 +1,11 @@
 import React from 'react'
 
 import { useRoute } from '__mocks__/@react-navigation/native'
+import algoliasearch from '__mocks__/algoliasearch'
 import { SearchWrapper } from 'features/search/context/SearchWrapper'
 import { Search } from 'features/search/pages/Search/Search'
 import { SearchView } from 'features/search/types'
+import { mockedAlgoliaResponse } from 'libs/algolia/__mocks__/mockedAlgoliaResponse'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { measurePerformance, screen } from 'tests/utils'
 
@@ -27,6 +29,21 @@ describe('<Search />', () => {
       await measurePerformance(<SearchPage />, {
         scenario: async () => {
           await screen.findByText('Spectacles') // Last category that is rendered
+        },
+      })
+    })
+  })
+
+  describe('Search Results', () => {
+    beforeAll(() => {
+      algoliasearch().initIndex().search.mockResolvedValue(mockedAlgoliaResponse)
+      useRoute.mockReturnValue({ params: { view: SearchView.Results, query: 'test' } })
+    })
+
+    it('Performance test for Search Results page', async () => {
+      await measurePerformance(<SearchPage />, {
+        scenario: async () => {
+          await screen.findByText('4 résultats')
         },
       })
     })
