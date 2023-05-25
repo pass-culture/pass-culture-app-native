@@ -5,6 +5,8 @@ import { AnimatedView, AnimatedViewRefType } from 'libs/react-native-animatable'
 import { Rectangle } from 'ui/svg/Rectangle'
 import { getSpacing } from 'ui/theme'
 
+const PROGRESS_DURATION_IN_MS = 800
+
 interface Props {
   currentStep: number
   totalStep: number
@@ -27,7 +29,7 @@ export const ProgressBar = ({ currentStep, totalStep }: Props) => {
         transition="width"
         width={progressionRatio}
         isFull={isComplete}
-        duration={800}
+        duration={PROGRESS_DURATION_IN_MS}
         accessibilityLabel={`Étape ${currentStep} sur ${totalStep}`}
         ref={barRef}>
         <BarColor />
