@@ -549,12 +549,12 @@ jobs:
             - notify-slack:
                 channel: shérif
 
-  notify-hard-testing-release:
-    executor: node
-    working_directory: ~/pass-culture
-    steps:
-      - notify-release-appcenter:
-          env: testing
+                    #  notify-hard-testing-release:
+                    #    executor: node
+                    #    working_directory: ~/pass-culture
+                    #    steps:
+                    #      - notify-release-appcenter:
+                    #          env: testing
 
   transition-jira-ticket:
     executor: node
@@ -576,97 +576,97 @@ jobs:
     steps:
       - notify-release-production
 
-  deploy-soft-testing:
-    executor: android
-    working_directory: ~/pass-culture
-    steps:
-      - checkout
-      - skip_testing_soft_deploy_when_new_tag
-      - install_node_version
-      - install_node_modules
-      - install_ruby_version
-      - install_ruby_modules
-      - setup_sentry
-      - run:
-          name: Deploy Android App for testing environment
-          command: |
-            export ANDROID_APPCENTER_API_TOKEN=$ANDROID_TESTING_APPCENTER_API_TOKEN
-            ./scripts/deploy.sh -o android -t soft -e testing
-      - run:
-          name: Deploy IOS App for testing environment
-          command: |
-            export IOS_APPCENTER_API_TOKEN=$IOS_TESTING_APPCENTER_API_TOKEN
-            ./scripts/deploy.sh -o ios -t soft -e testing
-      - run:
-          name: Notify failed deploy
-          command: |
-            BOT_MESSAGE="'*testing* : [App Native] soft deployment has failed :collision:'"
-            curl -X POST -H 'Content-type: application/json' --data "{'channel':'alertes-deploiement-native','text': $BOT_MESSAGE}" $SLACK_OPS_BOT_URL
-          when: on_fail
-
-  deploy-android-testing-hard:
-    executor: android
-    working_directory: ~/pass-culture
-    resource_class: medium+
-    steps:
-      - checkout
-      - install_node_version
-      - install_node_modules
-      - install_ruby_version
-      - install_ruby_modules
-      - setup_sentry
-      - run:
-          name: Setup android keystore for testing environment
-          command: |
-            mkdir -p android/keystores
-            echo $ANDROID_KEYSTORE_TESTING | base64 -di > android/keystores/testing.keystore
-            echo "keyAlias=passculture" >> android/keystores/testing.keystore.properties
-            echo "storeFile=testing.keystore" >> android/keystores/testing.keystore.properties
-            echo "storePassword=$ANDROID_KEYSTORE_STORE_PASSWORD_TESTING" >> android/keystores/testing.keystore.properties
-            echo "keyPassword=$ANDROID_KEYSTORE_KEY_PASSWORD_TESTING" >>  android/keystores/testing.keystore.properties
-      - setup_android_google_services_config
-      - run:
-          name: Deploy Android App for testing environment
-          command: |
-            export ANDROID_APPCENTER_API_TOKEN=$ANDROID_TESTING_APPCENTER_API_TOKEN
-            ./scripts/deploy.sh -o android -t hard -e testing
-      - run:
-          name: Notify failed deploy
-          command: |
-            BOT_MESSAGE="'*testing* : [App Native] android hard deployment has failed :collision:'"
-            curl -X POST -H 'Content-type: application/json' --data "{'channel':'alertes-deploiement-native','text': $BOT_MESSAGE}" $SLACK_OPS_BOT_URL
-          when: on_fail
-
-  deploy-ios-testing-hard:
-    executor: ios
-    working_directory: ~/pass-culture
-    steps:
-      - checkout
-      - add_ssh_keys:
-          fingerprints:
-            - 'c4:20:41:81:06:31:e2:3c:b4:1e:a2:5a:11:d1:39:e1'
-      - install_node_version
-      - install_node_modules
-      - install_ruby_version_ios
-      - install_ruby_modules
-      - install_cocoapods
-      - decode_match_secrets
-      - setup_sentry
-      - run:
-          name: Setup iOS Google services config
-          command: echo $IOS_GOOGLE_SERVICES_PLIST_TESTING > ios/GoogleService-Info.plist
-      - run:
-          name: Deploy IOS App for testing environment
-          no_output_timeout: 30m
-          command: |
-            export IOS_APPCENTER_API_TOKEN=$IOS_TESTING_APPCENTER_API_TOKEN
-            ./scripts/deploy.sh -o ios -t hard -e testing
-      - run:
-          name: Notify failed deploy
-          command: |
-            BOT_MESSAGE="'*testing* : [App Native] ios hard deployment has failed :collision:'"
-            curl -X POST -H 'Content-type: application/json' --data "{'channel':'alertes-deploiement-native','text': $BOT_MESSAGE}" $SLACK_OPS_BOT_URL
-          when: on_fail
+#  deploy-soft-testing:
+#    executor: android
+#    working_directory: ~/pass-culture
+#    steps:
+#      - checkout
+#      - skip_testing_soft_deploy_when_new_tag
+#      - install_node_version
+#      - install_node_modules
+#      - install_ruby_version
+#      - install_ruby_modules
+#      - setup_sentry
+#      - run:
+#          name: Deploy Android App for testing environment
+#          command: |
+#            export ANDROID_APPCENTER_API_TOKEN=$ANDROID_TESTING_APPCENTER_API_TOKEN
+#            ./scripts/deploy.sh -o android -t soft -e testing
+#      - run:
+#          name: Deploy IOS App for testing environment
+#          command: |
+#            export IOS_APPCENTER_API_TOKEN=$IOS_TESTING_APPCENTER_API_TOKEN
+#            ./scripts/deploy.sh -o ios -t soft -e testing
+#      - run:
+#          name: Notify failed deploy
+#          command: |
+#            BOT_MESSAGE="'*testing* : [App Native] soft deployment has failed :collision:'"
+#            curl -X POST -H 'Content-type: application/json' --data "{'channel':'alertes-deploiement-native','text': $BOT_MESSAGE}" $SLACK_OPS_BOT_URL
+#          when: on_fail
+#
+#  deploy-android-testing-hard:
+#    executor: android
+#    working_directory: ~/pass-culture
+#    resource_class: medium+
+#    steps:
+#      - checkout
+#      - install_node_version
+#      - install_node_modules
+#      - install_ruby_version
+#      - install_ruby_modules
+#      - setup_sentry
+#      - run:
+#          name: Setup android keystore for testing environment
+#          command: |
+#            mkdir -p android/keystores
+#            echo $ANDROID_KEYSTORE_TESTING | base64 -di > android/keystores/testing.keystore
+#            echo "keyAlias=passculture" >> android/keystores/testing.keystore.properties
+#            echo "storeFile=testing.keystore" >> android/keystores/testing.keystore.properties
+#            echo "storePassword=$ANDROID_KEYSTORE_STORE_PASSWORD_TESTING" >> android/keystores/testing.keystore.properties
+#            echo "keyPassword=$ANDROID_KEYSTORE_KEY_PASSWORD_TESTING" >>  android/keystores/testing.keystore.properties
+#      - setup_android_google_services_config
+#      - run:
+#          name: Deploy Android App for testing environment
+#          command: |
+#            export ANDROID_APPCENTER_API_TOKEN=$ANDROID_TESTING_APPCENTER_API_TOKEN
+#            ./scripts/deploy.sh -o android -t hard -e testing
+#      - run:
+#          name: Notify failed deploy
+#          command: |
+#            BOT_MESSAGE="'*testing* : [App Native] android hard deployment has failed :collision:'"
+#            curl -X POST -H 'Content-type: application/json' --data "{'channel':'alertes-deploiement-native','text': $BOT_MESSAGE}" $SLACK_OPS_BOT_URL
+#          when: on_fail
+#
+#  deploy-ios-testing-hard:
+#    executor: ios
+#    working_directory: ~/pass-culture
+#    steps:
+#      - checkout
+#      - add_ssh_keys:
+#          fingerprints:
+#            - 'c4:20:41:81:06:31:e2:3c:b4:1e:a2:5a:11:d1:39:e1'
+#      - install_node_version
+#      - install_node_modules
+#      - install_ruby_version_ios
+#      - install_ruby_modules
+#      - install_cocoapods
+#      - decode_match_secrets
+#      - setup_sentry
+#      - run:
+#          name: Setup iOS Google services config
+#          command: echo $IOS_GOOGLE_SERVICES_PLIST_TESTING > ios/GoogleService-Info.plist
+#      - run:
+#          name: Deploy IOS App for testing environment
+#          no_output_timeout: 30m
+#          command: |
+#            export IOS_APPCENTER_API_TOKEN=$IOS_TESTING_APPCENTER_API_TOKEN
+#            ./scripts/deploy.sh -o ios -t hard -e testing
+#      - run:
+#          name: Notify failed deploy
+#          command: |
+#            BOT_MESSAGE="'*testing* : [App Native] ios hard deployment has failed :collision:'"
+#            curl -X POST -H 'Content-type: application/json' --data "{'channel':'alertes-deploiement-native','text': $BOT_MESSAGE}" $SLACK_OPS_BOT_URL
+#          when: on_fail
 
   deploy-ios-staging-hard:
     executor: ios
@@ -829,31 +829,31 @@ jobs:
             VERSION_TO=$CIRCLE_TAG
             curl -H "Accept: application/vnd.github+json" -H "Authorization: Bearer $APP_NATIVE_GITHUB_ACTIONS_API_TOKEN" --request POST --data '{ "event_type": "service-worker-test", "client_payload": { "versionFrom": "'$VERSION_FROM'", "versionTo":"'$VERSION_TO'" } }' https://api.github.com/repos/pass-culture/pass-culture-app-native/dispatches
 
-  deploy-web-testing:
-    executor: gcp
-    working_directory: ~/pass-culture
-    resource_class: large
-    steps:
-      - checkout
-      - copy_assetlinks:
-          env: testing
-      - install_node_modules
-      - setup_sentry
-      - run:
-          name: SENTRY_LOG_LEVEL
-          command: |
-            export SENTRY_LOG_LEVEL="debug webpack -c web/config/webpack.config.js"
-      - gcp-oidc-authenticate
-      - build_web:
-          env: testing
-      - push-to-bucket:
-          bucket_name: passculture-metier-ehp-testing-decliweb
-      - run:
-          name: Notify failed deploy
-          command: |
-            BOT_MESSAGE="'*testing-web* : [App Native] deployment has failed :collision:'"
-            curl -X POST -H 'Content-type: application/json' --data "{'channel':'alertes-deploiement-native','text': $BOT_MESSAGE}" $SLACK_OPS_BOT_URL
-          when: on_fail
+                #  deploy-web-testing:
+                #    executor: gcp
+                #    working_directory: ~/pass-culture
+                #    resource_class: large
+                #    steps:
+                #      - checkout
+                #      - copy_assetlinks:
+                #          env: testing
+                #      - install_node_modules
+                #      - setup_sentry
+                #      - run:
+                #          name: SENTRY_LOG_LEVEL
+                #          command: |
+                #            export SENTRY_LOG_LEVEL="debug webpack -c web/config/webpack.config.js"
+                #      - gcp-oidc-authenticate
+                #      - build_web:
+                #          env: testing
+                #      - push-to-bucket:
+                #          bucket_name: passculture-metier-ehp-testing-decliweb
+                #      - run:
+                #          name: Notify failed deploy
+                #          command: |
+                #            BOT_MESSAGE="'*testing-web* : [App Native] deployment has failed :collision:'"
+                #            curl -X POST -H 'Content-type: application/json' --data "{'channel':'alertes-deploiement-native','text': $BOT_MESSAGE}" $SLACK_OPS_BOT_URL
+                #          when: on_fail
 
   deploy-web-staging:
     executor: gcp
@@ -901,12 +901,12 @@ jobs:
       - push-to-bucket:
           bucket_name: passculture-metier-prod-production-decliweb
 
-  deploy-web-proxy-testing:
-    executor: gcp
-    working_directory: ~/pass-culture
-    steps:
-      - deploy-web-proxy:
-          env: testing
+              #  deploy-web-proxy-testing:
+              #    executor: gcp
+              #    working_directory: ~/pass-culture
+              #    steps:
+              #      - deploy-web-proxy:
+              #          env: testing
 
   deploy-web-proxy-staging:
     executor: gcp
@@ -962,15 +962,15 @@ workflows:
             tags:
               only: /.*/
           context: Slack
-      - deploy-soft-testing:
-          filters:
-            branches:
-              only:
-                - master
-          requires:
-            - checkout-and-install-deps
-            - test-lint-and-types
-            - test-native
+              #    - deploy-soft-testing:
+              #        filters:
+              #          branches:
+              #            only:
+              #              - master
+              #        requires:
+              #          - checkout-and-install-deps
+              #          - test-lint-and-types
+              #          - test-native
       - transition-jira-ticket:
           filters:
             branches:
@@ -981,39 +981,39 @@ workflows:
             - test-lint-and-types
             - test-native
             - test-web
-            - deploy-soft-testing
-            - deploy-web-testing
+              #          - deploy-soft-testing
+              #          - deploy-web-testing
           context: JIRA
 
-      - deploy-android-testing-hard:
-          filters:
-            tags:
-              only: /^testing\/v.*/
-            branches:
-              ignore: /.*/
-          requires:
-            - checkout-and-install-deps
-            - test-lint-and-types
-            - test-native
-      - deploy-ios-testing-hard:
-          filters:
-            tags:
-              only: /^testing\/v.*/
-            branches:
-              ignore: /.*/
-          requires:
-            - checkout-and-install-deps
-            - test-lint-and-types
-            - test-native
-      - notify-hard-testing-release:
-          filters:
-            tags:
-              only: /^testing\/v.*/
-            branches:
-              ignore: /.*/
-          requires:
-            - deploy-ios-testing-hard
-            - deploy-android-testing-hard
+              #   - deploy-android-testing-hard:
+              #       filters:
+              #         tags:
+              #           only: /^testing\/v.*/
+              #         branches:
+              #           ignore: /.*/
+              #       requires:
+              #         - checkout-and-install-deps
+              #         - test-lint-and-types
+              #         - test-native
+              #   - deploy-ios-testing-hard:
+              #       filters:
+              #         tags:
+              #           only: /^testing\/v.*/
+              #         branches:
+              #           ignore: /.*/
+              #       requires:
+              #         - checkout-and-install-deps
+              #         - test-lint-and-types
+              #         - test-native
+              #   - notify-hard-testing-release:
+              #       filters:
+              #         tags:
+              #           only: /^testing\/v.*/
+              #         branches:
+              #           ignore: /.*/
+              #       requires:
+              #         - deploy-ios-testing-hard
+              #         - deploy-android-testing-hard
       - deploy-android-staging-hard:
           filters:
             tags:
@@ -1100,19 +1100,19 @@ workflows:
                 - /^hotfix-staging.*/
             branches:
               ignore: /.*/
-      - deploy-web-testing:
-          filters:
-            tags:
-              ignore: /.*/
-            branches:
-              only: master
-          requires:
-            - checkout-and-install-deps
-            - test-lint-and-types
-            - test-web
-          context:
-            - GCP
-            - GCP_APP_NATIVE_EHP
+                  #     - deploy-web-testing:
+                  #         filters:
+                  #           tags:
+                  #             ignore: /.*/
+                  #           branches:
+                  #             only: master
+                  #         requires:
+                  #           - checkout-and-install-deps
+                  #           - test-lint-and-types
+                  #           - test-web
+                  #         context:
+                  #           - GCP
+                  #           - GCP_APP_NATIVE_EHP
       - deploy-web-staging:
           filters:
             tags:
@@ -1152,17 +1152,17 @@ workflows:
           context:
             - GCP
             - GCP_APP_NATIVE_PROD
-      - deploy-web-proxy-testing:
-          filters:
-            tags:
-              ignore: /.*/
-            branches:
-              only: master
-          requires:
-            - test-proxy
-          context:
-            - GCP
-            - GCP_APP_NATIVE_EHP
+              #   - deploy-web-proxy-testing:
+              #       filters:
+              #         tags:
+              #           ignore: /.*/
+              #         branches:
+              #           only: master
+              #       requires:
+              #         - test-proxy
+              #       context:
+              #         - GCP
+              #         - GCP_APP_NATIVE_EHP
       - deploy-web-proxy-staging:
           filters:
             tags:

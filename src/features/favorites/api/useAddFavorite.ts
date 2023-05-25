@@ -59,7 +59,7 @@ export function useAddFavorite({ onSuccess }: { onSuccess?: (data?: FavoriteResp
         queryClient.setQueryData([QueryKeys.FAVORITES_COUNT], { count: favorites.length })
       }
 
-      return { previousFavorites: previousFavorites || [] } as FavoriteMutationContext
+      return { previousFavorites: previousFavorites ?? [] } as FavoriteMutationContext
     },
     onError: (
       error: Error | ApiError,

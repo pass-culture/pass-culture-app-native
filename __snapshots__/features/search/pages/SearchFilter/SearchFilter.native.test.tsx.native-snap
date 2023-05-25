@@ -93,6 +93,7 @@ exports[`<SearchFilter/> should render correctly 1`] = `
                 },
               ]
             }
+            testID="back-button-container"
           />
           <Text
             numberOfLines={1}
@@ -126,6 +127,7 @@ exports[`<SearchFilter/> should render correctly 1`] = `
                 },
               ]
             }
+            testID="close-button-container"
           >
             <View
               accessibilityLabel="Fermer"

@@ -8,7 +8,7 @@ import { useSubscriptionContext } from 'features/identityCheck/context/Subscript
 import { nextSubscriptionStepFixture as mockStep } from 'features/identityCheck/fixtures/nextSubscriptionStepFixture'
 import { stepsDetailsFixture } from 'features/identityCheck/pages/helpers/stepDetails.fixture'
 import { useStepperInfo } from 'features/identityCheck/pages/helpers/useStepperInfo'
-import { IdentityCheckStepper } from 'features/identityCheck/pages/Stepper'
+import { Stepper } from 'features/identityCheck/pages/Stepper'
 import {
   DeprecatedIdentityCheckStep,
   IdentityCheckStep,
@@ -75,7 +75,7 @@ describe('Stepper navigation', () => {
       step: DeprecatedIdentityCheckStep.IDENTIFICATION,
       identification: { method: null },
     })
-    render(<IdentityCheckStepper />)
+    render(<Stepper />)
     expect(screen).toMatchSnapshot()
   })
   it('should display an error message if the identification step failed', () => {
@@ -84,7 +84,7 @@ describe('Stepper navigation', () => {
       title: 'Vas-y',
       errorMessage: 'Le document que tu as présenté est expiré.',
     })
-    render(<IdentityCheckStepper />)
+    render(<Stepper />)
 
     expect(screen.getByText('Le document que tu as présenté est expiré.')).toBeTruthy()
   })
@@ -104,7 +104,7 @@ describe('Stepper navigation', () => {
         data: mockUserProfileData,
       }),
     })
-    render(<IdentityCheckStepper />)
+    render(<Stepper />)
     await waitFor(() => {
       expect(navigate).not.toHaveBeenCalled()
     })
@@ -127,7 +127,7 @@ describe('Stepper navigation', () => {
       ...mockStep,
       nextSubscriptionStep: null,
     }
-    render(<IdentityCheckStepper />)
+    render(<Stepper />)
     await waitFor(() => {
       expect(navigate).toHaveBeenCalledWith('BeneficiaryAccountCreated')
     })
@@ -172,7 +172,7 @@ describe('Stepper navigation', () => {
         identification: { method: null },
       })
 
-      const stepper = render(<IdentityCheckStepper />)
+      const stepper = render(<Stepper />)
 
       const stepButton = stepper.getByText(stepperLabel)
       fireEvent.press(stepButton)

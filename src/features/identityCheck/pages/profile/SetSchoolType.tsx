@@ -3,15 +3,18 @@ import { View } from 'react-native'
 import { v4 as uuidv4 } from 'uuid'
 
 import { ActivityIdEnum, SchoolTypesIdEnum } from 'api/gen'
+import { usePatchProfile } from 'features/identityCheck/api/usePatchProfile'
 import { useProfileOptions } from 'features/identityCheck/api/useProfileOptions'
 import { CenteredTitle } from 'features/identityCheck/components/CenteredTitle'
 import { PageWithHeader } from 'features/identityCheck/components/layout/PageWithHeader'
 import { useSubscriptionContext } from 'features/identityCheck/context/SubscriptionContextProvider'
-import { useSubscriptionNavigation } from 'features/identityCheck/pages/helpers/useSubscriptionNavigation'
+import { useNavigateForwardToStepper } from 'features/identityCheck/helpers/useNavigateForwardToStepper'
+import { useSaveStep } from 'features/identityCheck/pages/helpers/useSaveStep'
 import {
   getSchoolTypesIdsFromActivity,
   mapSchoolTypeIdToLabelAndDescription,
 } from 'features/identityCheck/pages/profile/helpers/schoolTypes'
+import { IdentityCheckStep } from 'features/identityCheck/types'
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { analytics } from 'libs/analytics'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
@@ -23,12 +26,14 @@ import { Spacer } from 'ui/theme'
 
 export const SetSchoolType = () => {
   const { schoolTypes, activities } = useProfileOptions()
+  const saveStep = useSaveStep()
+  const { mutateAsync: patchProfile, isLoading } = usePatchProfile()
+  const { navigateForwardToStepper } = useNavigateForwardToStepper()
 
   const { dispatch, profile } = useSubscriptionContext()
   const [selectedSchoolTypeId, setSelectedSchoolTypeId] = useState<SchoolTypesIdEnum | null>(
-    profile.schoolType || null
+    profile.schoolType ?? null
   )
-  const { navigateToNextScreen, isSavingCheckpoint } = useSubscriptionNavigation()
 
   useEffect(() => {
     analytics.logScreenViewSetSchoolType()
@@ -38,7 +43,10 @@ export const SetSchoolType = () => {
     if (!selectedSchoolTypeId) return
     await dispatch({ type: 'SET_SCHOOL_TYPE', payload: selectedSchoolTypeId })
     analytics.logSetSchoolTypeClicked()
-    navigateToNextScreen()
+
+    await patchProfile()
+    await saveStep(IdentityCheckStep.PROFILE)
+    navigateForwardToStepper()
   }
 
   const activitySchoolTypes = activities
@@ -96,7 +104,7 @@ export const SetSchoolType = () => {
           accessibilityLabel={
             !selectedSchoolTypeId ? 'Choisis ton statut' : 'Continuer vers l’étape suivante'
           }
-          isLoading={isSavingCheckpoint}
+          isLoading={isLoading}
           disabled={!selectedSchoolTypeId}
         />
       }

@@ -2,6 +2,8 @@ import React, { useEffect, useRef } from 'react'
 
 import { env } from 'libs/environment'
 
+import { useCaptcha } from './useCaptcha'
+
 type Props = {
   onError: (error: string) => void
   onExpire: () => void
@@ -20,6 +22,8 @@ const css = `
 `
 
 export function ReCaptcha(props: Props) {
+  useCaptcha()
+
   const reCaptchaContainerRef = useRef<HTMLDivElement>(null)
 
   function onSuccess(token: string) {

@@ -43,6 +43,7 @@ exports[`ThematicHome should render correctly 1`] = `
       data={
         Array [
           Object {
+            "data": undefined,
             "displayParameters": Object {
               "layout": "one-item-medium",
               "minOffers": 1,

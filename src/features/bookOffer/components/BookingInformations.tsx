@@ -26,7 +26,11 @@ const ExpirationDate: React.FC<{
   return <Item Icon={Calendar} message={activationText} />
 }
 
-export const BookingInformations: React.FC = () => {
+interface Props {
+  shouldDisplayAddress?: boolean
+}
+
+export const BookingInformations = ({ shouldDisplayAddress = true }: Props) => {
   const { bookingState } = useBookingContext()
   const offer = useBookingOffer()
   const stock = useBookingStock()
@@ -64,7 +68,9 @@ export const BookingInformations: React.FC = () => {
         {!!stock.beginningDatetime && (
           <Item Icon={Calendar} message={formatDate(stock.beginningDatetime)} />
         )}
-        <Item Icon={LocationBuilding} message={address} />
+        {!!shouldDisplayAddress && (
+          <Item Icon={LocationBuilding} message={address} testID="address" />
+        )}
         <Item Icon={OrderPrice} message={price} />
       </React.Fragment>
     )
@@ -74,7 +80,9 @@ export const BookingInformations: React.FC = () => {
     return (
       <React.Fragment>
         <Item Icon={Booking} message={name} />
-        <Item Icon={LocationBuilding} message={address} />
+        {!!shouldDisplayAddress && (
+          <Item Icon={LocationBuilding} message={address} testID="address" />
+        )}
         <Item Icon={OrderPrice} message={price} />
       </React.Fragment>
     )
@@ -95,13 +103,14 @@ const Item: React.FC<{
   Icon: React.FC<IconInterface>
   message: JSX.Element | string
   subtext?: string
-}> = ({ Icon, message, subtext = '' }) => {
+  testID?: string
+}> = ({ Icon, message, subtext = '', testID }) => {
   const StyledIcon = styled(Icon).attrs(({ theme }) => ({
     color: theme.colors.greyDark,
     size: theme.icons.sizes.small,
   }))``
   return (
-    <Row>
+    <Row testID={testID}>
       <IconWrapper>
         <StyledIcon />
       </IconWrapper>
@@ -119,9 +128,11 @@ const Row = styled.View(({ theme }) => ({
   width: theme.appContentWidth - getSpacing(24),
   paddingVertical: getSpacing(0.5),
 }))
+
 const IconWrapper = styled.View({
   flexShrink: 0,
 })
+
 const StyledAddress = styled(Typo.Body)({
   textTransform: 'capitalize',
   alignItems: 'center',

@@ -1,9 +1,9 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useMemo } from 'react'
 import { ActivityIndicator } from 'react-native'
 import styled, { useTheme } from 'styled-components/native'
 import { v4 as uuidv4 } from 'uuid'
 
-import { OfferStockResponse } from 'api/gen'
+import { OfferStockResponse, SubcategoryIdEnum } from 'api/gen'
 import { BookingInformations } from 'features/bookOffer/components/BookingInformations'
 import { CancellationDetails } from 'features/bookOffer/components/CancellationDetails'
 import { DuoChoiceSelector } from 'features/bookOffer/components/DuoChoiceSelector'
@@ -12,13 +12,21 @@ import { useBookingContext } from 'features/bookOffer/context/useBookingContext'
 import { useBookingOffer } from 'features/bookOffer/helpers/useBookingOffer'
 import { useBookingStock } from 'features/bookOffer/helpers/useBookingStock'
 import { RotatingTextOptions, useRotatingText } from 'features/bookOffer/helpers/useRotatingText'
+import { VenueSelectionModal } from 'features/offer/components/VenueSelectionModal/VenueSelectionModal'
+import { getVenueSectionTitle } from 'features/offer/helpers/getVenueSectionTitle/getVenueSectionTitle'
+import { EditButton } from 'features/profile/components/Buttons/EditButton/EditButton'
 import { useIsUserUnderage } from 'features/profile/helpers/useIsUserUnderage'
+import { formatFullAddressStartsWithPostalCode } from 'libs/address/useFormatFullAddress'
+import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
+import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { formatToFrenchDecimal } from 'libs/parsers'
 import { useSubcategoriesMapping } from 'libs/subcategories'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { InfoBanner } from 'ui/components/InfoBanner'
+import { useModal } from 'ui/components/modals/useModal'
 import { Error } from 'ui/svg/icons/Error'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
+import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 export interface BookingDetailsProps {
   stocks: OfferStockResponse[]
@@ -60,6 +68,24 @@ export const BookingDetails: React.FC<BookingDetailsProps> = ({
 
   const loadingMessage = useRotatingText(LOADING_MESSAGES, isLoading)
 
+  const enableMultivenueOffer = useFeatureFlag(RemoteStoreFeatureFlags.WIP_ENABLE_MULTIVENUE_OFFER)
+  const isMultivenueCompatibleOffer = Boolean(
+    offer?.subcategoryId === SubcategoryIdEnum.LIVRE_PAPIER ||
+      offer?.subcategoryId === SubcategoryIdEnum.LIVRE_AUDIO_PHYSIQUE
+  )
+  const shouldDisplayOtherVenuesAvailableButton = Boolean(
+    enableMultivenueOffer && isMultivenueCompatibleOffer && offer?.extraData?.isbn
+  )
+
+  const venueName = offer?.venue.publicName ?? offer?.venue.name
+  const venueFullAddress = formatFullAddressStartsWithPostalCode(
+    offer?.venue.address,
+    offer?.venue.postalCode,
+    offer?.venue.city
+  )
+
+  const { visible, hideModal, showModal } = useModal(false)
+
   useEffect(() => {
     // For offers of type Thing, we don't manually select a date (thus a stock).
     // So we select it programmatically given the bookable stocks.
@@ -78,6 +104,13 @@ export const BookingDetails: React.FC<BookingDetailsProps> = ({
       dispatch({ type: 'CHANGE_STEP', payload: Step.CONFIRMATION })
     }
   }, [bookingState.step, dispatch, isEvent])
+
+  const venueSectionTitle = useMemo(() => {
+    if (offer?.subcategoryId && isEvent !== undefined) {
+      return getVenueSectionTitle(offer.subcategoryId, isEvent)
+    }
+    return ''
+  }, [offer?.subcategoryId, isEvent])
 
   if (!selectedStock || typeof quantity !== 'number') return <React.Fragment />
 
@@ -99,16 +132,42 @@ export const BookingDetails: React.FC<BookingDetailsProps> = ({
   ) : (
     <Container>
       <InfoBanner
-        message="Les réservations effectuées sur le pass Culture sont destinées à un usage strictement personnel et ne peuvent faire l’objet de revente."
+        message="Les biens acquis ou réservés sur le pass Culture sont destinés à un usage strictement personnel et ne peuvent faire l’objet de revente."
         icon={Error}
       />
-      <Spacer.Column numberOfSpaces={4} />
+      <Spacer.Column numberOfSpaces={6} />
 
-      <BookingInformations />
+      <Typo.Title4 {...getHeadingAttrs(2)}>Informations</Typo.Title4>
+      <Spacer.Column numberOfSpaces={6} />
+      <BookingInformations shouldDisplayAddress={!enableMultivenueOffer} />
+      <Spacer.Column numberOfSpaces={6} />
 
-      <Spacer.Column numberOfSpaces={4} />
+      {!!enableMultivenueOffer && (
+        <React.Fragment>
+          <Separator />
+
+          <Spacer.Column numberOfSpaces={6} />
+          <VenueTitleContainer>
+            <VenueTitleText>{venueSectionTitle}</VenueTitleText>
+            {!!shouldDisplayOtherVenuesAvailableButton && (
+              <EditButton
+                wording="Modifier"
+                accessibilityLabel={`Modifier ${venueSectionTitle}`}
+                onPress={showModal}
+              />
+            )}
+          </VenueTitleContainer>
+
+          <Spacer.Column numberOfSpaces={4} />
+          <Typo.Caption testID="venueName">{venueName}</Typo.Caption>
+          <Spacer.Column numberOfSpaces={1} />
+          <VenueAddress testID="venueAddress">{venueFullAddress}</VenueAddress>
+          <Spacer.Column numberOfSpaces={6} />
+        </React.Fragment>
+      )}
+
       <Separator />
-      <Spacer.Column numberOfSpaces={4} />
+      <Spacer.Column numberOfSpaces={6} />
 
       <CancellationDetails />
 
@@ -136,6 +195,16 @@ export const BookingDetails: React.FC<BookingDetailsProps> = ({
       {!!formattedPriceWithEuro && (
         <Caption nativeID={accessibilityDescribedBy}>{deductedAmount}</Caption>
       )}
+
+      {!!shouldDisplayOtherVenuesAvailableButton && (
+        <VenueSelectionModal
+          isVisible={visible}
+          items={[]}
+          onClosePress={hideModal}
+          onSubmit={() => undefined}
+          title={venueSectionTitle}
+        />
+      )}
     </Container>
   )
 }
@@ -161,3 +230,16 @@ const Caption = styled(Typo.CaptionNeutralInfo)({
   marginTop: getSpacing(1),
   textAlign: 'center',
 })
+
+const VenueTitleContainer = styled.View({
+  flexDirection: 'row',
+  justifyContent: 'space-between',
+})
+
+const VenueTitleText = styled(Typo.Title4).attrs(getHeadingAttrs(2))({
+  flexShrink: 1,
+})
+
+const VenueAddress = styled(Typo.Hint)(({ theme }) => ({
+  color: theme.colors.greyDark,
+}))

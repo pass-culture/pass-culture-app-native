@@ -18,18 +18,21 @@ import {
   isRecommendedOffersModule,
   isThematicHighlightModule,
   isVenuesModule,
+  ModuleData,
 } from 'features/home/types'
 
 const UnmemoizedModule = ({
   item,
   index,
   homeEntryId,
+  data,
 }: {
   item: HomepageModule
   index: number
   homeEntryId: string
+  data?: ModuleData
 }) => {
-  if (isOffersModule(item))
+  if (isOffersModule(item)) {
     return (
       <OffersModule
         moduleId={item.id}
@@ -38,21 +41,23 @@ const UnmemoizedModule = ({
         cover={item.cover ?? null}
         index={index}
         homeEntryId={homeEntryId}
+        data={data}
       />
     )
+  }
 
-  if (isVenuesModule(item))
+  if (isVenuesModule(item)) {
     return (
       <VenuesModule
         moduleId={item.id}
         display={item.displayParameters}
-        search={item.venuesParameters}
         homeEntryId={homeEntryId}
         index={index}
+        data={data}
       />
     )
-
-  if (isRecommendedOffersModule(item))
+  }
+  if (isRecommendedOffersModule(item)) {
     return (
       <RecommendationModule
         moduleId={item.id}
@@ -62,8 +67,8 @@ const UnmemoizedModule = ({
         homeEntryId={homeEntryId}
       />
     )
-
-  if (isExclusivityModule(item))
+  }
+  if (isExclusivityModule(item)) {
     return (
       <ExclusivityModule
         moduleId={item.id}
@@ -77,16 +82,16 @@ const UnmemoizedModule = ({
         url={item.url}
       />
     )
-
-  if (isBusinessModule(item))
+  }
+  if (isBusinessModule(item)) {
     return <BusinessModule {...item} homeEntryId={homeEntryId} index={index} moduleId={item.id} />
-
-  if (isThematicHighlightModule(item))
+  }
+  if (isThematicHighlightModule(item)) {
     return <ThematicHighlightModule {...item} homeEntryId={homeEntryId} index={index} />
-
-  if (isCategoryListModule(item))
+  }
+  if (isCategoryListModule(item)) {
     return <CategoryListModule {...item} homeEntryId={homeEntryId} index={index} />
-
+  }
   return <React.Fragment></React.Fragment>
 }
 

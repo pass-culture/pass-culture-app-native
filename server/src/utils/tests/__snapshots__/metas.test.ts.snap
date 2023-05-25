@@ -43,6 +43,7 @@ Tous les détails du film sur AlloCiné: https://www.allocine.fr/film/fichefilm_
     <meta property=\\"al:android:url\\" content=\\"passculture://https://app.testing.passculture.team\\">
     <meta property=\\"al:android:app_name\\" content=\\"pass Culture\\"/>
     <meta property=\\"al:android:package\\" content=\\"app.passculture.testing\\"/>
+    <script type=\\"application/ld+json\\">{\\"@context\\":\\"https://schema.org\\",\\"@type\\":\\"Event\\",\\"name\\":\\"Sous les étoiles de Paris - VF\\",\\"location\\":{\\"@type\\":\\"Place\\",\\"name\\":\\"PATHE BEAUGRENELLE\\",\\"address\\":{\\"@type\\":\\"PostalAddress\\",\\"streetAddress\\":\\"2 RUE LAMENNAIS\\",\\"postalCode\\":\\"75008\\",\\"addressLocality\\":\\"PARIS 8\\"},\\"geo\\":{\\"@type\\":\\"GeoCoordinates\\",\\"latitude\\":\\"20\\",\\"longitude\\":\\"2\\"}}}</script>
   </head>
   <body>
     <p>Hello world</p>

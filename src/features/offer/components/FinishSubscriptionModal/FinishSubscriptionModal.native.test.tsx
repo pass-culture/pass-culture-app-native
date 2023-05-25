@@ -1,18 +1,21 @@
 import React from 'react'
 
 import { navigate } from '__mocks__/@react-navigation/native'
+import { useAuthContext } from 'features/auth/context/AuthContext'
+import { beneficiaryUser } from 'fixtures/user'
 import { analytics } from 'libs/analytics'
-import { fireEvent, render } from 'tests/utils'
+import { useGetDepositAmountsByAge } from 'shared/user/useGetDepositAmountsByAge'
+import { fireEvent, render, screen } from 'tests/utils'
 
 import { FinishSubscriptionModal } from './FinishSubscriptionModal'
 
-jest.mock('react-query')
-jest.mock('features/navigation/navigationRef')
+jest.mock('features/auth/context/AuthContext')
+const mockUseAuthContext = useAuthContext as jest.Mock
+mockUseAuthContext.mockReturnValue({ user: beneficiaryUser })
 
-let mockDepositAmounts: string | undefined = '300\u00a0€'
-jest.mock('shared/user/useGetDepositAmountsByAge', () => ({
-  useGetDepositAmountsByAge: jest.fn(() => mockDepositAmounts),
-}))
+jest.mock('shared/user/useGetDepositAmountsByAge')
+const mockDepositAmounts = useGetDepositAmountsByAge as jest.Mock
+mockDepositAmounts.mockReturnValue('300\u00a0€')
 
 const offerId = 1234
 const hideModal = jest.fn()
@@ -20,45 +23,43 @@ const visible = true
 
 describe('<FinishSubscriptionModal />', () => {
   it('should render correctly with undefined deposit amount', () => {
-    mockDepositAmounts = undefined
-    const renderAPI = render(
-      <FinishSubscriptionModal visible={visible} hideModal={hideModal} offerId={offerId} />
-    )
-    expect(renderAPI).toMatchSnapshot()
+    mockDepositAmounts.mockReturnValueOnce(undefined)
+
+    render(<FinishSubscriptionModal visible={visible} hideModal={hideModal} offerId={offerId} />)
+    expect(screen).toMatchSnapshot()
   })
 
   it('should render correctly with eighteen years old deposit amount', () => {
-    const renderAPI = render(
-      <FinishSubscriptionModal visible={visible} hideModal={hideModal} offerId={offerId} />
-    )
-    expect(renderAPI).toMatchSnapshot()
+    render(<FinishSubscriptionModal visible={visible} hideModal={hideModal} offerId={offerId} />)
+    expect(screen).toMatchSnapshot()
   })
 
-  it('should close modal and navigate to profile when pressing "Terminer mon inscription" button', () => {
-    const { getByText } = render(
-      <FinishSubscriptionModal visible={visible} hideModal={hideModal} offerId={offerId} />
-    )
+  it('should display correct body when user needs to verify his identity to activate his eighteen year old credit', async () => {
+    mockUseAuthContext.mockReturnValueOnce({ user: { ...beneficiaryUser, requiresIdCheck: true } })
 
-    fireEvent.press(getByText('Terminer mon inscription'))
+    render(<FinishSubscriptionModal visible={visible} hideModal={hideModal} offerId={offerId} />)
+    expect(screen).toMatchSnapshot()
+  })
+
+  it('should close modal and navigate to stepper when pressing "Confirmer mes informations" button', () => {
+    render(<FinishSubscriptionModal visible={visible} hideModal={hideModal} offerId={offerId} />)
+
+    fireEvent.press(screen.getByText('Confirmer mes informations'))
     expect(hideModal).toBeCalledTimes(1)
-    expect(navigate).toBeCalledWith('TabNavigator', { screen: 'Profile' })
+    expect(navigate).toBeCalledWith('Stepper')
   })
 
   it('should close modal when pressing right header icon', () => {
-    const { getByTestId } = render(
-      <FinishSubscriptionModal visible={visible} hideModal={hideModal} offerId={offerId} />
-    )
+    render(<FinishSubscriptionModal visible={visible} hideModal={hideModal} offerId={offerId} />)
 
-    fireEvent.press(getByTestId('Fermer la modale'))
+    fireEvent.press(screen.getByTestId('Fermer la modale'))
     expect(hideModal).toBeCalledTimes(1)
   })
 
   it('should log analytics when clicking on close button with label "Aller vers la section profil', async () => {
-    const { getByLabelText } = render(
-      <FinishSubscriptionModal visible={visible} hideModal={hideModal} offerId={offerId} />
-    )
+    render(<FinishSubscriptionModal visible={visible} hideModal={hideModal} offerId={offerId} />)
 
-    fireEvent.press(getByLabelText('Aller vers la section profil'))
+    fireEvent.press(screen.getByLabelText('Aller vers la section profil'))
 
     expect(analytics.logGoToProfil).toHaveBeenNthCalledWith(1, {
       from: 'FinishSubscriptionModal',

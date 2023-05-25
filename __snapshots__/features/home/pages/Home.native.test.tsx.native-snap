@@ -34,6 +34,7 @@ exports[`Home page should render correctly 1`] = `
       data={
         Array [
           Object {
+            "data": undefined,
             "displayParameters": Object {
               "layout": "one-item-medium",
               "minOffers": 1,
@@ -323,10 +324,11 @@ exports[`Home page should render correctly 1`] = `
                         >
                           <View
                             height={32}
+                            testID="BicolorUnlock"
                             width={32}
                           >
                             <Text>
-                              undefined-SVG-Mock
+                              BicolorUnlock-SVG-Mock
                             </Text>
                           </View>
                         </View>

@@ -1,3 +1,4 @@
+import { useNavigation } from '@react-navigation/native'
 import debounce from 'lodash/debounce'
 import React, { useEffect, useRef, useState } from 'react'
 import { Keyboard, Platform } from 'react-native'
@@ -9,8 +10,8 @@ import { AddressOption } from 'features/identityCheck/components/AddressOption'
 import { CenteredTitle } from 'features/identityCheck/components/CenteredTitle'
 import { PageWithHeader } from 'features/identityCheck/components/layout/PageWithHeader'
 import { useSubscriptionContext } from 'features/identityCheck/context/SubscriptionContextProvider'
-import { useSubscriptionNavigation } from 'features/identityCheck/pages/helpers/useSubscriptionNavigation'
 import { IdentityCheckError } from 'features/identityCheck/pages/profile/errors'
+import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { analytics } from 'libs/analytics'
 import { eventMonitoring } from 'libs/monitoring'
@@ -33,10 +34,10 @@ export const SetAddress = () => {
   const { data: settings } = useSettingsContext()
   const { dispatch, profile } = useSubscriptionContext()
   const { showErrorSnackBar } = useSnackBarContext()
-  const { navigateToNextScreen } = useSubscriptionNavigation()
-  const [query, setQuery] = useState<string>(profile.address || '')
+  const { navigate } = useNavigation<UseNavigationType>()
+  const [query, setQuery] = useState<string>(profile.address ?? '')
   const [debouncedQuery, setDebouncedQuery] = useState<string>(query)
-  const [selectedAddress, setSelectedAddress] = useState<string | null>(profile.address || null)
+  const [selectedAddress, setSelectedAddress] = useState<string | null>(profile.address ?? null)
   const debouncedSetQuery = useRef(debounce(setDebouncedQuery, 500)).current
   const adressInputErrorId = uuidv4()
 
@@ -101,9 +102,9 @@ export const SetAddress = () => {
 
   const submitAddress = () => {
     if (!enabled) return
-    dispatch({ type: 'SET_ADDRESS', payload: selectedAddress || query })
+    dispatch({ type: 'SET_ADDRESS', payload: selectedAddress ?? query })
     analytics.logSetAddressClicked()
-    navigateToNextScreen()
+    navigate('SetStatus')
   }
 
   useEnterKeyAction(enabled ? submitAddress : undefined)

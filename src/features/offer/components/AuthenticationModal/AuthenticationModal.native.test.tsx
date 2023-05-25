@@ -45,6 +45,7 @@ describe('<AuthenticationModal />', () => {
 
     await waitFor(() => {
       expect(analytics.logSignUpFromAuthenticationModal).toHaveBeenNthCalledWith(1, OFFER_ID)
+      expect(analytics.logSignUpClicked).toHaveBeenNthCalledWith(1, { from: 'offer_booking' })
     })
   })
 

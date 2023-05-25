@@ -16,7 +16,7 @@ export const useAdaptOffersPlaylistParameters = () => {
   return useCallback(
     (parameters: OffersModuleParameters): Partial<SearchState> | undefined =>
       adaptOffersPlaylistParameters(
-        { ...parameters, priceMin: 0, priceMax: parameters.priceMax ?? defaultPriceMax },
+        { ...parameters, priceMax: parameters.priceMax ?? defaultPriceMax },
         position,
         subcategoryLabelMapping,
         genreTypeMapping

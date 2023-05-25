@@ -1,7 +1,7 @@
 import { rest } from 'msw'
 import React from 'react'
 
-import { OfferResponse } from 'api/gen'
+import { OfferResponse, SubcategoryIdEnum } from 'api/gen'
 import { BookingState, initialBookingState, Step } from 'features/bookOffer/context/reducer'
 import { mockDigitalOffer, mockOffer } from 'features/bookOffer/fixtures/offer'
 import * as BookingOfferAPI from 'features/bookOffer/helpers/useBookingOffer'
@@ -12,9 +12,11 @@ import { offerStockResponseSnap } from 'features/offer/fixtures/offerStockRespon
 import * as UnderageUserAPI from 'features/profile/helpers/useIsUserUnderage'
 import * as logOfferConversionAPI from 'libs/algolia/analytics/logOfferConversion'
 import { env } from 'libs/environment'
+import * as useFeatureFlag from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { server } from 'tests/server'
-import { fireEvent, render, screen } from 'tests/utils'
+import { fireEvent, render, screen, waitFor } from 'tests/utils'
+import * as useModalAPI from 'ui/components/modals/useModal'
 import { SnackBarHelperSettings } from 'ui/components/snackBar/types'
 
 import { BookingDetails, BookingDetailsProps } from './BookingDetails'
@@ -247,6 +249,316 @@ describe('<BookingDetails />', () => {
       renderBookingDetails({ stocks: mockDigitalStocks, onPressBookOffer: mockOnPressBookOffer })
 
       expect(await screen.findByTestId('DuoChoiceSelector')).toBeTruthy()
+    })
+  })
+
+  describe('When WIP_ENABLE_MULTIVENUE_OFFER feature flag deactivated', () => {
+    beforeEach(() => {
+      jest.spyOn(useFeatureFlag, 'useFeatureFlag').mockReturnValueOnce(false)
+    })
+
+    it('should display venue address in information section', async () => {
+      mockUseBookingOffer.mockReturnValueOnce({ ...mockOffer, isDuo: true })
+
+      mockUseSubcategoriesMapping.mockReturnValueOnce({
+        EVENEMENT_PATRIMOINE: { isEvent: false },
+      })
+
+      renderBookingDetails({ stocks: mockStocks, onPressBookOffer: mockOnPressBookOffer })
+
+      expect(await screen.findByTestId('address')).toBeTruthy()
+    })
+
+    it('should not display venue section', async () => {
+      mockUseBookingOffer.mockReturnValueOnce({
+        ...mockOffer,
+        isDuo: true,
+        subcategoryId: SubcategoryIdEnum.LIVRE_PAPIER,
+      })
+
+      mockUseSubcategoriesMapping.mockReturnValueOnce({
+        LIVRE_PAPIER: { isEvent: false },
+      })
+
+      renderBookingDetails({ stocks: mockStocks, onPressBookOffer: mockOnPressBookOffer })
+
+      await waitFor(() => {
+        expect(screen.queryByText('Lieu de retrait')).toBeNull()
+      })
+    })
+
+    it('should not display venue name in venue section', async () => {
+      mockUseBookingOffer.mockReturnValueOnce({
+        ...mockOffer,
+        isDuo: true,
+        subcategoryId: SubcategoryIdEnum.LIVRE_PAPIER,
+      })
+
+      mockUseSubcategoriesMapping.mockReturnValueOnce({
+        LIVRE_PAPIER: { isEvent: false },
+      })
+
+      renderBookingDetails({ stocks: mockStocks, onPressBookOffer: mockOnPressBookOffer })
+
+      await waitFor(() => {
+        expect(screen.queryByTestId('venueName')).toBeNull()
+      })
+    })
+
+    it('should not display venue address in venue section', async () => {
+      mockUseBookingOffer.mockReturnValueOnce({
+        ...mockOffer,
+        isDuo: true,
+        subcategoryId: SubcategoryIdEnum.LIVRE_PAPIER,
+      })
+
+      mockUseSubcategoriesMapping.mockReturnValueOnce({
+        LIVRE_PAPIER: { isEvent: false },
+      })
+
+      renderBookingDetails({ stocks: mockStocks, onPressBookOffer: mockOnPressBookOffer })
+
+      await waitFor(() => {
+        expect(screen.queryByTestId('venueAddress')).toBeNull()
+      })
+    })
+
+    it('should not display "Modifier" button when offer subcategory is "Livre papier" and ISBN defined', async () => {
+      mockUseBookingOffer.mockReturnValueOnce({
+        ...mockOffer,
+        isDuo: true,
+        subcategoryId: SubcategoryIdEnum.LIVRE_PAPIER,
+        extraData: { isbn: '12345678' },
+      })
+
+      mockUseSubcategoriesMapping.mockReturnValueOnce({
+        LIVRE_PAPIER: { isEvent: false },
+      })
+
+      renderBookingDetails({ stocks: mockStocks, onPressBookOffer: mockOnPressBookOffer })
+
+      await waitFor(() => {
+        expect(screen.queryByText('Modifier')).toBeNull()
+      })
+    })
+
+    it('should not display "Modifier" button when offer subcategory is "Livre audio physique" and ISBN defined', async () => {
+      mockUseBookingOffer.mockReturnValueOnce({
+        ...mockOffer,
+        isDuo: true,
+        subcategoryId: SubcategoryIdEnum.LIVRE_AUDIO_PHYSIQUE,
+        extraData: { isbn: '12345678' },
+      })
+
+      mockUseSubcategoriesMapping.mockReturnValueOnce({
+        LIVRE_AUDIO_PHYSIQUE: { isEvent: false },
+      })
+
+      renderBookingDetails({ stocks: mockStocks, onPressBookOffer: mockOnPressBookOffer })
+
+      await waitFor(() => {
+        expect(screen.queryByText('Modifier')).toBeNull()
+      })
+    })
+
+    it('should not display "Modifier" button when offer subcategory is "Livre papier" and ISBN not defined', async () => {
+      mockUseBookingOffer.mockReturnValueOnce({
+        ...mockOffer,
+        isDuo: true,
+        subcategoryId: SubcategoryIdEnum.LIVRE_PAPIER,
+      })
+
+      mockUseSubcategoriesMapping.mockReturnValueOnce({
+        LIVRE_PAPIER: { isEvent: false },
+      })
+
+      renderBookingDetails({ stocks: mockStocks, onPressBookOffer: mockOnPressBookOffer })
+
+      await waitFor(() => {
+        expect(screen.queryByText('Modifier')).toBeNull()
+      })
+    })
+
+    it('should not display "Modifier" button when offer subcategory is "Livre audio physique" and ISBN not defined', async () => {
+      mockUseBookingOffer.mockReturnValueOnce({
+        ...mockOffer,
+        isDuo: true,
+        subcategoryId: SubcategoryIdEnum.LIVRE_AUDIO_PHYSIQUE,
+      })
+
+      mockUseSubcategoriesMapping.mockReturnValueOnce({
+        LIVRE_AUDIO_PHYSIQUE: { isEvent: false },
+      })
+
+      renderBookingDetails({ stocks: mockStocks, onPressBookOffer: mockOnPressBookOffer })
+
+      await waitFor(() => {
+        expect(screen.queryByText('Modifier')).toBeNull()
+      })
+    })
+  })
+
+  describe('When WIP_ENABLE_MULTIVENUE_OFFER feature flag activated', () => {
+    beforeEach(() => {
+      jest.spyOn(useFeatureFlag, 'useFeatureFlag').mockReturnValueOnce(true)
+    })
+
+    it('should not display venue address in information section', async () => {
+      mockUseBookingOffer.mockReturnValueOnce({ ...mockOffer, isDuo: true })
+
+      mockUseSubcategoriesMapping.mockReturnValueOnce({
+        EVENEMENT_PATRIMOINE: { isEvent: false },
+      })
+
+      renderBookingDetails({ stocks: mockStocks, onPressBookOffer: mockOnPressBookOffer })
+
+      await waitFor(() => {
+        expect(screen.queryByTestId('address')).toBeNull()
+      })
+    })
+
+    it('should display venue section', async () => {
+      mockUseBookingOffer.mockReturnValueOnce({
+        ...mockOffer,
+        isDuo: true,
+        subcategoryId: SubcategoryIdEnum.LIVRE_PAPIER,
+      })
+
+      mockUseSubcategoriesMapping.mockReturnValueOnce({
+        LIVRE_PAPIER: { isEvent: false },
+      })
+
+      renderBookingDetails({ stocks: mockStocks, onPressBookOffer: mockOnPressBookOffer })
+
+      expect(await screen.findByText('Lieu de retrait')).toBeTruthy()
+    })
+
+    it('should display venue name in venue section', async () => {
+      mockUseBookingOffer.mockReturnValueOnce({
+        ...mockOffer,
+        isDuo: true,
+        subcategoryId: SubcategoryIdEnum.LIVRE_PAPIER,
+      })
+
+      mockUseSubcategoriesMapping.mockReturnValueOnce({
+        LIVRE_PAPIER: { isEvent: false },
+      })
+
+      renderBookingDetails({ stocks: mockStocks, onPressBookOffer: mockOnPressBookOffer })
+
+      expect(await screen.findByTestId('venueName')).toBeTruthy()
+    })
+
+    it('should display venue address in venue section', async () => {
+      mockUseBookingOffer.mockReturnValueOnce({
+        ...mockOffer,
+        isDuo: true,
+        subcategoryId: SubcategoryIdEnum.LIVRE_PAPIER,
+      })
+
+      mockUseSubcategoriesMapping.mockReturnValueOnce({
+        LIVRE_PAPIER: { isEvent: false },
+      })
+
+      renderBookingDetails({ stocks: mockStocks, onPressBookOffer: mockOnPressBookOffer })
+
+      expect(await screen.findByTestId('venueAddress')).toBeTruthy()
+    })
+
+    it('should display "Modifier" button when offer subcategory is "Livre papier" and ISBN defined', async () => {
+      mockUseBookingOffer.mockReturnValueOnce({
+        ...mockOffer,
+        isDuo: true,
+        subcategoryId: SubcategoryIdEnum.LIVRE_PAPIER,
+        extraData: { isbn: '12345678' },
+      })
+
+      mockUseSubcategoriesMapping.mockReturnValueOnce({
+        LIVRE_PAPIER: { isEvent: false },
+      })
+
+      renderBookingDetails({ stocks: mockStocks, onPressBookOffer: mockOnPressBookOffer })
+
+      expect(await screen.findByText('Modifier')).toBeTruthy()
+    })
+
+    it('should display "Modifier" button when offer subcategory is "Livre audio physique" and ISBN defined', async () => {
+      mockUseBookingOffer.mockReturnValueOnce({
+        ...mockOffer,
+        isDuo: true,
+        subcategoryId: SubcategoryIdEnum.LIVRE_AUDIO_PHYSIQUE,
+        extraData: { isbn: '12345678' },
+      })
+
+      mockUseSubcategoriesMapping.mockReturnValueOnce({
+        LIVRE_AUDIO_PHYSIQUE: { isEvent: false },
+      })
+
+      renderBookingDetails({ stocks: mockStocks, onPressBookOffer: mockOnPressBookOffer })
+
+      expect(await screen.findByText('Modifier')).toBeTruthy()
+    })
+
+    it('should not display "Modifier" button when offer subcategory is "Livre papier" and ISBN not defined', async () => {
+      mockUseBookingOffer.mockReturnValueOnce({
+        ...mockOffer,
+        isDuo: true,
+        subcategoryId: SubcategoryIdEnum.LIVRE_PAPIER,
+      })
+
+      mockUseSubcategoriesMapping.mockReturnValueOnce({
+        LIVRE_PAPIER: { isEvent: false },
+      })
+
+      renderBookingDetails({ stocks: mockStocks, onPressBookOffer: mockOnPressBookOffer })
+
+      await waitFor(() => {
+        expect(screen.queryByText('Modifier')).toBeNull()
+      })
+    })
+
+    it('should not display "Modifier" button when offer subcategory is "Livre audio physique" and ISBN not defined', async () => {
+      mockUseBookingOffer.mockReturnValueOnce({
+        ...mockOffer,
+        isDuo: true,
+        subcategoryId: SubcategoryIdEnum.LIVRE_AUDIO_PHYSIQUE,
+      })
+
+      mockUseSubcategoriesMapping.mockReturnValueOnce({
+        LIVRE_AUDIO_PHYSIQUE: { isEvent: false },
+      })
+
+      renderBookingDetails({ stocks: mockStocks, onPressBookOffer: mockOnPressBookOffer })
+
+      await waitFor(() => {
+        expect(screen.queryByText('Modifier')).toBeNull()
+      })
+    })
+
+    it('should open venue selection modal when pressing "Modifier" button', async () => {
+      const mockShowModal = jest.fn()
+      jest.spyOn(useModalAPI, 'useModal').mockReturnValueOnce({
+        visible: false,
+        showModal: mockShowModal,
+        hideModal: jest.fn(),
+        toggleModal: jest.fn(),
+      })
+      mockUseBookingOffer.mockReturnValueOnce({
+        ...mockOffer,
+        isDuo: true,
+        subcategoryId: SubcategoryIdEnum.LIVRE_PAPIER,
+        extraData: { isbn: '12345678' },
+      })
+
+      mockUseSubcategoriesMapping.mockReturnValueOnce({
+        LIVRE_PAPIER: { isEvent: false },
+      })
+
+      renderBookingDetails({ stocks: mockStocks, onPressBookOffer: mockOnPressBookOffer })
+
+      fireEvent.press(await screen.findByText('Modifier'))
+
+      expect(mockShowModal).toHaveBeenCalledTimes(1)
     })
   })
 })

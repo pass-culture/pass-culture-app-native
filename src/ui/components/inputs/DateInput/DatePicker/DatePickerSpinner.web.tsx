@@ -27,7 +27,8 @@ const ISO8601_DATE_STRING_RE =
   /^(\d{4})-(\d{2})-(\d{2})T(\d{2}):(\d{2}):(\d{2}(?:\.\d*)?)((-(\d{2}):(\d{2})|Z)?)$/gi
 
 export function DatePickerSpinner(props: DatePickerProps) {
-  const [date, setDate] = useState(getDateValuesString(props.defaultSelectedDate))
+  const defaultDate = getDateValuesString(props.defaultSelectedDate)
+  const [date, setDate] = useState(defaultDate)
   const [hiddenValue, setHiddenValue] = useState(props.defaultSelectedDate.toISOString())
 
   const optionGroups = useMemo(() => {
@@ -36,7 +37,7 @@ export function DatePickerSpinner(props: DatePickerProps) {
     return {
       day: getDatesInMonth(selectedMonthIndex, selectedYear),
       month: monthNamesShort,
-      year: getPastYears(props.minimumDate.getFullYear(), date.year),
+      year: getPastYears(props.minimumDate.getFullYear(), defaultDate.year),
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [date, monthNamesShort, getYears])

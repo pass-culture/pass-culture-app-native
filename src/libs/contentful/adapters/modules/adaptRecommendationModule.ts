@@ -26,8 +26,10 @@ const mapShowTypes = (recoShowTypes: RecommendationParametersFields['showTypes']
   recoShowTypes?.fields?.showTypes
 
 const buildRecommendationParams = (
-  recommendationParams: RecommendationParameters
-): RecommendedOffersModule['recommendationParameters'] => {
+  recommendationParams?: RecommendationParameters
+): RecommendedOffersModule['recommendationParameters'] | undefined => {
+  if (recommendationParams?.fields === undefined) return undefined
+
   const {
     recommendationSubcategories,
     recommendationCategories,
@@ -50,11 +52,13 @@ const buildRecommendationParams = (
 }
 export const adaptRecommendationModule = (
   modules: RecommendationContentModel
-): RecommendedOffersModule => {
+): RecommendedOffersModule | null => {
+  // if a mandatory module is unpublished/deleted, we can't handle the module, so we return null
+  if (modules.fields === undefined) return null
+  if (modules.fields.displayParameters.fields === undefined) return null
+
   const { recommendationParameters } = modules.fields
-  const cleanRecommendationParameters = recommendationParameters
-    ? buildRecommendationParams(recommendationParameters)
-    : undefined
+  const cleanRecommendationParameters = buildRecommendationParams(recommendationParameters)
 
   return {
     type: HomepageModuleType.RecommendedOffersModule,

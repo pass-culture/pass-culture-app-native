@@ -1,3 +1,4 @@
+import { useNavigation } from '@react-navigation/native'
 import debounce from 'lodash/debounce'
 import React, { useEffect, useRef, useState } from 'react'
 import { Keyboard, Platform } from 'react-native'
@@ -8,8 +9,8 @@ import { AddressOption } from 'features/identityCheck/components/AddressOption'
 import { CenteredTitle } from 'features/identityCheck/components/CenteredTitle'
 import { PageWithHeader } from 'features/identityCheck/components/layout/PageWithHeader'
 import { useSubscriptionContext } from 'features/identityCheck/context/SubscriptionContextProvider'
-import { useSubscriptionNavigation } from 'features/identityCheck/pages/helpers/useSubscriptionNavigation'
 import { IdentityCheckError } from 'features/identityCheck/pages/profile/errors'
+import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { analytics } from 'libs/analytics'
 import { eventMonitoring } from 'libs/monitoring'
@@ -36,11 +37,11 @@ const noPostalCodeFound =
 
 export const SetCity = () => {
   const { showErrorSnackBar } = useSnackBarContext()
-  const { navigateToNextScreen } = useSubscriptionNavigation()
+  const { navigate } = useNavigation<UseNavigationType>()
   const { dispatch, profile } = useSubscriptionContext()
-  const [query, setQuery] = useState(profile.city?.postalCode || '')
+  const [query, setQuery] = useState(profile.city?.postalCode ?? '')
   const [debouncedPostalCode, setDebouncedPostalCode] = useState<string>(query)
-  const [selectedCity, setSelectedCity] = useState<SuggestedCity | null>(profile.city || null)
+  const [selectedCity, setSelectedCity] = useState<SuggestedCity | null>(profile.city ?? null)
   const [errorMessage, setErrorMessage] = useState<string | null>(null)
 
   useEffect(() => {
@@ -51,6 +52,15 @@ export const SetCity = () => {
 
   const debouncedSetPostalCode = useRef(debounce(setDebouncedPostalCode, 500)).current
   const { data: cities = [], isLoading, isError, isSuccess } = useCities(debouncedPostalCode)
+
+  useEffect(() => {
+    if (profile.city?.name) {
+      const city = cities.find(
+        (suggestedCity: SuggestedCity) => suggestedCity.name === profile.city?.name
+      )
+      setSelectedCity(city ?? null)
+    }
+  }, [cities, profile])
 
   useEffect(() => {
     if (!isError) return
@@ -74,7 +84,7 @@ export const SetCity = () => {
     const city = cities.find(
       (suggestedCity: SuggestedCity) => keyExtractor(suggestedCity) === cityKey
     )
-    setSelectedCity(city || null)
+    setSelectedCity(city ?? null)
     Keyboard.dismiss()
   }
 
@@ -89,7 +99,7 @@ export const SetCity = () => {
     if (selectedCity === null) return
     dispatch({ type: 'SET_CITY', payload: selectedCity })
     analytics.logSetPostalCodeClicked()
-    navigateToNextScreen()
+    navigate('SetAddress')
   }
 
   const disabled = selectedCity === null

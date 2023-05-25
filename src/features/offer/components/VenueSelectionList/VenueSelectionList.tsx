@@ -1,9 +1,11 @@
 import React, { useCallback } from 'react'
-import { FlatList, ListRenderItem, View, ViewProps } from 'react-native'
+import { View, ViewProps } from 'react-native'
 import styled from 'styled-components/native'
 
 import { VenueSelectionListItem } from 'features/offer/components/VenueSelectionListItem/VenueSelectionListItem'
 import { VenueDetail } from 'features/offer/types'
+import { Li } from 'ui/components/Li'
+import { VerticalUl } from 'ui/components/Ul'
 import { getSpacing } from 'ui/theme'
 
 export type VenueListItem = VenueDetail & {
@@ -16,18 +18,14 @@ export type VenueSelectionListProps = ViewProps & {
   items: VenueListItem[]
 }
 
-function keyExtractor(item: VenueListItem) {
-  return String(item.offerId)
-}
-
 export function VenueSelectionList({
   items,
   selectedItem,
   onItemSelect,
   ...props
 }: VenueSelectionListProps) {
-  const renderItem: ListRenderItem<VenueListItem> = useCallback(
-    ({ item }) => {
+  const renderItem = useCallback(
+    (item: VenueListItem) => {
       return (
         <ItemWrapper>
           <VenueSelectionListItem
@@ -43,7 +41,13 @@ export function VenueSelectionList({
 
   return (
     <View {...props}>
-      <FlatList keyExtractor={keyExtractor} data={items} renderItem={renderItem} />
+      {items.length > 0 && (
+        <VerticalUl>
+          {items.map((item) => (
+            <Li key={item.offerId}>{renderItem(item)}</Li>
+          ))}
+        </VerticalUl>
+      )}
     </View>
   )
 }

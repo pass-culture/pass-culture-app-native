@@ -227,6 +227,7 @@ exports[`<PriceModal/> should render modal correctly after animation and with en
                       },
                     ]
                   }
+                  testID="back-button-container"
                 />
                 <Text
                   nativeID="testUuidV4"
@@ -261,6 +262,7 @@ exports[`<PriceModal/> should render modal correctly after animation and with en
                       },
                     ]
                   }
+                  testID="close-button-container"
                 >
                   <View
                     accessibilityLabel="Fermer"
@@ -543,7 +545,7 @@ exports[`<PriceModal/> should render modal correctly after animation and with en
                         "userSelect": "auto",
                       }
                     }
-                    testID="Interrupteur-onlyFreeOffers"
+                    testID="Interrupteur onlyFreeOffers"
                   >
                     <View
                       active={false}
@@ -733,7 +735,7 @@ exports[`<PriceModal/> should render modal correctly after animation and with en
                         "userSelect": "auto",
                       }
                     }
-                    testID="Interrupteur-limitCreditSearch"
+                    testID="Interrupteur limitCreditSearch"
                   >
                     <View
                       active={false}

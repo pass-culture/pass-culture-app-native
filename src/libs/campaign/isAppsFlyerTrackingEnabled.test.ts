@@ -3,7 +3,8 @@ import mockdate from 'mockdate'
 import { ALL_OPTIONAL_COOKIES, COOKIES_BY_CATEGORY } from 'features/cookies/CookiesPolicy'
 import { useCookies } from 'features/cookies/helpers/useCookies'
 import { storage } from 'libs/storage'
-import { act, flushAllPromisesWithAct, renderHook } from 'tests/utils'
+import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
+import { act, renderHook } from 'tests/utils'
 
 import { isAppsFlyerTrackingEnabled } from './isAppsFlyerTrackingEnabled'
 
@@ -25,53 +26,58 @@ describe('isAppsFlyerTrackingEnabled', () => {
   })
 
   it('should return true when all cookies are accepted', async () => {
-    const { result } = renderHook(useCookies)
+    const { result } = renderUseCookies()
     const { setCookiesConsent } = result.current
 
-    act(() => {
+    await act(async () => {
       setCookiesConsent({
         mandatory: COOKIES_BY_CATEGORY.essential,
         accepted: ALL_OPTIONAL_COOKIES,
         refused: [],
       })
     })
-    await flushAllPromisesWithAct()
     const enabled = await isAppsFlyerTrackingEnabled()
 
     expect(enabled).toBeTruthy()
   })
 
   it('should return false when all cookies are refused', async () => {
-    const { result } = renderHook(useCookies)
+    const { result } = renderUseCookies()
     const { setCookiesConsent } = result.current
 
-    act(() => {
+    await act(async () => {
       setCookiesConsent({
         mandatory: COOKIES_BY_CATEGORY.essential,
         accepted: [],
         refused: ALL_OPTIONAL_COOKIES,
       })
     })
-    await flushAllPromisesWithAct()
+
     const enabled = await isAppsFlyerTrackingEnabled()
 
     expect(enabled).toBeFalsy()
   })
 
   it('should return true when marketing cookies are accepted', async () => {
-    const { result } = renderHook(useCookies)
+    const { result } = renderUseCookies()
     const { setCookiesConsent } = result.current
 
-    act(() => {
+    await act(async () => {
       setCookiesConsent({
         mandatory: COOKIES_BY_CATEGORY.essential,
         accepted: COOKIES_BY_CATEGORY.marketing,
         refused: [...COOKIES_BY_CATEGORY.customization, ...COOKIES_BY_CATEGORY.performance],
       })
     })
-    await flushAllPromisesWithAct()
+
     const enabled = await isAppsFlyerTrackingEnabled()
 
     expect(enabled).toBeTruthy()
   })
 })
+
+const renderUseCookies = () =>
+  renderHook(useCookies, {
+    /* eslint-disable local-rules/no-react-query-provider-hoc */
+    wrapper: ({ children }) => reactQueryProviderHOC(children),
+  })

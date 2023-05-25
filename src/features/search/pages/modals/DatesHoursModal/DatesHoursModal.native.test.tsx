@@ -14,7 +14,7 @@ import {
 } from 'features/search/pages/modals/DatesHoursModal/DatesHoursModal'
 import { SearchState, SearchView } from 'features/search/types'
 import { formatToCompleteFrenchDate } from 'libs/parsers'
-import { act, fireEvent, render, screen, superFlushWithAct, waitFor } from 'tests/utils'
+import { act, fireEvent, render, screen, waitFor } from 'tests/utils'
 
 const searchId = uuidv4()
 const searchState = { ...initialSearchState, searchId }
@@ -40,9 +40,9 @@ describe('<DatesHoursModal/>', () => {
   })
 
   it('should render modal correctly after animation and with enabled submit', async () => {
-    jest.useFakeTimers('legacy')
     const renderAPI = renderDatesHoursModal()
-    await superFlushWithAct()
+    await screen.findByText('Dates & heures')
+
     expect(renderAPI).toMatchSnapshot()
   })
 
@@ -133,7 +133,7 @@ describe('<DatesHoursModal/>', () => {
       }
       renderDatesHoursModal()
 
-      const toggleDate = screen.getByTestId('Interrupteur-date')
+      const toggleDate = screen.getByTestId('Interrupteur date')
       await act(async () => {
         fireEvent.press(toggleDate)
       })
@@ -152,7 +152,7 @@ describe('<DatesHoursModal/>', () => {
       }
       renderDatesHoursModal()
 
-      const toggleHour = screen.getByTestId('Interrupteur-hour')
+      const toggleHour = screen.getByTestId('Interrupteur hour')
       await act(async () => {
         fireEvent.press(toggleHour)
       })
@@ -175,7 +175,7 @@ describe('<DatesHoursModal/>', () => {
         }
         renderDatesHoursModal()
 
-        const toggleDate = screen.getByTestId('Interrupteur-date')
+        const toggleDate = screen.getByTestId('Interrupteur date')
         await act(async () => {
           fireEvent.press(toggleDate)
         })
@@ -204,7 +204,7 @@ describe('<DatesHoursModal/>', () => {
         }
         renderDatesHoursModal()
 
-        const toggleDate = screen.getByTestId('Interrupteur-date')
+        const toggleDate = screen.getByTestId('Interrupteur date')
         await act(async () => {
           fireEvent.press(toggleDate)
         })
@@ -230,7 +230,7 @@ describe('<DatesHoursModal/>', () => {
       }
       renderDatesHoursModal()
 
-      const toggleHour = screen.getByTestId('Interrupteur-hour')
+      const toggleHour = screen.getByTestId('Interrupteur hour')
       await act(async () => {
         fireEvent.press(toggleHour)
       })
@@ -256,7 +256,7 @@ describe('<DatesHoursModal/>', () => {
       }
       renderDatesHoursModal()
 
-      const toggleHour = screen.getByTestId('Interrupteur-hour')
+      const toggleHour = screen.getByTestId('Interrupteur hour')
       await act(async () => {
         fireEvent.press(toggleHour)
       })
@@ -278,7 +278,7 @@ describe('<DatesHoursModal/>', () => {
   it('should close the modal when pressing previous button', async () => {
     renderDatesHoursModal()
 
-    await superFlushWithAct()
+    await screen.findByText('Dates & heures')
 
     const previousButton = screen.getByTestId('Fermer')
     fireEvent.press(previousButton)
@@ -294,7 +294,7 @@ describe('<DatesHoursModal/>', () => {
       }
       renderDatesHoursModal()
 
-      const toggleDate = screen.getByTestId('Interrupteur-date')
+      const toggleDate = screen.getByTestId('Interrupteur date')
 
       await act(async () => {
         expect(toggleDate.props.accessibilityState.checked).toEqual(true)
@@ -308,7 +308,7 @@ describe('<DatesHoursModal/>', () => {
       }
       renderDatesHoursModal()
 
-      const toggleHour = screen.getByTestId('Interrupteur-date')
+      const toggleHour = screen.getByTestId('Interrupteur date')
 
       await act(async () => {
         expect(toggleHour.props.accessibilityState.checked).toEqual(true)
@@ -353,7 +353,7 @@ describe('<DatesHoursModal/>', () => {
         filterBehaviour: FilterBehaviour.APPLY_WITHOUT_SEARCHING,
       })
 
-      const toggleDate = screen.getByTestId('Interrupteur-date')
+      const toggleDate = screen.getByTestId('Interrupteur date')
       await act(async () => {
         fireEvent.press(toggleDate)
       })
@@ -393,7 +393,7 @@ describe('<DatesHoursModal/>', () => {
         }
         renderDatesHoursModal()
 
-        await superFlushWithAct()
+        await screen.findByText('Dates & heures')
 
         const searchButton = screen.getByText('Rechercher')
         await act(async () => {
@@ -417,7 +417,7 @@ describe('<DatesHoursModal/>', () => {
           }
           renderDatesHoursModal()
 
-          const toggleDate = screen.getByTestId('Interrupteur-date')
+          const toggleDate = screen.getByTestId('Interrupteur date')
           await act(async () => {
             fireEvent.press(toggleDate)
           })
@@ -449,7 +449,7 @@ describe('<DatesHoursModal/>', () => {
         }
         renderDatesHoursModal()
 
-        const toggleHour = screen.getByTestId('Interrupteur-hour')
+        const toggleHour = screen.getByTestId('Interrupteur hour')
         await act(async () => {
           fireEvent.press(toggleHour)
         })
@@ -482,7 +482,7 @@ describe('<DatesHoursModal/>', () => {
         }
         renderDatesHoursModal()
 
-        await superFlushWithAct()
+        await screen.findByText('Dates & heures')
 
         const searchButton = screen.getByText('Rechercher')
         await act(async () => {
@@ -519,7 +519,7 @@ describe('<DatesHoursModal/>', () => {
         onClose: mockOnClose,
       })
 
-      await superFlushWithAct()
+      await screen.findByText('Dates & heures')
 
       const closeButton = screen.getByTestId('Fermer')
       fireEvent.press(closeButton)
@@ -530,7 +530,7 @@ describe('<DatesHoursModal/>', () => {
     it('should only close the modal when pressing close button when the modal is opening from search results', async () => {
       renderDatesHoursModal()
 
-      await superFlushWithAct()
+      await screen.findByText('Dates & heures')
 
       const closeButton = screen.getByTestId('Fermer')
       fireEvent.press(closeButton)

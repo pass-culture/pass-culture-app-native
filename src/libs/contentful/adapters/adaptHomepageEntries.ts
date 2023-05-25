@@ -13,11 +13,20 @@ import {
   isThematicHighlightInfo,
 } from 'libs/contentful/types'
 
+const adaptDefaultHeader = (homepageEntry: HomepageNatifEntry): DefaultThematicHeader => ({
+  type: ThematicHeaderType.Default,
+  title: homepageEntry.fields.thematicHeaderTitle,
+  subtitle: homepageEntry.fields.thematicHeaderSubtitle,
+})
+
 const adaptThematicHeader = (homepageEntry: HomepageNatifEntry) => {
   const thematicHeader = homepageEntry.fields.thematicHeader
 
   if (isThematicHighlightInfo(thematicHeader)) {
     const thematicHeaderFields = thematicHeader.fields
+    // if a mandatory module is unpublished/deleted, we can't handle the header, so we return the default one
+    if (thematicHeaderFields?.image.fields === undefined) return adaptDefaultHeader(homepageEntry)
+
     return {
       type: ThematicHeaderType.Highlight,
       title: thematicHeaderFields.displayedTitle,
@@ -32,6 +41,9 @@ const adaptThematicHeader = (homepageEntry: HomepageNatifEntry) => {
 
   if (isThematicCategoryInfo(thematicHeader)) {
     const thematicHeaderFields = thematicHeader.fields
+    // if a mandatory module is unpublished/deleted, we can't handle the header, so we return the default one
+    if (thematicHeaderFields?.image.fields === undefined) return adaptDefaultHeader(homepageEntry)
+
     return {
       type: ThematicHeaderType.Category,
       title: thematicHeaderFields.displayedTitle,
@@ -40,11 +52,7 @@ const adaptThematicHeader = (homepageEntry: HomepageNatifEntry) => {
     } as CategoryThematicHeader
   }
 
-  return {
-    type: ThematicHeaderType.Default,
-    title: homepageEntry.fields.thematicHeaderTitle,
-    subtitle: homepageEntry.fields.thematicHeaderSubtitle,
-  } as DefaultThematicHeader
+  return adaptDefaultHeader(homepageEntry)
 }
 
 export const adaptHomepageEntries = (homepageNatifEntries: HomepageNatifEntry[]): Homepage[] => {

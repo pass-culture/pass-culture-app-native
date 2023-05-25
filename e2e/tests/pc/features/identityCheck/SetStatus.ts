@@ -3,7 +3,7 @@ import { find, findAll } from '../../helpers/utils/selector'
 
 class SetStatus extends AppScreen {
   constructor() {
-    super('IdentityCheckStatus', true)
+    super('SetStatus', true)
   }
 
   get statusOption() {

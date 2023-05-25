@@ -82,6 +82,7 @@ Array [
                 },
               ]
             }
+            testID="back-button-container"
           >
             <View
               accessibilityLabel="Revenir en arrière"
@@ -163,6 +164,7 @@ Array [
                 },
               ]
             }
+            testID="close-button-container"
           />
         </View>
       </View>
@@ -248,7 +250,12 @@ Array [
                   "flexDirection": "row",
                   "justifyContent": "space-between",
                 },
-                undefined,
+                Array [
+                  Object {
+                    "marginBottom": 24,
+                    "marginTop": 0,
+                  },
+                ],
               ]
             }
           >
@@ -307,7 +314,6 @@ Array [
               Object {
                 "backgroundColor": "#F1F1F4",
                 "height": 1,
-                "marginVertical": 24,
                 "width": "100%",
               },
             ]
@@ -358,7 +364,12 @@ Array [
                   "flexDirection": "row",
                   "justifyContent": "space-between",
                 },
-                undefined,
+                Array [
+                  Object {
+                    "marginBottom": 24,
+                    "marginTop": 24,
+                  },
+                ],
               ]
             }
           >
@@ -417,7 +428,6 @@ Array [
               Object {
                 "backgroundColor": "#F1F1F4",
                 "height": 1,
-                "marginVertical": 24,
                 "width": "100%",
               },
             ]
@@ -468,7 +478,12 @@ Array [
                   "flexDirection": "row",
                   "justifyContent": "space-between",
                 },
-                undefined,
+                Array [
+                  Object {
+                    "marginBottom": 24,
+                    "marginTop": 24,
+                  },
+                ],
               ]
             }
           >
@@ -527,7 +542,6 @@ Array [
               Object {
                 "backgroundColor": "#F1F1F4",
                 "height": 1,
-                "marginVertical": 24,
                 "width": "100%",
               },
             ]
@@ -578,7 +592,12 @@ Array [
                   "flexDirection": "row",
                   "justifyContent": "space-between",
                 },
-                undefined,
+                Array [
+                  Object {
+                    "marginBottom": 24,
+                    "marginTop": 24,
+                  },
+                ],
               ]
             }
           >

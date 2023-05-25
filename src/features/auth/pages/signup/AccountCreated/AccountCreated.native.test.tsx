@@ -6,6 +6,7 @@ import { navigateToHomeConfig } from 'features/navigation/helpers'
 import { navigateFromRef } from 'features/navigation/navigationRef'
 import { ShareAppWrapper } from 'features/share/context/ShareAppWrapper'
 import { ShareAppModalType } from 'features/share/helpers/shareAppModalInformations'
+import { analytics } from 'libs/analytics'
 import { BatchUser } from 'libs/react-native-batch'
 import { render, fireEvent, waitFor } from 'tests/utils'
 
@@ -73,6 +74,14 @@ describe('<AccountCreated />', () => {
     fireEvent.press(await renderAPI.findByText('On y va\u00a0!'))
 
     expect(mockShowAppModal).toHaveBeenNthCalledWith(1, ShareAppModalType.NOT_ELIGIBLE)
+  })
+
+  it('should log analytics when "On y va !" button is clicked', async () => {
+    const renderAPI = renderAccountCreated()
+
+    fireEvent.press(await renderAPI.findByText('On y va\u00a0!'))
+
+    expect(analytics.logAccountCreatedStartClicked).toHaveBeenCalledTimes(1)
   })
 })
 

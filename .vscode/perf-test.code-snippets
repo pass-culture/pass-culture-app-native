@@ -9,7 +9,7 @@
       "import { measurePerformance, screen } from 'tests/utils'",
       "",
       "describe('<${1:PageName} />', () => {",
-      "  it('Performance test', async () => {",
+      "  it('Performance test for ${1:PageName} page', async () => {",
       "\t// eslint-disable-next-line local-rules/no-react-query-provider-hoc",
       "\tawait measurePerformance(reactQueryProviderHOC(<${1:PageName} />), {",
       "\t  // Add scenario if necessary",

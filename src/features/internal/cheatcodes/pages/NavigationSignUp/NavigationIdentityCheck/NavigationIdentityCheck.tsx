@@ -36,7 +36,7 @@ export function NavigationIdentityCheck(): JSX.Element {
     <ScrollView>
       <PageHeaderSecondary title="IdentityCheck 🎨" />
       <StyledContainer>
-        <LinkToComponent name="IdentityCheckStepper" title="Stepper" />
+        <LinkToComponent name="Stepper" title="Stepper" />
         <LinkToComponent
           title={`Too many codes`}
           onPress={() => navigate('PhoneValidationTooManyAttempts')}
@@ -55,12 +55,12 @@ export function NavigationIdentityCheck(): JSX.Element {
           title={'New SetPhoneValidationCode'}
           onPress={() => navigate('SetPhoneValidationCode')}
         />
-        <LinkToComponent name="IdentityCheckStatus" title="SetStatus" />
+        <LinkToComponent name="SetStatus" title="SetStatus" />
         <LinkToComponent name="IdentityCheckUnavailable" />
         <LinkToComponent name="IdentityCheckPending" />
         <LinkToComponent name="SetName" />
-        <LinkToComponent name="IdentityCheckAddress" title="SetAddress" />
-        <LinkToComponent name="IdentityCheckCity" title="SetCity" />
+        <LinkToComponent name="SetAddress" title="SetAddress" />
+        <LinkToComponent name="SetCity" title="SetCity" />
         <LinkToComponent name="IdentityCheckEnd" />
         <LinkToComponent name="IdentityCheckHonor" />
         <LinkToComponent name="IdentityCheckEduConnectForm" />

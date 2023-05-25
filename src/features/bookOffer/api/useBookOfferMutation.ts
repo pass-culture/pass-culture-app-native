@@ -1,7 +1,7 @@
 import { useMutation, useQueryClient } from 'react-query'
 
 import { api } from 'api/api'
-import { ApiError } from 'api/apiHelpers'
+import { ApiError, isOnlyCapturedByAPIException } from 'api/apiHelpers'
 import { BookingsResponse, BookOfferRequest, BookOfferResponse } from 'api/gen'
 import { eventMonitoring } from 'libs/monitoring'
 import { QueryKeys } from 'libs/queryKeys'
@@ -32,11 +32,15 @@ export function useBookOfferMutation({ onSuccess, onError }: BookOffer) {
         const bookings: BookingsResponse = await api.getnativev1bookings()
         queryClient.setQueryData([QueryKeys.BOOKINGS], bookings)
       } catch (error) {
-        eventMonitoring.captureException(error, {
-          extra: {
-            bookingId: data.bookingId,
-          },
-        })
+        if (
+          !(error instanceof ApiError) ||
+          (error instanceof ApiError && !isOnlyCapturedByAPIException(error.statusCode))
+        )
+          eventMonitoring.captureException(error, {
+            extra: {
+              bookingId: data.bookingId,
+            },
+          })
       }
 
       onSuccess(data)

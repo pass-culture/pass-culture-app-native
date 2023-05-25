@@ -77,9 +77,55 @@ exports[`<EighteenBirthdayCard /> should render eighteen birthday card 1`] = `
         ]
       }
     >
-      Bonne nouvelle !
-Tu as 18 ans...
+      Tu as 18 ans !
     </Text>
+    <View
+      numberOfSpaces={4}
+      style={
+        Array [
+          Object {
+            "height": 16,
+          },
+        ]
+      }
+    />
+    <View
+      style={
+        Array [
+          Object {
+            "flexDirection": "column",
+            "justifyContent": "center",
+          },
+        ]
+      }
+    >
+      <Text
+        style={
+          Array [
+            Object {
+              "alignSelf": "center",
+              "color": "#161617",
+              "fontFamily": "Montserrat-Medium",
+              "fontSize": 18,
+              "lineHeight": 22,
+              "textAlign": "center",
+            },
+          ]
+        }
+      >
+        Confirme tes informations personnelles pour débloquer tes 300 €.
+      </Text>
+      <View
+        numberOfSpaces={4}
+        style={
+          Array [
+            Object {
+              "height": 16,
+            },
+          ]
+        }
+      />
+    </View>
     <View
       numberOfSpaces={4}
       style={
@@ -94,16 +140,16 @@ Tu as 18 ans...
       style={
         Array [
           Object {
-            "color": "#161617",
-            "fontFamily": "Montserrat-Regular",
-            "fontSize": 15,
-            "lineHeight": 20,
+            "color": "#696A6F",
+            "fontFamily": "Montserrat-SemiBold",
+            "fontSize": 12,
+            "lineHeight": 16,
             "textAlign": "center",
           },
         ]
       }
     >
-      Tu pourras bénéficier des 300 € offerts par l’État dès que tu auras vérifié ton identité
+      Ton crédit précédent a été remis à 0 €.
     </Text>
   </View>
   <View
@@ -143,7 +189,7 @@ Tu as 18 ans...
       }
     >
       <View
-        accessibilityLabel="Vérifier mon identité"
+        accessibilityLabel="Confirmer mes informations"
         accessible={true}
         collapsable={false}
         focusable={true}
@@ -172,7 +218,7 @@ Tu as 18 ans...
             "width": "100%",
           }
         }
-        testID="Vérifier mon identité"
+        testID="Confirmer mes informations"
       >
         <Text
           adjustsFontSizeToFit={false}
@@ -190,7 +236,7 @@ Tu as 18 ans...
             ]
           }
         >
-          Vérifier mon identité
+          Confirmer mes informations
         </Text>
       </View>
     </View>
@@ -206,7 +252,7 @@ Tu as 18 ans...
       }
     >
       <View
-        accessibilityLabel="Passer"
+        accessibilityLabel="Plus tard"
         accessible={true}
         collapsable={false}
         focusable={false}
@@ -220,7 +266,7 @@ Tu as 18 ans...
         style={
           Object {
             "alignItems": "center",
-            "backgroundColor": "#ffffff",
+            "backgroundColor": "transparent",
             "borderRadius": 24,
             "flexDirection": "row",
             "justifyContent": "center",
@@ -228,32 +274,51 @@ Tu as 18 ans...
             "minHeight": 40,
             "opacity": 1,
             "paddingBottom": 2,
-            "paddingLeft": 20,
-            "paddingRight": 20,
+            "paddingLeft": 2,
+            "paddingRight": 2,
             "paddingTop": 2,
             "userSelect": "auto",
             "width": "100%",
           }
         }
-        testID="Passer"
+        testID="Plus tard"
       >
+        <View
+          style={
+            Array [
+              Object {
+                "flexShrink": 0,
+              },
+            ]
+          }
+        >
+          <View
+            height={20}
+            testID="button-icon"
+            width={20}
+          >
+            <Text>
+              button-icon-SVG-Mock
+            </Text>
+          </View>
+        </View>
         <Text
           adjustsFontSizeToFit={false}
           numberOfLines={1}
           style={
             Array [
               Object {
-                "color": "#eb0055",
+                "color": "#161617",
                 "fontFamily": "Montserrat-Bold",
                 "fontSize": 15,
                 "lineHeight": 20,
-                "marginLeft": 0,
+                "marginLeft": 8,
                 "maxWidth": "100%",
               },
             ]
           }
         >
-          Passer
+          Plus tard
         </Text>
       </View>
     </View>

@@ -26,7 +26,7 @@ export const QuitIdentityCheckModal: FunctionComponent<Props> = ({
   const context = useSubscriptionContext()
 
   function quitIdentityCheck() {
-    if (context.step) analytics.logConfirmQuitIdentityCheck(context.step)
+    if (context.step) analytics.logQuitIdentityCheck(context.step)
     hideModal()
     navigateToHome()
   }

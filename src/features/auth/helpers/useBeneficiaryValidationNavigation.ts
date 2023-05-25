@@ -47,7 +47,7 @@ const getNavConfigForNextSubscriptionStep = (
     nextStep === SubscriptionStep['profile-completion'] ||
     nextStep === SubscriptionStep['honor-statement']
   ) {
-    return { screen: 'IdentityCheckStepper' }
+    return { screen: 'Stepper' }
   } else {
     return { screen: homeNavConfig[0], params: homeNavConfig[1], fromRef: true }
   }

@@ -1,11 +1,11 @@
 import React, { useCallback, useEffect } from 'react'
 
-import { useVenueModule } from 'features/home/api/useVenueModule'
 import { VenueTile } from 'features/home/components/modules/venues/VenueTile'
 import { useHomePosition } from 'features/home/helpers/useHomePosition'
+import { ModuleData } from 'features/home/types'
 import { VenueHit } from 'libs/algolia'
 import { analytics } from 'libs/analytics'
-import { ContentTypes, DisplayParametersFields, VenuesParametersFields } from 'libs/contentful'
+import { ContentTypes, DisplayParametersFields } from 'libs/contentful'
 import { PassPlaylist } from 'ui/components/PassPlaylist'
 import { CustomListRenderItem } from 'ui/components/Playlist'
 import { LENGTH_S } from 'ui/theme'
@@ -13,9 +13,9 @@ import { LENGTH_S } from 'ui/theme'
 type VenuesModuleProps = {
   moduleId: string
   display: DisplayParametersFields
-  search: VenuesParametersFields[]
   homeEntryId: string | undefined
   index: number
+  data?: ModuleData
 }
 
 const ITEM_HEIGHT = LENGTH_S
@@ -26,13 +26,13 @@ const keyExtractor = (item: VenueHit) => item.id.toString()
 export const VenuesModule = ({
   moduleId,
   display,
-  search,
   index,
   homeEntryId,
+  data,
 }: VenuesModuleProps) => {
   const { position } = useHomePosition()
   const moduleName = display.title
-  const hits = useVenueModule({ venuesParameters: search, id: moduleId }) || []
+  const { hits = [] } = data ?? { hits: [] }
 
   const renderItem: CustomListRenderItem<VenueHit> = useCallback(
     ({ item, width, height }) => (

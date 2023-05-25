@@ -1,25 +1,36 @@
+import { rest } from 'msw'
 import React from 'react'
 
+import { CommonActions, dispatch } from '__mocks__/@react-navigation/native'
 import { ActivityIdEnum } from 'api/gen'
 import { initialSubscriptionState as mockState } from 'features/identityCheck/context/reducer'
-import { useSubscriptionContext } from 'features/identityCheck/context/SubscriptionContextProvider'
 import { SchoolTypesSnap } from 'features/identityCheck/pages/profile/fixtures/mockedSchoolTypes'
 import { SetSchoolType } from 'features/identityCheck/pages/profile/SetSchoolType'
 import { analytics } from 'libs/analytics'
-import { fireEvent, render, waitFor } from 'tests/utils'
+import { env } from 'libs/environment'
+import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
+import { server } from 'tests/server'
+import { fireEvent, render, waitFor, screen } from 'tests/utils'
+import { SnackBarHelperSettings } from 'ui/components/snackBar/types'
 
+let mockStatus = ActivityIdEnum.MIDDLE_SCHOOL_STUDENT
 jest.mock('features/identityCheck/context/SubscriptionContextProvider', () => ({
   useSubscriptionContext: jest.fn(() => ({
     dispatch: jest.fn(),
     ...mockState,
+    profile: {
+      name: {
+        firstName: 'Jean',
+        lastName: 'Dupont',
+      },
+      city: {
+        name: 'Paris',
+        postalCode: '75011',
+      },
+      address: '1 rue du désespoir',
+      status: mockStatus,
+    },
   })),
-}))
-
-let mockIsSavingCheckpoint = false
-jest.mock('features/identityCheck/pages/helpers/useSubscriptionNavigation', () => ({
-  useSubscriptionNavigation: () => ({
-    isSavingCheckpoint: mockIsSavingCheckpoint,
-  }),
 }))
 
 const mockSchoolTypes = SchoolTypesSnap.school_types
@@ -35,53 +46,64 @@ jest.mock('features/identityCheck/api/useProfileOptions', () => {
   }
 })
 
-const mockUseIdentityCheckContext = useSubscriptionContext as jest.Mock
-
-jest.mock('react-query')
-
-mockUseIdentityCheckContext.mockImplementation(() => ({
-  dispatch: jest.fn(),
-  ...mockState,
-  profile: { ...mockState.profile, status: ActivityIdEnum.MIDDLE_SCHOOL_STUDENT },
+const mockShowErrorSnackBar = jest.fn()
+jest.mock('ui/components/snackBar/SnackBarContext', () => ({
+  useSnackBarContext: () => ({
+    showErrorSnackBar: jest.fn((props: SnackBarHelperSettings) => mockShowErrorSnackBar(props)),
+  }),
 }))
+
+server.use(
+  rest.post(env.API_BASE_URL + '/native/v1/subscription/profile', async (_, res, ctx) => {
+    return res(ctx.status(200))
+  })
+)
 
 describe('<SetSchoolType />', () => {
   it('shoud render a list of middle school types if profile.status is middleSchoolStudent', () => {
-    const renderAPI = render(<SetSchoolType />)
-    expect(renderAPI).toMatchSnapshot()
+    renderSetSchoolType()
+    expect(screen).toMatchSnapshot()
   })
 
   it('shoud render a list of high school types if profile.status is highSchoolStudent', () => {
-    mockUseIdentityCheckContext.mockImplementationOnce(() => ({
-      dispatch: jest.fn(),
-      ...mockState,
-      profile: { ...mockState.profile, status: ActivityIdEnum.HIGH_SCHOOL_STUDENT },
-    }))
+    mockStatus = ActivityIdEnum.HIGH_SCHOOL_STUDENT
 
-    const renderAPI = render(<SetSchoolType />)
-    expect(renderAPI).toMatchSnapshot()
-  })
-  it('should not display "Continuer" if isSavingCheckpoint is true', async () => {
-    mockIsSavingCheckpoint = true
-    const { queryByText, getByText } = render(<SetSchoolType />)
-
-    fireEvent.press(getByText(SchoolTypesSnap.school_types[3].label))
-    expect(queryByText('Continuer')).toBeFalsy()
+    renderSetSchoolType()
+    expect(screen).toMatchSnapshot()
   })
 
   it('should log screen view when the screen is mounted', async () => {
-    render(<SetSchoolType />)
+    renderSetSchoolType()
 
     await waitFor(() => expect(analytics.logScreenViewSetSchoolType).toHaveBeenCalledTimes(1))
   })
 
   it('should log analytics on press Continuer', async () => {
-    mockIsSavingCheckpoint = false
-    const { getByText } = render(<SetSchoolType />)
+    renderSetSchoolType()
 
-    fireEvent.press(getByText(SchoolTypesSnap.school_types[3].label))
-    fireEvent.press(getByText('Continuer'))
+    fireEvent.press(screen.getByText(SchoolTypesSnap.school_types[0].label))
+    fireEvent.press(screen.getByText('Continuer'))
 
     await waitFor(() => expect(analytics.logSetSchoolTypeClicked).toHaveBeenCalledTimes(1))
   })
+
+  it('should navigate to stepper on press continue button', async () => {
+    renderSetSchoolType()
+
+    fireEvent.press(screen.getByText(SchoolTypesSnap.school_types[0].label))
+    fireEvent.press(screen.getByText('Continuer'))
+
+    await waitFor(() => {
+      expect(dispatch).toHaveBeenCalledTimes(1)
+      expect(CommonActions.reset).toHaveBeenCalledWith({
+        index: 1,
+        routes: [{ name: 'TabNavigator' }, { name: 'Stepper' }],
+      })
+    })
+  })
 })
+
+function renderSetSchoolType() {
+  // eslint-disable-next-line local-rules/no-react-query-provider-hoc
+  return render(reactQueryProviderHOC(<SetSchoolType />))
+}

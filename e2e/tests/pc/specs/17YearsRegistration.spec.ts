@@ -9,7 +9,7 @@ import GmailClient, { Email } from '../helpers/GmailClient'
 import { openDeepLinkUrl } from '../helpers/utils/deeplink'
 import { timeout } from '../helpers/utils/time'
 import VerifyEligibility from '../features/auth/VerifyEligibility'
-import IdentityCheckStepper from '../features/identityCheck/IdentityCheckStepper'
+import Stepper from '../features/identityCheck/Stepper'
 import SetName from '../features/identityCheck/SetName'
 import SetCity from '../features/identityCheck/SetCity'
 import SetAddress from '../features/identityCheck/SetAddress'
@@ -128,9 +128,9 @@ describe('17YearsRegistration', () => {
 
     it('should click on profile step button', async () => {
       didFirstLaunch(ok)
-      await IdentityCheckStepper.waitForIsShown()
-      await IdentityCheckStepper.profileButton.click()
-      await IdentityCheckStepper.waitForIsHidden()
+      await Stepper.waitForIsShown()
+      await Stepper.profileButton.click()
+      await Stepper.waitForIsHidden()
     })
 
     it('should set first name and last name', async () => {

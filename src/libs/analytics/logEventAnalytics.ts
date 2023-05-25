@@ -56,8 +56,8 @@ type OfferIdOrVenueId = { offerId: number; venueId?: never } | { venueId: number
 export const logEventAnalytics = {
   logAcceptNotifications: () =>
     analytics.logEvent({ firebase: AnalyticsEvent.ACCEPT_NOTIFICATIONS }),
-  logAcceptedTerms: () =>
-    analytics.logEvent({ amplitude: AmplitudeEvent.USER_ACCEPTED_TERMS_CLICKED_FRONT }),
+  logAccountCreatedStartClicked: () =>
+    analytics.logEvent({ amplitude: AmplitudeEvent.ACCOUNT_CREATED_START_CLICKED }),
   logAccountDeletion: () => analytics.logEvent({ firebase: AnalyticsEvent.ACCOUNT_DELETION }),
   logAccountReactivation: (from: Referrals) =>
     analytics.logEvent({ firebase: AnalyticsEvent.ACCOUNT_REACTIVATION }, { from }),
@@ -155,6 +155,8 @@ export const logEventAnalytics = {
     ),
   logClickBookOffer: (offerId: number) =>
     analytics.logEvent({ firebase: AnalyticsEvent.CLICK_BOOK_OFFER }, { offerId }),
+  logClickForceUpdate: (appVersionId: number) =>
+    analytics.logEvent({ firebase: AnalyticsEvent.CLICK_FORCE_UPDATE }, { appVersionId }),
   logClickSeeMore: (params: { moduleName: string; moduleId: string }) =>
     analytics.logEvent({ firebase: AnalyticsEvent.SEE_MORE_CLICKED }, params),
   logClickSocialNetwork: (network: string) =>
@@ -163,8 +165,6 @@ export const logEventAnalytics = {
     analytics.logEvent({ amplitude: AmplitudeEvent.COME_BACK_LATER_CLICKED }),
   logConfirmBookingCancellation: (offerId: number) =>
     analytics.logEvent({ firebase: AnalyticsEvent.CONFIRM_BOOKING_CANCELLATION }, { offerId }),
-  logConfirmQuitIdentityCheck: (nextStep: DeprecatedIdentityCheckStep | IdentityCheckStep) =>
-    analytics.logEvent({ firebase: AnalyticsEvent.QUIT_IDENTITY_CHECK }, { nextStep }),
   logConnectWithEduconnectClicked: () =>
     analytics.logEvent({ amplitude: AmplitudeEvent.CONNECT_WITH_EDUCONNECT_CLICKED }),
   logConsultAccessibility: (params: OfferIdOrVenueId) =>
@@ -232,18 +232,28 @@ export const logEventAnalytics = {
     analytics.logEvent({ firebase: AnalyticsEvent.CONSULT_WHOLE_OFFER }, { offerId }),
   logConsultWithdrawal: (params: OfferIdOrVenueId) =>
     analytics.logEvent({ firebase: AnalyticsEvent.CONSULT_WITHDRAWAL_MODALITIES }, params),
-  logContinueCGU: () => analytics.logEvent({ firebase: AnalyticsEvent.CONTINUE_CGU }),
+  logContinueCGU: () =>
+    analytics.logEvent({
+      firebase: AnalyticsEvent.CONTINUE_CGU,
+      amplitude: AmplitudeEvent.ACCEPT_CGU_CLICKED,
+    }),
   logContinueIdentityCheck: () =>
     analytics.logEvent({ firebase: AnalyticsEvent.CONTINUE_IDENTITY_CHECK }),
+  logContinueSetBirthday: () =>
+    analytics.logEvent({
+      firebase: AnalyticsEvent.CONTINUE_SET_BIRTHDAY,
+      amplitude: AmplitudeEvent.CONTINUE_SET_BIRTHDAY,
+    }),
   logContinueSetEmail: () =>
     analytics.logEvent({
       firebase: AnalyticsEvent.CONTINUE_SET_EMAIL,
-      amplitude: AmplitudeEvent.USER_SET_EMAIL_CLICKED_FRONT,
+      amplitude: AmplitudeEvent.CONTINUE_SET_EMAIL,
     }),
   logContinueSetPassword: () =>
-    analytics.logEvent({ firebase: AnalyticsEvent.CONTINUE_SET_PASSWORD }),
-  logContinueSetBirthday: () =>
-    analytics.logEvent({ firebase: AnalyticsEvent.CONTINUE_SET_BIRTHDAY }),
+    analytics.logEvent({
+      firebase: AnalyticsEvent.CONTINUE_SET_PASSWORD,
+      amplitude: AmplitudeEvent.CONTINUE_SET_PASSWORD,
+    }),
   logContinueSignup: () => analytics.logEvent({ firebase: AnalyticsEvent.CONTINUE_SIGNUP }),
   logCulturalSurveyScrolledToBottom: (params: { questionId: string }) =>
     analytics.logEvent({ firebase: AnalyticsEvent.CULTURAL_SURVEY_SCROLLED_TO_BOTTOM }, params),
@@ -258,6 +268,9 @@ export const logEventAnalytics = {
       { amplitude: AmplitudeEvent.EDUCONNECT_EXPLANATION_CLICKED },
       { fork_origin: origin }
     ),
+  logEmailConfirmationConsultEmailClicked: () =>
+    analytics.logEvent({ amplitude: AmplitudeEvent.EMAIL_CONFIRMATION_CONSULT_EMAIL_CLICKED }),
+  logEmailValidated: () => analytics.logEvent({ amplitude: AmplitudeEvent.EMAIL_VALIDATED }),
   logErrorSavingNewEmail: (errorCode: string) =>
     analytics.logEvent({ firebase: AnalyticsEvent.ERROR_SAVING_NEW_EMAIL }, { code: errorCode }),
   logExclusivityBlockClicked: (params: {
@@ -334,6 +347,7 @@ export const logEventAnalytics = {
   logHelpCenterContactSignupConfirmationEmailSent: () =>
     analytics.logEvent({
       firebase: AnalyticsEvent.HELP_CENTER_CONTACT_SIGNUP_CONFIRMATION_EMAIL_SENT,
+      amplitude: AmplitudeEvent.EMAIL_CONFIRMATION_HELPCENTER_CLICKED,
     }),
   logHighlightBlockClicked: (params: { moduleId: string; entryId: string; toEntryId: string }) =>
     analytics.logEvent({ firebase: AnalyticsEvent.HIGHLIGHT_BLOCK_CLICKED }, params),
@@ -405,7 +419,7 @@ export const logEventAnalytics = {
   logOnboardingStarted: () =>
     analytics.logEvent({
       firebase: AnalyticsEvent.ONBOARDING_STARTED,
-      amplitude: AmplitudeEvent.ONBOARDING_WELCOME,
+      amplitude: AmplitudeEvent.ONBOARDING_STARTED,
     }),
   logOpenApp: (params: { appsFlyerUserId?: string }) =>
     analytics.logEvent({ firebase: AnalyticsEvent.OPEN_APP }, params),
@@ -431,7 +445,10 @@ export const logEventAnalytics = {
     analytics.logEvent({ amplitude: AmplitudeEvent.PHONE_VALIDATION_CODE_CLICKED }),
   logProfilScrolledToBottom: () =>
     analytics.logEvent({ firebase: AnalyticsEvent.PROFIL_SCROLLED_TO_BOTTOM }),
-  logProfilSignUp: () => analytics.logEvent({ firebase: AnalyticsEvent.PROFIL_SIGN_UP }),
+  logProfilSignUp: () =>
+    analytics.logEvent({
+      firebase: AnalyticsEvent.PROFIL_SIGN_UP,
+    }),
   logQuitAuthenticationMethodSelection: () =>
     analytics.logEvent({ firebase: AnalyticsEvent.QUIT_AUTHENTICATION_METHOD_SELECTION }),
   logQuitAuthenticationModal: (offerId: number) =>
@@ -440,6 +457,8 @@ export const logEventAnalytics = {
     analytics.logEvent({ firebase: AnalyticsEvent.QUIT_FAVORITE_MODAL_FOR_SIGN_IN }, { offerId }),
   logQuitIdentityCheck: (nextStep: DeprecatedIdentityCheckStep | IdentityCheckStep) =>
     analytics.logEvent({ firebase: AnalyticsEvent.QUIT_IDENTITY_CHECK }, { nextStep }),
+  logQuitSignup: (from: string) =>
+    analytics.logEvent({ amplitude: AmplitudeEvent.QUIT_SIGNUP }, { from }),
   logReinitializeFilters: (searchId?: string) =>
     analytics.logEvent({ firebase: AnalyticsEvent.REINITIALIZE_FILTERS }, { searchId }),
   logResendEmailResetPasswordExpiredLink: () =>
@@ -451,10 +470,6 @@ export const logEventAnalytics = {
       firebase: AnalyticsEvent.RESEND_EMAIL_SIGNUP_CONFIRMATION_EXPIRED_LINK,
     }),
   logSaveNewMail: () => analytics.logEvent({ firebase: AnalyticsEvent.SAVE_NEW_MAIL }),
-  logScreenViewSetAddress: () =>
-    analytics.logEvent({ amplitude: AmplitudeEvent.SCREEN_VIEW_SET_ADDRESS }),
-  logScreenViewSetCity: () =>
-    analytics.logEvent({ amplitude: AmplitudeEvent.SCREEN_VIEW_SET_CITY }),
   logScreenViewComeBackLater: () =>
     analytics.logEvent({ amplitude: AmplitudeEvent.SCREEN_VIEW_COME_BACK_LATER }),
   logScreenViewDMSIntroduction: () =>
@@ -473,6 +488,12 @@ export const logEventAnalytics = {
     analytics.logEvent({ amplitude: AmplitudeEvent.SCREEN_VIEW_SELECT_ID_ORIGIN }),
   logScreenViewSelectIdStatus: () =>
     analytics.logEvent({ amplitude: AmplitudeEvent.SCREEN_VIEW_SELECT_ID_STATUS }),
+  logScreenViewSetAddress: () =>
+    analytics.logEvent({ amplitude: AmplitudeEvent.SCREEN_VIEW_SET_ADDRESS }),
+  logScreenViewSetCity: () =>
+    analytics.logEvent({ amplitude: AmplitudeEvent.SCREEN_VIEW_SET_CITY }),
+  logScreenViewSetEmail: () =>
+    analytics.logEvent({ amplitude: AmplitudeEvent.SCREEN_VIEW_SET_EMAIL }),
   logScreenViewSetName: () =>
     analytics.logEvent({ amplitude: AmplitudeEvent.SCREEN_VIEW_SET_NAME }),
   logScreenViewSetPhoneNumber: () =>
@@ -540,8 +561,11 @@ export const logEventAnalytics = {
     analytics.logEvent({ firebase: AnalyticsEvent.SIGN_IN_FROM_FAVORITE }),
   logSignInFromOffer: (offerId: number) =>
     analytics.logEvent({ firebase: AnalyticsEvent.SIGN_IN_FROM_OFFER }, { offerId }),
-  logSignUp: ({ from }: { from: string }) =>
-    analytics.logEvent({ firebase: AnalyticsEvent.SIGN_UP }, { from }),
+  logSignUpClicked: ({ from }: { from: string }) =>
+    analytics.logEvent(
+      { firebase: AnalyticsEvent.SIGN_UP, amplitude: AmplitudeEvent.CREATE_ACCOUNT_CLICKED },
+      { from }
+    ),
   logSignUpFromAuthenticationModal: (offerId: number) =>
     analytics.logEvent(
       { firebase: AnalyticsEvent.SIGN_UP_FROM_AUTHENTICATION_MODAL },

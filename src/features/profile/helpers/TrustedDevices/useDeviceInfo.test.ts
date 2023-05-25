@@ -1,28 +1,30 @@
 import DeviceInfo from 'react-native-device-info'
 
 import {
-  DeviceInformations,
-  useDeviceInfos,
-} from 'features/profile/helpers/TrustedDevices/useDeviceInfos'
+  DeviceInformation,
+  useDeviceInfo,
+} from 'features/profile/helpers/TrustedDevices/useDeviceInfo'
 import { renderHook, waitFor } from 'tests/utils'
 
 jest.mock('react-native-device-info')
 
 const getModelSpy = jest.spyOn(DeviceInfo, 'getModel')
-const getBrandSpy = jest.spyOn(DeviceInfo, 'getBrand')
 const getBaseOsSpy = jest.spyOn(DeviceInfo, 'getBaseOs')
+const getSystemNameSpy = jest.spyOn(DeviceInfo, 'getSystemName')
+jest.mock('react-device-detect', () => ({ browserName: undefined }))
+const reactNativeDetectMock = jest.requireMock('react-device-detect')
 
 describe('useDeviceInfo', () => {
   it('returns informations about the device for an iPhone', async () => {
     getModelSpy.mockReturnValueOnce('iPhone 13')
-    getBrandSpy.mockReturnValueOnce('Apple')
     getBaseOsSpy.mockResolvedValueOnce('unknown')
-    const { result } = renderHook(useDeviceInfos)
+    getSystemNameSpy.mockReturnValueOnce('iOS')
+    const { result } = renderHook(useDeviceInfo)
 
-    const expectedInfo: DeviceInformations = {
+    const expectedInfo: DeviceInformation = {
       deviceId: 'ad7b7b5a169641e27cadbdb35adad9c4ca23099a',
-      deviceBrand: 'Apple',
-      deviceModel: 'iPhone 13',
+      source: 'iPhone 13',
+      os: 'iOS',
     }
 
     await waitFor(() => {
@@ -31,14 +33,16 @@ describe('useDeviceInfo', () => {
   })
 
   it('returns informations about the device for web', async () => {
+    reactNativeDetectMock.browserName = 'Chrome'
     getModelSpy.mockReturnValueOnce('unknown')
-    getBrandSpy.mockReturnValueOnce('unknown')
+    getSystemNameSpy.mockReturnValueOnce('unknown')
     getBaseOsSpy.mockResolvedValueOnce('Mac OS')
-    const { result } = renderHook(useDeviceInfos)
+    const { result } = renderHook(useDeviceInfo)
 
-    const expectedInfo: DeviceInformations = {
+    const expectedInfo: DeviceInformation = {
       deviceId: 'ad7b7b5a169641e27cadbdb35adad9c4ca23099a',
-      deviceOS: 'Mac OS',
+      source: 'Chrome',
+      os: 'Mac OS',
     }
 
     await waitFor(() => {

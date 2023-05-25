@@ -48,7 +48,7 @@ export const UbbleWebview: React.FC = () => {
             analytics.logIdentityCheckAbort({
               method: IdentityCheckMethod.ubble,
               reason,
-              errorType: new URL(redirectUrl).searchParams.get('error_type') || null,
+              errorType: new URL(redirectUrl).searchParams.get('error_type') ?? null,
             })
             ubbleIDV.destroy()
             navigateToHome()

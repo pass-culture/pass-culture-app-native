@@ -11,7 +11,7 @@ import {
 } from 'features/search/pages/modals/OfferDuoModal/OfferDuoModal'
 import { SearchState, SearchView } from 'features/search/types'
 import { beneficiaryUser } from 'fixtures/user'
-import { fireEvent, render, screen, superFlushWithAct, waitFor } from 'tests/utils'
+import { fireEvent, render, screen, waitFor } from 'tests/utils'
 
 const searchId = uuidv4()
 const searchState = { ...initialSearchState, searchId }
@@ -47,12 +47,10 @@ const mockOnClose = jest.fn()
 
 describe('<OfferDuoModal/>', () => {
   it('should render modal correctly after animation and with enabled submit', async () => {
-    jest.useFakeTimers('legacy')
     const renderAPI = renderOfferDuoModal()
-    await superFlushWithAct()
-    jest.advanceTimersByTime(2000)
+    await screen.findByText('Uniquement les offres duo')
+
     expect(renderAPI).toMatchSnapshot()
-    jest.useRealTimers()
   })
 
   describe('modal header', () => {
@@ -120,7 +118,7 @@ describe('<OfferDuoModal/>', () => {
     it('should toggle offerIsDuo', () => {
       const renderAPI = renderOfferDuoModal()
 
-      const toggle = renderAPI.getByTestId('Interrupteur-limitDuoOfferSearch')
+      const toggle = renderAPI.getByTestId('Interrupteur limitDuoOfferSearch')
 
       expect(toggle.props.accessibilityState).toEqual({
         disabled: false,
@@ -140,7 +138,7 @@ describe('<OfferDuoModal/>', () => {
     it('should disable duo offer when click on reset button', () => {
       const renderAPI = renderOfferDuoModal()
 
-      const toggle = renderAPI.getByTestId('Interrupteur-limitDuoOfferSearch')
+      const toggle = renderAPI.getByTestId('Interrupteur limitDuoOfferSearch')
 
       fireEvent.press(toggle)
 
@@ -193,7 +191,7 @@ describe('<OfferDuoModal/>', () => {
         filterBehaviour: FilterBehaviour.APPLY_WITHOUT_SEARCHING,
       })
 
-      const toggle = screen.getByTestId('Interrupteur-limitDuoOfferSearch')
+      const toggle = screen.getByTestId('Interrupteur limitDuoOfferSearch')
 
       fireEvent.press(toggle)
 
@@ -219,7 +217,7 @@ describe('<OfferDuoModal/>', () => {
   describe('with "Rechercher" button', () => {
     it('should navigate to Search results when selecting DUO offer and pressing button', async () => {
       renderOfferDuoModal()
-      const toggle = screen.getByTestId('Interrupteur-limitDuoOfferSearch')
+      const toggle = screen.getByTestId('Interrupteur limitDuoOfferSearch')
       const button = screen.getByText('Rechercher')
 
       fireEvent.press(toggle)

@@ -118,6 +118,11 @@ export interface AccountRequest {
    * @memberof AccountRequest
    */
   token: string
+  /**
+   * @type {TrustedDevice}
+   * @memberof AccountRequest
+   */
+  trustedDevice?: TrustedDevice | null
 }
 /**
  * An enumeration.
@@ -224,6 +229,7 @@ export enum BannerName {
   'geolocation_banner' = 'geolocation_banner',
   'activation_banner' = 'activation_banner',
   'retry_identity_check_banner' = 'retry_identity_check_banner',
+  'transition_17_18_banner' = 'transition_17_18_banner',
 }
 /**
  * @export
@@ -2216,6 +2222,11 @@ export interface SettingsResponse {
  */
 export interface SigninRequest {
   /**
+   * @type {TrustedDevice}
+   * @memberof SigninRequest
+   */
+  deviceInfo?: TrustedDevice | null
+  /**
    * @type {string}
    * @memberof SigninRequest
    */
@@ -2593,7 +2604,6 @@ export enum SubscriptionStep {
   'phone-validation' = 'phone-validation',
   'profile-completion' = 'profile-completion',
   'identity-check' = 'identity-check',
-  'user-profiling' = 'user-profiling',
   'honor-statement' = 'honor-statement',
 }
 /**
@@ -2677,6 +2687,27 @@ export interface SubscriptionStepperResponse {
 }
 /**
  * @export
+ * @interface TrustedDevice
+ */
+export interface TrustedDevice {
+  /**
+   * @type {string}
+   * @memberof TrustedDevice
+   */
+  deviceId: string
+  /**
+   * @type {string}
+   * @memberof TrustedDevice
+   */
+  os?: string | null
+  /**
+   * @type {string}
+   * @memberof TrustedDevice
+   */
+  source?: string | null
+}
+/**
+ * @export
  * @interface UpdateEmailTokenExpiration
  */
 export interface UpdateEmailTokenExpiration {
@@ -2732,11 +2763,6 @@ export interface UserProfileResponse {
    * @memberof UserProfileResponse
    */
   depositType?: DepositType | null
-  /**
-   * @type {number}
-   * @memberof UserProfileResponse
-   */
-  depositVersion?: number | null
   /**
    * @type {DomainsCredit}
    * @memberof UserProfileResponse
@@ -2798,15 +2824,15 @@ export interface UserProfileResponse {
    */
   phoneNumber?: string | null
   /**
-   * @type {string}
-   * @memberof UserProfileResponse
-   */
-  pseudo?: string | null
-  /**
    * @type {number}
    * @memberof UserProfileResponse
    */
   recreditAmountToShow?: number | null
+  /**
+   * @type {boolean}
+   * @memberof UserProfileResponse
+   */
+  requiresIdCheck: boolean
   /**
    * @type {Array<UserRole>}
    * @memberof UserProfileResponse
@@ -2843,38 +2869,6 @@ export interface UserProfileUpdateRequest {
    * @memberof UserProfileUpdateRequest
    */
   subscriptions?: NotificationSubscriptions | null
-}
-/**
- * @export
- * @interface UserProfilingFraudRequest
- */
-export interface UserProfilingFraudRequest {
-  /**
-   * @type {AgentType}
-   * @memberof UserProfilingFraudRequest
-   */
-  agentType?: AgentType | null
-  /**
-   * @type {string}
-   * @memberof UserProfilingFraudRequest
-   */
-  sessionId?: string | null
-  /**
-   * @type {string}
-   * @memberof UserProfilingFraudRequest
-   */
-  session_id?: string | null
-}
-/**
- * @export
- * @interface UserProfilingSessionIdResponse
- */
-export interface UserProfilingSessionIdResponse {
-  /**
-   * @type {string}
-   * @memberof UserProfilingSessionIdResponse
-   */
-  sessionId: string
 }
 /**
  * @export
@@ -3546,6 +3540,24 @@ export const DefaultApiFetchParamCreator = function (configuration?: Configurati
       }
     },
     /**
+     * @summary get_profile <GET>
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async getnativev1subscriptionprofile(options: any = {}): Promise<FetchArgs> {
+      const pathname = `/native/v1/subscription/profile`
+      let secureOptions = Object.assign(options, { credentials: 'omit' })
+      // authentication JWTAuth required
+      secureOptions = Object.assign(secureOptions, { credentials: 'include' })
+      const localVarRequestOptions = Object.assign({ method: 'GET' }, secureOptions)
+      const localVarHeaderParameter = await getAuthenticationHeaders(secureOptions)
+      localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers)
+      return {
+        url: pathname,
+        options: localVarRequestOptions,
+      }
+    },
+    /**
      * @summary get_profile_options <GET>
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
@@ -3568,24 +3580,6 @@ export const DefaultApiFetchParamCreator = function (configuration?: Configurati
      */
     async getnativev1subscriptionstepper(options: any = {}): Promise<FetchArgs> {
       const pathname = `/native/v1/subscription/stepper`
-      let secureOptions = Object.assign(options, { credentials: 'omit' })
-      // authentication JWTAuth required
-      secureOptions = Object.assign(secureOptions, { credentials: 'include' })
-      const localVarRequestOptions = Object.assign({ method: 'GET' }, secureOptions)
-      const localVarHeaderParameter = await getAuthenticationHeaders(secureOptions)
-      localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers)
-      return {
-        url: pathname,
-        options: localVarRequestOptions,
-      }
-    },
-    /**
-     * @summary Generate a unique hash which will be used as an identifier for user profiling
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    async getnativev1userProfilingsessionId(options: any = {}): Promise<FetchArgs> {
-      const pathname = `/native/v1/user_profiling/session_id`
       let secureOptions = Object.assign(options, { credentials: 'omit' })
       // authentication JWTAuth required
       secureOptions = Object.assign(secureOptions, { credentials: 'include' })
@@ -4204,28 +4198,6 @@ export const DefaultApiFetchParamCreator = function (configuration?: Configurati
       }
     },
     /**
-     * @summary profiling_fraud_score <POST>
-     * @param {UserProfilingFraudRequest} [body] 
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    async postnativev1userProfiling(body?: UserProfilingFraudRequest, options: any = {}): Promise<FetchArgs> {
-      const pathname = `/native/v1/user_profiling`
-      let secureOptions = Object.assign(options, { credentials: 'omit' })
-      // authentication JWTAuth required
-      secureOptions = Object.assign(secureOptions, { credentials: 'include' })
-      const localVarRequestOptions = Object.assign({ method: 'POST' }, secureOptions)
-      const localVarHeaderParameter = await getAuthenticationHeaders(secureOptions)
-      localVarHeaderParameter['Content-Type'] = 'application/json'
-      localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers)
-      const needsSerialization = (<any>"UserProfilingFraudRequest" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json'
-      localVarRequestOptions.body =  needsSerialization ? JSON.stringify(body || {}) : (body || "")
-      return {
-        url: pathname,
-        options: localVarRequestOptions,
-      }
-    },
-    /**
      * @summary validate_email <POST>
      * @param {ValidateEmailRequest} [body] 
      * @param {*} [options] Override http request option.
@@ -4498,6 +4470,17 @@ export const DefaultApiFp = function(api: DefaultApi, configuration?: Configurat
     },
     /**
      * 
+     * @summary get_profile <GET>
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async getnativev1subscriptionprofile(options?: any): Promise<EmptyResponse> {
+      const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).getnativev1subscriptionprofile(options)
+      const response = await safeFetch(configuration?.basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
+      return handleGeneratedApiResponse(response)
+    },
+    /**
+     * 
      * @summary get_profile_options <GET>
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
@@ -4515,17 +4498,6 @@ export const DefaultApiFp = function(api: DefaultApi, configuration?: Configurat
      */
     async getnativev1subscriptionstepper(options?: any): Promise<SubscriptionStepperResponse> {
       const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).getnativev1subscriptionstepper(options)
-      const response = await safeFetch(configuration?.basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
-      return handleGeneratedApiResponse(response)
-    },
-    /**
-     * 
-     * @summary Generate a unique hash which will be used as an identifier for user profiling
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    async getnativev1userProfilingsessionId(options?: any): Promise<UserProfilingSessionIdResponse> {
-      const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).getnativev1userProfilingsessionId(options)
       const response = await safeFetch(configuration?.basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
       return handleGeneratedApiResponse(response)
     },
@@ -4852,18 +4824,6 @@ export const DefaultApiFp = function(api: DefaultApi, configuration?: Configurat
     },
     /**
      * 
-     * @summary profiling_fraud_score <POST>
-     * @param {UserProfilingFraudRequest} [body] 
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    async postnativev1userProfiling(body?: UserProfilingFraudRequest, options?: any): Promise<EmptyResponse> {
-      const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).postnativev1userProfiling(body, options)
-      const response = await safeFetch(configuration?.basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
-      return handleGeneratedApiResponse(response)
-    },
-    /**
-     * 
      * @summary validate_email <POST>
      * @param {ValidateEmailRequest} [body] 
      * @param {*} [options] Override http request option.
@@ -5111,6 +5071,17 @@ export class DefaultApi extends BaseAPI {
   }
   /**
     * 
+    * @summary get_profile <GET>
+    * @param {*} [options] Override http request option.
+    * @throws {RequiredError}
+    * @memberof DefaultApi
+    */
+  public async getnativev1subscriptionprofile(options?: any) {
+    const configuration = await this.getConfiguration()
+    return DefaultApiFp(this, configuration).getnativev1subscriptionprofile(options)
+  }
+  /**
+    * 
     * @summary get_profile_options <GET>
     * @param {*} [options] Override http request option.
     * @throws {RequiredError}
@@ -5130,17 +5101,6 @@ export class DefaultApi extends BaseAPI {
   public async getnativev1subscriptionstepper(options?: any) {
     const configuration = await this.getConfiguration()
     return DefaultApiFp(this, configuration).getnativev1subscriptionstepper(options)
-  }
-  /**
-    * 
-    * @summary Generate a unique hash which will be used as an identifier for user profiling
-    * @param {*} [options] Override http request option.
-    * @throws {RequiredError}
-    * @memberof DefaultApi
-    */
-  public async getnativev1userProfilingsessionId(options?: any) {
-    const configuration = await this.getConfiguration()
-    return DefaultApiFp(this, configuration).getnativev1userProfilingsessionId(options)
   }
   /**
     * 
@@ -5462,18 +5422,6 @@ export class DefaultApi extends BaseAPI {
   public async postnativev1ubbleIdentification(body?: IdentificationSessionRequest, options?: any) {
     const configuration = await this.getConfiguration()
     return DefaultApiFp(this, configuration).postnativev1ubbleIdentification(body, options)
-  }
-  /**
-    * 
-    * @summary profiling_fraud_score <POST>
-    * @param {UserProfilingFraudRequest} [body] 
-    * @param {*} [options] Override http request option.
-    * @throws {RequiredError}
-    * @memberof DefaultApi
-    */
-  public async postnativev1userProfiling(body?: UserProfilingFraudRequest, options?: any) {
-    const configuration = await this.getConfiguration()
-    return DefaultApiFp(this, configuration).postnativev1userProfiling(body, options)
   }
   /**
     * 

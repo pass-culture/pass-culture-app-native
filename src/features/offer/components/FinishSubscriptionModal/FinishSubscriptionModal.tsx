@@ -4,7 +4,6 @@ import styled from 'styled-components/native'
 
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
-import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
 import { analytics } from 'libs/analytics'
 import { useGetDepositAmountsByAge } from 'shared/user/useGetDepositAmountsByAge'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
@@ -31,13 +30,19 @@ export const FinishSubscriptionModal: FunctionComponent<Props> = ({
   const navigateToProfile = useCallback(() => {
     analytics.logGoToProfil({ from: 'FinishSubscriptionModal', offerId })
     hideModal()
-    navigate(...getTabNavConfig('Profile'))
+    navigate('Stepper')
   }, [offerId, hideModal, navigate])
 
   const title = 'Débloque ton crédit' + LINE_BREAK + 'pour réserver cette offre'
 
-  const depositAmoutByAge = useGetDepositAmountsByAge(user?.birthDate)
-  const deposit = depositAmoutByAge ? <Deposit depositAmoutByAge={depositAmoutByAge} /> : SPACE
+  const depositAmountByAge = useGetDepositAmountsByAge(user?.birthDate)
+  const depositLabel = depositAmountByAge ? (
+    <Deposit depositAmountByAge={depositAmountByAge} />
+  ) : (
+    ' ton crédit '
+  )
+
+  const buttonLabel = user?.requiresIdCheck ? 'Vérifier mon identité' : 'Confirmer mes informations'
 
   return (
     <AppModalWithIllustration
@@ -45,12 +50,23 @@ export const FinishSubscriptionModal: FunctionComponent<Props> = ({
       title={title}
       Illustration={BicolorIdCardWithMagnifyingGlass}
       hideModal={hideModal}>
-      <StyledBody>
-        Finalise ton inscription pour obtenir ton crédit{deposit}et réserver cette offre.
-      </StyledBody>
+      {user?.requiresIdCheck ? (
+        <StyledBody>
+          Vérifie ton identité pour débloquer{depositLabel}et réserver cette offre.
+        </StyledBody>
+      ) : (
+        <StyledBody>
+          Confirme tes informations personnelles pour débloquer{depositLabel}et réserver cette
+          offre.
+        </StyledBody>
+      )}
+      <Spacer.Column numberOfSpaces={6} />
+      <Typo.CaptionNeutralInfo>
+        Ton crédit précédent a été remis à 0&nbsp;€.
+      </Typo.CaptionNeutralInfo>
       <Spacer.Column numberOfSpaces={6} />
       <ButtonPrimary
-        wording="Terminer mon inscription"
+        wording={buttonLabel}
         accessibilityLabel="Aller vers la section profil"
         onPress={navigateToProfile}
       />
@@ -58,10 +74,10 @@ export const FinishSubscriptionModal: FunctionComponent<Props> = ({
   )
 }
 
-const Deposit = ({ depositAmoutByAge }: { depositAmoutByAge: string }) => (
+const Deposit = ({ depositAmountByAge }: { depositAmountByAge: string }) => (
   <StyledBody>
     {SPACE}
-    de <Typo.ButtonText>{depositAmoutByAge}</Typo.ButtonText>
+    tes <Typo.ButtonText>{depositAmountByAge}</Typo.ButtonText>
     {SPACE}
   </StyledBody>
 )

@@ -47,7 +47,7 @@ describe('useBeneficiaryValidationNavigation', () => {
 
     await act(async () => result.current.navigateToNextBeneficiaryValidationStep())
 
-    expect(navigate).toBeCalledWith('IdentityCheckStepper', undefined)
+    expect(navigate).toBeCalledWith('Stepper', undefined)
   })
 
   it('should navigate to stepper if nextStep is IdentityCheck', async () => {
@@ -64,10 +64,10 @@ describe('useBeneficiaryValidationNavigation', () => {
 
     await act(async () => result.current.navigateToNextBeneficiaryValidationStep())
 
-    expect(navigate).toBeCalledWith('IdentityCheckStepper', undefined)
+    expect(navigate).toBeCalledWith('Stepper', undefined)
   })
 
-  it('should navigate to IdentityCheckStepper if nextStep is ProfileCompletion', async () => {
+  it('should navigate to Stepper if nextStep is ProfileCompletion', async () => {
     mockNextStepRequest({
       allowedIdentityCheckMethods,
       nextSubscriptionStep: SubscriptionStep['profile-completion'],
@@ -81,10 +81,10 @@ describe('useBeneficiaryValidationNavigation', () => {
 
     await act(async () => result.current.navigateToNextBeneficiaryValidationStep())
 
-    expect(navigate).toBeCalledWith('IdentityCheckStepper', undefined)
+    expect(navigate).toBeCalledWith('Stepper', undefined)
   })
 
-  it('should navigate to IdentityCheckStepper if nextStep is HonorStatement', async () => {
+  it('should navigate to Stepper if nextStep is HonorStatement', async () => {
     mockNextStepRequest({
       allowedIdentityCheckMethods,
       nextSubscriptionStep: SubscriptionStep['honor-statement'],
@@ -98,7 +98,7 @@ describe('useBeneficiaryValidationNavigation', () => {
 
     await act(async () => result.current.navigateToNextBeneficiaryValidationStep())
 
-    expect(navigate).toBeCalledWith('IdentityCheckStepper', undefined)
+    expect(navigate).toBeCalledWith('Stepper', undefined)
   })
 
   it('should navigate to IdentityCheckUnavailable if nextStep is Maintenance and maintenancePageType is withDMS', async () => {

@@ -20,7 +20,7 @@ export const EndedBookings: React.FC = () => {
   const { data: bookings } = useBookings()
   const { goBack } = useGoBack(...getTabNavConfig('Bookings'))
 
-  const endedBookingsCount = bookings?.ended_bookings?.length || 0
+  const endedBookingsCount = bookings?.ended_bookings?.length ?? 0
   const endedBookingsLabel = plural(endedBookingsCount, {
     one: '# réservation terminée',
     other: '# réservations terminées',
@@ -44,7 +44,7 @@ export const EndedBookings: React.FC = () => {
         listAs="ul"
         itemAs="li"
         contentContainerStyle={contentContainerStyle}
-        data={bookings?.ended_bookings || []}
+        data={bookings?.ended_bookings ?? []}
         keyExtractor={keyExtractor}
         renderItem={renderItem}
         ItemSeparatorComponent={StyledSeparator}

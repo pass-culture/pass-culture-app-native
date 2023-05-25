@@ -12,6 +12,7 @@ import { useValidatePhoneNumberMutation } from 'features/identityCheck/api/useVa
 import { CenteredTitle } from 'features/identityCheck/components/CenteredTitle'
 import { PageWithHeader } from 'features/identityCheck/components/layout/PageWithHeader'
 import { useSubscriptionContext } from 'features/identityCheck/context/SubscriptionContextProvider'
+import { useNavigateForwardToStepper } from 'features/identityCheck/helpers/useNavigateForwardToStepper'
 import { invalidateStepperInfoQuery } from 'features/identityCheck/pages/helpers/invalidateStepperQuery'
 import { CodeNotReceivedModal } from 'features/identityCheck/pages/phoneValidation/CodeNotReceivedModal'
 import { formatPhoneNumberForDisplay } from 'features/identityCheck/pages/phoneValidation/helpers/formatPhoneNumber'
@@ -47,14 +48,15 @@ export const SetPhoneValidationCode = () => {
       )
     : ''
   const { navigate, dispatch } = useNavigation<UseNavigationType>()
+  const { navigateForwardToStepper } = useNavigateForwardToStepper()
   const { remainingAttempts } = usePhoneValidationRemainingAttempts()
 
   // We amend our navigation history to replace "SetPhoneNumber" with "PhoneValidationTooManySMSSent"
   const goBackToPhoneValidationTooManySMSSent = () => {
     dispatch((state) => {
-      // Here we check the index of our 'IdentityCheckStepper' page in our navigation stack
-      const stepperIndex = state.routes.findIndex((route) => route.name === 'IdentityCheckStepper')
-      // Here we reset the routes parameter, taking all pages up to IdentityCheckStepper and adding 'PhoneValidationTooManySMSSent'
+      // Here we check the index of our 'Stepper' page in our navigation stack
+      const stepperIndex = state.routes.findIndex((route) => route.name === 'Stepper')
+      // Here we reset the routes parameter, taking all pages up to Stepper and adding 'PhoneValidationTooManySMSSent'
       // The ternary is used to prevent edge case crashes. stepperIndex could return -1 if we were brought to this page
       // without going through the stepper, e.g. through a deeplink.
       const routes =
@@ -86,7 +88,7 @@ export const SetPhoneValidationCode = () => {
   const { mutate: validatePhoneNumber, isLoading } = useValidatePhoneNumberMutation({
     onSuccess: async () => {
       invalidateStepperInfoQuery()
-      navigate('IdentityCheckStepper')
+      navigateForwardToStepper()
     },
     onError: (err: unknown | ApiError) => {
       const { content } = err as ApiError

@@ -7,26 +7,32 @@ import { SectionRow } from 'ui/components/SectionRow'
 import { Separator } from 'ui/components/Separator'
 import { getSpacing } from 'ui/theme'
 
+const StyledSectionRow = styled(SectionRow)<{ noTopMargin?: boolean }>(({ noTopMargin }) => ({
+  marginBottom: getSpacing(6),
+  marginTop: noTopMargin ? 0 : getSpacing(6),
+}))
+
 const sections = [
-  <SectionRow
+  <StyledSectionRow
     key={1}
     title="Les engagements du pass Culture"
     type="navigable"
     navigateTo={{ screen: 'AccessibilityEngagement' }}
+    noTopMargin
   />,
-  <SectionRow
+  <StyledSectionRow
     key={2}
     title="Parcours recommandés"
     type="navigable"
     navigateTo={{ screen: 'RecommendedPaths' }}
   />,
-  <SectionRow
+  <StyledSectionRow
     key={3}
     title="Déclaration d’accessibilité"
     type="navigable"
     navigateTo={{ screen: 'AccessibilityDeclaration' }}
   />,
-  <SectionRow
+  <StyledSectionRow
     key={4}
     title="Schéma pluriannuel"
     type="navigable"
@@ -37,11 +43,7 @@ const sections = [
 export function Accessibility() {
   return (
     <PageProfileSection title="Accessibilité">
-      <AccessibilityList items={sections} Separator={<StyledSeparator />} />
+      <AccessibilityList items={sections} Separator={<Separator />} />
     </PageProfileSection>
   )
 }
-
-const StyledSeparator = styled(Separator)({
-  marginVertical: getSpacing(6),
-})

@@ -1,10 +1,11 @@
+import { useNavigation } from '@react-navigation/native'
 import React, { useEffect, useState } from 'react'
 import { v4 as uuidv4 } from 'uuid'
 
 import { CenteredTitle } from 'features/identityCheck/components/CenteredTitle'
 import { PageWithHeader } from 'features/identityCheck/components/layout/PageWithHeader'
 import { useSubscriptionContext } from 'features/identityCheck/context/SubscriptionContextProvider'
-import { useSubscriptionNavigation } from 'features/identityCheck/pages/helpers/useSubscriptionNavigation'
+import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { analytics } from 'libs/analytics'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { Form } from 'ui/components/Form'
@@ -20,7 +21,7 @@ export const SetName = () => {
   const { dispatch, profile } = useSubscriptionContext()
   const [firstName, setFirstName] = useState(profile.name?.firstName ?? '')
   const [lastName, setLastName] = useState(profile.name?.lastName ?? '')
-  const { navigateToNextScreen } = useSubscriptionNavigation()
+  const { navigate } = useNavigation<UseNavigationType>()
 
   useEffect(() => {
     analytics.logScreenViewSetName()
@@ -39,7 +40,7 @@ export const SetName = () => {
     if (disabled) return
     dispatch({ type: 'SET_NAME', payload: { firstName, lastName } })
     analytics.logSetNameClicked()
-    navigateToNextScreen()
+    navigate('SetCity')
   }
 
   useEnterKeyAction(!disabled ? submitName : undefined)

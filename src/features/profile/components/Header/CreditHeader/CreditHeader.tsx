@@ -6,7 +6,7 @@ import { CreditExplanation } from 'features/profile/components/CreditExplanation
 import { CreditInfo } from 'features/profile/components/CreditInfo/CreditInfo'
 import { HeaderWithGreyContainer } from 'features/profile/components/Header/HeaderWithGreyContainer/HeaderWithGreyContainer'
 import { Subtitle } from 'features/profile/components/Subtitle/Subtitle'
-import { formatToSlashedFrenchDate } from 'libs/dates'
+import { formatToSlashedFrenchDate, setDateOneDayEarlier } from 'libs/dates'
 import { Spacer } from 'ui/theme'
 
 export type CreditHeaderProps = {
@@ -25,7 +25,7 @@ export function CreditHeader({
   const name = `${firstName} ${lastName}`
 
   const displayedExpirationDate = depositExpirationDate
-    ? formatToSlashedFrenchDate(depositExpirationDate)
+    ? formatToSlashedFrenchDate(setDateOneDayEarlier(depositExpirationDate))
     : ''
   const isDepositExpired = depositExpirationDate
     ? new Date(depositExpirationDate) < new Date()

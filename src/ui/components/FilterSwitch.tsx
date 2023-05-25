@@ -2,6 +2,7 @@ import React, { FunctionComponent, memo, useEffect, useRef } from 'react'
 import { Animated, Easing } from 'react-native'
 import styled, { DefaultTheme } from 'styled-components/native'
 
+import { useE2eTestId } from 'libs/e2e/useE2eTestId'
 import { useHandleFocus } from 'libs/hooks/useHandleFocus'
 import { accessibleCheckboxProps } from 'shared/accessibilityProps/accessibleCheckboxProps'
 import { HiddenAccessibleText } from 'ui/components/HiddenAccessibleText'
@@ -16,6 +17,7 @@ export interface FilterSwitchProps {
   active: boolean
   checkboxID?: string
   accessibilityDescribedBy?: string
+  accessibilityLabel?: string
   accessibilityLabelledBy?: string
   disabled?: boolean
   toggle: () => void
@@ -50,7 +52,7 @@ const FilterSwitch: FunctionComponent<FilterSwitchProps> = (props) => {
 
   useSpaceBarAction(isFocus ? toggle : undefined)
 
-  const testId = testID ? `Interrupteur-${testID}` : 'Interrupteur'
+  const e2eIdentifiers = useE2eTestId(testID ? `Interrupteur ${testID}` : 'Interrupteur')
 
   return (
     <FilterSwitchContainer>
@@ -60,12 +62,12 @@ const FilterSwitch: FunctionComponent<FilterSwitchProps> = (props) => {
       <TouchableOpacity
         onPress={toggle}
         disabled={disabled}
-        {...accessibleCheckboxProps({ checked: active })}
+        {...accessibleCheckboxProps({ checked: active, label: props.accessibilityLabel })}
         accessibilityDescribedBy={props.accessibilityDescribedBy}
         accessibilityLabelledBy={props.accessibilityLabelledBy}
         onFocus={onFocus}
         onBlur={onBlur}
-        testID={testId}>
+        {...e2eIdentifiers}>
         <StyledBackgroundColor active={active}>
           <StyledToggle style={{ marginLeft }} disabled={disabled}>
             {!!disabled && <Lock />}

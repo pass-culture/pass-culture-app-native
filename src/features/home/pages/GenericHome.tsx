@@ -10,11 +10,12 @@ import {
 } from 'react-native'
 import styled from 'styled-components/native'
 
+import { useGetOffersAndVenuesData } from 'features/home/api/useGetOffersAndVenuesData'
 import { useShowSkeleton } from 'features/home/api/useShowSkeleton'
 import { HomeBodyPlaceholder } from 'features/home/components/HomeBodyPlaceholder'
 import { HomeModule } from 'features/home/components/modules/HomeModule'
 import { useOnScroll } from 'features/home/pages/helpers/useOnScroll'
-import { HomepageModule } from 'features/home/types'
+import { HomepageModule, isOffersModule, isVenuesModule } from 'features/home/types'
 import { analytics, isCloseToBottom } from 'libs/analytics'
 import useFunctionOnce from 'libs/hooks/useFunctionOnce'
 import { useNetInfoContext } from 'libs/network/NetInfoWrapper'
@@ -33,7 +34,12 @@ type GenericHomeProps = {
 const keyExtractor = (item: HomepageModule) => item.id
 
 const renderModule = ({ item, index }: { item: HomepageModule; index: number }, homeId: string) => (
-  <HomeModule item={item} index={index} homeEntryId={homeId} />
+  <HomeModule
+    item={item}
+    index={index}
+    homeEntryId={homeId}
+    data={isOffersModule(item) || isVenuesModule(item) ? item.data : undefined}
+  />
 )
 
 const FooterComponent = ({ hasShownAll }: { hasShownAll: boolean }) => {
@@ -58,6 +64,7 @@ export const OnlineHome: FunctionComponent<GenericHomeProps> = ({
   homeId,
   shouldDisplayScrollToTop,
 }) => {
+  const { modulesData } = useGetOffersAndVenuesData(modules)
   const logHasSeenAllModules = useFunctionOnce(() => analytics.logAllModulesSeen(modules.length))
   const trackEventHasSeenAllModules = useFunctionOnce(() =>
     BatchUser.trackEvent(BatchEvent.hasSeenAllTheHomepage)
@@ -71,6 +78,12 @@ export const OnlineHome: FunctionComponent<GenericHomeProps> = ({
   const modulesIntervalId = useRef(0)
 
   const modulesToDisplay = Platform.OS === 'web' ? modules : modules.slice(0, maxIndex)
+
+  modulesToDisplay.forEach((module) => {
+    if (isOffersModule(module) || isVenuesModule(module)) {
+      module.data = modulesData.find((mod) => mod.moduleId === module.id)
+    }
+  })
 
   const scrollRef = useRef<FlatList>(null)
   useScrollToTop(scrollRef)
@@ -140,7 +153,9 @@ export const OnlineHome: FunctionComponent<GenericHomeProps> = ({
           data={modulesToDisplay}
           renderItem={renderItem}
           keyExtractor={keyExtractor}
-          ListFooterComponent={<FooterComponent hasShownAll={maxIndex >= modules.length} />}
+          ListFooterComponent={
+            <FooterComponent hasShownAll={modulesToDisplay.length >= modules.length} />
+          }
           ListHeaderComponent={Header}
           initialNumToRender={initialNumToRender}
           removeClippedSubviews={false}

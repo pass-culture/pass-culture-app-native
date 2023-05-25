@@ -92,8 +92,8 @@ export const Calendar: React.FC<Props> = ({
   enablePricesByCategories,
   hasSeveralPrices,
 }) => {
-  const markedDates = useMarkedDates(stocks, userRemainingCredit || 0)
-  const minDate = getMinAvailableDate(markedDates) || format(new Date(), 'yyyy-dd-MM')
+  const markedDates = useMarkedDates(stocks, userRemainingCredit ?? 0)
+  const minDate = getMinAvailableDate(markedDates) ?? format(new Date(), 'yyyy-dd-MM')
   const selectDay = useSelectDay()
 
   return (

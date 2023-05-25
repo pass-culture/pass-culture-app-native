@@ -1,6 +1,7 @@
 import { rest } from 'msw'
 import React from 'react'
 
+import { navigate } from '__mocks__/@react-navigation/native'
 import { SettingsWrapper } from 'features/auth/context/SettingsContext'
 import { initialSubscriptionState as mockState } from 'features/identityCheck/context/reducer'
 import { SetAddress } from 'features/identityCheck/pages/profile/SetAddress'
@@ -15,13 +16,6 @@ import { SnackBarHelperSettings } from 'ui/components/snackBar/types'
 const mockDispatch = jest.fn()
 jest.mock('features/identityCheck/context/SubscriptionContextProvider', () => ({
   useSubscriptionContext: () => ({ dispatch: mockDispatch, ...mockState }),
-}))
-
-const mockNavigateToNextScreen = jest.fn()
-jest.mock('features/identityCheck/pages/helpers/useSubscriptionNavigation', () => ({
-  useSubscriptionNavigation: () => ({
-    navigateToNextScreen: mockNavigateToNextScreen,
-  }),
 }))
 
 const QUERY_ADDRESS = '1 rue Poissonnière'
@@ -67,7 +61,7 @@ describe('<SetAddress/>', () => {
     })
   })
 
-  it('should save address and navigate to next screen when clicking on "Continuer"', async () => {
+  it('should save address and navigate to SetStatus when clicking on "Continuer"', async () => {
     renderSetAddress()
 
     const input = screen.getByPlaceholderText('Ex\u00a0: 34 avenue de l’Opéra')
@@ -81,7 +75,7 @@ describe('<SetAddress/>', () => {
       type: 'SET_ADDRESS',
       payload: mockedSuggestedPlaces.features[1].properties.label,
     })
-    expect(mockNavigateToNextScreen).toBeCalledTimes(1)
+    expect(navigate).toHaveBeenNthCalledWith(1, 'SetStatus')
   })
 
   it('should log screen view when the screen is mounted', async () => {

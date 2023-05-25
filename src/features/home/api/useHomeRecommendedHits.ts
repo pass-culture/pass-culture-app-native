@@ -34,13 +34,13 @@ export function getRecommendationParameters(
     showTypes: parameters.showTypes,
   })
   return {
-    categories: (parameters?.categories || []).map(getCategoriesFacetFilters),
+    categories: (parameters?.categories ?? []).map(getCategoriesFacetFilters),
     end_date: endingDatetime,
     isEvent: parameters?.isEvent,
     price_min: parameters?.priceMin,
     price_max: parameters?.priceMax,
     start_date: beginningDatetime,
-    subcategories: (parameters?.subcategories || []).map(
+    subcategories: (parameters?.subcategories ?? []).map(
       (subcategoryLabel) => subcategoryLabelMapping[subcategoryLabel]
     ),
     isDuo: parameters.isDuo,
@@ -78,5 +78,5 @@ export const useHomeRecommendedHits = (
     )
   }, [getRecommendedIds, recommendationParameters, recommendationEndpoint, subcategoryLabelMapping])
 
-  return useAlgoliaRecommendedHits(recommendedIds || [], moduleId)
+  return useAlgoliaRecommendedHits(recommendedIds ?? [], moduleId)
 }

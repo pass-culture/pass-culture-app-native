@@ -28,7 +28,7 @@ export interface DeprecatedStepConfig {
 export interface StepConfig {
   name: IdentityCheckStep
   icon: Record<StepButtonState, React.FC<IconInterface>>
-  screens: SubscriptionScreen[]
+  firstScreen: SubscriptionScreen
 }
 
 export interface StepDetails {
@@ -36,7 +36,7 @@ export interface StepDetails {
   title: string
   subtitle?: string
   icon: Record<StepButtonState, React.FC<IconInterface>>
-  screens: SubscriptionScreen[]
+  firstScreen: SubscriptionScreen
   stepState: StepButtonState
 }
 
@@ -50,4 +50,14 @@ export enum StepButtonState {
   'CURRENT' = 'current',
   'DISABLED' = 'disabled',
   'RETRY' = 'retry',
+}
+
+export interface RehydrationProfile {
+  activity: string
+  address: string
+  city: string
+  firstName: string
+  lastName: string
+  postalCode: string
+  schoolType: string
 }

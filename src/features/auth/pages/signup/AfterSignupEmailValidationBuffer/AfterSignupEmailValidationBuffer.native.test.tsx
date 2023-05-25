@@ -7,6 +7,7 @@ import { UserProfileResponse } from 'api/gen'
 import * as Login from 'features/auth/helpers/useLoginRoutine'
 import { homeNavConfig } from 'features/navigation/TabBar/helpers'
 import { nonBeneficiaryUser } from 'fixtures/user'
+import { analytics } from 'libs/analytics'
 import { CampaignEvents, campaignTracker } from 'libs/campaign'
 import * as datesLib from 'libs/dates'
 import { env } from 'libs/environment'
@@ -133,6 +134,14 @@ describe('<AfterSignupEmailValidationBuffer />', () => {
             af_user_id: nonBeneficiaryUser.id,
           }
         )
+      })
+    })
+
+    it('should log analytics on email validation success', async () => {
+      renderPage()
+
+      await waitFor(async () => {
+        expect(analytics.logEmailValidated).toHaveBeenCalledTimes(1)
       })
     })
 

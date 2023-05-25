@@ -227,6 +227,7 @@ exports[`<DatesHoursModal/> should render modal correctly after animation and wi
                       },
                     ]
                   }
+                  testID="back-button-container"
                 />
                 <Text
                   nativeID="testUuidV4"
@@ -261,6 +262,7 @@ exports[`<DatesHoursModal/> should render modal correctly after animation and wi
                       },
                     ]
                   }
+                  testID="close-button-container"
                 >
                   <View
                     accessibilityLabel="Fermer"
@@ -489,7 +491,7 @@ exports[`<DatesHoursModal/> should render modal correctly after animation and wi
                           "userSelect": "auto",
                         }
                       }
-                      testID="Interrupteur-date"
+                      testID="Interrupteur date"
                     >
                       <View
                         active={false}
@@ -694,7 +696,7 @@ exports[`<DatesHoursModal/> should render modal correctly after animation and wi
                           "userSelect": "auto",
                         }
                       }
-                      testID="Interrupteur-hour"
+                      testID="Interrupteur hour"
                     >
                       <View
                         active={false}

@@ -10,4 +10,10 @@ describe('adaptExclusivityModule', () => {
     expect(isExclusivityContentModel(rawExclusivityNatifModule)).toBeTruthy()
     expect(adaptExclusivityModule(rawExclusivityNatifModule)).toEqual(formattedExclusivityModule)
   })
+
+  it('should return null when the module is not provided', () => {
+    const rawExclusivityNatifModule = { ...exclusivityNatifModuleFixture, fields: undefined }
+
+    expect(adaptExclusivityModule(rawExclusivityNatifModule)).toEqual(null)
+  })
 })

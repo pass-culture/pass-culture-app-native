@@ -95,6 +95,7 @@ exports[`<SetSchoolType /> shoud render a list of high school types if profile.s
                 },
               ]
             }
+            testID="back-button-container"
           >
             <View
               accessibilityLabel="Revenir en arrière"
@@ -176,6 +177,7 @@ exports[`<SetSchoolType /> shoud render a list of high school types if profile.s
                 },
               ]
             }
+            testID="close-button-container"
           />
         </View>
       </View>
@@ -1345,6 +1347,7 @@ exports[`<SetSchoolType /> shoud render a list of middle school types if profile
                 },
               ]
             }
+            testID="back-button-container"
           >
             <View
               accessibilityLabel="Revenir en arrière"
@@ -1426,6 +1429,7 @@ exports[`<SetSchoolType /> shoud render a list of middle school types if profile
                 },
               ]
             }
+            testID="close-button-container"
           />
         </View>
       </View>

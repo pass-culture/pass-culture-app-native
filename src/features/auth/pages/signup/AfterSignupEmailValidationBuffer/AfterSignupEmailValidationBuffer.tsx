@@ -7,6 +7,7 @@ import { useValidateEmailMutation } from 'features/auth/api/useValidateEmailMuta
 import { useLoginRoutine } from 'features/auth/helpers/useLoginRoutine'
 import { UseNavigationType, UseRouteType } from 'features/navigation/RootNavigator/types'
 import { homeNavConfig } from 'features/navigation/TabBar/helpers'
+import { analytics } from 'libs/analytics'
 import { CampaignEvents, campaignTracker } from 'libs/campaign'
 import { isTimestampExpired } from 'libs/dates'
 // eslint-disable-next-line no-restricted-imports
@@ -47,6 +48,8 @@ export function AfterSignupEmailValidationBuffer() {
   }
 
   async function onEmailValidationSuccess({ accessToken, refreshToken }: ValidateEmailResponse) {
+    await analytics.logEmailValidated()
+
     await loginRoutine(
       { accessToken, refreshToken, accountState: AccountState.ACTIVE },
       'fromSignup'

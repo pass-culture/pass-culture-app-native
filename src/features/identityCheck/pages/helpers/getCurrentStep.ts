@@ -4,4 +4,4 @@ import { SubscriptionRootStackParamList } from 'features/navigation/RootNavigato
 export const getCurrentStep = (
   steps: StepDetails[],
   currentRoute: keyof SubscriptionRootStackParamList
-) => steps.find((step) => step.screens.includes(currentRoute)) || null
+) => steps.find((step) => step.firstScreen === currentRoute) ?? null

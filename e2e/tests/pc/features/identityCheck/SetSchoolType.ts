@@ -3,7 +3,7 @@ import { find, findAll } from '../../helpers/utils/selector'
 
 class SetSchoolType extends AppScreen {
   constructor() {
-    super('IdentityCheckSchoolType', true)
+    super('SetSchoolType', true)
   }
 
   get schoolTypeOption() {

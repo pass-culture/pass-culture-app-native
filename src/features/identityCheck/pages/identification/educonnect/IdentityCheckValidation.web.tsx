@@ -1,4 +1,4 @@
-import { useFocusEffect, useNavigation, useRoute } from '@react-navigation/native'
+import { useFocusEffect, useRoute } from '@react-navigation/native'
 import { parse, format } from 'date-fns'
 import React, { useCallback } from 'react'
 import styled from 'styled-components/native'
@@ -7,9 +7,10 @@ import { logoutFromEduConnectIfAllowed } from 'features/identityCheck/api/logout
 import { CenteredTitle } from 'features/identityCheck/components/CenteredTitle'
 import { PageWithHeader } from 'features/identityCheck/components/layout/PageWithHeader'
 import { useSubscriptionContext } from 'features/identityCheck/context/SubscriptionContextProvider'
+import { useNavigateForwardToStepper } from 'features/identityCheck/helpers/useNavigateForwardToStepper'
 import { invalidateStepperInfoQuery } from 'features/identityCheck/pages/helpers/invalidateStepperQuery'
 import { DeprecatedIdentityCheckStep } from 'features/identityCheck/types'
-import { UseNavigationType, UseRouteType } from 'features/navigation/RootNavigator/types'
+import { UseRouteType } from 'features/navigation/RootNavigator/types'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { useEnterKeyAction } from 'ui/hooks/useEnterKeyAction'
 import { Spacer, Typo } from 'ui/theme'
@@ -17,7 +18,7 @@ import { getNoHeadingAttrs } from 'ui/theme/typographyAttrs/getNoHeadingAttrs'
 
 export function IdentityCheckValidation() {
   const { params } = useRoute<UseRouteType<'IdentityCheckValidation'>>()
-  const { navigate } = useNavigation<UseNavigationType>()
+  const { navigateForwardToStepper } = useNavigateForwardToStepper()
 
   const { dispatch, identification } = useSubscriptionContext()
 
@@ -31,9 +32,9 @@ export function IdentityCheckValidation() {
     dispatch({ type: 'SET_STEP', payload: DeprecatedIdentityCheckStep.CONFIRMATION })
     // in web context, we are redirected to this page after educonnect login in a new tab.
     // Therefore, the identity check context loses the state before educonnect login and we
-    // cannot use navigateToNextScreen here. We need to navigated explicitely to next page.
+    // cannot use navigateToNextScreen here. We need to navigated explicitly to next page.
     invalidateStepperInfoQuery()
-    navigate('IdentityCheckStepper')
+    navigateForwardToStepper()
   }
 
   useFocusEffect(

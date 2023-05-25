@@ -20,7 +20,7 @@ import {
 } from 'libs/geolocation'
 import { SuggestedPlace } from 'libs/place'
 import { mockedSuggestedVenues } from 'libs/venue/fixtures/mockedSuggestedVenues'
-import { act, fireEvent, render, screen, superFlushWithAct, waitFor } from 'tests/utils'
+import { act, fireEvent, render, screen, waitFor } from 'tests/utils'
 
 import { LocationModal, LocationModalProps } from './LocationModal'
 
@@ -102,9 +102,11 @@ describe('<LocationModal/>', () => {
   })
 
   it('should render modal correctly after animation and with enabled submit', async () => {
-    const renderAPI = renderLocationModal()
-    await superFlushWithAct()
-    expect(renderAPI).toMatchSnapshot()
+    renderLocationModal()
+
+    await screen.findByText('Choisir un lieu')
+
+    expect(screen).toMatchSnapshot()
   })
 
   describe('should navigate on landing page when location filter modal opened from search box', () => {
@@ -112,7 +114,7 @@ describe('<LocationModal/>', () => {
       mockSearchState = searchState
       renderLocationModal()
 
-      await superFlushWithAct()
+      await screen.findByText('Choisir un lieu')
 
       const searchButton = screen.getByText('Rechercher')
       await act(async () => {
@@ -132,7 +134,7 @@ describe('<LocationModal/>', () => {
       mockSearchState = searchState
       renderLocationModal()
 
-      await superFlushWithAct()
+      await screen.findByText('Choisir un lieu')
 
       const radioButton = screen.getByTestId(RadioButtonLocation.AROUND_ME)
       await act(async () => {
@@ -173,7 +175,7 @@ describe('<LocationModal/>', () => {
       mockSearchState = { ...mockSearchState, locationFilter }
       renderLocationModal()
 
-      await superFlushWithAct()
+      await screen.findByText('Choisir un lieu')
 
       const radioButton = screen.getByTestId(label)
 
@@ -492,7 +494,7 @@ describe('<LocationModal/>', () => {
     it('when pressing search button and not pristine', async () => {
       renderLocationModal()
 
-      await superFlushWithAct()
+      await screen.findByText('Choisir un lieu')
 
       await act(async () => {
         fireEvent.press(screen.getByTestId(RadioButtonLocation.AROUND_ME))
@@ -510,7 +512,7 @@ describe('<LocationModal/>', () => {
     it('when pressing previous button', async () => {
       renderLocationModal()
 
-      await superFlushWithAct()
+      await screen.findByText('Choisir un lieu')
 
       const previousButton = screen.getByTestId('Fermer')
       fireEvent.press(previousButton)
@@ -524,7 +526,7 @@ describe('<LocationModal/>', () => {
     mockPermissionState = GeolocPermissionState.DENIED
     renderLocationModal()
 
-    await superFlushWithAct()
+    await screen.findByText('Choisir un lieu')
 
     const radioButton = screen.getByTestId(RadioButtonLocation.AROUND_ME)
     await act(async () => {
@@ -550,7 +552,7 @@ describe('<LocationModal/>', () => {
         filterBehaviour: FilterBehaviour.APPLY_WITHOUT_SEARCHING,
       })
 
-      await superFlushWithAct()
+      await screen.findByText('Choisir un lieu')
 
       await act(async () => {
         fireEvent.press(screen.getByText('Autour de moi'))
@@ -582,7 +584,7 @@ describe('<LocationModal/>', () => {
         }
         renderLocationModal()
 
-        await superFlushWithAct()
+        await screen.findByText('Choisir un lieu')
 
         const searchButton = screen.getByText('Rechercher')
         await act(async () => {
@@ -738,7 +740,7 @@ describe('<LocationModal/>', () => {
         onClose: mockOnClose,
       })
 
-      await superFlushWithAct()
+      await screen.findByText('Choisir un lieu')
 
       const closeButton = screen.getByTestId('Fermer')
       fireEvent.press(closeButton)
@@ -749,7 +751,7 @@ describe('<LocationModal/>', () => {
     it('should only close the modal when pressing close button when the modal is opening from search results', async () => {
       renderLocationModal()
 
-      await superFlushWithAct()
+      await screen.findByText('Choisir un lieu')
 
       const closeButton = screen.getByTestId('Fermer')
       fireEvent.press(closeButton)

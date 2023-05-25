@@ -2,7 +2,7 @@ import { Hit } from '@algolia/client-search'
 
 import { Response } from 'features/search/api/useSearchResults/useSearchResults'
 import { captureAlgoliaError } from 'libs/algolia/fetchAlgolia/AlgoliaError'
-import { buildOfferSearchParameters } from 'libs/algolia/fetchAlgolia/buildAlgoliaParameters/buildOfferSearchParameters.ts'
+import { buildOfferSearchParameters } from 'libs/algolia/fetchAlgolia/buildAlgoliaParameters/buildOfferSearchParameters'
 import { offerAttributesToRetrieve } from 'libs/algolia/fetchAlgolia/buildAlgoliaParameters/offerAttributesToRetrieve'
 import { client } from 'libs/algolia/fetchAlgolia/clients'
 import { buildHitsPerPage } from 'libs/algolia/fetchAlgolia/utils'

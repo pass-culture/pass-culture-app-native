@@ -34,6 +34,7 @@ export const AuthenticationModal: FunctionComponent<Props> = ({
 
   const signUp = useCallback(() => {
     analytics.logSignUpFromAuthenticationModal(offerId)
+    analytics.logSignUpClicked({ from: 'offer_booking' })
     hideModal()
   }, [hideModal, offerId])
 

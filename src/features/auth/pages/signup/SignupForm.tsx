@@ -11,7 +11,10 @@ import { PreValidationSignupStepProps, SignupData } from 'features/auth/types'
 import { RootStackParamList } from 'features/navigation/RootNavigator/types'
 import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
 import { useGoBack } from 'features/navigation/useGoBack'
+import { useDeviceInfo } from 'features/profile/helpers/TrustedDevices/useDeviceInfo'
 import { analytics } from 'libs/analytics'
+import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
+import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { AsyncError, eventMonitoring } from 'libs/monitoring'
 import { BottomCardContentContainer } from 'ui/components/BottomCardContentContainer'
 import { BottomContentPage } from 'ui/components/BottomContentPage'
@@ -40,33 +43,24 @@ const SIGNUP_STEP_CONFIG: SignupStepConfig[] = [
     name: PreValidationSignupStep.Email,
     headerTitle: 'Crée-toi un compte',
     Component: SetEmail,
-    tracker: async () => {
-      await analytics.logContinueSetEmail()
-    },
+    tracker: analytics.logContinueSetEmail,
   },
   {
     name: PreValidationSignupStep.Password,
     headerTitle: 'Mot de passe',
     Component: SetPassword,
-    tracker: async () => {
-      await analytics.logContinueSetPassword()
-    },
+    tracker: analytics.logContinueSetPassword,
   },
   {
     name: PreValidationSignupStep.Birthday,
     headerTitle: 'Date de naissance',
     Component: SetBirthday,
-    tracker: async () => {
-      await analytics.logContinueSetBirthday()
-    },
+    tracker: analytics.logContinueSetBirthday,
   },
   {
     name: PreValidationSignupStep.CGU,
     headerTitle: 'CGU & Données',
     Component: AcceptCgu,
-    tracker: async () => {
-      await analytics.logContinueCGU()
-    },
   },
 ]
 const SIGNUP_STEP_CONFIG_MAX_INDEX = SIGNUP_STEP_CONFIG.length - 1
@@ -75,6 +69,8 @@ type Props = StackScreenProps<RootStackParamList, 'SignupForm'>
 
 export const SignupForm: FunctionComponent<Props> = ({ navigation, route }) => {
   const signUpApiCall = useSignUp()
+  const trustedDevice = useDeviceInfo()
+  const enableTrustedDevice = useFeatureFlag(RemoteStoreFeatureFlags.WIP_ENABLE_TRUSTED_DEVICE)
 
   const [stepIndex, setStepIndex] = React.useState(0)
   const [signupData, setSignupData] = useState<SignupData>({
@@ -112,13 +108,15 @@ export const SignupForm: FunctionComponent<Props> = ({ navigation, route }) => {
 
   async function signUp(token: string) {
     try {
-      const signupResponse = await signUpApiCall({ ...signupData, token })
+      const signupResponse = await signUpApiCall({
+        ...signupData,
+        token,
+        trustedDevice: enableTrustedDevice ? trustedDevice : undefined,
+      })
       if (!signupResponse?.isSuccess) {
         throw new AsyncError('NETWORK_REQUEST_FAILED')
       }
       navigation.navigate('SignupConfirmationEmailSent', { email: signupData.email })
-
-      analytics.logAcceptedTerms()
     } catch (error) {
       ;(error as Error).name = 'SignUpError'
       eventMonitoring.captureException(error)
@@ -147,6 +145,7 @@ export const SignupForm: FunctionComponent<Props> = ({ navigation, route }) => {
   } = useModal(false)
 
   function showQuitSignupModal() {
+    analytics.logQuitSignup(stepConfig.Component.name)
     Keyboard.dismiss()
     showFullPageModal()
   }

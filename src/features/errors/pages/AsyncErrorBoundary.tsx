@@ -3,6 +3,7 @@ import { FallbackProps } from 'react-error-boundary'
 import { useQueryErrorResetBoundary } from 'react-query'
 import styled from 'styled-components/native'
 
+import { ApiError, isOnlyCapturedByAPIException } from 'api/apiHelpers'
 import { homeNavConfig } from 'features/navigation/TabBar/helpers'
 import { useGoBack } from 'features/navigation/useGoBack'
 import { AsyncError, MonitoringError, eventMonitoring } from 'libs/monitoring'
@@ -31,12 +32,18 @@ export const AsyncErrorBoundaryWithoutNavigation = ({
   const { reset } = useQueryErrorResetBoundary()
 
   useEffect(() => {
-    if (
-      // we already captures MonitoringError exceptions (in AsyncError constructor)
-      !(error instanceof MonitoringError) ||
-      // we don't need to capture those errors
-      !(error instanceof ScreenError)
-    ) {
+    const shouldNotCapturedApiError = Boolean(
+      error instanceof ApiError && isOnlyCapturedByAPIException(error.statusCode)
+    )
+    // we already captures MonitoringError exceptions (in AsyncError constructor)
+    // we don't need to capture those errors
+    // we don't capture API errors 5xx
+    const shouldCaptureError =
+      !(error instanceof MonitoringError) &&
+      !(error instanceof ScreenError) &&
+      !shouldNotCapturedApiError
+
+    if (shouldCaptureError) {
       eventMonitoring.captureException(error)
     }
   }, [error])

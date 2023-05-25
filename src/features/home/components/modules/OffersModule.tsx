@@ -1,10 +1,9 @@
 import React, { useCallback, useEffect } from 'react'
 
 import { useAuthContext } from 'features/auth/context/AuthContext'
-import { useOfferModule } from 'features/home/api/useOfferModule'
 import { HomeOfferTile } from 'features/home/components/HomeOfferTile'
 import { useHomePosition } from 'features/home/helpers/useHomePosition'
-import { OffersModule as OffersModuleType } from 'features/home/types'
+import { ModuleData, OffersModule as OffersModuleType } from 'features/home/types'
 import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
 import { SearchView } from 'features/search/types'
 import { useAdaptOffersPlaylistParameters } from 'libs/algolia/fetchAlgolia/fetchMultipleOffers/helpers/useAdaptOffersPlaylistParameters'
@@ -26,21 +25,20 @@ type OffersModuleProps = {
   cover: string | null
   index: number
   homeEntryId: string | undefined
+  data: ModuleData | undefined
 }
 
 const keyExtractor = (item: Offer) => item.objectID
 
 export const OffersModule = (props: OffersModuleProps) => {
-  const { cover, display, search, index, moduleId, homeEntryId } = props
-  const data = useOfferModule({ search, moduleId })
+  const { cover, display, search, index, moduleId, homeEntryId, data } = props
   const { position } = useHomePosition()
-
   const adaptedPlaylistParameters = useAdaptOffersPlaylistParameters()
   const mapping = useCategoryIdMapping()
   const labelMapping = useCategoryHomeLabelMapping()
   const { user } = useAuthContext()
 
-  const { hits = [], nbHits = 0 } = data || {}
+  const { hits, nbHits } = data ?? { hits: [], nbHits: 0 }
 
   const [parameters] = search
   // When we navigate to the search page, we want to show 20 results per page,
@@ -52,14 +50,14 @@ export const OffersModule = (props: OffersModuleProps) => {
     view: SearchView.Results,
   }
   const searchTabConfig = getTabNavConfig('Search', searchParams)
-  const moduleName = display.title || parameters.title
+  const moduleName = display.title ?? parameters.title
   const logHasSeenAllTilesOnce = useFunctionOnce(() =>
     analytics.logAllTilesSeen(moduleName, hits.length)
   )
 
   const showSeeMore =
     hits.length < nbHits &&
-    !(parameters.tags || parameters.beginningDatetime || parameters.endingDatetime)
+    !(parameters.tags ?? parameters.beginningDatetime ?? parameters.endingDatetime)
 
   // eslint-disable-next-line react-hooks/exhaustive-deps
   const onPressSeeMore = showSeeMore

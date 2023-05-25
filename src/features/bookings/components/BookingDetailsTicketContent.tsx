@@ -43,7 +43,7 @@ export const BookingDetailsTicketContent: FunctionComponent<BookingDetailsTicket
     extraData?.isbn && categoryId === CategoryIdEnum.LIVRE ? <Ean isbn={extraData.isbn} /> : null
 
   const activationCode = !!booking.activationCode && (
-    <TicketCode withdrawalType={withdrawalType || undefined} code={booking.activationCode.code} />
+    <TicketCode withdrawalType={withdrawalType ?? undefined} code={booking.activationCode.code} />
   )
   const accessExternalOfferButton = completedUrl ? (
     <ExternalTouchableLink
@@ -55,7 +55,7 @@ export const BookingDetailsTicketContent: FunctionComponent<BookingDetailsTicket
   ) : null
 
   const ticketToken = !!booking.token && (
-    <TicketCode withdrawalType={withdrawalType || undefined} code={booking.token} />
+    <TicketCode withdrawalType={withdrawalType ?? undefined} code={booking.token} />
   )
 
   const ticketContent = properties.isDigital ? (
