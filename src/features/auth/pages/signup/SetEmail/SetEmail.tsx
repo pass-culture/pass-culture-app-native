@@ -64,7 +64,7 @@ export const SetEmail: FunctionComponent<PreValidationSignupStepProps> = (props)
   }, [])
 
   const goToNextStep = useCallback(
-    ({ email, marketingEmailSubscription }) => {
+    ({ email, marketingEmailSubscription }: FormValues) => {
       props.goToNextStep({ email, marketingEmailSubscription })
     },
     [props]

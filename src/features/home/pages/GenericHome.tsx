@@ -146,7 +146,8 @@ export const OnlineHome: FunctionComponent<GenericHomeProps> = ({
   }, [modules.length, isLoading, maxIndex])
 
   const renderItem = useCallback(
-    ({ item, index }) => renderModule({ item, index }, homeId),
+    ({ item, index }: { item: HomepageModule; index: number }) =>
+      renderModule({ item, index }, homeId),
     [homeId]
   )
 

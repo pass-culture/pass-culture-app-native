@@ -21,7 +21,7 @@ export const DeeplinksGenerator = () => {
   const { showErrorSnackBar } = useSnackBarContext()
 
   const onGenerate = useCallback(
-    (generatedDeeplink) => {
+    (generatedDeeplink: GeneratedDeeplink) => {
       async function add() {
         setLinks((previousGeneratedLinks) => [generatedDeeplink, ...previousGeneratedLinks])
         setResult(generatedDeeplink)

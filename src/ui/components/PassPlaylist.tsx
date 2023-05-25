@@ -43,12 +43,19 @@ export const PassPlaylist = (props: Props) => {
     numberOfLines: 2,
   })({})
 
+  type SizeProps = {
+    width: number
+    height: number
+  }
+
   const renderHeader: RenderHeaderItem = useCallback(
-    ({ width, height }) => <Cover width={width} height={height} uri={props.coverUrl as string} />,
+    ({ width, height }: SizeProps) => (
+      <Cover width={width} height={height} uri={props.coverUrl as string} />
+    ),
     [props.coverUrl]
   )
   const renderFooter: RenderFooterItem = useCallback(
-    ({ width, height }) => (
+    ({ width, height }: SizeProps) => (
       <SeeMore width={width} height={height} onPress={props.onPressSeeMore as () => void} />
     ),
     [props.onPressSeeMore]

@@ -32,7 +32,10 @@ export const HiddenNavigateToSuggestionsButton = () => {
   )
 }
 
-const HiddenAccessibleButton = styledButton(displayOnFocus(ButtonTertiaryPrimary))({
+const HiddenAccessibleButton = styledButton(displayOnFocus(ButtonTertiaryPrimary))<{
+  onPress: () => void
+  wording: string
+}>({
   margin: getSpacing(1),
   paddingLeft: getSpacing(4),
   paddingRight: getSpacing(4),
