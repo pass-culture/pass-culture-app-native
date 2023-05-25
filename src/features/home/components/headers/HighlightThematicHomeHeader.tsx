@@ -3,11 +3,11 @@ import React, { FunctionComponent, useCallback } from 'react'
 import { StatusBar } from 'react-native'
 import styled from 'styled-components/native'
 
+import { BlackGradient } from 'features/home/components/BlackGradient'
 import { HEADER_BLACK_BACKGROUND_HEIGHT } from 'features/home/components/constants'
 import { BackButtonContainer } from 'features/home/components/headers/BackButtonContainer'
 import { BlackBackground } from 'features/home/components/headers/BlackBackground'
 import { computeDateRangeDisplay } from 'features/home/components/helpers/computeDateRangeDisplay'
-import { ThematicHighlightGradient } from 'features/home/components/ThematicHighlightGradient'
 import { HighlightThematicHeader } from 'features/home/types'
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { homeNavConfig } from 'features/navigation/TabBar/helpers'
@@ -15,7 +15,7 @@ import { BackButton } from 'ui/components/headers/BackButton'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 import { useCustomSafeInsets } from 'ui/theme/useCustomSafeInsets'
 
-type HighligthThematicHeaderProps = Omit<HighlightThematicHeader, 'type'>
+type HighlightThematicHeaderProps = Omit<HighlightThematicHeader, 'type'>
 
 type IntroductionProps = {
   title: string
@@ -25,7 +25,7 @@ type IntroductionProps = {
 const DESKTOP_HEADER_HEIGHT = getSpacing(100)
 const MOBILE_HEADER_HEIGHT = getSpacing(70)
 
-export const HighlightThematicHomeHeader: FunctionComponent<HighligthThematicHeaderProps> = ({
+export const HighlightThematicHomeHeader: FunctionComponent<HighlightThematicHeaderProps> = ({
   title,
   subtitle,
   imageUrl,
@@ -54,7 +54,7 @@ export const HighlightThematicHomeHeader: FunctionComponent<HighligthThematicHea
           <DateRangeCaption>{dateRange}</DateRangeCaption>
         </DateRangeCaptionContainer>
         <TextContainer>
-          <ThematicHighlightGradient height={HEADER_BLACK_BACKGROUND_HEIGHT} />
+          <BlackGradient height={HEADER_BLACK_BACKGROUND_HEIGHT} />
           <BlackBackground>
             {!!subtitle && (
               <React.Fragment>

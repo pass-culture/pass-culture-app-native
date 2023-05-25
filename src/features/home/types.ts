@@ -11,6 +11,7 @@ export enum HomepageModuleType {
   'ExclusivityModule' = 'ExclusivityModule',
   'ThematicHighlightModule' = 'ThematicHighlightModule',
   'CategoryListModule' = 'CategoryListModule',
+  'VideoModule' = 'VideoModule',
 }
 
 export type HomepageTag = 'master' | 'usergrandpublic' | 'userunderage'
@@ -65,6 +66,7 @@ export type HomepageModule =
   | ThematicHighlightModule
   | VenuesModule
   | CategoryListModule
+  | VideoModule
 
 export type OffersModule = {
   type: HomepageModuleType.OffersModule
@@ -227,6 +229,29 @@ export type CategoryBlock = {
   image?: string
 }
 
+export enum Color {
+  Gold = 'Gold',
+  Aquamarine = 'Aquamarine',
+  SkyBlue = 'SkyBlue',
+  DeepPink = 'DeepPink',
+  Coral = 'Coral',
+  Lilac = 'Lilac',
+}
+
+export type VideoModule = {
+  type: HomepageModuleType.VideoModule
+  id: string
+  title: string
+  videoTitle: string
+  videoThumbnail: string
+  durationInMinutes: number
+  youtubeVideoId: string
+  offersModuleParameters: OffersModuleParameters
+  color: Color
+  videoTag: string
+  offerTitle: string
+}
+
 export const isVenuesModule = (module: HomepageModule): module is VenuesModule => {
   return module.type === HomepageModuleType.VenuesModule
 }
@@ -257,4 +282,8 @@ export const isThematicHighlightModule = (
 
 export const isCategoryListModule = (module: HomepageModule): module is CategoryListModule => {
   return module.type === HomepageModuleType.CategoryListModule
+}
+
+export const isVideoModule = (module: HomepageModule): module is VideoModule => {
+  return module.type === HomepageModuleType.VideoModule
 }

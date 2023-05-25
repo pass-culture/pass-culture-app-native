@@ -1,50 +1,15 @@
-import { HomepageModuleType, OffersModule } from 'features/home/types'
+import { HomepageModuleType, OffersModule, OffersModuleParameters } from 'features/home/types'
 import { buildImageUrl } from 'libs/contentful/adapters/helpers/buildImageUrl'
-import {
-  mapOffersSubcategories,
-  mapOffersMovieGenres,
-  mapOffersCategories,
-  mapOffersShowTypes,
-  mapMusicTypes,
-  mapBookTypes,
-} from 'libs/contentful/adapters/modules/helpers/offersModuleMappers'
-import {
-  ProvidedAlgoliaParameters,
-  AlgoliaContentModel,
-  AlgoliaParameters,
-} from 'libs/contentful/types'
-
-const parametersHaveFields = (
-  parameters: AlgoliaParameters
-): parameters is ProvidedAlgoliaParameters => !!parameters?.fields
+import { adaptOffersModuleParameters } from 'libs/contentful/adapters/modules/helpers/adaptOffersModuleParameters'
+import { AlgoliaContentModel, AlgoliaParameters } from 'libs/contentful/types'
 
 const buildOffersParams = (
   firstParams: AlgoliaParameters,
   additionalParams: AlgoliaParameters[]
 ): OffersModule['offersModuleParameters'] =>
   [firstParams, ...additionalParams]
-    .filter(parametersHaveFields)
-    .map(
-      ({
-        fields: {
-          algoliaSubcategories,
-          algoliaCategories,
-          movieGenres,
-          musicTypes,
-          showTypes,
-          bookTypes,
-          ...otherFields
-        },
-      }) => ({
-        ...otherFields,
-        subcategories: mapOffersSubcategories(algoliaSubcategories),
-        movieGenres: mapOffersMovieGenres(movieGenres),
-        categories: mapOffersCategories(algoliaCategories),
-        showTypes: mapOffersShowTypes(showTypes),
-        musicTypes: mapMusicTypes(musicTypes),
-        bookTypes: mapBookTypes(bookTypes),
-      })
-    )
+    .map(adaptOffersModuleParameters)
+    .filter((m): m is OffersModuleParameters => m !== null)
 
 export const adaptOffersModule = (module: AlgoliaContentModel): OffersModule | null => {
   // if a mandatory module is unpublished/deleted, we can't handle the module, so we return null
