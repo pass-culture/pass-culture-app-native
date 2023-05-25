@@ -192,7 +192,9 @@ export const OfferBody: FunctionComponent<Props> = ({
 
   const onEndReached = useCallback(() => {
     if (data && hasNextPage) {
-      fetchNextPage()
+      void (async () => {
+        await fetchNextPage()
+      })()
     }
   }, [data, fetchNextPage, hasNextPage])
 
