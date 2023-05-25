@@ -7,12 +7,12 @@ import { TEXT_BACKGROUND_OPACITY } from 'features/home/components/constants'
 import { Play } from 'ui/svg/icons/Play'
 import { Spacer, Typo, getSpacing } from 'ui/theme'
 
-const THUMBNAIL_HEIGHT = 180
+const THUMBNAIL_HEIGHT = getSpacing(45)
 // We do not center the player icon, because when the title is 2-line long,
 // the title is to close to the player. So the player is closer to the top.
-const PLAYER_TOP_MARGIN = 50
+const PLAYER_TOP_MARGIN = getSpacing(12.5)
 
-const PLAYER_SIZE = 58
+const PLAYER_SIZE = getSpacing(14.5)
 
 type Props = {
   title: string
