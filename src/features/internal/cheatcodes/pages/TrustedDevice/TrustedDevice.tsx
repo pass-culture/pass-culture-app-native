@@ -16,8 +16,8 @@ export const TrustedDevice = () => {
         <Typo.Title3>Informations du device actuel</Typo.Title3>
         <Spacer.Column numberOfSpaces={2} />
         <Data title="Device ID" data={deviceInfo?.deviceId} />
-        <Data title="Device Model ou Browser" data={deviceInfo?.deviceId} />
-        <Data title="Device OS" data={deviceInfo?.deviceId} />
+        <Data title="Device Model ou Browser" data={deviceInfo?.source} />
+        <Data title="Device OS" data={deviceInfo?.os} />
       </Container>
     </React.Fragment>
   )
@@ -29,7 +29,7 @@ const Container = styled.View(({ theme }) => ({
 
 type DataProps = {
   title: string
-  data?: string
+  data?: string | null
 }
 
 const Data = ({ title, data }: DataProps) => (
