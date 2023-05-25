@@ -31,24 +31,19 @@ export function VenueSelectionList({
 }: VenueSelectionListProps) {
   const { modal } = useTheme()
 
-  const handleOnSelect = useCallback(
-    (itemOfferId: number) => onItemSelect(itemOfferId),
-    [onItemSelect]
-  )
-
   const renderItem = useCallback(
     ({ item }: { item: VenueListItem }) => {
       return (
         <ItemWrapper>
           <VenueSelectionListItem
             {...item}
-            onSelect={() => handleOnSelect(item.offerId)}
+            onSelect={() => onItemSelect(item.offerId)}
             isSelected={selectedItem === item.offerId}
           />
         </ItemWrapper>
       )
     },
-    [handleOnSelect, selectedItem]
+    [onItemSelect, selectedItem]
   )
 
   return (

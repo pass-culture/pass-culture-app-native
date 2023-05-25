@@ -17,7 +17,7 @@ import { QueryKeys } from 'libs/queryKeys'
 import { getNextPageParam } from 'shared/getNextPageParam/getNextPageParam'
 import { Offer } from 'shared/offer/types'
 
-export type UseSearchVenueOffersType = {
+export type UseSearchVenueOffersOptions = {
   offerId: number
   query: string
   geolocation: Position
@@ -95,7 +95,7 @@ export const useSearchVenueOffers = ({
   query,
   geolocation,
   queryOptions,
-}: UseSearchVenueOffersType) => {
+}: UseSearchVenueOffersOptions) => {
   const isUserUnderage = useIsUserUnderage()
   const transformHits = useTransformOfferHits()
   const { setCurrentQueryID } = useSearchAnalyticsState()
