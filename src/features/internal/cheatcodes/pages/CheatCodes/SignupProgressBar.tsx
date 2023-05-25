@@ -12,17 +12,16 @@ export const SignupProgressBar = () => {
   const goToNextStep = () => updateStep(1)
   const goToPreviousStep = () => updateStep(-1)
 
+  const isFirstStep = currentStep === 1
+  const isLastStep = currentStep === 5
+
   return (
     <React.Fragment>
       <PageHeaderSecondary title="SignupProgressBar" />
       <ProgressBar currentStep={currentStep} totalStep={5} />
       <ButtonContainer>
-        <StyledButton
-          wording="Previous Step"
-          onPress={goToPreviousStep}
-          disabled={currentStep === 1}
-        />
-        <StyledButton wording="Next Step" onPress={goToNextStep} disabled={currentStep === 5} />
+        <StyledButton wording="Previous Step" onPress={goToPreviousStep} disabled={isFirstStep} />
+        <StyledButton wording="Next Step" onPress={goToNextStep} disabled={isLastStep} />
       </ButtonContainer>
     </React.Fragment>
   )
