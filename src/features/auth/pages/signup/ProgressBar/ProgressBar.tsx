@@ -21,19 +21,17 @@ export const ProgressBar = ({ currentStep, totalStep }: Props) => {
   )
 
   return (
-    <React.Fragment>
-      <BarBackground>
-        <BarColorContainer
-          transition="width"
-          width={progressionRatio}
-          isFull={currentStep === totalStep}
-          duration={800}
-          accessibilityLabel={`Étape ${currentStep} sur ${totalStep}`}
-          ref={barRef}>
-          <BarColor />
-        </BarColorContainer>
-      </BarBackground>
-    </React.Fragment>
+    <BarBackground>
+      <BarColorContainer
+        transition="width"
+        width={progressionRatio}
+        isFull={currentStep === totalStep}
+        duration={800}
+        accessibilityLabel={`Étape ${currentStep} sur ${totalStep}`}
+        ref={barRef}>
+        <BarColor />
+      </BarColorContainer>
+    </BarBackground>
   )
 }
 
