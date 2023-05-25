@@ -153,6 +153,14 @@ exports[`OffersModule component should render correctly 1`] = `
                 "subcategoryId": "LIVRE_PAPIER",
                 "thumbUrl": "fakeUrlPrefix/thumbs/mediations/CDNQ",
               },
+              "venue": Object {
+                "address": "1 rue de la paix",
+                "city": "Paris",
+                "id": 1,
+                "name": "Lieu 1",
+                "postalCode": "75000",
+                "publicName": "Lieu 1",
+              },
             },
             Object {
               "_geoloc": Object {
@@ -170,6 +178,14 @@ exports[`OffersModule component should render correctly 1`] = `
                 ],
                 "subcategoryId": "CONCERT",
                 "thumbUrl": "fakeUrlPrefix/thumbs/mediations/CDKQ",
+              },
+              "venue": Object {
+                "address": "2 rue de la paix",
+                "city": "Paris",
+                "id": 2,
+                "name": "Lieu 2",
+                "postalCode": "75000",
+                "publicName": "Lieu 2",
               },
             },
             Object {
@@ -191,6 +207,14 @@ exports[`OffersModule component should render correctly 1`] = `
                 "subcategoryId": "CONCERT",
                 "thumbUrl": "fakeUrlPrefix/thumbs/mediations/CDBA",
               },
+              "venue": Object {
+                "address": "3 rue de la paix",
+                "city": "Paris",
+                "id": 3,
+                "name": "Lieu 3",
+                "postalCode": "75000",
+                "publicName": "Lieu 3",
+              },
             },
             Object {
               "_geoloc": Object {
@@ -208,6 +232,14 @@ exports[`OffersModule component should render correctly 1`] = `
                 ],
                 "subcategoryId": "CONCERT",
                 "thumbUrl": "fakeUrlPrefix/thumbs/mediations/CDZQ",
+              },
+              "venue": Object {
+                "address": "4 rue de la paix",
+                "city": "Paris",
+                "id": 4,
+                "name": "Lieu 4",
+                "postalCode": "75000",
+                "publicName": "Lieu 4",
               },
             },
           ]
@@ -232,6 +264,14 @@ exports[`OffersModule component should render correctly 1`] = `
                   "subcategoryId": "LIVRE_PAPIER",
                   "thumbUrl": "fakeUrlPrefix/thumbs/mediations/CDNQ",
                 },
+                "venue": Object {
+                  "address": "1 rue de la paix",
+                  "city": "Paris",
+                  "id": 1,
+                  "name": "Lieu 1",
+                  "postalCode": "75000",
+                  "publicName": "Lieu 1",
+                },
               },
               Object {
                 "_geoloc": Object {
@@ -249,6 +289,14 @@ exports[`OffersModule component should render correctly 1`] = `
                   ],
                   "subcategoryId": "CONCERT",
                   "thumbUrl": "fakeUrlPrefix/thumbs/mediations/CDKQ",
+                },
+                "venue": Object {
+                  "address": "2 rue de la paix",
+                  "city": "Paris",
+                  "id": 2,
+                  "name": "Lieu 2",
+                  "postalCode": "75000",
+                  "publicName": "Lieu 2",
                 },
               },
               Object {
@@ -270,6 +318,14 @@ exports[`OffersModule component should render correctly 1`] = `
                   "subcategoryId": "CONCERT",
                   "thumbUrl": "fakeUrlPrefix/thumbs/mediations/CDBA",
                 },
+                "venue": Object {
+                  "address": "3 rue de la paix",
+                  "city": "Paris",
+                  "id": 3,
+                  "name": "Lieu 3",
+                  "postalCode": "75000",
+                  "publicName": "Lieu 3",
+                },
               },
               Object {
                 "_geoloc": Object {
@@ -287,6 +343,14 @@ exports[`OffersModule component should render correctly 1`] = `
                   ],
                   "subcategoryId": "CONCERT",
                   "thumbUrl": "fakeUrlPrefix/thumbs/mediations/CDZQ",
+                },
+                "venue": Object {
+                  "address": "4 rue de la paix",
+                  "city": "Paris",
+                  "id": 4,
+                  "name": "Lieu 4",
+                  "postalCode": "75000",
+                  "publicName": "Lieu 4",
                 },
               },
             ],
@@ -457,6 +521,14 @@ exports[`OffersModule component should render correctly 1`] = `
                     "subcategoryId": "LIVRE_PAPIER",
                     "thumbUrl": "fakeUrlPrefix/thumbs/mediations/CDNQ",
                   },
+                  "venue": Object {
+                    "address": "1 rue de la paix",
+                    "city": "Paris",
+                    "id": 1,
+                    "name": "Lieu 1",
+                    "postalCode": "75000",
+                    "publicName": "Lieu 1",
+                  },
                 },
                 Object {
                   "_geoloc": Object {
@@ -474,6 +546,14 @@ exports[`OffersModule component should render correctly 1`] = `
                     ],
                     "subcategoryId": "CONCERT",
                     "thumbUrl": "fakeUrlPrefix/thumbs/mediations/CDKQ",
+                  },
+                  "venue": Object {
+                    "address": "2 rue de la paix",
+                    "city": "Paris",
+                    "id": 2,
+                    "name": "Lieu 2",
+                    "postalCode": "75000",
+                    "publicName": "Lieu 2",
                   },
                 },
                 Object {
@@ -495,6 +575,14 @@ exports[`OffersModule component should render correctly 1`] = `
                     "subcategoryId": "CONCERT",
                     "thumbUrl": "fakeUrlPrefix/thumbs/mediations/CDBA",
                   },
+                  "venue": Object {
+                    "address": "3 rue de la paix",
+                    "city": "Paris",
+                    "id": 3,
+                    "name": "Lieu 3",
+                    "postalCode": "75000",
+                    "publicName": "Lieu 3",
+                  },
                 },
                 Object {
                   "_geoloc": Object {
@@ -512,6 +600,14 @@ exports[`OffersModule component should render correctly 1`] = `
                     ],
                     "subcategoryId": "CONCERT",
                     "thumbUrl": "fakeUrlPrefix/thumbs/mediations/CDZQ",
+                  },
+                  "venue": Object {
+                    "address": "4 rue de la paix",
+                    "city": "Paris",
+                    "id": 4,
+                    "name": "Lieu 4",
+                    "postalCode": "75000",
+                    "publicName": "Lieu 4",
                   },
                 },
               ],
@@ -878,6 +974,14 @@ exports[`OffersModule component should render correctly 1`] = `
                         "subcategoryId": "CONCERT",
                         "thumbUrl": "fakeUrlPrefix/thumbs/mediations/CDBA",
                       },
+                      "venue": Object {
+                        "address": "3 rue de la paix",
+                        "city": "Paris",
+                        "id": 3,
+                        "name": "Lieu 3",
+                        "postalCode": "75000",
+                        "publicName": "Lieu 3",
+                      },
                     }
                   }
                   style={
@@ -904,6 +1008,14 @@ exports[`OffersModule component should render correctly 1`] = `
                         ],
                         "subcategoryId": "CONCERT",
                         "thumbUrl": "fakeUrlPrefix/thumbs/mediations/CDZQ",
+                      },
+                      "venue": Object {
+                        "address": "4 rue de la paix",
+                        "city": "Paris",
+                        "id": 4,
+                        "name": "Lieu 4",
+                        "postalCode": "75000",
+                        "publicName": "Lieu 4",
                       },
                     }
                   }
@@ -1124,6 +1236,14 @@ exports[`OffersModule component should render correctly 1`] = `
                         "subcategoryId": "CONCERT",
                         "thumbUrl": "fakeUrlPrefix/thumbs/mediations/CDKQ",
                       },
+                      "venue": Object {
+                        "address": "2 rue de la paix",
+                        "city": "Paris",
+                        "id": 2,
+                        "name": "Lieu 2",
+                        "postalCode": "75000",
+                        "publicName": "Lieu 2",
+                      },
                     }
                   }
                   style={
@@ -1152,6 +1272,14 @@ exports[`OffersModule component should render correctly 1`] = `
                         ],
                         "subcategoryId": "CONCERT",
                         "thumbUrl": "fakeUrlPrefix/thumbs/mediations/CDBA",
+                      },
+                      "venue": Object {
+                        "address": "3 rue de la paix",
+                        "city": "Paris",
+                        "id": 3,
+                        "name": "Lieu 3",
+                        "postalCode": "75000",
+                        "publicName": "Lieu 3",
                       },
                     }
                   }
@@ -1372,6 +1500,14 @@ exports[`OffersModule component should render correctly 1`] = `
                         "subcategoryId": "LIVRE_PAPIER",
                         "thumbUrl": "fakeUrlPrefix/thumbs/mediations/CDNQ",
                       },
+                      "venue": Object {
+                        "address": "1 rue de la paix",
+                        "city": "Paris",
+                        "id": 1,
+                        "name": "Lieu 1",
+                        "postalCode": "75000",
+                        "publicName": "Lieu 1",
+                      },
                     }
                   }
                   style={
@@ -1398,6 +1534,14 @@ exports[`OffersModule component should render correctly 1`] = `
                         ],
                         "subcategoryId": "CONCERT",
                         "thumbUrl": "fakeUrlPrefix/thumbs/mediations/CDKQ",
+                      },
+                      "venue": Object {
+                        "address": "2 rue de la paix",
+                        "city": "Paris",
+                        "id": 2,
+                        "name": "Lieu 2",
+                        "postalCode": "75000",
+                        "publicName": "Lieu 2",
                       },
                     }
                   }

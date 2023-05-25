@@ -1,3 +1,4 @@
+import { action } from '@storybook/addon-actions'
 import { ComponentStory } from '@storybook/react'
 import React, { useState } from 'react'
 
@@ -6,6 +7,10 @@ import { VenueSelectionList } from './VenueSelectionList'
 export default {
   title: 'features/offer/VenueSelectionList',
   component: VenueSelectionList,
+  args: {
+    refreshing: false,
+    onRefresh: action('refresh'),
+  },
 }
 
 const DynamicTemplate: ComponentStory<typeof VenueSelectionList> = (props) => {

@@ -1735,4 +1735,48 @@ describe('fetchOffer', () => {
       expect(mockInitIndex).toHaveBeenCalledWith('algoliaVenueOffersIndexName')
     })
   })
+
+  describe('isFromOffer param', () => {
+    it('should fetch with typoTolerance and distinct when isFromOffer param is true', () => {
+      const query = '9782070584628'
+
+      fetchOffers({
+        parameters: { ...baseParams, query } as SearchParametersQuery,
+        userLocation: null,
+        isUserUnderage: false,
+        isFromOffer: true,
+      })
+
+      expect(search).toHaveBeenCalledWith(query, {
+        page: 0,
+        attributesToHighlight: [],
+        attributesToRetrieve: offerAttributesToRetrieve,
+        facetFilters: [['offer.isEducational:false']],
+        numericFilters: [['offer.prices: 0 TO 300']],
+        clickAnalytics: true,
+        typoTolerance: false,
+        distinct: false,
+      })
+    })
+
+    it('should not fetch with typoTolerance and distinct when isFromOffer is false', () => {
+      const query = '9782070584628'
+
+      fetchOffers({
+        parameters: { ...baseParams, query } as SearchParametersQuery,
+        userLocation: null,
+        isUserUnderage: false,
+        isFromOffer: false,
+      })
+
+      expect(search).toHaveBeenCalledWith(query, {
+        page: 0,
+        attributesToHighlight: [],
+        attributesToRetrieve: offerAttributesToRetrieve,
+        facetFilters: [['offer.isEducational:false']],
+        numericFilters: [['offer.prices: 0 TO 300']],
+        clickAnalytics: true,
+      })
+    })
+  })
 })

@@ -18,6 +18,7 @@ type FetchOfferArgs = {
   storeQueryID?: (queryID?: string) => void
   excludedObjectIds?: string[]
   indexSearch?: string
+  isFromOffer?: boolean
 }
 
 export const fetchOffers = async ({
@@ -26,6 +27,7 @@ export const fetchOffers = async ({
   isUserUnderage,
   storeQueryID,
   indexSearch = env.ALGOLIA_OFFERS_INDEX_NAME,
+  isFromOffer,
 }: FetchOfferArgs): Promise<Response> => {
   const searchParameters = buildOfferSearchParameters(parameters, userLocation, isUserUnderage)
   const index = client.initIndex(indexSearch)
@@ -40,6 +42,8 @@ export const fetchOffers = async ({
       /* Is needed to get a queryID, in order to send analytics events
          https://www.algolia.com/doc/api-reference/api-parameters/clickAnalytics/ */
       clickAnalytics: true,
+      // To use exactly the query and not limit the duplicate offers
+      ...(isFromOffer ? { typoTolerance: false, distinct: false } : {}),
     })
 
     if (storeQueryID) storeQueryID(response.queryID)

@@ -5,28 +5,28 @@ import { theme } from 'theme'
 
 import { VenueListItem, VenueSelectionList } from './VenueSelectionList'
 
-describe('<VenueSelectionList />', () => {
-  const items: VenueListItem[] = [
-    {
-      title: 'Envie de lire',
-      address: '94200 Ivry-sur-Seine, 16 rue Gabriel Peri',
-      distance: '500 m',
-      offerId: 1,
-    },
-    {
-      title: 'Le Livre Éclaire',
-      address: '75013 Paris, 56 rue de Tolbiac',
-      distance: '1,5 km',
-      offerId: 2,
-    },
-    {
-      title: 'Hachette Livre',
-      address: '94200 Ivry-sur-Seine, Rue Charles du Colomb',
-      distance: '2,4 km',
-      offerId: 3,
-    },
-  ]
+const items: VenueListItem[] = [
+  {
+    title: 'Envie de lire',
+    address: '94200 Ivry-sur-Seine, 16 rue Gabriel Peri',
+    distance: '500 m',
+    offerId: 1,
+  },
+  {
+    title: 'Le Livre Éclaire',
+    address: '75013 Paris, 56 rue de Tolbiac',
+    distance: '1,5 km',
+    offerId: 2,
+  },
+  {
+    title: 'Hachette Livre',
+    address: '94200 Ivry-sur-Seine, Rue Charles du Colomb',
+    distance: '2,4 km',
+    offerId: 3,
+  },
+]
 
+describe('<VenueSelectionList />', () => {
   it('should show list of items', () => {
     render(<VenueSelectionList onItemSelect={jest.fn()} items={items} />)
 

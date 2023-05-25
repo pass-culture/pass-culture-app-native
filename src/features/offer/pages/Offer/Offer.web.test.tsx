@@ -1,6 +1,7 @@
 import React from 'react'
 
 import { OfferResponse } from 'api/gen'
+import { VenueListItem } from 'features/offer/components/VenueSelectionList/VenueSelectionList'
 import { offerResponseSnap } from 'features/offer/fixtures/offerResponse'
 import { Offer } from 'features/offer/pages/Offer/Offer'
 import { placeholderData } from 'libs/subcategories/placeholderData'
@@ -28,6 +29,30 @@ jest.mock('libs/subcategories/useSubcategories', () => ({
       subcategories: mockSubcategories,
       searchGroups: mockSearchGroups,
     },
+  }),
+}))
+
+const mockHasNextPage = true
+const mockFetchNextPage = jest.fn()
+const mockData = {
+  pages: [
+    {
+      nbHits: 0,
+      hits: [],
+      page: 0,
+    },
+  ],
+}
+const mockVenueList: VenueListItem[] = []
+const mockNbVenueItems = 0
+jest.mock('api/useSearchVenuesOffer/useSearchVenueOffers', () => ({
+  useSearchVenueOffers: () => ({
+    hasNextPage: mockHasNextPage,
+    fetchNextPage: mockFetchNextPage,
+    data: mockData,
+    venueList: mockVenueList,
+    nbVenueItems: mockNbVenueItems,
+    isFetching: false,
   }),
 }))
 

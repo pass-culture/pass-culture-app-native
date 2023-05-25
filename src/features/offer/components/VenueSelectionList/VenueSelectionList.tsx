@@ -1,31 +1,38 @@
 import React, { useCallback } from 'react'
-import { View, ViewProps } from 'react-native'
-import styled from 'styled-components/native'
+import { FlatList, FlatListProps, View, ViewProps } from 'react-native'
+import styled, { useTheme } from 'styled-components/native'
 
 import { VenueSelectionListItem } from 'features/offer/components/VenueSelectionListItem/VenueSelectionListItem'
 import { VenueDetail } from 'features/offer/types'
-import { Li } from 'ui/components/Li'
-import { VerticalUl } from 'ui/components/Ul'
 import { getSpacing } from 'ui/theme'
 
 export type VenueListItem = VenueDetail & {
   offerId: number
 }
 
-export type VenueSelectionListProps = ViewProps & {
-  selectedItem?: number
-  onItemSelect: (itemOfferId: number) => void
-  items: VenueListItem[]
-}
+export type VenueSelectionListProps = ViewProps &
+  Pick<FlatListProps<VenueListItem>, 'onRefresh' | 'refreshing' | 'onEndReached' | 'onScroll'> & {
+    selectedItem?: number
+    onItemSelect: (itemOfferId: number) => void
+    items: VenueListItem[]
+  }
+
+const keyExtractor = (item: VenueListItem) => String(item.offerId)
 
 export function VenueSelectionList({
   items,
   selectedItem,
   onItemSelect,
+  onEndReached,
+  refreshing,
+  onRefresh,
+  onScroll,
   ...props
 }: VenueSelectionListProps) {
+  const { modal } = useTheme()
+
   const renderItem = useCallback(
-    (item: VenueListItem) => {
+    ({ item }: { item: VenueListItem }) => {
       return (
         <ItemWrapper>
           <VenueSelectionListItem
@@ -40,15 +47,23 @@ export function VenueSelectionList({
   )
 
   return (
-    <View {...props}>
-      {items.length > 0 && (
-        <VerticalUl>
-          {items.map((item) => (
-            <Li key={item.offerId}>{renderItem(item)}</Li>
-          ))}
-        </VerticalUl>
-      )}
-    </View>
+    <FlatList
+      listAs="ul"
+      itemAs="li"
+      testID="offerVenuesList"
+      data={items}
+      keyExtractor={keyExtractor}
+      renderItem={renderItem}
+      refreshing={refreshing}
+      onRefresh={onRefresh}
+      onEndReached={onEndReached}
+      scrollEnabled={items.length > 0}
+      onScroll={onScroll}
+      keyboardShouldPersistTaps="handled"
+      keyboardDismissMode="on-drag"
+      contentContainerStyle={{ paddingHorizontal: modal.spacing.MD }}
+      {...props}
+    />
   )
 }
 

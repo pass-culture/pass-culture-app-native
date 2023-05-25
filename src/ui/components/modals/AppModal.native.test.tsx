@@ -159,13 +159,40 @@ describe('<AppModal />', () => {
     expect(screen).toMatchSnapshot()
   })
 
-  it('should display fullscreen modal scroll view if isFullscreen = true', () => {
-    const modalProps: AppModalProps = { ...defaultProps, isFullscreen: true }
+  it('should display fullscreen modal scroll view when isFullscreen = true and scrollEnabled = true', () => {
+    const modalProps: AppModalProps = { ...defaultProps, isFullscreen: true, scrollEnabled: true }
     render(<AppModal {...modalProps} />)
 
     const fullscreenModalScrollView = screen.getByTestId('fullscreenModalScrollView')
 
     expect(fullscreenModalScrollView).toBeTruthy()
+  })
+
+  it('should not display fullscreen modal scroll view when isFullscreen = true and scrollEnabled = false', () => {
+    const modalProps: AppModalProps = { ...defaultProps, isFullscreen: true, scrollEnabled: false }
+    render(<AppModal {...modalProps} />)
+
+    const fullscreenModalScrollView = screen.queryByTestId('fullscreenModalScrollView')
+
+    expect(fullscreenModalScrollView).toBeFalsy()
+  })
+
+  it('should display fullscreen modal view when isFullscreen = true and scrollEnabled = false', () => {
+    const modalProps: AppModalProps = { ...defaultProps, isFullscreen: true, scrollEnabled: false }
+    render(<AppModal {...modalProps} />)
+
+    const fullscreenModalView = screen.getByTestId('fullscreenModalView')
+
+    expect(fullscreenModalView).toBeTruthy()
+  })
+
+  it('should not display fullscreen modal view when isFullscreen = true and scrollEnabled = true', () => {
+    const modalProps: AppModalProps = { ...defaultProps, isFullscreen: true, scrollEnabled: true }
+    render(<AppModal {...modalProps} />)
+
+    const fullscreenModalView = screen.queryByTestId('fullscreenModalView')
+
+    expect(fullscreenModalView).toBeFalsy()
   })
 
   describe('backdrop callback', () => {

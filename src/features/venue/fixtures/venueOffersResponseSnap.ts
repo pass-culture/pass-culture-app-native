@@ -15,6 +15,7 @@ export const VenueOffersResponseSnap: Offer[] = [
       thumbUrl:
         'https://storage.googleapis.com/passculture-metier-ehp-testing-assets/thumbs/products/FARMG',
     },
+    venue: {},
   },
   {
     _geoloc: { lat: 47.8898, lng: -2.83593 },
@@ -29,6 +30,7 @@ export const VenueOffersResponseSnap: Offer[] = [
       thumbUrl:
         'https://storage.googleapis.com/passculture-metier-ehp-testing-assets/thumbs/products/FARMG',
     },
+    venue: {},
   },
   {
     _geoloc: { lat: 47.8898, lng: -2.83593 },
@@ -43,5 +45,6 @@ export const VenueOffersResponseSnap: Offer[] = [
       thumbUrl:
         'https://storage.googleapis.com/passculture-metier-ehp-testing-assets/thumbs/products/FARMA',
     },
+    venue: {},
   },
 ]

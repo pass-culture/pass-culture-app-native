@@ -1,8 +1,9 @@
 import React, { useCallback, useMemo, useState } from 'react'
-import { View } from 'react-native'
-import styled, { useTheme } from 'styled-components/native'
+import { FlatListProps, View } from 'react-native'
+import styled from 'styled-components/native'
 
 import {
+  VenueListItem,
   VenueSelectionList,
   VenueSelectionListProps,
 } from 'features/offer/components/VenueSelectionList/VenueSelectionList'
@@ -13,7 +14,10 @@ import { Close } from 'ui/svg/icons/Close'
 import { Spacer, getSpacing } from 'ui/theme'
 import { useCustomSafeInsets } from 'ui/theme/useCustomSafeInsets'
 
-type VenueSelectionModalProps = {
+type VenueSelectionModalProps = Pick<
+  FlatListProps<VenueListItem>,
+  'onRefresh' | 'refreshing' | 'onEndReached' | 'onScroll'
+> & {
   isVisible: boolean
   items: VenueSelectionListProps['items']
   title: string
@@ -29,8 +33,11 @@ export function VenueSelectionModal({
   title,
   onSubmit,
   onClosePress,
+  onEndReached,
+  refreshing,
+  onRefresh,
+  onScroll,
 }: VenueSelectionModalProps) {
-  const { modal, isDesktopViewport } = useTheme()
   const [selectedOffer, setSelectedOffer] = useState<number>()
   const { top } = useCustomSafeInsets()
 
@@ -63,11 +70,10 @@ export function VenueSelectionModal({
       visible={isVisible}
       isFullscreen
       noPadding
-      modalSpacing={modal.spacing.MD}
       rightIcon={Close}
       onRightIconPress={onClosePress}
       rightIconAccessibilityLabel="Ne pas sélectionner un autre lieu"
-      customModalHeader={isDesktopViewport ? undefined : customHeader}
+      customModalHeader={customHeader}
       fixedModalBottom={
         <BottomWrapper>
           <ButtonPrimary
@@ -76,11 +82,16 @@ export function VenueSelectionModal({
             disabled={!selectedOffer}
           />
         </BottomWrapper>
-      }>
+      }
+      scrollEnabled={false}>
       <VenueSelectionList
         onItemSelect={setSelectedOffer}
         items={items}
         selectedItem={selectedOffer}
+        onEndReached={onEndReached}
+        refreshing={refreshing}
+        onRefresh={onRefresh}
+        onScroll={onScroll}
       />
     </AppModal>
   )
@@ -89,6 +100,7 @@ export function VenueSelectionModal({
 const BottomWrapper = styled.View(({ theme }) => ({
   paddingTop: getSpacing(4),
   paddingHorizontal: theme.modal.spacing.MD,
+  alignItems: 'center',
 }))
 
 const HeaderContainer = styled.View({
