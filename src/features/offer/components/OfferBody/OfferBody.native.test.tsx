@@ -5,6 +5,7 @@ import Share, { Social } from 'react-native-share'
 import { UseQueryResult } from 'react-query'
 
 import { push } from '__mocks__/@react-navigation/native'
+import { navigate } from '__mocks__/@react-navigation/native'
 import { api } from 'api/api'
 import { SubcategoryIdEnum, UserReportedOffersResponse } from 'api/gen'
 import { mockDigitalOffer, mockOffer } from 'features/bookOffer/fixtures/offer'
@@ -25,6 +26,7 @@ import { placeholderData } from 'libs/subcategories/placeholderData'
 import { Offer } from 'shared/offer/types'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, fireEvent, render, screen, waitFor } from 'tests/utils'
+import * as useModalAPI from 'ui/components/modals/useModal'
 import { Network } from 'ui/components/ShareMessagingApp'
 
 jest.mock('api/api')
@@ -673,6 +675,34 @@ describe('<OfferBody />', () => {
         await screen.findByTestId('offer-container')
         expect(screen.queryByText('Lieu de projection')).toBeTruthy()
       })
+    })
+
+    it('should navigate to an other offer when user choose an other venue from "Voir d’autres lieux disponibles" button', async () => {
+      const mockShowModal = jest.fn()
+      jest.spyOn(useModalAPI, 'useModal').mockReturnValueOnce({
+        visible: true,
+        showModal: mockShowModal,
+        hideModal: jest.fn(),
+        toggleModal: jest.fn(),
+      })
+      mockUseOffer.mockReturnValueOnce({
+        data: {
+          ...mockOffer,
+          subcategoryId: SubcategoryIdEnum.LIVRE_PAPIER,
+          extraData: { isbn: '2765410054' },
+        },
+      })
+      mockNbVenueItems = 2
+      mockVenueList = offerVenues
+
+      renderOfferBody()
+
+      await screen.findByTestId('offer-container')
+
+      fireEvent.press(screen.getByText('Le Livre Éclaire'))
+      fireEvent.press(screen.getByText('Choisir ce lieu'))
+
+      expect(navigate).toHaveBeenCalledWith('Offer', { fromOfferId: offerId, id: 2 })
     })
   })
 })
