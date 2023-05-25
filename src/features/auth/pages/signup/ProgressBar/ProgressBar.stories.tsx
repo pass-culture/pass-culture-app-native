@@ -3,12 +3,13 @@ import React from 'react'
 
 import { ProgressBar } from './ProgressBar'
 
+const ANIMATION_DURATION_IN_S = 0.8
+
 export default {
   title: 'features/auth/ProgressBar',
   component: ProgressBar,
   parameters: {
-    // Wait for animation to finish before snapshot
-    chromatic: { delay: 1 },
+    chromatic: { delay: ANIMATION_DURATION_IN_S },
   },
 } as ComponentMeta<typeof ProgressBar>
 
