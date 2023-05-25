@@ -94,7 +94,7 @@ export function BookingDetails({ stocks, onPressBookOffer, isLoading }: BookingD
   const isRefreshing = useIsFalseWithDelay(isFetching, ANIMATION_DURATION)
 
   const shouldDisplayOtherVenuesAvailableButton = Boolean(
-    shouldFetchSearchVenueOffers && nbVenueItems > 1
+    shouldFetchSearchVenueOffers && nbVenueItems > 0
   )
 
   const venueName = offer?.venue.publicName ?? offer?.venue.name
