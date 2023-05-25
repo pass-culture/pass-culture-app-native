@@ -1,9 +1,10 @@
-import React, { useEffect, useMemo } from 'react'
+import React, { useCallback, useEffect, useMemo } from 'react'
 import { ActivityIndicator } from 'react-native'
 import styled, { useTheme } from 'styled-components/native'
 import { v4 as uuidv4 } from 'uuid'
 
 import { OfferStockResponse, SubcategoryIdEnum } from 'api/gen'
+import { useSearchVenueOffers } from 'api/useSearchVenuesOffer/useSearchVenueOffers'
 import { BookingInformations } from 'features/bookOffer/components/BookingInformations'
 import { CancellationDetails } from 'features/bookOffer/components/CancellationDetails'
 import { DuoChoiceSelector } from 'features/bookOffer/components/DuoChoiceSelector'
@@ -16,11 +17,15 @@ import { VenueSelectionModal } from 'features/offer/components/VenueSelectionMod
 import { getVenueSectionTitle } from 'features/offer/helpers/getVenueSectionTitle/getVenueSectionTitle'
 import { EditButton } from 'features/profile/components/Buttons/EditButton/EditButton'
 import { useIsUserUnderage } from 'features/profile/helpers/useIsUserUnderage'
+import { ANIMATION_DURATION } from 'features/venue/components/VenuePartialAccordionDescription/VenuePartialAccordionDescription'
 import { formatFullAddressStartsWithPostalCode } from 'libs/address/useFormatFullAddress'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
+import { useGeolocation } from 'libs/geolocation'
+import { useIsFalseWithDelay } from 'libs/hooks/useIsFalseWithDelay'
 import { formatToFrenchDecimal } from 'libs/parsers'
 import { useSubcategoriesMapping } from 'libs/subcategories'
+import { useOpacityTransition } from 'ui/animations/helpers/useOpacityTransition'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { InfoBanner } from 'ui/components/InfoBanner'
 import { useModal } from 'ui/components/modals/useModal'
@@ -48,11 +53,7 @@ const LOADING_MESSAGES: RotatingTextOptions[] = [
   },
 ]
 
-export const BookingDetails: React.FC<BookingDetailsProps> = ({
-  stocks,
-  onPressBookOffer,
-  isLoading,
-}) => {
+export function BookingDetails({ stocks, onPressBookOffer, isLoading }: BookingDetailsProps) {
   const theme = useTheme()
 
   const { bookingState, dispatch } = useBookingContext()
@@ -73,8 +74,27 @@ export const BookingDetails: React.FC<BookingDetailsProps> = ({
     offer?.subcategoryId === SubcategoryIdEnum.LIVRE_PAPIER ||
       offer?.subcategoryId === SubcategoryIdEnum.LIVRE_AUDIO_PHYSIQUE
   )
-  const shouldDisplayOtherVenuesAvailableButton = Boolean(
+  const shouldFetchSearchVenueOffers = Boolean(
     enableMultivenueOffer && isMultivenueCompatibleOffer && offer?.extraData?.isbn
+  )
+
+  const { onScroll: onScrollModal } = useOpacityTransition()
+  const { userPosition: position } = useGeolocation()
+  const { hasNextPage, fetchNextPage, refetch, data, venueList, isFetching, nbVenueItems } =
+    useSearchVenueOffers({
+      offerId: offer?.id ?? 0,
+      venueId: offer?.venue?.id,
+      geolocation: position ?? {
+        latitude: offer?.venue?.coordinates?.latitude ?? 0,
+        longitude: offer?.venue?.coordinates?.longitude ?? 0,
+      },
+      query: offer?.extraData?.isbn ?? '',
+      queryOptions: { enabled: shouldFetchSearchVenueOffers },
+    })
+  const isRefreshing = useIsFalseWithDelay(isFetching, ANIMATION_DURATION)
+
+  const shouldDisplayOtherVenuesAvailableButton = Boolean(
+    shouldFetchSearchVenueOffers && nbVenueItems > 1
   )
 
   const venueName = offer?.venue.publicName ?? offer?.venue.name
@@ -111,6 +131,19 @@ export const BookingDetails: React.FC<BookingDetailsProps> = ({
     }
     return ''
   }, [offer?.subcategoryId, isEvent])
+
+  const onEndReached = useCallback(() => {
+    if (data && hasNextPage) {
+      void fetchNextPage()
+    }
+  }, [data, fetchNextPage, hasNextPage])
+
+  const onSubmitVenueModal = useCallback(
+    (nextOfferId: number) => {
+      dispatch({ type: 'SET_OFFER_ID', payload: nextOfferId })
+    },
+    [dispatch]
+  )
 
   if (!selectedStock || typeof quantity !== 'number') return <React.Fragment />
 
@@ -199,10 +232,14 @@ export const BookingDetails: React.FC<BookingDetailsProps> = ({
       {!!shouldDisplayOtherVenuesAvailableButton && (
         <VenueSelectionModal
           isVisible={visible}
-          items={[]}
+          items={venueList}
           onClosePress={hideModal}
-          onSubmit={() => undefined}
+          onSubmit={onSubmitVenueModal}
           title={venueSectionTitle}
+          onEndReached={onEndReached}
+          refreshing={isRefreshing}
+          onRefresh={void refetch}
+          onScroll={onScrollModal}
         />
       )}
     </Container>
