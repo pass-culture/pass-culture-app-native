@@ -11,7 +11,7 @@ import * as useFeatureFlag from 'libs/firebase/firestore/featureFlags/useFeature
 import { useRemoteConfigContext } from 'libs/firebase/remoteConfig'
 import { CustomRemoteConfig } from 'libs/firebase/remoteConfig/remoteConfig.types'
 
-const mockIdentityCheckState = mockState
+let mockIdentityCheckState = mockState
 const mockRemainingAttempts = {
   remainingAttempts: 5,
   counterResetDatetime: 'time',
@@ -87,7 +87,30 @@ describe('useStepperInfo', () => {
     expect(stepsDetails.length).toEqual(4)
   })
 
-  it('should navigate to PhoneValidationTooManySMSSent if no remaining attempts left', () => {
+  it('should include SetSchoolType if reducer has school types', () => {
+    mockUseRemoteConfigContext.mockReturnValueOnce(defaultRemoteConfig)
+    mockIdentityCheckState = {
+      ...mockState,
+      profile: { ...mockState.profile, hasSchoolTypes: true },
+    }
+    const { stepsDetails } = useStepperInfo()
+    const profileStep = stepsDetails.find((step) => step.name === IdentityCheckStep.PROFILE)
+    expect(profileStep?.screens.includes('SetSchoolType')).toEqual(true)
+  })
+
+  it('should not include SetSchoolType if reducer doesnnt have school types', () => {
+    mockUseRemoteConfigContext.mockReturnValueOnce(defaultRemoteConfig)
+    mockIdentityCheckState = {
+      ...mockState,
+      profile: { ...mockState.profile, hasSchoolTypes: false },
+    }
+    const { stepsDetails } = useStepperInfo()
+    const profileStep = stepsDetails.find((step) => step.name === IdentityCheckStep.PROFILE)
+
+    expect(profileStep?.screens.includes('SetSchoolType')).toEqual(false)
+  })
+
+  it('should include only PhoneValidationTooManySMSSent if no remaining attempts left', () => {
     mockUseRemoteConfigContext.mockReturnValueOnce(defaultRemoteConfig)
     mockUseGetStepperInfo.mockReturnValueOnce({
       stepToDisplay: mockSubscriptionStepperWithPhoneValidation.subscriptionStepsToDisplay,
@@ -102,12 +125,12 @@ describe('useStepperInfo', () => {
     const phoneValidationStep = stepsDetails.find(
       (step) => step.name === IdentityCheckStep.PHONE_VALIDATION
     )
-    const phoneValidationScreensFlow = phoneValidationStep?.firstScreen
 
-    expect(phoneValidationScreensFlow).toEqual('PhoneValidationTooManySMSSent')
+    expect(phoneValidationStep?.screens.includes('PhoneValidationTooManySMSSent')).toEqual(true)
+    expect(phoneValidationStep?.screens.length).toEqual(1)
   })
 
-  it('should navigate to SetPhoneNumber if remaining attempts left', () => {
+  it('should not include only PhoneValidationTooManySMSSent if remaining attempts left', () => {
     mockUseRemoteConfigContext.mockReturnValueOnce(defaultRemoteConfig)
     mockUseGetStepperInfo.mockReturnValueOnce({
       stepToDisplay: mockSubscriptionStepperWithPhoneValidation.subscriptionStepsToDisplay,
@@ -122,17 +145,15 @@ describe('useStepperInfo', () => {
     const phoneValidationStep = stepsDetails.find(
       (step) => step.name === IdentityCheckStep.PHONE_VALIDATION
     )
-    const phoneValidationScreensFlow = phoneValidationStep?.firstScreen
-
-    expect(phoneValidationScreensFlow).toEqual('SetPhoneNumber')
+    expect(phoneValidationStep?.screens.includes('PhoneValidationTooManySMSSent')).toEqual(false)
   })
 
-  it("should return 'SelectIDOrigin' identity screen list", () => {
+  it("should return ['SelectIDOrigin'] identity screen list", () => {
     mockUseRemoteConfigContext.mockReturnValueOnce(defaultRemoteConfig)
     const { stepsDetails } = useStepperInfo()
     const identityStep = stepsDetails.find((step) => step.name === IdentityCheckStep.IDENTIFICATION)
-    const identificationScreensFlow = identityStep?.firstScreen
+    const identificationScreensFlow = identityStep?.screens
 
-    expect(identificationScreensFlow).toEqual('SelectIDOrigin')
+    expect(identificationScreensFlow).toEqual(['SelectIDOrigin'])
   })
 })

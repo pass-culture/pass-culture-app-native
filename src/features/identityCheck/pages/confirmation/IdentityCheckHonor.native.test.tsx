@@ -2,20 +2,12 @@ import mockdate from 'mockdate'
 import React from 'react'
 import { useMutation } from 'react-query'
 
-import { dispatch, navigate } from '__mocks__/@react-navigation/native'
+import { navigate } from '__mocks__/@react-navigation/native'
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { IdentityCheckHonor } from 'features/identityCheck/pages/confirmation/IdentityCheckHonor'
 import { beneficiaryUser, nonBeneficiaryUser } from 'fixtures/user'
 import { analytics } from 'libs/analytics'
-import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { fireEvent, render, useMutationFactory, waitFor, screen } from 'tests/utils'
-
-const mockDispatch = jest.fn()
-jest.mock('features/identityCheck/context/SubscriptionContextProvider', () => ({
-  useSubscriptionContext: jest.fn(() => ({
-    dispatch: mockDispatch,
-  })),
-}))
+import { fireEvent, render, useMutationFactory, waitFor } from 'tests/utils'
 
 jest.mock('react-query')
 
@@ -24,6 +16,12 @@ mockdate.set(new Date('2020-12-01T00:00:00.000Z'))
 jest.mock('features/auth/context/AuthContext')
 const mockUseAuthContext = useAuthContext as jest.Mock
 
+const mockNavigateToNextScreen = jest.fn()
+jest.mock('features/identityCheck/pages/helpers/useSubscriptionNavigation', () => ({
+  useSubscriptionNavigation: () => ({
+    navigateToNextScreen: mockNavigateToNextScreen,
+  }),
+}))
 const mockedUseMutation = jest.mocked(useMutation)
 const useMutationCallbacks: { onError: (error: unknown) => void; onSuccess: () => void } = {
   onSuccess: () => {},
@@ -32,7 +30,7 @@ const useMutationCallbacks: { onError: (error: unknown) => void; onSuccess: () =
 
 describe('<IdentityCheckHonor/>', () => {
   beforeAll(() => {
-    mockUseAuthContext.mockReturnValue({ user: beneficiaryUser })
+    mockUseAuthContext.mockReturnValue({ user: nonBeneficiaryUser })
   })
   beforeEach(() => {
     // @ts-expect-error ts(2345)
@@ -40,34 +38,24 @@ describe('<IdentityCheckHonor/>', () => {
   })
 
   it('should render correctly', () => {
-    renderIdentityCheckHonor()
-    expect(screen).toMatchSnapshot()
+    const renderAPI = render(<IdentityCheckHonor />)
+    expect(renderAPI).toMatchSnapshot()
   })
 
-  it('should navigate to next screen on request success if user is not beneficiary yet', async () => {
-    const user = {
-      ...nonBeneficiaryUser,
-    }
-    mockUseAuthContext.mockReturnValueOnce({
-      user,
-      refetchUser: async () => ({ data: user }),
-    })
+  it('should navigate to next screen on postHonorStatement request success if user is not beneficiary yet', async () => {
+    const { getByText } = render(<IdentityCheckHonor />)
 
-    renderIdentityCheckHonor()
-
-    const button = screen.getByText('Valider et continuer')
+    const button = getByText('Valider et continuer')
     fireEvent.press(button)
 
     useMutationCallbacks.onSuccess()
 
-    expect(screen.getByText('Valider et continuer')).toBeTruthy()
-
     await waitFor(() => {
-      expect(dispatch).toHaveBeenCalledTimes(1)
+      expect(mockNavigateToNextScreen).toHaveBeenCalledTimes(1)
     })
   })
 
-  it('should navigate to BeneficiaryAccountCreated on request success if user is beneficiary', async () => {
+  it('should navigate to BeneficiaryAccountCreated on postHonorStatement request success if user is beneficiary', async () => {
     const user = {
       ...beneficiaryUser,
       depositExpirationDate: '2021-12-01T00:00:00.000Z',
@@ -77,30 +65,40 @@ describe('<IdentityCheckHonor/>', () => {
       refetchUser: async () => ({ data: user }),
     })
 
-    renderIdentityCheckHonor()
+    const { getByText } = render(<IdentityCheckHonor />)
 
-    const button = screen.getByText('Valider et continuer')
+    const button = getByText('Valider et continuer')
     fireEvent.press(button)
 
     useMutationCallbacks.onSuccess()
-
-    expect(screen.getByText('Valider et continuer')).toBeTruthy()
 
     await waitFor(() => {
       expect(navigate).toHaveBeenNthCalledWith(1, 'BeneficiaryAccountCreated')
     })
   })
 
+  it("should navigate to next Screen if user's credit is expired (non beneficiary)", async () => {
+    const user = { ...beneficiaryUser, depositExpirationDate: '2020-11-01T00:00:00.000Z' }
+    mockUseAuthContext.mockReturnValueOnce({
+      user,
+      refetchUser: async () => ({ data: user }),
+    })
+
+    const { getByText } = render(<IdentityCheckHonor />)
+
+    const button = getByText('Valider et continuer')
+    fireEvent.press(button)
+
+    useMutationCallbacks.onSuccess()
+
+    await waitFor(() => {
+      expect(mockNavigateToNextScreen).toHaveBeenCalledTimes(1)
+    })
+  })
+
   it('should log analytics when the screen is mounted', async () => {
-    renderIdentityCheckHonor()
+    render(<IdentityCheckHonor />)
 
     await waitFor(() => expect(analytics.logScreenViewIdentityCheckHonor).toHaveBeenCalledTimes(1))
   })
 })
-
-function renderIdentityCheckHonor() {
-  return render(<IdentityCheckHonor />, {
-    // eslint-disable-next-line local-rules/no-react-query-provider-hoc
-    wrapper: ({ children }) => reactQueryProviderHOC(children),
-  })
-}
