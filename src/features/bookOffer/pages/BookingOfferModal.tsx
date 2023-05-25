@@ -165,19 +165,21 @@ export const BookingOfferModalComponent: React.FC<BookingOfferModalComponentProp
 
   const onClose = useCallback(() => {
     dismissModal()
+    if (bookingState.offerId !== offerId) dispatch({ type: 'SET_OFFER_ID', payload: offerId })
     dispatch({ type: 'RESET' })
     if (isLoading && title.includes('Détails de la réservation')) {
       showBookingCloseInformationModal()
     }
     if (enablePricesByCategories) analytics.logCancelBookingFunnel(step, offerId)
   }, [
-    dismissModal,
-    dispatch,
-    enablePricesByCategories,
+    bookingState.offerId,
     offerId,
-    step,
+    dispatch,
+    dismissModal,
     isLoading,
     title,
+    enablePricesByCategories,
+    step,
     showBookingCloseInformationModal,
   ])
 
