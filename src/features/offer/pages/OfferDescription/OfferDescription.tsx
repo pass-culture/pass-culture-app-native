@@ -23,7 +23,7 @@ const EXTRA_DATA_KEY_MAPPING: { [k in ExtendedKeys]: string } = {
   description: 'en détails',
   author: 'auteur',
   durationMinutes: 'durée',
-  isbn: 'ISBN',
+  isbn: 'EAN',
   musicSubType: 'spécialité',
   musicType: 'genre',
   performer: 'interprète',
