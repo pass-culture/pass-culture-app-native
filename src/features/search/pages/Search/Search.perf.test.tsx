@@ -23,7 +23,7 @@ jest.mock('react-instantsearch-hooks', () => ({
 }))
 
 describe('<Search />', () => {
-  describe('Landing Page', () => {
+  describe('Search Landing Page -', () => {
     beforeAll(() => {
       useRoute.mockReturnValue({ params: { view: SearchView.Landing } })
     })
@@ -37,7 +37,7 @@ describe('<Search />', () => {
     })
   })
 
-  describe('Search Results', () => {
+  describe('Search Results -', () => {
     beforeAll(() => {
       algoliasearch().initIndex().search.mockResolvedValue(mockedAlgoliaResponse)
       useRoute.mockReturnValue({ params: { view: SearchView.Results, query: 'test' } })
@@ -52,7 +52,7 @@ describe('<Search />', () => {
     })
   })
 
-  describe('Search Suggestions', () => {
+  describe('Search Suggestions -', () => {
     beforeAll(() => {
       useRoute.mockReturnValue({ params: { view: SearchView.Suggestions, query: 'ciné' } })
     })
