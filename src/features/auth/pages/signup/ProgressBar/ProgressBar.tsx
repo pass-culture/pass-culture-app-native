@@ -12,6 +12,7 @@ interface Props {
 
 export const ProgressBar = ({ currentStep, totalStep }: Props) => {
   const barRef = useRef<AnimatedViewRefType>(null)
+  const isComplete = currentStep === totalStep
   const progressionRatio = (currentStep / totalStep) * 100
 
   useEffect(
@@ -25,7 +26,7 @@ export const ProgressBar = ({ currentStep, totalStep }: Props) => {
       <BarColorContainer
         transition="width"
         width={progressionRatio}
-        isFull={currentStep === totalStep}
+        isFull={isComplete}
         duration={800}
         accessibilityLabel={`Étape ${currentStep} sur ${totalStep}`}
         ref={barRef}>
