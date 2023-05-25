@@ -28,7 +28,7 @@ export interface DeprecatedStepConfig {
 export interface StepConfig {
   name: IdentityCheckStep
   icon: Record<StepButtonState, React.FC<IconInterface>>
-  firstScreen: SubscriptionScreen
+  screens: SubscriptionScreen[]
 }
 
 export interface StepDetails {
@@ -36,7 +36,7 @@ export interface StepDetails {
   title: string
   subtitle?: string
   icon: Record<StepButtonState, React.FC<IconInterface>>
-  firstScreen: SubscriptionScreen
+  screens: SubscriptionScreen[]
   stepState: StepButtonState
 }
 

@@ -21,7 +21,7 @@ describe('StepButton', () => {
     ({ stepState, stepTestId, isDisabled }) => {
       const identificationStep: StepDetails = {
         name: IdentityCheckStep.IDENTIFICATION,
-        firstScreen: 'SelectIDOrigin',
+        screens: ['SelectIDOrigin'],
         stepState: stepState,
         title: 'Identification',
         icon: {
@@ -47,7 +47,7 @@ describe('StepButton', () => {
     ({ stepState, stepTestId }) => {
       const identificationStep: StepDetails = {
         name: IdentityCheckStep.IDENTIFICATION,
-        firstScreen: 'SelectIDOrigin',
+        screens: ['SelectIDOrigin'],
         stepState: stepState,
         title: 'Identification',
         icon: {
