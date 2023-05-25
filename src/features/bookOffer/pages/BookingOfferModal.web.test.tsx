@@ -2,6 +2,7 @@ import React from 'react'
 
 import { Step } from 'features/bookOffer/context/reducer'
 import { mockOffer } from 'features/bookOffer/fixtures/offer'
+import { VenueListItem } from 'features/offer/components/VenueSelectionList/VenueSelectionList'
 import * as useFeatureFlag from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { placeholderData } from 'libs/subcategories/placeholderData'
 import { render, checkAccessibilityFor } from 'tests/utils/web'
@@ -39,6 +40,30 @@ jest.mock('features/bookOffer/helpers/useBookingOffer', () => ({
 }))
 
 jest.spyOn(useFeatureFlag, 'useFeatureFlag').mockReturnValue(false)
+
+const mockHasNextPage = true
+const mockFetchNextPage = jest.fn()
+const mockData = {
+  pages: [
+    {
+      nbHits: 0,
+      hits: [],
+      page: 0,
+    },
+  ],
+}
+const mockOfferVenues: VenueListItem[] = []
+const mockNbOfferVenues = 0
+jest.mock('api/useSearchVenuesOffer/useSearchVenueOffers', () => ({
+  useSearchVenueOffers: () => ({
+    hasNextPage: mockHasNextPage,
+    fetchNextPage: mockFetchNextPage,
+    data: mockData,
+    offerVenues: mockOfferVenues,
+    nbOfferVenues: mockNbOfferVenues,
+    isFetching: false,
+  }),
+}))
 
 describe('<BookingOfferModal/>', () => {
   describe('Accessibility', () => {

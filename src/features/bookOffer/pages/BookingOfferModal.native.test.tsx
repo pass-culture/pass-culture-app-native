@@ -9,6 +9,7 @@ import { BookingState, Step } from 'features/bookOffer/context/reducer'
 import { mockOffer as baseOffer } from 'features/bookOffer/fixtures/offer'
 import { mockStocks } from 'features/bookOffer/fixtures/stocks'
 import { IBookingContext } from 'features/bookOffer/types'
+import { VenueListItem } from 'features/offer/components/VenueSelectionList/VenueSelectionList'
 import { beneficiaryUser } from 'fixtures/user'
 import * as logOfferConversionAPI from 'libs/algolia/analytics/logOfferConversion'
 import { analytics } from 'libs/analytics'
@@ -94,15 +95,49 @@ jest.mock('ui/components/snackBar/SnackBarContext', () => ({
   SNACK_BAR_TIME_OUT: 5000,
 }))
 
+const mockHasNextPage = true
+const mockFetchNextPage = jest.fn()
+const mockData = {
+  pages: [
+    {
+      nbHits: 0,
+      hits: [],
+      page: 0,
+    },
+  ],
+}
+const mockOfferVenues: VenueListItem[] = []
+const mockNbOfferVenues = 0
+jest.mock('api/useSearchVenuesOffer/useSearchVenueOffers', () => ({
+  useSearchVenueOffers: () => ({
+    hasNextPage: mockHasNextPage,
+    fetchNextPage: mockFetchNextPage,
+    data: mockData,
+    offerVenues: mockOfferVenues,
+    nbOfferVenues: mockNbOfferVenues,
+    isFetching: false,
+  }),
+}))
+
 describe('<BookingOfferModalComponent />', () => {
   it('should dismiss modal when click on rightIconButton and reset state', () => {
-    render(<BookingOfferModalComponent visible offerId={20} />)
+    render(<BookingOfferModalComponent visible offerId={mockOffer.id} />)
 
     const dismissModalButton = screen.getByTestId('Fermer la modale')
 
     fireEvent.press(dismissModalButton)
     expect(mockDispatch).toHaveBeenCalledWith({ type: 'RESET' })
+    expect(mockDispatch).toHaveBeenNthCalledWith(1, { type: 'SET_OFFER_ID', payload: mockOffer.id })
     expect(mockDismissModal).toHaveBeenCalledTimes(1)
+  })
+
+  it('should set offer consulted when dismiss modal and an other venue has been selected', () => {
+    render(<BookingOfferModalComponent visible offerId={20} />)
+
+    const dismissModalButton = screen.getByTestId('Fermer la modale')
+
+    fireEvent.press(dismissModalButton)
+    expect(mockDispatch).toHaveBeenNthCalledWith(2, { type: 'SET_OFFER_ID', payload: 20 })
   })
 
   it('should not log event BookingProcessStart when modal is not visible', () => {
