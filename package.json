@@ -355,7 +355,6 @@
     "prop-types": "15.7.*",
     "query-string": "^7.1.*",
     "react-devtools-core": "4.27.4",
-    "react-is": "16.13.1",
     "recyclerlistview": "4.1.2",
     "tslib": "2.3.*",
     "validator": "^13.7.0",
