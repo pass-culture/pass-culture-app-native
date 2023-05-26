@@ -3,7 +3,7 @@ import { useQueryClient } from 'react-query'
 import styled from 'styled-components/native'
 
 import { BookingCancellationReasons } from 'api/gen'
-import { isDigitalBookingWithoutExpirationDate } from 'features/bookings/helpers/expirationDateUtils'
+import { isEligibleBookingsForArchive } from 'features/bookings/helpers/expirationDateUtils'
 import { BookingItemProps } from 'features/bookings/types'
 import { mergeOfferData } from 'features/offer/components/OfferTile/OfferTile'
 import { analytics } from 'libs/analytics'
@@ -29,14 +29,14 @@ export const EndedBookingItem = ({ booking }: BookingItemProps) => {
   const netInfo = useNetInfoContext()
   const { showErrorSnackBar } = useSnackBarContext()
 
-  const isDigitalBookingWithoutExpirationDateValue = isDigitalBookingWithoutExpirationDate(booking)
+  const isEligibleBookingsForArchiveValue = isEligibleBookingsForArchive(booking)
 
-  const shouldRedirectToBooking = isDigitalBookingWithoutExpirationDateValue && !cancellationReason
+  const shouldRedirectToBooking = isEligibleBookingsForArchiveValue && !cancellationReason
 
   const endedBookingReason = getEndedBookingReason(
     cancellationReason,
     dateUsed,
-    isDigitalBookingWithoutExpirationDateValue
+    isEligibleBookingsForArchiveValue
   )
   const endedBookingDateLabel = getEndedBookingDateLabel(cancellationDate, dateUsed)
 
@@ -49,7 +49,7 @@ export const EndedBookingItem = ({ booking }: BookingItemProps) => {
   function handlePressOffer() {
     const { offer } = stock
     if (!offer.id) return
-    if (isDigitalBookingWithoutExpirationDateValue) return
+    if (isEligibleBookingsForArchiveValue) return
     if (netInfo.isConnected) {
       // We pre-populate the query-cache with the data from the search result for a smooth transition
       queryClient.setQueryData(
@@ -116,7 +116,7 @@ const EndedReasonAndDate = styled.View({
 function getEndedBookingReason(
   cancellationReason?: BookingCancellationReasons | null,
   dateUsed?: string | null,
-  isDigitalBookingWithoutExpirationDate?: boolean
+  isEligibleBookingsForArchiveValue?: boolean
 ) {
   if (dateUsed) {
     return <StyledInputRule title="Réservation utilisée" icon={Valid} isValid noFullWidth />
@@ -126,7 +126,7 @@ function getEndedBookingReason(
     return <StyledInputRule title="Annulée" icon={Wrong} isValid={false} noFullWidth />
   }
 
-  if (isDigitalBookingWithoutExpirationDate && !cancellationReason) {
+  if (!!isEligibleBookingsForArchiveValue && !cancellationReason) {
     return <StyledInputRule title="Réservation archivée" icon={Valid} isValid noFullWidth />
   }
 

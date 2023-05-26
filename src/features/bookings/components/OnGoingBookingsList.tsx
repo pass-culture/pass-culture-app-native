@@ -5,7 +5,7 @@ import styled from 'styled-components/native'
 
 import { useBookings } from 'features/bookings/api'
 import { EndedBookingsSection } from 'features/bookings/components/EndedBookingsSection'
-import { getDigitalBookingWithoutExpirationDate } from 'features/bookings/helpers/expirationDateUtils'
+import { getEligibleBookingsForArchive } from 'features/bookings/helpers/expirationDateUtils'
 import { Booking } from 'features/bookings/types'
 import { analytics, isCloseToBottom } from 'libs/analytics'
 import useFunctionOnce from 'libs/hooks/useFunctionOnce'
@@ -82,19 +82,16 @@ export function OnGoingBookingsList() {
     }
   }
 
-  const digitalBookingWithoutExpirationDate = useMemo(
-    () => getDigitalBookingWithoutExpirationDate(ongoingBookings),
+  const eligibleBookingsForArchive = useMemo(
+    () => getEligibleBookingsForArchive(ongoingBookings),
     [ongoingBookings]
   )
 
   const renderItem: ListRenderItem<Booking> = useCallback(
     ({ item }) => (
-      <OnGoingBookingItem
-        booking={item}
-        digitalBookingWithoutExpirationDate={digitalBookingWithoutExpirationDate}
-      />
+      <OnGoingBookingItem booking={item} eligibleBookingsForArchive={eligibleBookingsForArchive} />
     ),
-    [digitalBookingWithoutExpirationDate]
+    [eligibleBookingsForArchive]
   )
 
   if (showSkeleton) return <BookingsPlaceholder />
