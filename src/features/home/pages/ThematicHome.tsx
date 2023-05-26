@@ -1,22 +1,30 @@
 import { useRoute } from '@react-navigation/native'
 import React, { FunctionComponent, useEffect } from 'react'
+import { Animated } from 'react-native'
 import styled from 'styled-components/native'
 
 import { useHomepageData } from 'features/home/api/useHomepageData'
 import { CategoryThematicHomeHeader } from 'features/home/components/headers/CategoryThematicHomeHeader'
+import { CategoryThematicHomeSubHeader } from 'features/home/components/headers/CategoryThematicHomeSubHeader'
 import { DefaultThematicHomeHeader } from 'features/home/components/headers/DefaultThematicHomeHeader'
 import { HighlightThematicHomeHeader } from 'features/home/components/headers/HighlightThematicHomeHeader'
 import { GenericHome } from 'features/home/pages/GenericHome'
 import { ThematicHeader, ThematicHeaderType } from 'features/home/types'
 import { UseRouteType } from 'features/navigation/RootNavigator/types'
 import { analytics } from 'libs/analytics'
+import { useOpacityTransition } from 'ui/animations/helpers/useOpacityTransition'
 
-const Header = ({ thematicHeader }: { thematicHeader?: ThematicHeader }) => {
+interface Props {
+  headerTransition: Animated.AnimatedInterpolation
+  thematicHeader?: ThematicHeader
+}
+
+const Header: FunctionComponent<Props> = ({ headerTransition, thematicHeader }) => {
   if (thematicHeader?.type === ThematicHeaderType.Highlight)
     return <HighlightThematicHomeHeader {...thematicHeader} />
 
   if (thematicHeader?.type === ThematicHeaderType.Category)
-    return <CategoryThematicHomeHeader {...thematicHeader} />
+    return <CategoryThematicHomeHeader headerTransition={headerTransition} {...thematicHeader} />
 
   return (
     <ListHeaderContainer>
@@ -28,9 +36,24 @@ const Header = ({ thematicHeader }: { thematicHeader?: ThematicHeader }) => {
   )
 }
 
+const SubHeader: FunctionComponent<Props> = ({ thematicHeader }) => {
+  if (thematicHeader?.type === ThematicHeaderType.Category)
+    return (
+      <CategoryThematicHomeSubHeader
+        title={thematicHeader?.title}
+        subtitle={thematicHeader?.subtitle}
+        imageUrl={thematicHeader?.imageUrl}
+      />
+    )
+
+  return <React.Fragment></React.Fragment>
+}
+
 export const ThematicHome: FunctionComponent = () => {
   const { params } = useRoute<UseRouteType<'ThematicHome'>>()
   const { modules, id, thematicHeader } = useHomepageData(params.homeId) || {}
+
+  const { onScroll, headerTransition } = useOpacityTransition()
 
   useEffect(() => {
     if (id) {
@@ -44,14 +67,23 @@ export const ThematicHome: FunctionComponent = () => {
   }, [id, params.from, params.moduleId, params.moduleListId])
 
   return (
-    <GenericHome
-      modules={modules}
-      homeId={id}
-      Header={<Header thematicHeader={thematicHeader} />}
-      shouldDisplayScrollToTop
-    />
+    <Container>
+      <Header thematicHeader={thematicHeader} headerTransition={headerTransition} />
+      <GenericHome
+        modules={modules}
+        homeId={id}
+        Header={<SubHeader thematicHeader={thematicHeader} headerTransition={headerTransition} />}
+        shouldDisplayScrollToTop
+        onScroll={onScroll}
+      />
+    </Container>
   )
 }
+
+const Container = styled.View(({ theme }) => ({
+  flex: 1,
+  backgroundColor: theme.colors.white,
+}))
 
 const ListHeaderContainer = styled.View({
   flexGrow: 1,

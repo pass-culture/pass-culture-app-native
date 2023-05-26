@@ -31,6 +31,7 @@ type GenericHomeProps = {
   modules: HomepageModule[]
   homeId: string
   shouldDisplayScrollToTop?: boolean
+  onScroll?: ({ nativeEvent }: NativeSyntheticEvent<NativeScrollEvent>) => void
 }
 const keyExtractor = (item: HomepageModule) => item.id
 
@@ -64,6 +65,7 @@ export const OnlineHome: FunctionComponent<GenericHomeProps> = ({
   modules,
   homeId,
   shouldDisplayScrollToTop,
+  onScroll: givenOnScroll,
 }) => {
   const { offersModulesData } = useGetOffersData(modules.filter(isOffersModule))
   const { venuesModulesData } = useGetVenuesData(modules.filter(isVenuesModule))
@@ -93,9 +95,10 @@ export const OnlineHome: FunctionComponent<GenericHomeProps> = ({
   const scrollRef = useRef<FlatList>(null)
   useScrollToTop(scrollRef)
 
-  const scrollListener = useCallback(
-    ({ nativeEvent }: NativeSyntheticEvent<NativeScrollEvent>) => {
+  const scrollListenerToDebounce = useCallback(
+    (event: NativeSyntheticEvent<NativeScrollEvent>) => {
       // Load more modules when we are one screen away from the end
+      const { nativeEvent } = event
       if (isCloseToBottom({ ...nativeEvent, padding: screenHeight })) {
         if (Platform.OS !== 'web' && maxIndex < modules.length) {
           setIsLoading(true)
@@ -110,7 +113,15 @@ export const OnlineHome: FunctionComponent<GenericHomeProps> = ({
     // eslint-disable-next-line react-hooks/exhaustive-deps
     [modules.length, modulesToDisplay.length]
   )
-  const { onScroll, scrollButtonTransition } = useOnScroll(scrollListener)
+
+  const scrollListener = useCallback(
+    (event: NativeSyntheticEvent<NativeScrollEvent>) => {
+      if (givenOnScroll) givenOnScroll(event)
+    },
+    [givenOnScroll]
+  )
+
+  const { onScroll, scrollButtonTransition } = useOnScroll(scrollListenerToDebounce, scrollListener)
 
   const onContentSizeChange = () => setIsLoading(false)
 
