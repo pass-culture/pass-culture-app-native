@@ -49,7 +49,6 @@ jobs:
             ANDROID_KEYSTORE:passculture-metier-ehp/passculture-app-native-${{ inputs.ENV }}-keystore
             IOS_APPCENTER_API_TOKEN:passculture-metier-ehp/passculture-app-native-ios-${{ inputs.ENV }}-token
             SENTRY_AUTH_TOKEN:passculture-metier-ehp/passculture-app-native-sentry-token
-            SLACK_BOT_TOKEN:passculture-metier-ehp/passculture-app-native-slack-token
       - name: 'Render Sentry Template'
         id: render_template
         uses: chuhlomin/render-template@v1.6
@@ -97,6 +96,22 @@ jobs:
           bundle exec fastlane android deploy --env ${{ inputs.ENV }} --verbose
         env:
           ANDROID_APPCENTER_API_TOKEN: ${{ steps.secrets.outputs.ANDROID_APPCENTER_API_TOKEN }}
+  slack_notify:
+    runs-on: [self-hosted, linux, x64]
+    if: ${{ always() && github.ref == 'refs/heads/master' }}
+    needs: sentry_and_deploy
+    steps:
+      - name: Connect to Secret Manager
+        uses: 'google-github-actions/auth@v1'
+        with:
+          workload_identity_provider: ${{ secrets.GCP_EHP_WORKLOAD_IDENTITY_PROVIDER }}
+          service_account: ${{ secrets.GCP_EHP_SERVICE_ACCOUNT }}
+      - name: Get secrets for Slack
+        id: 'slack_secrets'
+        uses: 'google-github-actions/get-secretmanager-secrets@v1'
+        with:
+          secrets: |-
+            SLACK_BOT_TOKEN:passculture-metier-ehp/passculture-app-native-slack-token
       - uses: technote-space/workflow-conclusion-action@v3
         if: ${{ always() }}
       - name: Post to a Slack channel
@@ -105,7 +120,7 @@ jobs:
         uses: slackapi/slack-github-action@v1.23.0
         with:
           # channel #alertes-deploiement-native
-          channel-id: "C0309RP8K42"
+          channel-id: 'C0309RP8K42'
           payload: |
             {
               "attachments": [
@@ -124,5 +139,4 @@ jobs:
               "unfurl_media": false
             }
         env:
-          SLACK_BOT_TOKEN: ${{ steps.secrets.outputs.SLACK_BOT_TOKEN }}
-
+          SLACK_BOT_TOKEN: ${{ steps.slack_secrets.output.SLACK_BOT_TOKEN }}
