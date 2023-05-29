@@ -2,24 +2,22 @@ import React, { forwardRef } from 'react'
 import { ActivityIndicator } from 'react-native'
 import styled from 'styled-components/native'
 
-import { Offer } from 'shared/offer/types'
 import { ButtonSecondary } from 'ui/components/buttons/ButtonSecondary'
 import { More } from 'ui/svg/icons/More'
 import { getSpacing, Spacer } from 'ui/theme'
 
 export interface SearchListFooterProps {
   isFetchingNextPage: boolean
-  hits: Offer[]
+  nbLoadedHits: number
   nbHits: number
   autoScrollEnabled: boolean
   onPress?: () => void
 }
 
 export const SearchListFooter: React.FC<SearchListFooterProps> = forwardRef(
-  ({ isFetchingNextPage, hits, nbHits, autoScrollEnabled, onPress }, ref) => {
-    const showMoreButton = !autoScrollEnabled && hits.length < nbHits
-
-    return isFetchingNextPage && hits.length < nbHits ? (
+  ({ isFetchingNextPage, nbLoadedHits, nbHits, autoScrollEnabled, onPress }, ref) => {
+    const showMoreButton = !autoScrollEnabled && nbLoadedHits < nbHits
+    return isFetchingNextPage && nbLoadedHits < nbHits ? (
       <React.Fragment ref={ref}>
         <Spacer.Column numberOfSpaces={4} />
         <ActivityIndicator testID="activity-indicator" />
