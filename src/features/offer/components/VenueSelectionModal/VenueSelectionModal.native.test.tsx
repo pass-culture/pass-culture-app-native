@@ -27,6 +27,9 @@ describe('<VenueSelectionModal />', () => {
     },
   ]
 
+  const nbLoadedHits = 3
+  const nbHits = 40
+
   it('should render items', () => {
     render(
       <VenueSelectionModal
@@ -35,6 +38,9 @@ describe('<VenueSelectionModal />', () => {
         title="Lieu de retrait"
         onSubmit={jest.fn()}
         onClosePress={jest.fn()}
+        nbLoadedHits={nbLoadedHits}
+        nbHits={nbHits}
+        isFetchingNextPage
       />
     )
 
@@ -51,6 +57,9 @@ describe('<VenueSelectionModal />', () => {
         title="Lieu de retrait"
         onSubmit={jest.fn()}
         onClosePress={onClose}
+        nbLoadedHits={nbLoadedHits}
+        nbHits={nbHits}
+        isFetchingNextPage
       />
     )
 
@@ -69,6 +78,9 @@ describe('<VenueSelectionModal />', () => {
         title="Lieu de retrait"
         onSubmit={onSubmit}
         onClosePress={jest.fn()}
+        nbLoadedHits={nbLoadedHits}
+        nbHits={nbHits}
+        isFetchingNextPage
       />
     )
 
@@ -87,6 +99,9 @@ describe('<VenueSelectionModal />', () => {
         title="Lieu de retrait"
         onSubmit={onSubmit}
         onClosePress={jest.fn()}
+        nbLoadedHits={nbLoadedHits}
+        nbHits={nbHits}
+        isFetchingNextPage
       />
     )
 

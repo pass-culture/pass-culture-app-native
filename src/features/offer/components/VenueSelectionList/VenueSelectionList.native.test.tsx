@@ -26,9 +26,21 @@ const items: VenueListItem[] = [
   },
 ]
 
+const nbLoadedHits = 3
+const nbHits = 40
+
 describe('<VenueSelectionList />', () => {
   it('should show list of items', () => {
-    render(<VenueSelectionList onItemSelect={jest.fn()} items={items} />)
+    render(
+      <VenueSelectionList
+        onItemSelect={jest.fn()}
+        items={items}
+        nbLoadedHits={nbLoadedHits}
+        nbHits={nbHits}
+        isFetchingNextPage
+        autoScrollEnabled
+      />
+    )
 
     expect(screen.queryAllByTestId('venue-selection-list-item')).toHaveLength(3)
   })
@@ -36,7 +48,16 @@ describe('<VenueSelectionList />', () => {
   it('should select item on press', () => {
     const onItemSelect = jest.fn()
 
-    render(<VenueSelectionList onItemSelect={onItemSelect} items={items} />)
+    render(
+      <VenueSelectionList
+        onItemSelect={onItemSelect}
+        items={items}
+        nbLoadedHits={nbLoadedHits}
+        nbHits={nbHits}
+        isFetchingNextPage
+        autoScrollEnabled
+      />
+    )
 
     fireEvent.press(screen.getByText('Envie de lire'))
 
@@ -44,7 +65,17 @@ describe('<VenueSelectionList />', () => {
   })
 
   it('should mark item as selected', () => {
-    render(<VenueSelectionList onItemSelect={jest.fn()} selectedItem={1} items={items} />)
+    render(
+      <VenueSelectionList
+        onItemSelect={jest.fn()}
+        selectedItem={1}
+        items={items}
+        nbLoadedHits={nbLoadedHits}
+        nbHits={nbHits}
+        isFetchingNextPage
+        autoScrollEnabled
+      />
+    )
 
     expect(screen.queryAllByTestId('venue-selection-list-item')[0]).toHaveStyle({
       borderWidth: 2,

@@ -1,5 +1,5 @@
-import React, { forwardRef } from 'react'
-import { ActivityIndicator } from 'react-native'
+import React, { forwardRef, LegacyRef } from 'react'
+import { ActivityIndicator, View } from 'react-native'
 import styled from 'styled-components/native'
 
 import { ButtonSecondary } from 'ui/components/buttons/ButtonSecondary'
@@ -18,12 +18,12 @@ export const SearchListFooter: React.FC<SearchListFooterProps> = forwardRef(
   ({ isFetchingNextPage, nbLoadedHits, nbHits, autoScrollEnabled, onPress }, ref) => {
     const showMoreButton = !autoScrollEnabled && nbLoadedHits < nbHits
     return isFetchingNextPage && nbLoadedHits < nbHits ? (
-      <React.Fragment ref={ref}>
+      <View ref={ref as LegacyRef<View>}>
         <Spacer.Column numberOfSpaces={4} />
         <ActivityIndicator testID="activity-indicator" />
         <Spacer.Column numberOfSpaces={4} />
         <Footer testID="footer" />
-      </React.Fragment>
+      </View>
     ) : (
       <React.Fragment>
         {!!showMoreButton && <Separator />}
