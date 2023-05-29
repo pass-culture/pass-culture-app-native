@@ -107,5 +107,5 @@ VenueSelectionList.displayName = 'VenueSelectionList'
  */
 const ItemWrapper = styled(View)({
   paddingHorizontal: getSpacing(1),
-  paddingVertical: getSpacing(2),
+  paddingTop: getSpacing(2),
 })
