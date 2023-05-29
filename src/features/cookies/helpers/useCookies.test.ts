@@ -2,7 +2,6 @@ import mockdate from 'mockdate'
 
 import { FAKE_USER_ID } from '__mocks__/jwt-decode'
 import Package from '__mocks__/package.json'
-import { v4 } from '__mocks__/uuid'
 import { api } from 'api/api'
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { ALL_OPTIONAL_COOKIES, COOKIES_BY_CATEGORY } from 'features/cookies/CookiesPolicy'
@@ -11,12 +10,14 @@ import * as TrackingAcceptedCookies from 'features/cookies/helpers/startTracking
 import { useCookies } from 'features/cookies/helpers/useCookies'
 import { CookiesConsent } from 'features/cookies/types'
 import { eventMonitoring } from 'libs/monitoring'
+import { getDeviceId } from 'libs/react-native-device-info/getDeviceId'
 import { storage } from 'libs/storage'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, flushAllPromisesWithAct, renderHook, superFlushWithAct, waitFor } from 'tests/utils'
 
 jest.mock('features/auth/context/AuthContext')
 const mockUseAuthContext = useAuthContext as jest.Mock
+const mockGetDeviceId = getDeviceId as jest.Mock
 
 const mockStartTrackingAcceptedCookies = jest.spyOn(
   TrackingAcceptedCookies,
@@ -24,7 +25,7 @@ const mockStartTrackingAcceptedCookies = jest.spyOn(
 )
 
 const COOKIES_CONSENT_KEY = 'cookies'
-const deviceId = 'testUuidV4'
+const deviceId = 'ad7b7b5a169641e27cadbdb35adad9c4ca23099a'
 const TODAY = new Date('2022-09-29')
 const YESTERDAY = new Date('2022-09-28')
 const EXACTLY_SIX_MONTHS_AGO = new Date('2022-03-29')
@@ -452,8 +453,8 @@ describe('useCookies', () => {
   })
 
   it('should set once device ID per device', async () => {
-    v4.mockReturnValueOnce('testUuidV4-first')
-    v4.mockReturnValueOnce('testUuidV4-second')
+    mockGetDeviceId.mockReturnValueOnce('device-id-first')
+    mockGetDeviceId.mockReturnValueOnce('device-id-second')
     const { result } = renderUseCookies()
     const { setCookiesConsent } = result.current
 
@@ -474,7 +475,7 @@ describe('useCookies', () => {
 
     expect(cookiesConsent).toEqual({
       buildVersion: Package.build,
-      deviceId: 'testUuidV4-first',
+      deviceId: 'device-id-first',
       choiceDatetime: TODAY.toISOString(),
       consent: {
         mandatory: COOKIES_BY_CATEGORY.essential,
