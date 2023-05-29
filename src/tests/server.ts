@@ -193,11 +193,11 @@ export function requestPasswordResetSuccess() {
   )
 }
 
-export function requestPasswordResetFail() {
+export function requestPasswordResetFail(errorCode?: number) {
   return rest.post<RequestPasswordResetRequest, EmptyResponse>(
     env.API_BASE_URL + '/native/v1/request_password_reset',
     (_req, res, ctx) => {
-      return res(ctx.status(400), ctx.json({}))
+      return res(ctx.status(errorCode ?? 400), ctx.json({}))
     }
   )
 }
