@@ -80,17 +80,27 @@ export function BookingDetails({ stocks, onPressBookOffer, isLoading }: BookingD
 
   const { onScroll: onScrollModal } = useOpacityTransition()
   const { userPosition: position } = useGeolocation()
-  const { hasNextPage, fetchNextPage, refetch, data, venueList, isFetching, nbVenueItems } =
-    useSearchVenueOffers({
-      offerId: offer?.id ?? 0,
-      venueId: offer?.venue?.id,
-      geolocation: position ?? {
-        latitude: offer?.venue?.coordinates?.latitude ?? 0,
-        longitude: offer?.venue?.coordinates?.longitude ?? 0,
-      },
-      query: offer?.extraData?.isbn ?? '',
-      queryOptions: { enabled: shouldFetchSearchVenueOffers },
-    })
+  const {
+    hasNextPage,
+    fetchNextPage,
+    refetch,
+    data,
+    venueList,
+    isFetching,
+    nbVenueItems,
+    nbHits,
+    nbLoadedHits,
+    isFetchingNextPage,
+  } = useSearchVenueOffers({
+    offerId: offer?.id ?? 0,
+    venueId: offer?.venue?.id,
+    geolocation: position ?? {
+      latitude: offer?.venue?.coordinates?.latitude ?? 0,
+      longitude: offer?.venue?.coordinates?.longitude ?? 0,
+    },
+    query: offer?.extraData?.isbn ?? '',
+    queryOptions: { enabled: shouldFetchSearchVenueOffers },
+  })
   const isRefreshing = useIsFalseWithDelay(isFetching, ANIMATION_DURATION)
 
   const shouldDisplayOtherVenuesAvailableButton = Boolean(
@@ -240,6 +250,9 @@ export function BookingDetails({ stocks, onPressBookOffer, isLoading }: BookingD
           refreshing={isRefreshing}
           onRefresh={void refetch}
           onScroll={onScrollModal}
+          nbHits={nbHits}
+          nbLoadedHits={nbLoadedHits}
+          isFetchingNextPage={isFetchingNextPage}
         />
       )}
     </Container>
