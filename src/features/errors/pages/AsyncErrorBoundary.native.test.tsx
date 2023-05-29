@@ -50,6 +50,56 @@ describe('AsyncErrorBoundary component', () => {
     })
   })
 
+  it.each([
+    401, // Unauthorized
+    500, // Internal Server Error
+    502, // Bad Gateway
+    503, // Service Unavailable
+    504, // Gateway Timeout
+  ])(
+    'should not capture error exception when error is ApiError and error code is %s',
+    (statusCode) => {
+      const error = new ApiError(statusCode, {
+        code: 'SOME_CODE',
+        message: 'some message',
+      })
+      render(<AsyncErrorBoundary error={error} resetErrorBoundary={jest.fn()} />)
+      expect(eventMonitoring.captureException).not.toHaveBeenCalled()
+    }
+  )
+
+  it.each([
+    401, // Unauthorized
+    500, // Internal Server Error
+    502, // Bad Gateway
+    503, // Service Unavailable
+    504, // Gateway Timeout
+  ])('should capture info when error is ApiError and error code is %s', (statusCode) => {
+    const error = new ApiError(statusCode, {
+      code: 'SOME_CODE',
+      message: 'some message',
+    })
+    render(<AsyncErrorBoundary error={error} resetErrorBoundary={jest.fn()} />)
+    expect(eventMonitoring.captureMessage).toHaveBeenCalledWith(error.message, 'info')
+  })
+
+  describe('should not capture info', () => {
+    it('when error is MonitoringError', () => {
+      const error = new MonitoringError('error')
+      render(<AsyncErrorBoundary error={error} resetErrorBoundary={jest.fn()} />)
+      expect(eventMonitoring.captureMessage).not.toHaveBeenCalled()
+    })
+
+    it('when error is ApiError and error code is 400', () => {
+      const error = new ApiError(400, {
+        code: 'SOME_CODE',
+        message: 'some message',
+      })
+      render(<AsyncErrorBoundary error={error} resetErrorBoundary={jest.fn()} />)
+      expect(eventMonitoring.captureMessage).not.toHaveBeenCalled()
+    })
+  })
+
   describe('should not capture exception', () => {
     it('two times when error is MonitoringError', () => {
       const error = new MonitoringError('error')
@@ -65,15 +115,6 @@ describe('AsyncErrorBoundary component', () => {
           resetErrorBoundary={jest.fn()}
         />
       )
-      expect(eventMonitoring.captureException).not.toHaveBeenCalled()
-    })
-
-    it('when error is ApiError and error code is 5xx', () => {
-      const error = new ApiError(500, {
-        code: 'SOME_CODE',
-        message: 'some message',
-      })
-      render(<AsyncErrorBoundary error={error} resetErrorBoundary={jest.fn()} />)
       expect(eventMonitoring.captureException).not.toHaveBeenCalled()
     })
   })

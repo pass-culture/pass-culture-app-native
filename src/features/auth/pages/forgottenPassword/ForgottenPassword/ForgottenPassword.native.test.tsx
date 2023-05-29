@@ -1,7 +1,7 @@
 import React from 'react'
 
 import { navigate, replace } from '__mocks__/@react-navigation/native'
-import { captureMonitoringError } from 'libs/monitoring'
+import { captureMonitoringError, eventMonitoring } from 'libs/monitoring'
 import { useNetInfoContext as useNetInfoContextDefault } from 'libs/network/NetInfoWrapper'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { requestPasswordResetFail, requestPasswordResetSuccess, server } from 'tests/server'
@@ -140,6 +140,49 @@ describe('<ForgottenPassword />', () => {
       )
       expect(navigate).not.toBeCalled()
       expect(renderAPI.queryByTestId('Chargement en cours')).toBeNull()
+    })
+  })
+
+  it.each([
+    401, // Unauthorized
+    500, // Internal Server Error
+    502, // Bad Gateway
+    503, // Service Unavailable
+    504, // Gateway Timeout
+  ])(
+    'should capture an info in Sentry when reset password request API call has failed and error code is %s',
+    async (statusCode) => {
+      server.use(requestPasswordResetFail(statusCode))
+      const renderAPI = renderForgottenPassword()
+
+      const emailInput = renderAPI.getByPlaceholderText('tonadresse@email.com')
+      fireEvent.changeText(emailInput, 'john.doe@gmail.com')
+      fireEvent.press(renderAPI.getByText('Valider'))
+      const recaptchaWebview = renderAPI.getByTestId('recaptcha-webview')
+      simulateWebviewMessage(recaptchaWebview, '{ "message": "success", "token": "fakeToken" }')
+
+      await waitFor(() => {
+        expect(eventMonitoring.captureMessage).toHaveBeenNthCalledWith(
+          1,
+          `Échec de la requête https://localhost/native/v1/request_password_reset, code: ${statusCode}`,
+          'info'
+        )
+      })
+    }
+  )
+
+  it('should not capture an in Sentry when reset password request API call has failed and error code is 400', async () => {
+    server.use(requestPasswordResetFail())
+    const renderAPI = renderForgottenPassword()
+
+    const emailInput = renderAPI.getByPlaceholderText('tonadresse@email.com')
+    fireEvent.changeText(emailInput, 'john.doe@gmail.com')
+    fireEvent.press(renderAPI.getByText('Valider'))
+    const recaptchaWebview = renderAPI.getByTestId('recaptcha-webview')
+    simulateWebviewMessage(recaptchaWebview, '{ "message": "success", "token": "fakeToken" }')
+
+    await waitFor(() => {
+      expect(eventMonitoring.captureMessage).not.toHaveBeenCalled()
     })
   })
 
