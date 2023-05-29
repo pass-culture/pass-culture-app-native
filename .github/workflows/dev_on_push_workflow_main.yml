@@ -49,7 +49,7 @@ jobs:
       GCP_EHP_WORKLOAD_IDENTITY_PROVIDER: ${{ secrets.GCP_EHP_WORKLOAD_IDENTITY_PROVIDER }}
   hard-deploy-android-testing:
     needs: yarn-tester
-    if: startsWith(github.ref, 'refs/tags/testing')
+    if: startsWith(github.ref, 'refs/tags/testing') || startsWith(github.ref, 'refs/tags/v')
     uses: ./.github/workflows/dev_on_workflow_environment_deploy.yml
     with:
       TYPE: hard
@@ -59,7 +59,7 @@ jobs:
       GCP_EHP_WORKLOAD_IDENTITY_PROVIDER: ${{ secrets.GCP_EHP_WORKLOAD_IDENTITY_PROVIDER }}
   hard-deploy-ios-testing:
     needs: yarn-tester
-    if: startsWith(github.ref, 'refs/tags/testing')
+    if: startsWith(github.ref, 'refs/tags/testing') || startsWith(github.ref, 'refs/tags/v')
     uses: ./.github/workflows/dev_on_workflow_environment_ios_deploy.yml
     with:
       TYPE: hard
@@ -67,26 +67,26 @@ jobs:
     secrets:
       GCP_EHP_SERVICE_ACCOUNT: ${{ secrets.GCP_EHP_SERVICE_ACCOUNT }}
       GCP_EHP_WORKLOAD_IDENTITY_PROVIDER: ${{ secrets.GCP_EHP_WORKLOAD_IDENTITY_PROVIDER }}
-          #  hard-deploy-android-staging:
-          #    needs: yarn-tester
-          #    if: startsWith(github.ref, 'refs/tags/patch') || startsWith(github.ref, 'refs/tags/v')
-          #    uses: ./.github/workflows/dev_on_workflow_environment_deploy.yml
-          #    with:
-          #      TYPE: hard
-          #      ENV: staging
-          #    secrets:
-          #      GCP_EHP_SERVICE_ACCOUNT: ${{ secrets.GCP_EHP_SERVICE_ACCOUNT }}
-          #      GCP_EHP_WORKLOAD_IDENTITY_PROVIDER: ${{ secrets.GCP_EHP_WORKLOAD_IDENTITY_PROVIDER }}
-          #  hard-deploy-ios-staging:
-          #    needs: yarn-tester
-          #    if: startsWith(github.ref, 'refs/tags/patch') || startsWith(github.ref, 'refs/tags/v')
-          #    uses: ./.github/workflows/dev_on_workflow_environment_ios_deploy.yml
-          #    with:
-          #      TYPE: hard
-          #      ENV: staging
-          #    secrets:
-          #      GCP_EHP_SERVICE_ACCOUNT: ${{ secrets.GCP_EHP_SERVICE_ACCOUNT }}
-          #      GCP_EHP_WORKLOAD_IDENTITY_PROVIDER: ${{ secrets.GCP_EHP_WORKLOAD_IDENTITY_PROVIDER }}
+        #  hard-deploy-android-staging:
+        #    needs: yarn-tester
+        #    if: startsWith(github.ref, 'refs/tags/patch') || startsWith(github.ref, 'refs/tags/v')
+        #    uses: ./.github/workflows/dev_on_workflow_environment_deploy.yml
+        #    with:
+        #      TYPE: hard
+        #      ENV: staging
+        #    secrets:
+        #      GCP_EHP_SERVICE_ACCOUNT: ${{ secrets.GCP_EHP_SERVICE_ACCOUNT }}
+        #      GCP_EHP_WORKLOAD_IDENTITY_PROVIDER: ${{ secrets.GCP_EHP_WORKLOAD_IDENTITY_PROVIDER }}
+        #  hard-deploy-ios-staging:
+        #    needs: yarn-tester
+        #    if: startsWith(github.ref, 'refs/tags/patch') || startsWith(github.ref, 'refs/tags/v')
+        #    uses: ./.github/workflows/dev_on_workflow_environment_ios_deploy.yml
+        #    with:
+        #      TYPE: hard
+        #      ENV: staging
+        #    secrets:
+        #      GCP_EHP_SERVICE_ACCOUNT: ${{ secrets.GCP_EHP_SERVICE_ACCOUNT }}
+        #      GCP_EHP_WORKLOAD_IDENTITY_PROVIDER: ${{ secrets.GCP_EHP_WORKLOAD_IDENTITY_PROVIDER }}
   deploy-web-testing:
     needs: soft-deploy-testing
     uses: ./.github/workflows/dev_on_workflow_web_deploy.yml
@@ -96,15 +96,15 @@ jobs:
     secrets:
       GCP_EHP_SERVICE_ACCOUNT: ${{ secrets.GCP_EHP_SERVICE_ACCOUNT }}
       GCP_EHP_WORKLOAD_IDENTITY_PROVIDER: ${{ secrets.GCP_EHP_WORKLOAD_IDENTITY_PROVIDER }}
-          #  deploy-web-staging:
-          #    needs: [hard-deploy-android-staging, hard-deploy-ios-staging]
-          #    uses: ./.github/workflows/dev_on_workflow_web_deploy.yml
-          #    with:
-          #      ENV: staging
-          #      BUCKET_NAME: passculture-metier-ehp-staging-decliweb
-          #    secrets:
-          #      GCP_EHP_SERVICE_ACCOUNT: ${{ secrets.GCP_EHP_SERVICE_ACCOUNT }}
-          #      GCP_EHP_WORKLOAD_IDENTITY_PROVIDER: ${{ secrets.GCP_EHP_WORKLOAD_IDENTITY_PROVIDER }}
+        #  deploy-web-staging:
+        #    needs: [hard-deploy-android-staging, hard-deploy-ios-staging]
+        #    uses: ./.github/workflows/dev_on_workflow_web_deploy.yml
+        #    with:
+        #      ENV: staging
+        #      BUCKET_NAME: passculture-metier-ehp-staging-decliweb
+        #    secrets:
+        #      GCP_EHP_SERVICE_ACCOUNT: ${{ secrets.GCP_EHP_SERVICE_ACCOUNT }}
+        #      GCP_EHP_WORKLOAD_IDENTITY_PROVIDER: ${{ secrets.GCP_EHP_WORKLOAD_IDENTITY_PROVIDER }}
   deploy-web-proxy-testing:
     needs: [check-server-folder-changes, deploy-web-testing]
     if: needs.check-server-folder-changes.outputs.folder_changed == 'true'
@@ -114,12 +114,12 @@ jobs:
     secrets:
       GCP_EHP_SERVICE_ACCOUNT: ${{ secrets.GCP_EHP_SERVICE_ACCOUNT }}
       GCP_EHP_WORKLOAD_IDENTITY_PROVIDER: ${{ secrets.GCP_EHP_WORKLOAD_IDENTITY_PROVIDER }}
-          #  deploy-web-proxy-staging:
-          #    needs: [check-server-folder-changes, deploy-web-staging]
-          #    if: needs.check-server-folder-changes.outputs.folder_changed == 'true'
-          #    uses: ./.github/workflows/dev_on_workflow_web_proxy_deploy.yml
-          #    with:
-          #      ENV: staging
-          #    secrets:
-          #      GCP_EHP_SERVICE_ACCOUNT: ${{ secrets.GCP_EHP_SERVICE_ACCOUNT }}
-          #      GCP_EHP_WORKLOAD_IDENTITY_PROVIDER: ${{ secrets.GCP_EHP_WORKLOAD_IDENTITY_PROVIDER }}
+        #  deploy-web-proxy-staging:
+        #    needs: [check-server-folder-changes, deploy-web-staging]
+        #    if: needs.check-server-folder-changes.outputs.folder_changed == 'true'
+        #    uses: ./.github/workflows/dev_on_workflow_web_proxy_deploy.yml
+        #    with:
+        #      ENV: staging
+        #    secrets:
+        #      GCP_EHP_SERVICE_ACCOUNT: ${{ secrets.GCP_EHP_SERVICE_ACCOUNT }}
+        #      GCP_EHP_WORKLOAD_IDENTITY_PROVIDER: ${{ secrets.GCP_EHP_WORKLOAD_IDENTITY_PROVIDER }}
