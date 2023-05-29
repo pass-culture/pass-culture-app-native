@@ -6,7 +6,7 @@ import { videoModuleFixture } from 'features/home/fixtures/videoModule.fixture'
 import { VideoModule } from './VideoModule'
 
 export default {
-  title: 'VideoModule',
+  title: 'Features/home/VideoModule',
   component: VideoModule,
 } as ComponentMeta<typeof VideoModule>
 
