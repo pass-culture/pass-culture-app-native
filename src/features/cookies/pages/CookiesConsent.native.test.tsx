@@ -18,7 +18,7 @@ const COOKIES_CONSENT_KEY = 'cookies'
 const hideModal = jest.fn()
 const Today = new Date(2022, 9, 29)
 mockdate.set(Today)
-const deviceId = 'testUuidV4'
+const deviceId = 'ad7b7b5a169641e27cadbdb35adad9c4ca23099a'
 
 jest.mock('@react-navigation/native', () => ({
   ...jest.requireActual('@react-navigation/native'),

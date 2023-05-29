@@ -15,7 +15,7 @@ import { SnackBarHelperSettings } from 'ui/components/snackBar/types'
 const COOKIES_CONSENT_KEY = 'cookies'
 const Today = new Date(2022, 9, 29)
 mockdate.set(Today)
-const deviceId = 'testUuidV4'
+const deviceId = 'ad7b7b5a169641e27cadbdb35adad9c4ca23099a'
 
 const mockNavigate = jest.fn()
 jest.mock('@react-navigation/native', () => ({

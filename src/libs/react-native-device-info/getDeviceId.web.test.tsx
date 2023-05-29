@@ -1,9 +1,11 @@
+import { v4 as uuidv4 } from 'uuid'
+
 import { getDeviceId } from 'libs/react-native-device-info/getDeviceId.web'
 import { storage } from 'libs/storage'
 
 jest.unmock('libs/react-native-device-info/getDeviceId')
 
-const DEVICE_ID_FROM_UUID = 'ad7b7b5a169641e27cadbdb35adad9c4ca23099a'
+const DEVICE_ID_FROM_UUID = uuidv4()
 const DEVICE_ID_FROM_STORAGE = '1234-abcd-5678-efgh'
 
 describe('getDeviceId', () => {
