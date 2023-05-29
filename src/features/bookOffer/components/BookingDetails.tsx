@@ -150,9 +150,10 @@ export function BookingDetails({ stocks, onPressBookOffer, isLoading }: BookingD
 
   const onSubmitVenueModal = useCallback(
     (nextOfferId: number) => {
+      hideModal()
       dispatch({ type: 'SET_OFFER_ID', payload: nextOfferId })
     },
-    [dispatch]
+    [dispatch, hideModal]
   )
 
   if (!selectedStock || typeof quantity !== 'number') return <React.Fragment />
