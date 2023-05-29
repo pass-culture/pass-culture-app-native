@@ -3776,13 +3776,6 @@
   resolved "https://registry.yarnpkg.com/@ffmpeg-installer/win32-x64/-/win32-x64-4.1.0.tgz#17e8699b5798d4c60e36e2d6326a8ebe5e95a2c5"
   integrity sha512-Drt5u2vzDnIONf4ZEkKtFlbvwj6rI3kxw1Ck9fpudmtgaZIHD4ucsWB2lCZBXRxJgXR+2IMSti+4rtM4C4rXgg==
 
-"@fingerprintjs/fingerprintjs@^3.3.0":
-  version "3.3.1"
-  resolved "https://registry.yarnpkg.com/@fingerprintjs/fingerprintjs/-/fingerprintjs-3.3.1.tgz#d080b0ea356b3ad14de4163afc3611beb5b5df20"
-  integrity sha512-rs9fCfINXeYO1XRTbZ/cXFSyRknyoZSwLNypO5Kf7C/o0g7mBpIDKVzJW3UsKEh+YybCS3wzaOK3z9PxtLiXaw==
-  dependencies:
-    tslib "^2.0.1"
-
 "@firebase/analytics-compat@0.1.9":
   version "0.1.9"
   resolved "https://registry.yarnpkg.com/@firebase/analytics-compat/-/analytics-compat-0.1.9.tgz#d4a724f78a7333abe8ee8b00f4a4d8b8c392b46c"
