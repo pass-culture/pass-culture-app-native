@@ -241,7 +241,7 @@
     "@wdio/appium-service": "7.26.0",
     "@wdio/cli": "7.26.0",
     "@wdio/local-runner": "7.26.0",
-    "@wdio/mocha-framework": "7.26.0",
+    "@wdio/mocha-framework": "8.10.4",
     "@wdio/spec-reporter": "7.26.0",
     "@welldone-software/why-did-you-render": "^7.0.1",
     "appcenter-cli": "^2.10.10",
