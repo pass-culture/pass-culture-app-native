@@ -12835,10 +12835,10 @@ eslint-plugin-typescript-sort-keys@^2.1.0:
     json-schema "^0.4.0"
     natural-compare-lite "^1.4.0"
 
-eslint-plugin-wdio@7.25.3:
-  version "7.25.3"
-  resolved "https://registry.yarnpkg.com/eslint-plugin-wdio/-/eslint-plugin-wdio-7.25.3.tgz#52a195bccad10cd8f1b80f87d491a5f26c1da3df"
-  integrity sha512-2zbYwV14Md9FNlyhaIILVGPB6w4bu2eJdOTywDUs2Qy4ebcQNwrxB0qCaf7Rm4O+T0Ir+tdYHYBBfbDocSLKng==
+eslint-plugin-wdio@8.8.7:
+  version "8.8.7"
+  resolved "https://registry.yarnpkg.com/eslint-plugin-wdio/-/eslint-plugin-wdio-8.8.7.tgz#94b8da4184f58ea604ee143d0d2cbe31966d3556"
+  integrity sha512-s7/ZnM4KwFNPJ14GjhPcvGyAKn5BT2iE5x7wx1O8ows187AMayGo0kN5at6nvlgxT0gH5zoEKZbHX2d+qkaQdA==
 
 eslint-scope@5.1.1, eslint-scope@^5.1.1:
   version "5.1.1"
