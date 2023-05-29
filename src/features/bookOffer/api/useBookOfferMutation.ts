@@ -1,7 +1,7 @@
 import { useMutation, useQueryClient } from 'react-query'
 
 import { api } from 'api/api'
-import { ApiError, isOnlyCapturedByAPIException } from 'api/apiHelpers'
+import { ApiError, isAPIExceptionCapturedAsInfo } from 'api/apiHelpers'
 import { BookingsResponse, BookOfferRequest, BookOfferResponse } from 'api/gen'
 import { eventMonitoring } from 'libs/monitoring'
 import { QueryKeys } from 'libs/queryKeys'
@@ -34,13 +34,18 @@ export function useBookOfferMutation({ onSuccess, onError }: BookOffer) {
       } catch (error) {
         if (
           !(error instanceof ApiError) ||
-          (error instanceof ApiError && !isOnlyCapturedByAPIException(error.statusCode))
-        )
+          (error instanceof ApiError && !isAPIExceptionCapturedAsInfo(error.statusCode))
+        ) {
           eventMonitoring.captureException(error, {
             extra: {
               bookingId: data.bookingId,
             },
           })
+        }
+
+        if (error instanceof ApiError && isAPIExceptionCapturedAsInfo(error.statusCode)) {
+          eventMonitoring.captureMessage(error.message, 'info')
+        }
       }
 
       onSuccess(data)
