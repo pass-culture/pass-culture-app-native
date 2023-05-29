@@ -17,14 +17,14 @@ Gone.args = {
   status: CreditStatus.GONE,
 }
 
-const ANIMATION_DELAY = 2
+const ANIMATION_DELAY_IN_S = 2
 export const Ongoing = Template.bind({})
 Ongoing.args = {
   status: CreditStatus.ONGOING,
 }
 Ongoing.parameters = {
   // Wait for animation to finish before snapshot
-  chromatic: { delay: ANIMATION_DELAY },
+  chromatic: { delay: ANIMATION_DELAY_IN_S },
 }
 
 export const Coming = Template.bind({})
