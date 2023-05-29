@@ -6,12 +6,12 @@ import styled from 'styled-components/native'
 import { v4 as uuidv4 } from 'uuid'
 
 import { api } from 'api/api'
-import { ApiError, isOnlyCapturedByAPIException } from 'api/apiHelpers'
+import { ApiError, isAPIExceptionCapturedAsInfo } from 'api/apiHelpers'
 import { SettingsResponse } from 'api/gen'
 import { useSettingsContext } from 'features/auth/context/SettingsContext'
 import { navigateToHome } from 'features/navigation/helpers'
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
-import { captureMonitoringError } from 'libs/monitoring'
+import { captureMonitoringError, eventMonitoring } from 'libs/monitoring'
 import { useNetInfoContext } from 'libs/network/NetInfoWrapper'
 import { ReCaptcha } from 'libs/recaptcha/ReCaptcha'
 import { BottomContentPage } from 'ui/components/BottomContentPage'
@@ -175,8 +175,11 @@ const useForgottenPasswordForm = (settings: UseQueryResult<SettingsResponse, unk
           'email',
           'Un problème est survenu pendant la réinitialisation, réessaie plus tard.'
         )
-        if (error instanceof ApiError && !isOnlyCapturedByAPIException(error.statusCode)) {
+        if (error instanceof ApiError && !isAPIExceptionCapturedAsInfo(error.statusCode)) {
           captureMonitoringError(error.message, 'ForgottenPasswordRequestResetError')
+        }
+        if (error instanceof ApiError && isAPIExceptionCapturedAsInfo(error.statusCode)) {
+          eventMonitoring.captureMessage(error.message, 'info')
         }
       } finally {
         setValue('isFetching', false)
