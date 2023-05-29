@@ -5,7 +5,13 @@ import { useQueries, useQuery } from 'react-query'
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { mergeOffersAndVenuesData } from 'features/home/api/helpers/mergeOffersAndVenuesData'
 import { useHomePosition } from 'features/home/helpers/useHomePosition'
-import { HomepageModule, isOffersModule, isVenuesModule, ModuleData } from 'features/home/types'
+import {
+  HomepageModule,
+  isOffersModule,
+  isVenuesModule,
+  ModuleData,
+  VenuesParameters,
+} from 'features/home/types'
 import { useIsUserUnderage } from 'features/profile/helpers/useIsUserUnderage'
 import { SearchState } from 'features/search/types'
 import { fetchMultipleOffers } from 'libs/algolia/fetchAlgolia/fetchMultipleOffers/fetchMultipleOffers'
@@ -29,18 +35,24 @@ export const useGetOffersAndVenuesData = (modules: HomepageModule[]) => {
   const netInfo = useNetInfoContext()
 
   const venuesModules = modules.filter(isVenuesModule)
-  const venuesParameters = venuesModules.map((module) => module.venuesParameters[0])
+  const venuesParameters: VenuesParameters[] = []
+  const venuesModuleIds: string[] = []
+
+  venuesModules.forEach((module) => {
+    venuesParameters.push(module.venuesParameters[0])
+    venuesModuleIds.push(module.id)
+  })
 
   const venuesQuery = async () => {
     const result = await fetchVenuesModules(venuesParameters, position)
     return {
       hits: result,
-      moduleId: venuesModules.map((module) => module.id),
+      moduleId: venuesModuleIds,
     }
   }
 
   const venuesResultList = useQuery({
-    queryKey: [QueryKeys.HOME_VENUES_MODULE],
+    queryKey: [QueryKeys.HOME_VENUES_MODULE, venuesModuleIds],
     queryFn: venuesQuery,
     enabled: !!netInfo.isConnected && venuesParameters.length > 0,
   })
