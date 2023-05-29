@@ -1,5 +1,5 @@
-import React, { useCallback, useMemo, useState } from 'react'
-import { FlatListProps, View } from 'react-native'
+import React, { useCallback, useMemo, useRef, useState } from 'react'
+import { FlatList, FlatListProps, View } from 'react-native'
 import styled from 'styled-components/native'
 
 import {
@@ -7,6 +7,7 @@ import {
   VenueSelectionList,
   VenueSelectionListProps,
 } from 'features/offer/components/VenueSelectionList/VenueSelectionList'
+import { AutoScrollSwitch } from 'features/search/components/AutoScrollSwitch/AutoScrollSwitch'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { AppModal } from 'ui/components/modals/AppModal'
 import { ModalHeader } from 'ui/components/modals/ModalHeader'
@@ -20,9 +21,13 @@ type VenueSelectionModalProps = Pick<
 > & {
   isVisible: boolean
   items: VenueSelectionListProps['items']
+  nbLoadedHits: number
+  nbHits: number
+  isFetchingNextPage: boolean
   title: string
   onSubmit: (selectedOfferId: number) => void
   onClosePress: VoidFunction
+  onEndReached?: () => void
 }
 
 const HEIGHT_CONTAINER = getSpacing(6)
@@ -37,8 +42,13 @@ export function VenueSelectionModal({
   refreshing,
   onRefresh,
   onScroll,
+  nbLoadedHits,
+  nbHits,
+  isFetchingNextPage,
 }: VenueSelectionModalProps) {
   const [selectedOffer, setSelectedOffer] = useState<number>()
+  const [autoScrollEnabled, setAutoScrollEnabled] = useState(true)
+  const venueRef = useRef<FlatList<VenueListItem>>(null)
   const { top } = useCustomSafeInsets()
 
   const handleSubmit = useCallback(() => {
@@ -64,6 +74,20 @@ export function VenueSelectionModal({
     )
   }, [onClosePress, title, top])
 
+  const handlePressFooter = () => {
+    const currentRef = venueRef.current
+    if (currentRef instanceof FlatList) {
+      const button = (currentRef.getNativeScrollRef() as unknown as HTMLElement).children[0]
+        .lastChild as HTMLElement
+      const offerLink = button?.previousSibling?.firstChild?.firstChild as HTMLElement
+      offerLink.focus()
+      offerLink.blur()
+      if (onEndReached) {
+        onEndReached()
+      }
+    }
+  }
+
   return (
     <AppModal
       title={title}
@@ -84,6 +108,13 @@ export function VenueSelectionModal({
         </BottomWrapper>
       }
       scrollEnabled={false}>
+      <View>
+        <AutoScrollSwitch
+          title="Activer le chargement automatique des résultats"
+          active={autoScrollEnabled}
+          toggle={() => setAutoScrollEnabled((autoScroll) => !autoScroll)}
+        />
+      </View>
       <VenueSelectionList
         onItemSelect={setSelectedOffer}
         items={items}
@@ -92,6 +123,12 @@ export function VenueSelectionModal({
         refreshing={refreshing}
         onRefresh={onRefresh}
         onScroll={onScroll}
+        onPress={handlePressFooter}
+        ref={venueRef}
+        autoScrollEnabled={autoScrollEnabled}
+        nbLoadedHits={nbLoadedHits}
+        nbHits={nbHits}
+        isFetchingNextPage={isFetchingNextPage}
       />
     </AppModal>
   )
