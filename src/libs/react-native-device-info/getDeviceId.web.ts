@@ -2,7 +2,7 @@ import FingerprintJS from '@fingerprintjs/fingerprintjs'
 
 const fpPromise = FingerprintJS.load()
 
-export async function getUniqueId() {
+export async function getDeviceId() {
   try {
     const fp = await fpPromise
     const { visitorId } = await fp.get()

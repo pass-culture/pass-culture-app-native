@@ -9,7 +9,7 @@ import { Headers } from 'libs/fetch'
 import { getAccessTokenStatus } from 'libs/jwt'
 import { clearRefreshToken, getRefreshToken } from 'libs/keychain'
 import { eventMonitoring } from 'libs/monitoring'
-import { getUniqueId } from 'libs/react-native-device-info/getUniqueId'
+import { getDeviceId } from 'libs/react-native-device-info/getDeviceId'
 import { storage } from 'libs/storage'
 
 import Package from '../../package.json'
@@ -66,7 +66,7 @@ export const safeFetch = async (
       'app-version': Package.version,
       'code-push-id': await getCodePushId(),
       'commit-hash': env.COMMIT_HASH,
-      'device-id': await getUniqueId(),
+      'device-id': await getDeviceId(),
       platform: Platform.OS,
       'request-id': uuidv4(),
     },
