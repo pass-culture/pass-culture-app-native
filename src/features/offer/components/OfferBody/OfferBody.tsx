@@ -95,17 +95,27 @@ export const OfferBody: FunctionComponent<Props> = ({
   const shouldFetchSearchVenueOffers = Boolean(
     enableMultivenueOffer && isMultivenueCompatibleOffer && offer?.extraData?.isbn
   )
-  const { hasNextPage, fetchNextPage, refetch, data, venueList, isFetching, nbVenueItems } =
-    useSearchVenueOffers({
-      offerId,
-      venueId: offer?.venue?.id,
-      geolocation: position ?? {
-        latitude: offer?.venue?.coordinates?.latitude ?? 0,
-        longitude: offer?.venue?.coordinates?.longitude ?? 0,
-      },
-      query: offer?.extraData?.isbn ?? '',
-      queryOptions: { enabled: shouldFetchSearchVenueOffers },
-    })
+  const {
+    hasNextPage,
+    fetchNextPage,
+    refetch,
+    data,
+    venueList,
+    isFetching,
+    nbVenueItems,
+    nbLoadedHits,
+    nbHits,
+    isFetchingNextPage,
+  } = useSearchVenueOffers({
+    offerId,
+    venueId: offer?.venue?.id,
+    geolocation: position ?? {
+      latitude: offer?.venue?.coordinates?.latitude ?? 0,
+      longitude: offer?.venue?.coordinates?.longitude ?? 0,
+    },
+    query: offer?.extraData?.isbn ?? '',
+    queryOptions: { enabled: shouldFetchSearchVenueOffers },
+  })
 
   const shouldDisplayOtherVenuesAvailableButton = Boolean(
     shouldFetchSearchVenueOffers && nbVenueItems > 0
@@ -398,6 +408,9 @@ export const OfferBody: FunctionComponent<Props> = ({
           refreshing={isRefreshing}
           onRefresh={void refetch}
           onScroll={onScrollModal}
+          nbLoadedHits={nbLoadedHits}
+          nbHits={nbHits}
+          isFetchingNextPage={isFetchingNextPage}
         />
       ) : null}
     </Container>

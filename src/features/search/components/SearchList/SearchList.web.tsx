@@ -45,7 +45,7 @@ export const SearchList: React.FC<SearchListProps> = forwardRef<FlatList<Offer>,
         ListFooterComponent={
           <SearchListFooter
             isFetchingNextPage={isFetchingNextPage}
-            hits={hits}
+            nbLoadedHits={hits.length}
             nbHits={nbHits}
             autoScrollEnabled={autoScrollEnabled}
             onPress={onPress}

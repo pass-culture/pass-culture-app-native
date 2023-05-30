@@ -1,31 +1,29 @@
-import React, { forwardRef } from 'react'
-import { ActivityIndicator } from 'react-native'
+import React, { forwardRef, LegacyRef } from 'react'
+import { ActivityIndicator, View } from 'react-native'
 import styled from 'styled-components/native'
 
-import { Offer } from 'shared/offer/types'
 import { ButtonSecondary } from 'ui/components/buttons/ButtonSecondary'
 import { More } from 'ui/svg/icons/More'
 import { getSpacing, Spacer } from 'ui/theme'
 
 export interface SearchListFooterProps {
   isFetchingNextPage: boolean
-  hits: Offer[]
+  nbLoadedHits: number
   nbHits: number
   autoScrollEnabled: boolean
   onPress?: () => void
 }
 
 export const SearchListFooter: React.FC<SearchListFooterProps> = forwardRef(
-  ({ isFetchingNextPage, hits, nbHits, autoScrollEnabled, onPress }, ref) => {
-    const showMoreButton = !autoScrollEnabled && hits.length < nbHits
-
-    return isFetchingNextPage && hits.length < nbHits ? (
-      <React.Fragment ref={ref}>
+  ({ isFetchingNextPage, nbLoadedHits, nbHits, autoScrollEnabled, onPress }, ref) => {
+    const showMoreButton = !autoScrollEnabled && nbLoadedHits < nbHits
+    return isFetchingNextPage && nbLoadedHits < nbHits ? (
+      <View ref={ref as LegacyRef<View>}>
         <Spacer.Column numberOfSpaces={4} />
         <ActivityIndicator testID="activity-indicator" />
         <Spacer.Column numberOfSpaces={4} />
         <Footer testID="footer" />
-      </React.Fragment>
+      </View>
     ) : (
       <React.Fragment>
         {!!showMoreButton && <Separator />}

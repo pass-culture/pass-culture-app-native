@@ -130,5 +130,13 @@ export const useSearchVenueOffers = ({
 
   const nbVenueItems = venueList.length
 
-  return { data, venueList, nbVenueItems, ...infiniteQuery }
+  const nbLoadedHits =
+    data?.pages.reduce((acc, curr) => {
+      acc += curr.hits.length
+      return acc
+    }, 0) ?? 0
+
+  const { nbHits } = data?.pages[0] ?? { nbHits: 0 }
+
+  return { data, venueList, nbVenueItems, nbLoadedHits, nbHits, ...infiniteQuery }
 }

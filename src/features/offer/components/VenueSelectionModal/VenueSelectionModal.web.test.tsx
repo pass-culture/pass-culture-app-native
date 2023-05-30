@@ -28,6 +28,9 @@ describe('<VenueSelectionModal />', () => {
     },
   ]
 
+  const nbLoadedHits = 3
+  const nbHits = 40
+
   it('should not have any accessibility violations', async () => {
     const { container } = render(
       <VenueSelectionModal
@@ -36,6 +39,9 @@ describe('<VenueSelectionModal />', () => {
         title="Lieu de retrait"
         onSubmit={jest.fn()}
         onClosePress={jest.fn()}
+        nbLoadedHits={nbLoadedHits}
+        nbHits={nbHits}
+        isFetchingNextPage
       />
     )
 

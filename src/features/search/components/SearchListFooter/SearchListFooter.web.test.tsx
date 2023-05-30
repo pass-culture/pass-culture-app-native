@@ -7,7 +7,7 @@ import { SearchListFooter, SearchListFooterProps } from './SearchListFooter.web'
 
 const defaultProps: SearchListFooterProps = {
   isFetchingNextPage: false,
-  hits: mockedAlgoliaResponse.hits,
+  nbLoadedHits: mockedAlgoliaResponse.hits.length,
   nbHits: mockedAlgoliaResponse.nbHits,
   autoScrollEnabled: false,
   onPress: jest.fn(),
