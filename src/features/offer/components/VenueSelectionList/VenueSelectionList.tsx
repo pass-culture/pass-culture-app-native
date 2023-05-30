@@ -52,7 +52,7 @@ export const VenueSelectionList: React.FC<VenueSelectionListProps> = forwardRef<
     const renderItem = useCallback(
       ({ item }: { item: VenueListItem }) => {
         return (
-          <ItemWrapper>
+          <ItemWrapper key={item.offerId}>
             <VenueSelectionListItem
               {...item}
               onSelect={() => onItemSelect(item.offerId)}
