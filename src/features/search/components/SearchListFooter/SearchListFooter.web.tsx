@@ -25,7 +25,7 @@ export const SearchListFooter: React.FC<SearchListFooterProps> = forwardRef(
         <Footer testID="footer" />
       </View>
     ) : (
-      <React.Fragment>
+      <View ref={ref as LegacyRef<View>}>
         {!!showMoreButton && <Separator />}
         <Footer>
           {!!showMoreButton && (
@@ -37,7 +37,7 @@ export const SearchListFooter: React.FC<SearchListFooterProps> = forwardRef(
             />
           )}
         </Footer>
-      </React.Fragment>
+      </View>
     )
   }
 )

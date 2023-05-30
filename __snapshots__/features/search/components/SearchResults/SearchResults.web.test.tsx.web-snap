@@ -486,8 +486,12 @@ Object {
               class="css-view-175oi2r"
             >
               <div
-                class="css-view-175oi2r r-alignItems-1awozwy r-height-me5xia"
-              />
+                class="css-view-175oi2r"
+              >
+                <div
+                  class="css-view-175oi2r r-alignItems-1awozwy r-height-me5xia"
+                />
+              </div>
             </div>
           </div>
         </div>
@@ -981,8 +985,12 @@ Object {
             class="css-view-175oi2r"
           >
             <div
-              class="css-view-175oi2r r-alignItems-1awozwy r-height-me5xia"
-            />
+              class="css-view-175oi2r"
+            >
+              <div
+                class="css-view-175oi2r r-alignItems-1awozwy r-height-me5xia"
+              />
+            </div>
           </div>
         </div>
       </div>
