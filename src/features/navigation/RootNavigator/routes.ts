@@ -62,6 +62,7 @@ import { DeleteProfileSuccess } from 'features/profile/pages/DeleteProfile/Delet
 import { LegalNotices } from 'features/profile/pages/LegalNotices/LegalNotices'
 import { NotificationSettings } from 'features/profile/pages/NotificationSettings/NotificationSettings'
 import { PersonalData } from 'features/profile/pages/PersonalData/PersonalData'
+import { SuspendAccountConfirmation } from 'features/profile/pages/SuspendAccountConfirmation/SuspendAccountConfirmation'
 import { TrackEmailChange } from 'features/profile/pages/TrackEmailChange/TrackEmailChange'
 import { SearchFilter } from 'features/search/pages/SearchFilter/SearchFilter'
 import { Venue } from 'features/venue/pages/Venue/Venue'
@@ -334,6 +335,12 @@ export const routes: Route[] = [
     component: ResetPasswordExpiredLink,
     path: 'email-modification-mot-de-passe-expire',
     options: { title: 'Email modification mot de passe expiré' },
+  },
+  {
+    name: 'SuspendAccountConfirmation',
+    component: SuspendAccountConfirmation,
+    path: 'suspension-compte/confirmation',
+    options: { title: 'Suspension de compte' },
   },
   {
     name: 'SearchFilter',
