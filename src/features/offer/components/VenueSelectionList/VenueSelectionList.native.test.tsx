@@ -82,4 +82,37 @@ describe('<VenueSelectionList />', () => {
       borderColor: theme.colors.black,
     })
   })
+
+  it('should display distance when user share his position', () => {
+    render(
+      <VenueSelectionList
+        onItemSelect={jest.fn()}
+        selectedItem={1}
+        items={items}
+        nbLoadedHits={nbLoadedHits}
+        nbHits={nbHits}
+        isFetchingNextPage
+        autoScrollEnabled
+        isSharingLocation
+      />
+    )
+
+    expect(screen.getByText('À 500 m')).toBeTruthy()
+  })
+
+  it('should not display distance when user not share his position', () => {
+    render(
+      <VenueSelectionList
+        onItemSelect={jest.fn()}
+        selectedItem={1}
+        items={items}
+        nbLoadedHits={nbLoadedHits}
+        nbHits={nbHits}
+        isFetchingNextPage
+        autoScrollEnabled
+      />
+    )
+
+    expect(screen.queryByText('À 500 m')).toBeNull()
+  })
 })

@@ -21,6 +21,7 @@ export type VenueSelectionListProps = ViewProps &
     autoScrollEnabled: boolean
     isFetchingNextPage: boolean
     onPress?: () => void
+    isSharingLocation?: boolean
   }
 
 const keyExtractor = (item: VenueListItem) => String(item.offerId)
@@ -43,6 +44,7 @@ export const VenueSelectionList: React.FC<VenueSelectionListProps> = forwardRef<
       onScroll,
       onPress,
       autoScrollEnabled,
+      isSharingLocation,
       ...props
     },
     ref
@@ -55,13 +57,14 @@ export const VenueSelectionList: React.FC<VenueSelectionListProps> = forwardRef<
           <ItemWrapper key={item.offerId}>
             <VenueSelectionListItem
               {...item}
+              distance={isSharingLocation ? item.distance : ''}
               onSelect={() => onItemSelect(item.offerId)}
               isSelected={selectedItem === item.offerId}
             />
           </ItemWrapper>
         )
       },
-      [onItemSelect, selectedItem]
+      [onItemSelect, selectedItem, isSharingLocation]
     )
 
     return (

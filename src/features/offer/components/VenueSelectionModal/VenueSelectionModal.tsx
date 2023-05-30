@@ -28,6 +28,7 @@ type VenueSelectionModalProps = Pick<
   onSubmit: (selectedOfferId: number) => void
   onClosePress: VoidFunction
   onEndReached?: () => void
+  isSharingLocation?: boolean
 }
 
 const HEIGHT_CONTAINER = getSpacing(6)
@@ -45,6 +46,7 @@ export function VenueSelectionModal({
   nbLoadedHits,
   nbHits,
   isFetchingNextPage,
+  isSharingLocation,
 }: VenueSelectionModalProps) {
   const [selectedOffer, setSelectedOffer] = useState<number>()
   const [autoScrollEnabled, setAutoScrollEnabled] = useState(true)
@@ -129,6 +131,7 @@ export function VenueSelectionModal({
         nbLoadedHits={nbLoadedHits}
         nbHits={nbHits}
         isFetchingNextPage={isFetchingNextPage}
+        isSharingLocation={isSharingLocation}
       />
     </AppModal>
   )
