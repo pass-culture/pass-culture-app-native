@@ -58,6 +58,21 @@ export interface FetchOfferParameters {
   indexSearch?: string
 }
 
+export interface OfferModuleQuery {
+  indexName: string
+  query: string
+  params: {
+    attributesToHighlight: never[]
+    attributesToRetrieve: string[]
+    filters?: string
+    aroundLatLng?: string
+    aroundRadius?: number | 'all'
+    numericFilters?: FiltersArray
+    facetFilters?: FiltersArray
+    hitsPerPage?: number
+  }
+}
+
 export interface AlgoliaVenue {
   objectID: string
   city: string
