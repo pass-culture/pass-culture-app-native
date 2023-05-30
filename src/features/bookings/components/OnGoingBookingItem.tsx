@@ -20,10 +20,7 @@ import { getSpacing, Spacer, Typo } from 'ui/theme'
 
 import { BookingItemTitle } from './BookingItemTitle'
 
-export const OnGoingBookingItem = ({
-  booking,
-  digitalBookingWithoutExpirationDate,
-}: BookingItemProps) => {
+export const OnGoingBookingItem = ({ booking, eligibleBookingsForArchive }: BookingItemProps) => {
   const daysLeft = daysCountdown(booking.dateCreated)
   const { isEvent } = useSubcategory(booking.stock.offer.subcategoryId)
   const categoryId = useCategoryId(booking.stock.offer.subcategoryId)
@@ -38,7 +35,7 @@ export const OnGoingBookingItem = ({
     date: dateLabel,
   })
 
-  const isBookingValid = isBookingInList(booking, digitalBookingWithoutExpirationDate)
+  const isBookingValid = isBookingInList(booking, eligibleBookingsForArchive)
   const canDisplayExpirationMessage = !!isBookingValid && daysLeft >= 0
   const correctExpirationMessages = displayExpirationMessage(daysLeft)
 

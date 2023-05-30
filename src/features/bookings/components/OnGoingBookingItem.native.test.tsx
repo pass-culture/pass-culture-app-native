@@ -4,6 +4,7 @@ import React from 'react'
 
 import { navigate } from '__mocks__/@react-navigation/native'
 import { SubcategoryIdEnum, WithdrawalTypeEnum } from 'api/gen'
+import { FREE_OFFER_CATEGORIES_TO_ARCHIVE } from 'features/bookings/constants'
 import { bookingsSnap } from 'features/bookings/fixtures/bookingsSnap'
 import { Booking } from 'features/bookings/types'
 import { fireEvent, render } from 'tests/utils'
@@ -96,6 +97,48 @@ describe('OnGoingBookingItem', () => {
       expect(getByText('Ta réservation s’archivera dans 25 jours')).toBeTruthy()
     })
 
+    it.each(FREE_OFFER_CATEGORIES_TO_ARCHIVE.map((category) => [category, 0]))(
+      'should display expiration message : "Ta réservation s\'archivera dans XX jours" when price is 0 and subcategory %s',
+      (subcategoryId, price) => {
+        mockdate.set(new Date('2021-02-20T00:00:00Z'))
+        const booking = {
+          ...initialBooking,
+          stock: {
+            ...initialBooking.stock,
+            price,
+            offer: {
+              ...initialBooking.stock.offer,
+              subcategoryId,
+            },
+          },
+        }
+        const { getByText } = renderOnGoingBookingItem(booking, bookings)
+
+        expect(getByText('Ta réservation s’archivera dans 25 jours')).toBeTruthy()
+      }
+    )
+
+    it.each(FREE_OFFER_CATEGORIES_TO_ARCHIVE.map((category) => [category, 1000]))(
+      'should not display expiration message : "Ta réservation s\'archivera dans XX jours" when price is not 0 and subcategory %s',
+      (subcategoryId, price) => {
+        mockdate.set(new Date('2021-02-20T00:00:00Z'))
+        const booking = {
+          ...initialBooking,
+          stock: {
+            ...initialBooking.stock,
+            price,
+            offer: {
+              ...initialBooking.stock.offer,
+              subcategoryId,
+            },
+          },
+        }
+        const { queryByText } = renderOnGoingBookingItem(booking)
+
+        expect(queryByText('Ta réservation s’archivera dans 25 jours')).toBeFalsy()
+      }
+    )
+
     it('should display any expiration messages"', () => {
       mockdate.set(new Date('2021-03-18T00:00:00Z'))
       const booking = {
@@ -116,14 +159,8 @@ describe('OnGoingBookingItem', () => {
   })
 })
 
-function renderOnGoingBookingItem(
-  booking: Booking,
-  digitalBookingWithoutExpirationDate?: Booking[]
-) {
+function renderOnGoingBookingItem(booking: Booking, eligibleBookingsForArchive: Booking[] = []) {
   return render(
-    <OnGoingBookingItem
-      booking={booking}
-      digitalBookingWithoutExpirationDate={digitalBookingWithoutExpirationDate}
-    />
+    <OnGoingBookingItem booking={booking} eligibleBookingsForArchive={eligibleBookingsForArchive} />
   )
 }

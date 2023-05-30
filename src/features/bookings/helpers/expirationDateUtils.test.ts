@@ -5,7 +5,7 @@ import {
   daysCountdown,
   displayExpirationMessage,
   formattedExpirationDate,
-  getDigitalBookingWithoutExpirationDate,
+  getDigitalBookingsWithoutExpirationDate,
   isBookingInList,
   isDigitalBookingWithoutExpirationDate,
 } from 'features/bookings/helpers/expirationDateUtils'
@@ -13,13 +13,13 @@ import { Booking } from 'features/bookings/types'
 
 describe('expirationDateUtils', () => {
   const initialBookings: Booking[] = bookingsSnap.ongoing_bookings
-  describe('getDigitalBookingWithoutExpirationDate', () => {
+  describe('getDigitalBookingsWithoutExpirationDate', () => {
     it('should get an array with a booking if is digital and without expiration date', () => {
       // isDigital === true && !booking.expirationDate
       const validBooking = initialBookings[0]
       const arrayOfBooking = [validBooking]
 
-      expect(getDigitalBookingWithoutExpirationDate(initialBookings)).toStrictEqual(arrayOfBooking)
+      expect(getDigitalBookingsWithoutExpirationDate(initialBookings)).toStrictEqual(arrayOfBooking)
     })
 
     it('should return an empty array ', () => {
@@ -36,24 +36,24 @@ describe('expirationDateUtils', () => {
       }
       const arrayOfBooking = [invalidbooking]
 
-      expect(getDigitalBookingWithoutExpirationDate(arrayOfBooking)).toEqual([])
+      expect(getDigitalBookingsWithoutExpirationDate(arrayOfBooking)).toEqual([])
     })
   })
 
   describe('isBookingInList', () => {
     it('should check if a booking does exist in the list of DigitalBookingWithoutExpirationDate array and return true if it exist', () => {
       const [firstBooking] = initialBookings
-      const getDigitalBookingWithoutExpirationDate = initialBookings
+      const getDigitalBookingsWithoutExpirationDate = initialBookings
 
-      expect(isBookingInList(firstBooking, getDigitalBookingWithoutExpirationDate)).toBeTruthy()
+      expect(isBookingInList(firstBooking, getDigitalBookingsWithoutExpirationDate)).toBeTruthy()
     })
 
     it('should check if a booking does exist in the list of DigitalBookingWithoutExpirationDate array and return false if it does not exist ', () => {
       const [firstBooking] = initialBookings
       const newFirstBooking = { ...firstBooking, id: 999 }
-      const getDigitalBookingWithoutExpirationDate = initialBookings
+      const getDigitalBookingsWithoutExpirationDate = initialBookings
 
-      expect(isBookingInList(newFirstBooking, getDigitalBookingWithoutExpirationDate)).toBeFalsy()
+      expect(isBookingInList(newFirstBooking, getDigitalBookingsWithoutExpirationDate)).toBeFalsy()
     })
   })
 

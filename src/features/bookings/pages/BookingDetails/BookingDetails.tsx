@@ -12,7 +12,7 @@ import { BookingPropertiesSection } from 'features/bookings/components/BookingPr
 import { CancelBookingModal } from 'features/bookings/components/CancelBookingModal'
 import { TicketSwiper } from 'features/bookings/components/Ticket/TicketSwiper'
 import { getBookingProperties, getOfferRules } from 'features/bookings/helpers'
-import { isDigitalBookingWithoutExpirationDate } from 'features/bookings/helpers/expirationDateUtils'
+import { isEligibleBookingsForArchive } from 'features/bookings/helpers/expirationDateUtils'
 import { BookingNotFound } from 'features/bookings/pages/BookingNotFound/BookingNotFound'
 import { Booking } from 'features/bookings/types'
 import { UseNavigationType, UseRouteType } from 'features/navigation/RootNavigator/types'
@@ -79,7 +79,7 @@ export function BookingDetails() {
   // of the reservation being consulted if it is made via Flask Admin
   // and booking is not archived
   const cancellationConsultedBooking = endedBookings.filter(
-    (item) => item.id === params.id && !isDigitalBookingWithoutExpirationDate(item)
+    (item) => item.id === params.id && !isEligibleBookingsForArchive(item)
   )
 
   if (cancellationConsultedBooking.length > 0) {
