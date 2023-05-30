@@ -32,8 +32,36 @@ const DynamicTemplate: ComponentStory<typeof VenueSelectionModal> = (props) => {
   )
 }
 
-export const Default = DynamicTemplate.bind({})
-Default.args = {
+export const WithUserPosition = DynamicTemplate.bind({})
+WithUserPosition.args = {
+  isSharingLocation: true,
+  venueName: 'Fnac',
+  items: [
+    {
+      title: 'Envie de lire',
+      address: '94200 Ivry-sur-Seine, 16 rue Gabriel Peri',
+      distance: '500 m',
+      offerId: 1,
+    },
+    {
+      title: 'Le Livre Éclaire',
+      address: '75013 Paris, 56 rue de Tolbiac',
+      distance: '1,5 km',
+      offerId: 2,
+    },
+    {
+      title: 'Hachette Livre',
+      address: '94200 Ivry-sur-Seine, Rue Charles du Colomb',
+      distance: '2,4 km',
+      offerId: 3,
+    },
+  ],
+}
+
+export const WithoutUserPosition = DynamicTemplate.bind({})
+WithoutUserPosition.args = {
+  isSharingLocation: false,
+  venueName: 'Fnac',
   items: [
     {
       title: 'Envie de lire',

@@ -412,6 +412,8 @@ export const OfferBody: FunctionComponent<Props> = ({
           nbLoadedHits={nbLoadedHits}
           nbHits={nbHits}
           isFetchingNextPage={isFetchingNextPage}
+          isSharingLocation={Boolean(position !== null)}
+          venueName={offer.venue.publicName ?? offer.venue.name}
         />
       ) : null}
     </Container>

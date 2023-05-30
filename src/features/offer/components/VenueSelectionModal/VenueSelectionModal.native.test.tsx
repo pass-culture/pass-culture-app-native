@@ -63,7 +63,7 @@ describe('<VenueSelectionModal />', () => {
       />
     )
 
-    fireEvent.press(screen.getByRole('button'))
+    fireEvent.press(screen.getByTestId('Ne pas sélectionner un autre lieu'))
 
     expect(onClose).toHaveBeenCalledTimes(1)
   })
@@ -109,5 +109,123 @@ describe('<VenueSelectionModal />', () => {
     fireEvent.press(screen.getByText('Choisir ce lieu'))
 
     expect(onSubmit).toHaveBeenNthCalledWith(1, 3)
+  })
+
+  describe('When user share his position', () => {
+    it('should not display "Active ta géolocalisation" button', () => {
+      render(
+        <VenueSelectionModal
+          isVisible
+          items={items}
+          title="Lieu de retrait"
+          onSubmit={jest.fn()}
+          onClosePress={jest.fn()}
+          nbLoadedHits={nbLoadedHits}
+          nbHits={nbHits}
+          isFetchingNextPage
+          isSharingLocation
+          venueName="LIBRAIRIE SILLAGE"
+        />
+      )
+
+      expect(screen.queryByText('Active ta géolocalisation')).toBeNull()
+    })
+
+    it('should display "Lieux disponibles autour de moi"', () => {
+      render(
+        <VenueSelectionModal
+          isVisible
+          items={items}
+          title="Lieu de retrait"
+          onSubmit={jest.fn()}
+          onClosePress={jest.fn()}
+          nbLoadedHits={nbLoadedHits}
+          nbHits={nbHits}
+          isFetchingNextPage
+          isSharingLocation
+          venueName="LIBRAIRIE SILLAGE"
+        />
+      )
+
+      expect(screen.getByText('Lieux disponibles autour de moi')).toBeTruthy()
+    })
+
+    it('should not display "Lieux à proximité de “LIBRAIRIE SILLAGE”" (offer venue name)', () => {
+      render(
+        <VenueSelectionModal
+          isVisible
+          items={items}
+          title="Lieu de retrait"
+          onSubmit={jest.fn()}
+          onClosePress={jest.fn()}
+          nbLoadedHits={nbLoadedHits}
+          nbHits={nbHits}
+          isFetchingNextPage
+          isSharingLocation
+          venueName="LIBRAIRIE SILLAGE"
+        />
+      )
+
+      expect(screen.queryByText('Lieux à proximité de “LIBRAIRIE SILLAGE”')).toBeNull()
+    })
+  })
+
+  describe('When user not share his position', () => {
+    it('should display "Active ta géolocalisation" button', () => {
+      render(
+        <VenueSelectionModal
+          isVisible
+          items={items}
+          title="Lieu de retrait"
+          onSubmit={jest.fn()}
+          onClosePress={jest.fn()}
+          nbLoadedHits={nbLoadedHits}
+          nbHits={nbHits}
+          isFetchingNextPage
+          isSharingLocation={false}
+          venueName="LIBRAIRIE SILLAGE"
+        />
+      )
+
+      expect(screen.getByText('Active ta géolocalisation')).toBeTruthy()
+    })
+
+    it('should not display "Lieux disponibles autour de moi"', () => {
+      render(
+        <VenueSelectionModal
+          isVisible
+          items={items}
+          title="Lieu de retrait"
+          onSubmit={jest.fn()}
+          onClosePress={jest.fn()}
+          nbLoadedHits={nbLoadedHits}
+          nbHits={nbHits}
+          isFetchingNextPage
+          isSharingLocation={false}
+          venueName="LIBRAIRIE SILLAGE"
+        />
+      )
+
+      expect(screen.queryByText('Lieux disponibles autour de moi')).toBeNull()
+    })
+
+    it('should display "Lieux à proximité de “LIBRAIRIE SILLAGE”" (offer venue name)', () => {
+      render(
+        <VenueSelectionModal
+          isVisible
+          items={items}
+          title="Lieu de retrait"
+          onSubmit={jest.fn()}
+          onClosePress={jest.fn()}
+          nbLoadedHits={nbLoadedHits}
+          nbHits={nbHits}
+          isFetchingNextPage
+          isSharingLocation={false}
+          venueName="LIBRAIRIE SILLAGE"
+        />
+      )
+
+      expect(screen.getByText('Lieux à proximité de “LIBRAIRIE SILLAGE”')).toBeTruthy()
+    })
   })
 })

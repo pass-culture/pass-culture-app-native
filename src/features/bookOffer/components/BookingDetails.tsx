@@ -254,6 +254,8 @@ export function BookingDetails({ stocks, onPressBookOffer, isLoading }: BookingD
           nbHits={nbHits}
           nbLoadedHits={nbLoadedHits}
           isFetchingNextPage={isFetchingNextPage}
+          isSharingLocation={Boolean(position !== null)}
+          venueName={offer?.venue?.publicName ?? offer?.venue?.name}
         />
       )}
     </Container>
