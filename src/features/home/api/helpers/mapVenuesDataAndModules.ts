@@ -2,17 +2,14 @@ import { UseQueryResult } from 'react-query'
 
 import { Venue, ModuleData } from 'features/home/types'
 
-interface MergeProps {
-  offersResultList: UseQueryResult<ModuleData, unknown>[]
+export const mapVenuesDataAndModules = (
   venuesResultList: UseQueryResult<{ hits: Venue[][]; moduleId: string[] }, unknown>
-}
-
-export const mergeOffersAndVenuesData = ({ offersResultList, venuesResultList }: MergeProps) => {
-  const mergedData: ModuleData[] = []
+) => {
+  const venuesModulesData: ModuleData[] = []
 
   if (venuesResultList.data) {
     for (let i = 0; i < venuesResultList.data.hits.length; i++) {
-      mergedData.push({
+      venuesModulesData.push({
         hits: venuesResultList.data.hits[i],
         nbHits: venuesResultList.data.hits.length,
         moduleId: venuesResultList.data.moduleId[i],
@@ -20,13 +17,5 @@ export const mergeOffersAndVenuesData = ({ offersResultList, venuesResultList }:
     }
   }
 
-  if (offersResultList) {
-    offersResultList.forEach((result) => {
-      if (result.data) {
-        mergedData.push(result.data)
-      }
-    })
-  }
-
-  return mergedData
+  return venuesModulesData
 }
