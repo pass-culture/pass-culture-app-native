@@ -48,7 +48,7 @@ export function VenueSelectionModal({
 }: VenueSelectionModalProps) {
   const [selectedOffer, setSelectedOffer] = useState<number>()
   const [autoScrollEnabled, setAutoScrollEnabled] = useState(true)
-  const venueRef = useRef<FlatList<VenueListItem>>(null)
+  const venueListRef = useRef<FlatList<VenueListItem>>(null)
   const { top } = useCustomSafeInsets()
 
   const handleSubmit = useCallback(() => {
@@ -75,7 +75,7 @@ export function VenueSelectionModal({
   }, [onClosePress, title, top])
 
   const handlePressFooter = () => {
-    const currentRef = venueRef.current
+    const currentRef = venueListRef.current
     if (currentRef instanceof FlatList) {
       const button = (currentRef.getNativeScrollRef() as unknown as HTMLElement).children[0]
         .lastChild as HTMLElement
@@ -124,7 +124,7 @@ export function VenueSelectionModal({
         onRefresh={onRefresh}
         onScroll={onScroll}
         onPress={handlePressFooter}
-        ref={venueRef}
+        ref={venueListRef}
         autoScrollEnabled={autoScrollEnabled}
         nbLoadedHits={nbLoadedHits}
         nbHits={nbHits}
