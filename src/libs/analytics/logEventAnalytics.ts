@@ -416,11 +416,14 @@ export const logEventAnalytics = {
       },
       params
     ),
-  logOnboardingStarted: () =>
-    analytics.logEvent({
-      firebase: AnalyticsEvent.ONBOARDING_STARTED,
-      amplitude: AmplitudeEvent.ONBOARDING_STARTED,
-    }),
+  logOnboardingStarted: (params: { type: 'login' | 'start' }) =>
+    analytics.logEvent(
+      {
+        firebase: AnalyticsEvent.ONBOARDING_STARTED,
+        amplitude: AmplitudeEvent.ONBOARDING_STARTED,
+      },
+      params
+    ),
   logOpenApp: (params: { appsFlyerUserId?: string }) =>
     analytics.logEvent({ firebase: AnalyticsEvent.OPEN_APP }, params),
   logOpenDMSForeignCitizenURL: () =>

@@ -58,7 +58,7 @@ describe('OnboardingWelcome', () => {
     const button = getByText('C’est parti\u00a0!')
     fireEvent.press(button)
 
-    expect(analytics.logOnboardingStarted).toHaveBeenCalledTimes(1)
+    expect(analytics.logOnboardingStarted).toHaveBeenCalledWith({ type: 'start' })
   })
 
   it('should log analytics when "Se connecter" is clicked', async () => {
@@ -67,6 +67,6 @@ describe('OnboardingWelcome', () => {
     const loginButton = getByText('Se connecter')
     fireEvent.press(loginButton)
 
-    expect(analytics.logOnboardingStarted).toHaveBeenCalledTimes(1)
+    expect(analytics.logOnboardingStarted).toHaveBeenCalledWith({ type: 'login' })
   })
 })
