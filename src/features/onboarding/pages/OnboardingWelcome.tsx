@@ -12,9 +12,16 @@ import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouch
 import { PlainArrowNext } from 'ui/svg/icons/PlainArrowNext'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 
-const setHasSeenTutorials = () => {
-  analytics.logOnboardingStarted()
-  storage.saveObject('has_seen_tutorials', true)
+const setHasSeenTutorials = () => storage.saveObject('has_seen_tutorials', true)
+
+const onStartPress = () => {
+  analytics.logOnboardingStarted({ type: 'start' })
+  setHasSeenTutorials()
+}
+
+const onLoginPress = () => {
+  analytics.logOnboardingStarted({ type: 'login' })
+  setHasSeenTutorials()
 }
 
 export const OnboardingWelcome: FunctionComponent = () => (
@@ -36,10 +43,10 @@ export const OnboardingWelcome: FunctionComponent = () => (
         icon={PlainArrowNext}
         iconAfterWording
         navigateTo={{ screen: 'OnboardingGeolocation' }}
-        onBeforeNavigate={setHasSeenTutorials}
+        onBeforeNavigate={onStartPress}
       />
       <Spacer.Column numberOfSpaces={4} />
-      <StyledAuthenticationButton type="login" onAdditionalPress={setHasSeenTutorials} />
+      <StyledAuthenticationButton type="login" onAdditionalPress={onLoginPress} />
       <Spacer.BottomScreen />
     </Content>
   </Container>
