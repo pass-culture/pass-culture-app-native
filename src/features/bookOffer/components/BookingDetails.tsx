@@ -1,11 +1,11 @@
 import React, { useCallback, useEffect, useMemo } from 'react'
-import { ActivityIndicator } from 'react-native'
-import styled, { useTheme } from 'styled-components/native'
+import styled from 'styled-components/native'
 import { v4 as uuidv4 } from 'uuid'
 
 import { OfferStockResponse, SubcategoryIdEnum } from 'api/gen'
 import { useSearchVenueOffers } from 'api/useSearchVenuesOffer/useSearchVenueOffers'
 import { BookingInformations } from 'features/bookOffer/components/BookingInformations'
+import { BookingOfferLoader } from 'features/bookOffer/components/BookingOfferLoader/BookingOfferLoader'
 import { CancellationDetails } from 'features/bookOffer/components/CancellationDetails'
 import { DuoChoiceSelector } from 'features/bookOffer/components/DuoChoiceSelector'
 import { Step } from 'features/bookOffer/context/reducer'
@@ -54,8 +54,6 @@ const LOADING_MESSAGES: RotatingTextOptions[] = [
 ]
 
 export function BookingDetails({ stocks, onPressBookOffer, isLoading }: BookingDetailsProps) {
-  const theme = useTheme()
-
   const { bookingState, dispatch } = useBookingContext()
   const selectedStock = useBookingStock()
   const offer = useBookingOffer()
@@ -166,13 +164,7 @@ export function BookingDetails({ stocks, onPressBookOffer, isLoading }: BookingD
   const isStockBookable = !(isUserUnderage && selectedStock.isForbiddenToUnderage)
 
   return isLoading ? (
-    <Center testID="loadingScreen">
-      <Spacer.Column numberOfSpaces={50} />
-      <ActivityIndicator size="large" color={theme.colors.primary} />
-      <Spacer.Column numberOfSpaces={4} />
-      <Typo.ButtonText>{loadingMessage}</Typo.ButtonText>
-      <Spacer.Column numberOfSpaces={50} />
-    </Center>
+    <BookingOfferLoader message={loadingMessage} />
   ) : (
     <Container>
       <InfoBanner
@@ -267,12 +259,6 @@ const ButtonContainer = styled.View({
 })
 
 const Container = styled.View({ width: '100%' })
-
-const Center = styled(Container)({
-  display: 'flex',
-  alignItems: 'center',
-  justifyContent: 'center',
-})
 
 const Separator = styled.View(({ theme }) => ({
   height: 2,
