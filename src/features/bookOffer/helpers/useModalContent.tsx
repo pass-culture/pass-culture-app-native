@@ -6,6 +6,7 @@ import { AlreadyBooked } from 'features/bookOffer/components/AlreadyBooked'
 import { BookingDetails } from 'features/bookOffer/components/BookingDetails'
 import { BookingEventChoices } from 'features/bookOffer/components/BookingEventChoices'
 import { BookingImpossible } from 'features/bookOffer/components/BookingImpossible'
+import { BookingOfferLoader } from 'features/bookOffer/components/BookingOfferLoader/BookingOfferLoader'
 import { Step } from 'features/bookOffer/context/reducer'
 import { useBookingContext } from 'features/bookOffer/context/useBookingContext'
 import { getPreviousStep } from 'features/bookOffer/helpers/bookingHelpers/bookingHelpers'
@@ -22,9 +23,9 @@ type ModalContent = {
   title: string
 } & ModalLeftIconProps
 
-const getDefaultModalContent = (): ModalContent => {
+export const getDefaultModalContent = (): ModalContent => {
   return {
-    children: <React.Fragment />,
+    children: <BookingOfferLoader message="Chargement en cours..." />,
     title: '',
     leftIconAccessibilityLabel: undefined,
     leftIcon: undefined,
