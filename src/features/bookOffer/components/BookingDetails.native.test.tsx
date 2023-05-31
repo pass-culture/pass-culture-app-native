@@ -695,7 +695,7 @@ describe('<BookingDetails />', () => {
       fireEvent.press(screen.getByText('Choisir ce lieu'))
 
       await waitFor(() => {
-        expect(mockDispatch).toHaveBeenCalledWith({ type: 'SET_OFFER_ID', payload: 2 })
+        expect(mockDispatch).toHaveBeenCalledWith({ type: 'CHANGE_OFFER', payload: 2 })
       })
     })
   })

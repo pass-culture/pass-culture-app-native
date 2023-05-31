@@ -151,7 +151,7 @@ export function BookingDetails({ stocks, onPressBookOffer, isLoading }: BookingD
   const onSubmitVenueModal = useCallback(
     (nextOfferId: number) => {
       hideModal()
-      dispatch({ type: 'SET_OFFER_ID', payload: nextOfferId })
+      dispatch({ type: 'CHANGE_OFFER', payload: nextOfferId })
     },
     [dispatch, hideModal]
   )
