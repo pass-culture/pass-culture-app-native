@@ -49,5 +49,4 @@ export const SuspensionConfirmation = () => {
 
 const StyledBody = styled(Typo.Body)(({ theme }) => ({
   color: theme.colors.white,
-  textAlign: 'center',
 }))
