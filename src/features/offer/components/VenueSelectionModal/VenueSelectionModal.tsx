@@ -85,12 +85,14 @@ export function VenueSelectionModal({
     onPressGeolocPermissionModalButtonDefault()
   }, [hideGeolocPermissionModal, onPressGeolocPermissionModalButtonDefault])
 
-  const onPressGeolocationBanner = useCallback(async () => {
-    if (permissionState === GeolocPermissionState.NEVER_ASK_AGAIN) {
-      showGeolocPermissionModal()
-    } else {
-      await requestGeolocPermission()
-    }
+  const onPressGeolocationBanner = useCallback(() => {
+    void (async () => {
+      if (permissionState === GeolocPermissionState.NEVER_ASK_AGAIN) {
+        showGeolocPermissionModal()
+      } else {
+        await requestGeolocPermission()
+      }
+    })()
   }, [permissionState, requestGeolocPermission, showGeolocPermissionModal])
 
   const customHeader = useMemo(() => {
