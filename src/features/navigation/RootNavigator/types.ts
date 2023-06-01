@@ -64,6 +64,12 @@ export type OnboardingRootStackParamList = {
   OnboardingWelcome: undefined
 }
 
+export type TrustedDeviceRootStackParamList = {
+  NavigationTrustedDevice: undefined
+  TrustedDeviceInfos: undefined
+  SuspensionConfirmation: undefined
+}
+
 export type SubscriptionRootStackParamList = {
   // Cheatcodes
   NavigationErrors: undefined
@@ -71,7 +77,6 @@ export type SubscriptionRootStackParamList = {
   NavigationShareApp: undefined
   NavigationSignUp: undefined
   NewIdentificationFlow: undefined
-  TrustedDevice: undefined
   DynamicSocials: undefined
   // Stepper
   Stepper: undefined
@@ -219,7 +224,8 @@ export type RootStackParamList = {
 } & AccessibilityRootStackParamList &
   CulturalSurveyRootStackParamList &
   OnboardingRootStackParamList &
-  SubscriptionRootStackParamList
+  SubscriptionRootStackParamList &
+  TrustedDeviceRootStackParamList
 
 export type AllNavParamList = RootStackParamList & TabParamList
 

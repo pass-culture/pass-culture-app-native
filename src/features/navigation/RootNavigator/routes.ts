@@ -38,7 +38,6 @@ import { CategoryThematicHomeHeaderCheatcode } from 'features/internal/cheatcode
 import { DefaultThematicHomeHeaderCheatcode } from 'features/internal/cheatcodes/pages/ThematicHomeHeaderCheatcode/DefaultThematicHomeHeaderCheatcode'
 import { HighlightThematicHomeHeaderCheatcode } from 'features/internal/cheatcodes/pages/ThematicHomeHeaderCheatcode/HighlightThematicHomeHeaderCheatcode'
 import { ThematicHeaders } from 'features/internal/cheatcodes/pages/ThematicHomeHeaderCheatcode/ThematicHeaders'
-import { TrustedDevice } from 'features/internal/cheatcodes/pages/TrustedDevice/TrustedDevice'
 import { DeeplinksGenerator } from 'features/internal/marketingAndCommunication/pages/DeeplinksGenerator'
 import { UTMParameters } from 'features/internal/marketingAndCommunication/pages/UTMParameters'
 import { PageNotFound } from 'features/navigation/pages/PageNotFound'
@@ -46,6 +45,7 @@ import { accessibilityRoutes } from 'features/navigation/RootNavigator/accessibi
 import { culturalSurveyRoutes } from 'features/navigation/RootNavigator/culturalSurveyRoutes'
 import { onboardingRoutes } from 'features/navigation/RootNavigator/onboardingRoutes'
 import { subscriptionRoutes } from 'features/navigation/RootNavigator/subscriptionRoutes'
+import { trustedDeviceRoutes } from 'features/navigation/RootNavigator/trustedDeviceRoutes'
 import { screenParamsParser, screenParamsStringifier } from 'features/navigation/screenParamsUtils'
 import { tabNavigatorPathConfig } from 'features/navigation/TabBar/routes'
 import { TabNavigator } from 'features/navigation/TabBar/TabNavigator'
@@ -73,6 +73,7 @@ export const routes: Route[] = [
   ...culturalSurveyRoutes,
   ...onboardingRoutes,
   ...subscriptionRoutes,
+  ...trustedDeviceRoutes,
   {
     name: 'Offer',
     component: Offer,
@@ -455,10 +456,5 @@ export const routes: Route[] = [
       parse: screenParamsParser['ThematicHome'],
     },
     options: { title: 'Page d’accueil thématique' },
-  },
-  {
-    name: 'TrustedDevice',
-    component: TrustedDevice,
-    path: 'trusted-device',
   },
 ]

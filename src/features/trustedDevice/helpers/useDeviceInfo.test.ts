@@ -1,9 +1,6 @@
 import DeviceInfo from 'react-native-device-info'
 
-import {
-  DeviceInformation,
-  useDeviceInfo,
-} from 'features/profile/helpers/TrustedDevices/useDeviceInfo'
+import { DeviceInformation, useDeviceInfo } from 'features/trustedDevice/helpers/useDeviceInfo'
 import { renderHook, waitFor } from 'tests/utils'
 
 jest.mock('react-native-device-info')

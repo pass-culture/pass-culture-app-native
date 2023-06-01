@@ -3,7 +3,7 @@ import { isApiError } from 'api/apiHelpers'
 import { AccountState, SigninRequest } from 'api/gen'
 import { useLoginRoutine } from 'features/auth/helpers/useLoginRoutine'
 import { SignInResponseFailure } from 'features/auth/types'
-import { useDeviceInfo } from 'features/profile/helpers/TrustedDevices/useDeviceInfo'
+import { useDeviceInfo } from 'features/trustedDevice/helpers/useDeviceInfo'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 

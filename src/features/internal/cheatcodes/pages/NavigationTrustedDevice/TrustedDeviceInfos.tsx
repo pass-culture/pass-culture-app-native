@@ -1,16 +1,16 @@
 import React from 'react'
 import styled from 'styled-components/native'
 
-import { useDeviceInfo } from 'features/profile/helpers/TrustedDevices/useDeviceInfo'
+import { useDeviceInfo } from 'features/trustedDevice/helpers/useDeviceInfo'
 import { PageHeaderSecondary } from 'ui/components/headers/PageHeaderSecondary'
 import { Spacer, Typo } from 'ui/theme'
 
-export const TrustedDevice = () => {
+export const TrustedDeviceInfos = () => {
   const deviceInfo = useDeviceInfo()
 
   return (
     <React.Fragment>
-      <PageHeaderSecondary title="Appareil de confiance" />
+      <PageHeaderSecondary title="Trusted device infos" />
       <Spacer.Column numberOfSpaces={6} />
       <Container>
         <Typo.Title3>Informations du device actuel</Typo.Title3>
