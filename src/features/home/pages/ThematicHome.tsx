@@ -8,6 +8,7 @@ import { CategoryThematicHomeHeader } from 'features/home/components/headers/Cat
 import { CategoryThematicHomeSubHeader } from 'features/home/components/headers/CategoryThematicHomeSubHeader'
 import { DefaultThematicHomeHeader } from 'features/home/components/headers/DefaultThematicHomeHeader'
 import { HighlightThematicHomeHeader } from 'features/home/components/headers/HighlightThematicHomeHeader'
+import { HighlightThematicHomeSubHeader } from 'features/home/components/headers/HighlightThematicHomeSubHeader'
 import { GenericHome } from 'features/home/pages/GenericHome'
 import { ThematicHeader, ThematicHeaderType } from 'features/home/types'
 import { UseRouteType } from 'features/navigation/RootNavigator/types'
@@ -21,7 +22,7 @@ interface Props {
 
 const Header: FunctionComponent<Props> = ({ headerTransition, thematicHeader }) => {
   if (thematicHeader?.type === ThematicHeaderType.Highlight)
-    return <HighlightThematicHomeHeader {...thematicHeader} />
+    return <HighlightThematicHomeHeader headerTransition={headerTransition} {...thematicHeader} />
 
   if (thematicHeader?.type === ThematicHeaderType.Category)
     return <CategoryThematicHomeHeader headerTransition={headerTransition} {...thematicHeader} />
@@ -37,6 +38,9 @@ const Header: FunctionComponent<Props> = ({ headerTransition, thematicHeader }) 
 }
 
 const SubHeader: FunctionComponent<Props> = ({ thematicHeader }) => {
+  if (thematicHeader?.type === ThematicHeaderType.Highlight)
+    return <HighlightThematicHomeSubHeader {...thematicHeader} />
+
   if (thematicHeader?.type === ThematicHeaderType.Category)
     return (
       <CategoryThematicHomeSubHeader
