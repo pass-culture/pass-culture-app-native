@@ -9,7 +9,15 @@ import type {
 import { rest } from 'msw'
 import { setupServer } from 'msw/node'
 
+import { AccountState, Reason } from 'api/gen'
+import { bookingsSnap } from 'features/bookings/fixtures/bookingsSnap'
+import { paginatedFavoritesResponseSnap } from 'features/favorites/fixtures/paginatedFavoritesResponseSnap'
+import { SubscriptionStepperResponseFixture } from 'features/identityCheck/pages/helpers/stepperInfo.fixture'
+import { offerResponseSnap } from 'features/offer/fixtures/offerResponse'
+import { venueResponseSnap } from 'features/venue/fixtures/venueResponseSnap'
+import { beneficiaryUser } from 'fixtures/user'
 import { env } from 'libs/environment'
+import { placeholderData } from 'libs/subcategories/placeholderData'
 import {
   MockOptions,
   MockReturnType,
@@ -328,4 +336,215 @@ export class MswMockServer
   }
 }
 
-export const mockServer = new MswMockServer(env.API_BASE_URL)
+export const mockServer = new MswMockServer(env.API_BASE_URL, {
+  mode: 'TEST',
+  defaultRequests: [
+    {
+      method: 'POST',
+      url: '/native/v1/signin',
+      options: {
+        responseOptions: {
+          statusCode: 200,
+          data: {
+            accessToken: 'access_token',
+            refreshToken: 'refresh_token',
+            accountState: AccountState.ACTIVE,
+          },
+        },
+      },
+    },
+    {
+      method: 'POST',
+      url: '/native/v1/reset_password',
+      options: {
+        responseOptions: {
+          statusCode: 204,
+          data: {},
+        },
+      },
+    },
+    {
+      method: 'POST',
+      url: '/native/v1/request_password_reset',
+      options: {
+        responseOptions: {
+          statusCode: 204,
+          data: {},
+        },
+      },
+    },
+    {
+      method: 'POST',
+      url: '/native/v1/settings',
+      options: {
+        responseOptions: {
+          statusCode: 200,
+          data: {},
+        },
+      },
+    },
+    {
+      method: 'POST',
+      url: '/native/v1/resend_email_validation',
+      options: {
+        responseOptions: {
+          statusCode: 204,
+          data: {},
+        },
+      },
+    },
+    {
+      method: 'GET',
+      url: '/native/v1/me',
+      options: {
+        responseOptions: {
+          statusCode: 200,
+          data: beneficiaryUser,
+        },
+      },
+    },
+    {
+      method: 'GET',
+      url: '/native/v1/offer/' + offerResponseSnap.id,
+      options: {
+        responseOptions: {
+          statusCode: 200,
+          data: offerResponseSnap,
+        },
+      },
+    },
+    {
+      method: 'GET',
+      url: '/native/v1/venue/' + venueResponseSnap.id,
+      options: {
+        responseOptions: {
+          statusCode: 200,
+          data: venueResponseSnap,
+        },
+      },
+    },
+    {
+      method: 'GET',
+      url: '/native/v1/bookings',
+      options: {
+        responseOptions: {
+          statusCode: 200,
+          data: bookingsSnap,
+        },
+      },
+    },
+    {
+      method: 'POST',
+      url: '/native/v1/send_phone_validation_code',
+      options: {
+        responseOptions: {
+          statusCode: 200,
+          data: {},
+        },
+      },
+    },
+    {
+      method: 'POST',
+      url: '/native/v1/validate_email',
+      options: {
+        responseOptions: {
+          statusCode: 200,
+          data: {
+            accessToken: 'access_token',
+            refreshToken: 'refresh_token',
+          },
+        },
+      },
+    },
+    {
+      method: 'GET',
+      url: '/native/v1/subscription/next_step',
+      options: {
+        responseOptions: {
+          statusCode: 200,
+          data: {
+            nextSubscriptionStep: null,
+          },
+        },
+      },
+    },
+    {
+      method: 'GET',
+      url: '/native/v1/subscription/stepper',
+      options: {
+        responseOptions: {
+          statusCode: 200,
+          data: SubscriptionStepperResponseFixture,
+        },
+      },
+    },
+    {
+      method: 'GET',
+      url: '/native/v1/me/favorites',
+      options: {
+        responseOptions: {
+          statusCode: 200,
+          data: paginatedFavoritesResponseSnap,
+        },
+      },
+    },
+    {
+      method: 'GET',
+      url: '/native/v1/subcategories/v2',
+      options: {
+        responseOptions: {
+          statusCode: 200,
+          data: {
+            ...placeholderData,
+          },
+        },
+      },
+    },
+    {
+      method: 'POST',
+      url: '/native/v1/cookies_consent',
+      options: {
+        responseOptions: {
+          statusCode: 200,
+        },
+      },
+    },
+    {
+      method: 'GET',
+      url: '/native/v1/offers/reports',
+      options: {
+        responseOptions: {
+          statusCode: 200,
+          data: {
+            reportedOffers: [
+              { offerId: 1234, reason: Reason.INAPPROPRIATE, reportedAt: '123456789' },
+            ],
+          },
+        },
+      },
+    },
+    {
+      method: 'GET',
+      url: '/native/v1/phone_validation/remaining_attempts',
+      options: {
+        responseOptions: {
+          statusCode: 200,
+          data: {
+            remainingAttempts: 5,
+            counterResetDatetime: 'time',
+          },
+        },
+      },
+    },
+    {
+      method: 'GET',
+      url: '/native/v1/banner',
+      options: {
+        responseOptions: {
+          statusCode: 200,
+          data: {},
+        },
+      },
+    },
+  ],
+})
