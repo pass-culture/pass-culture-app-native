@@ -23,7 +23,7 @@ type ModalContent = {
   title: string
 } & ModalLeftIconProps
 
-export const getDefaultModalContent = (): ModalContent => {
+const getDefaultModalContent = (): ModalContent => {
   return {
     children: <BookingOfferLoader message="Chargement en cours..." />,
     title: '',

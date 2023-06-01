@@ -2,7 +2,10 @@ import React from 'react'
 
 import { VenueListItem } from 'features/offer/components/VenueSelectionList/VenueSelectionList'
 import { GeolocPermissionState, useGeolocation } from 'libs/geolocation'
-import { requestGeolocPermission } from 'libs/geolocation/__mocks__'
+import {
+  requestGeolocPermission,
+  onPressGeolocPermissionModalButton,
+} from 'libs/geolocation/__mocks__'
 import { fireEvent, render, screen } from 'tests/utils'
 import * as useModalAPI from 'ui/components/modals/useModal'
 
@@ -265,6 +268,42 @@ describe('<VenueSelectionModal />', () => {
       fireEvent.press(button)
 
       expect(mockShowModal).toHaveBeenCalledWith()
+    })
+
+    it('should close geolocation modal when pressing "Activer la géolocalisation"', async () => {
+      mockUseGeolocation.mockReturnValueOnce({
+        permissionState: GeolocPermissionState.NEVER_ASK_AGAIN,
+        onPressGeolocPermissionModalButton,
+      })
+      const mockHideModal = jest.fn()
+      jest.spyOn(useModalAPI, 'useModal').mockReturnValueOnce({
+        visible: true,
+        showModal: jest.fn(),
+        hideModal: mockHideModal,
+        toggleModal: jest.fn(),
+      })
+
+      render(
+        <VenueSelectionModal
+          isVisible
+          items={items}
+          title="Lieu de retrait"
+          onSubmit={jest.fn()}
+          onClosePress={jest.fn()}
+          nbLoadedHits={nbLoadedHits}
+          nbHits={nbHits}
+          isFetchingNextPage
+          isSharingLocation={false}
+          venueName="LIBRAIRIE SILLAGE"
+        />
+      )
+      const button = screen.getByText('Active ta géolocalisation')
+
+      fireEvent.press(button)
+
+      fireEvent.press(screen.getByText('Activer la géolocalisation'))
+
+      expect(mockHideModal).toHaveBeenCalledWith()
     })
 
     it('should ask for permission when pressing "Active ta géolocalisation" button and permission is denied', () => {
