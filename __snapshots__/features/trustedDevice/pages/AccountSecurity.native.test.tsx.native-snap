@@ -1,0 +1,502 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<AccountSecurity/> should match snapshot 1`] = `
+<View
+  style={
+    Array [
+      Object {
+        "alignSelf": "center",
+        "flexBasis": 0,
+        "flexGrow": 1,
+        "flexShrink": 1,
+        "maxWidth": 500,
+        "overflow": "scroll",
+        "paddingHorizontal": 24,
+        "width": "100%",
+      },
+    ]
+  }
+>
+  <View
+    flex={2}
+    style={
+      Array [
+        Object {
+          "flexBasis": 0,
+          "flexGrow": 2,
+          "flexShrink": 1,
+        },
+      ]
+    }
+  />
+  <View
+    hasHeight={false}
+    style={
+      Array [
+        Object {
+          "alignItems": "center",
+          "flexGrow": 1,
+          "justifyContent": "center",
+        },
+      ]
+    }
+  >
+    <View
+      height={156}
+      width={200}
+    >
+      <Text>
+        undefined-SVG-Mock
+      </Text>
+    </View>
+  </View>
+  <Text
+    style={
+      Array [
+        Object {
+          "color": "#161617",
+          "fontFamily": "Montserrat-Bold",
+          "fontSize": 20,
+          "lineHeight": 24,
+          "textAlign": "center",
+        },
+      ]
+    }
+  >
+    Sécurise ton compte
+  </Text>
+  <View
+    flex={0.5}
+    style={
+      Array [
+        Object {
+          "flexBasis": 0,
+          "flexGrow": 0.5,
+          "flexShrink": 1,
+        },
+      ]
+    }
+  />
+  <Text
+    style={
+      Array [
+        Object {
+          "color": "#161617",
+          "fontFamily": "Montserrat-Regular",
+          "fontSize": 15,
+          "lineHeight": 20,
+        },
+      ]
+    }
+  >
+    Tu as indiqué 
+    <Text
+      style={
+        Array [
+          Object {
+            "color": "#161617",
+            "fontFamily": "Montserrat-Bold",
+            "fontSize": 15,
+            "lineHeight": 20,
+          },
+        ]
+      }
+    >
+      ne pas être à l'origine
+    </Text>
+     de cette connexion :
+  </Text>
+  <View
+    numberOfSpaces={4}
+    style={
+      Array [
+        Object {
+          "height": 16,
+        },
+      ]
+    }
+  />
+  <View
+    backgroundColor="#f3ecff"
+    style={
+      Array [
+        Object {
+          "alignItems": "center",
+          "backgroundColor": "#f3ecff",
+          "borderRadius": 8,
+          "flexDirection": "row",
+          "justifyContent": "space-between",
+          "paddingBottom": 16,
+          "paddingLeft": 16,
+          "paddingRight": 16,
+          "paddingTop": 16,
+        },
+      ]
+    }
+  >
+    <View
+      style={
+        Array [
+          Object {
+            "paddingRight": 16,
+          },
+        ]
+      }
+    >
+      <View
+        height={24}
+        width={24}
+      >
+        <Text>
+          undefined-SVG-Mock
+        </Text>
+      </View>
+    </View>
+    <View
+      style={
+        Array [
+          Object {
+            "flexBasis": 0,
+            "flexGrow": 1,
+            "flexShrink": 1,
+          },
+        ]
+      }
+    >
+      <Text
+        style={
+          Array [
+            Object {
+              "color": "#161617",
+              "fontFamily": "Montserrat-SemiBold",
+              "fontSize": 12,
+              "lineHeight": 16,
+            },
+          ]
+        }
+        textColor="#161617"
+      >
+        <Text
+          style={
+            Array [
+              Object {
+                "color": "#161617",
+                "fontFamily": "Montserrat-Regular",
+                "fontSize": 15,
+                "lineHeight": 20,
+              },
+            ]
+          }
+        >
+          <Text
+            style={
+              Array [
+                Object {
+                  "color": "#161617",
+                  "fontFamily": "Montserrat-Bold",
+                  "fontSize": 15,
+                  "lineHeight": 20,
+                },
+              ]
+            }
+          >
+            Appareil utilisé : 
+          </Text>
+           MacOS - Chrome
+          
+
+          <Text
+            style={
+              Array [
+                Object {
+                  "color": "#161617",
+                  "fontFamily": "Montserrat-Bold",
+                  "fontSize": 15,
+                  "lineHeight": 20,
+                },
+              ]
+            }
+          >
+            Lieu : 
+          </Text>
+           Marseille, France
+          
+
+          <Text
+            style={
+              Array [
+                Object {
+                  "color": "#161617",
+                  "fontFamily": "Montserrat-Bold",
+                  "fontSize": 15,
+                  "lineHeight": 20,
+                },
+              ]
+            }
+          >
+            Date et heure : 
+          </Text>
+           Le 14/07/22 à 17:47
+        </Text>
+      </Text>
+    </View>
+  </View>
+  <View
+    numberOfSpaces={4}
+    style={
+      Array [
+        Object {
+          "height": 16,
+        },
+      ]
+    }
+  />
+  <Text
+    style={
+      Array [
+        Object {
+          "color": "#161617",
+          "fontFamily": "Montserrat-Regular",
+          "fontSize": 15,
+          "lineHeight": 20,
+        },
+      ]
+    }
+  >
+    Pour des raisons de 
+    <Text
+      style={
+        Array [
+          Object {
+            "color": "#161617",
+            "fontFamily": "Montserrat-Bold",
+            "fontSize": 15,
+            "lineHeight": 20,
+          },
+        ]
+      }
+    >
+      sécurité,
+    </Text>
+     nous te conseillons de modifier ton mot de passe ou de suspendre ton compte temporairement
+  </Text>
+  <View
+    numberOfSpaces={6}
+    style={
+      Array [
+        Object {
+          "height": 24,
+        },
+      ]
+    }
+  />
+  <View
+    accessibilityLabel="Modifier mon mot de passe"
+    accessible={true}
+    collapsable={false}
+    focusable={false}
+    onClick={[Function]}
+    onResponderGrant={[Function]}
+    onResponderMove={[Function]}
+    onResponderRelease={[Function]}
+    onResponderTerminate={[Function]}
+    onResponderTerminationRequest={[Function]}
+    onStartShouldSetResponder={[Function]}
+    style={
+      Object {
+        "alignItems": "center",
+        "backgroundColor": "#eb0055",
+        "borderRadius": 24,
+        "flexDirection": "row",
+        "justifyContent": "center",
+        "maxWidth": 500,
+        "minHeight": 40,
+        "opacity": 1,
+        "paddingBottom": 2,
+        "paddingLeft": 20,
+        "paddingRight": 20,
+        "paddingTop": 2,
+        "userSelect": "auto",
+        "width": "100%",
+      }
+    }
+    testID="Modifier mon mot de passe"
+  >
+    <Text
+      adjustsFontSizeToFit={false}
+      numberOfLines={1}
+      style={
+        Array [
+          Object {
+            "color": "#ffffff",
+            "fontFamily": "Montserrat-Bold",
+            "fontSize": 15,
+            "lineHeight": 20,
+            "marginLeft": 0,
+            "maxWidth": "100%",
+          },
+        ]
+      }
+    >
+      Modifier mon mot de passe
+    </Text>
+  </View>
+  <View
+    numberOfSpaces={4}
+    style={
+      Array [
+        Object {
+          "height": 16,
+        },
+      ]
+    }
+  />
+  <View
+    accessibilityLabel="Suspendre mon compte"
+    accessible={true}
+    collapsable={false}
+    focusable={false}
+    onClick={[Function]}
+    onResponderGrant={[Function]}
+    onResponderMove={[Function]}
+    onResponderRelease={[Function]}
+    onResponderTerminate={[Function]}
+    onResponderTerminationRequest={[Function]}
+    onStartShouldSetResponder={[Function]}
+    style={
+      Object {
+        "alignItems": "center",
+        "backgroundColor": "transparent",
+        "borderColor": "#eb0055",
+        "borderRadius": 24,
+        "borderStyle": "solid",
+        "borderWidth": 2,
+        "flexDirection": "row",
+        "justifyContent": "center",
+        "maxWidth": 500,
+        "minHeight": 40,
+        "opacity": 1,
+        "paddingBottom": 2,
+        "paddingLeft": 20,
+        "paddingRight": 20,
+        "paddingTop": 2,
+        "userSelect": "auto",
+        "width": "100%",
+      }
+    }
+    testID="Suspendre mon compte"
+  >
+    <Text
+      adjustsFontSizeToFit={false}
+      numberOfLines={1}
+      style={
+        Array [
+          Object {
+            "color": "#eb0055",
+            "fontFamily": "Montserrat-Bold",
+            "fontSize": 15,
+            "lineHeight": 20,
+            "marginLeft": 0,
+            "maxWidth": "100%",
+          },
+        ]
+      }
+    >
+      Suspendre mon compte
+    </Text>
+  </View>
+  <View
+    numberOfSpaces={5}
+    style={
+      Array [
+        Object {
+          "height": 20,
+        },
+      ]
+    }
+  />
+  <View
+    accessibilityLabel="Ne pas sécuriser mon compte"
+    accessible={true}
+    collapsable={false}
+    focusable={false}
+    onClick={[Function]}
+    onResponderGrant={[Function]}
+    onResponderMove={[Function]}
+    onResponderRelease={[Function]}
+    onResponderTerminate={[Function]}
+    onResponderTerminationRequest={[Function]}
+    onStartShouldSetResponder={[Function]}
+    style={
+      Object {
+        "alignItems": "center",
+        "backgroundColor": "transparent",
+        "borderRadius": 24,
+        "flexDirection": "row",
+        "justifyContent": "center",
+        "maxWidth": 500,
+        "minHeight": 40,
+        "opacity": 1,
+        "paddingBottom": 2,
+        "paddingLeft": 2,
+        "paddingRight": 2,
+        "paddingTop": 2,
+        "userSelect": "auto",
+        "width": "100%",
+      }
+    }
+    testID="Ne pas sécuriser mon compte"
+  >
+    <View
+      style={
+        Array [
+          Object {
+            "flexShrink": 0,
+          },
+        ]
+      }
+    >
+      <View
+        fill="#161617"
+        height={20}
+        testID="button-icon"
+        width={20}
+      >
+        <Text>
+          button-icon-SVG-Mock
+        </Text>
+      </View>
+    </View>
+    <Text
+      adjustsFontSizeToFit={false}
+      numberOfLines={1}
+      style={
+        Array [
+          Object {
+            "color": "#161617",
+            "fontFamily": "Montserrat-Bold",
+            "fontSize": 15,
+            "lineHeight": 20,
+            "marginLeft": 8,
+            "maxWidth": "100%",
+          },
+        ]
+      }
+    >
+      Ne pas sécuriser mon compte
+    </Text>
+  </View>
+  <View
+    flex={1.5}
+    style={
+      Array [
+        Object {
+          "flexBasis": 0,
+          "flexGrow": 1.5,
+          "flexShrink": 1,
+        },
+      ]
+    }
+  />
+</View>
+`;
