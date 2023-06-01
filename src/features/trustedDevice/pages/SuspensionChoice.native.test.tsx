@@ -3,6 +3,7 @@ import React from 'react'
 import { navigate } from '__mocks__/@react-navigation/native'
 import { contactSupport } from 'features/auth/helpers/contactSupport'
 import * as NavigationHelpers from 'features/navigation/helpers/openUrl'
+import { env } from 'libs/environment/env'
 import { fireEvent, render, screen } from 'tests/utils'
 
 import { SuspensionChoice } from './SuspensionChoice'
@@ -36,5 +37,14 @@ describe('<SuspensionChoice/>', () => {
       contactSupport.forGenericQuestion.params,
       true
     )
+  })
+
+  it('should open CGU url when clicking on "conditions générales d’utilisation" button', () => {
+    render(<SuspensionChoice />)
+
+    const cguButton = screen.getByText('conditions générales d’utilisation')
+    fireEvent.press(cguButton)
+
+    expect(openUrl).toHaveBeenNthCalledWith(1, env.CGU_LINK, undefined, true)
   })
 })
