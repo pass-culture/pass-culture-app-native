@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components/native'
 
-import { useDeviceInfo } from 'features/profile/helpers/TrustedDevices/useDeviceInfo'
+import { useDeviceInfo } from 'features/trustedDevice/helpers/useDeviceInfo'
 import { PageHeaderSecondary } from 'ui/components/headers/PageHeaderSecondary'
 import { Spacer, Typo } from 'ui/theme'
 
