@@ -60,6 +60,7 @@ export const ButtonSecondary = styledButton(AppButton).attrs<BaseButtonProps>(
   }
 
   return {
+    borderStyle: 'solid',
     borderColor,
     borderWidth,
     ...webOnly,
