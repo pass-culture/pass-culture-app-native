@@ -26,10 +26,7 @@ export type VenueSelectionListProps = ViewProps &
 
 const keyExtractor = (item: VenueListItem) => String(item.offerId)
 
-export const VenueSelectionList: React.FC<VenueSelectionListProps> = forwardRef<
-  FlatList<VenueListItem>,
-  VenueSelectionListProps
->(
+export const VenueSelectionList = forwardRef<FlatList<VenueListItem>, VenueSelectionListProps>(
   (
     {
       items,
@@ -91,7 +88,6 @@ export const VenueSelectionList: React.FC<VenueSelectionListProps> = forwardRef<
             nbHits={nbHits}
             autoScrollEnabled={autoScrollEnabled}
             onPress={onPress}
-            ref={ref}
           />
         }
         {...props}

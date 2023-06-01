@@ -49,7 +49,6 @@ export const SearchList: React.FC<SearchListProps> = forwardRef<FlatList<Offer>,
             nbHits={nbHits}
             autoScrollEnabled={autoScrollEnabled}
             onPress={onPress}
-            ref={ref}
           />
         }
         renderItem={renderItem}

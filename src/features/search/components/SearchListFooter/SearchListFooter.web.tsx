@@ -1,5 +1,5 @@
-import React, { forwardRef, LegacyRef } from 'react'
-import { ActivityIndicator, View } from 'react-native'
+import React from 'react'
+import { ActivityIndicator } from 'react-native'
 import styled from 'styled-components/native'
 
 import { ButtonSecondary } from 'ui/components/buttons/ButtonSecondary'
@@ -14,33 +14,38 @@ export interface SearchListFooterProps {
   onPress?: () => void
 }
 
-export const SearchListFooter: React.FC<SearchListFooterProps> = forwardRef(
-  ({ isFetchingNextPage, nbLoadedHits, nbHits, autoScrollEnabled, onPress }, ref) => {
-    const showMoreButton = !autoScrollEnabled && nbLoadedHits < nbHits
-    return isFetchingNextPage && nbLoadedHits < nbHits ? (
-      <View ref={ref as LegacyRef<View>}>
-        <Spacer.Column numberOfSpaces={4} />
-        <ActivityIndicator testID="activity-indicator" />
-        <Spacer.Column numberOfSpaces={4} />
-        <Footer testID="footer" />
-      </View>
-    ) : (
-      <View ref={ref as LegacyRef<View>}>
-        {!!showMoreButton && <Separator />}
-        <Footer>
-          {!!showMoreButton && (
-            <ButtonSecondary
-              mediumWidth
-              icon={More}
-              wording="Afficher plus de résultats"
-              onPress={onPress}
-            />
-          )}
-        </Footer>
-      </View>
-    )
-  }
-)
+export const SearchListFooter = ({
+  isFetchingNextPage,
+  nbLoadedHits,
+  nbHits,
+  autoScrollEnabled,
+  onPress,
+}: SearchListFooterProps) => {
+  const showMoreButton = !autoScrollEnabled && nbLoadedHits < nbHits
+  return isFetchingNextPage && nbLoadedHits < nbHits ? (
+    <React.Fragment>
+      <Spacer.Column numberOfSpaces={4} />
+      <ActivityIndicator testID="activity-indicator" />
+      <Spacer.Column numberOfSpaces={4} />
+      <Footer testID="footer" />
+    </React.Fragment>
+  ) : (
+    <React.Fragment>
+      {!!showMoreButton && <Separator />}
+      <Footer>
+        {!!showMoreButton && (
+          <ButtonSecondary
+            mediumWidth
+            icon={More}
+            wording="Afficher plus de résultats"
+            onPress={onPress}
+          />
+        )}
+      </Footer>
+    </React.Fragment>
+  )
+}
+
 SearchListFooter.displayName = 'SearchListFooter'
 
 const Footer = styled.View(({ theme }) => ({
