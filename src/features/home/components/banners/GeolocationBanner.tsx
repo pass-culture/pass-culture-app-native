@@ -10,9 +10,10 @@ import { Spacer, Typo } from 'ui/theme'
 type Props = {
   title: string
   subtitle: string
+  onPress?: VoidFunction
 }
 
-export const GeolocationBanner: FunctionComponent<Props> = ({ title, subtitle }) => {
+export const GeolocationBanner: FunctionComponent<Props> = ({ title, subtitle, onPress }) => {
   const { permissionState, requestGeolocPermission, showGeolocPermissionModal } = useGeolocation()
 
   const onPressGeolocationBanner = useCallback(async () => {
@@ -24,7 +25,10 @@ export const GeolocationBanner: FunctionComponent<Props> = ({ title, subtitle })
   }, [permissionState, requestGeolocPermission, showGeolocPermissionModal])
 
   return (
-    <Touchable onPress={onPressGeolocationBanner} accessibilityLabel="Active ta géolocalisation">
+    <Touchable
+      // Possibility to use the onPress externally to avoid opening problems in modals
+      onPress={onPress ?? onPressGeolocationBanner}
+      accessibilityLabel="Active ta géolocalisation">
       <GenericBanner LeftIcon={LocationIcon}>
         <Typo.ButtonText>{title}</Typo.ButtonText>
         <Spacer.Column numberOfSpaces={1} />
