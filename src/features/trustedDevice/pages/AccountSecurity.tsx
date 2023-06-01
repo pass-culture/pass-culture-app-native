@@ -1,9 +1,11 @@
 import React from 'react'
 
+import { navigateToHome } from 'features/navigation/helpers'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { ButtonSecondary } from 'ui/components/buttons/ButtonSecondary'
 import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
 import { InfoBanner } from 'ui/components/InfoBanner'
+import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { GenericInfoPageWhite } from 'ui/pages/GenericInfoPageWhite'
 import { BicolorUserBlocked } from 'ui/svg/icons/BicolorUserBlocked'
 import { Info } from 'ui/svg/icons/Info'
@@ -30,11 +32,23 @@ export const AccountSecurity = () => {
         modifier ton mot de passe ou de suspendre ton compte temporairement
       </Typo.Body>
       <Spacer.Column numberOfSpaces={6} />
-      <ButtonPrimary wording="Modifier mon mot de passe" />
+      <InternalTouchableLink
+        wording="Modifier mon mot de passe"
+        navigateTo={{ screen: 'ChangePassword' }}
+        as={ButtonPrimary}
+      />
       <Spacer.Column numberOfSpaces={4} />
-      <ButtonSecondary wording="Suspendre mon compte" />
+      <InternalTouchableLink
+        wording="Suspendre mon compte"
+        navigateTo={{ screen: 'SuspensionChoice' }}
+        as={ButtonSecondary}
+      />
       <Spacer.Column numberOfSpaces={5} />
-      <ButtonTertiaryBlack wording="Ne pas sécuriser mon compte" icon={Invalidate} />
+      <ButtonTertiaryBlack
+        wording="Ne pas sécuriser mon compte"
+        icon={Invalidate}
+        onPress={navigateToHome}
+      />
     </GenericInfoPageWhite>
   )
 }
