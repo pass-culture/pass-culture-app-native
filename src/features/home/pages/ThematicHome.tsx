@@ -7,6 +7,7 @@ import { useHomepageData } from 'features/home/api/useHomepageData'
 import { CategoryThematicHomeHeader } from 'features/home/components/headers/CategoryThematicHomeHeader'
 import { CategoryThematicHomeSubHeader } from 'features/home/components/headers/CategoryThematicHomeSubHeader'
 import { DefaultThematicHomeHeader } from 'features/home/components/headers/DefaultThematicHomeHeader'
+import { DefaultThematicHomeSubHeader } from 'features/home/components/headers/DefaultThematicHomeSubHeader'
 import { HighlightThematicHomeHeader } from 'features/home/components/headers/HighlightThematicHomeHeader'
 import { HighlightThematicHomeSubHeader } from 'features/home/components/headers/HighlightThematicHomeSubHeader'
 import { GenericHome } from 'features/home/pages/GenericHome'
@@ -31,7 +32,7 @@ const Header: FunctionComponent<Props> = ({ headerTransition, thematicHeader }) 
     <ListHeaderContainer>
       <DefaultThematicHomeHeader
         headerTitle={thematicHeader?.title}
-        headerSubtitle={thematicHeader?.subtitle}
+        headerTransition={headerTransition}
       />
     </ListHeaderContainer>
   )
@@ -50,7 +51,14 @@ const SubHeader: FunctionComponent<Props> = ({ thematicHeader }) => {
       />
     )
 
-  return <React.Fragment></React.Fragment>
+  return (
+    <ListHeaderContainer>
+      <DefaultThematicHomeSubHeader
+        headerTitle={thematicHeader?.title}
+        headerSubtitle={thematicHeader?.subtitle}
+      />
+    </ListHeaderContainer>
+  )
 }
 
 export const ThematicHome: FunctionComponent = () => {
