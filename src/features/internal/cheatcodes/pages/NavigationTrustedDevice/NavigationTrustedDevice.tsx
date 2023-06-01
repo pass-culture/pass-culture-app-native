@@ -12,6 +12,7 @@ export function NavigationTrustedDevice(): JSX.Element {
       <PageHeaderSecondary title="Trusted device 📱" />
       <StyledContainer>
         <LinkToComponent name="TrustedDeviceInfos" />
+        <LinkToComponent name="SuspensionChoice" />
         <LinkToComponent name="SuspensionConfirmation" />
       </StyledContainer>
       <Spacer.BottomScreen />
