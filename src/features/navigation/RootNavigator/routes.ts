@@ -55,6 +55,7 @@ import { AfterChangeEmailValidationBuffer } from 'features/profile/pages/AfterCh
 import { ChangeEmail } from 'features/profile/pages/ChangeEmail/ChangeEmail'
 import { ChangeEmailExpiredLink } from 'features/profile/pages/ChangeEmail/ChangeEmailExpiredLink'
 import { ChangePassword } from 'features/profile/pages/ChangePassword'
+import { ConfirmChangeEmail } from 'features/profile/pages/ConfirmChangeEmail/ConfirmChangeEmail'
 import { ConsentSettings } from 'features/profile/pages/ConsentSettings/ConsentSettings'
 import { ConfirmDeleteProfile } from 'features/profile/pages/DeleteProfile/ConfirmDeleteProfile'
 import { DeleteProfileSuccess } from 'features/profile/pages/DeleteProfile/DeleteProfileSuccess'
@@ -144,6 +145,12 @@ export const routes: Route[] = [
       path: 'changement-email',
       parse: screenParamsParser['AfterChangeEmailValidationBuffer'],
     },
+  },
+  {
+    name: 'ConfirmChangeEmail',
+    component: ConfirmChangeEmail,
+    path: 'changement-email/confirmation',
+    options: { title: 'Confirmation de changement d’email ' },
   },
   {
     name: 'AfterSignupEmailValidationBuffer',
