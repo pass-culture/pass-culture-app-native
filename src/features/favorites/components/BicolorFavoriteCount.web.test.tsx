@@ -18,8 +18,6 @@ jest.mock('libs/network/useNetInfo', () => jest.requireMock('@react-native-commu
 const mockUseNetInfoContext = useNetInfoContextDefault as jest.Mock
 
 describe('BicolorFavoriteCount component', () => {
-  mockUseNetInfoContext.mockReturnValue({ isConnected: true })
-
   it('should render non connected icon', async () => {
     renderBicolorFavoriteCount({ isLoggedIn: false })
     expect(screen.queryByTestId('bicolor-favorite-count')).toBeFalsy()
@@ -53,7 +51,8 @@ describe('BicolorFavoriteCount component', () => {
     })
   })
 
-  it('should not show nbFavorites within badge when offline', async () => {
+  it('should not show nbFavorites within badge when offline', () => {
+    mockUseNetInfoContext.mockReturnValueOnce({ isConnected: false })
     mockUseNetInfoContext.mockReturnValueOnce({ isConnected: false })
     renderBicolorFavoriteCount({ isLoggedIn: true, count: 10 })
     expect(screen.queryByTestId('bicolor-favorite-count')).toBeFalsy()

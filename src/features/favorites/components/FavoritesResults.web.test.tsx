@@ -11,7 +11,7 @@ import { env } from 'libs/environment'
 import { EmptyResponse } from 'libs/fetch'
 import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { render, screen } from 'tests/utils/web'
+import { act, render, screen } from 'tests/utils/web'
 
 import { FavoritesResults } from './FavoritesResults'
 
@@ -53,6 +53,9 @@ describe('FavoritesResults component', () => {
     } as QueryObserverSuccessResult<PaginatedFavoritesResponse>)
 
     renderFavoritesResults()
+
+    await act(async () => {}) // Warning: An update to FavoritesResults inside a test was not wrapped in act(...).
+
     const button = await screen.findByText('Découvrir le catalogue')
     const sortByButton = screen.queryByText('Trier')
 
@@ -68,6 +71,9 @@ describe('FavoritesResults component', () => {
     } as unknown as QueryObserverSuccessResult<PaginatedFavoritesResponse>)
 
     renderFavoritesResults()
+
+    await act(async () => {}) // Warning: An update to FavoritesResults inside a test was not wrapped in act(...).
+
     expect(await screen.findByTestId('FavoritesResultsPlaceHolder')).toBeTruthy()
   })
 
@@ -86,6 +92,9 @@ describe('FavoritesResults component', () => {
     } as unknown as UseMutationResult<EmptyResponse, Error, number, FavoriteMutationContext>)
 
     renderFavoritesResults()
+
+    await act(async () => {}) // Warning: An update to FavoritesResults inside a test was not wrapped in act(...).
+
     const paginatedFavorites = await screen.findByText(`4 favoris`)
     const sortButton = screen.queryByText('Trier')
 

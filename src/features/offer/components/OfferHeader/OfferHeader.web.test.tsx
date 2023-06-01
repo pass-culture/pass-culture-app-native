@@ -4,7 +4,7 @@ import { Animated } from 'react-native'
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { act, render, screen, waitFor } from 'tests/utils/web'
+import { act, render, screen } from 'tests/utils/web'
 
 import { OfferHeader } from '../OfferHeader/OfferHeader'
 
@@ -38,11 +38,9 @@ describe('<OfferHeader />', () => {
     const offerHeaderName = screen.getByTestId('offerHeaderName')
 
     expect(offerHeaderName.style.opacity).toBe('0')
-    act(() => {
+    await act(async () => {
       Animated.timing(animatedValue, { duration: 100, toValue: 1, useNativeDriver: false }).start()
     })
-    await waitFor(() => {
-      expect(offerHeaderName.style.opacity).toBe('1')
-    })
+    expect(offerHeaderName.style.opacity).toBe('1')
   })
 })

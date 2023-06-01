@@ -29,6 +29,7 @@ describe('SearchHeader component', () => {
     async (view) => {
       useRoute.mockReturnValueOnce({ params: { view } })
       render(<SearchHeader searchInputID={searchInputID} />)
+      await act(async () => {})
 
       expect(await screen.findByText('Recherche par mots-clés')).toBeTruthy()
     }
@@ -56,6 +57,7 @@ describe('SearchHeader component', () => {
   it('should not render a button to go to the search suggestion view when not on landing or result', async () => {
     useRoute.mockReturnValueOnce({ params: { view: SearchView.Suggestions, query: 'la fnac' } })
     render(<SearchHeader searchInputID={searchInputID} />)
+    await act(async () => {})
 
     await waitFor(() => {
       expect(screen.queryByText('Recherche par mots-clés')).toBeNull()

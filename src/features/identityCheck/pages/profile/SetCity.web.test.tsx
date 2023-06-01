@@ -1,7 +1,7 @@
 import React from 'react'
 
 import { SetCity } from 'features/identityCheck/pages/profile/SetCity'
-import { checkAccessibilityFor, render } from 'tests/utils/web'
+import { act, checkAccessibilityFor, render } from 'tests/utils/web'
 
 jest.mock('react-query')
 
@@ -22,8 +22,10 @@ describe('<SetCity/>', () => {
   describe('Accessibility', () => {
     it('should not have basic accessibility issues', async () => {
       const { container } = render(<SetCity />)
-      const results = await checkAccessibilityFor(container)
-      expect(results).toHaveNoViolations()
+      await act(async () => {
+        const results = await checkAccessibilityFor(container)
+        expect(results).toHaveNoViolations()
+      })
     })
   })
 })
