@@ -32,8 +32,8 @@ describe('<SuspensionChoice/>', () => {
     fireEvent.press(contactSupportButton)
 
     expect(openUrl).toBeCalledWith(
-      contactSupport.forPhoneNumberConfirmation.url,
-      contactSupport.forPhoneNumberConfirmation.params,
+      contactSupport.forGenericQuestion.url,
+      contactSupport.forGenericQuestion.params,
       true
     )
   })

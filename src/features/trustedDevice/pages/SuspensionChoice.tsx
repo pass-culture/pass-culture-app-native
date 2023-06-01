@@ -60,7 +60,7 @@ export const SuspensionChoice = () => {
           wording="Contacter le support"
           accessibilityLabel="Ouvrir le gestionnaire mail pour contacter le support"
           icon={EmailFilled}
-          externalNav={contactSupport.forPhoneNumberConfirmation}
+          externalNav={contactSupport.forGenericQuestion}
         />
       </ButtonContainer>
     </GenericInfoPageWhite>
