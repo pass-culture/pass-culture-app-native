@@ -4,7 +4,7 @@ import { browserName } from 'react-device-detect'
 import DeviceInfo from 'react-native-device-info'
 
 import { TrustedDevice } from 'api/gen'
-import { getUniqueId } from 'libs/react-native-device-info/getUniqueId'
+import { getDeviceId } from 'libs/react-native-device-info/getDeviceId'
 
 export type DeviceInformation = TrustedDevice
 
@@ -13,7 +13,7 @@ export const useDeviceInfo = (): DeviceInformation | undefined => {
 
   useEffect(() => {
     const getDeviceInfo = async () => {
-      const [deviceId, osWeb] = await Promise.all([getUniqueId(), DeviceInfo.getBaseOs()])
+      const [deviceId, osWeb] = await Promise.all([getDeviceId(), DeviceInfo.getBaseOs()])
       const osNative = DeviceInfo.getSystemName()
       const modelNative = DeviceInfo.getModel()
 

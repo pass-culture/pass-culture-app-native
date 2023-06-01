@@ -1,7 +1,6 @@
 import omit from 'lodash/omit'
 import { useEffect, useState, Dispatch, SetStateAction } from 'react'
 import { useMutation } from 'react-query'
-import { v4 as uuidv4 } from 'uuid'
 
 import { api } from 'api/api'
 import { useAuthContext } from 'features/auth/context/AuthContext'
@@ -10,6 +9,7 @@ import { isConsentChoiceExpired } from 'features/cookies/helpers/isConsentChoice
 import { startTrackingAcceptedCookies } from 'features/cookies/helpers/startTrackingAcceptedCookies'
 import { Consent, CookiesConsent, ConsentStatus } from 'features/cookies/types'
 import { eventMonitoring } from 'libs/monitoring'
+import { getDeviceId } from 'libs/react-native-device-info/getDeviceId'
 import { storage } from 'libs/storage'
 
 import Package from '../../../../package.json'
@@ -48,11 +48,12 @@ export const useCookies = () => {
     setCookiesConsentInternalState({ state: ConsentState.HAS_CONSENT, value: cookiesConsent })
 
     const oldCookiesChoice = await getCookiesChoice()
+    const deviceId = await getDeviceId()
 
     const newCookiesChoice: CookiesConsent = {
       buildVersion: Package.build,
       userId: oldCookiesChoice?.userId ?? userProfileInfo?.id,
-      deviceId: oldCookiesChoice?.deviceId ?? uuidv4(),
+      deviceId: oldCookiesChoice?.deviceId ?? deviceId,
       choiceDatetime: new Date().toISOString(),
       consent: cookiesConsent,
     }
@@ -62,11 +63,12 @@ export const useCookies = () => {
 
   const setUserId = async (userId: number): Promise<void> => {
     const oldCookiesChoice = await getCookiesChoice()
+    const deviceId = await getDeviceId()
 
     if (!oldCookiesChoice) {
       const newCookiesChoice: CookiesConsent = {
         userId,
-        deviceId: uuidv4(),
+        deviceId,
         buildVersion: Package.build,
       }
       await persist(newCookiesChoice)
