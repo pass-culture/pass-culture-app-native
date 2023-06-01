@@ -10,7 +10,8 @@ import {
 } from 'react-native'
 import styled from 'styled-components/native'
 
-import { useGetOffersAndVenuesData } from 'features/home/api/useGetOffersAndVenuesData'
+import { useGetOffersData } from 'features/home/api/useGetOffersData'
+import { useGetVenuesData } from 'features/home/api/useGetVenuesData'
 import { useShowSkeleton } from 'features/home/api/useShowSkeleton'
 import { HomeBodyPlaceholder } from 'features/home/components/HomeBodyPlaceholder'
 import { HomeModule } from 'features/home/components/modules/HomeModule'
@@ -64,7 +65,8 @@ export const OnlineHome: FunctionComponent<GenericHomeProps> = ({
   homeId,
   shouldDisplayScrollToTop,
 }) => {
-  const { modulesData } = useGetOffersAndVenuesData(modules)
+  const { offersModulesData } = useGetOffersData(modules.filter(isOffersModule))
+  const { venuesModulesData } = useGetVenuesData(modules.filter(isVenuesModule))
   const logHasSeenAllModules = useFunctionOnce(() => analytics.logAllModulesSeen(modules.length))
   const trackEventHasSeenAllModules = useFunctionOnce(() =>
     BatchUser.trackEvent(BatchEvent.hasSeenAllTheHomepage)
@@ -80,8 +82,11 @@ export const OnlineHome: FunctionComponent<GenericHomeProps> = ({
   const modulesToDisplay = Platform.OS === 'web' ? modules : modules.slice(0, maxIndex)
 
   modulesToDisplay.forEach((module) => {
-    if (isOffersModule(module) || isVenuesModule(module)) {
-      module.data = modulesData.find((mod) => mod.moduleId === module.id)
+    if (isOffersModule(module)) {
+      module.data = offersModulesData.find((mod) => mod.moduleId === module.id)
+    }
+    if (isVenuesModule(module)) {
+      module.data = venuesModulesData.find((mod) => mod.moduleId === module.id)
     }
   })
 

@@ -1,4 +1,5 @@
 import { VenueAccessibilityModel, VenueContactModel } from 'api/gen'
+import { SearchState } from 'features/search/types'
 import { VenueHit } from 'libs/algolia'
 import { VenueTypeCode } from 'libs/parsers'
 import { Offer } from 'shared/offer/types'
@@ -250,6 +251,12 @@ export type VideoModule = {
   color: Color
   videoTag: string
   offerTitle: string
+}
+
+export type OfferModuleParamsInfo = {
+  adaptedPlaylistParameters: SearchState[]
+  moduleId: string
+  nbParams: number
 }
 
 export const isVenuesModule = (module: HomepageModule): module is VenuesModule => {
