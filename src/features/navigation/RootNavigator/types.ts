@@ -67,6 +67,7 @@ export type OnboardingRootStackParamList = {
 export type TrustedDeviceRootStackParamList = {
   NavigationTrustedDevice: undefined
   TrustedDeviceInfos: undefined
+  SuspensionChoice: undefined
   SuspensionConfirmation: undefined
 }
 
