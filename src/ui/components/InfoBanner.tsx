@@ -1,4 +1,4 @@
-import React, { FunctionComponent } from 'react'
+import React, { FunctionComponent, ReactNode } from 'react'
 import { useTheme } from 'styled-components'
 import styled from 'styled-components/native'
 
@@ -10,7 +10,7 @@ type ColorMessageProps = {
 }
 
 type Props = ColorMessageProps & {
-  message: string
+  message: string | ReactNode
   icon?: FunctionComponent<IconInterface>
   testID?: string
 }
