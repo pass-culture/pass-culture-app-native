@@ -4,6 +4,7 @@ import {
   TrustedDeviceRootStackParamList,
   GenericRoute,
 } from 'features/navigation/RootNavigator/types'
+import { AccountSecurity } from 'features/trustedDevice/pages/AccountSecurity'
 import { SuspensionChoice } from 'features/trustedDevice/pages/SuspensionChoice'
 import { SuspensionConfirmation } from 'features/trustedDevice/pages/SuspensionConfirmation'
 
@@ -28,5 +29,10 @@ export const trustedDeviceRoutes: GenericRoute<TrustedDeviceRootStackParamList>[
     name: 'SuspensionConfirmation',
     component: SuspensionConfirmation,
     path: 'securisation-compte/suspension-confirmee',
+  },
+  {
+    name: 'AccountSecurity',
+    component: AccountSecurity,
+    path: 'securisation-compte',
   },
 ]
