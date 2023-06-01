@@ -73,7 +73,10 @@ export function Navigation(): JSX.Element {
             />
           </Row>
           <Row half>
-            <ButtonPrimary wording="Trusted device 📱" onPress={() => navigate('TrustedDevice')} />
+            <ButtonPrimary
+              wording="Trusted device 📱"
+              onPress={() => navigate('NavigationTrustedDevice')}
+            />
           </Row>
           <Row half>
             <ButtonPrimary
