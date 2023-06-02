@@ -1,5 +1,5 @@
 import { useNavigation } from '@react-navigation/native'
-import React from 'react'
+import React, { useCallback } from 'react'
 
 import { navigateToHome, navigateToHomeConfig } from 'features/navigation/helpers'
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
@@ -20,10 +20,10 @@ export function ConfirmChangeEmail() {
     navigateToHome()
   }
 
-  const onConfirmEmail = () => {
+  const onConfirmEmail = useCallback(() => {
     // TODO(yassinL) complete with back-end route
     navigate('TrackEmailChange')
-  }
+  }, [navigate])
 
   return (
     <React.Fragment>
