@@ -3,23 +3,27 @@
 ## Render test
 
 ```jsx
-it('should render correctly', () => {
-  const page = render(<Page />)
+import { render, screen } from 'tests/utils'
 
-  expect(page).toMatchSnapshot()
+it('should render correctly', () => {
+  render(<Page />)
+
+  expect(screen).toMatchSnapshot()
 })
 ```
 
 If component is using timed function such as animation, snapshot will always differ, it can be worth controlling the time:
 
 ```jsx
+import { render, screen } from 'tests/utils'
+
 it('should render correctly', async () => {
   jest.useFakeTimers('legacy')
-  const page = render(<Page />)
+  render(<Page />)
 
   jest.advanceTimersByTime(1000)
 
-  expect(page).toMatchSnapshot()
+  expect(screen).toMatchSnapshot()
   jest.useRealTimers()
 })
 ```
