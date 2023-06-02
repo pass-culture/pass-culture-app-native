@@ -273,7 +273,7 @@ exports[`<SuspensionConfirmation/> should match snapshot 1`] = `
             ]
           }
         >
-          Contacter le service
+          Contacter le support
         </Text>
       </View>
       <View

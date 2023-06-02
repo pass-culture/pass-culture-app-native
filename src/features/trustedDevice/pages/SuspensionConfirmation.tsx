@@ -1,8 +1,7 @@
-import { env } from 'process'
-
 import React from 'react'
 import styled from 'styled-components/native'
 
+import { contactSupport } from 'features/auth/helpers/contactSupport'
 import { useLogoutRoutine } from 'features/auth/helpers/useLogoutRoutine'
 import { navigateToHomeConfig } from 'features/navigation/helpers'
 import { ButtonPrimaryWhite } from 'ui/components/buttons/ButtonPrimaryWhite'
@@ -26,9 +25,9 @@ export const SuspensionConfirmation = () => {
         <ExternalTouchableLink
           key={1}
           as={ButtonPrimaryWhite}
-          wording="Contacter le service"
+          wording="Contacter le support"
           accessibilityLabel="Ouvrir le gestionnaire mail pour contacter le support"
-          externalNav={{ url: `mailto:${env.SUPPORT_EMAIL_ADDRESS}` }}
+          externalNav={contactSupport.forGenericQuestion}
           icon={Email}
         />,
         <InternalTouchableLink
