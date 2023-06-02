@@ -1,0 +1,24 @@
+appId: 'app.passculture.test'
+---
+- launchApp:
+    appId: 'app.passculture.test'
+    clearState: true
+
+# TODO: Trouver un mpyen de supprimer les alertes du simulateur
+- assertVisible: 'Respect de ta vie privée'
+- tapOn:
+    point: '84%,94%'
+- tapOn:
+    point: '16%,94%'
+
+# Cookies consent
+- runFlow: reusableFlows/CookiesConsent.yml
+
+# Onboarding
+- runFlow: reusableFlows/Onboarding.yml
+
+# SignIn
+- runFlow: reusableFlows/SignIn.yml
+
+# TODO: Trouver un moyen de valider l'inscription depuis l'email > En testing pas de redirection
+- tapOn: 'Abandonner l’inscription'
