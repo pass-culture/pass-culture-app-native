@@ -34,9 +34,8 @@ describe('ThematicHome', () => {
   })
 
   it('should render default header when provided', async () => {
-    // eslint-disable-next-line local-rules/no-react-query-provider-hoc
-    render(reactQueryProviderHOC(<ThematicHome />))
-    expect(await screen.findByText('HeaderTitle')).toBeTruthy()
+    renderThematicHome()
+    expect(await screen.findAllByText('HeaderTitle')).toBeTruthy()
     expect(screen.getByText('HeaderSubtitle')).toBeTruthy()
   })
 
@@ -55,9 +54,8 @@ describe('ThematicHome', () => {
       },
     })
 
-    // eslint-disable-next-line local-rules/no-react-query-provider-hoc
-    render(reactQueryProviderHOC(<ThematicHome />))
-    expect(await screen.findByText('Bloc temps fort')).toBeTruthy()
+    renderThematicHome()
+    expect(await screen.findAllByText('Bloc temps fort')).toBeTruthy()
     expect(screen.getByText('Un sous-titre')).toBeTruthy()
   })
 
@@ -74,17 +72,15 @@ describe('ThematicHome', () => {
       },
     })
 
-    // eslint-disable-next-line local-rules/no-react-query-provider-hoc
-    render(reactQueryProviderHOC(<ThematicHome />))
-    expect(await screen.findByText('Catégorie cinéma')).toBeTruthy()
+    renderThematicHome()
+    expect(await screen.findAllByText('Catégorie cinéma')).toBeTruthy()
     expect(screen.getByText('Un sous-titre')).toBeTruthy()
   })
 
   it('should log ConsultHome', async () => {
-    // eslint-disable-next-line local-rules/no-react-query-provider-hoc
-    render(reactQueryProviderHOC(<ThematicHome />))
+    renderThematicHome()
 
-    await screen.findByText('HeaderTitle')
+    await screen.findByText('HeaderSubtitle')
 
     expect(analytics.logConsultHome).toHaveBeenNthCalledWith(1, { homeEntryId: 'fakeEntryId' })
   })
@@ -98,10 +94,9 @@ describe('ThematicHome', () => {
         moduleListId: 'moduleListId',
       },
     })
-    // eslint-disable-next-line local-rules/no-react-query-provider-hoc
-    render(reactQueryProviderHOC(<ThematicHome />))
+    renderThematicHome()
 
-    await screen.findByText('HeaderTitle')
+    await screen.findByText('HeaderSubtitle')
 
     expect(analytics.logConsultHome).toHaveBeenNthCalledWith(1, {
       homeEntryId: 'fakeEntryId',
@@ -119,10 +114,9 @@ describe('ThematicHome', () => {
         moduleId: 'moduleId',
       },
     })
-    // eslint-disable-next-line local-rules/no-react-query-provider-hoc
-    render(reactQueryProviderHOC(<ThematicHome />))
+    renderThematicHome()
 
-    await screen.findByText('HeaderTitle')
+    await screen.findByText('HeaderSubtitle')
 
     expect(analytics.logConsultHome).toHaveBeenNthCalledWith(1, {
       homeEntryId: 'fakeEntryId',
@@ -131,3 +125,10 @@ describe('ThematicHome', () => {
     })
   })
 })
+
+const renderThematicHome = () => {
+  render(<ThematicHome />, {
+    // eslint-disable-next-line local-rules/no-react-query-provider-hoc
+    wrapper: ({ children }) => reactQueryProviderHOC(children),
+  })
+}

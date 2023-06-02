@@ -5,308 +5,122 @@ exports[`ThematicHome should render correctly 1`] = `
   style={
     Array [
       Object {
-        "flexBasis": 1,
+        "backgroundColor": "#ffffff",
+        "flexBasis": 0,
         "flexGrow": 1,
-        "flexShrink": 0,
+        "flexShrink": 1,
       },
     ]
   }
 >
   <View
-    hide={false}
     style={
       Array [
         Object {
-          "height": "100%",
-          "overflow": "hidden",
+          "flexGrow": 1,
+          "flexShrink": 0,
         },
       ]
     }
   >
-    <RCTScrollView
-      ListFooterComponent={
-        <FooterComponent
-          hasShownAll={true}
-        />
-      }
-      ListHeaderComponent={
-        <Header
-          thematicHeader={
-            Object {
-              "subtitle": "HeaderSubtitle",
-              "title": "HeaderTitle",
-            }
-          }
-        />
-      }
-      bounces={true}
-      data={
-        Array [
-          Object {
-            "data": undefined,
-            "displayParameters": Object {
-              "layout": "one-item-medium",
-              "minOffers": 1,
-              "subtitle": "Ceci n’est pas une playlist de lieux",
-              "title": "Exemple de playlist de lieux",
-            },
-            "id": "105MMz59tftcxXJICXt7ja",
-            "type": "VenuesModule",
-            "venuesParameters": Array [
-              Object {
-                "hitsPerPage": 15,
-                "isGeolocated": false,
-                "title": "Exemple de playlist de lieux",
-                "venueTypes": Array [
-                  "Bibliothèque ou médiathèque",
-                  "Arts visuels, arts plastiques et galeries",
-                  "Centre culturel",
-                  "Cinéma - Salle de projections",
-                  "Cours et pratique artistiques",
-                  "Culture scientifique",
-                  "Festival",
-                  "Jeux / Jeux vidéos",
-                  "Librairie",
-                  "Magasin arts créatifs",
-                  "Musique - Disquaire",
-                  "Musique - Magasin d’instruments",
-                  "Musique - Salle de concerts",
-                  "Musée",
-                  "Offre numérique",
-                  "Patrimoine et tourisme",
-                  "Spectacle vivant",
-                  "Cinéma itinérant",
-                  "Autre type de lieu",
-                ],
-              },
-            ],
-          },
-        ]
-      }
-      getItem={[Function]}
-      getItemCount={[Function]}
-      initialNumToRender={10}
-      keyExtractor={[Function]}
-      onContentSizeChange={[Function]}
-      onLayout={[Function]}
-      onMomentumScrollBegin={[Function]}
-      onMomentumScrollEnd={[Function]}
-      onScroll={[Function]}
-      onScrollBeginDrag={[Function]}
-      onScrollEndDrag={[Function]}
-      removeClippedSubviews={false}
-      renderItem={[Function]}
-      scrollEventThrottle={200}
-      stickyHeaderIndices={Array []}
-      testID="homeBodyScrollView"
-      viewabilityConfigCallbackPairs={Array []}
-    >
-      <View>
-        <View
-          onLayout={[Function]}
-        >
-          <View
-            style={
-              Array [
-                Object {
-                  "flexGrow": 1,
-                  "flexShrink": 0,
-                },
-              ]
-            }
-          >
-            <View
-              style={
-                Array [
-                  Object {
-                    "marginBottom": 8,
-                    "marginHorizontal": 24,
-                    "marginTop": 8,
-                  },
-                ]
-              }
-            >
-              <View
-                customHeight={16}
-                enable={true}
-                style={
-                  Array [
-                    Object {
-                      "height": 16,
-                    },
-                  ]
-                }
-              />
-              <View
-                accessibilityLabel="Revenir en arrière"
-                accessibilityRole="button"
-                accessible={true}
-                collapsable={false}
-                focusable={true}
-                onClick={[Function]}
-                onResponderGrant={[Function]}
-                onResponderMove={[Function]}
-                onResponderRelease={[Function]}
-                onResponderTerminate={[Function]}
-                onResponderTerminationRequest={[Function]}
-                onStartShouldSetResponder={[Function]}
-                style={
-                  Object {
-                    "alignItems": "center",
-                    "flexGrow": 1,
-                    "height": 40,
-                    "justifyContent": "center",
-                    "maxWidth": 40,
-                    "opacity": 1,
-                    "userSelect": "auto",
-                  }
-                }
-                testID="Revenir en arrière"
-              >
-                <View
-                  height={24}
-                  testID="icon-back"
-                  width={24}
-                >
-                  <Text>
-                    icon-back-SVG-Mock
-                  </Text>
-                </View>
-                <Text
-                  style={
-                    Array [
-                      Object {
-                        "display": "none",
-                      },
-                    ]
-                  }
-                >
-                  Retour
-                </Text>
-              </View>
-              <View
-                numberOfSpaces={4}
-                style={
-                  Array [
-                    Object {
-                      "height": 16,
-                    },
-                  ]
-                }
-              />
-              <View
-                style={
-                  Array [
-                    Object {
-                      "maxHeight": 96,
-                      "overflow": "hidden",
-                    },
-                  ]
-                }
-              >
-                <Text
-                  numberOfLines={2}
-                  style={
-                    Array [
-                      Object {
-                        "color": "#161617",
-                        "fontFamily": "Montserrat-Black",
-                        "fontSize": 26,
-                        "lineHeight": 34,
-                      },
-                    ]
-                  }
-                >
-                  HeaderTitle
-                </Text>
-                <View
-                  numberOfSpaces={2}
-                  style={
-                    Array [
-                      Object {
-                        "height": 8,
-                      },
-                    ]
-                  }
-                />
-                <Text
-                  numberOfLines={2}
-                  style={
-                    Array [
-                      Object {
-                        "color": "#161617",
-                        "fontFamily": "Montserrat-Regular",
-                        "fontSize": 15,
-                        "lineHeight": 20,
-                      },
-                    ]
-                  }
-                >
-                  HeaderSubtitle
-                </Text>
-              </View>
-              <View
-                numberOfSpaces={6}
-                style={
-                  Array [
-                    Object {
-                      "height": 24,
-                    },
-                  ]
-                }
-              />
-            </View>
-          </View>
-        </View>
-        <View
-          onLayout={[Function]}
-          style={null}
-        />
-        <View
-          onLayout={[Function]}
-        >
-          <View
-            customHeight={72}
-            enable={true}
-            style={
-              Array [
-                Object {
-                  "height": 72,
-                },
-              ]
-            }
-          />
-        </View>
-      </View>
-    </RCTScrollView>
     <View
+      collapsable={false}
+      safeAreaTop={16}
       style={
-        Array [
-          Object {
-            "bottom": 88,
-            "position": "absolute",
-            "right": 28,
-            "zIndex": 1,
-          },
-        ]
+        Object {
+          "backdropFilter": "blur(0px)",
+          "backgroundColor": "rgba(255, 255, 255, 0)",
+          "borderBottomColor": "#F1F1F4",
+          "borderBottomWidth": 0,
+          "height": 80,
+          "position": "absolute",
+          "top": 0,
+          "width": "100%",
+          "zIndex": 1,
+        }
       }
     >
       <View
+        customHeight={16}
+        enable={true}
+        style={
+          Array [
+            Object {
+              "height": 16,
+            },
+          ]
+        }
+      />
+      <View
         collapsable={false}
+        safeAreaTop={16}
         style={
           Object {
+            "height": 80,
+            "left": 0,
             "opacity": 0,
+            "overflow": "hidden",
+            "position": "absolute",
+            "right": 0,
+            "top": 0,
           }
         }
       >
-        <View
-          accessibilityLabel="Revenir en haut"
-          accessibilityRole="button"
-          accessibilityState={
-            Object {
-              "disabled": true,
-            }
+        <BlurView
+          blurAmount={8}
+          blurType="light"
+          style={
+            Array [
+              Object {
+                "backgroundColor": "transparent",
+              },
+              Array [
+                Object {
+                  "flexBasis": 0,
+                  "flexGrow": 1,
+                  "flexShrink": 1,
+                },
+              ],
+            ]
           }
+        />
+      </View>
+      <View
+        numberOfSpaces={2}
+        style={
+          Array [
+            Object {
+              "height": 8,
+            },
+          ]
+        }
+      />
+      <View
+        style={
+          Array [
+            Object {
+              "alignItems": "center",
+              "flexBasis": 0,
+              "flexDirection": "row",
+              "flexGrow": 1,
+              "flexShrink": 1,
+            },
+          ]
+        }
+      >
+        <View
+          numberOfSpaces={6}
+          style={
+            Array [
+              Object {
+                "width": 24,
+              },
+            ]
+          }
+        />
+        <View
+          accessibilityLabel="Revenir en arrière"
+          accessibilityRole="button"
           accessible={true}
           collapsable={false}
           focusable={true}
@@ -319,62 +133,173 @@ exports[`ThematicHome should render correctly 1`] = `
           onStartShouldSetResponder={[Function]}
           style={
             Object {
+              "borderRadius": 40,
               "opacity": 1,
-              "overflow": "hidden",
               "userSelect": "auto",
             }
           }
-          testID="Revenir en haut"
+          testID="Revenir en arrière"
         >
-          <BVLinearGradient
-            colors={
-              Array [
-                4290717535,
-                4284091776,
-              ]
-            }
-            endPoint={
+          <View
+            collapsable={false}
+            style={
               Object {
-                "x": 0,
-                "y": 1,
+                "alignItems": "center",
+                "aspectRatio": 1,
+                "backgroundColor": "#ffffff",
+                "borderColor": "rgba(241, 241, 244, 1)",
+                "borderRadius": 40,
+                "borderStyle": "solid",
+                "borderWidth": 1,
+                "height": 40,
+                "justifyContent": "center",
+                "overflow": "hidden",
+                "transform": undefined,
+                "width": 40,
               }
             }
-            locations={null}
-            startPoint={
-              Object {
-                "x": 0,
-                "y": 0,
+            testID="AnimatedHeaderIconRoundContainer"
+          >
+            <View
+              size={24}
+              style={
+                Array [
+                  Object {
+                    "height": 24,
+                    "width": 24,
+                  },
+                ]
               }
+            >
+              <View
+                collapsable={false}
+                style={
+                  Object {
+                    "opacity": 1,
+                    "position": "absolute",
+                  }
+                }
+                testID="initial-icon-container"
+              >
+                <View
+                  height={24}
+                  testID="animated-icon-back"
+                  width={24}
+                >
+                  <Text>
+                    animated-icon-back-SVG-Mock
+                  </Text>
+                </View>
+              </View>
+              <View
+                collapsable={false}
+                style={
+                  Object {
+                    "opacity": 0,
+                    "position": "absolute",
+                  }
+                }
+                testID="final-icon-container"
+              >
+                <View
+                  height={24}
+                  testID="final-animated-icon-back"
+                  width={24}
+                >
+                  <Text>
+                    final-animated-icon-back-SVG-Mock
+                  </Text>
+                </View>
+              </View>
+            </View>
+          </View>
+        </View>
+        <View
+          numberOfSpaces={3}
+          style={
+            Array [
+              Object {
+                "width": 12,
+              },
+            ]
+          }
+        />
+        <View
+          numberOfSpaces={10}
+          style={
+            Array [
+              Object {
+                "width": 40,
+              },
+            ]
+          }
+          testID="leftShareIconPlaceholder"
+        />
+        <View
+          style={
+            Array [
+              Object {
+                "flexBasis": 0,
+                "flexGrow": 1,
+                "flexShrink": 1,
+              },
+            ]
+          }
+        />
+        <Text
+          accessibilityHidden={true}
+          collapsable={false}
+          numberOfLines={2}
+          style={
+            Object {
+              "color": "#ffffff",
+              "flexShrink": 1,
+              "opacity": 0,
+              "textAlign": "center",
             }
+          }
+          testID="offerHeaderName"
+        >
+          <Text
             style={
               Array [
                 Object {
-                  "alignItems": "center",
-                  "backgroundColor": "#eb0055",
-                  "borderRadius": 24,
-                  "height": 40,
-                  "justifyContent": "center",
-                  "overflow": "hidden",
-                  "width": 40,
+                  "color": "#161617",
+                  "fontFamily": "Montserrat-Regular",
+                  "fontSize": 15,
+                  "lineHeight": 20,
                 },
               ]
             }
           >
-            <View
-              fill="#ffffff"
-              height={24}
-              width={24}
-            >
-              <Text>
-                undefined-SVG-Mock
-              </Text>
-            </View>
-          </BVLinearGradient>
-        </View>
+            HeaderTitle
+          </Text>
+        </Text>
+        <View
+          style={
+            Array [
+              Object {
+                "flexBasis": 0,
+                "flexGrow": 1,
+                "flexShrink": 1,
+              },
+            ]
+          }
+        />
+        <View
+          numberOfSpaces={25}
+          style={
+            Array [
+              Object {
+                "width": 100,
+              },
+            ]
+          }
+          testID="rightSpacer"
+        />
       </View>
       <View
-        customHeight={8}
-        enable={true}
+        numberOfSpaces={2}
         style={
           Array [
             Object {
@@ -386,14 +311,342 @@ exports[`ThematicHome should render correctly 1`] = `
     </View>
   </View>
   <View
-    numberOfSpaces={6}
     style={
       Array [
         Object {
-          "height": 24,
+          "flexBasis": 1,
+          "flexGrow": 1,
+          "flexShrink": 0,
         },
       ]
     }
-  />
+  >
+    <View
+      hide={false}
+      style={
+        Array [
+          Object {
+            "height": "100%",
+            "overflow": "hidden",
+          },
+        ]
+      }
+    >
+      <RCTScrollView
+        ListFooterComponent={
+          <FooterComponent
+            hasShownAll={true}
+          />
+        }
+        ListHeaderComponent={
+          <Body
+            headerTransition={0}
+            thematicHeader={
+              Object {
+                "subtitle": "HeaderSubtitle",
+                "title": "HeaderTitle",
+              }
+            }
+          />
+        }
+        bounces={true}
+        data={
+          Array [
+            Object {
+              "data": undefined,
+              "displayParameters": Object {
+                "layout": "one-item-medium",
+                "minOffers": 1,
+                "subtitle": "Ceci n’est pas une playlist de lieux",
+                "title": "Exemple de playlist de lieux",
+              },
+              "id": "105MMz59tftcxXJICXt7ja",
+              "type": "VenuesModule",
+              "venuesParameters": Array [
+                Object {
+                  "hitsPerPage": 15,
+                  "isGeolocated": false,
+                  "title": "Exemple de playlist de lieux",
+                  "venueTypes": Array [
+                    "Bibliothèque ou médiathèque",
+                    "Arts visuels, arts plastiques et galeries",
+                    "Centre culturel",
+                    "Cinéma - Salle de projections",
+                    "Cours et pratique artistiques",
+                    "Culture scientifique",
+                    "Festival",
+                    "Jeux / Jeux vidéos",
+                    "Librairie",
+                    "Magasin arts créatifs",
+                    "Musique - Disquaire",
+                    "Musique - Magasin d’instruments",
+                    "Musique - Salle de concerts",
+                    "Musée",
+                    "Offre numérique",
+                    "Patrimoine et tourisme",
+                    "Spectacle vivant",
+                    "Cinéma itinérant",
+                    "Autre type de lieu",
+                  ],
+                },
+              ],
+            },
+          ]
+        }
+        getItem={[Function]}
+        getItemCount={[Function]}
+        initialNumToRender={10}
+        keyExtractor={[Function]}
+        onContentSizeChange={[Function]}
+        onLayout={[Function]}
+        onMomentumScrollBegin={[Function]}
+        onMomentumScrollEnd={[Function]}
+        onScroll={[Function]}
+        onScrollBeginDrag={[Function]}
+        onScrollEndDrag={[Function]}
+        removeClippedSubviews={false}
+        renderItem={[Function]}
+        scrollEventThrottle={200}
+        stickyHeaderIndices={Array []}
+        testID="homeBodyScrollView"
+        viewabilityConfigCallbackPairs={Array []}
+      >
+        <View>
+          <View
+            onLayout={[Function]}
+          >
+            <View
+              style={
+                Array [
+                  Object {
+                    "flexGrow": 1,
+                    "flexShrink": 0,
+                  },
+                ]
+              }
+            >
+              <View
+                style={
+                  Array [
+                    Object {
+                      "marginBottom": 8,
+                      "marginHorizontal": 24,
+                      "marginTop": 8,
+                    },
+                  ]
+                }
+              >
+                <View
+                  numberOfSpaces={4}
+                  style={
+                    Array [
+                      Object {
+                        "height": 16,
+                      },
+                    ]
+                  }
+                />
+                <View
+                  style={
+                    Array [
+                      Object {
+                        "maxHeight": 96,
+                        "overflow": "hidden",
+                      },
+                    ]
+                  }
+                >
+                  <Text
+                    numberOfLines={2}
+                    style={
+                      Array [
+                        Object {
+                          "color": "#161617",
+                          "fontFamily": "Montserrat-Black",
+                          "fontSize": 26,
+                          "lineHeight": 34,
+                        },
+                      ]
+                    }
+                  >
+                    HeaderTitle
+                  </Text>
+                  <View
+                    numberOfSpaces={2}
+                    style={
+                      Array [
+                        Object {
+                          "height": 8,
+                        },
+                      ]
+                    }
+                  />
+                  <Text
+                    numberOfLines={2}
+                    style={
+                      Array [
+                        Object {
+                          "color": "#161617",
+                          "fontFamily": "Montserrat-Regular",
+                          "fontSize": 15,
+                          "lineHeight": 20,
+                        },
+                      ]
+                    }
+                  >
+                    HeaderSubtitle
+                  </Text>
+                </View>
+                <View
+                  numberOfSpaces={6}
+                  style={
+                    Array [
+                      Object {
+                        "height": 24,
+                      },
+                    ]
+                  }
+                />
+              </View>
+            </View>
+          </View>
+          <View
+            onLayout={[Function]}
+            style={null}
+          />
+          <View
+            onLayout={[Function]}
+          >
+            <View
+              customHeight={72}
+              enable={true}
+              style={
+                Array [
+                  Object {
+                    "height": 72,
+                  },
+                ]
+              }
+            />
+          </View>
+        </View>
+      </RCTScrollView>
+      <View
+        style={
+          Array [
+            Object {
+              "bottom": 88,
+              "position": "absolute",
+              "right": 28,
+              "zIndex": 1,
+            },
+          ]
+        }
+      >
+        <View
+          collapsable={false}
+          style={
+            Object {
+              "opacity": 0,
+            }
+          }
+        >
+          <View
+            accessibilityLabel="Revenir en haut"
+            accessibilityRole="button"
+            accessibilityState={
+              Object {
+                "disabled": true,
+              }
+            }
+            accessible={true}
+            collapsable={false}
+            focusable={true}
+            onClick={[Function]}
+            onResponderGrant={[Function]}
+            onResponderMove={[Function]}
+            onResponderRelease={[Function]}
+            onResponderTerminate={[Function]}
+            onResponderTerminationRequest={[Function]}
+            onStartShouldSetResponder={[Function]}
+            style={
+              Object {
+                "opacity": 1,
+                "overflow": "hidden",
+                "userSelect": "auto",
+              }
+            }
+            testID="Revenir en haut"
+          >
+            <BVLinearGradient
+              colors={
+                Array [
+                  4290717535,
+                  4284091776,
+                ]
+              }
+              endPoint={
+                Object {
+                  "x": 0,
+                  "y": 1,
+                }
+              }
+              locations={null}
+              startPoint={
+                Object {
+                  "x": 0,
+                  "y": 0,
+                }
+              }
+              style={
+                Array [
+                  Object {
+                    "alignItems": "center",
+                    "backgroundColor": "#eb0055",
+                    "borderRadius": 24,
+                    "height": 40,
+                    "justifyContent": "center",
+                    "overflow": "hidden",
+                    "width": 40,
+                  },
+                ]
+              }
+            >
+              <View
+                fill="#ffffff"
+                height={24}
+                width={24}
+              >
+                <Text>
+                  undefined-SVG-Mock
+                </Text>
+              </View>
+            </BVLinearGradient>
+          </View>
+        </View>
+        <View
+          customHeight={8}
+          enable={true}
+          style={
+            Array [
+              Object {
+                "height": 8,
+              },
+            ]
+          }
+        />
+      </View>
+    </View>
+    <View
+      numberOfSpaces={6}
+      style={
+        Array [
+          Object {
+            "height": 24,
+          },
+        ]
+      }
+    />
+  </View>
 </View>
 `;
