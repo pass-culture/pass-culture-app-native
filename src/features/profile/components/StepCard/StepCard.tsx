@@ -48,6 +48,7 @@ export function StepCard({
 
 const Parent = styled(View)<{ type: StepCardType }>(({ type }) => ({
   paddingHorizontal: type === StepCardType.ACTIVE ? 0 : 4,
+  maxWidth: 500,
 }))
 
 const Container = styled.View<{ type: StepCardType; hasSubtitle?: boolean }>(
