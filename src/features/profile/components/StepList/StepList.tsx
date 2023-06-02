@@ -35,7 +35,7 @@ function getVariantFromIndex(activeStepIndex: number, stepIndex: number) {
  *   </Step>
  * </StepList>
  */
-export function StepList({ activeStepIndex, children }: StepListProps) {
+export function StepList({ activeStepIndex, children, ...props }: StepListProps) {
   if (activeStepIndex > children.length - 1) {
     console.warn(
       `[StepList] - Given (\`activeStepIndex\`: ${activeStepIndex}) but children length is ${
@@ -45,7 +45,7 @@ export function StepList({ activeStepIndex, children }: StepListProps) {
   }
 
   return (
-    <VerticalUl>
+    <VerticalUl {...props}>
       {React.Children.map(children, (child, index) => {
         return (
           <Li>

@@ -45,9 +45,9 @@ export function TrackEmailChange() {
         </GoBackContainer>
       </HeaderContainer>
       <Spacer.Column numberOfSpaces={6} />
-      <Typo.Title1>Suivi de ton changement d’e-mail</Typo.Title1>
+      <StyledTitleText>Suivi de ton changement d’e-mail</StyledTitleText>
       <Spacer.Column numberOfSpaces={10} />
-      <StyledContainer>
+      <StyledListContainer>
         <StyledStepList activeStepIndex={currentStep}>
           <Step>
             <StyledStepCard
@@ -79,7 +79,7 @@ export function TrackEmailChange() {
             />
           </Step>
         </StyledStepList>
-      </StyledContainer>
+      </StyledListContainer>
     </StyledScrollViewContainer>
   )
 }
@@ -115,6 +115,10 @@ const StyledScrollViewContainer = styled(ScrollView)({
   flex: 1,
 })
 
-const StyledContainer = styled.View({
-  maxWidth: 500,
+const StyledListContainer = styled.View({
+  marginHorizontal: 'auto',
+})
+
+const StyledTitleText = styled(Typo.Title1)({
+  textAlign: 'center',
 })
