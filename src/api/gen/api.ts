@@ -961,6 +961,41 @@ export enum EligibilityType {
  * @export
  * @enum {string}
  */
+export enum EmailHistoryEventTypeEnum {
+  'UPDATE_REQUEST' = 'UPDATE_REQUEST',
+  'CONFIRMATION' = 'CONFIRMATION',
+  'CANCELLATION' = 'CANCELLATION',
+  'VALIDATION' = 'VALIDATION',
+  'ADMIN_VALIDATION' = 'ADMIN_VALIDATION',
+  'ADMIN_UPDATE_REQUEST' = 'ADMIN_UPDATE_REQUEST',
+  'ADMIN_UPDATE' = 'ADMIN_UPDATE',
+}
+/**
+ * @export
+ * @interface EmailUpdateStatus
+ */
+export interface EmailUpdateStatus {
+  /**
+   * @type {boolean}
+   * @memberof EmailUpdateStatus
+   */
+  expired: boolean
+  /**
+   * @type {string}
+   * @memberof EmailUpdateStatus
+   */
+  newEmail: string
+  /**
+   * @type {EmailHistoryEventTypeEnum}
+   * @memberof EmailUpdateStatus
+   */
+  status: EmailHistoryEventTypeEnum
+}
+/**
+ * An enumeration.
+ * @export
+ * @enum {string}
+ */
 export enum ExpenseDomain {
   'all' = 'all',
   'digital' = 'digital',
@@ -3429,6 +3464,24 @@ export const DefaultApiFetchParamCreator = function (configuration?: Configurati
       }
     },
     /**
+     * @summary get_email_update_status <GET>
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async getnativev1profileemailUpdatestatus(options: any = {}): Promise<FetchArgs> {
+      const pathname = `/native/v1/profile/email_update/status`
+      let secureOptions = Object.assign(options, { credentials: 'omit' })
+      // authentication JWTAuth required
+      secureOptions = Object.assign(secureOptions, { credentials: 'include' })
+      const localVarRequestOptions = Object.assign({ method: 'GET' }, secureOptions)
+      const localVarHeaderParameter = await getAuthenticationHeaders(secureOptions)
+      localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers)
+      return {
+        url: pathname,
+        options: localVarRequestOptions,
+      }
+    },
+    /**
      * @summary get_email_update_token_expiration_date <GET>
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
@@ -4368,6 +4421,17 @@ export const DefaultApiFp = function(api: DefaultApi, configuration?: Configurat
     },
     /**
      * 
+     * @summary get_email_update_status <GET>
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async getnativev1profileemailUpdatestatus(options?: any): Promise<EmailUpdateStatus> {
+      const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).getnativev1profileemailUpdatestatus(options)
+      const response = await safeFetch(configuration?.basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
+      return handleGeneratedApiResponse(response)
+    },
+    /**
+     * 
      * @summary get_email_update_token_expiration_date <GET>
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
@@ -4954,6 +5018,17 @@ export class DefaultApi extends BaseAPI {
   public async getnativev1phoneValidationremainingAttempts(options?: any) {
     const configuration = await this.getConfiguration()
     return DefaultApiFp(this, configuration).getnativev1phoneValidationremainingAttempts(options)
+  }
+  /**
+    * 
+    * @summary get_email_update_status <GET>
+    * @param {*} [options] Override http request option.
+    * @throws {RequiredError}
+    * @memberof DefaultApi
+    */
+  public async getnativev1profileemailUpdatestatus(options?: any) {
+    const configuration = await this.getConfiguration()
+    return DefaultApiFp(this, configuration).getnativev1profileemailUpdatestatus(options)
   }
   /**
     * 
