@@ -1,9 +1,9 @@
 import * as React from 'react'
 import { Defs, LinearGradient, Path, Stop } from 'react-native-svg'
-import styled from 'styled-components/native'
+import styled, { useTheme } from 'styled-components/native'
 
 import { AccessibleSvg } from 'ui/svg/AccessibleSvg'
-import { AccessibleBicolorIconInterface } from 'ui/svg/icons/types'
+import { AccessibleBicolorIconInterface, AccessibleIcon } from 'ui/svg/icons/types'
 import { svgIdentifier } from 'ui/svg/utils'
 
 const UserBlockedSvg: React.FunctionComponent<AccessibleBicolorIconInterface> = ({
@@ -39,11 +39,21 @@ const UserBlockedSvg: React.FunctionComponent<AccessibleBicolorIconInterface> = 
   )
 }
 
-export const UserBlocked = styled(UserBlockedSvg).attrs(({ color, size, theme }) => ({
-  color: color ?? theme.colors.black,
-  color2: color ?? theme.colors.black,
-  size: size ?? theme.illustrations.sizes.medium,
-}))``
+//TODO(marineshaw): Temporary fix until we agree on a new icon standard
+export const UserBlocked = ({ color, size, accessibilityLabel, testID }: AccessibleIcon) => {
+  const theme = useTheme()
+  const baseColor = color ?? theme.colors.black
+
+  return (
+    <UserBlockedSvg
+      color={baseColor}
+      color2={baseColor}
+      accessibilityLabel={accessibilityLabel}
+      testID={testID}
+      size={size ?? theme.illustrations.sizes.medium}
+    />
+  )
+}
 
 export const BicolorUserBlocked = styled(UserBlockedSvg).attrs(
   ({ color, color2, size, theme }) => ({
