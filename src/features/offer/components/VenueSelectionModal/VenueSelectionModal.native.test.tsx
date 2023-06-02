@@ -1,9 +1,18 @@
 import React from 'react'
 
 import { VenueListItem } from 'features/offer/components/VenueSelectionList/VenueSelectionList'
+import { GeolocPermissionState, useGeolocation } from 'libs/geolocation'
+import {
+  requestGeolocPermission,
+  onPressGeolocPermissionModalButton,
+} from 'libs/geolocation/__mocks__'
 import { fireEvent, render, screen } from 'tests/utils'
+import * as useModalAPI from 'ui/components/modals/useModal'
 
 import { VenueSelectionModal } from './VenueSelectionModal'
+
+jest.mock('libs/geolocation')
+const mockUseGeolocation = useGeolocation as jest.Mock
 
 describe('<VenueSelectionModal />', () => {
   const items: VenueListItem[] = [
@@ -63,7 +72,7 @@ describe('<VenueSelectionModal />', () => {
       />
     )
 
-    fireEvent.press(screen.getByRole('button'))
+    fireEvent.press(screen.getByTestId('Ne pas sélectionner un autre lieu'))
 
     expect(onClose).toHaveBeenCalledTimes(1)
   })
@@ -109,5 +118,218 @@ describe('<VenueSelectionModal />', () => {
     fireEvent.press(screen.getByText('Choisir ce lieu'))
 
     expect(onSubmit).toHaveBeenNthCalledWith(1, 3)
+  })
+
+  describe('When user share his position', () => {
+    it('should not display "Active ta géolocalisation" button', () => {
+      render(
+        <VenueSelectionModal
+          isVisible
+          items={items}
+          title="Lieu de retrait"
+          onSubmit={jest.fn()}
+          onClosePress={jest.fn()}
+          nbLoadedHits={nbLoadedHits}
+          nbHits={nbHits}
+          isFetchingNextPage
+          isSharingLocation
+          venueName="LIBRAIRIE SILLAGE"
+        />
+      )
+
+      expect(screen.queryByText('Active ta géolocalisation')).toBeNull()
+    })
+
+    it('should display "Lieux disponibles autour de moi"', () => {
+      render(
+        <VenueSelectionModal
+          isVisible
+          items={items}
+          title="Lieu de retrait"
+          onSubmit={jest.fn()}
+          onClosePress={jest.fn()}
+          nbLoadedHits={nbLoadedHits}
+          nbHits={nbHits}
+          isFetchingNextPage
+          isSharingLocation
+          venueName="LIBRAIRIE SILLAGE"
+        />
+      )
+
+      expect(screen.getByText('Lieux disponibles autour de moi')).toBeTruthy()
+    })
+
+    it('should not display "Lieux à proximité de “LIBRAIRIE SILLAGE”" (offer venue name)', () => {
+      render(
+        <VenueSelectionModal
+          isVisible
+          items={items}
+          title="Lieu de retrait"
+          onSubmit={jest.fn()}
+          onClosePress={jest.fn()}
+          nbLoadedHits={nbLoadedHits}
+          nbHits={nbHits}
+          isFetchingNextPage
+          isSharingLocation
+          venueName="LIBRAIRIE SILLAGE"
+        />
+      )
+
+      expect(screen.queryByText('Lieux à proximité de “LIBRAIRIE SILLAGE”')).toBeNull()
+    })
+  })
+
+  describe('When user not share his position', () => {
+    it('should display "Active ta géolocalisation" button', () => {
+      render(
+        <VenueSelectionModal
+          isVisible
+          items={items}
+          title="Lieu de retrait"
+          onSubmit={jest.fn()}
+          onClosePress={jest.fn()}
+          nbLoadedHits={nbLoadedHits}
+          nbHits={nbHits}
+          isFetchingNextPage
+          isSharingLocation={false}
+          venueName="LIBRAIRIE SILLAGE"
+        />
+      )
+
+      expect(screen.getByText('Active ta géolocalisation')).toBeTruthy()
+    })
+
+    it('should not display "Lieux disponibles autour de moi"', () => {
+      render(
+        <VenueSelectionModal
+          isVisible
+          items={items}
+          title="Lieu de retrait"
+          onSubmit={jest.fn()}
+          onClosePress={jest.fn()}
+          nbLoadedHits={nbLoadedHits}
+          nbHits={nbHits}
+          isFetchingNextPage
+          isSharingLocation={false}
+          venueName="LIBRAIRIE SILLAGE"
+        />
+      )
+
+      expect(screen.queryByText('Lieux disponibles autour de moi')).toBeNull()
+    })
+
+    it('should display "Lieux à proximité de “LIBRAIRIE SILLAGE”" (offer venue name)', () => {
+      render(
+        <VenueSelectionModal
+          isVisible
+          items={items}
+          title="Lieu de retrait"
+          onSubmit={jest.fn()}
+          onClosePress={jest.fn()}
+          nbLoadedHits={nbLoadedHits}
+          nbHits={nbHits}
+          isFetchingNextPage
+          isSharingLocation={false}
+          venueName="LIBRAIRIE SILLAGE"
+        />
+      )
+
+      expect(screen.getByText('Lieux à proximité de “LIBRAIRIE SILLAGE”')).toBeTruthy()
+    })
+
+    it('should open "Paramètres de localisation" modal when pressing "Active ta géolocalisation" button and permission is never ask again', () => {
+      mockUseGeolocation.mockReturnValueOnce({
+        permissionState: GeolocPermissionState.NEVER_ASK_AGAIN,
+      })
+      const mockShowModal = jest.fn()
+      jest.spyOn(useModalAPI, 'useModal').mockReturnValueOnce({
+        visible: false,
+        showModal: mockShowModal,
+        hideModal: jest.fn(),
+        toggleModal: jest.fn(),
+      })
+
+      render(
+        <VenueSelectionModal
+          isVisible
+          items={items}
+          title="Lieu de retrait"
+          onSubmit={jest.fn()}
+          onClosePress={jest.fn()}
+          nbLoadedHits={nbLoadedHits}
+          nbHits={nbHits}
+          isFetchingNextPage
+          isSharingLocation={false}
+          venueName="LIBRAIRIE SILLAGE"
+        />
+      )
+      const button = screen.getByText('Active ta géolocalisation')
+
+      fireEvent.press(button)
+
+      expect(mockShowModal).toHaveBeenCalledWith()
+    })
+
+    it('should close geolocation modal when pressing "Activer la géolocalisation"', async () => {
+      mockUseGeolocation.mockReturnValueOnce({
+        permissionState: GeolocPermissionState.NEVER_ASK_AGAIN,
+        onPressGeolocPermissionModalButton,
+      })
+      const mockHideModal = jest.fn()
+      jest.spyOn(useModalAPI, 'useModal').mockReturnValueOnce({
+        visible: true,
+        showModal: jest.fn(),
+        hideModal: mockHideModal,
+        toggleModal: jest.fn(),
+      })
+
+      render(
+        <VenueSelectionModal
+          isVisible
+          items={items}
+          title="Lieu de retrait"
+          onSubmit={jest.fn()}
+          onClosePress={jest.fn()}
+          nbLoadedHits={nbLoadedHits}
+          nbHits={nbHits}
+          isFetchingNextPage
+          isSharingLocation={false}
+          venueName="LIBRAIRIE SILLAGE"
+        />
+      )
+      const button = screen.getByText('Active ta géolocalisation')
+
+      fireEvent.press(button)
+
+      fireEvent.press(screen.getByText('Activer la géolocalisation'))
+
+      expect(mockHideModal).toHaveBeenCalledWith()
+    })
+
+    it('should ask for permission when pressing "Active ta géolocalisation" button and permission is denied', () => {
+      mockUseGeolocation.mockReturnValueOnce({
+        permissionState: GeolocPermissionState.DENIED,
+        requestGeolocPermission,
+      })
+      render(
+        <VenueSelectionModal
+          isVisible
+          items={items}
+          title="Lieu de retrait"
+          onSubmit={jest.fn()}
+          onClosePress={jest.fn()}
+          nbLoadedHits={nbLoadedHits}
+          nbHits={nbHits}
+          isFetchingNextPage
+          isSharingLocation={false}
+          venueName="LIBRAIRIE SILLAGE"
+        />
+      )
+      const button = screen.getByText('Active ta géolocalisation')
+
+      fireEvent.press(button)
+
+      expect(requestGeolocPermission).toHaveBeenCalledWith()
+    })
   })
 })

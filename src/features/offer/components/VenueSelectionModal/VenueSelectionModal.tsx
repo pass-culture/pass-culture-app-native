@@ -2,17 +2,23 @@ import React, { useCallback, useMemo, useRef, useState } from 'react'
 import { FlatList, FlatListProps, View } from 'react-native'
 import styled from 'styled-components/native'
 
+import { GeolocationBanner } from 'features/home/components/banners/GeolocationBanner'
 import {
   VenueListItem,
   VenueSelectionList,
   VenueSelectionListProps,
 } from 'features/offer/components/VenueSelectionList/VenueSelectionList'
 import { AutoScrollSwitch } from 'features/search/components/AutoScrollSwitch/AutoScrollSwitch'
+import { GeolocPermissionState, useGeolocation } from 'libs/geolocation'
+import { GeolocationActivationModal } from 'libs/geolocation/components/GeolocationActivationModal'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { AppModal } from 'ui/components/modals/AppModal'
 import { ModalHeader } from 'ui/components/modals/ModalHeader'
+import { useModal } from 'ui/components/modals/useModal'
+import { Separator } from 'ui/components/Separator'
 import { Close } from 'ui/svg/icons/Close'
-import { Spacer, getSpacing } from 'ui/theme'
+import { Spacer, Typo, getSpacing } from 'ui/theme'
+import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 import { useCustomSafeInsets } from 'ui/theme/useCustomSafeInsets'
 
 type VenueSelectionModalProps = Pick<
@@ -28,6 +34,8 @@ type VenueSelectionModalProps = Pick<
   onSubmit: (selectedOfferId: number) => void
   onClosePress: VoidFunction
   onEndReached?: () => void
+  venueName?: string
+  isSharingLocation?: boolean
 }
 
 const HEIGHT_CONTAINER = getSpacing(6)
@@ -45,11 +53,24 @@ export function VenueSelectionModal({
   nbLoadedHits,
   nbHits,
   isFetchingNextPage,
+  venueName,
+  isSharingLocation,
 }: VenueSelectionModalProps) {
   const [selectedOffer, setSelectedOffer] = useState<number>()
   const [autoScrollEnabled, setAutoScrollEnabled] = useState(true)
   const venueListRef = useRef<FlatList<VenueListItem>>(null)
   const { top } = useCustomSafeInsets()
+  const {
+    permissionState,
+    requestGeolocPermission,
+    onPressGeolocPermissionModalButton: onPressGeolocPermissionModalButtonDefault,
+  } = useGeolocation()
+
+  const {
+    showModal: showGeolocPermissionModal,
+    hideModal: hideGeolocPermissionModal,
+    visible: isGeolocPermissionModalVisible,
+  } = useModal(false)
 
   const handleSubmit = useCallback(() => {
     /**
@@ -59,9 +80,24 @@ export function VenueSelectionModal({
     onSubmit(selectedOffer as number)
   }, [onSubmit, selectedOffer])
 
+  const onPressGeolocPermissionModalButton = useCallback(() => {
+    hideGeolocPermissionModal()
+    onPressGeolocPermissionModalButtonDefault()
+  }, [hideGeolocPermissionModal, onPressGeolocPermissionModalButtonDefault])
+
+  const onPressGeolocationBanner = useCallback(() => {
+    void (async () => {
+      if (permissionState === GeolocPermissionState.NEVER_ASK_AGAIN) {
+        showGeolocPermissionModal()
+      } else {
+        await requestGeolocPermission()
+      }
+    })()
+  }, [permissionState, requestGeolocPermission, showGeolocPermissionModal])
+
   const customHeader = useMemo(() => {
     return (
-      <HeaderContainer>
+      <ModalHeaderContainer>
         <View style={{ height: HEIGHT_CONTAINER + top }} />
         <ModalHeader
           title={title}
@@ -70,7 +106,7 @@ export function VenueSelectionModal({
           onRightIconPress={onClosePress}
         />
         <Spacer.Column numberOfSpaces={6} />
-      </HeaderContainer>
+      </ModalHeaderContainer>
     )
   }, [onClosePress, title, top])
 
@@ -87,6 +123,12 @@ export function VenueSelectionModal({
       }
     }
   }
+
+  const headerMessage = useMemo(
+    () =>
+      isSharingLocation ? 'Lieux disponibles autour de moi' : `Lieux à proximité de “${venueName}”`,
+    [isSharingLocation, venueName]
+  )
 
   return (
     <AppModal
@@ -108,6 +150,24 @@ export function VenueSelectionModal({
         </BottomWrapper>
       }
       scrollEnabled={false}>
+      <ListHeaderContainer>
+        <Separator />
+        <Spacer.Column numberOfSpaces={6} />
+        <Typo.Title3 {...getHeadingAttrs(2)}>Sélectionner un lieu</Typo.Title3>
+        <Spacer.Column numberOfSpaces={6} />
+        {!isSharingLocation && (
+          <React.Fragment>
+            <GeolocationBanner
+              title="Active ta géolocalisation"
+              subtitle="Pour trouver les lieux autour de toi"
+              onPress={onPressGeolocationBanner}
+            />
+            <Spacer.Column numberOfSpaces={6} />
+          </React.Fragment>
+        )}
+        <HeaderMessageText>{headerMessage}</HeaderMessageText>
+        <Spacer.Column numberOfSpaces={2} />
+      </ListHeaderContainer>
       <View>
         <AutoScrollSwitch
           title="Activer le chargement automatique des résultats"
@@ -129,6 +189,12 @@ export function VenueSelectionModal({
         nbLoadedHits={nbLoadedHits}
         nbHits={nbHits}
         isFetchingNextPage={isFetchingNextPage}
+        isSharingLocation={isSharingLocation}
+      />
+      <GeolocationActivationModal
+        isGeolocPermissionModalVisible={isGeolocPermissionModalVisible}
+        hideGeolocPermissionModal={hideGeolocPermissionModal}
+        onPressGeolocPermissionModalButton={onPressGeolocPermissionModalButton}
       />
     </AppModal>
   )
@@ -140,7 +206,16 @@ const BottomWrapper = styled.View(({ theme }) => ({
   alignItems: 'center',
 }))
 
-const HeaderContainer = styled.View({
+const ModalHeaderContainer = styled.View({
   width: '100%',
   paddingHorizontal: getSpacing(6),
 })
+
+const ListHeaderContainer = styled.View({
+  width: '100%',
+  paddingHorizontal: getSpacing(7),
+})
+
+const HeaderMessageText = styled(Typo.Caption)(({ theme }) => ({
+  color: theme.colors.greyDark,
+}))

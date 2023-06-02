@@ -68,8 +68,8 @@ const Wrapper = styled(TouchableOpacity)<{
     flexDirection: 'row',
     alignItems: 'center',
     flexGrow: 1,
-    ...customFocusOutline({ color: theme.colors.black, isFocus }),
     ...(isSelected ? selectedStyles(theme) : unselectedStyles(theme)),
+    ...(!isSelected ? customFocusOutline({ color: theme.colors.black, isFocus }) : {}),
   }
 })
 

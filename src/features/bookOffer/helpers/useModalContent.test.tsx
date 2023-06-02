@@ -48,7 +48,13 @@ describe('useModalContent', () => {
 
     const { result } = renderHook(useModalContent)
 
-    expect(result.current.children).toMatchInlineSnapshot('<React.Fragment />')
+    expect(result.current.children).toMatchInlineSnapshot(
+      `
+      <BookingOfferLoader
+        message="Chargement en cours..."
+      />
+    `
+    )
     expect(result.current.leftIcon).toBeUndefined()
     expect(result.current.onLeftIconPress).toBeUndefined()
     expect(result.current.title).toBe('')

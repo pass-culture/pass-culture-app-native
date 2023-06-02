@@ -38,6 +38,7 @@ export type Action =
   | { type: 'SET_OFFER_ID'; payload: number }
   | { type: 'VALIDATE_OPTIONS' }
   | { type: 'CHANGE_STEP'; payload: Step }
+  | { type: 'CHANGE_OFFER'; payload: number }
   | { type: 'SELECT_DATE'; payload: Date }
   | { type: 'SELECT_HOUR'; payload: string }
   | { type: 'SELECT_STOCK'; payload: number }
@@ -68,6 +69,8 @@ export const bookOfferReducer = (state: BookingState, action: Action): BookingSt
       return { ...state, date: action.payload }
     case 'SELECT_HOUR':
       return { ...state, hour: action.payload }
+    case 'CHANGE_OFFER':
+      return { ...state, offerId: action.payload }
     default:
       return state
   }

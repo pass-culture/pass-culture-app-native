@@ -21,14 +21,12 @@ export type VenueSelectionListProps = ViewProps &
     autoScrollEnabled: boolean
     isFetchingNextPage: boolean
     onPress?: () => void
+    isSharingLocation?: boolean
   }
 
 const keyExtractor = (item: VenueListItem) => String(item.offerId)
 
-export const VenueSelectionList: React.FC<VenueSelectionListProps> = forwardRef<
-  FlatList<VenueListItem>,
-  VenueSelectionListProps
->(
+export const VenueSelectionList = forwardRef<FlatList<VenueListItem>, VenueSelectionListProps>(
   (
     {
       items,
@@ -43,6 +41,7 @@ export const VenueSelectionList: React.FC<VenueSelectionListProps> = forwardRef<
       onScroll,
       onPress,
       autoScrollEnabled,
+      isSharingLocation,
       ...props
     },
     ref
@@ -52,16 +51,17 @@ export const VenueSelectionList: React.FC<VenueSelectionListProps> = forwardRef<
     const renderItem = useCallback(
       ({ item }: { item: VenueListItem }) => {
         return (
-          <ItemWrapper>
+          <ItemWrapper key={item.offerId}>
             <VenueSelectionListItem
               {...item}
+              distance={isSharingLocation ? item.distance : ''}
               onSelect={() => onItemSelect(item.offerId)}
               isSelected={selectedItem === item.offerId}
             />
           </ItemWrapper>
         )
       },
-      [onItemSelect, selectedItem]
+      [onItemSelect, selectedItem, isSharingLocation]
     )
 
     return (
@@ -88,7 +88,6 @@ export const VenueSelectionList: React.FC<VenueSelectionListProps> = forwardRef<
             nbHits={nbHits}
             autoScrollEnabled={autoScrollEnabled}
             onPress={onPress}
-            ref={ref}
           />
         }
         {...props}
@@ -107,5 +106,5 @@ VenueSelectionList.displayName = 'VenueSelectionList'
  */
 const ItemWrapper = styled(View)({
   paddingHorizontal: getSpacing(1),
-  paddingVertical: getSpacing(2),
+  paddingTop: getSpacing(2),
 })

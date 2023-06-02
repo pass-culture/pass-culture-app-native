@@ -191,9 +191,10 @@ export const OfferBody: FunctionComponent<Props> = ({
 
   const onNewOfferVenueSelected = useCallback(
     (nextOfferId: number) => {
+      hideChangeVenueModal()
       navigate('Offer', { fromOfferId: offerId, id: nextOfferId })
     },
-    [navigate, offerId]
+    [hideChangeVenueModal, navigate, offerId]
   )
 
   const handleBeforeNavigateToItinerary = useCallback(() => {
@@ -411,6 +412,8 @@ export const OfferBody: FunctionComponent<Props> = ({
           nbLoadedHits={nbLoadedHits}
           nbHits={nbHits}
           isFetchingNextPage={isFetchingNextPage}
+          isSharingLocation={Boolean(position !== null)}
+          venueName={offer.venue.publicName ?? offer.venue.name}
         />
       ) : null}
     </Container>

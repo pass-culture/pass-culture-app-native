@@ -44,4 +44,21 @@ describe('<GeolocationBanner />', () => {
 
     expect(requestGeolocPermission).toHaveBeenCalledWith()
   })
+
+  it('should call onPress externaly when specified', () => {
+    const mockOnPress = jest.fn()
+    render(
+      <GeolocationBanner
+        title="Géolocalise-toi"
+        subtitle="Pour trouver des offres autour de toi."
+        onPress={mockOnPress}
+      />
+    )
+
+    const button = screen.getByText('Géolocalise-toi')
+
+    fireEvent.press(button)
+
+    expect(mockOnPress).toHaveBeenCalledTimes(1)
+  })
 })
