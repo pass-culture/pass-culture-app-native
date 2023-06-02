@@ -69,6 +69,7 @@ export type TrustedDeviceRootStackParamList = {
   TrustedDeviceInfos: undefined
   SuspensionChoice: undefined
   SuspensionConfirmation: undefined
+  AccountSecurity: undefined
 }
 
 export type SubscriptionRootStackParamList = {

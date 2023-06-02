@@ -31,6 +31,7 @@ import { RequestSent } from 'ui/svg/icons/RequestSent'
 import { SadFace } from 'ui/svg/icons/SadFace'
 import { Star } from 'ui/svg/icons/Star'
 import { UserBlocked } from 'ui/svg/icons/UserBlocked'
+import { BicolorUserBlocked } from 'ui/svg/icons/UserBlocked'
 
 export const BicolorIllustrations = {
   BicolorBirthdayCake,
@@ -47,6 +48,7 @@ export const BicolorIllustrations = {
   BicolorRingingBell,
   BicolorTables,
   BicolorTicketBooked,
+  BicolorUserBlocked,
   BicolorUserError,
   BicolorUserFavorite,
   BicolorUserIdentification,

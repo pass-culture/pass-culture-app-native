@@ -206,6 +206,7 @@ exports[`<BookingConfirmation /> should render correctly 1`] = `
           "backgroundColor": "transparent",
           "borderColor": "#eb0055",
           "borderRadius": 24,
+          "borderStyle": "solid",
           "borderWidth": 2,
           "flexDirection": "row",
           "justifyContent": "center",

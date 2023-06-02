@@ -14,6 +14,7 @@ export function NavigationTrustedDevice(): JSX.Element {
         <LinkToComponent name="TrustedDeviceInfos" />
         <LinkToComponent name="SuspensionChoice" />
         <LinkToComponent name="SuspensionConfirmation" />
+        <LinkToComponent name="AccountSecurity" />
       </StyledContainer>
       <Spacer.BottomScreen />
     </ScrollView>

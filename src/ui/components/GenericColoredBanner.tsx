@@ -1,4 +1,4 @@
-import React, { FunctionComponent } from 'react'
+import React, { FunctionComponent, ReactNode } from 'react'
 import styled from 'styled-components/native'
 
 import { IconInterface } from 'ui/svg/icons/types'
@@ -9,7 +9,7 @@ type ColorMessageProps = {
 }
 
 type Props = ColorMessageProps & {
-  message: string
+  message: string | ReactNode
   backgroundColor: string
   Icon?: FunctionComponent<IconInterface>
   testID?: string
