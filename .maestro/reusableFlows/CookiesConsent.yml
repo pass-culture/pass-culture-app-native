@@ -1,0 +1,4 @@
+appId: 'app.passculture.test'
+---
+- assertVisible: 'Respect de ta vie privée'
+- tapOn: 'Tout accepter'

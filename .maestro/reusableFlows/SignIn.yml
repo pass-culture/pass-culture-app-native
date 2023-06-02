@@ -1,0 +1,42 @@
+appId: 'app.passculture.test'
+---
+- assertVisible: 'Crée-toi un compte'
+- tapOn: 'tonadresse@email.com'
+- inputText: 'user@gmal.com'
+- assertVisible: "Veux-tu plutôt dire user@gmail.com\_?"
+- tapOn: 'Appliquer la modification'
+- tapOn: 'J’accepte de recevoir les newsletters, bons plans et recommandations personnalisées du pass Culture.'
+- tapOn: 'Continuer vers l’étape Mot de passe'
+
+- assertVisible: 'Mot de passe'
+- tapOn: 'Ton mot de passe'
+- inputText: 'user@AERTY123'
+- tapOn: 'Continuer vers l’étape Date de naissance'
+
+- assertVisible: 'Date de naissance'
+- swipe: # days
+    start: 25%, 65%
+    end: 25%, 70%
+- swipe: # months
+    start: 50%, 65%
+    end: 50%, 70%
+# Ajouter un id pour chaque spinner et utiliser scrollUntilVisible
+# https://maestro.mobile.dev/api-reference/commands/scrolluntilvisible
+- repeat:
+    while:
+      notVisible: '2006'
+    commands:
+      - swipe: # years
+          start: 75%, 65%
+          end: 75%, 70%
+- tapOn: 'Continuer vers l’étape CGU & Données'
+
+# Désactiver le recaptcha
+- assertVisible: 'CGU & Données'
+- tapOn: 'Accepter les conditions générales d’utilisation et la politique de confidentialité pour s’inscrire'
+
+- assertVisible: 'Confirme ton adresse e-mail'
+- tapOn: 'Consulter notre centre d’aide'
+- assertVisible: "[Jeunes] Je n'ai pas reçu le mail de confirmation de création de compte"
+- tapOn: 'Return to pass Culture T' # Trouver un moyen de tapOn 'Return to pass Culture T' ou 'Revenir à pass Culture'
+- assertVisible: 'Confirme ton adresse e-mail'
