@@ -5,11 +5,9 @@ import styled from 'styled-components/native'
 
 import { useHomepageData } from 'features/home/api/useHomepageData'
 import { CategoryThematicHomeHeader } from 'features/home/components/headers/CategoryThematicHomeHeader'
-import { CategoryThematicHomeSubHeader } from 'features/home/components/headers/CategoryThematicHomeSubHeader'
 import { DefaultThematicHomeHeader } from 'features/home/components/headers/DefaultThematicHomeHeader'
-import { DefaultThematicHomeSubHeader } from 'features/home/components/headers/DefaultThematicHomeSubHeader'
 import { HighlightThematicHomeHeader } from 'features/home/components/headers/HighlightThematicHomeHeader'
-import { HighlightThematicHomeSubHeader } from 'features/home/components/headers/HighlightThematicHomeSubHeader'
+import { ThematicHomeHeader } from 'features/home/components/headers/ThematicHomeHeader'
 import { GenericHome } from 'features/home/pages/GenericHome'
 import { ThematicHeader, ThematicHeaderType } from 'features/home/types'
 import { UseRouteType } from 'features/navigation/RootNavigator/types'
@@ -21,30 +19,13 @@ interface Props {
   thematicHeader?: ThematicHeader
 }
 
-const Header: FunctionComponent<Props> = ({ headerTransition, thematicHeader }) => {
-  if (thematicHeader?.type === ThematicHeaderType.Highlight)
-    return <HighlightThematicHomeHeader headerTransition={headerTransition} {...thematicHeader} />
-
-  if (thematicHeader?.type === ThematicHeaderType.Category)
-    return <CategoryThematicHomeHeader headerTransition={headerTransition} {...thematicHeader} />
-
-  return (
-    <ListHeaderContainer>
-      <DefaultThematicHomeHeader
-        headerTitle={thematicHeader?.title}
-        headerTransition={headerTransition}
-      />
-    </ListHeaderContainer>
-  )
-}
-
 const SubHeader: FunctionComponent<Props> = ({ thematicHeader }) => {
   if (thematicHeader?.type === ThematicHeaderType.Highlight)
-    return <HighlightThematicHomeSubHeader {...thematicHeader} />
+    return <HighlightThematicHomeHeader {...thematicHeader} />
 
   if (thematicHeader?.type === ThematicHeaderType.Category)
     return (
-      <CategoryThematicHomeSubHeader
+      <CategoryThematicHomeHeader
         title={thematicHeader?.title}
         subtitle={thematicHeader?.subtitle}
         imageUrl={thematicHeader?.imageUrl}
@@ -53,7 +34,7 @@ const SubHeader: FunctionComponent<Props> = ({ thematicHeader }) => {
 
   return (
     <ListHeaderContainer>
-      <DefaultThematicHomeSubHeader
+      <DefaultThematicHomeHeader
         headerTitle={thematicHeader?.title}
         headerSubtitle={thematicHeader?.subtitle}
       />
@@ -80,7 +61,7 @@ export const ThematicHome: FunctionComponent = () => {
 
   return (
     <Container>
-      <Header thematicHeader={thematicHeader} headerTransition={headerTransition} />
+      <ThematicHomeHeader title={thematicHeader?.title} headerTransition={headerTransition} />
       <GenericHome
         modules={modules}
         homeId={id}

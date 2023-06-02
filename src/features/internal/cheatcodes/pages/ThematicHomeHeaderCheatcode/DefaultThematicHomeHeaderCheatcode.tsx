@@ -2,7 +2,7 @@ import React, { FunctionComponent } from 'react'
 import styled from 'styled-components/native'
 
 import { DefaultThematicHomeHeader } from 'features/home/components/headers/DefaultThematicHomeHeader'
-import { DefaultThematicHomeSubHeader } from 'features/home/components/headers/DefaultThematicHomeSubHeader'
+import { ThematicHomeHeader } from 'features/home/components/headers/ThematicHomeHeader'
 import { useOpacityTransition } from 'ui/animations/helpers/useOpacityTransition'
 
 export const DefaultThematicHomeHeaderCheatcode: FunctionComponent = () => {
@@ -10,11 +10,8 @@ export const DefaultThematicHomeHeaderCheatcode: FunctionComponent = () => {
 
   return (
     <Container>
+      <ThematicHomeHeader headerTransition={headerTransition} title="Le plein de cinéma" />
       <DefaultThematicHomeHeader
-        headerTitle="Le plein de cinéma"
-        headerTransition={headerTransition}
-      />
-      <DefaultThematicHomeSubHeader
         headerTitle="Le plein de cinéma"
         headerSubtitle="La playlist cinéma"
       />
