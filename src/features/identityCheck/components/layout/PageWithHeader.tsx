@@ -1,10 +1,13 @@
-import React, { ReactNode, useState } from 'react'
-import { LayoutChangeEvent } from 'react-native'
+import React, { FunctionComponent, ReactNode, useState } from 'react'
+import { LayoutChangeEvent, View } from 'react-native'
 import styled from 'styled-components/native'
 
 import { CustomKeyboardAvoidingView } from 'features/identityCheck/components/CustomKeyboardAvoidingView'
 import { useShouldEnableScrollOnView } from 'features/identityCheck/components/layout/helpers/useShouldEnableScrollView'
-import { PageHeaderSecondary } from 'ui/components/headers/PageHeaderSecondary'
+import {
+  PageHeaderWithoutPlaceholder,
+  useGetHeaderHeight,
+} from 'ui/components/headers/PageHeaderWithoutPlaceholder'
 import { getSpacing, Spacer } from 'ui/theme'
 
 interface Props {
@@ -19,6 +22,8 @@ export const PageWithHeader: FunctionComponent<Props> = (props) => {
 
   const [bottomChildrenViewHeight, setBottomChildrenViewHeight] = useState(0)
 
+  const headerHeight = useGetHeaderHeight()
+
   function onFixedBottomChildrenViewLayout(event: LayoutChangeEvent) {
     const { height } = event.nativeEvent.layout
     setBottomChildrenViewHeight(height)
@@ -26,13 +31,14 @@ export const PageWithHeader: FunctionComponent<Props> = (props) => {
 
   return (
     <React.Fragment>
-      <PageHeaderSecondary title={props.title} onGoBack={props.onGoBack} />
+      <PageHeaderWithoutPlaceholder title={props.title} onGoBack={props.onGoBack} />
       <CustomKeyboardAvoidingView>
         {props.scrollChildren ? (
           <ChildrenScrollView
             bottomChildrenViewHeight={bottomChildrenViewHeight}
             onContentSizeChange={onScrollViewContentSizeChange}
             onLayout={onScrollViewLayout}>
+            <View style={{ height: headerHeight }} />
             {props.scrollChildren}
           </ChildrenScrollView>
         ) : null}
