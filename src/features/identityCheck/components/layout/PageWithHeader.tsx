@@ -15,7 +15,7 @@ interface Props {
   onGoBack?: () => void
 }
 
-export const PageWithHeader = (props: Props) => {
+export const PageWithHeader: FunctionComponent<Props> = (props) => {
   const { onScrollViewLayout, onScrollViewContentSizeChange } = useShouldEnableScrollOnView()
 
   const [bottomChildrenViewHeight, setBottomChildrenViewHeight] = useState(0)
