@@ -18,6 +18,12 @@ export enum ColorsEnum {
   TERTIARY = '#cc1673',
   TRANSPARENT = 'transparent',
   WHITE = '#ffffff',
+  GOLD = '#B85901',
+  AQUAMARINE = '#0E8474',
+  SKYBLUE = '#0E78B7',
+  DEEPPINK = '#C01371',
+  CORAL = '#CA3F13',
+  LILAC = '#8337E9',
 }
 export enum UniqueColors {
   BRAND = '#870087',

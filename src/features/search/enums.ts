@@ -1,7 +1,10 @@
 import { SearchGroupNameEnumv2, VenueTypeCodeKey } from 'api/gen'
 import { MAP_VENUE_TYPE_TO_LABEL, VenueTypeCode } from 'libs/parsers'
+import { theme } from 'theme'
 import { categoriesIcons } from 'ui/svg/icons/bicolor/exports/categoriesIcons'
 import { BicolorIconInterface } from 'ui/svg/icons/types'
+// eslint-disable-next-line no-restricted-imports
+import { ColorsEnum } from 'ui/theme/colors'
 
 export enum DATE_FILTER_OPTIONS {
   TODAY = 'today',
@@ -23,10 +26,20 @@ export enum CategoriesModalView {
   GENRES = 'GENRES',
 }
 
+type Gradient = {
+  color: ColorsEnum | string
+  position: {
+    x: number
+    y: number
+  }
+}
+
 type CategoryCriteria = {
   [category in SearchGroupNameEnumv2]: {
     icon: React.FC<BicolorIconInterface>
     facetFilter: SearchGroupNameEnumv2
+    baseColor: category extends SearchGroupNameEnumv2.NONE ? undefined : ColorsEnum | string
+    gradients: category extends SearchGroupNameEnumv2.NONE ? undefined : Array<Gradient>
   }
 }
 
@@ -34,62 +47,134 @@ export const CATEGORY_CRITERIA: Partial<CategoryCriteria> = {
   [SearchGroupNameEnumv2.NONE]: {
     icon: categoriesIcons.All,
     facetFilter: SearchGroupNameEnumv2.NONE,
+    baseColor: undefined,
+    gradients: undefined,
   },
   [SearchGroupNameEnumv2.ARTS_LOISIRS_CREATIFS]: {
     icon: categoriesIcons.Palette,
     facetFilter: SearchGroupNameEnumv2.ARTS_LOISIRS_CREATIFS,
+    baseColor: theme.colors.lilac,
+    gradients: [
+      { color: '#AD87FF', position: { x: 0, y: 0 } },
+      { color: theme.colors.lilac, position: { x: 0, y: 0.5 } },
+    ],
   },
   [SearchGroupNameEnumv2.BIBLIOTHEQUES_MEDIATHEQUE]: {
     icon: categoriesIcons.Bookstore,
     facetFilter: SearchGroupNameEnumv2.BIBLIOTHEQUES_MEDIATHEQUE,
+    baseColor: theme.colors.coral,
+    gradients: [
+      { color: '#F8733D', position: { x: 0, y: 0 } },
+      { color: theme.colors.coral, position: { x: 0, y: 0.5 } },
+    ],
   },
   [SearchGroupNameEnumv2.CARTES_JEUNES]: {
     icon: categoriesIcons.Card,
     facetFilter: SearchGroupNameEnumv2.CARTES_JEUNES,
+    baseColor: theme.colors.lilac,
+    gradients: [
+      { color: '#AD87FF', position: { x: 0, y: 0 } },
+      { color: theme.colors.lilac, position: { x: 0, y: 0.5 } },
+    ],
   },
   [SearchGroupNameEnumv2.CD_VINYLE_MUSIQUE_EN_LIGNE]: {
     icon: categoriesIcons.Disk,
     facetFilter: SearchGroupNameEnumv2.CD_VINYLE_MUSIQUE_EN_LIGNE,
+    baseColor: theme.colors.skyBlue,
+    gradients: [
+      { color: '#20C5E9', position: { x: 0, y: 0 } },
+      { color: theme.colors.skyBlue, position: { x: 0, y: 0.5 } },
+    ],
   },
   [SearchGroupNameEnumv2.CONCERTS_FESTIVALS]: {
     icon: categoriesIcons.Conference,
     facetFilter: SearchGroupNameEnumv2.CONCERTS_FESTIVALS,
+    baseColor: theme.colors.gold,
+    gradients: [
+      { color: '#F99E15', position: { x: 0, y: 0 } },
+      { color: theme.colors.gold, position: { x: 0, y: 0.5 } },
+    ],
   },
   [SearchGroupNameEnumv2.RENCONTRES_CONFERENCES]: {
     icon: categoriesIcons.Microphone,
     facetFilter: SearchGroupNameEnumv2.RENCONTRES_CONFERENCES,
+    baseColor: theme.colors.gold,
+    gradients: [
+      { color: '#F99E15', position: { x: 0, y: 0 } },
+      { color: theme.colors.gold, position: { x: 0, y: 0.5 } },
+    ],
   },
   [SearchGroupNameEnumv2.EVENEMENTS_EN_LIGNE]: {
     icon: categoriesIcons.LiveEvent,
     facetFilter: SearchGroupNameEnumv2.EVENEMENTS_EN_LIGNE,
+    baseColor: theme.colors.aquamarine,
+    gradients: [
+      { color: '#27DCA8', position: { x: 0, y: 0 } },
+      { color: theme.colors.aquamarine, position: { x: 0, y: 0.5 } },
+    ],
   },
   [SearchGroupNameEnumv2.FILMS_SERIES_CINEMA]: {
     icon: categoriesIcons.Cinema,
     facetFilter: SearchGroupNameEnumv2.FILMS_SERIES_CINEMA,
+    baseColor: theme.colors.aquamarine,
+    gradients: [
+      { color: '#27DCA8', position: { x: 0, y: 0 } },
+      { color: theme.colors.aquamarine, position: { x: 0, y: 0.5 } },
+    ],
   },
   [SearchGroupNameEnumv2.INSTRUMENTS]: {
     icon: categoriesIcons.Instrument,
     facetFilter: SearchGroupNameEnumv2.INSTRUMENTS,
+    baseColor: theme.colors.skyBlue,
+    gradients: [
+      { color: '#20C5E9', position: { x: 0, y: 0 } },
+      { color: theme.colors.skyBlue, position: { x: 0, y: 0.5 } },
+    ],
   },
   [SearchGroupNameEnumv2.JEUX_JEUX_VIDEOS]: {
     icon: categoriesIcons.VideoGame,
     facetFilter: SearchGroupNameEnumv2.JEUX_JEUX_VIDEOS,
+    baseColor: theme.colors.gold,
+    gradients: [
+      { color: '#F99E15', position: { x: 0, y: 0 } },
+      { color: theme.colors.gold, position: { x: 0, y: 0.5 } },
+    ],
   },
   [SearchGroupNameEnumv2.LIVRES]: {
     icon: categoriesIcons.Book,
     facetFilter: SearchGroupNameEnumv2.LIVRES,
+    baseColor: theme.colors.deepPink,
+    gradients: [
+      { color: '#EC3478', position: { x: 0, y: 0 } },
+      { color: theme.colors.deepPink, position: { x: 0, y: 0.5 } },
+    ],
   },
   [SearchGroupNameEnumv2.MEDIA_PRESSE]: {
     icon: categoriesIcons.Press,
     facetFilter: SearchGroupNameEnumv2.MEDIA_PRESSE,
+    baseColor: theme.colors.deepPink,
+    gradients: [
+      { color: '#EC3478', position: { x: 0, y: 0 } },
+      { color: theme.colors.deepPink, position: { x: 0, y: 0.5 } },
+    ],
   },
   [SearchGroupNameEnumv2.MUSEES_VISITES_CULTURELLES]: {
     icon: categoriesIcons.Museum,
     facetFilter: SearchGroupNameEnumv2.MUSEES_VISITES_CULTURELLES,
+    baseColor: theme.colors.aquamarine,
+    gradients: [
+      { color: '#27DCA8', position: { x: 0, y: 0 } },
+      { color: theme.colors.aquamarine, position: { x: 0, y: 0.5 } },
+    ],
   },
   [SearchGroupNameEnumv2.SPECTACLES]: {
     icon: categoriesIcons.Show,
     facetFilter: SearchGroupNameEnumv2.SPECTACLES,
+    baseColor: theme.colors.coral,
+    gradients: [
+      { color: '#F8733D', position: { x: 0, y: 0 } },
+      { color: theme.colors.coral, position: { x: 0, y: 0.5 } },
+    ],
   },
 }
 
