@@ -64,7 +64,6 @@
     "test:lighthouse": "lhci autorun",
     "test:lint": "eslint . --ext .js,.ts,.tsx,.mjs --cache",
     "test:perf": "TEST_RUNNER_ARGS='--runInBand --testMatch \"<rootDir>/**/*.perf.test.tsx\"' yarn reassure",
-    "test:sw": "node scripts/service-worker-test.mjs",
     "test:storybook:accessibility": "axe-storybook --storybook-address http://localhost:6006",
     "test:types": "tsc",
     "test:unit": "TZ=UTC JEST=true node --no-compilation-cache --expose-gc ./node_modules/.bin/jest --forceExit --logHeapUsage",
