@@ -61,386 +61,62 @@ Object {
 
 <body>
     <div>
-      <div
-        class="css-view-175oi2r r-backgroundColor-bdcx94 r-display-6koalj r-flexBasis-1iusvr4 r-flexDirection-eqz5dr r-flexGrow-16y2uox r-flexShrink-1wbh5a2"
-      >
-        <header
-          class="css-view-175oi2r r-width-13qz1uu"
-          role="banner"
-        >
-          <div
-            class="css-view-175oi2r"
-            style="height: 64px;"
-          />
-          <div
-            class="css-view-175oi2r r-backgroundColor-bdcx94 r-position-u8s1d r-top-ipm5af r-width-13qz1uu r-zIndex-184en5c"
-          >
-            <div
-              class="css-view-175oi2r r-height-10ptun7"
-            />
-            <div
-              class="css-view-175oi2r r-alignItems-1awozwy r-height-h3s6tt r-justifyContent-1777fci"
-            >
-              <div
-                class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz r-justifyContent-1wtj0ep r-width-13qz1uu"
-              >
-                <div
-                  class="css-view-175oi2r r-alignItems-1awozwy r-flexBasis-1iusvr4 r-flexDirection-18u37iz r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-justifyContent-1h0z5md r-paddingLeft-f727ji r-paddingRight-j2kj52"
-                  data-testid="back-button-container"
-                >
-                  <button
-                    aria-label="Revenir en arrière"
-                    class="c0 c1 sc-gsDKAQ c1"
-                    data-testid="Revenir en arrière"
-                    tabindex="0"
-                    title="Revenir en arrière"
-                    type="button"
-                  >
-                    <div
-                      class="css-view-175oi2r"
-                      data-testid="icon-back"
-                    >
-                      <div
-                        class="css-text-1rynq56"
-                        dir="ltr"
-                      >
-                        icon-back-SVG-Mock
-                      </div>
-                    </div>
-                    <div
-                      class="css-text-1rynq56 r-clipPath-129q975 r-height-109y4c4 r-overflow-1udh08x r-width-92ng3h"
-                      dir="ltr"
-                    >
-                      Retour
-                    </div>
-                  </button>
-                </div>
-                <h1
-                  aria-level="1"
-                  class="css-text-1rynq56 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-whiteSpace-3s2u2q r-wordWrap-1iln25a r-color-jwli3a r-fontFamily-yv33h5 r-fontSize-a023e6 r-lineHeight-rjixqe r-textAlign-q4m81j"
-                  dir="ltr"
-                  role="heading"
-                >
-                  Identification
-                </h1>
-                <div
-                  class="css-view-175oi2r r-alignItems-1awozwy r-flexBasis-1iusvr4 r-flexDirection-18u37iz r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-justifyContent-17s6mgv r-paddingLeft-f727ji r-paddingRight-j2kj52"
-                  data-testid="close-button-container"
-                />
-              </div>
-            </div>
-          </div>
-        </header>
-        <div
-          class="css-view-175oi2r r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2"
-        >
-          <div
-            class="css-view-175oi2r r-alignItems-1awozwy r-backgroundColor-14lw9ot r-borderTopLeftRadius-1ct94d3 r-borderTopRightRadius-3y0fky r-display-6koalj r-flexBasis-1iusvr4 r-flexDirection-eqz5dr r-flexGrow-16y2uox r-height-1pi2tsx r-overflow-1jwulwa r-paddingTop-ttdzmv"
-          >
-            <div
-              class="css-view-175oi2r r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-maxWidth-1ik5qf4 r-width-13qz1uu"
-            >
-              <div
-                class="css-view-175oi2r r-WebkitOverflowScrolling-150rngu r-flexDirection-eqz5dr r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-overflowX-11yh6sk r-overflowY-1rnoaur r-transform-1sncvnh"
-              >
-                <div
-                  class="css-view-175oi2r"
-                  style="flex-grow: 1; flex-direction: column; padding-bottom: 0px; padding-right: 20px; padding-left: 20px;"
-                >
-                  <div
-                    class="css-view-175oi2r r-alignItems-1awozwy r-height-1pi2tsx r-marginHorizontal-4amgru r-marginVertical-764hgp"
-                  >
-                    <div
-                      class="css-view-175oi2r"
-                    >
-                      <div
-                        class="css-text-1rynq56"
-                        dir="ltr"
-                      >
-                        undefined-SVG-Mock
-                      </div>
-                    </div>
-                    <div
-                      class="css-view-175oi2r r-height-10ptun7"
-                    />
-                    <h2
-                      aria-level="2"
-                      class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-g6644c r-fontSize-1i10wst r-lineHeight-hbpseb r-textAlign-q4m81j"
-                      dir="ltr"
-                      role="heading"
-                    >
-                      Vérifie ton identité avec un smartphone
-                    </h2>
-                    <div
-                      class="css-view-175oi2r r-height-10ptun7"
-                    />
-                    <div
-                      class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-yv33h5 r-fontSize-a023e6 r-lineHeight-rjixqe r-textAlign-q4m81j"
-                      dir="ltr"
-                    >
-                      Gagne du temps en vérifiant ton identité sur un smartphone ! Tu peux aussi passer par le site demarches-simplifiees.fr mais le traitement sera plus long.
-                    </div>
-                    <div
-                      class="css-view-175oi2r r-height-mabqd8"
-                    />
-                    <ul
-                      class="css-view-175oi2r r-flexDirection-eqz5dr r-overflow-1dqxon3 r-paddingLeft-gy4na3 r-width-13qz1uu"
-                      role="list"
-                    >
-                      <li
-                        class="css-view-175oi2r r-display-ixj5dj"
-                        role="listitem"
-                      >
-                        <div
-                          class="css-view-175oi2r r-transitionProperty-1i6wzkk r-cursor-1loqt21 r-touchAction-1otgn73 r-userSelect-bj6uhd"
-                          data-testid="HeroButtonList"
-                          style="transition-duration: 0s;"
-                          tabindex="0"
-                        >
-                          <div
-                            class="css-view-175oi2r r-alignItems-1awozwy r-borderColor-w7parf r-borderRadius-1px6drs r-borderStyle-1phboty r-borderWidth-rs99b7 r-flexDirection-18u37iz r-padding-nsbfu8 r-width-13qz1uu"
-                          >
-                            <div
-                              class="css-view-175oi2r r-alignContent-uia4a0 r-marginRight-88pszg"
-                            >
-                              <div
-                                class="css-view-175oi2r"
-                                data-testid="BicolorSmartphone"
-                              >
-                                <div
-                                  class="css-text-1rynq56"
-                                  dir="ltr"
-                                >
-                                  BicolorSmartphone-SVG-Mock
-                                </div>
-                              </div>
-                            </div>
-                            <div
-                              class="css-view-175oi2r r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-marginRight-88pszg r-textAlign-fdjqy7"
-                            >
-                              <div
-                                class="css-view-175oi2r r-justifyContent-1777fci r-minHeight-mipnz4"
-                              >
-                                <div
-                                  class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-yv33h5 r-fontSize-a023e6 r-lineHeight-rjixqe"
-                                  dir="ltr"
-                                >
-                                  J’ai un smartphone à proximité
-                                </div>
-                              </div>
-                            </div>
-                            <div
-                              class="css-view-175oi2r"
-                            >
-                              <div
-                                class="css-view-175oi2r"
-                              >
-                                <div
-                                  class="css-text-1rynq56"
-                                  dir="ltr"
-                                >
-                                  undefined-SVG-Mock
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                        <div
-                          class="css-view-175oi2r r-height-1472mwg"
-                        />
-                      </li>
-                      <li
-                        class="css-view-175oi2r r-display-ixj5dj"
-                        role="listitem"
-                      >
-                        <div
-                          class="css-view-175oi2r r-transitionProperty-1i6wzkk r-cursor-1loqt21 r-touchAction-1otgn73 r-userSelect-bj6uhd"
-                          data-testid="HeroButtonList"
-                          style="transition-duration: 0s;"
-                          tabindex="0"
-                        >
-                          <div
-                            class="css-view-175oi2r r-alignItems-1awozwy r-borderColor-w7parf r-borderRadius-1px6drs r-borderStyle-1phboty r-borderWidth-rs99b7 r-flexDirection-18u37iz r-padding-nsbfu8 r-width-13qz1uu"
-                          >
-                            <div
-                              class="css-view-175oi2r r-alignContent-uia4a0 r-marginRight-88pszg"
-                            >
-                              <div
-                                class="css-view-175oi2r"
-                              >
-                                <div
-                                  class="css-text-1rynq56"
-                                  dir="ltr"
-                                >
-                                  undefined-SVG-Mock
-                                </div>
-                              </div>
-                            </div>
-                            <div
-                              class="css-view-175oi2r r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-marginRight-88pszg r-textAlign-fdjqy7"
-                            >
-                              <div
-                                class="css-view-175oi2r r-justifyContent-1777fci r-minHeight-mipnz4"
-                              >
-                                <div
-                                  class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-yv33h5 r-fontSize-a023e6 r-lineHeight-rjixqe"
-                                  dir="ltr"
-                                >
-                                  Je n’ai pas de smartphone à proximité
-                                </div>
-                              </div>
-                            </div>
-                            <div
-                              class="css-view-175oi2r"
-                            >
-                              <div
-                                class="css-view-175oi2r"
-                              >
-                                <div
-                                  class="css-text-1rynq56"
-                                  dir="ltr"
-                                >
-                                  undefined-SVG-Mock
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </body>,
-  "container": .c0 {
-  -webkit-flex-direction: column;
-  -ms-flex-direction: column;
-  flex-direction: column;
-  cursor: pointer;
-  border-width: 0;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  background-color: transparent;
-  padding: 0;
-}
-
-.c0:active {
-  opacity: 0.7;
-  outline: none;
-}
-
-.c0:focus {
-  outline: auto;
-}
-
-.c0:disabled {
-  cursor: initial;
-}
-
-.c0:hover {
-  -webkit-text-decoration: underline;
-  text-decoration: underline;
-  -webkit-text-decoration-color: #161617;
-  text-decoration-color: #161617;
-}
-
-.c0:hover:disabled {
-  -webkit-text-decoration: none;
-  text-decoration: none;
-}
-
-.c1 {
-  -webkit-box-flex: 1;
-  -webkit-flex-grow: 1;
-  -ms-flex-positive: 1;
-  flex-grow: 1;
-  max-width: 40px;
-  height: 40px;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-}
-
-<div>
-    <div
-      class="css-view-175oi2r r-backgroundColor-bdcx94 r-display-6koalj r-flexBasis-1iusvr4 r-flexDirection-eqz5dr r-flexGrow-16y2uox r-flexShrink-1wbh5a2"
-    >
       <header
-        class="css-view-175oi2r r-width-13qz1uu"
+        class="css-view-175oi2r r-backgroundColor-1stjixc r-borderBottomColor-8fzpo5 r-borderBottomWidth-qklmqi r-left-1d2f490 r-position-u8s1d r-right-zchlnj r-top-ipm5af r-zIndex-184en5c"
         role="banner"
       >
         <div
-          class="css-view-175oi2r"
-          style="height: 64px;"
+          class="css-view-175oi2r r-height-10ptun7"
         />
         <div
-          class="css-view-175oi2r r-backgroundColor-bdcx94 r-position-u8s1d r-top-ipm5af r-width-13qz1uu r-zIndex-184en5c"
+          class="css-view-175oi2r r-alignItems-1awozwy r-height-h3s6tt r-justifyContent-1777fci"
         >
           <div
-            class="css-view-175oi2r r-height-10ptun7"
-          />
-          <div
-            class="css-view-175oi2r r-alignItems-1awozwy r-height-h3s6tt r-justifyContent-1777fci"
+            class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz r-justifyContent-1wtj0ep r-width-13qz1uu"
           >
             <div
-              class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz r-justifyContent-1wtj0ep r-width-13qz1uu"
+              class="css-view-175oi2r r-alignItems-1awozwy r-flexBasis-1iusvr4 r-flexDirection-18u37iz r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-justifyContent-1h0z5md r-paddingLeft-f727ji r-paddingRight-j2kj52"
+              data-testid="back-button-container"
             >
-              <div
-                class="css-view-175oi2r r-alignItems-1awozwy r-flexBasis-1iusvr4 r-flexDirection-18u37iz r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-justifyContent-1h0z5md r-paddingLeft-f727ji r-paddingRight-j2kj52"
-                data-testid="back-button-container"
+              <button
+                aria-label="Revenir en arrière"
+                class="c0 c1 sc-gsDKAQ c1"
+                data-testid="Revenir en arrière"
+                tabindex="0"
+                title="Revenir en arrière"
+                type="button"
               >
-                <button
-                  aria-label="Revenir en arrière"
-                  class="c0 c1 sc-gsDKAQ c1"
-                  data-testid="Revenir en arrière"
-                  tabindex="0"
-                  title="Revenir en arrière"
-                  type="button"
+                <div
+                  class="css-view-175oi2r"
+                  data-testid="icon-back"
                 >
                   <div
-                    class="css-view-175oi2r"
-                    data-testid="icon-back"
-                  >
-                    <div
-                      class="css-text-1rynq56"
-                      dir="ltr"
-                    >
-                      icon-back-SVG-Mock
-                    </div>
-                  </div>
-                  <div
-                    class="css-text-1rynq56 r-clipPath-129q975 r-height-109y4c4 r-overflow-1udh08x r-width-92ng3h"
+                    class="css-text-1rynq56"
                     dir="ltr"
                   >
-                    Retour
+                    icon-back-SVG-Mock
                   </div>
-                </button>
-              </div>
-              <h1
-                aria-level="1"
-                class="css-text-1rynq56 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-whiteSpace-3s2u2q r-wordWrap-1iln25a r-color-jwli3a r-fontFamily-yv33h5 r-fontSize-a023e6 r-lineHeight-rjixqe r-textAlign-q4m81j"
-                dir="ltr"
-                role="heading"
-              >
-                Identification
-              </h1>
-              <div
-                class="css-view-175oi2r r-alignItems-1awozwy r-flexBasis-1iusvr4 r-flexDirection-18u37iz r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-justifyContent-17s6mgv r-paddingLeft-f727ji r-paddingRight-j2kj52"
-                data-testid="close-button-container"
-              />
+                </div>
+                <div
+                  class="css-text-1rynq56 r-clipPath-129q975 r-height-109y4c4 r-overflow-1udh08x r-width-92ng3h"
+                  dir="ltr"
+                >
+                  Retour
+                </div>
+              </button>
             </div>
+            <h1
+              aria-level="1"
+              class="css-text-1rynq56 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-whiteSpace-3s2u2q r-wordWrap-1iln25a r-color-1rmcaf9 r-fontFamily-yv33h5 r-fontSize-a023e6 r-lineHeight-rjixqe r-textAlign-q4m81j"
+              dir="ltr"
+              role="heading"
+            >
+              Identification
+            </h1>
+            <div
+              class="css-view-175oi2r r-alignItems-1awozwy r-flexBasis-1iusvr4 r-flexDirection-18u37iz r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-justifyContent-17s6mgv r-paddingLeft-f727ji r-paddingRight-j2kj52"
+              data-testid="close-button-container"
+            />
           </div>
         </div>
       </header>
@@ -448,7 +124,7 @@ Object {
         class="css-view-175oi2r r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2"
       >
         <div
-          class="css-view-175oi2r r-alignItems-1awozwy r-backgroundColor-14lw9ot r-borderTopLeftRadius-1ct94d3 r-borderTopRightRadius-3y0fky r-display-6koalj r-flexBasis-1iusvr4 r-flexDirection-eqz5dr r-flexGrow-16y2uox r-height-1pi2tsx r-overflow-1jwulwa r-paddingTop-ttdzmv"
+          class="css-view-175oi2r r-alignItems-1awozwy r-backgroundColor-14lw9ot r-borderTopLeftRadius-1ct94d3 r-borderTopRightRadius-3y0fky r-display-6koalj r-flexBasis-1iusvr4 r-flexDirection-eqz5dr r-flexGrow-16y2uox r-height-1pi2tsx r-overflow-1jwulwa r-paddingTop-fd4yh7"
         >
           <div
             class="css-view-175oi2r r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-maxWidth-1ik5qf4 r-width-13qz1uu"
@@ -460,6 +136,10 @@ Object {
                 class="css-view-175oi2r"
                 style="flex-grow: 1; flex-direction: column; padding-bottom: 0px; padding-right: 20px; padding-left: 20px;"
               >
+                <div
+                  class="css-view-175oi2r"
+                  style="height: 65px;"
+                />
                 <div
                   class="css-view-175oi2r r-alignItems-1awozwy r-height-1pi2tsx r-marginHorizontal-4amgru r-marginVertical-764hgp"
                 >
@@ -627,7 +307,317 @@ Object {
           </div>
         </div>
       </div>
+      <div
+        class="css-view-175oi2r r-backdropFilter-1jy2u1p r-height-17lwhjb r-left-1d2f490 r-overflow-1udh08x r-position-u8s1d r-right-zchlnj r-top-ipm5af"
+      />
     </div>
+  </body>,
+  "container": .c0 {
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  cursor: pointer;
+  border-width: 0;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  background-color: transparent;
+  padding: 0;
+}
+
+.c0:active {
+  opacity: 0.7;
+  outline: none;
+}
+
+.c0:focus {
+  outline: auto;
+}
+
+.c0:disabled {
+  cursor: initial;
+}
+
+.c0:hover {
+  -webkit-text-decoration: underline;
+  text-decoration: underline;
+  -webkit-text-decoration-color: #161617;
+  text-decoration-color: #161617;
+}
+
+.c0:hover:disabled {
+  -webkit-text-decoration: none;
+  text-decoration: none;
+}
+
+.c1 {
+  -webkit-box-flex: 1;
+  -webkit-flex-grow: 1;
+  -ms-flex-positive: 1;
+  flex-grow: 1;
+  max-width: 40px;
+  height: 40px;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+<div>
+    <header
+      class="css-view-175oi2r r-backgroundColor-1stjixc r-borderBottomColor-8fzpo5 r-borderBottomWidth-qklmqi r-left-1d2f490 r-position-u8s1d r-right-zchlnj r-top-ipm5af r-zIndex-184en5c"
+      role="banner"
+    >
+      <div
+        class="css-view-175oi2r r-height-10ptun7"
+      />
+      <div
+        class="css-view-175oi2r r-alignItems-1awozwy r-height-h3s6tt r-justifyContent-1777fci"
+      >
+        <div
+          class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz r-justifyContent-1wtj0ep r-width-13qz1uu"
+        >
+          <div
+            class="css-view-175oi2r r-alignItems-1awozwy r-flexBasis-1iusvr4 r-flexDirection-18u37iz r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-justifyContent-1h0z5md r-paddingLeft-f727ji r-paddingRight-j2kj52"
+            data-testid="back-button-container"
+          >
+            <button
+              aria-label="Revenir en arrière"
+              class="c0 c1 sc-gsDKAQ c1"
+              data-testid="Revenir en arrière"
+              tabindex="0"
+              title="Revenir en arrière"
+              type="button"
+            >
+              <div
+                class="css-view-175oi2r"
+                data-testid="icon-back"
+              >
+                <div
+                  class="css-text-1rynq56"
+                  dir="ltr"
+                >
+                  icon-back-SVG-Mock
+                </div>
+              </div>
+              <div
+                class="css-text-1rynq56 r-clipPath-129q975 r-height-109y4c4 r-overflow-1udh08x r-width-92ng3h"
+                dir="ltr"
+              >
+                Retour
+              </div>
+            </button>
+          </div>
+          <h1
+            aria-level="1"
+            class="css-text-1rynq56 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-whiteSpace-3s2u2q r-wordWrap-1iln25a r-color-1rmcaf9 r-fontFamily-yv33h5 r-fontSize-a023e6 r-lineHeight-rjixqe r-textAlign-q4m81j"
+            dir="ltr"
+            role="heading"
+          >
+            Identification
+          </h1>
+          <div
+            class="css-view-175oi2r r-alignItems-1awozwy r-flexBasis-1iusvr4 r-flexDirection-18u37iz r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-justifyContent-17s6mgv r-paddingLeft-f727ji r-paddingRight-j2kj52"
+            data-testid="close-button-container"
+          />
+        </div>
+      </div>
+    </header>
+    <div
+      class="css-view-175oi2r r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2"
+    >
+      <div
+        class="css-view-175oi2r r-alignItems-1awozwy r-backgroundColor-14lw9ot r-borderTopLeftRadius-1ct94d3 r-borderTopRightRadius-3y0fky r-display-6koalj r-flexBasis-1iusvr4 r-flexDirection-eqz5dr r-flexGrow-16y2uox r-height-1pi2tsx r-overflow-1jwulwa r-paddingTop-fd4yh7"
+      >
+        <div
+          class="css-view-175oi2r r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-maxWidth-1ik5qf4 r-width-13qz1uu"
+        >
+          <div
+            class="css-view-175oi2r r-WebkitOverflowScrolling-150rngu r-flexDirection-eqz5dr r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-overflowX-11yh6sk r-overflowY-1rnoaur r-transform-1sncvnh"
+          >
+            <div
+              class="css-view-175oi2r"
+              style="flex-grow: 1; flex-direction: column; padding-bottom: 0px; padding-right: 20px; padding-left: 20px;"
+            >
+              <div
+                class="css-view-175oi2r"
+                style="height: 65px;"
+              />
+              <div
+                class="css-view-175oi2r r-alignItems-1awozwy r-height-1pi2tsx r-marginHorizontal-4amgru r-marginVertical-764hgp"
+              >
+                <div
+                  class="css-view-175oi2r"
+                >
+                  <div
+                    class="css-text-1rynq56"
+                    dir="ltr"
+                  >
+                    undefined-SVG-Mock
+                  </div>
+                </div>
+                <div
+                  class="css-view-175oi2r r-height-10ptun7"
+                />
+                <h2
+                  aria-level="2"
+                  class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-g6644c r-fontSize-1i10wst r-lineHeight-hbpseb r-textAlign-q4m81j"
+                  dir="ltr"
+                  role="heading"
+                >
+                  Vérifie ton identité avec un smartphone
+                </h2>
+                <div
+                  class="css-view-175oi2r r-height-10ptun7"
+                />
+                <div
+                  class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-yv33h5 r-fontSize-a023e6 r-lineHeight-rjixqe r-textAlign-q4m81j"
+                  dir="ltr"
+                >
+                  Gagne du temps en vérifiant ton identité sur un smartphone ! Tu peux aussi passer par le site demarches-simplifiees.fr mais le traitement sera plus long.
+                </div>
+                <div
+                  class="css-view-175oi2r r-height-mabqd8"
+                />
+                <ul
+                  class="css-view-175oi2r r-flexDirection-eqz5dr r-overflow-1dqxon3 r-paddingLeft-gy4na3 r-width-13qz1uu"
+                  role="list"
+                >
+                  <li
+                    class="css-view-175oi2r r-display-ixj5dj"
+                    role="listitem"
+                  >
+                    <div
+                      class="css-view-175oi2r r-transitionProperty-1i6wzkk r-cursor-1loqt21 r-touchAction-1otgn73 r-userSelect-bj6uhd"
+                      data-testid="HeroButtonList"
+                      style="transition-duration: 0s;"
+                      tabindex="0"
+                    >
+                      <div
+                        class="css-view-175oi2r r-alignItems-1awozwy r-borderColor-w7parf r-borderRadius-1px6drs r-borderStyle-1phboty r-borderWidth-rs99b7 r-flexDirection-18u37iz r-padding-nsbfu8 r-width-13qz1uu"
+                      >
+                        <div
+                          class="css-view-175oi2r r-alignContent-uia4a0 r-marginRight-88pszg"
+                        >
+                          <div
+                            class="css-view-175oi2r"
+                            data-testid="BicolorSmartphone"
+                          >
+                            <div
+                              class="css-text-1rynq56"
+                              dir="ltr"
+                            >
+                              BicolorSmartphone-SVG-Mock
+                            </div>
+                          </div>
+                        </div>
+                        <div
+                          class="css-view-175oi2r r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-marginRight-88pszg r-textAlign-fdjqy7"
+                        >
+                          <div
+                            class="css-view-175oi2r r-justifyContent-1777fci r-minHeight-mipnz4"
+                          >
+                            <div
+                              class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-yv33h5 r-fontSize-a023e6 r-lineHeight-rjixqe"
+                              dir="ltr"
+                            >
+                              J’ai un smartphone à proximité
+                            </div>
+                          </div>
+                        </div>
+                        <div
+                          class="css-view-175oi2r"
+                        >
+                          <div
+                            class="css-view-175oi2r"
+                          >
+                            <div
+                              class="css-text-1rynq56"
+                              dir="ltr"
+                            >
+                              undefined-SVG-Mock
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div
+                      class="css-view-175oi2r r-height-1472mwg"
+                    />
+                  </li>
+                  <li
+                    class="css-view-175oi2r r-display-ixj5dj"
+                    role="listitem"
+                  >
+                    <div
+                      class="css-view-175oi2r r-transitionProperty-1i6wzkk r-cursor-1loqt21 r-touchAction-1otgn73 r-userSelect-bj6uhd"
+                      data-testid="HeroButtonList"
+                      style="transition-duration: 0s;"
+                      tabindex="0"
+                    >
+                      <div
+                        class="css-view-175oi2r r-alignItems-1awozwy r-borderColor-w7parf r-borderRadius-1px6drs r-borderStyle-1phboty r-borderWidth-rs99b7 r-flexDirection-18u37iz r-padding-nsbfu8 r-width-13qz1uu"
+                      >
+                        <div
+                          class="css-view-175oi2r r-alignContent-uia4a0 r-marginRight-88pszg"
+                        >
+                          <div
+                            class="css-view-175oi2r"
+                          >
+                            <div
+                              class="css-text-1rynq56"
+                              dir="ltr"
+                            >
+                              undefined-SVG-Mock
+                            </div>
+                          </div>
+                        </div>
+                        <div
+                          class="css-view-175oi2r r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-marginRight-88pszg r-textAlign-fdjqy7"
+                        >
+                          <div
+                            class="css-view-175oi2r r-justifyContent-1777fci r-minHeight-mipnz4"
+                          >
+                            <div
+                              class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-yv33h5 r-fontSize-a023e6 r-lineHeight-rjixqe"
+                              dir="ltr"
+                            >
+                              Je n’ai pas de smartphone à proximité
+                            </div>
+                          </div>
+                        </div>
+                        <div
+                          class="css-view-175oi2r"
+                        >
+                          <div
+                            class="css-view-175oi2r"
+                          >
+                            <div
+                              class="css-text-1rynq56"
+                              dir="ltr"
+                            >
+                              undefined-SVG-Mock
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      class="css-view-175oi2r r-backdropFilter-1jy2u1p r-height-17lwhjb r-left-1d2f490 r-overflow-1udh08x r-position-u8s1d r-right-zchlnj r-top-ipm5af"
+    />
   </div>,
   "debug": [Function],
   "findAllByAltText": [Function],
