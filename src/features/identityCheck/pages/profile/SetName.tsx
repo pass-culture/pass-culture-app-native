@@ -48,14 +48,10 @@ export const SetName = () => {
   return (
     <PageWithHeader
       title="Profil"
-      fixedTopChildren={
-        <React.Fragment>
-          <CenteredTitle title="Comment t’appelles-tu&nbsp;?" />
-          <Spacer.Column numberOfSpaces={5} />
-        </React.Fragment>
-      }
       scrollChildren={
         <Form.MaxWidth>
+          <CenteredTitle title="Comment t’appelles-tu&nbsp;?" />
+          <Spacer.Column numberOfSpaces={5} />
           <InfoBanner
             icon={BicolorIdCard}
             message="Saisis ton nom et ton prénom tels qu’ils sont affichés sur ta pièce d’identité.

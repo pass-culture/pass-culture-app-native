@@ -69,7 +69,7 @@ export const IdentityCheckHonor = () => {
   return (
     <PageWithHeader
       title="Confirmation"
-      fixedTopChildren={
+      scrollChildren={
         <Container>
           <CenteredTitle title="Les informations que tu as renseignées sont-elles correctes&nbsp;?" />
           {theme.isMobileViewport ? <Spacer.Flex /> : <Spacer.Column numberOfSpaces={10} />}
@@ -97,5 +97,5 @@ export const IdentityCheckHonor = () => {
   )
 }
 
-const Container = styled.View({ height: '100%' })
+const Container = styled.View({ flexGrow: 1 })
 const ButtonContainer = styled.View({ paddingVertical: getSpacing(5) })

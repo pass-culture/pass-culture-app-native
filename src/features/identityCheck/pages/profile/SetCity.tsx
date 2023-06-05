@@ -109,33 +109,31 @@ export const SetCity = () => {
   return (
     <PageWithHeader
       title="Profil"
-      fixedTopChildren={
-        <Form.MaxWidth>
-          <CenteredTitle title="Dans quelle ville résides-tu&nbsp;?" />
-          <Spacer.Column numberOfSpaces={5} />
-          <SearchInput
-            autoFocus
-            onChangeText={onChangePostalCode}
-            value={query}
-            label="Indique ton code postal et choisis ta ville"
-            placeholder="Ex&nbsp;: 75017"
-            textContentType="postalCode"
-            onPressRightIcon={resetSearch}
-            keyboardType="number-pad"
-            accessibilityDescribedBy={postalCodeInputErrorId}
-            testID="Entrée pour la ville"
-          />
-          <InputError
-            messageId={errorMessage}
-            numberOfSpacesTop={2}
-            visible={!!errorMessage}
-            relatedInputId={postalCodeInputErrorId}
-          />
-          <Spacer.Column numberOfSpaces={2} />
-        </Form.MaxWidth>
-      }
       scrollChildren={
         <React.Fragment>
+          <Form.MaxWidth>
+            <CenteredTitle title="Dans quelle ville résides-tu&nbsp;?" />
+            <Spacer.Column numberOfSpaces={5} />
+            <SearchInput
+              autoFocus
+              onChangeText={onChangePostalCode}
+              value={query}
+              label="Indique ton code postal et choisis ta ville"
+              placeholder="Ex&nbsp;: 75017"
+              textContentType="postalCode"
+              onPressRightIcon={resetSearch}
+              keyboardType="number-pad"
+              accessibilityDescribedBy={postalCodeInputErrorId}
+              testID="Entrée pour la ville"
+            />
+            <InputError
+              messageId={errorMessage}
+              numberOfSpacesTop={2}
+              visible={!!errorMessage}
+              relatedInputId={postalCodeInputErrorId}
+            />
+            <Spacer.Column numberOfSpaces={2} />
+          </Form.MaxWidth>
           {!!isLoading && <Spinner />}
           <CitiesContainer accessibilityRole={AccessibilityRole.RADIOGROUP}>
             <VerticalUl>

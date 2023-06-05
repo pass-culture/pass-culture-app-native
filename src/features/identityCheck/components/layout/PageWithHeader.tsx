@@ -9,7 +9,6 @@ import { getSpacing, Spacer } from 'ui/theme'
 
 interface Props {
   title: string
-  fixedTopChildren?: ReactNode
   scrollChildren?: ReactNode
   fixedBottomChildren?: ReactNode
   onGoBack?: () => void
@@ -29,9 +28,6 @@ export const PageWithHeader: FunctionComponent<Props> = (props) => {
     <Container>
       <PageHeaderSecondary title={props.title} onGoBack={props.onGoBack} />
       <CustomKeyboardAvoidingView>
-        {props.fixedTopChildren ? (
-          <FixedTopChildrenView>{props.fixedTopChildren}</FixedTopChildrenView>
-        ) : null}
         {props.scrollChildren ? (
           <ChildrenScrollView
             bottomChildrenViewHeight={bottomChildrenViewHeight}
@@ -57,11 +53,6 @@ const Container = styled.View(({ theme }) => ({
   flexDirection: 'column',
   backgroundColor: theme.colors.primary,
 }))
-
-const FixedTopChildrenView = styled.View({
-  paddingHorizontal: getSpacing(5),
-  paddingTop: getSpacing(5),
-})
 
 type ChildrenScrollViewProps = { bottomChildrenViewHeight: number }
 const ChildrenScrollView = styled.ScrollView.attrs<ChildrenScrollViewProps>((props) => ({
