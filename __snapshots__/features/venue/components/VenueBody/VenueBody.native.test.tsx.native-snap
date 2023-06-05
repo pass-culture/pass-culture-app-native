@@ -614,7 +614,6 @@ exports[`<VenueBody /> should render correctly 1`] = `
                     externalSiteIcon-SVG-Mock
                   </Text>
                 </View>
-                
               </Text>
                https://pass.culture.fr/
             </Text>
@@ -3011,7 +3010,6 @@ exports[`<VenueBody /> should render correctly 1`] = `
                     externalSiteIcon-SVG-Mock
                   </Text>
                 </View>
-                
               </Text>
                https://test.com
             </Text>
