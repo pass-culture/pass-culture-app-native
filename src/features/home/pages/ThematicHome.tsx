@@ -61,7 +61,6 @@ export const ThematicHome: FunctionComponent = () => {
 
   return (
     <Container>
-      <ThematicHomeHeader title={thematicHeader?.title} headerTransition={headerTransition} />
       <GenericHome
         modules={modules}
         homeId={id}
@@ -69,6 +68,8 @@ export const ThematicHome: FunctionComponent = () => {
         shouldDisplayScrollToTop
         onScroll={onScroll}
       />
+      {/* ThematicHomeHeader is called after Body to implement the BlurView for iOS */}
+      <ThematicHomeHeader title={thematicHeader?.title} headerTransition={headerTransition} />
     </Container>
   )
 }

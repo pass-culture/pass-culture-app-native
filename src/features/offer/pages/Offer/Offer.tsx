@@ -164,12 +164,6 @@ export const Offer: FunctionComponent = () => {
   return (
     <Container>
       <OfferWebHead offer={offerResponse} />
-      <OfferHeader
-        title={offerResponse.name}
-        headerTransition={headerTransition}
-        offerId={offerResponse.id}
-        searchId={searchId}
-      />
       <OfferBody
         offerId={offerId}
         onScroll={onScroll}
@@ -177,7 +171,13 @@ export const Offer: FunctionComponent = () => {
         otherCategoriesSimilarOffers={otherCategoriesSimilarOffers}
         shouldUseAlgoliaRecommend={shouldUseAlgoliaRecommend}
       />
-
+      {/* OfferHeader is called after Body to implement the BlurView for iOS */}
+      <OfferHeader
+        title={offerResponse.name}
+        headerTransition={headerTransition}
+        offerId={offerResponse.id}
+        searchId={searchId}
+      />
       {!!wording && (
         <React.Fragment>
           <CallToActionContainer testID="CTA-button">

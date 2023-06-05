@@ -4,7 +4,7 @@ import { CategoryThematicHomeHeader } from 'features/home/components/headers/Cat
 import { render, screen } from 'tests/utils'
 
 describe('CategoryThematicHomeHeader', () => {
-  it('should show title and sub title if render correctly', async () => {
+  it('should show title and subtitle if render correctly', async () => {
     render(
       <CategoryThematicHomeHeader
         imageUrl="https://images.ctfassets.net/2bg01iqy0isv/5PmtxKY77rq0nYpkCFCbrg/4daa8767efa35827f22bb86e5fc65094/photo-lion_noir-et-blanc_laurent-breillat-610x610.jpeg"
