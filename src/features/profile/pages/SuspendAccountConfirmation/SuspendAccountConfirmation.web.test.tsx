@@ -11,6 +11,7 @@ jest.spyOn(useEmailUpdateStatus, 'useEmailUpdateStatus').mockReturnValue({
     newEmail: '',
     status: EmailHistoryEventTypeEnum.UPDATE_REQUEST,
   },
+  isLoading: false,
 })
 
 describe('<SuspendAccountConfirmation />', () => {

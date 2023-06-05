@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react'
+import React, { useCallback, useEffect } from 'react'
 import { View } from 'react-native'
 import styled from 'styled-components/native'
 
@@ -13,7 +13,7 @@ import { Spacer, Typo } from 'ui/theme'
 import { DOUBLE_LINE_BREAK } from 'ui/theme/constants'
 
 export function SuspendAccountConfirmation() {
-  const { data: emailUpdateStatus } = useEmailUpdateStatus()
+  const { data: emailUpdateStatus, isLoading } = useEmailUpdateStatus()
 
   const onClose = useCallback(() => {
     navigateToHome()
@@ -23,9 +23,11 @@ export function SuspendAccountConfirmation() {
     // TODO(PC-22601): add suspend account API call
   }, [])
 
-  if (!emailUpdateStatus || emailUpdateStatus?.expired) {
-    navigateToHome()
-  }
+  useEffect(() => {
+    if (!isLoading && (!emailUpdateStatus || emailUpdateStatus?.expired)) {
+      navigateToHome()
+    }
+  }, [emailUpdateStatus, isLoading])
 
   return (
     <GenericInfoPageWhite

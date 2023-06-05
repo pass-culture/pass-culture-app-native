@@ -9,11 +9,11 @@ export const useEmailUpdateStatus = () => {
   const netInfo = useNetInfoContext()
   const { isLoggedIn } = useAuthContext()
 
-  const { data } = useQuery(
+  const { data, isLoading } = useQuery(
     [QueryKeys.EMAIL_UPDATE_STATUS],
     () => api.getnativev1profileemailUpdatestatus(),
     { enabled: !!netInfo.isConnected && isLoggedIn }
   )
 
-  return { data }
+  return { data, isLoading }
 }

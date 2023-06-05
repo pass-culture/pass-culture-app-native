@@ -15,6 +15,7 @@ const useEmailUpdateStatusSpy = jest
       newEmail: '',
       status: EmailHistoryEventTypeEnum.CANCELLATION,
     },
+    isLoading: false,
   })
 
 jest.mock('features/navigation/navigationRef')
@@ -24,6 +25,7 @@ describe('<SuspendAccountConfirmation />', () => {
     it('When there is not current email change', () => {
       useEmailUpdateStatusSpy.mockReturnValueOnce({
         data: undefined,
+        isLoading: false,
       })
       render(<SuspendAccountConfirmation />)
       expect(navigateFromRef).toHaveBeenCalledWith(
@@ -39,6 +41,7 @@ describe('<SuspendAccountConfirmation />', () => {
           newEmail: '',
           status: EmailHistoryEventTypeEnum.UPDATE_REQUEST,
         },
+        isLoading: false,
       })
       render(<SuspendAccountConfirmation />)
       expect(navigateFromRef).toHaveBeenCalledWith(
@@ -54,6 +57,7 @@ describe('<SuspendAccountConfirmation />', () => {
           newEmail: '',
           status: EmailHistoryEventTypeEnum.UPDATE_REQUEST,
         },
+        isLoading: false,
       })
       render(<SuspendAccountConfirmation />)
 
@@ -73,6 +77,7 @@ describe('<SuspendAccountConfirmation />', () => {
         newEmail: '',
         status: EmailHistoryEventTypeEnum.UPDATE_REQUEST,
       },
+      isLoading: false,
     })
     render(<SuspendAccountConfirmation />)
     expect(screen.getByText('Souhaites-tu suspendre ton compte pass Culture ?')).toBeTruthy()
