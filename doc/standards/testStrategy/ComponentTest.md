@@ -7,9 +7,12 @@ Do not test component with snapshots
 Some examples
 
 ```jsx
+import { render, screen } from 'tests/utils'
+
 it('should navigate to the previous when back navigation triggered', () => {
-  const { getByTestId } = render(<SetBirthday />)
-  const leftIcon = getByTestId('leftIcon')
+  render(<SetBirthday />)
+  
+  const leftIcon = screen.getByTestId('leftIcon')
   fireEvent.press(leftIcon)
 
   expect(goBack).toHaveBeenCalledTimes(1)
@@ -17,11 +20,13 @@ it('should navigate to the previous when back navigation triggered', () => {
 ```
 
 ```jsx
+import { render, screen } from 'tests/utils'
+
 it('should redirect to home page when signin is successful', async () => {
-  const { findByText } = render(<Login />)
+  render(<Login />)
   mockSignIn.mockReturnValueOnce(true)
 
-  const connexionButton = await findByText('Se connecter')
+  const connexionButton = await screen.findByText('Se connecter')
   fireEvent.press(connexionButton)
 
   await waitFor(() => {
