@@ -4,6 +4,7 @@ import styled from 'styled-components/native'
 
 import { CustomKeyboardAvoidingView } from 'features/identityCheck/components/CustomKeyboardAvoidingView'
 import { useShouldEnableScrollOnView } from 'features/identityCheck/components/layout/helpers/useShouldEnableScrollView'
+import { BlurHeader } from 'ui/components/headers/BlurHeader'
 import {
   PageHeaderWithoutPlaceholder,
   useGetHeaderHeight,
@@ -49,6 +50,9 @@ export const PageWithHeader: FunctionComponent<Props> = (props) => {
           </FixedBottomChildrenView>
         ) : null}
       </CustomKeyboardAvoidingView>
+      <BlurHeaderContainer height={headerHeight}>
+        <BlurHeader blurAmount={8} />
+      </BlurHeaderContainer>
     </React.Fragment>
   )
 }
@@ -73,4 +77,14 @@ const FixedBottomChildrenView = styled.View(({ theme }) => ({
   paddingTop: getSpacing(3),
   backgroundColor: theme.colors.white,
   paddingHorizontal: getSpacing(5),
+}))
+
+const BlurHeaderContainer = styled.View<{ height: number }>(({ height }) => ({
+  position: 'absolute',
+  top: 0,
+  left: 0,
+  right: 0,
+  height,
+  overflow: 'hidden',
+  backdropFilter: 'blur(20px)',
 }))
