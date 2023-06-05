@@ -25,7 +25,7 @@ export const PageWithHeader: FunctionComponent<Props> = (props) => {
   }
 
   return (
-    <Container>
+    <React.Fragment>
       <PageHeaderSecondary title={props.title} onGoBack={props.onGoBack} />
       <CustomKeyboardAvoidingView>
         {props.scrollChildren ? (
@@ -43,16 +43,9 @@ export const PageWithHeader: FunctionComponent<Props> = (props) => {
           </FixedBottomChildrenView>
         ) : null}
       </CustomKeyboardAvoidingView>
-    </Container>
+    </React.Fragment>
   )
 }
-
-const Container = styled.View(({ theme }) => ({
-  flex: 1,
-  display: 'flex',
-  flexDirection: 'column',
-  backgroundColor: theme.colors.primary,
-}))
 
 type ChildrenScrollViewProps = { bottomChildrenViewHeight: number }
 const ChildrenScrollView = styled.ScrollView.attrs<ChildrenScrollViewProps>((props) => ({
