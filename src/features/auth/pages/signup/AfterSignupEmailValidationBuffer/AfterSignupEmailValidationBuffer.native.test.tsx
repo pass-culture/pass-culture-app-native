@@ -16,6 +16,7 @@ import { firebaseAnalytics } from 'libs/firebase/analytics'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { server } from 'tests/server'
 import { render, waitFor } from 'tests/utils'
+import { SNACK_BAR_TIME_OUT } from 'ui/components/snackBar/SnackBarContext'
 import { SnackBarHelperSettings } from 'ui/components/snackBar/types'
 
 import { AfterSignupEmailValidationBuffer } from './AfterSignupEmailValidationBuffer'
@@ -183,6 +184,7 @@ describe('<AfterSignupEmailValidationBuffer />', () => {
         expect(mockShowInfoSnackBar).toHaveBeenCalledTimes(1)
         expect(mockShowInfoSnackBar).toHaveBeenCalledWith({
           message: 'Ce lien de validation n’est plus valide',
+          timeout: SNACK_BAR_TIME_OUT,
         })
         expect(replace).toBeCalledTimes(1)
         expect(replace).toHaveBeenCalledWith(...homeNavConfig)

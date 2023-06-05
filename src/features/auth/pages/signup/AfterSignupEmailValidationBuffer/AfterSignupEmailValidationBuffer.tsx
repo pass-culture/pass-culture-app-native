@@ -13,7 +13,7 @@ import { isTimestampExpired } from 'libs/dates'
 // eslint-disable-next-line no-restricted-imports
 import { firebaseAnalytics } from 'libs/firebase/analytics'
 import { LoadingPage } from 'ui/components/LoadingPage'
-import { useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
+import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 
 export function AfterSignupEmailValidationBuffer() {
   const { showInfoSnackBar } = useSnackBarContext()
@@ -80,7 +80,10 @@ export function AfterSignupEmailValidationBuffer() {
   }
 
   function onEmailValidationFailure() {
-    showInfoSnackBar({ message: 'Ce lien de validation n’est plus valide' })
+    showInfoSnackBar({
+      message: 'Ce lien de validation n’est plus valide',
+      timeout: SNACK_BAR_TIME_OUT,
+    })
     delayedReplace(...homeNavConfig)
   }
 
