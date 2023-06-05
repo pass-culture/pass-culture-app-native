@@ -15,7 +15,11 @@ export function BookingOfferLoader({ message }: BookingOfferLoaderProps) {
   return (
     <Center testID="loadingScreen">
       <Spacer.Column numberOfSpaces={50} />
-      <ActivityIndicator size="large" color={theme.colors.primary} />
+      <ActivityIndicator
+        size="large"
+        color={theme.colors.primary}
+        accessibilityLabel="Chargement en cours..."
+      />
       <Spacer.Column numberOfSpaces={4} />
       <Typo.ButtonText>{message}</Typo.ButtonText>
       <Spacer.Column numberOfSpaces={50} />
