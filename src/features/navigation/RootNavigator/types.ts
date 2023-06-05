@@ -190,6 +190,7 @@ export type RootStackParamList = {
     searchId?: string
   }
   OfferDescription: { id: number }
+  SuspendAccountConfirmation: undefined
   SuspensionScreen: undefined
   ReinitializePassword: { email: string; token: string; expiration_timestamp: number }
   ResetPasswordEmailSent: { email: string }
