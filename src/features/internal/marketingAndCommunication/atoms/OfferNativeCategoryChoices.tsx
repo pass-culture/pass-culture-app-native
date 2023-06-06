@@ -31,7 +31,7 @@ export const OfferNativeCategoryChoices = (props: Props) => {
     categories.forEach((categoryEnum) => {
       nativeCategories = [...nativeCategories, ...getNativeCategories(data, categoryEnum)]
     })
-    return nativeCategories.sort((a, b) => (a?.value || '').localeCompare(b?.value || ''))
+    return nativeCategories.sort((a, b) => (a?.value ?? '').localeCompare(b?.value ?? ''))
   }, [data, categories])
 
   const onPress = useCallback(
@@ -56,7 +56,7 @@ export const OfferNativeCategoryChoices = (props: Props) => {
         {nativeCategories.map((nativeCategory) => (
           <Li key={nativeCategory.name}>
             <SelectionLabel
-              label={nativeCategory.value || ''}
+              label={nativeCategory.value ?? ''}
               selected={selection.includes(nativeCategory.name)}
               onPress={() => onPress(nativeCategory.name)}
             />

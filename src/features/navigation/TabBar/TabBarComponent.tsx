@@ -41,7 +41,7 @@ export const TabBarComponent: React.FC<Props> = ({
     activeOpacity={1}
     selected={isSelected}
     accessibilityLabel={menu[tabName].accessibilityLabel}
-    testID={menu[tabName].accessibilityLabel || menu[tabName].displayName}
+    testID={menu[tabName].accessibilityLabel ?? menu[tabName].displayName}
     accessibilityCurrent={isSelected ? 'page' : undefined}>
     {!!isSelected && (
       <BicolorSelector

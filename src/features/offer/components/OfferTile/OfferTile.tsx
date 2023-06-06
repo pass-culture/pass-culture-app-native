@@ -30,8 +30,8 @@ export const mergeOfferData =
   (prevData: OfferResponse | undefined): OfferResponse => ({
     description: '',
     image: offer.thumbUrl ? { url: offer.thumbUrl } : undefined,
-    isDuo: offer.isDuo || false,
-    name: offer.name || '',
+    isDuo: offer.isDuo ?? false,
+    name: offer.name ?? '',
     isDigital: false,
     isExpired: false,
     // assumption. If wrong, we receive correct data once API call finishes.
@@ -47,7 +47,7 @@ export const mergeOfferData =
     accessibility: {},
     subcategoryId: offer.subcategoryId,
     venue: { coordinates: {} } as OfferVenueResponse,
-    ...(prevData || {}),
+    ...(prevData ?? {}),
   })
 
 const UnmemoizedOfferTile = (props: OfferTileProps) => {

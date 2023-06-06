@@ -12,7 +12,7 @@ export function useUpdateProfileMutation(
   return useMutation((body: UserProfileUpdateRequest) => api.postnativev1profile(body), {
     onSuccess(response: UserProfileResponse) {
       client.setQueryData([QueryKeys.USER_PROFILE], (old: UserProfileResponse | undefined) => ({
-        ...(old || {}),
+        ...(old ?? {}),
         ...response,
       }))
       onSuccessCallback(response)

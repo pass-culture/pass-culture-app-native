@@ -34,13 +34,13 @@ const mergeVenueData =
   (venue: PartialVenue) =>
   (prevData: VenueResponse | undefined): VenueResponse => ({
     id: venue.id,
-    name: venue.publicName || venue.name,
+    name: venue.publicName ?? venue.name,
     venueTypeCode: venue.venueTypeCode,
     isVirtual: false,
     description: venue.description,
     accessibility: {},
     contact: {},
-    ...(prevData || {}),
+    ...(prevData ?? {}),
   })
 
 export function VenueSection({ beforeNavigateToItinerary, venue, showVenueBanner, title }: Props) {
@@ -70,7 +70,7 @@ export function VenueSection({ beforeNavigateToItinerary, venue, showVenueBanner
         <View>
           <Spacer.Column numberOfSpaces={6} />
           <VenueCard
-            title={venue.publicName || venue.name}
+            title={venue.publicName ?? venue.name}
             address={venueFullAddress}
             onPress={onVenuePress}
             distance={distanceToLocation}
@@ -83,7 +83,7 @@ export function VenueSection({ beforeNavigateToItinerary, venue, showVenueBanner
           <Separator />
           <Spacer.Column numberOfSpaces={4} />
           <VenueDetails
-            title={venue.publicName || venue.name}
+            title={venue.publicName ?? venue.name}
             address={venueFullAddress}
             distance={distanceToLocation}
           />

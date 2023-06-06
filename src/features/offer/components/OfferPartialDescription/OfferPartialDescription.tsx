@@ -15,7 +15,7 @@ interface Props {
 
 export const OfferPartialDescription: React.FC<Props> = ({ id, description = '' }) => {
   const { data: offerResponse } = useOffer({ offerId: id })
-  const { extraData = {}, image } = offerResponse || {}
+  const { extraData = {}, image } = offerResponse ?? {}
   const contentOfferDescription = getContentFromOffer(extraData, description, image?.credit)
 
   const maxTheoricalDisplayedDescriptionLines = 8

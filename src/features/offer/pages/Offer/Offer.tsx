@@ -58,7 +58,7 @@ export const Offer: FunctionComponent = () => {
     offerId,
     position: offer?.venue.coordinates,
     shouldUseAlgoliaRecommend,
-    categoryIncluded: subcategorySearchGroupId || SearchGroupNameEnumv2.NONE,
+    categoryIncluded: subcategorySearchGroupId ?? SearchGroupNameEnumv2.NONE,
   })
   const hasSameCategorySimilarOffers = Boolean(sameCategorySimilarOffers?.length)
 
@@ -66,7 +66,7 @@ export const Offer: FunctionComponent = () => {
     offerId,
     position: offer?.venue.coordinates,
     shouldUseAlgoliaRecommend,
-    categoryExcluded: subcategorySearchGroupId || SearchGroupNameEnumv2.NONE,
+    categoryExcluded: subcategorySearchGroupId ?? SearchGroupNameEnumv2.NONE,
   })
   const hasOtherCategoriesSimilarOffers = Boolean(otherCategoriesSimilarOffers?.length)
 
@@ -137,7 +137,7 @@ export const Offer: FunctionComponent = () => {
     isEndedUsedBooking,
     bottomBannerText,
     isDisabled,
-  } = useCtaWordingAndAction({ offerId }) || {}
+  } = useCtaWordingAndAction({ offerId }) ?? {}
 
   const { OfferModal: CTAOfferModal, showModal: showOfferModal } = useOfferModal({
     modalToDisplay,
