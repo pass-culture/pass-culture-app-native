@@ -26,7 +26,7 @@ export const useShareVenue = (venueId: number): ShareOutput => {
     }
 
   const shareUrl = getVenueUrl(venue.id)
-  const venueName = venue.publicName ?? venue.name
+  const venueName = venue.publicName || venue.name
   const shareTitle = `Retrouve "${venueName}" sur le pass Culture`
   const shareAndroidMessage = shareTitle + DOUBLE_LINE_BREAK + shareUrl
   // url share content param is only for iOS, so we add url in message for android

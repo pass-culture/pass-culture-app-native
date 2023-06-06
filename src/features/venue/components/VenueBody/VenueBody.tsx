@@ -63,7 +63,7 @@ export const VenueBody: FunctionComponent<Props> = ({ venueId, onScroll }) => {
   } = venue
   const venueType = venueTypeCode as VenueTypeCode
 
-  const venueAddress = formatFullAddress(address ?? publicName, postalCode, city)
+  const venueAddress = formatFullAddress(address || publicName, postalCode, city)
   const typeLabel = parseType(venueType)
 
   const shouldShowVenueOffers = !!offers && offers?.hits.length > 0
@@ -92,12 +92,12 @@ export const VenueBody: FunctionComponent<Props> = ({ venueId, onScroll }) => {
         </VenueAddressContainer>
         <Spacer.Column numberOfSpaces={2} />
         <VenueTitle
-          accessibilityLabel={`Nom du lieu\u00a0: ${publicName ?? name}`}
+          accessibilityLabel={`Nom du lieu\u00a0: ${publicName || name}`}
           testID="venueTitle"
           numberOfLines={2}
           adjustsFontSizeToFit
           allowFontScaling={false}>
-          {publicName ?? name}
+          {publicName || name}
         </VenueTitle>
         <Spacer.Column numberOfSpaces={4} />
       </MarginContainer>
