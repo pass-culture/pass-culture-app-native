@@ -7,6 +7,8 @@ import { SnackBarHelperSettings, SnackBarSettings, SnackBarType } from './types'
 
 export const SNACK_BAR_TIME_OUT = 5000
 
+export const SNACK_BAR_TIME_OUT_LONG = 10000
+
 interface SnackBarContextValue {
   showErrorSnackBar: (props: SnackBarHelperSettings) => void
   showInfoSnackBar: (props: SnackBarHelperSettings) => void

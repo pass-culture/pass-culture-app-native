@@ -30,7 +30,7 @@ import { isValueEmpty } from 'ui/components/inputs/helpers'
 import { InputError } from 'ui/components/inputs/InputError'
 import { PasswordInput } from 'ui/components/inputs/PasswordInput'
 import { ModalHeader } from 'ui/components/modals/ModalHeader'
-import { useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
+import { SNACK_BAR_TIME_OUT_LONG, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 import { ArrowPrevious } from 'ui/svg/icons/ArrowPrevious'
 import { Close } from 'ui/svg/icons/Close'
 import { Key } from 'ui/svg/icons/Key'
@@ -78,6 +78,7 @@ export const Login: FunctionComponent<Props> = memo(function Login(props) {
       showInfoSnackBar({
         message:
           'Pour sécuriser ton pass Culture, tu dois confirmer tes identifiants tous les 30 jours.',
+        timeout: SNACK_BAR_TIME_OUT_LONG,
       })
     }
   }, [params?.displayForcedLoginHelpMessage, showInfoSnackBar])
