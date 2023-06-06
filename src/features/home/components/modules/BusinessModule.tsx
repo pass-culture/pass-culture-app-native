@@ -10,7 +10,7 @@ import { ContentTypes } from 'libs/contentful'
 import { useHandleFocus } from 'libs/hooks/useHandleFocus'
 import { Image } from 'libs/resizing-image-on-demand/Image'
 import { ImageBackground } from 'libs/resizing-image-on-demand/ImageBackground'
-import { useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
+import { SNACK_BAR_TIME_OUT_LONG, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 import { ArrowNext } from 'ui/svg/icons/ArrowNext'
 import { Idea } from 'ui/svg/icons/Idea'
 import { Typo, getSpacing, MARGIN_DP, LENGTH_XS, RATIO_BUSINESS, Spacer } from 'ui/theme'
@@ -75,7 +75,7 @@ const UnmemoizedBusinessModule = (props: BusinessModuleProps) => {
     const businessUrl = getBusinessUrl(url, user?.email)
     if (businessUrl) logAndOpenUrl(businessUrl)
     else if (isUserLoading) {
-      showInfoSnackBar({ message: 'Redirection en cours' })
+      showInfoSnackBar({ message: 'Redirection en cours', timeout: SNACK_BAR_TIME_OUT_LONG })
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [url, user, shouldRedirect])

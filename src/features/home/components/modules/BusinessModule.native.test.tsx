@@ -7,6 +7,7 @@ import { analytics } from 'libs/analytics'
 import { ContentTypes } from 'libs/contentful'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { render, fireEvent, waitFor } from 'tests/utils'
+import { SNACK_BAR_TIME_OUT_LONG } from 'ui/components/snackBar/SnackBarContext'
 import { SnackBarHelperSettings } from 'ui/components/snackBar/types'
 
 import { BusinessModuleProps } from './BusinessModule'
@@ -113,6 +114,7 @@ describe('BusinessModule component', () => {
     await waitFor(() => {
       expect(mockShowInfoSnackBar).toHaveBeenCalledWith({
         message: 'Redirection en cours',
+        timeout: SNACK_BAR_TIME_OUT_LONG,
       })
     })
   })
