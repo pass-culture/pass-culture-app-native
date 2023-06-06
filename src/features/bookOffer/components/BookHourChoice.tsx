@@ -132,8 +132,9 @@ export const BookHourChoice = ({ enablePricesByCategories }: Props) => {
     ]
   )
 
-  const buttonTitle =
-    bookingStock && bookingStock.beginningDatetime ? formatHour(bookingStock.beginningDatetime) : ''
+  const buttonTitle = bookingStock?.beginningDatetime
+    ? formatHour(bookingStock.beginningDatetime)
+    : ''
 
   return (
     <React.Fragment>

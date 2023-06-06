@@ -21,7 +21,7 @@ export const AddToFavoritesButton: FunctionComponent<Props> = ({
 
   const addToFavorite = () => {
     addFavorite({ offerId })
-    onFavoriteAdditionnalPress && onFavoriteAdditionnalPress()
+    onFavoriteAdditionnalPress?.()
   }
 
   if (isFavorite) return null

@@ -11,11 +11,11 @@ export const requestIDFATrackingConsent = async (callback?: (status: TrackingSta
   getTrackingStatus().then((status) => {
     if (status === 'unavailable') {
       // android and iOS < 14
-      callback && callback(status)
+      callback?.(status)
     } else if (status === 'not-determined') {
       // iOS >= 14
       requestTrackingPermission().then(async (status) => {
-        callback && callback(status)
+        callback?.(status)
         logOpenApp(status)
       })
     }

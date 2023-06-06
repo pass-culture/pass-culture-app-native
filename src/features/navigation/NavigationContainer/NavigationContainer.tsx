@@ -58,7 +58,7 @@ export const AppNavigationContainer = () => {
 
   useEffect(() => {
     if (isNavReady) {
-      hideSplashScreen && hideSplashScreen()
+      hideSplashScreen?.()
     }
   }, [isNavReady, hideSplashScreen])
 

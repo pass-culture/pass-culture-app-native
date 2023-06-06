@@ -102,7 +102,7 @@ export const SearchResults: React.FC = () => {
     // debouncing scrollToOffset solves it.
     debounce(
       useCallback(() => {
-        if (searchListRef && searchListRef.current) {
+        if (searchListRef?.current) {
           searchListRef.current.scrollToOffset({ offset: 0, animated: true })
         }
       }, [searchListRef])

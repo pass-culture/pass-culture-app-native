@@ -39,8 +39,8 @@ const getPlaylistsHeight = (numberOfPlaylists: number) => {
 export const Offer: FunctionComponent = () => {
   const route = useRoute<UseRouteType<'Offer'>>()
   const trackEventHasSeenOfferOnce = useFunctionOnce(trackEventHasSeenOffer)
-  const offerId = route.params && route.params.id
-  const searchId = route.params && route.params.searchId
+  const offerId = route.params?.id
+  const searchId = route.params?.searchId
 
   const { data: offerResponse } = useOffer({ offerId })
 
@@ -155,7 +155,7 @@ export const Offer: FunctionComponent = () => {
   )
 
   const onPress = () => {
-    onPressCTA && onPressCTA()
+    onPressCTA?.()
     showOfferModal()
   }
 

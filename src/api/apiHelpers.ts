@@ -175,7 +175,7 @@ export const refreshAccessToken = async (
 
 const extractResponseBody = async (response: Response): Promise<string> => {
   const contentType = response.headers.get('content-type')
-  if (contentType && contentType.includes('application/json')) {
+  if (contentType?.includes('application/json')) {
     return await response.json()
   }
   return await response.text()
@@ -262,7 +262,7 @@ export function extractApiErrorMessage(error: unknown) {
   let message = 'Une erreur est survenue'
   if (isApiError(error)) {
     const { content } = error as { content: { code: string; message: string } }
-    if (content && content.code && content.message) {
+    if (content?.code && content.message) {
       message = content.message
     }
   }

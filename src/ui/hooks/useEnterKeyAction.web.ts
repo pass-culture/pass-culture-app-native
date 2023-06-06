@@ -6,7 +6,7 @@ export const useEnterKeyAction = (callback?: () => void) => {
     useCallback(() => {
       const handleEsc = (event: KeyboardEvent) => {
         if (event.key === 'Enter') {
-          return callback && callback()
+          return callback?.()
         }
       }
       globalThis.addEventListener('keydown', handleEsc)
