@@ -2,7 +2,6 @@ import React, { useCallback, useMemo, useRef, useState } from 'react'
 import { FlatList, FlatListProps, View } from 'react-native'
 import styled from 'styled-components/native'
 
-import { GeolocationBanner } from 'features/home/components/banners/GeolocationBanner'
 import {
   VenueListItem,
   VenueSelectionList,
@@ -15,10 +14,8 @@ import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { AppModal } from 'ui/components/modals/AppModal'
 import { ModalHeader } from 'ui/components/modals/ModalHeader'
 import { useModal } from 'ui/components/modals/useModal'
-import { Separator } from 'ui/components/Separator'
 import { Close } from 'ui/svg/icons/Close'
-import { Spacer, Typo, getSpacing } from 'ui/theme'
-import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
+import { Spacer, getSpacing } from 'ui/theme'
 import { useCustomSafeInsets } from 'ui/theme/useCustomSafeInsets'
 
 type VenueSelectionModalProps = Pick<
@@ -124,12 +121,6 @@ export function VenueSelectionModal({
     }
   }
 
-  const headerMessage = useMemo(
-    () =>
-      isSharingLocation ? 'Lieux disponibles autour de moi' : `Lieux à proximité de “${venueName}”`,
-    [isSharingLocation, venueName]
-  )
-
   return (
     <AppModal
       title={title}
@@ -150,24 +141,6 @@ export function VenueSelectionModal({
         </BottomWrapper>
       }
       scrollEnabled={false}>
-      <ListHeaderContainer>
-        <Separator />
-        <Spacer.Column numberOfSpaces={6} />
-        <Typo.Title3 {...getHeadingAttrs(2)}>Sélectionner un lieu</Typo.Title3>
-        <Spacer.Column numberOfSpaces={6} />
-        {!isSharingLocation && (
-          <React.Fragment>
-            <GeolocationBanner
-              title="Active ta géolocalisation"
-              subtitle="Pour trouver les lieux autour de toi"
-              onPress={onPressGeolocationBanner}
-            />
-            <Spacer.Column numberOfSpaces={6} />
-          </React.Fragment>
-        )}
-        <HeaderMessageText>{headerMessage}</HeaderMessageText>
-        <Spacer.Column numberOfSpaces={2} />
-      </ListHeaderContainer>
       <View>
         <AutoScrollSwitch
           title="Activer le chargement automatique des résultats"
@@ -190,6 +163,8 @@ export function VenueSelectionModal({
         nbHits={nbHits}
         isFetchingNextPage={isFetchingNextPage}
         isSharingLocation={isSharingLocation}
+        venueName={venueName}
+        onPressGeolocPermissionModalButton={onPressGeolocationBanner}
       />
       <GeolocationActivationModal
         isGeolocPermissionModalVisible={isGeolocPermissionModalVisible}
@@ -210,12 +185,3 @@ const ModalHeaderContainer = styled.View({
   width: '100%',
   paddingHorizontal: getSpacing(6),
 })
-
-const ListHeaderContainer = styled.View({
-  width: '100%',
-  paddingHorizontal: getSpacing(7),
-})
-
-const HeaderMessageText = styled(Typo.Caption)(({ theme }) => ({
-  color: theme.colors.greyDark,
-}))

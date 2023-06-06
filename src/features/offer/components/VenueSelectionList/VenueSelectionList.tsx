@@ -1,11 +1,13 @@
-import React, { forwardRef, useCallback } from 'react'
+import React, { forwardRef, useCallback, useMemo } from 'react'
 import { FlatList, FlatListProps, View, ViewProps } from 'react-native'
 import styled, { useTheme } from 'styled-components/native'
 
+import { GeolocationBanner } from 'features/home/components/banners/GeolocationBanner'
 import { VenueSelectionListItem } from 'features/offer/components/VenueSelectionListItem/VenueSelectionListItem'
 import { VenueDetail } from 'features/offer/types'
 import { SearchListFooter } from 'features/search/components/SearchListFooter/SearchListFooter.web'
-import { getSpacing } from 'ui/theme'
+import { Spacer, Typo, getSpacing } from 'ui/theme'
+import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 export type VenueListItem = VenueDetail & {
   offerId: number
@@ -22,6 +24,8 @@ export type VenueSelectionListProps = ViewProps &
     isFetchingNextPage: boolean
     onPress?: () => void
     isSharingLocation?: boolean
+    venueName?: string
+    onPressGeolocPermissionModalButton?: VoidFunction
   }
 
 const keyExtractor = (item: VenueListItem) => String(item.offerId)
@@ -42,6 +46,8 @@ export const VenueSelectionList = forwardRef<FlatList<VenueListItem>, VenueSelec
       onPress,
       autoScrollEnabled,
       isSharingLocation,
+      venueName,
+      onPressGeolocPermissionModalButton,
       ...props
     },
     ref
@@ -64,6 +70,39 @@ export const VenueSelectionList = forwardRef<FlatList<VenueListItem>, VenueSelec
       [onItemSelect, selectedItem, isSharingLocation]
     )
 
+    const headerMessage = useMemo(
+      () =>
+        isSharingLocation
+          ? 'Lieux disponibles autour de moi'
+          : `Lieux à proximité de “${venueName}”`,
+      [isSharingLocation, venueName]
+    )
+
+    const listHeader = useMemo(
+      () => (
+        <React.Fragment>
+          <ListHeaderContainer>
+            <Spacer.Column numberOfSpaces={6} />
+            <Typo.Title3 {...getHeadingAttrs(2)}>Sélectionner un lieu</Typo.Title3>
+            <Spacer.Column numberOfSpaces={6} />
+            {!isSharingLocation && (
+              <React.Fragment>
+                <GeolocationBanner
+                  title="Active ta géolocalisation"
+                  subtitle="Pour trouver les lieux autour de toi"
+                  onPress={onPressGeolocPermissionModalButton}
+                />
+                <Spacer.Column numberOfSpaces={6} />
+              </React.Fragment>
+            )}
+            <HeaderMessageText>{headerMessage}</HeaderMessageText>
+            <Spacer.Column numberOfSpaces={2} />
+          </ListHeaderContainer>
+        </React.Fragment>
+      ),
+      [headerMessage, isSharingLocation, onPressGeolocPermissionModalButton]
+    )
+
     return (
       <FlatList
         listAs="ul"
@@ -81,6 +120,7 @@ export const VenueSelectionList = forwardRef<FlatList<VenueListItem>, VenueSelec
         keyboardShouldPersistTaps="handled"
         keyboardDismissMode="on-drag"
         contentContainerStyle={{ paddingHorizontal: modal.spacing.MD }}
+        ListHeaderComponent={listHeader}
         ListFooterComponent={
           <SearchListFooter
             isFetchingNextPage={isFetchingNextPage}
@@ -108,3 +148,11 @@ const ItemWrapper = styled(View)({
   paddingHorizontal: getSpacing(1),
   paddingTop: getSpacing(2),
 })
+
+const ListHeaderContainer = styled.View({
+  width: '100%',
+})
+
+const HeaderMessageText = styled(Typo.Caption)(({ theme }) => ({
+  color: theme.colors.greyDark,
+}))
