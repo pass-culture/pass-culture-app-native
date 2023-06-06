@@ -7,6 +7,8 @@ import * as useEmailUpdateStatus from 'features/profile/helpers/useEmailUpdateSt
 import { SuspendAccountConfirmation } from 'features/profile/pages/SuspendAccountConfirmation/SuspendAccountConfirmation'
 import { fireEvent, render, screen } from 'tests/utils'
 
+type UseEmailUpdateStatusMock = ReturnType<typeof useEmailUpdateStatus['useEmailUpdateStatus']>
+
 const useEmailUpdateStatusSpy = jest
   .spyOn(useEmailUpdateStatus, 'useEmailUpdateStatus')
   .mockReturnValue({
@@ -16,7 +18,7 @@ const useEmailUpdateStatusSpy = jest
       status: EmailHistoryEventTypeEnum.CANCELLATION,
     },
     isLoading: false,
-  })
+  } as UseEmailUpdateStatusMock)
 
 jest.mock('features/navigation/navigationRef')
 
@@ -26,7 +28,7 @@ describe('<SuspendAccountConfirmation />', () => {
       useEmailUpdateStatusSpy.mockReturnValueOnce({
         data: undefined,
         isLoading: false,
-      })
+      } as UseEmailUpdateStatusMock)
       render(<SuspendAccountConfirmation />)
       expect(navigateFromRef).toHaveBeenCalledWith(
         navigateToHomeConfig.screen,
@@ -42,7 +44,7 @@ describe('<SuspendAccountConfirmation />', () => {
           status: EmailHistoryEventTypeEnum.UPDATE_REQUEST,
         },
         isLoading: false,
-      })
+      } as UseEmailUpdateStatusMock)
       render(<SuspendAccountConfirmation />)
       expect(navigateFromRef).toHaveBeenCalledWith(
         navigateToHomeConfig.screen,
@@ -58,7 +60,7 @@ describe('<SuspendAccountConfirmation />', () => {
           status: EmailHistoryEventTypeEnum.UPDATE_REQUEST,
         },
         isLoading: false,
-      })
+      } as UseEmailUpdateStatusMock)
       render(<SuspendAccountConfirmation />)
 
       fireEvent.press(screen.getByText('Ne pas suspendre mon compte'))
@@ -78,7 +80,7 @@ describe('<SuspendAccountConfirmation />', () => {
         status: EmailHistoryEventTypeEnum.UPDATE_REQUEST,
       },
       isLoading: false,
-    })
+    } as UseEmailUpdateStatusMock)
     render(<SuspendAccountConfirmation />)
     expect(screen.getByText('Souhaites-tu suspendre ton compte pass Culture ?')).toBeTruthy()
     expect(screen.getByText('Oui, suspendre mon compte')).toBeTruthy()

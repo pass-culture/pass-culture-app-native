@@ -117,12 +117,29 @@ describe('getEmailUpdateStatus', () => {
     503, // Service Unavailable
     504, // Gateway Timeout
   ])(
-    'should capture a Sentry exception when error code is %s and return undefine',
+    'should capture a Sentry exception when error code is %s and return undefined',
     async (statusCode) => {
       simulateEmailUpdateStatusError(statusCode)
       const emailUpdateStatus = await getEmailUpdateStatus()
 
       expect(eventMonitoring.captureException).not.toHaveBeenCalled()
+      expect(emailUpdateStatus).toEqual(undefined)
+    }
+  )
+
+  it.each([
+    401, // Unauthorized
+    500, // Internal Server Error
+    502, // Bad Gateway
+    503, // Service Unavailable
+    504, // Gateway Timeout
+  ])(
+    'should capture a Sentry info when error code is %s and return undefined',
+    async (statusCode) => {
+      simulateEmailUpdateStatusError(statusCode)
+      const emailUpdateStatus = await getEmailUpdateStatus()
+
+      expect(eventMonitoring.captureMessage).toHaveBeenCalledTimes(1)
       expect(emailUpdateStatus).toEqual(undefined)
     }
   )

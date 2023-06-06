@@ -5,6 +5,8 @@ import * as useEmailUpdateStatus from 'features/profile/helpers/useEmailUpdateSt
 import { SuspendAccountConfirmation } from 'features/profile/pages/SuspendAccountConfirmation/SuspendAccountConfirmation'
 import { checkAccessibilityFor, render } from 'tests/utils/web'
 
+type UseEmailUpdateStatusMock = ReturnType<typeof useEmailUpdateStatus['useEmailUpdateStatus']>
+
 jest.spyOn(useEmailUpdateStatus, 'useEmailUpdateStatus').mockReturnValue({
   data: {
     expired: false,
@@ -12,7 +14,7 @@ jest.spyOn(useEmailUpdateStatus, 'useEmailUpdateStatus').mockReturnValue({
     status: EmailHistoryEventTypeEnum.UPDATE_REQUEST,
   },
   isLoading: false,
-})
+} as UseEmailUpdateStatusMock)
 
 describe('<SuspendAccountConfirmation />', () => {
   describe('Accessibility', () => {

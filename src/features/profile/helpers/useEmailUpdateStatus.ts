@@ -15,6 +15,9 @@ export async function getEmailUpdateStatus() {
     if (error?.statusCode !== 404 && !isAPIExceptionCapturedAsInfo(error?.statusCode)) {
       eventMonitoring.captureException(error)
     }
+    if (isAPIExceptionCapturedAsInfo(error?.statusCode)) {
+      eventMonitoring.captureMessage(error?.message)
+    }
     return
   }
 }
@@ -23,11 +26,7 @@ export const useEmailUpdateStatus = () => {
   const netInfo = useNetInfoContext()
   const { isLoggedIn } = useAuthContext()
 
-  const { data, isLoading } = useQuery(
-    [QueryKeys.EMAIL_UPDATE_STATUS],
-    () => getEmailUpdateStatus(),
-    { enabled: !!netInfo.isConnected && isLoggedIn }
-  )
-
-  return { data, isLoading }
+  return useQuery([QueryKeys.EMAIL_UPDATE_STATUS], () => getEmailUpdateStatus(), {
+    enabled: !!netInfo.isConnected && isLoggedIn,
+  })
 }
