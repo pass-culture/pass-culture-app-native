@@ -4,7 +4,7 @@ import LN from 'react-native-launch-navigator'
 import { AppEnum } from 'react-native-launch-navigator/enum'
 
 import { snakeCaseToUppercaseFirstLetter } from 'libs/parsers/snakeCaseToUppercaseFirstLetter'
-import { useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
+import { SNACK_BAR_TIME_OUT_LONG, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 
 import { openGoogleMapsItinerary } from './openGoogleMapsItinerary'
 import { UseItineraryResult } from './types'
@@ -40,7 +40,7 @@ export const useItinerary = (): UseItineraryResult => {
           showInfoSnackBar({
             message:
               'Une erreur s’est produite, veuillez passer par une autre application de géolocalisation pour trouver l’itinéraire vers ce lieu.',
-            timeout: 10000,
+            timeout: SNACK_BAR_TIME_OUT_LONG,
           })
           return
       }

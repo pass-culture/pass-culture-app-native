@@ -4,6 +4,7 @@ import { getAvailableApps, navigate } from '__mocks__/react-native-launch-naviga
 import { openGoogleMapsItinerary } from 'libs/itinerary/openGoogleMapsItinerary'
 import { useItinerary } from 'libs/itinerary/useItinerary'
 import { renderHook, waitFor, flushAllPromises } from 'tests/utils'
+import { SNACK_BAR_TIME_OUT_LONG } from 'ui/components/snackBar/SnackBarContext'
 import { SnackBarHelperSettings } from 'ui/components/snackBar/types'
 
 const alertMock = jest.spyOn(Alert, 'alert')
@@ -159,7 +160,7 @@ describe('useItinerary', () => {
     expect(mockShowInfoSnackBar).toHaveBeenCalledWith({
       message:
         'Une erreur s’est produite, veuillez passer par une autre application de géolocalisation pour trouver l’itinéraire vers ce lieu.',
-      timeout: 10000,
+      timeout: SNACK_BAR_TIME_OUT_LONG,
     })
   })
 })
