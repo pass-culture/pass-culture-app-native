@@ -49,7 +49,7 @@ export const VenueOffers: React.FC<Props> = ({ venueId, layout = 'two-items' }) 
                   ? params.locationFilter.venue
                   : {}),
                 label: venue.name,
-                info: venue.city || '',
+                info: venue.city ?? '',
                 venueId: venue.id,
               },
             },
@@ -63,7 +63,7 @@ export const VenueOffers: React.FC<Props> = ({ venueId, layout = 'two-items' }) 
     params: searchTabNavConfig[1],
     withPush: true,
   }
-  const { hits = [], nbHits = 0 } = venueOffers || {}
+  const { hits = [], nbHits = 0 } = venueOffers ?? {}
 
   const mapping = useCategoryIdMapping()
   const labelMapping = useCategoryHomeLabelMapping()

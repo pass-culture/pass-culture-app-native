@@ -19,7 +19,7 @@ export const useAppliedFilters = (searchState: Partial<SearchState>) => {
   const hasPrice =
     (minPriceAsNumber !== undefined && minPriceAsNumber > 0) || maxPriceAsNumber !== undefined
   const hasDuoOffer = offerIsDuo
-  const hasDatesHours = Boolean(date || timeRange)
+  const hasDatesHours = Boolean(date ?? timeRange)
 
   if (hasCategory) {
     filterTypes = [...filterTypes, FILTER_TYPES.CATEGORIES]

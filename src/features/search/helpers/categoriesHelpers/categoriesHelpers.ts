@@ -168,7 +168,7 @@ export function isOnlyOnline(
 export function searchGroupOrNativeCategorySortComparator<
   T extends SearchGroupResponseModelv2 | NativeCategoryResponseModelv2
 >(a: T, b: T) {
-  return (a?.value || '').localeCompare(b?.value || '')
+  return (a?.value ?? '').localeCompare(b?.value ?? '')
 }
 
 /**
@@ -349,8 +349,8 @@ export function getDefaultFormValues(
 
   return {
     category: searchState.offerCategories[0] || SearchGroupNameEnumv2.NONE,
-    nativeCategory: searchState.offerNativeCategories?.[0] || null,
-    genreType: searchState.offerGenreTypes?.[0]?.name || null,
+    nativeCategory: searchState.offerNativeCategories?.[0] ?? null,
+    genreType: searchState.offerGenreTypes?.[0]?.name ?? null,
     currentView: getDefaultFormView(tree, searchState),
   }
 }

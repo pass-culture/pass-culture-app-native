@@ -63,7 +63,7 @@ export const VenueBody: FunctionComponent<Props> = ({ venueId, onScroll }) => {
   } = venue
   const venueType = venueTypeCode as VenueTypeCode
 
-  const venueAddress = formatFullAddress(address || publicName, postalCode, city)
+  const venueAddress = formatFullAddress(address ?? publicName, postalCode, city)
   const typeLabel = parseType(venueType)
 
   const shouldShowVenueOffers = !!offers && offers?.hits.length > 0
@@ -81,7 +81,7 @@ export const VenueBody: FunctionComponent<Props> = ({ venueId, onScroll }) => {
       ref={scrollViewRef as any}
       bounces={false}
       onScroll={onScroll}>
-      <Hero imageUrl={bannerUrl || undefined} type="venue" venueType={venueType || null} />
+      <Hero imageUrl={bannerUrl ?? undefined} type="venue" venueType={venueType ?? null} />
       <Spacer.Column numberOfSpaces={4} />
       <MarginContainer>
         <VenueAddressContainer>
@@ -92,25 +92,25 @@ export const VenueBody: FunctionComponent<Props> = ({ venueId, onScroll }) => {
         </VenueAddressContainer>
         <Spacer.Column numberOfSpaces={2} />
         <VenueTitle
-          accessibilityLabel={`Nom du lieu\u00a0: ${publicName || name}`}
+          accessibilityLabel={`Nom du lieu\u00a0: ${publicName ?? name}`}
           testID="venueTitle"
           numberOfLines={2}
           adjustsFontSizeToFit
           allowFontScaling={false}>
-          {publicName || name}
+          {publicName ?? name}
         </VenueTitle>
         <Spacer.Column numberOfSpaces={4} />
       </MarginContainer>
 
       <VenueIconCaptions
-        type={venueType || null}
+        type={venueType ?? null}
         label={typeLabel}
         locationCoordinates={{ latitude, longitude }}
       />
 
       {/* Description */}
       <VenuePartialAccordionDescription
-        description={description || undefined}
+        description={description ?? undefined}
         credit={bannerMeta?.image_credit}
       />
 

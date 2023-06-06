@@ -28,11 +28,11 @@ export const adaptOffersPlaylistParameters = (
   })
 
   // We receive category labels from contentful. We first have to map to facetFilters used for search
-  const offerCategories = (parameters.categories || [])
+  const offerCategories = (parameters.categories ?? [])
     .map(getCategoriesFacetFilters)
     .sort(sortCategories)
 
-  const offerSubcategories = (parameters.subcategories || []).map(
+  const offerSubcategories = (parameters.subcategories ?? []).map(
     (subcategoryLabel) => subcategoryLabelMapping[subcategoryLabel]
   )
 
@@ -49,19 +49,19 @@ export const adaptOffersPlaylistParameters = (
   return {
     beginningDatetime,
     endingDatetime,
-    hitsPerPage: parameters.hitsPerPage || null,
+    hitsPerPage: parameters.hitsPerPage ?? null,
     locationFilter,
     offerCategories,
     offerSubcategories,
-    offerIsDuo: parameters.isDuo || false,
-    offerIsNew: parameters.newestOnly || false,
+    offerIsDuo: parameters.isDuo ?? false,
+    offerIsNew: parameters.newestOnly ?? false,
     offerTypes: {
-      isDigital: parameters.isDigital || false,
-      isEvent: parameters.isEvent || false,
-      isThing: parameters.isThing || false,
+      isDigital: parameters.isDigital ?? false,
+      isEvent: parameters.isEvent ?? false,
+      isThing: parameters.isThing ?? false,
     },
     priceRange: _buildPriceRange({ priceMin, priceMax }),
-    tags: parameters.tags || [],
+    tags: parameters.tags ?? [],
     date: null,
     timeRange: null,
     query: '',
