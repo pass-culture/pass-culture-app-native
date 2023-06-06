@@ -30,7 +30,7 @@ export function LayoutExpiredLink({
       title="Oups&nbsp;!"
       icon={SadFace}
       buttons={[
-        renderResendEmailButton && renderResendEmailButton(),
+        renderResendEmailButton?.(),
         <InternalTouchableLink
           key={1}
           as={ButtonTertiaryWhite}

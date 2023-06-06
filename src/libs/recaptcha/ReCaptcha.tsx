@@ -49,7 +49,7 @@ export const ReCaptcha: React.FC<Props> = (props) => {
   }
 
   function handleLoad() {
-    props.onLoad && props.onLoad()
+    props.onLoad?.()
     setIsLoading(false)
   }
 

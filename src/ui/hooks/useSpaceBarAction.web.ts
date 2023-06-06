@@ -7,7 +7,7 @@ export const useSpaceBarAction = (callback?: () => void) => {
       const handleEsc = (event: KeyboardEvent) => {
         if (event.key === 'Spacebar' || event.key === ' ') {
           event.preventDefault() // Chrome - Block scrolling on space bar press
-          return callback && callback()
+          return callback?.()
         }
       }
       globalThis.addEventListener('keydown', handleEsc)

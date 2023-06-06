@@ -101,22 +101,21 @@ export const SetStatus = () => {
               name="selectedStatus"
               render={({ field: { value, onChange } }) => (
                 <VerticalUl>
-                  {filteredActivities &&
-                    filteredActivities.map((activity) => (
-                      <Li key={activity.label}>
-                        <RadioSelector
-                          type={
-                            activity.id === value
-                              ? RadioSelectorType.ACTIVE
-                              : RadioSelectorType.DEFAULT
-                          }
-                          label={activity.label}
-                          description={activity.description}
-                          onPress={() => onChange(activity.id)}
-                        />
-                        <Spacer.Column numberOfSpaces={3} />
-                      </Li>
-                    ))}
+                  {filteredActivities?.map((activity) => (
+                    <Li key={activity.label}>
+                      <RadioSelector
+                        type={
+                          activity.id === value
+                            ? RadioSelectorType.ACTIVE
+                            : RadioSelectorType.DEFAULT
+                        }
+                        label={activity.label}
+                        description={activity.description}
+                        onPress={() => onChange(activity.id)}
+                      />
+                      <Spacer.Column numberOfSpaces={3} />
+                    </Li>
+                  ))}
                 </VerticalUl>
               )}
             />

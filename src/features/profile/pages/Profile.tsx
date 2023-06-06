@@ -86,7 +86,7 @@ const OnlineProfile: React.FC = () => {
   )
 
   function scrollToTop() {
-    if (scrollViewRef && scrollViewRef.current) {
+    if (scrollViewRef?.current) {
       scrollViewRef.current.scrollTo({ x: 0, y: 0, animated: true })
     }
   }

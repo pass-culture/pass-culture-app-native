@@ -101,7 +101,7 @@ export const BookingOfferModalComponent: React.FC<BookingOfferModalComponentProp
       if (isApiError(error)) {
         const { content } = error as { content: { code: string } }
 
-        if (content && content.code && content.code in errorCodeToMessage) {
+        if (content?.code in errorCodeToMessage) {
           message = errorCodeToMessage[content.code]
 
           if (typeof offerId === 'number') {

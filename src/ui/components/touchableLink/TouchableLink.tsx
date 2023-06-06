@@ -55,7 +55,7 @@ export function TouchableLink({
   const onLinkFocus = useCallback(
     (e: NativeSyntheticEvent<TargetedEvent>) => {
       onFocusDefault()
-      onFocus && onFocus(e)
+      onFocus?.(e)
     },
     [onFocus, onFocusDefault]
   )
@@ -63,7 +63,7 @@ export function TouchableLink({
   const onLinkBlur = useCallback(
     (e: NativeSyntheticEvent<TargetedEvent>) => {
       onBlurDefault()
-      onBlur && onBlur(e)
+      onBlur?.(e)
     },
     [onBlur, onBlurDefault]
   )

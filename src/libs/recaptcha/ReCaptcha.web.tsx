@@ -28,7 +28,7 @@ export function ReCaptcha(props: Props) {
 
   function onSuccess(token: string) {
     const { grecaptcha } = window
-    if (grecaptcha && grecaptcha.reset) {
+    if (grecaptcha?.reset) {
       grecaptcha.reset()
     }
     props.onSuccess(token)
@@ -53,7 +53,7 @@ export function ReCaptcha(props: Props) {
 
       const { grecaptcha } = window
       const reCaptchaContainer = reCaptchaContainerRef.current
-      const isReCaptchaRendered = reCaptchaContainer && reCaptchaContainer.hasChildNodes()
+      const isReCaptchaRendered = reCaptchaContainer?.hasChildNodes()
       if (
         reCaptchaContainer &&
         grecaptcha &&

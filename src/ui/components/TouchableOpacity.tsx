@@ -24,11 +24,11 @@ export function TouchableOpacity({
 
   const onStyledFocus = (e: NativeSyntheticEvent<TargetedEvent>) => {
     onFocusDefault()
-    onFocus && onFocus(e)
+    onFocus?.(e)
   }
   const onStyledBlur = (e: NativeSyntheticEvent<TargetedEvent>) => {
     onBlurDefault()
-    onBlur && onBlur(e)
+    onBlur?.(e)
   }
 
   return (
