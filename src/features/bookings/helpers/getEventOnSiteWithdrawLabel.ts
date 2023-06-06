@@ -45,7 +45,7 @@ function initGetEventOnSiteWithdrawLabelProperties(
   return {
     now: new Date(),
     eventDate,
-    withdrawalDelay: stock.offer.withdrawalDelay || 0,
+    withdrawalDelay: stock.offer.withdrawalDelay ?? 0,
     eventDateMinus3Days: addDays(eventDate, -3),
     eventDateMinus2Days: addDays(eventDate, -2),
     eventDateMinus1Day: addDays(eventDate, -1),

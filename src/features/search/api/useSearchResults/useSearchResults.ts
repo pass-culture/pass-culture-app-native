@@ -56,7 +56,7 @@ export const useSearchInfiniteQuery = (searchState: SearchState) => {
     [data?.pages]
   )
 
-  const { nbHits, userData } = data?.pages[0] || { nbHits: 0, userData: [] }
+  const { nbHits, userData } = data?.pages[0] ?? { nbHits: 0, userData: [] }
 
   return { data, hits, nbHits, userData, ...infiniteQuery }
 }

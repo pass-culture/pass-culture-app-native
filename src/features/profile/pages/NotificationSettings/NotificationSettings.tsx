@@ -201,7 +201,7 @@ export function NotificationSettings() {
 const getInitialSwitchesState = (
   subscriptions?: NotificationSubscriptions
 ): Omit<State, 'pushPermission'> => {
-  const { marketingEmail, marketingPush } = subscriptions || {}
+  const { marketingEmail, marketingPush } = subscriptions ?? {}
 
   return {
     allowEmails: Boolean(marketingEmail),

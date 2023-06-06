@@ -20,7 +20,7 @@ export const OfferIconCaptions: React.FC<Props> = ({ isDuo, stocks, categoryId, 
   const { isLoggedIn, user: profileInfo } = useAuthContext()
   if (isLoggedIn && !profileInfo) return <React.Fragment></React.Fragment>
 
-  const { isBeneficiary = false } = profileInfo || {}
+  const { isBeneficiary = false } = profileInfo ?? {}
   const showDuo = isDuo && isBeneficiary
 
   const prices = getOfferPrices(stocks)

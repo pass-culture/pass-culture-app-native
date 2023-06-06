@@ -20,7 +20,7 @@ type Props = {
 }
 const CallToAction = ({ subscriptionMessage }: Props) => {
   const { callToActionTitle, callToActionLink, callToActionIcon } =
-    subscriptionMessage.callToAction || {}
+    subscriptionMessage.callToAction ?? {}
 
   if (!callToActionTitle || !callToActionLink) return null
 

@@ -63,7 +63,7 @@ export const DeeplinksHistory = ({
           setKeepHistory(true)
           if (rehydrateHistory) {
             const localStr = await AsyncStorage.getItem('mac_history')
-            rehydrateHistory(JSON.parse(localStr || '[]'))
+            rehydrateHistory(JSON.parse(localStr ?? '[]'))
           }
         } else {
           setKeepHistory(false)

@@ -33,7 +33,7 @@ export function ProfileHeader(props: ProfileHeaderProps) {
       firstName={user.firstName}
       lastName={user.lastName}
       domainsCredit={user.domainsCredit}
-      depositExpirationDate={user.depositExpirationDate || undefined}
+      depositExpirationDate={user.depositExpirationDate ?? undefined}
     />
   )
 }

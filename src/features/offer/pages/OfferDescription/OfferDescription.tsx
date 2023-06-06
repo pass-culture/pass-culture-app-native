@@ -71,7 +71,7 @@ export const getContentFromOffer = (
   description: string | null,
   photoCredit?: string | null
 ): Item[] => {
-  const hits: Item[] = Object.entries(extraData || {})
+  const hits: Item[] = Object.entries(extraData ?? {})
     .map(([key, value]) => {
       const shouldDisplayExtraData =
         key &&
@@ -110,7 +110,7 @@ const renderExtraData = ({ item }: { item: Item }) => {
 export const OfferDescription = () => {
   const { params } = useRoute<UseRouteType<'OfferDescription'>>()
   const { data: offerResponse } = useOffer({ offerId: params.id })
-  const { description = '', extraData = {}, image, name = '' } = offerResponse || {}
+  const { description = '', extraData = {}, image, name = '' } = offerResponse ?? {}
   const photoCredit = image?.credit
 
   const helmetTitle = `Détails de l’offre ${name} | pass Culture`

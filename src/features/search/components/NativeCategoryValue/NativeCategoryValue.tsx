@@ -12,7 +12,7 @@ interface NativeCategoryValueProps {
 
 export const NativeCategoryValue = ({ nativeCategoryId }: NativeCategoryValueProps) => {
   const { data } = useSubcategories()
-  const { value } = getNativeCategoryFromEnum(data, nativeCategoryId) || {}
+  const { value } = getNativeCategoryFromEnum(data, nativeCategoryId) ?? {}
 
   return value ? (
     <Body ellipsizeMode="tail" numberOfLines={1} testID="native-category-value">

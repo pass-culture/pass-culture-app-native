@@ -272,7 +272,7 @@ export const OfferBody: FunctionComponent<Props> = ({
         categoryId={categoryId || null}
         label={appLabel}
       />
-      <OfferPartialDescription description={offer.description || ''} id={offerId} />
+      <OfferPartialDescription description={offer.description ?? ''} id={offerId} />
       <Spacer.Column numberOfSpaces={4} />
 
       <SectionWithDivider visible={shouldDisplayWhenBlock} margin>

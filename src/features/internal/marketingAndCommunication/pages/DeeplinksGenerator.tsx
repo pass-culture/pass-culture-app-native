@@ -27,7 +27,7 @@ export const DeeplinksGenerator = () => {
         setResult(generatedDeeplink)
         if (keepHistory) {
           try {
-            const localHistory = JSON.parse((await AsyncStorage.getItem('mac_history')) || '[]')
+            const localHistory = JSON.parse((await AsyncStorage.getItem('mac_history')) ?? '[]')
             await AsyncStorage.setItem(
               'mac_history',
               JSON.stringify([...localHistory, generatedDeeplink])

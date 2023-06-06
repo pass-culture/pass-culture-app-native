@@ -62,11 +62,11 @@ export const BookingDetailsTicketContent: FunctionComponent<BookingDetailsTicket
     accessExternalOfferButton
   ) : (
     <TicketBody
-      withdrawalType={withdrawalType || undefined}
-      withdrawalDelay={withdrawalDelay || 0}
-      beginningDatetime={beginningDatetime || undefined}
+      withdrawalType={withdrawalType ?? undefined}
+      withdrawalDelay={withdrawalDelay ?? 0}
+      beginningDatetime={beginningDatetime ?? undefined}
       subcategoryId={offerSubcategory}
-      qrCodeData={booking.qrCodeData || undefined}
+      qrCodeData={booking.qrCodeData ?? undefined}
       externalBookings={externalBookings}
     />
   )

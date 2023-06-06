@@ -208,7 +208,7 @@ export const useCtaWordingAndAction = (props: {
    */
   if (isLoggedIn === null || user === null || !offer.venue.id) return
 
-  const { isBeneficiary = false, bookedOffers = {}, status } = user || {}
+  const { isBeneficiary = false, bookedOffers = {}, status } = user ?? {}
   const userStatus = status?.statusType ? status : { statusType: YoungStatusType.non_eligible }
   return getCtaWordingAndAction({
     isLoggedIn,
