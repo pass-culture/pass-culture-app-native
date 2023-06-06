@@ -42,8 +42,8 @@ export const SuspensionChoice = () => {
             />
           </Typo.Body>
         </BulletListItem>
-        <BulletListItem text="si tu as un dossier en cours, tu ne pourras pas en déposer un nouveau" />
-        <BulletListItem text="tu n’auras plus accès au catalogue" />
+        <BulletListItem text="si tu as un dossier en cours, tu ne pourras pas en déposer un nouveau." />
+        <BulletListItem text="tu n’auras plus accès au catalogue." />
       </VerticalUl>
       <Spacer.Column numberOfSpaces={4} />
       <Typo.ButtonText>Les données qu’on conserve&nbsp;:</Typo.ButtonText>

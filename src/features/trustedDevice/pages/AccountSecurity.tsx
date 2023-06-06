@@ -43,7 +43,7 @@ export const AccountSecurity = () => {
         navigateTo={{ screen: 'SuspensionChoice' }}
         as={ButtonSecondary}
       />
-      <Spacer.Column numberOfSpaces={5} />
+      <Spacer.Column numberOfSpaces={2} />
       <ButtonTertiaryBlack
         wording="Ne pas sécuriser mon compte"
         icon={Invalidate}
