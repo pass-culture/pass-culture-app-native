@@ -6,9 +6,11 @@ import reactNativeInAppReview from '__mocks__/react-native-in-app-review'
 import { useReviewInAppInformation } from 'features/bookOffer/helpers/useReviewInAppInformation'
 import { analytics } from 'libs/analytics'
 import { BatchUser } from 'libs/react-native-batch'
-import { act, fireEvent, render, waitFor } from 'tests/utils'
+import { act, fireEvent, render, waitFor, screen } from 'tests/utils'
 
 import { BookingConfirmation } from './BookingConfirmation'
+
+jest.mock('react-native/Libraries/Animated/animations/TimingAnimation.js')
 
 jest.mock('react-query')
 jest.mock('features/offer/api/useOffer')
@@ -88,14 +90,14 @@ describe('<BookingConfirmation />', () => {
 
   describe('buttons', () => {
     it('should call display share when press share button', async () => {
-      const { getByText } = render(<BookingConfirmation />)
+      render(<BookingConfirmation />)
 
       await act(async () => {
-        const shareButton = getByText('Partager l’offre')
+        const shareButton = await screen.findByText('Partager l’offre')
         fireEvent.press(shareButton)
       })
 
-      expect(share).toBeCalledTimes(1)
+      expect(share).toHaveBeenCalledTimes(1)
     })
 
     it('should log analytics when press share button', async () => {

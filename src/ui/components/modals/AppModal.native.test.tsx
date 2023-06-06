@@ -38,7 +38,7 @@ describe('<AppModal />', () => {
     render(<AppModal {...defaultProps} title="" />)
     const modal = screen.getByTestId('modalHeaderTitle')
 
-    expect(modal.children).toEqual([''])
+    expect(modal.children).toEqual([])
   })
 
   describe('with long title', () => {

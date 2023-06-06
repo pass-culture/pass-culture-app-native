@@ -86,8 +86,10 @@ describe('<Checkbox />', () => {
         const onPressMock = jest.fn()
         render(<Checkbox label={'I agree to disagree'} isChecked={false} onPress={onPressMock} />)
 
-        await userEvent.tab()
-        await userEvent.keyboard('[Space]')
+        await act(async () => {
+          await userEvent.tab()
+          await userEvent.keyboard('[Space]')
+        })
 
         expect(onPressMock).toHaveBeenCalledWith(true)
       })
@@ -96,8 +98,10 @@ describe('<Checkbox />', () => {
         const onPressMock = jest.fn()
         render(<Checkbox label={'I agree to disagree'} isChecked onPress={onPressMock} />)
 
-        await userEvent.tab()
-        await userEvent.keyboard('[Space]')
+        await act(async () => {
+          await userEvent.tab()
+          await userEvent.keyboard('[Space]')
+        })
 
         expect(onPressMock).toHaveBeenCalledWith(false)
       })
