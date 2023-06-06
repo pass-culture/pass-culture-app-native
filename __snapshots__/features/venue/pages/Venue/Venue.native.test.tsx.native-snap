@@ -13,328 +13,6 @@ exports[`<Venue /> should match snapshot 1`] = `
     ]
   }
 >
-  <View
-    collapsable={false}
-    safeAreaTop={16}
-    style={
-      Object {
-        "backgroundColor": "rgba(255, 255, 255, 0)",
-        "height": 80,
-        "position": "absolute",
-        "top": 0,
-        "width": "100%",
-        "zIndex": 1,
-      }
-    }
-  >
-    <View
-      customHeight={16}
-      enable={true}
-      style={
-        Array [
-          Object {
-            "height": 16,
-          },
-        ]
-      }
-    />
-    <View
-      numberOfSpaces={2}
-      style={
-        Array [
-          Object {
-            "height": 8,
-          },
-        ]
-      }
-    />
-    <View
-      style={
-        Array [
-          Object {
-            "alignItems": "center",
-            "flexBasis": 0,
-            "flexDirection": "row",
-            "flexGrow": 1,
-            "flexShrink": 1,
-          },
-        ]
-      }
-    >
-      <View
-        numberOfSpaces={6}
-        style={
-          Array [
-            Object {
-              "width": 24,
-            },
-          ]
-        }
-      />
-      <View
-        accessibilityLabel="Revenir en arrière"
-        accessibilityRole="button"
-        accessible={true}
-        collapsable={false}
-        focusable={true}
-        onClick={[Function]}
-        onResponderGrant={[Function]}
-        onResponderMove={[Function]}
-        onResponderRelease={[Function]}
-        onResponderTerminate={[Function]}
-        onResponderTerminationRequest={[Function]}
-        onStartShouldSetResponder={[Function]}
-        style={
-          Object {
-            "borderRadius": 40,
-            "opacity": 1,
-            "userSelect": "auto",
-          }
-        }
-        testID="Revenir en arrière"
-      >
-        <View
-          collapsable={false}
-          style={
-            Object {
-              "alignItems": "center",
-              "aspectRatio": 1,
-              "backgroundColor": "rgba(255, 255, 255, 1)",
-              "borderColor": "rgba(241, 241, 244, 1)",
-              "borderRadius": 40,
-              "borderStyle": "solid",
-              "borderWidth": 1,
-              "height": 40,
-              "justifyContent": "center",
-              "overflow": "hidden",
-              "transform": undefined,
-              "width": 40,
-            }
-          }
-          testID="AnimatedHeaderIconRoundContainer"
-        >
-          <View
-            size={24}
-            style={
-              Array [
-                Object {
-                  "height": 24,
-                  "width": 24,
-                },
-              ]
-            }
-          >
-            <View
-              collapsable={false}
-              style={
-                Object {
-                  "opacity": 1,
-                  "position": "absolute",
-                }
-              }
-              testID="initial-icon-container"
-            >
-              <View
-                height={24}
-                testID="animated-icon-back"
-                width={24}
-              >
-                <Text>
-                  animated-icon-back-SVG-Mock
-                </Text>
-              </View>
-            </View>
-            <View
-              collapsable={false}
-              style={
-                Object {
-                  "opacity": 0,
-                  "position": "absolute",
-                }
-              }
-              testID="final-icon-container"
-            >
-              <View
-                height={24}
-                testID="final-animated-icon-back"
-                width={24}
-              >
-                <Text>
-                  final-animated-icon-back-SVG-Mock
-                </Text>
-              </View>
-            </View>
-          </View>
-        </View>
-      </View>
-      <View
-        style={
-          Array [
-            Object {
-              "flexBasis": 0,
-              "flexGrow": 1,
-              "flexShrink": 1,
-            },
-          ]
-        }
-      />
-      <Text
-        accessibilityHidden={true}
-        collapsable={false}
-        numberOfLines={1}
-        style={
-          Object {
-            "flexShrink": 1,
-            "opacity": 0,
-            "textAlign": "center",
-          }
-        }
-        testID="venueHeaderName"
-      >
-        <Text
-          style={
-            Array [
-              Object {
-                "color": "#ffffff",
-                "fontFamily": "Montserrat-Regular",
-                "fontSize": 15,
-                "lineHeight": 20,
-              },
-            ]
-          }
-        >
-          Le Petit Rintintin 1
-        </Text>
-      </Text>
-      <View
-        style={
-          Array [
-            Object {
-              "flexBasis": 0,
-              "flexGrow": 1,
-              "flexShrink": 1,
-            },
-          ]
-        }
-      />
-      <View
-        accessibilityLabel="Partager"
-        accessibilityRole="button"
-        accessible={true}
-        collapsable={false}
-        focusable={true}
-        onClick={[Function]}
-        onResponderGrant={[Function]}
-        onResponderMove={[Function]}
-        onResponderRelease={[Function]}
-        onResponderTerminate={[Function]}
-        onResponderTerminationRequest={[Function]}
-        onStartShouldSetResponder={[Function]}
-        style={
-          Object {
-            "borderRadius": 40,
-            "opacity": 1,
-            "userSelect": "auto",
-          }
-        }
-        testID="Partager"
-      >
-        <View
-          collapsable={false}
-          style={
-            Object {
-              "alignItems": "center",
-              "aspectRatio": 1,
-              "backgroundColor": "rgba(255, 255, 255, 1)",
-              "borderColor": "rgba(241, 241, 244, 1)",
-              "borderRadius": 40,
-              "borderStyle": "solid",
-              "borderWidth": 1,
-              "height": 40,
-              "justifyContent": "center",
-              "overflow": "hidden",
-              "transform": undefined,
-              "width": 40,
-            }
-          }
-          testID="AnimatedHeaderIconRoundContainer"
-        >
-          <View
-            size={24}
-            style={
-              Array [
-                Object {
-                  "height": 24,
-                  "width": 24,
-                },
-              ]
-            }
-          >
-            <View
-              collapsable={false}
-              style={
-                Object {
-                  "opacity": 1,
-                  "position": "absolute",
-                }
-              }
-              testID="initial-icon-container"
-            >
-              <View
-                height={24}
-                testID="animated-icon-share"
-                width={24}
-              >
-                <Text>
-                  animated-icon-share-SVG-Mock
-                </Text>
-              </View>
-            </View>
-            <View
-              collapsable={false}
-              style={
-                Object {
-                  "opacity": 0,
-                  "position": "absolute",
-                }
-              }
-              testID="final-icon-container"
-            >
-              <View
-                height={24}
-                testID="final-animated-icon-share"
-                width={24}
-              >
-                <Text>
-                  final-animated-icon-share-SVG-Mock
-                </Text>
-              </View>
-            </View>
-          </View>
-        </View>
-      </View>
-      <View
-        numberOfSpaces={6}
-        style={
-          Array [
-            Object {
-              "width": 24,
-            },
-          ]
-        }
-      />
-    </View>
-    <View
-      numberOfSpaces={2}
-      style={
-        Array [
-          Object {
-            "height": 8,
-          },
-        ]
-      }
-    />
-  </View>
   <RCTScrollView
     bounces={false}
     onScroll={[Function]}
@@ -4417,5 +4095,363 @@ exports[`<Venue /> should match snapshot 1`] = `
       </View>
     </View>
   </RCTScrollView>
+  <View
+    collapsable={false}
+    safeAreaTop={16}
+    style={
+      Object {
+        "backdropFilter": "blur(0px)",
+        "backgroundColor": "rgba(255, 255, 255, 0)",
+        "borderBottomColor": "#F1F1F4",
+        "borderBottomWidth": 0,
+        "height": 80,
+        "left": 0,
+        "position": "absolute",
+        "right": 0,
+        "top": 0,
+        "zIndex": 1,
+      }
+    }
+  >
+    <View
+      customHeight={16}
+      enable={true}
+      style={
+        Array [
+          Object {
+            "height": 16,
+          },
+        ]
+      }
+    />
+    <View
+      collapsable={false}
+      safeAreaTop={16}
+      style={
+        Object {
+          "height": 80,
+          "left": 0,
+          "opacity": 0,
+          "overflow": "hidden",
+          "position": "absolute",
+          "right": 0,
+          "top": 0,
+        }
+      }
+    >
+      <BlurView
+        blurAmount={8}
+        blurType="light"
+        style={
+          Array [
+            Object {
+              "backgroundColor": "transparent",
+            },
+            Array [
+              Object {
+                "flexBasis": 0,
+                "flexGrow": 1,
+                "flexShrink": 1,
+              },
+            ],
+          ]
+        }
+      />
+    </View>
+    <View
+      numberOfSpaces={2}
+      style={
+        Array [
+          Object {
+            "height": 8,
+          },
+        ]
+      }
+    />
+    <View
+      style={
+        Array [
+          Object {
+            "alignItems": "center",
+            "flexBasis": 0,
+            "flexDirection": "row",
+            "flexGrow": 1,
+            "flexShrink": 1,
+          },
+        ]
+      }
+    >
+      <View
+        numberOfSpaces={6}
+        style={
+          Array [
+            Object {
+              "width": 24,
+            },
+          ]
+        }
+      />
+      <View
+        accessibilityLabel="Revenir en arrière"
+        accessibilityRole="button"
+        accessible={true}
+        collapsable={false}
+        focusable={true}
+        onClick={[Function]}
+        onResponderGrant={[Function]}
+        onResponderMove={[Function]}
+        onResponderRelease={[Function]}
+        onResponderTerminate={[Function]}
+        onResponderTerminationRequest={[Function]}
+        onStartShouldSetResponder={[Function]}
+        style={
+          Object {
+            "borderRadius": 40,
+            "opacity": 1,
+            "userSelect": "auto",
+          }
+        }
+        testID="Revenir en arrière"
+      >
+        <View
+          collapsable={false}
+          style={
+            Object {
+              "alignItems": "center",
+              "aspectRatio": 1,
+              "backgroundColor": "rgba(255, 255, 255, 1)",
+              "borderColor": "rgba(241, 241, 244, 1)",
+              "borderRadius": 40,
+              "borderStyle": "solid",
+              "borderWidth": 1,
+              "height": 40,
+              "justifyContent": "center",
+              "transform": undefined,
+              "width": 40,
+            }
+          }
+          testID="AnimatedHeaderIconRoundContainer"
+        >
+          <View
+            size={24}
+            style={
+              Array [
+                Object {
+                  "height": 24,
+                  "width": 24,
+                },
+              ]
+            }
+          >
+            <View
+              collapsable={false}
+              style={
+                Object {
+                  "opacity": 1,
+                  "position": "absolute",
+                }
+              }
+              testID="initial-icon-container"
+            >
+              <View
+                height={24}
+                testID="animated-icon-back"
+                width={24}
+              >
+                <Text>
+                  animated-icon-back-SVG-Mock
+                </Text>
+              </View>
+            </View>
+            <View
+              collapsable={false}
+              style={
+                Object {
+                  "opacity": 0,
+                  "position": "absolute",
+                }
+              }
+              testID="final-icon-container"
+            >
+              <View
+                height={24}
+                testID="final-animated-icon-back"
+                width={24}
+              >
+                <Text>
+                  final-animated-icon-back-SVG-Mock
+                </Text>
+              </View>
+            </View>
+          </View>
+        </View>
+      </View>
+      <View
+        style={
+          Array [
+            Object {
+              "flexBasis": 0,
+              "flexGrow": 1,
+              "flexShrink": 1,
+            },
+          ]
+        }
+      />
+      <Text
+        accessibilityHidden={true}
+        collapsable={false}
+        numberOfLines={2}
+        style={
+          Object {
+            "flexShrink": 1,
+            "opacity": 0,
+            "textAlign": "center",
+          }
+        }
+        testID="venueHeaderName"
+      >
+        <Text
+          style={
+            Array [
+              Object {
+                "color": "#161617",
+                "fontFamily": "Montserrat-Regular",
+                "fontSize": 15,
+                "lineHeight": 20,
+              },
+            ]
+          }
+        >
+          Le Petit Rintintin 1
+        </Text>
+      </Text>
+      <View
+        style={
+          Array [
+            Object {
+              "flexBasis": 0,
+              "flexGrow": 1,
+              "flexShrink": 1,
+            },
+          ]
+        }
+      />
+      <View
+        accessibilityLabel="Partager"
+        accessibilityRole="button"
+        accessible={true}
+        collapsable={false}
+        focusable={true}
+        onClick={[Function]}
+        onResponderGrant={[Function]}
+        onResponderMove={[Function]}
+        onResponderRelease={[Function]}
+        onResponderTerminate={[Function]}
+        onResponderTerminationRequest={[Function]}
+        onStartShouldSetResponder={[Function]}
+        style={
+          Object {
+            "borderRadius": 40,
+            "opacity": 1,
+            "userSelect": "auto",
+          }
+        }
+        testID="Partager"
+      >
+        <View
+          collapsable={false}
+          style={
+            Object {
+              "alignItems": "center",
+              "aspectRatio": 1,
+              "backgroundColor": "rgba(255, 255, 255, 1)",
+              "borderColor": "rgba(241, 241, 244, 1)",
+              "borderRadius": 40,
+              "borderStyle": "solid",
+              "borderWidth": 1,
+              "height": 40,
+              "justifyContent": "center",
+              "transform": undefined,
+              "width": 40,
+            }
+          }
+          testID="AnimatedHeaderIconRoundContainer"
+        >
+          <View
+            size={24}
+            style={
+              Array [
+                Object {
+                  "height": 24,
+                  "width": 24,
+                },
+              ]
+            }
+          >
+            <View
+              collapsable={false}
+              style={
+                Object {
+                  "opacity": 1,
+                  "position": "absolute",
+                }
+              }
+              testID="initial-icon-container"
+            >
+              <View
+                height={24}
+                testID="animated-icon-share"
+                width={24}
+              >
+                <Text>
+                  animated-icon-share-SVG-Mock
+                </Text>
+              </View>
+            </View>
+            <View
+              collapsable={false}
+              style={
+                Object {
+                  "opacity": 0,
+                  "position": "absolute",
+                }
+              }
+              testID="final-icon-container"
+            >
+              <View
+                height={24}
+                testID="final-animated-icon-share"
+                width={24}
+              >
+                <Text>
+                  final-animated-icon-share-SVG-Mock
+                </Text>
+              </View>
+            </View>
+          </View>
+        </View>
+      </View>
+      <View
+        numberOfSpaces={6}
+        style={
+          Array [
+            Object {
+              "width": 24,
+            },
+          ]
+        }
+      />
+    </View>
+    <View
+      numberOfSpaces={2}
+      style={
+        Array [
+          Object {
+            "height": 8,
+          },
+        ]
+      }
+    />
+  </View>
 </View>
 `;

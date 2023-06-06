@@ -162,7 +162,6 @@ export function BookingDetails() {
   return (
     <Container>
       <Helmet title={helmetTitle} />
-      <BookingDetailsHeader headerTransition={headerTransition} title={offer.name} />
       <ScrollView
         onScroll={onScroll}
         scrollEventThrottle={20}
@@ -225,6 +224,8 @@ export function BookingDetails() {
         </ViewWithPadding>
         <Spacer.Column numberOfSpaces={5} />
       </ScrollView>
+      {/* BookingDetailsHeader is called after Body to implement the BlurView for iOS */}
+      <BookingDetailsHeader headerTransition={headerTransition} title={offer.name} />
 
       <CancelBookingModal visible={cancelModalVisible} dismissModal={hideModal} booking={booking} />
       <ArchiveBookingModal

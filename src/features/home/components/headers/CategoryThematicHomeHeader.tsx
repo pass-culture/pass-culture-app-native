@@ -1,40 +1,24 @@
-import { useNavigation } from '@react-navigation/native'
-import React, { FunctionComponent, useCallback } from 'react'
-import { StatusBar } from 'react-native'
+import React, { FunctionComponent } from 'react'
 import styled from 'styled-components/native'
 
 import { BlackGradient } from 'features/home/components/BlackGradient'
 import { HEADER_BLACK_BACKGROUND_HEIGHT } from 'features/home/components/constants'
-import { BackButtonContainer } from 'features/home/components/headers/BackButtonContainer'
 import { BlackBackground } from 'features/home/components/headers/BlackBackground'
 import { CategoryThematicHeader } from 'features/home/types'
-import { UseNavigationType } from 'features/navigation/RootNavigator/types'
-import { homeNavConfig } from 'features/navigation/TabBar/helpers'
-import { BackButton } from 'ui/components/headers/BackButton'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
-import { useCustomSafeInsets } from 'ui/theme/useCustomSafeInsets'
-
-type CategoryThematicHeaderProps = Omit<CategoryThematicHeader, 'type'>
 
 const HEADER_HEIGHT = getSpacing(44)
+
+type CategoryThematicHeaderProps = Omit<CategoryThematicHeader, 'type'>
 
 export const CategoryThematicHomeHeader: FunctionComponent<CategoryThematicHeaderProps> = ({
   title,
   subtitle,
   imageUrl,
 }) => {
-  const { navigate } = useNavigation<UseNavigationType>()
-  const onGoBack = useCallback(() => navigate(...homeNavConfig), [navigate])
-  const { top } = useCustomSafeInsets()
-
   return (
     <React.Fragment>
-      <ImageBackground source={{ uri: imageUrl }} statusBarHeight={top}>
-        <StatusBar barStyle="light-content" animated />
-        <Spacer.TopScreen />
-        <BackButtonContainer statusBarHeight={top}>
-          <BackButton onGoBack={onGoBack} />
-        </BackButtonContainer>
+      <ImageBackground source={{ uri: imageUrl }}>
         <TextContainer>
           <BlackGradient height={HEADER_BLACK_BACKGROUND_HEIGHT} />
           <BlackBackground>
@@ -54,12 +38,10 @@ export const CategoryThematicHomeHeader: FunctionComponent<CategoryThematicHeade
   )
 }
 
-const ImageBackground = styled.ImageBackground<{ statusBarHeight: number }>(
-  ({ statusBarHeight }) => ({
-    height: HEADER_HEIGHT + statusBarHeight,
-    marginBottom: getSpacing(6),
-  })
-)
+const ImageBackground = styled.ImageBackground({
+  height: HEADER_HEIGHT,
+  marginBottom: getSpacing(6),
+})
 
 const TextContainer = styled.View({
   position: 'absolute',

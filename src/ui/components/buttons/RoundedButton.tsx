@@ -18,6 +18,7 @@ import { customFocusOutline } from 'ui/theme/customFocusOutline/customFocusOutli
 interface Props {
   iconName: 'back' | 'share' | 'favorite' | 'favorite-filled'
   initialColor?: ColorsEnum
+  finalColor?: ColorsEnum
   onPress: () => void
   scaleAnimatedValue?: Animated.Value
   animationState?: {
@@ -70,7 +71,7 @@ export const RoundedButton = (props: Props) => {
             initialColor={props.initialColor || colors.black}
             testID={`animated-icon-${props.iconName}`}
             transition={props.animationState.transition}
-            finalColor={colors.white}
+            finalColor={props.finalColor || colors.black}
             size={icons.sizes.small}
           />
         </IconContainer>
@@ -97,6 +98,5 @@ const IconContainer = styled(Animated.View)(({ theme }) => ({
   border: 1,
   justifyContent: 'center',
   alignItems: 'center',
-  overflow: 'hidden',
   borderColor: theme.colors.greyLight,
 }))

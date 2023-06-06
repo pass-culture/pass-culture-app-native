@@ -1,21 +1,15 @@
-import { useNavigation } from '@react-navigation/native'
-import React, { FunctionComponent, useCallback } from 'react'
-import { StatusBar } from 'react-native'
+import React, { FunctionComponent } from 'react'
 import styled from 'styled-components/native'
 
 import { BlackGradient } from 'features/home/components/BlackGradient'
 import { HEADER_BLACK_BACKGROUND_HEIGHT } from 'features/home/components/constants'
-import { BackButtonContainer } from 'features/home/components/headers/BackButtonContainer'
 import { BlackBackground } from 'features/home/components/headers/BlackBackground'
 import { computeDateRangeDisplay } from 'features/home/components/helpers/computeDateRangeDisplay'
 import { HighlightThematicHeader } from 'features/home/types'
-import { UseNavigationType } from 'features/navigation/RootNavigator/types'
-import { homeNavConfig } from 'features/navigation/TabBar/helpers'
-import { BackButton } from 'ui/components/headers/BackButton'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 import { useCustomSafeInsets } from 'ui/theme/useCustomSafeInsets'
 
-type HighlightThematicHeaderProps = Omit<HighlightThematicHeader, 'type'>
+type HighligthThematicHeaderProps = Omit<HighlightThematicHeader, 'type'>
 
 type IntroductionProps = {
   title: string
@@ -25,7 +19,7 @@ type IntroductionProps = {
 const DESKTOP_HEADER_HEIGHT = getSpacing(100)
 const MOBILE_HEADER_HEIGHT = getSpacing(70)
 
-export const HighlightThematicHomeHeader: FunctionComponent<HighlightThematicHeaderProps> = ({
+export const HighlightThematicHomeHeader: FunctionComponent<HighligthThematicHeaderProps> = ({
   title,
   subtitle,
   imageUrl,
@@ -34,8 +28,6 @@ export const HighlightThematicHomeHeader: FunctionComponent<HighlightThematicHea
   introductionTitle,
   introductionParagraph,
 }) => {
-  const { navigate } = useNavigation<UseNavigationType>()
-  const onGoBack = useCallback(() => navigate(...homeNavConfig), [navigate])
   const { top } = useCustomSafeInsets()
 
   const dateRange = computeDateRangeDisplay(beginningDate, endingDate)
@@ -45,11 +37,6 @@ export const HighlightThematicHomeHeader: FunctionComponent<HighlightThematicHea
   return (
     <React.Fragment>
       <ImageBackground source={{ uri: imageUrl }}>
-        <StatusBar barStyle="light-content" animated />
-        <Spacer.TopScreen />
-        <BackButtonContainer statusBarHeight={top}>
-          <BackButton onGoBack={onGoBack} />
-        </BackButtonContainer>
         <DateRangeCaptionContainer statusBarHeight={top}>
           <DateRangeCaption>{dateRange}</DateRangeCaption>
         </DateRangeCaptionContainer>

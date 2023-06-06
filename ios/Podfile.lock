@@ -469,6 +469,8 @@ PODS:
   - react-native-appsflyer (6.4.40):
     - AppsFlyerFramework (= 6.4.4)
     - React
+  - react-native-blur (4.3.2):
+    - React-Core
   - react-native-config (1.4.5):
     - react-native-config/App (= 1.4.5)
   - react-native-config/App (1.4.5):
@@ -690,6 +692,7 @@ DEPENDENCIES:
   - React-jsinspector (from `../node_modules/react-native/ReactCommon/jsinspector`)
   - React-logger (from `../node_modules/react-native/ReactCommon/logger`)
   - react-native-appsflyer (from `../node_modules/react-native-appsflyer`)
+  - "react-native-blur (from `../node_modules/@react-native-community/blur`)"
   - "react-native-config (from `../node_modules/@bam.tech/react-native-config`)"
   - react-native-date-picker (from `../node_modules/react-native-date-picker`)
   - react-native-flipper (from `../node_modules/react-native-flipper`)
@@ -838,6 +841,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native/ReactCommon/logger"
   react-native-appsflyer:
     :path: "../node_modules/react-native-appsflyer"
+  react-native-blur:
+    :path: "../node_modules/@react-native-community/blur"
   react-native-config:
     :path: "../node_modules/@bam.tech/react-native-config"
   react-native-date-picker:
@@ -996,6 +1001,7 @@ SPEC CHECKSUMS:
   React-jsinspector: eb202e43b3879aba9a14f3f65788aec85d4e1ea9
   React-logger: 98f663b292a60967ebbc6d803ae96c1381183b6d
   react-native-appsflyer: 530a07183bedd33e47c76ba2f5592d7b74caff1c
+  react-native-blur: cfdad7b3c01d725ab62a8a729f42ea463998afa2
   react-native-config: 5e2fe7217716b5472ed7901477620b1370335d67
   react-native-date-picker: 9088350e06918f7d842a34c171acadc66583cb94
   react-native-flipper: ea555c5b21d9d15814999327aecf31b98ac87079

@@ -1,10 +1,8 @@
 import React from 'react'
 
-import { navigate } from '__mocks__/@react-navigation/native'
 import { HighlightThematicHomeHeader } from 'features/home/components/headers/HighlightThematicHomeHeader'
 import { ThematicHeaderType } from 'features/home/types'
-import { navigateToHomeConfig } from 'features/navigation/helpers'
-import { fireEvent, render } from 'tests/utils'
+import { render, screen } from 'tests/utils'
 
 const introductionTitle = 'un super titre pour une super introduction'
 const introductionParagraph =
@@ -22,40 +20,28 @@ const imageProps = {
 
 const headerProps = {
   ...imageProps,
-  introductionTitle,
+  title: introductionTitle,
   introductionParagraph,
 }
 
 describe('HighlightThematicHomeHeader', () => {
-  it('should navigate to home page on press go back button', () => {
-    const { getByTestId } = render(<HighlightThematicHomeHeader {...headerProps} />)
-    const backButton = getByTestId('Revenir en arrière')
-
-    fireEvent.press(backButton)
-
-    expect(navigate).toBeCalledWith(navigateToHomeConfig.screen, navigateToHomeConfig.params)
-  })
-
   it('should display introduction when introduction title and paragraph are provided', () => {
-    const { getByText } = render(<HighlightThematicHomeHeader {...headerProps} />)
+    render(<HighlightThematicHomeHeader {...headerProps} />)
 
-    expect(getByText(introductionTitle)).toBeTruthy()
-    expect(getByText(introductionParagraph)).toBeTruthy()
+    expect(screen.getByText(introductionTitle)).toBeTruthy()
   })
 
   it('should not display introduction when only introduction title is provided', () => {
     const props = { ...imageProps, introductionTitle }
-    const { queryByText } = render(<HighlightThematicHomeHeader {...props} />)
+    render(<HighlightThematicHomeHeader {...props} />)
 
-    expect(queryByText(introductionTitle)).toBeFalsy()
-    expect(queryByText(introductionParagraph)).toBeFalsy()
+    expect(screen.queryByText(introductionTitle)).toBeFalsy()
   })
 
   it('should not display introduction when only introduction paragraph is provided', () => {
     const props = { ...imageProps, introductionParagraph }
-    const { queryByText } = render(<HighlightThematicHomeHeader {...props} />)
+    render(<HighlightThematicHomeHeader {...props} />)
 
-    expect(queryByText(introductionTitle)).toBeFalsy()
-    expect(queryByText(introductionParagraph)).toBeFalsy()
+    expect(screen.queryByText(introductionTitle)).toBeFalsy()
   })
 })

@@ -1,11 +1,7 @@
-import { useNavigation } from '@react-navigation/native'
-import React, { FunctionComponent, useCallback } from 'react'
+import React, { FunctionComponent } from 'react'
 import { Platform } from 'react-native'
 import styled from 'styled-components/native'
 
-import { UseNavigationType } from 'features/navigation/RootNavigator/types'
-import { homeNavConfig } from 'features/navigation/TabBar/helpers'
-import { BackButton } from 'ui/components/headers/BackButton'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 
 export interface DefaultThematicHomeHeaderProps {
@@ -16,13 +12,8 @@ export const DefaultThematicHomeHeader: FunctionComponent<DefaultThematicHomeHea
   headerTitle,
   headerSubtitle,
 }) => {
-  const { navigate } = useNavigation<UseNavigationType>()
-  const onGoBack = useCallback(() => navigate(...homeNavConfig), [navigate])
-
   return (
     <Container>
-      <Spacer.TopScreen />
-      <BackButton onGoBack={onGoBack} />
       {headerTitle ? (
         <React.Fragment>
           <Spacer.Column numberOfSpaces={4} />
