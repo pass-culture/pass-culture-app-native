@@ -1,11 +1,17 @@
 import React from 'react'
 
-import * as useCheckHasCurrentEmailChange from 'features/profile/helpers/useCheckHasCurrentEmailChange'
+import { EmailHistoryEventTypeEnum } from 'api/gen'
+import * as useEmailUpdateStatus from 'features/profile/helpers/useEmailUpdateStatus'
 import { ConfirmChangeEmail } from 'features/profile/pages/ConfirmChangeEmail/ConfirmChangeEmail'
 import { checkAccessibilityFor, render } from 'tests/utils/web'
 
-jest.spyOn(useCheckHasCurrentEmailChange, 'useCheckHasCurrentEmailChange').mockReturnValue({
-  hasCurrentEmailChange: true,
+jest.spyOn(useEmailUpdateStatus, 'useEmailUpdateStatus').mockReturnValue({
+  data: {
+    expired: false,
+    newEmail: '',
+    status: EmailHistoryEventTypeEnum.CONFIRMATION,
+  },
+  isLoading: false,
 })
 
 describe('<ConfirmChangeEmail />', () => {

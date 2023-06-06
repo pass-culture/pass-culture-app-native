@@ -1,24 +1,31 @@
 import React from 'react'
 
 import { navigate } from '__mocks__/@react-navigation/native'
+import { EmailHistoryEventTypeEnum } from 'api/gen'
 import { navigateToHomeConfig } from 'features/navigation/helpers'
 import { navigateFromRef } from 'features/navigation/navigationRef'
-import * as useCheckHasCurrentEmailChange from 'features/profile/helpers/useCheckHasCurrentEmailChange'
+import * as useEmailUpdateStatus from 'features/profile/helpers/useEmailUpdateStatus'
 import { ConfirmChangeEmail } from 'features/profile/pages/ConfirmChangeEmail/ConfirmChangeEmail'
 import { fireEvent, render, screen } from 'tests/utils'
 
 jest.mock('features/navigation/navigationRef')
 
-const useCheckHasCurrentEmailChangeSpy = jest
-  .spyOn(useCheckHasCurrentEmailChange, 'useCheckHasCurrentEmailChange')
+const useEmailUpdateStatusSpy = jest
+  .spyOn(useEmailUpdateStatus, 'useEmailUpdateStatus')
   .mockReturnValue({
-    hasCurrentEmailChange: true,
+    data: {
+      expired: false,
+      newEmail: '',
+      status: EmailHistoryEventTypeEnum.CONFIRMATION,
+    },
+    isLoading: false,
   })
 
 describe('<ConfirmChangeEmail />', () => {
   it('should navigate to home if no current email change', () => {
-    useCheckHasCurrentEmailChangeSpy.mockReturnValueOnce({
-      hasCurrentEmailChange: false,
+    useEmailUpdateStatusSpy.mockReturnValueOnce({
+      data: undefined,
+      isLoading: false,
     })
     render(<ConfirmChangeEmail />)
     expect(navigateFromRef).toHaveBeenCalledWith(

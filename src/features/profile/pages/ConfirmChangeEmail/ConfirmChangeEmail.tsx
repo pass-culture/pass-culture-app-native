@@ -1,9 +1,9 @@
 import { useNavigation } from '@react-navigation/native'
-import React, { useCallback } from 'react'
+import React, { useCallback, useEffect } from 'react'
 
 import { navigateToHome, navigateToHomeConfig } from 'features/navigation/helpers'
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
-import { useCheckHasCurrentEmailChange } from 'features/profile/helpers/useCheckHasCurrentEmailChange'
+import { useEmailUpdateStatus } from 'features/profile/helpers/useEmailUpdateStatus'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
@@ -13,12 +13,14 @@ import { Invalidate } from 'ui/svg/icons/Invalidate'
 import { Spacer, Typo } from 'ui/theme'
 
 export function ConfirmChangeEmail() {
-  const { hasCurrentEmailChange } = useCheckHasCurrentEmailChange()
+  const { data: emailUpdateStatus, isLoading } = useEmailUpdateStatus()
   const { navigate } = useNavigation<UseNavigationType>()
 
-  if (!hasCurrentEmailChange) {
-    navigateToHome()
-  }
+  useEffect(() => {
+    if (!isLoading && (!emailUpdateStatus || emailUpdateStatus?.expired)) {
+      navigateToHome()
+    }
+  }, [emailUpdateStatus, isLoading])
 
   const onConfirmEmail = useCallback(() => {
     // TODO(yassinL) complete with back-end route
