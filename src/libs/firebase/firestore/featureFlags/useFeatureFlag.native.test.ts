@@ -1,7 +1,7 @@
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import firestore from 'libs/firebase/shims/firestore'
-import { renderHook, waitFor } from 'tests/utils'
+import { act, renderHook } from 'tests/utils'
 
 import { build } from '../../../../../package.json'
 
@@ -50,9 +50,8 @@ describe.each([
 
       const { result } = renderHook(() => useFeatureFlag(featureFlag))
 
-      await waitFor(() => {
-        expect(result.current).toBe(firebaseFeatureFlag)
-      })
+      await act(async () => {})
+      expect(result.current).toBe(firebaseFeatureFlag)
     }
   )
 })

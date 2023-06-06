@@ -11,10 +11,10 @@ import { env } from 'libs/environment'
 import { NetInfoWrapper } from 'libs/network/NetInfoWrapper'
 import { useNetInfo } from 'libs/network/useNetInfo'
 import { QueryKeys } from 'libs/queryKeys'
-import { storage, StorageKey } from 'libs/storage'
+import { StorageKey, storage } from 'libs/storage'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { server } from 'tests/server'
-import { renderHook, waitFor } from 'tests/utils'
+import { act, renderHook, waitFor } from 'tests/utils'
 
 import { AuthWrapper, useAuthContext } from './AuthContext'
 
@@ -24,20 +24,10 @@ jest.unmock('libs/jwt')
 jest.unmock('libs/network/NetInfoWrapper')
 const mockedUseNetInfo = useNetInfo as jest.Mock
 
-const mockUserProfileInfo = (user = beneficiaryUser) => {
-  server.use(
-    rest.get<UserProfileResponse>(env.API_BASE_URL + '/native/v1/me', (_req, res, ctx) =>
-      res(ctx.status(200), ctx.json(user))
-    )
-  )
-}
-
 describe('AuthContext', () => {
   beforeEach(async () => {
     await storage.clear('access_token')
     await storage.clear(QueryKeys.USER_PROFILE as unknown as StorageKey)
-
-    mockUserProfileInfo()
   })
 
   describe('useAuthContext', () => {
@@ -55,17 +45,15 @@ describe('AuthContext', () => {
       storage.saveString('access_token', 'token')
       const result = renderUseAuthContext()
 
-      await waitFor(() => {
-        expect(result.current.user).toEqual(beneficiaryUser)
-      })
+      await act(async () => {})
+      expect(result.current.user).toEqual(beneficiaryUser)
     })
 
     it('should return undefined user when logged out', async () => {
       const result = renderUseAuthContext()
 
-      await waitFor(() => {
-        expect(result.current.user).toEqual(undefined)
-      })
+      await act(async () => {})
+      expect(result.current.user).toEqual(undefined)
     })
 
     it('should return refetchUser', async () => {
@@ -76,50 +64,49 @@ describe('AuthContext', () => {
       })
     })
 
-    it('should set user properties to Amplitude events when user is beneficiary', async () => {
+    it('should set user properties to Amplitude events when user is logged in', async () => {
       storage.saveString('access_token', 'token')
+      renderUseAuthContext()
+      await act(async () => {})
+
+      expect(amplitude.setUserProperties).toHaveBeenCalledWith({
+        age: 18,
+        appVersion: '1.10.5',
+        depositType: 'GRANT_18',
+        eligibility: 'age-18',
+        eligibilityEndDatetime: '2023-11-19T11:00:00Z',
+        id: 1234,
+        isBeneficiary: true,
+        needsToFillCulturalSurvey: true,
+        status: 'beneficiary',
+      })
+    })
+    it('should not set user properties to Amplitude events when user is not logged in', async () => {
+      server.use(
+        rest.get<UserProfileResponse>(env.API_BASE_URL + '/native/v1/me', (_req, res, ctx) =>
+          res(ctx.status(200), ctx.json(nonBeneficiaryUser))
+        )
+      )
+
       renderUseAuthContext()
 
       await waitFor(() => {
-        expect(amplitude.setUserProperties).toHaveBeenCalledWith({
-          age: 18,
-          appVersion: '1.10.5',
-          depositType: 'GRANT_18',
-          eligibility: 'age-18',
-          eligibilityEndDatetime: '2023-11-19T11:00:00Z',
-          id: 1234,
-          isBeneficiary: true,
-          needsToFillCulturalSurvey: true,
-          status: 'beneficiary',
-        })
+        expect(amplitude.setUserProperties).not.toHaveBeenCalled()
       })
-    }),
-      it('should set user properties to Amplitude events when user is not beneficiary', async () => {
-        storage.saveString('access_token', 'token')
-        mockUserProfileInfo(nonBeneficiaryUser)
-
-        renderUseAuthContext()
-
-        await waitFor(() => {
-          expect(amplitude.setUserProperties).toHaveBeenCalledWith({
-            appVersion: '1.10.5',
-            id: 1234,
-            isBeneficiary: false,
-            needsToFillCulturalSurvey: true,
-            status: 'non_eligible',
-          })
-        })
-      })
+    })
 
     it('should set user id when user is logged in', async () => {
       storage.saveString('access_token', 'token')
-      mockUserProfileInfo(nonBeneficiaryUser)
+      server.use(
+        rest.get<UserProfileResponse>(env.API_BASE_URL + '/native/v1/me', (_req, res, ctx) =>
+          res(ctx.status(200), ctx.json(nonBeneficiaryUser))
+        )
+      )
 
       renderUseAuthContext()
+      await act(async () => {})
 
-      await waitFor(() => {
-        expect(amplitude.setUserId).toHaveBeenCalledWith(nonBeneficiaryUser.id.toString())
-      })
+      expect(amplitude.setUserId).toHaveBeenCalledWith(nonBeneficiaryUser.id.toString())
     })
   })
 })

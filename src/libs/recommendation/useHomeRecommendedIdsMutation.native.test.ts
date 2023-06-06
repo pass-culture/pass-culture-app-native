@@ -6,7 +6,7 @@ import { firebaseAnalytics } from 'libs/firebase/analytics'
 import { eventMonitoring } from 'libs/monitoring'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { server } from 'tests/server'
-import { renderHook, waitFor } from 'tests/utils'
+import { act, renderHook, waitFor } from 'tests/utils'
 
 import { useHomeRecommendedIdsMutation } from './useHomeRecommendedIdsMutation'
 
@@ -50,9 +50,10 @@ describe('useHomeRecommendedIdsMutation', () => {
       wrapper: ({ children }) => reactQueryProviderHOC(children),
     })
     result.current.mutate({ endpointUrl: 'http://passculture.reco' })
-    await waitFor(() => {
-      expect(result.current.data).toEqual(body)
-    })
+
+    await act(async () => {})
+
+    expect(result.current.data).toEqual(body)
   })
 
   it('should log response body parameters on firebase when fetch call succeeds', async () => {

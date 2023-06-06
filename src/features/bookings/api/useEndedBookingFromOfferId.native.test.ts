@@ -7,7 +7,7 @@ import { env } from 'libs/environment'
 import { useNetInfoContext as useNetInfoContextDefault } from 'libs/network/NetInfoWrapper'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { server } from 'tests/server'
-import { renderHook, waitFor } from 'tests/utils'
+import { act, renderHook } from 'tests/utils'
 
 jest.mock('libs/react-query/usePersistQuery', () => ({
   usePersistQuery: jest.requireActual('react-query').useQuery,
@@ -35,10 +35,9 @@ describe('useEndedBookingFromOfferId', () => {
       wrapper: ({ children }) => reactQueryProviderHOC(children),
     })
 
-    await waitFor(() => {
-      expect(result.current?.data?.id).toEqual(booking.id)
-      expect(result.current?.data?.stock.id).toEqual(booking.stock.id)
-    })
+    await act(async () => {})
+    expect(result.current?.data?.id).toEqual(booking.id)
+    expect(result.current?.data?.stock.id).toEqual(booking.stock.id)
   })
 
   it('should not return an ended booking if not existing', async () => {
@@ -47,9 +46,8 @@ describe('useEndedBookingFromOfferId', () => {
       // eslint-disable-next-line local-rules/no-react-query-provider-hoc
       wrapper: ({ children }) => reactQueryProviderHOC(children),
     })
+    await act(async () => {})
 
-    await waitFor(() => {
-      expect(result.current?.data).toEqual(null)
-    })
+    expect(result.current?.data).toEqual(null)
   })
 })
