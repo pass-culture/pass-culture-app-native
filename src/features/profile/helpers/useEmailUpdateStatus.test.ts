@@ -3,12 +3,13 @@ import { rest } from 'msw'
 import { EmailHistoryEventTypeEnum, EmailUpdateStatus } from 'api/gen'
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { env } from 'libs/environment'
+import { eventMonitoring } from 'libs/monitoring'
 import { useNetInfoContext as useNetInfoContextDefault } from 'libs/network/NetInfoWrapper'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { server } from 'tests/server'
 import { renderHook, waitFor } from 'tests/utils'
 
-import { useEmailUpdateStatus } from './useEmailUpdateStatus'
+import { getEmailUpdateStatus, useEmailUpdateStatus } from './useEmailUpdateStatus'
 
 jest.mock('features/auth/context/AuthContext')
 const mockUseAuthContext = useAuthContext as jest.MockedFunction<typeof useAuthContext>
@@ -21,17 +22,29 @@ const emailUpdateStatus: EmailUpdateStatus = {
   status: EmailHistoryEventTypeEnum.UPDATE_REQUEST,
 }
 
-server.use(
-  rest.get<EmailUpdateStatus>(
-    env.API_BASE_URL + '/native/v1/profile/email_update/status',
-    (req, res, ctx) => res(ctx.status(200), ctx.json(emailUpdateStatus))
+function simulateEmailUpdateStatus200() {
+  server.use(
+    rest.get<EmailUpdateStatus>(
+      env.API_BASE_URL + '/native/v1/profile/email_update/status',
+      (req, res, ctx) => res(ctx.status(200), ctx.json(emailUpdateStatus))
+    )
   )
-)
+}
+
+function simulateEmailUpdateStatusError(code: number) {
+  server.use(
+    rest.get<EmailUpdateStatus>(
+      env.API_BASE_URL + '/native/v1/profile/email_update/status',
+      (req, res, ctx) => res(ctx.status(code), ctx.json(emailUpdateStatus))
+    )
+  )
+}
 
 describe('useEmailUpdateStatus hook', () => {
   afterEach(jest.resetAllMocks)
 
   it('should retrieve email update status when logged in and internet connection is ok', async () => {
+    simulateEmailUpdateStatus200()
     mockUseNetInfoContext.mockImplementationOnce(() => ({ isConnected: true }))
     mockUseAuthContext.mockImplementationOnce(() => ({
       isLoggedIn: true,
@@ -51,6 +64,7 @@ describe('useEmailUpdateStatus hook', () => {
   })
 
   it('should return undefined when not logged in and internet connection is ok', async () => {
+    simulateEmailUpdateStatus200()
     mockUseNetInfoContext.mockImplementationOnce(() => ({ isConnected: true }))
     mockUseAuthContext.mockImplementationOnce(() => ({
       isLoggedIn: false,
@@ -68,6 +82,7 @@ describe('useEmailUpdateStatus hook', () => {
   })
 
   it('should return undefined when not logged in and internet connection is not ok', async () => {
+    simulateEmailUpdateStatusError(500)
     mockUseNetInfoContext.mockImplementationOnce(() => ({ isConnected: false }))
     mockUseAuthContext.mockImplementationOnce(() => ({
       isLoggedIn: false,
@@ -83,4 +98,32 @@ describe('useEmailUpdateStatus hook', () => {
 
     expect(result.current.data).toEqual(undefined)
   })
+})
+
+describe('getEmailUpdateStatus', () => {
+  it('should capture a Sentry exception when error code is 422 and return undefined', async () => {
+    simulateEmailUpdateStatusError(422)
+    const emailUpdateStatus = await getEmailUpdateStatus()
+
+    expect(eventMonitoring.captureException).toHaveBeenCalledTimes(1)
+    expect(emailUpdateStatus).toEqual(undefined)
+  })
+
+  it.each([
+    401, // Unauthorized
+    404, // Not Found
+    500, // Internal Server Error
+    502, // Bad Gateway
+    503, // Service Unavailable
+    504, // Gateway Timeout
+  ])(
+    'should capture a Sentry exception when error code is %s and return undefine',
+    async (statusCode) => {
+      simulateEmailUpdateStatusError(statusCode)
+      const emailUpdateStatus = await getEmailUpdateStatus()
+
+      expect(eventMonitoring.captureException).not.toHaveBeenCalled()
+      expect(emailUpdateStatus).toEqual(undefined)
+    }
+  )
 })
