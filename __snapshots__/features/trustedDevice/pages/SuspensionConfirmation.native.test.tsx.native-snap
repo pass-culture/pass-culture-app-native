@@ -132,44 +132,54 @@ exports[`<SuspensionConfirmation/> should match snapshot 1`] = `
         ]
       }
     />
-    <Text
-      style={
-        Array [
-          Object {
-            "color": "#ffffff",
-            "fontFamily": "Montserrat-Regular",
-            "fontSize": 15,
-            "lineHeight": 20,
-          },
-        ]
-      }
-    >
-      En raison d’une activité suspicieuse, ton compte a été suspendu.
-    </Text>
     <View
-      numberOfSpaces={5}
       style={
         Array [
           Object {
-            "height": 20,
-          },
-        ]
-      }
-    />
-    <Text
-      style={
-        Array [
-          Object {
-            "color": "#ffffff",
-            "fontFamily": "Montserrat-Regular",
-            "fontSize": 15,
-            "lineHeight": 20,
+            "width": "100%",
           },
         ]
       }
     >
-      Si tu souhaites revoir cette décision, tu peux contacter le support.
-    </Text>
+      <Text
+        style={
+          Array [
+            Object {
+              "color": "#ffffff",
+              "fontFamily": "Montserrat-Regular",
+              "fontSize": 15,
+              "lineHeight": 20,
+            },
+          ]
+        }
+      >
+        En raison d’une activité suspicieuse, ton compte a été suspendu.
+      </Text>
+      <View
+        numberOfSpaces={5}
+        style={
+          Array [
+            Object {
+              "height": 20,
+            },
+          ]
+        }
+      />
+      <Text
+        style={
+          Array [
+            Object {
+              "color": "#ffffff",
+              "fontFamily": "Montserrat-Regular",
+              "fontSize": 15,
+              "lineHeight": 20,
+            },
+          ]
+        }
+      >
+        Si tu souhaites revoir cette décision, tu peux contacter le support.
+      </Text>
+    </View>
     <View
       numberOfSpaces={30}
       style={
