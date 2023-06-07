@@ -381,12 +381,12 @@ describe('<BookingDetails />', () => {
       })
     })
 
-    it('should not display "Modifier" button when offer subcategory is "Livre papier" and ISBN defined', async () => {
+    it('should not display "Modifier" button when offer subcategory is "Livre papier" and EAN defined', async () => {
       mockUseBookingOffer.mockReturnValueOnce({
         ...mockOffer,
         isDuo: true,
         subcategoryId: SubcategoryIdEnum.LIVRE_PAPIER,
-        extraData: { isbn: '12345678' },
+        extraData: { ean: '12345678' },
       })
 
       mockUseSubcategoriesMapping.mockReturnValueOnce({
@@ -400,12 +400,12 @@ describe('<BookingDetails />', () => {
       })
     })
 
-    it('should not display "Modifier" button when offer subcategory is "Livre audio physique" and ISBN defined', async () => {
+    it('should not display "Modifier" button when offer subcategory is "Livre audio physique" and EAN defined', async () => {
       mockUseBookingOffer.mockReturnValueOnce({
         ...mockOffer,
         isDuo: true,
         subcategoryId: SubcategoryIdEnum.LIVRE_AUDIO_PHYSIQUE,
-        extraData: { isbn: '12345678' },
+        extraData: { ean: '12345678' },
       })
 
       mockUseSubcategoriesMapping.mockReturnValueOnce({
@@ -419,7 +419,7 @@ describe('<BookingDetails />', () => {
       })
     })
 
-    it('should not display "Modifier" button when offer subcategory is "Livre papier" and ISBN not defined', async () => {
+    it('should not display "Modifier" button when offer subcategory is "Livre papier" and EAN not defined', async () => {
       mockUseBookingOffer.mockReturnValueOnce({
         ...mockOffer,
         isDuo: true,
@@ -437,7 +437,7 @@ describe('<BookingDetails />', () => {
       })
     })
 
-    it('should not display "Modifier" button when offer subcategory is "Livre audio physique" and ISBN not defined', async () => {
+    it('should not display "Modifier" button when offer subcategory is "Livre audio physique" and EAN not defined', async () => {
       mockUseBookingOffer.mockReturnValueOnce({
         ...mockOffer,
         isDuo: true,
@@ -523,12 +523,12 @@ describe('<BookingDetails />', () => {
       expect(await screen.findByTestId('venueAddress')).toBeTruthy()
     })
 
-    it('should display "Modifier" button when offer subcategory is "Livre papier", ISBN defined and that there are other venues offering the same offer', async () => {
+    it('should display "Modifier" button when offer subcategory is "Livre papier", EAN defined and that there are other venues offering the same offer', async () => {
       mockUseBookingOffer.mockReturnValueOnce({
         ...mockOffer,
         isDuo: true,
         subcategoryId: SubcategoryIdEnum.LIVRE_PAPIER,
-        extraData: { isbn: '12345678' },
+        extraData: { ean: '12345678' },
       })
 
       mockUseSubcategoriesMapping.mockReturnValueOnce({
@@ -542,12 +542,12 @@ describe('<BookingDetails />', () => {
       expect(await screen.findByText('Modifier')).toBeTruthy()
     })
 
-    it('should not display "Modifier" button when offer subcategory is "Livre papier", ISBN defined and that there are not other venues offering the same offer', async () => {
+    it('should not display "Modifier" button when offer subcategory is "Livre papier", EAN defined and that there are not other venues offering the same offer', async () => {
       mockUseBookingOffer.mockReturnValueOnce({
         ...mockOffer,
         isDuo: true,
         subcategoryId: SubcategoryIdEnum.LIVRE_PAPIER,
-        extraData: { isbn: '12345678' },
+        extraData: { ean: '12345678' },
       })
 
       mockUseSubcategoriesMapping.mockReturnValueOnce({
@@ -563,12 +563,12 @@ describe('<BookingDetails />', () => {
       })
     })
 
-    it('should display "Modifier" button when offer subcategory is "Livre audio physique", ISBN defined and that there are other venues offering the same offer', async () => {
+    it('should display "Modifier" button when offer subcategory is "Livre audio physique", EAN defined and that there are other venues offering the same offer', async () => {
       mockUseBookingOffer.mockReturnValueOnce({
         ...mockOffer,
         isDuo: true,
         subcategoryId: SubcategoryIdEnum.LIVRE_AUDIO_PHYSIQUE,
-        extraData: { isbn: '12345678' },
+        extraData: { ean: '12345678' },
       })
 
       mockUseSubcategoriesMapping.mockReturnValueOnce({
@@ -582,12 +582,12 @@ describe('<BookingDetails />', () => {
       expect(await screen.findByText('Modifier')).toBeTruthy()
     })
 
-    it('should not display "Modifier" button when offer subcategory is "Livre audio physique", ISBN defined and that there are not other venues offering the same offer', async () => {
+    it('should not display "Modifier" button when offer subcategory is "Livre audio physique", EAN defined and that there are not other venues offering the same offer', async () => {
       mockUseBookingOffer.mockReturnValueOnce({
         ...mockOffer,
         isDuo: true,
         subcategoryId: SubcategoryIdEnum.LIVRE_AUDIO_PHYSIQUE,
-        extraData: { isbn: '12345678' },
+        extraData: { ean: '12345678' },
       })
 
       mockUseSubcategoriesMapping.mockReturnValueOnce({
@@ -603,7 +603,7 @@ describe('<BookingDetails />', () => {
       })
     })
 
-    it('should not display "Modifier" button when offer subcategory is "Livre papier" and ISBN not defined', async () => {
+    it('should not display "Modifier" button when offer subcategory is "Livre papier" and EAN not defined', async () => {
       mockUseBookingOffer.mockReturnValueOnce({
         ...mockOffer,
         isDuo: true,
@@ -621,7 +621,7 @@ describe('<BookingDetails />', () => {
       })
     })
 
-    it('should not display "Modifier" button when offer subcategory is "Livre audio physique" and ISBN not defined', async () => {
+    it('should not display "Modifier" button when offer subcategory is "Livre audio physique" and EAN not defined', async () => {
       mockUseBookingOffer.mockReturnValueOnce({
         ...mockOffer,
         isDuo: true,
@@ -651,7 +651,7 @@ describe('<BookingDetails />', () => {
         ...mockOffer,
         isDuo: true,
         subcategoryId: SubcategoryIdEnum.LIVRE_PAPIER,
-        extraData: { isbn: '12345678' },
+        extraData: { ean: '12345678' },
       })
 
       mockUseSubcategoriesMapping.mockReturnValueOnce({
@@ -679,7 +679,7 @@ describe('<BookingDetails />', () => {
         ...mockOffer,
         isDuo: true,
         subcategoryId: SubcategoryIdEnum.LIVRE_PAPIER,
-        extraData: { isbn: '12345678' },
+        extraData: { ean: '12345678' },
       })
 
       mockUseSubcategoriesMapping.mockReturnValueOnce({

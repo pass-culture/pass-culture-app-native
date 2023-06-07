@@ -78,7 +78,7 @@ describe('BookingDetailsTicketContent', () => {
   })
 
   describe('EAN', () => {
-    it('should display EAN when the offer is a book with an isbn', () => {
+    it('should display EAN when the offer is a book with an EAN', () => {
       const bookingForBookOffer = {
         ...booking,
         stock: {
@@ -95,24 +95,24 @@ describe('BookingDetailsTicketContent', () => {
       expect(queryByTestId('ean')).toBeTruthy()
     })
 
-    it('should not display EAN when the offer is a book without an isbn', () => {
-      const bookingWithIsbn = {
+    it('should not display EAN when the offer is a book without an EAN', () => {
+      const bookingWithEan = {
         ...booking,
         stock: {
           ...booking.stock,
           offer: {
             ...booking.stock.offer,
-            extraData: { isbn: null },
+            extraData: { ean: null },
             subcategoryId: SubcategoryIdEnum.LIVRE_PAPIER,
           },
         },
       }
-      const { queryByTestId } = render(<BookingDetailsTicketContent booking={bookingWithIsbn} />)
+      const { queryByTestId } = render(<BookingDetailsTicketContent booking={bookingWithEan} />)
       expect(queryByTestId('ean')).toBeNull()
     })
 
     it('should not display EAN when the offer is not a book', () => {
-      const bookingWithIsbn = {
+      const bookingWithEan = {
         ...booking,
         stock: {
           ...booking.stock,
@@ -122,7 +122,7 @@ describe('BookingDetailsTicketContent', () => {
           },
         },
       }
-      const { queryByTestId } = render(<BookingDetailsTicketContent booking={bookingWithIsbn} />)
+      const { queryByTestId } = render(<BookingDetailsTicketContent booking={bookingWithEan} />)
       expect(queryByTestId('ean')).toBeNull()
     })
   })

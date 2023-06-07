@@ -45,7 +45,7 @@ describe('<OfferDescription />', () => {
       ...offerResponseSnap,
       extraData: {
         author: 'Dupont',
-        isbn: '2-7654-1005-4',
+        ean: '2-7654-1005-4',
         performer: 'Lomepal',
         speaker: 'Patrick',
         stageDirector: 'Thierry',
@@ -69,7 +69,7 @@ describe('<OfferDescription />', () => {
       ...offerResponseSnap,
       extraData: {
         author: '',
-        isbn: '',
+        ean: '',
         performer: '',
         speaker: '',
         stageDirector: '',

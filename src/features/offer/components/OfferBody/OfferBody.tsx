@@ -93,7 +93,7 @@ export const OfferBody: FunctionComponent<Props> = ({
   const { userPosition: position } = useGeolocation()
 
   const shouldFetchSearchVenueOffers = Boolean(
-    enableMultivenueOffer && isMultivenueCompatibleOffer && offer?.extraData?.isbn
+    enableMultivenueOffer && isMultivenueCompatibleOffer && offer?.extraData?.ean
   )
   const {
     hasNextPage,
@@ -113,7 +113,7 @@ export const OfferBody: FunctionComponent<Props> = ({
       latitude: offer?.venue?.coordinates?.latitude ?? 0,
       longitude: offer?.venue?.coordinates?.longitude ?? 0,
     },
-    query: offer?.extraData?.isbn ?? '',
+    query: offer?.extraData?.ean ?? '',
     queryOptions: { enabled: shouldFetchSearchVenueOffers },
   })
 

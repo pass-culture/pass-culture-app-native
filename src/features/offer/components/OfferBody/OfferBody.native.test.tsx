@@ -485,12 +485,12 @@ describe('<OfferBody />', () => {
       } as unknown as UseQueryResult<UserReportedOffersResponse>)
     })
 
-    it('should not display other venues available button when offer subcategory is "Livres audio physiques" and offer has an ISBN', async () => {
+    it('should not display other venues available button when offer subcategory is "Livres audio physiques" and offer has an EAN', async () => {
       mockUseOffer.mockReturnValueOnce({
         data: {
           ...mockOffer,
           subcategoryId: SubcategoryIdEnum.LIVRE_AUDIO_PHYSIQUE,
-          extraData: { isbn: '2765410054' },
+          extraData: { ean: '2765410054' },
         },
       })
       renderOfferBody()
@@ -499,12 +499,12 @@ describe('<OfferBody />', () => {
       expect(screen.queryByText('Voir d’autres lieux disponibles')).toBeNull()
     })
 
-    it('should not display other venues available button when offer subcategory is "Livres papier" and offer has an ISBN', async () => {
+    it('should not display other venues available button when offer subcategory is "Livres papier" and offer has an EAN', async () => {
       mockUseOffer.mockReturnValueOnce({
         data: {
           ...mockOffer,
           subcategoryId: SubcategoryIdEnum.LIVRE_PAPIER,
-          extraData: { isbn: '2765410054' },
+          extraData: { ean: '2765410054' },
         },
       })
       renderOfferBody()
@@ -545,12 +545,12 @@ describe('<OfferBody />', () => {
       } as unknown as UseQueryResult<UserReportedOffersResponse>)
     })
 
-    it('should display other venues available button when offer subcategory is "Livres audio physiques", offer has an ISBN and that there are other venues offering the same offer', async () => {
+    it('should display other venues available button when offer subcategory is "Livres audio physiques", offer has an EAN and that there are other venues offering the same offer', async () => {
       mockUseOffer.mockReturnValueOnce({
         data: {
           ...mockOffer,
           subcategoryId: SubcategoryIdEnum.LIVRE_AUDIO_PHYSIQUE,
-          extraData: { isbn: '2765410054' },
+          extraData: { ean: '2765410054' },
         },
       })
       mockNbVenueItems = 2
@@ -561,12 +561,12 @@ describe('<OfferBody />', () => {
       expect(screen.getByText('Voir d’autres lieux disponibles')).toBeTruthy()
     })
 
-    it('should not display other venues available button when offer subcategory is "Livres audio physiques", offer has an ISBN and that there are not other venues offering the same offer', async () => {
+    it('should not display other venues available button when offer subcategory is "Livres audio physiques", offer has an EAN and that there are not other venues offering the same offer', async () => {
       mockUseOffer.mockReturnValueOnce({
         data: {
           ...mockOffer,
           subcategoryId: SubcategoryIdEnum.LIVRE_AUDIO_PHYSIQUE,
-          extraData: { isbn: '2765410054' },
+          extraData: { ean: '2765410054' },
         },
       })
       mockNbVenueItems = 0
@@ -577,7 +577,7 @@ describe('<OfferBody />', () => {
       expect(screen.queryByText('Voir d’autres lieux disponibles')).toBeNull()
     })
 
-    it('should not display other venues available button when offer subcategory is "Livres audio physiques" and offer has not an ISBN', async () => {
+    it('should not display other venues available button when offer subcategory is "Livres audio physiques" and offer has not an EAN', async () => {
       mockUseOffer.mockReturnValueOnce({
         data: { ...mockOffer, subcategoryId: SubcategoryIdEnum.LIVRE_AUDIO_PHYSIQUE },
       })
@@ -587,12 +587,12 @@ describe('<OfferBody />', () => {
       expect(screen.queryByText('Voir d’autres lieux disponibles')).toBeNull()
     })
 
-    it('should display other venues available button when offer subcategory is "Livres papier", offer has an ISBN  and that there are other venues offering the same offer', async () => {
+    it('should display other venues available button when offer subcategory is "Livres papier", offer has an EAN  and that there are other venues offering the same offer', async () => {
       mockUseOffer.mockReturnValueOnce({
         data: {
           ...mockOffer,
           subcategoryId: SubcategoryIdEnum.LIVRE_PAPIER,
-          extraData: { isbn: '2765410054' },
+          extraData: { ean: '2765410054' },
         },
       })
       mockNbVenueItems = 2
@@ -603,12 +603,12 @@ describe('<OfferBody />', () => {
       expect(screen.getByText('Voir d’autres lieux disponibles')).toBeTruthy()
     })
 
-    it('should not display other venues available button when offer subcategory is "Livres papier", offer has an ISBN  and that there are other venues offering the same offer', async () => {
+    it('should not display other venues available button when offer subcategory is "Livres papier", offer has an EAN  and that there are other venues offering the same offer', async () => {
       mockUseOffer.mockReturnValueOnce({
         data: {
           ...mockOffer,
           subcategoryId: SubcategoryIdEnum.LIVRE_PAPIER,
-          extraData: { isbn: '2765410054' },
+          extraData: { ean: '2765410054' },
         },
       })
       mockNbVenueItems = 0
@@ -619,7 +619,7 @@ describe('<OfferBody />', () => {
       expect(screen.queryByText('Voir d’autres lieux disponibles')).toBeNull()
     })
 
-    it('should not display other venues available button when offer subcategory is "Livres papier" and offer has not an ISBN', async () => {
+    it('should not display other venues available button when offer subcategory is "Livres papier" and offer has not an EAN', async () => {
       mockUseOffer.mockReturnValueOnce({
         data: { ...mockOffer, subcategoryId: SubcategoryIdEnum.LIVRE_PAPIER },
       })
@@ -689,7 +689,7 @@ describe('<OfferBody />', () => {
         data: {
           ...mockOffer,
           subcategoryId: SubcategoryIdEnum.LIVRE_PAPIER,
-          extraData: { isbn: '2765410054' },
+          extraData: { ean: '2765410054' },
         },
       })
       mockNbVenueItems = 2

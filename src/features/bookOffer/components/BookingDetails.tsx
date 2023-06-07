@@ -73,7 +73,7 @@ export function BookingDetails({ stocks, onPressBookOffer, isLoading }: BookingD
       offer?.subcategoryId === SubcategoryIdEnum.LIVRE_AUDIO_PHYSIQUE
   )
   const shouldFetchSearchVenueOffers = Boolean(
-    enableMultivenueOffer && isMultivenueCompatibleOffer && offer?.extraData?.isbn
+    enableMultivenueOffer && isMultivenueCompatibleOffer && offer?.extraData?.ean
   )
 
   const { onScroll: onScrollModal } = useOpacityTransition()
@@ -96,7 +96,7 @@ export function BookingDetails({ stocks, onPressBookOffer, isLoading }: BookingD
       latitude: offer?.venue?.coordinates?.latitude ?? 0,
       longitude: offer?.venue?.coordinates?.longitude ?? 0,
     },
-    query: offer?.extraData?.isbn ?? '',
+    query: offer?.extraData?.ean ?? '',
     queryOptions: { enabled: shouldFetchSearchVenueOffers },
   })
   const isRefreshing = useIsFalseWithDelay(isFetching, ANIMATION_DURATION)

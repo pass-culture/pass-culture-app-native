@@ -4,13 +4,13 @@ import styled from 'styled-components/native'
 import { Typo, getSpacing } from 'ui/theme'
 
 type Props = {
-  isbn: string
+  ean: string
 }
 
-export const Ean: FunctionComponent<Props> = ({ isbn }) => (
+export const Ean: FunctionComponent<Props> = ({ ean }) => (
   <EANContainer testID="ean">
     <Typo.Caption>EAN&nbsp;</Typo.Caption>
-    <Typo.CaptionNeutralInfo>{isbn}</Typo.CaptionNeutralInfo>
+    <Typo.CaptionNeutralInfo>{ean}</Typo.CaptionNeutralInfo>
   </EANContainer>
 )
 
