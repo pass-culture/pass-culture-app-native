@@ -84,6 +84,7 @@ describe('<FavoriteButton />', () => {
       isUserLoading: false,
     })
     renderFavoriteButton()
+    await act(async () => {})
 
     await act(async () => {
       fireEvent.press(screen.getByTestId('icon-favorite'))

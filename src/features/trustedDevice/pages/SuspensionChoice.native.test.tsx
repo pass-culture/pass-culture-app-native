@@ -1,4 +1,3 @@
-import { rest } from 'msw'
 import React from 'react'
 
 import { navigate } from '__mocks__/@react-navigation/native'
@@ -6,8 +5,8 @@ import * as NavigationHelpers from 'features/navigation/helpers/openUrl'
 import { analytics } from 'libs/analytics'
 import { env } from 'libs/environment'
 import { eventMonitoring, MonitoringError } from 'libs/monitoring'
+import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { server } from 'tests/server'
 import { fireEvent, render, screen, waitFor, act } from 'tests/utils'
 import { SNACK_BAR_TIME_OUT } from 'ui/components/snackBar/SnackBarContext'
 
@@ -108,19 +107,13 @@ function renderSuspensionChoice() {
 }
 
 function simulateSuspendForSuspiciousLoginSuccess() {
-  server.use(
-    rest.post(
-      env.API_BASE_URL + '/native/v1/account/suspend_for_suspicious_login',
-      async (_, res, ctx) => res.once(ctx.status(200))
-    )
-  )
+  mockServer.post('/native/v1/account/suspend_for_suspicious_login', {
+    responseOptions: { statusCode: 200 },
+  })
 }
 
 function simulateSuspendForSuspiciousLoginError() {
-  server.use(
-    rest.post(
-      env.API_BASE_URL + '/native/v1/account/suspend_for_suspicious_login',
-      async (_, res, ctx) => res.once(ctx.status(400))
-    )
-  )
+  mockServer.post('/native/v1/account/suspend_for_suspicious_login', {
+    responseOptions: { statusCode: 400 },
+  })
 }
