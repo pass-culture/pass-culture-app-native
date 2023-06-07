@@ -51,7 +51,7 @@ export const PageWithHeader: FunctionComponent<Props> = (props) => {
         ) : null}
       </CustomKeyboardAvoidingView>
       <BlurHeaderContainer height={headerHeight}>
-        <BlurHeader blurAmount={8} />
+        <BlurHeader />
       </BlurHeaderContainer>
     </React.Fragment>
   )
