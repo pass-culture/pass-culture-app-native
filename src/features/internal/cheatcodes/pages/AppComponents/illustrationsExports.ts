@@ -16,6 +16,19 @@ import { BicolorTables } from 'ui/svg/icons/BicolorTables'
 import { BicolorTicketBooked } from 'ui/svg/icons/BicolorTicketBooked'
 import { BicolorUserFavorite } from 'ui/svg/icons/BicolorUserFavorite'
 import { CalendarIllustration } from 'ui/svg/icons/CalendarIllustration'
+import { ArtsCrafts } from 'ui/svg/icons/categories/ArtsCrafts'
+import { BooksMediaPress } from 'ui/svg/icons/categories/BooksMediaPress'
+import { CDVinylsOnlineMusic } from 'ui/svg/icons/categories/CDVinylsOnlineMusic'
+import { ConcertsFestivals } from 'ui/svg/icons/categories/ConcertsFestivals'
+import { ConferencesMeetings } from 'ui/svg/icons/categories/ConferencesMeetings'
+import { FilmsSeriesCinema } from 'ui/svg/icons/categories/FilmsSeriesCinema'
+import { LibrariesMediaLibraries } from 'ui/svg/icons/categories/LibrariesMediaLibraries'
+import { MuseumCulturalVisits } from 'ui/svg/icons/categories/MuseumCulturalVisits'
+import { MusicalInstruments } from 'ui/svg/icons/categories/MusicalInstruments'
+import { OnlineEvents } from 'ui/svg/icons/categories/OnlineEvents'
+import { Shows } from 'ui/svg/icons/categories/Shows'
+import { VideoVideoGames } from 'ui/svg/icons/categories/VideoVideoGames'
+import { YouthCards } from 'ui/svg/icons/categories/YouthCards'
 import { EmailSent } from 'ui/svg/icons/EmailSent'
 import { EmptyFavorites } from 'ui/svg/icons/EmptyFavorites'
 import { HappyFace } from 'ui/svg/icons/HappyFace'
@@ -71,4 +84,20 @@ export const UniqueColorIllustrations = {
   SadFace,
   Star,
   UserBlocked,
+}
+
+export const SearchCategoriesIllustrations = {
+  ArtsCrafts,
+  BooksMediaPress,
+  CDVinylsOnlineMusic,
+  ConcertsFestivals,
+  ConferencesMeetings,
+  FilmsSeriesCinema,
+  LibrariesMediaLibraries,
+  MuseumCulturalVisits,
+  MusicalInstruments,
+  OnlineEvents,
+  Shows,
+  VideoVideoGames,
+  YouthCards,
 }
