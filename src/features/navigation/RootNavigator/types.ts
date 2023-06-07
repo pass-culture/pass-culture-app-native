@@ -144,11 +144,6 @@ export type RootStackParamList = {
   ABTestingPOC: undefined
   AccountCreated: undefined
   AccountReactivationSuccess: undefined
-  AfterChangeEmailValidationBuffer: {
-    token: string
-    expiration_timestamp: number
-    new_email: string
-  }
   AfterSignupEmailValidationBuffer: { token: string; expiration_timestamp: number; email: string }
   AppComponents: undefined
   BannedCountryError: undefined
