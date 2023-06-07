@@ -5,6 +5,7 @@ import * as useEmailUpdateStatus from 'features/profile/helpers/useEmailUpdateSt
 import { ValidationChangeEmail } from 'features/profile/pages/ValidationChangeEmail/ValidationChangeEmail'
 import { checkAccessibilityFor, render } from 'tests/utils/web'
 
+jest.mock('react-query')
 jest.spyOn(useEmailUpdateStatus, 'useEmailUpdateStatus').mockReturnValue({
   data: {
     expired: false,

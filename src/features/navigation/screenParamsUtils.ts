@@ -16,6 +16,7 @@ type ScreensRequiringParsing = Extract<
   | 'SearchFilter'
   | 'LocationFilter'
   | 'ThematicHome'
+  | 'ValidationChangeEmail'
 >
 
 type ParamsList = Required<AllNavParamList>
@@ -121,6 +122,11 @@ export const screenParamsParser: ParamsParsers = {
     from: identityFn,
     moduleId: identityFn,
     moduleListId: identityFn,
+  },
+  ValidationChangeEmail: {
+    new_email: decodeURIComponent,
+    token: identityFn,
+    expiration_timestamp: Number,
   },
 }
 
