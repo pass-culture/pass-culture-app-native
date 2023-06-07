@@ -7,6 +7,7 @@ import { v4 as uuidv4 } from 'uuid'
 import { CookiesConsent } from 'features/cookies/pages/CookiesConsent'
 import { FavoriteListSurveyModal } from 'features/favorites/favoriteList/FakeDoor/FavoriteListSurveyModal'
 import { ForceUpdate } from 'features/forceUpdate/pages/ForceUpdate'
+import { VideoModal } from 'features/home/components/modals/VideoModal'
 import { CheatCodesButton } from 'features/internal/cheatcodes/components/CheatCodesButton/CheatCodesButton'
 import { Row } from 'features/internal/cheatcodes/components/Row'
 import { useSomeVenueId } from 'features/internal/cheatcodes/hooks/useSomeVenueId'
@@ -27,6 +28,7 @@ const EIFFEL_TOWER_COORDINATES = { lat: 48.8584, lng: 2.2945 }
 export function Navigation(): JSX.Element {
   const { navigate } = useNavigation<UseNavigationType>()
   const [screenError, setScreenError] = useState<ScreenError | undefined>(undefined)
+  const [videoModalVisible, setVideoModalVisible] = useState(false)
   const distanceToEiffelTower = useDistance(EIFFEL_TOWER_COORDINATES)
   const venueId = useSomeVenueId()
   const { showInfoSnackBar } = useSnackBarContext()
@@ -214,9 +216,13 @@ export function Navigation(): JSX.Element {
               onPress={() => navigate('DynamicSocials')}
             />
           </Row>
+          <Row half>
+            <ButtonPrimary wording="Modale vidéo 🎥" onPress={() => setVideoModalVisible(true)} />
+          </Row>
         </StyledContainer>
         <Spacer.BottomScreen />
       </ScrollView>
+      <VideoModal visible={videoModalVisible} hideModal={() => setVideoModalVisible(false)} />
     </React.Fragment>
   )
 }
