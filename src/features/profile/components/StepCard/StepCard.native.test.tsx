@@ -78,7 +78,7 @@ describe('<StepCard />', () => {
     })
   })
 
-  it('should return the subtitle greySemiDark when type is StepCardType.DONE', () => {
+  it('should not return the subtitle when type is StepCardType.DONE', () => {
     render(
       <StepCard
         title={title}
@@ -88,12 +88,10 @@ describe('<StepCard />', () => {
       />
     )
 
-    expect(screen.getByText(subtitle)).toHaveStyle({
-      color: theme.colors.greyDark,
-    })
+    expect(screen.queryByText(subtitle)).toBeNull()
   })
 
-  it('should return the subtitle greySemiDark when type is StepCardType.DISABLED', () => {
+  it('should not return the subtitle when type is StepCardType.DISABLED', () => {
     render(
       <StepCard
         title={title}
@@ -103,8 +101,6 @@ describe('<StepCard />', () => {
       />
     )
 
-    expect(screen.getByText(subtitle)).toHaveStyle({
-      color: theme.colors.greyDark,
-    })
+    expect(screen.queryByText(subtitle)).toBeNull()
   })
 })
