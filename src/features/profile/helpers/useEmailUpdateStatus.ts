@@ -26,7 +26,7 @@ export const useEmailUpdateStatus = () => {
   const netInfo = useNetInfoContext()
   const { isLoggedIn } = useAuthContext()
 
-  return useQuery([QueryKeys.EMAIL_UPDATE_STATUS], () => getEmailUpdateStatus(), {
+  return useQuery([QueryKeys.EMAIL_UPDATE_STATUS], getEmailUpdateStatus, {
     enabled: !!netInfo.isConnected && isLoggedIn,
   })
 }
