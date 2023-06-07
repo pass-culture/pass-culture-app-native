@@ -345,7 +345,7 @@ Array [
               ]
             }
           >
-            si tu as un dossier en cours, tu ne pourras pas en déposer un nouveau
+            si tu as un dossier en cours, tu ne pourras pas en déposer un nouveau.
           </Text>
         </View>
       </View>
@@ -407,7 +407,7 @@ Array [
               ]
             }
           >
-            tu n’auras plus accès au catalogue
+            tu n’auras plus accès au catalogue.
           </Text>
         </View>
       </View>

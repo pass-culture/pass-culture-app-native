@@ -29,7 +29,7 @@ export function ButtonInsideTextInner({
 
   const hasIcon = !!Icon
   const paddingIcon = typography === 'Caption' ? getSpacing(1) : getSpacing(1.25)
-  const paddingForIcon = (hasIcon && Platform.OS) === 'web' ? paddingIcon : 0
+  const paddingForIcon = hasIcon && Platform.OS === 'web' ? paddingIcon : 0
 
   return (
     <Container paddingForIcon={paddingForIcon}>

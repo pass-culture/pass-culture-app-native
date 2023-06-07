@@ -406,11 +406,11 @@ exports[`<AccountSecurity/> should match snapshot 1`] = `
     </Text>
   </View>
   <View
-    numberOfSpaces={5}
+    numberOfSpaces={2}
     style={
       Array [
         Object {
-          "height": 20,
+          "height": 8,
         },
       ]
     }
