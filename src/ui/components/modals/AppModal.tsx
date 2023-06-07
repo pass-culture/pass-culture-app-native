@@ -33,8 +33,8 @@ type Props = {
   scrollEnabled?: boolean
   onBackdropPress?: () => void
   onModalHide?: () => void
-  customModalHeader?: JSX.Element
-  fixedModalBottom?: JSX.Element
+  customModalHeader?: React.JSX.Element
+  fixedModalBottom?: React.JSX.Element
   isFullscreen?: boolean
   noPadding?: boolean
   modalSpacing?: ModalSpacing

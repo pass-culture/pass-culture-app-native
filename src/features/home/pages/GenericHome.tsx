@@ -27,7 +27,7 @@ import { Spinner } from 'ui/components/Spinner'
 import { getSpacing, Spacer } from 'ui/theme'
 
 type GenericHomeProps = {
-  Header: JSX.Element
+  Header: React.JSX.Element
   modules: HomepageModule[]
   homeId: string
   shouldDisplayScrollToTop?: boolean

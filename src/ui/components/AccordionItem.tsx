@@ -23,9 +23,9 @@ import { ArrowNext as DefaultArrowNext } from '../svg/icons/ArrowNext'
 import { getSpacing, Spacer, Typo } from '../theme'
 
 interface AccordionItemProps {
-  title: JSX.Element | string
+  title: React.JSX.Element | string
   accessibilityTitle?: string
-  children: JSX.Element | JSX.Element[]
+  children: React.JSX.Element | React.JSX.Element[]
   defaultOpen?: boolean
   onOpenOnce?: () => void
   onOpen?: () => void
