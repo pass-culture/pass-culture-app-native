@@ -21,12 +21,12 @@ interface Props {
   onClose?: () => void
 }
 
-const HEIGHT_CONTAINER = getSpacing(12)
+const HEADER_HEIGHT = getSpacing(12)
 
 export const useGetHeaderHeight = () => {
   const { top } = useCustomSafeInsets()
 
-  return HEIGHT_CONTAINER + top + 1
+  return HEADER_HEIGHT + top + 1
 }
 
 export const PageHeaderWithoutPlaceholder: React.FC<Props> = ({
@@ -73,7 +73,7 @@ const Header = styled.View(({ theme }) => ({
 
 const Container = styled.View({
   alignItems: 'center',
-  height: HEIGHT_CONTAINER,
+  height: HEADER_HEIGHT,
   justifyContent: 'center',
 })
 
