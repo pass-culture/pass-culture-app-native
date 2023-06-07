@@ -32,6 +32,7 @@ export const SnackBarProvider = memo(function SnackBarProviderComponent({ childr
     progressBarColor: theme.colors.transparent,
     color: theme.colors.white,
     refresher: 0,
+    timeout: SNACK_BAR_TIME_OUT,
   })
 
   const showSnackBar = (settings: SnackBarSettings) =>
