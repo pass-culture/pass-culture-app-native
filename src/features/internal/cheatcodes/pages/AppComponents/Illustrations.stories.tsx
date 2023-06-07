@@ -1,6 +1,7 @@
 import { IconsContainer as Illustrations } from 'features/internal/cheatcodes/pages/AppComponents/IconsContainer'
 import {
   BicolorIllustrations,
+  SearchCategoriesIllustrations,
   UniqueColorIllustrations,
 } from 'features/internal/cheatcodes/pages/AppComponents/illustrationsExports'
 
@@ -24,4 +25,10 @@ export const UniqueColor = Illustrations.bind({})
 UniqueColor.args = {
   title: 'Illustration icons should have a standard size of 140',
   icons: UniqueColorIllustrations,
+}
+
+export const SearchCategories = Illustrations.bind({})
+SearchCategories.args = {
+  title: 'Illustration icons should have a standard size of 140',
+  icons: SearchCategoriesIllustrations,
 }
