@@ -43,6 +43,7 @@ type Props = {
   keyboardShouldPersistTaps?: ScrollViewProps['keyboardShouldPersistTaps']
   shouldAddSpacerBetweenHeaderAndContent?: boolean
   testID?: string
+  isUpToStatusBar?: boolean
 } & ModalIconProps
 
 // Without this, the margin is recomputed with arbitrary values
@@ -76,6 +77,7 @@ export const AppModal: FunctionComponent<Props> = ({
   keyboardShouldPersistTaps,
   shouldAddSpacerBetweenHeaderAndContent = true,
   testID = 'modal',
+  isUpToStatusBar,
 }) => {
   const iconProps = {
     rightIconAccessibilityLabel,
@@ -87,7 +89,7 @@ export const AppModal: FunctionComponent<Props> = ({
   } as ModalIconProps
 
   const { height: windowHeight, width: windowWidth } = useWindowDimensions()
-  const { bottom } = useCustomSafeInsets()
+  const { bottom, top } = useCustomSafeInsets()
   const { isSmallScreen } = useTheme()
 
   const [keyboardHeight, setKeyboardHeight] = useState(0)
@@ -151,10 +153,10 @@ export const AppModal: FunctionComponent<Props> = ({
   let modalContainerHeight = isSmallScreen ? windowHeight : modalHeight
 
   // no fullscreen in desktop view
-  if (isFullscreen) {
+  if (isFullscreen || isUpToStatusBar) {
     desktopMaxHeight = windowHeight * DESKTOP_FULLSCREEN_RATIO
     maxContainerHeight = windowHeight
-    modalContainerHeight = windowHeight
+    modalContainerHeight = isUpToStatusBar ? windowHeight - top : windowHeight
   }
 
   const fullscreenModalBody = useMemo(() => {
@@ -218,7 +220,7 @@ export const AppModal: FunctionComponent<Props> = ({
             {...iconProps}
           />
         )}
-        {isFullscreen || maxHeight ? (
+        {isFullscreen || maxHeight || isUpToStatusBar ? (
           fullscreenModalBody
         ) : (
           <React.Fragment>
