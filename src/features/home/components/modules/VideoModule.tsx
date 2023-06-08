@@ -31,7 +31,7 @@ export const VideoModule: FunctionComponent<VideoModuleProps> = (props) => {
     <Container>
       <Typo.Title3>{props.title}</Typo.Title3>
       <Spacer.Column numberOfSpaces={5} />
-      <StyledTouchable onPress={showVideoModal}>
+      <StyledTouchable onPress={showVideoModal} testID={'video-thumbnail'}>
         <Thumbnail source={{ uri: props.videoThumbnail }}>
           <DurationCaptionContainer>
             <DurationCaption>{videoDuration}</DurationCaption>
