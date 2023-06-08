@@ -56,24 +56,26 @@ export function IdentityCheckValidation() {
   return (
     <PageWithHeader
       title="Mon identité"
-      fixedTopChildren={
-        <CenteredTitle title="Les informations extraites sont-elles correctes&nbsp;?" />
-      }
       scrollChildren={
-        <BodyContainer>
-          <Spacer.Column numberOfSpaces={6} />
-          <StyledBody>Ton prénom</StyledBody>
-          <Spacer.Column numberOfSpaces={2} />
-          <TextToValidate testID="validation-first-name">{identification.firstName}</TextToValidate>
-          <Spacer.Column numberOfSpaces={5} />
-          <StyledBody>Ton nom de famille</StyledBody>
-          <Spacer.Column numberOfSpaces={2} />
-          <TextToValidate testID="validation-name">{identification.lastName}</TextToValidate>
-          <Spacer.Column numberOfSpaces={5} />
-          <StyledBody>Ta date de naissance</StyledBody>
-          <Spacer.Column numberOfSpaces={2} />
-          <TextToValidate testID="validation-birth-date">{birthDate}</TextToValidate>
-        </BodyContainer>
+        <React.Fragment>
+          <CenteredTitle title="Les informations extraites sont-elles correctes&nbsp;?" />
+          <BodyContainer>
+            <Spacer.Column numberOfSpaces={6} />
+            <StyledBody>Ton prénom</StyledBody>
+            <Spacer.Column numberOfSpaces={2} />
+            <TextToValidate testID="validation-first-name">
+              {identification.firstName}
+            </TextToValidate>
+            <Spacer.Column numberOfSpaces={5} />
+            <StyledBody>Ton nom de famille</StyledBody>
+            <Spacer.Column numberOfSpaces={2} />
+            <TextToValidate testID="validation-name">{identification.lastName}</TextToValidate>
+            <Spacer.Column numberOfSpaces={5} />
+            <StyledBody>Ta date de naissance</StyledBody>
+            <Spacer.Column numberOfSpaces={2} />
+            <TextToValidate testID="validation-birth-date">{birthDate}</TextToValidate>
+          </BodyContainer>
+        </React.Fragment>
       }
       fixedBottomChildren={
         <ButtonPrimary

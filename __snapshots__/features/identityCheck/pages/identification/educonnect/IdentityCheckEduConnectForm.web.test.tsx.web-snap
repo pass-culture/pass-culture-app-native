@@ -115,94 +115,122 @@ Object {
 
 <body>
     <div>
-      <div
-        class="css-view-175oi2r r-backgroundColor-bdcx94 r-display-6koalj r-flexBasis-1iusvr4 r-flexDirection-eqz5dr r-flexGrow-16y2uox r-flexShrink-1wbh5a2"
+      <header
+        class="css-view-175oi2r r-backgroundColor-1stjixc r-borderBottomColor-8fzpo5 r-borderBottomWidth-qklmqi r-left-1d2f490 r-position-u8s1d r-right-zchlnj r-top-ipm5af r-zIndex-184en5c"
+        role="banner"
       >
-        <header
-          class="css-view-175oi2r r-width-13qz1uu"
-          role="banner"
-        >
-          <div
-            class="css-view-175oi2r"
-            style="height: 64px;"
-          />
-          <div
-            class="css-view-175oi2r r-backgroundColor-bdcx94 r-position-u8s1d r-top-ipm5af r-width-13qz1uu r-zIndex-184en5c"
-          >
-            <div
-              class="css-view-175oi2r r-height-10ptun7"
-            />
-            <div
-              class="css-view-175oi2r r-alignItems-1awozwy r-height-h3s6tt r-justifyContent-1777fci"
-            >
-              <div
-                class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz r-justifyContent-1wtj0ep r-width-13qz1uu"
-              >
-                <div
-                  class="css-view-175oi2r r-alignItems-1awozwy r-flexBasis-1iusvr4 r-flexDirection-18u37iz r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-justifyContent-1h0z5md r-paddingLeft-f727ji r-paddingRight-j2kj52"
-                  data-testid="back-button-container"
-                >
-                  <button
-                    aria-label="Revenir en arrière"
-                    class="c0 c1 sc-gsDKAQ c1"
-                    data-testid="Revenir en arrière"
-                    tabindex="0"
-                    title="Revenir en arrière"
-                    type="button"
-                  >
-                    <div
-                      class="css-view-175oi2r"
-                      data-testid="icon-back"
-                    >
-                      <div
-                        class="css-text-1rynq56"
-                        dir="ltr"
-                      >
-                        icon-back-SVG-Mock
-                      </div>
-                    </div>
-                    <div
-                      class="css-text-1rynq56 r-clipPath-129q975 r-height-109y4c4 r-overflow-1udh08x r-width-92ng3h"
-                      dir="ltr"
-                    >
-                      Retour
-                    </div>
-                  </button>
-                </div>
-                <h1
-                  aria-level="1"
-                  class="css-text-1rynq56 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-whiteSpace-3s2u2q r-wordWrap-1iln25a r-color-jwli3a r-fontFamily-yv33h5 r-fontSize-a023e6 r-lineHeight-rjixqe r-textAlign-q4m81j"
-                  dir="ltr"
-                  role="heading"
-                >
-                  Mon identité
-                </h1>
-                <div
-                  class="css-view-175oi2r r-alignItems-1awozwy r-flexBasis-1iusvr4 r-flexDirection-18u37iz r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-justifyContent-17s6mgv r-paddingLeft-f727ji r-paddingRight-j2kj52"
-                  data-testid="close-button-container"
-                />
-              </div>
-            </div>
-          </div>
-        </header>
         <div
-          class="css-view-175oi2r r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2"
+          class="css-view-175oi2r r-height-10ptun7"
+        />
+        <div
+          class="css-view-175oi2r r-alignItems-1awozwy r-height-h3s6tt r-justifyContent-1777fci"
         >
           <div
-            class="css-view-175oi2r r-alignItems-1awozwy r-backgroundColor-14lw9ot r-borderTopLeftRadius-1ct94d3 r-borderTopRightRadius-3y0fky r-display-6koalj r-flexBasis-1iusvr4 r-flexDirection-eqz5dr r-flexGrow-16y2uox r-height-1pi2tsx r-overflow-1jwulwa r-paddingTop-ttdzmv"
+            class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz r-justifyContent-1wtj0ep r-width-13qz1uu"
           >
             <div
-              class="css-view-175oi2r r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-maxWidth-1ik5qf4 r-width-13qz1uu"
+              class="css-view-175oi2r r-alignItems-1awozwy r-flexBasis-1iusvr4 r-flexDirection-18u37iz r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-justifyContent-1h0z5md r-paddingLeft-f727ji r-paddingRight-j2kj52"
+              data-testid="back-button-container"
             >
-              <div
-                class="css-view-175oi2r r-WebkitOverflowScrolling-150rngu r-flexDirection-eqz5dr r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-overflowX-11yh6sk r-overflowY-1rnoaur r-transform-1sncvnh"
+              <button
+                aria-label="Revenir en arrière"
+                class="c0 c1 sc-gsDKAQ c1"
+                data-testid="Revenir en arrière"
+                tabindex="0"
+                title="Revenir en arrière"
+                type="button"
               >
                 <div
                   class="css-view-175oi2r"
-                  style="flex-grow: 1; flex-direction: column; padding-bottom: 0px; padding-right: 20px; padding-left: 20px;"
+                  data-testid="icon-back"
                 >
                   <div
-                    class="css-view-175oi2r r-alignSelf-1kihuf0 r-paddingBottom-rabhyy r-paddingLeft-35ea9k r-paddingRight-gxpyh3 r-paddingTop-10iw8no"
+                    class="css-text-1rynq56"
+                    dir="ltr"
+                  >
+                    icon-back-SVG-Mock
+                  </div>
+                </div>
+                <div
+                  class="css-text-1rynq56 r-clipPath-129q975 r-height-109y4c4 r-overflow-1udh08x r-width-92ng3h"
+                  dir="ltr"
+                >
+                  Retour
+                </div>
+              </button>
+            </div>
+            <h1
+              aria-level="1"
+              class="css-text-1rynq56 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-whiteSpace-3s2u2q r-wordWrap-1iln25a r-color-1rmcaf9 r-fontFamily-yv33h5 r-fontSize-a023e6 r-lineHeight-rjixqe r-textAlign-q4m81j"
+              dir="ltr"
+              role="heading"
+            >
+              Mon identité
+            </h1>
+            <div
+              class="css-view-175oi2r r-alignItems-1awozwy r-flexBasis-1iusvr4 r-flexDirection-18u37iz r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-justifyContent-17s6mgv r-paddingLeft-f727ji r-paddingRight-j2kj52"
+              data-testid="close-button-container"
+            />
+          </div>
+        </div>
+      </header>
+      <div
+        class="css-view-175oi2r r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2"
+      >
+        <div
+          class="css-view-175oi2r r-alignItems-1awozwy r-backgroundColor-14lw9ot r-borderTopLeftRadius-1ct94d3 r-borderTopRightRadius-3y0fky r-display-6koalj r-flexBasis-1iusvr4 r-flexDirection-eqz5dr r-flexGrow-16y2uox r-height-1pi2tsx r-overflow-1jwulwa r-paddingTop-fd4yh7"
+        >
+          <div
+            class="css-view-175oi2r r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-maxWidth-1ik5qf4 r-width-13qz1uu"
+          >
+            <div
+              class="css-view-175oi2r r-WebkitOverflowScrolling-150rngu r-flexDirection-eqz5dr r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-overflowX-11yh6sk r-overflowY-1rnoaur r-transform-1sncvnh"
+            >
+              <div
+                class="css-view-175oi2r"
+                style="flex-grow: 1; flex-direction: column; padding-bottom: 0px; padding-right: 20px; padding-left: 20px;"
+              >
+                <div
+                  class="css-view-175oi2r"
+                  style="height: 65px;"
+                />
+                <div
+                  class="css-view-175oi2r r-alignSelf-1kihuf0 r-paddingBottom-rabhyy r-paddingLeft-35ea9k r-paddingRight-gxpyh3 r-paddingTop-10iw8no"
+                >
+                  <div
+                    class="css-view-175oi2r"
+                  >
+                    <div
+                      class="css-text-1rynq56"
+                      dir="ltr"
+                    >
+                      undefined-SVG-Mock
+                    </div>
+                  </div>
+                </div>
+                <div
+                  class="css-text-1rynq56 r-color-v2ubm6 r-fontFamily-1gknse6 r-fontSize-a023e6 r-lineHeight-rjixqe r-textAlign-q4m81j"
+                  dir="ltr"
+                >
+                  Identification
+                </div>
+                <div
+                  class="css-view-175oi2r r-height-10ptun7"
+                />
+                <div
+                  class="css-text-1rynq56 r-color-v2ubm6 r-fontFamily-yv33h5 r-fontSize-a023e6 r-lineHeight-rjixqe r-textAlign-q4m81j"
+                  dir="ltr"
+                >
+                  Pour t’identifier, nous allons te demander de te connecter à EduConnect. Munis-toi de ton identifiant et ton mot de passe EduConnect ! Si tu ne les as pas, contacte ton établissement pour les récupérer.
+                </div>
+                <div
+                  class="css-view-175oi2r r-height-10ptun7"
+                />
+                <div
+                  class="css-view-175oi2r r-alignItems-1awozwy r-backgroundColor-nyej4v r-borderRadius-1xfd6ze r-flexDirection-18u37iz r-justifyContent-1wtj0ep r-paddingBottom-1l7z4oj r-paddingLeft-1qhn6m8 r-paddingRight-i023vh r-paddingTop-95jzfe"
+                >
+                  <div
+                    class="css-view-175oi2r r-paddingRight-i023vh"
                   >
                     <div
                       class="css-view-175oi2r"
@@ -216,97 +244,64 @@ Object {
                     </div>
                   </div>
                   <div
-                    class="css-text-1rynq56 r-color-v2ubm6 r-fontFamily-1gknse6 r-fontSize-a023e6 r-lineHeight-rjixqe r-textAlign-q4m81j"
-                    dir="ltr"
-                  >
-                    Identification
-                  </div>
-                  <div
-                    class="css-view-175oi2r r-height-10ptun7"
-                  />
-                  <div
-                    class="css-text-1rynq56 r-color-v2ubm6 r-fontFamily-yv33h5 r-fontSize-a023e6 r-lineHeight-rjixqe r-textAlign-q4m81j"
-                    dir="ltr"
-                  >
-                    Pour t’identifier, nous allons te demander de te connecter à EduConnect. Munis-toi de ton identifiant et ton mot de passe EduConnect ! Si tu ne les as pas, contacte ton établissement pour les récupérer.
-                  </div>
-                  <div
-                    class="css-view-175oi2r r-height-10ptun7"
-                  />
-                  <div
-                    class="css-view-175oi2r r-alignItems-1awozwy r-backgroundColor-nyej4v r-borderRadius-1xfd6ze r-flexDirection-18u37iz r-justifyContent-1wtj0ep r-paddingBottom-1l7z4oj r-paddingLeft-1qhn6m8 r-paddingRight-i023vh r-paddingTop-95jzfe"
+                    class="css-view-175oi2r r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2"
                   >
                     <div
-                      class="css-view-175oi2r r-paddingRight-i023vh"
+                      class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-1enofrn r-lineHeight-1cwl3u0"
+                      dir="ltr"
                     >
-                      <div
-                        class="css-view-175oi2r"
-                      >
-                        <div
-                          class="css-text-1rynq56"
-                          dir="ltr"
-                        >
-                          undefined-SVG-Mock
-                        </div>
-                      </div>
-                    </div>
-                    <div
-                      class="css-view-175oi2r r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2"
-                    >
-                      <div
-                        class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-1enofrn r-lineHeight-1cwl3u0"
-                        dir="ltr"
-                      >
-                        Un souci pour accéder à la page ? Essaie en navigation privée ou pense bien à accepter les pop-ups de ton navigateur.
-                      </div>
+                      Un souci pour accéder à la page ? Essaie en navigation privée ou pense bien à accepter les pop-ups de ton navigateur.
                     </div>
                   </div>
-                  <div
-                    class="css-view-175oi2r r-height-mabqd8"
-                  />
                 </div>
-              </div>
-              <div
-                class="css-view-175oi2r r-backgroundColor-14lw9ot r-bottom-1p0dtai r-left-1d2f490 r-paddingBottom-k8qxaj r-paddingHorizontal-d9fdf6 r-paddingTop-ttdzmv r-position-u8s1d r-right-zchlnj"
-              >
-                <button
-                  aria-label="Ouvrir un onglet ÉduConnect"
-                  class="c2 c3"
-                  data-testid="Ouvrir un onglet ÉduConnect"
-                  tabindex="0"
-                  type="button"
-                >
-                  <div
-                    class="css-view-175oi2r r-flexShrink-1q142lx"
-                  >
-                    <div
-                      aria-label="Nouvelle fenêtre"
-                      class="css-view-175oi2r"
-                      data-testid="button-icon"
-                    >
-                      <div
-                        class="css-text-1rynq56"
-                        dir="ltr"
-                      >
-                        button-icon-SVG-Mock
-                      </div>
-                    </div>
-                  </div>
-                  <div
-                    class="css-text-1rynq56 r-overflow-1udh08x r-textOverflow-1udbk01 r-whiteSpace-3s2u2q r-wordWrap-1iln25a r-color-jwli3a r-fontFamily-1gknse6 r-fontSize-a023e6 r-lineHeight-rjixqe r-marginLeft-1jkjb r-maxWidth-dnmrzs"
-                    dir="ltr"
-                  >
-                    Ouvrir un onglet ÉduConnect
-                  </div>
-                </button>
                 <div
-                  class="css-view-175oi2r r-height-3da1kt"
+                  class="css-view-175oi2r r-height-mabqd8"
                 />
               </div>
+            </div>
+            <div
+              class="css-view-175oi2r r-backgroundColor-14lw9ot r-bottom-1p0dtai r-left-1d2f490 r-paddingBottom-k8qxaj r-paddingHorizontal-d9fdf6 r-paddingTop-ttdzmv r-position-u8s1d r-right-zchlnj"
+            >
+              <button
+                aria-label="Ouvrir un onglet ÉduConnect"
+                class="c2 c3"
+                data-testid="Ouvrir un onglet ÉduConnect"
+                tabindex="0"
+                type="button"
+              >
+                <div
+                  class="css-view-175oi2r r-flexShrink-1q142lx"
+                >
+                  <div
+                    aria-label="Nouvelle fenêtre"
+                    class="css-view-175oi2r"
+                    data-testid="button-icon"
+                  >
+                    <div
+                      class="css-text-1rynq56"
+                      dir="ltr"
+                    >
+                      button-icon-SVG-Mock
+                    </div>
+                  </div>
+                </div>
+                <div
+                  class="css-text-1rynq56 r-overflow-1udh08x r-textOverflow-1udbk01 r-whiteSpace-3s2u2q r-wordWrap-1iln25a r-color-jwli3a r-fontFamily-1gknse6 r-fontSize-a023e6 r-lineHeight-rjixqe r-marginLeft-1jkjb r-maxWidth-dnmrzs"
+                  dir="ltr"
+                >
+                  Ouvrir un onglet ÉduConnect
+                </div>
+              </button>
+              <div
+                class="css-view-175oi2r r-height-3da1kt"
+              />
             </div>
           </div>
         </div>
       </div>
+      <div
+        class="css-view-175oi2r r-backdropFilter-1jy2u1p r-height-17lwhjb r-left-1d2f490 r-overflow-1udh08x r-position-u8s1d r-right-zchlnj r-top-ipm5af"
+      />
     </div>
   </body>,
   "container": .c0 {
@@ -420,94 +415,122 @@ Object {
 }
 
 <div>
-    <div
-      class="css-view-175oi2r r-backgroundColor-bdcx94 r-display-6koalj r-flexBasis-1iusvr4 r-flexDirection-eqz5dr r-flexGrow-16y2uox r-flexShrink-1wbh5a2"
+    <header
+      class="css-view-175oi2r r-backgroundColor-1stjixc r-borderBottomColor-8fzpo5 r-borderBottomWidth-qklmqi r-left-1d2f490 r-position-u8s1d r-right-zchlnj r-top-ipm5af r-zIndex-184en5c"
+      role="banner"
     >
-      <header
-        class="css-view-175oi2r r-width-13qz1uu"
-        role="banner"
-      >
-        <div
-          class="css-view-175oi2r"
-          style="height: 64px;"
-        />
-        <div
-          class="css-view-175oi2r r-backgroundColor-bdcx94 r-position-u8s1d r-top-ipm5af r-width-13qz1uu r-zIndex-184en5c"
-        >
-          <div
-            class="css-view-175oi2r r-height-10ptun7"
-          />
-          <div
-            class="css-view-175oi2r r-alignItems-1awozwy r-height-h3s6tt r-justifyContent-1777fci"
-          >
-            <div
-              class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz r-justifyContent-1wtj0ep r-width-13qz1uu"
-            >
-              <div
-                class="css-view-175oi2r r-alignItems-1awozwy r-flexBasis-1iusvr4 r-flexDirection-18u37iz r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-justifyContent-1h0z5md r-paddingLeft-f727ji r-paddingRight-j2kj52"
-                data-testid="back-button-container"
-              >
-                <button
-                  aria-label="Revenir en arrière"
-                  class="c0 c1 sc-gsDKAQ c1"
-                  data-testid="Revenir en arrière"
-                  tabindex="0"
-                  title="Revenir en arrière"
-                  type="button"
-                >
-                  <div
-                    class="css-view-175oi2r"
-                    data-testid="icon-back"
-                  >
-                    <div
-                      class="css-text-1rynq56"
-                      dir="ltr"
-                    >
-                      icon-back-SVG-Mock
-                    </div>
-                  </div>
-                  <div
-                    class="css-text-1rynq56 r-clipPath-129q975 r-height-109y4c4 r-overflow-1udh08x r-width-92ng3h"
-                    dir="ltr"
-                  >
-                    Retour
-                  </div>
-                </button>
-              </div>
-              <h1
-                aria-level="1"
-                class="css-text-1rynq56 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-whiteSpace-3s2u2q r-wordWrap-1iln25a r-color-jwli3a r-fontFamily-yv33h5 r-fontSize-a023e6 r-lineHeight-rjixqe r-textAlign-q4m81j"
-                dir="ltr"
-                role="heading"
-              >
-                Mon identité
-              </h1>
-              <div
-                class="css-view-175oi2r r-alignItems-1awozwy r-flexBasis-1iusvr4 r-flexDirection-18u37iz r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-justifyContent-17s6mgv r-paddingLeft-f727ji r-paddingRight-j2kj52"
-                data-testid="close-button-container"
-              />
-            </div>
-          </div>
-        </div>
-      </header>
       <div
-        class="css-view-175oi2r r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2"
+        class="css-view-175oi2r r-height-10ptun7"
+      />
+      <div
+        class="css-view-175oi2r r-alignItems-1awozwy r-height-h3s6tt r-justifyContent-1777fci"
       >
         <div
-          class="css-view-175oi2r r-alignItems-1awozwy r-backgroundColor-14lw9ot r-borderTopLeftRadius-1ct94d3 r-borderTopRightRadius-3y0fky r-display-6koalj r-flexBasis-1iusvr4 r-flexDirection-eqz5dr r-flexGrow-16y2uox r-height-1pi2tsx r-overflow-1jwulwa r-paddingTop-ttdzmv"
+          class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz r-justifyContent-1wtj0ep r-width-13qz1uu"
         >
           <div
-            class="css-view-175oi2r r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-maxWidth-1ik5qf4 r-width-13qz1uu"
+            class="css-view-175oi2r r-alignItems-1awozwy r-flexBasis-1iusvr4 r-flexDirection-18u37iz r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-justifyContent-1h0z5md r-paddingLeft-f727ji r-paddingRight-j2kj52"
+            data-testid="back-button-container"
           >
-            <div
-              class="css-view-175oi2r r-WebkitOverflowScrolling-150rngu r-flexDirection-eqz5dr r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-overflowX-11yh6sk r-overflowY-1rnoaur r-transform-1sncvnh"
+            <button
+              aria-label="Revenir en arrière"
+              class="c0 c1 sc-gsDKAQ c1"
+              data-testid="Revenir en arrière"
+              tabindex="0"
+              title="Revenir en arrière"
+              type="button"
             >
               <div
                 class="css-view-175oi2r"
-                style="flex-grow: 1; flex-direction: column; padding-bottom: 0px; padding-right: 20px; padding-left: 20px;"
+                data-testid="icon-back"
               >
                 <div
-                  class="css-view-175oi2r r-alignSelf-1kihuf0 r-paddingBottom-rabhyy r-paddingLeft-35ea9k r-paddingRight-gxpyh3 r-paddingTop-10iw8no"
+                  class="css-text-1rynq56"
+                  dir="ltr"
+                >
+                  icon-back-SVG-Mock
+                </div>
+              </div>
+              <div
+                class="css-text-1rynq56 r-clipPath-129q975 r-height-109y4c4 r-overflow-1udh08x r-width-92ng3h"
+                dir="ltr"
+              >
+                Retour
+              </div>
+            </button>
+          </div>
+          <h1
+            aria-level="1"
+            class="css-text-1rynq56 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-whiteSpace-3s2u2q r-wordWrap-1iln25a r-color-1rmcaf9 r-fontFamily-yv33h5 r-fontSize-a023e6 r-lineHeight-rjixqe r-textAlign-q4m81j"
+            dir="ltr"
+            role="heading"
+          >
+            Mon identité
+          </h1>
+          <div
+            class="css-view-175oi2r r-alignItems-1awozwy r-flexBasis-1iusvr4 r-flexDirection-18u37iz r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-justifyContent-17s6mgv r-paddingLeft-f727ji r-paddingRight-j2kj52"
+            data-testid="close-button-container"
+          />
+        </div>
+      </div>
+    </header>
+    <div
+      class="css-view-175oi2r r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2"
+    >
+      <div
+        class="css-view-175oi2r r-alignItems-1awozwy r-backgroundColor-14lw9ot r-borderTopLeftRadius-1ct94d3 r-borderTopRightRadius-3y0fky r-display-6koalj r-flexBasis-1iusvr4 r-flexDirection-eqz5dr r-flexGrow-16y2uox r-height-1pi2tsx r-overflow-1jwulwa r-paddingTop-fd4yh7"
+      >
+        <div
+          class="css-view-175oi2r r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-maxWidth-1ik5qf4 r-width-13qz1uu"
+        >
+          <div
+            class="css-view-175oi2r r-WebkitOverflowScrolling-150rngu r-flexDirection-eqz5dr r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-overflowX-11yh6sk r-overflowY-1rnoaur r-transform-1sncvnh"
+          >
+            <div
+              class="css-view-175oi2r"
+              style="flex-grow: 1; flex-direction: column; padding-bottom: 0px; padding-right: 20px; padding-left: 20px;"
+            >
+              <div
+                class="css-view-175oi2r"
+                style="height: 65px;"
+              />
+              <div
+                class="css-view-175oi2r r-alignSelf-1kihuf0 r-paddingBottom-rabhyy r-paddingLeft-35ea9k r-paddingRight-gxpyh3 r-paddingTop-10iw8no"
+              >
+                <div
+                  class="css-view-175oi2r"
+                >
+                  <div
+                    class="css-text-1rynq56"
+                    dir="ltr"
+                  >
+                    undefined-SVG-Mock
+                  </div>
+                </div>
+              </div>
+              <div
+                class="css-text-1rynq56 r-color-v2ubm6 r-fontFamily-1gknse6 r-fontSize-a023e6 r-lineHeight-rjixqe r-textAlign-q4m81j"
+                dir="ltr"
+              >
+                Identification
+              </div>
+              <div
+                class="css-view-175oi2r r-height-10ptun7"
+              />
+              <div
+                class="css-text-1rynq56 r-color-v2ubm6 r-fontFamily-yv33h5 r-fontSize-a023e6 r-lineHeight-rjixqe r-textAlign-q4m81j"
+                dir="ltr"
+              >
+                Pour t’identifier, nous allons te demander de te connecter à EduConnect. Munis-toi de ton identifiant et ton mot de passe EduConnect ! Si tu ne les as pas, contacte ton établissement pour les récupérer.
+              </div>
+              <div
+                class="css-view-175oi2r r-height-10ptun7"
+              />
+              <div
+                class="css-view-175oi2r r-alignItems-1awozwy r-backgroundColor-nyej4v r-borderRadius-1xfd6ze r-flexDirection-18u37iz r-justifyContent-1wtj0ep r-paddingBottom-1l7z4oj r-paddingLeft-1qhn6m8 r-paddingRight-i023vh r-paddingTop-95jzfe"
+              >
+                <div
+                  class="css-view-175oi2r r-paddingRight-i023vh"
                 >
                   <div
                     class="css-view-175oi2r"
@@ -521,97 +544,64 @@ Object {
                   </div>
                 </div>
                 <div
-                  class="css-text-1rynq56 r-color-v2ubm6 r-fontFamily-1gknse6 r-fontSize-a023e6 r-lineHeight-rjixqe r-textAlign-q4m81j"
-                  dir="ltr"
-                >
-                  Identification
-                </div>
-                <div
-                  class="css-view-175oi2r r-height-10ptun7"
-                />
-                <div
-                  class="css-text-1rynq56 r-color-v2ubm6 r-fontFamily-yv33h5 r-fontSize-a023e6 r-lineHeight-rjixqe r-textAlign-q4m81j"
-                  dir="ltr"
-                >
-                  Pour t’identifier, nous allons te demander de te connecter à EduConnect. Munis-toi de ton identifiant et ton mot de passe EduConnect ! Si tu ne les as pas, contacte ton établissement pour les récupérer.
-                </div>
-                <div
-                  class="css-view-175oi2r r-height-10ptun7"
-                />
-                <div
-                  class="css-view-175oi2r r-alignItems-1awozwy r-backgroundColor-nyej4v r-borderRadius-1xfd6ze r-flexDirection-18u37iz r-justifyContent-1wtj0ep r-paddingBottom-1l7z4oj r-paddingLeft-1qhn6m8 r-paddingRight-i023vh r-paddingTop-95jzfe"
+                  class="css-view-175oi2r r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2"
                 >
                   <div
-                    class="css-view-175oi2r r-paddingRight-i023vh"
+                    class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-1enofrn r-lineHeight-1cwl3u0"
+                    dir="ltr"
                   >
-                    <div
-                      class="css-view-175oi2r"
-                    >
-                      <div
-                        class="css-text-1rynq56"
-                        dir="ltr"
-                      >
-                        undefined-SVG-Mock
-                      </div>
-                    </div>
-                  </div>
-                  <div
-                    class="css-view-175oi2r r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2"
-                  >
-                    <div
-                      class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-1enofrn r-lineHeight-1cwl3u0"
-                      dir="ltr"
-                    >
-                      Un souci pour accéder à la page ? Essaie en navigation privée ou pense bien à accepter les pop-ups de ton navigateur.
-                    </div>
+                    Un souci pour accéder à la page ? Essaie en navigation privée ou pense bien à accepter les pop-ups de ton navigateur.
                   </div>
                 </div>
-                <div
-                  class="css-view-175oi2r r-height-mabqd8"
-                />
               </div>
-            </div>
-            <div
-              class="css-view-175oi2r r-backgroundColor-14lw9ot r-bottom-1p0dtai r-left-1d2f490 r-paddingBottom-k8qxaj r-paddingHorizontal-d9fdf6 r-paddingTop-ttdzmv r-position-u8s1d r-right-zchlnj"
-            >
-              <button
-                aria-label="Ouvrir un onglet ÉduConnect"
-                class="c2 c3"
-                data-testid="Ouvrir un onglet ÉduConnect"
-                tabindex="0"
-                type="button"
-              >
-                <div
-                  class="css-view-175oi2r r-flexShrink-1q142lx"
-                >
-                  <div
-                    aria-label="Nouvelle fenêtre"
-                    class="css-view-175oi2r"
-                    data-testid="button-icon"
-                  >
-                    <div
-                      class="css-text-1rynq56"
-                      dir="ltr"
-                    >
-                      button-icon-SVG-Mock
-                    </div>
-                  </div>
-                </div>
-                <div
-                  class="css-text-1rynq56 r-overflow-1udh08x r-textOverflow-1udbk01 r-whiteSpace-3s2u2q r-wordWrap-1iln25a r-color-jwli3a r-fontFamily-1gknse6 r-fontSize-a023e6 r-lineHeight-rjixqe r-marginLeft-1jkjb r-maxWidth-dnmrzs"
-                  dir="ltr"
-                >
-                  Ouvrir un onglet ÉduConnect
-                </div>
-              </button>
               <div
-                class="css-view-175oi2r r-height-3da1kt"
+                class="css-view-175oi2r r-height-mabqd8"
               />
             </div>
+          </div>
+          <div
+            class="css-view-175oi2r r-backgroundColor-14lw9ot r-bottom-1p0dtai r-left-1d2f490 r-paddingBottom-k8qxaj r-paddingHorizontal-d9fdf6 r-paddingTop-ttdzmv r-position-u8s1d r-right-zchlnj"
+          >
+            <button
+              aria-label="Ouvrir un onglet ÉduConnect"
+              class="c2 c3"
+              data-testid="Ouvrir un onglet ÉduConnect"
+              tabindex="0"
+              type="button"
+            >
+              <div
+                class="css-view-175oi2r r-flexShrink-1q142lx"
+              >
+                <div
+                  aria-label="Nouvelle fenêtre"
+                  class="css-view-175oi2r"
+                  data-testid="button-icon"
+                >
+                  <div
+                    class="css-text-1rynq56"
+                    dir="ltr"
+                  >
+                    button-icon-SVG-Mock
+                  </div>
+                </div>
+              </div>
+              <div
+                class="css-text-1rynq56 r-overflow-1udh08x r-textOverflow-1udbk01 r-whiteSpace-3s2u2q r-wordWrap-1iln25a r-color-jwli3a r-fontFamily-1gknse6 r-fontSize-a023e6 r-lineHeight-rjixqe r-marginLeft-1jkjb r-maxWidth-dnmrzs"
+                dir="ltr"
+              >
+                Ouvrir un onglet ÉduConnect
+              </div>
+            </button>
+            <div
+              class="css-view-175oi2r r-height-3da1kt"
+            />
           </div>
         </div>
       </div>
     </div>
+    <div
+      class="css-view-175oi2r r-backdropFilter-1jy2u1p r-height-17lwhjb r-left-1d2f490 r-overflow-1udh08x r-position-u8s1d r-right-zchlnj r-top-ipm5af"
+    />
   </div>,
   "debug": [Function],
   "findAllByAltText": [Function],

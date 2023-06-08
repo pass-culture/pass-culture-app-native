@@ -112,33 +112,31 @@ export const SetAddress = () => {
   return (
     <PageWithHeader
       title="Profil"
-      fixedTopChildren={
-        <Form.MaxWidth>
-          <CenteredTitle title="Quelle est ton adresse&nbsp;?" />
-          <Spacer.Column numberOfSpaces={5} />
-          <SearchInput
-            autoFocus
-            onChangeText={onChangeAddress}
-            value={query}
-            label={label}
-            placeholder="Ex&nbsp;: 34 avenue de l’Opéra"
-            textContentType="addressState"
-            accessibilityDescribedBy={adressInputErrorId}
-            onPressRightIcon={resetSearch}
-            returnKeyType="next"
-            testID="Entrée pour l’adresse"
-          />
-          <InputError
-            visible={hasError}
-            messageId="Ton adresse ne doit pas contenir de caractères spéciaux ou n’être composée que d’espaces."
-            numberOfSpacesTop={2}
-            relatedInputId={adressInputErrorId}
-          />
-          <Spacer.Column numberOfSpaces={2} />
-        </Form.MaxWidth>
-      }
       scrollChildren={
         <React.Fragment>
+          <Form.MaxWidth>
+            <CenteredTitle title="Quelle est ton adresse&nbsp;?" />
+            <Spacer.Column numberOfSpaces={5} />
+            <SearchInput
+              autoFocus
+              onChangeText={onChangeAddress}
+              value={query}
+              label={label}
+              placeholder="Ex&nbsp;: 34 avenue de l’Opéra"
+              textContentType="addressState"
+              accessibilityDescribedBy={adressInputErrorId}
+              onPressRightIcon={resetSearch}
+              returnKeyType="next"
+              testID="Entrée pour l’adresse"
+            />
+            <InputError
+              visible={hasError}
+              messageId="Ton adresse ne doit pas contenir de caractères spéciaux ou n’être composée que d’espaces."
+              numberOfSpacesTop={2}
+              relatedInputId={adressInputErrorId}
+            />
+            <Spacer.Column numberOfSpaces={2} />
+          </Form.MaxWidth>
           {!!isLoading && <Spinner />}
           <AdressesContainer accessibilityRole={AccessibilityRole.RADIOGROUP}>
             {addresses.map((address, index) => (

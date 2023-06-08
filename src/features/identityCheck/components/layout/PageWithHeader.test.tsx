@@ -10,7 +10,6 @@ describe('<PageWithHeader/>', () => {
     const renderAPI = render(
       <PageWithHeader
         title="Page with header title"
-        fixedTopChildren={<Text>fixed top children</Text>}
         scrollChildren={<Text>scroll children</Text>}
         fixedBottomChildren={<Text>fixed bottom children</Text>}
         onGoBack={mockGoBack}

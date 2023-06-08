@@ -87,14 +87,10 @@ export const SetStatus = () => {
   return (
     <PageWithHeader
       title="Profil"
-      fixedTopChildren={
-        <React.Fragment>
-          <CenteredTitle titleID={titleID} title="Sélectionne ton statut" />
-          <Spacer.Column numberOfSpaces={5} />
-        </React.Fragment>
-      }
       scrollChildren={
         <Form.MaxWidth>
+          <CenteredTitle titleID={titleID} title="Sélectionne ton statut" />
+          <Spacer.Column numberOfSpaces={5} />
           <View accessibilityRole={AccessibilityRole.RADIOGROUP} accessibilityLabelledBy={titleID}>
             <Controller
               control={control}

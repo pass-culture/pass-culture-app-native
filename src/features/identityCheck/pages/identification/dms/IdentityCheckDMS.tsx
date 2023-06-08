@@ -26,7 +26,7 @@ export const IdentityCheckDMS = () => {
   return (
     <PageWithHeader
       title="Identification"
-      fixedTopChildren={
+      scrollChildren={
         <Container>
           <Spacer.Column numberOfSpaces={5} />
           <StyledBicolorIdCardWithMagnifyingGlass />

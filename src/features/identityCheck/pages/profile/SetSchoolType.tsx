@@ -60,14 +60,10 @@ export const SetSchoolType = () => {
   return (
     <PageWithHeader
       title="Profil"
-      fixedTopChildren={
-        <React.Fragment>
-          <CenteredTitle titleID={titleID} title="Dans quel type d’établissement&nbsp;?" />
-          <Spacer.Column numberOfSpaces={5} />
-        </React.Fragment>
-      }
       scrollChildren={
         <Form.MaxWidth>
+          <CenteredTitle titleID={titleID} title="Dans quel type d’établissement&nbsp;?" />
+          <Spacer.Column numberOfSpaces={5} />
           <View accessibilityRole={AccessibilityRole.RADIOGROUP} accessibilityLabelledBy={titleID}>
             <VerticalUl>
               {hasData &&

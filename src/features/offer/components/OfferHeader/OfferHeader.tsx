@@ -134,7 +134,7 @@ export const OfferHeader: React.FC<Props> = (props) => {
       <HeaderContainer style={containerStyle} safeAreaTop={top}>
         <Spacer.TopScreen />
         <BlurNativeContainer style={blurContainerNative} safeAreaTop={top}>
-          <BlurHeader blurAmount={8} />
+          <BlurHeader />
         </BlurNativeContainer>
         <Spacer.Column numberOfSpaces={2} />
         <Row>

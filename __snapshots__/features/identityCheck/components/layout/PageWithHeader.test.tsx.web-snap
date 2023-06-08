@@ -1,7 +1,8 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<PageWithHeader/> should render correctly 1`] = `
-.c0 {
+Array [
+  .c0 {
   -webkit-flex-direction: column;
   -ms-flex-direction: column;
   flex-direction: column;
@@ -57,114 +58,85 @@ exports[`<PageWithHeader/> should render correctly 1`] = `
   align-items: center;
 }
 
-<div
-  className="css-view-175oi2r r-backgroundColor-bdcx94 r-display-6koalj r-flexBasis-1iusvr4 r-flexDirection-eqz5dr r-flexGrow-16y2uox r-flexShrink-1wbh5a2"
-  dir={null}
->
-  <header
-    className="css-view-175oi2r r-width-13qz1uu"
+<header
+    className="css-view-175oi2r r-backgroundColor-1stjixc r-borderBottomColor-8fzpo5 r-borderBottomWidth-qklmqi r-left-1d2f490 r-position-u8s1d r-right-zchlnj r-top-ipm5af r-zIndex-184en5c"
     dir={null}
     role="banner"
   >
     <div
-      className="css-view-175oi2r"
+      className="css-view-175oi2r r-height-10ptun7"
       dir={null}
-      style={
-        Object {
-          "height": "64px",
-        }
-      }
     />
     <div
-      className="css-view-175oi2r r-backgroundColor-bdcx94 r-position-u8s1d r-top-ipm5af r-width-13qz1uu r-zIndex-184en5c"
+      className="css-view-175oi2r r-alignItems-1awozwy r-height-h3s6tt r-justifyContent-1777fci"
       dir={null}
     >
       <div
-        className="css-view-175oi2r r-height-10ptun7"
-        dir={null}
-      />
-      <div
-        className="css-view-175oi2r r-alignItems-1awozwy r-height-h3s6tt r-justifyContent-1777fci"
+        className="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz r-justifyContent-1wtj0ep r-width-13qz1uu"
         dir={null}
       >
         <div
-          className="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz r-justifyContent-1wtj0ep r-width-13qz1uu"
+          className="css-view-175oi2r r-alignItems-1awozwy r-flexBasis-1iusvr4 r-flexDirection-18u37iz r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-justifyContent-1h0z5md r-paddingLeft-f727ji r-paddingRight-j2kj52"
+          data-testid="back-button-container"
           dir={null}
         >
-          <div
-            className="css-view-175oi2r r-alignItems-1awozwy r-flexBasis-1iusvr4 r-flexDirection-18u37iz r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-justifyContent-1h0z5md r-paddingLeft-f727ji r-paddingRight-j2kj52"
-            data-testid="back-button-container"
-            dir={null}
+          <button
+            aria-label="Revenir en arrière"
+            className="c0 c1 sc-gsDKAQ c1"
+            data-testid="Revenir en arrière"
+            onClick={[MockFunction]}
+            tabIndex="0"
+            title="Revenir en arrière"
+            type="button"
           >
-            <button
-              aria-label="Revenir en arrière"
-              className="c0 c1 sc-gsDKAQ c1"
-              data-testid="Revenir en arrière"
-              onClick={[MockFunction]}
-              tabIndex="0"
-              title="Revenir en arrière"
-              type="button"
+            <div
+              className="css-view-175oi2r"
+              data-testid="icon-back"
+              dir={null}
             >
               <div
-                className="css-view-175oi2r"
-                data-testid="icon-back"
-                dir={null}
-              >
-                <div
-                  className="css-text-1rynq56"
-                  dir="ltr"
-                >
-                  icon-back-SVG-Mock
-                </div>
-              </div>
-              <div
-                className="css-text-1rynq56 r-clipPath-129q975 r-height-109y4c4 r-overflow-1udh08x r-width-92ng3h"
+                className="css-text-1rynq56"
                 dir="ltr"
               >
-                Retour
+                icon-back-SVG-Mock
               </div>
-            </button>
-          </div>
-          <h1
-            aria-level={1}
-            className="css-text-1rynq56 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-whiteSpace-3s2u2q r-wordWrap-1iln25a r-color-jwli3a r-fontFamily-yv33h5 r-fontSize-a023e6 r-lineHeight-rjixqe r-textAlign-q4m81j"
-            dir="ltr"
-            role="heading"
-          >
-            Page with header title
-          </h1>
-          <div
-            className="css-view-175oi2r r-alignItems-1awozwy r-flexBasis-1iusvr4 r-flexDirection-18u37iz r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-justifyContent-17s6mgv r-paddingLeft-f727ji r-paddingRight-j2kj52"
-            data-testid="close-button-container"
-            dir={null}
-          />
+            </div>
+            <div
+              className="css-text-1rynq56 r-clipPath-129q975 r-height-109y4c4 r-overflow-1udh08x r-width-92ng3h"
+              dir="ltr"
+            >
+              Retour
+            </div>
+          </button>
         </div>
+        <h1
+          aria-level={1}
+          className="css-text-1rynq56 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-whiteSpace-3s2u2q r-wordWrap-1iln25a r-color-1rmcaf9 r-fontFamily-yv33h5 r-fontSize-a023e6 r-lineHeight-rjixqe r-textAlign-q4m81j"
+          dir="ltr"
+          role="heading"
+        >
+          Page with header title
+        </h1>
+        <div
+          className="css-view-175oi2r r-alignItems-1awozwy r-flexBasis-1iusvr4 r-flexDirection-18u37iz r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-justifyContent-17s6mgv r-paddingLeft-f727ji r-paddingRight-j2kj52"
+          data-testid="close-button-container"
+          dir={null}
+        />
       </div>
     </div>
-  </header>
+  </header>,
   <div
     className="css-view-175oi2r r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2"
     dir={null}
   >
     <div
-      className="css-view-175oi2r r-alignItems-1awozwy r-backgroundColor-14lw9ot r-borderTopLeftRadius-1ct94d3 r-borderTopRightRadius-3y0fky r-display-6koalj r-flexBasis-1iusvr4 r-flexDirection-eqz5dr r-flexGrow-16y2uox r-height-1pi2tsx r-overflow-1jwulwa r-paddingTop-ttdzmv"
+      className="css-view-175oi2r r-alignItems-1awozwy r-backgroundColor-14lw9ot r-borderTopLeftRadius-1ct94d3 r-borderTopRightRadius-3y0fky r-display-6koalj r-flexBasis-1iusvr4 r-flexDirection-eqz5dr r-flexGrow-16y2uox r-height-1pi2tsx r-overflow-1jwulwa r-paddingTop-fd4yh7"
       dir={null}
     >
       <div
         className="css-view-175oi2r r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-maxWidth-1ik5qf4 r-width-13qz1uu"
         dir={null}
       >
-        <div
-          className="css-view-175oi2r r-paddingHorizontal-d9fdf6 r-paddingTop-1knelpx"
-          dir={null}
-        >
-          <div
-            className="css-text-1rynq56"
-            dir="ltr"
-          >
-            fixed top children
-          </div>
-        </div>
         <div
           className="css-view-175oi2r r-WebkitOverflowScrolling-150rngu r-flexDirection-eqz5dr r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-overflowX-11yh6sk r-overflowY-1rnoaur r-transform-1sncvnh"
           dir={null}
@@ -187,6 +159,15 @@ exports[`<PageWithHeader/> should render correctly 1`] = `
               }
             }
           >
+            <div
+              className="css-view-175oi2r"
+              dir={null}
+              style={
+                Object {
+                  "height": "65px",
+                }
+              }
+            />
             <div
               className="css-text-1rynq56"
               dir="ltr"
@@ -212,6 +193,10 @@ exports[`<PageWithHeader/> should render correctly 1`] = `
         </div>
       </div>
     </div>
-  </div>
-</div>
+  </div>,
+  <div
+    className="css-view-175oi2r r-backdropFilter-1jy2u1p r-height-17lwhjb r-left-1d2f490 r-overflow-1udh08x r-position-u8s1d r-right-zchlnj r-top-ipm5af"
+    dir={null}
+  />,
+]
 `;

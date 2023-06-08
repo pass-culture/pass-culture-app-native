@@ -3,11 +3,11 @@ import React from 'react'
 import styled from 'styled-components/native'
 
 type Props = {
-  blurAmount: number
+  blurAmount?: number
   blurType?: 'dark' | 'light' | 'xlight'
 }
 
-export const BlurHeader = ({ blurAmount, blurType = 'light' }: Props) => {
+export const BlurHeader = ({ blurAmount = 8, blurType = 'light' }: Props) => {
   return <Blurred blurType={blurType} blurAmount={blurAmount} />
 }
 

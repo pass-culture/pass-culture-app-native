@@ -128,14 +128,10 @@ export const SetPhoneValidationCode = () => {
     <PageWithHeader
       title="Numéro de téléphone"
       onGoBack={remainingAttempts === 0 ? goBackToPhoneValidationTooManySMSSent : undefined}
-      fixedTopChildren={
-        <React.Fragment>
-          <CenteredTitle titleID={titleID} title="Valide ton numéro de téléphone" />
-          <Spacer.Column numberOfSpaces={5} />
-        </React.Fragment>
-      }
       scrollChildren={
         <Form.MaxWidth>
+          <CenteredTitle titleID={titleID} title="Valide ton numéro de téléphone" />
+          <Spacer.Column numberOfSpaces={5} />
           <View accessibilityLabelledBy={titleID}>
             <StyledBody>{enterCodeInstructions}</StyledBody>
             <Spacer.Column numberOfSpaces={6} />
