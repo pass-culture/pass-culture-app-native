@@ -129,8 +129,8 @@ export const PriceModal: FunctionComponent<PriceModalProps> = ({
 
   const initialFormValues = useMemo(() => {
     return {
-      minPrice: searchState?.minPrice || '',
-      maxPrice: searchState?.maxPrice || '',
+      minPrice: searchState?.minPrice ?? '',
+      maxPrice: searchState?.maxPrice ?? '',
       isLimitCreditSearch: isLimitCreditSearchDefaultValue,
       isOnlyFreeOffersSearch: isOnlyFreeOffersSearchDefaultValue,
     }
@@ -171,8 +171,8 @@ export const PriceModal: FunctionComponent<PriceModalProps> = ({
       trigger(['minPrice', 'maxPrice'])
       return
     }
-    const maxPrice = searchState?.maxPrice !== '0' ? searchState?.maxPrice || '' : ''
-    const minPrice = searchState?.minPrice !== '0' ? searchState?.minPrice || '' : ''
+    const maxPrice = searchState?.maxPrice !== '0' ? searchState?.maxPrice ?? '' : ''
+    const minPrice = searchState?.minPrice !== '0' ? searchState?.minPrice ?? '' : ''
     setValue('maxPrice', maxPrice)
     setValue('minPrice', minPrice)
     trigger(['minPrice', 'maxPrice'])
@@ -190,14 +190,14 @@ export const PriceModal: FunctionComponent<PriceModalProps> = ({
     }
 
     const availableCreditIsMaxPriceSearch = searchState?.maxPrice === formatAvailableCredit
-    setValue('maxPrice', availableCreditIsMaxPriceSearch ? '' : searchState?.maxPrice || '')
+    setValue('maxPrice', availableCreditIsMaxPriceSearch ? '' : searchState?.maxPrice ?? '')
     trigger(['minPrice', 'maxPrice'])
   }, [setValue, getValues, trigger, formatAvailableCredit, searchState?.maxPrice])
 
   const closeModal = useCallback(() => {
     reset({
-      minPrice: searchState?.minPrice || '',
-      maxPrice: searchState?.maxPrice || '',
+      minPrice: searchState?.minPrice ?? '',
+      maxPrice: searchState?.maxPrice ?? '',
       isLimitCreditSearch: isLimitCreditSearchDefaultValue,
       isOnlyFreeOffersSearch: isOnlyFreeOffersSearchDefaultValue,
     })

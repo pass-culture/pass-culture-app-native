@@ -28,10 +28,10 @@ export const buildOfferPriceRangePredicate = ({
 >): FiltersArray[0] | undefined => {
   if (offerIsFree) return [`${NUMERIC_FILTERS_ENUM.OFFER_PRICES} = 0`]
 
-  const formatMinPrice = getPriceAsNumber(minPrice) || 0
+  const formatMinPrice = getPriceAsNumber(minPrice) ?? 0
   const formatMaxPrice =
     getPriceAsNumber(maxPrice) || getPriceAsNumber(maxPossiblePrice) || MAX_PRICE
-  const formatPriceRange: Range<number> = priceRange || [formatMinPrice, formatMaxPrice]
+  const formatPriceRange: Range<number> = priceRange ?? [formatMinPrice, formatMaxPrice]
   if (formatPriceRange)
     return [`${NUMERIC_FILTERS_ENUM.OFFER_PRICES}: ${clampPrice(formatPriceRange).join(' TO ')}`]
 

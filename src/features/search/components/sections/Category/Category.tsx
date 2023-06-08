@@ -31,8 +31,8 @@ export const Category = ({ onClose }: Props) => {
   const descriptionContext: DescriptionContext = useMemo(() => {
     return {
       category: searchState.offerCategories[0] || SearchGroupNameEnumv2.NONE,
-      nativeCategory: searchState.offerNativeCategories?.[0] || null,
-      genreType: searchState.offerGenreTypes?.[0]?.name || null,
+      nativeCategory: searchState.offerNativeCategories?.[0] ?? null,
+      genreType: searchState.offerGenreTypes?.[0]?.name ?? null,
     }
   }, [searchState.offerCategories, searchState.offerGenreTypes, searchState.offerNativeCategories])
 
