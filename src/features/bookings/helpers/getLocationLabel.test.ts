@@ -98,4 +98,52 @@ describe('getLocationLabel', () => {
     const offerRules = getLocationLabel(booking.stock, properties)
     expect(offerRules).toEqual('Maison de la Brique public, Drancy')
   })
+
+  it('should display only the name of the venue when city not specified', () => {
+    const properties = {
+      isPermanent: false,
+      isDigital: false,
+    }
+
+    const booking = {
+      ...initialBooking,
+      stock: {
+        ...initialBooking.stock,
+        offer: {
+          ...initialBooking.stock.offer,
+          venue: {
+            ...initialBooking.stock.offer.venue,
+            city: undefined,
+          },
+        },
+      },
+    }
+
+    const offerRules = getLocationLabel(booking.stock, properties)
+    expect(offerRules).toEqual('Maison de la Brique')
+  })
+
+  it('should display only the name of the venue when city specified and is an empty string', () => {
+    const properties = {
+      isPermanent: false,
+      isDigital: false,
+    }
+
+    const booking = {
+      ...initialBooking,
+      stock: {
+        ...initialBooking.stock,
+        offer: {
+          ...initialBooking.stock.offer,
+          venue: {
+            ...initialBooking.stock.offer.venue,
+            city: '',
+          },
+        },
+      },
+    }
+
+    const offerRules = getLocationLabel(booking.stock, properties)
+    expect(offerRules).toEqual('Maison de la Brique')
+  })
 })
