@@ -3,6 +3,7 @@ import React, { FunctionComponent } from 'react'
 import LinearGradient from 'react-native-linear-gradient'
 import styled from 'styled-components/native'
 
+import { useVideoOffer } from 'features/home/api/useVideoOffer'
 import { BlackGradient } from 'features/home/components/BlackGradient'
 import { TEXT_BACKGROUND_OPACITY } from 'features/home/components/constants'
 import { VideoModal } from 'features/home/components/modals/VideoModal'
@@ -29,6 +30,8 @@ export const VideoModule: FunctionComponent<VideoModuleProps> = (props) => {
     hideModal: hideVideoModal,
   } = useModal(false)
   const videoDuration = `${props.durationInMinutes} min`
+
+  const { offer, refetch } = useVideoOffer(props.offersModuleParameters, props.id)
 
   return (
     <Container>
