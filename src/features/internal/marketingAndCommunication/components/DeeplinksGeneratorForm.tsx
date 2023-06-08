@@ -123,7 +123,7 @@ export const DeeplinksGeneratorForm = ({ onCreate }: Props) => {
 
     function onBlurValidate() {
       const value: unknown = screenParams[name]
-      !!value && validate(value)
+      if (value) validate(value)
     }
 
     function onBooleanChange(value: boolean) {
