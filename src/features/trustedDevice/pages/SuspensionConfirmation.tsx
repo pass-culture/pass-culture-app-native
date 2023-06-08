@@ -39,12 +39,19 @@ export const SuspensionConfirmation = () => {
           icon={PlainArrowPrevious}
         />,
       ]}>
-      <StyledBody>En raison d’une activité suspicieuse, ton compte a été suspendu.</StyledBody>
-      <Spacer.Column numberOfSpaces={5} />
-      <StyledBody>Si tu souhaites revoir cette décision, tu peux contacter le support.</StyledBody>
+      <TextContainer>
+        <StyledBody>En raison d’une activité suspicieuse, ton compte a été suspendu.</StyledBody>
+        <Spacer.Column numberOfSpaces={5} />
+        <StyledBody>
+          Si tu souhaites revoir cette décision, tu peux contacter le support.
+        </StyledBody>
+      </TextContainer>
     </GenericInfoPage>
   )
 }
+const TextContainer = styled.View({
+  width: '100%',
+})
 
 const StyledBody = styled(Typo.Body)(({ theme }) => ({
   color: theme.colors.white,

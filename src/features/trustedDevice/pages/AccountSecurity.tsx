@@ -29,7 +29,7 @@ export const AccountSecurity = () => {
       <Spacer.Column numberOfSpaces={4} />
       <Typo.Body>
         Pour des raisons de <Typo.ButtonText>sécurité,</Typo.ButtonText> nous te conseillons de
-        modifier ton mot de passe ou de suspendre ton compte temporairement
+        modifier ton mot de passe ou de suspendre ton compte temporairement.
       </Typo.Body>
       <Spacer.Column numberOfSpaces={6} />
       <InternalTouchableLink

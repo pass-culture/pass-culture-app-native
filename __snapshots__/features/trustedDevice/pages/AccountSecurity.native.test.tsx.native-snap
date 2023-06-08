@@ -278,7 +278,7 @@ exports[`<AccountSecurity/> should match snapshot 1`] = `
     >
       sécurité,
     </Text>
-     nous te conseillons de modifier ton mot de passe ou de suspendre ton compte temporairement
+     nous te conseillons de modifier ton mot de passe ou de suspendre ton compte temporairement.
   </Text>
   <View
     numberOfSpaces={6}
