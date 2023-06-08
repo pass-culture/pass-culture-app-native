@@ -2,21 +2,25 @@ import React, { FunctionComponent } from 'react'
 import { Platform } from 'react-native'
 import styled from 'styled-components/native'
 
+import { useGetThematicHeaderHeight } from 'features/home/components/headers/ThematicHomeHeader'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 
 export interface DefaultThematicHomeHeaderProps {
   headerTitle?: string
   headerSubtitle?: string
 }
+
 export const DefaultThematicHomeHeader: FunctionComponent<DefaultThematicHomeHeaderProps> = ({
   headerTitle,
   headerSubtitle,
 }) => {
+  const headerHeight = useGetThematicHeaderHeight()
+
   return (
     <Container>
       {headerTitle ? (
         <React.Fragment>
-          <Spacer.Column numberOfSpaces={4} />
+          <HeaderPlaceholder headerHeight={headerHeight} />
           <TitleContainer>
             <Typo.Title1 numberOfLines={2}>{headerTitle}</Typo.Title1>
             {headerSubtitle ? (
@@ -32,6 +36,10 @@ export const DefaultThematicHomeHeader: FunctionComponent<DefaultThematicHomeHea
     </Container>
   )
 }
+
+const HeaderPlaceholder = styled.View<{ headerHeight: number }>(({ headerHeight }) => ({
+  height: headerHeight,
+}))
 
 const Container = styled.View(({ theme }) => ({
   marginTop: Platform.OS == 'web' ? getSpacing(6) : getSpacing(2),

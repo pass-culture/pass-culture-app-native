@@ -16,6 +16,13 @@ type Props = {
   headerTransition: Animated.AnimatedInterpolation
 }
 
+export const useGetThematicHeaderHeight = () => {
+  const theme = useTheme()
+  const { top } = useCustomSafeInsets()
+
+  return theme.appBarHeight + top
+}
+
 export const ThematicHomeHeader: FunctionComponent<Props> = ({ title, headerTransition }) => {
   const { navigate } = useNavigation<UseNavigationType>()
   const onGoBack = useCallback(() => navigate(...homeNavConfig), [navigate])

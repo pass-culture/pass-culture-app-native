@@ -177,7 +177,6 @@ export const OnlineHome: FunctionComponent<GenericHomeProps> = ({
           removeClippedSubviews={false}
           onContentSizeChange={onContentSizeChange}
           bounces
-          scrollEventThrottle={200} // Fire onscroll event when scrolling every 200ms
         />
         {shouldDisplayScrollToTop ? (
           <ScrollToTopContainer>
