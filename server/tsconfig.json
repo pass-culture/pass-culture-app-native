@@ -19,7 +19,8 @@
     ],
     "lib": [
       "es6"
-    ]
+    ],
+    "strictNullChecks": true,
   },
   "exclude": [
     "build/**",
