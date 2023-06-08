@@ -5,6 +5,7 @@ import { useAuthContext } from 'features/auth/context/AuthContext'
 import { ActivationCodeButton } from 'features/bookings/components/ActivationCodeButton'
 import { BookingExpiration } from 'features/bookings/components/BookingExpiration'
 import { CancelBookingButton } from 'features/bookings/components/CancelBookingButton'
+import { FREE_OFFER_CATEGORIES_TO_ARCHIVE } from 'features/bookings/constants'
 import { getBookingProperties } from 'features/bookings/helpers'
 import { formattedExpirationDate } from 'features/bookings/helpers/expirationDateUtils'
 import { Booking } from 'features/bookings/types'
@@ -29,15 +30,21 @@ export const BookingDetailsCancelButton = (props: BookingDetailsCancelButtonProp
   const isExBeneficiary = user && isUserExBeneficiary(user)
   const remainingDays = formattedExpirationDate(booking.dateCreated)
   const isDigitalBooking = booking.stock.offer.isDigital === true && !booking.expirationDate
+  const isFreeOfferToArchive = FREE_OFFER_CATEGORIES_TO_ARCHIVE.includes(
+    booking.stock.offer.subcategoryId
+  )
 
   const renderButton = () => {
     if (properties.hasActivationCode) {
       return <ActivationCodeButton onTerminate={props.onTerminate} fullWidth={props.fullWidth} />
     }
-    return <CancelBookingButton onCancel={props.onCancel} fullWidth={props.fullWidth} />
+    if (!isFreeOfferToArchive) {
+      return <CancelBookingButton onCancel={props.onCancel} fullWidth={props.fullWidth} />
+    }
+    return null
   }
 
-  if (!booking.confirmationDate && isDigitalBooking) {
+  if ((!booking.confirmationDate && isDigitalBooking) || isFreeOfferToArchive) {
     return <BookingExpiration expirationDate={remainingDays}>{renderButton()}</BookingExpiration>
   }
 

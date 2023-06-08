@@ -1,6 +1,7 @@
 import mockdate from 'mockdate'
 import React from 'react'
 
+import { SubcategoryIdEnum } from 'api/gen'
 import {
   BookingDetailsCancelButton,
   BookingDetailsCancelButtonProps,
@@ -8,7 +9,7 @@ import {
 import { bookingsSnap } from 'features/bookings/fixtures/bookingsSnap'
 import { Booking } from 'features/bookings/types'
 import { isUserExBeneficiary } from 'features/profile/helpers/isUserExBeneficiary'
-import { fireEvent, render } from 'tests/utils'
+import { fireEvent, render, screen } from 'tests/utils'
 
 mockdate.set(new Date('2020-12-01T00:00:00Z'))
 
@@ -138,6 +139,17 @@ describe('<BookingDetailsCancelButton />', () => {
 
     const { queryByTestId } = renderBookingDetailsCancelButton(booking)
     expect(queryByTestId('cancel-annulation-message')).toBeNull()
+  })
+
+  it("should display expiration date message and not display cancel button when it's a free physical offer", () => {
+    const booking = { ...bookingsSnap.ongoing_bookings[0] }
+    booking.confirmationDate = null
+    booking.stock.offer.isDigital = false
+    booking.stock.offer.subcategoryId = SubcategoryIdEnum.ABO_MUSEE
+
+    renderBookingDetailsCancelButton(booking)
+    expect(screen.queryByTestId('Annuler ma réservation')).toBeFalsy()
+    expect(screen.queryByText('Ta réservation sera archivée le 17/03/2021')).toBeTruthy()
   })
 })
 
