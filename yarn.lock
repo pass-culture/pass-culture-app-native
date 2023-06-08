@@ -21810,10 +21810,10 @@ react-native-web-lottie@^1.4.4:
   dependencies:
     lottie-web "^5.7.1"
 
-react-native-web-swiper@2.2.1:
-  version "2.2.1"
-  resolved "https://registry.yarnpkg.com/react-native-web-swiper/-/react-native-web-swiper-2.2.1.tgz#48d53e0ecf86d3fcd49f63ef7894db4beaa3b6f2"
-  integrity sha512-7q8BCdoCt91dw0fXhdTJ5S61NxOARAQX/F3x3sr5DJg9eGG4DoOSqLgJKFJl/7Z5GJasHbvKchC+SxgvtZVZvA==
+react-native-web-swiper@2.2.4:
+  version "2.2.4"
+  resolved "https://registry.yarnpkg.com/react-native-web-swiper/-/react-native-web-swiper-2.2.4.tgz#41c8d4b16746f8ee325cd74b37392df0bc162cec"
+  integrity sha512-Lq6fgCuVhEzxgWJU5t+wWhCoOfd0jfQ1Qdwyww/Kln4McPXFKQ6MaSuUHltnFOKYHej97R7avPchn+QB1wIFQg==
   dependencies:
     prop-types "^15.6.2"
 
