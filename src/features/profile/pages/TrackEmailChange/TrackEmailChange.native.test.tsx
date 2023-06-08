@@ -143,7 +143,7 @@ describe('TrackEmailChange', () => {
     expect(screen.queryByText('Validation de ta nouvelle adresse')).toBeNull()
   })
 
-  it('should display "Connecte toi sur ta nouvelle adresse" when current step is VALIDATION', () => {
+  it('should display "Connecte-toi sur ta nouvelle adresse" when current step is VALIDATION', () => {
     useEmailUpdateStatusSpy.mockReturnValueOnce({
       data: {
         expired: false,
@@ -153,10 +153,10 @@ describe('TrackEmailChange', () => {
       isLoading: false,
     } as UseEmailUpdateStatusMock)
     render(<TrackEmailChange />)
-    expect(screen.getByText('Connecte toi sur ta nouvelle adresse')).toBeTruthy()
+    expect(screen.getByText('Connecte-toi sur ta nouvelle adresse')).toBeTruthy()
   })
 
-  it('should not display "Connecte toi sur ta nouvelle adresse" when current step is not VALIDATION', () => {
+  it('should not display "Connecte-toi sur ta nouvelle adresse" when current step is not VALIDATION', () => {
     useEmailUpdateStatusSpy.mockReturnValueOnce({
       data: {
         expired: false,
@@ -166,7 +166,7 @@ describe('TrackEmailChange', () => {
       isLoading: false,
     } as UseEmailUpdateStatusMock)
     render(<TrackEmailChange />)
-    expect(screen.queryByText('Connecte toi sur ta nouvelle adresse')).toBeNull()
+    expect(screen.queryByText('Connecte-toi sur ta nouvelle adresse')).toBeNull()
   })
 
   it('should display "Connexion sur ta nouvelle adresse" when current step is not VALIDATION', () => {

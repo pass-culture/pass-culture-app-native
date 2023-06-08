@@ -94,7 +94,7 @@ export function TrackEmailChange() {
               type={getStepCardType(3)}
               title={
                 currentStep === 3
-                  ? 'Connecte toi sur ta nouvelle adresse'
+                  ? 'Connecte-toi sur ta nouvelle adresse'
                   : 'Connexion sur ta nouvelle adresse'
               }
               icon={<BicolorNewIcon />}
