@@ -1,4 +1,5 @@
 import isEmpty from 'lodash/isEmpty'
+import { Platform } from 'react-native'
 
 import { HomepageModule } from 'features/home/types'
 import { adaptBusinessModule } from 'libs/contentful/adapters/modules/adaptBusinessModule'
@@ -56,7 +57,8 @@ export const adaptHomepageNatifModules = (modules: HomepageNatifModule[]): Homep
         return adaptCategoryListModule(module)
       }
 
-      if (isVideoContentModel(module)) {
+      //TODO(PC-22106): Video module is not displayed on web at first it will be activated later
+      if (isVideoContentModel(module) && Platform.OS !== 'web') {
         return adaptVideoModule(module)
       }
     } catch (error) {
