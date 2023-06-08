@@ -308,6 +308,7 @@ export const routes: Route[] = [
     component: TrackEmailChange,
     path: 'profil/suivi-modification-email',
     options: { title: 'Suivi de ton changement d’e-mail' },
+    secure: true,
   },
   {
     name: 'ChangePassword',

@@ -1,13 +1,16 @@
-import React, { useCallback } from 'react'
+import React, { useCallback, useEffect, useMemo } from 'react'
 import { ScrollView } from 'react-native'
 import styled from 'styled-components/native'
 
 import { useAuthContext } from 'features/auth/context/AuthContext'
+import { navigateToHome } from 'features/navigation/helpers'
 import { homeNavConfig } from 'features/navigation/TabBar/helpers'
 import { useGoBack } from 'features/navigation/useGoBack'
 import { Step } from 'features/profile/components/Step/Step'
 import { StepCard, StepCardType } from 'features/profile/components/StepCard/StepCard'
 import { StepList } from 'features/profile/components/StepList/StepList'
+import { getEmailUpdateStep } from 'features/profile/helpers/getEmailUpdateStep'
+import { useEmailUpdateStatus } from 'features/profile/helpers/useEmailUpdateStatus'
 import { BackButton } from 'ui/components/headers/BackButton'
 import { BicolorEmailIcon } from 'ui/svg/icons/BicolorEmailIcon'
 import { BicolorNewIcon } from 'ui/svg/icons/BicolorNewIcon'
@@ -18,13 +21,17 @@ import { useCustomSafeInsets } from 'ui/theme/useCustomSafeInsets'
 const HEADER_HEIGHT = getSpacing(8)
 
 export function TrackEmailChange() {
-  const currentStep = 1 // TODO(dbenfouzari): data should come from API
-
+  const { data: emailUpdateStatus, isLoading } = useEmailUpdateStatus()
   const { user } = useAuthContext()
   const { top } = useCustomSafeInsets()
   const { goBack } = useGoBack(...homeNavConfig)
 
+  const currentStep = useMemo(
+    () => getEmailUpdateStep(emailUpdateStatus?.status),
+    [emailUpdateStatus?.status]
+  )
   const currentEmail = user?.email ?? ''
+  const newEmail = emailUpdateStatus?.newEmail ?? ''
 
   const getStepCardType = useCallback(
     (stepIndex: number) => {
@@ -34,6 +41,12 @@ export function TrackEmailChange() {
     },
     [currentStep]
   )
+
+  useEffect(() => {
+    if (!isLoading && (!emailUpdateStatus || emailUpdateStatus?.expired)) {
+      navigateToHome()
+    }
+  }, [emailUpdateStatus, isLoading])
 
   return (
     <StyledScrollViewContainer>
@@ -52,29 +65,38 @@ export function TrackEmailChange() {
           <Step>
             <StyledStepCard
               type={getStepCardType(0)}
-              title="Envoie ta demande"
+              title="Envoi de ta demande"
               icon={<BicolorPhoneIcon />}
             />
           </Step>
           <Step>
             <StyledStepCard
               type={getStepCardType(1)}
-              title="Confirme ta demande"
-              subtitle={currentStep === 1 ? `Depuis l’email envoyé à ${currentEmail}` : undefined}
+              title={currentStep === 1 ? 'Confirme ta demande' : 'Confirmation de ta demande'}
+              subtitle={`Depuis l’email envoyé à ${currentEmail}`}
               icon={<BicolorEmailIcon />}
             />
           </Step>
           <Step>
             <StyledStepCard
               type={getStepCardType(2)}
-              title="Validation de ta nouvelle adresse"
+              title={
+                currentStep === 2
+                  ? 'Valide ta nouvelle adresse'
+                  : 'Validation de ta nouvelle adresse'
+              }
+              subtitle={`Depuis l’email envoyé à ${newEmail}`}
               icon={<BicolorEmailIcon />}
             />
           </Step>
           <Step>
             <StyledStepCard
               type={getStepCardType(3)}
-              title="Connexion sur ta nouvelle adresse"
+              title={
+                currentStep === 3
+                  ? 'Connecte-toi sur ta nouvelle adresse'
+                  : 'Connexion sur ta nouvelle adresse'
+              }
               icon={<BicolorNewIcon />}
             />
           </Step>

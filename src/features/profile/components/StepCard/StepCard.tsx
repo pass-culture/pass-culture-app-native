@@ -27,6 +27,8 @@ export function StepCard({
   const hasSubtitle = !!subtitle
   const theme = useTheme()
 
+  const shouldDisplaySubtitle = Boolean(hasSubtitle && type === StepCardType.ACTIVE)
+
   const iconElement = useMemo(() => {
     return getIconWithColors(icon, type, theme)
   }, [icon, type, theme])
@@ -39,7 +41,7 @@ export function StepCard({
         </IconContainer>
         <TextContainter>
           <Title type={type}>{title}</Title>
-          {!!hasSubtitle && <Typo.CaptionNeutralInfo>{subtitle}</Typo.CaptionNeutralInfo>}
+          {!!shouldDisplaySubtitle && <Typo.CaptionNeutralInfo>{subtitle}</Typo.CaptionNeutralInfo>}
         </TextContainter>
       </Container>
     </Parent>
