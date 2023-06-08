@@ -314,6 +314,7 @@ module.exports = function (webpackEnv) {
         'react-native': 'react-native-web',
         'react-native-svg': 'react-native-svg-web',
         'react-native-linear-gradient': 'react-native-web-linear-gradient',
+        'react-native-webview': 'react-native-web-webview',
 
         // Those libs are mocked until we implement web specific solutions
         'react-native-email-link': path.join(paths.appSrc, 'libs/react-native-email-link'),
@@ -533,6 +534,17 @@ module.exports = function (webpackEnv) {
                 },
                 'sass-loader'
               ),
+            },
+            // Adds support for the React Native Webview in web
+            // using the react-native-web-webview package
+            {
+              test: /postMock.html$/,
+              use: {
+                loader: require.resolve('file-loader'),
+                options: {
+                  name: '[name].[ext]',
+                },
+              },
             },
             // "file" loader makes sure those assets get served by WebpackDevServer.
             // When you `import` an asset, you get its (virtual) filename.
