@@ -9,6 +9,8 @@ export function getLocationLabel(
     return ''
   }
   const { venue } = stock.offer
-  const displayNameVenue = venue.publicName ?? venue.name
+
+  // Do not use ?? as Sonar suggests because if venue.publicName is an empty string we will display an empty string
+  const displayNameVenue = venue.publicName || venue.name
   return displayNameVenue + (venue.city ? `, ${venue.city}` : '')
 }
