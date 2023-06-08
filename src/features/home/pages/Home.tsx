@@ -3,32 +3,21 @@ import React, { FunctionComponent, useEffect } from 'react'
 import styled from 'styled-components/native'
 
 import { useHomepageData } from 'features/home/api/useHomepageData'
-import { DefaultThematicHomeHeader } from 'features/home/components/headers/DefaultThematicHomeHeader'
 import { HomeHeader } from 'features/home/components/headers/HomeHeader'
 import { GenericHome } from 'features/home/pages/GenericHome'
 import { UseRouteType } from 'features/navigation/RootNavigator/types'
 import { analytics } from 'libs/analytics'
 import { useGeolocation } from 'libs/geolocation'
 
-const Header = ({ thematicHeader }: { thematicHeader?: { title?: string; subtitle?: string } }) => (
+const Header = () => (
   <ListHeaderContainer>
-    {
-      // TODO(PC-20066): remove transitional home header split
-      thematicHeader?.title ? (
-        <DefaultThematicHomeHeader
-          headerTitle={thematicHeader.title}
-          headerSubtitle={thematicHeader.subtitle}
-        />
-      ) : (
-        <HomeHeader />
-      )
-    }
+    <HomeHeader />
   </ListHeaderContainer>
 )
 
 export const Home: FunctionComponent = () => {
   const { params } = useRoute<UseRouteType<'Home'>>()
-  const { modules, id, thematicHeader } = useHomepageData(params?.entryId) || {}
+  const { modules, id } = useHomepageData(params?.entryId) || {}
   const { setCustomPosition } = useGeolocation()
 
   useEffect(() => {
@@ -43,13 +32,7 @@ export const Home: FunctionComponent = () => {
     }
   }, [params?.latitude, params?.longitude, setCustomPosition])
 
-  return (
-    <GenericHome
-      modules={modules}
-      homeId={id}
-      Header={<Header thematicHeader={thematicHeader} />}
-    />
-  )
+  return <GenericHome modules={modules} homeId={id} Header={<Header />} />
 }
 
 const ListHeaderContainer = styled.View({
