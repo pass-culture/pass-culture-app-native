@@ -1,7 +1,7 @@
 import React, { useCallback, useRef } from 'react'
 import { Animated } from 'react-native'
 import { useQueryClient } from 'react-query'
-import styled, { useTheme } from 'styled-components/native'
+import styled from 'styled-components/native'
 
 import { FavoriteOfferResponse, FavoriteResponse, UserProfileResponse } from 'api/gen'
 import { useRemoveFavorite } from 'features/favorites/api'
@@ -31,9 +31,10 @@ interface Props {
   user: UserProfileResponse
 }
 
+const SPACER_BETWEEN_IMAGE_AND_CONTENT = 4
+
 export const Favorite: React.FC<Props> = (props) => {
   const { offer } = props.favorite
-  const theme = useTheme()
   const { onLayout, height } = useElementHeight()
   const animatedOpacity = useRef(new Animated.Value(1)).current
   const animatedCollapse = useRef(new Animated.Value(1)).current
@@ -138,7 +139,7 @@ export const Favorite: React.FC<Props> = (props) => {
             accessibilityLabel={accessibilityLabel}>
             <Row>
               <OfferImage imageUrl={offer.image?.url} categoryId={categoryId} />
-              <Spacer.Row numberOfSpaces={4} />
+              <Spacer.Row numberOfSpaces={SPACER_BETWEEN_IMAGE_AND_CONTENT} />
               <ContentContainer>
                 <LeftContent>
                   <Typo.ButtonText numberOfLines={2}>{offer.name}</Typo.ButtonText>
@@ -177,7 +178,7 @@ export const Favorite: React.FC<Props> = (props) => {
               disabled={isLoading}
             />
           </ButtonContainer>
-          {!theme.isMobileViewport && <Spacer.Flex flex={1 / 30} />}
+          <Spacer.Row numberOfSpaces={5} />
           <ButtonContainer>
             <BookingButton offer={offer} user={props.user} onInAppBooking={props.onInAppBooking} />
           </ButtonContainer>
@@ -233,15 +234,20 @@ const ContentContainer = styled.View({
 
 const ButtonContainer = styled.View({
   maxWidth: getSpacing(70),
-  width: '47%',
+  flex: 1,
 })
 
-const ButtonsRow = styled.View(({ theme }) => ({
-  flexDirection: 'row',
-  justifyContent: theme.isMobileViewport ? 'space-between' : 'center',
-  marginTop: getSpacing(6),
-  marginHorizontal: getSpacing(6),
-}))
+const DEFAULT_MARGIN = getSpacing(6)
+const ButtonsRow = styled.View(({ theme }) => {
+  const WEB_MARGIN_LEFT =
+    DEFAULT_MARGIN + theme.tiles.sizes.small.width + getSpacing(SPACER_BETWEEN_IMAGE_AND_CONTENT)
+  return {
+    flexDirection: 'row',
+    marginTop: DEFAULT_MARGIN,
+    marginRight: DEFAULT_MARGIN,
+    marginLeft: theme.isMobileViewport ? DEFAULT_MARGIN : WEB_MARGIN_LEFT,
+  }
+})
 
 const Distance = styled(Typo.Body)(({ theme }) => ({
   textAlign: 'right',
