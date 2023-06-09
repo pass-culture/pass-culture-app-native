@@ -173,9 +173,7 @@ exports[`<BookingEventChoices /> should display date step and hour step and duo 
           },
         ]
       }
-    >
-      
-    </Text>
+    />
   </View>
   <View
     numberOfSpaces={6}

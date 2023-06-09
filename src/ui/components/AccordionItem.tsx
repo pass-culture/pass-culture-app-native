@@ -1,5 +1,14 @@
 import React, { useEffect, useMemo, useRef, useState } from 'react'
-import { Platform, Animated, Easing, StyleProp, ViewStyle, View, StyleSheet } from 'react-native'
+import {
+  Platform,
+  Animated,
+  Easing,
+  StyleProp,
+  ViewStyle,
+  View,
+  StyleSheet,
+  LayoutChangeEvent,
+} from 'react-native'
 import styled from 'styled-components/native'
 import { v4 as uuidv4 } from 'uuid'
 
@@ -14,9 +23,9 @@ import { ArrowNext as DefaultArrowNext } from '../svg/icons/ArrowNext'
 import { getSpacing, Spacer, Typo } from '../theme'
 
 interface AccordionItemProps {
-  title: JSX.Element | string
+  title: React.JSX.Element | string
   accessibilityTitle?: string
-  children: JSX.Element | JSX.Element[]
+  children: React.JSX.Element | React.JSX.Element[]
   defaultOpen?: boolean
   onOpenOnce?: () => void
   onOpen?: () => void
@@ -109,7 +118,9 @@ export const AccordionItem = ({
           nativeID={accordionBodyId}
           style={bodyStyle}
           testID="accordionBodyContainer"
-          onLayout={(event) => setBodySectionHeight(event.nativeEvent.layout.height)}
+          onLayout={(event: LayoutChangeEvent) =>
+            setBodySectionHeight(event.nativeEvent.layout.height)
+          }
           hidden={!showChildren}
           accessibilityLabelledBy={accordionLabelId}>
           {children}

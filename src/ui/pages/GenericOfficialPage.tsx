@@ -18,6 +18,7 @@ type Props = {
   icon?: FunctionComponent<IconInterface>
   title: string
   buttons?: Array<ReactNode>
+  children: React.ReactNode
 }
 
 export const GenericOfficialPage: FunctionComponent<Props> = ({

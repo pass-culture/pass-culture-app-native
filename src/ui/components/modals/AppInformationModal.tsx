@@ -15,6 +15,7 @@ interface Props {
   visible: boolean
   onCloseIconPress: () => void
   testIdSuffix?: string
+  children: React.ReactNode
 }
 
 export const AppInformationModal: FunctionComponent<Props> = ({

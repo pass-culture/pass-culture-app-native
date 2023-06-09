@@ -1,18 +1,23 @@
 import React from 'react'
-import { QueryObserverResult } from 'react-query'
+import { QueryObserverResult, UseQueryResult } from 'react-query'
 
 import { navigate } from '__mocks__/@react-navigation/native'
-import { BookingsResponse } from 'api/gen'
+import { BookingsResponse, SubcategoriesResponseModelv2 } from 'api/gen'
 import * as bookingsAPI from 'features/bookings/api/useBookings'
 import { bookingsSnap, emptyBookingsSnap } from 'features/bookings/fixtures/bookingsSnap'
+import { useSubcategories } from 'libs/subcategories/useSubcategories'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { checkAccessibilityFor, fireEvent, render, waitFor, screen, act } from 'tests/utils/web'
 
 import { Bookings } from './Bookings'
 
-describe('Bookings', () => {
-  afterEach(jest.restoreAllMocks)
+jest.mock('libs/subcategories/useSubcategories')
+const mockUseSubcategories = jest.mocked(useSubcategories)
+mockUseSubcategories.mockReturnValue({
+  isLoading: false,
+} as UseQueryResult<SubcategoriesResponseModelv2, unknown>)
 
+describe('Bookings', () => {
   // TODO(PC-21801): temporary skip this flaky test until github actions migration
   // eslint-disable-next-line jest/no-disabled-tests
   describe.skip('Accessibility', () => {
@@ -31,7 +36,7 @@ describe('Bookings', () => {
     renderBookings(bookingsSnap)
 
     await waitFor(() => {
-      expect(useBookings).toBeCalledTimes(1)
+      expect(useBookings).toHaveBeenCalledTimes(1)
     })
   })
 

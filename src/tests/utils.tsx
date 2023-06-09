@@ -7,7 +7,7 @@ import { setImmediate } from 'timers'
 import { render, waitFor as defaultWaitFor } from '@testing-library/react-native'
 import deepmerge from 'deepmerge'
 import flushPromises from 'flush-promises'
-import React, { ReactNode } from 'react'
+import React, { PropsWithChildren, ReactNode } from 'react'
 import { act, ReactTestInstance } from 'react-test-renderer'
 import { measurePerformance } from 'reassure'
 import { ThemeProvider as ThemeProviderWeb, DefaultTheme } from 'styled-components'
@@ -119,7 +119,7 @@ type MeasureOptions = Parameters<typeof measurePerformance>[1]
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 function customMeasurePerformance(ui: React.ReactElement<any>, options?: MeasureOptions) {
   const { wrapper, ...restOfOptions } = options || {}
-  const Wrapper = wrapper as React.ComponentType
+  const Wrapper = wrapper as React.ComponentType<PropsWithChildren>
   return measurePerformance(ui, {
     wrapper: Wrapper
       ? (children) => (

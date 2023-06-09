@@ -25,6 +25,7 @@ type BannerWithBackgroundProps = TouchableProps & {
   rightIcon?: FunctionComponent<IconInterface>
   backgroundSource?: ImageSourcePropType
   testID?: string
+  children: React.ReactNode
 }
 
 export const BannerWithBackground: FunctionComponent<BannerWithBackgroundProps> = ({

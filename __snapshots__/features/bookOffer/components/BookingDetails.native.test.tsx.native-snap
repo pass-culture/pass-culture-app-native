@@ -183,9 +183,7 @@ exports[`<BookingDetails /> when user has selected options should render correct
           },
         ]
       }
-    >
-      
-    </Text>
+    />
   </View>
   <View
     style={
@@ -262,9 +260,7 @@ exports[`<BookingDetails /> when user has selected options should render correct
           },
         ]
       }
-    >
-      
-    </Text>
+    />
   </View>
   <View
     style={
@@ -357,9 +353,7 @@ exports[`<BookingDetails /> when user has selected options should render correct
           },
         ]
       }
-    >
-      
-    </Text>
+    />
   </View>
   <View
     style={
@@ -451,9 +445,7 @@ exports[`<BookingDetails /> when user has selected options should render correct
           },
         ]
       }
-    >
-      
-    </Text>
+    />
   </View>
   <View
     numberOfSpaces={6}
@@ -802,9 +794,7 @@ exports[`<BookingDetails /> when user has selected options should render disable
           },
         ]
       }
-    >
-      
-    </Text>
+    />
   </View>
   <View
     style={
@@ -881,9 +871,7 @@ exports[`<BookingDetails /> when user has selected options should render disable
           },
         ]
       }
-    >
-      
-    </Text>
+    />
   </View>
   <View
     style={
@@ -976,9 +964,7 @@ exports[`<BookingDetails /> when user has selected options should render disable
           },
         ]
       }
-    >
-      
-    </Text>
+    />
   </View>
   <View
     style={
@@ -1070,9 +1056,7 @@ exports[`<BookingDetails /> when user has selected options should render disable
           },
         ]
       }
-    >
-      
-    </Text>
+    />
   </View>
   <View
     numberOfSpaces={6}

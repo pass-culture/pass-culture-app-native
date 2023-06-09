@@ -1,7 +1,7 @@
 import React from 'react'
 import { SafeAreaProvider } from 'react-native-safe-area-context'
 
-import { render, checkAccessibilityFor } from 'tests/utils/web'
+import { render, checkAccessibilityFor, act } from 'tests/utils/web'
 
 import { ReinitializePassword } from './ReinitializePassword'
 
@@ -20,9 +20,10 @@ describe('<ReinitializePassword/>', () => {
     it('should not have basic accessibility issues', async () => {
       const { container } = renderReinitializePassword()
 
-      const results = await checkAccessibilityFor(container)
-
-      expect(results).toHaveNoViolations()
+      await act(async () => {
+        const results = await checkAccessibilityFor(container)
+        expect(results).toHaveNoViolations()
+      })
     })
   })
 })

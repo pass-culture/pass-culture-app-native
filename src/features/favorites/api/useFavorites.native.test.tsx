@@ -7,7 +7,7 @@ import { paginatedFavoritesResponseSnap } from 'features/favorites/fixtures/pagi
 import { simulateBackend } from 'features/favorites/helpers/simulateBackend'
 import { useNetInfoContext as useNetInfoContextDefault } from 'libs/network/NetInfoWrapper'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { renderHook, waitFor } from 'tests/utils'
+import { act, renderHook } from 'tests/utils'
 
 import { useFavorites } from './useFavorites'
 
@@ -41,11 +41,11 @@ describe('useFavorites hook', () => {
 
     expect(result.current.isFetching).toEqual(true)
 
-    await waitFor(() => {
-      expect(result.current.data?.favorites.length).toEqual(
-        paginatedFavoritesResponseSnap.favorites.length
-      )
-    })
+    await act(async () => {})
+
+    expect(result.current.data?.favorites.length).toEqual(
+      paginatedFavoritesResponseSnap.favorites.length
+    )
   })
 
   it('should fail to fetch when not logged in', async () => {

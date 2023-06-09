@@ -102,7 +102,7 @@ export const VenueOffers: React.FC<Props> = ({ venueId, layout = 'two-items' }) 
   const { itemWidth, itemHeight } = getPlaylistItemDimensionsFromLayout(layout)
 
   const renderFooter: RenderFooterItem = useCallback(
-    ({ width, height }) => (
+    ({ width, height }: { width: number; height: number }) => (
       <SeeMore
         width={width}
         height={height}

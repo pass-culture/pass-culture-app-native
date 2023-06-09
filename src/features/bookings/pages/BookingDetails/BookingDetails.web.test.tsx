@@ -9,7 +9,7 @@ import { Booking } from 'features/bookings/types'
 import { withAsyncErrorBoundary } from 'features/errors/hocs/withAsyncErrorBoundary'
 import { useNetInfoContext as useNetInfoContextDefault } from 'libs/network/NetInfoWrapper'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { checkAccessibilityFor, render } from 'tests/utils/web'
+import { act, checkAccessibilityFor, render } from 'tests/utils/web'
 
 import { BookingDetails as BookingDetailsDefault } from './BookingDetails'
 
@@ -31,8 +31,10 @@ describe('BookingDetails', () => {
     it('should not have basic accessibility issues', async () => {
       const { container } = renderBookingDetails(bookingsSnap.ongoing_bookings[0])
 
-      const results = await checkAccessibilityFor(container)
-      expect(results).toHaveNoViolations()
+      await act(async () => {
+        const results = await checkAccessibilityFor(container)
+        expect(results).toHaveNoViolations()
+      })
     })
   })
 })

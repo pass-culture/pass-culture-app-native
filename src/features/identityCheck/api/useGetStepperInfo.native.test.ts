@@ -8,7 +8,7 @@ import {
 import { env } from 'libs/environment'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { server } from 'tests/server'
-import { renderHook, waitFor } from 'tests/utils'
+import { act, renderHook } from 'tests/utils'
 
 describe('useGetStepperInfo', () => {
   it('should get stepsToDisplay from the back', async () => {
@@ -18,14 +18,12 @@ describe('useGetStepperInfo', () => {
       )
     )
     const result = renderGetStepperInfo()
-
-    await waitFor(() => {
-      expect(result.result.current).toEqual({
-        stepToDisplay: SubscriptionStepperResponseFixture.subscriptionStepsToDisplay,
-        title: 'Titre Stepper',
-        subtitle: 'Sous titre Stepper',
-        identificationMethods: SubscriptionStepperResponseFixture.allowedIdentityCheckMethods,
-      })
+    await act(async () => {})
+    expect(result.result.current).toEqual({
+      stepToDisplay: SubscriptionStepperResponseFixture.subscriptionStepsToDisplay,
+      title: 'Titre Stepper',
+      subtitle: 'Sous titre Stepper',
+      identificationMethods: SubscriptionStepperResponseFixture.allowedIdentityCheckMethods,
     })
   })
   it('should return an errorMessage', async () => {
@@ -35,15 +33,13 @@ describe('useGetStepperInfo', () => {
       )
     )
     const result = renderGetStepperInfo()
-
-    await waitFor(() => {
-      expect(result.result.current).toEqual({
-        stepToDisplay: SubscriptionStepperErrorResponseFixture.subscriptionStepsToDisplay,
-        title: 'Titre Stepper',
-        subtitle: null,
-        errorMessage: 'Tu n’as pas fournis les bons documents',
-        identificationMethods: SubscriptionStepperResponseFixture.allowedIdentityCheckMethods,
-      })
+    await act(async () => {})
+    expect(result.result.current).toEqual({
+      stepToDisplay: SubscriptionStepperErrorResponseFixture.subscriptionStepsToDisplay,
+      title: 'Titre Stepper',
+      subtitle: null,
+      errorMessage: 'Tu n’as pas fournis les bons documents',
+      identificationMethods: SubscriptionStepperResponseFixture.allowedIdentityCheckMethods,
     })
   })
 
@@ -54,12 +50,10 @@ describe('useGetStepperInfo', () => {
       )
     )
     const result = renderGetStepperInfo()
-
-    await waitFor(() => {
-      expect(result.result.current).toEqual({
-        stepToDisplay: [],
-        title: '',
-      })
+    await act(async () => {})
+    expect(result.result.current).toEqual({
+      stepToDisplay: [],
+      title: '',
     })
   })
 })

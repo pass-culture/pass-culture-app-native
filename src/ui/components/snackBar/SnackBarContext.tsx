@@ -23,7 +23,11 @@ const SnackBarContext = createContext<SnackBarContextValue>({
   hideSnackBar: () => null,
 })
 
-export const SnackBarProvider = memo(function SnackBarProviderComponent({ children }) {
+export const SnackBarProvider = memo(function SnackBarProviderComponent({
+  children,
+}: {
+  children: React.ReactNode
+}) {
   const theme = useTheme()
   const [snackBarProps, setSnackBarProps] = useState<SnackBarProps>({
     visible: false,

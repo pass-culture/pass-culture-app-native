@@ -43,6 +43,8 @@ describe('<Login/>', () => {
     useRoute.mockReturnValueOnce({ params: { displayForcedLoginHelpMessage: true } })
     renderLogin()
 
+    await act(async () => {}) // Warning: An update to Login inside a test was not wrapped in act(...)
+
     const snackBar = await screen.findByRole('status')
 
     expect(snackBar).toHaveTextContent(
@@ -53,6 +55,8 @@ describe('<Login/>', () => {
   it('should not display the login help message when the query param is not given', async () => {
     useRoute.mockReturnValueOnce({})
     renderLogin()
+
+    await act(async () => {}) // Warning: An update to Login inside a test was not wrapped in act(...)
 
     const snackBar = await screen.findByRole('status')
 

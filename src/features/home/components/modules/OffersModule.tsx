@@ -15,7 +15,7 @@ import { formatDates, formatDistance, getDisplayPrice } from 'libs/parsers'
 import { useCategoryIdMapping, useCategoryHomeLabelMapping } from 'libs/subcategories'
 import { Offer } from 'shared/offer/types'
 import { PassPlaylist } from 'ui/components/PassPlaylist'
-import { CustomListRenderItem, RenderFooterItem } from 'ui/components/Playlist'
+import { CustomListRenderItem, ItemDimensions, RenderFooterItem } from 'ui/components/Playlist'
 import { SeeMore } from 'ui/components/SeeMore'
 
 type OffersModuleProps = {
@@ -97,7 +97,7 @@ export const OffersModule = (props: OffersModuleProps) => {
   const { itemWidth, itemHeight } = getPlaylistItemDimensionsFromLayout(display.layout)
 
   const renderFooter: RenderFooterItem = useCallback(
-    ({ width, height }) => {
+    ({ width, height }: ItemDimensions) => {
       return showSeeMore ? (
         <SeeMore
           navigateTo={{ screen: searchTabConfig[0], params: searchTabConfig[1], withPush: true }}

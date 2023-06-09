@@ -1,6 +1,6 @@
 import { offerResponseSnap } from 'features/offer/fixtures/offerResponse'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { renderHook, waitFor } from 'tests/utils'
+import { act, renderHook } from 'tests/utils'
 
 import { useOffer } from './useOffer'
 
@@ -11,8 +11,7 @@ describe('useOffer', () => {
       wrapper: ({ children }) => reactQueryProviderHOC(children),
     })
 
-    await waitFor(() => {
-      expect(JSON.stringify(result.current.data)).toEqual(JSON.stringify(offerResponseSnap))
-    })
+    await act(async () => {})
+    expect(JSON.stringify(result.current.data)).toEqual(JSON.stringify(offerResponseSnap))
   })
 })

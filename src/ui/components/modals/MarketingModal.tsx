@@ -15,6 +15,7 @@ interface Props {
   imageSource: ImageSourcePropType
   numberOfLinesTitle?: number
   onBackdropPress: () => void
+  children?: React.ReactNode
 }
 
 export const MarketingModal: FunctionComponent<Props> = ({

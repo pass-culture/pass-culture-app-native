@@ -8,7 +8,7 @@ import { env } from 'libs/environment'
 import { useSplashScreenContext } from 'libs/splashscreen'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { server } from 'tests/server'
-import { render, screen } from 'tests/utils/web'
+import { act, render, screen } from 'tests/utils/web'
 
 import { RootNavigator } from './RootNavigator'
 
@@ -48,7 +48,7 @@ describe('<RootNavigator />', () => {
   it('should NOT display PrivacyPolicy if splash screen is not yet hidden', async () => {
     mockUseSplashScreenContext.mockReturnValueOnce({ isSplashScreenHidden: false })
     renderRootNavigator()
-
+    await act(async () => {}) // Warning: An update to BicolorFavoriteCount inside a test was not wrapped in act(...).
     const privacyPolicyTitle = screen.queryByText('Respect de ta vie privée')
     expect(privacyPolicyTitle).toBeFalsy()
   })
@@ -66,7 +66,7 @@ describe('<RootNavigator />', () => {
     mockUseSplashScreenContext.mockReturnValueOnce({ isSplashScreenHidden: true })
 
     renderRootNavigator()
-
+    await act(async () => {})
     expect(await screen.findByText('Accéder au menu de navigation')).toBeTruthy()
   })
 

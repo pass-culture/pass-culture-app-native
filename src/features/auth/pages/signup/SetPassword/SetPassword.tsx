@@ -27,7 +27,7 @@ export const SetPassword: FunctionComponent<PreValidationSignupStepProps> = (pro
   })
 
   const goToNextStep = useCallback(
-    ({ password }) => {
+    ({ password }: FormValues) => {
       props.goToNextStep({ password })
     },
     [props]

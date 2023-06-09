@@ -6,6 +6,7 @@ import { navigateFromRef } from 'features/navigation/navigationRef'
 import { getScreenPath } from 'features/navigation/RootNavigator/linking/getScreenPath'
 import { analytics } from 'libs/analytics'
 import { eventMonitoring } from 'libs/monitoring'
+import { act } from 'tests/utils'
 
 import { openUrl } from '../helpers'
 
@@ -75,7 +76,8 @@ describe('openUrl', () => {
     const link = 'https://www.google.com'
     await openUrl(link)
 
-    expect(analytics.logOpenExternalUrl).toBeCalledWith(link, {})
+    await act(async () => {})
+    expect(analytics.logOpenExternalUrl).toHaveBeenCalledWith(link, {})
   })
 
   it('should not log analytics event when shouldLogEvent is false', async () => {
@@ -130,7 +132,7 @@ describe('openUrl', () => {
     const link = 'https://www.google.com'
     const fallbackLink = 'https://www.googlefallback.com'
     await openUrl(link, { fallbackUrl: fallbackLink })
-
+    await act(async () => {})
     expect(eventMonitoring.captureMessage).toHaveBeenNthCalledWith(
       1,
       'OpenExternalUrlError: Did not open correctly',

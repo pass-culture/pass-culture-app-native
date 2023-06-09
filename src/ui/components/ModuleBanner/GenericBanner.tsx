@@ -11,6 +11,7 @@ type GenericBannerProps = {
   LeftIcon?: FunctionComponent<IconInterface>
   RightIcon?: FunctionComponent<IconInterface>
   style?: StyleProp<ViewStyle>
+  children: React.ReactNode
 }
 
 export const GenericBanner: FunctionComponent<GenericBannerProps> = ({

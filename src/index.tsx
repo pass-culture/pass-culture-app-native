@@ -2,12 +2,16 @@ import 'react-app-polyfill/ie9'
 import 'react-app-polyfill/ie11'
 import 'react-app-polyfill/stable'
 import React from 'react'
-import ReactDOM from 'react-dom'
+import { createRoot } from 'react-dom/client'
 
 import { App } from './App'
 import reportWebVitals from './reportWebVitals'
 
-ReactDOM.render(<App />, document.getElementById('root'))
+const container = document.getElementById('root')
+// Argument of type 'HTMLElement | null' is not assignable to parameter of type 'Element | DocumentFragment'.
+// eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+const root = createRoot(container!)
+root.render(<App tab="home" />)
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))

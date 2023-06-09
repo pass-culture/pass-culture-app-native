@@ -1,6 +1,6 @@
 import { ComponentStory } from '@storybook/react'
 import { userEvent, screen } from '@storybook/testing-library'
-import React, { Fragment, FunctionComponent } from 'react'
+import React, { Fragment, FunctionComponent, PropsWithChildren } from 'react'
 import styled from 'styled-components'
 
 import { Typo } from 'ui/theme'
@@ -28,7 +28,8 @@ const SomeNormalComponent = styled.button({
   },
 })
 
-const SomeComponentThatDisplayOnFocus = displayOnFocus(SomeNormalComponent)
+const SomeComponentThatDisplayOnFocus: React.FC<PropsWithChildren> =
+  displayOnFocus(SomeNormalComponent)
 
 const Template: ComponentStory<FunctionComponent> = () => (
   <Fragment>

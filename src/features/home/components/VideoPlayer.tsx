@@ -34,7 +34,7 @@ export const VideoPlayer: React.FC<VideoPlayerProps> = ({ youtubeVideoId }) => {
     setIsPlaying(true)
   }
 
-  const onChangeState = useCallback((state) => {
+  const onChangeState = useCallback((state: string) => {
     if (state === 'ended') {
       setIsPlaying(false)
     }

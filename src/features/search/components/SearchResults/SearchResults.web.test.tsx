@@ -1,7 +1,7 @@
 import React from 'react'
 
 import { GeoCoordinates, Position } from 'libs/geolocation'
-import { render, screen } from 'tests/utils/web'
+import { act, render, screen } from 'tests/utils/web'
 
 import { SearchResults } from './SearchResults'
 
@@ -42,6 +42,7 @@ jest.mock('libs/geolocation/GeolocationWrapper', () => ({
 describe('SearchResults component', () => {
   it('should render correctly', async () => {
     const renderAPI = render(<SearchResults />)
+    await act(async () => {}) // fix 3 warnings "Warning: An update to %s inside a test was not wrapped in act" for PriceModal, LocationModal and DatesHoursModal
     await screen.findByTestId('searchResultsFlatlist')
 
     expect(renderAPI).toMatchSnapshot()

@@ -1,7 +1,7 @@
-import React from 'react'
+import React, { PropsWithChildren } from 'react'
 import { View } from 'react-native'
 
-const Navigator: React.FC = ({ children }) => {
+const Navigator: React.FC<PropsWithChildren> = ({ children }) => {
   return <View>{children}</View>
 }
 const Screen = () => null

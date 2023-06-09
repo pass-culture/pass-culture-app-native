@@ -22,6 +22,7 @@ interface Props {
   onKeyboardDismiss?: () => void
   // used to communicate the keyboard height to the parent without triggering a rerendering
   keyboardHeightRef?: MutableRefObject<number>
+  children: React.ReactNode
 }
 
 export const BottomContentPage: FC<Props> = (props) => {

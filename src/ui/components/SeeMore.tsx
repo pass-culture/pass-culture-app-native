@@ -44,6 +44,7 @@ const ClickableArea: React.FC<{
   navigateTo?: InternalNavigationProps['navigateTo']
   onPress: () => void
   accessibilityLabel: string
+  children: React.ReactNode
 }> = ({ activeOpacity, children, onPress, navigateTo, ...props }) => {
   return navigateTo ? (
     <StyledTouchableLink

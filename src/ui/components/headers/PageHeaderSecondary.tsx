@@ -103,7 +103,7 @@ const ButtonContainer = styled.View<{ positionInHeader: 'left' | 'right' }>(
   })
 )
 
-const Header: React.FC = styled.View.attrs({
+const Header = styled.View.attrs<{ children: React.ReactNode }>({
   accessibilityRole: AccessibilityRole.HEADER,
 })({
   width: '100%',

@@ -11,16 +11,19 @@ import { ScrollButtonForNotTouchDevice } from 'ui/components/buttons/ScrollButto
 import { BicolorArrowLeft as DefaultBicolorArrowLeft } from 'ui/svg/icons/BicolorArrowLeft'
 import { BicolorArrowRight as DefaultBicolorArrowRight } from 'ui/svg/icons/BicolorArrowRight'
 import { getSpacing } from 'ui/theme'
-type ItemDimensions = { width: number; height: number }
+
+export type ItemDimensions = { width: number; height: number }
 
 type Direction = 'previous' | 'next'
 
 export type RenderHeaderItem =
   | ((itemDimensions: ItemDimensions) => React.ReactElement<any>)
   | undefined
+
 export type RenderFooterItem =
   | ((itemDimensions: ItemDimensions) => React.ReactElement<any>)
   | undefined
+
 export type CustomListRenderItem<ItemT> = (
   info: ListRenderItemInfo<ItemT> &
     ItemDimensions & {

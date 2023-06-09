@@ -1,3 +1,4 @@
+import userEvent from '@testing-library/user-event'
 import mockdate from 'mockdate'
 import React from 'react'
 import { Linking } from 'react-native'
@@ -6,6 +7,7 @@ import { mockOffer } from 'features/bookOffer/fixtures/offer'
 import { OfferBody } from 'features/offer/components/OfferBody/OfferBody'
 import { VenueListItem } from 'features/offer/components/VenueSelectionList/VenueSelectionList'
 import { getOfferUrl } from 'features/share/helpers/getOfferUrl'
+import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { placeholderData } from 'libs/subcategories/placeholderData'
 import { act, fireEvent, render, screen } from 'tests/utils/web'
 
@@ -49,6 +51,8 @@ jest.mock('api/useSearchVenuesOffer/useSearchVenueOffers', () => ({
 
 const openURLSpy = jest.spyOn(Linking, 'openURL')
 
+jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockReturnValue(false)
+
 const offerId = 1
 
 describe('<OfferBody />', () => {
@@ -60,10 +64,7 @@ describe('<OfferBody />', () => {
     it('should open url to share on social medium', async () => {
       render(<OfferBody offerId={offerId} onScroll={jest.fn()} />)
 
-      await act(async () => {
-        const whatsappButton = await screen.findByText('Envoyer sur WhatsApp')
-        fireEvent.click(whatsappButton)
-      })
+      await userEvent.click(await screen.findByText('Envoyer sur WhatsApp'))
 
       const offerUrl = getOfferUrl(offerId)
       const expectedMessage = `Retrouve "${mockOffer.name}" chez "${mockOffer.venue.name}" sur le pass Culture\n${offerUrl}`

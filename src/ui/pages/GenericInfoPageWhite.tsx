@@ -38,6 +38,7 @@ type Props = {
   mobileBottomFlex?: number
   separateIconFromTitle?: boolean
   onSkip?: () => void
+  children?: React.ReactNode
 } & (PropsWithAnimation | PropsWithIcon)
 
 const SMALL_HEIGHT = 576

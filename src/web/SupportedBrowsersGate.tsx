@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { PropsWithChildren } from 'react'
 // eslint-disable-next-line no-restricted-imports
 import * as DeviceDetect from 'react-device-detect'
 import { ScrollView, ViewStyle } from 'react-native'
@@ -15,7 +15,7 @@ const isFacebookMessenger = !!(
   navigator?.userAgent?.match?.(/(iPod|iPhone|iPad)/) && navigator?.userAgent?.match?.(/FBAV/i)
 )
 
-export const SupportedBrowsersGate: React.FC = ({ children }) => {
+export const SupportedBrowsersGate: React.FC<PropsWithChildren> = ({ children }) => {
   const [shouldDisplayApp, setShouldDisplayApp] = React.useState(() => isBrowserSupported())
 
   if (!shouldDisplayApp) {

@@ -1,4 +1,4 @@
-import { renderHook } from 'tests/utils'
+import { renderHook } from 'tests/utils/web'
 
 import { useVersion } from './useVersion'
 

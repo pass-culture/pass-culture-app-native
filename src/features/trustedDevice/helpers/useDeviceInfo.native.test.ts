@@ -1,7 +1,7 @@
 import DeviceInfo from 'react-native-device-info'
 
 import { DeviceInformation, useDeviceInfo } from 'features/trustedDevice/helpers/useDeviceInfo'
-import { renderHook, waitFor } from 'tests/utils'
+import { act, renderHook } from 'tests/utils'
 
 jest.mock('react-native-device-info')
 
@@ -23,10 +23,9 @@ describe('useDeviceInfo', () => {
       source: 'iPhone 13',
       os: 'iOS',
     }
+    await act(async () => {})
 
-    await waitFor(() => {
-      expect(result.current).toMatchObject(expectedInfo)
-    })
+    expect(result.current).toMatchObject(expectedInfo)
   })
 
   it('returns informations about the device for web', async () => {
@@ -41,9 +40,8 @@ describe('useDeviceInfo', () => {
       source: 'Chrome',
       os: 'Mac OS',
     }
+    await act(async () => {})
 
-    await waitFor(() => {
-      expect(result.current).toMatchObject(expectedInfo)
-    })
+    expect(result.current).toMatchObject(expectedInfo)
   })
 })

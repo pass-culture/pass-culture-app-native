@@ -5,7 +5,7 @@ import { usePhoneValidationRemainingAttempts } from 'features/identityCheck/api/
 import { env } from 'libs/environment'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { server } from 'tests/server'
-import { renderHook, waitFor } from 'tests/utils'
+import { act, renderHook } from 'tests/utils'
 
 const phoneValidationApiMock = jest.fn()
 const phoneValidationRemainingAttemptsAPIResponse: PhoneValidationRemainingAttemptsRequest = {
@@ -27,15 +27,15 @@ describe('usePhoneValidationRemainingAttempts', () => {
       wrapper: ({ children }) => reactQueryProviderHOC(children),
     })
 
-    await waitFor(() => {
-      expect(result.current.remainingAttempts).toEqual(
-        phoneValidationRemainingAttemptsAPIResponse.remainingAttempts
-      )
-      expect(result.current.counterResetDatetime).toEqual(
-        phoneValidationRemainingAttemptsAPIResponse.counterResetDatetime
-      )
-      expect(result.current.isLastAttempt).toEqual(false)
-      expect(phoneValidationApiMock).toHaveBeenCalledTimes(1)
-    })
+    await act(async () => {})
+
+    expect(result.current.remainingAttempts).toEqual(
+      phoneValidationRemainingAttemptsAPIResponse.remainingAttempts
+    )
+    expect(result.current.counterResetDatetime).toEqual(
+      phoneValidationRemainingAttemptsAPIResponse.counterResetDatetime
+    )
+    expect(result.current.isLastAttempt).toEqual(false)
+    expect(phoneValidationApiMock).toHaveBeenCalledTimes(1)
   })
 })

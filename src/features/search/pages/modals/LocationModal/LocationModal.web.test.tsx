@@ -22,6 +22,8 @@ describe('<LocationModal/>', () => {
     it('should have header when viewport width is mobile', async () => {
       renderLocationModal({ hideModal })
 
+      await act(async () => {}) // Warning: An update to LocationModal inside a test was not wrapped in act(...).
+
       const header = screen.queryByTestId('pageHeader')
 
       await waitFor(() => {
@@ -32,6 +34,8 @@ describe('<LocationModal/>', () => {
     it('should not have header when viewport width is desktop', async () => {
       const isDesktopViewport = true
       renderLocationModal({ hideModal }, isDesktopViewport)
+
+      await act(async () => {}) // Warning: An update to LocationModal inside a test was not wrapped in act(...).
 
       const header = screen.queryByTestId('pageHeader')
       await waitFor(() => {
@@ -47,7 +51,9 @@ describe('<LocationModal/>', () => {
     const closeButton = screen.getByTestId(
       'Ne pas filtrer sur la localisation et retourner aux résultats'
     )
-    fireEvent.click(closeButton)
+    await act(async () => {
+      fireEvent.click(closeButton)
+    })
 
     await waitFor(() => {
       expect(hideModal).toHaveBeenCalledTimes(1)

@@ -626,7 +626,6 @@ exports[`<Venue /> should match snapshot 1`] = `
                       externalSiteIcon-SVG-Mock
                     </Text>
                   </View>
-                  
                 </Text>
                  https://pass.culture.fr/
               </Text>
@@ -3023,7 +3022,6 @@ exports[`<Venue /> should match snapshot 1`] = `
                       externalSiteIcon-SVG-Mock
                     </Text>
                   </View>
-                  
                 </Text>
                  https://test.com
               </Text>

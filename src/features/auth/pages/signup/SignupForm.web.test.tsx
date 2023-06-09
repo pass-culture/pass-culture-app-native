@@ -5,7 +5,7 @@ import { SafeAreaProvider } from 'react-native-safe-area-context'
 import { navigation } from '__mocks__/@react-navigation/native'
 import { RootStackParamList } from 'features/navigation/RootNavigator/types'
 import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
-import { checkAccessibilityFor, render, screen } from 'tests/utils/web'
+import { act, checkAccessibilityFor, render, screen } from 'tests/utils/web'
 
 import { SignupForm } from './SignupForm'
 
@@ -45,9 +45,11 @@ describe('<SignupForm/>', () => {
       )
 
       await screen.findByLabelText('Abandonner l’inscription')
-      const results = await checkAccessibilityFor(container)
 
-      expect(results).toHaveNoViolations()
+      await act(async () => {
+        const results = await checkAccessibilityFor(container)
+        expect(results).toHaveNoViolations()
+      })
     })
   })
 })

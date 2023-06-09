@@ -1,7 +1,7 @@
 import React from 'react'
 
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { render, checkAccessibilityFor } from 'tests/utils/web'
+import { render, checkAccessibilityFor, act } from 'tests/utils/web'
 
 import { CodeNotReceivedModal } from './CodeNotReceivedModal'
 
@@ -23,8 +23,11 @@ describe('<CodeNotReceivedModal/>', () => {
         // eslint-disable-next-line local-rules/no-react-query-provider-hoc
         reactQueryProviderHOC(<CodeNotReceivedModal isVisible dismissModal={jest.fn()} />)
       )
-      const results = await checkAccessibilityFor(container)
-      expect(results).toHaveNoViolations()
+
+      await act(async () => {
+        const results = await checkAccessibilityFor(container)
+        expect(results).toHaveNoViolations()
+      })
     })
   })
 })

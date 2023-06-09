@@ -7,6 +7,7 @@ import { Error } from 'ui/svg/icons/Error'
 
 type Props = {
   message: string
+  children?: React.ReactNode
   testID?: string
 }
 

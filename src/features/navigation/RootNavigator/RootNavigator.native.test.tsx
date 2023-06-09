@@ -4,7 +4,7 @@ import React from 'react'
 import { useMustUpdateApp } from 'features/forceUpdate/helpers/useMustUpdateApp'
 import { useSplashScreenContext } from 'libs/splashscreen'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { render, screen } from 'tests/utils'
+import { act, render, screen } from 'tests/utils'
 
 import { RootNavigator } from './RootNavigator'
 
@@ -46,8 +46,8 @@ describe('<RootNavigator />', () => {
     mockUseSplashScreenContext.mockReturnValueOnce({ isSplashScreenHidden: true })
 
     renderRootNavigator()
-
-    const privacyPolicyTitle = await screen.findByText('Respect de ta vie privée')
+    await act(async () => {})
+    const privacyPolicyTitle = screen.getByText('Respect de ta vie privée')
     expect(privacyPolicyTitle).toBeTruthy()
   })
 
@@ -56,7 +56,9 @@ describe('<RootNavigator />', () => {
 
     renderRootNavigator()
 
-    await screen.findByText('Respect de ta vie privée')
+    await act(async () => {})
+
+    screen.getByText('Respect de ta vie privée')
 
     const quickAccessButton = screen.queryByText('Accéder au menu de navigation')
     expect(quickAccessButton).toBeNull()
@@ -68,7 +70,9 @@ describe('ForceUpdate display logic', () => {
     mockUseSplashScreenContext.mockReturnValueOnce({ isSplashScreenHidden: true })
     renderRootNavigator()
 
-    await screen.findByText('Respect de ta vie privée')
+    await act(async () => {})
+
+    screen.getByText('Respect de ta vie privée')
 
     expect(screen.queryAllByText('Mise à jour de l’application')).toBeTruthy()
   })

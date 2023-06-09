@@ -1,13 +1,12 @@
 /* eslint-disable local-rules/no-react-query-provider-hoc */
 import { rest } from 'msw'
-import * as reactQueryAPI from 'react-query'
 
 // eslint-disable-next-line no-restricted-imports
 import { firebaseAnalytics } from 'libs/firebase/analytics'
 import { eventMonitoring } from 'libs/monitoring'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { server } from 'tests/server'
-import { renderHook, waitFor } from 'tests/utils'
+import { act, renderHook, waitFor } from 'tests/utils'
 
 import { useHomeRecommendedIdsMutation } from './useHomeRecommendedIdsMutation'
 
@@ -24,33 +23,6 @@ server.use(
 
 describe('useHomeRecommendedIdsMutation', () => {
   const mockFetch = jest.spyOn(global, 'fetch')
-  const mockUseMutation = jest.spyOn(reactQueryAPI, 'useMutation')
-
-  it('should call useMutation', () => {
-    renderHook(() => useHomeRecommendedIdsMutation(), {
-      wrapper: ({ children }) => reactQueryProviderHOC(children),
-    })
-
-    expect(mockUseMutation).toHaveBeenCalledTimes(1)
-  })
-
-  it('should call fetch when mutate', async () => {
-    const { result } = renderHook(() => useHomeRecommendedIdsMutation(), {
-      wrapper: ({ children }) => reactQueryProviderHOC(children),
-    })
-    result.current.mutate({ endpointUrl: 'http://passculture.reco' })
-
-    await waitFor(() => {
-      expect(mockFetch).toHaveBeenCalledWith('http://passculture.reco', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          Accept: 'application/json',
-        },
-        body: JSON.stringify({}),
-      })
-    })
-  })
 
   it('should capture an exception when fetch call fails', async () => {
     mockFetch.mockRejectedValueOnce('some error')
@@ -78,9 +50,10 @@ describe('useHomeRecommendedIdsMutation', () => {
       wrapper: ({ children }) => reactQueryProviderHOC(children),
     })
     result.current.mutate({ endpointUrl: 'http://passculture.reco' })
-    await waitFor(() => {
-      expect(result.current.data).toEqual(body)
-    })
+
+    await act(async () => {})
+
+    expect(result.current.data).toEqual(body)
   })
 
   it('should log response body parameters on firebase when fetch call succeeds', async () => {

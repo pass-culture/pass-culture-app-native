@@ -3,7 +3,7 @@ import React from 'react'
 import { analytics } from 'libs/analytics'
 import { SplashScreenProvider } from 'libs/splashscreen'
 import { storage } from 'libs/storage'
-import { renderHook, waitFor } from 'tests/utils'
+import { renderHook, waitFor } from 'tests/utils/web'
 
 import { useInitialScreen } from './useInitialScreenConfig'
 

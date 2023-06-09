@@ -9,7 +9,7 @@ import { TabNavigationStateProvider } from 'features/navigation/TabBar/TabNaviga
 import { env } from 'libs/environment'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { server } from 'tests/server'
-import { screen } from 'tests/utils/web'
+import { screen, act } from 'tests/utils/web'
 import { theme } from 'theme'
 
 import { Header } from './Header'
@@ -57,17 +57,23 @@ describe('Header', () => {
     expect(screen.queryByText('Profil')).toBeTruthy()
   })
 
-  it('should render Header for beneficiary and logged in users', () => {
+  it('should render Header for beneficiary and logged in users', async () => {
     renderHeader({ isLoggedIn: true, isBeneficiary: true })
-    expect(screen.queryByText('Accueil')).toBeTruthy()
-    expect(screen.queryByText('Recherche')).toBeTruthy()
-    expect(screen.queryByText('Réservations')).toBeTruthy()
-    expect(screen.queryByText('Favoris')).toBeTruthy()
-    expect(screen.queryByText('Profil')).toBeTruthy()
+
+    await act(async () => {}) // Warning: An update to BicolorFavoriteCount inside a test was not wrapped in act(...).
+
+    expect(screen.getByText('Accueil')).toBeTruthy()
+    expect(screen.getByText('Recherche')).toBeTruthy()
+    expect(screen.getByText('Réservations')).toBeTruthy()
+    expect(screen.getByText('Favoris')).toBeTruthy()
+    expect(screen.getByText('Profil')).toBeTruthy()
   })
 
-  it('should identify one tab as current page', () => {
+  it('should identify one tab as current page', async () => {
     renderHeader({ isLoggedIn: true, isBeneficiary: true })
+
+    await act(async () => {}) // Warning: An update to BicolorFavoriteCount inside a test was not wrapped in act(...).
+
     expect(screen.getByTestId('Home tab')?.getAttribute('aria-current')).toEqual('page')
     expect(screen.getByTestId('Search tab')?.getAttribute('aria-current')).toBeNull()
     expect(screen.getByTestId('Bookings tab')?.getAttribute('aria-current')).toBeNull()
