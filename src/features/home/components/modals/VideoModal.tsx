@@ -4,7 +4,7 @@ import styled from 'styled-components/native'
 
 import { getTagColor } from 'features/home/components/helpers/getTagColor'
 import { VideoPlayer } from 'features/home/components/VideoPlayer'
-import { videoModuleFixture } from 'features/home/fixtures/videoModule.fixture'
+import { VideoModule } from 'features/home/types'
 import { theme } from 'theme'
 import { styledButton } from 'ui/components/buttons/styledButton'
 import { AppModal } from 'ui/components/modals/AppModal'
@@ -12,12 +12,12 @@ import { Touchable } from 'ui/components/touchable/Touchable'
 import { Close } from 'ui/svg/icons/Close'
 import { Spacer, Typo, getSpacing } from 'ui/theme'
 
-interface VideoModalProps {
+interface VideoModalProps extends VideoModule {
   visible: boolean
   hideModal: () => void
 }
 
-export const VideoModal: React.FC<VideoModalProps> = ({ visible, hideModal }) => {
+export const VideoModal: React.FC<VideoModalProps> = (props) => {
   // TODO(PC-21762) provide description and publication date with content from contentful
   const descriptionText =
     'Laissons ici la place pour mettre du contexte sur la vidéo si besoin cela permet à l’utilisateur de savoir sans voir de quoi le vidéo parle. Pas plus de 130 caractères.'
@@ -30,29 +30,29 @@ export const VideoModal: React.FC<VideoModalProps> = ({ visible, hideModal }) =>
   return (
     <AppModal
       title={''}
-      visible={visible}
+      visible={props.visible}
       isUpToStatusBar
       noPadding
       scrollEnabled={false}
       customModalHeader={<React.Fragment />}>
-      <VideoPlayer youtubeVideoId={videoModuleFixture.youtubeVideoId} />
+      <VideoPlayer youtubeVideoId={props.youtubeVideoId} />
       <StyledScrollView>
         <Spacer.Column numberOfSpaces={4} />
         <StyledTagContainer>
-          <StyledTagBackground color={videoModuleFixture.color}>
-            <StyledCaptionTag>{videoModuleFixture.videoTag}</StyledCaptionTag>
+          <StyledTagBackground color={props.color}>
+            <StyledCaptionTag>{props.videoTag}</StyledCaptionTag>
           </StyledTagBackground>
         </StyledTagContainer>
         <Spacer.Column numberOfSpaces={2} />
-        <Typo.Title3>{videoModuleFixture.title}</Typo.Title3>
+        <Typo.Title3>{props.title}</Typo.Title3>
         <Spacer.Column numberOfSpaces={2} />
         <StyledCaptionDate>{`Publiée le ${publicationDate}`}</StyledCaptionDate>
         <Spacer.Column numberOfSpaces={2} />
         <StyledBody>{descriptionText}</StyledBody>
         <Spacer.Column numberOfSpaces={6} />
-        <Typo.Title4>{videoModuleFixture.offerTitle}</Typo.Title4>
+        <Typo.Title4>{props.offerTitle}</Typo.Title4>
       </StyledScrollView>
-      <StyledTouchable onPress={hideModal} accessibilityLabel="Fermer la modale vidéo">
+      <StyledTouchable onPress={props.hideModal} accessibilityLabel="Fermer la modale vidéo">
         <StyledCloseIcon />
       </StyledTouchable>
     </AppModal>

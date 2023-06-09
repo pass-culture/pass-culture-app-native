@@ -4,6 +4,11 @@ import styled from 'styled-components/native'
 
 import { BlackGradient } from 'features/home/components/BlackGradient'
 import { TEXT_BACKGROUND_OPACITY } from 'features/home/components/constants'
+import { VideoModal } from 'features/home/components/modals/VideoModal'
+import { VideoModule as VideoModuleProps } from 'features/home/types'
+import { styledButton } from 'ui/components/buttons/styledButton'
+import { useModal } from 'ui/components/modals/useModal'
+import { Touchable } from 'ui/components/touchable/Touchable'
 import { Play } from 'ui/svg/icons/Play'
 import { Spacer, Typo, getSpacing } from 'ui/theme'
 
@@ -14,39 +19,35 @@ const PLAYER_TOP_MARGIN = getSpacing(12.5)
 
 const PLAYER_SIZE = getSpacing(14.5)
 
-type Props = {
-  title: string
-  videoTitle: string
-  videoThumbnail: string
-  durationInMinutes: number
-}
-
-export const VideoModule: FunctionComponent<Props> = ({
-  title,
-  videoThumbnail,
-  videoTitle,
-  durationInMinutes,
-}) => {
-  const videoDuration = `${durationInMinutes} min`
+export const VideoModule: FunctionComponent<VideoModuleProps> = (props) => {
+  const {
+    visible: videoModalVisible,
+    showModal: showVideoModal,
+    hideModal: hideVideoModal,
+  } = useModal(false)
+  const videoDuration = `${props.durationInMinutes} min`
 
   return (
     <Container>
-      <Typo.Title3>{title}</Typo.Title3>
+      <Typo.Title3>{props.title}</Typo.Title3>
       <Spacer.Column numberOfSpaces={5} />
-      <Thumbnail source={{ uri: videoThumbnail }}>
-        <DurationCaptionContainer>
-          <DurationCaption>{videoDuration}</DurationCaption>
-        </DurationCaptionContainer>
-        <TextContainer>
-          <BlackGradient />
-          <BlackBackground>
-            <VideoTitle numberOfLines={2}>{videoTitle}</VideoTitle>
-          </BlackBackground>
-        </TextContainer>
-        <PlayerContainer>
-          <Player />
-        </PlayerContainer>
-      </Thumbnail>
+      <StyledTouchable onPress={showVideoModal} testID={'video-thumbnail'}>
+        <Thumbnail source={{ uri: props.videoThumbnail }}>
+          <DurationCaptionContainer>
+            <DurationCaption>{videoDuration}</DurationCaption>
+          </DurationCaptionContainer>
+          <TextContainer>
+            <BlackGradient />
+            <BlackBackground>
+              <VideoTitle numberOfLines={2}>{props.videoTitle}</VideoTitle>
+            </BlackBackground>
+          </TextContainer>
+          <PlayerContainer>
+            <Player />
+          </PlayerContainer>
+        </Thumbnail>
+      </StyledTouchable>
+      <VideoModal visible={videoModalVisible} hideModal={hideVideoModal} {...props} />
     </Container>
   )
 }
@@ -97,3 +98,5 @@ const BlackBackground = styled.View(({ theme }) => ({
 const VideoTitle = styled(Typo.Title4)(({ theme }) => ({
   color: theme.colors.white,
 }))
+
+const StyledTouchable = styledButton(Touchable)``
