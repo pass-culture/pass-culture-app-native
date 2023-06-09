@@ -2,7 +2,7 @@ import jwtDecode from 'jwt-decode'
 
 import { eventMonitoring } from 'libs/monitoring'
 
-type TokenInfo = {
+export type TokenInfo = {
   dateCreated: string
   userId: string
   location?: string
