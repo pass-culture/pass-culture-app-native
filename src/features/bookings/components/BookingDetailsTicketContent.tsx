@@ -39,8 +39,8 @@ export const BookingDetailsTicketContent: FunctionComponent<BookingDetailsTicket
   const properties = getBookingProperties(booking, isEvent)
 
   const categoryId = useCategoryId(offerSubcategory)
-  const isbn =
-    extraData?.isbn && categoryId === CategoryIdEnum.LIVRE ? <Ean isbn={extraData.isbn} /> : null
+  const ean =
+    extraData?.ean && categoryId === CategoryIdEnum.LIVRE ? <Ean ean={extraData.ean} /> : null
 
   const activationCode = !!booking.activationCode && (
     <TicketCode withdrawalType={withdrawalType ?? undefined} code={booking.activationCode.code} />
@@ -88,7 +88,7 @@ export const BookingDetailsTicketContent: FunctionComponent<BookingDetailsTicket
           </React.Fragment>
         )}
       </TicketContent>
-      {isbn}
+      {ean}
     </Container>
   )
 }

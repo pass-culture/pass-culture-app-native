@@ -11,7 +11,7 @@ import { PageHeaderSecondary } from 'ui/components/headers/PageHeaderSecondary'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 import { Helmet } from 'ui/web/global/Helmet'
 
-type ExtraDataKeys = keyof Required<OfferExtraData>
+type ExtraDataKeys = keyof Required<Omit<OfferExtraData, 'isbn'>>
 export type ExtendedKeys = ExtraDataKeys | 'description' | 'photoCredit'
 
 type Item =
@@ -23,7 +23,7 @@ const EXTRA_DATA_KEY_MAPPING: { [k in ExtendedKeys]: string } = {
   description: 'en détails',
   author: 'auteur',
   durationMinutes: 'durée',
-  isbn: 'EAN',
+  ean: 'EAN',
   musicSubType: 'spécialité',
   musicType: 'genre',
   performer: 'interprète',
@@ -46,7 +46,7 @@ const KEY_ORDER: { [k in ExtendedKeys]: number } = {
   stageDirector: 7,
   performer: 8,
   speaker: 9,
-  isbn: 10,
+  ean: 10,
   visa: 11,
   photoCredit: 12,
 }

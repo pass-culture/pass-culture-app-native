@@ -328,6 +328,11 @@ export interface BookingOfferExtraData {
    * @type {string}
    * @memberof BookingOfferExtraData
    */
+  ean?: string | null
+  /**
+   * @type {string}
+   * @memberof BookingOfferExtraData
+   */
   isbn?: string | null
 }
 /**
@@ -1472,6 +1477,11 @@ export interface OfferExtraData {
    * @memberof OfferExtraData
    */
   durationMinutes?: number | null
+  /**
+   * @type {string}
+   * @memberof OfferExtraData
+   */
+  ean?: string | null
   /**
    * @type {string}
    * @memberof OfferExtraData

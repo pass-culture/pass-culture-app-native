@@ -106,7 +106,7 @@ exports[`BookingDetails should render correctly 1`] = `
                     "id": 150230,
                     "offer": Object {
                       "extraData": Object {
-                        "isbn": "123456789",
+                        "ean": "123456789",
                       },
                       "id": 147874,
                       "isDigital": true,

@@ -15,7 +15,7 @@ export const mockOffer: OfferResponse = {
   extraData: {
     author: null,
     durationMinutes: 60,
-    isbn: null,
+    ean: null,
     musicSubType: null,
     musicType: null,
     performer: null,
@@ -106,7 +106,7 @@ export const mockDigitalOffer: OfferResponse = {
   extraData: {
     author: null,
     durationMinutes: 60,
-    isbn: null,
+    ean: null,
     musicSubType: null,
     musicType: null,
     performer: null,

@@ -69,7 +69,7 @@ export const bookingsSnap: BookingsResponse = {
           id: 147874,
           name: 'Avez-vous déjà vu\u00a0?',
           extraData: {
-            isbn: '123456789',
+            ean: '123456789',
           },
           isPermanent: false,
           isDigital: true,
@@ -111,7 +111,7 @@ export const bookingsSnap: BookingsResponse = {
           id: 147874,
           name: 'Avez-vous déjà vu\u00a0?',
           extraData: {
-            isbn: '123456789',
+            ean: '123456789',
           },
           isPermanent: false,
           isDigital: false,
