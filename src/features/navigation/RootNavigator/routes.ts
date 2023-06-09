@@ -9,6 +9,7 @@ import { NotYetUnderageEligibility } from 'features/auth/pages/signup/NotYetUnde
 import { SignupConfirmationEmailSent } from 'features/auth/pages/signup/SignupConfirmationEmailSent/SignupConfirmationEmailSent'
 import { SignupConfirmationExpiredLink } from 'features/auth/pages/signup/SignupConfirmationExpiredLink/SignupConfirmationExpiredLink'
 import { SignupForm } from 'features/auth/pages/signup/SignupForm'
+import { SignupForm as NewSignupForm } from 'features/auth/pages/signup/SignupFormV2'
 import { VerifyEligibility } from 'features/auth/pages/signup/VerifyEligiblity/VerifyEligibility'
 import { AccountReactivationSuccess } from 'features/auth/pages/suspendedAccount/AccountReactivationSuccess/AccountReactivationSuccess'
 import { FraudulentAccount } from 'features/auth/pages/suspendedAccount/FraudulentAccount/FraudulentAccount'
@@ -360,6 +361,12 @@ export const routes: Route[] = [
     path: 'creation-compte',
     deeplinkPaths: ['creation-compte/email'],
     options: { title: 'Création de compte' },
+  },
+  {
+    name: 'SignupFormV2',
+    component: NewSignupForm,
+    path: 'creation-compte-new',
+    options: { title: 'Création de compte NEW' },
   },
   {
     name: 'SignupConfirmationEmailSent',
