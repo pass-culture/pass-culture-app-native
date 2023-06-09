@@ -4,7 +4,7 @@ import styled from 'styled-components/native'
 
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { BackButton } from 'ui/components/headers/BackButton'
-import { CloseButton } from 'ui/components/headers/CloseButton'
+import { CancelButton } from 'ui/components/headers/CancelButton'
 import { getSpacing, Spacer } from 'ui/theme'
 // eslint-disable-next-line no-restricted-imports
 import { ColorsEnum } from 'ui/theme/colors'
@@ -52,9 +52,7 @@ export const PageHeaderWithoutPlaceholder: FunctionComponent<Props> = ({
           </ButtonContainer>
           <Title nativeID={titleID}>{title}</Title>
           <ButtonContainer positionInHeader="right" testID="close-button-container">
-            {!!shouldDisplayCloseButton && (
-              <CloseButton onClose={onClose} color={ColorsEnum.BLACK} />
-            )}
+            {!!shouldDisplayCloseButton && <CancelButton onClose={onClose} />}
           </ButtonContainer>
         </Row>
       </Container>
