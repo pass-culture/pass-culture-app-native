@@ -6,6 +6,9 @@ import { LinkToComponent } from 'features/internal/cheatcodes/components/LinkToC
 import { PageHeaderSecondary } from 'ui/components/headers/PageHeaderSecondary'
 import { Spacer } from 'ui/theme'
 
+const TOKEN =
+  'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjExMDkyLCJkYXRlQ3JlYXRlZCI6IjIwMjMtMDYtMDdUMDc6NDQ6NDguNTY4MzAzWiIsImxvY2F0aW9uIjpudWxsLCJvcyI6ImlPUyIsInNvdXJjZSI6ImlQaG9uZSAxMyJ9.Rg8LwaFCMaDQV1ThoyTALYj7clEix-LmrM1JyPTXwTU'
+
 export function NavigationTrustedDevice(): JSX.Element {
   return (
     <ScrollView>
@@ -14,7 +17,7 @@ export function NavigationTrustedDevice(): JSX.Element {
         <LinkToComponent name="TrustedDeviceInfos" />
         <LinkToComponent name="SuspensionChoice" />
         <LinkToComponent name="SuspensionConfirmation" />
-        <LinkToComponent name="AccountSecurity" />
+        <LinkToComponent name="AccountSecurity" navigationParams={{ token: TOKEN }} />
       </StyledContainer>
       <Spacer.BottomScreen />
     </ScrollView>
