@@ -7,7 +7,7 @@ import { PageHeaderSecondary } from 'ui/components/headers/PageHeaderSecondary'
 import { Spacer } from 'ui/theme'
 
 const TOKEN =
-  'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjExMDkyLCJkYXRlQ3JlYXRlZCI6IjIwMjMtMDYtMDdUMDc6NDQ6NDguNTY4MzAzWiIsImxvY2F0aW9uIjpudWxsLCJvcyI6ImlPUyIsInNvdXJjZSI6ImlQaG9uZSAxMyJ9.Rg8LwaFCMaDQV1ThoyTALYj7clEix-LmrM1JyPTXwTU'
+  'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiIxIiwibG9jYXRpb24iOiJQYXJpcyIsImRhdGVDcmVhdGVkIjoiMjAyMy0wNi0wOVQxMDowMDowMFoiLCJvcyI6ImlPUyIsInNvdXJjZSI6ImlQaG9uZSAxMyJ9.0x9m4wEh0QKefPSsCOJDVrA-xVRGnUcoJR_vEbjNtaE'
 
 export function NavigationTrustedDevice(): JSX.Element {
   return (

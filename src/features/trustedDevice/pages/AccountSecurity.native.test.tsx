@@ -1,15 +1,26 @@
 import React from 'react'
 
-import { navigate } from '__mocks__/@react-navigation/native'
+import { navigate, useRoute } from '__mocks__/@react-navigation/native'
 import { navigateToHome } from 'features/navigation/helpers'
 import { fireEvent, render, screen } from 'tests/utils'
 
 import { AccountSecurity } from './AccountSecurity'
 
+jest.unmock('jwt-decode')
 jest.mock('features/navigation/helpers')
 
+const TOKEN =
+  'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiIxIiwibG9jYXRpb24iOiJQYXJpcyIsImRhdGVDcmVhdGVkIjoiMjAyMy0wNi0wOVQxMDowMDowMFoiLCJvcyI6ImlPUyIsInNvdXJjZSI6ImlQaG9uZSAxMyJ9.0x9m4wEh0QKefPSsCOJDVrA-xVRGnUcoJR_vEbjNtaE'
+
 describe('<AccountSecurity/>', () => {
-  it('should match snapshot', () => {
+  it('should match snapshot when no token', () => {
+    render(<AccountSecurity />)
+
+    expect(screen).toMatchSnapshot()
+  })
+
+  it('should match snapshot with valid token', () => {
+    useRoute.mockReturnValueOnce({ params: { token: TOKEN } })
     render(<AccountSecurity />)
 
     expect(screen).toMatchSnapshot()
