@@ -5,6 +5,7 @@ import { DeeplinkParts } from 'features/deeplinks/types'
 import { navigateFromRef } from 'features/navigation/navigationRef'
 import { getScreenPath } from 'features/navigation/RootNavigator/linking/getScreenPath'
 import { analytics } from 'libs/analytics'
+import { eventMonitoring } from 'libs/monitoring'
 
 import { openUrl } from '../helpers'
 
@@ -96,6 +97,19 @@ describe('openUrl', () => {
     expect(alertMock).toHaveBeenCalledTimes(1)
   })
 
+  it('should log an info in Sentry when Linking.openURL throws', async () => {
+    openURLSpy.mockImplementationOnce(() => Promise.reject(new Error('Did not open correctly')))
+
+    const link = 'https://www.google.com'
+    await openUrl(link)
+
+    expect(eventMonitoring.captureMessage).toHaveBeenNthCalledWith(
+      1,
+      'OpenExternalUrlError: Did not open correctly',
+      'info'
+    )
+  })
+
   it('should not display alert when Linking.openURL throws but fallbackUrl is valid', async () => {
     // Last in first out, it will fail then succeed.
     openURLSpy.mockResolvedValueOnce(undefined)
@@ -107,5 +121,25 @@ describe('openUrl', () => {
     await openUrl(link, { fallbackUrl: fallbackLink })
 
     expect(alertMock).not.toHaveBeenCalled()
+  })
+
+  it('should log an info in Sentry when Linking.openURL throws and fallbackUrl throws', async () => {
+    openURLSpy.mockImplementationOnce(() => Promise.reject(new Error('Did not open correctly')))
+    openURLSpy.mockImplementationOnce(() => Promise.reject(new Error('Did not open correctly')))
+
+    const link = 'https://www.google.com'
+    const fallbackLink = 'https://www.googlefallback.com'
+    await openUrl(link, { fallbackUrl: fallbackLink })
+
+    expect(eventMonitoring.captureMessage).toHaveBeenNthCalledWith(
+      1,
+      'OpenExternalUrlError: Did not open correctly',
+      'info'
+    )
+    expect(eventMonitoring.captureMessage).toHaveBeenNthCalledWith(
+      2,
+      'OpenExternalUrlError_FallbackUrl: Did not open correctly',
+      'info'
+    )
   })
 })

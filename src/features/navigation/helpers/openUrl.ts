@@ -4,7 +4,7 @@ import { getScreenFromDeeplink } from 'features/deeplinks/helpers'
 import { navigateFromRef } from 'features/navigation/navigationRef'
 import { analytics } from 'libs/analytics'
 import { OfferAnalyticsData } from 'libs/analytics/logEventAnalytics'
-import { captureMonitoringError } from 'libs/monitoring'
+import { eventMonitoring } from 'libs/monitoring'
 
 import { isAppUrl } from './isAppUrl'
 import { navigateToHome } from './navigateToHome'
@@ -34,7 +34,8 @@ const openExternalUrl = async (
     if (shouldLogEvent) analytics.logOpenExternalUrl(url, { ...analyticsData })
     return
   } catch (error) {
-    if (error instanceof Error) captureMonitoringError(error.message, 'OpenExternalUrlError')
+    if (error instanceof Error)
+      eventMonitoring.captureMessage(`OpenExternalUrlError: ${error.message}`, 'info')
   }
 
   if (fallbackUrl) {
@@ -44,7 +45,7 @@ const openExternalUrl = async (
       return
     } catch (error) {
       if (error instanceof Error)
-        captureMonitoringError(error.message, 'OpenExternalUrlError_FallbackUrl')
+        eventMonitoring.captureMessage(`OpenExternalUrlError_FallbackUrl: ${error.message}`, 'info')
     }
   }
   showAlert(url)
