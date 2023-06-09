@@ -219,7 +219,7 @@ Array [
   <RCTScrollView>
     <View>
       <View
-        numberOfSpaces={16.25}
+        height={65}
         style={
           Array [
             Object {

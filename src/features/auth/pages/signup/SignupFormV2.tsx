@@ -103,7 +103,7 @@ export const SignupForm: FunctionComponent = () => {
       </PageHeaderWithoutPlaceholder>
       <Spacer.Column numberOfSpaces={6} />
       <ScrollView>
-        <Spacer.Column numberOfSpaces={headerHeight / 4} />
+        <Placeholder height={headerHeight} />
         {/* To remove when adding real implem */}
         <Typo.Body>Lorem Ipsum</Typo.Body>
         <Typo.Body>Lorem Ipsum</Typo.Body>
@@ -152,4 +152,8 @@ const BlurHeaderContainer = styled.View<{ height: number }>(({ height }) => ({
   height,
   overflow: 'hidden',
   backdropFilter: 'blur(20px)',
+}))
+
+const Placeholder = styled.View<{ height: number }>(({ height }) => ({
+  height,
 }))
