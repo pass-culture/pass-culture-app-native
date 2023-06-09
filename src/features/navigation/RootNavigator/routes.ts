@@ -27,7 +27,6 @@ import { FirstTutorial } from 'features/firstTutorial/pages/FirstTutorial/FirstT
 import { ThematicHome } from 'features/home/pages/ThematicHome'
 import { AppComponents } from 'features/internal/cheatcodes/pages/AppComponents/AppComponents'
 import { CheatCodes } from 'features/internal/cheatcodes/pages/CheatCodes/CheatCodes'
-import { SignupProgressBar } from 'features/internal/cheatcodes/pages/CheatCodes/SignupProgressBar'
 import { CheatMenu } from 'features/internal/cheatcodes/pages/CheatMenu'
 import { DynamicSocials } from 'features/internal/cheatcodes/pages/DynamicSocials/DynamicSocials'
 import { Navigation } from 'features/internal/cheatcodes/pages/Navigation'
@@ -433,11 +432,6 @@ export const routes: Route[] = [
       path: 'ab-testing-poc',
     },
     options: { title: 'POC A/B Testing' },
-  },
-  {
-    name: 'SignupProgressBar',
-    component: SignupProgressBar,
-    path: 'cheat-sign-up-progress-bar',
   },
   {
     // debug route: in navigation component
