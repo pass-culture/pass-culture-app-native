@@ -101,9 +101,9 @@ export const SignupForm: FunctionComponent = () => {
         onGoBack={goBackAndLeaveSignup}>
         <ProgressBar totalStep={SIGNUP_NUMBER_OF_STEPS} currentStep={stepIndex + 1} />
       </PageHeaderWithoutPlaceholder>
-      <Spacer.Column numberOfSpaces={6} />
       <ScrollView>
         <Placeholder height={headerHeight} />
+        <Spacer.Column numberOfSpaces={8} />
         {/* To remove when adding real implem */}
         <Typo.Body>Lorem Ipsum</Typo.Body>
         <Typo.Body>Lorem Ipsum</Typo.Body>
