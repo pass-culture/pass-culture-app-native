@@ -1,5 +1,6 @@
 import colorAlpha from 'color-alpha'
 import React, { FunctionComponent, ReactNode } from 'react'
+import { Platform } from 'react-native'
 import styled from 'styled-components/native'
 
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
@@ -67,7 +68,8 @@ const Header = styled.View(({ theme }) => ({
   top: 0,
   left: 0,
   right: 0,
-  backgroundColor: colorAlpha(theme.colors.white, 0),
+  backgroundColor:
+    Platform.OS === 'android' ? theme.colors.white : colorAlpha(theme.colors.white, 0),
   borderBottomColor: theme.colors.greyLight,
   borderBottomWidth: 1,
 }))

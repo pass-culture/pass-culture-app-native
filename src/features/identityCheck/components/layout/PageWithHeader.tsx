@@ -1,5 +1,5 @@
 import React, { FunctionComponent, ReactNode, useState } from 'react'
-import { LayoutChangeEvent, View } from 'react-native'
+import { LayoutChangeEvent, Platform, View } from 'react-native'
 import styled from 'styled-components/native'
 
 import { CustomKeyboardAvoidingView } from 'features/identityCheck/components/CustomKeyboardAvoidingView'
@@ -50,9 +50,11 @@ export const PageWithHeader: FunctionComponent<Props> = (props) => {
           </FixedBottomChildrenView>
         ) : null}
       </CustomKeyboardAvoidingView>
-      <BlurHeaderContainer height={headerHeight}>
-        <BlurHeader />
-      </BlurHeaderContainer>
+      {Platform.OS !== 'android' && (
+        <BlurHeaderContainer height={headerHeight}>
+          <BlurHeader />
+        </BlurHeaderContainer>
+      )}
     </React.Fragment>
   )
 }
