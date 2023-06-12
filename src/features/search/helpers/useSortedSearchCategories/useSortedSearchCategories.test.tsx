@@ -1,6 +1,6 @@
+import { SearchCategoriesIllustrations } from 'features/internal/cheatcodes/pages/AppComponents/illustrationsExports'
 import { placeholderData } from 'libs/subcategories/placeholderData'
 import { renderHook } from 'tests/utils'
-import { categoriesIcons } from 'ui/svg/icons/bicolor/exports/categoriesIcons'
 
 import { useSortedSearchCategories } from './useSortedSearchCategories'
 
@@ -26,10 +26,10 @@ describe('useSortedSearchCategories', () => {
     expect(result.current[11].label).toEqual('Médias & presse')
   })
 
-  it('should set icon for category', () => {
+  it('should set illustration for category', () => {
     const { result } = renderHook(useSortedSearchCategories, options)
 
-    expect(result.current[11].Icon).toEqual(categoriesIcons.Press)
+    expect(result.current[11].Illustration).toEqual(SearchCategoriesIllustrations.MediaPress)
   })
 
   it('should sort search group names alphabetically', () => {
