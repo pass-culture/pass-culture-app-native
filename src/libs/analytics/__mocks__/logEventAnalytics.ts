@@ -97,6 +97,7 @@ export const logEventAnalytics: typeof actualLogEventAnalytics = {
   logMailTo: jest.fn(),
   logModifyMail: jest.fn(),
   logModuleDisplayedOnHomepage: jest.fn(),
+  logMultivenueOptionDisplayed: jest.fn(),
   logNoSearchResult: jest.fn(),
   logNotificationToggle: jest.fn(),
   logOfferSeenDuration: jest.fn(),

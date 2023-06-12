@@ -388,6 +388,8 @@ export const logEventAnalytics = {
         homeEntryId,
       }
     ),
+  logMultivenueOptionDisplayed: (offerId: number) =>
+    analytics.logEvent({ firebase: AnalyticsEvent.MULTI_VENUE_OPTION_DISPLAYED }, { offerId }),
   logNoSearchResult: (query: string, searchId?: string) =>
     analytics.logEvent({ firebase: AnalyticsEvent.NO_SEARCH_RESULT }, { query, searchId }),
   logNotificationToggle: (enableEmail: boolean, enablePush?: boolean) =>

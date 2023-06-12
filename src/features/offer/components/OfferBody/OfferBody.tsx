@@ -207,6 +207,11 @@ export const OfferBody: FunctionComponent<Props> = ({
     }
   }, [data, fetchNextPage, hasNextPage])
 
+  const onShowChangeVenueModal = useCallback(() => {
+    showChangeVenueModal()
+    analytics.logMultivenueOptionDisplayed(offerId)
+  }, [offerId, showChangeVenueModal])
+
   const isRefreshing = useIsFalseWithDelay(isFetching, ANIMATION_DURATION)
 
   if (!offer) return <React.Fragment></React.Fragment>
@@ -304,7 +309,7 @@ export const OfferBody: FunctionComponent<Props> = ({
             <ButtonSecondary
               wording="Voir d’autres lieux disponibles"
               fullWidth
-              onPress={showChangeVenueModal}
+              onPress={onShowChangeVenueModal}
             />
             <Spacer.Column numberOfSpaces={6} />
           </React.Fragment>
