@@ -1,3 +1,4 @@
+import { NavigationContainer } from '@react-navigation/native'
 import { ComponentStory, ComponentMeta } from '@storybook/react'
 import React from 'react'
 
@@ -8,6 +9,13 @@ import { VideoModule } from './VideoModule'
 export default {
   title: 'Features/home/VideoModule',
   component: VideoModule,
+  decorators: [
+    (Story) => (
+      <NavigationContainer>
+        <Story />
+      </NavigationContainer>
+    ),
+  ],
 } as ComponentMeta<typeof VideoModule>
 
 const Template: ComponentStory<typeof VideoModule> = (props) => <VideoModule {...props} />
