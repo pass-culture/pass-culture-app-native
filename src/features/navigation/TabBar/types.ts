@@ -7,7 +7,7 @@ import { ArrayElement } from 'libs/typesUtils/typeHelpers'
 export type TabRouteName = keyof TabParamList
 
 export type TabParamList = {
-  Home: { entryId?: string; latitude?: number; longitude?: number } | undefined
+  Home: { latitude?: number; longitude?: number } | undefined
   Search?: Partial<SearchState>
   Bookings: undefined
   Favorites: undefined

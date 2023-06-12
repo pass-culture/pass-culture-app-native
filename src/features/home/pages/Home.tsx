@@ -17,7 +17,7 @@ const Header = () => (
 
 export const Home: FunctionComponent = () => {
   const { params } = useRoute<UseRouteType<'Home'>>()
-  const { modules, id } = useHomepageData(params?.entryId) || {}
+  const { modules, id } = useHomepageData() || {}
   const { setCustomPosition } = useGeolocation()
 
   useEffect(() => {

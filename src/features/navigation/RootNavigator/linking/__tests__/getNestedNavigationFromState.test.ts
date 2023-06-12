@@ -8,7 +8,7 @@ describe('getNestedNavigationFromState()', () => {
     stateName   | state     | expectedScreen | expectedParams
     ${'state1'} | ${state1} | ${'Search'}    | ${undefined}
     ${'state2'} | ${state2} | ${'Login'}     | ${undefined}
-    ${'state3'} | ${state3} | ${'Home'}      | ${{ entryId: '666' }}
+    ${'state3'} | ${state3} | ${'Home'}      | ${undefined}
   `(
     'getNestedNavigationFromState($stateName) should return [$expectedScreen, $expectedParams]',
     ({
