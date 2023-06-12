@@ -16,53 +16,108 @@ exports[`CategoryButton should render correctly 1`] = `
   onStartShouldSetResponder={[Function]}
   style={
     Object {
-      "alignItems": "center",
-      "borderBottomColor": "#90949D",
-      "borderBottomWidth": 1,
-      "borderLeftColor": "#870087",
-      "borderLeftWidth": 4,
-      "borderRadius": 4,
-      "borderRightColor": "#90949D",
-      "borderRightWidth": 1,
-      "borderTopColor": "#90949D",
-      "borderTopWidth": 1,
-      "flexDirection": "row",
-      "height": 72,
+      "height": 156,
       "opacity": 1,
-      "paddingLeft": 8,
-      "paddingRight": 8,
+      "overflow": "hidden",
       "userSelect": "auto",
     }
   }
   testID="Catégorie Bibliothèques & Médiathèques"
 >
   <View
-    fill="#161617"
-    height={24}
-    width={24}
-  >
-    <Text>
-      undefined-SVG-Mock
-    </Text>
-  </View>
-  <Text
     style={
       Array [
         Object {
-          "color": "#161617",
           "flexBasis": 0,
           "flexGrow": 1,
           "flexShrink": 1,
-          "fontFamily": "Montserrat-SemiBold",
-          "fontSize": 12,
-          "lineHeight": 16,
-          "marginLeft": 8,
-          "textAlign": "left",
+          "overflow": "hidden",
+          "width": "100%",
         },
       ]
     }
   >
-    Bibliothèques & Médiathèques
-  </Text>
+    <BVLinearGradient
+      colors={
+        Array [
+          4290777969,
+          4293670008,
+        ]
+      }
+      endPoint={
+        Object {
+          "x": 0,
+          "y": 0,
+        }
+      }
+      locations={null}
+      startPoint={
+        Object {
+          "x": 0,
+          "y": 0.5,
+        }
+      }
+      style={
+        Array [
+          Object {
+            "flexBasis": 0,
+            "flexGrow": 1,
+            "flexShrink": 1,
+          },
+        ]
+      }
+    >
+      <View
+        style={
+          Array [
+            Object {
+              "position": "absolute",
+            },
+          ]
+        }
+      >
+        <View
+          fill="none"
+          height={92}
+          width={156}
+        >
+          <Text>
+            undefined-SVG-Mock
+          </Text>
+        </View>
+      </View>
+    </BVLinearGradient>
+  </View>
+  <View
+    baseColor="#870087"
+    style={
+      Array [
+        Object {
+          "backgroundColor": "#870087",
+          "paddingBottom": 16,
+          "paddingLeft": 12,
+          "paddingRight": 16,
+          "paddingTop": 12,
+          "width": "100%",
+        },
+      ]
+    }
+  >
+    <Text
+      style={
+        Array [
+          Object {
+            "color": "#ffffff",
+            "fontFamily": "Montserrat-Bold",
+            "fontSize": 15,
+            "lineHeight": 20,
+            "textAlign": "left",
+          },
+        ]
+      }
+    >
+      Bibliothèques & Médiathèques
+    </Text>
+  </View>
 </View>
 `;

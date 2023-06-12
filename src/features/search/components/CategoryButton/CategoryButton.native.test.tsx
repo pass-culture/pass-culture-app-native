@@ -1,7 +1,7 @@
 import React from 'react'
 
+import { SearchCategoriesIllustrations } from 'features/internal/cheatcodes/pages/AppComponents/illustrationsExports'
 import { fireEvent, render } from 'tests/utils'
-import { Bookstore } from 'ui/svg/icons/bicolor/Bookstore'
 
 import { CategoryButton } from './CategoryButton'
 
@@ -10,9 +10,13 @@ describe('CategoryButton', () => {
     const categoryButton = render(
       <CategoryButton
         label="Bibliothèques & Médiathèques"
-        Icon={Bookstore}
-        color="#870087"
+        Illustration={SearchCategoriesIllustrations.LibrariesMediaLibraries}
+        baseColor="#870087"
         onPress={jest.fn()}
+        gradients={[
+          { color: '#EC3478', position: { x: 0, y: 0 } },
+          { color: '#C01371', position: { x: 0, y: 0.5 } },
+        ]}
       />
     )
     expect(categoryButton).toMatchSnapshot()
@@ -23,9 +27,13 @@ describe('CategoryButton', () => {
     const { getByRole } = render(
       <CategoryButton
         label="Bibliothèques & Médiathèques"
-        Icon={Bookstore}
-        color="#870087"
+        Illustration={SearchCategoriesIllustrations.LibrariesMediaLibraries}
+        baseColor="#870087"
         onPress={handleClick}
+        gradients={[
+          { color: '#EC3478', position: { x: 0, y: 0 } },
+          { color: '#C01371', position: { x: 0, y: 0.5 } },
+        ]}
       />
     )
 
@@ -38,7 +46,15 @@ describe('CategoryButton', () => {
   it('should be self-explanatory to be accessible', () => {
     const handleClick = jest.fn()
     const { getByLabelText } = render(
-      <CategoryButton label="Bibliothèques & Médiathèques" Icon={Bookstore} onPress={handleClick} />
+      <CategoryButton
+        label="Bibliothèques & Médiathèques"
+        Illustration={SearchCategoriesIllustrations.LibrariesMediaLibraries}
+        onPress={handleClick}
+        gradients={[
+          { color: '#EC3478', position: { x: 0, y: 0 } },
+          { color: '#C01371', position: { x: 0, y: 0.5 } },
+        ]}
+      />
     )
 
     const button = getByLabelText('Catégorie Bibliothèques & Médiathèques')
