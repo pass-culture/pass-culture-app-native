@@ -48,13 +48,7 @@ export const SCREENS_CONFIG: {
       serverValidator: (value: unknown) => api.getnativev1venuevenueId(Number(value)),
     },
   },
-  Home: {
-    entryId: {
-      type: 'string',
-      required: false,
-      description: 'Le module d’accueil à afficher',
-    },
-  },
+  Home: {},
   ThematicHome: {
     homeId: {
       type: 'string',

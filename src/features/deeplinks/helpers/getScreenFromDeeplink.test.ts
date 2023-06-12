@@ -37,13 +37,6 @@ describe('getScreenFromDeeplink()', () => {
     expect(screenFromDeeplink.params).toEqual({ screen: 'Home', params: undefined })
   })
 
-  it('should return Home with entryId=666', () => {
-    const url = getFullUrl(getScreenPath(...homeNavConfig) + '?entryId=666')
-    const { screen, params } = getScreenFromDeeplink(url)
-    expect(screen).toEqual('TabNavigator')
-    expect(params).toEqual({ screen: 'Home', params: { entryId: '666' } })
-  })
-
   it('should return Profil when url = /profil', () => {
     const url = getFullUrl(getScreenPath(...getTabNavConfig('Profile', undefined)))
     const { screen, params } = getScreenFromDeeplink(url)
