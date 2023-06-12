@@ -97,3 +97,14 @@ window.onerror = function (error, source) {
     }
   }
 }
+
+// To remove already installed service workers, we have to unregister them even after the removal of the SW config.
+// https://medium.com/@nekrtemplar/self-destroying-serviceworker-73d62921d717
+// TODO(PC-22764): Remove this script in after a "long" time
+if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.getRegistrations().then((registrations) => {
+    registrations.forEach((registration) => {
+      registration.unregister()
+    })
+  })
+}
