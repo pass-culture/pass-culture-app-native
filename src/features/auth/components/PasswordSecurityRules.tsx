@@ -1,5 +1,4 @@
 import React, { FunctionComponent } from 'react'
-import { View } from 'react-native'
 import styled from 'styled-components/native'
 
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
@@ -79,7 +78,7 @@ export const PasswordSecurityRules: FunctionComponent<Props> = ({
   )
 }
 
-const RulesContainer = styled(View)<{ isVisible?: boolean }>(({ theme }) => ({
+const RulesContainer = styled.View<{ isVisible?: boolean }>(({ theme }) => ({
   alignItems: 'flex-start',
   width: '100%',
   maxWidth: theme.forms.maxWidth,
