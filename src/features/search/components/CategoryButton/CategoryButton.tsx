@@ -1,6 +1,7 @@
 import React, { FunctionComponent } from 'react'
 import LinearGradient from 'react-native-linear-gradient'
 import styled from 'styled-components/native'
+import { useTheme } from 'styled-components/native'
 
 import { Gradient } from 'features/search/enums'
 import { styledButton } from 'ui/components/buttons/styledButton'
@@ -24,8 +25,13 @@ export const CategoryButton: FunctionComponent<CategoryButtonProps> = ({
   gradients,
   onPress,
 }) => {
+  const theme = useTheme()
+
   return (
-    <TouchableContainer onPress={onPress} accessibilityLabel={`Catégorie ${label}`}>
+    <TouchableContainer
+      onPress={onPress}
+      accessibilityLabel={`Catégorie ${label}`}
+      hoverUnderlineColor={theme.colors.white}>
       <IllustrationContainer>
         <StyledLinearGradient
           start={gradients[1].position}
