@@ -1,10 +1,10 @@
 import colorAlpha from 'color-alpha'
-import React from 'react'
+import React, { FunctionComponent, ReactNode } from 'react'
 import styled from 'styled-components/native'
 
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { BackButton } from 'ui/components/headers/BackButton'
-import { CloseButton } from 'ui/components/headers/CloseButton'
+import { CancelButton } from 'ui/components/headers/CancelButton'
 import { getSpacing, Spacer } from 'ui/theme'
 // eslint-disable-next-line no-restricted-imports
 import { ColorsEnum } from 'ui/theme/colors'
@@ -19,6 +19,7 @@ interface Props {
   shouldDisplayBackButton?: boolean
   shouldDisplayCloseButton?: boolean
   onClose?: () => void
+  children?: ReactNode
 }
 
 const HEADER_HEIGHT = getSpacing(12)
@@ -29,7 +30,7 @@ export const useGetHeaderHeight = () => {
   return HEADER_HEIGHT + top + 1
 }
 
-export const PageHeaderWithoutPlaceholder: React.FC<Props> = ({
+export const PageHeaderWithoutPlaceholder: FunctionComponent<Props> = ({
   title,
   titleID,
   onGoBack,
@@ -37,6 +38,7 @@ export const PageHeaderWithoutPlaceholder: React.FC<Props> = ({
   shouldDisplayBackButton = true,
   shouldDisplayCloseButton,
   onClose,
+  children,
 }) => {
   return (
     <Header testID={testID} accessibilityRole={AccessibilityRole.HEADER}>
@@ -50,12 +52,11 @@ export const PageHeaderWithoutPlaceholder: React.FC<Props> = ({
           </ButtonContainer>
           <Title nativeID={titleID}>{title}</Title>
           <ButtonContainer positionInHeader="right" testID="close-button-container">
-            {!!shouldDisplayCloseButton && (
-              <CloseButton onClose={onClose} color={ColorsEnum.BLACK} />
-            )}
+            {!!shouldDisplayCloseButton && <CancelButton onClose={onClose} />}
           </ButtonContainer>
         </Row>
       </Container>
+      {children}
     </Header>
   )
 }

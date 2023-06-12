@@ -358,7 +358,8 @@
     "tslib": "2.3.*",
     "validator": "^13.7.0",
     "@react-navigation/core": "6.2.2",
-    "react-side-effect": "2.1.2"
+    "react-side-effect": "2.1.2",
+    "react-is": "^16.13.1"
   },
   "exports": {
     ".": "./index.js",

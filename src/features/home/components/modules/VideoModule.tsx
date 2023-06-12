@@ -63,6 +63,7 @@ const Thumbnail = styled.ImageBackground(({ theme }) => ({
   overflow: 'hidden',
   borderRadius: theme.borderRadius.radius,
   height: THUMBNAIL_HEIGHT,
+  width: '100%',
 }))
 
 const DurationCaptionContainer = styled.View(({ theme }) => ({
@@ -97,6 +98,7 @@ const BlackBackground = styled.View(({ theme }) => ({
 
 const VideoTitle = styled(Typo.Title4)(({ theme }) => ({
   color: theme.colors.white,
+  textAlign: 'left',
 }))
 
 const StyledTouchable = styledButton(Touchable)``

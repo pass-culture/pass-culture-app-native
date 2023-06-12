@@ -2,6 +2,7 @@ import { AllNavParamList, RouteParams, ScreenNames } from 'features/navigation/R
 
 type ScreensRequiringParsing = Extract<
   ScreenNames,
+  | 'AccountSecurity'
   | 'AfterChangeEmailValidationBuffer'
   | 'AfterSignupEmailValidationBuffer'
   | 'BookingDetails'
@@ -59,6 +60,9 @@ const searchParamsParser = {
 }
 
 export const screenParamsParser: ParamsParsers = {
+  AccountSecurity: {
+    token: identityFn,
+  },
   AfterChangeEmailValidationBuffer: {
     new_email: decodeURIComponent,
     token: identityFn,
