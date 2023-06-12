@@ -9,24 +9,22 @@ import {
   Rect,
   RadialGradient,
 } from 'react-native-svg'
-import styled from 'styled-components/native'
 
 import { AccessibleSvg } from 'ui/svg/AccessibleSvg'
 
 import { AccessibleIcon } from '../types'
 
-const VideoVideoGamesSvg: React.FunctionComponent<AccessibleIcon> = ({
-  size,
+export const GamesVideoGames: React.FunctionComponent<AccessibleIcon> = ({
   accessibilityLabel,
   testID,
 }) => {
   return (
     <AccessibleSvg
-      width={size}
-      height={size}
-      viewBox="0 0 269 112"
-      accessibilityLabel={accessibilityLabel}
+      width={156}
+      height={92}
+      viewBox="0 0 156 92"
       fill="none"
+      accessibilityLabel={accessibilityLabel}
       testID={testID}>
       <G clipPath="url(#clip0_1909_1029)">
         <Path
@@ -131,7 +129,3 @@ const VideoVideoGamesSvg: React.FunctionComponent<AccessibleIcon> = ({
     </AccessibleSvg>
   )
 }
-
-export const VideoVideoGames = styled(VideoVideoGamesSvg).attrs(({ size, theme }) => ({
-  size: size ?? theme.illustrations.sizes.medium,
-}))``
