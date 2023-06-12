@@ -48,10 +48,6 @@ export const state2 = createState('stack', 1, [
 export const state3 = createState('stack', 0, [
   {
     name: 'TabNavigator',
-    state: createState('tab', 1, [
-      { name: 'Search' },
-      { name: 'Home', params: { entryId: '666' } },
-      { name: 'Profile' },
-    ]),
+    state: createState('tab', 1, [{ name: 'Search' }, { name: 'Home' }, { name: 'Profile' }]),
   },
 ])

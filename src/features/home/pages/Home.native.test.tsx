@@ -28,7 +28,7 @@ describe('Home page', () => {
   })
 
   it('should render correctly', async () => {
-    useRoute.mockReturnValueOnce({ params: { entryId: 'fake-entry-id' } })
+    useRoute.mockReturnValueOnce({ params: undefined })
     mockUseHomepageData.mockReturnValueOnce({
       modules: [formattedVenuesModule],
       id: 'fakeEntryId',
@@ -41,7 +41,7 @@ describe('Home page', () => {
   })
 
   it('should log ConsultHome', async () => {
-    useRoute.mockReturnValueOnce({ params: { entryId: 'fake-entry-id' } })
+    useRoute.mockReturnValueOnce({ params: undefined })
     mockUseHomepageData.mockReturnValueOnce({
       modules: [formattedVenuesModule],
       id: 'fakeEntryId',

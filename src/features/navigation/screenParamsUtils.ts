@@ -97,8 +97,6 @@ export const screenParamsParser: ParamsParsers = {
     searchId: identityFn,
   },
   Home: {
-    entryId: identityFn,
-
     latitude: Number,
     longitude: Number,
   },

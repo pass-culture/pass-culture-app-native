@@ -13,14 +13,14 @@ jest.mock('libs/utm', () => ({ storeUtmParams: jest.fn() }))
 const COOKIES_CONSENT_KEY = 'cookies'
 
 describe('getStateFromPath()', () => {
-  it('should return state for path accueil?entryId=666', async () => {
-    const path = 'accueil?entryId=666'
+  it('should return state for path accueil', async () => {
+    const path = 'accueil'
     const state = customGetStateFromPath(path, linking.config)
     const expectedState = {
       routes: [
         {
           name: 'TabNavigator',
-          state: { routes: [{ name: 'Home', params: { entryId: '666' }, path }] },
+          state: { routes: [{ name: 'Home', path }] },
         },
       ],
     }
