@@ -1,6 +1,10 @@
+import { useRoute } from '@react-navigation/native'
 import React from 'react'
 
 import { navigateToHome } from 'features/navigation/helpers'
+import { UseRouteType } from 'features/navigation/RootNavigator/types'
+import { formatTokenInfo } from 'features/trustedDevice/helpers/formatTokenInfo'
+import { getTokenInfo } from 'features/trustedDevice/helpers/getTokenInfo'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { ButtonSecondary } from 'ui/components/buttons/ButtonSecondary'
 import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
@@ -54,13 +58,16 @@ export const AccountSecurity = () => {
 }
 
 const DeviceInformations = () => {
+  const { params } = useRoute<UseRouteType<'AccountSecurity'>>()
+  const { location, osAndSource, loginDate } = formatTokenInfo(getTokenInfo(params.token))
+
   return (
     <Typo.Body>
-      <Typo.ButtonText>Appareil utilisé&nbsp;: </Typo.ButtonText> MacOS - Chrome
+      <Typo.ButtonText>Appareil utilisé&nbsp;: </Typo.ButtonText> {osAndSource}
       {LINE_BREAK}
-      <Typo.ButtonText>Lieu&nbsp;: </Typo.ButtonText> Marseille, France
+      <Typo.ButtonText>Lieu&nbsp;: </Typo.ButtonText> {location}
       {LINE_BREAK}
-      <Typo.ButtonText>Date et heure&nbsp;: </Typo.ButtonText> Le 14/07/22 à 17:47
+      <Typo.ButtonText>Date et heure&nbsp;: </Typo.ButtonText> {loginDate}
     </Typo.Body>
   )
 }

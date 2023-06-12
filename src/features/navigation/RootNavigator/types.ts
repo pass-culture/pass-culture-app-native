@@ -65,11 +65,11 @@ export type OnboardingRootStackParamList = {
 }
 
 export type TrustedDeviceRootStackParamList = {
+  AccountSecurity: { token: string }
   NavigationTrustedDevice: undefined
-  TrustedDeviceInfos: undefined
   SuspensionChoice: undefined
   SuspensionConfirmation: undefined
-  AccountSecurity: undefined
+  TrustedDeviceInfos: undefined
 }
 
 export type SubscriptionRootStackParamList = {
