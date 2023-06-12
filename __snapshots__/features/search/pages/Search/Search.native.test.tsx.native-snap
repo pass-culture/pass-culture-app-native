@@ -952,6 +952,7 @@ exports[`<Search/> should render Search 1`] = `
                 onStartShouldSetResponder={[Function]}
                 style={
                   Object {
+                    "borderRadius": 8,
                     "height": 156,
                     "opacity": 1,
                     "overflow": "hidden",
@@ -976,21 +977,21 @@ exports[`<Search/> should render Search 1`] = `
                   <BVLinearGradient
                     colors={
                       Array [
-                        4286789609,
                         4289562623,
+                        4286789609,
                       ]
                     }
                     endPoint={
                       Object {
-                        "x": 0,
-                        "y": 0,
+                        "x": 0.5,
+                        "y": 1,
                       }
                     }
                     locations={null}
                     startPoint={
                       Object {
-                        "x": 0,
-                        "y": 0.5,
+                        "x": 0.5,
+                        "y": 0,
                       }
                     }
                     style={
@@ -1085,6 +1086,7 @@ exports[`<Search/> should render Search 1`] = `
                 onStartShouldSetResponder={[Function]}
                 style={
                   Object {
+                    "borderRadius": 8,
                     "height": 156,
                     "opacity": 1,
                     "overflow": "hidden",
@@ -1109,21 +1111,21 @@ exports[`<Search/> should render Search 1`] = `
                   <BVLinearGradient
                     colors={
                       Array [
-                        4291444499,
                         4294472509,
+                        4291444499,
                       ]
                     }
                     endPoint={
                       Object {
-                        "x": 0,
-                        "y": 0,
+                        "x": 0.5,
+                        "y": 1,
                       }
                     }
                     locations={null}
                     startPoint={
                       Object {
-                        "x": 0,
-                        "y": 0.5,
+                        "x": 0.5,
+                        "y": 0,
                       }
                     }
                     style={
@@ -1231,6 +1233,7 @@ exports[`<Search/> should render Search 1`] = `
                 onStartShouldSetResponder={[Function]}
                 style={
                   Object {
+                    "borderRadius": 8,
                     "height": 156,
                     "opacity": 1,
                     "overflow": "hidden",
@@ -1255,21 +1258,21 @@ exports[`<Search/> should render Search 1`] = `
                   <BVLinearGradient
                     colors={
                       Array [
-                        4286789609,
                         4289562623,
+                        4286789609,
                       ]
                     }
                     endPoint={
                       Object {
-                        "x": 0,
-                        "y": 0,
+                        "x": 0.5,
+                        "y": 1,
                       }
                     }
                     locations={null}
                     startPoint={
                       Object {
-                        "x": 0,
-                        "y": 0.5,
+                        "x": 0.5,
+                        "y": 0,
                       }
                     }
                     style={
@@ -1364,6 +1367,7 @@ exports[`<Search/> should render Search 1`] = `
                 onStartShouldSetResponder={[Function]}
                 style={
                   Object {
+                    "borderRadius": 8,
                     "height": 156,
                     "opacity": 1,
                     "overflow": "hidden",
@@ -1388,21 +1392,21 @@ exports[`<Search/> should render Search 1`] = `
                   <BVLinearGradient
                     colors={
                       Array [
-                        4279138487,
                         4280337897,
+                        4279138487,
                       ]
                     }
                     endPoint={
                       Object {
-                        "x": 0,
-                        "y": 0,
+                        "x": 0.5,
+                        "y": 1,
                       }
                     }
                     locations={null}
                     startPoint={
                       Object {
-                        "x": 0,
-                        "y": 0.5,
+                        "x": 0.5,
+                        "y": 0,
                       }
                     }
                     style={
@@ -1510,6 +1514,7 @@ exports[`<Search/> should render Search 1`] = `
                 onStartShouldSetResponder={[Function]}
                 style={
                   Object {
+                    "borderRadius": 8,
                     "height": 156,
                     "opacity": 1,
                     "overflow": "hidden",
@@ -1534,21 +1539,21 @@ exports[`<Search/> should render Search 1`] = `
                   <BVLinearGradient
                     colors={
                       Array [
-                        4290271489,
                         4294549013,
+                        4290271489,
                       ]
                     }
                     endPoint={
                       Object {
-                        "x": 0,
-                        "y": 0,
+                        "x": 0.5,
+                        "y": 1,
                       }
                     }
                     locations={null}
                     startPoint={
                       Object {
-                        "x": 0,
-                        "y": 0.5,
+                        "x": 0.5,
+                        "y": 0,
                       }
                     }
                     style={
@@ -1643,6 +1648,7 @@ exports[`<Search/> should render Search 1`] = `
                 onStartShouldSetResponder={[Function]}
                 style={
                   Object {
+                    "borderRadius": 8,
                     "height": 156,
                     "opacity": 1,
                     "overflow": "hidden",
@@ -1667,21 +1673,21 @@ exports[`<Search/> should render Search 1`] = `
                   <BVLinearGradient
                     colors={
                       Array [
-                        4290271489,
                         4294549013,
+                        4290271489,
                       ]
                     }
                     endPoint={
                       Object {
-                        "x": 0,
-                        "y": 0,
+                        "x": 0.5,
+                        "y": 1,
                       }
                     }
                     locations={null}
                     startPoint={
                       Object {
-                        "x": 0,
-                        "y": 0.5,
+                        "x": 0.5,
+                        "y": 0,
                       }
                     }
                     style={
@@ -1789,6 +1795,7 @@ exports[`<Search/> should render Search 1`] = `
                 onStartShouldSetResponder={[Function]}
                 style={
                   Object {
+                    "borderRadius": 8,
                     "height": 156,
                     "opacity": 1,
                     "overflow": "hidden",
@@ -1813,21 +1820,21 @@ exports[`<Search/> should render Search 1`] = `
                   <BVLinearGradient
                     colors={
                       Array [
-                        4279141492,
                         4280802472,
+                        4279141492,
                       ]
                     }
                     endPoint={
                       Object {
-                        "x": 0,
-                        "y": 0,
+                        "x": 0.5,
+                        "y": 1,
                       }
                     }
                     locations={null}
                     startPoint={
                       Object {
-                        "x": 0,
-                        "y": 0.5,
+                        "x": 0.5,
+                        "y": 0,
                       }
                     }
                     style={
@@ -1922,6 +1929,7 @@ exports[`<Search/> should render Search 1`] = `
                 onStartShouldSetResponder={[Function]}
                 style={
                   Object {
+                    "borderRadius": 8,
                     "height": 156,
                     "opacity": 1,
                     "overflow": "hidden",
@@ -1946,21 +1954,21 @@ exports[`<Search/> should render Search 1`] = `
                   <BVLinearGradient
                     colors={
                       Array [
-                        4279141492,
                         4280802472,
+                        4279141492,
                       ]
                     }
                     endPoint={
                       Object {
-                        "x": 0,
-                        "y": 0,
+                        "x": 0.5,
+                        "y": 1,
                       }
                     }
                     locations={null}
                     startPoint={
                       Object {
-                        "x": 0,
-                        "y": 0.5,
+                        "x": 0.5,
+                        "y": 0,
                       }
                     }
                     style={
@@ -2068,6 +2076,7 @@ exports[`<Search/> should render Search 1`] = `
                 onStartShouldSetResponder={[Function]}
                 style={
                   Object {
+                    "borderRadius": 8,
                     "height": 156,
                     "opacity": 1,
                     "overflow": "hidden",
@@ -2092,21 +2101,21 @@ exports[`<Search/> should render Search 1`] = `
                   <BVLinearGradient
                     colors={
                       Array [
-                        4279138487,
                         4280337897,
+                        4279138487,
                       ]
                     }
                     endPoint={
                       Object {
-                        "x": 0,
-                        "y": 0,
+                        "x": 0.5,
+                        "y": 1,
                       }
                     }
                     locations={null}
                     startPoint={
                       Object {
-                        "x": 0,
-                        "y": 0.5,
+                        "x": 0.5,
+                        "y": 0,
                       }
                     }
                     style={
@@ -2201,6 +2210,7 @@ exports[`<Search/> should render Search 1`] = `
                 onStartShouldSetResponder={[Function]}
                 style={
                   Object {
+                    "borderRadius": 8,
                     "height": 156,
                     "opacity": 1,
                     "overflow": "hidden",
@@ -2225,21 +2235,21 @@ exports[`<Search/> should render Search 1`] = `
                   <BVLinearGradient
                     colors={
                       Array [
-                        4290271489,
                         4294549013,
+                        4290271489,
                       ]
                     }
                     endPoint={
                       Object {
-                        "x": 0,
-                        "y": 0,
+                        "x": 0.5,
+                        "y": 1,
                       }
                     }
                     locations={null}
                     startPoint={
                       Object {
-                        "x": 0,
-                        "y": 0.5,
+                        "x": 0.5,
+                        "y": 0,
                       }
                     }
                     style={
@@ -2347,6 +2357,7 @@ exports[`<Search/> should render Search 1`] = `
                 onStartShouldSetResponder={[Function]}
                 style={
                   Object {
+                    "borderRadius": 8,
                     "height": 156,
                     "opacity": 1,
                     "overflow": "hidden",
@@ -2371,21 +2382,21 @@ exports[`<Search/> should render Search 1`] = `
                   <BVLinearGradient
                     colors={
                       Array [
-                        4290777969,
                         4293670008,
+                        4290777969,
                       ]
                     }
                     endPoint={
                       Object {
-                        "x": 0,
-                        "y": 0,
+                        "x": 0.5,
+                        "y": 1,
                       }
                     }
                     locations={null}
                     startPoint={
                       Object {
-                        "x": 0,
-                        "y": 0.5,
+                        "x": 0.5,
+                        "y": 0,
                       }
                     }
                     style={
@@ -2480,6 +2491,7 @@ exports[`<Search/> should render Search 1`] = `
                 onStartShouldSetResponder={[Function]}
                 style={
                   Object {
+                    "borderRadius": 8,
                     "height": 156,
                     "opacity": 1,
                     "overflow": "hidden",
@@ -2504,21 +2516,21 @@ exports[`<Search/> should render Search 1`] = `
                   <BVLinearGradient
                     colors={
                       Array [
-                        4290777969,
                         4293670008,
+                        4290777969,
                       ]
                     }
                     endPoint={
                       Object {
-                        "x": 0,
-                        "y": 0,
+                        "x": 0.5,
+                        "y": 1,
                       }
                     }
                     locations={null}
                     startPoint={
                       Object {
-                        "x": 0,
-                        "y": 0.5,
+                        "x": 0.5,
+                        "y": 0,
                       }
                     }
                     style={
@@ -2626,6 +2638,7 @@ exports[`<Search/> should render Search 1`] = `
                 onStartShouldSetResponder={[Function]}
                 style={
                   Object {
+                    "borderRadius": 8,
                     "height": 156,
                     "opacity": 1,
                     "overflow": "hidden",
@@ -2650,21 +2663,21 @@ exports[`<Search/> should render Search 1`] = `
                   <BVLinearGradient
                     colors={
                       Array [
-                        4279141492,
                         4280802472,
+                        4279141492,
                       ]
                     }
                     endPoint={
                       Object {
-                        "x": 0,
-                        "y": 0,
+                        "x": 0.5,
+                        "y": 1,
                       }
                     }
                     locations={null}
                     startPoint={
                       Object {
-                        "x": 0,
-                        "y": 0.5,
+                        "x": 0.5,
+                        "y": 0,
                       }
                     }
                     style={
@@ -2759,6 +2772,7 @@ exports[`<Search/> should render Search 1`] = `
                 onStartShouldSetResponder={[Function]}
                 style={
                   Object {
+                    "borderRadius": 8,
                     "height": 156,
                     "opacity": 1,
                     "overflow": "hidden",
@@ -2783,21 +2797,21 @@ exports[`<Search/> should render Search 1`] = `
                   <BVLinearGradient
                     colors={
                       Array [
-                        4291444499,
                         4294472509,
+                        4291444499,
                       ]
                     }
                     endPoint={
                       Object {
-                        "x": 0,
-                        "y": 0,
+                        "x": 0.5,
+                        "y": 1,
                       }
                     }
                     locations={null}
                     startPoint={
                       Object {
-                        "x": 0,
-                        "y": 0.5,
+                        "x": 0.5,
+                        "y": 0,
                       }
                     }
                     style={

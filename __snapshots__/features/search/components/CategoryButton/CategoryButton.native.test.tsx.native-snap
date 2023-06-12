@@ -16,6 +16,7 @@ exports[`CategoryButton should render correctly 1`] = `
   onStartShouldSetResponder={[Function]}
   style={
     Object {
+      "borderRadius": 8,
       "height": 156,
       "opacity": 1,
       "overflow": "hidden",
@@ -40,21 +41,21 @@ exports[`CategoryButton should render correctly 1`] = `
     <BVLinearGradient
       colors={
         Array [
-          4290777969,
           4293670008,
+          4290777969,
         ]
       }
       endPoint={
         Object {
-          "x": 0,
-          "y": 0,
+          "x": 0.5,
+          "y": 1,
         }
       }
       locations={null}
       startPoint={
         Object {
-          "x": 0,
-          "y": 0.5,
+          "x": 0.5,
+          "y": 0,
         }
       }
       style={

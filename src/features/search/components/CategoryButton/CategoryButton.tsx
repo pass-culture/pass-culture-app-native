@@ -1,7 +1,6 @@
 import React, { FunctionComponent } from 'react'
 import LinearGradient from 'react-native-linear-gradient'
-import styled from 'styled-components/native'
-import { useTheme } from 'styled-components/native'
+import styled, { useTheme } from 'styled-components/native'
 
 import { Gradient } from 'features/search/enums'
 import { styledButton } from 'ui/components/buttons/styledButton'
@@ -33,10 +32,7 @@ export const CategoryButton: FunctionComponent<CategoryButtonProps> = ({
       accessibilityLabel={`Catégorie ${label}`}
       hoverUnderlineColor={theme.colors.white}>
       <IllustrationContainer>
-        <StyledLinearGradient
-          start={gradients[1].position}
-          end={gradients[0].position}
-          colors={[gradients[1].color, gradients[0].color]}>
+        <StyledLinearGradient colors={[gradients[0].color, gradients[1].color]}>
           {!!Illustration && (
             <IllustrationWrapper>
               <Illustration />
@@ -51,10 +47,11 @@ export const CategoryButton: FunctionComponent<CategoryButtonProps> = ({
   )
 }
 
-const TouchableContainer = styledButton(Touchable)({
+const TouchableContainer = styledButton(Touchable)(({ theme }) => ({
   height: getSpacing(39),
   overflow: 'hidden',
-})
+  borderRadius: theme.borderRadius.radius,
+}))
 
 const IllustrationContainer = styled.View({
   flex: 1,
