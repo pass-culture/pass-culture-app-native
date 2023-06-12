@@ -117,7 +117,7 @@ export function Navigation(): JSX.Element {
             />
           </Row>
           <Row half>
-            <ButtonPrimary wording="New Signup 🎊" onPress={() => navigate('SignupProgressBar')} />
+            <ButtonPrimary wording="New Signup 🎊" onPress={() => navigate('SignupFormV2')} />
           </Row>
           <Row half>
             <ButtonPrimary

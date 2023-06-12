@@ -87,7 +87,7 @@ export type SubscriptionRootStackParamList = {
   SetPhoneValidationCode: undefined
   PhoneValidationTooManyAttempts: undefined
   PhoneValidationTooManySMSSent: undefined
-  SignupProgressBar: undefined
+  NewSignup: undefined
   // Profile
   SetName: undefined
   SetCity: undefined
@@ -140,6 +140,7 @@ export type SubscriptionRootStackParamList = {
  */
 export type RootStackParamList = {
   SignupForm: { preventCancellation?: boolean; offerId?: number } | undefined
+  SignupFormV2: undefined
   Maintenance: undefined
   ABTestingPOC: undefined
   AccountCreated: undefined
