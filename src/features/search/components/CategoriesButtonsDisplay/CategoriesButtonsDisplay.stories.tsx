@@ -29,6 +29,7 @@ Default.args = {
       label: 'Bibliothèque, médiathèque',
       Illustration: SearchCategoriesIllustrations.LibrariesMediaLibraries,
       onPress: action('Jeux'),
+      baseColor: theme.colors.coral,
       gradients: [
         { color: '#F8733D', position: { x: 0, y: 0 } },
         { color: theme.colors.coral, position: { x: 0, y: 0.5 } },
@@ -38,6 +39,7 @@ Default.args = {
       label: 'CD, vinyles, musique en ligne',
       Illustration: SearchCategoriesIllustrations.CDVinylsOnlineMusic,
       onPress: action('Musique'),
+      baseColor: theme.colors.skyBlue,
       gradients: [
         { color: '#20C5E9', position: { x: 0, y: 0 } },
         { color: theme.colors.skyBlue, position: { x: 0, y: 0.5 } },
@@ -47,6 +49,7 @@ Default.args = {
       label: 'Cinéma',
       Illustration: SearchCategoriesIllustrations.FilmsSeriesCinema,
       onPress: action('Cinéma'),
+      baseColor: theme.colors.aquamarine,
       gradients: [
         { color: '#27DCA8', position: { x: 0, y: 0 } },
         { color: theme.colors.aquamarine, position: { x: 0, y: 0.5 } },
@@ -56,6 +59,7 @@ Default.args = {
       label: 'Conférences, rencontres',
       Illustration: SearchCategoriesIllustrations.ConferencesMeetings,
       onPress: action('Livre'),
+      baseColor: theme.colors.gold,
       gradients: [
         { color: '#F99E15', position: { x: 0, y: 0 } },
         { color: theme.colors.gold, position: { x: 0, y: 0.5 } },
@@ -65,6 +69,7 @@ Default.args = {
       label: 'Théâtre',
       Illustration: SearchCategoriesIllustrations.Shows,
       onPress: action('Théâtre'),
+      baseColor: theme.colors.coral,
       gradients: [
         { color: '#F8733D', position: { x: 0, y: 0 } },
         { color: theme.colors.coral, position: { x: 0, y: 0.5 } },
