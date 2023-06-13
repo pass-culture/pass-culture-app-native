@@ -2,7 +2,7 @@ import { useNavigation } from '@react-navigation/native'
 import { useMutation } from 'react-query'
 
 import { api } from 'api/api'
-import { ApiError } from 'api/apiHelpers'
+import { isApiError } from 'api/apiHelpers'
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
 import { CHANGE_EMAIL_ERROR_CODE } from 'features/profile/enums'
@@ -46,8 +46,8 @@ export const useChangeEmailMutation = ({
         navigateToProfile()
         analytics.logSaveNewMail()
       },
-      onError: (error: ApiError | unknown) => {
-        onEmailChangeError((error as ApiError)?.content?.code)
+      onError: (error: unknown) => {
+        onEmailChangeError(isApiError(error) ? error.content.code : undefined)
       },
     }
   )

@@ -16,7 +16,7 @@ function getLongDynamicLinkURI() {
  */
 export function generateLongFirebaseDynamicLink(
   deepLink: string,
-  deepLinkParams?: Record<string, unknown | string>
+  deepLinkParams?: Record<string, unknown>
 ) {
   let params = ''
   if (deepLinkParams) {

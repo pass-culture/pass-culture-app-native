@@ -2,7 +2,7 @@ import { useNavigation } from '@react-navigation/native'
 import React, { FunctionComponent, useCallback } from 'react'
 import styled from 'styled-components/native'
 
-import { ApiError, extractApiErrorMessage } from 'api/apiHelpers'
+import { extractApiErrorMessage, isApiError } from 'api/apiHelpers'
 import { usePhoneValidationRemainingAttempts } from 'features/identityCheck/api/usePhoneValidationRemainingAttempts'
 import { useSendPhoneValidationMutation } from 'features/identityCheck/api/useSendPhoneValidationMutation'
 import { useSubscriptionContext } from 'features/identityCheck/context/SubscriptionContextProvider'
@@ -39,10 +39,9 @@ export const CodeNotReceivedModal: FunctionComponent<CodeNotReceivedModalProps> 
       queryClient.invalidateQueries([QueryKeys.PHONE_VALIDATION_REMAINING_ATTEMPTS])
       props.dismissModal()
     },
-    onError: (error: ApiError | unknown) => {
+    onError: (error: unknown) => {
       props.dismissModal()
-      const { content } = error as ApiError
-      if (content.code === 'TOO_MANY_SMS_SENT') {
+      if (isApiError(error) && error.content.code === 'TOO_MANY_SMS_SENT') {
         navigate('PhoneValidationTooManySMSSent')
       } else {
         const message = extractApiErrorMessage(error)

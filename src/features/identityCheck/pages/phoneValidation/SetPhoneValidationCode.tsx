@@ -6,7 +6,7 @@ import { View } from 'react-native'
 import styled from 'styled-components/native'
 import { v4 as uuidv4 } from 'uuid'
 
-import { ApiError, extractApiErrorMessage } from 'api/apiHelpers'
+import { extractApiErrorMessage, isApiError } from 'api/apiHelpers'
 import { usePhoneValidationRemainingAttempts } from 'features/identityCheck/api/usePhoneValidationRemainingAttempts'
 import { useValidatePhoneNumberMutation } from 'features/identityCheck/api/useValidatePhoneNumberMutation'
 import { CenteredTitle } from 'features/identityCheck/components/CenteredTitle'
@@ -90,12 +90,11 @@ export const SetPhoneValidationCode = () => {
       invalidateStepperInfoQuery()
       navigateForwardToStepper()
     },
-    onError: (err: unknown | ApiError) => {
-      const { content } = err as ApiError
-      if (content.code === 'TOO_MANY_VALIDATION_ATTEMPTS') {
+    onError: (error: unknown) => {
+      if (isApiError(error) && error.content.code === 'TOO_MANY_VALIDATION_ATTEMPTS') {
         navigate('PhoneValidationTooManyAttempts')
       } else {
-        setErrorMessage(extractApiErrorMessage(err))
+        setErrorMessage(extractApiErrorMessage(error))
       }
     },
   })
