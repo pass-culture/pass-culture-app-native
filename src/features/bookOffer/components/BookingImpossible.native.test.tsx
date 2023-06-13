@@ -76,15 +76,13 @@ describe('<BookingImpossible />', () => {
       expect(analytics.logBookingImpossibleiOS).toHaveBeenCalledTimes(1)
     })
 
-    it("should dismiss modal when clicking on 'Retourner à l'offre'", async () => {
+    it("should dismiss modal when clicking on 'Voir le détail de l’offre'", async () => {
       // eslint-disable-next-line local-rules/no-react-query-provider-hoc
       render(reactQueryProviderHOC(<BookingImpossible />))
 
-      fireEvent.press(screen.getByText('Retourner à l’offre'))
+      fireEvent.press(await screen.findByText('Voir le détail de l’offre'))
 
-      await waitFor(() => {
-        expect(mockDismissModal).toHaveBeenCalledTimes(1)
-      })
+      expect(mockDismissModal).toHaveBeenCalledTimes(1)
     })
   })
 
@@ -154,6 +152,16 @@ describe('<BookingImpossible />', () => {
         type: 'CHANGE_STEP',
         payload: Step.CONFIRMATION,
       })
+    })
+
+    it("should dismiss modal when clicking on 'Retourner à l'offre'", async () => {
+      // eslint-disable-next-line local-rules/no-react-query-provider-hoc
+      render(reactQueryProviderHOC(<BookingImpossible />))
+      await act(async () => {})
+
+      fireEvent.press(await screen.findByText('Retourner à l’offre'))
+
+      expect(mockDismissModal).toHaveBeenCalledTimes(1)
     })
   })
 })
