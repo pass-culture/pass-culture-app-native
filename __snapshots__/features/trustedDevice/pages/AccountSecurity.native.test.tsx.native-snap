@@ -182,8 +182,8 @@ exports[`<AccountSecurity/> should match snapshot when no token 1`] = `
               Object {
                 "color": "#161617",
                 "fontFamily": "Montserrat-Regular",
-                "fontSize": 15,
-                "lineHeight": 20,
+                "fontSize": 12,
+                "lineHeight": 16,
               },
             ]
           }
@@ -193,9 +193,9 @@ exports[`<AccountSecurity/> should match snapshot when no token 1`] = `
               Array [
                 Object {
                   "color": "#161617",
-                  "fontFamily": "Montserrat-Bold",
-                  "fontSize": 15,
-                  "lineHeight": 20,
+                  "fontFamily": "Montserrat-SemiBold",
+                  "fontSize": 12,
+                  "lineHeight": 16,
                 },
               ]
             }
@@ -211,9 +211,9 @@ exports[`<AccountSecurity/> should match snapshot when no token 1`] = `
               Array [
                 Object {
                   "color": "#161617",
-                  "fontFamily": "Montserrat-Bold",
-                  "fontSize": 15,
-                  "lineHeight": 20,
+                  "fontFamily": "Montserrat-SemiBold",
+                  "fontSize": 12,
+                  "lineHeight": 16,
                 },
               ]
             }
@@ -229,9 +229,9 @@ exports[`<AccountSecurity/> should match snapshot when no token 1`] = `
               Array [
                 Object {
                   "color": "#161617",
-                  "fontFamily": "Montserrat-Bold",
-                  "fontSize": 15,
-                  "lineHeight": 20,
+                  "fontFamily": "Montserrat-SemiBold",
+                  "fontSize": 12,
+                  "lineHeight": 16,
                 },
               ]
             }
@@ -686,8 +686,8 @@ exports[`<AccountSecurity/> should match snapshot with valid token 1`] = `
               Object {
                 "color": "#161617",
                 "fontFamily": "Montserrat-Regular",
-                "fontSize": 15,
-                "lineHeight": 20,
+                "fontSize": 12,
+                "lineHeight": 16,
               },
             ]
           }
@@ -697,9 +697,9 @@ exports[`<AccountSecurity/> should match snapshot with valid token 1`] = `
               Array [
                 Object {
                   "color": "#161617",
-                  "fontFamily": "Montserrat-Bold",
-                  "fontSize": 15,
-                  "lineHeight": 20,
+                  "fontFamily": "Montserrat-SemiBold",
+                  "fontSize": 12,
+                  "lineHeight": 16,
                 },
               ]
             }
@@ -715,9 +715,9 @@ exports[`<AccountSecurity/> should match snapshot with valid token 1`] = `
               Array [
                 Object {
                   "color": "#161617",
-                  "fontFamily": "Montserrat-Bold",
-                  "fontSize": 15,
-                  "lineHeight": 20,
+                  "fontFamily": "Montserrat-SemiBold",
+                  "fontSize": 12,
+                  "lineHeight": 16,
                 },
               ]
             }
@@ -733,9 +733,9 @@ exports[`<AccountSecurity/> should match snapshot with valid token 1`] = `
               Array [
                 Object {
                   "color": "#161617",
-                  "fontFamily": "Montserrat-Bold",
-                  "fontSize": 15,
-                  "lineHeight": 20,
+                  "fontFamily": "Montserrat-SemiBold",
+                  "fontSize": 12,
+                  "lineHeight": 16,
                 },
               ]
             }
