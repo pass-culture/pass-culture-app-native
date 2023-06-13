@@ -25,10 +25,12 @@ const Template: ComponentStory<typeof VideoModule> = (props) => <VideoModule {..
 
 const defaultArgs = videoModuleFixture
 
-export const Default = Template.bind({})
+// TODO(PC-17931): Fix this stories
+const Default = Template.bind({})
 Default.args = defaultArgs
 
-export const WithLongVideoTitle = Template.bind({})
+// TODO(PC-17931): Fix this stories
+const WithLongVideoTitle = Template.bind({})
 WithLongVideoTitle.args = {
   ...defaultArgs,
   videoTitle:
