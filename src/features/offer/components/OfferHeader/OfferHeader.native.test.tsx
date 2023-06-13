@@ -74,7 +74,9 @@ const mockUseRemoveFavorite = () => {
 
 describe('<OfferHeader />', () => {
   beforeAll(() => {
-    jest.useFakeTimers('legacy')
+    jest.useFakeTimers({
+      legacyFakeTimers: true,
+    })
   })
 
   it('should render all the icons', async () => {

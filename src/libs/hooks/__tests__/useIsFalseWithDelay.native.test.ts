@@ -8,7 +8,9 @@ const DELAY = 1000
 
 describe('useIsFalseWithDelay()', () => {
   beforeEach(() => {
-    jest.useFakeTimers('legacy')
+    jest.useFakeTimers({
+      legacyFakeTimers: true,
+    })
   })
 
   afterEach(() => {
