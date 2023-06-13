@@ -1,5 +1,6 @@
 import { useRoute } from '@react-navigation/native'
 import React from 'react'
+import styled from 'styled-components/native'
 
 import { navigateToHome } from 'features/navigation/helpers'
 import { UseRouteType } from 'features/navigation/RootNavigator/types'
@@ -62,12 +63,16 @@ const DeviceInformations = () => {
   const { location, osAndSource, loginDate } = formatTokenInfo(getTokenInfo(params.token))
 
   return (
-    <Typo.Body>
-      <Typo.ButtonText>Appareil utilisé&nbsp;: </Typo.ButtonText> {osAndSource}
+    <CaptionRegular>
+      <Typo.Caption>Appareil utilisé&nbsp;: </Typo.Caption> {osAndSource}
       {LINE_BREAK}
-      <Typo.ButtonText>Lieu&nbsp;: </Typo.ButtonText> {location}
+      <Typo.Caption>Lieu&nbsp;: </Typo.Caption> {location}
       {LINE_BREAK}
-      <Typo.ButtonText>Date et heure&nbsp;: </Typo.ButtonText> {loginDate}
-    </Typo.Body>
+      <Typo.Caption>Date et heure&nbsp;: </Typo.Caption> {loginDate}
+    </CaptionRegular>
   )
 }
+
+const CaptionRegular = styled(Typo.Caption)(({ theme }) => ({
+  fontFamily: theme.fontFamily.regular,
+}))
