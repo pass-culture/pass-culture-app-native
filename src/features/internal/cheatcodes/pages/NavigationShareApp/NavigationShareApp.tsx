@@ -8,7 +8,7 @@ import { ShareAppModalType } from 'features/share/helpers/shareAppModalInformati
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { PageHeaderSecondary } from 'ui/components/headers/PageHeaderSecondary'
 
-export function NavigationShareApp(): JSX.Element {
+export function NavigationShareApp(): React.JSX.Element {
   const { showShareAppModal } = useShareAppContext()
 
   return (

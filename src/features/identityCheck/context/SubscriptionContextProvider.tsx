@@ -15,7 +15,7 @@ const SubscriptionContext = React.createContext<ISubscriptionContext | null>(nul
 export const SubscriptionContextProvider = ({
   children,
 }: {
-  children: JSX.Element | JSX.Element[]
+  children: React.JSX.Element | React.JSX.Element[]
 }) => {
   const [subscriptionState, dispatch] = useReducer(SubscriptionReducer, initialSubscriptionState)
 

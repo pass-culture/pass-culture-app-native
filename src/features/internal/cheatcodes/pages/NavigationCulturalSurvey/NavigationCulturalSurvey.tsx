@@ -6,7 +6,7 @@ import { LinkToComponent } from 'features/internal/cheatcodes/components/LinkToC
 import { PageHeaderSecondary } from 'ui/components/headers/PageHeaderSecondary'
 import { Spacer } from 'ui/theme'
 
-export function NavigationCulturalSurvey(): JSX.Element {
+export function NavigationCulturalSurvey(): React.JSX.Element {
   return (
     <ScrollView>
       <PageHeaderSecondary title="CulturalSurvey 🎨" />

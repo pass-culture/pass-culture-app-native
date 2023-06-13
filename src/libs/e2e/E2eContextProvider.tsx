@@ -5,7 +5,11 @@ import { env } from 'libs/environment'
 
 const E2eContext = React.createContext<boolean>(false)
 
-export function E2eContextProvider({ children }: { children: JSX.Element | JSX.Element[] }) {
+export function E2eContextProvider({
+  children,
+}: {
+  children: React.JSX.Element | React.JSX.Element[]
+}) {
   const [isE2e, setIsE2e] = useState<boolean>(false)
   useEffect(() => {
     getIsE2e().then(setIsE2e)

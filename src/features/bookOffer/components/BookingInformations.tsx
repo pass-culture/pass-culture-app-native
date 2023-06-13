@@ -101,7 +101,7 @@ export const BookingInformations = ({ shouldDisplayAddress = true }: Props) => {
 
 const Item: React.FC<{
   Icon: React.FC<IconInterface>
-  message: JSX.Element | string
+  message: React.JSX.Element | string
   subtext?: string
   testID?: string
 }> = ({ Icon, message, subtext = '', testID }) => {

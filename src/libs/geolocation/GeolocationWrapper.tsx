@@ -34,7 +34,7 @@ const GeolocationContext = React.createContext<IGeolocationContext>({
 export const GeolocationWrapper = memo(function GeolocationWrapper({
   children,
 }: {
-  children: JSX.Element
+  children: React.JSX.Element
 }) {
   const [userPosition, setUserPosition] = useSafeState<Position>(undefined)
   const [customPosition, setCustomPosition] = useSafeState<Position>(undefined)

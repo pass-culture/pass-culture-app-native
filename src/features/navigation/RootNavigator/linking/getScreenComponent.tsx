@@ -12,7 +12,7 @@ export function getScreenComponent(
   name: string,
   route: Route | TabRoute,
   ScreenComponent: ComponentType<any> // eslint-disable-line @typescript-eslint/no-explicit-any
-): JSX.Element {
+): React.JSX.Element {
   let component = route.component
   component = route.hoc ? route.hoc(component) : withAsyncErrorBoundary(component)
   if (route.secure) component = withAuthProtection(component)

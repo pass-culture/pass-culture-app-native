@@ -15,7 +15,7 @@ const OnboardingContext = React.createContext<OnboardingContextValue>({
 export const OnboardingWrapper = memo(function OnboardingWrapper({
   children,
 }: {
-  children: JSX.Element
+  children: React.JSX.Element
 }) {
   const { showModal, ...modalProps } = useModal(false)
   const [modalType, setModalType] = useState(NonEligible.UNDER_15)

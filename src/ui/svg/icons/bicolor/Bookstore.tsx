@@ -13,7 +13,7 @@ function BookstoreSvg({
   color2,
   accessibilityLabel,
   testID,
-}: AccessibleIcon): JSX.Element {
+}: AccessibleIcon): React.JSX.Element {
   const { id: gradientId, fill: gradientFill } = svgIdentifier()
   return (
     <AccessibleSvg

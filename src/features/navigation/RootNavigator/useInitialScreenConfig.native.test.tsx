@@ -66,7 +66,7 @@ describe('useInitialScreen()', () => {
 
 async function renderUseInitialScreen() {
   const wrapper = (props: { children: unknown }) => (
-    <SplashScreenProvider>{props.children as JSX.Element}</SplashScreenProvider>
+    <SplashScreenProvider>{props.children as React.JSX.Element}</SplashScreenProvider>
   )
   const { result } = renderHook(useInitialScreen, { wrapper })
   await superFlushWithAct()

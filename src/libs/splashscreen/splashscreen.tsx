@@ -14,7 +14,7 @@ export function useSplashScreenContext() {
 }
 
 export const SplashScreenProvider = memo(function SplashScreenProvider(props: {
-  children: JSX.Element
+  children: React.JSX.Element
 }) {
   const splashScreenBeginningTime = new Date().getTime()
   const [isSplashScreenHidden, setIsSplashScreenHidden] = useState<boolean>(false)

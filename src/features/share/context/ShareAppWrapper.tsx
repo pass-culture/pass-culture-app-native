@@ -15,7 +15,7 @@ const ShareAppContext = React.createContext<ShareAppContextValue>({
 export const ShareAppWrapper = memo(function ShareAppWrapper({
   children,
 }: {
-  children: JSX.Element
+  children: React.JSX.Element
 }) {
   const { showModal, ...shareAppModalProps } = useModal(false)
   const [modalType, setModalType] = useState(ShareAppModalType.NOT_ELIGIBLE)

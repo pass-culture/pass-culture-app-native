@@ -9,7 +9,7 @@ import { Spacer } from 'ui/theme'
 const TOKEN =
   'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiIxIiwibG9jYXRpb24iOiJQYXJpcyIsImRhdGVDcmVhdGVkIjoiMjAyMy0wNi0wOVQxMDowMDowMFoiLCJvcyI6ImlPUyIsInNvdXJjZSI6ImlQaG9uZSAxMyJ9.0x9m4wEh0QKefPSsCOJDVrA-xVRGnUcoJR_vEbjNtaE'
 
-export function NavigationTrustedDevice(): JSX.Element {
+export function NavigationTrustedDevice(): React.JSX.Element {
   return (
     <ScrollView>
       <PageHeaderSecondary title="Trusted device 📱" />

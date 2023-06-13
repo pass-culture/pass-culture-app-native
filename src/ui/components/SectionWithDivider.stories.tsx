@@ -15,7 +15,7 @@ const Template: ComponentStory<typeof SectionWithDivider> = (props) => (
   <SectionWithDivider {...props} />
 )
 
-const SectionContent: JSX.Element = (
+const SectionContent: React.JSX.Element = (
   <View>
     <Typo.Title4>Section with divider</Typo.Title4>
     <Typo.Body>

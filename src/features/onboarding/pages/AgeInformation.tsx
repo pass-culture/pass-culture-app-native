@@ -34,7 +34,7 @@ const onSignupPress = () => {
   analytics.logSignUpClicked({ from: 'onboarding' })
 }
 
-export const AgeInformation = ({ route }: AgeInformationProps): JSX.Element => {
+export const AgeInformation = ({ route }: AgeInformationProps): React.JSX.Element => {
   const { reset } = useNavigation<UseNavigationType>()
   const userAge = route.params.age
   const isEighteen = userAge === 18

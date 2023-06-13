@@ -13,7 +13,7 @@ import { PageHeaderSecondary } from 'ui/components/headers/PageHeaderSecondary'
 import { useModal } from 'ui/components/modals/useModal'
 import { Spacer } from 'ui/theme'
 
-export function NavigationProfile(): JSX.Element {
+export function NavigationProfile(): React.JSX.Element {
   const {
     visible: ceilingModalVisible,
     showModal: showCeilingModal,

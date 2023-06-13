@@ -19,7 +19,7 @@ import { ModalLeftIconProps } from 'ui/components/modals/types'
 import { ArrowPrevious } from 'ui/svg/icons/ArrowPrevious'
 
 type ModalContent = {
-  children: JSX.Element
+  children: React.JSX.Element
   title: string
 } & ModalLeftIconProps
 

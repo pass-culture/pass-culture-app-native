@@ -7,7 +7,11 @@ import { MaintenanceErrorPage } from 'features/maintenance/pages/MaintenanceErro
 import { MAINTENANCE } from 'libs/firebase/firestore/maintenance'
 import { ScreenError } from 'libs/monitoring/errors'
 
-export const ScreenErrorProvider = ({ children }: { children?: JSX.Element | JSX.Element[] }) => {
+export const ScreenErrorProvider = ({
+  children,
+}: {
+  children?: React.JSX.Element | React.JSX.Element[]
+}) => {
   const { status } = useMaintenance()
   const mustUpdateApp = useMustUpdateApp()
 

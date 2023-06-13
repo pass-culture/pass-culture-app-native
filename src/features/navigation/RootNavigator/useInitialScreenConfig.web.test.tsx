@@ -8,7 +8,7 @@ import { renderHook, waitFor } from 'tests/utils/web'
 import { useInitialScreen } from './useInitialScreenConfig'
 
 const wrapper = (props: { children: unknown }) => (
-  <SplashScreenProvider>{props.children as JSX.Element}</SplashScreenProvider>
+  <SplashScreenProvider>{props.children as React.JSX.Element}</SplashScreenProvider>
 )
 
 describe('useInitialScreen()', () => {

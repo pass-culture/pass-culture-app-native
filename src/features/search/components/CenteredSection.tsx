@@ -5,8 +5,8 @@ import { getSpacing, Typo, Spacer } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 export const CenteredSection: React.FC<{
-  title: JSX.Element | string
-  children: JSX.Element | Array<JSX.Element | null>
+  title: React.JSX.Element | string
+  children: React.JSX.Element | Array<React.JSX.Element | null>
 }> = ({ title, children }) => (
   <MarginHorizontalContainer>
     <Title>{title}</Title>

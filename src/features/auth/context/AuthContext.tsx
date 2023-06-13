@@ -60,7 +60,11 @@ export function useAuthContext(): IAuthContext {
   return useContext(AuthContext)
 }
 
-export const AuthWrapper = memo(function AuthWrapper({ children }: { children: JSX.Element }) {
+export const AuthWrapper = memo(function AuthWrapper({
+  children,
+}: {
+  children: React.JSX.Element
+}) {
   const [loading, setLoading] = useState(true)
   const [isLoggedIn, setIsLoggedIn] = useState(false)
   const connectServicesRequiringUserId = useConnectServicesRequiringUserId()

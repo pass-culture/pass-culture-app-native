@@ -340,7 +340,7 @@ describe('Profile component', () => {
 })
 
 interface Options {
-  wrapper?: NamedExoticComponent<{ children: JSX.Element }> | undefined
+  wrapper?: NamedExoticComponent<{ children: React.JSX.Element }> | undefined
 }
 
 const defaultOptions = {

@@ -25,7 +25,7 @@ const FAQTouchableLinkProps = {
   accessibilityLabel: 'En savoir plus sur ce qu’on fait de tes données',
 }
 
-export const CulturalSurveyIntro = (): JSX.Element => {
+export const CulturalSurveyIntro = (): React.JSX.Element => {
   const { navigate } = useNavigation<UseNavigationType>()
   const { questionsToDisplay: initialQuestions } = useCulturalSurveyContext()
 

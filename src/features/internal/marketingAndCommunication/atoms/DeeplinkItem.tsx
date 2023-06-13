@@ -10,7 +10,7 @@ import { getSpacing, Spacer, Typo } from 'ui/theme'
 
 interface Props {
   deeplink: GeneratedDeeplink
-  before?: JSX.Element | JSX.Element[]
+  before?: React.JSX.Element | React.JSX.Element[]
 }
 
 export const DeeplinkItem = ({ deeplink, before }: Props) => {

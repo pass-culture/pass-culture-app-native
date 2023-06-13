@@ -23,7 +23,7 @@ export function useSettingsContext(): ISettingsContext {
 export const SettingsWrapper = memo(function SettingsWrapper({
   children,
 }: {
-  children: JSX.Element
+  children: React.JSX.Element
 }) {
   const { data, isLoading } = useAppSettings()
 

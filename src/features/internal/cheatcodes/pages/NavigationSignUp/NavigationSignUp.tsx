@@ -17,7 +17,7 @@ import { PageHeaderSecondary } from 'ui/components/headers/PageHeaderSecondary'
 import { useModal } from 'ui/components/modals/useModal'
 import { Spacer } from 'ui/theme'
 
-export function NavigationSignUp(): JSX.Element {
+export function NavigationSignUp(): React.JSX.Element {
   const { navigate } = useNavigation<UseNavigationType>()
   const offerId = useSomeOfferId()
 
