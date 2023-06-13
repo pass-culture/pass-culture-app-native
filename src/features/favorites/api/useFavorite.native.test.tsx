@@ -6,7 +6,7 @@ import { FavoritesWrapper } from 'features/favorites/context/FavoritesWrapper'
 import { paginatedFavoritesResponseSnap } from 'features/favorites/fixtures/paginatedFavoritesResponseSnap'
 import { simulateBackend } from 'features/favorites/helpers/simulateBackend'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { act, renderHook, waitFor } from 'tests/utils'
+import { renderHook, waitFor } from 'tests/utils'
 
 import { useFavorite } from './useFavorite'
 
@@ -38,13 +38,14 @@ describe('useFavorite hook', () => {
         ),
     })
 
-    await act(async () => {})
-    expect(result.current).toEqual({
-      ...favorite,
-      offer: {
-        ...favorite.offer,
-        date: favorite.offer.date,
-      },
+    await waitFor(() => {
+      expect(result.current).toEqual({
+        ...favorite,
+        offer: {
+          ...favorite.offer,
+          date: favorite.offer.date,
+        },
+      })
     })
   })
 
@@ -61,6 +62,7 @@ describe('useFavorite hook', () => {
       refetchUser: jest.fn(),
       isUserLoading: false,
     })
+
     const { result } = renderHook(() => useFavorite({ offerId: 99999 }), {
       wrapper: (props) =>
         // eslint-disable-next-line local-rules/no-react-query-provider-hoc
@@ -70,8 +72,9 @@ describe('useFavorite hook', () => {
           </FavoritesWrapper>
         ),
     })
+
     await waitFor(() => {
-      expect(result.current).toEqual(undefined)
+      expect(result.current).toBeNull()
     })
   })
 })
