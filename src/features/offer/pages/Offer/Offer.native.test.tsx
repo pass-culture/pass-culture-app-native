@@ -36,7 +36,9 @@ jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockReturnValue(true)
 
 describe('<Offer />', () => {
   beforeEach(() => {
-    jest.useFakeTimers('legacy')
+    jest.useFakeTimers({
+      legacyFakeTimers: true,
+    })
     mockUseAuthContext.mockReturnValue({
       isLoggedIn: false,
       setIsLoggedIn: jest.fn(),

@@ -11,7 +11,9 @@ describe('<DateChoice />', () => {
   beforeEach(() => {
     mockdate.set(CURRENT_DATE)
     onChange.mockReset()
-    jest.useFakeTimers('legacy')
+    jest.useFakeTimers({
+      legacyFakeTimers: true,
+    })
   })
 
   it('should call onChange with new Date', () => {
