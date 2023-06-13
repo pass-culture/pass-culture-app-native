@@ -1,79 +1,96 @@
-import React, { FunctionComponent } from 'react'
-import { Keyboard, ScrollView } from 'react-native'
+import { useNavigation } from '@react-navigation/native'
+import React, { FunctionComponent, useState } from 'react'
+import { Keyboard } from 'react-native'
 import styled from 'styled-components/native'
 
+import { useSignUp } from 'features/auth/api/useSignUp'
 import { SIGNUP_NUMBER_OF_STEPS } from 'features/auth/constants'
 import { PreValidationSignupStep } from 'features/auth/enums'
 import { ProgressBar } from 'features/auth/pages/signup/ProgressBar/ProgressBar'
 import { QuitSignupModal } from 'features/auth/pages/signup/QuitSignupModal/QuitSignupModal'
-import { PreValidationSignupStepProps } from 'features/auth/types'
+import {
+  PreValidationSignupNormalStepProps,
+  PreValidationSignupLastStepProps,
+  SignupData,
+} from 'features/auth/types'
+import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
 import { useGoBack } from 'features/navigation/useGoBack'
+import { useDeviceInfo } from 'features/trustedDevice/helpers/useDeviceInfo'
 import { analytics } from 'libs/analytics'
-import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
-import { styledButton } from 'ui/components/buttons/styledButton'
+import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
+import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
+import { AsyncError, eventMonitoring } from 'libs/monitoring'
 import { BlurHeader } from 'ui/components/headers/BlurHeader'
 import {
   PageHeaderWithoutPlaceholder,
   useGetHeaderHeight,
 } from 'ui/components/headers/PageHeaderWithoutPlaceholder'
 import { useModal } from 'ui/components/modals/useModal'
-import { getSpacing, Spacer, Typo } from 'ui/theme'
+import { getSpacing, Spacer } from 'ui/theme'
 import { Helmet } from 'ui/web/global/Helmet'
 
-import { AcceptCgu } from './AcceptCgu/AcceptCgu'
-import { SetBirthday } from './SetBirthday/SetBirthday'
-import { SetEmail } from './SetEmail/SetEmail'
-import { SetPassword } from './SetPassword/SetPassword'
+import { AcceptCguV2 } from './AcceptCgu/AcceptCguV2'
+import { SetBirthdayV2 } from './SetBirthday/SetBirthdayV2'
+import { SetEmailV2 } from './SetEmail/SetEmailV2'
+import { SetPasswordV2 } from './SetPassword/SetPasswordV2'
 
 type SignupStepConfig = {
   name: PreValidationSignupStep
-  headerTitle: string
-  Component: React.FunctionComponent<PreValidationSignupStepProps>
+  Component:
+    | React.FunctionComponent<PreValidationSignupNormalStepProps>
+    | React.FunctionComponent<PreValidationSignupLastStepProps>
   tracker?: () => Promise<void>
 }
 
 const SIGNUP_STEP_CONFIG: SignupStepConfig[] = [
   {
     name: PreValidationSignupStep.Email,
-    headerTitle: 'Crée-toi un compte',
-    Component: SetEmail,
+    Component: SetEmailV2,
     tracker: analytics.logContinueSetEmail,
   },
   {
     name: PreValidationSignupStep.Password,
-    headerTitle: 'Mot de passe',
-    Component: SetPassword,
+    Component: SetPasswordV2,
     tracker: analytics.logContinueSetPassword,
   },
   {
     name: PreValidationSignupStep.Birthday,
-    headerTitle: 'Date de naissance',
-    Component: SetBirthday,
+    Component: SetBirthdayV2,
     tracker: analytics.logContinueSetBirthday,
   },
   {
     name: PreValidationSignupStep.CGU,
-    headerTitle: 'CGU & Données',
-    Component: AcceptCgu,
+    Component: AcceptCguV2,
   },
 ]
 
 export const SignupForm: FunctionComponent = () => {
+  const signUpApiCall = useSignUp()
+  const trustedDevice = useDeviceInfo()
+  const enableTrustedDevice = useFeatureFlag(RemoteStoreFeatureFlags.WIP_ENABLE_TRUSTED_DEVICE)
+
+  const navigation = useNavigation<UseNavigationType>()
+
   const [stepIndex, setStepIndex] = React.useState(0)
   const stepConfig = SIGNUP_STEP_CONFIG[stepIndex]
   const isFirstStep = stepIndex === 0
-  const isLastStep = stepIndex + 1 === SIGNUP_NUMBER_OF_STEPS
   const helmetTitle = `Étape ${
     stepIndex + 1
   } sur ${SIGNUP_NUMBER_OF_STEPS} - Inscription | pass Culture`
 
   const { goBack: goBackAndLeaveSignup } = useGoBack(...getTabNavConfig('Profile'))
 
-  function goToPreviousStep() {
-    setStepIndex((prevStepIndex) => Math.max(0, prevStepIndex - 1))
+  const goToPreviousStep = () => {
+    if (isFirstStep) {
+      goBackAndLeaveSignup()
+    } else {
+      setStepIndex((prevStepIndex) => Math.max(0, prevStepIndex - 1))
+    }
   }
-  function goToNextStep() {
+
+  const goToNextStep = (_signupData: Partial<SignupData>) => {
+    setSignupData((previousSignupData) => ({ ...previousSignupData, ..._signupData }))
     setStepIndex((prevStepIndex) => Math.min(SIGNUP_NUMBER_OF_STEPS, prevStepIndex + 1))
   }
 
@@ -91,6 +108,31 @@ export const SignupForm: FunctionComponent = () => {
     showFullPageModal()
   }
 
+  const [signupData, setSignupData] = useState<SignupData>({
+    email: '',
+    marketingEmailSubscription: false,
+    password: '',
+    birthdate: '',
+    postalCode: '',
+  })
+
+  async function signUp(token: string) {
+    try {
+      const signupResponse = await signUpApiCall({
+        ...signupData,
+        token,
+        trustedDevice: enableTrustedDevice ? trustedDevice : undefined,
+      })
+      if (!signupResponse?.isSuccess) {
+        throw new AsyncError('NETWORK_REQUEST_FAILED')
+      }
+      navigation.navigate('SignupConfirmationEmailSent', { email: signupData.email })
+    } catch (error) {
+      ;(error as Error).name = 'SignUpError'
+      eventMonitoring.captureException(error)
+    }
+  }
+
   return (
     <React.Fragment>
       <Helmet title={helmetTitle} />
@@ -98,25 +140,14 @@ export const SignupForm: FunctionComponent = () => {
         title="Inscription"
         shouldDisplayCloseButton={!isFirstStep}
         onClose={showQuitSignupModal}
-        onGoBack={goBackAndLeaveSignup}>
+        onGoBack={goToPreviousStep}>
         <ProgressBar totalStep={SIGNUP_NUMBER_OF_STEPS} currentStep={stepIndex + 1} />
       </PageHeaderWithoutPlaceholder>
-      <ScrollView>
+      <StyledScrollView>
         <Placeholder height={headerHeight} />
         <Spacer.Column numberOfSpaces={8} />
-        {/* To remove when adding real implem */}
-        <Typo.Body>Lorem Ipsum</Typo.Body>
-        <Typo.Body>Lorem Ipsum</Typo.Body>
-        <Typo.Body>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
-          ut labore et dolore magna aliqua.
-        </Typo.Body>
-        <ButtonContainer>
-          <StyledButton wording="Previous Step" onPress={goToPreviousStep} disabled={isFirstStep} />
-          <StyledButton wording="Next Step" onPress={goToNextStep} disabled={isLastStep} />
-        </ButtonContainer>
-        <FakeContent />
-      </ScrollView>
+        <stepConfig.Component goToNextStep={goToNextStep} signUp={signUp} />
+      </StyledScrollView>
       <QuitSignupModal
         visible={fullPageModalVisible}
         resume={hideFullPageModal}
@@ -129,20 +160,15 @@ export const SignupForm: FunctionComponent = () => {
   )
 }
 
-const StyledButton = styledButton(ButtonTertiaryBlack)({
-  width: '45%',
-  margin: getSpacing(2),
-})
-
-const ButtonContainer = styled.View({
-  flexDirection: 'row',
-  margin: getSpacing(2),
-  justifyContent: 'center',
-})
-
-const FakeContent = styled.View({
-  height: 800,
-})
+const StyledScrollView = styled.ScrollView.attrs(({ theme }) => ({
+  contentContainerStyle: {
+    paddingHorizontal: getSpacing(6),
+    maxWidth: theme.contentPage.maxWidth,
+    width: '100%',
+    alignSelf: 'center',
+    flex: 1,
+  },
+}))``
 
 const BlurHeaderContainer = styled.View<{ height: number }>(({ height }) => ({
   position: 'absolute',

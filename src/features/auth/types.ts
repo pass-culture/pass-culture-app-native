@@ -20,3 +20,13 @@ export interface PreValidationSignupStepProps {
   goToNextStep: (signupData: Partial<SignupData>) => void
   signUp: (token: string) => Promise<void>
 }
+
+export type PreValidationSignupNormalStepProps = {
+  accessibilityLabelForNextStep?: string
+  goToNextStep: (signupData: Partial<SignupData>) => void
+}
+
+export type PreValidationSignupLastStepProps = {
+  accessibilityLabelForNextStep?: string
+  signUp: (token: string) => Promise<void>
+}
