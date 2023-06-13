@@ -311,7 +311,7 @@ const ModalContainer = styled.View<{
   })
 })
 
-const StyledScrollView = styled.ScrollView<{
+const StyledScrollView = styled(ScrollView)<{
   modalSpacing?: ModalSpacing
 }>(({ modalSpacing }) => ({
   width: '100%',

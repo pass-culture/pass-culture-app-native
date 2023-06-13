@@ -18,7 +18,7 @@ jest.mock('react-query', () => ({
 
 describe('useShowSkeleton', () => {
   it('should show skeleton when fetching data on load', async () => {
-    jest.useFakeTimers('legacy')
+    jest.useFakeTimers({ legacyFakeTimers: true })
     const { result, rerender } = renderHook(useShowSkeleton)
 
     expect(result.current).toBeTruthy()

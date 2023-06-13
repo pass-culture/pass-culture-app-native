@@ -1,5 +1,5 @@
 import React, { FunctionComponent } from 'react'
-import { LayoutChangeEvent } from 'react-native'
+import { LayoutChangeEvent, View } from 'react-native'
 import styled from 'styled-components/native'
 
 import { styledButton } from 'ui/components/buttons/styledButton'
@@ -76,7 +76,7 @@ export const ModalHeader: FunctionComponent<ModalHeaderProps> = ({
   )
 }
 
-const Container = styled.View<{ modalSpacing?: ModalSpacing }>(({ modalSpacing }) => ({
+const Container = styled(View)<{ modalSpacing?: ModalSpacing }>(({ modalSpacing }) => ({
   display: 'flex',
   width: '100%',
   flexDirection: 'row',

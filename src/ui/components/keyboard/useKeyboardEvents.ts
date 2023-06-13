@@ -1,13 +1,13 @@
 // based on https://github.com/react-native-community/hooks/blob/master/src/useKeyboard.ts
 import { useEffect } from 'react'
-import { Keyboard, KeyboardEventListener, ScreenRect, Platform } from 'react-native'
+import { Keyboard, KeyboardEventListener, KeyboardMetrics, Platform } from 'react-native'
 
 interface UseKeyboardReturnData {
   keyboardShown: boolean
   keyboardHeight: number
   coordinates: {
-    start: ScreenRect | undefined
-    end: ScreenRect | undefined
+    start: KeyboardMetrics | undefined
+    end: KeyboardMetrics | undefined
   }
 }
 

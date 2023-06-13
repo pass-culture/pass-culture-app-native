@@ -15,7 +15,7 @@ import { analytics } from 'libs/analytics'
 import { useOpacityTransition } from 'ui/animations/helpers/useOpacityTransition'
 
 interface Props {
-  headerTransition: Animated.AnimatedInterpolation
+  headerTransition: Animated.AnimatedInterpolation<string | number>
   thematicHeader?: ThematicHeader
 }
 

@@ -11,7 +11,7 @@ import { BlurHeader } from 'ui/components/headers/BlurHeader'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 
 interface Props {
-  headerTransition: Animated.AnimatedInterpolation
+  headerTransition: Animated.AnimatedInterpolation<string | number>
   title: string
 }
 /**

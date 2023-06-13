@@ -48,7 +48,7 @@ const exUnderageBeneficiaryUser: UserProfileResponse = {
 
 jest.mock('features/profile/api/useUpdateProfileMutation')
 jest.mock('features/profile/helpers/isUserUnderageBeneficiary')
-const mockedisUserUnderageBeneficiary = jest.mocked(isUserUnderageBeneficiary, true)
+const mockedisUserUnderageBeneficiary = jest.mocked(isUserUnderageBeneficiary, { shallow: true })
 
 jest.mock('features/auth/context/AuthContext', () => ({
   useAuthContext: jest.fn(() => ({ isLoggedIn: true })),

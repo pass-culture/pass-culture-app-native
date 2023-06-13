@@ -95,7 +95,7 @@ describe('<BookingButton />', () => {
         isUserBeneficiaryMock.mockReturnValueOnce(true)
         isUserExBeneficiaryMock.mockReturnValueOnce(false)
 
-        favoriteBookingButtonTestRunner(...args)
+        favoriteBookingButtonTestRunner(args[0])
       }
     )
   })
@@ -134,7 +134,7 @@ describe('<BookingButton />', () => {
         isUserBeneficiaryMock.mockReturnValueOnce(true)
         getAvailableCreditMock.mockReturnValueOnce(expiredCredit)
 
-        favoriteBookingButtonTestRunner(...args)
+        favoriteBookingButtonTestRunner(args[0])
       }
     )
   })
@@ -165,7 +165,7 @@ describe('<BookingButton />', () => {
         getAvailableCreditMock.mockReturnValueOnce(credit)
         isUserBeneficiaryMock.mockReturnValueOnce(false)
 
-        favoriteBookingButtonTestRunner(...args)
+        favoriteBookingButtonTestRunner(args[0])
       }
     )
   })

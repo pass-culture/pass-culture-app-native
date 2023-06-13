@@ -1,4 +1,5 @@
 import React, { memo, useEffect } from 'react'
+import { View } from 'react-native'
 import styled from 'styled-components/native'
 
 import { ExclusivityImage } from 'features/home/components/modules/exclusivity/ExclusivityImage'
@@ -28,6 +29,6 @@ const UnmemoizedExclusivityBanner = ({
 
 export const ExclusivityBanner = memo(UnmemoizedExclusivityBanner)
 
-const ImageContainer = styled.View({
+const ImageContainer = styled(View)({
   flex: 1,
 })

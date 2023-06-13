@@ -4,7 +4,7 @@ import { act, renderHook } from 'tests/utils'
 jest.spyOn(global, 'setInterval')
 
 describe('useRotatingText', () => {
-  beforeEach(() => jest.useFakeTimers('legacy'))
+  beforeEach(() => jest.useFakeTimers({ legacyFakeTimers: true }))
   afterEach(() => {
     jest.useRealTimers()
     // We don't really know why this is necessary but we noticed that those tests weren't independant

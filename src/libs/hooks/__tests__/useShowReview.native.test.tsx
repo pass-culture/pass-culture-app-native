@@ -24,7 +24,7 @@ const TestReviewComponent = () => {
 
 describe('useShowReview', () => {
   beforeAll(() => {
-    jest.useFakeTimers('legacy')
+    jest.useFakeTimers({ legacyFakeTimers: true })
   })
   afterEach(() => {
     jest.runOnlyPendingTimers()

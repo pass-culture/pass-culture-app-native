@@ -1,5 +1,5 @@
 import React, { FunctionComponent, ReactNode, useState } from 'react'
-import { LayoutChangeEvent, View } from 'react-native'
+import { LayoutChangeEvent, ScrollView, View } from 'react-native'
 import styled from 'styled-components/native'
 
 import { CustomKeyboardAvoidingView } from 'features/identityCheck/components/CustomKeyboardAvoidingView'
@@ -58,7 +58,7 @@ export const PageWithHeader: FunctionComponent<Props> = (props) => {
 }
 
 type ChildrenScrollViewProps = { bottomChildrenViewHeight: number }
-const ChildrenScrollView = styled.ScrollView.attrs<ChildrenScrollViewProps>((props) => ({
+const ChildrenScrollView = styled(ScrollView).attrs<ChildrenScrollViewProps>((props) => ({
   keyboardShouldPersistTaps: 'handled',
   contentContainerStyle: {
     flexGrow: 1,
@@ -68,7 +68,7 @@ const ChildrenScrollView = styled.ScrollView.attrs<ChildrenScrollViewProps>((pro
   },
 }))<ChildrenScrollViewProps>({})
 
-const FixedBottomChildrenView = styled.View(({ theme }) => ({
+const FixedBottomChildrenView = styled(View)(({ theme }) => ({
   position: 'absolute',
   bottom: 0,
   left: 0,

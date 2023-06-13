@@ -27,7 +27,7 @@ import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/S
 import { Spacer, Typo } from 'ui/theme'
 
 interface Props {
-  headerTransition: Animated.AnimatedInterpolation
+  headerTransition: Animated.AnimatedInterpolation<string | number>
   title: string
   offerId: number
   searchId?: string

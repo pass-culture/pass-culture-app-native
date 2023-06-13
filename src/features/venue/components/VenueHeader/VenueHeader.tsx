@@ -15,7 +15,7 @@ import { useModal } from 'ui/components/modals/useModal'
 import { Spacer, Typo } from 'ui/theme'
 
 interface Props {
-  headerTransition: Animated.AnimatedInterpolation
+  headerTransition: Animated.AnimatedInterpolation<string | number>
   title: string
   venueId: number
 }

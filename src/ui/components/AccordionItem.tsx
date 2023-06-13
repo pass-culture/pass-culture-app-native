@@ -141,7 +141,7 @@ const styles = StyleSheet.create({
   },
 })
 
-const StyledView = styled.View<{ hidden: boolean }>(({ hidden }) => ({
+const StyledView = styled(View)<{ hidden: boolean }>(({ hidden }) => ({
   display: hidden ? 'none' : 'flex',
   position: 'absolute',
   bottom: 0,

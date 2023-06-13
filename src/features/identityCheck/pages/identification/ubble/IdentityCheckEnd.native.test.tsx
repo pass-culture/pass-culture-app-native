@@ -28,7 +28,7 @@ jest.mock('features/auth/api/useNextSubscriptionStep', () => ({
 }))
 
 describe('<IdentityCheckEnd/>', () => {
-  beforeAll(() => jest.useFakeTimers('legacy'))
+  beforeAll(() => jest.useFakeTimers({ legacyFakeTimers: true }))
   afterAll(() => jest.useRealTimers())
 
   it('should render correctly', () => {
