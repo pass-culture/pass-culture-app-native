@@ -11,22 +11,29 @@
 
 - [x] bump jest 28
 - [x] fix fake timer
-- features
+- features (natif)
   - [ ] auth
-    - console.error : Warning: You seem to have overlapping act() calls, this is not supported. Be sure to await previous act() calls before making a new one.
-  - [ ] birthdayNotifications
-  - [ ] bookings
+    - [ ] <ForgottenPassword /> (node:89404) ExperimentalWarning: The Fetch API is an experimental feature. This feature could change at any time
+    - [ ] <ForgottenPassword /> › should not capture an in Sentry when reset password request API call has failed and error code is 400
+      - console.error : Warning: You seem to have overlapping act() calls, this is not supported. Be sure to await previous act() calls before making a new one.
+  - [x] birthdayNotifications
+  - [ ] bookings ❌
+    - [ ] pété
   - [ ] bookOffer
-  - [ ] cookies
-  - [ ] culturalSurvey
-  - [ ] deeplinks
-  - [ ] errors
+    - [ ] pété
+  - [x] cookies
+  - [x] culturalSurvey
+  - [x] deeplinks
+  - [x] errors
   - [ ] favorites
-  - [ ] firstTutorial
-  - [ ] forceUpdate
+    - [ ] pété
+  - [x] firstTutorial
+  - [x] forceUpdate
   - [ ] home
+    - [ ] pété
   - [ ] identityCheck
-  - [ ] internal
+    - [ ] pété
+  - [x] internal
   - [ ] maintenance
   - [ ] navigation
   - [ ] notifications
