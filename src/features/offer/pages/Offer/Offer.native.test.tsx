@@ -69,7 +69,9 @@ describe('<Offer />', () => {
     renderOfferPage()
 
     const bookingOfferButton = await screen.findByText('Réserver l’offre')
-    fireEvent.press(bookingOfferButton)
+    await act(async () => {
+      fireEvent.press(bookingOfferButton)
+    })
 
     expect(screen.queryByText('Identifie-toi pour réserver l’offre')).toBeTruthy()
   })
@@ -85,7 +87,9 @@ describe('<Offer />', () => {
     renderOfferPage()
 
     const bookingOfferButton = await screen.findByText('Réserver l’offre')
-    fireEvent.press(bookingOfferButton)
+    await act(async () => {
+      fireEvent.press(bookingOfferButton)
+    })
 
     expect(analytics.logConsultAuthenticationModal).toHaveBeenNthCalledWith(1, offerId)
   })
@@ -94,19 +98,19 @@ describe('<Offer />', () => {
     it('should pass offer venue position to `useSimilarOffers`', async () => {
       renderOfferPage()
 
-      await waitFor(() => {
-        expect(useSimilarOffersSpy).toHaveBeenNthCalledWith(1, {
-          categoryIncluded: SearchGroupNameEnumv2.FILMS_SERIES_CINEMA,
-          offerId: offerResponseSnap.id,
-          position: offerResponseSnap.venue.coordinates,
-          shouldUseAlgoliaRecommend: false,
-        })
-        expect(useSimilarOffersSpy).toHaveBeenNthCalledWith(2, {
-          categoryExcluded: SearchGroupNameEnumv2.FILMS_SERIES_CINEMA,
-          offerId: offerResponseSnap.id,
-          position: offerResponseSnap.venue.coordinates,
-          shouldUseAlgoliaRecommend: false,
-        })
+      await act(async () => {})
+
+      expect(useSimilarOffersSpy).toHaveBeenNthCalledWith(1, {
+        categoryIncluded: SearchGroupNameEnumv2.FILMS_SERIES_CINEMA,
+        offerId: offerResponseSnap.id,
+        position: offerResponseSnap.venue.coordinates,
+        shouldUseAlgoliaRecommend: false,
+      })
+      expect(useSimilarOffersSpy).toHaveBeenNthCalledWith(2, {
+        categoryExcluded: SearchGroupNameEnumv2.FILMS_SERIES_CINEMA,
+        offerId: offerResponseSnap.id,
+        position: offerResponseSnap.venue.coordinates,
+        shouldUseAlgoliaRecommend: false,
       })
     })
 
@@ -117,21 +121,21 @@ describe('<Offer />', () => {
       const { getByTestId } = renderOfferPage()
       const scrollView = getByTestId('offer-container')
 
-      fireEvent.scroll(scrollView, nativeEventBottom)
+      await act(async () => {
+        fireEvent.scroll(scrollView, nativeEventBottom)
+      })
 
-      await waitFor(() => {
-        expect(analytics.logPlaylistVerticalScroll).toHaveBeenNthCalledWith(1, {
-          fromOfferId: undefined,
-          offerId: 116656,
-          playlistType: PlaylistType.SAME_CATEGORY_SIMILAR_OFFERS,
-          shouldUseAlgoliaRecommend: false,
-        })
-        expect(analytics.logPlaylistVerticalScroll).toHaveBeenNthCalledWith(2, {
-          fromOfferId: undefined,
-          offerId: 116656,
-          playlistType: PlaylistType.OTHER_CATEGORIES_SIMILAR_OFFERS,
-          shouldUseAlgoliaRecommend: false,
-        })
+      expect(analytics.logPlaylistVerticalScroll).toHaveBeenNthCalledWith(1, {
+        fromOfferId: undefined,
+        offerId: 116656,
+        playlistType: PlaylistType.SAME_CATEGORY_SIMILAR_OFFERS,
+        shouldUseAlgoliaRecommend: false,
+      })
+      expect(analytics.logPlaylistVerticalScroll).toHaveBeenNthCalledWith(2, {
+        fromOfferId: undefined,
+        offerId: 116656,
+        playlistType: PlaylistType.OTHER_CATEGORIES_SIMILAR_OFFERS,
+        shouldUseAlgoliaRecommend: false,
       })
     })
 
@@ -141,7 +145,9 @@ describe('<Offer />', () => {
       const { getByTestId } = renderOfferPage()
       const scrollView = getByTestId('offer-container')
 
-      fireEvent.scroll(scrollView, nativeEventBottom)
+      await act(async () => {
+        fireEvent.scroll(scrollView, nativeEventBottom)
+      })
 
       await waitFor(() => {
         expect(analytics.logPlaylistVerticalScroll).not.toHaveBeenNthCalledWith(1, {
@@ -169,15 +175,15 @@ describe('<Offer />', () => {
         const { getByTestId } = renderOfferPage()
         const scrollView = getByTestId('offer-container')
 
-        fireEvent.scroll(scrollView, nativeEventBottom)
+        await act(async () => {
+          fireEvent.scroll(scrollView, nativeEventBottom)
+        })
 
-        await waitFor(() => {
-          expect(analytics.logPlaylistVerticalScroll).toHaveBeenNthCalledWith(1, {
-            fromOfferId: undefined,
-            offerId: 116656,
-            playlistType: PlaylistType.SAME_CATEGORY_SIMILAR_OFFERS,
-            shouldUseAlgoliaRecommend: false,
-          })
+        expect(analytics.logPlaylistVerticalScroll).toHaveBeenNthCalledWith(1, {
+          fromOfferId: undefined,
+          offerId: 116656,
+          playlistType: PlaylistType.SAME_CATEGORY_SIMILAR_OFFERS,
+          shouldUseAlgoliaRecommend: false,
         })
       })
 
@@ -185,15 +191,15 @@ describe('<Offer />', () => {
         const { getByTestId } = renderOfferPage()
         const scrollView = getByTestId('offer-container')
 
-        fireEvent.scroll(scrollView, nativeEventBottom)
+        await act(async () => {
+          fireEvent.scroll(scrollView, nativeEventBottom)
+        })
 
-        await waitFor(() => {
-          expect(analytics.logPlaylistVerticalScroll).not.toHaveBeenCalledWith({
-            fromOfferId: undefined,
-            offerId: 116656,
-            playlistType: PlaylistType.OTHER_CATEGORIES_SIMILAR_OFFERS,
-            shouldUseAlgoliaRecommend: false,
-          })
+        expect(analytics.logPlaylistVerticalScroll).not.toHaveBeenCalledWith({
+          fromOfferId: undefined,
+          offerId: 116656,
+          playlistType: PlaylistType.OTHER_CATEGORIES_SIMILAR_OFFERS,
+          shouldUseAlgoliaRecommend: false,
         })
       })
     })
@@ -208,15 +214,15 @@ describe('<Offer />', () => {
         const { getByTestId } = renderOfferPage()
         const scrollView = getByTestId('offer-container')
 
-        fireEvent.scroll(scrollView, nativeEventBottom)
+        await act(async () => {
+          fireEvent.scroll(scrollView, nativeEventBottom)
+        })
 
-        await waitFor(() => {
-          expect(analytics.logPlaylistVerticalScroll).toHaveBeenNthCalledWith(1, {
-            fromOfferId: undefined,
-            offerId: 116656,
-            playlistType: PlaylistType.OTHER_CATEGORIES_SIMILAR_OFFERS,
-            shouldUseAlgoliaRecommend: false,
-          })
+        expect(analytics.logPlaylistVerticalScroll).toHaveBeenNthCalledWith(1, {
+          fromOfferId: undefined,
+          offerId: 116656,
+          playlistType: PlaylistType.OTHER_CATEGORIES_SIMILAR_OFFERS,
+          shouldUseAlgoliaRecommend: false,
         })
       })
 
@@ -224,15 +230,15 @@ describe('<Offer />', () => {
         const { getByTestId } = renderOfferPage()
         const scrollView = getByTestId('offer-container')
 
-        fireEvent.scroll(scrollView, nativeEventBottom)
+        await act(async () => {
+          fireEvent.scroll(scrollView, nativeEventBottom)
+        })
 
-        await waitFor(() => {
-          expect(analytics.logPlaylistVerticalScroll).not.toHaveBeenCalledWith({
-            fromOfferId: undefined,
-            offerId: 116656,
-            playlistType: PlaylistType.SAME_CATEGORY_SIMILAR_OFFERS,
-            shouldUseAlgoliaRecommend: false,
-          })
+        expect(analytics.logPlaylistVerticalScroll).not.toHaveBeenCalledWith({
+          fromOfferId: undefined,
+          offerId: 116656,
+          playlistType: PlaylistType.SAME_CATEGORY_SIMILAR_OFFERS,
+          shouldUseAlgoliaRecommend: false,
         })
       })
     })
@@ -243,21 +249,21 @@ describe('<Offer />', () => {
       renderOfferPage()
       const scrollView = screen.getByTestId('offer-container')
 
-      fireEvent.scroll(scrollView, nativeEventTop)
+      await act(async () => {
+        fireEvent.scroll(scrollView, nativeEventTop)
+      })
 
-      await waitFor(() => {
-        expect(analytics.logPlaylistVerticalScroll).not.toHaveBeenNthCalledWith(1, {
-          fromOfferId: undefined,
-          offerId: 116656,
-          playlistType: PlaylistType.SAME_CATEGORY_SIMILAR_OFFERS,
-          shouldUseAlgoliaRecommend: false,
-        })
-        expect(analytics.logPlaylistVerticalScroll).not.toHaveBeenNthCalledWith(2, {
-          fromOfferId: undefined,
-          offerId: 116656,
-          playlistType: PlaylistType.OTHER_CATEGORIES_SIMILAR_OFFERS,
-          shouldUseAlgoliaRecommend: false,
-        })
+      expect(analytics.logPlaylistVerticalScroll).not.toHaveBeenNthCalledWith(1, {
+        fromOfferId: undefined,
+        offerId: 116656,
+        playlistType: PlaylistType.SAME_CATEGORY_SIMILAR_OFFERS,
+        shouldUseAlgoliaRecommend: false,
+      })
+      expect(analytics.logPlaylistVerticalScroll).not.toHaveBeenNthCalledWith(2, {
+        fromOfferId: undefined,
+        offerId: 116656,
+        playlistType: PlaylistType.OTHER_CATEGORIES_SIMILAR_OFFERS,
+        shouldUseAlgoliaRecommend: false,
       })
     })
 
@@ -269,21 +275,21 @@ describe('<Offer />', () => {
       renderOfferPage(fromOfferId)
       const scrollView = screen.getByTestId('offer-container')
 
-      fireEvent.scroll(scrollView, nativeEventBottom)
+      await act(async () => {
+        fireEvent.scroll(scrollView, nativeEventBottom)
+      })
 
-      await waitFor(() => {
-        expect(analytics.logPlaylistVerticalScroll).toHaveBeenNthCalledWith(1, {
-          fromOfferId,
-          offerId,
-          playlistType: PlaylistType.SAME_CATEGORY_SIMILAR_OFFERS,
-          shouldUseAlgoliaRecommend: false,
-        })
-        expect(analytics.logPlaylistVerticalScroll).toHaveBeenNthCalledWith(2, {
-          fromOfferId,
-          offerId,
-          playlistType: PlaylistType.OTHER_CATEGORIES_SIMILAR_OFFERS,
-          shouldUseAlgoliaRecommend: false,
-        })
+      expect(analytics.logPlaylistVerticalScroll).toHaveBeenNthCalledWith(1, {
+        fromOfferId,
+        offerId,
+        playlistType: PlaylistType.SAME_CATEGORY_SIMILAR_OFFERS,
+        shouldUseAlgoliaRecommend: false,
+      })
+      expect(analytics.logPlaylistVerticalScroll).toHaveBeenNthCalledWith(2, {
+        fromOfferId,
+        offerId,
+        playlistType: PlaylistType.OTHER_CATEGORIES_SIMILAR_OFFERS,
+        shouldUseAlgoliaRecommend: false,
       })
     })
 
@@ -297,21 +303,21 @@ describe('<Offer />', () => {
         const { getByTestId } = renderOfferPage()
         const scrollView = getByTestId('offer-container')
 
-        fireEvent.scroll(scrollView, nativeEventBottom)
+        await act(async () => {
+          fireEvent.scroll(scrollView, nativeEventBottom)
+        })
 
-        await waitFor(() => {
-          expect(analytics.logPlaylistVerticalScroll).toHaveBeenNthCalledWith(1, {
-            fromOfferId: undefined,
-            offerId: 116656,
-            playlistType: PlaylistType.SAME_CATEGORY_SIMILAR_OFFERS,
-            shouldUseAlgoliaRecommend: true,
-          })
-          expect(analytics.logPlaylistVerticalScroll).toHaveBeenNthCalledWith(2, {
-            fromOfferId: undefined,
-            offerId: 116656,
-            playlistType: PlaylistType.OTHER_CATEGORIES_SIMILAR_OFFERS,
-            shouldUseAlgoliaRecommend: true,
-          })
+        expect(analytics.logPlaylistVerticalScroll).toHaveBeenNthCalledWith(1, {
+          fromOfferId: undefined,
+          offerId: 116656,
+          playlistType: PlaylistType.SAME_CATEGORY_SIMILAR_OFFERS,
+          shouldUseAlgoliaRecommend: true,
+        })
+        expect(analytics.logPlaylistVerticalScroll).toHaveBeenNthCalledWith(2, {
+          fromOfferId: undefined,
+          offerId: 116656,
+          playlistType: PlaylistType.OTHER_CATEGORIES_SIMILAR_OFFERS,
+          shouldUseAlgoliaRecommend: true,
         })
       })
     })
@@ -331,9 +337,9 @@ describe('<Offer />', () => {
     const fromOfferId = 1
     renderOfferPage(fromOfferId, undefined, true)
 
-    await waitFor(() => {
-      expect(screen.queryByText('Valider la date')).toBeTruthy()
-    })
+    await act(async () => {})
+
+    expect(await screen.findByText('Valider la date')).toBeTruthy()
   })
 
   it('should display reservation impossible when user has already booked the offer', async () => {

@@ -8,7 +8,7 @@ import { analytics } from 'libs/analytics'
 import { env } from 'libs/environment'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { server } from 'tests/server'
-import { act, fireEvent, render, screen, superFlushWithAct, waitFor } from 'tests/utils'
+import { act, fireEvent, render, screen, superFlushWithAct } from 'tests/utils'
 import { SNACK_BAR_TIME_OUT } from 'ui/components/snackBar/SnackBarContext'
 import { SnackBarHelperSettings } from 'ui/components/snackBar/types'
 
@@ -29,7 +29,7 @@ jest.mock('ui/components/snackBar/SnackBarContext', () => ({
 server.use(
   rest.get<UpdateEmailTokenExpiration>(
     env.API_BASE_URL + '/native/v1/profile/token_expiration',
-    (_req, res, ctx) => res(ctx.status(200), ctx.json({ expiration: '123456789' }))
+    (_req, res, ctx) => res(ctx.status(200), ctx.json({ expiration: undefined }))
   )
 )
 
@@ -39,9 +39,9 @@ describe('<ChangeEmail/>', () => {
   it('should render correctly', async () => {
     renderChangeEmail()
 
-    await waitFor(() => {
-      expect(screen).toMatchSnapshot()
-    })
+    await act(async () => {})
+
+    expect(screen).toMatchSnapshot()
   })
 
   describe('email change already in progress', () => {
@@ -68,6 +68,7 @@ describe('<ChangeEmail/>', () => {
   describe('submit button', () => {
     it('should be disabled by default', async () => {
       renderChangeEmail()
+      await act(async () => {})
 
       const submitButton = await screen.findByLabelText('Enregistrer les modifications')
       expect(submitButton).toBeDisabled()

@@ -110,8 +110,7 @@ describe('<BookingImpossible />', () => {
     it('should render with CTAs', async () => {
       // eslint-disable-next-line local-rules/no-react-query-provider-hoc
       render(reactQueryProviderHOC(<BookingImpossible />))
-
-      await screen.findByLabelText('Mettre en favoris')
+      await act(async () => {})
 
       expect(screen).toMatchSnapshot()
     })
@@ -149,8 +148,7 @@ describe('<BookingImpossible />', () => {
     it('should change booking step from date to confirmation', async () => {
       // eslint-disable-next-line local-rules/no-react-query-provider-hoc
       render(reactQueryProviderHOC(<BookingImpossible />))
-
-      await screen.findByLabelText('Mettre en favoris')
+      await act(async () => {})
 
       expect(mockDispatch).toHaveBeenNthCalledWith(1, {
         type: 'CHANGE_STEP',
