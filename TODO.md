@@ -12,38 +12,33 @@
 - [x] bump jest 28
 - [x] fix fake timer
 - features (natif)
-  - [ ] auth
+  - [ ] auth ❌
     - [ ] <ForgottenPassword /> (node:89404) ExperimentalWarning: The Fetch API is an experimental feature. This feature could change at any time
     - [ ] <ForgottenPassword /> › should not capture an in Sentry when reset password request API call has failed and error code is 400
       - console.error : Warning: You seem to have overlapping act() calls, this is not supported. Be sure to await previous act() calls before making a new one.
   - [x] birthdayNotifications
   - [ ] bookings ❌
-    - [ ] pété
-  - [ ] bookOffer
-    - [ ] pété
+  - [ ] bookOffer ❌
   - [x] cookies
   - [x] culturalSurvey
   - [x] deeplinks
   - [x] errors
-  - [ ] favorites
-    - [ ] pété
+  - [ ] favorites ❌
   - [x] firstTutorial
   - [x] forceUpdate
-  - [ ] home
-    - [ ] pété
-  - [ ] identityCheck
-    - [ ] pété
+  - [ ] home ❌
+  - [ ] identityCheck ❌
   - [x] internal
-  - [ ] maintenance
-  - [ ] navigation
-  - [ ] notifications
-  - [ ] offer
-  - [ ] onboarding
-  - [ ] profile
-  - [ ] search
-  - [ ] share
+  - [x] maintenance
+  - [ ] navigation ❌
+  - [x] notifications
+  - [ ] offer ❌
+  - [x] onboarding
+  - [ ] profile ❌
+  - [ ] search ❌
+  - [x] share
   - [x] trustedDevice
-  - [ ] venue
+  - [x] venue
 - [ ] ouaib
 
 ---
