@@ -75,13 +75,19 @@ export const logEventAnalytics = {
     ),
   logBackToHomeFromEduconnectError: (params: { fromError: string }) =>
     analytics.logEvent({ firebase: AnalyticsEvent.BACK_TO_HOME_FROM_EDUCONNECT_ERROR }, params),
-  logBookingConfirmation: (offerId: number, bookingId: number, fromOfferId?: number) =>
+  logBookingConfirmation: (
+    offerId: number,
+    bookingId: number,
+    fromOfferId?: number,
+    fromMultivenueOfferId?: number
+  ) =>
     analytics.logEvent(
       { firebase: AnalyticsEvent.BOOKING_CONFIRMATION },
       {
         offerId,
         bookingId,
         fromOfferId,
+        fromMultivenueOfferId,
       }
     ),
   logBookingDetailsScrolledToBottom: (offerId: number) =>
@@ -215,6 +221,7 @@ export const logEventAnalytics = {
     homeEntryId?: string
     searchId?: string
     fromOfferId?: number
+    fromMultivenueOfferId?: number
     shouldUseAlgoliaRecommend?: boolean
     playlistType?: PlaylistType
     offer_display_index?: number

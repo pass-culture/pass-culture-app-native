@@ -192,7 +192,11 @@ export const OfferBody: FunctionComponent<Props> = ({
   const onNewOfferVenueSelected = useCallback(
     (nextOfferId: number) => {
       hideChangeVenueModal()
-      navigate('Offer', { fromOfferId: offerId, id: nextOfferId })
+      navigate('Offer', {
+        fromOfferId: offerId,
+        id: nextOfferId,
+        fromMultivenueOfferId: offerId,
+      })
     },
     [hideChangeVenueModal, navigate, offerId]
   )
