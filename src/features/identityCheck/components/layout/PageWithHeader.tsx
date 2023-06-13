@@ -50,11 +50,14 @@ export const PageWithHeader: FunctionComponent<Props> = (props) => {
           </FixedBottomChildrenView>
         ) : null}
       </CustomKeyboardAvoidingView>
-      {Platform.OS !== 'android' && (
-        <BlurHeaderContainer height={headerHeight}>
-          <BlurHeader />
-        </BlurHeaderContainer>
-      )}
+      {
+        // There is an issue with the blur on Android: we chose not to render it and use a white background
+        Platform.OS !== 'android' && (
+          <BlurHeaderContainer height={headerHeight}>
+            <BlurHeader />
+          </BlurHeaderContainer>
+        )
+      }
     </React.Fragment>
   )
 }
