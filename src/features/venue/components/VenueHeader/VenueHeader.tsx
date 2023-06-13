@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Animated } from 'react-native'
+import { Animated, Platform } from 'react-native'
 import { useSafeAreaInsets } from 'react-native-safe-area-context'
 import styled, { useTheme } from 'styled-components/native'
 
@@ -54,9 +54,11 @@ export const VenueHeader: React.FC<Props> = (props) => {
     <React.Fragment>
       <HeaderContainer style={containerStyle} safeAreaTop={top}>
         <Spacer.TopScreen />
-        <BlurNativeContainer style={blurContainerNative} safeAreaTop={top}>
-          <BlurHeader />
-        </BlurNativeContainer>
+        {Platform.OS !== 'android' && (
+          <BlurNativeContainer style={blurContainerNative} safeAreaTop={top}>
+            <BlurHeader />
+          </BlurNativeContainer>
+        )}
         <Spacer.Column numberOfSpaces={2} />
         <Row>
           <Spacer.Row numberOfSpaces={6} />

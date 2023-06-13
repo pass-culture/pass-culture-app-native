@@ -41,9 +41,11 @@ export const ThematicHomeHeader: FunctionComponent<Props> = ({ title, headerTran
     <React.Fragment>
       <HeaderContainer style={containerStyle} safeAreaTop={top}>
         <Spacer.TopScreen />
-        <BlurNativeContainer style={blurContainerNative} safeAreaTop={top}>
-          <BlurHeader />
-        </BlurNativeContainer>
+        {Platform.OS !== 'android' && (
+          <BlurNativeContainer style={blurContainerNative} safeAreaTop={top}>
+            <BlurHeader />
+          </BlurNativeContainer>
+        )}
         <Spacer.Column numberOfSpaces={2} />
         <Row>
           <Spacer.Row numberOfSpaces={6} />
