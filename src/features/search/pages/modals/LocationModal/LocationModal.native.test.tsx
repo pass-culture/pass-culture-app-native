@@ -104,7 +104,9 @@ describe('<LocationModal/>', () => {
   it('should render modal correctly after animation and with enabled submit', async () => {
     renderLocationModal()
 
-    await screen.findByText('Choisir un lieu')
+    await waitFor(() => {
+      expect(screen.getByLabelText('Rechercher')).toBeEnabled()
+    })
 
     expect(screen).toMatchSnapshot()
   })
@@ -114,7 +116,9 @@ describe('<LocationModal/>', () => {
       mockSearchState = searchState
       renderLocationModal()
 
-      await screen.findByText('Choisir un lieu')
+      await waitFor(() => {
+        expect(screen.getByLabelText('Rechercher')).toBeEnabled()
+      })
 
       const searchButton = screen.getByText('Rechercher')
       await act(async () => {
@@ -134,7 +138,9 @@ describe('<LocationModal/>', () => {
       mockSearchState = searchState
       renderLocationModal()
 
-      await screen.findByText('Choisir un lieu')
+      await waitFor(() => {
+        expect(screen.getByLabelText('Rechercher')).toBeEnabled()
+      })
 
       const radioButton = screen.getByTestId(RadioButtonLocation.AROUND_ME)
       await act(async () => {
@@ -175,7 +181,9 @@ describe('<LocationModal/>', () => {
       mockSearchState = { ...mockSearchState, locationFilter }
       renderLocationModal()
 
-      await screen.findByText('Choisir un lieu')
+      await waitFor(() => {
+        expect(screen.getByLabelText('Rechercher')).toBeEnabled()
+      })
 
       const radioButton = screen.getByTestId(label)
 
@@ -494,11 +502,11 @@ describe('<LocationModal/>', () => {
     it('when pressing search button and not pristine', async () => {
       renderLocationModal()
 
-      await screen.findByText('Choisir un lieu')
-
-      await act(async () => {
-        fireEvent.press(screen.getByTestId(RadioButtonLocation.AROUND_ME))
+      await waitFor(() => {
+        expect(screen.getByLabelText('Rechercher')).toBeEnabled()
       })
+
+      fireEvent.press(screen.getByTestId(RadioButtonLocation.AROUND_ME))
 
       const searchButton = screen.getByTestId('Rechercher')
 
@@ -512,7 +520,9 @@ describe('<LocationModal/>', () => {
     it('when pressing previous button', async () => {
       renderLocationModal()
 
-      await screen.findByText('Choisir un lieu')
+      await waitFor(() => {
+        expect(screen.getByLabelText('Rechercher')).toBeEnabled()
+      })
 
       const previousButton = screen.getByTestId('Fermer')
       fireEvent.press(previousButton)
@@ -526,7 +536,9 @@ describe('<LocationModal/>', () => {
     mockPermissionState = GeolocPermissionState.DENIED
     renderLocationModal()
 
-    await screen.findByText('Choisir un lieu')
+    await waitFor(() => {
+      expect(screen.getByLabelText('Rechercher')).toBeEnabled()
+    })
 
     const radioButton = screen.getByTestId(RadioButtonLocation.AROUND_ME)
     await act(async () => {
@@ -544,6 +556,7 @@ describe('<LocationModal/>', () => {
 
       await waitFor(() => {
         expect(screen.getByText('Appliquer le filtre')).toBeTruthy()
+        expect(screen.getByText('Appliquer le filtre')).toBeEnabled()
       })
     })
 
@@ -552,10 +565,12 @@ describe('<LocationModal/>', () => {
         filterBehaviour: FilterBehaviour.APPLY_WITHOUT_SEARCHING,
       })
 
-      await screen.findByText('Choisir un lieu')
-
       await act(async () => {
         fireEvent.press(screen.getByText('Autour de moi'))
+      })
+
+      await waitFor(() => {
+        expect(screen.getByLabelText('Appliquer le filtre')).toBeEnabled()
       })
 
       const searchButton = screen.getByText('Appliquer le filtre')
@@ -584,7 +599,9 @@ describe('<LocationModal/>', () => {
         }
         renderLocationModal()
 
-        await screen.findByText('Choisir un lieu')
+        await waitFor(() => {
+          expect(screen.getByLabelText('Rechercher')).toBeEnabled()
+        })
 
         const searchButton = screen.getByText('Rechercher')
         await act(async () => {
@@ -730,8 +747,10 @@ describe('<LocationModal/>', () => {
       })
 
       await waitFor(() => {
-        expect(screen.getByTestId('Revenir en arrière')).toBeTruthy()
+        expect(screen.getByLabelText('Appliquer le filtre')).toBeEnabled()
       })
+
+      expect(screen.getByTestId('Revenir en arrière')).toBeTruthy()
     })
 
     it('should close the modal and general filter page when pressing close button when the modal is opening from general filter page', async () => {
@@ -740,7 +759,9 @@ describe('<LocationModal/>', () => {
         onClose: mockOnClose,
       })
 
-      await screen.findByText('Choisir un lieu')
+      await waitFor(() => {
+        expect(screen.getByLabelText('Appliquer le filtre')).toBeEnabled()
+      })
 
       const closeButton = screen.getByTestId('Fermer')
       fireEvent.press(closeButton)
@@ -751,7 +772,9 @@ describe('<LocationModal/>', () => {
     it('should only close the modal when pressing close button when the modal is opening from search results', async () => {
       renderLocationModal()
 
-      await screen.findByText('Choisir un lieu')
+      await waitFor(() => {
+        expect(screen.getByLabelText('Rechercher')).toBeEnabled()
+      })
 
       const closeButton = screen.getByTestId('Fermer')
       fireEvent.press(closeButton)
