@@ -3,6 +3,7 @@ import { ComponentStory, ComponentMeta } from '@storybook/react'
 import React from 'react'
 
 import { videoModuleFixture } from 'features/home/fixtures/videoModule.fixture'
+import { ReactQueryClientProvider } from 'libs/react-query/ReactQueryClientProvider'
 
 import { VideoModule } from './VideoModule'
 
@@ -11,9 +12,11 @@ export default {
   component: VideoModule,
   decorators: [
     (Story) => (
-      <NavigationContainer>
-        <Story />
-      </NavigationContainer>
+      <ReactQueryClientProvider>
+        <NavigationContainer>
+          <Story />
+        </NavigationContainer>
+      </ReactQueryClientProvider>
     ),
   ],
 } as ComponentMeta<typeof VideoModule>
@@ -22,10 +25,12 @@ const Template: ComponentStory<typeof VideoModule> = (props) => <VideoModule {..
 
 const defaultArgs = videoModuleFixture
 
-export const Default = Template.bind({})
+// TODO(PC-17931): Fix this stories
+const Default = Template.bind({})
 Default.args = defaultArgs
 
-export const WithLongVideoTitle = Template.bind({})
+// TODO(PC-17931): Fix this stories
+const WithLongVideoTitle = Template.bind({})
 WithLongVideoTitle.args = {
   ...defaultArgs,
   videoTitle:
