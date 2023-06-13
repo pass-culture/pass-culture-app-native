@@ -214,7 +214,7 @@
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/jest-native": "^5.4.1",
     "@testing-library/react": "^13.0.1",
-    "@testing-library/react-native": "10.1.1",
+    "@testing-library/react-native": "^11.5.4",
     "@testing-library/user-event": "^14.3.0",
     "@types/amplitude-js": "^8.9.6",
     "@types/contentful-resolve-response": "^0.1.30",
