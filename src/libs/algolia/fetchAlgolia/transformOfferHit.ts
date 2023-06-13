@@ -39,7 +39,7 @@ const parseGeoloc = (hit: AlgoliaHit): AlgoliaHit['_geoloc'] =>
 
 // We don't want to display offers without image nor subcategoryId
 export const filterOfferHit = (hit: IncompleteSearchHit): boolean =>
-  hit && hit.offer && !!hit.offer.thumbUrl && typeof hit.offer.subcategoryId !== 'undefined'
+  hit?.offer && !!hit.offer.thumbUrl && typeof hit.offer.subcategoryId !== 'undefined'
 
 export const transformOfferHit =
   (urlPrefix?: string) =>

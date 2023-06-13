@@ -15,7 +15,7 @@ export const BaseTextInput = forwardRef<RNTextInput, RNTextInputProps>(function 
   const e2eSelectors = useE2eTestId(testID || 'Champ de texte')
 
   useEffect(() => {
-    if (!inputRef || !inputRef.current) {
+    if (!inputRef?.current) {
       return
     }
 
