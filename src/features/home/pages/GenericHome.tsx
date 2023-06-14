@@ -95,7 +95,7 @@ export const OnlineHome: FunctionComponent<GenericHomeProps> = ({
   const scrollRef = useRef<FlatList>(null)
   useScrollToTop(scrollRef)
 
-  const scrollListenerToDebounce = useCallback(
+  const scrollListenerToThrottle = useCallback(
     (event: NativeSyntheticEvent<NativeScrollEvent>) => {
       // Load more modules when we are one screen away from the end
       const { nativeEvent } = event
@@ -121,7 +121,7 @@ export const OnlineHome: FunctionComponent<GenericHomeProps> = ({
     [givenOnScroll]
   )
 
-  const { onScroll, scrollButtonTransition } = useOnScroll(scrollListenerToDebounce, scrollListener)
+  const { onScroll, scrollButtonTransition } = useOnScroll(scrollListenerToThrottle, scrollListener)
 
   const onContentSizeChange = () => setIsLoading(false)
 
