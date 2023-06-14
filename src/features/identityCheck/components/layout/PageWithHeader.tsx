@@ -4,7 +4,7 @@ import styled from 'styled-components/native'
 
 import { CustomKeyboardAvoidingView } from 'features/identityCheck/components/CustomKeyboardAvoidingView'
 import { useShouldEnableScrollOnView } from 'features/identityCheck/components/layout/helpers/useShouldEnableScrollView'
-import { BlurView } from 'ui/components/BlurView'
+import { BlurHeader } from 'ui/components/headers/BlurHeader'
 import {
   PageHeaderWithoutPlaceholder,
   useGetHeaderHeight,
@@ -52,11 +52,7 @@ export const PageWithHeader: FunctionComponent<Props> = (props) => {
       </CustomKeyboardAvoidingView>
       {
         // There is an issue with the blur on Android: we chose not to render it and use a white background
-        Platform.OS !== 'android' && (
-          <BlurHeaderContainer height={headerHeight}>
-            <BlurView />
-          </BlurHeaderContainer>
-        )
+        Platform.OS !== 'android' && <BlurHeader height={headerHeight} />
       }
     </React.Fragment>
   )
@@ -82,14 +78,4 @@ const FixedBottomChildrenView = styled.View(({ theme }) => ({
   paddingTop: getSpacing(3),
   backgroundColor: theme.colors.white,
   paddingHorizontal: getSpacing(5),
-}))
-
-const BlurHeaderContainer = styled.View<{ height: number }>(({ height }) => ({
-  position: 'absolute',
-  top: 0,
-  left: 0,
-  right: 0,
-  height,
-  overflow: 'hidden',
-  backdropFilter: 'blur(20px)',
 }))

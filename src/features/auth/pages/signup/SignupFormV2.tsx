@@ -21,7 +21,7 @@ import { analytics } from 'libs/analytics'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { AsyncError, eventMonitoring } from 'libs/monitoring'
-import { BlurView } from 'ui/components/BlurView'
+import { BlurHeader } from 'ui/components/headers/BlurHeader'
 import {
   PageHeaderWithoutPlaceholder,
   useGetHeaderHeight,
@@ -153,9 +153,7 @@ export const SignupForm: FunctionComponent = () => {
         resume={hideFullPageModal}
         signupStep={stepConfig.name}
       />
-      <BlurHeaderContainer height={headerHeight}>
-        <BlurView />
-      </BlurHeaderContainer>
+      <BlurHeader height={headerHeight} />
     </React.Fragment>
   )
 }
@@ -169,16 +167,6 @@ const StyledScrollView = styled.ScrollView.attrs(({ theme }) => ({
     flex: 1,
   },
 }))``
-
-const BlurHeaderContainer = styled.View<{ height: number }>(({ height }) => ({
-  position: 'absolute',
-  top: 0,
-  left: 0,
-  right: 0,
-  height,
-  overflow: 'hidden',
-  backdropFilter: 'blur(20px)',
-}))
 
 const Placeholder = styled.View<{ height: number }>(({ height }) => ({
   height,
