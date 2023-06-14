@@ -11,9 +11,10 @@ import { getSpacing, Spacer, Typo } from 'ui/theme'
 
 const browserVersion = Number(DeviceDetect.browserVersion)
 
-const isFacebookMessenger = !!(
-  navigator?.userAgent?.match?.(/(iPod|iPhone|iPad)/) && navigator?.userAgent?.match?.(/FBAV/i)
-)
+// To check if browser is in-app Facebook Messenger browser, we check if FBAV or FBAN is in user agent
+// https://stackoverflow.com/a/32348687
+const messengerBrowserRegex = new RegExp(/FBA[VN]/i)
+const isFacebookMessenger = !!messengerBrowserRegex.exec(navigator?.userAgent)
 
 export const SupportedBrowsersGate: React.FC<PropsWithChildren> = ({ children }) => {
   const [shouldDisplayApp, setShouldDisplayApp] = React.useState(() => isBrowserSupported())
