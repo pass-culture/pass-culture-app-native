@@ -7,7 +7,10 @@ export const useOnScroll = (
   scrollListenerToThrottle: (e: NativeSyntheticEvent<NativeScrollEvent>) => void,
   scrollListener: (e: NativeSyntheticEvent<NativeScrollEvent>) => void
 ) => {
-  const throttledListener = useThrottle(scrollListenerToThrottle, 100, { leading: false })
+  const throttledListener = useThrottle(scrollListenerToThrottle, 100, {
+    // with leading true (by default), the callback is called one more time, when the first time the throttled func is called
+    leading: false,
+  })
 
   const listeners = (e: NativeSyntheticEvent<NativeScrollEvent>) => {
     // In React-Native only, the event is not usable several milliseconds after its throw
