@@ -48,7 +48,10 @@ const NewsletterCheckboxControlled = ({
   />
 )
 
-export const SetEmailV2: FunctionComponent<PreValidationSignupNormalStepProps> = (props) => {
+export const SetEmailV2: FunctionComponent<PreValidationSignupNormalStepProps> = ({
+  goToNextStep,
+  accessibilityLabelForNextStep,
+}) => {
   const { params } = useRoute<UseRouteType<'SignupForm'>>()
   const { control, handleSubmit, watch } = useForm<FormValues>({
     defaultValues: {
@@ -63,11 +66,11 @@ export const SetEmailV2: FunctionComponent<PreValidationSignupNormalStepProps> =
     firebaseAnalytics.logLogin({ method: 'fromSetEmail' })
   }, [])
 
-  const goToNextStep = useCallback(
+  const goToNextStepCallback = useCallback(
     ({ email, marketingEmailSubscription }: FormValues) => {
-      props.goToNextStep({ email, marketingEmailSubscription })
+      goToNextStep({ email, marketingEmailSubscription })
     },
-    [props]
+    [goToNextStep]
   )
 
   const onLogHasCorrectedEmail = useCallback(() => {
@@ -99,8 +102,8 @@ export const SetEmailV2: FunctionComponent<PreValidationSignupNormalStepProps> =
       <Spacer.Column numberOfSpaces={6} />
       <ButtonPrimary
         wording="Continuer"
-        accessibilityLabel={props.accessibilityLabelForNextStep}
-        onPress={handleSubmit(goToNextStep)}
+        accessibilityLabel={accessibilityLabelForNextStep}
+        onPress={handleSubmit(goToNextStepCallback)}
         isLoading={false}
         disabled={watch('email').trim() === ''}
       />
