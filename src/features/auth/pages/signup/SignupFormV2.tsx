@@ -21,7 +21,7 @@ import { analytics } from 'libs/analytics'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { AsyncError, eventMonitoring } from 'libs/monitoring'
-import { BlurHeader } from 'ui/components/headers/BlurHeader'
+import { BlurView } from 'ui/components/BlurView'
 import {
   PageHeaderWithoutPlaceholder,
   useGetHeaderHeight,
@@ -154,7 +154,7 @@ export const SignupForm: FunctionComponent = () => {
         signupStep={stepConfig.name}
       />
       <BlurHeaderContainer height={headerHeight}>
-        <BlurHeader />
+        <BlurView />
       </BlurHeaderContainer>
     </React.Fragment>
   )

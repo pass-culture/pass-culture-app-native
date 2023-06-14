@@ -4,7 +4,7 @@ import styled from 'styled-components/native'
 
 import { CustomKeyboardAvoidingView } from 'features/identityCheck/components/CustomKeyboardAvoidingView'
 import { useShouldEnableScrollOnView } from 'features/identityCheck/components/layout/helpers/useShouldEnableScrollView'
-import { BlurHeader } from 'ui/components/headers/BlurHeader'
+import { BlurView } from 'ui/components/BlurView'
 import {
   PageHeaderWithoutPlaceholder,
   useGetHeaderHeight,
@@ -54,7 +54,7 @@ export const PageWithHeader: FunctionComponent<Props> = (props) => {
         // There is an issue with the blur on Android: we chose not to render it and use a white background
         Platform.OS !== 'android' && (
           <BlurHeaderContainer height={headerHeight}>
-            <BlurHeader />
+            <BlurView />
           </BlurHeaderContainer>
         )
       }

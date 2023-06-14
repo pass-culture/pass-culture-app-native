@@ -6,8 +6,8 @@ import styled, { useTheme } from 'styled-components/native'
 import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
 import { useGoBack } from 'features/navigation/useGoBack'
 import { getAnimationState } from 'ui/animations/helpers/getAnimationState'
+import { BlurView } from 'ui/components/BlurView'
 import { RoundedButton } from 'ui/components/buttons/RoundedButton'
-import { BlurHeader } from 'ui/components/headers/BlurHeader'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 
 interface Props {
@@ -40,7 +40,7 @@ export const BookingDetailsHeader: React.FC<Props> = (props) => {
           // There is an issue with the blur on Android: we chose not to render it and use a white background
           Platform.OS !== 'android' && (
             <BlurNativeContainer style={blurContainerNative} safeAreaTop={top}>
-              <BlurHeader />
+              <BlurView />
             </BlurNativeContainer>
           )
         }

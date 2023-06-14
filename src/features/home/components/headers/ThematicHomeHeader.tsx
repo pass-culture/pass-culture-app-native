@@ -6,8 +6,8 @@ import styled, { useTheme } from 'styled-components/native'
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { homeNavConfig } from 'features/navigation/TabBar/helpers'
 import { getAnimationState } from 'ui/animations/helpers/getAnimationState'
+import { BlurView } from 'ui/components/BlurView'
 import { RoundedButton } from 'ui/components/buttons/RoundedButton'
-import { BlurHeader } from 'ui/components/headers/BlurHeader'
 import { Spacer, Typo } from 'ui/theme'
 import { useCustomSafeInsets } from 'ui/theme/useCustomSafeInsets'
 
@@ -45,7 +45,7 @@ export const ThematicHomeHeader: FunctionComponent<Props> = ({ title, headerTran
           // There is an issue with the blur on Android: we chose not to render it and use a white background
           Platform.OS !== 'android' && (
             <BlurNativeContainer style={blurContainerNative} safeAreaTop={top}>
-              <BlurHeader />
+              <BlurView />
             </BlurNativeContainer>
           )
         }
