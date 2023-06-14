@@ -21,7 +21,7 @@ export function useShouldDisplayExcluOffer(
   if (price > maxPrice) return false
 
   // Exclu module is not geolocated
-  if (!display || !display.isGeolocated || !display.aroundRadius) return true
+  if (!display?.isGeolocated || !display?.aroundRadius) return true
 
   // Exclu module is geolocated but we don't know the user's location
   if (!position) return false
