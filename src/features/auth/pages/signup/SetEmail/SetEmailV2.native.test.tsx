@@ -77,7 +77,8 @@ describe('<SetEmail />', () => {
     await act(async () => {
       const emailInput = getByPlaceholderText('tonadresse@email.com')
       fireEvent.changeText(emailInput, 'john.doe@gmail.com')
-
+    })
+    await act(async () => {
       const continueButton = getByText('Continuer')
       fireEvent.press(continueButton)
     })
