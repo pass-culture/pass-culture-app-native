@@ -8,7 +8,7 @@ import {
   useForm,
   UseFormStateReturn,
 } from 'react-hook-form'
-import styled, { useTheme } from 'styled-components/native'
+import { useTheme } from 'styled-components/native'
 
 import { AuthenticationButton } from 'features/auth/components/AuthenticationButton/AuthenticationButton'
 import { setEmailSchema } from 'features/auth/pages/signup/SetEmail/schema/setEmailSchema'
@@ -23,6 +23,7 @@ import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { ButtonQuaternaryBlack } from 'ui/components/buttons/ButtonQuaternaryBlack'
 import { Form } from 'ui/components/Form'
 import { Checkbox } from 'ui/components/inputs/Checkbox/Checkbox'
+import { Separator } from 'ui/components/Separator'
 import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouchableLink'
 import { ExternalSiteFilled } from 'ui/svg/icons/ExternalSiteFilled'
 import { Spacer } from 'ui/theme'
@@ -138,9 +139,3 @@ export const SetEmailV2: FunctionComponent<PreValidationSignupNormalStepProps> =
     </Form.MaxWidth>
   )
 }
-
-const Separator = styled.View(({ theme }) => ({
-  height: 1,
-  width: '100%',
-  backgroundColor: theme.colors.greyLight,
-}))
