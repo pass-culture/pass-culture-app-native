@@ -1,15 +1,14 @@
-import React from 'react'
+import React, { FunctionComponent } from 'react'
 
 import { styledButton } from 'ui/components/buttons/styledButton'
 import { Touchable } from 'ui/components/touchable/Touchable'
 import { Typo, getSpacing } from 'ui/theme'
-// eslint-disable-next-line no-restricted-imports
 
 export interface HeaderIconProps {
   onClose?: () => void
 }
 
-export const CancelButton: React.FC<HeaderIconProps> = ({ onClose }) => {
+export const CancelButton: FunctionComponent<HeaderIconProps> = ({ onClose }) => {
   return (
     <StyledTouchable onPress={onClose}>
       <Typo.Caption>Annuler</Typo.Caption>
