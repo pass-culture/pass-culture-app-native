@@ -1,5 +1,5 @@
 import React, { FunctionComponent, ReactNode, useState } from 'react'
-import { LayoutChangeEvent, Platform, View } from 'react-native'
+import { LayoutChangeEvent, View } from 'react-native'
 import styled from 'styled-components/native'
 
 import { CustomKeyboardAvoidingView } from 'features/identityCheck/components/CustomKeyboardAvoidingView'
@@ -50,10 +50,7 @@ export const PageWithHeader: FunctionComponent<Props> = (props) => {
           </FixedBottomChildrenView>
         ) : null}
       </CustomKeyboardAvoidingView>
-      {
-        // There is an issue with the blur on Android: we chose not to render it and use a white background
-        Platform.OS !== 'android' && <BlurHeader height={headerHeight} />
-      }
+      <BlurHeader height={headerHeight} />
     </React.Fragment>
   )
 }
