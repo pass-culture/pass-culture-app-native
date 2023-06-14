@@ -1,4 +1,4 @@
-import debounce from 'lodash/debounce'
+import { debounce, DebounceSettings } from 'lodash'
 import { useEffect, useMemo, useRef } from 'react'
 
 /**
@@ -11,7 +11,11 @@ import { useEffect, useMemo, useRef } from 'react'
  * const debouncedFunc = useDebounce(func, 500)
  * debouncedFunc() // debouncedFunc will be called once in 500ms
  */
-export function useDebounce<T, U>(callback: (props: T) => U, delay: number) {
+export function useDebounce<T, U>(
+  callback: (props: T) => U,
+  delay: number,
+  options?: DebounceSettings
+) {
   const ref = useRef<(props: T) => U>()
 
   useEffect(() => {
@@ -21,8 +25,9 @@ export function useDebounce<T, U>(callback: (props: T) => U, delay: number) {
   const debouncedCallback = useMemo(() => {
     const func = (props: T) => ref.current?.(props)
 
-    return debounce(func, delay)
-  }, [delay])
+    return debounce(func, delay, options)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
 
   return debouncedCallback
 }
