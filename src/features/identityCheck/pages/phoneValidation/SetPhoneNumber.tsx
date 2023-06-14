@@ -90,7 +90,7 @@ export const SetPhoneNumber = () => {
           country: { countryCode: country.cca2, callingCodes: country.callingCode },
         },
       })
-      if (isApiError(error) && error.content.code === 'TOO_MANY_SMS_SENT') {
+      if (isApiError(error) && error.content?.code === 'TOO_MANY_SMS_SENT') {
         navigate('PhoneValidationTooManySMSSent')
       } else {
         const message = extractApiErrorMessage(error)

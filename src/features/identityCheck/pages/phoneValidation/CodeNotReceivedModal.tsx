@@ -41,7 +41,7 @@ export const CodeNotReceivedModal: FunctionComponent<CodeNotReceivedModalProps> 
     },
     onError: (error: unknown) => {
       props.dismissModal()
-      if (isApiError(error) && error.content.code === 'TOO_MANY_SMS_SENT') {
+      if (isApiError(error) && error.content?.code === 'TOO_MANY_SMS_SENT') {
         navigate('PhoneValidationTooManySMSSent')
       } else {
         const message = extractApiErrorMessage(error)

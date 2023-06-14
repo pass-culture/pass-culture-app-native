@@ -91,7 +91,7 @@ export const SetPhoneValidationCode = () => {
       navigateForwardToStepper()
     },
     onError: (error: unknown) => {
-      if (isApiError(error) && error.content.code === 'TOO_MANY_VALIDATION_ATTEMPTS') {
+      if (isApiError(error) && error.content?.code === 'TOO_MANY_VALIDATION_ATTEMPTS') {
         navigate('PhoneValidationTooManyAttempts')
       } else {
         setErrorMessage(extractApiErrorMessage(error))

@@ -47,7 +47,7 @@ export const useChangeEmailMutation = ({
         analytics.logSaveNewMail()
       },
       onError: (error: unknown) => {
-        onEmailChangeError(isApiError(error) ? error.content.code : undefined)
+        onEmailChangeError(isApiError(error) ? error.content?.code : undefined)
       },
     }
   )
