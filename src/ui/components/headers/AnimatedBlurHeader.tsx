@@ -1,7 +1,8 @@
-import { BlurView } from '@react-native-community/blur'
 import React from 'react'
-import { Animated, ViewStyle } from 'react-native'
+import { Animated, Platform, ViewStyle } from 'react-native'
 import styled from 'styled-components/native'
+
+import { BlurView } from 'ui/components/BlurView'
 
 type Props = {
   height: number
@@ -16,6 +17,9 @@ export const AnimatedBlurHeader = ({
   blurType = 'light',
   style,
 }: Props) => {
+  // There is an issue with the blur on Android: we chose not to render it and use a white background
+  if (Platform.OS === 'android') return null
+
   return (
     <BlurNativeContainer height={height} style={style}>
       <Blurred blurType={blurType} blurAmount={blurAmount} />

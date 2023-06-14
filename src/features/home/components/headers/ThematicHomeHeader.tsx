@@ -41,12 +41,7 @@ export const ThematicHomeHeader: FunctionComponent<Props> = ({ title, headerTran
     <React.Fragment>
       <HeaderContainer style={containerStyle} height={headerHeight}>
         <Spacer.TopScreen />
-        {
-          // There is an issue with the blur on Android: we chose not to render it and use a white background
-          Platform.OS !== 'android' && (
-            <AnimatedBlurHeader height={headerHeight} style={blurContainerNative} />
-          )
-        }
+        <AnimatedBlurHeader height={headerHeight} style={blurContainerNative} />
         <Spacer.Column numberOfSpaces={2} />
         <Row>
           <Spacer.Row numberOfSpaces={6} />

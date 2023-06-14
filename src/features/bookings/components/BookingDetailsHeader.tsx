@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Animated, Platform } from 'react-native'
+import { Animated } from 'react-native'
 import { useSafeAreaInsets } from 'react-native-safe-area-context'
 import styled, { useTheme } from 'styled-components/native'
 
@@ -38,12 +38,7 @@ export const BookingDetailsHeader: React.FC<Props> = (props) => {
     <React.Fragment>
       <HeaderContainer style={containerStyle}>
         <Spacer.TopScreen />
-        {
-          // There is an issue with the blur on Android: we chose not to render it and use a white background
-          Platform.OS !== 'android' && (
-            <AnimatedBlurHeader height={headerHeight} style={blurContainerNative} />
-          )
-        }
+        <AnimatedBlurHeader height={headerHeight} style={blurContainerNative} />
         <Spacer.Column numberOfSpaces={2} />
         <Row>
           <IconContainer>
