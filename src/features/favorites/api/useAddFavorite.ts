@@ -68,7 +68,7 @@ export function useAddFavorite({ onSuccess }: { onSuccess?: (data?: FavoriteResp
     ) => {
       showErrorSnackBar({
         message:
-          isApiError(error) && error.content.code === 'MAX_FAVORITES_REACHED'
+          isApiError(error) && error.content?.code === 'MAX_FAVORITES_REACHED'
             ? 'Trop de favoris enregistrés. Supprime des favoris pour en ajouter de nouveaux.'
             : 'L’offre n’a pas été ajoutée à tes favoris',
         timeout: SNACK_BAR_TIME_OUT,

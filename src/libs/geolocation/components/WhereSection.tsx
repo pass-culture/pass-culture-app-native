@@ -21,7 +21,7 @@ type Props = {
   venue: OfferVenueResponse | VenueResponse
   address: string
   locationCoordinates: Coordinates
-  showVenueBanner?: boolean | false
+  showVenueBanner?: boolean
 }
 
 type PartialVenue = Pick<

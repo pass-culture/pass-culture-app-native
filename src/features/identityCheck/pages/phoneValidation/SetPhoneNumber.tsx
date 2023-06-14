@@ -5,7 +5,7 @@ import { Country } from 'react-native-country-picker-modal'
 import styled from 'styled-components/native'
 import { v4 as uuidv4 } from 'uuid'
 
-import { ApiError, extractApiErrorMessage } from 'api/apiHelpers'
+import { extractApiErrorMessage, isApiError } from 'api/apiHelpers'
 import { usePhoneValidationRemainingAttempts } from 'features/identityCheck/api/usePhoneValidationRemainingAttempts'
 import { useSendPhoneValidationMutation } from 'features/identityCheck/api/useSendPhoneValidationMutation'
 import { CenteredTitle } from 'features/identityCheck/components/CenteredTitle'
@@ -82,7 +82,7 @@ export const SetPhoneNumber = () => {
       navigateToNextScreen()
       queryClient.invalidateQueries([QueryKeys.PHONE_VALIDATION_REMAINING_ATTEMPTS])
     },
-    onError: (error: ApiError | unknown) => {
+    onError: (error: unknown) => {
       dispatch({
         type: 'SET_PHONE_NUMBER',
         payload: {
@@ -90,8 +90,7 @@ export const SetPhoneNumber = () => {
           country: { countryCode: country.cca2, callingCodes: country.callingCode },
         },
       })
-      const { content } = error as ApiError
-      if (content.code === 'TOO_MANY_SMS_SENT') {
+      if (isApiError(error) && error.content?.code === 'TOO_MANY_SMS_SENT') {
         navigate('PhoneValidationTooManySMSSent')
       } else {
         const message = extractApiErrorMessage(error)

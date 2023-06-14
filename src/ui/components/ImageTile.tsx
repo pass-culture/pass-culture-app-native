@@ -8,7 +8,7 @@ interface Props {
   width: number
   height: number
   uri?: string
-  onlyTopBorderRadius?: boolean | false
+  onlyTopBorderRadius?: boolean
 }
 
 export const ImageTile: React.FC<Props> = (props) => {
