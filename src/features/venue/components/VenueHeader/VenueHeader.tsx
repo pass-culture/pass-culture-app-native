@@ -9,8 +9,8 @@ import { useShareVenue } from 'features/share/helpers/useShareVenue'
 import { WebShareModal } from 'features/share/pages/WebShareModal'
 import { analytics } from 'libs/analytics'
 import { getAnimationState } from 'ui/animations/helpers/getAnimationState'
-import { BlurView } from 'ui/components/BlurView'
 import { RoundedButton } from 'ui/components/buttons/RoundedButton'
+import { AnimatedBlurHeader } from 'ui/components/headers/AnimatedBlurHeader'
 import { useModal } from 'ui/components/modals/useModal'
 import { Spacer, Typo } from 'ui/theme'
 
@@ -49,17 +49,16 @@ export const VenueHeader: React.FC<Props> = (props) => {
     headerTransition
   )
   const { top } = useSafeAreaInsets()
+  const headerHeight = theme.appBarHeight + top
 
   return (
     <React.Fragment>
-      <HeaderContainer style={containerStyle} safeAreaTop={top}>
+      <HeaderContainer style={containerStyle} height={headerHeight}>
         <Spacer.TopScreen />
         {
           // There is an issue with the blur on Android: we chose not to render it and use a white background
           Platform.OS !== 'android' && (
-            <BlurNativeContainer style={blurContainerNative} safeAreaTop={top}>
-              <BlurView />
-            </BlurNativeContainer>
+            <AnimatedBlurHeader height={headerHeight} style={blurContainerNative} />
           )
         }
         <Spacer.Column numberOfSpaces={2} />
@@ -107,29 +106,16 @@ const Body = styled(Typo.Body)(({ theme }) => ({
   color: theme.colors.black,
 }))
 
-const HeaderContainer = styled(Animated.View)<{ safeAreaTop: number }>(
-  ({ theme, safeAreaTop }) => ({
-    position: 'absolute',
-    top: 0,
-    left: 0,
-    right: 0,
-    height: theme.appBarHeight + safeAreaTop,
-    zIndex: theme.zIndex.header,
-    borderBottomColor: theme.colors.greyLight,
-    borderBottomWidth: 1,
-  })
-)
-
-const BlurNativeContainer = styled(Animated.View)<{ safeAreaTop: number }>(
-  ({ theme, safeAreaTop }) => ({
-    position: 'absolute',
-    height: theme.appBarHeight + safeAreaTop,
-    top: 0,
-    left: 0,
-    right: 0,
-    overflow: 'hidden',
-  })
-)
+const HeaderContainer = styled(Animated.View)<{ height: number }>(({ theme, height }) => ({
+  position: 'absolute',
+  top: 0,
+  left: 0,
+  right: 0,
+  height,
+  zIndex: theme.zIndex.header,
+  borderBottomColor: theme.colors.greyLight,
+  borderBottomWidth: 1,
+}))
 
 const Row = styled.View({
   flex: 1,

@@ -6,8 +6,8 @@ import styled, { useTheme } from 'styled-components/native'
 import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
 import { useGoBack } from 'features/navigation/useGoBack'
 import { getAnimationState } from 'ui/animations/helpers/getAnimationState'
-import { BlurView } from 'ui/components/BlurView'
 import { RoundedButton } from 'ui/components/buttons/RoundedButton'
+import { AnimatedBlurHeader } from 'ui/components/headers/AnimatedBlurHeader'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 
 interface Props {
@@ -22,6 +22,8 @@ export const BookingDetailsHeader: React.FC<Props> = (props) => {
   const theme = useTheme()
   const { headerTransition, title } = props
   const { top } = useSafeAreaInsets()
+  const headerHeight = theme.appBarHeight + top
+
   const { goBack } = useGoBack(...getTabNavConfig('Bookings'))
 
   const [accessibilityHiddenTitle, setAccessibilityHiddenTitle] = useState(true)
@@ -39,9 +41,7 @@ export const BookingDetailsHeader: React.FC<Props> = (props) => {
         {
           // There is an issue with the blur on Android: we chose not to render it and use a white background
           Platform.OS !== 'android' && (
-            <BlurNativeContainer style={blurContainerNative} safeAreaTop={top}>
-              <BlurView />
-            </BlurNativeContainer>
+            <AnimatedBlurHeader height={headerHeight} style={blurContainerNative} />
           )
         }
         <Spacer.Column numberOfSpaces={2} />
@@ -77,17 +77,6 @@ const HeaderContainer = styled(Animated.View)(({ theme }) => ({
   borderBottomColor: theme.colors.greyLight,
   borderBottomWidth: 1,
 }))
-
-const BlurNativeContainer = styled(Animated.View)<{ safeAreaTop: number }>(
-  ({ theme, safeAreaTop }) => ({
-    position: 'absolute',
-    height: theme.appBarHeight + safeAreaTop,
-    top: 0,
-    left: 0,
-    right: 0,
-    overflow: 'hidden',
-  })
-)
 
 const Row = styled.View({
   flexDirection: 'row',
