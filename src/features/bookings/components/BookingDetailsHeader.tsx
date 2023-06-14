@@ -36,11 +36,14 @@ export const BookingDetailsHeader: React.FC<Props> = (props) => {
     <React.Fragment>
       <HeaderContainer style={containerStyle}>
         <Spacer.TopScreen />
-        {Platform.OS !== 'android' && (
-          <BlurNativeContainer style={blurContainerNative} safeAreaTop={top}>
-            <BlurHeader />
-          </BlurNativeContainer>
-        )}
+        {
+          // There is an issue with the blur on Android: we chose not to render it and use a white background
+          Platform.OS !== 'android' && (
+            <BlurNativeContainer style={blurContainerNative} safeAreaTop={top}>
+              <BlurHeader />
+            </BlurNativeContainer>
+          )
+        }
         <Spacer.Column numberOfSpaces={2} />
         <Row>
           <IconContainer>

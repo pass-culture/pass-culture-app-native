@@ -42,6 +42,7 @@ export const getAnimationState = (
     transition: headerTransition,
   },
   containerStyle: {
+    // There is an issue with the blur on Android: we chose to render a white background for the header
     backgroundColor:
       Platform.OS === 'android'
         ? headerTransition.interpolate(headerBackgroundAndroidInterpolation())
