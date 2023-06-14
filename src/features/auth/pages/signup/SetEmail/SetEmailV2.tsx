@@ -8,6 +8,7 @@ import {
   useForm,
   UseFormStateReturn,
 } from 'react-hook-form'
+import { useTheme } from 'styled-components/native'
 
 import { AuthenticationButton } from 'features/auth/components/AuthenticationButton/AuthenticationButton'
 import { setEmailSchema } from 'features/auth/pages/signup/SetEmail/schema/setEmailSchema'
@@ -22,6 +23,7 @@ import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { ButtonQuaternaryBlack } from 'ui/components/buttons/ButtonQuaternaryBlack'
 import { Form } from 'ui/components/Form'
 import { Checkbox } from 'ui/components/inputs/Checkbox/Checkbox'
+import { Separator } from 'ui/components/Separator'
 import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouchableLink'
 import { ExternalSiteFilled } from 'ui/svg/icons/ExternalSiteFilled'
 import { Spacer } from 'ui/theme'
@@ -48,8 +50,12 @@ const NewsletterCheckboxControlled = ({
   />
 )
 
-export const SetEmailV2: FunctionComponent<PreValidationSignupNormalStepProps> = (props) => {
+export const SetEmailV2: FunctionComponent<PreValidationSignupNormalStepProps> = ({
+  goToNextStep,
+  accessibilityLabelForNextStep,
+}) => {
   const { params } = useRoute<UseRouteType<'SignupForm'>>()
+  const theme = useTheme()
   const { control, handleSubmit, watch } = useForm<FormValues>({
     defaultValues: {
       email: '',
@@ -63,11 +69,11 @@ export const SetEmailV2: FunctionComponent<PreValidationSignupNormalStepProps> =
     firebaseAnalytics.logLogin({ method: 'fromSetEmail' })
   }, [])
 
-  const goToNextStep = useCallback(
+  const goToNextStepCallback = useCallback(
     ({ email, marketingEmailSubscription }: FormValues) => {
-      props.goToNextStep({ email, marketingEmailSubscription })
+      goToNextStep({ email, marketingEmailSubscription })
     },
-    [props]
+    [goToNextStep]
   )
 
   const onLogHasCorrectedEmail = useCallback(() => {
@@ -81,7 +87,7 @@ export const SetEmailV2: FunctionComponent<PreValidationSignupNormalStepProps> =
   return (
     <Form.MaxWidth>
       <Typo.Title3>Crée-toi un compte</Typo.Title3>
-      <Spacer.Column numberOfSpaces={6} />
+      <Spacer.Column numberOfSpaces={10} />
       <EmailInputController
         control={control}
         name="email"
@@ -90,27 +96,15 @@ export const SetEmailV2: FunctionComponent<PreValidationSignupNormalStepProps> =
         onSpellingHelpPress={onLogHasCorrectedEmail}
         autoFocus
       />
-      <Spacer.Column numberOfSpaces={4} />
+      <Spacer.Column numberOfSpaces={8} />
       <Controller
         control={control}
         name="marketingEmailSubscription"
         render={NewsletterCheckboxControlled}
       />
-      <Spacer.Column numberOfSpaces={6} />
-      <ButtonPrimary
-        wording="Continuer"
-        accessibilityLabel={props.accessibilityLabelForNextStep}
-        onPress={handleSubmit(goToNextStep)}
-        isLoading={false}
-        disabled={watch('email').trim() === ''}
-      />
+      <Spacer.Column numberOfSpaces={10} />
+      <Separator />
       <Spacer.Column numberOfSpaces={8} />
-      <AuthenticationButton
-        type="login"
-        onAdditionalPress={onLogAnalytics}
-        params={{ offerId: params?.offerId, preventCancellation: true }}
-      />
-      <Spacer.Column numberOfSpaces={6} />
       <CaptionNeutralInfo>
         Le pass Culture traite tes données pour la gestion de ton compte et pour l’inscription à la
         newsletter.
@@ -124,6 +118,23 @@ export const SetEmailV2: FunctionComponent<PreValidationSignupNormalStepProps> =
         justifyContent="flex-start"
         inline
       />
+      <Spacer.Column numberOfSpaces={10} />
+      <ButtonPrimary
+        wording="Continuer"
+        accessibilityLabel={accessibilityLabelForNextStep}
+        onPress={handleSubmit(goToNextStepCallback)}
+        isLoading={false}
+        disabled={watch('email').trim() === ''}
+      />
+      <Spacer.Column numberOfSpaces={8} />
+      <AuthenticationButton
+        type="login"
+        onAdditionalPress={onLogAnalytics}
+        linkColor={theme.colors.secondary}
+        params={{ offerId: params?.offerId, preventCancellation: true }}
+      />
+      <Spacer.Column numberOfSpaces={6} />
+
       <Spacer.Column numberOfSpaces={4} />
     </Form.MaxWidth>
   )
