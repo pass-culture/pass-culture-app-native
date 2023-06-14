@@ -8,6 +8,7 @@ import {
   useForm,
   UseFormStateReturn,
 } from 'react-hook-form'
+import styled, { useTheme } from 'styled-components/native'
 
 import { AuthenticationButton } from 'features/auth/components/AuthenticationButton/AuthenticationButton'
 import { setEmailSchema } from 'features/auth/pages/signup/SetEmail/schema/setEmailSchema'
@@ -53,6 +54,7 @@ export const SetEmailV2: FunctionComponent<PreValidationSignupNormalStepProps> =
   accessibilityLabelForNextStep,
 }) => {
   const { params } = useRoute<UseRouteType<'SignupForm'>>()
+  const theme = useTheme()
   const { control, handleSubmit, watch } = useForm<FormValues>({
     defaultValues: {
       email: '',
@@ -84,7 +86,7 @@ export const SetEmailV2: FunctionComponent<PreValidationSignupNormalStepProps> =
   return (
     <Form.MaxWidth>
       <Typo.Title3>Crée-toi un compte</Typo.Title3>
-      <Spacer.Column numberOfSpaces={6} />
+      <Spacer.Column numberOfSpaces={10} />
       <EmailInputController
         control={control}
         name="email"
@@ -93,27 +95,15 @@ export const SetEmailV2: FunctionComponent<PreValidationSignupNormalStepProps> =
         onSpellingHelpPress={onLogHasCorrectedEmail}
         autoFocus
       />
-      <Spacer.Column numberOfSpaces={4} />
+      <Spacer.Column numberOfSpaces={8} />
       <Controller
         control={control}
         name="marketingEmailSubscription"
         render={NewsletterCheckboxControlled}
       />
-      <Spacer.Column numberOfSpaces={6} />
-      <ButtonPrimary
-        wording="Continuer"
-        accessibilityLabel={accessibilityLabelForNextStep}
-        onPress={handleSubmit(goToNextStepCallback)}
-        isLoading={false}
-        disabled={watch('email').trim() === ''}
-      />
+      <Spacer.Column numberOfSpaces={10} />
+      <Separator />
       <Spacer.Column numberOfSpaces={8} />
-      <AuthenticationButton
-        type="login"
-        onAdditionalPress={onLogAnalytics}
-        params={{ offerId: params?.offerId, preventCancellation: true }}
-      />
-      <Spacer.Column numberOfSpaces={6} />
       <CaptionNeutralInfo>
         Le pass Culture traite tes données pour la gestion de ton compte et pour l’inscription à la
         newsletter.
@@ -127,7 +117,30 @@ export const SetEmailV2: FunctionComponent<PreValidationSignupNormalStepProps> =
         justifyContent="flex-start"
         inline
       />
+      <Spacer.Column numberOfSpaces={10} />
+      <ButtonPrimary
+        wording="Continuer"
+        accessibilityLabel={accessibilityLabelForNextStep}
+        onPress={handleSubmit(goToNextStepCallback)}
+        isLoading={false}
+        disabled={watch('email').trim() === ''}
+      />
+      <Spacer.Column numberOfSpaces={8} />
+      <AuthenticationButton
+        type="login"
+        onAdditionalPress={onLogAnalytics}
+        linkColor={theme.colors.secondary}
+        params={{ offerId: params?.offerId, preventCancellation: true }}
+      />
+      <Spacer.Column numberOfSpaces={6} />
+
       <Spacer.Column numberOfSpaces={4} />
     </Form.MaxWidth>
   )
 }
+
+const Separator = styled.View(({ theme }) => ({
+  height: 1,
+  width: '100%',
+  backgroundColor: theme.colors.greyLight,
+}))
