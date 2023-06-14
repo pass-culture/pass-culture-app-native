@@ -20,9 +20,9 @@ interface Props {
 }
 
 type ReportOfferModalContent = {
-  children: JSX.Element
+  children: React.JSX.Element
   title: string
-  fixedModalBottom: JSX.Element
+  fixedModalBottom: React.JSX.Element
 } & ModalLeftIconProps
 
 export const useCookiesModalContent = ({

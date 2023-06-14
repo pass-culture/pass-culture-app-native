@@ -13,7 +13,7 @@ function ConfirmationSvg({
   accessibilityLabel,
   testID,
   opacity,
-}: AccessibleIcon): JSX.Element {
+}: AccessibleIcon): React.JSX.Element {
   const { id, fill } = svgIdentifier()
 
   return (

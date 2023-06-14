@@ -24,7 +24,7 @@ import { Spacer } from 'ui/theme'
 
 const EIFFEL_TOWER_COORDINATES = { lat: 48.8584, lng: 2.2945 }
 
-export function Navigation(): JSX.Element {
+export function Navigation(): React.JSX.Element {
   const { navigate } = useNavigation<UseNavigationType>()
   const [screenError, setScreenError] = useState<ScreenError | undefined>(undefined)
   const distanceToEiffelTower = useDistance(EIFFEL_TOWER_COORDINATES)

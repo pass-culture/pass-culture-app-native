@@ -6,7 +6,7 @@ import { AccessibleSvg } from 'ui/svg/AccessibleSvg'
 
 import { AccessibleIcon } from './types'
 
-function ClearSvg({ size, color, accessibilityLabel, testID }: AccessibleIcon): JSX.Element {
+function ClearSvg({ size, color, accessibilityLabel, testID }: AccessibleIcon): React.JSX.Element {
   return (
     <AccessibleSvg
       width={size}

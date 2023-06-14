@@ -17,7 +17,7 @@ export type SectionRowContentProps = {
   style?: StyleProp<ViewStyle>
 } & (
   | {
-      renderTitle: (title: string) => JSX.Element
+      renderTitle: (title: string) => React.JSX.Element
       numberOfLines?: never
     }
   | {

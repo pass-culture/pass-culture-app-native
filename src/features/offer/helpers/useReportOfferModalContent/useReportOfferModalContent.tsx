@@ -16,7 +16,7 @@ interface Props {
 }
 
 type ReportOfferModalContent = {
-  children: JSX.Element
+  children: React.JSX.Element
   title: string
 } & ModalLeftIconProps
 

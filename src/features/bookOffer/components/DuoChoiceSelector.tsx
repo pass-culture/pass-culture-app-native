@@ -42,7 +42,7 @@ export const DuoChoiceSelector: React.FC = () => {
 
 const SoloPerson = (props: IconInterface) => <ProfileIcon {...props} />
 
-const DuoPerson = (props: IconInterface): JSX.Element => (
+const DuoPerson = (props: IconInterface): React.JSX.Element => (
   <DuoPersonContainer>
     <ProfileIcon {...props} />
     <ProfileIcon {...props} />

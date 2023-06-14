@@ -13,7 +13,7 @@ const defaultContext = {
 }
 const SearchAnalyticsContext = React.createContext<SearchAnalyticsContextType>(defaultContext)
 
-export const SearchAnalyticsWrapper = ({ children }: { children: JSX.Element }) => {
+export const SearchAnalyticsWrapper = ({ children }: { children: React.JSX.Element }) => {
   const [currentQueryID, setCurrentQueryID] = useState<string | undefined>()
 
   const value = useMemo(

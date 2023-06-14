@@ -36,7 +36,7 @@ export type AchievementCardProps = AchievementCardKeyProps & {
   buttonAccessibilityLabel?: string
   pauseAnimationOnRenderAtFrame: number
   subTitle?: string
-  centerChild?: (() => JSX.Element) | null
+  centerChild?: (() => React.JSX.Element) | null
   text: string
   title: string
   ignoreBottomPadding?: boolean

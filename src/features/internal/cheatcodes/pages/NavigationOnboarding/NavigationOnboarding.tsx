@@ -7,7 +7,7 @@ import { LinkToComponent } from 'features/internal/cheatcodes/components/LinkToC
 import { PageHeaderSecondary } from 'ui/components/headers/PageHeaderSecondary'
 import { Spacer } from 'ui/theme'
 
-export function NavigationOnboarding(): JSX.Element {
+export function NavigationOnboarding(): React.JSX.Element {
   useFocusEffect(
     React.useCallback(() => {
       StatusBar.setBarStyle('dark-content', true)

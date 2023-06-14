@@ -6,7 +6,12 @@ import { AccessibleSvg } from 'ui/svg/AccessibleSvg'
 
 import { AccessibleIcon } from './types'
 
-function ConnectSvg({ size, color, accessibilityLabel, testID }: AccessibleIcon): JSX.Element {
+function ConnectSvg({
+  size,
+  color,
+  accessibilityLabel,
+  testID,
+}: AccessibleIcon): React.JSX.Element {
   return (
     <AccessibleSvg
       width={size}

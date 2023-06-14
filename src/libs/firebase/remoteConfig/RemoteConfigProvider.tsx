@@ -11,7 +11,7 @@ export function useRemoteConfigContext() {
 }
 
 export const RemoteConfigProvider = memo(function RemoteConfigProvider(props: {
-  children: JSX.Element
+  children: React.JSX.Element
 }) {
   const [contextValue, setContextValue] = useState<CustomRemoteConfig>(DEFAULT_REMOTE_CONFIG)
 

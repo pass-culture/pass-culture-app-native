@@ -10,7 +10,7 @@ function ProfileDeletionSvg({
   testID,
   accessibilityLabel,
   opacity,
-}: AccessibleIcon): JSX.Element {
+}: AccessibleIcon): React.JSX.Element {
   return (
     <AccessibleSvg
       width={size}

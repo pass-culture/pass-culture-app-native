@@ -12,7 +12,7 @@ import { BicolorIdCardError } from 'ui/svg/icons/BicolorIdCardError'
 import { ExternalSiteFilled } from 'ui/svg/icons/ExternalSiteFilled'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 
-export const ExpiredOrLostID = (): JSX.Element => {
+export const ExpiredOrLostID = (): React.JSX.Element => {
   useEffect(() => {
     BatchUser.trackEvent(BatchEvent.screenViewExpiredOrLostId)
     analytics.logScreenViewExpiredOrLostId()

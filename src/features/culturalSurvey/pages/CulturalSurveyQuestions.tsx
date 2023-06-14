@@ -44,7 +44,9 @@ type CulturalSurveyQuestionsProps = StackScreenProps<
   'CulturalSurveyQuestions'
 >
 
-export const CulturalSurveyQuestions = ({ route }: CulturalSurveyQuestionsProps): JSX.Element => {
+export const CulturalSurveyQuestions = ({
+  route,
+}: CulturalSurveyQuestionsProps): React.JSX.Element => {
   const [bottomChildrenViewHeight, setBottomChildrenViewHeight] = useState(0)
   const { push, navigate } = useNavigation<UseNavigationType>()
   const { data: culturalSurveyQuestionsData } = useCulturalSurveyQuestions()

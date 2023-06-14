@@ -23,7 +23,7 @@ const PUSH_NOTIFICATIONS_STORAGE_KEY = 'has_seen_push_notifications_modal_once'
 export const PushNotificationsWrapper = memo(function PushNotificationsWrapper({
   children,
 }: {
-  children: JSX.Element
+  children: React.JSX.Element
 }) {
   const {
     visible: isPushNotificationsModalVisible,

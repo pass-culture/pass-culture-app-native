@@ -7,7 +7,7 @@ import { AlgoliaSuggestionHit } from 'libs/algolia'
 import { getSpacing } from 'ui/theme'
 
 type Props = UseInfiniteHitsProps & {
-  hitComponent: (props: HitProps) => JSX.Element
+  hitComponent: (props: HitProps) => React.JSX.Element
 }
 
 export const SearchAutocomplete: React.FC<Props> = ({ hitComponent: Item, ...props }) => {

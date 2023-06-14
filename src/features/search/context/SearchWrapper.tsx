@@ -11,7 +11,11 @@ interface ISearchContext {
 
 const SearchContext = React.createContext<ISearchContext | null>(null)
 
-export const SearchWrapper = memo(function SearchWrapper({ children }: { children: JSX.Element }) {
+export const SearchWrapper = memo(function SearchWrapper({
+  children,
+}: {
+  children: React.JSX.Element
+}) {
   const maxPrice = useMaxPrice()
   const priceRange: [number, number] = [0, maxPrice]
 

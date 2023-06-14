@@ -16,7 +16,7 @@ import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { PageHeaderSecondary } from 'ui/components/headers/PageHeaderSecondary'
 import { Spacer } from 'ui/theme'
 
-export function NavigationIdentityCheck(): JSX.Element {
+export function NavigationIdentityCheck(): React.JSX.Element {
   const { goBack } = useGoBack('Navigation', undefined)
   const [screenError, setScreenError] = useState<ScreenError | undefined>(undefined)
   const [

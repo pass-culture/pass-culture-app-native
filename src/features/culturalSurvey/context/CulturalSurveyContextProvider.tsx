@@ -18,7 +18,7 @@ const CulturalSurveyContext = React.createContext<ICulturalSurveyContext | null>
 export const CulturalSurveyContextProvider = ({
   children,
 }: {
-  children: JSX.Element | JSX.Element[]
+  children: React.JSX.Element | React.JSX.Element[]
 }) => {
   const { data: culturalSurveyQuestionsData } = useCulturalSurveyQuestions()
 

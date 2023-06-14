@@ -9,7 +9,7 @@ import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/S
 export const NetInfoWrapper = memo(function NetInfoWrapper({
   children,
 }: {
-  children: JSX.Element
+  children: React.JSX.Element
 }) {
   const networkInfo = useNetInfo()
   const { showInfoSnackBar } = useSnackBarContext()

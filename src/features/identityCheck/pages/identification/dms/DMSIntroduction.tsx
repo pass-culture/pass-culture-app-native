@@ -20,7 +20,7 @@ import { BicolorIconInterface } from 'ui/svg/icons/types'
 import { LogoDMS } from 'ui/svg/LogoDMS'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 
-export const DMSIntroduction = (): JSX.Element => {
+export const DMSIntroduction = (): React.JSX.Element => {
   useEffect(() => {
     analytics.logScreenViewDMSIntroduction()
   }, [])

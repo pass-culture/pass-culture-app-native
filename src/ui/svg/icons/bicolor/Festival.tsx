@@ -13,7 +13,7 @@ function FestivalSvg({
   color2,
   accessibilityLabel,
   testID,
-}: AccessibleIcon): JSX.Element {
+}: AccessibleIcon): React.JSX.Element {
   const {
     colors: { primary, secondary },
   } = useTheme()

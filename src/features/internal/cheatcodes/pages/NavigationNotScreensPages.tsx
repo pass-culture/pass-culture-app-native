@@ -16,11 +16,11 @@ const doNothing = () => {
   /* do nothing */
 }
 
-const mapPageToComponent: Record<Page, JSX.Element> = {
+const mapPageToComponent: Record<Page, React.JSX.Element> = {
   [Page.BrowserNotSupportedPage]: <BrowserNotSupportedPage onPress={doNothing} />,
 }
 
-export function NavigationNotScreensPages(): JSX.Element {
+export function NavigationNotScreensPages(): React.JSX.Element {
   const [page, setPage] = useState<Page | null>(null)
 
   if (page) {

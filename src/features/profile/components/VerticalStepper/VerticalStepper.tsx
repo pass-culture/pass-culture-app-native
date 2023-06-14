@@ -20,7 +20,7 @@ export type VerticalStepperProps = FirstOrLastProps &
     /**
      * Use this if you want to override middle icon.
      */
-    iconComponent?: JSX.Element
+    iconComponent?: React.JSX.Element
   }
 
 type CustomComponentProps = FirstOrLastProps & {

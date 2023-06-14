@@ -20,7 +20,7 @@ export const getTextColor = (theme: DefaultTheme, selected: boolean, disabled: b
 interface Props {
   selected: boolean
   onPress: () => void
-  children: JSX.Element
+  children: React.JSX.Element
   accessibilityLabel: string
   disabled?: boolean
 }

@@ -8,7 +8,7 @@ import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { PageHeaderSecondary } from 'ui/components/headers/PageHeaderSecondary'
 import { Spacer } from 'ui/theme'
 
-export function NewIdentificationFlow(): JSX.Element {
+export function NewIdentificationFlow(): React.JSX.Element {
   const { navigate } = useNavigation<UseNavigationType>()
 
   return (
