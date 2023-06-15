@@ -29,9 +29,9 @@ describe('express server', () => {
     const regExp = /\/(\d|main)\.[0-9a-f]+(\.chunk\.js)/gm
     const commitHashRegExp = /<meta name="commit-hash".*?>/gm
     const response = await fetch(env.APP_PUBLIC_URL)
-    const html = (await response.text()).replace(regExp, '/$1$3').replace(commitHashRegExp, '')
+    const html = (await response.text()).replace(regExp, '/$1$2').replace(commitHashRegExp, '')
     const responseProxy = await fetch(env.APP_BUCKET_URL)
-    const htmlProxy = (await responseProxy.text()).replace(regExp, '/$1$3').replace(commitHashRegExp, '')
+    const htmlProxy = (await responseProxy.text()).replace(regExp, '/$1$2').replace(commitHashRegExp, '')
     expect(html).toEqual(htmlProxy)
   })
 })
