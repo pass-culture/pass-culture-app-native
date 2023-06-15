@@ -4,6 +4,7 @@ import { v4 as uuidv4 } from 'uuid'
 
 import { OfferStockResponse, SubcategoryIdEnum } from 'api/gen'
 import { useSearchVenueOffers } from 'api/useSearchVenuesOffer/useSearchVenueOffers'
+import { FREE_OFFER_CATEGORIES_TO_ARCHIVE } from 'features/bookings/constants'
 import { BookingInformations } from 'features/bookOffer/components/BookingInformations'
 import { BookingOfferLoader } from 'features/bookOffer/components/BookingOfferLoader/BookingOfferLoader'
 import { CancellationDetails } from 'features/bookOffer/components/CancellationDetails'
@@ -163,6 +164,9 @@ export function BookingDetails({ stocks, onPressBookOffer, isLoading }: BookingD
 
   const isStockBookable = !(isUserUnderage && selectedStock.isForbiddenToUnderage)
 
+  const isFreeOfferToArchive =
+    !!offer && FREE_OFFER_CATEGORIES_TO_ARCHIVE.includes(offer.subcategoryId)
+
   return isLoading ? (
     <BookingOfferLoader message={loadingMessage} />
   ) : (
@@ -201,11 +205,13 @@ export function BookingDetails({ stocks, onPressBookOffer, isLoading }: BookingD
           <Spacer.Column numberOfSpaces={6} />
         </React.Fragment>
       )}
-
-      <Separator />
-      <Spacer.Column numberOfSpaces={6} />
-
-      <CancellationDetails />
+      {!isFreeOfferToArchive && (
+        <React.Fragment>
+          <Separator />
+          <Spacer.Column numberOfSpaces={6} />
+          <CancellationDetails />
+        </React.Fragment>
+      )}
 
       <Spacer.Column numberOfSpaces={6} />
 
