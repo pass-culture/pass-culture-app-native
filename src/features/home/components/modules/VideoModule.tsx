@@ -9,9 +9,7 @@ import { TEXT_BACKGROUND_OPACITY } from 'features/home/components/constants'
 import { VideoModal } from 'features/home/components/modals/VideoModal'
 import { OfferVideoModule } from 'features/home/components/modules/OfferVideoModule'
 import { VideoModule as VideoModuleProps } from 'features/home/types'
-import { styledButton } from 'ui/components/buttons/styledButton'
 import { useModal } from 'ui/components/modals/useModal'
-import { Touchable } from 'ui/components/touchable/Touchable'
 import { Play } from 'ui/svg/icons/Play'
 import { Spacer, Typo, getSpacing } from 'ui/theme'
 
@@ -46,7 +44,10 @@ export const VideoModule: FunctionComponent<VideoModuleProps> = (props) => {
       <VideoOfferContainer>
         <Typo.Title3>{props.title}</Typo.Title3>
         <Spacer.Column numberOfSpaces={5} />
-        <StyledTouchable onPress={showVideoModal} testID={'video-thumbnail'}>
+        <StyledTouchableHighlight
+          onPress={showVideoModal}
+          testID="video-thumbnail"
+          accessibilityRole="button">
           <Thumbnail source={{ uri: props.videoThumbnail }}>
             <DurationCaptionContainer>
               <DurationCaption>{videoDuration}</DurationCaption>
@@ -61,7 +62,7 @@ export const VideoModule: FunctionComponent<VideoModuleProps> = (props) => {
               <Player />
             </PlayerContainer>
           </Thumbnail>
-        </StyledTouchable>
+        </StyledTouchableHighlight>
         <VideoModal visible={videoModalVisible} hideModal={hideVideoModal} {...props} />
       </VideoOfferContainer>
       <Spacer.Column numberOfSpaces={2} />
@@ -135,4 +136,8 @@ const VideoTitle = styled(Typo.Title4)(({ theme }) => ({
   textAlign: 'left',
 }))
 
-const StyledTouchable = styledButton(Touchable)``
+const StyledTouchableHighlight = styled.TouchableHighlight.attrs(({ theme }) => ({
+  underlayColor: theme.colors.white,
+}))(({ theme }) => ({
+  borderRadius: theme.borderRadius.radius,
+}))
