@@ -1,6 +1,6 @@
-import React, { useCallback, useEffect, useState } from 'react'
-import { useWindowDimensions, AppState, Alert } from 'react-native'
-import YoutubePlayer from 'react-native-youtube-iframe'
+import React, { useCallback, useEffect, useRef, useState } from 'react'
+import { useWindowDimensions, AppState } from 'react-native'
+import YoutubePlayer, { YoutubeIframeRef } from 'react-native-youtube-iframe'
 import styled, { useTheme } from 'styled-components/native'
 
 import { getVideoPlayerDimensions } from 'features/home/components/helpers/getVideoPlayerDimensions'
@@ -19,6 +19,8 @@ export const VideoPlayer: React.FC<VideoPlayerProps> = ({ youtubeVideoId }) => {
   const { width: windowWidth } = useWindowDimensions()
   const { playerHeight, playerWidth } = getVideoPlayerDimensions(isDesktopViewport, windowWidth)
 
+  const playerRef = useRef<YoutubeIframeRef>(null)
+
   // Make sure the video stop playing when app is not in an active state (eg: backgroung/inactive)
   useEffect(() => {
     const subscription = AppState.addEventListener('change', (nextAppState) => {
@@ -36,6 +38,12 @@ export const VideoPlayer: React.FC<VideoPlayerProps> = ({ youtubeVideoId }) => {
     setIsPlaying(true)
   }
 
+  const replayVideo = () => {
+    playerRef.current?.seekTo(0, false)
+    setIsPlaying(true)
+    setHasFinishPlaying(false)
+  }
+
   const onChangeState = useCallback((state: string) => {
     if (state === 'ended') {
       setIsPlaying(false)
@@ -44,27 +52,40 @@ export const VideoPlayer: React.FC<VideoPlayerProps> = ({ youtubeVideoId }) => {
   }, [])
 
   return (
-    <StyledVideoPlayerContainer>
-      <YoutubePlayer
-        initialPlayerParams={{ modestbranding: true, rel: false }}
-        height={playerHeight}
-        width={playerWidth}
-        play={isPlaying}
-        onReady={playVideo}
-        videoId={youtubeVideoId}
-        onChangeState={onChangeState}
-        onError={(error) => {
-          console.error(error)
-        }}
-        forceAndroidAutoplay
-        // Disable webview player scroll
-        webViewProps={{
-          overScrollMode: 'never',
-          bounces: false,
-          scrollEnabled: false,
-        }}
-      />
-    </StyledVideoPlayerContainer>
+    <React.Fragment>
+      <StyledVideoPlayerContainer>
+        <YoutubePlayer
+          ref={playerRef}
+          initialPlayerParams={{ modestbranding: true, rel: false }}
+          height={playerHeight}
+          width={playerWidth}
+          play={isPlaying}
+          onReady={playVideo}
+          videoId={youtubeVideoId}
+          onChangeState={onChangeState}
+          onError={(error) => {
+            console.error(error)
+          }}
+          forceAndroidAutoplay
+          // Disable webview player scroll
+          webViewProps={{
+            overScrollMode: 'never',
+            bounces: false,
+            scrollEnabled: false,
+          }}
+        />
+      </StyledVideoPlayerContainer>
+      {!!hasFinishPlaying && (
+        <VideoEndView
+          onPressReplay={replayVideo}
+          offerId={offerId}
+          onPressSeeOffer={onPressSeeOffer}
+          height={playerHeight}
+          width={playerWidth}
+          videoThumbnail={videoThumbnail}
+        />
+      )}
+    </React.Fragment>
   )
 }
 
