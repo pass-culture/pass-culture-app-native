@@ -4095,7 +4095,7 @@ exports[`<Venue /> should match snapshot 1`] = `
   </RCTScrollView>
   <View
     collapsable={false}
-    safeAreaTop={16}
+    height={80}
     style={
       Object {
         "backdropFilter": "blur(0px)",
@@ -4124,7 +4124,7 @@ exports[`<Venue /> should match snapshot 1`] = `
     />
     <View
       collapsable={false}
-      safeAreaTop={16}
+      height={80}
       style={
         Object {
           "height": 80,
