@@ -1,9 +1,10 @@
 import React, { FunctionComponent } from 'react'
+import { useTheme } from 'styled-components'
 import styled from 'styled-components/native'
 
 import { InputRule } from 'ui/components/inputs/rules/InputRule'
-import { Check } from 'ui/svg/icons/Check'
-import { Close } from 'ui/svg/icons/Close'
+import { Info } from 'ui/svg/icons/Info'
+import { Valid } from 'ui/svg/icons/Valid'
 
 type Props = {
   title: string
@@ -13,18 +14,19 @@ type Props = {
 const NotMemoizedPasswordRule: FunctionComponent<Props> = ({ title, isValidated }) => {
   const validationLabel = isValidated ? 'validé' : 'minimum'
   const accessibilityLabel = `${title} ${validationLabel}`
-  const CheckWithLabel = styled(Check).attrs({
+  const ValidWithLabel = styled(Valid).attrs({
     accessibilityLabel,
   })``
-  const CloseWithLabel = styled(Close).attrs({
+  const InfoWithLabel = styled(Info).attrs({
     accessibilityLabel,
   })``
+  const theme = useTheme()
 
   return (
     <InputRule
       title={title}
-      icon={isValidated ? CheckWithLabel : CloseWithLabel}
-      iconSize={10}
+      icon={isValidated ? ValidWithLabel : InfoWithLabel}
+      iconSize={theme.icons.sizes.smaller}
       testIdSuffix={isValidated ? 'check' : 'close'}
       isValid={isValidated}
     />

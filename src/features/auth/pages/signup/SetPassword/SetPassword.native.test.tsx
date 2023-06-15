@@ -10,7 +10,7 @@ describe('SetPassword Page', () => {
   it('should display security rules', () => {
     render(<SetPassword {...props} />)
 
-    expect(screen.getByText('12 Caractères')).toBeTruthy()
+    expect(screen.getByText('12 caractères')).toBeTruthy()
   })
 
   it('should disable the submit button when password is incorrect', () => {
