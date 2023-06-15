@@ -21,7 +21,7 @@ import { storage } from 'libs/storage'
 import { accessibleCheckboxProps } from 'shared/accessibilityProps/accessibleCheckboxProps'
 import { getAnimationState } from 'ui/animations/helpers/getAnimationState'
 import { RoundedButton } from 'ui/components/buttons/RoundedButton'
-import { BlurHeader } from 'ui/components/headers/BlurHeader'
+import { AnimatedBlurHeader } from 'ui/components/headers/AnimatedBlurHeader'
 import { useModal } from 'ui/components/modals/useModal'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 import { Spacer, Typo } from 'ui/theme'
@@ -67,6 +67,7 @@ export const OfferHeader: React.FC<Props> = (props) => {
   const favorite = useFavorite({ offerId })
   const { showErrorSnackBar } = useSnackBarContext()
   const { top } = useSafeAreaInsets()
+  const headerHeight = theme.appBarHeight + top
   const isFavListFakeDoorEnabled = useFeatureFlag(RemoteStoreFeatureFlags.FAV_LIST_FAKE_DOOR)
 
   const [ariaHiddenTitle, setAriaHiddenTitle] = useState(true)
@@ -131,11 +132,9 @@ export const OfferHeader: React.FC<Props> = (props) => {
 
   return (
     <React.Fragment>
-      <HeaderContainer style={containerStyle} safeAreaTop={top}>
+      <HeaderContainer style={containerStyle} height={headerHeight}>
         <Spacer.TopScreen />
-        <BlurNativeContainer style={blurContainerNative} safeAreaTop={top}>
-          <BlurHeader />
-        </BlurNativeContainer>
+        <AnimatedBlurHeader height={headerHeight} style={blurContainerNative} />
         <Spacer.Column numberOfSpaces={2} />
         <Row>
           <Spacer.Row numberOfSpaces={6} />
@@ -221,29 +220,16 @@ function animateIcon(animatedValue: Animated.Value): void {
   ]).start()
 }
 
-const HeaderContainer = styled(Animated.View)<{ safeAreaTop: number }>(
-  ({ theme, safeAreaTop }) => ({
-    position: 'absolute',
-    top: 0,
-    left: 0,
-    right: 0,
-    height: theme.appBarHeight + safeAreaTop,
-    zIndex: theme.zIndex.header,
-    borderBottomColor: theme.colors.greyLight,
-    borderBottomWidth: 1,
-  })
-)
-
-const BlurNativeContainer = styled(Animated.View)<{ safeAreaTop: number }>(
-  ({ theme, safeAreaTop }) => ({
-    position: 'absolute',
-    height: theme.appBarHeight + safeAreaTop,
-    top: 0,
-    left: 0,
-    right: 0,
-    overflow: 'hidden',
-  })
-)
+const HeaderContainer = styled(Animated.View)<{ height: number }>(({ theme, height }) => ({
+  position: 'absolute',
+  top: 0,
+  left: 0,
+  right: 0,
+  height,
+  zIndex: theme.zIndex.header,
+  borderBottomColor: theme.colors.greyLight,
+  borderBottomWidth: 1,
+}))
 
 const Row = styled.View({
   flex: 1,

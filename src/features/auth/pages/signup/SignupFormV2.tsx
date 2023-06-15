@@ -153,9 +153,7 @@ export const SignupForm: FunctionComponent = () => {
         resume={hideFullPageModal}
         signupStep={stepConfig.name}
       />
-      <BlurHeaderContainer height={headerHeight}>
-        <BlurHeader />
-      </BlurHeaderContainer>
+      <BlurHeader height={headerHeight} />
     </React.Fragment>
   )
 }
@@ -168,16 +166,6 @@ const StyledScrollView = styled.ScrollView.attrs(({ theme }) => ({
     alignSelf: 'center',
   },
 }))``
-
-const BlurHeaderContainer = styled.View<{ height: number }>(({ height }) => ({
-  position: 'absolute',
-  top: 0,
-  left: 0,
-  right: 0,
-  height,
-  overflow: 'hidden',
-  backdropFilter: 'blur(20px)',
-}))
 
 const Placeholder = styled.View<{ height: number }>(({ height }) => ({
   height,

@@ -1,4 +1,4 @@
-import { Animated, Easing } from 'react-native'
+import { Animated, Easing, Platform } from 'react-native'
 import { DefaultTheme } from 'styled-components/native'
 
 const blurHeaderWebInterpolation = () => ({
@@ -27,6 +27,11 @@ const headerBackgroundInterpolation = () => ({
   outputRange: ['rgba(255, 255, 255, 0)', 'rgba(255, 255, 255, 0.8)'],
 })
 
+const headerBackgroundAndroidInterpolation = () => ({
+  inputRange: [0, 1],
+  outputRange: ['rgba(255, 255, 255, 0)', 'rgba(255, 255, 255, 1)'],
+})
+
 export const getAnimationState = (
   theme: DefaultTheme,
   headerTransition: Animated.AnimatedInterpolation
@@ -37,7 +42,11 @@ export const getAnimationState = (
     transition: headerTransition,
   },
   containerStyle: {
-    backgroundColor: headerTransition.interpolate(headerBackgroundInterpolation()),
+    // There is an issue with the blur on Android: we chose to render a white background for the header
+    backgroundColor:
+      Platform.OS === 'android'
+        ? headerTransition.interpolate(headerBackgroundAndroidInterpolation())
+        : headerTransition.interpolate(headerBackgroundInterpolation()),
     borderBottomWidth: headerTransition.interpolate(strokeBorderInterpolation()),
     backdropFilter: headerTransition.interpolate(blurHeaderWebInterpolation()),
   },

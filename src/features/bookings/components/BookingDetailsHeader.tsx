@@ -7,7 +7,7 @@ import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
 import { useGoBack } from 'features/navigation/useGoBack'
 import { getAnimationState } from 'ui/animations/helpers/getAnimationState'
 import { RoundedButton } from 'ui/components/buttons/RoundedButton'
-import { BlurHeader } from 'ui/components/headers/BlurHeader'
+import { AnimatedBlurHeader } from 'ui/components/headers/AnimatedBlurHeader'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 
 interface Props {
@@ -22,6 +22,8 @@ export const BookingDetailsHeader: React.FC<Props> = (props) => {
   const theme = useTheme()
   const { headerTransition, title } = props
   const { top } = useSafeAreaInsets()
+  const headerHeight = theme.appBarHeight + top
+
   const { goBack } = useGoBack(...getTabNavConfig('Bookings'))
 
   const [accessibilityHiddenTitle, setAccessibilityHiddenTitle] = useState(true)
@@ -36,9 +38,7 @@ export const BookingDetailsHeader: React.FC<Props> = (props) => {
     <React.Fragment>
       <HeaderContainer style={containerStyle}>
         <Spacer.TopScreen />
-        <BlurNativeContainer style={blurContainerNative} safeAreaTop={top}>
-          <BlurHeader />
-        </BlurNativeContainer>
+        <AnimatedBlurHeader height={headerHeight} style={blurContainerNative} />
         <Spacer.Column numberOfSpaces={2} />
         <Row>
           <IconContainer>
@@ -72,17 +72,6 @@ const HeaderContainer = styled(Animated.View)(({ theme }) => ({
   borderBottomColor: theme.colors.greyLight,
   borderBottomWidth: 1,
 }))
-
-const BlurNativeContainer = styled(Animated.View)<{ safeAreaTop: number }>(
-  ({ theme, safeAreaTop }) => ({
-    position: 'absolute',
-    height: theme.appBarHeight + safeAreaTop,
-    top: 0,
-    left: 0,
-    right: 0,
-    overflow: 'hidden',
-  })
-)
 
 const Row = styled.View({
   flexDirection: 'row',

@@ -990,7 +990,7 @@ exports[`BookingDetails should render correctly 1`] = `
     />
     <View
       collapsable={false}
-      safeAreaTop={16}
+      height={80}
       style={
         Object {
           "height": 80,
