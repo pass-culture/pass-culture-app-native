@@ -1,9 +1,10 @@
 import React, { useCallback, useEffect, useState } from 'react'
-import { useWindowDimensions, AppState } from 'react-native'
+import { useWindowDimensions, AppState, Alert } from 'react-native'
 import YoutubePlayer from 'react-native-youtube-iframe'
 import styled, { useTheme } from 'styled-components/native'
 
 import { getVideoPlayerDimensions } from 'features/home/components/helpers/getVideoPlayerDimensions'
+import { VideoEndView } from 'features/home/components/modules/video/VideoEndView'
 import { theme } from 'theme'
 import { getSpacing } from 'ui/theme'
 
@@ -13,6 +14,7 @@ interface VideoPlayerProps {
 
 export const VideoPlayer: React.FC<VideoPlayerProps> = ({ youtubeVideoId }) => {
   const [isPlaying, setIsPlaying] = useState(true)
+  const [hasFinishPlaying, setHasFinishPlaying] = useState(false)
   const { isDesktopViewport } = useTheme()
   const { width: windowWidth } = useWindowDimensions()
   const { playerHeight, playerWidth } = getVideoPlayerDimensions(isDesktopViewport, windowWidth)
@@ -37,6 +39,7 @@ export const VideoPlayer: React.FC<VideoPlayerProps> = ({ youtubeVideoId }) => {
   const onChangeState = useCallback((state: string) => {
     if (state === 'ended') {
       setIsPlaying(false)
+      setHasFinishPlaying(true)
     }
   }, [])
 
