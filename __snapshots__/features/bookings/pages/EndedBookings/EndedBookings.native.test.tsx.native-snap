@@ -458,6 +458,7 @@ Array [
                   }
                 >
                   <Text
+                    isError={true}
                     isValid={false}
                     noFullWidth={true}
                     style={

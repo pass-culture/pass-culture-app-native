@@ -28,7 +28,7 @@ const NotMemoizedPasswordRule: FunctionComponent<Props> = ({ title, isValidated 
       icon={isValidated ? ValidWithLabel : InfoWithLabel}
       iconSize={theme.icons.sizes.smaller}
       testIdSuffix={isValidated ? 'check' : 'close'}
-      isValid={isValidated}
+      type={isValidated ? 'Valid' : 'Neutral'}
     />
   )
 }

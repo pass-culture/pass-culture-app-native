@@ -394,7 +394,7 @@ export const AppComponents: FunctionComponent = () => {
           <StyledInputRule
             title="12 Caractères"
             icon={inputText.length >= 12 ? Check : Close}
-            isValid={inputText.length >= 12}
+            type={inputText.length >= 12 ? 'Valid' : 'Error'}
           />
           <Spacer.Column numberOfSpaces={1} />
           <StyledTitle4>Text Input - Email</StyledTitle4>

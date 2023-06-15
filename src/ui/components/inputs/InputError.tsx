@@ -22,7 +22,7 @@ export const InputError: FC<Props> = (props) => {
           <Spacer.Column testID="input-error-top-spacer" numberOfSpaces={props.numberOfSpacesTop} />
           <InputRule
             title={props.messageId}
-            isValid={false}
+            type="Error"
             icon={Error}
             testIdSuffix="warn"
             iconSize={16}
