@@ -27,11 +27,19 @@ describe('express server', () => {
 
   it(`should return same index.html from proxy ${env.APP_PUBLIC_URL} as from bucket ${env.APP_BUCKET_URL} (minus the chunk and commit hash)`, async () => {
     const scriptWithChunkRegExp = /\/(\d|main)\.[0-9a-f]+(\.chunk\.js)/gm
+    const chunkInScriptRegExp =
+      /(return .\..\+"static\/js\/"\+\({}\[\.]\|\|.\)\+"\."\+{.:")[0-9a-f]+(",.:")[0-9a-f]+("}\[.\]\+"\.chunk\.js")/gm
     const commitHashRegExp = /<meta name="commit-hash".*?>/gm
     const response = await fetch(env.APP_PUBLIC_URL)
-    const html = (await response.text()).replace(scriptWithChunkRegExp, '/$1$2').replace(commitHashRegExp, '')
+    const html = (await response.text())
+      .replace(scriptWithChunkRegExp, '/$1$2')
+      .replace(chunkInScriptRegExp, '$1$2$3')
+      .replace(commitHashRegExp, '')
     const responseProxy = await fetch(env.APP_BUCKET_URL)
-    const htmlProxy = (await responseProxy.text()).replace(scriptWithChunkRegExp, '/$1$2').replace(commitHashRegExp, '')
+    const htmlProxy = (await responseProxy.text())
+      .replace(scriptWithChunkRegExp, '/$1$2')
+      .replace(chunkInScriptRegExp, '$1$2$3')
+      .replace(commitHashRegExp, '')
     expect(html).toEqual(htmlProxy)
   })
 })
