@@ -244,7 +244,7 @@
     "@wdio/mocha-framework": "7.26.0",
     "@wdio/spec-reporter": "7.26.0",
     "@welldone-software/why-did-you-render": "^7.0.1",
-    "appcenter-cli": "^2.10.10",
+    "appcenter-cli": "^2.12.0",
     "babel-jest": "^27.5.1",
     "babel-loader": "^8.2.5",
     "babel-plugin-macros": "^2.8.0",
