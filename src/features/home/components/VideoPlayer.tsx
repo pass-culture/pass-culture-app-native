@@ -10,9 +10,15 @@ import { getSpacing } from 'ui/theme'
 
 interface VideoPlayerProps {
   youtubeVideoId: string
+  offerId: string
+  onPressSeeOffer: () => void
 }
 
-export const VideoPlayer: React.FC<VideoPlayerProps> = ({ youtubeVideoId }) => {
+export const VideoPlayer: React.FC<VideoPlayerProps> = ({
+  youtubeVideoId,
+  offerId,
+  onPressSeeOffer,
+}) => {
   const [isPlaying, setIsPlaying] = useState(true)
   const [hasFinishPlaying, setHasFinishPlaying] = useState(false)
   const { isDesktopViewport } = useTheme()

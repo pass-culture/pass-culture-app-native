@@ -19,6 +19,7 @@ interface VideoModalProps extends VideoModule {
   offer: Offer
   visible: boolean
   hideModal: () => void
+  offerId: string
 }
 
 export const VideoModal: React.FC<VideoModalProps> = (props) => {
@@ -34,7 +35,11 @@ export const VideoModal: React.FC<VideoModalProps> = (props) => {
       noPadding
       scrollEnabled={false}
       customModalHeader={<React.Fragment />}>
-      <VideoPlayer youtubeVideoId={props.youtubeVideoId} />
+      <VideoPlayer
+        youtubeVideoId={props.youtubeVideoId}
+        offerId={props.offerId}
+        onPressSeeOffer={props.hideModal}
+      />
       <StyledScrollView>
         <Spacer.Column numberOfSpaces={4} />
         <StyledTagContainer>

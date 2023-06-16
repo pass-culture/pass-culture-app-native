@@ -6,10 +6,11 @@ import { ArrowAgain } from 'ui/svg/icons/ArrowAgain'
 import { Offers } from 'ui/svg/icons/Offers'
 import { Spacer, getSpacing } from 'ui/theme'
 
-export const VideoEndView: React.FC<{ onPressReplay: () => void; onPressSeeOffer: () => void }> = ({
-  onPressReplay,
-  onPressSeeOffer,
-}) => {
+export const VideoEndView: React.FC<{
+  onPressReplay: () => void
+  onPressSeeOffer: () => void
+  offerId: string
+}> = ({ onPressReplay, offerId, onPressSeeOffer }) => {
   return (
     <VideoEndViewContainer>
       <ButtonsContainer>
@@ -22,7 +23,11 @@ export const VideoEndView: React.FC<{ onPressReplay: () => void; onPressSeeOffer
         <Spacer.Row numberOfSpaces={9} />
         <ButtonWithCaption
           onPress={onPressSeeOffer}
-          accessibilityLabel="Revoir la vidéo"
+          navigateTo={{
+            screen: 'Offer',
+            params: { id: offerId },
+          }}
+          accessibilityLabel="Voir l’offre"
           wording="Voir l’offre"
           icon={StyledOffersIcon}
         />

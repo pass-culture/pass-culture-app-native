@@ -26,7 +26,10 @@ export const ButtonWithCaption: React.FC<ButtonWithCaptionProps> = ({
   return (
     <ButtonWithCaptionContainer>
       {navigateTo ? (
-        <StyledTouchableLink navigateTo={navigateTo} accessibilityLabel={accessibilityLabel}>
+        <StyledTouchableLink
+          navigateTo={navigateTo}
+          onBeforeNavigate={onPress}
+          accessibilityLabel={accessibilityLabel}>
           <Icon />
         </StyledTouchableLink>
       ) : (
