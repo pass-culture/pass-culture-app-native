@@ -35,20 +35,19 @@ export const SetPasswordV2: FunctionComponent<PreValidationSignupNormalStepProps
 
   return (
     <Form.MaxWidth>
-      <Typo.Title3>Mot de passe</Typo.Title3>
-      <Spacer.Column numberOfSpaces={6} />
+      <Typo.Title3>Choisis un mot de passe</Typo.Title3>
+      <Spacer.Column numberOfSpaces={10} />
       <PasswordInputController
         control={control}
         name="password"
         label="Mot de passe"
         placeholder="Ton mot de passe"
-        isRequiredField
         withSecurityRules
         securityRulesAlwaysVisible
         autoFocus
         nativeAutoFocus
       />
-      <Spacer.Column numberOfSpaces={6} />
+      <Spacer.Column numberOfSpaces={10} />
       <ButtonPrimary
         wording="Continuer"
         accessibilityLabel={props.accessibilityLabelForNextStep}

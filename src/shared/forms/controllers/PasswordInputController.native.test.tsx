@@ -47,11 +47,11 @@ describe('<PasswordInputController />', () => {
 
   describe('With security rules', () => {
     it.each([
-      '12 Caractères',
-      '1 Majuscule',
-      '1 Minuscule',
-      '1 Chiffre',
-      '1 Caractère spécial (!@#$%^&*...)',
+      '12 caractères',
+      '1 majuscule',
+      '1 minuscule',
+      '1 chiffre',
+      '1 caractère spécial (!@#$%^&*...)',
     ])('should not show password validation rules when empty', (rule) => {
       renderPasswordInputController({ withSecurityRules: true })
 
@@ -59,11 +59,11 @@ describe('<PasswordInputController />', () => {
     })
 
     it.each([
-      '12 Caractères',
-      '1 Majuscule',
-      '1 Minuscule',
-      '1 Chiffre',
-      '1 Caractère spécial (!@#$%^&*...)',
+      '12 caractères',
+      '1 majuscule',
+      '1 minuscule',
+      '1 chiffre',
+      '1 caractère spécial (!@#$%^&*...)',
     ])('should show password validation rules when at least one character is typed', (rules) => {
       renderPasswordInputController({ withSecurityRules: true })
 
@@ -76,11 +76,11 @@ describe('<PasswordInputController />', () => {
 
   describe('With security rules always displayed', () => {
     it.each([
-      '12 Caractères',
-      '1 Majuscule',
-      '1 Minuscule',
-      '1 Chiffre',
-      '1 Caractère spécial (!@#$%^&*...)',
+      '12 caractères',
+      '1 majuscule',
+      '1 minuscule',
+      '1 chiffre',
+      '1 caractère spécial (!@#$%^&*...)',
     ])('should show password validation rules', (rules) => {
       renderPasswordInputController({ withSecurityRules: true, securityRulesAlwaysVisible: true })
 

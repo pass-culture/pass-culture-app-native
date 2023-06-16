@@ -119,18 +119,18 @@ function getEndedBookingReason(
   isEligibleBookingsForArchiveValue?: boolean
 ) {
   if (dateUsed) {
-    return <StyledInputRule title="Réservation utilisée" icon={Valid} isValid noFullWidth />
+    return <StyledInputRule title="Réservation utilisée" icon={Valid} type="Valid" noFullWidth />
   }
 
   if (cancellationReason === BookingCancellationReasons.OFFERER) {
-    return <StyledInputRule title="Annulée" icon={Wrong} isValid={false} noFullWidth />
+    return <StyledInputRule title="Annulée" icon={Wrong} type="Error" noFullWidth />
   }
 
   if (!!isEligibleBookingsForArchiveValue && !cancellationReason) {
-    return <StyledInputRule title="Réservation archivée" icon={Valid} isValid noFullWidth />
+    return <StyledInputRule title="Réservation archivée" icon={Valid} type="Valid" noFullWidth />
   }
 
-  return <StyledInputRule title="Réservation annulée" icon={Wrong} isValid={false} noFullWidth />
+  return <StyledInputRule title="Réservation annulée" icon={Wrong} type="Error" noFullWidth />
 }
 
 function getEndedBookingDateLabel(cancellationDate?: string | null, dateUsed?: string | null) {

@@ -2,25 +2,25 @@ import React from 'react'
 
 import { act, fireEvent, render, screen } from 'tests/utils'
 
-import { SetPassword } from './SetPassword'
+import { SetPasswordV2 } from './SetPasswordV2'
 
 const props = { goToNextStep: jest.fn(), signUp: jest.fn() }
 
-describe('SetPassword Page', () => {
+describe('SetPasswordV2 Page', () => {
   it('should display security rules', () => {
-    render(<SetPassword {...props} />)
+    render(<SetPasswordV2 {...props} />)
 
     expect(screen.getByText('12 caractères')).toBeTruthy()
   })
 
   it('should disable the submit button when password is incorrect', () => {
-    render(<SetPassword {...props} />)
+    render(<SetPasswordV2 {...props} />)
 
     expect(screen.getByTestId('Continuer')).toBeDisabled()
   })
 
   it('should enable the submit button when password is correct', async () => {
-    render(<SetPassword {...props} />)
+    render(<SetPasswordV2 {...props} />)
 
     const passwordInput = screen.getByPlaceholderText('Ton mot de passe')
     fireEvent.changeText(passwordInput, 'user@AZERTY123')
@@ -29,7 +29,7 @@ describe('SetPassword Page', () => {
   })
 
   it('should go to next step when submitting password', async () => {
-    render(<SetPassword {...props} />)
+    render(<SetPasswordV2 {...props} />)
 
     await act(async () => {
       const passwordInput = screen.getByPlaceholderText('Ton mot de passe')

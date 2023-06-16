@@ -9,11 +9,11 @@ import { render } from 'tests/utils'
 describe('<PasswordSecurityRules />', () => {
   it('should display 5 rules', async () => {
     const { queryByText } = render(<PasswordSecurityRules password={''} />)
-    expect(queryByText('12 Caractères')).toBeTruthy()
-    expect(queryByText('1 Majuscule')).toBeTruthy()
-    expect(queryByText('1 Minuscule')).toBeTruthy()
-    expect(queryByText('1 Chiffre')).toBeTruthy()
-    expect(queryByText('1 Caractère spécial (!@#$%^&*...)')).toBeTruthy()
+    expect(queryByText('12 caractères')).toBeTruthy()
+    expect(queryByText('1 majuscule')).toBeTruthy()
+    expect(queryByText('1 minuscule')).toBeTruthy()
+    expect(queryByText('1 chiffre')).toBeTruthy()
+    expect(queryByText('1 caractère spécial (!@#$%^&*...)')).toBeTruthy()
   })
 
   it('should not validate any rules if input is empty', () => {

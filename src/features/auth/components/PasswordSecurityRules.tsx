@@ -4,7 +4,7 @@ import styled from 'styled-components/native'
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { HiddenAccessibleText } from 'ui/components/HiddenAccessibleText'
 import { PasswordRule } from 'ui/components/inputs/rules/PasswordRule'
-import { getSpacing } from 'ui/theme'
+import { Spacer, getSpacing } from 'ui/theme'
 
 type Props = {
   password: string
@@ -64,12 +64,16 @@ export const PasswordSecurityRules: FunctionComponent<Props> = ({
           isVisible={visible}
           accessibilityRole={AccessibilityRole.STATUS}
           accessibilityAtomic={false}>
-          <PasswordRule title="12 Caractères" isValidated={isLongEnough(password)} />
-          <PasswordRule title="1 Majuscule" isValidated={containsCapital(password)} />
-          <PasswordRule title="1 Minuscule" isValidated={containsLowercase(password)} />
-          <PasswordRule title="1 Chiffre" isValidated={containsNumber(password)} />
+          <PasswordRule title="12 caractères" isValidated={isLongEnough(password)} />
+          <Spacer.Column numberOfSpaces={1} />
+          <PasswordRule title="1 majuscule" isValidated={containsCapital(password)} />
+          <Spacer.Column numberOfSpaces={1} />
+          <PasswordRule title="1 minuscule" isValidated={containsLowercase(password)} />
+          <Spacer.Column numberOfSpaces={1} />
+          <PasswordRule title="1 chiffre" isValidated={containsNumber(password)} />
+          <Spacer.Column numberOfSpaces={1} />
           <PasswordRule
-            title="1 Caractère spécial (!@#$%^&*...)"
+            title="1 caractère spécial (!@#$%^&*...)"
             isValidated={containsSpecialCharacter(password)}
           />
         </RulesContainer>
