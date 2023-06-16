@@ -67,11 +67,8 @@ const StyledLinearGradient = styled(LinearGradient)({
   flex: 1,
 })
 
-const LabelContainer = styled.View<{ baseColor?: string }>(({ baseColor }) => ({
-  paddingLeft: getSpacing(3),
-  paddingTop: getSpacing(3),
-  paddingRight: getSpacing(4),
-  paddingBottom: getSpacing(4),
+const LabelContainer = styled.View<{ baseColor?: string }>(({ baseColor, theme }) => ({
+  padding: theme.isMobileViewport ? getSpacing(2) : getSpacing(3),
   width: '100%',
   backgroundColor: baseColor,
 }))
