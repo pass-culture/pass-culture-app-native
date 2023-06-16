@@ -42,7 +42,6 @@ export const SetPasswordV2: FunctionComponent<PreValidationSignupNormalStepProps
         name="password"
         label="Mot de passe"
         placeholder="Ton mot de passe"
-        isRequiredField
         withSecurityRules
         securityRulesAlwaysVisible
         autoFocus
