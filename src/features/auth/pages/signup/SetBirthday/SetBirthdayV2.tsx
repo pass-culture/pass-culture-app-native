@@ -45,14 +45,14 @@ export const SetBirthdayV2: FunctionComponent<PreValidationSignupNormalStepProps
 
   return (
     <Form.MaxWidth>
-      <Typo.Title3>Date de naissance</Typo.Title3>
-      <Spacer.Column numberOfSpaces={6} />
+      <Typo.Title3>Renseigne ton âge</Typo.Title3>
+      <Spacer.Column numberOfSpaces={4} />
       <InnerContainer>
         <InfoBanner
-          message="Assure-toi que ton âge est exact. Nous le vérifions et il ne pourra plus être modifié par la suite."
+          message="Assure-toi que ton âge est exact. Il ne pourra plus être modifié par la suite et nous vérifions tes informations."
           icon={BicolorIdCard}
         />
-        <Spacer.Column numberOfSpaces={6} />
+        <Spacer.Column numberOfSpaces={10} />
         <DateInput
           onChange={setDate}
           errorMessage={errorMessage}
@@ -60,7 +60,7 @@ export const SetBirthdayV2: FunctionComponent<PreValidationSignupNormalStepProps
           maximumDate={MAXIMUM_SPINNER_DATE}
           minimumDate={MINIMUM_DATE}
         />
-        <Spacer.Column numberOfSpaces={2} />
+        <Spacer.Column numberOfSpaces={10} />
         <ButtonPrimary
           wording="Continuer"
           accessibilityLabel={props.accessibilityLabelForNextStep}
