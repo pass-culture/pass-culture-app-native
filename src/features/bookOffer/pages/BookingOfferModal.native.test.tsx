@@ -288,17 +288,17 @@ describe('<BookingOfferModalComponent />', () => {
 
       it('should log confirmation booking when offer booked from a similar offer', () => {
         useRoute.mockReturnValueOnce({
-          params: { fromOfferId: 1 },
+          params: { fromOfferId: 1, fromMultivenueOfferId: 1 },
         })
         render(<BookingOfferModalComponent visible offerId={20} />)
         fireEvent.press(screen.getByText('Confirmer la réservation'))
-        expect(analytics.logBookingConfirmation).toHaveBeenCalledWith(20, 1, 1)
+        expect(analytics.logBookingConfirmation).toHaveBeenCalledWith(20, 1, 1, 1)
       })
 
       it('should log confirmation booking when offer not booked from a similar offer', () => {
         render(<BookingOfferModalComponent visible offerId={20} />)
         fireEvent.press(screen.getByText('Confirmer la réservation'))
-        expect(analytics.logBookingConfirmation).toHaveBeenCalledWith(20, 1, undefined)
+        expect(analytics.logBookingConfirmation).toHaveBeenCalledWith(20, 1, undefined, undefined)
       })
 
       it('should log conversion booking when is from search', () => {
