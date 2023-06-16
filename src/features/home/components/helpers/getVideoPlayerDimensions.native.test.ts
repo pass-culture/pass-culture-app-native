@@ -10,7 +10,7 @@ describe('getVideoPlayerDimensions', () => {
 
     const dimensions = getVideoPlayerDimensions(isDesktopViewport, windowWidth)
 
-    expect(dimensions).toEqual({ playerHeight: 219, playerWidth: 390 })
+    expect(dimensions).toEqual({ playerHeight: 220, playerWidth: 390 })
   })
   it('should return a width and heigth for desktop view', () => {
     const isDesktopViewport = true
@@ -18,6 +18,6 @@ describe('getVideoPlayerDimensions', () => {
 
     const dimensions = getVideoPlayerDimensions(isDesktopViewport, windowWidth)
 
-    expect(dimensions).toEqual({ playerHeight: 292, playerWidth: 520 })
+    expect(dimensions).toEqual({ playerHeight: 293, playerWidth: 520 })
   })
 })

@@ -174,7 +174,7 @@ exports[`VideoModal should render correctly if modal visible 1`] = `
           <View
             style={
               Object {
-                "height": 421,
+                "height": 422,
                 "width": 750,
               }
             }
@@ -208,6 +208,7 @@ exports[`VideoModal should render correctly if modal visible 1`] = `
                 onLoadingStart={[Function]}
                 onMessage={[Function]}
                 onShouldStartLoadWithRequest={[Function]}
+                overScrollMode="never"
                 source={
                   Object {
                     "uri": "https://lonelycpp.github.io/react-native-youtube-iframe/iframe.html?data=%7B%22rel_s%22:0,%22loop_s%22:0,%22videoId_s%22:%22qE7xwEZnFP0%22,%22controls_s%22:1,%22contentScale_s%22:1,%22cc_lang_pref_s%22:%22%22,%22allowWebViewZoom%22:false,%22modestbranding_s%22:1,%22preventFullScreen_s%22:1,%22showClosedCaptions_s%22:0%7D",
