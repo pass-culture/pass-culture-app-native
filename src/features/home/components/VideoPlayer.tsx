@@ -12,12 +12,14 @@ interface VideoPlayerProps {
   youtubeVideoId: string
   offerId: string
   onPressSeeOffer: () => void
+  videoThumbnail: string
 }
 
 export const VideoPlayer: React.FC<VideoPlayerProps> = ({
   youtubeVideoId,
   offerId,
   onPressSeeOffer,
+  videoThumbnail,
 }) => {
   const [isPlaying, setIsPlaying] = useState(true)
   const [hasFinishPlaying, setHasFinishPlaying] = useState(false)
