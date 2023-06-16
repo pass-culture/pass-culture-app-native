@@ -116,6 +116,7 @@ export const SetEmailV2: FunctionComponent<PreValidationSignupNormalStepProps> =
         wording="Comment gérer tes données personnelles&nbsp;?"
         icon={ExternalSiteFilled}
         justifyContent="flex-start"
+        numberOfLines={2}
         inline
       />
       <Spacer.Column numberOfSpaces={10} />
@@ -133,9 +134,7 @@ export const SetEmailV2: FunctionComponent<PreValidationSignupNormalStepProps> =
         linkColor={theme.colors.secondary}
         params={{ offerId: params?.offerId, preventCancellation: true }}
       />
-      <Spacer.Column numberOfSpaces={6} />
-
-      <Spacer.Column numberOfSpaces={4} />
+      <Spacer.Column numberOfSpaces={5} />
     </Form.MaxWidth>
   )
 }
