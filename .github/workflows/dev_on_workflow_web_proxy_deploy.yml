@@ -30,6 +30,8 @@ jobs:
           restore-keys: |
             v1-yarn-proxy-dependency-cache-${{ hashFiles('**/yarn.lock') }}
       - run: yarn install
+      - name: Install package for proxy
+        run: yarn install --immutable --cwd server
       - name: Authentification to Google
         uses: 'google-github-actions/auth@v1'
         with:
