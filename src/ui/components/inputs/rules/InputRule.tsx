@@ -1,8 +1,11 @@
 import React, { FunctionComponent } from 'react'
+import { useTheme } from 'styled-components'
 import styled from 'styled-components/native'
 
 import { AccessibleIcon } from 'ui/svg/icons/types'
 import { getSpacing, Typo, Spacer } from 'ui/theme'
+// eslint-disable-next-line no-restricted-imports
+import { ColorsEnum } from 'ui/theme/colors'
 
 type InputRuleType = 'Valid' | 'Error' | 'Neutral'
 
@@ -23,16 +26,17 @@ export const InputRule: FunctionComponent<Props> = ({
   testIdSuffix,
   noFullWidth,
 }: Props) => {
-  const isValid = type === 'Valid'
-  const isError = type === 'Error'
-  const Icon = styled(icon).attrs<{ testID: string }>(({ theme }) => ({
-    color: isValid ? theme.colors.greenValid : isError ? theme.colors.error : theme.colors.black,
+  const theme = useTheme()
+  const baseColor = type === 'Valid' ? theme.colors.greenValid : theme.colors.black
+  const color = type === 'Error' ? theme.colors.error : baseColor
+  const Icon = styled(icon).attrs<{ testID: string }>({
+    color: color,
     size: iconSize,
-  }))``
+  })``
 
   return (
     <StyledView noFullWidth={noFullWidth}>
-      <StyledCaption isValid={isValid} isError={isError} noFullWidth={noFullWidth}>
+      <StyledCaption color={color} noFullWidth={noFullWidth}>
         {title}
       </StyledCaption>
       <Spacer.Row numberOfSpaces={1} />
@@ -54,12 +58,11 @@ const StyledView = styled.View<{ noFullWidth?: boolean }>(({ noFullWidth, theme 
 }))
 
 const StyledCaption = styled(Typo.Caption)<{
-  isValid: boolean
-  isError: boolean
+  color: ColorsEnum
   noFullWidth?: boolean
-}>(({ isValid, isError, theme, noFullWidth }) => ({
+}>(({ color, noFullWidth }) => ({
   paddingLeft: getSpacing(1),
   flexShrink: 1,
-  color: isValid ? theme.colors.greenValid : isError ? theme.colors.error : theme.colors.black,
+  color,
   ...(noFullWidth ? { textAlign: 'center' } : {}),
 }))

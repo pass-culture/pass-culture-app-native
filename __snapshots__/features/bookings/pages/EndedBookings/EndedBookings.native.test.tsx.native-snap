@@ -458,8 +458,7 @@ Array [
                   }
                 >
                   <Text
-                    isError={true}
-                    isValid={false}
+                    color="#b60025"
                     noFullWidth={true}
                     style={
                       Array [
