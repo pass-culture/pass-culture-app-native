@@ -1,4 +1,5 @@
 import React from 'react'
+import { StyleProp, ViewStyle } from 'react-native'
 import styled from 'styled-components/native'
 
 import { ButtonWithCaption } from 'features/home/components/modules/video/ButtonWithCaption'
@@ -9,41 +10,51 @@ import { Spacer, getSpacing } from 'ui/theme'
 export const VideoEndView: React.FC<{
   onPressReplay: () => void
   onPressSeeOffer: () => void
-  offerId: string
-}> = ({ onPressReplay, offerId, onPressSeeOffer }) => {
+  offer: Offer
+  style: StyleProp<ViewStyle>
+  videoThumbnail: string
+}> = ({ onPressReplay, offer, onPressSeeOffer, style, videoThumbnail }) => {
+  const prePopulateOffer = usePrePopulateOffer()
+  const mapping = useCategoryIdMapping()
+
   return (
-    <VideoEndViewContainer>
-      <ButtonsContainer>
-        <ButtonWithCaption
-          onPress={onPressReplay}
-          accessibilityLabel="Revoir la vidéo"
-          wording={'Revoir'}
-          icon={StyledReplayIcon}
-        />
-        <Spacer.Row numberOfSpaces={9} />
-        <ButtonWithCaption
-          onPress={onPressSeeOffer}
-          navigateTo={{
-            screen: 'Offer',
-            params: { id: offerId },
-          }}
-          accessibilityLabel="Voir l’offre"
-          wording="Voir l’offre"
-          icon={StyledOffersIcon}
-        />
-      </ButtonsContainer>
+    <VideoEndViewContainer style={style}>
+      <Thumbnail source={{ uri: videoThumbnail }} style={style}>
+        <BlackView>
+          <ButtonsContainer>
+            <ButtonWithCaption
+              onPress={onPressReplay}
+              accessibilityLabel="Revoir la vidéo"
+              wording={'Revoir'}
+              icon={StyledReplayIcon}
+            />
+            <Spacer.Row numberOfSpaces={9} />
+            <ButtonWithCaption
+              onPress={() => {
+                onPressSeeOffer()
+                prePopulateOffer({
+                  ...offer.offer,
+                  offerId: +offer.objectID,
+                  categoryId: mapping[offer.offer.subcategoryId],
+                })
+              }}
+              navigateTo={{
+                screen: 'Offer',
+                params: { id: offer.objectID },
+              }}
+              accessibilityLabel="Voir l’offre"
+              wording="Voir l’offre"
+              icon={StyledOffersIcon}
+            />
+          </ButtonsContainer>
+        </BlackView>
+      </Thumbnail>
     </VideoEndViewContainer>
   )
 }
 
 const VideoEndViewContainer = styled.View({
   position: 'absolute',
-  width: '100%',
-  height: 210,
-  backgroundColor: 'black',
-  justifyContent: 'center',
-  borderTopLeftRadius: getSpacing(4),
-  borderTopRightRadius: getSpacing(4),
 })
 
 const ButtonsContainer = styled.View({
@@ -58,3 +69,17 @@ const StyledReplayIcon = styled(ArrowAgain).attrs(({ theme }) => ({
 const StyledOffersIcon = styled(Offers).attrs(({ theme }) => ({
   size: theme.icons.sizes.smaller,
 }))``
+
+const Thumbnail = styled.ImageBackground({
+  // the overflow: hidden allow to add border radius to the image
+  // https://stackoverflow.com/questions/49442165/how-do-you-add-borderradius-to-imagebackground/57616397
+  overflow: 'hidden',
+  borderTopLeftRadius: getSpacing(4),
+  borderTopRightRadius: getSpacing(4),
+})
+
+const BlackView = styled.View({
+  backgroundColor: 'rgba(22, 22, 23, 0.48)',
+  height: '100%',
+  justifyContent: 'center',
+})

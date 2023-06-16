@@ -86,8 +86,7 @@ export const VideoPlayer: React.FC<VideoPlayerProps> = ({
           onPressReplay={replayVideo}
           offerId={offerId}
           onPressSeeOffer={onPressSeeOffer}
-          height={playerHeight}
-          width={playerWidth}
+          style={{ height: playerHeight, width: playerWidth }}
           videoThumbnail={videoThumbnail}
         />
       )}
