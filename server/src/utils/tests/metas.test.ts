@@ -1,4 +1,8 @@
-import { OFFER_RESPONSE_SNAPSHOT, TEST_HTML, VENUE_WITH_BANNER_RESPONSE_SNAPSHOT } from '../../../tests/constants'
+import {
+  OFFER_RESPONSE_SNAPSHOT,
+  TEST_HTML,
+  VENUE_WITH_BANNER_RESPONSE_SNAPSHOT,
+} from '../../../tests/constants'
 import { ENTITY_MAP, EntityKeys } from '../../services/entities/types'
 import { replaceHtmlMetas, addOrganizationPrefix } from '../metas'
 import { env } from '../../libs/environment/env'
