@@ -1,14 +1,24 @@
 import React from 'react'
+import { Linking } from 'react-native'
 
-import { render } from 'tests/utils'
+import { env } from 'libs/environment'
+import { fireEvent, render, screen } from 'tests/utils'
 
 import { ForceUpdate } from './ForceUpdate'
 
-export const useMustUpdateApp = jest.fn().mockReturnValue(false)
-
 describe('<ForceUpdate/>', () => {
   it('should match snapshot', async () => {
-    const renderForceUpdate = await render(<ForceUpdate resetErrorBoundary={() => null} />)
-    expect(renderForceUpdate).toMatchSnapshot()
+    await render(<ForceUpdate resetErrorBoundary={() => null} />)
+
+    expect(screen).toMatchSnapshot()
+  })
+
+  it('should open the web app when pressing "Utiliser la version web"', async () => {
+    await render(<ForceUpdate resetErrorBoundary={() => null} />)
+
+    const goToWebappButton = screen.getByText('Utiliser la version web')
+    fireEvent.press(goToWebappButton)
+
+    expect(Linking.openURL).toHaveBeenCalledWith(`https://${env.WEBAPP_V2_DOMAIN}`)
   })
 })
