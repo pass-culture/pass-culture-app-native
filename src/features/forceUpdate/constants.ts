@@ -17,9 +17,10 @@ export const TITLE = Platform.select({
 })
 
 export const DESCRIPTION = Platform.select({
-  default:
-    'Le pass Culture ne semble plus à jour sur ton téléphone\u00a0! Pour des questions de performance et de sécurité merci de télécharger la dernière version disponible.',
-  web: 'Le pass Culture de ton navigateur ne semble plus à jour\u00a0! Pour des questions de performance et de sécurité merci d’actualiser la page pour obtenir la dernière version disponible.',
+  default: `Le pass Culture ne semble plus à jour sur ton téléphone\u00a0!
+  Pour des questions de performance et de sécurité merci de télécharger la dernière version disponible.`,
+  web: `Le pass Culture de ton navigateur ne semble plus à jour\u00a0!
+  Pour des questions de performance et de sécurité merci d’actualiser la page pour obtenir la dernière version disponible.`,
 })
 
 export const BUTTON_TEXT = Platform.select({
