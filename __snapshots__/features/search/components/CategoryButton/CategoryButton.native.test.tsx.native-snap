@@ -95,10 +95,10 @@ exports[`CategoryButton should render correctly 1`] = `
       Array [
         Object {
           "backgroundColor": "#870087",
-          "paddingBottom": 16,
-          "paddingLeft": 12,
-          "paddingRight": 16,
-          "paddingTop": 12,
+          "paddingBottom": 8,
+          "paddingLeft": 8,
+          "paddingRight": 8,
+          "paddingTop": 8,
           "width": "100%",
         },
       ]

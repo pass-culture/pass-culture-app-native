@@ -1031,10 +1031,10 @@ exports[`<Search/> should render Search 1`] = `
                     Array [
                       Object {
                         "backgroundColor": "#8337E9",
-                        "paddingBottom": 16,
-                        "paddingLeft": 12,
-                        "paddingRight": 16,
-                        "paddingTop": 12,
+                        "paddingBottom": 8,
+                        "paddingLeft": 8,
+                        "paddingRight": 8,
+                        "paddingTop": 8,
                         "width": "100%",
                       },
                     ]
@@ -1165,10 +1165,10 @@ exports[`<Search/> should render Search 1`] = `
                     Array [
                       Object {
                         "backgroundColor": "#CA3F13",
-                        "paddingBottom": 16,
-                        "paddingLeft": 12,
-                        "paddingRight": 16,
-                        "paddingTop": 12,
+                        "paddingBottom": 8,
+                        "paddingLeft": 8,
+                        "paddingRight": 8,
+                        "paddingTop": 8,
                         "width": "100%",
                       },
                     ]
@@ -1312,10 +1312,10 @@ exports[`<Search/> should render Search 1`] = `
                     Array [
                       Object {
                         "backgroundColor": "#8337E9",
-                        "paddingBottom": 16,
-                        "paddingLeft": 12,
-                        "paddingRight": 16,
-                        "paddingTop": 12,
+                        "paddingBottom": 8,
+                        "paddingLeft": 8,
+                        "paddingRight": 8,
+                        "paddingTop": 8,
                         "width": "100%",
                       },
                     ]
@@ -1446,10 +1446,10 @@ exports[`<Search/> should render Search 1`] = `
                     Array [
                       Object {
                         "backgroundColor": "#0E78B7",
-                        "paddingBottom": 16,
-                        "paddingLeft": 12,
-                        "paddingRight": 16,
-                        "paddingTop": 12,
+                        "paddingBottom": 8,
+                        "paddingLeft": 8,
+                        "paddingRight": 8,
+                        "paddingTop": 8,
                         "width": "100%",
                       },
                     ]
@@ -1593,10 +1593,10 @@ exports[`<Search/> should render Search 1`] = `
                     Array [
                       Object {
                         "backgroundColor": "#B85901",
-                        "paddingBottom": 16,
-                        "paddingLeft": 12,
-                        "paddingRight": 16,
-                        "paddingTop": 12,
+                        "paddingBottom": 8,
+                        "paddingLeft": 8,
+                        "paddingRight": 8,
+                        "paddingTop": 8,
                         "width": "100%",
                       },
                     ]
@@ -1727,10 +1727,10 @@ exports[`<Search/> should render Search 1`] = `
                     Array [
                       Object {
                         "backgroundColor": "#B85901",
-                        "paddingBottom": 16,
-                        "paddingLeft": 12,
-                        "paddingRight": 16,
-                        "paddingTop": 12,
+                        "paddingBottom": 8,
+                        "paddingLeft": 8,
+                        "paddingRight": 8,
+                        "paddingTop": 8,
                         "width": "100%",
                       },
                     ]
@@ -1874,10 +1874,10 @@ exports[`<Search/> should render Search 1`] = `
                     Array [
                       Object {
                         "backgroundColor": "#0E8474",
-                        "paddingBottom": 16,
-                        "paddingLeft": 12,
-                        "paddingRight": 16,
-                        "paddingTop": 12,
+                        "paddingBottom": 8,
+                        "paddingLeft": 8,
+                        "paddingRight": 8,
+                        "paddingTop": 8,
                         "width": "100%",
                       },
                     ]
@@ -2008,10 +2008,10 @@ exports[`<Search/> should render Search 1`] = `
                     Array [
                       Object {
                         "backgroundColor": "#0E8474",
-                        "paddingBottom": 16,
-                        "paddingLeft": 12,
-                        "paddingRight": 16,
-                        "paddingTop": 12,
+                        "paddingBottom": 8,
+                        "paddingLeft": 8,
+                        "paddingRight": 8,
+                        "paddingTop": 8,
                         "width": "100%",
                       },
                     ]
@@ -2155,10 +2155,10 @@ exports[`<Search/> should render Search 1`] = `
                     Array [
                       Object {
                         "backgroundColor": "#0E78B7",
-                        "paddingBottom": 16,
-                        "paddingLeft": 12,
-                        "paddingRight": 16,
-                        "paddingTop": 12,
+                        "paddingBottom": 8,
+                        "paddingLeft": 8,
+                        "paddingRight": 8,
+                        "paddingTop": 8,
                         "width": "100%",
                       },
                     ]
@@ -2289,10 +2289,10 @@ exports[`<Search/> should render Search 1`] = `
                     Array [
                       Object {
                         "backgroundColor": "#B85901",
-                        "paddingBottom": 16,
-                        "paddingLeft": 12,
-                        "paddingRight": 16,
-                        "paddingTop": 12,
+                        "paddingBottom": 8,
+                        "paddingLeft": 8,
+                        "paddingRight": 8,
+                        "paddingTop": 8,
                         "width": "100%",
                       },
                     ]
@@ -2436,10 +2436,10 @@ exports[`<Search/> should render Search 1`] = `
                     Array [
                       Object {
                         "backgroundColor": "#C01371",
-                        "paddingBottom": 16,
-                        "paddingLeft": 12,
-                        "paddingRight": 16,
-                        "paddingTop": 12,
+                        "paddingBottom": 8,
+                        "paddingLeft": 8,
+                        "paddingRight": 8,
+                        "paddingTop": 8,
                         "width": "100%",
                       },
                     ]
@@ -2570,10 +2570,10 @@ exports[`<Search/> should render Search 1`] = `
                     Array [
                       Object {
                         "backgroundColor": "#C01371",
-                        "paddingBottom": 16,
-                        "paddingLeft": 12,
-                        "paddingRight": 16,
-                        "paddingTop": 12,
+                        "paddingBottom": 8,
+                        "paddingLeft": 8,
+                        "paddingRight": 8,
+                        "paddingTop": 8,
                         "width": "100%",
                       },
                     ]
@@ -2717,10 +2717,10 @@ exports[`<Search/> should render Search 1`] = `
                     Array [
                       Object {
                         "backgroundColor": "#0E8474",
-                        "paddingBottom": 16,
-                        "paddingLeft": 12,
-                        "paddingRight": 16,
-                        "paddingTop": 12,
+                        "paddingBottom": 8,
+                        "paddingLeft": 8,
+                        "paddingRight": 8,
+                        "paddingTop": 8,
                         "width": "100%",
                       },
                     ]
@@ -2851,10 +2851,10 @@ exports[`<Search/> should render Search 1`] = `
                     Array [
                       Object {
                         "backgroundColor": "#CA3F13",
-                        "paddingBottom": 16,
-                        "paddingLeft": 12,
-                        "paddingRight": 16,
-                        "paddingTop": 12,
+                        "paddingBottom": 8,
+                        "paddingLeft": 8,
+                        "paddingRight": 8,
+                        "paddingTop": 8,
                         "width": "100%",
                       },
                     ]
