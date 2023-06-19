@@ -187,9 +187,7 @@ describe('<ForgottenPassword />', () => {
     const recaptchaWebview = screen.getByTestId('recaptcha-webview')
     simulateWebviewMessage(recaptchaWebview, '{ "message": "success", "token": "fakeToken" }')
 
-    await waitFor(() => {
-      expect(eventMonitoring.captureMessage).not.toHaveBeenCalled()
-    })
+    expect(eventMonitoring.captureMessage).not.toHaveBeenCalled()
   })
 
   describe('email format validation', () => {

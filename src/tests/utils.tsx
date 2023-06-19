@@ -67,8 +67,8 @@ export async function superFlushWithAct(times = 50) {
   })
 }
 
-export function simulateWebviewMessage(webview: ReactTestInstance, message: string) {
-  act(() => {
+export async function simulateWebviewMessage(webview: ReactTestInstance, message: string) {
+  await act(async () => {
     webview.props.onMessage({
       nativeEvent: { data: message },
     })
