@@ -6,63 +6,71 @@ import { BookingsResponse } from 'api/gen'
 import * as bookingsAPI from 'features/bookings/api/useBookings'
 import { bookingsSnap, emptyBookingsSnap } from 'features/bookings/fixtures/bookingsSnap'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { fireEvent, render, waitFor, screen } from 'tests/utils'
+import { fireEvent, render, screen, act } from 'tests/utils'
 
 import { Bookings } from './Bookings'
 
+const useBookingsSpy = jest.spyOn(bookingsAPI, 'useBookings')
+
+useBookingsSpy.mockReturnValue({ data: bookingsSnap, isFetching: false } as QueryObserverResult<
+  BookingsResponse,
+  unknown
+>)
 describe('Bookings', () => {
-  afterEach(jest.restoreAllMocks)
-
   it('should always execute the query (in cache or in network)', async () => {
-    const useBookings = jest.spyOn(bookingsAPI, 'useBookings')
-    renderBookings(bookingsSnap)
+    renderBookings()
+    await act(async () => {})
 
-    await waitFor(() => {
-      expect(useBookings).toBeCalledTimes(1)
-    })
+    //Due to multiple renders useBookings is called twice
+    expect(useBookingsSpy).toHaveBeenCalledTimes(2)
   })
 
   it('should display the right number of ongoing bookings', async () => {
-    renderBookings(bookingsSnap)
+    renderBookings()
+    await act(async () => {})
 
-    expect(await screen.findByText('2 réservations en cours')).toBeTruthy()
+    expect(screen.getByText('2 réservations en cours')).toBeTruthy()
   })
 
   it('should display the empty bookings dedicated view', async () => {
-    renderBookings(emptyBookingsSnap)
+    // Due to multiple renders we need to mock useBookings twice
+    useBookingsSpy
+      .mockReturnValueOnce({
+        data: emptyBookingsSnap,
+        isFetching: false,
+      } as QueryObserverResult<BookingsResponse, unknown>)
+      .mockReturnValueOnce({
+        data: emptyBookingsSnap,
+        isFetching: false,
+      } as QueryObserverResult<BookingsResponse, unknown>)
+    renderBookings()
+
+    await act(async () => {})
 
     expect(await screen.findByText('Découvrir le catalogue')).toBeTruthy()
   })
 
   it('should display ended bookings CTA with the right number', async () => {
-    renderBookings(bookingsSnap)
+    renderBookings()
+    await act(async () => {})
 
-    await waitFor(() => {
-      expect(screen.queryByText('1')).toBeTruthy()
-      expect(screen.queryByText('Réservation terminée')).toBeTruthy()
-    })
+    expect(screen.queryByText('1')).toBeTruthy()
+    expect(screen.queryByText('Réservation terminée')).toBeTruthy()
   })
 
   it('should navigate to ended bookings page on press ended bookings CTA', async () => {
-    renderBookings(bookingsSnap)
+    renderBookings()
 
     const cta = screen.getByText('Réservation terminée')
-    fireEvent.press(cta)
-
-    await waitFor(() => {
-      expect(navigate).toBeCalledWith('EndedBookings', undefined)
+    await act(async () => {
+      fireEvent.press(cta)
     })
+
+    expect(navigate).toBeCalledWith('EndedBookings', undefined)
   })
 })
 
-const renderBookings = (bookings: BookingsResponse) => {
-  jest
-    .spyOn(bookingsAPI, 'useBookings')
-    .mockReturnValue({ data: bookings, isFetching: false } as QueryObserverResult<
-      BookingsResponse,
-      unknown
-    >)
-
+const renderBookings = () => {
   // eslint-disable-next-line local-rules/no-react-query-provider-hoc
   return render(reactQueryProviderHOC(<Bookings />))
 }
