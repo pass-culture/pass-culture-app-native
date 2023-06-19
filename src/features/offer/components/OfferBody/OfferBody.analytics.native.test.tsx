@@ -22,9 +22,9 @@ const canOpenURLSpy = jest.spyOn(Linking, 'canOpenURL')
 
 jest.mock('features/auth/context/AuthContext')
 
-const mockUseOffer = jest.fn().mockImplementation(() => ({
+const mockUseOffer = jest.fn().mockReturnValue({
   data: offerResponseSnap,
-}))
+})
 
 jest.mock('features/offer/api/useOffer', () => ({
   useOffer: () => mockUseOffer(),
@@ -56,24 +56,22 @@ const offerVenues = [
     price: 1000,
   },
 ]
-const mockHasNextPage = true
-const mockFetchNextPage = jest.fn()
-const mockData = {
-  pages: [
-    {
-      nbHits: 0,
-      hits: [],
-      page: 0,
-    },
-  ],
-}
+
 let mockVenueList: VenueListItem[] = []
 let mockNbVenueItems = 0
 jest.mock('api/useSearchVenuesOffer/useSearchVenueOffers', () => ({
   useSearchVenueOffers: () => ({
-    hasNextPage: mockHasNextPage,
-    fetchNextPage: mockFetchNextPage,
-    data: mockData,
+    hasNextPage: true,
+    fetchNextPage: jest.fn(),
+    data: {
+      pages: [
+        {
+          nbHits: 0,
+          hits: [],
+          page: 0,
+        },
+      ],
+    },
     venueList: mockVenueList,
     nbVenueItems: mockNbVenueItems,
     isFetching: false,
@@ -215,7 +213,7 @@ describe('<OfferBody /> - Analytics', () => {
 
   describe('When wipEnableMultivenueOffer feature flag activated', () => {
     beforeEach(() => {
-      mockUseOffer.mockImplementation(() => ({
+      mockUseOffer.mockReturnValue({
         data: {
           ...offerResponseSnap,
           subcategoryId: SubcategoryIdEnum.LIVRE_PAPIER,
@@ -223,9 +221,12 @@ describe('<OfferBody /> - Analytics', () => {
             ean: '2765410054',
           },
         },
-      }))
-      useFeatureFlagSpy.mockImplementation(() => true)
+      })
+      useFeatureFlagSpy.mockReturnValue(true)
     })
+
+    afterEach(jest.restoreAllMocks)
+
     it('should log when the users press the change venue modal', async () => {
       mockNbVenueItems = 2
       mockVenueList = offerVenues
