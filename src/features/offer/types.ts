@@ -22,6 +22,7 @@ export interface OfferTileProps {
   width: number
   height: number
   fromOfferId?: number
+  fromMultivenueOfferId?: number
   shouldUseAlgoliaRecommend?: boolean
   playlistType?: PlaylistType
 }

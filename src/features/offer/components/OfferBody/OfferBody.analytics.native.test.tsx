@@ -2,7 +2,9 @@ import React from 'react'
 import { Linking } from 'react-native'
 import { ReactTestInstance } from 'react-test-renderer'
 
+import { SubcategoryIdEnum } from 'api/gen'
 import { OfferBody } from 'features/offer/components/OfferBody/OfferBody'
+import { VenueListItem } from 'features/offer/components/VenueSelectionList/VenueSelectionList'
 import { offerResponseSnap } from 'features/offer/fixtures/offerResponse'
 import { offerId } from 'features/offer/helpers/renderOfferPageTestUtil'
 import {
@@ -10,6 +12,7 @@ import {
   moreHitsForSimilarOffersPlaylist,
 } from 'libs/algolia/__mocks__/mockedAlgoliaResponse'
 import { analytics } from 'libs/analytics'
+import * as useFeatureFlag from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { Offer } from 'shared/offer/types'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, fireEvent, render, screen } from 'tests/utils'
@@ -19,7 +22,61 @@ const canOpenURLSpy = jest.spyOn(Linking, 'canOpenURL')
 
 jest.mock('features/auth/context/AuthContext')
 
+const mockUseOffer = jest.fn().mockReturnValue({
+  data: offerResponseSnap,
+})
+
+jest.mock('features/offer/api/useOffer', () => ({
+  useOffer: () => mockUseOffer(),
+}))
+
+const useFeatureFlagSpy = jest.spyOn(useFeatureFlag, 'useFeatureFlag').mockReturnValue(false)
+
 const mockSearchHits: Offer[] = [...mockedAlgoliaResponse.hits, ...moreHitsForSimilarOffersPlaylist]
+const offerVenues = [
+  {
+    title: 'Envie de lire',
+    address: '94200 Ivry-sur-Seine, 16 rue Gabriel Peri',
+    distance: '500 m',
+    offerId: 1,
+    price: 1000,
+  },
+  {
+    title: 'Le Livre Éclaire',
+    address: '75013 Paris, 56 rue de Tolbiac',
+    distance: '1,5 km',
+    offerId: 2,
+    price: 1000,
+  },
+  {
+    title: 'Hachette Livre',
+    address: '94200 Ivry-sur-Seine, Rue Charles du Colomb',
+    distance: '2,4 km',
+    offerId: 3,
+    price: 1000,
+  },
+]
+
+let mockVenueList: VenueListItem[] = []
+let mockNbVenueItems = 0
+jest.mock('api/useSearchVenuesOffer/useSearchVenueOffers', () => ({
+  useSearchVenueOffers: () => ({
+    hasNextPage: true,
+    fetchNextPage: jest.fn(),
+    data: {
+      pages: [
+        {
+          nbHits: 0,
+          hits: [],
+          page: 0,
+        },
+      ],
+    },
+    venueList: mockVenueList,
+    nbVenueItems: mockNbVenueItems,
+    isFetching: false,
+  }),
+}))
 
 describe('<OfferBody /> - Analytics', () => {
   beforeAll(() => {
@@ -151,6 +208,35 @@ describe('<OfferBody /> - Analytics', () => {
     expect(analytics.logConsultItinerary).toBeCalledWith({
       offerId: offerResponseSnap.id,
       from: 'offer',
+    })
+  })
+
+  describe('When wipEnableMultivenueOffer feature flag activated', () => {
+    beforeEach(() => {
+      mockUseOffer.mockReturnValue({
+        data: {
+          ...offerResponseSnap,
+          subcategoryId: SubcategoryIdEnum.LIVRE_PAPIER,
+          extraData: {
+            ean: '2765410054',
+          },
+        },
+      })
+      useFeatureFlagSpy.mockReturnValue(true)
+    })
+
+    afterEach(jest.restoreAllMocks)
+
+    it('should log when the users press the change venue modal', async () => {
+      mockNbVenueItems = 2
+      mockVenueList = offerVenues
+
+      renderOfferBodyForAnalytics()
+      await screen.findByTestId('offer-container')
+
+      fireEvent.press(screen.getByText('Voir d’autres lieux disponibles'))
+
+      expect(analytics.logMultivenueOptionDisplayed).toBeCalledWith(offerResponseSnap.id)
     })
   })
 })
