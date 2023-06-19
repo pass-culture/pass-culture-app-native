@@ -4,4 +4,5 @@ This file was created in order to be able to trigger the deploy-web-proxy-testin
 
 Those workflows need a modification in the server folder.
 
-By modifying this file you will be able to trigger those worflows.
+Modify next line to trigger those worflows :
+Trigger
