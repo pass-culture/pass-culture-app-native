@@ -1,5 +1,4 @@
 import React, { FunctionComponent, useEffect, useState, useCallback, useMemo } from 'react'
-import styled from 'styled-components/native'
 import { v4 as uuidv4 } from 'uuid'
 
 import { useSettingsContext } from 'features/auth/context/SettingsContext'
@@ -11,11 +10,12 @@ import { captureMonitoringError } from 'libs/monitoring'
 import { useNetInfoContext } from 'libs/network/NetInfoWrapper'
 import { ReCaptcha } from 'libs/recaptcha/ReCaptcha'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
-import { ButtonTertiaryPrimary } from 'ui/components/buttons/ButtonTertiaryPrimary'
-import { ExternalLink } from 'ui/components/buttons/externalLink/ExternalLink'
+import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
 import { InputError } from 'ui/components/inputs/InputError'
+import { Separator } from 'ui/components/Separator'
 import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouchableLink'
-import { Email } from 'ui/svg/icons/Email'
+import { EmailFilled } from 'ui/svg/icons/EmailFilled'
+import { ExternalSiteFilled } from 'ui/svg/icons/ExternalSiteFilled'
 import { Spacer, Typo } from 'ui/theme'
 
 export const AcceptCguV2: FunctionComponent<PreValidationSignupLastStepProps> = ({ signUp }) => {
@@ -104,64 +104,60 @@ export const AcceptCguV2: FunctionComponent<PreValidationSignupLastStepProps> = 
           isVisible={isDoingReCaptchaChallenge}
         />
       )}
-      <CardContent>
-        <Typo.Title3>Crée-toi un compte</Typo.Title3>
-        <Spacer.Column numberOfSpaces={6} />
-        <Paragraphe>
-          <Typo.Body>En cliquant sur “Accepter et s’inscrire”, tu acceptes nos </Typo.Body>
-          <ExternalLink text="Conditions Générales d’Utilisation" url={env.CGU_LINK} primary />
-          <Spacer.Row numberOfSpaces={1} />
-          <Typo.Body> ainsi que notre </Typo.Body>
-          <ExternalLink
-            text="Politique de confidentialité."
-            primary
-            url={env.PRIVACY_POLICY_LINK}
-          />
-        </Paragraphe>
-        <Spacer.Column numberOfSpaces={5} />
-        <Paragraphe>
-          <Typo.Body>
-            Pour en savoir plus sur la gestion de tes données personnelles et exercer tes droits tu
-            peux&nbsp;:
-          </Typo.Body>
-        </Paragraphe>
-        <ExternalTouchableLink
-          as={ButtonTertiaryPrimary}
-          wording="Contacter le support"
-          accessibilityLabel="Ouvrir le gestionnaire mail pour contacter le support"
-          externalNav={contactSupport.forGenericQuestion}
-          icon={Email}
-        />
-        <Spacer.Column numberOfSpaces={6} />
-        <ButtonPrimary
-          wording="Accepter et s’inscrire"
-          accessibilityLabel="Accepter les conditions générales d’utilisation et la politique de confidentialité pour s’inscrire"
-          // Token needs to be a non-empty string even when ReCaptcha validation is deactivated
-          // Cf. backend logic for token validation
-          onPress={onSubmit}
-          isLoading={isDoingReCaptchaChallenge || isFetching}
-          disabled={disabled}
-          accessibilityDescribedBy={checkCGUErrorId}
-        />
-        <InputError
-          visible={!!errorMessage}
-          messageId={errorMessage}
-          numberOfSpacesTop={5}
-          relatedInputId={checkCGUErrorId}
-        />
-        <Spacer.Column numberOfSpaces={5} />
-      </CardContent>
+      <Typo.Title3>CGU & Données</Typo.Title3>
+      <Spacer.Column numberOfSpaces={10} />
+      <Typo.Body>En cliquant sur “Accepter et s’inscrire”, tu acceptes&nbsp;: </Typo.Body>
+      <Spacer.Column numberOfSpaces={2} />
+      <ExternalTouchableLink
+        as={ButtonTertiaryBlack}
+        wording="Nos conditions générales d’utilisation"
+        externalNav={{ url: env.CGU_LINK }}
+        icon={ExternalSiteFilled}
+        justifyContent="flex-start"
+        numberOfLines={2}
+      />
+      <ExternalTouchableLink
+        as={ButtonTertiaryBlack}
+        wording="Notre politique de confidentialité"
+        externalNav={{ url: env.PRIVACY_POLICY_LINK }}
+        icon={ExternalSiteFilled}
+        justifyContent="flex-start"
+        numberOfLines={2}
+      />
+      <Spacer.Column numberOfSpaces={6} />
+      <Separator />
+      <Spacer.Column numberOfSpaces={8} />
+      <Typo.Body>
+        Pour en savoir plus sur la gestion de tes données personnelles et exercer tes droits tu
+        peux&nbsp;:
+      </Typo.Body>
+      <Spacer.Column numberOfSpaces={2} />
+      <ExternalTouchableLink
+        as={ButtonTertiaryBlack}
+        wording="Contacter le support"
+        accessibilityLabel="Ouvrir le gestionnaire mail pour contacter le support"
+        externalNav={contactSupport.forGenericQuestion}
+        icon={EmailFilled}
+        justifyContent="flex-start"
+      />
+      <Spacer.Column numberOfSpaces={10} />
+      <ButtonPrimary
+        wording="Accepter et s’inscrire"
+        accessibilityLabel="Accepter les conditions générales d’utilisation et la politique de confidentialité pour s’inscrire"
+        // Token needs to be a non-empty string even when ReCaptcha validation is deactivated
+        // Cf. backend logic for token validation
+        onPress={onSubmit}
+        isLoading={isDoingReCaptchaChallenge || isFetching}
+        disabled={disabled}
+        accessibilityDescribedBy={checkCGUErrorId}
+      />
+      <InputError
+        visible={!!errorMessage}
+        messageId={errorMessage}
+        numberOfSpacesTop={5}
+        relatedInputId={checkCGUErrorId}
+      />
+      <Spacer.Column numberOfSpaces={5} />
     </React.Fragment>
   )
 }
-
-const CardContent = styled.View({
-  width: '100%',
-  alignItems: 'center',
-})
-
-const Paragraphe = styled(Typo.Body)({
-  flexWrap: 'wrap',
-  flexShrink: 1,
-  textAlign: 'center',
-})
