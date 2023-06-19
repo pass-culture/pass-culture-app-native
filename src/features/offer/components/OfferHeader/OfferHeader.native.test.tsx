@@ -79,16 +79,16 @@ describe('<OfferHeader />', () => {
 
   it('should render all the icons', async () => {
     renderOfferHeader()
+    await act(async () => {})
 
-    await waitFor(() => {
-      expect(screen.queryByTestId('animated-icon-back')).toBeTruthy()
-      expect(screen.queryByTestId('animated-icon-share')).toBeTruthy()
-      expect(screen.queryByTestId('animated-icon-favorite')).toBeTruthy()
-    })
+    expect(screen.queryByTestId('animated-icon-back')).toBeTruthy()
+    expect(screen.queryByTestId('animated-icon-share')).toBeTruthy()
+    expect(screen.queryByTestId('animated-icon-favorite')).toBeTruthy()
   })
 
   it('should goBack when we press on the back button', async () => {
     renderOfferHeader()
+    await act(async () => {})
 
     fireEvent.press(await screen.findByTestId('animated-icon-back'))
 
@@ -120,11 +120,11 @@ describe('<OfferHeader />', () => {
     })
     renderOfferHeader()
 
-    fireEvent.press(screen.getByTestId('animated-icon-favorite'))
-
-    await waitFor(() => {
-      expect(screen.queryByText('Identifie-toi pour retrouver tes favoris')).toBeTruthy()
+    await act(async () => {
+      fireEvent.press(screen.getByTestId('animated-icon-favorite'))
     })
+
+    expect(screen.queryByText('Identifie-toi pour retrouver tes favoris')).toBeTruthy()
   })
 
   it('should show a favorite filled icon when viewing a offer in favorite - logged in users', async () => {
@@ -181,11 +181,11 @@ describe('<OfferHeader />', () => {
     const favoriteOfferId = 146193
     renderOfferHeader({ id: favoriteOfferId })
 
-    fireEvent.press(screen.getByTestId('animated-icon-favorite'))
-
-    await waitFor(() => {
-      expect(screen.queryByText('Crée une liste de favoris !')).toBeNull()
+    await act(async () => {
+      fireEvent.press(screen.getByTestId('animated-icon-favorite'))
     })
+
+    expect(screen.queryByText('Crée une liste de favoris !')).toBeNull()
   })
 
   it('should track the user has seen favorite list modal when pressing favorite icon', async () => {
@@ -205,12 +205,12 @@ describe('<OfferHeader />', () => {
       hasRemoveFavoriteError: true,
     })
 
-    await waitFor(async () => {
+    await act(async () => {
       fireEvent.press(await screen.findByTestId('animated-icon-favorite-filled'))
-      expect(showErrorSnackBar).toHaveBeenCalledWith({
-        message: 'L’offre n’a pas été retirée de tes favoris',
-        timeout: SNACK_BAR_TIME_OUT,
-      })
+    })
+    expect(showErrorSnackBar).toHaveBeenCalledWith({
+      message: 'L’offre n’a pas été retirée de tes favoris',
+      timeout: SNACK_BAR_TIME_OUT,
     })
   })
 
@@ -286,14 +286,14 @@ describe('<OfferHeader />', () => {
     renderOfferHeader()
 
     const shareButton = screen.getByLabelText('Partager')
-    fireEvent.press(shareButton)
+    await act(async () => {
+      fireEvent.press(shareButton)
+    })
 
-    await waitFor(() => {
-      expect(analytics.logShare).toHaveBeenNthCalledWith(1, {
-        type: 'Offer',
-        from: 'offer',
-        id: offerId,
-      })
+    expect(analytics.logShare).toHaveBeenNthCalledWith(1, {
+      type: 'Offer',
+      from: 'offer',
+      id: offerId,
     })
   })
 
@@ -302,27 +302,27 @@ describe('<OfferHeader />', () => {
     renderOfferHeader()
 
     const favButton = screen.getByTestId('animated-icon-favorite')
-    fireEvent.press(favButton)
-
-    await waitFor(() => {
-      expect(screen.queryByText('Crée une liste de favoris !')).toBeNull()
+    await act(async () => {
+      fireEvent.press(favButton)
     })
+
+    expect(screen.queryByText('Crée une liste de favoris !')).toBeNull()
   })
 
   it('should enable the favorites button when is not loading', async () => {
     renderOfferHeader()
-    await waitFor(() => {
-      expect(screen.getByLabelText('Mettre en favoris')).not.toBeDisabled()
-    })
+    await act(async () => {})
+
+    expect(screen.getByLabelText('Mettre en favoris')).not.toBeDisabled()
   })
 
   it('should disabled the favorites button when is loading', async () => {
     mockUseAddFavorite()
     mockUseRemoveFavorite()
     renderOfferHeader()
-    await waitFor(() => {
-      expect(screen.getByLabelText('Mettre en favoris')).toBeDisabled()
-    })
+    await act(async () => {})
+
+    expect(screen.getByLabelText('Mettre en favoris')).toBeDisabled()
   })
 })
 

@@ -8,7 +8,7 @@ import { ConsentSettings } from 'features/profile/pages/ConsentSettings/ConsentS
 import { analytics } from 'libs/analytics'
 import { storage } from 'libs/storage'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { fireEvent, render, screen, waitFor } from 'tests/utils'
+import { act, fireEvent, render, screen, waitFor } from 'tests/utils'
 import { SNACK_BAR_TIME_OUT } from 'ui/components/snackBar/SnackBarContext'
 import { SnackBarHelperSettings } from 'ui/components/snackBar/types'
 
@@ -69,57 +69,61 @@ describe('<ConsentSettings/>', () => {
     const { getByText } = renderConsentSettings()
 
     const saveChoice = getByText('Enregistrer mes choix')
-    fireEvent.press(saveChoice)
-
-    await waitFor(() => {
-      expect(mockStartTrackingAcceptedCookies).toHaveBeenCalledWith([])
+    await act(async () => {
+      fireEvent.press(saveChoice)
     })
+
+    expect(mockStartTrackingAcceptedCookies).toHaveBeenCalledWith([])
   })
 
   it('should call startTrackingAcceptedCookies with cookies performance if user accepts performance cookies', async () => {
     const { getByTestId, getByText } = renderConsentSettings()
 
     const performanceSwitch = getByTestId('Interrupteur Enregistrer des statistiques de navigation')
-    fireEvent.press(performanceSwitch)
+    await act(async () => {
+      fireEvent.press(performanceSwitch)
+    })
 
     const saveChoice = getByText('Enregistrer mes choix')
-    fireEvent.press(saveChoice)
-
-    await waitFor(() => {
-      expect(mockStartTrackingAcceptedCookies).toHaveBeenCalledWith(COOKIES_BY_CATEGORY.performance)
+    await act(async () => {
+      fireEvent.press(saveChoice)
     })
+
+    expect(mockStartTrackingAcceptedCookies).toHaveBeenCalledWith(COOKIES_BY_CATEGORY.performance)
   })
 
   it('should log analytics if performance cookies are accepted', async () => {
     const { getByText, getByTestId } = renderConsentSettings()
 
     const performanceSwitch = getByTestId('Interrupteur Enregistrer des statistiques de navigation')
-    fireEvent.press(performanceSwitch)
+    await act(async () => {
+      fireEvent.press(performanceSwitch)
+    })
 
     const saveChoice = getByText('Enregistrer mes choix')
-    fireEvent.press(saveChoice)
+    await act(async () => {
+      fireEvent.press(saveChoice)
+    })
 
-    await waitFor(() =>
-      expect(analytics.logHasMadeAChoiceForCookies).toHaveBeenCalledWith({
-        from: 'ConsentSettings',
-        type: { performance: true, customization: false, marketing: false },
-      })
-    )
+    expect(analytics.logHasMadeAChoiceForCookies).toHaveBeenCalledWith({
+      from: 'ConsentSettings',
+      type: { performance: true, customization: false, marketing: false },
+    })
   })
 
   it('should show snackbar and navigate to home on save', async () => {
     const { getByText } = renderConsentSettings()
 
     const saveChoice = getByText('Enregistrer mes choix')
-    fireEvent.press(saveChoice)
-
-    await waitFor(() => {
-      expect(mockShowSuccessSnackBar).toBeCalledWith({
-        message: 'Ton choix a bien été enregistré.',
-        timeout: SNACK_BAR_TIME_OUT,
-      })
-      expect(mockNavigate).toBeCalledWith('TabNavigator', { screen: 'Profile' })
+    await act(async () => {
+      fireEvent.press(saveChoice)
     })
+
+    expect(mockShowSuccessSnackBar).toBeCalledWith({
+      message: 'Ton choix a bien été enregistré.',
+      timeout: SNACK_BAR_TIME_OUT,
+    })
+    expect(mockNavigate).toBeCalledWith('TabNavigator', { screen: 'Profile' })
   })
 })
 
