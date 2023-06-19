@@ -1,26 +1,24 @@
 import * as React from 'react'
 import { Path, G, Defs, LinearGradient, Stop, ClipPath, Rect } from 'react-native-svg'
-import styled from 'styled-components/native'
 
 import { AccessibleSvg } from 'ui/svg/AccessibleSvg'
 
 import { AccessibleIcon } from '../types'
 
-const ArtsCraftsSvg: React.FunctionComponent<AccessibleIcon> = ({
-  size,
+export const ArtsCrafts: React.FunctionComponent<AccessibleIcon> = ({
   accessibilityLabel,
   testID,
 }) => {
   return (
     <AccessibleSvg
-      width={size}
-      height={size}
-      viewBox="0 0 269 112"
-      accessibilityLabel={accessibilityLabel}
+      width={156}
+      height={92}
+      viewBox="0 0 156 92"
       fill="none"
+      accessibilityLabel={accessibilityLabel}
       testID={testID}>
-      <G clipPath="url(#clip0_1909_684)">
-        <G filter="url(#filter0_d_1909_684)">
+      <G clipPath="url(#clip0_1981_1382)">
+        <G filter="url(#filter0_d_1981_1382)">
           <Path
             d="M35.3787 70.906C35.58 73.4985 33.1801 75.7238 30.0187 75.8701C26.8574 76.0163 24.133 74.0288 23.9317 71.4363C23.7303 68.8438 26.1303 66.6185 29.2916 66.4722C32.4476 66.3274 35.1759 68.3082 35.3787 70.906Z"
             fill="#AD87FF"
@@ -28,7 +26,7 @@ const ArtsCraftsSvg: React.FunctionComponent<AccessibleIcon> = ({
         </G>
         <Path
           d="M22.969 18.9856C1.93155 24.5004 -11.5904 42.4391 -7.23519 59.053C-2.87996 75.6668 17.7034 84.6649 38.7408 79.1501C39.2256 79.023 39.7037 78.892 40.179 78.7505C43.0442 77.9092 44.8077 74.8411 44.2284 71.6539C44.1904 71.4439 44.1577 71.2325 44.1251 71.0211C43.1212 64.0421 46.7117 57.2802 52.7436 54.836C55.8413 53.5783 59.0653 53.5623 61.9964 54.5142C65.3747 55.6083 68.8033 53.3108 69.4078 49.6441C69.9831 46.1486 69.8637 42.587 68.945 39.0827C64.5898 22.4689 44.0065 13.4707 22.969 18.9856ZM36.0287 69.043C36.23 71.6355 33.8301 73.8609 30.6687 74.0071C27.5074 74.1534 24.783 72.1659 24.5817 69.5734C24.3803 66.9809 26.7803 64.7555 29.9416 64.6093C33.103 64.463 35.8259 66.4453 36.0287 69.043Z"
-          fill="url(#paint0_linear_1909_684)"
+          fill="url(#paint0_linear_1981_1382)"
         />
         <Path
           d="M54.4713 30.5655C54.546 31.8714 53.3074 33.64 51.4701 33.755C49.6328 33.8701 48.8055 32.7558 48.7308 31.45C48.6561 30.1441 47.7926 28.0015 49.6299 27.8865C51.4605 27.7676 54.3966 29.2597 54.4713 30.5655Z"
@@ -49,7 +47,7 @@ const ArtsCraftsSvg: React.FunctionComponent<AccessibleIcon> = ({
       </G>
       <Defs>
         <LinearGradient
-          id="paint0_linear_1909_684"
+          id="paint0_linear_1981_1382"
           x1={-21.499}
           y1={116.5}
           x2={49.1465}
@@ -58,14 +56,10 @@ const ArtsCraftsSvg: React.FunctionComponent<AccessibleIcon> = ({
           <Stop offset={0.158429} stopColor="#EAE3FF" />
           <Stop offset={1} stopColor="white" />
         </LinearGradient>
-        <ClipPath id="clip0_1909_684">
-          <Rect width={268.5} height={112} fill="white" />
+        <ClipPath id="clip0_1981_1382">
+          <Rect width={156} height={92} fill="white" />
         </ClipPath>
       </Defs>
     </AccessibleSvg>
   )
 }
-
-export const ArtsCrafts = styled(ArtsCraftsSvg).attrs(({ size, theme }) => ({
-  size: size ?? theme.illustrations.sizes.medium,
-}))``

@@ -1,39 +1,34 @@
 import * as React from 'react'
 import { Path, G, Defs, LinearGradient, Stop, ClipPath, Rect } from 'react-native-svg'
-import styled from 'styled-components/native'
 
 import { AccessibleSvg } from 'ui/svg/AccessibleSvg'
 
 import { AccessibleIcon } from '../types'
 
-const BooksMediaPressSvg: React.FunctionComponent<AccessibleIcon> = ({
-  size,
-  accessibilityLabel,
-  testID,
-}) => {
+export const Books: React.FunctionComponent<AccessibleIcon> = ({ accessibilityLabel, testID }) => {
   return (
     <AccessibleSvg
-      width={size}
-      height={size}
-      viewBox="0 0 269 112"
-      accessibilityLabel={accessibilityLabel}
+      width={156}
+      height={92}
+      viewBox="0 0 156 92"
       fill="none"
+      accessibilityLabel={accessibilityLabel}
       testID={testID}>
-      <G clipPath="url(#clip0_1909_586)">
-        <G filter="url(#filter0_d_1909_586)">
+      <G clipPath="url(#clip0_1981_1399)">
+        <G filter="url(#filter0_d_1981_1399)">
           <Path
             d="M42.0404 90.3991L-0.465391 81.6231L-3.57964 77.3808L8.91945 24.0393C9.19246 22.7169 10.6004 21.8868 12.0654 22.1892L54.3221 30.9138C55.7871 31.2163 56.7511 32.5362 56.4781 33.8585L45.1864 88.5491C44.9123 89.8765 43.5054 90.7016 42.0404 90.3991Z"
-            fill="url(#paint0_linear_1909_586)"
+            fill="url(#paint0_linear_1981_1399)"
           />
         </G>
         <Path
           d="M40.2446 88.7072L-0.173235 80.3623L-1.39528 78.6313L11.7156 22.7797L53.526 31.3753L54.7481 33.1063L43.6981 86.626C43.3878 88.1037 41.8442 89.0375 40.2446 88.7072Z"
           fill="#FF98BD"
         />
-        <G filter="url(#filter1_d_1909_586)">
+        <G filter="url(#filter1_d_1981_1399)">
           <Path
             d="M39.355 87.0493L-1.98968 78.5131C-3.35006 78.2322 -4.21605 76.8905 -3.93261 75.5176L7.22259 21.4882C7.50603 20.1154 8.83759 19.2274 10.193 19.5072L51.5377 28.0435C52.8981 28.3243 53.7641 29.6661 53.4806 31.0389L42.3265 85.0633C42.047 86.4422 40.7154 87.3302 39.355 87.0493Z"
-            fill="url(#paint1_linear_1909_586)"
+            fill="url(#paint1_linear_1981_1399)"
           />
         </G>
         <Path
@@ -52,7 +47,7 @@ const BooksMediaPressSvg: React.FunctionComponent<AccessibleIcon> = ({
       </G>
       <Defs>
         <LinearGradient
-          id="paint0_linear_1909_586"
+          id="paint0_linear_1981_1399"
           x1={19.434}
           y1={63.3603}
           x2={59.7232}
@@ -62,7 +57,7 @@ const BooksMediaPressSvg: React.FunctionComponent<AccessibleIcon> = ({
           <Stop offset={1} stopColor="white" />
         </LinearGradient>
         <LinearGradient
-          id="paint1_linear_1909_586"
+          id="paint1_linear_1981_1399"
           x1={-18.9995}
           y1={76.1733}
           x2={51.4691}
@@ -71,14 +66,10 @@ const BooksMediaPressSvg: React.FunctionComponent<AccessibleIcon> = ({
           <Stop stopColor="#FFD7E9" />
           <Stop offset={1} stopColor="white" />
         </LinearGradient>
-        <ClipPath id="clip0_1909_586">
-          <Rect width={268.5} height={112} fill="white" />
+        <ClipPath id="clip0_1981_1399">
+          <Rect width={156} height={92} fill="white" />
         </ClipPath>
       </Defs>
     </AccessibleSvg>
   )
 }
-
-export const BooksMediaPress = styled(BooksMediaPressSvg).attrs(({ size, theme }) => ({
-  size: size ?? theme.illustrations.sizes.medium,
-}))``

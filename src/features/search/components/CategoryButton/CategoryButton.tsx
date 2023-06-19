@@ -1,67 +1,79 @@
-import React, { FunctionComponent, useMemo } from 'react'
-import styled from 'styled-components/native'
+import React, { FunctionComponent } from 'react'
+import LinearGradient from 'react-native-linear-gradient'
+import styled, { useTheme } from 'styled-components/native'
 
+import { Gradient } from 'features/search/enums'
 import { styledButton } from 'ui/components/buttons/styledButton'
 import { Touchable } from 'ui/components/touchable/Touchable'
-import { IconInterface } from 'ui/svg/icons/types'
+import { AccessibleIcon } from 'ui/svg/icons/types'
 import { getSpacing, Typo } from 'ui/theme'
 
 export type CategoryButtonProps = {
   label: string
-  Icon: FunctionComponent<IconInterface>
-  color?: string
+  Illustration?: FunctionComponent<AccessibleIcon>
+  baseColor?: string
+  gradients: Gradient[]
   onPress: () => void
   children?: never
 }
 
 export const CategoryButton: FunctionComponent<CategoryButtonProps> = ({
   label,
-  Icon,
-  color,
+  Illustration,
+  baseColor,
+  gradients,
   onPress,
 }) => {
-  const StyledIcon = useMemo(
-    () =>
-      styled(Icon).attrs(({ theme }) => ({
-        size: theme.icons.sizes.small,
-        color: color ? theme.colors.black : theme.colors.primary,
-        color2: color ? undefined : theme.colors.secondary,
-      }))({}),
-    [Icon, color]
-  )
+  const theme = useTheme()
 
   return (
     <TouchableContainer
-      borderLeftColor={color}
       onPress={onPress}
-      accessibilityLabel={`Catégorie ${label}`}>
-      <StyledIcon />
-      <Label>{label}</Label>
+      accessibilityLabel={`Catégorie ${label}`}
+      hoverUnderlineColor={theme.colors.white}>
+      <IllustrationContainer>
+        <StyledLinearGradient colors={[gradients[0].color, gradients[1].color]}>
+          {!!Illustration && (
+            <IllustrationWrapper>
+              <Illustration />
+            </IllustrationWrapper>
+          )}
+        </StyledLinearGradient>
+      </IllustrationContainer>
+      <LabelContainer baseColor={baseColor}>
+        <Label>{label}</Label>
+      </LabelContainer>
     </TouchableContainer>
   )
 }
 
-const TouchableContainer = styledButton(Touchable)<{ borderLeftColor?: string }>(
-  ({ theme, borderLeftColor }) => ({
-    flexDirection: 'row',
-    alignItems: 'center',
-    height: getSpacing(18),
-    borderRadius: getSpacing(1),
-    borderTopColor: theme.colors.greySemiDark,
-    borderBottomColor: theme.colors.greySemiDark,
-    borderRightColor: theme.colors.greySemiDark,
-    borderLeftColor: borderLeftColor ?? theme.colors.greySemiDark,
-    borderTopWidth: getSpacing(0.25),
-    borderBottomWidth: getSpacing(0.25),
-    borderRightWidth: getSpacing(0.25),
-    borderLeftWidth: getSpacing(borderLeftColor ? 1 : 0.25),
-    paddingLeft: getSpacing(theme.isMobileViewport ? 2 : 3),
-    paddingRight: getSpacing(theme.isMobileViewport ? 2 : 3),
-  })
-)
+const TouchableContainer = styledButton(Touchable)(({ theme }) => ({
+  height: getSpacing(39),
+  overflow: 'hidden',
+  borderRadius: theme.borderRadius.radius,
+}))
 
-const Label = styled(Typo.Caption)({
+const IllustrationContainer = styled.View({
   flex: 1,
-  marginLeft: getSpacing(2),
-  textAlign: 'left',
+  overflow: 'hidden',
+  width: '100%',
 })
+
+const IllustrationWrapper = styled.View({
+  position: 'absolute',
+})
+
+const StyledLinearGradient = styled(LinearGradient)({
+  flex: 1,
+})
+
+const LabelContainer = styled.View<{ baseColor?: string }>(({ baseColor, theme }) => ({
+  padding: theme.isMobileViewport ? getSpacing(2) : getSpacing(3),
+  width: '100%',
+  backgroundColor: baseColor,
+}))
+
+const Label = styled(Typo.ButtonText)(({ theme }) => ({
+  textAlign: 'left',
+  color: theme.colors.white,
+}))

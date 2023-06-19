@@ -3,8 +3,8 @@ import { ComponentStory, ComponentMeta } from '@storybook/react'
 import React from 'react'
 import styled from 'styled-components/native'
 
+import { SearchCategoriesIllustrations } from 'features/internal/cheatcodes/pages/AppComponents/illustrationsExports'
 import { theme } from 'theme'
-import { categoriesIcons } from 'ui/svg/icons/bicolor/exports/categoriesIcons'
 import { getSpacing } from 'ui/theme'
 
 import { CategoriesButtonsDisplay } from './CategoriesButtonsDisplay'
@@ -27,28 +27,53 @@ Default.args = {
   sortedCategories: [
     {
       label: 'Bibliothèque, médiathèque',
-      Icon: categoriesIcons.VideoGame,
+      Illustration: SearchCategoriesIllustrations.LibrariesMediaLibraries,
       onPress: action('Jeux'),
+      baseColor: theme.colors.coral,
+      gradients: [
+        { color: '#F8733D', position: { x: 0, y: 0 } },
+        { color: theme.colors.coral, position: { x: 0, y: 0.5 } },
+      ],
     },
     {
       label: 'CD, vinyles, musique en ligne',
-      Icon: categoriesIcons.Music,
+      Illustration: SearchCategoriesIllustrations.CDVinylsOnlineMusic,
       onPress: action('Musique'),
+      baseColor: theme.colors.skyBlue,
+      gradients: [
+        { color: '#20C5E9', position: { x: 0, y: 0 } },
+        { color: theme.colors.skyBlue, position: { x: 0, y: 0.5 } },
+      ],
     },
     {
       label: 'Cinéma',
-      Icon: categoriesIcons.Cinema,
+      Illustration: SearchCategoriesIllustrations.FilmsSeriesCinema,
       onPress: action('Cinéma'),
+      baseColor: theme.colors.aquamarine,
+      gradients: [
+        { color: '#27DCA8', position: { x: 0, y: 0 } },
+        { color: theme.colors.aquamarine, position: { x: 0, y: 0.5 } },
+      ],
     },
     {
       label: 'Conférences, rencontres',
-      Icon: categoriesIcons.Book,
+      Illustration: SearchCategoriesIllustrations.ConferencesMeetings,
       onPress: action('Livre'),
+      baseColor: theme.colors.gold,
+      gradients: [
+        { color: '#F99E15', position: { x: 0, y: 0 } },
+        { color: theme.colors.gold, position: { x: 0, y: 0.5 } },
+      ],
     },
     {
       label: 'Théâtre',
-      Icon: categoriesIcons.Workshop,
+      Illustration: SearchCategoriesIllustrations.Shows,
       onPress: action('Théâtre'),
+      baseColor: theme.colors.coral,
+      gradients: [
+        { color: '#F8733D', position: { x: 0, y: 0 } },
+        { color: theme.colors.coral, position: { x: 0, y: 0.5 } },
+      ],
     },
   ],
 }
