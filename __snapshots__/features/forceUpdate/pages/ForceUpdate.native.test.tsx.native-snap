@@ -145,14 +145,15 @@ exports[`<ForceUpdate/> should match snapshot 1`] = `
         ]
       }
     >
-      Le pass Culture ne semble plus à jour sur ton téléphone ! Pour des questions de performance et de sécurité merci de télécharger la dernière version disponible.
+      Le pass Culture ne semble plus à jour sur ton téléphone !
+  Pour des questions de performance et de sécurité merci de télécharger la dernière version disponible.
     </Text>
     <View
-      numberOfSpaces={15}
+      numberOfSpaces={30}
       style={
         Array [
           Object {
-            "height": 60,
+            "height": 120,
           },
         ]
       }
@@ -232,6 +233,87 @@ exports[`<ForceUpdate/> should match snapshot 1`] = `
           }
         >
           Télécharger la dernière version
+        </Text>
+      </View>
+      <View
+        numberOfSpaces={4}
+        style={
+          Array [
+            Object {
+              "height": 16,
+            },
+          ]
+        }
+      />
+      <View
+        accessibilityLabel="Utiliser la version web"
+        accessible={true}
+        collapsable={false}
+        focusable={true}
+        onClick={[Function]}
+        onResponderGrant={[Function]}
+        onResponderMove={[Function]}
+        onResponderRelease={[Function]}
+        onResponderTerminate={[Function]}
+        onResponderTerminationRequest={[Function]}
+        onStartShouldSetResponder={[Function]}
+        style={
+          Object {
+            "alignItems": "center",
+            "backgroundColor": "transparent",
+            "borderRadius": 24,
+            "flexDirection": "row",
+            "justifyContent": "center",
+            "maxWidth": 500,
+            "minHeight": 40,
+            "opacity": 1,
+            "paddingBottom": 2,
+            "paddingLeft": 2,
+            "paddingRight": 2,
+            "paddingTop": 2,
+            "userSelect": "auto",
+            "width": "100%",
+          }
+        }
+        testID="Utiliser la version web"
+      >
+        <View
+          style={
+            Array [
+              Object {
+                "flexShrink": 0,
+              },
+            ]
+          }
+        >
+          <View
+            accessibilityLabel="Nouvelle fenêtre"
+            height={20}
+            testID="button-icon"
+            width={20}
+          >
+            <Text>
+              button-icon-SVG-Mock
+            </Text>
+          </View>
+        </View>
+        <Text
+          adjustsFontSizeToFit={false}
+          numberOfLines={1}
+          style={
+            Array [
+              Object {
+                "color": "#ffffff",
+                "fontFamily": "Montserrat-Bold",
+                "fontSize": 15,
+                "lineHeight": 20,
+                "marginLeft": 8,
+                "maxWidth": "100%",
+              },
+            ]
+          }
+        >
+          Utiliser la version web
         </Text>
       </View>
     </View>
