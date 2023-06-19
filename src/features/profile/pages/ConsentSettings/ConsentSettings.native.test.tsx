@@ -42,12 +42,14 @@ describe('<ConsentSettings/>', () => {
   })
 
   it('should persist cookies consent information when user partially accepts cookies', async () => {
-    const { getByText, getByTestId } = renderConsentSettings()
+    renderConsentSettings()
 
-    const performanceSwitch = getByTestId('Interrupteur Enregistrer des statistiques de navigation')
+    const performanceSwitch = screen.getByTestId(
+      'Interrupteur Enregistrer des statistiques de navigation'
+    )
     fireEvent.press(performanceSwitch)
 
-    const saveChoice = getByText('Enregistrer mes choix')
+    const saveChoice = screen.getByText('Enregistrer mes choix')
     fireEvent.press(saveChoice)
 
     const storageContent = {
@@ -66,9 +68,9 @@ describe('<ConsentSettings/>', () => {
   })
 
   it('should call startTrackingAcceptedCookies with empty array if user refuses all cookies', async () => {
-    const { getByText } = renderConsentSettings()
+    renderConsentSettings()
 
-    const saveChoice = getByText('Enregistrer mes choix')
+    const saveChoice = screen.getByText('Enregistrer mes choix')
     await act(async () => {
       fireEvent.press(saveChoice)
     })
@@ -77,14 +79,16 @@ describe('<ConsentSettings/>', () => {
   })
 
   it('should call startTrackingAcceptedCookies with cookies performance if user accepts performance cookies', async () => {
-    const { getByTestId, getByText } = renderConsentSettings()
+    renderConsentSettings()
 
-    const performanceSwitch = getByTestId('Interrupteur Enregistrer des statistiques de navigation')
+    const performanceSwitch = screen.getByTestId(
+      'Interrupteur Enregistrer des statistiques de navigation'
+    )
     await act(async () => {
       fireEvent.press(performanceSwitch)
     })
 
-    const saveChoice = getByText('Enregistrer mes choix')
+    const saveChoice = screen.getByText('Enregistrer mes choix')
     await act(async () => {
       fireEvent.press(saveChoice)
     })
@@ -93,14 +97,16 @@ describe('<ConsentSettings/>', () => {
   })
 
   it('should log analytics if performance cookies are accepted', async () => {
-    const { getByText, getByTestId } = renderConsentSettings()
+    renderConsentSettings()
 
-    const performanceSwitch = getByTestId('Interrupteur Enregistrer des statistiques de navigation')
+    const performanceSwitch = screen.getByTestId(
+      'Interrupteur Enregistrer des statistiques de navigation'
+    )
     await act(async () => {
       fireEvent.press(performanceSwitch)
     })
 
-    const saveChoice = getByText('Enregistrer mes choix')
+    const saveChoice = screen.getByText('Enregistrer mes choix')
     await act(async () => {
       fireEvent.press(saveChoice)
     })
@@ -112,9 +118,9 @@ describe('<ConsentSettings/>', () => {
   })
 
   it('should show snackbar and navigate to home on save', async () => {
-    const { getByText } = renderConsentSettings()
+    renderConsentSettings()
 
-    const saveChoice = getByText('Enregistrer mes choix')
+    const saveChoice = screen.getByText('Enregistrer mes choix')
     await act(async () => {
       fireEvent.press(saveChoice)
     })
