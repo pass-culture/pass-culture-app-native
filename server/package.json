@@ -19,7 +19,7 @@
   "scripts": {
     "build": "tsc --build",
     "predeploy": "yarn build",
-    "deploy": "gcloud beta app deploy --quiet",
+    "deploy": "gcloud app deploy --quiet",
     "deploy:testing": "cat .env.testing > .env && sed -i.back -e '/web-proxy-testing/! s/web-proxy/web-proxy-testing/g' app.yaml && yarn deploy",
     "deploy:staging": "cat .env.staging > .env  && sed -i.back -e '/web-proxy-staging/! s/web-proxy/web-proxy-staging/g' app.yaml && yarn deploy",
     "deploy:integration": "cat .env.integration > .env && sed -i.back -e '/web-proxy-integration/! s/web-proxy/web-proxy-integration/g' app.yaml && yarn deploy",
