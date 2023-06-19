@@ -101,7 +101,7 @@ describe('metasResponseInterceptor', () => {
     const res = {} as ServerResponse
 
     it('should request the real testing backend and get the offer data', async () => {
-      const offerId = await getOfferId()
+      const offerId = await getOfferId('Punk sous un cathodique')
       const url = `${env.APP_PUBLIC_URL}/offre/${offerId}`
       const finalResponseBuffer = await metasResponseInterceptor(
         responseBuffer,
@@ -117,7 +117,7 @@ describe('metasResponseInterceptor', () => {
     })
 
     it('should request the real testing backend and get the venue data', async () => {
-      const venueId = await getVenueId()
+      const venueId = await getVenueId('Terrain vague')
       const url = `${env.APP_PUBLIC_URL}/lieu/${venueId}`
       const finalResponseBuffer = await metasResponseInterceptor(
         responseBuffer,
@@ -139,7 +139,7 @@ const ALGOLIA_OFFERS_INDEX_NAME = 'TESTING'
 const ALGOLIA_VENUES_INDEX_NAME = 'testing-venues'
 const ALGOLIA_SEARCH_API_KEY = '468f53ae703ee7ff219106f3d9a39e7f' //This is the public API key which can be safely used in your frontend code.This key is usable for search queries and it's also able to list the indices you've got access to.
 
-const getAlgoliaObjectId = async (index: string): Promise<string> => {
+const getAlgoliaObjectId = async (index: string, query: string): Promise<string> => {
   const response = await fetch(
     `https://${ALGOLIA_APPLICATION_ID}-dsn.algolia.net/1/indexes/${index}/query`,
     {
@@ -148,7 +148,7 @@ const getAlgoliaObjectId = async (index: string): Promise<string> => {
         'X-Algolia-API-Key': ALGOLIA_SEARCH_API_KEY,
         'X-Algolia-Application-Id': ALGOLIA_APPLICATION_ID,
       }),
-      body: '{ "params": "query=&hitsPerPage=1&getRankingInfo=1" }',
+      body: `{ "params": "query=${query}&hitsPerPage=1&getRankingInfo=1" }`,
     }
   )
 
@@ -157,6 +157,8 @@ const getAlgoliaObjectId = async (index: string): Promise<string> => {
   return hits.hits.at(0)?.objectID
 }
 
-const getOfferId = async (): Promise<string> => getAlgoliaObjectId(ALGOLIA_OFFERS_INDEX_NAME)
+const getOfferId = async (query: string): Promise<string> =>
+  getAlgoliaObjectId(ALGOLIA_OFFERS_INDEX_NAME, query)
 
-const getVenueId = async (): Promise<string> => getAlgoliaObjectId(ALGOLIA_VENUES_INDEX_NAME)
+const getVenueId = async (query: string): Promise<string> =>
+  getAlgoliaObjectId(ALGOLIA_VENUES_INDEX_NAME, query)
