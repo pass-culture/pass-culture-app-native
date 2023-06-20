@@ -23,34 +23,34 @@ describe('useSortedSearchCategories', () => {
   it("should format category's label", () => {
     const { result } = renderHook(useSortedSearchCategories, options)
 
-    expect(result.current[11].label).toEqual('Médias & presse')
+    expect(result.current[11].label).toEqual('Cartes jeunes')
   })
 
   it('should set illustration for category', () => {
     const { result } = renderHook(useSortedSearchCategories, options)
 
-    expect(result.current[11].Illustration).toEqual(SearchCategoriesIllustrations.MediaPress)
+    expect(result.current[11].Illustration).toEqual(SearchCategoriesIllustrations.YouthCards)
   })
 
-  it('should sort search group names alphabetically', () => {
+  it('should sort search group names according to desired order', () => {
     const { result } = renderHook(useSortedSearchCategories, options)
 
     const actualCategoriesLabels = result.current.map((category) => category.label)
     expect(actualCategoriesLabels).toEqual([
+      'Concerts & festivals',
+      'Films, séries, cinéma',
+      'Livres',
+      'CD, vinyles, musique en ligne',
       'Arts & loisirs créatifs',
+      'Spectacles',
+      'Musées & visites culturelles',
+      'Jeux & jeux vidéos',
+      'Instruments de musique',
+      'Médias & presse',
       'Bibliothèques, Médiathèques',
       'Cartes jeunes',
-      'CD, vinyles, musique en ligne',
-      'Concerts & festivals',
       'Conférences & rencontres',
       'Évènements en ligne',
-      'Films, séries, cinéma',
-      'Instruments de musique',
-      'Jeux & jeux vidéos',
-      'Livres',
-      'Médias & presse',
-      'Musées & visites culturelles',
-      'Spectacles',
     ])
   })
 })
