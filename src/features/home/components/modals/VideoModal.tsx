@@ -3,8 +3,10 @@ import { View } from 'react-native'
 import styled from 'styled-components/native'
 
 import { getTagColor } from 'features/home/components/helpers/getTagColor'
+import { OfferVideoModule } from 'features/home/components/modules/OfferVideoModule'
 import { VideoPlayer } from 'features/home/components/VideoPlayer'
 import { VideoModule } from 'features/home/types'
+import { Offer } from 'shared/offer/types'
 import { theme } from 'theme'
 import { styledButton } from 'ui/components/buttons/styledButton'
 import { AppModal } from 'ui/components/modals/AppModal'
@@ -13,6 +15,7 @@ import { Close } from 'ui/svg/icons/Close'
 import { Spacer, Typo, getSpacing } from 'ui/theme'
 
 interface VideoModalProps extends VideoModule {
+  offer: Offer
   visible: boolean
   hideModal: () => void
 }
@@ -51,6 +54,8 @@ export const VideoModal: React.FC<VideoModalProps> = (props) => {
         <StyledBody>{descriptionText}</StyledBody>
         <Spacer.Column numberOfSpaces={6} />
         <Typo.Title4>{props.offerTitle}</Typo.Title4>
+        <Spacer.Column numberOfSpaces={2} />
+        <OfferVideoModule offer={props.offer} />
       </StyledScrollView>
       <StyledTouchable onPress={props.hideModal} accessibilityLabel="Fermer la modale vidéo">
         <StyledCloseIcon />
