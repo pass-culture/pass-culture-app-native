@@ -32,7 +32,7 @@ describe('useSortedSearchCategories', () => {
     expect(result.current[11].Illustration).toEqual(SearchCategoriesIllustrations.YouthCards)
   })
 
-  it('should sort search group names according to desired order', () => {
+  it('should sort search group names by the key position', () => {
     const { result } = renderHook(useSortedSearchCategories, options)
 
     const actualCategoriesLabels = result.current.map((category) => category.label)
