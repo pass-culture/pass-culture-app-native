@@ -1,4 +1,5 @@
 import { SearchResponse } from '@algolia/client-search'
+import { chunk } from 'lodash'
 
 import { SearchState } from 'features/search/types'
 import { captureAlgoliaError } from 'libs/algolia/fetchAlgolia/AlgoliaError'
@@ -24,9 +25,19 @@ export const fetchOffersModules = async ({
     isUserUnderage,
   })
 
+  // Algolia multiple queries has a limit of 50 queries per call
+  // so we split the queries in chunks of 50
+  // https://www.algolia.com/doc/api-reference/api-methods/multiple-queries/#about-this-method
+  const queriesChunks = chunk(queries, 50)
+
   try {
-    const { results } = await client.multipleQueries<Offer>(queries)
-    return results
+    const resultsChunks = await Promise.all(
+      queriesChunks.map(async (queriesChunk) => await client.multipleQueries<Offer>(queriesChunk))
+    )
+    return resultsChunks.reduce<SearchResponse<Offer>[]>(
+      (prev, curr) => prev.concat(curr.results),
+      []
+    )
   } catch (error) {
     captureAlgoliaError(error)
     return []
