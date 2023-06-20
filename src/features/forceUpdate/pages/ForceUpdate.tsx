@@ -12,8 +12,8 @@ import { ButtonPrimaryWhite } from 'ui/components/buttons/ButtonPrimaryWhite'
 import { ButtonTertiaryWhite } from 'ui/components/buttons/ButtonTertiaryWhite'
 import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouchableLink'
 import { GenericInfoPage } from 'ui/pages/GenericInfoPage'
+import { AgainIllustration } from 'ui/svg/icons/AgainIllustration'
 import { ExternalSiteFilled } from 'ui/svg/icons/ExternalSiteFilled'
-import { Star } from 'ui/svg/icons/Star'
 import { Typo } from 'ui/theme'
 
 import { build } from '../../../../package.json'
@@ -61,7 +61,7 @@ export const ForceUpdate = ({ resetErrorBoundary }: ForceUpdateProps) => {
       </Helmet>
       <GenericInfoPage
         title={TITLE}
-        icon={Star}
+        icon={AgainIllustration}
         buttons={[
           <ButtonPrimaryWhite key={BUTTON_TEXT} wording={BUTTON_TEXT} onPress={onPressStoreLink} />,
           !isWeb && (
