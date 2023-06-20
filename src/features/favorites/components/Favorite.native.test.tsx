@@ -19,7 +19,7 @@ import { SnackBarHelperSettings } from 'ui/components/snackBar/types'
 
 import { Favorite } from './Favorite'
 
-jest.mock('features/offer/api/useOffer')
+// jest.mock('features/offer/api/useOffer')
 
 const mockShowErrorSnackBar = jest.fn()
 jest.mock('ui/components/snackBar/SnackBarContext', () => ({
@@ -105,7 +105,9 @@ describe('<Favorite /> component', () => {
     })
   })
 
-  it('should call share when press share icon', async () => {
+  // TODO(PC-22859): Unskip test when adding share button to favorite
+  // eslint-disable-next-line jest/no-disabled-tests
+  it.skip('should call share when press share icon', async () => {
     const share = jest.spyOn(Share, 'share')
     renderFavorite()
 
@@ -115,7 +117,9 @@ describe('<Favorite /> component', () => {
     expect(share).toHaveBeenCalledTimes(1)
   })
 
-  it('should log analytics when press share icon', async () => {
+  // TODO(PC-22859): Unskip test when adding share button to favorite
+  // eslint-disable-next-line jest/no-disabled-tests
+  it.skip('should log analytics when press share icon', async () => {
     renderFavorite()
 
     const shareButton = await screen.findByLabelText(`Partager l’offre ${favorite.offer.name}`)

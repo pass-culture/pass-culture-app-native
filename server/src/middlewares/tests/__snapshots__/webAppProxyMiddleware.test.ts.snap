@@ -1,0 +1,96 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`metasResponseInterceptor with real backend should request the real testing backend and get the offer data 1`] = `
+"<!doctype html>
+<html lang=\\"fr\\">
+  <head>
+    <meta charset=\\"utf-8\\">
+    <title>pass Culture</title>
+    <meta name=\\"title\\" content=\\"pass Culture | Punk sous un cathodique\\" />
+    <meta name=\\"description\\" content=\\"Et ce ne sont pas seulement les objets extérieurs, ce sont aussi nos propres états d&apos;âme qui se dérobent à nous dans ce qu&apos;ils ont d&apos;intime, de personnel, d&apos;originalement vécu. Quand nous éprouvons de l&apos;amour ou de la haine, quand nous nous sentons joyeux ou tristes, est-ce bien notre sentiment lui-même qui arrive à notre conscience avec les mille nuances fugitives et les mille résonances profondes qui en font quelque chose d&apos;absolument nôtre ?\\" />
+    <meta name=\\"author\\" content=\\"pass Culture\\"/>
+    <meta property=\\"og:type\\" content=\\"website\\"/>
+    <meta property=\\"og:url\\" content=\\"http://localhost:8080/offre/18384\\" />
+    <meta property=\\"og:title\\" content=\\"pass Culture | Punk sous un cathodique\\" />
+    <meta property=\\"og:description\\" content=\\"Et ce ne sont pas seulement les objets extérieurs, ce sont aussi nos propres états d&apos;âme qui se dérobent à nous dans ce qu&apos;ils ont d&apos;intime, de personnel, d&apos;originalement vécu. Quand nous éprouvons de l&apos;amour ou de la haine, quand nous nous sentons joyeux ou tristes, est-ce bien notre sentiment lui-même qui arrive à notre conscience avec les mille nuances fugitives et les mille résonances profondes qui en font quelque chose d&apos;absolument nôtre ?\\" />
+    <meta property=\\"og:image\\" content=\\"https://storage.googleapis.com/passculture-metier-ehp-testing-assets-fine-grained/thumbs/mediations/EBEA_1\\" />
+    <meta property=\\"og:image:alt\\" content=\\"Punk sous un cathodique\\" />
+    <meta property=\\"og:locale\\" content=\\"fr_FR\\"/>
+    <meta property=\\"og:site_name\\" content=\\"pass Culture\\"/>
+    <meta name=\\"twitter:card\\" content=\\"summary\\" />
+    <meta name=\\"twitter:url\\" content=\\"http://localhost:8080/offre/18384\\" />
+    <meta name=\\"twitter:title\\" content=\\"pass Culture | Punk sous un cathodique\\" />
+    <meta name=\\"twitter:description\\" content=\\"Et ce ne sont pas seulement les objets extérieurs, ce sont aussi nos propres états d&apos;âme qui se dérobent à nous dans ce qu&apos;ils ont d&apos;intime, de personnel, d&apos;originalement vécu. Quand nous éprouvons de l&apos;amour ou de la haine, quand nous nous sentons joyeux ou tristes, est-ce bien notre sentiment lui-même qui arrive à notre conscience avec les mille nuances fugitives et les mille résonances profondes qui en font quelque chose d&apos;absolument nôtre ?\\" />
+    <meta name=\\"twitter:image\\" content=\\"https://storage.googleapis.com/passculture-metier-ehp-testing-assets-fine-grained/thumbs/mediations/EBEA_1\\" />
+    <meta name=\\"twitter:image:alt\\" content=\\"Punk sous un cathodique\\" />
+    <meta name=\\"twitter:site\\" content=\\"@pass_Culture\\"/>
+    <meta name=\\"twitter:app:country\\" content=\\"FR\\"/>
+    <meta name=\\"twitter:app:name:iphone\\" content=\\"pass Culture\\"/>
+    <meta name=\\"twitter:app:id:iphone\\" content=\\"1557887412\\"/>
+    <meta name=\\"twitter:app:url:iphone\\" content=\\"passculture://http://localhost:8080/offre/18384\\" />
+    <meta name=\\"twitter:app:name:ipad\\" content=\\"pass Culture\\"/>
+    <meta name=\\"twitter:app:id:ipad\\" content=\\"1557887412\\"/>
+    <meta name=\\"twitter:app:url:ipad\\" content=\\"passculture://http://localhost:8080/offre/18384\\" />
+    <meta name=\\"twitter:app:name:googleplay\\" content=\\"pass Culture\\"/>
+    <meta name=\\"twitter:app:id:googleplay\\" content=\\"app.passculture.testing\\"/>
+    <meta name=\\"twitter:app:url:googleplay\\" content=\\"passculture://http://localhost:8080/offre/18384\\" />
+    <meta property=\\"al:ios:app_name\\" content=\\"pass Culture\\"/>
+    <meta property=\\"al:ios:app_store_id\\" content=\\"1557887412\\"/>
+    <meta property=\\"al:ios:url\\" content=\\"passculture://https://app.testing.passculture.team\\"/>
+    <meta property=\\"al:android:url\\" content=\\"passculture://https://app.testing.passculture.team\\">
+    <meta property=\\"al:android:app_name\\" content=\\"pass Culture\\"/>
+    <meta property=\\"al:android:package\\" content=\\"app.passculture.testing\\"/>
+    <script type=\\"application/ld+json\\">{\\"@context\\":\\"https://schema.org\\",\\"@type\\":\\"Event\\",\\"name\\":\\"Punk sous un cathodique\\",\\"image\\":\\"https://storage.googleapis.com/passculture-metier-ehp-testing-assets-fine-grained/thumbs/mediations/EBEA_1\\",\\"location\\":{\\"@type\\":\\"Place\\",\\"name\\":\\"Herbert Marcuse Entreprise - Salle 1\\",\\"address\\":{\\"@type\\":\\"PostalAddress\\",\\"streetAddress\\":\\"RUE DES POILUS\\",\\"postalCode\\":\\"93700\\",\\"addressLocality\\":\\"Drancy\\"},\\"geo\\":{\\"@type\\":\\"GeoCoordinates\\",\\"latitude\\":\\"48.87004\\",\\"longitude\\":\\"2.37850\\"}},\\"startDate\\":\\"2023-06-21T20:00\\"}</script>
+  </head>
+  <body>
+    <p>Hello world</p>
+  </body>
+</html>"
+`;
+
+exports[`metasResponseInterceptor with real backend should request the real testing backend and get the venue data 1`] = `
+"<!doctype html>
+<html lang=\\"fr\\">
+  <head>
+    <meta charset=\\"utf-8\\">
+    <title>pass Culture</title>
+    <meta name=\\"title\\" content=\\"pass Culture | Terrain vague DATA\\" />
+    <meta name=\\"description\\" content=\\"As common turn head. Maintain morning be. Amount cut fine fine.\\" />
+    <meta name=\\"author\\" content=\\"pass Culture\\"/>
+    <meta property=\\"og:type\\" content=\\"website\\"/>
+    <meta property=\\"og:url\\" content=\\"http://localhost:8080/lieu/6062\\" />
+    <meta property=\\"og:title\\" content=\\"pass Culture | Terrain vague DATA\\" />
+    <meta property=\\"og:description\\" content=\\"As common turn head. Maintain morning be. Amount cut fine fine.\\" />
+    <meta property=\\"og:image\\" content=\\"https://storage.googleapis.com/passculture-metier-ehp-testing-assets-fine-grained/assets/venue_default_images/erik-mclean-PFfA3xlHFbQ-unsplash_(1).png\\" />
+    <meta property=\\"og:image:alt\\" content=\\"As common turn head. Maintain morning be. Amount cut fine fine.\\" />
+    <meta property=\\"og:locale\\" content=\\"fr_FR\\"/>
+    <meta property=\\"og:site_name\\" content=\\"pass Culture\\"/>
+    <meta name=\\"twitter:card\\" content=\\"summary_large_image\\" />
+    <meta name=\\"twitter:url\\" content=\\"http://localhost:8080/lieu/6062\\" />
+    <meta name=\\"twitter:title\\" content=\\"pass Culture | Terrain vague DATA\\" />
+    <meta name=\\"twitter:description\\" content=\\"As common turn head. Maintain morning be. Amount cut fine fine.\\" />
+    <meta name=\\"twitter:image\\" content=\\"https://storage.googleapis.com/passculture-metier-ehp-testing-assets-fine-grained/assets/venue_default_images/erik-mclean-PFfA3xlHFbQ-unsplash_(1).png\\" />
+    <meta name=\\"twitter:image:alt\\" content=\\"As common turn head. Maintain morning be. Amount cut fine fine.\\" />
+    <meta name=\\"twitter:site\\" content=\\"@pass_Culture\\"/>
+    <meta name=\\"twitter:app:country\\" content=\\"FR\\"/>
+    <meta name=\\"twitter:app:name:iphone\\" content=\\"pass Culture\\"/>
+    <meta name=\\"twitter:app:id:iphone\\" content=\\"1557887412\\"/>
+    <meta name=\\"twitter:app:url:iphone\\" content=\\"passculture://http://localhost:8080/lieu/6062\\" />
+    <meta name=\\"twitter:app:name:ipad\\" content=\\"pass Culture\\"/>
+    <meta name=\\"twitter:app:id:ipad\\" content=\\"1557887412\\"/>
+    <meta name=\\"twitter:app:url:ipad\\" content=\\"passculture://http://localhost:8080/lieu/6062\\" />
+    <meta name=\\"twitter:app:name:googleplay\\" content=\\"pass Culture\\"/>
+    <meta name=\\"twitter:app:id:googleplay\\" content=\\"app.passculture.testing\\"/>
+    <meta name=\\"twitter:app:url:googleplay\\" content=\\"passculture://http://localhost:8080/lieu/6062\\" />
+    <meta property=\\"al:ios:app_name\\" content=\\"pass Culture\\"/>
+    <meta property=\\"al:ios:app_store_id\\" content=\\"1557887412\\"/>
+    <meta property=\\"al:ios:url\\" content=\\"passculture://https://app.testing.passculture.team\\"/>
+    <meta property=\\"al:android:url\\" content=\\"passculture://https://app.testing.passculture.team\\">
+    <meta property=\\"al:android:app_name\\" content=\\"pass Culture\\"/>
+    <meta property=\\"al:android:package\\" content=\\"app.passculture.testing\\"/>
+  </head>
+  <body>
+    <p>Hello world</p>
+  </body>
+</html>"
+`;
