@@ -18,7 +18,7 @@ export const SearchHeader = memo(function SearchHeader({ searchInputID }: Props)
       <Spacer.TopScreen />
       <SearchBoxContainer>
         <View {...getHeadingAttrs(1)}>
-          <StyledTitle4 htmlFor={searchInputID}>Recherche une offre</StyledTitle4>
+          <StyledTitle1 htmlFor={searchInputID}>Recherche une offre</StyledTitle1>
         </View>
         <Spacer.Column numberOfSpaces={2} />
         <View>
@@ -36,6 +36,6 @@ const SearchBoxContainer = styled.View({
   paddingHorizontal: getSpacing(6),
 })
 
-const StyledTitle4 = styledInputLabel(InputLabel)(({ theme }) => ({
-  ...theme.typography.title4,
+const StyledTitle1 = styledInputLabel(InputLabel)(({ theme }) => ({
+  ...theme.typography.title1,
 }))
