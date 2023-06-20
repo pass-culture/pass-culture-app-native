@@ -6,7 +6,7 @@ import { STORE_LINK, TITLE, BUTTON_TEXT, DESCRIPTION } from 'features/forceUpdat
 import { useMinimalBuildNumber } from 'features/forceUpdate/helpers/useMinimalBuildNumber'
 import { openUrl } from 'features/navigation/helpers'
 import { analytics } from 'libs/analytics'
-import { env } from 'libs/environment'
+import { WEBAPP_V2_URL } from 'libs/environment/useWebAppUrl'
 import { Helmet } from 'libs/react-helmet/Helmet'
 import { ButtonPrimaryWhite } from 'ui/components/buttons/ButtonPrimaryWhite'
 import { ButtonTertiaryWhite } from 'ui/components/buttons/ButtonTertiaryWhite'
@@ -82,7 +82,7 @@ const WebAppButton = () => {
     <ExternalTouchableLink
       as={ButtonTertiaryWhite}
       wording="Utiliser la version web"
-      externalNav={{ url: `https://${env.WEBAPP_V2_DOMAIN}` }}
+      externalNav={{ url: WEBAPP_V2_URL }}
       icon={ExternalSiteFilled}
     />
   )
