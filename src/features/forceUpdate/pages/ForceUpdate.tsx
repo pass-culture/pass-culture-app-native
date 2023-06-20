@@ -36,6 +36,8 @@ const onPressStoreLink = Platform.select({
   web: () => globalThis?.window?.location?.reload(),
 })
 
+const isWeb = Platform.OS === 'web'
+
 export const ForceUpdate = ({ resetErrorBoundary }: ForceUpdateProps) => {
   const minimalBuildNumber = useMinimalBuildNumber()
 
@@ -62,7 +64,14 @@ export const ForceUpdate = ({ resetErrorBoundary }: ForceUpdateProps) => {
         icon={Star}
         buttons={[
           <ButtonPrimaryWhite key={BUTTON_TEXT} wording={BUTTON_TEXT} onPress={onPressStoreLink} />,
-          <WebAppButton key={2} />,
+          !isWeb && (
+            <ExternalTouchableLink
+              as={ButtonTertiaryWhite}
+              wording="Utiliser la version web"
+              externalNav={{ url: WEBAPP_V2_URL }}
+              icon={ExternalSiteFilled}
+            />
+          ),
         ]}>
         <StyledBody>{DESCRIPTION}</StyledBody>
       </GenericInfoPage>
@@ -74,16 +83,3 @@ const StyledBody = styled(Typo.Body)(({ theme }) => ({
   textAlign: 'center',
   color: theme.colors.white,
 }))
-
-const isWeb = Platform.OS === 'web'
-const WebAppButton = () => {
-  if (isWeb) return <React.Fragment />
-  return (
-    <ExternalTouchableLink
-      as={ButtonTertiaryWhite}
-      wording="Utiliser la version web"
-      externalNav={{ url: WEBAPP_V2_URL }}
-      icon={ExternalSiteFilled}
-    />
-  )
-}
