@@ -30,7 +30,6 @@ export const OfferVideoModule: FunctionComponent<Props> = ({ offer }) => {
         <OfferInformations>
           <CategoryText>{labelMapping[offer.offer.subcategoryId]}</CategoryText>
           <TitleText numberOfLines={2}>{offer.offer.name}</TitleText>
-          {/* // TODO(PC-22422): Update dates to display only 1 on modal*/}
           <AdditionalInfoText>{formatDates(timestampsInMillis)}</AdditionalInfoText>
           <AdditionalInfoText>{getDisplayPrice(offer?.offer?.prices)}</AdditionalInfoText>
         </OfferInformations>
