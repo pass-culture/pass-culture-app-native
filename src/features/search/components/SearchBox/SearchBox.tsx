@@ -226,7 +226,6 @@ export const SearchBox: React.FunctionComponent<Props> = ({
               query={query}
               setQuery={setQuery}
               isFocusable={!isLandingOrResults}
-              isFocus={params?.view === SearchView.Suggestions}
               onSubmitQuery={onSubmitQuery}
               resetQuery={resetQuery}
               onFocus={onFocus}
