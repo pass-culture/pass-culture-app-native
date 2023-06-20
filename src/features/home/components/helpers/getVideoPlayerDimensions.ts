@@ -6,7 +6,7 @@ export const getVideoPlayerDimensions = (
   isDesktopViewport: boolean | undefined,
   windowWidth: number
 ) => {
-  const playerHeight = Math.floor(
+  const playerHeight = Math.ceil(
     ((isDesktopViewport
       ? Math.min(windowWidth, theme.modal.desktopMaxWidth) * PixelRatio.get()
       : windowWidth * PixelRatio.get()) *
