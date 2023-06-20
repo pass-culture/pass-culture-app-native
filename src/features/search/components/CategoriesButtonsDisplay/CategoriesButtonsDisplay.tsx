@@ -41,11 +41,11 @@ export const CategoriesButtonsDisplay: FunctionComponent<Props> = ({ sortedCateg
   )
 }
 
-const CategoriesTitle = styled(Typo.Title4).attrs({
+const CategoriesTitle = styled(Typo.Title3).attrs({
   children: 'Explore les catégories',
   ...getHeadingAttrs(2),
 })({
-  marginTop: getSpacing(5),
+  marginTop: getSpacing(8),
   paddingHorizontal: getSpacing(1),
   paddingBottom: getSpacing(4),
 })
