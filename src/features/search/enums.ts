@@ -1,8 +1,9 @@
 import { SearchGroupNameEnumv2, VenueTypeCodeKey } from 'api/gen'
+import { SearchCategoriesIllustrations } from 'features/internal/cheatcodes/pages/AppComponents/illustrationsExports'
 import { MAP_VENUE_TYPE_TO_LABEL, VenueTypeCode } from 'libs/parsers'
 import { theme } from 'theme'
 import { categoriesIcons } from 'ui/svg/icons/bicolor/exports/categoriesIcons'
-import { BicolorIconInterface } from 'ui/svg/icons/types'
+import { AccessibleIcon, BicolorIconInterface } from 'ui/svg/icons/types'
 // eslint-disable-next-line no-restricted-imports
 import { ColorsEnum } from 'ui/theme/colors'
 
@@ -26,7 +27,7 @@ export enum CategoriesModalView {
   GENRES = 'GENRES',
 }
 
-type Gradient = {
+export type Gradient = {
   color: ColorsEnum | string
   position: {
     x: number
@@ -37,6 +38,7 @@ type Gradient = {
 type CategoryCriteria = {
   [category in SearchGroupNameEnumv2]: {
     icon: React.FC<BicolorIconInterface>
+    illustration: category extends SearchGroupNameEnumv2.NONE ? undefined : React.FC<AccessibleIcon>
     facetFilter: SearchGroupNameEnumv2
     baseColor: category extends SearchGroupNameEnumv2.NONE ? undefined : ColorsEnum | string
     gradients: category extends SearchGroupNameEnumv2.NONE ? undefined : Array<Gradient>
@@ -46,12 +48,14 @@ type CategoryCriteria = {
 export const CATEGORY_CRITERIA: Partial<CategoryCriteria> = {
   [SearchGroupNameEnumv2.NONE]: {
     icon: categoriesIcons.All,
+    illustration: undefined,
     facetFilter: SearchGroupNameEnumv2.NONE,
     baseColor: undefined,
     gradients: undefined,
   },
   [SearchGroupNameEnumv2.ARTS_LOISIRS_CREATIFS]: {
     icon: categoriesIcons.Palette,
+    illustration: SearchCategoriesIllustrations.ArtsCrafts,
     facetFilter: SearchGroupNameEnumv2.ARTS_LOISIRS_CREATIFS,
     baseColor: theme.colors.lilac,
     gradients: [
@@ -61,6 +65,7 @@ export const CATEGORY_CRITERIA: Partial<CategoryCriteria> = {
   },
   [SearchGroupNameEnumv2.BIBLIOTHEQUES_MEDIATHEQUE]: {
     icon: categoriesIcons.Bookstore,
+    illustration: SearchCategoriesIllustrations.LibrariesMediaLibraries,
     facetFilter: SearchGroupNameEnumv2.BIBLIOTHEQUES_MEDIATHEQUE,
     baseColor: theme.colors.coral,
     gradients: [
@@ -70,6 +75,7 @@ export const CATEGORY_CRITERIA: Partial<CategoryCriteria> = {
   },
   [SearchGroupNameEnumv2.CARTES_JEUNES]: {
     icon: categoriesIcons.Card,
+    illustration: SearchCategoriesIllustrations.YouthCards,
     facetFilter: SearchGroupNameEnumv2.CARTES_JEUNES,
     baseColor: theme.colors.lilac,
     gradients: [
@@ -79,6 +85,7 @@ export const CATEGORY_CRITERIA: Partial<CategoryCriteria> = {
   },
   [SearchGroupNameEnumv2.CD_VINYLE_MUSIQUE_EN_LIGNE]: {
     icon: categoriesIcons.Disk,
+    illustration: SearchCategoriesIllustrations.CDVinylsOnlineMusic,
     facetFilter: SearchGroupNameEnumv2.CD_VINYLE_MUSIQUE_EN_LIGNE,
     baseColor: theme.colors.skyBlue,
     gradients: [
@@ -88,6 +95,7 @@ export const CATEGORY_CRITERIA: Partial<CategoryCriteria> = {
   },
   [SearchGroupNameEnumv2.CONCERTS_FESTIVALS]: {
     icon: categoriesIcons.Conference,
+    illustration: SearchCategoriesIllustrations.ConcertsFestivals,
     facetFilter: SearchGroupNameEnumv2.CONCERTS_FESTIVALS,
     baseColor: theme.colors.gold,
     gradients: [
@@ -97,6 +105,7 @@ export const CATEGORY_CRITERIA: Partial<CategoryCriteria> = {
   },
   [SearchGroupNameEnumv2.RENCONTRES_CONFERENCES]: {
     icon: categoriesIcons.Microphone,
+    illustration: SearchCategoriesIllustrations.ConferencesMeetings,
     facetFilter: SearchGroupNameEnumv2.RENCONTRES_CONFERENCES,
     baseColor: theme.colors.gold,
     gradients: [
@@ -106,6 +115,7 @@ export const CATEGORY_CRITERIA: Partial<CategoryCriteria> = {
   },
   [SearchGroupNameEnumv2.EVENEMENTS_EN_LIGNE]: {
     icon: categoriesIcons.LiveEvent,
+    illustration: SearchCategoriesIllustrations.OnlineEvents,
     facetFilter: SearchGroupNameEnumv2.EVENEMENTS_EN_LIGNE,
     baseColor: theme.colors.aquamarine,
     gradients: [
@@ -115,6 +125,7 @@ export const CATEGORY_CRITERIA: Partial<CategoryCriteria> = {
   },
   [SearchGroupNameEnumv2.FILMS_SERIES_CINEMA]: {
     icon: categoriesIcons.Cinema,
+    illustration: SearchCategoriesIllustrations.FilmsSeriesCinema,
     facetFilter: SearchGroupNameEnumv2.FILMS_SERIES_CINEMA,
     baseColor: theme.colors.aquamarine,
     gradients: [
@@ -124,6 +135,7 @@ export const CATEGORY_CRITERIA: Partial<CategoryCriteria> = {
   },
   [SearchGroupNameEnumv2.INSTRUMENTS]: {
     icon: categoriesIcons.Instrument,
+    illustration: SearchCategoriesIllustrations.MusicalInstruments,
     facetFilter: SearchGroupNameEnumv2.INSTRUMENTS,
     baseColor: theme.colors.skyBlue,
     gradients: [
@@ -133,6 +145,7 @@ export const CATEGORY_CRITERIA: Partial<CategoryCriteria> = {
   },
   [SearchGroupNameEnumv2.JEUX_JEUX_VIDEOS]: {
     icon: categoriesIcons.VideoGame,
+    illustration: SearchCategoriesIllustrations.GamesVideoGames,
     facetFilter: SearchGroupNameEnumv2.JEUX_JEUX_VIDEOS,
     baseColor: theme.colors.gold,
     gradients: [
@@ -142,6 +155,7 @@ export const CATEGORY_CRITERIA: Partial<CategoryCriteria> = {
   },
   [SearchGroupNameEnumv2.LIVRES]: {
     icon: categoriesIcons.Book,
+    illustration: SearchCategoriesIllustrations.Books,
     facetFilter: SearchGroupNameEnumv2.LIVRES,
     baseColor: theme.colors.deepPink,
     gradients: [
@@ -151,6 +165,7 @@ export const CATEGORY_CRITERIA: Partial<CategoryCriteria> = {
   },
   [SearchGroupNameEnumv2.MEDIA_PRESSE]: {
     icon: categoriesIcons.Press,
+    illustration: SearchCategoriesIllustrations.MediaPress,
     facetFilter: SearchGroupNameEnumv2.MEDIA_PRESSE,
     baseColor: theme.colors.deepPink,
     gradients: [
@@ -160,6 +175,7 @@ export const CATEGORY_CRITERIA: Partial<CategoryCriteria> = {
   },
   [SearchGroupNameEnumv2.MUSEES_VISITES_CULTURELLES]: {
     icon: categoriesIcons.Museum,
+    illustration: SearchCategoriesIllustrations.MuseumCulturalVisits,
     facetFilter: SearchGroupNameEnumv2.MUSEES_VISITES_CULTURELLES,
     baseColor: theme.colors.aquamarine,
     gradients: [
@@ -169,6 +185,7 @@ export const CATEGORY_CRITERIA: Partial<CategoryCriteria> = {
   },
   [SearchGroupNameEnumv2.SPECTACLES]: {
     icon: categoriesIcons.Show,
+    illustration: SearchCategoriesIllustrations.Shows,
     facetFilter: SearchGroupNameEnumv2.SPECTACLES,
     baseColor: theme.colors.coral,
     gradients: [

@@ -702,7 +702,11 @@ describe('<OfferBody />', () => {
       fireEvent.press(screen.getByText('Le Livre Éclaire'))
       fireEvent.press(screen.getByText('Choisir ce lieu'))
 
-      expect(navigate).toHaveBeenCalledWith('Offer', { fromOfferId: offerId, id: 2 })
+      expect(navigate).toHaveBeenCalledWith('Offer', {
+        fromOfferId: offerId,
+        id: 2,
+        fromMultivenueOfferId: offerId,
+      })
     })
   })
 })

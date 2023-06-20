@@ -15,9 +15,12 @@ export const useSortedSearchCategories = (
     .map((category) => ({
       label: searchGroupLabelMapping?.[category.facetFilter] || '',
       Icon: category.icon,
+      Illustration: category.illustration,
       onPress() {
         onPressCategory(category.facetFilter)
       },
+      baseColor: category.baseColor,
+      gradients: category.gradients,
     }))
     .sort((a, b) => a.label.localeCompare(b.label))
 }

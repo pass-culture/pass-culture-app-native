@@ -57,6 +57,7 @@ export const BookingOfferModalComponent: React.FC<BookingOfferModalComponentProp
 
   const isFromSearch = route.params?.from === 'search'
   const fromOfferId = route.params?.fromOfferId
+  const fromMultivenueOfferId = route.params?.fromMultivenueOfferId
   const algoliaOfferId = offerId?.toString()
 
   const onBookOfferSuccess = useCallback(
@@ -64,7 +65,7 @@ export const BookingOfferModalComponent: React.FC<BookingOfferModalComponentProp
       dismissModal()
 
       if (offerId) {
-        analytics.logBookingConfirmation(offerId, bookingId, fromOfferId)
+        analytics.logBookingConfirmation(offerId, bookingId, fromOfferId, fromMultivenueOfferId)
         if (isFromSearch && algoliaOfferId) {
           logOfferConversion(algoliaOfferId)
         }
@@ -84,6 +85,7 @@ export const BookingOfferModalComponent: React.FC<BookingOfferModalComponentProp
       algoliaOfferId,
       dismissModal,
       fromOfferId,
+      fromMultivenueOfferId,
       isFromSearch,
       logOfferConversion,
       navigate,

@@ -187,6 +187,7 @@ export type RootStackParamList = {
     moduleName?: string
     moduleId?: string
     fromOfferId?: number
+    fromMultivenueOfferId?: number
     openModalOnNavigation?: boolean
     searchId?: string
   }

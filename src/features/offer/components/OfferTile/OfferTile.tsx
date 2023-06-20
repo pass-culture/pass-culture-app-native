@@ -98,7 +98,13 @@ const UnmemoizedOfferTile = (props: OfferTileProps) => {
         height={height + MAX_OFFER_CAPTION_HEIGHT}
         navigateTo={{
           screen: 'Offer',
-          params: { id: offerId, from: analyticsFrom, moduleName, moduleId, fromOfferId },
+          params: {
+            id: offerId,
+            from: analyticsFrom,
+            moduleName,
+            moduleId,
+            fromOfferId,
+          },
           withPush: true,
         }}
         onBeforeNavigate={handlePressOffer}
