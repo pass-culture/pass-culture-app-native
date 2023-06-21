@@ -3,8 +3,9 @@ import styled from 'styled-components/native'
 
 import { getTagColor } from 'features/home/components/helpers/getTagColor'
 import { formatDates, getDisplayPrice } from 'libs/parsers'
-import { useCategoryHomeLabelMapping } from 'libs/subcategories'
+import { useCategoryHomeLabelMapping, useCategoryIdMapping } from 'libs/subcategories'
 import { Offer } from 'shared/offer/types'
+import { usePrePopulateOffer } from 'shared/offer/usePrePopulateOffer'
 import { styledButton } from 'ui/components/buttons/styledButton'
 import { ImageTile } from 'ui/components/ImageTile'
 import { Touchable } from 'ui/components/touchable/Touchable'
@@ -23,13 +24,23 @@ type Props = {
 export const OfferVideoModule: FunctionComponent<Props> = ({ offer, color }) => {
   const timestampsInMillis = offer.offer.dates?.map((timestampInSec) => timestampInSec * 1000)
   const labelMapping = useCategoryHomeLabelMapping()
+  const mapping = useCategoryIdMapping()
+
+  const prePopulateOffer = usePrePopulateOffer()
 
   return (
     <OfferInsert
       navigateTo={{
         screen: 'Offer',
-        params: { id: offer.objectID },
-      }}>
+        params: { id: +offer.objectID },
+      }}
+      onBeforeNavigate={() =>
+        prePopulateOffer({
+          ...offer.offer,
+          offerId: +offer.objectID,
+          categoryId: mapping[offer.offer.subcategoryId],
+        })
+      }>
       <Row>
         <OfferImage>
           <ImageTile width={OFFER_WIDTH} height={OFFER_HEIGHT} uri={offer.offer.thumbUrl} />
