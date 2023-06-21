@@ -103,7 +103,7 @@ describe('metasResponseInterceptor', () => {
     it('should request the real testing backend and get the offer data', async () => {
       const offerId = await getOfferId('Punk sous un cathodique')
       const url = `${env.APP_PUBLIC_URL}/offre/${offerId}`
-      const finalResponseBuffer = await metasResponseInterceptor(
+      const html = await metasResponseInterceptor(
         responseBuffer,
         proxyRes,
         {
@@ -113,7 +113,12 @@ describe('metasResponseInterceptor', () => {
         res
       )
 
-      expect(finalResponseBuffer).toMatchSnapshot()
+      const htmlWithoutOfferId = html
+        .toString()
+        .replaceAll(offerId, 'offerId')
+        .replace(/(?<=mediations\/)[A-Z0-9_]+/, 'humanizedOfferId')
+
+      expect(htmlWithoutOfferId).toMatchSnapshot()
     })
 
     it('should request the real testing backend and get the venue data', async () => {
