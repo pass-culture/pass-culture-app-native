@@ -1,7 +1,6 @@
 import { useNavigation, useRoute } from '@react-navigation/native'
 import React from 'react'
 import { Platform, ScrollView, useWindowDimensions } from 'react-native'
-import { useQueryClient } from 'react-query'
 import styled from 'styled-components/native'
 
 import { useBookings, useOngoingOrEndedBooking } from 'features/bookings/api'
@@ -16,7 +15,6 @@ import { isEligibleBookingsForArchive } from 'features/bookings/helpers/expirati
 import { BookingNotFound } from 'features/bookings/pages/BookingNotFound/BookingNotFound'
 import { Booking } from 'features/bookings/types'
 import { UseNavigationType, UseRouteType } from 'features/navigation/RootNavigator/types'
-import { mergeOfferData } from 'features/offer/components/OfferTile/OfferTile'
 import { formatFullAddress } from 'libs/address/useFormatFullAddress'
 import { analytics, isCloseToBottom } from 'libs/analytics'
 import useFunctionOnce from 'libs/hooks/useFunctionOnce'
@@ -24,8 +22,8 @@ import { SeeItineraryButton } from 'libs/itinerary/components/SeeItineraryButton
 import { getGoogleMapsItineraryUrl } from 'libs/itinerary/openGoogleMapsItinerary'
 import { eventMonitoring, ScreenError } from 'libs/monitoring'
 import { useNetInfoContext } from 'libs/network/NetInfoWrapper'
-import { QueryKeys } from 'libs/queryKeys'
 import { useSubcategoriesMapping } from 'libs/subcategories'
+import { usePrePopulateOffer } from 'shared/offer/usePrePopulateOffer'
 import { useOpacityTransition } from 'ui/animations/helpers/useOpacityTransition'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { HeroHeader } from 'ui/components/hero/HeroHeader'
@@ -55,7 +53,7 @@ export function BookingDetails() {
     dataUpdatedAt,
   } = useOngoingOrEndedBooking(params.id)
 
-  const queryClient = useQueryClient()
+  const prePopulateOffer = usePrePopulateOffer()
   const { visible: cancelModalVisible, showModal: showCancelModal, hideModal } = useModal(false)
   const {
     visible: archiveModalVisible,
@@ -138,16 +136,14 @@ export function BookingDetails() {
 
   const onNavigateToOfferPress = () => {
     if (netInfo.isConnected) {
-      queryClient.setQueryData(
-        [QueryKeys.OFFER, offer.id],
-        mergeOfferData({
-          ...offer,
-          categoryId: mapping[offer.subcategoryId].categoryId,
-          thumbUrl: offer.image?.url,
-          name: offer.name,
-          offerId: offer.id,
-        })
-      )
+      prePopulateOffer({
+        ...offer,
+        categoryId: mapping[offer.subcategoryId].categoryId,
+        thumbUrl: offer.image?.url,
+        name: offer.name,
+        offerId: offer.id,
+      })
+
       analytics.logConsultOffer({ offerId: offer.id, from: 'bookings' })
     } else {
       showErrorSnackBar({
