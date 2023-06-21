@@ -23,5 +23,9 @@ export const useSortedSearchCategories = (
       gradients: category.gradients,
       position: category.position,
     }))
-    .sort((a, b) => a.position - b.position)
+    .sort((a, b) => {
+      if (a.position === undefined) return 0
+      if (b.position === undefined) return 0
+      return a.position - b.position
+    })
 }
