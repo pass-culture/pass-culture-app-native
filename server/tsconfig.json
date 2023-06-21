@@ -24,8 +24,6 @@
   },
   "exclude": [
     "build/**",
-    "**/src/**/tests/**",
-    "**/src/**/specs/**",
     "node_modules/**",
     "babel.config.js"
   ],
