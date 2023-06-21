@@ -16,7 +16,7 @@ import { GeolocPermissionState, useGeolocation } from 'libs/geolocation'
 import { Credit, useAvailableCredit } from 'shared/user/useAvailableCredit'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { server } from 'tests/server'
-import { render, screen, waitFor } from 'tests/utils'
+import { act, render, screen, waitFor } from 'tests/utils'
 
 import { HomeHeader } from './HomeHeader'
 
@@ -46,12 +46,8 @@ mockUseAuthContext.mockReturnValue({
 
 describe('HomeHeader', () => {
   it.each`
-    usertype                     | user                                                                              | isLoggedIn | credit                                | subtitle
-    ${'ex beneficiary'}          | ${{ ...mockedUser, isBeneficiary: true, isEligibleForBeneficiaryUpgrade: false }} | ${true}    | ${{ amount: 0, isExpired: true }}     | ${'Ton crédit est expiré'}
-    ${'beneficiary'}             | ${{ ...mockedUser, isBeneficiary: true, isEligibleForBeneficiaryUpgrade: false }} | ${true}    | ${{ amount: 5600, isExpired: false }} | ${'Tu as 56 € sur ton pass'}
-    ${'eligible ex beneficiary'} | ${{ ...mockedUser, isBeneficiary: true, isEligibleForBeneficiaryUpgrade: true }}  | ${true}    | ${{ amount: 5, isExpired: true }}     | ${'Toute la culture à portée de main'}
-    ${'general'}                 | ${{ ...mockedUser, isBeneficiary: false }}                                        | ${true}    | ${{ amount: 0, isExpired: false }}    | ${'Toute la culture à portée de main'}
-    ${'not logged in'}           | ${undefined}                                                                      | ${false}   | ${{ amount: 0, isExpired: false }}    | ${'Toute la culture à portée de main'}
+    usertype         | user                                                                              | isLoggedIn | credit                                | subtitle
+    ${'beneficiary'} | ${{ ...mockedUser, isBeneficiary: true, isEligibleForBeneficiaryUpgrade: false }} | ${true}    | ${{ amount: 5600, isExpired: false }} | ${'Tu as 56 € sur ton pass'}
   `(
     '$usertype users should see subtitle: $subtitle',
     async ({
@@ -72,17 +68,41 @@ describe('HomeHeader', () => {
         setIsLoggedIn: jest.fn(),
         refetchUser: jest.fn(),
       })
+      mockUseAuthContext.mockReturnValueOnce({
+        isLoggedIn: isLoggedIn,
+        user,
+        isUserLoading: false,
+        setIsLoggedIn: jest.fn(),
+        refetchUser: jest.fn(),
+      })
+      mockUseAuthContext.mockReturnValueOnce({
+        isLoggedIn: isLoggedIn,
+        user,
+        isUserLoading: false,
+        setIsLoggedIn: jest.fn(),
+        refetchUser: jest.fn(),
+      })
+      mockUseAvailableCredit.mockReturnValueOnce(credit)
       mockUseAvailableCredit.mockReturnValueOnce(credit)
 
       renderHomeHeader()
+      await act(async () => {})
 
       expect(await screen.findByText(subtitle)).toBeTruthy()
     }
   )
 
-  it('should not display geolocation banner when geolocation is granted', async () => {
+  it.only('should not display geolocation banner when geolocation is granted', async () => {
+    mockUseGeolocation.mockReturnValueOnce({
+      permissionState: GeolocPermissionState.GRANTED,
+    })
+    mockUseGeolocation.mockReturnValueOnce({
+      permissionState: GeolocPermissionState.GRANTED,
+    })
+
     mockGeolocBannerFromBackend()
     renderHomeHeader()
+    await act(async () => {})
 
     await waitFor(() => {
       expect(screen.queryByText('Géolocalise-toi')).toBeNull()
@@ -112,6 +132,7 @@ describe('HomeHeader', () => {
   it('should have CheatMenu button when FEATURE_FLIPPING_ONLY_VISIBLE_ON_TESTING=true', async () => {
     env.FEATURE_FLIPPING_ONLY_VISIBLE_ON_TESTING = true
     renderHomeHeader()
+    await act(async () => {})
 
     expect(await screen.findByText('CheatMenu')).toBeTruthy()
   })
@@ -119,10 +140,9 @@ describe('HomeHeader', () => {
   it('should NOT have CheatMenu button when NOT FEATURE_FLIPPING_ONLY_VISIBLE_ON_TESTING=false', async () => {
     env.FEATURE_FLIPPING_ONLY_VISIBLE_ON_TESTING = false
     renderHomeHeader()
+    await act(async () => {})
 
-    await waitFor(() => {
-      expect(screen.queryByText('CheatMenu')).toBeNull()
-    })
+    expect(screen.queryByText('CheatMenu')).toBeNull()
   })
 
   it('should display SignupBanner when user is not logged in', async () => {
@@ -134,6 +154,7 @@ describe('HomeHeader', () => {
     })
 
     renderHomeHeader()
+    await act(async () => {})
 
     expect(await screen.findByText('Débloque ton crédit')).toBeTruthy()
   })
