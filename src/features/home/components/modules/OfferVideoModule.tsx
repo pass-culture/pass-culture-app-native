@@ -8,6 +8,7 @@ import { Offer } from 'shared/offer/types'
 import { styledButton } from 'ui/components/buttons/styledButton'
 import { ImageTile } from 'ui/components/ImageTile'
 import { Touchable } from 'ui/components/touchable/Touchable'
+import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { PlainArrowNext } from 'ui/svg/icons/PlainArrowNext'
 import { Typo, getSpacing } from 'ui/theme'
 
@@ -24,7 +25,11 @@ export const OfferVideoModule: FunctionComponent<Props> = ({ offer, color }) => 
   const labelMapping = useCategoryHomeLabelMapping()
 
   return (
-    <OfferInsert>
+    <OfferInsert
+      navigateTo={{
+        screen: 'Offer',
+        params: { id: offer.objectID },
+      }}>
       <Row>
         <OfferImage>
           <ImageTile width={OFFER_WIDTH} height={OFFER_HEIGHT} uri={offer.offer.thumbUrl} />
@@ -43,7 +48,7 @@ export const OfferVideoModule: FunctionComponent<Props> = ({ offer, color }) => 
   )
 }
 
-const OfferInsert = styled.View(({ theme }) => ({
+const OfferInsert = styled(InternalTouchableLink)(({ theme }) => ({
   // the overflow: hidden allow to add border radius to the image
   // https://stackoverflow.com/questions/49442165/how-do-you-add-borderradius-to-imagebackground/57616397
   overflow: 'hidden',
