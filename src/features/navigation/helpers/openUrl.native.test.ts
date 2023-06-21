@@ -1,4 +1,4 @@
-import { Alert, Linking } from 'react-native'
+import { Alert, Linking, Platform, NativeModules } from 'react-native'
 
 import * as getScreenFromDeeplinkModule from 'features/deeplinks/helpers/getScreenFromDeeplink'
 import { DeeplinkParts } from 'features/deeplinks/types'
@@ -20,16 +20,50 @@ const getScreenFromDeeplinkModuleSpy = jest.spyOn(
   'getScreenFromDeeplink'
 )
 
+jest.mock('react-native', () => {
+  const RN = jest.requireActual('react-native')
+  // jest does not have access to NativeModules, so we need to mock them
+  RN.NativeModules.DefaultBrowserModule = { openUrl: jest.fn() }
+
+  return RN
+})
+
 describe('openUrl', () => {
-  afterEach(openURLSpy.mockReset)
+  afterEach(() => {
+    openURLSpy.mockReset()
+    // ios is the default value for native tests
+    Platform.OS = 'ios'
+  })
 
-  it('should not capture links that doesnt start with the universal links domain', async () => {
-    const openURL = openURLSpy.mockResolvedValueOnce(undefined)
+  describe('ExternalUrl', () => {
+    it('should open links on browser using custom module on Android', async () => {
+      Platform.OS = 'android'
 
-    const link = 'https://www.google.com'
-    await openUrl(link)
+      const link = 'https://www.google.com'
+      await openUrl(link)
+      await act(() => {})
 
-    expect(openURL).toBeCalledWith(link)
+      expect(NativeModules.DefaultBrowserModule.openUrl).toBeCalledWith(link)
+    })
+
+    it('should open links on browser using Linking when url is invalid on Android', async () => {
+      Platform.OS = 'android'
+      const openURL = openURLSpy.mockResolvedValueOnce(undefined)
+
+      const invalidLink = 'abcdef'
+      await openUrl(invalidLink)
+
+      expect(openURL).toBeCalledWith(invalidLink)
+    })
+
+    it('should open links with Linking on iOS', async () => {
+      const openURL = openURLSpy.mockResolvedValueOnce(undefined)
+
+      const link = 'https://www.google.com'
+      await openUrl(link)
+
+      expect(openURL).toBeCalledWith(link)
+    })
   })
 
   it('should navigate to in-app screen and navigate to it (ex: Offer)', async () => {
