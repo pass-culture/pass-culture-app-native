@@ -1,6 +1,7 @@
 import React, { FunctionComponent } from 'react'
 import styled from 'styled-components/native'
 
+import { getTagColor } from 'features/home/components/helpers/getTagColor'
 import { formatDates, getDisplayPrice } from 'libs/parsers'
 import { useCategoryHomeLabelMapping } from 'libs/subcategories'
 import { Offer } from 'shared/offer/types'
@@ -15,9 +16,10 @@ const OFFER_WIDTH = getSpacing(20)
 
 type Props = {
   offer: Offer
+  color: string
 }
 
-export const OfferVideoModule: FunctionComponent<Props> = ({ offer }) => {
+export const OfferVideoModule: FunctionComponent<Props> = ({ offer, color }) => {
   const timestampsInMillis = offer.offer.dates?.map((timestampInSec) => timestampInSec * 1000)
   const labelMapping = useCategoryHomeLabelMapping()
 
@@ -28,7 +30,7 @@ export const OfferVideoModule: FunctionComponent<Props> = ({ offer }) => {
           <ImageTile width={OFFER_WIDTH} height={OFFER_HEIGHT} uri={offer.offer.thumbUrl} />
         </OfferImage>
         <OfferInformations>
-          <CategoryText>{labelMapping[offer.offer.subcategoryId]}</CategoryText>
+          <CategoryText color={color}>{labelMapping[offer.offer.subcategoryId]}</CategoryText>
           <TitleText numberOfLines={2}>{offer.offer.name}</TitleText>
           {/* // TODO(PC-22422): Update dates to display only 1 on modal*/}
           <AdditionalInfoText>{formatDates(timestampsInMillis)}</AdditionalInfoText>
@@ -72,11 +74,10 @@ const ArrowOffer = styledButton(Touchable)({
   right: getSpacing(4),
 })
 
-const CategoryText = styled(Typo.Caption)({
-  // TODO(PC-22765): update fixed color to dynamic color
-  color: '#B85901FF',
+const CategoryText = styled(Typo.Caption)<{ color: string }>(({ color }) => ({
+  color: getTagColor(color),
   marginBottom: getSpacing(1),
-})
+}))
 
 const TitleText = styled(Typo.ButtonText)({
   marginBottom: getSpacing(1),
