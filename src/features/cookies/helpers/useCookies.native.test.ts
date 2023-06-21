@@ -442,11 +442,9 @@ describe('useCookies', () => {
           })
         })
 
-        expect(eventMonitoring.captureException).toHaveBeenCalledWith(
-          new Error('can’t log cookies consent choice'),
-          {
-            message: 'unknown network error',
-          }
+        expect(eventMonitoring.captureMessage).toHaveBeenCalledWith(
+          `can‘t log cookies consent choice ; reason: "unknown network error"`,
+          'info'
         )
       })
     })

@@ -119,9 +119,12 @@ const usePersistCookieConsent = () => {
         await api.postnativev1cookiesConsent(omit(cookiesChoice, ['buildVersion']))
       }
     } catch (error) {
-      eventMonitoring.captureException(new Error('can’t log cookies consent choice'), {
-        message: error instanceof Error ? error.message : undefined,
-      })
+      eventMonitoring.captureMessage(
+        `can‘t log cookies consent choice ; reason: "${
+          error instanceof Error ? error.message : undefined
+        }"`,
+        'info'
+      )
     }
   })
 }
