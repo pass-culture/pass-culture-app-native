@@ -467,3 +467,5 @@ we have found an active community on Gitter.im:
 
 - [Webdriver.IO Gitter](https://gitter.im/webdriverio/webdriverio)
 - [Appium Gitter](https://gitter.im/appium/appium)
+ 
+You can also follow the class here: https://learn.webdriver.io/

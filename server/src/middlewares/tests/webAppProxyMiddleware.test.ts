@@ -101,9 +101,9 @@ describe('metasResponseInterceptor', () => {
     const res = {} as ServerResponse
 
     it('should request the real testing backend and get the offer data', async () => {
-      const offerId = await getOfferId('Punk sous un cathodique')
+      const offerId = await getOfferId("C'est notre prooooojecteur")
       const url = `${env.APP_PUBLIC_URL}/offre/${offerId}`
-      const finalResponseBuffer = await metasResponseInterceptor(
+      const html = await metasResponseInterceptor(
         responseBuffer,
         proxyRes,
         {
@@ -113,7 +113,12 @@ describe('metasResponseInterceptor', () => {
         res
       )
 
-      expect(finalResponseBuffer).toMatchSnapshot()
+      const htmlWithoutOfferId = html
+        .toString()
+        .replaceAll(offerId, 'offerId')
+        .replace(/(?<=mediations\/)[A-Z0-9_]+/, 'humanizedOfferId')
+
+      expect(htmlWithoutOfferId).toMatchSnapshot()
     })
 
     it('should request the real testing backend and get the venue data', async () => {
@@ -139,7 +144,14 @@ const ALGOLIA_OFFERS_INDEX_NAME = 'TESTING'
 const ALGOLIA_VENUES_INDEX_NAME = 'testing-venues'
 const ALGOLIA_SEARCH_API_KEY = '468f53ae703ee7ff219106f3d9a39e7f' //This is the public API key which can be safely used in your frontend code.This key is usable for search queries and it's also able to list the indices you've got access to.
 
-const getAlgoliaObjectId = async (index: string, query: string): Promise<string> => {
+type Hit = {
+  objectID: string
+  offer: {
+    name?: string
+  }
+}
+
+const getAlgoliaObjectId = async (index: string, query: string): Promise<Hit[]> => {
   const response = await fetch(
     `https://${ALGOLIA_APPLICATION_ID}-dsn.algolia.net/1/indexes/${index}/query`,
     {
@@ -148,17 +160,28 @@ const getAlgoliaObjectId = async (index: string, query: string): Promise<string>
         'X-Algolia-API-Key': ALGOLIA_SEARCH_API_KEY,
         'X-Algolia-Application-Id': ALGOLIA_APPLICATION_ID,
       }),
-      body: `{ "params": "query=${query}&hitsPerPage=1&getRankingInfo=1" }`,
+      body: `{ "params": "query=${query}&hitsPerPage=10" }`,
     }
   )
 
   const hits = await response.json()
 
-  return hits.hits.at(0)?.objectID
+  return hits.hits
 }
 
-const getOfferId = async (query: string): Promise<string> =>
-  getAlgoliaObjectId(ALGOLIA_OFFERS_INDEX_NAME, query)
+const firstObjectID = (hits: Hit[]): string => {
+  const hit = hits.at(0)
+  if (!hit) throw new Error("can't find Algolia result")
+  return hit.objectID
+}
 
-const getVenueId = async (query: string): Promise<string> =>
-  getAlgoliaObjectId(ALGOLIA_VENUES_INDEX_NAME, query)
+const getOfferId = async (query: string): Promise<string> => {
+  const hits = await getAlgoliaObjectId(ALGOLIA_OFFERS_INDEX_NAME, query)
+  const hitsWithoutDataInName = hits.filter((hit) => hit.offer.name?.includes('DATA') === false)
+  return firstObjectID(hitsWithoutDataInName)
+}
+
+const getVenueId = async (query: string): Promise<string> => {
+  const hits = await getAlgoliaObjectId(ALGOLIA_VENUES_INDEX_NAME, query)
+  return firstObjectID(hits)
+}
