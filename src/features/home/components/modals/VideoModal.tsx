@@ -55,7 +55,7 @@ export const VideoModal: React.FC<VideoModalProps> = (props) => {
         <Spacer.Column numberOfSpaces={6} />
         <Typo.Title4>{props.offerTitle}</Typo.Title4>
         <Spacer.Column numberOfSpaces={2} />
-        <OfferVideoModule offer={props.offer} />
+        <OfferVideoModule offer={props.offer} color={props.color} />
       </StyledScrollView>
       <StyledTouchable onPress={props.hideModal} accessibilityLabel="Fermer la modale vidéo">
         <StyledCloseIcon />
