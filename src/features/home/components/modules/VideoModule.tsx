@@ -63,7 +63,12 @@ export const VideoModule: FunctionComponent<VideoModuleProps> = (props) => {
             </PlayerContainer>
           </Thumbnail>
         </StyledTouchableHighlight>
-        <VideoModal visible={videoModalVisible} hideModal={hideVideoModal} {...props} />
+        <VideoModal
+          visible={videoModalVisible}
+          hideModal={hideVideoModal}
+          offer={offer}
+          {...props}
+        />
       </VideoOfferContainer>
       <Spacer.Column numberOfSpaces={2} />
       <VideoOfferContainer>
