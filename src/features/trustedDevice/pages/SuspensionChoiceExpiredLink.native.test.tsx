@@ -29,10 +29,10 @@ describe('<SuspensionChoiceExpiredLink/>', () => {
     )
   })
 
-  it('should open mail app when "Contacter le support" button is clicked', async () => {
+  it('should open mail app when "Contacter le service fraude" button is clicked', async () => {
     render(<SuspensionChoiceExpiredLink />)
 
-    const contactFraudButton = screen.getByText('Contacter le support')
+    const contactFraudButton = screen.getByText('Contacter le service fraude')
     fireEvent.press(contactFraudButton)
 
     expect(mockOpenUrl).toHaveBeenNthCalledWith(

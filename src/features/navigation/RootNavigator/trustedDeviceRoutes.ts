@@ -7,6 +7,7 @@ import {
 import { screenParamsParser } from 'features/navigation/screenParamsUtils'
 import { AccountSecurity } from 'features/trustedDevice/pages/AccountSecurity'
 import { SuspensionChoice } from 'features/trustedDevice/pages/SuspensionChoice'
+import { SuspensionChoiceExpiredLink } from 'features/trustedDevice/pages/SuspensionChoiceExpiredLink'
 import { SuspensionConfirmation } from 'features/trustedDevice/pages/SuspensionConfirmation'
 
 // Try to keep those routes in the same order as the user flow
@@ -28,6 +29,12 @@ export const trustedDeviceRoutes: GenericRoute<TrustedDeviceRootStackParamList>[
     name: 'SuspensionChoice',
     component: SuspensionChoice,
     path: 'securisation-compte/suspension',
+  },
+  {
+    name: 'SuspensionChoiceExpiredLink',
+    component: SuspensionChoiceExpiredLink,
+    path: 'lien-suspension-compte-expire',
+    options: { title: 'Lien de suspension de compte expiré' },
   },
   {
     name: 'SuspensionConfirmation',
