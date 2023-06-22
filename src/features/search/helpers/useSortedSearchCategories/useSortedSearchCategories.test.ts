@@ -1,8 +1,9 @@
 import { SearchCategoriesIllustrations } from 'features/internal/cheatcodes/pages/AppComponents/illustrationsExports'
+import { CategoryButtonProps } from 'features/search/components/CategoryButton/CategoryButton'
 import { placeholderData } from 'libs/subcategories/placeholderData'
 import { renderHook } from 'tests/utils'
 
-import { useSortedSearchCategories } from './useSortedSearchCategories'
+import { categoriesSortPredicate, useSortedSearchCategories } from './useSortedSearchCategories'
 
 const mockData = placeholderData
 jest.mock('libs/subcategories/useSubcategories', () => ({
@@ -52,5 +53,23 @@ describe('useSortedSearchCategories', () => {
       'Conférences & rencontres',
       'Évènements en ligne',
     ])
+  })
+})
+
+describe('categoriesSortPredicate', () => {
+  it('should sort when example is simple', () => {
+    const itemA = { position: 2, label: 'Example 1' } as CategoryButtonProps
+    const itemB = { position: 1, label: 'Example 2' } as CategoryButtonProps
+
+    expect(categoriesSortPredicate(itemA, itemB)).toEqual(1)
+    expect(categoriesSortPredicate(itemB, itemA)).toEqual(-1)
+  })
+
+  it('should sort when undefined', () => {
+    const itemA = { position: undefined, label: 'Example 1' } as unknown as CategoryButtonProps
+    const itemB = { position: 1, label: 'Example 2' } as CategoryButtonProps
+
+    expect(categoriesSortPredicate(itemA, itemB)).toEqual(0)
+    expect(categoriesSortPredicate(itemB, itemA)).toEqual(0)
   })
 })

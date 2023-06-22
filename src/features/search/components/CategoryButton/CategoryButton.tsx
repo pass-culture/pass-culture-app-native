@@ -15,6 +15,7 @@ export type CategoryButtonProps = {
   gradients: Gradient[]
   onPress: () => void
   children?: never
+  position: number
 }
 
 export const CategoryButton: FunctionComponent<CategoryButtonProps> = ({

@@ -1,9 +1,16 @@
 import { SearchGroupNameEnumv2 } from 'api/gen'
 import { ListCategoryButtonProps } from 'features/search/components/CategoriesButtonsDisplay/CategoriesButtonsDisplay'
+import { CategoryButtonProps } from 'features/search/components/CategoryButton/CategoryButton'
 import { useAvailableCategories } from 'features/search/helpers/useAvailableCategories/useAvailableCategories'
 import { useSearchGroupLabelMapping } from 'libs/subcategories/mappings'
 
 export type OnPressCategory = (pressedCategory: SearchGroupNameEnumv2) => void
+
+export function categoriesSortPredicate(a: CategoryButtonProps, b: CategoryButtonProps): number {
+  if (a.position === undefined) return 0
+  if (b.position === undefined) return 0
+  return a.position - b.position
+}
 
 export const useSortedSearchCategories = (
   onPressCategory: OnPressCategory
@@ -23,9 +30,5 @@ export const useSortedSearchCategories = (
       gradients: category.gradients,
       position: category.position,
     }))
-    .sort((a, b) => {
-      if (a.position === undefined) return 0
-      if (b.position === undefined) return 0
-      return a.position - b.position
-    })
+    .sort(categoriesSortPredicate)
 }
