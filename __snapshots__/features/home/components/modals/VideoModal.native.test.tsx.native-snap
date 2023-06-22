@@ -494,10 +494,11 @@ exports[`VideoModal should render correctly if modal visible 1`] = `
                   }
                 >
                   <Text
+                    color="Aquamarine"
                     style={
                       Array [
                         Object {
-                          "color": "#B85901FF",
+                          "color": "#0E8474",
                           "fontFamily": "Montserrat-SemiBold",
                           "fontSize": 12,
                           "lineHeight": 16,
