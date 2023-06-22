@@ -6,6 +6,7 @@ import styled from 'styled-components/native'
 import { useVideoOffer } from 'features/home/api/useVideoOffer'
 import { BlackGradient } from 'features/home/components/BlackGradient'
 import { TEXT_BACKGROUND_OPACITY } from 'features/home/components/constants'
+import { getGradientColors } from 'features/home/components/helpers/getGradientColors'
 import { VideoModal } from 'features/home/components/modals/VideoModal'
 import { OfferVideoModule } from 'features/home/components/modules/OfferVideoModule'
 import { VideoModule as VideoModuleProps } from 'features/home/types'
@@ -38,8 +39,7 @@ export const VideoModule: FunctionComponent<VideoModuleProps> = (props) => {
       <ColorCategoryBackground
         start={{ x: 0, y: 0 }}
         end={{ x: 0, y: 1 }}
-        // TODO(PC-22765): update fixed color to dynamic color
-        colors={['#27DCA8FF', '#0E8474FF']}
+        colors={getGradientColors(props.color)}
       />
       <VideoOfferContainer>
         <Typo.Title3>{props.title}</Typo.Title3>
@@ -63,11 +63,16 @@ export const VideoModule: FunctionComponent<VideoModuleProps> = (props) => {
             </PlayerContainer>
           </Thumbnail>
         </StyledTouchableHighlight>
-        <VideoModal visible={videoModalVisible} hideModal={hideVideoModal} {...props} />
+        <VideoModal
+          visible={videoModalVisible}
+          hideModal={hideVideoModal}
+          offer={offer}
+          {...props}
+        />
       </VideoOfferContainer>
       <Spacer.Column numberOfSpaces={2} />
       <VideoOfferContainer>
-        <OfferVideoModule offer={offer} />
+        <OfferVideoModule offer={offer} color={props.color} />
       </VideoOfferContainer>
       <Spacer.Column numberOfSpaces={5} />
     </Container>

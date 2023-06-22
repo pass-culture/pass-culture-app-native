@@ -2,7 +2,7 @@ import React from 'react'
 import { Linking } from 'react-native'
 
 import { analytics } from 'libs/analytics'
-import { env } from 'libs/environment'
+import { WEBAPP_V2_URL } from 'libs/environment/useWebAppUrl'
 import { fireEvent, render, screen } from 'tests/utils'
 
 import { build } from '../../../../package.json'
@@ -30,6 +30,6 @@ describe('<ForceUpdate/>', () => {
     const goToWebappButton = screen.getByText('Utiliser la version web')
     fireEvent.press(goToWebappButton)
 
-    expect(Linking.openURL).toHaveBeenCalledWith(`https://${env.WEBAPP_V2_DOMAIN}`)
+    expect(Linking.openURL).toHaveBeenCalledWith(WEBAPP_V2_URL)
   })
 })

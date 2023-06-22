@@ -41,9 +41,9 @@ exports[`<Search/> should render Search 1`] = `
           Array [
             Object {
               "color": "#161617",
-              "fontFamily": "Montserrat-Medium",
-              "fontSize": 18,
-              "lineHeight": 22,
+              "fontFamily": "Montserrat-Black",
+              "fontSize": 26,
+              "lineHeight": 34,
             },
           ]
         }
@@ -305,7 +305,7 @@ exports[`<Search/> should render Search 1`] = `
           "inlineStyle": InlineStyle {
             "rules": Array [
               [Function],
-              "margin-top: 20px;",
+              "margin-top: 32px;",
               "padding-horizontal: 4px;",
               "padding-bottom: 16px;",
             ],
@@ -900,10 +900,10 @@ exports[`<Search/> should render Search 1`] = `
               Array [
                 Object {
                   "color": "#161617",
-                  "fontFamily": "Montserrat-Medium",
-                  "fontSize": 18,
-                  "lineHeight": 22,
-                  "marginTop": 20,
+                  "fontFamily": "Montserrat-Bold",
+                  "fontSize": 20,
+                  "lineHeight": 24,
+                  "marginTop": 32,
                   "paddingBottom": 16,
                   "paddingHorizontal": 4,
                 },

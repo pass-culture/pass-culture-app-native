@@ -54,6 +54,10 @@ export const VideoPlayer: React.FC<VideoPlayerProps> = ({ youtubeVideoId }) => {
           console.error(error)
         }}
         forceAndroidAutoplay
+        webViewProps={{
+          overScrollMode: 'never',
+          bounces: false,
+        }}
       />
     </StyledVideoPlayerContainer>
   )
