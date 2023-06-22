@@ -7,9 +7,35 @@ import {
   VENUE_WITHOUT_BANNER_RESPONSE_SNAPSHOT,
 } from '../../../tests/constants'
 import { env } from '../../libs/environment/env'
-import { ENTITY_MAP } from '../../services/entities/types'
 import { metasResponseInterceptor } from '../webAppProxyMiddleware'
 import { server } from '../../../tests/server'
+
+const responseBuffer = Buffer.from(TEST_HTML)
+const req = {} as IncomingMessage
+const res = {} as ServerResponse
+
+const htmlResponseFor = async (url: string): Promise<string | Buffer> => {
+  const proxyRes = {
+    headers: {
+      'content-type': 'text/html',
+    },
+  } as IncomingMessage
+
+  return await metasResponseInterceptor(
+    responseBuffer,
+    proxyRes,
+    {
+      ...req,
+      url,
+    } as IncomingMessage,
+    res
+  )
+}
+
+const hasCanonicalWith = (href: string): RegExp => {
+  const pattern = `<head>.*?<link rel="canonical" href="${href}" />.*?</head>`
+  return new RegExp(pattern, 's')
+}
 
 describe('metasResponseInterceptor', () => {
   describe('with mock backend', () => {
@@ -21,15 +47,6 @@ describe('metasResponseInterceptor', () => {
       server.resetHandlers()
       server.close()
     })
-
-    const responseBuffer = Buffer.from(TEST_HTML)
-    const proxyRes = {
-      headers: {
-        'content-type': 'text/html',
-      },
-    } as IncomingMessage
-    const req = {} as IncomingMessage
-    const res = {} as ServerResponse
 
     it('should return unmodified response buffer when content-type is NOT text/html', async () => {
       const imagePngResponseBuffer = Buffer.from('I am an image/png')
@@ -57,37 +74,50 @@ describe('metasResponseInterceptor', () => {
       `should edit html when req.url on %s use valid id: /%s/%s`,
       async (entity: string, endpoint: string, id: string) => {
         const url = `${env.APP_PUBLIC_URL}/${endpoint}${id ? `/${id}` : ''}`
-        const finalResponseBuffer = await metasResponseInterceptor(
-          responseBuffer,
-          proxyRes,
-          {
-            ...req,
-            url,
-          } as IncomingMessage,
-          res
-        )
+        const finalResponseBuffer = await htmlResponseFor(url)
 
         expect(finalResponseBuffer).not.toEqual(responseBuffer.toString('utf8'))
       }
     )
 
-    it.each(Object.entries(ENTITY_MAP).map(([key, { API_MODEL_NAME }]) => [API_MODEL_NAME, key]))(
-      `should not edit html when req.url on %s use valid id: /%s`,
-      async (entity: string, endpoint: string) => {
-        const url = `${env.APP_PUBLIC_URL}/${endpoint}`
-        const finalResponseBuffer = await metasResponseInterceptor(
-          responseBuffer,
-          proxyRes,
-          {
-            ...req,
-            url,
-          } as IncomingMessage,
-          res
-        )
+    describe('should add canonical link tag', () => {
+      it.each(['/connexion', '/creation-compte'])('when url is %s', async (path) => {
+        const url = `${env.APP_PUBLIC_URL}${path}`
 
-        expect(finalResponseBuffer).toEqual(responseBuffer.toString('utf8'))
-      }
-    )
+        const response = await htmlResponseFor(url)
+
+        expect(response).toMatch(hasCanonicalWith(url))
+      })
+
+      it.each(['/connexion', '/creation-compte'])(
+        'without query params when url is %s with query params',
+        async (path) => {
+          const canonical = `${env.APP_PUBLIC_URL}${path}`
+
+          const response = await htmlResponseFor(`${canonical}?truc=toto`)
+
+          expect(response).toMatch(hasCanonicalWith(canonical))
+        }
+      )
+
+      it.each([
+        `/offre/${OFFER_RESPONSE_SNAPSHOT.id}`,
+        `/lieu/${VENUE_WITH_BANNER_RESPONSE_SNAPSHOT.id}`,
+        `/lieu/${VENUE_WITHOUT_BANNER_RESPONSE_SNAPSHOT.id}`,
+      ])('with id when url is %s', async (path) => {
+        const url = `${env.APP_PUBLIC_URL}${path}`
+
+        const response = await htmlResponseFor(url)
+
+        expect(response).toMatch(hasCanonicalWith(url))
+      })
+
+      it("when using `yarn dev` we don't have the host", async () => {
+        const response = await htmlResponseFor('/')
+
+        expect(response).toMatch(hasCanonicalWith(`${env.APP_PUBLIC_URL}/`))
+      })
+    })
   })
 
   describe('with real backend', () => {

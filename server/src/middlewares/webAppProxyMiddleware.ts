@@ -21,6 +21,15 @@ const options = {
   onProxyRes: responseInterceptor(metasResponseInterceptor),
 }
 
+const addCanonicalLinkToHTML = (html: string, href: string): string => {
+  const url = new URL(href.startsWith('/') ? env.APP_PUBLIC_URL + href : href)
+
+  return html.replace(
+    '<head>',
+    `<head><link rel="canonical" href="${env.APP_PUBLIC_URL}${url.pathname}" />`
+  )
+}
+
 export async function metasResponseInterceptor(
   responseBuffer: Buffer,
   proxyRes: IncomingMessage,
@@ -34,7 +43,7 @@ export async function metasResponseInterceptor(
   // GCP return 404 when returning the index.html if not the base path, this fix it.
   res.statusCode = 200
 
-  const html = responseBuffer.toString('utf8')
+  let html = responseBuffer.toString('utf8')
 
   let match
 
@@ -42,6 +51,7 @@ export async function metasResponseInterceptor(
   // error with istanbul thinking there is a else path
   if (req.url) {
     match = ENTITY_PATH_REGEXP.exec(req.url)
+    html = addCanonicalLinkToHTML(html, req.url)
   }
 
   const [endpoint, entityKey, id] = match || []
