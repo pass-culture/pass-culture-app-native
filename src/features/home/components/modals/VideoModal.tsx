@@ -19,7 +19,6 @@ interface VideoModalProps extends VideoModule {
   offer: Offer
   visible: boolean
   hideModal: () => void
-  offerId: string
 }
 
 export const VideoModal: React.FC<VideoModalProps> = (props) => {
@@ -37,7 +36,7 @@ export const VideoModal: React.FC<VideoModalProps> = (props) => {
       customModalHeader={<React.Fragment />}>
       <VideoPlayer
         youtubeVideoId={props.youtubeVideoId}
-        offerId={props.offerId}
+        offerId={props.offer.objectID}
         onPressSeeOffer={props.hideModal}
         videoThumbnail={props.videoThumbnail}
       />
