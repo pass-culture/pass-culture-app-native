@@ -251,6 +251,8 @@ export type VideoModule = {
   color: Color
   videoTag: string
   offerTitle: string
+  videoDescription: string
+  videoPublicationDate: string
 }
 
 export type OfferModuleParamsInfo = {

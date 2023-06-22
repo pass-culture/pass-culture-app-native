@@ -182,6 +182,8 @@ type VideoFields = {
   color: Color
   videoTag: string
   offerTitle: string
+  videoDescription: string
+  videoPublicationDate: string
 }
 
 export type Cover = Entry<CoverFields, ContentTypes.INFORMATION>
