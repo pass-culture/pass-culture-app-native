@@ -3,7 +3,7 @@
 exports[`metasResponseInterceptor with real backend should request the real testing backend and get the offer data 1`] = `
 "<!doctype html>
 <html lang=\\"fr\\">
-  <head>
+  <head><link rel=\\"canonical\\" href=\\"http://localhost:8080/offre/offerId\\" />
     <meta charset=\\"utf-8\\">
     <title>pass Culture</title>
     <meta name=\\"title\\" content=\\"pass Culture | C&apos;est notre prooooojecteur\\" />
@@ -51,7 +51,7 @@ exports[`metasResponseInterceptor with real backend should request the real test
 exports[`metasResponseInterceptor with real backend should request the real testing backend and get the venue data 1`] = `
 "<!doctype html>
 <html lang=\\"fr\\">
-  <head>
+  <head><link rel=\\"canonical\\" href=\\"http://localhost:8080/lieu/6062\\" />
     <meta charset=\\"utf-8\\">
     <title>pass Culture</title>
     <meta name=\\"title\\" content=\\"pass Culture | Terrain vague DATA\\" />
