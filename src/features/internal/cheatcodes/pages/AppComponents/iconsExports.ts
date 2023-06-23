@@ -82,6 +82,7 @@ import { LogoPassCulture as PassCultureIcon } from 'ui/svg/icons/LogoPassCulture
 import { MagnifyingGlass } from 'ui/svg/icons/MagnifyingGlass'
 import { More } from 'ui/svg/icons/More'
 import { OfferEvent } from 'ui/svg/icons/OfferEvent'
+import { Offers } from 'ui/svg/icons/Offers'
 import { OrderPrice } from 'ui/svg/icons/OrderPrice'
 import { OtherOffer } from 'ui/svg/icons/OtherOffer'
 import { PhoneFilled } from 'ui/svg/icons/PhoneFilled'
@@ -205,6 +206,7 @@ export const SecondaryAndBiggerIcons = {
   OfferEvent,
   OrderPrice,
   OtherOffer,
+  Offers,
   ProfileDeletion,
   PhoneIcon,
   Quote,
