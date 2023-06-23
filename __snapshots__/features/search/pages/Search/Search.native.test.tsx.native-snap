@@ -362,6 +362,7 @@ exports[`<Search/> should render Search 1`] = `
             ],
             "label": "Concerts & festivals",
             "onPress": [Function],
+            "position": 1,
           },
           Object {
             "Icon": Object {
@@ -400,6 +401,7 @@ exports[`<Search/> should render Search 1`] = `
             ],
             "label": "Films, séries, cinéma",
             "onPress": [Function],
+            "position": 2,
           },
           Object {
             "Icon": Object {
@@ -438,6 +440,7 @@ exports[`<Search/> should render Search 1`] = `
             ],
             "label": "Livres",
             "onPress": [Function],
+            "position": 3,
           },
           Object {
             "Icon": Object {
@@ -476,6 +479,7 @@ exports[`<Search/> should render Search 1`] = `
             ],
             "label": "CD, vinyles, musique en ligne",
             "onPress": [Function],
+            "position": 4,
           },
           Object {
             "Icon": Object {
@@ -514,6 +518,7 @@ exports[`<Search/> should render Search 1`] = `
             ],
             "label": "Arts & loisirs créatifs",
             "onPress": [Function],
+            "position": 5,
           },
           Object {
             "Icon": Object {
@@ -552,6 +557,7 @@ exports[`<Search/> should render Search 1`] = `
             ],
             "label": "Spectacles",
             "onPress": [Function],
+            "position": 6,
           },
           Object {
             "Icon": Object {
@@ -590,6 +596,7 @@ exports[`<Search/> should render Search 1`] = `
             ],
             "label": "Musées & visites culturelles",
             "onPress": [Function],
+            "position": 7,
           },
           Object {
             "Icon": Object {
@@ -628,6 +635,7 @@ exports[`<Search/> should render Search 1`] = `
             ],
             "label": "Jeux & jeux vidéos",
             "onPress": [Function],
+            "position": 8,
           },
           Object {
             "Icon": Object {
@@ -666,6 +674,7 @@ exports[`<Search/> should render Search 1`] = `
             ],
             "label": "Instruments de musique",
             "onPress": [Function],
+            "position": 9,
           },
           Object {
             "Icon": Object {
@@ -704,6 +713,7 @@ exports[`<Search/> should render Search 1`] = `
             ],
             "label": "Médias & presse",
             "onPress": [Function],
+            "position": 10,
           },
           Object {
             "Icon": Object {
@@ -742,6 +752,7 @@ exports[`<Search/> should render Search 1`] = `
             ],
             "label": "Bibliothèques, Médiathèques",
             "onPress": [Function],
+            "position": 11,
           },
           Object {
             "Icon": Object {
@@ -780,6 +791,7 @@ exports[`<Search/> should render Search 1`] = `
             ],
             "label": "Cartes jeunes",
             "onPress": [Function],
+            "position": 12,
           },
           Object {
             "Icon": Object {
@@ -833,6 +845,7 @@ exports[`<Search/> should render Search 1`] = `
             ],
             "label": "Conférences & rencontres",
             "onPress": [Function],
+            "position": 13,
           },
           Object {
             "Icon": Object {
@@ -871,6 +884,7 @@ exports[`<Search/> should render Search 1`] = `
             ],
             "label": "Évènements en ligne",
             "onPress": [Function],
+            "position": 14,
           },
         ]
       }

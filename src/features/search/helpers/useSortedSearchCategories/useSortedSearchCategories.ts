@@ -6,7 +6,9 @@ import { useSearchGroupLabelMapping } from 'libs/subcategories/mappings'
 
 export type OnPressCategory = (pressedCategory: SearchGroupNameEnumv2) => void
 
-export function categoriesSortPredicate(a: CategoryButtonProps, b: CategoryButtonProps): number {
+export type MappingOutput = CategoryButtonProps & { position: number | undefined }
+
+export function categoriesSortPredicate(a: MappingOutput, b: MappingOutput): number {
   if (a.position === undefined) return 0
   if (b.position === undefined) return 0
   return a.position - b.position
@@ -19,7 +21,7 @@ export const useSortedSearchCategories = (
   const categories = useAvailableCategories()
 
   return categories
-    .map((category) => ({
+    .map<MappingOutput>((category) => ({
       label: searchGroupLabelMapping?.[category.facetFilter] || '',
       Icon: category.icon,
       Illustration: category.illustration,

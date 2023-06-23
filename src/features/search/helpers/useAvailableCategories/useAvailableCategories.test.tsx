@@ -25,6 +25,7 @@ describe('useAvailableCategories', () => {
           { color: '#AD87FF', position: { x: 0, y: 0 } },
           { color: theme.colors.lilac, position: { x: 0, y: 0.5 } },
         ],
+        position: 5,
       },
       {
         icon: categoriesIcons.Bookstore,
@@ -35,6 +36,7 @@ describe('useAvailableCategories', () => {
           { color: '#F8733D', position: { x: 0, y: 0 } },
           { color: theme.colors.coral, position: { x: 0, y: 0.5 } },
         ],
+        position: 11,
       },
       {
         icon: categoriesIcons.Card,
@@ -45,6 +47,7 @@ describe('useAvailableCategories', () => {
           { color: '#AD87FF', position: { x: 0, y: 0 } },
           { color: theme.colors.lilac, position: { x: 0, y: 0.5 } },
         ],
+        position: 12,
       },
       {
         icon: categoriesIcons.Disk,
@@ -55,6 +58,7 @@ describe('useAvailableCategories', () => {
           { color: '#20C5E9', position: { x: 0, y: 0 } },
           { color: theme.colors.skyBlue, position: { x: 0, y: 0.5 } },
         ],
+        position: 4,
       },
       {
         icon: categoriesIcons.Conference,
@@ -65,6 +69,7 @@ describe('useAvailableCategories', () => {
           { color: '#F99E15', position: { x: 0, y: 0 } },
           { color: theme.colors.gold, position: { x: 0, y: 0.5 } },
         ],
+        position: 1,
       },
       {
         icon: categoriesIcons.Microphone,
@@ -75,6 +80,7 @@ describe('useAvailableCategories', () => {
           { color: '#F99E15', position: { x: 0, y: 0 } },
           { color: theme.colors.gold, position: { x: 0, y: 0.5 } },
         ],
+        position: 13,
       },
       {
         icon: categoriesIcons.LiveEvent,
@@ -85,6 +91,7 @@ describe('useAvailableCategories', () => {
           { color: '#27DCA8', position: { x: 0, y: 0 } },
           { color: theme.colors.aquamarine, position: { x: 0, y: 0.5 } },
         ],
+        position: 14,
       },
       {
         icon: categoriesIcons.Cinema,
@@ -95,6 +102,7 @@ describe('useAvailableCategories', () => {
           { color: '#27DCA8', position: { x: 0, y: 0 } },
           { color: theme.colors.aquamarine, position: { x: 0, y: 0.5 } },
         ],
+        position: 2,
       },
       {
         icon: categoriesIcons.Instrument,
@@ -105,6 +113,7 @@ describe('useAvailableCategories', () => {
           { color: '#20C5E9', position: { x: 0, y: 0 } },
           { color: theme.colors.skyBlue, position: { x: 0, y: 0.5 } },
         ],
+        position: 9,
       },
       {
         icon: categoriesIcons.VideoGame,
@@ -115,6 +124,7 @@ describe('useAvailableCategories', () => {
           { color: '#F99E15', position: { x: 0, y: 0 } },
           { color: theme.colors.gold, position: { x: 0, y: 0.5 } },
         ],
+        position: 8,
       },
       {
         icon: categoriesIcons.Book,
@@ -125,6 +135,7 @@ describe('useAvailableCategories', () => {
           { color: '#EC3478', position: { x: 0, y: 0 } },
           { color: theme.colors.deepPink, position: { x: 0, y: 0.5 } },
         ],
+        position: 3,
       },
       {
         icon: categoriesIcons.Press,
@@ -135,6 +146,7 @@ describe('useAvailableCategories', () => {
           { color: '#EC3478', position: { x: 0, y: 0 } },
           { color: theme.colors.deepPink, position: { x: 0, y: 0.5 } },
         ],
+        position: 10,
       },
       {
         icon: categoriesIcons.Museum,
@@ -145,6 +157,7 @@ describe('useAvailableCategories', () => {
           { color: '#27DCA8', position: { x: 0, y: 0 } },
           { color: theme.colors.aquamarine, position: { x: 0, y: 0.5 } },
         ],
+        position: 7,
       },
       {
         icon: categoriesIcons.Show,
@@ -155,6 +168,7 @@ describe('useAvailableCategories', () => {
           { color: '#F8733D', position: { x: 0, y: 0 } },
           { color: theme.colors.coral, position: { x: 0, y: 0.5 } },
         ],
+        position: 6,
       },
     ])
   })
@@ -181,6 +195,7 @@ describe('useAvailableCategories', () => {
           { color: '#AD87FF', position: { x: 0, y: 0 } },
           { color: theme.colors.lilac, position: { x: 0, y: 0.5 } },
         ],
+        position: 5,
       },
       {
         icon: categoriesIcons.Bookstore,
@@ -191,6 +206,7 @@ describe('useAvailableCategories', () => {
           { color: '#F8733D', position: { x: 0, y: 0 } },
           { color: theme.colors.coral, position: { x: 0, y: 0.5 } },
         ],
+        position: 11,
       },
     ])
   })
