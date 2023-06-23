@@ -80,6 +80,7 @@ export const SignupForm: FunctionComponent = () => {
   const [stepIndex, setStepIndex] = React.useState(0)
   const stepConfig = SIGNUP_STEP_CONFIG[stepIndex]
   const isFirstStep = stepIndex === 0
+  const isLastStep = stepIndex === 4
   const helmetTitle = `Étape ${
     stepIndex + 1
   } sur ${NEW_SIGNUP_NUMBER_OF_STEPS} - Inscription | pass Culture`
@@ -145,6 +146,7 @@ export const SignupForm: FunctionComponent = () => {
       <PageHeaderWithoutPlaceholder
         title="Inscription"
         shouldDisplayCloseButton={!isFirstStep}
+        shouldDisplayBackButton={!isLastStep}
         onClose={showQuitSignupModal}
         onGoBack={goToPreviousStep}>
         <ProgressBar totalStep={NEW_SIGNUP_NUMBER_OF_STEPS} currentStep={stepIndex + 1} />

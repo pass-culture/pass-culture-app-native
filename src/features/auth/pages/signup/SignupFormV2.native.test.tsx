@@ -105,6 +105,29 @@ describe('Signup Form', () => {
 
     expect(screen.getByText('Confirme ton adresse e-mail')).toBeTruthy()
   })
+
+  it('should not display backButton on confirmation email sent page', async () => {
+    simulateSignupSuccess()
+    render(<SignupForm />)
+
+    const emailInput = screen.getByPlaceholderText('tonadresse@email.com')
+    fireEvent.changeText(emailInput, 'email@gmail.com')
+    await act(() => fireEvent.press(screen.getByText('Continuer')))
+
+    const passwordInput = screen.getByPlaceholderText('Ton mot de passe')
+    await act(async () => fireEvent.changeText(passwordInput, 'user@AZERTY123'))
+    await act(async () => fireEvent.press(screen.getByText('Continuer')))
+
+    const datePicker = screen.getByTestId('date-picker-spinner-native')
+    await act(async () =>
+      fireEvent(datePicker, 'onChange', { nativeEvent: { timestamp: ELIGIBLE_AGE_DATE } })
+    )
+    await act(async () => fireEvent.press(screen.getByText('Continuer')))
+
+    await act(async () => fireEvent.press(screen.getByText('Accepter et s’inscrire')))
+
+    expect(screen.queryByLabelText('Revenir en arrière')).toBeNull()
+  })
 })
 
 const simulateSignupSuccess = () =>
