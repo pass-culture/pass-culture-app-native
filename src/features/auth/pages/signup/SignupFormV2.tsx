@@ -1,19 +1,21 @@
-import { useNavigation } from '@react-navigation/native'
 import React, { FunctionComponent, useState } from 'react'
 import { Keyboard } from 'react-native'
 import styled from 'styled-components/native'
 
 import { useSignUp } from 'features/auth/api/useSignUp'
-import { SIGNUP_NUMBER_OF_STEPS } from 'features/auth/constants'
+import { NEW_SIGNUP_NUMBER_OF_STEPS } from 'features/auth/constants'
 import { PreValidationSignupStep } from 'features/auth/enums'
 import { ProgressBar } from 'features/auth/pages/signup/ProgressBar/ProgressBar'
 import { QuitSignupModal } from 'features/auth/pages/signup/QuitSignupModal/QuitSignupModal'
+import {
+  Props as ConfirmationEmailSentProps,
+  SignupConfirmationEmailSent,
+} from 'features/auth/pages/signup/SignupConfirmationEmailSent/SignupConfirmationEmailSentV2'
 import {
   PreValidationSignupNormalStepProps,
   PreValidationSignupLastStepProps,
   SignupData,
 } from 'features/auth/types'
-import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
 import { useGoBack } from 'features/navigation/useGoBack'
 import { useDeviceInfo } from 'features/trustedDevice/helpers/useDeviceInfo'
@@ -40,6 +42,7 @@ type SignupStepConfig = {
   Component:
     | React.FunctionComponent<PreValidationSignupNormalStepProps>
     | React.FunctionComponent<PreValidationSignupLastStepProps>
+    | React.FunctionComponent<ConfirmationEmailSentProps>
   tracker?: () => Promise<void>
 }
 
@@ -63,6 +66,10 @@ const SIGNUP_STEP_CONFIG: SignupStepConfig[] = [
     name: PreValidationSignupStep.CGU,
     Component: AcceptCguV2,
   },
+  {
+    name: PreValidationSignupStep.ConfirmationEmailSent,
+    Component: SignupConfirmationEmailSent,
+  },
 ]
 
 export const SignupForm: FunctionComponent = () => {
@@ -70,14 +77,12 @@ export const SignupForm: FunctionComponent = () => {
   const trustedDevice = useDeviceInfo()
   const enableTrustedDevice = useFeatureFlag(RemoteStoreFeatureFlags.WIP_ENABLE_TRUSTED_DEVICE)
 
-  const navigation = useNavigation<UseNavigationType>()
-
   const [stepIndex, setStepIndex] = React.useState(0)
   const stepConfig = SIGNUP_STEP_CONFIG[stepIndex]
   const isFirstStep = stepIndex === 0
   const helmetTitle = `Étape ${
     stepIndex + 1
-  } sur ${SIGNUP_NUMBER_OF_STEPS} - Inscription | pass Culture`
+  } sur ${NEW_SIGNUP_NUMBER_OF_STEPS} - Inscription | pass Culture`
 
   const { goBack: goBackAndLeaveSignup } = useGoBack(...getTabNavConfig('Profile'))
 
@@ -91,7 +96,7 @@ export const SignupForm: FunctionComponent = () => {
 
   const goToNextStep = (_signupData: Partial<SignupData>) => {
     setSignupData((previousSignupData) => ({ ...previousSignupData, ..._signupData }))
-    setStepIndex((prevStepIndex) => Math.min(SIGNUP_NUMBER_OF_STEPS, prevStepIndex + 1))
+    setStepIndex((prevStepIndex) => Math.min(NEW_SIGNUP_NUMBER_OF_STEPS, prevStepIndex + 1))
   }
 
   const headerHeight = useGetHeaderHeight()
@@ -125,8 +130,9 @@ export const SignupForm: FunctionComponent = () => {
       })
       if (!signupResponse?.isSuccess) {
         throw new AsyncError('NETWORK_REQUEST_FAILED')
+      } else {
+        setStepIndex(NEW_SIGNUP_NUMBER_OF_STEPS - 1)
       }
-      navigation.navigate('SignupConfirmationEmailSent', { email: signupData.email })
     } catch (error) {
       ;(error as Error).name = 'SignUpError'
       eventMonitoring.captureException(error)
@@ -141,12 +147,16 @@ export const SignupForm: FunctionComponent = () => {
         shouldDisplayCloseButton={!isFirstStep}
         onClose={showQuitSignupModal}
         onGoBack={goToPreviousStep}>
-        <ProgressBar totalStep={SIGNUP_NUMBER_OF_STEPS} currentStep={stepIndex + 1} />
+        <ProgressBar totalStep={NEW_SIGNUP_NUMBER_OF_STEPS} currentStep={stepIndex + 1} />
       </PageHeaderWithoutPlaceholder>
       <StyledScrollView>
         <Placeholder height={headerHeight} />
         <Spacer.Column numberOfSpaces={8} />
-        <stepConfig.Component goToNextStep={goToNextStep} signUp={signUp} />
+        <stepConfig.Component
+          goToNextStep={goToNextStep}
+          signUp={signUp}
+          email={signupData.email}
+        />
       </StyledScrollView>
       <QuitSignupModal
         visible={fullPageModalVisible}

@@ -22,7 +22,7 @@ export const SignupConfirmationEmailSent: FunctionComponent<Props> = ({ email })
         <BicolorEmailSent />
       </IllustrationContainer>
       <Spacer.Column numberOfSpaces={4} />
-      <Typo.Title3>Confirme ton adresse mail</Typo.Title3>
+      <Typo.Title3>Confirme ton adresse e-mail</Typo.Title3>
       <Spacer.Column numberOfSpaces={4} />
       <Typo.Body>Tu as reçu un lien à l’adresse&nbsp;:</Typo.Body>
       <Typo.Body>{email}</Typo.Body>
