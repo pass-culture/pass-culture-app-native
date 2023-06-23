@@ -6,6 +6,7 @@ import { getTagColor } from 'features/home/components/helpers/getTagColor'
 import { OfferVideoModule } from 'features/home/components/modules/OfferVideoModule'
 import { VideoPlayer } from 'features/home/components/VideoPlayer'
 import { VideoModule } from 'features/home/types'
+import { formatToFrenchDate } from 'libs/parsers'
 import { Offer } from 'shared/offer/types'
 import { theme } from 'theme'
 import { styledButton } from 'ui/components/buttons/styledButton'
@@ -21,11 +22,6 @@ interface VideoModalProps extends VideoModule {
 }
 
 export const VideoModal: React.FC<VideoModalProps> = (props) => {
-  // TODO(PC-21762) provide description and publication date with content from contentful
-  const descriptionText =
-    'Laissons ici la place pour mettre du contexte sur la vidéo si besoin cela permet à l’utilisateur de savoir sans voir de quoi le vidéo parle. Pas plus de 130 caractères.'
-  const publicationDate = '02/05/23'
-
   const StyledCloseIcon = styled(Close).attrs(({ theme }) => ({
     size: theme.icons.sizes.smaller,
   }))``
@@ -49,12 +45,18 @@ export const VideoModal: React.FC<VideoModalProps> = (props) => {
         <Spacer.Column numberOfSpaces={2} />
         <Typo.Title3>{props.title}</Typo.Title3>
         <Spacer.Column numberOfSpaces={2} />
-        <StyledCaptionDate>{`Publiée le ${publicationDate}`}</StyledCaptionDate>
-        <Spacer.Column numberOfSpaces={2} />
-        <StyledBody>{descriptionText}</StyledBody>
+        <StyledCaptionDate>{`Publiée le ${formatToFrenchDate(
+          props.videoPublicationDate
+        )}`}</StyledCaptionDate>
+        {!!props.videoDescription && (
+          <React.Fragment>
+            <Spacer.Column numberOfSpaces={2} />
+            <StyledBody>{props.videoDescription}</StyledBody>
+          </React.Fragment>
+        )}
         <Spacer.Column numberOfSpaces={6} />
         <Typo.Title4>{props.offerTitle}</Typo.Title4>
-        <Spacer.Column numberOfSpaces={2} />
+        <Spacer.Column numberOfSpaces={4} />
         <OfferVideoModule offer={props.offer} color={props.color} />
       </StyledScrollView>
       <StyledTouchable onPress={props.hideModal} accessibilityLabel="Fermer la modale vidéo">

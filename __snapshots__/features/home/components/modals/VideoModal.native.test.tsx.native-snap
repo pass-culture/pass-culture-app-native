@@ -209,6 +209,7 @@ exports[`VideoModal should render correctly if modal visible 1`] = `
                 onMessage={[Function]}
                 onShouldStartLoadWithRequest={[Function]}
                 overScrollMode="never"
+                scrollEnabled={false}
                 source={
                   Object {
                     "uri": "https://lonelycpp.github.io/react-native-youtube-iframe/iframe.html?data=%7B%22rel_s%22:0,%22loop_s%22:0,%22videoId_s%22:%22qE7xwEZnFP0%22,%22controls_s%22:1,%22contentScale_s%22:1,%22cc_lang_pref_s%22:%22%22,%22allowWebViewZoom%22:false,%22modestbranding_s%22:1,%22preventFullScreen_s%22:1,%22showClosedCaptions_s%22:0%7D",
@@ -344,7 +345,7 @@ exports[`VideoModal should render correctly if modal visible 1`] = `
                 ]
               }
             >
-              Publiée le 02/05/23
+              Publiée le 16 juin 2023
             </Text>
             <View
               numberOfSpaces={2}
@@ -368,7 +369,7 @@ exports[`VideoModal should render correctly if modal visible 1`] = `
                 ]
               }
             >
-              Laissons ici la place pour mettre du contexte sur la vidéo si besoin cela permet à l’utilisateur de savoir sans voir de quoi le vidéo parle. Pas plus de 130 caractères.
+              Lujipeka répond à vos questions sur sa tournée, sa musique, ses inspirations et pleins d’autres questions&nbsp;!
             </Text>
             <View
               numberOfSpaces={6}
@@ -395,11 +396,11 @@ exports[`VideoModal should render correctly if modal visible 1`] = `
               Pour aller plus loin…
             </Text>
             <View
-              numberOfSpaces={2}
+              numberOfSpaces={4}
               style={
                 Array [
                   Object {
-                    "height": 8,
+                    "height": 16,
                   },
                 ]
               }
