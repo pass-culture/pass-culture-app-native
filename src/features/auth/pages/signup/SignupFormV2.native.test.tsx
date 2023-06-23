@@ -54,9 +54,7 @@ describe('Signup Form', () => {
     fireEvent.changeText(emailInput, 'email@gmail.com')
 
     const continueButton = screen.getByText('Continuer')
-    await act(async () => {
-      fireEvent.press(continueButton)
-    })
+    fireEvent.press(continueButton)
 
     const goBackButton = screen.getByTestId('Revenir en arrière')
     fireEvent.press(goBackButton)
