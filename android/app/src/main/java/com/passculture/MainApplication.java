@@ -18,6 +18,7 @@ import com.passculture.newarchitecture.MainApplicationReactNativeHost;
 import com.microsoft.codepush.react.CodePush; // @codepush
 import java.lang.reflect.InvocationTargetException;
 import java.util.List;
+import com.passculture.DefaultBrowserPackage;
 
 public class MainApplication extends Application implements ReactApplication {
 
@@ -43,6 +44,10 @@ public class MainApplication extends Application implements ReactApplication {
       List<ReactPackage> packages = new PackageList(this).getPackages();
       // Packages that cannot be autolinked yet can be added manually here, for example:
       // packages.add(new MyReactNativePackage());
+
+      // This module has been added to be able to open app links in browser, even if user has chosen to open them inside the app (in Android settings).
+      packages.add(new DefaultBrowserPackage());
+
       return packages;
     }
 
