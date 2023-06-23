@@ -36,7 +36,7 @@ export const VideoModal: React.FC<VideoModalProps> = (props) => {
       customModalHeader={<React.Fragment />}>
       <VideoPlayer
         youtubeVideoId={props.youtubeVideoId}
-        offerId={props.offer.objectID}
+        offer={props.offer}
         onPressSeeOffer={props.hideModal}
         videoThumbnail={props.videoThumbnail}
       />

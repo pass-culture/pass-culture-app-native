@@ -3,6 +3,9 @@ import { StyleProp, ViewStyle } from 'react-native'
 import styled from 'styled-components/native'
 
 import { ButtonWithCaption } from 'features/home/components/modules/video/ButtonWithCaption'
+import { useCategoryIdMapping } from 'libs/subcategories'
+import { Offer } from 'shared/offer/types'
+import { usePrePopulateOffer } from 'shared/offer/usePrePopulateOffer'
 import { ArrowAgain } from 'ui/svg/icons/ArrowAgain'
 import { Offers } from 'ui/svg/icons/Offers'
 import { Spacer, getSpacing } from 'ui/theme'
@@ -40,7 +43,7 @@ export const VideoEndView: React.FC<{
               }}
               navigateTo={{
                 screen: 'Offer',
-                params: { id: offer.objectID },
+                params: { id: +offer.objectID },
               }}
               accessibilityLabel="Voir l’offre"
               wording="Voir l’offre"

@@ -5,19 +5,20 @@ import styled, { useTheme } from 'styled-components/native'
 
 import { getVideoPlayerDimensions } from 'features/home/components/helpers/getVideoPlayerDimensions'
 import { VideoEndView } from 'features/home/components/modules/video/VideoEndView'
+import { Offer } from 'shared/offer/types'
 import { theme } from 'theme'
 import { getSpacing } from 'ui/theme'
 
 interface VideoPlayerProps {
   youtubeVideoId: string
-  offerId: string
+  offer: Offer
   onPressSeeOffer: () => void
   videoThumbnail: string
 }
 
 export const VideoPlayer: React.FC<VideoPlayerProps> = ({
   youtubeVideoId,
-  offerId,
+  offer,
   onPressSeeOffer,
   videoThumbnail,
 }) => {
@@ -86,7 +87,7 @@ export const VideoPlayer: React.FC<VideoPlayerProps> = ({
       {!!hasFinishPlaying && (
         <VideoEndView
           onPressReplay={replayVideo}
-          offerId={offerId}
+          offer={offer}
           onPressSeeOffer={onPressSeeOffer}
           style={{ height: playerHeight, width: playerWidth }}
           videoThumbnail={videoThumbnail}
