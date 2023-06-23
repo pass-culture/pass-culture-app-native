@@ -1,6 +1,5 @@
 import React, { useRef } from 'react'
 import { Animated } from 'react-native'
-import { useQueryClient } from 'react-query'
 import styled from 'styled-components/native'
 
 import { FavoriteOfferResponse, FavoriteResponse, UserProfileResponse } from 'api/gen'
@@ -8,12 +7,11 @@ import { useRemoveFavorite } from 'features/favorites/api'
 import { BookingButton } from 'features/favorites/components/Buttons/BookingButton'
 import { getFavoriteDisplayPrice } from 'features/favorites/helpers/getFavoriteDisplayPrice'
 import { useFavoriteFormattedDate } from 'features/favorites/helpers/useFavoriteFormattedDate'
-import { mergeOfferData } from 'features/offer/components/OfferTile/OfferTile'
 import { analytics } from 'libs/analytics'
 import { useDistance } from 'libs/geolocation/hooks/useDistance'
-import { QueryKeys } from 'libs/queryKeys'
 import { useSearchGroupLabel, useSubcategory } from 'libs/subcategories'
 import { tileAccessibilityLabel, TileContentType } from 'libs/tileAccessibilityLabel'
+import { usePrePopulateOffer } from 'shared/offer/usePrePopulateOffer'
 import { ButtonSecondary } from 'ui/components/buttons/ButtonSecondary'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 import { OfferImage } from 'ui/components/tiles/OfferImage'
@@ -34,7 +32,7 @@ export const Favorite: React.FC<Props> = (props) => {
   const { onLayout, height } = useElementHeight()
   const animatedOpacity = useRef(new Animated.Value(1)).current
   const animatedCollapse = useRef(new Animated.Value(1)).current
-  const queryClient = useQueryClient()
+  const prePopulateOffer = usePrePopulateOffer()
   const distanceToOffer = useDistance({
     lat: offer.coordinates?.latitude,
     lng: offer.coordinates?.longitude,
@@ -65,16 +63,14 @@ export const Favorite: React.FC<Props> = (props) => {
   function handlePressOffer() {
     // We pre-populate the query-cache with the data from the search result for a smooth transition
     if (!offer.id) return
-    queryClient.setQueryData(
-      [QueryKeys.OFFER, offer.id],
-      mergeOfferData({
-        ...offer,
-        categoryId,
-        thumbUrl: offer.image?.url,
-        name: offer.name,
-        offerId: offer.id,
-      })
-    )
+    prePopulateOffer({
+      ...offer,
+      categoryId,
+      thumbUrl: offer.image?.url,
+      name: offer.name,
+      offerId: offer.id,
+    })
+
     analytics.logConsultOffer({ offerId: offer.id, from: 'favorites' })
   }
 

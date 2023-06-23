@@ -1,14 +1,12 @@
 import React, { memo } from 'react'
 import { PixelRatio, View } from 'react-native'
-import { useQueryClient } from 'react-query'
 import styled from 'styled-components/native'
 
-import { ExpenseDomain, OfferResponse, OfferStockResponse, OfferVenueResponse } from 'api/gen'
 import { OfferTileProps } from 'features/offer/types'
 import { analytics } from 'libs/analytics'
 import { useHandleFocus } from 'libs/hooks/useHandleFocus'
-import { QueryKeys } from 'libs/queryKeys'
 import { tileAccessibilityLabel, TileContentType } from 'libs/tileAccessibilityLabel'
+import { usePrePopulateOffer } from 'shared/offer/usePrePopulateOffer'
 import { ImageCaption } from 'ui/components/ImageCaption'
 import { ImageTile } from 'ui/components/ImageTile'
 import { OfferCaption } from 'ui/components/OfferCaption'
@@ -16,39 +14,6 @@ import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouch
 import { getSpacing, MARGIN_DP } from 'ui/theme'
 import { customFocusOutline } from 'ui/theme/customFocusOutline/customFocusOutline'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
-
-type PartialOffer = Pick<
-  OfferTileProps,
-  'categoryId' | 'thumbUrl' | 'isDuo' | 'name' | 'offerId' | 'subcategoryId'
->
-
-// Here we do optimistic rendering: we suppose that if the offer is available
-// as a search result, by the time the user clicks on it, the offer is still
-// available, released, not sold out...
-export const mergeOfferData =
-  (offer: PartialOffer) =>
-  (prevData: OfferResponse | undefined): OfferResponse => ({
-    description: '',
-    image: offer.thumbUrl ? { url: offer.thumbUrl } : undefined,
-    isDuo: offer.isDuo ?? false,
-    name: offer.name ?? '',
-    isDigital: false,
-    isExpired: false,
-    // assumption. If wrong, we receive correct data once API call finishes.
-    // In the meantime, we have to make sure no visual glitch appears.
-    // For example, before displaying the CTA, we wait for the API call to finish.
-    isEducational: false,
-    isReleased: true,
-    isSoldOut: false,
-    isForbiddenToUnderage: false,
-    id: offer.offerId,
-    stocks: [] as Array<OfferStockResponse>,
-    expenseDomains: [] as Array<ExpenseDomain>,
-    accessibility: {},
-    subcategoryId: offer.subcategoryId,
-    venue: { coordinates: {} } as OfferVenueResponse,
-    ...(prevData ?? {}),
-  })
 
 const UnmemoizedOfferTile = (props: OfferTileProps) => {
   const {
@@ -68,7 +33,7 @@ const UnmemoizedOfferTile = (props: OfferTileProps) => {
   } = props
 
   const { onFocus, onBlur, isFocus } = useHandleFocus()
-  const queryClient = useQueryClient()
+  const prePopulateOffer = usePrePopulateOffer()
   const { offerId, name, distance, date, price, isDuo } = offer
   const accessibilityLabel = tileAccessibilityLabel(TileContentType.OFFER, {
     ...offer,
@@ -77,7 +42,7 @@ const UnmemoizedOfferTile = (props: OfferTileProps) => {
 
   function handlePressOffer() {
     // We pre-populate the query-cache with the data from the search result for a smooth transition
-    queryClient.setQueryData([QueryKeys.OFFER, offerId], mergeOfferData(offer))
+    prePopulateOffer(offer)
     analytics.logConsultOffer({
       offerId,
       from: fromOfferId ? 'similar_offer' : analyticsFrom,

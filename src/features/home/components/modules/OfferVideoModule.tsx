@@ -3,11 +3,13 @@ import styled from 'styled-components/native'
 
 import { getTagColor } from 'features/home/components/helpers/getTagColor'
 import { formatDates, getDisplayPrice } from 'libs/parsers'
-import { useCategoryHomeLabelMapping } from 'libs/subcategories'
+import { useCategoryHomeLabelMapping, useCategoryIdMapping } from 'libs/subcategories'
 import { Offer } from 'shared/offer/types'
+import { usePrePopulateOffer } from 'shared/offer/usePrePopulateOffer'
 import { styledButton } from 'ui/components/buttons/styledButton'
 import { ImageTile } from 'ui/components/ImageTile'
 import { Touchable } from 'ui/components/touchable/Touchable'
+import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { PlainArrowNext } from 'ui/svg/icons/PlainArrowNext'
 import { Typo, getSpacing } from 'ui/theme'
 
@@ -22,9 +24,23 @@ type Props = {
 export const OfferVideoModule: FunctionComponent<Props> = ({ offer, color }) => {
   const timestampsInMillis = offer.offer.dates?.map((timestampInSec) => timestampInSec * 1000)
   const labelMapping = useCategoryHomeLabelMapping()
+  const mapping = useCategoryIdMapping()
+
+  const prePopulateOffer = usePrePopulateOffer()
 
   return (
-    <OfferInsert>
+    <OfferInsert
+      navigateTo={{
+        screen: 'Offer',
+        params: { id: +offer.objectID },
+      }}
+      onBeforeNavigate={() =>
+        prePopulateOffer({
+          ...offer.offer,
+          offerId: +offer.objectID,
+          categoryId: mapping[offer.offer.subcategoryId],
+        })
+      }>
       <Row>
         <OfferImage>
           <ImageTile width={OFFER_WIDTH} height={OFFER_HEIGHT} uri={offer.offer.thumbUrl} />
@@ -43,7 +59,7 @@ export const OfferVideoModule: FunctionComponent<Props> = ({ offer, color }) => 
   )
 }
 
-const OfferInsert = styled.View(({ theme }) => ({
+const OfferInsert = styled(InternalTouchableLink)(({ theme }) => ({
   // the overflow: hidden allow to add border radius to the image
   // https://stackoverflow.com/questions/49442165/how-do-you-add-borderradius-to-imagebackground/57616397
   overflow: 'hidden',
