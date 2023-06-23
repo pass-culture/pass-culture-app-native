@@ -31,7 +31,7 @@ export const SignupConfirmationEmailSent: FunctionComponent<Props> = ({ email })
       <Spacer.Column numberOfSpaces={4} />
       <Separator />
       <Spacer.Column numberOfSpaces={4} />
-      <Typo.Body>Tu n&apos;as pas reçu de lien&nbsp;? Tu peux&nbsp;:</Typo.Body>
+      <Typo.Body>Tu n‘as pas reçu de lien&nbsp;? Tu peux&nbsp;:</Typo.Body>
       <Spacer.Column numberOfSpaces={4} />
       <ExternalTouchableLink
         as={ButtonTertiaryBlack}
