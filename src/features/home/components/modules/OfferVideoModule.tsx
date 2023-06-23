@@ -19,9 +19,10 @@ const OFFER_WIDTH = getSpacing(20)
 type Props = {
   offer: Offer
   color: string
+  hideModal: () => void
 }
 
-export const OfferVideoModule: FunctionComponent<Props> = ({ offer, color }) => {
+export const OfferVideoModule: FunctionComponent<Props> = ({ offer, color, hideModal }) => {
   const timestampsInMillis = offer.offer.dates?.map((timestampInSec) => timestampInSec * 1000)
   const labelMapping = useCategoryHomeLabelMapping()
   const mapping = useCategoryIdMapping()
@@ -34,13 +35,14 @@ export const OfferVideoModule: FunctionComponent<Props> = ({ offer, color }) => 
         screen: 'Offer',
         params: { id: +offer.objectID },
       }}
-      onBeforeNavigate={() =>
+      onBeforeNavigate={() => {
+        hideModal()
         prePopulateOffer({
           ...offer.offer,
           offerId: +offer.objectID,
           categoryId: mapping[offer.offer.subcategoryId],
         })
-      }>
+      }}>
       <Row>
         <OfferImage>
           <ImageTile width={OFFER_WIDTH} height={OFFER_HEIGHT} uri={offer.offer.thumbUrl} />

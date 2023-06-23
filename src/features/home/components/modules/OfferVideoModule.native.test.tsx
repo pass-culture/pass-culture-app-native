@@ -8,9 +8,11 @@ import { act, fireEvent, render, screen } from 'tests/utils'
 
 const mockOffer = mockedAlgoliaResponse.hits[0]
 
+const hideModalMock = jest.fn()
+
 describe('OfferVideoModule', () => {
   it('should redirect to an offer when pressing it', async () => {
-    render(<OfferVideoModule offer={mockOffer} color="" />, {
+    render(<OfferVideoModule offer={mockOffer} color="" hideModal={hideModalMock} />, {
       /* eslint-disable local-rules/no-react-query-provider-hoc */
       wrapper: ({ children }) => reactQueryProviderHOC(children),
     })
