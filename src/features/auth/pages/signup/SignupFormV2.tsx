@@ -16,6 +16,7 @@ import {
   PreValidationSignupLastStepProps,
   SignupData,
 } from 'features/auth/types'
+import { navigateToHome } from 'features/navigation/helpers'
 import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
 import { useGoBack } from 'features/navigation/useGoBack'
 import { useDeviceInfo } from 'features/trustedDevice/helpers/useDeviceInfo'
@@ -24,6 +25,8 @@ import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureF
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { AsyncError, eventMonitoring } from 'libs/monitoring'
 import { BlurHeader } from 'ui/components/headers/BlurHeader'
+import { CancelButton } from 'ui/components/headers/CancelButton'
+import { CloseButtonText } from 'ui/components/headers/CloseButtonText'
 import {
   PageHeaderWithoutPlaceholder,
   useGetHeaderHeight,
@@ -140,15 +143,20 @@ export const SignupForm: FunctionComponent = () => {
     }
   }
 
+  const CloseButton = isLastStep ? (
+    <CloseButtonText onClose={navigateToHome} />
+  ) : (
+    <CancelButton onClose={showQuitSignupModal} />
+  )
+
   return (
     <React.Fragment>
       <Helmet title={helmetTitle} />
       <PageHeaderWithoutPlaceholder
         title="Inscription"
-        shouldDisplayCloseButton={!isFirstStep}
         shouldDisplayBackButton={!isLastStep}
-        onClose={showQuitSignupModal}
-        onGoBack={goToPreviousStep}>
+        onGoBack={goToPreviousStep}
+        RightButton={isFirstStep ? null : CloseButton}>
         <ProgressBar totalStep={NEW_SIGNUP_NUMBER_OF_STEPS} currentStep={stepIndex + 1} />
       </PageHeaderWithoutPlaceholder>
       <StyledScrollView>

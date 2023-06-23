@@ -1,9 +1,11 @@
 import { rest } from 'msw'
 import React from 'react'
 
+import { navigate } from '__mocks__/@react-navigation/native'
 import { ELIGIBLE_AGE_DATE } from 'features/auth/fixtures/fixtures'
 import { SignupForm } from 'features/auth/pages/signup/SignupFormV2'
 import { mockGoBack } from 'features/navigation/__mocks__/useGoBack'
+import { navigateToHomeConfig } from 'features/navigation/helpers'
 import { analytics } from 'libs/analytics'
 import { env } from 'libs/environment'
 import { server } from 'tests/server'
@@ -127,6 +129,32 @@ describe('Signup Form', () => {
     await act(async () => fireEvent.press(screen.getByText('Accepter et s’inscrire')))
 
     expect(screen.queryByLabelText('Revenir en arrière')).toBeNull()
+  })
+
+  it('should go back to home when pressing close button on email confirmation sent', async () => {
+    simulateSignupSuccess()
+    render(<SignupForm />)
+
+    const emailInput = screen.getByPlaceholderText('tonadresse@email.com')
+    fireEvent.changeText(emailInput, 'email@gmail.com')
+    await act(() => fireEvent.press(screen.getByText('Continuer')))
+
+    const passwordInput = screen.getByPlaceholderText('Ton mot de passe')
+    await act(async () => fireEvent.changeText(passwordInput, 'user@AZERTY123'))
+    await act(async () => fireEvent.press(screen.getByText('Continuer')))
+
+    const datePicker = screen.getByTestId('date-picker-spinner-native')
+    await act(async () =>
+      fireEvent(datePicker, 'onChange', { nativeEvent: { timestamp: ELIGIBLE_AGE_DATE } })
+    )
+    await act(async () => fireEvent.press(screen.getByText('Continuer')))
+
+    await act(async () => fireEvent.press(screen.getByText('Accepter et s’inscrire')))
+
+    const closeButton = screen.getByText('Fermer')
+    fireEvent.press(closeButton)
+
+    expect(navigate).toHaveBeenCalledWith(navigateToHomeConfig.screen, navigateToHomeConfig.params)
   })
 })
 
