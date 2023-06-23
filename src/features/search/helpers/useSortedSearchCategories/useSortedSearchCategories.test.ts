@@ -2,7 +2,11 @@ import { SearchCategoriesIllustrations } from 'features/internal/cheatcodes/page
 import { placeholderData } from 'libs/subcategories/placeholderData'
 import { renderHook } from 'tests/utils'
 
-import { categoriesSortPredicate, MappingOutput, useSortedSearchCategories } from './useSortedSearchCategories'
+import {
+  categoriesSortPredicate,
+  MappingOutput,
+  useSortedSearchCategories,
+} from './useSortedSearchCategories'
 
 const mockData = placeholderData
 jest.mock('libs/subcategories/useSubcategories', () => ({
