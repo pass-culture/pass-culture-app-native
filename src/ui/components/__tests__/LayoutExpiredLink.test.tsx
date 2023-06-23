@@ -17,7 +17,7 @@ describe('<LayoutExpiredLink/>', () => {
   it('should render correctly', () => {
     const renderAPI = render(
       <LayoutExpiredLink
-        renderResendEmailButton={renderResendEmailButton}
+        renderCustomButton={renderResendEmailButton}
         urlFAQ={url}
         contactSupport={contactSupport}
       />
