@@ -3,7 +3,7 @@ import { ActivityIndicator, Text } from 'react-native'
 import { useTheme } from 'styled-components'
 import styled from 'styled-components/native'
 
-import { Spacer, Typo } from 'ui/theme'
+import { Spacer } from 'ui/theme'
 
 type ModalLoaderProps = {
   message?: string
@@ -11,7 +11,12 @@ type ModalLoaderProps = {
 
 export function ModalLoader({ message }: ModalLoaderProps) {
   const theme = useTheme()
-  const messageStyle = { color: theme.colors.primary, textAlign: 'center', fontSize: 17, lineHeight: 25 }
+  const messageStyle = {
+    color: theme.colors.primary,
+    textAlign: 'center',
+    fontSize: 17,
+    lineHeight: 25,
+  }
 
   return (
     <Center testID="loadingScreen">
@@ -29,7 +34,7 @@ export function ModalLoader({ message }: ModalLoaderProps) {
   )
 }
 
-const Container = styled.View({ width: '100%', })
+const Container = styled.View({ width: '100%' })
 
 const Center = styled(Container)({
   display: 'flex',
