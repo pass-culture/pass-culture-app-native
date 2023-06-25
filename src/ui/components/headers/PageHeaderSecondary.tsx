@@ -19,6 +19,8 @@ interface Props {
   testID?: string
   shouldDisplayBackButton?: boolean
   shouldDisplayCloseButton?: boolean
+  backgroundColor?: string
+  backIconColor?: string
   onClose?: () => void
 }
 
@@ -32,6 +34,8 @@ export const PageHeaderSecondary: React.FC<Props> = ({
   shouldDisplayBackButton = true,
   shouldDisplayCloseButton,
   onClose,
+  backgroundColor,
+  backIconColor,
 }) => {
   useWhiteStatusBar()
 
@@ -40,13 +44,13 @@ export const PageHeaderSecondary: React.FC<Props> = ({
   return (
     <Header>
       <View style={{ height: HEIGHT_CONTAINER + top }} />
-      <ColorContainer testID={testID}>
+      <ColorContainer testID={testID} style={{ backgroundColor: backgroundColor }}>
         <Spacer.TopScreen />
         <Container>
           <Row>
             <ButtonContainer positionInHeader="left" testID="back-button-container">
               {!!shouldDisplayBackButton && (
-                <BackButton onGoBack={onGoBack} color={ColorsEnum.WHITE} />
+                <BackButton onGoBack={onGoBack} color={backIconColor || ColorsEnum.WHITE} />
               )}
             </ButtonContainer>
             <Title nativeID={titleID}>{title}</Title>

@@ -21,6 +21,7 @@ interface RadioButtonProps {
   accessibilityLabel?: string
   marginVertical?: number
   isLoading?: boolean
+  isInverted?: boolean
 }
 
 type RadioButtonIconProps = {
@@ -71,11 +72,12 @@ export function RadioButton(props: RadioButtonProps) {
       onPress={onPress}
       onFocus={onFocus}
       onBlur={onBlur}
+      invert={!!props?.isInverted}
       marginVertical={props.marginVertical ?? 0}>
       <LabelContainer ref={containerRef}>
         {!!StyledIcon && (
           <React.Fragment>
-            <IconWrapper>
+            <IconWrapper isInverted={props?.isInverted}>
               <StyledIcon />
             </IconWrapper>
             <Spacer.Row numberOfSpaces={2} />
@@ -111,15 +113,16 @@ const LabelContainerWithMarginRight = styled.View(({ theme }) => ({
   marginRight: theme.isMobileViewport ? 0 : getSpacing(6),
 }))
 
-const StyledTouchableOpacity = styled(TouchableOpacity)<{ marginVertical: number }>(
-  ({ theme, marginVertical }) => ({
-    minHeight: theme.icons.sizes.small,
-    marginVertical: marginVertical,
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: theme.isMobileViewport ? 'space-between' : undefined,
-  })
-)
+const StyledTouchableOpacity = styled(TouchableOpacity)<{
+  marginVertical: number
+  invert: boolean
+}>(({ theme, marginVertical, invert }) => ({
+  minHeight: theme.icons.sizes.small,
+  marginVertical: marginVertical,
+  flexDirection: invert ? 'row-reverse' : 'row',
+  alignItems: 'center',
+  justifyContent: theme.isMobileViewport ? 'space-between' : undefined,
+}))
 
 const Label = styled(Typo.ButtonText).attrs({
   numberOfLines: 2,
@@ -145,9 +148,10 @@ const ValidateOffIcon = styled(ValidateOff).attrs(({ theme }) => ({
   size: theme.icons.sizes.smaller,
 }))``
 
-const LabelWrapper = styled.View({
+const LabelWrapper = styled.View((isInverted) => ({
   flexShrink: 1,
-})
+  marginLeft: isInverted ? 15 : 0,
+}))
 
 const IconWrapper = styled.View({
   flexShrink: 0,

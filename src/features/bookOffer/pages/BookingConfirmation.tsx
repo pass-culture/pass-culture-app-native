@@ -24,10 +24,10 @@ import { getSpacing, Spacer, Typo } from 'ui/theme'
 export function BookingConfirmation() {
   const { params } = useRoute<UseRouteType<'BookingConfirmation'>>()
   const { share: shareOffer, shareContent } = useShareOffer(params.offerId)
-  const { reset } = useNavigation<UseNavigationType>()
+  const { reset, navigate } = useNavigation<UseNavigationType>()
   const credit = useAvailableCredit()
   const amountLeft = credit && !credit.isExpired ? credit.amount : 0
-
+  const TravelOptionButtonStyle = { width: '95%', alignSelf: 'center' }
   const trackBooking = useCallback(() => BatchUser.trackEvent(BatchEvent.hasBooked), [])
 
   const displayBookingDetails = useCallback(() => {
@@ -65,6 +65,10 @@ export function BookingConfirmation() {
     showShareOfferModal()
   }, [params.offerId, shareOffer, showShareOfferModal])
 
+  const pressTravelOptions = useCallback(() => {
+    navigate('SelectTravelOptions')
+  }, [])
+
   useShowReview()
 
   const amountLeftText = `Il te reste encore ${formatToFrenchDecimal(
@@ -83,6 +87,12 @@ export function BookingConfirmation() {
         <StyledBody>
           Tu peux retrouver toutes les informations concernant ta réservation sur l’application.
         </StyledBody>
+        <Spacer.Column numberOfSpaces={3} />
+        <ButtonSecondary
+          style={TravelOptionButtonStyle}
+          wording="Afficher les options de voyage"
+          onPress={pressTravelOptions}
+        />
         <Spacer.Flex />
         <ButtonContainer>
           <ButtonPrimary key={1} wording="Voir ma réservation" onPress={displayBookingDetails} />
