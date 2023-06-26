@@ -22,10 +22,7 @@ const mockUseVideoOffer = useVideoOffer as jest.Mock
 describe('VideoModule', () => {
   it('should show modal when pressing video thumbnail', async () => {
     mockUseVideoOffer.mockReturnValueOnce({ offer: offerFixture })
-    render(
-      // eslint-disable-next-line local-rules/no-react-query-provider-hoc
-      reactQueryProviderHOC(<VideoModule {...videoModuleFixture} index={1} homeEntryId="abcd" />)
-    )
+    renderVideoModule()
     await act(async () => {})
 
     const button = screen.getByTestId('video-thumbnail')
@@ -36,10 +33,7 @@ describe('VideoModule', () => {
 
   it('should log ModuleDisplayedOnHomePage event when seeing the module', async () => {
     mockUseVideoOffer.mockReturnValueOnce({ offer: offerFixture })
-    render(
-      // eslint-disable-next-line local-rules/no-react-query-provider-hoc
-      reactQueryProviderHOC(<VideoModule {...videoModuleFixture} index={1} homeEntryId="abcd" />)
-    )
+    renderVideoModule()
 
     await waitFor(() => {
       expect(analytics.logModuleDisplayedOnHomepage).toHaveBeenNthCalledWith(
@@ -54,10 +48,7 @@ describe('VideoModule', () => {
 
   it('should not log ModuleDisplayedOnHomePage event when module is not rendered', async () => {
     mockUseVideoOffer.mockReturnValueOnce({ offer: undefined })
-    render(
-      // eslint-disable-next-line local-rules/no-react-query-provider-hoc
-      reactQueryProviderHOC(<VideoModule {...videoModuleFixture} index={1} homeEntryId="abcd" />)
-    )
+    renderVideoModule()
 
     await waitFor(() => {
       expect(analytics.logModuleDisplayedOnHomepage).not.toHaveBeenCalled()
@@ -73,4 +64,11 @@ const offerFixture = {
   venue: {
     id: 5678,
   },
+}
+
+function renderVideoModule() {
+  render(
+    // eslint-disable-next-line local-rules/no-react-query-provider-hoc
+    reactQueryProviderHOC(<VideoModule {...videoModuleFixture} index={1} homeEntryId="abcd" />)
+  )
 }
