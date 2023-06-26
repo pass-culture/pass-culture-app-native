@@ -90,9 +90,7 @@ export const VideoModule: FunctionComponent<VideoModuleProps> = (props) => {
           offer={offer}
           {...props}
         />
-      </VideoOfferContainer>
-      <Spacer.Column numberOfSpaces={2} />
-      <VideoOfferContainer>
+        <Spacer.Column numberOfSpaces={2} />
         <OfferVideoModule offer={offer} color={props.color} hideModal={hideVideoModal} />
       </VideoOfferContainer>
       <Spacer.Column numberOfSpaces={5} />
