@@ -1,4 +1,4 @@
-import { renderHook } from 'tests/utils'
+import { renderHook } from 'tests/utils/web'
 
 import { useE2eTestId } from '../useE2eTestId.web'
 
