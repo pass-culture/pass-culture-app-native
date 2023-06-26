@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { VideoModal } from 'features/home/components/modals/VideoModal'
+import { VideoModal } from 'features/home/components/modules/video/VideoModal'
 import { videoModuleFixture } from 'features/home/fixtures/videoModule.fixture'
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { mockedAlgoliaResponse } from 'libs/algolia/__mocks__/mockedAlgoliaResponse'

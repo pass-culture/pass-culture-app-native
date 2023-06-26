@@ -2,7 +2,7 @@ import { omit } from 'lodash'
 import React from 'react'
 
 import { navigate } from '__mocks__/@react-navigation/native'
-import { OfferVideoModule } from 'features/home/components/modules/OfferVideoModule'
+import { OfferVideoModule } from 'features/home/components/modules/video/OfferVideoModule'
 import { mockedAlgoliaResponse } from 'libs/algolia/__mocks__/mockedAlgoliaResponse'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, fireEvent, render, screen } from 'tests/utils'

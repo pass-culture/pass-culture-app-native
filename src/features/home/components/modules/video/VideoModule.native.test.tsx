@@ -1,7 +1,7 @@
 import React from 'react'
 
 import { useVideoOffer } from 'features/home/api/useVideoOffer'
-import { VideoModule } from 'features/home/components/modules/VideoModule'
+import { VideoModule } from 'features/home/components/modules/video/VideoModule'
 import { videoModuleFixture } from 'features/home/fixtures/videoModule.fixture'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, fireEvent, render, screen } from 'tests/utils'

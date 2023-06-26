@@ -9,7 +9,7 @@ import {
 import { CategoryListModule } from 'features/home/components/modules/categories/CategoryListModule'
 import { RecommendationModule } from 'features/home/components/modules/RecommendationModule'
 import { ThematicHighlightModule } from 'features/home/components/modules/ThematicHighlightModule'
-import { VideoModule } from 'features/home/components/modules/VideoModule'
+import { VideoModule } from 'features/home/components/modules/video/VideoModule'
 import {
   HomepageModule,
   isBusinessModule,
