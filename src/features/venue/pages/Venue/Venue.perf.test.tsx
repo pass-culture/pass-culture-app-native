@@ -8,6 +8,10 @@ import { measurePerformance, screen } from 'tests/utils'
 
 useRoute.mockImplementation(() => ({ params: { id: venueResponseSnap.id } }))
 
+// Performance measuring is run multiple times so we need to increase the timeout
+const TEST_TIMEOUT_IN_MS = 20000
+jest.setTimeout(TEST_TIMEOUT_IN_MS)
+
 describe('<Venue />', () => {
   it('Performance test for Venue page', async () => {
     await measurePerformance(
@@ -15,7 +19,9 @@ describe('<Venue />', () => {
       reactQueryProviderHOC(<Venue />),
       {
         scenario: async () => {
-          await screen.findByLabelText('Nom du lieu : Le Petit Rintintin 1')
+          await screen.findByLabelText('Nom du lieu : Le Petit Rintintin 1', {
+            timeout: TEST_TIMEOUT_IN_MS,
+          })
         },
       }
     )
