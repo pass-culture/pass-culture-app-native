@@ -16,6 +16,10 @@ jest.mock('@react-navigation/bottom-tabs', () =>
 
 describe('onNavigationStateChange()', () => {
   it('should log screen view on navigation change', async () => {
+    // Waiting for React Navigation to fix this issue:
+    // https://github.com/react-navigation/react-navigation/issues/11137
+    jest.spyOn(global.console, 'warn').mockImplementationOnce(() => null)
+
     navigationRender()
 
     await simulateNavigate('Screen2')
