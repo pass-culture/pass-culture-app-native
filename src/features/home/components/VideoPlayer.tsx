@@ -48,7 +48,7 @@ export const VideoPlayer: React.FC<VideoPlayerProps> = ({
   }
 
   const replayVideo = () => {
-    playerRef.current?.seekTo(0, false)
+    playerRef.current?.seekTo(0, true)
     setIsPlaying(true)
     setHasFinishPlaying(false)
   }
