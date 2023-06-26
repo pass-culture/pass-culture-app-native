@@ -129,6 +129,7 @@ function customMeasurePerformance(ui: React.ReactElement<any>, options?: Measure
         )
       : (children) => <DefaultWrapper>{children}</DefaultWrapper>,
     ...restOfOptions,
+    dropWorst: 3,
   })
 }
 
