@@ -1,21 +1,34 @@
-import React, { useCallback, useEffect, useState } from 'react'
+import React, { useCallback, useEffect, useRef, useState } from 'react'
 import { useWindowDimensions, AppState } from 'react-native'
-import YoutubePlayer from 'react-native-youtube-iframe'
+import YoutubePlayer, { YoutubeIframeRef } from 'react-native-youtube-iframe'
 import styled, { useTheme } from 'styled-components/native'
 
 import { getVideoPlayerDimensions } from 'features/home/components/helpers/getVideoPlayerDimensions'
+import { VideoEndView } from 'features/home/components/modules/video/VideoEndView'
+import { Offer } from 'shared/offer/types'
 import { theme } from 'theme'
 import { getSpacing } from 'ui/theme'
 
 interface VideoPlayerProps {
   youtubeVideoId: string
+  offer: Offer
+  onPressSeeOffer: () => void
+  videoThumbnail: string
 }
 
-export const VideoPlayer: React.FC<VideoPlayerProps> = ({ youtubeVideoId }) => {
+export const VideoPlayer: React.FC<VideoPlayerProps> = ({
+  youtubeVideoId,
+  offer,
+  onPressSeeOffer,
+  videoThumbnail,
+}) => {
   const [isPlaying, setIsPlaying] = useState(true)
+  const [hasFinishPlaying, setHasFinishPlaying] = useState(false)
   const { isDesktopViewport } = useTheme()
   const { width: windowWidth } = useWindowDimensions()
   const { playerHeight, playerWidth } = getVideoPlayerDimensions(isDesktopViewport, windowWidth)
+
+  const playerRef = useRef<YoutubeIframeRef>(null)
 
   // Make sure the video stop playing when app is not in an active state (eg: backgroung/inactive)
   useEffect(() => {
@@ -34,34 +47,53 @@ export const VideoPlayer: React.FC<VideoPlayerProps> = ({ youtubeVideoId }) => {
     setIsPlaying(true)
   }
 
+  const replayVideo = () => {
+    playerRef.current?.seekTo(0, false)
+    setIsPlaying(true)
+    setHasFinishPlaying(false)
+  }
+
   const onChangeState = useCallback((state: string) => {
     if (state === 'ended') {
       setIsPlaying(false)
+      setHasFinishPlaying(true)
     }
   }, [])
 
   return (
-    <StyledVideoPlayerContainer>
-      <YoutubePlayer
-        initialPlayerParams={{ modestbranding: true, rel: false }}
-        height={playerHeight}
-        width={playerWidth}
-        play={isPlaying}
-        onReady={playVideo}
-        videoId={youtubeVideoId}
-        onChangeState={onChangeState}
-        onError={(error) => {
-          console.error(error)
-        }}
-        forceAndroidAutoplay
-        // Disable webview player scroll
-        webViewProps={{
-          overScrollMode: 'never',
-          bounces: false,
-          scrollEnabled: false,
-        }}
-      />
-    </StyledVideoPlayerContainer>
+    <React.Fragment>
+      <StyledVideoPlayerContainer>
+        <YoutubePlayer
+          ref={playerRef}
+          initialPlayerParams={{ modestbranding: true, rel: false }}
+          height={playerHeight}
+          width={playerWidth}
+          play={isPlaying}
+          onReady={playVideo}
+          videoId={youtubeVideoId}
+          onChangeState={onChangeState}
+          onError={(error) => {
+            console.error(error)
+          }}
+          forceAndroidAutoplay
+          // Disable webview player scroll
+          webViewProps={{
+            overScrollMode: 'never',
+            bounces: false,
+            scrollEnabled: false,
+          }}
+        />
+      </StyledVideoPlayerContainer>
+      {!!hasFinishPlaying && (
+        <VideoEndView
+          onPressReplay={replayVideo}
+          offer={offer}
+          onPressSeeOffer={onPressSeeOffer}
+          style={{ height: playerHeight, width: playerWidth }}
+          videoThumbnail={videoThumbnail}
+        />
+      )}
+    </React.Fragment>
   )
 }
 

@@ -174,7 +174,7 @@ exports[`VideoModal should render correctly if modal visible 1`] = `
           <View
             style={
               Object {
-                "height": 422,
+                "height": 421.875,
                 "width": 750,
               }
             }
@@ -406,18 +406,29 @@ exports[`VideoModal should render correctly if modal visible 1`] = `
               }
             />
             <View
+              accessibilityRole="link"
+              accessible={false}
+              collapsable={false}
+              focusable={true}
+              onClick={[Function]}
+              onResponderGrant={[Function]}
+              onResponderMove={[Function]}
+              onResponderRelease={[Function]}
+              onResponderTerminate={[Function]}
+              onResponderTerminationRequest={[Function]}
+              onStartShouldSetResponder={[Function]}
               style={
-                Array [
-                  Object {
-                    "alignItems": "flex-start",
-                    "backgroundColor": "#ffffff",
-                    "borderColor": "#CBCDD2",
-                    "borderRadius": 8,
-                    "borderStyle": "solid",
-                    "borderWidth": 1,
-                    "overflow": "hidden",
-                  },
-                ]
+                Object {
+                  "alignItems": "flex-start",
+                  "backgroundColor": "#ffffff",
+                  "borderColor": "#CBCDD2",
+                  "borderRadius": 8,
+                  "borderStyle": "solid",
+                  "borderWidth": 1,
+                  "opacity": 1,
+                  "overflow": "hidden",
+                  "userSelect": "auto",
+                }
               }
             >
               <View

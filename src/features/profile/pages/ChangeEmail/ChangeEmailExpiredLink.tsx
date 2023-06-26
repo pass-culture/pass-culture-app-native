@@ -34,7 +34,7 @@ export function ChangeEmailExpiredLink() {
 
   return (
     <LayoutExpiredLink
-      renderResendEmailButton={renderResendEmailButton}
+      renderCustomButton={renderResendEmailButton}
       customBodyText={customBodyText}
     />
   )

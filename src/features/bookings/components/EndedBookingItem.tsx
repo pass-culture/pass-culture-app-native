@@ -1,17 +1,15 @@
 import React from 'react'
-import { useQueryClient } from 'react-query'
 import styled from 'styled-components/native'
 
 import { BookingCancellationReasons } from 'api/gen'
 import { isEligibleBookingsForArchive } from 'features/bookings/helpers/expirationDateUtils'
 import { BookingItemProps } from 'features/bookings/types'
-import { mergeOfferData } from 'features/offer/components/OfferTile/OfferTile'
 import { analytics } from 'libs/analytics'
 import { formatToSlashedFrenchDate } from 'libs/dates'
 import { useNetInfoContext } from 'libs/network/NetInfoWrapper'
-import { QueryKeys } from 'libs/queryKeys'
 import { useCategoryId } from 'libs/subcategories'
 import { tileAccessibilityLabel, TileContentType } from 'libs/tileAccessibilityLabel'
+import { usePrePopulateOffer } from 'shared/offer/usePrePopulateOffer'
 import { InputRule } from 'ui/components/inputs/rules/InputRule'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 import { OfferImage } from 'ui/components/tiles/OfferImage'
@@ -25,7 +23,7 @@ import { BookingItemTitle } from './BookingItemTitle'
 export const EndedBookingItem = ({ booking }: BookingItemProps) => {
   const { cancellationDate, cancellationReason, dateUsed, stock } = booking
   const categoryId = useCategoryId(stock.offer.subcategoryId)
-  const queryClient = useQueryClient()
+  const prePopulateOffer = usePrePopulateOffer()
   const netInfo = useNetInfoContext()
   const { showErrorSnackBar } = useSnackBarContext()
 
@@ -52,16 +50,14 @@ export const EndedBookingItem = ({ booking }: BookingItemProps) => {
     if (isEligibleBookingsForArchiveValue) return
     if (netInfo.isConnected) {
       // We pre-populate the query-cache with the data from the search result for a smooth transition
-      queryClient.setQueryData(
-        [QueryKeys.OFFER, offer.id],
-        mergeOfferData({
-          ...offer,
-          categoryId,
-          thumbUrl: offer.image?.url,
-          name: offer.name,
-          offerId: offer.id,
-        })
-      )
+      prePopulateOffer({
+        ...offer,
+        categoryId,
+        thumbUrl: offer.image?.url,
+        name: offer.name,
+        offerId: offer.id,
+      })
+
       analytics.logConsultOffer({ offerId: offer.id, from: 'endedbookings' })
     } else {
       showErrorSnackBar({

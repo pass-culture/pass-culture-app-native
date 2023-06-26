@@ -1,18 +1,16 @@
 import React from 'react'
-import { useQueryClient } from 'react-query'
 import styled from 'styled-components/native'
 
-import { mergeOfferData } from 'features/offer/components/OfferTile/OfferTile'
 import { NativeCategoryValue } from 'features/search/components/NativeCategoryValue/NativeCategoryValue'
 import { useLogClickOnOffer } from 'libs/algolia/analytics/logClickOnOffer'
 import { analytics } from 'libs/analytics'
 import { useDistance } from 'libs/geolocation/hooks/useDistance'
 import { formatDates, getDisplayPrice } from 'libs/parsers'
-import { QueryKeys } from 'libs/queryKeys'
 import { useSubcategory } from 'libs/subcategories'
 import { useSearchGroupLabel } from 'libs/subcategories/useSearchGroupLabel'
 import { tileAccessibilityLabel, TileContentType } from 'libs/tileAccessibilityLabel'
 import { Offer } from 'shared/offer/types'
+import { usePrePopulateOffer } from 'shared/offer/usePrePopulateOffer'
 import { OfferImage } from 'ui/components/tiles/OfferImage'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
@@ -26,7 +24,7 @@ interface Props {
 export const Hit = ({ hit, query, index, searchId }: Props) => {
   const { offer, objectID, _geoloc } = hit
   const { subcategoryId, dates, prices } = offer
-  const queryClient = useQueryClient()
+  const prePopulateOffer = usePrePopulateOffer()
   const distanceToOffer = useDistance(_geoloc)
   const { categoryId, searchGroupName, nativeCategoryId } = useSubcategory(subcategoryId)
   const searchGroupLabel = useSearchGroupLabel(searchGroupName)
@@ -48,17 +46,15 @@ export const Hit = ({ hit, query, index, searchId }: Props) => {
   function handlePressOffer() {
     if (!offerId) return
     // We pre-populate the query-cache with the data from the search client for a smooth transition
-    queryClient.setQueryData(
-      [QueryKeys.OFFER, offerId],
-      mergeOfferData({
-        ...offer,
-        categoryId,
-        thumbUrl: offer.thumbUrl,
-        isDuo: offer.isDuo,
-        name: offer.name,
-        offerId,
-      })
-    )
+    prePopulateOffer({
+      ...offer,
+      categoryId,
+      thumbUrl: offer.thumbUrl,
+      isDuo: offer.isDuo,
+      name: offer.name,
+      offerId,
+    })
+
     analytics.logConsultOffer({
       offerId,
       from: 'search',
