@@ -16,7 +16,7 @@ interface Location {
 
 export const SelectTravelOptions = () => {
   const [isLoading, setIsLoading] = useState(true)
-  const [currentLocation, setCurrentLocation] = useState<Location | null>(null)
+  const [currentLocation, setCurrentLocation] = useState<any | null>(null)
   const { userPosition: position } = useGeolocation()
   const { goBack } = useNavigation<UseNavigationType>()
 

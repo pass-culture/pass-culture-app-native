@@ -44,7 +44,7 @@ export const PageHeaderSecondary: React.FC<Props> = ({
   return (
     <Header>
       <View style={{ height: HEIGHT_CONTAINER + top }} />
-      <ColorContainer testID={testID} style={{ backgroundColor: backgroundColor }}>
+      <ColorContainer testID={testID} bgColor={backgroundColor}>
         <Spacer.TopScreen />
         <Container>
           <Row>
@@ -66,12 +66,12 @@ export const PageHeaderSecondary: React.FC<Props> = ({
   )
 }
 
-const ColorContainer = styled.View(({ theme }) => ({
+const ColorContainer = styled.View<{ bgColor?: string }>(({ theme, bgColor }) => ({
   zIndex: theme.zIndex.header,
   position: 'absolute',
   top: 0,
   width: '100%',
-  backgroundColor: theme.colors.primary,
+  backgroundColor: bgColor || theme.colors.primary,
 }))
 
 const Container = styled.View({
