@@ -95,7 +95,7 @@ const UnmemoizedModule = ({
     return <CategoryListModule {...item} homeEntryId={homeEntryId} index={index} />
   }
   if (isVideoModule(item)) {
-    return <VideoModule {...item} />
+    return <VideoModule {...item} homeEntryId={homeEntryId} index={index} />
   }
 
   return <React.Fragment></React.Fragment>

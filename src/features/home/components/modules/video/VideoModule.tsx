@@ -1,5 +1,5 @@
 import colorAlpha from 'color-alpha'
-import React, { FunctionComponent } from 'react'
+import React, { FunctionComponent, useEffect } from 'react'
 import LinearGradient from 'react-native-linear-gradient'
 import styled from 'styled-components/native'
 
@@ -7,9 +7,11 @@ import { useVideoOffer } from 'features/home/api/useVideoOffer'
 import { BlackGradient } from 'features/home/components/BlackGradient'
 import { TEXT_BACKGROUND_OPACITY } from 'features/home/components/constants'
 import { getGradientColors } from 'features/home/components/helpers/getGradientColors'
+import { OfferVideoModule } from 'features/home/components/modules/video/OfferVideoModule'
 import { VideoModal } from 'features/home/components/modules/video/VideoModal'
-import { OfferVideoModule } from 'features/home/components/modules/OfferVideoModule'
-import { VideoModule as VideoModuleProps } from 'features/home/types'
+import { VideoModule as VideoModuleType } from 'features/home/types'
+import { analytics } from 'libs/analytics'
+import { ContentTypes } from 'libs/contentful'
 import { useModal } from 'ui/components/modals/useModal'
 import { Play } from 'ui/svg/icons/Play'
 import { Spacer, Typo, getSpacing } from 'ui/theme'
@@ -22,6 +24,11 @@ const PLAYER_SIZE = getSpacing(14.5)
 
 const COLOR_CATEGORY_BACKGROUND_HEIGHT = getSpacing(68.5)
 
+interface VideoModuleProps extends VideoModuleType {
+  index: number
+  homeEntryId: string
+}
+
 export const VideoModule: FunctionComponent<VideoModuleProps> = (props) => {
   const {
     visible: videoModalVisible,
@@ -32,7 +39,21 @@ export const VideoModule: FunctionComponent<VideoModuleProps> = (props) => {
 
   const { offer } = useVideoOffer(props.offersModuleParameters, props.id)
 
-  if (!offer) return <React.Fragment />
+  const shouldModuleBeDisplayed = !!offer
+
+  useEffect(() => {
+    if (shouldModuleBeDisplayed) {
+      analytics.logModuleDisplayedOnHomepage(
+        props.id,
+        ContentTypes.VIDEO,
+        props.index,
+        props.homeEntryId
+      )
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [shouldModuleBeDisplayed])
+
+  if (!shouldModuleBeDisplayed) return <React.Fragment />
 
   return (
     <Container>
