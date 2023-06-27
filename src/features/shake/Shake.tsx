@@ -5,7 +5,6 @@ import styled from 'styled-components/native'
 
 import { Cards } from 'features/shake/Cards'
 import { RoundedButtonLikePass } from 'features/shake/RoundedButtonLikePass'
-import { ButtonSecondary } from 'ui/components/buttons/ButtonSecondary'
 import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
 import { ModalHeader } from 'ui/components/modals/ModalHeader'
 import { useModal } from 'ui/components/modals/useModal'
@@ -25,7 +24,7 @@ export const Shake = () => {
     }
   }, [showModal])
 
-  if (!visible) {
+  if (visible) {
     return (
       <Background>
         <Container>
