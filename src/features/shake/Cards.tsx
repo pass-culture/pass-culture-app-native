@@ -24,41 +24,66 @@ const OFFER_POSITION_Y_2 = 27.5
 const OFFER_POSITION_Y_3 = OFFER_POSITION_Y_2 * 2
 
 type Props = {
-  uri: string
-  distance: string
-  categoryLabel: string
+  cards: Card[]
 }
 
-export const Cards: FunctionComponent<Props> = ({ uri, distance, categoryLabel }) => {
+type Card = {
+  uri?: string
+  distance?: string
+  categoryLabel: string | null
+}
+
+export const Cards: FunctionComponent<Props> = ({ cards }) => {
   return (
     <Container>
-      <Card strikeLineAngle={OFFER_POSITION_X_3} positionX={OFFER_POSITION_Y_3} positionY={30}>
-        <ImageTile onlyTopBorderRadius width={OFFER_WIDTH_3} height={OFFER_HEIGHT_3} uri={uri} />
-        <ImageCaption
-          height={IMAGE_CAPTION_HEIGHT}
-          width={OFFER_WIDTH_3}
-          categoryLabel={categoryLabel}
-          distance={distance}
-        />
-      </Card>
-      <Card strikeLineAngle={OFFER_POSITION_X_2} positionX={OFFER_POSITION_Y_2} positionY={15}>
-        <ImageTile onlyTopBorderRadius width={OFFER_WIDTH_2} height={OFFER_HEIGHT_2} uri={uri} />
-        <ImageCaption
-          height={IMAGE_CAPTION_HEIGHT}
-          width={OFFER_WIDTH_2}
-          categoryLabel={categoryLabel}
-          distance={distance}
-        />
-      </Card>
-      <Card strikeLineAngle={0} positionX={0} positionY={0}>
-        <ImageTile onlyTopBorderRadius width={OFFER_WIDTH_1} height={OFFER_HEIGHT_1} uri={uri} />
-        <ImageCaption
-          height={IMAGE_CAPTION_HEIGHT}
-          width={OFFER_WIDTH_1}
-          categoryLabel={categoryLabel}
-          distance={distance}
-        />
-      </Card>
+      {!!cards[2] && (
+        <Card strikeLineAngle={OFFER_POSITION_X_3} positionX={OFFER_POSITION_Y_3} positionY={30}>
+          <ImageTile
+            onlyTopBorderRadius
+            width={OFFER_WIDTH_3}
+            height={OFFER_HEIGHT_3}
+            uri={cards[2].uri}
+          />
+          <ImageCaption
+            height={IMAGE_CAPTION_HEIGHT}
+            width={OFFER_WIDTH_3}
+            categoryLabel={cards[2].categoryLabel}
+            distance={cards[2].distance}
+          />
+        </Card>
+      )}
+      {!!cards[1] && (
+        <Card strikeLineAngle={OFFER_POSITION_X_2} positionX={OFFER_POSITION_Y_2} positionY={15}>
+          <ImageTile
+            onlyTopBorderRadius
+            width={OFFER_WIDTH_2}
+            height={OFFER_HEIGHT_2}
+            uri={cards[1].uri}
+          />
+          <ImageCaption
+            height={IMAGE_CAPTION_HEIGHT}
+            width={OFFER_WIDTH_2}
+            categoryLabel={cards[1].categoryLabel}
+            distance={cards[1].distance}
+          />
+        </Card>
+      )}
+      {!!cards[0] && (
+        <Card strikeLineAngle={0} positionX={0} positionY={0}>
+          <ImageTile
+            onlyTopBorderRadius
+            width={OFFER_WIDTH_1}
+            height={OFFER_HEIGHT_1}
+            uri={cards[0].uri}
+          />
+          <ImageCaption
+            height={IMAGE_CAPTION_HEIGHT}
+            width={OFFER_WIDTH_1}
+            categoryLabel={cards[0].categoryLabel}
+            distance={cards[0].distance}
+          />
+        </Card>
+      )}
     </Container>
   )
 }

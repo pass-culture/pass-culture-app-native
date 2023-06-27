@@ -64,7 +64,9 @@ import { SuspendAccountConfirmation } from 'features/profile/pages/SuspendAccoun
 import { TrackEmailChange } from 'features/profile/pages/TrackEmailChange/TrackEmailChange'
 import { ValidateEmailChange } from 'features/profile/pages/ValidateEmailChange/ValidateEmailChange'
 import { SearchFilter } from 'features/search/pages/SearchFilter/SearchFilter'
-import { ShakePage } from 'features/shake/ShakePage'
+import { ShakeChoice } from 'features/shake/ShakeChoice'
+import { ShakeEnd } from 'features/shake/ShakeEnd'
+import { ShakeStart } from 'features/shake/ShakeStart'
 import { Venue } from 'features/venue/pages/Venue/Venue'
 import { ABTestingPOC } from 'libs/firebase/remoteConfig/ABTestingPOC'
 
@@ -467,11 +469,21 @@ export const routes: Route[] = [
     options: { title: 'Page d’accueil thématique' },
   },
   {
-    name: 'ShakePage',
-    component: ShakePage,
-    pathConfig: {
-      path: 'secoue-la-culture',
-    },
+    name: 'ShakeStart',
+    component: ShakeStart,
+    pathConfig: { path: 'secoue-la-culture-debut' },
+    options: { title: 'Boum\u00a0! La sélection mystère ' },
+  },
+  {
+    name: 'ShakeChoice',
+    component: ShakeChoice,
+    pathConfig: { path: 'secoue-la-culture-choix' },
+    options: { title: 'La sélection mystère' },
+  },
+  {
+    name: 'ShakeEnd',
+    component: ShakeEnd,
+    pathConfig: { path: 'secoue-la-culture-fin' },
     options: { title: 'La sélection mystère' },
   },
 ]

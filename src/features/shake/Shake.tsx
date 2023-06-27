@@ -11,7 +11,7 @@ export const Shake = () => {
 
   useEffect(() => {
     const subscription = RNShake.addListener(() => {
-      navigate('ShakePage')
+      navigate('ShakeStart')
     })
 
     return () => {
@@ -19,5 +19,5 @@ export const Shake = () => {
     }
   }, [navigate])
 
-  return <ButtonPrimary wording="shake" onPress={() => navigate('ShakePage')} />
+  return <ButtonPrimary wording="shake" onPress={() => navigate('ShakeStart')} />
 }

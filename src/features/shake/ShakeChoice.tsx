@@ -1,12 +1,14 @@
+import { useNavigation } from '@react-navigation/native'
 import React, { useState } from 'react'
 import { useEffect } from 'react'
-import RNShake from 'react-native-shake'
 import styled from 'styled-components/native'
 
 import { OfferResponse } from 'api/gen'
 import { useAuthContext } from 'features/auth/context/AuthContext'
+import { useAddFavorite } from 'features/favorites/api'
 import { getRecommendationEndpoint } from 'features/home/api/helpers/getRecommendationEndpoint'
 import { getRecommendationParameters } from 'features/home/api/useHomeRecommendedHits'
+import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { getOfferById } from 'features/offer/api/useOffer'
 import { Cards } from 'features/shake/Cards'
 import { RoundedButtonLikePass } from 'features/shake/RoundedButtonLikePass'
@@ -14,15 +16,13 @@ import { useGeolocation } from 'libs/geolocation'
 import { useHomeRecommendedIdsMutation } from 'libs/recommendation/useHomeRecommendedIdsMutation'
 import { useSubcategoryLabelMapping } from 'libs/subcategories/mappings'
 import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
-import { ModalHeader } from 'ui/components/modals/ModalHeader'
-import { useModal } from 'ui/components/modals/useModal'
-import { Close } from 'ui/svg/icons/Close'
+import { PageHeaderSecondary } from 'ui/components/headers/PageHeaderSecondary'
 import { Spacer, Typo, getSpacing } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
-export const ShakePage = () => {
+export const ShakeChoice = () => {
+  const { navigate } = useNavigation<UseNavigationType>()
   const { user } = useAuthContext()
-  const { showModal, hideModal, visible } = useModal(true)
   const [offer, setOffer] = useState<OfferResponse>()
   const { userPosition: position } = useGeolocation()
   const recommendationEndpoint = getRecommendationEndpoint({
@@ -35,16 +35,6 @@ export const ShakePage = () => {
   const subcategoryLabelMapping = useSubcategoryLabelMapping()
 
   useEffect(() => {
-    const subscription = RNShake.addListener(() => {
-      showModal()
-    })
-
-    return () => {
-      subscription.remove()
-    }
-  }, [showModal])
-
-  useEffect(() => {
     if (!recommendationEndpoint) return
     const requestParameters = getRecommendationParameters(undefined, subcategoryLabelMapping)
     getRecommendedIds(
@@ -53,54 +43,70 @@ export const ShakePage = () => {
         onSuccess: (response) => setRecommendedIds(response.playlist_recommended_offers),
       }
     )
-  }, [getRecommendedIds, recommendationEndpoint, subcategoryLabelMapping, visible])
+  }, [getRecommendedIds, recommendationEndpoint, subcategoryLabelMapping])
 
   useEffect(() => {
     if (recommendedIds && recommendedIds.length > 0)
       getOfferById(Number(recommendedIds[0])).then((response) => setOffer(response))
   }, [recommendedIds])
 
-  if (visible && !!offer) {
+  const { mutate: addFavorite } = useAddFavorite({})
+
+  if (offer) {
+    const OFFERS = [
+      {
+        uri: offer.image?.url,
+        distance: '100km',
+        categoryLabel: 'Théâtre',
+      },
+      {
+        uri: 'https://storage.googleapis.com/passculture-metier-ehp-testing-assets-fine-grained/thumbs/mediations/test_image_2.png',
+        distance: '100km',
+        categoryLabel: 'Théâtre',
+      },
+      {
+        uri: 'https://storage.googleapis.com/passculture-metier-ehp-testing-assets-fine-grained/thumbs/mediations/test_image_1_bis.jpg',
+        distance: '100km',
+        categoryLabel: 'Théâtre',
+      },
+    ]
+
     return (
-      <Container>
-        <Spacer.TopScreen />
-        <ModalHeader
-          title={'La sélection mystère'}
-          rightIconAccessibilityLabel="Fermer la modale"
-          rightIcon={Close}
-          onRightIconPress={hideModal}
-        />
-        <Spacer.Column numberOfSpaces={10} />
-        <Cards categoryLabel="Théâtre" distance="100km" uri={offer.image?.url} />
-        <Spacer.Column numberOfSpaces={6} />
-        <StyledTitle3>{offer?.name}</StyledTitle3>
-        <Spacer.Column numberOfSpaces={6} />
-        {/* <LocationCaption venue="La boétie" isDigital={false} /> */}
-        <Spacer.Column numberOfSpaces={10} />
-        <ButtonContainer>
-          <RoundedButtonLikePass
-            iconName="close"
-            onPress={hideModal}
-            accessibilityLabel="Refuser l’offre"
-          />
-          <Spacer.Row numberOfSpaces={5} />
-          <ButtonTertiaryContainer>
-            <ButtonTertiaryBlack
-              inline
-              wording="Voir l’offre"
-              onPress={hideModal}
-              buttonHeight="extraSmall"
+      <React.Fragment>
+        <PageHeaderSecondary title="La sélection mystère" color="white" />
+        <Container>
+          <Spacer.Column numberOfSpaces={10} />
+          {!!offer.image && <Cards cards={OFFERS} />}
+          <Spacer.Column numberOfSpaces={6} />
+          <StyledTitle3>{offer?.name}</StyledTitle3>
+          <Spacer.Column numberOfSpaces={6} />
+          {/* <LocationCaption venue="La boétie" isDigital={false} /> */}
+          <Spacer.Column numberOfSpaces={10} />
+          <ButtonContainer>
+            <RoundedButtonLikePass
+              iconName="close"
+              onPress={() => navigate('ShakeEnd')}
+              accessibilityLabel="Refuser l’offre"
             />
-          </ButtonTertiaryContainer>
-          <Spacer.Row numberOfSpaces={5} />
-          <RoundedButtonLikePass
-            iconName="favorite"
-            onPress={hideModal}
-            accessibilityLabel="Mettre en favoris"
-          />
-        </ButtonContainer>
-        <Spacer.BottomScreen />
-      </Container>
+            <Spacer.Row numberOfSpaces={5} />
+            <ButtonTertiaryContainer>
+              <ButtonTertiaryBlack
+                inline
+                wording="Voir l’offre"
+                onPress={() => navigate('Offer', { id: offer.id, from: 'ShakeChoice' })}
+                buttonHeight="extraSmall"
+              />
+            </ButtonTertiaryContainer>
+            <Spacer.Row numberOfSpaces={5} />
+            <RoundedButtonLikePass
+              iconName="favorite"
+              onPress={() => addFavorite({ offerId: offer.id })}
+              accessibilityLabel="Mettre en favoris"
+            />
+          </ButtonContainer>
+          <Spacer.BottomScreen />
+        </Container>
+      </React.Fragment>
     )
   }
   return null
@@ -108,7 +114,6 @@ export const ShakePage = () => {
 
 const Container = styled.View({
   width: '100%',
-  backgroundColor: '#fff',
   borderRadius: getSpacing(4),
   padding: getSpacing(6),
 })
