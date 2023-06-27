@@ -106,13 +106,6 @@ export const ShakePage = () => {
   return null
 }
 
-const Background = styled.View({
-  height: '100%',
-  width: '100%',
-  backgroundColor: 'rgba(22, 22, 23, 0.48)',
-  justifyContent: 'flex-end',
-})
-
 const Container = styled.View({
   width: '100%',
   backgroundColor: '#fff',

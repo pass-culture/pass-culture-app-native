@@ -1,8 +1,10 @@
 import { useNavigation } from '@react-navigation/native'
 import { useEffect } from 'react'
+import React from 'react'
 import RNShake from 'react-native-shake'
 
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
+import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 
 export const Shake = () => {
   const { navigate } = useNavigation<UseNavigationType>()
@@ -17,5 +19,5 @@ export const Shake = () => {
     }
   }, [navigate])
 
-  return null
+  return <ButtonPrimary wording="shake" onPress={() => navigate('ShakePage')} />
 }
