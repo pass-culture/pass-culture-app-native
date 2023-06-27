@@ -30,10 +30,21 @@ public class DefaultBrowserModule extends ReactContextBaseJavaModule {
     @ReactMethod
     public void openUrl(String url, Promise promise) {
         try {
-            Intent defaultBrowser = Intent.makeMainSelectorActivity(Intent.ACTION_MAIN, Intent.CATEGORY_APP_BROWSER);
-            defaultBrowser.setData(Uri.parse(url));
+            Intent emptyBrowserIntent = new Intent();
+            emptyBrowserIntent
+                .setAction(Intent.ACTION_VIEW)
+                .addCategory(Intent.CATEGORY_BROWSABLE)
+                .setData(Uri.fromParts("http", "", null));
+
+            Intent targetIntent = new Intent();
+            targetIntent
+                .setAction(Intent.ACTION_VIEW)
+                .addCategory(Intent.CATEGORY_BROWSABLE)
+                .setData(Uri.parse(url))
+                .setSelector(emptyBrowserIntent);
+            
             // Through ReactApplicationContext's current activty, start a new activity
-            this._context.getCurrentActivity().startActivity(defaultBrowser);
+            this._context.getCurrentActivity().startActivity(targetIntent);
             promise.resolve(true);
         } catch (Exception e) {
             // We land here if the user doesn't have any browsers installed on their phone
