@@ -24,7 +24,7 @@ import { getSpacing, Spacer, Typo } from 'ui/theme'
 export function BookingConfirmation() {
   const { params } = useRoute<UseRouteType<'BookingConfirmation'>>()
   const { share: shareOffer, shareContent } = useShareOffer(params.offerId)
-  const { reset } = useNavigation<UseNavigationType>()
+  const { reset, navigate } = useNavigation<UseNavigationType>()
   const credit = useAvailableCredit()
   const amountLeft = credit && !credit.isExpired ? credit.amount : 0
 
@@ -70,6 +70,11 @@ export function BookingConfirmation() {
   const amountLeftText = `Il te reste encore ${formatToFrenchDecimal(
     amountLeft
   )} à dépenser sur le pass Culture.`
+  const TravelOptionButtonStyle = { width: '95%', alignSelf: 'center' }
+
+  const pressTravelOptions = useCallback(() => {
+    navigate('SelectTravelOptions')
+  }, [])
 
   return (
     <React.Fragment>
@@ -88,6 +93,8 @@ export function BookingConfirmation() {
           <ButtonPrimary key={1} wording="Voir ma réservation" onPress={displayBookingDetails} />
           <Spacer.Column numberOfSpaces={4} />
           <ButtonSecondary wording="Partager l’offre" onPress={pressShareOffer} />
+          <Spacer.Column numberOfSpaces={4} />
+          <ButtonSecondary wording="Afficher les options de voyage" onPress={pressTravelOptions} />
           <Spacer.Column numberOfSpaces={4} />
           <InternalTouchableLink
             key={2}

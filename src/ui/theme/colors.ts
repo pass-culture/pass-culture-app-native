@@ -24,6 +24,7 @@ export enum ColorsEnum {
   DEEPPINK = '#C01371',
   CORAL = '#CA3F13',
   LILAC = '#8337E9',
+  GREY ='#7C7C7C'
 }
 export enum UniqueColors {
   BRAND = '#870087',

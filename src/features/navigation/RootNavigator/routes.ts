@@ -67,7 +67,7 @@ import { TrackEmailChange } from 'features/profile/pages/TrackEmailChange/TrackE
 import { SearchFilter } from 'features/search/pages/SearchFilter/SearchFilter'
 import { Venue } from 'features/venue/pages/Venue/Venue'
 import { ABTestingPOC } from 'libs/firebase/remoteConfig/ABTestingPOC'
-
+import { SelectTravelOptions } from 'features/travelOptions/pages/SelectTravelOptions/SelectTravelOptions'
 import { Route } from './types'
 
 export const routes: Route[] = [
@@ -473,5 +473,9 @@ export const routes: Route[] = [
       parse: screenParamsParser['ThematicHome'],
     },
     options: { title: 'Page d’accueil thématique' },
-  },
+  }, {
+    name: 'SelectTravelOptions',
+    component: SelectTravelOptions,
+    path: 'get-dynamic-socials',
+  }
 ]
