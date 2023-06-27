@@ -12,7 +12,7 @@ import { Close } from 'ui/svg/icons/Close'
 import { Spacer, getSpacing } from 'ui/theme'
 
 export const Shake = () => {
-  const { showModal, hideModal, visible } = useModal(false)
+  const { showModal, hideModal, visible } = useModal(true)
 
   useEffect(() => {
     const subscription = RNShake.addListener(() => {
@@ -36,7 +36,6 @@ export const Shake = () => {
           />
           <Spacer.Column numberOfSpaces={10} />
           <Cards />
-          <FakeCard />
           <Spacer.Column numberOfSpaces={10} />
           <ButtonContainer>
             <RoundedButtonLikePass
@@ -96,8 +95,3 @@ const ButtonTertiaryContainer = styled.View(({ theme }) => ({
   paddingHorizontal: getSpacing(6),
   paddingVertical: getSpacing(2),
 }))
-
-const FakeCard = styled.View({
-  height: 500,
-  background: 'lightgrey',
-})
