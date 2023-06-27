@@ -67,6 +67,7 @@ import { Venue } from 'features/venue/pages/Venue/Venue'
 import { ABTestingPOC } from 'libs/firebase/remoteConfig/ABTestingPOC'
 
 import { Route } from './types'
+import { Dora } from 'features/home/pages/Dora'
 
 export const routes: Route[] = [
   ...accessibilityRoutes,
@@ -74,6 +75,12 @@ export const routes: Route[] = [
   ...tutorialRoutes,
   ...subscriptionRoutes,
   ...trustedDeviceRoutes,
+  {
+    name: 'Dora',
+    component: Dora,
+    path: 'carte',
+    options: { title: 'carte des lieux' },
+  },
   {
     name: 'Offer',
     component: Offer,

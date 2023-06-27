@@ -22,7 +22,10 @@ export const fetchVenues = async ({
   try {
     const rawAlgoliaVenuesResponse = await venuesIndex.search<AlgoliaVenue>(
       algoliaSearchParams.query,
-      algoliaSearchParams.requestOptions
+      {
+        ...algoliaSearchParams.requestOptions,
+        hitsPerPage: 5000
+      }
     )
 
     const rawVenues = adaptGenericAlgoliaTypes(rawAlgoliaVenuesResponse)
