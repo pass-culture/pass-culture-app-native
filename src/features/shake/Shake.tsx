@@ -1,18 +1,39 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { useEffect } from 'react'
 import RNShake from 'react-native-shake'
 import styled from 'styled-components/native'
 
+import { OfferResponse } from 'api/gen'
+import { useAuthContext } from 'features/auth/context/AuthContext'
+import { getRecommendationEndpoint } from 'features/home/api/helpers/getRecommendationEndpoint'
+import { getRecommendationParameters } from 'features/home/api/useHomeRecommendedHits'
+import { getOfferById } from 'features/offer/api/useOffer'
+// import { LocationCaption } from 'features/offer/components/LocationCaption'
 import { Cards } from 'features/shake/Cards'
 import { RoundedButtonLikePass } from 'features/shake/RoundedButtonLikePass'
+import { useGeolocation } from 'libs/geolocation'
+import { useHomeRecommendedIdsMutation } from 'libs/recommendation/useHomeRecommendedIdsMutation'
+import { useSubcategoryLabelMapping } from 'libs/subcategories/mappings'
 import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
 import { ModalHeader } from 'ui/components/modals/ModalHeader'
 import { useModal } from 'ui/components/modals/useModal'
 import { Close } from 'ui/svg/icons/Close'
-import { Spacer, getSpacing } from 'ui/theme'
+import { Spacer, Typo, getSpacing } from 'ui/theme'
+import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 export const Shake = () => {
+  const { user } = useAuthContext()
   const { showModal, hideModal, visible } = useModal(true)
+  const [offer, setOffer] = useState<OfferResponse>()
+  const { userPosition: position } = useGeolocation()
+  const recommendationEndpoint = getRecommendationEndpoint({
+    userId: user?.id,
+    position,
+    modelEndpoint: undefined,
+  })
+  const [recommendedIds, setRecommendedIds] = useState<string[]>()
+  const { mutate: getRecommendedIds } = useHomeRecommendedIdsMutation()
+  const subcategoryLabelMapping = useSubcategoryLabelMapping()
 
   useEffect(() => {
     const subscription = RNShake.addListener(() => {
@@ -24,7 +45,23 @@ export const Shake = () => {
     }
   }, [showModal])
 
-  if (visible) {
+  useEffect(() => {
+    if (!recommendationEndpoint) return
+    const requestParameters = getRecommendationParameters(undefined, subcategoryLabelMapping)
+    getRecommendedIds(
+      { ...requestParameters, endpointUrl: recommendationEndpoint },
+      {
+        onSuccess: (response) => setRecommendedIds(response.playlist_recommended_offers),
+      }
+    )
+  }, [getRecommendedIds, recommendationEndpoint, subcategoryLabelMapping, visible])
+
+  useEffect(() => {
+    if (recommendedIds && recommendedIds.length > 0)
+      getOfferById(Number(recommendedIds[0])).then((response) => setOffer(response))
+  }, [recommendedIds])
+
+  if (visible && !!offer) {
     return (
       <Background>
         <Container>
@@ -35,7 +72,15 @@ export const Shake = () => {
             onRightIconPress={hideModal}
           />
           <Spacer.Column numberOfSpaces={10} />
-          <Cards />
+          <Cards
+            categoryLabel="Théâtre"
+            distance="100km"
+            uri="https://storage.googleapis.com/passculture-metier-ehp-testing-assets-fine-grained/thumbs/mediations/test_image_2.png"
+          />
+          <Spacer.Column numberOfSpaces={6} />
+          <StyledTitle3>{offer?.name}</StyledTitle3>
+          <Spacer.Column numberOfSpaces={6} />
+          {/* <LocationCaption venue="La boétie" isDigital={false} /> */}
           <Spacer.Column numberOfSpaces={10} />
           <ButtonContainer>
             <RoundedButtonLikePass
@@ -59,6 +104,7 @@ export const Shake = () => {
               accessibilityLabel="Mettre en favoris"
             />
           </ButtonContainer>
+          <Spacer.BottomScreen />
         </Container>
       </Background>
     )
@@ -69,13 +115,11 @@ export const Shake = () => {
 const Background = styled.View({
   height: '100%',
   width: '100%',
-  position: 'absolute',
   backgroundColor: 'rgba(22, 22, 23, 0.48)',
   justifyContent: 'flex-end',
 })
 
 const Container = styled.View({
-  height: '90%',
   width: '100%',
   backgroundColor: '#fff',
   borderRadius: getSpacing(4),
@@ -95,3 +139,7 @@ const ButtonTertiaryContainer = styled.View(({ theme }) => ({
   paddingHorizontal: getSpacing(6),
   paddingVertical: getSpacing(2),
 }))
+
+const StyledTitle3 = styled(Typo.Title3).attrs(() => getHeadingAttrs(1))({
+  textAlign: 'center',
+})

@@ -17,6 +17,7 @@ import { HomeBodyPlaceholder } from 'features/home/components/HomeBodyPlaceholde
 import { HomeModule } from 'features/home/components/modules/HomeModule'
 import { useOnScroll } from 'features/home/pages/helpers/useOnScroll'
 import { HomepageModule, isOffersModule, isVenuesModule } from 'features/home/types'
+import { Shake } from 'features/shake/Shake'
 import { analytics, isCloseToBottom } from 'libs/analytics'
 import useFunctionOnce from 'libs/hooks/useFunctionOnce'
 import { useNetInfoContext } from 'libs/network/NetInfoWrapper'
@@ -47,6 +48,7 @@ const renderModule = ({ item, index }: { item: HomepageModule; index: number }, 
 const FooterComponent = ({ hasShownAll }: { hasShownAll: boolean }) => {
   return (
     <React.Fragment>
+      <Shake />
       {/* As long as all modules are not shown, we keep the spinner */}
       {!hasShownAll && (
         <FooterContainer>
