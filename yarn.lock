@@ -21892,6 +21892,11 @@ react-native-screens@^3.18.2:
     react-freeze "^1.0.0"
     warn-once "^0.1.0"
 
+react-native-shake@5.1.0:
+  version "5.1.0"
+  resolved "https://registry.yarnpkg.com/react-native-shake/-/react-native-shake-5.1.0.tgz#af47179d64522070a4b1479f8413dbdb719797da"
+  integrity sha512-C/jA4a7RasY1dGv4y2Xm6qWhdSry2BvXhjmxy0xDKEZ97mC4oJp2/krwre7GWiIQ7JTaiPBlwna994LaheH/xg==
+
 react-native-share@^8.2.2:
   version "8.2.2"
   resolved "https://registry.yarnpkg.com/react-native-share/-/react-native-share-8.2.2.tgz#987d6f164afe57b089950dca42e0555f19045d27"
