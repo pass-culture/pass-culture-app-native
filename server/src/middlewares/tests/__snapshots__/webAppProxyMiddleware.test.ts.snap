@@ -51,14 +51,14 @@ exports[`metasResponseInterceptor with real backend should request the real test
 exports[`metasResponseInterceptor with real backend should request the real testing backend and get the venue data 1`] = `
 "<!doctype html>
 <html lang=\\"fr\\">
-  <head><link rel=\\"canonical\\" href=\\"http://localhost:8080/lieu/6180\\" />
+  <head><link rel=\\"canonical\\" href=\\"http://localhost:8080/lieu/venueId\\" />
     <meta charset=\\"utf-8\\">
     <title>pass Culture</title>
     <meta name=\\"title\\" content=\\"pass Culture | Terrain vague DATA\\" />
     <meta name=\\"description\\" content=\\"Light personal term quality upon.\\" />
     <meta name=\\"author\\" content=\\"pass Culture\\"/>
     <meta property=\\"og:type\\" content=\\"website\\"/>
-    <meta property=\\"og:url\\" content=\\"http://localhost:8080/lieu/6180\\" />
+    <meta property=\\"og:url\\" content=\\"http://localhost:8080/lieu/venueId\\" />
     <meta property=\\"og:title\\" content=\\"pass Culture | Terrain vague DATA\\" />
     <meta property=\\"og:description\\" content=\\"Light personal term quality upon.\\" />
     <meta property=\\"og:image\\" content=\\"https://storage.googleapis.com/passculture-metier-ehp-testing-assets-fine-grained/assets/venue_default_images/daniel-chekalov-JAMX7iNjXnU-unsplash.png\\" />
@@ -66,7 +66,7 @@ exports[`metasResponseInterceptor with real backend should request the real test
     <meta property=\\"og:locale\\" content=\\"fr_FR\\"/>
     <meta property=\\"og:site_name\\" content=\\"pass Culture\\"/>
     <meta name=\\"twitter:card\\" content=\\"summary_large_image\\" />
-    <meta name=\\"twitter:url\\" content=\\"http://localhost:8080/lieu/6180\\" />
+    <meta name=\\"twitter:url\\" content=\\"http://localhost:8080/lieu/venueId\\" />
     <meta name=\\"twitter:title\\" content=\\"pass Culture | Terrain vague DATA\\" />
     <meta name=\\"twitter:description\\" content=\\"Light personal term quality upon.\\" />
     <meta name=\\"twitter:image\\" content=\\"https://storage.googleapis.com/passculture-metier-ehp-testing-assets-fine-grained/assets/venue_default_images/daniel-chekalov-JAMX7iNjXnU-unsplash.png\\" />
@@ -75,13 +75,13 @@ exports[`metasResponseInterceptor with real backend should request the real test
     <meta name=\\"twitter:app:country\\" content=\\"FR\\"/>
     <meta name=\\"twitter:app:name:iphone\\" content=\\"pass Culture\\"/>
     <meta name=\\"twitter:app:id:iphone\\" content=\\"1557887412\\"/>
-    <meta name=\\"twitter:app:url:iphone\\" content=\\"passculture://http://localhost:8080/lieu/6180\\" />
+    <meta name=\\"twitter:app:url:iphone\\" content=\\"passculture://http://localhost:8080/lieu/venueId\\" />
     <meta name=\\"twitter:app:name:ipad\\" content=\\"pass Culture\\"/>
     <meta name=\\"twitter:app:id:ipad\\" content=\\"1557887412\\"/>
-    <meta name=\\"twitter:app:url:ipad\\" content=\\"passculture://http://localhost:8080/lieu/6180\\" />
+    <meta name=\\"twitter:app:url:ipad\\" content=\\"passculture://http://localhost:8080/lieu/venueId\\" />
     <meta name=\\"twitter:app:name:googleplay\\" content=\\"pass Culture\\"/>
     <meta name=\\"twitter:app:id:googleplay\\" content=\\"app.passculture.testing\\"/>
-    <meta name=\\"twitter:app:url:googleplay\\" content=\\"passculture://http://localhost:8080/lieu/6180\\" />
+    <meta name=\\"twitter:app:url:googleplay\\" content=\\"passculture://http://localhost:8080/lieu/venueId\\" />
     <meta property=\\"al:ios:app_name\\" content=\\"pass Culture\\"/>
     <meta property=\\"al:ios:app_store_id\\" content=\\"1557887412\\"/>
     <meta property=\\"al:ios:url\\" content=\\"passculture://https://app.testing.passculture.team\\"/>
