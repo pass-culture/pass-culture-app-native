@@ -22,6 +22,10 @@ jest.mock('react-instantsearch-hooks', () => ({
   useInfiniteHits: () => ({ hits: mockSuggestionHits }),
 }))
 
+// Performance measuring is run multiple times so we need to increase the timeout
+const TEST_TIMEOUT_IN_MS = 30_000
+jest.setTimeout(TEST_TIMEOUT_IN_MS)
+
 describe('<Search />', () => {
   describe('Search Landing Page -', () => {
     beforeAll(() => {
@@ -31,7 +35,7 @@ describe('<Search />', () => {
     it('Performance test for Search Landing page', async () => {
       await measurePerformance(<SearchPage />, {
         scenario: async () => {
-          await screen.findByText('Spectacles') // Last category that is rendered
+          await screen.findByText('Spectacles', {}, { timeout: TEST_TIMEOUT_IN_MS }) // Last category that is rendered
         },
       })
     })
@@ -46,7 +50,7 @@ describe('<Search />', () => {
     it('Performance test for Search Results page', async () => {
       await measurePerformance(<SearchPage />, {
         scenario: async () => {
-          await screen.findByText('4 résultats')
+          await screen.findByText('4 résultats', {}, { timeout: TEST_TIMEOUT_IN_MS })
         },
       })
     })
@@ -60,7 +64,7 @@ describe('<Search />', () => {
     it('Performance test for Search Suggestions page', async () => {
       await measurePerformance(<SearchPage />, {
         scenario: async () => {
-          await screen.findAllByText('Séances de cinéma')
+          await screen.findAllByText('Séances de cinéma', {}, { timeout: TEST_TIMEOUT_IN_MS })
         },
       })
     })
