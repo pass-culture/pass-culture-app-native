@@ -3,7 +3,6 @@ import { AccessibilityRole, Animated } from 'react-native'
 import styled, { useTheme } from 'styled-components/native'
 
 import { accessibleCheckboxProps } from 'shared/accessibilityProps/accessibleCheckboxProps'
-import { AnimatedIcon } from 'ui/components/AnimatedIcon'
 import { styledButton } from 'ui/components/buttons/styledButton'
 import { Touchable } from 'ui/components/touchable/Touchable'
 import { Close } from 'ui/svg/icons/Close'
@@ -11,6 +10,7 @@ import { Favorite } from 'ui/svg/icons/Favorite'
 import { IconInterface } from 'ui/svg/icons/types'
 // eslint-disable-next-line no-restricted-imports
 import { getSpacing } from 'ui/theme'
+// eslint-disable-next-line no-restricted-imports
 import { ColorsEnum } from 'ui/theme/colors'
 import { customFocusOutline } from 'ui/theme/customFocusOutline/customFocusOutline'
 
