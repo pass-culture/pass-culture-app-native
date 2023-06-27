@@ -6,18 +6,16 @@ import { accessibleCheckboxProps } from 'shared/accessibilityProps/accessibleChe
 import { AnimatedIcon } from 'ui/components/AnimatedIcon'
 import { styledButton } from 'ui/components/buttons/styledButton'
 import { Touchable } from 'ui/components/touchable/Touchable'
-import { ArrowPrevious } from 'ui/svg/icons/ArrowPrevious'
-import { Share } from 'ui/svg/icons/BicolorShare'
 import { Close } from 'ui/svg/icons/Close'
 import { Favorite } from 'ui/svg/icons/Favorite'
-import { FavoriteFilled } from 'ui/svg/icons/FavoriteFilled'
 import { IconInterface } from 'ui/svg/icons/types'
 // eslint-disable-next-line no-restricted-imports
+import { getSpacing } from 'ui/theme'
 import { ColorsEnum } from 'ui/theme/colors'
 import { customFocusOutline } from 'ui/theme/customFocusOutline/customFocusOutline'
 
 interface Props {
-  iconName: 'back' | 'share' | 'favorite' | 'favorite-filled' | 'close'
+  iconName: 'favorite' | 'close'
   initialColor?: ColorsEnum
   finalColor?: ColorsEnum
   onPress: () => void
@@ -34,16 +32,13 @@ interface Props {
 }
 
 const getIcon = (iconName: Props['iconName']): React.FC<IconInterface> => {
-  if (iconName === 'back') return ArrowPrevious
-  if (iconName === 'share') return Share
-  if (iconName === 'favorite-filled') return FavoriteFilled
   if (iconName === 'close') return Close
   return Favorite
 }
 
-export const RoundedButton = (props: Props) => {
+export const RoundedButtonLikePass = (props: Props) => {
   const Icon = getIcon(props.iconName)
-  const { colors, icons } = useTheme()
+  const { icons } = useTheme()
 
   const accessibilityProps = useMemo(() => {
     return props.accessibilityRole
@@ -60,28 +55,9 @@ export const RoundedButton = (props: Props) => {
       onPress={props.onPress}
       disabled={props.disabled}
       {...accessibilityProps}>
-      {props.animationState ? (
-        <IconContainer
-          testID="AnimatedHeaderIconRoundContainer"
-          style={{
-            borderColor: props.animationState.iconBorderColor,
-            backgroundColor: props.animationState.iconBackgroundColor,
-            transform: props.scaleAnimatedValue ? [{ scale: props.scaleAnimatedValue }] : undefined,
-          }}>
-          <AnimatedIcon
-            Icon={Icon}
-            initialColor={props.initialColor || colors.black}
-            testID={`animated-icon-${props.iconName}`}
-            transition={props.animationState.transition}
-            finalColor={props.finalColor || colors.black}
-            size={icons.sizes.small}
-          />
-        </IconContainer>
-      ) : (
-        <IconContainer>
-          <Icon size={icons.sizes.small} testID={`icon-${props.iconName}`} />
-        </IconContainer>
-      )}
+      <IconContainer>
+        <Icon size={icons.sizes.standard} testID={`icon-${props.iconName}`} />
+      </IconContainer>
     </StyledTouchable>
   )
 }
@@ -92,13 +68,13 @@ const StyledTouchable = styledButton(Touchable)(({ theme }) => ({
 }))
 
 const IconContainer = styled(Animated.View)(({ theme }) => ({
-  width: theme.buttons.roundedButton.size,
-  height: theme.buttons.roundedButton.size,
+  width: getSpacing(14),
+  height: getSpacing(14),
   aspectRatio: '1',
   borderRadius: theme.buttons.roundedButton.size,
   backgroundColor: theme.colors.white,
   border: 1,
   justifyContent: 'center',
   alignItems: 'center',
-  borderColor: theme.colors.greyLight,
+  borderColor: theme.colors.greyDark,
 }))
