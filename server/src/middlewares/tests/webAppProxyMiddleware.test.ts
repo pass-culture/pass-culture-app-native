@@ -154,7 +154,7 @@ describe('metasResponseInterceptor', () => {
     it('should request the real testing backend and get the venue data', async () => {
       const venueId = await getVenueId('Terrain vague')
       const url = `${env.APP_PUBLIC_URL}/lieu/${venueId}`
-      const finalResponseBuffer = await metasResponseInterceptor(
+      const html = await metasResponseInterceptor(
         responseBuffer,
         proxyRes,
         {
@@ -164,7 +164,12 @@ describe('metasResponseInterceptor', () => {
         res
       )
 
-      expect(finalResponseBuffer).toMatchSnapshot()
+      const htmlWithoutOfferId = html
+      .toString()
+      .replaceAll(venueId, 'venueId')
+      .replace(/(?<=mediations\/)[A-Z0-9_]+/, 'humanizedVenueId')
+
+      expect(htmlWithoutOfferId).toMatchSnapshot()
     })
   })
 })
