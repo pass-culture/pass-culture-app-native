@@ -1,5 +1,5 @@
 import { useNavigation } from '@react-navigation/native'
-import { useEffect } from 'react'
+import { useEffect, useState, useCallback } from 'react'
 import React from 'react'
 import RNShake from 'react-native-shake'
 
@@ -8,16 +8,23 @@ import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 
 export const Shake = () => {
   const { navigate } = useNavigation<UseNavigationType>()
+  const [good, setGood] = useState(true)
+
+  const navigateInternal = useCallback(() => {
+    setGood((good) => !good)
+    if (good) navigate('ShakeStart')
+    else navigate('ShakeNoRetry')
+  }, [navigate, good])
 
   useEffect(() => {
     const subscription = RNShake.addListener(() => {
-      navigate('ShakeStart')
+      navigateInternal()
     })
 
     return () => {
       subscription.remove()
     }
-  }, [navigate])
+  }, [navigateInternal])
 
-  return <ButtonPrimary wording="shake" onPress={() => navigate('ShakeStart')} />
+  return <ButtonPrimary wording="shake" onPress={() => navigateInternal()} />
 }

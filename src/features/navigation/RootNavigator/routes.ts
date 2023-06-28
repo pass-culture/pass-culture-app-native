@@ -67,6 +67,7 @@ import { SearchFilter } from 'features/search/pages/SearchFilter/SearchFilter'
 import { ShakeChoice } from 'features/shake/ShakeChoice'
 import { ShakeEnd } from 'features/shake/ShakeEnd'
 import { ShakeEndWithFavorite } from 'features/shake/ShakeEndWithFavorite'
+import { ShakeNoRetry } from 'features/shake/ShakeNoRetry'
 import { ShakeStart } from 'features/shake/ShakeStart'
 import { Venue } from 'features/venue/pages/Venue/Venue'
 import { ABTestingPOC } from 'libs/firebase/remoteConfig/ABTestingPOC'
@@ -474,6 +475,12 @@ export const routes: Route[] = [
     component: ShakeStart,
     pathConfig: { path: 'secoue-la-culture-debut' },
     options: { title: 'Boum\u00a0! La sélection mystère ' },
+  },
+  {
+    name: 'ShakeNoRetry',
+    component: ShakeNoRetry,
+    pathConfig: { path: 'secoue-la-culture-debut-demain' },
+    options: { title: 'La sélection mystère reviens demain' },
   },
   {
     name: 'ShakeChoice',

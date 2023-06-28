@@ -10,8 +10,9 @@
 ## Tasks
 
 - [ ] Faire la redirection vers la page de favoris depuis la page ShakeEnd @anouk
-- [ ] Faire l'autre version de ShakeEnd si pas d'ajout au favoris
+- [x] Faire l'autre version de ShakeEnd si pas d'ajout au favoris
 - [ ] Mettre l'animation de fin > @lucas
+- [ ] Ajouter la nouvelle page pour ne pas pouvoir réssayer
 
 - [ ] Terminer la page de ShakeChoice
 
