@@ -33,7 +33,7 @@ export const Shake = () => {
 
   useEffect(() => {
     const subscription = RNShake.addListener(() => {
-      ReactNativeHapticFeedback.trigger('impactLight', options)
+      ReactNativeHapticFeedback.trigger('impactMedium', options)
       marion.setVolume(1)
       marion.play()
       navigateInternal()

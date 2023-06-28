@@ -114,6 +114,7 @@ export const ShakeChoice = () => {
       <React.Fragment>
         <PageHeaderSecondary title="La sélection mystère" isWhite />
         <Container>
+          <Spacer.Flex />
           <Cards cards={offers} />
           <Spacer.Column numberOfSpaces={6} />
           <StyledTitle3>{offers[0].name}</StyledTitle3>
