@@ -22,7 +22,7 @@ import { Spacer, Typo, getSpacing } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 export const ShakeChoice = () => {
-  const { navigate } = useNavigation<UseNavigationType>()
+  const { replace, navigate } = useNavigation<UseNavigationType>()
   const { user } = useAuthContext()
   const [offers, setOffers] = useState<OfferResponse[]>()
   const { userPosition: position } = useGeolocation()
@@ -71,12 +71,18 @@ export const ShakeChoice = () => {
 
   if (offers) {
     const onLikePress = () => {
+      let shouldRedirect = 0
+      if (offers.length === 1) shouldRedirect = 1
       addFavorite({ offerId: offers[0].id })
       setOffers((offers) => (offers ? offers.slice(1) : []))
+      if (shouldRedirect) replace('ShakeEnd')
     }
 
     const onPassPress = () => {
+      let shouldRedirect = 0
+      if (offers.length === 1) shouldRedirect = 1
       setOffers((offers) => (offers ? offers.slice(1) : []))
+      if (shouldRedirect) replace('ShakeEnd')
     }
 
     return (
