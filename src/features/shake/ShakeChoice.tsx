@@ -1,7 +1,9 @@
 import { useNavigation } from '@react-navigation/native'
-import React, { useState } from 'react'
+import React, { useRef, useState } from 'react'
 import { useEffect } from 'react'
+import { Animated, Easing } from 'react-native'
 import styled from 'styled-components/native'
+import { DefaultTheme } from 'styled-components/native'
 
 import { OfferResponse } from 'api/gen'
 import { useAuthContext } from 'features/auth/context/AuthContext'
@@ -16,6 +18,8 @@ import { RoundedButtonLikePass } from 'features/shake/RoundedButtonLikePass'
 import { useGeolocation } from 'libs/geolocation'
 import { useHomeRecommendedIdsMutation } from 'libs/recommendation/useHomeRecommendedIdsMutation'
 import { useSubcategoryLabelMapping } from 'libs/subcategories/mappings'
+import { theme } from 'theme'
+import { useOpacityTransition } from 'ui/animations/helpers/useOpacityTransition'
 import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
 import { BackButton } from 'ui/components/headers/BackButton'
 import { Spacer, Typo, getSpacing } from 'ui/theme'
@@ -35,6 +39,9 @@ export const ShakeChoice = () => {
   const [recommendedIds, setRecommendedIds] = useState<string[]>()
   const { mutate: getRecommendedIds } = useHomeRecommendedIdsMutation()
   const subcategoryLabelMapping = useSubcategoryLabelMapping()
+
+  const scaleFavoriteIconAnimatedValueRef = useRef(new Animated.Value(1))
+  const { headerTransition } = useOpacityTransition()
 
   useEffect(() => {
     if (!recommendationEndpoint) return
@@ -71,12 +78,13 @@ export const ShakeChoice = () => {
     }
   }, [recommendedIds])
 
-  const { mutate: addFavorite } = useAddFavorite({})
+  const { mutate: addFavorite, isLoading: addFavoriteIsLoading } = useAddFavorite({})
 
-  if (offers) {
+  if (offers && offers?.length !== 0) {
     const onLikePress = () => {
       let shouldRedirect = 0
       if (offers.length === 1) shouldRedirect = 1
+      animateIcon(scaleFavoriteIconAnimatedValueRef.current)
       addFavorite({ offerId: offers[0].id })
       setOffers((offers) => (offers ? offers.slice(1) : []))
       setHasPickedFavorite(true)
@@ -112,9 +120,9 @@ export const ShakeChoice = () => {
           <Spacer.Column numberOfSpaces={10} />
           <Cards cards={offers} />
           <Spacer.Column numberOfSpaces={6} />
-          <StyledTitle3>{offers[0]?.name}</StyledTitle3>
+          <StyledTitle3>{offers[0].name}</StyledTitle3>
           <Spacer.Column numberOfSpaces={4} />
-          <LocationCaption venue={offers[0].venue} isDigital={offers[0]?.isDigital} />
+          <LocationCaption venue={offers[0].venue} isDigital={offers[0].isDigital} />
           <Spacer.Column numberOfSpaces={10} />
           <Spacer.Flex />
           <ButtonContainer>
@@ -134,9 +142,17 @@ export const ShakeChoice = () => {
             </ButtonTertiaryContainer>
             <Spacer.Row numberOfSpaces={5} />
             <RoundedButtonLikePass
-              iconName="favorite"
+              animationState={{
+                iconBackgroundColor: headerTransition.interpolate(
+                  iconBackgroundInterpolation(theme)
+                ),
+                iconBorderColor: headerTransition.interpolate(iconBorderInterpolation(theme)),
+                transition: headerTransition,
+              }}
+              scaleAnimatedValue={scaleFavoriteIconAnimatedValueRef.current}
+              iconName={'favorite'}
               onPress={onLikePress}
-              accessibilityLabel="Mettre en favoris"
+              disabled={addFavoriteIsLoading}
             />
           </ButtonContainer>
           <Spacer.Column numberOfSpaces={5} />
@@ -146,6 +162,32 @@ export const ShakeChoice = () => {
     )
   }
   return null
+}
+
+const iconBackgroundInterpolation = (theme: DefaultTheme) => ({
+  inputRange: [0, 1],
+  outputRange: [theme.colors.white, 'rgba(255, 255, 255, 0)'],
+})
+
+const iconBorderInterpolation = (theme: DefaultTheme) => ({
+  inputRange: [0, 1],
+  outputRange: [theme.colors.greyDark, 'rgba(255, 255, 255, 0)'],
+  easing: Easing.bezier(0, 1, 0, 1),
+})
+
+function animateIcon(animatedValue: Animated.Value): void {
+  Animated.sequence([
+    Animated.timing(animatedValue, {
+      toValue: 1.3,
+      duration: 200,
+      useNativeDriver: false,
+    }),
+    Animated.timing(animatedValue, {
+      toValue: 1,
+      duration: 200,
+      useNativeDriver: false,
+    }),
+  ]).start()
 }
 
 const Container = styled.View({
