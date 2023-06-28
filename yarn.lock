@@ -15067,6 +15067,11 @@ husky@^1.0.0-rc.14:
     run-node "^1.0.0"
     slash "^2.0.0"
 
+hyper-sdk-react@2.1.15:
+  version "2.1.15"
+  resolved "https://registry.yarnpkg.com/hyper-sdk-react/-/hyper-sdk-react-2.1.15.tgz#d9e025631a4281d761d36df94dba1b74af85980c"
+  integrity sha512-lKmVazpvnwwv8sZDPcqzGyZM8cSSb+c7ku9XHBZV4h/QZ/5EJV7xPy+3VGUoW3OHM4mm7sdI9cicbJVBmn7Jow==
+
 hyperlinker@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/hyperlinker/-/hyperlinker-1.0.0.tgz#23dc9e38a206b208ee49bc2d6c8ef47027df0c0e"

@@ -5,7 +5,7 @@ import org.apache.tools.ant.taskdefs.condition.Os
 buildscript {
     ext {
         buildToolsVersion = "33.0.0"
-        minSdkVersion = 21
+        minSdkVersion = 23
         compileSdkVersion = 33
         targetSdkVersion = 33
 
@@ -19,7 +19,7 @@ buildscript {
 
         firebaseIidVersion = "19.0.1"
         supportLibVersion = "28.0.0"
-        googlePlayServicesVersion = "17.0.0"
+        googlePlayServicesVersion = "21.0.1"
     }
     repositories {
         google()
@@ -45,6 +45,9 @@ allprojects {
         maven {
             // Android JSC is installed from npm
             url("$rootDir/../node_modules/jsc-android/dist")
+        }
+        maven {
+            url "https://maven.juspay.in/jp-build-packages/hyper-sdk/"
         }
         mavenCentral {
             // We don't want to fetch react-native from Maven Central as there are

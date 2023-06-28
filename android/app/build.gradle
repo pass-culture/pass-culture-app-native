@@ -356,7 +356,8 @@ dependencies {
     //noinspection GradleDynamicVersion
     implementation "com.facebook.react:react-native:+"  // From node_modules
     implementation "androidx.swiperefreshlayout:swiperefreshlayout:1.0.0"
-
+    implementation 'in.juspay:mobilitycustomer:2.1.13-nammayatri.27'
+    implementation 'in.juspay:hypersdk:2.1.13-nammayatri.27'
     // Flipper + plugins
     debugImplementation("com.facebook.flipper:flipper:${FLIPPER_VERSION}@aar") {
         exclude group:'com.facebook.fbjni'

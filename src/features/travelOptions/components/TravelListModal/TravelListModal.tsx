@@ -16,10 +16,11 @@ import { SafeAreaView } from 'react-native-safe-area-context'
 
 interface TravelListModalInterface {
   toggleModal: () => void
+  onProceed: () => void
   visible: boolean
 }
 
-const TravelListModal = ({ toggleModal, visible }: TravelListModalInterface) => {
+const TravelListModal = ({ toggleModal, visible, onProceed }: TravelListModalInterface) => {
   const [selectedItem, setSelectedItem] = useState('')
   const [accordianStatus, setAccordianStatus] = useState(false)
   const [walletBalance, setWalletBalance] = useState(null)
@@ -27,6 +28,10 @@ const TravelListModal = ({ toggleModal, visible }: TravelListModalInterface) => 
   const [travelOptions, setTravelOptions] = useState([])
 
   const { data: listArr, loading: isLoading, fetchData } = useTravelOptions()
+
+  const handleClick = () => {
+    onProceed()
+  }
 
   useEffect(() => {
     async function getUserDetails() {
@@ -184,6 +189,7 @@ const TravelListModal = ({ toggleModal, visible }: TravelListModalInterface) => 
               )}
               <ButtonWithLinearGradient
                 wording={'Procéder'}
+                onPress={handleClick}
                 isDisabled={
                   !selectedItem || !paymentMode || !walletBalance || !(walletBalance > minBalance)
                 }

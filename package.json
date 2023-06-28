@@ -125,6 +125,7 @@
     "geojson": "^0.5.0",
     "globalthis": "^1.0.2",
     "highlight-words-core": "^1.2.2",
+    "hyper-sdk-react": "2.1.15",
     "instantsearch.js": "^4.52.0",
     "intl": "^1.2.5",
     "jwt-decode": "^3.1.2",
