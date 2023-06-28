@@ -24,6 +24,10 @@ export const ShakeChoice = () => {
   const { navigate } = useNavigation<UseNavigationType>()
   const { user } = useAuthContext()
   const [offer, setOffer] = useState<OfferResponse>()
+  const [secondOffer, setSecondOffer] = useState<OfferResponse>()
+  const [thirdOffer, setThirdOffer] = useState<OfferResponse>()
+  const [fourthOffer, setFourthOffer] = useState<OfferResponse>()
+  const [fifthOffer, setFifthOffer] = useState<OfferResponse>()
   const { userPosition: position } = useGeolocation()
   const recommendationEndpoint = getRecommendationEndpoint({
     userId: user?.id,
@@ -37,6 +41,7 @@ export const ShakeChoice = () => {
   useEffect(() => {
     if (!recommendationEndpoint) return
     const requestParameters = getRecommendationParameters(undefined, subcategoryLabelMapping)
+
     getRecommendedIds(
       { ...requestParameters, endpointUrl: recommendationEndpoint },
       {
@@ -46,13 +51,18 @@ export const ShakeChoice = () => {
   }, [getRecommendedIds, recommendationEndpoint, subcategoryLabelMapping])
 
   useEffect(() => {
-    if (recommendedIds && recommendedIds.length > 0)
+    if (recommendedIds && recommendedIds.length > 5) {
       getOfferById(Number(recommendedIds[0])).then((response) => setOffer(response))
+      getOfferById(Number(recommendedIds[1])).then((response) => setSecondOffer(response))
+      getOfferById(Number(recommendedIds[2])).then((response) => setThirdOffer(response))
+      getOfferById(Number(recommendedIds[3])).then((response) => setFourthOffer(response))
+      getOfferById(Number(recommendedIds[4])).then((response) => setFifthOffer(response))
+    }
   }, [recommendedIds])
 
   const { mutate: addFavorite } = useAddFavorite({})
 
-  if (offer) {
+  if (offer && secondOffer && thirdOffer && fourthOffer && fifthOffer) {
     const OFFERS = [
       {
         uri: offer.image?.url,
@@ -60,12 +70,22 @@ export const ShakeChoice = () => {
         categoryLabel: 'Théâtre',
       },
       {
-        uri: 'https://storage.googleapis.com/passculture-metier-ehp-testing-assets-fine-grained/thumbs/mediations/test_image_2.png',
+        uri: secondOffer.image?.url,
         distance: '100km',
         categoryLabel: 'Théâtre',
       },
       {
-        uri: 'https://storage.googleapis.com/passculture-metier-ehp-testing-assets-fine-grained/thumbs/mediations/test_image_1_bis.jpg',
+        uri: thirdOffer.image?.url,
+        distance: '100km',
+        categoryLabel: 'Théâtre',
+      },
+      {
+        uri: fourthOffer.image?.url,
+        distance: '100km',
+        categoryLabel: 'Théâtre',
+      },
+      {
+        uri: fifthOffer.image?.url,
         distance: '100km',
         categoryLabel: 'Théâtre',
       },
@@ -73,7 +93,7 @@ export const ShakeChoice = () => {
 
     return (
       <React.Fragment>
-        <PageHeaderSecondary title="La sélection mystère" color="white" />
+        <PageHeaderSecondary title="La sélection mystère" />
         <Container>
           <Spacer.Column numberOfSpaces={10} />
           {!!offer.image && <Cards cards={OFFERS} />}

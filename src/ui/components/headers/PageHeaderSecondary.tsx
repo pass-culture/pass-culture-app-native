@@ -20,7 +20,6 @@ interface Props {
   shouldDisplayBackButton?: boolean
   shouldDisplayCloseButton?: boolean
   onClose?: () => void
-  color?: 'white' | 'primary'
 }
 
 const HEIGHT_CONTAINER = getSpacing(12)
@@ -33,7 +32,6 @@ export const PageHeaderSecondary: React.FC<Props> = ({
   shouldDisplayBackButton = true,
   shouldDisplayCloseButton,
   onClose,
-  color = 'primary',
 }) => {
   useWhiteStatusBar()
 
@@ -42,7 +40,7 @@ export const PageHeaderSecondary: React.FC<Props> = ({
   return (
     <Header>
       <View style={{ height: HEIGHT_CONTAINER + top }} />
-      <ColorContainer testID={testID} color={color}>
+      <ColorContainer testID={testID}>
         <Spacer.TopScreen />
         <Container>
           <Row>
@@ -64,12 +62,12 @@ export const PageHeaderSecondary: React.FC<Props> = ({
   )
 }
 
-const ColorContainer = styled.View(({ theme, color }) => ({
+const ColorContainer = styled.View(({ theme }) => ({
   zIndex: theme.zIndex.header,
   position: 'absolute',
   top: 0,
   width: '100%',
-  backgroundColor: color === 'primary' ? theme.colors.primary : theme.colors.white,
+  backgroundColor: theme.colors.primary,
 }))
 
 const Container = styled.View({

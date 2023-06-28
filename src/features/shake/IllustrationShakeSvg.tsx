@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { Path, Defs, Stop } from 'react-native-svg'
+import { Path, Defs, Stop, LinearGradient } from 'react-native-svg'
 import styled from 'styled-components/native'
 
 import { AccessibleSvg } from 'ui/svg/AccessibleSvg'
@@ -50,7 +50,7 @@ const IllustrationShakeSvg: React.FunctionComponent<AccessibleIcon> = ({
       strokeLinejoin="round"
     />
     <Defs>
-      <linearGradient
+      <LinearGradient
         id="paint0_linear_1838_64172"
         x1="195"
         y1="33"
@@ -59,8 +59,8 @@ const IllustrationShakeSvg: React.FunctionComponent<AccessibleIcon> = ({
         gradientUnits="userSpaceOnUse">
         <Stop stopColor="#EB0055" />
         <Stop offset="1" stopColor="#320096" />
-      </linearGradient>
-      <linearGradient
+      </LinearGradient>
+      <LinearGradient
         id="paint1_linear_1838_64172"
         x1="1.5"
         y1="11.1772"
@@ -69,8 +69,8 @@ const IllustrationShakeSvg: React.FunctionComponent<AccessibleIcon> = ({
         gradientUnits="userSpaceOnUse">
         <Stop stopColor="#EB0055" />
         <Stop offset="1" stopColor="#320096" />
-      </linearGradient>
-      <linearGradient
+      </LinearGradient>
+      <LinearGradient
         id="paint2_linear_1838_64172"
         x1="47.1055"
         y1="103.178"
@@ -79,8 +79,8 @@ const IllustrationShakeSvg: React.FunctionComponent<AccessibleIcon> = ({
         gradientUnits="userSpaceOnUse">
         <Stop stopColor="#EB0055" />
         <Stop offset="1" stopColor="#320096" />
-      </linearGradient>
-      <linearGradient
+      </LinearGradient>
+      <LinearGradient
         id="paint3_linear_1838_64172"
         x1="215.904"
         y1="35.2334"
@@ -89,8 +89,8 @@ const IllustrationShakeSvg: React.FunctionComponent<AccessibleIcon> = ({
         gradientUnits="userSpaceOnUse">
         <Stop stopColor="#EB0055" />
         <Stop offset="1" stopColor="#320096" />
-      </linearGradient>
-      <linearGradient
+      </LinearGradient>
+      <LinearGradient
         id="paint4_linear_1838_64172"
         x1="223.5"
         y1="100"
@@ -99,8 +99,8 @@ const IllustrationShakeSvg: React.FunctionComponent<AccessibleIcon> = ({
         gradientUnits="userSpaceOnUse">
         <Stop stopColor="#EB0055" />
         <Stop offset="1" stopColor="#320096" />
-      </linearGradient>
-      <linearGradient
+      </LinearGradient>
+      <LinearGradient
         id="paint5_linear_1838_64172"
         x1="149"
         y1="1"
@@ -109,7 +109,7 @@ const IllustrationShakeSvg: React.FunctionComponent<AccessibleIcon> = ({
         gradientUnits="userSpaceOnUse">
         <Stop stopColor="#EB0055" />
         <Stop offset="1" stopColor="#320096" />
-      </linearGradient>
+      </LinearGradient>
     </Defs>
   </AccessibleSvg>
 )
