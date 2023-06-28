@@ -22,6 +22,7 @@ import { Spacer, Typo, getSpacing } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 export const ShakeChoice = () => {
+  const [hasPickedFavorite, setHasPickedFavorite] = useState(false)
   const { replace, navigate } = useNavigation<UseNavigationType>()
   const { user } = useAuthContext()
   const [offers, setOffers] = useState<OfferResponse[]>()
@@ -37,7 +38,10 @@ export const ShakeChoice = () => {
 
   useEffect(() => {
     if (!recommendationEndpoint) return
-    const requestParameters = getRecommendationParameters(undefined, subcategoryLabelMapping)
+    const requestParameters = getRecommendationParameters(
+      { isRecoShuffled: true },
+      subcategoryLabelMapping
+    )
 
     getRecommendedIds(
       { ...requestParameters, endpointUrl: recommendationEndpoint },
@@ -75,14 +79,25 @@ export const ShakeChoice = () => {
       if (offers.length === 1) shouldRedirect = 1
       addFavorite({ offerId: offers[0].id })
       setOffers((offers) => (offers ? offers.slice(1) : []))
-      if (shouldRedirect) replace('ShakeEnd')
+      setHasPickedFavorite(true)
+
+      if (shouldRedirect) {
+        replace('ShakeEndWithFavorite')
+      }
     }
 
     const onPassPress = () => {
       let shouldRedirect = 0
       if (offers.length === 1) shouldRedirect = 1
       setOffers((offers) => (offers ? offers.slice(1) : []))
-      if (shouldRedirect) replace('ShakeEnd')
+
+      if (shouldRedirect) {
+        if (hasPickedFavorite) {
+          replace('ShakeEndWithFavorite')
+        } else {
+          replace('ShakeEnd')
+        }
+      }
     }
 
     return (

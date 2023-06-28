@@ -10,17 +10,17 @@
 ## Tasks
 
 - [ ] Faire la redirection vers la page de favoris depuis la page ShakeEnd @anouk
-- [ ] Faire l'autre version de ShakeEnd si pas d'ajout au favoris 
+- [ ] Faire l'autre version de ShakeEnd si pas d'ajout au favoris
+- [ ] Mettre l'animation de fin > @lucas
 
 - [ ] Terminer la page de ShakeChoice
 
-  - [ ] Ajouter la localisation @matthieu
-  - [ ] Changer le header de primary > white > @anouk
+  - [x] Ajouter la localisation @matthieu
+  - [x] Changer le header de primary > white
   - [x] Récupérer les 5 offres
-  - [ ] Faire la transition d'offre en offre 
-  - [ ] Après la 5e offres > Rediriger vers la page ShakeEnd @anouk
+  - [x] Faire la transition d'offre en offre
+  - [x] Après la 5e offres > Rediriger vers la page ShakeEnd
   - [ ] animer le bouton like @anouk
-
 
 - [ ] Tester sur Android
 
