@@ -6,7 +6,7 @@ import { ImageCaption } from 'ui/components/ImageCaption'
 import { ImageTile } from 'ui/components/ImageTile'
 import { getSpacing, MARGIN_DP } from 'ui/theme'
 
-const OFFER_HEIGHT_1 = getSpacing(70)
+const OFFER_HEIGHT_1 = getSpacing(80)
 const OFFER_WIDTH_1 = OFFER_HEIGHT_1 * 0.75
 
 const OFFER_HEIGHT_2 = OFFER_HEIGHT_1 * 0.9
