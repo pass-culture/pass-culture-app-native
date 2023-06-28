@@ -1,8 +1,25 @@
 import { useNavigation } from '@react-navigation/native'
 import { useEffect, useState, useCallback } from 'react'
+import ReactNativeHapticFeedback from 'react-native-haptic-feedback'
 import RNShake from 'react-native-shake'
+import Sound from 'react-native-sound'
 
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
+
+// Enable playback in silence mode
+Sound.setCategory('Playback')
+
+const marion = new Sound('marion3.mp3', Sound.MAIN_BUNDLE, (error) => {
+  if (error) {
+    console.error('failed to load the sound', error)
+    return
+  }
+})
+
+const options = {
+  enableVibrateFallback: true,
+  ignoreAndroidSystemSettings: false,
+}
 
 export const Shake = () => {
   const { navigate } = useNavigation<UseNavigationType>()
@@ -16,6 +33,9 @@ export const Shake = () => {
 
   useEffect(() => {
     const subscription = RNShake.addListener(() => {
+      ReactNativeHapticFeedback.trigger('impactLight', options)
+      marion.setVolume(1)
+      marion.play()
       navigateInternal()
     })
 
