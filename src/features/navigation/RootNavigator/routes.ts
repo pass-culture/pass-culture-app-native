@@ -21,6 +21,7 @@ import { EndedBookings } from 'features/bookings/pages/EndedBookings/EndedBookin
 import { BookingConfirmation } from 'features/bookOffer/pages/BookingConfirmation'
 import { withAsyncErrorBoundary } from 'features/errors/hocs/withAsyncErrorBoundary'
 import { BannedCountryError } from 'features/errors/pages/BannedCountryError'
+import { Favorites } from 'features/favorites/pages/Favorites'
 import { FavoritesSorts } from 'features/favorites/pages/FavoritesSorts'
 import { FirstTutorial } from 'features/firstTutorial/pages/FirstTutorial/FirstTutorial'
 import { ThematicHome } from 'features/home/pages/ThematicHome'
@@ -499,5 +500,11 @@ export const routes: Route[] = [
     component: ShakeEndWithFavorite,
     pathConfig: { path: 'secoue-la-culture-fin-favoris' },
     options: { title: 'La sélection mystère' },
+  },
+  {
+    name: 'Favorites',
+    component: Favorites,
+    pathConfig: { path: 'favorites' },
+    options: { title: 'Mes favories' },
   },
 ]

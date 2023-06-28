@@ -25,7 +25,7 @@ export const ShakeEndWithFavorite = () => {
         Shake ton téléphone demain pour découvrir une nouvelle sélection mystère&nbsp;!
       </StyledBody>
       <Spacer.Flex />
-      <ButtonPrimary wording="Voir mes favoris" onPress={() => navigate('FavoritesSorts')} />
+      <ButtonPrimary wording="Voir mes favoris" onPress={() => navigate('Favorites')} />
       <Spacer.Column numberOfSpaces={3} />
       <InternalTouchableLink
         as={ButtonTertiaryPrimary}

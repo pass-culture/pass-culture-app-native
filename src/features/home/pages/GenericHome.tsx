@@ -55,7 +55,7 @@ const FooterComponent = ({ hasShownAll }: { hasShownAll: boolean }) => {
     <React.Fragment>
       <Shake />
       <BannerContainer>
-        {Platform.OS !== 'web' ? (
+        {Platform.OS === 'web' ? (
           <BannerWithBackground leftIcon={OtherOffer} navigateTo={{ screen: 'ShakeStart' }}>
             <StyledButtonText>En manque d’inspi&nbsp;?</StyledButtonText>
             <StyledBody>Clique ici pour découvrir ta sélection mystère du jour&nbsp;!</StyledBody>
