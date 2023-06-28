@@ -1,86 +1,65 @@
-import { ModalLoader } from 'features/travelOptions/components/ModalLoader/ModalLoader'
-import TravelPaymentRadio from 'features/travelOptions/components/RadioButton/RadioButton'
 import React, { useCallback, useEffect, useState } from 'react'
 import { FlatList, Image, Text, TouchableWithoutFeedback, View } from 'react-native'
 import styled from 'styled-components/native'
 import { AccordionItem } from 'ui/components/AccordionItem'
 import { ButtonWithLinearGradient } from 'ui/components/buttons/buttonWithLinearGradient/ButtonWithLinearGradient'
 import { AppModal } from 'ui/components/modals/AppModal'
-import { Touchable } from 'ui/components/touchable/Touchable'
 import { Spacer, Typo, getSpacing } from 'ui/theme'
 import { ColorsEnum } from 'ui/theme/colors'
 import { api } from 'api/api'
 import { formatToFrenchDecimal } from 'libs/parsers'
+import useTravelOptions from 'features/travelOptions/api/useTravelOptions'
+import { ImageTile } from 'ui/components/ImageTile'
+import TravelPaymentRadio from 'features/travelOptions/components/RadioButton/RadioButton'
+import { ModalLoader } from 'features/travelOptions/components/ModalLoader/ModalLoader'
+import { SafeAreaView } from 'react-native-safe-area-context'
 
-interface TravelListModalProps {
-  isLoading: boolean
+interface TravelListModalInterface {
+  toggleModal: () => void
+  visible: boolean
 }
 
-const TravelListModal: React.FC<TravelListModalProps> = ({ isLoading }) => {
-  const [modalVisible, setModalVisible] = useState(true)
-  const [selectedItem, setSelectedItem] = useState<string | null>('')
+const TravelListModal = ({ toggleModal, visible }: TravelListModalInterface) => {
+  const [selectedItem, setSelectedItem] = useState('')
   const [accordianStatus, setAccordianStatus] = useState(false)
-  const [walletBalance, setWalletBalance] = useState(45)
+  const [walletBalance, setWalletBalance] = useState(null)
   const [paymentMode, setPaymentMode] = useState('')
-  // const user = await api.getnativev1me()
+  const [travelOptions, setTravelOptions] = useState([])
+
+  const { data: listArr, loading: isLoading, fetchData } = useTravelOptions()
+
   useEffect(() => {
     async function getUserDetails() {
+      fetchData('/travel-options', {
+        pickup_location: 'Paris',
+        drop_location: 'rennes',
+      })
       const { domainsCredit } = await api.getnativev1me()
       if (domainsCredit?.all.remaining) {
-        setWalletBalance(formatToFrenchDecimal(domainsCredit?.all.remaining).match(/\d+/)[0])
+        setWalletBalance(formatToFrenchDecimal(domainsCredit?.all?.remaining).match(/\d+/)[0])
       }
-
-      // setWalletBalance()
     }
+
     getUserDetails()
-    toggleItemSelection('1')
     handlePaymentSelection('Portefeuille...')
   }, [])
 
   const minBalance = 50
 
-  // Example data for the list
-
-  const data = [
-    {
-      id: '1',
-      image: require('../../asssets/taxi.png'),
-      title: 'Trajets en taxi',
-    },
-    {
-      id: '2',
-      image: require('../../asssets/metro.png'),
-      title: 'Horaires des trains',
-    },
-    {
-      id: '3',
-      image: require('../../asssets/bus.png'),
-      title: 'Horaires de bus',
-    },
-    {
-      id: '4',
-      image: require('../../asssets/car.png'),
-      title: 'Covoiturage',
-    },
-  ]
-
-  const acordianTitleStyle = {
-    fontSize: 13,
-    fontWeight: 'bold',
-    fontFamily: 'Montserrat',
-    color: ColorsEnum.BLACK,
-  }
-
-  const travelOptionWrapperStyle = (isSelected: boolean) => {
-    return {
-      flexDirection: 'row',
-      alignItems: 'center',
-      // marginBottom: 10,
-      borderWidth: isSelected ? 1.2 : 0,
-      borderRadius: 12,
-      padding: 6,
+  useEffect(() => {
+    if (listArr?.length) {
+      toggleItemSelection(listArr[0]['name'])
+      setTravelOptions(listArr)
     }
-  }
+  }, [listArr])
+
+  const travelOptionWrapperStyle = (isSelected: boolean) => ({
+    flexDirection: 'row',
+    alignItems: 'center',
+    borderWidth: isSelected ? 1.2 : 0,
+    borderRadius: 12,
+    padding: 6,
+  })
 
   const noteTextStyle = {
     color: ColorsEnum.GREY,
@@ -99,121 +78,121 @@ const TravelListModal: React.FC<TravelListModalProps> = ({ isLoading }) => {
     textAlign: 'center',
   }
 
-  const imageStyle = {
-    borderWidth: 1,
-    borderColor: ColorsEnum.GREY,
-    borderRadius: 10,
-    marginRight: 12,
-  }
-
   const renderItem = ({ item }: any) => {
-    const isSelected = selectedItem === (item.id || 1)
+    const isSelected = selectedItem === item.name
 
     return (
       <Touchable
         style={travelOptionWrapperStyle(isSelected)}
-        onPress={() => toggleItemSelection(item.id)}>
+        onPress={() => toggleItemSelection(item.name)}>
         <ImageWrapper>
-          <Image source={item.image} style={imageStyle} />
+          <ImageTile uri={item.icon} height={50} width={50} />
         </ImageWrapper>
-        <Typo.Title4>{item.title}</Typo.Title4>
+        <TitleText>{item.name}</TitleText>
       </Touchable>
     )
   }
 
-  const toggleItemSelection = (itemId: any) => {
-    if (selectedItem !== itemId) {
-      setSelectedItem(itemId)
+  const toggleItemSelection = (name: string) => {
+    if (selectedItem !== name) {
+      setSelectedItem(name)
     }
   }
 
-  const customHeader = () => {
-    return (
-      <HeaderTextWrapper>
-        <Typo.Body style={{ textAlign: 'center' }}>
-          {!isLoading ? 'Sélectionnez votre mode de transport' : 'Recherche'}
-        </Typo.Body>
-      </HeaderTextWrapper>
-    )
-  }
+  const customHeader = () => (
+    <HeaderTextWrapper>
+      <Typo.Body style={{ textAlign: 'center' }}>
+        {!isLoading ? 'Sélectionnez votre mode de transport' : 'Recherche'}
+      </Typo.Body>
+    </HeaderTextWrapper>
+  )
 
-  const accordianTitle = () => {
-    return (
-      <AccordianTextWrapper>
-        <Typo.Body style={acordianTitleStyle}>
-          {accordianStatus
-            ? 'Sélectionnez le mode de paiement'
-            : `Mode de paiement : Portefeuille PC € ${walletBalance}`}
-        </Typo.Body>
-      </AccordianTextWrapper>
-    )
-  }
+  const accordianTitle = () => (
+    <AccordianTextWrapper>
+      <AccordianText>
+        {accordianStatus
+          ? 'Sélectionnez le mode de paiement'
+          : `Mode de paiement : Portefeuille PC € ${walletBalance}`}
+      </AccordianText>
+    </AccordianTextWrapper>
+  )
 
   const handlePaymentSelection = useCallback((selectedPaymentMode: string) => {
     setPaymentMode(selectedPaymentMode)
   }, [])
 
   return (
-    <TouchableWithoutFeedback onPress={() => setModalVisible(false)}>
-      <View>
-        <AppModal
-          animationOutTiming={1}
-          visible={modalVisible}
-          customModalHeader={customHeader()}
-          onBackdropPress={() => setModalVisible(false)}
-          onRequestClose={() => setModalVisible(false)}>
-          <ModalContent>
-            {isLoading ? (
-              <LoaderWrapper>
-                <ModalLoader message="Veuillez patienter! Nous recherchons des options de voyage actuelles" />
-              </LoaderWrapper>
-            ) : (
-              <>
-                {walletBalance && walletBalance < minBalance && selectedItem && (
-                  <ErrorMessageWrapper>
-                    <Text style={errorMessageStyle}>
-                      {
-                        '! Solde du portefeuille insuffisant. Veuillez ajouter un solde minimum de 50 € pour continuer.'
-                      }
-                    </Text>
-                  </ErrorMessageWrapper>
-                )}
+    <SafeAreaView style={{ flex: 1 }}>
+      <TouchableWithoutFeedback onPress={() => toggleModal()}>
+        <View>
+          <AppModal
+            animationOutTiming={1}
+            visible={visible}
+            customModalHeader={customHeader()}
+            onBackButtonPress={() => toggleModal()}
+            onBackdropPress={() => toggleModal()}
+            onRequestClose={() => toggleModal()}>
+            <ModalContent>
+              {isLoading ? (
+                <LoaderWrapper>
+                  <ModalLoader message="Veuillez patienter! Nous recherchons des options de voyage actuelles" />
+                </LoaderWrapper>
+              ) : (
+                <>
+                  {walletBalance < minBalance && selectedItem && (
+                    <ErrorMessageWrapper>
+                      <Text style={errorMessageStyle}>
+                        {
+                          '! Solde du portefeuille insuffisant. Veuillez ajouter un solde minimum de 50 € pour continuer.'
+                        }
+                      </Text>
+                    </ErrorMessageWrapper>
+                  )}
 
-                <Spacer.Column numberOfSpaces={3} />
-                <FlatList data={data} renderItem={renderItem} keyExtractor={(item) => item.id} />
-                <Spacer.Column numberOfSpaces={3} />
-                {selectedItem && (
-                  <AccordianWrapper
-                    isError={walletBalance && walletBalance < minBalance && selectedItem}>
-                    <AccordionItem
-                      title={accordianTitle()}
-                      onPress={() => setAccordianStatus(!accordianStatus)}>
-                      <TravelPaymentRadio
-                        selectedItem={paymentMode}
-                        walletBalance={walletBalance}
-                        onPress={(paymentMode: string) => handlePaymentSelection(paymentMode)}
-                      />
-                      <NoteContainer>
-                        <Text style={noteTextStyle}>
-                          {'Le service est actuellement indisponible'}
-                        </Text>
-                      </NoteContainer>
-                    </AccordionItem>
-                  </AccordianWrapper>
-                )}
-                <Spacer.Column numberOfSpaces={3} />
-              </>
-            )}
-            <ButtonWithLinearGradient
-              wording={'Procéder'}
-              isDisabled={
-                !selectedItem || !paymentMode || !walletBalance || !(walletBalance > minBalance)
-              }
-            />
-          </ModalContent>
-        </AppModal>
-      </View>
-    </TouchableWithoutFeedback>
+                  <Spacer.Column numberOfSpaces={3} />
+                  {travelOptions?.length ? (
+                    <FlatList
+                      data={travelOptions}
+                      renderItem={renderItem}
+                      scrollEnabled={false}
+                      keyExtractor={(item, index) => index.toString()}
+                    />
+                  ) : (
+                    <></>
+                  )}
+                  <Spacer.Column numberOfSpaces={3} />
+                  {selectedItem && (
+                    <AccordianWrapper isError={walletBalance < minBalance && selectedItem}>
+                      <AccordionItem
+                        title={accordianTitle()}
+                        onPress={() => setAccordianStatus(!accordianStatus)}>
+                        <TravelPaymentRadio
+                          selectedItem={paymentMode}
+                          walletBalance={walletBalance}
+                          onPress={(paymentMode) => handlePaymentSelection(paymentMode)}
+                        />
+                        <NoteContainer>
+                          <Text style={noteTextStyle}>
+                            {'Le service est actuellement indisponible'}
+                          </Text>
+                        </NoteContainer>
+                      </AccordionItem>
+                    </AccordianWrapper>
+                  )}
+                  <Spacer.Column numberOfSpaces={3} />
+                </>
+              )}
+              <ButtonWithLinearGradient
+                wording={'Procéder'}
+                isDisabled={
+                  !selectedItem || !paymentMode || !walletBalance || !(walletBalance > minBalance)
+                }
+              />
+            </ModalContent>
+          </AppModal>
+        </View>
+      </TouchableWithoutFeedback>
+    </SafeAreaView>
   )
 }
 
@@ -225,9 +204,9 @@ const LoaderWrapper = styled.View({
   paddingHorizontal: getSpacing(10),
 })
 
-const ImageWrapper = styled.View({})
+const ImageWrapper = styled.View({ marginRight: 12 })
 
-const AccordianWrapper = styled.View(({ isError }: any) => ({
+const AccordianWrapper = styled.View(({ isError }) => ({
   borderWidth: isError ? 1 : 0.5,
   borderColor: isError ? ColorsEnum.ERROR : ColorsEnum.GREY_MEDIUM,
   borderRadius: 10,
@@ -238,7 +217,9 @@ const HeaderTextWrapper = styled.View({
 })
 
 const AccordianTextWrapper = styled.View({
-  width: '100%',
+  flexWrap: 'wrap',
+  backGroundCOlor: 'red',
+  maxWidth: '100%',
 })
 
 const ErrorMessageWrapper = styled.View({
@@ -252,6 +233,27 @@ const NoteContainer = styled.View({
   paddingBottom: 5,
   width: '90%',
   backgroundColor: ColorsEnum.GREY_LIGHT,
+  borderRadius: 12,
+})
+
+const TitleText = styled.Text({
+  fontSize: 16,
+  fontWeight: 'bold',
+  fontFamily: 'Montserrat',
+  color: ColorsEnum.BLACK,
+})
+
+const AccordianText = styled.Text({
+  fontSize: 13,
+  fontWeight: 'bold',
+  fontFamily: 'Montserrat',
+  color: ColorsEnum.BLACK,
+})
+
+const Touchable = styled.TouchableOpacity({
+  flexDirection: 'row',
+  alignItems: 'center',
+  padding: getSpacing(2),
   borderRadius: 12,
 })
 

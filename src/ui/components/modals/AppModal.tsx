@@ -33,6 +33,7 @@ type Props = {
   scrollEnabled?: boolean
   onBackdropPress?: () => void
   onModalHide?: () => void
+  onBackButtonPress: () => void
   customModalHeader?: React.JSX.Element
   fixedModalBottom?: React.JSX.Element
   isFullscreen?: boolean
@@ -79,6 +80,7 @@ export const AppModal: FunctionComponent<Props> = ({
   shouldAddSpacerBetweenHeaderAndContent = true,
   testID = 'modal',
   isUpToStatusBar,
+  onBackButtonPress,
 }) => {
   const iconProps = {
     rightIconAccessibilityLabel,
@@ -185,6 +187,12 @@ export const AppModal: FunctionComponent<Props> = ({
     setFullscreenScrollViewRef,
   ])
 
+  const handleBack = () => {
+    if (onBackButtonPress) {
+      onBackButtonPress()
+    }
+  }
+
   return (
     <StyledModal
       animationOutTiming={animationOutTiming}
@@ -200,6 +208,7 @@ export const AppModal: FunctionComponent<Props> = ({
       accessibilityLabelledBy={titleId}
       accessibilityRole={AccessibilityRole.DIALOG}
       accessibilityModal
+      onBackButtonPress={handleBack}
       onModalHide={onModalHide}>
       <ModalContainer
         height={maxHeight ? undefined : modalContainerHeight}

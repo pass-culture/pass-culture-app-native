@@ -70,7 +70,6 @@ export function BookingConfirmation() {
   const amountLeftText = `Il te reste encore ${formatToFrenchDecimal(
     amountLeft
   )} à dépenser sur le pass Culture.`
-  const TravelOptionButtonStyle = { width: '95%', alignSelf: 'center' }
 
   const pressTravelOptions = useCallback(() => {
     navigate('SelectTravelOptions')

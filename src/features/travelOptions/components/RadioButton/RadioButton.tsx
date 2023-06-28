@@ -55,7 +55,7 @@ const TravelPaymentRadio = ({ walletBalance, selectedItem, onPress }: any) => {
     <>
       <RadioButton
         label={radioLabel('Portefeuille du Pass Culture', walletBalance)}
-        selected={selectedOption === 'Portefeuille...'}
+        selected={selectedItem === 'Portefeuille...'}
         onPress={() => onSelectOPtion('Portefeuille...')}
       />
       <RadioButton
