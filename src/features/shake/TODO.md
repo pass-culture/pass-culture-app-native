@@ -9,10 +9,10 @@
 
 ## Tasks
 
-- [ ] Faire la redirection vers la page de favoris depuis la page ShakeEnd @anouk
+- [x] Faire la redirection vers la page de favoris depuis la page ShakeEnd @anouk
 - [x] Faire l'autre version de ShakeEnd si pas d'ajout au favoris
-- [ ] Mettre l'animation de fin > @lucas
-- [ ] Ajouter la nouvelle page pour ne pas pouvoir réssayer
+- [x] Mettre le gif
+- [x] Ajouter la nouvelle page pour ne pas pouvoir réssayer
 
 - [ ] Terminer la page de ShakeChoice
 
@@ -27,10 +27,9 @@
 
 - [x] Faire la version web avec un bouton sur la home - 1
 
-  - [ ] Changer le wording pour l'adapter aux web
+  - [x] Changer le wording pour l'adapter aux web
 
-- [ ] Stroke
-- [ ] Redirection vers les favoris
+- [x] Redirection vers les favoris
 - [ ] Faire la version staging custom
 - [ ] Ajouter le rire de Marion au shake
 

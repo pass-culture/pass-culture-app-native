@@ -1,17 +1,22 @@
 import React from 'react'
+import { PixelRatio } from 'react-native'
 import styled from 'styled-components/native'
 
 import { navigateToHomeConfig } from 'features/navigation/helpers'
-import { IllustrationShake } from 'features/shake/IllustrationShakeSvg'
+import { FastImage } from 'libs/resizing-image-on-demand/FastImage'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { getSpacing, Typo, Spacer } from 'ui/theme'
+import { LENGTH_XL, MARGIN_DP, RATIO_EXCLU } from 'ui/theme'
 
 export const ShakeEnd = () => {
   return (
     <Container>
       <Spacer.Flex />
-      <IllustrationShake />
+      <Image
+        url="https://storage.googleapis.com/passculture-metier-ehp-testing-assets-fine-grained/thumbs/mediations/1637773583.jpg"
+        accessibilityLabel="Snoop dog gif"
+      />
       <Spacer.Column numberOfSpaces={10} />
       <StyledTitle3>C’est tout pour aujourd’hui&nbsp;!</StyledTitle3>
       <Spacer.Column numberOfSpaces={5} />
@@ -43,3 +48,10 @@ const StyledTitle3 = styled(Typo.Title3)({
 const StyledBody = styled(Typo.Body)({
   textAlign: 'center',
 })
+
+const Image = styled(FastImage)(({ theme }) => ({
+  backgroundColor: theme.colors.primary,
+  borderRadius: theme.borderRadius.radius,
+  maxHeight: LENGTH_XL,
+  height: PixelRatio.roundToNearestPixel((theme.appContentWidth - 2 * MARGIN_DP) * RATIO_EXCLU),
+}))
