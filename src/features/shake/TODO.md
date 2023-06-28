@@ -21,20 +21,19 @@
   - [x] Récupérer les 5 offres
   - [x] Faire la transition d'offre en offre
   - [x] Après la 5e offres > Rediriger vers la page ShakeEnd
-  - [ ] animer le bouton like @anouk
+  - [x] animer le bouton like @anouk
 
 - [ ] Tester sur Android
 
-- [ ] Faire la version web avec un bouton sur la home
+- [x] Faire la version web avec un bouton sur la home - 1
 
   - [ ] Changer le wording pour l'adapter aux web
 
+- [ ] Stroke
+- [ ] Redirection vers les favoris
 - [ ] Faire la version staging custom
-
 - [ ] Ajouter le rire de Marion au shake
 
 ---
 
 ## Tasks for another US
-
-- [ ]

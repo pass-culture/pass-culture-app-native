@@ -23,9 +23,13 @@ import useFunctionOnce from 'libs/hooks/useFunctionOnce'
 import { useNetInfoContext } from 'libs/network/NetInfoWrapper'
 import { OfflinePage } from 'libs/network/OfflinePage'
 import { BatchEvent, BatchUser } from 'libs/react-native-batch'
+import { InfoBanner } from 'ui/components/InfoBanner'
+import { BannerWithBackground } from 'ui/components/ModuleBanner/BannerWithBackground'
 import { ScrollToTopButton } from 'ui/components/ScrollToTopButton'
 import { Spinner } from 'ui/components/Spinner'
-import { getSpacing, Spacer } from 'ui/theme'
+import { OtherOffer } from 'ui/svg/icons/OtherOffer'
+import { getSpacing, Spacer, Typo } from 'ui/theme'
+import { LINE_BREAK } from 'ui/theme/constants'
 
 type GenericHomeProps = {
   Header: React.JSX.Element
@@ -49,6 +53,19 @@ const FooterComponent = ({ hasShownAll }: { hasShownAll: boolean }) => {
   return (
     <React.Fragment>
       <Shake />
+      <BannerContainer>
+        {Platform.OS === 'web' ? (
+          <BannerWithBackground leftIcon={OtherOffer} navigateTo={{ screen: 'ShakeStart' }}>
+            <StyledButtonText>En manque d’inspi&nbsp;?</StyledButtonText>
+            <StyledBody>Clique ici pour découvrir ta sélection mystère du jour&nbsp;!</StyledBody>
+          </BannerWithBackground>
+        ) : (
+          <InfoBanner
+            icon={OtherOffer}
+            message={`En manque d’inspi\u00a0?${LINE_BREAK}Secoue ton téléphone et découvre ta sélection mystère du jour\u00a0!`}
+          />
+        )}
+      </BannerContainer>
       {/* As long as all modules are not shown, we keep the spinner */}
       {!hasShownAll && (
         <FooterContainer>
@@ -227,4 +244,16 @@ const ScrollToTopContainer = styled.View(({ theme }) => ({
   right: getSpacing(7),
   bottom: theme.tabBar.height + getSpacing(6),
   zIndex: theme.zIndex.floatingButton,
+}))
+
+const BannerContainer = styled.View({
+  margin: getSpacing(6),
+})
+
+const StyledButtonText = styled(Typo.ButtonText)(({ theme }) => ({
+  color: theme.colors.white,
+}))
+
+const StyledBody = styled(Typo.Body)(({ theme }) => ({
+  color: theme.colors.white,
 }))
