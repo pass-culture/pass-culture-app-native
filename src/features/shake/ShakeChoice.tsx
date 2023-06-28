@@ -41,6 +41,7 @@ export const ShakeChoice = () => {
   const subcategoryLabelMapping = useSubcategoryLabelMapping()
 
   const scaleFavoriteIconAnimatedValueRef = useRef(new Animated.Value(1))
+  const scaleCloseIconAnimatedValueRef = useRef(new Animated.Value(1))
   const { headerTransition } = useOpacityTransition()
 
   useEffect(() => {
@@ -97,6 +98,7 @@ export const ShakeChoice = () => {
     const onPassPress = () => {
       let shouldRedirect = 0
       if (offers.length === 1) shouldRedirect = 1
+      animateIcon(scaleCloseIconAnimatedValueRef.current)
       setOffers((offers) => (offers ? offers.slice(1) : []))
 
       if (shouldRedirect) {
@@ -130,6 +132,14 @@ export const ShakeChoice = () => {
               iconName="close"
               onPress={onPassPress}
               accessibilityLabel="Refuser l’offre"
+              animationState={{
+                iconBackgroundColor: headerTransition.interpolate(
+                  iconBackgroundInterpolation(theme)
+                ),
+                iconBorderColor: headerTransition.interpolate(iconBorderInterpolation(theme)),
+                transition: headerTransition,
+              }}
+              scaleAnimatedValue={scaleCloseIconAnimatedValueRef.current}
             />
             <Spacer.Row numberOfSpaces={5} />
             <ButtonTertiaryContainer>

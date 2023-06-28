@@ -8,7 +8,6 @@ import { styledButton } from 'ui/components/buttons/styledButton'
 import { Touchable } from 'ui/components/touchable/Touchable'
 import { Close } from 'ui/svg/icons/Close'
 import { Favorite } from 'ui/svg/icons/Favorite'
-import { FavoriteFilled } from 'ui/svg/icons/FavoriteFilled'
 import { IconInterface } from 'ui/svg/icons/types'
 // eslint-disable-next-line no-restricted-imports
 import { getSpacing } from 'ui/theme'
@@ -17,7 +16,7 @@ import { ColorsEnum } from 'ui/theme/colors'
 import { customFocusOutline } from 'ui/theme/customFocusOutline/customFocusOutline'
 
 interface Props {
-  iconName: 'favorite' | 'close' | 'favorite-filled'
+  iconName: 'favorite' | 'close'
   initialColor?: ColorsEnum
   finalColor?: ColorsEnum
   onPress: () => void
@@ -35,7 +34,6 @@ interface Props {
 
 const getIcon = (iconName: Props['iconName']): React.FC<IconInterface> => {
   if (iconName === 'close') return Close
-  if (iconName === 'favorite-filled') return FavoriteFilled
   return Favorite
 }
 
@@ -72,7 +70,7 @@ export const RoundedButtonLikePass = (props: Props) => {
             testID={`animated-icon-${props.iconName}`}
             transition={props.animationState.transition}
             finalColor={props.finalColor || colors.black}
-            size={icons.sizes.standard}
+            size={props.iconName === 'close' ? 26 : icons.sizes.standard}
           />
         </IconContainer>
       ) : (
