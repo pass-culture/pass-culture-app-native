@@ -22,6 +22,12 @@ const iconBorderInterpolation = (theme: DefaultTheme) => ({
   easing: Easing.bezier(0, 1, 0, 1),
 })
 
+const iconWhitetoBlackInterpolation = (theme: DefaultTheme) => ({
+  inputRange: [0, 1],
+  outputRange: [theme.colors.white, theme.colors.black],
+  easing: Easing.bezier(0, 1, 0, 1),
+})
+
 const headerBackgroundInterpolation = () => ({
   inputRange: [0, 1],
   outputRange: ['rgba(255, 255, 255, 0)', 'rgba(255, 255, 255, 0.8)'],
@@ -53,4 +59,5 @@ export const getAnimationState = (
   blurContainerNative: {
     opacity: headerTransition,
   },
+  whiteToBlack: headerTransition.interpolate(iconWhitetoBlackInterpolation(theme)),
 })

@@ -1,6 +1,7 @@
 import { useNavigation } from '@react-navigation/native'
 import React, { FunctionComponent, useMemo } from 'react'
-import { Platform } from 'react-native'
+// eslint-disable-next-line no-restricted-imports
+import { Platform, ImageBackground, Text } from 'react-native'
 import styled from 'styled-components/native'
 
 import { BannerName } from 'api/gen'
@@ -115,6 +116,12 @@ export const HomeHeader: FunctionComponent = function () {
       <PageContent>
         <Typo.Body>{getSubtitle()}</Typo.Body>
         <Spacer.Column numberOfSpaces={6} />
+        <MoodSurveyModule onPress={() => navigation.navigate('MoodSurvey')}>
+          <MoodSurveyBackgound
+            source={{ uri: 'https://imagizer.imageshack.com/img922/5443/5iHj59.png' }}
+            resizeMode="cover" />
+        </MoodSurveyModule>
+        <Spacer.Column numberOfSpaces={6} />
         {Banner}
       </PageContent>
     </React.Fragment>
@@ -135,4 +142,15 @@ const CheatCodeButtonContainer = styled(TouchableOpacity)(({ theme }) => ({
 
 const BannerContainer = styled.View({
   marginBottom: getSpacing(8),
+})
+
+const MoodSurveyModule = styled(TouchableOpacity)(({ theme }) => ({
+  height: 285,
+  borderRadius: getSpacing(2),
+  overflow: 'hidden',
+}))
+
+const MoodSurveyBackgound = styled(ImageBackground)({
+  flex: 1,
+  justifyContent: 'flex-end',
 })

@@ -58,6 +58,9 @@ export function Navigation(): React.JSX.Element {
       <ScrollView>
         <StyledContainer>
           <Row half>
+            <ButtonPrimary wording="Pass ton Mood" onPress={() => navigate('MoodSurvey')} />
+          </Row>
+          <Row half>
             <CheatCodesButton />
           </Row>
           <Row half>

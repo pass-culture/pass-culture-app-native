@@ -180,6 +180,13 @@ export type RootStackParamList = {
   Navigation: undefined
   NavigationAccountSuspension: undefined
   NavigationNotScreensPages: undefined
+  MoodQuestions: undefined
+  MoodResults: {
+    emoji: string
+    terms: string
+    moodboard: string
+  }
+  MoodSurvey: undefined
   NavigationProfile: undefined
   NotificationSettings: undefined
   Offer: {

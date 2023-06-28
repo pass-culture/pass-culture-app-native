@@ -40,6 +40,9 @@ import { HighlightThematicHomeHeaderCheatcode } from 'features/internal/cheatcod
 import { ThematicHeaders } from 'features/internal/cheatcodes/pages/ThematicHomeHeaderCheatcode/ThematicHeaders'
 import { DeeplinksGenerator } from 'features/internal/marketingAndCommunication/pages/DeeplinksGenerator'
 import { UTMParameters } from 'features/internal/marketingAndCommunication/pages/UTMParameters'
+import { MoodQuestions } from 'features/moodSurvey/pages/MoodQuestions'
+import { MoodResults } from 'features/moodSurvey/pages/MoodResults'
+import { MoodSurvey } from 'features/moodSurvey/pages/MoodSurvey'
 import { PageNotFound } from 'features/navigation/pages/PageNotFound'
 import { accessibilityRoutes } from 'features/navigation/RootNavigator/accessibilityRoutes'
 import { culturalSurveyRoutes } from 'features/navigation/RootNavigator/culturalSurveyRoutes'
@@ -397,6 +400,21 @@ export const routes: Route[] = [
     component: FirstTutorial,
     path: 'introduction-tutoriel',
     options: { title: 'Étape 1 sur 4 | Tutoriel "Comment ça marche"' },
+  },
+  {
+    name: 'MoodQuestions',
+    component: MoodQuestions,
+    path: 'pass-ton-mood/questions',
+  },
+  {
+    name: 'MoodSurvey',
+    component: MoodSurvey,
+    path: 'pass-ton-mood',
+  },
+  {
+    name: 'MoodResults',
+    component: MoodResults,
+    path: 'pass-ton-mood/results',
   },
   {
     name: 'Venue',
