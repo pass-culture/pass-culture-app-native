@@ -21,7 +21,7 @@ import { useSubcategoryLabelMapping } from 'libs/subcategories/mappings'
 import { theme } from 'theme'
 import { useOpacityTransition } from 'ui/animations/helpers/useOpacityTransition'
 import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
-import { BackButton } from 'ui/components/headers/BackButton'
+import { PageHeaderSecondary } from 'ui/components/headers/PageHeaderSecondary'
 import { Spacer, Typo, getSpacing } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
@@ -112,18 +112,12 @@ export const ShakeChoice = () => {
 
     return (
       <React.Fragment>
-        <Spacer.TopScreen />
+        <PageHeaderSecondary title="La sélection mystère" isWhite />
         <Container>
-          <BackButtonContainer testID="back-button-container">
-            <BackButton />
-          </BackButtonContainer>
-          <Spacer.Column numberOfSpaces={5} />
-          <Title>{'La sélection mystère'}</Title>
-          <Spacer.Column numberOfSpaces={10} />
           <Cards cards={offers} />
           <Spacer.Column numberOfSpaces={6} />
           <StyledTitle3>{offers[0].name}</StyledTitle3>
-          <Spacer.Column numberOfSpaces={4} />
+          <Spacer.Column numberOfSpaces={2} />
           <LocationCaption venue={offers[0].venue} isDigital={offers[0].isDigital} />
           <Spacer.Column numberOfSpaces={10} />
           <Spacer.Flex />
@@ -204,14 +198,6 @@ const Container = styled.View({
   flex: 1,
   padding: getSpacing(6),
   height: '100%',
-})
-
-const BackButtonContainer = styled.View({
-  flexDirection: 'row',
-})
-
-const Title = styled(Typo.Title3)({
-  textAlign: 'center',
 })
 
 const ButtonContainer = styled.View({
