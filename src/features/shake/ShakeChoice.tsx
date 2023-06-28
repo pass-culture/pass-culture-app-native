@@ -10,6 +10,7 @@ import { getRecommendationEndpoint } from 'features/home/api/helpers/getRecommen
 import { getRecommendationParameters } from 'features/home/api/useHomeRecommendedHits'
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { getOfferById } from 'features/offer/api/useOffer'
+import { LocationCaption } from 'features/offer/components/LocationCaption'
 import { Cards } from 'features/shake/Cards'
 import { RoundedButtonLikePass } from 'features/shake/RoundedButtonLikePass'
 import { useGeolocation } from 'libs/geolocation'
@@ -23,11 +24,7 @@ import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 export const ShakeChoice = () => {
   const { navigate } = useNavigation<UseNavigationType>()
   const { user } = useAuthContext()
-  const [offer, setOffer] = useState<OfferResponse>()
-  const [secondOffer, setSecondOffer] = useState<OfferResponse>()
-  const [thirdOffer, setThirdOffer] = useState<OfferResponse>()
-  const [fourthOffer, setFourthOffer] = useState<OfferResponse>()
-  const [fifthOffer, setFifthOffer] = useState<OfferResponse>()
+  const [offers, setOffers] = useState<OfferResponse[]>()
   const { userPosition: position } = useGeolocation()
   const recommendationEndpoint = getRecommendationEndpoint({
     userId: user?.id,
@@ -52,44 +49,35 @@ export const ShakeChoice = () => {
 
   useEffect(() => {
     if (recommendedIds && recommendedIds.length > 5) {
-      getOfferById(Number(recommendedIds[0])).then((response) => setOffer(response))
-      getOfferById(Number(recommendedIds[1])).then((response) => setSecondOffer(response))
-      getOfferById(Number(recommendedIds[2])).then((response) => setThirdOffer(response))
-      getOfferById(Number(recommendedIds[3])).then((response) => setFourthOffer(response))
-      getOfferById(Number(recommendedIds[4])).then((response) => setFifthOffer(response))
+      getOfferById(Number(recommendedIds[0])).then((response) =>
+        setOffers((offers) => (offers ? [...offers, response] : [response]))
+      )
+      getOfferById(Number(recommendedIds[1])).then((response) =>
+        setOffers((offers) => (offers ? [...offers, response] : [response]))
+      )
+      getOfferById(Number(recommendedIds[2])).then((response) =>
+        setOffers((offers) => (offers ? [...offers, response] : [response]))
+      )
+      getOfferById(Number(recommendedIds[3])).then((response) =>
+        setOffers((offers) => (offers ? [...offers, response] : [response]))
+      )
+      getOfferById(Number(recommendedIds[4])).then((response) =>
+        setOffers((offers) => (offers ? [...offers, response] : [response]))
+      )
     }
   }, [recommendedIds])
 
   const { mutate: addFavorite } = useAddFavorite({})
 
-  if (offer && secondOffer && thirdOffer && fourthOffer && fifthOffer) {
-    const OFFERS = [
-      {
-        uri: offer.image?.url,
-        distance: '100km',
-        categoryLabel: 'Théâtre',
-      },
-      {
-        uri: secondOffer.image?.url,
-        distance: '100km',
-        categoryLabel: 'Théâtre',
-      },
-      {
-        uri: thirdOffer.image?.url,
-        distance: '100km',
-        categoryLabel: 'Théâtre',
-      },
-      {
-        uri: fourthOffer.image?.url,
-        distance: '100km',
-        categoryLabel: 'Théâtre',
-      },
-      {
-        uri: fifthOffer.image?.url,
-        distance: '100km',
-        categoryLabel: 'Théâtre',
-      },
-    ]
+  if (offers) {
+    const onLikePress = () => {
+      addFavorite({ offerId: offers[0].id })
+      setOffers((offers) => (offers ? offers.slice(1) : []))
+    }
+
+    const onPassPress = () => {
+      setOffers((offers) => (offers ? offers.slice(1) : []))
+    }
 
     return (
       <React.Fragment>
@@ -101,14 +89,17 @@ export const ShakeChoice = () => {
           <Spacer.Column numberOfSpaces={5} />
           <Title>{'La sélection mystère'}</Title>
           <Spacer.Column numberOfSpaces={10} />
-          {!!offer.image && <Cards cards={OFFERS} />}
+          <Cards cards={offers} />
+          <Spacer.Column numberOfSpaces={6} />
+          <StyledTitle3>{offers[0]?.name}</StyledTitle3>
+          <Spacer.Column numberOfSpaces={4} />
+          <LocationCaption venue={offers[0].venue} isDigital={offers[0]?.isDigital} />
           <Spacer.Column numberOfSpaces={10} />
-          <StyledTitle3>{offer?.name}</StyledTitle3>
           <Spacer.Flex />
           <ButtonContainer>
             <RoundedButtonLikePass
               iconName="close"
-              onPress={() => navigate('ShakeEnd')}
+              onPress={onPassPress}
               accessibilityLabel="Refuser l’offre"
             />
             <Spacer.Row numberOfSpaces={5} />
@@ -116,14 +107,14 @@ export const ShakeChoice = () => {
               <ButtonTertiaryBlack
                 inline
                 wording="Voir l’offre"
-                onPress={() => navigate('Offer', { id: offer.id, from: 'ShakeChoice' })}
+                onPress={() => navigate('Offer', { id: offers[0].id, from: 'ShakeChoice' })}
                 buttonHeight="extraSmall"
               />
             </ButtonTertiaryContainer>
             <Spacer.Row numberOfSpaces={5} />
             <RoundedButtonLikePass
               iconName="favorite"
-              onPress={() => addFavorite({ offerId: offer.id })}
+              onPress={onLikePress}
               accessibilityLabel="Mettre en favoris"
             />
           </ButtonContainer>

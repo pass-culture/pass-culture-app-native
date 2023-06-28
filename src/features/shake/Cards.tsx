@@ -2,6 +2,10 @@ import React, { FunctionComponent } from 'react'
 import { PixelRatio } from 'react-native'
 import styled from 'styled-components/native'
 
+import { OfferResponse } from 'api/gen'
+import { useGeolocation } from 'libs/geolocation'
+import { formatDistance } from 'libs/parsers'
+import { useCategoryHomeLabelMapping } from 'libs/subcategories'
 import { ImageCaption } from 'ui/components/ImageCaption'
 import { ImageTile } from 'ui/components/ImageTile'
 import { getSpacing, MARGIN_DP } from 'ui/theme'
@@ -24,16 +28,12 @@ const OFFER_POSITION_Y_2 = 27.5
 const OFFER_POSITION_Y_3 = OFFER_POSITION_Y_2 * 2
 
 type Props = {
-  cards: Card[]
-}
-
-type Card = {
-  uri?: string
-  distance?: string
-  categoryLabel: string | null
+  cards: OfferResponse[]
 }
 
 export const Cards: FunctionComponent<Props> = ({ cards }) => {
+  const labelMapping = useCategoryHomeLabelMapping()
+  const { userPosition: position } = useGeolocation()
   return (
     <Container>
       {!!cards[2] && (
@@ -42,13 +42,19 @@ export const Cards: FunctionComponent<Props> = ({ cards }) => {
             onlyTopBorderRadius
             width={OFFER_WIDTH_3}
             height={OFFER_HEIGHT_3}
-            uri={cards[2].uri}
+            uri={cards[2].image?.url}
           />
           <ImageCaption
             height={IMAGE_CAPTION_HEIGHT}
             width={OFFER_WIDTH_3}
-            categoryLabel={cards[2].categoryLabel}
-            distance={cards[2].distance}
+            categoryLabel={labelMapping[cards[2].subcategoryId]}
+            distance={formatDistance(
+              {
+                lat: cards[2].venue.coordinates.latitude,
+                lng: cards[2].venue.coordinates.longitude,
+              },
+              position
+            )}
           />
         </Card>
       )}
@@ -58,13 +64,19 @@ export const Cards: FunctionComponent<Props> = ({ cards }) => {
             onlyTopBorderRadius
             width={OFFER_WIDTH_2}
             height={OFFER_HEIGHT_2}
-            uri={cards[1].uri}
+            uri={cards[1].image?.url}
           />
           <ImageCaption
             height={IMAGE_CAPTION_HEIGHT}
             width={OFFER_WIDTH_2}
-            categoryLabel={cards[1].categoryLabel}
-            distance={cards[1].distance}
+            categoryLabel={labelMapping[cards[1].subcategoryId]}
+            distance={formatDistance(
+              {
+                lat: cards[1].venue.coordinates.latitude,
+                lng: cards[1].venue.coordinates.longitude,
+              },
+              position
+            )}
           />
         </Card>
       )}
@@ -74,13 +86,19 @@ export const Cards: FunctionComponent<Props> = ({ cards }) => {
             onlyTopBorderRadius
             width={OFFER_WIDTH_1}
             height={OFFER_HEIGHT_1}
-            uri={cards[0].uri}
+            uri={cards[0].image?.url}
           />
           <ImageCaption
             height={IMAGE_CAPTION_HEIGHT}
             width={OFFER_WIDTH_1}
-            categoryLabel={cards[0].categoryLabel}
-            distance={cards[0].distance}
+            categoryLabel={labelMapping[cards[0].subcategoryId]}
+            distance={formatDistance(
+              {
+                lat: cards[0].venue.coordinates.latitude,
+                lng: cards[0].venue.coordinates.longitude,
+              },
+              position
+            )}
           />
         </Card>
       )}
