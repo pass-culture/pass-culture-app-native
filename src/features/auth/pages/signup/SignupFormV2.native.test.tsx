@@ -1,15 +1,27 @@
 import { rest } from 'msw'
 import React from 'react'
+import DeviceInfo from 'react-native-device-info'
 
 import { navigate } from '__mocks__/@react-navigation/native'
+import { api } from 'api/api'
+import { AccountRequest } from 'api/gen'
 import { ELIGIBLE_AGE_DATE } from 'features/auth/fixtures/fixtures'
 import { SignupForm } from 'features/auth/pages/signup/SignupFormV2'
 import { mockGoBack } from 'features/navigation/__mocks__/useGoBack'
 import { navigateToHomeConfig } from 'features/navigation/helpers'
 import { analytics } from 'libs/analytics'
 import { env } from 'libs/environment'
+import { EmptyResponse } from 'libs/fetch'
+import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
+import { eventMonitoring } from 'libs/monitoring'
 import { server } from 'tests/server'
 import { act, fireEvent, render, screen } from 'tests/utils'
+
+const getModelSpy = jest.spyOn(DeviceInfo, 'getModel')
+const getSystemNameSpy = jest.spyOn(DeviceInfo, 'getSystemName')
+
+const useFeatureFlagSpy = jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockReturnValue(false)
+const apiSignUpSpy = jest.spyOn(api, 'postnativev1account')
 
 describe('Signup Form', () => {
   it('should render correctly', async () => {
@@ -96,6 +108,21 @@ describe('Signup Form', () => {
 
       expect(analytics.logQuitSignup).toHaveBeenNthCalledWith(1, 'SetPasswordV2')
     })
+
+    it('should call logCancelSignup with Email when quitting after signup modal', async () => {
+      render(<SignupForm />)
+
+      const emailInput = screen.getByPlaceholderText('tonadresse@email.com')
+      fireEvent.changeText(emailInput, 'email@gmail.com')
+      fireEvent.press(screen.getByText('Continuer'))
+
+      await screen.findAllByText('Mot de passe')
+
+      fireEvent.press(screen.getByText('Annuler'))
+      fireEvent.press(screen.getByText('Abandonner l’inscription'))
+
+      expect(analytics.logCancelSignup).toHaveBeenCalledWith('Password')
+    })
   })
 
   describe('Go back button', () => {
@@ -168,33 +195,142 @@ describe('Signup Form', () => {
 
     await act(async () => fireEvent.press(screen.getByText('Accepter et s’inscrire')))
 
-    expect(screen.queryByLabelText('Revenir en arrière')).toBeNull()
+    expect(screen.getByText('Confirme ton adresse e-mail')).toBeTruthy()
   })
 
-  it('should go back to home when pressing close button on email confirmation sent', async () => {
-    simulateSignupSuccess()
-    render(<SignupForm />)
+  describe('API', () => {
+    it('should create account when clicking on AcceptCgu button with trustedDevice when feature flag is active', async () => {
+      simulateSignupSuccess()
+      useFeatureFlagSpy.mockReturnValueOnce(true) // mock for email step render
+      useFeatureFlagSpy.mockReturnValueOnce(true) // mock for email input rerender
+      useFeatureFlagSpy.mockReturnValueOnce(true) // mock for device info rerender
+      useFeatureFlagSpy.mockReturnValueOnce(true) // mock for password step render
+      useFeatureFlagSpy.mockReturnValueOnce(true) // mock for password input rerender
+      useFeatureFlagSpy.mockReturnValueOnce(true) // mock for set birthday step render
+      useFeatureFlagSpy.mockReturnValueOnce(true) // mock for set birthday input rerender
+      useFeatureFlagSpy.mockReturnValueOnce(true) // mock for accept cgu step render
 
-    const emailInput = screen.getByPlaceholderText('tonadresse@email.com')
-    fireEvent.changeText(emailInput, 'email@gmail.com')
-    await act(() => fireEvent.press(screen.getByText('Continuer')))
+      getModelSpy.mockReturnValueOnce('iPhone 13')
+      getSystemNameSpy.mockReturnValueOnce('iOS')
 
-    const passwordInput = screen.getByPlaceholderText('Ton mot de passe')
-    await act(async () => fireEvent.changeText(passwordInput, 'user@AZERTY123'))
-    await act(async () => fireEvent.press(screen.getByText('Continuer')))
+      render(<SignupForm />)
 
-    const datePicker = screen.getByTestId('date-picker-spinner-native')
-    await act(async () =>
-      fireEvent(datePicker, 'onChange', { nativeEvent: { timestamp: ELIGIBLE_AGE_DATE } })
-    )
-    await act(async () => fireEvent.press(screen.getByText('Continuer')))
+      const emailInput = screen.getByPlaceholderText('tonadresse@email.com')
+      fireEvent.changeText(emailInput, 'email@gmail.com')
+      await act(() => fireEvent.press(screen.getByLabelText('Continuer vers l’étape Mot de passe')))
 
-    await act(async () => fireEvent.press(screen.getByText('Accepter et s’inscrire')))
+      const passwordInput = screen.getByPlaceholderText('Ton mot de passe')
+      await act(async () => fireEvent.changeText(passwordInput, 'user@AZERTY123'))
+      await act(async () =>
+        fireEvent.press(screen.getByLabelText('Continuer vers l’étape Date de naissance'))
+      )
 
-    const closeButton = screen.getByText('Fermer')
-    fireEvent.press(closeButton)
+      const datePicker = screen.getByTestId('date-picker-spinner-native')
+      await act(async () =>
+        fireEvent(datePicker, 'onChange', { nativeEvent: { timestamp: ELIGIBLE_AGE_DATE } })
+      )
+      await act(async () =>
+        fireEvent.press(screen.getByLabelText('Continuer vers l’étape CGU & Données'))
+      )
 
-    expect(navigate).toHaveBeenCalledWith(navigateToHomeConfig.screen, navigateToHomeConfig.params)
+      await act(async () => fireEvent.press(screen.getByText('Accepter et s’inscrire')))
+
+      expect(apiSignUpSpy).toHaveBeenCalledWith(
+        {
+          email: 'email@gmail.com',
+          marketingEmailSubscription: false,
+          password: 'user@AZERTY123',
+          birthdate: '2003-12-01',
+          postalCode: '',
+          token: 'dummyToken',
+          appsFlyerPlatform: 'ios',
+          appsFlyerUserId: 'uniqueCustomerId',
+          trustedDevice: {
+            deviceId: 'ad7b7b5a169641e27cadbdb35adad9c4ca23099a',
+            os: 'iOS',
+            source: 'iPhone 13',
+          },
+        },
+        { credentials: 'omit' }
+      )
+    })
+
+    it('should create account when clicking on AcceptCgu button without trustedDevice when feature flag is disabled', async () => {
+      simulateSignupSuccess()
+      render(<SignupForm />)
+
+      const emailInput = screen.getByPlaceholderText('tonadresse@email.com')
+      fireEvent.changeText(emailInput, 'email@gmail.com')
+      await act(() => fireEvent.press(screen.getByLabelText('Continuer vers l’étape Mot de passe')))
+
+      const passwordInput = screen.getByPlaceholderText('Ton mot de passe')
+      await act(async () => fireEvent.changeText(passwordInput, 'user@AZERTY123'))
+      await act(async () =>
+        fireEvent.press(screen.getByLabelText('Continuer vers l’étape Date de naissance'))
+      )
+
+      const datePicker = screen.getByTestId('date-picker-spinner-native')
+      await act(async () =>
+        fireEvent(datePicker, 'onChange', { nativeEvent: { timestamp: ELIGIBLE_AGE_DATE } })
+      )
+      await act(async () =>
+        fireEvent.press(screen.getByLabelText('Continuer vers l’étape CGU & Données'))
+      )
+
+      await act(async () => fireEvent.press(screen.getByText('Accepter et s’inscrire')))
+
+      expect(apiSignUpSpy).toHaveBeenCalledWith(
+        {
+          email: 'email@gmail.com',
+          marketingEmailSubscription: false,
+          password: 'user@AZERTY123',
+          birthdate: '2003-12-01',
+          postalCode: '',
+          token: 'dummyToken',
+          appsFlyerPlatform: 'ios',
+          appsFlyerUserId: 'uniqueCustomerId',
+          trustedDevice: undefined,
+        },
+        { credentials: 'omit' }
+      )
+    })
+
+    it('should log to sentry on API error', async () => {
+      server.use(
+        rest.post<AccountRequest, EmptyResponse>(
+          env.API_BASE_URL + '/native/v1/account',
+          (_req, res, ctx) => {
+            return res.once(ctx.status(400))
+          }
+        )
+      )
+
+      render(<SignupForm />)
+
+      const emailInput = screen.getByPlaceholderText('tonadresse@email.com')
+      fireEvent.changeText(emailInput, 'email@gmail.com')
+      await act(() => fireEvent.press(screen.getByTestId('Continuer vers l’étape Mot de passe')))
+
+      const passwordInput = screen.getByPlaceholderText('Ton mot de passe')
+      await act(async () => fireEvent.changeText(passwordInput, 'user@AZERTY123'))
+      await act(async () =>
+        fireEvent.press(screen.getByTestId('Continuer vers l’étape Date de naissance'))
+      )
+
+      const datePicker = screen.getByTestId('date-picker-spinner-native')
+      await act(async () =>
+        fireEvent(datePicker, 'onChange', { nativeEvent: { timestamp: ELIGIBLE_AGE_DATE } })
+      )
+      await act(async () =>
+        fireEvent.press(screen.getByTestId('Continuer vers l’étape CGU & Données'))
+      )
+
+      await act(async () => fireEvent.press(screen.getByText('Accepter et s’inscrire')))
+
+      expect(eventMonitoring.captureException).toHaveBeenCalledWith(
+        new Error('NETWORK_REQUEST_FAILED')
+      )
+    })
   })
 })
 
