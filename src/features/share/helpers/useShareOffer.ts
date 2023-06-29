@@ -1,9 +1,12 @@
 import { Platform } from 'react-native'
 
+import { OfferResponse, OfferVenueResponse } from 'api/gen'
+import { useOffer } from 'features/offer/api/useOffer'
+import { formatShareOfferMessage } from 'features/share/helpers/formatShareOfferMessage'
 import { getOfferUrl } from 'features/share/helpers/getOfferUrl'
-import { useShareOfferMessage } from 'features/share/helpers/useShareOfferMessage'
 import { ShareOutput } from 'features/share/types'
 import { share } from 'libs/share'
+import { getOfferLocationName } from 'shared/offer/getOfferLocationName'
 import { DOUBLE_LINE_BREAK } from 'ui/theme/constants'
 
 const doNothingFn = () => {
@@ -17,13 +20,33 @@ const shareOptions = {
 }
 
 export const useShareOffer = (offerId: number): ShareOutput => {
-  const message = useShareOfferMessage(offerId)
+  const { data: offer } = useOffer({ offerId })
 
-  if (!message)
+  return getShareOffer({
+    offerId: offer?.id,
+    offerName: offer?.name,
+    venueName: offer ? getOfferLocationName(offer.venue, offer.isDigital) : undefined,
+  })
+}
+
+type PartialOffer = {
+  offerId: OfferResponse['id'] | undefined
+  offerName: OfferResponse['name'] | undefined
+  venueName: OfferVenueResponse['name'] | undefined
+}
+
+export const getShareOffer = ({ offerId, offerName, venueName }: PartialOffer): ShareOutput => {
+  if (!offerId || !offerName || !venueName) {
     return {
       share: doNothingFn,
       shareContent: undefined,
     }
+  }
+
+  const message = formatShareOfferMessage({
+    offerName,
+    venueName,
+  })
 
   const shareUrl = getOfferUrl(offerId)
   const shareAndroidMessage = message + DOUBLE_LINE_BREAK + shareUrl
