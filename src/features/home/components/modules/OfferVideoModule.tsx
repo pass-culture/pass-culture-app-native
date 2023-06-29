@@ -29,6 +29,8 @@ export const OfferVideoModule: FunctionComponent<Props> = ({ offer, color, hideM
 
   const prePopulateOffer = usePrePopulateOffer()
 
+  const categoryId = mapping[offer.offer.subcategoryId]
+
   return (
     <OfferInsert
       navigateTo={{
@@ -40,7 +42,7 @@ export const OfferVideoModule: FunctionComponent<Props> = ({ offer, color, hideM
         prePopulateOffer({
           ...offer.offer,
           offerId: +offer.objectID,
-          categoryId: mapping[offer.offer.subcategoryId],
+          categoryId,
         })
       }}>
       <Row>
