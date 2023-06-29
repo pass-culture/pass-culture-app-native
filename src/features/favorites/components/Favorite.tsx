@@ -7,7 +7,7 @@ import { useRemoveFavorite } from 'features/favorites/api'
 import { BookingButton } from 'features/favorites/components/Buttons/BookingButton'
 import { getFavoriteDisplayPrice } from 'features/favorites/helpers/getFavoriteDisplayPrice'
 import { useFavoriteFormattedDate } from 'features/favorites/helpers/useFavoriteFormattedDate'
-import { useShareOffer } from 'features/share/helpers/useShareOffer'
+import { getShareOffer } from 'features/share/helpers/useShareOffer'
 import { WebShareModal } from 'features/share/pages/WebShareModal'
 import { analytics } from 'libs/analytics'
 import { useDistance } from 'libs/geolocation/hooks/useDistance'
@@ -113,7 +113,11 @@ export const Favorite: React.FC<Props> = (props) => {
     hideModal: hideShareOfferModal,
   } = useModal(false)
 
-  const { share: shareOffer, shareContent } = useShareOffer(offer.id)
+  const { share: shareOffer, shareContent } = getShareOffer({
+    offerId: offer.id,
+    offerName: offer.name,
+    venueName: offer.venueName,
+  })
 
   const pressShareOffer = useCallback(() => {
     analytics.logShare({ type: 'Offer', from: 'favorites', id: offer.id })

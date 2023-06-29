@@ -19,8 +19,6 @@ import { SnackBarHelperSettings } from 'ui/components/snackBar/types'
 
 import { Favorite } from './Favorite'
 
-jest.mock('features/offer/api/useOffer')
-
 const mockShowErrorSnackBar = jest.fn()
 jest.mock('ui/components/snackBar/SnackBarContext', () => ({
   useSnackBarContext: () => ({
