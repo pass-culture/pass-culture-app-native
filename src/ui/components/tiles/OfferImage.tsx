@@ -8,17 +8,18 @@ import styled from 'styled-components/native'
 import { CategoryIdEnum } from 'api/gen'
 import { mapCategoryToIcon } from 'libs/parsers'
 import { FastImage as ResizedFastImage } from 'libs/resizing-image-on-demand/FastImage'
+import { AppThemeType } from 'theme'
 import { ImagePlaceholder } from 'ui/components/ImagePlaceholder'
 import { getShadow, getSpacing } from 'ui/theme'
 
-type SizeProps = {
-  size?: 'small' | 'tall'
-}
+type SizeProp = keyof AppThemeType['tiles']['sizes']
+type StyleProps = { size: SizeProp }
 
 type Props = {
   imageUrl?: string
   categoryId?: CategoryIdEnum | null
-} & SizeProps
+  size?: SizeProp
+}
 
 export const OfferImage: React.FC<Props> = ({ categoryId, imageUrl, size = 'small' }) => {
   const Icon = mapCategoryToIcon(categoryId || null)
@@ -34,11 +35,11 @@ export const OfferImage: React.FC<Props> = ({ categoryId, imageUrl, size = 'smal
   )
 }
 
-const StyledFastImage = styled(ResizedFastImage).attrs<SizeProps>(({ theme, size }) => ({
-  ...(size === 'small' ? theme.tiles.sizes.small : theme.tiles.sizes.tall),
-}))<SizeProps>(({ theme, size }) => ({
+const StyledFastImage = styled(ResizedFastImage).attrs<StyleProps>(({ theme, size }) => ({
+  ...theme.tiles.sizes[size],
+}))<StyleProps>(({ theme, size }) => ({
   backgroundColor: theme.colors.greyLight,
-  ...(size === 'small' ? theme.tiles.sizes.small : theme.tiles.sizes.tall),
+  ...theme.tiles.sizes[size],
   borderRadius: theme.tiles.borderRadius,
 }))
 
@@ -48,9 +49,9 @@ const StyledImagePlaceholder = styled(ImagePlaceholder).attrs(({ theme }) => ({
   borderRadius: theme.tiles.borderRadius,
 }))``
 
-const Container = styled.View<SizeProps>(({ theme, size }) => ({
+const Container = styled.View<StyleProps>(({ theme, size }) => ({
   borderRadius: theme.tiles.borderRadius,
-  ...(size === 'small' ? theme.tiles.sizes.small : theme.tiles.sizes.tall),
+  ...theme.tiles.sizes[size],
   ...(Platform.OS !== 'web'
     ? getShadow({
         shadowOffset: { width: 0, height: getSpacing(1) },
