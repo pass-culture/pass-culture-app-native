@@ -8,50 +8,47 @@ import { Offer } from 'shared/offer/types'
 import { usePrePopulateOffer } from 'shared/offer/usePrePopulateOffer'
 import { ArrowAgain } from 'ui/svg/icons/ArrowAgain'
 import { Offers } from 'ui/svg/icons/Offers'
-import { Spacer, getSpacing } from 'ui/theme'
+import { Spacer } from 'ui/theme'
 
 export const VideoEndView: React.FC<{
   onPressReplay: () => void
   onPressSeeOffer: () => void
   offer: Offer
   style: StyleProp<ViewStyle>
-  videoThumbnail: string
-}> = ({ onPressReplay, offer, onPressSeeOffer, style, videoThumbnail }) => {
+}> = ({ onPressReplay, offer, onPressSeeOffer, style }) => {
   const prePopulateOffer = usePrePopulateOffer()
   const mapping = useCategoryIdMapping()
 
   return (
     <VideoEndViewContainer style={style}>
-      <Thumbnail source={{ uri: videoThumbnail }} style={style}>
-        <BlackView>
-          <ButtonsContainer>
-            <ButtonWithCaption
-              onPress={onPressReplay}
-              accessibilityLabel="Revoir la vidéo"
-              wording={'Revoir'}
-              icon={StyledReplayIcon}
-            />
-            <Spacer.Row numberOfSpaces={9} />
-            <ButtonWithCaption
-              onPress={() => {
-                onPressSeeOffer()
-                prePopulateOffer({
-                  ...offer.offer,
-                  offerId: +offer.objectID,
-                  categoryId: mapping[offer.offer.subcategoryId],
-                })
-              }}
-              navigateTo={{
-                screen: 'Offer',
-                params: { id: +offer.objectID },
-              }}
-              accessibilityLabel="Voir l’offre"
-              wording="Voir l’offre"
-              icon={StyledOffersIcon}
-            />
-          </ButtonsContainer>
-        </BlackView>
-      </Thumbnail>
+      <BlackView>
+        <ButtonsContainer>
+          <ButtonWithCaption
+            onPress={onPressReplay}
+            accessibilityLabel="Revoir la vidéo"
+            wording={'Revoir'}
+            icon={StyledReplayIcon}
+          />
+          <Spacer.Row numberOfSpaces={9} />
+          <ButtonWithCaption
+            onPress={() => {
+              onPressSeeOffer()
+              prePopulateOffer({
+                ...offer.offer,
+                offerId: +offer.objectID,
+                categoryId: mapping[offer.offer.subcategoryId],
+              })
+            }}
+            navigateTo={{
+              screen: 'Offer',
+              params: { id: +offer.objectID },
+            }}
+            accessibilityLabel="Voir l’offre"
+            wording="Voir l’offre"
+            icon={StyledOffersIcon}
+          />
+        </ButtonsContainer>
+      </BlackView>
     </VideoEndViewContainer>
   )
 }

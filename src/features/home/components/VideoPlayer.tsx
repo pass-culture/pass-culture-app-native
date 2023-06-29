@@ -14,14 +14,12 @@ interface VideoPlayerProps {
   youtubeVideoId: string
   offer: Offer
   onPressSeeOffer: () => void
-  videoThumbnail: string
 }
 
 export const VideoPlayer: React.FC<VideoPlayerProps> = ({
   youtubeVideoId,
   offer,
   onPressSeeOffer,
-  videoThumbnail,
 }) => {
   const [isPlaying, setIsPlaying] = useState(true)
   const [hasFinishPlaying, setHasFinishPlaying] = useState(false)
@@ -92,7 +90,6 @@ export const VideoPlayer: React.FC<VideoPlayerProps> = ({
           offer={offer}
           onPressSeeOffer={onPressSeeOffer}
           style={{ height: playerHeight, width: playerWidth }}
-          videoThumbnail={videoThumbnail}
         />
       )}
       {!!showErrorView && <VideoErrorView style={{ height: playerHeight, width: playerWidth }} />}
