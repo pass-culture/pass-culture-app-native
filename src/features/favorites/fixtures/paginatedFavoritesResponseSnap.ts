@@ -23,6 +23,7 @@ export const paginatedFavoritesResponseSnap: PaginatedFavoritesResponse = {
         date: '2021-03-28T15:45:00',
         startDate: null,
         isReleased: true,
+        venueName: 'Cinéma de la fin',
       },
     },
     {
@@ -46,6 +47,7 @@ export const paginatedFavoritesResponseSnap: PaginatedFavoritesResponse = {
         date: null,
         startDate: '2021-03-02T20:00:00',
         isReleased: true,
+        venueName: 'Cinéma de la fin',
       },
     },
     {
@@ -69,6 +71,7 @@ export const paginatedFavoritesResponseSnap: PaginatedFavoritesResponse = {
         date: null,
         startDate: '2021-03-04T20:00:00',
         isReleased: true,
+        venueName: 'Cinéma de la fin',
       },
     },
     {
@@ -92,6 +95,7 @@ export const paginatedFavoritesResponseSnap: PaginatedFavoritesResponse = {
         date: null,
         startDate: '2021-03-04T20:00:00',
         isReleased: true,
+        venueName: 'Cinéma de la fin',
       },
     },
   ],

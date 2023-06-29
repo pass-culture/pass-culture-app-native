@@ -1113,6 +1113,11 @@ export interface FavoriteOfferResponse {
    * @memberof FavoriteOfferResponse
    */
   subcategoryId: SubcategoryIdEnum
+  /**
+   * @type {string}
+   * @memberof FavoriteOfferResponse
+   */
+  venueName: string
 }
 /**
  * @export
