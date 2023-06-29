@@ -9,7 +9,7 @@ import { RootStackParamList } from 'features/navigation/RootNavigator/types'
 import { analytics } from 'libs/analytics'
 import { fireEvent, render, screen, waitFor } from 'tests/utils'
 
-import { SignupConfirmationEmailSent } from './SignupConfirmationEmailSent'
+import { SignupConfirmationEmailSent } from './SignupConfirmationEmailSent.deprecated'
 
 const mockUsePreviousRoute = usePreviousRoute as jest.MockedFunction<typeof usePreviousRoute>
 jest.mock('features/navigation/helpers')

@@ -17,7 +17,7 @@ import { eventMonitoring } from 'libs/monitoring'
 import { server } from 'tests/server'
 import { fireEvent, render, screen, act } from 'tests/utils'
 
-import { SignupForm } from './SignupForm'
+import { SignupFormDeprecated } from './SignupForm.deprecated'
 
 const getModelSpy = jest.spyOn(DeviceInfo, 'getModel')
 const getSystemNameSpy = jest.spyOn(DeviceInfo, 'getSystemName')
@@ -32,7 +32,7 @@ const defaultProps = {
 
 describe('<SignupForm />', () => {
   it('should have accessibility label indicating current step and total steps', async () => {
-    render(<SignupForm {...defaultProps} />)
+    render(<SignupFormDeprecated {...defaultProps} />)
 
     expect(await screen.findByLabelText('Étape 1 sur 4 en cours')).toBeTruthy()
     expect(screen.queryByLabelText('Étape 2 sur 4 à faire')).toBeTruthy()
@@ -41,7 +41,7 @@ describe('<SignupForm />', () => {
   })
 
   it('should update accessibility label indicating current step and total steps when going to next step', async () => {
-    render(<SignupForm {...defaultProps} />)
+    render(<SignupFormDeprecated {...defaultProps} />)
 
     fillEmailInput()
     await act(() => fireEvent.press(screen.getByTestId('Continuer vers l’étape Mot de passe')))
@@ -53,7 +53,7 @@ describe('<SignupForm />', () => {
   })
 
   it('should display quit button and open modal on click when preventCancellation route param is false', async () => {
-    render(<SignupForm {...defaultProps} />)
+    render(<SignupFormDeprecated {...defaultProps} />)
 
     fireEvent.press(await screen.findByTestId('Abandonner l’inscription'))
 
@@ -65,7 +65,7 @@ describe('<SignupForm />', () => {
       ...defaultProps,
       route: { ...defaultProps.route, params: { preventCancellation: true } },
     }
-    render(<SignupForm {...props} />)
+    render(<SignupFormDeprecated {...props} />)
 
     await screen.findByTestId('Continuer vers l’étape Mot de passe')
 
@@ -74,7 +74,7 @@ describe('<SignupForm />', () => {
   })
 
   it('should call goBack() when left icon is pressed from first step', async () => {
-    render(<SignupForm {...defaultProps} />)
+    render(<SignupFormDeprecated {...defaultProps} />)
 
     const icon = await screen.findByTestId('Revenir en arrière')
     fireEvent.press(icon)
@@ -83,7 +83,7 @@ describe('<SignupForm />', () => {
   })
 
   it('should go to previous step without calling goBack() when left icon is pressed from second step', async () => {
-    render(<SignupForm {...defaultProps} />)
+    render(<SignupFormDeprecated {...defaultProps} />)
 
     fillEmailInput()
     await act(() => fireEvent.press(screen.getByTestId('Continuer vers l’étape Mot de passe')))
@@ -94,7 +94,7 @@ describe('<SignupForm />', () => {
 
   it('should redirect to SignupConfirmationEmailSent on signup success', async () => {
     simulateSignupSuccess()
-    render(<SignupForm {...defaultProps} />)
+    render(<SignupFormDeprecated {...defaultProps} />)
 
     fillEmailInput()
     await act(() => fireEvent.press(screen.getByTestId('Continuer vers l’étape Mot de passe')))
@@ -131,7 +131,7 @@ describe('<SignupForm />', () => {
       getModelSpy.mockReturnValueOnce('iPhone 13')
       getSystemNameSpy.mockReturnValueOnce('iOS')
 
-      render(<SignupForm {...defaultProps} />)
+      render(<SignupFormDeprecated {...defaultProps} />)
 
       fillEmailInput()
       await act(() => fireEvent.press(screen.getByTestId('Continuer vers l’étape Mot de passe')))
@@ -170,7 +170,7 @@ describe('<SignupForm />', () => {
 
     it('should create account when clicking on AcceptCgu button without trustedDevice when feature flag is disabled', async () => {
       simulateSignupSuccess()
-      render(<SignupForm {...defaultProps} />)
+      render(<SignupFormDeprecated {...defaultProps} />)
 
       fillEmailInput()
       await act(() => fireEvent.press(screen.getByTestId('Continuer vers l’étape Mot de passe')))
@@ -213,7 +213,7 @@ describe('<SignupForm />', () => {
         )
       )
 
-      render(<SignupForm {...defaultProps} />)
+      render(<SignupFormDeprecated {...defaultProps} />)
 
       fillEmailInput()
       await act(() => fireEvent.press(screen.getByTestId('Continuer vers l’étape Mot de passe')))
@@ -238,7 +238,7 @@ describe('<SignupForm />', () => {
 
   describe('Analytics', () => {
     it('should call logCancelSignup with Email when clicking on quit signup modal on first step', async () => {
-      render(<SignupForm {...defaultProps} />)
+      render(<SignupFormDeprecated {...defaultProps} />)
 
       fireEvent.press(await screen.findByTestId('Abandonner l’inscription'))
       fireEvent.press(screen.getByText('Abandonner l’inscription'))
@@ -247,7 +247,7 @@ describe('<SignupForm />', () => {
     })
 
     it('should call logCancelSignup with Password when clicking on quit signup modal on second step', async () => {
-      render(<SignupForm {...defaultProps} />)
+      render(<SignupFormDeprecated {...defaultProps} />)
 
       fillEmailInput()
       await act(() => fireEvent.press(screen.getByTestId('Continuer vers l’étape Mot de passe')))
@@ -258,7 +258,7 @@ describe('<SignupForm />', () => {
     })
 
     it('should call logContinueSetEmail when clicking on next step from SetEmail', async () => {
-      render(<SignupForm {...defaultProps} />)
+      render(<SignupFormDeprecated {...defaultProps} />)
 
       fillEmailInput()
       await act(() => fireEvent.press(screen.getByTestId('Continuer vers l’étape Mot de passe')))
@@ -267,7 +267,7 @@ describe('<SignupForm />', () => {
     })
 
     it('should call logContinueSetPassword when clicking on next step from SetPassword', async () => {
-      render(<SignupForm {...defaultProps} />)
+      render(<SignupFormDeprecated {...defaultProps} />)
 
       fillEmailInput()
       await act(async () => {
@@ -283,7 +283,7 @@ describe('<SignupForm />', () => {
     })
 
     it('should call logContinueSetEmail twice if user goes back to SetEmail and clicks on next step again', async () => {
-      render(<SignupForm {...defaultProps} />)
+      render(<SignupFormDeprecated {...defaultProps} />)
 
       fillEmailInput()
       await act(async () => {
@@ -297,7 +297,7 @@ describe('<SignupForm />', () => {
     })
 
     it('should call logContinueSetBirthday when clicking on next step from SetBirthday', async () => {
-      render(<SignupForm {...defaultProps} />)
+      render(<SignupFormDeprecated {...defaultProps} />)
 
       fillEmailInput()
       await act(() => fireEvent.press(screen.getByTestId('Continuer vers l’étape Mot de passe')))
@@ -318,7 +318,7 @@ describe('<SignupForm />', () => {
     })
 
     it('should log analytics when clicking on close icon', async () => {
-      render(<SignupForm {...defaultProps} />)
+      render(<SignupFormDeprecated {...defaultProps} />)
 
       fireEvent.press(await screen.findByTestId('Abandonner l’inscription'))
 

@@ -2,7 +2,7 @@ import React from 'react'
 
 import { act, fireEvent, render, screen } from 'tests/utils'
 
-import { SetPassword } from './SetPassword'
+import { SetPassword } from './SetPassword.deprecated'
 
 const props = { goToNextStep: jest.fn(), signUp: jest.fn() }
 

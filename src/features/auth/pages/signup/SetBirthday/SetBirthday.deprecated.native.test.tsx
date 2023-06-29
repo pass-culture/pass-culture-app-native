@@ -11,7 +11,7 @@ import { formatDateToISOStringWithoutTime } from 'libs/parsers'
 import { storage } from 'libs/storage'
 import { fireEvent, render } from 'tests/utils'
 
-import { SetBirthday } from './SetBirthday'
+import { SetBirthday } from './SetBirthday.deprecated'
 
 const props = { goToNextStep: jest.fn(), signUp: jest.fn() }
 

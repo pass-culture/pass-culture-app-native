@@ -12,7 +12,7 @@ import { useNetInfoContext as useNetInfoContextDefault } from 'libs/network/NetI
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { simulateWebviewMessage, fireEvent, render, waitFor } from 'tests/utils'
 
-import { AcceptCgu } from './AcceptCgu'
+import { AcceptCgu } from './AcceptCgu.deprecated'
 
 jest.mock('features/auth/context/SettingsContext')
 jest.mock('libs/monitoring')

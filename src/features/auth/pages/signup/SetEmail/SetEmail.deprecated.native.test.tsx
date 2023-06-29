@@ -9,7 +9,7 @@ import { firebaseAnalytics } from 'libs/firebase/analytics'
 import { act, fireEvent, render, screen } from 'tests/utils'
 import { SUGGESTION_DELAY_IN_MS } from 'ui/components/inputs/EmailInputWithSpellingHelp/useEmailSpellingHelp'
 
-import { SetEmail } from './SetEmail'
+import { SetEmail } from './SetEmail.deprecated'
 
 const openUrl = jest.spyOn(OpenUrlAPI, 'openUrl')
 

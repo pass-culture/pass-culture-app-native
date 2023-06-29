@@ -4,7 +4,7 @@ import React from 'react'
 import { CURRENT_DATE } from 'features/auth/fixtures/fixtures'
 import { fireEvent, render, screen } from 'tests/utils/web'
 
-import { SetBirthday } from './SetBirthday'
+import { SetBirthday } from './SetBirthday.deprecated'
 
 const props = { goToNextStep: jest.fn(), signUp: jest.fn() }
 

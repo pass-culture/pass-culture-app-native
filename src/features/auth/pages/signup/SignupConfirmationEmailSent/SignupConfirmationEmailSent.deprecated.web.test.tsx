@@ -5,7 +5,7 @@ import { SafeAreaProvider } from 'react-native-safe-area-context'
 import { RootStackParamList } from 'features/navigation/RootNavigator/types'
 import { render, checkAccessibilityFor } from 'tests/utils/web'
 
-import { SignupConfirmationEmailSent } from './SignupConfirmationEmailSent'
+import { SignupConfirmationEmailSent } from './SignupConfirmationEmailSent.deprecated'
 
 describe('<SignupConfirmationEmailSent/>', () => {
   describe('Accessibility', () => {

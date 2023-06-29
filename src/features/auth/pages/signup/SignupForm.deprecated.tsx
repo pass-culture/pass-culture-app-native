@@ -26,10 +26,10 @@ import { Close } from 'ui/svg/icons/Close'
 import { Spacer } from 'ui/theme'
 import { Helmet } from 'ui/web/global/Helmet'
 
-import { AcceptCgu } from './AcceptCgu/AcceptCgu'
-import { SetBirthday } from './SetBirthday/SetBirthday'
-import { SetEmail } from './SetEmail/SetEmail'
-import { SetPassword } from './SetPassword/SetPassword'
+import { AcceptCgu } from './AcceptCgu/AcceptCgu.deprecated'
+import { SetBirthday } from './SetBirthday/SetBirthday.deprecated'
+import { SetEmail } from './SetEmail/SetEmail.deprecated'
+import { SetPassword } from './SetPassword/SetPassword.deprecated'
 
 type SignupStepConfig = {
   name: PreValidationSignupStep
@@ -67,7 +67,7 @@ const SIGNUP_STEP_CONFIG_MAX_INDEX = SIGNUP_STEP_CONFIG.length - 1
 
 type Props = StackScreenProps<RootStackParamList, 'SignupForm'>
 
-export const SignupForm: FunctionComponent<Props> = ({ navigation, route }) => {
+export const SignupFormDeprecated: FunctionComponent<Props> = ({ navigation, route }) => {
   const signUpApiCall = useSignUp()
   const trustedDevice = useDeviceInfo()
   const enableTrustedDevice = useFeatureFlag(RemoteStoreFeatureFlags.WIP_ENABLE_TRUSTED_DEVICE)
