@@ -198,6 +198,73 @@ describe('Signup Form', () => {
     expect(screen.getByText('Confirme ton adresse e-mail')).toBeTruthy()
   })
 
+  it('should call logContinueSetEmail when clicking on next step from SetEmail', async () => {
+    render(<SignupForm />)
+
+    const emailInput = screen.getByPlaceholderText('tonadresse@email.com')
+    fireEvent.changeText(emailInput, 'email@gmail.com')
+    await act(() => fireEvent.press(screen.getByTestId('Continuer vers l’étape Mot de passe')))
+
+    expect(analytics.logContinueSetEmail).toHaveBeenCalledTimes(1)
+  })
+
+  it('should call logContinueSetPassword when clicking on next step from SetPassword', async () => {
+    render(<SignupForm />)
+
+    const emailInput = screen.getByPlaceholderText('tonadresse@email.com')
+    fireEvent.changeText(emailInput, 'email@gmail.com')
+    await act(async () => {
+      fireEvent.press(screen.getByTestId('Continuer vers l’étape Mot de passe'))
+    })
+
+    const passwordInput = screen.getByPlaceholderText('Ton mot de passe')
+    await act(async () => fireEvent.changeText(passwordInput, 'user@AZERTY123'))
+    await act(async () =>
+      fireEvent.press(screen.getByTestId('Continuer vers l’étape Date de naissance'))
+    )
+
+    expect(analytics.logContinueSetPassword).toHaveBeenCalledTimes(1)
+  })
+
+  it('should call logContinueSetEmail twice if user goes back to SetEmail and clicks on next step again', async () => {
+    render(<SignupForm />)
+
+    const emailInput = screen.getByPlaceholderText('tonadresse@email.com')
+    fireEvent.changeText(emailInput, 'email@gmail.com')
+    await act(async () => {
+      fireEvent.press(screen.getByTestId('Continuer vers l’étape Mot de passe'))
+      fireEvent.press(screen.getByTestId('Revenir en arrière'))
+      fireEvent.press(screen.getByTestId('Continuer vers l’étape Mot de passe'))
+    })
+
+    expect(analytics.logContinueSetEmail).toHaveBeenCalledTimes(2)
+    expect(analytics.logContinueSetPassword).not.toHaveBeenCalled()
+  })
+
+  it('should call logContinueSetBirthday when clicking on next step from SetBirthday', async () => {
+    render(<SignupForm />)
+
+    const emailInput = screen.getByPlaceholderText('tonadresse@email.com')
+    fireEvent.changeText(emailInput, 'email@gmail.com')
+    await act(() => fireEvent.press(screen.getByTestId('Continuer vers l’étape Mot de passe')))
+
+    const passwordInput = screen.getByPlaceholderText('Ton mot de passe')
+    await act(async () => fireEvent.changeText(passwordInput, 'user@AZERTY123'))
+    await act(() => fireEvent.press(screen.getByTestId('Continuer vers l’étape Date de naissance')))
+
+    const datePicker = screen.getByTestId('date-picker-spinner-native')
+    await act(async () =>
+      fireEvent(datePicker, 'onChange', { nativeEvent: { timestamp: ELIGIBLE_AGE_DATE } })
+    )
+    await act(async () =>
+      fireEvent.press(screen.getByTestId('Continuer vers l’étape CGU & Données'))
+    )
+
+    expect(analytics.logContinueSetEmail).toHaveBeenCalledTimes(1)
+    expect(analytics.logContinueSetPassword).toHaveBeenCalledTimes(1)
+    expect(analytics.logContinueSetBirthday).toHaveBeenCalledTimes(1)
+  })
+
   describe('API', () => {
     it('should create account when clicking on AcceptCgu button with trustedDevice when feature flag is active', async () => {
       simulateSignupSuccess()

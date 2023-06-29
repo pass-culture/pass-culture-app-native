@@ -111,6 +111,8 @@ export const SignupForm: FunctionComponent = () => {
   const goToNextStep = (_signupData: Partial<SignupData>) => {
     setSignupData((previousSignupData) => ({ ...previousSignupData, ..._signupData }))
     setStepIndex((prevStepIndex) => Math.min(NEW_SIGNUP_NUMBER_OF_STEPS, prevStepIndex + 1))
+
+    stepConfig.tracker?.()
   }
 
   const headerHeight = useGetHeaderHeight()
