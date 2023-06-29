@@ -14,7 +14,7 @@ import { BicolorIdCard } from 'ui/svg/icons/BicolorIdCard'
 import { Spacer, Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
-export const SetBirthdayV2: FunctionComponent<PreValidationSignupNormalStepProps> = (props) => {
+export const SetBirthday: FunctionComponent<PreValidationSignupNormalStepProps> = (props) => {
   const CURRENT_YEAR = new Date().getFullYear()
   const DEFAULT_SELECTED_DATE = new Date(new Date().setFullYear(CURRENT_YEAR - UNDER_YOUNGEST_AGE))
 

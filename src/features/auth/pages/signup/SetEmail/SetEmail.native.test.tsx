@@ -9,7 +9,7 @@ import { firebaseAnalytics } from 'libs/firebase/analytics'
 import { act, fireEvent, render, screen } from 'tests/utils'
 import { SUGGESTION_DELAY_IN_MS } from 'ui/components/inputs/EmailInputWithSpellingHelp/useEmailSpellingHelp'
 
-import { SetEmailV2 } from './SetEmailV2'
+import { SetEmail } from './SetEmail'
 
 const openUrl = jest.spyOn(OpenUrlAPI, 'openUrl')
 
@@ -22,14 +22,14 @@ jest.useFakeTimers('legacy')
 
 describe('<SetEmailV2 />', () => {
   it('should disable validate button when email input is not filled', () => {
-    const { getByText } = render(<SetEmailV2 {...props} />)
+    const { getByText } = render(<SetEmail {...props} />)
 
     const button = getByText('Continuer')
     expect(button).toBeDisabled()
   })
 
   it('should display disabled validate button when email input is filled with spaces', async () => {
-    const { getByText, getByPlaceholderText } = render(<SetEmailV2 {...props} />)
+    const { getByText, getByPlaceholderText } = render(<SetEmail {...props} />)
 
     await act(async () => {
       const emailInput = getByPlaceholderText('tonadresse@email.com')
@@ -41,7 +41,7 @@ describe('<SetEmailV2 />', () => {
   })
 
   it('should enable validate button when email input is filled', async () => {
-    const { getByText, getByPlaceholderText } = render(<SetEmailV2 {...props} />)
+    const { getByText, getByPlaceholderText } = render(<SetEmail {...props} />)
 
     await act(async () => {
       const emailInput = getByPlaceholderText('tonadresse@email.com')
@@ -53,7 +53,7 @@ describe('<SetEmailV2 />', () => {
   })
 
   it('should go to next step on valid email with email and newsletter params', async () => {
-    const { getByText, getByPlaceholderText } = render(<SetEmailV2 {...props} />)
+    const { getByText, getByPlaceholderText } = render(<SetEmail {...props} />)
 
     await act(async () => {
       const emailInput = getByPlaceholderText('tonadresse@email.com')
@@ -72,7 +72,7 @@ describe('<SetEmailV2 />', () => {
   })
 
   it('should hide email help message when email is valid', async () => {
-    const { getByText, getByPlaceholderText, queryByText } = render(<SetEmailV2 {...props} />)
+    const { getByText, getByPlaceholderText, queryByText } = render(<SetEmail {...props} />)
 
     await act(async () => {
       const emailInput = getByPlaceholderText('tonadresse@email.com')
@@ -91,7 +91,7 @@ describe('<SetEmailV2 />', () => {
   })
 
   it('should reject invalid email when trying to submit', async () => {
-    const { getByText, getByPlaceholderText, queryByText } = render(<SetEmailV2 {...props} />)
+    const { getByText, getByPlaceholderText, queryByText } = render(<SetEmail {...props} />)
 
     await act(async () => {
       const emailInput = getByPlaceholderText('tonadresse@email.com')
@@ -111,7 +111,7 @@ describe('<SetEmailV2 />', () => {
   })
 
   it('should log analytics when clicking on "Se connecter" button', async () => {
-    const { getByText } = render(<SetEmailV2 {...props} />)
+    const { getByText } = render(<SetEmail {...props} />)
 
     await act(async () => {
       const loginButton = getByText('Se connecter')
@@ -122,7 +122,7 @@ describe('<SetEmailV2 />', () => {
   })
 
   it('should display suggestion with a corrected email when the email is mistyped', async () => {
-    const { getByPlaceholderText, queryByText } = render(<SetEmailV2 {...props} />)
+    const { getByPlaceholderText, queryByText } = render(<SetEmail {...props} />)
 
     await act(async () => {
       const emailInput = getByPlaceholderText('tonadresse@email.com')
@@ -137,7 +137,7 @@ describe('<SetEmailV2 />', () => {
   })
 
   it('should log analytics when user select the suggested email', async () => {
-    const { getByText, getByPlaceholderText } = render(<SetEmailV2 {...props} />)
+    const { getByText, getByPlaceholderText } = render(<SetEmail {...props} />)
 
     await act(async () => {
       const emailInput = getByPlaceholderText('tonadresse@email.com')
@@ -157,7 +157,7 @@ describe('<SetEmailV2 />', () => {
   it('should navigate to Login with provided offerId when clicking on "Se connecter" button', async () => {
     const OFFER_ID = 1
     useRoute.mockReturnValueOnce({ params: { offerId: OFFER_ID } })
-    const { getByText } = render(<SetEmailV2 {...props} />)
+    const { getByText } = render(<SetEmail {...props} />)
 
     await act(async () => {
       const loginButton = getByText('Se connecter')
@@ -171,7 +171,7 @@ describe('<SetEmailV2 />', () => {
   })
 
   it('should open FAQ link when clicking on "Comment gérer tes données personnelles ?" button', async () => {
-    render(<SetEmailV2 {...props} />)
+    render(<SetEmail {...props} />)
 
     const faqLink = screen.getByText('Comment gérer tes données personnelles ?')
     fireEvent.press(faqLink)
@@ -180,7 +180,7 @@ describe('<SetEmailV2 />', () => {
   })
 
   it('should log screen view when the screen is mounted', () => {
-    render(<SetEmailV2 {...props} />)
+    render(<SetEmail {...props} />)
 
     expect(analytics.logScreenViewSetEmail).toHaveBeenCalledTimes(1)
   })

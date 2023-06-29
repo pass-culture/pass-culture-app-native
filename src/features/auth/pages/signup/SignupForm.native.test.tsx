@@ -6,7 +6,7 @@ import { navigate } from '__mocks__/@react-navigation/native'
 import { api } from 'api/api'
 import { AccountRequest } from 'api/gen'
 import { ELIGIBLE_AGE_DATE } from 'features/auth/fixtures/fixtures'
-import { SignupForm } from 'features/auth/pages/signup/SignupFormV2'
+import { SignupForm } from 'features/auth/pages/signup/SignupForm'
 import { mockGoBack } from 'features/navigation/__mocks__/useGoBack'
 import { navigateToHomeConfig } from 'features/navigation/helpers'
 import { analytics } from 'libs/analytics'
@@ -106,7 +106,7 @@ describe('Signup Form', () => {
       const quitButton = screen.getByText('Annuler')
       fireEvent.press(quitButton)
 
-      expect(analytics.logQuitSignup).toHaveBeenNthCalledWith(1, 'SetPasswordV2')
+      expect(analytics.logQuitSignup).toHaveBeenNthCalledWith(1, 'SetPassword')
     })
 
     it('should call logCancelSignup with Email when quitting after signup modal', async () => {

@@ -11,7 +11,7 @@ import { formatDateToISOStringWithoutTime } from 'libs/parsers'
 import { storage } from 'libs/storage'
 import { fireEvent, render, screen } from 'tests/utils'
 
-import { SetBirthdayV2 } from './SetBirthdayV2'
+import { SetBirthday } from './SetBirthday'
 
 const props = { goToNextStep: jest.fn(), signUp: jest.fn() }
 
@@ -28,13 +28,13 @@ describe('<SetBirthdayV2 />', () => {
   })
 
   it('should render correctly', () => {
-    render(<SetBirthdayV2 {...props} />)
+    render(<SetBirthday {...props} />)
 
     expect(screen).toMatchSnapshot()
   })
 
   it('should call goToNextStep() when the date is selected and press the button "Continuer"', () => {
-    render(<SetBirthdayV2 {...props} />)
+    render(<SetBirthday {...props} />)
 
     const datePicker = screen.getByTestId('date-picker-spinner-native')
     fireEvent(datePicker, 'onChange', { nativeEvent: { timestamp: ELIGIBLE_AGE_DATE } })
@@ -51,7 +51,7 @@ describe('<SetBirthdayV2 />', () => {
     'should set default date when no specific user age in local storage',
     (userAge) => {
       storage.saveObject('user_age', userAge)
-      render(<SetBirthdayV2 {...props} />)
+      render(<SetBirthday {...props} />)
 
       const datePicker = screen.getByTestId('date-picker-spinner-native')
 
@@ -63,7 +63,7 @@ describe('<SetBirthdayV2 />', () => {
     'should set default year to user birth year when user age is in local storage',
     async (userAge) => {
       storage.saveObject('user_age', userAge)
-      render(<SetBirthdayV2 {...props} />)
+      render(<SetBirthday {...props} />)
 
       const datePicker = await screen.findByTestId('date-picker-spinner-native')
       const spinnerDate = new Date(datePicker.props.date)

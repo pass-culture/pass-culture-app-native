@@ -52,7 +52,7 @@ const NewsletterCheckboxControlled = ({
   />
 )
 
-export const SetEmailV2: FunctionComponent<PreValidationSignupNormalStepProps> = ({
+export const SetEmail: FunctionComponent<PreValidationSignupNormalStepProps> = ({
   goToNextStep,
   accessibilityLabelForNextStep,
 }) => {

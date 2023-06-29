@@ -15,7 +15,7 @@ type FormValues = {
   password: string
 }
 
-export const SetPasswordV2: FunctionComponent<PreValidationSignupNormalStepProps> = (props) => {
+export const SetPassword: FunctionComponent<PreValidationSignupNormalStepProps> = (props) => {
   const {
     control,
     handleSubmit,

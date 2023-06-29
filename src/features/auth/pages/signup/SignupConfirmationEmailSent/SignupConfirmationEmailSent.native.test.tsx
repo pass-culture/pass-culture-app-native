@@ -6,7 +6,7 @@ import { usePreviousRoute, openUrl } from 'features/navigation/helpers'
 import { analytics } from 'libs/analytics'
 import { act, fireEvent, render, screen } from 'tests/utils'
 
-import { SignupConfirmationEmailSent } from './SignupConfirmationEmailSentV2'
+import { SignupConfirmationEmailSent } from './SignupConfirmationEmailSent'
 
 const mockUsePreviousRoute = usePreviousRoute as jest.MockedFunction<typeof usePreviousRoute>
 jest.mock('features/navigation/helpers')

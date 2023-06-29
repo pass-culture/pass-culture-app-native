@@ -10,7 +10,7 @@ import { QuitSignupModal } from 'features/auth/pages/signup/QuitSignupModal/Quit
 import {
   Props as ConfirmationEmailSentProps,
   SignupConfirmationEmailSent,
-} from 'features/auth/pages/signup/SignupConfirmationEmailSent/SignupConfirmationEmailSentV2'
+} from 'features/auth/pages/signup/SignupConfirmationEmailSent/SignupConfirmationEmailSent'
 import {
   PreValidationSignupNormalStepProps,
   PreValidationSignupLastStepProps,
@@ -35,10 +35,10 @@ import { useModal } from 'ui/components/modals/useModal'
 import { getSpacing, Spacer } from 'ui/theme'
 import { Helmet } from 'ui/web/global/Helmet'
 
-import { AcceptCguV2 } from './AcceptCgu/AcceptCguV2'
-import { SetBirthdayV2 } from './SetBirthday/SetBirthdayV2'
-import { SetEmailV2 } from './SetEmail/SetEmailV2'
-import { SetPasswordV2 } from './SetPassword/SetPasswordV2'
+import { AcceptCgu } from './AcceptCgu/AcceptCgu'
+import { SetBirthday } from './SetBirthday/SetBirthday'
+import { SetEmail } from './SetEmail/SetEmail'
+import { SetPassword } from './SetPassword/SetPassword'
 
 type SignupStepConfig = {
   name: PreValidationSignupStep
@@ -53,26 +53,26 @@ type SignupStepConfig = {
 const SIGNUP_STEP_CONFIG: SignupStepConfig[] = [
   {
     name: PreValidationSignupStep.Email,
-    Component: SetEmailV2,
+    Component: SetEmail,
     accessibilityTitle: 'Adresse e-mail',
     tracker: analytics.logContinueSetEmail,
   },
   {
     name: PreValidationSignupStep.Password,
-    Component: SetPasswordV2,
+    Component: SetPassword,
     accessibilityTitle: 'Mot de passe',
     tracker: analytics.logContinueSetPassword,
   },
   {
     name: PreValidationSignupStep.Birthday,
-    Component: SetBirthdayV2,
+    Component: SetBirthday,
     accessibilityTitle: 'Date de naissance',
     tracker: analytics.logContinueSetBirthday,
   },
   {
     name: PreValidationSignupStep.CGU,
     accessibilityTitle: 'CGU & Données',
-    Component: AcceptCguV2,
+    Component: AcceptCgu,
   },
   {
     name: PreValidationSignupStep.ConfirmationEmailSent,

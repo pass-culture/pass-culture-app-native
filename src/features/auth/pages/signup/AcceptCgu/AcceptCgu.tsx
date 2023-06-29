@@ -20,7 +20,7 @@ import { ExternalSiteFilled } from 'ui/svg/icons/ExternalSiteFilled'
 import { Spacer, Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
-export const AcceptCguV2: FunctionComponent<PreValidationSignupLastStepProps> = ({ signUp }) => {
+export const AcceptCgu: FunctionComponent<PreValidationSignupLastStepProps> = ({ signUp }) => {
   const { data: settings, isLoading: areSettingsLoading } = useSettingsContext()
   const networkInfo = useNetInfoContext()
   const checkCGUErrorId = uuidv4()

@@ -4,7 +4,7 @@ import { SafeAreaProvider } from 'react-native-safe-area-context'
 import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { act, checkAccessibilityFor, render, screen, waitFor } from 'tests/utils/web'
 
-import { SignupForm } from './SignupFormV2'
+import { SignupForm } from './SignupForm'
 
 jest.mock('uuid', () => {
   let value = 0

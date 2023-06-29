@@ -12,7 +12,7 @@ import { useNetInfoContext as useNetInfoContextDefault } from 'libs/network/NetI
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { simulateWebviewMessage, screen, fireEvent, render, waitFor } from 'tests/utils'
 
-import { AcceptCguV2 } from './AcceptCguV2'
+import { AcceptCgu } from './AcceptCgu'
 
 jest.mock('features/auth/context/SettingsContext')
 jest.mock('libs/monitoring')
@@ -197,6 +197,6 @@ describe('<AcceptCgu/>', () => {
 function renderAcceptCGU() {
   return render(
     // eslint-disable-next-line local-rules/no-react-query-provider-hoc
-    reactQueryProviderHOC(<AcceptCguV2 {...props} />)
+    reactQueryProviderHOC(<AcceptCgu {...props} />)
   )
 }
