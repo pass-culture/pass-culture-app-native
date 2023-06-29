@@ -12,6 +12,7 @@ import { InfoBanner } from 'ui/components/InfoBanner'
 import { DateInput } from 'ui/components/inputs/DateInput/DateInput'
 import { BicolorIdCard } from 'ui/svg/icons/BicolorIdCard'
 import { Spacer, Typo } from 'ui/theme'
+import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 export const SetBirthdayV2: FunctionComponent<PreValidationSignupNormalStepProps> = (props) => {
   const CURRENT_YEAR = new Date().getFullYear()
@@ -45,7 +46,7 @@ export const SetBirthdayV2: FunctionComponent<PreValidationSignupNormalStepProps
 
   return (
     <Form.MaxWidth>
-      <Typo.Title3>Renseigne ton âge</Typo.Title3>
+      <StyledTitle3>Renseigne ton âge</StyledTitle3>
       <Spacer.Column numberOfSpaces={4} />
       <InnerContainer>
         <InfoBanner
@@ -77,3 +78,7 @@ const InnerContainer = styled.View({
   width: '100%',
   alignItems: 'center',
 })
+
+const StyledTitle3 = styled(Typo.Title3).attrs({
+  ...getHeadingAttrs(2),
+})``

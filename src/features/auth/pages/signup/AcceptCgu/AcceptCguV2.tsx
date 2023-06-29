@@ -1,4 +1,5 @@
 import React, { FunctionComponent, useEffect, useState, useCallback, useMemo } from 'react'
+import styled from 'styled-components/native'
 import { v4 as uuidv4 } from 'uuid'
 
 import { useSettingsContext } from 'features/auth/context/SettingsContext'
@@ -17,6 +18,7 @@ import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouch
 import { EmailFilled } from 'ui/svg/icons/EmailFilled'
 import { ExternalSiteFilled } from 'ui/svg/icons/ExternalSiteFilled'
 import { Spacer, Typo } from 'ui/theme'
+import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 export const AcceptCguV2: FunctionComponent<PreValidationSignupLastStepProps> = ({ signUp }) => {
   const { data: settings, isLoading: areSettingsLoading } = useSettingsContext()
@@ -104,7 +106,7 @@ export const AcceptCguV2: FunctionComponent<PreValidationSignupLastStepProps> = 
           isVisible={isDoingReCaptchaChallenge}
         />
       )}
-      <Typo.Title3>CGU & Données</Typo.Title3>
+      <StyledTitle3>CGU & Données</StyledTitle3>
       <Spacer.Column numberOfSpaces={10} />
       <Typo.Body>En cliquant sur “Accepter et s’inscrire”, tu acceptes&nbsp;: </Typo.Body>
       <Spacer.Column numberOfSpaces={2} />
@@ -161,3 +163,7 @@ export const AcceptCguV2: FunctionComponent<PreValidationSignupLastStepProps> = 
     </React.Fragment>
   )
 }
+
+const StyledTitle3 = styled(Typo.Title3).attrs({
+  ...getHeadingAttrs(2),
+})``
