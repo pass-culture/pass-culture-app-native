@@ -12,6 +12,12 @@ import { server } from 'tests/server'
 import { act, fireEvent, render, screen } from 'tests/utils'
 
 describe('Signup Form', () => {
+  it('should have accessibility label indicating current step and total steps', async () => {
+    render(<SignupForm />)
+
+    expect(await screen.findByText('Étape 1 sur 5')).toBeTruthy()
+  })
+
   describe('Quit button', () => {
     it('should not display quit button on firstStep', async () => {
       render(<SignupForm />)
@@ -40,17 +46,21 @@ describe('Signup Form', () => {
 
       const emailInput = screen.getByPlaceholderText('tonadresse@email.com')
       fireEvent.changeText(emailInput, 'email@gmail.com')
-      await act(() => fireEvent.press(screen.getByText('Continuer')))
+      await act(() => fireEvent.press(screen.getByLabelText('Continuer vers l’étape Mot de passe')))
 
       const passwordInput = screen.getByPlaceholderText('Ton mot de passe')
       await act(async () => fireEvent.changeText(passwordInput, 'user@AZERTY123'))
-      await act(async () => fireEvent.press(screen.getByText('Continuer')))
+      await act(async () =>
+        fireEvent.press(screen.getByLabelText('Continuer vers l’étape Date de naissance'))
+      )
 
       const datePicker = screen.getByTestId('date-picker-spinner-native')
       await act(async () =>
         fireEvent(datePicker, 'onChange', { nativeEvent: { timestamp: ELIGIBLE_AGE_DATE } })
       )
-      await act(async () => fireEvent.press(screen.getByText('Continuer')))
+      await act(async () =>
+        fireEvent.press(screen.getByLabelText('Continuer vers l’étape CGU & Données'))
+      )
 
       await act(async () => fireEvent.press(screen.getByText('Accepter et s’inscrire')))
 

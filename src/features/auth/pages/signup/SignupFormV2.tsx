@@ -46,6 +46,7 @@ type SignupStepConfig = {
     | React.FunctionComponent<PreValidationSignupNormalStepProps>
     | React.FunctionComponent<PreValidationSignupLastStepProps>
     | React.FunctionComponent<ConfirmationEmailSentProps>
+  accessibilityTitle: string
   tracker?: () => Promise<void>
 }
 
@@ -53,24 +54,29 @@ const SIGNUP_STEP_CONFIG: SignupStepConfig[] = [
   {
     name: PreValidationSignupStep.Email,
     Component: SetEmailV2,
+    accessibilityTitle: 'Adresse e-mail',
     tracker: analytics.logContinueSetEmail,
   },
   {
     name: PreValidationSignupStep.Password,
     Component: SetPasswordV2,
+    accessibilityTitle: 'Mot de passe',
     tracker: analytics.logContinueSetPassword,
   },
   {
     name: PreValidationSignupStep.Birthday,
     Component: SetBirthdayV2,
+    accessibilityTitle: 'Date de naissance',
     tracker: analytics.logContinueSetBirthday,
   },
   {
     name: PreValidationSignupStep.CGU,
+    accessibilityTitle: 'CGU & Données',
     Component: AcceptCguV2,
   },
   {
     name: PreValidationSignupStep.ConfirmationEmailSent,
+    accessibilityTitle: 'Confirmation d‘envoi d‘e-mail',
     Component: SignupConfirmationEmailSent,
   },
 ]
@@ -87,6 +93,10 @@ export const SignupForm: FunctionComponent = () => {
   const helmetTitle = `Étape ${
     stepIndex + 1
   } sur ${NEW_SIGNUP_NUMBER_OF_STEPS} - Inscription | pass Culture`
+  const accessibilityLabelForNextStep =
+    stepIndex < NEW_SIGNUP_NUMBER_OF_STEPS - 1
+      ? `Continuer vers l’étape ${SIGNUP_STEP_CONFIG[stepIndex + 1].accessibilityTitle}`
+      : undefined
 
   const { goBack: goBackAndLeaveSignup } = useGoBack(...getTabNavConfig('Profile'))
 
@@ -166,6 +176,7 @@ export const SignupForm: FunctionComponent = () => {
           goToNextStep={goToNextStep}
           signUp={signUp}
           email={signupData.email}
+          accessibilityLabelForNextStep={accessibilityLabelForNextStep}
         />
       </StyledScrollView>
       <QuitSignupModal
