@@ -8,8 +8,7 @@ import { AfterSignupEmailValidationBuffer } from 'features/auth/pages/signup/Aft
 import { NotYetUnderageEligibility } from 'features/auth/pages/signup/NotYetUnderageEligibility/NotYetUnderageEligibility'
 import { SignupConfirmationEmailSent } from 'features/auth/pages/signup/SignupConfirmationEmailSent/SignupConfirmationEmailSent.deprecated'
 import { SignupConfirmationExpiredLink } from 'features/auth/pages/signup/SignupConfirmationExpiredLink/SignupConfirmationExpiredLink'
-import { SignupForm as NewSignupForm } from 'features/auth/pages/signup/SignupForm'
-import { SignupFormDeprecated } from 'features/auth/pages/signup/SignupForm.deprecated'
+import { SignupForm } from 'features/auth/pages/signup/SignupForm'
 import { VerifyEligibility } from 'features/auth/pages/signup/VerifyEligiblity/VerifyEligibility'
 import { AccountReactivationSuccess } from 'features/auth/pages/suspendedAccount/AccountReactivationSuccess/AccountReactivationSuccess'
 import { FraudulentAccount } from 'features/auth/pages/suspendedAccount/FraudulentAccount/FraudulentAccount'
@@ -356,14 +355,14 @@ export const routes: Route[] = [
   },
   {
     name: 'SignupForm',
-    component: SignupFormDeprecated,
+    component: SignupForm,
     path: 'creation-compte',
     deeplinkPaths: ['creation-compte/email'],
     options: { title: 'Création de compte' },
   },
   {
     name: 'SignupFormV2',
-    component: NewSignupForm,
+    component: SignupForm,
     path: 'creation-compte-new',
     options: { title: 'Création de compte NEW' },
   },
