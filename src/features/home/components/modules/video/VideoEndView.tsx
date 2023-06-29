@@ -1,3 +1,4 @@
+import colorAlpha from 'color-alpha'
 import React from 'react'
 import { StyleProp, ViewStyle } from 'react-native'
 import styled from 'styled-components/native'
@@ -70,16 +71,8 @@ const StyledOffersIcon = styled(Offers).attrs(({ theme }) => ({
   size: theme.icons.sizes.smaller,
 }))``
 
-const Thumbnail = styled.ImageBackground({
-  // the overflow: hidden allow to add border radius to the image
-  // https://stackoverflow.com/questions/49442165/how-do-you-add-borderradius-to-imagebackground/57616397
-  overflow: 'hidden',
-  borderTopLeftRadius: getSpacing(4),
-  borderTopRightRadius: getSpacing(4),
-})
-
-const BlackView = styled.View({
-  backgroundColor: 'rgba(22, 22, 23, 0.48)',
+const BlackView = styled.View(({ theme }) => ({
+  backgroundColor: colorAlpha(theme.colors.black, 0.7),
   height: '100%',
   justifyContent: 'center',
-})
+}))
