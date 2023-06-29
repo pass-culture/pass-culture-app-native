@@ -12,6 +12,13 @@ import { server } from 'tests/server'
 import { act, fireEvent, render, screen } from 'tests/utils'
 
 describe('Signup Form', () => {
+  it('should render correctly', async () => {
+    render(<SignupForm />)
+    await act(async () => {})
+
+    expect(screen).toMatchSnapshot()
+  })
+
   it('should have accessibility label indicating current step and total steps', async () => {
     render(<SignupForm />)
 
