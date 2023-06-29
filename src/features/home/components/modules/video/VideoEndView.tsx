@@ -9,7 +9,7 @@ import { Offer } from 'shared/offer/types'
 import { usePrePopulateOffer } from 'shared/offer/usePrePopulateOffer'
 import { ArrowAgain } from 'ui/svg/icons/ArrowAgain'
 import { Offers } from 'ui/svg/icons/Offers'
-import { Spacer } from 'ui/theme'
+import { Spacer, getSpacing } from 'ui/theme'
 
 export const VideoEndView: React.FC<{
   onPressReplay: () => void
@@ -75,4 +75,6 @@ const BlackView = styled.View(({ theme }) => ({
   backgroundColor: colorAlpha(theme.colors.black, 0.7),
   height: '100%',
   justifyContent: 'center',
+  borderTopLeftRadius: getSpacing(4),
+  borderTopRightRadius: getSpacing(4),
 }))
