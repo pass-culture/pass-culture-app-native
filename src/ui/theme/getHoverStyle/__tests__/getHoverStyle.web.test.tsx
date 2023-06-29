@@ -1,11 +1,11 @@
-import { renderHook } from 'tests/utils'
+import { renderHook } from 'tests/utils/web'
 import { theme } from 'theme'
 import { getHoverStyle } from 'ui/theme/getHoverStyle/getHoverStyle'
 
 const underlineColor = theme.colors.black
 let isHover = true
 
-describe('customWebFocusOutline', () => {
+describe('getHoverStyle', () => {
   it('should return an empty object if underlineColor = null', () => {
     const { result } = renderHook(() => getHoverStyle(null))
     expect(result).toMatchObject({})

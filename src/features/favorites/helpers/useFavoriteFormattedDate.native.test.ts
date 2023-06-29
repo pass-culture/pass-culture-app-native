@@ -3,13 +3,13 @@ import { useFavoriteFormattedDate } from 'features/favorites/helpers/useFavorite
 import { renderHook } from 'tests/utils'
 
 describe('useFavoriteFormattedDate', () => {
-  it('should return formetted date when offer date is provided', () => {
+  it('should return formatted date when offer date is provided', () => {
     const offerWithDate = favoriteOfferResponseSnap
     const { result } = renderHook(() => useFavoriteFormattedDate({ offer: offerWithDate }))
     expect(result.current).toEqual('1 avril 2021')
   })
 
-  it('should return formetted date with prefix "Dès le" when offer started date is provided', () => {
+  it('should return formatted date with prefix "Dès le" when offer started date is provided', () => {
     const offerWithStartDate = {
       ...favoriteOfferResponseSnap,
       date: null,

@@ -6,7 +6,7 @@ import { getSpacing, Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 export const NumberOfResults: React.FC<{ nbFavorites: number }> = ({ nbFavorites }) => {
-  if (!nbFavorites) return <React.Fragment></React.Fragment>
+  if (!nbFavorites) return <React.Fragment />
   return (
     <Container>
       <Body>

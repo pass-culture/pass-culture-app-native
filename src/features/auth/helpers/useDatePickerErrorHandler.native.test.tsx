@@ -7,7 +7,7 @@ import {
   DEFAULT_SELECTED_DATE,
   ELIGIBLE_AGE_DATE,
   FIFTEEN_YEARS_OLD_FIRST_DAY_DATE,
-  FUTUR_DATE,
+  FUTURE_DATE,
   NOT_ELIGIBLE_YOUNGEST_AGE_DATE,
 } from 'features/auth/fixtures/fixtures'
 import { analytics } from 'libs/analytics'
@@ -43,7 +43,7 @@ describe('useDatePickerErrorHandler', () => {
 
   it('should display the error message "une date dans le futur" when the selected date is in the futur', () => {
     const message = 'Tu ne peux pas choisir une date dans le futur'
-    const { result } = renderUseDatePickerErrorHandler(FUTUR_DATE)
+    const { result } = renderUseDatePickerErrorHandler(FUTURE_DATE)
     expect(result.current.isDisabled).toEqual(true)
     expect(result.current.errorMessage).toEqual(message)
   })

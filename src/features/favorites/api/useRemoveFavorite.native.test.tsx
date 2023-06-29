@@ -6,7 +6,7 @@ import { FavoritesWrapper } from 'features/favorites/context/FavoritesWrapper'
 import { paginatedFavoritesResponseSnap } from 'features/favorites/fixtures/paginatedFavoritesResponseSnap'
 import { simulateBackend } from 'features/favorites/helpers/simulateBackend'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { renderHook, waitFor } from 'tests/utils'
+import { renderHook, waitFor, act } from 'tests/utils'
 
 import { useRemoveFavorite } from './useRemoveFavorite'
 
@@ -46,9 +46,10 @@ describe('useRemoveFavorite hook', () => {
 
     expect(result.current.isLoading).toBeFalsy()
     result.current.mutate(favoriteId)
-    await waitFor(() => {
-      expect(onError).not.toHaveBeenCalled()
-    })
+
+    await act(async () => {})
+
+    expect(onError).not.toHaveBeenCalled()
   })
 
   it('should fail to remove favorite', async () => {
