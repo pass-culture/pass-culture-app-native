@@ -11,6 +11,30 @@ exports[`<SetBirthday /> should render correctly 1`] = `
     ]
   }
 >
+  <Text
+    style={
+      Array [
+        Object {
+          "color": "#161617",
+          "fontFamily": "Montserrat-Bold",
+          "fontSize": 20,
+          "lineHeight": 24,
+        },
+      ]
+    }
+  >
+    Renseigne ton âge
+  </Text>
+  <View
+    numberOfSpaces={4}
+    style={
+      Array [
+        Object {
+          "height": 16,
+        },
+      ]
+    }
+  />
   <View
     style={
       Array [
@@ -81,16 +105,16 @@ exports[`<SetBirthday /> should render correctly 1`] = `
           }
           textColor="#161617"
         >
-          Assure-toi que ton âge est exact. Nous le vérifions et il ne pourra plus être modifié par la suite.
+          Assure-toi que ton âge est exact. Il ne pourra plus être modifié par la suite et nous vérifions tes informations.
         </Text>
       </View>
     </View>
     <View
-      numberOfSpaces={6}
+      numberOfSpaces={10}
       style={
         Array [
           Object {
-            "height": 24,
+            "height": 40,
           },
         ]
       }
@@ -233,11 +257,11 @@ exports[`<SetBirthday /> should render correctly 1`] = `
       title="Select date"
     />
     <View
-      numberOfSpaces={2}
+      numberOfSpaces={10}
       style={
         Array [
           Object {
-            "height": 8,
+            "height": 40,
           },
         ]
       }

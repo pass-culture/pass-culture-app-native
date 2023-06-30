@@ -143,7 +143,6 @@ export type SubscriptionRootStackParamList = {
  */
 export type RootStackParamList = {
   SignupForm: { preventCancellation?: boolean; offerId?: number } | undefined
-  SignupFormV2: undefined
   Maintenance: undefined
   ABTestingPOC: undefined
   AccountCreated: undefined

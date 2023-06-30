@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<SetBirthdayV2 /> no touch device should render correctly 1`] = `
+exports[`<SetBirthday /> no touch device should render correctly 1`] = `
 Object {
   "asFragment": [Function],
   "baseElement": .c8 {
@@ -180,17 +180,6 @@ Object {
       <form
         class="c0"
       >
-        <h3
-          aria-level="3"
-          class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-1gknse6 r-fontSize-adyw6z r-lineHeight-135wba7"
-          dir="ltr"
-          role="heading"
-        >
-          Renseigne ton âge
-        </h3>
-        <div
-          class="css-view-175oi2r r-height-10ptun7"
-        />
         <div
           class="css-view-175oi2r r-alignItems-1awozwy r-width-13qz1uu"
         >
@@ -218,12 +207,12 @@ Object {
                 class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-1enofrn r-lineHeight-1cwl3u0"
                 dir="ltr"
               >
-                Assure-toi que ton âge est exact. Il ne pourra plus être modifié par la suite et nous vérifions tes informations.
+                Assure-toi que ton âge est exact. Nous le vérifions et il ne pourra plus être modifié par la suite.
               </div>
             </div>
           </div>
           <div
-            class="css-view-175oi2r r-height-eu3ka"
+            class="css-view-175oi2r r-height-1472mwg"
           />
           <div
             aria-describedby="testUuidV4"
@@ -1439,7 +1428,7 @@ Object {
             class="css-view-175oi2r r-height-10ptun7"
           />
           <div
-            class="css-view-175oi2r r-height-eu3ka"
+            class="css-view-175oi2r r-height-3da1kt"
           />
           <button
             aria-label="Continuer"
@@ -1638,17 +1627,6 @@ Object {
     <form
       class="c0"
     >
-      <h3
-        aria-level="3"
-        class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-1gknse6 r-fontSize-adyw6z r-lineHeight-135wba7"
-        dir="ltr"
-        role="heading"
-      >
-        Renseigne ton âge
-      </h3>
-      <div
-        class="css-view-175oi2r r-height-10ptun7"
-      />
       <div
         class="css-view-175oi2r r-alignItems-1awozwy r-width-13qz1uu"
       >
@@ -1676,12 +1654,12 @@ Object {
               class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-1enofrn r-lineHeight-1cwl3u0"
               dir="ltr"
             >
-              Assure-toi que ton âge est exact. Il ne pourra plus être modifié par la suite et nous vérifions tes informations.
+              Assure-toi que ton âge est exact. Nous le vérifions et il ne pourra plus être modifié par la suite.
             </div>
           </div>
         </div>
         <div
-          class="css-view-175oi2r r-height-eu3ka"
+          class="css-view-175oi2r r-height-1472mwg"
         />
         <div
           aria-describedby="testUuidV4"
@@ -2897,7 +2875,7 @@ Object {
           class="css-view-175oi2r r-height-10ptun7"
         />
         <div
-          class="css-view-175oi2r r-height-eu3ka"
+          class="css-view-175oi2r r-height-3da1kt"
         />
         <button
           aria-label="Continuer"
@@ -2973,7 +2951,7 @@ Object {
 }
 `;
 
-exports[`<SetBirthdayV2 /> touch device should render correctly 1`] = `
+exports[`<SetBirthday /> touch device should render correctly 1`] = `
 Object {
   "asFragment": [Function],
   "baseElement": .c2 {
@@ -3048,17 +3026,6 @@ Object {
       <form
         class="c0"
       >
-        <h3
-          aria-level="3"
-          class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-1gknse6 r-fontSize-adyw6z r-lineHeight-135wba7"
-          dir="ltr"
-          role="heading"
-        >
-          Renseigne ton âge
-        </h3>
-        <div
-          class="css-view-175oi2r r-height-10ptun7"
-        />
         <div
           class="css-view-175oi2r r-alignItems-1awozwy r-width-13qz1uu"
         >
@@ -3086,12 +3053,12 @@ Object {
                 class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-1enofrn r-lineHeight-1cwl3u0"
                 dir="ltr"
               >
-                Assure-toi que ton âge est exact. Il ne pourra plus être modifié par la suite et nous vérifions tes informations.
+                Assure-toi que ton âge est exact. Nous le vérifions et il ne pourra plus être modifié par la suite.
               </div>
             </div>
           </div>
           <div
-            class="css-view-175oi2r r-height-eu3ka"
+            class="css-view-175oi2r r-height-1472mwg"
           />
           <div
             class="css-view-175oi2r r-alignItems-1habvwh r-display-6koalj r-flexDirection-eqz5dr r-maxWidth-1ik5qf4 r-width-13qz1uu"
@@ -4086,7 +4053,7 @@ Object {
             </div>
           </div>
           <div
-            class="css-view-175oi2r r-height-eu3ka"
+            class="css-view-175oi2r r-height-3da1kt"
           />
           <button
             aria-label="Continuer"
@@ -4180,17 +4147,6 @@ Object {
     <form
       class="c0"
     >
-      <h3
-        aria-level="3"
-        class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-1gknse6 r-fontSize-adyw6z r-lineHeight-135wba7"
-        dir="ltr"
-        role="heading"
-      >
-        Renseigne ton âge
-      </h3>
-      <div
-        class="css-view-175oi2r r-height-10ptun7"
-      />
       <div
         class="css-view-175oi2r r-alignItems-1awozwy r-width-13qz1uu"
       >
@@ -4218,12 +4174,12 @@ Object {
               class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-1enofrn r-lineHeight-1cwl3u0"
               dir="ltr"
             >
-              Assure-toi que ton âge est exact. Il ne pourra plus être modifié par la suite et nous vérifions tes informations.
+              Assure-toi que ton âge est exact. Nous le vérifions et il ne pourra plus être modifié par la suite.
             </div>
           </div>
         </div>
         <div
-          class="css-view-175oi2r r-height-eu3ka"
+          class="css-view-175oi2r r-height-1472mwg"
         />
         <div
           class="css-view-175oi2r r-alignItems-1habvwh r-display-6koalj r-flexDirection-eqz5dr r-maxWidth-1ik5qf4 r-width-13qz1uu"
@@ -5218,7 +5174,7 @@ Object {
           </div>
         </div>
         <div
-          class="css-view-175oi2r r-height-eu3ka"
+          class="css-view-175oi2r r-height-3da1kt"
         />
         <button
           aria-label="Continuer"

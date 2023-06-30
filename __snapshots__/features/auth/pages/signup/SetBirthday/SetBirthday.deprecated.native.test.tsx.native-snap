@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<SetBirthdayV2 /> should render correctly 1`] = `
+exports[`<SetBirthday /> should render correctly 1`] = `
 <View
   style={
     Array [
@@ -11,30 +11,6 @@ exports[`<SetBirthdayV2 /> should render correctly 1`] = `
     ]
   }
 >
-  <Text
-    style={
-      Array [
-        Object {
-          "color": "#161617",
-          "fontFamily": "Montserrat-Bold",
-          "fontSize": 20,
-          "lineHeight": 24,
-        },
-      ]
-    }
-  >
-    Renseigne ton âge
-  </Text>
-  <View
-    numberOfSpaces={4}
-    style={
-      Array [
-        Object {
-          "height": 16,
-        },
-      ]
-    }
-  />
   <View
     style={
       Array [
@@ -105,16 +81,16 @@ exports[`<SetBirthdayV2 /> should render correctly 1`] = `
           }
           textColor="#161617"
         >
-          Assure-toi que ton âge est exact. Il ne pourra plus être modifié par la suite et nous vérifions tes informations.
+          Assure-toi que ton âge est exact. Nous le vérifions et il ne pourra plus être modifié par la suite.
         </Text>
       </View>
     </View>
     <View
-      numberOfSpaces={10}
+      numberOfSpaces={6}
       style={
         Array [
           Object {
-            "height": 40,
+            "height": 24,
           },
         ]
       }
@@ -257,11 +233,11 @@ exports[`<SetBirthdayV2 /> should render correctly 1`] = `
       title="Select date"
     />
     <View
-      numberOfSpaces={10}
+      numberOfSpaces={2}
       style={
         Array [
           Object {
-            "height": 40,
+            "height": 8,
           },
         ]
       }

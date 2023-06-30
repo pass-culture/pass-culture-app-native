@@ -6,10 +6,9 @@ import { Login } from 'features/auth/pages/login/Login'
 import { AccountCreated } from 'features/auth/pages/signup/AccountCreated/AccountCreated'
 import { AfterSignupEmailValidationBuffer } from 'features/auth/pages/signup/AfterSignupEmailValidationBuffer/AfterSignupEmailValidationBuffer'
 import { NotYetUnderageEligibility } from 'features/auth/pages/signup/NotYetUnderageEligibility/NotYetUnderageEligibility'
-import { SignupConfirmationEmailSent } from 'features/auth/pages/signup/SignupConfirmationEmailSent/SignupConfirmationEmailSent'
+import { SignupConfirmationEmailSentPage } from 'features/auth/pages/signup/SignupConfirmationEmailSent/SignupConfirmationEmailSentPage'
 import { SignupConfirmationExpiredLink } from 'features/auth/pages/signup/SignupConfirmationExpiredLink/SignupConfirmationExpiredLink'
 import { SignupForm } from 'features/auth/pages/signup/SignupForm'
-import { SignupForm as NewSignupForm } from 'features/auth/pages/signup/SignupFormV2'
 import { VerifyEligibility } from 'features/auth/pages/signup/VerifyEligiblity/VerifyEligibility'
 import { AccountReactivationSuccess } from 'features/auth/pages/suspendedAccount/AccountReactivationSuccess/AccountReactivationSuccess'
 import { FraudulentAccount } from 'features/auth/pages/suspendedAccount/FraudulentAccount/FraudulentAccount'
@@ -362,14 +361,8 @@ export const routes: Route[] = [
     options: { title: 'Création de compte' },
   },
   {
-    name: 'SignupFormV2',
-    component: NewSignupForm,
-    path: 'creation-compte-new',
-    options: { title: 'Création de compte NEW' },
-  },
-  {
     name: 'SignupConfirmationEmailSent',
-    component: SignupConfirmationEmailSent,
+    component: SignupConfirmationEmailSentPage,
     path: 'email-confirmation-creation-compte/envoye',
     options: { title: 'Email création de compte envoyé' },
   },

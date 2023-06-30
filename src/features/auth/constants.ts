@@ -1,5 +1,4 @@
-export const SIGNUP_NUMBER_OF_STEPS = 4 // email, password, birthday, cgu
-export const NEW_SIGNUP_NUMBER_OF_STEPS = 5 // email, password, birthday, cgu, email confirmation
+export const SIGNUP_NUMBER_OF_STEPS = 5 // email, password, birthday, cgu, email confirmation
 
 export const DEFAULT_YOUNGEST_AGE = 15
 export const UNDER_YOUNGEST_AGE = DEFAULT_YOUNGEST_AGE - 1

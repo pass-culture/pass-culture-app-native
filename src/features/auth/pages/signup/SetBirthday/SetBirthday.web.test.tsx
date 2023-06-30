@@ -16,14 +16,14 @@ describe('<SetBirthday />', () => {
   })
 
   describe('submit button behavior', () => {
-    it('should be disabled the button by default', () => {
+    it('should disable continue button when user hasnt given his birthday yet', () => {
       render(<SetBirthday {...props} />)
 
       const continueButton = screen.getByTestId('Continuer')
       expect(continueButton).toBeDisabled()
     })
 
-    it('should be enabled the button when the date is valid', () => {
+    it('should enable continue button when birthdate is valid', () => {
       render(<SetBirthday {...props} />)
       fireEvent.change(screen.getByTestId('select-Jour'), { target: { value: '1' } })
       fireEvent.change(screen.getByTestId('select-Mois'), { target: { value: 'Janvier' } })
@@ -47,6 +47,7 @@ describe('<SetBirthday />', () => {
   describe('no touch device', () => {
     it('should render correctly', () => {
       const renderAPI = render(<SetBirthday {...props} />, { theme: { isTouch: false } })
+
       expect(renderAPI).toMatchSnapshot()
     })
   })

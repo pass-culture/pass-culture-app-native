@@ -21,14 +21,14 @@ const props = {
 jest.useFakeTimers('legacy')
 
 describe('<SetEmail />', () => {
-  it('should display disabled validate button when email input is not filled', () => {
+  it('should disable validate button when email input is not filled', () => {
     const { getByText } = render(<SetEmail {...props} />)
 
     const button = getByText('Continuer')
     expect(button).toBeDisabled()
   })
 
-  it('should display disabled validate button when email input is filled spaces', async () => {
+  it('should display disabled validate button when email input is filled with spaces', async () => {
     const { getByText, getByPlaceholderText } = render(<SetEmail {...props} />)
 
     await act(async () => {
@@ -38,18 +38,6 @@ describe('<SetEmail />', () => {
 
     const button = getByText('Continuer')
     expect(button).toBeDisabled()
-  })
-
-  it('should display disabled validate button when email input is filled', async () => {
-    const { getByText, getByPlaceholderText } = render(<SetEmail {...props} />)
-
-    await act(async () => {
-      const emailInput = getByPlaceholderText('tonadresse@email.com')
-      fireEvent.changeText(emailInput, 'john.doe@gmail.com')
-    })
-
-    const button = getByText('Continuer')
-    expect(button).toBeEnabled()
   })
 
   it('should enable validate button when email input is filled', async () => {
@@ -64,7 +52,7 @@ describe('<SetEmail />', () => {
     expect(button).toBeEnabled()
   })
 
-  it('should call goToNextStep() on valid email with email and newsletter params', async () => {
+  it('should go to next step on valid email with email and newsletter params', async () => {
     const { getByText, getByPlaceholderText } = render(<SetEmail {...props} />)
 
     await act(async () => {
@@ -83,13 +71,14 @@ describe('<SetEmail />', () => {
     })
   })
 
-  it('should not display email help message by default', async () => {
+  it('should hide email help message when email is valid', async () => {
     const { getByText, getByPlaceholderText, queryByText } = render(<SetEmail {...props} />)
 
     await act(async () => {
       const emailInput = getByPlaceholderText('tonadresse@email.com')
       fireEvent.changeText(emailInput, 'john.doe@gmail.com')
-
+    })
+    await act(async () => {
       const continueButton = getByText('Continuer')
       fireEvent.press(continueButton)
     })
@@ -101,7 +90,7 @@ describe('<SetEmail />', () => {
     ).toBeFalsy()
   })
 
-  it('should reject email when trying to submit', async () => {
+  it('should reject invalid email when trying to submit', async () => {
     const { getByText, getByPlaceholderText, queryByText } = render(<SetEmail {...props} />)
 
     await act(async () => {

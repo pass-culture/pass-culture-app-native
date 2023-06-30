@@ -180,6 +180,17 @@ Object {
       <form
         class="c0"
       >
+        <h2
+          aria-level="2"
+          class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-1gknse6 r-fontSize-adyw6z r-lineHeight-135wba7"
+          dir="ltr"
+          role="heading"
+        >
+          Renseigne ton âge
+        </h2>
+        <div
+          class="css-view-175oi2r r-height-10ptun7"
+        />
         <div
           class="css-view-175oi2r r-alignItems-1awozwy r-width-13qz1uu"
         >
@@ -207,12 +218,12 @@ Object {
                 class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-1enofrn r-lineHeight-1cwl3u0"
                 dir="ltr"
               >
-                Assure-toi que ton âge est exact. Nous le vérifions et il ne pourra plus être modifié par la suite.
+                Assure-toi que ton âge est exact. Il ne pourra plus être modifié par la suite et nous vérifions tes informations.
               </div>
             </div>
           </div>
           <div
-            class="css-view-175oi2r r-height-1472mwg"
+            class="css-view-175oi2r r-height-eu3ka"
           />
           <div
             aria-describedby="testUuidV4"
@@ -1428,7 +1439,7 @@ Object {
             class="css-view-175oi2r r-height-10ptun7"
           />
           <div
-            class="css-view-175oi2r r-height-3da1kt"
+            class="css-view-175oi2r r-height-eu3ka"
           />
           <button
             aria-label="Continuer"
@@ -1627,6 +1638,17 @@ Object {
     <form
       class="c0"
     >
+      <h2
+        aria-level="2"
+        class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-1gknse6 r-fontSize-adyw6z r-lineHeight-135wba7"
+        dir="ltr"
+        role="heading"
+      >
+        Renseigne ton âge
+      </h2>
+      <div
+        class="css-view-175oi2r r-height-10ptun7"
+      />
       <div
         class="css-view-175oi2r r-alignItems-1awozwy r-width-13qz1uu"
       >
@@ -1654,12 +1676,12 @@ Object {
               class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-1enofrn r-lineHeight-1cwl3u0"
               dir="ltr"
             >
-              Assure-toi que ton âge est exact. Nous le vérifions et il ne pourra plus être modifié par la suite.
+              Assure-toi que ton âge est exact. Il ne pourra plus être modifié par la suite et nous vérifions tes informations.
             </div>
           </div>
         </div>
         <div
-          class="css-view-175oi2r r-height-1472mwg"
+          class="css-view-175oi2r r-height-eu3ka"
         />
         <div
           aria-describedby="testUuidV4"
@@ -2875,7 +2897,7 @@ Object {
           class="css-view-175oi2r r-height-10ptun7"
         />
         <div
-          class="css-view-175oi2r r-height-3da1kt"
+          class="css-view-175oi2r r-height-eu3ka"
         />
         <button
           aria-label="Continuer"
@@ -3026,6 +3048,17 @@ Object {
       <form
         class="c0"
       >
+        <h2
+          aria-level="2"
+          class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-1gknse6 r-fontSize-adyw6z r-lineHeight-135wba7"
+          dir="ltr"
+          role="heading"
+        >
+          Renseigne ton âge
+        </h2>
+        <div
+          class="css-view-175oi2r r-height-10ptun7"
+        />
         <div
           class="css-view-175oi2r r-alignItems-1awozwy r-width-13qz1uu"
         >
@@ -3053,12 +3086,12 @@ Object {
                 class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-1enofrn r-lineHeight-1cwl3u0"
                 dir="ltr"
               >
-                Assure-toi que ton âge est exact. Nous le vérifions et il ne pourra plus être modifié par la suite.
+                Assure-toi que ton âge est exact. Il ne pourra plus être modifié par la suite et nous vérifions tes informations.
               </div>
             </div>
           </div>
           <div
-            class="css-view-175oi2r r-height-1472mwg"
+            class="css-view-175oi2r r-height-eu3ka"
           />
           <div
             class="css-view-175oi2r r-alignItems-1habvwh r-display-6koalj r-flexDirection-eqz5dr r-maxWidth-1ik5qf4 r-width-13qz1uu"
@@ -4053,7 +4086,7 @@ Object {
             </div>
           </div>
           <div
-            class="css-view-175oi2r r-height-3da1kt"
+            class="css-view-175oi2r r-height-eu3ka"
           />
           <button
             aria-label="Continuer"
@@ -4147,6 +4180,17 @@ Object {
     <form
       class="c0"
     >
+      <h2
+        aria-level="2"
+        class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-1gknse6 r-fontSize-adyw6z r-lineHeight-135wba7"
+        dir="ltr"
+        role="heading"
+      >
+        Renseigne ton âge
+      </h2>
+      <div
+        class="css-view-175oi2r r-height-10ptun7"
+      />
       <div
         class="css-view-175oi2r r-alignItems-1awozwy r-width-13qz1uu"
       >
@@ -4174,12 +4218,12 @@ Object {
               class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-1enofrn r-lineHeight-1cwl3u0"
               dir="ltr"
             >
-              Assure-toi que ton âge est exact. Nous le vérifions et il ne pourra plus être modifié par la suite.
+              Assure-toi que ton âge est exact. Il ne pourra plus être modifié par la suite et nous vérifions tes informations.
             </div>
           </div>
         </div>
         <div
-          class="css-view-175oi2r r-height-1472mwg"
+          class="css-view-175oi2r r-height-eu3ka"
         />
         <div
           class="css-view-175oi2r r-alignItems-1habvwh r-display-6koalj r-flexDirection-eqz5dr r-maxWidth-1ik5qf4 r-width-13qz1uu"
@@ -5174,7 +5218,7 @@ Object {
           </div>
         </div>
         <div
-          class="css-view-175oi2r r-height-3da1kt"
+          class="css-view-175oi2r r-height-eu3ka"
         />
         <button
           aria-label="Continuer"

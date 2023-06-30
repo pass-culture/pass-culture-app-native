@@ -55,14 +55,6 @@ export function NavigationSignUp(): React.JSX.Element {
           onPress={() => navigate('NewIdentificationFlow')}
         />
         <LinkToComponent
-          title={'Email envoyé'}
-          onPress={() =>
-            navigate('SignupConfirmationEmailSent', {
-              email: 'jean.dupont@gmail.com',
-            })
-          }
-        />
-        <LinkToComponent
           title={'Account confirmation lien expiré'}
           onPress={() =>
             navigate('SignupConfirmationExpiredLink', {

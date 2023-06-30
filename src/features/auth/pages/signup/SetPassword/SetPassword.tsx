@@ -3,17 +3,18 @@ import React, { FunctionComponent, useCallback } from 'react'
 import { useForm } from 'react-hook-form'
 
 import { setPasswordSchema } from 'features/auth/pages/signup/SetPassword/schema/setPasswordSchema'
-import { PreValidationSignupStepProps } from 'features/auth/types'
+import { PreValidationSignupNormalStepProps } from 'features/auth/types'
 import { PasswordInputController } from 'shared/forms/controllers/PasswordInputController'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { Form } from 'ui/components/Form'
-import { Spacer } from 'ui/theme'
+import { Spacer, Typo } from 'ui/theme'
+import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 type FormValues = {
   password: string
 }
 
-export const SetPassword: FunctionComponent<PreValidationSignupStepProps> = (props) => {
+export const SetPassword: FunctionComponent<PreValidationSignupNormalStepProps> = (props) => {
   const {
     control,
     handleSubmit,
@@ -35,18 +36,19 @@ export const SetPassword: FunctionComponent<PreValidationSignupStepProps> = (pro
 
   return (
     <Form.MaxWidth>
+      <Typo.Title3 {...getHeadingAttrs(2)}>Choisis un mot de passe</Typo.Title3>
+      <Spacer.Column numberOfSpaces={10} />
       <PasswordInputController
         control={control}
-        name={'password'}
+        name="password"
         label="Mot de passe"
         placeholder="Ton mot de passe"
-        isRequiredField
         withSecurityRules
         securityRulesAlwaysVisible
         autoFocus
         nativeAutoFocus
       />
-      <Spacer.Column numberOfSpaces={6} />
+      <Spacer.Column numberOfSpaces={10} />
       <ButtonPrimary
         wording="Continuer"
         accessibilityLabel={props.accessibilityLabelForNextStep}
