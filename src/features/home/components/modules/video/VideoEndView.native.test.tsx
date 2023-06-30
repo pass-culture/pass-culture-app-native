@@ -2,6 +2,7 @@ import React from 'react'
 
 import { VideoEndView } from 'features/home/components/modules/video/VideoEndView'
 import { mockedAlgoliaResponse } from 'libs/algolia/__mocks__/mockedAlgoliaResponse'
+import { analytics } from 'libs/analytics'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, fireEvent, render, screen } from 'tests/utils'
 
@@ -28,6 +29,22 @@ describe('VideoEndView', () => {
 
     expect(mockHideModal).toHaveBeenCalledTimes(1)
   })
+
+  it('should log ConsultOffer when pressing "Voir l’offre" button', () => {
+    renderVideoEndView()
+
+    const seeOfferButton = screen.getByText('Voir l’offre')
+
+    fireEvent.press(seeOfferButton)
+
+    expect(analytics.logConsultOffer).toHaveBeenNthCalledWith(1, {
+      from: 'video',
+      offerId: +mockOffer.objectID,
+      moduleId: 'abcd',
+      moduleName: 'salut à tous c’est lujipeka',
+      homeEntryId: 'xyz',
+    })
+  })
 })
 
 const renderVideoEndView = async () => {
@@ -38,6 +55,9 @@ const renderVideoEndView = async () => {
       offer={mockOffer}
       onPressSeeOffer={mockHideModal}
       style={viewDimensions}
+      moduleId={'abcd'}
+      moduleName={'salut à tous c’est lujipeka'}
+      homeEntryId={'xyz'}
     />,
     {
       /* eslint-disable local-rules/no-react-query-provider-hoc */

@@ -9,7 +9,7 @@ import {
 import { CategoryListModule } from 'features/home/components/modules/categories/CategoryListModule'
 import { RecommendationModule } from 'features/home/components/modules/RecommendationModule'
 import { ThematicHighlightModule } from 'features/home/components/modules/ThematicHighlightModule'
-import { VideoModule } from 'features/home/components/modules/VideoModule'
+import { VideoModule } from 'features/home/components/modules/video/VideoModule'
 import {
   HomepageModule,
   isBusinessModule,
@@ -95,7 +95,7 @@ const UnmemoizedModule = ({
     return <CategoryListModule {...item} homeEntryId={homeEntryId} index={index} />
   }
   if (isVideoModule(item)) {
-    return <VideoModule {...item} />
+    return <VideoModule {...item} homeEntryId={homeEntryId} index={index} />
   }
 
   return <React.Fragment></React.Fragment>

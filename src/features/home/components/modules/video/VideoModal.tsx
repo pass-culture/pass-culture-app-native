@@ -3,9 +3,11 @@ import { View } from 'react-native'
 import styled from 'styled-components/native'
 
 import { getTagColor } from 'features/home/components/helpers/getTagColor'
-import { OfferVideoModule } from 'features/home/components/modules/OfferVideoModule'
-import { VideoPlayer } from 'features/home/components/VideoPlayer'
+import { OfferVideoModule } from 'features/home/components/modules/video/OfferVideoModule'
+import { VideoPlayer } from 'features/home/components/modules/video/VideoPlayer'
 import { VideoModule } from 'features/home/types'
+import { analytics } from 'libs/analytics'
+import { ContentTypes } from 'libs/contentful'
 import { formatToFrenchDate } from 'libs/parsers'
 import { Offer } from 'shared/offer/types'
 import { theme } from 'theme'
@@ -19,12 +21,19 @@ interface VideoModalProps extends VideoModule {
   offer: Offer
   visible: boolean
   hideModal: () => void
+  moduleId: string
+  homeEntryId: string
 }
 
 export const VideoModal: React.FC<VideoModalProps> = (props) => {
   const StyledCloseIcon = styled(Close).attrs(({ theme }) => ({
     size: theme.icons.sizes.smaller,
   }))``
+
+  const onPressCloseModal = () => {
+    analytics.logHasDismissedModal({ moduleId: props.moduleId, modalType: ContentTypes.VIDEO })
+    props.hideModal()
+  }
 
   return (
     <AppModal
@@ -38,6 +47,9 @@ export const VideoModal: React.FC<VideoModalProps> = (props) => {
         youtubeVideoId={props.youtubeVideoId}
         offer={props.offer}
         onPressSeeOffer={props.hideModal}
+        moduleId={props.moduleId}
+        moduleName={props.title}
+        homeEntryId={props.homeEntryId}
       />
       <StyledScrollView>
         <Spacer.Column numberOfSpaces={4} />
@@ -61,9 +73,17 @@ export const VideoModal: React.FC<VideoModalProps> = (props) => {
         <Spacer.Column numberOfSpaces={6} />
         <Typo.Title4>{props.offerTitle}</Typo.Title4>
         <Spacer.Column numberOfSpaces={4} />
-        <OfferVideoModule offer={props.offer} color={props.color} hideModal={props.hideModal} />
+        <OfferVideoModule
+          offer={props.offer}
+          color={props.color}
+          hideModal={props.hideModal}
+          moduleId={props.id}
+          moduleName={props.title}
+          analyticsFrom={'videoModal'}
+          homeEntryId={props.homeEntryId}
+        />
       </StyledScrollView>
-      <StyledTouchable onPress={props.hideModal} accessibilityLabel="Fermer la modale vidéo">
+      <StyledTouchable onPress={onPressCloseModal} accessibilityLabel="Fermer la modale vidéo">
         <StyledCloseIcon />
       </StyledTouchable>
     </AppModal>

@@ -6,6 +6,7 @@ import styled, { useTheme } from 'styled-components/native'
 import { getVideoPlayerDimensions } from 'features/home/components/helpers/getVideoPlayerDimensions'
 import { VideoEndView } from 'features/home/components/modules/video/VideoEndView'
 import { VideoErrorView } from 'features/home/components/modules/video/VideoErrorView'
+import { analytics } from 'libs/analytics'
 import { Offer } from 'shared/offer/types'
 import { theme } from 'theme'
 import { getSpacing } from 'ui/theme'
@@ -14,12 +15,18 @@ interface VideoPlayerProps {
   youtubeVideoId: string
   offer: Offer
   onPressSeeOffer: () => void
+  moduleId: string
+  moduleName: string
+  homeEntryId: string
 }
 
 export const VideoPlayer: React.FC<VideoPlayerProps> = ({
   youtubeVideoId,
   offer,
   onPressSeeOffer,
+  moduleId,
+  moduleName,
+  homeEntryId,
 }) => {
   const [isPlaying, setIsPlaying] = useState(true)
   const [hasFinishPlaying, setHasFinishPlaying] = useState(false)
@@ -45,6 +52,7 @@ export const VideoPlayer: React.FC<VideoPlayerProps> = ({
 
   const playVideo = () => {
     setIsPlaying(true)
+    analytics.logConsultVideo({ from: 'home', moduleId })
   }
 
   const replayVideo = () => {
@@ -53,12 +61,16 @@ export const VideoPlayer: React.FC<VideoPlayerProps> = ({
     setHasFinishPlaying(false)
   }
 
-  const onChangeState = useCallback((state: string) => {
-    if (state === 'ended') {
-      setIsPlaying(false)
-      setHasFinishPlaying(true)
-    }
-  }, [])
+  const onChangeState = useCallback(
+    (state: string) => {
+      if (state === 'ended') {
+        setIsPlaying(false)
+        setHasFinishPlaying(true)
+        analytics.logHasSeenAllVideo(moduleId)
+      }
+    },
+    [moduleId]
+  )
 
   return (
     <React.Fragment>
@@ -90,6 +102,9 @@ export const VideoPlayer: React.FC<VideoPlayerProps> = ({
           offer={offer}
           onPressSeeOffer={onPressSeeOffer}
           style={{ height: playerHeight, width: playerWidth }}
+          moduleId={moduleId}
+          moduleName={moduleName}
+          homeEntryId={homeEntryId}
         />
       )}
       {!!showErrorView && <VideoErrorView style={{ height: playerHeight, width: playerWidth }} />}

@@ -6,7 +6,7 @@ import styled from 'styled-components/native'
 
 import { VenueResponse } from 'api/gen'
 import { VenueDetails } from 'features/home/components/modules/venues/VenueDetails'
-import { VenueTypeLocationIcon } from 'features/home/components/VenueTypeLocationIcon'
+import { VenueTypeLocationIcon } from 'features/home/components/modules/venues/VenueTypeLocationIcon'
 import { VenueHit } from 'libs/algolia'
 import { analytics } from 'libs/analytics'
 import { Position } from 'libs/geolocation'
