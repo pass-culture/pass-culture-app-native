@@ -345,6 +345,8 @@ export const logEventAnalytics = {
     analytics.logEvent({ firebase: AnalyticsEvent.HAS_OPENED_COOKIES_ACCORDION }, { type }),
   logHasRefusedCookie: () => analytics.logEvent({ firebase: AnalyticsEvent.HAS_REFUSED_COOKIE }),
   logHasRequestedCode: () => analytics.logEvent({ firebase: AnalyticsEvent.HAS_REQUESTED_CODE }),
+  logHasSeenAllVideo: (moduleId: string) =>
+    analytics.logEvent({ firebase: AnalyticsEvent.HAS_SEEN_ALL_VIDEO }, { moduleId }),
   logHasSharedApp: (type: string) =>
     analytics.logEvent({ firebase: AnalyticsEvent.HAS_SHARED_APP }, { type }),
   logHasSkippedCulturalSurvey: () =>

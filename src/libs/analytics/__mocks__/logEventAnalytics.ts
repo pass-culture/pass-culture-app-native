@@ -84,6 +84,7 @@ export const logEventAnalytics: typeof actualLogEventAnalytics = {
   logHasOpenedCookiesAccordion: jest.fn(),
   logHasRefusedCookie: jest.fn(),
   logHasRequestedCode: jest.fn(),
+  logHasSeenAllVideo: jest.fn(),
   logHasSharedApp: jest.fn(),
   logHasSkippedCulturalSurvey: jest.fn(),
   logHasSkippedTutorial: jest.fn(),

@@ -76,6 +76,7 @@ export enum AnalyticsEvent {
   HAS_OPENED_COOKIES_ACCORDION = 'HasOpenedCookiesAccordion',
   HAS_REFUSED_COOKIE = 'HasRefusedCookie',
   HAS_REQUESTED_CODE = 'HasRequestedCode',
+  HAS_SEEN_ALL_VIDEO = 'HasSeenAllVideo',
   HAS_SHARED_APP = 'HasSharedApp',
   HAS_SKIPPED_CULTURAL_SURVEY = 'hasSkippedCulturalSurvey',
   HAS_SKIPPED_TUTORIAL = 'HasSkippedTutorial',

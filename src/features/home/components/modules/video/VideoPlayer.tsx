@@ -61,12 +61,16 @@ export const VideoPlayer: React.FC<VideoPlayerProps> = ({
     setHasFinishPlaying(false)
   }
 
-  const onChangeState = useCallback((state: string) => {
-    if (state === 'ended') {
-      setIsPlaying(false)
-      setHasFinishPlaying(true)
-    }
-  }, [])
+  const onChangeState = useCallback(
+    (state: string) => {
+      if (state === 'ended') {
+        setIsPlaying(false)
+        setHasFinishPlaying(true)
+        analytics.logHasSeenAllVideo(moduleId)
+      }
+    },
+    [moduleId]
+  )
 
   return (
     <React.Fragment>
