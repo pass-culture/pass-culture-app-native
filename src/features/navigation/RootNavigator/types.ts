@@ -17,6 +17,8 @@ export type Referrals =
   | 'bookingimpossible'
   | 'similar_offer'
   | 'setemail'
+  | 'videoModal'
+  | 'video'
 
 type BaseThematicHome = {
   homeId: string
