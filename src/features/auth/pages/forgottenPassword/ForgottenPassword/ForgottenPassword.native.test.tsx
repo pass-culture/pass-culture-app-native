@@ -5,7 +5,7 @@ import { captureMonitoringError, eventMonitoring } from 'libs/monitoring'
 import { useNetInfoContext as useNetInfoContextDefault } from 'libs/network/NetInfoWrapper'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { requestPasswordResetFail, requestPasswordResetSuccess, server } from 'tests/server'
-import { simulateWebviewMessage, fireEvent, render, waitFor } from 'tests/utils'
+import { simulateWebviewMessage, fireEvent, render, waitFor, screen } from 'tests/utils'
 import * as emailCheck from 'ui/components/inputs/emailCheck'
 
 import { ForgottenPassword } from './ForgottenPassword'
@@ -22,22 +22,28 @@ beforeEach(() => {
 })
 
 describe('<ForgottenPassword />', () => {
-  it('should enable validate button when email input is filled', async () => {
-    const { getByPlaceholderText, getByText } = renderForgottenPassword()
+  it('should match snapshot', () => {
+    renderForgottenPassword()
 
-    const emailInput = getByPlaceholderText('tonadresse@email.com')
+    expect(screen).toMatchSnapshot()
+  })
+
+  it('should enable validate button when email input is filled', async () => {
+    renderForgottenPassword()
+
+    const emailInput = screen.getByPlaceholderText('tonadresse@email.com')
     fireEvent.changeText(emailInput, 'john.doe@gmail.com')
 
     await waitFor(() => {
-      const validateButton = getByText('Valider')
+      const validateButton = screen.getByText('Valider')
       expect(validateButton).toBeEnabled()
     })
   })
 
   it('should redirect to Login when clicking on ArrowPrevious icon', async () => {
-    const { getByTestId } = renderForgottenPassword()
+    renderForgottenPassword()
 
-    const leftIcon = getByTestId('Revenir en arrière')
+    const leftIcon = screen.getByTestId('Revenir en arrière')
     fireEvent.press(leftIcon)
 
     await waitFor(() => {
@@ -47,40 +53,40 @@ describe('<ForgottenPassword />', () => {
 
   it("should NOT open reCAPTCHA challenge's modal when there is no network", () => {
     simulateNoNetwork()
-    const renderAPI = renderForgottenPassword()
-    const recaptchaWebviewModal = renderAPI.getByTestId('recaptcha-webview-modal')
+    renderForgottenPassword()
+    const recaptchaWebviewModal = screen.getByTestId('recaptcha-webview-modal')
 
     expect(recaptchaWebviewModal.props.visible).toBeFalsy()
 
-    const emailInput = renderAPI.getByPlaceholderText('tonadresse@email.com')
+    const emailInput = screen.getByPlaceholderText('tonadresse@email.com')
     fireEvent.changeText(emailInput, 'john.doe@gmail.com')
-    fireEvent.press(renderAPI.getByText('Valider'))
+    fireEvent.press(screen.getByText('Valider'))
 
     expect(recaptchaWebviewModal.props.visible).toBeFalsy()
-    expect(renderAPI.queryByText('Hors connexion : en attente du réseau.')).toBeTruthy()
-    expect(renderAPI.queryByTestId('Chargement en cours')).toBeNull()
+    expect(screen.queryByText('Hors connexion : en attente du réseau.')).toBeTruthy()
+    expect(screen.queryByTestId('Chargement en cours')).toBeNull()
   })
 
   it("should open reCAPTCHA challenge's modal when pressing on validate button", () => {
-    const renderAPI = renderForgottenPassword()
-    const recaptchaWebviewModal = renderAPI.getByTestId('recaptcha-webview-modal')
+    renderForgottenPassword()
+    const recaptchaWebviewModal = screen.getByTestId('recaptcha-webview-modal')
 
     expect(recaptchaWebviewModal.props.visible).toBeFalsy()
 
-    const emailInput = renderAPI.getByPlaceholderText('tonadresse@email.com')
+    const emailInput = screen.getByPlaceholderText('tonadresse@email.com')
     fireEvent.changeText(emailInput, 'john.doe@gmail.com')
-    fireEvent.press(renderAPI.getByText('Valider'))
+    fireEvent.press(screen.getByText('Valider'))
 
     expect(recaptchaWebviewModal.props.visible).toBeTruthy()
   })
 
   it('should redirect to ResetPasswordEmailSent when password reset request is successful', async () => {
-    const renderAPI = renderForgottenPassword()
+    renderForgottenPassword()
 
-    const emailInput = renderAPI.getByPlaceholderText('tonadresse@email.com')
+    const emailInput = screen.getByPlaceholderText('tonadresse@email.com')
     fireEvent.changeText(emailInput, 'john.doe@gmail.com')
-    fireEvent.press(renderAPI.getByText('Valider'))
-    const recaptchaWebview = renderAPI.getByTestId('recaptcha-webview')
+    fireEvent.press(screen.getByText('Valider'))
+    const recaptchaWebview = screen.getByTestId('recaptcha-webview')
     simulateWebviewMessage(recaptchaWebview, '{ "message": "success", "token": "fakeToken" }')
 
     await waitFor(() => {
@@ -88,22 +94,22 @@ describe('<ForgottenPassword />', () => {
       expect(replace).toHaveBeenCalledWith('ResetPasswordEmailSent', {
         email: 'john.doe@gmail.com',
       })
-      expect(renderAPI.queryByTestId('Chargement en cours')).toBeNull()
+      expect(screen.queryByTestId('Chargement en cours')).toBeNull()
     })
   })
 
   it('should NOT redirect to ResetPasswordEmailSent when reCAPTCHA challenge has failed', async () => {
-    const renderAPI = renderForgottenPassword()
+    renderForgottenPassword()
 
-    const emailInput = renderAPI.getByPlaceholderText('tonadresse@email.com')
+    const emailInput = screen.getByPlaceholderText('tonadresse@email.com')
     fireEvent.changeText(emailInput, 'john.doe@gmail.com')
-    fireEvent.press(renderAPI.getByText('Valider'))
-    const recaptchaWebview = renderAPI.getByTestId('recaptcha-webview')
+    fireEvent.press(screen.getByText('Valider'))
+    const recaptchaWebview = screen.getByTestId('recaptcha-webview')
     simulateWebviewMessage(recaptchaWebview, '{ "message": "error", "error": "someError" }')
 
     await waitFor(() => {
       expect(
-        renderAPI.queryByText(
+        screen.queryByText(
           'Un problème est survenu pendant la réinitialisation, réessaie plus tard.'
         )
       ).toBeTruthy()
@@ -113,23 +119,23 @@ describe('<ForgottenPassword />', () => {
         'ForgottenPasswordOnRecaptchaError'
       )
       expect(navigate).not.toBeCalled()
-      expect(renderAPI.queryByTestId('Chargement en cours')).toBeNull()
+      expect(screen.queryByTestId('Chargement en cours')).toBeNull()
     })
   })
 
   it('should NOT redirect to ResetPasswordEmailSent when reset password request API call has failed', async () => {
     server.use(requestPasswordResetFail())
-    const renderAPI = renderForgottenPassword()
+    renderForgottenPassword()
 
-    const emailInput = renderAPI.getByPlaceholderText('tonadresse@email.com')
+    const emailInput = screen.getByPlaceholderText('tonadresse@email.com')
     fireEvent.changeText(emailInput, 'john.doe@gmail.com')
-    fireEvent.press(renderAPI.getByText('Valider'))
-    const recaptchaWebview = renderAPI.getByTestId('recaptcha-webview')
+    fireEvent.press(screen.getByText('Valider'))
+    const recaptchaWebview = screen.getByTestId('recaptcha-webview')
     simulateWebviewMessage(recaptchaWebview, '{ "message": "success", "token": "fakeToken" }')
 
     await waitFor(() => {
       expect(
-        renderAPI.queryByText(
+        screen.queryByText(
           'Un problème est survenu pendant la réinitialisation, réessaie plus tard.'
         )
       ).toBeTruthy()
@@ -139,7 +145,7 @@ describe('<ForgottenPassword />', () => {
         'ForgottenPasswordRequestResetError'
       )
       expect(navigate).not.toBeCalled()
-      expect(renderAPI.queryByTestId('Chargement en cours')).toBeNull()
+      expect(screen.queryByTestId('Chargement en cours')).toBeNull()
     })
   })
 
@@ -153,12 +159,12 @@ describe('<ForgottenPassword />', () => {
     'should capture an info in Sentry when reset password request API call has failed and error code is %s',
     async (statusCode) => {
       server.use(requestPasswordResetFail(statusCode))
-      const renderAPI = renderForgottenPassword()
+      renderForgottenPassword()
 
-      const emailInput = renderAPI.getByPlaceholderText('tonadresse@email.com')
+      const emailInput = screen.getByPlaceholderText('tonadresse@email.com')
       fireEvent.changeText(emailInput, 'john.doe@gmail.com')
-      fireEvent.press(renderAPI.getByText('Valider'))
-      const recaptchaWebview = renderAPI.getByTestId('recaptcha-webview')
+      fireEvent.press(screen.getByText('Valider'))
+      const recaptchaWebview = screen.getByTestId('recaptcha-webview')
       simulateWebviewMessage(recaptchaWebview, '{ "message": "success", "token": "fakeToken" }')
 
       await waitFor(() => {
@@ -173,12 +179,12 @@ describe('<ForgottenPassword />', () => {
 
   it('should not capture an in Sentry when reset password request API call has failed and error code is 400', async () => {
     server.use(requestPasswordResetFail())
-    const renderAPI = renderForgottenPassword()
+    renderForgottenPassword()
 
-    const emailInput = renderAPI.getByPlaceholderText('tonadresse@email.com')
+    const emailInput = screen.getByPlaceholderText('tonadresse@email.com')
     fireEvent.changeText(emailInput, 'john.doe@gmail.com')
-    fireEvent.press(renderAPI.getByText('Valider'))
-    const recaptchaWebview = renderAPI.getByTestId('recaptcha-webview')
+    fireEvent.press(screen.getByText('Valider'))
+    const recaptchaWebview = screen.getByTestId('recaptcha-webview')
     simulateWebviewMessage(recaptchaWebview, '{ "message": "success", "token": "fakeToken" }')
 
     await waitFor(() => {
@@ -190,33 +196,33 @@ describe('<ForgottenPassword />', () => {
     it('should NOT display invalid email format when email format is valid', () => {
       const isEmailValid = jest.spyOn(emailCheck, 'isEmailValid')
 
-      const { getByText, getByPlaceholderText, queryByText } = renderForgottenPassword()
+      renderForgottenPassword()
 
-      const emailInput = getByPlaceholderText('tonadresse@email.com')
+      const emailInput = screen.getByPlaceholderText('tonadresse@email.com')
       fireEvent.changeText(emailInput, 'john.doe@gmail.com')
 
-      const continueButton = getByText('Valider')
+      const continueButton = screen.getByText('Valider')
       fireEvent.press(continueButton)
 
       expect(isEmailValid).toReturnWith(true)
       expect(
-        queryByText(
+        screen.queryByText(
           'L’e-mail renseigné est incorrect. Exemple de format attendu : edith.piaf@email.fr'
         )
       ).toBeFalsy()
     })
 
     it('should display invalid email format when email format is valid', () => {
-      const { getByText, getByPlaceholderText, queryByText } = renderForgottenPassword()
+      renderForgottenPassword()
 
-      const emailInput = getByPlaceholderText('tonadresse@email.com')
+      const emailInput = screen.getByPlaceholderText('tonadresse@email.com')
       fireEvent.changeText(emailInput, 'john.doe')
 
-      const continueButton = getByText('Valider')
+      const continueButton = screen.getByText('Valider')
       fireEvent.press(continueButton)
 
       expect(
-        queryByText(
+        screen.queryByText(
           'L’e-mail renseigné est incorrect. Exemple de format attendu : edith.piaf@email.fr'
         )
       ).toBeTruthy()
