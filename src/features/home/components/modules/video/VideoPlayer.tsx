@@ -52,6 +52,7 @@ export const VideoPlayer: React.FC<VideoPlayerProps> = ({
 
   const playVideo = () => {
     setIsPlaying(true)
+    analytics.logConsultVideo({ from: 'home', moduleId })
   }
 
   const replayVideo = () => {

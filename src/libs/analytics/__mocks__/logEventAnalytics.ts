@@ -50,6 +50,7 @@ export const logEventAnalytics: typeof actualLogEventAnalytics = {
   logConsultOffer: jest.fn(),
   logConsultTutorial: jest.fn(),
   logConsultVenue: jest.fn(),
+  logConsultVideo: jest.fn(),
   logConsultWholeOffer: jest.fn(),
   logConsultWithdrawal: jest.fn(),
   logContinueCGU: jest.fn(),
