@@ -7,14 +7,11 @@ import { useCategoryHomeLabelMapping, useCategoryIdMapping } from 'libs/subcateg
 import { Offer } from 'shared/offer/types'
 import { usePrePopulateOffer } from 'shared/offer/usePrePopulateOffer'
 import { styledButton } from 'ui/components/buttons/styledButton'
-import { ImageTile } from 'ui/components/ImageTile'
+import { OfferImage } from 'ui/components/tiles/OfferImage'
 import { Touchable } from 'ui/components/touchable/Touchable'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { PlainArrowNext } from 'ui/svg/icons/PlainArrowNext'
 import { Typo, getSpacing } from 'ui/theme'
-
-const OFFER_HEIGHT = getSpacing(28)
-const OFFER_WIDTH = getSpacing(20)
 
 type Props = {
   offer: Offer
@@ -29,6 +26,8 @@ export const OfferVideoModule: FunctionComponent<Props> = ({ offer, color, hideM
 
   const prePopulateOffer = usePrePopulateOffer()
 
+  const categoryId = mapping[offer.offer.subcategoryId]
+
   return (
     <OfferInsert
       navigateTo={{
@@ -40,13 +39,13 @@ export const OfferVideoModule: FunctionComponent<Props> = ({ offer, color, hideM
         prePopulateOffer({
           ...offer.offer,
           offerId: +offer.objectID,
-          categoryId: mapping[offer.offer.subcategoryId],
+          categoryId,
         })
       }}>
       <Row>
-        <OfferImage>
-          <ImageTile width={OFFER_WIDTH} height={OFFER_HEIGHT} uri={offer.offer.thumbUrl} />
-        </OfferImage>
+        <OfferImageContainer>
+          <OfferImage imageUrl={offer.offer.thumbUrl} categoryId={categoryId} size="medium" />
+        </OfferImageContainer>
         <OfferInformations>
           <CategoryText color={color}>{labelMapping[offer.offer.subcategoryId]}</CategoryText>
           <TitleText numberOfLines={2}>{offer.offer.name}</TitleText>
@@ -81,7 +80,7 @@ const OfferInformations = styled.View({
   flex: 1,
   marginRight: getSpacing(4),
 })
-const OfferImage = styled.View({
+const OfferImageContainer = styled.View({
   margin: getSpacing(4),
 })
 

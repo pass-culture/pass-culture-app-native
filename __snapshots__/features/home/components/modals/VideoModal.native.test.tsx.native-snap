@@ -454,43 +454,61 @@ exports[`VideoModal should render correctly if modal visible 1`] = `
                   }
                 >
                   <View
+                    size="medium"
                     style={
                       Array [
                         Object {
-                          "overflow": "hidden",
+                          "borderRadius": 4,
+                          "height": 112,
+                          "shadowColor": "#696A6F",
+                          "shadowOffset": Object {
+                            "height": 4,
+                            "width": 0,
+                          },
+                          "shadowOpacity": 0.2,
+                          "shadowRadius": 4,
+                          "width": 80,
                         },
-                        Array [
-                          Object {
-                            "backgroundColor": "#F1F1F4",
-                          },
-                          Object {
-                            "borderRadius": 8,
-                            "height": 112,
-                            "width": 80,
-                          },
-                        ],
                       ]
                     }
                   >
-                    <FastImageView
-                      defaultSource={null}
-                      resizeMode="cover"
-                      source={
-                        Object {
-                          "uri": "https://storage.gra.cloud.ovh.net/v1/AUTH_688df1e25bd84a48a3804e7fa8938085/storage-pc-dev/thumbs/mediations/CDNQ",
-                        }
-                      }
+                    <View
                       style={
-                        Object {
-                          "bottom": 0,
-                          "left": 0,
-                          "position": "absolute",
-                          "right": 0,
-                          "top": 0,
-                        }
+                        Array [
+                          Object {
+                            "overflow": "hidden",
+                          },
+                          Array [
+                            Object {
+                              "backgroundColor": "#F1F1F4",
+                              "borderRadius": 4,
+                              "height": 112,
+                              "width": 80,
+                            },
+                          ],
+                        ]
                       }
-                      testID="tileImage"
-                    />
+                    >
+                      <FastImageView
+                        defaultSource={null}
+                        resizeMode="cover"
+                        size="medium"
+                        source={
+                          Object {
+                            "uri": "https://storage.gra.cloud.ovh.net/v1/AUTH_688df1e25bd84a48a3804e7fa8938085/storage-pc-dev/thumbs/mediations/CDNQ",
+                          }
+                        }
+                        style={
+                          Object {
+                            "bottom": 0,
+                            "left": 0,
+                            "position": "absolute",
+                            "right": 0,
+                            "top": 0,
+                          }
+                        }
+                      />
+                    </View>
                   </View>
                 </View>
                 <View
