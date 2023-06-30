@@ -17,7 +17,7 @@ interface Location {
   longitude: number
 }
 
-export const SelectTravelOptions = () => {
+export const SelectTravelOptions = ({ navigation }) => {
   const [currentLocation, setCurrentLocation] = useState<Location | null>({
     latitude: 48.8566,
     longitude: 2.3522,
@@ -47,7 +47,6 @@ export const SelectTravelOptions = () => {
         console.error('Error getting current location:', error)
       }
     }
-
     fetchCurrentLocation()
   }, [position, permissionState, showGeolocPermissionModal])
 
@@ -87,7 +86,8 @@ export const SelectTravelOptions = () => {
     HyperSdkReact.isInitialised().then((init) => {
       console.log('isInitialised:', init)
     })
-    setModalVisible(false)
+    // setTimeout(() => {
+    // }, 5000)
   }
 
   useEffect(() => {
@@ -109,9 +109,12 @@ export const SelectTravelOptions = () => {
           if (res === 'SUCCESS') {
             // Initiation is successful, call process method
             HyperSdkReact.process(processPayload2)
+            setModalVisible(false)
+
             console.log('process_call: is called ', payload)
           } else {
             // Handle initiation failure
+            setModalVisible(true)
             console.log('Initiation failed.')
           }
           break
@@ -122,6 +125,7 @@ export const SelectTravelOptions = () => {
           if (processPayload?.action === 'terminate') {
             HyperSdkReact.terminate()
             console.log('process_call: is called ', processPayload)
+            setModalVisible(true)
           }
           break
         default:

@@ -3,7 +3,6 @@ import { Text } from 'react-native'
 import styled from 'styled-components/native'
 import { JsxElement } from 'typescript'
 import { Touchable } from 'ui/components/touchable/Touchable'
-import { Typo } from 'ui/theme'
 import { ColorsEnum } from 'ui/theme/colors'
 
 interface RadioButtonProps {
@@ -18,7 +17,9 @@ const RadioButton = ({ label, selected, onPress, isDisabled }: RadioButtonProps)
     <Touchable onPress={onPress} disabled={!!isDisabled}>
       <RadioButtonContainer>
         <RadioButtonOuterCircle>{selected && <RadioButtonInnerCircle />}</RadioButtonOuterCircle>
-        <RadioButtonLabel selected={selected}>{label}</RadioButtonLabel>
+        <RadioButtonLabel style={{}} disabled={isDisabled}>
+          {label}
+        </RadioButtonLabel>
       </RadioButtonContainer>
     </Touchable>
   )
@@ -33,12 +34,12 @@ const TravelPaymentRadio = ({ walletBalance, selectedItem, onPress }: any) => {
     fontWeight: '900',
   }
 
-  const radioLabel = (message: string, walletBalance?: number) => {
+  const radioLabel = (message: string, walletBalance?: number, disabled?: boolean) => {
     return (
       <RadioLabelWrapper>
-        <Typo.CaptionPrimary>{message} </Typo.CaptionPrimary>
+        <RadioButtonLabel disabled={disabled}>{message} </RadioButtonLabel>
         {walletBalance && (
-          <AmountBadge>
+          <AmountBadge disabled={disabled}>
             <Text style={badgeStyle}>€ {walletBalance} </Text>
           </AmountBadge>
         )}
@@ -60,7 +61,7 @@ const TravelPaymentRadio = ({ walletBalance, selectedItem, onPress }: any) => {
       />
       <RadioButton
         isDisabled={true}
-        label={radioLabel('Portefeuille du Pass Culture', walletBalance)}
+        label={radioLabel('Portefeuille du Pass Culture', walletBalance, true)}
         selected={selectedItem === 'Portefeuille...'}
         onPress={() => onSelectOPtion('Portefeuille...')}
       />
@@ -74,9 +75,8 @@ const RadioLabelWrapper = styled.View({
 const RadioButtonContainer = styled.View({
   flexDirection: 'row',
   alignItems: 'center',
-  // paddingTop: 10,
+  paddingTop: 10,
   paddingBottom: 10,
-  // minHeight: 20,
 })
 
 const RadioButtonOuterCircle = styled.View({
@@ -96,20 +96,19 @@ const RadioButtonInnerCircle = styled.View({
   backgroundColor: ColorsEnum.PRIMARY,
 })
 
-const RadioButtonLabel = styled.Text((selected) => ({
-  Color: selected ? ColorsEnum.PRIMARY : ColorsEnum.BLACK,
+const RadioButtonLabel = styled.Text(({ disabled }) => ({
+  color: !disabled ? ColorsEnum.BLACK : ColorsEnum.GREY,
   textAlign: 'center',
-  fontSize: selected ? 12 : 25,
-  fontWeight: selected ? '900' : '500',
-  marginLeft: '10',
+  fontWeight: !disabled ? '900' : '500',
+  marginLeft: 10,
 }))
-const AmountBadge = styled.View({
+const AmountBadge = styled.View(({ disabled }) => ({
   paddingRight: 8,
   paddingLeft: 8,
   minHeight: 18,
   borderRadius: 15,
   justifyContent: 'center',
-  backgroundColor: ColorsEnum.SECONDARY,
-})
+  backgroundColor: disabled ? ColorsEnum.GREY : ColorsEnum.SECONDARY,
+}))
 
 export default TravelPaymentRadio
