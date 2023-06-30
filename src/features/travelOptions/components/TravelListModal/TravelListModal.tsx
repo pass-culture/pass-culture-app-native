@@ -29,8 +29,8 @@ const TravelListModal = ({ toggleModal, visible, onProceed }: TravelListModalInt
 
   const { data: listArr, loading: isLoading, fetchData } = useTravelOptions()
 
-  const handleClick = () => {
-    onProceed()
+  const handleClick = async () => {
+    await onProceed()
   }
 
   useEffect(() => {
@@ -46,7 +46,7 @@ const TravelListModal = ({ toggleModal, visible, onProceed }: TravelListModalInt
     }
 
     getUserDetails()
-    handlePaymentSelection('Portefeuille...')
+    handlePaymentSelection('Payer en espèces')
   }, [])
 
   const minBalance = 50
@@ -67,7 +67,7 @@ const TravelListModal = ({ toggleModal, visible, onProceed }: TravelListModalInt
   })
 
   const noteTextStyle = {
-    color: ColorsEnum.GREY,
+    color: ColorsEnum.GREY_DARK,
     fontSize: 12,
     fontFamily: 'Montserrat',
     fontWeight: '500',
@@ -115,9 +115,10 @@ const TravelListModal = ({ toggleModal, visible, onProceed }: TravelListModalInt
   const accordianTitle = () => (
     <AccordianTextWrapper>
       <AccordianText>
-        {accordianStatus
-          ? 'Sélectionnez le mode de paiement'
-          : `Mode de paiement : Portefeuille PC € ${walletBalance}`}
+        {
+          accordianStatus ? 'Sélectionnez le mode de paiement' : 'Payer en espèces'
+          // `Mode de paiement : Portefeuille PC € ${walletBalance}`
+        }
       </AccordianText>
     </AccordianTextWrapper>
   )
@@ -135,7 +136,6 @@ const TravelListModal = ({ toggleModal, visible, onProceed }: TravelListModalInt
             visible={visible}
             customModalHeader={customHeader()}
             onBackButtonPress={() => toggleModal()}
-            onBackdropPress={() => toggleModal()}
             onRequestClose={() => toggleModal()}>
             <ModalContent>
               {isLoading ? (
@@ -238,12 +238,12 @@ const NoteContainer = styled.View({
   paddingTop: 5,
   paddingBottom: 5,
   width: '90%',
-  backgroundColor: ColorsEnum.GREY_LIGHT,
+  backgroundColor: ColorsEnum.GREY_MEDIUM,
   borderRadius: 12,
 })
 
 const TitleText = styled.Text({
-  fontSize: 16,
+  fontSize: 15,
   fontWeight: 'bold',
   fontFamily: 'Montserrat',
   color: ColorsEnum.BLACK,
