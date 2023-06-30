@@ -38,7 +38,6 @@ const renderVideoEndView = async () => {
       offer={mockOffer}
       onPressSeeOffer={mockHideModal}
       style={viewDimensions}
-      videoThumbnail={'http://toto'}
     />,
     {
       /* eslint-disable local-rules/no-react-query-provider-hoc */

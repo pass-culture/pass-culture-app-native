@@ -22,7 +22,6 @@ describe('VideoPlayer', () => {
         youtubeVideoId={videoModuleFixture.youtubeVideoId}
         offer={mockOffer}
         onPressSeeOffer={hideModalMock}
-        videoThumbnail={videoModuleFixture.videoThumbnail}
       />
     )
 
@@ -41,7 +40,6 @@ describe('VideoPlayer', () => {
         youtubeVideoId={videoModuleFixture.youtubeVideoId}
         offer={mockOffer}
         onPressSeeOffer={hideModalMock}
-        videoThumbnail={videoModuleFixture.videoThumbnail}
       />
     )
 
