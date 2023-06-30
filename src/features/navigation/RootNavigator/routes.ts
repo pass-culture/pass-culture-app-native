@@ -6,7 +6,7 @@ import { Login } from 'features/auth/pages/login/Login'
 import { AccountCreated } from 'features/auth/pages/signup/AccountCreated/AccountCreated'
 import { AfterSignupEmailValidationBuffer } from 'features/auth/pages/signup/AfterSignupEmailValidationBuffer/AfterSignupEmailValidationBuffer'
 import { NotYetUnderageEligibility } from 'features/auth/pages/signup/NotYetUnderageEligibility/NotYetUnderageEligibility'
-import { SignupConfirmationEmailSent } from 'features/auth/pages/signup/SignupConfirmationEmailSent/SignupConfirmationEmailSent.deprecated'
+import { SignupConfirmationEmailSentPage } from 'features/auth/pages/signup/SignupConfirmationEmailSent/SignupConfirmationEmailSentPage'
 import { SignupConfirmationExpiredLink } from 'features/auth/pages/signup/SignupConfirmationExpiredLink/SignupConfirmationExpiredLink'
 import { SignupForm } from 'features/auth/pages/signup/SignupForm'
 import { VerifyEligibility } from 'features/auth/pages/signup/VerifyEligiblity/VerifyEligibility'
@@ -362,7 +362,7 @@ export const routes: Route[] = [
   },
   {
     name: 'SignupConfirmationEmailSent',
-    component: SignupConfirmationEmailSent,
+    component: SignupConfirmationEmailSentPage,
     path: 'email-confirmation-creation-compte/envoye',
     options: { title: 'Email création de compte envoyé' },
   },
