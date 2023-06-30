@@ -11,11 +11,13 @@ import { getSpacing } from 'ui/theme'
 type Props = PropsWithChildren<{
   headerTitle: string
   shouldDisplayBackButton?: boolean
+  onGoBack?: () => void
 }>
 
 export const SecondaryPageWithBlurHeader = ({
   headerTitle,
   shouldDisplayBackButton,
+  onGoBack,
   children,
 }: Props) => {
   const headerHeight = useGetHeaderHeight()
@@ -25,6 +27,7 @@ export const SecondaryPageWithBlurHeader = ({
       <PageHeaderWithoutPlaceholder
         title={headerTitle}
         shouldDisplayBackButton={shouldDisplayBackButton}
+        onGoBack={onGoBack}
       />
       <StyledScrollView>
         <Placeholder height={headerHeight} />
