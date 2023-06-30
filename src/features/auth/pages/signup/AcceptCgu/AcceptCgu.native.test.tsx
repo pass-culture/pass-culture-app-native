@@ -48,6 +48,12 @@ function simulateConnectedNetwork() {
 const props = { goToNextStep: jest.fn(), signUp: jest.fn() }
 
 describe('<AcceptCgu/>', () => {
+  it('should render correctly', () => {
+    renderAcceptCGU()
+
+    expect(screen).toMatchSnapshot()
+  })
+
   it('should open mail app when clicking on contact support button', () => {
     simulateConnectedNetwork()
     renderAcceptCGU()

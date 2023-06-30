@@ -7,6 +7,12 @@ import { SetPassword } from './SetPassword'
 const props = { goToNextStep: jest.fn(), signUp: jest.fn() }
 
 describe('SetPassword Page', () => {
+  it('should render correctly', () => {
+    render(<SetPassword {...props} />)
+
+    expect(screen).toMatchSnapshot()
+  })
+
   it('should display security rules', () => {
     render(<SetPassword {...props} />)
 

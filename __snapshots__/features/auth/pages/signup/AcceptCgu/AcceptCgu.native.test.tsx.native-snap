@@ -1,0 +1,406 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<AcceptCgu/> should render correctly 1`] = `
+Array [
+  <Modal
+    hardwareAccelerated={false}
+    onRequestClose={[Function]}
+    testID="recaptcha-webview-modal"
+    transparent={true}
+    visible={false}
+  />,
+  <Text
+    style={
+      Array [
+        Object {
+          "color": "#161617",
+          "fontFamily": "Montserrat-Bold",
+          "fontSize": 20,
+          "lineHeight": 24,
+        },
+      ]
+    }
+  >
+    CGU & Données
+  </Text>,
+  <View
+    numberOfSpaces={10}
+    style={
+      Array [
+        Object {
+          "height": 40,
+        },
+      ]
+    }
+  />,
+  <Text
+    style={
+      Array [
+        Object {
+          "color": "#161617",
+          "fontFamily": "Montserrat-Regular",
+          "fontSize": 15,
+          "lineHeight": 20,
+        },
+      ]
+    }
+  >
+    En cliquant sur “Accepter et s’inscrire”, tu acceptes : 
+  </Text>,
+  <View
+    numberOfSpaces={2}
+    style={
+      Array [
+        Object {
+          "height": 8,
+        },
+      ]
+    }
+  />,
+  <View
+    accessibilityLabel="Nos conditions générales d’utilisation"
+    accessible={true}
+    collapsable={false}
+    focusable={true}
+    onClick={[Function]}
+    onResponderGrant={[Function]}
+    onResponderMove={[Function]}
+    onResponderRelease={[Function]}
+    onResponderTerminate={[Function]}
+    onResponderTerminationRequest={[Function]}
+    onStartShouldSetResponder={[Function]}
+    style={
+      Object {
+        "alignItems": "center",
+        "backgroundColor": "transparent",
+        "borderRadius": 24,
+        "flexDirection": "row",
+        "height": "auto",
+        "justifyContent": "flex-start",
+        "maxWidth": 500,
+        "minHeight": 40,
+        "opacity": 1,
+        "paddingBottom": 2,
+        "paddingLeft": 0,
+        "paddingRight": 0,
+        "paddingTop": 2,
+        "userSelect": "auto",
+        "width": "100%",
+      }
+    }
+    testID="Nos conditions générales d’utilisation"
+  >
+    <View
+      style={
+        Array [
+          Object {
+            "flexShrink": 0,
+          },
+        ]
+      }
+    >
+      <View
+        accessibilityLabel="Nouvelle fenêtre"
+        height={20}
+        testID="button-icon"
+        width={20}
+      >
+        <Text>
+          button-icon-SVG-Mock
+        </Text>
+      </View>
+    </View>
+    <Text
+      adjustsFontSizeToFit={false}
+      numberOfLines={2}
+      style={
+        Array [
+          Object {
+            "color": "#161617",
+            "fontFamily": "Montserrat-Bold",
+            "fontSize": 15,
+            "lineHeight": 20,
+            "marginLeft": 8,
+            "maxWidth": "100%",
+          },
+        ]
+      }
+    >
+      Nos conditions générales d’utilisation
+    </Text>
+  </View>,
+  <View
+    accessibilityLabel="Notre politique de confidentialité"
+    accessible={true}
+    collapsable={false}
+    focusable={true}
+    onClick={[Function]}
+    onResponderGrant={[Function]}
+    onResponderMove={[Function]}
+    onResponderRelease={[Function]}
+    onResponderTerminate={[Function]}
+    onResponderTerminationRequest={[Function]}
+    onStartShouldSetResponder={[Function]}
+    style={
+      Object {
+        "alignItems": "center",
+        "backgroundColor": "transparent",
+        "borderRadius": 24,
+        "flexDirection": "row",
+        "height": "auto",
+        "justifyContent": "flex-start",
+        "maxWidth": 500,
+        "minHeight": 40,
+        "opacity": 1,
+        "paddingBottom": 2,
+        "paddingLeft": 0,
+        "paddingRight": 0,
+        "paddingTop": 2,
+        "userSelect": "auto",
+        "width": "100%",
+      }
+    }
+    testID="Notre politique de confidentialité"
+  >
+    <View
+      style={
+        Array [
+          Object {
+            "flexShrink": 0,
+          },
+        ]
+      }
+    >
+      <View
+        accessibilityLabel="Nouvelle fenêtre"
+        height={20}
+        testID="button-icon"
+        width={20}
+      >
+        <Text>
+          button-icon-SVG-Mock
+        </Text>
+      </View>
+    </View>
+    <Text
+      adjustsFontSizeToFit={false}
+      numberOfLines={2}
+      style={
+        Array [
+          Object {
+            "color": "#161617",
+            "fontFamily": "Montserrat-Bold",
+            "fontSize": 15,
+            "lineHeight": 20,
+            "marginLeft": 8,
+            "maxWidth": "100%",
+          },
+        ]
+      }
+    >
+      Notre politique de confidentialité
+    </Text>
+  </View>,
+  <View
+    numberOfSpaces={6}
+    style={
+      Array [
+        Object {
+          "height": 24,
+        },
+      ]
+    }
+  />,
+  <View
+    style={
+      Array [
+        Object {
+          "backgroundColor": "#F1F1F4",
+          "height": 1,
+          "width": "100%",
+        },
+      ]
+    }
+  />,
+  <View
+    numberOfSpaces={8}
+    style={
+      Array [
+        Object {
+          "height": 32,
+        },
+      ]
+    }
+  />,
+  <Text
+    style={
+      Array [
+        Object {
+          "color": "#161617",
+          "fontFamily": "Montserrat-Regular",
+          "fontSize": 15,
+          "lineHeight": 20,
+        },
+      ]
+    }
+  >
+    Pour en savoir plus sur la gestion de tes données personnelles et exercer tes droits tu peux :
+  </Text>,
+  <View
+    numberOfSpaces={2}
+    style={
+      Array [
+        Object {
+          "height": 8,
+        },
+      ]
+    }
+  />,
+  <View
+    accessibilityLabel="Ouvrir le gestionnaire mail pour contacter le support"
+    accessible={true}
+    collapsable={false}
+    focusable={true}
+    onClick={[Function]}
+    onResponderGrant={[Function]}
+    onResponderMove={[Function]}
+    onResponderRelease={[Function]}
+    onResponderTerminate={[Function]}
+    onResponderTerminationRequest={[Function]}
+    onStartShouldSetResponder={[Function]}
+    style={
+      Object {
+        "alignItems": "center",
+        "backgroundColor": "transparent",
+        "borderRadius": 24,
+        "flexDirection": "row",
+        "justifyContent": "flex-start",
+        "maxWidth": 500,
+        "minHeight": 40,
+        "opacity": 1,
+        "paddingBottom": 2,
+        "paddingLeft": 0,
+        "paddingRight": 0,
+        "paddingTop": 2,
+        "userSelect": "auto",
+        "width": "100%",
+      }
+    }
+    testID="Ouvrir le gestionnaire mail pour contacter le support"
+  >
+    <View
+      style={
+        Array [
+          Object {
+            "flexShrink": 0,
+          },
+        ]
+      }
+    >
+      <View
+        height={20}
+        testID="button-icon"
+        width={20}
+      >
+        <Text>
+          button-icon-SVG-Mock
+        </Text>
+      </View>
+    </View>
+    <Text
+      adjustsFontSizeToFit={false}
+      numberOfLines={1}
+      style={
+        Array [
+          Object {
+            "color": "#161617",
+            "fontFamily": "Montserrat-Bold",
+            "fontSize": 15,
+            "lineHeight": 20,
+            "marginLeft": 8,
+            "maxWidth": "100%",
+          },
+        ]
+      }
+    >
+      Contacter le support
+    </Text>
+  </View>,
+  <View
+    numberOfSpaces={10}
+    style={
+      Array [
+        Object {
+          "height": 40,
+        },
+      ]
+    }
+  />,
+  <View
+    accessibilityLabel="Accepter les conditions générales d’utilisation et la politique de confidentialité pour s’inscrire"
+    accessibilityState={
+      Object {
+        "disabled": false,
+      }
+    }
+    accessible={true}
+    collapsable={false}
+    focusable={true}
+    onClick={[Function]}
+    onResponderGrant={[Function]}
+    onResponderMove={[Function]}
+    onResponderRelease={[Function]}
+    onResponderTerminate={[Function]}
+    onResponderTerminationRequest={[Function]}
+    onStartShouldSetResponder={[Function]}
+    style={
+      Object {
+        "alignItems": "center",
+        "backgroundColor": "#eb0055",
+        "borderRadius": 24,
+        "flexDirection": "row",
+        "justifyContent": "center",
+        "maxWidth": 500,
+        "minHeight": 40,
+        "opacity": 1,
+        "paddingBottom": 2,
+        "paddingLeft": 20,
+        "paddingRight": 20,
+        "paddingTop": 2,
+        "userSelect": "auto",
+        "width": "100%",
+      }
+    }
+    testID="Accepter les conditions générales d’utilisation et la politique de confidentialité pour s’inscrire"
+  >
+    <Text
+      adjustsFontSizeToFit={false}
+      numberOfLines={1}
+      style={
+        Array [
+          Object {
+            "color": "#ffffff",
+            "fontFamily": "Montserrat-Bold",
+            "fontSize": 15,
+            "lineHeight": 20,
+            "marginLeft": 0,
+            "maxWidth": "100%",
+          },
+        ]
+      }
+    >
+      Accepter et s’inscrire
+    </Text>
+  </View>,
+  <View
+    numberOfSpaces={5}
+    style={
+      Array [
+        Object {
+          "height": 20,
+        },
+      ]
+    }
+  />,
+]
+`;
