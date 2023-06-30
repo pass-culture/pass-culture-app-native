@@ -12,7 +12,7 @@ type IsSelectedProps = {
   isSelected: boolean
 }
 
-export type SingleFilterButtonProps = IsSelectedProps & {
+type SingleFilterButtonProps = IsSelectedProps & {
   label: string
   testID?: string
   onPress: () => void

@@ -1,5 +1,4 @@
 import { CommonActions, useNavigation } from '@react-navigation/native'
-import { StackScreenProps } from '@react-navigation/stack'
 import { CountryCode } from 'libphonenumber-js'
 import React, { useCallback, useEffect, useState } from 'react'
 import { View } from 'react-native'
@@ -16,10 +15,7 @@ import { useNavigateForwardToStepper } from 'features/identityCheck/helpers/useN
 import { invalidateStepperInfoQuery } from 'features/identityCheck/pages/helpers/invalidateStepperQuery'
 import { CodeNotReceivedModal } from 'features/identityCheck/pages/phoneValidation/CodeNotReceivedModal'
 import { formatPhoneNumberForDisplay } from 'features/identityCheck/pages/phoneValidation/helpers/formatPhoneNumber'
-import {
-  SubscriptionRootStackParamList,
-  UseNavigationType,
-} from 'features/navigation/RootNavigator/types'
+import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { analytics } from 'libs/analytics'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
@@ -29,11 +25,6 @@ import { TextInput } from 'ui/components/inputs/TextInput'
 import { useModal } from 'ui/components/modals/useModal'
 import { Again } from 'ui/svg/icons/Again'
 import { Spacer, Typo } from 'ui/theme'
-
-export type SetPhoneValidationCodeProps = StackScreenProps<
-  SubscriptionRootStackParamList,
-  'SetPhoneValidationCode'
->
 
 export const SetPhoneValidationCode = () => {
   useEffect(() => {

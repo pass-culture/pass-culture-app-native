@@ -24,7 +24,7 @@ type SuggestedPlaceOrVenue = SuggestedPlace | Venue
 const isPlace = (hit: SuggestedPlaceOrVenue): hit is SuggestedPlace => !('venueId' in hit)
 const isVenue = (hit: SuggestedPlaceOrVenue): hit is Venue => 'venueId' in hit
 
-export const keyExtractor = (hit: SuggestedPlaceOrVenue) => {
+const keyExtractor = (hit: SuggestedPlaceOrVenue) => {
   const { label, info } = hit
   const prefix = isVenue(hit) ? `venue-${hit.venueId}` : 'place'
   const suffix =

@@ -8,17 +8,17 @@ import {
 import { CATEGORY_CRITERIA } from 'features/search/enums'
 import { getNativeCategories } from 'features/search/helpers/categoriesHelpers/categoriesHelpers'
 
-export type MappedGenreType = {
+type MappedGenreType = {
   label: string
 }
 export type MappedGenreTypes = Record<string, MappedGenreType>
-export type MappedNativeCategory = {
+type MappedNativeCategory = {
   label: string
   genreTypeKey?: GenreType
   children?: MappedGenreTypes
 }
 export type MappedNativeCategories = Record<NativeCategoryIdEnumv2, MappedNativeCategory>
-export type MappedCategory = {
+type MappedCategory = {
   label: string
   children?: MappedNativeCategories
 }

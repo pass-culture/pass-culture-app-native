@@ -15,7 +15,7 @@ import { StepVariant } from './types'
  * We may also want to do something else in this case, so TypeScript is ready to handle
  * these cases!
  */
-export type VerticalStepperProps = FirstOrLastProps &
+type VerticalStepperProps = FirstOrLastProps &
   StepVariantProps & {
     /**
      * Use this if you want to override middle icon.
@@ -27,7 +27,7 @@ type CustomComponentProps = FirstOrLastProps & {
   testID?: string
 }
 
-export const IN_PROGRESS_ICON_SIZE = 10
+const IN_PROGRESS_ICON_SIZE = 10
 const DOT_SIZE: DotSize = { width: 2, height: 3 }
 const SPECIAL_DOT_SIZE: DotSize = { width: 2, height: 2.5 }
 

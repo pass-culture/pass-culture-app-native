@@ -17,7 +17,7 @@ import { VerticalUl } from 'ui/components/Ul'
 import { BicolorIconInterface } from 'ui/svg/icons/types'
 import { getSpacing, Spacer } from 'ui/theme'
 
-export type CategoriesMapping = MappingTree | MappedNativeCategories | MappedGenreTypes
+type CategoriesMapping = MappingTree | MappedNativeCategories | MappedGenreTypes
 
 interface CategoriesSectionProps<
   T extends CategoriesMapping,
