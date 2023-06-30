@@ -1,3 +1,4 @@
+import { omit } from 'lodash'
 import React from 'react'
 
 import { navigate } from '__mocks__/@react-navigation/native'
@@ -21,5 +22,17 @@ describe('OfferVideoModule', () => {
     await act(async () => {})
 
     expect(navigate).toHaveBeenCalledWith('Offer', { id: 102_280 })
+  })
+
+  it('should display a placeholder if the offer has no image', async () => {
+    const offerWithoutImage = omit(mockOffer, 'offer.thumbUrl')
+    render(<OfferVideoModule offer={offerWithoutImage} color="" hideModal={hideModalMock} />, {
+      /* eslint-disable local-rules/no-react-query-provider-hoc */
+      wrapper: ({ children }) => reactQueryProviderHOC(children),
+    })
+
+    await act(async () => {})
+
+    expect(screen.getByTestId('imagePlaceholder')).toBeTruthy()
   })
 })
