@@ -8,8 +8,7 @@ import {
   useForm,
   UseFormStateReturn,
 } from 'react-hook-form'
-import { useTheme } from 'styled-components/native'
-import styled from 'styled-components/native'
+import styled, { useTheme } from 'styled-components/native'
 
 import { AuthenticationButton } from 'features/auth/components/AuthenticationButton/AuthenticationButton'
 import { setEmailSchema } from 'features/auth/pages/signup/SetEmail/schema/setEmailSchema'
