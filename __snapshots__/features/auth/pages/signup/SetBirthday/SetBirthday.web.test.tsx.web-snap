@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<SetBirthdayV2 /> no touch device should render correctly 1`] = `
+exports[`<SetBirthday /> no touch device should render correctly 1`] = `
 Object {
   "asFragment": [Function],
   "baseElement": .c8 {
@@ -2973,7 +2973,7 @@ Object {
 }
 `;
 
-exports[`<SetBirthdayV2 /> touch device should render correctly 1`] = `
+exports[`<SetBirthday /> touch device should render correctly 1`] = `
 Object {
   "asFragment": [Function],
   "baseElement": .c2 {

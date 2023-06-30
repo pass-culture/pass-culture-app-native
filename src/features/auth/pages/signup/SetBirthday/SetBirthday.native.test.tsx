@@ -21,7 +21,7 @@ const nonSpecificUserAges = [null, NonEligible.UNDER_15, NonEligible.OVER_18]
 
 jest.mock('features/auth/context/SettingsContext')
 
-describe('<SetBirthdayV2 />', () => {
+describe('<SetBirthday />', () => {
   beforeEach(async () => {
     mockdate.set(CURRENT_DATE)
     await storage.clear('user_age')

@@ -3,7 +3,7 @@ import { Keyboard } from 'react-native'
 import styled from 'styled-components/native'
 
 import { useSignUp } from 'features/auth/api/useSignUp'
-import { NEW_SIGNUP_NUMBER_OF_STEPS } from 'features/auth/constants'
+import { SIGNUP_NUMBER_OF_STEPS } from 'features/auth/constants'
 import { PreValidationSignupStep } from 'features/auth/enums'
 import { ProgressBar } from 'features/auth/pages/signup/ProgressBar/ProgressBar'
 import { QuitSignupModal } from 'features/auth/pages/signup/QuitSignupModal/QuitSignupModal'
@@ -92,9 +92,9 @@ export const SignupForm: FunctionComponent = () => {
   const isLastStep = stepIndex === 4
   const helmetTitle = `Étape ${
     stepIndex + 1
-  } sur ${NEW_SIGNUP_NUMBER_OF_STEPS} - Inscription | pass Culture`
+  } sur ${SIGNUP_NUMBER_OF_STEPS} - Inscription | pass Culture`
   const accessibilityLabelForNextStep =
-    stepIndex < NEW_SIGNUP_NUMBER_OF_STEPS - 1
+    stepIndex < SIGNUP_NUMBER_OF_STEPS - 1
       ? `Continuer vers l’étape ${SIGNUP_STEP_CONFIG[stepIndex + 1].accessibilityTitle}`
       : undefined
 
@@ -110,7 +110,7 @@ export const SignupForm: FunctionComponent = () => {
 
   const goToNextStep = (_signupData: Partial<SignupData>) => {
     setSignupData((previousSignupData) => ({ ...previousSignupData, ..._signupData }))
-    setStepIndex((prevStepIndex) => Math.min(NEW_SIGNUP_NUMBER_OF_STEPS, prevStepIndex + 1))
+    setStepIndex((prevStepIndex) => Math.min(SIGNUP_NUMBER_OF_STEPS, prevStepIndex + 1))
 
     stepConfig.tracker?.()
   }
@@ -147,7 +147,7 @@ export const SignupForm: FunctionComponent = () => {
       if (!signupResponse?.isSuccess) {
         throw new AsyncError('NETWORK_REQUEST_FAILED')
       } else {
-        setStepIndex(NEW_SIGNUP_NUMBER_OF_STEPS - 1)
+        setStepIndex(SIGNUP_NUMBER_OF_STEPS - 1)
       }
     } catch (error) {
       ;(error as Error).name = 'SignUpError'
@@ -169,7 +169,7 @@ export const SignupForm: FunctionComponent = () => {
         shouldDisplayBackButton={!isLastStep}
         onGoBack={goToPreviousStep}
         RightButton={isFirstStep ? null : CloseButton}>
-        <ProgressBar totalStep={NEW_SIGNUP_NUMBER_OF_STEPS} currentStep={stepIndex + 1} />
+        <ProgressBar totalStep={SIGNUP_NUMBER_OF_STEPS} currentStep={stepIndex + 1} />
       </PageHeaderWithoutPlaceholder>
       <StyledScrollView>
         <Placeholder height={headerHeight} />

@@ -10,7 +10,7 @@ const props = { goToNextStep: jest.fn(), signUp: jest.fn() }
 
 jest.mock('features/auth/context/SettingsContext')
 
-describe('<SetBirthdayV2 />', () => {
+describe('<SetBirthday />', () => {
   beforeEach(() => {
     mockdate.set(CURRENT_DATE)
   })

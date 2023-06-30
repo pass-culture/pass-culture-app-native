@@ -20,7 +20,7 @@ const props = {
 
 jest.useFakeTimers('legacy')
 
-describe('<SetEmailV2 />', () => {
+describe('<SetEmail />', () => {
   it('should disable validate button when email input is not filled', () => {
     const { getByText } = render(<SetEmail {...props} />)
 
