@@ -361,12 +361,6 @@ export const routes: Route[] = [
     options: { title: 'Création de compte' },
   },
   {
-    name: 'SignupFormV2',
-    component: SignupForm,
-    path: 'creation-compte-new',
-    options: { title: 'Création de compte NEW' },
-  },
-  {
     name: 'SignupConfirmationEmailSent',
     component: SignupConfirmationEmailSent,
     path: 'email-confirmation-creation-compte/envoye',

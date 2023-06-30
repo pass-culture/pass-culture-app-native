@@ -117,9 +117,6 @@ export function Navigation(): React.JSX.Element {
             />
           </Row>
           <Row half>
-            <ButtonPrimary wording="New Signup 🎊" onPress={() => navigate('SignupFormV2')} />
-          </Row>
-          <Row half>
             <ButtonPrimary
               wording="Sentry"
               onPress={() => {
