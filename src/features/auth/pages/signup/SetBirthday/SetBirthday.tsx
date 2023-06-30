@@ -46,7 +46,7 @@ export const SetBirthday: FunctionComponent<PreValidationSignupNormalStepProps> 
 
   return (
     <Form.MaxWidth>
-      <StyledTitle3>Renseigne ton âge</StyledTitle3>
+      <Typo.Title3 {...getHeadingAttrs(2)}>Renseigne ton âge</Typo.Title3>
       <Spacer.Column numberOfSpaces={4} />
       <InnerContainer>
         <InfoBanner
@@ -78,7 +78,3 @@ const InnerContainer = styled.View({
   width: '100%',
   alignItems: 'center',
 })
-
-const StyledTitle3 = styled(Typo.Title3).attrs({
-  ...getHeadingAttrs(2),
-})``

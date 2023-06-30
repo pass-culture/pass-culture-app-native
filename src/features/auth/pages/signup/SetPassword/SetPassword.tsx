@@ -1,7 +1,6 @@
 import { yupResolver } from '@hookform/resolvers/yup'
 import React, { FunctionComponent, useCallback } from 'react'
 import { useForm } from 'react-hook-form'
-import styled from 'styled-components/native'
 
 import { setPasswordSchema } from 'features/auth/pages/signup/SetPassword/schema/setPasswordSchema'
 import { PreValidationSignupNormalStepProps } from 'features/auth/types'
@@ -37,7 +36,7 @@ export const SetPassword: FunctionComponent<PreValidationSignupNormalStepProps> 
 
   return (
     <Form.MaxWidth>
-      <StyledTitle3>Choisis un mot de passe</StyledTitle3>
+      <Typo.Title3 {...getHeadingAttrs(2)}>Choisis un mot de passe</Typo.Title3>
       <Spacer.Column numberOfSpaces={10} />
       <PasswordInputController
         control={control}
@@ -60,7 +59,3 @@ export const SetPassword: FunctionComponent<PreValidationSignupNormalStepProps> 
     </Form.MaxWidth>
   )
 }
-
-const StyledTitle3 = styled(Typo.Title3).attrs({
-  ...getHeadingAttrs(2),
-})``

@@ -8,7 +8,7 @@ import {
   useForm,
   UseFormStateReturn,
 } from 'react-hook-form'
-import styled, { useTheme } from 'styled-components/native'
+import { useTheme } from 'styled-components/native'
 
 import { AuthenticationButton } from 'features/auth/components/AuthenticationButton/AuthenticationButton'
 import { setEmailSchema } from 'features/auth/pages/signup/SetEmail/schema/setEmailSchema'
@@ -87,7 +87,7 @@ export const SetEmail: FunctionComponent<PreValidationSignupNormalStepProps> = (
 
   return (
     <Form.MaxWidth>
-      <StyledTitle3>Crée-toi un compte</StyledTitle3>
+      <Typo.Title3 {...getHeadingAttrs(2)}>Crée-toi un compte</Typo.Title3>
       <Spacer.Column numberOfSpaces={10} />
       <EmailInputController
         control={control}
@@ -139,7 +139,3 @@ export const SetEmail: FunctionComponent<PreValidationSignupNormalStepProps> = (
     </Form.MaxWidth>
   )
 }
-
-const StyledTitle3 = styled(Typo.Title3).attrs({
-  ...getHeadingAttrs(2),
-})``

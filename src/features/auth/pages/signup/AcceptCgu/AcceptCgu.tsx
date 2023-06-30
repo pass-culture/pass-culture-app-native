@@ -1,5 +1,4 @@
 import React, { FunctionComponent, useEffect, useState, useCallback, useMemo } from 'react'
-import styled from 'styled-components/native'
 import { v4 as uuidv4 } from 'uuid'
 
 import { useSettingsContext } from 'features/auth/context/SettingsContext'
@@ -106,7 +105,7 @@ export const AcceptCgu: FunctionComponent<PreValidationSignupLastStepProps> = ({
           isVisible={isDoingReCaptchaChallenge}
         />
       )}
-      <StyledTitle3>CGU & Données</StyledTitle3>
+      <Typo.Title3 {...getHeadingAttrs(2)}>CGU & Données</Typo.Title3>
       <Spacer.Column numberOfSpaces={10} />
       <Typo.Body>En cliquant sur “Accepter et s’inscrire”, tu acceptes&nbsp;: </Typo.Body>
       <Spacer.Column numberOfSpaces={2} />
@@ -163,7 +162,3 @@ export const AcceptCgu: FunctionComponent<PreValidationSignupLastStepProps> = ({
     </React.Fragment>
   )
 }
-
-const StyledTitle3 = styled(Typo.Title3).attrs({
-  ...getHeadingAttrs(2),
-})``
