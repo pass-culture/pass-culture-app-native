@@ -17,6 +17,7 @@ describe('VideoModal', () => {
       // eslint-disable-next-line local-rules/no-react-query-provider-hoc
       reactQueryProviderHOC(
         <VideoModal
+          homeEntryId={'xyz'}
           visible
           hideModal={hideModalMock}
           offer={mockOffer}

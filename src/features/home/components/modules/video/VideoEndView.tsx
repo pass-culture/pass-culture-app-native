@@ -19,7 +19,8 @@ export const VideoEndView: React.FC<{
   style: StyleProp<ViewStyle>
   moduleId: string
   moduleName: string
-}> = ({ onPressReplay, offer, onPressSeeOffer, style, moduleId, moduleName }) => {
+  homeEntryId: string
+}> = ({ onPressReplay, offer, onPressSeeOffer, style, moduleId, moduleName, homeEntryId }) => {
   const prePopulateOffer = usePrePopulateOffer()
   const mapping = useCategoryIdMapping()
 
@@ -47,6 +48,7 @@ export const VideoEndView: React.FC<{
                 from: 'video',
                 moduleId,
                 moduleName,
+                homeEntryId,
               })
             }}
             navigateTo={{

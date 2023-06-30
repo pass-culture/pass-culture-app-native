@@ -20,6 +20,7 @@ interface VideoModalProps extends VideoModule {
   visible: boolean
   hideModal: () => void
   moduleId: string
+  homeEntryId: string
 }
 
 export const VideoModal: React.FC<VideoModalProps> = (props) => {
@@ -41,6 +42,7 @@ export const VideoModal: React.FC<VideoModalProps> = (props) => {
         onPressSeeOffer={props.hideModal}
         moduleId={props.moduleId}
         moduleName={props.title}
+        homeEntryId={props.homeEntryId}
       />
       <StyledScrollView>
         <Spacer.Column numberOfSpaces={4} />
@@ -71,6 +73,7 @@ export const VideoModal: React.FC<VideoModalProps> = (props) => {
           moduleId={props.id}
           moduleName={props.title}
           analyticsFrom={'videoModal'}
+          homeEntryId={props.homeEntryId}
         />
       </StyledScrollView>
       <StyledTouchable onPress={props.hideModal} accessibilityLabel="Fermer la modale vidéo">

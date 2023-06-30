@@ -42,6 +42,7 @@ describe('VideoEndView', () => {
       offerId: +mockOffer.objectID,
       moduleId: 'abcd',
       moduleName: 'salut à tous c’est lujipeka',
+      homeEntryId: 'xyz',
     })
   })
 })
@@ -56,6 +57,7 @@ const renderVideoEndView = async () => {
       style={viewDimensions}
       moduleId={'abcd'}
       moduleName={'salut à tous c’est lujipeka'}
+      homeEntryId={'xyz'}
     />,
     {
       /* eslint-disable local-rules/no-react-query-provider-hoc */

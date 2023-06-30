@@ -17,6 +17,7 @@ interface VideoPlayerProps {
   onPressSeeOffer: () => void
   moduleId: string
   moduleName: string
+  homeEntryId: string
 }
 
 export const VideoPlayer: React.FC<VideoPlayerProps> = ({
@@ -25,6 +26,7 @@ export const VideoPlayer: React.FC<VideoPlayerProps> = ({
   onPressSeeOffer,
   moduleId,
   moduleName,
+  homeEntryId,
 }) => {
   const [isPlaying, setIsPlaying] = useState(true)
   const [hasFinishPlaying, setHasFinishPlaying] = useState(false)
@@ -97,6 +99,7 @@ export const VideoPlayer: React.FC<VideoPlayerProps> = ({
           style={{ height: playerHeight, width: playerWidth }}
           moduleId={moduleId}
           moduleName={moduleName}
+          homeEntryId={homeEntryId}
         />
       )}
       {!!showErrorView && <VideoErrorView style={{ height: playerHeight, width: playerWidth }} />}
