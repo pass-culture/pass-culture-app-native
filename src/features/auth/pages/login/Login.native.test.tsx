@@ -82,7 +82,7 @@ describe('<Login/>', () => {
     getModelSpy.mockReturnValueOnce('iPhone 13')
     getSystemNameSpy.mockReturnValueOnce('iOS')
     renderLogin()
-    await screen.findByText('Connecte-toi !')
+    await screen.findByText('Connecte-toi')
 
     fillInputs()
     await act(() => fireEvent.press(screen.getByText('Se connecter')))
@@ -103,7 +103,7 @@ describe('<Login/>', () => {
 
   it('should sign in when "Se connecter" is clicked without device info when feature flag is disabled', async () => {
     renderLogin()
-    await screen.findByText('Connecte-toi !')
+    await screen.findByText('Connecte-toi')
 
     fillInputs()
     await act(() => fireEvent.press(screen.getByText('Se connecter')))
@@ -279,7 +279,7 @@ describe('<Login/>', () => {
 
   it('should enable login button when both text inputs are filled', async () => {
     renderLogin()
-    await screen.findByText('Connecte-toi !')
+    await screen.findByText('Connecte-toi')
 
     fillInputs()
 

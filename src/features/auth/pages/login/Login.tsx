@@ -1,7 +1,7 @@
 import { useNavigation, useRoute } from '@react-navigation/native'
 import React, { FunctionComponent, memo, useCallback, useEffect, useState } from 'react'
 import { Keyboard } from 'react-native'
-import styled from 'styled-components/native'
+import styled, { useTheme } from 'styled-components/native'
 import { v4 as uuidv4 } from 'uuid'
 
 import { api } from 'api/api'
@@ -12,15 +12,12 @@ import { SignInResponseFailure } from 'features/auth/types'
 import { useAddFavorite } from 'features/favorites/api'
 import { navigateToHome } from 'features/navigation/helpers'
 import { UseNavigationType, UseRouteType } from 'features/navigation/RootNavigator/types'
-import { homeNavConfig } from 'features/navigation/TabBar/helpers'
-import { useGoBack } from 'features/navigation/useGoBack'
 import { From } from 'features/offer/components/AuthenticationModal/fromEnum'
 import { analytics } from 'libs/analytics'
 import { env } from 'libs/environment'
 import { useSafeState } from 'libs/hooks'
 import { storage } from 'libs/storage'
 import { shouldShowCulturalSurvey } from 'shared/culturalSurvey/shouldShowCulturalSurvey'
-import { BottomContentPage } from 'ui/components/BottomContentPage'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
 import { Form } from 'ui/components/Form'
@@ -29,12 +26,11 @@ import { EmailInput } from 'ui/components/inputs/EmailInput/EmailInput'
 import { isValueEmpty } from 'ui/components/inputs/helpers'
 import { InputError } from 'ui/components/inputs/InputError'
 import { PasswordInput } from 'ui/components/inputs/PasswordInput'
-import { ModalHeader } from 'ui/components/modals/ModalHeader'
 import { SNACK_BAR_TIME_OUT_LONG, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
-import { ArrowPrevious } from 'ui/svg/icons/ArrowPrevious'
-import { Close } from 'ui/svg/icons/Close'
+import { SecondaryPageWithBlurHeader } from 'ui/pages/SecondaryPageWithBlurHeader'
 import { Key } from 'ui/svg/icons/Key'
-import { Spacer } from 'ui/theme'
+import { Spacer, Typo } from 'ui/theme'
+import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 let INITIAL_IDENTIFIER = ''
 let INITIAL_PASSWORD = ''
@@ -49,6 +45,7 @@ type Props = {
 }
 
 export const Login: FunctionComponent<Props> = memo(function Login(props) {
+  const { colors } = useTheme()
   const [email, setEmail] = useState(INITIAL_IDENTIFIER)
   const [password, setPassword] = useState(INITIAL_PASSWORD)
   const [isLoading, setIsLoading] = useSafeState(false)
@@ -61,7 +58,6 @@ export const Login: FunctionComponent<Props> = memo(function Login(props) {
 
   const { params } = useRoute<UseRouteType<'Login'>>()
   const { navigate } = useNavigation<UseNavigationType>()
-  const { goBack } = useGoBack(...homeNavConfig)
 
   const onAddFavoriteSuccess = useCallback((data?: FavoriteResponse) => {
     if (data?.offer?.id) {
@@ -199,10 +195,6 @@ export const Login: FunctionComponent<Props> = memo(function Login(props) {
     }
   }, [handleSignin, shouldDisableLoginButton])
 
-  const onClose = useCallback(() => {
-    navigateToHome()
-  }, [])
-
   const onForgottenPasswordClick = useCallback(() => {
     navigate('ForgottenPassword')
   }, [navigate])
@@ -211,26 +203,11 @@ export const Login: FunctionComponent<Props> = memo(function Login(props) {
     analytics.logSignUpClicked({ from: 'login' })
   }, [])
 
-  const rightIconProps = params?.preventCancellation
-    ? {
-        rightIconAccessibilityLabel: undefined,
-        rightIcon: undefined,
-        onRightIconPress: undefined,
-      }
-    : {
-        rightIconAccessibilityLabel: 'Revenir à l’accueil',
-        rightIcon: Close,
-        onRightIconPress: onClose,
-      }
   return (
-    <BottomContentPage>
-      <ModalHeader
-        title="Connecte-toi&nbsp;!"
-        leftIconAccessibilityLabel="Revenir en arrière"
-        leftIcon={ArrowPrevious}
-        onLeftIconPress={goBack}
-        {...rightIconProps}
-      />
+    <SecondaryPageWithBlurHeader headerTitle="Connexion" shouldDisplayBackButton>
+      <Spacer.Column numberOfSpaces={6} />
+      <Typo.Title3 {...getHeadingAttrs(1)}>Connecte-toi</Typo.Title3>
+      <Spacer.Column numberOfSpaces={2} />
       <Form.MaxWidth>
         <InputError
           visible={!!errorMessage}
@@ -262,7 +239,7 @@ export const Login: FunctionComponent<Props> = memo(function Login(props) {
           onSubmitEditing={onSubmit}
           isRequiredField
         />
-        <Spacer.Column numberOfSpaces={2} />
+        <Spacer.Column numberOfSpaces={5} />
         <ButtonContainer>
           <ButtonTertiaryBlack
             wording="Mot de passe oublié&nbsp;?"
@@ -271,8 +248,7 @@ export const Login: FunctionComponent<Props> = memo(function Login(props) {
             inline
           />
         </ButtonContainer>
-
-        <Spacer.Column numberOfSpaces={6} />
+        <Spacer.Column numberOfSpaces={8} />
         <ButtonPrimary
           wording="Se connecter"
           onPress={onSubmit}
@@ -280,14 +256,17 @@ export const Login: FunctionComponent<Props> = memo(function Login(props) {
         />
       </Form.MaxWidth>
       <Spacer.Column numberOfSpaces={8} />
-      <AuthenticationButton type="signup" onAdditionalPress={onLogSignUpAnalytics} />
-    </BottomContentPage>
+      <AuthenticationButton
+        type="signup"
+        onAdditionalPress={onLogSignUpAnalytics}
+        linkColor={colors.secondary}
+      />
+    </SecondaryPageWithBlurHeader>
   )
 })
 
 const ButtonContainer = styled.View(({ theme }) => ({
   flexDirection: 'row',
-  justifyContent: 'flex-end',
   width: '100%',
   maxWidth: theme.buttons.maxWidth,
 }))
