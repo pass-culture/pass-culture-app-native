@@ -333,6 +333,8 @@ export const logEventAnalytics = {
     analytics.logEvent({ firebase: AnalyticsEvent.HAS_CORRECTED_EMAIL }, { from }),
   logHasDismissedAppSharingModal: () =>
     analytics.logEvent({ firebase: AnalyticsEvent.HAS_DISMISSED_APP_SHARING_MODAL }),
+  logHasDismissedModal: (params: { moduleId: string; modalType: ContentTypes }) =>
+    analytics.logEvent({ firebase: AnalyticsEvent.HAS_DISMISSED_MODAL }, params),
   logHasMadeAChoiceForCookies: ({ from, type }: { from: string; type: CookiesChoiceByCategory }) =>
     analytics.logEvent(
       { firebase: AnalyticsEvent.HAS_MADE_A_CHOICE_FOR_COOKIES },

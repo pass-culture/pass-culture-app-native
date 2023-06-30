@@ -72,6 +72,7 @@ export enum AnalyticsEvent {
   HAS_CLICKED_MISSING_CODE = 'HasClickedMissingCode',
   HAS_CORRECTED_EMAIL = 'HasCorrectedEmail',
   HAS_DISMISSED_APP_SHARING_MODAL = 'HasDismissedAppSharingModal',
+  HAS_DISMISSED_MODAL = 'HasDismissedModal',
   HAS_MADE_A_CHOICE_FOR_COOKIES = 'HasMadeAChoiceForCookies',
   HAS_OPENED_COOKIES_ACCORDION = 'HasOpenedCookiesAccordion',
   HAS_REFUSED_COOKIE = 'HasRefusedCookie',
