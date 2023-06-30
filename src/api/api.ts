@@ -7,7 +7,7 @@ const configuration: Configuration = {
   basePath: env.API_BASE_URL,
 }
 const pcm_configuration: Configuration = {
-  basePath: env.PCM_API_BASE_URL,
+  basePath: env.API_BASE_URL,
 }
 
 export const api = new DefaultApi(configuration)

@@ -1,4 +1,5 @@
 export interface Environment {
+  PCM_API_BASE_URL: string | undefined
   ACCESSIBILITY_LINK: string
   ALGOLIA_APPLICATION_ID: string
   ALGOLIA_OFFERS_INDEX_NAME: string
