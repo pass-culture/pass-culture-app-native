@@ -52,11 +52,11 @@ exports[`<Search/> should render Search 1`] = `
       </Text>
     </View>
     <View
-      numberOfSpaces={2}
+      numberOfSpaces={4}
       style={
         Array [
           Object {
-            "height": 8,
+            "height": 16,
           },
         ]
       }
@@ -269,16 +269,6 @@ exports[`<Search/> should render Search 1`] = `
         />
       </View>
     </View>
-    <View
-      numberOfSpaces={3}
-      style={
-        Array [
-          Object {
-            "height": 12,
-          },
-        ]
-      }
-    />
   </View>
   <View
     style={
@@ -305,9 +295,7 @@ exports[`<Search/> should render Search 1`] = `
           "inlineStyle": InlineStyle {
             "rules": Array [
               [Function],
-              "margin-top: 32px;",
-              "padding-horizontal: 4px;",
-              "padding-bottom: 16px;",
+              [Function],
             ],
           },
           "render": [Function],
@@ -320,7 +308,7 @@ exports[`<Search/> should render Search 1`] = `
       contentContainerStyle={
         Object {
           "paddingBottom": 88,
-          "paddingHorizontal": 20,
+          "paddingHorizontal": 16,
         }
       }
       data={
@@ -917,9 +905,9 @@ exports[`<Search/> should render Search 1`] = `
                   "fontFamily": "Montserrat-Bold",
                   "fontSize": 20,
                   "lineHeight": 24,
+                  "marginBottom": 8,
                   "marginTop": 32,
-                  "paddingBottom": 16,
-                  "paddingHorizontal": 4,
+                  "paddingHorizontal": 12,
                 },
               ]
             }
@@ -943,10 +931,10 @@ exports[`<Search/> should render Search 1`] = `
                 Array [
                   Object {
                     "flexBasis": "50%",
-                    "paddingBottom": 4,
-                    "paddingLeft": 4,
-                    "paddingRight": 4,
-                    "paddingTop": 4,
+                    "paddingBottom": 8,
+                    "paddingLeft": 8,
+                    "paddingRight": 8,
+                    "paddingTop": 8,
                   },
                 ]
               }
@@ -1077,10 +1065,10 @@ exports[`<Search/> should render Search 1`] = `
                 Array [
                   Object {
                     "flexBasis": "50%",
-                    "paddingBottom": 4,
-                    "paddingLeft": 4,
-                    "paddingRight": 4,
-                    "paddingTop": 4,
+                    "paddingBottom": 8,
+                    "paddingLeft": 8,
+                    "paddingRight": 8,
+                    "paddingTop": 8,
                   },
                 ]
               }
@@ -1224,10 +1212,10 @@ exports[`<Search/> should render Search 1`] = `
                 Array [
                   Object {
                     "flexBasis": "50%",
-                    "paddingBottom": 4,
-                    "paddingLeft": 4,
-                    "paddingRight": 4,
-                    "paddingTop": 4,
+                    "paddingBottom": 8,
+                    "paddingLeft": 8,
+                    "paddingRight": 8,
+                    "paddingTop": 8,
                   },
                 ]
               }
@@ -1358,10 +1346,10 @@ exports[`<Search/> should render Search 1`] = `
                 Array [
                   Object {
                     "flexBasis": "50%",
-                    "paddingBottom": 4,
-                    "paddingLeft": 4,
-                    "paddingRight": 4,
-                    "paddingTop": 4,
+                    "paddingBottom": 8,
+                    "paddingLeft": 8,
+                    "paddingRight": 8,
+                    "paddingTop": 8,
                   },
                 ]
               }
@@ -1505,10 +1493,10 @@ exports[`<Search/> should render Search 1`] = `
                 Array [
                   Object {
                     "flexBasis": "50%",
-                    "paddingBottom": 4,
-                    "paddingLeft": 4,
-                    "paddingRight": 4,
-                    "paddingTop": 4,
+                    "paddingBottom": 8,
+                    "paddingLeft": 8,
+                    "paddingRight": 8,
+                    "paddingTop": 8,
                   },
                 ]
               }
@@ -1639,10 +1627,10 @@ exports[`<Search/> should render Search 1`] = `
                 Array [
                   Object {
                     "flexBasis": "50%",
-                    "paddingBottom": 4,
-                    "paddingLeft": 4,
-                    "paddingRight": 4,
-                    "paddingTop": 4,
+                    "paddingBottom": 8,
+                    "paddingLeft": 8,
+                    "paddingRight": 8,
+                    "paddingTop": 8,
                   },
                 ]
               }
@@ -1786,10 +1774,10 @@ exports[`<Search/> should render Search 1`] = `
                 Array [
                   Object {
                     "flexBasis": "50%",
-                    "paddingBottom": 4,
-                    "paddingLeft": 4,
-                    "paddingRight": 4,
-                    "paddingTop": 4,
+                    "paddingBottom": 8,
+                    "paddingLeft": 8,
+                    "paddingRight": 8,
+                    "paddingTop": 8,
                   },
                 ]
               }
@@ -1920,10 +1908,10 @@ exports[`<Search/> should render Search 1`] = `
                 Array [
                   Object {
                     "flexBasis": "50%",
-                    "paddingBottom": 4,
-                    "paddingLeft": 4,
-                    "paddingRight": 4,
-                    "paddingTop": 4,
+                    "paddingBottom": 8,
+                    "paddingLeft": 8,
+                    "paddingRight": 8,
+                    "paddingTop": 8,
                   },
                 ]
               }
@@ -2067,10 +2055,10 @@ exports[`<Search/> should render Search 1`] = `
                 Array [
                   Object {
                     "flexBasis": "50%",
-                    "paddingBottom": 4,
-                    "paddingLeft": 4,
-                    "paddingRight": 4,
-                    "paddingTop": 4,
+                    "paddingBottom": 8,
+                    "paddingLeft": 8,
+                    "paddingRight": 8,
+                    "paddingTop": 8,
                   },
                 ]
               }
@@ -2201,10 +2189,10 @@ exports[`<Search/> should render Search 1`] = `
                 Array [
                   Object {
                     "flexBasis": "50%",
-                    "paddingBottom": 4,
-                    "paddingLeft": 4,
-                    "paddingRight": 4,
-                    "paddingTop": 4,
+                    "paddingBottom": 8,
+                    "paddingLeft": 8,
+                    "paddingRight": 8,
+                    "paddingTop": 8,
                   },
                 ]
               }
@@ -2348,10 +2336,10 @@ exports[`<Search/> should render Search 1`] = `
                 Array [
                   Object {
                     "flexBasis": "50%",
-                    "paddingBottom": 4,
-                    "paddingLeft": 4,
-                    "paddingRight": 4,
-                    "paddingTop": 4,
+                    "paddingBottom": 8,
+                    "paddingLeft": 8,
+                    "paddingRight": 8,
+                    "paddingTop": 8,
                   },
                 ]
               }
@@ -2482,10 +2470,10 @@ exports[`<Search/> should render Search 1`] = `
                 Array [
                   Object {
                     "flexBasis": "50%",
-                    "paddingBottom": 4,
-                    "paddingLeft": 4,
-                    "paddingRight": 4,
-                    "paddingTop": 4,
+                    "paddingBottom": 8,
+                    "paddingLeft": 8,
+                    "paddingRight": 8,
+                    "paddingTop": 8,
                   },
                 ]
               }
@@ -2629,10 +2617,10 @@ exports[`<Search/> should render Search 1`] = `
                 Array [
                   Object {
                     "flexBasis": "50%",
-                    "paddingBottom": 4,
-                    "paddingLeft": 4,
-                    "paddingRight": 4,
-                    "paddingTop": 4,
+                    "paddingBottom": 8,
+                    "paddingLeft": 8,
+                    "paddingRight": 8,
+                    "paddingTop": 8,
                   },
                 ]
               }
@@ -2763,10 +2751,10 @@ exports[`<Search/> should render Search 1`] = `
                 Array [
                   Object {
                     "flexBasis": "50%",
-                    "paddingBottom": 4,
-                    "paddingLeft": 4,
-                    "paddingRight": 4,
-                    "paddingTop": 4,
+                    "paddingBottom": 8,
+                    "paddingLeft": 8,
+                    "paddingRight": 8,
+                    "paddingTop": 8,
                   },
                 ]
               }
