@@ -5,6 +5,7 @@ import styled, { useTheme } from 'styled-components/native'
 
 import { getVideoPlayerDimensions } from 'features/home/components/helpers/getVideoPlayerDimensions'
 import { VideoEndView } from 'features/home/components/modules/video/VideoEndView'
+import { VideoErrorView } from 'features/home/components/modules/video/VideoErrorView'
 import { Offer } from 'shared/offer/types'
 import { theme } from 'theme'
 import { getSpacing } from 'ui/theme'
@@ -24,6 +25,7 @@ export const VideoPlayer: React.FC<VideoPlayerProps> = ({
 }) => {
   const [isPlaying, setIsPlaying] = useState(true)
   const [hasFinishPlaying, setHasFinishPlaying] = useState(false)
+  const [showErrorView, setShowErrorView] = React.useState(false)
   const { isDesktopViewport } = useTheme()
   const { width: windowWidth } = useWindowDimensions()
   const { playerHeight, playerWidth } = getVideoPlayerDimensions(isDesktopViewport, windowWidth)
@@ -72,8 +74,8 @@ export const VideoPlayer: React.FC<VideoPlayerProps> = ({
           onReady={playVideo}
           videoId={youtubeVideoId}
           onChangeState={onChangeState}
-          onError={(error) => {
-            console.error(error)
+          onError={() => {
+            setShowErrorView(true)
           }}
           forceAndroidAutoplay
           // Disable webview player scroll
@@ -93,6 +95,7 @@ export const VideoPlayer: React.FC<VideoPlayerProps> = ({
           videoThumbnail={videoThumbnail}
         />
       )}
+      {!!showErrorView && <VideoErrorView style={{ height: playerHeight, width: playerWidth }} />}
     </React.Fragment>
   )
 }
