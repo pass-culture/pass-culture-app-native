@@ -54,12 +54,12 @@ const TravelPaymentRadio = ({ walletBalance, selectedItem, onPress }: any) => {
   return (
     <>
       <RadioButton
-        isDisabled={true}
         label={radioLabel('Payer en espèces')}
         selected={selectedOption === 'Payer en espèces'}
         onPress={() => onSelectOPtion('Payer en espèces')}
       />
       <RadioButton
+        isDisabled={true}
         label={radioLabel('Portefeuille du Pass Culture', walletBalance)}
         selected={selectedItem === 'Portefeuille...'}
         onPress={() => onSelectOPtion('Portefeuille...')}
