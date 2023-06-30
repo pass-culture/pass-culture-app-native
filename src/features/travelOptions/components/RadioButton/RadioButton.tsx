@@ -98,9 +98,8 @@ const RadioButtonInnerCircle = styled.View({
 
 const RadioButtonLabel = styled.Text(({ disabled }) => ({
   color: !disabled ? ColorsEnum.BLACK : ColorsEnum.GREY,
-  textAlign: 'center',
   fontWeight: !disabled ? '900' : '500',
-  marginLeft: 10,
+  marginLeft: 8,
 }))
 const AmountBadge = styled.View(({ disabled }) => ({
   paddingRight: 8,

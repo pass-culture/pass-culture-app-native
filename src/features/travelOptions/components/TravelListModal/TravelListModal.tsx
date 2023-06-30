@@ -42,6 +42,7 @@ const TravelListModal = ({ toggleModal, visible, onProceed }: TravelListModalInt
       const { domainsCredit } = await api.getnativev1me()
       if (domainsCredit?.all.remaining) {
         setWalletBalance(formatToFrenchDecimal(domainsCredit?.all?.remaining).match(/\d+/)[0])
+        // setWalletBalance(79);
       }
     }
 
@@ -64,6 +65,7 @@ const TravelListModal = ({ toggleModal, visible, onProceed }: TravelListModalInt
     borderWidth: isSelected ? 1.2 : 0,
     borderRadius: 12,
     padding: 6,
+    // marginTop: 8
   })
 
   const noteTextStyle = {
@@ -87,14 +89,17 @@ const TravelListModal = ({ toggleModal, visible, onProceed }: TravelListModalInt
     const isSelected = selectedItem === item.name
 
     return (
-      <Touchable
-        style={travelOptionWrapperStyle(isSelected)}
-        onPress={() => toggleItemSelection(item.name)}>
-        <ImageWrapper>
-          <ImageTile uri={item.icon} height={50} width={50} />
-        </ImageWrapper>
-        <TitleText>{item.name}</TitleText>
-      </Touchable>
+      <View>
+        <Touchable
+          style={travelOptionWrapperStyle(isSelected)}
+          onPress={() => toggleItemSelection(item.name)}>
+          <ImageWrapper>
+            <ImageTile uri={item.icon} height={50} width={50} />
+          </ImageWrapper>
+          <TitleText>{item.name}</TitleText>
+        </Touchable>
+        <Spacer.Column numberOfSpaces={2} />
+      </View>
     )
   }
 
@@ -106,8 +111,9 @@ const TravelListModal = ({ toggleModal, visible, onProceed }: TravelListModalInt
 
   const customHeader = () => (
     <HeaderTextWrapper>
-      <Typo.Body style={{ textAlign: 'center' }}>
-        {!isLoading ? 'Sélectionnez votre mode de transport' : 'Recherche'}
+      {!accordianStatus && <Spacer.Column numberOfSpaces={getSpacing(3)} />}
+      <Typo.Body style={{ textAlign: 'center', fontWeight: '700', fontSize: 15 }}>
+        {!isLoading ? 'Sélectionnez votre mode de transport ' : 'Recherche'}
       </Typo.Body>
     </HeaderTextWrapper>
   )
@@ -116,7 +122,10 @@ const TravelListModal = ({ toggleModal, visible, onProceed }: TravelListModalInt
     <AccordianTextWrapper>
       <AccordianText>
         {
-          accordianStatus ? 'Sélectionnez le mode de paiement' : 'Payer en espèces'
+          // accordianStatus
+          // ? 'Sélectionnez le mode de paiement'
+          // :
+          'Mode de paiement : Payer en espèces'
           // `Mode de paiement : Portefeuille PC € ${walletBalance}`
         }
       </AccordianText>
@@ -136,6 +145,7 @@ const TravelListModal = ({ toggleModal, visible, onProceed }: TravelListModalInt
             visible={visible}
             customModalHeader={customHeader()}
             onBackButtonPress={() => toggleModal()}
+            scrollEnabled={false}
             onRequestClose={() => toggleModal()}>
             <ModalContent>
               {isLoading ? (
@@ -144,7 +154,7 @@ const TravelListModal = ({ toggleModal, visible, onProceed }: TravelListModalInt
                 </LoaderWrapper>
               ) : (
                 <>
-                  {walletBalance < minBalance && selectedItem && (
+                  {paymentMode === 'Portefeuille...' && walletBalance < minBalance && selectedItem && (
                     <ErrorMessageWrapper>
                       <Text style={errorMessageStyle}>
                         {
@@ -154,7 +164,7 @@ const TravelListModal = ({ toggleModal, visible, onProceed }: TravelListModalInt
                     </ErrorMessageWrapper>
                   )}
 
-                  <Spacer.Column numberOfSpaces={3} />
+                  <Spacer.Column numberOfSpaces={1} />
                   {travelOptions?.length ? (
                     <FlatList
                       data={travelOptions}
@@ -167,10 +177,16 @@ const TravelListModal = ({ toggleModal, visible, onProceed }: TravelListModalInt
                   )}
                   <Spacer.Column numberOfSpaces={3} />
                   {selectedItem && (
-                    <AccordianWrapper isError={walletBalance < minBalance && selectedItem}>
+                    <AccordianWrapper
+                      isError={
+                        paymentMode === 'Portefeuille...' &&
+                        walletBalance < minBalance &&
+                        selectedItem
+                      }>
                       <AccordionItem
                         title={accordianTitle()}
-                        onPress={() => setAccordianStatus(!accordianStatus)}>
+                        onClose={() => setAccordianStatus(!accordianStatus)}
+                        onOpen={() => setAccordianStatus(!accordianStatus)}>
                         <TravelPaymentRadio
                           selectedItem={paymentMode}
                           walletBalance={walletBalance}
@@ -184,14 +200,17 @@ const TravelListModal = ({ toggleModal, visible, onProceed }: TravelListModalInt
                       </AccordionItem>
                     </AccordianWrapper>
                   )}
-                  <Spacer.Column numberOfSpaces={3} />
+                  <Spacer.Column numberOfSpaces={5} />
                 </>
               )}
               <ButtonWithLinearGradient
                 wording={'Procéder'}
                 onPress={handleClick}
                 isDisabled={
-                  !selectedItem || !paymentMode || !walletBalance || !(walletBalance > minBalance)
+                  !selectedItem ||
+                  !paymentMode ||
+                  !walletBalance ||
+                  (paymentMode === 'Portefeuille...' && walletBalance > minBalance)
                 }
               />
             </ModalContent>
@@ -203,6 +222,7 @@ const TravelListModal = ({ toggleModal, visible, onProceed }: TravelListModalInt
 }
 
 const ModalContent = styled.View({
+  // flex: 1,
   alignContent: 'center',
 })
 
@@ -235,11 +255,12 @@ const ErrorMessageWrapper = styled.View({
 const NoteContainer = styled.View({
   justifyContent: 'center',
   alignItems: 'center',
-  paddingTop: 5,
-  paddingBottom: 5,
+  // paddingTop: 5,
+  // paddingBottom: 5,
+  padding: 10,
   width: '90%',
   backgroundColor: ColorsEnum.GREY_MEDIUM,
-  borderRadius: 12,
+  borderRadius: 8,
 })
 
 const TitleText = styled.Text({
@@ -251,7 +272,7 @@ const TitleText = styled.Text({
 
 const AccordianText = styled.Text({
   fontSize: 13,
-  fontWeight: 'bold',
+  fontWeight: 'Medium',
   fontFamily: 'Montserrat',
   color: ColorsEnum.BLACK,
 })

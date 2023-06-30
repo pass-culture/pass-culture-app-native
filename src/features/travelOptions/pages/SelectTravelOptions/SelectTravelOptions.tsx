@@ -1,6 +1,7 @@
 import { useNavigation } from '@react-navigation/native'
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import HyperSdkReact from 'hyper-sdk-react'
+import { env } from 'libs/environment'
 import { GeolocPermissionState, useGeolocation } from 'libs/geolocation'
 import React, { useEffect, useState } from 'react'
 import { BackHandler, NativeEventEmitter, NativeModules, View } from 'react-native'
@@ -8,7 +9,6 @@ import { PageHeaderSecondary } from 'ui/components/headers/PageHeaderSecondary'
 import { ColorsEnum } from 'ui/theme/colors'
 import MapComponent from '../../components/MapComponent/MapComponent'
 import TravelListModal from '../../components/TravelListModal/TravelListModal'
-import { env } from 'libs/environment'
 
 HyperSdkReact.createHyperServices()
 
@@ -154,7 +154,7 @@ export const SelectTravelOptions = ({ navigation }) => {
         <TravelListModal
           visible={modalVisible}
           onProceed={() => handleClick()}
-          toggleModal={(value: boolean) => setModalVisible(value)}
+          toggleModal={(value: boolean) => goBack()}
         />
       )}
     </View>
