@@ -39,6 +39,8 @@ export const VideoModal: React.FC<VideoModalProps> = (props) => {
         youtubeVideoId={props.youtubeVideoId}
         offer={props.offer}
         onPressSeeOffer={props.hideModal}
+        moduleId={props.moduleId}
+        moduleName={props.title}
       />
       <StyledScrollView>
         <Spacer.Column numberOfSpaces={4} />

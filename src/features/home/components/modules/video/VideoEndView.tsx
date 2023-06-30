@@ -4,6 +4,7 @@ import { StyleProp, ViewStyle } from 'react-native'
 import styled from 'styled-components/native'
 
 import { ButtonWithCaption } from 'features/home/components/modules/video/ButtonWithCaption'
+import { analytics } from 'libs/analytics'
 import { useCategoryIdMapping } from 'libs/subcategories'
 import { Offer } from 'shared/offer/types'
 import { usePrePopulateOffer } from 'shared/offer/usePrePopulateOffer'
@@ -16,7 +17,9 @@ export const VideoEndView: React.FC<{
   onPressSeeOffer: () => void
   offer: Offer
   style: StyleProp<ViewStyle>
-}> = ({ onPressReplay, offer, onPressSeeOffer, style }) => {
+  moduleId: string
+  moduleName: string
+}> = ({ onPressReplay, offer, onPressSeeOffer, style, moduleId, moduleName }) => {
   const prePopulateOffer = usePrePopulateOffer()
   const mapping = useCategoryIdMapping()
 
@@ -38,6 +41,12 @@ export const VideoEndView: React.FC<{
                 ...offer.offer,
                 offerId: +offer.objectID,
                 categoryId: mapping[offer.offer.subcategoryId],
+              })
+              analytics.logConsultOffer({
+                offerId: +offer.objectID,
+                from: 'video',
+                moduleId,
+                moduleName,
               })
             }}
             navigateTo={{

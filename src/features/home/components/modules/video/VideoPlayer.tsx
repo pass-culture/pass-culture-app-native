@@ -6,6 +6,7 @@ import styled, { useTheme } from 'styled-components/native'
 import { getVideoPlayerDimensions } from 'features/home/components/helpers/getVideoPlayerDimensions'
 import { VideoEndView } from 'features/home/components/modules/video/VideoEndView'
 import { VideoErrorView } from 'features/home/components/modules/video/VideoErrorView'
+import { analytics } from 'libs/analytics'
 import { Offer } from 'shared/offer/types'
 import { theme } from 'theme'
 import { getSpacing } from 'ui/theme'
@@ -14,12 +15,16 @@ interface VideoPlayerProps {
   youtubeVideoId: string
   offer: Offer
   onPressSeeOffer: () => void
+  moduleId: string
+  moduleName: string
 }
 
 export const VideoPlayer: React.FC<VideoPlayerProps> = ({
   youtubeVideoId,
   offer,
   onPressSeeOffer,
+  moduleId,
+  moduleName,
 }) => {
   const [isPlaying, setIsPlaying] = useState(true)
   const [hasFinishPlaying, setHasFinishPlaying] = useState(false)
@@ -90,6 +95,8 @@ export const VideoPlayer: React.FC<VideoPlayerProps> = ({
           offer={offer}
           onPressSeeOffer={onPressSeeOffer}
           style={{ height: playerHeight, width: playerWidth }}
+          moduleId={moduleId}
+          moduleName={moduleName}
         />
       )}
       {!!showErrorView && <VideoErrorView style={{ height: playerHeight, width: playerWidth }} />}
