@@ -88,10 +88,19 @@ export const VideoModule: FunctionComponent<VideoModuleProps> = (props) => {
           visible={videoModalVisible}
           hideModal={hideVideoModal}
           offer={offer}
+          moduleId={props.id}
           {...props}
         />
         <Spacer.Column numberOfSpaces={2} />
-        <OfferVideoModule offer={offer} color={props.color} hideModal={hideVideoModal} />
+        <OfferVideoModule
+          offer={offer}
+          color={props.color}
+          hideModal={hideVideoModal}
+          moduleId={props.id}
+          moduleName={props.title}
+          homeEntryId={props.homeEntryId}
+          analyticsFrom={'home'}
+        />
       </VideoOfferContainer>
       <Spacer.Column numberOfSpaces={5} />
     </Container>

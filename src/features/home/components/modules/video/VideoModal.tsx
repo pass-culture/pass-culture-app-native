@@ -19,6 +19,7 @@ interface VideoModalProps extends VideoModule {
   offer: Offer
   visible: boolean
   hideModal: () => void
+  moduleId: string
 }
 
 export const VideoModal: React.FC<VideoModalProps> = (props) => {
@@ -61,7 +62,14 @@ export const VideoModal: React.FC<VideoModalProps> = (props) => {
         <Spacer.Column numberOfSpaces={6} />
         <Typo.Title4>{props.offerTitle}</Typo.Title4>
         <Spacer.Column numberOfSpaces={4} />
-        <OfferVideoModule offer={props.offer} color={props.color} hideModal={props.hideModal} />
+        <OfferVideoModule
+          offer={props.offer}
+          color={props.color}
+          hideModal={props.hideModal}
+          moduleId={props.id}
+          moduleName={props.title}
+          analyticsFrom={'videoModal'}
+        />
       </StyledScrollView>
       <StyledTouchable onPress={props.hideModal} accessibilityLabel="Fermer la modale vidéo">
         <StyledCloseIcon />

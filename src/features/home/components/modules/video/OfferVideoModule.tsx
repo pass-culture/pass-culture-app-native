@@ -2,6 +2,7 @@ import React, { FunctionComponent } from 'react'
 import styled from 'styled-components/native'
 
 import { getTagColor } from 'features/home/components/helpers/getTagColor'
+import { analytics } from 'libs/analytics'
 import { formatDates, getDisplayPrice } from 'libs/parsers'
 import { useCategoryHomeLabelMapping, useCategoryIdMapping } from 'libs/subcategories'
 import { Offer } from 'shared/offer/types'
@@ -17,9 +18,21 @@ type Props = {
   offer: Offer
   color: string
   hideModal: () => void
+  moduleId: string
+  analyticsFrom: 'home' | 'videoModal'
+  moduleName?: string
+  homeEntryId?: string
 }
 
-export const OfferVideoModule: FunctionComponent<Props> = ({ offer, color, hideModal }) => {
+export const OfferVideoModule: FunctionComponent<Props> = ({
+  offer,
+  color,
+  hideModal,
+  analyticsFrom,
+  moduleId,
+  moduleName,
+  homeEntryId,
+}) => {
   const timestampsInMillis = offer.offer.dates?.map((timestampInSec) => timestampInSec * 1000)
   const labelMapping = useCategoryHomeLabelMapping()
   const mapping = useCategoryIdMapping()
@@ -40,6 +53,13 @@ export const OfferVideoModule: FunctionComponent<Props> = ({ offer, color, hideM
           ...offer.offer,
           offerId: +offer.objectID,
           categoryId,
+        })
+        analytics.logConsultOffer({
+          offerId: +offer.objectID,
+          from: analyticsFrom,
+          moduleId,
+          moduleName,
+          homeEntryId,
         })
       }}>
       <Row>
