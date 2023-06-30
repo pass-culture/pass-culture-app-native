@@ -1,9 +1,9 @@
 import React from 'react'
 import { Text } from 'react-native'
 
-import { render } from 'tests/utils'
+import { render } from 'tests/utils/web'
 
-import { ErrorMessage } from '../ErrorMessage'
+import { ErrorMessage } from './ErrorMessage'
 
 describe('<ErrorMessage />', () => {
   it('should render correctly', () => {
