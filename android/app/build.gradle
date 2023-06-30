@@ -12,7 +12,7 @@ project.ext.envConfigFiles = [
         stagingrelease: ".env.staging",
         productiondebug: ".env.production",
         productionrelease: ".env.production",
-        "": ".env.testing",                         // Default (must be the last in the list so as not to override others)
+        "": ".env.staging",                         // Default (must be the last in the list so as not to override others)
 ]
 apply from: project(':bam.tech_react-native-config').projectDir.getPath() + "/dotenv.gradle"
 
@@ -171,6 +171,12 @@ android {
 
     compileSdkVersion rootProject.ext.compileSdkVersion
 
+     sourceSets {
+        main {
+            assets.srcDirs += ['src/main/res/raw', 'src/main/res']
+        }
+    }
+
     defaultConfig {
         applicationId project.env.get("ANDROID_APP_ID")
         minSdkVersion rootProject.ext.minSdkVersion
@@ -296,8 +302,10 @@ android {
 
     buildTypes {
         debug {
+            
         }
         release {
+             
             // Enables code shrinking, obfuscation, and optimization for only
             // your project's release build type.
             minifyEnabled enableProguardInReleaseBuilds
@@ -358,6 +366,9 @@ dependencies {
     implementation "androidx.swiperefreshlayout:swiperefreshlayout:1.0.0"
     implementation 'in.juspay:mobilitycustomer:2.1.13-nammayatri.27'
     implementation 'in.juspay:hypersdk:2.1.13-nammayatri.27'
+    implementation 'org.bouncycastle:bcpkix-jdk15on:1.68'
+
+    
     // Flipper + plugins
     debugImplementation("com.facebook.flipper:flipper:${FLIPPER_VERSION}@aar") {
         exclude group:'com.facebook.fbjni'
