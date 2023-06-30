@@ -384,6 +384,7 @@ dependencies {
     } else {
       implementation jscFlavor
     }
+    
     implementation platform('com.google.firebase:firebase-bom:25.12.0') // firebase
     implementation "com.google.firebase:firebase-messaging" // firebase - batch
     implementation 'com.batch.android:firebase-dispatcher:2.0.0'

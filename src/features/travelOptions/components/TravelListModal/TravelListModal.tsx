@@ -46,7 +46,7 @@ const TravelListModal = ({ toggleModal, visible, onProceed }: TravelListModalInt
     }
 
     getUserDetails()
-    handlePaymentSelection('Portefeuille...')
+    handlePaymentSelection('Payer en espèces')
   }, [])
 
   const minBalance = 50
@@ -115,9 +115,10 @@ const TravelListModal = ({ toggleModal, visible, onProceed }: TravelListModalInt
   const accordianTitle = () => (
     <AccordianTextWrapper>
       <AccordianText>
-        {accordianStatus
-          ? 'Sélectionnez le mode de paiement'
-          : `Mode de paiement : Portefeuille PC € ${walletBalance}`}
+        {
+          accordianStatus ? 'Sélectionnez le mode de paiement' : 'Payer en espèces'
+          // `Mode de paiement : Portefeuille PC € ${walletBalance}`
+        }
       </AccordianText>
     </AccordianTextWrapper>
   )

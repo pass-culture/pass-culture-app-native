@@ -1,22 +1,25 @@
 import React from 'react'
-import MapView from 'react-native-maps'
-const MapComponent = ({ currentLocation }: any) => {
+import { StyleSheet, View, Image } from 'react-native'
+
+interface MapComponentInterface {
+  mapUrl: string
+}
+
+const MapComponent = ({ mapUrl }: MapComponentInterface) => {
   return (
-    <MapView
-      style={{
-        flex: 1,
-      }}
-      userInterfaceStyle={'light'}
-      showsUserLocation={true}
-      showsMyLocationButton={false}
-      zoomEnabled={true}
-      region={{
-        latitude: currentLocation.latitude,
-        longitude: currentLocation.longitude,
-        latitudeDelta: 0.0922,
-        longitudeDelta: 0.0421,
-      }}></MapView>
+    <View style={styles.container}>
+      <Image source={{ uri: mapUrl }} style={styles.webView} />
+    </View>
   )
 }
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+  },
+  webView: {
+    flex: 1,
+  },
+})
 
 export default MapComponent

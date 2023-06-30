@@ -1,14 +1,17 @@
-import React, { useState, useEffect } from 'react'
-import { View, Linking, NativeModules, NativeEventEmitter, BackHandler } from 'react-native'
-import MapComponent from '../../components/MapComponent/MapComponent'
-import TravelListModal from '../../components/TravelListModal/TravelListModal'
-import { GeolocPermissionState, useGeolocation } from 'libs/geolocation'
-import { PageHeaderSecondary } from 'ui/components/headers/PageHeaderSecondary'
 import { useNavigation } from '@react-navigation/native'
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
-import { ColorsEnum } from 'ui/theme/colors'
 import HyperSdkReact from 'hyper-sdk-react'
+import { GeolocPermissionState, useGeolocation } from 'libs/geolocation'
+import React, { useEffect, useState } from 'react'
+import { BackHandler, NativeEventEmitter, NativeModules, View } from 'react-native'
+import { PageHeaderSecondary } from 'ui/components/headers/PageHeaderSecondary'
+import { ColorsEnum } from 'ui/theme/colors'
+import MapComponent from '../../components/MapComponent/MapComponent'
+import TravelListModal from '../../components/TravelListModal/TravelListModal'
+import { env } from 'libs/environment'
+
 HyperSdkReact.createHyperServices()
+
 interface Location {
   latitude: number
   longitude: number
@@ -19,31 +22,34 @@ export const SelectTravelOptions = () => {
     latitude: 48.8566,
     longitude: 2.3522,
   })
-  // const {
-  //   userPosition: position,
-  //   requestGeolocPermission,
-  //   showGeolocPermissionModal,
-  //   permissionState,
-  // } = useGeolocation()
+  const { userPosition: position, showGeolocPermissionModal, permissionState } = useGeolocation()
   const { goBack } = useNavigation<UseNavigationType>()
   const [modalVisible, setModalVisible] = useState(true)
-  // setCurrentLocation(position || { latitude: 48.8566, longitude: 2.3522 })
-  // useEffect(() => {
-  //   const fetchCurrentLocation = async () => {
-  //     try {
-  //        if (permissionState === GeolocPermissionState.GRANTED) {
-  //         // setCurrentLocation(position || { latitude: 48.8566, longitude: 2.3522 })
-  //       }
-  //       // else {
-  //       //   showGeolocPermissionModal()
-  //       // }
-  //     } catch (error) {
-  //       console.error('Error getting current location:', error)
-  //     }
-  //   }
+  const [mapUrl, setMapUrl] = useState('')
 
-  //   fetchCurrentLocation()
-  // }, [position, requestGeolocPermission])
+  useEffect(() => {
+    const fetchCurrentLocation = async () => {
+      try {
+        if (permissionState === GeolocPermissionState.GRANTED) {
+          setCurrentLocation(position)
+
+          if (position) {
+            const { latitude, longitude } = position
+            const mapUrl = `https://maps.googleapis.com/maps/api/staticmap?center=${
+              latitude || 48.8566
+            },${longitude || 2.3522}&format=png&zoom=12&size=640x640&key=${env.GOOGLE_MAP_API_KEY}`
+            setMapUrl(mapUrl)
+          }
+        } else {
+          showGeolocPermissionModal()
+        }
+      } catch (error) {
+        console.error('Error getting current location:', error)
+      }
+    }
+
+    fetchCurrentLocation()
+  }, [position, permissionState, showGeolocPermissionModal])
 
   const initiatePayload = JSON.stringify({
     // Replace with your initiate payload
@@ -77,11 +83,11 @@ export const SelectTravelOptions = () => {
   })
 
   const handleClick = () => {
-    setModalVisible(false)
     HyperSdkReact.initiate(initiatePayload)
     HyperSdkReact.isInitialised().then((init) => {
       console.log('isInitialised:', init)
     })
+    setModalVisible(false)
   }
 
   useEffect(() => {
@@ -134,12 +140,12 @@ export const SelectTravelOptions = () => {
   return (
     <View style={{ flex: 1 }}>
       <PageHeaderSecondary
-        onGoBack={handleClick}
+        onGoBack={goBack}
         title=""
         backIconColor={ColorsEnum.BLACK}
         backgroundColor={ColorsEnum.WHITE}
       />
-      {/* {currentLocation && <MapComponent currentLocation={currentLocation} />} */}
+      {currentLocation && <MapComponent mapUrl={mapUrl} />}
       {modalVisible && (
         <TravelListModal
           visible={modalVisible}
