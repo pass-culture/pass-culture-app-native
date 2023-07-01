@@ -158,6 +158,10 @@ export function BookingDetails() {
     }
   }
 
+  const viewTripDetails = () => {
+    console.log('ACTION: View trip clicked')
+  }
+
   const helmetTitle = `Ma réservation pour ${booking.stock.offer.name} | pass Culture`
   return (
     <Container>
@@ -219,6 +223,7 @@ export function BookingDetails() {
             booking={booking}
             onCancel={cancelBooking}
             onTerminate={showArchiveModal}
+            onViewTripDetails={viewTripDetails}
             fullWidth
           />
         </ViewWithPadding>
