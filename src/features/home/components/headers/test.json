@@ -1,0 +1,47 @@
+{
+    "birthDate": "2004-01-01",
+    "bookedOffers": {
+        "1307": 31620065
+    },
+    "dateOfBirth": "2004-01-01",
+    "depositExpirationDate": "2025-06-28T23:59:59.999999Z",
+    "depositType": "GRANT_18",
+    "domainsCredit": {
+        "all": {
+            "initial": 30000,
+            "remaining": 9500
+        },
+        "digital": {
+            "initial": 10000,
+            "remaining": 9500
+        },
+        "physical": null
+    },
+    "eligibility": null,
+    "eligibilityEndDatetime": "2023-01-01T11:00:00Z",
+    "eligibilityStartDatetime": "2019-01-01T00:00:00Z",
+    "email": "faiz@fide.org",
+    "firstName": "Faiz Mohammed",
+    "id": 4960251,
+    "isBeneficiary": true,
+    "isEligibleForBeneficiaryUpgrade": false,
+    "lastName": "User",
+    "needsToFillCulturalSurvey": false,
+    "phoneNumber": "+918861084477",
+    "recreditAmountToShow": null,
+    "requiresIdCheck": true,
+    "roles": [
+        "BENEFICIARY",
+        "TEST"
+    ],
+    "showEligibleCard": false,
+    "status": {
+        "statusType": "beneficiary",
+        "subscriptionStatus": null
+    },
+    "subscriptionMessage": null,
+    "subscriptions": {
+        "marketingEmail": false,
+        "marketingPush": true
+    }
+}
