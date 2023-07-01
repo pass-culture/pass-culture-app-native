@@ -7,13 +7,9 @@ import { PageHeaderSecondary } from 'ui/components/headers/PageHeaderSecondary'
 import { useNavigation } from '@react-navigation/native'
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import HyperSdkReact from 'hyper-sdk-react'
-import { GeolocPermissionState, useGeolocation } from 'libs/geolocation'
-import React, { useEffect, useState } from 'react'
-import { BackHandler, NativeEventEmitter, NativeModules, View } from 'react-native'
-import { PageHeaderSecondary } from 'ui/components/headers/PageHeaderSecondary'
+import { api } from 'api/api'
 import { ColorsEnum } from 'ui/theme/colors'
-import MapComponent from '../../components/MapComponent/MapComponent'
-import TravelListModal from '../../components/TravelListModal/TravelListModal'
+
 import { env } from 'libs/environment'
 
 HyperSdkReact.createHyperServices()
@@ -28,8 +24,9 @@ const { HyperSDKModule } = NativeModules;
 
 export const SelectTravelOptions = ({ navigation }) => {
 
-
-  const mobileNumber = "8008210472";
+  const { domainsCredit } = api.getnativev1me()
+  console.log("test username", api.getnativev1me())
+  const mobileNumber = "8297921333";
   const mobileCountryCode = "+91";
   const merchantId = "MOBILITY_PASSCULTURE";
   const timestamp = "2023-04-13T07:28:40+00:00";
@@ -46,12 +43,14 @@ export const SelectTravelOptions = ({ navigation }) => {
 
   useEffect(() => {
     const fetchCurrentLocation = async () => {
+
       try {
         if (permissionState === GeolocPermissionState.GRANTED) {
           setCurrentLocation(position)
-
+          console.error('current location:', position)
           if (position) {
             const { latitude, longitude } = position
+            console.error('current location:', position)
             const mapUrl = `https://maps.googleapis.com/maps/api/staticmap?center=${latitude || 48.8566
               },${longitude || 2.3522}&format=png&zoom=12&size=640x640&key=${env.GOOGLE_MAP_API_KEY}`
             setMapUrl(mapUrl)
@@ -96,12 +95,12 @@ export const SelectTravelOptions = ({ navigation }) => {
       "source": {
         "lat": currentLocation?.latitude,
         "lon": currentLocation?.longitude,
-        "name": "Horamavu agara"
+        "name": "Paris, France"
       },
       "destination": {
-        "lat": 13.0335,
-        "lon": 77.6739,
-        "name": "Kalkere"
+        "lat": 48.8606,
+        "lon": 2.3376,
+        "name": "louvre museum 75001 paris france"
       }
     }
   }
@@ -131,8 +130,13 @@ export const SelectTravelOptions = ({ navigation }) => {
 
   useEffect(() => {
     const fetchSignatureResponse = async () => {
+      const { firstName } = await api.getnativev1me() || 'user'
+      const { phoneNumber } = (await api.getnativev1me()) || '+919493143166'
+      let mobile = phoneNumber?.slice(3, phoneNumber.length)
+      console.log("test username1", mobile, firstName)
+
       try {
-        const result = await HyperSDKModule.dynamicSign(userName, mobileNumber, mobileCountryCode);
+        const result = await HyperSDKModule.dynamicSign(firstName, '8008210472', mobileCountryCode);
         setSignatureResponse(result);
         console.log("signauth check", result);
       } catch (error) {
@@ -179,6 +183,7 @@ export const SelectTravelOptions = ({ navigation }) => {
           const res = payload ? payload.status : payload;
           console.log('initiate_result: ', processPayload2);
           if (res === 'SUCCESS') {
+            setModalVisible(false)
             // Initiation is successful, call process method
             if (processPayload2.payload.signatureAuthData != undefined) {
               HyperSdkReact.process(JSON.stringify(processPayload2));
@@ -201,17 +206,43 @@ export const SelectTravelOptions = ({ navigation }) => {
           if (processPayload?.action === 'terminate') {
             HyperSdkReact.terminate();
             console.log('process_call: is called ', processPayload);
+            setModalVisible(true)
             // BackHandler.exitApp();
-          } else if (processPayload?.action === 'trip_completed') {
-            //function call for wallet transaction
+          } else if (processPayload?.action === 'feedback_submitted' || processPayload?.action === 'feedback_skipped') {
+
             console.log('process_call: wallet transaction ', processPayload);
             HyperSdkReact.terminate();
+            setModalVisible(true)
           }
 
           break;
 
         default:
           console.log('Unknown Event', data);
+
+      }
+      const screen = data.screen || '';
+      switch (screen) {
+        case 'home_screen':
+          // Handle home screen
+          break;
+
+        case 'estimate_screen':
+          // Handle estimate screen
+          break;
+
+        case 'finding_driver_loader':
+          // Handle finding driver loader screen
+          break;
+
+        case 'confirm_ride_loader':
+          // Handle confirm ride loader screen
+          break;
+
+        // Handle other screens...
+
+        default:
+          console.log('Unknown Screen', screen);
       }
     });
 

@@ -154,7 +154,7 @@ private WritableArray convertJsonArrayToWritableArray(JSONArray jsonArray) throw
 
     @ReactMethod
         public void dynamicSign(String username, String mobileNumber, String mobileCountryCode,  Promise promise) {
-          String payloadString = "{\"mobileNumber\":\""+mobileNumber+"\",\"mobileCountryCode\":\"+91\",\"merchantId\":\"MOBILITY_PASSCULTURE\",\"timestamp\":\"2023-04-13T07:28:40+00:00\"}";
+          String payloadString = "{\"userName\":\""+username+"\", \"mobileNumber\":\""+mobileNumber+"\",\"mobileCountryCode\":\"+91\",\"merchantId\":\"MOBILITY_PASSCULTURE\",\"timestamp\":\"2023-04-13T07:28:40+00:00\"}";
           try{ 
             JSONObject data = new JSONObject(payloadString);
             System .out.println("JSONObjectPersonnel"+data);

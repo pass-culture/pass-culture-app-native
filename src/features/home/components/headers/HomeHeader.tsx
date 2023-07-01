@@ -21,7 +21,7 @@ import { BicolorUnlock } from 'ui/svg/icons/BicolorUnlock'
 import { BirthdayCake } from 'ui/svg/icons/BirthdayCake'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 import { useCustomSafeInsets } from 'ui/theme/useCustomSafeInsets'
-
+import { api } from 'api/api'
 import HyperSdkReact from 'hyper-sdk-react';
 
 const { HyperSDKModule } = NativeModules
@@ -70,7 +70,7 @@ export const HomeHeader: FunctionComponent = function () {
   //   }
   // });
 
-  const mobileNumber = "9493143166";
+  const mobileNumber = "8297921333";
   const mobileCountryCode = "+91";
   const merchantId = "MOBILITY_PASSCULTURE";
   const timestamp = "2023-04-13T07:28:40+00:00";
@@ -91,6 +91,7 @@ export const HomeHeader: FunctionComponent = function () {
         "signature": '',
         "authData": '',
       },
+      "payment_method": "wallet",
       "search_type": "direct_search",
       "source": {
         "lat": 13.0411,
@@ -109,9 +110,15 @@ export const HomeHeader: FunctionComponent = function () {
   const [signatureResponse, setSignatureResponse] = useState(null); // State to store the signature response
 
   useEffect(() => {
+
     const fetchSignatureResponse = async () => {
+      // const { phoneNumber, firstName } = await api.getnativev1me()
+      const { firstName } = await api.getnativev1me()
+      const { phoneNumber } = await api.getnativev1me()
+      let mobile = phoneNumber?.slice(3, phoneNumber.length)
+      console.log("test username1", mobile, firstName)
       try {
-        const result = await HyperSDKModule.dynamicSign(userName, mobileNumber, mobileCountryCode);
+        const result = await HyperSDKModule.dynamicSign(userName, mobile, mobileCountryCode);
         setSignatureResponse(result);
         console.log("signauth check", result);
       } catch (error) {
