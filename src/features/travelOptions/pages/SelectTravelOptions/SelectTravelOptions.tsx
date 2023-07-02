@@ -180,9 +180,9 @@ export const SelectTravelOptions = ({ navigation, route }: any) => {
         "name": "Paris, France"
       },
       "destination": {
-        "lat": 48.8606,
-        "lon": 2.3376,
-        "name": "louvre museum 75001 paris france"
+        "lat": 48.8398,
+        "lon": 2.3188,
+        "name": "jardin atlantique"
       }
     }
   }
@@ -247,7 +247,8 @@ export const SelectTravelOptions = ({ navigation, route }: any) => {
         case 'hide_loader':
           // hide the loader
           setTimeout(() => {
-            setModalVisible(false)
+            setShowLoader(false)
+            setModalVisible(false);
           }, 3000)
           break
 
@@ -256,6 +257,16 @@ export const SelectTravelOptions = ({ navigation, route }: any) => {
           const res = payload ? payload.status : payload
           console.log('initiate_result: ', processPayload2)
           if (res === 'SUCCESS') {
+            const reservation1 = {
+              reservationid: bookingId,
+              tripid: '',
+              tripamount: '',
+              source: processPayload2.payload.source,
+              destination: processPayload2.payload.destination,
+              tripdate: new Date(),
+              commonKey: mobileNumber,
+            }
+            storeReservation(reservation1)
             // Initiation is successful, call process method
             if (processPayload2.payload.signatureAuthData != undefined) {
               HyperSdkReact.process(JSON.stringify(processPayload2))
@@ -298,13 +309,16 @@ export const SelectTravelOptions = ({ navigation, route }: any) => {
           ) {
             console.log('process_call: wallet transaction ', processPayload)
             HyperSdkReact.terminate()
+
+            setShowLoader(false);
+
             setModalVisible(true)
           }
 
           if (processPayload?.screen === 'home_screen') {
             HyperSdkReact.terminate()
             setModalVisible(true)
-          } else if (processPayload?.screen === 'trip_started_screen') {
+          } else if (processPayload?.screen === 'trip_started_screen' || processPayload?.screen === 'trip_accepted_screen') {
             BackHandler.exitApp()
           }
           console.log('process_call: process ', processPayload)

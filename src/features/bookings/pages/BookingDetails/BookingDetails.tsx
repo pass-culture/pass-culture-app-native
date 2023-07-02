@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react'
 import { Platform, ScrollView, useWindowDimensions, NativeModules, NativeEventEmitter, BackHandler } from 'react-native'
 import { useQueryClient } from 'react-query'
 import styled from 'styled-components/native'
-
+import { GeolocPermissionState, useGeolocation } from 'libs/geolocation'
 import { useBookings, useOngoingOrEndedBooking } from 'features/bookings/api'
 import { ArchiveBookingModal } from 'features/bookings/components/ArchiveBookingModal'
 import { BookingDetailsCancelButton } from 'features/bookings/components/BookingDetailsCancelButton'
@@ -166,6 +166,37 @@ export function BookingDetails() {
     }
   }
 
+  const [currentLocation, setCurrentLocation] = useState<Location | null>({
+    latitude: 48.8566,
+    longitude: 2.3522,
+  })
+  const { userPosition: position, showGeolocPermissionModal, permissionState } = useGeolocation()
+  const { goBack } = useNavigation<UseNavigationType>()
+  const [modalVisible, setModalVisible] = useState(true)
+  const [mapUrl, setMapUrl] = useState('')
+
+  useEffect(() => {
+    const fetchCurrentLocation = async () => {
+      try {
+        if (permissionState === GeolocPermissionState.GRANTED) {
+          setCurrentLocation(position)
+          console.error('current location:', position)
+          if (position) {
+            const { latitude, longitude } = position
+            console.error('current location:', position)
+            const mapUrl = `https://maps.googleapis.com/maps/api/staticmap?center=${latitude || 48.8566
+              },${longitude || 2.3522}&format=png&zoom=12&size=640x640&key=${env.GOOGLE_MAP_API_KEY}`
+            setMapUrl(mapUrl)
+          }
+        } else {
+          showGeolocPermissionModal()
+        }
+      } catch (error) {
+        console.error('Error getting current location:', error)
+      }
+    }
+    fetchCurrentLocation()
+  }, [position, permissionState, showGeolocPermissionModal])
 
   const storeReservation = async (reservation) => {
     try {
@@ -216,14 +247,14 @@ export function BookingDetails() {
       },
       "search_type": "direct_search",
       "source": {
-        "lat": 13.0411,
-        "lon": 77.6622,
-        "name": "Horamavu agara"
+        "lat": currentLocation?.latitude,
+        "lon": currentLocation?.longitude,
+        "name": "Paris, France"
       },
       "destination": {
-        "lat": 13.0335,
-        "lon": 77.6739,
-        "name": "Kalkere"
+        "lat": 48.8398,
+        "lon": 2.3188,
+        "name": "jardin atlantique"
       }
     }
   }
@@ -241,12 +272,12 @@ export function BookingDetails() {
   useEffect(() => {
     const fetchSignatureResponse = async () => {
       const { firstName } = await api.getnativev1me() || 'user'
-      const { phoneNumber } = (await api.getnativev1me()) || '+919480081411'
+      const { phoneNumber } = (await api.getnativev1me()) || '+918297921333'
       let mobile = phoneNumber?.slice(3, phoneNumber.length)
       console.log("test username1", mobile, firstName)
       setMobileNumber(mobile);
       try {
-        const result = await HyperSDKModule.dynamicSign(firstName, '9347462929', mobileCountryCode);
+        const result = await HyperSDKModule.dynamicSign(firstName, mobile, mobileCountryCode);
         setSignatureResponse(result);
         console.log("signauth check", result);
       } catch (error) {
