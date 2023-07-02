@@ -22,7 +22,9 @@ const THUMBNAIL_HEIGHT = getSpacing(45)
 const PLAYER_TOP_MARGIN = getSpacing(12.5)
 const PLAYER_SIZE = getSpacing(14.5)
 
-const COLOR_CATEGORY_BACKGROUND_HEIGHT = getSpacing(68.5)
+const GRADIENT_START_POSITION = PLAYER_TOP_MARGIN + getSpacing(5) + PLAYER_SIZE / 2
+const COLOR_CATEGORY_BACKGROUND_HEIGHT =
+  THUMBNAIL_HEIGHT - GRADIENT_START_POSITION + getSpacing(49.5)
 
 interface VideoModuleProps extends VideoModuleType {
   index: number
@@ -57,52 +59,57 @@ export const VideoModule: FunctionComponent<VideoModuleProps> = (props) => {
 
   return (
     <Container>
-      <ColorCategoryBackground
-        start={{ x: 0, y: 0 }}
-        end={{ x: 0, y: 1 }}
-        colors={getGradientColors(props.color)}
-      />
-      <VideoOfferContainer>
-        <Typo.Title3>{props.title}</Typo.Title3>
-        <Spacer.Column numberOfSpaces={5} />
-        <StyledTouchableHighlight
-          onPress={showVideoModal}
-          testID="video-thumbnail"
-          accessibilityRole="button">
-          <Thumbnail source={{ uri: props.videoThumbnail }}>
-            <DurationCaptionContainer>
-              <DurationCaption>{videoDuration}</DurationCaption>
-            </DurationCaptionContainer>
-            <TextContainer>
-              <BlackGradient />
-              <BlackBackground>
-                <VideoTitle numberOfLines={2}>{props.videoTitle}</VideoTitle>
-              </BlackBackground>
-            </TextContainer>
-            <PlayerContainer>
-              <Player />
-            </PlayerContainer>
-          </Thumbnail>
-        </StyledTouchableHighlight>
-        <VideoModal
-          visible={videoModalVisible}
-          hideModal={hideVideoModal}
-          offer={offer}
-          moduleId={props.id}
-          {...props}
+      <StyledTitleContainer>
+        <StyledTitleComponent>{props.title}</StyledTitleComponent>
+      </StyledTitleContainer>
+
+      <StyledWrapper>
+        <ColorCategoryBackground
+          start={{ x: 0, y: 0 }}
+          end={{ x: 0, y: 1 }}
+          colors={getGradientColors(props.color)}
         />
-        <Spacer.Column numberOfSpaces={2} />
-        <OfferVideoModule
-          offer={offer}
-          color={props.color}
-          hideModal={hideVideoModal}
-          moduleId={props.id}
-          moduleName={props.title}
-          homeEntryId={props.homeEntryId}
-          analyticsFrom={'home'}
-        />
-      </VideoOfferContainer>
-      <Spacer.Column numberOfSpaces={5} />
+        <VideoOfferContainer>
+          <Spacer.Column numberOfSpaces={5} />
+          <StyledTouchableHighlight
+            onPress={showVideoModal}
+            testID="video-thumbnail"
+            accessibilityRole="button">
+            <Thumbnail source={{ uri: props.videoThumbnail }}>
+              <DurationCaptionContainer>
+                <DurationCaption>{videoDuration}</DurationCaption>
+              </DurationCaptionContainer>
+              <TextContainer>
+                <BlackGradient />
+                <BlackBackground>
+                  <VideoTitle numberOfLines={2}>{props.videoTitle}</VideoTitle>
+                </BlackBackground>
+              </TextContainer>
+              <PlayerContainer>
+                <Player />
+              </PlayerContainer>
+            </Thumbnail>
+          </StyledTouchableHighlight>
+          <VideoModal
+            visible={videoModalVisible}
+            hideModal={hideVideoModal}
+            offer={offer}
+            moduleId={props.id}
+            {...props}
+          />
+          <Spacer.Column numberOfSpaces={2} />
+          <OfferVideoModule
+            offer={offer}
+            color={props.color}
+            hideModal={hideVideoModal}
+            moduleId={props.id}
+            moduleName={props.title}
+            homeEntryId={props.homeEntryId}
+            analyticsFrom={'home'}
+          />
+        </VideoOfferContainer>
+      </StyledWrapper>
+      <Spacer.Column numberOfSpaces={6} />
     </Container>
   )
 }
@@ -110,6 +117,8 @@ export const VideoModule: FunctionComponent<VideoModuleProps> = (props) => {
 const Container = styled.View(({ theme }) => ({
   paddingBottom: theme.home.spaceBetweenModules,
 }))
+
+const StyledWrapper = styled.View({})
 
 const VideoOfferContainer = styled.View(({ theme }) => ({
   marginHorizontal: theme.contentPage.marginHorizontal,
@@ -149,7 +158,7 @@ const PlayerContainer = styled.View({
 
 const ColorCategoryBackground = styled(LinearGradient)({
   position: 'absolute',
-  top: getSpacing(31),
+  top: GRADIENT_START_POSITION,
   right: 0,
   left: 0,
   height: COLOR_CATEGORY_BACKGROUND_HEIGHT,
@@ -174,3 +183,11 @@ const StyledTouchableHighlight = styled.TouchableHighlight.attrs(({ theme }) => 
 }))(({ theme }) => ({
   borderRadius: theme.borderRadius.radius,
 }))
+
+const StyledTitleContainer = styled.View(({ theme }) => ({
+  marginHorizontal: theme.contentPage.marginHorizontal,
+}))
+
+const StyledTitleComponent = styled(Typo.Title3).attrs({
+  numberOfLines: 2,
+})({})
