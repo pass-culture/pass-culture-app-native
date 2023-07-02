@@ -46,11 +46,11 @@ export function RideDetails({ title, onClosePress, onEndReached }: RideDetailsPr
     <View style={{ flex: 1 }}>
       <PageHeaderSecondary onGoBack={goBack} title="Trajet terminé" />
       <MainContainer>
-        <StyledImage
+        {/* <StyledImage
           source={require('./../components/assets/Images/done.png')}
           resizeMode="contain"
-        />
-        {customHeader}
+        /> */}
+        {/* {customHeader} */}
         <Spacer.Column numberOfSpaces={4} />
 
         <DetailsContainer>
@@ -61,7 +61,10 @@ export function RideDetails({ title, onClosePress, onEndReached }: RideDetailsPr
               {'18'}
             </Typo.Title4>
           </DetailTitleContainer>
-          <Spacer.Column numberOfSpaces={5} />
+          <Spacer.Column numberOfSpaces={2} />
+
+          <RideIDText>{`Ride ID : Acqila123`}</RideIDText>
+          <Spacer.Column numberOfSpaces={3} />
           <Separator />
           <Spacer.Column numberOfSpaces={4} />
           <HoriZontalContainer>
@@ -120,7 +123,14 @@ const HeaderMessage = styled.Text({
   color: ColorsEnum.GREY,
   lineHeight: 18,
 })
-
+const RideIDText = styled.Text({
+  fontSize: 12,
+  fontFamily: 'Montserrat',
+  fontStyle: 'normal',
+  fontWeight: '400',
+  color: ColorsEnum.GREY,
+  lineHeight: 18,
+})
 const StyledImage = styled.Image(({ theme, size }: any) => ({
   height: 160,
 }))
@@ -132,9 +142,10 @@ const LocationLabelContainer = styled.View({
 const MainContainer = styled.View({
   // width: '100%',
   flex: 1,
-  justifyContent: 'center',
+  // justifyContent: 'center',
   alignItems: 'center',
-  paddingHorizontal: getSpacing(10),
+  paddingHorizontal: getSpacing(9),
+  marginTop: getSpacing(10),
 })
 
 const ModalHeaderContainer = styled.View({
@@ -149,7 +160,8 @@ const DetailsContainer = styled.View({
   borderColor: ColorsEnum.GREY_LIGHT,
   height: 230,
   paddingHorizontal: 16,
-  paddingVertical: 24,
+  paddingTop: 24,
+  paddingBottom: 24,
 })
 const DetailTitleContainer = styled.View({
   flexDirection: 'row',
