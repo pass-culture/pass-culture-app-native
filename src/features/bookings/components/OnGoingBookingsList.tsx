@@ -102,8 +102,11 @@ export function OnGoingBookingsList() {
       if (reservationsJSON !== null) {
         const reservations = JSON.parse(reservationsJSON)
         const filteredReservations = reservations.filter(
-          (reservation) => reservation.commonKey === commonKey
+          (reservation) => reservation.commonKey === commonKey && reservation.tripid !== ''
         )
+
+        // Sort the reservations by tripdate in descending order
+        filteredReservations.sort((a, b) => new Date(b.tripdate) - new Date(a.tripdate))
 
         console.log('Retrieved reservations:', filteredReservations)
         return filteredReservations
