@@ -6,7 +6,7 @@ import styled from 'styled-components/native'
 import { useBookings } from 'features/bookings/api'
 import { EndedBookingsSection } from 'features/bookings/components/EndedBookingsSection'
 import { getEligibleBookingsForArchive } from 'features/bookings/helpers/expirationDateUtils'
-import { Booking } from 'features/bookings/types'
+import { Booking, RideResponseType } from 'features/bookings/types'
 import { analytics, isCloseToBottom } from 'libs/analytics'
 import useFunctionOnce from 'libs/hooks/useFunctionOnce'
 import { useIsFalseWithDelay } from 'libs/hooks/useIsFalseWithDelay'
@@ -41,11 +41,13 @@ export function OnGoingBookingsList() {
   const { showErrorSnackBar } = useSnackBarContext()
   const reservedRides = [
     {
-      isRide: true,
-      id: '1as',
-      name: 'Alpha Taxi',
-      from: 'Musée Zadkin',
-      to: 'Louvre Museum',
+      reservationid: 3,
+      tripid: 'dcbb7f15-49b6-4eac-90b8-4de8da9581b6',
+      tripamount: 11,
+      source: { lat: 13.0411, lon: 77.6622, name: 'Horamavu agara' },
+      destination: { lat: 13.0335, lon: 77.6739, name: 'Kalkere' },
+      tripdate: '2023-07-02T06:53:15.622Z',
+      commonKey: '600000345',
     },
   ]
   const {
@@ -98,7 +100,7 @@ export function OnGoingBookingsList() {
 
   const renderItem: ListRenderItem<any> = useCallback(
     ({ item }) =>
-      item.isRide ? (
+      item.reservationid ? (
         <RideBookingItem booking={item} />
       ) : (
         <OnGoingBookingItem
@@ -134,7 +136,8 @@ export function OnGoingBookingsList() {
   )
 }
 
-const keyExtractor = (item: Booking) => item.id.toString()
+const keyExtractor = (item: Booking | RideResponseType) =>
+  item?.id?.toString() || item?.reservationid?.toString()
 
 const contentContainerStyle = {
   flexGrow: 1,

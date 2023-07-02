@@ -11,22 +11,22 @@ import { BookingItemTitle } from './BookingItemTitle'
 type SizeProps = {
   size?: 'small' | 'tall'
 }
-export const RideBookingItem = ({ booking, onClick }: BookingItemProps) => {
+export const RideBookingItem = ({ booking }: BookingItemProps) => {
   return (
-    <Container navigateTo={{ screen: 'RideDetails', params: { id: booking.id } }}>
+    <Container navigateTo={{ screen: 'RideDetails', params: { booking } }}>
       <StyledImage
         source={require('./../components/assets/Images/carbooking.png')}
         resizeMode="contain"
       />
       <AttributesView>
-        <BookingItemTitle title={booking?.name} />
+        <BookingItemTitle title={booking?.name || 'Alpha Taxi'} />
         <LocationContainer>
           <StyledLocationIcon
             resizeMode="contain"
             source={require('./../components/assets/Icons/blueLocationPin.png')}
           />
           <Spacer.Row numberOfSpaces={1} />
-          <DateLabel>{booking.from}</DateLabel>
+          <DateLabel>{booking?.source?.name}</DateLabel>
         </LocationContainer>
         <DotCoontainer>
           <Dot size={2} fillColor={ColorsEnum.GREY_MEDIUM} />
@@ -39,7 +39,7 @@ export const RideBookingItem = ({ booking, onClick }: BookingItemProps) => {
             source={require('./../components/assets/Icons/redLocationPin.png')}
           />
           <Spacer.Row numberOfSpaces={1} />
-          <DateLabel>{booking.to}</DateLabel>
+          <DateLabel>{booking?.destination?.name}</DateLabel>
         </LocationContainer>
         <Spacer.Flex />
       </AttributesView>
