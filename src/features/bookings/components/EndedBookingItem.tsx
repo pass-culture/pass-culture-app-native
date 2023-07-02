@@ -87,6 +87,11 @@ export const EndedBookingItem = ({ booking }: BookingItemProps) => {
         <Spacer.Row numberOfSpaces={4} />
         <AttributesView>
           <BookingItemTitle title={stock.offer.name} />
+          <EndedReasonAndDate>
+            {endedBookingReason}
+            <Spacer.Row numberOfSpaces={1} />
+            <Typo.CaptionNeutralInfo>{endedBookingDateLabel}</Typo.CaptionNeutralInfo>
+          </EndedReasonAndDate>
         </AttributesView>
       </ItemContainer>
     </InternalTouchableLink>
