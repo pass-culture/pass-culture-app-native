@@ -154,7 +154,7 @@ export const SelectTravelOptions = ({ navigation, route }: any) => {
     }
   }
 
-
+  getReservationsByCommonKey(mobileNumber);
   // "source": {
   //   "lat": currentLocation?.latitude,
   //   "lon": currentLocation?.longitude,
