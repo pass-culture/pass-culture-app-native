@@ -98,7 +98,8 @@ const TravelListModal = ({ toggleModal, visible, onProceed }: TravelListModalInt
           </ImageWrapper>
           <TitleText>{item.name}</TitleText>
         </Touchable>
-        <Spacer.Column numberOfSpaces={2} /></View>
+        <Spacer.Column numberOfSpaces={2} />
+      </View>
     )
   }
 
@@ -110,9 +111,9 @@ const TravelListModal = ({ toggleModal, visible, onProceed }: TravelListModalInt
 
   const customHeader = () => (
     <HeaderTextWrapper>
-      <Spacer.Column numberOfSpaces={3} />
+      {!accordianStatus && <Spacer.Column numberOfSpaces={getSpacing(3)} />}
       <Typo.Body style={{ textAlign: 'center', fontWeight: '700', fontSize: 15 }}>
-        {!isLoading ? 'Sélectionnez votre mode de transport' : 'Recherche'}
+        {!isLoading ? 'Sélectionnez votre mode de transport ' : 'Recherche'}
       </Typo.Body>
     </HeaderTextWrapper>
   )
@@ -121,7 +122,10 @@ const TravelListModal = ({ toggleModal, visible, onProceed }: TravelListModalInt
     <AccordianTextWrapper>
       <AccordianText>
         {
-          accordianStatus ? 'Sélectionnez le mode de paiement' : 'Mode de paiement : Payer en espèces'
+          // accordianStatus
+          // ? 'Sélectionnez le mode de paiement'
+          // :
+          'Mode de paiement : Payer en espèces'
           // `Mode de paiement : Portefeuille PC € ${walletBalance}`
         }
       </AccordianText>
@@ -141,6 +145,7 @@ const TravelListModal = ({ toggleModal, visible, onProceed }: TravelListModalInt
             visible={visible}
             customModalHeader={customHeader()}
             onBackButtonPress={() => toggleModal()}
+            scrollEnabled={false}
             onRequestClose={() => toggleModal()}>
             <ModalContent>
               {isLoading ? (
@@ -172,10 +177,16 @@ const TravelListModal = ({ toggleModal, visible, onProceed }: TravelListModalInt
                   )}
                   <Spacer.Column numberOfSpaces={3} />
                   {selectedItem && (
-                    <AccordianWrapper isError={paymentMode === 'Portefeuille...' && walletBalance < minBalance && selectedItem}>
+                    <AccordianWrapper
+                      isError={
+                        paymentMode === 'Portefeuille...' &&
+                        walletBalance < minBalance &&
+                        selectedItem
+                      }>
                       <AccordionItem
                         title={accordianTitle()}
-                        onPress={() => setAccordianStatus(!accordianStatus)}>
+                        onClose={() => setAccordianStatus(!accordianStatus)}
+                        onOpen={() => setAccordianStatus(!accordianStatus)}>
                         <TravelPaymentRadio
                           selectedItem={paymentMode}
                           walletBalance={walletBalance}
@@ -196,7 +207,10 @@ const TravelListModal = ({ toggleModal, visible, onProceed }: TravelListModalInt
                 wording={'Procéder'}
                 onPress={handleClick}
                 isDisabled={
-                  !selectedItem || !paymentMode || !walletBalance || (paymentMode === 'Portefeuille...' && walletBalance > minBalance)
+                  !selectedItem ||
+                  !paymentMode ||
+                  !walletBalance ||
+                  (paymentMode === 'Portefeuille...' && walletBalance > minBalance)
                 }
               />
             </ModalContent>
@@ -208,6 +222,7 @@ const TravelListModal = ({ toggleModal, visible, onProceed }: TravelListModalInt
 }
 
 const ModalContent = styled.View({
+  // flex: 1,
   alignContent: 'center',
 
 })

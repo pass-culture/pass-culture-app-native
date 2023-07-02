@@ -7,10 +7,10 @@ import { PageHeaderSecondary } from 'ui/components/headers/PageHeaderSecondary'
 import { useNavigation } from '@react-navigation/native'
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import HyperSdkReact from 'hyper-sdk-react'
+import { env } from 'libs/environment'
 import { api } from 'api/api'
 import { ColorsEnum } from 'ui/theme/colors'
 
-import { env } from 'libs/environment'
 
 HyperSdkReact.createHyperServices()
 
@@ -270,7 +270,7 @@ export const SelectTravelOptions = ({ navigation }) => {
         <TravelListModal
           visible={modalVisible}
           onProceed={() => handleClick()}
-          toggleModal={(value: boolean) => setModalVisible(value)}
+          toggleModal={(value: boolean) => goBack()}
         />
       )}
     </View>

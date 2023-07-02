@@ -29,6 +29,7 @@ interface AccordionItemProps {
   defaultOpen?: boolean
   onOpenOnce?: () => void
   onOpen?: () => void
+  onClose?: () => void
   titleStyle?: StyleProp<ViewStyle>
   bodyStyle?: StyleProp<ViewStyle>
   switchProps?: FilterSwitchProps
@@ -41,6 +42,7 @@ export const AccordionItem = ({
   defaultOpen = false,
   onOpenOnce,
   onOpen,
+  onClose,
   titleStyle,
   bodyStyle,
   switchProps,
@@ -80,6 +82,8 @@ export const AccordionItem = ({
     if (open) {
       onOpen?.()
       onOpenOnce && openOnce()
+    } else {
+      onClose?.()
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [open])
