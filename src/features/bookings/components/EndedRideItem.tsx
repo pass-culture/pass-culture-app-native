@@ -5,23 +5,23 @@ import { BookingItemProps } from 'features/bookings/types'
 import { Image } from 'react-native'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { Dot } from 'ui/svg/icons/Dot'
-import { Spacer, Typo, getSpacing } from 'ui/theme'
+import { Spacer, Typo, getShadow, getSpacing } from 'ui/theme'
 import { ColorsEnum } from 'ui/theme/colors'
 import { BookingItemTitle } from './BookingItemTitle'
-import { Touchable } from 'ui/components/touchable/Touchable'
+import { Platform } from 'react-native'
 type SizeProps = {
   size?: 'small' | 'tall'
 }
-export const RideBookingItem = ({ booking, onRideClick }: any) => {
-  const handleClick = () => {
-    onRideClick()
-  }
+export const EndedRideBookingItem = ({ booking }: BookingItemProps) => {
   return (
-    <Container onPress={handleClick}>
-      <StyledImage
-        source={require('./../components/assets/Images/carbooking.png')}
-        resizeMode="contain"
-      />
+    <Container navigateTo={{ screen: 'RideDetails', params: { booking } }}>
+      <ImageContainer size={'size'}>
+        <StyledImage
+          source={require('./../components/assets/Images/carbooking.png')}
+          resizeMode="contain"
+        />
+      </ImageContainer>
+
       <AttributesView>
         <BookingItemTitle title={booking?.name || 'Alpha Taxi'} />
         <LocationContainer>
@@ -51,8 +51,8 @@ export const RideBookingItem = ({ booking, onRideClick }: any) => {
   )
 }
 
-const Container = styled(Touchable)({
-  paddingHorizontal: getSpacing(6),
+const Container = styled(InternalTouchableLink)({
+  //   paddingHorizontal: getSpacing(6),
   flexDirection: 'row',
 })
 
@@ -67,7 +67,20 @@ const StyledImage = styled(Image).attrs<SizeProps>(({ theme, size }) => ({
 }))<SizeProps>(({ theme, size }) => ({
   backgroundColor: theme.colors.greyLight,
   ...(size === 'small' ? theme.tiles.sizes.small : theme.tiles.sizes.tall),
-  borderRadius: 10,
+  borderRadius: theme.tiles.borderRadius,
+}))
+
+const ImageContainer = styled.View<SizeProps>(({ theme, size }) => ({
+  borderRadius: theme.tiles.borderRadius,
+  ...(size === 'small' ? theme.tiles.sizes.small : theme.tiles.sizes.tall),
+  ...(Platform.OS !== 'web'
+    ? getShadow({
+        shadowOffset: { width: 0, height: getSpacing(1) },
+        shadowRadius: getSpacing(1),
+        shadowColor: theme.colors.greyDark,
+        shadowOpacity: 0.2,
+      })
+    : {}),
 }))
 
 const StyledLocationIcon = styled(Image)({

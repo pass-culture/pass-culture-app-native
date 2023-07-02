@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react'
+import React, { useCallback, useEffect, useState } from 'react'
 import { FlatList, ListRenderItem } from 'react-native'
 import styled from 'styled-components/native'
 
@@ -12,19 +12,69 @@ import { PageHeaderSecondary } from 'ui/components/headers/PageHeaderSecondary'
 import { Separator } from 'ui/components/Separator'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
+import { EndedRideBookingItem } from 'features/bookings/components/EndedRideItem'
+import { api } from 'api/api'
+import AsyncStorage from '@react-native-async-storage/async-storage'
 
-const renderItem: ListRenderItem<Booking> = ({ item }) => <EndedBookingItem booking={item} />
-const keyExtractor: (item: Booking) => string = (item) => item.id.toString()
+const renderItem: ListRenderItem<Booking | RideResponseType> = ({ item }) =>
+  item.reservationid ? <EndedRideBookingItem booking={item} /> : <EndedBookingItem booking={item} />
+const keyExtractor: (item: Booking) => string = (item) =>
+  item?.id?.toString() || item?.reservationid?.toString()
 
 export const EndedBookings: React.FC = () => {
   const { data: bookings } = useBookings()
   const { goBack } = useGoBack(...getTabNavConfig('Bookings'))
+  const [reservedRides, setReserveRides] = useState([])
 
   const endedBookingsCount = bookings?.ended_bookings?.length ?? 0
   const endedBookingsLabel = plural(endedBookingsCount, {
     one: '# réservation terminée',
     other: '# réservations terminées',
   })
+
+  const getReservationsByCommonKey = async (commonKey) => {
+    try {
+      const reservationsJSON = await AsyncStorage.getItem('reservations')
+
+      if (reservationsJSON !== null) {
+        const reservations = JSON.parse(reservationsJSON)
+        const filteredReservations = reservations.filter(
+          (reservation) => reservation.commonKey === commonKey
+        )
+
+        console.log('Retrieved reservations:', filteredReservations)
+        return filteredReservations
+      } else {
+        console.log('No reservations found.')
+        return []
+      }
+    } catch (error) {
+      console.log('Error retrieving reservations:', error)
+      return []
+    }
+  }
+
+  useEffect(() => {
+    async function getridedata() {
+      const { phoneNumber } = (await api.getnativev1me()) || '+919480081411'
+      let mobile = phoneNumber?.slice(3, phoneNumber.length)
+
+      // await storeReservation({
+      //   reservationid: 5,
+      //   tripid: 'dcbb7f15-49b6-4eac-90b8-4de8da9581b6',
+      //   tripamount: 13,
+      //   source: { lat: 13.0411, lon: 77.6622, name: 'Horamavu agara' },
+      //   destination: { lat: 13.0335, lon: 77.6739, name: 'Kalkere' },
+      //   tripdate: '2023-07-02T06:53:15.622Z',
+      //   commonKey: mobile,
+      // })
+
+      const rideData = await getReservationsByCommonKey(mobile)
+      setReserveRides(rideData)
+      console.log('rideData rideData ---------------------> ', rideData)
+    }
+    getridedata()
+  }, [])
 
   const ListHeaderComponent = useCallback(
     () => (
@@ -44,7 +94,7 @@ export const EndedBookings: React.FC = () => {
         listAs="ul"
         itemAs="li"
         contentContainerStyle={contentContainerStyle}
-        data={bookings?.ended_bookings ?? []}
+        data={[...reservedRides, ...bookings?.ended_bookings] ?? []}
         keyExtractor={keyExtractor}
         renderItem={renderItem}
         ItemSeparatorComponent={StyledSeparator}
