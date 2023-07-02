@@ -1,0 +1,71 @@
+{
+    "birthDate": "2004-01-01",
+    "bookedOffers": {
+        "1307": 31620065
+    },
+    "dateOfBirth": "2004-01-01",
+    "depositExpirationDate": "2025-06-28T23:59:59.999999Z",
+    "depositType": "GRANT_18",
+    "domainsCredit": {
+        "all": {
+            "initial": 30000,
+            "remaining": 9500
+        },
+        "digital": {
+            "initial": 10000,
+            "remaining": 9500
+        },
+        "physical": null
+    },
+    "eligibility": null,
+    "eligibilityEndDatetime": "2023-01-01T11:00:00Z",
+    "eligibilityStartDatetime": "2019-01-01T00:00:00Z",
+    "email": "faiz@fide.org",
+    "firstName": "Faiz Mohammed",
+    "id": 4960251,
+    "isBeneficiary": true,
+    "isEligibleForBeneficiaryUpgrade": false,
+    "lastName": "User",
+    "needsToFillCulturalSurvey": false,
+    "phoneNumber": "+918861084477",
+    "recreditAmountToShow": null,
+    "requiresIdCheck": true,
+    "roles": [
+        "BENEFICIARY",
+        "TEST"
+    ],
+    "showEligibleCard": false,
+    "status": {
+        "statusType": "beneficiary",
+        "subscriptionStatus": null
+    },
+    "subscriptionMessage": null,
+    "subscriptions": {
+        "marketingEmail": false,
+        "marketingPush": true
+    }
+}
+// process_result:  
+// {"action": "trip_completed", "exit_app": false, 
+// "screen": "trip_started_screen", "trip_amount": 11, 
+// "trip_id": "50085727-d7bb-44d0-9dfc-ba6f2b0b5133"}
+//  LOG  process_call: wallet transaction  
+//  {"action": "trip_completed", "exit_app": false, 
+//  "screen": "trip_started_screen", "trip_amount": 11, 
+//  "trip_id": "50085727-d7bb-44d0-9dfc-ba6f2b0b5133"}
+//  process_result:  
+//  {"action": "feedback_submitted", "exit_app": false, 
+//  "screen": "ride_rating_screen", "trip_amount": null, "trip_id": null}
+//  LOG  process_call: wallet transaction  
+//  {"action": "feedback_submitted", "exit_app": false, 
+//  "screen": "ride_rating_screen", "trip_amount": null, "trip_id": null}
+// process_result:  {"action": "terminate", "exit_app": false, "screen": "trip_accepted_screen", "trip_amount": null, "trip_id": null}
+// tanmaya@eminds.ai
+// tanmaya@eminds.ai
+// tbVTgWgYV3_PF_zB
+// Bookingcount false
+//  Bookingdata {"beginningDatetime": null, "id": 17372, 
+//  "offer": {"extraData": {"ean": "9783836542937", "isbn": "9783836542937"}, 
+//  "id": 8767, "image": {"credit": "undefined", "url": "https://storage.googleapis.com/passculture-metier-ehp-staging-assets-fine-grained/thumbs/mediations/EVDA"}, 
+//  "isDigital": false, "isPermanent": false, "name": "Jazzlife : a journey for jazz across America in 1960", "subcategoryId": "LIVRE_PAPIER", "url": null, "venue": {"address": "15 Rue de la Coquille", "city": "Béziers", "coordinates": [Object], "id": 2895, "name": "S.A.R.L. \"LIBRAIRIE DES SOURCES\"", "postalCode": "34500", "publicName": "Librairie Clareton des Sources"}, "withdrawalDelay": null, "withdrawalDetails": null, "withdrawalType": null}, "price": 5000, "priceCategoryLabel": null}
+//  Bookingdata {"hasActivationCode": false, "isDigital": false, "isDuo": false, "isEvent": false, "isPermanent": false, "isPhysical": true}

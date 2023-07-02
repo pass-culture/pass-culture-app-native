@@ -46,7 +46,8 @@ allprojects {
             // Android JSC is installed from npm
             url("$rootDir/../node_modules/jsc-android/dist")
         }
-        maven {
+
+         maven {
             url "https://maven.juspay.in/jp-build-packages/hyper-sdk/"
         }
         mavenCentral {
@@ -69,4 +70,8 @@ subprojects { subproject ->
             }
         }
     }
+}
+
+task clean(type: Delete) {
+    delete rootProject.buildDir
 }

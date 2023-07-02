@@ -224,6 +224,7 @@ const TravelListModal = ({ toggleModal, visible, onProceed }: TravelListModalInt
 const ModalContent = styled.View({
   // flex: 1,
   alignContent: 'center',
+
 })
 
 const LoaderWrapper = styled.View({
@@ -240,6 +241,9 @@ const AccordianWrapper = styled.View(({ isError }) => ({
 
 const HeaderTextWrapper = styled.View({
   width: '100%',
+
+
+
 })
 
 const AccordianTextWrapper = styled.View({
