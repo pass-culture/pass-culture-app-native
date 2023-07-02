@@ -142,19 +142,29 @@ export const SelectTravelOptions = ({ navigation, route }: any) => {
       },
       "search_type": "direct_search",
       "source": {
-        "lat": currentLocation?.latitude,
-        "lon": currentLocation?.longitude,
-        "name": "Paris, France"
+        "lat": 13.0411,
+        "lon": 77.6622,
+        "name": "Horamavu agara"
       },
       "destination": {
-        "lat": 48.8606,
-        "lon": 2.3376,
-        "name": "louvre museum 75001 paris france"
+        "lat": 13.0335,
+        "lon": 77.6739,
+        "name": "Kalkere"
       }
     }
   }
 
 
+  // "source": {
+  //   "lat": currentLocation?.latitude,
+  //   "lon": currentLocation?.longitude,
+  //   "name": "Paris, France"
+  // },
+  // "destination": {
+  //   "lat": 48.8606,
+  //   "lon": 2.3376,
+  //   "name": "louvre museum 75001 paris france"
+  // }
   // const handleClick = () => {
   //   setModalVisible(false)
   //   HyperSdkReact.initiate(initiatePayload)
