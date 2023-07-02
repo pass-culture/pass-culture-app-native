@@ -57,7 +57,7 @@ export function OnGoingBookingsList() {
   const isRefreshing = useIsFalseWithDelay(isFetching, ANIMATION_DURATION)
   const { showErrorSnackBar } = useSnackBarContext()
   const [mobileNumber, setMobileNumber] = useState()
-
+  const mobileCountryCode = '+91'
   const [reservedRides, setReserveRides] = useState([
     {
       commonKey: '600000341',
@@ -75,47 +75,41 @@ export function OnGoingBookingsList() {
     ended_bookings: endedBookings = emptyBookings,
   } = bookings ?? {}
 
-  const storeReservation = async (reservation) => {
+
+
+  const updateReservation = async (tripId, tripAmount) => {
     try {
-      const reservationsJSON = await AsyncStorage.getItem('reservations')
-      let reservations = []
+      const reservationsJSON = await AsyncStorage.getItem('reservations');
+      let reservations = [];
 
       if (reservationsJSON !== null) {
-        reservations = JSON.parse(reservationsJSON)
-      }
+        reservations = JSON.parse(reservationsJSON);
 
-      reservations.push(reservation)
+        // Find the reservation with the matching reservation ID
+        const foundIndex = reservations.findIndex(
+          (reservation) => reservation.tripId === ''
+        );
 
-      const updatedReservationsJSON = JSON.stringify(reservations)
-      await AsyncStorage.setItem('reservations', updatedReservationsJSON)
+        if (foundIndex !== -1) {
+          // Update the tripid and tripamount properties
+          reservations[foundIndex].tripid = tripId;
+          reservations[foundIndex].tripamount = tripAmount;
 
-      console.log('Reservation stored successfully.', updatedReservationsJSON)
-    } catch (error) {
-      console.log('Error storing reservation:', error)
-    }
-  }
+          const updatedReservationsJSON = JSON.stringify(reservations);
+          await AsyncStorage.setItem('reservations', updatedReservationsJSON);
 
-  const getReservationsByCommonKey = async (commonKey) => {
-    try {
-      const reservationsJSON = await AsyncStorage.getItem('reservations')
-
-      if (reservationsJSON !== null) {
-        const reservations = JSON.parse(reservationsJSON)
-        const filteredReservations = reservations.filter(
-          (reservation) => reservation.commonKey === commonKey
-        )
-
-        console.log('Retrieved reservations:', filteredReservations)
-        return filteredReservations
+          console.log('Reservation updated successfully.');
+        } else {
+          console.log('Reservation not found.');
+        }
       } else {
-        console.log('No reservations found.')
-        return []
+        console.log('No reservations found.');
       }
     } catch (error) {
-      console.log('Error retrieving reservations:', error)
-      return []
+      console.log('Error updating reservation:', error);
     }
-  }
+  };
+
 
   const initiatePayload = JSON.stringify({
     // Replace with your initiate payload
@@ -244,16 +238,8 @@ export function OnGoingBookingsList() {
             console.log('process_call: is called ', processPayload)
           } else if (processPayload?.action === 'trip_completed') {
             //function call for wallet transaction
-            const reservation1 = {
-              reservationid: '345859',
-              tripid: processPayload?.trip_id,
-              tripamount: processPayload?.trip_amount,
-              source: processPayload2.payload.source,
-              destination: processPayload2.payload.destination,
-              tripdate: new Date(),
-              commonKey: mobileNumber,
-            }
-            storeReservation(reservation1)
+
+            updateReservation(processPayload?.trip_id, processPayload?.trip_amount);
             console.log('process_call: wallet transaction ', processPayload)
             // HyperSdkReact.terminate();
           } else if (
