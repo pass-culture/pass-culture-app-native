@@ -107,7 +107,6 @@ export function OnGoingBookingsList() {
 
       const rideData = await getReservationsByCommonKey(mobile)
       setReserveRides(rideData)
-      console.log('rideData rideData ---------------------> ', rideData)
     }
     getridedata()
   }, [])
