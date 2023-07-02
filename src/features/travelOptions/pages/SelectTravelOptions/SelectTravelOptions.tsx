@@ -126,6 +126,39 @@ export const SelectTravelOptions = ({ navigation, route }: any) => {
       service: 'in.yatri.consumer',
     },
   })
+
+  async function getLatLngFromAddress(address) {
+    const apiKey = 'AIzaSyCFIR5ETG_Zfnx5dBpLke4ZD6WLvrZvEmk';
+    const encodedAddress = encodeURIComponent(address);
+    const geocodingUrl = `https://maps.googleapis.com/maps/api/geocode/json?address=${encodedAddress}&key=${apiKey}`;
+
+    try {
+      const response = await fetch(geocodingUrl);
+      const data = await response.json();
+
+      if (data.results.length > 0) {
+        const { lat, lng } = data.results[0].geometry.location;
+        return { latitude: lat, longitude: lng };
+      }
+    } catch (error) {
+      console.error('Error geocoding address:', error);
+    }
+
+    return null;
+  }
+
+  // Example usage:
+  const address = '15 Rue de la Coquille, Béziers';
+  getLatLngFromAddress(address).then((coordinates) => {
+    if (coordinates) {
+      const { latitude, longitude } = coordinates;
+      console.log('Latitude:', latitude);
+      console.log('Longitude:', longitude);
+    } else {
+      console.log('Failed to get coordinates for the address.');
+    }
+  });
+
   const processPayload2 = {
 
     "requestId": "6bdee986-f106-4884-ba9a-99c478d78c22",
@@ -142,35 +175,36 @@ export const SelectTravelOptions = ({ navigation, route }: any) => {
       },
       "search_type": "direct_search",
       "source": {
-        "lat": 13.0411,
-        "lon": 77.6622,
-        "name": "Horamavu agara"
+        "lat": currentLocation?.latitude,
+        "lon": currentLocation?.longitude,
+        "name": "Paris, France"
       },
       "destination": {
-        "lat": 13.0335,
-        "lon": 77.6739,
-        "name": "Kalkere"
+        "lat": 48.8606,
+        "lon": 2.3376,
+        "name": "louvre museum 75001 paris france"
       }
     }
   }
 
-  getReservationsByCommonKey(mobileNumber);
-  // "source": {
-  //   "lat": currentLocation?.latitude,
-  //   "lon": currentLocation?.longitude,
-  //   "name": "Paris, France"
-  // },
-  // "destination": {
-  //   "lat": 48.8606,
-  //   "lon": 2.3376,
-  //   "name": "louvre museum 75001 paris france"
-  // }
+  // getReservationsByCommonKey(mobileNumber);
+
   // const handleClick = () => {
   //   setModalVisible(false)
   //   HyperSdkReact.initiate(initiatePayload)
   //   HyperSdkReact.isInitialised().then((init) => {
   //     console.log('isInitialised:', init)
   //   })
+  // }
+  // "source": {
+  //   "lat": 13.0411,
+  //   "lon": 77.6622,
+  //   "name": "Horamavu agara"
+  // },
+  // "destination": {
+  //   "lat": 13.0335,
+  //   "lon": 77.6739,
+  //   "name": "Kalkere"
   // }
   const [loader, setLoader] = useState(false);
 
@@ -192,12 +226,12 @@ export const SelectTravelOptions = ({ navigation, route }: any) => {
   useEffect(() => {
     const fetchSignatureResponse = async () => {
       const { firstName } = await api.getnativev1me() || 'user'
-      const { phoneNumber } = (await api.getnativev1me()) || '+919480081411'
+      const { phoneNumber } = (await api.getnativev1me()) || '+918297921333'
       let mobile = phoneNumber?.slice(3, phoneNumber.length)
       console.log("test username1", mobile, firstName)
       setMobileNumber(mobile);
       try {
-        const result = await HyperSDKModule.dynamicSign(firstName, '9347462929', mobileCountryCode);
+        const result = await HyperSDKModule.dynamicSign(firstName, mobile, mobileCountryCode);
         setSignatureResponse(result);
         console.log("signauth check", result);
       } catch (error) {

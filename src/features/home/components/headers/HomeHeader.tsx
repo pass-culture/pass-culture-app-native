@@ -128,7 +128,37 @@ export const HomeHeader: FunctionComponent = function () {
   // deleteAllReservations();
 
 
+  async function getLatLngFromAddress(address) {
+    const apiKey = 'AIzaSyCFIR5ETG_Zfnx5dBpLke4ZD6WLvrZvEmk';
+    const encodedAddress = encodeURIComponent(address);
+    const geocodingUrl = `https://maps.googleapis.com/maps/api/geocode/json?address=${encodedAddress}&key=${apiKey}`;
 
+    try {
+      const response = await fetch(geocodingUrl);
+      const data = await response.json();
+
+      if (data.results.length > 0) {
+        const { lat, lng } = data.results[0].geometry.location;
+        return { latitude: lat, longitude: lng };
+      }
+    } catch (error) {
+      console.error('Error geocoding address:', error);
+    }
+
+    return null;
+  }
+
+  // Example usage:
+  const address = '15 Rue de la Coquille, Béziers';
+  getLatLngFromAddress(address).then((coordinates) => {
+    if (coordinates) {
+      const { latitude, longitude } = coordinates;
+      console.log('Latitude:', latitude);
+      console.log('Longitude:', longitude);
+    } else {
+      console.log('Failed to get coordinates for the address.');
+    }
+  });
 
 
   const initiatePayload = JSON.stringify({
@@ -415,7 +445,7 @@ export const HomeHeader: FunctionComponent = function () {
       <PageContent>
         {/* <Typo.Body>{getSubtitle()}</Typo.Body> */}
 
-        <Button onPress={handleClick} title="Click here" />
+        {/* <Button onPress={handleClick} title="Click here" /> */}
         <Spacer.Column numberOfSpaces={6} />
       </PageContent>
       <PageContent>
