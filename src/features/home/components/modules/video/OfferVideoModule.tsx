@@ -36,6 +36,8 @@ export const OfferVideoModule: FunctionComponent<Props> = ({
   const timestampsInMillis = offer.offer.dates?.map((timestampInSec) => timestampInSec * 1000)
   const labelMapping = useCategoryHomeLabelMapping()
   const mapping = useCategoryIdMapping()
+  const displayDate = formatDates(timestampsInMillis)
+  const displayPrice = getDisplayPrice(offer?.offer?.prices)
 
   const prePopulateOffer = usePrePopulateOffer()
 
@@ -69,8 +71,8 @@ export const OfferVideoModule: FunctionComponent<Props> = ({
         <OfferInformations>
           <CategoryText color={color}>{labelMapping[offer.offer.subcategoryId]}</CategoryText>
           <TitleText numberOfLines={2}>{offer.offer.name}</TitleText>
-          <AdditionalInfoText>{formatDates(timestampsInMillis)}</AdditionalInfoText>
-          <AdditionalInfoText>{getDisplayPrice(offer?.offer?.prices)}</AdditionalInfoText>
+          {!!displayDate && <AdditionalInfoText>{displayDate}</AdditionalInfoText>}
+          {!!displayPrice && <AdditionalInfoText>{displayPrice}</AdditionalInfoText>}
         </OfferInformations>
       </Row>
       <ArrowOffer>
