@@ -18,9 +18,15 @@ interface TravelListModalInterface {
   toggleModal: () => void
   onProceed: () => void
   visible: boolean
+  showLoader: boolean
 }
 
-const TravelListModal = ({ toggleModal, visible, onProceed }: TravelListModalInterface) => {
+const TravelListModal = ({
+  toggleModal,
+  visible,
+  onProceed,
+  showLoader,
+}: TravelListModalInterface) => {
   const [selectedItem, setSelectedItem] = useState('')
   const [accordianStatus, setAccordianStatus] = useState(false)
   const [walletBalance, setWalletBalance] = useState(null)
@@ -148,9 +154,15 @@ const TravelListModal = ({ toggleModal, visible, onProceed }: TravelListModalInt
             scrollEnabled={false}
             onRequestClose={() => toggleModal()}>
             <ModalContent>
-              {isLoading ? (
+              {isLoading || showLoader ? (
                 <LoaderWrapper>
-                  <ModalLoader message="Veuillez patienter! Nous recherchons des options de voyage actuelles" />
+                  <ModalLoader
+                    message={
+                      showLoader
+                        ? ''
+                        : 'Veuillez patienter! Nous recherchons des options de voyage actuelles'
+                    }
+                  />
                 </LoaderWrapper>
               ) : (
                 <>
@@ -207,6 +219,7 @@ const TravelListModal = ({ toggleModal, visible, onProceed }: TravelListModalInt
                 wording={'Procéder'}
                 onPress={handleClick}
                 isDisabled={
+                  showLoader ||
                   !selectedItem ||
                   !paymentMode ||
                   !walletBalance ||
@@ -224,7 +237,6 @@ const TravelListModal = ({ toggleModal, visible, onProceed }: TravelListModalInt
 const ModalContent = styled.View({
   // flex: 1,
   alignContent: 'center',
-
 })
 
 const LoaderWrapper = styled.View({
@@ -241,9 +253,6 @@ const AccordianWrapper = styled.View(({ isError }) => ({
 
 const HeaderTextWrapper = styled.View({
   width: '100%',
-
-
-
 })
 
 const AccordianTextWrapper = styled.View({
