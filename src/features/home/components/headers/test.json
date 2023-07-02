@@ -67,5 +67,6 @@
 //  Bookingdata {"beginningDatetime": null, "id": 17372, 
 //  "offer": {"extraData": {"ean": "9783836542937", "isbn": "9783836542937"}, 
 //  "id": 8767, "image": {"credit": "undefined", "url": "https://storage.googleapis.com/passculture-metier-ehp-staging-assets-fine-grained/thumbs/mediations/EVDA"}, 
-//  "isDigital": false, "isPermanent": false, "name": "Jazzlife : a journey for jazz across America in 1960", "subcategoryId": "LIVRE_PAPIER", "url": null, "venue": {"address": "15 Rue de la Coquille", "city": "Béziers", "coordinates": [Object], "id": 2895, "name": "S.A.R.L. \"LIBRAIRIE DES SOURCES\"", "postalCode": "34500", "publicName": "Librairie Clareton des Sources"}, "withdrawalDelay": null, "withdrawalDetails": null, "withdrawalType": null}, "price": 5000, "priceCategoryLabel": null}
+//  "isDigital": false, "isPermanent": false, "name": "Jazzlife : a journey for jazz across America in 1960", "subcategoryId": "LIVRE_PAPIER", "url": null, 
+// "venue": {"address": "15 Rue de la Coquille", "city": "Béziers", "coordinates": [Object], "id": 2895, "name": "S.A.R.L. \"LIBRAIRIE DES SOURCES\"", "postalCode": "34500", "publicName": "Librairie Clareton des Sources"}, "withdrawalDelay": null, "withdrawalDetails": null, "withdrawalType": null}, "price": 5000, "priceCategoryLabel": null}
 //  Bookingdata {"hasActivationCode": false, "isDigital": false, "isDuo": false, "isEvent": false, "isPermanent": false, "isPhysical": true}
