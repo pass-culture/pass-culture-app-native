@@ -1,11 +1,11 @@
 import { useNavigation } from '@react-navigation/native'
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
+import { env } from 'libs/environment'
 import React, { useEffect, useMemo, useState } from 'react'
 import { Image, View } from 'react-native'
 import styled from 'styled-components/native'
 import { Separator } from 'ui/components/Separator'
 import { PageHeaderSecondary } from 'ui/components/headers/PageHeaderSecondary'
-import { AppModal } from 'ui/components/modals/AppModal'
 import { Dot } from 'ui/svg/icons/Dot'
 import { Spacer, Typo, getSpacing } from 'ui/theme'
 import { ColorsEnum } from 'ui/theme/colors'
@@ -23,11 +23,58 @@ export function RideDetails({ route }) {
   const { goBack } = useNavigation<UseNavigationType>()
 
   const [rideDetail, setRideDeatails] = useState('')
+  const [picupAddress, setPicupAddress] = useState('')
+  const [dropAddress, setDropAddress] = useState('')
+
+  const getPlace = async (lat, long) => {
+    const mapUrl = `https://maps.googleapis.com/maps/api/geocode/json?latlng=${lat || 48.8566},${
+      long || 2.3522
+    }&sensor=true&key=${env.GOOGLE_MAP_API_KEY}`
+
+    try {
+      const response = await fetch(mapUrl)
+      const data = await response.json()
+
+      const results = data.results
+      if (results.length > 0) {
+        const addressComponents = results[0].address_components
+        const city = addressComponents.find((component) =>
+          component.types.includes('locality')
+        ).long_name
+        const country = addressComponents.find((component) =>
+          component.types.includes('country')
+        ).long_name
+        const place = `${city}, ${country}`
+        return place
+      }
+    } catch (error) {
+      console.error('Error fetching place:', error)
+    }
+  }
 
   useEffect(() => {
     setRideDeatails(rideData.booking)
-  }, [rideData])
 
+    // Fetch the pickup address and update the state
+    const fetchPickupAddress = async () => {
+      try {
+        const pickupPlace = await getPlace(
+          rideData.booking.source.latitude,
+          rideData.booking.source.longitude
+        )
+        setPicupAddress(pickupPlace)
+        const dropPlace = await getPlace(
+          rideData.booking.source.latitude,
+          rideData.booking.source.longitude
+        )
+        setDropAddress(dropPlace)
+      } catch (error) {
+        console.error('Error fetching pickup address:', error)
+      }
+    }
+
+    fetchPickupAddress()
+  }, [rideData])
   const customHeader = useMemo(() => {
     return (
       <ModalHeaderContainer>
@@ -132,7 +179,7 @@ export function RideDetails({ route }) {
             <Spacer.Row numberOfSpaces={1} />
             <LocationLabelContainer>
               <DateLabel>{rideDetail?.source?.name}</DateLabel>
-              <AddressText>{'Paris, France'}</AddressText>
+              <AddressText>{picupAddress}</AddressText>
             </LocationLabelContainer>
           </LocationContainer>
           <DotCoontainer>
