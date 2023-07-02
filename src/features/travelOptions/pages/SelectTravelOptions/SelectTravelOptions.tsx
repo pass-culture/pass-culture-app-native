@@ -173,12 +173,6 @@ export const SelectTravelOptions = ({ navigation, route }: any) => {
         signature: '',
         authData: '',
       },
-      search_type: 'direct_search',
-      source: {
-        lat: 13.0411,
-        lon: 77.6622,
-        name: 'Horamavu agara',
-      },
       "search_type": "direct_search",
       "source": {
         "lat": currentLocation?.latitude,
@@ -193,43 +187,9 @@ export const SelectTravelOptions = ({ navigation, route }: any) => {
     }
   }
 
-  // "source": {
-  //   "lat": currentLocation?.latitude,
-  //   "lon": currentLocation?.longitude,
-  //   "name": "Paris, France"
-  // },
-  // "destination": {
-  //   "lat": 48.8606,
-  //   "lon": 2.3376,
-  //   "name": "louvre museum 75001 paris france"
-  // }
-  // const handleClick = () => {
-  //   setModalVisible(false)
-  //   HyperSdkReact.initiate(initiatePayload)
-  //   HyperSdkReact.isInitialised().then((init) => {
-  //     console.log('isInitialised:', init)
-  //   })
-  // }
-  // "source": {
-  //   "lat": 13.0411,
-  //   "lon": 77.6622,
-  //   "name": "Horamavu agara"
-  // },
-  // "destination": {
-  //   "lat": 13.0335,
-  //   "lon": 77.6739,
-  //   "name": "Kalkere"
-  // }
-  // "source": {
-  //   "lat": 13.0411,
-  //   "lon": 77.6622,
-  //   "name": "Horamavu agara"
-  // },
-  // "destination": {
-  //   "lat": 13.0335,
-  //   "lon": 77.6739,
-  //   "name": "Kalkere"
-  // }
+  // getReservationsByCommonKey(mobileNumber);
+
+
   const [showLoader, setShowLoader] = useState(false)
 
   const handleClick = () => {
@@ -248,7 +208,7 @@ export const SelectTravelOptions = ({ navigation, route }: any) => {
 
   useEffect(() => {
     const fetchSignatureResponse = async () => {
-      const { firstName } = (await api.getnativev1me()) || 'user'
+      const { firstName } = await api.getnativev1me() || 'user'
       const { phoneNumber } = (await api.getnativev1me()) || '+918297921333'
       let mobile = phoneNumber?.slice(3, phoneNumber.length)
       console.log('test username1', mobile, firstName)
