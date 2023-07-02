@@ -1,4 +1,4 @@
-import React, { useCallback, useMemo } from 'react'
+import React, { useCallback, useEffect, useMemo, useState } from 'react'
 import { FlatList, ListRenderItem, NativeScrollEvent } from 'react-native'
 import { useSafeAreaInsets } from 'react-native-safe-area-context'
 import styled from 'styled-components/native'
@@ -6,7 +6,7 @@ import styled from 'styled-components/native'
 import { useBookings } from 'features/bookings/api'
 import { EndedBookingsSection } from 'features/bookings/components/EndedBookingsSection'
 import { getEligibleBookingsForArchive } from 'features/bookings/helpers/expirationDateUtils'
-import { Booking } from 'features/bookings/types'
+import { Booking, RideResponseType } from 'features/bookings/types'
 import { analytics, isCloseToBottom } from 'libs/analytics'
 import useFunctionOnce from 'libs/hooks/useFunctionOnce'
 import { useIsFalseWithDelay } from 'libs/hooks/useIsFalseWithDelay'
@@ -26,6 +26,8 @@ import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 import { NoBookingsView } from './NoBookingsView'
 import { OnGoingBookingItem } from './OnGoingBookingItem'
 import { RideBookingItem } from 'features/bookings/components/RideBookingItem'
+import AsyncStorage from '@react-native-async-storage/async-storage'
+import { api } from 'api/api'
 
 const emptyBookings: Booking[] = []
 
@@ -39,19 +41,76 @@ export function OnGoingBookingsList() {
   const showSkeleton = useIsFalseWithDelay(isLoading || subcategoriesIsLoading, ANIMATION_DURATION)
   const isRefreshing = useIsFalseWithDelay(isFetching, ANIMATION_DURATION)
   const { showErrorSnackBar } = useSnackBarContext()
-  const reservedRides = [
-    {
-      isRide: true,
-      id: '1as',
-      name: 'Alpha Taxi',
-      from: 'Musée Zadkin',
-      to: 'Louvre Museum',
-    },
-  ]
+  const [reservedRides, setReserveRides] = useState([])
+
   const {
     ongoing_bookings: ongoingBookings = emptyBookings,
     ended_bookings: endedBookings = emptyBookings,
   } = bookings ?? {}
+
+  const storeReservation = async (reservation) => {
+    try {
+      const reservationsJSON = await AsyncStorage.getItem('reservations')
+      let reservations = []
+
+      if (reservationsJSON !== null) {
+        reservations = JSON.parse(reservationsJSON)
+      }
+
+      reservations.push(reservation)
+
+      const updatedReservationsJSON = JSON.stringify(reservations)
+      await AsyncStorage.setItem('reservations', updatedReservationsJSON)
+
+      console.log('Reservation stored successfully.', updatedReservationsJSON)
+    } catch (error) {
+      console.log('Error storing reservation:', error)
+    }
+  }
+
+  const getReservationsByCommonKey = async (commonKey) => {
+    try {
+      const reservationsJSON = await AsyncStorage.getItem('reservations')
+
+      if (reservationsJSON !== null) {
+        const reservations = JSON.parse(reservationsJSON)
+        const filteredReservations = reservations.filter(
+          (reservation) => reservation.commonKey === commonKey
+        )
+
+        console.log('Retrieved reservations:', filteredReservations)
+        return filteredReservations
+      } else {
+        console.log('No reservations found.')
+        return []
+      }
+    } catch (error) {
+      console.log('Error retrieving reservations:', error)
+      return []
+    }
+  }
+
+  useEffect(() => {
+    async function getridedata() {
+      const { phoneNumber } = (await api.getnativev1me()) || '+919480081411'
+      let mobile = phoneNumber?.slice(3, phoneNumber.length)
+
+      // await storeReservation({
+      //   reservationid: 5,
+      //   tripid: 'dcbb7f15-49b6-4eac-90b8-4de8da9581b6',
+      //   tripamount: 13,
+      //   source: { lat: 13.0411, lon: 77.6622, name: 'Horamavu agara' },
+      //   destination: { lat: 13.0335, lon: 77.6739, name: 'Kalkere' },
+      //   tripdate: '2023-07-02T06:53:15.622Z',
+      //   commonKey: mobile,
+      // })
+
+      const rideData = await getReservationsByCommonKey(mobile)
+      setReserveRides(rideData)
+      console.log('rideData rideData ---------------------> ', rideData)
+    }
+    getridedata()
+  }, [])
 
   const refetchOffline = useCallback(() => {
     showErrorSnackBar({
@@ -98,7 +157,7 @@ export function OnGoingBookingsList() {
 
   const renderItem: ListRenderItem<any> = useCallback(
     ({ item }) =>
-      item.isRide ? (
+      item.reservationid ? (
         <RideBookingItem booking={item} />
       ) : (
         <OnGoingBookingItem
@@ -134,7 +193,8 @@ export function OnGoingBookingsList() {
   )
 }
 
-const keyExtractor = (item: Booking) => item.id.toString()
+const keyExtractor = (item: Booking | RideResponseType) =>
+  item?.id?.toString() || item?.reservationid?.toString()
 
 const contentContainerStyle = {
   flexGrow: 1,

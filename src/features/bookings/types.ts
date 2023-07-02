@@ -10,6 +10,23 @@ export type BookingProperties = {
 }
 
 export type Booking = BookingReponse
+export type RideResponseType = {
+  reservationid: number
+  tripid: string
+  tripamount: number
+  source: {
+    lat: number
+    lon: number
+    name: string
+  }
+  destination: {
+    lat: number
+    lon: number
+    name: string
+  }
+  tripdate: string
+  commonKey: string
+}
 
 export interface BookingItemProps {
   booking: Booking
