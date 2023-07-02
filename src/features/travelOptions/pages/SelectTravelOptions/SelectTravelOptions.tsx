@@ -26,11 +26,57 @@ export const SelectTravelOptions = ({ navigation }) => {
 
   const { domainsCredit } = api.getnativev1me()
   console.log("test username", api.getnativev1me())
-  const mobileNumber = "8297921333";
+  const [mobileNumber, setMobileNumber] = useState();
   const mobileCountryCode = "+91";
   const merchantId = "MOBILITY_PASSCULTURE";
   const timestamp = "2023-04-13T07:28:40+00:00";
   const userName = "Rajesh";
+
+
+  const storeReservation = async (reservation) => {
+    try {
+      const reservationsJSON = await AsyncStorage.getItem('reservations');
+      let reservations = [];
+
+      if (reservationsJSON !== null) {
+        reservations = JSON.parse(reservationsJSON);
+      }
+
+      reservations.push(reservation);
+
+      const updatedReservationsJSON = JSON.stringify(reservations);
+      await AsyncStorage.setItem('reservations', updatedReservationsJSON);
+
+      console.log('Reservation stored successfully.', updatedReservationsJSON);
+    } catch (error) {
+      console.log('Error storing reservation:', error);
+    }
+  };
+
+  const getReservationsByCommonKey = async (commonKey) => {
+    try {
+      const reservationsJSON = await AsyncStorage.getItem('reservations');
+
+      if (reservationsJSON !== null) {
+        const reservations = JSON.parse(reservationsJSON);
+        const filteredReservations = reservations.filter(
+          (reservation) => reservation.commonKey === commonKey
+        );
+
+        console.log('Retrieved reservations:', filteredReservations);
+        return filteredReservations;
+      } else {
+        console.log('No reservations found.');
+        return [];
+      }
+    } catch (error) {
+      console.log('Error retrieving reservations:', error);
+      return [];
+    }
+  };
+
+
+
 
   const [currentLocation, setCurrentLocation] = useState<Location | null>({
     latitude: 48.8566,
@@ -114,6 +160,7 @@ export const SelectTravelOptions = ({ navigation }) => {
   //   })
   // }
   const [loader, setLoader] = useState(false);
+
   const handleClick = () => {
     setLoader(true);
     if (HyperSdkReact.isNull()) {
@@ -124,6 +171,7 @@ export const SelectTravelOptions = ({ navigation }) => {
     HyperSdkReact.isInitialised().then((init) => {
       console.log('isInitialised:', init);
     });
+
   }
 
   const [signatureResponse, setSignatureResponse] = useState(null); // State to store the signature response
@@ -131,12 +179,12 @@ export const SelectTravelOptions = ({ navigation }) => {
   useEffect(() => {
     const fetchSignatureResponse = async () => {
       const { firstName } = await api.getnativev1me() || 'user'
-      const { phoneNumber } = (await api.getnativev1me()) || '+919493143166'
+      const { phoneNumber } = (await api.getnativev1me()) || '+919480081411'
       let mobile = phoneNumber?.slice(3, phoneNumber.length)
       console.log("test username1", mobile, firstName)
-
+      setMobileNumber(mobile);
       try {
-        const result = await HyperSDKModule.dynamicSign(firstName, '8008210472', mobileCountryCode);
+        const result = await HyperSDKModule.dynamicSign(firstName, '9347462929', mobileCountryCode);
         setSignatureResponse(result);
         console.log("signauth check", result);
       } catch (error) {
@@ -165,17 +213,13 @@ export const SelectTravelOptions = ({ navigation }) => {
       const data = JSON.parse(resp);
       const event = data.event || '';
       console.log('event_call: is called ', event);
-      console.log('data_call: is called ', data);
       switch (event) {
         case 'show_loader':
           // show some loader here
-          setLoader(true);
-          <ActivityIndicator />
           break;
 
         case 'hide_loader':
           // hide the loader
-          setLoader(false);
           break;
 
         case 'initiate_result':
@@ -199,50 +243,51 @@ export const SelectTravelOptions = ({ navigation }) => {
           }
           break;
 
+
+
         case 'process_result':
           const processPayload = data.payload || {};
           console.log('process_result: ', processPayload);
           // Handle process result
-          if (processPayload?.action === 'terminate') {
+          if (processPayload?.action === 'terminate' && processPayload?.screen === 'home_screen') {
             HyperSdkReact.terminate();
             console.log('process_call: is called ', processPayload);
-            setModalVisible(true)
-            // BackHandler.exitApp();
-          } else if (processPayload?.action === 'feedback_submitted' || processPayload?.action === 'feedback_skipped') {
+
+          } else if (processPayload?.action === 'trip_completed') {
+            //function call for wallet transaction
+            const reservation1 = {
+              reservationid: 3,
+              tripid: processPayload?.trip_id,
+              tripamount: processPayload?.trip_amount,
+              source: processPayload2.payload.source,
+              destination: processPayload2.payload.destination,
+              tripdate: new Date(),
+              commonKey: mobileNumber,
+            };
+            storeReservation(reservation1);
+            console.log('process_call: wallet transaction ', processPayload);
+            // HyperSdkReact.terminate();
+          } else if (processPayload?.action === 'feedback_submitted' || processPayload?.action === 'home_screen') {
 
             console.log('process_call: wallet transaction ', processPayload);
             HyperSdkReact.terminate();
             setModalVisible(true)
           }
 
+
+          if (processPayload?.screen === 'home_screen') {
+            HyperSdkReact.terminate();
+            setModalVisible(true)
+          } else if (processPayload?.screen === 'trip_started_screen') {
+            BackHandler.exitApp();
+          }
+          console.log('process_call: process ', processPayload);
+
+
           break;
 
         default:
           console.log('Unknown Event', data);
-
-      }
-      const screen = data.screen || '';
-      switch (screen) {
-        case 'home_screen':
-          // Handle home screen
-          break;
-
-        case 'estimate_screen':
-          // Handle estimate screen
-          break;
-
-        case 'finding_driver_loader':
-          // Handle finding driver loader screen
-          break;
-
-        case 'confirm_ride_loader':
-          // Handle confirm ride loader screen
-          break;
-
-        // Handle other screens...
-
-        default:
-          console.log('Unknown Screen', screen);
       }
     });
 

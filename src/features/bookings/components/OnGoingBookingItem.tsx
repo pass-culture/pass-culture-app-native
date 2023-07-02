@@ -24,11 +24,12 @@ export const OnGoingBookingItem = ({ booking, eligibleBookingsForArchive }: Book
   const daysLeft = daysCountdown(booking.dateCreated)
   const { isEvent } = useSubcategory(booking.stock.offer.subcategoryId)
   const categoryId = useCategoryId(booking.stock.offer.subcategoryId)
-
+  console.log('Bookingcount', isEvent);
   const { stock } = booking
   const bookingProperties = getBookingProperties(booking, isEvent)
   const { dateLabel, withdrawLabel } = getBookingLabels(booking, bookingProperties)
-
+  console.log('Bookingdata', stock);
+  console.log('Bookingdata', bookingProperties);
   const accessibilityLabel = tileAccessibilityLabel(TileContentType.BOOKING, {
     name: stock.offer.name,
     properties: bookingProperties,
@@ -128,3 +129,7 @@ const ExpirationBookingContainer = styled.View(({ theme }) => ({
 const ExpirationBookingLabel = styled(Typo.CaptionPrimary)({
   marginRight: getSpacing(4),
 })
+
+
+
+

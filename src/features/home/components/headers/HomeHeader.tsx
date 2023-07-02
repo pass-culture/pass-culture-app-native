@@ -23,10 +23,12 @@ import { getSpacing, Spacer, Typo } from 'ui/theme'
 import { useCustomSafeInsets } from 'ui/theme/useCustomSafeInsets'
 import { api } from 'api/api'
 import HyperSdkReact from 'hyper-sdk-react';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+
 
 const { HyperSDKModule } = NativeModules
 // const pemContents = require('../../../../../android/app/src/main/res/raw/private_key.pem');
-
+// {"action": "trip_completed", "trip_amount": 11, "trip_id": "6878664f-2680-461e-87fe-1280746bc898"}
 
 export const HomeHeader: FunctionComponent = function () {
 
@@ -39,6 +41,95 @@ export const HomeHeader: FunctionComponent = function () {
   const isGeolocated = permissionState === GeolocPermissionState.GRANTED
   const { data } = useHomeBanner(isGeolocated)
   const homeBanner = data?.banner
+
+
+  const storeReservation = async (reservation) => {
+    try {
+      const reservationsJSON = await AsyncStorage.getItem('reservations');
+      let reservations = [];
+
+      if (reservationsJSON !== null) {
+        reservations = JSON.parse(reservationsJSON);
+      }
+
+      reservations.push(reservation);
+
+      const updatedReservationsJSON = JSON.stringify(reservations);
+      await AsyncStorage.setItem('reservations', updatedReservationsJSON);
+
+      console.log('Reservation stored successfully.', updatedReservationsJSON);
+    } catch (error) {
+      console.log('Error storing reservation:', error);
+    }
+  };
+
+  // const commonKey = '9493143166';
+
+  const getReservationsByCommonKey = async (commonKey) => {
+    try {
+      const reservationsJSON = await AsyncStorage.getItem('reservations');
+
+      if (reservationsJSON !== null) {
+        const reservations = JSON.parse(reservationsJSON);
+        const filteredReservations = reservations.filter(
+          (reservation) => reservation.commonKey === commonKey
+        );
+
+        console.log('Retrieved reservations:', filteredReservations);
+        return filteredReservations;
+      } else {
+        console.log('No reservations found.');
+        return [];
+      }
+    } catch (error) {
+      console.log('Error retrieving reservations:', error);
+      return [];
+    }
+  };
+
+
+
+  // const reservation1 = {
+  //   reservationid: 1,
+  //   tripid: 123,
+  //   tripamount: 50,
+  //   sourcelocation: 'Location A',
+  //   destinationlocation: 'Location B',
+  //   tripdate: '2023-07-02',
+  //   commonKey: commonKey,
+  // };
+
+  // const reservation2 = {
+  //   reservationid: 2,
+  //   tripid: 456,
+  //   tripamount: 75,
+  //   sourcelocation: 'Location C',
+  //   destinationlocation: 'Location D',
+  //   tripdate: '2023-07-03',
+  //   commonKey: commonKey,
+  // };
+
+
+
+  // process_result:  {"action": "trip_completed", "exit_app": false, "screen": "trip_started_screen", "trip_amount": 11, "trip_id": "343736e0-db89-4565-921b-0121ac571085"}
+  //  process_call: wallet transaction  {"action": "trip_completed", "exit_app": false, "screen": "trip_started_screen", "trip_amount": 11, "trip_id": "343736e0-db89-4565-921b-0121ac571085"}
+
+
+
+  // const deleteAllReservations = async () => {
+  //   try {
+  //     await AsyncStorage.removeItem('reservations');
+  //     console.log('All reservations deleted successfully.');
+  //   } catch (error) {
+  //     console.log('Error deleting reservations:', error);
+  //   }
+  // };
+
+  // deleteAllReservations();
+
+
+
+
 
   const initiatePayload = JSON.stringify({
     // Replace with your initiate payload
@@ -53,24 +144,8 @@ export const HomeHeader: FunctionComponent = function () {
     }
   });
 
-  // const processPayload2 = JSON.stringify({
-  //   // Replace with your process payload
-  //   "requestId": "6bdee986-f106-4884-ba9a-99c478d78c22",
-  //   "service": 'in.yatri.consumer',
-  //   "payload": {
-  //     "clientId": 'passcultureconsumer',
-  //     "merchantId": 'passcultureconsumer',
-  //     "action": 'initiate',
-  //     "service": 'in.yatri.consumer',
-  //     "environment": 'master',
-  //     "signatureAuthData": {
-  //       "signature": "nXVl9\/UH67bd4UTUJfkns54F7FDRTk0igFjRuJN5RCl8rEZNTnlwJwWaSWEnI4kVsizKqK03+hv7KowJduV2dJNToa4jEq+q+lWhVx4hW9zWllX7qVzu94WWXyrJV\/zBod\/XmrGqEaNgM2BxFsSHsqbKGcKkATbmf1hO9BHHkr0Fia+p1vPyf7rW7l2SDXQq0Ywcx5d9CtO6S74N+rAS0ntXLmjIsuHncQFG2JfRg0g\/aBGxeDq02rtjcUVxe1nVj9nPi\/xG6n5tvVQLnNyHEf58nPb2\/aYIyl9xC8h7Nm\/UnONLJwzBlTumMn+knG7r0wBm1iRP+QIL29ZOaceXgg==",
-  //       "authData": "{ \"mobileNumber\":\"9493143166\",\"mobileCountryCode\":\"+91\",\"merchantId\":\"MOBILITY_PASSCULTURE\",\"timestamp\":\"2023-04-13T07:28:40+00:00\"}"
-  //     }
-  //   }
-  // });
 
-  const mobileNumber = "8297921333";
+  const [mobileNumber, setMobileNumber] = useState();
   const mobileCountryCode = "+91";
   const merchantId = "MOBILITY_PASSCULTURE";
   const timestamp = "2023-04-13T07:28:40+00:00";
@@ -116,6 +191,7 @@ export const HomeHeader: FunctionComponent = function () {
       const { firstName } = await api.getnativev1me()
       const { phoneNumber } = await api.getnativev1me()
       let mobile = phoneNumber?.slice(3, phoneNumber.length)
+      setMobileNumber(mobile);
       console.log("test username1", mobile, firstName)
       try {
         const result = await HyperSDKModule.dynamicSign(userName, mobile, mobileCountryCode);
@@ -129,7 +205,10 @@ export const HomeHeader: FunctionComponent = function () {
     fetchSignatureResponse();
   }, []);
 
+
+
   const handleClick = () => {
+
     if (HyperSdkReact.isNull()) {
       HyperSdkReact.createHyperServices();
     }
@@ -138,7 +217,14 @@ export const HomeHeader: FunctionComponent = function () {
     HyperSdkReact.isInitialised().then((init) => {
       console.log('isInitialised:', init);
     });
+    // storeReservation(reservation1);
+    // storeReservation(reservation2);
+    getReservationsByCommonKey(mobileNumber);
   }
+
+
+
+
   useEffect(() => {
 
     const processPayload2Copy = { ...processPayload2 }; // Create a copy of the processPayload2 object
@@ -170,6 +256,7 @@ export const HomeHeader: FunctionComponent = function () {
           const res = payload ? payload.status : payload;
           console.log('initiate_result: ', processPayload2);
           if (res === 'SUCCESS') {
+            // setModalVisible(false)
             // Initiation is successful, call process method
             if (processPayload2.payload.signatureAuthData != undefined) {
               HyperSdkReact.process(JSON.stringify(processPayload2));
@@ -180,23 +267,50 @@ export const HomeHeader: FunctionComponent = function () {
             console.log('process_call: is called ', payload);
           } else {
             // Handle initiation failure
+            // setModalVisible(true)
             console.log('Initiation failed.');
           }
           break;
+
+
 
         case 'process_result':
           const processPayload = data.payload || {};
           console.log('process_result: ', processPayload);
           // Handle process result
-          if (processPayload?.action === 'terminate') {
+          if (processPayload?.action === 'terminate' && processPayload?.screen === 'home_screen') {
             HyperSdkReact.terminate();
             console.log('process_call: is called ', processPayload);
-            // BackHandler.exitApp();
+
           } else if (processPayload?.action === 'trip_completed') {
             //function call for wallet transaction
+            const reservation1 = {
+              reservationid: 3,
+              tripid: processPayload?.trip_id,
+              tripamount: processPayload?.trip_amount,
+              source: processPayload2.payload.source,
+              destination: processPayload2.payload.destination,
+              tripdate: new Date(),
+              commonKey: mobileNumber,
+            };
+            storeReservation(reservation1);
+            console.log('process_call: wallet transaction ', processPayload);
+            // HyperSdkReact.terminate();
+          } else if (processPayload?.action === 'feedback_submitted' || processPayload?.action === 'home_screen') {
+
             console.log('process_call: wallet transaction ', processPayload);
             HyperSdkReact.terminate();
+            // setModalVisible(true)  
           }
+
+
+          if (processPayload?.screen === 'home_screen') {
+            HyperSdkReact.terminate();
+          } else if (processPayload?.screen === 'trip_started_screen') {
+            BackHandler.exitApp();
+          }
+          console.log('process_call: process ', processPayload);
+
 
           break;
 
@@ -237,41 +351,6 @@ export const HomeHeader: FunctionComponent = function () {
     return 'Ton crédit est expiré'
   }
   // container layout
-  const clDuiContainer = 'Layout123';
-  const [isSDK, setIsSDK] = useState(false);
-
-  // const handleClick = () => {
-
-  //   HyperSDKModule.initiateSDK(true).then((result) => {
-  //     console.log("res check", result) // Initiate successful
-  //     setIsSDK(true)
-
-  //   })
-  //     .catch((error) => {
-  //       console.error(error)
-  //     }) // Pass `true` to indicate an empty activity
-  // }
-
-  // function handleBackButtonClick() {
-  //   if (isSDK) {
-  //     console.log("back check if", isSDK)
-  //     HyperSDKModule.backPress(true)
-  //     return true
-  //   } else {
-  //     // navigation.goBack()
-  //     console.log("back check if", isSDK)
-  //     return true
-  //   }
-
-  // }
-
-  // useEffect(() => {
-  //   BackHandler.addEventListener("hardwareBackPress", handleBackButtonClick);
-  //   return () => {
-  //     BackHandler.removeEventListener("hardwareBackPress", handleBackButtonClick);
-  //   };
-  // }, []);
-
 
 
 
