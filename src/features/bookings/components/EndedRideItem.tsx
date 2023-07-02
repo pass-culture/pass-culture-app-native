@@ -5,13 +5,10 @@ import { BookingItemProps } from 'features/bookings/types'
 import { Image } from 'react-native'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { Dot } from 'ui/svg/icons/Dot'
-import { Spacer, Typo, getShadow, getSpacing } from 'ui/theme'
+import { Spacer, Typo, getSpacing } from 'ui/theme'
 import { ColorsEnum } from 'ui/theme/colors'
 import { BookingItemTitle } from './BookingItemTitle'
-import { Platform } from 'react-native'
-type SizeProps = {
-  size?: 'small' | 'tall'
-}
+
 export const EndedRideBookingItem = ({ booking }: BookingItemProps) => {
   return (
     <Container navigateTo={{ screen: 'RideDetails', params: { booking } }}>

@@ -71,7 +71,6 @@ export const EndedBookings: React.FC = () => {
 
       const rideData = await getReservationsByCommonKey(mobile)
       setReserveRides(rideData)
-      console.log('rideData rideData ---------------------> ', rideData)
     }
     getridedata()
   }, [])
@@ -94,7 +93,7 @@ export const EndedBookings: React.FC = () => {
         listAs="ul"
         itemAs="li"
         contentContainerStyle={contentContainerStyle}
-        data={[...reservedRides, ...bookings?.ended_bookings] ?? []}
+        data={[...bookings?.ended_bookings, ...reservedRides] ?? []}
         keyExtractor={keyExtractor}
         renderItem={renderItem}
         ItemSeparatorComponent={StyledSeparator}
