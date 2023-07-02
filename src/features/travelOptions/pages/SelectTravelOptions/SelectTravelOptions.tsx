@@ -10,7 +10,7 @@ import HyperSdkReact from 'hyper-sdk-react'
 import { env } from 'libs/environment'
 import { api } from 'api/api'
 import { ColorsEnum } from 'ui/theme/colors'
-
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 HyperSdkReact.createHyperServices()
 
@@ -31,7 +31,9 @@ export const SelectTravelOptions = ({ navigation, route }: any) => {
   const merchantId = "MOBILITY_PASSCULTURE";
   const timestamp = "2023-04-13T07:28:40+00:00";
   const userName = "Rajesh";
-
+  const { bookingId } = route.params
+  console.log('bookingId ----> ', bookingId)
+  // console.log("test booking id", route)
 
   const storeReservation = async (reservation) => {
     try {
@@ -82,8 +84,7 @@ export const SelectTravelOptions = ({ navigation, route }: any) => {
     latitude: 48.8566,
     longitude: 2.3522,
   })
-  const { bookingId } = route.params
-  // console.log('bookingId ----> ', route)
+
   const { userPosition: position, showGeolocPermissionModal, permissionState } = useGeolocation()
   const { goBack } = useNavigation<UseNavigationType>()
   const [modalVisible, setModalVisible] = useState(true)
@@ -258,7 +259,7 @@ export const SelectTravelOptions = ({ navigation, route }: any) => {
           } else if (processPayload?.action === 'trip_completed') {
             //function call for wallet transaction
             const reservation1 = {
-              reservationid: 3,
+              reservationid: bookingId,
               tripid: processPayload?.trip_id,
               tripamount: processPayload?.trip_amount,
               source: processPayload2.payload.source,
