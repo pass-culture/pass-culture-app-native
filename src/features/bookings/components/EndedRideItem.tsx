@@ -8,20 +8,15 @@ import { Dot } from 'ui/svg/icons/Dot'
 import { Spacer, Typo, getSpacing } from 'ui/theme'
 import { ColorsEnum } from 'ui/theme/colors'
 import { BookingItemTitle } from './BookingItemTitle'
-import { Touchable } from 'ui/components/touchable/Touchable'
-type SizeProps = {
-  size?: 'small' | 'tall'
-}
-export const RideBookingItem = ({ booking, onRideClick }: any) => {
-  const handleClick = () => {
-    onRideClick()
-  }
+
+export const EndedRideBookingItem = ({ booking }: BookingItemProps) => {
   return (
-    <Container onPress={handleClick}>
+    <Container navigateTo={{ screen: 'RideDetails', params: { booking } }}>
       <StyledImage
         source={require('./../components/assets/Images/carbooking.png')}
         resizeMode="contain"
       />
+
       <AttributesView>
         <BookingItemTitle title={booking?.name || 'Alpha Taxi'} />
         <LocationContainer>
@@ -51,8 +46,8 @@ export const RideBookingItem = ({ booking, onRideClick }: any) => {
   )
 }
 
-const Container = styled(Touchable)({
-  paddingHorizontal: getSpacing(6),
+const Container = styled(InternalTouchableLink)({
+  //   paddingHorizontal: getSpacing(6),
   flexDirection: 'row',
 })
 
@@ -62,12 +57,10 @@ const AttributesView = styled.View({
   paddingRight: getSpacing(1),
 })
 
-const StyledImage = styled(Image).attrs<SizeProps>(({ theme, size }) => ({
-  ...(size === 'small' ? theme.tiles.sizes.small : theme.tiles.sizes.tall),
-}))<SizeProps>(({ theme, size }) => ({
+const StyledImage = styled(Image)(({ theme, size }) => ({
   backgroundColor: theme.colors.greyLight,
-  ...(size === 'small' ? theme.tiles.sizes.small : theme.tiles.sizes.tall),
-  borderRadius: 10,
+  ...theme.tiles.sizes.small,
+  borderRadius: theme.tiles.borderRadius,
 }))
 
 const StyledLocationIcon = styled(Image)({
