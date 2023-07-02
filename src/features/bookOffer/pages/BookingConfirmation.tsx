@@ -72,7 +72,7 @@ export function BookingConfirmation() {
   )} à dépenser sur le pass Culture.`
 
   const pressTravelOptions = useCallback(() => {
-    navigate('SelectTravelOptions')
+    navigate('SelectTravelOptions', { bookingId: params.bookingId })
   }, [])
 
   return (

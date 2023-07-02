@@ -22,7 +22,7 @@ interface Location {
 const { HyperSDKModule } = NativeModules;
 
 
-export const SelectTravelOptions = ({ navigation }) => {
+export const SelectTravelOptions = ({ navigation, route }: any) => {
 
   const { domainsCredit } = api.getnativev1me()
   console.log("test username", api.getnativev1me())
@@ -82,6 +82,8 @@ export const SelectTravelOptions = ({ navigation }) => {
     latitude: 48.8566,
     longitude: 2.3522,
   })
+  const { bookingId } = route.params
+  // console.log('bookingId ----> ', route)
   const { userPosition: position, showGeolocPermissionModal, permissionState } = useGeolocation()
   const { goBack } = useNavigation<UseNavigationType>()
   const [modalVisible, setModalVisible] = useState(true)
