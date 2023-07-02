@@ -37,7 +37,7 @@ export function RideDetails({ route }) {
         </HeaderContainer>
       </ModalHeaderContainer>
     )
-  }, [])
+  }, [rideDetail])
 
   function formatDateToCustomString(dateStr) {
     const months = [
