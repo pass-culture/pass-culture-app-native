@@ -20,10 +20,8 @@ interface RideDetailsProps {
 
 export function RideDetails({ route }) {
   const rideData = route.params
-  const [showModal, setShowModal] = useState(true)
   const { goBack } = useNavigation<UseNavigationType>()
 
-  console.log('routes--------------------- ', rideData)
   const [rideDetail, setRideDeatails] = useState('')
 
   useEffect(() => {
@@ -33,14 +31,10 @@ export function RideDetails({ route }) {
   const customHeader = useMemo(() => {
     return (
       <ModalHeaderContainer>
-        <View>
-          <View style={{ height: HEIGHT_CONTAINER, alignContent: 'center' }} />
-          <Typo.Title3 style={{ textAlign: 'center' }}> {'Trajet terminé'} </Typo.Title3>
-          <Spacer.Column numberOfSpaces={3} />
-          <HeaderMessage>
-            {`Nous espérons que votre trajet s'est déroulé sans encombre`}
-          </HeaderMessage>
-        </View>
+        <HeaderContainer>
+          <Typo.Title3>{'Trajet en taxis terminé'} </Typo.Title3>
+          <RideIDText>{`ID de voyage : ${rideDetail?.reservationid}`}</RideIDText>
+        </HeaderContainer>
       </ModalHeaderContainer>
     )
   }, [])
@@ -71,7 +65,7 @@ export function RideDetails({ route }) {
   }
 
   function getShortDayOfWeek(date) {
-    const daysOfWeek = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat']
+    const daysOfWeek = ['Dim', 'Lun', 'Mar', 'Mer', 'Jeu', 'Ven', 'Sam']
     return daysOfWeek[date.getUTCDay()]
   }
 
@@ -107,10 +101,6 @@ export function RideDetails({ route }) {
     <View style={{ flex: 1 }}>
       <PageHeaderSecondary onGoBack={goBack} title="Trajet terminé" />
       <MainContainer>
-        {/* <StyledImage
-          source={require('./../components/assets/Images/done.png')}
-          resizeMode="contain"
-        /> */}
         {customHeader}
         <Spacer.Column numberOfSpaces={4} />
 
@@ -122,9 +112,6 @@ export function RideDetails({ route }) {
               {rideDetail?.tripamount}
             </Typo.Title4>
           </DetailTitleContainer>
-          <Spacer.Column numberOfSpaces={2} />
-
-          <RideIDText>{`Ride ID : ${rideDetail?.reservationid}`}</RideIDText>
           <Spacer.Column numberOfSpaces={3} />
           <Separator />
           <Spacer.Column numberOfSpaces={4} />
@@ -144,7 +131,7 @@ export function RideDetails({ route }) {
             />
             <Spacer.Row numberOfSpaces={1} />
             <LocationLabelContainer>
-              <DateLabel>{rideDetail.source.name}</DateLabel>
+              <DateLabel>{rideDetail?.source?.name}</DateLabel>
               <AddressText>{'Paris, France'}</AddressText>
             </LocationLabelContainer>
           </LocationContainer>
@@ -162,7 +149,7 @@ export function RideDetails({ route }) {
             />
             <Spacer.Row numberOfSpaces={1} />
             <LocationLabelContainer>
-              <DateLabel>{rideDetail.destination.name}</DateLabel>
+              <DateLabel>{rideDetail?.destination?.name}</DateLabel>
               <AddressText>{'Paris, France'}</AddressText>
             </LocationLabelContainer>
           </LocationContainer>
@@ -173,15 +160,6 @@ export function RideDetails({ route }) {
   )
 }
 
-const HeaderMessage = styled.Text({
-  textAlign: 'center',
-  fontSize: 12,
-  fontFamily: 'Montserrat',
-  fontStyle: 'normal',
-  fontWeight: '400',
-  color: ColorsEnum.GREY,
-  lineHeight: 18,
-})
 const RideIDText = styled.Text({
   fontSize: 12,
   fontFamily: 'Montserrat',
@@ -209,15 +187,18 @@ const MainContainer = styled.View({
 
 const ModalHeaderContainer = styled.View({
   width: '100%',
-  paddingHorizontal: getSpacing(6),
+  paddingHorizontal: getSpacing(2),
 })
 
+const HeaderContainer = styled.View({
+  paddingHorizontal: getSpacing(0),
+})
 const DetailsContainer = styled.View({
   width: '100%',
   borderWidth: 1,
   borderRadius: 8,
   borderColor: ColorsEnum.GREY_LIGHT,
-  height: 230,
+  height: 240,
   paddingHorizontal: 16,
   paddingTop: 24,
   paddingBottom: 24,

@@ -1,4 +1,4 @@
-import React, { useCallback, useMemo } from 'react'
+import React, { useCallback, useEffect, useMemo, useState } from 'react'
 import { FlatList, ListRenderItem, NativeScrollEvent } from 'react-native'
 import { useSafeAreaInsets } from 'react-native-safe-area-context'
 import styled from 'styled-components/native'
@@ -26,6 +26,8 @@ import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 import { NoBookingsView } from './NoBookingsView'
 import { OnGoingBookingItem } from './OnGoingBookingItem'
 import { RideBookingItem } from 'features/bookings/components/RideBookingItem'
+import AsyncStorage from '@react-native-async-storage/async-storage'
+import { api } from 'api/api'
 
 const emptyBookings: Booking[] = []
 
@@ -39,21 +41,76 @@ export function OnGoingBookingsList() {
   const showSkeleton = useIsFalseWithDelay(isLoading || subcategoriesIsLoading, ANIMATION_DURATION)
   const isRefreshing = useIsFalseWithDelay(isFetching, ANIMATION_DURATION)
   const { showErrorSnackBar } = useSnackBarContext()
-  const reservedRides = [
-    {
-      reservationid: 3,
-      tripid: 'dcbb7f15-49b6-4eac-90b8-4de8da9581b6',
-      tripamount: 11,
-      source: { lat: 13.0411, lon: 77.6622, name: 'Horamavu agara' },
-      destination: { lat: 13.0335, lon: 77.6739, name: 'Kalkere' },
-      tripdate: '2023-07-02T06:53:15.622Z',
-      commonKey: '600000345',
-    },
-  ]
+  const [reservedRides, setReserveRides] = useState([])
+
   const {
     ongoing_bookings: ongoingBookings = emptyBookings,
     ended_bookings: endedBookings = emptyBookings,
   } = bookings ?? {}
+
+  const storeReservation = async (reservation) => {
+    try {
+      const reservationsJSON = await AsyncStorage.getItem('reservations')
+      let reservations = []
+
+      if (reservationsJSON !== null) {
+        reservations = JSON.parse(reservationsJSON)
+      }
+
+      reservations.push(reservation)
+
+      const updatedReservationsJSON = JSON.stringify(reservations)
+      await AsyncStorage.setItem('reservations', updatedReservationsJSON)
+
+      console.log('Reservation stored successfully.', updatedReservationsJSON)
+    } catch (error) {
+      console.log('Error storing reservation:', error)
+    }
+  }
+
+  const getReservationsByCommonKey = async (commonKey) => {
+    try {
+      const reservationsJSON = await AsyncStorage.getItem('reservations')
+
+      if (reservationsJSON !== null) {
+        const reservations = JSON.parse(reservationsJSON)
+        const filteredReservations = reservations.filter(
+          (reservation) => reservation.commonKey === commonKey
+        )
+
+        console.log('Retrieved reservations:', filteredReservations)
+        return filteredReservations
+      } else {
+        console.log('No reservations found.')
+        return []
+      }
+    } catch (error) {
+      console.log('Error retrieving reservations:', error)
+      return []
+    }
+  }
+
+  useEffect(() => {
+    async function getridedata() {
+      const { phoneNumber } = (await api.getnativev1me()) || '+919480081411'
+      let mobile = phoneNumber?.slice(3, phoneNumber.length)
+
+      // await storeReservation({
+      //   reservationid: 5,
+      //   tripid: 'dcbb7f15-49b6-4eac-90b8-4de8da9581b6',
+      //   tripamount: 13,
+      //   source: { lat: 13.0411, lon: 77.6622, name: 'Horamavu agara' },
+      //   destination: { lat: 13.0335, lon: 77.6739, name: 'Kalkere' },
+      //   tripdate: '2023-07-02T06:53:15.622Z',
+      //   commonKey: mobile,
+      // })
+
+      const rideData = await getReservationsByCommonKey(mobile)
+      setReserveRides(rideData)
+      console.log('rideData rideData ---------------------> ', rideData)
+    }
+    getridedata()
+  }, [])
 
   const refetchOffline = useCallback(() => {
     showErrorSnackBar({
