@@ -69,6 +69,7 @@ import { Venue } from 'features/venue/pages/Venue/Venue'
 import { ABTestingPOC } from 'libs/firebase/remoteConfig/ABTestingPOC'
 import { SelectTravelOptions } from 'features/travelOptions/pages/SelectTravelOptions/SelectTravelOptions'
 import { Route } from './types'
+import { RideDetails } from 'features/bookings/components/RideDetails'
 
 export const routes: Route[] = [
   ...accessibilityRoutes,
@@ -473,9 +474,17 @@ export const routes: Route[] = [
       parse: screenParamsParser['ThematicHome'],
     },
     options: { title: 'Page d’accueil thématique' },
-  }, {
+  },
+  {
     name: 'SelectTravelOptions',
     component: SelectTravelOptions,
     path: 'get-dynamic-socials',
-  }
+  },
+  {
+    name: 'RideDetails',
+    component: RideDetails,
+    path: 'ride-detailss',
+  },
 ]
+
+// RideDetails

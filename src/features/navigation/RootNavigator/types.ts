@@ -226,7 +226,8 @@ export type RootStackParamList = {
   HighlightThematicHomeHeaderCheatcode: undefined
   CategoryThematicHomeHeaderCheatcode: undefined
   ThematicHeaders: undefined
-  SelectTravelOptions: undefined
+  SelectTravelOptions: { bookingId: Number }
+  RideDetails: undefined
 } & AccessibilityRootStackParamList &
   CulturalSurveyRootStackParamList &
   OnboardingRootStackParamList &

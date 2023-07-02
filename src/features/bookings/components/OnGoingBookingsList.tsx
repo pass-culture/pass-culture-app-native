@@ -25,6 +25,7 @@ import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 import { NoBookingsView } from './NoBookingsView'
 import { OnGoingBookingItem } from './OnGoingBookingItem'
+import { RideBookingItem } from 'features/bookings/components/RideBookingItem'
 
 const emptyBookings: Booking[] = []
 
@@ -38,7 +39,15 @@ export function OnGoingBookingsList() {
   const showSkeleton = useIsFalseWithDelay(isLoading || subcategoriesIsLoading, ANIMATION_DURATION)
   const isRefreshing = useIsFalseWithDelay(isFetching, ANIMATION_DURATION)
   const { showErrorSnackBar } = useSnackBarContext()
-
+  const reservedRides = [
+    {
+      isRide: true,
+      id: '1as',
+      name: 'Alpha Taxi',
+      from: 'Musée Zadkin',
+      to: 'Louvre Museum',
+    },
+  ]
   const {
     ongoing_bookings: ongoingBookings = emptyBookings,
     ended_bookings: endedBookings = emptyBookings,
@@ -87,13 +96,19 @@ export function OnGoingBookingsList() {
     [ongoingBookings]
   )
 
-  const renderItem: ListRenderItem<Booking> = useCallback(
-    ({ item }) => (
-      <OnGoingBookingItem booking={item} eligibleBookingsForArchive={eligibleBookingsForArchive} />
-    ),
+  const renderItem: ListRenderItem<any> = useCallback(
+    ({ item }) =>
+      item.isRide ? (
+        <RideBookingItem booking={item} />
+      ) : (
+        <OnGoingBookingItem
+          booking={item}
+          eligibleBookingsForArchive={eligibleBookingsForArchive}
+        />
+      ),
     [eligibleBookingsForArchive]
   )
-
+  //
   if (showSkeleton) return <BookingsPlaceholder />
   return (
     <Container flex={hasBookings || hasEndedBookings ? 1 : undefined}>
@@ -102,7 +117,7 @@ export function OnGoingBookingsList() {
         itemAs="li"
         testID="OnGoingBookingsList"
         keyExtractor={keyExtractor}
-        data={ongoingBookings}
+        data={[...ongoingBookings, ...reservedRides]}
         renderItem={renderItem}
         refreshing={isRefreshing}
         onRefresh={onRefetch}

@@ -17,11 +17,13 @@ interface Location {
   longitude: number
 }
 
-export const SelectTravelOptions = ({ navigation }) => {
+export const SelectTravelOptions = ({ navigation, route }: any) => {
   const [currentLocation, setCurrentLocation] = useState<Location | null>({
     latitude: 48.8566,
     longitude: 2.3522,
   })
+  const { bookingId } = route.params
+  // console.log('bookingId ----> ', route)
   const { userPosition: position, showGeolocPermissionModal, permissionState } = useGeolocation()
   const { goBack } = useNavigation<UseNavigationType>()
   const [modalVisible, setModalVisible] = useState(true)
