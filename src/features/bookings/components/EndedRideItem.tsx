@@ -15,12 +15,10 @@ type SizeProps = {
 export const EndedRideBookingItem = ({ booking }: BookingItemProps) => {
   return (
     <Container navigateTo={{ screen: 'RideDetails', params: { booking } }}>
-      <ImageContainer size={'size'}>
-        <StyledImage
-          source={require('./../components/assets/Images/carbooking.png')}
-          resizeMode="contain"
-        />
-      </ImageContainer>
+      <StyledImage
+        source={require('./../components/assets/Images/carbooking.png')}
+        resizeMode="contain"
+      />
 
       <AttributesView>
         <BookingItemTitle title={booking?.name || 'Alpha Taxi'} />
@@ -62,25 +60,10 @@ const AttributesView = styled.View({
   paddingRight: getSpacing(1),
 })
 
-const StyledImage = styled(Image).attrs<SizeProps>(({ theme, size }) => ({
-  ...(size === 'small' ? theme.tiles.sizes.small : theme.tiles.sizes.tall),
-}))<SizeProps>(({ theme, size }) => ({
+const StyledImage = styled(Image)(({ theme, size }) => ({
   backgroundColor: theme.colors.greyLight,
-  ...(size === 'small' ? theme.tiles.sizes.small : theme.tiles.sizes.tall),
+  ...theme.tiles.sizes.small,
   borderRadius: theme.tiles.borderRadius,
-}))
-
-const ImageContainer = styled.View<SizeProps>(({ theme, size }) => ({
-  borderRadius: theme.tiles.borderRadius,
-  ...(size === 'small' ? theme.tiles.sizes.small : theme.tiles.sizes.tall),
-  ...(Platform.OS !== 'web'
-    ? getShadow({
-        shadowOffset: { width: 0, height: getSpacing(1) },
-        shadowRadius: getSpacing(1),
-        shadowColor: theme.colors.greyDark,
-        shadowOpacity: 0.2,
-      })
-    : {}),
 }))
 
 const StyledLocationIcon = styled(Image)({
