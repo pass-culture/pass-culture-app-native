@@ -1,7 +1,6 @@
 import React, { FunctionComponent, useEffect } from 'react'
 import styled from 'styled-components/native'
 
-import { IdentityCheckMethod } from 'api/gen'
 import { IdentificationForkButton } from 'features/identityCheck/components/IdentificationForkButton'
 import { JustifiedLeftTitle } from 'features/identityCheck/components/JustifiedLeftTitle'
 import { PageWithHeader } from 'features/identityCheck/components/layout/PageWithHeader'
@@ -38,16 +37,14 @@ const IdentificationForkEduconnectContent: FunctionComponent = () => {
         Subtitle={<StyledCaption>Fournis par ton établissement scolaire</StyledCaption>}
         icon={Mariane}
         navigateTo={{ screen: 'IdentityCheckEduConnect' }}
-        onBeforeNavigate={() => analytics.logChooseEduConnectMethod(IdentityCheckMethod.educonnect)}
+        onBeforeNavigate={analytics.logChooseEduConnectMethod}
         key={0}
       />
       <StyledExternalTouchableLinkContainer>
         <ExternalTouchableLink
           as={ButtonQuaternaryBlack}
           externalNav={{ url: env.FAQ_LINK_EDUCONNECT_URL }}
-          onPress={() => {
-            analytics.logEduconnectExplanationClicked(IdentityCheckMethod.educonnect)
-          }}
+          onPress={analytics.logEduconnectExplanationClicked}
           icon={InfoPlain}
           wording="C’est quoi ÉduConnect&nbsp;?"
           inline
@@ -61,7 +58,7 @@ const IdentificationForkEduconnectContent: FunctionComponent = () => {
         Subtitle={<StyledCaption>Carte d’identité ou passeport</StyledCaption>}
         icon={Ubble}
         navigateTo={{ screen: 'SelectIDOrigin' }}
-        onBeforeNavigate={() => analytics.logChooseUbbleMethod(IdentityCheckMethod.educonnect)}
+        onBeforeNavigate={analytics.logChooseUbbleMethod}
         key={1}
       />
     </Container>

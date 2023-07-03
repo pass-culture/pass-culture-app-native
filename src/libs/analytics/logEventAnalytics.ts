@@ -143,22 +143,16 @@ export const logEventAnalytics = {
     ),
   logCheckEduconnectDataClicked: () =>
     analytics.logEvent({ amplitude: AmplitudeEvent.CHECK_EDUCONNECT_DATA_CLICKED }),
-  logChooseEduConnectMethod: (origin?: IdentityCheckMethod) =>
-    analytics.logEvent(
-      {
-        firebase: AnalyticsEvent.CHOOSE_EDUCONNECT_METHOD,
-        amplitude: AmplitudeEvent.CHOOSE_METHOD_EDUCONNECT,
-      },
-      { fork_origin: origin }
-    ),
-  logChooseUbbleMethod: (origin?: IdentityCheckMethod) =>
-    analytics.logEvent(
-      {
-        firebase: AnalyticsEvent.CHOOSE_UBBLE_METHOD,
-        amplitude: AmplitudeEvent.CHOOSE_METHOD_UBBLE,
-      },
-      { fork_origin: origin }
-    ),
+  logChooseEduConnectMethod: () =>
+    analytics.logEvent({
+      firebase: AnalyticsEvent.CHOOSE_EDUCONNECT_METHOD,
+      amplitude: AmplitudeEvent.CHOOSE_METHOD_EDUCONNECT,
+    }),
+  logChooseUbbleMethod: () =>
+    analytics.logEvent({
+      firebase: AnalyticsEvent.CHOOSE_UBBLE_METHOD,
+      amplitude: AmplitudeEvent.CHOOSE_METHOD_UBBLE,
+    }),
   logClickBookOffer: (offerId: number) =>
     analytics.logEvent({ firebase: AnalyticsEvent.CLICK_BOOK_OFFER }, { offerId }),
   logClickForceUpdate: (appVersionId: number) =>
@@ -272,11 +266,8 @@ export const logEventAnalytics = {
     analytics.logEvent({ firebase: AnalyticsEvent.DISMISS_NOTIFICATIONS }),
   logDismissShareApp: (type: ShareAppModalType) =>
     analytics.logEvent({ firebase: AnalyticsEvent.DISMISS_SHARE_APP }, { type }),
-  logEduconnectExplanationClicked: (origin: IdentityCheckMethod) =>
-    analytics.logEvent(
-      { amplitude: AmplitudeEvent.EDUCONNECT_EXPLANATION_CLICKED },
-      { fork_origin: origin }
-    ),
+  logEduconnectExplanationClicked: () =>
+    analytics.logEvent({ amplitude: AmplitudeEvent.EDUCONNECT_EXPLANATION_CLICKED }),
   logEmailConfirmationConsultEmailClicked: () =>
     analytics.logEvent({ amplitude: AmplitudeEvent.EMAIL_CONFIRMATION_CONSULT_EMAIL_CLICKED }),
   logEmailValidated: () => analytics.logEvent({ amplitude: AmplitudeEvent.EMAIL_VALIDATED }),
