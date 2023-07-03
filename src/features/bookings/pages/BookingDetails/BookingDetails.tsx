@@ -42,7 +42,7 @@ import HyperSdkReact from 'hyper-sdk-react'
 import { api } from 'api/api'
 
 //sdk specific
-HyperSdkReact.createHyperServices()
+
 const { HyperSDKModule } = NativeModules;
 //sdk specific endpoint
 
@@ -198,25 +198,25 @@ export function BookingDetails() {
     fetchCurrentLocation()
   }, [position, permissionState, showGeolocPermissionModal])
 
-  const storeReservation = async (reservation) => {
-    try {
-      const reservationsJSON = await AsyncStorage.getItem('reservations');
-      let reservations = [];
+  // const storeReservation = async (reservation) => {
+  //   try {
+  //     const reservationsJSON = await AsyncStorage.getItem('reservations');
+  //     let reservations = [];
 
-      if (reservationsJSON !== null) {
-        reservations = JSON.parse(reservationsJSON);
-      }
+  //     if (reservationsJSON !== null) {
+  //       reservations = JSON.parse(reservationsJSON);
+  //     }
 
-      reservations.push(reservation);
+  //     reservations.push(reservation);
 
-      const updatedReservationsJSON = JSON.stringify(reservations);
-      await AsyncStorage.setItem('reservations', updatedReservationsJSON);
+  //     const updatedReservationsJSON = JSON.stringify(reservations);
+  //     await AsyncStorage.setItem('reservations', updatedReservationsJSON);
 
-      console.log('Reservation stored successfully.', updatedReservationsJSON);
-    } catch (error) {
-      console.log('Error storing reservation:', error);
-    }
-  };
+  //     console.log('Reservation stored successfully.', updatedReservationsJSON);
+  //   } catch (error) {
+  //     console.log('Error storing reservation:', error);
+  //   }
+  // };
 
   const updateReservation = async (reservationId, tripId, tripAmount) => {
     try {

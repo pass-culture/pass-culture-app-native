@@ -40,7 +40,7 @@ import HyperSdkReact from 'hyper-sdk-react'
 const emptyBookings: Booking[] = []
 
 const ANIMATION_DURATION = 700
-HyperSdkReact.createHyperServices()
+
 
 interface Location {
   latitude: number
@@ -58,17 +58,17 @@ export function OnGoingBookingsList() {
   const { showErrorSnackBar } = useSnackBarContext()
   const [mobileNumber, setMobileNumber] = useState()
   const mobileCountryCode = '+91'
-  const [reservedRides, setReserveRides] = useState([
-    {
-      commonKey: '600000341',
-      destination: { lat: 48.8606, lon: 2.3376, name: 'louvre museum paris' },
-      reservationid: 31620150,
-      source: { lat: 48.855167228334196, lon: 2.295221909880638, name: 'Paris, France' },
-      tripamount: 11,
-      tripdate: '2023-07-02T16:12:27.050Z',
-      tripid: '585b1987-8b9b-4253-b688-21dda5af9a9d',
-    },
-  ])
+  const [reservedRides, setReserveRides] = useState([])
+
+  // {
+  //   commonKey: '600000341',
+  //   destination: { lat: 48.8606, lon: 2.3376, name: 'louvre museum paris' },
+  //   reservationid: 31620150,
+  //   source: { lat: 48.855167228334196, lon: 2.295221909880638, name: 'Paris, France' },
+  //   tripamount: 11,
+  //   tripdate: '2023-07-02T16:12:27.050Z',
+  //   tripid: '585b1987-8b9b-4253-b688-21dda5af9a9d',
+  // },
 
   const {
     ongoing_bookings: ongoingBookings = emptyBookings,
@@ -87,9 +87,9 @@ export function OnGoingBookingsList() {
 
         // Find the reservation with the matching reservation ID
         const foundIndex = reservations.findIndex(
-          (reservation) => reservation.tripId === ''
+          (reservation) => !(reservation.tripId)
         );
-
+        console.log('foundIndex====================', foundIndex)
         if (foundIndex !== -1) {
           // Update the tripid and tripamount properties
           reservations[foundIndex].tripid = tripId;
@@ -98,7 +98,7 @@ export function OnGoingBookingsList() {
           const updatedReservationsJSON = JSON.stringify(reservations);
           await AsyncStorage.setItem('reservations', updatedReservationsJSON);
 
-          console.log('Reservation updated successfully.');
+          console.log('Reservation updated successfully.', updatedReservationsJSON);
         } else {
           console.log('Reservation not found.');
         }
@@ -162,7 +162,7 @@ export function OnGoingBookingsList() {
       if (reservationsJSON !== null) {
         const reservations = JSON.parse(reservationsJSON)
         const filteredReservations = reservations.filter(
-          (reservation) => reservation.commonKey === commonKey && reservation.tripid !== ''
+          (reservation) => reservation.commonKey === commonKey
         )
 
         // Sort the reservations by tripdate in descending order
@@ -179,57 +179,11 @@ export function OnGoingBookingsList() {
       return []
     }
 
-    HyperSdkReact.initiate(initiatePayload)
-    HyperSdkReact.isInitialised().then((init) => {
-      console.log('isInitialised:', init)
-    })
+
   }
 
   const [signatureResponse, setSignatureResponse] = useState(null) // State to store the signature response
 
-  const initiatePayload = JSON.stringify({
-    // Replace with your initiate payload
-    requestId: '6bdee986-f106-4884-ba9a-99c478d78c22',
-    service: 'in.yatri.consumer',
-    payload: {
-      clientId: 'passcultureconsumer',
-      merchantId: 'passcultureconsumer',
-      action: 'initiate',
-      environment: 'master',
-      service: 'in.yatri.consumer',
-    },
-  })
-  const [currentLocation, setCurrentLocation] = useState<Location | null>({
-    latitude: 48.8566,
-    longitude: 2.3522,
-  })
-
-  const processPayload2 = {
-    requestId: '6bdee986-f106-4884-ba9a-99c478d78c22',
-    service: 'in.yatri.consumer',
-    payload: {
-      clientId: 'passcultureconsumer',
-      merchantId: 'passcultureconsumer',
-      action: 'initiate',
-      service: 'in.yatri.consumer',
-      environment: 'master',
-      signatureAuthData: {
-        signature: '',
-        authData: '',
-      },
-      search_type: 'direct_search',
-      source: {
-        lat: currentLocation?.latitude,
-        lon: currentLocation?.longitude,
-        name: 'Paris, France',
-      },
-      destination: {
-        lat: 48.8606,
-        lon: 2.3376,
-        name: 'Louvre Museum Paris France',
-      },
-    },
-  }
 
   const handleClick = () => {
     if (HyperSdkReact.isNull()) {
@@ -242,7 +196,7 @@ export function OnGoingBookingsList() {
     })
   }
 
-  const [signatureResponse, setSignatureResponse] = useState(null) // State to store the signature response
+
 
   useEffect(() => {
     const fetchSignatureResponse = async () => {
@@ -258,10 +212,13 @@ export function OnGoingBookingsList() {
       } catch (error) {
         console.error(error)
       }
+      const rideData = await getReservationsByCommonKey(mobile)
+      setReserveRides(rideData)
+      console.log('reserve', rideData)
     }
 
     fetchSignatureResponse()
-  }, [])
+  }, [isLoading])
 
   useEffect(() => {
     const processPayload2Copy = { ...processPayload2 } // Create a copy of the processPayload2 object

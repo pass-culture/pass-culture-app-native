@@ -43,25 +43,25 @@ export const HomeHeader: FunctionComponent = function () {
   const homeBanner = data?.banner
 
 
-  const storeReservation = async (reservation) => {
-    try {
-      const reservationsJSON = await AsyncStorage.getItem('reservations');
-      let reservations = [];
+  // const storeReservation = async (reservation) => {
+  //   try {
+  //     const reservationsJSON = await AsyncStorage.getItem('reservations');
+  //     let reservations = [];
 
-      if (reservationsJSON !== null) {
-        reservations = JSON.parse(reservationsJSON);
-      }
+  //     if (reservationsJSON !== null) {
+  //       reservations = JSON.parse(reservationsJSON);
+  //     }
 
-      reservations.push(reservation);
+  //     reservations.push(reservation);
 
-      const updatedReservationsJSON = JSON.stringify(reservations);
-      await AsyncStorage.setItem('reservations', updatedReservationsJSON);
+  //     const updatedReservationsJSON = JSON.stringify(reservations);
+  //     await AsyncStorage.setItem('reservations', updatedReservationsJSON);
 
-      console.log('Reservation stored successfully.', updatedReservationsJSON);
-    } catch (error) {
-      console.log('Error storing reservation:', error);
-    }
-  };
+  //     console.log('Reservation stored successfully.', updatedReservationsJSON);
+  //   } catch (error) {
+  //     console.log('Error storing reservation:', error);
+  //   }
+  // };
 
   // const commonKey = '9493143166';
 
@@ -214,151 +214,151 @@ export const HomeHeader: FunctionComponent = function () {
 
   const [signatureResponse, setSignatureResponse] = useState(null); // State to store the signature response
 
-  useEffect(() => {
+  // useEffect(() => {
 
-    const fetchSignatureResponse = async () => {
-      // const { phoneNumber, firstName } = await api.getnativev1me()
-      const { firstName } = await api.getnativev1me()
-      const { phoneNumber } = await api.getnativev1me()
-      let mobile = phoneNumber?.slice(3, phoneNumber.length)
-      setMobileNumber(mobile);
-      console.log("test username1", mobile, firstName)
-      try {
-        const result = await HyperSDKModule.dynamicSign(userName, mobile, mobileCountryCode);
-        setSignatureResponse(result);
-        console.log("signauth check", result);
-      } catch (error) {
-        console.error(error);
-      }
-    };
+  //   const fetchSignatureResponse = async () => {
+  //     // const { phoneNumber, firstName } = await api.getnativev1me()
+  //     const { firstName } = await api.getnativev1me()
+  //     const { phoneNumber } = await api.getnativev1me()
+  //     let mobile = phoneNumber?.slice(3, phoneNumber.length)
+  //     setMobileNumber(mobile);
+  //     console.log("test username1", mobile, firstName)
+  //     try {
+  //       const result = await HyperSDKModule.dynamicSign(userName, mobile, mobileCountryCode);
+  //       setSignatureResponse(result);
+  //       console.log("signauth check", result);
+  //     } catch (error) {
+  //       console.error(error);
+  //     }
+  //   };
 
-    fetchSignatureResponse();
-  }, []);
-
-
-
-  const handleClick = () => {
-
-    if (HyperSdkReact.isNull()) {
-      HyperSdkReact.createHyperServices();
-    }
-
-    HyperSdkReact.initiate(initiatePayload);
-    HyperSdkReact.isInitialised().then((init) => {
-      console.log('isInitialised:', init);
-    });
-    // storeReservation(reservation1);
-    // storeReservation(reservation2);
-    getReservationsByCommonKey(mobileNumber);
-  }
+  //   fetchSignatureResponse();
+  // }, []);
 
 
 
+  // const handleClick = () => {
 
-  useEffect(() => {
+  //   if (HyperSdkReact.isNull()) {
+  //     HyperSdkReact.createHyperServices();
+  //   }
 
-    const processPayload2Copy = { ...processPayload2 }; // Create a copy of the processPayload2 object
-
-    if (signatureResponse) {
-      processPayload2Copy.payload.signatureAuthData.signature = signatureResponse.signature;
-      processPayload2Copy.payload.signatureAuthData.authData = signatureResponse.signatureAuthData;
-
-    }
-    console.log('Updated processPayload2:', processPayload2Copy);
-
-
-    const eventEmitter = new NativeEventEmitter(NativeModules.HyperSdkReact);
-    const eventListener = eventEmitter.addListener('HyperEvent', (resp) => {
-      const data = JSON.parse(resp);
-      const event = data.event || '';
-      console.log('event_call: is called ', event);
-      switch (event) {
-        case 'show_loader':
-          // show some loader here
-          break;
-
-        case 'hide_loader':
-          // hide the loader
-          break;
-
-        case 'initiate_result':
-          const payload = data.payload || {};
-          const res = payload ? payload.status : payload;
-          console.log('initiate_result: ', processPayload2);
-          if (res === 'SUCCESS') {
-            // setModalVisible(false)
-            // Initiation is successful, call process method
-            if (processPayload2.payload.signatureAuthData != undefined) {
-              HyperSdkReact.process(JSON.stringify(processPayload2));
-            } else {
-              alert('Invalid signature');
-            }
-            // HyperSdkReact.process(JSON.stringify(processPayload2));
-            console.log('process_call: is called ', payload);
-          } else {
-            // Handle initiation failure
-            // setModalVisible(true)
-            console.log('Initiation failed.');
-          }
-          break;
+  //   HyperSdkReact.initiate(initiatePayload);
+  //   HyperSdkReact.isInitialised().then((init) => {
+  //     console.log('isInitialised:', init);
+  //   });
+  //   // storeReservation(reservation1);
+  //   // storeReservation(reservation2);
+  //   getReservationsByCommonKey(mobileNumber);
+  // }
 
 
 
-        case 'process_result':
-          const processPayload = data.payload || {};
-          console.log('process_result: ', processPayload);
-          // Handle process result
-          if (processPayload?.action === 'terminate' && processPayload?.screen === 'home_screen') {
-            HyperSdkReact.terminate();
-            console.log('process_call: is called ', processPayload);
 
-          } else if (processPayload?.action === 'trip_completed') {
-            //function call for wallet transaction
-            const reservation1 = {
-              reservationid: 3,
-              tripid: processPayload?.trip_id,
-              tripamount: processPayload?.trip_amount,
-              source: processPayload2.payload.source,
-              destination: processPayload2.payload.destination,
-              tripdate: new Date(),
-              commonKey: mobileNumber,
-            };
-            storeReservation(reservation1);
-            console.log('process_call: wallet transaction ', processPayload);
-            // HyperSdkReact.terminate();
-          } else if (processPayload?.action === 'feedback_submitted' || processPayload?.action === 'home_screen') {
+  // useEffect(() => {
 
-            console.log('process_call: wallet transaction ', processPayload);
-            HyperSdkReact.terminate();
-            // setModalVisible(true)  
-          }
+  //   const processPayload2Copy = { ...processPayload2 }; // Create a copy of the processPayload2 object
+
+  //   if (signatureResponse) {
+  //     processPayload2Copy.payload.signatureAuthData.signature = signatureResponse.signature;
+  //     processPayload2Copy.payload.signatureAuthData.authData = signatureResponse.signatureAuthData;
+
+  //   }
+  //   console.log('Updated processPayload2:', processPayload2Copy);
 
 
-          if (processPayload?.screen === 'home_screen') {
-            HyperSdkReact.terminate();
-          } else if (processPayload?.screen === 'trip_started_screen') {
-            BackHandler.exitApp();
-          }
-          console.log('process_call: process ', processPayload);
+  //   const eventEmitter = new NativeEventEmitter(NativeModules.HyperSdkReact);
+  //   const eventListener = eventEmitter.addListener('HyperEvent', (resp) => {
+  //     const data = JSON.parse(resp);
+  //     const event = data.event || '';
+  //     console.log('event_call: is called ', event);
+  //     switch (event) {
+  //       case 'show_loader':
+  //         // show some loader here
+  //         break;
+
+  //       case 'hide_loader':
+  //         // hide the loader
+  //         break;
+
+  //       case 'initiate_result':
+  //         const payload = data.payload || {};
+  //         const res = payload ? payload.status : payload;
+  //         console.log('initiate_result: ', processPayload2);
+  //         if (res === 'SUCCESS') {
+  //           // setModalVisible(false)
+  //           // Initiation is successful, call process method
+  //           if (processPayload2.payload.signatureAuthData != undefined) {
+  //             HyperSdkReact.process(JSON.stringify(processPayload2));
+  //           } else {
+  //             alert('Invalid signature');
+  //           }
+  //           // HyperSdkReact.process(JSON.stringify(processPayload2));
+  //           console.log('process_call: is called ', payload);
+  //         } else {
+  //           // Handle initiation failure
+  //           // setModalVisible(true)
+  //           console.log('Initiation failed.');
+  //         }
+  //         break;
 
 
-          break;
 
-        default:
-          console.log('Unknown Event', data);
-      }
-    });
+  //       case 'process_result':
+  //         const processPayload = data.payload || {};
+  //         console.log('process_result: ', processPayload);
+  //         // Handle process result
+  //         if (processPayload?.action === 'terminate' && processPayload?.screen === 'home_screen') {
+  //           HyperSdkReact.terminate();
+  //           console.log('process_call: is called ', processPayload);
 
-    BackHandler.addEventListener('hardwareBackPress', () => {
-      return !HyperSdkReact.isNull() && HyperSdkReact.onBackPressed();
-    });
+  //         } else if (processPayload?.action === 'trip_completed') {
+  //           //function call for wallet transaction
+  //           const reservation1 = {
+  //             reservationid: 3,
+  //             tripid: processPayload?.trip_id,
+  //             tripamount: processPayload?.trip_amount,
+  //             source: processPayload2.payload.source,
+  //             destination: processPayload2.payload.destination,
+  //             tripdate: new Date(),
+  //             commonKey: mobileNumber,
+  //           };
+  //           storeReservation(reservation1);
+  //           console.log('process_call: wallet transaction ', processPayload);
+  //           // HyperSdkReact.terminate();
+  //         } else if (processPayload?.action === 'feedback_submitted' || processPayload?.action === 'home_screen') {
 
-    return () => {
+  //           console.log('process_call: wallet transaction ', processPayload);
+  //           HyperSdkReact.terminate();
+  //           // setModalVisible(true)  
+  //         }
 
-      eventListener.remove();
-      BackHandler.removeEventListener('hardwareBackPress', () => null);
-    };
-  }, [signatureResponse]);
+
+  //         if (processPayload?.screen === 'home_screen') {
+  //           HyperSdkReact.terminate();
+  //         } else if (processPayload?.screen === 'trip_started_screen') {
+  //           BackHandler.exitApp();
+  //         }
+  //         console.log('process_call: process ', processPayload);
+
+
+  //         break;
+
+  //       default:
+  //         console.log('Unknown Event', data);
+  //     }
+  //   });
+
+  //   BackHandler.addEventListener('hardwareBackPress', () => {
+  //     return !HyperSdkReact.isNull() && HyperSdkReact.onBackPressed();
+  //   });
+
+  //   return () => {
+
+  //     eventListener.remove();
+  //     BackHandler.removeEventListener('hardwareBackPress', () => null);
+  //   };
+  // }, [signatureResponse]);
 
   const welcomeTitle =
     user?.firstName && isLoggedIn ? `Bonjour ${user.firstName}` : 'Bienvenue\u00a0!'

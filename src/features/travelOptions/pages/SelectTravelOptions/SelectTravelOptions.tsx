@@ -58,6 +58,39 @@ export const SelectTravelOptions = ({ navigation, route }: any) => {
     }
   };
 
+  const updateReservation = async (reservationId, tripId, tripAmount) => {
+    try {
+      const reservationsJSON = await AsyncStorage.getItem('reservations');
+      let reservations = [];
+
+      if (reservationsJSON !== null) {
+        reservations = JSON.parse(reservationsJSON);
+
+        // Find the reservation with the matching reservation ID
+        const foundIndex = reservations.findIndex(
+          (reservation) => reservation.reservationid === reservationId
+        );
+
+        if (foundIndex !== -1) {
+          // Update the tripid and tripamount properties
+          reservations[foundIndex].tripid = tripId;
+          reservations[foundIndex].tripamount = tripAmount;
+
+          const updatedReservationsJSON = JSON.stringify(reservations);
+          await AsyncStorage.setItem('reservations', updatedReservationsJSON);
+
+          console.log('Reservation updated successfully.');
+        } else {
+          console.log('Reservation not found.');
+        }
+      } else {
+        console.log('No reservations found.');
+      }
+    } catch (error) {
+      console.log('Error updating reservation:', error);
+    }
+  };
+
   const getReservationsByCommonKey = async (commonKey) => {
     try {
       const reservationsJSON = await AsyncStorage.getItem('reservations');
@@ -191,7 +224,7 @@ export const SelectTravelOptions = ({ navigation, route }: any) => {
   const [showLoader, setShowLoader] = useState(false)
 
   const handleClick = () => {
-    setLoader(true);
+    setShowLoader(true);
     if (HyperSdkReact.isNull()) {
       HyperSdkReact.createHyperServices();
     }
@@ -227,7 +260,6 @@ export const SelectTravelOptions = ({ navigation, route }: any) => {
 
   useEffect(() => {
     const processPayload2Copy = { ...processPayload2 } // Create a copy of the processPayload2 object
-    const processPayload2Copy = { ...processPayload2 } // Create a copy of the processPayload2 object
 
     if (signatureResponse) {
       processPayload2Copy.payload.signatureAuthData.signature = signatureResponse.signature;
@@ -235,8 +267,6 @@ export const SelectTravelOptions = ({ navigation, route }: any) => {
 
     }
     console.log('Updated processPayload2:', processPayload2Copy);
-
-    const eventEmitter = new NativeEventEmitter(NativeModules.HyperSdkReact)
     const eventEmitter = new NativeEventEmitter(NativeModules.HyperSdkReact)
     const eventListener = eventEmitter.addListener('HyperEvent', (resp) => {
       const data = JSON.parse(resp);
@@ -249,6 +279,10 @@ export const SelectTravelOptions = ({ navigation, route }: any) => {
 
         case 'hide_loader':
           // hide the loader
+          setTimeout(() => {
+            setShowLoader(false)
+            setModalVisible(false);
+          }, 3000)
           break;
 
         case 'initiate_result':
