@@ -29,7 +29,7 @@ export interface AccessibleBicolorIconInterface extends BicolorIconInterface {
   accessibilityLabel?: string
 }
 
-export interface RectangleIconInterface extends IconSharedProperties {
+interface RectangleIconInterface extends IconSharedProperties {
   width?: number | string
   height?: number | string
 }

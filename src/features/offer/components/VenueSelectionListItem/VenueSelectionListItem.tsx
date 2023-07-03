@@ -9,7 +9,7 @@ import { customFocusOutline } from 'ui/theme/customFocusOutline/customFocusOutli
 
 import { VenueDetails, VenueDetailsProps } from '../VenueDetails/VenueDetails'
 
-export type VenueSelectionListItemProps = VenueDetailsProps & {
+type VenueSelectionListItemProps = VenueDetailsProps & {
   isSelected?: boolean
   onSelect: VoidFunction
 }

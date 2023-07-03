@@ -4,7 +4,7 @@ import styled from 'styled-components/native'
 
 import { getSpacing, Typo } from 'ui/theme'
 
-export type DistanceTagProps = ViewProps & {
+type DistanceTagProps = ViewProps & {
   distance: string
 }
 

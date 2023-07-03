@@ -711,7 +711,7 @@ describe('<OfferBody />', () => {
   })
 })
 
-export const renderOfferBody = (
+const renderOfferBody = (
   additionalProps: {
     sameCategorySimilarOffers?: Offer[]
     otherCategoriesSimilarOffers?: Offer[]

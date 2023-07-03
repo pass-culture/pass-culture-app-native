@@ -8,7 +8,7 @@ import { getSpacing } from 'ui/theme'
 import { StepProps } from '../Step/Step'
 import { VerticalStepper } from '../VerticalStepper/VerticalStepper'
 
-export type InternalStepProps = StepProps & FirstOrLastProps & StepVariantProps
+type InternalStepProps = StepProps & FirstOrLastProps & StepVariantProps
 
 export function InternalStep({ variant, children, isFirst, isLast }: InternalStepProps) {
   return (

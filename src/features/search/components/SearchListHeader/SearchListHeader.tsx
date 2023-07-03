@@ -19,7 +19,7 @@ import { BicolorEverywhere as Everywhere } from 'ui/svg/icons/BicolorEverywhere'
 import { Error } from 'ui/svg/icons/Error'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 
-export interface SearchListHeaderProps extends ScrollViewProps {
+interface SearchListHeaderProps extends ScrollViewProps {
   nbHits: number
   userData: SearchResponse<Offer[]>['userData']
 }

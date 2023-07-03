@@ -78,7 +78,7 @@ export interface AppButtonProps extends BaseButtonProps {
   backgroundColor?: string
 }
 
-export type Only<TestedType, StandardType> = TestedType &
+type Only<TestedType, StandardType> = TestedType &
   Record<Exclude<keyof TestedType, keyof StandardType>, never>
 
 export type OnlyBaseButtonProps<TestedType> = Only<TestedType, AppButtonProps>
