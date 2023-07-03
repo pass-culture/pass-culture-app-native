@@ -97,13 +97,13 @@ const TravelListModal = ({
     return (
       <View>
         <Touchable
-          disabled={item.isDisabled}
+          disabled={!item.enabled}
           style={travelOptionWrapperStyle(isSelected)}
           onPress={() => toggleItemSelection(item.name)}>
           <ImageWrapper>
             <ImageTile uri={item.icon} height={50} width={50} />
           </ImageWrapper>
-          <TitleText disabled={item.isDisabled || true}>{item.name}</TitleText>
+          <TitleText disabled={!item.enabled}>{item.name}</TitleText>
         </Touchable>
         <Spacer.Column numberOfSpaces={2} />
       </View>
@@ -279,7 +279,7 @@ const NoteContainer = styled.View({
 
 const TitleText = styled.Text(({ disabled }) => ({
   fontSize: 15,
-  fontWeight: disabled ? 'bold' : '600',
+  fontWeight: !disabled ? 'bold' : '600',
   fontFamily: 'Montserrat',
   color: disabled ? '#696a6f' : ColorsEnum.BLACK,
 }))
