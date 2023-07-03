@@ -155,6 +155,82 @@ export function OnGoingBookingsList() {
     },
   }
 
+  const getReservationsByCommonKey = async (commonKey) => {
+    try {
+      const reservationsJSON = await AsyncStorage.getItem('reservations')
+
+      if (reservationsJSON !== null) {
+        const reservations = JSON.parse(reservationsJSON)
+        const filteredReservations = reservations.filter(
+          (reservation) => reservation.commonKey === commonKey && reservation.tripid !== ''
+        )
+
+        // Sort the reservations by tripdate in descending order
+        filteredReservations.sort((a, b) => new Date(b.tripdate) - new Date(a.tripdate))
+
+        console.log('Retrieved reservations:', filteredReservations)
+        return filteredReservations
+      } else {
+        console.log('No reservations found.')
+        return []
+      }
+    } catch (error) {
+      console.log('Error retrieving reservations:', error)
+      return []
+    }
+
+    HyperSdkReact.initiate(initiatePayload)
+    HyperSdkReact.isInitialised().then((init) => {
+      console.log('isInitialised:', init)
+    })
+  }
+
+  const [signatureResponse, setSignatureResponse] = useState(null) // State to store the signature response
+
+  const initiatePayload = JSON.stringify({
+    // Replace with your initiate payload
+    requestId: '6bdee986-f106-4884-ba9a-99c478d78c22',
+    service: 'in.yatri.consumer',
+    payload: {
+      clientId: 'passcultureconsumer',
+      merchantId: 'passcultureconsumer',
+      action: 'initiate',
+      environment: 'master',
+      service: 'in.yatri.consumer',
+    },
+  })
+  const [currentLocation, setCurrentLocation] = useState<Location | null>({
+    latitude: 48.8566,
+    longitude: 2.3522,
+  })
+
+  const processPayload2 = {
+    requestId: '6bdee986-f106-4884-ba9a-99c478d78c22',
+    service: 'in.yatri.consumer',
+    payload: {
+      clientId: 'passcultureconsumer',
+      merchantId: 'passcultureconsumer',
+      action: 'initiate',
+      service: 'in.yatri.consumer',
+      environment: 'master',
+      signatureAuthData: {
+        signature: '',
+        authData: '',
+      },
+      search_type: 'direct_search',
+      source: {
+        lat: currentLocation?.latitude,
+        lon: currentLocation?.longitude,
+        name: 'Paris, France',
+      },
+      destination: {
+        lat: 48.8606,
+        lon: 2.3376,
+        name: 'Louvre Museum Paris France',
+      },
+    },
+  }
+
   const handleClick = () => {
     if (HyperSdkReact.isNull()) {
       HyperSdkReact.createHyperServices()

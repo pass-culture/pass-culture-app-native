@@ -39,7 +39,7 @@ export const EndedBookings: React.FC = () => {
       if (reservationsJSON !== null) {
         const reservations = JSON.parse(reservationsJSON)
         const filteredReservations = reservations.filter(
-          (reservation) => reservation.commonKey === commonKey
+          (reservation) => reservation.commonKey === commonKey && reservation.tripid !== ''
         )
 
         console.log('Retrieved reservations:', filteredReservations)

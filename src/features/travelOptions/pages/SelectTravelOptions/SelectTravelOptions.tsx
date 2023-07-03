@@ -17,8 +17,7 @@ import HyperSdkReact from 'hyper-sdk-react'
 import { env } from 'libs/environment'
 import { api } from 'api/api'
 import { ColorsEnum } from 'ui/theme/colors'
-import AsyncStorage from '@react-native-async-storage/async-storage'
-
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 
 interface Location {
@@ -41,72 +40,36 @@ export const SelectTravelOptions = ({ navigation, route }: any) => {
 
   const storeReservation = async (reservation) => {
     try {
-      const reservationsJSON = await AsyncStorage.getItem('reservations')
-      let reservations = []
-
-      if (reservationsJSON !== null) {
-        reservations = JSON.parse(reservationsJSON)
-      }
-
-      reservations.push(reservation)
-
-      const updatedReservationsJSON = JSON.stringify(reservations)
-      await AsyncStorage.setItem('reservations', updatedReservationsJSON)
-
-      console.log('Reservation stored successfully.', updatedReservationsJSON)
-    } catch (error) {
-      console.log('Error storing reservation:', error)
-    }
-  }
-
-  const getReservationsByCommonKey = async (commonKey) => {
-    try {
-      const reservationsJSON = await AsyncStorage.getItem('reservations')
-
-      if (reservationsJSON !== null) {
-        const reservations = JSON.parse(reservationsJSON)
-        const filteredReservations = reservations.filter(
-          (reservation) => reservation.commonKey === commonKey
-        )
-
-        console.log('Retrieved reservations:', filteredReservations)
-        return filteredReservations
-      } else {
-        console.log('No reservations found.')
-        return []
-      }
-    } catch (error) {
-      console.log('Error retrieving reservations:', error)
-      return []
-    }
-  }
-
-
-  const updateReservation = async (reservationId, tripId, tripAmount) => {
-    try {
       const reservationsJSON = await AsyncStorage.getItem('reservations');
       let reservations = [];
 
       if (reservationsJSON !== null) {
         reservations = JSON.parse(reservationsJSON);
+      }
 
-        // Find the reservation with the matching reservation ID
-        const foundIndex = reservations.findIndex(
-          (reservation) => reservation.reservationid === reservationId
+      reservations.push(reservation);
+
+      const updatedReservationsJSON = JSON.stringify(reservations);
+      await AsyncStorage.setItem('reservations', updatedReservationsJSON);
+
+      console.log('Reservation stored successfully.', updatedReservationsJSON);
+    } catch (error) {
+      console.log('Error storing reservation:', error);
+    }
+  };
+
+  const getReservationsByCommonKey = async (commonKey) => {
+    try {
+      const reservationsJSON = await AsyncStorage.getItem('reservations');
+
+      if (reservationsJSON !== null) {
+        const reservations = JSON.parse(reservationsJSON);
+        const filteredReservations = reservations.filter(
+          (reservation) => reservation.commonKey === commonKey
         );
 
-        if (foundIndex !== -1) {
-          // Update the tripid and tripamount properties
-          reservations[foundIndex].tripid = tripId;
-          reservations[foundIndex].tripamount = tripAmount;
-
-          const updatedReservationsJSON = JSON.stringify(reservations);
-          await AsyncStorage.setItem('reservations', updatedReservationsJSON);
-
-          console.log('Reservation updated successfully.', updatedReservationsJSON);
-        } else {
-          console.log('Reservation not found.');
-        }
+        console.log('Retrieved reservations:', filteredReservations);
+        return filteredReservations;
       } else {
         console.log('No reservations found.');
       }
@@ -115,12 +78,7 @@ export const SelectTravelOptions = ({ navigation, route }: any) => {
     }
   };
 
-  // Usage example
-  const reservationIdToUpdate = 31620166;
-  const newTripId = '123456';
-  const newTripAmount = 100;
 
-  // 
 
 
   const [currentLocation, setCurrentLocation] = useState<Location | null>({
@@ -170,23 +128,23 @@ export const SelectTravelOptions = ({ navigation, route }: any) => {
   })
 
   async function getLatLngFromAddress(address) {
-    const apiKey = 'AIzaSyCFIR5ETG_Zfnx5dBpLke4ZD6WLvrZvEmk';
-    const encodedAddress = encodeURIComponent(address);
-    const geocodingUrl = `https://maps.googleapis.com/maps/api/geocode/json?address=${encodedAddress}&key=${apiKey}`;
+    const apiKey = 'AIzaSyCFIR5ETG_Zfnx5dBpLke4ZD6WLvrZvEmk'
+    const encodedAddress = encodeURIComponent(address)
+    const geocodingUrl = `https://maps.googleapis.com/maps/api/geocode/json?address=${encodedAddress}&key=${apiKey}`
 
     try {
-      const response = await fetch(geocodingUrl);
-      const data = await response.json();
+      const response = await fetch(geocodingUrl)
+      const data = await response.json()
 
       if (data.results.length > 0) {
-        const { lat, lng } = data.results[0].geometry.location;
-        return { latitude: lat, longitude: lng };
+        const { lat, lng } = data.results[0].geometry.location
+        return { latitude: lat, longitude: lng }
       }
     } catch (error) {
-      console.error('Error geocoding address:', error);
+      console.error('Error geocoding address:', error)
     }
 
-    return null;
+    return null
   }
 
   // Example usage:
@@ -214,11 +172,10 @@ export const SelectTravelOptions = ({ navigation, route }: any) => {
         signature: '',
         authData: '',
       },
-      "search_type": "direct_search",
-      "source": {
-        "lat": currentLocation?.latitude,
-        "lon": currentLocation?.longitude,
-        "name": "Paris, France"
+      destination: {
+        lat: 48.8606,
+        lon: 2.3376,
+        name: 'Louvre Museum Paris ',
       },
       "destination": {
         "lat": 48.8398,
@@ -234,71 +191,70 @@ export const SelectTravelOptions = ({ navigation, route }: any) => {
   const [showLoader, setShowLoader] = useState(false)
 
   const handleClick = () => {
-    console.log('isInitialised:button clicked')
-    setShowLoader(true)
+    setLoader(true);
     if (HyperSdkReact.isNull()) {
-      HyperSdkReact.createHyperServices()
-      console.log('isInitialised:service is null')
+      HyperSdkReact.createHyperServices();
     }
 
-    HyperSdkReact.initiate(initiatePayload)
+    HyperSdkReact.initiate(initiatePayload);
     HyperSdkReact.isInitialised().then((init) => {
-      console.log('isInitialised:', init)
-    })
+      console.log('isInitialised:', init);
+    });
+
   }
 
-  const [signatureResponse, setSignatureResponse] = useState(null) // State to store the signature response
+  const [signatureResponse, setSignatureResponse] = useState(null); // State to store the signature response
 
   useEffect(() => {
     const fetchSignatureResponse = async () => {
-      const { firstName } = await api.getnativev1me() || 'user'
+      const { firstName } = (await api.getnativev1me()) || 'user'
       const { phoneNumber } = (await api.getnativev1me()) || '+918297921333'
       let mobile = phoneNumber?.slice(3, phoneNumber.length)
-      console.log('test username1', mobile, firstName)
-      setMobileNumber(mobile)
+      console.log("test username1", mobile, firstName)
+      setMobileNumber(mobile);
       try {
-        const result = await HyperSDKModule.dynamicSign(firstName, mobile, mobileCountryCode);
-        setSignatureResponse(result);
-        console.log("signauth check", result);
+        const result = await HyperSDKModule.dynamicSign(firstName, mobile, mobileCountryCode)
+        setSignatureResponse(result)
+        console.log('signauth check', result)
       } catch (error) {
-        console.error(error)
+        console.error(error);
       }
-    }
+    };
 
-    fetchSignatureResponse()
-  }, [])
+    fetchSignatureResponse();
+  }, []);
+
 
   useEffect(() => {
     const processPayload2Copy = { ...processPayload2 } // Create a copy of the processPayload2 object
+    const processPayload2Copy = { ...processPayload2 } // Create a copy of the processPayload2 object
 
     if (signatureResponse) {
-      processPayload2Copy.payload.signatureAuthData.signature = signatureResponse.signature
-      processPayload2Copy.payload.signatureAuthData.authData = signatureResponse.signatureAuthData
+      processPayload2Copy.payload.signatureAuthData.signature = signatureResponse.signature;
+      processPayload2Copy.payload.signatureAuthData.authData = signatureResponse.signatureAuthData;
+
     }
-    console.log('Updated processPayload2:', processPayload2Copy)
+    console.log('Updated processPayload2:', processPayload2Copy);
 
     const eventEmitter = new NativeEventEmitter(NativeModules.HyperSdkReact)
+    const eventEmitter = new NativeEventEmitter(NativeModules.HyperSdkReact)
     const eventListener = eventEmitter.addListener('HyperEvent', (resp) => {
-      const data = JSON.parse(resp)
-      const event = data.event || ''
-      console.log('event_call: is called ', event)
+      const data = JSON.parse(resp);
+      const event = data.event || '';
+      console.log('event_call: is called ', event);
       switch (event) {
         case 'show_loader':
           // show some loader here
-          break
+          break;
 
         case 'hide_loader':
           // hide the loader
-          setTimeout(() => {
-            setShowLoader(false)
-            setModalVisible(false);
-          }, 3000)
-          break
+          break;
 
         case 'initiate_result':
-          const payload = data.payload || {}
-          const res = payload ? payload.status : payload
-          console.log('initiate_result: ', processPayload2)
+          const payload = data.payload || {};
+          const res = payload ? payload.status : payload;
+          console.log('initiate_result: ', processPayload2);
           if (res === 'SUCCESS') {
             console.log('checkbookinfID', bookingId)
             const reservation1 = {
@@ -313,17 +269,18 @@ export const SelectTravelOptions = ({ navigation, route }: any) => {
             storeReservation(reservation1)
             // Initiation is successful, call process method
             if (processPayload2.payload.signatureAuthData != undefined) {
-              HyperSdkReact.process(JSON.stringify(processPayload2))
+              HyperSdkReact.process(JSON.stringify(processPayload2));
             } else {
-              alert('Invalid signature')
+              alert('Invalid signature');
             }
             // HyperSdkReact.process(JSON.stringify(processPayload2));
-            console.log('process_call: is called ', payload)
+            console.log('process_call: is called ', payload);
           } else {
             // Handle initiation failure
             setModalVisible(true)
-            console.log('Initiation failed.')
+            console.log('Initiation failed.');
           }
+          break
           break
 
         case 'process_result':
@@ -339,23 +296,18 @@ export const SelectTravelOptions = ({ navigation, route }: any) => {
             updateReservation(bookingId, processPayload?.trip_id, processPayload?.trip_amount);
             console.log('process_call: wallet transaction ', processPayload)
             // HyperSdkReact.terminate();
-          } else if (
-            processPayload?.action === 'feedback_submitted' ||
-            processPayload?.action === 'home_screen'
-          ) {
-            console.log('process_call: wallet transaction ', processPayload)
-            HyperSdkReact.terminate()
+          } else if (processPayload?.action === 'feedback_submitted' || processPayload?.action === 'home_screen') {
 
-            setShowLoader(false);
-
+            console.log('process_call: wallet transaction ', processPayload);
+            HyperSdkReact.terminate();
             setModalVisible(true)
           }
 
           if (processPayload?.screen === 'home_screen') {
             HyperSdkReact.terminate()
             setModalVisible(true)
-          } else if (processPayload?.screen === 'trip_started_screen' || processPayload?.screen === 'trip_accepted_screen') {
-            BackHandler.exitApp()
+          } else if (processPayload?.screen === 'trip_started_screen') {
+            BackHandler.exitApp();
           }
           console.log('process_call: process ', processPayload)
 
