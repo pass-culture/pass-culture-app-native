@@ -1,5 +1,5 @@
 import { useEduConnectLogin } from 'features/identityCheck/api/useEduConnectLogin'
-import { renderHook, waitFor } from 'tests/utils'
+import { renderHook, waitFor } from 'tests/utils/web'
 
 jest.mock('libs/eduConnectClient')
 const mockFetch = jest.spyOn(global, 'fetch')
