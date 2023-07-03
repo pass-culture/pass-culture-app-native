@@ -149,16 +149,16 @@ export const HomeHeader: FunctionComponent = function () {
   }
 
   // Example usage:
-  const address = '15 Rue de la Coquille, Béziers';
-  getLatLngFromAddress(address).then((coordinates) => {
-    if (coordinates) {
-      const { latitude, longitude } = coordinates;
-      console.log('Latitude:', latitude);
-      console.log('Longitude:', longitude);
-    } else {
-      console.log('Failed to get coordinates for the address.');
-    }
-  });
+  // const address = '15 Rue de la Coquille, Béziers';
+  // getLatLngFromAddress(address).then((coordinates) => {
+  //   if (coordinates) {
+  //     const { latitude, longitude } = coordinates;
+  //     console.log('Latitude:', latitude);
+  //     console.log('Longitude:', longitude);
+  //   } else {
+  //     console.log('Failed to get coordinates for the address.');
+  //   }
+  // });
 
 
   const initiatePayload = JSON.stringify({

@@ -162,7 +162,7 @@ export function OnGoingBookingsList() {
       if (reservationsJSON !== null) {
         const reservations = JSON.parse(reservationsJSON)
         const filteredReservations = reservations.filter(
-          (reservation) => reservation.commonKey === commonKey
+          (reservation) => reservation.commonKey === commonKey && !reservation.tripid
         )
 
         // Sort the reservations by tripdate in descending order
@@ -196,7 +196,11 @@ export function OnGoingBookingsList() {
     })
   }
 
-
+  const refreshData = async (mobile) => {
+    const rideData = await getReservationsByCommonKey(mobile)
+    setReserveRides(rideData)
+    console.log('reserve', rideData)
+  }
 
   useEffect(() => {
     const fetchSignatureResponse = async () => {
@@ -212,13 +216,13 @@ export function OnGoingBookingsList() {
       } catch (error) {
         console.error(error)
       }
-      const rideData = await getReservationsByCommonKey(mobile)
-      setReserveRides(rideData)
-      console.log('reserve', rideData)
+      refreshData(mobile);
+
     }
 
     fetchSignatureResponse()
-  }, [isLoading])
+
+  }, [isFetching])
 
   useEffect(() => {
     const processPayload2Copy = { ...processPayload2 } // Create a copy of the processPayload2 object
@@ -274,13 +278,13 @@ export function OnGoingBookingsList() {
 
             updateReservation(processPayload?.trip_id, processPayload?.trip_amount);
             console.log('process_call: wallet transaction ', processPayload)
+            refreshData(mobileNumber);
             // HyperSdkReact.terminate();
           } else if (
-            processPayload?.action === 'feedback_submitted' ||
-            processPayload?.action === 'home_screen'
-          ) {
+            processPayload?.action === 'feedback_submitted' || processPayload?.screen === 'home_screen') {
             console.log('process_call: wallet transaction ', processPayload)
             HyperSdkReact.terminate()
+            refreshData(mobileNumber);
           }
 
           if (processPayload?.screen === 'home_screen') {

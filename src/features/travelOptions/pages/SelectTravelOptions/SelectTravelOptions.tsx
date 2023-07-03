@@ -205,16 +205,17 @@ export const SelectTravelOptions = ({ navigation, route }: any) => {
         signature: '',
         authData: '',
       },
+      search_type: 'direct_search',
+      source: {
+        lat: currentLocation?.latitude,
+        lon: currentLocation?.longitude,
+        name: 'Paris, France',
+      },
       destination: {
         lat: 48.8606,
         lon: 2.3376,
-        name: 'Louvre Museum Paris ',
+        name: 'Louvre Museum Paris France',
       },
-      "destination": {
-        "lat": 48.8398,
-        "lon": 2.3188,
-        "name": "jardin atlantique"
-      }
     }
   }
 
