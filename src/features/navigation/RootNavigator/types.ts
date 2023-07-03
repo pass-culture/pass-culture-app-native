@@ -115,8 +115,7 @@ export type SubscriptionRootStackParamList = {
   SelectIDOrigin: undefined
   SelectIDStatus: undefined
   SelectPhoneStatus: undefined
-  IdentificationForkUbble: undefined
-  IdentificationForkEduconnect: undefined
+  IdentificationFork: undefined
   // TODO(PC-12433): this duplicate route is required until we solve PC-12433
   Validation: {
     firstName?: string

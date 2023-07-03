@@ -9,9 +9,7 @@ const educonnectFlow: (keyof SubscriptionRootStackParamList)[] = [
 ]
 
 const ubbleFlow: (keyof SubscriptionRootStackParamList)[] = ['SelectIDOrigin']
-const educonnectForkFlow: (keyof SubscriptionRootStackParamList)[] = [
-  'IdentificationForkEduconnect',
-]
+const educonnectForkFlow: (keyof SubscriptionRootStackParamList)[] = ['IdentificationFork']
 
 const educonnectOnlyMethod = [IdentityCheckMethod.educonnect]
 const ubbleOnlyMethod = [IdentityCheckMethod.ubble]

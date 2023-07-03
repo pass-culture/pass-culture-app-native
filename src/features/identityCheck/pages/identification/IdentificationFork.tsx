@@ -16,51 +16,54 @@ import { Mariane } from 'ui/svg/icons/Mariane'
 import { Ubble } from 'ui/svg/icons/Ubble'
 import { getSpacing, Typo } from 'ui/theme'
 
-export const IdentificationForkUbble: FunctionComponent = () => {
+export const IdentificationFork: FunctionComponent = () => {
   useEffect(() => {
-    analytics.logScreenViewForkUbble()
+    analytics.logScreenViewForkEduconnect()
   }, [])
 
   return (
-    <PageWithHeader title={'Identification'} scrollChildren={<IdentificationForkUbbleContent />} />
+    <PageWithHeader
+      title={'Identification'}
+      scrollChildren={<IdentificationForkEduconnectContent />}
+    />
   )
 }
 
-const IdentificationForkUbbleContent: FunctionComponent = () => {
+const IdentificationForkEduconnectContent: FunctionComponent = () => {
   return (
     <Container>
       <JustifiedLeftTitle title="S’identifier en 2 min avec&nbsp;:" />
-      <IdentificationForkButton
-        Title={<Typo.ButtonText>Ma pièce d’identité</Typo.ButtonText>}
-        Subtitle={<StyledCaption>Carte d’identité ou passeport</StyledCaption>}
-        icon={Ubble}
-        navigateTo={{ screen: 'SelectIDOrigin' }}
-        onBeforeNavigate={() => analytics.logChooseUbbleMethod(IdentityCheckMethod.ubble)}
-        key={0}
-      />
-      <StyledSeparatorWithText>
-        <SeparatorWithText label="ou" />
-      </StyledSeparatorWithText>
       <IdentificationForkButton
         Title={<Typo.ButtonText>Mes codes ÉduConnect</Typo.ButtonText>}
         Subtitle={<StyledCaption>Fournis par ton établissement scolaire</StyledCaption>}
         icon={Mariane}
         navigateTo={{ screen: 'IdentityCheckEduConnect' }}
-        onBeforeNavigate={() => analytics.logChooseEduConnectMethod(IdentityCheckMethod.ubble)}
-        key={1}
+        onBeforeNavigate={() => analytics.logChooseEduConnectMethod(IdentityCheckMethod.educonnect)}
+        key={0}
       />
       <StyledExternalTouchableLinkContainer>
         <ExternalTouchableLink
           as={ButtonQuaternaryBlack}
           externalNav={{ url: env.FAQ_LINK_EDUCONNECT_URL }}
-          onBeforeNavigate={() => {
-            analytics.logEduconnectExplanationClicked(IdentityCheckMethod.ubble)
+          onPress={() => {
+            analytics.logEduconnectExplanationClicked(IdentityCheckMethod.educonnect)
           }}
           icon={InfoPlain}
           wording="C’est quoi ÉduConnect&nbsp;?"
           inline
         />
       </StyledExternalTouchableLinkContainer>
+      <StyledSeparatorWithText>
+        <SeparatorWithText label="ou" />
+      </StyledSeparatorWithText>
+      <IdentificationForkButton
+        Title={<Typo.ButtonText>Ma pièce d’identité</Typo.ButtonText>}
+        Subtitle={<StyledCaption>Carte d’identité ou passeport</StyledCaption>}
+        icon={Ubble}
+        navigateTo={{ screen: 'SelectIDOrigin' }}
+        onBeforeNavigate={() => analytics.logChooseUbbleMethod(IdentityCheckMethod.educonnect)}
+        key={1}
+      />
     </Container>
   )
 }
