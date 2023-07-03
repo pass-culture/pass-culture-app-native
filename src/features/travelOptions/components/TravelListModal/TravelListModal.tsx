@@ -97,12 +97,13 @@ const TravelListModal = ({
     return (
       <View>
         <Touchable
+          disabled={item.isDisabled}
           style={travelOptionWrapperStyle(isSelected)}
           onPress={() => toggleItemSelection(item.name)}>
           <ImageWrapper>
             <ImageTile uri={item.icon} height={50} width={50} />
           </ImageWrapper>
-          <TitleText>{item.name}</TitleText>
+          <TitleText disabled={item.isDisabled || true}>{item.name}</TitleText>
         </Touchable>
         <Spacer.Column numberOfSpaces={2} />
       </View>
@@ -204,11 +205,11 @@ const TravelListModal = ({
                           walletBalance={walletBalance}
                           onPress={(paymentMode) => handlePaymentSelection(paymentMode)}
                         />
-                        <NoteContainer>
+                        {/* <NoteContainer>
                           <Text style={noteTextStyle}>
                             {'Le service est actuellement indisponible'}
                           </Text>
-                        </NoteContainer>
+                        </NoteContainer> */}
                       </AccordionItem>
                     </AccordianWrapper>
                   )}
@@ -276,12 +277,12 @@ const NoteContainer = styled.View({
   borderRadius: 8,
 })
 
-const TitleText = styled.Text({
+const TitleText = styled.Text(({ disabled }) => ({
   fontSize: 15,
-  fontWeight: 'bold',
+  fontWeight: disabled ? 'bold' : '600',
   fontFamily: 'Montserrat',
-  color: ColorsEnum.BLACK,
-})
+  color: disabled ? '#696a6f' : ColorsEnum.BLACK,
+}))
 
 const AccordianText = styled.Text({
   fontSize: 13,
