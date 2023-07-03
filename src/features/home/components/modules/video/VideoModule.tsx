@@ -1,7 +1,7 @@
 import colorAlpha from 'color-alpha'
 import React, { FunctionComponent, useEffect } from 'react'
 import LinearGradient from 'react-native-linear-gradient'
-import styled from 'styled-components/native'
+import styled, { useTheme } from 'styled-components/native'
 
 import { useVideoOffers } from 'features/home/api/useVideoOffer'
 import { BlackGradient } from 'features/home/components/BlackGradient'
@@ -19,16 +19,22 @@ import { Play } from 'ui/svg/icons/Play'
 import { Spacer, Typo, getSpacing } from 'ui/theme'
 
 const THUMBNAIL_HEIGHT = getSpacing(45)
+const THUMBNAIL_WIDTH = getSpacing(81)
 // We do not center the player icon, because when the title is 2-line long,
 // the title is to close to the player. So the player is closer to the top.
 const PLAYER_TOP_MARGIN = getSpacing(12.5)
 const PLAYER_SIZE = getSpacing(14.5)
 
-const GRADIENT_START_POSITION = PLAYER_TOP_MARGIN + getSpacing(5) + PLAYER_SIZE / 2
-const COLOR_CATEGORY_BACKGROUND_HEIGHT_UNIQUE_OFFER =
-  THUMBNAIL_HEIGHT - GRADIENT_START_POSITION + getSpacing(49.5)
+// const GRADIENT_START_POSITION = PLAYER_TOP_MARGIN + getSpacing(5) + PLAYER_SIZE / 2
+const GRADIENT_START_POSITION = PLAYER_TOP_MARGIN + PLAYER_SIZE / 2
+
+// const COLOR_CATEGORY_BACKGROUND_HEIGHT_UNIQUE_OFFER =
+//   THUMBNAIL_HEIGHT - GRADIENT_START_POSITION + getSpacing(49.5)
 const COLOR_CATEGORY_BACKGROUND_HEIGHT_MULTI_OFFER =
   THUMBNAIL_HEIGHT - GRADIENT_START_POSITION + getSpacing(21)
+
+const DESKTOP_BACKGROUND_HEIGHT = getSpacing(36)
+
 
 interface VideoModuleProps extends VideoModuleType {
   index: number
@@ -44,6 +50,13 @@ export const VideoModule: FunctionComponent<VideoModuleProps> = (props) => {
   const videoDuration = `${props.durationInMinutes} min`
 
   const { offers } = useVideoOffers(props.offersModuleParameters, props.id)
+  // const { offer } = useVideoOffer(props.offersModuleParameters, props.id)
+
+  const theme = useTheme()
+  const colorCategoryBackgroundHeightUniqueOffer = theme.isDesktopViewport
+    ? DESKTOP_BACKGROUND_HEIGHT
+    : THUMBNAIL_HEIGHT - GRADIENT_START_POSITION + getSpacing(44.5)
+
 
   const shouldModuleBeDisplayed = offers.length > 0
   const isMultiOffer = offers.length > 1
@@ -74,16 +87,17 @@ export const VideoModule: FunctionComponent<VideoModuleProps> = (props) => {
       <StyledTitleContainer>
         <StyledTitleComponent>{props.title}</StyledTitleComponent>
       </StyledTitleContainer>
+      <Spacer.Column numberOfSpaces={5} />
 
       <StyledWrapper>
         <ColorCategoryBackground
+          colorCategoryBackgroundHeightUniqueOffer={colorCategoryBackgroundHeightUniqueOffer}
           start={{ x: 0, y: 0 }}
           end={{ x: 0, y: 1 }}
           colors={getGradientColors(props.color)}
           isMultiOffer={isMultiOffer}
         />
         <VideoOfferContainer>
-          <Spacer.Column numberOfSpaces={5} />
           <StyledTouchableHighlight
             onPress={showVideoModal}
             testID="video-thumbnail"
@@ -111,6 +125,7 @@ export const VideoModule: FunctionComponent<VideoModuleProps> = (props) => {
             isMultiOffer={isMultiOffer}
             {...props}
           />
+{/* <<<<<<< HEAD
           <Spacer.Column numberOfSpaces={2} />
           {!isMultiOffer && (
             <VideoMonoOfferTile
@@ -120,6 +135,22 @@ export const VideoModule: FunctionComponent<VideoModuleProps> = (props) => {
               analyticsParams={analyticsParams}
             />
           )}
+=======
+          {theme.isDesktopViewport ? (
+            <Spacer.Row numberOfSpaces={4} />
+          ) : (
+            <Spacer.Column numberOfSpaces={2} />
+          )}
+          <StyledOfferVideoModule
+            offer={offer}
+            color={props.color}
+            hideModal={hideVideoModal}
+            moduleId={props.id}
+            moduleName={props.title}
+            homeEntryId={props.homeEntryId}
+            analyticsFrom={'home'}
+          />
+>>>>>>> e431d37d8 ((PC-22863) feat(VideoModal): Design for Video Modal on web and web-mobile) */}
         </VideoOfferContainer>
       </StyledWrapper>
       {!!isMultiOffer && (
@@ -145,6 +176,7 @@ const StyledWrapper = styled.View({})
 
 const VideoOfferContainer = styled.View(({ theme }) => ({
   marginHorizontal: theme.contentPage.marginHorizontal,
+  flexDirection: theme.isDesktopViewport ? 'row' : 'column',
 }))
 
 const Thumbnail = styled.ImageBackground(({ theme }) => ({
@@ -153,7 +185,7 @@ const Thumbnail = styled.ImageBackground(({ theme }) => ({
   overflow: 'hidden',
   borderRadius: theme.borderRadius.radius,
   height: THUMBNAIL_HEIGHT,
-  width: '100%',
+  width: theme.isDesktopViewport ? THUMBNAIL_WIDTH : '100%',
   border: 1,
   borderColor: theme.colors.greyMedium,
 }))
@@ -179,17 +211,29 @@ const PlayerContainer = styled.View({
   alignItems: 'center',
 })
 
-const ColorCategoryBackground = styled(LinearGradient)<{ isMultiOffer: boolean }>(
-  ({ isMultiOffer }) => ({
-    position: 'absolute',
-    top: GRADIENT_START_POSITION,
-    right: 0,
-    left: 0,
-    height: isMultiOffer
-      ? COLOR_CATEGORY_BACKGROUND_HEIGHT_MULTI_OFFER
-      : COLOR_CATEGORY_BACKGROUND_HEIGHT_UNIQUE_OFFER,
-  })
-)
+// <<<<<<< HEAD
+// const ColorCategoryBackground = styled(LinearGradient)<{ isMultiOffer: boolean }>(
+//   ({ isMultiOffer }) => ({
+//     position: 'absolute',
+//     top: GRADIENT_START_POSITION,
+//     right: 0,
+//     left: 0,
+//     height: isMultiOffer
+//       ? COLOR_CATEGORY_BACKGROUND_HEIGHT_MULTI_OFFER
+//       : COLOR_CATEGORY_BACKGROUND_HEIGHT_UNIQUE_OFFER,
+//   })
+// )
+// =======
+// const ColorCategoryBackground = styled(LinearGradient)<{
+//   colorCategoryBackgroundHeightUniqueOffer: number
+// }>(({ colorCategoryBackgroundHeightUniqueOffer }) => ({
+//   position: 'absolute',
+//   top: GRADIENT_START_POSITION,
+//   right: 0,
+//   left: 0,
+//   height: colorCategoryBackgroundHeightUniqueOffer,
+// }))
+// >>>>>>> e431d37d8 ((PC-22863) feat(VideoModal): Design for Video Modal on web and web-mobile)
 
 const Player = styled(Play).attrs({ size: PLAYER_SIZE })({})
 
@@ -218,3 +262,7 @@ const StyledTitleContainer = styled.View(({ theme }) => ({
 const StyledTitleComponent = styled(Typo.Title3).attrs({
   numberOfLines: 2,
 })({})
+
+const StyledOfferVideoModule = styled(OfferVideoModule)({
+  flexGrow: 1,
+})

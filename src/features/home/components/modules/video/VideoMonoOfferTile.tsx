@@ -1,4 +1,6 @@
 import React, { FunctionComponent } from 'react'
+import { StyleProp, ViewStyle } from 'react-native'
+import { useTheme } from 'styled-components'
 import styled from 'styled-components/native'
 
 import { getTagColor } from 'features/home/components/helpers/getTagColor'
@@ -20,6 +22,11 @@ type Props = {
   color: string
   hideModal: () => void
   analyticsParams: ConsultOfferAnalyticsParams
+  // moduleId: string
+  // analyticsFrom: 'home' | 'videoModal'
+  // moduleName?: string
+  // homeEntryId?: string
+  style?: StyleProp<ViewStyle>
 }
 
 export const VideoMonoOfferTile: FunctionComponent<Props> = ({
@@ -27,6 +34,11 @@ export const VideoMonoOfferTile: FunctionComponent<Props> = ({
   color,
   hideModal,
   analyticsParams,
+  // analyticsFrom,
+  // moduleId,
+  // moduleName,
+  // homeEntryId,
+  style,
 }) => {
   const timestampsInMillis = offer.offer.dates?.map((timestampInSec) => timestampInSec * 1000)
   const labelMapping = useCategoryHomeLabelMapping()
@@ -36,10 +48,16 @@ export const VideoMonoOfferTile: FunctionComponent<Props> = ({
 
   const prePopulateOffer = usePrePopulateOffer()
 
+  const theme = useTheme()
+
+  const offerHeight = theme.isDesktopViewport ? getSpacing(45) : getSpacing(35)
+
   const categoryId = mapping[offer.offer.subcategoryId]
 
   return (
     <OfferInsert
+      offerHeight={offerHeight}
+      style={style}
       navigateTo={{
         screen: 'Offer',
         params: { id: +offer.objectID },
@@ -58,7 +76,11 @@ export const VideoMonoOfferTile: FunctionComponent<Props> = ({
       }}>
       <Row>
         <OfferImageContainer>
-          <OfferImage imageUrl={offer.offer.thumbUrl} categoryId={categoryId} size="medium" />
+          <OfferImage
+            imageUrl={offer.offer.thumbUrl}
+            categoryId={categoryId}
+            size={theme.isDesktopViewport ? 'large' : 'medium'}
+          />
         </OfferImageContainer>
         <OfferInformations>
           <CategoryText color={color}>{labelMapping[offer.offer.subcategoryId]}</CategoryText>
@@ -74,16 +96,19 @@ export const VideoMonoOfferTile: FunctionComponent<Props> = ({
   )
 }
 
-const OfferInsert = styled(InternalTouchableLink)(({ theme }) => ({
-  // the overflow: hidden allow to add border radius to the image
-  // https://stackoverflow.com/questions/49442165/how-do-you-add-borderradius-to-imagebackground/57616397
-  overflow: 'hidden',
-  borderRadius: theme.borderRadius.radius,
-  backgroundColor: theme.colors.white,
-  alignItems: 'flex-start',
-  border: 1,
-  borderColor: theme.colors.greyMedium,
-}))
+const OfferInsert = styled(InternalTouchableLink)<{ offerHeight: number }>(
+  ({ theme, offerHeight }) => ({
+    // the overflow: hidden allow to add border radius to the image
+    // https://stackoverflow.com/questions/49442165/how-do-you-add-borderradius-to-imagebackground/57616397
+    overflow: 'hidden',
+    borderRadius: theme.borderRadius.radius,
+    backgroundColor: theme.colors.white,
+    height: offerHeight,
+    alignItems: 'flex-start',
+    border: 1,
+    borderColor: theme.colors.greyMedium,
+  })
+)
 
 const Row = styled.View({
   flexDirection: 'row',
@@ -94,6 +119,7 @@ const OfferInformations = styled.View({
   flex: 1,
   marginRight: getSpacing(4),
 })
+
 const OfferImageContainer = styled.View({
   margin: getSpacing(4),
 })
