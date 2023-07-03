@@ -9,7 +9,7 @@ import {
 } from 'react-native'
 import { useSafeAreaInsets } from 'react-native-safe-area-context'
 import styled from 'styled-components/native'
-
+import { GeolocPermissionState, useGeolocation } from 'libs/geolocation'
 import { useBookings } from 'features/bookings/api'
 import { EndedBookingsSection } from 'features/bookings/components/EndedBookingsSection'
 import { getEligibleBookingsForArchive } from 'features/bookings/helpers/expirationDateUtils'
@@ -29,7 +29,6 @@ import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/S
 import { getSpacing, Typo } from 'ui/theme'
 import { TAB_BAR_COMP_HEIGHT } from 'ui/theme/constants'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
-
 import { NoBookingsView } from './NoBookingsView'
 import { OnGoingBookingItem } from './OnGoingBookingItem'
 import { RideBookingItem } from 'features/bookings/components/RideBookingItem'
