@@ -1,14 +1,18 @@
 import React, { FunctionComponent } from 'react'
 
 import { styledButton } from 'ui/components/buttons/styledButton'
-import { HeaderIconProps } from 'ui/components/headers/CancelButton'
 import { Touchable } from 'ui/components/touchable/Touchable'
 import { Typo, getSpacing } from 'ui/theme'
 
-export const CloseButtonText: FunctionComponent<HeaderIconProps> = ({ onClose }) => {
+interface HeaderIconProps {
+  wording: 'Fermer' | 'Quitter' | 'Annuler'
+  onClose: () => void
+}
+
+export const RightButtonText: FunctionComponent<HeaderIconProps> = ({ onClose, wording }) => {
   return (
     <StyledTouchable onPress={onClose}>
-      <Typo.Caption>Fermer</Typo.Caption>
+      <Typo.Caption>{wording}</Typo.Caption>
     </StyledTouchable>
   )
 }
