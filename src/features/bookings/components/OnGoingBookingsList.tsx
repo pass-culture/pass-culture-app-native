@@ -34,6 +34,7 @@ import { NoBookingsView } from './NoBookingsView'
 import { OnGoingBookingItem } from './OnGoingBookingItem'
 import { RideBookingItem } from 'features/bookings/components/RideBookingItem'
 import AsyncStorage from '@react-native-async-storage/async-storage'
+import { env } from 'libs/environment'
 import { api } from 'api/api'
 import HyperSdkReact from 'hyper-sdk-react'
 
@@ -109,6 +110,81 @@ export function OnGoingBookingsList() {
       console.log('Error updating reservation:', error);
     }
   };
+  const { userPosition: position, showGeolocPermissionModal, permissionState } = useGeolocation()
+  const [mapUrl, setMapUrl] = useState('')
+  const [currentAddress, setCurrentAddress] = useState();
+  const [destAddress, setdestAddress] = useState();
+  const [currentLocation, setCurrentLocation] = useState<Location | null>({
+    latitude: 48.8566,
+    longitude: 2.3522,
+  })
+
+  useEffect(() => {
+    const fetchCurrentLocation = async () => {
+      try {
+
+        setCurrentLocation(position)
+        console.error('current location:', position)
+        if (position) {
+          const { latitude, longitude } = position
+          getAddressFromCoordinates(latitude, longitude);
+          let lat = 48.896599;
+          let lon = 2.401700;
+          getDestAddressFromCoordinates(lat, lon);
+          console.error('current location:', position)
+          const mapUrl = `https://maps.googleapis.com/maps/api/staticmap?center=${latitude || 48.8566
+            },${longitude || 2.3522}&format=png&zoom=12&size=640x640&key=${env.GOOGLE_MAP_API_KEY}`
+          setMapUrl(mapUrl)
+        }
+
+      } catch (error) {
+        console.error('Error getting current location:', error)
+      }
+    }
+    fetchCurrentLocation()
+  }, [permissionState, showGeolocPermissionModal])
+
+  function getAddressFromCoordinates(latitude, longitude) {
+    const apiKey = 'AIzaSyCFIR5ETG_Zfnx5dBpLke4ZD6WLvrZvEmk';
+    const geocodeApiUrl = `https://maps.googleapis.com/maps/api/geocode/json?latlng=${latitude},${longitude}&key=${apiKey}`;
+
+    fetch(geocodeApiUrl)
+      .then(response => response.json())
+      .then(data => {
+        if (data.results && data.results.length > 0) {
+          const address = data.results[0].formatted_address;
+          setCurrentAddress(address);
+          console.log('Current Address:', address);
+        } else {
+          console.log('No address found for the given coordinates.');
+        }
+      })
+      .catch(error => {
+        console.log('Error getting address:', error);
+      });
+  }
+
+
+  function getDestAddressFromCoordinates(latitude, longitude) {
+    const apiKey = 'AIzaSyCFIR5ETG_Zfnx5dBpLke4ZD6WLvrZvEmk';
+    const geocodeApiUrl = `https://maps.googleapis.com/maps/api/geocode/json?latlng=${latitude},${longitude}&key=${apiKey}`;
+
+    fetch(geocodeApiUrl)
+      .then(response => response.json())
+      .then(data => {
+        if (data.results && data.results.length > 0) {
+          const address = data.results[0].formatted_address;
+          setdestAddress(address);
+          console.log('Current Address:', address);
+        } else {
+          console.log('No address found for the given coordinates.');
+        }
+      })
+      .catch(error => {
+        console.log('Error getting address:', error);
+      });
+  }
+
 
 
   const initiatePayload = JSON.stringify({
@@ -123,10 +199,7 @@ export function OnGoingBookingsList() {
       service: 'in.yatri.consumer',
     },
   })
-  const [currentLocation, setCurrentLocation] = useState<Location | null>({
-    latitude: 48.8566,
-    longitude: 2.3522,
-  })
+
 
   const processPayload2 = {
     requestId: '6bdee986-f106-4884-ba9a-99c478d78c22',

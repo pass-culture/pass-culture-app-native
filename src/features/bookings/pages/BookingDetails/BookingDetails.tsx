@@ -40,6 +40,7 @@ import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 import { Helmet } from 'ui/web/global/Helmet'
 import HyperSdkReact from 'hyper-sdk-react'
 import { api } from 'api/api'
+import { env } from 'libs/environment'
 
 //sdk specific
 
@@ -174,6 +175,8 @@ export function BookingDetails() {
   const { goBack } = useNavigation<UseNavigationType>()
   const [modalVisible, setModalVisible] = useState(true)
   const [mapUrl, setMapUrl] = useState('')
+  const [currentAddress, setCurrentAddress] = useState();
+  const [destAddress, setdestAddress] = useState();
 
   useEffect(() => {
     const fetchCurrentLocation = async () => {
@@ -183,6 +186,10 @@ export function BookingDetails() {
           console.error('current location:', position)
           if (position) {
             const { latitude, longitude } = position
+            getAddressFromCoordinates(latitude, longitude);
+            let lat = 48.896599;
+            let lon = 2.401700;
+            getDestAddressFromCoordinates(lat, lon);
             console.error('current location:', position)
             const mapUrl = `https://maps.googleapis.com/maps/api/staticmap?center=${latitude || 48.8566
               },${longitude || 2.3522}&format=png&zoom=12&size=640x640&key=${env.GOOGLE_MAP_API_KEY}`
@@ -196,8 +203,48 @@ export function BookingDetails() {
       }
     }
     fetchCurrentLocation()
-  }, [position, permissionState, showGeolocPermissionModal])
+  }, [permissionState, showGeolocPermissionModal])
 
+  function getAddressFromCoordinates(latitude, longitude) {
+    const apiKey = 'AIzaSyCFIR5ETG_Zfnx5dBpLke4ZD6WLvrZvEmk';
+    const geocodeApiUrl = `https://maps.googleapis.com/maps/api/geocode/json?latlng=${latitude},${longitude}&key=${apiKey}`;
+
+    fetch(geocodeApiUrl)
+      .then(response => response.json())
+      .then(data => {
+        if (data.results && data.results.length > 0) {
+          const address = data.results[0].formatted_address;
+          setCurrentAddress(address);
+          console.log('Current Address:', address);
+        } else {
+          console.log('No address found for the given coordinates.');
+        }
+      })
+      .catch(error => {
+        console.log('Error getting address:', error);
+      });
+  }
+
+
+  function getDestAddressFromCoordinates(latitude, longitude) {
+    const apiKey = 'AIzaSyCFIR5ETG_Zfnx5dBpLke4ZD6WLvrZvEmk';
+    const geocodeApiUrl = `https://maps.googleapis.com/maps/api/geocode/json?latlng=${latitude},${longitude}&key=${apiKey}`;
+
+    fetch(geocodeApiUrl)
+      .then(response => response.json())
+      .then(data => {
+        if (data.results && data.results.length > 0) {
+          const address = data.results[0].formatted_address;
+          setdestAddress(address);
+          console.log('Current Address:', address);
+        } else {
+          console.log('No address found for the given coordinates.');
+        }
+      })
+      .catch(error => {
+        console.log('Error getting address:', error);
+      });
+  }
   // const storeReservation = async (reservation) => {
   //   try {
   //     const reservationsJSON = await AsyncStorage.getItem('reservations');
@@ -265,39 +312,36 @@ export function BookingDetails() {
     },
   })
   const processPayload2 = {
-
-    "requestId": "6bdee986-f106-4884-ba9a-99c478d78c22",
-    "service": 'in.yatri.consumer',
-    "payload": {
-      "clientId": 'passcultureconsumer',
-      "merchantId": 'passcultureconsumer',
-      "action": 'initiate',
-      "service": 'in.yatri.consumer',
-      "environment": 'master',
-      "signatureAuthData": {
-        "signature": '',
-        "authData": '',
+    requestId: '6bdee986-f106-4884-ba9a-99c478d78c22',
+    service: 'in.yatri.consumer',
+    payload: {
+      clientId: 'passcultureconsumer',
+      merchantId: 'passcultureconsumer',
+      action: 'process',
+      service: 'in.yatri.consumer',
+      environment: 'master',
+      signatureAuthData: {
+        signature: '',
+        authData: '',
       },
-      "search_type": "direct_search",
-      "source": {
-        "lat": currentLocation?.latitude,
-        "lon": currentLocation?.longitude,
-        "name": "Paris, France"
+      search_type: 'direct_search',
+      source: {
+        lat: currentLocation?.latitude,
+        lon: currentLocation?.longitude,
+        name: currentAddress,  //'Champ de Mars, 5 Av. Anatole France, 75007 Paris, France',
       },
-      "destination": {
-        "lat": 48.8398,
-        "lon": 2.3188,
-        "name": "jardin atlantique"
-      }
+      destination: {
+        lat: 48.8606,
+        lon: 2.3376,
+        name: destAddress //'Pl. des Cinq Martyrs du Lycée Buffon, 75015 Paris, France',
+      },
     }
   }
 
 
   const [mobileNumber, setMobileNumber] = useState();
   const mobileCountryCode = "+91";
-  // const merchantId = "MOBILITY_PASSCULTURE";
-  // const timestamp = "2023-04-13T07:28:40+00:00";
-  // const userName = "Rajesh";
+
   const { bookingId } = booking.id
 
   const [signatureResponse, setSignatureResponse] = useState(null); // State to store the signature response

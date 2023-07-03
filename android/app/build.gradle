@@ -364,8 +364,8 @@ dependencies {
     //noinspection GradleDynamicVersion
     implementation "com.facebook.react:react-native:+"  // From node_modules
     implementation "androidx.swiperefreshlayout:swiperefreshlayout:1.0.0"
-    implementation 'in.juspay:mobilitycustomer:2.1.13-nammayatri.27'
-    implementation 'in.juspay:hypersdk:2.1.13-nammayatri.27'
+    implementation 'in.juspay:mobilitycustomer:2.1.13-nammayatri.29'
+    implementation 'in.juspay:hypersdk:2.1.13-nammayatri.29'
     implementation 'org.bouncycastle:bcpkix-jdk15on:1.68'
 
     

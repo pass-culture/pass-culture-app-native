@@ -135,8 +135,8 @@ export const SelectTravelOptions = ({ navigation, route }: any) => {
           if (position) {
             const { latitude, longitude } = position
             getAddressFromCoordinates(latitude, longitude);
-            let lat = 48.8606;
-            let lon = 2.3376;
+            let lat = 48.896599;
+            let lon = 2.401700;
             getDestAddressFromCoordinates(lat, lon);
             console.error('current location:', position)
             const mapUrl = `https://maps.googleapis.com/maps/api/staticmap?center=${latitude || 48.8566
@@ -151,7 +151,7 @@ export const SelectTravelOptions = ({ navigation, route }: any) => {
       }
     }
     fetchCurrentLocation()
-  }, [position, permissionState, showGeolocPermissionModal])
+  }, [permissionState, showGeolocPermissionModal])
 
   function getAddressFromCoordinates(latitude, longitude) {
     const apiKey = 'AIzaSyCFIR5ETG_Zfnx5dBpLke4ZD6WLvrZvEmk';
