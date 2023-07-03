@@ -51,7 +51,7 @@ export const useStepperInfo = (): {
         completed: () => <IconStepDone Icon={BicolorIdCard} testID="identification-step-done" />,
         retry: () => <IconRetryStep Icon={BicolorIdCard} testID="identification-retry-step" />,
       },
-      screens: computeIdentificationMethod(identificationMethods, identificationMethodFork),
+      screens: computeIdentificationMethod(identificationMethods),
     },
     {
       name: IdentityCheckStep.CONFIRMATION,
