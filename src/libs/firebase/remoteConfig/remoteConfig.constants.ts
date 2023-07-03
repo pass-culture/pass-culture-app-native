@@ -12,5 +12,4 @@ export const DEFAULT_REMOTE_CONFIG: CustomRemoteConfig = {
   homeEntryId_18: '',
   homeEntryId_15_17: '',
   shouldUseAlgoliaRecommend: false,
-  identificationMethodFork: '',
 }
