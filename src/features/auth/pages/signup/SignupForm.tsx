@@ -25,12 +25,11 @@ import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureF
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { AsyncError, eventMonitoring } from 'libs/monitoring'
 import { BlurHeader } from 'ui/components/headers/BlurHeader'
-import { CancelButton } from 'ui/components/headers/CancelButton'
-import { CloseButtonText } from 'ui/components/headers/CloseButtonText'
 import {
   PageHeaderWithoutPlaceholder,
   useGetHeaderHeight,
 } from 'ui/components/headers/PageHeaderWithoutPlaceholder'
+import { RightButtonText } from 'ui/components/headers/RightButtonText'
 import { useModal } from 'ui/components/modals/useModal'
 import { getSpacing, Spacer } from 'ui/theme'
 import { Helmet } from 'ui/web/global/Helmet'
@@ -155,10 +154,10 @@ export const SignupForm: FunctionComponent = () => {
     }
   }
 
-  const CloseButton = isLastStep ? (
-    <CloseButtonText onClose={navigateToHome} />
+  const RightButton = isLastStep ? (
+    <RightButtonText onClose={navigateToHome} wording="Fermer" />
   ) : (
-    <CancelButton onClose={showQuitSignupModal} />
+    <RightButtonText onClose={showQuitSignupModal} wording="Annuler" />
   )
 
   return (
@@ -168,7 +167,7 @@ export const SignupForm: FunctionComponent = () => {
         title="Inscription"
         shouldDisplayBackButton={!isLastStep}
         onGoBack={goToPreviousStep}
-        RightButton={isFirstStep ? null : CloseButton}>
+        RightButton={isFirstStep ? null : RightButton}>
         <ProgressBar totalStep={SIGNUP_NUMBER_OF_STEPS} currentStep={stepIndex + 1} />
       </PageHeaderWithoutPlaceholder>
       <StyledScrollView>
