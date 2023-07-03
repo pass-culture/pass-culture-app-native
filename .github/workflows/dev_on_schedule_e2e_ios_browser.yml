@@ -1,13 +1,14 @@
 name: Tests e2e iOS Browser
 
 on:
-  schedule:
-    - cron: '0 4 * * 1-5' # “At 4AM everyday from Monday through Friday.
+  workflow_call:
+  # schedule:
+  #   - cron: '0 4 * * 1-5' # “At 4AM everyday from Monday through Friday.
 
   workflow_dispatch:
     inputs:
       environment:
-        type: environment
+        type: string
         description: Select the environment
         required: true
         default: staging
@@ -60,7 +61,6 @@ jobs:
       GITHUB_SERVER_URL: ${{ github.server_url }}
       GITHUB_RUN_ID: ${{ github.run_id }}
     runs-on: macos-11
-    environment: ${{ inputs.environment || 'staging' }}
     permissions:
       id-token: write
       contents: read
