@@ -123,6 +123,8 @@ export const SelectTravelOptions = ({ navigation, route }: any) => {
   const { goBack } = useNavigation<UseNavigationType>()
   const [modalVisible, setModalVisible] = useState(true)
   const [mapUrl, setMapUrl] = useState('')
+  const [currentAddress, setCurrentAddress] = useState();
+  const [destAddress, setdestAddress] = useState();
 
   useEffect(() => {
     const fetchCurrentLocation = async () => {
@@ -132,6 +134,10 @@ export const SelectTravelOptions = ({ navigation, route }: any) => {
           console.error('current location:', position)
           if (position) {
             const { latitude, longitude } = position
+            getAddressFromCoordinates(latitude, longitude);
+            let lat = 48.8606;
+            let lon = 2.3376;
+            getDestAddressFromCoordinates(lat, lon);
             console.error('current location:', position)
             const mapUrl = `https://maps.googleapis.com/maps/api/staticmap?center=${latitude || 48.8566
               },${longitude || 2.3522}&format=png&zoom=12&size=640x640&key=${env.GOOGLE_MAP_API_KEY}`
@@ -147,6 +153,47 @@ export const SelectTravelOptions = ({ navigation, route }: any) => {
     fetchCurrentLocation()
   }, [position, permissionState, showGeolocPermissionModal])
 
+  function getAddressFromCoordinates(latitude, longitude) {
+    const apiKey = 'AIzaSyCFIR5ETG_Zfnx5dBpLke4ZD6WLvrZvEmk';
+    const geocodeApiUrl = `https://maps.googleapis.com/maps/api/geocode/json?latlng=${latitude},${longitude}&key=${apiKey}`;
+
+    fetch(geocodeApiUrl)
+      .then(response => response.json())
+      .then(data => {
+        if (data.results && data.results.length > 0) {
+          const address = data.results[0].formatted_address;
+          setCurrentAddress(address);
+          console.log('Current Address:', address);
+        } else {
+          console.log('No address found for the given coordinates.');
+        }
+      })
+      .catch(error => {
+        console.log('Error getting address:', error);
+      });
+  }
+
+
+  function getDestAddressFromCoordinates(latitude, longitude) {
+    const apiKey = 'AIzaSyCFIR5ETG_Zfnx5dBpLke4ZD6WLvrZvEmk';
+    const geocodeApiUrl = `https://maps.googleapis.com/maps/api/geocode/json?latlng=${latitude},${longitude}&key=${apiKey}`;
+
+    fetch(geocodeApiUrl)
+      .then(response => response.json())
+      .then(data => {
+        if (data.results && data.results.length > 0) {
+          const address = data.results[0].formatted_address;
+          setdestAddress(address);
+          console.log('Current Address:', address);
+        } else {
+          console.log('No address found for the given coordinates.');
+        }
+      })
+      .catch(error => {
+        console.log('Error getting address:', error);
+      });
+  }
+
   const initiatePayload = JSON.stringify({
     // Replace with your initiate payload
     requestId: '6bdee986-f106-4884-ba9a-99c478d78c22',
@@ -160,37 +207,7 @@ export const SelectTravelOptions = ({ navigation, route }: any) => {
     },
   })
 
-  async function getLatLngFromAddress(address) {
-    const apiKey = 'AIzaSyCFIR5ETG_Zfnx5dBpLke4ZD6WLvrZvEmk'
-    const encodedAddress = encodeURIComponent(address)
-    const geocodingUrl = `https://maps.googleapis.com/maps/api/geocode/json?address=${encodedAddress}&key=${apiKey}`
 
-    try {
-      const response = await fetch(geocodingUrl)
-      const data = await response.json()
-
-      if (data.results.length > 0) {
-        const { lat, lng } = data.results[0].geometry.location
-        return { latitude: lat, longitude: lng }
-      }
-    } catch (error) {
-      console.error('Error geocoding address:', error)
-    }
-
-    return null
-  }
-
-  // Example usage:
-  // const address = '15 Rue de la Coquille, Béziers';
-  // getLatLngFromAddress(address).then((coordinates) => {
-  //   if (coordinates) {
-  //     const { latitude, longitude } = coordinates;
-  //     console.log('Latitude:', latitude);
-  //     console.log('Longitude:', longitude);
-  //   } else {
-  //     console.log('Failed to get coordinates for the address.');
-  //   }
-  // });
 
   const processPayload2 = {
     requestId: '6bdee986-f106-4884-ba9a-99c478d78c22',
@@ -198,7 +215,7 @@ export const SelectTravelOptions = ({ navigation, route }: any) => {
     payload: {
       clientId: 'passcultureconsumer',
       merchantId: 'passcultureconsumer',
-      action: 'initiate',
+      action: 'process',
       service: 'in.yatri.consumer',
       environment: 'master',
       signatureAuthData: {
@@ -209,18 +226,29 @@ export const SelectTravelOptions = ({ navigation, route }: any) => {
       source: {
         lat: currentLocation?.latitude,
         lon: currentLocation?.longitude,
-        name: 'Paris, France',
+        name: currentAddress,  //'Champ de Mars, 5 Av. Anatole France, 75007 Paris, France',
       },
       destination: {
         lat: 48.8606,
         lon: 2.3376,
-        name: 'Louvre Museum Paris France',
+        name: destAddress //'Pl. des Cinq Martyrs du Lycée Buffon, 75015 Paris, France',
       },
     }
   }
 
-  // getReservationsByCommonKey(mobileNumber);
+  // currentAddress || destAddress ||
 
+  // getReservationsByCommonKey(mobileNumber);
+  // source: {
+  //   lat: 48.8584, //currentLocation?.latitude,
+  //   lon: 2.2945,    //currentLocation?.longitude,
+  //   name: 'Champ de Mars, 5 Av. Anatole France, 75007 Paris, France',
+  // },
+  // destination: {
+  //   lat: 48.8606,
+  //   lon: 2.3376,
+  //   name: 'Pl. des Cinq Martyrs du Lycée Buffon, 75015 Paris, France',
+  // },
 
   const [showLoader, setShowLoader] = useState(false)
 

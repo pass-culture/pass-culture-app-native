@@ -18,14 +18,14 @@ export const EndedRideBookingItem = ({ booking }: BookingItemProps) => {
       />
 
       <AttributesView>
-        <BookingItemTitle title={booking?.name || 'Alpha Taxi'} />
+        <BookingItemTitle title={booking?.name || 'Ma Le Taxi'} />
         <LocationContainer>
           <StyledLocationIcon
             resizeMode="contain"
             source={require('./../components/assets/Icons/blueLocationPin.png')}
           />
           <Spacer.Row numberOfSpaces={1} />
-          <DateLabel>{booking?.source?.name}</DateLabel>
+          <DateLabel numberOfLines={1} >{booking?.source?.name}</DateLabel>
         </LocationContainer>
         <DotCoontainer>
           <Dot size={2} fillColor={ColorsEnum.GREY_MEDIUM} />
@@ -38,7 +38,7 @@ export const EndedRideBookingItem = ({ booking }: BookingItemProps) => {
             source={require('./../components/assets/Icons/redLocationPin.png')}
           />
           <Spacer.Row numberOfSpaces={1} />
-          <DateLabel>{booking?.destination?.name}</DateLabel>
+          <DateLabel numberOfLines={1} >{booking?.destination?.name}</DateLabel>
         </LocationContainer>
         <Spacer.Flex />
       </AttributesView>

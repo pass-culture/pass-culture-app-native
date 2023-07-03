@@ -169,7 +169,8 @@ export function OnGoingBookingsList() {
         filteredReservations.sort((a, b) => new Date(b.tripdate) - new Date(a.tripdate))
 
         console.log('Retrieved reservations:', filteredReservations)
-        return filteredReservations
+
+        return filteredReservations.length ? [filteredReservations[0]] : []
       } else {
         console.log('No reservations found.')
         return []
