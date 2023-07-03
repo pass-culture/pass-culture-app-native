@@ -567,19 +567,6 @@ exports[`VideoModal should render correctly if modal visible 1`] = `
                         },
                       ]
                     }
-                  />
-                  <Text
-                    style={
-                      Array [
-                        Object {
-                          "color": "#696A6F",
-                          "fontFamily": "Montserrat-SemiBold",
-                          "fontSize": 12,
-                          "lineHeight": 16,
-                          "marginBottom": 4,
-                        },
-                      ]
-                    }
                   >
                     0,28 €
                   </Text>
