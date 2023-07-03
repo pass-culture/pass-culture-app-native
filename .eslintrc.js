@@ -36,6 +36,7 @@ module.exports = {
     'local-rules/nbsp-in-text': ['error'],
     'local-rules/apostrophe-in-text': ['error'],
     'local-rules/todo-format': ['error'],
+    'local-rules/use-the-right-test-utils': ['error'],
     '@typescript-eslint/ban-ts-comment': [
       'error',
       {
@@ -92,11 +93,13 @@ module.exports = {
           },
           {
             name: 'libs/firebase/analytics',
-            message: 'Use analytics from libs/analytics instead, unless you want to use a firebase/amplitude-specific method'
+            message:
+              'Use analytics from libs/analytics instead, unless you want to use a firebase/amplitude-specific method',
           },
           {
             name: 'libs/amplitude',
-            message: 'Use analytics from libs/analytics instead, unless you want to use a firebase/amplitude-specific method'
+            message:
+              'Use analytics from libs/analytics instead, unless you want to use a firebase/amplitude-specific method',
           },
           { name: 'ui/theme/shadow.ios', message: 'use ui/theme instead' },
           { name: 'ui/theme/shadow.android', message: 'use ui/theme instead' },
@@ -145,17 +148,20 @@ module.exports = {
           {
             name: 'react-native',
             importNames: ['Image'],
-            message: 'If images come from our backend, use libs/resizing-image-on-demand/Image instead. Otherwise you can use Image from react-native',
+            message:
+              'If images come from our backend, use libs/resizing-image-on-demand/Image instead. Otherwise you can use Image from react-native',
           },
           {
             name: 'react-native',
             importNames: ['ImageBackground'],
-            message: 'If images come from our backend, use libs/resizing-image-on-demand/ImageBackground instead. Otherwise you can use ImageBackground from react-native',
+            message:
+              'If images come from our backend, use libs/resizing-image-on-demand/ImageBackground instead. Otherwise you can use ImageBackground from react-native',
           },
           {
             name: 'react-native-fast-image',
             importNames: ['default'],
-            message: 'If images come from our backend, use libs/resizing-image-on-demand/FastImage instead. Otherwise you can use react-native-fast-image',
+            message:
+              'If images come from our backend, use libs/resizing-image-on-demand/FastImage instead. Otherwise you can use react-native-fast-image',
           },
         ],
         patterns: [
@@ -352,10 +358,7 @@ module.exports = {
         'jest/no-focused-tests': 'warn',
         'jest/no-identical-title': 'error',
         'jest/valid-expect': 'error',
-        'jest/expect-expect': [
-          'error',
-          { assertFunctionNames: ['expect', 'measurePerformance'] }
-        ],
+        'jest/expect-expect': ['error', { assertFunctionNames: ['expect', 'measurePerformance'] }],
       },
     },
   ],
