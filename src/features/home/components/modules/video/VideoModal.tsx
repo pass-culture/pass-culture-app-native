@@ -44,7 +44,8 @@ export const VideoModal: React.FC<VideoModalProps> = (props) => {
       scrollEnabled={false}
       customModalHeader={<React.Fragment />}
       onSwipe={props.hideModal}
-      swipeDirection="down">
+      swipeDirection="down"
+      animationOutTiming={400}>
       <VideoPlayer
         youtubeVideoId={props.youtubeVideoId}
         offer={props.offer}
