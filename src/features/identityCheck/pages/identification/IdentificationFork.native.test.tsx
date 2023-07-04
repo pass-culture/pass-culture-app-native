@@ -36,7 +36,7 @@ describe('<IdentificationFork />', () => {
   it('should log screen view when the screen is mounted', async () => {
     render(<IdentificationFork />)
 
-    await waitFor(() => expect(analytics.logScreenViewForkEduconnect).toHaveBeenCalledTimes(1))
+    await waitFor(() => expect(analytics.logScreenViewIdentityFork).toHaveBeenCalledTimes(1))
   })
 
   it('should log analytics on press "Ma pièce d’identité"', async () => {

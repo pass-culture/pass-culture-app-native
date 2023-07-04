@@ -17,7 +17,7 @@ import { getSpacing, Typo } from 'ui/theme'
 
 export const IdentificationFork: FunctionComponent = () => {
   useEffect(() => {
-    analytics.logScreenViewForkEduconnect()
+    analytics.logScreenViewIdentityFork()
   }, [])
 
   return (

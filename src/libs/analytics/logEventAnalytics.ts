@@ -485,10 +485,8 @@ export const logEventAnalytics = {
     analytics.logEvent({ amplitude: AmplitudeEvent.SCREEN_VIEW_DMS_INTRODUCTION }),
   logScreenViewExpiredOrLostId: () =>
     analytics.logEvent({ amplitude: AmplitudeEvent.SCREEN_VIEW_EXPIRED_OR_LOST_ID }),
-  logScreenViewForkEduconnect: () =>
-    analytics.logEvent({ amplitude: AmplitudeEvent.SCREEN_VIEW_FORK_EDUCONNECT }),
-  logScreenViewForkUbble: () =>
-    analytics.logEvent({ amplitude: AmplitudeEvent.SCREEN_VIEW_FORK_UBBLE }),
+  logScreenViewIdentityFork: () =>
+    analytics.logEvent({ amplitude: AmplitudeEvent.SCREEN_VIEW_IDENTITY_FORK }),
   logScreenViewIdentityCheckEnd: () =>
     analytics.logEvent({ amplitude: AmplitudeEvent.SCREEN_VIEW_IDENTITY_CHECK_END }),
   logScreenViewIdentityCheckHonor: () =>
