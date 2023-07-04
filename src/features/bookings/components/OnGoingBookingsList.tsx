@@ -87,7 +87,7 @@ export function OnGoingBookingsList() {
 
         // Find the reservation with the matching reservation ID
         const foundIndex = reservations.findIndex(
-          (reservation) => !(reservation.tripId)
+          (reservation) => !reservation.tripId
         );
         console.log('foundIndex====================', foundIndex)
         if (foundIndex !== -1) {
@@ -96,6 +96,9 @@ export function OnGoingBookingsList() {
           reservations[foundIndex].tripamount = tripAmount;
 
           const updatedReservationsJSON = JSON.stringify(reservations);
+
+        console.log('before update -------------------->:', updatedReservationsJSON)
+
           await AsyncStorage.setItem('reservations', updatedReservationsJSON);
 
           console.log('Reservation updated successfully.', updatedReservationsJSON);
@@ -109,6 +112,8 @@ export function OnGoingBookingsList() {
       console.log('Error updating reservation:', error);
     }
   };
+
+
   const { userPosition: position, showGeolocPermissionModal, permissionState } = useGeolocation()
   const [mapUrl, setMapUrl] = useState('')
   const [currentAddress, setCurrentAddress] = useState();
@@ -240,7 +245,7 @@ export function OnGoingBookingsList() {
         // Sort the reservations by tripdate in descending order
         filteredReservations.sort((a, b) => new Date(b.tripdate) - new Date(a.tripdate))
 
-        console.log('Retrieved reservations:', filteredReservations)
+        console.log('Retrieved reservations -------------------->:', filteredReservations)
 
         return filteredReservations.length ? [filteredReservations[0]] : []
       } else {
@@ -289,7 +294,11 @@ export function OnGoingBookingsList() {
       } catch (error) {
         console.error(error)
       }
-      refreshData(mobile);
+
+      async function fetchLocalRides() {
+        await refreshData(mobile);        
+      }
+      fetchLocalRides()
 
     }
 
@@ -307,7 +316,7 @@ export function OnGoingBookingsList() {
     console.log('Updated processPayload2:', processPayload2Copy)
 
     const eventEmitter = new NativeEventEmitter(NativeModules.HyperSdkReact)
-    const eventListener = eventEmitter.addListener('HyperEvent', (resp) => {
+    const eventListener = eventEmitter.addListener('HyperEvent', async (resp) => {
       const data = JSON.parse(resp)
       const event = data.event || ''
       console.log('event_call: is called ', event)
@@ -339,18 +348,18 @@ export function OnGoingBookingsList() {
           }
           break
 
-        case 'trip_status':
+        case 'process_result':
           const processPayload = data.payload || {}
           console.log('process_result: ', processPayload)
           // Handle process result
           if (processPayload?.action === 'terminate' && processPayload?.screen === 'home_screen') {
             HyperSdkReact.terminate()
             console.log('process_call: is called ', processPayload)
-          } else if (processPayload?.status === 'TRIP_FINISHED') {
+          } else if (processPayload?.ride_status === 'TRIP_FINISHED') {
             //function call for wallet transaction
 
-            updateReservation(processPayload?.trip_id, processPayload?.trip_amount);
-            console.log('process_call: wallet transaction ', processPayload)
+            await updateReservation(processPayload?.trip_id, processPayload?.trip_amount);
+            console.log('process_call: wallet transaction ---------------------------> ', processPayload)
             refreshData(mobileNumber);
             // HyperSdkReact.terminate();
           } else if (

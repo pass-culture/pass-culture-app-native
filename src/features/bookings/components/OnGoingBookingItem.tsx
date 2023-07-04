@@ -28,8 +28,8 @@ export const OnGoingBookingItem = ({ booking, eligibleBookingsForArchive }: Book
   const { stock } = booking
   const bookingProperties = getBookingProperties(booking, isEvent)
   const { dateLabel, withdrawLabel } = getBookingLabels(booking, bookingProperties)
-  console.log('Bookingdata', stock);
-  console.log('Bookingdata', bookingProperties);
+  // console.log('Bookingdata', stock);
+  // console.log('Bookingdata', bookingProperties);
   const accessibilityLabel = tileAccessibilityLabel(TileContentType.BOOKING, {
     name: stock.offer.name,
     properties: bookingProperties,
