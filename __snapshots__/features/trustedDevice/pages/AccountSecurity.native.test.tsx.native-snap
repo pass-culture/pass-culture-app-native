@@ -102,7 +102,7 @@ exports[`<AccountSecurity/> should match snapshot when no token 1`] = `
         ]
       }
     >
-      ne pas être à l'origine
+      ne pas être à l’origine
     </Text>
      de cette connexion :
   </Text>
@@ -606,7 +606,7 @@ exports[`<AccountSecurity/> should match snapshot with valid token 1`] = `
         ]
       }
     >
-      ne pas être à l'origine
+      ne pas être à l’origine
     </Text>
      de cette connexion :
   </Text>

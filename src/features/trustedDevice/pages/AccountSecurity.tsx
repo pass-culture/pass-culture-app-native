@@ -26,7 +26,7 @@ export const AccountSecurity = () => {
       icon={BicolorUserBlocked}
       separateIconFromTitle={false}>
       <Typo.Body>
-        Tu as indiqué <Typo.ButtonText>ne pas être à l&apos;origine</Typo.ButtonText> de cette
+        Tu as indiqué <Typo.ButtonText>ne pas être à l’origine</Typo.ButtonText> de cette
         connexion&nbsp;:
       </Typo.Body>
       <Spacer.Column numberOfSpaces={4} />
