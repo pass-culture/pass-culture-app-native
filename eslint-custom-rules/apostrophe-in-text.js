@@ -51,6 +51,7 @@ module.exports = {
     }
 
     return {
+      "JSXText[value=/'/]": handler,
       [buildTree('JSXAttribute')]: handler,
       [buildTree('ObjectExpression', 'Property')]: handler,
       [buildTree('ReturnStatement')]: handler,
