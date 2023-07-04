@@ -183,12 +183,12 @@ export type ThematicHighlightModule = {
 export type VenuesModule = {
   type: HomepageModuleType.VenuesModule
   id: string
-  venuesParameters: VenuesParameters[]
+  venuesParameters: VenuesModuleParameters[]
   displayParameters: DisplayParameters
   data?: ModuleData
 }
 
-export type VenuesParameters = {
+export type VenuesModuleParameters = {
   title: string
   isGeolocated?: boolean
   aroundRadius?: number

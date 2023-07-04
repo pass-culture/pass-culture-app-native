@@ -1,4 +1,4 @@
-import { Venue, VenuesParameters } from 'features/home/types'
+import { Venue, VenuesModuleParameters } from 'features/home/types'
 import { LocationType } from 'features/search/enums'
 import { AlgoliaVenue, FiltersArray } from 'libs/algolia'
 import { VenuesFacets } from 'libs/algolia/enums'
@@ -15,7 +15,7 @@ import { VenueTypeCode } from 'libs/parsers'
 const attributesToHighlight: string[] = [] // We disable highlighting because we don't need it
 
 export const fetchVenuesModules = async (
-  paramsList: VenuesParameters[],
+  paramsList: VenuesModuleParameters[],
   userLocation: Position
 ): Promise<Venue[][]> => {
   const queries = paramsList.map((params) => ({
@@ -38,7 +38,7 @@ export const fetchVenuesModules = async (
   }
 }
 
-export const buildVenuesQueryOptions = (params: VenuesParameters, userLocation: Position) => {
+export const buildVenuesQueryOptions = (params: VenuesModuleParameters, userLocation: Position) => {
   const { aroundRadius, isGeolocated, tags = [], venueTypes = [] } = params
 
   const locationFilter = adaptGeolocationParameters(userLocation, isGeolocated, aroundRadius) ?? {

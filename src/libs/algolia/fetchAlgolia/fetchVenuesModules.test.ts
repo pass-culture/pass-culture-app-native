@@ -1,7 +1,7 @@
-import { VenuesParameters } from 'features/home/types'
+import { VenuesModuleParameters } from 'features/home/types'
 import { buildVenuesQueryOptions } from 'libs/algolia/fetchAlgolia/fetchVenuesModules'
 
-const defaultParams: VenuesParameters = {
+const defaultParams: VenuesModuleParameters = {
   title: 'les cinémas de ta région',
   hitsPerPage: 10,
 }

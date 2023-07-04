@@ -4,7 +4,7 @@ import { useQuery } from 'react-query'
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { mapVenuesDataAndModules } from 'features/home/api/helpers/mapVenuesDataAndModules'
 import { useHomePosition } from 'features/home/helpers/useHomePosition'
-import { VenuesModule, VenuesParameters } from 'features/home/types'
+import { VenuesModule, VenuesModuleParameters } from 'features/home/types'
 import { fetchVenuesModules } from 'libs/algolia/fetchAlgolia/fetchVenuesModules'
 import { useNetInfoContext } from 'libs/network/NetInfoWrapper'
 import { QueryKeys } from 'libs/queryKeys'
@@ -15,7 +15,7 @@ export const useGetVenuesData = (modules: VenuesModule[]) => {
   const { user } = useAuthContext()
   const netInfo = useNetInfoContext()
 
-  const venuesParameters: VenuesParameters[] = []
+  const venuesParameters: VenuesModuleParameters[] = []
   const venuesModuleIds: string[] = []
 
   modules.forEach((module) => {
