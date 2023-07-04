@@ -416,7 +416,7 @@ export function BookingDetails() {
 
 
 
-        case 'process_result':
+        case 'trip_status':
           const processPayload = data.payload || {};
           console.log('process_result: ', processPayload);
           // Handle process result
@@ -424,7 +424,7 @@ export function BookingDetails() {
             HyperSdkReact.terminate();
             // console.log('process_call: is called ', processPayload);
 
-          } else if (processPayload?.action === 'trip_completed') {
+          } else if (processPayload?.status === 'TRIP_FINISHED') {
             //function call for wallet transaction
             const reservation1 = {
               reservationid: bookingId,

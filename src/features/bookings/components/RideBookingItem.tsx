@@ -23,7 +23,7 @@ export const RideBookingItem = ({ booking, onRideClick }: any) => {
         resizeMode="contain"
       />
       <AttributesView>
-        <BookingItemTitle title={booking?.name || 'Ma Le Taxi'} />
+        <BookingItemTitle title={booking?.name || 'Alliance Taxi'} />
         <LocationContainer>
           <StyledLocationIcon
             resizeMode="contain"

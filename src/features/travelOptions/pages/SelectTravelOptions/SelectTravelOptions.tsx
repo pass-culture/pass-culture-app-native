@@ -346,14 +346,14 @@ export const SelectTravelOptions = ({ navigation, route }: any) => {
           break
           break
 
-        case 'process_result':
+        case 'trip_status':
           const processPayload = data.payload || {}
           console.log('process_result: ', processPayload)
           // Handle process result
           if (processPayload?.action === 'terminate' && processPayload?.screen === 'home_screen') {
             HyperSdkReact.terminate()
             console.log('process_call: is called ', processPayload)
-          } else if (processPayload?.action === 'trip_completed') {
+          } else if (processPayload?.status === 'TRIP_FINISHED') {
             //function call for wallet transaction
 
             updateReservation(bookingId, processPayload?.trip_id, processPayload?.trip_amount);
