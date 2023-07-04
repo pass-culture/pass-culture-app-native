@@ -50,7 +50,7 @@
     "ios:staging": "react-native run-ios --scheme PassCulture-Staging",
     "ios:testing": "react-native run-ios --scheme PassCulture-Testing",
     "postinstall": "patch-package && jetify",
-    "prune:scan": "yarn ts-prune -i '(.*\\.stories\\.tsx)|(App.tsx)|(.*\\.ios)|(.*\\.android)|(.*__mocks__/.*)|(.*\\.web)'",
+    "prune:scan": "yarn ts-prune",
     "prune:count": "yarn prune:scan | wc -l",
     "start": "react-native start",
     "start:web": "node web/scripts/start.js",
