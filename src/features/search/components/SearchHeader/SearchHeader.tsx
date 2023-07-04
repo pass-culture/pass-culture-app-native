@@ -20,11 +20,10 @@ export const SearchHeader = memo(function SearchHeader({ searchInputID }: Props)
         <View {...getHeadingAttrs(1)}>
           <StyledTitle1 htmlFor={searchInputID}>Recherche une offre</StyledTitle1>
         </View>
-        <Spacer.Column numberOfSpaces={2} />
+        <Spacer.Column numberOfSpaces={4} />
         <View>
           <SearchBox searchInputID={searchInputID} />
         </View>
-        <Spacer.Column numberOfSpaces={3} />
       </SearchBoxContainer>
     </React.Fragment>
   )
