@@ -1,13 +1,14 @@
 name: Tests e2e Android App
 
 on:
-  schedule:
-    - cron: '0 4 * * 1-5' # “At 4AM everyday from Monday through Friday.
+  workflow_call:
+  # schedule:
+  #   - cron: '0 4 * * 1-5' # “At 4AM everyday from Monday through Friday.
 
   workflow_dispatch:
     inputs:
       environment:
-        type: environment
+        type: string
         description: Select the environment
         required: true
         default: staging
@@ -80,7 +81,6 @@ jobs:
     # No hardware acceleration is available for emulators on Ubuntu:
     # https://github.com/marketplace/actions/android-emulator-runner#can-i-use-this-action-on-linux-vms
     runs-on: macos-latest
-    environment: ${{ inputs.environment || 'staging' }}
     permissions:
       id-token: write
       contents: read

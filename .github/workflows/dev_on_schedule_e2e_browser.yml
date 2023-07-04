@@ -1,8 +1,9 @@
 name: Tests e2e Browser
 
 on:
-  schedule:
-    - cron: '0 4 * * 1-5' # “At 4AM everyday from Monday through Friday.
+  workflow_call:
+  # schedule:
+  #   - cron: '0 4 * * 1-5' # “At 4AM everyday from Monday through Friday.
 
   workflow_dispatch:
     inputs:
