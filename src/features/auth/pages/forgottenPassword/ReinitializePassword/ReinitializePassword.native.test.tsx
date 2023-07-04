@@ -4,7 +4,7 @@ import { useRoute, navigate, replace } from '__mocks__/@react-navigation/native'
 import { analytics } from 'libs/analytics'
 import * as datesLib from 'libs/dates'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { fireEvent, render, waitFor } from 'tests/utils'
+import { fireEvent, render, screen, waitFor } from 'tests/utils'
 import { theme } from 'theme'
 
 import { ReinitializePassword } from './ReinitializePassword'
@@ -20,14 +20,20 @@ describe('ReinitializePassword Page', () => {
     useRoute.mockReturnValue({ params: ROUTE_PARAMS })
   })
 
+  it('should match snapshot', () => {
+    renderReinitializePassword()
+
+    expect(screen).toMatchSnapshot()
+  })
+
   it('should enable the submit button when passwords are equals and filled and password is correct', async () => {
-    const { getByPlaceholderText, getByTestId } = renderReinitializePassword()
-    const passwordInput = getByPlaceholderText('Ton mot de passe')
-    const confirmationInput = getByPlaceholderText('Confirmer le mot de passe')
+    renderReinitializePassword()
+    const passwordInput = screen.getByPlaceholderText('Ton mot de passe')
+    const confirmationInput = screen.getByPlaceholderText('Confirmer le mot de passe')
     fireEvent.changeText(passwordInput, 'user@AZERTY123')
     fireEvent.changeText(confirmationInput, 'user@AZERTY123')
 
-    const continueButton = getByTestId('Continuer')
+    const continueButton = screen.getByTestId('Continuer')
 
     await waitFor(async () => {
       expect(continueButton).toBeEnabled()
@@ -35,13 +41,13 @@ describe('ReinitializePassword Page', () => {
   })
 
   it('should display the matching error when the passwords dont match', async () => {
-    const { getByPlaceholderText, getByText } = renderReinitializePassword()
-    const passwordInput = getByPlaceholderText('Ton mot de passe')
-    const confirmationInput = getByPlaceholderText('Confirmer le mot de passe')
+    renderReinitializePassword()
+    const passwordInput = screen.getByPlaceholderText('Ton mot de passe')
+    const confirmationInput = screen.getByPlaceholderText('Confirmer le mot de passe')
     fireEvent.changeText(passwordInput, '123456')
     fireEvent.changeText(confirmationInput, '123456--')
 
-    const notMatchingErrorText = getByText('Les mots de passe ne concordent pas')
+    const notMatchingErrorText = screen.getByText('Les mots de passe ne concordent pas')
 
     await waitFor(async () => {
       const color = notMatchingErrorText.props.style[0].color
@@ -50,12 +56,12 @@ describe('ReinitializePassword Page', () => {
   })
 
   it('should redirect to login page WHEN password is reset', async () => {
-    const { getByText, getByPlaceholderText } = renderReinitializePassword()
-    const passwordInput = getByPlaceholderText('Ton mot de passe')
-    const confirmationInput = getByPlaceholderText('Confirmer le mot de passe')
+    renderReinitializePassword()
+    const passwordInput = screen.getByPlaceholderText('Ton mot de passe')
+    const confirmationInput = screen.getByPlaceholderText('Confirmer le mot de passe')
     fireEvent.changeText(passwordInput, 'user@AZERTY123')
     fireEvent.changeText(confirmationInput, 'user@AZERTY123')
-    fireEvent.press(getByText('Continuer'))
+    fireEvent.press(screen.getByText('Continuer'))
 
     await waitFor(() => {
       expect(navigate).toHaveBeenNthCalledWith(1, 'Login')

@@ -11,17 +11,16 @@ import { navigateToHome } from 'features/navigation/helpers'
 import { UseNavigationType, UseRouteType } from 'features/navigation/RootNavigator/types'
 import { analytics } from 'libs/analytics'
 import { isTimestampExpired } from 'libs/dates'
-import { BottomCardContentContainer } from 'ui/components/BottomCardContentContainer'
-import { BottomContentPage } from 'ui/components/BottomContentPage'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { Form } from 'ui/components/Form'
+import { RightButtonText } from 'ui/components/headers/RightButtonText'
 import { InputError } from 'ui/components/inputs/InputError'
 import { PasswordInput } from 'ui/components/inputs/PasswordInput'
 import { LoadingPage } from 'ui/components/LoadingPage'
-import { ModalHeader } from 'ui/components/modals/ModalHeader'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
-import { Close } from 'ui/svg/icons/Close'
-import { Spacer } from 'ui/theme'
+import { SecondaryPageWithBlurHeader } from 'ui/pages/SecondaryPageWithBlurHeader'
+import { Spacer, Typo } from 'ui/theme'
+import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 export const ReinitializePassword = () => {
   const route = useRoute<UseRouteType<'ReinitializePassword'>>()
@@ -72,52 +71,48 @@ export const ReinitializePassword = () => {
     return <LoadingPage />
   }
   return (
-    <BottomContentPage>
-      <ModalHeader
-        title="Ton mot de passe"
-        rightIconAccessibilityLabel="Revenir à l’accueil"
-        rightIcon={Close}
-        onRightIconPress={navigateToHome}
-      />
-      <BottomCardContentContainer>
+    <SecondaryPageWithBlurHeader
+      headerTitle="Nouveau mot de passe"
+      RightButton={<RightButtonText onClose={navigateToHome} wording="Quitter" />}>
+      <Spacer.Column numberOfSpaces={6} />
+      <Typo.Title3 {...getHeadingAttrs(2)}>Choisis un nouveau mot de passe</Typo.Title3>
+      <Spacer.Column numberOfSpaces={6} />
+      <Form.MaxWidth>
+        <PasswordInput
+          label="Nouveau mot de passe"
+          accessibilityDescribedBy={passwordDescribedBy}
+          value={password}
+          autoFocus
+          onChangeText={setPassword}
+          onSubmitEditing={submitPassword}
+          isRequiredField
+        />
+        <PasswordSecurityRules password={password} nativeID={passwordDescribedBy} />
+        <Spacer.Column numberOfSpaces={8} />
+        <PasswordInput
+          label="Confirmer le mot de passe"
+          value={confirmedPassword}
+          onChangeText={setConfirmedPassword}
+          placeholder="Confirmer le mot de passe"
+          onSubmitEditing={submitPassword}
+          isRequiredField
+          accessibilityDescribedBy={passwordErrorId}
+        />
+        <Spacer.Column numberOfSpaces={2} />
+        <InputError
+          visible={displayNotMatchingError}
+          messageId="Les mots de passe ne concordent pas"
+          numberOfSpacesTop={0}
+          relatedInputId={passwordErrorId}
+        />
         <Spacer.Column numberOfSpaces={6} />
-        <Form.MaxWidth>
-          <PasswordInput
-            label="Nouveau mot de passe"
-            accessibilityDescribedBy={passwordDescribedBy}
-            value={password}
-            autoFocus
-            onChangeText={setPassword}
-            onSubmitEditing={submitPassword}
-            isRequiredField
-          />
-          <PasswordSecurityRules password={password} nativeID={passwordDescribedBy} />
-          <Spacer.Column numberOfSpaces={6} />
-          <PasswordInput
-            label="Confirmer le mot de passe"
-            value={confirmedPassword}
-            onChangeText={setConfirmedPassword}
-            placeholder="Confirmer le mot de passe"
-            onSubmitEditing={submitPassword}
-            isRequiredField
-            accessibilityDescribedBy={passwordErrorId}
-          />
-          <Spacer.Column numberOfSpaces={2} />
-          <InputError
-            visible={displayNotMatchingError}
-            messageId="Les mots de passe ne concordent pas"
-            numberOfSpacesTop={0}
-            relatedInputId={passwordErrorId}
-          />
-          <Spacer.Column numberOfSpaces={6} />
-          <ButtonPrimary
-            wording="Continuer"
-            onPress={submitPassword}
-            disabled={!allowSubmission || isLoading}
-            isLoading={isLoading}
-          />
-        </Form.MaxWidth>
-      </BottomCardContentContainer>
-    </BottomContentPage>
+        <ButtonPrimary
+          wording="Continuer"
+          onPress={submitPassword}
+          disabled={!allowSubmission || isLoading}
+          isLoading={isLoading}
+        />
+      </Form.MaxWidth>
+    </SecondaryPageWithBlurHeader>
   )
 }
