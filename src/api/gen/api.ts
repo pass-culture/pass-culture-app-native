@@ -3253,6 +3253,33 @@ export const DefaultApiFetchParamCreator = function (configuration?: Configurati
       }
     },
     /**
+     * @summary account_suspension_token_validation <GET>
+     * @param {string} token 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async getnativev1accountsuspendtokenValidationtoken(token: string, options: any = {}): Promise<FetchArgs> {
+      // verify required parameter 'token' is not null or undefined
+      if (token === null || token === undefined) {
+        throw new RequiredError(
+          'token',
+          'Required parameter token was null or undefined when calling getnativev1accountsuspendtokenValidationtoken.'
+        )
+      }
+      const pathname = `/native/v1/account/suspend/token_validation/{token}`.replace(
+        `{${'token'}}`,
+        encodeURIComponent(String(token))
+      )
+      let secureOptions = Object.assign(options, { credentials: 'omit' })
+      const localVarRequestOptions = Object.assign({ method: 'GET' }, secureOptions)
+      const localVarHeaderParameter = await getAuthenticationHeaders(secureOptions)
+      localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers)
+      return {
+        url: pathname,
+        options: localVarRequestOptions,
+      }
+    },
+    /**
      * @summary get_account_suspension_date <GET>
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
@@ -4302,6 +4329,18 @@ export const DefaultApiFp = function(api: DefaultApi, configuration?: Configurat
     },
     /**
      * 
+     * @summary account_suspension_token_validation <GET>
+     * @param {string} token 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async getnativev1accountsuspendtokenValidationtoken(token: string, options?: any): Promise<EmptyResponse> {
+      const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).getnativev1accountsuspendtokenValidationtoken(token, options)
+      const response = await safeFetch(configuration?.basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
+      return handleGeneratedApiResponse(response)
+    },
+    /**
+     * 
      * @summary get_account_suspension_date <GET>
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
@@ -4899,6 +4938,18 @@ export class DefaultApi extends BaseAPI {
   public async deletenativev1mefavoritesfavoriteId(favorite_id: number, options?: any) {
     const configuration = await this.getConfiguration()
     return DefaultApiFp(this, configuration).deletenativev1mefavoritesfavoriteId(favorite_id, options)
+  }
+  /**
+    * 
+    * @summary account_suspension_token_validation <GET>
+    * @param {string} token 
+    * @param {*} [options] Override http request option.
+    * @throws {RequiredError}
+    * @memberof DefaultApi
+    */
+  public async getnativev1accountsuspendtokenValidationtoken(token: string, options?: any) {
+    const configuration = await this.getConfiguration()
+    return DefaultApiFp(this, configuration).getnativev1accountsuspendtokenValidationtoken(token, options)
   }
   /**
     * 
