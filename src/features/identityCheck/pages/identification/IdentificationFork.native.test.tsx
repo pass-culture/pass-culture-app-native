@@ -1,19 +1,18 @@
 import React from 'react'
 
 import { navigate } from '__mocks__/@react-navigation/native'
-import { IdentityCheckMethod } from 'api/gen'
-import { IdentificationForkUbble } from 'features/identityCheck/pages/identification/IdentificationForkUbble'
+import { IdentificationFork } from 'features/identityCheck/pages/identification/IdentificationFork'
 import { analytics } from 'libs/analytics'
 import { fireEvent, render, waitFor, screen } from 'tests/utils'
 
-describe('<IdentificationForkUbble />', () => {
+describe('<IdentificationFork />', () => {
   it('should render correctly', () => {
-    render(<IdentificationForkUbble />)
+    render(<IdentificationFork />)
     expect(screen).toMatchSnapshot()
   })
 
   it('should navigate to next screen "SelectIDOrigin" on press "Ma pièce d’identité"', async () => {
-    render(<IdentificationForkUbble />)
+    render(<IdentificationFork />)
     const button = screen.getByText('Ma pièce d’identité')
 
     fireEvent.press(button)
@@ -24,7 +23,7 @@ describe('<IdentificationForkUbble />', () => {
   })
 
   it('should navigate to next screen "IdentityCheckEduConnect" on press "Mes codes ÉduConnect"', async () => {
-    render(<IdentificationForkUbble />)
+    render(<IdentificationFork />)
     const button = screen.getByText('Mes codes ÉduConnect')
 
     fireEvent.press(button)
@@ -35,30 +34,30 @@ describe('<IdentificationForkUbble />', () => {
   })
 
   it('should log screen view when the screen is mounted', async () => {
-    render(<IdentificationForkUbble />)
+    render(<IdentificationFork />)
 
-    await waitFor(() => expect(analytics.logScreenViewForkUbble).toHaveBeenCalledTimes(1))
+    await waitFor(() => expect(analytics.logScreenViewIdentityFork).toHaveBeenCalledTimes(1))
   })
 
-  it('should log analytics with fork origin on press "Ma pièce d’identité"', async () => {
-    render(<IdentificationForkUbble />)
+  it('should log analytics on press "Ma pièce d’identité"', async () => {
+    render(<IdentificationFork />)
     const button = screen.getByText('Ma pièce d’identité')
 
     fireEvent.press(button)
 
     await waitFor(() => {
-      expect(analytics.logChooseUbbleMethod).toHaveBeenCalledWith(IdentityCheckMethod.ubble)
+      expect(analytics.logChooseUbbleMethod).toHaveBeenCalledTimes(1)
     })
   })
 
-  it('should log analytics with fork origin on press "Mes codes ÉduConnect"', async () => {
-    render(<IdentificationForkUbble />)
+  it('should log analytics on press "Mes codes ÉduConnect"', async () => {
+    render(<IdentificationFork />)
     const button = screen.getByText('Mes codes ÉduConnect')
 
     fireEvent.press(button)
 
     await waitFor(() => {
-      expect(analytics.logChooseEduConnectMethod).toHaveBeenCalledWith(IdentityCheckMethod.ubble)
+      expect(analytics.logChooseEduConnectMethod).toHaveBeenCalledTimes(1)
     })
   })
 })

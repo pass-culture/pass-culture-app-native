@@ -30,7 +30,6 @@ const defaultRemoteConfig: CustomRemoteConfig = {
   homeEntryId_18: 'homeEntryId_18',
   homeEntryId_15_17: 'homeEntryId_15_17',
   shouldUseAlgoliaRecommend: false,
-  identificationMethodFork: 'ubble',
 }
 
 jest.mock('libs/firebase/remoteConfig/RemoteConfigProvider')

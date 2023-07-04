@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<IdentificationForkEduconnect /> should render correctly 1`] = `
+exports[`<IdentificationFork /> should render correctly 1`] = `
 Array [
   <View
     accessibilityRole="header"
