@@ -44,7 +44,7 @@ const IdentificationForkEduconnectContent: FunctionComponent = () => {
         <ExternalTouchableLink
           as={ButtonQuaternaryBlack}
           externalNav={{ url: env.FAQ_LINK_EDUCONNECT_URL }}
-          onPress={analytics.logEduconnectExplanationClicked}
+          onBeforeNavigate={analytics.logEduconnectExplanationClicked}
           icon={InfoPlain}
           wording="C’est quoi ÉduConnect&nbsp;?"
           inline
