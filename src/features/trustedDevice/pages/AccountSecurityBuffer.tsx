@@ -20,7 +20,7 @@ export const AccountSecurityBuffer = () => {
   const { showErrorSnackBar } = useSnackBarContext()
 
   useEffect(() => {
-    if (AccountSecurityStatus.INVALID_TOKEN) {
+    if (tokenStatus === AccountSecurityStatus.INVALID_TOKEN) {
       const navigateToHomeWithErrorSnackBar = () => {
         navigateToHome()
         showErrorSnackBar({
@@ -30,7 +30,7 @@ export const AccountSecurityBuffer = () => {
       }
       navigateToHomeWithErrorSnackBar()
     }
-  }, [showErrorSnackBar])
+  }, [showErrorSnackBar, tokenStatus])
 
   if (isLoading) {
     return <LoadingPage />
@@ -41,11 +41,11 @@ export const AccountSecurityBuffer = () => {
       return <SuspensionChoiceExpiredLink />
 
     case AccountSecurityStatus.INVALID_TOKEN:
-      return null
+      return <React.Fragment />
 
     case AccountSecurityStatus.VALID_TOKEN:
       return <AccountSecurity />
   }
 
-  return null
+  return <React.Fragment />
 }

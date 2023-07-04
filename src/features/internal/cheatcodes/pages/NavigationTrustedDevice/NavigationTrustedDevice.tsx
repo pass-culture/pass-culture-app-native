@@ -29,7 +29,10 @@ export function NavigationTrustedDevice(): React.JSX.Element {
             half={false}
             disabled={value.length < 1}
           />
-          <TextInput onChangeText={setValue} placeholder="Renter un token pour activer le bouton" />
+          <TextInput
+            onChangeText={setValue}
+            placeholder="Rentrer un token pour activer le bouton"
+          />
         </BufferContainer>
       </StyledContainer>
       <Spacer.BottomScreen />

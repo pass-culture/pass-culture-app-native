@@ -116,7 +116,6 @@ describe('<AccountSecurityBuffer/>', () => {
 
 const renderAccountSecurityBuffer = () =>
   render(
-    // @ts-ignore Buffer return components or navigation to Home
     // eslint-disable-next-line local-rules/no-react-query-provider-hoc
     reactQueryProviderHOC(<AccountSecurityBuffer />)
   )

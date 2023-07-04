@@ -15,7 +15,6 @@ import { SuspensionConfirmation } from 'features/trustedDevice/pages/SuspensionC
 export const trustedDeviceRoutes: GenericRoute<TrustedDeviceRootStackParamList>[] = [
   {
     name: 'AccountSecurityBuffer',
-    // @ts-ignore Buffer return components or navigation to Home
     component: AccountSecurityBuffer,
     path: 'securisation-compte',
   },
