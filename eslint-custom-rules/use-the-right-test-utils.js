@@ -20,6 +20,7 @@ module.exports = {
     },
     messages: {
       useWebTestUtils: "Please use 'tests/utils/web' in web tests, instead of 'tests/utils'",
+      useNativeTestUtils: "Please use 'tests/utils' in native tests, instead of 'tests/utils/web'",
     },
     fixable: 'code',
   },
@@ -38,6 +39,18 @@ module.exports = {
           messageId: 'useWebTestUtils',
           fix: function (fixer) {
             return fixer.replaceTextRange(node.source.range, "'tests/utils/web'")
+          },
+        })
+      },
+      'ImportDeclaration[source.value="tests/utils/web"]': (node) => {
+        // run only in .native.test files
+        if (!/.*\.native\.test\..*/.test(basename)) return
+
+        context.report({
+          node,
+          messageId: 'useNativeTestUtils',
+          fix: function (fixer) {
+            return fixer.replaceTextRange(node.source.range, "'tests/utils'")
           },
         })
       },
