@@ -1,4 +1,4 @@
-import React, { useRef } from 'react'
+import React, { useCallback, useRef } from 'react'
 import { Animated } from 'react-native'
 import styled from 'styled-components/native'
 
@@ -7,12 +7,16 @@ import { useRemoveFavorite } from 'features/favorites/api'
 import { BookingButton } from 'features/favorites/components/Buttons/BookingButton'
 import { getFavoriteDisplayPrice } from 'features/favorites/helpers/getFavoriteDisplayPrice'
 import { useFavoriteFormattedDate } from 'features/favorites/helpers/useFavoriteFormattedDate'
+import { getShareOffer } from 'features/share/helpers/useShareOffer'
+import { WebShareModal } from 'features/share/pages/WebShareModal'
 import { analytics } from 'libs/analytics'
 import { useDistance } from 'libs/geolocation/hooks/useDistance'
 import { useSearchGroupLabel, useSubcategory } from 'libs/subcategories'
 import { tileAccessibilityLabel, TileContentType } from 'libs/tileAccessibilityLabel'
 import { usePrePopulateOffer } from 'shared/offer/usePrePopulateOffer'
 import { ButtonSecondary } from 'ui/components/buttons/ButtonSecondary'
+import { RoundedButton } from 'ui/components/buttons/RoundedButton'
+import { useModal } from 'ui/components/modals/useModal'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 import { OfferImage } from 'ui/components/tiles/OfferImage'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
@@ -103,22 +107,23 @@ export const Favorite: React.FC<Props> = (props) => {
       : undefined,
   }
 
-  // We removed the share feature temporarily to fix a production bug
-  // TODO(PC-22859): Add share button to favorite
+  const {
+    visible: shareOfferModalVisible,
+    showModal: showShareOfferModal,
+    hideModal: hideShareOfferModal,
+  } = useModal(false)
 
-  // const {
-  //   visible: shareOfferModalVisible,
-  //   showModal: showShareOfferModal,
-  //   hideModal: hideShareOfferModal,
-  // } = useModal(false)
+  const { share: shareOffer, shareContent } = getShareOffer({
+    offerId: offer.id,
+    offerName: offer.name,
+    venueName: offer.venueName,
+  })
 
-  // const { share: shareOffer, shareContent } = useShareOffer(offer.id)
-
-  // const pressShareOffer = useCallback(() => {
-  //   analytics.logShare({ type: 'Offer', from: 'favorites', id: offer.id })
-  //   shareOffer()
-  //   showShareOfferModal()
-  // }, [offer.id, shareOffer, showShareOfferModal])
+  const pressShareOffer = useCallback(() => {
+    analytics.logShare({ type: 'Offer', from: 'favorites', id: offer.id })
+    shareOffer()
+    showShareOfferModal()
+  }, [offer.id, shareOffer, showShareOfferModal])
 
   return (
     <React.Fragment>
@@ -155,13 +160,13 @@ export const Favorite: React.FC<Props> = (props) => {
               </ContentContainer>
             </Row>
           </StyledTouchableLink>
-          {/* <ShareContainer>
+          <ShareContainer>
             <RoundedButton
               iconName="share"
               onPress={pressShareOffer}
               accessibilityLabel={`Partager l’offre ${offer.name}`}
             />
-          </ShareContainer> */}
+          </ShareContainer>
         </Container>
         <ButtonsRow>
           <ButtonContainer>
@@ -180,14 +185,14 @@ export const Favorite: React.FC<Props> = (props) => {
         </ButtonsRow>
         <Separator />
       </Animated.View>
-      {/* {!!shareContent && (
+      {!!shareContent && (
         <WebShareModal
           visible={shareOfferModalVisible}
           headerTitle="Partager l’offre"
           shareContent={shareContent}
           dismissModal={hideShareOfferModal}
         />
-      )} */}
+      )}
     </React.Fragment>
   )
 }
@@ -196,12 +201,12 @@ const Container = styled.View({
   position: 'relative',
 })
 
-// const ShareContainer = styled.View(({ theme }) => ({
-//   position: 'absolute',
-//   top: 0,
-//   right: 0,
-//   marginRight: theme.contentPage.marginHorizontal,
-// }))
+const ShareContainer = styled.View(({ theme }) => ({
+  position: 'absolute',
+  top: 0,
+  right: 0,
+  marginRight: theme.contentPage.marginHorizontal,
+}))
 
 const LeftContent = styled.View({
   flex: 1,

@@ -51,6 +51,7 @@ const offer: FavoriteOfferResponse = {
   isSoldOut: false,
   isExpired: false,
   isReleased: true,
+  venueName: 'Cinéma de la fin',
 }
 const user: UserProfileResponse = {
   isBeneficiary: true,
