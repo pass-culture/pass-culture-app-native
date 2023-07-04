@@ -34,12 +34,14 @@ export const VideoPlayer: React.FC<VideoPlayerProps> = ({
   const { width: windowWidth } = useWindowDimensions()
   const { playerHeight, playerWidth } = getVideoPlayerDimensions(isDesktopViewport, windowWidth)
 
+  const playerRef = useRef<YouTube>(null)
+
   const logConsultVideo = () => {
     analytics.logConsultVideo({ from: 'home', moduleId })
   }
 
   const replayVideo = () => {
-    // YouTube.playerRef.current?.seekTo(0, true)
+    playerRef.current?.internalPlayer.seekTo(0, true)
   }
 
   const opts: YouTubeProps['opts'] = {
@@ -66,6 +68,7 @@ export const VideoPlayer: React.FC<VideoPlayerProps> = ({
     <React.Fragment>
       <StyledVideoPlayerContainer>
         <YouTube
+          ref={playerRef}
           videoId={youtubeVideoId}
           opts={opts}
           onReady={logConsultVideo}
