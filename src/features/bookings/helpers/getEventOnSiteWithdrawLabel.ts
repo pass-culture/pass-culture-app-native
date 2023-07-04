@@ -5,7 +5,7 @@ import { BookingStockResponse } from 'api/gen'
 const ONE_DAY_IN_SECONDS = 60 * 60 * 24
 const TWO_DAYS_IN_SECONDS = 60 * 60 * 48
 
-export type GetEventOnSiteWithdrawLabelProperties = {
+type GetEventOnSiteWithdrawLabelProperties = {
   now: Date
   eventDate: Date
   withdrawalDelay: number

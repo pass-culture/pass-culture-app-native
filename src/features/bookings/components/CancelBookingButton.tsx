@@ -2,7 +2,7 @@ import React from 'react'
 
 import { ButtonSecondary } from 'ui/components/buttons/ButtonSecondary'
 
-export interface CancelButtonProps {
+interface CancelButtonProps {
   onCancel?: () => void
   fullWidth?: boolean
 }

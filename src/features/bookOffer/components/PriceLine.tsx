@@ -4,7 +4,7 @@ import { OfferStockResponse } from 'api/gen'
 import { formatToFrenchDecimal } from 'libs/parsers'
 import { Typo } from 'ui/theme'
 
-export interface PriceLineProps {
+interface PriceLineProps {
   /**
    * Ordered quantity.
    * @default 1
