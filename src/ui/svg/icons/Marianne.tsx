@@ -6,7 +6,7 @@ import { AccessibleSvg } from 'ui/svg/AccessibleSvg'
 
 import { AccessibleIcon } from './types'
 
-const MarianeSvg: React.FunctionComponent<AccessibleIcon> = ({
+const MarianneSvg: React.FunctionComponent<AccessibleIcon> = ({
   size,
   color,
   accessibilityLabel,
@@ -61,7 +61,7 @@ const MarianeSvg: React.FunctionComponent<AccessibleIcon> = ({
   </AccessibleSvg>
 )
 
-export const Mariane = styled(MarianeSvg).attrs(({ color, size, theme }) => ({
+export const Marianne = styled(MarianneSvg).attrs(({ color, size, theme }) => ({
   color: color ?? theme.colors.white,
   size: size ?? theme.icons.sizes.standard,
 }))``

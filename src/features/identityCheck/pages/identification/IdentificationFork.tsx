@@ -11,7 +11,7 @@ import { ButtonQuaternaryBlack } from 'ui/components/buttons/ButtonQuaternaryBla
 import { SeparatorWithText } from 'ui/components/SeparatorWithText'
 import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouchableLink'
 import { InfoPlain } from 'ui/svg/icons/InfoPlain'
-import { Mariane } from 'ui/svg/icons/Mariane'
+import { Marianne } from 'ui/svg/icons/Marianne'
 import { Ubble } from 'ui/svg/icons/Ubble'
 import { getSpacing, Typo } from 'ui/theme'
 
@@ -35,7 +35,7 @@ const IdentificationForkEduconnectContent: FunctionComponent = () => {
       <IdentificationForkButton
         Title={<Typo.ButtonText>Mes codes ÉduConnect</Typo.ButtonText>}
         Subtitle={<StyledCaption>Fournis par ton établissement scolaire</StyledCaption>}
-        icon={Mariane}
+        icon={Marianne}
         navigateTo={{ screen: 'IdentityCheckEduConnect' }}
         onBeforeNavigate={analytics.logChooseEduConnectMethod}
         key={0}
