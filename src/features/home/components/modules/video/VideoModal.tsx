@@ -42,7 +42,10 @@ export const VideoModal: React.FC<VideoModalProps> = (props) => {
       isUpToStatusBar
       noPadding
       scrollEnabled={false}
-      customModalHeader={<React.Fragment />}>
+      customModalHeader={<React.Fragment />}
+      onSwipe={props.hideModal}
+      swipeDirection="down"
+      animationOutTiming={400}>
       <VideoPlayer
         youtubeVideoId={props.youtubeVideoId}
         offer={props.offer}

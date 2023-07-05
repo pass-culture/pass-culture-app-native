@@ -15,6 +15,7 @@ exports[`VideoModal should render correctly if modal visible 1`] = `
   onModalWillHide={[Function]}
   onModalWillShow={[Function]}
   onRequestClose={[Function]}
+  onSwipeComplete={[MockFunction]}
   panResponderThreshold={4}
   scrollHorizontal={false}
   scrollOffset={0}
@@ -27,6 +28,7 @@ exports[`VideoModal should render correctly if modal visible 1`] = `
       "landscape",
     ]
   }
+  swipeDirection="down"
   swipeThreshold={100}
   testID="modal"
   transparent={true}
@@ -71,6 +73,19 @@ exports[`VideoModal should render correctly if modal visible 1`] = `
     onModalHide={[Function]}
     onModalWillHide={[Function]}
     onModalWillShow={[Function]}
+    onMoveShouldSetResponder={[Function]}
+    onMoveShouldSetResponderCapture={[Function]}
+    onResponderEnd={[Function]}
+    onResponderGrant={[Function]}
+    onResponderMove={[Function]}
+    onResponderReject={[Function]}
+    onResponderRelease={[Function]}
+    onResponderStart={[Function]}
+    onResponderTerminate={[Function]}
+    onResponderTerminationRequest={[Function]}
+    onStartShouldSetResponder={[Function]}
+    onStartShouldSetResponderCapture={[Function]}
+    onSwipeComplete={[MockFunction]}
     panResponderThreshold={4}
     pointerEvents="box-none"
     scrollHorizontal={false}
@@ -102,6 +117,7 @@ exports[`VideoModal should render correctly if modal visible 1`] = `
         "landscape",
       ]
     }
+    swipeDirection="down"
     swipeThreshold={100}
   >
     <View
