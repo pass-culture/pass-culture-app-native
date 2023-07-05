@@ -2,7 +2,7 @@ import React from 'react'
 
 import { ButtonSecondary } from 'ui/components/buttons/ButtonSecondary'
 
-export interface ActivationCodeButtonProps {
+interface ActivationCodeButtonProps {
   onTerminate?: () => void
   fullWidth?: boolean
 }
