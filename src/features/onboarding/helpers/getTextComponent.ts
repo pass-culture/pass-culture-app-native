@@ -31,18 +31,18 @@ export const getAgeComponent = (underage: boolean, creditStatus: CreditStatus): 
 
 const Title = styled(Typo.Title3).attrs(getNoHeadingAttrs)``
 
-export const TitleSecondary = styled(Title)(({ theme }) => ({
+const TitleSecondary = styled(Title)(({ theme }) => ({
   color: theme.colors.secondary,
 }))
 
-export const TitleNeutralInfo = styled(Title)(({ theme }) => ({
+const TitleNeutralInfo = styled(Title)(({ theme }) => ({
   color: theme.colors.greyDark,
 }))
 
-export const BodySecondary = styled(Typo.Body)(({ theme }) => ({
+const BodySecondary = styled(Typo.Body)(({ theme }) => ({
   color: theme.colors.secondary,
 }))
 
-export const BodyNeutralInfo = styled(Typo.Body)(({ theme }) => ({
+const BodyNeutralInfo = styled(Typo.Body)(({ theme }) => ({
   color: theme.colors.greyDark,
 }))

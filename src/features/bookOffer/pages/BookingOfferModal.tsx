@@ -34,7 +34,7 @@ interface BookingOfferModalComponentProps {
   isEndedUsedBooking?: boolean
 }
 
-export const errorCodeToMessage: Record<string, string> = {
+const errorCodeToMessage: Record<string, string> = {
   INSUFFICIENT_CREDIT:
     'Attention, ton crédit est insuffisant pour pouvoir réserver cette offre\u00a0!',
   ALREADY_BOOKED: 'Attention, il est impossible de réserver plusieurs fois la même offre\u00a0!',

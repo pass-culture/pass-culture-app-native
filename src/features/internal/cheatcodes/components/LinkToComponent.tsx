@@ -14,6 +14,8 @@ interface LinkToComponentProps {
   onPress?: () => void
   title?: string
   navigationParams?: RootStackParamList[RootScreenNames]
+  half?: boolean
+  disabled?: boolean
 }
 
 export const LinkToComponent = ({
@@ -21,13 +23,19 @@ export const LinkToComponent = ({
   onPress,
   title,
   navigationParams,
+  half = true,
+  disabled = false,
 }: LinkToComponentProps) => {
   const { navigate } = useNavigation<UseNavigationType>()
   const navigateToComponent = () => navigate(name, navigationParams)
 
   return (
-    <Row half>
-      <ButtonPrimary wording={title ?? name} onPress={onPress ?? navigateToComponent} />
+    <Row half={half}>
+      <ButtonPrimary
+        wording={title ?? name}
+        onPress={onPress ?? navigateToComponent}
+        disabled={disabled}
+      />
     </Row>
   )
 }

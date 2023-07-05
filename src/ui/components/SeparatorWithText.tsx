@@ -27,7 +27,7 @@ const StyledLabel = styled(Typo.Caption)({
   marginHorizontal: getSpacing(2.5),
 })
 
-export const StyledSeparator = styled(Separator)(({ theme }) => ({
+const StyledSeparator = styled(Separator)(({ theme }) => ({
   flex: 1,
   backgroundColor: theme.colors.greySemiDark,
 }))

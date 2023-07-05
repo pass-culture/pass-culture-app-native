@@ -3,9 +3,9 @@ import { Keyboard } from 'react-native'
 import styled from 'styled-components/native'
 
 import { useSignUp } from 'features/auth/api/useSignUp'
+import { ProgressBar } from 'features/auth/components/ProgressBar/ProgressBar'
 import { SIGNUP_NUMBER_OF_STEPS } from 'features/auth/constants'
 import { PreValidationSignupStep } from 'features/auth/enums'
-import { ProgressBar } from 'features/auth/pages/signup/ProgressBar/ProgressBar'
 import { QuitSignupModal } from 'features/auth/pages/signup/QuitSignupModal/QuitSignupModal'
 import {
   Props as ConfirmationEmailSentProps,

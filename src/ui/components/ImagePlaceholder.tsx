@@ -8,7 +8,7 @@ import { LENGTH_M } from 'ui/theme'
 // eslint-disable-next-line no-restricted-imports
 import { ColorsEnum } from 'ui/theme/colors'
 
-export interface ImagePlaceholderProps {
+interface ImagePlaceholderProps {
   Icon: React.FC<IconInterface>
   size: number
   backgroundColors?: ColorsEnum[]

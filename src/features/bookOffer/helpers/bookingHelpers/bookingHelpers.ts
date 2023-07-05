@@ -80,6 +80,12 @@ export function getPriceWording(stock: OfferStockResponse, offerCredit: number) 
   return ''
 }
 
+const getStockWithCategoryFromHour = (selectedHour: string) => (stock: OfferStockResponse) =>
+  !stock.isExpired &&
+  stock.priceCategoryLabel &&
+  stock.beginningDatetime &&
+  stock.beginningDatetime === selectedHour
+
 export function getPreviousStep(
   bookingState: BookingState,
   stocks: OfferStockResponse[],
@@ -122,16 +128,6 @@ export const getStockWithCategoryFromDate =
     stock.beginningDatetime &&
     formatToKeyDate(stock.beginningDatetime) === selectedDate
 
-export const getStockWithCategoryFromHour = (selectedHour: string) => (stock: OfferStockResponse) =>
-  !stock.isExpired &&
-  stock.priceCategoryLabel &&
-  stock.beginningDatetime &&
-  stock.beginningDatetime === selectedHour
-
-export const sortByPricePredicate = (a: OfferStockResponse, b: OfferStockResponse) => {
-  return b.price - a.price
-}
-
 export const sortByDateStringPredicate = (
   a: OfferStockResponse['beginningDatetime'],
   b: OfferStockResponse['beginningDatetime']
@@ -158,6 +154,10 @@ export function getDistinctPricesFromAllStock(stocks: OfferStockResponse[]) {
   const pricesStocks = stocks.filter(getAllAvailableStockFromOffer).map((stock) => stock.price)
   const distinctPrices: number[] = [...new Set(pricesStocks)]
   return distinctPrices
+}
+
+const sortByPricePredicate = (a: OfferStockResponse, b: OfferStockResponse) => {
+  return b.price - a.price
 }
 
 export function getStockSortedByPriceFromHour(stocks: OfferStockResponse[], selectedHour: string) {

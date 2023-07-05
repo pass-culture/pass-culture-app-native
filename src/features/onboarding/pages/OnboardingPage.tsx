@@ -9,7 +9,7 @@ import { getSpacing, Spacer, Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 import { useCustomSafeInsets } from 'ui/theme/useCustomSafeInsets'
 
-export interface OnboardingPageProps {
+interface OnboardingPageProps {
   title?: string
   subtitle?: string
   buttons?: Array<ReactNode>

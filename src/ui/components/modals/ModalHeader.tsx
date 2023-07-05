@@ -12,7 +12,7 @@ import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 import { ModalIconProps } from './types'
 
-export type ModalHeaderProps = {
+type ModalHeaderProps = {
   title: string
   titleID?: string
   boldTitle?: boolean
