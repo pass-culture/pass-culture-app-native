@@ -55,7 +55,7 @@ const StyledTouchable = styledButton(Touchable)(({ theme }) => ({
   backgroundColor: theme.colors.white,
 }))
 
-const StyledTouchableLink = styledButton(InternalTouchableLink)(({ theme }) => ({
+const StyledTouchableLink = styled(InternalTouchableLink)(({ theme }) => ({
   borderRadius: theme.buttons.roundedButton.size,
   padding: getSpacing(2.5),
   backgroundColor: theme.colors.white,
