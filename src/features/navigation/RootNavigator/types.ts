@@ -68,6 +68,7 @@ export type OnboardingRootStackParamList = {
 
 export type TrustedDeviceRootStackParamList = {
   AccountSecurity: { token: string }
+  AccountSecurityBuffer: { token: string }
   NavigationTrustedDevice: undefined
   SuspensionChoice: undefined
   SuspensionChoiceExpiredLink: undefined
