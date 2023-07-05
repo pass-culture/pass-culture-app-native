@@ -41,6 +41,7 @@ import { SplashScreenProvider } from 'libs/splashscreen'
 import { ThemeProvider } from 'libs/styled'
 import { theme } from 'theme'
 import { SnackBarProvider } from 'ui/components/snackBar/SnackBarContext'
+import { BookingContextProvider } from 'features/bookings/pages/BookingDetails/context/BookingDetailsContextProvider'
 
 LogBox.ignoreLogs([
   'Setting a timer',
@@ -97,7 +98,9 @@ const App: FunctionComponent = function () {
                                           <OnboardingWrapper>
                                             <OfflineModeContainer>
                                               <ScreenErrorProvider>
-                                                <AppNavigationContainer />
+                                                <BookingContextProvider >
+                                                  <AppNavigationContainer />
+                                                </BookingContextProvider>
                                               </ScreenErrorProvider>
                                             </OfflineModeContainer>
                                           </OnboardingWrapper>

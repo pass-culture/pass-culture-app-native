@@ -42,6 +42,7 @@ import HyperSdkReact from 'hyper-sdk-react'
 import { api } from 'api/api'
 import { env } from 'libs/environment'
 import AsyncStorage from '@react-native-async-storage/async-storage'
+import { useBookingDetailsContext } from 'features/bookings/pages/BookingDetails/context/BookingDetailsContextProvider'
 
 //sdk specific
 
@@ -74,6 +75,7 @@ export function BookingDetails() {
   } = useModal(false)
 
   const mapping = useSubcategoriesMapping()
+  const { dispatch : bookingDispatch} = useBookingDetailsContext()
 
   const { venue, id: offerId } = booking?.stock.offer ?? {}
   const { address, postalCode, city } = venue ?? {}
@@ -181,6 +183,7 @@ export function BookingDetails() {
 
   useEffect(() => {
     const fetchCurrentLocation = async () => {
+      
       try {
         if (permissionState === GeolocPermissionState.GRANTED) {
           setCurrentLocation(position)
@@ -354,6 +357,7 @@ export function BookingDetails() {
       let mobile = phoneNumber?.slice(3, phoneNumber.length)
       console.log("test username1", mobile, firstName)
       setMobileNumber(mobile);
+      bookingDispatch(({ type: 'SET_ADDRESS', payload: venueFullAddress }))
       try {
         const result = await HyperSDKModule.dynamicSign(firstName, mobile, mobileCountryCode);
         setSignatureResponse(result);

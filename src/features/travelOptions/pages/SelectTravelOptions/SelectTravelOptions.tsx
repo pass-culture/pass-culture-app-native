@@ -18,6 +18,7 @@ import { env } from 'libs/environment'
 import { api } from 'api/api'
 import { ColorsEnum } from 'ui/theme/colors'
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import { useBookingDetailsContext } from 'features/bookings/pages/BookingDetails/context/BookingDetailsContextProvider'
 
 
 interface Location {
@@ -125,7 +126,8 @@ export const SelectTravelOptions = ({ navigation, route }: any) => {
   const [mapUrl, setMapUrl] = useState('')
   const [currentAddress, setCurrentAddress] = useState();
   const [destAddress, setdestAddress] = useState();
-
+  const { address: bookinAddress } = useBookingDetailsContext()
+ console.log('bookinAddress---------------->', bookinAddress)
   useEffect(() => {
     const fetchCurrentLocation = async () => {
       try {
