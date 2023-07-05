@@ -332,12 +332,12 @@ export function BookingDetails() {
       source: {
         lat: currentLocation?.latitude,
         lon: currentLocation?.longitude,
-        name: currentAddress,  //'Champ de Mars, 5 Av. Anatole France, 75007 Paris, France',
+        name: currentAddress,
       },
       destination: {
         lat: 48.8606,
         lon: 2.3376,
-        name: destAddress //'Pl. des Cinq Martyrs du Lycée Buffon, 75015 Paris, France',
+        name: destAddress
       },
     }
   }
@@ -349,6 +349,23 @@ export function BookingDetails() {
   const { bookingId } = booking.id
 
   const [signatureResponse, setSignatureResponse] = useState(null); // State to store the signature response
+
+
+
+  const viewTripDetails = () => {
+    console.log('ACTION: View trip clicked')
+    if (HyperSdkReact.isNull()) {
+      HyperSdkReact.createHyperServices();
+    }
+
+    HyperSdkReact.initiate(initiatePayload);
+    HyperSdkReact.isInitialised().then((init) => {
+      console.log('isInitialised:', init);
+    });
+  }
+
+
+
 
   useEffect(() => {
     const fetchSignatureResponse = async () => {
@@ -479,17 +496,7 @@ export function BookingDetails() {
   }, [signatureResponse]);
 
 
-  const viewTripDetails = () => {
-    console.log('ACTION: View trip clicked')
-    if (HyperSdkReact.isNull()) {
-      HyperSdkReact.createHyperServices();
-    }
 
-    HyperSdkReact.initiate(initiatePayload);
-    HyperSdkReact.isInitialised().then((init) => {
-      console.log('isInitialised:', init);
-    });
-  }
 
   const helmetTitle = `Ma réservation pour ${booking.stock.offer.name} | pass Culture`
   return (

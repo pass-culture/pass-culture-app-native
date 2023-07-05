@@ -228,29 +228,16 @@ export const SelectTravelOptions = ({ navigation, route }: any) => {
       source: {
         lat: currentLocation?.latitude,
         lon: currentLocation?.longitude,
-        name: currentAddress,  //'Champ de Mars, 5 Av. Anatole France, 75007 Paris, France',
+        name: currentAddress,
       },
       destination: {
         lat: 48.8606,
         lon: 2.3376,
-        name: destAddress //'Pl. des Cinq Martyrs du Lycée Buffon, 75015 Paris, France',
+        name: destAddress
       },
     }
   }
 
-  // currentAddress || destAddress ||
-
-  // getReservationsByCommonKey(mobileNumber);
-  // source: {
-  //   lat: 48.8584, //currentLocation?.latitude,
-  //   lon: 2.2945,    //currentLocation?.longitude,
-  //   name: 'Champ de Mars, 5 Av. Anatole France, 75007 Paris, France',
-  // },
-  // destination: {
-  //   lat: 48.8606,
-  //   lon: 2.3376,
-  //   name: 'Pl. des Cinq Martyrs du Lycée Buffon, 75015 Paris, France',
-  // },
 
   const [showLoader, setShowLoader] = useState(false)
 
