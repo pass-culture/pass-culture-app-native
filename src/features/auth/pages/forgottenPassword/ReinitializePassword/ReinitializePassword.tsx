@@ -111,6 +111,7 @@ export const ReinitializePassword = () => {
           onPress={submitPassword}
           disabled={!allowSubmission || isLoading}
           isLoading={isLoading}
+          accessibilityLabel="Valider le nouveau mot de passe et se connecter"
         />
       </Form.MaxWidth>
     </SecondaryPageWithBlurHeader>
