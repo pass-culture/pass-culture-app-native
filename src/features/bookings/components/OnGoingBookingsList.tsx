@@ -60,15 +60,7 @@ export function OnGoingBookingsList() {
   const mobileCountryCode = '+91'
   const [reservedRides, setReserveRides] = useState([])
 
-  // {
-  //   commonKey: '600000341',
-  //   destination: { lat: 48.8606, lon: 2.3376, name: 'louvre museum paris' },
-  //   reservationid: 31620150,
-  //   source: { lat: 48.855167228334196, lon: 2.295221909880638, name: 'Paris, France' },
-  //   tripamount: 11,
-  //   tripdate: '2023-07-02T16:12:27.050Z',
-  //   tripid: '585b1987-8b9b-4253-b688-21dda5af9a9d',
-  // },
+
 
   const {
     ongoing_bookings: ongoingBookings = emptyBookings,
@@ -87,7 +79,7 @@ export function OnGoingBookingsList() {
 
         // Find the reservation with the matching reservation ID
         const foundIndex = reservations.findIndex(
-          (reservation) => !reservation.tripId
+          (reservation) => !reservation.tripid || reservation.tripid.trim().length == 0
         );
         console.log('foundIndex====================', foundIndex)
         if (foundIndex !== -1) {
@@ -97,7 +89,7 @@ export function OnGoingBookingsList() {
 
           const updatedReservationsJSON = JSON.stringify(reservations);
 
-        console.log('before update -------------------->:', updatedReservationsJSON)
+          console.log('before update -------------------->:', reservationsJSON)
 
           await AsyncStorage.setItem('reservations', updatedReservationsJSON);
 
@@ -222,12 +214,12 @@ export function OnGoingBookingsList() {
       source: {
         lat: currentLocation?.latitude,
         lon: currentLocation?.longitude,
-        name: 'Paris, France',
+        name: currentAddress,
       },
       destination: {
         lat: 48.8606,
         lon: 2.3376,
-        name: 'Louvre Museum Paris France',
+        name: destAddress
       },
     },
   }
@@ -296,7 +288,7 @@ export function OnGoingBookingsList() {
       }
 
       async function fetchLocalRides() {
-        await refreshData(mobile);        
+        await refreshData(mobile);
       }
       fetchLocalRides()
 
