@@ -79,7 +79,7 @@ export const ReinitializePassword = () => {
       <Spacer.Column numberOfSpaces={6} />
       <Form.MaxWidth>
         <PasswordInput
-          label="Nouveau mot de passe"
+          label="Mot de passe"
           accessibilityDescribedBy={passwordDescribedBy}
           value={password}
           autoFocus
