@@ -27,9 +27,9 @@ use `MyComponent.web.test.tsx` either if
   - if you used `isTouch` or `isNative`
     -> in that case, you should use userEvent instead of fireEvent
 
-use `useSomeHook.test.ts` if there is no render, for example when testing a hook
-
 **Do not use** `MyComponent.test.tsx` without `.web` or `.native`
+
+It works the same with hooks and helpers.
 
 ---
 

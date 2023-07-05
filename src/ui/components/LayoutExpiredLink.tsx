@@ -13,14 +13,14 @@ import { SadFace } from 'ui/svg/icons/SadFace'
 import { Spacer, Typo } from 'ui/theme'
 
 type Props = {
-  renderResendEmailButton?: () => React.ReactNode
+  renderCustomButton?: () => React.ReactNode
   urlFAQ?: string
   contactSupport?: () => void
   customBodyText?: string
 }
 
 export function LayoutExpiredLink({
-  renderResendEmailButton,
+  renderCustomButton,
   urlFAQ,
   contactSupport,
   customBodyText,
@@ -30,7 +30,7 @@ export function LayoutExpiredLink({
       title="Oups&nbsp;!"
       icon={SadFace}
       buttons={[
-        renderResendEmailButton?.(),
+        renderCustomButton?.(),
         <InternalTouchableLink
           key={1}
           as={ButtonTertiaryWhite}

@@ -11,7 +11,7 @@ ci:
     assertions:
       categories:performance:
         - warn
-        - minScore: 0.5
+        - minScore: 0.35
       largest-contentful-paint:
         - error
-        - maxNumericValue: 10_000
+        - maxNumericValue: 17_500

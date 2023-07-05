@@ -42,11 +42,11 @@ Array [
       </Text>
     </View>
     <View
-      numberOfSpaces={2}
+      numberOfSpaces={4}
       style={
         Array [
           Object {
-            "height": 8,
+            "height": 16,
           },
         ]
       }
@@ -259,16 +259,6 @@ Array [
         />
       </View>
     </View>
-    <View
-      numberOfSpaces={3}
-      style={
-        Array [
-          Object {
-            "height": 12,
-          },
-        ]
-      }
-    />
   </View>,
 ]
 `;

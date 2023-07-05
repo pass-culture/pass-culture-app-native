@@ -45,6 +45,8 @@ type Props = {
   testID?: string
   isUpToStatusBar?: boolean
   children: React.ReactNode
+  onSwipe?: () => void
+  swipeDirection?: 'up' | 'down' | 'left' | 'right'
 } & ModalIconProps
 
 // Without this, the margin is recomputed with arbitrary values
@@ -79,6 +81,8 @@ export const AppModal: FunctionComponent<Props> = ({
   shouldAddSpacerBetweenHeaderAndContent = true,
   testID = 'modal',
   isUpToStatusBar,
+  onSwipe,
+  swipeDirection,
 }) => {
   const iconProps = {
     rightIconAccessibilityLabel,
@@ -200,7 +204,9 @@ export const AppModal: FunctionComponent<Props> = ({
       accessibilityLabelledBy={titleId}
       accessibilityRole={AccessibilityRole.DIALOG}
       accessibilityModal
-      onModalHide={onModalHide}>
+      onModalHide={onModalHide}
+      onSwipeComplete={onSwipe}
+      swipeDirection={swipeDirection}>
       <ModalContainer
         height={maxHeight ? undefined : modalContainerHeight}
         testID="modalContainer"

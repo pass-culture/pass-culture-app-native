@@ -26,11 +26,3 @@ export interface Offer {
     city?: string
   }
 }
-
-export interface OffersWithPage {
-  offers: Offer[]
-  nbOffers: number
-  page: number
-  nbPages: number
-  userData?: unknown
-}

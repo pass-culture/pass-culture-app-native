@@ -143,22 +143,16 @@ export const logEventAnalytics = {
     ),
   logCheckEduconnectDataClicked: () =>
     analytics.logEvent({ amplitude: AmplitudeEvent.CHECK_EDUCONNECT_DATA_CLICKED }),
-  logChooseEduConnectMethod: (origin?: IdentityCheckMethod) =>
-    analytics.logEvent(
-      {
-        firebase: AnalyticsEvent.CHOOSE_EDUCONNECT_METHOD,
-        amplitude: AmplitudeEvent.CHOOSE_METHOD_EDUCONNECT,
-      },
-      { fork_origin: origin }
-    ),
-  logChooseUbbleMethod: (origin?: IdentityCheckMethod) =>
-    analytics.logEvent(
-      {
-        firebase: AnalyticsEvent.CHOOSE_UBBLE_METHOD,
-        amplitude: AmplitudeEvent.CHOOSE_METHOD_UBBLE,
-      },
-      { fork_origin: origin }
-    ),
+  logChooseEduConnectMethod: () =>
+    analytics.logEvent({
+      firebase: AnalyticsEvent.CHOOSE_EDUCONNECT_METHOD,
+      amplitude: AmplitudeEvent.CHOOSE_METHOD_EDUCONNECT,
+    }),
+  logChooseUbbleMethod: () =>
+    analytics.logEvent({
+      firebase: AnalyticsEvent.CHOOSE_UBBLE_METHOD,
+      amplitude: AmplitudeEvent.CHOOSE_METHOD_UBBLE,
+    }),
   logClickBookOffer: (offerId: number) =>
     analytics.logEvent({ firebase: AnalyticsEvent.CLICK_BOOK_OFFER }, { offerId }),
   logClickForceUpdate: (appVersionId: number) =>
@@ -235,6 +229,8 @@ export const logEventAnalytics = {
     moduleId?: string
     homeEntryId?: string
   }) => analytics.logEvent({ firebase: AnalyticsEvent.CONSULT_VENUE }, params),
+  logConsultVideo: (params: { from: Referrals; moduleId: string }) =>
+    analytics.logEvent({ firebase: AnalyticsEvent.CONSULT_VIDEO }, params),
   logConsultWholeOffer: (offerId: number) =>
     analytics.logEvent({ firebase: AnalyticsEvent.CONSULT_WHOLE_OFFER }, { offerId }),
   logConsultWithdrawal: (params: OfferIdOrVenueId) =>
@@ -270,11 +266,8 @@ export const logEventAnalytics = {
     analytics.logEvent({ firebase: AnalyticsEvent.DISMISS_NOTIFICATIONS }),
   logDismissShareApp: (type: ShareAppModalType) =>
     analytics.logEvent({ firebase: AnalyticsEvent.DISMISS_SHARE_APP }, { type }),
-  logEduconnectExplanationClicked: (origin: IdentityCheckMethod) =>
-    analytics.logEvent(
-      { amplitude: AmplitudeEvent.EDUCONNECT_EXPLANATION_CLICKED },
-      { fork_origin: origin }
-    ),
+  logEduconnectExplanationClicked: () =>
+    analytics.logEvent({ amplitude: AmplitudeEvent.EDUCONNECT_EXPLANATION_CLICKED }),
   logEmailConfirmationConsultEmailClicked: () =>
     analytics.logEvent({ amplitude: AmplitudeEvent.EMAIL_CONFIRMATION_CONSULT_EMAIL_CLICKED }),
   logEmailValidated: () => analytics.logEvent({ amplitude: AmplitudeEvent.EMAIL_VALIDATED }),
@@ -331,6 +324,8 @@ export const logEventAnalytics = {
     analytics.logEvent({ firebase: AnalyticsEvent.HAS_CORRECTED_EMAIL }, { from }),
   logHasDismissedAppSharingModal: () =>
     analytics.logEvent({ firebase: AnalyticsEvent.HAS_DISMISSED_APP_SHARING_MODAL }),
+  logHasDismissedModal: (params: { moduleId: string; modalType: ContentTypes }) =>
+    analytics.logEvent({ firebase: AnalyticsEvent.HAS_DISMISSED_MODAL }, params),
   logHasMadeAChoiceForCookies: ({ from, type }: { from: string; type: CookiesChoiceByCategory }) =>
     analytics.logEvent(
       { firebase: AnalyticsEvent.HAS_MADE_A_CHOICE_FOR_COOKIES },
@@ -343,6 +338,8 @@ export const logEventAnalytics = {
     analytics.logEvent({ firebase: AnalyticsEvent.HAS_OPENED_COOKIES_ACCORDION }, { type }),
   logHasRefusedCookie: () => analytics.logEvent({ firebase: AnalyticsEvent.HAS_REFUSED_COOKIE }),
   logHasRequestedCode: () => analytics.logEvent({ firebase: AnalyticsEvent.HAS_REQUESTED_CODE }),
+  logHasSeenAllVideo: (moduleId: string) =>
+    analytics.logEvent({ firebase: AnalyticsEvent.HAS_SEEN_ALL_VIDEO }, { moduleId }),
   logHasSharedApp: (type: string) =>
     analytics.logEvent({ firebase: AnalyticsEvent.HAS_SHARED_APP }, { type }),
   logHasSkippedCulturalSurvey: () =>
@@ -488,10 +485,8 @@ export const logEventAnalytics = {
     analytics.logEvent({ amplitude: AmplitudeEvent.SCREEN_VIEW_DMS_INTRODUCTION }),
   logScreenViewExpiredOrLostId: () =>
     analytics.logEvent({ amplitude: AmplitudeEvent.SCREEN_VIEW_EXPIRED_OR_LOST_ID }),
-  logScreenViewForkEduconnect: () =>
-    analytics.logEvent({ amplitude: AmplitudeEvent.SCREEN_VIEW_FORK_EDUCONNECT }),
-  logScreenViewForkUbble: () =>
-    analytics.logEvent({ amplitude: AmplitudeEvent.SCREEN_VIEW_FORK_UBBLE }),
+  logScreenViewIdentityFork: () =>
+    analytics.logEvent({ amplitude: AmplitudeEvent.SCREEN_VIEW_IDENTITY_FORK }),
   logScreenViewIdentityCheckEnd: () =>
     analytics.logEvent({ amplitude: AmplitudeEvent.SCREEN_VIEW_IDENTITY_CHECK_END }),
   logScreenViewIdentityCheckHonor: () =>

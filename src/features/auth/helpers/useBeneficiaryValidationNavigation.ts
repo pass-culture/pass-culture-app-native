@@ -57,11 +57,11 @@ const useNavigateToNextSubscriptionStep = () => {
   const { navigate } = useNavigation<UseNavigationType>()
 
   return (navConfig: NextStepNavConfig) => {
-    if (!navConfig) {
-      navigateToHome()
-    } else {
+    if (navConfig) {
       const { screen, params } = navConfig
       screen === homeNavConfig[0] ? navigateToHome() : navigate(screen, params)
+    } else {
+      navigateToHome()
     }
   }
 }

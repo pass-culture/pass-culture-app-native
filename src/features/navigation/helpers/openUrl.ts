@@ -1,4 +1,4 @@
-import { Alert, Linking } from 'react-native'
+import { Alert, Linking, NativeModules, Platform } from 'react-native'
 
 import { getScreenFromDeeplink } from 'features/deeplinks/helpers'
 import { navigateFromRef } from 'features/navigation/navigationRef'
@@ -25,12 +25,29 @@ export type UrlParamsProps = {
   analyticsData?: OfferAnalyticsData
 }
 
+const { DefaultBrowserModule } = NativeModules
+
+const openExternalUrlOnAndroid = async (url: string) => {
+  // This module has been created to open app links in browser, even if user has chosen to open them inside the app (in Android settings).
+  if (url.startsWith('https://') && (await Linking.canOpenURL(url))) {
+    // If link can be is valid, open it with custom module
+    await DefaultBrowserModule.openUrl(url)
+  } else {
+    // If link can be is not valid, open it with Linking who will handle the error message displayed
+    await Linking.openURL(url)
+  }
+}
+
 const openExternalUrl = async (
   url: string,
   { shouldLogEvent = true, fallbackUrl, analyticsData }: UrlParamsProps
 ) => {
   try {
-    await Linking.openURL(url)
+    if (Platform.OS === 'android') {
+      await openExternalUrlOnAndroid(url)
+    } else {
+      await Linking.openURL(url)
+    }
     if (shouldLogEvent) analytics.logOpenExternalUrl(url, { ...analyticsData })
     return
   } catch (error) {

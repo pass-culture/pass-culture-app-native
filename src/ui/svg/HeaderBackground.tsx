@@ -13,7 +13,7 @@ interface HeaderBackgroundProps {
   position?: 'absolute' | 'relative'
 }
 
-export const HEADER_BACKGROUND_DEFAULT_SIZE = getSpacing(73.5)
+const HEADER_BACKGROUND_DEFAULT_SIZE = getSpacing(73.5)
 
 function NotMemoizedHeaderBackground({
   width,

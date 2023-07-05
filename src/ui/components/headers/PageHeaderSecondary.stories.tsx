@@ -5,7 +5,7 @@ import React from 'react'
 import { PageHeaderSecondary } from './PageHeaderSecondary'
 
 export default {
-  title: 'Path',
+  title: 'ui/headers/PageHeaderSecondary',
   component: PageHeaderSecondary,
   decorators: [
     (Story) => (

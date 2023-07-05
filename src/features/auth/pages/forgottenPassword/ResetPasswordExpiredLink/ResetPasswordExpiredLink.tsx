@@ -49,7 +49,7 @@ export function ResetPasswordExpiredLink(props: Props) {
 
   return (
     <LayoutExpiredLink
-      renderResendEmailButton={renderResendEmailButton}
+      renderCustomButton={renderResendEmailButton}
       urlFAQ={env.FAQ_LINK_RESET_PASSORD_EMAIL_NOT_RECEIVED}
     />
   )

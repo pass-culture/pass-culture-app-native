@@ -5,7 +5,7 @@ import styled from 'styled-components/native'
 import { useGetThematicHeaderHeight } from 'features/home/components/headers/ThematicHomeHeader'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 
-export interface DefaultThematicHomeHeaderProps {
+interface DefaultThematicHomeHeaderProps {
   headerTitle?: string
   headerSubtitle?: string
 }

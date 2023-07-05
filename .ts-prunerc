@@ -1,0 +1,3 @@
+{
+  "ignore": "(.*\\.stories\\.tsx)|(App.tsx)|(.*\\.ios)|(.*\\.android)|(.*__mocks__/.*)|(.*\\.web)"
+}

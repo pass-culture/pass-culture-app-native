@@ -52,11 +52,11 @@ exports[`<Search/> should render Search 1`] = `
       </Text>
     </View>
     <View
-      numberOfSpaces={2}
+      numberOfSpaces={4}
       style={
         Array [
           Object {
-            "height": 8,
+            "height": 16,
           },
         ]
       }
@@ -269,16 +269,6 @@ exports[`<Search/> should render Search 1`] = `
         />
       </View>
     </View>
-    <View
-      numberOfSpaces={3}
-      style={
-        Array [
-          Object {
-            "height": 12,
-          },
-        ]
-      }
-    />
   </View>
   <View
     style={
@@ -305,9 +295,7 @@ exports[`<Search/> should render Search 1`] = `
           "inlineStyle": InlineStyle {
             "rules": Array [
               [Function],
-              "margin-top: 32px;",
-              "padding-horizontal: 4px;",
-              "padding-bottom: 16px;",
+              [Function],
             ],
           },
           "render": [Function],
@@ -320,7 +308,7 @@ exports[`<Search/> should render Search 1`] = `
       contentContainerStyle={
         Object {
           "paddingBottom": 88,
-          "paddingHorizontal": 20,
+          "paddingHorizontal": 16,
         }
       }
       data={
@@ -343,25 +331,26 @@ exports[`<Search/> should render Search 1`] = `
               "withComponent": [Function],
             },
             "Illustration": [Function],
-            "baseColor": "#8337E9",
+            "baseColor": "#B85901",
             "gradients": Array [
               Object {
-                "color": "#AD87FF",
+                "color": "#F99E15",
                 "position": Object {
                   "x": 0,
                   "y": 0,
                 },
               },
               Object {
-                "color": "#8337E9",
+                "color": "#B85901",
                 "position": Object {
                   "x": 0,
                   "y": 0.5,
                 },
               },
             ],
-            "label": "Arts & loisirs créatifs",
+            "label": "Concerts & festivals",
             "onPress": [Function],
+            "position": 1,
           },
           Object {
             "Icon": Object {
@@ -381,25 +370,26 @@ exports[`<Search/> should render Search 1`] = `
               "withComponent": [Function],
             },
             "Illustration": [Function],
-            "baseColor": "#CA3F13",
+            "baseColor": "#0E8474",
             "gradients": Array [
               Object {
-                "color": "#F8733D",
+                "color": "#27DCA8",
                 "position": Object {
                   "x": 0,
                   "y": 0,
                 },
               },
               Object {
-                "color": "#CA3F13",
+                "color": "#0E8474",
                 "position": Object {
                   "x": 0,
                   "y": 0.5,
                 },
               },
             ],
-            "label": "Bibliothèques, Médiathèques",
+            "label": "Films, séries, cinéma",
             "onPress": [Function],
+            "position": 2,
           },
           Object {
             "Icon": Object {
@@ -419,25 +409,26 @@ exports[`<Search/> should render Search 1`] = `
               "withComponent": [Function],
             },
             "Illustration": [Function],
-            "baseColor": "#8337E9",
+            "baseColor": "#C01371",
             "gradients": Array [
               Object {
-                "color": "#AD87FF",
+                "color": "#EC3478",
                 "position": Object {
                   "x": 0,
                   "y": 0,
                 },
               },
               Object {
-                "color": "#8337E9",
+                "color": "#C01371",
                 "position": Object {
                   "x": 0,
                   "y": 0.5,
                 },
               },
             ],
-            "label": "Cartes jeunes",
+            "label": "Livres",
             "onPress": [Function],
+            "position": 3,
           },
           Object {
             "Icon": Object {
@@ -476,6 +467,124 @@ exports[`<Search/> should render Search 1`] = `
             ],
             "label": "CD, vinyles, musique en ligne",
             "onPress": [Function],
+            "position": 4,
+          },
+          Object {
+            "Icon": Object {
+              "$$typeof": Symbol(react.forward_ref),
+              "attrs": Array [
+                [Function],
+              ],
+              "inlineStyle": InlineStyle {
+                "rules": Array [
+                  "",
+                ],
+              },
+              "render": [Function],
+              "shouldForwardProp": undefined,
+              "styledComponentId": "StyledNativeComponent",
+              "target": [Function],
+              "withComponent": [Function],
+            },
+            "Illustration": [Function],
+            "baseColor": "#8337E9",
+            "gradients": Array [
+              Object {
+                "color": "#AD87FF",
+                "position": Object {
+                  "x": 0,
+                  "y": 0,
+                },
+              },
+              Object {
+                "color": "#8337E9",
+                "position": Object {
+                  "x": 0,
+                  "y": 0.5,
+                },
+              },
+            ],
+            "label": "Arts & loisirs créatifs",
+            "onPress": [Function],
+            "position": 5,
+          },
+          Object {
+            "Icon": Object {
+              "$$typeof": Symbol(react.forward_ref),
+              "attrs": Array [
+                [Function],
+              ],
+              "inlineStyle": InlineStyle {
+                "rules": Array [
+                  "",
+                ],
+              },
+              "render": [Function],
+              "shouldForwardProp": undefined,
+              "styledComponentId": "StyledNativeComponent",
+              "target": [Function],
+              "withComponent": [Function],
+            },
+            "Illustration": [Function],
+            "baseColor": "#CA3F13",
+            "gradients": Array [
+              Object {
+                "color": "#F8733D",
+                "position": Object {
+                  "x": 0,
+                  "y": 0,
+                },
+              },
+              Object {
+                "color": "#CA3F13",
+                "position": Object {
+                  "x": 0,
+                  "y": 0.5,
+                },
+              },
+            ],
+            "label": "Spectacles",
+            "onPress": [Function],
+            "position": 6,
+          },
+          Object {
+            "Icon": Object {
+              "$$typeof": Symbol(react.forward_ref),
+              "attrs": Array [
+                [Function],
+              ],
+              "inlineStyle": InlineStyle {
+                "rules": Array [
+                  "",
+                ],
+              },
+              "render": [Function],
+              "shouldForwardProp": undefined,
+              "styledComponentId": "StyledNativeComponent",
+              "target": [Function],
+              "withComponent": [Function],
+            },
+            "Illustration": [Function],
+            "baseColor": "#0E8474",
+            "gradients": Array [
+              Object {
+                "color": "#27DCA8",
+                "position": Object {
+                  "x": 0,
+                  "y": 0,
+                },
+              },
+              Object {
+                "color": "#0E8474",
+                "position": Object {
+                  "x": 0,
+                  "y": 0.5,
+                },
+              },
+            ],
+            "label": "Musées & visites culturelles",
+            "onPress": [Function],
+            "position": 7,
           },
           Object {
             "Icon": Object {
@@ -512,8 +621,165 @@ exports[`<Search/> should render Search 1`] = `
                 },
               },
             ],
-            "label": "Concerts & festivals",
+            "label": "Jeux & jeux vidéos",
             "onPress": [Function],
+            "position": 8,
+          },
+          Object {
+            "Icon": Object {
+              "$$typeof": Symbol(react.forward_ref),
+              "attrs": Array [
+                [Function],
+              ],
+              "inlineStyle": InlineStyle {
+                "rules": Array [
+                  "",
+                ],
+              },
+              "render": [Function],
+              "shouldForwardProp": undefined,
+              "styledComponentId": "StyledNativeComponent",
+              "target": [Function],
+              "withComponent": [Function],
+            },
+            "Illustration": [Function],
+            "baseColor": "#0E78B7",
+            "gradients": Array [
+              Object {
+                "color": "#20C5E9",
+                "position": Object {
+                  "x": 0,
+                  "y": 0,
+                },
+              },
+              Object {
+                "color": "#0E78B7",
+                "position": Object {
+                  "x": 0,
+                  "y": 0.5,
+                },
+              },
+            ],
+            "label": "Instruments de musique",
+            "onPress": [Function],
+            "position": 9,
+          },
+          Object {
+            "Icon": Object {
+              "$$typeof": Symbol(react.forward_ref),
+              "attrs": Array [
+                [Function],
+              ],
+              "inlineStyle": InlineStyle {
+                "rules": Array [
+                  "",
+                ],
+              },
+              "render": [Function],
+              "shouldForwardProp": undefined,
+              "styledComponentId": "StyledNativeComponent",
+              "target": [Function],
+              "withComponent": [Function],
+            },
+            "Illustration": [Function],
+            "baseColor": "#C01371",
+            "gradients": Array [
+              Object {
+                "color": "#EC3478",
+                "position": Object {
+                  "x": 0,
+                  "y": 0,
+                },
+              },
+              Object {
+                "color": "#C01371",
+                "position": Object {
+                  "x": 0,
+                  "y": 0.5,
+                },
+              },
+            ],
+            "label": "Médias & presse",
+            "onPress": [Function],
+            "position": 10,
+          },
+          Object {
+            "Icon": Object {
+              "$$typeof": Symbol(react.forward_ref),
+              "attrs": Array [
+                [Function],
+              ],
+              "inlineStyle": InlineStyle {
+                "rules": Array [
+                  "",
+                ],
+              },
+              "render": [Function],
+              "shouldForwardProp": undefined,
+              "styledComponentId": "StyledNativeComponent",
+              "target": [Function],
+              "withComponent": [Function],
+            },
+            "Illustration": [Function],
+            "baseColor": "#CA3F13",
+            "gradients": Array [
+              Object {
+                "color": "#F8733D",
+                "position": Object {
+                  "x": 0,
+                  "y": 0,
+                },
+              },
+              Object {
+                "color": "#CA3F13",
+                "position": Object {
+                  "x": 0,
+                  "y": 0.5,
+                },
+              },
+            ],
+            "label": "Bibliothèques, Médiathèques",
+            "onPress": [Function],
+            "position": 11,
+          },
+          Object {
+            "Icon": Object {
+              "$$typeof": Symbol(react.forward_ref),
+              "attrs": Array [
+                [Function],
+              ],
+              "inlineStyle": InlineStyle {
+                "rules": Array [
+                  "",
+                ],
+              },
+              "render": [Function],
+              "shouldForwardProp": undefined,
+              "styledComponentId": "StyledNativeComponent",
+              "target": [Function],
+              "withComponent": [Function],
+            },
+            "Illustration": [Function],
+            "baseColor": "#8337E9",
+            "gradients": Array [
+              Object {
+                "color": "#AD87FF",
+                "position": Object {
+                  "x": 0,
+                  "y": 0,
+                },
+              },
+              Object {
+                "color": "#8337E9",
+                "position": Object {
+                  "x": 0,
+                  "y": 0.5,
+                },
+              },
+            ],
+            "label": "Cartes jeunes",
+            "onPress": [Function],
+            "position": 12,
           },
           Object {
             "Icon": Object {
@@ -567,6 +833,7 @@ exports[`<Search/> should render Search 1`] = `
             ],
             "label": "Conférences & rencontres",
             "onPress": [Function],
+            "position": 13,
           },
           Object {
             "Icon": Object {
@@ -605,272 +872,7 @@ exports[`<Search/> should render Search 1`] = `
             ],
             "label": "Évènements en ligne",
             "onPress": [Function],
-          },
-          Object {
-            "Icon": Object {
-              "$$typeof": Symbol(react.forward_ref),
-              "attrs": Array [
-                [Function],
-              ],
-              "inlineStyle": InlineStyle {
-                "rules": Array [
-                  "",
-                ],
-              },
-              "render": [Function],
-              "shouldForwardProp": undefined,
-              "styledComponentId": "StyledNativeComponent",
-              "target": [Function],
-              "withComponent": [Function],
-            },
-            "Illustration": [Function],
-            "baseColor": "#0E8474",
-            "gradients": Array [
-              Object {
-                "color": "#27DCA8",
-                "position": Object {
-                  "x": 0,
-                  "y": 0,
-                },
-              },
-              Object {
-                "color": "#0E8474",
-                "position": Object {
-                  "x": 0,
-                  "y": 0.5,
-                },
-              },
-            ],
-            "label": "Films, séries, cinéma",
-            "onPress": [Function],
-          },
-          Object {
-            "Icon": Object {
-              "$$typeof": Symbol(react.forward_ref),
-              "attrs": Array [
-                [Function],
-              ],
-              "inlineStyle": InlineStyle {
-                "rules": Array [
-                  "",
-                ],
-              },
-              "render": [Function],
-              "shouldForwardProp": undefined,
-              "styledComponentId": "StyledNativeComponent",
-              "target": [Function],
-              "withComponent": [Function],
-            },
-            "Illustration": [Function],
-            "baseColor": "#0E78B7",
-            "gradients": Array [
-              Object {
-                "color": "#20C5E9",
-                "position": Object {
-                  "x": 0,
-                  "y": 0,
-                },
-              },
-              Object {
-                "color": "#0E78B7",
-                "position": Object {
-                  "x": 0,
-                  "y": 0.5,
-                },
-              },
-            ],
-            "label": "Instruments de musique",
-            "onPress": [Function],
-          },
-          Object {
-            "Icon": Object {
-              "$$typeof": Symbol(react.forward_ref),
-              "attrs": Array [
-                [Function],
-              ],
-              "inlineStyle": InlineStyle {
-                "rules": Array [
-                  "",
-                ],
-              },
-              "render": [Function],
-              "shouldForwardProp": undefined,
-              "styledComponentId": "StyledNativeComponent",
-              "target": [Function],
-              "withComponent": [Function],
-            },
-            "Illustration": [Function],
-            "baseColor": "#B85901",
-            "gradients": Array [
-              Object {
-                "color": "#F99E15",
-                "position": Object {
-                  "x": 0,
-                  "y": 0,
-                },
-              },
-              Object {
-                "color": "#B85901",
-                "position": Object {
-                  "x": 0,
-                  "y": 0.5,
-                },
-              },
-            ],
-            "label": "Jeux & jeux vidéos",
-            "onPress": [Function],
-          },
-          Object {
-            "Icon": Object {
-              "$$typeof": Symbol(react.forward_ref),
-              "attrs": Array [
-                [Function],
-              ],
-              "inlineStyle": InlineStyle {
-                "rules": Array [
-                  "",
-                ],
-              },
-              "render": [Function],
-              "shouldForwardProp": undefined,
-              "styledComponentId": "StyledNativeComponent",
-              "target": [Function],
-              "withComponent": [Function],
-            },
-            "Illustration": [Function],
-            "baseColor": "#C01371",
-            "gradients": Array [
-              Object {
-                "color": "#EC3478",
-                "position": Object {
-                  "x": 0,
-                  "y": 0,
-                },
-              },
-              Object {
-                "color": "#C01371",
-                "position": Object {
-                  "x": 0,
-                  "y": 0.5,
-                },
-              },
-            ],
-            "label": "Livres",
-            "onPress": [Function],
-          },
-          Object {
-            "Icon": Object {
-              "$$typeof": Symbol(react.forward_ref),
-              "attrs": Array [
-                [Function],
-              ],
-              "inlineStyle": InlineStyle {
-                "rules": Array [
-                  "",
-                ],
-              },
-              "render": [Function],
-              "shouldForwardProp": undefined,
-              "styledComponentId": "StyledNativeComponent",
-              "target": [Function],
-              "withComponent": [Function],
-            },
-            "Illustration": [Function],
-            "baseColor": "#C01371",
-            "gradients": Array [
-              Object {
-                "color": "#EC3478",
-                "position": Object {
-                  "x": 0,
-                  "y": 0,
-                },
-              },
-              Object {
-                "color": "#C01371",
-                "position": Object {
-                  "x": 0,
-                  "y": 0.5,
-                },
-              },
-            ],
-            "label": "Médias & presse",
-            "onPress": [Function],
-          },
-          Object {
-            "Icon": Object {
-              "$$typeof": Symbol(react.forward_ref),
-              "attrs": Array [
-                [Function],
-              ],
-              "inlineStyle": InlineStyle {
-                "rules": Array [
-                  "",
-                ],
-              },
-              "render": [Function],
-              "shouldForwardProp": undefined,
-              "styledComponentId": "StyledNativeComponent",
-              "target": [Function],
-              "withComponent": [Function],
-            },
-            "Illustration": [Function],
-            "baseColor": "#0E8474",
-            "gradients": Array [
-              Object {
-                "color": "#27DCA8",
-                "position": Object {
-                  "x": 0,
-                  "y": 0,
-                },
-              },
-              Object {
-                "color": "#0E8474",
-                "position": Object {
-                  "x": 0,
-                  "y": 0.5,
-                },
-              },
-            ],
-            "label": "Musées & visites culturelles",
-            "onPress": [Function],
-          },
-          Object {
-            "Icon": Object {
-              "$$typeof": Symbol(react.forward_ref),
-              "attrs": Array [
-                [Function],
-              ],
-              "inlineStyle": InlineStyle {
-                "rules": Array [
-                  "",
-                ],
-              },
-              "render": [Function],
-              "shouldForwardProp": undefined,
-              "styledComponentId": "StyledNativeComponent",
-              "target": [Function],
-              "withComponent": [Function],
-            },
-            "Illustration": [Function],
-            "baseColor": "#CA3F13",
-            "gradients": Array [
-              Object {
-                "color": "#F8733D",
-                "position": Object {
-                  "x": 0,
-                  "y": 0,
-                },
-              },
-              Object {
-                "color": "#CA3F13",
-                "position": Object {
-                  "x": 0,
-                  "y": 0.5,
-                },
-              },
-            ],
-            "label": "Spectacles",
-            "onPress": [Function],
+            "position": 14,
           },
         ]
       }
@@ -903,9 +905,9 @@ exports[`<Search/> should render Search 1`] = `
                   "fontFamily": "Montserrat-Bold",
                   "fontSize": 20,
                   "lineHeight": 24,
+                  "marginBottom": 8,
                   "marginTop": 32,
-                  "paddingBottom": 16,
-                  "paddingHorizontal": 4,
+                  "paddingHorizontal": 12,
                 },
               ]
             }
@@ -929,572 +931,10 @@ exports[`<Search/> should render Search 1`] = `
                 Array [
                   Object {
                     "flexBasis": "50%",
-                    "paddingBottom": 4,
-                    "paddingLeft": 4,
-                    "paddingRight": 4,
-                    "paddingTop": 4,
-                  },
-                ]
-              }
-            >
-              <View
-                accessibilityLabel="Catégorie Arts & loisirs créatifs"
-                accessibilityRole="button"
-                accessible={true}
-                collapsable={false}
-                focusable={true}
-                onClick={[Function]}
-                onResponderGrant={[Function]}
-                onResponderMove={[Function]}
-                onResponderRelease={[Function]}
-                onResponderTerminate={[Function]}
-                onResponderTerminationRequest={[Function]}
-                onStartShouldSetResponder={[Function]}
-                style={
-                  Object {
-                    "borderRadius": 8,
-                    "height": 156,
-                    "opacity": 1,
-                    "overflow": "hidden",
-                    "userSelect": "auto",
-                  }
-                }
-                testID="Catégorie Arts & loisirs créatifs"
-              >
-                <View
-                  style={
-                    Array [
-                      Object {
-                        "flexBasis": 0,
-                        "flexGrow": 1,
-                        "flexShrink": 1,
-                        "overflow": "hidden",
-                        "width": "100%",
-                      },
-                    ]
-                  }
-                >
-                  <BVLinearGradient
-                    colors={
-                      Array [
-                        4289562623,
-                        4286789609,
-                      ]
-                    }
-                    endPoint={
-                      Object {
-                        "x": 0.5,
-                        "y": 1,
-                      }
-                    }
-                    locations={null}
-                    startPoint={
-                      Object {
-                        "x": 0.5,
-                        "y": 0,
-                      }
-                    }
-                    style={
-                      Array [
-                        Object {
-                          "flexBasis": 0,
-                          "flexGrow": 1,
-                          "flexShrink": 1,
-                        },
-                      ]
-                    }
-                  >
-                    <View
-                      style={
-                        Array [
-                          Object {
-                            "position": "absolute",
-                          },
-                        ]
-                      }
-                    >
-                      <View
-                        fill="none"
-                        height={92}
-                        width={156}
-                      >
-                        <Text>
-                          undefined-SVG-Mock
-                        </Text>
-                      </View>
-                    </View>
-                  </BVLinearGradient>
-                </View>
-                <View
-                  baseColor="#8337E9"
-                  style={
-                    Array [
-                      Object {
-                        "backgroundColor": "#8337E9",
-                        "paddingBottom": 8,
-                        "paddingLeft": 8,
-                        "paddingRight": 8,
-                        "paddingTop": 8,
-                        "width": "100%",
-                      },
-                    ]
-                  }
-                >
-                  <Text
-                    style={
-                      Array [
-                        Object {
-                          "color": "#ffffff",
-                          "fontFamily": "Montserrat-Bold",
-                          "fontSize": 15,
-                          "lineHeight": 20,
-                          "textAlign": "left",
-                        },
-                      ]
-                    }
-                  >
-                    Arts & loisirs créatifs
-                  </Text>
-                </View>
-              </View>
-            </View>
-            <View
-              style={
-                Array [
-                  Object {
-                    "flexBasis": "50%",
-                    "paddingBottom": 4,
-                    "paddingLeft": 4,
-                    "paddingRight": 4,
-                    "paddingTop": 4,
-                  },
-                ]
-              }
-            >
-              <View
-                accessibilityLabel="Catégorie Bibliothèques, Médiathèques"
-                accessibilityRole="button"
-                accessible={true}
-                collapsable={false}
-                focusable={true}
-                onClick={[Function]}
-                onResponderGrant={[Function]}
-                onResponderMove={[Function]}
-                onResponderRelease={[Function]}
-                onResponderTerminate={[Function]}
-                onResponderTerminationRequest={[Function]}
-                onStartShouldSetResponder={[Function]}
-                style={
-                  Object {
-                    "borderRadius": 8,
-                    "height": 156,
-                    "opacity": 1,
-                    "overflow": "hidden",
-                    "userSelect": "auto",
-                  }
-                }
-                testID="Catégorie Bibliothèques, Médiathèques"
-              >
-                <View
-                  style={
-                    Array [
-                      Object {
-                        "flexBasis": 0,
-                        "flexGrow": 1,
-                        "flexShrink": 1,
-                        "overflow": "hidden",
-                        "width": "100%",
-                      },
-                    ]
-                  }
-                >
-                  <BVLinearGradient
-                    colors={
-                      Array [
-                        4294472509,
-                        4291444499,
-                      ]
-                    }
-                    endPoint={
-                      Object {
-                        "x": 0.5,
-                        "y": 1,
-                      }
-                    }
-                    locations={null}
-                    startPoint={
-                      Object {
-                        "x": 0.5,
-                        "y": 0,
-                      }
-                    }
-                    style={
-                      Array [
-                        Object {
-                          "flexBasis": 0,
-                          "flexGrow": 1,
-                          "flexShrink": 1,
-                        },
-                      ]
-                    }
-                  >
-                    <View
-                      style={
-                        Array [
-                          Object {
-                            "position": "absolute",
-                          },
-                        ]
-                      }
-                    >
-                      <View
-                        fill="none"
-                        height={92}
-                        width={156}
-                      >
-                        <Text>
-                          undefined-SVG-Mock
-                        </Text>
-                      </View>
-                    </View>
-                  </BVLinearGradient>
-                </View>
-                <View
-                  baseColor="#CA3F13"
-                  style={
-                    Array [
-                      Object {
-                        "backgroundColor": "#CA3F13",
-                        "paddingBottom": 8,
-                        "paddingLeft": 8,
-                        "paddingRight": 8,
-                        "paddingTop": 8,
-                        "width": "100%",
-                      },
-                    ]
-                  }
-                >
-                  <Text
-                    style={
-                      Array [
-                        Object {
-                          "color": "#ffffff",
-                          "fontFamily": "Montserrat-Bold",
-                          "fontSize": 15,
-                          "lineHeight": 20,
-                          "textAlign": "left",
-                        },
-                      ]
-                    }
-                  >
-                    Bibliothèques, Médiathèques
-                  </Text>
-                </View>
-              </View>
-            </View>
-          </View>
-        </View>
-        <View
-          onLayout={[Function]}
-          style={null}
-        >
-          <View
-            style={
-              Object {
-                "flexDirection": "row",
-              }
-            }
-          >
-            <View
-              style={
-                Array [
-                  Object {
-                    "flexBasis": "50%",
-                    "paddingBottom": 4,
-                    "paddingLeft": 4,
-                    "paddingRight": 4,
-                    "paddingTop": 4,
-                  },
-                ]
-              }
-            >
-              <View
-                accessibilityLabel="Catégorie Cartes jeunes"
-                accessibilityRole="button"
-                accessible={true}
-                collapsable={false}
-                focusable={true}
-                onClick={[Function]}
-                onResponderGrant={[Function]}
-                onResponderMove={[Function]}
-                onResponderRelease={[Function]}
-                onResponderTerminate={[Function]}
-                onResponderTerminationRequest={[Function]}
-                onStartShouldSetResponder={[Function]}
-                style={
-                  Object {
-                    "borderRadius": 8,
-                    "height": 156,
-                    "opacity": 1,
-                    "overflow": "hidden",
-                    "userSelect": "auto",
-                  }
-                }
-                testID="Catégorie Cartes jeunes"
-              >
-                <View
-                  style={
-                    Array [
-                      Object {
-                        "flexBasis": 0,
-                        "flexGrow": 1,
-                        "flexShrink": 1,
-                        "overflow": "hidden",
-                        "width": "100%",
-                      },
-                    ]
-                  }
-                >
-                  <BVLinearGradient
-                    colors={
-                      Array [
-                        4289562623,
-                        4286789609,
-                      ]
-                    }
-                    endPoint={
-                      Object {
-                        "x": 0.5,
-                        "y": 1,
-                      }
-                    }
-                    locations={null}
-                    startPoint={
-                      Object {
-                        "x": 0.5,
-                        "y": 0,
-                      }
-                    }
-                    style={
-                      Array [
-                        Object {
-                          "flexBasis": 0,
-                          "flexGrow": 1,
-                          "flexShrink": 1,
-                        },
-                      ]
-                    }
-                  >
-                    <View
-                      style={
-                        Array [
-                          Object {
-                            "position": "absolute",
-                          },
-                        ]
-                      }
-                    >
-                      <View
-                        fill="none"
-                        height={92}
-                        width={156}
-                      >
-                        <Text>
-                          undefined-SVG-Mock
-                        </Text>
-                      </View>
-                    </View>
-                  </BVLinearGradient>
-                </View>
-                <View
-                  baseColor="#8337E9"
-                  style={
-                    Array [
-                      Object {
-                        "backgroundColor": "#8337E9",
-                        "paddingBottom": 8,
-                        "paddingLeft": 8,
-                        "paddingRight": 8,
-                        "paddingTop": 8,
-                        "width": "100%",
-                      },
-                    ]
-                  }
-                >
-                  <Text
-                    style={
-                      Array [
-                        Object {
-                          "color": "#ffffff",
-                          "fontFamily": "Montserrat-Bold",
-                          "fontSize": 15,
-                          "lineHeight": 20,
-                          "textAlign": "left",
-                        },
-                      ]
-                    }
-                  >
-                    Cartes jeunes
-                  </Text>
-                </View>
-              </View>
-            </View>
-            <View
-              style={
-                Array [
-                  Object {
-                    "flexBasis": "50%",
-                    "paddingBottom": 4,
-                    "paddingLeft": 4,
-                    "paddingRight": 4,
-                    "paddingTop": 4,
-                  },
-                ]
-              }
-            >
-              <View
-                accessibilityLabel="Catégorie CD, vinyles, musique en ligne"
-                accessibilityRole="button"
-                accessible={true}
-                collapsable={false}
-                focusable={true}
-                onClick={[Function]}
-                onResponderGrant={[Function]}
-                onResponderMove={[Function]}
-                onResponderRelease={[Function]}
-                onResponderTerminate={[Function]}
-                onResponderTerminationRequest={[Function]}
-                onStartShouldSetResponder={[Function]}
-                style={
-                  Object {
-                    "borderRadius": 8,
-                    "height": 156,
-                    "opacity": 1,
-                    "overflow": "hidden",
-                    "userSelect": "auto",
-                  }
-                }
-                testID="Catégorie CD, vinyles, musique en ligne"
-              >
-                <View
-                  style={
-                    Array [
-                      Object {
-                        "flexBasis": 0,
-                        "flexGrow": 1,
-                        "flexShrink": 1,
-                        "overflow": "hidden",
-                        "width": "100%",
-                      },
-                    ]
-                  }
-                >
-                  <BVLinearGradient
-                    colors={
-                      Array [
-                        4280337897,
-                        4279138487,
-                      ]
-                    }
-                    endPoint={
-                      Object {
-                        "x": 0.5,
-                        "y": 1,
-                      }
-                    }
-                    locations={null}
-                    startPoint={
-                      Object {
-                        "x": 0.5,
-                        "y": 0,
-                      }
-                    }
-                    style={
-                      Array [
-                        Object {
-                          "flexBasis": 0,
-                          "flexGrow": 1,
-                          "flexShrink": 1,
-                        },
-                      ]
-                    }
-                  >
-                    <View
-                      style={
-                        Array [
-                          Object {
-                            "position": "absolute",
-                          },
-                        ]
-                      }
-                    >
-                      <View
-                        fill="none"
-                        height={92}
-                        width={156}
-                      >
-                        <Text>
-                          undefined-SVG-Mock
-                        </Text>
-                      </View>
-                    </View>
-                  </BVLinearGradient>
-                </View>
-                <View
-                  baseColor="#0E78B7"
-                  style={
-                    Array [
-                      Object {
-                        "backgroundColor": "#0E78B7",
-                        "paddingBottom": 8,
-                        "paddingLeft": 8,
-                        "paddingRight": 8,
-                        "paddingTop": 8,
-                        "width": "100%",
-                      },
-                    ]
-                  }
-                >
-                  <Text
-                    style={
-                      Array [
-                        Object {
-                          "color": "#ffffff",
-                          "fontFamily": "Montserrat-Bold",
-                          "fontSize": 15,
-                          "lineHeight": 20,
-                          "textAlign": "left",
-                        },
-                      ]
-                    }
-                  >
-                    CD, vinyles, musique en ligne
-                  </Text>
-                </View>
-              </View>
-            </View>
-          </View>
-        </View>
-        <View
-          onLayout={[Function]}
-          style={null}
-        >
-          <View
-            style={
-              Object {
-                "flexDirection": "row",
-              }
-            }
-          >
-            <View
-              style={
-                Array [
-                  Object {
-                    "flexBasis": "50%",
-                    "paddingBottom": 4,
-                    "paddingLeft": 4,
-                    "paddingRight": 4,
-                    "paddingTop": 4,
+                    "paddingBottom": 8,
+                    "paddingLeft": 8,
+                    "paddingRight": 8,
+                    "paddingTop": 8,
                   },
                 ]
               }
@@ -1625,291 +1065,10 @@ exports[`<Search/> should render Search 1`] = `
                 Array [
                   Object {
                     "flexBasis": "50%",
-                    "paddingBottom": 4,
-                    "paddingLeft": 4,
-                    "paddingRight": 4,
-                    "paddingTop": 4,
-                  },
-                ]
-              }
-            >
-              <View
-                accessibilityLabel="Catégorie Conférences & rencontres"
-                accessibilityRole="button"
-                accessible={true}
-                collapsable={false}
-                focusable={true}
-                onClick={[Function]}
-                onResponderGrant={[Function]}
-                onResponderMove={[Function]}
-                onResponderRelease={[Function]}
-                onResponderTerminate={[Function]}
-                onResponderTerminationRequest={[Function]}
-                onStartShouldSetResponder={[Function]}
-                style={
-                  Object {
-                    "borderRadius": 8,
-                    "height": 156,
-                    "opacity": 1,
-                    "overflow": "hidden",
-                    "userSelect": "auto",
-                  }
-                }
-                testID="Catégorie Conférences & rencontres"
-              >
-                <View
-                  style={
-                    Array [
-                      Object {
-                        "flexBasis": 0,
-                        "flexGrow": 1,
-                        "flexShrink": 1,
-                        "overflow": "hidden",
-                        "width": "100%",
-                      },
-                    ]
-                  }
-                >
-                  <BVLinearGradient
-                    colors={
-                      Array [
-                        4294549013,
-                        4290271489,
-                      ]
-                    }
-                    endPoint={
-                      Object {
-                        "x": 0.5,
-                        "y": 1,
-                      }
-                    }
-                    locations={null}
-                    startPoint={
-                      Object {
-                        "x": 0.5,
-                        "y": 0,
-                      }
-                    }
-                    style={
-                      Array [
-                        Object {
-                          "flexBasis": 0,
-                          "flexGrow": 1,
-                          "flexShrink": 1,
-                        },
-                      ]
-                    }
-                  >
-                    <View
-                      style={
-                        Array [
-                          Object {
-                            "position": "absolute",
-                          },
-                        ]
-                      }
-                    >
-                      <View
-                        fill="none"
-                        height={92}
-                        width={156}
-                      >
-                        <Text>
-                          undefined-SVG-Mock
-                        </Text>
-                      </View>
-                    </View>
-                  </BVLinearGradient>
-                </View>
-                <View
-                  baseColor="#B85901"
-                  style={
-                    Array [
-                      Object {
-                        "backgroundColor": "#B85901",
-                        "paddingBottom": 8,
-                        "paddingLeft": 8,
-                        "paddingRight": 8,
-                        "paddingTop": 8,
-                        "width": "100%",
-                      },
-                    ]
-                  }
-                >
-                  <Text
-                    style={
-                      Array [
-                        Object {
-                          "color": "#ffffff",
-                          "fontFamily": "Montserrat-Bold",
-                          "fontSize": 15,
-                          "lineHeight": 20,
-                          "textAlign": "left",
-                        },
-                      ]
-                    }
-                  >
-                    Conférences & rencontres
-                  </Text>
-                </View>
-              </View>
-            </View>
-          </View>
-        </View>
-        <View
-          onLayout={[Function]}
-          style={null}
-        >
-          <View
-            style={
-              Object {
-                "flexDirection": "row",
-              }
-            }
-          >
-            <View
-              style={
-                Array [
-                  Object {
-                    "flexBasis": "50%",
-                    "paddingBottom": 4,
-                    "paddingLeft": 4,
-                    "paddingRight": 4,
-                    "paddingTop": 4,
-                  },
-                ]
-              }
-            >
-              <View
-                accessibilityLabel="Catégorie Évènements en ligne"
-                accessibilityRole="button"
-                accessible={true}
-                collapsable={false}
-                focusable={true}
-                onClick={[Function]}
-                onResponderGrant={[Function]}
-                onResponderMove={[Function]}
-                onResponderRelease={[Function]}
-                onResponderTerminate={[Function]}
-                onResponderTerminationRequest={[Function]}
-                onStartShouldSetResponder={[Function]}
-                style={
-                  Object {
-                    "borderRadius": 8,
-                    "height": 156,
-                    "opacity": 1,
-                    "overflow": "hidden",
-                    "userSelect": "auto",
-                  }
-                }
-                testID="Catégorie Évènements en ligne"
-              >
-                <View
-                  style={
-                    Array [
-                      Object {
-                        "flexBasis": 0,
-                        "flexGrow": 1,
-                        "flexShrink": 1,
-                        "overflow": "hidden",
-                        "width": "100%",
-                      },
-                    ]
-                  }
-                >
-                  <BVLinearGradient
-                    colors={
-                      Array [
-                        4280802472,
-                        4279141492,
-                      ]
-                    }
-                    endPoint={
-                      Object {
-                        "x": 0.5,
-                        "y": 1,
-                      }
-                    }
-                    locations={null}
-                    startPoint={
-                      Object {
-                        "x": 0.5,
-                        "y": 0,
-                      }
-                    }
-                    style={
-                      Array [
-                        Object {
-                          "flexBasis": 0,
-                          "flexGrow": 1,
-                          "flexShrink": 1,
-                        },
-                      ]
-                    }
-                  >
-                    <View
-                      style={
-                        Array [
-                          Object {
-                            "position": "absolute",
-                          },
-                        ]
-                      }
-                    >
-                      <View
-                        fill="none"
-                        height={92}
-                        width={156}
-                      >
-                        <Text>
-                          undefined-SVG-Mock
-                        </Text>
-                      </View>
-                    </View>
-                  </BVLinearGradient>
-                </View>
-                <View
-                  baseColor="#0E8474"
-                  style={
-                    Array [
-                      Object {
-                        "backgroundColor": "#0E8474",
-                        "paddingBottom": 8,
-                        "paddingLeft": 8,
-                        "paddingRight": 8,
-                        "paddingTop": 8,
-                        "width": "100%",
-                      },
-                    ]
-                  }
-                >
-                  <Text
-                    style={
-                      Array [
-                        Object {
-                          "color": "#ffffff",
-                          "fontFamily": "Montserrat-Bold",
-                          "fontSize": 15,
-                          "lineHeight": 20,
-                          "textAlign": "left",
-                        },
-                      ]
-                    }
-                  >
-                    Évènements en ligne
-                  </Text>
-                </View>
-              </View>
-            </View>
-            <View
-              style={
-                Array [
-                  Object {
-                    "flexBasis": "50%",
-                    "paddingBottom": 4,
-                    "paddingLeft": 4,
-                    "paddingRight": 4,
-                    "paddingTop": 4,
+                    "paddingBottom": 8,
+                    "paddingLeft": 8,
+                    "paddingRight": 8,
+                    "paddingTop": 8,
                   },
                 ]
               }
@@ -2053,16 +1212,16 @@ exports[`<Search/> should render Search 1`] = `
                 Array [
                   Object {
                     "flexBasis": "50%",
-                    "paddingBottom": 4,
-                    "paddingLeft": 4,
-                    "paddingRight": 4,
-                    "paddingTop": 4,
+                    "paddingBottom": 8,
+                    "paddingLeft": 8,
+                    "paddingRight": 8,
+                    "paddingTop": 8,
                   },
                 ]
               }
             >
               <View
-                accessibilityLabel="Catégorie Instruments de musique"
+                accessibilityLabel="Catégorie Livres"
                 accessibilityRole="button"
                 accessible={true}
                 collapsable={false}
@@ -2083,7 +1242,141 @@ exports[`<Search/> should render Search 1`] = `
                     "userSelect": "auto",
                   }
                 }
-                testID="Catégorie Instruments de musique"
+                testID="Catégorie Livres"
+              >
+                <View
+                  style={
+                    Array [
+                      Object {
+                        "flexBasis": 0,
+                        "flexGrow": 1,
+                        "flexShrink": 1,
+                        "overflow": "hidden",
+                        "width": "100%",
+                      },
+                    ]
+                  }
+                >
+                  <BVLinearGradient
+                    colors={
+                      Array [
+                        4293670008,
+                        4290777969,
+                      ]
+                    }
+                    endPoint={
+                      Object {
+                        "x": 0.5,
+                        "y": 1,
+                      }
+                    }
+                    locations={null}
+                    startPoint={
+                      Object {
+                        "x": 0.5,
+                        "y": 0,
+                      }
+                    }
+                    style={
+                      Array [
+                        Object {
+                          "flexBasis": 0,
+                          "flexGrow": 1,
+                          "flexShrink": 1,
+                        },
+                      ]
+                    }
+                  >
+                    <View
+                      style={
+                        Array [
+                          Object {
+                            "position": "absolute",
+                          },
+                        ]
+                      }
+                    >
+                      <View
+                        fill="none"
+                        height={92}
+                        width={156}
+                      >
+                        <Text>
+                          undefined-SVG-Mock
+                        </Text>
+                      </View>
+                    </View>
+                  </BVLinearGradient>
+                </View>
+                <View
+                  baseColor="#C01371"
+                  style={
+                    Array [
+                      Object {
+                        "backgroundColor": "#C01371",
+                        "paddingBottom": 8,
+                        "paddingLeft": 8,
+                        "paddingRight": 8,
+                        "paddingTop": 8,
+                        "width": "100%",
+                      },
+                    ]
+                  }
+                >
+                  <Text
+                    style={
+                      Array [
+                        Object {
+                          "color": "#ffffff",
+                          "fontFamily": "Montserrat-Bold",
+                          "fontSize": 15,
+                          "lineHeight": 20,
+                          "textAlign": "left",
+                        },
+                      ]
+                    }
+                  >
+                    Livres
+                  </Text>
+                </View>
+              </View>
+            </View>
+            <View
+              style={
+                Array [
+                  Object {
+                    "flexBasis": "50%",
+                    "paddingBottom": 8,
+                    "paddingLeft": 8,
+                    "paddingRight": 8,
+                    "paddingTop": 8,
+                  },
+                ]
+              }
+            >
+              <View
+                accessibilityLabel="Catégorie CD, vinyles, musique en ligne"
+                accessibilityRole="button"
+                accessible={true}
+                collapsable={false}
+                focusable={true}
+                onClick={[Function]}
+                onResponderGrant={[Function]}
+                onResponderMove={[Function]}
+                onResponderRelease={[Function]}
+                onResponderTerminate={[Function]}
+                onResponderTerminationRequest={[Function]}
+                onStartShouldSetResponder={[Function]}
+                style={
+                  Object {
+                    "borderRadius": 8,
+                    "height": 156,
+                    "opacity": 1,
+                    "overflow": "hidden",
+                    "userSelect": "auto",
+                  }
+                }
+                testID="Catégorie CD, vinyles, musique en ligne"
               >
                 <View
                   style={
@@ -2177,7 +1470,154 @@ exports[`<Search/> should render Search 1`] = `
                       ]
                     }
                   >
-                    Instruments de musique
+                    CD, vinyles, musique en ligne
+                  </Text>
+                </View>
+              </View>
+            </View>
+          </View>
+        </View>
+        <View
+          onLayout={[Function]}
+          style={null}
+        >
+          <View
+            style={
+              Object {
+                "flexDirection": "row",
+              }
+            }
+          >
+            <View
+              style={
+                Array [
+                  Object {
+                    "flexBasis": "50%",
+                    "paddingBottom": 8,
+                    "paddingLeft": 8,
+                    "paddingRight": 8,
+                    "paddingTop": 8,
+                  },
+                ]
+              }
+            >
+              <View
+                accessibilityLabel="Catégorie Arts & loisirs créatifs"
+                accessibilityRole="button"
+                accessible={true}
+                collapsable={false}
+                focusable={true}
+                onClick={[Function]}
+                onResponderGrant={[Function]}
+                onResponderMove={[Function]}
+                onResponderRelease={[Function]}
+                onResponderTerminate={[Function]}
+                onResponderTerminationRequest={[Function]}
+                onStartShouldSetResponder={[Function]}
+                style={
+                  Object {
+                    "borderRadius": 8,
+                    "height": 156,
+                    "opacity": 1,
+                    "overflow": "hidden",
+                    "userSelect": "auto",
+                  }
+                }
+                testID="Catégorie Arts & loisirs créatifs"
+              >
+                <View
+                  style={
+                    Array [
+                      Object {
+                        "flexBasis": 0,
+                        "flexGrow": 1,
+                        "flexShrink": 1,
+                        "overflow": "hidden",
+                        "width": "100%",
+                      },
+                    ]
+                  }
+                >
+                  <BVLinearGradient
+                    colors={
+                      Array [
+                        4289562623,
+                        4286789609,
+                      ]
+                    }
+                    endPoint={
+                      Object {
+                        "x": 0.5,
+                        "y": 1,
+                      }
+                    }
+                    locations={null}
+                    startPoint={
+                      Object {
+                        "x": 0.5,
+                        "y": 0,
+                      }
+                    }
+                    style={
+                      Array [
+                        Object {
+                          "flexBasis": 0,
+                          "flexGrow": 1,
+                          "flexShrink": 1,
+                        },
+                      ]
+                    }
+                  >
+                    <View
+                      style={
+                        Array [
+                          Object {
+                            "position": "absolute",
+                          },
+                        ]
+                      }
+                    >
+                      <View
+                        fill="none"
+                        height={92}
+                        width={156}
+                      >
+                        <Text>
+                          undefined-SVG-Mock
+                        </Text>
+                      </View>
+                    </View>
+                  </BVLinearGradient>
+                </View>
+                <View
+                  baseColor="#8337E9"
+                  style={
+                    Array [
+                      Object {
+                        "backgroundColor": "#8337E9",
+                        "paddingBottom": 8,
+                        "paddingLeft": 8,
+                        "paddingRight": 8,
+                        "paddingTop": 8,
+                        "width": "100%",
+                      },
+                    ]
+                  }
+                >
+                  <Text
+                    style={
+                      Array [
+                        Object {
+                          "color": "#ffffff",
+                          "fontFamily": "Montserrat-Bold",
+                          "fontSize": 15,
+                          "lineHeight": 20,
+                          "textAlign": "left",
+                        },
+                      ]
+                    }
+                  >
+                    Arts & loisirs créatifs
                   </Text>
                 </View>
               </View>
@@ -2187,10 +1627,291 @@ exports[`<Search/> should render Search 1`] = `
                 Array [
                   Object {
                     "flexBasis": "50%",
-                    "paddingBottom": 4,
-                    "paddingLeft": 4,
-                    "paddingRight": 4,
-                    "paddingTop": 4,
+                    "paddingBottom": 8,
+                    "paddingLeft": 8,
+                    "paddingRight": 8,
+                    "paddingTop": 8,
+                  },
+                ]
+              }
+            >
+              <View
+                accessibilityLabel="Catégorie Spectacles"
+                accessibilityRole="button"
+                accessible={true}
+                collapsable={false}
+                focusable={true}
+                onClick={[Function]}
+                onResponderGrant={[Function]}
+                onResponderMove={[Function]}
+                onResponderRelease={[Function]}
+                onResponderTerminate={[Function]}
+                onResponderTerminationRequest={[Function]}
+                onStartShouldSetResponder={[Function]}
+                style={
+                  Object {
+                    "borderRadius": 8,
+                    "height": 156,
+                    "opacity": 1,
+                    "overflow": "hidden",
+                    "userSelect": "auto",
+                  }
+                }
+                testID="Catégorie Spectacles"
+              >
+                <View
+                  style={
+                    Array [
+                      Object {
+                        "flexBasis": 0,
+                        "flexGrow": 1,
+                        "flexShrink": 1,
+                        "overflow": "hidden",
+                        "width": "100%",
+                      },
+                    ]
+                  }
+                >
+                  <BVLinearGradient
+                    colors={
+                      Array [
+                        4294472509,
+                        4291444499,
+                      ]
+                    }
+                    endPoint={
+                      Object {
+                        "x": 0.5,
+                        "y": 1,
+                      }
+                    }
+                    locations={null}
+                    startPoint={
+                      Object {
+                        "x": 0.5,
+                        "y": 0,
+                      }
+                    }
+                    style={
+                      Array [
+                        Object {
+                          "flexBasis": 0,
+                          "flexGrow": 1,
+                          "flexShrink": 1,
+                        },
+                      ]
+                    }
+                  >
+                    <View
+                      style={
+                        Array [
+                          Object {
+                            "position": "absolute",
+                          },
+                        ]
+                      }
+                    >
+                      <View
+                        fill="none"
+                        height={92}
+                        width={156}
+                      >
+                        <Text>
+                          undefined-SVG-Mock
+                        </Text>
+                      </View>
+                    </View>
+                  </BVLinearGradient>
+                </View>
+                <View
+                  baseColor="#CA3F13"
+                  style={
+                    Array [
+                      Object {
+                        "backgroundColor": "#CA3F13",
+                        "paddingBottom": 8,
+                        "paddingLeft": 8,
+                        "paddingRight": 8,
+                        "paddingTop": 8,
+                        "width": "100%",
+                      },
+                    ]
+                  }
+                >
+                  <Text
+                    style={
+                      Array [
+                        Object {
+                          "color": "#ffffff",
+                          "fontFamily": "Montserrat-Bold",
+                          "fontSize": 15,
+                          "lineHeight": 20,
+                          "textAlign": "left",
+                        },
+                      ]
+                    }
+                  >
+                    Spectacles
+                  </Text>
+                </View>
+              </View>
+            </View>
+          </View>
+        </View>
+        <View
+          onLayout={[Function]}
+          style={null}
+        >
+          <View
+            style={
+              Object {
+                "flexDirection": "row",
+              }
+            }
+          >
+            <View
+              style={
+                Array [
+                  Object {
+                    "flexBasis": "50%",
+                    "paddingBottom": 8,
+                    "paddingLeft": 8,
+                    "paddingRight": 8,
+                    "paddingTop": 8,
+                  },
+                ]
+              }
+            >
+              <View
+                accessibilityLabel="Catégorie Musées & visites culturelles"
+                accessibilityRole="button"
+                accessible={true}
+                collapsable={false}
+                focusable={true}
+                onClick={[Function]}
+                onResponderGrant={[Function]}
+                onResponderMove={[Function]}
+                onResponderRelease={[Function]}
+                onResponderTerminate={[Function]}
+                onResponderTerminationRequest={[Function]}
+                onStartShouldSetResponder={[Function]}
+                style={
+                  Object {
+                    "borderRadius": 8,
+                    "height": 156,
+                    "opacity": 1,
+                    "overflow": "hidden",
+                    "userSelect": "auto",
+                  }
+                }
+                testID="Catégorie Musées & visites culturelles"
+              >
+                <View
+                  style={
+                    Array [
+                      Object {
+                        "flexBasis": 0,
+                        "flexGrow": 1,
+                        "flexShrink": 1,
+                        "overflow": "hidden",
+                        "width": "100%",
+                      },
+                    ]
+                  }
+                >
+                  <BVLinearGradient
+                    colors={
+                      Array [
+                        4280802472,
+                        4279141492,
+                      ]
+                    }
+                    endPoint={
+                      Object {
+                        "x": 0.5,
+                        "y": 1,
+                      }
+                    }
+                    locations={null}
+                    startPoint={
+                      Object {
+                        "x": 0.5,
+                        "y": 0,
+                      }
+                    }
+                    style={
+                      Array [
+                        Object {
+                          "flexBasis": 0,
+                          "flexGrow": 1,
+                          "flexShrink": 1,
+                        },
+                      ]
+                    }
+                  >
+                    <View
+                      style={
+                        Array [
+                          Object {
+                            "position": "absolute",
+                          },
+                        ]
+                      }
+                    >
+                      <View
+                        fill="none"
+                        height={92}
+                        width={156}
+                      >
+                        <Text>
+                          undefined-SVG-Mock
+                        </Text>
+                      </View>
+                    </View>
+                  </BVLinearGradient>
+                </View>
+                <View
+                  baseColor="#0E8474"
+                  style={
+                    Array [
+                      Object {
+                        "backgroundColor": "#0E8474",
+                        "paddingBottom": 8,
+                        "paddingLeft": 8,
+                        "paddingRight": 8,
+                        "paddingTop": 8,
+                        "width": "100%",
+                      },
+                    ]
+                  }
+                >
+                  <Text
+                    style={
+                      Array [
+                        Object {
+                          "color": "#ffffff",
+                          "fontFamily": "Montserrat-Bold",
+                          "fontSize": 15,
+                          "lineHeight": 20,
+                          "textAlign": "left",
+                        },
+                      ]
+                    }
+                  >
+                    Musées & visites culturelles
+                  </Text>
+                </View>
+              </View>
+            </View>
+            <View
+              style={
+                Array [
+                  Object {
+                    "flexBasis": "50%",
+                    "paddingBottom": 8,
+                    "paddingLeft": 8,
+                    "paddingRight": 8,
+                    "paddingTop": 8,
                   },
                 ]
               }
@@ -2334,16 +2055,16 @@ exports[`<Search/> should render Search 1`] = `
                 Array [
                   Object {
                     "flexBasis": "50%",
-                    "paddingBottom": 4,
-                    "paddingLeft": 4,
-                    "paddingRight": 4,
-                    "paddingTop": 4,
+                    "paddingBottom": 8,
+                    "paddingLeft": 8,
+                    "paddingRight": 8,
+                    "paddingTop": 8,
                   },
                 ]
               }
             >
               <View
-                accessibilityLabel="Catégorie Livres"
+                accessibilityLabel="Catégorie Instruments de musique"
                 accessibilityRole="button"
                 accessible={true}
                 collapsable={false}
@@ -2364,7 +2085,7 @@ exports[`<Search/> should render Search 1`] = `
                     "userSelect": "auto",
                   }
                 }
-                testID="Catégorie Livres"
+                testID="Catégorie Instruments de musique"
               >
                 <View
                   style={
@@ -2382,8 +2103,8 @@ exports[`<Search/> should render Search 1`] = `
                   <BVLinearGradient
                     colors={
                       Array [
-                        4293670008,
-                        4290777969,
+                        4280337897,
+                        4279138487,
                       ]
                     }
                     endPoint={
@@ -2431,11 +2152,11 @@ exports[`<Search/> should render Search 1`] = `
                   </BVLinearGradient>
                 </View>
                 <View
-                  baseColor="#C01371"
+                  baseColor="#0E78B7"
                   style={
                     Array [
                       Object {
-                        "backgroundColor": "#C01371",
+                        "backgroundColor": "#0E78B7",
                         "paddingBottom": 8,
                         "paddingLeft": 8,
                         "paddingRight": 8,
@@ -2458,7 +2179,7 @@ exports[`<Search/> should render Search 1`] = `
                       ]
                     }
                   >
-                    Livres
+                    Instruments de musique
                   </Text>
                 </View>
               </View>
@@ -2468,10 +2189,10 @@ exports[`<Search/> should render Search 1`] = `
                 Array [
                   Object {
                     "flexBasis": "50%",
-                    "paddingBottom": 4,
-                    "paddingLeft": 4,
-                    "paddingRight": 4,
-                    "paddingTop": 4,
+                    "paddingBottom": 8,
+                    "paddingLeft": 8,
+                    "paddingRight": 8,
+                    "paddingTop": 8,
                   },
                 ]
               }
@@ -2615,16 +2336,16 @@ exports[`<Search/> should render Search 1`] = `
                 Array [
                   Object {
                     "flexBasis": "50%",
-                    "paddingBottom": 4,
-                    "paddingLeft": 4,
-                    "paddingRight": 4,
-                    "paddingTop": 4,
+                    "paddingBottom": 8,
+                    "paddingLeft": 8,
+                    "paddingRight": 8,
+                    "paddingTop": 8,
                   },
                 ]
               }
             >
               <View
-                accessibilityLabel="Catégorie Musées & visites culturelles"
+                accessibilityLabel="Catégorie Bibliothèques, Médiathèques"
                 accessibilityRole="button"
                 accessible={true}
                 collapsable={false}
@@ -2645,141 +2366,7 @@ exports[`<Search/> should render Search 1`] = `
                     "userSelect": "auto",
                   }
                 }
-                testID="Catégorie Musées & visites culturelles"
-              >
-                <View
-                  style={
-                    Array [
-                      Object {
-                        "flexBasis": 0,
-                        "flexGrow": 1,
-                        "flexShrink": 1,
-                        "overflow": "hidden",
-                        "width": "100%",
-                      },
-                    ]
-                  }
-                >
-                  <BVLinearGradient
-                    colors={
-                      Array [
-                        4280802472,
-                        4279141492,
-                      ]
-                    }
-                    endPoint={
-                      Object {
-                        "x": 0.5,
-                        "y": 1,
-                      }
-                    }
-                    locations={null}
-                    startPoint={
-                      Object {
-                        "x": 0.5,
-                        "y": 0,
-                      }
-                    }
-                    style={
-                      Array [
-                        Object {
-                          "flexBasis": 0,
-                          "flexGrow": 1,
-                          "flexShrink": 1,
-                        },
-                      ]
-                    }
-                  >
-                    <View
-                      style={
-                        Array [
-                          Object {
-                            "position": "absolute",
-                          },
-                        ]
-                      }
-                    >
-                      <View
-                        fill="none"
-                        height={92}
-                        width={156}
-                      >
-                        <Text>
-                          undefined-SVG-Mock
-                        </Text>
-                      </View>
-                    </View>
-                  </BVLinearGradient>
-                </View>
-                <View
-                  baseColor="#0E8474"
-                  style={
-                    Array [
-                      Object {
-                        "backgroundColor": "#0E8474",
-                        "paddingBottom": 8,
-                        "paddingLeft": 8,
-                        "paddingRight": 8,
-                        "paddingTop": 8,
-                        "width": "100%",
-                      },
-                    ]
-                  }
-                >
-                  <Text
-                    style={
-                      Array [
-                        Object {
-                          "color": "#ffffff",
-                          "fontFamily": "Montserrat-Bold",
-                          "fontSize": 15,
-                          "lineHeight": 20,
-                          "textAlign": "left",
-                        },
-                      ]
-                    }
-                  >
-                    Musées & visites culturelles
-                  </Text>
-                </View>
-              </View>
-            </View>
-            <View
-              style={
-                Array [
-                  Object {
-                    "flexBasis": "50%",
-                    "paddingBottom": 4,
-                    "paddingLeft": 4,
-                    "paddingRight": 4,
-                    "paddingTop": 4,
-                  },
-                ]
-              }
-            >
-              <View
-                accessibilityLabel="Catégorie Spectacles"
-                accessibilityRole="button"
-                accessible={true}
-                collapsable={false}
-                focusable={true}
-                onClick={[Function]}
-                onResponderGrant={[Function]}
-                onResponderMove={[Function]}
-                onResponderRelease={[Function]}
-                onResponderTerminate={[Function]}
-                onResponderTerminationRequest={[Function]}
-                onStartShouldSetResponder={[Function]}
-                style={
-                  Object {
-                    "borderRadius": 8,
-                    "height": 156,
-                    "opacity": 1,
-                    "overflow": "hidden",
-                    "userSelect": "auto",
-                  }
-                }
-                testID="Catégorie Spectacles"
+                testID="Catégorie Bibliothèques, Médiathèques"
               >
                 <View
                   style={
@@ -2873,7 +2460,422 @@ exports[`<Search/> should render Search 1`] = `
                       ]
                     }
                   >
-                    Spectacles
+                    Bibliothèques, Médiathèques
+                  </Text>
+                </View>
+              </View>
+            </View>
+            <View
+              style={
+                Array [
+                  Object {
+                    "flexBasis": "50%",
+                    "paddingBottom": 8,
+                    "paddingLeft": 8,
+                    "paddingRight": 8,
+                    "paddingTop": 8,
+                  },
+                ]
+              }
+            >
+              <View
+                accessibilityLabel="Catégorie Cartes jeunes"
+                accessibilityRole="button"
+                accessible={true}
+                collapsable={false}
+                focusable={true}
+                onClick={[Function]}
+                onResponderGrant={[Function]}
+                onResponderMove={[Function]}
+                onResponderRelease={[Function]}
+                onResponderTerminate={[Function]}
+                onResponderTerminationRequest={[Function]}
+                onStartShouldSetResponder={[Function]}
+                style={
+                  Object {
+                    "borderRadius": 8,
+                    "height": 156,
+                    "opacity": 1,
+                    "overflow": "hidden",
+                    "userSelect": "auto",
+                  }
+                }
+                testID="Catégorie Cartes jeunes"
+              >
+                <View
+                  style={
+                    Array [
+                      Object {
+                        "flexBasis": 0,
+                        "flexGrow": 1,
+                        "flexShrink": 1,
+                        "overflow": "hidden",
+                        "width": "100%",
+                      },
+                    ]
+                  }
+                >
+                  <BVLinearGradient
+                    colors={
+                      Array [
+                        4289562623,
+                        4286789609,
+                      ]
+                    }
+                    endPoint={
+                      Object {
+                        "x": 0.5,
+                        "y": 1,
+                      }
+                    }
+                    locations={null}
+                    startPoint={
+                      Object {
+                        "x": 0.5,
+                        "y": 0,
+                      }
+                    }
+                    style={
+                      Array [
+                        Object {
+                          "flexBasis": 0,
+                          "flexGrow": 1,
+                          "flexShrink": 1,
+                        },
+                      ]
+                    }
+                  >
+                    <View
+                      style={
+                        Array [
+                          Object {
+                            "position": "absolute",
+                          },
+                        ]
+                      }
+                    >
+                      <View
+                        fill="none"
+                        height={92}
+                        width={156}
+                      >
+                        <Text>
+                          undefined-SVG-Mock
+                        </Text>
+                      </View>
+                    </View>
+                  </BVLinearGradient>
+                </View>
+                <View
+                  baseColor="#8337E9"
+                  style={
+                    Array [
+                      Object {
+                        "backgroundColor": "#8337E9",
+                        "paddingBottom": 8,
+                        "paddingLeft": 8,
+                        "paddingRight": 8,
+                        "paddingTop": 8,
+                        "width": "100%",
+                      },
+                    ]
+                  }
+                >
+                  <Text
+                    style={
+                      Array [
+                        Object {
+                          "color": "#ffffff",
+                          "fontFamily": "Montserrat-Bold",
+                          "fontSize": 15,
+                          "lineHeight": 20,
+                          "textAlign": "left",
+                        },
+                      ]
+                    }
+                  >
+                    Cartes jeunes
+                  </Text>
+                </View>
+              </View>
+            </View>
+          </View>
+        </View>
+        <View
+          onLayout={[Function]}
+          style={null}
+        >
+          <View
+            style={
+              Object {
+                "flexDirection": "row",
+              }
+            }
+          >
+            <View
+              style={
+                Array [
+                  Object {
+                    "flexBasis": "50%",
+                    "paddingBottom": 8,
+                    "paddingLeft": 8,
+                    "paddingRight": 8,
+                    "paddingTop": 8,
+                  },
+                ]
+              }
+            >
+              <View
+                accessibilityLabel="Catégorie Conférences & rencontres"
+                accessibilityRole="button"
+                accessible={true}
+                collapsable={false}
+                focusable={true}
+                onClick={[Function]}
+                onResponderGrant={[Function]}
+                onResponderMove={[Function]}
+                onResponderRelease={[Function]}
+                onResponderTerminate={[Function]}
+                onResponderTerminationRequest={[Function]}
+                onStartShouldSetResponder={[Function]}
+                style={
+                  Object {
+                    "borderRadius": 8,
+                    "height": 156,
+                    "opacity": 1,
+                    "overflow": "hidden",
+                    "userSelect": "auto",
+                  }
+                }
+                testID="Catégorie Conférences & rencontres"
+              >
+                <View
+                  style={
+                    Array [
+                      Object {
+                        "flexBasis": 0,
+                        "flexGrow": 1,
+                        "flexShrink": 1,
+                        "overflow": "hidden",
+                        "width": "100%",
+                      },
+                    ]
+                  }
+                >
+                  <BVLinearGradient
+                    colors={
+                      Array [
+                        4294549013,
+                        4290271489,
+                      ]
+                    }
+                    endPoint={
+                      Object {
+                        "x": 0.5,
+                        "y": 1,
+                      }
+                    }
+                    locations={null}
+                    startPoint={
+                      Object {
+                        "x": 0.5,
+                        "y": 0,
+                      }
+                    }
+                    style={
+                      Array [
+                        Object {
+                          "flexBasis": 0,
+                          "flexGrow": 1,
+                          "flexShrink": 1,
+                        },
+                      ]
+                    }
+                  >
+                    <View
+                      style={
+                        Array [
+                          Object {
+                            "position": "absolute",
+                          },
+                        ]
+                      }
+                    >
+                      <View
+                        fill="none"
+                        height={92}
+                        width={156}
+                      >
+                        <Text>
+                          undefined-SVG-Mock
+                        </Text>
+                      </View>
+                    </View>
+                  </BVLinearGradient>
+                </View>
+                <View
+                  baseColor="#B85901"
+                  style={
+                    Array [
+                      Object {
+                        "backgroundColor": "#B85901",
+                        "paddingBottom": 8,
+                        "paddingLeft": 8,
+                        "paddingRight": 8,
+                        "paddingTop": 8,
+                        "width": "100%",
+                      },
+                    ]
+                  }
+                >
+                  <Text
+                    style={
+                      Array [
+                        Object {
+                          "color": "#ffffff",
+                          "fontFamily": "Montserrat-Bold",
+                          "fontSize": 15,
+                          "lineHeight": 20,
+                          "textAlign": "left",
+                        },
+                      ]
+                    }
+                  >
+                    Conférences & rencontres
+                  </Text>
+                </View>
+              </View>
+            </View>
+            <View
+              style={
+                Array [
+                  Object {
+                    "flexBasis": "50%",
+                    "paddingBottom": 8,
+                    "paddingLeft": 8,
+                    "paddingRight": 8,
+                    "paddingTop": 8,
+                  },
+                ]
+              }
+            >
+              <View
+                accessibilityLabel="Catégorie Évènements en ligne"
+                accessibilityRole="button"
+                accessible={true}
+                collapsable={false}
+                focusable={true}
+                onClick={[Function]}
+                onResponderGrant={[Function]}
+                onResponderMove={[Function]}
+                onResponderRelease={[Function]}
+                onResponderTerminate={[Function]}
+                onResponderTerminationRequest={[Function]}
+                onStartShouldSetResponder={[Function]}
+                style={
+                  Object {
+                    "borderRadius": 8,
+                    "height": 156,
+                    "opacity": 1,
+                    "overflow": "hidden",
+                    "userSelect": "auto",
+                  }
+                }
+                testID="Catégorie Évènements en ligne"
+              >
+                <View
+                  style={
+                    Array [
+                      Object {
+                        "flexBasis": 0,
+                        "flexGrow": 1,
+                        "flexShrink": 1,
+                        "overflow": "hidden",
+                        "width": "100%",
+                      },
+                    ]
+                  }
+                >
+                  <BVLinearGradient
+                    colors={
+                      Array [
+                        4280802472,
+                        4279141492,
+                      ]
+                    }
+                    endPoint={
+                      Object {
+                        "x": 0.5,
+                        "y": 1,
+                      }
+                    }
+                    locations={null}
+                    startPoint={
+                      Object {
+                        "x": 0.5,
+                        "y": 0,
+                      }
+                    }
+                    style={
+                      Array [
+                        Object {
+                          "flexBasis": 0,
+                          "flexGrow": 1,
+                          "flexShrink": 1,
+                        },
+                      ]
+                    }
+                  >
+                    <View
+                      style={
+                        Array [
+                          Object {
+                            "position": "absolute",
+                          },
+                        ]
+                      }
+                    >
+                      <View
+                        fill="none"
+                        height={92}
+                        width={156}
+                      >
+                        <Text>
+                          undefined-SVG-Mock
+                        </Text>
+                      </View>
+                    </View>
+                  </BVLinearGradient>
+                </View>
+                <View
+                  baseColor="#0E8474"
+                  style={
+                    Array [
+                      Object {
+                        "backgroundColor": "#0E8474",
+                        "paddingBottom": 8,
+                        "paddingLeft": 8,
+                        "paddingRight": 8,
+                        "paddingTop": 8,
+                        "width": "100%",
+                      },
+                    ]
+                  }
+                >
+                  <Text
+                    style={
+                      Array [
+                        Object {
+                          "color": "#ffffff",
+                          "fontFamily": "Montserrat-Bold",
+                          "fontSize": 15,
+                          "lineHeight": 20,
+                          "textAlign": "left",
+                        },
+                      ]
+                    }
+                  >
+                    Évènements en ligne
                   </Text>
                 </View>
               </View>

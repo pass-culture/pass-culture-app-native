@@ -17,7 +17,7 @@ type ButtonStyles = InterpolationFunction<
   >
 >
 
-export type ButtonStylesWeb = InterpolationFunction<
+type ButtonStylesWeb = InterpolationFunction<
   ThemedStyledProps<
     DetailedHTMLProps<ButtonHTMLAttributes<HTMLButtonElement>, HTMLButtonElement> &
       TouchableOpacityButtonProps,
@@ -25,7 +25,7 @@ export type ButtonStylesWeb = InterpolationFunction<
   >
 >
 
-export type ElementStylesWeb = InterpolationFunction<
+type ElementStylesWeb = InterpolationFunction<
   ThemedStyledProps<
     DetailedHTMLProps<HTMLAttributes<HTMLElement>, HTMLElement> & TouchableOpacityButtonProps,
     DefaultTheme

@@ -5,8 +5,8 @@ import styled from 'styled-components/native'
 import type { VerticalDotsProps } from './VerticalDots'
 import { VerticalDots } from './VerticalDots'
 
-export type AutomaticVerticalDotsProps = Omit<VerticalDotsProps, 'parentHeight' | 'parentWidth'>
-export type Dimensions = Omit<LayoutRectangle, 'x' | 'y'>
+type AutomaticVerticalDotsProps = Omit<VerticalDotsProps, 'parentHeight' | 'parentWidth'>
+type Dimensions = Omit<LayoutRectangle, 'x' | 'y'>
 
 /**
  * This component is just a full flex wrapper that gives props to `VerticalDotProps`

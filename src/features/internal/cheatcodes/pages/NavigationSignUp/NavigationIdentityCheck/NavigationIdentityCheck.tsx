@@ -115,8 +115,7 @@ export function NavigationIdentityCheck(): React.JSX.Element {
             onPress={() => navigate('BeneficiaryRequestSent')}
           />
         </Row>
-        <LinkToComponent name="IdentificationForkUbble" />
-        <LinkToComponent name="IdentificationForkEduconnect" />
+        <LinkToComponent name="IdentificationFork" />
       </StyledContainer>
       <Spacer.BottomScreen />
       <FastEduconnectConnectionRequestModal

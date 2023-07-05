@@ -15,5 +15,6 @@ export const favoriteResponseSnap: FavoriteResponse = {
     startDate: null,
     startPrice: null,
     subcategoryId: SubcategoryIdEnum.SPECTACLE_ENREGISTRE,
+    venueName: 'Cinéma de la fin',
   },
 }

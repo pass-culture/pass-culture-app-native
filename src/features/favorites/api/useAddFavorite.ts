@@ -63,7 +63,7 @@ export function useAddFavorite({ onSuccess }: { onSuccess?: (data?: FavoriteResp
     },
     onError: (
       error: Error | ApiError,
-      variables: FavoriteRequest,
+      _variables: FavoriteRequest,
       context: FavoriteMutationContext | undefined
     ) => {
       showErrorSnackBar({

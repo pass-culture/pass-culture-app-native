@@ -4,7 +4,7 @@ import { api } from 'api/api'
 import { RehydrationProfile } from 'features/identityCheck/types'
 import { QueryKeys } from 'libs/queryKeys'
 
-export async function getProfileInfo() {
+async function getProfileInfo() {
   try {
     return await api.getnativev1subscriptionprofile()
   } catch {

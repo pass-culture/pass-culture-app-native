@@ -1,5 +1,5 @@
 import { homeNavConfig } from 'features/navigation/TabBar/helpers'
-import { renderHook } from 'tests/utils'
+import { renderHook } from 'tests/utils/web'
 
 import { useGoBack } from './useGoBack'
 

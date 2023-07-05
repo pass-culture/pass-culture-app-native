@@ -9,7 +9,7 @@ import {
 import { NonEligible } from 'features/onboarding/types'
 import { formatDateToISOStringWithoutTime } from 'libs/parsers'
 import { storage } from 'libs/storage'
-import { fireEvent, render } from 'tests/utils'
+import { fireEvent, render, screen } from 'tests/utils'
 
 import { SetBirthday } from './SetBirthday'
 
@@ -28,17 +28,18 @@ describe('<SetBirthday />', () => {
   })
 
   it('should render correctly', () => {
-    const renderAPI = render(<SetBirthday {...props} />)
-    expect(renderAPI).toMatchSnapshot()
+    render(<SetBirthday {...props} />)
+
+    expect(screen).toMatchSnapshot()
   })
 
   it('should call goToNextStep() when the date is selected and press the button "Continuer"', () => {
-    const { getByTestId } = render(<SetBirthday {...props} />)
+    render(<SetBirthday {...props} />)
 
-    const datePicker = getByTestId('date-picker-spinner-native')
+    const datePicker = screen.getByTestId('date-picker-spinner-native')
     fireEvent(datePicker, 'onChange', { nativeEvent: { timestamp: ELIGIBLE_AGE_DATE } })
 
-    const continueButton = getByTestId('Continuer')
+    const continueButton = screen.getByTestId('Continuer')
     fireEvent.press(continueButton)
 
     expect(props.goToNextStep).toBeCalledWith({
@@ -50,12 +51,11 @@ describe('<SetBirthday />', () => {
     'should set default date when no specific user age in local storage',
     (userAge) => {
       storage.saveObject('user_age', userAge)
-      const { getByTestId } = render(<SetBirthday {...props} />)
+      render(<SetBirthday {...props} />)
 
-      const datePicker = getByTestId('date-picker-spinner-native')
-      const defaultDate = datePicker.props.date
+      const datePicker = screen.getByTestId('date-picker-spinner-native')
 
-      expect(defaultDate).toBe(DEFAULT_SELECTED_DATE.getTime())
+      expect(datePicker.props.date).toBe(DEFAULT_SELECTED_DATE.getTime())
     }
   )
 
@@ -63,10 +63,9 @@ describe('<SetBirthday />', () => {
     'should set default year to user birth year when user age is in local storage',
     async (userAge) => {
       storage.saveObject('user_age', userAge)
+      render(<SetBirthday {...props} />)
 
-      const { findByTestId } = render(<SetBirthday {...props} />)
-
-      const datePicker = await findByTestId('date-picker-spinner-native')
+      const datePicker = await screen.findByTestId('date-picker-spinner-native')
       const spinnerDate = new Date(datePicker.props.date)
 
       expect(spinnerDate.getDate()).toBe(1)

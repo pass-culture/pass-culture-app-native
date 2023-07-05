@@ -1,5 +1,5 @@
 import { SplashScreenProvider, useSplashScreenContext } from 'libs/splashscreen/splashscreen'
-import { renderHook } from 'tests/utils'
+import { renderHook } from 'tests/utils/web'
 
 describe('useSplashScreenContext()', () => {
   it('should always have a hidden splashscreen', () => {

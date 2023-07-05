@@ -12,7 +12,7 @@ interface FilterProps {
   opacity: number
 }
 
-export interface CategoryBlockProps {
+interface CategoryBlockProps {
   title: string
   navigateTo: InternalNavigationProps['navigateTo']
   filter: FilterProps

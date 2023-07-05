@@ -15,18 +15,18 @@ export function NoBookingsView() {
     DOUBLE_LINE_BREAK +
     'Il est possible que certaines réservations ne s’affichent pas hors connexion. Connecte-toi à internet pour vérifier.'
 
-  return !netInfo.isConnected ? (
+  return netInfo.isConnected ? (
     <NoResultsView
       title={title}
-      offline
-      explanations={explanationsOffline}
+      explanations="Tu n’as pas de réservation en cours. Explore le catalogue pour trouver ton bonheur&nbsp;!"
       icon={NoBookings}
       trackingExplorerOffersFrom="bookings"
     />
   ) : (
     <NoResultsView
       title={title}
-      explanations="Tu n’as pas de réservation en cours. Explore le catalogue pour trouver ton bonheur&nbsp;!"
+      offline
+      explanations={explanationsOffline}
       icon={NoBookings}
       trackingExplorerOffersFrom="bookings"
     />

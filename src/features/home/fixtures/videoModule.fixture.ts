@@ -17,4 +17,7 @@ export const videoModuleFixture: VideoModule = {
   color: Color.Aquamarine,
   videoTag: 'FAQ',
   offerTitle: 'Pour aller plus loin…',
+  videoPublicationDate: '2023-06-16',
+  videoDescription:
+    'Lujipeka répond à vos questions sur sa tournée, sa musique, ses inspirations et pleins d’autres questions&nbsp;!',
 }

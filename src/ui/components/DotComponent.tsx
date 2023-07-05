@@ -7,7 +7,7 @@ import { getSpacing } from 'ui/theme'
 // eslint-disable-next-line no-restricted-imports
 import { ColorsEnum } from 'ui/theme/colors'
 
-export function getDotColors(
+function getDotColors(
   theme: DefaultTheme,
   stepIndex: number,
   currentStepIndex: number,

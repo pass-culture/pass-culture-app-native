@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { render, checkAccessibilityFor, act } from 'tests/utils/web'
+import { render, checkAccessibilityFor, waitFor, screen } from 'tests/utils/web'
 
 import { ChangeEmail } from './ChangeEmail'
 
@@ -17,10 +17,13 @@ describe('<ChangeEmail/>', () => {
     it('should not have basic accessibility issues', async () => {
       mockV4.mockReturnValueOnce('emailInput').mockReturnValueOnce('passwordInput')
       const { container } = render(<ChangeEmail />)
-      await act(async () => {
-        const results = await checkAccessibilityFor(container)
-        expect(results).toHaveNoViolations()
+
+      await waitFor(() => {
+        expect(screen.getByTestId('Entrée pour l’email')).toHaveFocus()
       })
+
+      const results = await checkAccessibilityFor(container)
+      expect(results).toHaveNoViolations()
     })
   })
 })

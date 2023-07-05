@@ -3,6 +3,7 @@ export enum PreValidationSignupStep {
   Password = 'Password',
   Birthday = 'Birthday',
   CGU = 'CGU',
+  ConfirmationEmailSent = 'ConfirmationEmailSent',
 }
 
 enum PostValidationSignupStep {

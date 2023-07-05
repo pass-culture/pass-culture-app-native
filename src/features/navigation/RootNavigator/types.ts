@@ -17,6 +17,8 @@ export type Referrals =
   | 'bookingimpossible'
   | 'similar_offer'
   | 'setemail'
+  | 'videoModal'
+  | 'video'
 
 type BaseThematicHome = {
   homeId: string
@@ -66,8 +68,10 @@ export type OnboardingRootStackParamList = {
 
 export type TrustedDeviceRootStackParamList = {
   AccountSecurity: { token: string }
+  AccountSecurityBuffer: { token: string }
   NavigationTrustedDevice: undefined
   SuspensionChoice: undefined
+  SuspensionChoiceExpiredLink: undefined
   SuspensionConfirmation: undefined
   TrustedDeviceInfos: undefined
 }
@@ -112,8 +116,7 @@ export type SubscriptionRootStackParamList = {
   SelectIDOrigin: undefined
   SelectIDStatus: undefined
   SelectPhoneStatus: undefined
-  IdentificationForkUbble: undefined
-  IdentificationForkEduconnect: undefined
+  IdentificationFork: undefined
   // TODO(PC-12433): this duplicate route is required until we solve PC-12433
   Validation: {
     firstName?: string
@@ -140,7 +143,6 @@ export type SubscriptionRootStackParamList = {
  */
 export type RootStackParamList = {
   SignupForm: { preventCancellation?: boolean; offerId?: number } | undefined
-  SignupFormV2: undefined
   Maintenance: undefined
   ABTestingPOC: undefined
   AccountCreated: undefined

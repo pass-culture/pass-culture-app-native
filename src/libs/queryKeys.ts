@@ -2,6 +2,7 @@ export enum QueryKeys {
   ADDRESSES = 'addresses',
   ACCOUNT_SUSPENSION_DATE = 'accountSuspensionDate',
   ACCOUNT_SUSPENSION_STATUS = 'accountSuspensionStatus',
+  ACCOUNT_SUSPEND_TOKEN_VALIDATION = 'accountSuspendTokenValidation',
   BOOKINGS = 'bookings',
   CITIES = 'cities',
   CULTURAL_SURVEY_ANSWERS = 'culturalSurveyAnswers',

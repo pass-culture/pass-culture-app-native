@@ -4,7 +4,7 @@ import styled from 'styled-components/native'
 
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 
-export type Props = {
+type Props = {
   accessibilityLabel?: string
   withSpaceBefore?: boolean
   withSpaceAfter?: boolean

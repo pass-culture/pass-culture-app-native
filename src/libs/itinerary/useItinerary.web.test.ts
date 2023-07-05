@@ -1,6 +1,6 @@
 import { openGoogleMapsItinerary } from 'libs/itinerary/openGoogleMapsItinerary'
 import { useItinerary } from 'libs/itinerary/useItinerary'
-import { renderHook, waitFor } from 'tests/utils'
+import { renderHook, waitFor } from 'tests/utils/web'
 import { SnackBarHelperSettings } from 'ui/components/snackBar/types'
 
 jest.mock('libs/itinerary/openGoogleMapsItinerary')

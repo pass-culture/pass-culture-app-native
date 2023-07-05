@@ -113,10 +113,7 @@ export function getNativeCategoryFromEnum(
   return undefined
 }
 
-export function getGenreTypeFromEnum(
-  data: SubcategoriesResponseModelv2 | undefined,
-  genreType?: string
-) {
+function getGenreTypeFromEnum(data: SubcategoriesResponseModelv2 | undefined, genreType?: string) {
   if (data && genreType) {
     return data.genreTypes
       .map((gt) => gt.values)
@@ -228,11 +225,11 @@ export function getNativeCategories(
   return getUniqueBy(nativeCategories, 'name').sort(searchGroupOrNativeCategorySortComparator)
 }
 
-export function getIsCategory(item: Item): item is SearchGroupNameEnumv2 {
+function getIsCategory(item: Item): item is SearchGroupNameEnumv2 {
   return Object.values(SearchGroupNameEnumv2).includes(item as SearchGroupNameEnumv2)
 }
 
-export function getIsNativeCategory(item: Item): item is NativeCategoryIdEnumv2 {
+function getIsNativeCategory(item: Item): item is NativeCategoryIdEnumv2 {
   return Object.values(NativeCategoryIdEnumv2).includes(item as NativeCategoryIdEnumv2)
 }
 

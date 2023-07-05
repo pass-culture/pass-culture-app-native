@@ -9,8 +9,7 @@ import { IdentityCheckEduConnectForm } from 'features/identityCheck/pages/identi
 import { IdentityCheckValidation } from 'features/identityCheck/pages/identification/educonnect/IdentityCheckValidation'
 import { withEduConnectErrorBoundary } from 'features/identityCheck/pages/identification/errors/eduConnect/EduConnectErrorBoundary'
 import { EduConnectErrors } from 'features/identityCheck/pages/identification/errors/eduConnect/EduConnectErrors'
-import { IdentificationForkEduconnect } from 'features/identityCheck/pages/identification/IdentificationForkEduconnect'
-import { IdentificationForkUbble } from 'features/identityCheck/pages/identification/IdentificationForkUbble'
+import { IdentificationFork } from 'features/identityCheck/pages/identification/IdentificationFork'
 import { IdentityCheckUnavailable } from 'features/identityCheck/pages/identification/IdentityCheckUnavailable'
 import { ComeBackLater } from 'features/identityCheck/pages/identification/ubble/ComeBackLater'
 import { ExpiredOrLostID } from 'features/identityCheck/pages/identification/ubble/ExpiredOrLostID'
@@ -194,15 +193,9 @@ export const subscriptionRoutes: GenericRoute<SubscriptionRootStackParamList>[] 
     options: { title: 'Démarches-Simplifiées' },
   },
   {
-    name: 'IdentificationForkUbble',
-    component: IdentificationForkUbble,
-    path: 'identification/fourche-ubble',
-    options: { title: 'Identification' },
-  },
-  {
-    name: 'IdentificationForkEduconnect',
-    component: IdentificationForkEduconnect,
-    path: 'identification/fourche-educonnect',
+    name: 'IdentificationFork',
+    component: IdentificationFork,
+    path: 'identification/fourche',
     options: { title: 'Identification' },
   },
   // Confirmation

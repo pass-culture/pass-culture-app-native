@@ -2,8 +2,7 @@ import { RouteProp } from '@react-navigation/native'
 import React from 'react'
 import { openInbox } from 'react-native-email-link'
 
-import { mockGoBack } from 'features/navigation/__mocks__/useGoBack'
-import { navigateToHome } from 'features/navigation/helpers'
+import { navigate } from '__mocks__/@react-navigation/native'
 import { RootStackParamList } from 'features/navigation/RootNavigator/types'
 import { fireEvent, render, screen } from 'tests/utils'
 
@@ -16,6 +15,7 @@ const routeMock: RouteProp<RootStackParamList, 'ResetPasswordEmailSent'> = {
   name: 'ResetPasswordEmailSent',
   params: { email: 'john.doe@gmail.com' },
 }
+
 describe('<ResetPasswordEmailSent />', () => {
   it('should match snapshot', () => {
     render(<ResetPasswordEmailSent route={routeMock} />)
@@ -23,20 +23,13 @@ describe('<ResetPasswordEmailSent />', () => {
     expect(screen).toMatchSnapshot()
   })
 
-  it('should redirect to previous screen when clicking on ArrowPrevious icon', async () => {
+  it('should redirect to Login when clicking on "Quitter" button', async () => {
     render(<ResetPasswordEmailSent route={routeMock} />)
 
-    fireEvent.press(screen.getByLabelText('Revenir en arrière'))
+    const quitButton = await screen.findByText('Quitter')
+    fireEvent.press(quitButton)
 
-    expect(mockGoBack).toHaveBeenCalledTimes(1)
-  })
-
-  it('should redirect to Home when clicking on Close icon', async () => {
-    render(<ResetPasswordEmailSent route={routeMock} />)
-
-    fireEvent.press(await screen.findByLabelText('Revenir à l’accueil'))
-
-    expect(navigateToHome).toHaveBeenCalledTimes(1)
+    expect(navigate).toBeCalledWith('Login', undefined)
   })
 
   it('should open mail app when clicking on check email button', async () => {

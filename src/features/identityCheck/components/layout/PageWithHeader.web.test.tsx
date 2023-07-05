@@ -3,7 +3,7 @@ import { Text } from 'react-native'
 
 import { PageWithHeader } from 'features/identityCheck/components/layout/PageWithHeader'
 import { mockGoBack } from 'features/navigation/__mocks__/useGoBack'
-import { render } from 'tests/utils'
+import { render } from 'tests/utils/web'
 
 describe('<PageWithHeader/>', () => {
   it('should render correctly', () => {

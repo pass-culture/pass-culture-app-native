@@ -3,7 +3,7 @@ import styled from 'styled-components/native'
 
 import { Spacer, Typo } from 'ui/theme'
 
-export interface BookingExpirationProps {
+interface BookingExpirationProps {
   children: ReactNode
   expirationDate: string
 }

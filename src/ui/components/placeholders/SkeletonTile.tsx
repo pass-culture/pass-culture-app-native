@@ -1,5 +1,6 @@
+import isChromatic from 'chromatic/isChromatic'
 import React, { memo, useEffect } from 'react'
-import { Animated, Easing, StyleSheet } from 'react-native'
+import { Animated, Easing, Platform, StyleSheet } from 'react-native'
 import LinearGradient from 'react-native-linear-gradient'
 import styled, { useTheme } from 'styled-components/native'
 
@@ -20,6 +21,10 @@ const useWaveAnimation = (width: number) => {
   })
 
   useEffect(() => {
+    // we want to avoid the screenshots to differ because of the animation, so disable it
+    // We need both these values to be true to not activate the animation
+    if (Platform.OS === 'web' && isChromatic()) return
+
     Animated.loop(
       Animated.timing(animation, {
         toValue: 1,
