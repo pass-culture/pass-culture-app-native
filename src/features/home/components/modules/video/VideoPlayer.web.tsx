@@ -4,6 +4,7 @@ import YouTube, { YouTubeProps } from 'react-youtube'
 import styled, { useTheme } from 'styled-components/native'
 
 import { getVideoPlayerDimensions } from 'features/home/components/helpers/getVideoPlayerDimensions'
+import { YouTubeEvent } from 'features/home/components/modules/video/types'
 import { VideoEndView } from 'features/home/components/modules/video/VideoEndView'
 import { VideoErrorView } from 'features/home/components/modules/video/VideoErrorView'
 import { analytics } from 'libs/analytics'
@@ -54,8 +55,7 @@ export const VideoPlayer: React.FC<VideoPlayerProps> = ({
     },
   }
 
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  function onPlayerStateChange(event: any) {
+  function onPlayerStateChange(event: YouTubeEvent) {
     if (event.data === YouTube.PlayerState.ENDED) {
       setHasFinishPlaying(true)
       analytics.logHasSeenAllVideo(moduleId)
