@@ -29,6 +29,7 @@ import { PriceModal } from 'features/search/pages/modals/PriceModal/PriceModal'
 import { analytics } from 'libs/analytics'
 import { useIsFalseWithDelay } from 'libs/hooks/useIsFalseWithDelay'
 import { plural } from 'libs/plural'
+import { Helmet } from 'libs/react-helmet/Helmet'
 import { Offer } from 'shared/offer/types'
 import { useOpacityTransition } from 'ui/animations/helpers/useOpacityTransition'
 import { Li } from 'ui/components/Li'
@@ -37,7 +38,6 @@ import { HitPlaceholder, NumberOfResultsPlaceholder } from 'ui/components/placeh
 import { ScrollToTopButton } from 'ui/components/ScrollToTopButton'
 import { Ul } from 'ui/components/Ul'
 import { getSpacing, Spacer } from 'ui/theme'
-import { Helmet } from 'ui/web/global/Helmet'
 
 const ANIMATION_DURATION = 700
 
@@ -161,7 +161,12 @@ export const SearchResults: React.FC = () => {
 
   return (
     <React.Fragment>
-      {isFocused ? <Helmet title={helmetTitle} /> : null}
+      {isFocused ? (
+        <Helmet>
+          <title>{helmetTitle}</title>
+          <meta name="robots" content="noindex" />
+        </Helmet>
+      ) : null}
       <AutoScrollSwitch
         title="Activer le chargement automatique des résultats"
         active={autoScrollEnabled}
