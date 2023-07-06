@@ -25,6 +25,7 @@ export const NoContentError = () => {
     <React.Fragment>
       <Helmet>
         <title>{helmetTitle}</title>
+        <meta name="robots" content="noindex" />
       </Helmet>
       <GenericErrorPage
         title="Oups&nbsp;!"
