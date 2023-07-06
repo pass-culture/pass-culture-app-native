@@ -1,4 +1,6 @@
 import React, { useRef, useState } from 'react'
+// eslint-disable-next-line no-restricted-imports
+import { isChrome } from 'react-device-detect'
 import { useWindowDimensions } from 'react-native'
 import YouTube, { YouTubeProps } from 'react-youtube'
 import styled, { useTheme } from 'styled-components/native'
@@ -8,6 +10,8 @@ import { YouTubeEvent } from 'features/home/components/modules/video/types'
 import { VideoEndView } from 'features/home/components/modules/video/VideoEndView'
 import { VideoErrorView } from 'features/home/components/modules/video/VideoErrorView'
 import { analytics } from 'libs/analytics'
+// eslint-disable-next-line no-restricted-imports
+import { isMobileDeviceDetectOnWeb } from 'libs/react-device-detect'
 import { Offer } from 'shared/offer/types'
 import { theme } from 'theme'
 import { getSpacing } from 'ui/theme'
@@ -45,6 +49,10 @@ export const VideoPlayer: React.FC<VideoPlayerProps> = ({
     playerRef.current?.internalPlayer.seekTo(0, true)
   }
 
+  // remove the fullscreen video for Chrome - mobile as
+  // the dimensions are not appropriated and not working
+  const fs = isChrome && isMobileDeviceDetectOnWeb ? false : true
+
   const opts: YouTubeProps['opts'] = {
     height: playerHeight,
     width: playerWidth,
@@ -52,6 +60,7 @@ export const VideoPlayer: React.FC<VideoPlayerProps> = ({
       autoplay: true,
       modestbranding: true,
       rel: false,
+      fs: fs,
     },
   }
 
