@@ -15,6 +15,7 @@ export const PageNotFound: React.FC = () => {
     <React.Fragment>
       <Helmet>
         <title>{helmetTitle}</title>
+        <meta name="robots" content="noindex" />
       </Helmet>
       <GenericInfoPage
         title="Page introuvable&nbsp;!"
