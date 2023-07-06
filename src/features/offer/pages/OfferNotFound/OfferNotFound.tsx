@@ -32,6 +32,7 @@ export const OfferNotFound = ({ resetErrorBoundary }: ScreenErrorProps) => {
     <React.Fragment>
       <Helmet>
         <title>{helmetTitle}</title>
+        <meta name="robots" content="noindex" />
       </Helmet>
       <GenericInfoPage
         title="Offre introuvable&nbsp;!"
