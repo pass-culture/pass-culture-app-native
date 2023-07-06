@@ -157,7 +157,7 @@ export const SignupForm: FunctionComponent = () => {
   const RightButton = isLastStep ? (
     <RightButtonText onClose={navigateToHome} wording="Fermer" />
   ) : (
-    <RightButtonText onClose={showQuitSignupModal} wording="Annuler" />
+    <RightButtonText onClose={showQuitSignupModal} wording="Quitter" />
   )
 
   return (
