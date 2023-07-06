@@ -32,7 +32,7 @@ export const useCookies = () => {
     state: ConsentState.LOADING,
   })
   const { user: userProfileInfo } = useAuthContext()
-  const { mutate: persist } = usePersistCookieConsent()
+  const { mutateAsync: persist } = usePersistCookieConsent()
 
   useEffect(() => {
     getCookiesChoice().then((cookies) => {
@@ -111,18 +111,20 @@ const setConsentAndChoiceDateTime = (
 }
 
 const usePersistCookieConsent = () => {
-  return useMutation(
-    async (cookiesChoice: CookiesConsent) => {
-      await storage.saveObject(COOKIES_CONSENT_KEY, cookiesChoice)
+  return useMutation(async (cookiesChoice: CookiesConsent): Promise<void> => {
+    await storage.saveObject(COOKIES_CONSENT_KEY, cookiesChoice)
 
+    try {
       if (cookiesChoice.consent) {
         await api.postnativev1cookiesConsent(omit(cookiesChoice, ['buildVersion']))
       }
-    },
-    {
-      onError: () => {
-        eventMonitoring.captureException(new Error("can't log cookies consent choice"))
-      },
+    } catch (error) {
+      eventMonitoring.captureMessage(
+        `can‘t log cookies consent choice ; reason: "${
+          error instanceof Error ? error.message : undefined
+        }"`,
+        'info'
+      )
     }
-  )
+  })
 }
