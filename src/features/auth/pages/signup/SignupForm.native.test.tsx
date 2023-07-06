@@ -1,3 +1,4 @@
+import mockdate from 'mockdate'
 import { rest } from 'msw'
 import React from 'react'
 import DeviceInfo from 'react-native-device-info'
@@ -5,7 +6,7 @@ import DeviceInfo from 'react-native-device-info'
 import { navigate } from '__mocks__/@react-navigation/native'
 import { api } from 'api/api'
 import { AccountRequest } from 'api/gen'
-import { ELIGIBLE_AGE_DATE } from 'features/auth/fixtures/fixtures'
+import { CURRENT_DATE, ELIGIBLE_AGE_DATE } from 'features/auth/fixtures/fixtures'
 import { SignupForm } from 'features/auth/pages/signup/SignupForm'
 import { mockGoBack } from 'features/navigation/__mocks__/useGoBack'
 import { navigateToHomeConfig } from 'features/navigation/helpers'
@@ -23,8 +24,22 @@ const getSystemNameSpy = jest.spyOn(DeviceInfo, 'getSystemName')
 const useFeatureFlagSpy = jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockReturnValue(false)
 const apiSignUpSpy = jest.spyOn(api, 'postnativev1account')
 
+const realUseState = React.useState
+const mockUseState = jest.spyOn(React, 'useState')
+
+mockdate.set(CURRENT_DATE)
+
 describe('Signup Form', () => {
-  it('should render correctly', async () => {
+  it.each`
+    stepIndex | component
+    ${1}      | ${'SetEmail'}
+    ${2}      | ${'SetPassword'}
+    ${3}      | ${'SetBirthday'}
+    ${4}      | ${'AcceptCgu'}
+  `('should render correctly for $component', async ({ stepIndex }) => {
+    mockUseState.mockImplementationOnce(() => realUseState(stepIndex))
+    mockUseState.mockImplementationOnce(() => realUseState(stepIndex))
+
     render(<SignupForm />)
     await act(async () => {})
 
@@ -43,7 +58,7 @@ describe('Signup Form', () => {
 
       await screen.findByText('Crée-toi un compte')
 
-      const goBackButton = screen.queryByText('Annuler')
+      const goBackButton = screen.queryByText('Quitter')
       expect(goBackButton).toBeNull()
     })
 
@@ -54,7 +69,7 @@ describe('Signup Form', () => {
       fireEvent.changeText(emailInput, 'email@gmail.com')
       await act(() => fireEvent.press(screen.getByText('Continuer')))
 
-      fireEvent.press(screen.getByText('Annuler'))
+      fireEvent.press(screen.getByText('Quitter'))
 
       expect(screen.queryByText('Veux-tu abandonner l’inscription ?')).toBeTruthy()
     })
@@ -103,7 +118,7 @@ describe('Signup Form', () => {
 
       await screen.findAllByText('Mot de passe')
 
-      const quitButton = screen.getByText('Annuler')
+      const quitButton = screen.getByText('Quitter')
       fireEvent.press(quitButton)
 
       expect(analytics.logQuitSignup).toHaveBeenNthCalledWith(1, 'SetPassword')
@@ -118,7 +133,7 @@ describe('Signup Form', () => {
 
       await screen.findAllByText('Mot de passe')
 
-      fireEvent.press(screen.getByText('Annuler'))
+      fireEvent.press(screen.getByText('Quitter'))
       fireEvent.press(screen.getByText('Abandonner l’inscription'))
 
       expect(analytics.logCancelSignup).toHaveBeenCalledWith('Password')

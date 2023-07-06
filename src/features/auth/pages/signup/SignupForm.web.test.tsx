@@ -37,9 +37,10 @@ describe('<SignupForm/>', () => {
 
     it.each`
       stepIndex | component
-      ${1}      | ${'SetPassword'}
-      ${2}      | ${'SetBirthday'}
-      ${3}      | ${'AcceptCgu'}
+      ${1}      | ${'SetEmail'}
+      ${2}      | ${'SetPassword'}
+      ${3}      | ${'SetBirthday'}
+      ${4}      | ${'AcceptCgu'}
     `('should not have basic accessibility issues for $component', async ({ stepIndex }) => {
       mockUseState.mockImplementationOnce(() => realUseState(stepIndex))
       mockUseState.mockImplementationOnce(() => realUseState(stepIndex))

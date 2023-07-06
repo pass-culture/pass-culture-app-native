@@ -33,7 +33,7 @@ describe('ReinitializePassword Page', () => {
     fireEvent.changeText(passwordInput, 'user@AZERTY123')
     fireEvent.changeText(confirmationInput, 'user@AZERTY123')
 
-    const continueButton = screen.getByTestId('Continuer')
+    const continueButton = screen.getByText('Continuer')
 
     await waitFor(async () => {
       expect(continueButton).toBeEnabled()

@@ -79,7 +79,7 @@ export const ReinitializePassword = () => {
       <Spacer.Column numberOfSpaces={6} />
       <Form.MaxWidth>
         <PasswordInput
-          label="Nouveau mot de passe"
+          label="Mot de passe"
           accessibilityDescribedBy={passwordDescribedBy}
           value={password}
           autoFocus
@@ -111,6 +111,7 @@ export const ReinitializePassword = () => {
           onPress={submitPassword}
           disabled={!allowSubmission || isLoading}
           isLoading={isLoading}
+          accessibilityLabel="Valider le nouveau mot de passe et se connecter"
         />
       </Form.MaxWidth>
     </SecondaryPageWithBlurHeader>
