@@ -17,7 +17,7 @@ import { BicolorIdCardWithMagnifyingGlass } from 'ui/svg/icons/BicolorIdCardWith
 import { ExternalSite } from 'ui/svg/icons/ExternalSite'
 import { Spacer, Typo } from 'ui/theme'
 
-export const IdentityCheckEduConnect = () => {
+export const EduConnect = () => {
   const { navigate } = useNavigation<UseNavigationType>()
   const { dispatch } = useSubscriptionContext()
   const { goBack } = useGoBack(...homeNavConfig)
@@ -30,7 +30,7 @@ export const IdentityCheckEduConnect = () => {
   }
 
   const onSubmit = () => {
-    navigate('IdentityCheckEduConnectForm')
+    navigate('EduConnectForm')
     analytics.logConnectWithEduconnectClicked()
     if (Platform.OS === 'web') {
       openEduConnectTab()

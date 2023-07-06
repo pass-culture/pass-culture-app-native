@@ -23,9 +23,9 @@ export const useSubscriptionSteps = (): DeprecatedStepConfig[] => {
   const { remainingAttempts } = usePhoneValidationRemainingAttempts()
 
   const educonnectFlow: (keyof SubscriptionRootStackParamList)[] = [
-    'IdentityCheckEduConnect',
-    'IdentityCheckEduConnectForm',
-    'IdentityCheckValidation',
+    'EduConnect',
+    'EduConnectForm',
+    'EduConnectValidation',
   ]
 
   const ubbleFlow: (keyof SubscriptionRootStackParamList)[] = ['SelectIDOrigin']

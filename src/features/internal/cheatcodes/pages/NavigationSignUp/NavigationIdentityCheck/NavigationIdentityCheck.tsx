@@ -63,11 +63,11 @@ export function NavigationIdentityCheck(): React.JSX.Element {
         <LinkToComponent name="SetCity" title="SetCity" />
         <LinkToComponent name="IdentityCheckEnd" />
         <LinkToComponent name="IdentityCheckHonor" />
-        <LinkToComponent name="IdentityCheckEduConnectForm" />
-        <LinkToComponent name="IdentityCheckEduConnect" title={'EduConnect'} />
+        <LinkToComponent name="EduConnectForm" />
+        <LinkToComponent name="EduConnect" title={'EduConnect'} />
         <LinkToComponent name="IdentityCheckDMS" />
         <LinkToComponent
-          name="IdentityCheckValidation"
+          name="EduConnectValidation"
           navigationParams={{
             firstName: 'firstName',
             lastName: 'lastName',

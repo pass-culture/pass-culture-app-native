@@ -3,7 +3,7 @@ import React from 'react'
 import { navigate } from '__mocks__/@react-navigation/native'
 import * as useEduConnectLoginAPI from 'features/identityCheck/api/useEduConnectLogin'
 import { initialSubscriptionState as mockState } from 'features/identityCheck/context/reducer'
-import { IdentityCheckEduConnect } from 'features/identityCheck/pages/identification/educonnect/IdentityCheckEduConnect'
+import { EduConnect } from 'features/identityCheck/pages/identification/educonnect/EduConnect'
 import { analytics } from 'libs/analytics'
 import { fireEvent, render } from 'tests/utils'
 
@@ -20,22 +20,22 @@ jest.spyOn(useEduConnectLoginAPI, 'useEduConnectLogin').mockReturnValue({
   error: null,
 })
 
-describe('<IdentityCheckEduConnect />', () => {
+describe('<EduConnect />', () => {
   it('should render correctly', () => {
-    const renderAPI = render(<IdentityCheckEduConnect />)
+    const renderAPI = render(<EduConnect />)
     expect(renderAPI).toMatchSnapshot()
   })
 
   it('should navigate to next screen on press "Connexion avec ÉduConnect"', () => {
-    const { getByText } = render(<IdentityCheckEduConnect />)
+    const { getByText } = render(<EduConnect />)
     const button = getByText('Connexion avec ÉduConnect')
 
     fireEvent.press(button)
 
-    expect(navigate).toHaveBeenCalledWith('IdentityCheckEduConnectForm')
+    expect(navigate).toHaveBeenCalledWith('EduConnectForm')
   })
   it("should trigger tracker when 'Connexion avec ÉduConnect' button is pressed", () => {
-    const { getByText } = render(<IdentityCheckEduConnect />)
+    const { getByText } = render(<EduConnect />)
     const button = getByText('Connexion avec ÉduConnect')
 
     fireEvent.press(button)

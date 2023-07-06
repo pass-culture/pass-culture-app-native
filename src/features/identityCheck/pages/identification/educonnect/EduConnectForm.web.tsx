@@ -13,7 +13,7 @@ import { ExternalSite } from 'ui/svg/icons/ExternalSite'
 import { Info } from 'ui/svg/icons/Info'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 
-export const IdentityCheckEduConnectForm = () => {
+export const EduConnectForm = () => {
   const { error, openEduConnectTab } = useEduConnectLogin()
 
   if (error) {

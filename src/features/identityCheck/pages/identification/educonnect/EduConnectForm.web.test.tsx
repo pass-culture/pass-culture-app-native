@@ -1,16 +1,9 @@
 import React from 'react'
 
 import * as useEduConnectLoginAPI from 'features/identityCheck/api/useEduConnectLogin'
-import { initialSubscriptionState as mockState } from 'features/identityCheck/context/reducer'
-import { IdentityCheckEduConnect } from 'features/identityCheck/pages/identification/educonnect/IdentityCheckEduConnect'
-import { fireEvent, render, checkAccessibilityFor, screen } from 'tests/utils/web'
+import { checkAccessibilityFor, fireEvent, render, screen } from 'tests/utils/web'
 
-jest.mock('features/identityCheck/context/SubscriptionContextProvider', () => ({
-  useSubscriptionContext: jest.fn(() => ({
-    dispatch: jest.fn(),
-    ...mockState,
-  })),
-}))
+import { EduConnectForm } from './EduConnectForm'
 
 const mockOpenEduConnectTab = jest.fn()
 jest.spyOn(useEduConnectLoginAPI, 'useEduConnectLogin').mockReturnValue({
@@ -19,10 +12,15 @@ jest.spyOn(useEduConnectLoginAPI, 'useEduConnectLogin').mockReturnValue({
   error: null,
 })
 
-describe('<IdentityCheckEduConnect />', () => {
+describe('<EduConnectForm />', () => {
+  it('should render EduConnectForm', () => {
+    const renderAPI = render(<EduConnectForm />)
+    expect(renderAPI).toMatchSnapshot()
+  })
+
   it('should navigate to next screen and open educonnect tab on press "Connexion avec ÉduConnect"', () => {
-    render(<IdentityCheckEduConnect />)
-    const button = screen.getByText('Connexion avec ÉduConnect')
+    render(<EduConnectForm />)
+    const button = screen.getByText('Ouvrir un onglet ÉduConnect')
 
     fireEvent.click(button)
 
@@ -31,7 +29,7 @@ describe('<IdentityCheckEduConnect />', () => {
 
   describe('Accessibility', () => {
     it('should not have basic accessibility issues', async () => {
-      const { container } = render(<IdentityCheckEduConnect />)
+      const { container } = render(<EduConnectForm />)
       const results = await checkAccessibilityFor(container)
       expect(results).toHaveNoViolations()
     })

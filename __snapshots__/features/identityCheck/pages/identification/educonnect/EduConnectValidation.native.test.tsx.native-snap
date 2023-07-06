@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<IdentityCheckValidation /> should render IdentityCheckValidation component correctly 1`] = `
+exports[`<EduConnectValidation /> should render EduConnectValidation component correctly 1`] = `
 Array [
   <View
     accessibilityRole="header"

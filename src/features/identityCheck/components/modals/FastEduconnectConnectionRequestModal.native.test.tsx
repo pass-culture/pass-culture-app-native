@@ -61,7 +61,7 @@ describe('<IdentityCheckEnd/>', () => {
       payload: IdentityCheckMethod.educonnect,
       type: 'SET_METHOD',
     })
-    expect(navigate).toHaveBeenNthCalledWith(1, 'IdentityCheckEduConnect', undefined)
+    expect(navigate).toHaveBeenNthCalledWith(1, 'EduConnect', undefined)
   })
 
   it('should dispatch ubble identification method in context when clicking on "Identification manuelle" button', async () => {

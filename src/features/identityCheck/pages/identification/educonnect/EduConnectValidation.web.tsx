@@ -16,8 +16,8 @@ import { useEnterKeyAction } from 'ui/hooks/useEnterKeyAction'
 import { Spacer, Typo } from 'ui/theme'
 import { getNoHeadingAttrs } from 'ui/theme/typographyAttrs/getNoHeadingAttrs'
 
-export function IdentityCheckValidation() {
-  const { params } = useRoute<UseRouteType<'IdentityCheckValidation'>>()
+export function EduConnectValidation() {
+  const { params } = useRoute<UseRouteType<'EduConnectValidation'>>()
   const { navigateForwardToStepper } = useNavigateForwardToStepper()
 
   const { dispatch, identification } = useSubscriptionContext()

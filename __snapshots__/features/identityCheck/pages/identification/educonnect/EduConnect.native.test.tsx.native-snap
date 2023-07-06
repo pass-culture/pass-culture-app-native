@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<IdentityCheckEduConnect /> should render correctly 1`] = `
+exports[`<EduConnect /> should render correctly 1`] = `
 Array [
   <View
     accessibilityRole="header"

@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<IdentityCheckEduConnectForm /> should render IdentityCheckEduConnectForm 1`] = `
+exports[`<EduConnectForm /> should render EduConnectForm 1`] = `
 Object {
   "asFragment": [Function],
   "baseElement": .c0 {

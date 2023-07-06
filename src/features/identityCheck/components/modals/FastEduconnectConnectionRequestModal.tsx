@@ -71,7 +71,7 @@ export const FastEduconnectConnectionRequestModal: React.FC<
       <InternalTouchableLink
         as={ButtonPrimary}
         wording="Identification avec ÉduConnect"
-        navigateTo={{ screen: 'IdentityCheckEduConnect' }}
+        navigateTo={{ screen: 'EduConnect' }}
         onBeforeNavigate={onPressEduConnect}
       />
 

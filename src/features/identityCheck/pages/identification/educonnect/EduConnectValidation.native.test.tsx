@@ -4,7 +4,7 @@ import { CommonActions, dispatch, useRoute } from '__mocks__/@react-navigation/n
 import { analytics } from 'libs/analytics'
 import { fireEvent, render, waitFor } from 'tests/utils'
 
-import { IdentityCheckValidation } from './IdentityCheckValidation'
+import { EduConnectValidation } from './EduConnectValidation'
 
 const mockDispatch = jest.fn()
 jest.mock('features/identityCheck/context/SubscriptionContextProvider', () => ({
@@ -20,7 +20,7 @@ jest.mock('features/identityCheck/context/SubscriptionContextProvider', () => ({
   }),
 }))
 
-describe('<IdentityCheckValidation />', () => {
+describe('<EduConnectValidation />', () => {
   beforeEach(() =>
     useRoute.mockImplementation(() => ({
       params: {},
@@ -28,7 +28,7 @@ describe('<IdentityCheckValidation />', () => {
   )
 
   it('should redirect to Stepper when logged in with EduConnect', async () => {
-    const { getByText } = render(<IdentityCheckValidation />)
+    const { getByText } = render(<EduConnectValidation />)
     const validateButton = getByText('Valider mes informations')
     fireEvent.press(validateButton)
 
@@ -41,19 +41,19 @@ describe('<IdentityCheckValidation />', () => {
     })
   })
 
-  it('should render IdentityCheckValidation component correctly', () => {
-    const renderAPI = render(<IdentityCheckValidation />)
+  it('should render EduConnectValidation component correctly', () => {
+    const renderAPI = render(<EduConnectValidation />)
     expect(renderAPI).toMatchSnapshot()
   })
 
   it('should display user infos with props given', () => {
-    const { getByText } = render(<IdentityCheckValidation />)
+    const { getByText } = render(<EduConnectValidation />)
     expect(getByText('John')).toBeTruthy()
     expect(getByText('Doe')).toBeTruthy()
     expect(getByText('28/01/1993')).toBeTruthy()
   })
   it("should trigger tracker when the 'Valider mes informations' button is pressed", () => {
-    const { getByText } = render(<IdentityCheckValidation />)
+    const { getByText } = render(<EduConnectValidation />)
 
     const button = getByText('Valider mes informations')
 

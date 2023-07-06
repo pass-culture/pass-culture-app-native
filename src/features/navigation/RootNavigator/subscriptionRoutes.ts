@@ -4,9 +4,9 @@ import { BeneficiaryRequestSent } from 'features/identityCheck/pages/confirmatio
 import { IdentityCheckHonor } from 'features/identityCheck/pages/confirmation/IdentityCheckHonor'
 import { DMSIntroduction } from 'features/identityCheck/pages/identification/dms/DMSIntroduction'
 import { IdentityCheckDMS } from 'features/identityCheck/pages/identification/dms/IdentityCheckDMS'
-import { IdentityCheckEduConnect } from 'features/identityCheck/pages/identification/educonnect/IdentityCheckEduConnect'
-import { IdentityCheckEduConnectForm } from 'features/identityCheck/pages/identification/educonnect/IdentityCheckEduConnectForm'
-import { IdentityCheckValidation } from 'features/identityCheck/pages/identification/educonnect/IdentityCheckValidation'
+import { EduConnect } from 'features/identityCheck/pages/identification/educonnect/EduConnect'
+import { EduConnectForm } from 'features/identityCheck/pages/identification/educonnect/EduConnectForm'
+import { EduConnectValidation } from 'features/identityCheck/pages/identification/educonnect/EduConnectValidation'
 import { withEduConnectErrorBoundary } from 'features/identityCheck/pages/identification/errors/eduConnect/EduConnectErrorBoundary'
 import { EduConnectErrors } from 'features/identityCheck/pages/identification/errors/eduConnect/EduConnectErrors'
 import { IdentificationFork } from 'features/identityCheck/pages/identification/IdentificationFork'
@@ -147,21 +147,21 @@ export const subscriptionRoutes: GenericRoute<SubscriptionRootStackParamList>[] 
     secure: true,
   },
   {
-    name: 'IdentityCheckEduConnect',
-    component: IdentityCheckEduConnect,
+    name: 'EduConnect',
+    component: EduConnect,
     path: 'educonnect',
     options: { title: 'Identification' },
     secure: false,
   },
   {
-    name: 'IdentityCheckEduConnectForm',
-    component: IdentityCheckEduConnectForm,
+    name: 'EduConnectForm',
+    component: EduConnectForm,
     path: 'educonnect-formulaire',
     options: { title: 'Identification avec EduConnect' },
   },
   {
-    name: 'IdentityCheckValidation',
-    component: IdentityCheckValidation,
+    name: 'EduConnectValidation',
+    component: EduConnectValidation,
     path: 'educonnect/validation',
     hoc: withEduConnectErrorBoundary,
     options: { title: 'Validation de l’identification' },
