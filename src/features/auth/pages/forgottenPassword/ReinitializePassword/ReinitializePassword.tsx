@@ -1,40 +1,49 @@
+import { yupResolver } from '@hookform/resolvers/yup'
 import { useFocusEffect, useNavigation, useRoute } from '@react-navigation/native'
 import React, { useCallback, useState } from 'react'
-import { v4 as uuidv4 } from 'uuid'
+import { useForm } from 'react-hook-form'
 
 import { useResetPasswordMutation } from 'features/auth/api/useResetPasswordMutation'
-import {
-  isPasswordCorrect,
-  PasswordSecurityRules,
-} from 'features/auth/components/PasswordSecurityRules'
+import { reinitializePasswordSchema } from 'features/auth/pages/forgottenPassword/ReinitializePassword/schema/reinitializePasswordSchema'
 import { navigateToHome } from 'features/navigation/helpers'
 import { UseNavigationType, UseRouteType } from 'features/navigation/RootNavigator/types'
 import { analytics } from 'libs/analytics'
 import { isTimestampExpired } from 'libs/dates'
+import { PasswordInputController } from 'shared/forms/controllers/PasswordInputController'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { Form } from 'ui/components/Form'
 import { RightButtonText } from 'ui/components/headers/RightButtonText'
-import { InputError } from 'ui/components/inputs/InputError'
-import { PasswordInput } from 'ui/components/inputs/PasswordInput'
 import { LoadingPage } from 'ui/components/LoadingPage'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 import { SecondaryPageWithBlurHeader } from 'ui/pages/SecondaryPageWithBlurHeader'
 import { Spacer, Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
+type ReinitializePasswordFormData = {
+  newPassword: string
+  confirmedPassword: string
+}
+
 export const ReinitializePassword = () => {
+  const defaultValues: ReinitializePasswordFormData = {
+    newPassword: '',
+    confirmedPassword: '',
+  }
+
   const route = useRoute<UseRouteType<'ReinitializePassword'>>()
   const navigation = useNavigation<UseNavigationType>()
   const { showSuccessSnackBar } = useSnackBarContext()
 
   const [isTimestampExpirationVerified, setIsTimestampExpirationVerified] = useState(false)
-  const [password, setPassword] = useState('')
-  const [confirmedPassword, setConfirmedPassword] = useState('')
-  const passwordDescribedBy = uuidv4()
-  const passwordErrorId = uuidv4()
-
-  const allowSubmission = isPasswordCorrect(password) && confirmedPassword === password
-  const displayNotMatchingError = confirmedPassword.length > 0 && confirmedPassword !== password
+  const {
+    handleSubmit,
+    control,
+    formState: { isValid },
+  } = useForm<ReinitializePasswordFormData>({
+    mode: 'onChange',
+    defaultValues,
+    resolver: yupResolver(reinitializePasswordSchema),
+  })
 
   useFocusEffect(
     useCallback(() => {
@@ -58,14 +67,17 @@ export const ReinitializePassword = () => {
     navigation.navigate('Login')
   })
 
-  const submitPassword = useCallback(() => {
-    if (allowSubmission) {
-      resetPassword({
-        newPassword: password,
-        resetPasswordToken: route.params.token,
-      })
-    }
-  }, [allowSubmission, password, resetPassword, route.params.token])
+  const submitPassword = useCallback(
+    ({ newPassword }: ReinitializePasswordFormData) => {
+      if (isValid) {
+        resetPassword({
+          newPassword,
+          resetPasswordToken: route.params.token,
+        })
+      }
+    },
+    [isValid, resetPassword, route.params.token]
+  )
 
   if (!isTimestampExpirationVerified) {
     return <LoadingPage />
@@ -78,38 +90,30 @@ export const ReinitializePassword = () => {
       <Typo.Title3 {...getHeadingAttrs(2)}>Choisis un nouveau mot de passe</Typo.Title3>
       <Spacer.Column numberOfSpaces={6} />
       <Form.MaxWidth>
-        <PasswordInput
+        <PasswordInputController
+          name="newPassword"
           label="Mot de passe"
-          accessibilityDescribedBy={passwordDescribedBy}
-          value={password}
+          control={control}
           autoFocus
-          onChangeText={setPassword}
-          onSubmitEditing={submitPassword}
           isRequiredField
+          withSecurityRules
+          securityRulesAlwaysVisible
+          onSubmitEditing={handleSubmit(submitPassword)}
         />
-        <PasswordSecurityRules password={password} nativeID={passwordDescribedBy} />
         <Spacer.Column numberOfSpaces={8} />
-        <PasswordInput
+        <PasswordInputController
+          name="confirmedPassword"
           label="Confirmer le mot de passe"
-          value={confirmedPassword}
-          onChangeText={setConfirmedPassword}
           placeholder="Confirmer le mot de passe"
-          onSubmitEditing={submitPassword}
+          control={control}
           isRequiredField
-          accessibilityDescribedBy={passwordErrorId}
-        />
-        <Spacer.Column numberOfSpaces={2} />
-        <InputError
-          visible={displayNotMatchingError}
-          messageId="Les mots de passe ne concordent pas"
-          numberOfSpacesTop={0}
-          relatedInputId={passwordErrorId}
+          onSubmitEditing={handleSubmit(submitPassword)}
         />
         <Spacer.Column numberOfSpaces={6} />
         <ButtonPrimary
           wording="Continuer"
-          onPress={submitPassword}
-          disabled={!allowSubmission || isLoading}
+          onPress={handleSubmit(submitPassword)}
+          disabled={!isValid || isLoading}
           isLoading={isLoading}
           accessibilityLabel="Valider le nouveau mot de passe et se connecter"
         />
