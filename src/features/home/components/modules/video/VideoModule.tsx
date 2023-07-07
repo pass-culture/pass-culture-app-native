@@ -3,7 +3,7 @@ import React, { FunctionComponent, useEffect } from 'react'
 import LinearGradient from 'react-native-linear-gradient'
 import styled from 'styled-components/native'
 
-import { useVideoOffer } from 'features/home/api/useVideoOffer'
+import { useVideoOffers } from 'features/home/api/useVideoOffer'
 import { BlackGradient } from 'features/home/components/BlackGradient'
 import { TEXT_BACKGROUND_OPACITY } from 'features/home/components/constants'
 import { getGradientColors } from 'features/home/components/helpers/getGradientColors'
@@ -39,9 +39,10 @@ export const VideoModule: FunctionComponent<VideoModuleProps> = (props) => {
   } = useModal(false)
   const videoDuration = `${props.durationInMinutes} min`
 
-  const { offer } = useVideoOffer(props.offersModuleParameters, props.id)
+  const { offers } = useVideoOffers(props.offersModuleParameters, props.id)
 
-  const shouldModuleBeDisplayed = !!offer
+  const shouldModuleBeDisplayed = offers.length > 0
+  const isMultiOffer = offers.length > 1
 
   useEffect(() => {
     if (shouldModuleBeDisplayed) {
@@ -68,6 +69,7 @@ export const VideoModule: FunctionComponent<VideoModuleProps> = (props) => {
           start={{ x: 0, y: 0 }}
           end={{ x: 0, y: 1 }}
           colors={getGradientColors(props.color)}
+          isMultiOffer={isMultiOffer}
         />
         <VideoOfferContainer>
           <Spacer.Column numberOfSpaces={5} />
