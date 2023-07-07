@@ -173,7 +173,7 @@
     "react-native-web": "^0.18.10",
     "react-native-web-lottie": "^1.4.4",
     "react-native-web-swiper": "2.2.4",
-    "react-native-webview": "^11.23.0",
+    "react-native-webview": "^13.2.2",
     "react-native-youtube-iframe": "^2.2.2",
     "react-query": "3.39.3",
     "react-youtube": "^10.1.0",
