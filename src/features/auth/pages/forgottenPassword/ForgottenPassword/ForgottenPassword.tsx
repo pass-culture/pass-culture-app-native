@@ -100,7 +100,6 @@ const EmailInputController = ({
   field: ControllerRenderProps<FormValues, 'email'>
 }) => (
   <EmailInput
-    label="Adresse e-mail"
     email={value}
     onEmailChange={onChange}
     autoFocus
