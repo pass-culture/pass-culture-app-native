@@ -101,6 +101,10 @@ export interface AppThemeType {
         width: number
         height: number
       }
+      large: {
+        width: number
+        height: number
+      }
     }
   }
   typography: {
@@ -492,6 +496,10 @@ export const theme: AppThemeType = {
       tall: {
         width: getSpacing(20),
         height: getSpacing(30),
+      },
+      large: {
+        width: getSpacing(24),
+        height: getSpacing(36),
       },
     },
   },
