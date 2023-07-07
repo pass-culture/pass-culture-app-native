@@ -5,6 +5,7 @@ const noReactQueryProviderHOC = require('./eslint-custom-rules/no-react-query-pr
 const noStringCheckBeforeComponent = require('./eslint-custom-rules/no-string-check-before-component')
 const todoFormat = require('./eslint-custom-rules/todo-format')
 const apostropheInText = require('./eslint-custom-rules/apostrophe-in-text')
+const useTheRightTestUtils = require('./eslint-custom-rules/use-the-right-test-utils')
 
 module.exports = {
   'independent-mocks': independentMocks,
@@ -14,4 +15,5 @@ module.exports = {
   'no-string-check-before-component': noStringCheckBeforeComponent,
   'todo-format': todoFormat,
   'apostrophe-in-text': apostropheInText,
+  'use-the-right-test-utils': useTheRightTestUtils,
 }

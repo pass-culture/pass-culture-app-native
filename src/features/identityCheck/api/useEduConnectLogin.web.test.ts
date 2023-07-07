@@ -1,5 +1,5 @@
 import { useEduConnectLogin } from 'features/identityCheck/api/useEduConnectLogin'
-import { renderHook, waitFor } from 'tests/utils'
+import { act, renderHook } from 'tests/utils/web'
 
 jest.mock('libs/eduConnectClient')
 const mockFetch = jest.spyOn(global, 'fetch')
@@ -20,9 +20,9 @@ describe('useEduconnectLogin', () => {
 
     result.current.openEduConnectTab()
 
-    await waitFor(() => {
-      expect(globalThis.window.open).toHaveBeenCalledTimes(1)
-    })
+    await act(async () => {})
+
+    expect(globalThis.window.open).toHaveBeenCalledTimes(1)
   })
 
   it('should refetch login url when calling openEduConnectTab method', async () => {
@@ -30,12 +30,12 @@ describe('useEduconnectLogin', () => {
 
     result.current.openEduConnectTab()
 
-    await waitFor(() => {
-      expect(mockFetch).toHaveBeenCalledWith('https://login?redirect=false', {
-        credentials: 'include',
-        headers: { Authorization: 'Bearer abcd' },
-        mode: 'cors',
-      })
+    await act(async () => {})
+
+    expect(mockFetch).toHaveBeenCalledWith('https://login?redirect=false', {
+      credentials: 'include',
+      headers: { Authorization: 'Bearer abcd' },
+      mode: 'cors',
     })
   })
 })
