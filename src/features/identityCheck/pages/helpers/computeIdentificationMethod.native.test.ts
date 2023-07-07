@@ -3,7 +3,6 @@ import { computeIdentificationMethod } from 'features/identityCheck/pages/helper
 import { SubscriptionRootStackParamList } from 'features/navigation/RootNavigator/types'
 
 const educonnectFlow: (keyof SubscriptionRootStackParamList)[] = [
-  'EduConnect',
   'EduConnectForm',
   'EduConnectValidation',
 ]

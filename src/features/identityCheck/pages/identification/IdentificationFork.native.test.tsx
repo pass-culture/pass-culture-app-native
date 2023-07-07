@@ -22,14 +22,14 @@ describe('<IdentificationFork />', () => {
     })
   })
 
-  it('should navigate to next screen "EduConnect" on press "Mes codes ÉduConnect"', async () => {
+  it('should navigate to next screen "EduConnectForm" on press "Mes codes ÉduConnect"', async () => {
     render(<IdentificationFork />)
     const button = screen.getByText('Mes codes ÉduConnect')
 
     fireEvent.press(button)
 
     await waitFor(() => {
-      expect(navigate).toHaveBeenCalledWith('EduConnect', undefined)
+      expect(navigate).toHaveBeenCalledWith('EduConnectForm', undefined)
     })
   })
 

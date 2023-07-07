@@ -4,7 +4,6 @@ import { BeneficiaryRequestSent } from 'features/identityCheck/pages/confirmatio
 import { IdentityCheckHonor } from 'features/identityCheck/pages/confirmation/IdentityCheckHonor'
 import { DMSIntroduction } from 'features/identityCheck/pages/identification/dms/DMSIntroduction'
 import { IdentityCheckDMS } from 'features/identityCheck/pages/identification/dms/IdentityCheckDMS'
-import { EduConnect } from 'features/identityCheck/pages/identification/educonnect/EduConnect'
 import { EduConnectForm } from 'features/identityCheck/pages/identification/educonnect/EduConnectForm'
 import { EduConnectValidation } from 'features/identityCheck/pages/identification/educonnect/EduConnectValidation'
 import { withEduConnectErrorBoundary } from 'features/identityCheck/pages/identification/errors/eduConnect/EduConnectErrorBoundary'
@@ -145,13 +144,6 @@ export const subscriptionRoutes: GenericRoute<SubscriptionRootStackParamList>[] 
     path: 'identification/verification-manuelle-piece-identite',
     options: { title: 'Identification' },
     secure: true,
-  },
-  {
-    name: 'EduConnect',
-    component: EduConnect,
-    path: 'educonnect',
-    options: { title: 'Identification' },
-    secure: false,
   },
   {
     name: 'EduConnectForm',

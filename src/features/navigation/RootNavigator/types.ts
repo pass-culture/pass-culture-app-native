@@ -105,7 +105,6 @@ export type SubscriptionRootStackParamList = {
   UbbleWebview: undefined
   IdentityCheckEnd: undefined
   IdentityCheckUnavailable: { withDMS?: boolean }
-  EduConnect: undefined
   EduConnectForm: undefined
   EduConnectValidation: {
     firstName?: string
