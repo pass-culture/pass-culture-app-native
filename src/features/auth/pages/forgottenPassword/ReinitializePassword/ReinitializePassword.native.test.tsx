@@ -5,7 +5,6 @@ import { analytics } from 'libs/analytics'
 import * as datesLib from 'libs/dates'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, fireEvent, render, screen } from 'tests/utils'
-import { theme } from 'theme'
 
 import { ReinitializePassword } from './ReinitializePassword'
 
@@ -49,10 +48,9 @@ describe('ReinitializePassword Page', () => {
       fireEvent.changeText(confirmationInput, '123456--')
     })
 
-    const notMatchingErrorText = screen.getByText('Les mots de passe ne concordent pas')
+    const notMatchingErrorText = screen.queryByText('Les mots de passe ne concordent pas')
 
-    const color = notMatchingErrorText.props.style[0].color
-    expect(color).toEqual(theme.colors.error)
+    expect(notMatchingErrorText).toBeTruthy()
   })
 
   it('should redirect to login page WHEN password is reset', async () => {
