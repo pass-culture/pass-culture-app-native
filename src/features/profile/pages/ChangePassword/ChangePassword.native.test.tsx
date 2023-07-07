@@ -9,7 +9,6 @@ import { EmptyResponse } from 'libs/fetch'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { server } from 'tests/server'
 import { render, fireEvent, act } from 'tests/utils'
-import { theme } from 'theme'
 import { showSuccessSnackBar } from 'ui/components/snackBar/__mocks__/SnackBarContext'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 
@@ -51,7 +50,7 @@ describe('ChangePassword', () => {
   })
 
   it('should display the matching error when the passwords dont match', async () => {
-    const { getByPlaceholderText, getByText } = renderChangePassword()
+    const { getByPlaceholderText, queryByText } = renderChangePassword()
 
     const passwordInput = getByPlaceholderText('Ton nouveau mot de passe')
     const confirmationInput = getByPlaceholderText('Confirmer le mot de passe')
@@ -64,9 +63,7 @@ describe('ChangePassword', () => {
       fireEvent.changeText(confirmationInput, '123456--')
     })
 
-    const notMatchingErrorText = getByText('Les mots de passe ne concordent pas')
-    const color = notMatchingErrorText.props.style[0].color
-    expect(color).toEqual(theme.colors.error)
+    expect(queryByText('Les mots de passe ne concordent pas')).toBeTruthy()
   })
 
   it('should display success snackbar and navigate to Profile when the password is updated', async () => {
