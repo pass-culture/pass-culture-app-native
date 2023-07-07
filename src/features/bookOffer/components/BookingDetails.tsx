@@ -106,7 +106,7 @@ export function BookingDetails({ stocks, onPressBookOffer, isLoading }: BookingD
     shouldFetchSearchVenueOffers && nbVenueItems > 0
   )
 
-  const venueName = offer?.venue.publicName ?? offer?.venue.name
+  const venueName = offer?.venue.publicName || offer?.venue.name
   const venueFullAddress = formatFullAddressStartsWithPostalCode(
     offer?.venue.address,
     offer?.venue.postalCode,
@@ -253,7 +253,7 @@ export function BookingDetails({ stocks, onPressBookOffer, isLoading }: BookingD
           nbLoadedHits={nbLoadedHits}
           isFetchingNextPage={isFetchingNextPage}
           isSharingLocation={Boolean(position !== null)}
-          venueName={offer?.venue?.publicName ?? offer?.venue?.name}
+          venueName={offer?.venue?.publicName || offer?.venue?.name}
         />
       )}
     </Container>
