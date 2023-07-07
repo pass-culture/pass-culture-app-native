@@ -1,6 +1,6 @@
 import { yupResolver } from '@hookform/resolvers/yup'
 import { useFocusEffect, useNavigation, useRoute } from '@react-navigation/native'
-import React, { useCallback, useState } from 'react'
+import React, { useCallback, useEffect, useState } from 'react'
 import { useForm } from 'react-hook-form'
 
 import { useResetPasswordMutation } from 'features/auth/api/useResetPasswordMutation'
@@ -39,8 +39,10 @@ export const ReinitializePassword = () => {
     handleSubmit,
     control,
     formState: { isValid },
+    watch,
+    trigger,
   } = useForm<ReinitializePasswordFormData>({
-    mode: 'all',
+    mode: 'onChange',
     defaultValues,
     resolver: yupResolver(reinitializePasswordSchema),
   })
@@ -57,6 +59,12 @@ export const ReinitializePassword = () => {
       // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [route.params])
   )
+
+  // We use this useEffect in order to validate confirmedPassword when newPassword changes and matches
+  const password = watch('newPassword')
+  useEffect(() => {
+    trigger('confirmedPassword')
+  }, [password, trigger])
 
   const { mutate: resetPassword, isLoading } = useResetPasswordMutation(() => {
     showSuccessSnackBar({

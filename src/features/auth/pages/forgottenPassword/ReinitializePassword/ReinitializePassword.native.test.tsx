@@ -19,17 +19,21 @@ describe('ReinitializePassword Page', () => {
     useRoute.mockReturnValue({ params: ROUTE_PARAMS })
   })
 
-  it('should match snapshot', () => {
+  it('should match snapshot', async () => {
     renderReinitializePassword()
+    await act(async () => {})
 
     expect(screen).toMatchSnapshot()
   })
 
   it('should enable the submit button when passwords are equals and filled and password is correct', async () => {
     renderReinitializePassword()
+
     const passwordInput = screen.getByPlaceholderText('Ton mot de passe')
     const confirmationInput = screen.getByPlaceholderText('Confirmer le mot de passe')
-    fireEvent.changeText(passwordInput, 'user@AZERTY123')
+    await act(async () => {
+      fireEvent.changeText(passwordInput, 'user@AZERTY123')
+    })
     await act(async () => {
       fireEvent.changeText(confirmationInput, 'user@AZERTY123')
     })
@@ -43,7 +47,9 @@ describe('ReinitializePassword Page', () => {
     renderReinitializePassword()
     const passwordInput = screen.getByPlaceholderText('Ton mot de passe')
     const confirmationInput = screen.getByPlaceholderText('Confirmer le mot de passe')
-    fireEvent.changeText(passwordInput, '123456')
+    await act(async () => {
+      fireEvent.changeText(passwordInput, '123456')
+    })
     await act(async () => {
       fireEvent.changeText(confirmationInput, '123456--')
     })
@@ -57,7 +63,9 @@ describe('ReinitializePassword Page', () => {
     renderReinitializePassword()
     const passwordInput = screen.getByPlaceholderText('Ton mot de passe')
     const confirmationInput = screen.getByPlaceholderText('Confirmer le mot de passe')
-    fireEvent.changeText(passwordInput, 'user@AZERTY123')
+    await act(async () => {
+      fireEvent.changeText(passwordInput, 'user@AZERTY123')
+    })
     await act(async () => {
       fireEvent.changeText(confirmationInput, 'user@AZERTY123')
     })
@@ -73,6 +81,7 @@ describe('ReinitializePassword Page', () => {
     // eslint-disable-next-line local-rules/independent-mocks
     jest.spyOn(datesLib, 'isTimestampExpired').mockImplementation(() => true)
     renderReinitializePassword()
+    await act(async () => {})
 
     expect(replace).toHaveBeenNthCalledWith(1, 'ResetPasswordExpiredLink', {
       email: ROUTE_PARAMS.email,
