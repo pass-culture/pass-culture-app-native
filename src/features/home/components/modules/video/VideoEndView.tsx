@@ -15,7 +15,7 @@ import { Spacer, getSpacing } from 'ui/theme'
 export const VideoEndView: React.FC<{
   onPressReplay: () => void
   onPressSeeOffer: () => void
-  offer: Offer
+  offer?: Offer
   style: StyleProp<ViewStyle>
   moduleId: string
   moduleName: string
@@ -34,31 +34,35 @@ export const VideoEndView: React.FC<{
             wording={'Revoir'}
             icon={StyledReplayIcon}
           />
-          <Spacer.Row numberOfSpaces={9} />
-          <ButtonWithCaption
-            onPress={() => {
-              onPressSeeOffer()
-              prePopulateOffer({
-                ...offer.offer,
-                offerId: +offer.objectID,
-                categoryId: mapping[offer.offer.subcategoryId],
-              })
-              analytics.logConsultOffer({
-                offerId: +offer.objectID,
-                from: 'video',
-                moduleId,
-                moduleName,
-                homeEntryId,
-              })
-            }}
-            navigateTo={{
-              screen: 'Offer',
-              params: { id: +offer.objectID },
-            }}
-            accessibilityLabel="Voir l’offre"
-            wording="Voir l’offre"
-            icon={StyledOffersIcon}
-          />
+          {!!offer && (
+            <React.Fragment>
+              <Spacer.Row numberOfSpaces={9} />
+              <ButtonWithCaption
+                onPress={() => {
+                  onPressSeeOffer()
+                  prePopulateOffer({
+                    ...offer.offer,
+                    offerId: +offer.objectID,
+                    categoryId: mapping[offer.offer.subcategoryId],
+                  })
+                  analytics.logConsultOffer({
+                    offerId: +offer.objectID,
+                    from: 'video',
+                    moduleId,
+                    moduleName,
+                    homeEntryId,
+                  })
+                }}
+                navigateTo={{
+                  screen: 'Offer',
+                  params: { id: +offer.objectID },
+                }}
+                accessibilityLabel="Voir l’offre"
+                wording="Voir l’offre"
+                icon={StyledOffersIcon}
+              />
+            </React.Fragment>
+          )}
         </ButtonsContainer>
       </BlackView>
     </VideoEndViewContainer>
