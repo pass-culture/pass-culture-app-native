@@ -15,7 +15,7 @@ import { Offer } from 'shared/offer/types'
 const isSearchState = (parameter: unknown): parameter is SearchState =>
   typeof parameter === 'object' && parameter !== null
 
-export const useVideoOffer = (offersModuleParameters: OffersModuleParameters, id: string) => {
+export const useVideoOffers = (offersModuleParameters: OffersModuleParameters, id: string) => {
   const adaptPlaylistParameters = useAdaptOffersPlaylistParameters()
   const { position } = useHomePosition()
   const isUserUnderage = useIsUserUnderage()
@@ -44,7 +44,7 @@ export const useVideoOffer = (offersModuleParameters: OffersModuleParameters, id
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [!!position])
 
-  const hits = data?.hits.map(transformHits) as Offer[]
+  const hits = (data?.hits.map(transformHits) as Offer[]) ?? []
 
-  return { offer: hits?.[0] }
+  return { offers: hits.slice(0, 9) }
 }
