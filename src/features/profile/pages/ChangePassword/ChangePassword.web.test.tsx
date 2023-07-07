@@ -1,4 +1,5 @@
 import React from 'react'
+import { act } from 'react-dom/test-utils'
 
 import { render, checkAccessibilityFor } from 'tests/utils/web'
 
@@ -18,8 +19,10 @@ describe('<ChangePassword/>', () => {
   describe('Accessibility', () => {
     it('should not have basic accessibility issues', async () => {
       const { container } = render(<ChangePassword />)
-      const results = await checkAccessibilityFor(container)
-      expect(results).toHaveNoViolations()
+      await act(async () => {
+        const results = await checkAccessibilityFor(container)
+        expect(results).toHaveNoViolations()
+      })
     })
   })
 })

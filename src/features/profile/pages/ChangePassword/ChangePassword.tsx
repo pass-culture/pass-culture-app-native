@@ -1,6 +1,6 @@
 import { yupResolver } from '@hookform/resolvers/yup'
 import { useNavigation } from '@react-navigation/native'
-import React, { useCallback, useMemo, useRef, useState } from 'react'
+import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { Platform, ScrollView, StyleProp, ViewStyle } from 'react-native'
 import { useSafeAreaInsets } from 'react-native-safe-area-context'
@@ -55,12 +55,20 @@ export function ChangePassword() {
     clearErrors,
     setError,
     reset,
+    watch,
+    trigger,
     formState: { isSubmitting, isValid, isValidating, isDirty },
   } = useForm<ChangePasswordFormData>({
     mode: 'onChange',
     defaultValues,
     resolver: yupResolver(changePasswordSchema),
   })
+
+  // We use this useEffect in order to validate confirmedPassword when newPassword changes and matches
+  const password = watch('newPassword')
+  useEffect(() => {
+    trigger('confirmedPassword')
+  }, [password, trigger])
 
   const onSubmit = handleSubmit((data: ChangePasswordFormData) => {
     // returning a promise will allow formik to set isSubmitting to false afterward
