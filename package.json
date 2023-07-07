@@ -176,6 +176,7 @@
     "react-native-webview": "^11.23.0",
     "react-native-youtube-iframe": "^2.2.2",
     "react-query": "3.39.3",
+    "react-youtube": "^10.1.0",
     "resize-observer-polyfill": "^1.5.1",
     "search-insights": "^2.2.1",
     "styled-components": "^5.3.3",
