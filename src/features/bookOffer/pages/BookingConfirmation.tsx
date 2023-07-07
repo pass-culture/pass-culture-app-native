@@ -1,5 +1,5 @@
 import { useNavigation, useRoute } from '@react-navigation/native'
-import React, { useCallback } from 'react'
+import React, { useCallback, useEffect, useState } from 'react'
 import styled from 'styled-components/native'
 
 import { navigateToHomeConfig } from 'features/navigation/helpers'
@@ -20,6 +20,8 @@ import { GenericInfoPageWhite } from 'ui/pages/GenericInfoPageWhite'
 import { BicolorTicketBooked } from 'ui/svg/icons/BicolorTicketBooked'
 import { PlainArrowPrevious } from 'ui/svg/icons/PlainArrowPrevious'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
+import AsyncStorage from '@react-native-async-storage/async-storage'
+import { ColorsEnum } from 'ui/theme/colors'
 
 export function BookingConfirmation() {
   const { params } = useRoute<UseRouteType<'BookingConfirmation'>>()
@@ -27,7 +29,7 @@ export function BookingConfirmation() {
   const { reset, navigate } = useNavigation<UseNavigationType>()
   const credit = useAvailableCredit()
   const amountLeft = credit && !credit.isExpired ? credit.amount : 0
-
+  const [disableTravelOption,setDisableTravelOption] = useState(true)
   const trackBooking = useCallback(() => BatchUser.trackEvent(BatchEvent.hasBooked), [])
 
   const displayBookingDetails = useCallback(() => {
@@ -51,7 +53,17 @@ export function BookingConfirmation() {
         },
       ],
     })
+
+   
   }, [params.bookingId, params.offerId, reset, trackBooking])
+
+  useEffect(()=>{
+    async function getCurentRide() {
+      const currentRideObj = await AsyncStorage.getItem('currentRide')
+      setDisableTravelOption(!!currentRideObj?.length)
+     }
+     getCurentRide()
+  },[])
 
   const {
     visible: shareOfferModalVisible,
@@ -93,8 +105,9 @@ export function BookingConfirmation() {
           <Spacer.Column numberOfSpaces={4} />
           <ButtonSecondary wording="Partager l’offre" onPress={pressShareOffer} />
           <Spacer.Column numberOfSpaces={4} />
-          <ButtonSecondary wording="Afficher les options de voyage" onPress={pressTravelOptions} />
+          <ButtonSecondary wording="Afficher les options de voyage" disabled={disableTravelOption} onPress={pressTravelOptions} />
           <Spacer.Column numberOfSpaces={4} />
+          
           <InternalTouchableLink
             key={2}
             as={ButtonTertiaryPrimary}
@@ -120,7 +133,6 @@ export function BookingConfirmation() {
 const StyledBody = styled(Typo.Body)({
   textAlign: 'center',
 })
-
 const ButtonContainer = styled.View({
   paddingBottom: getSpacing(10),
 })

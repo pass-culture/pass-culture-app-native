@@ -271,32 +271,16 @@ export function BookingDetails() {
 
   const updateReservation = async (reservationId, tripId, tripAmount) => {
     try {
-      const reservationsJSON = await AsyncStorage.getItem('reservations');
-      let reservations = [];
-
-      if (reservationsJSON !== null) {
-        reservations = JSON.parse(reservationsJSON);
-
-        // Find the reservation with the matching reservation ID
-        const foundIndex = reservations.findIndex(
-          (reservation) => reservation.reservationid === reservationId
-        );
-
-        if (foundIndex !== -1) {
-          // Update the tripid and tripamount properties
-          reservations[foundIndex].tripid = tripId;
-          reservations[foundIndex].tripamount = tripAmount;
-
-          const updatedReservationsJSON = JSON.stringify(reservations);
-          await AsyncStorage.setItem('reservations', updatedReservationsJSON);
-
-          console.log('Reservation updated successfully.');
-        } else {
-          console.log('Reservation not found.');
-        }
-      } else {
+      let currentRideObj = await AsyncStorage.getItem('currentRide');
+      let reservationsJSON = await AsyncStorage.getItem('reservations');
+      let reservations = (reservationsJSON && JSON.parse(reservationsJSON)?.length) ? JSON.parse(reservationsJSON) : [];
+      let currentRide =  JSON.parse(currentRideObj);
+      currentRide['tripid'] = tripId
+      currentRide['tripamount'] = tripAmount
+      reservations.push(currentRide);
+      await AsyncStorage.setItem('reservations',JSON.stringify(reservations));
+      await AsyncStorage.removeItem('currentRide');
         console.log('No reservations found.');
-      }
     } catch (error) {
       console.log('Error updating reservation:', error);
     }

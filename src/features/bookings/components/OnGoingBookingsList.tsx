@@ -60,46 +60,23 @@ export function OnGoingBookingsList() {
   const mobileCountryCode = '+91'
   const [reservedRides, setReserveRides] = useState([])
 
-
-
   const {
     ongoing_bookings: ongoingBookings = emptyBookings,
     ended_bookings: endedBookings = emptyBookings,
   } = bookings ?? {}
 
 
-
-  const updateReservation = async (tripId, tripAmount) => {
+  const updateReservation = async (tripId: Number|String, tripAmount :Number|String ) => {
     try {
-      const reservationsJSON = await AsyncStorage.getItem('reservations');
-      let reservations = [];
-
-      if (reservationsJSON !== null) {
-        reservations = JSON.parse(reservationsJSON);
-
-        // Find the reservation with the matching reservation ID
-        const foundIndex = reservations.findIndex(
-          (reservation) => !reservation.tripid || reservation.tripid.trim().length == 0
-        );
-        console.log('foundIndex====================', foundIndex)
-        if (foundIndex !== -1) {
-          // Update the tripid and tripamount properties
-          reservations[foundIndex].tripid = tripId;
-          reservations[foundIndex].tripamount = tripAmount;
-
-          const updatedReservationsJSON = JSON.stringify(reservations);
-
-          console.log('before update -------------------->:', reservationsJSON)
-
-          await AsyncStorage.setItem('reservations', updatedReservationsJSON);
-
-          console.log('Reservation updated successfully.', updatedReservationsJSON);
-        } else {
-          console.log('Reservation not found.');
-        }
-      } else {
-        console.log('No reservations found.');
-      }
+      let currentRideObj = await AsyncStorage.getItem('currentRide');
+      let reservationsJSON = await AsyncStorage.getItem('reservations');
+      let reservations = (reservationsJSON && JSON.parse(reservationsJSON)?.length) ? JSON.parse(reservationsJSON) : [];
+      let currentRide =  JSON.parse(currentRideObj);
+      currentRide['tripid'] = tripId
+      currentRide['tripamount'] = tripAmount
+      reservations.push(currentRide);
+      await AsyncStorage.setItem('reservations',JSON.stringify(reservations));
+      await AsyncStorage.removeItem('currentRide');
     } catch (error) {
       console.log('Error updating reservation:', error);
     }
@@ -226,30 +203,13 @@ export function OnGoingBookingsList() {
 
   const getReservationsByCommonKey = async (commonKey) => {
     try {
-      const reservationsJSON = await AsyncStorage.getItem('reservations')
-
-      if (reservationsJSON !== null) {
-        const reservations = JSON.parse(reservationsJSON)
-        const filteredReservations = reservations.filter(
-          (reservation) => reservation.commonKey === commonKey && !reservation.tripid
-        )
-
-        // Sort the reservations by tripdate in descending order
-        filteredReservations.sort((a, b) => new Date(b.tripdate) - new Date(a.tripdate))
-
-        console.log('Retrieved reservations -------------------->:', filteredReservations)
-
-        return filteredReservations.length ? [filteredReservations[0]] : []
-      } else {
-        console.log('No reservations found.')
-        return []
-      }
+      const currentRide = await AsyncStorage.getItem('currentRide')
+      const currentRideObj = JSON.parse(currentRide);
+      return Object.keys(currentRideObj).length ?  [currentRideObj] : []     
     } catch (error) {
       console.log('Error retrieving reservations:', error)
       return []
     }
-
-
   }
 
   const [signatureResponse, setSignatureResponse] = useState(null) // State to store the signature response
@@ -269,7 +229,6 @@ export function OnGoingBookingsList() {
   const refreshData = async (mobile) => {
     const rideData = await getReservationsByCommonKey(mobile)
     setReserveRides(rideData)
-    console.log('reserve', rideData)
   }
 
   useEffect(() => {
@@ -277,7 +236,6 @@ export function OnGoingBookingsList() {
       const { firstName } = (await api.getnativev1me()) || 'user'
       const { phoneNumber } = (await api.getnativev1me()) || '+918297921333'
       let mobile = phoneNumber?.slice(3, phoneNumber.length)
-      console.log('test username1', mobile, firstName)
       setMobileNumber(mobile)
       try {
         const result = await HyperSDKModule.dynamicSign(firstName, mobile, mobileCountryCode)
