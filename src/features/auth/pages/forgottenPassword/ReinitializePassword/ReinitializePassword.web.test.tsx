@@ -7,11 +7,13 @@ import { ReinitializePassword } from './ReinitializePassword'
 
 jest.mock('react-query')
 
-const mockV4 = jest.fn()
-jest.mock('uuid', () => ({
-  v1: jest.fn(),
-  v4: jest.fn(mockV4),
-}))
+jest.mock('uuid', () => {
+  let value = 0
+  return {
+    v1: jest.fn(),
+    v4: jest.fn(() => value++),
+  }
+})
 
 describe('<ReinitializePassword/>', () => {
   describe('Accessibility', () => {
