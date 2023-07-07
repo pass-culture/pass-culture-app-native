@@ -75,7 +75,7 @@ export function BookingDetails() {
   } = useModal(false)
 
   const mapping = useSubcategoriesMapping()
-  const { dispatch : bookingDispatch} = useBookingDetailsContext()
+  const { dispatch: bookingDispatch } = useBookingDetailsContext()
 
   const { venue, id: offerId } = booking?.stock.offer ?? {}
   const { address, postalCode, city } = venue ?? {}
@@ -183,7 +183,7 @@ export function BookingDetails() {
 
   useEffect(() => {
     const fetchCurrentLocation = async () => {
-      
+
       try {
         if (permissionState === GeolocPermissionState.GRANTED) {
           setCurrentLocation(position)

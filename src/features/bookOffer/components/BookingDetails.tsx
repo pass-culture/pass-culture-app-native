@@ -70,7 +70,7 @@ export function BookingDetails({ stocks, onPressBookOffer, isLoading }: BookingD
   const enableMultivenueOffer = useFeatureFlag(RemoteStoreFeatureFlags.WIP_ENABLE_MULTIVENUE_OFFER)
   const isMultivenueCompatibleOffer = Boolean(
     offer?.subcategoryId === SubcategoryIdEnum.LIVRE_PAPIER ||
-      offer?.subcategoryId === SubcategoryIdEnum.LIVRE_AUDIO_PHYSIQUE
+    offer?.subcategoryId === SubcategoryIdEnum.LIVRE_AUDIO_PHYSIQUE
   )
   const shouldFetchSearchVenueOffers = Boolean(
     enableMultivenueOffer && isMultivenueCompatibleOffer && offer?.extraData?.ean

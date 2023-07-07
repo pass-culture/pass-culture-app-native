@@ -25,18 +25,24 @@ import { api } from 'api/api'
 import HyperSdkReact from 'hyper-sdk-react';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
-// { 
-//   "service" : "in.yatri.consumer",
-//   "payload"  : { 
-//       "clientId" : "passcultureconsumer"
-//   }
-// }
+
+const { PIPModule } = NativeModules;
 const { HyperSDKModule } = NativeModules
 
 HyperSdkReact.createHyperServices();
 
 export const HomeHeader: FunctionComponent = function () {
 
+  const enterPIPMode = () => {
+
+    PIPModule.isPictureInPictureSupported().then(supported => {
+      if (supported) {
+        PIPModule.enterPictureInPictureMode();
+      } else {
+        console.warn('Picture-in-Picture is not supported on this device.');
+      }
+    });
+  }
   const preFetchPayload = {
     "service": "in.yatri.consumer",
     "payload": {
@@ -167,7 +173,7 @@ export const HomeHeader: FunctionComponent = function () {
       <PageHeader title={welcomeTitle} numberOfLines={2} />
       <PageContent>
         {/* <Typo.Body>{getSubtitle()}</Typo.Body> */}
-
+        <Button title="Enter PIP Mode" onPress={enterPIPMode} />
         {/* <Button onPress={handleClick} title="Click here" /> */}
         <Spacer.Column numberOfSpaces={6} />
       </PageContent>

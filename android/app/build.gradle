@@ -367,7 +367,7 @@ dependencies {
     implementation 'in.juspay:mobilitycustomer:2.1.13-nammayatri.29'
     implementation 'in.juspay:hypersdk:2.1.13-nammayatri.29'
     implementation 'org.bouncycastle:bcpkix-jdk15on:1.68'
-
+    implementation 'androidx.annotation:annotation:1.3.0'
     
     // Flipper + plugins
     debugImplementation("com.facebook.flipper:flipper:${FLIPPER_VERSION}@aar") {

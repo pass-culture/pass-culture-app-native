@@ -1,8 +1,8 @@
 import { useNavigation, useRoute } from '@react-navigation/native'
-import React, { FunctionComponent, useCallback, useRef, useState } from 'react'
+import React, { FunctionComponent, useCallback, useEffect, useRef, useState } from 'react'
 import { ScrollView } from 'react-native'
 import styled from 'styled-components/native'
-
+import { useBookingDetailsContext } from 'features/bookings/pages/BookingDetails/context/BookingDetailsContextProvider'
 import { ReportedOffer, SubcategoryIdEnum } from 'api/gen'
 import { useSearchVenueOffers } from 'api/useSearchVenuesOffer/useSearchVenueOffers'
 import { useAuthContext } from 'features/auth/context/AuthContext'
@@ -88,7 +88,7 @@ export const OfferBody: FunctionComponent<Props> = ({
   const enableMultivenueOffer = useFeatureFlag(RemoteStoreFeatureFlags.WIP_ENABLE_MULTIVENUE_OFFER)
   const isMultivenueCompatibleOffer = Boolean(
     offer?.subcategoryId === SubcategoryIdEnum.LIVRE_PAPIER ||
-      offer?.subcategoryId === SubcategoryIdEnum.LIVRE_AUDIO_PHYSIQUE
+    offer?.subcategoryId === SubcategoryIdEnum.LIVRE_AUDIO_PHYSIQUE
   )
   const { userPosition: position } = useGeolocation()
 
@@ -208,6 +208,7 @@ export const OfferBody: FunctionComponent<Props> = ({
   }, [data, fetchNextPage, hasNextPage])
 
   const isRefreshing = useIsFalseWithDelay(isFetching, ANIMATION_DURATION)
+  const { dispatch: bookingDispatch } = useBookingDetailsContext()
 
   if (!offer) return <React.Fragment></React.Fragment>
   const { accessibility, venue } = offer
@@ -217,12 +218,20 @@ export const OfferBody: FunctionComponent<Props> = ({
   const fullAddress = showVenueBanner
     ? formatFullAddress(venue.address, venue.postalCode, venue.city)
     : formatFullAddressWithVenueName(
-        venue.address,
-        venue.postalCode,
-        venue.city,
-        venue.publicName,
-        venue.name
-      )
+      venue.address,
+      venue.postalCode,
+      venue.city,
+      venue.publicName,
+      venue.name
+    )
+
+  useEffect(() => {
+    if (fullAddress) {
+      bookingDispatch(({ type: 'SET_ADDRESS', payload: fullAddress }))
+    }
+
+  }, [fullAddress])
+
 
   const dates = offer.stocks.reduce<string[]>(
     (accumulator, stock) =>
