@@ -8,7 +8,6 @@ import { EduConnectForm } from './EduConnectForm'
 const mockOpenEduConnectTab = jest.fn()
 jest.spyOn(useEduConnectLoginAPI, 'useEduConnectLogin').mockReturnValue({
   openEduConnectTab: mockOpenEduConnectTab,
-  loginUrl: 'https://login/?redirect=false',
   error: null,
 })
 
@@ -18,13 +17,14 @@ describe('<EduConnectForm />', () => {
     expect(renderAPI).toMatchSnapshot()
   })
 
-  it('should navigate to next screen and open educonnect tab on press "Connexion avec ÉduConnect"', () => {
+  it('should open educonnect tab on press "Connexion avec ÉduConnect"', () => {
     render(<EduConnectForm />)
     const button = screen.getByText('Ouvrir un onglet ÉduConnect')
 
     fireEvent.click(button)
 
-    expect(mockOpenEduConnectTab).toHaveBeenCalledTimes(1)
+    // first call happens in useEffect, second one on press
+    expect(mockOpenEduConnectTab).toHaveBeenCalledTimes(2)
   })
 
   describe('Accessibility', () => {
