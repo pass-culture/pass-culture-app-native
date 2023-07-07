@@ -40,7 +40,7 @@ export const ReinitializePassword = () => {
     control,
     formState: { isValid },
   } = useForm<ReinitializePasswordFormData>({
-    mode: 'onChange',
+    mode: 'all',
     defaultValues,
     resolver: yupResolver(reinitializePasswordSchema),
   })
@@ -86,9 +86,9 @@ export const ReinitializePassword = () => {
     <SecondaryPageWithBlurHeader
       headerTitle="Nouveau mot de passe"
       RightButton={<RightButtonText onClose={navigateToHome} wording="Quitter" />}>
-      <Spacer.Column numberOfSpaces={6} />
+      <Spacer.Column numberOfSpaces={8} />
       <Typo.Title3 {...getHeadingAttrs(2)}>Choisis un nouveau mot de passe</Typo.Title3>
-      <Spacer.Column numberOfSpaces={6} />
+      <Spacer.Column numberOfSpaces={10} />
       <Form.MaxWidth>
         <PasswordInputController
           name="newPassword"
@@ -100,7 +100,7 @@ export const ReinitializePassword = () => {
           securityRulesAlwaysVisible
           onSubmitEditing={handleSubmit(submitPassword)}
         />
-        <Spacer.Column numberOfSpaces={8} />
+        <Spacer.Column numberOfSpaces={10} />
         <PasswordInputController
           name="confirmedPassword"
           label="Confirmer le mot de passe"
@@ -109,7 +109,7 @@ export const ReinitializePassword = () => {
           isRequiredField
           onSubmitEditing={handleSubmit(submitPassword)}
         />
-        <Spacer.Column numberOfSpaces={6} />
+        <Spacer.Column numberOfSpaces={10} />
         <ButtonPrimary
           wording="Continuer"
           onPress={handleSubmit(submitPassword)}
