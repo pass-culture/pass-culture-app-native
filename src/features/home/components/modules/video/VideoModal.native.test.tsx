@@ -10,23 +10,11 @@ import { fireEvent, render, screen, waitFor } from 'tests/utils'
 
 const hideModalMock = jest.fn()
 
-const mockOffer = mockedAlgoliaResponse.hits[0]
+const mockOffers = mockedAlgoliaResponse.hits
 
 describe('VideoModal', () => {
   it('should render correctly if modal visible', async () => {
-    render(
-      // eslint-disable-next-line local-rules/no-react-query-provider-hoc
-      reactQueryProviderHOC(
-        <VideoModal
-          homeEntryId={'xyz'}
-          visible
-          hideModal={hideModalMock}
-          offer={mockOffer}
-          moduleId="abcd"
-          {...videoModuleFixture}
-        />
-      )
-    )
+    renderVideoModal()
 
     await waitFor(() => {
       // We are searching for the translateY to be 0 to finish the animation of the modal in the snapshot
@@ -39,19 +27,7 @@ describe('VideoModal', () => {
   })
 
   it('should log HasDismissedModal when pressing close button', async () => {
-    render(
-      // eslint-disable-next-line local-rules/no-react-query-provider-hoc
-      reactQueryProviderHOC(
-        <VideoModal
-          homeEntryId={'xyz'}
-          visible
-          hideModal={hideModalMock}
-          offer={mockOffer}
-          moduleId="abcd"
-          {...videoModuleFixture}
-        />
-      )
-    )
+    renderVideoModal()
 
     const closeButton = screen.getByTestId('Fermer la modale vidéo')
     fireEvent.press(closeButton)
@@ -64,3 +40,20 @@ describe('VideoModal', () => {
     })
   })
 })
+
+function renderVideoModal() {
+  render(
+    // eslint-disable-next-line local-rules/no-react-query-provider-hoc
+    reactQueryProviderHOC(
+      <VideoModal
+        homeEntryId={'xyz'}
+        visible
+        hideModal={hideModalMock}
+        offers={mockOffers}
+        moduleId="abcd"
+        isMultiOffer={false}
+        {...videoModuleFixture}
+      />
+    )
+  )
+}

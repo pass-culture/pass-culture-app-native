@@ -109,6 +109,7 @@ exports[`VideoModal should render correctly if modal visible 1`] = `
       height={1318}
       maxHeight={1334}
       noPadding={true}
+      noPaddingBottom={true}
       style={
         Array [
           Object {
@@ -127,7 +128,6 @@ exports[`VideoModal should render correctly if modal visible 1`] = `
             "justifyContent": "center",
             "maxHeight": 1334,
             "maxWidth": 960,
-            "paddingBottom": 32,
             "width": "100%",
           },
         ]
