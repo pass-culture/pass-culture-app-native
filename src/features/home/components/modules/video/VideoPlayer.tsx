@@ -13,7 +13,7 @@ import { getSpacing } from 'ui/theme'
 
 interface VideoPlayerProps {
   youtubeVideoId: string
-  offer: Offer
+  offer?: Offer
   onPressSeeOffer: () => void
   moduleId: string
   moduleName: string
