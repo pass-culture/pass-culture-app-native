@@ -441,6 +441,7 @@ exports[`VideoModal should render correctly if modal visible 1`] = `
                   "borderRadius": 8,
                   "borderStyle": "solid",
                   "borderWidth": 1,
+                  "height": 140,
                   "opacity": 1,
                   "overflow": "hidden",
                   "userSelect": "auto",
