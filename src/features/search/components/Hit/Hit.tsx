@@ -1,7 +1,9 @@
 import React from 'react'
+import { StyleProp, ViewStyle } from 'react-native'
 import styled from 'styled-components/native'
 
 import { NativeCategoryValue } from 'features/search/components/NativeCategoryValue/NativeCategoryValue'
+import { AnalyticsParams } from 'features/search/types'
 import { useLogClickOnOffer } from 'libs/algolia/analytics/logClickOnOffer'
 import { analytics } from 'libs/analytics'
 import { useDistance } from 'libs/geolocation/hooks/useDistance'
@@ -13,15 +15,15 @@ import { Offer } from 'shared/offer/types'
 import { usePrePopulateOffer } from 'shared/offer/usePrePopulateOffer'
 import { OfferImage } from 'ui/components/tiles/OfferImage'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
-import { getSpacing, Spacer, Typo } from 'ui/theme'
+import { Spacer, Typo } from 'ui/theme'
 interface Props {
   hit: Offer
-  query: string
-  index: number
-  searchId?: string
+  onPress?: () => void
+  analyticsParams: AnalyticsParams
+  style?: StyleProp<ViewStyle>
 }
 
-export const Hit = ({ hit, query, index, searchId }: Props) => {
+export const Hit = ({ hit, analyticsParams, onPress, style }: Props) => {
   const { offer, objectID, _geoloc } = hit
   const { subcategoryId, dates, prices } = offer
   const prePopulateOffer = usePrePopulateOffer()
@@ -45,6 +47,7 @@ export const Hit = ({ hit, query, index, searchId }: Props) => {
   })
   function handlePressOffer() {
     if (!offerId) return
+    if (onPress) onPress()
     // We pre-populate the query-cache with the data from the search client for a smooth transition
     prePopulateOffer({
       ...offer,
@@ -57,20 +60,24 @@ export const Hit = ({ hit, query, index, searchId }: Props) => {
 
     analytics.logConsultOffer({
       offerId,
-      from: 'search',
-      query,
-      searchId,
-      offer_display_index: index,
+      ...analyticsParams,
     })
-    logClickOnOffer({ objectID, position: index })
+
+    if (analyticsParams.from === 'search')
+      logClickOnOffer({ objectID, position: analyticsParams.index ?? 0 })
   }
 
   return (
     <Container
-      navigateTo={{ screen: 'Offer', params: { id: offerId, from: 'search', searchId } }}
+      navigateTo={{
+        screen: 'Offer',
+        params: { id: offerId, from: analyticsParams.from, searchId: analyticsParams.searchId },
+      }}
       onBeforeNavigate={handlePressOffer}
       accessibilityLabel={accessibilityLabel}
-      enableNavigate={!!offerId}>
+      enableNavigate={!!offerId}
+      from={analyticsParams.from}
+      style={style}>
       <OfferImage imageUrl={offer.thumbUrl} categoryId={categoryId} />
       <Spacer.Row numberOfSpaces={4} />
       <Column>
@@ -98,8 +105,7 @@ export const Hit = ({ hit, query, index, searchId }: Props) => {
   )
 }
 
-const Container: typeof InternalTouchableLink = styled(InternalTouchableLink)({
-  marginHorizontal: getSpacing(6),
+const Container = styled(InternalTouchableLink)({
   flexDirection: 'row',
   alignItems: 'center',
   outlineOffset: 0,

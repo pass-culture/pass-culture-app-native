@@ -1,6 +1,7 @@
 import React from 'react'
 
 import { navigate } from '__mocks__/@react-navigation/native'
+import { AnalyticsParams } from 'features/search/types'
 import { mockedAlgoliaResponse } from 'libs/algolia/__mocks__/mockedAlgoliaResponse'
 import * as logClickOnProductAPI from 'libs/algolia/analytics/logClickOnOffer'
 import { analytics } from 'libs/analytics'
@@ -10,6 +11,12 @@ import { Hit } from './Hit'
 
 const mockHit = mockedAlgoliaResponse.hits[0]
 const offerId = Number(mockHit.objectID)
+const mockAnalyticsParams: AnalyticsParams = {
+  from: 'search',
+  query: '',
+  index: 0,
+  searchId: '539b285e',
+}
 
 let mockDistance: string | null = null
 jest.mock('libs/geolocation/hooks/useDistance', () => ({
@@ -27,7 +34,7 @@ jest.mock('libs/algolia/analytics/SearchAnalyticsWrapper', () => ({
 
 describe('Hit component', () => {
   it('should navigate to the offer when pressing an hit', async () => {
-    render(<Hit hit={mockHit} query="" index={0} searchId="539b285e" />)
+    render(<Hit hit={mockHit} analyticsParams={mockAnalyticsParams} />)
     await fireEvent.press(screen.getByRole('link'))
     expect(navigate).toHaveBeenCalledWith('Offer', {
       id: offerId,
@@ -37,19 +44,20 @@ describe('Hit component', () => {
   })
 
   it('should log analytics event when pressing an hit', async () => {
-    render(<Hit hit={mockHit} query="" index={0} />)
+    render(<Hit hit={mockHit} analyticsParams={mockAnalyticsParams} />)
     await fireEvent.press(screen.getByRole('link'))
     expect(analytics.logConsultOffer).toBeCalledTimes(1)
     expect(analytics.logConsultOffer).toHaveBeenCalledWith({
       offerId,
       from: 'search',
       query: '',
-      offer_display_index: 0,
+      index: 0,
+      searchId: '539b285e',
     })
   })
 
   it('should notify Algolia when pressing an hit', async () => {
-    render(<Hit hit={mockHit} query="" index={0} />)
+    render(<Hit hit={mockHit} analyticsParams={mockAnalyticsParams} />)
 
     const hitComponent = screen.getByRole('link')
     await fireEvent.press(hitComponent)
@@ -62,7 +70,7 @@ describe('Hit component', () => {
 
   it('should show distance if geolocation enabled', () => {
     mockDistance = '10 km'
-    render(<Hit hit={mockHit} query="" index={0} />)
+    render(<Hit hit={mockHit} analyticsParams={mockAnalyticsParams} />)
     expect(screen.queryByText('10 km')).toBeTruthy()
   })
 
@@ -70,13 +78,13 @@ describe('Hit component', () => {
     const hit = { ...mockHit, objectID: '' }
 
     it('should not navigate to the offer', async () => {
-      render(<Hit hit={hit} query="" index={0} searchId="539b285e" />)
+      render(<Hit hit={hit} analyticsParams={mockAnalyticsParams} />)
       await fireEvent.press(screen.getByRole('link'))
       expect(navigate).not.toHaveBeenCalled()
     })
 
     it('should not log analytics event', async () => {
-      render(<Hit hit={hit} query="" index={0} />)
+      render(<Hit hit={hit} analyticsParams={mockAnalyticsParams} />)
       await fireEvent.press(screen.getByRole('link'))
       expect(analytics.logConsultOffer).not.toHaveBeenCalled()
     })
