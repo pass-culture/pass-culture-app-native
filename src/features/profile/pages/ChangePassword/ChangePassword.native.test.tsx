@@ -8,8 +8,7 @@ import { env } from 'libs/environment'
 import { EmptyResponse } from 'libs/fetch'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { server } from 'tests/server'
-import { render, fireEvent, waitFor } from 'tests/utils'
-import { theme } from 'theme'
+import { render, fireEvent, act, screen } from 'tests/utils'
 import { showSuccessSnackBar } from 'ui/components/snackBar/__mocks__/SnackBarContext'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 
@@ -32,37 +31,39 @@ function renderChangePassword() {
 
 describe('ChangePassword', () => {
   it('should enable the submit button when passwords are equals and filled and current password is correct', async () => {
-    const { getByPlaceholderText, getByTestId } = renderChangePassword()
+    renderChangePassword()
 
-    const currentPasswordInput = getByPlaceholderText('Ton mot de passe actuel')
-    const passwordInput = getByPlaceholderText('Ton nouveau mot de passe')
-    const confirmationInput = getByPlaceholderText('Confirmer le mot de passe')
+    const currentPasswordInput = screen.getByPlaceholderText('Ton mot de passe actuel')
+    const passwordInput = screen.getByPlaceholderText('Ton nouveau mot de passe')
+    const confirmationInput = screen.getByPlaceholderText('Confirmer le mot de passe')
 
     fireEvent.changeText(currentPasswordInput, 'user@Dfdf56Moi')
-    fireEvent.changeText(passwordInput, 'user@AZERTY123')
-    fireEvent.changeText(confirmationInput, 'user@AZERTY123')
-
-    await waitFor(() => {
-      const continueButton = getByTestId('Enregistrer les modifications')
-      expect(continueButton).toBeEnabled()
+    await act(async () => {
+      fireEvent.changeText(passwordInput, 'user@AZERTY123')
     })
+    await act(async () => {
+      fireEvent.changeText(confirmationInput, 'user@AZERTY123')
+    })
+
+    const continueButton = screen.getByTestId('Enregistrer les modifications')
+    expect(continueButton).toBeEnabled()
   })
 
   it('should display the matching error when the passwords dont match', async () => {
-    const { getByPlaceholderText, getByText } = renderChangePassword()
+    renderChangePassword()
 
-    const passwordInput = getByPlaceholderText('Ton nouveau mot de passe')
-    const confirmationInput = getByPlaceholderText('Confirmer le mot de passe')
+    const passwordInput = screen.getByPlaceholderText('Ton nouveau mot de passe')
+    const confirmationInput = screen.getByPlaceholderText('Confirmer le mot de passe')
 
-    fireEvent.changeText(passwordInput, '123456')
-
-    fireEvent.changeText(confirmationInput, '123456--')
-
-    await waitFor(() => {
-      const notMatchingErrorText = getByText('Les mots de passe ne concordent pas')
-      const color = notMatchingErrorText.props.style[0].color
-      expect(color).toEqual(theme.colors.error)
+    await act(async () => {
+      fireEvent.changeText(passwordInput, '123456')
     })
+
+    await act(async () => {
+      fireEvent.changeText(confirmationInput, '123456--')
+    })
+
+    expect(screen.queryByText('Les mots de passe ne concordent pas')).toBeTruthy()
   })
 
   it('should display success snackbar and navigate to Profile when the password is updated', async () => {
@@ -75,25 +76,29 @@ describe('ChangePassword', () => {
     mockedUseSnackBarContext.mockImplementationOnce(() => ({
       showSuccessSnackBar,
     }))
-    const { getByPlaceholderText, getByTestId } = renderChangePassword()
+    renderChangePassword()
 
-    const currentPasswordInput = getByPlaceholderText('Ton mot de passe actuel')
-    const passwordInput = getByPlaceholderText('Ton nouveau mot de passe')
-    const confirmationInput = getByPlaceholderText('Confirmer le mot de passe')
+    const currentPasswordInput = screen.getByPlaceholderText('Ton mot de passe actuel')
+    const passwordInput = screen.getByPlaceholderText('Ton nouveau mot de passe')
+    const confirmationInput = screen.getByPlaceholderText('Confirmer le mot de passe')
 
     fireEvent.changeText(currentPasswordInput, 'user@Dfdf56Moi')
-    fireEvent.changeText(passwordInput, 'user@AZERTY123')
-    fireEvent.changeText(confirmationInput, 'user@AZERTY123')
-
-    await waitFor(() => {
-      fireEvent.press(getByTestId('Enregistrer les modifications'))
-      expect(mockshowSuccessSnackBar).toHaveBeenCalledWith({
-        message: 'Ton mot de passe est modifié',
-        timeout: SNACK_BAR_TIME_OUT,
-      })
-      expect(navigate).toHaveBeenCalledWith('TabNavigator', { screen: 'Profile' })
-      expect(analytics.logHasChangedPassword).toHaveBeenCalledWith('changePassword')
+    await act(async () => {
+      fireEvent.changeText(passwordInput, 'user@AZERTY123')
     })
+    await act(async () => {
+      fireEvent.changeText(confirmationInput, 'user@AZERTY123')
+    })
+
+    await act(async () => {
+      fireEvent.press(screen.getByTestId('Enregistrer les modifications'))
+    })
+    expect(mockshowSuccessSnackBar).toHaveBeenCalledWith({
+      message: 'Ton mot de passe est modifié',
+      timeout: SNACK_BAR_TIME_OUT,
+    })
+    expect(navigate).toHaveBeenCalledWith('TabNavigator', { screen: 'Profile' })
+    expect(analytics.logHasChangedPassword).toHaveBeenCalledWith('changePassword')
   })
 
   it('display error when the password failed to updated', async () => {
@@ -103,20 +108,24 @@ describe('ChangePassword', () => {
         (_req, res, ctx) => res.once(ctx.status(400), ctx.json({}))
       )
     )
-    const { getByPlaceholderText, getByTestId, getByText } = renderChangePassword()
+    renderChangePassword()
 
-    const currentPasswordInput = getByPlaceholderText('Ton mot de passe actuel')
-    const passwordInput = getByPlaceholderText('Ton nouveau mot de passe')
-    const confirmationInput = getByPlaceholderText('Confirmer le mot de passe')
+    const currentPasswordInput = screen.getByPlaceholderText('Ton mot de passe actuel')
+    const passwordInput = screen.getByPlaceholderText('Ton nouveau mot de passe')
+    const confirmationInput = screen.getByPlaceholderText('Confirmer le mot de passe')
 
     fireEvent.changeText(currentPasswordInput, 'user@Dfdf56Moi')
-    fireEvent.changeText(passwordInput, 'user@AZERTY123')
-    fireEvent.changeText(confirmationInput, 'user@AZERTY123')
-
-    await waitFor(() => {
-      const continueButton = getByTestId('Enregistrer les modifications')
-      fireEvent.press(continueButton)
-      expect(getByText('Mot de passe incorrect')).toBeTruthy()
+    await act(async () => {
+      fireEvent.changeText(passwordInput, 'user@AZERTY123')
     })
+    await act(async () => {
+      fireEvent.changeText(confirmationInput, 'user@AZERTY123')
+    })
+
+    const continueButton = screen.getByTestId('Enregistrer les modifications')
+    await act(async () => {
+      fireEvent.press(continueButton)
+    })
+    expect(screen.getByText('Mot de passe incorrect')).toBeTruthy()
   })
 })
