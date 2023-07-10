@@ -88,7 +88,7 @@ jobs:
       GCP_EHP_SERVICE_ACCOUNT: ${{ secrets.GCP_EHP_SERVICE_ACCOUNT }}
       GCP_EHP_WORKLOAD_IDENTITY_PROVIDER: ${{ secrets.GCP_EHP_WORKLOAD_IDENTITY_PROVIDER }}
   deploy-web-testing:
-    needs: soft-deploy-testing
+    needs: yarn-install
     uses: ./.github/workflows/dev_on_workflow_web_deploy.yml
     with:
       ENV: testing
