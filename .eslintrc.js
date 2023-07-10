@@ -240,6 +240,7 @@ module.exports = {
           '**/*.test.tsx',
           '**/*.stories.jsx',
           '**/*.test.jsx',
+          '**/service-worker.ts',
           '**/why-did-you-render.js',
           '**/jest.*.ts',
           'dangerfile.ts',
@@ -301,6 +302,7 @@ module.exports = {
     node: true,
     browser: true,
     jest: true,
+    serviceworker: true,
   },
   ignorePatterns: [
     '/build',
