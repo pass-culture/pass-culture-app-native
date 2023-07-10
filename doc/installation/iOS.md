@@ -113,6 +113,8 @@ This error means that the sentry token you generated is invalid. Please run thro
 
 Make sure you installed jq so the CFBundleVersion can be automatically filled.
 
+If it is installed but you still have the error, maybe Xcode doesn't find it: run `which jq`. If it does NOT print `/usr/local/bin/jq`, run `ln -s (which jq) /usr/local/bin/jq` to create a sym-link that Xcode will find.
+
 </details>
 
 [1]: ./setup.md
