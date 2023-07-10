@@ -36,7 +36,7 @@ const IdentificationForkEduconnectContent: FunctionComponent = () => {
         Title={<Typo.ButtonText>Mes codes ÉduConnect</Typo.ButtonText>}
         Subtitle={<StyledCaption>Fournis par ton établissement scolaire</StyledCaption>}
         icon={Marianne}
-        navigateTo={{ screen: 'IdentityCheckEduConnect' }}
+        navigateTo={{ screen: 'EduConnectForm' }}
         onBeforeNavigate={analytics.logChooseEduConnectMethod}
         key={0}
       />

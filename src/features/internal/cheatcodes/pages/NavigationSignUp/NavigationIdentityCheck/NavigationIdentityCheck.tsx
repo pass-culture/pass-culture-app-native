@@ -3,7 +3,6 @@ import React, { useState } from 'react'
 import { ScrollView } from 'react-native'
 import styled from 'styled-components/native'
 
-import { FastEduconnectConnectionRequestModal } from 'features/identityCheck/components/modals/FastEduconnectConnectionRequestModal'
 import { NotEligibleEduConnect } from 'features/identityCheck/pages/identification/errors/eduConnect/NotEligibleEduConnect'
 import { EduConnectErrorMessageEnum } from 'features/identityCheck/pages/identification/errors/hooks/useNotEligibleEduConnectErrorData'
 import { PhoneValidationTipsModal } from 'features/identityCheck/pages/phoneValidation/PhoneValidationTipsModal'
@@ -19,10 +18,6 @@ import { Spacer } from 'ui/theme'
 export function NavigationIdentityCheck(): React.JSX.Element {
   const { goBack } = useGoBack('Navigation', undefined)
   const [screenError, setScreenError] = useState<ScreenError | undefined>(undefined)
-  const [
-    fastEduconnectConnectionRequestModalVisible,
-    setFastEduconnectConnectionRequestModalVisible,
-  ] = useState(false)
   const [phoneValidationTipsModalVisible, setPhoneValidationTipsModalVisible] = useState(false)
   const { navigate } = useNavigation<UseNavigationType>()
 
@@ -63,11 +58,10 @@ export function NavigationIdentityCheck(): React.JSX.Element {
         <LinkToComponent name="SetCity" title="SetCity" />
         <LinkToComponent name="IdentityCheckEnd" />
         <LinkToComponent name="IdentityCheckHonor" />
-        <LinkToComponent name="IdentityCheckEduConnectForm" />
-        <LinkToComponent name="IdentityCheckEduConnect" title={'EduConnect'} />
+        <LinkToComponent name="EduConnectForm" />
         <LinkToComponent name="IdentityCheckDMS" />
         <LinkToComponent
-          name="IdentityCheckValidation"
+          name="EduConnectValidation"
           navigationParams={{
             firstName: 'firstName',
             lastName: 'lastName',
@@ -97,14 +91,6 @@ export function NavigationIdentityCheck(): React.JSX.Element {
         />
         <Row half>
           <ButtonPrimary
-            wording={'Identifie-toi en 2 minutes'}
-            onPress={() => {
-              setFastEduconnectConnectionRequestModalVisible(true)
-            }}
-          />
-        </Row>
-        <Row half>
-          <ButtonPrimary
             wording={'VerifyEligibility'}
             onPress={() => navigate('VerifyEligibility')}
           />
@@ -118,10 +104,6 @@ export function NavigationIdentityCheck(): React.JSX.Element {
         <LinkToComponent name="IdentificationFork" />
       </StyledContainer>
       <Spacer.BottomScreen />
-      <FastEduconnectConnectionRequestModal
-        visible={fastEduconnectConnectionRequestModalVisible}
-        hideModal={() => setFastEduconnectConnectionRequestModalVisible(false)}
-      />
       <PhoneValidationTipsModal
         isVisible={phoneValidationTipsModalVisible}
         dismissModal={() => setPhoneValidationTipsModalVisible(false)}

@@ -15,7 +15,7 @@ import { EduConnectErrorMessageEnum } from 'features/identityCheck/pages/identif
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { eduConnectClient } from 'libs/eduConnectClient'
 
-export const IdentityCheckEduConnectForm = () => {
+export const EduConnectForm = () => {
   const { navigate } = useNavigation<UseNavigationType>()
   const { dispatch } = useSubscriptionContext()
 
@@ -73,7 +73,7 @@ export const IdentityCheckEduConnectForm = () => {
           birthDate: url.searchParams.get('dateOfBirth') ?? null,
         },
       })
-      navigate('IdentityCheckValidation', {})
+      navigate('EduConnectValidation', {})
     }
   }
 

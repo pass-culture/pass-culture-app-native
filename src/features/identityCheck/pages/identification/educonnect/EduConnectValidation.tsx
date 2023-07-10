@@ -12,7 +12,7 @@ import { analytics } from 'libs/analytics'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { Spacer, Typo } from 'ui/theme'
 
-export function IdentityCheckValidation() {
+export function EduConnectValidation() {
   const { identification } = useSubscriptionContext()
   const saveStep = useSaveStep()
   const { navigateForwardToStepper } = useNavigateForwardToStepper()

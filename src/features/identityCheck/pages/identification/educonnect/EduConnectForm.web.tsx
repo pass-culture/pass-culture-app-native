@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { ErrorBoundary } from 'react-error-boundary'
 import styled from 'styled-components/native'
 
@@ -13,8 +13,13 @@ import { ExternalSite } from 'ui/svg/icons/ExternalSite'
 import { Info } from 'ui/svg/icons/Info'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 
-export const IdentityCheckEduConnectForm = () => {
+export const EduConnectForm = () => {
   const { error, openEduConnectTab } = useEduConnectLogin()
+
+  useEffect(() => {
+    openEduConnectTab()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
 
   if (error) {
     throw error

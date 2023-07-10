@@ -61,7 +61,7 @@ describe('useNotEligibleEduConnectErrorData', () => {
     primaryButton: {
       text: 'Réessayer de m’identifier',
       onPress: expect.any(Function),
-      navigateTo: { screen: 'IdentityCheckEduConnectForm' },
+      navigateTo: { screen: 'EduConnectForm' },
     },
     isGoHomeTertiaryButtonVisible: true,
   }

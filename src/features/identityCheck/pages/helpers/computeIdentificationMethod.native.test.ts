@@ -3,9 +3,8 @@ import { computeIdentificationMethod } from 'features/identityCheck/pages/helper
 import { SubscriptionRootStackParamList } from 'features/navigation/RootNavigator/types'
 
 const educonnectFlow: (keyof SubscriptionRootStackParamList)[] = [
-  'IdentityCheckEduConnect',
-  'IdentityCheckEduConnectForm',
-  'IdentityCheckValidation',
+  'EduConnectForm',
+  'EduConnectValidation',
 ]
 
 const ubbleFlow: (keyof SubscriptionRootStackParamList)[] = ['SelectIDOrigin']

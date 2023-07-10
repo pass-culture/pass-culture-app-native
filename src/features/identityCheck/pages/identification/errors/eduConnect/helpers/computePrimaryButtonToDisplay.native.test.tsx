@@ -20,7 +20,7 @@ describe('computePrimaryButtonToDisplay', () => {
 
   const navigateToButtonProps = {
     text: 'Réessayer de m’identifier',
-    navigateTo: { screen: 'IdentityCheckEduConnectForm' },
+    navigateTo: { screen: 'EduConnectForm' },
   }
 
   const navigateToPrimaryButton = (
@@ -28,7 +28,7 @@ describe('computePrimaryButtonToDisplay', () => {
       key={1}
       as={ButtonPrimaryWhite}
       wording="Réessayer de m’identifier"
-      navigateTo={{ screen: 'IdentityCheckEduConnectForm' }}
+      navigateTo={{ screen: 'EduConnectForm' }}
     />
   )
 

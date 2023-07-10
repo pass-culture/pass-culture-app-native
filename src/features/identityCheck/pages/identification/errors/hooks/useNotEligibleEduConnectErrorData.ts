@@ -126,7 +126,7 @@ export function useNotEligibleEduConnectErrorData(
         () => {
           goBack()
         },
-        { screen: 'IdentityCheckEduConnectForm' }
+        { screen: 'EduConnectForm' }
       )
 
     case EduConnectErrorMessageEnum.DuplicateUser:
