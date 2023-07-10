@@ -105,6 +105,7 @@ scripts/multipleSimulatorsStartup.sh
 android/sentry.properties
 ios/sentry.properties
 sourcemaps/*
+.sentryclirc
 
 # Snyk extension
 .dccache
