@@ -11,8 +11,8 @@ import { VideoModal } from 'features/home/components/modules/video/VideoModal'
 import { VideoMonoOfferTile } from 'features/home/components/modules/video/VideoMonoOfferTile'
 import { VideoMultiOfferPlaylist } from 'features/home/components/modules/video/VideoMultiOfferPlaylist'
 import { VideoModule as VideoModuleType } from 'features/home/types'
-import { AnalyticsParams } from 'features/search/types'
 import { analytics } from 'libs/analytics'
+import { ConsultOfferAnalyticsParams } from 'libs/analytics/types'
 import { ContentTypes } from 'libs/contentful'
 import { useModal } from 'ui/components/modals/useModal'
 import { Play } from 'ui/svg/icons/Play'
@@ -62,7 +62,7 @@ export const VideoModule: FunctionComponent<VideoModuleProps> = (props) => {
 
   if (!shouldModuleBeDisplayed) return <React.Fragment />
 
-  const analyticsParams: AnalyticsParams = {
+  const analyticsParams: ConsultOfferAnalyticsParams = {
     moduleId: props.id,
     moduleName: props.title,
     from: 'home',

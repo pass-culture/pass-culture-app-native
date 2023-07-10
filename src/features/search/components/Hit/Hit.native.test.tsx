@@ -1,17 +1,17 @@
 import React from 'react'
 
 import { navigate } from '__mocks__/@react-navigation/native'
-import { AnalyticsParams } from 'features/search/types'
 import { mockedAlgoliaResponse } from 'libs/algolia/__mocks__/mockedAlgoliaResponse'
 import * as logClickOnProductAPI from 'libs/algolia/analytics/logClickOnOffer'
 import { analytics } from 'libs/analytics'
+import { ConsultOfferAnalyticsParams } from 'libs/analytics/types'
 import { fireEvent, render, screen } from 'tests/utils'
 
 import { Hit } from './Hit'
 
 const mockHit = mockedAlgoliaResponse.hits[0]
 const offerId = Number(mockHit.objectID)
-const mockAnalyticsParams: AnalyticsParams = {
+const mockAnalyticsParams: ConsultOfferAnalyticsParams = {
   from: 'search',
   query: '',
   index: 0,

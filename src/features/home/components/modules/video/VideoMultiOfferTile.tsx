@@ -2,8 +2,8 @@ import React, { FunctionComponent } from 'react'
 import { View } from 'react-native'
 import styled from 'styled-components/native'
 
-import { AnalyticsParams } from 'features/search/types'
 import { analytics } from 'libs/analytics'
+import { ConsultOfferAnalyticsParams } from 'libs/analytics/types'
 import { getDisplayPrice } from 'libs/parsers'
 import { useCategoryHomeLabelMapping, useCategoryIdMapping } from 'libs/subcategories'
 import { Offer } from 'shared/offer/types'
@@ -15,7 +15,7 @@ import { Spacer, Typo, getSpacing } from 'ui/theme'
 type Props = {
   offer: Offer
   hideModal: () => void
-  analyticsParams: AnalyticsParams
+  analyticsParams: ConsultOfferAnalyticsParams
 }
 
 export const VideoMultiOfferTile: FunctionComponent<Props> = ({

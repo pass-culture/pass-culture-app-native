@@ -3,9 +3,9 @@ import { StyleProp, ViewStyle } from 'react-native'
 import styled from 'styled-components/native'
 
 import { NativeCategoryValue } from 'features/search/components/NativeCategoryValue/NativeCategoryValue'
-import { AnalyticsParams } from 'features/search/types'
 import { useLogClickOnOffer } from 'libs/algolia/analytics/logClickOnOffer'
 import { analytics } from 'libs/analytics'
+import { ConsultOfferAnalyticsParams } from 'libs/analytics/types'
 import { useDistance } from 'libs/geolocation/hooks/useDistance'
 import { formatDates, getDisplayPrice } from 'libs/parsers'
 import { useSubcategory } from 'libs/subcategories'
@@ -19,7 +19,7 @@ import { Spacer, Typo } from 'ui/theme'
 interface Props {
   hit: Offer
   onPress?: () => void
-  analyticsParams: AnalyticsParams
+  analyticsParams: ConsultOfferAnalyticsParams
   style?: StyleProp<ViewStyle>
 }
 

@@ -3,16 +3,16 @@ import React from 'react'
 
 import { navigate } from '__mocks__/@react-navigation/native'
 import { VideoMonoOfferTile } from 'features/home/components/modules/video/VideoMonoOfferTile'
-import { AnalyticsParams } from 'features/search/types'
 import { mockedAlgoliaResponse } from 'libs/algolia/__mocks__/mockedAlgoliaResponse'
 import { analytics } from 'libs/analytics'
+import { ConsultOfferAnalyticsParams } from 'libs/analytics/types'
 import { Offer } from 'shared/offer/types'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, fireEvent, render, screen } from 'tests/utils'
 
 const mockOffer = mockedAlgoliaResponse.hits[0]
 
-const mockAnalyticsParams: AnalyticsParams = {
+const mockAnalyticsParams: ConsultOfferAnalyticsParams = {
   from: 'home',
   moduleId: 'abcd',
   moduleName: 'salut à tous c’est lujipeka',

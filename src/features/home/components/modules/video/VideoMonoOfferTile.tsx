@@ -2,8 +2,8 @@ import React, { FunctionComponent } from 'react'
 import styled from 'styled-components/native'
 
 import { getTagColor } from 'features/home/components/helpers/getTagColor'
-import { AnalyticsParams } from 'features/search/types'
 import { analytics } from 'libs/analytics'
+import { ConsultOfferAnalyticsParams } from 'libs/analytics/types'
 import { formatDates, getDisplayPrice } from 'libs/parsers'
 import { useCategoryHomeLabelMapping, useCategoryIdMapping } from 'libs/subcategories'
 import { Offer } from 'shared/offer/types'
@@ -19,7 +19,7 @@ type Props = {
   offer: Offer
   color: string
   hideModal: () => void
-  analyticsParams: AnalyticsParams
+  analyticsParams: ConsultOfferAnalyticsParams
 }
 
 export const VideoMonoOfferTile: FunctionComponent<Props> = ({
