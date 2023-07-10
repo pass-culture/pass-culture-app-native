@@ -9,6 +9,7 @@ const SERVICE_WORKER_UPDATE_FOUND = 'SERVICE_WORKER_UPDATE_FOUND'
 const SERVICE_WORKER_OFFLINE = 'SERVICE_WORKER_OFFLINE'
 const SERVICE_WORKER_UPDATE_READY = 'SERVICE_WORKER_UPDATE_READY'
 const SERVICE_WORKER_ERROR = 'SERVICE_WORKER_ERROR'
+const TIME_TO_WAIT_FOR_SW_UPDATE_IN_MS = 5000
 
 interface ServiceWorkerReady {
   type: typeof SERVICE_WORKER_READY
@@ -159,6 +160,7 @@ const useProvideServiceWorker = (
 ) => {
   const [swState, dispatch] = useReducer(useServiceWorkerReducer, initialState)
   useEffect(() => {
+    // Update and install new service worker before deleting it
     register(file, {
       registrationOptions,
       ready(registration: ServiceWorkerRegistration) {
@@ -204,7 +206,12 @@ const useProvideServiceWorker = (
         })
       },
     })
+
+    // Delete service worker
+    const timer = globalThis.setTimeout(unregister, TIME_TO_WAIT_FOR_SW_UPDATE_IN_MS)
+
     return () => {
+      globalThis.clearTimeout(timer)
       unregister()
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
