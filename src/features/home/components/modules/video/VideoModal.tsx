@@ -84,16 +84,16 @@ export const VideoModal: React.FC<VideoModalProps> = (props) => {
         <Spacer.Column numberOfSpaces={6} />
         <Typo.Title4>{props.offerTitle}</Typo.Title4>
         <Spacer.Column numberOfSpaces={4} />
-        {!props.isMultiOffer ? (
-          <VideoMonoOfferTile
-            offer={props.offers[0]}
-            color={props.color}
+        {props.isMultiOffer ? (
+          <VideoMultiOfferList
+            offers={props.offers}
             hideModal={props.hideModal}
             analyticsParams={analyticsParams}
           />
         ) : (
-          <VideoMultiOfferList
-            offers={props.offers}
+          <VideoMonoOfferTile
+            offer={props.offers[0]}
+            color={props.color}
             hideModal={props.hideModal}
             analyticsParams={analyticsParams}
           />
