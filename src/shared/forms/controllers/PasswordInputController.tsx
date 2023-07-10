@@ -7,8 +7,6 @@ import { InputError } from 'ui/components/inputs/InputError'
 import { PasswordInput, Props as PasswordInputProps } from 'ui/components/inputs/PasswordInput'
 import { getSpacing } from 'ui/theme'
 
-const passwordInputErrorId = uuidv4()
-
 interface Props<TFieldValues extends FieldValues, TName> extends PasswordInputProps {
   name: TName
   control: Control<TFieldValues>
@@ -26,6 +24,8 @@ export const PasswordInputController = <
   securityRulesAlwaysVisible = false,
   ...otherPasswordInputProps
 }: PropsWithChildren<Props<TFieldValues, TName>>): ReactElement => {
+  const passwordInputErrorId = uuidv4()
+
   return (
     <Controller
       control={control}
