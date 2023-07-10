@@ -4,7 +4,7 @@ After setting up your [environment][1], you can follow the steps below to run th
 
 ### Further installation process
 
-To install iOS modules (pods), we use Cocoapods (dependency manager). It is built with Ruby, so make sure it is installed on your computer.
+To install iOS modules (pods), we use CocoaPods (dependency manager). It is built with Ruby, so make sure it is installed on your computer.
 
 Install RVM (Ruby Version Manager) with this command :
 
@@ -21,7 +21,7 @@ Install a version of Ruby that's 2.7.5 or higher (version of Ruby is indicated i
 
 We use [bundler][2] to install our Ruby gems. You can install it with `gem install bundler`.
 
-Now you can install Cocoapods with `bundle install`. This will install the gems.
+Now you can install CocoaPods with `bundle install`. This will install the gems.
 
 To install the pods, and create the Pods folder, run:
 
