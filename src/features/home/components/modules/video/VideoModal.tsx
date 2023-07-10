@@ -3,10 +3,11 @@ import { View } from 'react-native'
 import styled from 'styled-components/native'
 
 import { getTagColor } from 'features/home/components/helpers/getTagColor'
-import { VideoMonoOfferTile } from 'features/home/components/modules/video/VideoMonoOfferModule'
+import { VideoMonoOfferTile } from 'features/home/components/modules/video/VideoMonoOfferTile'
 import { VideoMultiOfferList } from 'features/home/components/modules/video/VideoMultiOfferList'
 import { VideoPlayer } from 'features/home/components/modules/video/VideoPlayer'
 import { VideoModule } from 'features/home/types'
+import { AnalyticsParams } from 'features/search/types'
 import { analytics } from 'libs/analytics'
 import { ContentTypes } from 'libs/contentful'
 import { formatToFrenchDate } from 'libs/parsers'
@@ -31,6 +32,13 @@ export const VideoModal: React.FC<VideoModalProps> = (props) => {
   const StyledCloseIcon = styled(Close).attrs(({ theme }) => ({
     size: theme.icons.sizes.smaller,
   }))``
+
+  const analyticsParams: AnalyticsParams = {
+    moduleId: props.id,
+    moduleName: props.title,
+    from: 'videoModal',
+    homeEntryId: props.homeEntryId,
+  }
 
   const onPressCloseModal = () => {
     analytics.logHasDismissedModal({ moduleId: props.moduleId, modalType: ContentTypes.VIDEO })
@@ -81,21 +89,13 @@ export const VideoModal: React.FC<VideoModalProps> = (props) => {
             offer={props.offers[0]}
             color={props.color}
             hideModal={props.hideModal}
-            moduleId={props.id}
-            moduleName={props.title}
-            analyticsFrom={'videoModal'}
-            homeEntryId={props.homeEntryId}
+            analyticsParams={analyticsParams}
           />
         ) : (
           <VideoMultiOfferList
             offers={props.offers}
             hideModal={props.hideModal}
-            analyticsParams={{
-              moduleId: props.id,
-              moduleName: props.title,
-              from: 'videoModal',
-              homeEntryId: props.homeEntryId,
-            }}
+            analyticsParams={analyticsParams}
           />
         )}
       </StyledScrollView>

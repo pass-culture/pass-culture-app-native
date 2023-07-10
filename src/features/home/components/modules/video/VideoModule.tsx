@@ -8,9 +8,10 @@ import { BlackGradient } from 'features/home/components/BlackGradient'
 import { TEXT_BACKGROUND_OPACITY } from 'features/home/components/constants'
 import { getGradientColors } from 'features/home/components/helpers/getGradientColors'
 import { VideoModal } from 'features/home/components/modules/video/VideoModal'
-import { VideoMonoOfferTile } from 'features/home/components/modules/video/VideoMonoOfferModule'
+import { VideoMonoOfferTile } from 'features/home/components/modules/video/VideoMonoOfferTile'
 import { VideoMultiOfferPlaylist } from 'features/home/components/modules/video/VideoMultiOfferPlaylist'
 import { VideoModule as VideoModuleType } from 'features/home/types'
+import { AnalyticsParams } from 'features/search/types'
 import { analytics } from 'libs/analytics'
 import { ContentTypes } from 'libs/contentful'
 import { useModal } from 'ui/components/modals/useModal'
@@ -61,6 +62,13 @@ export const VideoModule: FunctionComponent<VideoModuleProps> = (props) => {
 
   if (!shouldModuleBeDisplayed) return <React.Fragment />
 
+  const analyticsParams: AnalyticsParams = {
+    moduleId: props.id,
+    moduleName: props.title,
+    from: 'home',
+    homeEntryId: props.homeEntryId,
+  }
+
   return (
     <Container>
       <StyledTitleContainer>
@@ -109,10 +117,7 @@ export const VideoModule: FunctionComponent<VideoModuleProps> = (props) => {
               offer={offers[0]}
               color={props.color}
               hideModal={hideVideoModal}
-              moduleId={props.id}
-              moduleName={props.title}
-              homeEntryId={props.homeEntryId}
-              analyticsFrom={'home'}
+              analyticsParams={analyticsParams}
             />
           )}
         </VideoOfferContainer>
@@ -123,12 +128,7 @@ export const VideoModule: FunctionComponent<VideoModuleProps> = (props) => {
           <VideoMultiOfferPlaylist
             offers={offers}
             hideModal={hideVideoModal}
-            analyticsParams={{
-              moduleId: props.id,
-              moduleName: props.title,
-              homeEntryId: props.homeEntryId,
-              from: 'home',
-            }}
+            analyticsParams={analyticsParams}
           />
         </React.Fragment>
       )}

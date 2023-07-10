@@ -12,7 +12,8 @@ import { act, fireEvent, render, screen } from 'tests/utils'
 
 const mockOffer = mockedAlgoliaResponse.hits[0]
 
-const props = {
+const mockAnalyticsParams: AnalyticsParams = {
+  from: 'home',
   moduleId: 'abcd',
   moduleName: 'salut à tous c’est lujipeka',
   homeEntryId: 'xyz',
@@ -46,11 +47,8 @@ describe('VideoMonoOfferTile', () => {
     await act(async () => {})
 
     expect(analytics.logConsultOffer).toHaveBeenNthCalledWith(1, {
-      from: 'home',
       offerId: +mockOffer.objectID,
-      moduleId: props.moduleId,
-      moduleName: props.moduleName,
-      homeEntryId: props.homeEntryId,
+      ...mockAnalyticsParams,
     })
   })
 })
@@ -61,8 +59,7 @@ function renderOfferVideoModule(offer?: Offer) {
       offer={offer ?? mockOffer}
       color=""
       hideModal={hideModalMock}
-      analyticsFrom={'home'}
-      {...props}
+      analyticsParams={mockAnalyticsParams}
     />,
     {
       /* eslint-disable local-rules/no-react-query-provider-hoc */
