@@ -13,7 +13,7 @@ export interface OfferListProps {
   analyticsParams: AnalyticsParams
 }
 
-export const MultiOfferList: React.FC<OfferListProps> = ({
+export const VideoMultiOfferList: React.FC<OfferListProps> = ({
   offers,
   hideModal,
   analyticsParams,

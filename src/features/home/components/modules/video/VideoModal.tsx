@@ -3,8 +3,8 @@ import { View } from 'react-native'
 import styled from 'styled-components/native'
 
 import { getTagColor } from 'features/home/components/helpers/getTagColor'
-import { MultiOfferList } from 'features/home/components/modules/video/MultiOfferList'
-import { OfferVideoModule } from 'features/home/components/modules/video/OfferVideoModule'
+import { VideoMonoOfferTile } from 'features/home/components/modules/video/VideoMonoOfferModule'
+import { VideoMultiOfferList } from 'features/home/components/modules/video/VideoMultiOfferList'
 import { VideoPlayer } from 'features/home/components/modules/video/VideoPlayer'
 import { VideoModule } from 'features/home/types'
 import { analytics } from 'libs/analytics'
@@ -77,7 +77,7 @@ export const VideoModal: React.FC<VideoModalProps> = (props) => {
         <Typo.Title4>{props.offerTitle}</Typo.Title4>
         <Spacer.Column numberOfSpaces={4} />
         {!props.isMultiOffer ? (
-          <OfferVideoModule
+          <VideoMonoOfferTile
             offer={props.offers[0]}
             color={props.color}
             hideModal={props.hideModal}
@@ -87,7 +87,7 @@ export const VideoModal: React.FC<VideoModalProps> = (props) => {
             homeEntryId={props.homeEntryId}
           />
         ) : (
-          <MultiOfferList
+          <VideoMultiOfferList
             offers={props.offers}
             hideModal={props.hideModal}
             analyticsParams={{

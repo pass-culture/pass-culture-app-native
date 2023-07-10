@@ -18,7 +18,11 @@ type Props = {
   analyticsParams: AnalyticsParams
 }
 
-export const MultiOfferTile: FunctionComponent<Props> = ({ offer, hideModal, analyticsParams }) => {
+export const VideoMultiOfferTile: FunctionComponent<Props> = ({
+  offer,
+  hideModal,
+  analyticsParams,
+}) => {
   const labelMapping = useCategoryHomeLabelMapping()
   const mapping = useCategoryIdMapping()
   const displayPrice = getDisplayPrice(offer?.offer?.prices)

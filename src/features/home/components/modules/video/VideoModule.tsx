@@ -7,9 +7,9 @@ import { useVideoOffers } from 'features/home/api/useVideoOffer'
 import { BlackGradient } from 'features/home/components/BlackGradient'
 import { TEXT_BACKGROUND_OPACITY } from 'features/home/components/constants'
 import { getGradientColors } from 'features/home/components/helpers/getGradientColors'
-import { MultiOfferVideoModule } from 'features/home/components/modules/video/MultiOfferVideoModule'
-import { OfferVideoModule } from 'features/home/components/modules/video/OfferVideoModule'
 import { VideoModal } from 'features/home/components/modules/video/VideoModal'
+import { VideoMonoOfferTile } from 'features/home/components/modules/video/VideoMonoOfferModule'
+import { VideoMultiOfferPlaylist } from 'features/home/components/modules/video/VideoMultiOfferPlaylist'
 import { VideoModule as VideoModuleType } from 'features/home/types'
 import { analytics } from 'libs/analytics'
 import { ContentTypes } from 'libs/contentful'
@@ -105,7 +105,7 @@ export const VideoModule: FunctionComponent<VideoModuleProps> = (props) => {
           />
           <Spacer.Column numberOfSpaces={2} />
           {!isMultiOffer && (
-            <OfferVideoModule
+            <VideoMonoOfferTile
               offer={offers[0]}
               color={props.color}
               hideModal={hideVideoModal}
@@ -120,7 +120,7 @@ export const VideoModule: FunctionComponent<VideoModuleProps> = (props) => {
       {!!isMultiOffer && (
         <React.Fragment>
           <Spacer.Column numberOfSpaces={2} />
-          <MultiOfferVideoModule
+          <VideoMultiOfferPlaylist
             offers={offers}
             hideModal={hideVideoModal}
             analyticsParams={{

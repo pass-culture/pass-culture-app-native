@@ -1,6 +1,6 @@
 import React, { FunctionComponent } from 'react'
 
-import { MultiOfferTile } from 'features/home/components/modules/video/MultiOfferTile'
+import { VideoMultiOfferTile } from 'features/home/components/modules/video/VideoMultiOfferTile'
 import { AnalyticsParams } from 'features/search/types'
 import { Offer } from 'shared/offer/types'
 import { theme } from 'theme'
@@ -16,7 +16,7 @@ type Props = {
   analyticsParams: AnalyticsParams
 }
 
-export const MultiOfferVideoModule: FunctionComponent<Props> = ({
+export const VideoMultiOfferPlaylist: FunctionComponent<Props> = ({
   offers,
   hideModal,
   analyticsParams,
@@ -24,7 +24,9 @@ export const MultiOfferVideoModule: FunctionComponent<Props> = ({
   const keyExtractor = (item: Offer) => item.objectID
 
   const renderItem: CustomListRenderItem<Offer> = ({ item }) => {
-    return <MultiOfferTile offer={item} hideModal={hideModal} analyticsParams={analyticsParams} />
+    return (
+      <VideoMultiOfferTile offer={item} hideModal={hideModal} analyticsParams={analyticsParams} />
+    )
   }
 
   return (
