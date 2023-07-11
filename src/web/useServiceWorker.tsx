@@ -208,7 +208,10 @@ const useProvideServiceWorker = (
     })
 
     // Delete service worker
-    const timer = globalThis.setTimeout(unregister, TIME_TO_WAIT_FOR_SW_UPDATE_IN_MS)
+    const timer = globalThis.setTimeout(() => {
+      unregister()
+      window.location.reload()
+    }, TIME_TO_WAIT_FOR_SW_UPDATE_IN_MS)
 
     return () => {
       globalThis.clearTimeout(timer)
