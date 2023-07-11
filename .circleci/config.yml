@@ -500,9 +500,9 @@ jobs:
           name: Typescript Type Check
           command: nvm use 16 && yarn --cwd server test:types
       - unit_test_proxy
-      - sonarcloud-scanner:
-          directory: server
-          cache_version: proxy-1
+      # - sonarcloud-scanner:
+      #     directory: server
+      #     cache_version: proxy-1
 
   test-lint-and-types:
     executor: node
@@ -532,7 +532,7 @@ jobs:
           steps:
             - notify-slack:
                 channel: dev-mobile
-      - sonarcloud-scanner
+      # - sonarcloud-scanner
 
   test-web:
     executor: node
