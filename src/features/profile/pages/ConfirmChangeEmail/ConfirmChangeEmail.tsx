@@ -17,16 +17,16 @@ import { Spacer, Typo } from 'ui/theme'
 type ConfirmChangeEmailProps = NativeStackScreenProps<RootStackParamList, 'ConfirmChangeEmail'>
 
 export function ConfirmChangeEmail({ route: { params }, navigation }: ConfirmChangeEmailProps) {
-  const emailUpdateStatus = useEmailUpdateStatus()
+  const { data: emailUpdateStatus, isLoading: isLoadingEmailUpdateStatus } = useEmailUpdateStatus()
   const { showErrorSnackBar } = useSnackBarContext()
 
   const [isLoading, setIsLoading] = useState(false)
 
   useEffect(() => {
-    if (emailUpdateStatus?.data?.expired) {
+    if (!isLoadingEmailUpdateStatus && (!emailUpdateStatus || emailUpdateStatus?.expired)) {
       navigateToHome()
     }
-  }, [emailUpdateStatus.data?.expired])
+  }, [emailUpdateStatus, isLoadingEmailUpdateStatus])
 
   const mutate = useCallback(async () => {
     return api.postnativev1profileemailUpdateconfirm({

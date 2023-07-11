@@ -18,7 +18,7 @@ import { Spacer, Typo } from 'ui/theme'
 type ValidateEmailChangeProps = NativeStackScreenProps<RootStackParamList, 'ValidateEmailChange'>
 
 export function ValidateEmailChange({ route: { params }, navigation }: ValidateEmailChangeProps) {
-  const emailUpdateStatus = useEmailUpdateStatus()
+  const { data: emailUpdateStatus, isLoading: isLoadingEmailUpdateStatus } = useEmailUpdateStatus()
   const { showErrorSnackBar } = useSnackBarContext()
 
   const [isLoading, setIsLoading] = useState(false)
@@ -46,17 +46,17 @@ export function ValidateEmailChange({ route: { params }, navigation }: ValidateE
   }, [mutate, navigation, showErrorSnackBar])
 
   useEffect(() => {
-    if (emailUpdateStatus.data?.expired) {
+    if (!isLoadingEmailUpdateStatus && (!emailUpdateStatus || emailUpdateStatus?.expired)) {
       navigateToHome()
     }
-  }, [emailUpdateStatus.data?.expired])
+  }, [emailUpdateStatus, isLoadingEmailUpdateStatus])
 
   return (
     <GenericInfoPageWhite
       icon={BicolorPhonePending}
       titleComponent={Typo.Title3}
       title="Valides-tu la nouvelle adresse e-mail&nbsp;?"
-      subtitle={emailUpdateStatus.data?.newEmail}
+      subtitle={emailUpdateStatus?.newEmail}
       subtitleComponent={ValidateEmailChangeSubtitleComponent}
       separateIconFromTitle={false}
       mobileBottomFlex={0.3}>
