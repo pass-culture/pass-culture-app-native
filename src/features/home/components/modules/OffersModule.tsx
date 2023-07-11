@@ -59,6 +59,7 @@ export const OffersModule = (props: OffersModuleProps) => {
   )
 
   const showSeeMore =
+    nbPlaylistResults &&
     playlistItems.length < nbPlaylistResults &&
     !(parameters.tags ?? parameters.beginningDatetime ?? parameters.endingDatetime)
 
@@ -115,7 +116,8 @@ export const OffersModule = (props: OffersModuleProps) => {
     [onPressSeeMore, showSeeMore, searchTabConfig]
   )
 
-  const shouldModuleBeDisplayed = playlistItems.length > 0 && nbPlaylistResults >= display.minOffers
+  const shouldModuleBeDisplayed =
+    nbPlaylistResults && playlistItems.length > 0 && nbPlaylistResults >= display.minOffers
 
   useEffect(() => {
     if (shouldModuleBeDisplayed) {
