@@ -11,7 +11,7 @@ export const mapVenuesDataAndModules = (
     for (let i = 0; i < venuesResultList.data.hits.length; i++) {
       venuesModulesData.push({
         playlistItems: venuesResultList.data.hits[i],
-        nbHits: venuesResultList.data.hits.length,
+        nbPlaylistResults: venuesResultList.data.hits.length,
         moduleId: venuesResultList.data.moduleId[i],
       })
     }

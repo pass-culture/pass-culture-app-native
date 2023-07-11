@@ -199,7 +199,8 @@ export type VenuesModuleParameters = {
 
 export type ModuleData = {
   playlistItems: VenueHit[] | Offer[]
-  nbHits: number
+  // The number of hits matched by the query, not the number of hits returned.
+  nbPlaylistResults: number
   moduleId: string
 }
 

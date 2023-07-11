@@ -38,7 +38,10 @@ export const OffersModule = (props: OffersModuleProps) => {
   const labelMapping = useCategoryHomeLabelMapping()
   const { user } = useAuthContext()
 
-  const { playlistItems, nbHits } = data ?? { playlistItems: [], nbHits: 0 }
+  const { playlistItems, nbPlaylistResults } = data ?? {
+    playlistItems: [],
+    nbPlaylistResults: 0,
+  }
 
   const [parameters] = search
   // When we navigate to the search page, we want to show 20 results per page,
@@ -56,7 +59,7 @@ export const OffersModule = (props: OffersModuleProps) => {
   )
 
   const showSeeMore =
-    playlistItems.length < nbHits &&
+    playlistItems.length < nbPlaylistResults &&
     !(parameters.tags ?? parameters.beginningDatetime ?? parameters.endingDatetime)
 
   // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -112,7 +115,7 @@ export const OffersModule = (props: OffersModuleProps) => {
     [onPressSeeMore, showSeeMore, searchTabConfig]
   )
 
-  const shouldModuleBeDisplayed = playlistItems.length > 0 && nbHits >= display.minOffers
+  const shouldModuleBeDisplayed = playlistItems.length > 0 && nbPlaylistResults >= display.minOffers
 
   useEffect(() => {
     if (shouldModuleBeDisplayed) {
