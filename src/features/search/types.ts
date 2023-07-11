@@ -9,6 +9,7 @@ import {
   SearchGroupResponseModelv2,
   SubcategoryIdEnumv2,
 } from 'api/gen'
+import { Referrals } from 'features/navigation/RootNavigator/types'
 import { CategoriesModalView, DATE_FILTER_OPTIONS } from 'features/search/enums'
 import {
   MappedGenreTypes,
@@ -114,4 +115,14 @@ export interface SearchListProps {
   userData: SearchResponse<Offer[]>['userData']
   onScroll?: () => void
   onPress?: () => void
+}
+
+export type AnalyticsParams = {
+  from: Referrals
+  query?: string
+  index?: number
+  searchId?: string
+  moduleName?: string
+  moduleId?: string
+  homeEntryId?: string
 }

@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { useVideoOffer } from 'features/home/api/useVideoOffer'
+import { useVideoOffers } from 'features/home/api/useVideoOffer'
 import { VideoModule } from 'features/home/components/modules/video/VideoModule'
 import { videoModuleFixture } from 'features/home/fixtures/videoModule.fixture'
 import { analytics } from 'libs/analytics'
@@ -17,11 +17,11 @@ jest.mock('ui/components/modals/useModal', () => ({
 }))
 
 jest.mock('features/home/api/useVideoOffer')
-const mockUseVideoOffer = useVideoOffer as jest.Mock
+const mockUseVideoOffers = useVideoOffers as jest.Mock
 
 describe('VideoModule', () => {
   it('should show modal when pressing video thumbnail', async () => {
-    mockUseVideoOffer.mockReturnValueOnce({ offer: offerFixture })
+    mockUseVideoOffers.mockReturnValueOnce({ offers: [offerFixture] })
     renderVideoModule()
     await act(async () => {})
 
@@ -32,7 +32,7 @@ describe('VideoModule', () => {
   })
 
   it('should log ModuleDisplayedOnHomePage event when seeing the module', async () => {
-    mockUseVideoOffer.mockReturnValueOnce({ offer: offerFixture })
+    mockUseVideoOffers.mockReturnValueOnce({ offers: [offerFixture] })
     renderVideoModule()
 
     await waitFor(() => {
@@ -47,11 +47,22 @@ describe('VideoModule', () => {
   })
 
   it('should not log ModuleDisplayedOnHomePage event when module is not rendered', async () => {
-    mockUseVideoOffer.mockReturnValueOnce({ offer: undefined })
+    mockUseVideoOffers.mockReturnValueOnce({ offers: [] })
     renderVideoModule()
 
     await waitFor(() => {
       expect(analytics.logModuleDisplayedOnHomepage).not.toHaveBeenCalled()
+    })
+  })
+
+  it('should render multi offer componant if multiples offers', async () => {
+    mockUseVideoOffers.mockReturnValueOnce({ offers: [offerFixture, offerFixture2] })
+    renderVideoModule()
+
+    const multiOfferList = screen.getByTestId('videoMultiOffersModuleList')
+
+    await waitFor(() => {
+      expect(multiOfferList).not.toBeNull()
     })
   })
 })
@@ -59,10 +70,22 @@ describe('VideoModule', () => {
 const offerFixture = {
   offer: {
     thumbUrl: 'http://thumbnail',
+    subcategoryId: 'CONCERT',
   },
   objectID: 1234,
   venue: {
     id: 5678,
+  },
+}
+
+const offerFixture2 = {
+  offer: {
+    thumbUrl: 'http://thumbnail',
+    subcategoryId: 'CONFERENCE',
+  },
+  objectID: 9876,
+  venue: {
+    id: 5432,
   },
 }
 

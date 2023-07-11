@@ -37,6 +37,7 @@ type Props = {
   fixedModalBottom?: React.JSX.Element
   isFullscreen?: boolean
   noPadding?: boolean
+  noPaddingBottom?: boolean
   modalSpacing?: ModalSpacing
   maxHeight?: number
   shouldScrollToEnd?: boolean
@@ -72,6 +73,7 @@ export const AppModal: FunctionComponent<Props> = ({
   scrollEnabled = true,
   isFullscreen,
   noPadding,
+  noPaddingBottom,
   customModalHeader,
   fixedModalBottom,
   modalSpacing,
@@ -212,7 +214,8 @@ export const AppModal: FunctionComponent<Props> = ({
         testID="modalContainer"
         desktopMaxHeight={desktopMaxHeight}
         maxHeight={maxContainerHeight}
-        noPadding={noPadding}>
+        noPadding={noPadding}
+        noPaddingBottom={noPaddingBottom}>
         {customModalHeader ? (
           <CustomModalHeaderContainer nativeID={titleId} testID="customModalHeader">
             {customModalHeader}
@@ -307,13 +310,15 @@ const ModalContainer = styled.View<{
   desktopMaxHeight?: number
   maxHeight?: number
   noPadding?: boolean
-}>(({ height, desktopMaxHeight, maxHeight, noPadding, theme }) => {
+  noPaddingBottom?: boolean
+}>(({ height, desktopMaxHeight, maxHeight, noPadding, theme, noPaddingBottom }) => {
   return appModalContainerStyle({
     theme,
     height,
     desktopMaxHeight,
     maxHeight: maxHeight ?? MAX_HEIGHT,
     noPadding,
+    noPaddingBottom,
   })
 })
 

@@ -123,7 +123,15 @@ export const SearchResults: React.FC = () => {
 
   const renderItem = useCallback(
     ({ item: hit, index }: { item: Offer; index: number }) => (
-      <Hit hit={hit} query={searchState.query} index={index} searchId={searchState.searchId} />
+      <StyledHit
+        hit={hit}
+        analyticsParams={{
+          query: searchState.query,
+          index: index,
+          searchId: searchState.searchId,
+          from: 'search',
+        }}
+      />
     ),
     [searchState.query, searchState.searchId]
   )
@@ -299,6 +307,10 @@ const Footer = styled.View(({ theme }) => ({
   height: theme.tabBar.height + getSpacing(10),
   alignItems: 'center',
 }))
+
+const StyledHit = styled(Hit)({
+  marginHorizontal: getSpacing(6),
+})
 
 const Separator = styled.View(({ theme }) => ({
   height: 2,

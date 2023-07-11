@@ -3,14 +3,16 @@ import React, { FunctionComponent, useEffect } from 'react'
 import LinearGradient from 'react-native-linear-gradient'
 import styled from 'styled-components/native'
 
-import { useVideoOffer } from 'features/home/api/useVideoOffer'
+import { useVideoOffers } from 'features/home/api/useVideoOffer'
 import { BlackGradient } from 'features/home/components/BlackGradient'
 import { TEXT_BACKGROUND_OPACITY } from 'features/home/components/constants'
 import { getGradientColors } from 'features/home/components/helpers/getGradientColors'
-import { OfferVideoModule } from 'features/home/components/modules/video/OfferVideoModule'
 import { VideoModal } from 'features/home/components/modules/video/VideoModal'
+import { VideoMonoOfferTile } from 'features/home/components/modules/video/VideoMonoOfferTile'
+import { VideoMultiOfferPlaylist } from 'features/home/components/modules/video/VideoMultiOfferPlaylist'
 import { VideoModule as VideoModuleType } from 'features/home/types'
 import { analytics } from 'libs/analytics'
+import { ConsultOfferAnalyticsParams } from 'libs/analytics/types'
 import { ContentTypes } from 'libs/contentful'
 import { useModal } from 'ui/components/modals/useModal'
 import { Play } from 'ui/svg/icons/Play'
@@ -23,8 +25,10 @@ const PLAYER_TOP_MARGIN = getSpacing(12.5)
 const PLAYER_SIZE = getSpacing(14.5)
 
 const GRADIENT_START_POSITION = PLAYER_TOP_MARGIN + getSpacing(5) + PLAYER_SIZE / 2
-const COLOR_CATEGORY_BACKGROUND_HEIGHT =
+const COLOR_CATEGORY_BACKGROUND_HEIGHT_UNIQUE_OFFER =
   THUMBNAIL_HEIGHT - GRADIENT_START_POSITION + getSpacing(49.5)
+const COLOR_CATEGORY_BACKGROUND_HEIGHT_MULTI_OFFER =
+  THUMBNAIL_HEIGHT - GRADIENT_START_POSITION + getSpacing(21)
 
 interface VideoModuleProps extends VideoModuleType {
   index: number
@@ -39,9 +43,10 @@ export const VideoModule: FunctionComponent<VideoModuleProps> = (props) => {
   } = useModal(false)
   const videoDuration = `${props.durationInMinutes} min`
 
-  const { offer } = useVideoOffer(props.offersModuleParameters, props.id)
+  const { offers } = useVideoOffers(props.offersModuleParameters, props.id)
 
-  const shouldModuleBeDisplayed = !!offer
+  const shouldModuleBeDisplayed = offers.length > 0
+  const isMultiOffer = offers.length > 1
 
   useEffect(() => {
     if (shouldModuleBeDisplayed) {
@@ -57,6 +62,13 @@ export const VideoModule: FunctionComponent<VideoModuleProps> = (props) => {
 
   if (!shouldModuleBeDisplayed) return <React.Fragment />
 
+  const analyticsParams: ConsultOfferAnalyticsParams = {
+    moduleId: props.id,
+    moduleName: props.title,
+    from: 'home',
+    homeEntryId: props.homeEntryId,
+  }
+
   return (
     <Container>
       <StyledTitleContainer>
@@ -68,6 +80,7 @@ export const VideoModule: FunctionComponent<VideoModuleProps> = (props) => {
           start={{ x: 0, y: 0 }}
           end={{ x: 0, y: 1 }}
           colors={getGradientColors(props.color)}
+          isMultiOffer={isMultiOffer}
         />
         <VideoOfferContainer>
           <Spacer.Column numberOfSpaces={5} />
@@ -93,23 +106,33 @@ export const VideoModule: FunctionComponent<VideoModuleProps> = (props) => {
           <VideoModal
             visible={videoModalVisible}
             hideModal={hideVideoModal}
-            offer={offer}
+            offers={offers}
             moduleId={props.id}
+            isMultiOffer={isMultiOffer}
             {...props}
           />
           <Spacer.Column numberOfSpaces={2} />
-          <OfferVideoModule
-            offer={offer}
-            color={props.color}
-            hideModal={hideVideoModal}
-            moduleId={props.id}
-            moduleName={props.title}
-            homeEntryId={props.homeEntryId}
-            analyticsFrom={'home'}
-          />
+          {!isMultiOffer && (
+            <VideoMonoOfferTile
+              offer={offers[0]}
+              color={props.color}
+              hideModal={hideVideoModal}
+              analyticsParams={analyticsParams}
+            />
+          )}
         </VideoOfferContainer>
       </StyledWrapper>
-      <Spacer.Column numberOfSpaces={6} />
+      {!!isMultiOffer && (
+        <React.Fragment>
+          <Spacer.Column numberOfSpaces={2} />
+          <VideoMultiOfferPlaylist
+            offers={offers}
+            hideModal={hideVideoModal}
+            analyticsParams={analyticsParams}
+          />
+        </React.Fragment>
+      )}
+      {!isMultiOffer && <Spacer.Column numberOfSpaces={6} />}
     </Container>
   )
 }
@@ -156,13 +179,17 @@ const PlayerContainer = styled.View({
   alignItems: 'center',
 })
 
-const ColorCategoryBackground = styled(LinearGradient)({
-  position: 'absolute',
-  top: GRADIENT_START_POSITION,
-  right: 0,
-  left: 0,
-  height: COLOR_CATEGORY_BACKGROUND_HEIGHT,
-})
+const ColorCategoryBackground = styled(LinearGradient)<{ isMultiOffer: boolean }>(
+  ({ isMultiOffer }) => ({
+    position: 'absolute',
+    top: GRADIENT_START_POSITION,
+    right: 0,
+    left: 0,
+    height: isMultiOffer
+      ? COLOR_CATEGORY_BACKGROUND_HEIGHT_MULTI_OFFER
+      : COLOR_CATEGORY_BACKGROUND_HEIGHT_UNIQUE_OFFER,
+  })
+)
 
 const Player = styled(Play).attrs({ size: PLAYER_SIZE })({})
 

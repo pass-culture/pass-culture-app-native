@@ -13,21 +13,35 @@ import { ImagePlaceholder } from 'ui/components/ImagePlaceholder'
 import { getShadow, getSpacing } from 'ui/theme'
 
 type SizeProp = keyof AppThemeType['tiles']['sizes']
-type StyleProps = { size: SizeProp }
+type StyleProps = { size: SizeProp; borderRadius?: number; withSroke?: boolean }
 
 type Props = {
   imageUrl?: string
   categoryId?: CategoryIdEnum | null
   size?: SizeProp
+  borderRadius?: number
+  withStroke?: boolean
 }
 
-export const OfferImage: React.FC<Props> = ({ categoryId, imageUrl, size = 'small' }) => {
+export const OfferImage: React.FC<Props> = ({
+  categoryId,
+  imageUrl,
+  size = 'small',
+  borderRadius,
+  withStroke,
+}) => {
   const Icon = mapCategoryToIcon(categoryId || null)
 
   return (
-    <Container size={size}>
+    <Container size={size} borderRadius={borderRadius}>
       {imageUrl ? (
-        <StyledFastImage url={imageUrl} resizeMode={FastImage.resizeMode.cover} size={size} />
+        <StyledFastImage
+          url={imageUrl}
+          resizeMode={FastImage.resizeMode.cover}
+          size={size}
+          borderRadius={borderRadius}
+          withSroke={withStroke}
+        />
       ) : (
         <StyledImagePlaceholder Icon={Icon} />
       )}
@@ -37,10 +51,16 @@ export const OfferImage: React.FC<Props> = ({ categoryId, imageUrl, size = 'smal
 
 const StyledFastImage = styled(ResizedFastImage).attrs<StyleProps>(({ theme, size }) => ({
   ...theme.tiles.sizes[size],
-}))<StyleProps>(({ theme, size }) => ({
+}))<StyleProps>(({ theme, size, borderRadius, withSroke }) => ({
   backgroundColor: theme.colors.greyLight,
   ...theme.tiles.sizes[size],
-  borderRadius: theme.tiles.borderRadius,
+  borderRadius: borderRadius ? borderRadius : theme.tiles.borderRadius,
+  ...(withSroke
+    ? {
+        borderWidth: 1,
+        borderColor: theme.colors.greyDark,
+      }
+    : {}),
 }))
 
 const StyledImagePlaceholder = styled(ImagePlaceholder).attrs(({ theme }) => ({
@@ -49,8 +69,8 @@ const StyledImagePlaceholder = styled(ImagePlaceholder).attrs(({ theme }) => ({
   borderRadius: theme.tiles.borderRadius,
 }))``
 
-const Container = styled.View<StyleProps>(({ theme, size }) => ({
-  borderRadius: theme.tiles.borderRadius,
+const Container = styled.View<StyleProps>(({ theme, size, borderRadius }) => ({
+  borderRadius: borderRadius ? borderRadius : theme.tiles.borderRadius,
   ...theme.tiles.sizes[size],
   ...(Platform.OS !== 'web'
     ? getShadow({

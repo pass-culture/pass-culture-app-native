@@ -3,6 +3,7 @@ import styled from 'styled-components/native'
 
 import { getTagColor } from 'features/home/components/helpers/getTagColor'
 import { analytics } from 'libs/analytics'
+import { ConsultOfferAnalyticsParams } from 'libs/analytics/types'
 import { formatDates, getDisplayPrice } from 'libs/parsers'
 import { useCategoryHomeLabelMapping, useCategoryIdMapping } from 'libs/subcategories'
 import { Offer } from 'shared/offer/types'
@@ -18,20 +19,14 @@ type Props = {
   offer: Offer
   color: string
   hideModal: () => void
-  moduleId: string
-  analyticsFrom: 'home' | 'videoModal'
-  moduleName?: string
-  homeEntryId?: string
+  analyticsParams: ConsultOfferAnalyticsParams
 }
 
-export const OfferVideoModule: FunctionComponent<Props> = ({
+export const VideoMonoOfferTile: FunctionComponent<Props> = ({
   offer,
   color,
   hideModal,
-  analyticsFrom,
-  moduleId,
-  moduleName,
-  homeEntryId,
+  analyticsParams,
 }) => {
   const timestampsInMillis = offer.offer.dates?.map((timestampInSec) => timestampInSec * 1000)
   const labelMapping = useCategoryHomeLabelMapping()
@@ -58,10 +53,7 @@ export const OfferVideoModule: FunctionComponent<Props> = ({
         })
         analytics.logConsultOffer({
           offerId: +offer.objectID,
-          from: analyticsFrom,
-          moduleId,
-          moduleName,
-          homeEntryId,
+          ...analyticsParams,
         })
       }}>
       <Row>

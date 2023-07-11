@@ -12,6 +12,7 @@ type Props = {
   height?: number
   maxHeight: number
   noPadding?: boolean
+  noPaddingBottom?: boolean
 }
 
 export const appModalContainerStyle = ({
@@ -20,6 +21,7 @@ export const appModalContainerStyle = ({
   desktopMaxHeight,
   maxHeight,
   noPadding,
+  noPaddingBottom,
 }: Props): CSSObject => ({
   alignItems: 'center',
   backgroundColor: theme.colors.white,
@@ -30,7 +32,7 @@ export const appModalContainerStyle = ({
   flexDirection: 'column',
   justifyContent: 'center',
   ...(noPadding ? {} : { padding: theme.modal.spacing.MD }),
-  paddingBottom: theme.modal.spacing.LG,
+  ...(noPaddingBottom ? {} : { paddingBottom: theme.modal.spacing.LG }),
   width: '100%',
   height,
   ...(theme.isDesktopViewport

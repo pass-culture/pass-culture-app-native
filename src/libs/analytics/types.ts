@@ -1,4 +1,4 @@
-import { ScreenNames } from 'features/navigation/RootNavigator/types'
+import { Referrals, ScreenNames } from 'features/navigation/RootNavigator/types'
 import { AmplitudeEvent } from 'libs/amplitude/events'
 import { logEventAnalytics } from 'libs/analytics/logEventAnalytics'
 import { AnalyticsEvent } from 'libs/firebase/analytics/events'
@@ -13,3 +13,13 @@ export type AnalyticsProvider = {
   logScreenView: (screenName: ScreenNames) => Promise<void>
   logEvent: (eventName: EventName, params?: Record<string, unknown>) => Promise<void>
 } & typeof logEventAnalytics
+
+export type ConsultOfferAnalyticsParams = {
+  from: Referrals
+  query?: string
+  index?: number
+  searchId?: string
+  moduleName?: string
+  moduleId?: string
+  homeEntryId?: string
+}
