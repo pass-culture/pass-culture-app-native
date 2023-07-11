@@ -64,7 +64,7 @@ describe('ValidateEmailChange', () => {
     })
   })
 
-  it('should display a snackbar redirect to home if submit triggers an error', async () => {
+  it('should display a snackbar if submit triggers an error', async () => {
     emailUpdateValidateSpy.mockRejectedValueOnce('Oops test')
 
     render(<ValidateEmailChange navigation={navigation} route={route} />)
@@ -74,8 +74,18 @@ describe('ValidateEmailChange', () => {
     })
 
     expect(mockShowErrorSnackbar).toHaveBeenCalledTimes(1)
+  })
+
+  it('should redirect to home if submit triggers an error', async () => {
+    emailUpdateValidateSpy.mockRejectedValueOnce('Oops test')
+
+    render(<ValidateEmailChange navigation={navigation} route={route} />)
+
+    await act(async () => {
+      fireEvent.press(screen.getByText('Valider l’adresse e-mail'))
+    })
+
     expect(navigateToHome).toHaveBeenCalledTimes(1)
-    expect(1).toEqual(1)
   })
 
   it('should redirect to home when status is expired', () => {
