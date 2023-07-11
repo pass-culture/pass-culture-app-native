@@ -1,43 +1,40 @@
+import { yupResolver } from '@hookform/resolvers/yup'
 import { useNavigation, useRoute } from '@react-navigation/native'
-import React, { FunctionComponent, memo, useCallback, useEffect, useState } from 'react'
+import React, { FunctionComponent, memo, useCallback, useEffect } from 'react'
+import { useForm } from 'react-hook-form'
 import { Keyboard } from 'react-native'
-import styled, { useTheme } from 'styled-components/native'
-import { v4 as uuidv4 } from 'uuid'
+import styled from 'styled-components/native'
 
 import { api } from 'api/api'
 import { AccountState, FavoriteResponse } from 'api/gen'
 import { useSignIn } from 'features/auth/api/useSignIn'
 import { AuthenticationButton } from 'features/auth/components/AuthenticationButton/AuthenticationButton'
+import { loginSchema } from 'features/auth/pages/login/schema/loginSchemaa'
 import { SignInResponseFailure } from 'features/auth/types'
 import { useAddFavorite } from 'features/favorites/api'
 import { navigateToHome } from 'features/navigation/helpers'
 import { UseNavigationType, UseRouteType } from 'features/navigation/RootNavigator/types'
 import { From } from 'features/offer/components/AuthenticationModal/fromEnum'
 import { analytics } from 'libs/analytics'
-import { env } from 'libs/environment'
 import { useSafeState } from 'libs/hooks'
 import { storage } from 'libs/storage'
 import { shouldShowCulturalSurvey } from 'shared/culturalSurvey/shouldShowCulturalSurvey'
+import { EmailInputController } from 'shared/forms/controllers/EmailInputController'
+import { PasswordInputController } from 'shared/forms/controllers/PasswordInputController'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
 import { Form } from 'ui/components/Form'
-import { isEmailValid } from 'ui/components/inputs/emailCheck'
-import { EmailInput } from 'ui/components/inputs/EmailInput/EmailInput'
-import { isValueEmpty } from 'ui/components/inputs/helpers'
+import { SUGGESTION_DELAY_IN_MS } from 'ui/components/inputs/EmailInputWithSpellingHelp/useEmailSpellingHelp'
 import { InputError } from 'ui/components/inputs/InputError'
-import { PasswordInput } from 'ui/components/inputs/PasswordInput'
 import { SNACK_BAR_TIME_OUT_LONG, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 import { SecondaryPageWithBlurHeader } from 'ui/pages/SecondaryPageWithBlurHeader'
 import { Key } from 'ui/svg/icons/Key'
 import { Spacer, Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
-let INITIAL_IDENTIFIER = ''
-let INITIAL_PASSWORD = ''
-
-if (__DEV__) {
-  INITIAL_IDENTIFIER = env.SIGNIN_IDENTIFIER
-  INITIAL_PASSWORD = env.SIGNIN_PASSWORD
+type LoginFormData = {
+  email: string
+  password: string
 }
 
 type Props = {
@@ -45,16 +42,25 @@ type Props = {
 }
 
 export const Login: FunctionComponent<Props> = memo(function Login(props) {
-  const { colors } = useTheme()
-  const [email, setEmail] = useState(INITIAL_IDENTIFIER)
-  const [password, setPassword] = useState(INITIAL_PASSWORD)
-  const [errorMessage, setErrorMessage] = useSafeState<string | null>(null)
-  const [emailErrorMessage, setEmailErrorMessage] = useSafeState<string | null>(null)
-  const emailInputErrorId = uuidv4()
-  const { showInfoSnackBar } = useSnackBarContext()
-
   const { params } = useRoute<UseRouteType<'Login'>>()
   const { navigate } = useNavigation<UseNavigationType>()
+  const { showInfoSnackBar } = useSnackBarContext()
+
+  const {
+    handleSubmit,
+    control,
+    watch,
+    setError: setFormErrors,
+    formState: { isValid },
+  } = useForm<LoginFormData>({
+    mode: 'all',
+    resolver: yupResolver(loginSchema),
+    defaultValues: { email: '', password: '' },
+    delayError: SUGGESTION_DELAY_IN_MS,
+  })
+  const email = watch('email')
+
+  const [errorMessage, setErrorMessage] = useSafeState<string | null>(null)
 
   const onAddFavoriteSuccess = useCallback((data?: FavoriteResponse) => {
     if (data?.offer?.id) {
@@ -75,16 +81,6 @@ export const Login: FunctionComponent<Props> = memo(function Login(props) {
       })
     }
   }, [params?.displayForcedLoginHelpMessage, showInfoSnackBar])
-
-  const onEmailChange = useCallback(
-    (mail: string) => {
-      if (emailErrorMessage) {
-        setEmailErrorMessage(null)
-      }
-      setEmail(mail)
-    },
-    [emailErrorMessage, setEmailErrorMessage]
-  )
 
   const offerId = params?.offerId
   const handleSigninSuccess = useCallback(
@@ -140,7 +136,7 @@ export const Login: FunctionComponent<Props> = memo(function Login(props) {
       if (failureCode === 'EMAIL_NOT_VALIDATED') {
         navigate('SignupConfirmationEmailSent', { email })
       } else if (failureCode === 'ACCOUNT_DELETED') {
-        setEmailErrorMessage('Cette adresse e-mail est liée à un compte supprimé')
+        setFormErrors('email', { message: 'Cette adresse e-mail est liée à un compte supprimé' })
       } else if (failureCode === 'NETWORK_REQUEST_FAILED') {
         setErrorMessage('Erreur réseau. Tu peux réessayer une fois la connexion réétablie')
       } else if (response.statusCode === 429 || failureCode === 'TOO_MANY_ATTEMPTS') {
@@ -149,7 +145,7 @@ export const Login: FunctionComponent<Props> = memo(function Login(props) {
         setErrorMessage('E-mail ou mot de passe incorrect')
       }
     },
-    [email, navigate, setEmailErrorMessage, setErrorMessage]
+    [email, navigate, setFormErrors, setErrorMessage]
   )
 
   const { mutate: signIn, isLoading } = useSignIn({
@@ -157,21 +153,17 @@ export const Login: FunctionComponent<Props> = memo(function Login(props) {
     onFailure: handleSigninFailure,
   })
 
-  const shouldDisableLoginButton = isValueEmpty(email) || isValueEmpty(password) || isLoading
+  const shouldDisableLoginButton = !isValid || isLoading
 
-  const onSubmit = useCallback(async () => {
-    if (!shouldDisableLoginButton) {
-      Keyboard.dismiss()
-      setErrorMessage(null)
-      if (!isEmailValid(email)) {
-        setEmailErrorMessage(
-          'L’e-mail renseigné est incorrect. Exemple de format attendu\u00a0: edith.piaf@email.fr'
-        )
-      } else {
-        signIn({ identifier: email, password: password })
+  const onSubmit = useCallback(
+    async (data: LoginFormData) => {
+      if (!shouldDisableLoginButton) {
+        Keyboard.dismiss()
+        signIn({ identifier: data.email, password: data.password })
       }
-    }
-  }, [shouldDisableLoginButton, signIn, email, password, setEmailErrorMessage, setErrorMessage])
+    },
+    [shouldDisableLoginButton, signIn]
+  )
 
   const onForgottenPasswordClick = useCallback(() => {
     navigate('ForgottenPassword')
@@ -194,27 +186,18 @@ export const Login: FunctionComponent<Props> = memo(function Login(props) {
           centered
         />
         <Spacer.Column numberOfSpaces={7} />
-        <EmailInput
+        <EmailInputController
+          name="email"
           label="Adresse e-mail"
-          email={email}
-          onEmailChange={onEmailChange}
-          isError={!!emailErrorMessage || !!errorMessage}
-          isRequiredField
+          control={control}
           autoFocus
-          accessibilityDescribedBy={emailInputErrorId}
-        />
-        <InputError
-          visible={!!emailErrorMessage}
-          messageId={emailErrorMessage}
-          numberOfSpacesTop={2}
-          relatedInputId={emailInputErrorId}
+          isRequiredField
         />
         <Spacer.Column numberOfSpaces={6} />
-        <PasswordInput
-          value={password}
-          onChangeText={setPassword}
-          isError={!!errorMessage}
-          onSubmitEditing={onSubmit}
+        <PasswordInputController
+          name="password"
+          control={control}
+          onSubmitEditing={handleSubmit(onSubmit)}
           isRequiredField
         />
         <Spacer.Column numberOfSpaces={5} />
@@ -229,16 +212,12 @@ export const Login: FunctionComponent<Props> = memo(function Login(props) {
         <Spacer.Column numberOfSpaces={8} />
         <ButtonPrimary
           wording="Se connecter"
-          onPress={onSubmit}
+          onPress={handleSubmit(onSubmit)}
           disabled={shouldDisableLoginButton}
         />
       </Form.MaxWidth>
       <Spacer.Column numberOfSpaces={8} />
-      <AuthenticationButton
-        type="signup"
-        onAdditionalPress={onLogSignUpAnalytics}
-        linkColor={colors.secondary}
-      />
+      <SignUpButton onAdditionalPress={onLogSignUpAnalytics} />
     </SecondaryPageWithBlurHeader>
   )
 })
@@ -248,3 +227,8 @@ const ButtonContainer = styled.View(({ theme }) => ({
   width: '100%',
   maxWidth: theme.buttons.maxWidth,
 }))
+
+const SignUpButton = styled(AuthenticationButton).attrs(({ theme }) => ({
+  linkColor: theme.colors.secondary,
+  type: 'signup',
+}))``
