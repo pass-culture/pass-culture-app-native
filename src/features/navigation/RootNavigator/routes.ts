@@ -143,10 +143,7 @@ export const routes: Route[] = [
     name: 'ConfirmChangeEmail',
     component: ConfirmChangeEmail,
     options: { title: 'Confirmation de changement d’email ' },
-    pathConfig: {
-      path: 'changement-email/confirmation',
-      parse: screenParamsParser['ConfirmChangeEmail'],
-    },
+    path: 'changement-email/confirmation',
   },
   {
     name: 'ValidateEmailChange',
