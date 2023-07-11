@@ -25,9 +25,9 @@ export function ValidateEmailChange({ route: { params }, navigation }: ValidateE
 
   const mutate = useCallback(async () => {
     return api.putnativev1profileemailUpdatevalidate({
-      token: params.token,
+      token: params?.token,
     })
-  }, [params.token])
+  }, [params?.token])
 
   const handleSubmit = useCallback(async () => {
     setIsLoading(true)

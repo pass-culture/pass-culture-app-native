@@ -30,9 +30,9 @@ export function ConfirmChangeEmail({ route: { params }, navigation }: ConfirmCha
 
   const mutate = useCallback(async () => {
     return api.postnativev1profileemailUpdateconfirm({
-      token: params.token,
+      token: params?.token,
     })
-  }, [params.token])
+  }, [params?.token])
 
   const onConfirmEmail = useCallback(async () => {
     setIsLoading(true)
