@@ -117,7 +117,7 @@ export const OffersModule = (props: OffersModuleProps) => {
   )
 
   const shouldModuleBeDisplayed =
-    nbPlaylistResults && playlistItems.length > 0 && nbPlaylistResults >= display.minOffers
+    playlistItems.length > 0 && playlistItems.length >= display.minOffers
 
   useEffect(() => {
     if (shouldModuleBeDisplayed) {
