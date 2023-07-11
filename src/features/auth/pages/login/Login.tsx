@@ -48,11 +48,8 @@ export const Login: FunctionComponent<Props> = memo(function Login(props) {
   const { colors } = useTheme()
   const [email, setEmail] = useState(INITIAL_IDENTIFIER)
   const [password, setPassword] = useState(INITIAL_PASSWORD)
-  const [isLoading, setIsLoading] = useSafeState(false)
   const [errorMessage, setErrorMessage] = useSafeState<string | null>(null)
   const [emailErrorMessage, setEmailErrorMessage] = useSafeState<string | null>(null)
-  const signIn = useSignIn()
-  const shouldDisableLoginButton = isValueEmpty(email) || isValueEmpty(password) || isLoading
   const emailInputErrorId = uuidv4()
   const { showInfoSnackBar } = useSnackBarContext()
 
@@ -82,12 +79,11 @@ export const Login: FunctionComponent<Props> = memo(function Login(props) {
   const onEmailChange = useCallback(
     (mail: string) => {
       if (emailErrorMessage) {
-        setIsLoading(false)
         setEmailErrorMessage(null)
       }
       setEmail(mail)
     },
-    [emailErrorMessage, setEmailErrorMessage, setIsLoading]
+    [emailErrorMessage, setEmailErrorMessage]
   )
 
   const offerId = params?.offerId
@@ -97,9 +93,7 @@ export const Login: FunctionComponent<Props> = memo(function Login(props) {
         if (props.doNotNavigateOnSigninSuccess) {
           return
         }
-
         if (accountState !== AccountState.ACTIVE) {
-          setIsLoading(false)
           return navigate('SuspensionScreen')
         }
 
@@ -135,7 +129,6 @@ export const Login: FunctionComponent<Props> = memo(function Login(props) {
       navigate,
       props.doNotNavigateOnSigninSuccess,
       setErrorMessage,
-      setIsLoading,
       params?.from,
       addFavorite,
     ]
@@ -149,51 +142,36 @@ export const Login: FunctionComponent<Props> = memo(function Login(props) {
       } else if (failureCode === 'ACCOUNT_DELETED') {
         setEmailErrorMessage('Cette adresse e-mail est liée à un compte supprimé')
       } else if (failureCode === 'NETWORK_REQUEST_FAILED') {
-        setIsLoading(false)
         setErrorMessage('Erreur réseau. Tu peux réessayer une fois la connexion réétablie')
       } else if (response.statusCode === 429 || failureCode === 'TOO_MANY_ATTEMPTS') {
-        setIsLoading(false)
         setErrorMessage('Nombre de tentatives dépassé. Réessaye dans 1 minute')
       } else {
-        setIsLoading(false)
         setErrorMessage('E-mail ou mot de passe incorrect')
       }
     },
-    [email, navigate, setEmailErrorMessage, setErrorMessage, setIsLoading]
+    [email, navigate, setEmailErrorMessage, setErrorMessage]
   )
 
-  const handleSignin = useCallback(async () => {
-    setIsLoading(true)
-    setErrorMessage(null)
-    if (!isEmailValid(email)) {
-      setEmailErrorMessage(
-        'L’e-mail renseigné est incorrect. Exemple de format attendu\u00a0: edith.piaf@email.fr'
-      )
-    } else {
-      const signinResponse = await signIn({ identifier: email, password })
-      if (signinResponse.isSuccess) {
-        handleSigninSuccess(signinResponse.accountState)
-      } else {
-        handleSigninFailure(signinResponse)
-      }
-    }
-  }, [
-    email,
-    handleSigninFailure,
-    handleSigninSuccess,
-    password,
-    setEmailErrorMessage,
-    setErrorMessage,
-    setIsLoading,
-    signIn,
-  ])
+  const { mutate: signIn, isLoading } = useSignIn({
+    onSuccess: (response) => handleSigninSuccess(response.accountState),
+    onFailure: handleSigninFailure,
+  })
+
+  const shouldDisableLoginButton = isValueEmpty(email) || isValueEmpty(password) || isLoading
 
   const onSubmit = useCallback(async () => {
     if (!shouldDisableLoginButton) {
       Keyboard.dismiss()
-      handleSignin()
+      setErrorMessage(null)
+      if (!isEmailValid(email)) {
+        setEmailErrorMessage(
+          'L’e-mail renseigné est incorrect. Exemple de format attendu\u00a0: edith.piaf@email.fr'
+        )
+      } else {
+        signIn({ identifier: email, password: password })
+      }
     }
-  }, [handleSignin, shouldDisableLoginButton])
+  }, [shouldDisableLoginButton, signIn, email, password, setEmailErrorMessage, setErrorMessage])
 
   const onForgottenPasswordClick = useCallback(() => {
     navigate('ForgottenPassword')
