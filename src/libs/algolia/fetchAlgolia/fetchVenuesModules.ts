@@ -1,28 +1,16 @@
 import { Venue, VenuesModuleParameters } from 'features/home/types'
 import { AlgoliaVenue } from 'libs/algolia'
 import { captureAlgoliaError } from 'libs/algolia/fetchAlgolia/AlgoliaError'
-import { buildVenuesQueryOptions } from 'libs/algolia/fetchAlgolia/buildVenuesQueryOptions'
 import { client } from 'libs/algolia/fetchAlgolia/clients'
-import { buildHitsPerPage } from 'libs/algolia/fetchAlgolia/utils'
-import { env } from 'libs/environment'
+import { buildVenuesModulesQueries } from 'libs/algolia/fetchAlgolia/helpers/buildVenuesModulesQueries'
 import { Position } from 'libs/geolocation'
 import { VenueTypeCode } from 'libs/parsers'
-
-const attributesToHighlight: string[] = [] // We disable highlighting because we don't need it
 
 export const fetchVenuesModules = async (
   paramsList: VenuesModuleParameters[],
   userLocation: Position
 ): Promise<Venue[][]> => {
-  const queries = paramsList.map((params) => ({
-    indexName: env.ALGOLIA_VENUES_INDEX_NAME,
-    query: '',
-    params: {
-      ...buildVenuesQueryOptions(params, userLocation),
-      ...buildHitsPerPage(params.hitsPerPage),
-      attributesToHighlight,
-    },
-  }))
+  const queries = buildVenuesModulesQueries({ paramsList, userLocation })
 
   try {
     const allResults = await client.multipleQueries<AlgoliaVenue>(queries)
