@@ -1,33 +1,66 @@
-import React, { useCallback, useEffect } from 'react'
+import React, { useCallback, useEffect, useState } from 'react'
 import { View } from 'react-native'
+import { NativeStackScreenProps } from 'react-native-screens/native-stack'
 import styled from 'styled-components/native'
 
+import { api } from 'api/api'
 import { navigateToHome } from 'features/navigation/helpers'
+import { RootStackParamList } from 'features/navigation/RootNavigator/types'
 import { useEmailUpdateStatus } from 'features/profile/helpers/useEmailUpdateStatus'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
+import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 import { GenericInfoPageWhite } from 'ui/pages/GenericInfoPageWhite'
 import { BicolorUserError } from 'ui/svg/BicolorUserError'
 import { Clear } from 'ui/svg/icons/Clear'
 import { Spacer, Typo } from 'ui/theme'
 import { DOUBLE_LINE_BREAK } from 'ui/theme/constants'
 
-export function SuspendAccountConfirmation() {
-  const { data: emailUpdateStatus, isLoading } = useEmailUpdateStatus()
+type SuspendAccountConfirmationProps = NativeStackScreenProps<
+  RootStackParamList,
+  'SuspendAccountConfirmation'
+>
+
+export function SuspendAccountConfirmation({
+  route: { params },
+  navigation,
+}: SuspendAccountConfirmationProps) {
+  const { data: emailUpdateStatus, isLoading: isLoadingEmailUpdateStatus } = useEmailUpdateStatus()
+  const { showErrorSnackBar } = useSnackBarContext()
+
+  const [isLoading, setIsLoading] = useState(false)
+
+  const mutate = useCallback(async () => {
+    return api.postnativev1profileemailUpdatecancel({
+      token: params?.token,
+    })
+  }, [params?.token])
 
   const onClose = useCallback(() => {
     navigateToHome()
   }, [])
 
-  const handleSuspendAccount = useCallback(() => {
-    // TODO(PC-22601): add suspend account API call
-  }, [])
+  const handleSuspendAccount = useCallback(async () => {
+    setIsLoading(true)
+    try {
+      await mutate()
+      navigation.navigate('TrackEmailChange')
+    } catch (err) {
+      showErrorSnackBar({
+        message: 'Désolé, une erreur technique s’est produite. Veuillez réessayer plus tard.',
+        timeout: SNACK_BAR_TIME_OUT,
+      })
+      navigateToHome()
+    } finally {
+      setIsLoading(false)
+    }
+  }, [mutate, navigation, showErrorSnackBar])
 
   useEffect(() => {
-    if (!isLoading && (!emailUpdateStatus || emailUpdateStatus?.expired)) {
+    if (!isLoadingEmailUpdateStatus && (!emailUpdateStatus || emailUpdateStatus?.expired)) {
       navigateToHome()
     }
-  }, [emailUpdateStatus, isLoading])
+  }, [emailUpdateStatus, isLoadingEmailUpdateStatus])
 
   return (
     <GenericInfoPageWhite
@@ -43,9 +76,18 @@ export function SuspendAccountConfirmation() {
       </StyledBody>
       <Spacer.Column numberOfSpaces={19} />
       <View>
-        <ButtonPrimary wording="Oui, suspendre mon compte" onPress={handleSuspendAccount} />
+        <ButtonPrimary
+          wording="Oui, suspendre mon compte"
+          onPress={handleSuspendAccount}
+          disabled={isLoading}
+        />
         <Spacer.Column numberOfSpaces={4} />
-        <ButtonTertiaryBlack wording="Ne pas suspendre mon compte" icon={Clear} onPress={onClose} />
+        <ButtonTertiaryBlack
+          wording="Ne pas suspendre mon compte"
+          icon={Clear}
+          onPress={onClose}
+          disabled={isLoading}
+        />
       </View>
     </GenericInfoPageWhite>
   )
