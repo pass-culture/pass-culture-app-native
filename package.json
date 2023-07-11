@@ -46,6 +46,7 @@
     "chromatic": "chromatic --exit-zero-on-changes --exit-once-uploaded",
     "fix:lint": "eslint . --ext .js,.ts,.tsx,.mjs --fix",
     "generate:api:client": "SWAGGER_CODEGEN_CLI_VERSION=3.0.30 ./scripts/generate_api_client.sh",
+    "generate:api:client:silicon": "SWAGGER_CODEGEN_CLI_VERSION=3.0.32 ./scripts/generate_api_client_silicon.sh",
     "ios:prod": "react-native run-ios --scheme PassCulture-Production",
     "ios:staging": "react-native run-ios --scheme PassCulture-Staging",
     "ios:testing": "react-native run-ios --scheme PassCulture-Testing",
