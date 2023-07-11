@@ -38,7 +38,6 @@ export const useGetOffersData = (modules: OffersModule[]) => {
     return {
       adaptedPlaylistParameters: adaptedPlaylistParameters,
       moduleId: module.id,
-      nbParams: adaptedPlaylistParameters.length,
     } as OfferModuleParamsInfo
   })
 

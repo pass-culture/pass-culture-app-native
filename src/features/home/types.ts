@@ -258,7 +258,6 @@ export type VideoModule = {
 export type OfferModuleParamsInfo = {
   adaptedPlaylistParameters: SearchState[]
   moduleId: string
-  nbParams: number
 }
 
 export const isVenuesModule = (module: HomepageModule): module is VenuesModule => {
