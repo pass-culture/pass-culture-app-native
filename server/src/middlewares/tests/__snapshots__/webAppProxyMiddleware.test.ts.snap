@@ -40,7 +40,7 @@ exports[`metasResponseInterceptor with real backend should request the real test
     <meta property=\\"al:android:url\\" content=\\"passculture://https://app.testing.passculture.team\\">
     <meta property=\\"al:android:app_name\\" content=\\"pass Culture\\"/>
     <meta property=\\"al:android:package\\" content=\\"app.passculture.testing\\"/>
-    <script type=\\"application/ld+json\\">{\\"@context\\":\\"https://schema.org\\",\\"@type\\":\\"Event\\",\\"name\\":\\"C'est notre prooooojecteur\\",\\"location\\":{\\"@type\\":\\"Place\\",\\"name\\":\\"Théâtre en feu\\",\\"address\\":{\\"@type\\":\\"PostalAddress\\",\\"streetAddress\\":\\"1 boulevard Poissonnière\\",\\"postalCode\\":\\"75000\\",\\"addressLocality\\":\\"Paris\\"},\\"geo\\":{\\"@type\\":\\"GeoCoordinates\\",\\"latitude\\":\\"5.15839\\",\\"longitude\\":\\"-52.63741\\"}},\\"startDate\\":\\"2023-07-05T20:00\\"}</script>
+    <script type=\\"application/ld+json\\">{\\"@context\\":\\"https://schema.org\\",\\"@type\\":\\"Event\\",\\"name\\":\\"C'est notre prooooojecteur\\",\\"location\\":{\\"@type\\":\\"Place\\",\\"name\\":\\"Théâtre en feu\\",\\"address\\":{\\"@type\\":\\"PostalAddress\\",\\"streetAddress\\":\\"1 boulevard Poissonnière\\",\\"postalCode\\":\\"75000\\",\\"addressLocality\\":\\"Paris\\"},\\"geo\\":{\\"@type\\":\\"GeoCoordinates\\",\\"latitude\\":\\"5.15839\\",\\"longitude\\":\\"-52.63741\\"}},\\"startDate\\":\\"2023-07-12T20:00\\"}</script>
   </head>
   <body>
     <p>Hello world</p>
@@ -54,23 +54,23 @@ exports[`metasResponseInterceptor with real backend should request the real test
   <head><link rel=\\"canonical\\" href=\\"http://localhost:8080/lieu/venueId\\" />
     <meta charset=\\"utf-8\\">
     <title>pass Culture</title>
-    <meta name=\\"title\\" content=\\"pass Culture | Terrain vague\\" />
-    <meta name=\\"description\\" content=\\"Pretty time do cover.\\" />
+    <meta name=\\"title\\" content=\\"pass Culture | Terrain vague DATA\\" />
+    <meta name=\\"description\\" content=\\"Of of among place budget. People four car drop.\\" />
     <meta name=\\"author\\" content=\\"pass Culture\\"/>
     <meta property=\\"og:type\\" content=\\"website\\"/>
     <meta property=\\"og:url\\" content=\\"http://localhost:8080/lieu/venueId\\" />
-    <meta property=\\"og:title\\" content=\\"pass Culture | Terrain vague\\" />
-    <meta property=\\"og:description\\" content=\\"Pretty time do cover.\\" />
-    <meta property=\\"og:image\\" content=\\"https://storage.googleapis.com/passculture-metier-ehp-testing-assets-fine-grained/assets/venue_default_images/trnava-university-sd8uJsf4XM4-unsplash_1.png\\" />
-    <meta property=\\"og:image:alt\\" content=\\"Pretty time do cover.\\" />
+    <meta property=\\"og:title\\" content=\\"pass Culture | Terrain vague DATA\\" />
+    <meta property=\\"og:description\\" content=\\"Of of among place budget. People four car drop.\\" />
+    <meta property=\\"og:image\\" content=\\"https://storage.googleapis.com/passculture-metier-ehp-testing-assets-fine-grained/assets/venue_default_images/aleksandr-popov-hTv8aaPziOQ-unsplash.png\\" />
+    <meta property=\\"og:image:alt\\" content=\\"Of of among place budget. People four car drop.\\" />
     <meta property=\\"og:locale\\" content=\\"fr_FR\\"/>
     <meta property=\\"og:site_name\\" content=\\"pass Culture\\"/>
     <meta name=\\"twitter:card\\" content=\\"summary_large_image\\" />
     <meta name=\\"twitter:url\\" content=\\"http://localhost:8080/lieu/venueId\\" />
-    <meta name=\\"twitter:title\\" content=\\"pass Culture | Terrain vague\\" />
-    <meta name=\\"twitter:description\\" content=\\"Pretty time do cover.\\" />
-    <meta name=\\"twitter:image\\" content=\\"https://storage.googleapis.com/passculture-metier-ehp-testing-assets-fine-grained/assets/venue_default_images/trnava-university-sd8uJsf4XM4-unsplash_1.png\\" />
-    <meta name=\\"twitter:image:alt\\" content=\\"Pretty time do cover.\\" />
+    <meta name=\\"twitter:title\\" content=\\"pass Culture | Terrain vague DATA\\" />
+    <meta name=\\"twitter:description\\" content=\\"Of of among place budget. People four car drop.\\" />
+    <meta name=\\"twitter:image\\" content=\\"https://storage.googleapis.com/passculture-metier-ehp-testing-assets-fine-grained/assets/venue_default_images/aleksandr-popov-hTv8aaPziOQ-unsplash.png\\" />
+    <meta name=\\"twitter:image:alt\\" content=\\"Of of among place budget. People four car drop.\\" />
     <meta name=\\"twitter:site\\" content=\\"@pass_Culture\\"/>
     <meta name=\\"twitter:app:country\\" content=\\"FR\\"/>
     <meta name=\\"twitter:app:name:iphone\\" content=\\"pass Culture\\"/>
