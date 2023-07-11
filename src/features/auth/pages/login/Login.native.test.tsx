@@ -59,6 +59,15 @@ const getSystemNameSpy = jest.spyOn(DeviceInfo, 'getSystemName')
 const useFeatureFlagSpy = jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockReturnValue(false)
 
 describe('<Login/>', () => {
+  it('should render correctly', async () => {
+    mockUsePreviousRoute.mockReturnValueOnce(null)
+
+    renderLogin()
+    await act(() => {})
+
+    expect(screen).toMatchSnapshot()
+  })
+
   beforeEach(() => {
     simulateSignin200()
     mockMeApiCall({
