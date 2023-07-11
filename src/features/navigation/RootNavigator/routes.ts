@@ -50,7 +50,6 @@ import { tabNavigatorPathConfig } from 'features/navigation/TabBar/routes'
 import { TabNavigator } from 'features/navigation/TabBar/TabNavigator'
 import { Offer } from 'features/offer/pages/Offer/Offer'
 import { OfferDescription } from 'features/offer/pages/OfferDescription/OfferDescription'
-import { AfterChangeEmailValidationBuffer } from 'features/profile/pages/AfterChangeEmailValidationBuffer/AfterChangeEmailValidationBuffer'
 import { ChangeEmail } from 'features/profile/pages/ChangeEmail/ChangeEmail'
 import { ChangeEmailExpiredLink } from 'features/profile/pages/ChangeEmail/ChangeEmailExpiredLink'
 import { ChangePassword } from 'features/profile/pages/ChangePassword'
@@ -63,6 +62,7 @@ import { NotificationSettings } from 'features/profile/pages/NotificationSetting
 import { PersonalData } from 'features/profile/pages/PersonalData/PersonalData'
 import { SuspendAccountConfirmation } from 'features/profile/pages/SuspendAccountConfirmation/SuspendAccountConfirmation'
 import { TrackEmailChange } from 'features/profile/pages/TrackEmailChange/TrackEmailChange'
+import { ValidateEmailChange } from 'features/profile/pages/ValidateEmailChange/ValidateEmailChange'
 import { SearchFilter } from 'features/search/pages/SearchFilter/SearchFilter'
 import { Venue } from 'features/venue/pages/Venue/Venue'
 import { ABTestingPOC } from 'libs/firebase/remoteConfig/ABTestingPOC'
@@ -140,17 +140,15 @@ export const routes: Route[] = [
     options: { title: 'Compte créé\u00a0!' },
   },
   {
-    name: 'AfterChangeEmailValidationBuffer',
-    component: AfterChangeEmailValidationBuffer,
-    pathConfig: {
-      path: 'changement-email',
-      parse: screenParamsParser['AfterChangeEmailValidationBuffer'],
-    },
-  },
-  {
     name: 'ConfirmChangeEmail',
     component: ConfirmChangeEmail,
     path: 'changement-email/confirmation',
+    options: { title: 'Confirmation de changement d’email ' },
+  },
+  {
+    name: 'ValidateEmailChange',
+    component: ValidateEmailChange,
+    path: 'changement-email/validation',
     options: { title: 'Confirmation de changement d’email ' },
   },
   {
