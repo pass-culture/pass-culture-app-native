@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from 'react'
+import React, { useCallback, useEffect, useState } from 'react'
 import { NativeStackScreenProps } from 'react-native-screens/native-stack'
 
 import { api } from 'api/api'
@@ -24,7 +24,7 @@ export function ValidateEmailChange({ route: { params }, navigation }: ValidateE
   const [isLoading, setIsLoading] = useState(false)
 
   const mutate = useCallback(async () => {
-    return api.postnativev1profileemailUpdateconfirm({
+    return api.putnativev1profileemailUpdatevalidate({
       token: params.token,
     })
   }, [params.token])
@@ -44,6 +44,12 @@ export function ValidateEmailChange({ route: { params }, navigation }: ValidateE
       setIsLoading(false)
     }
   }, [mutate, navigation, showErrorSnackBar])
+
+  useEffect(() => {
+    if (emailUpdateStatus.data?.expired) {
+      navigateToHome()
+    }
+  }, [emailUpdateStatus.data?.expired])
 
   return (
     <GenericInfoPageWhite
