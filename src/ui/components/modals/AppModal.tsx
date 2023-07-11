@@ -22,7 +22,7 @@ import { getSpacing, Spacer } from 'ui/theme'
 import { useCustomSafeInsets } from 'ui/theme/useCustomSafeInsets'
 
 import { ModalHeader } from './ModalHeader'
-import { ModalIconProps } from './types'
+import { ModalIconProps, ModalSwipeDirection } from './types'
 
 type Props = {
   animationOutTiming?: number
@@ -47,7 +47,7 @@ type Props = {
   isUpToStatusBar?: boolean
   children: React.ReactNode
   onSwipe?: () => void
-  swipeDirection?: 'up' | 'down' | 'left' | 'right'
+  swipeDirection?: ModalSwipeDirection
 } & ModalIconProps
 
 // Without this, the margin is recomputed with arbitrary values
