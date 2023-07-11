@@ -142,8 +142,8 @@ export const routes: Route[] = [
   {
     name: 'ConfirmChangeEmail',
     component: ConfirmChangeEmail,
-    options: { title: 'Confirmation de changement d’email ' },
     path: 'changement-email/confirmation',
+    options: { title: 'Confirmation de changement d’email ' },
   },
   {
     name: 'ValidateEmailChange',

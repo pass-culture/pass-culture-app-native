@@ -8,10 +8,10 @@ import { navigateToHome } from 'features/navigation/helpers'
 import { RootStackParamList } from 'features/navigation/RootNavigator/types'
 import * as useEmailUpdateStatus from 'features/profile/helpers/useEmailUpdateStatus'
 import { ConfirmChangeEmail } from 'features/profile/pages/ConfirmChangeEmail/ConfirmChangeEmail'
-import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, fireEvent, render, screen, waitFor } from 'tests/utils'
 
 jest.mock('features/navigation/helpers')
+jest.mock('react-query')
 
 type UseEmailUpdateStatusMock = ReturnType<typeof useEmailUpdateStatus['useEmailUpdateStatus']>
 
@@ -59,29 +59,19 @@ describe('<ConfirmChangeEmail />', () => {
       },
       isLoading: false,
     } as UseEmailUpdateStatusMock)
-    render(<ConfirmChangeEmail navigation={navigation} route={route} />, {
-      // eslint-disable-next-line local-rules/no-react-query-provider-hoc
-      wrapper: ({ children }) => reactQueryProviderHOC(children),
-    })
+    render(<ConfirmChangeEmail navigation={navigation} route={route} />)
     expect(navigateToHome).toHaveBeenCalledTimes(1)
   })
 
   it('should display confirmation message and buttons', () => {
-    render(<ConfirmChangeEmail navigation={navigation} route={route} />, {
-      // eslint-disable-next-line local-rules/no-react-query-provider-hoc
-      wrapper: ({ children }) => reactQueryProviderHOC(children),
-    })
+    render(<ConfirmChangeEmail navigation={navigation} route={route} />)
     expect(screen.getByText('Confirmes-tu la demande de changement d’e-mail ?')).toBeTruthy()
     expect(screen.getByText('Confirmer la demande')).toBeTruthy()
     expect(screen.getByText('Fermer')).toBeTruthy()
   })
 
   it('should navigate to email change tracking when pressing "Confirmer la demande" button and API response is success', async () => {
-    render(<ConfirmChangeEmail navigation={navigation} route={route} />, {
-      // eslint-disable-next-line local-rules/no-react-query-provider-hoc
-      wrapper: ({ children }) => reactQueryProviderHOC(children),
-    })
-
+    render(<ConfirmChangeEmail navigation={navigation} route={route} />)
     fireEvent.press(screen.getByText('Confirmer la demande'))
 
     await waitFor(() => {
@@ -91,10 +81,7 @@ describe('<ConfirmChangeEmail />', () => {
 
   it('should redirect to home when pressing "Confirmer la demande" button and API response is error', async () => {
     emailUpdateConfirmSpy.mockRejectedValueOnce('API error')
-    render(<ConfirmChangeEmail navigation={navigation} route={route} />, {
-      // eslint-disable-next-line local-rules/no-react-query-provider-hoc
-      wrapper: ({ children }) => reactQueryProviderHOC(children),
-    })
+    render(<ConfirmChangeEmail navigation={navigation} route={route} />)
 
     await act(async () => {
       fireEvent.press(screen.getByText('Confirmer la demande'))
@@ -105,10 +92,7 @@ describe('<ConfirmChangeEmail />', () => {
 
   it('should display an error snackbar when pressing "Confirmer la demande" button and API response is error', async () => {
     emailUpdateConfirmSpy.mockRejectedValueOnce('API error')
-    render(<ConfirmChangeEmail navigation={navigation} route={route} />, {
-      // eslint-disable-next-line local-rules/no-react-query-provider-hoc
-      wrapper: ({ children }) => reactQueryProviderHOC(children),
-    })
+    render(<ConfirmChangeEmail navigation={navigation} route={route} />)
 
     await act(async () => {
       fireEvent.press(screen.getByText('Confirmer la demande'))
