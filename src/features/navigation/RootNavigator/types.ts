@@ -216,6 +216,7 @@ export type RootStackParamList = {
   EighteenBirthday: undefined
   RecreditBirthdayNotification: undefined
   PageNotFound: undefined
+  ValidateEmailChange: { token: string }
   Venue: {
     id: number
     from?: Referrals

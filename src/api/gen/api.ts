@@ -1944,7 +1944,7 @@ export interface ProfileUpdateRequest {
   schoolTypeId?: SchoolTypesIdEnum | null
 }
 /**
- *      Describe possible reason codes to used when reporting an offer.      The whole meta part is only consumed by the api client, it has no meaning     inside the whole API code.      Note: when adding a new enum symbol, do not forget to update the meta     method.     
+ * Describe possible reason codes to used when reporting an offer.  The whole meta part is only consumed by the api client, it has no meaning inside the whole API code.  Note: when adding a new enum symbol, do not forget to update the meta method.
  * @export
  * @enum {string}
  */
@@ -2707,6 +2707,17 @@ export interface SubscriptionStepperResponse {
    * @memberof SubscriptionStepperResponse
    */
   title: string
+}
+/**
+ * @export
+ * @interface SuspendAccountForSuspiciousLoginRequest
+ */
+export interface SuspendAccountForSuspiciousLoginRequest {
+  /**
+   * @type {string}
+   * @memberof SuspendAccountForSuspiciousLoginRequest
+   */
+  token: string
 }
 /**
  * @export
@@ -3725,6 +3736,26 @@ export const DefaultApiFetchParamCreator = function (configuration?: Configurati
       }
     },
     /**
+     * @summary suspend_account_for_suspicious_login <POST>
+     * @param {SuspendAccountForSuspiciousLoginRequest} [body] 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async postnativev1accountsuspendForSuspiciousLogin(body?: SuspendAccountForSuspiciousLoginRequest, options: any = {}): Promise<FetchArgs> {
+      const pathname = `/native/v1/account/suspend_for_suspicious_login`
+      let secureOptions = Object.assign(options, { credentials: 'omit' })
+      const localVarRequestOptions = Object.assign({ method: 'POST' }, secureOptions)
+      const localVarHeaderParameter = await getAuthenticationHeaders(secureOptions)
+      localVarHeaderParameter['Content-Type'] = 'application/json'
+      localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers)
+      const needsSerialization = (<any>"SuspendAccountForSuspiciousLoginRequest" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json'
+      localVarRequestOptions.body =  needsSerialization ? JSON.stringify(body || {}) : (body || "")
+      return {
+        url: pathname,
+        options: localVarRequestOptions,
+      }
+    },
+    /**
      * @summary unsuspend_account <POST>
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
@@ -3961,6 +3992,48 @@ export const DefaultApiFetchParamCreator = function (configuration?: Configurati
       localVarHeaderParameter['Content-Type'] = 'application/json'
       localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers)
       const needsSerialization = (<any>"UserProfileUpdateRequest" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json'
+      localVarRequestOptions.body =  needsSerialization ? JSON.stringify(body || {}) : (body || "")
+      return {
+        url: pathname,
+        options: localVarRequestOptions,
+      }
+    },
+    /**
+     * @summary cancel_email_update <POST>
+     * @param {ChangeBeneficiaryEmailBody} [body] 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async postnativev1profileemailUpdatecancel(body?: ChangeBeneficiaryEmailBody, options: any = {}): Promise<FetchArgs> {
+      const pathname = `/native/v1/profile/email_update/cancel`
+      let secureOptions = Object.assign(options, { credentials: 'omit' })
+      const localVarRequestOptions = Object.assign({ method: 'POST' }, secureOptions)
+      const localVarHeaderParameter = await getAuthenticationHeaders(secureOptions)
+      localVarHeaderParameter['Content-Type'] = 'application/json'
+      localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers)
+      const needsSerialization = (<any>"ChangeBeneficiaryEmailBody" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json'
+      localVarRequestOptions.body =  needsSerialization ? JSON.stringify(body || {}) : (body || "")
+      return {
+        url: pathname,
+        options: localVarRequestOptions,
+      }
+    },
+    /**
+     * @summary confirm_email_update <POST>
+     * @param {ChangeBeneficiaryEmailBody} [body] 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async postnativev1profileemailUpdateconfirm(body?: ChangeBeneficiaryEmailBody, options: any = {}): Promise<FetchArgs> {
+      const pathname = `/native/v1/profile/email_update/confirm`
+      let secureOptions = Object.assign(options, { credentials: 'omit' })
+      // authentication JWTAuth required
+      secureOptions = Object.assign(secureOptions, { credentials: 'include' })
+      const localVarRequestOptions = Object.assign({ method: 'POST' }, secureOptions)
+      const localVarHeaderParameter = await getAuthenticationHeaders(secureOptions)
+      localVarHeaderParameter['Content-Type'] = 'application/json'
+      localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers)
+      const needsSerialization = (<any>"ChangeBeneficiaryEmailBody" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json'
       localVarRequestOptions.body =  needsSerialization ? JSON.stringify(body || {}) : (body || "")
       return {
         url: pathname,
@@ -4293,8 +4366,8 @@ export const DefaultApiFetchParamCreator = function (configuration?: Configurati
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    async putnativev1profilevalidateEmail(body?: ChangeBeneficiaryEmailBody, options: any = {}): Promise<FetchArgs> {
-      const pathname = `/native/v1/profile/validate_email`
+    async putnativev1profileemailUpdatevalidate(body?: ChangeBeneficiaryEmailBody, options: any = {}): Promise<FetchArgs> {
+      const pathname = `/native/v1/profile/email_update/validate`
       let secureOptions = Object.assign(options, { credentials: 'omit' })
       const localVarRequestOptions = Object.assign({ method: 'PUT' }, secureOptions)
       const localVarHeaderParameter = await getAuthenticationHeaders(secureOptions)
@@ -4609,6 +4682,18 @@ export const DefaultApiFp = function(api: DefaultApi, configuration?: Configurat
     },
     /**
      * 
+     * @summary suspend_account_for_suspicious_login <POST>
+     * @param {SuspendAccountForSuspiciousLoginRequest} [body] 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async postnativev1accountsuspendForSuspiciousLogin(body?: SuspendAccountForSuspiciousLoginRequest, options?: any): Promise<EmptyResponse> {
+      const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).postnativev1accountsuspendForSuspiciousLogin(body, options)
+      const response = await safeFetch(configuration?.basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
+      return handleGeneratedApiResponse(response)
+    },
+    /**
+     * 
      * @summary unsuspend_account <POST>
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
@@ -4725,6 +4810,30 @@ export const DefaultApiFp = function(api: DefaultApi, configuration?: Configurat
      */
     async postnativev1profile(body?: UserProfileUpdateRequest, options?: any): Promise<UserProfileResponse> {
       const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).postnativev1profile(body, options)
+      const response = await safeFetch(configuration?.basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
+      return handleGeneratedApiResponse(response)
+    },
+    /**
+     * 
+     * @summary cancel_email_update <POST>
+     * @param {ChangeBeneficiaryEmailBody} [body] 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async postnativev1profileemailUpdatecancel(body?: ChangeBeneficiaryEmailBody, options?: any): Promise<EmptyResponse> {
+      const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).postnativev1profileemailUpdatecancel(body, options)
+      const response = await safeFetch(configuration?.basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
+      return handleGeneratedApiResponse(response)
+    },
+    /**
+     * 
+     * @summary confirm_email_update <POST>
+     * @param {ChangeBeneficiaryEmailBody} [body] 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async postnativev1profileemailUpdateconfirm(body?: ChangeBeneficiaryEmailBody, options?: any): Promise<EmptyResponse> {
+      const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).postnativev1profileemailUpdateconfirm(body, options)
       const response = await safeFetch(configuration?.basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
       return handleGeneratedApiResponse(response)
     },
@@ -4912,8 +5021,8 @@ export const DefaultApiFp = function(api: DefaultApi, configuration?: Configurat
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    async putnativev1profilevalidateEmail(body?: ChangeBeneficiaryEmailBody, options?: any): Promise<EmptyResponse> {
-      const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).putnativev1profilevalidateEmail(body, options)
+    async putnativev1profileemailUpdatevalidate(body?: ChangeBeneficiaryEmailBody, options?: any): Promise<EmptyResponse> {
+      const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).putnativev1profileemailUpdatevalidate(body, options)
       const response = await safeFetch(configuration?.basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
       return handleGeneratedApiResponse(response)
     },
@@ -5221,6 +5330,18 @@ export class DefaultApi extends BaseAPI {
   }
   /**
     * 
+    * @summary suspend_account_for_suspicious_login <POST>
+    * @param {SuspendAccountForSuspiciousLoginRequest} [body] 
+    * @param {*} [options] Override http request option.
+    * @throws {RequiredError}
+    * @memberof DefaultApi
+    */
+  public async postnativev1accountsuspendForSuspiciousLogin(body?: SuspendAccountForSuspiciousLoginRequest, options?: any) {
+    const configuration = await this.getConfiguration()
+    return DefaultApiFp(this, configuration).postnativev1accountsuspendForSuspiciousLogin(body, options)
+  }
+  /**
+    * 
     * @summary unsuspend_account <POST>
     * @param {*} [options] Override http request option.
     * @throws {RequiredError}
@@ -5339,6 +5460,30 @@ export class DefaultApi extends BaseAPI {
   public async postnativev1profile(body?: UserProfileUpdateRequest, options?: any) {
     const configuration = await this.getConfiguration()
     return DefaultApiFp(this, configuration).postnativev1profile(body, options)
+  }
+  /**
+    * 
+    * @summary cancel_email_update <POST>
+    * @param {ChangeBeneficiaryEmailBody} [body] 
+    * @param {*} [options] Override http request option.
+    * @throws {RequiredError}
+    * @memberof DefaultApi
+    */
+  public async postnativev1profileemailUpdatecancel(body?: ChangeBeneficiaryEmailBody, options?: any) {
+    const configuration = await this.getConfiguration()
+    return DefaultApiFp(this, configuration).postnativev1profileemailUpdatecancel(body, options)
+  }
+  /**
+    * 
+    * @summary confirm_email_update <POST>
+    * @param {ChangeBeneficiaryEmailBody} [body] 
+    * @param {*} [options] Override http request option.
+    * @throws {RequiredError}
+    * @memberof DefaultApi
+    */
+  public async postnativev1profileemailUpdateconfirm(body?: ChangeBeneficiaryEmailBody, options?: any) {
+    const configuration = await this.getConfiguration()
+    return DefaultApiFp(this, configuration).postnativev1profileemailUpdateconfirm(body, options)
   }
   /**
     * 
@@ -5525,8 +5670,8 @@ export class DefaultApi extends BaseAPI {
     * @throws {RequiredError}
     * @memberof DefaultApi
     */
-  public async putnativev1profilevalidateEmail(body?: ChangeBeneficiaryEmailBody, options?: any) {
+  public async putnativev1profileemailUpdatevalidate(body?: ChangeBeneficiaryEmailBody, options?: any) {
     const configuration = await this.getConfiguration()
-    return DefaultApiFp(this, configuration).putnativev1profilevalidateEmail(body, options)
+    return DefaultApiFp(this, configuration).putnativev1profileemailUpdatevalidate(body, options)
   }
 }
