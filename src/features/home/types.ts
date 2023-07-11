@@ -198,7 +198,7 @@ export type VenuesModuleParameters = {
 }
 
 export type ModuleData = {
-  hits: VenueHit[] | Offer[]
+  playlistItems: VenueHit[] | Offer[]
   nbHits: number
   moduleId: string
 }

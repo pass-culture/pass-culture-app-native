@@ -36,7 +36,7 @@ export const mapOffersDataAndModules = ({ results, modulesParams, transformHits 
           .map(transformHits)
 
         const value: ModuleData = {
-          hits: uniqBy(hits, 'objectID') as Offer[],
+          playlistItems: uniqBy(hits, 'objectID') as Offer[],
           nbHits: moduleOffers.reduce((prev, curr) => prev + curr.nbHits, 0),
           moduleId: module.moduleId,
         }

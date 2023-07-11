@@ -32,7 +32,7 @@ export const VenuesModule = ({
 }: VenuesModuleProps) => {
   const { position } = useHomePosition()
   const moduleName = display.title
-  const { hits = [] } = data ?? { hits: [] }
+  const { playlistItems = [] } = data ?? { playlistItems: [] }
 
   const renderItem: CustomListRenderItem<VenueHit> = useCallback(
     ({ item, width, height }) => (
@@ -49,7 +49,7 @@ export const VenuesModule = ({
     [position, moduleName, moduleId, homeEntryId]
   )
 
-  const shouldModuleBeDisplayed = hits.length > display.minOffers
+  const shouldModuleBeDisplayed = playlistItems.length > display.minOffers
 
   useEffect(() => {
     if (shouldModuleBeDisplayed) {
@@ -69,7 +69,7 @@ export const VenuesModule = ({
       testID="offersModuleList"
       title={display.title}
       subtitle={display.subtitle}
-      data={hits || []}
+      data={playlistItems || []}
       itemHeight={ITEM_HEIGHT}
       itemWidth={ITEM_WIDTH}
       renderItem={renderItem}

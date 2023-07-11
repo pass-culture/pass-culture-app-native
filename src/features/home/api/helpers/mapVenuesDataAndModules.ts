@@ -10,7 +10,7 @@ export const mapVenuesDataAndModules = (
   if (venuesResultList.data) {
     for (let i = 0; i < venuesResultList.data.hits.length; i++) {
       venuesModulesData.push({
-        hits: venuesResultList.data.hits[i],
+        playlistItems: venuesResultList.data.hits[i],
         nbHits: venuesResultList.data.hits.length,
         moduleId: venuesResultList.data.moduleId[i],
       })
