@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from 'react'
+import React, { useCallback, useEffect, useState } from 'react'
 import { NativeStackScreenProps } from 'react-native-screens/native-stack'
 
 import { api } from 'api/api'
@@ -22,9 +22,11 @@ export function ConfirmChangeEmail({ route: { params }, navigation }: ConfirmCha
 
   const [isLoading, setIsLoading] = useState(false)
 
-  if (emailUpdateStatus?.data?.expired) {
-    navigateToHome()
-  }
+  useEffect(() => {
+    if (emailUpdateStatus?.data?.expired) {
+      navigateToHome()
+    }
+  }, [emailUpdateStatus.data?.expired])
 
   const mutate = useCallback(async () => {
     return api.postnativev1profileemailUpdateconfirm({
