@@ -20,6 +20,7 @@ import { initAlgoliaAnalytics } from 'libs/algolia/analytics/initAlgoliaAnalytic
 import { SearchAnalyticsWrapper } from 'libs/algolia/analytics/SearchAnalyticsWrapper'
 import { AppWebHead } from 'libs/appWebHead'
 import { E2eContextProvider } from 'libs/e2e/E2eContextProvider'
+import { env } from 'libs/environment'
 import { RemoteConfigProvider } from 'libs/firebase/remoteConfig'
 import { GeolocationWrapper } from 'libs/geolocation'
 import { eventMonitoring } from 'libs/monitoring'
@@ -30,6 +31,7 @@ import { theme } from 'theme'
 import { LoadingPage } from 'ui/components/LoadingPage'
 import { SnackBarProvider } from 'ui/components/snackBar/SnackBarContext'
 import { SupportedBrowsersGate } from 'web/SupportedBrowsersGate'
+import { ServiceWorkerProvider } from 'web/useServiceWorker'
 import 'resize-observer-polyfill/dist/ResizeObserver.global'
 
 globalThisShim()
@@ -45,42 +47,44 @@ export function App() {
 
   return (
     <RemoteConfigProvider>
-      <SupportedBrowsersGate>
-        <ThemeProvider theme={theme}>
-          <SafeAreaProvider>
-            <ReactQueryClientProvider>
-              <SettingsWrapper>
-                <AuthWrapper>
-                  <ErrorBoundary FallbackComponent={AsyncErrorBoundaryWithoutNavigation}>
-                    <E2eContextProvider>
-                      <GeolocationWrapper>
-                        <FavoritesWrapper>
-                          <SearchAnalyticsWrapper>
-                            <SearchWrapper>
-                              <SnackBarProvider>
-                                <CulturalSurveyContextProvider>
-                                  <SubscriptionContextProvider>
-                                    <AppWebHead />
-                                    <ScreenErrorProvider>
-                                      <Suspense fallback={<LoadingPage />}>
-                                        <AppNavigationContainer />
-                                      </Suspense>
-                                    </ScreenErrorProvider>
-                                  </SubscriptionContextProvider>
-                                </CulturalSurveyContextProvider>
-                              </SnackBarProvider>
-                            </SearchWrapper>
-                          </SearchAnalyticsWrapper>
-                        </FavoritesWrapper>
-                      </GeolocationWrapper>
-                    </E2eContextProvider>
-                  </ErrorBoundary>
-                </AuthWrapper>
-              </SettingsWrapper>
-            </ReactQueryClientProvider>
-          </SafeAreaProvider>
-        </ThemeProvider>
-      </SupportedBrowsersGate>
+      <ServiceWorkerProvider fileName={`${env.PUBLIC_URL}/service-worker.js`}>
+        <SupportedBrowsersGate>
+          <ThemeProvider theme={theme}>
+            <SafeAreaProvider>
+              <ReactQueryClientProvider>
+                <SettingsWrapper>
+                  <AuthWrapper>
+                    <ErrorBoundary FallbackComponent={AsyncErrorBoundaryWithoutNavigation}>
+                      <E2eContextProvider>
+                        <GeolocationWrapper>
+                          <FavoritesWrapper>
+                            <SearchAnalyticsWrapper>
+                              <SearchWrapper>
+                                <SnackBarProvider>
+                                  <CulturalSurveyContextProvider>
+                                    <SubscriptionContextProvider>
+                                      <AppWebHead />
+                                      <ScreenErrorProvider>
+                                        <Suspense fallback={<LoadingPage />}>
+                                          <AppNavigationContainer />
+                                        </Suspense>
+                                      </ScreenErrorProvider>
+                                    </SubscriptionContextProvider>
+                                  </CulturalSurveyContextProvider>
+                                </SnackBarProvider>
+                              </SearchWrapper>
+                            </SearchAnalyticsWrapper>
+                          </FavoritesWrapper>
+                        </GeolocationWrapper>
+                      </E2eContextProvider>
+                    </ErrorBoundary>
+                  </AuthWrapper>
+                </SettingsWrapper>
+              </ReactQueryClientProvider>
+            </SafeAreaProvider>
+          </ThemeProvider>
+        </SupportedBrowsersGate>
+      </ServiceWorkerProvider>
     </RemoteConfigProvider>
   )
 }
