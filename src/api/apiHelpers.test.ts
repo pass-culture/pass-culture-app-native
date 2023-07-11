@@ -12,6 +12,7 @@ import { server } from 'tests/server'
 
 import {
   ApiError,
+  cleanRefreshedAccessToken,
   createNeedsAuthenticationResponse,
   handleGeneratedApiResponse,
   isAPIExceptionCapturedAsInfo,
@@ -42,7 +43,21 @@ const respondWith = async (
   })
 }
 
-const accessToken = 'some fake access token'
+const accessToken =
+  'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTY4OTI1NjM1NywianRpIjoiNTFkMjc5OGMtZDc1YS00NjQ1LTg0ZTAtNTgxYmQ3NTQzZGY3IiwidHlwZSI6ImFjY2VzcyIsInN1YiI6ImJlbmVfMThAZXhhbXBsZS5jb20iLCJuYmYiOjE2ODkyNTYzNTcsImV4cCI6MTY4OTI1NzI1NywidXNlcl9jbGFpbXMiOnsidXNlcl9pZCI6MTI3MTN9fQ.OW09vfchjTx-0LfZiaAJu8eMd9aftExhxR4bUsgl3xw'
+const decodedAccessToken = {
+  fresh: false,
+  iat: 1689576398,
+  jti: 'a90f96de-185d-4edb-a878-d714eea7ff74',
+  type: 'access',
+  sub: 'bene_18@example.com',
+  nbf: 1689576398,
+  exp: 1689577298,
+  user_claims: {
+    user_id: 12713,
+  },
+}
+
 const apiUrl = '/native/v1/me'
 const optionsWithAccessToken = {
   headers: {
@@ -50,13 +65,19 @@ const optionsWithAccessToken = {
   },
 }
 
+jest.spyOn(jwt, 'decodeAccessToken').mockReturnValue(decodedAccessToken)
+
 jest.spyOn(CodePush, 'getUpdateMetadata').mockResolvedValue(null)
+
+jest.useFakeTimers('legacy')
 
 describe('[api] helpers', () => {
   const mockFetch = jest.spyOn(global, 'fetch')
   const mockGetAccessTokenStatus = jest.spyOn(jwt, 'getAccessTokenStatus')
   const mockGetRefreshToken = jest.spyOn(Keychain, 'getRefreshToken')
   const mockClearRefreshToken = jest.spyOn(Keychain, 'clearRefreshToken')
+
+  afterEach(cleanRefreshedAccessToken)
 
   describe('[method] safeFetch', () => {
     it('should call fetch with populated header', async () => {
@@ -143,6 +164,44 @@ describe('[api] helpers', () => {
         },
       })
       expect(response).toEqual(await expectedResponse)
+    })
+
+    it('should call refreshAccessToken route once when no error', async () => {
+      mockGetAccessTokenStatus.mockReturnValueOnce('expired').mockReturnValueOnce('expired')
+      const expectedResponse = respondWith('some api response')
+      mockFetch
+        .mockResolvedValueOnce(respondWith({ accessToken }))
+        .mockResolvedValueOnce(expectedResponse)
+        .mockResolvedValueOnce(expectedResponse)
+
+      await Promise.all([
+        safeFetch(apiUrl, optionsWithAccessToken, api),
+        safeFetch(apiUrl, optionsWithAccessToken, api),
+      ])
+
+      const refreshAccessTokenCalls = 1
+      const apiURLCalls = 2
+      expect(mockFetch).toHaveBeenCalledTimes(refreshAccessTokenCalls + apiURLCalls)
+    })
+
+    it("should call refreshAccessToken route again after 15 minutes (access token's lifetime)", async () => {
+      mockGetAccessTokenStatus.mockReturnValueOnce('expired').mockReturnValueOnce('expired')
+      const expectedResponse = respondWith('some api response')
+      mockFetch
+        .mockResolvedValueOnce(respondWith({ accessToken }))
+        .mockResolvedValueOnce(expectedResponse)
+        .mockResolvedValueOnce(respondWith({ accessToken }))
+        .mockResolvedValueOnce(expectedResponse)
+
+      await safeFetch(apiUrl, optionsWithAccessToken, api)
+
+      jest.advanceTimersByTime(15 * 60 * 1000)
+
+      await safeFetch(apiUrl, optionsWithAccessToken, api)
+
+      const refreshAccessTokenCalls = 2
+      const apiURLCalls = 2
+      expect(mockFetch).toHaveBeenCalledTimes(refreshAccessTokenCalls + apiURLCalls)
     })
 
     it('needs authentication response when there is no access token', async () => {
