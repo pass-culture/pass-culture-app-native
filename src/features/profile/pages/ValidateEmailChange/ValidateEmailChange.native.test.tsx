@@ -9,7 +9,6 @@ import { navigateToHome } from 'features/navigation/helpers'
 import { RootStackParamList } from 'features/navigation/RootNavigator/types'
 import * as useEmailUpdateStatus from 'features/profile/helpers/useEmailUpdateStatus'
 import { ValidateEmailChange } from 'features/profile/pages/ValidateEmailChange/ValidateEmailChange'
-import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, fireEvent, render, screen, waitFor } from 'tests/utils'
 
 const useEmailUpdateStatusSpy = jest
@@ -33,6 +32,8 @@ jest.mock('ui/components/snackBar/SnackBarContext', () => ({
   SNACK_BAR_TIME_OUT: 5000,
 }))
 
+jest.mock('react-query')
+
 const emailUpdateValidateSpy = jest
   .spyOn(API.api, 'putnativev1profileemailUpdatevalidate')
   .mockImplementation()
@@ -48,20 +49,13 @@ describe('ValidateEmailChange', () => {
     },
   } as unknown as RouteProp<RootStackParamList, 'ValidateEmailChange'>
 
-  function renderComponent() {
-    render(<ValidateEmailChange navigation={navigation} route={route} />, {
-      // eslint-disable-next-line local-rules/no-react-query-provider-hoc
-      wrapper: ({ children }) => reactQueryProviderHOC(children),
-    })
-  }
-
   it('should render new email address', () => {
-    renderComponent()
+    render(<ValidateEmailChange navigation={navigation} route={route} />)
     expect(screen.getByText('john@doe.com')).toBeTruthy()
   })
 
   it('should redirect to TrackEmailChange if submit is success', async () => {
-    renderComponent()
+    render(<ValidateEmailChange navigation={navigation} route={route} />)
 
     fireEvent.press(screen.getByText('Valider l’adresse e-mail'))
 
@@ -73,7 +67,7 @@ describe('ValidateEmailChange', () => {
   it('should display a snackbar redirect to home if submit triggers an error', async () => {
     emailUpdateValidateSpy.mockRejectedValueOnce('Oops test')
 
-    renderComponent()
+    render(<ValidateEmailChange navigation={navigation} route={route} />)
 
     await act(async () => {
       fireEvent.press(screen.getByText('Valider l’adresse e-mail'))
@@ -93,7 +87,7 @@ describe('ValidateEmailChange', () => {
       },
     } as QueryObserverResult<EmailUpdateStatus>)
 
-    renderComponent()
+    render(<ValidateEmailChange navigation={navigation} route={route} />)
 
     expect(navigateToHome).toHaveBeenCalledTimes(1)
   })
