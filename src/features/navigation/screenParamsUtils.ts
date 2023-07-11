@@ -7,6 +7,7 @@ type ScreensRequiringParsing = Extract<
   | 'AfterSignupEmailValidationBuffer'
   | 'BookingDetails'
   | 'BookingConfirmation'
+  | 'ConfirmChangeEmail'
   | 'Home'
   | 'Login'
   | 'Offer'
@@ -70,6 +71,9 @@ export const screenParamsParser: ParamsParsers = {
     email: decodeURIComponent,
     token: identityFn,
     expiration_timestamp: Number,
+  },
+  ConfirmChangeEmail: {
+    token: identityFn,
   },
   BookingDetails: {
     id: Number,

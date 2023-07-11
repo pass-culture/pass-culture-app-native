@@ -155,7 +155,7 @@ export type RootStackParamList = {
   ChangeEmailExpiredLink: undefined
   CheatCodes: undefined
   CheatMenu: undefined
-  ConfirmChangeEmail: undefined
+  ConfirmChangeEmail: { token: string }
   ConfirmDeleteProfile: undefined
   BookingConfirmation: { offerId: number; bookingId: number }
   BookingDetails: { id: number }
