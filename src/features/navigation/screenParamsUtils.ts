@@ -4,7 +4,6 @@ type ScreensRequiringParsing = Extract<
   ScreenNames,
   | 'AccountSecurity'
   | 'AccountSecurityBuffer'
-  | 'AfterChangeEmailValidationBuffer'
   | 'AfterSignupEmailValidationBuffer'
   | 'BookingDetails'
   | 'BookingConfirmation'
@@ -66,11 +65,6 @@ export const screenParamsParser: ParamsParsers = {
   },
   AccountSecurityBuffer: {
     token: identityFn,
-  },
-  AfterChangeEmailValidationBuffer: {
-    new_email: decodeURIComponent,
-    token: identityFn,
-    expiration_timestamp: Number,
   },
   AfterSignupEmailValidationBuffer: {
     email: decodeURIComponent,
