@@ -183,7 +183,7 @@ export type ThematicHighlightModule = {
 export type VenuesModule = {
   type: HomepageModuleType.VenuesModule
   id: string
-  venuesParameters: VenuesModuleParameters[]
+  venuesParameters: VenuesModuleParameters
   displayParameters: DisplayParameters
   data?: ModuleData
 }

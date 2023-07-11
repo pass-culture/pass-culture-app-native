@@ -19,7 +19,7 @@ export const useGetVenuesData = (modules: VenuesModule[]) => {
   const venuesModuleIds: string[] = []
 
   modules.forEach((module) => {
-    venuesParameters.push(module.venuesParameters[0])
+    venuesParameters.push(module.venuesParameters)
     venuesModuleIds.push(module.id)
   })
 
