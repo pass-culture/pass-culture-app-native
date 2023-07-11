@@ -1,11 +1,14 @@
 #!/usr/bin/env bash
 set -e
 
+# This file uses custom Docker image to handle generating api.ts until this PR is merged
+# https://github.com/swagger-api/swagger-codegen/pull/11772
+
 docker run \
     --network="host" \
     --rm \
     --volume "${PWD}:/local" \
-    "swaggerapi/swagger-codegen-cli-v3:${SWAGGER_CODEGEN_CLI_VERSION:-'latest'}" generate \
+    "parsertongue/swagger-codegen-cli:${SWAGGER_CODEGEN_CLI_VERSION:-'latest'}" generate \
         --input-spec https://backend.testing.passculture.team/native/v1/openapi.json `# schema location` \
         --lang typescript-fetch `# client type` \
         --config /local/swagger_codegen/swagger_codegen_config.json `# swagger codegen config` \
