@@ -77,7 +77,7 @@ describe('ValidateEmailChange', () => {
     })
   })
 
-  it('should not sign out if submit is success and user is logged in', async () => {
+  it('should not sign out if submit is success and user is not logged in', async () => {
     mockUseAuthContext.mockReturnValueOnce({
       isLoggedIn: false,
       setIsLoggedIn: jest.fn(),
