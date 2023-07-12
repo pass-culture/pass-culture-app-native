@@ -52,6 +52,7 @@ export const VideoModal: React.FC<VideoModalProps> = (props) => {
           onSwipe: props.hideModal,
           swipeDirection: ModalSwipeDirection.DOWN,
           animationOutTiming: 400,
+          propagateSwipe: true,
         }
       : {}
 
