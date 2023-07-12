@@ -1,0 +1,23 @@
+name: Check no dead code is introduced
+
+on:
+  workflow_call:
+
+jobs:
+  yarn-ts-prune:
+    runs-on: [self-hosted, linux, x64]
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version-file: '.nvmrc'
+      - uses: actions/cache@v3
+        with:
+          path: |
+            node_modules
+            ~/.cache/yarn
+          key: v1-yarn-dependency-cache-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: |
+            v1-yarn-dependency-cache-${{ hashFiles('**/yarn.lock') }}
+      - name: Run script for dead code check
+        run: chmod +x scripts/check_dead_code_introduced.sh && ./scripts/check_dead_code_introduced.sh

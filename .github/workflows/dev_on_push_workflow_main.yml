@@ -25,6 +25,9 @@ jobs:
   yarn-linter:
     needs: yarn-install
     uses: ./.github/workflows/dev_on_workflow_linter_ts.yml
+  yarn-ts-prune:
+    needs: yarn-install
+    uses: ./.github/workflows/dev_on_workflow_ts_prune.yml
   yarn-tester:
     needs: yarn-linter
     uses: ./.github/workflows/dev_on_workflow_tester.yml
