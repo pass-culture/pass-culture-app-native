@@ -38,6 +38,7 @@ export function ValidateEmailChange({ route: { params }, navigation }: ValidateE
     setIsLoading(true)
     try {
       await mutate()
+      // A technical constraint requires disconnection for the moment. Possible improvement later
       if (isLoggedIn) {
         await signOut()
       }
