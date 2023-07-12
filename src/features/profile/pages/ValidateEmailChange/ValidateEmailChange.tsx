@@ -2,6 +2,8 @@ import React, { useCallback, useEffect, useState } from 'react'
 import { NativeStackScreenProps } from 'react-native-screens/native-stack'
 
 import { api } from 'api/api'
+import { useAuthContext } from 'features/auth/context/AuthContext'
+import { useLogoutRoutine } from 'features/auth/helpers/useLogoutRoutine'
 import { navigateToHome, navigateToHomeConfig } from 'features/navigation/helpers'
 import { RootStackParamList } from 'features/navigation/RootNavigator/types'
 import { useEmailUpdateStatus } from 'features/profile/helpers/useEmailUpdateStatus'
@@ -19,9 +21,12 @@ type ValidateEmailChangeProps = NativeStackScreenProps<RootStackParamList, 'Vali
 
 export function ValidateEmailChange({ route: { params }, navigation }: ValidateEmailChangeProps) {
   const { data: emailUpdateStatus, isLoading: isLoadingEmailUpdateStatus } = useEmailUpdateStatus()
-  const { showErrorSnackBar } = useSnackBarContext()
+  const { showSuccessSnackBar } = useSnackBarContext()
 
   const [isLoading, setIsLoading] = useState(false)
+
+  const { isLoggedIn } = useAuthContext()
+  const signOut = useLogoutRoutine()
 
   const mutate = useCallback(async () => {
     return api.putnativev1profileemailUpdatevalidate({
@@ -33,17 +38,22 @@ export function ValidateEmailChange({ route: { params }, navigation }: ValidateE
     setIsLoading(true)
     try {
       await mutate()
-      navigation.navigate('TrackEmailChange')
-    } catch (error) {
-      showErrorSnackBar({
-        message: 'Désolé, une erreur technique s’est produite. Veuillez réessayer plus tard.',
+      // A technical constraint requires disconnection for the moment. Possible improvement later
+      if (isLoggedIn) {
+        await signOut()
+      }
+      navigation.navigate('Login')
+      showSuccessSnackBar({
+        message:
+          'Ton adresse e-mail est modifiée. Tu peux te reconnecter avec ta nouvelle adresse e-mail.',
         timeout: SNACK_BAR_TIME_OUT,
       })
-      navigateToHome()
+    } catch (error) {
+      navigation.navigate('ChangeEmailExpiredLink')
     } finally {
       setIsLoading(false)
     }
-  }, [mutate, navigation, showErrorSnackBar])
+  }, [isLoggedIn, mutate, navigation, showSuccessSnackBar, signOut])
 
   useEffect(() => {
     if (!isLoadingEmailUpdateStatus && (!emailUpdateStatus || emailUpdateStatus?.expired)) {

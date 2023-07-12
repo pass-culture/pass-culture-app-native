@@ -5,6 +5,7 @@ import { QueryObserverResult } from 'react-query'
 
 import * as API from 'api/api'
 import { EmailHistoryEventTypeEnum, EmailUpdateStatus } from 'api/gen'
+import * as Auth from 'features/auth/context/AuthContext'
 import { navigateToHome } from 'features/navigation/helpers'
 import { RootStackParamList } from 'features/navigation/RootNavigator/types'
 import * as useEmailUpdateStatus from 'features/profile/helpers/useEmailUpdateStatus'
@@ -23,16 +24,28 @@ const useEmailUpdateStatusSpy = jest
 
 jest.mock('features/navigation/helpers')
 
-const mockShowErrorSnackbar = jest.fn()
+const mockShowSuccessSnackbar = jest.fn()
 
 jest.mock('ui/components/snackBar/SnackBarContext', () => ({
   useSnackBarContext: () => ({
-    showErrorSnackBar: mockShowErrorSnackbar,
+    showSuccessSnackBar: mockShowSuccessSnackbar,
   }),
   SNACK_BAR_TIME_OUT: 5000,
 }))
 
 jest.mock('react-query')
+
+const mockSignOut = jest.fn()
+jest.mock('features/auth/helpers/useLogoutRoutine', () => ({
+  useLogoutRoutine: () => mockSignOut,
+}))
+
+const mockUseAuthContext = jest.spyOn(Auth, 'useAuthContext').mockReturnValue({
+  isLoggedIn: true,
+  setIsLoggedIn: jest.fn(),
+  isUserLoading: false,
+  refetchUser: jest.fn(),
+})
 
 const emailUpdateValidateSpy = jest
   .spyOn(API.api, 'putnativev1profileemailUpdatevalidate')
@@ -54,17 +67,53 @@ describe('ValidateEmailChange', () => {
     expect(screen.getByText('john@doe.com')).toBeTruthy()
   })
 
-  it('should redirect to TrackEmailChange if submit is success', async () => {
+  it('should sign out if submit is success and user is logged in', async () => {
     render(<ValidateEmailChange navigation={navigation} route={route} />)
 
     fireEvent.press(screen.getByText('Valider l’adresse e-mail'))
 
     await waitFor(() => {
-      expect(navigation.navigate).toHaveBeenNthCalledWith(1, 'TrackEmailChange')
+      expect(mockSignOut).toHaveBeenCalledTimes(1)
     })
   })
 
-  it('should display a snackbar if submit triggers an error', async () => {
+  it('should not sign out if submit is success and user is not logged in', async () => {
+    mockUseAuthContext.mockReturnValueOnce({
+      isLoggedIn: false,
+      setIsLoggedIn: jest.fn(),
+      isUserLoading: false,
+      refetchUser: jest.fn(),
+    })
+    render(<ValidateEmailChange navigation={navigation} route={route} />)
+
+    fireEvent.press(screen.getByText('Valider l’adresse e-mail'))
+
+    await waitFor(() => {
+      expect(mockSignOut).not.toHaveBeenCalled()
+    })
+  })
+
+  it('should redirect to Login if submit is success', async () => {
+    render(<ValidateEmailChange navigation={navigation} route={route} />)
+
+    fireEvent.press(screen.getByText('Valider l’adresse e-mail'))
+
+    await waitFor(() => {
+      expect(navigation.navigate).toHaveBeenNthCalledWith(1, 'Login')
+    })
+  })
+
+  it('should display a snackbar if submit is success', async () => {
+    render(<ValidateEmailChange navigation={navigation} route={route} />)
+
+    await act(async () => {
+      fireEvent.press(screen.getByText('Valider l’adresse e-mail'))
+    })
+
+    expect(mockShowSuccessSnackbar).toHaveBeenCalledTimes(1)
+  })
+
+  it('should redirect to ChangeEmailExpiredLink if submit triggers an error', async () => {
     emailUpdateValidateSpy.mockRejectedValueOnce('Oops test')
 
     render(<ValidateEmailChange navigation={navigation} route={route} />)
@@ -73,19 +122,7 @@ describe('ValidateEmailChange', () => {
       fireEvent.press(screen.getByText('Valider l’adresse e-mail'))
     })
 
-    expect(mockShowErrorSnackbar).toHaveBeenCalledTimes(1)
-  })
-
-  it('should redirect to home if submit triggers an error', async () => {
-    emailUpdateValidateSpy.mockRejectedValueOnce('Oops test')
-
-    render(<ValidateEmailChange navigation={navigation} route={route} />)
-
-    await act(async () => {
-      fireEvent.press(screen.getByText('Valider l’adresse e-mail'))
-    })
-
-    expect(navigateToHome).toHaveBeenCalledTimes(1)
+    expect(navigation.navigate).toHaveBeenCalledWith('ChangeEmailExpiredLink')
   })
 
   it('should redirect to home when status is expired', () => {
