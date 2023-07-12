@@ -1,11 +1,14 @@
 #!/usr/bin/env bash
 
-OUTPUT=$(yarn --silent prune:count);
-MAX_DEAD_CODE_LINES="20";
+current_dead_code_count=$(yarn --silent prune:count)
 
-echo "$OUTPUT lines remaining, maximum set to $MAX_DEAD_CODE_LINES"
+git fetch origin
+git switch master
+master_dead_code_count=$(yarn --silent prune:count)
 
-if [ "$OUTPUT" -gt "$MAX_DEAD_CODE_LINES" ];
+echo "$current_dead_code_count lines of dead code, $master_dead_code_count on master"
+
+if [ "$current_dead_code_count" -gt "$master_dead_code_count" ];
 then
 echo "Error, you added dead code, please remove some."
 exit 1
