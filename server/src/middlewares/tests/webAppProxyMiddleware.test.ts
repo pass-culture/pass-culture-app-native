@@ -121,6 +121,7 @@ describe('metasResponseInterceptor', () => {
   })
 
   describe('with real backend', () => {
+    // we use the staging backend to ensure that the offer/venue data is not changing at every sandbox reset
     const originalApiBaseUrl = env.API_BASE_URL
     beforeAll(() => {
       env.API_BASE_URL = 'https://backend.staging.passculture.team'
@@ -156,8 +157,7 @@ describe('metasResponseInterceptor', () => {
     })
 
     it('should request the real testing backend and get the venue data', async () => {
-      const url = `${env.APP_PUBLIC_URL}/lieu/9`
-
+      const url = `${env.APP_PUBLIC_URL}/lieu/9` // 9 is the id of the first permanent venue in the staging database
       const finalResponseBuffer = await metasResponseInterceptor(
         responseBuffer,
         proxyRes,
