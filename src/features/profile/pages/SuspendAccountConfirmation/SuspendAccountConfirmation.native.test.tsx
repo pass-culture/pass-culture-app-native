@@ -1,11 +1,14 @@
+import { RouteProp } from '@react-navigation/native'
 import React from 'react'
+import { NativeStackNavigationProp } from 'react-native-screens/native-stack'
 
+import * as API from 'api/api'
 import { EmailHistoryEventTypeEnum } from 'api/gen'
-import { navigateToHomeConfig } from 'features/navigation/helpers'
-import { navigateFromRef } from 'features/navigation/navigationRef'
+import { navigateToHome } from 'features/navigation/helpers'
+import { RootStackParamList } from 'features/navigation/RootNavigator/types'
 import * as useEmailUpdateStatus from 'features/profile/helpers/useEmailUpdateStatus'
 import { SuspendAccountConfirmation } from 'features/profile/pages/SuspendAccountConfirmation/SuspendAccountConfirmation'
-import { fireEvent, render, screen } from 'tests/utils'
+import { act, fireEvent, render, screen, waitFor } from 'tests/utils'
 
 type UseEmailUpdateStatusMock = ReturnType<typeof useEmailUpdateStatus['useEmailUpdateStatus']>
 
@@ -20,20 +23,41 @@ const useEmailUpdateStatusSpy = jest
     isLoading: false,
   } as UseEmailUpdateStatusMock)
 
-jest.mock('features/navigation/navigationRef')
+jest.mock('features/navigation/helpers')
+jest.mock('react-query')
+
+const emailUpdateCancelSpy = jest
+  .spyOn(API.api, 'postnativev1profileemailUpdatecancel')
+  .mockImplementation()
+
+const mockShowErrorSnackbar = jest.fn()
+
+jest.mock('ui/components/snackBar/SnackBarContext', () => ({
+  useSnackBarContext: () => ({
+    showErrorSnackBar: mockShowErrorSnackbar,
+  }),
+  SNACK_BAR_TIME_OUT: 5000,
+}))
 
 describe('<SuspendAccountConfirmation />', () => {
+  const navigation = {
+    navigate: jest.fn(),
+  } as unknown as NativeStackNavigationProp<RootStackParamList, 'SuspendAccountConfirmation'>
+
+  const route = {
+    params: {
+      token: 'example',
+    },
+  } as unknown as RouteProp<RootStackParamList, 'SuspendAccountConfirmation'>
+
   describe('should navigate to home', () => {
     it('When there is not current email change', () => {
       useEmailUpdateStatusSpy.mockReturnValueOnce({
         data: undefined,
         isLoading: false,
       } as UseEmailUpdateStatusMock)
-      render(<SuspendAccountConfirmation />)
-      expect(navigateFromRef).toHaveBeenCalledWith(
-        navigateToHomeConfig.screen,
-        navigateToHomeConfig.params
-      )
+      render(<SuspendAccountConfirmation navigation={navigation} route={route} />)
+      expect(navigateToHome).toHaveBeenCalledTimes(1)
     })
 
     it('When last email change expired', () => {
@@ -45,11 +69,8 @@ describe('<SuspendAccountConfirmation />', () => {
         },
         isLoading: false,
       } as UseEmailUpdateStatusMock)
-      render(<SuspendAccountConfirmation />)
-      expect(navigateFromRef).toHaveBeenCalledWith(
-        navigateToHomeConfig.screen,
-        navigateToHomeConfig.params
-      )
+      render(<SuspendAccountConfirmation navigation={navigation} route={route} />)
+      expect(navigateToHome).toHaveBeenCalledTimes(1)
     })
 
     it('When pressing "Ne pas suspendre mon compte" button', () => {
@@ -61,14 +82,22 @@ describe('<SuspendAccountConfirmation />', () => {
         },
         isLoading: false,
       } as UseEmailUpdateStatusMock)
-      render(<SuspendAccountConfirmation />)
+      render(<SuspendAccountConfirmation navigation={navigation} route={route} />)
 
       fireEvent.press(screen.getByText('Ne pas suspendre mon compte'))
 
-      expect(navigateFromRef).toHaveBeenCalledWith(
-        navigateToHomeConfig.screen,
-        navigateToHomeConfig.params
-      )
+      expect(navigateToHome).toHaveBeenCalledTimes(1)
+    })
+
+    it('When pressing "Oui, suspendre mon compte" button and API response is error', async () => {
+      emailUpdateCancelSpy.mockRejectedValueOnce('API error')
+      render(<SuspendAccountConfirmation navigation={navigation} route={route} />)
+
+      await act(async () => {
+        fireEvent.press(screen.getByText('Oui, suspendre mon compte'))
+      })
+
+      expect(navigateToHome).toHaveBeenCalledTimes(1)
     })
   })
 
@@ -81,9 +110,29 @@ describe('<SuspendAccountConfirmation />', () => {
       },
       isLoading: false,
     } as UseEmailUpdateStatusMock)
-    render(<SuspendAccountConfirmation />)
+    render(<SuspendAccountConfirmation navigation={navigation} route={route} />)
     expect(screen.getByText('Souhaites-tu suspendre ton compte pass Culture ?')).toBeTruthy()
     expect(screen.getByText('Oui, suspendre mon compte')).toBeTruthy()
     expect(screen.getByText('Ne pas suspendre mon compte')).toBeTruthy()
+  })
+
+  it('should navigate to email change tracking when pressing "Confirmer la demande" button and API response is success', async () => {
+    render(<SuspendAccountConfirmation navigation={navigation} route={route} />)
+    fireEvent.press(screen.getByText('Oui, suspendre mon compte'))
+
+    await waitFor(() => {
+      expect(navigation.navigate).toHaveBeenNthCalledWith(1, 'TrackEmailChange')
+    })
+  })
+
+  it('should display an error snackbar when pressing "Confirmer la demande" button and API response is error', async () => {
+    emailUpdateCancelSpy.mockRejectedValueOnce('API error')
+    render(<SuspendAccountConfirmation navigation={navigation} route={route} />)
+
+    await act(async () => {
+      fireEvent.press(screen.getByText('Oui, suspendre mon compte'))
+    })
+
+    expect(mockShowErrorSnackbar).toHaveBeenCalledTimes(1)
   })
 })

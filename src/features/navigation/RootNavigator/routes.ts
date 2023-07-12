@@ -339,7 +339,6 @@ export const routes: Route[] = [
     component: SuspendAccountConfirmation,
     path: 'suspension-compte/confirmation',
     options: { title: 'Suspension de compte' },
-    secure: true,
   },
   {
     name: 'SearchFilter',
