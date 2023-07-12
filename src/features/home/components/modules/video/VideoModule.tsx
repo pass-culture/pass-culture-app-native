@@ -25,16 +25,12 @@ const THUMBNAIL_WIDTH = getSpacing(81)
 const PLAYER_TOP_MARGIN = getSpacing(12.5)
 const PLAYER_SIZE = getSpacing(14.5)
 
-// const GRADIENT_START_POSITION = PLAYER_TOP_MARGIN + getSpacing(5) + PLAYER_SIZE / 2
 const GRADIENT_START_POSITION = PLAYER_TOP_MARGIN + PLAYER_SIZE / 2
 
-// const COLOR_CATEGORY_BACKGROUND_HEIGHT_UNIQUE_OFFER =
-//   THUMBNAIL_HEIGHT - GRADIENT_START_POSITION + getSpacing(49.5)
 const COLOR_CATEGORY_BACKGROUND_HEIGHT_MULTI_OFFER =
   THUMBNAIL_HEIGHT - GRADIENT_START_POSITION + getSpacing(21)
 
-const DESKTOP_BACKGROUND_HEIGHT = getSpacing(36)
-
+const DESKTOP_BACKGROUND_HEIGHT = getSpacing(32.5)
 
 interface VideoModuleProps extends VideoModuleType {
   index: number
@@ -50,13 +46,11 @@ export const VideoModule: FunctionComponent<VideoModuleProps> = (props) => {
   const videoDuration = `${props.durationInMinutes} min`
 
   const { offers } = useVideoOffers(props.offersModuleParameters, props.id)
-  // const { offer } = useVideoOffer(props.offersModuleParameters, props.id)
 
   const theme = useTheme()
   const colorCategoryBackgroundHeightUniqueOffer = theme.isDesktopViewport
     ? DESKTOP_BACKGROUND_HEIGHT
-    : THUMBNAIL_HEIGHT - GRADIENT_START_POSITION + getSpacing(44.5)
-
+    : THUMBNAIL_HEIGHT - GRADIENT_START_POSITION + getSpacing(43)
 
   const shouldModuleBeDisplayed = offers.length > 0
   const isMultiOffer = offers.length > 1
@@ -125,32 +119,19 @@ export const VideoModule: FunctionComponent<VideoModuleProps> = (props) => {
             isMultiOffer={isMultiOffer}
             {...props}
           />
-{/* <<<<<<< HEAD
-          <Spacer.Column numberOfSpaces={2} />
+          {theme.isDesktopViewport ? (
+            <Spacer.Row numberOfSpaces={4} />
+          ) : (
+            <Spacer.Column numberOfSpaces={2} />
+          )}
           {!isMultiOffer && (
-            <VideoMonoOfferTile
+            <StyledVideoMonoOfferTile
               offer={offers[0]}
               color={props.color}
               hideModal={hideVideoModal}
               analyticsParams={analyticsParams}
             />
           )}
-=======
-          {theme.isDesktopViewport ? (
-            <Spacer.Row numberOfSpaces={4} />
-          ) : (
-            <Spacer.Column numberOfSpaces={2} />
-          )}
-          <StyledOfferVideoModule
-            offer={offer}
-            color={props.color}
-            hideModal={hideVideoModal}
-            moduleId={props.id}
-            moduleName={props.title}
-            homeEntryId={props.homeEntryId}
-            analyticsFrom={'home'}
-          />
->>>>>>> e431d37d8 ((PC-22863) feat(VideoModal): Design for Video Modal on web and web-mobile) */}
         </VideoOfferContainer>
       </StyledWrapper>
       {!!isMultiOffer && (
@@ -211,29 +192,18 @@ const PlayerContainer = styled.View({
   alignItems: 'center',
 })
 
-// <<<<<<< HEAD
-// const ColorCategoryBackground = styled(LinearGradient)<{ isMultiOffer: boolean }>(
-//   ({ isMultiOffer }) => ({
-//     position: 'absolute',
-//     top: GRADIENT_START_POSITION,
-//     right: 0,
-//     left: 0,
-//     height: isMultiOffer
-//       ? COLOR_CATEGORY_BACKGROUND_HEIGHT_MULTI_OFFER
-//       : COLOR_CATEGORY_BACKGROUND_HEIGHT_UNIQUE_OFFER,
-//   })
-// )
-// =======
-// const ColorCategoryBackground = styled(LinearGradient)<{
-//   colorCategoryBackgroundHeightUniqueOffer: number
-// }>(({ colorCategoryBackgroundHeightUniqueOffer }) => ({
-//   position: 'absolute',
-//   top: GRADIENT_START_POSITION,
-//   right: 0,
-//   left: 0,
-//   height: colorCategoryBackgroundHeightUniqueOffer,
-// }))
-// >>>>>>> e431d37d8 ((PC-22863) feat(VideoModal): Design for Video Modal on web and web-mobile)
+const ColorCategoryBackground = styled(LinearGradient)<{
+  colorCategoryBackgroundHeightUniqueOffer: number
+  isMultiOffer: boolean
+}>(({ colorCategoryBackgroundHeightUniqueOffer, isMultiOffer }) => ({
+  position: 'absolute',
+  top: GRADIENT_START_POSITION,
+  right: 0,
+  left: 0,
+  height: isMultiOffer
+    ? COLOR_CATEGORY_BACKGROUND_HEIGHT_MULTI_OFFER
+    : colorCategoryBackgroundHeightUniqueOffer,
+}))
 
 const Player = styled(Play).attrs({ size: PLAYER_SIZE })({})
 
@@ -263,6 +233,6 @@ const StyledTitleComponent = styled(Typo.Title3).attrs({
   numberOfLines: 2,
 })({})
 
-const StyledOfferVideoModule = styled(OfferVideoModule)({
+const StyledVideoMonoOfferTile = styled(VideoMonoOfferTile)({
   flexGrow: 1,
 })

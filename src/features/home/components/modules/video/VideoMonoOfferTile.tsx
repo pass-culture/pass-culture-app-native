@@ -22,10 +22,6 @@ type Props = {
   color: string
   hideModal: () => void
   analyticsParams: ConsultOfferAnalyticsParams
-  // moduleId: string
-  // analyticsFrom: 'home' | 'videoModal'
-  // moduleName?: string
-  // homeEntryId?: string
   style?: StyleProp<ViewStyle>
 }
 
@@ -34,10 +30,6 @@ export const VideoMonoOfferTile: FunctionComponent<Props> = ({
   color,
   hideModal,
   analyticsParams,
-  // analyticsFrom,
-  // moduleId,
-  // moduleName,
-  // homeEntryId,
   style,
 }) => {
   const timestampsInMillis = offer.offer.dates?.map((timestampInSec) => timestampInSec * 1000)
