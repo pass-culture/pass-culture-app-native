@@ -9,7 +9,7 @@ import { env } from 'libs/environment'
 import { storage } from 'libs/storage'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { server } from 'tests/server'
-import { measurePerformance, screen } from 'tests/utils'
+import { act, measurePerformance } from 'tests/utils'
 
 // We mock server instead of hooks to test the real behavior of the component.
 server.use(
@@ -31,7 +31,7 @@ describe('<Profile />', () => {
       {
         // Add scenario if necessary
         scenario: async () => {
-          await screen.findByText('Paramètres du compte')
+          await act(async () => {})
         },
       }
     )

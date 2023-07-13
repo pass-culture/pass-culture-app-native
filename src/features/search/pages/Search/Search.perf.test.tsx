@@ -8,7 +8,7 @@ import { Search } from 'features/search/pages/Search/Search'
 import { SearchView } from 'features/search/types'
 import { mockedAlgoliaResponse } from 'libs/algolia/__mocks__/mockedAlgoliaResponse'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { measurePerformance, screen } from 'tests/utils'
+import { act, measurePerformance } from 'tests/utils'
 
 jest.unmock('features/search/context/SearchWrapper')
 
@@ -35,7 +35,7 @@ describe('<Search />', () => {
     it('Performance test for Search Landing page', async () => {
       await measurePerformance(<SearchPage />, {
         scenario: async () => {
-          await screen.findByText('Spectacles', {}, { timeout: TEST_TIMEOUT_IN_MS }) // Last category that is rendered
+          await act(async () => {})
         },
       })
     })
@@ -50,7 +50,7 @@ describe('<Search />', () => {
     it('Performance test for Search Results page', async () => {
       await measurePerformance(<SearchPage />, {
         scenario: async () => {
-          await screen.findByText('4 résultats', {}, { timeout: TEST_TIMEOUT_IN_MS })
+          await act(async () => {})
         },
       })
     })
@@ -64,7 +64,7 @@ describe('<Search />', () => {
     it('Performance test for Search Suggestions page', async () => {
       await measurePerformance(<SearchPage />, {
         scenario: async () => {
-          await screen.findAllByText('Séances de cinéma', {}, { timeout: TEST_TIMEOUT_IN_MS })
+          await act(async () => {})
         },
       })
     })

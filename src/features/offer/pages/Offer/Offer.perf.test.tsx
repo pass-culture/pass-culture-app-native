@@ -9,7 +9,7 @@ import { mockedAlgoliaResponse } from 'libs/algolia/__mocks__/mockedAlgoliaRespo
 import { env } from 'libs/environment/__mocks__/envFixtures'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { server } from 'tests/server'
-import { measurePerformance, screen } from 'tests/utils'
+import { act, measurePerformance, screen } from 'tests/utils'
 import { Network } from 'ui/components/ShareMessagingApp'
 
 useRoute.mockReturnValue({
@@ -39,6 +39,7 @@ describe('<Offer />', () => {
     await measurePerformance(reactQueryProviderHOC(<Offer />), {
       scenario: async () => {
         await screen.findByTestId('offer-container', {}, { timeout: TEST_TIMEOUT_IN_MS })
+        await act(async () => {})
       },
     })
   })
