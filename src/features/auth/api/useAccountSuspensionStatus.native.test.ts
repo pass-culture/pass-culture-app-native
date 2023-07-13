@@ -5,7 +5,7 @@ import { useAccountSuspensionStatus } from 'features/auth/api/useAccountSuspensi
 import { env } from 'libs/environment'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { server } from 'tests/server'
-import { act, renderHook, waitFor } from 'tests/utils'
+import { act, renderHook } from 'tests/utils'
 
 const expectedResponse = { status: AccountState.SUSPENDED }
 function simulateSuspensionStatus200() {
@@ -33,13 +33,12 @@ describe('useAccountSuspensionStatus', () => {
     expect(result.current.data?.status).toBe(expectedResponse.status)
   })
 
-  it('should return undefined if error', async () => {
+  it('should return null if error', async () => {
     simulateSuspensionStatusError()
     const { result } = renderSuspensionDateHook()
 
-    await waitFor(() => {
-      expect(result.current.data).toBeUndefined()
-    })
+    await act(async () => {})
+    expect(result.current.data).toBeNull()
   })
 })
 

@@ -5,7 +5,7 @@ import Swiper from 'react-native-web-swiper'
 import { analytics } from 'libs/analytics'
 import { GeolocationWrapper, GeolocPermissionState } from 'libs/geolocation'
 import { requestGeolocPermission } from 'libs/geolocation/requestGeolocPermission'
-import { fireEvent, render, waitFor } from 'tests/utils'
+import { act, fireEvent, render, waitFor } from 'tests/utils'
 import { GenericAchievement } from 'ui/components/achievements'
 
 import { ThirdCard } from './ThirdCard'
@@ -72,9 +72,10 @@ describe('ThirdCard', () => {
         />
       </GeolocationWrapper>
     )
-    fireEvent.press(getByText('Utiliser ma position'))
-    await waitFor(() => {
-      expect(ref.current?.goToNext).toHaveBeenCalledTimes(1)
+    await act(() => {
+      fireEvent.press(getByText('Utiliser ma position'))
     })
+
+    expect(ref.current?.goToNext).toHaveBeenCalledTimes(1)
   })
 })

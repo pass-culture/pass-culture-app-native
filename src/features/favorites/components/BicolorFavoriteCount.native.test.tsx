@@ -7,7 +7,7 @@ import { env } from 'libs/environment'
 import { useNetInfoContext as useNetInfoContextDefault } from 'libs/network/NetInfoWrapper'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { server } from 'tests/server'
-import { render, waitFor } from 'tests/utils'
+import { act, render, waitFor } from 'tests/utils'
 
 import { BicolorFavoriteCount } from './BicolorFavoriteCount'
 
@@ -61,10 +61,11 @@ describe('BicolorFavoriteCount component', () => {
 
   it('should not show nbFavorites within badge when offline', async () => {
     mockUseNetInfoContext.mockReturnValueOnce({ isConnected: false })
+    mockUseNetInfoContext.mockReturnValueOnce({ isConnected: false })
     const renderAPI = renderBicolorFavoriteCount({ isLoggedIn: true, count: 10 })
-    await waitFor(() => {
-      expect(renderAPI.queryByTestId('bicolor-favorite-count')).toBeFalsy()
-    })
+    await act(async () => {})
+
+    expect(renderAPI.queryByTestId('bicolor-favorite-count')).toBeFalsy()
   })
 })
 
