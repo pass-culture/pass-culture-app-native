@@ -254,7 +254,7 @@ export function BookingDetails({ stocks, onPressBookOffer, isLoading }: BookingD
           title={venueSectionTitle}
           onEndReached={onEndReached}
           refreshing={isRefreshing}
-          onRefresh={void refetch}
+          onRefresh={refetch}
           onScroll={onScrollModal}
           nbHits={nbHits}
           nbLoadedHits={nbLoadedHits}
