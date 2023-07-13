@@ -1,4 +1,5 @@
 import { SearchResponse } from '@algolia/client-search'
+import React from 'react'
 
 import {
   GenreType,
@@ -106,7 +107,7 @@ export type MappedData = MappingTree | MappedNativeCategories | MappedGenreTypes
 export interface SearchListProps {
   nbHits: number
   hits: Offer[]
-  renderItem: ({ item, index }: { item: Offer; index: number }) => JSX.Element
+  renderItem: ({ item, index }: { item: Offer; index: number }) => React.JSX.Element
   autoScrollEnabled: boolean
   refreshing: boolean
   onRefresh: (() => void) | null | undefined
