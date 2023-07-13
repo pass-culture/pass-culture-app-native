@@ -16,7 +16,7 @@ import { GeolocPermissionState, useGeolocation } from 'libs/geolocation'
 import { Credit, useAvailableCredit } from 'shared/user/useAvailableCredit'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { server } from 'tests/server'
-import { act, render, screen, waitFor } from 'tests/utils'
+import { act, render, screen } from 'tests/utils'
 
 import { HomeHeader } from './HomeHeader'
 
@@ -92,24 +92,24 @@ describe('HomeHeader', () => {
     }
   )
 
-  it.only('should not display geolocation banner when geolocation is granted', async () => {
-    mockUseGeolocation.mockReturnValueOnce({
-      permissionState: GeolocPermissionState.GRANTED,
-    })
-    mockUseGeolocation.mockReturnValueOnce({
-      permissionState: GeolocPermissionState.GRANTED,
-    })
+  it('should not display geolocation banner when geolocation is granted', async () => {
+    mockUseGeolocation
+      .mockReturnValueOnce({
+        permissionState: GeolocPermissionState.GRANTED,
+      })
+      .mockReturnValueOnce({
+        permissionState: GeolocPermissionState.GRANTED,
+      })
 
     mockGeolocBannerFromBackend()
     renderHomeHeader()
     await act(async () => {})
 
-    await waitFor(() => {
-      expect(screen.queryByText('Géolocalise-toi')).toBeNull()
-    })
+    expect(screen.queryByText('Géolocalise-toi')).toBeNull()
   })
 
   it('should display geolocation banner when geolocation is denied', async () => {
+    mockUseGeolocation.mockReturnValueOnce({ permissionState: GeolocPermissionState.DENIED })
     mockUseGeolocation.mockReturnValueOnce({ permissionState: GeolocPermissionState.DENIED })
     mockGeolocBannerFromBackend()
 
@@ -119,9 +119,13 @@ describe('HomeHeader', () => {
   })
 
   it('should display geolocation banner when geolocation is never ask again', async () => {
-    mockUseGeolocation.mockReturnValueOnce({
-      permissionState: GeolocPermissionState.NEVER_ASK_AGAIN,
-    })
+    mockUseGeolocation
+      .mockReturnValueOnce({
+        permissionState: GeolocPermissionState.NEVER_ASK_AGAIN,
+      })
+      .mockReturnValueOnce({
+        permissionState: GeolocPermissionState.NEVER_ASK_AGAIN,
+      })
     mockGeolocBannerFromBackend()
 
     renderHomeHeader()
@@ -146,12 +150,19 @@ describe('HomeHeader', () => {
   })
 
   it('should display SignupBanner when user is not logged in', async () => {
-    mockUseAuthContext.mockReturnValueOnce({
-      isLoggedIn: false,
-      isUserLoading: false,
-      setIsLoggedIn: jest.fn(),
-      refetchUser: jest.fn(),
-    })
+    mockUseAuthContext
+      .mockReturnValueOnce({
+        isLoggedIn: false,
+        isUserLoading: false,
+        setIsLoggedIn: jest.fn(),
+        refetchUser: jest.fn(),
+      })
+      .mockReturnValueOnce({
+        isLoggedIn: false,
+        isUserLoading: false,
+        setIsLoggedIn: jest.fn(),
+        refetchUser: jest.fn(),
+      })
 
     renderHomeHeader()
     await act(async () => {})
@@ -240,15 +251,17 @@ function mockGeolocBannerFromBackend() {
   server.use(
     rest.get<BannerResponse>(env.API_BASE_URL + '/native/v1/banner', (req, res, ctx) => {
       const isGeolocated = req.url.searchParams.get('isGeolocated')
-      const json = isGeolocated
-        ? {
-            banner: {
-              name: BannerName.geolocation_banner,
-              title: 'Géolocalise-toi',
-              text: 'Pour trouver des offres autour de toi.',
-            },
-          }
-        : {}
+      const json =
+        isGeolocated === 'true'
+          ? {}
+          : {
+              banner: {
+                name: BannerName.geolocation_banner,
+                title: 'Géolocalise-toi',
+                text: 'Pour trouver des offres autour de toi.',
+              },
+            }
+
       return res(ctx.status(200), ctx.json(json))
     })
   )
