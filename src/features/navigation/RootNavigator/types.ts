@@ -19,6 +19,7 @@ export type Referrals =
   | 'setemail'
   | 'videoModal'
   | 'video'
+  | 'ShakeChoice'
 
 type BaseThematicHome = {
   homeId: string
@@ -141,6 +142,12 @@ export type SubscriptionRootStackParamList = {
  * please update the deeplink handler in consequence.
  */
 export type RootStackParamList = {
+  ShakeStart: undefined
+  ShakeChoice: undefined
+  ShakeEnd: undefined
+  ShakeEndWithFavorite: undefined
+  Favorites: undefined
+  ShakeNoRetry: undefined
   SignupForm: { preventCancellation?: boolean; offerId?: number } | undefined
   Maintenance: undefined
   ABTestingPOC: undefined

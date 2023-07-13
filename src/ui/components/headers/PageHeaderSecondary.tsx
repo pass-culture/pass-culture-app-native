@@ -20,6 +20,7 @@ interface Props {
   shouldDisplayBackButton?: boolean
   shouldDisplayCloseButton?: boolean
   onClose?: () => void
+  isWhite?: boolean
 }
 
 const HEIGHT_CONTAINER = getSpacing(12)
@@ -32,6 +33,7 @@ export const PageHeaderSecondary: React.FC<Props> = ({
   shouldDisplayBackButton = true,
   shouldDisplayCloseButton,
   onClose,
+  isWhite = false,
 }) => {
   useWhiteStatusBar()
 
@@ -40,16 +42,23 @@ export const PageHeaderSecondary: React.FC<Props> = ({
   return (
     <Header>
       <View style={{ height: HEIGHT_CONTAINER + top }} />
-      <ColorContainer testID={testID}>
+      <ColorContainer testID={testID} isWhite={isWhite}>
         <Spacer.TopScreen />
         <Container>
           <Row>
             <ButtonContainer positionInHeader="left" testID="back-button-container">
               {!!shouldDisplayBackButton && (
-                <BackButton onGoBack={onGoBack} color={ColorsEnum.WHITE} />
+                <BackButton
+                  onGoBack={onGoBack}
+                  color={isWhite ? ColorsEnum.BLACK : ColorsEnum.WHITE}
+                />
               )}
             </ButtonContainer>
-            <Title nativeID={titleID}>{title}</Title>
+            {isWhite ? (
+              <TitleWhite nativeID={titleID}>{title}</TitleWhite>
+            ) : (
+              <Title nativeID={titleID}>{title}</Title>
+            )}
             <ButtonContainer positionInHeader="right" testID="close-button-container">
               {!!shouldDisplayCloseButton && (
                 <CloseButton onClose={onClose} color={ColorsEnum.WHITE} />
@@ -62,12 +71,12 @@ export const PageHeaderSecondary: React.FC<Props> = ({
   )
 }
 
-const ColorContainer = styled.View(({ theme }) => ({
+const ColorContainer = styled.View<{ isWhite: boolean }>(({ isWhite, theme }) => ({
   zIndex: theme.zIndex.header,
   position: 'absolute',
   top: 0,
   width: '100%',
-  backgroundColor: theme.colors.primary,
+  backgroundColor: isWhite ? theme.colors.white : theme.colors.primary,
 }))
 
 const Container = styled.View({
@@ -81,8 +90,17 @@ const Title = styled.Text.attrs(() => ({
   ...getHeadingAttrs(1),
 }))(({ theme }) => ({
   ...theme.typography.body,
-  textAlign: 'center',
   color: theme.colors.white,
+  textAlign: 'center',
+}))
+
+const TitleWhite = styled.Text.attrs(() => ({
+  numberOfLines: 1,
+  ...getHeadingAttrs(1),
+}))(({ theme }) => ({
+  ...theme.typography.body,
+  color: theme.colors.black,
+  textAlign: 'center',
 }))
 
 const Row = styled.View({

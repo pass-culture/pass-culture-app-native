@@ -7,7 +7,7 @@ import { OfferNotFound } from 'features/offer/pages/OfferNotFound/OfferNotFound'
 import { OfferNotFoundError } from 'libs/monitoring'
 import { QueryKeys } from 'libs/queryKeys'
 
-async function getOfferById(offerId: number) {
+export async function getOfferById(offerId: number) {
   if (!offerId) {
     throw new OfferNotFoundError(offerId, OfferNotFound)
   }

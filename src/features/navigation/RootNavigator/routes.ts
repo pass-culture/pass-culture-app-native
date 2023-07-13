@@ -21,6 +21,7 @@ import { EndedBookings } from 'features/bookings/pages/EndedBookings/EndedBookin
 import { BookingConfirmation } from 'features/bookOffer/pages/BookingConfirmation'
 import { withAsyncErrorBoundary } from 'features/errors/hocs/withAsyncErrorBoundary'
 import { BannedCountryError } from 'features/errors/pages/BannedCountryError'
+import { Favorites } from 'features/favorites/pages/Favorites'
 import { FavoritesSorts } from 'features/favorites/pages/FavoritesSorts'
 import { FirstTutorial } from 'features/firstTutorial/pages/FirstTutorial/FirstTutorial'
 import { ThematicHome } from 'features/home/pages/ThematicHome'
@@ -64,6 +65,11 @@ import { SuspendAccountConfirmation } from 'features/profile/pages/SuspendAccoun
 import { TrackEmailChange } from 'features/profile/pages/TrackEmailChange/TrackEmailChange'
 import { ValidateEmailChange } from 'features/profile/pages/ValidateEmailChange/ValidateEmailChange'
 import { SearchFilter } from 'features/search/pages/SearchFilter/SearchFilter'
+import { ShakeChoice } from 'features/shake/ShakeChoice'
+import { ShakeEnd } from 'features/shake/ShakeEnd'
+import { ShakeEndWithFavorite } from 'features/shake/ShakeEndWithFavorite'
+import { ShakeNoRetry } from 'features/shake/ShakeNoRetry'
+import { ShakeStart } from 'features/shake/ShakeStart'
 import { Venue } from 'features/venue/pages/Venue/Venue'
 import { ABTestingPOC } from 'libs/firebase/remoteConfig/ABTestingPOC'
 
@@ -463,5 +469,41 @@ export const routes: Route[] = [
       parse: screenParamsParser['ThematicHome'],
     },
     options: { title: 'Page d’accueil thématique' },
+  },
+  {
+    name: 'ShakeStart',
+    component: ShakeStart,
+    pathConfig: { path: 'secoue-la-culture-debut' },
+    options: { title: 'Boum\u00a0! La sélection mystère ' },
+  },
+  {
+    name: 'ShakeNoRetry',
+    component: ShakeNoRetry,
+    pathConfig: { path: 'secoue-la-culture-debut-demain' },
+    options: { title: 'La sélection mystère reviens demain' },
+  },
+  {
+    name: 'ShakeChoice',
+    component: ShakeChoice,
+    pathConfig: { path: 'secoue-la-culture-choix' },
+    options: { title: 'La sélection mystère' },
+  },
+  {
+    name: 'ShakeEnd',
+    component: ShakeEnd,
+    pathConfig: { path: 'secoue-la-culture-fin' },
+    options: { title: 'La sélection mystère' },
+  },
+  {
+    name: 'ShakeEndWithFavorite',
+    component: ShakeEndWithFavorite,
+    pathConfig: { path: 'secoue-la-culture-fin-favoris' },
+    options: { title: 'La sélection mystère' },
+  },
+  {
+    name: 'Favorites',
+    component: Favorites,
+    pathConfig: { path: 'favorites' },
+    options: { title: 'Mes favories' },
   },
 ]
