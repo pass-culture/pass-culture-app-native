@@ -4,7 +4,7 @@ import { initialBookingState, bookOfferReducer } from 'features/bookOffer/contex
 import { BookingContext } from 'features/bookOffer/pages/BookingContext'
 
 interface BookingWrapperProps {
-  children: JSX.Element
+  children: React.JSX.Element
   dismissModal: () => void
 }
 

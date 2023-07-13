@@ -1,5 +1,5 @@
 import { PathConfigMap } from '@react-navigation/native'
-import { ComponentType } from 'react'
+import React, { ComponentType } from 'react'
 
 import { AllNavParamList } from 'features/navigation/RootNavigator/types'
 import { TabRoute } from 'features/navigation/TabBar/types'
@@ -15,7 +15,7 @@ export function getScreensAndConfig(
   ScreenComponent: ComponentType<any> // eslint-disable-line @typescript-eslint/no-explicit-any
 ) {
   const screensConfig: PathConfigMap<AllNavParamList> = {}
-  const Screens: JSX.Element[] = []
+  const Screens: React.JSX.Element[] = []
   routes.forEach((route) => {
     const { name, path, deeplinkPaths, pathConfig } = route
     if (path && pathConfig) {
