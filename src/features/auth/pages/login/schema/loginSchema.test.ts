@@ -1,6 +1,6 @@
 import { ValidationError } from 'yup'
 
-import { loginSchema } from 'features/auth/pages/login/schema/loginSchemaa'
+import { loginSchema } from 'features/auth/pages/login/schema/loginSchema'
 
 describe('loginSchema', () => {
   it('validate a form with all required values', async () => {
