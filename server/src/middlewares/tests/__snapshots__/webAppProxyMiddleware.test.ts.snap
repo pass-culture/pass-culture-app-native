@@ -3,44 +3,44 @@
 exports[`metasResponseInterceptor with real backend should request the real testing backend and get the offer data 1`] = `
 "<!doctype html>
 <html lang=\\"fr\\">
-  <head><link rel=\\"canonical\\" href=\\"http://localhost:8080/offre/offerId\\" />
+  <head><link rel=\\"canonical\\" href=\\"http://localhost:8080/offre/1\\" />
     <meta charset=\\"utf-8\\">
     <title>pass Culture</title>
-    <meta name=\\"title\\" content=\\"pass Culture | C&apos;est notre prooooojecteur\\" />
-    <meta name=\\"description\\" content=\\"Ainsi, jusque dans notre propre individu, l&apos;individualité nous échappe. Nous nous mouvons parmi des généralités et des symboles, comme en un champ clos où notre force se mesure utilement avec d&apos;autres forces ; et, fascinés par l&apos;action, attirés par elle, pour notre plus grand bien, sur le terrain qu&apos;elle s&apos;est choisie, nous vivons dans une zone mitoyenne entre les choses et nous, extérieurement aux choses, extérieurement aussi à nous-mêmes.\\" />
+    <meta name=\\"title\\" content=\\"pass Culture | Atelier danses urbaines\\" />
+    <meta name=\\"description\\" content=\\"Les danseurs de tout style et de tout niveau, mais aussi tous les curieux, sont invités à participer à cet atelier conçu comme un moment de partage et animé par un danseur professionnel et un dj.\\" />
     <meta name=\\"author\\" content=\\"pass Culture\\"/>
     <meta property=\\"og:type\\" content=\\"website\\"/>
-    <meta property=\\"og:url\\" content=\\"http://localhost:8080/offre/offerId\\" />
-    <meta property=\\"og:title\\" content=\\"pass Culture | C&apos;est notre prooooojecteur\\" />
-    <meta property=\\"og:description\\" content=\\"Ainsi, jusque dans notre propre individu, l&apos;individualité nous échappe. Nous nous mouvons parmi des généralités et des symboles, comme en un champ clos où notre force se mesure utilement avec d&apos;autres forces ; et, fascinés par l&apos;action, attirés par elle, pour notre plus grand bien, sur le terrain qu&apos;elle s&apos;est choisie, nous vivons dans une zone mitoyenne entre les choses et nous, extérieurement aux choses, extérieurement aussi à nous-mêmes.\\" />
-    <meta property=\\"og:image\\" content=\\"https://app.testing.passculture.team/images/app-icon-512px.png\\"/>
-    <meta property=\\"og:image:alt\\" content=\\"C&apos;est notre prooooojecteur\\" />
+    <meta property=\\"og:url\\" content=\\"http://localhost:8080/offre/1\\" />
+    <meta property=\\"og:title\\" content=\\"pass Culture | Atelier danses urbaines\\" />
+    <meta property=\\"og:description\\" content=\\"Les danseurs de tout style et de tout niveau, mais aussi tous les curieux, sont invités à participer à cet atelier conçu comme un moment de partage et animé par un danseur professionnel et un dj.\\" />
+    <meta property=\\"og:image\\" content=\\"https://storage.googleapis.com/passculture-metier-ehp-staging-assets-fine-grained/thumbs/mediations/HE\\" />
+    <meta property=\\"og:image:alt\\" content=\\"Atelier danses urbaines\\" />
     <meta property=\\"og:locale\\" content=\\"fr_FR\\"/>
     <meta property=\\"og:site_name\\" content=\\"pass Culture\\"/>
     <meta name=\\"twitter:card\\" content=\\"summary\\" />
-    <meta name=\\"twitter:url\\" content=\\"http://localhost:8080/offre/offerId\\" />
-    <meta name=\\"twitter:title\\" content=\\"pass Culture | C&apos;est notre prooooojecteur\\" />
-    <meta name=\\"twitter:description\\" content=\\"Ainsi, jusque dans notre propre individu, l&apos;individualité nous échappe. Nous nous mouvons parmi des généralités et des symboles, comme en un champ clos où notre force se mesure utilement avec d&apos;autres forces ; et, fascinés par l&apos;action, attirés par elle, pour notre plus grand bien, sur le terrain qu&apos;elle s&apos;est choisie, nous vivons dans une zone mitoyenne entre les choses et nous, extérieurement aux choses, extérieurement aussi à nous-mêmes.\\" />
-    <meta name=\\"twitter:image\\" content=\\"https://app.testing.passculture.team/images/app-icon-512px.png\\"/>
-    <meta name=\\"twitter:image:alt\\" content=\\"C&apos;est notre prooooojecteur\\" />
+    <meta name=\\"twitter:url\\" content=\\"http://localhost:8080/offre/1\\" />
+    <meta name=\\"twitter:title\\" content=\\"pass Culture | Atelier danses urbaines\\" />
+    <meta name=\\"twitter:description\\" content=\\"Les danseurs de tout style et de tout niveau, mais aussi tous les curieux, sont invités à participer à cet atelier conçu comme un moment de partage et animé par un danseur professionnel et un dj.\\" />
+    <meta name=\\"twitter:image\\" content=\\"https://storage.googleapis.com/passculture-metier-ehp-staging-assets-fine-grained/thumbs/mediations/HE\\" />
+    <meta name=\\"twitter:image:alt\\" content=\\"Atelier danses urbaines\\" />
     <meta name=\\"twitter:site\\" content=\\"@pass_Culture\\"/>
     <meta name=\\"twitter:app:country\\" content=\\"FR\\"/>
     <meta name=\\"twitter:app:name:iphone\\" content=\\"pass Culture\\"/>
     <meta name=\\"twitter:app:id:iphone\\" content=\\"1557887412\\"/>
-    <meta name=\\"twitter:app:url:iphone\\" content=\\"passculture://http://localhost:8080/offre/offerId\\" />
+    <meta name=\\"twitter:app:url:iphone\\" content=\\"passculture://http://localhost:8080/offre/1\\" />
     <meta name=\\"twitter:app:name:ipad\\" content=\\"pass Culture\\"/>
     <meta name=\\"twitter:app:id:ipad\\" content=\\"1557887412\\"/>
-    <meta name=\\"twitter:app:url:ipad\\" content=\\"passculture://http://localhost:8080/offre/offerId\\" />
+    <meta name=\\"twitter:app:url:ipad\\" content=\\"passculture://http://localhost:8080/offre/1\\" />
     <meta name=\\"twitter:app:name:googleplay\\" content=\\"pass Culture\\"/>
     <meta name=\\"twitter:app:id:googleplay\\" content=\\"app.passculture.testing\\"/>
-    <meta name=\\"twitter:app:url:googleplay\\" content=\\"passculture://http://localhost:8080/offre/offerId\\" />
+    <meta name=\\"twitter:app:url:googleplay\\" content=\\"passculture://http://localhost:8080/offre/1\\" />
     <meta property=\\"al:ios:app_name\\" content=\\"pass Culture\\"/>
     <meta property=\\"al:ios:app_store_id\\" content=\\"1557887412\\"/>
     <meta property=\\"al:ios:url\\" content=\\"passculture://https://app.testing.passculture.team\\"/>
     <meta property=\\"al:android:url\\" content=\\"passculture://https://app.testing.passculture.team\\">
     <meta property=\\"al:android:app_name\\" content=\\"pass Culture\\"/>
     <meta property=\\"al:android:package\\" content=\\"app.passculture.testing\\"/>
-    <script type=\\"application/ld+json\\">{\\"@context\\":\\"https://schema.org\\",\\"@type\\":\\"Event\\",\\"name\\":\\"C'est notre prooooojecteur\\",\\"location\\":{\\"@type\\":\\"Place\\",\\"name\\":\\"Théâtre en feu\\",\\"address\\":{\\"@type\\":\\"PostalAddress\\",\\"streetAddress\\":\\"1 boulevard Poissonnière\\",\\"postalCode\\":\\"75000\\",\\"addressLocality\\":\\"Paris\\"},\\"geo\\":{\\"@type\\":\\"GeoCoordinates\\",\\"latitude\\":\\"5.15839\\",\\"longitude\\":\\"-52.63741\\"}},\\"startDate\\":\\"2023-07-12T20:00\\"}</script>
+    <script type=\\"application/ld+json\\">{\\"@context\\":\\"https://schema.org\\",\\"@type\\":\\"Event\\",\\"name\\":\\"Atelier danses urbaines\\",\\"image\\":\\"https://storage.googleapis.com/passculture-metier-ehp-staging-assets-fine-grained/thumbs/mediations/HE\\",\\"location\\":{\\"@type\\":\\"Place\\",\\"name\\":\\"Le Centquatre-Paris\\",\\"address\\":{\\"@type\\":\\"PostalAddress\\",\\"streetAddress\\":\\"5 rue Curial\\",\\"postalCode\\":\\"75019\\",\\"addressLocality\\":\\"Paris\\"},\\"geo\\":{\\"@type\\":\\"GeoCoordinates\\",\\"latitude\\":\\"48.89005\\",\\"longitude\\":\\"2.37068\\"}},\\"startDate\\":\\"2018-05-19T14:00\\"}</script>
   </head>
   <body>
     <p>Hello world</p>
@@ -51,37 +51,40 @@ exports[`metasResponseInterceptor with real backend should request the real test
 exports[`metasResponseInterceptor with real backend should request the real testing backend and get the venue data 1`] = `
 "<!doctype html>
 <html lang=\\"fr\\">
-  <head><link rel=\\"canonical\\" href=\\"http://localhost:8080/lieu/venueId\\" />
+  <head><link rel=\\"canonical\\" href=\\"http://localhost:8080/lieu/9\\" />
     <meta charset=\\"utf-8\\">
     <title>pass Culture</title>
-    <meta name=\\"title\\" content=\\"pass Culture | Terrain vague DATA\\" />
-    <meta name=\\"description\\" content=\\"Of of among place budget. People four car drop.\\" />
+    <meta name=\\"title\\" content=\\"pass Culture | Relais culturel La Nef\\" />
+    <meta name=\\"description\\"
+          content=\\"Dispositif porté par le ministère de la Culture, a pour but de faciliter l’accès des jeunes de 18 ans à la culture en leur offrant un crédit de 300€ à dépenser sur l’application pass Culture.\\"/>
     <meta name=\\"author\\" content=\\"pass Culture\\"/>
     <meta property=\\"og:type\\" content=\\"website\\"/>
-    <meta property=\\"og:url\\" content=\\"http://localhost:8080/lieu/venueId\\" />
-    <meta property=\\"og:title\\" content=\\"pass Culture | Terrain vague DATA\\" />
-    <meta property=\\"og:description\\" content=\\"Of of among place budget. People four car drop.\\" />
-    <meta property=\\"og:image\\" content=\\"https://storage.googleapis.com/passculture-metier-ehp-testing-assets-fine-grained/assets/venue_default_images/aleksandr-popov-hTv8aaPziOQ-unsplash.png\\" />
-    <meta property=\\"og:image:alt\\" content=\\"Of of among place budget. People four car drop.\\" />
+    <meta property=\\"og:url\\" content=\\"http://localhost:8080/lieu/9\\" />
+    <meta property=\\"og:title\\" content=\\"pass Culture | Relais culturel La Nef\\" />
+    <meta property=\\"og:description\\"
+          content=\\"Dispositif porté par le ministère de la Culture, a pour but de faciliter l’accès des jeunes de 18 ans à la culture en leur offrant un crédit de 300€ à dépenser sur l’application pass Culture.\\"/>
+    <meta property=\\"og:image\\" content=\\"https://storage.googleapis.com/passculture-metier-ehp-staging-assets-fine-grained/assets/venue_default_images/mark-williams-9bNmhMKQM1Q-unsplash_1.png\\" />
+    <meta property=\\"og:image:alt\\" content=\\"pass Culture\\"/>
     <meta property=\\"og:locale\\" content=\\"fr_FR\\"/>
     <meta property=\\"og:site_name\\" content=\\"pass Culture\\"/>
     <meta name=\\"twitter:card\\" content=\\"summary_large_image\\" />
-    <meta name=\\"twitter:url\\" content=\\"http://localhost:8080/lieu/venueId\\" />
-    <meta name=\\"twitter:title\\" content=\\"pass Culture | Terrain vague DATA\\" />
-    <meta name=\\"twitter:description\\" content=\\"Of of among place budget. People four car drop.\\" />
-    <meta name=\\"twitter:image\\" content=\\"https://storage.googleapis.com/passculture-metier-ehp-testing-assets-fine-grained/assets/venue_default_images/aleksandr-popov-hTv8aaPziOQ-unsplash.png\\" />
-    <meta name=\\"twitter:image:alt\\" content=\\"Of of among place budget. People four car drop.\\" />
+    <meta name=\\"twitter:url\\" content=\\"http://localhost:8080/lieu/9\\" />
+    <meta name=\\"twitter:title\\" content=\\"pass Culture | Relais culturel La Nef\\" />
+    <meta name=\\"twitter:description\\"
+          content=\\"Dispositif porté par le ministère de la Culture, a pour but de faciliter l’accès des jeunes de 18 ans à la culture en leur offrant un crédit de 300€ à dépenser sur l’application pass Culture.\\"/>
+    <meta name=\\"twitter:image\\" content=\\"https://storage.googleapis.com/passculture-metier-ehp-staging-assets-fine-grained/assets/venue_default_images/mark-williams-9bNmhMKQM1Q-unsplash_1.png\\" />
+    <meta name=\\"twitter:image:alt\\" content=\\"pass Culture\\"/>
     <meta name=\\"twitter:site\\" content=\\"@pass_Culture\\"/>
     <meta name=\\"twitter:app:country\\" content=\\"FR\\"/>
     <meta name=\\"twitter:app:name:iphone\\" content=\\"pass Culture\\"/>
     <meta name=\\"twitter:app:id:iphone\\" content=\\"1557887412\\"/>
-    <meta name=\\"twitter:app:url:iphone\\" content=\\"passculture://http://localhost:8080/lieu/venueId\\" />
+    <meta name=\\"twitter:app:url:iphone\\" content=\\"passculture://http://localhost:8080/lieu/9\\" />
     <meta name=\\"twitter:app:name:ipad\\" content=\\"pass Culture\\"/>
     <meta name=\\"twitter:app:id:ipad\\" content=\\"1557887412\\"/>
-    <meta name=\\"twitter:app:url:ipad\\" content=\\"passculture://http://localhost:8080/lieu/venueId\\" />
+    <meta name=\\"twitter:app:url:ipad\\" content=\\"passculture://http://localhost:8080/lieu/9\\" />
     <meta name=\\"twitter:app:name:googleplay\\" content=\\"pass Culture\\"/>
     <meta name=\\"twitter:app:id:googleplay\\" content=\\"app.passculture.testing\\"/>
-    <meta name=\\"twitter:app:url:googleplay\\" content=\\"passculture://http://localhost:8080/lieu/venueId\\" />
+    <meta name=\\"twitter:app:url:googleplay\\" content=\\"passculture://http://localhost:8080/lieu/9\\" />
     <meta property=\\"al:ios:app_name\\" content=\\"pass Culture\\"/>
     <meta property=\\"al:ios:app_store_id\\" content=\\"1557887412\\"/>
     <meta property=\\"al:ios:url\\" content=\\"passculture://https://app.testing.passculture.team\\"/>

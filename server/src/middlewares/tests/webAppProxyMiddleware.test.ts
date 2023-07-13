@@ -72,7 +72,7 @@ describe('metasResponseInterceptor', () => {
       ['venue', 'lieu', `${VENUE_WITHOUT_BANNER_RESPONSE_SNAPSHOT.id}`],
     ])(
       `should edit html when req.url on %s use valid id: /%s/%s`,
-      async (entity: string, endpoint: string, id: string) => {
+      async (_entity: string, endpoint: string, id: string) => {
         const url = `${env.APP_PUBLIC_URL}/${endpoint}${id ? `/${id}` : ''}`
         const finalResponseBuffer = await htmlResponseFor(url)
 
@@ -121,6 +121,15 @@ describe('metasResponseInterceptor', () => {
   })
 
   describe('with real backend', () => {
+    // we use the staging backend to ensure that the offer/venue data is not changing at every sandbox reset
+    const originalApiBaseUrl = env.API_BASE_URL
+    beforeAll(() => {
+      env.API_BASE_URL = 'https://backend.staging.passculture.team'
+    })
+    afterAll(() => {
+      env.API_BASE_URL = originalApiBaseUrl
+    })
+
     const responseBuffer = Buffer.from(TEST_HTML)
     const proxyRes = {
       headers: {
@@ -131,8 +140,7 @@ describe('metasResponseInterceptor', () => {
     const res = {} as ServerResponse
 
     it('should request the real testing backend and get the offer data', async () => {
-      const offerId = await getOfferId("C'est notre prooooojecteur")
-      const url = `${env.APP_PUBLIC_URL}/offre/${offerId}`
+      const url = `${env.APP_PUBLIC_URL}/offre/1`
       const html = await metasResponseInterceptor(
         responseBuffer,
         proxyRes,
@@ -143,18 +151,14 @@ describe('metasResponseInterceptor', () => {
         res
       )
 
-      const htmlWithoutOfferId = html
-        .toString()
-        .replaceAll(offerId, 'offerId')
-        .replace(/(?<=mediations\/)[A-Z0-9_]+/, 'humanizedOfferId')
+      const htmlWithoutOfferId = html.toString()
 
       expect(htmlWithoutOfferId).toMatchSnapshot()
     })
 
     it('should request the real testing backend and get the venue data', async () => {
-      const venueId = await getVenueId('Terrain vague')
-      const url = `${env.APP_PUBLIC_URL}/lieu/${venueId}`
-      const html = await metasResponseInterceptor(
+      const url = `${env.APP_PUBLIC_URL}/lieu/9` // 9 is the id of the first permanent venue in the staging database
+      const finalResponseBuffer = await metasResponseInterceptor(
         responseBuffer,
         proxyRes,
         {
@@ -164,59 +168,7 @@ describe('metasResponseInterceptor', () => {
         res
       )
 
-      const htmlWithoutOfferId = html
-      .toString()
-      .replaceAll(venueId, 'venueId')
-      .replace(/(?<=mediations\/)[A-Z0-9_]+/, 'humanizedVenueId')
-
-      expect(htmlWithoutOfferId).toMatchSnapshot()
+      expect(finalResponseBuffer).toMatchSnapshot()
     })
   })
 })
-
-const ALGOLIA_APPLICATION_ID = 'testingHXXTDUE7H0' // This is your unique application identifier. It's used to identify you when using Algolia's API.
-const ALGOLIA_OFFERS_INDEX_NAME = 'TESTING'
-const ALGOLIA_VENUES_INDEX_NAME = 'testing-venues'
-const ALGOLIA_SEARCH_API_KEY = '468f53ae703ee7ff219106f3d9a39e7f' //This is the public API key which can be safely used in your frontend code.This key is usable for search queries and it's also able to list the indices you've got access to.
-
-type Hit = {
-  objectID: string
-  offer: {
-    name?: string
-  }
-}
-
-const getAlgoliaObjectId = async (index: string, query: string): Promise<Hit[]> => {
-  const response = await fetch(
-    `https://${ALGOLIA_APPLICATION_ID}-dsn.algolia.net/1/indexes/${index}/query`,
-    {
-      method: 'POST',
-      headers: new Headers({
-        'X-Algolia-API-Key': ALGOLIA_SEARCH_API_KEY,
-        'X-Algolia-Application-Id': ALGOLIA_APPLICATION_ID,
-      }),
-      body: `{ "params": "query=${query}&hitsPerPage=10" }`,
-    }
-  )
-
-  const hits = await response.json()
-
-  return hits.hits
-}
-
-const firstObjectID = (hits: Hit[]): string => {
-  const hit = hits.at(0)
-  if (!hit) throw new Error("can't find Algolia result")
-  return hit.objectID
-}
-
-const getOfferId = async (query: string): Promise<string> => {
-  const hits = await getAlgoliaObjectId(ALGOLIA_OFFERS_INDEX_NAME, query)
-  const hitsWithoutDataInName = hits.filter((hit) => hit.offer.name?.includes('DATA') === false)
-  return firstObjectID(hitsWithoutDataInName)
-}
-
-const getVenueId = async (query: string): Promise<string> => {
-  const hits = await getAlgoliaObjectId(ALGOLIA_VENUES_INDEX_NAME, query)
-  return firstObjectID(hits)
-}
