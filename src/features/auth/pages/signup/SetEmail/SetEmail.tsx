@@ -92,7 +92,6 @@ export const SetEmail: FunctionComponent<PreValidationSignupNormalStepProps> = (
       <EmailInputController
         control={control}
         name="email"
-        label="Adresse e-mail"
         withSpellingHelp
         onSpellingHelpPress={onLogHasCorrectedEmail}
         autoFocus
