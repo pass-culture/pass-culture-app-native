@@ -186,13 +186,7 @@ export const Login: FunctionComponent<Props> = memo(function Login(props) {
           centered
         />
         <Spacer.Column numberOfSpaces={7} />
-        <EmailInputController
-          name="email"
-          label="Adresse e-mail"
-          control={control}
-          autoFocus
-          isRequiredField
-        />
+        <EmailInputController name="email" control={control} autoFocus isRequiredField />
         <Spacer.Column numberOfSpaces={6} />
         <PasswordInputController
           name="password"
