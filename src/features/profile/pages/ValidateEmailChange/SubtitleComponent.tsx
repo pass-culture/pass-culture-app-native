@@ -15,5 +15,5 @@ export function ValidateEmailChangeSubtitleComponent(props: TextProps) {
 
 const Wrapper = styled.View({
   marginTop: getSpacing(4),
-  textAlign: 'center',
+  alignItems: 'center',
 })
