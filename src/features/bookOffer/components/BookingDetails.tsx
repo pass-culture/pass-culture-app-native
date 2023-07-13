@@ -79,6 +79,22 @@ export function BookingDetails({ stocks, onPressBookOffer, isLoading }: BookingD
 
   const { onScroll: onScrollModal } = useOpacityTransition()
   const { userPosition: position } = useGeolocation()
+  const defaultSearchVenueOffers = {
+    offerId: 0,
+    venueId: undefined,
+    geolocation: {
+      latitude: offer?.venue?.coordinates?.latitude ?? 0,
+      longitude: offer?.venue?.coordinates?.longitude ?? 0,
+    },
+    query: '',
+    queryOptions: { enabled: shouldFetchSearchVenueOffers },
+  }
+  const currentSearchVenueOffers = {
+    offerId: offer?.id,
+    venueId: offer?.venue?.id,
+    geolocation: position,
+    query: offer?.extraData?.ean,
+  }
   const {
     hasNextPage,
     fetchNextPage,
@@ -90,16 +106,7 @@ export function BookingDetails({ stocks, onPressBookOffer, isLoading }: BookingD
     nbHits,
     nbLoadedHits,
     isFetchingNextPage,
-  } = useSearchVenueOffers({
-    offerId: offer?.id ?? 0,
-    venueId: offer?.venue?.id,
-    geolocation: position ?? {
-      latitude: offer?.venue?.coordinates?.latitude ?? 0,
-      longitude: offer?.venue?.coordinates?.longitude ?? 0,
-    },
-    query: offer?.extraData?.ean ?? '',
-    queryOptions: { enabled: shouldFetchSearchVenueOffers },
-  })
+  } = useSearchVenueOffers(Object.assign(defaultSearchVenueOffers, currentSearchVenueOffers))
   const isRefreshing = useIsFalseWithDelay(isFetching, ANIMATION_DURATION)
 
   const shouldDisplayOtherVenuesAvailableButton = Boolean(
