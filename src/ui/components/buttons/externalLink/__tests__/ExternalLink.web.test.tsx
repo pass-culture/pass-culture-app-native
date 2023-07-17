@@ -9,10 +9,6 @@ const openURLSpy = jest.spyOn(Linking, 'openURL')
 const someUrl = 'https://domain-that-does-not-exist.fr'
 
 describe('ExternalLink', () => {
-  afterEach(() => {
-    openURLSpy.mockClear()
-  })
-
   // FIXME(PC-21194): Fix this test (https://passculture.atlassian.net/browse/PC-21194)
   // eslint-disable-next-line jest/no-disabled-tests
   it.skip('should open given url when text clicked', () => {

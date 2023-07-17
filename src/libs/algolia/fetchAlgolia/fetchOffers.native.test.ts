@@ -550,10 +550,6 @@ describe('fetchOffer', () => {
   })
 
   describe('offer types', () => {
-    afterEach(() => {
-      search.mockClear()
-    })
-
     it('should fetch with no facetFilters when no offer type is provided', () => {
       const query = 'searched query'
 
