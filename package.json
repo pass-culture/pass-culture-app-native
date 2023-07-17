@@ -343,7 +343,7 @@
     "webpack-manifest-plugin": "^2.2.0",
     "workbox-background-sync": "^6.1.5",
     "workbox-broadcast-update": "^6.1.5",
-    "workbox-cacheable-response": "^6.1.5",
+    "workbox-cacheable-response": "^7.0.0",
     "workbox-core": "^6.1.5",
     "workbox-expiration": "^6.1.5",
     "workbox-google-analytics": "^6.1.5",
