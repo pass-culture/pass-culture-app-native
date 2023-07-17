@@ -11,6 +11,7 @@ import {
 } from 'react-native-svg'
 
 import { AccessibleSvg } from 'ui/svg/AccessibleSvg'
+import { svgIdentifier } from 'ui/svg/utils'
 
 import { AccessibleIcon } from '../types'
 
@@ -18,6 +19,12 @@ export const GamesVideoGames: React.FunctionComponent<AccessibleIcon> = ({
   accessibilityLabel,
   testID,
 }) => {
+  const { id: gradientId, fill: gradientFill } = svgIdentifier()
+  const { id: gradientId1, fill: gradientFill1 } = svgIdentifier()
+  const { id: gradientId2, fill: gradientFill2 } = svgIdentifier()
+  const { id: gradientId3, fill: gradientFill3 } = svgIdentifier()
+  const { id: clipPathId, fill: clipPath } = svgIdentifier()
+
   return (
     <AccessibleSvg
       width={156}
@@ -26,7 +33,7 @@ export const GamesVideoGames: React.FunctionComponent<AccessibleIcon> = ({
       fill="none"
       accessibilityLabel={accessibilityLabel}
       testID={testID}>
-      <G clipPath="url(#clip0_1909_1029)">
+      <G clipPath={clipPath}>
         <Path
           d="M38.1279 35.5644C37.958 34.8104 38.4315 34.0615 39.1855 33.8916L46.2105 32.3088C46.9645 32.1389 47.7135 32.6124 47.8834 33.3664L38.1279 35.5644Z"
           fill="#FBDBAC"
@@ -37,20 +44,20 @@ export const GamesVideoGames: React.FunctionComponent<AccessibleIcon> = ({
         />
         <Path
           d="M62.8016 76.276L61.9592 76.4682C58.8297 77.1822 55.5634 76.3529 53.2614 74.2479L43.8931 65.7172C43.3183 65.1937 42.5014 64.985 41.7175 65.1638L25.5022 68.8635C24.7184 69.0423 24.0729 69.5847 23.7819 70.3057L19.0408 82.0556C17.8726 84.9465 15.2964 87.1147 12.1668 87.8288L11.3245 88.021C6.15334 89.2008 1.04925 86.1429 -0.0813336 81.1876L-5.06921 59.3262C-6.76381 51.8989 -1.85027 44.4383 5.90055 42.6699L48.0182 33.0604C55.769 31.2919 63.4323 35.8831 65.1269 43.3104L70.1148 65.1718C71.2453 70.127 67.9727 75.0962 62.8016 76.276Z"
-          fill="url(#paint0_radial_1909_1029)"
+          fill={gradientFill}
         />
         <Path
           opacity={0.4}
           d="M38.0335 54.2832L24.1018 57.4618C23.4681 57.6064 22.9052 57.5002 22.8422 57.2242L20.7525 48.0654C20.6896 47.7894 21.1507 47.4496 21.7844 47.305L35.7161 44.1263C36.3499 43.9818 36.9128 44.0879 36.9758 44.3639L39.0654 53.5227C39.1284 53.7987 38.6672 54.1386 38.0335 54.2832Z"
-          fill="url(#paint1_radial_1909_1029)"
+          fill={gradientFill1}
         />
         <Path
           d="M28.6885 35.1706L24.0088 36.2383L24.5442 38.5851L29.224 37.5173L28.6885 35.1706Z"
-          fill="url(#paint2_linear_1909_1029)"
+          fill={gradientFill2}
         />
         <Path
           d="M26.3488 35.7057L25.4836 31.8796C21.1586 16.3011 -8.1753 25.4474 -1.60394 38.7508"
-          stroke="url(#paint3_linear_1909_1029)"
+          stroke={gradientFill3}
           strokeWidth={4}
           strokeMiterlimit={10}
         />
@@ -83,7 +90,7 @@ export const GamesVideoGames: React.FunctionComponent<AccessibleIcon> = ({
       </G>
       <Defs>
         <RadialGradient
-          id="paint0_radial_1909_1029"
+          id={gradientId}
           cx={0}
           cy={0}
           r={1}
@@ -93,7 +100,7 @@ export const GamesVideoGames: React.FunctionComponent<AccessibleIcon> = ({
           <Stop offset={0.844854} stopColor="#FFF5D8" />
         </RadialGradient>
         <RadialGradient
-          id="paint1_radial_1909_1029"
+          id={gradientId1}
           cx={0}
           cy={0}
           r={1}
@@ -103,7 +110,7 @@ export const GamesVideoGames: React.FunctionComponent<AccessibleIcon> = ({
           <Stop offset={1} stopColor="#FFF5D8" />
         </RadialGradient>
         <LinearGradient
-          id="paint2_linear_1909_1029"
+          id={gradientId2}
           x1={24.2765}
           y1={37.4117}
           x2={28.9562}
@@ -113,7 +120,7 @@ export const GamesVideoGames: React.FunctionComponent<AccessibleIcon> = ({
           <Stop offset={1} stopColor="white" />
         </LinearGradient>
         <LinearGradient
-          id="paint3_linear_1909_1029"
+          id={gradientId3}
           x1={6.39606}
           y1={37.7539}
           x2={25.8961}
@@ -122,7 +129,7 @@ export const GamesVideoGames: React.FunctionComponent<AccessibleIcon> = ({
           <Stop stopColor="#FFF5D8" />
           <Stop offset={1} stopColor="white" />
         </LinearGradient>
-        <ClipPath id="clip0_1909_1029">
+        <ClipPath id={clipPathId}>
           <Rect width={268.5} height={112} fill="white" transform="translate(0.5)" />
         </ClipPath>
       </Defs>
