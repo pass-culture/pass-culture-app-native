@@ -34,7 +34,7 @@ export const fetchOffers = async ({
 
   try {
     const response = await index.search<Offer>(parameters.query || '', {
-      page: parameters.page || 0,
+      page: parameters.page ?? 0,
       ...buildHitsPerPage(parameters.hitsPerPage),
       ...searchParameters,
       attributesToRetrieve: offerAttributesToRetrieve,
