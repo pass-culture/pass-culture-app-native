@@ -61,27 +61,17 @@ describe('HomeHeader', () => {
       credit: Credit
       subtitle: string
     }) => {
-      mockUseAuthContext.mockReturnValueOnce({
+      const useAuthContextResultMock = {
         isLoggedIn: isLoggedIn,
         user,
         isUserLoading: false,
         setIsLoggedIn: jest.fn(),
         refetchUser: jest.fn(),
-      })
-      mockUseAuthContext.mockReturnValueOnce({
-        isLoggedIn: isLoggedIn,
-        user,
-        isUserLoading: false,
-        setIsLoggedIn: jest.fn(),
-        refetchUser: jest.fn(),
-      })
-      mockUseAuthContext.mockReturnValueOnce({
-        isLoggedIn: isLoggedIn,
-        user,
-        isUserLoading: false,
-        setIsLoggedIn: jest.fn(),
-        refetchUser: jest.fn(),
-      })
+      }
+      mockUseAuthContext.mockReturnValueOnce(useAuthContextResultMock)
+      mockUseAuthContext.mockReturnValueOnce(useAuthContextResultMock)
+      mockUseAuthContext.mockReturnValueOnce(useAuthContextResultMock)
+
       mockUseAvailableCredit.mockReturnValueOnce(credit)
       mockUseAvailableCredit.mockReturnValueOnce(credit)
 
@@ -150,19 +140,15 @@ describe('HomeHeader', () => {
   })
 
   it('should display SignupBanner when user is not logged in', async () => {
+    const useAuthContextNotLoggedInMock = {
+      isLoggedIn: false,
+      isUserLoading: false,
+      setIsLoggedIn: jest.fn(),
+      refetchUser: jest.fn(),
+    }
     mockUseAuthContext
-      .mockReturnValueOnce({
-        isLoggedIn: false,
-        isUserLoading: false,
-        setIsLoggedIn: jest.fn(),
-        refetchUser: jest.fn(),
-      })
-      .mockReturnValueOnce({
-        isLoggedIn: false,
-        isUserLoading: false,
-        setIsLoggedIn: jest.fn(),
-        refetchUser: jest.fn(),
-      })
+      .mockReturnValueOnce(useAuthContextNotLoggedInMock)
+      .mockReturnValueOnce(useAuthContextNotLoggedInMock)
 
     renderHomeHeader()
     await act(async () => {})

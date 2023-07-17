@@ -33,16 +33,14 @@ describe('Bookings', () => {
   })
 
   it('should display the empty bookings dedicated view', async () => {
+    const useBookingsResultMock = {
+      data: emptyBookingsSnap,
+      isFetching: false,
+    } as QueryObserverResult<BookingsResponse, unknown>
     // Due to multiple renders we need to mock useBookings twice
     useBookingsSpy
-      .mockReturnValueOnce({
-        data: emptyBookingsSnap,
-        isFetching: false,
-      } as QueryObserverResult<BookingsResponse, unknown>)
-      .mockReturnValueOnce({
-        data: emptyBookingsSnap,
-        isFetching: false,
-      } as QueryObserverResult<BookingsResponse, unknown>)
+      .mockReturnValueOnce(useBookingsResultMock)
+      .mockReturnValueOnce(useBookingsResultMock)
     renderBookings()
 
     await act(async () => {})
