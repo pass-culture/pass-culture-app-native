@@ -1725,6 +1725,11 @@ export interface OfferStockResponse {
    */
   cancellationLimitDatetime?: string | null
   /**
+   * @type {Array<string>}
+   * @memberof OfferStockResponse
+   */
+  features: Array<string>
+  /**
    * @type {number}
    * @memberof OfferStockResponse
    */
