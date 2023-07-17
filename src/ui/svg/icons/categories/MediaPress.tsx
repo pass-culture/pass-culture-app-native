@@ -2,6 +2,7 @@ import * as React from 'react'
 import { Path, G, Defs, LinearGradient, Stop, ClipPath, Rect } from 'react-native-svg'
 
 import { AccessibleSvg } from 'ui/svg/AccessibleSvg'
+import { svgIdentifier } from 'ui/svg/utils'
 
 import { AccessibleIcon } from '../types'
 
@@ -9,6 +10,10 @@ export const MediaPress: React.FunctionComponent<AccessibleIcon> = ({
   accessibilityLabel,
   testID,
 }) => {
+  const { id: gradientId, fill: gradientFill } = svgIdentifier()
+  const { id: gradientId1, fill: gradientFill1 } = svgIdentifier()
+  const { id: clipPathId, fill: clipPath } = svgIdentifier()
+
   return (
     <AccessibleSvg
       width={156}
@@ -17,17 +22,17 @@ export const MediaPress: React.FunctionComponent<AccessibleIcon> = ({
       fill="none"
       accessibilityLabel={accessibilityLabel}
       testID={testID}>
-      <G clipPath="url(#clip0_1981_1391)">
-        <G filter="url(#filter0_d_1981_1391)">
+      <G clipPath={clipPath}>
+        <G>
           <Path
             d="M50.28 78.528L14.0057 86.7652C11.3629 87.3653 8.66992 85.4189 7.98795 82.4157L-2.68294 35.424L-1.27685 28.2474L35.905 18.9162C36.3435 18.8167 36.7948 19.1429 36.908 19.6411L41.0224 37.7602L46.2045 36.5834C47.0854 36.3834 47.9831 37.0322 48.2104 38.0333L56.1308 72.9124C56.642 75.1637 55.4501 77.354 53.469 77.8038L50.28 78.528Z"
-            fill="url(#paint0_linear_1981_1391)"
+            fill={gradientFill}
           />
         </G>
-        <G filter="url(#filter1_d_1981_1391)">
+        <G>
           <Path
             d="M53.9918 77.9397C52.1066 78.3678 50.181 76.9799 49.6958 74.8433L41.2646 37.7148L46.4902 36.5282C47.3786 36.3265 48.2833 36.9786 48.5119 37.9854L56.5293 73.2916C57.0144 75.4282 55.8771 77.5116 53.9918 77.9397Z"
-            fill="url(#paint1_linear_1981_1391)"
+            fill={gradientFill1}
           />
         </G>
         <Rect
@@ -60,7 +65,7 @@ export const MediaPress: React.FunctionComponent<AccessibleIcon> = ({
       </G>
       <Defs>
         <LinearGradient
-          id="paint0_linear_1981_1391"
+          id={gradientId}
           x1={9.31638}
           y1={88.1111}
           x2={36.6119}
@@ -70,7 +75,7 @@ export const MediaPress: React.FunctionComponent<AccessibleIcon> = ({
           <Stop offset={1} stopColor="white" />
         </LinearGradient>
         <LinearGradient
-          id="paint1_linear_1981_1391"
+          id={gradientId1}
           x1={51.7556}
           y1={40.054}
           x2={36.0318}
@@ -79,7 +84,7 @@ export const MediaPress: React.FunctionComponent<AccessibleIcon> = ({
           <Stop stopColor="white" />
           <Stop offset={1} stopColor="#FFD7E9" />
         </LinearGradient>
-        <ClipPath id="clip0_1981_1391">
+        <ClipPath id={clipPathId}>
           <Rect width={156} height={92} fill="white" />
         </ClipPath>
       </Defs>

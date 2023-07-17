@@ -2,6 +2,7 @@ import * as React from 'react'
 import { Path, G, Defs, Stop, ClipPath, Rect, RadialGradient } from 'react-native-svg'
 
 import { AccessibleSvg } from 'ui/svg/AccessibleSvg'
+import { svgIdentifier } from 'ui/svg/utils'
 
 import { AccessibleIcon } from '../types'
 
@@ -9,6 +10,9 @@ export const CDVinylsOnlineMusic: React.FunctionComponent<AccessibleIcon> = ({
   accessibilityLabel,
   testID,
 }) => {
+  const { id: gradientId, fill: gradientFill } = svgIdentifier()
+  const { id: clipPathId, fill: clipPath } = svgIdentifier()
+
   return (
     <AccessibleSvg
       width={156}
@@ -17,19 +21,19 @@ export const CDVinylsOnlineMusic: React.FunctionComponent<AccessibleIcon> = ({
       fill="none"
       accessibilityLabel={accessibilityLabel}
       testID={testID}>
-      <G clipPath="url(#clip0_1981_1384)">
-        <G filter="url(#filter0_d_1981_1384)">
+      <G clipPath={clipPath}>
+        <G>
           <Path
             d="M22 55C22 51.6863 24.6863 49 28 49C31.3137 49 34 51.6863 34 55C34 58.3137 31.3137 61 28 61C24.6863 61 22 58.3137 22 55Z"
             fill="#20C5E9"
           />
         </G>
-        <G filter="url(#filter1_d_1981_1384)">
+        <G>
           <Path
             fillRule="evenodd"
             clipRule="evenodd"
             d="M30 18C10.67 18 -5 33.67 -5 53C-5 72.33 10.67 88 30 88C49.33 88 65 72.33 65 53C65 33.67 49.33 18 30 18ZM29 47C25.6863 47 23 49.6863 23 53C23 56.3137 25.6863 59 29 59C32.3137 59 35 56.3137 35 53C35 49.6863 32.3137 47 29 47Z"
-            fill="url(#paint0_angular_1981_1384)"
+            fill={gradientFill}
           />
         </G>
         <Path
@@ -41,7 +45,7 @@ export const CDVinylsOnlineMusic: React.FunctionComponent<AccessibleIcon> = ({
       </G>
       <Defs>
         <RadialGradient
-          id="paint0_angular_1981_1384"
+          id={gradientId}
           cx={0}
           cy={0}
           r={1}
@@ -50,7 +54,7 @@ export const CDVinylsOnlineMusic: React.FunctionComponent<AccessibleIcon> = ({
           <Stop offset={0.479167} stopColor="#D6F8FF" />
           <Stop offset={0.859375} stopColor="white" />
         </RadialGradient>
-        <ClipPath id="clip0_1981_1384">
+        <ClipPath id={clipPathId}>
           <Rect width={156} height={92} fill="white" />
         </ClipPath>
       </Defs>

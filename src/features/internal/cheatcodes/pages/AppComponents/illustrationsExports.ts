@@ -44,8 +44,7 @@ import { PhoneFlip } from 'ui/svg/icons/PhoneFlip'
 import { ProfileDeletionIllustration } from 'ui/svg/icons/ProfileDeletionIllustration'
 import { RequestSent } from 'ui/svg/icons/RequestSent'
 import { SadFace } from 'ui/svg/icons/SadFace'
-import { UserBlocked } from 'ui/svg/icons/UserBlocked'
-import { BicolorUserBlocked } from 'ui/svg/icons/UserBlocked'
+import { BicolorUserBlocked, UserBlocked } from 'ui/svg/icons/UserBlocked'
 
 export const BicolorIllustrations = {
   BicolorBirthdayCake,
