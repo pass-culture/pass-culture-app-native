@@ -6,18 +6,19 @@ import { mapOffersDataAndModules } from 'features/home/api/helpers/mapOffersData
 import { useHomePosition } from 'features/home/helpers/useHomePosition'
 import { OffersModule, OfferModuleParamsInfo } from 'features/home/types'
 import { useIsUserUnderage } from 'features/profile/helpers/useIsUserUnderage'
-import { SearchState } from 'features/search/types'
+import { SearchParametersQuery } from 'libs/algolia'
 import { useAdaptOffersPlaylistParameters } from 'libs/algolia/fetchAlgolia/fetchMultipleOffers/helpers/useAdaptOffersPlaylistParameters'
 import { fetchOffersModules } from 'libs/algolia/fetchAlgolia/fetchOffersModules'
 import { useTransformOfferHits } from 'libs/algolia/fetchAlgolia/transformOfferHit'
 import { useNetInfoContext } from 'libs/network/NetInfoWrapper'
 import { QueryKeys } from 'libs/queryKeys'
 
-const isSearchState = (parameter: unknown): parameter is SearchState =>
+const isSearchParametersQuery = (parameter: unknown): parameter is SearchParametersQuery =>
   typeof parameter === 'object' && parameter !== null
 
-const isSearchStateArrayWithoutUndefined = (params: unknown): params is SearchState[] =>
-  params !== undefined
+const isSearchParametersQueryArrayWithoutUndefined = (
+  params: unknown
+): params is SearchParametersQuery[] => params !== undefined
 
 export const useGetOffersData = (modules: OffersModule[]) => {
   const { position } = useHomePosition()
@@ -33,7 +34,7 @@ export const useGetOffersData = (modules: OffersModule[]) => {
   const offersParameters = modules.map((module) => {
     const adaptedPlaylistParameters = module.offersModuleParameters
       .map(adaptPlaylistParameters)
-      .filter(isSearchState)
+      .filter(isSearchParametersQuery)
     offersModuleIds.push(module.id)
     return {
       adaptedPlaylistParameters: adaptedPlaylistParameters,
@@ -43,7 +44,7 @@ export const useGetOffersData = (modules: OffersModule[]) => {
 
   const offersAdaptedPlaylistParametersWithoutUndefined = offersParameters
     .map((param) => param?.adaptedPlaylistParameters)
-    .filter(isSearchStateArrayWithoutUndefined)
+    .filter(isSearchParametersQueryArrayWithoutUndefined)
 
   const offersQuery = async () => {
     const result = await fetchOffersModules({

@@ -1,7 +1,7 @@
 import { SearchResponse } from '@algolia/client-search'
 import { chunk } from 'lodash'
 
-import { SearchState } from 'features/search/types'
+import { OffersPlaylistParameters } from 'features/home/types'
 import { captureAlgoliaError } from 'libs/algolia/fetchAlgolia/AlgoliaError'
 import { client } from 'libs/algolia/fetchAlgolia/clients'
 import { buildOffersModulesQueries } from 'libs/algolia/fetchAlgolia/fetchMultipleOffers/helpers/buildOffersModulesQueries'
@@ -9,7 +9,7 @@ import { Position } from 'libs/geolocation'
 import { Offer } from 'shared/offer/types'
 
 type FetchMultipleOffersArgs = {
-  paramsList: SearchState[][]
+  paramsList: OffersPlaylistParameters[]
   userLocation: Position
   isUserUnderage: boolean
 }

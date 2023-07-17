@@ -1,8 +1,8 @@
 import { SearchGroupNameEnumv2 } from 'api/gen'
-import { initialSearchState } from 'features/search/context/reducer'
 import { DATE_FILTER_OPTIONS, LocationType } from 'features/search/enums'
 import { LocationFilter } from 'features/search/types'
 import { buildOfferSearchParameters } from 'libs/algolia/fetchAlgolia/buildAlgoliaParameters/buildOfferSearchParameters'
+import { searchParametersQueryFixture } from 'libs/algolia/fixtures'
 
 describe('buildOfferSearchParameters', () => {
   const userLocation = {
@@ -13,11 +13,11 @@ describe('buildOfferSearchParameters', () => {
   const isUserUnderage = false
 
   it('should return expected offer search parameters to build Algolia API call', () => {
-    const searchState = {
-      ...initialSearchState,
+    const parameters = {
+      ...searchParametersQueryFixture,
     }
 
-    const result = buildOfferSearchParameters(searchState, userLocation, isUserUnderage)
+    const result = buildOfferSearchParameters(parameters, userLocation, isUserUnderage)
 
     expect(result).toEqual({
       aroundLatLng: '48.8566, 2.3522',
@@ -28,15 +28,15 @@ describe('buildOfferSearchParameters', () => {
   })
 
   it('should return parameters with date filter when date is specified', () => {
-    const searchState = {
-      ...initialSearchState,
+    const parameters = {
+      ...searchParametersQueryFixture,
       date: {
         option: DATE_FILTER_OPTIONS.USER_PICK,
         selectedDate: '2023-05-01',
       },
     }
 
-    const result = buildOfferSearchParameters(searchState, userLocation, isUserUnderage)
+    const result = buildOfferSearchParameters(parameters, userLocation, isUserUnderage)
 
     expect(result).toEqual({
       aroundLatLng: '48.8566, 2.3522',
@@ -47,12 +47,12 @@ describe('buildOfferSearchParameters', () => {
   })
 
   it('should return parameters with offer category filter when offer category is specified', () => {
-    const searchState = {
-      ...initialSearchState,
+    const parameters = {
+      ...searchParametersQueryFixture,
       offerCategories: [SearchGroupNameEnumv2.CD_VINYLE_MUSIQUE_EN_LIGNE],
     }
 
-    const result = buildOfferSearchParameters(searchState, userLocation, isUserUnderage)
+    const result = buildOfferSearchParameters(parameters, userLocation, isUserUnderage)
 
     expect(result).toEqual({
       aroundLatLng: '48.8566, 2.3522',
@@ -66,12 +66,12 @@ describe('buildOfferSearchParameters', () => {
   })
 
   it('should return parameters with minimum price filter when minPrice is specified', () => {
-    const searchState = {
-      ...initialSearchState,
+    const parameters = {
+      ...searchParametersQueryFixture,
       minPrice: '50',
     }
 
-    const result = buildOfferSearchParameters(searchState, userLocation, isUserUnderage)
+    const result = buildOfferSearchParameters(parameters, userLocation, isUserUnderage)
 
     expect(result).toEqual({
       aroundLatLng: '48.8566, 2.3522',
@@ -95,12 +95,12 @@ describe('buildOfferSearchParameters', () => {
       aroundRadius: 10,
     } as LocationFilter
 
-    const searchState = {
-      ...initialSearchState,
+    const parameters = {
+      ...searchParametersQueryFixture,
       locationFilter,
     }
 
-    const result = buildOfferSearchParameters(searchState, userLocation, isUserUnderage)
+    const result = buildOfferSearchParameters(parameters, userLocation, isUserUnderage)
 
     expect(result).toEqual({
       aroundLatLng: '48.8566, 2.3522',

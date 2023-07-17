@@ -4,7 +4,7 @@ import { useQuery } from 'react-query'
 import { useHomePosition } from 'features/home/helpers/useHomePosition'
 import { OffersModuleParameters } from 'features/home/types'
 import { useIsUserUnderage } from 'features/profile/helpers/useIsUserUnderage'
-import { SearchState } from 'features/search/types'
+import { SearchParametersQuery } from 'libs/algolia'
 import { fetchMultipleOffers } from 'libs/algolia/fetchAlgolia/fetchMultipleOffers/fetchMultipleOffers'
 import { useAdaptOffersPlaylistParameters } from 'libs/algolia/fetchAlgolia/fetchMultipleOffers/helpers/useAdaptOffersPlaylistParameters'
 import { useTransformOfferHits } from 'libs/algolia/fetchAlgolia/transformOfferHit'
@@ -12,7 +12,7 @@ import { useNetInfoContext } from 'libs/network/NetInfoWrapper'
 import { QueryKeys } from 'libs/queryKeys'
 import { Offer } from 'shared/offer/types'
 
-const isSearchState = (parameter: unknown): parameter is SearchState =>
+const isSearchParametersQuery = (parameter: unknown): parameter is SearchParametersQuery =>
   typeof parameter === 'object' && parameter !== null
 
 export const useVideoOffers = (offersModuleParameters: OffersModuleParameters, id: string) => {
@@ -23,7 +23,7 @@ export const useVideoOffers = (offersModuleParameters: OffersModuleParameters, i
   const transformHits = useTransformOfferHits()
 
   const partialAdaptedParameters = adaptPlaylistParameters(offersModuleParameters)
-  const adaptedParameters = [partialAdaptedParameters].filter(isSearchState)
+  const adaptedParameters = [partialAdaptedParameters].filter(isSearchParametersQuery)
 
   const { data, refetch } = useQuery(
     [QueryKeys.VIDEO_OFFER, id],

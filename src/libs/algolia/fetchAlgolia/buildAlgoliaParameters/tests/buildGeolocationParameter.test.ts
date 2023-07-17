@@ -1,14 +1,14 @@
 import { LocationType } from 'features/search/enums'
-import { SearchState } from 'features/search/types'
 import { RADIUS_FILTERS } from 'libs/algolia/enums'
 import {
   buildGeolocationParameter,
   computeAroundRadiusInMeters,
 } from 'libs/algolia/fetchAlgolia/buildAlgoliaParameters/buildGeolocationParameter'
+import { SearchParametersQuery } from 'libs/algolia/types'
 import { Position } from 'libs/geolocation'
 
 describe('buildGeolocationParameter', () => {
-  const locationFilterVenue: SearchState['locationFilter'] = {
+  const locationFilterVenue: SearchParametersQuery['locationFilter'] = {
     locationType: LocationType.VENUE,
     venue: {
       label: 'Venue',
@@ -17,7 +17,7 @@ describe('buildGeolocationParameter', () => {
     },
   }
 
-  const locationFilterPlace: SearchState['locationFilter'] = {
+  const locationFilterPlace: SearchParametersQuery['locationFilter'] = {
     locationType: LocationType.PLACE,
     place: {
       label: 'Place',
@@ -30,12 +30,12 @@ describe('buildGeolocationParameter', () => {
     aroundRadius: 5,
   }
 
-  const locationFilterAroundMe: SearchState['locationFilter'] = {
+  const locationFilterAroundMe: SearchParametersQuery['locationFilter'] = {
     locationType: LocationType.AROUND_ME,
     aroundRadius: 5,
   }
 
-  const locationFilterEverywhere: SearchState['locationFilter'] = {
+  const locationFilterEverywhere: SearchParametersQuery['locationFilter'] = {
     locationType: LocationType.EVERYWHERE,
   }
 

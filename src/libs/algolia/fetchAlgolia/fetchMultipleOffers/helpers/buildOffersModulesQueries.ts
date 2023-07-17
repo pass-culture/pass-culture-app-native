@@ -1,6 +1,6 @@
 import { flatten } from 'lodash'
 
-import { SearchState } from 'features/search/types'
+import { OffersPlaylistParameters } from 'features/home/types'
 import { buildOfferSearchParameters } from 'libs/algolia/fetchAlgolia/buildAlgoliaParameters/buildOfferSearchParameters'
 import { offerAttributesToRetrieve } from 'libs/algolia/fetchAlgolia/buildAlgoliaParameters/offerAttributesToRetrieve'
 import { buildHitsPerPage } from 'libs/algolia/fetchAlgolia/utils'
@@ -9,7 +9,7 @@ import { env } from 'libs/environment'
 import { Position } from 'libs/geolocation'
 
 type buildOffersModuleQueriesArgs = {
-  paramsList: SearchState[][]
+  paramsList: OffersPlaylistParameters[]
   userLocation: Position
   isUserUnderage: boolean
 }

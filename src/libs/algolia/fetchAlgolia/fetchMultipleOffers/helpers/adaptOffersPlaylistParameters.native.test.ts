@@ -35,7 +35,7 @@ const defaultSearchParameters = omit(
     minBookingsThreshold: 0,
     offerGenreTypes: [],
   },
-  'offerIsFree'
+  ['offerIsFree', 'view']
 )
 
 describe('adaptOffersPlaylistParameters', () => {

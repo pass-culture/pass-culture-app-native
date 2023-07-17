@@ -1,17 +1,17 @@
 import flatten from 'lodash/flatten'
 
-import { SearchState } from 'features/search/types'
 import { captureAlgoliaError } from 'libs/algolia/fetchAlgolia/AlgoliaError'
 import { buildOfferSearchParameters } from 'libs/algolia/fetchAlgolia/buildAlgoliaParameters/buildOfferSearchParameters'
 import { offerAttributesToRetrieve } from 'libs/algolia/fetchAlgolia/buildAlgoliaParameters/offerAttributesToRetrieve'
 import { client } from 'libs/algolia/fetchAlgolia/clients'
 import { buildHitsPerPage } from 'libs/algolia/fetchAlgolia/utils'
+import { SearchParametersQuery } from 'libs/algolia/types'
 import { env } from 'libs/environment'
 import { Position } from 'libs/geolocation'
 import { Offer } from 'shared/offer/types'
 
 type FetchMultipleOffersArgs = {
-  paramsList: SearchState[]
+  paramsList: SearchParametersQuery[]
   userLocation: Position
   isUserUnderage: boolean
 }
