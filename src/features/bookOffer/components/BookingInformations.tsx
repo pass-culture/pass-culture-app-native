@@ -56,7 +56,12 @@ export const BookingInformations = ({ shouldDisplayAddress = true }: Props) => {
   )
   const price =
     stock.price > 0 ? (
-      <PriceLine unitPrice={stock.price} label={stock.priceCategoryLabel} quantity={quantity} />
+      <PriceLine
+        unitPrice={stock.price}
+        label={stock.priceCategoryLabel}
+        quantity={quantity}
+        attributes={stock.features}
+      />
     ) : (
       'Gratuit'
     )
