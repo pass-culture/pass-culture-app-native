@@ -104,12 +104,15 @@ export const VideoModal: React.FC<VideoModalProps> = (props) => {
             analyticsParams={analyticsParams}
           />
         ) : (
-          <VideoMonoOfferTile
-            offer={props.offers[0]}
-            color={props.color}
-            hideModal={props.hideModal}
-            analyticsParams={analyticsParams}
-          />
+          <React.Fragment>
+            <VideoMonoOfferTile
+              offer={props.offers[0]}
+              color={props.color}
+              hideModal={props.hideModal}
+              analyticsParams={analyticsParams}
+            />
+            <Spacer.Column numberOfSpaces={8} />
+          </React.Fragment>
         )}
       </StyledScrollView>
       <StyledTouchable onPress={onPressCloseModal} accessibilityLabel="Fermer la modale vidéo">

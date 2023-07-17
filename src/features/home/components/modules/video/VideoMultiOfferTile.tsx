@@ -59,7 +59,7 @@ export const VideoMultiOfferTile: FunctionComponent<Props> = ({
           withStroke
         />
         <Spacer.Column numberOfSpaces={2} />
-        <TitleText numberOfLines={1}>{offer.offer.name}</TitleText>
+        <Typo.Caption numberOfLines={1}>{offer.offer.name}</Typo.Caption>
         <AdditionalInfoText>{labelMapping[offer.offer.subcategoryId]}</AdditionalInfoText>
         {!!displayPrice && <AdditionalInfoText>{displayPrice}</AdditionalInfoText>}
       </StyledTouchableLink>
@@ -76,11 +76,6 @@ const StyledTouchableLink = styled(InternalTouchableLink)(({ theme }) => ({
   width: theme.tiles.sizes['large'].width,
 }))
 
-const TitleText = styled(Typo.Caption)({
-  marginBottom: getSpacing(1),
-})
-
 const AdditionalInfoText = styled(Typo.Caption)(({ theme }) => ({
   color: theme.colors.greyDark,
-  marginBottom: getSpacing(1),
 }))

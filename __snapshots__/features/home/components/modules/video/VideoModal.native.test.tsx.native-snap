@@ -621,6 +621,16 @@ exports[`VideoModal should render correctly if modal visible 1`] = `
                 </View>
               </View>
             </View>
+            <View
+              numberOfSpaces={8}
+              style={
+                Array [
+                  Object {
+                    "height": 32,
+                  },
+                ]
+              }
+            />
           </View>
         </RCTScrollView>
         <View
