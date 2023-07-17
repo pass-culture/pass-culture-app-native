@@ -1,7 +1,13 @@
 import { SearchOptions } from '@algolia/client-search'
 
-import { GenreType, GenreTypeContentModel, VenueResponse } from 'api/gen'
-import { NativeCategoryIdEnumv2, SearchGroupNameEnumv2, SubcategoryIdEnumv2 } from 'api/gen'
+import {
+  GenreType,
+  GenreTypeContentModel,
+  VenueResponse,
+  NativeCategoryIdEnumv2,
+  SearchGroupNameEnumv2,
+  SubcategoryIdEnumv2,
+} from 'api/gen'
 import { DATE_FILTER_OPTIONS, LocationType } from 'features/search/enums'
 import { Venue } from 'features/venue/types'
 import { AlgoliaHit } from 'libs/algolia'
