@@ -26,5 +26,6 @@ export const adaptVideoModule = (module: VideoContentModel): VideoModule | null 
     offerTitle: module.fields.offerTitle,
     videoDescription: module.fields.videoDescription,
     videoPublicationDate: module.fields.videoPublicationDate,
+    offerIds: module.fields.offerIds,
   }
 }
