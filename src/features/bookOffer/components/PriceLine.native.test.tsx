@@ -1,7 +1,12 @@
 import React from 'react'
 
 import { PriceLine } from 'features/bookOffer/components/PriceLine'
+import * as useFeatureFlag from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { render, screen } from 'tests/utils'
+
+jest.spyOn(useFeatureFlag, 'useFeatureFlag').mockReturnValue(true)
+
+const attributes = ['VOSTFR', '3D', 'IMAX']
 
 describe('<PriceLine />', () => {
   it('should show total price', () => {
@@ -11,11 +16,13 @@ describe('<PriceLine />', () => {
   })
 
   it('should show price details', () => {
-    render(<PriceLine unitPrice={500} quantity={2} />)
+    render(<PriceLine unitPrice={500} quantity={2} attributes={attributes} />)
 
     expect(screen.getByText('10\u00a0€')).toBeTruthy()
     expect(screen.getByText('(5\u00a0€ x 2 places)')).toBeTruthy()
+    expect(screen.getByText('- VOSTFR 3D IMAX')).toBeTruthy()
     expect(screen.getByTestId('price-line__price-detail')).toBeTruthy()
+    expect(screen.getByTestId('price-line__attributes')).toBeTruthy()
   })
 
   it('should set default quantity to 1', () => {
