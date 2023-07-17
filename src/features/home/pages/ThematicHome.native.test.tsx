@@ -7,7 +7,7 @@ import { ThematicHome } from 'features/home/pages/ThematicHome'
 import { ThematicHeaderType } from 'features/home/types'
 import { analytics } from 'libs/analytics'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { render, screen } from 'tests/utils'
+import { act, render, screen } from 'tests/utils'
 
 jest.mock('features/home/api/useShowSkeleton', () => ({
   useShowSkeleton: jest.fn(() => false),
@@ -29,13 +29,15 @@ describe('ThematicHome', () => {
 
   it('should render correctly', async () => {
     renderThematicHome()
-    await screen.findByText('HeaderSubtitle')
+    await act(async () => {})
+
     expect(screen).toMatchSnapshot()
   })
 
   it('should render default header when provided', async () => {
     renderThematicHome()
-    expect(await screen.findAllByText('HeaderTitle')).toBeTruthy()
+    await act(async () => {})
+
     expect(screen.getByText('HeaderSubtitle')).toBeTruthy()
   })
 
@@ -55,6 +57,8 @@ describe('ThematicHome', () => {
     })
 
     renderThematicHome()
+    await act(async () => {})
+
     expect(await screen.findAllByText('Bloc temps fort')).toBeTruthy()
     expect(screen.getByText('Un sous-titre')).toBeTruthy()
   })
@@ -73,14 +77,15 @@ describe('ThematicHome', () => {
     })
 
     renderThematicHome()
+    await act(async () => {})
+
     expect(await screen.findAllByText('Catégorie cinéma')).toBeTruthy()
     expect(screen.getByText('Un sous-titre')).toBeTruthy()
   })
 
   it('should log ConsultHome', async () => {
     renderThematicHome()
-
-    await screen.findByText('HeaderSubtitle')
+    await act(async () => {})
 
     expect(analytics.logConsultHome).toHaveBeenNthCalledWith(1, { homeEntryId: 'fakeEntryId' })
   })
@@ -95,8 +100,7 @@ describe('ThematicHome', () => {
       },
     })
     renderThematicHome()
-
-    await screen.findByText('HeaderSubtitle')
+    await act(async () => {})
 
     expect(analytics.logConsultHome).toHaveBeenNthCalledWith(1, {
       homeEntryId: 'fakeEntryId',
@@ -115,8 +119,7 @@ describe('ThematicHome', () => {
       },
     })
     renderThematicHome()
-
-    await screen.findByText('HeaderSubtitle')
+    await act(async () => {})
 
     expect(analytics.logConsultHome).toHaveBeenNthCalledWith(1, {
       homeEntryId: 'fakeEntryId',

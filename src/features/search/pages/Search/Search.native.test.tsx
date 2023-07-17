@@ -13,7 +13,7 @@ import { Venue } from 'features/venue/types'
 import { useNetInfoContext as useNetInfoContextDefault } from 'libs/network/NetInfoWrapper'
 import { placeholderData } from 'libs/subcategories/placeholderData'
 import { mockedSuggestedVenues } from 'libs/venue/fixtures/mockedSuggestedVenues'
-import { render, fireEvent, waitFor } from 'tests/utils'
+import { render, fireEvent, waitFor, act, screen } from 'tests/utils'
 
 const venue: Venue = mockedSuggestedVenues[0]
 
@@ -97,20 +97,18 @@ describe('<Search/>', () => {
 
   it('should render Search', async () => {
     const search = render(<Search />)
+    await act(async () => {})
 
-    await waitFor(() => {
-      expect(search).toMatchSnapshot()
-    })
+    expect(search).toMatchSnapshot()
   })
 
   it('should handle coming from "See More" correctly', async () => {
     render(<Search />)
+    await act(async () => {})
 
-    await waitFor(() => {
-      expect(mockDispatch).toHaveBeenCalledWith({
-        type: 'SET_STATE',
-        payload: {},
-      })
+    expect(mockDispatch).toHaveBeenCalledWith({
+      type: 'SET_STATE',
+      payload: {},
     })
   })
 
@@ -128,13 +126,12 @@ describe('<Search/>', () => {
     })
 
     it('should display categories buttons', async () => {
-      const { getByTestId } = render(<Search />, { wrapper: SearchWrapper })
+      render(<Search />, { wrapper: SearchWrapper })
+      await act(async () => {})
 
-      const categoriesButtons = getByTestId('categoriesButtons')
+      const categoriesButtons = screen.getByTestId('categoriesButtons')
 
-      await waitFor(() => {
-        expect(categoriesButtons).toBeTruthy()
-      })
+      expect(categoriesButtons).toBeTruthy()
     })
 
     it('should show results for a category when pressing a category button', async () => {
@@ -142,14 +139,13 @@ describe('<Search/>', () => {
       jest
         .spyOn(useShowResultsForCategory, 'useShowResultsForCategory')
         .mockReturnValueOnce(mockShowResultsForCategory)
-      const { getByText } = render(<Search />)
+      render(<Search />)
+      await act(async () => {})
 
-      const categoryButton = getByText('Spectacles')
+      const categoryButton = screen.getByText('Spectacles')
 
-      await waitFor(() => {
-        fireEvent.press(categoryButton)
-        expect(mockShowResultsForCategory).toHaveBeenCalledWith(SearchGroupNameEnumv2.SPECTACLES)
-      })
+      fireEvent.press(categoryButton)
+      expect(mockShowResultsForCategory).toHaveBeenCalledWith(SearchGroupNameEnumv2.SPECTACLES)
     })
   })
 
@@ -159,37 +155,37 @@ describe('<Search/>', () => {
     })
 
     it('should show search results', async () => {
-      const { getByTestId } = render(<Search />)
-      await waitFor(() => {
-        expect(getByTestId('searchResults')).toBeTruthy()
-      })
+      render(<Search />)
+      await act(async () => {})
+
+      expect(screen.getByTestId('searchResults')).toBeTruthy()
     })
 
     it('should navigate to the search filter page when pressing the search filter button', async () => {
-      const { getByTestId } = render(<Search />)
+      render(<Search />)
 
-      const searchFilterButton = getByTestId('Voir tous les filtres\u00a0: 3 filtres actifs')
+      const searchFilterButton = screen.getByTestId('Voir tous les filtres\u00a0: 3 filtres actifs')
       fireEvent.press(searchFilterButton)
 
-      const screen = 'SearchFilter'
+      const navScreen = 'SearchFilter'
       const params = { query: 'la fnac', view: SearchView.Results }
 
       await waitFor(() => {
-        expect(navigate).toHaveBeenCalledWith(screen, params)
+        expect(navigate).toHaveBeenCalledWith(navScreen, params)
       })
     })
 
     it('should reinitialize the filters from the current one', async () => {
-      const { getByTestId } = render(<Search />)
+      render(<Search />)
 
-      const searchFilterButton = getByTestId('Voir tous les filtres\u00a0: 3 filtres actifs')
-      fireEvent.press(searchFilterButton)
+      const searchFilterButton = screen.getByTestId('Voir tous les filtres\u00a0: 3 filtres actifs')
+      await act(async () => {
+        fireEvent.press(searchFilterButton)
+      })
 
-      await waitFor(() => {
-        expect(mockDispatch).toHaveBeenCalledWith({
-          type: 'SET_STATE',
-          payload: { query: 'la fnac', view: SearchView.Results },
-        })
+      expect(mockDispatch).toHaveBeenCalledWith({
+        type: 'SET_STATE',
+        payload: { query: 'la fnac', view: SearchView.Results },
       })
     })
   })

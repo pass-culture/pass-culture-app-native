@@ -7,7 +7,7 @@ import { env } from 'libs/environment'
 import { useNetInfoContext as useNetInfoContextDefault } from 'libs/network/NetInfoWrapper'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { server } from 'tests/server'
-import { renderHook, waitFor } from 'tests/utils'
+import { act, renderHook } from 'tests/utils'
 
 import { useReasonsForReporting } from './useReasonsForReporting'
 
@@ -24,8 +24,6 @@ server.use(
 )
 
 describe('useReasonsForReporting hook', () => {
-  afterEach(jest.resetAllMocks)
-
   it('should retrieve reasons for reporting data when logged in', async () => {
     mockUseNetInfoContext.mockImplementationOnce(() => ({ isConnected: true }))
     mockUseAuthContext.mockImplementationOnce(() => ({
@@ -40,12 +38,10 @@ describe('useReasonsForReporting hook', () => {
     })
 
     expect(result.current.isFetching).toEqual(true)
-
-    await waitFor(() => {
-      expect(result.current.data?.reasons.length).toEqual(
-        offerReportReasonResponseSnap.reasons.length
-      )
-    })
+    await act(async () => {})
+    expect(result.current.data?.reasons.length).toEqual(
+      offerReportReasonResponseSnap.reasons.length
+    )
   })
 
   it('should return null when not logged in', async () => {

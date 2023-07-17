@@ -14,17 +14,7 @@ import { NonBeneficiaryHeader } from 'features/profile/components/Header/NonBene
 import { env } from 'libs/environment'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { server } from 'tests/server'
-import { render, screen, waitFor } from 'tests/utils'
-
-const mockedNavigate = jest.fn()
-jest.mock('@react-navigation/native', () => {
-  const actualNav = jest.requireActual('@react-navigation/native')
-  return {
-    ...actualNav,
-    useNavigation: () => ({ navigate: mockedNavigate }),
-    useFocusEffect: jest.fn(),
-  }
-})
+import { act, render, screen } from 'tests/utils'
 
 jest.mock('features/auth/context/AuthContext')
 const mockUseAuthContext = useAuthContext as jest.Mock
@@ -67,7 +57,7 @@ describe('<NonBeneficiaryHeader/>', () => {
     it('should render the activation banner when user is eligible and api call returns activation banner', async () => {
       server.use(
         rest.get<BannerResponse>(env.API_BASE_URL + '/native/v1/banner', (_req, res, ctx) =>
-          res(
+          res.once(
             ctx.status(200),
             ctx.json({
               banner: {
@@ -95,7 +85,7 @@ describe('<NonBeneficiaryHeader/>', () => {
     it("should render the transition 17 to 18 banner when beneficiary's user is now 18", async () => {
       server.use(
         rest.get<BannerResponse>(env.API_BASE_URL + '/native/v1/banner', (_req, res, ctx) =>
-          res(
+          res.once(
             ctx.status(200),
             ctx.json({
               banner: {
@@ -132,8 +122,10 @@ describe('<NonBeneficiaryHeader/>', () => {
         endDatetime: '2022-02-30T00:00Z',
       })
 
+      await act(async () => {})
+
       expect(screen.queryByTestId('eligibility-banner-container')).toBeNull()
-      expect(await screen.findByText('Ton inscription est en cours de traitement.')).toBeTruthy()
+      expect(screen.getByText('Ton inscription est en cours de traitement.')).toBeTruthy()
     })
   })
 
@@ -148,7 +140,9 @@ describe('<NonBeneficiaryHeader/>', () => {
         endDatetime: '2022-02-30T00:00Z',
       })
 
-      expect(await screen.findByTestId('subscription-message-badge')).toBeTruthy()
+      await act(async () => {})
+
+      expect(screen.getByTestId('subscription-message-badge')).toBeTruthy()
     })
   })
 
@@ -159,7 +153,9 @@ describe('<NonBeneficiaryHeader/>', () => {
         endDatetime: '2022-03-31T00:00Z',
       })
 
-      expect(await screen.findByTestId('younger-badge')).toBeTruthy()
+      await act(async () => {})
+
+      expect(screen.getByTestId('younger-badge')).toBeTruthy()
     })
   })
 
@@ -175,12 +171,12 @@ describe('<NonBeneficiaryHeader/>', () => {
         endDatetime: '2022-02-30T00:00Z',
       })
 
-      await waitFor(() => {
-        expect(screen.queryByTestId('subscription-message-badge')).toBeNull()
-        expect(screen.queryByTestId('eligibility-banner-container')).toBeNull()
-        expect(screen.queryByText('Ton inscription est en cours de traitement.')).toBeNull()
-        expect(screen.queryByTestId('younger-badge')).toBeNull()
-      })
+      await act(async () => {})
+
+      expect(screen.queryByTestId('subscription-message-badge')).toBeNull()
+      expect(screen.queryByTestId('eligibility-banner-container')).toBeNull()
+      expect(screen.queryByText('Ton inscription est en cours de traitement.')).toBeNull()
+      expect(screen.queryByTestId('younger-badge')).toBeNull()
     })
   })
 })

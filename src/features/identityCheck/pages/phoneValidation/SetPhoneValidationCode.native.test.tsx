@@ -13,7 +13,7 @@ import { env } from 'libs/environment'
 import { EmptyResponse } from 'libs/fetch'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { server } from 'tests/server'
-import { fireEvent, render, screen, waitFor } from 'tests/utils'
+import { act, fireEvent, render, screen, waitFor } from 'tests/utils'
 
 server.use(
   rest.post<ValidatePhoneNumberRequest, EmptyResponse>(
@@ -184,9 +184,14 @@ describe('SetPhoneValidationCode', () => {
 
     const continueButton = screen.getByTestId('Continuer')
     const input = screen.getByPlaceholderText('012345')
-    fireEvent.changeText(input, '000000')
 
-    fireEvent.press(continueButton)
+    await act(async () => {
+      fireEvent.changeText(input, '000000')
+    })
+
+    await act(async () => {
+      fireEvent.press(continueButton)
+    })
 
     await waitFor(() => {
       expect(analytics.logPhoneValidationCodeClicked).toHaveBeenCalledTimes(1)

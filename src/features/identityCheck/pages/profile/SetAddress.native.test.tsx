@@ -43,9 +43,9 @@ describe('<SetAddress/>', () => {
   it('should render correctly', async () => {
     renderSetAddress()
 
-    await waitFor(() => {
-      expect(screen).toMatchSnapshot()
-    })
+    await screen.findByText('Recherche et sélectionne ton adresse')
+
+    expect(screen).toMatchSnapshot()
   })
 
   it('should display a list of addresses when user add an address', async () => {
@@ -81,6 +81,8 @@ describe('<SetAddress/>', () => {
   it('should log screen view when the screen is mounted', async () => {
     renderSetAddress()
 
+    await screen.findByText('Recherche et sélectionne ton adresse')
+
     await waitFor(() => expect(analytics.logScreenViewSetAddress).toHaveBeenCalledTimes(1))
   })
 
@@ -91,6 +93,8 @@ describe('<SetAddress/>', () => {
     fireEvent.changeText(input, QUERY_ADDRESS)
 
     fireEvent.press(screen.getByText('Continuer'))
+
+    await screen.findByText('Recherche et sélectionne ton adresse')
 
     await waitFor(() => expect(analytics.logSetAddressClicked).toHaveBeenCalledTimes(1))
   })

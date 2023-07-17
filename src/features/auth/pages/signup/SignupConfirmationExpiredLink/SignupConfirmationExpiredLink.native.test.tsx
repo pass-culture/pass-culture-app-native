@@ -10,7 +10,7 @@ import { analytics } from 'libs/analytics'
 import { env } from 'libs/environment'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { server } from 'tests/server'
-import { render, fireEvent, waitFor } from 'tests/utils'
+import { render, fireEvent, waitFor, act } from 'tests/utils'
 
 import { SignupConfirmationExpiredLink } from './SignupConfirmationExpiredLink'
 
@@ -70,10 +70,10 @@ describe('<SignupConfirmationExpiredLink/>', () => {
     )
     const { getByText } = renderSignupConfirmationExpiredLink()
 
-    fireEvent.press(getByText(`Renvoyer l’email`))
-
-    await waitFor(() => {
-      expect(navigate).not.toHaveBeenCalled()
+    await act(async () => {
+      fireEvent.press(getByText(`Renvoyer l’email`))
     })
+
+    expect(navigate).not.toHaveBeenCalled()
   })
 })

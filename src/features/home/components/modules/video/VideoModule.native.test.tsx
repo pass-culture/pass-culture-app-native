@@ -35,15 +35,15 @@ describe('VideoModule', () => {
     mockUseVideoOffers.mockReturnValueOnce({ offers: [offerFixture] })
     renderVideoModule()
 
-    await waitFor(() => {
-      expect(analytics.logModuleDisplayedOnHomepage).toHaveBeenNthCalledWith(
-        1,
-        videoModuleFixture.id,
-        'video',
-        1,
-        'abcd'
-      )
-    })
+    await act(async () => {})
+
+    expect(analytics.logModuleDisplayedOnHomepage).toHaveBeenNthCalledWith(
+      1,
+      videoModuleFixture.id,
+      'video',
+      1,
+      'abcd'
+    )
   })
 
   it('should not log ModuleDisplayedOnHomePage event when module is not rendered', async () => {
@@ -61,9 +61,9 @@ describe('VideoModule', () => {
 
     const multiOfferList = screen.getByTestId('videoMultiOffersModuleList')
 
-    await waitFor(() => {
-      expect(multiOfferList).not.toBeNull()
-    })
+    await act(async () => {})
+
+    expect(multiOfferList).not.toBeNull()
   })
 })
 

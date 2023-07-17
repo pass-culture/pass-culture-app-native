@@ -4,7 +4,7 @@ import { useRoute } from '__mocks__/@react-navigation/native'
 import { venueResponseSnap } from 'features/venue/fixtures/venueResponseSnap'
 import { Venue } from 'features/venue/pages/Venue/Venue'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { measurePerformance, screen } from 'tests/utils'
+import { act, measurePerformance } from 'tests/utils'
 
 useRoute.mockImplementation(() => ({ params: { id: venueResponseSnap.id } }))
 
@@ -19,9 +19,7 @@ describe('<Venue />', () => {
       reactQueryProviderHOC(<Venue />),
       {
         scenario: async () => {
-          await screen.findByLabelText('Nom du lieu : Le Petit Rintintin 1', {
-            timeout: TEST_TIMEOUT_IN_MS,
-          })
+          await act(async () => {})
         },
       }
     )

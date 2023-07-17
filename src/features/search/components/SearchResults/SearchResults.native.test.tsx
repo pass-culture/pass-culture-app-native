@@ -18,7 +18,7 @@ import { SuggestedPlace } from 'libs/place'
 import { placeholderData as mockSubcategoriesData } from 'libs/subcategories/placeholderData'
 import { mockedSuggestedVenues } from 'libs/venue/fixtures/mockedSuggestedVenues'
 import { Offer } from 'shared/offer/types'
-import { fireEvent, render, act, waitFor, screen } from 'tests/utils'
+import { fireEvent, render, act, screen } from 'tests/utils'
 import { theme } from 'theme'
 
 jest.mock('react-query')
@@ -116,10 +116,10 @@ describe('SearchResults component', () => {
   it('should render correctly', async () => {
     jest.useFakeTimers('legacy')
     jest.advanceTimersByTime(2000)
+    render(<SearchResults />)
+    await act(async () => {})
 
-    await waitFor(() => {
-      expect(render(<SearchResults />)).toMatchSnapshot()
-    })
+    expect(screen).toMatchSnapshot()
   })
 
   it('should log SearchScrollToPage when hitting the bottom of the page', async () => {
@@ -155,17 +155,16 @@ describe('SearchResults component', () => {
   describe('Category filter', () => {
     it('should display category filter button', async () => {
       render(<SearchResults />)
+      await act(async () => {})
 
-      await waitFor(() => {
-        expect(screen.getByTestId('Catégories')).toBeTruthy()
-      })
+      expect(screen.getByTestId('Catégories')).toBeTruthy()
     })
 
     it('should open the categories filter modal when pressing the category button', async () => {
       render(<SearchResults />)
       const categoryButton = screen.getByTestId('Catégories')
 
-      await waitFor(() => {
+      await act(async () => {
         fireEvent.press(categoryButton)
       })
 
@@ -179,11 +178,11 @@ describe('SearchResults component', () => {
         params: { offerCategories: [SearchGroupNameEnumv2.CD_VINYLE_MUSIQUE_EN_LIGNE] },
       })
       render(<SearchResults />)
+      await act(async () => {})
 
       const categoryButtonIcon = screen.getByTestId('categoryButtonIcon')
-      await waitFor(() => {
-        expect(categoryButtonIcon).toBeTruthy()
-      })
+
+      expect(categoryButtonIcon).toBeTruthy()
 
       const categoryButton = screen.getByTestId('Catégories\u00a0: Filtre sélectionné')
       expect(categoryButton).toHaveStyle({ borderColor: theme.colors.primary })
@@ -196,17 +195,16 @@ describe('SearchResults component', () => {
   describe('Price filter', () => {
     it('should display price filter button', async () => {
       render(<SearchResults />)
+      await act(async () => {})
 
-      await waitFor(() => {
-        expect(screen.getByTestId('Prix')).toBeTruthy()
-      })
+      expect(screen.getByTestId('Prix')).toBeTruthy()
     })
 
     it('should open the prices filter modal when pressing the prices filter button', async () => {
       render(<SearchResults />)
       const priceButton = screen.getByTestId('Prix')
 
-      await waitFor(() => {
+      await act(async () => {
         fireEvent.press(priceButton)
       })
 
@@ -220,11 +218,10 @@ describe('SearchResults component', () => {
         params: { minPrice: '5' },
       })
       render(<SearchResults />)
+      await act(async () => {})
 
       const priceButtonIcon = screen.getByTestId('priceButtonIcon')
-      await waitFor(() => {
-        expect(priceButtonIcon).toBeTruthy()
-      })
+      expect(priceButtonIcon).toBeTruthy()
 
       const priceButton = screen.getByTestId('Prix\u00a0: Filtre sélectionné')
       expect(priceButton).toHaveStyle({ borderColor: theme.colors.primary })
@@ -248,17 +245,16 @@ describe('SearchResults component', () => {
 
       it('should display Duo filter button', async () => {
         render(<SearchResults />)
+        await act(async () => {})
 
-        await waitFor(() => {
-          expect(screen.getByTestId('Duo')).toBeTruthy()
-        })
+        expect(screen.getByTestId('Duo')).toBeTruthy()
       })
 
       it('should open the duo filter modal when pressing the duo filter button', async () => {
         render(<SearchResults />)
         const duoButton = screen.getByTestId('Duo')
 
-        await waitFor(() => {
+        await act(async () => {
           fireEvent.press(duoButton)
         })
 
@@ -285,10 +281,9 @@ describe('SearchResults component', () => {
 
       it('should not display Duo filter button', async () => {
         render(<SearchResults />)
+        await act(async () => {})
 
-        await waitFor(() => {
-          expect(screen.queryByText('Duo')).toBeFalsy()
-        })
+        expect(screen.queryByText('Duo')).toBeFalsy()
       })
     })
 
@@ -305,10 +300,9 @@ describe('SearchResults component', () => {
 
       it('should not display Duo offer button', async () => {
         render(<SearchResults />)
+        await act(async () => {})
 
-        await waitFor(() => {
-          expect(screen.queryByText('Duo')).toBeFalsy()
-        })
+        expect(screen.queryByText('Duo')).toBeFalsy()
       })
     })
 
@@ -325,10 +319,9 @@ describe('SearchResults component', () => {
 
       it('should not display Duo offer button', async () => {
         render(<SearchResults />)
+        await act(async () => {})
 
-        await waitFor(() => {
-          expect(screen.queryByText('Duo')).toBeFalsy()
-        })
+        expect(screen.queryByText('Duo')).toBeFalsy()
       })
     })
   })
@@ -336,10 +329,9 @@ describe('SearchResults component', () => {
   describe('should not display geolocation incitation button', () => {
     it('when position is not null', async () => {
       render(<SearchResults />)
+      await act(async () => {})
 
-      await waitFor(() => {
-        expect(screen.queryByText('Géolocalise-toi')).toBeFalsy()
-      })
+      expect(screen.queryByText('Géolocalise-toi')).toBeFalsy()
     })
 
     it.each`
@@ -351,28 +343,26 @@ describe('SearchResults component', () => {
         params,
       })
       render(<SearchResults />)
+      await act(async () => {})
 
-      await waitFor(() => {
-        expect(screen.queryByText('Géolocalise-toi')).toBeFalsy()
-      })
+      expect(screen.queryByText('Géolocalise-toi')).toBeFalsy()
     })
 
     it('when position is null and no results search', async () => {
       mockPosition = null
       render(<SearchResults />)
+      await act(async () => {})
 
-      await waitFor(() => {
-        expect(screen.queryByText('Géolocalise-toi')).toBeFalsy()
-      })
+      expect(screen.queryByText('Géolocalise-toi')).toBeFalsy()
     })
   })
 
   describe('Location filter', () => {
     it('should display location filter button', async () => {
       render(<SearchResults />)
-      await waitFor(() => {
-        expect(screen.getByTestId('Localisation')).toBeTruthy()
-      })
+      await act(async () => {})
+
+      expect(screen.getByTestId('Localisation')).toBeTruthy()
     })
 
     it.each`
@@ -399,10 +389,9 @@ describe('SearchResults component', () => {
         mockSearchState = { ...searchState, locationFilter }
 
         render(<SearchResults />)
+        await act(async () => {})
 
-        await waitFor(() => {
-          expect(screen.queryByText(locationButtonLabel)).toBeTruthy()
-        })
+        expect(screen.queryByText(locationButtonLabel)).toBeTruthy()
       }
     )
   })
@@ -410,16 +399,16 @@ describe('SearchResults component', () => {
   describe('Dates and hours filter', () => {
     it('should display dates and hours filter button', async () => {
       render(<SearchResults />)
-      await waitFor(() => {
-        expect(screen.queryByTestId('Dates & heures')).toBeTruthy()
-      })
+      await act(async () => {})
+
+      expect(screen.queryByTestId('Dates & heures')).toBeTruthy()
     })
 
     it('should open the type filter modal when pressing the type filter button', async () => {
       render(<SearchResults />)
       const datesHoursButton = screen.getByTestId('Dates & heures')
 
-      await waitFor(() => {
+      await act(async () => {
         fireEvent.press(datesHoursButton)
       })
 
@@ -439,11 +428,10 @@ describe('SearchResults component', () => {
           params,
         })
         render(<SearchResults />)
+        await act(async () => {})
 
         const datesHoursButtonIcon = screen.getByTestId('datesHoursButtonIcon')
-        await waitFor(() => {
-          expect(datesHoursButtonIcon).toBeTruthy()
-        })
+        expect(datesHoursButtonIcon).toBeTruthy()
 
         const datesHoursButton = screen.getByTestId('Dates & heures\u00a0: Filtre sélectionné')
         expect(datesHoursButton).toHaveStyle({ borderColor: theme.colors.primary })
@@ -460,7 +448,7 @@ describe('SearchResults component', () => {
     mockNbHits = mockedAlgoliaResponse.nbHits
     render(<SearchResults />)
 
-    await waitFor(() => {
+    await act(async () => {
       fireEvent.press(screen.getByText('Géolocalise-toi'))
     })
 
@@ -473,7 +461,7 @@ describe('SearchResults component', () => {
     mockNbHits = mockedAlgoliaResponse.nbHits
     render(<SearchResults />)
 
-    await waitFor(() => {
+    await act(async () => {
       fireEvent.press(screen.getByText('Géolocalise-toi'))
     })
 
@@ -489,20 +477,18 @@ describe('SearchResults component', () => {
 
     it('when position is null', async () => {
       render(<SearchResults />)
+      await act(async () => {})
 
-      await waitFor(() => {
-        expect(screen.queryByText('Géolocalise-toi')).toBeTruthy()
-      })
+      expect(screen.queryByText('Géolocalise-toi')).toBeTruthy()
     })
 
     it('when position is null and query is not an offer not present', async () => {
       mockUserData = [{ message: 'n’est pas disponible sur le pass Culture.' }]
       mockSearchState = { ...searchState, query: 'iPhone' }
       render(<SearchResults />)
+      await act(async () => {})
 
-      await waitFor(() => {
-        expect(screen.queryByText('Géolocalise-toi')).toBeFalsy()
-      })
+      expect(screen.queryByText('Géolocalise-toi')).toBeFalsy()
     })
   })
 
@@ -513,10 +499,9 @@ describe('SearchResults component', () => {
       mockUserData = [{ message: 'Offre non disponible sur le pass Culture.' }]
       mockSearchState = { ...searchState, query: 'iPhone' }
       render(<SearchResults />)
+      await act(async () => {})
 
-      await waitFor(() => {
-        expect(screen.queryByText('Offre non disponible sur le pass Culture.')).toBeTruthy()
-      })
+      expect(screen.queryByText('Offre non disponible sur le pass Culture.')).toBeTruthy()
     })
 
     it('should not display when query is an available offer', async () => {
@@ -525,10 +510,9 @@ describe('SearchResults component', () => {
       mockUserData = []
       mockSearchState = { ...searchState, query: 'Deezer' }
       render(<SearchResults />)
+      await act(async () => {})
 
-      await waitFor(() => {
-        expect(screen.queryByText('Offre non disponible sur le pass Culture.')).toBeFalsy()
-      })
+      expect(screen.queryByText('Offre non disponible sur le pass Culture.')).toBeFalsy()
     })
   })
 })

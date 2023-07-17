@@ -6,7 +6,7 @@ import { offerResponseSnap } from 'features/offer/fixtures/offerResponse'
 import { env } from 'libs/environment'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { server } from 'tests/server'
-import { act, render, screen, waitFor } from 'tests/utils'
+import { act, render, screen } from 'tests/utils'
 
 import { OfferPartialDescription } from './OfferPartialDescription'
 
@@ -38,12 +38,16 @@ describe('OfferPartialDescription', () => {
 
   it('places CTA on flex-end when provided a description', async () => {
     renderOfferDescription(defaultParams)
+    await act(async () => {})
+
     const offerSeeMoreContainer = await screen.findByTestId('offerSeeMoreContainer')
     expect(offerSeeMoreContainer.props.style[0].alignSelf).toBe('flex-end')
   })
 
   it('renders externalLinks if http(s) url are present in the description', async () => {
     renderOfferDescription(defaultParams)
+    await act(async () => {})
+
     expect(await screen.findByTestId('externalSiteIcon')).toBeTruthy()
   })
 
@@ -52,6 +56,7 @@ describe('OfferPartialDescription', () => {
       ...defaultParams,
       description: undefined,
     })
+
     await screen.findByText('Voir plus d’informations')
     expect(screen.queryByTestId('offerPartialDescriptionBody')).toBeNull()
   })
@@ -93,6 +98,8 @@ describe('OfferPartialDescription', () => {
 
     it('should be rendered when there is some content on the description page', async () => {
       renderOfferDescription(defaultParams)
+      await act(async () => {})
+
       expect(await screen.findByTestId('offerSeeMoreContainer')).toBeTruthy()
     })
 
@@ -118,7 +125,7 @@ describe('OfferPartialDescription', () => {
         })
         const descriptionComponent = screen.getByTestId('offerPartialDescriptionBody')
 
-        act(() => {
+        await act(async () => {
           descriptionComponent.props.onTextLayout({ nativeEvent: { lines } })
         })
 
@@ -131,6 +138,8 @@ describe('OfferPartialDescription', () => {
           ...defaultParams,
           description: undefined,
         })
+        await act(async () => {})
+
         expect(await screen.findByTestId('offerSeeMoreContainer')).toBeTruthy()
       })
 
@@ -174,7 +183,7 @@ describe('OfferPartialDescription', () => {
         })
         const descriptionComponent = await screen.findByTestId('offerPartialDescriptionBody')
 
-        act(() => {
+        await act(async () => {
           descriptionComponent.props.onTextLayout({ nativeEvent: { lines } })
         })
 
@@ -188,10 +197,9 @@ describe('OfferPartialDescription', () => {
           ...defaultParams,
           description: undefined,
         })
+        await act(async () => {})
 
-        await waitFor(() => {
-          expect(screen.queryByTestId('offerSeeMoreContainer')).toBeNull()
-        })
+        expect(screen.queryByTestId('offerSeeMoreContainer')).toBeNull()
       })
 
       it('when the description is small enough to be fully readable', async () => {
@@ -211,7 +219,7 @@ describe('OfferPartialDescription', () => {
         })
         const descriptionComponent = await screen.findByTestId('offerPartialDescriptionBody')
 
-        act(() => {
+        await act(async () => {
           descriptionComponent.props.onTextLayout({ nativeEvent: { lines } })
         })
         expect(screen.queryByTestId('offerSeeMoreContainer')).toBeNull()

@@ -9,7 +9,7 @@ import { SearchView } from 'features/search/types'
 import { analytics } from 'libs/analytics'
 import { GeoCoordinates, Position } from 'libs/geolocation'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { fireEvent, render, screen, waitFor } from 'tests/utils'
+import { fireEvent, render, screen, act } from 'tests/utils'
 
 import { SearchFilter } from './SearchFilter'
 
@@ -41,10 +41,9 @@ describe('<SearchFilter/>', () => {
       aroundRadius: 100,
     }
     const { toJSON } = renderSearchFilter()
+    await act(async () => {})
 
-    await waitFor(() => {
-      expect(toJSON()).toMatchSnapshot()
-    })
+    expect(toJSON()).toMatchSnapshot()
   })
 
   it('should load url params when opening the general filters page', async () => {
@@ -52,12 +51,11 @@ describe('<SearchFilter/>', () => {
       params: { offerCategories: [SearchGroupNameEnumv2.CD_VINYLE_MUSIQUE_EN_LIGNE] },
     })
     renderSearchFilter()
+    await act(async () => {})
 
-    await waitFor(() => {
-      expect(mockStateDispatch).toHaveBeenCalledWith({
-        type: 'SET_STATE',
-        payload: { offerCategories: [SearchGroupNameEnumv2.CD_VINYLE_MUSIQUE_EN_LIGNE] },
-      })
+    expect(mockStateDispatch).toHaveBeenCalledWith({
+      type: 'SET_STATE',
+      payload: { offerCategories: [SearchGroupNameEnumv2.CD_VINYLE_MUSIQUE_EN_LIGNE] },
     })
   })
 
@@ -66,26 +64,26 @@ describe('<SearchFilter/>', () => {
       useRoute.mockReturnValueOnce({ params: initialSearchState })
       renderSearchFilter()
 
-      fireEvent.press(screen.getByTestId('Fermer'))
+      await act(async () => {
+        fireEvent.press(screen.getByTestId('Fermer'))
+      })
 
-      await waitFor(() => {
-        expect(navigate).toHaveBeenCalledWith('TabNavigator', {
-          params: { ...initialSearchState, view: SearchView.Results },
-          screen: 'Search',
-        })
+      expect(navigate).toHaveBeenCalledWith('TabNavigator', {
+        params: { ...initialSearchState, view: SearchView.Results },
+        screen: 'Search',
       })
     })
 
     it('when pressing Rechercher', async () => {
       renderSearchFilter()
 
-      fireEvent.press(screen.getByText('Rechercher'))
+      await act(async () => {
+        fireEvent.press(screen.getByText('Rechercher'))
+      })
 
-      await waitFor(() => {
-        expect(navigate).toHaveBeenCalledWith('TabNavigator', {
-          params: { ...mockSearchState, view: SearchView.Results },
-          screen: 'Search',
-        })
+      expect(navigate).toHaveBeenCalledWith('TabNavigator', {
+        params: { ...mockSearchState, view: SearchView.Results },
+        screen: 'Search',
       })
     })
   })
@@ -94,20 +92,20 @@ describe('<SearchFilter/>', () => {
     it('and position is not null', async () => {
       renderSearchFilter()
 
-      fireEvent.press(screen.getByText('Réinitialiser'))
+      await act(async () => {
+        fireEvent.press(screen.getByText('Réinitialiser'))
+      })
 
-      await waitFor(() => {
-        expect(mockStateDispatch).toHaveBeenCalledWith({
-          type: 'SET_STATE',
-          payload: {
-            ...initialSearchState,
-            locationFilter: { locationType: LocationType.AROUND_ME, aroundRadius: MAX_RADIUS },
-            minPrice: undefined,
-            maxPrice: undefined,
-            offerGenreTypes: undefined,
-            offerNativeCategories: undefined,
-          },
-        })
+      expect(mockStateDispatch).toHaveBeenCalledWith({
+        type: 'SET_STATE',
+        payload: {
+          ...initialSearchState,
+          locationFilter: { locationType: LocationType.AROUND_ME, aroundRadius: MAX_RADIUS },
+          minPrice: undefined,
+          maxPrice: undefined,
+          offerGenreTypes: undefined,
+          offerNativeCategories: undefined,
+        },
       })
     })
 
@@ -115,20 +113,20 @@ describe('<SearchFilter/>', () => {
       mockPosition = null
       renderSearchFilter()
 
-      fireEvent.press(screen.getByText('Réinitialiser'))
+      await act(async () => {
+        fireEvent.press(screen.getByText('Réinitialiser'))
+      })
 
-      await waitFor(() => {
-        expect(mockStateDispatch).toHaveBeenCalledWith({
-          type: 'SET_STATE',
-          payload: {
-            ...initialSearchState,
-            locationFilter: { locationType: LocationType.EVERYWHERE },
-            minPrice: undefined,
-            maxPrice: undefined,
-            offerGenreTypes: undefined,
-            offerNativeCategories: undefined,
-          },
-        })
+      expect(mockStateDispatch).toHaveBeenCalledWith({
+        type: 'SET_STATE',
+        payload: {
+          ...initialSearchState,
+          locationFilter: { locationType: LocationType.EVERYWHERE },
+          minPrice: undefined,
+          maxPrice: undefined,
+          offerGenreTypes: undefined,
+          offerNativeCategories: undefined,
+        },
       })
     })
   })
@@ -136,27 +134,25 @@ describe('<SearchFilter/>', () => {
   it('should log analytics when clicking on the reset button', async () => {
     renderSearchFilter()
 
-    fireEvent.press(screen.getByText('Réinitialiser'))
-
-    await waitFor(() => {
-      expect(analytics.logReinitializeFilters).toBeCalledTimes(1)
+    await act(async () => {
+      fireEvent.press(screen.getByText('Réinitialiser'))
     })
+
+    expect(analytics.logReinitializeFilters).toBeCalledTimes(1)
   })
 
   it('should display close button on header', async () => {
     renderSearchFilter()
+    await act(async () => {})
 
-    await waitFor(() => {
-      expect(screen.getByTestId('Fermer')).toBeTruthy()
-    })
+    expect(screen.getByTestId('Fermer')).toBeTruthy()
   })
 
   it('should not display back button on header', async () => {
     renderSearchFilter()
+    await act(async () => {})
 
-    await waitFor(() => {
-      expect(screen.queryByTestId('Revenir en arrière')).toBeFalsy()
-    })
+    expect(screen.queryByTestId('Revenir en arrière')).toBeFalsy()
   })
 })
 

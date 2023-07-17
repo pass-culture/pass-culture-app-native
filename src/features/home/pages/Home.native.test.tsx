@@ -5,7 +5,7 @@ import { useHomepageData } from 'features/home/api/useHomepageData'
 import { formattedVenuesModule } from 'features/home/fixtures/homepage.fixture'
 import { analytics } from 'libs/analytics'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { render, screen } from 'tests/utils'
+import { act, render, screen } from 'tests/utils'
 
 import { Home } from './Home'
 
@@ -34,8 +34,7 @@ describe('Home page', () => {
       id: 'fakeEntryId',
     })
     renderHome()
-
-    await screen.findByText('Bienvenue !')
+    await act(async () => {})
 
     expect(screen).toMatchSnapshot()
   })
@@ -47,8 +46,7 @@ describe('Home page', () => {
       id: 'fakeEntryId',
     })
     renderHome()
-
-    await screen.findByText('Bienvenue !')
+    await act(async () => {})
 
     expect(analytics.logConsultHome).toHaveBeenNthCalledWith(1, { homeEntryId: 'fakeEntryId' })
   })

@@ -41,7 +41,10 @@ describe('<DatesHoursModal/>', () => {
 
   it('should render modal correctly after animation and with enabled submit', async () => {
     const renderAPI = renderDatesHoursModal()
-    await screen.findByText('Dates & heures')
+
+    await waitFor(() => {
+      expect(screen.getByLabelText('Rechercher')).toBeEnabled()
+    })
 
     expect(renderAPI).toMatchSnapshot()
   })
@@ -278,7 +281,9 @@ describe('<DatesHoursModal/>', () => {
   it('should close the modal when pressing previous button', async () => {
     renderDatesHoursModal()
 
-    await screen.findByText('Dates & heures')
+    await waitFor(() => {
+      expect(screen.getByLabelText('Rechercher')).toBeEnabled()
+    })
 
     const previousButton = screen.getByTestId('Fermer')
     fireEvent.press(previousButton)
@@ -342,6 +347,7 @@ describe('<DatesHoursModal/>', () => {
 
       await waitFor(() => {
         expect(screen.getByText('Appliquer le filtre')).toBeTruthy()
+        expect(screen.getByText('Appliquer le filtre')).toBeEnabled()
       })
     })
 
@@ -393,9 +399,10 @@ describe('<DatesHoursModal/>', () => {
         }
         renderDatesHoursModal()
 
-        await screen.findByText('Dates & heures')
-
-        const searchButton = screen.getByText('Rechercher')
+        const searchButton = screen.getByLabelText('Rechercher')
+        await waitFor(() => {
+          expect(searchButton).toBeEnabled()
+        })
         await act(async () => {
           fireEvent.press(searchButton)
         })
@@ -482,9 +489,10 @@ describe('<DatesHoursModal/>', () => {
         }
         renderDatesHoursModal()
 
-        await screen.findByText('Dates & heures')
-
-        const searchButton = screen.getByText('Rechercher')
+        const searchButton = screen.getByLabelText('Rechercher')
+        await waitFor(() => {
+          expect(searchButton).toBeEnabled()
+        })
         await act(async () => {
           fireEvent.press(searchButton)
         })
@@ -509,8 +517,10 @@ describe('<DatesHoursModal/>', () => {
       })
 
       await waitFor(() => {
-        expect(screen.getByTestId('Revenir en arrière')).toBeTruthy()
+        expect(screen.getByLabelText('Appliquer le filtre')).toBeEnabled()
       })
+
+      expect(screen.getByTestId('Revenir en arrière')).toBeTruthy()
     })
 
     it('should close the modal and general filter page when pressing close button when the modal is opening from general filter page', async () => {
@@ -519,7 +529,9 @@ describe('<DatesHoursModal/>', () => {
         onClose: mockOnClose,
       })
 
-      await screen.findByText('Dates & heures')
+      await waitFor(() => {
+        expect(screen.getByLabelText('Appliquer le filtre')).toBeEnabled()
+      })
 
       const closeButton = screen.getByTestId('Fermer')
       fireEvent.press(closeButton)
@@ -530,7 +542,9 @@ describe('<DatesHoursModal/>', () => {
     it('should only close the modal when pressing close button when the modal is opening from search results', async () => {
       renderDatesHoursModal()
 
-      await screen.findByText('Dates & heures')
+      await waitFor(() => {
+        expect(screen.getByLabelText('Rechercher')).toBeEnabled()
+      })
 
       const closeButton = screen.getByTestId('Fermer')
       fireEvent.press(closeButton)

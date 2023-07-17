@@ -13,7 +13,7 @@ import { EmptyResponse } from 'libs/fetch'
 import { Credit } from 'shared/user/useAvailableCredit'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { server } from 'tests/server'
-import { fireEvent, render, waitFor, screen } from 'tests/utils'
+import { fireEvent, render, waitFor, screen, act } from 'tests/utils'
 import { SNACK_BAR_TIME_OUT } from 'ui/components/snackBar/SnackBarContext'
 import { SnackBarHelperSettings } from 'ui/components/snackBar/types'
 
@@ -52,19 +52,20 @@ describe('<Favorite /> component', () => {
     renderFavorite()
 
     const offre = screen.getByText(favorite.offer.name)
-    fireEvent.press(offre)
+    await act(async () => {
+      fireEvent.press(offre)
+    })
 
-    await waitFor(() => {
-      expect(navigate).toHaveBeenCalledWith('Offer', {
-        from: 'favorites',
-        id: favorite.offer.id,
-      })
+    expect(navigate).toHaveBeenCalledWith('Offer', {
+      from: 'favorites',
+      id: favorite.offer.id,
     })
   })
 
   it('should show distance if geolocation enabled', async () => {
     mockDistance = '10 km'
     renderFavorite()
+    await act(async () => {})
 
     expect(await screen.findByText('10 km')).toBeTruthy()
   })
@@ -108,7 +109,9 @@ describe('<Favorite /> component', () => {
     renderFavorite()
 
     const shareButton = await screen.findByLabelText(`Partager l’offre ${favorite.offer.name}`)
-    fireEvent.press(shareButton)
+    await act(async () => {
+      fireEvent.press(shareButton)
+    })
 
     expect(share).toHaveBeenCalledTimes(1)
   })
@@ -117,7 +120,9 @@ describe('<Favorite /> component', () => {
     renderFavorite()
 
     const shareButton = await screen.findByLabelText(`Partager l’offre ${favorite.offer.name}`)
-    fireEvent.press(shareButton)
+    await act(async () => {
+      fireEvent.press(shareButton)
+    })
 
     expect(analytics.logShare).toHaveBeenNthCalledWith(1, {
       type: 'Offer',

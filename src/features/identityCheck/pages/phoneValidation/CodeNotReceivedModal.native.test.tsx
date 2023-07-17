@@ -9,7 +9,7 @@ import {
 } from 'features/identityCheck/pages/phoneValidation/CodeNotReceivedModal'
 import { analytics } from 'libs/analytics'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { fireEvent, render, waitFor } from 'tests/utils'
+import { act, fireEvent, render, waitFor } from 'tests/utils'
 import { SNACK_BAR_TIME_OUT } from 'ui/components/snackBar/SnackBarContext'
 import { SnackBarHelperSettings } from 'ui/components/snackBar/types'
 
@@ -145,9 +145,11 @@ describe('<CodeNotReceivedModal />', () => {
     const { getByTestId } = renderCodeNotReceivedModal()
 
     const requestNewCodeButton = getByTestId('Demander un autre code')
-    fireEvent.press(requestNewCodeButton)
+    await act(async () => {
+      fireEvent.press(requestNewCodeButton)
+    })
 
-    await waitFor(() => expect(analytics.logHasRequestedCode).toHaveBeenCalledTimes(1))
+    expect(analytics.logHasRequestedCode).toHaveBeenCalledTimes(1)
   })
 })
 

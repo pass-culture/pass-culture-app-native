@@ -6,7 +6,7 @@ import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { mockedAlgoliaResponse } from 'libs/algolia/__mocks__/mockedAlgoliaResponse'
 import { analytics } from 'libs/analytics'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { fireEvent, render, screen, waitFor } from 'tests/utils'
+import { act, fireEvent, render, screen, waitFor } from 'tests/utils'
 
 const hideModalMock = jest.fn()
 
@@ -30,13 +30,14 @@ describe('VideoModal', () => {
     renderVideoModal()
 
     const closeButton = screen.getByTestId('Fermer la modale vidéo')
-    fireEvent.press(closeButton)
 
-    await waitFor(() => {
-      expect(analytics.logHasDismissedModal).toHaveBeenNthCalledWith(1, {
-        moduleId: 'abcd',
-        modalType: 'video',
-      })
+    await act(async () => {
+      fireEvent.press(closeButton)
+    })
+
+    expect(analytics.logHasDismissedModal).toHaveBeenNthCalledWith(1, {
+      moduleId: 'abcd',
+      modalType: 'video',
     })
   })
 })

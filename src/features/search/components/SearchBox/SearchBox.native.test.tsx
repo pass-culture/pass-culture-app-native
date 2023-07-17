@@ -13,7 +13,7 @@ import { Venue } from 'features/venue/types'
 import { GeoCoordinates, Position } from 'libs/geolocation'
 import { SuggestedPlace } from 'libs/place'
 import { mockedSuggestedVenues } from 'libs/venue/fixtures/mockedSuggestedVenues'
-import { fireEvent, render, act, waitFor } from 'tests/utils'
+import { fireEvent, render, act } from 'tests/utils'
 import * as useModalAPI from 'ui/components/modals/useModal'
 
 import { SearchBox } from './SearchBox'
@@ -86,10 +86,9 @@ describe('SearchBox component', () => {
   it('should render SearchBox', async () => {
     jest.useFakeTimers('legacy')
     const renderAPI = render(<SearchBox searchInputID={searchInputID} />)
+    await act(async () => {})
 
-    await waitFor(() => {
-      expect(renderAPI).toMatchSnapshot()
-    })
+    expect(renderAPI).toMatchSnapshot()
   })
 
   it('should call navigate on submit', async () => {
@@ -405,10 +404,9 @@ describe('SearchBox component', () => {
       mockPosition = position
       useRoute.mockReturnValueOnce({ params: { view: SearchView.Landing, locationFilter } })
       const { queryByText } = render(<SearchBox searchInputID={searchInputID} />)
+      await act(async () => {})
 
-      await waitFor(() => {
-        expect(queryByText(locationButtonLabel)).toBeTruthy()
-      })
+      expect(queryByText(locationButtonLabel)).toBeTruthy()
     }
   )
 })

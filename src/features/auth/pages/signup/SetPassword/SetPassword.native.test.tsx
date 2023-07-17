@@ -29,7 +29,9 @@ describe('SetPassword Page', () => {
     render(<SetPassword {...props} />)
 
     const passwordInput = screen.getByPlaceholderText('Ton mot de passe')
-    fireEvent.changeText(passwordInput, 'user@AZERTY123')
+    await act(async () => {
+      fireEvent.changeText(passwordInput, 'user@AZERTY123')
+    })
 
     expect(await screen.findByTestId('Continuer')).toBeEnabled()
   })

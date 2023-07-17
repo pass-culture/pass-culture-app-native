@@ -6,7 +6,7 @@ import { usePhoneValidationRemainingAttempts } from 'features/identityCheck/api/
 import { SetPhoneNumber } from 'features/identityCheck/pages/phoneValidation/SetPhoneNumber'
 import { analytics } from 'libs/analytics'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { fireEvent, render, waitFor } from 'tests/utils'
+import { act, fireEvent, render, waitFor, screen } from 'tests/utils'
 import { theme } from 'theme'
 import * as useModalAPI from 'ui/components/modals/useModal'
 
@@ -183,20 +183,33 @@ describe('SetPhoneNumber', () => {
 
       const continueButton = getByTestId('Continuer')
       const input = getByTestId('Entrée pour le numéro de téléphone')
-      fireEvent.changeText(input, '612345678')
-      fireEvent.press(continueButton)
 
-      await waitFor(() => expect(analytics.logHasRequestedCode).toHaveBeenCalledTimes(1))
+      await act(async () => {
+        fireEvent.changeText(input, '612345678')
+      })
+
+      await act(async () => {
+        fireEvent.press(continueButton)
+      })
+
+      expect(analytics.logHasRequestedCode).toHaveBeenCalledTimes(1)
     })
 
     it('should log analytics when pressing "Continuer" button', async () => {
-      const { getByTestId, getByText } = renderSetPhoneNumber()
+      renderSetPhoneNumber()
 
-      const input = getByTestId('Entrée pour le numéro de téléphone')
-      fireEvent.changeText(input, '612345678')
-      fireEvent.press(getByText('Continuer'))
+      const continueButton = screen.getByTestId('Continuer')
+      const input = screen.getByTestId('Entrée pour le numéro de téléphone')
 
-      await waitFor(() => expect(analytics.logPhoneNumberClicked).toHaveBeenCalledTimes(1))
+      await act(async () => {
+        fireEvent.changeText(input, '612345678')
+      })
+
+      await act(async () => {
+        fireEvent.press(continueButton)
+      })
+
+      expect(analytics.logPhoneNumberClicked).toHaveBeenCalledTimes(1)
     })
   })
 })

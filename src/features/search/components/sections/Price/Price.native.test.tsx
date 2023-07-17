@@ -2,7 +2,7 @@ import React from 'react'
 
 import { Price } from 'features/search/components/sections/Price/Price'
 import { initialSearchState } from 'features/search/context/reducer'
-import { fireEvent, render, screen } from 'tests/utils'
+import { act, fireEvent, render, screen } from 'tests/utils'
 
 let mockSearchState = initialSearchState
 
@@ -20,12 +20,16 @@ describe('Price component', () => {
     mockSearchState = { ...initialSearchState, minPrice: '5' }
     render(<Price />)
 
+    await act(async () => {})
+
     expect(await screen.findByText('5\u00a0€ et plus')).toBeTruthy()
   })
 
   it('should display the search price description when maximum price selected', async () => {
     mockSearchState = { ...initialSearchState, maxPrice: '10' }
     render(<Price />)
+
+    await act(async () => {})
 
     expect(await screen.findByText('10\u00a0€ et moins')).toBeTruthy()
   })
@@ -34,12 +38,16 @@ describe('Price component', () => {
     mockSearchState = { ...initialSearchState, minPrice: '5', maxPrice: '10' }
     render(<Price />)
 
+    await act(async () => {})
+
     expect(await screen.findByText('de 5\u00a0€ à 10\u00a0€')).toBeTruthy()
   })
 
   it('should display the search price description with "Gratuit" when minimum and maximum prices selected and are 0', async () => {
     mockSearchState = { ...initialSearchState, minPrice: '0', maxPrice: '0' }
     render(<Price />)
+
+    await act(async () => {})
 
     expect(await screen.findByText('Gratuit')).toBeTruthy()
   })
@@ -50,9 +58,11 @@ describe('Price component', () => {
     })
     const searchPriceButton = screen.getByTestId('FilterRow')
 
-    fireEvent.press(searchPriceButton)
+    await act(async () => {
+      fireEvent.press(searchPriceButton)
+    })
 
-    const fullscreenModalScrollView = await screen.findByTestId('fullscreenModalScrollView')
+    const fullscreenModalScrollView = screen.getByTestId('fullscreenModalScrollView')
 
     expect(fullscreenModalScrollView).toBeTruthy()
   })

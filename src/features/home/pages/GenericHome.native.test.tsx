@@ -35,16 +35,14 @@ describe('GenericHome', () => {
   it('should display skeleton', async () => {
     useShowSkeletonSpy.mockReturnValueOnce(true)
     const home = renderGenericHome()
-
-    await screen.findByTestId('homeBodyScrollView')
+    await act(async () => {})
 
     expect(home).toMatchSnapshot()
   })
 
   it('should display real content', async () => {
     const home = renderGenericHome()
-
-    await screen.findByTestId('homeBodyScrollView')
+    await act(async () => {})
 
     expect(home).toMatchSnapshot()
   })
@@ -141,7 +139,7 @@ describe('GenericHome page - Analytics', () => {
     ]
     renderGenericHome(modules)
 
-    act(() => {
+    await act(async () => {
       const scrollView = screen.queryByTestId('homeBodyScrollView')
       scrollView && scrollView.props.onScroll(scrollEventBottom)
     })

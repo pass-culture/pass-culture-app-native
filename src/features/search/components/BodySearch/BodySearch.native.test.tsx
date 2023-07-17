@@ -3,7 +3,7 @@ import React from 'react'
 import { mockSuggestionHits } from 'features/search/fixtures/algolia'
 import { SearchView } from 'features/search/types'
 import { placeholderData as mockData } from 'libs/subcategories/placeholderData'
-import { render, screen } from 'tests/utils'
+import { act, render, screen } from 'tests/utils'
 
 import { BodySearch } from './BodySearch'
 
@@ -52,8 +52,9 @@ describe('<BodySearch />', () => {
     expect(screen.queryByTestId('searchResults')).toBeNull()
   })
 
-  it('should render search results when asked', () => {
+  it('should render search results when asked', async () => {
     render(<BodySearch view={SearchView.Results} />)
+    await act(async () => {})
 
     expect(screen.queryByTestId('categoriesButtons')).toBeNull()
     expect(screen.queryByTestId('autocompleteList')).toBeNull()

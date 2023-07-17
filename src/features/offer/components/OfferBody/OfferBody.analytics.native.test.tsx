@@ -83,10 +83,11 @@ describe('<OfferBody /> - Analytics', () => {
     jest.useFakeTimers('legacy')
   })
 
-  const trigger = (component: ReactTestInstance) => {
+  const trigger = async (component: ReactTestInstance) => {
     fireEvent.press(component)
+
     //The Accessibility accordion is animated so we wait until its fully open before testing the analytics
-    act(() => {
+    await act(async () => {
       jest.runAllTimers()
     })
   }
@@ -106,10 +107,11 @@ describe('<OfferBody /> - Analytics', () => {
     renderOfferBodyForAnalytics()
 
     const accessibilityButton = await screen.findByText('Accessibilité')
-    trigger(accessibilityButton)
+    await trigger(accessibilityButton)
+
     expect(analytics.logConsultAccessibility).toHaveBeenNthCalledWith(1, { offerId })
 
-    trigger(accessibilityButton)
+    await trigger(accessibilityButton)
     expect(analytics.logConsultAccessibility).toHaveBeenCalledTimes(1)
   })
 
@@ -118,10 +120,10 @@ describe('<OfferBody /> - Analytics', () => {
 
     const withdrawalButton = await screen.findByText('Modalités de retrait')
 
-    trigger(withdrawalButton)
+    await trigger(withdrawalButton)
     expect(analytics.logConsultWithdrawal).toHaveBeenNthCalledWith(1, { offerId })
 
-    trigger(withdrawalButton)
+    await trigger(withdrawalButton)
     expect(analytics.logConsultWithdrawal).toHaveBeenCalledTimes(1)
   })
 
@@ -144,7 +146,7 @@ describe('<OfferBody /> - Analytics', () => {
     renderOfferBodyForAnalytics()
 
     const otherButton = await screen.findByText('Plus d’options')
-    fireEvent.press(otherButton)
+    await act(async () => fireEvent.press(otherButton))
 
     expect(analytics.logShare).toHaveBeenNthCalledWith(1, {
       type: 'Offer',
@@ -159,7 +161,8 @@ describe('<OfferBody /> - Analytics', () => {
 
     const venueBannerComponent = await screen.findByTestId(`Lieu ${offerResponseSnap.venue.name}`)
 
-    fireEvent.press(venueBannerComponent)
+    await act(async () => fireEvent.press(venueBannerComponent))
+
     expect(analytics.logConsultVenue).toHaveBeenNthCalledWith(1, {
       venueId: offerResponseSnap.venue.id,
       from: 'offer',
@@ -178,7 +181,9 @@ describe('<OfferBody /> - Analytics', () => {
 
     const scrollView = (await screen.findAllByTestId('offersModuleList'))[0]
 
-    scrollView.props.onScroll({ nativeEvent: nativeEventMiddle })
+    await act(async () => {
+      scrollView.props.onScroll({ nativeEvent: nativeEventMiddle })
+    })
 
     expect(analytics.logPlaylistHorizontalScroll).toHaveBeenCalledTimes(1)
   })
@@ -194,7 +199,9 @@ describe('<OfferBody /> - Analytics', () => {
     })
     const scrollView = (await screen.findAllByTestId('offersModuleList'))[0]
 
-    scrollView.props.onScroll({ nativeEvent: nativeEventMiddle })
+    await act(async () => {
+      scrollView.props.onScroll({ nativeEvent: nativeEventMiddle })
+    })
 
     expect(analytics.logPlaylistHorizontalScroll).toHaveBeenCalledTimes(1)
   })
@@ -203,7 +210,7 @@ describe('<OfferBody /> - Analytics', () => {
     renderOfferBodyForAnalytics()
     await screen.findByTestId('offer-container')
 
-    fireEvent.press(screen.getByText('Voir l’itinéraire'))
+    await act(async () => fireEvent.press(screen.getByText('Voir l’itinéraire')))
 
     expect(analytics.logConsultItinerary).toBeCalledWith({
       offerId: offerResponseSnap.id,
@@ -234,7 +241,9 @@ describe('<OfferBody /> - Analytics', () => {
       renderOfferBodyForAnalytics()
       await screen.findByTestId('offer-container')
 
-      fireEvent.press(screen.getByText('Voir d’autres lieux disponibles'))
+      await act(async () => {
+        fireEvent.press(screen.getByText('Voir d’autres lieux disponibles'))
+      })
 
       expect(analytics.logMultivenueOptionDisplayed).toBeCalledWith(offerResponseSnap.id)
     })
