@@ -209,7 +209,7 @@
     "@storybook/addon-react-native-web": "^0.0.20",
     "@storybook/jest": "^0.0.10",
     "@storybook/react": "^6.5.16",
-    "@storybook/testing-library": "^0.0.13",
+    "@storybook/testing-library": "^0.2.0",
     "@svgr/webpack": "^5.5.0",
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/jest-native": "^5.4.1",
