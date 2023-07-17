@@ -258,12 +258,12 @@ Object {
   background-color: #F1F1F4;
 }
 
-.c1 {
-  padding: 4px;
-}
-
 .c3 {
   background-color: transparent;
+}
+
+.c1 {
+  padding: 4px;
 }
 
 <body
@@ -334,7 +334,7 @@ Object {
                     >
                       <button
                         aria-label="Fermer la modale"
-                        class="c0 c1 sc-gKclnd c1"
+                        class="c0 c1 sc-iCfMLu c1"
                         data-testid="Fermer la modale"
                         tabindex="0"
                         title="Fermer la modale"

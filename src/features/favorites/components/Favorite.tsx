@@ -168,7 +168,7 @@ export const Favorite: React.FC<Props> = (props) => {
             />
           </ShareContainer>
         </Container>
-        <ButtonsRow>
+        <FavoriteButtonsContainer>
           <ButtonContainer>
             <ButtonSecondary
               wording="Supprimer"
@@ -182,7 +182,7 @@ export const Favorite: React.FC<Props> = (props) => {
           <ButtonContainer>
             <BookingButton offer={offer} user={props.user} onInAppBooking={props.onInAppBooking} />
           </ButtonContainer>
-        </ButtonsRow>
+        </FavoriteButtonsContainer>
         <Separator />
       </Animated.View>
       {!!shareContent && (
@@ -238,7 +238,7 @@ const ButtonContainer = styled.View({
 })
 
 const DEFAULT_MARGIN = getSpacing(6)
-const ButtonsRow = styled.View(({ theme }) => {
+export const FavoriteButtonsContainer = styled.View(({ theme }) => {
   const WEB_MARGIN_LEFT =
     DEFAULT_MARGIN + theme.tiles.sizes.small.width + getSpacing(SPACER_BETWEEN_IMAGE_AND_CONTENT)
   return {
