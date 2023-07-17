@@ -43,7 +43,7 @@ export const VideoModule: FunctionComponent<VideoModuleProps> = (props) => {
   } = useModal(false)
   const videoDuration = `${props.durationInMinutes} min`
 
-  const { offers } = useVideoOffers(props.offersModuleParameters, props.id)
+  const { offers } = useVideoOffers(props.offersModuleParameters, props.id, props.offerIds)
 
   const shouldModuleBeDisplayed = offers.length > 0
   const isMultiOffer = offers.length > 1

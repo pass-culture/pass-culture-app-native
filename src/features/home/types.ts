@@ -253,6 +253,7 @@ export type VideoModule = {
   offerTitle: string
   videoDescription: string
   videoPublicationDate: string
+  offerIds: string[]
 }
 
 export type OfferModuleParamsInfo = {
