@@ -410,6 +410,7 @@ describe('getCtaWordingAndAction', () => {
                   isSoldOut: false,
                   isForbiddenToUnderage,
                   price,
+                  features: [],
                 },
               ],
             },

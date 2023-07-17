@@ -30,6 +30,7 @@ export const offerResponseSnap: OfferResponse = {
       isExpired: false,
       isForbiddenToUnderage: false,
       isSoldOut: false,
+      features: [],
     },
     {
       id: 118928,
@@ -39,6 +40,7 @@ export const offerResponseSnap: OfferResponse = {
       isExpired: false,
       isForbiddenToUnderage: false,
       isSoldOut: false,
+      features: [],
     },
   ],
   image: {

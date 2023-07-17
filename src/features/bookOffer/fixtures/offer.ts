@@ -44,6 +44,7 @@ export const mockOffer: OfferResponse = {
       isExpired: false,
       isSoldOut: false,
       isForbiddenToUnderage: false,
+      features: [],
     },
     {
       id: 148411,
@@ -55,6 +56,7 @@ export const mockOffer: OfferResponse = {
       isExpired: false,
       isForbiddenToUnderage: false,
       isSoldOut: false,
+      features: [],
     },
     {
       id: 148410,
@@ -66,6 +68,7 @@ export const mockOffer: OfferResponse = {
       isExpired: false,
       isForbiddenToUnderage: false,
       isSoldOut: false,
+      features: [],
     },
   ],
   image: {
@@ -135,6 +138,7 @@ export const mockDigitalOffer: OfferResponse = {
       isExpired: false,
       isForbiddenToUnderage: false,
       isSoldOut: false,
+      features: [],
     },
   ],
   image: {

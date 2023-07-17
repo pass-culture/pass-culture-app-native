@@ -9,4 +9,5 @@ export const offerStockResponseSnap: OfferStockResponse = {
   isExpired: false,
   isSoldOut: false,
   isForbiddenToUnderage: false,
+  features: [],
 }
