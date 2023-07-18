@@ -704,165 +704,165 @@ exports[`<Favorites/> should render correctly 1`] = `
                 </View>
               </View>
             </View>
+          </View>
+          <View
+            style={
+              Array [
+                Object {
+                  "flexDirection": "row",
+                  "marginLeft": 24,
+                  "marginRight": 24,
+                  "marginTop": 24,
+                },
+              ]
+            }
+          >
             <View
               style={
                 Array [
                   Object {
-                    "flexDirection": "row",
-                    "justifyContent": "space-between",
-                    "marginTop": 24,
+                    "maxWidth": 280,
+                    "minWidth": 120,
+                    "width": "47%",
                   },
                 ]
               }
             >
               <View
+                borderRadius={24}
+                fullWidth={true}
+                height={48}
                 style={
                   Array [
                     Object {
-                      "maxWidth": 280,
-                      "minWidth": 120,
-                      "width": "47%",
+                      "backgroundColor": "#DDDDDD",
+                      "borderRadius": 24,
+                      "height": 48,
+                      "overflow": "hidden",
+                      "width": "100%",
                     },
                   ]
                 }
+                width={160}
               >
-                <View
-                  borderRadius={24}
-                  fullWidth={true}
-                  height={48}
-                  style={
+                <BVLinearGradient
+                  collapsable={false}
+                  colors={
                     Array [
-                      Object {
-                        "backgroundColor": "#DDDDDD",
-                        "borderRadius": 24,
-                        "height": 48,
-                        "overflow": "hidden",
-                        "width": "100%",
-                      },
+                      4292730333,
+                      4293848814,
+                      4293848814,
+                      4292730333,
                     ]
                   }
-                  width={160}
-                >
-                  <BVLinearGradient
-                    collapsable={false}
-                    colors={
-                      Array [
-                        4292730333,
-                        4293848814,
-                        4293848814,
-                        4292730333,
-                      ]
+                  endPoint={
+                    Object {
+                      "x": 1,
+                      "y": 0,
                     }
-                    endPoint={
-                      Object {
-                        "x": 1,
-                        "y": 0,
-                      }
+                  }
+                  locations={null}
+                  startPoint={
+                    Object {
+                      "x": 0,
+                      "y": 0,
                     }
-                    locations={null}
-                    startPoint={
-                      Object {
-                        "x": 0,
-                        "y": 0,
-                      }
+                  }
+                  style={
+                    Object {
+                      "borderRadius": 24,
+                      "bottom": 0,
+                      "left": 0,
+                      "position": "absolute",
+                      "right": 0,
+                      "top": 0,
+                      "transform": Array [
+                        Object {
+                          "translateX": -200,
+                        },
+                      ],
                     }
-                    style={
-                      Object {
-                        "borderRadius": 24,
-                        "bottom": 0,
-                        "left": 0,
-                        "position": "absolute",
-                        "right": 0,
-                        "top": 0,
-                        "transform": Array [
-                          Object {
-                            "translateX": -200,
-                          },
-                        ],
-                      }
-                    }
-                  />
-                </View>
+                  }
+                />
               </View>
+            </View>
+            <View
+              numberOfSpaces={5}
+              style={
+                Array [
+                  Object {
+                    "width": 20,
+                  },
+                ]
+              }
+            />
+            <View
+              style={
+                Array [
+                  Object {
+                    "maxWidth": 280,
+                    "minWidth": 120,
+                    "width": "47%",
+                  },
+                ]
+              }
+            >
               <View
+                borderRadius={24}
+                fullWidth={true}
+                height={48}
                 style={
                   Array [
                     Object {
-                      "flexBasis": 0,
-                      "flexGrow": 0,
-                      "flexShrink": 1,
+                      "backgroundColor": "#DDDDDD",
+                      "borderRadius": 24,
+                      "height": 48,
+                      "overflow": "hidden",
+                      "width": "100%",
                     },
                   ]
                 }
-              />
-              <View
-                style={
-                  Array [
-                    Object {
-                      "maxWidth": 280,
-                      "minWidth": 120,
-                      "width": "47%",
-                    },
-                  ]
-                }
+                width={160}
               >
-                <View
-                  borderRadius={24}
-                  fullWidth={true}
-                  height={48}
-                  style={
+                <BVLinearGradient
+                  collapsable={false}
+                  colors={
                     Array [
-                      Object {
-                        "backgroundColor": "#DDDDDD",
-                        "borderRadius": 24,
-                        "height": 48,
-                        "overflow": "hidden",
-                        "width": "100%",
-                      },
+                      4292730333,
+                      4293848814,
+                      4293848814,
+                      4292730333,
                     ]
                   }
-                  width={160}
-                >
-                  <BVLinearGradient
-                    collapsable={false}
-                    colors={
-                      Array [
-                        4292730333,
-                        4293848814,
-                        4293848814,
-                        4292730333,
-                      ]
+                  endPoint={
+                    Object {
+                      "x": 1,
+                      "y": 0,
                     }
-                    endPoint={
-                      Object {
-                        "x": 1,
-                        "y": 0,
-                      }
+                  }
+                  locations={null}
+                  startPoint={
+                    Object {
+                      "x": 0,
+                      "y": 0,
                     }
-                    locations={null}
-                    startPoint={
-                      Object {
-                        "x": 0,
-                        "y": 0,
-                      }
+                  }
+                  style={
+                    Object {
+                      "borderRadius": 24,
+                      "bottom": 0,
+                      "left": 0,
+                      "position": "absolute",
+                      "right": 0,
+                      "top": 0,
+                      "transform": Array [
+                        Object {
+                          "translateX": -200,
+                        },
+                      ],
                     }
-                    style={
-                      Object {
-                        "borderRadius": 24,
-                        "bottom": 0,
-                        "left": 0,
-                        "position": "absolute",
-                        "right": 0,
-                        "top": 0,
-                        "transform": Array [
-                          Object {
-                            "translateX": -200,
-                          },
-                        ],
-                      }
-                    }
-                  />
-                </View>
+                  }
+                />
               </View>
             </View>
           </View>
@@ -1231,165 +1231,165 @@ exports[`<Favorites/> should render correctly 1`] = `
                 </View>
               </View>
             </View>
+          </View>
+          <View
+            style={
+              Array [
+                Object {
+                  "flexDirection": "row",
+                  "marginLeft": 24,
+                  "marginRight": 24,
+                  "marginTop": 24,
+                },
+              ]
+            }
+          >
             <View
               style={
                 Array [
                   Object {
-                    "flexDirection": "row",
-                    "justifyContent": "space-between",
-                    "marginTop": 24,
+                    "maxWidth": 280,
+                    "minWidth": 120,
+                    "width": "47%",
                   },
                 ]
               }
             >
               <View
+                borderRadius={24}
+                fullWidth={true}
+                height={48}
                 style={
                   Array [
                     Object {
-                      "maxWidth": 280,
-                      "minWidth": 120,
-                      "width": "47%",
+                      "backgroundColor": "#DDDDDD",
+                      "borderRadius": 24,
+                      "height": 48,
+                      "overflow": "hidden",
+                      "width": "100%",
                     },
                   ]
                 }
+                width={160}
               >
-                <View
-                  borderRadius={24}
-                  fullWidth={true}
-                  height={48}
-                  style={
+                <BVLinearGradient
+                  collapsable={false}
+                  colors={
                     Array [
-                      Object {
-                        "backgroundColor": "#DDDDDD",
-                        "borderRadius": 24,
-                        "height": 48,
-                        "overflow": "hidden",
-                        "width": "100%",
-                      },
+                      4292730333,
+                      4293848814,
+                      4293848814,
+                      4292730333,
                     ]
                   }
-                  width={160}
-                >
-                  <BVLinearGradient
-                    collapsable={false}
-                    colors={
-                      Array [
-                        4292730333,
-                        4293848814,
-                        4293848814,
-                        4292730333,
-                      ]
+                  endPoint={
+                    Object {
+                      "x": 1,
+                      "y": 0,
                     }
-                    endPoint={
-                      Object {
-                        "x": 1,
-                        "y": 0,
-                      }
+                  }
+                  locations={null}
+                  startPoint={
+                    Object {
+                      "x": 0,
+                      "y": 0,
                     }
-                    locations={null}
-                    startPoint={
-                      Object {
-                        "x": 0,
-                        "y": 0,
-                      }
+                  }
+                  style={
+                    Object {
+                      "borderRadius": 24,
+                      "bottom": 0,
+                      "left": 0,
+                      "position": "absolute",
+                      "right": 0,
+                      "top": 0,
+                      "transform": Array [
+                        Object {
+                          "translateX": -200,
+                        },
+                      ],
                     }
-                    style={
-                      Object {
-                        "borderRadius": 24,
-                        "bottom": 0,
-                        "left": 0,
-                        "position": "absolute",
-                        "right": 0,
-                        "top": 0,
-                        "transform": Array [
-                          Object {
-                            "translateX": -200,
-                          },
-                        ],
-                      }
-                    }
-                  />
-                </View>
+                  }
+                />
               </View>
+            </View>
+            <View
+              numberOfSpaces={5}
+              style={
+                Array [
+                  Object {
+                    "width": 20,
+                  },
+                ]
+              }
+            />
+            <View
+              style={
+                Array [
+                  Object {
+                    "maxWidth": 280,
+                    "minWidth": 120,
+                    "width": "47%",
+                  },
+                ]
+              }
+            >
               <View
+                borderRadius={24}
+                fullWidth={true}
+                height={48}
                 style={
                   Array [
                     Object {
-                      "flexBasis": 0,
-                      "flexGrow": 0,
-                      "flexShrink": 1,
+                      "backgroundColor": "#DDDDDD",
+                      "borderRadius": 24,
+                      "height": 48,
+                      "overflow": "hidden",
+                      "width": "100%",
                     },
                   ]
                 }
-              />
-              <View
-                style={
-                  Array [
-                    Object {
-                      "maxWidth": 280,
-                      "minWidth": 120,
-                      "width": "47%",
-                    },
-                  ]
-                }
+                width={160}
               >
-                <View
-                  borderRadius={24}
-                  fullWidth={true}
-                  height={48}
-                  style={
+                <BVLinearGradient
+                  collapsable={false}
+                  colors={
                     Array [
-                      Object {
-                        "backgroundColor": "#DDDDDD",
-                        "borderRadius": 24,
-                        "height": 48,
-                        "overflow": "hidden",
-                        "width": "100%",
-                      },
+                      4292730333,
+                      4293848814,
+                      4293848814,
+                      4292730333,
                     ]
                   }
-                  width={160}
-                >
-                  <BVLinearGradient
-                    collapsable={false}
-                    colors={
-                      Array [
-                        4292730333,
-                        4293848814,
-                        4293848814,
-                        4292730333,
-                      ]
+                  endPoint={
+                    Object {
+                      "x": 1,
+                      "y": 0,
                     }
-                    endPoint={
-                      Object {
-                        "x": 1,
-                        "y": 0,
-                      }
+                  }
+                  locations={null}
+                  startPoint={
+                    Object {
+                      "x": 0,
+                      "y": 0,
                     }
-                    locations={null}
-                    startPoint={
-                      Object {
-                        "x": 0,
-                        "y": 0,
-                      }
+                  }
+                  style={
+                    Object {
+                      "borderRadius": 24,
+                      "bottom": 0,
+                      "left": 0,
+                      "position": "absolute",
+                      "right": 0,
+                      "top": 0,
+                      "transform": Array [
+                        Object {
+                          "translateX": -200,
+                        },
+                      ],
                     }
-                    style={
-                      Object {
-                        "borderRadius": 24,
-                        "bottom": 0,
-                        "left": 0,
-                        "position": "absolute",
-                        "right": 0,
-                        "top": 0,
-                        "transform": Array [
-                          Object {
-                            "translateX": -200,
-                          },
-                        ],
-                      }
-                    }
-                  />
-                </View>
+                  }
+                />
               </View>
             </View>
           </View>
@@ -1758,165 +1758,165 @@ exports[`<Favorites/> should render correctly 1`] = `
                 </View>
               </View>
             </View>
+          </View>
+          <View
+            style={
+              Array [
+                Object {
+                  "flexDirection": "row",
+                  "marginLeft": 24,
+                  "marginRight": 24,
+                  "marginTop": 24,
+                },
+              ]
+            }
+          >
             <View
               style={
                 Array [
                   Object {
-                    "flexDirection": "row",
-                    "justifyContent": "space-between",
-                    "marginTop": 24,
+                    "maxWidth": 280,
+                    "minWidth": 120,
+                    "width": "47%",
                   },
                 ]
               }
             >
               <View
+                borderRadius={24}
+                fullWidth={true}
+                height={48}
                 style={
                   Array [
                     Object {
-                      "maxWidth": 280,
-                      "minWidth": 120,
-                      "width": "47%",
+                      "backgroundColor": "#DDDDDD",
+                      "borderRadius": 24,
+                      "height": 48,
+                      "overflow": "hidden",
+                      "width": "100%",
                     },
                   ]
                 }
+                width={160}
               >
-                <View
-                  borderRadius={24}
-                  fullWidth={true}
-                  height={48}
-                  style={
+                <BVLinearGradient
+                  collapsable={false}
+                  colors={
                     Array [
-                      Object {
-                        "backgroundColor": "#DDDDDD",
-                        "borderRadius": 24,
-                        "height": 48,
-                        "overflow": "hidden",
-                        "width": "100%",
-                      },
+                      4292730333,
+                      4293848814,
+                      4293848814,
+                      4292730333,
                     ]
                   }
-                  width={160}
-                >
-                  <BVLinearGradient
-                    collapsable={false}
-                    colors={
-                      Array [
-                        4292730333,
-                        4293848814,
-                        4293848814,
-                        4292730333,
-                      ]
+                  endPoint={
+                    Object {
+                      "x": 1,
+                      "y": 0,
                     }
-                    endPoint={
-                      Object {
-                        "x": 1,
-                        "y": 0,
-                      }
+                  }
+                  locations={null}
+                  startPoint={
+                    Object {
+                      "x": 0,
+                      "y": 0,
                     }
-                    locations={null}
-                    startPoint={
-                      Object {
-                        "x": 0,
-                        "y": 0,
-                      }
+                  }
+                  style={
+                    Object {
+                      "borderRadius": 24,
+                      "bottom": 0,
+                      "left": 0,
+                      "position": "absolute",
+                      "right": 0,
+                      "top": 0,
+                      "transform": Array [
+                        Object {
+                          "translateX": -200,
+                        },
+                      ],
                     }
-                    style={
-                      Object {
-                        "borderRadius": 24,
-                        "bottom": 0,
-                        "left": 0,
-                        "position": "absolute",
-                        "right": 0,
-                        "top": 0,
-                        "transform": Array [
-                          Object {
-                            "translateX": -200,
-                          },
-                        ],
-                      }
-                    }
-                  />
-                </View>
+                  }
+                />
               </View>
+            </View>
+            <View
+              numberOfSpaces={5}
+              style={
+                Array [
+                  Object {
+                    "width": 20,
+                  },
+                ]
+              }
+            />
+            <View
+              style={
+                Array [
+                  Object {
+                    "maxWidth": 280,
+                    "minWidth": 120,
+                    "width": "47%",
+                  },
+                ]
+              }
+            >
               <View
+                borderRadius={24}
+                fullWidth={true}
+                height={48}
                 style={
                   Array [
                     Object {
-                      "flexBasis": 0,
-                      "flexGrow": 0,
-                      "flexShrink": 1,
+                      "backgroundColor": "#DDDDDD",
+                      "borderRadius": 24,
+                      "height": 48,
+                      "overflow": "hidden",
+                      "width": "100%",
                     },
                   ]
                 }
-              />
-              <View
-                style={
-                  Array [
-                    Object {
-                      "maxWidth": 280,
-                      "minWidth": 120,
-                      "width": "47%",
-                    },
-                  ]
-                }
+                width={160}
               >
-                <View
-                  borderRadius={24}
-                  fullWidth={true}
-                  height={48}
-                  style={
+                <BVLinearGradient
+                  collapsable={false}
+                  colors={
                     Array [
-                      Object {
-                        "backgroundColor": "#DDDDDD",
-                        "borderRadius": 24,
-                        "height": 48,
-                        "overflow": "hidden",
-                        "width": "100%",
-                      },
+                      4292730333,
+                      4293848814,
+                      4293848814,
+                      4292730333,
                     ]
                   }
-                  width={160}
-                >
-                  <BVLinearGradient
-                    collapsable={false}
-                    colors={
-                      Array [
-                        4292730333,
-                        4293848814,
-                        4293848814,
-                        4292730333,
-                      ]
+                  endPoint={
+                    Object {
+                      "x": 1,
+                      "y": 0,
                     }
-                    endPoint={
-                      Object {
-                        "x": 1,
-                        "y": 0,
-                      }
+                  }
+                  locations={null}
+                  startPoint={
+                    Object {
+                      "x": 0,
+                      "y": 0,
                     }
-                    locations={null}
-                    startPoint={
-                      Object {
-                        "x": 0,
-                        "y": 0,
-                      }
+                  }
+                  style={
+                    Object {
+                      "borderRadius": 24,
+                      "bottom": 0,
+                      "left": 0,
+                      "position": "absolute",
+                      "right": 0,
+                      "top": 0,
+                      "transform": Array [
+                        Object {
+                          "translateX": -200,
+                        },
+                      ],
                     }
-                    style={
-                      Object {
-                        "borderRadius": 24,
-                        "bottom": 0,
-                        "left": 0,
-                        "position": "absolute",
-                        "right": 0,
-                        "top": 0,
-                        "transform": Array [
-                          Object {
-                            "translateX": -200,
-                          },
-                        ],
-                      }
-                    }
-                  />
-                </View>
+                  }
+                />
               </View>
             </View>
           </View>
@@ -2285,165 +2285,165 @@ exports[`<Favorites/> should render correctly 1`] = `
                 </View>
               </View>
             </View>
+          </View>
+          <View
+            style={
+              Array [
+                Object {
+                  "flexDirection": "row",
+                  "marginLeft": 24,
+                  "marginRight": 24,
+                  "marginTop": 24,
+                },
+              ]
+            }
+          >
             <View
               style={
                 Array [
                   Object {
-                    "flexDirection": "row",
-                    "justifyContent": "space-between",
-                    "marginTop": 24,
+                    "maxWidth": 280,
+                    "minWidth": 120,
+                    "width": "47%",
                   },
                 ]
               }
             >
               <View
+                borderRadius={24}
+                fullWidth={true}
+                height={48}
                 style={
                   Array [
                     Object {
-                      "maxWidth": 280,
-                      "minWidth": 120,
-                      "width": "47%",
+                      "backgroundColor": "#DDDDDD",
+                      "borderRadius": 24,
+                      "height": 48,
+                      "overflow": "hidden",
+                      "width": "100%",
                     },
                   ]
                 }
+                width={160}
               >
-                <View
-                  borderRadius={24}
-                  fullWidth={true}
-                  height={48}
-                  style={
+                <BVLinearGradient
+                  collapsable={false}
+                  colors={
                     Array [
-                      Object {
-                        "backgroundColor": "#DDDDDD",
-                        "borderRadius": 24,
-                        "height": 48,
-                        "overflow": "hidden",
-                        "width": "100%",
-                      },
+                      4292730333,
+                      4293848814,
+                      4293848814,
+                      4292730333,
                     ]
                   }
-                  width={160}
-                >
-                  <BVLinearGradient
-                    collapsable={false}
-                    colors={
-                      Array [
-                        4292730333,
-                        4293848814,
-                        4293848814,
-                        4292730333,
-                      ]
+                  endPoint={
+                    Object {
+                      "x": 1,
+                      "y": 0,
                     }
-                    endPoint={
-                      Object {
-                        "x": 1,
-                        "y": 0,
-                      }
+                  }
+                  locations={null}
+                  startPoint={
+                    Object {
+                      "x": 0,
+                      "y": 0,
                     }
-                    locations={null}
-                    startPoint={
-                      Object {
-                        "x": 0,
-                        "y": 0,
-                      }
+                  }
+                  style={
+                    Object {
+                      "borderRadius": 24,
+                      "bottom": 0,
+                      "left": 0,
+                      "position": "absolute",
+                      "right": 0,
+                      "top": 0,
+                      "transform": Array [
+                        Object {
+                          "translateX": -200,
+                        },
+                      ],
                     }
-                    style={
-                      Object {
-                        "borderRadius": 24,
-                        "bottom": 0,
-                        "left": 0,
-                        "position": "absolute",
-                        "right": 0,
-                        "top": 0,
-                        "transform": Array [
-                          Object {
-                            "translateX": -200,
-                          },
-                        ],
-                      }
-                    }
-                  />
-                </View>
+                  }
+                />
               </View>
+            </View>
+            <View
+              numberOfSpaces={5}
+              style={
+                Array [
+                  Object {
+                    "width": 20,
+                  },
+                ]
+              }
+            />
+            <View
+              style={
+                Array [
+                  Object {
+                    "maxWidth": 280,
+                    "minWidth": 120,
+                    "width": "47%",
+                  },
+                ]
+              }
+            >
               <View
+                borderRadius={24}
+                fullWidth={true}
+                height={48}
                 style={
                   Array [
                     Object {
-                      "flexBasis": 0,
-                      "flexGrow": 0,
-                      "flexShrink": 1,
+                      "backgroundColor": "#DDDDDD",
+                      "borderRadius": 24,
+                      "height": 48,
+                      "overflow": "hidden",
+                      "width": "100%",
                     },
                   ]
                 }
-              />
-              <View
-                style={
-                  Array [
-                    Object {
-                      "maxWidth": 280,
-                      "minWidth": 120,
-                      "width": "47%",
-                    },
-                  ]
-                }
+                width={160}
               >
-                <View
-                  borderRadius={24}
-                  fullWidth={true}
-                  height={48}
-                  style={
+                <BVLinearGradient
+                  collapsable={false}
+                  colors={
                     Array [
-                      Object {
-                        "backgroundColor": "#DDDDDD",
-                        "borderRadius": 24,
-                        "height": 48,
-                        "overflow": "hidden",
-                        "width": "100%",
-                      },
+                      4292730333,
+                      4293848814,
+                      4293848814,
+                      4292730333,
                     ]
                   }
-                  width={160}
-                >
-                  <BVLinearGradient
-                    collapsable={false}
-                    colors={
-                      Array [
-                        4292730333,
-                        4293848814,
-                        4293848814,
-                        4292730333,
-                      ]
+                  endPoint={
+                    Object {
+                      "x": 1,
+                      "y": 0,
                     }
-                    endPoint={
-                      Object {
-                        "x": 1,
-                        "y": 0,
-                      }
+                  }
+                  locations={null}
+                  startPoint={
+                    Object {
+                      "x": 0,
+                      "y": 0,
                     }
-                    locations={null}
-                    startPoint={
-                      Object {
-                        "x": 0,
-                        "y": 0,
-                      }
+                  }
+                  style={
+                    Object {
+                      "borderRadius": 24,
+                      "bottom": 0,
+                      "left": 0,
+                      "position": "absolute",
+                      "right": 0,
+                      "top": 0,
+                      "transform": Array [
+                        Object {
+                          "translateX": -200,
+                        },
+                      ],
                     }
-                    style={
-                      Object {
-                        "borderRadius": 24,
-                        "bottom": 0,
-                        "left": 0,
-                        "position": "absolute",
-                        "right": 0,
-                        "top": 0,
-                        "transform": Array [
-                          Object {
-                            "translateX": -200,
-                          },
-                        ],
-                      }
-                    }
-                  />
-                </View>
+                  }
+                />
               </View>
             </View>
           </View>
@@ -2812,165 +2812,165 @@ exports[`<Favorites/> should render correctly 1`] = `
                 </View>
               </View>
             </View>
+          </View>
+          <View
+            style={
+              Array [
+                Object {
+                  "flexDirection": "row",
+                  "marginLeft": 24,
+                  "marginRight": 24,
+                  "marginTop": 24,
+                },
+              ]
+            }
+          >
             <View
               style={
                 Array [
                   Object {
-                    "flexDirection": "row",
-                    "justifyContent": "space-between",
-                    "marginTop": 24,
+                    "maxWidth": 280,
+                    "minWidth": 120,
+                    "width": "47%",
                   },
                 ]
               }
             >
               <View
+                borderRadius={24}
+                fullWidth={true}
+                height={48}
                 style={
                   Array [
                     Object {
-                      "maxWidth": 280,
-                      "minWidth": 120,
-                      "width": "47%",
+                      "backgroundColor": "#DDDDDD",
+                      "borderRadius": 24,
+                      "height": 48,
+                      "overflow": "hidden",
+                      "width": "100%",
                     },
                   ]
                 }
+                width={160}
               >
-                <View
-                  borderRadius={24}
-                  fullWidth={true}
-                  height={48}
-                  style={
+                <BVLinearGradient
+                  collapsable={false}
+                  colors={
                     Array [
-                      Object {
-                        "backgroundColor": "#DDDDDD",
-                        "borderRadius": 24,
-                        "height": 48,
-                        "overflow": "hidden",
-                        "width": "100%",
-                      },
+                      4292730333,
+                      4293848814,
+                      4293848814,
+                      4292730333,
                     ]
                   }
-                  width={160}
-                >
-                  <BVLinearGradient
-                    collapsable={false}
-                    colors={
-                      Array [
-                        4292730333,
-                        4293848814,
-                        4293848814,
-                        4292730333,
-                      ]
+                  endPoint={
+                    Object {
+                      "x": 1,
+                      "y": 0,
                     }
-                    endPoint={
-                      Object {
-                        "x": 1,
-                        "y": 0,
-                      }
+                  }
+                  locations={null}
+                  startPoint={
+                    Object {
+                      "x": 0,
+                      "y": 0,
                     }
-                    locations={null}
-                    startPoint={
-                      Object {
-                        "x": 0,
-                        "y": 0,
-                      }
+                  }
+                  style={
+                    Object {
+                      "borderRadius": 24,
+                      "bottom": 0,
+                      "left": 0,
+                      "position": "absolute",
+                      "right": 0,
+                      "top": 0,
+                      "transform": Array [
+                        Object {
+                          "translateX": -200,
+                        },
+                      ],
                     }
-                    style={
-                      Object {
-                        "borderRadius": 24,
-                        "bottom": 0,
-                        "left": 0,
-                        "position": "absolute",
-                        "right": 0,
-                        "top": 0,
-                        "transform": Array [
-                          Object {
-                            "translateX": -200,
-                          },
-                        ],
-                      }
-                    }
-                  />
-                </View>
+                  }
+                />
               </View>
+            </View>
+            <View
+              numberOfSpaces={5}
+              style={
+                Array [
+                  Object {
+                    "width": 20,
+                  },
+                ]
+              }
+            />
+            <View
+              style={
+                Array [
+                  Object {
+                    "maxWidth": 280,
+                    "minWidth": 120,
+                    "width": "47%",
+                  },
+                ]
+              }
+            >
               <View
+                borderRadius={24}
+                fullWidth={true}
+                height={48}
                 style={
                   Array [
                     Object {
-                      "flexBasis": 0,
-                      "flexGrow": 0,
-                      "flexShrink": 1,
+                      "backgroundColor": "#DDDDDD",
+                      "borderRadius": 24,
+                      "height": 48,
+                      "overflow": "hidden",
+                      "width": "100%",
                     },
                   ]
                 }
-              />
-              <View
-                style={
-                  Array [
-                    Object {
-                      "maxWidth": 280,
-                      "minWidth": 120,
-                      "width": "47%",
-                    },
-                  ]
-                }
+                width={160}
               >
-                <View
-                  borderRadius={24}
-                  fullWidth={true}
-                  height={48}
-                  style={
+                <BVLinearGradient
+                  collapsable={false}
+                  colors={
                     Array [
-                      Object {
-                        "backgroundColor": "#DDDDDD",
-                        "borderRadius": 24,
-                        "height": 48,
-                        "overflow": "hidden",
-                        "width": "100%",
-                      },
+                      4292730333,
+                      4293848814,
+                      4293848814,
+                      4292730333,
                     ]
                   }
-                  width={160}
-                >
-                  <BVLinearGradient
-                    collapsable={false}
-                    colors={
-                      Array [
-                        4292730333,
-                        4293848814,
-                        4293848814,
-                        4292730333,
-                      ]
+                  endPoint={
+                    Object {
+                      "x": 1,
+                      "y": 0,
                     }
-                    endPoint={
-                      Object {
-                        "x": 1,
-                        "y": 0,
-                      }
+                  }
+                  locations={null}
+                  startPoint={
+                    Object {
+                      "x": 0,
+                      "y": 0,
                     }
-                    locations={null}
-                    startPoint={
-                      Object {
-                        "x": 0,
-                        "y": 0,
-                      }
+                  }
+                  style={
+                    Object {
+                      "borderRadius": 24,
+                      "bottom": 0,
+                      "left": 0,
+                      "position": "absolute",
+                      "right": 0,
+                      "top": 0,
+                      "transform": Array [
+                        Object {
+                          "translateX": -200,
+                        },
+                      ],
                     }
-                    style={
-                      Object {
-                        "borderRadius": 24,
-                        "bottom": 0,
-                        "left": 0,
-                        "position": "absolute",
-                        "right": 0,
-                        "top": 0,
-                        "transform": Array [
-                          Object {
-                            "translateX": -200,
-                          },
-                        ],
-                      }
-                    }
-                  />
-                </View>
+                  }
+                />
               </View>
             </View>
           </View>
@@ -3339,165 +3339,165 @@ exports[`<Favorites/> should render correctly 1`] = `
                 </View>
               </View>
             </View>
+          </View>
+          <View
+            style={
+              Array [
+                Object {
+                  "flexDirection": "row",
+                  "marginLeft": 24,
+                  "marginRight": 24,
+                  "marginTop": 24,
+                },
+              ]
+            }
+          >
             <View
               style={
                 Array [
                   Object {
-                    "flexDirection": "row",
-                    "justifyContent": "space-between",
-                    "marginTop": 24,
+                    "maxWidth": 280,
+                    "minWidth": 120,
+                    "width": "47%",
                   },
                 ]
               }
             >
               <View
+                borderRadius={24}
+                fullWidth={true}
+                height={48}
                 style={
                   Array [
                     Object {
-                      "maxWidth": 280,
-                      "minWidth": 120,
-                      "width": "47%",
+                      "backgroundColor": "#DDDDDD",
+                      "borderRadius": 24,
+                      "height": 48,
+                      "overflow": "hidden",
+                      "width": "100%",
                     },
                   ]
                 }
+                width={160}
               >
-                <View
-                  borderRadius={24}
-                  fullWidth={true}
-                  height={48}
-                  style={
+                <BVLinearGradient
+                  collapsable={false}
+                  colors={
                     Array [
-                      Object {
-                        "backgroundColor": "#DDDDDD",
-                        "borderRadius": 24,
-                        "height": 48,
-                        "overflow": "hidden",
-                        "width": "100%",
-                      },
+                      4292730333,
+                      4293848814,
+                      4293848814,
+                      4292730333,
                     ]
                   }
-                  width={160}
-                >
-                  <BVLinearGradient
-                    collapsable={false}
-                    colors={
-                      Array [
-                        4292730333,
-                        4293848814,
-                        4293848814,
-                        4292730333,
-                      ]
+                  endPoint={
+                    Object {
+                      "x": 1,
+                      "y": 0,
                     }
-                    endPoint={
-                      Object {
-                        "x": 1,
-                        "y": 0,
-                      }
+                  }
+                  locations={null}
+                  startPoint={
+                    Object {
+                      "x": 0,
+                      "y": 0,
                     }
-                    locations={null}
-                    startPoint={
-                      Object {
-                        "x": 0,
-                        "y": 0,
-                      }
+                  }
+                  style={
+                    Object {
+                      "borderRadius": 24,
+                      "bottom": 0,
+                      "left": 0,
+                      "position": "absolute",
+                      "right": 0,
+                      "top": 0,
+                      "transform": Array [
+                        Object {
+                          "translateX": -200,
+                        },
+                      ],
                     }
-                    style={
-                      Object {
-                        "borderRadius": 24,
-                        "bottom": 0,
-                        "left": 0,
-                        "position": "absolute",
-                        "right": 0,
-                        "top": 0,
-                        "transform": Array [
-                          Object {
-                            "translateX": -200,
-                          },
-                        ],
-                      }
-                    }
-                  />
-                </View>
+                  }
+                />
               </View>
+            </View>
+            <View
+              numberOfSpaces={5}
+              style={
+                Array [
+                  Object {
+                    "width": 20,
+                  },
+                ]
+              }
+            />
+            <View
+              style={
+                Array [
+                  Object {
+                    "maxWidth": 280,
+                    "minWidth": 120,
+                    "width": "47%",
+                  },
+                ]
+              }
+            >
               <View
+                borderRadius={24}
+                fullWidth={true}
+                height={48}
                 style={
                   Array [
                     Object {
-                      "flexBasis": 0,
-                      "flexGrow": 0,
-                      "flexShrink": 1,
+                      "backgroundColor": "#DDDDDD",
+                      "borderRadius": 24,
+                      "height": 48,
+                      "overflow": "hidden",
+                      "width": "100%",
                     },
                   ]
                 }
-              />
-              <View
-                style={
-                  Array [
-                    Object {
-                      "maxWidth": 280,
-                      "minWidth": 120,
-                      "width": "47%",
-                    },
-                  ]
-                }
+                width={160}
               >
-                <View
-                  borderRadius={24}
-                  fullWidth={true}
-                  height={48}
-                  style={
+                <BVLinearGradient
+                  collapsable={false}
+                  colors={
                     Array [
-                      Object {
-                        "backgroundColor": "#DDDDDD",
-                        "borderRadius": 24,
-                        "height": 48,
-                        "overflow": "hidden",
-                        "width": "100%",
-                      },
+                      4292730333,
+                      4293848814,
+                      4293848814,
+                      4292730333,
                     ]
                   }
-                  width={160}
-                >
-                  <BVLinearGradient
-                    collapsable={false}
-                    colors={
-                      Array [
-                        4292730333,
-                        4293848814,
-                        4293848814,
-                        4292730333,
-                      ]
+                  endPoint={
+                    Object {
+                      "x": 1,
+                      "y": 0,
                     }
-                    endPoint={
-                      Object {
-                        "x": 1,
-                        "y": 0,
-                      }
+                  }
+                  locations={null}
+                  startPoint={
+                    Object {
+                      "x": 0,
+                      "y": 0,
                     }
-                    locations={null}
-                    startPoint={
-                      Object {
-                        "x": 0,
-                        "y": 0,
-                      }
+                  }
+                  style={
+                    Object {
+                      "borderRadius": 24,
+                      "bottom": 0,
+                      "left": 0,
+                      "position": "absolute",
+                      "right": 0,
+                      "top": 0,
+                      "transform": Array [
+                        Object {
+                          "translateX": -200,
+                        },
+                      ],
                     }
-                    style={
-                      Object {
-                        "borderRadius": 24,
-                        "bottom": 0,
-                        "left": 0,
-                        "position": "absolute",
-                        "right": 0,
-                        "top": 0,
-                        "transform": Array [
-                          Object {
-                            "translateX": -200,
-                          },
-                        ],
-                      }
-                    }
-                  />
-                </View>
+                  }
+                />
               </View>
             </View>
           </View>
@@ -3866,165 +3866,165 @@ exports[`<Favorites/> should render correctly 1`] = `
                 </View>
               </View>
             </View>
+          </View>
+          <View
+            style={
+              Array [
+                Object {
+                  "flexDirection": "row",
+                  "marginLeft": 24,
+                  "marginRight": 24,
+                  "marginTop": 24,
+                },
+              ]
+            }
+          >
             <View
               style={
                 Array [
                   Object {
-                    "flexDirection": "row",
-                    "justifyContent": "space-between",
-                    "marginTop": 24,
+                    "maxWidth": 280,
+                    "minWidth": 120,
+                    "width": "47%",
                   },
                 ]
               }
             >
               <View
+                borderRadius={24}
+                fullWidth={true}
+                height={48}
                 style={
                   Array [
                     Object {
-                      "maxWidth": 280,
-                      "minWidth": 120,
-                      "width": "47%",
+                      "backgroundColor": "#DDDDDD",
+                      "borderRadius": 24,
+                      "height": 48,
+                      "overflow": "hidden",
+                      "width": "100%",
                     },
                   ]
                 }
+                width={160}
               >
-                <View
-                  borderRadius={24}
-                  fullWidth={true}
-                  height={48}
-                  style={
+                <BVLinearGradient
+                  collapsable={false}
+                  colors={
                     Array [
-                      Object {
-                        "backgroundColor": "#DDDDDD",
-                        "borderRadius": 24,
-                        "height": 48,
-                        "overflow": "hidden",
-                        "width": "100%",
-                      },
+                      4292730333,
+                      4293848814,
+                      4293848814,
+                      4292730333,
                     ]
                   }
-                  width={160}
-                >
-                  <BVLinearGradient
-                    collapsable={false}
-                    colors={
-                      Array [
-                        4292730333,
-                        4293848814,
-                        4293848814,
-                        4292730333,
-                      ]
+                  endPoint={
+                    Object {
+                      "x": 1,
+                      "y": 0,
                     }
-                    endPoint={
-                      Object {
-                        "x": 1,
-                        "y": 0,
-                      }
+                  }
+                  locations={null}
+                  startPoint={
+                    Object {
+                      "x": 0,
+                      "y": 0,
                     }
-                    locations={null}
-                    startPoint={
-                      Object {
-                        "x": 0,
-                        "y": 0,
-                      }
+                  }
+                  style={
+                    Object {
+                      "borderRadius": 24,
+                      "bottom": 0,
+                      "left": 0,
+                      "position": "absolute",
+                      "right": 0,
+                      "top": 0,
+                      "transform": Array [
+                        Object {
+                          "translateX": -200,
+                        },
+                      ],
                     }
-                    style={
-                      Object {
-                        "borderRadius": 24,
-                        "bottom": 0,
-                        "left": 0,
-                        "position": "absolute",
-                        "right": 0,
-                        "top": 0,
-                        "transform": Array [
-                          Object {
-                            "translateX": -200,
-                          },
-                        ],
-                      }
-                    }
-                  />
-                </View>
+                  }
+                />
               </View>
+            </View>
+            <View
+              numberOfSpaces={5}
+              style={
+                Array [
+                  Object {
+                    "width": 20,
+                  },
+                ]
+              }
+            />
+            <View
+              style={
+                Array [
+                  Object {
+                    "maxWidth": 280,
+                    "minWidth": 120,
+                    "width": "47%",
+                  },
+                ]
+              }
+            >
               <View
+                borderRadius={24}
+                fullWidth={true}
+                height={48}
                 style={
                   Array [
                     Object {
-                      "flexBasis": 0,
-                      "flexGrow": 0,
-                      "flexShrink": 1,
+                      "backgroundColor": "#DDDDDD",
+                      "borderRadius": 24,
+                      "height": 48,
+                      "overflow": "hidden",
+                      "width": "100%",
                     },
                   ]
                 }
-              />
-              <View
-                style={
-                  Array [
-                    Object {
-                      "maxWidth": 280,
-                      "minWidth": 120,
-                      "width": "47%",
-                    },
-                  ]
-                }
+                width={160}
               >
-                <View
-                  borderRadius={24}
-                  fullWidth={true}
-                  height={48}
-                  style={
+                <BVLinearGradient
+                  collapsable={false}
+                  colors={
                     Array [
-                      Object {
-                        "backgroundColor": "#DDDDDD",
-                        "borderRadius": 24,
-                        "height": 48,
-                        "overflow": "hidden",
-                        "width": "100%",
-                      },
+                      4292730333,
+                      4293848814,
+                      4293848814,
+                      4292730333,
                     ]
                   }
-                  width={160}
-                >
-                  <BVLinearGradient
-                    collapsable={false}
-                    colors={
-                      Array [
-                        4292730333,
-                        4293848814,
-                        4293848814,
-                        4292730333,
-                      ]
+                  endPoint={
+                    Object {
+                      "x": 1,
+                      "y": 0,
                     }
-                    endPoint={
-                      Object {
-                        "x": 1,
-                        "y": 0,
-                      }
+                  }
+                  locations={null}
+                  startPoint={
+                    Object {
+                      "x": 0,
+                      "y": 0,
                     }
-                    locations={null}
-                    startPoint={
-                      Object {
-                        "x": 0,
-                        "y": 0,
-                      }
+                  }
+                  style={
+                    Object {
+                      "borderRadius": 24,
+                      "bottom": 0,
+                      "left": 0,
+                      "position": "absolute",
+                      "right": 0,
+                      "top": 0,
+                      "transform": Array [
+                        Object {
+                          "translateX": -200,
+                        },
+                      ],
                     }
-                    style={
-                      Object {
-                        "borderRadius": 24,
-                        "bottom": 0,
-                        "left": 0,
-                        "position": "absolute",
-                        "right": 0,
-                        "top": 0,
-                        "transform": Array [
-                          Object {
-                            "translateX": -200,
-                          },
-                        ],
-                      }
-                    }
-                  />
-                </View>
+                  }
+                />
               </View>
             </View>
           </View>
@@ -4393,165 +4393,165 @@ exports[`<Favorites/> should render correctly 1`] = `
                 </View>
               </View>
             </View>
+          </View>
+          <View
+            style={
+              Array [
+                Object {
+                  "flexDirection": "row",
+                  "marginLeft": 24,
+                  "marginRight": 24,
+                  "marginTop": 24,
+                },
+              ]
+            }
+          >
             <View
               style={
                 Array [
                   Object {
-                    "flexDirection": "row",
-                    "justifyContent": "space-between",
-                    "marginTop": 24,
+                    "maxWidth": 280,
+                    "minWidth": 120,
+                    "width": "47%",
                   },
                 ]
               }
             >
               <View
+                borderRadius={24}
+                fullWidth={true}
+                height={48}
                 style={
                   Array [
                     Object {
-                      "maxWidth": 280,
-                      "minWidth": 120,
-                      "width": "47%",
+                      "backgroundColor": "#DDDDDD",
+                      "borderRadius": 24,
+                      "height": 48,
+                      "overflow": "hidden",
+                      "width": "100%",
                     },
                   ]
                 }
+                width={160}
               >
-                <View
-                  borderRadius={24}
-                  fullWidth={true}
-                  height={48}
-                  style={
+                <BVLinearGradient
+                  collapsable={false}
+                  colors={
                     Array [
-                      Object {
-                        "backgroundColor": "#DDDDDD",
-                        "borderRadius": 24,
-                        "height": 48,
-                        "overflow": "hidden",
-                        "width": "100%",
-                      },
+                      4292730333,
+                      4293848814,
+                      4293848814,
+                      4292730333,
                     ]
                   }
-                  width={160}
-                >
-                  <BVLinearGradient
-                    collapsable={false}
-                    colors={
-                      Array [
-                        4292730333,
-                        4293848814,
-                        4293848814,
-                        4292730333,
-                      ]
+                  endPoint={
+                    Object {
+                      "x": 1,
+                      "y": 0,
                     }
-                    endPoint={
-                      Object {
-                        "x": 1,
-                        "y": 0,
-                      }
+                  }
+                  locations={null}
+                  startPoint={
+                    Object {
+                      "x": 0,
+                      "y": 0,
                     }
-                    locations={null}
-                    startPoint={
-                      Object {
-                        "x": 0,
-                        "y": 0,
-                      }
+                  }
+                  style={
+                    Object {
+                      "borderRadius": 24,
+                      "bottom": 0,
+                      "left": 0,
+                      "position": "absolute",
+                      "right": 0,
+                      "top": 0,
+                      "transform": Array [
+                        Object {
+                          "translateX": -200,
+                        },
+                      ],
                     }
-                    style={
-                      Object {
-                        "borderRadius": 24,
-                        "bottom": 0,
-                        "left": 0,
-                        "position": "absolute",
-                        "right": 0,
-                        "top": 0,
-                        "transform": Array [
-                          Object {
-                            "translateX": -200,
-                          },
-                        ],
-                      }
-                    }
-                  />
-                </View>
+                  }
+                />
               </View>
+            </View>
+            <View
+              numberOfSpaces={5}
+              style={
+                Array [
+                  Object {
+                    "width": 20,
+                  },
+                ]
+              }
+            />
+            <View
+              style={
+                Array [
+                  Object {
+                    "maxWidth": 280,
+                    "minWidth": 120,
+                    "width": "47%",
+                  },
+                ]
+              }
+            >
               <View
+                borderRadius={24}
+                fullWidth={true}
+                height={48}
                 style={
                   Array [
                     Object {
-                      "flexBasis": 0,
-                      "flexGrow": 0,
-                      "flexShrink": 1,
+                      "backgroundColor": "#DDDDDD",
+                      "borderRadius": 24,
+                      "height": 48,
+                      "overflow": "hidden",
+                      "width": "100%",
                     },
                   ]
                 }
-              />
-              <View
-                style={
-                  Array [
-                    Object {
-                      "maxWidth": 280,
-                      "minWidth": 120,
-                      "width": "47%",
-                    },
-                  ]
-                }
+                width={160}
               >
-                <View
-                  borderRadius={24}
-                  fullWidth={true}
-                  height={48}
-                  style={
+                <BVLinearGradient
+                  collapsable={false}
+                  colors={
                     Array [
-                      Object {
-                        "backgroundColor": "#DDDDDD",
-                        "borderRadius": 24,
-                        "height": 48,
-                        "overflow": "hidden",
-                        "width": "100%",
-                      },
+                      4292730333,
+                      4293848814,
+                      4293848814,
+                      4292730333,
                     ]
                   }
-                  width={160}
-                >
-                  <BVLinearGradient
-                    collapsable={false}
-                    colors={
-                      Array [
-                        4292730333,
-                        4293848814,
-                        4293848814,
-                        4292730333,
-                      ]
+                  endPoint={
+                    Object {
+                      "x": 1,
+                      "y": 0,
                     }
-                    endPoint={
-                      Object {
-                        "x": 1,
-                        "y": 0,
-                      }
+                  }
+                  locations={null}
+                  startPoint={
+                    Object {
+                      "x": 0,
+                      "y": 0,
                     }
-                    locations={null}
-                    startPoint={
-                      Object {
-                        "x": 0,
-                        "y": 0,
-                      }
+                  }
+                  style={
+                    Object {
+                      "borderRadius": 24,
+                      "bottom": 0,
+                      "left": 0,
+                      "position": "absolute",
+                      "right": 0,
+                      "top": 0,
+                      "transform": Array [
+                        Object {
+                          "translateX": -200,
+                        },
+                      ],
                     }
-                    style={
-                      Object {
-                        "borderRadius": 24,
-                        "bottom": 0,
-                        "left": 0,
-                        "position": "absolute",
-                        "right": 0,
-                        "top": 0,
-                        "transform": Array [
-                          Object {
-                            "translateX": -200,
-                          },
-                        ],
-                      }
-                    }
-                  />
-                </View>
+                  }
+                />
               </View>
             </View>
           </View>
@@ -4920,165 +4920,165 @@ exports[`<Favorites/> should render correctly 1`] = `
                 </View>
               </View>
             </View>
+          </View>
+          <View
+            style={
+              Array [
+                Object {
+                  "flexDirection": "row",
+                  "marginLeft": 24,
+                  "marginRight": 24,
+                  "marginTop": 24,
+                },
+              ]
+            }
+          >
             <View
               style={
                 Array [
                   Object {
-                    "flexDirection": "row",
-                    "justifyContent": "space-between",
-                    "marginTop": 24,
+                    "maxWidth": 280,
+                    "minWidth": 120,
+                    "width": "47%",
                   },
                 ]
               }
             >
               <View
+                borderRadius={24}
+                fullWidth={true}
+                height={48}
                 style={
                   Array [
                     Object {
-                      "maxWidth": 280,
-                      "minWidth": 120,
-                      "width": "47%",
+                      "backgroundColor": "#DDDDDD",
+                      "borderRadius": 24,
+                      "height": 48,
+                      "overflow": "hidden",
+                      "width": "100%",
                     },
                   ]
                 }
+                width={160}
               >
-                <View
-                  borderRadius={24}
-                  fullWidth={true}
-                  height={48}
-                  style={
+                <BVLinearGradient
+                  collapsable={false}
+                  colors={
                     Array [
-                      Object {
-                        "backgroundColor": "#DDDDDD",
-                        "borderRadius": 24,
-                        "height": 48,
-                        "overflow": "hidden",
-                        "width": "100%",
-                      },
+                      4292730333,
+                      4293848814,
+                      4293848814,
+                      4292730333,
                     ]
                   }
-                  width={160}
-                >
-                  <BVLinearGradient
-                    collapsable={false}
-                    colors={
-                      Array [
-                        4292730333,
-                        4293848814,
-                        4293848814,
-                        4292730333,
-                      ]
+                  endPoint={
+                    Object {
+                      "x": 1,
+                      "y": 0,
                     }
-                    endPoint={
-                      Object {
-                        "x": 1,
-                        "y": 0,
-                      }
+                  }
+                  locations={null}
+                  startPoint={
+                    Object {
+                      "x": 0,
+                      "y": 0,
                     }
-                    locations={null}
-                    startPoint={
-                      Object {
-                        "x": 0,
-                        "y": 0,
-                      }
+                  }
+                  style={
+                    Object {
+                      "borderRadius": 24,
+                      "bottom": 0,
+                      "left": 0,
+                      "position": "absolute",
+                      "right": 0,
+                      "top": 0,
+                      "transform": Array [
+                        Object {
+                          "translateX": -200,
+                        },
+                      ],
                     }
-                    style={
-                      Object {
-                        "borderRadius": 24,
-                        "bottom": 0,
-                        "left": 0,
-                        "position": "absolute",
-                        "right": 0,
-                        "top": 0,
-                        "transform": Array [
-                          Object {
-                            "translateX": -200,
-                          },
-                        ],
-                      }
-                    }
-                  />
-                </View>
+                  }
+                />
               </View>
+            </View>
+            <View
+              numberOfSpaces={5}
+              style={
+                Array [
+                  Object {
+                    "width": 20,
+                  },
+                ]
+              }
+            />
+            <View
+              style={
+                Array [
+                  Object {
+                    "maxWidth": 280,
+                    "minWidth": 120,
+                    "width": "47%",
+                  },
+                ]
+              }
+            >
               <View
+                borderRadius={24}
+                fullWidth={true}
+                height={48}
                 style={
                   Array [
                     Object {
-                      "flexBasis": 0,
-                      "flexGrow": 0,
-                      "flexShrink": 1,
+                      "backgroundColor": "#DDDDDD",
+                      "borderRadius": 24,
+                      "height": 48,
+                      "overflow": "hidden",
+                      "width": "100%",
                     },
                   ]
                 }
-              />
-              <View
-                style={
-                  Array [
-                    Object {
-                      "maxWidth": 280,
-                      "minWidth": 120,
-                      "width": "47%",
-                    },
-                  ]
-                }
+                width={160}
               >
-                <View
-                  borderRadius={24}
-                  fullWidth={true}
-                  height={48}
-                  style={
+                <BVLinearGradient
+                  collapsable={false}
+                  colors={
                     Array [
-                      Object {
-                        "backgroundColor": "#DDDDDD",
-                        "borderRadius": 24,
-                        "height": 48,
-                        "overflow": "hidden",
-                        "width": "100%",
-                      },
+                      4292730333,
+                      4293848814,
+                      4293848814,
+                      4292730333,
                     ]
                   }
-                  width={160}
-                >
-                  <BVLinearGradient
-                    collapsable={false}
-                    colors={
-                      Array [
-                        4292730333,
-                        4293848814,
-                        4293848814,
-                        4292730333,
-                      ]
+                  endPoint={
+                    Object {
+                      "x": 1,
+                      "y": 0,
                     }
-                    endPoint={
-                      Object {
-                        "x": 1,
-                        "y": 0,
-                      }
+                  }
+                  locations={null}
+                  startPoint={
+                    Object {
+                      "x": 0,
+                      "y": 0,
                     }
-                    locations={null}
-                    startPoint={
-                      Object {
-                        "x": 0,
-                        "y": 0,
-                      }
+                  }
+                  style={
+                    Object {
+                      "borderRadius": 24,
+                      "bottom": 0,
+                      "left": 0,
+                      "position": "absolute",
+                      "right": 0,
+                      "top": 0,
+                      "transform": Array [
+                        Object {
+                          "translateX": -200,
+                        },
+                      ],
                     }
-                    style={
-                      Object {
-                        "borderRadius": 24,
-                        "bottom": 0,
-                        "left": 0,
-                        "position": "absolute",
-                        "right": 0,
-                        "top": 0,
-                        "transform": Array [
-                          Object {
-                            "translateX": -200,
-                          },
-                        ],
-                      }
-                    }
-                  />
-                </View>
+                  }
+                />
               </View>
             </View>
           </View>
@@ -5447,165 +5447,165 @@ exports[`<Favorites/> should render correctly 1`] = `
                 </View>
               </View>
             </View>
+          </View>
+          <View
+            style={
+              Array [
+                Object {
+                  "flexDirection": "row",
+                  "marginLeft": 24,
+                  "marginRight": 24,
+                  "marginTop": 24,
+                },
+              ]
+            }
+          >
             <View
               style={
                 Array [
                   Object {
-                    "flexDirection": "row",
-                    "justifyContent": "space-between",
-                    "marginTop": 24,
+                    "maxWidth": 280,
+                    "minWidth": 120,
+                    "width": "47%",
                   },
                 ]
               }
             >
               <View
+                borderRadius={24}
+                fullWidth={true}
+                height={48}
                 style={
                   Array [
                     Object {
-                      "maxWidth": 280,
-                      "minWidth": 120,
-                      "width": "47%",
+                      "backgroundColor": "#DDDDDD",
+                      "borderRadius": 24,
+                      "height": 48,
+                      "overflow": "hidden",
+                      "width": "100%",
                     },
                   ]
                 }
+                width={160}
               >
-                <View
-                  borderRadius={24}
-                  fullWidth={true}
-                  height={48}
-                  style={
+                <BVLinearGradient
+                  collapsable={false}
+                  colors={
                     Array [
-                      Object {
-                        "backgroundColor": "#DDDDDD",
-                        "borderRadius": 24,
-                        "height": 48,
-                        "overflow": "hidden",
-                        "width": "100%",
-                      },
+                      4292730333,
+                      4293848814,
+                      4293848814,
+                      4292730333,
                     ]
                   }
-                  width={160}
-                >
-                  <BVLinearGradient
-                    collapsable={false}
-                    colors={
-                      Array [
-                        4292730333,
-                        4293848814,
-                        4293848814,
-                        4292730333,
-                      ]
+                  endPoint={
+                    Object {
+                      "x": 1,
+                      "y": 0,
                     }
-                    endPoint={
-                      Object {
-                        "x": 1,
-                        "y": 0,
-                      }
+                  }
+                  locations={null}
+                  startPoint={
+                    Object {
+                      "x": 0,
+                      "y": 0,
                     }
-                    locations={null}
-                    startPoint={
-                      Object {
-                        "x": 0,
-                        "y": 0,
-                      }
+                  }
+                  style={
+                    Object {
+                      "borderRadius": 24,
+                      "bottom": 0,
+                      "left": 0,
+                      "position": "absolute",
+                      "right": 0,
+                      "top": 0,
+                      "transform": Array [
+                        Object {
+                          "translateX": -200,
+                        },
+                      ],
                     }
-                    style={
-                      Object {
-                        "borderRadius": 24,
-                        "bottom": 0,
-                        "left": 0,
-                        "position": "absolute",
-                        "right": 0,
-                        "top": 0,
-                        "transform": Array [
-                          Object {
-                            "translateX": -200,
-                          },
-                        ],
-                      }
-                    }
-                  />
-                </View>
+                  }
+                />
               </View>
+            </View>
+            <View
+              numberOfSpaces={5}
+              style={
+                Array [
+                  Object {
+                    "width": 20,
+                  },
+                ]
+              }
+            />
+            <View
+              style={
+                Array [
+                  Object {
+                    "maxWidth": 280,
+                    "minWidth": 120,
+                    "width": "47%",
+                  },
+                ]
+              }
+            >
               <View
+                borderRadius={24}
+                fullWidth={true}
+                height={48}
                 style={
                   Array [
                     Object {
-                      "flexBasis": 0,
-                      "flexGrow": 0,
-                      "flexShrink": 1,
+                      "backgroundColor": "#DDDDDD",
+                      "borderRadius": 24,
+                      "height": 48,
+                      "overflow": "hidden",
+                      "width": "100%",
                     },
                   ]
                 }
-              />
-              <View
-                style={
-                  Array [
-                    Object {
-                      "maxWidth": 280,
-                      "minWidth": 120,
-                      "width": "47%",
-                    },
-                  ]
-                }
+                width={160}
               >
-                <View
-                  borderRadius={24}
-                  fullWidth={true}
-                  height={48}
-                  style={
+                <BVLinearGradient
+                  collapsable={false}
+                  colors={
                     Array [
-                      Object {
-                        "backgroundColor": "#DDDDDD",
-                        "borderRadius": 24,
-                        "height": 48,
-                        "overflow": "hidden",
-                        "width": "100%",
-                      },
+                      4292730333,
+                      4293848814,
+                      4293848814,
+                      4292730333,
                     ]
                   }
-                  width={160}
-                >
-                  <BVLinearGradient
-                    collapsable={false}
-                    colors={
-                      Array [
-                        4292730333,
-                        4293848814,
-                        4293848814,
-                        4292730333,
-                      ]
+                  endPoint={
+                    Object {
+                      "x": 1,
+                      "y": 0,
                     }
-                    endPoint={
-                      Object {
-                        "x": 1,
-                        "y": 0,
-                      }
+                  }
+                  locations={null}
+                  startPoint={
+                    Object {
+                      "x": 0,
+                      "y": 0,
                     }
-                    locations={null}
-                    startPoint={
-                      Object {
-                        "x": 0,
-                        "y": 0,
-                      }
+                  }
+                  style={
+                    Object {
+                      "borderRadius": 24,
+                      "bottom": 0,
+                      "left": 0,
+                      "position": "absolute",
+                      "right": 0,
+                      "top": 0,
+                      "transform": Array [
+                        Object {
+                          "translateX": -200,
+                        },
+                      ],
                     }
-                    style={
-                      Object {
-                        "borderRadius": 24,
-                        "bottom": 0,
-                        "left": 0,
-                        "position": "absolute",
-                        "right": 0,
-                        "top": 0,
-                        "transform": Array [
-                          Object {
-                            "translateX": -200,
-                          },
-                        ],
-                      }
-                    }
-                  />
-                </View>
+                  }
+                />
               </View>
             </View>
           </View>

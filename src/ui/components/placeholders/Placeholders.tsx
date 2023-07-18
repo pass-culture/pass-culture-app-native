@@ -2,6 +2,7 @@ import React from 'react'
 import { View } from 'react-native'
 import styled from 'styled-components/native'
 
+import { FavoriteButtonsContainer } from 'features/favorites/components/Favorite'
 import { SkeletonTile } from 'ui/components/placeholders/SkeletonTile'
 import { getSpacing, Spacer } from 'ui/theme'
 
@@ -96,30 +97,32 @@ export function BookingHitPlaceholder() {
 
 export function FavoriteHitPlaceholder() {
   return (
-    <Container>
-      <Row>
-        <BasePlaceholder height={imageHeight} width={imageWidth} />
-        <Spacer.Row numberOfSpaces={4} />
-        <View>
-          <TextPlaceholder width={getSpacing(60)} />
-          <Spacer.Column numberOfSpaces={3} />
-          <TextPlaceholder width={getSpacing(30)} />
-          <Spacer.Column numberOfSpaces={1} />
-          <TextPlaceholder width={getSpacing(40)} />
-          <Spacer.Column numberOfSpaces={2} />
-          <TextPlaceholder width={getSpacing(8)} />
-        </View>
-      </Row>
-      <ButtonsRow>
+    <React.Fragment>
+      <Container>
+        <Row>
+          <BasePlaceholder height={imageHeight} width={imageWidth} />
+          <Spacer.Row numberOfSpaces={4} />
+          <View>
+            <TextPlaceholder width={getSpacing(60)} />
+            <Spacer.Column numberOfSpaces={3} />
+            <TextPlaceholder width={getSpacing(30)} />
+            <Spacer.Column numberOfSpaces={1} />
+            <TextPlaceholder width={getSpacing(40)} />
+            <Spacer.Column numberOfSpaces={2} />
+            <TextPlaceholder width={getSpacing(8)} />
+          </View>
+        </Row>
+      </Container>
+      <FavoriteButtonsContainer>
         <ButtonContainer>
           <BasePlaceholder radius={24} height={getSpacing(12)} width={getSpacing(40)} fullWidth />
         </ButtonContainer>
-        <ButtonSpacer />
+        <Spacer.Row numberOfSpaces={5} />
         <ButtonContainer>
           <BasePlaceholder radius={24} height={getSpacing(12)} width={getSpacing(40)} fullWidth />
         </ButtonContainer>
-      </ButtonsRow>
-    </Container>
+      </FavoriteButtonsContainer>
+    </React.Fragment>
   )
 }
 
@@ -130,11 +133,3 @@ const ButtonContainer = styled.View({
   maxWidth: getSpacing(70),
   width: '47%',
 })
-const ButtonsRow = styled.View(({ theme }) => ({
-  flexDirection: 'row',
-  justifyContent: theme.isMobileViewport ? 'space-between' : 'center',
-  marginTop: getSpacing(6),
-}))
-const ButtonSpacer = styled.View(({ theme }) => ({
-  flex: theme.isMobileViewport ? 0 : 1 / 30,
-}))
