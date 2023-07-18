@@ -80,8 +80,7 @@ export const buildFacetFilters = ({
   if (tagsPredicate) facetFilters.push(tagsPredicate)
 
   if (
-    locationFilter &&
-    locationFilter.locationType === LocationType.VENUE &&
+    locationFilter?.locationType === LocationType.VENUE &&
     typeof locationFilter.venue.venueId === 'number'
   )
     facetFilters.push([`${FACETS_FILTERS_ENUM.VENUE_ID}:${locationFilter.venue.venueId}`])
