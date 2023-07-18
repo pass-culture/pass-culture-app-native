@@ -5,13 +5,13 @@ import { buildOfferSearchParameters } from 'libs/algolia/fetchAlgolia/buildAlgol
 import { offerAttributesToRetrieve } from 'libs/algolia/fetchAlgolia/buildAlgoliaParameters/offerAttributesToRetrieve'
 import { client } from 'libs/algolia/fetchAlgolia/clients'
 import { buildHitsPerPage } from 'libs/algolia/fetchAlgolia/utils'
-import { SearchParametersQuery } from 'libs/algolia/types'
+import { SearchQueryParameters } from 'libs/algolia/types'
 import { env } from 'libs/environment'
 import { Position } from 'libs/geolocation'
 import { Offer } from 'shared/offer/types'
 
 type FetchMultipleOffersArgs = {
-  paramsList: SearchParametersQuery[]
+  paramsList: SearchQueryParameters[]
   userLocation: Position
   isUserUnderage: boolean
 }

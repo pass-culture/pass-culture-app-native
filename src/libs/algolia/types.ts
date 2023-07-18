@@ -38,7 +38,7 @@ export type OfferGenreType = { key: GenreType } & GenreTypeContentModel
  */
 export type FiltersArray = string[][]
 
-export type SearchParametersQuery = {
+export type SearchQueryParameters = {
   beginningDatetime?: string
   date: SelectedDate | null
   endingDatetime?: string
@@ -103,7 +103,7 @@ export interface FetchVenuesParameters {
   attributesToHighlight?: string[]
 }
 export interface FetchOfferParameters {
-  parameters: SearchParametersQuery
+  parameters: SearchQueryParameters
   userLocation: Position
   isUserUnderage: boolean
   storeQueryID?: (queryID?: string) => void

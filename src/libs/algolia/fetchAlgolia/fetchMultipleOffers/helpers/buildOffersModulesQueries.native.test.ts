@@ -1,6 +1,6 @@
 import { offerAttributesToRetrieve } from 'libs/algolia/fetchAlgolia/buildAlgoliaParameters/offerAttributesToRetrieve'
 import { buildOffersModulesQueries } from 'libs/algolia/fetchAlgolia/fetchMultipleOffers/helpers/buildOffersModulesQueries'
-import { searchParametersQueryFixture } from 'libs/algolia/fixtures'
+import { SearchQueryParametersFixture } from 'libs/algolia/fixtures'
 
 describe('buildOffersModulesQueries', () => {
   const userLocation = {
@@ -26,7 +26,7 @@ describe('buildOffersModulesQueries', () => {
 
   it('should return a list of offers queries', () => {
     const parameters = {
-      ...searchParametersQueryFixture,
+      ...SearchQueryParametersFixture,
     }
 
     const paramsList = [[parameters, parameters], [parameters]]

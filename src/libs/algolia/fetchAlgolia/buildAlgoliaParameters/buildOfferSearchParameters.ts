@@ -1,13 +1,13 @@
 import { LocationType } from 'features/search/enums'
 import { buildFilters } from 'libs/algolia/fetchAlgolia/buildAlgoliaParameters/buildFilters'
 import { buildGeolocationParameter } from 'libs/algolia/fetchAlgolia/buildAlgoliaParameters/buildGeolocationParameter'
-import { SearchParametersQuery } from 'libs/algolia/types'
+import { SearchQueryParameters } from 'libs/algolia/types'
 import { Position } from 'libs/geolocation'
 
 import { buildFacetFilters } from './buildFacetFilters'
 import { buildNumericFilters } from './buildNumericFilters'
 
-type Parameters = SearchParametersQuery & {
+type Parameters = SearchQueryParameters & {
   objectIds?: string[]
   excludedObjectIds?: string[]
 }

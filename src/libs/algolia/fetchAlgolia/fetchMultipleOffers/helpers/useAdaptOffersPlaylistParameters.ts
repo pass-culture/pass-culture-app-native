@@ -4,7 +4,7 @@ import { useHomePosition } from 'features/home/helpers/useHomePosition'
 import { OffersModuleParameters } from 'features/home/types'
 import { useMaxPrice } from 'features/search/helpers/useMaxPrice/useMaxPrice'
 import { adaptOffersPlaylistParameters } from 'libs/algolia/fetchAlgolia/fetchMultipleOffers/helpers/adaptOffersPlaylistParameters'
-import { SearchParametersQuery } from 'libs/algolia/types'
+import { SearchQueryParameters } from 'libs/algolia/types'
 import { useGenreTypeMapping, useSubcategoryLabelMapping } from 'libs/subcategories/mappings'
 
 export const useAdaptOffersPlaylistParameters = () => {
@@ -14,7 +14,7 @@ export const useAdaptOffersPlaylistParameters = () => {
   const genreTypeMapping = useGenreTypeMapping()
 
   return useCallback(
-    (parameters: OffersModuleParameters): SearchParametersQuery | undefined =>
+    (parameters: OffersModuleParameters): SearchQueryParameters | undefined =>
       adaptOffersPlaylistParameters(
         { ...parameters, priceMax: parameters.priceMax ?? defaultPriceMax },
         position,

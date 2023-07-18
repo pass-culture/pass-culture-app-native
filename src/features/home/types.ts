@@ -1,5 +1,5 @@
 import { VenueAccessibilityModel, VenueContactModel } from 'api/gen'
-import { SearchParametersQuery, VenueHit } from 'libs/algolia'
+import { SearchQueryParameters, VenueHit } from 'libs/algolia'
 import { VenueTypeCode } from 'libs/parsers'
 import { Offer } from 'shared/offer/types'
 
@@ -255,7 +255,7 @@ export type VideoModule = {
   videoPublicationDate: string
 }
 
-export type OffersPlaylistParameters = SearchParametersQuery[]
+export type OffersPlaylistParameters = SearchQueryParameters[]
 
 export type OfferModuleParamsInfo = {
   adaptedPlaylistParameters: OffersPlaylistParameters

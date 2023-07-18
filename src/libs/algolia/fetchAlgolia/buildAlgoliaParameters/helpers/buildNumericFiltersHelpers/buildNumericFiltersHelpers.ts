@@ -6,7 +6,7 @@ import {
   TIMESTAMP,
   computeTimeRangeFromHoursToSeconds,
 } from 'libs/algolia/fetchAlgolia/buildAlgoliaParameters/helpers/datetime/time'
-import { FiltersArray, SearchParametersQuery } from 'libs/algolia/types'
+import { FiltersArray, SearchQueryParameters } from 'libs/algolia/types'
 import { Range, NoNullProperties } from 'libs/typesUtils/typeHelpers'
 
 export const buildOfferLast30DaysBookings = (
@@ -23,7 +23,7 @@ export const buildOfferPriceRangePredicate = ({
   maxPrice,
   maxPossiblePrice,
 }: Pick<
-  SearchParametersQuery,
+  SearchQueryParameters,
   'offerIsFree' | 'priceRange' | 'minPrice' | 'maxPrice' | 'maxPossiblePrice'
 >): FiltersArray[0] | undefined => {
   if (offerIsFree) return [`${NUMERIC_FILTERS_ENUM.OFFER_PRICES} = 0`]
@@ -41,7 +41,7 @@ export const buildOfferPriceRangePredicate = ({
 export const buildDatePredicate = ({
   date,
   timeRange,
-}: Pick<SearchParametersQuery, 'date' | 'timeRange'>): FiltersArray[0] | undefined => {
+}: Pick<SearchQueryParameters, 'date' | 'timeRange'>): FiltersArray[0] | undefined => {
   if (date && timeRange) return buildDateAndTimePredicate({ date, timeRange })
   if (date) return buildDateOnlyPredicate(date)
   if (timeRange) return buildTimeOnlyPredicate(timeRange)
@@ -51,7 +51,7 @@ export const buildDatePredicate = ({
 export const buildHomepageDatePredicate = ({
   beginningDatetime,
   endingDatetime,
-}: Pick<SearchParametersQuery, 'beginningDatetime' | 'endingDatetime'>):
+}: Pick<SearchQueryParameters, 'beginningDatetime' | 'endingDatetime'>):
   | undefined
   | FiltersArray[0] => {
   if (!(beginningDatetime || endingDatetime)) return undefined
@@ -86,7 +86,7 @@ export const buildDateAndTimePredicate = ({
   date,
   timeRange,
 }: NoNullProperties<
-  Required<Pick<SearchParametersQuery, 'date' | 'timeRange'>>
+  Required<Pick<SearchQueryParameters, 'date' | 'timeRange'>>
 >): FiltersArray[0] => {
   let dateFilter: Range<number>[]
   // To be sure to have a value in Date format
@@ -106,7 +106,7 @@ export const buildDateAndTimePredicate = ({
 }
 
 export const buildDateOnlyPredicate = (
-  date: Exclude<SearchParametersQuery['date'], null | undefined>
+  date: Exclude<SearchQueryParameters['date'], null | undefined>
 ): FiltersArray[0] => {
   let beginningDate, endingDate: number
   // To be sure to have a value in Date format
@@ -133,7 +133,7 @@ export const buildDateOnlyPredicate = (
 }
 
 export const buildNewestOffersPredicate = (
-  offerIsNew: SearchParametersQuery['offerIsNew']
+  offerIsNew: SearchQueryParameters['offerIsNew']
 ): FiltersArray[0] | undefined => {
   if (!offerIsNew) return undefined
 

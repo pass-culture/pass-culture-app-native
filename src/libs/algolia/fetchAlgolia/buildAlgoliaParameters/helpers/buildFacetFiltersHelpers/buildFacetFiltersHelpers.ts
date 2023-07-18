@@ -6,7 +6,7 @@ import {
 } from 'api/gen'
 import { OfferGenreType } from 'features/search/types'
 import { FACETS_FILTERS_ENUM } from 'libs/algolia/enums'
-import { FiltersArray, SearchParametersQuery } from 'libs/algolia/types'
+import { FiltersArray, SearchQueryParameters } from 'libs/algolia/types'
 import { eventMonitoring } from 'libs/monitoring'
 
 export const buildOfferCategoriesPredicate = (searchGroups: SearchGroupNameEnumv2[]): string[] =>
@@ -52,7 +52,7 @@ export const buildOfferIsDuoPredicate = (offerIsDuo: boolean): string[] | undefi
   offerIsDuo ? [`${FACETS_FILTERS_ENUM.OFFER_IS_DUO}:${offerIsDuo}`] : undefined
 
 export const buildOfferTypesPredicate = (
-  offerTypes: SearchParametersQuery['offerTypes']
+  offerTypes: SearchQueryParameters['offerTypes']
 ): FiltersArray | undefined => {
   const { isDigital, isEvent, isThing } = offerTypes
   const DIGITAL = `${FACETS_FILTERS_ENUM.OFFER_IS_DIGITAL}:${isDigital}`
@@ -69,7 +69,7 @@ export const buildOfferTypesPredicate = (
 }
 
 export const buildTagsPredicate = (
-  tags: SearchParametersQuery['tags']
+  tags: SearchQueryParameters['tags']
 ): FiltersArray[0] | undefined => {
   if (tags.length > 0) return tags.map((tag: string) => `${FACETS_FILTERS_ENUM.OFFER_TAGS}:${tag}`)
   return undefined

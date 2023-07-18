@@ -1,7 +1,7 @@
 import { LocationType } from 'features/search/enums'
-import { SearchParametersQuery } from 'libs/algolia/types'
+import { SearchQueryParameters } from 'libs/algolia/types'
 
-export const searchParametersQueryFixture: SearchParametersQuery = {
+export const SearchQueryParametersFixture: SearchQueryParameters = {
   beginningDatetime: undefined,
   date: null,
   endingDatetime: undefined,
