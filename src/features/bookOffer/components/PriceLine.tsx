@@ -1,6 +1,8 @@
 import React from 'react'
 
 import { OfferStockResponse } from 'api/gen'
+import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
+import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { formatToFrenchDecimal } from 'libs/parsers'
 import { Typo } from 'ui/theme'
 
@@ -27,6 +29,10 @@ interface PriceLineProps {
    * @default false
    */
   shouldDisabledStyles?: boolean
+  /**
+   * Offer stock features refers to cinema's attributes
+   */
+  attributes?: OfferStockResponse['features']
 }
 
 const testIDPrefix = 'price-line'
@@ -39,11 +45,17 @@ export function PriceLine({
   unitPrice,
   label,
   shouldDisabledStyles = false,
+  attributes,
 }: PriceLineProps) {
+  const enableAttributesCinemaOffers = useFeatureFlag(
+    RemoteStoreFeatureFlags.WIP_ATTRIBUTES_CINEMA_OFFERS
+  )
   const totalPrice = formatToFrenchDecimal(quantity * unitPrice)
 
   const MainText = shouldDisabledStyles ? Typo.Body : Typo.Caption
   const SecondaryText = shouldDisabledStyles ? Typo.Body : Typo.CaptionNeutralInfo
+
+  const shouldDisplayAttributes = attributes?.length && enableAttributesCinemaOffers
 
   return (
     <Typo.Body>
@@ -56,6 +68,10 @@ export function PriceLine({
       )}
 
       {!!label && <MainText testID={getTestID('label')}> - {label}</MainText>}
+
+      {!!shouldDisplayAttributes && (
+        <MainText testID={getTestID('attributes')}> - {attributes.join(' ')}</MainText>
+      )}
     </Typo.Body>
   )
 }

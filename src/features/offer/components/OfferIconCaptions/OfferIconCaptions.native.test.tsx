@@ -21,6 +21,7 @@ const defaultBookableStocks: OfferResponse['stocks'] = [
     isExpired: false,
     isForbiddenToUnderage: false,
     isSoldOut: false,
+    features: [],
   },
 ]
 const freeBookableStocks: OfferResponse['stocks'] = [
@@ -32,6 +33,7 @@ const freeBookableStocks: OfferResponse['stocks'] = [
     isExpired: false,
     isForbiddenToUnderage: false,
     isSoldOut: false,
+    features: [],
   },
 ]
 const sevenEurosBookableStocks: OfferResponse['stocks'] = [
@@ -43,6 +45,7 @@ const sevenEurosBookableStocks: OfferResponse['stocks'] = [
     isExpired: false,
     isForbiddenToUnderage: false,
     isSoldOut: false,
+    features: [],
   },
 ]
 const severalStocks: OfferResponse['stocks'] = [
@@ -54,6 +57,7 @@ const severalStocks: OfferResponse['stocks'] = [
     isExpired: false,
     isForbiddenToUnderage: false,
     isSoldOut: false,
+    features: [],
   },
   {
     id: 2,
@@ -63,6 +67,7 @@ const severalStocks: OfferResponse['stocks'] = [
     isExpired: false,
     isForbiddenToUnderage: false,
     isSoldOut: false,
+    features: [],
   },
 ]
 const noBookableStocks: OfferResponse['stocks'] = [
@@ -74,6 +79,7 @@ const noBookableStocks: OfferResponse['stocks'] = [
     isExpired: false,
     isForbiddenToUnderage: false,
     isSoldOut: false,
+    features: [],
   },
   {
     id: 2,
@@ -83,6 +89,7 @@ const noBookableStocks: OfferResponse['stocks'] = [
     isExpired: false,
     isForbiddenToUnderage: false,
     isSoldOut: false,
+    features: [],
   },
 ]
 const noPrice: OfferResponse['stocks'] = []

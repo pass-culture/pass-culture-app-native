@@ -23,4 +23,5 @@ export enum RemoteStoreFeatureFlags {
   WIP_ENABLE_TRUSTED_DEVICE = 'wipEnableTrustedDevice',
   WIP_PRICES_BY_CATEGORIES = 'wipPricesByCategories',
   WIP_STEPPER_RETRY_UBBLE = 'wipStepperRetryUbble',
+  WIP_ATTRIBUTES_CINEMA_OFFERS = 'wipAttributesCinemaOffers',
 }

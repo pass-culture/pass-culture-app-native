@@ -13,6 +13,7 @@ export const stock1: OfferStockResponse = {
   price: 21000,
   priceCategoryLabel: 'Tribune présidentielle',
   remainingQuantity: 200,
+  features: [],
 }
 
 export const stock2: OfferStockResponse = {
@@ -28,6 +29,7 @@ export const stock2: OfferStockResponse = {
   price: 22000,
   priceCategoryLabel: 'Pelouse or',
   remainingQuantity: 200,
+  features: [],
 }
 
 export const stock3: OfferStockResponse = {
@@ -43,6 +45,7 @@ export const stock3: OfferStockResponse = {
   price: 10000,
   priceCategoryLabel: 'Pelouse',
   remainingQuantity: 200,
+  features: [],
 }
 
 export const stock4: OfferStockResponse = {
@@ -58,6 +61,7 @@ export const stock4: OfferStockResponse = {
   price: 19000,
   priceCategoryLabel: 'Carré or',
   remainingQuantity: 200,
+  features: [],
 }
 
 export const mockStocks = [stock1, stock2, stock3, stock4]
