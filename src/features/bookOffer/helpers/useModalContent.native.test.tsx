@@ -48,13 +48,11 @@ describe('useModalContent', () => {
 
     const { result } = renderHook(useModalContent)
 
-    expect(result.current.children).toMatchInlineSnapshot(
-      `
+    expect(result.current.children).toMatchInlineSnapshot(`
       <BookingOfferLoader
         message="Chargement en cours..."
       />
-    `
-    )
+    `)
     expect(result.current.leftIcon).toBeUndefined()
     expect(result.current.onLeftIconPress).toBeUndefined()
     expect(result.current.title).toBe('')
@@ -76,6 +74,7 @@ describe('useModalContent', () => {
             Object {
               "beginningDatetime": "2021-01-01T13:30:00",
               "bookingLimitDatetime": "2021-01-05T13:30:00",
+              "features": Array [],
               "id": 118929,
               "isBookable": true,
               "isExpired": false,
