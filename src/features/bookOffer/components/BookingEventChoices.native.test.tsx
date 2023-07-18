@@ -147,7 +147,7 @@ describe('<BookingEventChoices />', () => {
 
     render(<BookingEventChoices stocks={[]} />)
 
-    const hourBloc = screen.getByTestId('HourChoice1-hour')
+    const hourBloc = screen.getByTestId('HourChoice1-label')
     fireEvent.press(hourBloc)
 
     expect(screen.queryByTestId('DuoStep')).toBeNull()

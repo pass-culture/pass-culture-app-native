@@ -39,8 +39,10 @@ Array [
   >
     <View
       accessibilityLabel="10h00 épuisé"
+      accessibilityRole="radio"
       accessibilityState={
         Object {
+          "checked": false,
           "disabled": true,
         }
       }
@@ -142,6 +144,7 @@ Array [
           >
             <Text
               disabled={true}
+              isHover={false}
               style={
                 Array [
                   Object {
@@ -152,7 +155,7 @@ Array [
                   },
                 ]
               }
-              testID="HourChoice148411-hour"
+              testID="HourChoice148411-label"
             >
               10h00
             </Text>
@@ -169,7 +172,7 @@ Array [
                 },
               ]
             }
-            testID="HourChoice148411-price"
+            testID="HourChoice148411-right-text"
           >
             épuisé
           </Text>
@@ -178,8 +181,10 @@ Array [
     </View>
     <View
       accessibilityLabel="20h00 24 €"
+      accessibilityRole="radio"
       accessibilityState={
         Object {
+          "checked": false,
           "disabled": false,
         }
       }
@@ -281,6 +286,7 @@ Array [
           >
             <Text
               disabled={false}
+              isHover={false}
               style={
                 Array [
                   Object {
@@ -291,7 +297,7 @@ Array [
                   },
                 ]
               }
-              testID="HourChoice148409-hour"
+              testID="HourChoice148409-label"
             >
               20h00
             </Text>
@@ -308,7 +314,7 @@ Array [
                 },
               ]
             }
-            testID="HourChoice148409-price"
+            testID="HourChoice148409-right-text"
           >
             24 €
           </Text>

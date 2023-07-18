@@ -1,133 +1,88 @@
-import React, { useRef } from 'react'
-import styled, { DefaultTheme } from 'styled-components/native'
+import React from 'react'
+import styled from 'styled-components/native'
 
-import { useHandleFocus } from 'libs/hooks/useHandleFocus'
+import { SelectableListItem } from 'features/offer/components/SelectableListItem/SelectableListItem'
 import { accessibleRadioProps } from 'shared/accessibilityProps/accessibleRadioProps'
-import { TouchableOpacity } from 'ui/components/TouchableOpacity'
-import { useArrowNavigationForRadioButton } from 'ui/hooks/useArrowNavigationForRadioButton'
-import { useSpaceBarAction } from 'ui/hooks/useSpaceBarAction'
-import { AccessibleIcon } from 'ui/svg/icons/types'
-import { ValidateOff } from 'ui/svg/icons/ValidateOff'
-import { RadioButtonSelected } from 'ui/svg/RadioButtonSelected'
-import { getSpacing, Spacer, Typo } from 'ui/theme'
-
-export enum RadioSelectorType {
-  DEFAULT = 'default',
-  ACTIVE = 'active',
-  DISABLED = 'disabled',
-}
-
-interface ValidateOffIconProps extends AccessibleIcon {
-  type?: RadioSelectorType
-}
+import { getSpacing, Typo } from 'ui/theme'
 
 interface RadioSelectorProps {
   label: string
   onPress: () => void
   description?: string | null
-  price?: string
-  type?: RadioSelectorType
+  rightText?: string
+  checked?: boolean
+  disabled?: boolean
+  testID?: string
+  accessibilityLabel?: string
 }
 
 export const RadioSelector = ({
   label,
   onPress,
   description,
-  price,
-  type = RadioSelectorType.DEFAULT,
+  rightText,
+  checked,
+  disabled,
+  testID,
+  accessibilityLabel,
 }: RadioSelectorProps) => {
-  const containerRef = useRef(null)
-  const { onFocus, onBlur, isFocus } = useHandleFocus()
-
   const handlePress = () => {
-    if (type === RadioSelectorType.DISABLED) {
+    if (disabled) {
       return
     }
     onPress()
   }
 
-  useArrowNavigationForRadioButton(containerRef)
-  useSpaceBarAction(isFocus ? handlePress : undefined)
   return (
-    <RadioSelectorContainer
-      type={type}
-      {...accessibleRadioProps({
-        label,
-        checked: type === RadioSelectorType.ACTIVE,
-      })}
-      onPress={handlePress}
-      onFocus={onFocus}
-      onBlur={onBlur}>
-      <TextContainer>
-        <ButtonText type={type}>{label}</ButtonText>
-        <Spacer.Column numberOfSpaces={1} />
-        {!!description && <Typo.CaptionNeutralInfo>{description}</Typo.CaptionNeutralInfo>}
-      </TextContainer>
-      <IconPriceContainer>
-        {!!price && <PriceText type={type}>{price}</PriceText>}
-        {type === RadioSelectorType.ACTIVE ? (
-          <RadioButtonSelectedPrimary testID="radio-button-selected-primary" />
-        ) : (
-          <ValidateOffIcon type={type} testID="validate-off-icon" />
-        )}
-      </IconPriceContainer>
-    </RadioSelectorContainer>
+    <SelectableListItem
+      {...accessibleRadioProps({ label: accessibilityLabel ?? label, checked })}
+      onSelect={handlePress}
+      render={({ isHover }) => (
+        <Container>
+          <LeftContent>
+            <Label disabled={disabled} testID={`${testID}-label`} isHover={isHover}>
+              {label}
+            </Label>
+            {
+              description ? (
+                <Description disabled={disabled}>{description}</Description>
+              ) : null /* conditionally render description since it applies a margin even when nothing is displayed */
+            }
+          </LeftContent>
+
+          <RightText disabled={disabled} testID={`${testID}-right-text`}>
+            {rightText}
+          </RightText>
+        </Container>
+      )}
+      isSelected={checked}
+      disabled={disabled}
+      testID={testID}
+    />
   )
 }
 
-const DefaultRadio = styled(TouchableOpacity)(({ theme }) => ({
-  flexDirection: 'row',
-  borderWidth: 1,
-  borderColor: theme.colors.greyDark,
-  borderRadius: theme.borderRadius.radius,
-  padding: getSpacing(4),
-  backgroundColor: 'transparent',
-  minHeight: 80,
-  maxHeight: 80,
+const Container = styled.View({
   alignItems: 'center',
-}))
-
-const ActiveRadio = styled(DefaultRadio)({
-  borderWidth: 2,
+  flexDirection: 'row',
 })
 
-const DisabledRadio = styled(DefaultRadio)(({ theme }) => ({
-  borderWidth: 0,
-  backgroundColor: theme.colors.greyLight,
-}))
-
-const RadioSelectorContainer = ({ type = RadioSelectorType.DEFAULT, ...props }) => {
-  if (type === RadioSelectorType.DISABLED) return <DisabledRadio {...props} />
-  if (type === RadioSelectorType.ACTIVE) return <ActiveRadio {...props} />
-  return <DefaultRadio {...props} />
-}
-
-const TextContainer = styled.View({
+const LeftContent = styled.View({
   flex: 1,
+  marginVertical: getSpacing(4),
 })
 
-const ButtonText = styled(Typo.ButtonText)<{ type: RadioSelectorType }>(({ theme, type }) => ({
-  color: type === RadioSelectorType.DISABLED ? theme.colors.greyDark : theme.colors.black,
+const Label = styled(Typo.ButtonText)<{ isHover?: boolean }>(({ theme, disabled, isHover }) => ({
+  color: disabled ? theme.colors.greyDark : undefined,
+  textDecoration: isHover ? 'underline' : undefined,
 }))
 
-const IconPriceContainer = styled.View({
-  flexDirection: 'row',
-  alignItems: 'center',
-  marginLeft: getSpacing(2),
-})
+const Description = styled(Typo.Caption)<{ isHover?: boolean }>(({ theme, disabled, isHover }) => ({
+  marginTop: getSpacing(1),
+  color: disabled ? theme.colors.greySemiDark : theme.colors.greyDark,
+  textDecoration: isHover ? 'underline' : undefined,
+}))
 
-const ValidateOffIcon = styled(ValidateOff).attrs(
-  ({ theme, type }: { theme: DefaultTheme; type: RadioSelectorType }) => ({
-    color: type === RadioSelectorType.DISABLED ? theme.colors.greyMedium : theme.colors.black,
-  })
-)<ValidateOffIconProps>``
-
-const RadioButtonSelectedPrimary = styled(RadioButtonSelected).attrs(({ theme }) => ({
-  color: theme.colors.primary,
-  size: theme.icons.sizes.smaller,
-}))``
-
-const PriceText = styled(Typo.Caption)<{ type: RadioSelectorType }>(({ theme, type }) => ({
-  color: type === RadioSelectorType.DISABLED ? theme.colors.greyDark : theme.colors.black,
-  marginRight: getSpacing(2),
+const RightText = styled(Typo.Body)(({ theme, disabled }) => ({
+  color: disabled ? theme.colors.greyDark : theme.colors.black,
 }))
