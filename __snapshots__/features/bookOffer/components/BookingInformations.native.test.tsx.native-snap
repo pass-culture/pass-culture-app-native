@@ -1,5 +1,747 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`<BookingInformations /> When wipAttributesCinemaOffers feature flag activated should display stock attributes when the offer has it 1`] = `
+Array [
+  <View
+    style={
+      Array [
+        Object {
+          "alignItems": "center",
+          "flexDirection": "row",
+          "paddingVertical": 2,
+          "width": 864,
+        },
+      ]
+    }
+  >
+    <View
+      style={
+        Array [
+          Object {
+            "flexShrink": 0,
+          },
+        ]
+      }
+    >
+      <View
+        height={24}
+        width={24}
+      >
+        <Text>
+          undefined-SVG-Mock
+        </Text>
+      </View>
+    </View>
+    <View
+      numberOfSpaces={3}
+      style={
+        Array [
+          Object {
+            "width": 12,
+          },
+        ]
+      }
+    />
+    <Text
+      style={
+        Array [
+          Object {
+            "color": "#161617",
+            "fontFamily": "Montserrat-SemiBold",
+            "fontSize": 12,
+            "lineHeight": 16,
+          },
+        ]
+      }
+    >
+      mon nom
+    </Text>
+    <View
+      numberOfSpaces={2}
+      style={
+        Array [
+          Object {
+            "width": 8,
+          },
+        ]
+      }
+    />
+    <Text
+      style={
+        Array [
+          Object {
+            "color": "#696A6F",
+            "fontFamily": "Montserrat-SemiBold",
+            "fontSize": 12,
+            "lineHeight": 16,
+          },
+        ]
+      }
+    />
+  </View>,
+  <View
+    style={
+      Array [
+        Object {
+          "alignItems": "center",
+          "flexDirection": "row",
+          "paddingVertical": 2,
+          "width": 864,
+        },
+      ]
+    }
+  >
+    <View
+      style={
+        Array [
+          Object {
+            "flexShrink": 0,
+          },
+        ]
+      }
+    >
+      <View
+        height={24}
+        width={24}
+      >
+        <Text>
+          undefined-SVG-Mock
+        </Text>
+      </View>
+    </View>
+    <View
+      numberOfSpaces={3}
+      style={
+        Array [
+          Object {
+            "width": 12,
+          },
+        ]
+      }
+    />
+    <Text
+      style={
+        Array [
+          Object {
+            "color": "#161617",
+            "fontFamily": "Montserrat-SemiBold",
+            "fontSize": 12,
+            "lineHeight": 16,
+          },
+        ]
+      }
+    >
+      1 décembre 2020, 00h00
+    </Text>
+    <View
+      numberOfSpaces={2}
+      style={
+        Array [
+          Object {
+            "width": 8,
+          },
+        ]
+      }
+    />
+    <Text
+      style={
+        Array [
+          Object {
+            "color": "#696A6F",
+            "fontFamily": "Montserrat-SemiBold",
+            "fontSize": 12,
+            "lineHeight": 16,
+          },
+        ]
+      }
+    />
+  </View>,
+  <View
+    style={
+      Array [
+        Object {
+          "alignItems": "center",
+          "flexDirection": "row",
+          "paddingVertical": 2,
+          "width": 864,
+        },
+      ]
+    }
+    testID="address"
+  >
+    <View
+      style={
+        Array [
+          Object {
+            "flexShrink": 0,
+          },
+        ]
+      }
+    >
+      <View
+        height={24}
+        width={24}
+      >
+        <Text>
+          undefined-SVG-Mock
+        </Text>
+      </View>
+    </View>
+    <View
+      numberOfSpaces={3}
+      style={
+        Array [
+          Object {
+            "width": 12,
+          },
+        ]
+      }
+    />
+    <Text
+      style={
+        Array [
+          Object {
+            "alignItems": "center",
+            "color": "#161617",
+            "fontFamily": "Montserrat-Regular",
+            "fontSize": 15,
+            "lineHeight": 20,
+            "textTransform": "capitalize",
+          },
+        ]
+      }
+    >
+      <Text
+        style={
+          Array [
+            Object {
+              "color": "#161617",
+              "fontFamily": "Montserrat-SemiBold",
+              "fontSize": 12,
+              "lineHeight": 16,
+            },
+          ]
+        }
+      >
+        PATHE BEAUGRENELLE, 2 RUE LAMENNAIS, 75008 PARIS
+      </Text>
+    </Text>
+    <View
+      numberOfSpaces={2}
+      style={
+        Array [
+          Object {
+            "width": 8,
+          },
+        ]
+      }
+    />
+    <Text
+      style={
+        Array [
+          Object {
+            "color": "#696A6F",
+            "fontFamily": "Montserrat-SemiBold",
+            "fontSize": 12,
+            "lineHeight": 16,
+          },
+        ]
+      }
+    />
+  </View>,
+  <View
+    style={
+      Array [
+        Object {
+          "alignItems": "center",
+          "flexDirection": "row",
+          "paddingVertical": 2,
+          "width": 864,
+        },
+      ]
+    }
+  >
+    <View
+      style={
+        Array [
+          Object {
+            "flexShrink": 0,
+          },
+        ]
+      }
+    >
+      <View
+        fill="#696A6F"
+        height={24}
+        width={24}
+      >
+        <Text>
+          undefined-SVG-Mock
+        </Text>
+      </View>
+    </View>
+    <View
+      numberOfSpaces={3}
+      style={
+        Array [
+          Object {
+            "width": 12,
+          },
+        ]
+      }
+    />
+    <Text
+      style={
+        Array [
+          Object {
+            "color": "#161617",
+            "fontFamily": "Montserrat-Regular",
+            "fontSize": 15,
+            "lineHeight": 20,
+          },
+        ]
+      }
+    >
+      <Text
+        style={
+          Array [
+            Object {
+              "color": "#161617",
+              "fontFamily": "Montserrat-SemiBold",
+              "fontSize": 12,
+              "lineHeight": 16,
+            },
+          ]
+        }
+      >
+        24 €
+         
+      </Text>
+      <Text
+        style={
+          Array [
+            Object {
+              "color": "#696A6F",
+              "fontFamily": "Montserrat-SemiBold",
+              "fontSize": 12,
+              "lineHeight": 16,
+            },
+          ]
+        }
+        testID="price-line__price-detail"
+      >
+        (
+        12 €
+         x 
+        2
+         places)
+      </Text>
+      <Text
+        style={
+          Array [
+            Object {
+              "color": "#161617",
+              "fontFamily": "Montserrat-SemiBold",
+              "fontSize": 12,
+              "lineHeight": 16,
+            },
+          ]
+        }
+        testID="price-line__attributes"
+      >
+         - 
+        VOSTFR 3D IMAX
+      </Text>
+    </Text>
+    <View
+      numberOfSpaces={2}
+      style={
+        Array [
+          Object {
+            "width": 8,
+          },
+        ]
+      }
+    />
+    <Text
+      style={
+        Array [
+          Object {
+            "color": "#696A6F",
+            "fontFamily": "Montserrat-SemiBold",
+            "fontSize": 12,
+            "lineHeight": 16,
+          },
+        ]
+      }
+    />
+  </View>,
+]
+`;
+
+exports[`<BookingInformations /> When wipAttributesCinemaOffers feature flag activated should not display stock attributes when the offer has not it 1`] = `
+Array [
+  <View
+    style={
+      Array [
+        Object {
+          "alignItems": "center",
+          "flexDirection": "row",
+          "paddingVertical": 2,
+          "width": 864,
+        },
+      ]
+    }
+  >
+    <View
+      style={
+        Array [
+          Object {
+            "flexShrink": 0,
+          },
+        ]
+      }
+    >
+      <View
+        height={24}
+        width={24}
+      >
+        <Text>
+          undefined-SVG-Mock
+        </Text>
+      </View>
+    </View>
+    <View
+      numberOfSpaces={3}
+      style={
+        Array [
+          Object {
+            "width": 12,
+          },
+        ]
+      }
+    />
+    <Text
+      style={
+        Array [
+          Object {
+            "color": "#161617",
+            "fontFamily": "Montserrat-SemiBold",
+            "fontSize": 12,
+            "lineHeight": 16,
+          },
+        ]
+      }
+    >
+      mon nom
+    </Text>
+    <View
+      numberOfSpaces={2}
+      style={
+        Array [
+          Object {
+            "width": 8,
+          },
+        ]
+      }
+    />
+    <Text
+      style={
+        Array [
+          Object {
+            "color": "#696A6F",
+            "fontFamily": "Montserrat-SemiBold",
+            "fontSize": 12,
+            "lineHeight": 16,
+          },
+        ]
+      }
+    />
+  </View>,
+  <View
+    style={
+      Array [
+        Object {
+          "alignItems": "center",
+          "flexDirection": "row",
+          "paddingVertical": 2,
+          "width": 864,
+        },
+      ]
+    }
+  >
+    <View
+      style={
+        Array [
+          Object {
+            "flexShrink": 0,
+          },
+        ]
+      }
+    >
+      <View
+        height={24}
+        width={24}
+      >
+        <Text>
+          undefined-SVG-Mock
+        </Text>
+      </View>
+    </View>
+    <View
+      numberOfSpaces={3}
+      style={
+        Array [
+          Object {
+            "width": 12,
+          },
+        ]
+      }
+    />
+    <Text
+      style={
+        Array [
+          Object {
+            "color": "#161617",
+            "fontFamily": "Montserrat-SemiBold",
+            "fontSize": 12,
+            "lineHeight": 16,
+          },
+        ]
+      }
+    >
+      1 décembre 2020, 00h00
+    </Text>
+    <View
+      numberOfSpaces={2}
+      style={
+        Array [
+          Object {
+            "width": 8,
+          },
+        ]
+      }
+    />
+    <Text
+      style={
+        Array [
+          Object {
+            "color": "#696A6F",
+            "fontFamily": "Montserrat-SemiBold",
+            "fontSize": 12,
+            "lineHeight": 16,
+          },
+        ]
+      }
+    />
+  </View>,
+  <View
+    style={
+      Array [
+        Object {
+          "alignItems": "center",
+          "flexDirection": "row",
+          "paddingVertical": 2,
+          "width": 864,
+        },
+      ]
+    }
+    testID="address"
+  >
+    <View
+      style={
+        Array [
+          Object {
+            "flexShrink": 0,
+          },
+        ]
+      }
+    >
+      <View
+        height={24}
+        width={24}
+      >
+        <Text>
+          undefined-SVG-Mock
+        </Text>
+      </View>
+    </View>
+    <View
+      numberOfSpaces={3}
+      style={
+        Array [
+          Object {
+            "width": 12,
+          },
+        ]
+      }
+    />
+    <Text
+      style={
+        Array [
+          Object {
+            "alignItems": "center",
+            "color": "#161617",
+            "fontFamily": "Montserrat-Regular",
+            "fontSize": 15,
+            "lineHeight": 20,
+            "textTransform": "capitalize",
+          },
+        ]
+      }
+    >
+      <Text
+        style={
+          Array [
+            Object {
+              "color": "#161617",
+              "fontFamily": "Montserrat-SemiBold",
+              "fontSize": 12,
+              "lineHeight": 16,
+            },
+          ]
+        }
+      >
+        PATHE BEAUGRENELLE, 2 RUE LAMENNAIS, 75008 PARIS
+      </Text>
+    </Text>
+    <View
+      numberOfSpaces={2}
+      style={
+        Array [
+          Object {
+            "width": 8,
+          },
+        ]
+      }
+    />
+    <Text
+      style={
+        Array [
+          Object {
+            "color": "#696A6F",
+            "fontFamily": "Montserrat-SemiBold",
+            "fontSize": 12,
+            "lineHeight": 16,
+          },
+        ]
+      }
+    />
+  </View>,
+  <View
+    style={
+      Array [
+        Object {
+          "alignItems": "center",
+          "flexDirection": "row",
+          "paddingVertical": 2,
+          "width": 864,
+        },
+      ]
+    }
+  >
+    <View
+      style={
+        Array [
+          Object {
+            "flexShrink": 0,
+          },
+        ]
+      }
+    >
+      <View
+        fill="#696A6F"
+        height={24}
+        width={24}
+      >
+        <Text>
+          undefined-SVG-Mock
+        </Text>
+      </View>
+    </View>
+    <View
+      numberOfSpaces={3}
+      style={
+        Array [
+          Object {
+            "width": 12,
+          },
+        ]
+      }
+    />
+    <Text
+      style={
+        Array [
+          Object {
+            "color": "#161617",
+            "fontFamily": "Montserrat-Regular",
+            "fontSize": 15,
+            "lineHeight": 20,
+          },
+        ]
+      }
+    >
+      <Text
+        style={
+          Array [
+            Object {
+              "color": "#161617",
+              "fontFamily": "Montserrat-SemiBold",
+              "fontSize": 12,
+              "lineHeight": 16,
+            },
+          ]
+        }
+      >
+        24 €
+         
+      </Text>
+      <Text
+        style={
+          Array [
+            Object {
+              "color": "#696A6F",
+              "fontFamily": "Montserrat-SemiBold",
+              "fontSize": 12,
+              "lineHeight": 16,
+            },
+          ]
+        }
+        testID="price-line__price-detail"
+      >
+        (
+        12 €
+         x 
+        2
+         places)
+      </Text>
+    </Text>
+    <View
+      numberOfSpaces={2}
+      style={
+        Array [
+          Object {
+            "width": 8,
+          },
+        ]
+      }
+    />
+    <Text
+      style={
+        Array [
+          Object {
+            "color": "#696A6F",
+            "fontFamily": "Montserrat-SemiBold",
+            "fontSize": 12,
+            "lineHeight": 16,
+          },
+        ]
+      }
+    />
+  </View>,
+]
+`;
+
 exports[`<BookingInformations /> should display expirationDate section when offer is digital and has expirationDate 1`] = `
 Array [
   <View
@@ -858,385 +1600,6 @@ Array [
          x 
         2
          places)
-      </Text>
-    </Text>
-    <View
-      numberOfSpaces={2}
-      style={
-        Array [
-          Object {
-            "width": 8,
-          },
-        ]
-      }
-    />
-    <Text
-      style={
-        Array [
-          Object {
-            "color": "#696A6F",
-            "fontFamily": "Montserrat-SemiBold",
-            "fontSize": 12,
-            "lineHeight": 16,
-          },
-        ]
-      }
-    />
-  </View>,
-]
-`;
-
-exports[`<BookingInformations /> should display stock attributes 1`] = `
-Array [
-  <View
-    style={
-      Array [
-        Object {
-          "alignItems": "center",
-          "flexDirection": "row",
-          "paddingVertical": 2,
-          "width": 864,
-        },
-      ]
-    }
-  >
-    <View
-      style={
-        Array [
-          Object {
-            "flexShrink": 0,
-          },
-        ]
-      }
-    >
-      <View
-        height={24}
-        width={24}
-      >
-        <Text>
-          undefined-SVG-Mock
-        </Text>
-      </View>
-    </View>
-    <View
-      numberOfSpaces={3}
-      style={
-        Array [
-          Object {
-            "width": 12,
-          },
-        ]
-      }
-    />
-    <Text
-      style={
-        Array [
-          Object {
-            "color": "#161617",
-            "fontFamily": "Montserrat-SemiBold",
-            "fontSize": 12,
-            "lineHeight": 16,
-          },
-        ]
-      }
-    >
-      mon nom
-    </Text>
-    <View
-      numberOfSpaces={2}
-      style={
-        Array [
-          Object {
-            "width": 8,
-          },
-        ]
-      }
-    />
-    <Text
-      style={
-        Array [
-          Object {
-            "color": "#696A6F",
-            "fontFamily": "Montserrat-SemiBold",
-            "fontSize": 12,
-            "lineHeight": 16,
-          },
-        ]
-      }
-    />
-  </View>,
-  <View
-    style={
-      Array [
-        Object {
-          "alignItems": "center",
-          "flexDirection": "row",
-          "paddingVertical": 2,
-          "width": 864,
-        },
-      ]
-    }
-  >
-    <View
-      style={
-        Array [
-          Object {
-            "flexShrink": 0,
-          },
-        ]
-      }
-    >
-      <View
-        height={24}
-        width={24}
-      >
-        <Text>
-          undefined-SVG-Mock
-        </Text>
-      </View>
-    </View>
-    <View
-      numberOfSpaces={3}
-      style={
-        Array [
-          Object {
-            "width": 12,
-          },
-        ]
-      }
-    />
-    <Text
-      style={
-        Array [
-          Object {
-            "color": "#161617",
-            "fontFamily": "Montserrat-SemiBold",
-            "fontSize": 12,
-            "lineHeight": 16,
-          },
-        ]
-      }
-    >
-      1 décembre 2020, 00h00
-    </Text>
-    <View
-      numberOfSpaces={2}
-      style={
-        Array [
-          Object {
-            "width": 8,
-          },
-        ]
-      }
-    />
-    <Text
-      style={
-        Array [
-          Object {
-            "color": "#696A6F",
-            "fontFamily": "Montserrat-SemiBold",
-            "fontSize": 12,
-            "lineHeight": 16,
-          },
-        ]
-      }
-    />
-  </View>,
-  <View
-    style={
-      Array [
-        Object {
-          "alignItems": "center",
-          "flexDirection": "row",
-          "paddingVertical": 2,
-          "width": 864,
-        },
-      ]
-    }
-    testID="address"
-  >
-    <View
-      style={
-        Array [
-          Object {
-            "flexShrink": 0,
-          },
-        ]
-      }
-    >
-      <View
-        height={24}
-        width={24}
-      >
-        <Text>
-          undefined-SVG-Mock
-        </Text>
-      </View>
-    </View>
-    <View
-      numberOfSpaces={3}
-      style={
-        Array [
-          Object {
-            "width": 12,
-          },
-        ]
-      }
-    />
-    <Text
-      style={
-        Array [
-          Object {
-            "alignItems": "center",
-            "color": "#161617",
-            "fontFamily": "Montserrat-Regular",
-            "fontSize": 15,
-            "lineHeight": 20,
-            "textTransform": "capitalize",
-          },
-        ]
-      }
-    >
-      <Text
-        style={
-          Array [
-            Object {
-              "color": "#161617",
-              "fontFamily": "Montserrat-SemiBold",
-              "fontSize": 12,
-              "lineHeight": 16,
-            },
-          ]
-        }
-      >
-        PATHE BEAUGRENELLE, 2 RUE LAMENNAIS, 75008 PARIS
-      </Text>
-    </Text>
-    <View
-      numberOfSpaces={2}
-      style={
-        Array [
-          Object {
-            "width": 8,
-          },
-        ]
-      }
-    />
-    <Text
-      style={
-        Array [
-          Object {
-            "color": "#696A6F",
-            "fontFamily": "Montserrat-SemiBold",
-            "fontSize": 12,
-            "lineHeight": 16,
-          },
-        ]
-      }
-    />
-  </View>,
-  <View
-    style={
-      Array [
-        Object {
-          "alignItems": "center",
-          "flexDirection": "row",
-          "paddingVertical": 2,
-          "width": 864,
-        },
-      ]
-    }
-  >
-    <View
-      style={
-        Array [
-          Object {
-            "flexShrink": 0,
-          },
-        ]
-      }
-    >
-      <View
-        fill="#696A6F"
-        height={24}
-        width={24}
-      >
-        <Text>
-          undefined-SVG-Mock
-        </Text>
-      </View>
-    </View>
-    <View
-      numberOfSpaces={3}
-      style={
-        Array [
-          Object {
-            "width": 12,
-          },
-        ]
-      }
-    />
-    <Text
-      style={
-        Array [
-          Object {
-            "color": "#161617",
-            "fontFamily": "Montserrat-Regular",
-            "fontSize": 15,
-            "lineHeight": 20,
-          },
-        ]
-      }
-    >
-      <Text
-        style={
-          Array [
-            Object {
-              "color": "#161617",
-              "fontFamily": "Montserrat-SemiBold",
-              "fontSize": 12,
-              "lineHeight": 16,
-            },
-          ]
-        }
-      >
-        24 €
-         
-      </Text>
-      <Text
-        style={
-          Array [
-            Object {
-              "color": "#696A6F",
-              "fontFamily": "Montserrat-SemiBold",
-              "fontSize": 12,
-              "lineHeight": 16,
-            },
-          ]
-        }
-        testID="price-line__price-detail"
-      >
-        (
-        12 €
-         x 
-        2
-         places)
-      </Text>
-      <Text
-        style={
-          Array [
-            Object {
-              "color": "#161617",
-              "fontFamily": "Montserrat-SemiBold",
-              "fontSize": 12,
-              "lineHeight": 16,
-            },
-          ]
-        }
-        testID="price-line__attributes"
-      >
-         - 
-        VOSTFR 3D IMAX
       </Text>
     </Text>
     <View
@@ -2149,369 +2512,6 @@ Array [
 `;
 
 exports[`<BookingInformations /> should not display stock attributes when feature flag activated 1`] = `
-Array [
-  <View
-    style={
-      Array [
-        Object {
-          "alignItems": "center",
-          "flexDirection": "row",
-          "paddingVertical": 2,
-          "width": 864,
-        },
-      ]
-    }
-  >
-    <View
-      style={
-        Array [
-          Object {
-            "flexShrink": 0,
-          },
-        ]
-      }
-    >
-      <View
-        height={24}
-        width={24}
-      >
-        <Text>
-          undefined-SVG-Mock
-        </Text>
-      </View>
-    </View>
-    <View
-      numberOfSpaces={3}
-      style={
-        Array [
-          Object {
-            "width": 12,
-          },
-        ]
-      }
-    />
-    <Text
-      style={
-        Array [
-          Object {
-            "color": "#161617",
-            "fontFamily": "Montserrat-SemiBold",
-            "fontSize": 12,
-            "lineHeight": 16,
-          },
-        ]
-      }
-    >
-      mon nom
-    </Text>
-    <View
-      numberOfSpaces={2}
-      style={
-        Array [
-          Object {
-            "width": 8,
-          },
-        ]
-      }
-    />
-    <Text
-      style={
-        Array [
-          Object {
-            "color": "#696A6F",
-            "fontFamily": "Montserrat-SemiBold",
-            "fontSize": 12,
-            "lineHeight": 16,
-          },
-        ]
-      }
-    />
-  </View>,
-  <View
-    style={
-      Array [
-        Object {
-          "alignItems": "center",
-          "flexDirection": "row",
-          "paddingVertical": 2,
-          "width": 864,
-        },
-      ]
-    }
-  >
-    <View
-      style={
-        Array [
-          Object {
-            "flexShrink": 0,
-          },
-        ]
-      }
-    >
-      <View
-        height={24}
-        width={24}
-      >
-        <Text>
-          undefined-SVG-Mock
-        </Text>
-      </View>
-    </View>
-    <View
-      numberOfSpaces={3}
-      style={
-        Array [
-          Object {
-            "width": 12,
-          },
-        ]
-      }
-    />
-    <Text
-      style={
-        Array [
-          Object {
-            "color": "#161617",
-            "fontFamily": "Montserrat-SemiBold",
-            "fontSize": 12,
-            "lineHeight": 16,
-          },
-        ]
-      }
-    >
-      1 décembre 2020, 00h00
-    </Text>
-    <View
-      numberOfSpaces={2}
-      style={
-        Array [
-          Object {
-            "width": 8,
-          },
-        ]
-      }
-    />
-    <Text
-      style={
-        Array [
-          Object {
-            "color": "#696A6F",
-            "fontFamily": "Montserrat-SemiBold",
-            "fontSize": 12,
-            "lineHeight": 16,
-          },
-        ]
-      }
-    />
-  </View>,
-  <View
-    style={
-      Array [
-        Object {
-          "alignItems": "center",
-          "flexDirection": "row",
-          "paddingVertical": 2,
-          "width": 864,
-        },
-      ]
-    }
-    testID="address"
-  >
-    <View
-      style={
-        Array [
-          Object {
-            "flexShrink": 0,
-          },
-        ]
-      }
-    >
-      <View
-        height={24}
-        width={24}
-      >
-        <Text>
-          undefined-SVG-Mock
-        </Text>
-      </View>
-    </View>
-    <View
-      numberOfSpaces={3}
-      style={
-        Array [
-          Object {
-            "width": 12,
-          },
-        ]
-      }
-    />
-    <Text
-      style={
-        Array [
-          Object {
-            "alignItems": "center",
-            "color": "#161617",
-            "fontFamily": "Montserrat-Regular",
-            "fontSize": 15,
-            "lineHeight": 20,
-            "textTransform": "capitalize",
-          },
-        ]
-      }
-    >
-      <Text
-        style={
-          Array [
-            Object {
-              "color": "#161617",
-              "fontFamily": "Montserrat-SemiBold",
-              "fontSize": 12,
-              "lineHeight": 16,
-            },
-          ]
-        }
-      >
-        PATHE BEAUGRENELLE, 2 RUE LAMENNAIS, 75008 PARIS
-      </Text>
-    </Text>
-    <View
-      numberOfSpaces={2}
-      style={
-        Array [
-          Object {
-            "width": 8,
-          },
-        ]
-      }
-    />
-    <Text
-      style={
-        Array [
-          Object {
-            "color": "#696A6F",
-            "fontFamily": "Montserrat-SemiBold",
-            "fontSize": 12,
-            "lineHeight": 16,
-          },
-        ]
-      }
-    />
-  </View>,
-  <View
-    style={
-      Array [
-        Object {
-          "alignItems": "center",
-          "flexDirection": "row",
-          "paddingVertical": 2,
-          "width": 864,
-        },
-      ]
-    }
-  >
-    <View
-      style={
-        Array [
-          Object {
-            "flexShrink": 0,
-          },
-        ]
-      }
-    >
-      <View
-        fill="#696A6F"
-        height={24}
-        width={24}
-      >
-        <Text>
-          undefined-SVG-Mock
-        </Text>
-      </View>
-    </View>
-    <View
-      numberOfSpaces={3}
-      style={
-        Array [
-          Object {
-            "width": 12,
-          },
-        ]
-      }
-    />
-    <Text
-      style={
-        Array [
-          Object {
-            "color": "#161617",
-            "fontFamily": "Montserrat-Regular",
-            "fontSize": 15,
-            "lineHeight": 20,
-          },
-        ]
-      }
-    >
-      <Text
-        style={
-          Array [
-            Object {
-              "color": "#161617",
-              "fontFamily": "Montserrat-SemiBold",
-              "fontSize": 12,
-              "lineHeight": 16,
-            },
-          ]
-        }
-      >
-        24 €
-         
-      </Text>
-      <Text
-        style={
-          Array [
-            Object {
-              "color": "#696A6F",
-              "fontFamily": "Montserrat-SemiBold",
-              "fontSize": 12,
-              "lineHeight": 16,
-            },
-          ]
-        }
-        testID="price-line__price-detail"
-      >
-        (
-        12 €
-         x 
-        2
-         places)
-      </Text>
-    </Text>
-    <View
-      numberOfSpaces={2}
-      style={
-        Array [
-          Object {
-            "width": 8,
-          },
-        ]
-      }
-    />
-    <Text
-      style={
-        Array [
-          Object {
-            "color": "#696A6F",
-            "fontFamily": "Montserrat-SemiBold",
-            "fontSize": 12,
-            "lineHeight": 16,
-          },
-        ]
-      }
-    />
-  </View>,
-]
-`;
-
-exports[`<BookingInformations /> should not display stock attributes when feature flag deactivated 1`] = `
 Array [
   <View
     style={

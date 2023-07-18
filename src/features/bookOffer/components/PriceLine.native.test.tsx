@@ -15,7 +15,7 @@ describe('<PriceLine />', () => {
     expect(screen.getByText('5\u00a0€')).toBeTruthy()
   })
 
-  it('should show price details', () => {
+  it('should show price details when wipAttributesCinemaOffers feature flag activated', () => {
     mockUseFeatureFlag.mockReturnValueOnce(true)
     render(<PriceLine unitPrice={500} quantity={2} attributes={attributes} />)
 
@@ -26,7 +26,7 @@ describe('<PriceLine />', () => {
     expect(screen.getByTestId('price-line__attributes')).toBeTruthy()
   })
 
-  it("should not show cinema's attributes", () => {
+  it("should not show cinema's attributes when wipAttributesCinemaOffers feature flag deactivated", () => {
     mockUseFeatureFlag.mockReturnValueOnce(false)
     render(<PriceLine unitPrice={500} quantity={2} attributes={attributes} />)
 

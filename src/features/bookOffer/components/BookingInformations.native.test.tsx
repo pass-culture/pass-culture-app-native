@@ -130,54 +130,55 @@ describe('<BookingInformations />', () => {
     expect(screen.getByTestId('price-line__label')).toBeTruthy()
   })
 
-  it('should display stock attributes', () => {
-    mockUseFeatureFlag.mockReturnValueOnce(true)
+  describe('When wipAttributesCinemaOffers feature flag activated', () => {
+    it('should display stock attributes when the offer has it', () => {
+      mockUseFeatureFlag.mockReturnValueOnce(true)
 
-    // @ts-expect-error mock is not real type
-    mockedUseBookingOffer.mockReturnValueOnce({
-      isDigital: false,
-      subcategoryId: SubcategoryIdEnum.CINE_PLEIN_AIR,
-      name: 'mon nom',
-      stocks: [],
-      venue: mockOffer.venue,
+      // @ts-expect-error mock is not real type
+      mockedUseBookingOffer.mockReturnValueOnce({
+        isDigital: false,
+        subcategoryId: SubcategoryIdEnum.CINE_PLEIN_AIR,
+        name: 'mon nom',
+        stocks: [],
+        venue: mockOffer.venue,
+      })
+
+      // @ts-expect-error mock is not real type
+      mockedUseBookingStock.mockReturnValueOnce({
+        beginningDatetime: '2020-12-01T00:00:00Z',
+        price: 1200,
+        features: ['VOSTFR', '3D', 'IMAX'],
+      })
+
+      const myComponent = render(<BookingInformations />)
+      expect(myComponent).toMatchSnapshot()
+
+      expect(screen.getByTestId('price-line__attributes')).toBeTruthy()
     })
+    it('should not display stock attributes when the offer has not it', () => {
+      mockUseFeatureFlag.mockReturnValueOnce(false)
 
-    // @ts-expect-error mock is not real type
-    mockedUseBookingStock.mockReturnValueOnce({
-      beginningDatetime: '2020-12-01T00:00:00Z',
-      price: 1200,
-      features: ['VOSTFR', '3D', 'IMAX'],
+      // @ts-expect-error mock is not real type
+      mockedUseBookingOffer.mockReturnValueOnce({
+        isDigital: false,
+        subcategoryId: SubcategoryIdEnum.CINE_PLEIN_AIR,
+        name: 'mon nom',
+        stocks: [],
+        venue: mockOffer.venue,
+      })
+
+      // @ts-expect-error mock is not real type
+      mockedUseBookingStock.mockReturnValueOnce({
+        beginningDatetime: '2020-12-01T00:00:00Z',
+        price: 1200,
+        features: ['VOSTFR', '3D', 'IMAX'],
+      })
+
+      const myComponent = render(<BookingInformations />)
+      expect(myComponent).toMatchSnapshot()
+
+      expect(screen.queryByTestId('price-line__attributes')).toBeFalsy()
     })
-
-    const myComponent = render(<BookingInformations />)
-    expect(myComponent).toMatchSnapshot()
-
-    expect(screen.getByTestId('price-line__attributes')).toBeTruthy()
-  })
-
-  it('should not display stock attributes when feature flag deactivated', () => {
-    mockUseFeatureFlag.mockReturnValueOnce(false)
-
-    // @ts-expect-error mock is not real type
-    mockedUseBookingOffer.mockReturnValueOnce({
-      isDigital: false,
-      subcategoryId: SubcategoryIdEnum.CINE_PLEIN_AIR,
-      name: 'mon nom',
-      stocks: [],
-      venue: mockOffer.venue,
-    })
-
-    // @ts-expect-error mock is not real type
-    mockedUseBookingStock.mockReturnValueOnce({
-      beginningDatetime: '2020-12-01T00:00:00Z',
-      price: 1200,
-      features: ['VOSTFR', '3D', 'IMAX'],
-    })
-
-    const myComponent = render(<BookingInformations />)
-    expect(myComponent).toMatchSnapshot()
-
-    expect(screen.queryByTestId('price-line__attributes')).toBeFalsy()
   })
 
   it('should not display stock attributes when feature flag activated', () => {
