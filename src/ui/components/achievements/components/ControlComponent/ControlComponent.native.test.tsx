@@ -7,8 +7,6 @@ import { ControlComponent, ControlComponentProps } from './ControlComponent'
 describe('<ControlComponent />', () => {
   const onPress = jest.fn()
 
-  beforeEach(onPress.mockClear)
-
   it('should render correctly prev by default', () => {
     const renderAPI = renderControlComponent()
     expect(renderAPI).toMatchSnapshot()
