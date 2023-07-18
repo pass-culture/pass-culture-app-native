@@ -120,6 +120,7 @@ export const screenParamsParser: ParamsParsers = {
   },
   ThematicHome: {
     homeId: identityFn,
+    videoModuleId: identityFn,
     from: identityFn,
     moduleId: identityFn,
     moduleListId: identityFn,
