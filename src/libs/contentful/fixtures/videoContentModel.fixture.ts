@@ -119,5 +119,6 @@ export const videoContentModelFixture: VideoContentModel = {
     videoDescription:
       'Lujipeka répond à vos questions sur sa tournée, sa musique, ses inspirations et pleins d’autres questions&nbsp;!',
     videoPublicationDate: '2023-06-16',
+    offerIds: ['12345', '67890'],
   },
 }

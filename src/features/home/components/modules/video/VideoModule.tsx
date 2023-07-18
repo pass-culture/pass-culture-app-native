@@ -45,7 +45,7 @@ export const VideoModule: FunctionComponent<VideoModuleProps> = (props) => {
   } = useModal(false)
   const videoDuration = `${props.durationInMinutes} min`
 
-  const { offers } = useVideoOffers(props.offersModuleParameters, props.id)
+  const { offers } = useVideoOffers(props.offersModuleParameters, props.id, props.offerIds)
 
   const theme = useTheme()
   const colorCategoryBackgroundHeightUniqueOffer = theme.isDesktopViewport
