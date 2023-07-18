@@ -68,7 +68,7 @@ export const ForgottenPassword = () => {
       </Typo.Body>
       <Spacer.Column numberOfSpaces={8} />
       <Form.MaxWidth>
-        <EmailInputController control={control} name="email" autoFocus />
+        <EmailInputController control={control} name="email" autoFocus withSpellingHelp />
         <Spacer.Column numberOfSpaces={8} />
         <ButtonPrimary
           wording="Valider"
