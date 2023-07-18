@@ -7,7 +7,7 @@ import { getSpacing, Typo } from 'ui/theme'
 
 interface RadioSelectorProps {
   label: string
-  onPress: () => void
+  onPress: VoidFunction
   description?: string | null
   rightText?: string
   checked?: boolean

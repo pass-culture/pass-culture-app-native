@@ -8,6 +8,18 @@ import { VenueSelectionListItem } from './VenueSelectionListItem'
 export default {
   title: 'features/offer/VenueSelectionListItem',
   component: VenueSelectionListItem,
+  parameters: {
+    docs: {
+      description: {
+        component:
+          'This component uses `SelectableListItem` internally.\n\n' +
+          'It it used to display a venue list item that can be selected.',
+      },
+    },
+  },
+  argTypes: {
+    onSelect: { control: { disable: true } },
+  },
 }
 
 const Template: ComponentStory<typeof VenueSelectionListItem> = (props) => (
