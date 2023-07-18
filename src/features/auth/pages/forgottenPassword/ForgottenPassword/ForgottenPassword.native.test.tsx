@@ -105,22 +105,18 @@ describe('<ForgottenPassword />', () => {
     fireEvent.changeText(emailInput, 'john.doe@gmail.com')
     fireEvent.press(screen.getByText('Valider'))
     const recaptchaWebview = screen.getByTestId('recaptcha-webview')
-    simulateWebviewMessage(recaptchaWebview, '{ "message": "error", "error": "someError" }')
+    await simulateWebviewMessage(recaptchaWebview, '{ "message": "error", "error": "someError" }')
 
-    await waitFor(() => {
-      expect(
-        screen.queryByText(
-          'Un problème est survenu pendant la réinitialisation, réessaie plus tard.'
-        )
-      ).toBeTruthy()
-      expect(captureMonitoringError).toHaveBeenNthCalledWith(
-        1,
-        'someError',
-        'ForgottenPasswordOnRecaptchaError'
-      )
-      expect(navigate).not.toBeCalled()
-      expect(screen.queryByTestId('Chargement en cours')).toBeNull()
-    })
+    expect(
+      screen.queryByText('Un problème est survenu pendant la réinitialisation, réessaie plus tard.')
+    ).toBeTruthy()
+    expect(captureMonitoringError).toHaveBeenNthCalledWith(
+      1,
+      'someError',
+      'ForgottenPasswordOnRecaptchaError'
+    )
+    expect(navigate).not.toBeCalled()
+    expect(screen.queryByTestId('Chargement en cours')).toBeNull()
   })
 
   it('should NOT redirect to ResetPasswordEmailSent when reset password request API call has failed', async () => {
