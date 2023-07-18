@@ -140,6 +140,7 @@ describe('<BookingEventChoices />', () => {
           cancellationLimitDatetime: new Date('2021-02-01T12:14:57.081907'),
           isBookable: true,
           price: 2400,
+          features: [],
         },
       ],
     }))

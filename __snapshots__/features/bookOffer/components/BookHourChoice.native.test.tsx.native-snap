@@ -18,11 +18,11 @@ Array [
     Horaire
   </Text>,
   <View
-    numberOfSpaces={2}
+    numberOfSpaces={4}
     style={
       Array [
         Object {
-          "height": 8,
+          "height": 16,
         },
       ]
     }
@@ -33,7 +33,6 @@ Array [
         Object {
           "flexDirection": "row",
           "flexWrap": "wrap",
-          "marginHorizontal": -8,
         },
       ]
     }
@@ -57,85 +56,116 @@ Array [
       onStartShouldSetResponder={[Function]}
       style={
         Object {
+          "alignItems": "center",
+          "backgroundColor": "#F1F1F4",
+          "borderColor": "#F1F1F4",
+          "borderRadius": 8,
+          "borderStyle": "solid",
+          "borderWidth": 1,
+          "flexDirection": "row",
+          "flexGrow": 1,
           "opacity": 1,
-          "paddingBottom": 8,
-          "paddingLeft": 8,
-          "paddingRight": 8,
-          "paddingTop": 8,
+          "paddingBottom": 16,
+          "paddingLeft": 16,
+          "paddingRight": 16,
+          "paddingTop": 16,
           "userSelect": "auto",
-          "width": "33%",
         }
       }
       testID="10h00 épuisé"
     >
       <View
-        disabled={true}
-        selected={false}
+        isSelected={false}
         style={
           Array [
             Object {
               "alignItems": "center",
-              "backgroundColor": "#ffffff",
-              "borderColor": "#CBCDD2",
-              "borderRadius": 4,
+              "borderColor": "#90949D",
+              "borderRadius": 8,
               "borderStyle": "solid",
               "borderWidth": 1,
+              "height": 16,
               "justifyContent": "center",
-              "overflow": "hidden",
-              "paddingHorizontal": 13,
+              "marginRight": 16,
+              "width": 16,
             },
           ]
         }
       >
         <View
-          numberOfSpaces={5}
+          disabled={true}
+          isSelected={false}
           style={
             Array [
               Object {
-                "width": 20,
+                "backgroundColor": "#CBCDD2",
+                "borderRadius": 16,
+                "height": 16,
+                "width": 16,
               },
             ]
           }
         />
+      </View>
+      <View
+        style={
+          Array [
+            Object {
+              "flexBasis": 0,
+              "flexGrow": 1,
+              "flexShrink": 1,
+            },
+          ]
+        }
+      >
         <View
           style={
             Array [
               Object {
                 "alignItems": "center",
-                "justifyContent": "center",
-                "minHeight": 80,
+                "flexDirection": "row",
               },
             ]
           }
         >
-          <Text
-            disabled={true}
-            selected={false}
+          <View
             style={
               Array [
                 Object {
-                  "color": "#696A6F",
-                  "fontFamily": "Montserrat-Bold",
-                  "fontSize": 15,
-                  "lineHeight": 20,
+                  "flexBasis": 0,
+                  "flexGrow": 1,
+                  "flexShrink": 1,
+                  "marginVertical": 16,
                 },
               ]
             }
-            testID="HourChoice148411-hour"
           >
-            10h00
-          </Text>
+            <Text
+              disabled={true}
+              style={
+                Array [
+                  Object {
+                    "color": "#696A6F",
+                    "fontFamily": "Montserrat-Bold",
+                    "fontSize": 15,
+                    "lineHeight": 20,
+                  },
+                ]
+              }
+              testID="HourChoice148411-hour"
+            >
+              10h00
+            </Text>
+          </View>
           <Text
             disabled={true}
-            selected={false}
             style={
               Array [
                 Object {
                   "color": "#696A6F",
-                  "fontFamily": "Montserrat-SemiBold",
-                  "fontSize": 12,
-                  "lineHeight": 16,
-                  "textAlign": "center",
+                  "fontFamily": "Montserrat-Regular",
+                  "fontSize": 15,
+                  "lineHeight": 20,
                 },
               ]
             }
@@ -144,25 +174,6 @@ Array [
             épuisé
           </Text>
         </View>
-        <View
-          parentWidth={301.3333333333333}
-          style={
-            Array [
-              Object {
-                "backgroundColor": "#CBCDD2",
-                "borderRadius": 0.5,
-                "height": 1,
-                "position": "absolute",
-                "transform": Array [
-                  Object {
-                    "rotate": "-14.774550275046582deg",
-                  },
-                ],
-                "width": 325.3333333333333,
-              },
-            ]
-          }
-        />
       </View>
     </View>
     <View
@@ -184,85 +195,116 @@ Array [
       onStartShouldSetResponder={[Function]}
       style={
         Object {
+          "alignItems": "center",
+          "backgroundColor": "#ffffff",
+          "borderColor": "#90949D",
+          "borderRadius": 8,
+          "borderStyle": "solid",
+          "borderWidth": 1,
+          "flexDirection": "row",
+          "flexGrow": 1,
           "opacity": 1,
-          "paddingBottom": 8,
-          "paddingLeft": 8,
-          "paddingRight": 8,
-          "paddingTop": 8,
+          "paddingBottom": 16,
+          "paddingLeft": 16,
+          "paddingRight": 16,
+          "paddingTop": 16,
           "userSelect": "auto",
-          "width": "33%",
         }
       }
       testID="20h00 24 €"
     >
       <View
-        disabled={false}
-        selected={false}
+        isSelected={false}
         style={
           Array [
             Object {
               "alignItems": "center",
-              "backgroundColor": "#ffffff",
-              "borderColor": "#696A6F",
-              "borderRadius": 4,
+              "borderColor": "#90949D",
+              "borderRadius": 8,
               "borderStyle": "solid",
               "borderWidth": 1,
+              "height": 16,
               "justifyContent": "center",
-              "overflow": "hidden",
-              "paddingHorizontal": 13,
+              "marginRight": 16,
+              "width": 16,
             },
           ]
         }
       >
         <View
-          numberOfSpaces={5}
+          disabled={false}
+          isSelected={false}
           style={
             Array [
               Object {
-                "width": 20,
+                "backgroundColor": "transparent",
+                "borderRadius": 16,
+                "height": 8,
+                "width": 8,
               },
             ]
           }
         />
+      </View>
+      <View
+        style={
+          Array [
+            Object {
+              "flexBasis": 0,
+              "flexGrow": 1,
+              "flexShrink": 1,
+            },
+          ]
+        }
+      >
         <View
           style={
             Array [
               Object {
                 "alignItems": "center",
-                "justifyContent": "center",
-                "minHeight": 80,
+                "flexDirection": "row",
               },
             ]
           }
         >
-          <Text
-            disabled={false}
-            selected={false}
+          <View
             style={
               Array [
                 Object {
-                  "color": "#161617",
-                  "fontFamily": "Montserrat-Bold",
-                  "fontSize": 15,
-                  "lineHeight": 20,
+                  "flexBasis": 0,
+                  "flexGrow": 1,
+                  "flexShrink": 1,
+                  "marginVertical": 16,
                 },
               ]
             }
-            testID="HourChoice148409-hour"
           >
-            20h00
-          </Text>
+            <Text
+              disabled={false}
+              style={
+                Array [
+                  Object {
+                    "color": "#161617",
+                    "fontFamily": "Montserrat-Bold",
+                    "fontSize": 15,
+                    "lineHeight": 20,
+                  },
+                ]
+              }
+              testID="HourChoice148409-hour"
+            >
+              20h00
+            </Text>
+          </View>
           <Text
             disabled={false}
-            selected={false}
             style={
               Array [
                 Object {
                   "color": "#161617",
-                  "fontFamily": "Montserrat-SemiBold",
-                  "fontSize": 12,
-                  "lineHeight": 16,
-                  "textAlign": "center",
+                  "fontFamily": "Montserrat-Regular",
+                  "fontSize": 15,
+                  "lineHeight": 20,
                 },
               ]
             }
@@ -295,11 +337,11 @@ Array [
     Horaire
   </Text>,
   <View
-    numberOfSpaces={2}
+    numberOfSpaces={4}
     style={
       Array [
         Object {
-          "height": 8,
+          "height": 16,
         },
       ]
     }

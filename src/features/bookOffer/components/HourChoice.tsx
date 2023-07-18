@@ -1,9 +1,10 @@
 import React from 'react'
 import styled from 'styled-components/native'
 
-import { ChoiceBloc, getTextColor } from 'features/bookOffer/components/ChoiceBloc'
 import { getHourWording } from 'features/bookOffer/helpers/bookingHelpers/bookingHelpers'
+import { SelectableListItem } from 'features/offer/components/SelectableListItem/SelectableListItem'
 import { getSpacing, Typo } from 'ui/theme'
+
 interface Props {
   hour: string
   price: number
@@ -13,9 +14,10 @@ interface Props {
   isBookable: boolean
   offerCredit: number
   hasSeveralPrices?: boolean
+  features: string[]
 }
 
-export const HourChoice: React.FC<Props> = ({
+export function HourChoice({
   hour,
   price,
   selected,
@@ -24,47 +26,61 @@ export const HourChoice: React.FC<Props> = ({
   isBookable,
   offerCredit,
   hasSeveralPrices,
-}) => {
+  features,
+}: Props) {
   const enoughCredit = price <= offerCredit
   const disabled = !isBookable || !enoughCredit
-  const wording = getHourWording(price, isBookable, enoughCredit, hasSeveralPrices)
+  const priceWording = getHourWording(price, isBookable, enoughCredit, hasSeveralPrices)
 
-  const accessibilityLabel = `${hour} ${wording}`
+  const accessibilityLabel = `${hour} ${priceWording}`
   return (
-    <ChoiceBloc
-      onPress={onPress}
-      accessibilityLabel={accessibilityLabel}
-      selected={selected}
-      disabled={disabled}>
-      <Container>
-        <ButtonText testID={`${testID}-hour`} selected={selected} disabled={disabled}>
-          {hour}
-        </ButtonText>
+    <SelectableListItem
+      onSelect={onPress}
+      isSelected={selected}
+      disabled={disabled}
+      render={() => (
+        <Container>
+          <LeftContent>
+            <Hour disabled={disabled} testID={`${testID}-hour`}>
+              {hour}
+            </Hour>
+            {
+              features.length ? (
+                <Tags disabled={disabled}>{features.join(' ')}</Tags>
+              ) : null /* conditionally render tags since it applies a margin even when nothing is displayed */
+            }
+          </LeftContent>
 
-        <Caption testID={`${testID}-price`} selected={selected} disabled={disabled}>
-          {wording}
-        </Caption>
-      </Container>
-    </ChoiceBloc>
+          <PriceTag disabled={disabled} testID={`${testID}-price`}>
+            {priceWording}
+          </PriceTag>
+        </Container>
+      )}
+      accessibilityLabel={selected ? `${accessibilityLabel} sélectionné` : accessibilityLabel}
+      testID={testID}
+    />
   )
 }
 
 const Container = styled.View({
-  minHeight: getSpacing(20),
   alignItems: 'center',
-  justifyContent: 'center',
+  flexDirection: 'row',
 })
 
-interface TypoProps {
-  selected: boolean
-  disabled: boolean
-}
+const LeftContent = styled.View({
+  flex: 1,
+  marginVertical: getSpacing(4),
+})
 
-const ButtonText = styled(Typo.ButtonText)<TypoProps>(({ selected, disabled, theme }) => ({
-  color: getTextColor(theme, selected, disabled),
+const Hour = styled(Typo.ButtonText)(({ theme, disabled }) => ({
+  color: disabled ? theme.colors.greyDark : undefined,
 }))
 
-const Caption = styled(Typo.Caption)<TypoProps>(({ selected, disabled, theme }) => ({
-  color: getTextColor(theme, selected, disabled),
-  textAlign: 'center',
+const Tags = styled(Typo.Caption)(({ theme, disabled }) => ({
+  marginTop: getSpacing(1),
+  color: disabled ? theme.colors.greySemiDark : theme.colors.greyDark,
+}))
+
+const PriceTag = styled(Typo.Body)(({ theme, disabled }) => ({
+  color: disabled ? theme.colors.greyDark : theme.colors.black,
 }))
