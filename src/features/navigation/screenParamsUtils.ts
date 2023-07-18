@@ -98,6 +98,7 @@ export const screenParamsParser: ParamsParsers = {
   Home: {
     latitude: Number,
     longitude: Number,
+    videoModuleId: identityFn,
   },
   ReinitializePassword: {
     token: identityFn,

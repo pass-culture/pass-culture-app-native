@@ -35,6 +35,7 @@ const DESKTOP_BACKGROUND_HEIGHT = getSpacing(32.5)
 interface VideoModuleProps extends VideoModuleType {
   index: number
   homeEntryId: string
+  shouldShowModal: boolean
 }
 
 export const VideoModule: FunctionComponent<VideoModuleProps> = (props) => {
@@ -42,7 +43,7 @@ export const VideoModule: FunctionComponent<VideoModuleProps> = (props) => {
     visible: videoModalVisible,
     showModal: showVideoModal,
     hideModal: hideVideoModal,
-  } = useModal(false)
+  } = useModal(props.shouldShowModal)
   const videoDuration = `${props.durationInMinutes} min`
 
   const { offers } = useVideoOffers(props.offersModuleParameters, props.id)
