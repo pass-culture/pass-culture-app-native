@@ -4,7 +4,7 @@ import { PriceLine } from 'features/bookOffer/components/PriceLine'
 import * as useFeatureFlag from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { render, screen } from 'tests/utils'
 
-jest.spyOn(useFeatureFlag, 'useFeatureFlag').mockReturnValue(true)
+const mockUseFeatureFlag = jest.spyOn(useFeatureFlag, 'useFeatureFlag')
 
 const attributes = ['VOSTFR', '3D', 'IMAX']
 
@@ -16,6 +16,7 @@ describe('<PriceLine />', () => {
   })
 
   it('should show price details', () => {
+    mockUseFeatureFlag.mockReturnValueOnce(true)
     render(<PriceLine unitPrice={500} quantity={2} attributes={attributes} />)
 
     expect(screen.getByText('10\u00a0€')).toBeTruthy()
@@ -23,6 +24,14 @@ describe('<PriceLine />', () => {
     expect(screen.getByText('- VOSTFR 3D IMAX')).toBeTruthy()
     expect(screen.getByTestId('price-line__price-detail')).toBeTruthy()
     expect(screen.getByTestId('price-line__attributes')).toBeTruthy()
+  })
+
+  it("should not show cinema's attributes", () => {
+    mockUseFeatureFlag.mockReturnValueOnce(false)
+    render(<PriceLine unitPrice={500} quantity={2} attributes={attributes} />)
+
+    expect(screen.queryByText('- VOSTFR 3D IMAX')).toBeFalsy()
+    expect(screen.queryByTestId('price-line__attributes')).toBeFalsy()
   })
 
   it('should set default quantity to 1', () => {
