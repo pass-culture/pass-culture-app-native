@@ -45,7 +45,7 @@ describe('buildGeolocationParameter', () => {
   }
 
   it('should return undefined for venue location type', () => {
-    const result = buildGeolocationParameter(locationFilterVenue, userLocation)
+    const result = buildGeolocationParameter({ locationFilter: locationFilterVenue, userLocation })
     expect(result).toBeUndefined()
   })
 
@@ -57,17 +57,23 @@ describe('buildGeolocationParameter', () => {
         geolocation: null,
       },
     }
-    const result = buildGeolocationParameter(locationFilterPlaceNoGeolocation, userLocation)
+    const result = buildGeolocationParameter({
+      locationFilter: locationFilterPlaceNoGeolocation,
+      userLocation,
+    })
     expect(result).toBeUndefined()
   })
 
   it('should return undefined when there is no user location', () => {
-    const result = buildGeolocationParameter(locationFilterEverywhere, null)
+    const result = buildGeolocationParameter({
+      locationFilter: locationFilterEverywhere,
+      userLocation: null,
+    })
     expect(result).toBeUndefined()
   })
 
   it('should return geolocation parameter for place location type with geolocation', () => {
-    const result = buildGeolocationParameter(locationFilterPlace, userLocation)
+    const result = buildGeolocationParameter({ locationFilter: locationFilterPlace, userLocation })
     expect(result).toEqual({
       aroundLatLng: `${locationFilterPlace?.place?.geolocation?.latitude}, ${locationFilterPlace?.place?.geolocation?.longitude}`,
       aroundRadius: locationFilterPlace.aroundRadius * 1000,
@@ -75,12 +81,19 @@ describe('buildGeolocationParameter', () => {
   })
 
   it('should return undefined for online location type with around me filter', () => {
-    const result = buildGeolocationParameter(locationFilterAroundMe, userLocation, true)
+    const result = buildGeolocationParameter({
+      locationFilter: locationFilterAroundMe,
+      userLocation,
+      isOnline: true,
+    })
     expect(result).toBeUndefined()
   })
 
   it('should return geolocation parameter for around me location type', () => {
-    const result = buildGeolocationParameter(locationFilterAroundMe, userLocation)
+    const result = buildGeolocationParameter({
+      locationFilter: locationFilterAroundMe,
+      userLocation,
+    })
     const expectOutput = {
       aroundLatLng: `${userLocation.latitude}, ${userLocation.longitude}`,
       aroundRadius: (locationFilterAroundMe.aroundRadius ?? 0) * 1000,
@@ -89,7 +102,10 @@ describe('buildGeolocationParameter', () => {
   })
 
   it('should return geolocation parameter for "all" location type', () => {
-    const result = buildGeolocationParameter(locationFilterEverywhere, userLocation)
+    const result = buildGeolocationParameter({
+      locationFilter: locationFilterEverywhere,
+      userLocation,
+    })
     expect(result).toEqual({
       aroundLatLng: `${userLocation.latitude}, ${userLocation.longitude}`,
       aroundRadius: 'all',

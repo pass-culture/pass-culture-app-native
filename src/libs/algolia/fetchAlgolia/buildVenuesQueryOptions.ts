@@ -33,7 +33,7 @@ export const buildVenuesQueryOptions = (params: VenuesModuleParameters, userLoca
   facetFilters.push(hasAtLeastOneBookableOfferPredicate)
 
   return {
-    ...buildGeolocationParameter(locationFilter, userLocation),
+    ...buildGeolocationParameter({ locationFilter, userLocation }),
     ...(facetFilters.length > 0 ? { facetFilters } : {}),
   }
 }

@@ -1,4 +1,3 @@
-import { LocationType } from 'features/search/enums'
 import { buildFilters } from 'libs/algolia/fetchAlgolia/buildAlgoliaParameters/buildFilters'
 import { buildGeolocationParameter } from 'libs/algolia/fetchAlgolia/buildAlgoliaParameters/buildGeolocationParameter'
 import { SearchQueryParameters } from 'libs/algolia/types'
@@ -69,10 +68,6 @@ export const buildOfferSearchParameters = (
     maxPossiblePrice,
     minBookingsThreshold,
   }),
-  ...buildGeolocationParameter(
-    locationFilter ?? { locationType: LocationType.EVERYWHERE },
-    userLocation,
-    isOnline
-  ),
+  ...buildGeolocationParameter({ locationFilter, userLocation, isOnline }),
   ...buildFilters({ excludedObjectIds }),
 })

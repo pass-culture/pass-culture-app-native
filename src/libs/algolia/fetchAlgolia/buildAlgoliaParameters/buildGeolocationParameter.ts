@@ -4,11 +4,17 @@ import { Position } from 'libs/geolocation'
 
 import { RADIUS_FILTERS } from '../../enums'
 
-export const buildGeolocationParameter = (
-  locationFilter: LocationFilter,
-  userLocation: Position,
+type Params = {
+  locationFilter: LocationFilter
+  userLocation: Position
   isOnline?: SearchQueryParameters['isOnline']
-): { aroundLatLng: string; aroundRadius: 'all' | number } | undefined => {
+}
+
+export const buildGeolocationParameter = ({
+  locationFilter,
+  userLocation,
+  isOnline,
+}: Params): { aroundLatLng: string; aroundRadius: 'all' | number } | undefined => {
   if (locationFilter.locationType === LocationType.VENUE) return
 
   if (locationFilter.locationType === LocationType.PLACE) {
