@@ -91,6 +91,7 @@ export const BookingPropertiesSection: React.FC<BookingPropertiesSectionProps> =
             unitPrice={booking.stock.price}
             quantity={booking.quantity}
             label={booking.stock.priceCategoryLabel}
+            attributes={booking.stock.features}
             shouldDisabledStyles
           />
         )}
