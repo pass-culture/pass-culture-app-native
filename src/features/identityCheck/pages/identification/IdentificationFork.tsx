@@ -4,6 +4,7 @@ import styled from 'styled-components/native'
 import { IdentificationForkButton } from 'features/identityCheck/components/IdentificationForkButton'
 import { JustifiedLeftTitle } from 'features/identityCheck/components/JustifiedLeftTitle'
 import { PageWithHeader } from 'features/identityCheck/components/layout/PageWithHeader'
+import { ParentInformation } from 'features/identityCheck/components/ParentInformation'
 import { analytics } from 'libs/analytics'
 import { env } from 'libs/environment'
 import { theme } from 'theme'
@@ -13,7 +14,7 @@ import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouch
 import { InfoPlain } from 'ui/svg/icons/InfoPlain'
 import { Marianne } from 'ui/svg/icons/Marianne'
 import { Ubble } from 'ui/svg/icons/Ubble'
-import { getSpacing, Typo } from 'ui/theme'
+import { getSpacing, Spacer, Typo } from 'ui/theme'
 
 export const IdentificationFork: FunctionComponent = () => {
   useEffect(() => {
@@ -61,6 +62,8 @@ const IdentificationForkEduconnectContent: FunctionComponent = () => {
         onBeforeNavigate={analytics.logChooseUbbleMethod}
         key={1}
       />
+      <Spacer.Column numberOfSpaces={10} />
+      <ParentInformation />
     </Container>
   )
 }
