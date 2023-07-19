@@ -1,12 +1,15 @@
 import React from 'react'
+import { Linking } from 'react-native'
 import { ReactTestInstance } from 'react-test-renderer'
 
 import { VenueBody } from 'features/venue/components/VenueBody/VenueBody'
 import { venueResponseSnap } from 'features/venue/fixtures/venueResponseSnap'
 import { analytics } from 'libs/analytics'
 import { act, fireEvent, render, screen } from 'tests/utils'
+import { Network } from 'ui/components/ShareMessagingApp'
 
 const venueId = venueResponseSnap.id
+const canOpenURLSpy = jest.spyOn(Linking, 'canOpenURL')
 
 jest.mock('react-query')
 
@@ -65,6 +68,21 @@ describe('<VenueBody /> - Analytics', () => {
       fireEvent.press(screen.getByText('Voir l’itinéraire'))
     })
     expect(analytics.logConsultItinerary).toHaveBeenCalledWith({ venueId, from: 'venue' })
+  })
+})
+
+it('should log when the user shares the offer on a certain medium', async () => {
+  canOpenURLSpy.mockResolvedValueOnce(true)
+  renderVenueBody()
+
+  const socialMediumButton = await screen.findByText(`Envoyer sur ${[Network.instagram]}`)
+  fireEvent.press(socialMediumButton)
+
+  expect(analytics.logShare).toHaveBeenNthCalledWith(1, {
+    type: 'Venue',
+    from: 'venue',
+    id: venueId,
+    social: Network.instagram,
   })
 })
 
