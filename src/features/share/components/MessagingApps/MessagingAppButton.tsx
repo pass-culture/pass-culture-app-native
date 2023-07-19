@@ -2,7 +2,7 @@ import React from 'react'
 import { Linking, Platform } from 'react-native'
 import Share, { ShareSingleOptions, Social } from 'react-native-share'
 
-import { MessagingAppContainer } from 'features/offer/components/shareMessagingOffer/MessagingAppContainer'
+import { MessagingAppContainer } from 'features/share/components/MessagingApps/MessagingAppContainer'
 import { eventMonitoring } from 'libs/monitoring'
 import { Network, ShareMessagingApp } from 'ui/components/ShareMessagingApp'
 

@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react'
 import { Social } from 'react-native-share'
 
-import { MessagingAppButton } from 'features/offer/components/shareMessagingOffer/MessagingAppButton'
 import { getInstalledApps } from 'features/offer/helpers/getInstalledApps/getInstalledApps'
+import { MessagingAppButton } from 'features/share/components/MessagingApps/MessagingAppButton'
 import { eventMonitoring } from 'libs/monitoring'
 import { Network } from 'ui/components/ShareMessagingApp'
 
