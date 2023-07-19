@@ -146,7 +146,7 @@ const useFeatureFlagSpy = jest.spyOn(useFeatureFlag, 'useFeatureFlag').mockRetur
 
 const onScroll = jest.fn()
 
-const offerId = 146112
+const offerId = mockOffer.id
 
 describe('<OfferBody />', () => {
   beforeAll(() => {
