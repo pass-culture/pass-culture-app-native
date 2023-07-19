@@ -1,5 +1,5 @@
-const { decodeAccessToken, getUserIdFromAccesstoken } = jest.requireActual('libs/jwt')
-
-export { decodeAccessToken, getUserIdFromAccesstoken }
-
+export const decodeAccessToken = jest.fn(jest.requireActual('libs/jwt').decodeAccessToken)
 export const getAccessTokenStatus = jest.fn(() => 'valid')
+export const getUserIdFromAccesstoken = jest.fn(
+  jest.requireActual('libs/jwt').getUserIdFromAccesstoken
+)
