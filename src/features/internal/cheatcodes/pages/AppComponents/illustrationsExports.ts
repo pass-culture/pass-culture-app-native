@@ -40,6 +40,7 @@ import { NoBookings } from 'ui/svg/icons/NoBookings'
 import { NoOffer } from 'ui/svg/icons/NoOffer'
 import { Notification } from 'ui/svg/icons/Notification'
 import { PageNotFound } from 'ui/svg/icons/PageNotFound'
+import { ParentWithChild } from 'ui/svg/icons/ParentWithChild'
 import { PhoneFlip } from 'ui/svg/icons/PhoneFlip'
 import { ProfileDeletionIllustration } from 'ui/svg/icons/ProfileDeletionIllustration'
 import { RequestSent } from 'ui/svg/icons/RequestSent'
@@ -79,6 +80,7 @@ export const UniqueColorIllustrations = {
   NoOffer,
   Notification,
   PageNotFound,
+  ParentWithChild,
   PhoneFlip,
   ProfileDeletionIllustration,
   RequestSent,
