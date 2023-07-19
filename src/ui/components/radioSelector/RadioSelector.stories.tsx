@@ -1,3 +1,4 @@
+import { NavigationContainer } from '@react-navigation/native'
 import { ComponentStory, ComponentMeta } from '@storybook/react'
 import React from 'react'
 
@@ -19,6 +20,13 @@ export default {
   argTypes: {
     onPress: { control: { disable: true } },
   },
+  decorators: [
+    (Story) => (
+      <NavigationContainer>
+        <Story />
+      </NavigationContainer>
+    ),
+  ],
 } as ComponentMeta<typeof RadioSelector>
 
 const Template: ComponentStory<typeof RadioSelector> = (args) => <RadioSelector {...args} />
