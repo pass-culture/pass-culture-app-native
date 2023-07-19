@@ -1,5 +1,7 @@
 import mockdate from 'mockdate'
 import React from 'react'
+import { Linking, Share as NativeShare } from 'react-native'
+import Share, { Social } from 'react-native-share'
 import { UseQueryResult } from 'react-query'
 
 import { useRoute } from '__mocks__/@react-navigation/native'
@@ -11,7 +13,8 @@ import {
   venueResponseSnap,
 } from 'features/venue/fixtures/venueResponseSnap'
 import { placeholderData } from 'libs/subcategories/placeholderData'
-import { render, waitFor } from 'tests/utils'
+import { act, fireEvent, render, screen, waitFor } from 'tests/utils'
+import { Network } from 'ui/components/ShareMessagingApp'
 
 mockdate.set(new Date('2021-08-15T00:00:00Z'))
 
@@ -31,6 +34,10 @@ jest.mock('libs/subcategories/useSubcategories', () => ({
     },
   }),
 }))
+
+const canOpenURLSpy = jest.spyOn(Linking, 'canOpenURL')
+const mockShareSingle = jest.spyOn(Share, 'shareSingle')
+const mockNativeShare = jest.spyOn(NativeShare, 'share')
 
 const venueId = venueResponseSnap.id
 
@@ -68,6 +75,34 @@ describe('<VenueBody />', () => {
     } as UseQueryResult<VenueResponse>)
     const venue = await renderVenueBody(venueId)
     expect(venue.queryByText('Modalités de retrait')).toBeNull()
+  })
+
+  it('should open social medium on share button press', async () => {
+    canOpenURLSpy.mockResolvedValueOnce(true)
+    await renderVenueBody(venueId)
+
+    await act(async () => {
+      fireEvent.press(await screen.findByText(`Envoyer sur ${[Network.instagram]}`))
+    })
+
+    expect(mockShareSingle).toHaveBeenCalledWith({
+      social: Social.Instagram,
+      message: encodeURI(
+        `Retrouve "${venueResponseSnap.name}" sur le pass Culture\nhttps://webapp-v2.example.com/lieu/5543`
+      ),
+      type: 'text',
+      url: undefined,
+    })
+  })
+
+  it('should open native share modal on "Plus d’options" press', async () => {
+    await renderVenueBody(venueId)
+
+    await act(async () => {
+      fireEvent.press(screen.getByText('Plus d’options'))
+    })
+
+    expect(mockNativeShare).toHaveBeenCalledTimes(1)
   })
 })
 

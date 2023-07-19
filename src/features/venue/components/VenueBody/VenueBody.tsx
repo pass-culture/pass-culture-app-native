@@ -2,6 +2,7 @@ import React, { FunctionComponent, useRef } from 'react'
 import { ScrollView } from 'react-native'
 import styled from 'styled-components/native'
 
+import { VenueMessagingApps } from 'features/offer/components/shareMessagingOffer/VenueMessagingApps'
 import { useVenue } from 'features/venue/api/useVenue'
 import { useVenueOffers } from 'features/venue/api/useVenueOffers'
 import { VenueIconCaptions } from 'features/venue/components/VenueIconCaptions/VenueIconCaptions'
@@ -129,6 +130,10 @@ export const VenueBody: FunctionComponent<Props> = ({ venueId, onScroll }) => {
           address={venueAddress}
           locationCoordinates={{ latitude, longitude }}
         />
+      </SectionWithDivider>
+
+      <SectionWithDivider visible margin>
+        <VenueMessagingApps venueId={venueId} />
       </SectionWithDivider>
 
       {/* Modalités de retrait */}

@@ -28,40 +28,40 @@ describe('<VenueBody /> - Analytics', () => {
     jest.useRealTimers()
   })
 
-  const trigger = (component: ReactTestInstance) => {
-    act(() => {
+  const trigger = async (component: ReactTestInstance) => {
+    await act(async () => {
       fireEvent.press(component)
       jest.runAllTimers()
     })
   }
 
-  it('should log ConsultWithdrawalModalities once when opening accessibility modalities', () => {
+  it('should log ConsultWithdrawalModalities once when opening accessibility modalities', async () => {
     const { getByText } = renderVenueBody()
 
-    trigger(getByText('Accessibilité'))
+    await trigger(getByText('Accessibilité'))
     expect(analytics.logConsultAccessibility).toHaveBeenCalledTimes(1)
     expect(analytics.logConsultAccessibility).toHaveBeenCalledWith({ venueId })
 
-    trigger(getByText('Accessibilité'))
-    trigger(getByText('Accessibilité'))
+    await trigger(getByText('Accessibilité'))
+    await trigger(getByText('Accessibilité'))
     expect(analytics.logConsultAccessibility).toHaveBeenCalledTimes(1)
   })
 
-  it('should log ConsultWithdrawalModalities once when opening withdrawal modalities', () => {
+  it('should log ConsultWithdrawalModalities once when opening withdrawal modalities', async () => {
     const { getByText } = renderVenueBody()
 
-    trigger(getByText('Modalités de retrait'))
+    await trigger(getByText('Modalités de retrait'))
     expect(analytics.logConsultWithdrawal).toHaveBeenCalledTimes(1)
     expect(analytics.logConsultWithdrawal).toHaveBeenCalledWith({ venueId })
 
-    trigger(getByText('Modalités de retrait'))
-    trigger(getByText('Modalités de retrait'))
+    await trigger(getByText('Modalités de retrait'))
+    await trigger(getByText('Modalités de retrait'))
     expect(analytics.logConsultWithdrawal).toHaveBeenCalledTimes(1)
   })
 
-  it('should log ConsultLocationItinerary when opening itinerary', () => {
+  it('should log ConsultLocationItinerary when opening itinerary', async () => {
     const wrapper = renderVenueBody()
-    act(() => {
+    await act(async () => {
       fireEvent.press(wrapper.getByText('Voir l’itinéraire'))
     })
     expect(analytics.logConsultItinerary).toHaveBeenCalledWith({ venueId, from: 'venue' })
