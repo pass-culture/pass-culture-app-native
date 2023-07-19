@@ -2,7 +2,9 @@ import React from 'react'
 import styled from 'styled-components/native'
 
 import { SelectableListItem } from 'features/offer/components/SelectableListItem/SelectableListItem'
+import { useHandleFocus } from 'libs/hooks/useHandleFocus'
 import { accessibleRadioProps } from 'shared/accessibilityProps/accessibleRadioProps'
+import { useSpaceBarAction } from 'ui/hooks/useSpaceBarAction'
 import { getSpacing, Typo } from 'ui/theme'
 
 interface RadioSelectorProps {
@@ -26,12 +28,16 @@ export const RadioSelector = ({
   testID,
   accessibilityLabel,
 }: RadioSelectorProps) => {
+  const { onFocus, onBlur, isFocus } = useHandleFocus()
+
   const handlePress = () => {
     if (disabled) {
       return
     }
     onPress()
   }
+
+  useSpaceBarAction(isFocus ? handlePress : undefined)
 
   return (
     <SelectableListItem
@@ -58,6 +64,8 @@ export const RadioSelector = ({
       isSelected={checked}
       disabled={disabled}
       testID={testID}
+      onFocus={onFocus}
+      onBlur={onBlur}
     />
   )
 }
