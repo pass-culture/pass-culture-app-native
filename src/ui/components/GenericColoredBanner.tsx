@@ -10,8 +10,8 @@ type ColorMessageProps = {
 
 type Props = ColorMessageProps & {
   message: string | ReactNode
-  backgroundColor: string
-  children: React.ReactNode
+  backgroundColor?: string
+  children?: React.ReactNode
   Icon?: FunctionComponent<IconInterface>
   testID?: string
 }
@@ -39,7 +39,7 @@ export const GenericColoredBanner: FunctionComponent<Props> = ({
   )
 }
 
-const Container = styled.View<{ backgroundColor: string }>(({ theme, backgroundColor }) => ({
+const Container = styled.View<{ backgroundColor?: string }>(({ theme, backgroundColor }) => ({
   flexDirection: 'row',
   alignItems: 'center',
   justifyContent: 'space-between',
