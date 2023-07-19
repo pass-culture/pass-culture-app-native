@@ -1,5 +1,5 @@
 import React, { useCallback, useEffect, useMemo } from 'react'
-import { ScrollView } from 'react-native'
+import { Platform, ScrollView } from 'react-native'
 import styled from 'styled-components/native'
 
 import { useAuthContext } from 'features/auth/context/AuthContext'
@@ -142,5 +142,5 @@ const StyledListContainer = styled.View({
 })
 
 const StyledTitleText = styled(Typo.Title1)({
-  textAlign: 'center',
+  ...(Platform.OS === 'web' ? { textAlign: 'center' } : {}),
 })
