@@ -1,5 +1,5 @@
 import React, { useCallback, useEffect, useMemo } from 'react'
-import { ScrollView } from 'react-native'
+import { Platform, ScrollView } from 'react-native'
 import styled from 'styled-components/native'
 
 import { useAuthContext } from 'features/auth/context/AuthContext'
@@ -19,6 +19,8 @@ import { getSpacing, Spacer, Typo } from 'ui/theme'
 import { useCustomSafeInsets } from 'ui/theme/useCustomSafeInsets'
 
 const HEADER_HEIGHT = getSpacing(8)
+
+const isWeb = Platform.OS === 'web'
 
 export function TrackEmailChange() {
   const { data: emailUpdateStatus, isLoading } = useEmailUpdateStatus()
@@ -58,7 +60,7 @@ export function TrackEmailChange() {
         </GoBackContainer>
       </HeaderContainer>
       <Spacer.Column numberOfSpaces={6} />
-      <StyledTitleText>Suivi de ton changement d’e-mail</StyledTitleText>
+      <StyledTitleText isWeb={isWeb}>Suivi de ton changement d’e-mail</StyledTitleText>
       <Spacer.Column numberOfSpaces={10} />
       <StyledListContainer>
         <StyledStepList activeStepIndex={currentStep}>
@@ -141,6 +143,6 @@ const StyledListContainer = styled.View({
   marginHorizontal: 'auto',
 })
 
-const StyledTitleText = styled(Typo.Title1)({
-  textAlign: 'center',
-})
+const StyledTitleText = styled(Typo.Title1)<{ isWeb: boolean }>(({ isWeb }) => ({
+  textAlign: isWeb ? 'center' : undefined,
+}))
