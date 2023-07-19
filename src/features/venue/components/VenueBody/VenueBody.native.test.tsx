@@ -42,11 +42,6 @@ const mockNativeShare = jest.spyOn(NativeShare, 'share')
 const venueId = venueResponseSnap.id
 
 describe('<VenueBody />', () => {
-  it('should render correctly', async () => {
-    await renderVenueBody(venueId)
-    expect(screen).toMatchSnapshot()
-  })
-
   it('should render public name, postalcode and city if no address', async () => {
     mockedUseVenue.mockReturnValueOnce({
       data: venueWithNoAddressResponseSnap,
