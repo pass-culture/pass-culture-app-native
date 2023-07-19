@@ -98,11 +98,13 @@ const RadioInner = styled.View<{ isSelected?: boolean; disabled?: boolean }>(
   ({ theme, isSelected, disabled }) => ({
     width: disabled ? getSpacing(4) : getSpacing(2),
     height: disabled ? getSpacing(4) : getSpacing(2),
-    backgroundColor: isSelected
-      ? theme.colors.primary
-      : disabled
-      ? theme.colors.greyMedium
-      : 'transparent',
+    backgroundColor: getRadioInnerBackgroundColor(theme, isSelected, disabled),
     borderRadius: getSpacing(4),
   })
 )
+
+function getRadioInnerBackgroundColor(theme: DefaultTheme, selected?: boolean, disabled?: boolean) {
+  if (disabled) return theme.colors.greyMedium
+  if (selected) return theme.colors.primary
+  return 'transparent'
+}
