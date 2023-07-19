@@ -23,7 +23,7 @@ export const OfferMessagingApps = ({ isEvent, offerId }: MessagingAppsProps) => 
     [offerId]
   )
 
-  if (!shareContent || !shareContent.url) return null
+  if (!shareContent?.url) return null
 
   return (
     <MessagingApps

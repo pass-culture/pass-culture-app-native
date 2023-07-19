@@ -19,7 +19,7 @@ export const VenueMessagingApps = ({ venueId }: MessagingAppsProps) => {
     [venueId]
   )
 
-  if (!shareContent || !shareContent.url) return null
+  if (!shareContent?.url) return null
 
   return (
     <MessagingApps
