@@ -14,7 +14,7 @@ import { OfferIconCaptions } from 'features/offer/components/OfferIconCaptions/O
 import { OfferPartialDescription } from 'features/offer/components/OfferPartialDescription/OfferPartialDescription'
 import { OfferTile } from 'features/offer/components/OfferTile/OfferTile'
 import { ReportOfferModal } from 'features/offer/components/ReportOfferModal/ReportOfferModal'
-import { MessagingApps } from 'features/offer/components/shareMessagingOffer/MessagingApps'
+import { OfferMessagingApps } from 'features/offer/components/shareMessagingOffer/OfferMessagingApps'
 import { VenueSection } from 'features/offer/components/VenueSection/VenueSection'
 import { VenueSelectionModal } from 'features/offer/components/VenueSelectionModal/VenueSelectionModal'
 import { PlaylistType } from 'features/offer/enums'
@@ -323,7 +323,7 @@ export const OfferBody: FunctionComponent<Props> = ({
       </SectionWithDivider>
 
       <SectionWithDivider visible margin>
-        <MessagingApps offerId={offerId} isEvent={isEvent} />
+        <OfferMessagingApps offerId={offerId} isEvent={isEvent} />
       </SectionWithDivider>
 
       <SectionWithDivider

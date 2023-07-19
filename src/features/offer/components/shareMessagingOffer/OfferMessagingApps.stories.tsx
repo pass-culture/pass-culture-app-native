@@ -1,12 +1,13 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react'
 import React from 'react'
 
-import { MessagingApps } from 'features/offer/components/shareMessagingOffer/MessagingApps'
 import { ReactQueryClientProvider } from 'libs/react-query/ReactQueryClientProvider'
+
+import { OfferMessagingApps } from './OfferMessagingApps'
 
 export default {
   title: 'features/offer/MessagingApps',
-  component: MessagingApps,
+  component: OfferMessagingApps,
   decorators: [
     (Story) => (
       <ReactQueryClientProvider>
@@ -14,9 +15,11 @@ export default {
       </ReactQueryClientProvider>
     ),
   ],
-} as ComponentMeta<typeof MessagingApps>
+} as ComponentMeta<typeof OfferMessagingApps>
 
-const Template: ComponentStory<typeof MessagingApps> = (args) => <MessagingApps {...args} />
+const Template: ComponentStory<typeof OfferMessagingApps> = (args) => (
+  <OfferMessagingApps {...args} />
+)
 
 // TODO(PC-17931): Fix this story
 const Default = Template.bind({})
