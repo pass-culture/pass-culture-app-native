@@ -43,8 +43,8 @@ const venueId = venueResponseSnap.id
 
 describe('<VenueBody />', () => {
   it('should render correctly', async () => {
-    const venue = await renderVenueBody(venueId)
-    expect(venue).toMatchSnapshot()
+    await renderVenueBody(venueId)
+    expect(screen).toMatchSnapshot()
   })
 
   it('should render public name, postalcode and city if no address', async () => {
@@ -53,28 +53,28 @@ describe('<VenueBody />', () => {
     } as UseQueryResult<VenueResponse>)
 
     const venueWithNoAddressId = venueWithNoAddressResponseSnap.id
-    const venue = await renderVenueBody(venueWithNoAddressId)
+    await renderVenueBody(venueWithNoAddressId)
 
-    const adressTexts = venue.getAllByText('Le Petit Rintintin 3, 15000 Milan')
+    const adressTexts = screen.getAllByText('Le Petit Rintintin 3, 15000 Milan')
     expect(adressTexts.length).toEqual(2)
   })
 
   it('should not show venue banner in where section', async () => {
-    const venue = await renderVenueBody(venueId)
-    expect(venue.queryByTestId(`Lieu ${venueResponseSnap.name}`)).toBeNull()
+    await renderVenueBody(venueId)
+    expect(screen.queryByTestId(`Lieu ${venueResponseSnap.name}`)).toBeNull()
   })
 
   it('should show withdrawalDetails', async () => {
-    const venue = await renderVenueBody(venueId)
-    expect(venue.queryByText('Modalités de retrait')).toBeTruthy()
+    await renderVenueBody(venueId)
+    expect(screen.queryByText('Modalités de retrait')).toBeTruthy()
   })
 
   it('should not show withdrawalDetails if withdrawalDetails is null', async () => {
     mockedUseVenue.mockReturnValueOnce({
       data: { ...venueResponseSnap, withdrawalDetails: null },
     } as UseQueryResult<VenueResponse>)
-    const venue = await renderVenueBody(venueId)
-    expect(venue.queryByText('Modalités de retrait')).toBeNull()
+    await renderVenueBody(venueId)
+    expect(screen.queryByText('Modalités de retrait')).toBeNull()
   })
 
   it('should open social medium on share button press', async () => {
