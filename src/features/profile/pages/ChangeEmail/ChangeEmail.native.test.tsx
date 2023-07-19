@@ -9,6 +9,7 @@ import { env } from 'libs/environment'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { server } from 'tests/server'
 import { act, fireEvent, render, screen, superFlushWithAct } from 'tests/utils'
+import { SUGGESTION_DELAY_IN_MS } from 'ui/components/inputs/EmailInputWithSpellingHelp/useEmailSpellingHelp'
 import { SNACK_BAR_TIME_OUT } from 'ui/components/snackBar/SnackBarContext'
 import { SnackBarHelperSettings } from 'ui/components/snackBar/types'
 
@@ -33,6 +34,8 @@ server.use(
   )
 )
 
+jest.useFakeTimers('legacy')
+
 describe('<ChangeEmail/>', () => {
   beforeEach(simulateUpdateEmailSuccess)
 
@@ -42,6 +45,17 @@ describe('<ChangeEmail/>', () => {
     await act(async () => {})
 
     expect(screen).toMatchSnapshot()
+  })
+
+  it('should show email suggestion', async () => {
+    renderChangeEmail()
+    await fillInputs({ email: 'user@gmal.com' })
+
+    await act(async () => {
+      jest.advanceTimersByTime(SUGGESTION_DELAY_IN_MS)
+    })
+
+    expect(screen.queryByText('Veux-tu plutôt dire user@gmail.com\u00a0?')).toBeTruthy()
   })
 
   describe('email change already in progress', () => {
