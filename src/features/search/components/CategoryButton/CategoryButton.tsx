@@ -17,7 +17,6 @@ export type CategoryButtonProps = {
   gradients: Gradient[]
   onPress: () => void
   children?: never
-  isFocused?: boolean
 }
 
 export const CategoryButton: FunctionComponent<CategoryButtonProps> = ({
@@ -27,15 +26,13 @@ export const CategoryButton: FunctionComponent<CategoryButtonProps> = ({
   gradients,
   onPress,
 }) => {
-  const { onFocus, onBlur, isFocus } = useHandleFocus()
+  const focusProps = useHandleFocus()
 
   const theme = useTheme()
 
   return (
     <TouchableContainer
-      isFocus={isFocus}
-      onFocus={onFocus}
-      onBlur={onBlur}
+      {...focusProps}
       onPress={onPress}
       accessibilityLabel={`Catégorie ${label}`}
       hoverUnderlineColor={theme.colors.white}>
