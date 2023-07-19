@@ -20,8 +20,6 @@ import { useCustomSafeInsets } from 'ui/theme/useCustomSafeInsets'
 
 const HEADER_HEIGHT = getSpacing(8)
 
-const isWeb = Platform.OS === 'web'
-
 export function TrackEmailChange() {
   const { data: emailUpdateStatus, isLoading } = useEmailUpdateStatus()
   const { user } = useAuthContext()
@@ -60,7 +58,7 @@ export function TrackEmailChange() {
         </GoBackContainer>
       </HeaderContainer>
       <Spacer.Column numberOfSpaces={6} />
-      <StyledTitleText isWeb={isWeb}>Suivi de ton changement d’e-mail</StyledTitleText>
+      <StyledTitleText>Suivi de ton changement d’e-mail</StyledTitleText>
       <Spacer.Column numberOfSpaces={10} />
       <StyledListContainer>
         <StyledStepList activeStepIndex={currentStep}>
@@ -143,6 +141,6 @@ const StyledListContainer = styled.View({
   marginHorizontal: 'auto',
 })
 
-const StyledTitleText = styled(Typo.Title1)<{ isWeb: boolean }>(({ isWeb }) => ({
-  textAlign: isWeb ? 'center' : undefined,
-}))
+const StyledTitleText = styled(Typo.Title1)({
+  ...(Platform.OS === 'web' ? { textAlign: 'center' } : {}),
+})
