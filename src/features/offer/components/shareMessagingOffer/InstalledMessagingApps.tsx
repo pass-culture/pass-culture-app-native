@@ -3,29 +3,27 @@ import { Social } from 'react-native-share'
 
 import { MessagingAppButton } from 'features/offer/components/shareMessagingOffer/MessagingAppButton'
 import { getInstalledApps } from 'features/offer/helpers/getInstalledApps/getInstalledApps'
-import { analytics } from 'libs/analytics'
 import { eventMonitoring } from 'libs/monitoring'
 import { Network } from 'ui/components/ShareMessagingApp'
 
-export const InstalledMessagingApps = ({ offerId }: { offerId: number }) => {
-  const [installedApps, setInstalledApps] = useState<Network[]>([])
-  const { data: offer } = useOffer({ offerId })
+type Props = {
+  shareMessage: string
+  shareUrl: string
+  messagingAppAnalytics: (social: Social) => void
+}
 
-  const shareMessage = formatShareOfferMessage({
-    offerName: offer?.name ?? '',
-    venueName: offer ? getOfferLocationName(offer.venue, offer.isDigital) : '',
-  })
-  const shareUrl = getOfferUrl(offerId)
+export const InstalledMessagingApps = ({
+  shareMessage,
+  shareUrl,
+  messagingAppAnalytics,
+}: Props) => {
+  const [installedApps, setInstalledApps] = useState<Network[]>([])
 
   useEffect(() => {
     getInstalledApps()
       .then(setInstalledApps)
       .catch((e) => eventMonitoring.captureException(`Installed apps: ${e}`))
   }, [])
-
-  const messagingAppAnalytics = (social: Social) => {
-    analytics.logShare({ type: 'Offer', id: offerId, from: 'offer', social: social })
-  }
 
   return (
     <React.Fragment>

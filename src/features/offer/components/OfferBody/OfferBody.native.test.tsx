@@ -149,7 +149,7 @@ const useFeatureFlagSpy = jest.spyOn(useFeatureFlag, 'useFeatureFlag').mockRetur
 
 const onScroll = jest.fn()
 
-const offerId = 1
+const offerId = 146112
 
 describe('<OfferBody />', () => {
   beforeAll(() => {
@@ -225,7 +225,7 @@ describe('<OfferBody />', () => {
         await fireEvent.press(screen.queryAllByText('La nuit des temps')[0])
         expect(push).toHaveBeenCalledWith('Offer', {
           from: 'offer',
-          fromOfferId: 1,
+          fromOfferId: offerId,
           id: 102280,
         })
       })
@@ -242,7 +242,7 @@ describe('<OfferBody />', () => {
         await fireEvent.press(screen.queryAllByText('La nuit des temps')[0])
         expect(push).toHaveBeenCalledWith('Offer', {
           from: 'offer',
-          fromOfferId: 1,
+          fromOfferId: offerId,
           id: 102280,
         })
       })

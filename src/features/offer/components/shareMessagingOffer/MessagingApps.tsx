@@ -1,4 +1,5 @@
 import React, { useCallback } from 'react'
+import { Social } from 'react-native-share'
 import styled from 'styled-components/native'
 
 import { InstalledMessagingApps } from 'features/offer/components/shareMessagingOffer/InstalledMessagingApps'
@@ -19,25 +20,39 @@ type MessagingAppsProps = {
 
 export const MessagingApps = ({ isEvent, offerId }: MessagingAppsProps) => {
   const title = isEvent ? 'Vas-y en bande organisée\u00a0!' : 'Partage ce bon plan\u00a0!'
-  const { share, shareContent } = useShareOffer(offerId)
   const {
     visible: shareOfferModalVisible,
     showModal: showShareOfferModal,
     hideModal: hideShareOfferModal,
   } = useModal()
 
+  const { share, shareContent } = useShareOffer(offerId)
+
+  const messagingAppAnalytics = useCallback(
+    (social: Social | 'Other') => {
+      analytics.logShare({ type: 'Offer', id: offerId, from: 'offer', social })
+    },
+    [offerId]
+  )
+
   const onOtherPress = useCallback(() => {
-    analytics.logShare({ type: 'Offer', from: 'offer', id: offerId, social: 'Other' })
+    messagingAppAnalytics('Other')
     share()
     showShareOfferModal()
-  }, [offerId, share, showShareOfferModal])
+  }, [messagingAppAnalytics, share, showShareOfferModal])
+
+  if (!shareContent || !shareContent.url) return null
 
   return (
     <React.Fragment>
       <StyledTitle4>{title}</StyledTitle4>
       <IconsWrapper>
         <StyledUl>
-          <InstalledMessagingApps offerId={offerId} />
+          <InstalledMessagingApps
+            shareMessage={shareContent.message}
+            shareUrl={shareContent.url}
+            messagingAppAnalytics={messagingAppAnalytics}
+          />
           <MessagingAppContainer>
             <ShareMessagingAppOther onPress={onOtherPress} />
           </MessagingAppContainer>

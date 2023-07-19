@@ -53,7 +53,7 @@ const openURLSpy = jest.spyOn(Linking, 'openURL')
 
 jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockReturnValue(false)
 
-const offerId = 1
+const offerId = 146112
 
 describe('<OfferBody />', () => {
   beforeAll(() => {
