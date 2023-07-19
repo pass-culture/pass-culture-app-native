@@ -2,6 +2,7 @@ import React, { useCallback, useEffect, useState } from 'react'
 import { NativeStackScreenProps } from 'react-native-screens/native-stack'
 
 import { api } from 'api/api'
+import { ApiError } from 'api/apiHelpers'
 import { navigateToHome, navigateToHomeConfig } from 'features/navigation/helpers'
 import { RootStackParamList } from 'features/navigation/RootNavigator/types'
 import { useEmailUpdateStatus } from 'features/profile/helpers/useEmailUpdateStatus'
@@ -23,10 +24,15 @@ export function ConfirmChangeEmail({ route: { params }, navigation }: ConfirmCha
   const [isLoading, setIsLoading] = useState(false)
 
   useEffect(() => {
-    if (!isLoadingEmailUpdateStatus && (!emailUpdateStatus || emailUpdateStatus?.expired)) {
-      navigateToHome()
+    if (!isLoadingEmailUpdateStatus) {
+      if (!emailUpdateStatus) {
+        navigateToHome()
+      }
+      if (emailUpdateStatus?.expired) {
+        navigation.navigate('ChangeEmailExpiredLink')
+      }
     }
-  }, [emailUpdateStatus, isLoadingEmailUpdateStatus])
+  }, [emailUpdateStatus, isLoadingEmailUpdateStatus, navigation])
 
   const mutate = useCallback(async () => {
     return api.postnativev1profileemailUpdateconfirm({
@@ -39,7 +45,11 @@ export function ConfirmChangeEmail({ route: { params }, navigation }: ConfirmCha
     try {
       await mutate()
       navigation.navigate('TrackEmailChange')
-    } catch (err) {
+    } catch (error) {
+      if (error instanceof ApiError && error.statusCode === 401) {
+        navigation.navigate('ChangeEmailExpiredLink')
+        return
+      }
       showErrorSnackBar({
         message: 'Désolé, une erreur technique s’est produite. Veuillez réessayer plus tard.',
         timeout: SNACK_BAR_TIME_OUT,

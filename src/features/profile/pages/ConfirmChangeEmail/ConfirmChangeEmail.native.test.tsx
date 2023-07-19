@@ -3,6 +3,7 @@ import React from 'react'
 import { NativeStackNavigationProp } from 'react-native-screens/native-stack'
 
 import * as API from 'api/api'
+import { ApiError } from 'api/apiHelpers'
 import { EmailHistoryEventTypeEnum } from 'api/gen'
 import { navigateToHome } from 'features/navigation/helpers'
 import { RootStackParamList } from 'features/navigation/RootNavigator/types'
@@ -50,7 +51,16 @@ describe('<ConfirmChangeEmail />', () => {
     },
   } as unknown as RouteProp<RootStackParamList, 'ConfirmChangeEmail'>
 
-  it('should navigate to home if no current email change', () => {
+  it('should navigate to home if no email change', () => {
+    useEmailUpdateStatusSpy.mockReturnValueOnce({
+      data: undefined,
+      isLoading: false,
+    } as UseEmailUpdateStatusMock)
+    render(<ConfirmChangeEmail navigation={navigation} route={route} />)
+    expect(navigateToHome).toHaveBeenCalledTimes(1)
+  })
+
+  it('should navigate to change email expired if last email change expired', () => {
     useEmailUpdateStatusSpy.mockReturnValueOnce({
       data: {
         expired: true,
@@ -60,7 +70,7 @@ describe('<ConfirmChangeEmail />', () => {
       isLoading: false,
     } as UseEmailUpdateStatusMock)
     render(<ConfirmChangeEmail navigation={navigation} route={route} />)
-    expect(navigateToHome).toHaveBeenCalledTimes(1)
+    expect(navigation.navigate).toHaveBeenNthCalledWith(1, 'ChangeEmailExpiredLink')
   })
 
   it('should display confirmation message and buttons', () => {
@@ -79,8 +89,8 @@ describe('<ConfirmChangeEmail />', () => {
     })
   })
 
-  it('should redirect to home when pressing "Confirmer la demande" button and API response is error', async () => {
-    emailUpdateConfirmSpy.mockRejectedValueOnce('API error')
+  it('should redirect to home when pressing "Confirmer la demande" button and and API response is not 401 error', async () => {
+    emailUpdateConfirmSpy.mockRejectedValueOnce(new ApiError(500, 'API error'))
     render(<ConfirmChangeEmail navigation={navigation} route={route} />)
 
     await act(async () => {
@@ -90,8 +100,19 @@ describe('<ConfirmChangeEmail />', () => {
     expect(navigateToHome).toHaveBeenCalledTimes(1)
   })
 
-  it('should display an error snackbar when pressing "Confirmer la demande" button and API response is error', async () => {
-    emailUpdateConfirmSpy.mockRejectedValueOnce('API error')
+  it('should redirect to change email expired when pressing "Confirmer la demande" button and and API response is 401 error', async () => {
+    emailUpdateConfirmSpy.mockRejectedValueOnce(new ApiError(401, 'API error'))
+    render(<ConfirmChangeEmail navigation={navigation} route={route} />)
+
+    await act(async () => {
+      fireEvent.press(screen.getByText('Confirmer la demande'))
+    })
+
+    expect(navigation.navigate).toHaveBeenNthCalledWith(1, 'ChangeEmailExpiredLink')
+  })
+
+  it('should display an error snackbar when pressing "Confirmer la demande" button and API response is not 401 error', async () => {
+    emailUpdateConfirmSpy.mockRejectedValueOnce(new ApiError(500, 'API error'))
     render(<ConfirmChangeEmail navigation={navigation} route={route} />)
 
     await act(async () => {
@@ -99,5 +120,16 @@ describe('<ConfirmChangeEmail />', () => {
     })
 
     expect(mockShowErrorSnackbar).toHaveBeenCalledTimes(1)
+  })
+
+  it('should not display an error snackbar when pressing "Confirmer la demande" button and API response is a 401 error', async () => {
+    emailUpdateConfirmSpy.mockRejectedValueOnce(new ApiError(401, 'unauthorized'))
+    render(<ConfirmChangeEmail navigation={navigation} route={route} />)
+
+    await act(async () => {
+      fireEvent.press(screen.getByText('Confirmer la demande'))
+    })
+
+    expect(mockShowErrorSnackbar).not.toHaveBeenCalled()
   })
 })

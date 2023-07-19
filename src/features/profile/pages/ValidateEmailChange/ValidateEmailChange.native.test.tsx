@@ -4,6 +4,7 @@ import { NativeStackNavigationProp } from 'react-native-screens/native-stack'
 import { QueryObserverResult } from 'react-query'
 
 import * as API from 'api/api'
+import { ApiError } from 'api/apiHelpers'
 import { EmailHistoryEventTypeEnum, EmailUpdateStatus } from 'api/gen'
 import * as Auth from 'features/auth/context/AuthContext'
 import { navigateToHome } from 'features/navigation/helpers'
@@ -25,10 +26,12 @@ const useEmailUpdateStatusSpy = jest
 jest.mock('features/navigation/helpers')
 
 const mockShowSuccessSnackbar = jest.fn()
+const mockShowErrorSnackbar = jest.fn()
 
 jest.mock('ui/components/snackBar/SnackBarContext', () => ({
   useSnackBarContext: () => ({
     showSuccessSnackBar: mockShowSuccessSnackbar,
+    showErrorSnackBar: mockShowErrorSnackbar,
   }),
   SNACK_BAR_TIME_OUT: 5000,
 }))
@@ -54,6 +57,7 @@ const emailUpdateValidateSpy = jest
 describe('ValidateEmailChange', () => {
   const navigation = {
     navigate: jest.fn(),
+    replace: jest.fn(),
   } as unknown as NativeStackNavigationProp<RootStackParamList, 'ValidateEmailChange'>
 
   const route = {
@@ -96,11 +100,11 @@ describe('ValidateEmailChange', () => {
   it('should redirect to Login if submit is success', async () => {
     render(<ValidateEmailChange navigation={navigation} route={route} />)
 
-    fireEvent.press(screen.getByText('Valider l’adresse e-mail'))
-
-    await waitFor(() => {
-      expect(navigation.navigate).toHaveBeenNthCalledWith(1, 'Login')
+    await act(async () => {
+      fireEvent.press(screen.getByText('Valider l’adresse e-mail'))
     })
+
+    expect(navigation.replace).toHaveBeenNthCalledWith(1, 'Login')
   })
 
   it('should display a snackbar if submit is success', async () => {
@@ -113,8 +117,8 @@ describe('ValidateEmailChange', () => {
     expect(mockShowSuccessSnackbar).toHaveBeenCalledTimes(1)
   })
 
-  it('should redirect to ChangeEmailExpiredLink if submit triggers an error', async () => {
-    emailUpdateValidateSpy.mockRejectedValueOnce('Oops test')
+  it('should redirect to ChangeEmailExpiredLink if submit triggers a 401 error', async () => {
+    emailUpdateValidateSpy.mockRejectedValueOnce(new ApiError(401, 'unauthorized'))
 
     render(<ValidateEmailChange navigation={navigation} route={route} />)
 
@@ -125,7 +129,31 @@ describe('ValidateEmailChange', () => {
     expect(navigation.navigate).toHaveBeenCalledWith('ChangeEmailExpiredLink')
   })
 
-  it('should redirect to home when status is expired', () => {
+  it('should display an error message if submit triggers an error not 401', async () => {
+    emailUpdateValidateSpy.mockRejectedValueOnce(new ApiError(500, 'unauthorized'))
+
+    render(<ValidateEmailChange navigation={navigation} route={route} />)
+
+    await act(async () => {
+      fireEvent.press(screen.getByText('Valider l’adresse e-mail'))
+    })
+
+    expect(mockShowErrorSnackbar).toHaveBeenCalledTimes(1)
+  })
+
+  it('should not display an error message if submit triggers an error  401', async () => {
+    emailUpdateValidateSpy.mockRejectedValueOnce(new ApiError(401, 'unauthorized'))
+
+    render(<ValidateEmailChange navigation={navigation} route={route} />)
+
+    await act(async () => {
+      fireEvent.press(screen.getByText('Valider l’adresse e-mail'))
+    })
+
+    expect(mockShowErrorSnackbar).not.toHaveBeenCalled()
+  })
+
+  it('should redirect to change email expired when status is expired', () => {
     useEmailUpdateStatusSpy.mockReturnValueOnce({
       data: {
         expired: true,
@@ -136,6 +164,15 @@ describe('ValidateEmailChange', () => {
 
     render(<ValidateEmailChange navigation={navigation} route={route} />)
 
+    expect(navigation.navigate).toHaveBeenNthCalledWith(1, 'ChangeEmailExpiredLink')
+  })
+
+  it('should redirect to home when there is no email update', () => {
+    useEmailUpdateStatusSpy.mockReturnValueOnce({
+      data: undefined,
+    } as QueryObserverResult<EmailUpdateStatus>)
+
+    render(<ValidateEmailChange navigation={navigation} route={route} />)
     expect(navigateToHome).toHaveBeenCalledTimes(1)
   })
 })
