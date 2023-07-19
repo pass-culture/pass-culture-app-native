@@ -17,6 +17,18 @@ describe('<RadioSelector />', () => {
     expect(onPress).toHaveBeenNthCalledWith(1)
   })
 
+  it('should not call press when pressing Spacebar if disabled', () => {
+    const onPress = jest.fn()
+    render(<RadioSelector label="label" onPress={onPress} disabled />)
+
+    const container = screen.getByTestId('label')
+
+    fireEvent.focus(container)
+    fireEvent.keyDown(container, { key: 'Spacebar' })
+
+    expect(onPress).not.toHaveBeenCalled()
+  })
+
   describe('Accessibility', () => {
     it('should not have basic accessibility issues', async () => {
       const onPress = jest.fn()
