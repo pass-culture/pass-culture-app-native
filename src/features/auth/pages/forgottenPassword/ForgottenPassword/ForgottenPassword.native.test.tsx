@@ -5,14 +5,16 @@ import { captureMonitoringError, eventMonitoring } from 'libs/monitoring'
 import { useNetInfoContext as useNetInfoContextDefault } from 'libs/network/NetInfoWrapper'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { requestPasswordResetFail, requestPasswordResetSuccess, server } from 'tests/server'
-import { simulateWebviewMessage, fireEvent, render, waitFor, screen } from 'tests/utils'
+import { simulateWebviewMessage, fireEvent, render, waitFor, screen, act } from 'tests/utils'
 import * as emailCheck from 'ui/components/inputs/emailCheck'
+import { SUGGESTION_DELAY_IN_MS } from 'ui/components/inputs/EmailInputWithSpellingHelp/useEmailSpellingHelp'
 
 import { ForgottenPassword } from './ForgottenPassword'
 
 jest.mock('features/navigation/helpers')
 jest.mock('features/auth/context/SettingsContext')
 jest.mock('libs/monitoring')
+jest.useFakeTimers('legacy')
 
 const mockUseNetInfoContext = useNetInfoContextDefault as jest.Mock
 
@@ -38,6 +40,18 @@ describe('<ForgottenPassword />', () => {
       const validateButton = screen.getByText('Valider')
       expect(validateButton).toBeEnabled()
     })
+  })
+
+  it('should show email suggestion', async () => {
+    renderForgottenPassword()
+    const emailInput = screen.getByPlaceholderText('tonadresse@email.com')
+    fireEvent.changeText(emailInput, 'john.doe@gmal.com')
+
+    await act(async () => {
+      jest.advanceTimersByTime(SUGGESTION_DELAY_IN_MS)
+    })
+
+    expect(screen.queryByText('Veux-tu plutôt dire john.doe@gmail.com\u00a0?')).toBeTruthy()
   })
 
   it('should redirect to Login when clicking on ArrowPrevious icon', async () => {
@@ -105,22 +119,18 @@ describe('<ForgottenPassword />', () => {
     fireEvent.changeText(emailInput, 'john.doe@gmail.com')
     fireEvent.press(screen.getByText('Valider'))
     const recaptchaWebview = screen.getByTestId('recaptcha-webview')
-    simulateWebviewMessage(recaptchaWebview, '{ "message": "error", "error": "someError" }')
+    await simulateWebviewMessage(recaptchaWebview, '{ "message": "error", "error": "someError" }')
 
-    await waitFor(() => {
-      expect(
-        screen.queryByText(
-          'Un problème est survenu pendant la réinitialisation, réessaie plus tard.'
-        )
-      ).toBeTruthy()
-      expect(captureMonitoringError).toHaveBeenNthCalledWith(
-        1,
-        'someError',
-        'ForgottenPasswordOnRecaptchaError'
-      )
-      expect(navigate).not.toBeCalled()
-      expect(screen.queryByTestId('Chargement en cours')).toBeNull()
-    })
+    expect(
+      screen.queryByText('Un problème est survenu pendant la réinitialisation, réessaie plus tard.')
+    ).toBeTruthy()
+    expect(captureMonitoringError).toHaveBeenNthCalledWith(
+      1,
+      'someError',
+      'ForgottenPasswordOnRecaptchaError'
+    )
+    expect(navigate).not.toBeCalled()
+    expect(screen.queryByTestId('Chargement en cours')).toBeNull()
   })
 
   it('should NOT redirect to ResetPasswordEmailSent when reset password request API call has failed', async () => {

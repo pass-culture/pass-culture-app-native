@@ -1,8 +1,7 @@
 import { useNavigation } from '@react-navigation/native'
 import React, { useCallback, useMemo } from 'react'
-import { useForm, Controller, FieldPath, ControllerRenderProps } from 'react-hook-form'
+import { useForm } from 'react-hook-form'
 import { UseQueryResult } from 'react-query'
-import { v4 as uuidv4 } from 'uuid'
 
 import { api } from 'api/api'
 import { ApiError, isAPIExceptionCapturedAsInfo } from 'api/apiHelpers'
@@ -12,12 +11,11 @@ import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { captureMonitoringError, eventMonitoring } from 'libs/monitoring'
 import { useNetInfoContext } from 'libs/network/NetInfoWrapper'
 import { ReCaptcha } from 'libs/recaptcha/ReCaptcha'
+import { EmailInputController } from 'shared/forms/controllers/EmailInputController'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { Form } from 'ui/components/Form'
 import { isEmailValid } from 'ui/components/inputs/emailCheck'
-import { EmailInput } from 'ui/components/inputs/EmailInput/EmailInput'
 import { isValueEmpty } from 'ui/components/inputs/helpers'
-import { InputError } from 'ui/components/inputs/InputError'
 import { SecondaryPageWithBlurHeader } from 'ui/pages/SecondaryPageWithBlurHeader'
 import { Spacer, Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
@@ -30,17 +28,13 @@ type FormValues = {
   reCaptcha: void
 }
 
-const emailErrorMessageId = uuidv4()
-
 export const ForgottenPassword = () => {
   const { data: settings, isLoading: areSettingsLoading } = useSettingsContext()
 
   const {
     control,
-    hasError,
     isDoingReCaptchaChallenge,
     isFetching,
-    lastError,
     onBackNavigation,
     onReCaptchaClose,
     onReCaptchaError,
@@ -74,14 +68,7 @@ export const ForgottenPassword = () => {
       </Typo.Body>
       <Spacer.Column numberOfSpaces={8} />
       <Form.MaxWidth>
-        <Controller control={control} name="email" render={EmailInputController} />
-
-        <InputError
-          visible={hasError}
-          messageId={lastError}
-          numberOfSpacesTop={2}
-          relatedInputId={emailErrorMessageId}
-        />
+        <EmailInputController control={control} name="email" autoFocus withSpellingHelp />
         <Spacer.Column numberOfSpaces={8} />
         <ButtonPrimary
           wording="Valider"
@@ -93,19 +80,6 @@ export const ForgottenPassword = () => {
     </SecondaryPageWithBlurHeader>
   )
 }
-
-const EmailInputController = ({
-  field: { value, onChange },
-}: {
-  field: ControllerRenderProps<FormValues, 'email'>
-}) => (
-  <EmailInput
-    email={value}
-    onEmailChange={onChange}
-    autoFocus
-    accessibilityDescribedBy={emailErrorMessageId}
-  />
-)
 
 const useForgottenPasswordForm = (settings: UseQueryResult<SettingsResponse, unknown>['data']) => {
   const { navigate } = useNavigation<UseNavigationType>()
@@ -123,15 +97,15 @@ const useForgottenPasswordForm = (settings: UseQueryResult<SettingsResponse, unk
 
   // Little helper method to make it easier to set error
   const setCustomError = useCallback(
-    (field: FieldPath<FormValues>, message: string) => {
-      return setError(field, { type: 'custom', message })
+    (message: string) => {
+      return setError('email', { type: 'custom', message })
     },
     [setError]
   )
 
   const onConnection = useCallback(clearErrors, [clearErrors])
   const onConnectionLost = useCallback(() => {
-    setCustomError('network', 'Hors connexion\u00a0: en attente du réseau.')
+    setCustomError('Hors connexion\u00a0: en attente du réseau.')
     setValue('isDoingReCaptchaChallenge', false)
   }, [setCustomError, setValue])
 
@@ -159,10 +133,7 @@ const useForgottenPasswordForm = (settings: UseQueryResult<SettingsResponse, unk
         })
         replace('ResetPasswordEmailSent', { email })
       } catch (error) {
-        setCustomError(
-          'email',
-          'Un problème est survenu pendant la réinitialisation, réessaie plus tard.'
-        )
+        setCustomError('Un problème est survenu pendant la réinitialisation, réessaie plus tard.')
         if (error instanceof ApiError && !isAPIExceptionCapturedAsInfo(error.statusCode)) {
           captureMonitoringError(error.message, 'ForgottenPasswordRequestResetError')
         }
@@ -180,12 +151,11 @@ const useForgottenPasswordForm = (settings: UseQueryResult<SettingsResponse, unk
     function openReCaptchaChallenge() {
       if (!isEmailValid(email)) {
         return setCustomError(
-          'email',
           'L’e-mail renseigné est incorrect. Exemple de format attendu\u00a0: edith.piaf@email.fr'
         )
       }
       if (!networkInfo.isConnected) {
-        return setCustomError('network', 'Hors connexion\u00a0: en attente du réseau.')
+        return setCustomError('Hors connexion\u00a0: en attente du réseau.')
       }
       setValue('isDoingReCaptchaChallenge', true)
       clearErrors()
@@ -211,17 +181,14 @@ const useForgottenPasswordForm = (settings: UseQueryResult<SettingsResponse, unk
       },
       onReCaptchaExpire() {
         setValue('isDoingReCaptchaChallenge', false)
-        setCustomError('reCaptcha', 'Le token reCAPTCHA a expiré, tu peux réessayer.')
+        setCustomError('Le token reCAPTCHA a expiré, tu peux réessayer.')
       },
       onReCaptchaClose() {
         setValue('isDoingReCaptchaChallenge', false)
       },
       onReCaptchaError(error: string) {
         setValue('isDoingReCaptchaChallenge', false)
-        setCustomError(
-          'email',
-          'Un problème est survenu pendant la réinitialisation, réessaie plus tard.'
-        )
+        setCustomError('Un problème est survenu pendant la réinitialisation, réessaie plus tard.')
         captureMonitoringError(error, 'ForgottenPasswordOnRecaptchaError')
       },
       onBackNavigation() {
