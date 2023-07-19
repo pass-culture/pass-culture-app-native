@@ -12,7 +12,7 @@ import { server } from 'tests/server'
 
 import {
   ApiError,
-  cleanRefreshedAccessToken,
+  removeRefreshedAccessToken,
   createNeedsAuthenticationResponse,
   handleGeneratedApiResponse,
   isAPIExceptionCapturedAsInfo,
@@ -77,7 +77,7 @@ describe('[api] helpers', () => {
   const mockGetRefreshToken = jest.spyOn(Keychain, 'getRefreshToken')
   const mockClearRefreshToken = jest.spyOn(Keychain, 'clearRefreshToken')
 
-  afterEach(cleanRefreshedAccessToken)
+  afterEach(removeRefreshedAccessToken)
 
   describe('[method] safeFetch', () => {
     it('should call fetch with populated header', async () => {
@@ -178,6 +178,25 @@ describe('[api] helpers', () => {
         safeFetch(apiUrl, optionsWithAccessToken, api),
         safeFetch(apiUrl, optionsWithAccessToken, api),
       ])
+
+      const refreshAccessTokenCalls = 1
+      const apiURLCalls = 2
+      expect(mockFetch).toHaveBeenCalledTimes(refreshAccessTokenCalls + apiURLCalls)
+    })
+
+    it('should not call refreshAccessToken route while the token is still valid', async () => {
+      mockGetAccessTokenStatus.mockReturnValueOnce('expired').mockReturnValueOnce('expired')
+      const expectedResponse = respondWith('some api response')
+      mockFetch
+        .mockResolvedValueOnce(respondWith({ accessToken }))
+        .mockResolvedValueOnce(expectedResponse)
+        .mockResolvedValueOnce(expectedResponse)
+
+      await safeFetch(apiUrl, optionsWithAccessToken, api)
+
+      jest.advanceTimersByTime(15 * 60 * 1000 - 1)
+
+      await safeFetch(apiUrl, optionsWithAccessToken, api)
 
       const refreshAccessTokenCalls = 1
       const apiURLCalls = 2

@@ -133,7 +133,7 @@ type Result =
 
 let refreshedAccessToken: Promise<Result> | null = null
 
-export const cleanRefreshedAccessToken = (): void => {
+export const removeRefreshedAccessToken = (): void => {
   refreshedAccessToken = null
 }
 
@@ -147,9 +147,10 @@ export const refreshAccessToken = async (
         if (result.result) {
           const token = decodeAccessToken(result.result)
           if (token) {
-            // exp is the token's expiration date and iat is the token's issue date
-            const lifetimeInMs = (token.exp - token.iat) * 1000
-            setTimeout(cleanRefreshedAccessToken, lifetimeInMs)
+            const tokenExpirationInSeconds = token.exp
+            const tokenIssueDateInSeconds = token.iat
+            const lifetimeInMs = (tokenExpirationInSeconds - tokenIssueDateInSeconds) * 1000
+            setTimeout(removeRefreshedAccessToken, lifetimeInMs)
           }
         }
         return result
