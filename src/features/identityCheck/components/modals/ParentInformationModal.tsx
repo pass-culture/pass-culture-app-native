@@ -22,10 +22,12 @@ interface Props {
 
 export const ParentInformationModal: FunctionComponent<Props> = (props) => {
   const onNavigateToUbble = () => {
+    analytics.logGoToUbble({ from: 'ParentInformationModal' })
     props.hideModal()
   }
 
   const onComeBackLater = () => {
+    analytics.logComeBackLaterClicked({ from: 'ParentInformationModal' })
     props.hideModal()
   }
 
