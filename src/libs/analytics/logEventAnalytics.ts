@@ -282,14 +282,6 @@ export const logEventAnalytics = {
     analytics.logEvent({ firebase: AnalyticsEvent.FAVORITE_LIST_BUTTON_CLICKED }, { from }),
   logFavoriteListDisplayed: (from: Referrals) =>
     analytics.logEvent({ firebase: AnalyticsEvent.FAVORITE_LIST_DISPLAYED }, { from }),
-  logGoToParentsFAQ: (from: Referrals) =>
-    analytics.logEvent(
-      {
-        firebase: AnalyticsEvent.GO_TO_PARENTS_FAQ,
-        amplitude: AmplitudeEvent.ONBOARDING_AGE_SELECTION_PARENT_CLICKED,
-      },
-      { from }
-    ),
   logGoToProfil: ({ from, offerId }: { from: string; offerId: number }) =>
     analytics.logEvent(
       { firebase: AnalyticsEvent.GO_TO_PROFIL },

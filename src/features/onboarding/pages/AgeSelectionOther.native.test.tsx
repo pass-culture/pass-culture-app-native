@@ -1,16 +1,12 @@
 import React from 'react'
 
 import { reset } from '__mocks__/@react-navigation/native'
-import * as NavigationHelpers from 'features/navigation/helpers/openUrl'
 import { homeNavConfig } from 'features/navigation/TabBar/helpers'
 import { OnboardingWrapper } from 'features/onboarding/context/OnboardingWrapper'
 import { AgeSelectionOther } from 'features/onboarding/pages/AgeSelectionOther'
 import { analytics } from 'libs/analytics'
-import { env } from 'libs/environment/__mocks__/envFixtures'
 import { storage } from 'libs/storage'
 import { fireEvent, render, waitFor } from 'tests/utils'
-
-const openUrl = jest.spyOn(NavigationHelpers, 'openUrl')
 
 const mockShowModal = jest.fn()
 jest.mock('ui/components/modals/useModal', () => ({
@@ -29,24 +25,6 @@ describe('AgeSelectionOther', () => {
   it('should render correctly', () => {
     const renderAPI = renderAgeSelectionOther()
     expect(renderAPI).toMatchSnapshot()
-  })
-
-  it('should navigate to FAQ when pressing "Je suis un parent"', async () => {
-    const { getByTestId } = renderAgeSelectionOther()
-    const button = getByTestId('Je suis un parent')
-
-    fireEvent.press(button)
-    await waitFor(() => {
-      expect(openUrl).toHaveBeenCalledWith(env.FAQ_LINK_LEGAL_GUARDIAN, undefined, true)
-    })
-  })
-
-  it('should log analytics when pressing "Je suis un parent"', async () => {
-    const { getByTestId } = renderAgeSelectionOther()
-    const button = getByTestId('Je suis un parent')
-
-    fireEvent.press(button)
-    expect(analytics.logGoToParentsFAQ).toHaveBeenCalledWith('ageselectionother')
   })
 
   it('should show modal when pressing "j’ai moins de 15 ans"', () => {

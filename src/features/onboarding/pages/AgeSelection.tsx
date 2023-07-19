@@ -5,13 +5,9 @@ import { AgeButton } from 'features/onboarding/components/AgeButton'
 import { OnboardingPage } from 'features/onboarding/pages/OnboardingPage'
 import { EligibleAges } from 'features/onboarding/types'
 import { analytics } from 'libs/analytics'
-import { env } from 'libs/environment'
 import { storage } from 'libs/storage'
 import { AccessibilityList } from 'ui/components/accessibility/AccessibilityList'
-import { ButtonTertiarySecondary } from 'ui/components/buttons/ButtonTertiarySecondary'
-import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouchableLink'
 import { All } from 'ui/svg/icons/bicolor/All'
-import { InfoPlain } from 'ui/svg/icons/InfoPlain'
 import { Spacer, Typo } from 'ui/theme'
 import { getNoHeadingAttrs } from 'ui/theme/typographyAttrs/getNoHeadingAttrs'
 
@@ -29,8 +25,6 @@ const onBeforeNavigate = async (age?: EligibleAges) => {
   analytics.logSelectAge(age ?? OTHER)
   age && (await storage.saveObject('user_age', age))
 }
-
-const logGoToParentsFAQ = () => analytics.logGoToParentsFAQ('ageselection')
 
 export const AgeSelection: FunctionComponent = () => {
   const AgeSelectionButtons = ageButtons.map(({ age }) => {
@@ -62,17 +56,6 @@ export const AgeSelection: FunctionComponent = () => {
       </AgeButton>
     )
   })
-  AgeSelectionButtons.push(
-    <ExternalTouchableLink
-      key={AgeSelectionButtons.length}
-      as={ButtonTertiarySecondary}
-      wording="Je suis un parent"
-      icon={InfoPlain}
-      onBeforeNavigate={logGoToParentsFAQ}
-      externalNav={{ url: env.FAQ_LINK_LEGAL_GUARDIAN }}
-      justifyContent="flex-start"
-    />
-  )
 
   return (
     <OnboardingPage
