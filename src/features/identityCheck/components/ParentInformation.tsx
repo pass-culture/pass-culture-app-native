@@ -10,6 +10,12 @@ import { PlainArrowNext } from 'ui/svg/icons/PlainArrowNext'
 import { Spacer, Typo, getSpacing } from 'ui/theme'
 
 export const ParentInformation: React.FC = () => {
+  const { visible, showModal, hideModal } = useModal(false)
+
+  const openModal = () => {
+    analytics.logShowParentInformationModal()
+    showModal()
+  }
 
   return (
     <GreyContainer>
@@ -26,6 +32,7 @@ export const ParentInformation: React.FC = () => {
         icon={PlainArrowNext}
         onPress={openModal}
       />
+      <ParentInformationModal isVisible={visible} hideModal={hideModal} />
     </GreyContainer>
   )
 }
