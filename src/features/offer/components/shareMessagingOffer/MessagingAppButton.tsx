@@ -3,24 +3,23 @@ import { Linking, Platform } from 'react-native'
 import Share, { ShareSingleOptions, Social } from 'react-native-share'
 
 import { MessagingAppContainer } from 'features/offer/components/shareMessagingOffer/MessagingAppContainer'
-import { analytics } from 'libs/analytics'
 import { eventMonitoring } from 'libs/monitoring'
 import { Network, ShareMessagingApp } from 'ui/components/ShareMessagingApp'
 
 type MessagingAppsButtonProps = {
-  offerId: number
   network: Network
   shareMessage: string
   shareUrl: string
+  onPressAnalytics: (social: Social) => void
 }
 
 const isWeb = Platform.OS === 'web'
 
 export const MessagingAppButton = ({
-  offerId,
   network,
   shareMessage,
   shareUrl,
+  onPressAnalytics,
 }: MessagingAppsButtonProps) => {
   const {
     shouldEncodeURI,
@@ -35,7 +34,7 @@ export const MessagingAppButton = ({
 
   const onPress = async () => {
     try {
-      analytics.logShare({ type: 'Offer', id: offerId, from: 'offer', social: options.social })
+      onPressAnalytics(options.social)
       if (isWeb && webUrl) await Linking.openURL(webUrl + encodeURIComponent(message))
       else if (isNative && options.url) await Linking.openURL(options.url + message)
       else {

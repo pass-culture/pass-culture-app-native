@@ -1,12 +1,10 @@
 import React, { useState, useEffect } from 'react'
+import { Social } from 'react-native-share'
 
-import { useOffer } from 'features/offer/api/useOffer'
 import { MessagingAppButton } from 'features/offer/components/shareMessagingOffer/MessagingAppButton'
 import { getInstalledApps } from 'features/offer/helpers/getInstalledApps/getInstalledApps'
-import { formatShareOfferMessage } from 'features/share/helpers/formatShareOfferMessage'
-import { getOfferUrl } from 'features/share/helpers/getOfferUrl'
+import { analytics } from 'libs/analytics'
 import { eventMonitoring } from 'libs/monitoring'
-import { getOfferLocationName } from 'shared/offer/getOfferLocationName'
 import { Network } from 'ui/components/ShareMessagingApp'
 
 export const InstalledMessagingApps = ({ offerId }: { offerId: number }) => {
@@ -25,17 +23,19 @@ export const InstalledMessagingApps = ({ offerId }: { offerId: number }) => {
       .catch((e) => eventMonitoring.captureException(`Installed apps: ${e}`))
   }, [])
 
-  if (!offer) return null
+  const messagingAppAnalytics = (social: Social) => {
+    analytics.logShare({ type: 'Offer', id: offerId, from: 'offer', social: social })
+  }
 
   return (
     <React.Fragment>
       {installedApps.map((network) => (
         <MessagingAppButton
           key={network}
-          offerId={offerId}
           network={network}
           shareMessage={shareMessage}
           shareUrl={shareUrl}
+          onPressAnalytics={messagingAppAnalytics}
         />
       ))}
     </React.Fragment>
