@@ -12,4 +12,12 @@ describe('<ParentInformation/>', () => {
 
     expect(screen.findByText('Comment inscrire mon enfant\u00a0?')).toBeTruthy()
   })
+
+  it('should log analytics on modal opening', () => {
+    render(<ParentInformation />)
+
+    fireEvent.press(screen.getByText('En savoir plus'))
+
+    expect(analytics.logShowParentInformationModal).toHaveBeenCalledTimes(1)
+  })
 })

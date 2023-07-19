@@ -27,4 +27,24 @@ describe('ParentInformationModal', () => {
 
     expect(mockHideModal).toHaveBeenCalledTimes(1)
   })
+
+  it('should logGoToUbble when pressing Vérifier l’identité avec mon enfant', () => {
+    render(<ParentInformationModal isVisible hideModal={mockHideModal} />)
+
+    const button = screen.getByText('Vérifier l’identité avec mon enfant')
+    fireEvent.press(button)
+
+    expect(analytics.logGoToUbble).toHaveBeenNthCalledWith(1, { from: 'ParentInformationModal' })
+  })
+
+  it('should logComeBackLaterClicked when pressing Vérifier son identité plus tard', () => {
+    render(<ParentInformationModal isVisible hideModal={mockHideModal} />)
+
+    const button = screen.getByText('Vérifier son identité plus tard')
+    fireEvent.press(button)
+
+    expect(analytics.logComeBackLaterClicked).toHaveBeenNthCalledWith(1, {
+      from: 'ParentInformationModal',
+    })
+  })
 })
