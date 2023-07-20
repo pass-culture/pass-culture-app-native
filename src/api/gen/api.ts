@@ -493,6 +493,11 @@ export interface BookingStockResponse {
    */
   beginningDatetime?: string | null
   /**
+   * @type {Array<string>}
+   * @memberof BookingStockResponse
+   */
+  features: Array<string>
+  /**
    * @type {number}
    * @memberof BookingStockResponse
    */
