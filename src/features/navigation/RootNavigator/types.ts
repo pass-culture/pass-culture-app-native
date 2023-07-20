@@ -165,7 +165,7 @@ export type RootStackParamList = {
   EndedBookings: undefined
   FavoritesSorts: undefined
   ForgottenPassword: undefined
-  FraudulentAccount: undefined
+  FraudulentSuspendedAccount: undefined
   Login?: {
     preventCancellation?: boolean
     displayForcedLoginHelpMessage?: boolean

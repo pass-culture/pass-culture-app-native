@@ -4,7 +4,7 @@ import React, { useCallback, useEffect } from 'react'
 import { AccountState } from 'api/gen'
 import { useAccountSuspensionStatus } from 'features/auth/api/useAccountSuspensionStatus'
 import { useLogoutRoutine } from 'features/auth/helpers/useLogoutRoutine'
-import { FraudulentAccount } from 'features/auth/pages/suspendedAccount/FraudulentAccount/FraudulentAccount'
+import { FraudulentSuspendedAccount } from 'features/auth/pages/suspendedAccount/FraudulentSuspendedAccount/FraudulentSuspendedAccount'
 import { SuspendedAccount } from 'features/auth/pages/suspendedAccount/SuspendedAccount/SuspendedAccount'
 import { navigateToHome, useCurrentRoute } from 'features/navigation/helpers'
 import { SuspensionConfirmation } from 'features/trustedDevice/pages/SuspensionConfirmation'
@@ -49,6 +49,6 @@ export const SuspensionScreen = () => {
   } else if (suspensionStatus === AccountState.SUSPICIOUS_LOGIN_REPORTED_BY_USER) {
     return <SuspensionConfirmation />
   } else {
-    return <FraudulentAccount />
+    return <FraudulentSuspendedAccount />
   }
 }

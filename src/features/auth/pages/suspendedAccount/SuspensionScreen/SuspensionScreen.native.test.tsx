@@ -43,7 +43,7 @@ describe('<SuspensionsScreen />', () => {
     expect(screen.getByText('Ton compte a été suspendu')).toBeTruthy()
   })
 
-  it('should display FraudulentAccount component if account is suspended for fraud', () => {
+  it('should display FraudulentSuspendedAccount component if account is suspended for fraud', () => {
     mockSuspensionStatus.status = AccountState.SUSPENDED
     render(<SuspensionScreen />)
 

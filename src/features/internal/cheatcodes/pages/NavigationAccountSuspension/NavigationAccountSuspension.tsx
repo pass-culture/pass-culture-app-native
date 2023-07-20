@@ -11,7 +11,7 @@ export function NavigationAccountSuspension(): React.JSX.Element {
     <ScrollView>
       <PageHeaderSecondary title="Account Management 🎨" />
       <StyledContainer>
-        <LinkToComponent name="FraudulentAccount" />
+        <LinkToComponent name="FraudulentSuspendedAccount" />
         <LinkToComponent name="SuspendedAccount" />
         <LinkToComponent name="AccountReactivationSuccess" />
         <LinkToComponent name="ConfirmDeleteProfile" />

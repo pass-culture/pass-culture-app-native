@@ -11,7 +11,7 @@ import { SignupConfirmationExpiredLink } from 'features/auth/pages/signup/Signup
 import { SignupForm } from 'features/auth/pages/signup/SignupForm'
 import { VerifyEligibility } from 'features/auth/pages/signup/VerifyEligiblity/VerifyEligibility'
 import { AccountReactivationSuccess } from 'features/auth/pages/suspendedAccount/AccountReactivationSuccess/AccountReactivationSuccess'
-import { FraudulentAccount } from 'features/auth/pages/suspendedAccount/FraudulentAccount/FraudulentAccount'
+import { FraudulentSuspendedAccount } from 'features/auth/pages/suspendedAccount/FraudulentSuspendedAccount/FraudulentSuspendedAccount'
 import { SuspendedAccount } from 'features/auth/pages/suspendedAccount/SuspendedAccount/SuspendedAccount'
 import { SuspensionScreen } from 'features/auth/pages/suspendedAccount/SuspensionScreen/SuspensionScreen'
 import { EighteenBirthday } from 'features/birthdayNotifications/pages/EighteenBirthday'
@@ -226,8 +226,8 @@ export const routes: Route[] = [
     options: { title: 'Compte désactivé' },
   },
   {
-    name: 'FraudulentAccount',
-    component: FraudulentAccount,
+    name: 'FraudulentSuspendedAccount',
+    component: FraudulentSuspendedAccount,
     path: 'compte-suspendu-pour-fraude',
     options: { title: 'Compte suspendu' },
   },
