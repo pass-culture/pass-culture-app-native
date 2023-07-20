@@ -177,7 +177,7 @@ exports[`<SuspensionConfirmation/> should match snapshot 1`] = `
           ]
         }
       >
-        Si tu souhaites revoir cette décision, tu peux contacter le support.
+        Si tu souhaites revoir cette décision, tu peux contacter le service fraude.
       </Text>
     </View>
     <View
@@ -217,7 +217,7 @@ exports[`<SuspensionConfirmation/> should match snapshot 1`] = `
       }
     >
       <View
-        accessibilityLabel="Ouvrir le gestionnaire mail pour contacter le support"
+        accessibilityLabel="Ouvrir le gestionnaire mail pour contacter le service fraude"
         accessible={true}
         collapsable={false}
         focusable={true}
@@ -246,7 +246,7 @@ exports[`<SuspensionConfirmation/> should match snapshot 1`] = `
             "width": "100%",
           }
         }
-        testID="Ouvrir le gestionnaire mail pour contacter le support"
+        testID="Ouvrir le gestionnaire mail pour contacter le service fraude"
       >
         <View
           style={
@@ -283,7 +283,7 @@ exports[`<SuspensionConfirmation/> should match snapshot 1`] = `
             ]
           }
         >
-          Contacter le support
+          Contacter le service fraude
         </Text>
       </View>
       <View

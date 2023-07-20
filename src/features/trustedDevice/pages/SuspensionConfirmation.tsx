@@ -1,9 +1,9 @@
 import React from 'react'
 import styled from 'styled-components/native'
 
-import { contactSupport } from 'features/auth/helpers/contactSupport'
 import { useLogoutRoutine } from 'features/auth/helpers/useLogoutRoutine'
 import { navigateToHomeConfig } from 'features/navigation/helpers'
+import { env } from 'libs/environment'
 import { ButtonPrimaryWhite } from 'ui/components/buttons/ButtonPrimaryWhite'
 import { ButtonTertiaryWhite } from 'ui/components/buttons/ButtonTertiaryWhite'
 import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouchableLink'
@@ -25,9 +25,9 @@ export const SuspensionConfirmation = () => {
         <ExternalTouchableLink
           key={1}
           as={ButtonPrimaryWhite}
-          wording="Contacter le support"
-          accessibilityLabel="Ouvrir le gestionnaire mail pour contacter le support"
-          externalNav={contactSupport.forGenericQuestion}
+          wording="Contacter le service fraude"
+          accessibilityLabel="Ouvrir le gestionnaire mail pour contacter le service fraude"
+          externalNav={{ url: `mailto:${env.FRAUD_EMAIL_ADDRESS}` }}
           icon={Email}
         />,
         <InternalTouchableLink
@@ -43,7 +43,7 @@ export const SuspensionConfirmation = () => {
         <StyledBody>En raison d’une activité suspicieuse, ton compte a été suspendu.</StyledBody>
         <Spacer.Column numberOfSpaces={5} />
         <StyledBody>
-          Si tu souhaites revoir cette décision, tu peux contacter le support.
+          Si tu souhaites revoir cette décision, tu peux contacter le service fraude.
         </StyledBody>
       </TextContainer>
     </GenericInfoPage>

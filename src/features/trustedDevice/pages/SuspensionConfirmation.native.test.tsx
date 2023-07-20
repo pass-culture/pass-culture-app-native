@@ -1,9 +1,9 @@
 import React from 'react'
 
 import { navigate } from '__mocks__/@react-navigation/native'
-import { contactSupport } from 'features/auth/helpers/contactSupport'
 import { navigateToHomeConfig } from 'features/navigation/helpers'
 import * as NavigationHelpers from 'features/navigation/helpers/openUrl'
+import { env } from 'libs/environment'
 import { render, screen, fireEvent, waitFor } from 'tests/utils'
 
 import { SuspensionConfirmation } from './SuspensionConfirmation'
@@ -27,14 +27,10 @@ describe('<SuspensionConfirmation/>', () => {
   it('should open mail app when clicking on "Contacter le support" button', () => {
     render(<SuspensionConfirmation />)
 
-    const contactSupportButton = screen.getByText('Contacter le support')
+    const contactSupportButton = screen.getByText('Contacter le service fraude')
     fireEvent.press(contactSupportButton)
 
-    expect(openUrl).toBeCalledWith(
-      contactSupport.forGenericQuestion.url,
-      contactSupport.forGenericQuestion.params,
-      true
-    )
+    expect(openUrl).toBeCalledWith(`mailto:${env.FRAUD_EMAIL_ADDRESS}`, undefined, true)
   })
 
   it('should go to home page when clicking on go to home button', async () => {
