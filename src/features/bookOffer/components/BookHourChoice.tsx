@@ -1,6 +1,6 @@
 import debounce from 'lodash/debounce'
 import React, { useMemo, useRef } from 'react'
-import styled from 'styled-components/native'
+import { View } from 'react-native'
 
 import { OfferStockResponse } from 'api/gen'
 import { HourChoice } from 'features/bookOffer/components/HourChoice'
@@ -66,7 +66,7 @@ export const BookHourChoice = ({ enablePricesByCategories }: Props) => {
       if (hasPotentialPricesStep) {
         const sortedHoursFromDate = getSortedHoursFromDate(stocks, selectedDate)
         const distinctHours: string[] = [...new Set(sortedHoursFromDate)]
-        return distinctHours.map((hour) => {
+        return distinctHours.map((hour, index) => {
           const filteredAvailableStocksFromHour = getStockSortedByPriceFromHour(stocks, hour)
           const filteredAvailableStocksFromHourBookable = filteredAvailableStocksFromHour.filter(
             (stock) => stock.isBookable
@@ -84,6 +84,7 @@ export const BookHourChoice = ({ enablePricesByCategories }: Props) => {
           const hasSeveralPrices = filteredAvailableStocksFromHour.length > 1
           return (
             <HourChoice
+              index={index}
               key={hour}
               price={minPriceStock.price}
               hour={formatHour(hour).replace(':', 'h')}
@@ -110,8 +111,9 @@ export const BookHourChoice = ({ enablePricesByCategories }: Props) => {
               //@ts-expect-error : stocks with no beginningDatetime was filtered
               new Date(a.beginningDatetime).getTime() - new Date(b.beginningDatetime).getTime()
           )
-          .map((stock) => (
+          .map((stock, index) => (
             <HourChoice
+              index={index}
               key={stock.id}
               price={stock.price}
               hour={formatHour(stock.beginningDatetime).replace(':', 'h')}
@@ -155,7 +157,7 @@ export const BookHourChoice = ({ enablePricesByCategories }: Props) => {
 
       <Spacer.Column numberOfSpaces={4} />
       {bookingState.step === Step.HOUR ? (
-        <HourChoiceContainer>{filteredStocks}</HourChoiceContainer>
+        <View>{filteredStocks}</View>
       ) : (
         <TouchableOpacity onPress={changeHour}>
           <Typo.ButtonText>{buttonTitle}</Typo.ButtonText>
@@ -164,8 +166,3 @@ export const BookHourChoice = ({ enablePricesByCategories }: Props) => {
     </React.Fragment>
   )
 }
-
-const HourChoiceContainer = styled.View({
-  flexDirection: 'row',
-  flexWrap: 'wrap',
-})
