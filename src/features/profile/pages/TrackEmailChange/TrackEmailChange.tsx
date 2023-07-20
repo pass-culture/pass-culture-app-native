@@ -1,9 +1,11 @@
+import { useNavigation } from '@react-navigation/native'
 import React, { useCallback, useEffect, useMemo } from 'react'
 import { Platform, ScrollView } from 'react-native'
 import styled from 'styled-components/native'
 
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { navigateToHome } from 'features/navigation/helpers'
+import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { homeNavConfig } from 'features/navigation/TabBar/helpers'
 import { useGoBack } from 'features/navigation/useGoBack'
 import { Step } from 'features/profile/components/Step/Step'
@@ -25,6 +27,7 @@ export function TrackEmailChange() {
   const { user } = useAuthContext()
   const { top } = useCustomSafeInsets()
   const { goBack } = useGoBack(...homeNavConfig)
+  const { navigate } = useNavigation<UseNavigationType>()
 
   const currentStep = useMemo(
     () => getEmailUpdateStep(emailUpdateStatus?.status),
@@ -43,10 +46,15 @@ export function TrackEmailChange() {
   )
 
   useEffect(() => {
-    if (!isLoading && (!emailUpdateStatus || emailUpdateStatus?.expired)) {
-      navigateToHome()
+    if (!isLoading) {
+      if (!emailUpdateStatus) {
+        navigateToHome()
+      }
+      if (emailUpdateStatus?.expired) {
+        navigate('ChangeEmailExpiredLink')
+      }
     }
-  }, [emailUpdateStatus, isLoading])
+  }, [emailUpdateStatus, isLoading, navigate])
 
   return (
     <StyledScrollViewContainer>

@@ -1,5 +1,6 @@
 import React from 'react'
 
+import { navigate } from '__mocks__/@react-navigation/native'
 import { EmailHistoryEventTypeEnum } from 'api/gen'
 import { mockGoBack } from 'features/navigation/__mocks__/useGoBack'
 import { navigateToHomeConfig } from 'features/navigation/helpers'
@@ -204,7 +205,8 @@ describe('TrackEmailChange', () => {
   })
 
   it('should set currentEmail as empty string if user email is not defined', () => {
-    mockUseAuthContext.mockReturnValueOnce({ user: { email: null } }), render(<TrackEmailChange />)
+    mockUseAuthContext.mockReturnValueOnce({ user: { email: null } })
+    render(<TrackEmailChange />)
 
     expect(screen.getByText('Depuis l’email envoyé à ')).toHaveTextContent('')
   })
@@ -236,7 +238,7 @@ describe('TrackEmailChange', () => {
   })
 
   describe('should navigate to home', () => {
-    it('When there is not current email change', () => {
+    it('When there is no email change', () => {
       useEmailUpdateStatusSpy.mockReturnValueOnce({
         data: undefined,
         isLoading: false,
@@ -258,10 +260,7 @@ describe('TrackEmailChange', () => {
         isLoading: false,
       } as UseEmailUpdateStatusMock)
       render(<TrackEmailChange />)
-      expect(navigateFromRef).toHaveBeenCalledWith(
-        navigateToHomeConfig.screen,
-        navigateToHomeConfig.params
-      )
+      expect(navigate).toHaveBeenNthCalledWith(1, 'ChangeEmailExpiredLink')
     })
   })
 })

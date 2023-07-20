@@ -3,6 +3,7 @@ import React from 'react'
 import { NativeStackNavigationProp } from 'react-native-screens/native-stack'
 
 import * as API from 'api/api'
+import { ApiError } from 'api/apiHelpers'
 import { EmailHistoryEventTypeEnum } from 'api/gen'
 import { navigateToHome } from 'features/navigation/helpers'
 import { RootStackParamList } from 'features/navigation/RootNavigator/types'
@@ -51,22 +52,9 @@ describe('<SuspendAccountConfirmation />', () => {
   } as unknown as RouteProp<RootStackParamList, 'SuspendAccountConfirmation'>
 
   describe('should navigate to home', () => {
-    it('When there is not current email change', () => {
+    it('When there is no email change', () => {
       useEmailUpdateStatusSpy.mockReturnValueOnce({
         data: undefined,
-        isLoading: false,
-      } as UseEmailUpdateStatusMock)
-      render(<SuspendAccountConfirmation navigation={navigation} route={route} />)
-      expect(navigateToHome).toHaveBeenCalledTimes(1)
-    })
-
-    it('When last email change expired', () => {
-      useEmailUpdateStatusSpy.mockReturnValueOnce({
-        data: {
-          expired: true,
-          newEmail: '',
-          status: EmailHistoryEventTypeEnum.UPDATE_REQUEST,
-        },
         isLoading: false,
       } as UseEmailUpdateStatusMock)
       render(<SuspendAccountConfirmation navigation={navigation} route={route} />)
@@ -89,8 +77,8 @@ describe('<SuspendAccountConfirmation />', () => {
       expect(navigateToHome).toHaveBeenCalledTimes(1)
     })
 
-    it('When pressing "Oui, suspendre mon compte" button and API response is error', async () => {
-      emailUpdateCancelSpy.mockRejectedValueOnce('API error')
+    it('When pressing "Oui, suspendre mon compte" button and API response is error and is not a 401 error', async () => {
+      emailUpdateCancelSpy.mockRejectedValueOnce(new ApiError(500, 'API error'))
       render(<SuspendAccountConfirmation navigation={navigation} route={route} />)
 
       await act(async () => {
@@ -125,8 +113,8 @@ describe('<SuspendAccountConfirmation />', () => {
     })
   })
 
-  it('should display an error snackbar when pressing "Confirmer la demande" button and API response is error', async () => {
-    emailUpdateCancelSpy.mockRejectedValueOnce('API error')
+  it('should display an error snackbar when pressing "Confirmer la demande" button and API response is error and is not 401 error', async () => {
+    emailUpdateCancelSpy.mockRejectedValueOnce(new ApiError(500, 'API error'))
     render(<SuspendAccountConfirmation navigation={navigation} route={route} />)
 
     await act(async () => {
@@ -134,5 +122,42 @@ describe('<SuspendAccountConfirmation />', () => {
     })
 
     expect(mockShowErrorSnackbar).toHaveBeenCalledTimes(1)
+  })
+
+  it('should not display an error snackbar when pressing "Confirmer la demande" button and API response is a 401 error', async () => {
+    emailUpdateCancelSpy.mockRejectedValueOnce(new ApiError(401, 'unauthorized'))
+    render(<SuspendAccountConfirmation navigation={navigation} route={route} />)
+
+    await act(async () => {
+      fireEvent.press(screen.getByText('Oui, suspendre mon compte'))
+    })
+
+    expect(mockShowErrorSnackbar).not.toHaveBeenCalled()
+  })
+
+  describe('should navigate to change email expired', () => {
+    it('When last email change expired', () => {
+      useEmailUpdateStatusSpy.mockReturnValueOnce({
+        data: {
+          expired: true,
+          newEmail: '',
+          status: EmailHistoryEventTypeEnum.UPDATE_REQUEST,
+        },
+        isLoading: false,
+      } as UseEmailUpdateStatusMock)
+      render(<SuspendAccountConfirmation navigation={navigation} route={route} />)
+      expect(navigation.navigate).toHaveBeenNthCalledWith(1, 'ChangeEmailExpiredLink')
+    })
+
+    it('When pressing "Confirmer la demande" button and API response is a 401 error', async () => {
+      emailUpdateCancelSpy.mockRejectedValueOnce(new ApiError(401, 'unauthorized'))
+      render(<SuspendAccountConfirmation navigation={navigation} route={route} />)
+
+      await act(async () => {
+        fireEvent.press(screen.getByText('Oui, suspendre mon compte'))
+      })
+
+      expect(navigation.navigate).toHaveBeenNthCalledWith(1, 'ChangeEmailExpiredLink')
+    })
   })
 })

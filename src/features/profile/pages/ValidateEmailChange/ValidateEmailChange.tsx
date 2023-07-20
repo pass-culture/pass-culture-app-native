@@ -2,6 +2,7 @@ import React, { useCallback, useEffect, useState } from 'react'
 import { NativeStackScreenProps } from 'react-native-screens/native-stack'
 
 import { api } from 'api/api'
+import { ApiError } from 'api/apiHelpers'
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { useLogoutRoutine } from 'features/auth/helpers/useLogoutRoutine'
 import { navigateToHome, navigateToHomeConfig } from 'features/navigation/helpers'
@@ -21,7 +22,7 @@ type ValidateEmailChangeProps = NativeStackScreenProps<RootStackParamList, 'Vali
 
 export function ValidateEmailChange({ route: { params }, navigation }: ValidateEmailChangeProps) {
   const { data: emailUpdateStatus, isLoading: isLoadingEmailUpdateStatus } = useEmailUpdateStatus()
-  const { showSuccessSnackBar } = useSnackBarContext()
+  const { showSuccessSnackBar, showErrorSnackBar } = useSnackBarContext()
 
   const [isLoading, setIsLoading] = useState(false)
 
@@ -42,24 +43,37 @@ export function ValidateEmailChange({ route: { params }, navigation }: ValidateE
       if (isLoggedIn) {
         await signOut()
       }
-      navigation.navigate('Login')
       showSuccessSnackBar({
         message:
           'Ton adresse e-mail est modifiée. Tu peux te reconnecter avec ta nouvelle adresse e-mail.',
         timeout: SNACK_BAR_TIME_OUT,
       })
+      navigation.replace('Login')
     } catch (error) {
-      navigation.navigate('ChangeEmailExpiredLink')
+      if (error instanceof ApiError && error.statusCode === 401) {
+        navigation.navigate('ChangeEmailExpiredLink')
+        return
+      }
+      showErrorSnackBar({
+        message: 'Désolé, une erreur technique s’est produite. Veuillez réessayer plus tard.',
+        timeout: SNACK_BAR_TIME_OUT,
+      })
+      navigateToHome()
     } finally {
       setIsLoading(false)
     }
-  }, [isLoggedIn, mutate, navigation, showSuccessSnackBar, signOut])
+  }, [isLoggedIn, mutate, navigation, showErrorSnackBar, showSuccessSnackBar, signOut])
 
   useEffect(() => {
-    if (!isLoadingEmailUpdateStatus && (!emailUpdateStatus || emailUpdateStatus?.expired)) {
-      navigateToHome()
+    if (!isLoadingEmailUpdateStatus) {
+      if (!emailUpdateStatus) {
+        navigateToHome()
+      }
+      if (emailUpdateStatus?.expired) {
+        navigation.navigate('ChangeEmailExpiredLink')
+      }
     }
-  }, [emailUpdateStatus, isLoadingEmailUpdateStatus])
+  }, [emailUpdateStatus, isLoadingEmailUpdateStatus, navigation])
 
   return (
     <GenericInfoPageWhite
