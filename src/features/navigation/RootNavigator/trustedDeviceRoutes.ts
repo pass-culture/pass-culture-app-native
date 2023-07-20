@@ -9,7 +9,7 @@ import { AccountSecurity } from 'features/trustedDevice/pages/AccountSecurity'
 import { AccountSecurityBuffer } from 'features/trustedDevice/pages/AccountSecurityBuffer'
 import { SuspensionChoice } from 'features/trustedDevice/pages/SuspensionChoice'
 import { SuspensionChoiceExpiredLink } from 'features/trustedDevice/pages/SuspensionChoiceExpiredLink'
-import { SuspensionConfirmation } from 'features/trustedDevice/pages/SuspensionConfirmation'
+import { SuspiciousLoginSuspendedAccount } from 'features/trustedDevice/pages/SuspiciousLoginSuspendedAccount'
 
 // Try to keep those routes in the same order as the user flow
 export const trustedDeviceRoutes: GenericRoute<TrustedDeviceRootStackParamList>[] = [
@@ -38,8 +38,8 @@ export const trustedDeviceRoutes: GenericRoute<TrustedDeviceRootStackParamList>[
     options: { title: 'Lien de suspension de compte expiré' },
   },
   {
-    name: 'SuspensionConfirmation',
-    component: SuspensionConfirmation,
+    name: 'SuspiciousLoginSuspendedAccount',
+    component: SuspiciousLoginSuspendedAccount,
     path: 'securisation-compte/suspension-confirmee',
   },
   // Cheatcode

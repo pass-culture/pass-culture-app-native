@@ -73,7 +73,7 @@ export type TrustedDeviceRootStackParamList = {
   NavigationTrustedDevice: undefined
   SuspensionChoice: undefined
   SuspensionChoiceExpiredLink: undefined
-  SuspensionConfirmation: undefined
+  SuspiciousLoginSuspendedAccount: undefined
   TrustedDeviceInfos: undefined
 }
 

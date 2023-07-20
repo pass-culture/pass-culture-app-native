@@ -2,13 +2,13 @@ import React from 'react'
 
 import { render, screen } from 'tests/utils'
 
-import { SuspensionConfirmation } from './SuspensionConfirmation'
+import { SuspiciousLoginSuspendedAccount } from './SuspiciousLoginSuspendedAccount'
 
 jest.mock('features/auth/helpers/useLogoutRoutine')
 
-describe('<SuspensionConfirmation/>', () => {
+describe('<SuspiciousLoginSuspendedAccount/>', () => {
   it('should match snapshot', () => {
-    render(<SuspensionConfirmation />)
+    render(<SuspiciousLoginSuspendedAccount />)
 
     expect(screen).toMatchSnapshot()
   })

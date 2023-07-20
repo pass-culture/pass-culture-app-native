@@ -20,7 +20,7 @@ import { SPACE } from 'ui/theme/constants'
 
 export const SuspensionChoice = () => {
   const navigation = useNavigation<UseNavigationType>()
-  const onPressContinue = () => navigation.navigate('SuspensionConfirmation')
+  const onPressContinue = () => navigation.navigate('SuspiciousLoginSuspendedAccount')
 
   return (
     <GenericInfoPageWhite
