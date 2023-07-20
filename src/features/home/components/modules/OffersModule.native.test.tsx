@@ -30,7 +30,7 @@ const props = {
   position: null,
   homeEntryId: 'fakeEntryId',
   index: 1,
-  data: { hits: mockHits, nbHits: mockNbHits, moduleId: 'fakeModuleId' },
+  data: { playlistItems: mockHits, nbPlaylistResults: mockNbHits, moduleId: 'fakeModuleId' },
 }
 
 const nativeEventEnd = {
@@ -107,7 +107,7 @@ describe('OffersModule component - Analytics', () => {
   })
 
   it('should trigger logEvent "SeeMoreHasBeenClicked" when we click on See More', () => {
-    const mockData = { hits: mockHits, nbHits: 10, moduleId: 'fakeModuleId' }
+    const mockData = { playlistItems: mockHits, nbPlaylistResults: 10, moduleId: 'fakeModuleId' }
     render(<OffersModule {...props} index={1} data={mockData} />)
 
     act(() => {

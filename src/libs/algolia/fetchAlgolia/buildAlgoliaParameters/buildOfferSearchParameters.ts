@@ -1,10 +1,15 @@
-import { SearchState } from 'features/search/types'
 import { buildFilters } from 'libs/algolia/fetchAlgolia/buildAlgoliaParameters/buildFilters'
 import { buildGeolocationParameter } from 'libs/algolia/fetchAlgolia/buildAlgoliaParameters/buildGeolocationParameter'
+import { SearchQueryParameters } from 'libs/algolia/types'
 import { Position } from 'libs/geolocation'
 
 import { buildFacetFilters } from './buildFacetFilters'
 import { buildNumericFilters } from './buildNumericFilters'
+
+type Parameters = SearchQueryParameters & {
+  objectIds?: string[]
+  excludedObjectIds?: string[]
+}
 
 export const buildOfferSearchParameters = (
   {
@@ -34,7 +39,7 @@ export const buildOfferSearchParameters = (
     maxPossiblePrice = '',
     isOnline = undefined,
     minBookingsThreshold = 0,
-  }: SearchState & { objectIds?: string[]; excludedObjectIds?: string[] },
+  }: Parameters,
   userLocation: Position,
   isUserUnderage: boolean
 ) => ({
@@ -63,6 +68,6 @@ export const buildOfferSearchParameters = (
     maxPossiblePrice,
     minBookingsThreshold,
   }),
-  ...buildGeolocationParameter(locationFilter, userLocation, isOnline),
+  ...buildGeolocationParameter({ locationFilter, userLocation, isOnline }),
   ...buildFilters({ excludedObjectIds }),
 })

@@ -10,7 +10,7 @@ import { Offer } from 'shared/offer/types'
 const isOfferModuleParamsInfo = (module: unknown): module is OfferModuleParamsInfo =>
   module !== undefined
 
-const hasParams = (module: OfferModuleParamsInfo) => module.nbParams > 0
+const hasParams = (module: OfferModuleParamsInfo) => module.adaptedPlaylistParameters.length > 0
 
 interface MapProps {
   results: UseQueryResult<SearchResponse<Offer>[], unknown>
@@ -28,18 +28,20 @@ export const mapOffersDataAndModules = ({ results, modulesParams, transformHits 
       .filter(isOfferModuleParamsInfo)
       .filter(hasParams)
       .map((module) => {
-        const moduleOffers = data.slice(moduleIterator, moduleIterator + module.nbParams)
+        const nbParams = module.adaptedPlaylistParameters.length
+
+        const moduleOffers = data.slice(moduleIterator, moduleIterator + nbParams)
         const hits = flatten(moduleOffers.map((hits) => hits.hits))
           .filter(filterOfferHit)
           .map(transformHits)
 
         const value: ModuleData = {
-          hits: uniqBy(hits, 'objectID') as Offer[],
-          nbHits: moduleOffers.reduce((prev, curr) => prev + curr.nbHits, 0),
+          playlistItems: uniqBy(hits, 'objectID') as Offer[],
+          nbPlaylistResults: moduleOffers.reduce((prev, curr) => prev + curr.nbHits, 0),
           moduleId: module.moduleId,
         }
 
-        moduleIterator += module.nbParams
+        moduleIterator += nbParams
 
         return value
       })

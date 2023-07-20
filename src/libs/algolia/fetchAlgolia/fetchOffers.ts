@@ -6,13 +6,13 @@ import { buildOfferSearchParameters } from 'libs/algolia/fetchAlgolia/buildAlgol
 import { offerAttributesToRetrieve } from 'libs/algolia/fetchAlgolia/buildAlgoliaParameters/offerAttributesToRetrieve'
 import { client } from 'libs/algolia/fetchAlgolia/clients'
 import { buildHitsPerPage } from 'libs/algolia/fetchAlgolia/utils'
-import { SearchParametersQuery } from 'libs/algolia/types'
+import { SearchQueryParameters } from 'libs/algolia/types'
 import { env } from 'libs/environment'
 import { Position } from 'libs/geolocation'
 import { Offer } from 'shared/offer/types'
 
 type FetchOfferArgs = {
-  parameters: SearchParametersQuery
+  parameters: SearchQueryParameters
   userLocation: Position
   isUserUnderage: boolean
   storeQueryID?: (queryID?: string) => void
@@ -34,7 +34,7 @@ export const fetchOffers = async ({
 
   try {
     const response = await index.search<Offer>(parameters.query || '', {
-      page: parameters.page || 0,
+      page: parameters.page ?? 0,
       ...buildHitsPerPage(parameters.hitsPerPage),
       ...searchParameters,
       attributesToRetrieve: offerAttributesToRetrieve,

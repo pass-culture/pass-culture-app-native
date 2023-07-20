@@ -10,7 +10,7 @@ import {
   buildOfferTypesPredicate,
   buildTagsPredicate,
 } from 'libs/algolia/fetchAlgolia/buildAlgoliaParameters/helpers/buildFacetFiltersHelpers/buildFacetFiltersHelpers'
-import { FiltersArray, SearchParametersQuery } from 'libs/algolia/types'
+import { FiltersArray, SearchQueryParameters } from 'libs/algolia/types'
 
 const underageFilter = [[`${FACETS_FILTERS_ENUM.OFFER_ID_FORBIDDEN_TO_UNDERAGE}:false`]]
 const defaultFilter = [[`${FACETS_FILTERS_ENUM.OFFER_IS_EDUCATIONAL}:false`]]
@@ -27,7 +27,7 @@ export const buildFacetFilters = ({
   offerTypes,
   tags,
 }: Pick<
-  SearchParametersQuery,
+  SearchQueryParameters,
   | 'locationFilter'
   | 'offerCategories'
   | 'offerGenreTypes'
@@ -80,7 +80,7 @@ export const buildFacetFilters = ({
   if (tagsPredicate) facetFilters.push(tagsPredicate)
 
   if (
-    locationFilter.locationType === LocationType.VENUE &&
+    locationFilter?.locationType === LocationType.VENUE &&
     typeof locationFilter.venue.venueId === 'number'
   )
     facetFilters.push([`${FACETS_FILTERS_ENUM.VENUE_ID}:${locationFilter.venue.venueId}`])

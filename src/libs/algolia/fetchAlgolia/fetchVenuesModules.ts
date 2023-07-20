@@ -1,32 +1,16 @@
-import { Venue, VenuesParameters } from 'features/home/types'
-import { LocationType } from 'features/search/enums'
-import { AlgoliaVenue, FiltersArray } from 'libs/algolia'
-import { VenuesFacets } from 'libs/algolia/enums'
+import { Venue, VenuesModuleParameters } from 'features/home/types'
+import { AlgoliaVenue } from 'libs/algolia'
 import { captureAlgoliaError } from 'libs/algolia/fetchAlgolia/AlgoliaError'
-import { buildGeolocationParameter } from 'libs/algolia/fetchAlgolia/buildAlgoliaParameters/buildGeolocationParameter'
-import { getVenueTypeFacetFilters } from 'libs/algolia/fetchAlgolia/buildAlgoliaParameters/getVenueTypeFacetFilters'
 import { client } from 'libs/algolia/fetchAlgolia/clients'
-import { adaptGeolocationParameters } from 'libs/algolia/fetchAlgolia/helpers/adaptGeolocationParameters'
-import { buildHitsPerPage } from 'libs/algolia/fetchAlgolia/utils'
-import { env } from 'libs/environment'
+import { buildVenuesModulesQueries } from 'libs/algolia/fetchAlgolia/helpers/buildVenuesModulesQueries'
 import { Position } from 'libs/geolocation'
 import { VenueTypeCode } from 'libs/parsers'
 
-const attributesToHighlight: string[] = [] // We disable highlighting because we don't need it
-
 export const fetchVenuesModules = async (
-  paramsList: VenuesParameters[],
+  paramsList: VenuesModuleParameters[],
   userLocation: Position
 ): Promise<Venue[][]> => {
-  const queries = paramsList.map((params) => ({
-    indexName: env.ALGOLIA_VENUES_INDEX_NAME,
-    query: '',
-    params: {
-      ...buildVenuesQueryOptions(params, userLocation),
-      ...buildHitsPerPage(params.hitsPerPage),
-      attributesToHighlight,
-    },
-  }))
+  const queries = buildVenuesModulesQueries({ paramsList, userLocation })
 
   try {
     const allResults = await client.multipleQueries<AlgoliaVenue>(queries)
@@ -37,43 +21,6 @@ export const fetchVenuesModules = async (
     return [] as Venue[][]
   }
 }
-
-export const buildVenuesQueryOptions = (params: VenuesParameters, userLocation: Position) => {
-  const { aroundRadius, isGeolocated, tags = [], venueTypes = [] } = params
-
-  const locationFilter = adaptGeolocationParameters(userLocation, isGeolocated, aroundRadius) ?? {
-    locationType: LocationType.EVERYWHERE,
-  }
-
-  const facetFilters: FiltersArray = []
-
-  if (tags.length) {
-    const tagsPredicate = buildTagsPredicate(tags)
-    facetFilters.push(tagsPredicate)
-  }
-
-  if (venueTypes.length) {
-    const venueTypesPredicate = buildVenueTypesPredicate(venueTypes.map(getVenueTypeFacetFilters))
-    facetFilters.push(venueTypesPredicate)
-  }
-
-  // We want to show on home page only venues that have at least one offer that is searchable in algolia
-  const hasAtLeastOneBookableOfferPredicate = [
-    `${VenuesFacets.has_at_least_one_bookable_offer}:true`,
-  ]
-  facetFilters.push(hasAtLeastOneBookableOfferPredicate)
-
-  return {
-    ...buildGeolocationParameter(locationFilter, userLocation),
-    ...(facetFilters.length > 0 ? { facetFilters } : {}),
-  }
-}
-
-const buildVenueTypesPredicate = (venueTypes: string[]): string[] =>
-  venueTypes.map((venueType) => `${VenuesFacets.venue_type}:${venueType}`)
-
-const buildTagsPredicate = (tags: string[]): string[] =>
-  tags.map((tag: string) => `${VenuesFacets.tags}:${tag}`)
 
 const buildVenue = (venue: AlgoliaVenue): Venue => {
   const socialMedias: Record<string, string> = {}

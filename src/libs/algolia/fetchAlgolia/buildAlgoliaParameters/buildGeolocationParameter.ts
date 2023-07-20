@@ -1,14 +1,27 @@
 import { LocationType } from 'features/search/enums'
-import { SearchState } from 'features/search/types'
+import { MAX_RADIUS } from 'features/search/helpers/reducer.helpers'
+import { SearchQueryParameters } from 'libs/algolia/types'
 import { Position } from 'libs/geolocation'
 
 import { RADIUS_FILTERS } from '../../enums'
 
-export const buildGeolocationParameter = (
-  locationFilter: SearchState['locationFilter'],
-  userLocation: Position,
-  isOnline?: SearchState['isOnline']
-): { aroundLatLng: string; aroundRadius: 'all' | number } | undefined => {
+type Params = {
+  locationFilter?: SearchQueryParameters['locationFilter']
+  userLocation: Position
+  isOnline?: SearchQueryParameters['isOnline']
+}
+
+export const buildGeolocationParameter = ({
+  locationFilter: providedLocationFilter,
+  userLocation,
+  isOnline,
+}: Params): { aroundLatLng: string; aroundRadius: 'all' | number } | undefined => {
+  let locationFilter = providedLocationFilter
+  if (!locationFilter)
+    locationFilter = userLocation
+      ? { locationType: LocationType.AROUND_ME, aroundRadius: MAX_RADIUS }
+      : { locationType: LocationType.EVERYWHERE }
+
   if (locationFilter.locationType === LocationType.VENUE) return
 
   if (locationFilter.locationType === LocationType.PLACE) {

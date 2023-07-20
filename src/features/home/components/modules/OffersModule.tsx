@@ -38,7 +38,10 @@ export const OffersModule = (props: OffersModuleProps) => {
   const labelMapping = useCategoryHomeLabelMapping()
   const { user } = useAuthContext()
 
-  const { hits, nbHits } = data ?? { hits: [], nbHits: 0 }
+  const { playlistItems, nbPlaylistResults } = data ?? {
+    playlistItems: [],
+    nbPlaylistResults: 0,
+  }
 
   const [parameters] = search
   // When we navigate to the search page, we want to show 20 results per page,
@@ -52,11 +55,12 @@ export const OffersModule = (props: OffersModuleProps) => {
   const searchTabConfig = getTabNavConfig('Search', searchParams)
   const moduleName = display.title ?? parameters.title
   const logHasSeenAllTilesOnce = useFunctionOnce(() =>
-    analytics.logAllTilesSeen(moduleName, hits.length)
+    analytics.logAllTilesSeen(moduleName, playlistItems.length)
   )
 
   const showSeeMore =
-    hits.length < nbHits &&
+    nbPlaylistResults &&
+    playlistItems.length < nbPlaylistResults &&
     !(parameters.tags ?? parameters.beginningDatetime ?? parameters.endingDatetime)
 
   // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -112,7 +116,8 @@ export const OffersModule = (props: OffersModuleProps) => {
     [onPressSeeMore, showSeeMore, searchTabConfig]
   )
 
-  const shouldModuleBeDisplayed = hits.length > 0 && nbHits >= display.minOffers
+  const shouldModuleBeDisplayed =
+    playlistItems.length > 0 && playlistItems.length >= display.minOffers
 
   useEffect(() => {
     if (shouldModuleBeDisplayed) {
@@ -128,7 +133,7 @@ export const OffersModule = (props: OffersModuleProps) => {
       testID="offersModuleList"
       title={display.title}
       subtitle={display.subtitle}
-      data={hits}
+      data={playlistItems}
       itemHeight={itemHeight}
       itemWidth={itemWidth}
       coverUrl={cover}

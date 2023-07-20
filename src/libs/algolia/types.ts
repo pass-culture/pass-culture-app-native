@@ -1,12 +1,35 @@
 import { SearchOptions } from '@algolia/client-search'
 
-import { VenueResponse } from 'api/gen'
-import { SearchState } from 'features/search/types'
+import {
+  GenreType,
+  GenreTypeContentModel,
+  VenueResponse,
+  NativeCategoryIdEnumv2,
+  SearchGroupNameEnumv2,
+  SubcategoryIdEnumv2,
+} from 'api/gen'
+import { DATE_FILTER_OPTIONS, LocationType } from 'features/search/enums'
+import { Venue } from 'features/venue/types'
 import { AlgoliaHit } from 'libs/algolia'
 import { Geoloc as AlgoliaGeoloc } from 'libs/algolia/algolia.d'
 import { transformOfferHit } from 'libs/algolia/fetchAlgolia/transformOfferHit'
 import { Position } from 'libs/geolocation'
 import { VenueTypeCode } from 'libs/parsers'
+import { SuggestedPlace } from 'libs/place'
+import { Range } from 'libs/typesUtils/typeHelpers'
+
+interface SelectedDate {
+  option: DATE_FILTER_OPTIONS
+  selectedDate: string
+}
+
+export type LocationFilter =
+  | { locationType: LocationType.EVERYWHERE }
+  | { locationType: LocationType.AROUND_ME; aroundRadius: number | null }
+  | { locationType: LocationType.PLACE; place: SuggestedPlace; aroundRadius: number }
+  | { locationType: LocationType.VENUE; venue: Venue }
+
+export type OfferGenreType = { key: GenreType } & GenreTypeContentModel
 
 /**
  * See Algolia doc on numericFilters and facetFilters
@@ -15,8 +38,37 @@ import { VenueTypeCode } from 'libs/parsers'
  */
 export type FiltersArray = string[][]
 
-export interface SearchParametersQuery extends SearchState {
-  page: number
+export type SearchQueryParameters = {
+  beginningDatetime?: string
+  date: SelectedDate | null
+  endingDatetime?: string
+  hitsPerPage: number | null
+  locationFilter?: LocationFilter
+  offerCategories: SearchGroupNameEnumv2[]
+  offerGenreTypes?: OfferGenreType[]
+  offerNativeCategories?: NativeCategoryIdEnumv2[]
+  offerSubcategories: SubcategoryIdEnumv2[]
+  offerIsDuo: boolean
+  offerIsFree?: boolean
+  offerIsNew: boolean
+  offerTypes: {
+    isDigital: boolean
+    isEvent: boolean
+    isThing: boolean
+  }
+  priceRange: Range<number> | null
+  timeRange: Range<number> | null
+  tags: string[]
+  query: string
+  noFocus?: boolean
+  minPrice?: string
+  maxPrice?: string
+  searchId?: string
+  maxPossiblePrice?: string
+  isOnline?: boolean
+  minBookingsThreshold?: number
+
+  page?: number
 }
 
 export const transformHit = transformOfferHit
@@ -51,7 +103,7 @@ export interface FetchVenuesParameters {
   attributesToHighlight?: string[]
 }
 export interface FetchOfferParameters {
-  parameters: SearchParametersQuery
+  parameters: SearchQueryParameters
   userLocation: Position
   isUserUnderage: boolean
   storeQueryID?: (queryID?: string) => void

@@ -4,7 +4,7 @@ import { useQuery } from 'react-query'
 import { useHomePosition } from 'features/home/helpers/useHomePosition'
 import { OffersModuleParameters } from 'features/home/types'
 import { useIsUserUnderage } from 'features/profile/helpers/useIsUserUnderage'
-import { SearchState } from 'features/search/types'
+import { SearchQueryParameters } from 'libs/algolia'
 import { fetchMultipleOffers } from 'libs/algolia/fetchAlgolia/fetchMultipleOffers/fetchMultipleOffers'
 import { useAdaptOffersPlaylistParameters } from 'libs/algolia/fetchAlgolia/fetchMultipleOffers/helpers/useAdaptOffersPlaylistParameters'
 import { fetchOfferHits } from 'libs/algolia/fetchAlgolia/fetchOfferHits'
@@ -13,7 +13,7 @@ import { useNetInfoContext } from 'libs/network/NetInfoWrapper'
 import { QueryKeys } from 'libs/queryKeys'
 import { Offer } from 'shared/offer/types'
 
-const isSearchState = (parameter: unknown): parameter is SearchState =>
+const isSearchQueryParameters = (parameter: unknown): parameter is SearchQueryParameters =>
   typeof parameter === 'object' && parameter !== null
 
 export const useVideoOffers = (
@@ -28,7 +28,7 @@ export const useVideoOffers = (
   const transformHits = useTransformOfferHits()
 
   const partialAdaptedParameters = adaptPlaylistParameters(offersModuleParameters)
-  const adaptedParameters = [partialAdaptedParameters].filter(isSearchState)
+  const adaptedParameters = [partialAdaptedParameters].filter(isSearchQueryParameters)
 
   const hasOfferIds = offerIds && offerIds.length > 0
 

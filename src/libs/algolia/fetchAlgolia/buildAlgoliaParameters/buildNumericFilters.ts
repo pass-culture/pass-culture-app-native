@@ -5,7 +5,7 @@ import {
   buildOfferLast30DaysBookings,
   buildOfferPriceRangePredicate,
 } from 'libs/algolia/fetchAlgolia/buildAlgoliaParameters/helpers/buildNumericFiltersHelpers/buildNumericFiltersHelpers'
-import { SearchParametersQuery } from 'libs/algolia/types'
+import { SearchQueryParameters } from 'libs/algolia/types'
 
 import { FiltersArray } from '../../types'
 
@@ -22,7 +22,7 @@ export const buildNumericFilters = ({
   maxPossiblePrice,
   minBookingsThreshold,
 }: Pick<
-  SearchParametersQuery,
+  SearchQueryParameters,
   | 'beginningDatetime'
   | 'endingDatetime'
   | 'date'

@@ -14,7 +14,11 @@ const props = {
   search: [],
   homeEntryId: 'fakeEntryId',
   index: 1,
-  data: { hits: mockVenues.hits, nbHits: mockVenues.hits.length, moduleId: 'fakemoduleid' },
+  data: {
+    playlistItems: mockVenues.hits,
+    nbPlaylistResults: mockVenues.hits.length,
+    moduleId: 'fakemoduleid',
+  },
 }
 
 describe('VenuesModule component', () => {

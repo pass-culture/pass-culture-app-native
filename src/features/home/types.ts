@@ -1,6 +1,5 @@
 import { VenueAccessibilityModel, VenueContactModel } from 'api/gen'
-import { SearchState } from 'features/search/types'
-import { VenueHit } from 'libs/algolia'
+import { SearchQueryParameters, VenueHit } from 'libs/algolia'
 import { VenueTypeCode } from 'libs/parsers'
 import { Offer } from 'shared/offer/types'
 
@@ -183,12 +182,12 @@ export type ThematicHighlightModule = {
 export type VenuesModule = {
   type: HomepageModuleType.VenuesModule
   id: string
-  venuesParameters: VenuesParameters[]
+  venuesParameters: VenuesModuleParameters
   displayParameters: DisplayParameters
   data?: ModuleData
 }
 
-export type VenuesParameters = {
+export type VenuesModuleParameters = {
   title: string
   isGeolocated?: boolean
   aroundRadius?: number
@@ -198,8 +197,9 @@ export type VenuesParameters = {
 }
 
 export type ModuleData = {
-  hits: VenueHit[] | Offer[]
-  nbHits: number
+  playlistItems: VenueHit[] | Offer[]
+  // The number of hits matched by the query, not the number of hits returned.
+  nbPlaylistResults?: number
   moduleId: string
 }
 
@@ -256,10 +256,11 @@ export type VideoModule = {
   offerIds: string[]
 }
 
+export type OffersPlaylistParameters = SearchQueryParameters[]
+
 export type OfferModuleParamsInfo = {
-  adaptedPlaylistParameters: SearchState[]
+  adaptedPlaylistParameters: OffersPlaylistParameters
   moduleId: string
-  nbParams: number
 }
 
 export const isVenuesModule = (module: HomepageModule): module is VenuesModule => {

@@ -21,7 +21,7 @@ export const adaptVenuesModule = (modules: VenuesContentModel): VenuesModule | n
   return {
     type: HomepageModuleType.VenuesModule,
     id: modules.sys.id,
-    venuesParameters: venuesParameters,
+    venuesParameters: venuesParameters[0],
     displayParameters: modules.fields.displayParameters.fields,
   }
 }
