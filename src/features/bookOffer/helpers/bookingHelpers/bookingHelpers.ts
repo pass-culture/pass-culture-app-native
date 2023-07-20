@@ -2,7 +2,6 @@ import { OfferStockResponse } from 'api/gen'
 import { BookingState, Step } from 'features/bookOffer/context/reducer'
 import { formatToKeyDate } from 'features/bookOffer/helpers/utils'
 import { formatToFrenchDecimal } from 'libs/parsers'
-import { RadioSelectorType } from 'ui/components/radioSelector/RadioSelector'
 
 export function getButtonState(bookingState: BookingState) {
   const { step, stockId, quantity, date, hour } = bookingState
@@ -55,20 +54,6 @@ export function getHourWording(
   if (hasSeveralPrices && isBookable) return `dès ${formatToFrenchDecimal(price).replace(' ', '')}`
   if (isBookable) return formatToFrenchDecimal(price).replace(' ', '')
   return 'épuisé'
-}
-
-export function getRadioSelectorPriceState(
-  stock: OfferStockResponse,
-  offerCredit: number,
-  stockId?: number
-) {
-  if (stock.id === stockId) {
-    return RadioSelectorType.ACTIVE
-  } else if (stock.isSoldOut || stock.price > offerCredit) {
-    return RadioSelectorType.DISABLED
-  }
-
-  return RadioSelectorType.DEFAULT
 }
 
 export function getPriceWording(stock: OfferStockResponse, offerCredit: number) {

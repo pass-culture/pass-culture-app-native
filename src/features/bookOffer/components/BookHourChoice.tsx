@@ -16,7 +16,7 @@ import { useBookingStock } from 'features/bookOffer/helpers/useBookingStock'
 import { formatHour, formatToKeyDate } from 'features/bookOffer/helpers/utils'
 import { useCreditForOffer } from 'features/offer/helpers/useHasEnoughCredit/useHasEnoughCredit'
 import { TouchableOpacity } from 'ui/components/TouchableOpacity'
-import { Typo, Spacer, getSpacing } from 'ui/theme'
+import { Typo, Spacer } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 interface Props {
@@ -75,14 +75,17 @@ export const BookHourChoice = ({ enablePricesByCategories }: Props) => {
             filteredAvailableStocksFromHourBookable.length > 0
               ? filteredAvailableStocksFromHourBookable
               : filteredAvailableStocksFromHour
-          const minPrice = Math.min(...stocksToGetMinPrice.map((stock) => stock.price))
+          const minPriceStock = stocksToGetMinPrice.reduce((acc, curr) => {
+            if (acc.price < curr.price) return acc
+            return curr
+          })
 
           const isBookable = filteredAvailableStocksFromHourBookable.length > 0
           const hasSeveralPrices = filteredAvailableStocksFromHour.length > 1
           return (
             <HourChoice
               key={hour}
-              price={minPrice}
+              price={minPriceStock.price}
               hour={formatHour(hour).replace(':', 'h')}
               selected={hour === bookingState.hour}
               onPress={() => selectHour(hour, filteredAvailableStocksFromHour)}
@@ -90,6 +93,7 @@ export const BookHourChoice = ({ enablePricesByCategories }: Props) => {
               isBookable={isBookable}
               offerCredit={offerCredit}
               hasSeveralPrices={hasSeveralPrices}
+              features={minPriceStock.features}
             />
           )
         })
@@ -116,6 +120,7 @@ export const BookHourChoice = ({ enablePricesByCategories }: Props) => {
               testID={`HourChoice${stock.id}`}
               isBookable={stock.isBookable}
               offerCredit={offerCredit}
+              features={stock.features}
             />
           ))
       }
@@ -148,7 +153,7 @@ export const BookHourChoice = ({ enablePricesByCategories }: Props) => {
         </Typo.Title4>
       )}
 
-      <Spacer.Column numberOfSpaces={2} />
+      <Spacer.Column numberOfSpaces={4} />
       {bookingState.step === Step.HOUR ? (
         <HourChoiceContainer>{filteredStocks}</HourChoiceContainer>
       ) : (
@@ -163,5 +168,4 @@ export const BookHourChoice = ({ enablePricesByCategories }: Props) => {
 const HourChoiceContainer = styled.View({
   flexDirection: 'row',
   flexWrap: 'wrap',
-  marginHorizontal: -getSpacing(2),
 })

@@ -4,7 +4,6 @@ import {
   getButtonState,
   getButtonWording,
   getHourWording,
-  getRadioSelectorPriceState,
   getPriceWording,
   getPreviousStep,
   getSortedHoursFromDate,
@@ -14,7 +13,6 @@ import {
   getStockWithCategory,
 } from 'features/bookOffer/helpers/bookingHelpers/bookingHelpers'
 import { offerResponseSnap } from 'features/offer/fixtures/offerResponse'
-import { RadioSelectorType } from 'ui/components/radioSelector/RadioSelector'
 
 describe('bookingHelpers', () => {
   describe('getButtonState', () => {
@@ -160,32 +158,6 @@ describe('bookingHelpers', () => {
     it('should return "épuisé" when offer is not bookable', () => {
       const hourWording = getHourWording(2000, false, true, false)
       expect(hourWording).toEqual('épuisé')
-    })
-  })
-
-  describe('getRadioSelectorPriceState', () => {
-    it('should return active state when it is the selected stock', () => {
-      const radioSelectorState = getRadioSelectorPriceState(stock1, 25000, 18758)
-      expect(radioSelectorState).toEqual(RadioSelectorType.ACTIVE)
-    })
-
-    it('should return disabled state when stock is sold out', () => {
-      const radioSelectorState = getRadioSelectorPriceState(
-        { ...stock1, isSoldOut: true },
-        25000,
-        1
-      )
-      expect(radioSelectorState).toEqual(RadioSelectorType.DISABLED)
-    })
-
-    it('should return disabled state when offer price > user credit', () => {
-      const radioSelectorState = getRadioSelectorPriceState(stock1, 5000, 1)
-      expect(radioSelectorState).toEqual(RadioSelectorType.DISABLED)
-    })
-
-    it('should return default state when stock is not selected, not sold out and price <= user credit', () => {
-      const radioSelectorState = getRadioSelectorPriceState(stock1, 25000, 1)
-      expect(radioSelectorState).toEqual(RadioSelectorType.DEFAULT)
     })
   })
 })

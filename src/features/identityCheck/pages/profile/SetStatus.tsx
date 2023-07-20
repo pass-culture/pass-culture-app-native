@@ -21,7 +21,7 @@ import { analytics } from 'libs/analytics'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { Form } from 'ui/components/Form'
 import { Li } from 'ui/components/Li'
-import { RadioSelector, RadioSelectorType } from 'ui/components/radioSelector/RadioSelector'
+import { RadioSelector } from 'ui/components/radioSelector/RadioSelector'
 import { VerticalUl } from 'ui/components/Ul'
 import { Spacer } from 'ui/theme'
 
@@ -100,11 +100,7 @@ export const SetStatus = () => {
                   {filteredActivities?.map((activity) => (
                     <Li key={activity.label}>
                       <RadioSelector
-                        type={
-                          activity.id === value
-                            ? RadioSelectorType.ACTIVE
-                            : RadioSelectorType.DEFAULT
-                        }
+                        checked={activity.id === value}
                         label={activity.label}
                         description={activity.description}
                         onPress={() => onChange(activity.id)}

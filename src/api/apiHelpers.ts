@@ -6,7 +6,7 @@ import { getCodePushId } from 'api/getCodePushId'
 import { navigateFromRef } from 'features/navigation/navigationRef'
 import { env } from 'libs/environment'
 import { Headers } from 'libs/fetch'
-import { getAccessTokenStatus } from 'libs/jwt'
+import { decodeAccessToken, getAccessTokenStatus } from 'libs/jwt'
 import { clearRefreshToken, getRefreshToken } from 'libs/keychain'
 import { eventMonitoring } from 'libs/monitoring'
 import { getDeviceId } from 'libs/react-native-device-info/getDeviceId'
@@ -131,21 +131,51 @@ type Result =
         | typeof UNKNOWN_ERROR_WHILE_REFRESHING_ACCESS_TOKEN
     }
 
+let refreshedAccessToken: Promise<Result> | null = null
+
+export const removeRefreshedAccessToken = (): void => {
+  refreshedAccessToken = null
+}
+
+export const refreshAccessToken = async (
+  api: DefaultApi,
+  remainingRetries = 1
+): Promise<Result> => {
+  if (!refreshedAccessToken) {
+    refreshedAccessToken = refreshAccessTokenWithRetriesOnError(api, remainingRetries).then(
+      (result) => {
+        if (result.result) {
+          const token = decodeAccessToken(result.result)
+          if (token) {
+            const tokenExpirationInSeconds = token.exp
+            const tokenIssueDateInSeconds = token.iat
+            const lifetimeInMs = (tokenExpirationInSeconds - tokenIssueDateInSeconds) * 1000
+            setTimeout(removeRefreshedAccessToken, lifetimeInMs)
+          }
+        }
+        return result
+      }
+    )
+  }
+
+  return refreshedAccessToken
+}
+
 /**
  * Calls Api to refresh the access token using the in-keychain stored refresh token
  * - on success: Stores the new access token
  * - on error : clear storage propagates error
  */
-export const refreshAccessToken = async (
+const refreshAccessTokenWithRetriesOnError = async (
   api: DefaultApi,
-  remainingRetries = 1
+  remainingRetries: number
 ): Promise<Result> => {
   const refreshToken = await getRefreshToken()
-
   if (refreshToken == null) {
     await storage.clear('access_token')
     return { error: FAILED_TO_GET_REFRESH_TOKEN_ERROR }
   }
+
   try {
     const response = await api.postnativev1refreshAccessToken({
       headers: {
@@ -158,7 +188,7 @@ export const refreshAccessToken = async (
     return { result: response.accessToken }
   } catch (error) {
     if (remainingRetries !== 0) {
-      return refreshAccessToken(api, remainingRetries - 1)
+      return refreshAccessTokenWithRetriesOnError(api, remainingRetries - 1)
     }
 
     await clearRefreshToken()
