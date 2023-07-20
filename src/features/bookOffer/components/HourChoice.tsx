@@ -1,7 +1,9 @@
 import React from 'react'
+import styled from 'styled-components/native'
 
 import { getHourWording } from 'features/bookOffer/helpers/bookingHelpers/bookingHelpers'
 import { RadioSelector } from 'ui/components/radioSelector/RadioSelector'
+import { getSpacing } from 'ui/theme'
 
 interface Props {
   hour: string
@@ -13,6 +15,7 @@ interface Props {
   offerCredit: number
   hasSeveralPrices?: boolean
   features: string[]
+  index?: number
 }
 
 export function HourChoice({
@@ -25,6 +28,7 @@ export function HourChoice({
   offerCredit,
   hasSeveralPrices,
   features,
+  index,
 }: Props) {
   const enoughCredit = price <= offerCredit
   const disabled = !isBookable || !enoughCredit
@@ -33,15 +37,21 @@ export function HourChoice({
   const accessibilityLabel = `${hour} ${priceWording}`
 
   return (
-    <RadioSelector
-      label={hour}
-      description={features.join(' ')}
-      rightText={priceWording}
-      onPress={onPress}
-      checked={selected}
-      disabled={disabled}
-      testID={testID}
-      accessibilityLabel={accessibilityLabel}
-    />
+    <Wrapper index={index}>
+      <RadioSelector
+        label={hour}
+        description={features.join(' ')}
+        rightText={priceWording}
+        onPress={onPress}
+        checked={selected}
+        disabled={disabled}
+        testID={testID}
+        accessibilityLabel={accessibilityLabel}
+      />
+    </Wrapper>
   )
 }
+
+const Wrapper = styled.View<{ index?: number }>(({ index = 0 }) => ({
+  marginTop: index > 0 ? getSpacing(2) : undefined,
+}))

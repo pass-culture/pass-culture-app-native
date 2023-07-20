@@ -27,105 +27,94 @@ Array [
       ]
     }
   />,
-  <View
-    style={
-      Array [
-        Object {
-          "flexDirection": "row",
-          "flexWrap": "wrap",
-        },
-      ]
-    }
-  >
+  <View>
     <View
-      accessibilityLabel="10h00 épuisé"
-      accessibilityRole="radio"
-      accessibilityState={
-        Object {
-          "checked": false,
-          "disabled": true,
-        }
-      }
-      accessible={true}
-      collapsable={false}
-      focusable={true}
-      onClick={[Function]}
-      onResponderGrant={[Function]}
-      onResponderMove={[Function]}
-      onResponderRelease={[Function]}
-      onResponderTerminate={[Function]}
-      onResponderTerminationRequest={[Function]}
-      onStartShouldSetResponder={[Function]}
+      index={0}
       style={
-        Object {
-          "alignItems": "center",
-          "backgroundColor": "#F1F1F4",
-          "borderColor": "#F1F1F4",
-          "borderRadius": 8,
-          "borderStyle": "solid",
-          "borderWidth": 1,
-          "flexDirection": "row",
-          "flexGrow": 1,
-          "opacity": 1,
-          "paddingBottom": 16,
-          "paddingLeft": 16,
-          "paddingRight": 16,
-          "paddingTop": 16,
-          "userSelect": "auto",
-        }
+        Array [
+          Object {},
+        ]
       }
-      testID="10h00 épuisé"
     >
       <View
-        isSelected={false}
-        style={
-          Array [
-            Object {
-              "alignItems": "center",
-              "borderColor": "#90949D",
-              "borderRadius": 8,
-              "borderStyle": "solid",
-              "borderWidth": 1,
-              "height": 16,
-              "justifyContent": "center",
-              "marginRight": 16,
-              "width": 16,
-            },
-          ]
+        accessibilityLabel="10h00 épuisé"
+        accessibilityRole="radio"
+        accessibilityState={
+          Object {
+            "checked": false,
+            "disabled": true,
+          }
         }
+        accessible={true}
+        collapsable={false}
+        focusable={true}
+        onClick={[Function]}
+        onResponderGrant={[Function]}
+        onResponderMove={[Function]}
+        onResponderRelease={[Function]}
+        onResponderTerminate={[Function]}
+        onResponderTerminationRequest={[Function]}
+        onStartShouldSetResponder={[Function]}
+        style={
+          Object {
+            "alignItems": "center",
+            "backgroundColor": "#F1F1F4",
+            "borderColor": "#F1F1F4",
+            "borderRadius": 8,
+            "borderStyle": "solid",
+            "borderWidth": 1,
+            "flexDirection": "row",
+            "flexGrow": 1,
+            "opacity": 1,
+            "paddingBottom": 16,
+            "paddingLeft": 16,
+            "paddingRight": 16,
+            "paddingTop": 16,
+            "userSelect": "auto",
+          }
+        }
+        testID="10h00 épuisé"
       >
         <View
-          disabled={true}
           isSelected={false}
           style={
             Array [
               Object {
-                "backgroundColor": "#CBCDD2",
-                "borderRadius": 16,
+                "alignItems": "center",
+                "borderColor": "#90949D",
+                "borderRadius": 8,
+                "borderStyle": "solid",
+                "borderWidth": 1,
                 "height": 16,
+                "justifyContent": "center",
+                "marginRight": 16,
                 "width": 16,
               },
             ]
           }
-        />
-      </View>
-      <View
-        style={
-          Array [
-            Object {
-              "flexBasis": 0,
-              "flexGrow": 1,
-              "flexShrink": 1,
-            },
-          ]
-        }
-      >
+        >
+          <View
+            disabled={true}
+            isSelected={false}
+            style={
+              Array [
+                Object {
+                  "backgroundColor": "#CBCDD2",
+                  "borderRadius": 16,
+                  "height": 16,
+                  "width": 16,
+                },
+              ]
+            }
+          />
+        </View>
         <View
           style={
             Array [
               Object {
-                "alignItems": "center",
-                "flexDirection": "row",
+                "flexBasis": 0,
+                "flexGrow": 1,
+                "flexShrink": 1,
               },
             ]
           }
@@ -134,140 +123,151 @@ Array [
             style={
               Array [
                 Object {
-                  "flexBasis": 0,
-                  "flexGrow": 1,
-                  "flexShrink": 1,
-                  "marginVertical": 16,
+                  "alignItems": "center",
+                  "flexDirection": "row",
                 },
               ]
             }
           >
+            <View
+              style={
+                Array [
+                  Object {
+                    "flexBasis": 0,
+                    "flexGrow": 1,
+                    "flexShrink": 1,
+                    "marginVertical": 16,
+                  },
+                ]
+              }
+            >
+              <Text
+                disabled={true}
+                isHover={false}
+                style={
+                  Array [
+                    Object {
+                      "color": "#696A6F",
+                      "fontFamily": "Montserrat-Bold",
+                      "fontSize": 15,
+                      "lineHeight": 20,
+                    },
+                  ]
+                }
+                testID="HourChoice148411-label"
+              >
+                10h00
+              </Text>
+            </View>
             <Text
               disabled={true}
-              isHover={false}
               style={
                 Array [
                   Object {
                     "color": "#696A6F",
-                    "fontFamily": "Montserrat-Bold",
+                    "fontFamily": "Montserrat-Regular",
                     "fontSize": 15,
                     "lineHeight": 20,
                   },
                 ]
               }
-              testID="HourChoice148411-label"
+              testID="HourChoice148411-right-text"
             >
-              10h00
+              épuisé
             </Text>
           </View>
-          <Text
-            disabled={true}
-            style={
-              Array [
-                Object {
-                  "color": "#696A6F",
-                  "fontFamily": "Montserrat-Regular",
-                  "fontSize": 15,
-                  "lineHeight": 20,
-                },
-              ]
-            }
-            testID="HourChoice148411-right-text"
-          >
-            épuisé
-          </Text>
         </View>
       </View>
     </View>
     <View
-      accessibilityLabel="20h00 24 €"
-      accessibilityRole="radio"
-      accessibilityState={
-        Object {
-          "checked": false,
-          "disabled": false,
-        }
-      }
-      accessible={true}
-      collapsable={false}
-      focusable={true}
-      onClick={[Function]}
-      onResponderGrant={[Function]}
-      onResponderMove={[Function]}
-      onResponderRelease={[Function]}
-      onResponderTerminate={[Function]}
-      onResponderTerminationRequest={[Function]}
-      onStartShouldSetResponder={[Function]}
+      index={1}
       style={
-        Object {
-          "alignItems": "center",
-          "backgroundColor": "#ffffff",
-          "borderColor": "#90949D",
-          "borderRadius": 8,
-          "borderStyle": "solid",
-          "borderWidth": 1,
-          "flexDirection": "row",
-          "flexGrow": 1,
-          "opacity": 1,
-          "paddingBottom": 16,
-          "paddingLeft": 16,
-          "paddingRight": 16,
-          "paddingTop": 16,
-          "userSelect": "auto",
-        }
+        Array [
+          Object {
+            "marginTop": 8,
+          },
+        ]
       }
-      testID="20h00 24 €"
     >
       <View
-        isSelected={false}
-        style={
-          Array [
-            Object {
-              "alignItems": "center",
-              "borderColor": "#90949D",
-              "borderRadius": 8,
-              "borderStyle": "solid",
-              "borderWidth": 1,
-              "height": 16,
-              "justifyContent": "center",
-              "marginRight": 16,
-              "width": 16,
-            },
-          ]
+        accessibilityLabel="20h00 24 €"
+        accessibilityRole="radio"
+        accessibilityState={
+          Object {
+            "checked": false,
+            "disabled": false,
+          }
         }
+        accessible={true}
+        collapsable={false}
+        focusable={true}
+        onClick={[Function]}
+        onResponderGrant={[Function]}
+        onResponderMove={[Function]}
+        onResponderRelease={[Function]}
+        onResponderTerminate={[Function]}
+        onResponderTerminationRequest={[Function]}
+        onStartShouldSetResponder={[Function]}
+        style={
+          Object {
+            "alignItems": "center",
+            "backgroundColor": "#ffffff",
+            "borderColor": "#90949D",
+            "borderRadius": 8,
+            "borderStyle": "solid",
+            "borderWidth": 1,
+            "flexDirection": "row",
+            "flexGrow": 1,
+            "opacity": 1,
+            "paddingBottom": 16,
+            "paddingLeft": 16,
+            "paddingRight": 16,
+            "paddingTop": 16,
+            "userSelect": "auto",
+          }
+        }
+        testID="20h00 24 €"
       >
         <View
-          disabled={false}
           isSelected={false}
           style={
             Array [
               Object {
-                "backgroundColor": "transparent",
-                "borderRadius": 16,
-                "height": 8,
-                "width": 8,
+                "alignItems": "center",
+                "borderColor": "#90949D",
+                "borderRadius": 8,
+                "borderStyle": "solid",
+                "borderWidth": 1,
+                "height": 16,
+                "justifyContent": "center",
+                "marginRight": 16,
+                "width": 16,
               },
             ]
           }
-        />
-      </View>
-      <View
-        style={
-          Array [
-            Object {
-              "flexBasis": 0,
-              "flexGrow": 1,
-              "flexShrink": 1,
-            },
-          ]
-        }
-      >
+        >
+          <View
+            disabled={false}
+            isSelected={false}
+            style={
+              Array [
+                Object {
+                  "backgroundColor": "transparent",
+                  "borderRadius": 16,
+                  "height": 8,
+                  "width": 8,
+                },
+              ]
+            }
+          />
+        </View>
         <View
           style={
             Array [
               Object {
-                "alignItems": "center",
-                "flexDirection": "row",
+                "flexBasis": 0,
+                "flexGrow": 1,
+                "flexShrink": 1,
               },
             ]
           }
@@ -276,48 +276,59 @@ Array [
             style={
               Array [
                 Object {
-                  "flexBasis": 0,
-                  "flexGrow": 1,
-                  "flexShrink": 1,
-                  "marginVertical": 16,
+                  "alignItems": "center",
+                  "flexDirection": "row",
                 },
               ]
             }
           >
+            <View
+              style={
+                Array [
+                  Object {
+                    "flexBasis": 0,
+                    "flexGrow": 1,
+                    "flexShrink": 1,
+                    "marginVertical": 16,
+                  },
+                ]
+              }
+            >
+              <Text
+                disabled={false}
+                isHover={false}
+                style={
+                  Array [
+                    Object {
+                      "color": "#161617",
+                      "fontFamily": "Montserrat-Bold",
+                      "fontSize": 15,
+                      "lineHeight": 20,
+                    },
+                  ]
+                }
+                testID="HourChoice148409-label"
+              >
+                20h00
+              </Text>
+            </View>
             <Text
               disabled={false}
-              isHover={false}
               style={
                 Array [
                   Object {
                     "color": "#161617",
-                    "fontFamily": "Montserrat-Bold",
+                    "fontFamily": "Montserrat-Regular",
                     "fontSize": 15,
                     "lineHeight": 20,
                   },
                 ]
               }
-              testID="HourChoice148409-label"
+              testID="HourChoice148409-right-text"
             >
-              20h00
+              24 €
             </Text>
           </View>
-          <Text
-            disabled={false}
-            style={
-              Array [
-                Object {
-                  "color": "#161617",
-                  "fontFamily": "Montserrat-Regular",
-                  "fontSize": 15,
-                  "lineHeight": 20,
-                },
-              ]
-            }
-            testID="HourChoice148409-right-text"
-          >
-            24 €
-          </Text>
         </View>
       </View>
     </View>
