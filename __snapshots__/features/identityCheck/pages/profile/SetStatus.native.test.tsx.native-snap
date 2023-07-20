@@ -325,13 +325,13 @@ Array [
                       style={
                         Object {
                           "alignItems": "center",
-                          "backgroundColor": "transparent",
-                          "borderColor": "#696A6F",
+                          "backgroundColor": "#ffffff",
+                          "borderColor": "#90949D",
                           "borderRadius": 8,
+                          "borderStyle": "solid",
                           "borderWidth": 1,
                           "flexDirection": "row",
-                          "maxHeight": 80,
-                          "minHeight": 80,
+                          "flexGrow": 1,
                           "opacity": 1,
                           "paddingBottom": 16,
                           "paddingLeft": 16,
@@ -343,6 +343,38 @@ Array [
                       testID="Collégien"
                     >
                       <View
+                        isSelected={false}
+                        style={
+                          Array [
+                            Object {
+                              "alignItems": "center",
+                              "borderColor": "#90949D",
+                              "borderRadius": 8,
+                              "borderStyle": "solid",
+                              "borderWidth": 1,
+                              "height": 16,
+                              "justifyContent": "center",
+                              "marginRight": 16,
+                              "width": 16,
+                            },
+                          ]
+                        }
+                      >
+                        <View
+                          isSelected={false}
+                          style={
+                            Array [
+                              Object {
+                                "backgroundColor": "transparent",
+                                "borderRadius": 16,
+                                "height": 8,
+                                "width": 8,
+                              },
+                            ]
+                          }
+                        />
+                      </View>
+                      <View
                         style={
                           Array [
                             Object {
@@ -353,52 +385,58 @@ Array [
                           ]
                         }
                       >
-                        <Text
+                        <View
                           style={
                             Array [
                               Object {
-                                "color": "#161617",
-                                "fontFamily": "Montserrat-Bold",
-                                "fontSize": 15,
-                                "lineHeight": 20,
+                                "alignItems": "center",
+                                "flexDirection": "row",
                               },
                             ]
                           }
-                          type="default"
                         >
-                          Collégien
-                        </Text>
-                        <View
-                          numberOfSpaces={1}
-                          style={
-                            Array [
-                              Object {
-                                "height": 4,
-                              },
-                            ]
-                          }
-                        />
-                      </View>
-                      <View
-                        style={
-                          Array [
-                            Object {
-                              "alignItems": "center",
-                              "flexDirection": "row",
-                              "marginLeft": 8,
-                            },
-                          ]
-                        }
-                      >
-                        <View
-                          accessibilityLabel="Non sélectionné"
-                          height={20}
-                          testID="validate-off-icon"
-                          width={20}
-                        >
-                          <Text>
-                            validate-off-icon-SVG-Mock
-                          </Text>
+                          <View
+                            style={
+                              Array [
+                                Object {
+                                  "flexBasis": 0,
+                                  "flexGrow": 1,
+                                  "flexShrink": 1,
+                                  "marginVertical": 16,
+                                },
+                              ]
+                            }
+                          >
+                            <Text
+                              isHover={false}
+                              style={
+                                Array [
+                                  Object {
+                                    "color": "#161617",
+                                    "fontFamily": "Montserrat-Bold",
+                                    "fontSize": 15,
+                                    "lineHeight": 20,
+                                  },
+                                ]
+                              }
+                              testID="undefined-label"
+                            >
+                              Collégien
+                            </Text>
+                          </View>
+                          <Text
+                            style={
+                              Array [
+                                Object {
+                                  "color": "#161617",
+                                  "fontFamily": "Montserrat-Regular",
+                                  "fontSize": 15,
+                                  "lineHeight": 20,
+                                },
+                              ]
+                            }
+                            testID="undefined-right-text"
+                          />
                         </View>
                       </View>
                     </View>
@@ -444,13 +482,13 @@ Array [
                       style={
                         Object {
                           "alignItems": "center",
-                          "backgroundColor": "transparent",
-                          "borderColor": "#696A6F",
+                          "backgroundColor": "#ffffff",
+                          "borderColor": "#90949D",
                           "borderRadius": 8,
+                          "borderStyle": "solid",
                           "borderWidth": 1,
                           "flexDirection": "row",
-                          "maxHeight": 80,
-                          "minHeight": 80,
+                          "flexGrow": 1,
                           "opacity": 1,
                           "paddingBottom": 16,
                           "paddingLeft": 16,
@@ -462,6 +500,38 @@ Array [
                       testID="Lycéen"
                     >
                       <View
+                        isSelected={false}
+                        style={
+                          Array [
+                            Object {
+                              "alignItems": "center",
+                              "borderColor": "#90949D",
+                              "borderRadius": 8,
+                              "borderStyle": "solid",
+                              "borderWidth": 1,
+                              "height": 16,
+                              "justifyContent": "center",
+                              "marginRight": 16,
+                              "width": 16,
+                            },
+                          ]
+                        }
+                      >
+                        <View
+                          isSelected={false}
+                          style={
+                            Array [
+                              Object {
+                                "backgroundColor": "transparent",
+                                "borderRadius": 16,
+                                "height": 8,
+                                "width": 8,
+                              },
+                            ]
+                          }
+                        />
+                      </View>
+                      <View
                         style={
                           Array [
                             Object {
@@ -472,52 +542,58 @@ Array [
                           ]
                         }
                       >
-                        <Text
+                        <View
                           style={
                             Array [
                               Object {
-                                "color": "#161617",
-                                "fontFamily": "Montserrat-Bold",
-                                "fontSize": 15,
-                                "lineHeight": 20,
+                                "alignItems": "center",
+                                "flexDirection": "row",
                               },
                             ]
                           }
-                          type="default"
                         >
-                          Lycéen
-                        </Text>
-                        <View
-                          numberOfSpaces={1}
-                          style={
-                            Array [
-                              Object {
-                                "height": 4,
-                              },
-                            ]
-                          }
-                        />
-                      </View>
-                      <View
-                        style={
-                          Array [
-                            Object {
-                              "alignItems": "center",
-                              "flexDirection": "row",
-                              "marginLeft": 8,
-                            },
-                          ]
-                        }
-                      >
-                        <View
-                          accessibilityLabel="Non sélectionné"
-                          height={20}
-                          testID="validate-off-icon"
-                          width={20}
-                        >
-                          <Text>
-                            validate-off-icon-SVG-Mock
-                          </Text>
+                          <View
+                            style={
+                              Array [
+                                Object {
+                                  "flexBasis": 0,
+                                  "flexGrow": 1,
+                                  "flexShrink": 1,
+                                  "marginVertical": 16,
+                                },
+                              ]
+                            }
+                          >
+                            <Text
+                              isHover={false}
+                              style={
+                                Array [
+                                  Object {
+                                    "color": "#161617",
+                                    "fontFamily": "Montserrat-Bold",
+                                    "fontSize": 15,
+                                    "lineHeight": 20,
+                                  },
+                                ]
+                              }
+                              testID="undefined-label"
+                            >
+                              Lycéen
+                            </Text>
+                          </View>
+                          <Text
+                            style={
+                              Array [
+                                Object {
+                                  "color": "#161617",
+                                  "fontFamily": "Montserrat-Regular",
+                                  "fontSize": 15,
+                                  "lineHeight": 20,
+                                },
+                              ]
+                            }
+                            testID="undefined-right-text"
+                          />
                         </View>
                       </View>
                     </View>
@@ -563,13 +639,13 @@ Array [
                       style={
                         Object {
                           "alignItems": "center",
-                          "backgroundColor": "transparent",
-                          "borderColor": "#696A6F",
+                          "backgroundColor": "#ffffff",
+                          "borderColor": "#90949D",
                           "borderRadius": 8,
+                          "borderStyle": "solid",
                           "borderWidth": 1,
                           "flexDirection": "row",
-                          "maxHeight": 80,
-                          "minHeight": 80,
+                          "flexGrow": 1,
                           "opacity": 1,
                           "paddingBottom": 16,
                           "paddingLeft": 16,
@@ -581,6 +657,38 @@ Array [
                       testID="Étudiant"
                     >
                       <View
+                        isSelected={false}
+                        style={
+                          Array [
+                            Object {
+                              "alignItems": "center",
+                              "borderColor": "#90949D",
+                              "borderRadius": 8,
+                              "borderStyle": "solid",
+                              "borderWidth": 1,
+                              "height": 16,
+                              "justifyContent": "center",
+                              "marginRight": 16,
+                              "width": 16,
+                            },
+                          ]
+                        }
+                      >
+                        <View
+                          isSelected={false}
+                          style={
+                            Array [
+                              Object {
+                                "backgroundColor": "transparent",
+                                "borderRadius": 16,
+                                "height": 8,
+                                "width": 8,
+                              },
+                            ]
+                          }
+                        />
+                      </View>
+                      <View
                         style={
                           Array [
                             Object {
@@ -591,52 +699,58 @@ Array [
                           ]
                         }
                       >
-                        <Text
+                        <View
                           style={
                             Array [
                               Object {
-                                "color": "#161617",
-                                "fontFamily": "Montserrat-Bold",
-                                "fontSize": 15,
-                                "lineHeight": 20,
+                                "alignItems": "center",
+                                "flexDirection": "row",
                               },
                             ]
                           }
-                          type="default"
                         >
-                          Étudiant
-                        </Text>
-                        <View
-                          numberOfSpaces={1}
-                          style={
-                            Array [
-                              Object {
-                                "height": 4,
-                              },
-                            ]
-                          }
-                        />
-                      </View>
-                      <View
-                        style={
-                          Array [
-                            Object {
-                              "alignItems": "center",
-                              "flexDirection": "row",
-                              "marginLeft": 8,
-                            },
-                          ]
-                        }
-                      >
-                        <View
-                          accessibilityLabel="Non sélectionné"
-                          height={20}
-                          testID="validate-off-icon"
-                          width={20}
-                        >
-                          <Text>
-                            validate-off-icon-SVG-Mock
-                          </Text>
+                          <View
+                            style={
+                              Array [
+                                Object {
+                                  "flexBasis": 0,
+                                  "flexGrow": 1,
+                                  "flexShrink": 1,
+                                  "marginVertical": 16,
+                                },
+                              ]
+                            }
+                          >
+                            <Text
+                              isHover={false}
+                              style={
+                                Array [
+                                  Object {
+                                    "color": "#161617",
+                                    "fontFamily": "Montserrat-Bold",
+                                    "fontSize": 15,
+                                    "lineHeight": 20,
+                                  },
+                                ]
+                              }
+                              testID="undefined-label"
+                            >
+                              Étudiant
+                            </Text>
+                          </View>
+                          <Text
+                            style={
+                              Array [
+                                Object {
+                                  "color": "#161617",
+                                  "fontFamily": "Montserrat-Regular",
+                                  "fontSize": 15,
+                                  "lineHeight": 20,
+                                },
+                              ]
+                            }
+                            testID="undefined-right-text"
+                          />
                         </View>
                       </View>
                     </View>
@@ -682,13 +796,13 @@ Array [
                       style={
                         Object {
                           "alignItems": "center",
-                          "backgroundColor": "transparent",
-                          "borderColor": "#696A6F",
+                          "backgroundColor": "#ffffff",
+                          "borderColor": "#90949D",
                           "borderRadius": 8,
+                          "borderStyle": "solid",
                           "borderWidth": 1,
                           "flexDirection": "row",
-                          "maxHeight": 80,
-                          "minHeight": 80,
+                          "flexGrow": 1,
                           "opacity": 1,
                           "paddingBottom": 16,
                           "paddingLeft": 16,
@@ -700,6 +814,38 @@ Array [
                       testID="Employé"
                     >
                       <View
+                        isSelected={false}
+                        style={
+                          Array [
+                            Object {
+                              "alignItems": "center",
+                              "borderColor": "#90949D",
+                              "borderRadius": 8,
+                              "borderStyle": "solid",
+                              "borderWidth": 1,
+                              "height": 16,
+                              "justifyContent": "center",
+                              "marginRight": 16,
+                              "width": 16,
+                            },
+                          ]
+                        }
+                      >
+                        <View
+                          isSelected={false}
+                          style={
+                            Array [
+                              Object {
+                                "backgroundColor": "transparent",
+                                "borderRadius": 16,
+                                "height": 8,
+                                "width": 8,
+                              },
+                            ]
+                          }
+                        />
+                      </View>
+                      <View
                         style={
                           Array [
                             Object {
@@ -710,52 +856,58 @@ Array [
                           ]
                         }
                       >
-                        <Text
+                        <View
                           style={
                             Array [
                               Object {
-                                "color": "#161617",
-                                "fontFamily": "Montserrat-Bold",
-                                "fontSize": 15,
-                                "lineHeight": 20,
+                                "alignItems": "center",
+                                "flexDirection": "row",
                               },
                             ]
                           }
-                          type="default"
                         >
-                          Employé
-                        </Text>
-                        <View
-                          numberOfSpaces={1}
-                          style={
-                            Array [
-                              Object {
-                                "height": 4,
-                              },
-                            ]
-                          }
-                        />
-                      </View>
-                      <View
-                        style={
-                          Array [
-                            Object {
-                              "alignItems": "center",
-                              "flexDirection": "row",
-                              "marginLeft": 8,
-                            },
-                          ]
-                        }
-                      >
-                        <View
-                          accessibilityLabel="Non sélectionné"
-                          height={20}
-                          testID="validate-off-icon"
-                          width={20}
-                        >
-                          <Text>
-                            validate-off-icon-SVG-Mock
-                          </Text>
+                          <View
+                            style={
+                              Array [
+                                Object {
+                                  "flexBasis": 0,
+                                  "flexGrow": 1,
+                                  "flexShrink": 1,
+                                  "marginVertical": 16,
+                                },
+                              ]
+                            }
+                          >
+                            <Text
+                              isHover={false}
+                              style={
+                                Array [
+                                  Object {
+                                    "color": "#161617",
+                                    "fontFamily": "Montserrat-Bold",
+                                    "fontSize": 15,
+                                    "lineHeight": 20,
+                                  },
+                                ]
+                              }
+                              testID="undefined-label"
+                            >
+                              Employé
+                            </Text>
+                          </View>
+                          <Text
+                            style={
+                              Array [
+                                Object {
+                                  "color": "#161617",
+                                  "fontFamily": "Montserrat-Regular",
+                                  "fontSize": 15,
+                                  "lineHeight": 20,
+                                },
+                              ]
+                            }
+                            testID="undefined-right-text"
+                          />
                         </View>
                       </View>
                     </View>
@@ -801,13 +953,13 @@ Array [
                       style={
                         Object {
                           "alignItems": "center",
-                          "backgroundColor": "transparent",
-                          "borderColor": "#696A6F",
+                          "backgroundColor": "#ffffff",
+                          "borderColor": "#90949D",
                           "borderRadius": 8,
+                          "borderStyle": "solid",
                           "borderWidth": 1,
                           "flexDirection": "row",
-                          "maxHeight": 80,
-                          "minHeight": 80,
+                          "flexGrow": 1,
                           "opacity": 1,
                           "paddingBottom": 16,
                           "paddingLeft": 16,
@@ -819,6 +971,38 @@ Array [
                       testID="Apprenti"
                     >
                       <View
+                        isSelected={false}
+                        style={
+                          Array [
+                            Object {
+                              "alignItems": "center",
+                              "borderColor": "#90949D",
+                              "borderRadius": 8,
+                              "borderStyle": "solid",
+                              "borderWidth": 1,
+                              "height": 16,
+                              "justifyContent": "center",
+                              "marginRight": 16,
+                              "width": 16,
+                            },
+                          ]
+                        }
+                      >
+                        <View
+                          isSelected={false}
+                          style={
+                            Array [
+                              Object {
+                                "backgroundColor": "transparent",
+                                "borderRadius": 16,
+                                "height": 8,
+                                "width": 8,
+                              },
+                            ]
+                          }
+                        />
+                      </View>
+                      <View
                         style={
                           Array [
                             Object {
@@ -829,52 +1013,58 @@ Array [
                           ]
                         }
                       >
-                        <Text
+                        <View
                           style={
                             Array [
                               Object {
-                                "color": "#161617",
-                                "fontFamily": "Montserrat-Bold",
-                                "fontSize": 15,
-                                "lineHeight": 20,
+                                "alignItems": "center",
+                                "flexDirection": "row",
                               },
                             ]
                           }
-                          type="default"
                         >
-                          Apprenti
-                        </Text>
-                        <View
-                          numberOfSpaces={1}
-                          style={
-                            Array [
-                              Object {
-                                "height": 4,
-                              },
-                            ]
-                          }
-                        />
-                      </View>
-                      <View
-                        style={
-                          Array [
-                            Object {
-                              "alignItems": "center",
-                              "flexDirection": "row",
-                              "marginLeft": 8,
-                            },
-                          ]
-                        }
-                      >
-                        <View
-                          accessibilityLabel="Non sélectionné"
-                          height={20}
-                          testID="validate-off-icon"
-                          width={20}
-                        >
-                          <Text>
-                            validate-off-icon-SVG-Mock
-                          </Text>
+                          <View
+                            style={
+                              Array [
+                                Object {
+                                  "flexBasis": 0,
+                                  "flexGrow": 1,
+                                  "flexShrink": 1,
+                                  "marginVertical": 16,
+                                },
+                              ]
+                            }
+                          >
+                            <Text
+                              isHover={false}
+                              style={
+                                Array [
+                                  Object {
+                                    "color": "#161617",
+                                    "fontFamily": "Montserrat-Bold",
+                                    "fontSize": 15,
+                                    "lineHeight": 20,
+                                  },
+                                ]
+                              }
+                              testID="undefined-label"
+                            >
+                              Apprenti
+                            </Text>
+                          </View>
+                          <Text
+                            style={
+                              Array [
+                                Object {
+                                  "color": "#161617",
+                                  "fontFamily": "Montserrat-Regular",
+                                  "fontSize": 15,
+                                  "lineHeight": 20,
+                                },
+                              ]
+                            }
+                            testID="undefined-right-text"
+                          />
                         </View>
                       </View>
                     </View>
@@ -920,13 +1110,13 @@ Array [
                       style={
                         Object {
                           "alignItems": "center",
-                          "backgroundColor": "transparent",
-                          "borderColor": "#696A6F",
+                          "backgroundColor": "#ffffff",
+                          "borderColor": "#90949D",
                           "borderRadius": 8,
+                          "borderStyle": "solid",
                           "borderWidth": 1,
                           "flexDirection": "row",
-                          "maxHeight": 80,
-                          "minHeight": 80,
+                          "flexGrow": 1,
                           "opacity": 1,
                           "paddingBottom": 16,
                           "paddingLeft": 16,
@@ -938,6 +1128,38 @@ Array [
                       testID="Alternant"
                     >
                       <View
+                        isSelected={false}
+                        style={
+                          Array [
+                            Object {
+                              "alignItems": "center",
+                              "borderColor": "#90949D",
+                              "borderRadius": 8,
+                              "borderStyle": "solid",
+                              "borderWidth": 1,
+                              "height": 16,
+                              "justifyContent": "center",
+                              "marginRight": 16,
+                              "width": 16,
+                            },
+                          ]
+                        }
+                      >
+                        <View
+                          isSelected={false}
+                          style={
+                            Array [
+                              Object {
+                                "backgroundColor": "transparent",
+                                "borderRadius": 16,
+                                "height": 8,
+                                "width": 8,
+                              },
+                            ]
+                          }
+                        />
+                      </View>
+                      <View
                         style={
                           Array [
                             Object {
@@ -948,52 +1170,58 @@ Array [
                           ]
                         }
                       >
-                        <Text
+                        <View
                           style={
                             Array [
                               Object {
-                                "color": "#161617",
-                                "fontFamily": "Montserrat-Bold",
-                                "fontSize": 15,
-                                "lineHeight": 20,
+                                "alignItems": "center",
+                                "flexDirection": "row",
                               },
                             ]
                           }
-                          type="default"
                         >
-                          Alternant
-                        </Text>
-                        <View
-                          numberOfSpaces={1}
-                          style={
-                            Array [
-                              Object {
-                                "height": 4,
-                              },
-                            ]
-                          }
-                        />
-                      </View>
-                      <View
-                        style={
-                          Array [
-                            Object {
-                              "alignItems": "center",
-                              "flexDirection": "row",
-                              "marginLeft": 8,
-                            },
-                          ]
-                        }
-                      >
-                        <View
-                          accessibilityLabel="Non sélectionné"
-                          height={20}
-                          testID="validate-off-icon"
-                          width={20}
-                        >
-                          <Text>
-                            validate-off-icon-SVG-Mock
-                          </Text>
+                          <View
+                            style={
+                              Array [
+                                Object {
+                                  "flexBasis": 0,
+                                  "flexGrow": 1,
+                                  "flexShrink": 1,
+                                  "marginVertical": 16,
+                                },
+                              ]
+                            }
+                          >
+                            <Text
+                              isHover={false}
+                              style={
+                                Array [
+                                  Object {
+                                    "color": "#161617",
+                                    "fontFamily": "Montserrat-Bold",
+                                    "fontSize": 15,
+                                    "lineHeight": 20,
+                                  },
+                                ]
+                              }
+                              testID="undefined-label"
+                            >
+                              Alternant
+                            </Text>
+                          </View>
+                          <Text
+                            style={
+                              Array [
+                                Object {
+                                  "color": "#161617",
+                                  "fontFamily": "Montserrat-Regular",
+                                  "fontSize": 15,
+                                  "lineHeight": 20,
+                                },
+                              ]
+                            }
+                            testID="undefined-right-text"
+                          />
                         </View>
                       </View>
                     </View>
@@ -1039,13 +1267,13 @@ Array [
                       style={
                         Object {
                           "alignItems": "center",
-                          "backgroundColor": "transparent",
-                          "borderColor": "#696A6F",
+                          "backgroundColor": "#ffffff",
+                          "borderColor": "#90949D",
                           "borderRadius": 8,
+                          "borderStyle": "solid",
                           "borderWidth": 1,
                           "flexDirection": "row",
-                          "maxHeight": 80,
-                          "minHeight": 80,
+                          "flexGrow": 1,
                           "opacity": 1,
                           "paddingBottom": 16,
                           "paddingLeft": 16,
@@ -1057,6 +1285,38 @@ Array [
                       testID="Volontaire"
                     >
                       <View
+                        isSelected={false}
+                        style={
+                          Array [
+                            Object {
+                              "alignItems": "center",
+                              "borderColor": "#90949D",
+                              "borderRadius": 8,
+                              "borderStyle": "solid",
+                              "borderWidth": 1,
+                              "height": 16,
+                              "justifyContent": "center",
+                              "marginRight": 16,
+                              "width": 16,
+                            },
+                          ]
+                        }
+                      >
+                        <View
+                          isSelected={false}
+                          style={
+                            Array [
+                              Object {
+                                "backgroundColor": "transparent",
+                                "borderRadius": 16,
+                                "height": 8,
+                                "width": 8,
+                              },
+                            ]
+                          }
+                        />
+                      </View>
+                      <View
                         style={
                           Array [
                             Object {
@@ -1067,66 +1327,73 @@ Array [
                           ]
                         }
                       >
-                        <Text
-                          style={
-                            Array [
-                              Object {
-                                "color": "#161617",
-                                "fontFamily": "Montserrat-Bold",
-                                "fontSize": 15,
-                                "lineHeight": 20,
-                              },
-                            ]
-                          }
-                          type="default"
-                        >
-                          Volontaire
-                        </Text>
                         <View
-                          numberOfSpaces={1}
                           style={
                             Array [
                               Object {
-                                "height": 4,
-                              },
-                            ]
-                          }
-                        />
-                        <Text
-                          style={
-                            Array [
-                              Object {
-                                "color": "#696A6F",
-                                "fontFamily": "Montserrat-SemiBold",
-                                "fontSize": 12,
-                                "lineHeight": 16,
+                                "alignItems": "center",
+                                "flexDirection": "row",
                               },
                             ]
                           }
                         >
-                          En service civique
-                        </Text>
-                      </View>
-                      <View
-                        style={
-                          Array [
-                            Object {
-                              "alignItems": "center",
-                              "flexDirection": "row",
-                              "marginLeft": 8,
-                            },
-                          ]
-                        }
-                      >
-                        <View
-                          accessibilityLabel="Non sélectionné"
-                          height={20}
-                          testID="validate-off-icon"
-                          width={20}
-                        >
-                          <Text>
-                            validate-off-icon-SVG-Mock
-                          </Text>
+                          <View
+                            style={
+                              Array [
+                                Object {
+                                  "flexBasis": 0,
+                                  "flexGrow": 1,
+                                  "flexShrink": 1,
+                                  "marginVertical": 16,
+                                },
+                              ]
+                            }
+                          >
+                            <Text
+                              isHover={false}
+                              style={
+                                Array [
+                                  Object {
+                                    "color": "#161617",
+                                    "fontFamily": "Montserrat-Bold",
+                                    "fontSize": 15,
+                                    "lineHeight": 20,
+                                  },
+                                ]
+                              }
+                              testID="undefined-label"
+                            >
+                              Volontaire
+                            </Text>
+                            <Text
+                              style={
+                                Array [
+                                  Object {
+                                    "color": "#696A6F",
+                                    "fontFamily": "Montserrat-SemiBold",
+                                    "fontSize": 12,
+                                    "lineHeight": 16,
+                                    "marginTop": 4,
+                                  },
+                                ]
+                              }
+                            >
+                              En service civique
+                            </Text>
+                          </View>
+                          <Text
+                            style={
+                              Array [
+                                Object {
+                                  "color": "#161617",
+                                  "fontFamily": "Montserrat-Regular",
+                                  "fontSize": 15,
+                                  "lineHeight": 20,
+                                },
+                              ]
+                            }
+                            testID="undefined-right-text"
+                          />
                         </View>
                       </View>
                     </View>
@@ -1172,13 +1439,13 @@ Array [
                       style={
                         Object {
                           "alignItems": "center",
-                          "backgroundColor": "transparent",
-                          "borderColor": "#696A6F",
+                          "backgroundColor": "#ffffff",
+                          "borderColor": "#90949D",
                           "borderRadius": 8,
+                          "borderStyle": "solid",
                           "borderWidth": 1,
                           "flexDirection": "row",
-                          "maxHeight": 80,
-                          "minHeight": 80,
+                          "flexGrow": 1,
                           "opacity": 1,
                           "paddingBottom": 16,
                           "paddingLeft": 16,
@@ -1190,6 +1457,38 @@ Array [
                       testID="Inactif"
                     >
                       <View
+                        isSelected={false}
+                        style={
+                          Array [
+                            Object {
+                              "alignItems": "center",
+                              "borderColor": "#90949D",
+                              "borderRadius": 8,
+                              "borderStyle": "solid",
+                              "borderWidth": 1,
+                              "height": 16,
+                              "justifyContent": "center",
+                              "marginRight": 16,
+                              "width": 16,
+                            },
+                          ]
+                        }
+                      >
+                        <View
+                          isSelected={false}
+                          style={
+                            Array [
+                              Object {
+                                "backgroundColor": "transparent",
+                                "borderRadius": 16,
+                                "height": 8,
+                                "width": 8,
+                              },
+                            ]
+                          }
+                        />
+                      </View>
+                      <View
                         style={
                           Array [
                             Object {
@@ -1200,66 +1499,73 @@ Array [
                           ]
                         }
                       >
-                        <Text
-                          style={
-                            Array [
-                              Object {
-                                "color": "#161617",
-                                "fontFamily": "Montserrat-Bold",
-                                "fontSize": 15,
-                                "lineHeight": 20,
-                              },
-                            ]
-                          }
-                          type="default"
-                        >
-                          Inactif
-                        </Text>
                         <View
-                          numberOfSpaces={1}
                           style={
                             Array [
                               Object {
-                                "height": 4,
-                              },
-                            ]
-                          }
-                        />
-                        <Text
-                          style={
-                            Array [
-                              Object {
-                                "color": "#696A6F",
-                                "fontFamily": "Montserrat-SemiBold",
-                                "fontSize": 12,
-                                "lineHeight": 16,
+                                "alignItems": "center",
+                                "flexDirection": "row",
                               },
                             ]
                           }
                         >
-                          En incapacité de travailler
-                        </Text>
-                      </View>
-                      <View
-                        style={
-                          Array [
-                            Object {
-                              "alignItems": "center",
-                              "flexDirection": "row",
-                              "marginLeft": 8,
-                            },
-                          ]
-                        }
-                      >
-                        <View
-                          accessibilityLabel="Non sélectionné"
-                          height={20}
-                          testID="validate-off-icon"
-                          width={20}
-                        >
-                          <Text>
-                            validate-off-icon-SVG-Mock
-                          </Text>
+                          <View
+                            style={
+                              Array [
+                                Object {
+                                  "flexBasis": 0,
+                                  "flexGrow": 1,
+                                  "flexShrink": 1,
+                                  "marginVertical": 16,
+                                },
+                              ]
+                            }
+                          >
+                            <Text
+                              isHover={false}
+                              style={
+                                Array [
+                                  Object {
+                                    "color": "#161617",
+                                    "fontFamily": "Montserrat-Bold",
+                                    "fontSize": 15,
+                                    "lineHeight": 20,
+                                  },
+                                ]
+                              }
+                              testID="undefined-label"
+                            >
+                              Inactif
+                            </Text>
+                            <Text
+                              style={
+                                Array [
+                                  Object {
+                                    "color": "#696A6F",
+                                    "fontFamily": "Montserrat-SemiBold",
+                                    "fontSize": 12,
+                                    "lineHeight": 16,
+                                    "marginTop": 4,
+                                  },
+                                ]
+                              }
+                            >
+                              En incapacité de travailler
+                            </Text>
+                          </View>
+                          <Text
+                            style={
+                              Array [
+                                Object {
+                                  "color": "#161617",
+                                  "fontFamily": "Montserrat-Regular",
+                                  "fontSize": 15,
+                                  "lineHeight": 20,
+                                },
+                              ]
+                            }
+                            testID="undefined-right-text"
+                          />
                         </View>
                       </View>
                     </View>
@@ -1305,13 +1611,13 @@ Array [
                       style={
                         Object {
                           "alignItems": "center",
-                          "backgroundColor": "transparent",
-                          "borderColor": "#696A6F",
+                          "backgroundColor": "#ffffff",
+                          "borderColor": "#90949D",
                           "borderRadius": 8,
+                          "borderStyle": "solid",
                           "borderWidth": 1,
                           "flexDirection": "row",
-                          "maxHeight": 80,
-                          "minHeight": 80,
+                          "flexGrow": 1,
                           "opacity": 1,
                           "paddingBottom": 16,
                           "paddingLeft": 16,
@@ -1323,6 +1629,38 @@ Array [
                       testID="Chômeur"
                     >
                       <View
+                        isSelected={false}
+                        style={
+                          Array [
+                            Object {
+                              "alignItems": "center",
+                              "borderColor": "#90949D",
+                              "borderRadius": 8,
+                              "borderStyle": "solid",
+                              "borderWidth": 1,
+                              "height": 16,
+                              "justifyContent": "center",
+                              "marginRight": 16,
+                              "width": 16,
+                            },
+                          ]
+                        }
+                      >
+                        <View
+                          isSelected={false}
+                          style={
+                            Array [
+                              Object {
+                                "backgroundColor": "transparent",
+                                "borderRadius": 16,
+                                "height": 8,
+                                "width": 8,
+                              },
+                            ]
+                          }
+                        />
+                      </View>
+                      <View
                         style={
                           Array [
                             Object {
@@ -1333,66 +1671,73 @@ Array [
                           ]
                         }
                       >
-                        <Text
-                          style={
-                            Array [
-                              Object {
-                                "color": "#161617",
-                                "fontFamily": "Montserrat-Bold",
-                                "fontSize": 15,
-                                "lineHeight": 20,
-                              },
-                            ]
-                          }
-                          type="default"
-                        >
-                          Chômeur
-                        </Text>
                         <View
-                          numberOfSpaces={1}
                           style={
                             Array [
                               Object {
-                                "height": 4,
-                              },
-                            ]
-                          }
-                        />
-                        <Text
-                          style={
-                            Array [
-                              Object {
-                                "color": "#696A6F",
-                                "fontFamily": "Montserrat-SemiBold",
-                                "fontSize": 12,
-                                "lineHeight": 16,
+                                "alignItems": "center",
+                                "flexDirection": "row",
                               },
                             ]
                           }
                         >
-                          En recherche d’emploi
-                        </Text>
-                      </View>
-                      <View
-                        style={
-                          Array [
-                            Object {
-                              "alignItems": "center",
-                              "flexDirection": "row",
-                              "marginLeft": 8,
-                            },
-                          ]
-                        }
-                      >
-                        <View
-                          accessibilityLabel="Non sélectionné"
-                          height={20}
-                          testID="validate-off-icon"
-                          width={20}
-                        >
-                          <Text>
-                            validate-off-icon-SVG-Mock
-                          </Text>
+                          <View
+                            style={
+                              Array [
+                                Object {
+                                  "flexBasis": 0,
+                                  "flexGrow": 1,
+                                  "flexShrink": 1,
+                                  "marginVertical": 16,
+                                },
+                              ]
+                            }
+                          >
+                            <Text
+                              isHover={false}
+                              style={
+                                Array [
+                                  Object {
+                                    "color": "#161617",
+                                    "fontFamily": "Montserrat-Bold",
+                                    "fontSize": 15,
+                                    "lineHeight": 20,
+                                  },
+                                ]
+                              }
+                              testID="undefined-label"
+                            >
+                              Chômeur
+                            </Text>
+                            <Text
+                              style={
+                                Array [
+                                  Object {
+                                    "color": "#696A6F",
+                                    "fontFamily": "Montserrat-SemiBold",
+                                    "fontSize": 12,
+                                    "lineHeight": 16,
+                                    "marginTop": 4,
+                                  },
+                                ]
+                              }
+                            >
+                              En recherche d’emploi
+                            </Text>
+                          </View>
+                          <Text
+                            style={
+                              Array [
+                                Object {
+                                  "color": "#161617",
+                                  "fontFamily": "Montserrat-Regular",
+                                  "fontSize": 15,
+                                  "lineHeight": 20,
+                                },
+                              ]
+                            }
+                            testID="undefined-right-text"
+                          />
                         </View>
                       </View>
                     </View>

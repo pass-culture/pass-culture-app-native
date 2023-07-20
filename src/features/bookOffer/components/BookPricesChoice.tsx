@@ -6,7 +6,6 @@ import { OfferStockResponse } from 'api/gen'
 import { useBookingContext } from 'features/bookOffer/context/useBookingContext'
 import {
   getPriceWording,
-  getRadioSelectorPriceState,
   getStockSortedByPriceFromHour,
 } from 'features/bookOffer/helpers/bookingHelpers/bookingHelpers'
 import { useCreditForOffer } from 'features/offer/helpers/useHasEnoughCredit/useHasEnoughCredit'
@@ -52,9 +51,10 @@ export const BookPricesChoice = ({ stocks, isDuo }: Props) => {
               <RadioSelector
                 label={stock.priceCategoryLabel ?? ''}
                 onPress={() => selectStock(stock.id)}
-                type={getRadioSelectorPriceState(stock, offerCredit, bookingState.stockId)}
+                checked={stock.id === bookingState.stockId}
+                disabled={stock.isSoldOut || stock.price > offerCredit}
                 description={getPriceWording(stock, offerCredit)}
-                price={formatToFrenchDecimal(stock.price).replace(' ', '')}
+                rightText={formatToFrenchDecimal(stock.price).replace(' ', '')}
               />
               <Spacer.Column numberOfSpaces={2} />
             </Li>

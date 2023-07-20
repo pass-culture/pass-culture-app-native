@@ -135,11 +135,11 @@ exports[`<BookingEventChoices /> should display date step and hour step and duo 
     Horaire
   </Text>
   <View
-    numberOfSpaces={2}
+    numberOfSpaces={4}
     style={
       Array [
         Object {
-          "height": 8,
+          "height": 16,
         },
       ]
     }
