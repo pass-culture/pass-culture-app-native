@@ -3,10 +3,12 @@ import LinearGradient from 'react-native-linear-gradient'
 import styled, { useTheme } from 'styled-components/native'
 
 import { Gradient } from 'features/search/enums'
+import { useHandleFocus } from 'libs/hooks/useHandleFocus'
 import { styledButton } from 'ui/components/buttons/styledButton'
 import { Touchable } from 'ui/components/touchable/Touchable'
 import { AccessibleIcon } from 'ui/svg/icons/types'
 import { getSpacing, Typo } from 'ui/theme'
+import { customFocusOutline } from 'ui/theme/customFocusOutline/customFocusOutline'
 
 export type CategoryButtonProps = {
   label: string
@@ -24,10 +26,13 @@ export const CategoryButton: FunctionComponent<CategoryButtonProps> = ({
   gradients,
   onPress,
 }) => {
+  const focusProps = useHandleFocus()
+
   const theme = useTheme()
 
   return (
     <TouchableContainer
+      {...focusProps}
       onPress={onPress}
       accessibilityLabel={`Catégorie ${label}`}
       hoverUnderlineColor={theme.colors.white}>
@@ -47,10 +52,11 @@ export const CategoryButton: FunctionComponent<CategoryButtonProps> = ({
   )
 }
 
-const TouchableContainer = styledButton(Touchable)(({ theme }) => ({
+const TouchableContainer = styledButton(Touchable)<{ isFocus?: boolean }>(({ theme, isFocus }) => ({
   height: getSpacing(39),
   overflow: 'hidden',
   borderRadius: theme.borderRadius.radius,
+  ...customFocusOutline({ isFocus, color: theme.colors.black }),
 }))
 
 const IllustrationContainer = styled.View({
