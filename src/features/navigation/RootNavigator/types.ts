@@ -83,7 +83,6 @@ export type SubscriptionRootStackParamList = {
   NavigationShareApp: undefined
   NavigationSignUp: undefined
   NewIdentificationFlow: undefined
-  DynamicSocials: undefined
   // Stepper
   Stepper: undefined
   // PhoneValidation

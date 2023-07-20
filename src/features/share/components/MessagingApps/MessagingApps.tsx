@@ -1,25 +1,25 @@
 import React, { useCallback } from 'react'
+import { Social } from 'react-native-share'
 import styled from 'styled-components/native'
 
-import { InstalledMessagingApps } from 'features/offer/components/shareMessagingOffer/InstalledMessagingApps'
-import { MessagingAppContainer } from 'features/offer/components/shareMessagingOffer/MessagingAppContainer'
-import { useShareOffer } from 'features/share/helpers/useShareOffer'
+import { InstalledMessagingApps } from 'features/share/components/MessagingApps/InstalledMessagingApps'
+import { MessagingAppContainer } from 'features/share/components/MessagingApps/MessagingAppContainer'
 import { WebShareModal } from 'features/share/pages/WebShareModal'
-import { analytics } from 'libs/analytics'
+import { ShareContent } from 'libs/share'
 import { useModal } from 'ui/components/modals/useModal'
 import { ShareMessagingAppOther } from 'ui/components/ShareMessagingAppOther'
 import { Ul } from 'ui/components/Ul'
-import { getSpacing, Spacer, Typo } from 'ui/theme'
+import { Spacer, Typo, getSpacing } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
-type MessagingAppsProps = {
-  isEvent: boolean
-  offerId: number
+type Props = {
+  title: string
+  shareContent: ShareContent
+  share: () => void
+  messagingAppAnalytics: (social: Social | 'Other') => void
 }
 
-export const MessagingApps = ({ isEvent, offerId }: MessagingAppsProps) => {
-  const title = isEvent ? 'Vas-y en bande organisée\u00a0!' : 'Partage ce bon plan\u00a0!'
-  const { share, shareContent } = useShareOffer(offerId)
+export const MessagingApps = ({ title, shareContent, share, messagingAppAnalytics }: Props) => {
   const {
     visible: shareOfferModalVisible,
     showModal: showShareOfferModal,
@@ -27,31 +27,37 @@ export const MessagingApps = ({ isEvent, offerId }: MessagingAppsProps) => {
   } = useModal()
 
   const onOtherPress = useCallback(() => {
-    analytics.logShare({ type: 'Offer', from: 'offer', id: offerId, social: 'Other' })
+    messagingAppAnalytics('Other')
     share()
     showShareOfferModal()
-  }, [offerId, share, showShareOfferModal])
+  }, [messagingAppAnalytics, share, showShareOfferModal])
+
+  if (!shareContent.url) return null
 
   return (
     <React.Fragment>
       <StyledTitle4>{title}</StyledTitle4>
       <IconsWrapper>
         <StyledUl>
-          <InstalledMessagingApps offerId={offerId} />
+          <InstalledMessagingApps
+            shareMessage={shareContent.message}
+            shareUrl={shareContent.url}
+            messagingAppAnalytics={messagingAppAnalytics}
+          />
           <MessagingAppContainer>
             <ShareMessagingAppOther onPress={onOtherPress} />
           </MessagingAppContainer>
         </StyledUl>
       </IconsWrapper>
       <Spacer.Column numberOfSpaces={4} />
-      {shareContent ? (
+      {!!shareContent && (
         <WebShareModal
           visible={shareOfferModalVisible}
           headerTitle="Partager l’offre"
           shareContent={shareContent}
           dismissModal={hideShareOfferModal}
         />
-      ) : null}
+      )}
     </React.Fragment>
   )
 }

@@ -1,12 +1,15 @@
 import React from 'react'
+import { Linking } from 'react-native'
 import { ReactTestInstance } from 'react-test-renderer'
 
 import { VenueBody } from 'features/venue/components/VenueBody/VenueBody'
 import { venueResponseSnap } from 'features/venue/fixtures/venueResponseSnap'
 import { analytics } from 'libs/analytics'
-import { act, fireEvent, render } from 'tests/utils'
+import { act, fireEvent, render, screen } from 'tests/utils'
+import { Network } from 'ui/components/ShareMessagingApp'
 
 const venueId = venueResponseSnap.id
+const canOpenURLSpy = jest.spyOn(Linking, 'canOpenURL')
 
 jest.mock('react-query')
 
@@ -28,43 +31,58 @@ describe('<VenueBody /> - Analytics', () => {
     jest.useRealTimers()
   })
 
-  const trigger = (component: ReactTestInstance) => {
-    act(() => {
+  const trigger = async (component: ReactTestInstance) => {
+    await act(async () => {
       fireEvent.press(component)
       jest.runAllTimers()
     })
   }
 
-  it('should log ConsultWithdrawalModalities once when opening accessibility modalities', () => {
-    const { getByText } = renderVenueBody()
+  it('should log ConsultWithdrawalModalities once when opening accessibility modalities', async () => {
+    renderVenueBody()
 
-    trigger(getByText('Accessibilité'))
+    await trigger(screen.getByText('Accessibilité'))
     expect(analytics.logConsultAccessibility).toHaveBeenCalledTimes(1)
     expect(analytics.logConsultAccessibility).toHaveBeenCalledWith({ venueId })
 
-    trigger(getByText('Accessibilité'))
-    trigger(getByText('Accessibilité'))
+    await trigger(screen.getByText('Accessibilité'))
+    await trigger(screen.getByText('Accessibilité'))
     expect(analytics.logConsultAccessibility).toHaveBeenCalledTimes(1)
   })
 
-  it('should log ConsultWithdrawalModalities once when opening withdrawal modalities', () => {
-    const { getByText } = renderVenueBody()
+  it('should log ConsultWithdrawalModalities once when opening withdrawal modalities', async () => {
+    renderVenueBody()
 
-    trigger(getByText('Modalités de retrait'))
+    await trigger(screen.getByText('Modalités de retrait'))
     expect(analytics.logConsultWithdrawal).toHaveBeenCalledTimes(1)
     expect(analytics.logConsultWithdrawal).toHaveBeenCalledWith({ venueId })
 
-    trigger(getByText('Modalités de retrait'))
-    trigger(getByText('Modalités de retrait'))
+    await trigger(screen.getByText('Modalités de retrait'))
+    await trigger(screen.getByText('Modalités de retrait'))
     expect(analytics.logConsultWithdrawal).toHaveBeenCalledTimes(1)
   })
 
-  it('should log ConsultLocationItinerary when opening itinerary', () => {
-    const wrapper = renderVenueBody()
-    act(() => {
-      fireEvent.press(wrapper.getByText('Voir l’itinéraire'))
+  it('should log ConsultLocationItinerary when opening itinerary', async () => {
+    renderVenueBody()
+    await act(async () => {
+      fireEvent.press(screen.getByText('Voir l’itinéraire'))
     })
     expect(analytics.logConsultItinerary).toHaveBeenCalledWith({ venueId, from: 'venue' })
+  })
+})
+
+it('should log when the user shares the offer on a certain medium', async () => {
+  canOpenURLSpy.mockResolvedValueOnce(true)
+  renderVenueBody()
+
+  const socialMediumButton = await screen.findByText(`Envoyer sur ${[Network.instagram]}`)
+  fireEvent.press(socialMediumButton)
+
+  expect(analytics.logShare).toHaveBeenNthCalledWith(1, {
+    type: 'Venue',
+    from: 'venue',
+    id: venueId,
+    social: Network.instagram,
   })
 })
 

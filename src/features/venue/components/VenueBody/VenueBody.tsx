@@ -5,6 +5,7 @@ import styled from 'styled-components/native'
 import { useVenue } from 'features/venue/api/useVenue'
 import { useVenueOffers } from 'features/venue/api/useVenueOffers'
 import { VenueIconCaptions } from 'features/venue/components/VenueIconCaptions/VenueIconCaptions'
+import { VenueMessagingApps } from 'features/venue/components/VenueMessagingApps/VenueMessagingApps'
 import { VenueOffers } from 'features/venue/components/VenueOffers/VenueOffers'
 import { VenuePartialAccordionDescription } from 'features/venue/components/VenuePartialAccordionDescription/VenuePartialAccordionDescription'
 import { formatFullAddress } from 'libs/address/useFormatFullAddress'
@@ -129,6 +130,10 @@ export const VenueBody: FunctionComponent<Props> = ({ venueId, onScroll }) => {
           address={venueAddress}
           locationCoordinates={{ latitude, longitude }}
         />
+      </SectionWithDivider>
+
+      <SectionWithDivider visible margin>
+        <VenueMessagingApps venueId={venueId} />
       </SectionWithDivider>
 
       {/* Modalités de retrait */}

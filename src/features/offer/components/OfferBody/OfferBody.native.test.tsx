@@ -12,7 +12,6 @@ import { mockDigitalOffer, mockOffer } from 'features/bookOffer/fixtures/offer'
 import * as ReportedOffersAPI from 'features/offer/api/useReportedOffers'
 import { OfferBody } from 'features/offer/components/OfferBody/OfferBody'
 import { VenueListItem } from 'features/offer/components/VenueSelectionList/VenueSelectionList'
-import * as GetInstalledAppsAPI from 'features/offer/helpers/getInstalledApps/getInstalledApps'
 import { getOfferUrl } from 'features/share/helpers/getOfferUrl'
 import { beneficiaryUser, nonBeneficiaryUser } from 'fixtures/user'
 import {
@@ -20,7 +19,6 @@ import {
   moreHitsForSimilarOffersPlaylist,
 } from 'libs/algolia/__mocks__/mockedAlgoliaResponse'
 import * as useFeatureFlag from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
-import { eventMonitoring } from 'libs/monitoring'
 import { NetInfoWrapper } from 'libs/network/NetInfoWrapper'
 import { placeholderData } from 'libs/subcategories/placeholderData'
 import { Offer } from 'shared/offer/types'
@@ -76,7 +74,6 @@ jest.mock('libs/subcategories/useSubcategories', () => ({
   }),
 }))
 
-const getInstalledAppsMock = jest.spyOn(GetInstalledAppsAPI, 'getInstalledApps')
 const canOpenURLSpy = jest.spyOn(Linking, 'canOpenURL')
 const mockShareSingle = jest.spyOn(Share, 'shareSingle')
 const mockNativeShare = jest.spyOn(NativeShare, 'share')
@@ -149,7 +146,7 @@ const useFeatureFlagSpy = jest.spyOn(useFeatureFlag, 'useFeatureFlag').mockRetur
 
 const onScroll = jest.fn()
 
-const offerId = 1
+const offerId = mockOffer.id
 
 describe('<OfferBody />', () => {
   beforeAll(() => {
@@ -225,7 +222,7 @@ describe('<OfferBody />', () => {
         await fireEvent.press(screen.queryAllByText('La nuit des temps')[0])
         expect(push).toHaveBeenCalledWith('Offer', {
           from: 'offer',
-          fromOfferId: 1,
+          fromOfferId: offerId,
           id: 102280,
         })
       })
@@ -242,7 +239,7 @@ describe('<OfferBody />', () => {
         await fireEvent.press(screen.queryAllByText('La nuit des temps')[0])
         expect(push).toHaveBeenCalledWith('Offer', {
           from: 'offer',
-          fromOfferId: 1,
+          fromOfferId: offerId,
           id: 102280,
         })
       })
@@ -250,38 +247,6 @@ describe('<OfferBody />', () => {
   })
 
   describe('share on social media', () => {
-    it('should hide social medium when not installed', async () => {
-      canOpenURLSpy.mockResolvedValueOnce(false)
-      renderOfferBody()
-
-      await waitFor(() => {
-        expect(screen.queryByText(`Envoyer sur ${[Network.instagram]}`)).toBeNull()
-      })
-    })
-
-    it('should display social medium when installed', async () => {
-      canOpenURLSpy.mockResolvedValueOnce(true)
-      renderOfferBody()
-
-      await waitFor(() => {
-        expect(screen.queryByText(`Envoyer sur ${[Network.instagram]}`)).toBeTruthy()
-      })
-    })
-
-    it(`should not display more than 3 social media apps`, async () => {
-      canOpenURLSpy
-        .mockResolvedValueOnce(true)
-        .mockResolvedValueOnce(true)
-        .mockResolvedValueOnce(true)
-        .mockResolvedValueOnce(true)
-
-      renderOfferBody()
-
-      await waitFor(() => {
-        expect(screen.queryAllByText(/Envoyer sur/)).toHaveLength(3)
-      })
-    })
-
     it.each([true, false])(`should always display "Plus d’options" button`, async (hasSocial) => {
       canOpenURLSpy.mockResolvedValueOnce(hasSocial)
       renderOfferBody()
@@ -312,22 +277,6 @@ describe('<OfferBody />', () => {
       })
     })
 
-    it('should open social medium on share button press with offer url even when web url is defined', async () => {
-      canOpenURLSpy.mockResolvedValueOnce(true).mockResolvedValueOnce(true) // First mock for Instagram, second for Whatsapp
-      renderOfferBody()
-
-      await act(async () => {
-        const socialMediumButton = await screen.findByText(`Envoyer sur ${[Network.whatsapp]}`)
-        fireEvent.press(socialMediumButton)
-      })
-
-      expect(mockShareSingle).toHaveBeenCalledWith({
-        social: Social.Whatsapp,
-        message: `Retrouve "${mockOffer.name}" chez "${mockOffer.venue.name}" sur le pass Culture`,
-        url: getOfferUrl(offerId),
-      })
-    })
-
     it('should open native share modal on "Plus d’options" press', async () => {
       renderOfferBody()
 
@@ -337,30 +286,6 @@ describe('<OfferBody />', () => {
       })
 
       expect(mockNativeShare).toHaveBeenCalledTimes(1)
-    })
-
-    it('should log to sentry when an error occurs during installed apps check', async () => {
-      const error = new Error('error message')
-      getInstalledAppsMock.mockRejectedValueOnce(error)
-      renderOfferBody()
-
-      await screen.findByText('Plus d’options')
-
-      expect(eventMonitoring.captureException).toHaveBeenCalledWith(`Installed apps: ${error}`)
-    })
-
-    it('should log to sentry when an error occurs when clicking on messaging app', async () => {
-      const error = new Error('error message')
-      mockShareSingle.mockRejectedValueOnce(error)
-      canOpenURLSpy.mockResolvedValueOnce(true)
-      renderOfferBody()
-
-      await act(async () => {
-        const socialMediumButton = await screen.findByText(`Envoyer sur ${[Network.instagram]}`)
-        fireEvent.press(socialMediumButton)
-      })
-
-      expect(eventMonitoring.captureException).toHaveBeenCalledWith(`MessagingApp click: ${error}`)
     })
   })
 
