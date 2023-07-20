@@ -27,8 +27,8 @@ const UnmemoizedModule = ({
   item,
   index,
   homeEntryId,
-  data,
   videoModuleId,
+  data,
 }: {
   item: HomepageModule
   index: number
@@ -82,14 +82,6 @@ const UnmemoizedModule = ({
     )
   }
 
-  if (isHighlightOfferModule(item) && enableNewExclusivityBlock) {
-    return <HighlightOfferModule {...item} />
-  }
-
-  if (isThematicHighlightModule(item)) {
-    return <ThematicHighlightModule {...item} homeEntryId={homeEntryId} index={index} />
-  }
-
   if (isVideoModule(item)) {
     return (
       <VideoModule
@@ -99,6 +91,14 @@ const UnmemoizedModule = ({
         shouldShowModal={item.id === videoModuleId}
       />
     )
+  }
+
+  if (isHighlightOfferModule(item) && enableNewExclusivityBlock) {
+    return <HighlightOfferModule {...item} />
+  }
+
+  if (isThematicHighlightModule(item)) {
+    return <ThematicHighlightModule {...item} homeEntryId={homeEntryId} index={index} />
   }
 
   const modules = {

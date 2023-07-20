@@ -10,6 +10,7 @@ import {
   formattedCategoryListModule,
   formattedRecommendedOffersModule,
 } from 'features/home/fixtures/homepage.fixture'
+import { videoModuleFixture } from 'features/home/fixtures/videoModule.fixture'
 import { HomepageModule } from 'features/home/types'
 import { offerResponseSnap } from 'features/offer/fixtures/offerResponse'
 import { SimilarOffersResponse } from 'features/offer/types'
@@ -138,6 +139,15 @@ describe('<HomeModule />', () => {
     await act(async () => {})
 
     expect(screen.getByText('Tes évènements en ligne')).toBeTruthy()
+  })
+
+  // TODO(PC-23671): Fix this VideoModule test
+  it.skip('should display VideoModule', async () => {
+    renderHomeModule(videoModuleFixture)
+
+    await act(async () => {})
+
+    expect(screen.getByText('Découvre Lujipeka')).toBeTruthy()
   })
 })
 
