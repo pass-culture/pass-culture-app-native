@@ -294,7 +294,7 @@ exports[`<AccountSecurity/> should match snapshot when no token 1`] = `
     }
   />
   <View
-    accessibilityLabel="Modifier mon mot de passe"
+    accessibilityLabel="Suspendre mon compte"
     accessible={true}
     collapsable={false}
     focusable={true}
@@ -323,70 +323,6 @@ exports[`<AccountSecurity/> should match snapshot when no token 1`] = `
         "width": "100%",
       }
     }
-    testID="Modifier mon mot de passe"
-  >
-    <Text
-      adjustsFontSizeToFit={false}
-      numberOfLines={1}
-      style={
-        Array [
-          Object {
-            "color": "#ffffff",
-            "fontFamily": "Montserrat-Bold",
-            "fontSize": 15,
-            "lineHeight": 20,
-            "marginLeft": 0,
-            "maxWidth": "100%",
-          },
-        ]
-      }
-    >
-      Modifier mon mot de passe
-    </Text>
-  </View>
-  <View
-    numberOfSpaces={4}
-    style={
-      Array [
-        Object {
-          "height": 16,
-        },
-      ]
-    }
-  />
-  <View
-    accessibilityLabel="Suspendre mon compte"
-    accessible={true}
-    collapsable={false}
-    focusable={true}
-    onClick={[Function]}
-    onResponderGrant={[Function]}
-    onResponderMove={[Function]}
-    onResponderRelease={[Function]}
-    onResponderTerminate={[Function]}
-    onResponderTerminationRequest={[Function]}
-    onStartShouldSetResponder={[Function]}
-    style={
-      Object {
-        "alignItems": "center",
-        "backgroundColor": "transparent",
-        "borderColor": "#eb0055",
-        "borderRadius": 24,
-        "borderStyle": "solid",
-        "borderWidth": 2,
-        "flexDirection": "row",
-        "justifyContent": "center",
-        "maxWidth": 500,
-        "minHeight": 40,
-        "opacity": 1,
-        "paddingBottom": 2,
-        "paddingLeft": 20,
-        "paddingRight": 20,
-        "paddingTop": 2,
-        "userSelect": "auto",
-        "width": "100%",
-      }
-    }
     testID="Suspendre mon compte"
   >
     <Text
@@ -395,7 +331,7 @@ exports[`<AccountSecurity/> should match snapshot when no token 1`] = `
       style={
         Array [
           Object {
-            "color": "#eb0055",
+            "color": "#ffffff",
             "fontFamily": "Montserrat-Bold",
             "fontSize": 15,
             "lineHeight": 20,
@@ -798,7 +734,7 @@ exports[`<AccountSecurity/> should match snapshot with valid token 1`] = `
     }
   />
   <View
-    accessibilityLabel="Modifier mon mot de passe"
+    accessibilityLabel="Suspendre mon compte"
     accessible={true}
     collapsable={false}
     focusable={true}
@@ -827,70 +763,6 @@ exports[`<AccountSecurity/> should match snapshot with valid token 1`] = `
         "width": "100%",
       }
     }
-    testID="Modifier mon mot de passe"
-  >
-    <Text
-      adjustsFontSizeToFit={false}
-      numberOfLines={1}
-      style={
-        Array [
-          Object {
-            "color": "#ffffff",
-            "fontFamily": "Montserrat-Bold",
-            "fontSize": 15,
-            "lineHeight": 20,
-            "marginLeft": 0,
-            "maxWidth": "100%",
-          },
-        ]
-      }
-    >
-      Modifier mon mot de passe
-    </Text>
-  </View>
-  <View
-    numberOfSpaces={4}
-    style={
-      Array [
-        Object {
-          "height": 16,
-        },
-      ]
-    }
-  />
-  <View
-    accessibilityLabel="Suspendre mon compte"
-    accessible={true}
-    collapsable={false}
-    focusable={true}
-    onClick={[Function]}
-    onResponderGrant={[Function]}
-    onResponderMove={[Function]}
-    onResponderRelease={[Function]}
-    onResponderTerminate={[Function]}
-    onResponderTerminationRequest={[Function]}
-    onStartShouldSetResponder={[Function]}
-    style={
-      Object {
-        "alignItems": "center",
-        "backgroundColor": "transparent",
-        "borderColor": "#eb0055",
-        "borderRadius": 24,
-        "borderStyle": "solid",
-        "borderWidth": 2,
-        "flexDirection": "row",
-        "justifyContent": "center",
-        "maxWidth": 500,
-        "minHeight": 40,
-        "opacity": 1,
-        "paddingBottom": 2,
-        "paddingLeft": 20,
-        "paddingRight": 20,
-        "paddingTop": 2,
-        "userSelect": "auto",
-        "width": "100%",
-      }
-    }
     testID="Suspendre mon compte"
   >
     <Text
@@ -899,7 +771,7 @@ exports[`<AccountSecurity/> should match snapshot with valid token 1`] = `
       style={
         Array [
           Object {
-            "color": "#eb0055",
+            "color": "#ffffff",
             "fontFamily": "Montserrat-Bold",
             "fontSize": 15,
             "lineHeight": 20,
