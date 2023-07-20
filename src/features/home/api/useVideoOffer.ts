@@ -16,6 +16,16 @@ import { Offer } from 'shared/offer/types'
 const isSearchQueryParameters = (parameter: unknown): parameter is SearchQueryParameters =>
   typeof parameter === 'object' && parameter !== null
 
+enum QueryMode {
+  OFFER_IDS = 'OFFER_IDS',
+  MULTIPLE_OFFERS = 'MULTIPLE_OFFERS',
+}
+
+const selectQueryMode = (offerIds: string[]) => {
+  if (offerIds && offerIds?.length > 0) return QueryMode.OFFER_IDS
+  return QueryMode.MULTIPLE_OFFERS
+}
+
 export const useVideoOffers = (
   offersModuleParameters: OffersModuleParameters,
   id: string,
@@ -30,7 +40,7 @@ export const useVideoOffers = (
   const partialAdaptedParameters = adaptPlaylistParameters(offersModuleParameters)
   const adaptedParameters = [partialAdaptedParameters].filter(isSearchQueryParameters)
 
-  const hasOfferIds = offerIds && offerIds.length > 0
+  const queryMode = selectQueryMode(offerIds, eanList)
 
   const offersByIdsQuery = async () => {
     const result = await fetchOfferHits({
@@ -50,10 +60,14 @@ export const useVideoOffers = (
 
     return result.hits
   }
+  const queryByQueryMode = {
+    [QueryMode.OFFER_IDS]: offersByIdsQuery,
+    [QueryMode.MULTIPLE_OFFERS]: multipleOffersQuery,
+  }
 
   const { data, refetch } = useQuery({
     queryKey: [QueryKeys.VIDEO_OFFER, id],
-    queryFn: hasOfferIds ? offersByIdsQuery : multipleOffersQuery,
+    queryFn: queryByQueryMode[queryMode],
     enabled: !!netInfo.isConnected,
   })
 
