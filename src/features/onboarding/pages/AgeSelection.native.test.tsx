@@ -1,17 +1,14 @@
 import React from 'react'
 
 import { navigate } from '__mocks__/@react-navigation/native'
-import * as NavigationHelpers from 'features/navigation/helpers/openUrl'
 import { AgeSelection } from 'features/onboarding/pages/AgeSelection'
 import { analytics } from 'libs/analytics'
-import { env } from 'libs/environment/__mocks__/envFixtures'
 import { storage } from 'libs/storage'
 import { fireEvent, render, waitFor } from 'tests/utils'
 
 const AGES = [15, 16, 17, 18]
 
 jest.mock('features/navigation/navigationRef')
-const openUrl = jest.spyOn(NavigationHelpers, 'openUrl')
 
 describe('AgeSelection', () => {
   beforeEach(async () => {
@@ -47,16 +44,6 @@ describe('AgeSelection', () => {
     })
   })
 
-  it('should navigate to FAQ when pressing "Je suis un parent"', async () => {
-    const { getByTestId } = render(<AgeSelection />)
-    const button = getByTestId('Je suis un parent')
-
-    fireEvent.press(button)
-    await waitFor(() => {
-      expect(openUrl).toHaveBeenCalledWith(env.FAQ_LINK_LEGAL_GUARDIAN, undefined, true)
-    })
-  })
-
   it.each(AGES)('should log analytics with params age=%s when pressing "j’ai %s ans"', (age) => {
     const { getByText } = render(<AgeSelection />)
     const button = getByText(`${age} ans`)
@@ -71,14 +58,6 @@ describe('AgeSelection', () => {
 
     fireEvent.press(button)
     expect(analytics.logSelectAge).toHaveBeenCalledWith('other')
-  })
-
-  it('should log analytics when pressing "Je suis un parent"', () => {
-    const { getByTestId } = render(<AgeSelection />)
-    const button = getByTestId('Je suis un parent')
-
-    fireEvent.press(button)
-    expect(analytics.logGoToParentsFAQ).toHaveBeenCalledWith('ageselection')
   })
 
   it.each(AGES)(

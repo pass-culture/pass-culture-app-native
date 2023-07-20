@@ -10,16 +10,9 @@ import { useOnboardingContext } from 'features/onboarding/context/OnboardingWrap
 import { OnboardingPage } from 'features/onboarding/pages/OnboardingPage'
 import { NonEligible } from 'features/onboarding/types'
 import { analytics } from 'libs/analytics'
-import { env } from 'libs/environment/env'
 import { storage } from 'libs/storage'
-import { ButtonTertiarySecondary } from 'ui/components/buttons/ButtonTertiarySecondary'
-import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouchableLink'
-import { InfoPlain } from 'ui/svg/icons/InfoPlain'
 import { Spacer, Typo } from 'ui/theme'
 import { getNoHeadingAttrs } from 'ui/theme/typographyAttrs/getNoHeadingAttrs'
-
-const externalUrl = { url: env.FAQ_LINK_LEGAL_GUARDIAN }
-const logGoToParentsFAQ = () => analytics.logGoToParentsFAQ('ageselectionother')
 
 export const AgeSelectionOther: FunctionComponent = () => {
   const { showNonEligibleModal } = useOnboardingContext()
@@ -64,16 +57,6 @@ export const AgeSelectionOther: FunctionComponent = () => {
           j’ai <Title3Text>plus de 18 ans</Title3Text>
         </Title4Text>
       </AgeButton>
-      <Spacer.Column numberOfSpaces={4} />
-      <ExternalTouchableLink
-        key={1}
-        as={ButtonTertiarySecondary}
-        wording="Je suis un parent"
-        icon={InfoPlain}
-        onBeforeNavigate={logGoToParentsFAQ}
-        externalNav={externalUrl}
-        justifyContent="flex-start"
-      />
     </OnboardingPage>
   )
 }

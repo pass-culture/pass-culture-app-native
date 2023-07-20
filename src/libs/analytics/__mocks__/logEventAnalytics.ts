@@ -70,7 +70,6 @@ export const logEventAnalytics: typeof actualLogEventAnalytics = {
   logExclusivityBlockClicked: jest.fn(),
   logFavoriteListButtonClicked: jest.fn(),
   logFavoriteListDisplayed: jest.fn(),
-  logGoToParentsFAQ: jest.fn(),
   logGoToProfil: jest.fn(),
   logHasAcceptedAllCookies: jest.fn(),
   logHasActivateGeolocFromTutorial: jest.fn(),
