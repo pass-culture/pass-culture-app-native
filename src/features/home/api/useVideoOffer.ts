@@ -21,7 +21,7 @@ enum QueryMode {
   MULTIPLE_OFFERS = 'MULTIPLE_OFFERS',
 }
 
-const selectQueryMode = (offerIds: string[]) => {
+const selectQueryMode = (offerIds?: string[]) => {
   if (offerIds && offerIds?.length > 0) return QueryMode.OFFER_IDS
   return QueryMode.MULTIPLE_OFFERS
 }
@@ -29,7 +29,7 @@ const selectQueryMode = (offerIds: string[]) => {
 export const useVideoOffers = (
   offersModuleParameters: OffersModuleParameters,
   id: string,
-  offerIds: string[]
+  offerIds?: string[],
 ) => {
   const adaptPlaylistParameters = useAdaptOffersPlaylistParameters()
   const { position } = useHomePosition()
@@ -43,6 +43,8 @@ export const useVideoOffers = (
   const queryMode = selectQueryMode(offerIds, eanList)
 
   const offersByIdsQuery = async () => {
+    if (!offerIds) return []
+
     const result = await fetchOfferHits({
       objectIds: offerIds,
       isUserUnderage,

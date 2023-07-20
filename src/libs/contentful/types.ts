@@ -184,7 +184,7 @@ type VideoFields = {
   offerTitle: string
   videoDescription: string
   videoPublicationDate: string
-  offerIds: string[]
+  offerIds?: string[]
 }
 
 export type Cover = Entry<CoverFields, ContentTypes.INFORMATION>
