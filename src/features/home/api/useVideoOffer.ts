@@ -8,6 +8,7 @@ import { SearchQueryParameters } from 'libs/algolia'
 import { fetchMultipleOffers } from 'libs/algolia/fetchAlgolia/fetchMultipleOffers/fetchMultipleOffers'
 import { useAdaptOffersPlaylistParameters } from 'libs/algolia/fetchAlgolia/fetchMultipleOffers/helpers/useAdaptOffersPlaylistParameters'
 import { fetchOfferHits } from 'libs/algolia/fetchAlgolia/fetchOfferHits'
+import { fetchOffersByEan } from 'libs/algolia/fetchAlgolia/fetchOffersByEan'
 import { useTransformOfferHits } from 'libs/algolia/fetchAlgolia/transformOfferHit'
 import { useNetInfoContext } from 'libs/network/NetInfoWrapper'
 import { QueryKeys } from 'libs/queryKeys'
@@ -19,10 +20,12 @@ const isSearchQueryParameters = (parameter: unknown): parameter is SearchQueryPa
 enum QueryMode {
   OFFER_IDS = 'OFFER_IDS',
   MULTIPLE_OFFERS = 'MULTIPLE_OFFERS',
+  EAN = 'EAN',
 }
 
-const selectQueryMode = (offerIds?: string[]) => {
+const selectQueryMode = (offerIds?: string[], eanList?: string[]) => {
   if (offerIds && offerIds?.length > 0) return QueryMode.OFFER_IDS
+  if (eanList && eanList?.length > 0) return QueryMode.EAN
   return QueryMode.MULTIPLE_OFFERS
 }
 
@@ -30,6 +33,7 @@ export const useVideoOffers = (
   offersModuleParameters: OffersModuleParameters,
   id: string,
   offerIds?: string[],
+  eanList?: string[]
 ) => {
   const adaptPlaylistParameters = useAdaptOffersPlaylistParameters()
   const { position } = useHomePosition()
@@ -53,6 +57,15 @@ export const useVideoOffers = (
     return result
   }
 
+  const eanQuery = async () => {
+    if (!eanList) return []
+
+    return await fetchOffersByEan({
+      eanList,
+      isUserUnderage,
+    })
+  }
+
   const multipleOffersQuery = async () => {
     const result = await fetchMultipleOffers({
       paramsList: adaptedParameters,
@@ -64,6 +77,7 @@ export const useVideoOffers = (
   }
   const queryByQueryMode = {
     [QueryMode.OFFER_IDS]: offersByIdsQuery,
+    [QueryMode.EAN]: eanQuery,
     [QueryMode.MULTIPLE_OFFERS]: multipleOffersQuery,
   }
 

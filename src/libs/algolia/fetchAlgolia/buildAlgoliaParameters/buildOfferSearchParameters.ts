@@ -9,6 +9,7 @@ import { buildNumericFilters } from './buildNumericFilters'
 type Parameters = SearchQueryParameters & {
   objectIds?: string[]
   excludedObjectIds?: string[]
+  eanList?: string[]
 }
 
 export const buildOfferSearchParameters = (
@@ -39,11 +40,13 @@ export const buildOfferSearchParameters = (
     maxPossiblePrice = '',
     isOnline = undefined,
     minBookingsThreshold = 0,
+    eanList = [],
   }: Parameters,
   userLocation: Position,
   isUserUnderage: boolean
 ) => ({
   ...buildFacetFilters({
+    eanList,
     isUserUnderage,
     locationFilter,
     objectIds,
