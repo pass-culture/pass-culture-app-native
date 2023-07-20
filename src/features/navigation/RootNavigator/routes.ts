@@ -12,8 +12,8 @@ import { SignupForm } from 'features/auth/pages/signup/SignupForm'
 import { VerifyEligibility } from 'features/auth/pages/signup/VerifyEligiblity/VerifyEligibility'
 import { AccountReactivationSuccess } from 'features/auth/pages/suspendedAccount/AccountReactivationSuccess/AccountReactivationSuccess'
 import { FraudulentSuspendedAccount } from 'features/auth/pages/suspendedAccount/FraudulentSuspendedAccount/FraudulentSuspendedAccount'
-import { SuspendedAccount } from 'features/auth/pages/suspendedAccount/SuspendedAccount/SuspendedAccount'
 import { SuspensionScreen } from 'features/auth/pages/suspendedAccount/SuspensionScreen/SuspensionScreen'
+import { UserRequestedSuspendedAccount } from 'features/auth/pages/suspendedAccount/UserRequestedSuspendedAccount/UserRequestedSuspendedAccount'
 import { EighteenBirthday } from 'features/birthdayNotifications/pages/EighteenBirthday'
 import { RecreditBirthdayNotification } from 'features/birthdayNotifications/pages/RecreditBirthdayNotification'
 import { BookingDetails } from 'features/bookings/pages/BookingDetails/BookingDetails'
@@ -220,8 +220,8 @@ export const routes: Route[] = [
     options: { title: 'Compte désactivé' },
   },
   {
-    name: 'SuspendedAccount',
-    component: SuspendedAccount,
+    name: 'UserRequestedSuspendedAccount',
+    component: UserRequestedSuspendedAccount,
     path: 'compte-suspendu-a-la-demande',
     options: { title: 'Compte désactivé' },
   },

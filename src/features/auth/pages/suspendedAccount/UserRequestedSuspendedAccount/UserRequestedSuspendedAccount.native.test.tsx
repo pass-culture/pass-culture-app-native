@@ -9,7 +9,7 @@ import { fireEvent, render, screen, waitFor, useMutationFactory } from 'tests/ut
 import { SNACK_BAR_TIME_OUT } from 'ui/components/snackBar/SnackBarContext'
 import { SnackBarHelperSettings } from 'ui/components/snackBar/types'
 
-import { SuspendedAccount } from './SuspendedAccount'
+import { UserRequestedSuspendedAccount } from './UserRequestedSuspendedAccount'
 
 jest.mock('features/auth/api/useAccountSuspensionDate', () => ({
   useAccountSuspensionDate: jest.fn(() => ({ data: { date: '2022-05-11T10:29:25.332786Z' } })),
@@ -36,10 +36,10 @@ const useMutationCallbacks: { onError: (error: unknown) => void; onSuccess: () =
   onError: () => {},
 }
 
-describe('<SuspendedAccount />', () => {
+describe('<UserRequestedSuspendedAccount />', () => {
   const queryClient = useQueryClient()
   it('should match snapshot', () => {
-    render(<SuspendedAccount />)
+    render(<UserRequestedSuspendedAccount />)
 
     expect(screen).toMatchSnapshot()
   })
@@ -47,11 +47,11 @@ describe('<SuspendedAccount />', () => {
   it('should log analytics and redirect to reactivation screen on success', async () => {
     // @ts-expect-error ts(2345)
     mockedUseMutation.mockImplementationOnce(useMutationFactory(useMutationCallbacks))
-    render(<SuspendedAccount />)
+    render(<UserRequestedSuspendedAccount />)
 
     fireEvent.press(screen.getByText('Réactiver mon compte'))
 
-    expect(analytics.logAccountReactivation).toBeCalledWith('suspendedaccount')
+    expect(analytics.logAccountReactivation).toBeCalledWith('userrequestedsuspendedaccount')
 
     useMutationCallbacks.onSuccess()
     await waitFor(() => {
@@ -65,11 +65,11 @@ describe('<SuspendedAccount />', () => {
   it('should log analytics and show error snackbar on error', async () => {
     // @ts-expect-error ts(2345)
     mockedUseMutation.mockImplementationOnce(useMutationFactory(useMutationCallbacks))
-    render(<SuspendedAccount />)
+    render(<UserRequestedSuspendedAccount />)
 
     fireEvent.press(screen.getByText('Réactiver mon compte'))
 
-    expect(analytics.logAccountReactivation).toBeCalledWith('suspendedaccount')
+    expect(analytics.logAccountReactivation).toBeCalledWith('userrequestedsuspendedaccount')
 
     const response = {
       content: { message: 'Une erreur s’est produite pendant la réactivation.' },
@@ -85,7 +85,7 @@ describe('<SuspendedAccount />', () => {
   })
 
   it('should go to home page when clicking on go to home button', async () => {
-    render(<SuspendedAccount />)
+    render(<UserRequestedSuspendedAccount />)
 
     const homeButton = screen.getByText('Retourner à l’accueil')
     fireEvent.press(homeButton)

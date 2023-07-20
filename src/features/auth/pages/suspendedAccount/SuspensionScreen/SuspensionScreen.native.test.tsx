@@ -30,7 +30,7 @@ function mockUseCurrentRoute(name: string) {
 }
 
 describe('<SuspensionsScreen />', () => {
-  it('should display SuspendedAccount component if account is suspended upon user request', () => {
+  it('should display UserRequestedSuspendedAccount component if account is suspended upon user request', () => {
     mockSuspensionStatus.status = AccountState.SUSPENDED_UPON_USER_REQUEST
     render(<SuspensionScreen />)
 

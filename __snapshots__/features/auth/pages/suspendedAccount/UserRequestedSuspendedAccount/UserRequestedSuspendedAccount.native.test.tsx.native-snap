@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<SuspendedAccount /> should match snapshot 1`] = `
+exports[`<UserRequestedSuspendedAccount /> should match snapshot 1`] = `
 <View
   style={
     Array [
