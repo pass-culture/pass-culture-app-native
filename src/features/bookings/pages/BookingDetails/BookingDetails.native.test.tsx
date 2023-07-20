@@ -373,6 +373,7 @@ describe('BookingDetails', () => {
             offer: { ...mockedBooking.stock.offer, isDigital: false },
             price: 400,
             priceCategoryLabel: 'Cat 4',
+            features: ['VOSTFR', '3D', 'IMAX'],
           },
         }
 
