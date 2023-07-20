@@ -140,13 +140,14 @@ describe('<BookingEventChoices />', () => {
           cancellationLimitDatetime: new Date('2021-02-01T12:14:57.081907'),
           isBookable: true,
           price: 2400,
+          features: [],
         },
       ],
     }))
 
     render(<BookingEventChoices stocks={[]} />)
 
-    const hourBloc = screen.getByTestId('HourChoice1-hour')
+    const hourBloc = screen.getByTestId('HourChoice1-label')
     fireEvent.press(hourBloc)
 
     expect(screen.queryByTestId('DuoStep')).toBeNull()

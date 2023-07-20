@@ -20,7 +20,7 @@ import { analytics } from 'libs/analytics'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { Form } from 'ui/components/Form'
 import { Li } from 'ui/components/Li'
-import { RadioSelector, RadioSelectorType } from 'ui/components/radioSelector/RadioSelector'
+import { RadioSelector } from 'ui/components/radioSelector/RadioSelector'
 import { VerticalUl } from 'ui/components/Ul'
 import { Spacer } from 'ui/theme'
 
@@ -75,11 +75,7 @@ export const SetSchoolType = () => {
                   return (
                     <Li key={schoolTypeId}>
                       <RadioSelector
-                        type={
-                          schoolTypeId === selectedSchoolTypeId
-                            ? RadioSelectorType.ACTIVE
-                            : RadioSelectorType.DEFAULT
-                        }
+                        checked={schoolTypeId === selectedSchoolTypeId}
                         label={label as string}
                         description={description}
                         onPress={() => setSelectedSchoolTypeId(schoolTypeId)}
