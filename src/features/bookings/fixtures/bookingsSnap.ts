@@ -23,6 +23,7 @@ export const bookingsSnap: BookingsResponse = {
         price: 400,
         priceCategoryLabel: 'Cat 4',
         beginningDatetime: '2021-03-14T20:00:00',
+        features: ['VOSTFR', '3D', 'IMAX'],
         offer: {
           id: 147874,
           name: 'Avez-vous déjà vu\u00a0?',
@@ -65,6 +66,7 @@ export const bookingsSnap: BookingsResponse = {
         beginningDatetime: '2021-03-15T20:00:00',
         price: 400,
         priceCategoryLabel: 'Cat 4',
+        features: ['VOSTFR', '3D', 'IMAX'],
         offer: {
           id: 147874,
           name: 'Avez-vous déjà vu\u00a0?',
@@ -107,6 +109,7 @@ export const bookingsSnap: BookingsResponse = {
         beginningDatetime: '2021-03-15T20:00:00',
         price: 400,
         priceCategoryLabel: 'Cat 4',
+        features: ['VOSTFR', '3D', 'IMAX'],
         offer: {
           id: 147874,
           name: 'Avez-vous déjà vu\u00a0?',

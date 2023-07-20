@@ -208,6 +208,11 @@ Array [
           "quantity": 10,
           "stock": Object {
             "beginningDatetime": "2021-03-14T20:00:00",
+            "features": Array [
+              "VOSTFR",
+              "3D",
+              "IMAX",
+            ],
             "id": 150230,
             "offer": Object {
               "extraData": null,
