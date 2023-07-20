@@ -14,14 +14,14 @@ const Template: ComponentStory<typeof DropDown> = (args) => <DropDown {...args} 
 export const Default = Template.bind({})
 Default.args = {
   label: 'Mois',
-  placeholder: 'MM',
+  placeholder: 'Mois',
   options: monthNames,
 }
 
 export const Error = Template.bind({})
 Error.args = {
   label: 'Mois',
-  placeholder: 'MM',
+  placeholder: 'Mois',
   options: monthNames,
   isError: true,
 }

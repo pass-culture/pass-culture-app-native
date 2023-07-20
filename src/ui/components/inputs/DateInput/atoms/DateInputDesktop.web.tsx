@@ -82,7 +82,7 @@ export function DateInputDesktop(props: DatePickerProps) {
       <DropDownContainer>
         <DropDown
           label="Mois"
-          placeholder="MM"
+          placeholder="Mois"
           options={optionGroups.months}
           onChange={onPartialDateChange('month')}
           noBorderRadiusRight
