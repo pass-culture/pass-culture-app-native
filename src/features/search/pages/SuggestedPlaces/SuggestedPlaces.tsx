@@ -14,7 +14,6 @@ import { Li } from 'ui/components/Li'
 import { TouchableOpacity } from 'ui/components/TouchableOpacity'
 import { VerticalUl } from 'ui/components/Ul'
 import { useArrowNavigationForRadioButton } from 'ui/hooks/useArrowNavigationForRadioButton'
-import { useSpaceBarAction } from 'ui/hooks/useSpaceBarAction'
 import { LocationBuilding as DefaultLocationBuilding } from 'ui/svg/icons/LocationBuilding'
 import { LocationPointerNotFilled as DefaultLocationPointerNotFilled } from 'ui/svg/icons/LocationPointerNotFilled'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
@@ -40,14 +39,13 @@ const MAXIMUM_RESULTS = 5
 const Hit: React.FC<{ hit: SuggestedPlaceOrVenue; onPress: () => void }> = ({ hit, onPress }) => {
   const Icon = isVenue(hit) ? () => <LocationBuilding /> : () => <BicolorLocationPointer />
   const containerRef = useRef(null)
-  const { onFocus, onBlur, isFocus } = useHandleFocus()
+  const { onFocus, onBlur } = useHandleFocus()
   useArrowNavigationForRadioButton(containerRef)
-  useSpaceBarAction(isFocus ? onPress : undefined)
 
   const accessibilityLabel = `${hit.label} ${hit.info}`
   return (
     <TouchableOpacity
-      accessibilityRole={AccessibilityRole.RADIO}
+      accessibilityRole={AccessibilityRole.BUTTON}
       onFocus={onFocus}
       onBlur={onBlur}
       onPress={onPress}

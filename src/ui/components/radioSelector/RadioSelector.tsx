@@ -10,9 +10,9 @@ import { getSpacing, Typo } from 'ui/theme'
 interface RadioSelectorProps {
   label: string
   onPress: VoidFunction
+  checked: boolean
   description?: string | null
   rightText?: string
-  checked?: boolean
   disabled?: boolean
   testID?: string
   accessibilityLabel?: string
