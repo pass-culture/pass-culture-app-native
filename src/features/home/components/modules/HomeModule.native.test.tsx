@@ -16,6 +16,7 @@ import { SimilarOffersResponse } from 'features/offer/types'
 import { mockedAlgoliaResponse } from 'libs/algolia/__mocks__/mockedAlgoliaResponse'
 import { env } from 'libs/environment'
 import * as useFeatureFlag from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
+import { GeoCoordinates, Position } from 'libs/geolocation'
 import { offersFixture } from 'shared/offer/offer.fixture'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { server } from 'tests/server'
@@ -32,6 +33,23 @@ const useFeatureFlagSpy = jest.spyOn(useFeatureFlag, 'useFeatureFlag')
 
 jest.mock('features/home/api/useHighlightOffer')
 const mockUseHighlightOffer = useHighlightOffer as jest.Mock
+const mockUseAuthContext = jest.fn().mockReturnValue({
+  user: undefined,
+  isLoggedIn: false,
+})
+
+jest.mock('features/auth/context/AuthContext', () => ({
+  useAuthContext: () => mockUseAuthContext(),
+}))
+
+const DEFAULT_POSITION: GeoCoordinates = { latitude: 2, longitude: 40 }
+const mockPosition: Position = DEFAULT_POSITION
+
+jest.mock('libs/geolocation/GeolocationWrapper', () => ({
+  useGeolocation: () => ({
+    userPosition: mockPosition,
+  }),
+}))
 
 jest.mock('features/home/api/useAlgoliaRecommendedHits', () => ({
   useAlgoliaRecommendedHits: jest.fn(() => mockedAlgoliaResponse.hits),
