@@ -158,11 +158,12 @@ export const Login: FunctionComponent<Props> = memo(function Login(props) {
   const onSubmit = useCallback(
     async (data: LoginFormData) => {
       if (!shouldDisableLoginButton) {
+        setErrorMessage('')
         Keyboard.dismiss()
         signIn({ identifier: data.email, password: data.password })
       }
     },
-    [shouldDisableLoginButton, signIn]
+    [shouldDisableLoginButton, signIn, setErrorMessage]
   )
 
   const onForgottenPasswordClick = useCallback(() => {

@@ -238,6 +238,7 @@ describe('<Login/>', () => {
     const emailInput = screen.getByPlaceholderText('tonadresse@email.com')
 
     fireEvent.changeText(emailInput, 'not_valid_email@gmail')
+    fireEvent(emailInput, 'onBlur')
 
     expect(
       await screen.findByText(
