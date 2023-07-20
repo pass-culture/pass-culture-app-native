@@ -3,6 +3,7 @@ import { ComponentStory, Meta } from '@storybook/react'
 import React from 'react'
 import { StyleSheet, View } from 'react-native'
 
+import { theme } from 'theme'
 import { Typo } from 'ui/theme'
 
 import { SelectableListItem } from './SelectableListItem'
@@ -60,7 +61,7 @@ FunkyContentBasedOnState.args = {
   render: ({ isSelected, isHover }) => (
     <Typo.Body
       style={{
-        ...(isSelected && { color: 'red' }),
+        ...(isSelected && { color: theme.colors.primary }),
         ...(isHover && { fontSize: 24 }),
       }}>
       Hello World
