@@ -22,6 +22,7 @@ export type Referrals =
 
 type BaseThematicHome = {
   homeId: string
+  videoModuleId?: string
   from?: never
   moduleId?: never
   moduleListId?: never

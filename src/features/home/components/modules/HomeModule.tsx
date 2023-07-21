@@ -28,11 +28,13 @@ const UnmemoizedModule = ({
   index,
   homeEntryId,
   data,
+  videoModuleId,
 }: {
   item: HomepageModule
   index: number
   homeEntryId: string
   data?: ModuleData
+  videoModuleId?: string
 }) => {
   if (isOffersModule(item)) {
     return (
@@ -95,7 +97,14 @@ const UnmemoizedModule = ({
     return <CategoryListModule {...item} homeEntryId={homeEntryId} index={index} />
   }
   if (isVideoModule(item)) {
-    return <VideoModule {...item} homeEntryId={homeEntryId} index={index} />
+    return (
+      <VideoModule
+        {...item}
+        homeEntryId={homeEntryId}
+        index={index}
+        shouldShowModal={item.id === videoModuleId}
+      />
+    )
   }
 
   return <React.Fragment></React.Fragment>

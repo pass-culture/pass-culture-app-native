@@ -48,12 +48,25 @@ export const SCREENS_CONFIG: {
       serverValidator: (value: unknown) => api.getnativev1venuevenueId(Number(value)),
     },
   },
-  Home: {},
+  Home: {
+    videoModuleId: {
+      type: 'string',
+      required: false,
+      description:
+        'L’identifiant du module vidéo dont la modale sera affichée à l’ouverture du lien',
+    },
+  },
   ThematicHome: {
     homeId: {
       type: 'string',
       required: false,
       description: 'Le module d’accueil thématique à afficher',
+    },
+    videoModuleId: {
+      type: 'string',
+      required: false,
+      description:
+        'L’identifiant du module vidéo dont la modale sera affichée à l’ouverture du lien',
     },
   },
   Search: {

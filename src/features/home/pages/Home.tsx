@@ -32,7 +32,14 @@ export const Home: FunctionComponent = () => {
     }
   }, [params?.latitude, params?.longitude, setCustomPosition])
 
-  return <GenericHome modules={modules} homeId={id} Header={<Header />} />
+  return (
+    <GenericHome
+      modules={modules}
+      homeId={id}
+      Header={<Header />}
+      videoModuleId={params?.videoModuleId}
+    />
+  )
 }
 
 const ListHeaderContainer = styled.View({

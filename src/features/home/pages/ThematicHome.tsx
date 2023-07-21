@@ -67,6 +67,7 @@ export const ThematicHome: FunctionComponent = () => {
         Header={<SubHeader thematicHeader={thematicHeader} headerTransition={headerTransition} />}
         shouldDisplayScrollToTop
         onScroll={onScroll}
+        videoModuleId={params.videoModuleId}
       />
       {/* ThematicHomeHeader is called after Body to implement the BlurView for iOS */}
       <ThematicHomeHeader title={thematicHeader?.title} headerTransition={headerTransition} />

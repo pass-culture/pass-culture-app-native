@@ -32,15 +32,21 @@ type GenericHomeProps = {
   homeId: string
   shouldDisplayScrollToTop?: boolean
   onScroll?: ({ nativeEvent }: NativeSyntheticEvent<NativeScrollEvent>) => void
+  videoModuleId?: string
 }
 const keyExtractor = (item: HomepageModule) => item.id
 
-const renderModule = ({ item, index }: { item: HomepageModule; index: number }, homeId: string) => (
+const renderModule = (
+  { item, index }: { item: HomepageModule; index: number },
+  homeId: string,
+  videoModuleId?: string
+) => (
   <HomeModule
     item={item}
     index={index}
     homeEntryId={homeId}
     data={isOffersModule(item) || isVenuesModule(item) ? item.data : undefined}
+    videoModuleId={videoModuleId}
   />
 )
 
@@ -66,6 +72,7 @@ export const OnlineHome: FunctionComponent<GenericHomeProps> = ({
   homeId,
   shouldDisplayScrollToTop,
   onScroll: givenOnScroll,
+  videoModuleId,
 }) => {
   const { offersModulesData } = useGetOffersData(modules.filter(isOffersModule))
   const { venuesModulesData } = useGetVenuesData(modules.filter(isVenuesModule))
@@ -147,8 +154,8 @@ export const OnlineHome: FunctionComponent<GenericHomeProps> = ({
 
   const renderItem = useCallback(
     ({ item, index }: { item: HomepageModule; index: number }) =>
-      renderModule({ item, index }, homeId),
-    [homeId]
+      renderModule({ item, index }, homeId, videoModuleId),
+    [homeId, videoModuleId]
   )
 
   return (

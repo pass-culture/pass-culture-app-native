@@ -92,6 +92,8 @@ const offerFixture2 = {
 function renderVideoModule() {
   render(
     // eslint-disable-next-line local-rules/no-react-query-provider-hoc
-    reactQueryProviderHOC(<VideoModule {...videoModuleFixture} index={1} homeEntryId="abcd" />)
+    reactQueryProviderHOC(
+      <VideoModule {...videoModuleFixture} index={1} homeEntryId="abcd" shouldShowModal={false} />
+    )
   )
 }
