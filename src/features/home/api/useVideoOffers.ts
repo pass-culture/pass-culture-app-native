@@ -62,6 +62,7 @@ export const useVideoOffers = (
 
     return await fetchOffersByEan({
       eanList,
+      userLocation: position,
       isUserUnderage,
     })
   }

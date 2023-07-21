@@ -4,21 +4,24 @@ import { buildOfferSearchParameters } from 'libs/algolia/fetchAlgolia/buildAlgol
 import { offerAttributesToRetrieve } from 'libs/algolia/fetchAlgolia/buildAlgoliaParameters/offerAttributesToRetrieve'
 import { client } from 'libs/algolia/fetchAlgolia/clients'
 import { env } from 'libs/environment'
+import { Position } from 'libs/geolocation'
 import { Offer } from 'shared/offer/types'
 
 type FetchOfferHitsArgs = {
   eanList: string[]
+  userLocation: Position
   isUserUnderage: boolean
 }
 
 export const fetchOffersByEan = async ({
   eanList,
+  userLocation,
   isUserUnderage,
 }: FetchOfferHitsArgs): Promise<Offer[]> => {
   const index = client.initIndex(env.ALGOLIA_OFFERS_INDEX_NAME)
   const searchParameters = buildOfferSearchParameters(
     { ...initialSearchState, eanList },
-    null,
+    userLocation,
     isUserUnderage
   )
 
