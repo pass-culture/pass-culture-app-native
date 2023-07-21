@@ -5,6 +5,7 @@ import {
   SubcategoryIdEnumv2,
 } from 'api/gen'
 import {
+  buildEanPredicate,
   buildObjectIdsPredicate,
   buildOfferCategoriesPredicate,
   buildOfferGenreTypesPredicate,
@@ -119,6 +120,13 @@ describe('buildObjectIdsPredicate', () => {
       objectIds: '15000',
     })
     expect(objectIdsPredicate).toEqual([])
+  })
+})
+
+describe('buildEanPredicate', () => {
+  it('should return an ean predicate formatted for Algolia API', () => {
+    const objectIdsPredicate = buildEanPredicate(['9780000000001', '9780000000002'])
+    expect(objectIdsPredicate).toEqual(['offer.ean:9780000000001', 'offer.ean:9780000000002'])
   })
 })
 
