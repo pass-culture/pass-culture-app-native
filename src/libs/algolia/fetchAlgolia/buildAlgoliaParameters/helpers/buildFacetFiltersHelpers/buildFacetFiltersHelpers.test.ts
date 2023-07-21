@@ -111,7 +111,7 @@ describe('buildObjectIdsPredicate', () => {
     expect(objectIdsPredicate).toEqual(['objectID:15000', 'objectID:150001'])
   })
 
-  it('should catch an error Sentry when object ids param not correcty passed and return an empty array', () => {
+  it('should catch an error Sentry when object ids param not correctly passed and return an empty array', () => {
     const error = new TypeError('objectIds.map is not a function')
     const objectIdsPredicate = buildObjectIdsPredicate('15000' as unknown as string[])
     expect(eventMonitoring.captureException).toBeCalledWith(error, {
