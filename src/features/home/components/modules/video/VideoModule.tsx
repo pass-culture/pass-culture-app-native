@@ -3,7 +3,7 @@ import React, { FunctionComponent, useEffect } from 'react'
 import LinearGradient from 'react-native-linear-gradient'
 import styled, { useTheme } from 'styled-components/native'
 
-import { useVideoOffers } from 'features/home/api/useVideoOffer'
+import { useVideoOffers } from 'features/home/api/useVideoOffers'
 import { BlackGradient } from 'features/home/components/BlackGradient'
 import { TEXT_BACKGROUND_OPACITY } from 'features/home/components/constants'
 import { getGradientColors } from 'features/home/components/helpers/getGradientColors'

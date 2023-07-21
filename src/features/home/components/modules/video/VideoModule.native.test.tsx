@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { useVideoOffers } from 'features/home/api/useVideoOffer'
+import { useVideoOffers } from 'features/home/api/useVideoOffers'
 import { VideoModule } from 'features/home/components/modules/video/VideoModule'
 import { videoModuleFixture } from 'features/home/fixtures/videoModule.fixture'
 import { analytics } from 'libs/analytics'
@@ -16,7 +16,7 @@ jest.mock('ui/components/modals/useModal', () => ({
   }),
 }))
 
-jest.mock('features/home/api/useVideoOffer')
+jest.mock('features/home/api/useVideoOffers')
 const mockUseVideoOffers = useVideoOffers as jest.Mock
 
 describe('VideoModule', () => {
