@@ -55,7 +55,7 @@ describe('VideoModule', () => {
     })
   })
 
-  it('should render multi offer componant if multiples offers', async () => {
+  it('should render multi offer component if multiples offers', async () => {
     mockUseVideoOffers.mockReturnValueOnce({ offers: [offerFixture, offerFixture2] })
     renderVideoModule()
 
