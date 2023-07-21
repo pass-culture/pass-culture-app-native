@@ -1,4 +1,4 @@
-// to fix bug provoked by export of customRender in test/utils
+// to fix bug provoked by export of customRender in tests/utils
 // eslint-disable-next-line no-restricted-imports
 import { renderHook } from '@testing-library/react-native'
 import { useWindowDimensions } from 'react-native'
