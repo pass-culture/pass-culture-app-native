@@ -30,3 +30,5 @@ export const EXTRA_SMALL_ICON_SIZE = getSpacing(4)
 export const ILLUSTRATION_ICON_SIZE = getSpacing(35) // 140
 // icons used for full page illustrations should be imported with FULLPAGE_ILLUSTRATION_ICON_SIZE
 export const FULLPAGE_ILLUSTRATION_ICON_SIZE = getSpacing(50)
+// small illustrations should be imported with ILLUSTRATION_SMALL_SIZE
+export const ILLUSTRATION_SMALL_SIZE = getSpacing(25)

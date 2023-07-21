@@ -161,8 +161,8 @@ export const logEventAnalytics = {
     analytics.logEvent({ firebase: AnalyticsEvent.SEE_MORE_CLICKED }, params),
   logClickSocialNetwork: (network: string) =>
     analytics.logEvent({ firebase: AnalyticsEvent.CLICK_SOCIAL_NETWORK }, { network }),
-  logComeBackLaterClicked: () =>
-    analytics.logEvent({ amplitude: AmplitudeEvent.COME_BACK_LATER_CLICKED }),
+  logComeBackLaterClicked: (params: { from: string } | undefined) =>
+    analytics.logEvent({ amplitude: AmplitudeEvent.COME_BACK_LATER_CLICKED }, params),
   logConfirmBookingCancellation: (offerId: number) =>
     analytics.logEvent({ firebase: AnalyticsEvent.CONFIRM_BOOKING_CANCELLATION }, { offerId }),
   logConnectWithEduconnectClicked: () =>
@@ -290,6 +290,8 @@ export const logEventAnalytics = {
         offerId,
       }
     ),
+  logGoToUbble: ({ from }: { from: string }) =>
+    analytics.logEvent({ amplitude: AmplitudeEvent.GO_TO_UBBLE }, { from }),
   logHasActivateGeolocFromTutorial: () =>
     analytics.logEvent({ firebase: AnalyticsEvent.HAS_ACTIVATE_GEOLOC_FROM_TUTORIAL }),
   logHasAcceptedAllCookies: () =>
@@ -549,6 +551,8 @@ export const logEventAnalytics = {
   }) => analytics.logEvent({ firebase: AnalyticsEvent.SHARE }, params),
   logShareApp: ({ from, type }: { from?: Referrals; type?: ShareAppModalType }) =>
     analytics.logEvent({ firebase: AnalyticsEvent.SHARE_APP }, { from, type }),
+  logShowParentInformationModal: () =>
+    analytics.logEvent({ amplitude: AmplitudeEvent.SHOW_PARENT_INFORMATION_MODAL }),
   logSignInFromAuthenticationModal: (offerId: number) =>
     analytics.logEvent(
       { firebase: AnalyticsEvent.SIGN_IN_FROM_AUTHENTICATION_MODAL },
