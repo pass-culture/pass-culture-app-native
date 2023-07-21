@@ -2,7 +2,7 @@ import React from 'react'
 
 import { mockedAlgoliaResponse } from 'libs/algolia/__mocks__/mockedAlgoliaResponse'
 import { analytics } from 'libs/analytics'
-import { ContentTypes, DisplayParametersFields } from 'libs/contentful'
+import { ContentTypes, DisplayParametersFields } from 'libs/contentful/types'
 import { render } from 'tests/utils'
 
 import { RecommendationModule } from './RecommendationModule'

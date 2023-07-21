@@ -4,7 +4,7 @@ import { navigate } from '__mocks__/@react-navigation/native'
 import { CategoryListModule } from 'features/home/components/modules/categories/CategoryListModule'
 import { categoryBlockList } from 'features/home/fixtures/categoryBlockList.fixture'
 import { analytics } from 'libs/analytics'
-import { ContentTypes } from 'libs/contentful'
+import { ContentTypes } from 'libs/contentful/types'
 import { act, fireEvent, render } from 'tests/utils'
 
 describe('CategoryListModule', () => {

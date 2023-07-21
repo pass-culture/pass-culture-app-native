@@ -1,8 +1,8 @@
 import resolveResponse from 'contentful-resolve-response'
 
 import { Homepage } from 'features/home/types'
-import { ContentTypes, EntryCollection, HomepageNatifEntry } from 'libs/contentful'
 import { adaptHomepageEntries } from 'libs/contentful/adapters/adaptHomepageEntries'
+import { ContentTypes, EntryCollection, HomepageNatifEntry } from 'libs/contentful/types'
 import { env } from 'libs/environment'
 import { getExternal } from 'libs/fetch'
 
