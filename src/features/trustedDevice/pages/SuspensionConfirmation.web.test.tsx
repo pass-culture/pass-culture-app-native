@@ -4,7 +4,7 @@ import { render, checkAccessibilityFor } from 'tests/utils/web'
 
 import { SuspensionConfirmation } from './SuspensionConfirmation'
 
-jest.mock('react-query')
+jest.mock('features/auth/helpers/useLogoutRoutine')
 
 describe('<SuspensionConfirmation/>', () => {
   describe('Accessibility', () => {
