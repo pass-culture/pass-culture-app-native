@@ -1,14 +1,10 @@
 import { IdentityCheckMethod } from 'api/gen'
 import { computeIdentificationMethod } from 'features/identityCheck/pages/helpers/computeIdentificationMethod'
-import { SubscriptionRootStackParamList } from 'features/navigation/RootNavigator/types'
+import { SubscriptionScreen } from 'features/identityCheck/types'
 
-const educonnectFlow: (keyof SubscriptionRootStackParamList)[] = [
-  'EduConnectForm',
-  'EduConnectValidation',
-]
-
-const ubbleFlow: (keyof SubscriptionRootStackParamList)[] = ['SelectIDOrigin']
-const forkFlow: (keyof SubscriptionRootStackParamList)[] = ['IdentificationFork']
+const educonnectFlow: SubscriptionScreen = 'EduConnectForm'
+const ubbleFlow: SubscriptionScreen = 'SelectIDOrigin'
+const forkFlow: SubscriptionScreen = 'IdentificationFork'
 
 const educonnectOnlyMethod = [IdentityCheckMethod.educonnect]
 const ubbleOnlyMethod = [IdentityCheckMethod.ubble]
