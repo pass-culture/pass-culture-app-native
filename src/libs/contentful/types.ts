@@ -7,6 +7,7 @@ export enum ContentTypes {
   DISPLAY_PARAMETERS = 'displayParameters',
   EXCLUSIVITY = 'exclusivity',
   EXCLUSIVITY_DISPLAY_PARAMETERS = 'exclusivityDisplayParameters',
+  HIGHLIGHT_OFFER = 'highlightOffer',
   HOMEPAGE_NATIF = 'homepageNatif',
   INFORMATION = 'information',
   BUSINESS = 'business',
@@ -171,6 +172,7 @@ export type ThematicHighlightParameters = Entry<
 >
 
 export type VideoContentModel = Entry<VideoFields, ContentTypes.VIDEO>
+
 type VideoFields = {
   title: string
   displayedTitle: string
@@ -369,6 +371,7 @@ export interface CategoryListFields {
 }
 
 export type CategoryBlockContentModel = Entry<CategoryBlockFields, ContentTypes.CATEGORY_BLOCK>
+
 export type ProvidedCategoryBlockContentModel = ProvidedEntry<
   CategoryBlockFields & { thematicCategoryInfo: ProvidedThematicCategoryInfo },
   ContentTypes.CATEGORY_BLOCK
@@ -432,6 +435,7 @@ export type HomepageNatifModule =
   | VenuesContentModel
   | VideoContentModel
   | CategoryListContentModel
+  | HighlightOfferContentModel
 
 export type AlgoliaContentModel = Entry<AlgoliaFields, ContentTypes.ALGOLIA>
 
@@ -449,6 +453,16 @@ export type ThematicHighlightContentModel = Entry<
 export type VenuesContentModel = Entry<VenuesFields, ContentTypes.VENUES_PLAYLIST>
 
 export type CategoryListContentModel = Entry<CategoryListFields, ContentTypes.CATEGORY_LIST>
+
+export type HighlightOfferContentModel = Entry<HightlightOfferFields, ContentTypes.HIGHLIGHT_OFFER>
+
+type HightlightOfferFields = {
+  highlightTitle: string
+  offerTitle: string
+  offerImage: Image
+  offerId: string
+  color: Color
+}
 
 export const isAlgoliaContentModel = (module: HomepageNatifModule): module is AlgoliaContentModel =>
   module.sys.contentType?.sys.id === ContentTypes.ALGOLIA
@@ -491,3 +505,8 @@ export const isThematicCategoryInfo = (
 
 export const isVideoContentModel = (module: HomepageNatifModule): module is VideoContentModel =>
   module.sys.contentType?.sys.id === ContentTypes.VIDEO
+
+export const isHighlightOfferContentModel = (
+  module: HomepageNatifModule
+): module is HighlightOfferContentModel =>
+  module.sys.contentType?.sys.id === ContentTypes.HIGHLIGHT_OFFER

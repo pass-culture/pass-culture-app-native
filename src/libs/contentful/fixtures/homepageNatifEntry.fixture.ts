@@ -2,6 +2,7 @@ import { algoliaNatifModuleFixture } from 'libs/contentful/fixtures/algoliaModul
 import { businessNatifModuleFixture } from 'libs/contentful/fixtures/businessModule.fixture'
 import { categoryListFixture } from 'libs/contentful/fixtures/categoryList.fixture'
 import { exclusivityNatifModuleFixture } from 'libs/contentful/fixtures/exclusivityModule.fixture'
+import { highlightOfferContentModelFixture } from 'libs/contentful/fixtures/highlightOfferContentModel.fixture'
 import { recommendationNatifModuleFixture } from 'libs/contentful/fixtures/recommendationNatifModule.fixture'
 import { thematicHighlightModuleFixture } from 'libs/contentful/fixtures/thematicHighlightModule.fixture'
 import { venuesNatifModuleFixture } from 'libs/contentful/fixtures/venuesModule.fixture'
@@ -31,6 +32,7 @@ export const homepageNatifEntryFixture: HomepageNatifEntry = {
       venuesNatifModuleFixture,
       categoryListFixture,
       thematicHighlightModuleFixture,
+      highlightOfferContentModelFixture,
     ],
     title: 'Test home N-1 Evek',
     thematicHeaderTitle: 'Un titre court',
