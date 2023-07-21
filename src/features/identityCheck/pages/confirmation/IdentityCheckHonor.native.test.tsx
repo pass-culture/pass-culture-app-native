@@ -7,7 +7,7 @@ import { useAuthContext } from 'features/auth/context/AuthContext'
 import { IdentityCheckHonor } from 'features/identityCheck/pages/confirmation/IdentityCheckHonor'
 import { beneficiaryUser, nonBeneficiaryUser } from 'fixtures/user'
 import { analytics } from 'libs/analytics'
-import { fireEvent, render, useMutationFactory, waitFor } from 'tests/utils'
+import { fireEvent, render, useMutationFactory, waitFor, screen } from 'tests/utils'
 
 jest.mock('react-query')
 
@@ -16,17 +16,21 @@ mockdate.set(new Date('2020-12-01T00:00:00.000Z'))
 jest.mock('features/auth/context/AuthContext')
 const mockUseAuthContext = useAuthContext as jest.Mock
 
-const mockNavigateToNextScreen = jest.fn()
-jest.mock('features/identityCheck/pages/helpers/useSubscriptionNavigation', () => ({
-  useSubscriptionNavigation: () => ({
-    navigateToNextScreen: mockNavigateToNextScreen,
-  }),
-}))
 const mockedUseMutation = jest.mocked(useMutation)
 const useMutationCallbacks: { onError: (error: unknown) => void; onSuccess: () => void } = {
   onSuccess: () => {},
   onError: () => {},
 }
+
+const mockDispatch = jest.fn()
+jest.mock('features/identityCheck/context/SubscriptionContextProvider', () => ({
+  useSubscriptionContext: () => ({
+    dispatch: mockDispatch,
+    confirmation: {
+      accepted: true,
+    },
+  }),
+}))
 
 describe('<IdentityCheckHonor/>', () => {
   beforeAll(() => {
@@ -38,20 +42,20 @@ describe('<IdentityCheckHonor/>', () => {
   })
 
   it('should render correctly', () => {
-    const renderAPI = render(<IdentityCheckHonor />)
-    expect(renderAPI).toMatchSnapshot()
+    render(<IdentityCheckHonor />)
+    expect(screen).toMatchSnapshot()
   })
 
-  it('should navigate to next screen on postHonorStatement request success if user is not beneficiary yet', async () => {
-    const { getByText } = render(<IdentityCheckHonor />)
+  it('should navigate to BeneficiaryRequestSent on postHonorStatement request success if user is not beneficiary yet', async () => {
+    render(<IdentityCheckHonor />)
 
-    const button = getByText('Valider et continuer')
+    const button = screen.getByText('Valider et continuer')
     fireEvent.press(button)
 
     useMutationCallbacks.onSuccess()
 
     await waitFor(() => {
-      expect(mockNavigateToNextScreen).toHaveBeenCalledTimes(1)
+      expect(navigate).toHaveBeenCalledWith('BeneficiaryRequestSent')
     })
   })
 
@@ -65,34 +69,34 @@ describe('<IdentityCheckHonor/>', () => {
       refetchUser: async () => ({ data: user }),
     })
 
-    const { getByText } = render(<IdentityCheckHonor />)
+    render(<IdentityCheckHonor />)
 
-    const button = getByText('Valider et continuer')
+    const button = screen.getByText('Valider et continuer')
     fireEvent.press(button)
 
     useMutationCallbacks.onSuccess()
 
     await waitFor(() => {
-      expect(navigate).toHaveBeenNthCalledWith(1, 'BeneficiaryAccountCreated')
+      expect(navigate).toHaveBeenCalledWith('BeneficiaryAccountCreated')
     })
   })
 
-  it("should navigate to next Screen if user's credit is expired (non beneficiary)", async () => {
+  it("should navigate to BeneficiaryRequestSent if user's credit is expired (non beneficiary)", async () => {
     const user = { ...beneficiaryUser, depositExpirationDate: '2020-11-01T00:00:00.000Z' }
     mockUseAuthContext.mockReturnValueOnce({
       user,
       refetchUser: async () => ({ data: user }),
     })
 
-    const { getByText } = render(<IdentityCheckHonor />)
+    render(<IdentityCheckHonor />)
 
-    const button = getByText('Valider et continuer')
+    const button = screen.getByText('Valider et continuer')
     fireEvent.press(button)
 
     useMutationCallbacks.onSuccess()
 
     await waitFor(() => {
-      expect(mockNavigateToNextScreen).toHaveBeenCalledTimes(1)
+      expect(navigate).toHaveBeenCalledWith('BeneficiaryRequestSent')
     })
   })
 
