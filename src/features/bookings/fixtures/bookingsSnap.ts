@@ -26,6 +26,7 @@ export const bookingsSnap: BookingsResponse = {
         features: ['VOSTFR', '3D', 'IMAX'],
         offer: {
           id: 147874,
+          bookingContact: null,
           name: 'Avez-vous déjà vu\u00a0?',
           extraData: null,
           isPermanent: false,
@@ -69,6 +70,7 @@ export const bookingsSnap: BookingsResponse = {
         features: ['VOSTFR', '3D', 'IMAX'],
         offer: {
           id: 147874,
+          bookingContact: null,
           name: 'Avez-vous déjà vu\u00a0?',
           extraData: {
             ean: '123456789',
@@ -112,6 +114,7 @@ export const bookingsSnap: BookingsResponse = {
         features: ['VOSTFR', '3D', 'IMAX'],
         offer: {
           id: 147874,
+          bookingContact: null,
           name: 'Avez-vous déjà vu\u00a0?',
           extraData: {
             ean: '123456789',
