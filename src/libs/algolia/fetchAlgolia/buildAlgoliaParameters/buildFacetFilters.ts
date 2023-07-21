@@ -1,6 +1,7 @@
 import { LocationType } from 'features/search/enums'
 import { FACETS_FILTERS_ENUM } from 'libs/algolia/enums'
 import {
+  buildEanPredicate,
   buildObjectIdsPredicate,
   buildOfferCategoriesPredicate,
   buildOfferGenreTypesPredicate,
@@ -26,6 +27,7 @@ export const buildFacetFilters = ({
   offerSubcategories,
   offerTypes,
   tags,
+  eanList,
 }: Pick<
   SearchQueryParameters,
   | 'locationFilter'
@@ -36,7 +38,7 @@ export const buildFacetFilters = ({
   | 'offerSubcategories'
   | 'offerTypes'
   | 'tags'
-> & { isUserUnderage: boolean; objectIds?: string[] }): null | {
+> & { isUserUnderage: boolean; objectIds?: string[]; eanList?: string[] }): null | {
   facetFilters: FiltersArray
 } => {
   if (offerCategories.length === 0 && offerTypes == null && offerIsDuo === false) return null
@@ -67,6 +69,11 @@ export const buildFacetFilters = ({
 
   if (objectIds && objectIds.length > 0) {
     const objectIdsPredicate = buildObjectIdsPredicate(objectIds)
+    facetFilters.push(objectIdsPredicate)
+  }
+
+  if (eanList && eanList?.length > 0) {
+    const objectIdsPredicate = buildEanPredicate(eanList)
     facetFilters.push(objectIdsPredicate)
   }
 

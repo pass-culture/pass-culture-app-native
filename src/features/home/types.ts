@@ -253,7 +253,8 @@ export type VideoModule = {
   offerTitle: string
   videoDescription: string
   videoPublicationDate: string
-  offerIds: string[]
+  offerIds?: string[]
+  eanList?: string[]
 }
 
 export type OffersPlaylistParameters = SearchQueryParameters[]
