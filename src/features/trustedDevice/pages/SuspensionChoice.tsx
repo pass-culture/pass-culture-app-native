@@ -1,14 +1,16 @@
-import { useNavigation } from '@react-navigation/native'
+import { useNavigation, useRoute } from '@react-navigation/native'
 import React from 'react'
 import styled from 'styled-components/native'
 
 import { contactSupport } from 'features/auth/helpers/contactSupport'
-import { UseNavigationType } from 'features/navigation/RootNavigator/types'
+import { UseNavigationType, UseRouteType } from 'features/navigation/RootNavigator/types'
+import { useSuspendForSuspiciousLoginMutation } from 'features/trustedDevice/helpers/useSuspendForSuspiciousLoginMutation'
 import { env } from 'libs/environment'
 import { BulletListItem } from 'ui/components/BulletListItem'
 import { ButtonInsideText } from 'ui/components/buttons/buttonInsideText/ButtonInsideText'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
+import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouchableLink'
 import { VerticalUl } from 'ui/components/Ul'
 import { GenericInfoPageWhite } from 'ui/pages/GenericInfoPageWhite'
@@ -19,8 +21,25 @@ import { getSpacing, Spacer, Typo } from 'ui/theme'
 import { SPACE } from 'ui/theme/constants'
 
 export const SuspensionChoice = () => {
-  const navigation = useNavigation<UseNavigationType>()
-  const onPressContinue = () => navigation.navigate('SuspiciousLoginSuspendedAccount')
+  const { params } = useRoute<UseRouteType<'SuspensionChoice'>>()
+  const { navigate } = useNavigation<UseNavigationType>()
+  const { showErrorSnackBar } = useSnackBarContext()
+
+  const { mutate: suspendAccountForSuspiciousLogin, isLoading } =
+    useSuspendForSuspiciousLoginMutation({
+      onSuccess: () => {
+        navigate('SuspensionConfirmation')
+      },
+      onError: () => {
+        showErrorSnackBar({
+          message:
+            'Une erreur est survenue. Pour suspendre ton compte, contacte le support par e-mail.',
+          timeout: SNACK_BAR_TIME_OUT,
+        })
+      },
+    })
+
+  const onPressContinue = () => suspendAccountForSuspiciousLogin({ token: params.token })
 
   return (
     <GenericInfoPageWhite
@@ -53,7 +72,11 @@ export const SuspensionChoice = () => {
       </Typo.Body>
       <Spacer.Column numberOfSpaces={4} />
       <ButtonContainer>
-        <ButtonPrimary wording="Oui, suspendre mon compte" onPress={onPressContinue} />
+        <ButtonPrimary
+          wording="Oui, suspendre mon compte"
+          onPress={onPressContinue}
+          isLoading={isLoading}
+        />
         <Spacer.Column numberOfSpaces={2} />
         <ExternalTouchableLink
           as={ButtonTertiaryBlack}
