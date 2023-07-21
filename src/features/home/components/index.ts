@@ -1,4 +1,3 @@
-export { HomeHeader } from './headers/HomeHeader'
 export { BusinessModule } from './modules/BusinessModule'
 export { ExclusivityModule } from './modules/exclusivity/ExclusivityModule'
 export { OffersModule } from './modules/OffersModule'

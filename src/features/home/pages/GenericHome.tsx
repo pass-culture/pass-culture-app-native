@@ -66,7 +66,7 @@ const FooterComponent = ({ hasShownAll }: { hasShownAll: boolean }) => {
 
 const MODULES_TIMEOUT_VALUE_IN_MS = 3000
 
-export const OnlineHome: FunctionComponent<GenericHomeProps> = ({
+const OnlineHome: FunctionComponent<GenericHomeProps> = ({
   Header,
   modules,
   homeId,

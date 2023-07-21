@@ -30,7 +30,7 @@ export enum ContentTypes {
 
 export type Layout = 'two-items' | 'one-item-medium'
 
-export interface Entry<T, ContentType extends ContentTypes> {
+interface Entry<T, ContentType extends ContentTypes> {
   sys: Sys<ContentType>
   // if the content model is unpublished/deleted, `fields` won't be provided
   fields?: T
@@ -78,7 +78,7 @@ interface Asset<ContentType extends ContentTypes> {
   }
 }
 
-export interface Sys<ContentType extends ContentTypes> {
+interface Sys<ContentType extends ContentTypes> {
   type: string
   id: string
   createdAt: string
@@ -128,9 +128,9 @@ export type ProvidedVenuesParameters = ProvidedEntry<
   ContentTypes.VENUES_PARAMETERS
 >
 
-export type DisplayParameters = Entry<DisplayParametersFields, ContentTypes.DISPLAY_PARAMETERS>
+type DisplayParameters = Entry<DisplayParametersFields, ContentTypes.DISPLAY_PARAMETERS>
 
-export type ExcluDisplayParameters = Entry<
+type ExcluDisplayParameters = Entry<
   ExclusivityDisplayParametersFields,
   ContentTypes.EXCLUSIVITY_DISPLAY_PARAMETERS
 >
@@ -156,7 +156,7 @@ export type ThematicCategoryInfo = Entry<
   ThematicCategoryInfoFields,
   ContentTypes.THEMATIC_CATEGORY_INFO
 >
-export type ProvidedThematicCategoryInfo = ProvidedEntry<
+type ProvidedThematicCategoryInfo = ProvidedEntry<
   ThematicCategoryInfoFields,
   ContentTypes.THEMATIC_CATEGORY_INFO
 >
@@ -164,11 +164,6 @@ export type ProvidedThematicCategoryInfo = ProvidedEntry<
 export type ThematicHighlightInfo = Entry<
   ThematicHighlightInfoFields,
   ContentTypes.THEMATIC_HIGHLIGHT_INFO
->
-
-export type ThematicHighlightParameters = Entry<
-  ThematicHighlightFields,
-  ContentTypes.THEMATIC_HIGHLIGHT
 >
 
 export type VideoContentModel = Entry<VideoFields, ContentTypes.VIDEO>
@@ -251,7 +246,7 @@ export interface SearchParametersFields {
 }
 
 // Taken from https://app.contentful.com/spaces/2bg01iqy0isv/environments/testing/content_types/venuesSearchParameters/fields
-export interface VenuesParametersFields {
+interface VenuesParametersFields {
   title: string
   isGeolocated?: boolean
   aroundRadius?: number
@@ -269,14 +264,14 @@ export interface DisplayParametersFields {
 }
 
 // Taken from https://app.contentful.com/spaces/2bg01iqy0isv/content_types/exclusivityDisplayParameters/fields
-export interface ExclusivityDisplayParametersFields {
+interface ExclusivityDisplayParametersFields {
   title: string
   isGeolocated?: boolean
   aroundRadius?: number
 }
 
 // Taken from https://app.contentful.com/spaces/2bg01iqy0isv/content_types/business/fields
-export interface BusinessFields {
+interface BusinessFields {
   title: string
   firstLine?: string
   secondLine?: string
@@ -287,7 +282,7 @@ export interface BusinessFields {
 }
 
 // Taken from https://app.contentful.com/spaces/2bg01iqy0isv/content_types/exclusivity/fields
-export interface ExclusivityFields {
+interface ExclusivityFields {
   title: string
   alt: string
   image: Image
@@ -341,7 +336,7 @@ type BookTypesFields = {
   bookTypes: string[]
 }
 
-export type ThematicCategoryInfoFields = {
+type ThematicCategoryInfoFields = {
   title: string
   displayedTitle: string
   displayedSubtitle?: string
@@ -354,7 +349,7 @@ export type ThematicHighlightFields = {
   thematicHomeEntryId: string
 }
 
-export type ThematicHighlightInfoFields = {
+type ThematicHighlightInfoFields = {
   title: string
   displayedTitle: string
   displayedSubtitle?: string
@@ -365,7 +360,7 @@ export type ThematicHighlightInfoFields = {
   introductionParagraph?: string
 }
 
-export interface CategoryListFields {
+interface CategoryListFields {
   title: string
   categoryBlockList: CategoryBlockContentModel[]
 }
@@ -377,13 +372,13 @@ export type ProvidedCategoryBlockContentModel = ProvidedEntry<
   ContentTypes.CATEGORY_BLOCK
 >
 
-export interface CategoryBlockFields {
+interface CategoryBlockFields {
   title: string
   homeEntryId: string
   thematicCategoryInfo: ThematicCategoryInfo
 }
 
-export type Image = Entry<
+type Image = Entry<
   {
     title: string
     description?: string
@@ -404,9 +399,9 @@ export type Image = Entry<
 >
 
 // List available here https://app.contentful.com/spaces/2bg01iqy0isv/environments/testing/settings/tags
-export type TagId = 'master' | 'usergrandpublic' | 'userunderage'
+type TagId = 'master' | 'usergrandpublic' | 'userunderage'
 
-export interface Tag {
+interface Tag {
   sys: { type: 'Link'; linkType: 'Tag'; id: TagId }
 }
 
@@ -416,7 +411,7 @@ export interface HomepageNatifEntry {
   fields: HomepageNatifFields
 }
 
-export type ThematicHeader = ThematicHighlightInfo | ThematicCategoryInfo
+type ThematicHeader = ThematicHighlightInfo | ThematicCategoryInfo
 
 interface HomepageNatifFields {
   title: string
