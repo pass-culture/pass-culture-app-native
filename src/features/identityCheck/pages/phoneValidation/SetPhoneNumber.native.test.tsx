@@ -27,13 +27,6 @@ jest.mock('features/identityCheck/context/SubscriptionContextProvider', () => ({
   }),
 }))
 
-const mockNavigateToNextScreen = jest.fn()
-jest.mock('features/identityCheck/pages/helpers/useSubscriptionNavigation', () => ({
-  useSubscriptionNavigation: () => ({
-    navigateToNextScreen: mockNavigateToNextScreen,
-  }),
-}))
-
 const mockedUsePhoneValidationRemainingAttempts = jest.mocked(usePhoneValidationRemainingAttempts)
 
 describe('SetPhoneNumber', () => {
@@ -51,16 +44,16 @@ describe('SetPhoneNumber', () => {
       counterResetDatetime: 'time',
       isLastAttempt: false,
     })
-    const SetPhoneNumberPage = renderSetPhoneNumber()
+    renderSetPhoneNumber()
 
     await waitFor(() => {
-      expect(SetPhoneNumberPage).toMatchSnapshot()
+      expect(screen).toMatchSnapshot()
     })
   })
 
   it('should show modal on first render', async () => {
-    const { getByText } = renderSetPhoneNumber()
-    await waitFor(() => expect(getByText('J’ai compris')).toBeTruthy())
+    renderSetPhoneNumber()
+    await waitFor(() => expect(screen.getByText('J’ai compris')).toBeTruthy())
   })
   it('should have a different color if 1 attempt is remaining', async () => {
     jest.spyOn(useModalAPI, 'useModal').mockReturnValueOnce({
@@ -75,8 +68,8 @@ describe('SetPhoneNumber', () => {
       isLastAttempt: true,
     })
 
-    const SetPhoneNumberPage = renderSetPhoneNumber()
-    const remainingAttemptsText = SetPhoneNumberPage.getByText('1 demande')
+    renderSetPhoneNumber()
+    const remainingAttemptsText = screen.getByText('1 demande')
     await waitFor(() => {
       expect(remainingAttemptsText.props.style[0].color).toEqual(theme.colors.error)
     })
@@ -99,12 +92,12 @@ describe('SetPhoneNumber', () => {
     )
 
     it('should enable the button when the phone number is valid', async () => {
-      const { getByTestId } = renderSetPhoneNumber()
-      const button = getByTestId('Continuer')
+      renderSetPhoneNumber()
+      const button = screen.getByTestId('Continuer')
 
       await waitFor(() => expect(button).toBeDisabled())
 
-      const input = getByTestId('Entrée pour le numéro de téléphone')
+      const input = screen.getByTestId('Entrée pour le numéro de téléphone')
       fireEvent.changeText(input, '612345678')
 
       expect(button).toBeEnabled()
@@ -116,27 +109,27 @@ describe('SetPhoneNumber', () => {
       '62435463579', // too long (max 10)
       '33224354m', // includes char
     ])('should disable the button when the phone number is not valid (%s)', async (phoneNumber) => {
-      const { getByTestId } = renderSetPhoneNumber()
-      const button = getByTestId('Continuer')
+      renderSetPhoneNumber()
+      const button = screen.getByTestId('Continuer')
 
       await waitFor(() => expect(button).toBeDisabled())
 
-      const input = getByTestId('Entrée pour le numéro de téléphone')
+      const input = screen.getByTestId('Entrée pour le numéro de téléphone')
       fireEvent.changeText(input, phoneNumber)
 
       expect(button).toBeDisabled()
     })
 
-    it('should call navigateToNextScreen on /send_phone_validation_code request success', async () => {
-      const { getByTestId } = renderSetPhoneNumber()
+    it('should navigate to SetPhoneValidationCode on /send_phone_validation_code request success', async () => {
+      renderSetPhoneNumber()
 
-      const continueButton = getByTestId('Continuer')
-      const input = getByTestId('Entrée pour le numéro de téléphone')
+      const continueButton = screen.getByTestId('Continuer')
+      const input = screen.getByTestId('Entrée pour le numéro de téléphone')
       fireEvent.changeText(input, '612345678')
       fireEvent.press(continueButton)
 
       await waitFor(() => {
-        expect(mockNavigateToNextScreen).toHaveBeenCalledTimes(1)
+        expect(navigate).toHaveBeenNthCalledWith(1, 'SetPhoneValidationCode')
       })
     })
 
@@ -147,16 +140,16 @@ describe('SetPhoneNumber', () => {
           message: 'Le numéro est invalide.',
         })
       )
-      const { getByTestId, getByText } = renderSetPhoneNumber()
+      renderSetPhoneNumber()
 
-      const continueButton = getByTestId('Continuer')
-      const input = getByTestId('Entrée pour le numéro de téléphone')
+      const continueButton = screen.getByTestId('Continuer')
+      const input = screen.getByTestId('Entrée pour le numéro de téléphone')
       fireEvent.changeText(input, '600000000')
 
       fireEvent.press(continueButton)
 
       await waitFor(() => {
-        expect(getByText('Le numéro est invalide.')).toBeTruthy()
+        expect(screen.getByText('Le numéro est invalide.')).toBeTruthy()
       })
     })
 
@@ -168,10 +161,10 @@ describe('SetPhoneNumber', () => {
         })
       )
 
-      const { getByTestId } = renderSetPhoneNumber()
+      renderSetPhoneNumber()
 
-      const continueButton = getByTestId('Continuer')
-      const input = getByTestId('Entrée pour le numéro de téléphone')
+      const continueButton = screen.getByTestId('Continuer')
+      const input = screen.getByTestId('Entrée pour le numéro de téléphone')
       fireEvent.changeText(input, '612345678')
       fireEvent.press(continueButton)
 
@@ -179,10 +172,10 @@ describe('SetPhoneNumber', () => {
     })
 
     it('should log event HasRequestedCode when pressing "Continuer" button', async () => {
-      const { getByTestId } = renderSetPhoneNumber()
+      renderSetPhoneNumber()
 
-      const continueButton = getByTestId('Continuer')
-      const input = getByTestId('Entrée pour le numéro de téléphone')
+      const continueButton = screen.getByTestId('Continuer')
+      const input = screen.getByTestId('Entrée pour le numéro de téléphone')
 
       await act(async () => {
         fireEvent.changeText(input, '612345678')

@@ -2,7 +2,8 @@ import React, { useEffect } from 'react'
 
 import { useNextSubscriptionStep } from 'features/auth/api/useNextSubscriptionStep'
 import { useNavigateForwardToStepper } from 'features/identityCheck/helpers/useNavigateForwardToStepper'
-import { invalidateStepperInfoQuery } from 'features/identityCheck/pages/helpers/invalidateStepperQuery'
+import { useSaveStep } from 'features/identityCheck/pages/helpers/useSaveStep'
+import { IdentityCheckStep } from 'features/identityCheck/types'
 import { navigateToHome } from 'features/navigation/helpers'
 import { analytics } from 'libs/analytics'
 import { GenericInfoPage } from 'ui/pages/GenericInfoPage'
@@ -11,9 +12,10 @@ import { EmailSent } from 'ui/svg/icons/EmailSent'
 export const IdentityCheckEnd = () => {
   const { data: subscription } = useNextSubscriptionStep()
   const { navigateForwardToStepper } = useNavigateForwardToStepper()
+  const saveStep = useSaveStep()
 
-  const navigateToStepper = () => {
-    invalidateStepperInfoQuery()
+  const navigateToStepper = async () => {
+    await saveStep(IdentityCheckStep.IDENTIFICATION)
     navigateForwardToStepper()
   }
 

@@ -15,7 +15,7 @@ export const mapStepsDetails = (
       title: step.title,
       subtitle: step.subtitle ?? undefined,
       icon: currentStepConfig?.icon,
-      screens: currentStepConfig?.screens,
+      firstScreen: currentStepConfig?.firstScreen,
       stepState: mapCompletionState(step.completionState),
     }
     return stepDetails

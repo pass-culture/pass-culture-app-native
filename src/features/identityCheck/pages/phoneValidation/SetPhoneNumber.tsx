@@ -13,10 +13,11 @@ import { METROPOLITAN_FRANCE } from 'features/identityCheck/components/countryPi
 import { CountryPicker } from 'features/identityCheck/components/countryPicker/CountryPicker'
 import { PageWithHeader } from 'features/identityCheck/components/layout/PageWithHeader'
 import { useSubscriptionContext } from 'features/identityCheck/context/SubscriptionContextProvider'
-import { useSubscriptionNavigation } from 'features/identityCheck/pages/helpers/useSubscriptionNavigation'
+import { useSaveStep } from 'features/identityCheck/pages/helpers/useSaveStep'
 import { formatPhoneNumberWithPrefix } from 'features/identityCheck/pages/phoneValidation/helpers/formatPhoneNumber'
 import { isPhoneNumberValid } from 'features/identityCheck/pages/phoneValidation/helpers/isPhoneNumberValid'
 import { PhoneValidationTipsModal } from 'features/identityCheck/pages/phoneValidation/PhoneValidationTipsModal'
+import { IdentityCheckStep } from 'features/identityCheck/types'
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { homeNavConfig } from 'features/navigation/TabBar/helpers'
 import { useGoBack } from 'features/navigation/useGoBack'
@@ -45,8 +46,8 @@ export const SetPhoneNumber = () => {
   const [country, setCountry] = useState<Country>(INITIAL_COUNTRY)
   const { navigate } = useNavigation<UseNavigationType>()
   const { goBack } = useGoBack(...homeNavConfig)
-  const { navigateToNextScreen } = useSubscriptionNavigation()
   const isContinueButtonEnabled = isPhoneNumberValid(phoneNumber)
+  const saveStep = useSaveStep()
 
   const { remainingAttempts, isLastAttempt } = usePhoneValidationRemainingAttempts()
 
@@ -79,7 +80,8 @@ export const SetPhoneNumber = () => {
           country: { countryCode: country.cca2, callingCodes: country.callingCode },
         },
       })
-      navigateToNextScreen()
+      saveStep(IdentityCheckStep.PHONE_VALIDATION)
+      navigate('SetPhoneValidationCode')
       queryClient.invalidateQueries([QueryKeys.PHONE_VALIDATION_REMAINING_ATTEMPTS])
     },
     onError: (error: unknown) => {
