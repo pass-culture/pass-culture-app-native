@@ -110,6 +110,7 @@ exports[`BookingDetails should render correctly 1`] = `
                     ],
                     "id": 150230,
                     "offer": Object {
+                      "bookingContact": null,
                       "extraData": Object {
                         "ean": "123456789",
                       },
@@ -425,331 +426,447 @@ exports[`BookingDetails should render correctly 1`] = `
           </View>
         </View>
       </RCTScrollView>
-      <View
-        style={
-          Array [
-            Object {
-              "paddingHorizontal": 20,
-            },
-          ]
-        }
-      >
+      <View>
         <View
-          numberOfSpaces={4}
           style={
             Array [
               Object {
-                "height": 16,
-              },
-            ]
-          }
-        />
-        <Text
-          style={
-            Array [
-              Object {
-                "color": "#696A6F",
-                "fontFamily": "Montserrat-SemiBold",
-                "fontSize": 12,
-                "lineHeight": 16,
-                "textAlign": "center",
+                "paddingHorizontal": 20,
               },
             ]
           }
         >
-          Ce code à 6 caractères est ta preuve d’achat ! N’oublie pas que tu n’as pas le droit de le revendre ou le céder.
-        </Text>
-        <View
-          numberOfSpaces={8}
-          style={
-            Array [
-              Object {
-                "height": 32,
-              },
-            ]
-          }
-        />
-        <View>
+          <View
+            numberOfSpaces={4}
+            style={
+              Array [
+                Object {
+                  "height": 16,
+                },
+              ]
+            }
+          />
           <Text
             style={
               Array [
                 Object {
-                  "color": "#161617",
-                  "fontFamily": "Montserrat-Medium",
-                  "fontSize": 18,
-                  "lineHeight": 22,
+                  "color": "#696A6F",
+                  "fontFamily": "Montserrat-SemiBold",
+                  "fontSize": 12,
+                  "lineHeight": 16,
+                  "textAlign": "center",
                 },
               ]
             }
           >
-            Ma réservation
+            Ce code à 6 caractères est ta preuve d’achat ! N’oublie pas que tu n’as pas le droit de le revendre ou le céder.
           </Text>
           <View
-            numberOfSpaces={4.5}
+            numberOfSpaces={8}
             style={
               Array [
                 Object {
-                  "height": 18,
+                  "height": 32,
                 },
               ]
             }
           />
-          <View
-            numberOfSpaces={5}
-            style={
-              Array [
-                Object {
-                  "height": 20,
-                },
-              ]
-            }
-          />
-          <View
-            accessibilityLabel="Date : Le 15 mars 2021 à 20h00"
-            accessibilityRole="button"
-            accessibilityState={
-              Object {
-                "disabled": true,
-              }
-            }
-            accessible={true}
-            collapsable={false}
-            focusable={false}
-            onClick={[Function]}
-            onResponderGrant={[Function]}
-            onResponderMove={[Function]}
-            onResponderRelease={[Function]}
-            onResponderTerminate={[Function]}
-            onResponderTerminationRequest={[Function]}
-            onStartShouldSetResponder={[Function]}
-            style={
-              Object {
-                "opacity": 1,
-                "userSelect": "auto",
-              }
-            }
-            testID="Date : Le 15 mars 2021 à 20h00"
-          >
-            <View
+          <View>
+            <Text
               style={
                 Array [
                   Object {
-                    "alignItems": "center",
-                    "flexDirection": "row",
-                    "justifyContent": "space-between",
+                    "color": "#161617",
+                    "fontFamily": "Montserrat-Medium",
+                    "fontSize": 18,
+                    "lineHeight": 22,
                   },
-                  undefined,
                 ]
               }
             >
+              Ma réservation
+            </Text>
+            <View
+              numberOfSpaces={4.5}
+              style={
+                Array [
+                  Object {
+                    "height": 18,
+                  },
+                ]
+              }
+            />
+            <View
+              numberOfSpaces={5}
+              style={
+                Array [
+                  Object {
+                    "height": 20,
+                  },
+                ]
+              }
+            />
+            <View
+              accessibilityLabel="Date : Le 15 mars 2021 à 20h00"
+              accessibilityRole="button"
+              accessibilityState={
+                Object {
+                  "disabled": true,
+                }
+              }
+              accessible={true}
+              collapsable={false}
+              focusable={false}
+              onClick={[Function]}
+              onResponderGrant={[Function]}
+              onResponderMove={[Function]}
+              onResponderRelease={[Function]}
+              onResponderTerminate={[Function]}
+              onResponderTerminationRequest={[Function]}
+              onStartShouldSetResponder={[Function]}
+              style={
+                Object {
+                  "opacity": 1,
+                  "userSelect": "auto",
+                }
+              }
+              testID="Date : Le 15 mars 2021 à 20h00"
+            >
               <View
-                height={20}
-                width={20}
-              >
-                <Text>
-                  undefined-SVG-Mock
-                </Text>
-              </View>
-              <View
-                numberOfSpaces={2}
                 style={
                   Array [
                     Object {
-                      "width": 8,
+                      "alignItems": "center",
+                      "flexDirection": "row",
+                      "justifyContent": "space-between",
                     },
-                  ]
-                }
-              />
-              <View
-                style={
-                  Array [
-                    Object {
-                      "flexBasis": 0,
-                      "flexGrow": 1,
-                      "flexShrink": 1,
-                      "textAlign": "left",
-                    },
+                    undefined,
                   ]
                 }
               >
-                <Text
+                <View
+                  height={20}
+                  width={20}
+                >
+                  <Text>
+                    undefined-SVG-Mock
+                  </Text>
+                </View>
+                <View
+                  numberOfSpaces={2}
                   style={
                     Array [
                       Object {
-                        "color": "#161617",
-                        "fontFamily": "Montserrat-Regular",
-                        "fontSize": 15,
-                        "lineHeight": 20,
+                        "width": 8,
+                      },
+                    ]
+                  }
+                />
+                <View
+                  style={
+                    Array [
+                      Object {
+                        "flexBasis": 0,
+                        "flexGrow": 1,
+                        "flexShrink": 1,
+                        "textAlign": "left",
                       },
                     ]
                   }
                 >
-                  Le 15 mars 2021 à 20h00
-                </Text>
+                  <Text
+                    style={
+                      Array [
+                        Object {
+                          "color": "#161617",
+                          "fontFamily": "Montserrat-Regular",
+                          "fontSize": 15,
+                          "lineHeight": 20,
+                        },
+                      ]
+                    }
+                  >
+                    Le 15 mars 2021 à 20h00
+                  </Text>
+                </View>
+              </View>
+            </View>
+            <View
+              numberOfSpaces={5}
+              style={
+                Array [
+                  Object {
+                    "height": 20,
+                  },
+                ]
+              }
+            />
+            <View
+              numberOfSpaces={5}
+              style={
+                Array [
+                  Object {
+                    "height": 20,
+                  },
+                ]
+              }
+            />
+            <View
+              accessibilityLabel=""
+              accessibilityRole="button"
+              accessibilityState={
+                Object {
+                  "disabled": true,
+                }
+              }
+              accessible={false}
+              collapsable={false}
+              focusable={false}
+              onClick={[Function]}
+              onResponderGrant={[Function]}
+              onResponderMove={[Function]}
+              onResponderRelease={[Function]}
+              onResponderTerminate={[Function]}
+              onResponderTerminationRequest={[Function]}
+              onStartShouldSetResponder={[Function]}
+              style={
+                Object {
+                  "opacity": 1,
+                  "userSelect": "auto",
+                }
+              }
+            >
+              <View
+                style={
+                  Array [
+                    Object {
+                      "alignItems": "center",
+                      "flexDirection": "row",
+                      "justifyContent": "space-between",
+                    },
+                    undefined,
+                  ]
+                }
+              >
+                <View
+                  fill="#161617"
+                  height={20}
+                  width={20}
+                >
+                  <Text>
+                    undefined-SVG-Mock
+                  </Text>
+                </View>
+                <View
+                  numberOfSpaces={2}
+                  style={
+                    Array [
+                      Object {
+                        "width": 8,
+                      },
+                    ]
+                  }
+                />
+                <View
+                  style={
+                    Array [
+                      Object {
+                        "flexBasis": 0,
+                        "flexGrow": 1,
+                        "flexShrink": 1,
+                        "textAlign": "left",
+                      },
+                    ]
+                  }
+                >
+                  <Text
+                    style={
+                      Array [
+                        Object {
+                          "color": "#161617",
+                          "fontFamily": "Montserrat-Regular",
+                          "fontSize": 15,
+                          "lineHeight": 20,
+                        },
+                      ]
+                    }
+                  >
+                    <Text
+                      style={
+                        Array [
+                          Object {
+                            "color": "#161617",
+                            "fontFamily": "Montserrat-Regular",
+                            "fontSize": 15,
+                            "lineHeight": 20,
+                          },
+                        ]
+                      }
+                    >
+                      40 €
+                       
+                    </Text>
+                    <Text
+                      style={
+                        Array [
+                          Object {
+                            "color": "#161617",
+                            "fontFamily": "Montserrat-Regular",
+                            "fontSize": 15,
+                            "lineHeight": 20,
+                          },
+                        ]
+                      }
+                      testID="price-line__price-detail"
+                    >
+                      (
+                      4 €
+                       x 
+                      10
+                       places)
+                    </Text>
+                    <Text
+                      style={
+                        Array [
+                          Object {
+                            "color": "#161617",
+                            "fontFamily": "Montserrat-Regular",
+                            "fontSize": 15,
+                            "lineHeight": 20,
+                          },
+                        ]
+                      }
+                      testID="price-line__label"
+                    >
+                       - 
+                      Cat 4
+                    </Text>
+                  </Text>
+                </View>
               </View>
             </View>
           </View>
           <View
-            numberOfSpaces={5}
+            numberOfSpaces={4}
             style={
               Array [
                 Object {
-                  "height": 20,
+                  "height": 16,
                 },
               ]
             }
           />
           <View
-            numberOfSpaces={5}
             style={
               Array [
                 Object {
-                  "height": 20,
+                  "backgroundColor": "#F1F1F4",
+                  "height": 1,
+                  "width": "100%",
                 },
               ]
             }
           />
           <View
-            accessibilityLabel=""
-            accessibilityRole="button"
-            accessibilityState={
-              Object {
-                "disabled": true,
-              }
-            }
-            accessible={false}
-            collapsable={false}
-            focusable={false}
-            onClick={[Function]}
-            onResponderGrant={[Function]}
-            onResponderMove={[Function]}
-            onResponderRelease={[Function]}
-            onResponderTerminate={[Function]}
-            onResponderTerminationRequest={[Function]}
-            onStartShouldSetResponder={[Function]}
+            numberOfSpaces={4}
             style={
-              Object {
-                "opacity": 1,
-                "userSelect": "auto",
-              }
+              Array [
+                Object {
+                  "height": 16,
+                },
+              ]
+            }
+          />
+          <View
+            style={
+              Array [
+                Object {
+                  "alignItems": "flex-start",
+                },
+              ]
             }
           >
             <View
+              accessibilityLabel="Voir l’itinéraire"
+              accessible={true}
+              collapsable={false}
+              focusable={true}
+              onClick={[Function]}
+              onResponderGrant={[Function]}
+              onResponderMove={[Function]}
+              onResponderRelease={[Function]}
+              onResponderTerminate={[Function]}
+              onResponderTerminationRequest={[Function]}
+              onStartShouldSetResponder={[Function]}
               style={
-                Array [
-                  Object {
-                    "alignItems": "center",
-                    "flexDirection": "row",
-                    "justifyContent": "space-between",
-                  },
-                  undefined,
-                ]
+                Object {
+                  "alignItems": "center",
+                  "backgroundColor": "transparent",
+                  "borderRadius": 0,
+                  "borderWidth": 0,
+                  "flexDirection": "row",
+                  "justifyContent": "center",
+                  "marginTop": 0,
+                  "maxWidth": 500,
+                  "minHeight": 20,
+                  "opacity": 1,
+                  "paddingBottom": 0,
+                  "paddingLeft": 0,
+                  "paddingRight": 0,
+                  "paddingTop": 0,
+                  "userSelect": "auto",
+                  "width": "auto",
+                }
               }
+              testID="Voir l’itinéraire"
             >
               <View
-                fill="#161617"
-                height={20}
-                width={20}
-              >
-                <Text>
-                  undefined-SVG-Mock
-                </Text>
-              </View>
-              <View
-                numberOfSpaces={2}
                 style={
                   Array [
                     Object {
-                      "width": 8,
-                    },
-                  ]
-                }
-              />
-              <View
-                style={
-                  Array [
-                    Object {
-                      "flexBasis": 0,
-                      "flexGrow": 1,
-                      "flexShrink": 1,
-                      "textAlign": "left",
+                      "flexShrink": 0,
                     },
                   ]
                 }
               >
-                <Text
-                  style={
-                    Array [
-                      Object {
-                        "color": "#161617",
-                        "fontFamily": "Montserrat-Regular",
-                        "fontSize": 15,
-                        "lineHeight": 20,
-                      },
-                    ]
-                  }
+                <View
+                  accessibilityLabel="Nouvelle fenêtre"
+                  height={20}
+                  testID="button-icon"
+                  width={20}
                 >
-                  <Text
-                    style={
-                      Array [
-                        Object {
-                          "color": "#161617",
-                          "fontFamily": "Montserrat-Regular",
-                          "fontSize": 15,
-                          "lineHeight": 20,
-                        },
-                      ]
-                    }
-                  >
-                    40 €
-                     
+                  <Text>
+                    button-icon-SVG-Mock
                   </Text>
-                  <Text
-                    style={
-                      Array [
-                        Object {
-                          "color": "#161617",
-                          "fontFamily": "Montserrat-Regular",
-                          "fontSize": 15,
-                          "lineHeight": 20,
-                        },
-                      ]
-                    }
-                    testID="price-line__price-detail"
-                  >
-                    (
-                    4 €
-                     x 
-                    10
-                     places)
-                  </Text>
-                  <Text
-                    style={
-                      Array [
-                        Object {
-                          "color": "#161617",
-                          "fontFamily": "Montserrat-Regular",
-                          "fontSize": 15,
-                          "lineHeight": 20,
-                        },
-                      ]
-                    }
-                    testID="price-line__label"
-                  >
-                     - 
-                    Cat 4
-                  </Text>
-                </Text>
+                </View>
               </View>
+              <Text
+                adjustsFontSizeToFit={false}
+                numberOfLines={1}
+                style={
+                  Array [
+                    Object {
+                      "color": "#161617",
+                      "fontFamily": "Montserrat-Bold",
+                      "fontSize": 15,
+                      "lineHeight": 20,
+                      "marginLeft": 8,
+                      "maxWidth": "100%",
+                    },
+                  ]
+                }
+              >
+                Voir l’itinéraire
+              </Text>
             </View>
           </View>
         </View>
         <View
-          numberOfSpaces={4}
+          numberOfSpaces={14}
           style={
             Array [
               Object {
-                "height": 16,
+                "height": 56,
               },
             ]
           }
@@ -758,34 +875,13 @@ exports[`BookingDetails should render correctly 1`] = `
           style={
             Array [
               Object {
-                "backgroundColor": "#F1F1F4",
-                "height": 1,
-                "width": "100%",
-              },
-            ]
-          }
-        />
-        <View
-          numberOfSpaces={4}
-          style={
-            Array [
-              Object {
-                "height": 16,
-              },
-            ]
-          }
-        />
-        <View
-          style={
-            Array [
-              Object {
-                "alignItems": "flex-start",
+                "paddingHorizontal": 20,
               },
             ]
           }
         >
           <View
-            accessibilityLabel="Voir l’itinéraire"
+            accessibilityLabel="Voir le détail de l’offre"
             accessible={true}
             collapsable={false}
             focusable={true}
@@ -799,161 +895,78 @@ exports[`BookingDetails should render correctly 1`] = `
             style={
               Object {
                 "alignItems": "center",
-                "backgroundColor": "transparent",
-                "borderRadius": 0,
-                "borderWidth": 0,
+                "backgroundColor": "#eb0055",
+                "borderRadius": 24,
                 "flexDirection": "row",
                 "justifyContent": "center",
-                "marginTop": 0,
-                "maxWidth": 500,
-                "minHeight": 20,
+                "minHeight": 40,
                 "opacity": 1,
-                "paddingBottom": 0,
-                "paddingLeft": 0,
-                "paddingRight": 0,
-                "paddingTop": 0,
+                "paddingBottom": 2,
+                "paddingLeft": 20,
+                "paddingRight": 20,
+                "paddingTop": 2,
                 "userSelect": "auto",
-                "width": "auto",
+                "width": "100%",
               }
             }
-            testID="Voir l’itinéraire"
+            testID="Voir le détail de l’offre"
           >
-            <View
-              style={
-                Array [
-                  Object {
-                    "flexShrink": 0,
-                  },
-                ]
-              }
-            >
-              <View
-                accessibilityLabel="Nouvelle fenêtre"
-                height={20}
-                testID="button-icon"
-                width={20}
-              >
-                <Text>
-                  button-icon-SVG-Mock
-                </Text>
-              </View>
-            </View>
             <Text
               adjustsFontSizeToFit={false}
               numberOfLines={1}
               style={
                 Array [
                   Object {
-                    "color": "#161617",
+                    "color": "#ffffff",
                     "fontFamily": "Montserrat-Bold",
                     "fontSize": 15,
                     "lineHeight": 20,
-                    "marginLeft": 8,
+                    "marginLeft": 0,
                     "maxWidth": "100%",
                   },
                 ]
               }
             >
-              Voir l’itinéraire
+              Voir le détail de l’offre
             </Text>
           </View>
-        </View>
-        <View
-          numberOfSpaces={8}
-          style={
-            Array [
-              Object {
-                "height": 32,
-              },
-            ]
-          }
-        />
-        <View
-          accessibilityLabel="Voir le détail de l’offre"
-          accessible={true}
-          collapsable={false}
-          focusable={true}
-          onClick={[Function]}
-          onResponderGrant={[Function]}
-          onResponderMove={[Function]}
-          onResponderRelease={[Function]}
-          onResponderTerminate={[Function]}
-          onResponderTerminationRequest={[Function]}
-          onStartShouldSetResponder={[Function]}
-          style={
-            Object {
-              "alignItems": "center",
-              "backgroundColor": "#eb0055",
-              "borderRadius": 24,
-              "flexDirection": "row",
-              "justifyContent": "center",
-              "minHeight": 40,
-              "opacity": 1,
-              "paddingBottom": 2,
-              "paddingLeft": 20,
-              "paddingRight": 20,
-              "paddingTop": 2,
-              "userSelect": "auto",
-              "width": "100%",
-            }
-          }
-          testID="Voir le détail de l’offre"
-        >
-          <Text
-            adjustsFontSizeToFit={false}
-            numberOfLines={1}
+          <View
+            numberOfSpaces={4}
             style={
               Array [
                 Object {
-                  "color": "#ffffff",
-                  "fontFamily": "Montserrat-Bold",
-                  "fontSize": 15,
-                  "lineHeight": 20,
-                  "marginLeft": 0,
-                  "maxWidth": "100%",
+                  "height": 16,
                 },
               ]
             }
+          />
+          <View
+            numberOfSpaces={4}
+            style={
+              Array [
+                Object {
+                  "height": 16,
+                },
+              ]
+            }
+          />
+          <Text
+            style={
+              Array [
+                Object {
+                  "color": "#696A6F",
+                  "fontFamily": "Montserrat-SemiBold",
+                  "fontSize": 12,
+                  "lineHeight": 16,
+                  "textAlign": "center",
+                },
+              ]
+            }
+            testID="cancel-annulation-message"
           >
-            Voir le détail de l’offre
+            Tu ne peux plus annuler ta réservation. Elle expirera automatiquement le 17/03/2021
           </Text>
         </View>
-        <View
-          numberOfSpaces={4}
-          style={
-            Array [
-              Object {
-                "height": 16,
-              },
-            ]
-          }
-        />
-        <View
-          numberOfSpaces={4}
-          style={
-            Array [
-              Object {
-                "height": 16,
-              },
-            ]
-          }
-        />
-        <Text
-          style={
-            Array [
-              Object {
-                "color": "#696A6F",
-                "fontFamily": "Montserrat-SemiBold",
-                "fontSize": 12,
-                "lineHeight": 16,
-                "textAlign": "center",
-              },
-            ]
-          }
-          testID="cancel-annulation-message"
-        >
-          Tu ne peux plus annuler ta réservation. Elle expirera automatiquement le 17/03/2021
-        </Text>
       </View>
       <View
         numberOfSpaces={5}
