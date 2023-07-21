@@ -5,7 +5,7 @@ import { AccountState } from 'api/gen'
 import { useAccountSuspensionStatus } from 'features/auth/api/useAccountSuspensionStatus'
 import { useLogoutRoutine } from 'features/auth/helpers/useLogoutRoutine'
 import { FraudulentSuspendedAccount } from 'features/auth/pages/suspendedAccount/FraudulentSuspendedAccount/FraudulentSuspendedAccount'
-import { UserRequestedSuspendedAccount } from 'features/auth/pages/suspendedAccount/UserRequestedSuspendedAccount/UserRequestedSuspendedAccount'
+import { SuspendedAccountUponUserRequest } from 'features/auth/pages/suspendedAccount/SuspendedAccountUponUserRequest/SuspendedAccountUponUserRequest'
 import { navigateToHome, useCurrentRoute } from 'features/navigation/helpers'
 import { SuspiciousLoginSuspendedAccount } from 'features/trustedDevice/pages/SuspiciousLoginSuspendedAccount'
 import { LoadingPage } from 'ui/components/LoadingPage'
@@ -45,7 +45,7 @@ export const SuspensionScreen = () => {
   if (isLoading) {
     return <LoadingPage />
   } else if (suspensionStatus === AccountState.SUSPENDED_UPON_USER_REQUEST) {
-    return <UserRequestedSuspendedAccount />
+    return <SuspendedAccountUponUserRequest />
   } else if (suspensionStatus === AccountState.SUSPICIOUS_LOGIN_REPORTED_BY_USER) {
     return <SuspiciousLoginSuspendedAccount />
   } else {

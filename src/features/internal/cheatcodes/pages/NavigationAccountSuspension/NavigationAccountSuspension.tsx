@@ -12,7 +12,7 @@ export function NavigationAccountSuspension(): React.JSX.Element {
       <PageHeaderSecondary title="Account Management 🎨" />
       <StyledContainer>
         <LinkToComponent name="FraudulentSuspendedAccount" />
-        <LinkToComponent name="UserRequestedSuspendedAccount" />
+        <LinkToComponent name="SuspendedAccountUponUserRequest" />
         <LinkToComponent name="AccountReactivationSuccess" />
         <LinkToComponent name="ConfirmDeleteProfile" />
         <LinkToComponent name="DeleteProfileSuccess" />

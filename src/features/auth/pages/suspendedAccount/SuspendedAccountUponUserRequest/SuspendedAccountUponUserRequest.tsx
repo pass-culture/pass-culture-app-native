@@ -24,7 +24,7 @@ const addDaysToDate = (date: Date, days: number) => {
   return new Date(date.getTime() + days * MILLISECONDS_IN_A_DAY)
 }
 
-export const UserRequestedSuspendedAccount = () => {
+export const SuspendedAccountUponUserRequest = () => {
   const { replace } = useNavigation<UseNavigationType>()
   const { data: settings } = useSettingsContext()
   const { data: accountSuspensionDate } = useAccountSuspensionDate()
@@ -48,7 +48,7 @@ export const UserRequestedSuspendedAccount = () => {
   )
 
   const onReactivationPress = () => {
-    analytics.logAccountReactivation('userrequestedsuspendedaccount')
+    analytics.logAccountReactivation('suspendedaccountuponuserrequest')
     unsuspendAccount()
   }
 
