@@ -29,6 +29,7 @@ import { storage } from 'libs/storage'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { server } from 'tests/server'
 import { fireEvent, render, act, screen } from 'tests/utils'
+import { SUGGESTION_DELAY_IN_MS } from 'ui/components/inputs/EmailInputWithSpellingHelp/useEmailSpellingHelp'
 
 import { Login } from './Login'
 
@@ -57,6 +58,8 @@ const apiSignInSpy = jest.spyOn(API.api, 'postnativev1signin')
 const getModelSpy = jest.spyOn(DeviceInfo, 'getModel')
 const getSystemNameSpy = jest.spyOn(DeviceInfo, 'getSystemName')
 const useFeatureFlagSpy = jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockReturnValue(false)
+
+jest.useFakeTimers('legacy')
 
 describe('<Login/>', () => {
   it('should render correctly', async () => {
@@ -87,6 +90,7 @@ describe('<Login/>', () => {
     useFeatureFlagSpy.mockReturnValueOnce(true) // Mock for useDeviceInfo rerender
     useFeatureFlagSpy.mockReturnValueOnce(true) // Mock for email input rerender
     useFeatureFlagSpy.mockReturnValueOnce(true) // Mock for password input rerender
+    useFeatureFlagSpy.mockReturnValueOnce(true) // Mock for error message rerender
 
     getModelSpy.mockReturnValueOnce('iPhone 13')
     getSystemNameSpy.mockReturnValueOnce('iOS')
@@ -108,6 +112,21 @@ describe('<Login/>', () => {
       },
       { credentials: 'omit' }
     )
+  })
+
+  it('should display suggestion with a corrected email when the email is mistyped', async () => {
+    renderLogin()
+
+    await act(async () => {
+      const emailInput = screen.getByPlaceholderText('tonadresse@email.com')
+      fireEvent.changeText(emailInput, 'john.doe@gmal.com')
+    })
+
+    await act(async () => {
+      jest.advanceTimersByTime(SUGGESTION_DELAY_IN_MS)
+    })
+
+    expect(screen.queryByText('Veux-tu plutôt dire john.doe@gmail.com\u00a0?')).toBeTruthy()
   })
 
   it('should sign in when "Se connecter" is clicked without device info when feature flag is disabled', async () => {
