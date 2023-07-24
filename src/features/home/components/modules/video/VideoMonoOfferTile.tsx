@@ -10,9 +10,7 @@ import { formatDates, getDisplayPrice } from 'libs/parsers'
 import { useCategoryHomeLabelMapping, useCategoryIdMapping } from 'libs/subcategories'
 import { Offer } from 'shared/offer/types'
 import { usePrePopulateOffer } from 'shared/offer/usePrePopulateOffer'
-import { styledButton } from 'ui/components/buttons/styledButton'
 import { OfferImage } from 'ui/components/tiles/OfferImage'
-import { Touchable } from 'ui/components/touchable/Touchable'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { PlainArrowNext } from 'ui/svg/icons/PlainArrowNext'
 import { Typo, getSpacing } from 'ui/theme'
@@ -116,7 +114,7 @@ const OfferImageContainer = styled.View({
   margin: getSpacing(4),
 })
 
-const ArrowOffer = styledButton(Touchable)({
+const ArrowOffer = styled.View({
   position: 'absolute',
   bottom: getSpacing(4),
   right: getSpacing(4),

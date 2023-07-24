@@ -590,25 +590,14 @@ exports[`VideoModal should render correctly if modal visible 1`] = `
                 </View>
               </View>
               <View
-                accessibilityRole="button"
-                accessible={false}
-                collapsable={false}
-                focusable={false}
-                onClick={[Function]}
-                onResponderGrant={[Function]}
-                onResponderMove={[Function]}
-                onResponderRelease={[Function]}
-                onResponderTerminate={[Function]}
-                onResponderTerminationRequest={[Function]}
-                onStartShouldSetResponder={[Function]}
                 style={
-                  Object {
-                    "bottom": 16,
-                    "opacity": 1,
-                    "position": "absolute",
-                    "right": 16,
-                    "userSelect": "auto",
-                  }
+                  Array [
+                    Object {
+                      "bottom": 16,
+                      "position": "absolute",
+                      "right": 16,
+                    },
+                  ]
                 }
               >
                 <View

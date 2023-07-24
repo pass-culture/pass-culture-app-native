@@ -1,5 +1,6 @@
 import colorAlpha from 'color-alpha'
 import React, { FunctionComponent } from 'react'
+import { View } from 'react-native'
 import LinearGradient from 'react-native-linear-gradient'
 import styled from 'styled-components/native'
 
@@ -36,7 +37,7 @@ export const VideoModuleMobile: FunctionComponent<VideoModuleProps> = (props) =>
       </StyledTitleContainer>
       <Spacer.Column numberOfSpaces={5} />
 
-      <StyledWrapper testID="mobile-video-module">
+      <View testID="mobile-video-module">
         <ColorCategoryBackground
           colorCategoryBackgroundHeightUniqueOffer={colorCategoryBackgroundHeightUniqueOffer}
           start={{ x: 0, y: 0 }}
@@ -74,7 +75,7 @@ export const VideoModuleMobile: FunctionComponent<VideoModuleProps> = (props) =>
             />
           )}
         </VideoOfferContainer>
-      </StyledWrapper>
+      </View>
       {!!props.isMultiOffer && (
         <React.Fragment>
           <Spacer.Column numberOfSpaces={2} />
@@ -93,8 +94,6 @@ export const VideoModuleMobile: FunctionComponent<VideoModuleProps> = (props) =>
 const Container = styled.View(({ theme }) => ({
   paddingBottom: theme.home.spaceBetweenModules,
 }))
-
-const StyledWrapper = styled.View({})
 
 const VideoOfferContainer = styled.View(({ theme }) => ({
   marginHorizontal: theme.contentPage.marginHorizontal,
