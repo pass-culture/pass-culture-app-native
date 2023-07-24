@@ -1,11 +1,12 @@
-import { SearchResponse } from '@algolia/client-search'
+import { Hit, SearchResponse } from '@algolia/client-search'
 import flatten from 'lodash/flatten'
-import { useMemo, useRef } from 'react'
+import { useMemo, useRef, useState } from 'react'
 import { useInfiniteQuery } from 'react-query'
 
 import { useIsUserUnderage } from 'features/profile/helpers/useIsUserUnderage'
 import { useSearch } from 'features/search/context/SearchWrapper'
 import { SearchState } from 'features/search/types'
+import { AlgoliaVenue } from 'libs/algolia'
 import { useSearchAnalyticsState } from 'libs/algolia/analytics/SearchAnalyticsWrapper'
 import { fetchOffers } from 'libs/algolia/fetchAlgolia/fetchOffers'
 import { useTransformOfferHits } from 'libs/algolia/fetchAlgolia/transformOfferHit'
@@ -26,22 +27,29 @@ export const useSearchInfiniteQuery = (searchState: SearchState) => {
   const transformHits = useTransformOfferHits()
   const { setCurrentQueryID } = useSearchAnalyticsState()
   const previousPageObjectIds = useRef<string[]>([])
+  const [venuesResponse, setVenuesResponse] = useState({
+    hits: [] as Hit<AlgoliaVenue>[],
+    nbHits: 0,
+    page: 0,
+    nbPages: 0,
+  })
 
   const { data, ...infiniteQuery } = useInfiniteQuery<Response>(
     [QueryKeys.SEARCH_RESULTS, { ...searchState, view: undefined }],
     async ({ pageParam: page = 0 }) => {
-      const response = await fetchOffers({
+      const { offersResponse, venuesResponse } = await fetchOffers({
         parameters: { page, ...searchState },
         userLocation: position,
         isUserUnderage,
         storeQueryID: setCurrentQueryID,
         excludedObjectIds: previousPageObjectIds.current,
       })
+      setVenuesResponse(venuesResponse)
 
-      analytics.logPerformSearch(searchState, response.nbHits)
+      analytics.logPerformSearch(searchState, offersResponse.nbHits)
 
-      previousPageObjectIds.current = response.hits.map((hit) => hit.objectID)
-      return response
+      previousPageObjectIds.current = offersResponse.hits.map((hit: Hit<Offer>) => hit.objectID)
+      return offersResponse
     },
     // first page is 0
     { getNextPageParam }
@@ -57,8 +65,9 @@ export const useSearchInfiniteQuery = (searchState: SearchState) => {
   )
 
   const { nbHits, userData } = data?.pages[0] ?? { nbHits: 0, userData: [] }
+  const venues: AlgoliaVenue[] = useMemo(() => venuesResponse.hits, [venuesResponse.hits])
 
-  return { data, hits, nbHits, userData, ...infiniteQuery }
+  return { data, hits, nbHits, userData, venues, ...infiniteQuery }
 }
 
 export const useSearchResults = () => {

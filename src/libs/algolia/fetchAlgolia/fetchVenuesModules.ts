@@ -75,7 +75,7 @@ const buildVenueTypesPredicate = (venueTypes: string[]): string[] =>
 const buildTagsPredicate = (tags: string[]): string[] =>
   tags.map((tag: string) => `${VenuesFacets.tags}:${tag}`)
 
-const buildVenue = (venue: AlgoliaVenue): Venue => {
+export const buildVenue = (venue: AlgoliaVenue): Venue => {
   const socialMedias: Record<string, string> = {}
   if (venue.facebook) socialMedias[venue.facebook] = venue.facebook
   if (venue.instagram) socialMedias[venue.instagram] = venue.instagram

@@ -6,6 +6,8 @@ import { FlatList, ScrollView, View } from 'react-native'
 import styled from 'styled-components/native'
 
 import { useAuthContext } from 'features/auth/context/AuthContext'
+import { VenueTile } from 'features/home/components/modules/venues/VenueTile'
+import { HomepageModuleType } from 'features/home/types'
 import { UseRouteType } from 'features/navigation/RootNavigator/types'
 import { useSearchResults } from 'features/search/api/useSearchResults/useSearchResults'
 import { AutoScrollSwitch } from 'features/search/components/AutoScrollSwitch/AutoScrollSwitch'
@@ -26,20 +28,28 @@ import { DatesHoursModal } from 'features/search/pages/modals/DatesHoursModal/Da
 import { LocationModal } from 'features/search/pages/modals/LocationModal/LocationModal'
 import { OfferDuoModal } from 'features/search/pages/modals/OfferDuoModal/OfferDuoModal'
 import { PriceModal } from 'features/search/pages/modals/PriceModal/PriceModal'
+import { AlgoliaVenue } from 'libs/algolia'
+import { buildVenue } from 'libs/algolia/fetchAlgolia/fetchVenuesModules'
 import { analytics } from 'libs/analytics'
+import { getPlaylistItemDimensionsFromLayout } from 'libs/contentful/dimensions'
+import { useGeolocation } from 'libs/geolocation'
 import { useIsFalseWithDelay } from 'libs/hooks/useIsFalseWithDelay'
 import { plural } from 'libs/plural'
 import { Offer } from 'shared/offer/types'
 import { useOpacityTransition } from 'ui/animations/helpers/useOpacityTransition'
 import { Li } from 'ui/components/Li'
 import { useModal } from 'ui/components/modals/useModal'
+import { PassPlaylist } from 'ui/components/PassPlaylist'
 import { HitPlaceholder, NumberOfResultsPlaceholder } from 'ui/components/placeholders/Placeholders'
+import { CustomListRenderItem } from 'ui/components/Playlist'
 import { ScrollToTopButton } from 'ui/components/ScrollToTopButton'
 import { Ul } from 'ui/components/Ul'
 import { getSpacing, Spacer } from 'ui/theme'
 import { Helmet } from 'ui/web/global/Helmet'
 
 const ANIMATION_DURATION = 700
+
+const keyExtractor = (item: AlgoliaVenue) => item.objectID
 
 export const SearchResults: React.FC = () => {
   const [autoScrollEnabled, setAutoScrollEnabled] = useState(true)
@@ -55,6 +65,7 @@ export const SearchResults: React.FC = () => {
     isFetching,
     isFetchingNextPage,
     userData,
+    venues,
   } = useSearchResults()
   const { searchState } = useSearch()
   const showSkeleton = useIsFalseWithDelay(isLoading, ANIMATION_DURATION)
@@ -108,6 +119,22 @@ export const SearchResults: React.FC = () => {
       }, [searchListRef])
     ),
     [nbHits, searchState]
+  )
+
+  const { userPosition } = useGeolocation()
+
+  const renderVenueItem: CustomListRenderItem<AlgoliaVenue> = useCallback(
+    ({ item, width, height }) => (
+      <VenueTile
+        moduleName={HomepageModuleType.VenuesModule}
+        moduleId="1"
+        venue={buildVenue(item)}
+        width={width}
+        height={height}
+        userPosition={userPosition}
+      />
+    ),
+    [userPosition]
   )
 
   const onEndReached = useCallback(() => {
@@ -166,6 +193,8 @@ export const SearchResults: React.FC = () => {
       onEndReached()
     }
   }
+
+  const { itemWidth, itemHeight } = getPlaylistItemDimensionsFromLayout('two-items')
 
   return (
     <React.Fragment>
@@ -231,6 +260,15 @@ export const SearchResults: React.FC = () => {
         <Spacer.Column numberOfSpaces={3} />
       </View>
       <Container testID="searchResults">
+        <PassPlaylist
+          testID="venuesSearchList"
+          title="Lieux dans la recherche"
+          data={venues}
+          itemHeight={itemHeight}
+          itemWidth={itemWidth}
+          renderItem={renderVenueItem}
+          keyExtractor={keyExtractor}
+        />
         <SearchList
           ref={searchListRef}
           isFetchingNextPage={isFetchingNextPage}

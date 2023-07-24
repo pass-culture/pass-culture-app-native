@@ -1,8 +1,8 @@
 import { useRoute } from '@react-navigation/native'
 import { SearchClient } from 'algoliasearch'
 import { SendEventForHits } from 'instantsearch.js/es/lib/utils'
-import React, { useEffect } from 'react'
-import { Configure, InstantSearch } from 'react-instantsearch-hooks'
+import React, { useEffect, useMemo } from 'react'
+import { Configure, Index, InstantSearch } from 'react-instantsearch-hooks'
 import { StatusBar } from 'react-native'
 import { v4 as uuidv4 } from 'uuid'
 
@@ -16,6 +16,7 @@ import { AlgoliaSuggestionHit } from 'libs/algolia'
 import { InsightsMiddleware } from 'libs/algolia/analytics/InsightsMiddleware'
 import { client } from 'libs/algolia/fetchAlgolia/clients'
 import { env } from 'libs/environment'
+import { useGeolocation } from 'libs/geolocation'
 import { useNetInfoContext } from 'libs/network/NetInfoWrapper'
 import { OfflinePage } from 'libs/network/OfflinePage'
 import { Form } from 'ui/components/Form'
@@ -43,11 +44,18 @@ const searchClient: SearchClient = {
   },
 }
 const suggestionsIndex = env.ALGOLIA_SUGGESTIONS_INDEX_NAME
+const venuesIndex = env.ALGOLIA_VENUES_INDEX_NAME
 
 export function Search() {
   const netInfo = useNetInfoContext()
   const { params } = useRoute<UseRouteType<'Search'>>()
   const { dispatch } = useSearch()
+  const { userPosition } = useGeolocation()
+
+  const aroundLatLng = useMemo(
+    () => `${userPosition?.latitude}, ${userPosition?.longitude}`,
+    [userPosition?.latitude, userPosition?.longitude]
+  )
 
   useEffect(() => {
     dispatch({ type: 'SET_STATE', payload: params ?? { view: SearchView.Landing } })
@@ -65,6 +73,14 @@ export function Search() {
           <Configure hitsPerPage={5} clickAnalytics />
           <InsightsMiddleware />
           <SearchHeader searchInputID={searchInputID} />
+          <Index indexName={venuesIndex}>
+            <Configure
+              hitsPerPage={5}
+              clickAnalytics
+              aroundRadius="all"
+              aroundLatLng={aroundLatLng}
+            />
+          </Index>
           <BodySearch view={params?.view} />
         </InstantSearch>
       </Form.Flex>
