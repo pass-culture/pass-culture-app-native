@@ -1,6 +1,6 @@
 import { useAlgoliaSimilarOffers } from 'features/offer/api/useAlgoliaSimilarOffers'
 import { mockedAlgoliaResponse } from 'libs/algolia/__mocks__/mockedAlgoliaResponse'
-import * as fetchOfferHitsAPI from 'libs/algolia/fetchAlgolia/fetchOfferHits'
+import * as fetchOffersByIdsAPI from 'libs/algolia/fetchAlgolia/fetchOffersByIds'
 import * as filterOfferHitAPI from 'libs/algolia/fetchAlgolia/transformOfferHit'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { renderHook, waitFor } from 'tests/utils'
@@ -11,7 +11,7 @@ const ids = ['102280', '102272', '102249', '102310']
 describe('useAlgoliaSimilarOffers', () => {
   const mockFetchAlgoliaHits = jest.fn().mockResolvedValue(mockedAlgoliaResponse.hits)
   const fetchAlgoliaHitsSpy = jest
-    .spyOn(fetchOfferHitsAPI, 'fetchOfferHits')
+    .spyOn(fetchOffersByIdsAPI, 'fetchOffersByIds')
     .mockImplementation(mockFetchAlgoliaHits)
 
   const filterAlgoliaHitSpy = jest
@@ -39,7 +39,7 @@ describe('useAlgoliaSimilarOffers', () => {
   })
 
   it('should return undefined when algolia does not return any hit', async () => {
-    jest.spyOn(fetchOfferHitsAPI, 'fetchOfferHits').mockResolvedValueOnce([])
+    jest.spyOn(fetchOffersByIdsAPI, 'fetchOffersByIds').mockResolvedValueOnce([])
     const { result } = renderHook(() => useAlgoliaSimilarOffers(ids), {
       // eslint-disable-next-line local-rules/no-react-query-provider-hoc
       wrapper: ({ children }) => reactQueryProviderHOC(children),

@@ -3,17 +3,17 @@ import { act } from 'react-test-renderer'
 import { useVideoOffers } from 'features/home/api/useVideoOffers'
 import { OffersModuleParameters } from 'features/home/types'
 import { mockedAlgoliaResponse } from 'libs/algolia/__mocks__/mockedAlgoliaResponse'
-import { fetchOfferHits } from 'libs/algolia/fetchAlgolia/fetchOfferHits'
 import { fetchOffersByEan } from 'libs/algolia/fetchAlgolia/fetchOffersByEan'
+import { fetchOffersByIds } from 'libs/algolia/fetchAlgolia/fetchOffersByIds'
 import { offersFixture } from 'shared/offer/offer.fixture'
 import { Offer } from 'shared/offer/types'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { renderHook } from 'tests/utils'
 
-jest.mock('libs/algolia/fetchAlgolia/fetchOfferHits', () => ({
-  fetchOfferHits: jest.fn(),
+jest.mock('libs/algolia/fetchAlgolia/fetchOffersByIds', () => ({
+  fetchOffersByIds: jest.fn(),
 }))
-const mockFetchOfferHits = fetchOfferHits as jest.MockedFunction<typeof fetchOfferHits>
+const mockfetchOffersByIds = fetchOffersByIds as jest.MockedFunction<typeof fetchOffersByIds>
 
 jest.mock('libs/algolia/fetchAlgolia/fetchOffersByEan', () => ({
   fetchOffersByEan: jest.fn(),
@@ -24,7 +24,7 @@ const mockOffers: Offer[] = mockedAlgoliaResponse.hits
 
 describe('useVideoOffers', () => {
   it('should return offers when asking for specific ids', async () => {
-    mockFetchOfferHits.mockResolvedValueOnce([mockOffers[0], mockOffers[1]])
+    mockfetchOffersByIds.mockResolvedValueOnce([mockOffers[0], mockOffers[1]])
 
     const { result } = renderHook(
       () => useVideoOffers([{}] as OffersModuleParameters[], 'moduleId', ['offerId1', 'offerId2']),

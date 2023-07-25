@@ -3,7 +3,7 @@ import { useQuery } from 'react-query'
 
 import { useIsUserUnderage } from 'features/profile/helpers/useIsUserUnderage'
 import { IncompleteSearchHit } from 'libs/algolia'
-import { fetchOfferHits } from 'libs/algolia/fetchAlgolia/fetchOfferHits'
+import { fetchOffersByIds } from 'libs/algolia/fetchAlgolia/fetchOffersByIds'
 import { useTransformOfferHits, filterOfferHit } from 'libs/algolia/fetchAlgolia/transformOfferHit'
 import { QueryKeys } from 'libs/queryKeys'
 import { Offer } from 'shared/offer/types'
@@ -15,7 +15,7 @@ export const useAlgoliaRecommendedHits = (ids: string[], moduleId: string): Offe
   const moduleQueryKey = moduleId
   const { data: hits } = useQuery(
     [QueryKeys.RECOMMENDATION_HITS, moduleQueryKey],
-    () => fetchOfferHits({ objectIds: ids, isUserUnderage }),
+    () => fetchOffersByIds({ objectIds: ids, isUserUnderage }),
     { enabled: ids.length > 0 }
   )
 

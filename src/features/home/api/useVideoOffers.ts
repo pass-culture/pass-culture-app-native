@@ -7,8 +7,8 @@ import { useIsUserUnderage } from 'features/profile/helpers/useIsUserUnderage'
 import { SearchQueryParameters } from 'libs/algolia'
 import { fetchMultipleOffers } from 'libs/algolia/fetchAlgolia/fetchMultipleOffers/fetchMultipleOffers'
 import { useAdaptOffersPlaylistParameters } from 'libs/algolia/fetchAlgolia/fetchMultipleOffers/helpers/useAdaptOffersPlaylistParameters'
-import { fetchOfferHits } from 'libs/algolia/fetchAlgolia/fetchOfferHits'
 import { fetchOffersByEan } from 'libs/algolia/fetchAlgolia/fetchOffersByEan'
+import { fetchOffersByIds } from 'libs/algolia/fetchAlgolia/fetchOffersByIds'
 import { useTransformOfferHits } from 'libs/algolia/fetchAlgolia/transformOfferHit'
 import { useNetInfoContext } from 'libs/network/NetInfoWrapper'
 import { QueryKeys } from 'libs/queryKeys'
@@ -50,7 +50,7 @@ export const useVideoOffers = (
   const offersByIdsQuery = async () => {
     if (!offerIds) return []
 
-    const result = await fetchOfferHits({
+    const result = await fetchOffersByIds({
       objectIds: offerIds,
       isUserUnderage,
     })

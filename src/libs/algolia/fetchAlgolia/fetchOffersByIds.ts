@@ -6,15 +6,15 @@ import { client } from 'libs/algolia/fetchAlgolia/clients'
 import { env } from 'libs/environment'
 import { Offer } from 'shared/offer/types'
 
-type FetchOfferHitsArgs = {
+type fetchOffersByIdsArgs = {
   objectIds: string[]
   isUserUnderage: boolean
 }
 
-export const fetchOfferHits = async ({
+export const fetchOffersByIds = async ({
   objectIds,
   isUserUnderage,
-}: FetchOfferHitsArgs): Promise<Offer[]> => {
+}: fetchOffersByIdsArgs): Promise<Offer[]> => {
   const index = client.initIndex(env.ALGOLIA_OFFERS_INDEX_NAME)
   const searchParameters = buildOfferSearchParameters(
     { ...initialSearchState, hitsPerPage: objectIds.length, objectIds, query: '' },
