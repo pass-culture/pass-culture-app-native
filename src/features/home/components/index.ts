@@ -1,4 +1,0 @@
-export { BusinessModule } from './modules/BusinessModule'
-export { ExclusivityModule } from './modules/exclusivity/ExclusivityModule'
-export { OffersModule } from './modules/OffersModule'
-export { VenuesModule } from './modules/venues/VenuesModule'

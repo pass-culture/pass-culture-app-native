@@ -1,14 +1,12 @@
 import React, { memo } from 'react'
 
-import {
-  BusinessModule,
-  ExclusivityModule,
-  OffersModule,
-  VenuesModule,
-} from 'features/home/components'
+import { BusinessModule } from 'features/home/components/modules/BusinessModule'
 import { CategoryListModule } from 'features/home/components/modules/categories/CategoryListModule'
+import { ExclusivityModule } from 'features/home/components/modules/exclusivity/ExclusivityModule'
+import { OffersModule } from 'features/home/components/modules/OffersModule'
 import { RecommendationModule } from 'features/home/components/modules/RecommendationModule'
 import { ThematicHighlightModule } from 'features/home/components/modules/ThematicHighlightModule'
+import { VenuesModule } from 'features/home/components/modules/venues/VenuesModule'
 import { VideoModule } from 'features/home/components/modules/video/VideoModule'
 import {
   HomepageModule,
