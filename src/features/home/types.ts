@@ -309,6 +309,10 @@ export const isExclusivityModule = (module: HomepageModule): module is Exclusivi
   return module.type === HomepageModuleType.ExclusivityModule
 }
 
+export const isHighlightOfferModule = (module: HomepageModule): module is HighlightOfferModule => {
+  return module.type === HomepageModuleType.HighlightOfferModule
+}
+
 export const isThematicHighlightModule = (
   module: HomepageModule
 ): module is ThematicHighlightModule => {

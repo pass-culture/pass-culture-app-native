@@ -3,6 +3,7 @@ import React, { memo } from 'react'
 import { BusinessModule } from 'features/home/components/modules/BusinessModule'
 import { CategoryListModule } from 'features/home/components/modules/categories/CategoryListModule'
 import { ExclusivityModule } from 'features/home/components/modules/exclusivity/ExclusivityModule'
+import { HighlightOfferModule } from 'features/home/components/modules/HighlightOfferModule'
 import { OffersModule } from 'features/home/components/modules/OffersModule'
 import { RecommendationModule } from 'features/home/components/modules/RecommendationModule'
 import { ThematicHighlightModule } from 'features/home/components/modules/ThematicHighlightModule'
@@ -13,6 +14,7 @@ import {
   isBusinessModule,
   isCategoryListModule,
   isExclusivityModule,
+  isHighlightOfferModule,
   isOffersModule,
   isRecommendedOffersModule,
   isThematicHighlightModule,
@@ -65,6 +67,7 @@ const UnmemoizedModule = ({
       />
     )
   }
+
   if (isRecommendedOffersModule(item)) {
     return (
       <RecommendationModule
@@ -91,15 +94,23 @@ const UnmemoizedModule = ({
       />
     )
   }
+
+  if (isHighlightOfferModule(item) && enableNewExclusivityBlock) {
+    return <HighlightOfferModule {...item} />
+  }
+
   if (isBusinessModule(item)) {
     return <BusinessModule {...item} homeEntryId={homeEntryId} index={index} moduleId={item.id} />
   }
+
   if (isThematicHighlightModule(item)) {
     return <ThematicHighlightModule {...item} homeEntryId={homeEntryId} index={index} />
   }
+
   if (isCategoryListModule(item)) {
     return <CategoryListModule {...item} homeEntryId={homeEntryId} index={index} />
   }
+
   if (isVideoModule(item)) {
     return (
       <VideoModule
