@@ -1,5 +1,5 @@
 import { useNavigation, useRoute } from '@react-navigation/native'
-import React from 'react'
+import React, { useCallback } from 'react'
 import styled from 'styled-components/native'
 
 import { contactSupport } from 'features/auth/helpers/contactSupport'
@@ -46,7 +46,9 @@ export const SuspensionChoice = () => {
       },
     })
 
-  const onPressContinue = () => suspendAccountForSuspiciousLogin({ token: params.token })
+  const onPressContinue = useCallback(() => {
+    suspendAccountForSuspiciousLogin({ token: params.token })
+  }, [params.token, suspendAccountForSuspiciousLogin])
 
   return (
     <GenericInfoPageWhite
