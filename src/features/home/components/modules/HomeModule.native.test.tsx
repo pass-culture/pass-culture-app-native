@@ -11,9 +11,11 @@ import {
   formattedCategoryListModule,
   formattedRecommendedOffersModule,
   formattedThematicHighlightModule,
+  formattedOffersModule,
+  formattedVenuesModule,
 } from 'features/home/fixtures/homepage.fixture'
 import { videoModuleFixture } from 'features/home/fixtures/videoModule.fixture'
-import { HomepageModule } from 'features/home/types'
+import { HomepageModule, ModuleData } from 'features/home/types'
 import { offerResponseSnap } from 'features/offer/fixtures/offerResponse'
 import { SimilarOffersResponse } from 'features/offer/types'
 import { mockedAlgoliaResponse } from 'libs/algolia/__mocks__/mockedAlgoliaResponse'
@@ -57,6 +59,12 @@ jest.mock('libs/geolocation/GeolocationWrapper', () => ({
 jest.mock('features/home/api/useAlgoliaRecommendedHits', () => ({
   useAlgoliaRecommendedHits: jest.fn(() => mockedAlgoliaResponse.hits),
 }))
+
+const defaultData: ModuleData = {
+  playlistItems: offersFixture,
+  nbPlaylistResults: 4,
+  moduleId: 'blablabla',
+}
 
 describe('<HomeModule />', () => {
   it('should display old exclusivity module when feature flag is false', async () => {
@@ -161,11 +169,28 @@ describe('<HomeModule />', () => {
 
     expect(screen.getByText('Temps très fort')).toBeTruthy()
   })
+
+  it('should display OffersModule', async () => {
+    renderHomeModule(formattedOffersModule, defaultData)
+
+    await act(async () => {})
+    expect(screen.getByText('La nuit des temps')).toBeTruthy()
+  })
+
+  // TODO(PC-23671): Fix this VenuesModule test
+  it.skip('should display VenuesModule', async () => {
+    renderHomeModule(formattedVenuesModule)
+
+    await act(async () => {})
+    expect(screen.getByText('La nuit des temps')).toBeTruthy()
+  })
 })
 
-function renderHomeModule(item: HomepageModule) {
+function renderHomeModule(item: HomepageModule, data?: ModuleData) {
   return render(
     // eslint-disable-next-line local-rules/no-react-query-provider-hoc
-    reactQueryProviderHOC(<HomeModule item={item} index={index} homeEntryId={homeEntryId} />)
+    reactQueryProviderHOC(
+      <HomeModule item={item} index={index} homeEntryId={homeEntryId} data={data} />
+    )
   )
 }

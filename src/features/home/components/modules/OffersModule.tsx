@@ -19,10 +19,10 @@ import { CustomListRenderItem, ItemDimensions, RenderFooterItem } from 'ui/compo
 import { SeeMore } from 'ui/components/SeeMore'
 
 type OffersModuleProps = {
-  search: OffersModuleType['offersModuleParameters']
-  display: OffersModuleType['displayParameters']
+  offersModuleParameters: OffersModuleType['offersModuleParameters']
+  displayParameters: OffersModuleType['displayParameters']
   moduleId: string
-  cover: string | null
+  cover?: string | null
   index: number
   homeEntryId: string | undefined
   data: ModuleData | undefined
@@ -31,7 +31,8 @@ type OffersModuleProps = {
 const keyExtractor = (item: Offer) => item.objectID
 
 export const OffersModule = (props: OffersModuleProps) => {
-  const { cover, display, search, index, moduleId, homeEntryId, data } = props
+  const { cover, displayParameters, offersModuleParameters, index, moduleId, homeEntryId, data } =
+    props
   const { position } = useHomePosition()
   const adaptedPlaylistParameters = useAdaptOffersPlaylistParameters()
   const mapping = useCategoryIdMapping()
@@ -43,7 +44,7 @@ export const OffersModule = (props: OffersModuleProps) => {
     nbPlaylistResults: 0,
   }
 
-  const [parameters] = search
+  const [parameters] = offersModuleParameters
   // When we navigate to the search page, we want to show 20 results per page,
   // not what is configured in contentful
   // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -53,7 +54,7 @@ export const OffersModule = (props: OffersModuleProps) => {
     view: SearchView.Results,
   }
   const searchTabConfig = getTabNavConfig('Search', searchParams)
-  const moduleName = display.title ?? parameters.title
+  const moduleName = displayParameters.title ?? parameters.title
   const logHasSeenAllTilesOnce = useFunctionOnce(() =>
     analytics.logAllTilesSeen(moduleName, playlistItems.length)
   )
@@ -98,7 +99,7 @@ export const OffersModule = (props: OffersModuleProps) => {
     [position, user?.isBeneficiary, labelMapping, mapping]
   )
 
-  const { itemWidth, itemHeight } = getPlaylistItemDimensionsFromLayout(display.layout)
+  const { itemWidth, itemHeight } = getPlaylistItemDimensionsFromLayout(displayParameters.layout)
 
   const renderFooter: RenderFooterItem = useCallback(
     ({ width, height }: ItemDimensions) => {
@@ -117,7 +118,7 @@ export const OffersModule = (props: OffersModuleProps) => {
   )
 
   const shouldModuleBeDisplayed =
-    playlistItems.length > 0 && playlistItems.length >= display.minOffers
+    playlistItems.length > 0 && playlistItems.length >= displayParameters.minOffers
 
   useEffect(() => {
     if (shouldModuleBeDisplayed) {
@@ -131,12 +132,12 @@ export const OffersModule = (props: OffersModuleProps) => {
   return (
     <PassPlaylist
       testID="offersModuleList"
-      title={display.title}
-      subtitle={display.subtitle}
+      title={displayParameters.title}
+      subtitle={displayParameters.subtitle}
       data={playlistItems}
       itemHeight={itemHeight}
       itemWidth={itemWidth}
-      coverUrl={cover}
+      coverUrl={cover ?? null}
       onPressSeeMore={onPressSeeMore}
       titleSeeMoreLink={{ screen: searchTabConfig[0], params: searchTabConfig[1] }}
       renderItem={renderItem}

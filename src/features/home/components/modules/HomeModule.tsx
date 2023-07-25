@@ -14,7 +14,6 @@ import {
   HomepageModuleType,
   isExclusivityModule,
   isHighlightOfferModule,
-  isOffersModule,
   isVenuesModule,
   isVideoModule,
   ModuleData,
@@ -38,20 +37,6 @@ const UnmemoizedModule = ({
   const enableNewExclusivityBlock = useFeatureFlag(
     RemoteStoreFeatureFlags.WIP_ENABLE_NEW_EXCLUSIVITY_BLOCK
   )
-
-  if (isOffersModule(item)) {
-    return (
-      <OffersModule
-        moduleId={item.id}
-        search={item.offersModuleParameters}
-        display={item.displayParameters}
-        cover={item.cover ?? null}
-        index={index}
-        homeEntryId={homeEntryId}
-        data={data}
-      />
-    )
-  }
 
   if (isVenuesModule(item)) {
     return (
@@ -99,12 +84,21 @@ const UnmemoizedModule = ({
   const modules = {
     [HomepageModuleType.BusinessModule]: BusinessModule,
     [HomepageModuleType.CategoryListModule]: CategoryListModule,
+    [HomepageModuleType.OffersModule]: OffersModule,
     [HomepageModuleType.RecommendedOffersModule]: RecommendationModule,
     [HomepageModuleType.ThematicHighlightModule]: ThematicHighlightModule,
   }
 
   const ComponentModule = modules[item.type]
-  return <ComponentModule {...item} homeEntryId={homeEntryId} index={index} moduleId={item.id} />
+  return (
+    <ComponentModule
+      {...item}
+      homeEntryId={homeEntryId}
+      index={index}
+      moduleId={item.id}
+      data={data}
+    />
+  )
 }
 
 export const HomeModule = memo(UnmemoizedModule)

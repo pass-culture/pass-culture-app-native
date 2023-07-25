@@ -19,8 +19,8 @@ const mockHits = mockedAlgoliaResponse.hits.map(transformHit('fakeUrlPrefix')) a
 const mockNbHits = mockedAlgoliaResponse.nbHits
 
 const props = {
-  search: [{} as OffersModuleParameters],
-  display: {
+  offersModuleParameters: [{} as OffersModuleParameters],
+  displayParameters: {
     minOffers: 0,
     title: 'Module title',
     layout: 'one-item-medium',
@@ -74,7 +74,10 @@ describe('OffersModule component - Analytics', () => {
       // 1st scroll to last item => trigger
       await scrollView.props.onScroll({ nativeEvent: nativeEventEnd })
     })
-    expect(analytics.logAllTilesSeen).toHaveBeenCalledWith(props.display.title, mockNbHits)
+    expect(analytics.logAllTilesSeen).toHaveBeenCalledWith(
+      props.displayParameters.title,
+      mockNbHits
+    )
     expect(analytics.logAllTilesSeen).toHaveBeenCalledTimes(1)
 
     scrollView.props.onScroll({ nativeEvent: nativeEventEnd })
@@ -97,8 +100,8 @@ describe('OffersModule component - Analytics', () => {
     render(
       <OffersModule
         {...props}
-        search={[{ title: 'Search title' } as OffersModuleParameters]}
-        display={{ ...props.display, minOffers: mockNbHits + 1 }}
+        offersModuleParameters={[{ title: 'Search title' } as OffersModuleParameters]}
+        displayParameters={{ ...props.displayParameters, minOffers: mockNbHits + 1 }}
         index={1}
       />
     )
