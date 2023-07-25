@@ -98,5 +98,5 @@ export const useVideoOffers = (
 
   const hits = (data?.map(transformHits) as Offer[]) ?? []
 
-  return { offers: hits.slice(0, 9) }
+  return { offers: hits.slice(0, 10) }
 }
