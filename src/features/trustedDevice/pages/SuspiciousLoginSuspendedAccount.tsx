@@ -13,7 +13,6 @@ export const SuspiciousLoginSuspendedAccount = () => (
     </StyledBody>
   </GenericSuspendedAccount>
 )
-
 const StyledBody = styled(Typo.Body)(({ theme }) => ({
   color: theme.colors.white,
 }))

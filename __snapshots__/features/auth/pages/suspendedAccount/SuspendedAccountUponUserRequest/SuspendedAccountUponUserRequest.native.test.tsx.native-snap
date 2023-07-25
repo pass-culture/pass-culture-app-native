@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<SuspiciousLoginSuspendedAccount/> should match snapshot 1`] = `
+exports[`<SuspendedAccountUponUserRequest /> should match snapshot 1`] = `
 <View
   style={
     Array [
@@ -120,7 +120,7 @@ exports[`<SuspiciousLoginSuspendedAccount/> should match snapshot 1`] = `
         ]
       }
     >
-      Ton compte a été suspendu
+      Ton compte est désactivé
     </Text>
     <View
       numberOfSpaces={5}
@@ -132,54 +132,48 @@ exports[`<SuspiciousLoginSuspendedAccount/> should match snapshot 1`] = `
         ]
       }
     />
-    <View
+    <Text
       style={
         Array [
           Object {
-            "width": "100%",
+            "color": "#ffffff",
+            "fontFamily": "Montserrat-Regular",
+            "fontSize": 15,
+            "lineHeight": 20,
+            "textAlign": "center",
           },
         ]
       }
     >
-      <Text
-        style={
-          Array [
-            Object {
-              "color": "#ffffff",
-              "fontFamily": "Montserrat-Regular",
-              "fontSize": 15,
-              "lineHeight": 20,
-            },
-          ]
-        }
-      >
-        En raison d’une activité suspicieuse, ton compte a été suspendu.
-      </Text>
-      <View
-        numberOfSpaces={5}
-        style={
-          Array [
-            Object {
-              "height": 20,
-            },
-          ]
-        }
-      />
-      <Text
-        style={
-          Array [
-            Object {
-              "color": "#ffffff",
-              "fontFamily": "Montserrat-Regular",
-              "fontSize": 15,
-              "lineHeight": 20,
-            },
-          ]
-        }
-      >
-        Si tu souhaites revoir cette décision, tu peux contacter le service fraude.
-      </Text>
-    </View>
+      Tu as jusqu’au 
+      10 juillet 2022 à 10h29
+       pour réactiver ton compte.
+    </Text>
+    <View
+      numberOfSpaces={5}
+      style={
+        Array [
+          Object {
+            "height": 20,
+          },
+        ]
+      }
+    />
+    <Text
+      style={
+        Array [
+          Object {
+            "color": "#ffffff",
+            "fontFamily": "Montserrat-Regular",
+            "fontSize": 15,
+            "lineHeight": 20,
+            "textAlign": "center",
+          },
+        ]
+      }
+    >
+      Une fois cette date passée, ton compte pass Culture sera définitivement supprimé.
+    </Text>
     <View
       numberOfSpaces={30}
       style={
@@ -217,7 +211,7 @@ exports[`<SuspiciousLoginSuspendedAccount/> should match snapshot 1`] = `
       }
     >
       <View
-        accessibilityLabel="Ouvrir le gestionnaire mail pour contacter le service fraude"
+        accessibilityLabel="Réactiver mon compte"
         accessible={true}
         collapsable={false}
         focusable={true}
@@ -246,27 +240,8 @@ exports[`<SuspiciousLoginSuspendedAccount/> should match snapshot 1`] = `
             "width": "100%",
           }
         }
-        testID="Ouvrir le gestionnaire mail pour contacter le service fraude"
+        testID="Réactiver mon compte"
       >
-        <View
-          style={
-            Array [
-              Object {
-                "flexShrink": 0,
-              },
-            ]
-          }
-        >
-          <View
-            height={24}
-            testID="button-icon"
-            width={24}
-          >
-            <Text>
-              button-icon-SVG-Mock
-            </Text>
-          </View>
-        </View>
         <Text
           adjustsFontSizeToFit={false}
           numberOfLines={1}
@@ -277,13 +252,13 @@ exports[`<SuspiciousLoginSuspendedAccount/> should match snapshot 1`] = `
                 "fontFamily": "Montserrat-Bold",
                 "fontSize": 15,
                 "lineHeight": 20,
-                "marginLeft": 8,
+                "marginLeft": 0,
                 "maxWidth": "100%",
               },
             ]
           }
         >
-          Contacter le service fraude
+          Réactiver mon compte
         </Text>
       </View>
       <View

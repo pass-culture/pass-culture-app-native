@@ -1,4 +1,5 @@
 import React, { PropsWithChildren } from 'react'
+import styled from 'styled-components/native'
 
 import { useLogoutRoutine } from 'features/auth/helpers/useLogoutRoutine'
 import { navigateToHomeConfig } from 'features/navigation/helpers'
@@ -37,7 +38,11 @@ export const GenericSuspendedAccount: React.FC<PropsWithChildren> = ({ children 
           icon={PlainArrowPrevious}
         />,
       ]}>
-      {children}
+      <ChildrenContainer>{children}</ChildrenContainer>
     </GenericInfoPage>
   )
 }
+
+const ChildrenContainer = styled.View({
+  width: '100%',
+})
