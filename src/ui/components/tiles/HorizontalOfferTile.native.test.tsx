@@ -7,10 +7,10 @@ import { analytics } from 'libs/analytics'
 import { ConsultOfferAnalyticsParams } from 'libs/analytics/types'
 import { fireEvent, render, screen } from 'tests/utils'
 
-import { Hit } from './Hit'
+import { HorizontalOfferTile } from './HorizontalOfferTile'
 
-const mockHit = mockedAlgoliaResponse.hits[0]
-const offerId = Number(mockHit.objectID)
+const mockOffer = mockedAlgoliaResponse.hits[0]
+const offerId = Number(mockOffer.objectID)
 const mockAnalyticsParams: ConsultOfferAnalyticsParams = {
   from: 'search',
   query: '',
@@ -32,9 +32,9 @@ jest.mock('libs/algolia/analytics/SearchAnalyticsWrapper', () => ({
   useSearchAnalyticsState: () => ({ currentQueryID: 'abc123' }),
 }))
 
-describe('Hit component', () => {
-  it('should navigate to the offer when pressing an hit', async () => {
-    render(<Hit hit={mockHit} analyticsParams={mockAnalyticsParams} />)
+describe('HorizontalOfferTile component', () => {
+  it('should navigate to the offer when pressing an offer', async () => {
+    render(<HorizontalOfferTile offer={mockOffer} analyticsParams={mockAnalyticsParams} />)
     await fireEvent.press(screen.getByRole('link'))
     expect(navigate).toHaveBeenCalledWith('Offer', {
       id: offerId,
@@ -43,8 +43,8 @@ describe('Hit component', () => {
     })
   })
 
-  it('should log analytics event when pressing an hit', async () => {
-    render(<Hit hit={mockHit} analyticsParams={mockAnalyticsParams} />)
+  it('should log analytics event when pressing an offer', async () => {
+    render(<HorizontalOfferTile offer={mockOffer} analyticsParams={mockAnalyticsParams} />)
     await fireEvent.press(screen.getByRole('link'))
     expect(analytics.logConsultOffer).toBeCalledTimes(1)
     expect(analytics.logConsultOffer).toHaveBeenCalledWith({
@@ -56,8 +56,8 @@ describe('Hit component', () => {
     })
   })
 
-  it('should notify Algolia when pressing an hit', async () => {
-    render(<Hit hit={mockHit} analyticsParams={mockAnalyticsParams} />)
+  it('should notify Algolia when pressing an offer', async () => {
+    render(<HorizontalOfferTile offer={mockOffer} analyticsParams={mockAnalyticsParams} />)
 
     const hitComponent = screen.getByRole('link')
     await fireEvent.press(hitComponent)
@@ -70,21 +70,21 @@ describe('Hit component', () => {
 
   it('should show distance if geolocation enabled', () => {
     mockDistance = '10 km'
-    render(<Hit hit={mockHit} analyticsParams={mockAnalyticsParams} />)
+    render(<HorizontalOfferTile offer={mockOffer} analyticsParams={mockAnalyticsParams} />)
     expect(screen.queryByText('10 km')).toBeTruthy()
   })
 
-  describe('When pressing an hit without object id', () => {
-    const hit = { ...mockHit, objectID: '' }
+  describe('When pressing an offer without object id', () => {
+    const offer = { ...mockOffer, objectID: '' }
 
     it('should not navigate to the offer', async () => {
-      render(<Hit hit={hit} analyticsParams={mockAnalyticsParams} />)
+      render(<HorizontalOfferTile offer={offer} analyticsParams={mockAnalyticsParams} />)
       await fireEvent.press(screen.getByRole('link'))
       expect(navigate).not.toHaveBeenCalled()
     })
 
     it('should not log analytics event', async () => {
-      render(<Hit hit={hit} analyticsParams={mockAnalyticsParams} />)
+      render(<HorizontalOfferTile offer={offer} analyticsParams={mockAnalyticsParams} />)
       await fireEvent.press(screen.getByRole('link'))
       expect(analytics.logConsultOffer).not.toHaveBeenCalled()
     })
