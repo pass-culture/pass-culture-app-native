@@ -15,7 +15,6 @@ import {
   isExclusivityModule,
   isHighlightOfferModule,
   isOffersModule,
-  isThematicHighlightModule,
   isVenuesModule,
   isVideoModule,
   ModuleData,
@@ -97,14 +96,11 @@ const UnmemoizedModule = ({
     return <HighlightOfferModule {...item} />
   }
 
-  if (isThematicHighlightModule(item)) {
-    return <ThematicHighlightModule {...item} homeEntryId={homeEntryId} index={index} />
-  }
-
   const modules = {
     [HomepageModuleType.BusinessModule]: BusinessModule,
     [HomepageModuleType.CategoryListModule]: CategoryListModule,
     [HomepageModuleType.RecommendedOffersModule]: RecommendationModule,
+    [HomepageModuleType.ThematicHighlightModule]: ThematicHighlightModule,
   }
 
   const ComponentModule = modules[item.type]

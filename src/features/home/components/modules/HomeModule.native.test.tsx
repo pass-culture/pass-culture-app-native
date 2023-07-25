@@ -1,3 +1,4 @@
+import mockdate from 'mockdate'
 import { rest } from 'msw'
 import React from 'react'
 
@@ -9,6 +10,7 @@ import {
   formattedBusinessModule,
   formattedCategoryListModule,
   formattedRecommendedOffersModule,
+  formattedThematicHighlightModule,
 } from 'features/home/fixtures/homepage.fixture'
 import { videoModuleFixture } from 'features/home/fixtures/videoModule.fixture'
 import { HomepageModule } from 'features/home/types'
@@ -148,6 +150,16 @@ describe('<HomeModule />', () => {
     await act(async () => {})
 
     expect(screen.getByText('Découvre Lujipeka')).toBeTruthy()
+  })
+
+  it('should display ThematicHighlightModule', async () => {
+    mockdate.set(new Date(2024))
+
+    renderHomeModule(formattedThematicHighlightModule)
+
+    await act(async () => {})
+
+    expect(screen.getByText('Temps très fort')).toBeTruthy()
   })
 })
 
