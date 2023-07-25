@@ -1,10 +1,11 @@
-import { SearchResponse } from '@algolia/client-search'
+import { Hit, SearchResponse } from '@algolia/client-search'
 import { flatten } from 'lodash'
 import { useMemo, useRef } from 'react'
 import { InfiniteQueryObserverOptions, useInfiniteQuery } from 'react-query'
 
 import { VenueListItem } from 'features/offer/components/VenueSelectionList/VenueSelectionList'
 import { useIsUserUnderage } from 'features/profile/helpers/useIsUserUnderage'
+import { SearchOfferResponse } from 'features/search/api/useSearchResults/useSearchResults'
 import { initialSearchState } from 'features/search/context/reducer'
 import { formatFullAddressStartsWithPostalCode } from 'libs/address/useFormatFullAddress'
 import { AlgoliaHit, Geoloc } from 'libs/algolia'
@@ -101,7 +102,7 @@ export const useSearchVenueOffers = ({
   const { setCurrentQueryID } = useSearchAnalyticsState()
   const previousPageObjectIds = useRef<string[]>([])
 
-  const { data, ...infiniteQuery } = useInfiniteQuery<Response>(
+  const { data, ...infiniteQuery } = useInfiniteQuery<SearchOfferResponse>(
     [QueryKeys.SEARCH_RESULTS, { ...initialSearchState, view: undefined, query }],
     async ({ pageParam: page = 0 }) => {
       const response = await fetchOffers({
@@ -113,7 +114,7 @@ export const useSearchVenueOffers = ({
         isFromOffer: true,
       })
 
-      previousPageObjectIds.current = response.hits.map((hit) => hit.objectID)
+      previousPageObjectIds.current = response.hits.map((hit: Hit<Offer>) => hit.objectID)
       return response
     },
     // first page is 0

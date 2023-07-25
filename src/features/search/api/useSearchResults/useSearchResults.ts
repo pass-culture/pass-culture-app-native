@@ -15,7 +15,7 @@ import { QueryKeys } from 'libs/queryKeys'
 import { getNextPageParam } from 'shared/getNextPageParam/getNextPageParam'
 import { Offer } from 'shared/offer/types'
 
-export type Response = Pick<
+export type SearchOfferResponse = Pick<
   SearchResponse<Offer>,
   'hits' | 'nbHits' | 'page' | 'nbPages' | 'userData'
 >

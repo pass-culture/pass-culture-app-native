@@ -1,6 +1,6 @@
 import { Hit } from '@algolia/client-search'
 
-import { Response } from 'features/search/api/useSearchResults/useSearchResults'
+import { SearchOfferResponse } from 'features/search/api/useSearchResults/useSearchResults'
 import { captureAlgoliaError } from 'libs/algolia/fetchAlgolia/AlgoliaError'
 import { buildOfferSearchParameters } from 'libs/algolia/fetchAlgolia/buildAlgoliaParameters/buildOfferSearchParameters'
 import { offerAttributesToRetrieve } from 'libs/algolia/fetchAlgolia/buildAlgoliaParameters/offerAttributesToRetrieve'
@@ -28,7 +28,7 @@ export const fetchOffers = async ({
   storeQueryID,
   indexSearch = env.ALGOLIA_OFFERS_INDEX_NAME,
   isFromOffer,
-}: FetchOfferArgs): Promise<Response> => {
+}: FetchOfferArgs): Promise<SearchOfferResponse> => {
   const searchParameters = buildOfferSearchParameters(parameters, userLocation, isUserUnderage)
   const index = client.initIndex(indexSearch)
 
