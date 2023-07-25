@@ -2,6 +2,7 @@ import React, { PropsWithChildren } from 'react'
 import styled from 'styled-components/native'
 
 import { ProfileContainer } from 'features/profile/components/PageProfileSection/ProfileContainer'
+import { BlurHeader } from 'ui/components/headers/BlurHeader'
 import {
   PageHeaderWithoutPlaceholder,
   useGetHeaderHeight,
@@ -29,6 +30,7 @@ export function PageProfileSection({ title, scrollable = false, children }: Prop
         {children}
         <Spacer.Column numberOfSpaces={6} />
       </Container>
+      <BlurHeader height={headerHeight} />
     </React.Fragment>
   )
 }
