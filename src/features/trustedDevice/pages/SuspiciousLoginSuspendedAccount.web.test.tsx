@@ -2,14 +2,14 @@ import React from 'react'
 
 import { render, checkAccessibilityFor } from 'tests/utils/web'
 
-import { SuspensionConfirmation } from './SuspensionConfirmation'
+import { SuspiciousLoginSuspendedAccount } from './SuspiciousLoginSuspendedAccount'
 
-jest.mock('react-query')
+jest.mock('features/auth/helpers/useLogoutRoutine')
 
-describe('<SuspensionConfirmation/>', () => {
+describe('<SuspiciousLoginSuspendedAccount/>', () => {
   describe('Accessibility', () => {
     it('should not have basic accessibility issues', async () => {
-      const { container } = render(<SuspensionConfirmation />)
+      const { container } = render(<SuspiciousLoginSuspendedAccount />)
 
       const results = await checkAccessibilityFor(container)
 

@@ -2,14 +2,14 @@ import React from 'react'
 
 import { render, checkAccessibilityFor } from 'tests/utils/web'
 
-import { FraudulentAccount } from './FraudulentAccount'
+import { SuspendedAccountUponUserRequest } from './SuspendedAccountUponUserRequest'
 
 jest.mock('react-query')
 
-describe('<FraudulentAccount/>', () => {
+describe('<SuspendedAccountUponUserRequest/>', () => {
   describe('Accessibility', () => {
     it('should not have basic accessibility issues', async () => {
-      const { container } = render(<FraudulentAccount />)
+      const { container } = render(<SuspendedAccountUponUserRequest />)
 
       const results = await checkAccessibilityFor(container)
 

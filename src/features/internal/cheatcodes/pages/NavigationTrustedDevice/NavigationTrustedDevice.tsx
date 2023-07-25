@@ -20,7 +20,7 @@ export function NavigationTrustedDevice(): React.JSX.Element {
         <LinkToComponent name="TrustedDeviceInfos" />
         <LinkToComponent name="SuspensionChoice" />
         <LinkToComponent name="SuspensionChoiceExpiredLink" />
-        <LinkToComponent name="SuspensionConfirmation" />
+        <LinkToComponent name="SuspiciousLoginSuspendedAccount" />
         <LinkToComponent name="AccountSecurity" navigationParams={{ token: TOKEN }} />
         <BufferContainer>
           <LinkToComponent

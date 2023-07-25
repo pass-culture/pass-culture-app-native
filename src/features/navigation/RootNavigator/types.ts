@@ -73,7 +73,7 @@ export type TrustedDeviceRootStackParamList = {
   NavigationTrustedDevice: undefined
   SuspensionChoice: undefined
   SuspensionChoiceExpiredLink: undefined
-  SuspensionConfirmation: undefined
+  SuspiciousLoginSuspendedAccount: undefined
   TrustedDeviceInfos: undefined
 }
 
@@ -165,7 +165,7 @@ export type RootStackParamList = {
   EndedBookings: undefined
   FavoritesSorts: undefined
   ForgottenPassword: undefined
-  FraudulentAccount: undefined
+  FraudulentSuspendedAccount: undefined
   Login?: {
     preventCancellation?: boolean
     displayForcedLoginHelpMessage?: boolean
@@ -200,7 +200,7 @@ export type RootStackParamList = {
   SearchFilter: Partial<SearchState>
   SignupConfirmationEmailSent: { email: string }
   SignupConfirmationExpiredLink: { email: string }
-  SuspendedAccount: undefined
+  SuspendedAccountUponUserRequest: undefined
   TabNavigator: {
     screen: TabRouteName
     params: TabParamList[TabRouteName]

@@ -23,7 +23,7 @@ describe('<SuspensionChoice/>', () => {
     const acceptSuspensionButton = screen.getByText('Oui, suspendre mon compte')
     fireEvent.press(acceptSuspensionButton)
 
-    expect(navigate).toHaveBeenNthCalledWith(1, 'SuspensionConfirmation')
+    expect(navigate).toHaveBeenNthCalledWith(1, 'SuspiciousLoginSuspendedAccount')
   })
 
   it('should open mail app when clicking on "Contacter le support" button', () => {

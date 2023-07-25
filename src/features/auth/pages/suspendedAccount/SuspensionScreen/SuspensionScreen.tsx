@@ -4,9 +4,10 @@ import React, { useCallback, useEffect } from 'react'
 import { AccountState } from 'api/gen'
 import { useAccountSuspensionStatus } from 'features/auth/api/useAccountSuspensionStatus'
 import { useLogoutRoutine } from 'features/auth/helpers/useLogoutRoutine'
-import { FraudulentAccount } from 'features/auth/pages/suspendedAccount/FraudulentAccount/FraudulentAccount'
-import { SuspendedAccount } from 'features/auth/pages/suspendedAccount/SuspendedAccount/SuspendedAccount'
+import { FraudulentSuspendedAccount } from 'features/auth/pages/suspendedAccount/FraudulentSuspendedAccount/FraudulentSuspendedAccount'
+import { SuspendedAccountUponUserRequest } from 'features/auth/pages/suspendedAccount/SuspendedAccountUponUserRequest/SuspendedAccountUponUserRequest'
 import { navigateToHome, useCurrentRoute } from 'features/navigation/helpers'
+import { SuspiciousLoginSuspendedAccount } from 'features/trustedDevice/pages/SuspiciousLoginSuspendedAccount'
 import { LoadingPage } from 'ui/components/LoadingPage'
 
 export const SuspensionScreen = () => {
@@ -19,9 +20,11 @@ export const SuspensionScreen = () => {
     useCallback(() => {
       if (
         suspensionStatus &&
-        ![AccountState.SUSPENDED_UPON_USER_REQUEST, AccountState.SUSPENDED].includes(
-          suspensionStatus
-        )
+        ![
+          AccountState.SUSPENDED_UPON_USER_REQUEST,
+          AccountState.SUSPENDED,
+          AccountState.SUSPICIOUS_LOGIN_REPORTED_BY_USER,
+        ].includes(suspensionStatus)
       ) {
         navigateToHome()
       }
@@ -42,8 +45,10 @@ export const SuspensionScreen = () => {
   if (isLoading) {
     return <LoadingPage />
   } else if (suspensionStatus === AccountState.SUSPENDED_UPON_USER_REQUEST) {
-    return <SuspendedAccount />
+    return <SuspendedAccountUponUserRequest />
+  } else if (suspensionStatus === AccountState.SUSPICIOUS_LOGIN_REPORTED_BY_USER) {
+    return <SuspiciousLoginSuspendedAccount />
   } else {
-    return <FraudulentAccount />
+    return <FraudulentSuspendedAccount />
   }
 }

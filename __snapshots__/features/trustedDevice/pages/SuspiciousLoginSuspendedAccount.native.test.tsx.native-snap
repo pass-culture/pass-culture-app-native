@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<FraudulentAccount /> should match snapshot 1`] = `
+exports[`<SuspiciousLoginSuspendedAccount/> should match snapshot 1`] = `
 <View
   style={
     Array [
@@ -132,46 +132,54 @@ exports[`<FraudulentAccount /> should match snapshot 1`] = `
         ]
       }
     />
-    <Text
-      style={
-        Array [
-          Object {
-            "color": "#ffffff",
-            "fontFamily": "Montserrat-Regular",
-            "fontSize": 15,
-            "lineHeight": 20,
-            "textAlign": "center",
-          },
-        ]
-      }
-    >
-      Ton compte est actuellement suspendu pour des raisons de sécurité.
-    </Text>
     <View
-      numberOfSpaces={5}
       style={
         Array [
           Object {
-            "height": 20,
-          },
-        ]
-      }
-    />
-    <Text
-      style={
-        Array [
-          Object {
-            "color": "#ffffff",
-            "fontFamily": "Montserrat-Regular",
-            "fontSize": 15,
-            "lineHeight": 20,
-            "textAlign": "center",
+            "width": "100%",
           },
         ]
       }
     >
-      Pour en savoir plus, tu peux contacter l’équipe de lutte contre la fraude.
-    </Text>
+      <Text
+        style={
+          Array [
+            Object {
+              "color": "#ffffff",
+              "fontFamily": "Montserrat-Regular",
+              "fontSize": 15,
+              "lineHeight": 20,
+            },
+          ]
+        }
+      >
+        En raison d’une activité suspicieuse, ton compte a été suspendu.
+      </Text>
+      <View
+        numberOfSpaces={5}
+        style={
+          Array [
+            Object {
+              "height": 20,
+            },
+          ]
+        }
+      />
+      <Text
+        style={
+          Array [
+            Object {
+              "color": "#ffffff",
+              "fontFamily": "Montserrat-Regular",
+              "fontSize": 15,
+              "lineHeight": 20,
+            },
+          ]
+        }
+      >
+        Si tu souhaites revoir cette décision, tu peux contacter le service fraude.
+      </Text>
+    </View>
     <View
       numberOfSpaces={30}
       style={
@@ -209,7 +217,7 @@ exports[`<FraudulentAccount /> should match snapshot 1`] = `
       }
     >
       <View
-        accessibilityLabel="Ouvrir le gestionnaire mail pour contacter le support"
+        accessibilityLabel="Ouvrir le gestionnaire mail pour contacter le service fraude"
         accessible={true}
         collapsable={false}
         focusable={true}
@@ -238,7 +246,7 @@ exports[`<FraudulentAccount /> should match snapshot 1`] = `
             "width": "100%",
           }
         }
-        testID="Ouvrir le gestionnaire mail pour contacter le support"
+        testID="Ouvrir le gestionnaire mail pour contacter le service fraude"
       >
         <View
           style={
@@ -275,7 +283,7 @@ exports[`<FraudulentAccount /> should match snapshot 1`] = `
             ]
           }
         >
-          Contacter le service
+          Contacter le service fraude
         </Text>
       </View>
       <View

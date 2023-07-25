@@ -30,14 +30,20 @@ function mockUseCurrentRoute(name: string) {
 }
 
 describe('<SuspensionsScreen />', () => {
-  it('should display SuspendedAccount component if account is suspended upon user request', () => {
+  it('should display SuspendedAccountUponUserRequest component if account is suspended upon user request', () => {
     mockSuspensionStatus.status = AccountState.SUSPENDED_UPON_USER_REQUEST
     render(<SuspensionScreen />)
 
     expect(screen.getByText('Ton compte est désactivé')).toBeTruthy()
   })
+  it('should display SuspiciousLoginSuspendedAccount component if account is suspended for suspicious login reported by user', () => {
+    mockSuspensionStatus.status = AccountState.SUSPICIOUS_LOGIN_REPORTED_BY_USER
+    render(<SuspensionScreen />)
 
-  it('should display FraudulentAccount component if account is suspended for fraud', () => {
+    expect(screen.getByText('Ton compte a été suspendu')).toBeTruthy()
+  })
+
+  it('should display FraudulentSuspendedAccount component if account is suspended for fraud', () => {
     mockSuspensionStatus.status = AccountState.SUSPENDED
     render(<SuspensionScreen />)
 

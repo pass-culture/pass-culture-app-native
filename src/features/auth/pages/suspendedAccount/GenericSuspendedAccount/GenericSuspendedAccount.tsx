@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { PropsWithChildren } from 'react'
 import styled from 'styled-components/native'
 
 import { useLogoutRoutine } from 'features/auth/helpers/useLogoutRoutine'
@@ -12,9 +12,8 @@ import { GenericInfoPage } from 'ui/pages/GenericInfoPage'
 import { Email } from 'ui/svg/icons/Email'
 import { PlainArrowPrevious } from 'ui/svg/icons/PlainArrowPrevious'
 import { UserBlocked } from 'ui/svg/icons/UserBlocked'
-import { Spacer, Typo } from 'ui/theme'
 
-export const FraudulentAccount = () => {
+export const GenericSuspendedAccount: React.FC<PropsWithChildren> = ({ children }) => {
   const signOut = useLogoutRoutine()
 
   return (
@@ -25,8 +24,8 @@ export const FraudulentAccount = () => {
         <ExternalTouchableLink
           key={1}
           as={ButtonPrimaryWhite}
-          wording="Contacter le service"
-          accessibilityLabel="Ouvrir le gestionnaire mail pour contacter le support"
+          wording="Contacter le service fraude"
+          accessibilityLabel="Ouvrir le gestionnaire mail pour contacter le service fraude"
           externalNav={{ url: `mailto:${env.FRAUD_EMAIL_ADDRESS}` }}
           icon={Email}
         />,
@@ -39,16 +38,11 @@ export const FraudulentAccount = () => {
           icon={PlainArrowPrevious}
         />,
       ]}>
-      <StyledBody>Ton compte est actuellement suspendu pour des raisons de sécurité.</StyledBody>
-      <Spacer.Column numberOfSpaces={5} />
-      <StyledBody>
-        Pour en savoir plus, tu peux contacter l’équipe de lutte contre la fraude.
-      </StyledBody>
+      <ChildrenContainer>{children}</ChildrenContainer>
     </GenericInfoPage>
   )
 }
 
-const StyledBody = styled(Typo.Body)(({ theme }) => ({
-  color: theme.colors.white,
-  textAlign: 'center',
-}))
+const ChildrenContainer = styled.View({
+  width: '100%',
+})
