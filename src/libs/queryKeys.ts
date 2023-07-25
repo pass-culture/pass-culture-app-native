@@ -13,6 +13,7 @@ export enum QueryKeys {
   FAVORITES = 'favorites',
   FAVORITES_COUNT = 'favoritesCount',
   FIRESTORE_UBBLE_ETA_MESSAGE = 'firestoreUbbleETAMessage',
+  HIGHLIGHT_OFFER = 'highlightOffer',
   HOME_BANNER = 'homeBanner',
   HOME_MODULE = 'homeModule',
   HOME_VENUES_MODULE = 'homeVenuesModule',
