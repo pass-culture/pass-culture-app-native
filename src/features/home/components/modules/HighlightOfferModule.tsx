@@ -8,7 +8,8 @@ import { BlackCaption } from 'features/home/components/BlackCaption'
 import { getGradientColors } from 'features/home/components/helpers/getGradientColors'
 import { HighlightOfferModule as HighlightOfferModuleProps } from 'features/home/types'
 import { formatDates, getDisplayPrice } from 'libs/parsers'
-import { useCategoryHomeLabelMapping } from 'libs/subcategories'
+import { useCategoryHomeLabelMapping, useCategoryIdMapping } from 'libs/subcategories'
+import { usePrePopulateOffer } from 'shared/offer/usePrePopulateOffer'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { PlainArrowNext } from 'ui/svg/icons/PlainArrowNext'
 import { Spacer, Typo, getSpacing } from 'ui/theme'
@@ -24,15 +25,18 @@ const UnmemoizedHighlightOfferModule = (props: HighlightOfferModuleProps) => {
   const highlightOffer = useHighlightOffer(props.id, props.offerId)
   const [offerDetailsHeight, setOfferDetailsHeight] = useState(0)
   const categoryLabelMapping = useCategoryHomeLabelMapping()
+  const categoryIdMapping = useCategoryIdMapping()
+  const prePopulateOffer = usePrePopulateOffer()
 
   if (!highlightOffer) return null
-  const { offer, venue } = highlightOffer
+  const { offer, venue, objectID: offerId } = highlightOffer
 
   const timestampsInMillis = offer.dates?.map((timestampInSec) => timestampInSec * 1000)
   const formattedDate = formatDates(timestampsInMillis)
   const formattedPrice = getDisplayPrice(offer?.prices)
   const venueName = venue.name
   const categoryLabel = categoryLabelMapping[offer.subcategoryId]
+  const categoryId = categoryIdMapping[offer.subcategoryId]
 
   return (
     <Container>
@@ -47,7 +51,21 @@ const UnmemoizedHighlightOfferModule = (props: HighlightOfferModuleProps) => {
           colors={getGradientColors(props.color)}
           height={getColorBackgroundHeight(offerDetailsHeight)}
         />
-        <StyledTouchableLink testID="highlight-offer-image" accessibilityRole="button" highlight>
+        <StyledTouchableLink
+          testID="highlight-offer-image"
+          accessibilityRole="button"
+          highlight
+          navigateTo={{
+            screen: 'Offer',
+            params: { id: offerId },
+          }}
+          onBeforeNavigate={() => {
+            prePopulateOffer({
+              ...offer,
+              offerId: +offerId,
+              categoryId,
+            })
+          }}>
           <View>
             <OfferImage source={{ uri: props.image }}>
               {!!categoryLabel && <CategoryCaption label={categoryLabel} />}
