@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { useVideoOffers } from 'features/home/api/useVideoOffer'
+import { useVideoOffers } from 'features/home/api/useVideoOffers'
 import { VideoModule } from 'features/home/components/modules/video/VideoModule'
 import { videoModuleFixture } from 'features/home/fixtures/videoModule.fixture'
 import { analytics } from 'libs/analytics'
@@ -16,7 +16,7 @@ jest.mock('ui/components/modals/useModal', () => ({
   }),
 }))
 
-jest.mock('features/home/api/useVideoOffer')
+jest.mock('features/home/api/useVideoOffers')
 const mockUseVideoOffers = useVideoOffers as jest.Mock
 
 describe('VideoModule', () => {
@@ -55,7 +55,7 @@ describe('VideoModule', () => {
     })
   })
 
-  it('should render multi offer componant if multiples offers', async () => {
+  it('should render multi offer component if multiples offers', async () => {
     mockUseVideoOffers.mockReturnValueOnce({ offers: [offerFixture, offerFixture2] })
     renderVideoModule()
 
@@ -92,6 +92,8 @@ const offerFixture2 = {
 function renderVideoModule() {
   render(
     // eslint-disable-next-line local-rules/no-react-query-provider-hoc
-    reactQueryProviderHOC(<VideoModule {...videoModuleFixture} index={1} homeEntryId="abcd" />)
+    reactQueryProviderHOC(
+      <VideoModule {...videoModuleFixture} index={1} homeEntryId="abcd" shouldShowModal={false} />
+    )
   )
 }

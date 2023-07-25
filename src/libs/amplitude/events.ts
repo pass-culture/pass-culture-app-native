@@ -14,6 +14,7 @@ export enum AmplitudeEvent {
   EMAIL_CONFIRMATION_CONSULT_EMAIL_CLICKED = 'email_confirmation_consult_email_clicked',
   EMAIL_CONFIRMATION_HELPCENTER_CLICKED = 'email_confirmation_helpcenter_clicked',
   EMAIL_VALIDATED = 'email_validated',
+  GO_TO_UBBLE = 'go_to_ubble',
   ONBOARDING_AGE_INFORMATION_CLICKED = 'onboarding_age_information_clicked',
   ONBOARDING_AGE_SELECTION_CLICKED = 'onboarding_age_selection_clicked',
   ONBOARDING_AGE_SELECTION_PARENT_CLICKED = 'onboarding_age_selection_parent_clicked',
@@ -45,5 +46,6 @@ export enum AmplitudeEvent {
   SET_POSTAL_CODE_CLICKED = 'set_postal_code_clicked',
   SET_SCHOOL_TYPE_CLICKED = 'set_school_type_clicked',
   SET_STATUS_CLICKED = 'set_status_clicked',
+  SHOW_PARENT_INFORMATION_MODAL = 'show_parent_information_modal',
   STEPPER_CLICKED = 'stepper_clicked',
 }

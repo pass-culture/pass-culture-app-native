@@ -19,16 +19,10 @@ export enum IdentityCheckStep {
 
 export type SubscriptionScreen = keyof SubscriptionRootStackParamList
 
-export interface DeprecatedStepConfig {
-  name: DeprecatedIdentityCheckStep
-  label: string
-  icon: Record<StepButtonState, React.FC<IconInterface>>
-  screens: SubscriptionScreen[]
-}
 export interface StepConfig {
   name: IdentityCheckStep
   icon: Record<StepButtonState, React.FC<IconInterface>>
-  screens: SubscriptionScreen[]
+  firstScreen: SubscriptionScreen
 }
 
 export interface StepDetails {
@@ -36,7 +30,7 @@ export interface StepDetails {
   title: string
   subtitle?: string
   icon: Record<StepButtonState, React.FC<IconInterface>>
-  screens: SubscriptionScreen[]
+  firstScreen: SubscriptionScreen
   stepState: StepButtonState
 }
 

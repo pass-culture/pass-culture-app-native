@@ -17,6 +17,7 @@ describe.each([
   RemoteStoreFeatureFlags.WIP_DISABLE_STORE_REVIEW,
   RemoteStoreFeatureFlags.WIP_ENABLE_MULTIVENUE_OFFER,
   RemoteStoreFeatureFlags.WIP_ENABLE_TRUSTED_DEVICE,
+  RemoteStoreFeatureFlags.WIP_ENABLE_NEW_EXCLUSIVITY_BLOCK,
   RemoteStoreFeatureFlags.WIP_PRICES_BY_CATEGORIES,
   RemoteStoreFeatureFlags.WIP_STEPPER_RETRY_UBBLE,
 ])('useFeatureFlag %s', (featureFlag: RemoteStoreFeatureFlags) => {

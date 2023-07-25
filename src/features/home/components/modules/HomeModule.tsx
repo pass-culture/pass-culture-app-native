@@ -22,18 +22,26 @@ import {
   isVideoModule,
   ModuleData,
 } from 'features/home/types'
+import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
+import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 
 const UnmemoizedModule = ({
   item,
   index,
   homeEntryId,
   data,
+  videoModuleId,
 }: {
   item: HomepageModule
   index: number
   homeEntryId: string
   data?: ModuleData
+  videoModuleId?: string
 }) => {
+  const enableNewExclusivityBlock = useFeatureFlag(
+    RemoteStoreFeatureFlags.WIP_ENABLE_NEW_EXCLUSIVITY_BLOCK
+  )
+
   if (isOffersModule(item)) {
     return (
       <OffersModule
@@ -70,7 +78,7 @@ const UnmemoizedModule = ({
       />
     )
   }
-  if (isExclusivityModule(item)) {
+  if (isExclusivityModule(item) && !enableNewExclusivityBlock) {
     return (
       <ExclusivityModule
         moduleId={item.id}
@@ -95,7 +103,14 @@ const UnmemoizedModule = ({
     return <CategoryListModule {...item} homeEntryId={homeEntryId} index={index} />
   }
   if (isVideoModule(item)) {
-    return <VideoModule {...item} homeEntryId={homeEntryId} index={index} />
+    return (
+      <VideoModule
+        {...item}
+        homeEntryId={homeEntryId}
+        index={index}
+        shouldShowModal={item.id === videoModuleId}
+      />
+    )
   }
 
   return <React.Fragment></React.Fragment>

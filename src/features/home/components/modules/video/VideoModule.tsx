@@ -3,7 +3,7 @@ import React, { FunctionComponent, useEffect } from 'react'
 import LinearGradient from 'react-native-linear-gradient'
 import styled, { useTheme } from 'styled-components/native'
 
-import { useVideoOffers } from 'features/home/api/useVideoOffer'
+import { useVideoOffers } from 'features/home/api/useVideoOffers'
 import { BlackGradient } from 'features/home/components/BlackGradient'
 import { TEXT_BACKGROUND_OPACITY } from 'features/home/components/constants'
 import { getGradientColors } from 'features/home/components/helpers/getGradientColors'
@@ -35,6 +35,7 @@ const DESKTOP_BACKGROUND_HEIGHT = getSpacing(32.5)
 interface VideoModuleProps extends VideoModuleType {
   index: number
   homeEntryId: string
+  shouldShowModal: boolean
 }
 
 export const VideoModule: FunctionComponent<VideoModuleProps> = (props) => {
@@ -42,10 +43,15 @@ export const VideoModule: FunctionComponent<VideoModuleProps> = (props) => {
     visible: videoModalVisible,
     showModal: showVideoModal,
     hideModal: hideVideoModal,
-  } = useModal(false)
+  } = useModal(props.shouldShowModal)
   const videoDuration = `${props.durationInMinutes} min`
 
-  const { offers } = useVideoOffers(props.offersModuleParameters, props.id, props.offerIds)
+  const { offers } = useVideoOffers(
+    props.offersModuleParameters,
+    props.id,
+    props.offerIds,
+    props.eanList
+  )
 
   const theme = useTheme()
   const colorCategoryBackgroundHeightUniqueOffer = theme.isDesktopViewport

@@ -98,6 +98,7 @@ export const screenParamsParser: ParamsParsers = {
   Home: {
     latitude: Number,
     longitude: Number,
+    videoModuleId: identityFn,
   },
   ReinitializePassword: {
     token: identityFn,
@@ -119,6 +120,7 @@ export const screenParamsParser: ParamsParsers = {
   },
   ThematicHome: {
     homeId: identityFn,
+    videoModuleId: identityFn,
     from: identityFn,
     moduleId: identityFn,
     moduleListId: identityFn,

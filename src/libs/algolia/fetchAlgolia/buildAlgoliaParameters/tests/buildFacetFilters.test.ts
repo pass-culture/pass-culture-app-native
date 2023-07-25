@@ -88,6 +88,15 @@ describe('buildFacetFilters', () => {
       facetFilters: [['offer.isEducational:false'], ['objectID:15000']],
     })
   })
+  it('should return default and ean facets when EAN specified', () => {
+    const facetFilters = buildFacetFilters({
+      ...defaultBuildFacetFilterParam,
+      eanList: ['9780000000001'],
+    })
+    expect(facetFilters).toEqual({
+      facetFilters: [['offer.isEducational:false'], ['offer.ean:9780000000001']],
+    })
+  })
 
   it('should return default and offer type facets when at least one of offer types set to true', () => {
     const facetFilters = buildFacetFilters({

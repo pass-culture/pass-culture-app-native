@@ -5,7 +5,6 @@ import { checkAccessibilityFor, render, screen } from 'tests/utils/web'
 import { EduConnectValidation } from './EduConnectValidation'
 
 jest.mock('features/identityCheck/context/SubscriptionContextProvider')
-jest.mock('features/identityCheck/pages/helpers/useSubscriptionNavigation')
 jest.mock('features/auth/context/AuthContext')
 
 describe('<EduConnectValidation />', () => {

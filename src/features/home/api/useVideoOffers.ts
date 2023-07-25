@@ -8,6 +8,7 @@ import { SearchQueryParameters } from 'libs/algolia'
 import { fetchMultipleOffers } from 'libs/algolia/fetchAlgolia/fetchMultipleOffers/fetchMultipleOffers'
 import { useAdaptOffersPlaylistParameters } from 'libs/algolia/fetchAlgolia/fetchMultipleOffers/helpers/useAdaptOffersPlaylistParameters'
 import { fetchOfferHits } from 'libs/algolia/fetchAlgolia/fetchOfferHits'
+import { fetchOffersByEan } from 'libs/algolia/fetchAlgolia/fetchOffersByEan'
 import { useTransformOfferHits } from 'libs/algolia/fetchAlgolia/transformOfferHit'
 import { useNetInfoContext } from 'libs/network/NetInfoWrapper'
 import { QueryKeys } from 'libs/queryKeys'
@@ -16,10 +17,23 @@ import { Offer } from 'shared/offer/types'
 const isSearchQueryParameters = (parameter: unknown): parameter is SearchQueryParameters =>
   typeof parameter === 'object' && parameter !== null
 
+enum QueryMode {
+  OFFER_IDS = 'OFFER_IDS',
+  MULTIPLE_OFFERS = 'MULTIPLE_OFFERS',
+  EAN = 'EAN',
+}
+
+const selectQueryMode = (offerIds?: string[], eanList?: string[]) => {
+  if (offerIds && offerIds?.length > 0) return QueryMode.OFFER_IDS
+  if (eanList && eanList?.length > 0) return QueryMode.EAN
+  return QueryMode.MULTIPLE_OFFERS
+}
+
 export const useVideoOffers = (
   offersModuleParameters: OffersModuleParameters,
   id: string,
-  offerIds: string[]
+  offerIds?: string[],
+  eanList?: string[]
 ) => {
   const adaptPlaylistParameters = useAdaptOffersPlaylistParameters()
   const { position } = useHomePosition()
@@ -30,15 +44,27 @@ export const useVideoOffers = (
   const partialAdaptedParameters = adaptPlaylistParameters(offersModuleParameters)
   const adaptedParameters = [partialAdaptedParameters].filter(isSearchQueryParameters)
 
-  const hasOfferIds = offerIds && offerIds.length > 0
+  const queryMode = selectQueryMode(offerIds, eanList)
 
   const offersByIdsQuery = async () => {
+    if (!offerIds) return []
+
     const result = await fetchOfferHits({
       objectIds: offerIds,
       isUserUnderage,
     })
 
     return result
+  }
+
+  const eanQuery = async () => {
+    if (!eanList) return []
+
+    return await fetchOffersByEan({
+      eanList,
+      userLocation: position,
+      isUserUnderage,
+    })
   }
 
   const multipleOffersQuery = async () => {
@@ -50,10 +76,15 @@ export const useVideoOffers = (
 
     return result.hits
   }
+  const queryByQueryMode = {
+    [QueryMode.OFFER_IDS]: offersByIdsQuery,
+    [QueryMode.EAN]: eanQuery,
+    [QueryMode.MULTIPLE_OFFERS]: multipleOffersQuery,
+  }
 
   const { data, refetch } = useQuery({
     queryKey: [QueryKeys.VIDEO_OFFER, id],
-    queryFn: hasOfferIds ? offersByIdsQuery : multipleOffersQuery,
+    queryFn: queryByQueryMode[queryMode],
     enabled: !!netInfo.isConnected,
   })
 

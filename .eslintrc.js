@@ -114,7 +114,7 @@ module.exports = {
               'use theme/index.ts instead, useTheme() | styled(Component).attrs(({ theme }) => ({})`` | styled(Component)(({ theme }) => ({})',
           },
           { name: 'msw/lib/types', message: 'use msw instead' },
-          { name: '@testing-library/react-native', message: 'Use test/utils instead' },
+          { name: '@testing-library/react-native', message: 'Use tests/utils instead' },
           { name: 'firebase/compat/app', message: 'use libs/firebase/shims/app instead' },
           {
             name: 'firebase/compat/firestore',

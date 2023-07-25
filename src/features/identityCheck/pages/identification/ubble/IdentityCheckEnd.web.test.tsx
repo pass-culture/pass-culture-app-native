@@ -5,6 +5,20 @@ import { render, checkAccessibilityFor } from 'tests/utils/web'
 
 import { IdentityCheckEnd } from './IdentityCheckEnd'
 
+const mockDispatch = jest.fn()
+jest.mock('features/identityCheck/context/SubscriptionContextProvider', () => ({
+  useSubscriptionContext: () => ({
+    dispatch: mockDispatch,
+    identification: {
+      done: true,
+      firstName: 'John',
+      lastName: 'Doe',
+      birthDate: '02/02/2006',
+      method: 'ubble',
+    },
+  }),
+}))
+
 jest.mock('features/auth/api/useNextSubscriptionStep', () => ({
   useNextSubscriptionStep: jest.fn(() => ({
     data: mockStep,
