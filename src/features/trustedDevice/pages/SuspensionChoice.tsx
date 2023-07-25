@@ -6,6 +6,7 @@ import { contactSupport } from 'features/auth/helpers/contactSupport'
 import { UseNavigationType, UseRouteType } from 'features/navigation/RootNavigator/types'
 import { useSuspendForSuspiciousLoginMutation } from 'features/trustedDevice/helpers/useSuspendForSuspiciousLoginMutation'
 import { env } from 'libs/environment'
+import { eventMonitoring } from 'libs/monitoring'
 import { BulletListItem } from 'ui/components/BulletListItem'
 import { ButtonInsideText } from 'ui/components/buttons/buttonInsideText/ButtonInsideText'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
@@ -28,14 +29,20 @@ export const SuspensionChoice = () => {
   const { mutate: suspendAccountForSuspiciousLogin, isLoading } =
     useSuspendForSuspiciousLoginMutation({
       onSuccess: () => {
-        navigate('SuspensionConfirmation')
+        navigate('SuspiciousLoginSuspendedAccount')
       },
-      onError: () => {
+      onError: (error) => {
         showErrorSnackBar({
           message:
             'Une erreur est survenue. Pour suspendre ton compte, contacte le support par e-mail.',
           timeout: SNACK_BAR_TIME_OUT,
         })
+        eventMonitoring.captureMessage(
+          `Can’t suspend account for suspicious login ; reason: "${
+            error instanceof Error ? error.message : undefined
+          }"`,
+          'info'
+        )
       },
     })
 

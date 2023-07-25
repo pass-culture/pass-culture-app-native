@@ -5,11 +5,11 @@ import { navigate } from '__mocks__/@react-navigation/native'
 import { contactSupport } from 'features/auth/helpers/contactSupport'
 import * as NavigationHelpers from 'features/navigation/helpers/openUrl'
 import { env } from 'libs/environment'
+import { eventMonitoring, MonitoringError } from 'libs/monitoring'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { server } from 'tests/server'
-import { fireEvent, render, screen, waitFor } from 'tests/utils'
+import { fireEvent, render, screen, waitFor, act } from 'tests/utils'
 import { SNACK_BAR_TIME_OUT } from 'ui/components/snackBar/SnackBarContext'
-import { SnackBarHelperSettings } from 'ui/components/snackBar/types'
 
 import { SuspensionChoice } from './SuspensionChoice'
 
@@ -18,7 +18,7 @@ const openUrl = jest.spyOn(NavigationHelpers, 'openUrl')
 const mockShowErrorSnackBar = jest.fn()
 jest.mock('ui/components/snackBar/SnackBarContext', () => ({
   useSnackBarContext: () => ({
-    showErrorSnackBar: jest.fn((props: SnackBarHelperSettings) => mockShowErrorSnackBar(props)),
+    showErrorSnackBar: mockShowErrorSnackBar,
   }),
 }))
 
@@ -29,7 +29,7 @@ describe('<SuspensionChoice/>', () => {
     expect(screen).toMatchSnapshot()
   })
 
-  it('should navigate to suspension confirmation screen when clicking on "Oui, suspendre mon compte" button is success', async () => {
+  it('should navigate to suspension confirmation screen on suspension success', async () => {
     simulateSuspendForSuspiciousLoginSuccess()
     renderSuspensionChoice()
 
@@ -41,7 +41,7 @@ describe('<SuspensionChoice/>', () => {
     })
   })
 
-  it('should show snackbar when clicking on "Oui, suspendre mon compte" button with is error', async () => {
+  it('should show snackbar on suspension error', async () => {
     simulateSuspendForSuspiciousLoginError()
     renderSuspensionChoice()
 
@@ -55,6 +55,19 @@ describe('<SuspensionChoice/>', () => {
         timeout: SNACK_BAR_TIME_OUT,
       })
     })
+  })
+
+  it('should log an error in Sentry on suspension error', async () => {
+    const error = new MonitoringError('error')
+    simulateSuspendForSuspiciousLoginError()
+    renderSuspensionChoice()
+
+    const acceptSuspensionButton = screen.getByText('Oui, suspendre mon compte')
+    fireEvent.press(acceptSuspensionButton)
+
+    await act(async () => {})
+
+    expect(eventMonitoring.captureException).toHaveBeenCalledWith(error, undefined)
   })
 
   it('should open mail app when clicking on "Contacter le support" button', () => {
@@ -91,7 +104,7 @@ function simulateSuspendForSuspiciousLoginSuccess() {
   server.use(
     rest.post(
       env.API_BASE_URL + '/native/v1/account/suspend_for_suspicious_login',
-      async (_, res, ctx) => res(ctx.status(200))
+      async (_, res, ctx) => res.once(ctx.status(200))
     )
   )
 }
@@ -100,7 +113,7 @@ function simulateSuspendForSuspiciousLoginError() {
   server.use(
     rest.post(
       env.API_BASE_URL + '/native/v1/account/suspend_for_suspicious_login',
-      async (_, res, ctx) => res(ctx.status(400))
+      async (_, res, ctx) => res.once(ctx.status(400))
     )
   )
 }
