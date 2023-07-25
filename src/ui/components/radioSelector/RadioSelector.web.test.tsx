@@ -7,7 +7,7 @@ import { RadioSelector } from './RadioSelector'
 describe('<RadioSelector />', () => {
   it('should call press when pressing Spacebar', () => {
     const onPress = jest.fn()
-    render(<RadioSelector label="label" onPress={onPress} />)
+    render(<RadioSelector label="label" onPress={onPress} checked={false} />)
 
     const container = screen.getByTestId('label')
 
@@ -19,7 +19,7 @@ describe('<RadioSelector />', () => {
 
   it('should not call press when pressing Spacebar if disabled', () => {
     const onPress = jest.fn()
-    render(<RadioSelector label="label" onPress={onPress} disabled />)
+    render(<RadioSelector label="label" onPress={onPress} disabled checked={false} />)
 
     const container = screen.getByTestId('label')
 
@@ -32,7 +32,7 @@ describe('<RadioSelector />', () => {
   describe('Accessibility', () => {
     it('should not have basic accessibility issues', async () => {
       const onPress = jest.fn()
-      const { container } = render(<RadioSelector label="label" onPress={onPress} />)
+      const { container } = render(<RadioSelector label="label" onPress={onPress} checked />)
 
       const results = await checkAccessibilityFor(container)
       expect(results).toHaveNoViolations()

@@ -7,6 +7,7 @@ import { RadioSelector } from './RadioSelector'
 describe('<RadioSelector />', () => {
   const defaultProps = {
     label: 'Test Label',
+    checked: false,
     onPress: jest.fn(),
   }
 
