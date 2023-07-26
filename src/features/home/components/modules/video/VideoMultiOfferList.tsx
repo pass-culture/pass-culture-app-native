@@ -7,7 +7,7 @@ import { Offer } from 'shared/offer/types'
 import { Separator } from 'ui/components/Separator'
 import { Spacer, getSpacing } from 'ui/theme'
 
-export interface OfferListProps {
+interface OfferListProps {
   offers: Offer[]
   hideModal: () => void
   analyticsParams: ConsultOfferAnalyticsParams
