@@ -9,8 +9,7 @@ import { BlackGradient } from 'features/home/components/BlackGradient'
 import { TEXT_BACKGROUND_OPACITY } from 'features/home/components/constants'
 import { getGradientColors } from 'features/home/components/helpers/getGradientColors'
 import { VideoMonoOfferTile } from 'features/home/components/modules/video/VideoMonoOfferTile'
-import { VideoModule as VideoModuleType } from 'features/home/types'
-import { ConsultOfferAnalyticsParams } from 'libs/analytics/types'
+import { VideoModuleProps } from 'features/home/types'
 import { Offer } from 'shared/offer/types'
 import { SeeMoreWithEye } from 'ui/components/SeeMoreWithEye'
 import { Separator } from 'ui/components/Separator'
@@ -28,17 +27,6 @@ const PLAYER_SIZE = getSpacing(14.5)
 
 const GRADIENT_HEIGHT = getSpacing(33)
 
-interface VideoModuleProps extends VideoModuleType {
-  index: number
-  homeEntryId: string
-  shouldShowModal: boolean
-  analyticsParams: ConsultOfferAnalyticsParams
-  isMultiOffer: boolean
-  showVideoModal: () => void
-  hideVideoModal: () => void
-  offers: Offer[]
-}
-
 export const VideoModuleDesktop: FunctionComponent<VideoModuleProps> = (props) => {
   const videoDuration = `${props.durationInMinutes} min`
 
@@ -47,9 +35,7 @@ export const VideoModuleDesktop: FunctionComponent<VideoModuleProps> = (props) =
   const nbOfSeparators = hasOnlyTwoOffers ? 1 : 2
 
   function renderTitleSeeMore() {
-    return (
-      <SeeMoreWithEye title={props.videoTitle} onPressSeeMore={videoModuleParams.showVideoModal} />
-    )
+    return <SeeMoreWithEye title={props.videoTitle} onPressSeeMore={props.showVideoModal} />
   }
 
   return (

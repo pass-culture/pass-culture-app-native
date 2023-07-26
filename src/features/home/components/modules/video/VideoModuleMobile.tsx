@@ -8,9 +8,7 @@ import { TEXT_BACKGROUND_OPACITY } from 'features/home/components/constants'
 import { getGradientColors } from 'features/home/components/helpers/getGradientColors'
 import { VideoMonoOfferTile } from 'features/home/components/modules/video/VideoMonoOfferTile'
 import { VideoMultiOfferPlaylist } from 'features/home/components/modules/video/VideoMultiOfferPlaylist'
-import { VideoModule as VideoModuleType } from 'features/home/types'
-import { ConsultOfferAnalyticsParams } from 'libs/analytics/types'
-import { Offer } from 'shared/offer/types'
+import { VideoModuleProps } from 'features/home/types'
 import { Play } from 'ui/svg/icons/Play'
 import { Spacer, Typo, getSpacing } from 'ui/theme'
 
@@ -24,17 +22,6 @@ const GRADIENT_START_POSITION = PLAYER_TOP_MARGIN + PLAYER_SIZE / 2
 
 const COLOR_CATEGORY_BACKGROUND_HEIGHT_MULTI_OFFER =
   THUMBNAIL_HEIGHT - GRADIENT_START_POSITION + getSpacing(16)
-
-interface VideoModuleProps extends VideoModuleType {
-  index: number
-  homeEntryId: string
-  shouldShowModal: boolean
-  analyticsParams: ConsultOfferAnalyticsParams
-  isMultiOffer: boolean
-  showVideoModal: () => void
-  hideVideoModal: () => void
-  offers: Offer[]
-}
 
 export const VideoModuleMobile: FunctionComponent<VideoModuleProps> = (props) => {
   const videoDuration = `${props.durationInMinutes} min`

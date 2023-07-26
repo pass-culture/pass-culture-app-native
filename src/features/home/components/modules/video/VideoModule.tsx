@@ -11,13 +11,13 @@ import { ConsultOfferAnalyticsParams } from 'libs/analytics/types'
 import { ContentTypes } from 'libs/contentful'
 import { useModal } from 'ui/components/modals/useModal'
 
-interface VideoModuleProps extends VideoModuleType {
+interface VideoModuleBaseProps extends VideoModuleType {
   index: number
   homeEntryId: string
   shouldShowModal: boolean
 }
 
-export const VideoModule: FunctionComponent<VideoModuleProps> = (props) => {
+export const VideoModule: FunctionComponent<VideoModuleBaseProps> = (props) => {
   const {
     visible: videoModalVisible,
     showModal: showVideoModal,
@@ -57,26 +57,20 @@ export const VideoModule: FunctionComponent<VideoModuleProps> = (props) => {
     homeEntryId: props.homeEntryId,
   }
 
+  const videoModuleParams = {
+    isMultiOffer: isMultiOffer,
+    analyticsParams: analyticsParams,
+    showVideoModal: showVideoModal,
+    hideVideoModal: hideVideoModal,
+    offers: offers,
+  }
+
   return (
     <Container>
       {theme.isDesktopViewport ? (
-        <VideoModuleDesktop
-          {...props}
-          isMultiOffer={isMultiOffer}
-          analyticsParams={analyticsParams}
-          showVideoModal={showVideoModal}
-          hideVideoModal={hideVideoModal}
-          offers={offers}
-        />
+        <VideoModuleDesktop {...props} {...videoModuleParams} />
       ) : (
-        <VideoModuleMobile
-          {...props}
-          isMultiOffer={isMultiOffer}
-          analyticsParams={analyticsParams}
-          showVideoModal={showVideoModal}
-          hideVideoModal={hideVideoModal}
-          offers={offers}
-        />
+        <VideoModuleMobile {...props} {...videoModuleParams} />
       )}
       <VideoModal
         visible={videoModalVisible}
