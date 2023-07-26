@@ -69,7 +69,7 @@ jest.spyOn(jwt, 'decodeAccessToken').mockReturnValue(decodedAccessToken)
 
 jest.spyOn(CodePush, 'getUpdateMetadata').mockResolvedValue(null)
 
-jest.useFakeTimers('legacy')
+jest.useFakeTimers({ legacyFakeTimers: true })
 
 describe('[api] helpers', () => {
   const mockFetch = jest.spyOn(global, 'fetch')
