@@ -7,7 +7,7 @@ import { Separator } from 'ui/components/Separator'
 import { HorizontalOfferTile } from 'ui/components/tiles/HorizontalOfferTile'
 import { Spacer, getSpacing } from 'ui/theme'
 
-export interface OfferListProps {
+interface OfferListProps {
   offers: Offer[]
   hideModal: () => void
   analyticsParams: ConsultOfferAnalyticsParams

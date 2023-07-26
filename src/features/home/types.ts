@@ -248,7 +248,7 @@ export type VideoModule = {
   videoThumbnail: string
   durationInMinutes: number
   youtubeVideoId: string
-  offersModuleParameters: OffersModuleParameters
+  offersModuleParameters: OffersModuleParameters[]
   color: Color
   videoTag: string
   offerTitle: string

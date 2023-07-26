@@ -113,6 +113,44 @@ export const videoContentModelFixture: VideoContentModel = {
         hitsPerPage: 1,
       },
     },
+    additionalAlgoliaParameters: [
+      {
+        sys: {
+          space: {
+            sys: {
+              type: 'Link',
+              linkType: 'Space',
+              id: '2bg01iqy0isv',
+            },
+          },
+          id: 'GHTIOHS3FOnhE4AWnuPsj',
+          type: 'Entry',
+          createdAt: '2023-01-26T10:10:31.139Z',
+          updatedAt: '2023-02-07T16:03:49.325Z',
+          environment: {
+            sys: {
+              id: 'testing',
+              type: 'Link',
+              linkType: 'Environment',
+            },
+          },
+          revision: 6,
+          contentType: {
+            sys: {
+              type: 'Link',
+              linkType: 'ContentType',
+              id: ContentTypes.ALGOLIA_PARAMETERS,
+            },
+          },
+          locale: 'en-US',
+        },
+        fields: {
+          title: 'test music type',
+          isGeolocated: false,
+          hitsPerPage: 1,
+        },
+      },
+    ],
     color: Color.Aquamarine,
     videoTag: 'FAQ',
     offerTitle: 'Pour aller plus loin…',

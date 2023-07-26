@@ -12,7 +12,7 @@ type PartialOffer = Pick<
 // Here we do optimistic rendering: we suppose that if the offer is available
 // as a search result, by the time the user clicks on it, the offer is still
 // available, released, not sold out...
-export const mergeOfferData =
+const mergeOfferData =
   (offer: PartialOffer) =>
   (prevData: OfferResponse | undefined): OfferResponse => ({
     description: '',
