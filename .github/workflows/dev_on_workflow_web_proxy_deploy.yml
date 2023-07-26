@@ -93,4 +93,4 @@ jobs:
               "unfurl_media": false
             }
         env:
-          SLACK_BOT_TOKEN: ${{ steps.slack_secrets.output.SLACK_BOT_TOKEN }}
+          SLACK_BOT_TOKEN: ${{ steps.slack_secrets.outputs.SLACK_BOT_TOKEN }}
