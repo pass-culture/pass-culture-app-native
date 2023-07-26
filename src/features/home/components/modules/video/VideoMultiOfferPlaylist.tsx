@@ -31,7 +31,7 @@ export const VideoMultiOfferPlaylist: FunctionComponent<Props> = ({
 
   return (
     <Playlist
-      testID="videoMultiOffersModuleList"
+      testID="video-multi-offers-module-list"
       data={offers}
       itemHeight={PLAYLIST_ITEM_HEIGHT}
       itemWidth={PLAYLIST_ITEM_WIDTH}

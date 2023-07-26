@@ -17,15 +17,15 @@ import { OfferImage } from 'ui/components/tiles/OfferImage'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { Spacer, Typo } from 'ui/theme'
 interface Props {
-  hit: Offer
+  offer: Offer
   onPress?: () => void
   analyticsParams: ConsultOfferAnalyticsParams
   style?: StyleProp<ViewStyle>
 }
 
-export const Hit = ({ hit, analyticsParams, onPress, style }: Props) => {
-  const { offer, objectID, _geoloc } = hit
-  const { subcategoryId, dates, prices } = offer
+export const HorizontalOfferTile = ({ offer, analyticsParams, onPress, style }: Props) => {
+  const { offer: offerDetails, objectID, _geoloc } = offer
+  const { subcategoryId, dates, prices } = offerDetails
   const prePopulateOffer = usePrePopulateOffer()
   const distanceToOffer = useDistance(_geoloc)
   const { categoryId, searchGroupName, nativeCategoryId } = useSubcategory(subcategoryId)
@@ -39,7 +39,7 @@ export const Hit = ({ hit, analyticsParams, onPress, style }: Props) => {
   const formattedPrice = getDisplayPrice(prices)
 
   const accessibilityLabel = tileAccessibilityLabel(TileContentType.OFFER, {
-    ...offer,
+    ...offerDetails,
     categoryLabel: searchGroupLabel,
     distance: distanceToOffer,
     date: formattedDate,
@@ -50,11 +50,11 @@ export const Hit = ({ hit, analyticsParams, onPress, style }: Props) => {
     if (onPress) onPress()
     // We pre-populate the query-cache with the data from the search client for a smooth transition
     prePopulateOffer({
-      ...offer,
+      ...offerDetails,
       categoryId,
-      thumbUrl: offer.thumbUrl,
-      isDuo: offer.isDuo,
-      name: offer.name,
+      thumbUrl: offerDetails.thumbUrl,
+      isDuo: offerDetails.isDuo,
+      name: offerDetails.name,
       offerId,
     })
 
@@ -78,21 +78,21 @@ export const Hit = ({ hit, analyticsParams, onPress, style }: Props) => {
       enableNavigate={!!offerId}
       from={analyticsParams.from}
       style={style}>
-      <OfferImage imageUrl={offer.thumbUrl} categoryId={categoryId} />
+      <OfferImage imageUrl={offerDetails.thumbUrl} categoryId={categoryId} />
       <Spacer.Row numberOfSpaces={4} />
       <Column>
         <Row>
           {distanceToOffer ? (
             <React.Fragment>
               <Spacer.Flex flex={0.7}>
-                <Name numberOfLines={2}>{offer.name}</Name>
+                <Name numberOfLines={2}>{offerDetails.name}</Name>
               </Spacer.Flex>
               <Spacer.Flex flex={0.3}>
                 <Distance>{distanceToOffer}</Distance>
               </Spacer.Flex>
             </React.Fragment>
           ) : (
-            <Name numberOfLines={2}>{offer.name}</Name>
+            <Name numberOfLines={2}>{offerDetails.name}</Name>
           )}
         </Row>
         <Spacer.Column numberOfSpaces={1} />
