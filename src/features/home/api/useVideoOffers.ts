@@ -30,7 +30,7 @@ const selectQueryMode = (offerIds?: string[], eanList?: string[]) => {
 }
 
 export const useVideoOffers = (
-  offersModuleParameters: OffersModuleParameters,
+  offersModuleParameters: OffersModuleParameters[],
   id: string,
   offerIds?: string[],
   eanList?: string[]
@@ -41,8 +41,9 @@ export const useVideoOffers = (
   const netInfo = useNetInfoContext()
   const transformHits = useTransformOfferHits()
 
-  const partialAdaptedParameters = adaptPlaylistParameters(offersModuleParameters)
-  const adaptedParameters = [partialAdaptedParameters].filter(isSearchQueryParameters)
+  const adaptedPlaylistParameters = offersModuleParameters
+    .map(adaptPlaylistParameters)
+    .filter(isSearchQueryParameters)
 
   const queryMode = selectQueryMode(offerIds, eanList)
 
@@ -69,7 +70,7 @@ export const useVideoOffers = (
 
   const multipleOffersQuery = async () => {
     const result = await fetchMultipleOffers({
-      paramsList: adaptedParameters,
+      paramsList: adaptedPlaylistParameters,
       userLocation: position,
       isUserUnderage,
     })

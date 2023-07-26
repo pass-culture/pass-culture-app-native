@@ -186,6 +186,7 @@ type VideoFields = {
   videoPublicationDate: string
   offerIds?: string[]
   eanList?: string[]
+  additionalAlgoliaParameters?: AlgoliaParameters[]
 }
 
 export type Cover = Entry<CoverFields, ContentTypes.INFORMATION>
