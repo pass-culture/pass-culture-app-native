@@ -6,10 +6,7 @@ module.exports = {
   preset: '',
   testEnvironment: 'jest-environment-jsdom',
   snapshotResolver: '<rootDir>/jest/custom-snapshot-resolver-web.js',
-  setupFiles: [
-    ...base.setupFiles,
-    '<rootDir>/jest/jest.web.setup.ts',
-  ],
+  setupFiles: [...base.setupFiles, '<rootDir>/jest/jest.web.setup.ts'],
   setupFilesAfterEnv: [...base.setupFilesAfterEnv, '<rootDir>/jest/jest.web.setupAfterEnv.ts'],
   testMatch: ['**/*(?<!.(?:native|ios|android|perf)).(?:test|spec).[jt]s?(x)'],
   moduleFileExtensions: ['web.tsx', 'web.ts', 'web.js', 'web.jsx', ...base.moduleFileExtensions],
@@ -30,9 +27,24 @@ module.exports = {
     ...base.testPathIgnorePatterns,
     '.*(/tests?/.*.(native|ios|android).(test|spec)).(tsx?)$',
   ],
-  transform: {
-    ...base.transform,
-  },
+  transform: { ...base.transform },
+  transformIgnorePatterns: [
+    'node_modules/(?!' +
+      'firebase' +
+      '|@firebase' +
+      '|@ptomasroos/react-native-multi-slider' +
+      '|react-native-svg-web' +
+      '|react-native-animatable' +
+      '|react-native-web' +
+      '|react-native-modal' +
+      '|react-native-calendars' +
+      '|react-native-swipe-gestures' +
+      '|react-native-permissions' +
+      '|react-native-qrcode-svg' +
+      '|react-native-country-picker-moda' +
+      '|instantsearch.js' +
+      ')',
+  ],
   verbose: true,
   globals: {
     __DEV__: true,
