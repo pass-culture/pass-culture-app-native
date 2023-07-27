@@ -20,4 +20,4 @@ jobs:
           restore-keys: |
             v1-yarn-dependency-cache-${{ hashFiles('**/yarn.lock') }}
       - name: Run script for dead code check
-        run: chmod +x scripts/check_dead_code_introduced.sh && ./scripts/check_dead_code_introduced.sh
+        run: ./scripts/check_dead_code_introduced.sh

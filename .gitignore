@@ -136,3 +136,7 @@ e2e/output
 
 # lighthouse
 .lighthouseci
+
+# ts-prune
+dead_code_current.txt
+dead_code_master.txt
