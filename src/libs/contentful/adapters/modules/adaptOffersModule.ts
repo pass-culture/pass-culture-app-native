@@ -1,15 +1,7 @@
-import { HomepageModuleType, OffersModule, OffersModuleParameters } from 'features/home/types'
+import { HomepageModuleType, OffersModule } from 'features/home/types'
 import { buildImageUrl } from 'libs/contentful/adapters/helpers/buildImageUrl'
-import { adaptOffersModuleParameters } from 'libs/contentful/adapters/modules/helpers/adaptOffersModuleParameters'
-import { AlgoliaContentModel, AlgoliaParameters } from 'libs/contentful/types'
-
-const buildOffersParams = (
-  firstParams: AlgoliaParameters,
-  additionalParams: AlgoliaParameters[]
-): OffersModule['offersModuleParameters'] =>
-  [firstParams, ...additionalParams]
-    .map(adaptOffersModuleParameters)
-    .filter((m): m is OffersModuleParameters => m !== null)
+import { buildOffersParams } from 'libs/contentful/adapters/helpers/buildOffersParams'
+import { AlgoliaContentModel } from 'libs/contentful/types'
 
 export const adaptOffersModule = (module: AlgoliaContentModel): OffersModule | null => {
   // if a mandatory module is unpublished/deleted, we can't handle the module, so we return null

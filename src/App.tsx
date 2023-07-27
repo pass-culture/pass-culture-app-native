@@ -24,7 +24,7 @@ import { SearchWrapper } from 'features/search/context/SearchWrapper'
 import { ShareAppWrapper } from 'features/share/context/ShareAppWrapper'
 import { initAlgoliaAnalytics } from 'libs/algolia/analytics/initAlgoliaAnalytics'
 import { SearchAnalyticsWrapper } from 'libs/algolia/analytics/SearchAnalyticsWrapper'
-import { AutoImmediate, NextRestart } from 'libs/codepush/options'
+import { AutoImmediate, NextResume } from 'libs/codepush/options'
 import { E2eContextProvider } from 'libs/e2e/E2eContextProvider'
 import { env } from 'libs/environment'
 // eslint-disable-next-line no-restricted-imports
@@ -123,7 +123,7 @@ const App: FunctionComponent = function () {
   )
 }
 
-const config = env.ENV !== 'production' ? AutoImmediate : NextRestart
+const config = env.ENV !== 'production' ? AutoImmediate : NextResume
 const AppWithCodepush = __DEV__ ? App : CodePush(config)(App)
 
 export { AppWithCodepush as App }

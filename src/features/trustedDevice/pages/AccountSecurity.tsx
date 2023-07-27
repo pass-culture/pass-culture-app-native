@@ -48,7 +48,7 @@ export const AccountSecurity = () => {
       <Spacer.Column numberOfSpaces={4} /> */}
       <InternalTouchableLink
         wording="Suspendre mon compte"
-        navigateTo={{ screen: 'SuspensionChoice' }}
+        navigateTo={{ screen: 'SuspensionChoice', params: { token: params.token } }}
         as={ButtonPrimary}
       />
       <Spacer.Column numberOfSpaces={2} />

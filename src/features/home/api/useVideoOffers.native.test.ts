@@ -27,7 +27,7 @@ describe('useVideoOffers', () => {
     mockFetchOfferHits.mockResolvedValueOnce([mockOffers[0], mockOffers[1]])
 
     const { result } = renderHook(
-      () => useVideoOffers({} as OffersModuleParameters, 'moduleId', ['offerId1', 'offerId2']),
+      () => useVideoOffers([{}] as OffersModuleParameters[], 'moduleId', ['offerId1', 'offerId2']),
       {
         // eslint-disable-next-line local-rules/no-react-query-provider-hoc
         wrapper: ({ children }) => reactQueryProviderHOC(children),
@@ -41,7 +41,8 @@ describe('useVideoOffers', () => {
     mockFetchOffersByEan.mockResolvedValueOnce([mockOffers[0], mockOffers[1]])
 
     const { result } = renderHook(
-      () => useVideoOffers({} as OffersModuleParameters, 'moduleId', undefined, ['ean1', 'ean2']),
+      () =>
+        useVideoOffers([{}] as OffersModuleParameters[], 'moduleId', undefined, ['ean1', 'ean2']),
       {
         // eslint-disable-next-line local-rules/no-react-query-provider-hoc
         wrapper: ({ children }) => reactQueryProviderHOC(children),

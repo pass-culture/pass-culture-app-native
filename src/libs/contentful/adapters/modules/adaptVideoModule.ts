@@ -1,6 +1,6 @@
 import { HomepageModuleType, VideoModule } from 'features/home/types'
 import { buildImageUrl } from 'libs/contentful/adapters/helpers/buildImageUrl'
-import { adaptOffersModuleParameters } from 'libs/contentful/adapters/modules/helpers/adaptOffersModuleParameters'
+import { buildOffersParams } from 'libs/contentful/adapters/helpers/buildOffersParams'
 import { VideoContentModel } from 'libs/contentful/types'
 
 export const adaptVideoModule = (module: VideoContentModel): VideoModule | null => {
@@ -9,7 +9,12 @@ export const adaptVideoModule = (module: VideoContentModel): VideoModule | null 
   const videoThumbnail = buildImageUrl(module.fields.videoThumbnail.fields?.file.url)
   if (videoThumbnail === undefined) return null
 
-  const offersModuleParameters = adaptOffersModuleParameters(module.fields.algoliaParameters)
+  const additionalAlgoliaParameters = module.fields.additionalAlgoliaParameters ?? []
+  const offersModuleParameters = buildOffersParams(
+    module.fields.algoliaParameters,
+    additionalAlgoliaParameters
+  )
+
   if (offersModuleParameters === null) return null
 
   return {

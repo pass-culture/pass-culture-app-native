@@ -42,9 +42,10 @@ describe('<AccountSecurity/>', () => {
   })
 
   it('should navigate to account suspension confirmation when choosing this option', () => {
+    useRoute.mockReturnValueOnce({ params: { token: TOKEN } })
     render(<AccountSecurity />)
     fireEvent.press(screen.getByText('Suspendre mon compte'))
 
-    expect(navigate).toHaveBeenCalledWith('SuspensionChoice', undefined)
+    expect(navigate).toHaveBeenCalledWith('SuspensionChoice', { token: TOKEN })
   })
 })

@@ -71,7 +71,7 @@ export type TrustedDeviceRootStackParamList = {
   AccountSecurity: { token: string }
   AccountSecurityBuffer: { token: string }
   NavigationTrustedDevice: undefined
-  SuspensionChoice: undefined
+  SuspensionChoice: { token: string }
   SuspensionChoiceExpiredLink: undefined
   SuspiciousLoginSuspendedAccount: undefined
   TrustedDeviceInfos: undefined

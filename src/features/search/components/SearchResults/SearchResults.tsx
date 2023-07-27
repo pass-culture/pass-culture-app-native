@@ -10,7 +10,6 @@ import { UseRouteType } from 'features/navigation/RootNavigator/types'
 import { useSearchResults } from 'features/search/api/useSearchResults/useSearchResults'
 import { AutoScrollSwitch } from 'features/search/components/AutoScrollSwitch/AutoScrollSwitch'
 import { SingleFilterButton } from 'features/search/components/Buttons/SingleFilterButton/SingleFilterButton'
-import { Hit } from 'features/search/components/Hit/Hit'
 import { SearchList } from 'features/search/components/SearchList/SearchList'
 import { useSearch } from 'features/search/context/SearchWrapper'
 import { FilterBehaviour } from 'features/search/enums'
@@ -35,6 +34,7 @@ import { Li } from 'ui/components/Li'
 import { useModal } from 'ui/components/modals/useModal'
 import { HitPlaceholder, NumberOfResultsPlaceholder } from 'ui/components/placeholders/Placeholders'
 import { ScrollToTopButton } from 'ui/components/ScrollToTopButton'
+import { HorizontalOfferTile } from 'ui/components/tiles/HorizontalOfferTile'
 import { Ul } from 'ui/components/Ul'
 import { getSpacing, Spacer } from 'ui/theme'
 import { Helmet } from 'ui/web/global/Helmet'
@@ -123,8 +123,8 @@ export const SearchResults: React.FC = () => {
 
   const renderItem = useCallback(
     ({ item: hit, index }: { item: Offer; index: number }) => (
-      <StyledHit
-        hit={hit}
+      <StyledHorizontalOfferTile
+        offer={hit}
         analyticsParams={{
           query: searchState.query,
           index: index,
@@ -308,7 +308,7 @@ const Footer = styled.View(({ theme }) => ({
   alignItems: 'center',
 }))
 
-const StyledHit = styled(Hit)({
+const StyledHorizontalOfferTile = styled(HorizontalOfferTile)({
   marginHorizontal: getSpacing(6),
 })
 

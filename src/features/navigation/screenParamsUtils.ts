@@ -15,6 +15,7 @@ type ScreensRequiringParsing = Extract<
   | 'Venue'
   | 'Search'
   | 'SearchFilter'
+  | 'SuspensionChoice'
   | 'LocationFilter'
   | 'ThematicHome'
 >
@@ -117,6 +118,9 @@ export const screenParamsParser: ParamsParsers = {
   LocationFilter: {
     selectedVenue: JSON.parse,
     selectedPlace: JSON.parse,
+  },
+  SuspensionChoice: {
+    token: identityFn,
   },
   ThematicHome: {
     homeId: identityFn,

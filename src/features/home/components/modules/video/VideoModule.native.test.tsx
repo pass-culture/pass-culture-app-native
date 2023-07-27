@@ -59,7 +59,29 @@ describe('VideoModule', () => {
     mockUseVideoOffers.mockReturnValueOnce({ offers: [offerFixture, offerFixture2] })
     renderVideoModule()
 
-    const multiOfferList = screen.getByTestId('videoMultiOffersModuleList')
+    const multiOfferList = screen.getByTestId('video-multi-offers-module-list')
+
+    await act(async () => {})
+
+    expect(multiOfferList).not.toBeNull()
+  })
+
+  it('should render mobile design if mobile viewport', async () => {
+    mockUseVideoOffers.mockReturnValueOnce({ offers: [offerFixture] })
+    renderVideoModule()
+
+    const multiOfferList = screen.getByTestId('mobile-video-module')
+
+    await act(async () => {})
+
+    expect(multiOfferList).not.toBeNull()
+  })
+
+  it('should render desktop design if desktop viewport', async () => {
+    mockUseVideoOffers.mockReturnValueOnce({ offers: [offerFixture] })
+    renderVideoModule(true)
+
+    const multiOfferList = screen.getByTestId('desktop-video-module')
 
     await act(async () => {})
 
@@ -89,11 +111,14 @@ const offerFixture2 = {
   },
 }
 
-function renderVideoModule() {
+function renderVideoModule(isDesktopViewport?: boolean) {
   render(
     // eslint-disable-next-line local-rules/no-react-query-provider-hoc
     reactQueryProviderHOC(
       <VideoModule {...videoModuleFixture} index={1} homeEntryId="abcd" shouldShowModal={false} />
-    )
+    ),
+    {
+      theme: { isDesktopViewport: isDesktopViewport ?? false },
+    }
   )
 }
