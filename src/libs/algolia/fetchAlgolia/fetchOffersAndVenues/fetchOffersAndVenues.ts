@@ -4,6 +4,7 @@ import { captureAlgoliaError } from 'libs/algolia/fetchAlgolia/AlgoliaError'
 import { buildOfferSearchParameters } from 'libs/algolia/fetchAlgolia/buildAlgoliaParameters/buildOfferSearchParameters'
 import { offerAttributesToRetrieve } from 'libs/algolia/fetchAlgolia/buildAlgoliaParameters/offerAttributesToRetrieve'
 import { client } from 'libs/algolia/fetchAlgolia/clients'
+import { buildSearchVenuePosition } from 'libs/algolia/fetchAlgolia/fetchOffersAndVenues/helpers/buildSearchVenuePosition'
 import { getSearchVenueQuery } from 'libs/algolia/fetchAlgolia/fetchOffersAndVenues/helpers/getSearchVenueQuery'
 import { buildHitsPerPage } from 'libs/algolia/fetchAlgolia/utils'
 import { AlgoliaVenue, SearchQueryParameters } from 'libs/algolia/types'
@@ -52,8 +53,7 @@ export const fetchOffersAndVenues = async ({
       params: {
         page: 0,
         ...buildHitsPerPage(35),
-        ...(searchParameters.aroundLatLng ? { aroundLatLng: searchParameters.aroundLatLng } : {}),
-        aroundRadius: searchParameters.aroundRadius ?? 'all',
+        ...buildSearchVenuePosition(parameters.locationFilter, userLocation),
         clickAnalytics: true,
       },
     },
