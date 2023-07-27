@@ -48,11 +48,13 @@ describe('fetchVenues', () => {
   label: '[EAC] Le lieu de Moz’Art 50',
   info: 'Saint-Benoît',
   venueId: 4150,
+  _geoloc: { lat: 48.87004, lng: 2.3785 },
 }}
     ${{ hits: [{ ...venueFixture, city: undefined }] }} | ${{
   label: '[EAC] Le lieu de Moz’Art 50',
   info: '[EAC] La structure de Moz’Art 32',
   venueId: 4150,
+  _geoloc: { lat: 48.87004, lng: 2.3785 },
 }}
   `('should fetch venues and format them correctly ', async ({ fixture, expectedResult }) => {
     search.mockResolvedValueOnce(fixture)
