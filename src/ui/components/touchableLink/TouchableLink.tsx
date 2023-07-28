@@ -1,11 +1,12 @@
 import debounce from 'lodash/debounce'
 import React, { createRef, ElementType, useCallback, useEffect } from 'react'
-import { GestureResponderEvent, NativeSyntheticEvent, Platform, TargetedEvent } from 'react-native'
+import { NativeSyntheticEvent, Platform, TargetedEvent } from 'react-native'
 import styled from 'styled-components/native'
 
 import { accessibilityAndTestId } from 'libs/accessibilityAndTestId'
 import { useHandleFocus } from 'libs/hooks/useHandleFocus'
 import { useHandleHover } from 'libs/hooks/useHandleHover'
+import { handleNavigationWrapper } from 'ui/components/touchableLink/handleNavigationWrapper'
 import { TouchableLinkProps } from 'ui/components/touchableLink/types'
 import { TouchableOpacity } from 'ui/components/TouchableOpacity'
 // eslint-disable-next-line no-restricted-imports
@@ -45,12 +46,7 @@ export function TouchableLink({
       ? { ...linkProps, accessibilityRole: undefined }
       : { accessibilityRole: 'link' }
 
-  async function onClick(event: GestureResponderEvent) {
-    Platform.OS === 'web' && event?.preventDefault()
-    if (onBeforeNavigate) await onBeforeNavigate(event)
-    handleNavigation()
-    if (onAfterNavigate) await onAfterNavigate(event)
-  }
+  const onClick = handleNavigationWrapper({ onBeforeNavigate, onAfterNavigate, handleNavigation })
 
   const onLinkFocus = useCallback(
     (e: NativeSyntheticEvent<TargetedEvent>) => {
