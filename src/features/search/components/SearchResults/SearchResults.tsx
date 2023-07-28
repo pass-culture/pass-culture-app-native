@@ -176,6 +176,7 @@ export const SearchResults: React.FC = () => {
         toggle={() => setAutoScrollEnabled((autoScroll) => !autoScroll)}
       />
       <View>
+        <Spacer.Column numberOfSpaces={2} />
         <ScrollView horizontal showsHorizontalScrollIndicator={false}>
           <Spacer.Row numberOfSpaces={5} />
           <Ul>
@@ -228,7 +229,7 @@ export const SearchResults: React.FC = () => {
           </Ul>
           <Spacer.Row numberOfSpaces={5} />
         </ScrollView>
-        <Spacer.Column numberOfSpaces={3} />
+        <Spacer.Column numberOfSpaces={2} />
       </View>
       <Container testID="searchResults">
         <SearchList
