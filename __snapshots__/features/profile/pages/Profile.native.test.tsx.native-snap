@@ -69,104 +69,72 @@ exports[`Profile component should render correctly 1`] = `
             }
           }
         >
-          <RCTScrollView
-            bounces={false}
-            onScroll={[Function]}
-            scrollEventThrottle={400}
-            testID="profile-scrollview"
-          >
-            <View>
-              <View
-                style={
-                  Array [
-                    Object {
-                      "marginBottom": 8,
-                      "marginHorizontal": 24,
-                      "marginTop": 24,
-                    },
-                  ]
-                }
-              >
+          <View>
+            <RCTScrollView
+              bounces={false}
+              onScroll={[Function]}
+              scrollEventThrottle={400}
+              testID="profile-scrollview"
+            >
+              <View>
                 <View
-                  customHeight={16}
-                  enable={true}
                   style={
                     Array [
                       Object {
-                        "height": 16,
-                      },
-                    ]
-                  }
-                />
-                <Text
-                  numberOfLines={1}
-                  style={
-                    Array [
-                      Object {
-                        "color": "#161617",
-                        "fontFamily": "Montserrat-Black",
-                        "fontSize": 26,
-                        "lineHeight": 34,
+                        "marginBottom": 8,
+                        "marginHorizontal": 24,
+                        "marginTop": 24,
                       },
                     ]
                   }
                 >
-                  Mon profil
-                </Text>
-              </View>
-              <View
-                style={
-                  Array [
-                    Object {
-                      "backgroundColor": "#ffffff",
-                      "flexBasis": 0,
-                      "flexDirection": "column",
-                      "flexGrow": 1,
-                      "flexShrink": 1,
-                      "paddingHorizontal": 24,
-                    },
-                  ]
-                }
-              >
-                <View
-                  numberOfSpaces={4}
-                  style={
-                    Array [
-                      Object {
-                        "height": 16,
-                      },
-                    ]
-                  }
-                />
-                <View
-                  style={
-                    Array [
-                      Object {
-                        "paddingTop": 8,
-                      },
-                    ]
-                  }
-                >
+                  <View
+                    customHeight={16}
+                    enable={true}
+                    style={
+                      Array [
+                        Object {
+                          "height": 16,
+                        },
+                      ]
+                    }
+                  />
                   <Text
+                    numberOfLines={1}
                     style={
                       Array [
                         Object {
-                          "color": "#696A6F",
-                          "fontFamily": "Montserrat-SemiBold",
-                          "fontSize": 12,
-                          "lineHeight": 16,
+                          "color": "#161617",
+                          "fontFamily": "Montserrat-Black",
+                          "fontSize": 26,
+                          "lineHeight": 34,
                         },
                       ]
                     }
                   >
-                    Paramètres du compte
+                    Mon profil
                   </Text>
+                </View>
+                <View
+                  style={
+                    Array [
+                      Object {
+                        "backgroundColor": "#ffffff",
+                        "flexBasis": 0,
+                        "flexDirection": "column",
+                        "flexGrow": 1,
+                        "flexShrink": 1,
+                        "paddingHorizontal": 24,
+                      },
+                    ]
+                  }
+                >
                   <View
-                    numberOfSpaces={2}
+                    numberOfSpaces={4}
                     style={
                       Array [
                         Object {
-                          "height": 8,
+                          "height": 16,
                         },
                       ]
                     }
@@ -175,283 +143,305 @@ exports[`Profile component should render correctly 1`] = `
                     style={
                       Array [
                         Object {
-                          "backgroundColor": "#F1F1F4",
-                          "height": 1,
-                          "width": "100%",
-                        },
-                      ]
-                    }
-                  />
-                  <View
-                    accessibilityRole="list"
-                    style={
-                      Array [
-                        Object {
-                          "flexDirection": "column",
-                          "paddingLeft": 0,
+                          "paddingTop": 8,
                         },
                       ]
                     }
                   >
-                    <View
-                      accessibilityRole="none"
+                    <Text
                       style={
                         Array [
                           Object {
-                            "display": "flex",
+                            "color": "#696A6F",
+                            "fontFamily": "Montserrat-SemiBold",
+                            "fontSize": 12,
+                            "lineHeight": 16,
+                          },
+                        ]
+                      }
+                    >
+                      Paramètres du compte
+                    </Text>
+                    <View
+                      numberOfSpaces={2}
+                      style={
+                        Array [
+                          Object {
+                            "height": 8,
+                          },
+                        ]
+                      }
+                    />
+                    <View
+                      style={
+                        Array [
+                          Object {
+                            "backgroundColor": "#F1F1F4",
+                            "height": 1,
+                            "width": "100%",
+                          },
+                        ]
+                      }
+                    />
+                    <View
+                      accessibilityRole="list"
+                      style={
+                        Array [
+                          Object {
+                            "flexDirection": "column",
+                            "paddingLeft": 0,
                           },
                         ]
                       }
                     >
                       <View
-                        accessibilityLabel="Informations personnelles"
-                        accessibilityRole="link"
-                        accessibilityState={
-                          Object {
-                            "disabled": false,
-                          }
-                        }
-                        accessible={true}
-                        collapsable={false}
-                        focusable={true}
-                        onClick={[Function]}
-                        onResponderGrant={[Function]}
-                        onResponderMove={[Function]}
-                        onResponderRelease={[Function]}
-                        onResponderTerminate={[Function]}
-                        onResponderTerminationRequest={[Function]}
-                        onStartShouldSetResponder={[Function]}
-                        style={
-                          Object {
-                            "opacity": 1,
-                            "userSelect": "auto",
-                          }
-                        }
-                        testID="Informations personnelles"
-                      >
-                        <View
-                          style={
-                            Array [
-                              Object {
-                                "alignItems": "center",
-                                "flexDirection": "row",
-                                "justifyContent": "space-between",
-                              },
-                              Array [
-                                Object {
-                                  "paddingVertical": 16,
-                                },
-                              ],
-                            ]
-                          }
-                        >
-                          <View
-                            fill="url(#gradienttestUuid)"
-                            height={24}
-                            testID="BicolorProfile"
-                            width={24}
-                          >
-                            <Text>
-                              BicolorProfile-SVG-Mock
-                            </Text>
-                          </View>
-                          <View
-                            numberOfSpaces={2}
-                            style={
-                              Array [
-                                Object {
-                                  "width": 8,
-                                },
-                              ]
-                            }
-                          />
-                          <View
-                            style={
-                              Array [
-                                Object {
-                                  "flexBasis": 0,
-                                  "flexGrow": 1,
-                                  "flexShrink": 1,
-                                  "textAlign": "left",
-                                },
-                              ]
-                            }
-                          >
-                            <Text
-                              numberOfLines={2}
-                              style={
-                                Array [
-                                  Object {
-                                    "color": "#161617",
-                                    "fontFamily": "Montserrat-Bold",
-                                    "fontSize": 15,
-                                    "lineHeight": 20,
-                                  },
-                                ]
-                              }
-                            >
-                              Informations personnelles
-                            </Text>
-                          </View>
-                          <View
-                            style={
-                              Array [
-                                Object {
-                                  "alignItems": "flex-end",
-                                },
-                              ]
-                            }
-                          >
-                            <View
-                              height={20}
-                              testID="section-row-navigable-icon"
-                              width={20}
-                            >
-                              <Text>
-                                section-row-navigable-icon-SVG-Mock
-                              </Text>
-                            </View>
-                          </View>
-                        </View>
-                      </View>
-                    </View>
-                    <View
-                      accessibilityRole="none"
-                      style={
-                        Array [
-                          Object {
-                            "display": "flex",
-                          },
-                        ]
-                      }
-                    >
-                      <View
-                        accessibilityLabel="Notifications"
-                        accessibilityRole="link"
-                        accessibilityState={
-                          Object {
-                            "disabled": false,
-                          }
-                        }
-                        accessible={true}
-                        collapsable={false}
-                        focusable={true}
-                        onClick={[Function]}
-                        onResponderGrant={[Function]}
-                        onResponderMove={[Function]}
-                        onResponderRelease={[Function]}
-                        onResponderTerminate={[Function]}
-                        onResponderTerminationRequest={[Function]}
-                        onStartShouldSetResponder={[Function]}
-                        style={
-                          Object {
-                            "opacity": 1,
-                            "userSelect": "auto",
-                          }
-                        }
-                        testID="Notifications"
-                      >
-                        <View
-                          style={
-                            Array [
-                              Object {
-                                "alignItems": "center",
-                                "flexDirection": "row",
-                                "justifyContent": "space-between",
-                              },
-                              Array [
-                                Object {
-                                  "paddingVertical": 16,
-                                },
-                              ],
-                            ]
-                          }
-                        >
-                          <View
-                            height={24}
-                            width={24}
-                          >
-                            <Text>
-                              undefined-SVG-Mock
-                            </Text>
-                          </View>
-                          <View
-                            numberOfSpaces={2}
-                            style={
-                              Array [
-                                Object {
-                                  "width": 8,
-                                },
-                              ]
-                            }
-                          />
-                          <View
-                            style={
-                              Array [
-                                Object {
-                                  "flexBasis": 0,
-                                  "flexGrow": 1,
-                                  "flexShrink": 1,
-                                  "textAlign": "left",
-                                },
-                              ]
-                            }
-                          >
-                            <Text
-                              numberOfLines={2}
-                              style={
-                                Array [
-                                  Object {
-                                    "color": "#161617",
-                                    "fontFamily": "Montserrat-Bold",
-                                    "fontSize": 15,
-                                    "lineHeight": 20,
-                                  },
-                                ]
-                              }
-                            >
-                              Notifications
-                            </Text>
-                          </View>
-                          <View
-                            style={
-                              Array [
-                                Object {
-                                  "alignItems": "flex-end",
-                                },
-                              ]
-                            }
-                          >
-                            <View
-                              height={20}
-                              testID="section-row-navigable-icon"
-                              width={20}
-                            >
-                              <Text>
-                                section-row-navigable-icon-SVG-Mock
-                              </Text>
-                            </View>
-                          </View>
-                        </View>
-                      </View>
-                    </View>
-                    <View
-                      accessibilityRole="none"
-                      style={
-                        Array [
-                          Object {
-                            "display": "flex",
-                          },
-                        ]
-                      }
-                    >
-                      <View
+                        accessibilityRole="none"
                         style={
                           Array [
                             Object {
-                              "alignItems": "center",
-                              "flexDirection": "row",
-                              "paddingVertical": 16,
+                              "display": "flex",
+                            },
+                          ]
+                        }
+                      >
+                        <View
+                          accessibilityLabel="Informations personnelles"
+                          accessibilityRole="link"
+                          accessibilityState={
+                            Object {
+                              "disabled": false,
+                            }
+                          }
+                          accessible={true}
+                          collapsable={false}
+                          focusable={true}
+                          onClick={[Function]}
+                          onResponderGrant={[Function]}
+                          onResponderMove={[Function]}
+                          onResponderRelease={[Function]}
+                          onResponderTerminate={[Function]}
+                          onResponderTerminationRequest={[Function]}
+                          onStartShouldSetResponder={[Function]}
+                          style={
+                            Object {
+                              "opacity": 1,
+                              "userSelect": "auto",
+                            }
+                          }
+                          testID="Informations personnelles"
+                        >
+                          <View
+                            style={
+                              Array [
+                                Object {
+                                  "alignItems": "center",
+                                  "flexDirection": "row",
+                                  "justifyContent": "space-between",
+                                },
+                                Array [
+                                  Object {
+                                    "paddingVertical": 16,
+                                  },
+                                ],
+                              ]
+                            }
+                          >
+                            <View
+                              fill="url(#gradienttestUuid)"
+                              height={24}
+                              testID="BicolorProfile"
+                              width={24}
+                            >
+                              <Text>
+                                BicolorProfile-SVG-Mock
+                              </Text>
+                            </View>
+                            <View
+                              numberOfSpaces={2}
+                              style={
+                                Array [
+                                  Object {
+                                    "width": 8,
+                                  },
+                                ]
+                              }
+                            />
+                            <View
+                              style={
+                                Array [
+                                  Object {
+                                    "flexBasis": 0,
+                                    "flexGrow": 1,
+                                    "flexShrink": 1,
+                                    "textAlign": "left",
+                                  },
+                                ]
+                              }
+                            >
+                              <Text
+                                numberOfLines={2}
+                                style={
+                                  Array [
+                                    Object {
+                                      "color": "#161617",
+                                      "fontFamily": "Montserrat-Bold",
+                                      "fontSize": 15,
+                                      "lineHeight": 20,
+                                    },
+                                  ]
+                                }
+                              >
+                                Informations personnelles
+                              </Text>
+                            </View>
+                            <View
+                              style={
+                                Array [
+                                  Object {
+                                    "alignItems": "flex-end",
+                                  },
+                                ]
+                              }
+                            >
+                              <View
+                                height={20}
+                                testID="section-row-navigable-icon"
+                                width={20}
+                              >
+                                <Text>
+                                  section-row-navigable-icon-SVG-Mock
+                                </Text>
+                              </View>
+                            </View>
+                          </View>
+                        </View>
+                      </View>
+                      <View
+                        accessibilityRole="none"
+                        style={
+                          Array [
+                            Object {
+                              "display": "flex",
+                            },
+                          ]
+                        }
+                      >
+                        <View
+                          accessibilityLabel="Notifications"
+                          accessibilityRole="link"
+                          accessibilityState={
+                            Object {
+                              "disabled": false,
+                            }
+                          }
+                          accessible={true}
+                          collapsable={false}
+                          focusable={true}
+                          onClick={[Function]}
+                          onResponderGrant={[Function]}
+                          onResponderMove={[Function]}
+                          onResponderRelease={[Function]}
+                          onResponderTerminate={[Function]}
+                          onResponderTerminationRequest={[Function]}
+                          onStartShouldSetResponder={[Function]}
+                          style={
+                            Object {
+                              "opacity": 1,
+                              "userSelect": "auto",
+                            }
+                          }
+                          testID="Notifications"
+                        >
+                          <View
+                            style={
+                              Array [
+                                Object {
+                                  "alignItems": "center",
+                                  "flexDirection": "row",
+                                  "justifyContent": "space-between",
+                                },
+                                Array [
+                                  Object {
+                                    "paddingVertical": 16,
+                                  },
+                                ],
+                              ]
+                            }
+                          >
+                            <View
+                              height={24}
+                              width={24}
+                            >
+                              <Text>
+                                undefined-SVG-Mock
+                              </Text>
+                            </View>
+                            <View
+                              numberOfSpaces={2}
+                              style={
+                                Array [
+                                  Object {
+                                    "width": 8,
+                                  },
+                                ]
+                              }
+                            />
+                            <View
+                              style={
+                                Array [
+                                  Object {
+                                    "flexBasis": 0,
+                                    "flexGrow": 1,
+                                    "flexShrink": 1,
+                                    "textAlign": "left",
+                                  },
+                                ]
+                              }
+                            >
+                              <Text
+                                numberOfLines={2}
+                                style={
+                                  Array [
+                                    Object {
+                                      "color": "#161617",
+                                      "fontFamily": "Montserrat-Bold",
+                                      "fontSize": 15,
+                                      "lineHeight": 20,
+                                    },
+                                  ]
+                                }
+                              >
+                                Notifications
+                              </Text>
+                            </View>
+                            <View
+                              style={
+                                Array [
+                                  Object {
+                                    "alignItems": "flex-end",
+                                  },
+                                ]
+                              }
+                            >
+                              <View
+                                height={20}
+                                testID="section-row-navigable-icon"
+                                width={20}
+                              >
+                                <Text>
+                                  section-row-navigable-icon-SVG-Mock
+                                </Text>
+                              </View>
+                            </View>
+                          </View>
+                        </View>
+                      </View>
+                      <View
+                        accessibilityRole="none"
+                        style={
+                          Array [
+                            Object {
+                              "display": "flex",
                             },
                           ]
                         }
@@ -461,82 +451,73 @@ exports[`Profile component should render correctly 1`] = `
                             Array [
                               Object {
                                 "alignItems": "center",
-                                "flexBasis": 0,
                                 "flexDirection": "row",
-                                "flexGrow": 1,
-                                "flexShrink": 1,
+                                "paddingVertical": 16,
                               },
                             ]
                           }
-                          toggleLabel={true}
                         >
                           <View
-                            height={24}
-                            width={24}
-                          >
-                            <Text>
-                              undefined-SVG-Mock
-                            </Text>
-                          </View>
-                          <View
-                            numberOfSpaces={2}
                             style={
                               Array [
                                 Object {
-                                  "width": 8,
+                                  "alignItems": "center",
+                                  "flexBasis": 0,
+                                  "flexDirection": "row",
+                                  "flexGrow": 1,
+                                  "flexShrink": 1,
                                 },
                               ]
                             }
-                          />
-                          <Text
-                            htmlFor="testUuidV4"
-                            style={
-                              Array [
-                                Object {
-                                  "color": "#161617",
-                                  "fontFamily": "Montserrat-Regular",
-                                  "fontSize": 15,
-                                  "lineHeight": 20,
-                                },
-                              ]
-                            }
+                            toggleLabel={true}
                           >
+                            <View
+                              height={24}
+                              width={24}
+                            >
+                              <Text>
+                                undefined-SVG-Mock
+                              </Text>
+                            </View>
+                            <View
+                              numberOfSpaces={2}
+                              style={
+                                Array [
+                                  Object {
+                                    "width": 8,
+                                  },
+                                ]
+                              }
+                            />
                             <Text
+                              htmlFor="testUuidV4"
                               style={
                                 Array [
                                   Object {
                                     "color": "#161617",
-                                    "fontFamily": "Montserrat-Bold",
+                                    "fontFamily": "Montserrat-Regular",
                                     "fontSize": 15,
                                     "lineHeight": 20,
                                   },
                                 ]
                               }
                             >
-                              Partager ma position
+                              <Text
+                                style={
+                                  Array [
+                                    Object {
+                                      "color": "#161617",
+                                      "fontFamily": "Montserrat-Bold",
+                                      "fontSize": 15,
+                                      "lineHeight": 20,
+                                    },
+                                  ]
+                                }
+                              >
+                                Partager ma position
+                              </Text>
                             </Text>
-                          </Text>
-                        </View>
-                        <View
-                          style={
-                            Array [
-                              Object {
-                                "alignItems": "center",
-                                "flexDirection": "row",
-                              },
-                            ]
-                          }
-                        >
-                          <View
-                            numberOfSpaces={5}
-                            style={
-                              Array [
-                                Object {
-                                  "width": 20,
-                                },
-                              ]
-                            }
-                          />
+                          </View>
                           <View
                             style={
                               Array [
@@ -547,27 +528,1134 @@ exports[`Profile component should render correctly 1`] = `
                               ]
                             }
                           >
-                            <Text
-                              accessibilityHidden={true}
+                            <View
+                              numberOfSpaces={5}
                               style={
                                 Array [
                                   Object {
-                                    "display": "none",
+                                    "width": 20,
+                                  },
+                                ]
+                              }
+                            />
+                            <View
+                              style={
+                                Array [
+                                  Object {
+                                    "alignItems": "center",
+                                    "flexDirection": "row",
                                   },
                                 ]
                               }
                             >
-                              Case à cocher - 
-                              cochée
-                            </Text>
-                            <View
-                              accessibilityRole="checkbox"
-                              accessibilityState={
-                                Object {
-                                  "checked": true,
-                                  "disabled": false,
+                              <Text
+                                accessibilityHidden={true}
+                                style={
+                                  Array [
+                                    Object {
+                                      "display": "none",
+                                    },
+                                  ]
                                 }
+                              >
+                                Case à cocher - 
+                                cochée
+                              </Text>
+                              <View
+                                accessibilityRole="checkbox"
+                                accessibilityState={
+                                  Object {
+                                    "checked": true,
+                                    "disabled": false,
+                                  }
+                                }
+                                accessible={false}
+                                collapsable={false}
+                                focusable={true}
+                                onClick={[Function]}
+                                onResponderGrant={[Function]}
+                                onResponderMove={[Function]}
+                                onResponderRelease={[Function]}
+                                onResponderTerminate={[Function]}
+                                onResponderTerminationRequest={[Function]}
+                                onStartShouldSetResponder={[Function]}
+                                style={
+                                  Object {
+                                    "opacity": 1,
+                                    "userSelect": "auto",
+                                  }
+                                }
+                                testID="Interrupteur Partager ma position"
+                              >
+                                <View
+                                  active={true}
+                                  style={
+                                    Array [
+                                      Object {
+                                        "backgroundColor": "#15884f",
+                                        "borderRadius": 16,
+                                        "height": 32,
+                                        "justifyContent": "center",
+                                        "width": 56,
+                                      },
+                                    ]
+                                  }
+                                >
+                                  <View
+                                    collapsable={false}
+                                    disabled={false}
+                                    style={
+                                      Object {
+                                        "alignItems": "center",
+                                        "aspectRatio": 1,
+                                        "backgroundColor": "#ffffff",
+                                        "borderRadius": 28,
+                                        "height": 28,
+                                        "justifyContent": "center",
+                                        "marginLeft": 26,
+                                        "shadowColor": "#161617",
+                                        "shadowOffset": Object {
+                                          "height": 2,
+                                          "width": 0,
+                                        },
+                                        "shadowOpacity": 0.2,
+                                        "shadowRadius": 2.5,
+                                        "width": 28,
+                                      }
+                                    }
+                                  >
+                                    <View
+                                      accessibilityLabel="Activé"
+                                      height={16}
+                                      width={16}
+                                    >
+                                      <Text>
+                                        undefined-SVG-Mock
+                                      </Text>
+                                    </View>
+                                  </View>
+                                </View>
+                              </View>
+                            </View>
+                          </View>
+                        </View>
+                      </View>
+                    </View>
+                  </View>
+                  <View
+                    style={
+                      Array [
+                        Object {
+                          "paddingTop": 8,
+                        },
+                      ]
+                    }
+                  >
+                    <Text
+                      style={
+                        Array [
+                          Object {
+                            "color": "#696A6F",
+                            "fontFamily": "Montserrat-SemiBold",
+                            "fontSize": 12,
+                            "lineHeight": 16,
+                          },
+                        ]
+                      }
+                    >
+                      Aides
+                    </Text>
+                    <View
+                      numberOfSpaces={2}
+                      style={
+                        Array [
+                          Object {
+                            "height": 8,
+                          },
+                        ]
+                      }
+                    />
+                    <View
+                      style={
+                        Array [
+                          Object {
+                            "backgroundColor": "#F1F1F4",
+                            "height": 1,
+                            "width": "100%",
+                          },
+                        ]
+                      }
+                    />
+                    <View
+                      accessibilityRole="list"
+                      style={
+                        Array [
+                          Object {
+                            "flexDirection": "column",
+                            "paddingLeft": 0,
+                          },
+                        ]
+                      }
+                    >
+                      <View
+                        accessibilityRole="none"
+                        style={
+                          Array [
+                            Object {
+                              "display": "flex",
+                            },
+                          ]
+                        }
+                      >
+                        <View
+                          accessibilityLabel="Comment ça marche ?"
+                          accessibilityRole="link"
+                          accessibilityState={
+                            Object {
+                              "disabled": false,
+                            }
+                          }
+                          accessible={true}
+                          collapsable={false}
+                          focusable={true}
+                          onClick={[Function]}
+                          onResponderGrant={[Function]}
+                          onResponderMove={[Function]}
+                          onResponderRelease={[Function]}
+                          onResponderTerminate={[Function]}
+                          onResponderTerminationRequest={[Function]}
+                          onStartShouldSetResponder={[Function]}
+                          style={
+                            Object {
+                              "opacity": 1,
+                              "userSelect": "auto",
+                            }
+                          }
+                          testID="Comment ça marche ?"
+                        >
+                          <View
+                            style={
+                              Array [
+                                Object {
+                                  "alignItems": "center",
+                                  "flexDirection": "row",
+                                  "justifyContent": "space-between",
+                                },
+                                Array [
+                                  Object {
+                                    "paddingVertical": 16,
+                                  },
+                                ],
+                              ]
+                            }
+                          >
+                            <View
+                              height={24}
+                              width={24}
+                            >
+                              <Text>
+                                undefined-SVG-Mock
+                              </Text>
+                            </View>
+                            <View
+                              numberOfSpaces={2}
+                              style={
+                                Array [
+                                  Object {
+                                    "width": 8,
+                                  },
+                                ]
                               }
+                            />
+                            <View
+                              style={
+                                Array [
+                                  Object {
+                                    "flexBasis": 0,
+                                    "flexGrow": 1,
+                                    "flexShrink": 1,
+                                    "textAlign": "left",
+                                  },
+                                ]
+                              }
+                            >
+                              <Text
+                                numberOfLines={2}
+                                style={
+                                  Array [
+                                    Object {
+                                      "color": "#161617",
+                                      "fontFamily": "Montserrat-Bold",
+                                      "fontSize": 15,
+                                      "lineHeight": 20,
+                                    },
+                                  ]
+                                }
+                              >
+                                Comment ça marche ?
+                              </Text>
+                            </View>
+                            <View
+                              style={
+                                Array [
+                                  Object {
+                                    "alignItems": "flex-end",
+                                  },
+                                ]
+                              }
+                            >
+                              <View
+                                height={20}
+                                testID="section-row-navigable-icon"
+                                width={20}
+                              >
+                                <Text>
+                                  section-row-navigable-icon-SVG-Mock
+                                </Text>
+                              </View>
+                            </View>
+                          </View>
+                        </View>
+                      </View>
+                      <View
+                        accessibilityRole="none"
+                        style={
+                          Array [
+                            Object {
+                              "display": "flex",
+                            },
+                          ]
+                        }
+                      >
+                        <View
+                          accessibilityLabel="Nouvelle fenêtre : Centre d’aide"
+                          accessibilityRole="link"
+                          accessibilityState={
+                            Object {
+                              "disabled": false,
+                            }
+                          }
+                          accessible={true}
+                          collapsable={false}
+                          focusable={true}
+                          onClick={[Function]}
+                          onResponderGrant={[Function]}
+                          onResponderMove={[Function]}
+                          onResponderRelease={[Function]}
+                          onResponderTerminate={[Function]}
+                          onResponderTerminationRequest={[Function]}
+                          onStartShouldSetResponder={[Function]}
+                          style={
+                            Object {
+                              "opacity": 1,
+                              "userSelect": "auto",
+                            }
+                          }
+                          testID="Nouvelle fenêtre : Centre d’aide"
+                        >
+                          <View
+                            style={
+                              Array [
+                                Object {
+                                  "alignItems": "center",
+                                  "flexDirection": "row",
+                                  "justifyContent": "space-between",
+                                },
+                                Array [
+                                  Object {
+                                    "paddingVertical": 16,
+                                  },
+                                ],
+                              ]
+                            }
+                          >
+                            <View
+                              accessibilityLabel="Nouvelle fenêtre"
+                              height={24}
+                              width={24}
+                            >
+                              <Text>
+                                undefined-SVG-Mock
+                              </Text>
+                            </View>
+                            <View
+                              numberOfSpaces={2}
+                              style={
+                                Array [
+                                  Object {
+                                    "width": 8,
+                                  },
+                                ]
+                              }
+                            />
+                            <View
+                              style={
+                                Array [
+                                  Object {
+                                    "flexBasis": 0,
+                                    "flexGrow": 1,
+                                    "flexShrink": 1,
+                                    "textAlign": "left",
+                                  },
+                                ]
+                              }
+                            >
+                              <Text
+                                numberOfLines={2}
+                                style={
+                                  Array [
+                                    Object {
+                                      "color": "#161617",
+                                      "fontFamily": "Montserrat-Bold",
+                                      "fontSize": 15,
+                                      "lineHeight": 20,
+                                    },
+                                  ]
+                                }
+                              >
+                                Centre d’aide
+                              </Text>
+                            </View>
+                          </View>
+                        </View>
+                      </View>
+                    </View>
+                  </View>
+                  <View
+                    style={
+                      Array [
+                        Object {
+                          "paddingTop": 8,
+                        },
+                      ]
+                    }
+                  >
+                    <Text
+                      style={
+                        Array [
+                          Object {
+                            "color": "#696A6F",
+                            "fontFamily": "Montserrat-SemiBold",
+                            "fontSize": 12,
+                            "lineHeight": 16,
+                          },
+                        ]
+                      }
+                    >
+                      Autres
+                    </Text>
+                    <View
+                      numberOfSpaces={2}
+                      style={
+                        Array [
+                          Object {
+                            "height": 8,
+                          },
+                        ]
+                      }
+                    />
+                    <View
+                      style={
+                        Array [
+                          Object {
+                            "backgroundColor": "#F1F1F4",
+                            "height": 1,
+                            "width": "100%",
+                          },
+                        ]
+                      }
+                    />
+                    <View
+                      accessibilityRole="list"
+                      style={
+                        Array [
+                          Object {
+                            "flexDirection": "column",
+                            "paddingLeft": 0,
+                          },
+                        ]
+                      }
+                    >
+                      <View
+                        accessibilityRole="none"
+                        style={
+                          Array [
+                            Object {
+                              "display": "flex",
+                            },
+                          ]
+                        }
+                      >
+                        <View
+                          accessibilityLabel="Accessibilité"
+                          accessibilityRole="link"
+                          accessibilityState={
+                            Object {
+                              "disabled": false,
+                            }
+                          }
+                          accessible={true}
+                          collapsable={false}
+                          focusable={true}
+                          onClick={[Function]}
+                          onResponderGrant={[Function]}
+                          onResponderMove={[Function]}
+                          onResponderRelease={[Function]}
+                          onResponderTerminate={[Function]}
+                          onResponderTerminationRequest={[Function]}
+                          onStartShouldSetResponder={[Function]}
+                          style={
+                            Object {
+                              "opacity": 1,
+                              "userSelect": "auto",
+                            }
+                          }
+                          testID="Accessibilité"
+                        >
+                          <View
+                            style={
+                              Array [
+                                Object {
+                                  "alignItems": "center",
+                                  "flexDirection": "row",
+                                  "justifyContent": "space-between",
+                                },
+                                Array [
+                                  Object {
+                                    "paddingVertical": 16,
+                                  },
+                                ],
+                              ]
+                            }
+                          >
+                            <View
+                              fill="#161617"
+                              height={24}
+                              width={24}
+                            >
+                              <Text>
+                                undefined-SVG-Mock
+                              </Text>
+                            </View>
+                            <View
+                              numberOfSpaces={2}
+                              style={
+                                Array [
+                                  Object {
+                                    "width": 8,
+                                  },
+                                ]
+                              }
+                            />
+                            <View
+                              style={
+                                Array [
+                                  Object {
+                                    "flexBasis": 0,
+                                    "flexGrow": 1,
+                                    "flexShrink": 1,
+                                    "textAlign": "left",
+                                  },
+                                ]
+                              }
+                            >
+                              <Text
+                                numberOfLines={2}
+                                style={
+                                  Array [
+                                    Object {
+                                      "color": "#161617",
+                                      "fontFamily": "Montserrat-Bold",
+                                      "fontSize": 15,
+                                      "lineHeight": 20,
+                                    },
+                                  ]
+                                }
+                              >
+                                Accessibilité
+                              </Text>
+                            </View>
+                            <View
+                              style={
+                                Array [
+                                  Object {
+                                    "alignItems": "flex-end",
+                                  },
+                                ]
+                              }
+                            >
+                              <View
+                                height={20}
+                                testID="section-row-navigable-icon"
+                                width={20}
+                              >
+                                <Text>
+                                  section-row-navigable-icon-SVG-Mock
+                                </Text>
+                              </View>
+                            </View>
+                          </View>
+                        </View>
+                      </View>
+                      <View
+                        accessibilityRole="none"
+                        style={
+                          Array [
+                            Object {
+                              "display": "flex",
+                            },
+                          ]
+                        }
+                      >
+                        <View
+                          accessibilityLabel="Informations légales"
+                          accessibilityRole="link"
+                          accessibilityState={
+                            Object {
+                              "disabled": false,
+                            }
+                          }
+                          accessible={true}
+                          collapsable={false}
+                          focusable={true}
+                          onClick={[Function]}
+                          onResponderGrant={[Function]}
+                          onResponderMove={[Function]}
+                          onResponderRelease={[Function]}
+                          onResponderTerminate={[Function]}
+                          onResponderTerminationRequest={[Function]}
+                          onStartShouldSetResponder={[Function]}
+                          style={
+                            Object {
+                              "opacity": 1,
+                              "userSelect": "auto",
+                            }
+                          }
+                          testID="Informations légales"
+                        >
+                          <View
+                            style={
+                              Array [
+                                Object {
+                                  "alignItems": "center",
+                                  "flexDirection": "row",
+                                  "justifyContent": "space-between",
+                                },
+                                Array [
+                                  Object {
+                                    "paddingVertical": 16,
+                                  },
+                                ],
+                              ]
+                            }
+                          >
+                            <View
+                              height={24}
+                              width={24}
+                            >
+                              <Text>
+                                undefined-SVG-Mock
+                              </Text>
+                            </View>
+                            <View
+                              numberOfSpaces={2}
+                              style={
+                                Array [
+                                  Object {
+                                    "width": 8,
+                                  },
+                                ]
+                              }
+                            />
+                            <View
+                              style={
+                                Array [
+                                  Object {
+                                    "flexBasis": 0,
+                                    "flexGrow": 1,
+                                    "flexShrink": 1,
+                                    "textAlign": "left",
+                                  },
+                                ]
+                              }
+                            >
+                              <Text
+                                numberOfLines={2}
+                                style={
+                                  Array [
+                                    Object {
+                                      "color": "#161617",
+                                      "fontFamily": "Montserrat-Bold",
+                                      "fontSize": 15,
+                                      "lineHeight": 20,
+                                    },
+                                  ]
+                                }
+                              >
+                                Informations légales
+                              </Text>
+                            </View>
+                            <View
+                              style={
+                                Array [
+                                  Object {
+                                    "alignItems": "flex-end",
+                                  },
+                                ]
+                              }
+                            >
+                              <View
+                                height={20}
+                                testID="section-row-navigable-icon"
+                                width={20}
+                              >
+                                <Text>
+                                  section-row-navigable-icon-SVG-Mock
+                                </Text>
+                              </View>
+                            </View>
+                          </View>
+                        </View>
+                      </View>
+                      <View
+                        accessibilityRole="none"
+                        style={
+                          Array [
+                            Object {
+                              "display": "flex",
+                            },
+                          ]
+                        }
+                      >
+                        <View
+                          accessibilityLabel="Confidentialité"
+                          accessibilityRole="link"
+                          accessibilityState={
+                            Object {
+                              "disabled": false,
+                            }
+                          }
+                          accessible={true}
+                          collapsable={false}
+                          focusable={true}
+                          onClick={[Function]}
+                          onResponderGrant={[Function]}
+                          onResponderMove={[Function]}
+                          onResponderRelease={[Function]}
+                          onResponderTerminate={[Function]}
+                          onResponderTerminationRequest={[Function]}
+                          onStartShouldSetResponder={[Function]}
+                          style={
+                            Object {
+                              "opacity": 1,
+                              "userSelect": "auto",
+                            }
+                          }
+                          testID="Confidentialité"
+                        >
+                          <View
+                            style={
+                              Array [
+                                Object {
+                                  "alignItems": "center",
+                                  "flexDirection": "row",
+                                  "justifyContent": "space-between",
+                                },
+                                Array [
+                                  Object {
+                                    "paddingVertical": 16,
+                                  },
+                                ],
+                              ]
+                            }
+                          >
+                            <View
+                              height={24}
+                              width={24}
+                            >
+                              <Text>
+                                undefined-SVG-Mock
+                              </Text>
+                            </View>
+                            <View
+                              numberOfSpaces={2}
+                              style={
+                                Array [
+                                  Object {
+                                    "width": 8,
+                                  },
+                                ]
+                              }
+                            />
+                            <View
+                              style={
+                                Array [
+                                  Object {
+                                    "flexBasis": 0,
+                                    "flexGrow": 1,
+                                    "flexShrink": 1,
+                                    "textAlign": "left",
+                                  },
+                                ]
+                              }
+                            >
+                              <Text
+                                numberOfLines={2}
+                                style={
+                                  Array [
+                                    Object {
+                                      "color": "#161617",
+                                      "fontFamily": "Montserrat-Bold",
+                                      "fontSize": 15,
+                                      "lineHeight": 20,
+                                    },
+                                  ]
+                                }
+                              >
+                                Confidentialité
+                              </Text>
+                            </View>
+                            <View
+                              style={
+                                Array [
+                                  Object {
+                                    "alignItems": "flex-end",
+                                  },
+                                ]
+                              }
+                            >
+                              <View
+                                height={20}
+                                testID="section-row-navigable-icon"
+                                width={20}
+                              >
+                                <Text>
+                                  section-row-navigable-icon-SVG-Mock
+                                </Text>
+                              </View>
+                            </View>
+                          </View>
+                        </View>
+                      </View>
+                    </View>
+                  </View>
+                  <View
+                    style={
+                      Array [
+                        Object {
+                          "paddingTop": 8,
+                        },
+                      ]
+                    }
+                  >
+                    <Text
+                      style={
+                        Array [
+                          Object {
+                            "color": "#696A6F",
+                            "fontFamily": "Montserrat-SemiBold",
+                            "fontSize": 12,
+                            "lineHeight": 16,
+                          },
+                        ]
+                      }
+                    >
+                      Partager le pass Culture
+                    </Text>
+                    <View
+                      numberOfSpaces={2}
+                      style={
+                        Array [
+                          Object {
+                            "height": 8,
+                          },
+                        ]
+                      }
+                    />
+                    <View
+                      style={
+                        Array [
+                          Object {
+                            "backgroundColor": "#F1F1F4",
+                            "height": 1,
+                            "width": "100%",
+                          },
+                        ]
+                      }
+                    />
+                    <View
+                      numberOfSpaces={4}
+                      style={
+                        Array [
+                          Object {
+                            "height": 16,
+                          },
+                        ]
+                      }
+                    />
+                    <View
+                      accessible={false}
+                      collapsable={false}
+                      focusable={true}
+                      onClick={[Function]}
+                      onResponderGrant={[Function]}
+                      onResponderMove={[Function]}
+                      onResponderRelease={[Function]}
+                      onResponderTerminate={[Function]}
+                      onResponderTerminationRequest={[Function]}
+                      onStartShouldSetResponder={[Function]}
+                      style={
+                        Object {
+                          "opacity": 1,
+                          "userSelect": "auto",
+                        }
+                      }
+                    >
+                      <View
+                        style={
+                          Array [
+                            Object {
+                              "borderRadius": 7,
+                              "overflow": "hidden",
+                            },
+                          ]
+                        }
+                      >
+                        <View
+                          accessibilityIgnoresInvertColors={true}
+                          style={
+                            Array [
+                              Object {
+                                "backgroundColor": "#eb0055",
+                                "justifyContent": "center",
+                                "width": "100%",
+                              },
+                            ]
+                          }
+                        >
+                          <Image
+                            source={
+                              Object {
+                                "testUri": "../../../public/images/ShareAppBannerImage.png",
+                              }
+                            }
+                            style={
+                              Array [
+                                Object {
+                                  "bottom": 0,
+                                  "left": 0,
+                                  "position": "absolute",
+                                  "right": 0,
+                                  "top": 0,
+                                },
+                                Object {
+                                  "height": undefined,
+                                  "width": "100%",
+                                },
+                                undefined,
+                              ]
+                            }
+                            testID="module-background"
+                          />
+                          <View
+                            style={
+                              Array [
+                                Object {
+                                  "alignItems": "center",
+                                  "borderColor": "#90949D",
+                                  "borderRadius": 7,
+                                  "borderStyle": "solid",
+                                  "borderWidth": 1,
+                                  "flexDirection": "row",
+                                  "padding": 16,
+                                  "width": "100%",
+                                },
+                                undefined,
+                              ]
+                            }
+                          >
+                            <View
+                              style={
+                                Array [
+                                  Object {
+                                    "flexGrow": 1,
+                                    "flexShrink": 1,
+                                    "marginRight": 16,
+                                    "textAlign": "start",
+                                  },
+                                ]
+                              }
+                            >
+                              <View
+                                style={
+                                  Array [
+                                    Object {
+                                      "paddingRight": 32,
+                                    },
+                                  ]
+                                }
+                              >
+                                <Text
+                                  style={
+                                    Array [
+                                      Object {
+                                        "color": "#ffffff",
+                                        "fontFamily": "Montserrat-Bold",
+                                        "fontSize": 15,
+                                        "lineHeight": 20,
+                                      },
+                                    ]
+                                  }
+                                >
+                                  Partage le pass Culture
+                                </Text>
+                                <View
+                                  numberOfSpaces={1}
+                                  style={
+                                    Array [
+                                      Object {
+                                        "height": 4,
+                                      },
+                                    ]
+                                  }
+                                />
+                                <Text
+                                  style={
+                                    Array [
+                                      Object {
+                                        "color": "#ffffff",
+                                        "fontFamily": "Montserrat-Regular",
+                                        "fontSize": 15,
+                                        "lineHeight": 20,
+                                      },
+                                    ]
+                                  }
+                                >
+                                  Recommande le bon plan à tes amis !
+                                </Text>
+                              </View>
+                            </View>
+                            <View>
+                              <View
+                                height={24}
+                                width={24}
+                              >
+                                <Text>
+                                  undefined-SVG-Mock
+                                </Text>
+                              </View>
+                            </View>
+                          </View>
+                        </View>
+                      </View>
+                    </View>
+                    <View
+                      numberOfSpaces={4}
+                      style={
+                        Array [
+                          Object {
+                            "height": 16,
+                          },
+                        ]
+                      }
+                    />
+                  </View>
+                  <View
+                    style={
+                      Array [
+                        Object {
+                          "paddingTop": 8,
+                        },
+                      ]
+                    }
+                  >
+                    <Text
+                      style={
+                        Array [
+                          Object {
+                            "color": "#696A6F",
+                            "fontFamily": "Montserrat-SemiBold",
+                            "fontSize": 12,
+                            "lineHeight": 16,
+                          },
+                        ]
+                      }
+                    >
+                      Suivre le pass Culture
+                    </Text>
+                    <View
+                      numberOfSpaces={2}
+                      style={
+                        Array [
+                          Object {
+                            "height": 8,
+                          },
+                        ]
+                      }
+                    />
+                    <View
+                      style={
+                        Array [
+                          Object {
+                            "backgroundColor": "#F1F1F4",
+                            "height": 1,
+                            "width": "100%",
+                          },
+                        ]
+                      }
+                    />
+                    <View
+                      style={
+                        Array [
+                          Object {
+                            "marginBottom": "auto",
+                            "marginLeft": "auto",
+                            "marginRight": "auto",
+                            "marginTop": "auto",
+                            "maxWidth": 500,
+                            "width": "100%",
+                          },
+                        ]
+                      }
+                    >
+                      <View
+                        style={
+                          Array [
+                            Object {
+                              "flexDirection": "row",
+                              "justifyContent": "space-between",
+                              "paddingVertical": 16,
+                            },
+                          ]
+                        }
+                      >
+                        <View
+                          accessibilityRole="list"
+                          style={
+                            Array [
+                              Object {
+                                "flexBasis": 0,
+                                "flexDirection": "row",
+                                "flexGrow": 1,
+                                "flexShrink": 1,
+                                "justifyContent": "space-between",
+                                "paddingLeft": 0,
+                              },
+                            ]
+                          }
+                        >
+                          <View
+                            accessibilityRole="none"
+                            style={
+                              Array [
+                                Object {
+                                  "display": "flex",
+                                },
+                              ]
+                            }
+                          >
+                            <View
+                              accessibilityRole="link"
                               accessible={false}
                               collapsable={false}
                               focusable={true}
@@ -584,55 +1672,335 @@ exports[`Profile component should render correctly 1`] = `
                                   "userSelect": "auto",
                                 }
                               }
-                              testID="Interrupteur Partager ma position"
                             >
                               <View
-                                active={true}
                                 style={
                                   Array [
                                     Object {
-                                      "backgroundColor": "#15884f",
-                                      "borderRadius": 16,
-                                      "height": 32,
+                                      "alignItems": "center",
+                                      "flexDirection": "column",
                                       "justifyContent": "center",
-                                      "width": 56,
+                                      "maxWidth": 80,
                                     },
                                   ]
                                 }
                               >
                                 <View
-                                  collapsable={false}
-                                  disabled={false}
                                   style={
-                                    Object {
-                                      "alignItems": "center",
-                                      "aspectRatio": 1,
-                                      "backgroundColor": "#ffffff",
-                                      "borderRadius": 28,
-                                      "height": 28,
-                                      "justifyContent": "center",
-                                      "marginLeft": 26,
-                                      "shadowColor": "#161617",
-                                      "shadowOffset": Object {
-                                        "height": 2,
-                                        "width": 0,
+                                    Array [
+                                      Object {
+                                        "alignItems": "center",
+                                        "height": 32,
+                                        "justifyContent": "center",
+                                        "width": 32,
                                       },
-                                      "shadowOpacity": 0.2,
-                                      "shadowRadius": 2.5,
-                                      "width": 28,
-                                    }
+                                    ]
                                   }
                                 >
                                   <View
-                                    accessibilityLabel="Activé"
-                                    height={16}
-                                    width={16}
+                                    height={24}
+                                    width={24}
                                   >
                                     <Text>
                                       undefined-SVG-Mock
                                     </Text>
                                   </View>
                                 </View>
+                                <View
+                                  numberOfSpaces={1}
+                                  style={
+                                    Array [
+                                      Object {
+                                        "height": 4,
+                                      },
+                                    ]
+                                  }
+                                />
+                                <Text
+                                  numberOfLines={2}
+                                  style={
+                                    Array [
+                                      Object {
+                                        "color": "#161617",
+                                        "fontFamily": "Montserrat-SemiBold",
+                                        "fontSize": 12,
+                                        "lineHeight": 16,
+                                      },
+                                    ]
+                                  }
+                                >
+                                  Instagram
+                                </Text>
+                              </View>
+                            </View>
+                          </View>
+                          <View
+                            accessibilityRole="none"
+                            style={
+                              Array [
+                                Object {
+                                  "display": "flex",
+                                },
+                              ]
+                            }
+                          >
+                            <View
+                              accessibilityRole="link"
+                              accessible={false}
+                              collapsable={false}
+                              focusable={true}
+                              onClick={[Function]}
+                              onResponderGrant={[Function]}
+                              onResponderMove={[Function]}
+                              onResponderRelease={[Function]}
+                              onResponderTerminate={[Function]}
+                              onResponderTerminationRequest={[Function]}
+                              onStartShouldSetResponder={[Function]}
+                              style={
+                                Object {
+                                  "opacity": 1,
+                                  "userSelect": "auto",
+                                }
+                              }
+                            >
+                              <View
+                                style={
+                                  Array [
+                                    Object {
+                                      "alignItems": "center",
+                                      "flexDirection": "column",
+                                      "justifyContent": "center",
+                                      "maxWidth": 80,
+                                    },
+                                  ]
+                                }
+                              >
+                                <View
+                                  style={
+                                    Array [
+                                      Object {
+                                        "alignItems": "center",
+                                        "height": 32,
+                                        "justifyContent": "center",
+                                        "width": 32,
+                                      },
+                                    ]
+                                  }
+                                >
+                                  <View
+                                    height={24}
+                                    width={24}
+                                  >
+                                    <Text>
+                                      undefined-SVG-Mock
+                                    </Text>
+                                  </View>
+                                </View>
+                                <View
+                                  numberOfSpaces={1}
+                                  style={
+                                    Array [
+                                      Object {
+                                        "height": 4,
+                                      },
+                                    ]
+                                  }
+                                />
+                                <Text
+                                  numberOfLines={2}
+                                  style={
+                                    Array [
+                                      Object {
+                                        "color": "#161617",
+                                        "fontFamily": "Montserrat-SemiBold",
+                                        "fontSize": 12,
+                                        "lineHeight": 16,
+                                      },
+                                    ]
+                                  }
+                                >
+                                  Twitter
+                                </Text>
+                              </View>
+                            </View>
+                          </View>
+                          <View
+                            accessibilityRole="none"
+                            style={
+                              Array [
+                                Object {
+                                  "display": "flex",
+                                },
+                              ]
+                            }
+                          >
+                            <View
+                              accessibilityRole="link"
+                              accessible={false}
+                              collapsable={false}
+                              focusable={true}
+                              onClick={[Function]}
+                              onResponderGrant={[Function]}
+                              onResponderMove={[Function]}
+                              onResponderRelease={[Function]}
+                              onResponderTerminate={[Function]}
+                              onResponderTerminationRequest={[Function]}
+                              onStartShouldSetResponder={[Function]}
+                              style={
+                                Object {
+                                  "opacity": 1,
+                                  "userSelect": "auto",
+                                }
+                              }
+                            >
+                              <View
+                                style={
+                                  Array [
+                                    Object {
+                                      "alignItems": "center",
+                                      "flexDirection": "column",
+                                      "justifyContent": "center",
+                                      "maxWidth": 80,
+                                    },
+                                  ]
+                                }
+                              >
+                                <View
+                                  style={
+                                    Array [
+                                      Object {
+                                        "alignItems": "center",
+                                        "height": 32,
+                                        "justifyContent": "center",
+                                        "width": 32,
+                                      },
+                                    ]
+                                  }
+                                >
+                                  <View
+                                    height={24}
+                                    width={24}
+                                  >
+                                    <Text>
+                                      undefined-SVG-Mock
+                                    </Text>
+                                  </View>
+                                </View>
+                                <View
+                                  numberOfSpaces={1}
+                                  style={
+                                    Array [
+                                      Object {
+                                        "height": 4,
+                                      },
+                                    ]
+                                  }
+                                />
+                                <Text
+                                  numberOfLines={2}
+                                  style={
+                                    Array [
+                                      Object {
+                                        "color": "#161617",
+                                        "fontFamily": "Montserrat-SemiBold",
+                                        "fontSize": 12,
+                                        "lineHeight": 16,
+                                      },
+                                    ]
+                                  }
+                                >
+                                  Tiktok
+                                </Text>
+                              </View>
+                            </View>
+                          </View>
+                          <View
+                            accessibilityRole="none"
+                            style={
+                              Array [
+                                Object {
+                                  "display": "flex",
+                                },
+                              ]
+                            }
+                          >
+                            <View
+                              accessibilityRole="link"
+                              accessible={false}
+                              collapsable={false}
+                              focusable={true}
+                              onClick={[Function]}
+                              onResponderGrant={[Function]}
+                              onResponderMove={[Function]}
+                              onResponderRelease={[Function]}
+                              onResponderTerminate={[Function]}
+                              onResponderTerminationRequest={[Function]}
+                              onStartShouldSetResponder={[Function]}
+                              style={
+                                Object {
+                                  "opacity": 1,
+                                  "userSelect": "auto",
+                                }
+                              }
+                            >
+                              <View
+                                style={
+                                  Array [
+                                    Object {
+                                      "alignItems": "center",
+                                      "flexDirection": "column",
+                                      "justifyContent": "center",
+                                      "maxWidth": 80,
+                                    },
+                                  ]
+                                }
+                              >
+                                <View
+                                  style={
+                                    Array [
+                                      Object {
+                                        "alignItems": "center",
+                                        "height": 32,
+                                        "justifyContent": "center",
+                                        "width": 32,
+                                      },
+                                    ]
+                                  }
+                                >
+                                  <View
+                                    height={24}
+                                    width={24}
+                                  >
+                                    <Text>
+                                      undefined-SVG-Mock
+                                    </Text>
+                                  </View>
+                                </View>
+                                <View
+                                  numberOfSpaces={1}
+                                  style={
+                                    Array [
+                                      Object {
+                                        "height": 4,
+                                      },
+                                    ]
+                                  }
+                                />
+                                <Text
+                                  numberOfLines={2}
+                                  style={
+                                    Array [
+                                      Object {
+                                        "color": "#161617",
+                                        "fontFamily": "Montserrat-SemiBold",
+                                        "fontSize": 12,
+                                        "lineHeight": 16,
+                                      },
+                                    ]
+                                  }
+                                >
+                                  Facebook
+                                </Text>
                               </View>
                             </View>
                           </View>
@@ -640,1610 +2008,278 @@ exports[`Profile component should render correctly 1`] = `
                       </View>
                     </View>
                   </View>
-                </View>
-                <View
-                  style={
-                    Array [
-                      Object {
-                        "paddingTop": 8,
-                      },
-                    ]
-                  }
-                >
-                  <Text
-                    style={
-                      Array [
-                        Object {
-                          "color": "#696A6F",
-                          "fontFamily": "Montserrat-SemiBold",
-                          "fontSize": 12,
-                          "lineHeight": 16,
-                        },
-                      ]
-                    }
-                  >
-                    Aides
-                  </Text>
-                  <View
-                    numberOfSpaces={2}
-                    style={
-                      Array [
-                        Object {
-                          "height": 8,
-                        },
-                      ]
-                    }
-                  />
                   <View
                     style={
                       Array [
                         Object {
-                          "backgroundColor": "#F1F1F4",
-                          "height": 1,
-                          "width": "100%",
-                        },
-                      ]
-                    }
-                  />
-                  <View
-                    accessibilityRole="list"
-                    style={
-                      Array [
-                        Object {
-                          "flexDirection": "column",
-                          "paddingLeft": 0,
+                          "paddingTop": 8,
                         },
                       ]
                     }
                   >
                     <View
-                      accessibilityRole="none"
+                      numberOfSpaces={2}
                       style={
                         Array [
                           Object {
-                            "display": "flex",
+                            "height": 8,
                           },
                         ]
                       }
-                    >
-                      <View
-                        accessibilityLabel="Comment ça marche ?"
-                        accessibilityRole="link"
-                        accessibilityState={
-                          Object {
-                            "disabled": false,
-                          }
-                        }
-                        accessible={true}
-                        collapsable={false}
-                        focusable={true}
-                        onClick={[Function]}
-                        onResponderGrant={[Function]}
-                        onResponderMove={[Function]}
-                        onResponderRelease={[Function]}
-                        onResponderTerminate={[Function]}
-                        onResponderTerminationRequest={[Function]}
-                        onStartShouldSetResponder={[Function]}
-                        style={
-                          Object {
-                            "opacity": 1,
-                            "userSelect": "auto",
-                          }
-                        }
-                        testID="Comment ça marche ?"
-                      >
-                        <View
-                          style={
-                            Array [
-                              Object {
-                                "alignItems": "center",
-                                "flexDirection": "row",
-                                "justifyContent": "space-between",
-                              },
-                              Array [
-                                Object {
-                                  "paddingVertical": 16,
-                                },
-                              ],
-                            ]
-                          }
-                        >
-                          <View
-                            height={24}
-                            width={24}
-                          >
-                            <Text>
-                              undefined-SVG-Mock
-                            </Text>
-                          </View>
-                          <View
-                            numberOfSpaces={2}
-                            style={
-                              Array [
-                                Object {
-                                  "width": 8,
-                                },
-                              ]
-                            }
-                          />
-                          <View
-                            style={
-                              Array [
-                                Object {
-                                  "flexBasis": 0,
-                                  "flexGrow": 1,
-                                  "flexShrink": 1,
-                                  "textAlign": "left",
-                                },
-                              ]
-                            }
-                          >
-                            <Text
-                              numberOfLines={2}
-                              style={
-                                Array [
-                                  Object {
-                                    "color": "#161617",
-                                    "fontFamily": "Montserrat-Bold",
-                                    "fontSize": 15,
-                                    "lineHeight": 20,
-                                  },
-                                ]
-                              }
-                            >
-                              Comment ça marche ?
-                            </Text>
-                          </View>
-                          <View
-                            style={
-                              Array [
-                                Object {
-                                  "alignItems": "flex-end",
-                                },
-                              ]
-                            }
-                          >
-                            <View
-                              height={20}
-                              testID="section-row-navigable-icon"
-                              width={20}
-                            >
-                              <Text>
-                                section-row-navigable-icon-SVG-Mock
-                              </Text>
-                            </View>
-                          </View>
-                        </View>
-                      </View>
-                    </View>
-                    <View
-                      accessibilityRole="none"
-                      style={
-                        Array [
-                          Object {
-                            "display": "flex",
-                          },
-                        ]
-                      }
-                    >
-                      <View
-                        accessibilityLabel="Nouvelle fenêtre : Centre d’aide"
-                        accessibilityRole="link"
-                        accessibilityState={
-                          Object {
-                            "disabled": false,
-                          }
-                        }
-                        accessible={true}
-                        collapsable={false}
-                        focusable={true}
-                        onClick={[Function]}
-                        onResponderGrant={[Function]}
-                        onResponderMove={[Function]}
-                        onResponderRelease={[Function]}
-                        onResponderTerminate={[Function]}
-                        onResponderTerminationRequest={[Function]}
-                        onStartShouldSetResponder={[Function]}
-                        style={
-                          Object {
-                            "opacity": 1,
-                            "userSelect": "auto",
-                          }
-                        }
-                        testID="Nouvelle fenêtre : Centre d’aide"
-                      >
-                        <View
-                          style={
-                            Array [
-                              Object {
-                                "alignItems": "center",
-                                "flexDirection": "row",
-                                "justifyContent": "space-between",
-                              },
-                              Array [
-                                Object {
-                                  "paddingVertical": 16,
-                                },
-                              ],
-                            ]
-                          }
-                        >
-                          <View
-                            accessibilityLabel="Nouvelle fenêtre"
-                            height={24}
-                            width={24}
-                          >
-                            <Text>
-                              undefined-SVG-Mock
-                            </Text>
-                          </View>
-                          <View
-                            numberOfSpaces={2}
-                            style={
-                              Array [
-                                Object {
-                                  "width": 8,
-                                },
-                              ]
-                            }
-                          />
-                          <View
-                            style={
-                              Array [
-                                Object {
-                                  "flexBasis": 0,
-                                  "flexGrow": 1,
-                                  "flexShrink": 1,
-                                  "textAlign": "left",
-                                },
-                              ]
-                            }
-                          >
-                            <Text
-                              numberOfLines={2}
-                              style={
-                                Array [
-                                  Object {
-                                    "color": "#161617",
-                                    "fontFamily": "Montserrat-Bold",
-                                    "fontSize": 15,
-                                    "lineHeight": 20,
-                                  },
-                                ]
-                              }
-                            >
-                              Centre d’aide
-                            </Text>
-                          </View>
-                        </View>
-                      </View>
-                    </View>
-                  </View>
-                </View>
-                <View
-                  style={
-                    Array [
-                      Object {
-                        "paddingTop": 8,
-                      },
-                    ]
-                  }
-                >
-                  <Text
-                    style={
-                      Array [
-                        Object {
-                          "color": "#696A6F",
-                          "fontFamily": "Montserrat-SemiBold",
-                          "fontSize": 12,
-                          "lineHeight": 16,
-                        },
-                      ]
-                    }
-                  >
-                    Autres
-                  </Text>
-                  <View
-                    numberOfSpaces={2}
-                    style={
-                      Array [
-                        Object {
-                          "height": 8,
-                        },
-                      ]
-                    }
-                  />
-                  <View
-                    style={
-                      Array [
-                        Object {
-                          "backgroundColor": "#F1F1F4",
-                          "height": 1,
-                          "width": "100%",
-                        },
-                      ]
-                    }
-                  />
-                  <View
-                    accessibilityRole="list"
-                    style={
-                      Array [
-                        Object {
-                          "flexDirection": "column",
-                          "paddingLeft": 0,
-                        },
-                      ]
-                    }
-                  >
-                    <View
-                      accessibilityRole="none"
-                      style={
-                        Array [
-                          Object {
-                            "display": "flex",
-                          },
-                        ]
-                      }
-                    >
-                      <View
-                        accessibilityLabel="Accessibilité"
-                        accessibilityRole="link"
-                        accessibilityState={
-                          Object {
-                            "disabled": false,
-                          }
-                        }
-                        accessible={true}
-                        collapsable={false}
-                        focusable={true}
-                        onClick={[Function]}
-                        onResponderGrant={[Function]}
-                        onResponderMove={[Function]}
-                        onResponderRelease={[Function]}
-                        onResponderTerminate={[Function]}
-                        onResponderTerminationRequest={[Function]}
-                        onStartShouldSetResponder={[Function]}
-                        style={
-                          Object {
-                            "opacity": 1,
-                            "userSelect": "auto",
-                          }
-                        }
-                        testID="Accessibilité"
-                      >
-                        <View
-                          style={
-                            Array [
-                              Object {
-                                "alignItems": "center",
-                                "flexDirection": "row",
-                                "justifyContent": "space-between",
-                              },
-                              Array [
-                                Object {
-                                  "paddingVertical": 16,
-                                },
-                              ],
-                            ]
-                          }
-                        >
-                          <View
-                            fill="#161617"
-                            height={24}
-                            width={24}
-                          >
-                            <Text>
-                              undefined-SVG-Mock
-                            </Text>
-                          </View>
-                          <View
-                            numberOfSpaces={2}
-                            style={
-                              Array [
-                                Object {
-                                  "width": 8,
-                                },
-                              ]
-                            }
-                          />
-                          <View
-                            style={
-                              Array [
-                                Object {
-                                  "flexBasis": 0,
-                                  "flexGrow": 1,
-                                  "flexShrink": 1,
-                                  "textAlign": "left",
-                                },
-                              ]
-                            }
-                          >
-                            <Text
-                              numberOfLines={2}
-                              style={
-                                Array [
-                                  Object {
-                                    "color": "#161617",
-                                    "fontFamily": "Montserrat-Bold",
-                                    "fontSize": 15,
-                                    "lineHeight": 20,
-                                  },
-                                ]
-                              }
-                            >
-                              Accessibilité
-                            </Text>
-                          </View>
-                          <View
-                            style={
-                              Array [
-                                Object {
-                                  "alignItems": "flex-end",
-                                },
-                              ]
-                            }
-                          >
-                            <View
-                              height={20}
-                              testID="section-row-navigable-icon"
-                              width={20}
-                            >
-                              <Text>
-                                section-row-navigable-icon-SVG-Mock
-                              </Text>
-                            </View>
-                          </View>
-                        </View>
-                      </View>
-                    </View>
-                    <View
-                      accessibilityRole="none"
-                      style={
-                        Array [
-                          Object {
-                            "display": "flex",
-                          },
-                        ]
-                      }
-                    >
-                      <View
-                        accessibilityLabel="Informations légales"
-                        accessibilityRole="link"
-                        accessibilityState={
-                          Object {
-                            "disabled": false,
-                          }
-                        }
-                        accessible={true}
-                        collapsable={false}
-                        focusable={true}
-                        onClick={[Function]}
-                        onResponderGrant={[Function]}
-                        onResponderMove={[Function]}
-                        onResponderRelease={[Function]}
-                        onResponderTerminate={[Function]}
-                        onResponderTerminationRequest={[Function]}
-                        onStartShouldSetResponder={[Function]}
-                        style={
-                          Object {
-                            "opacity": 1,
-                            "userSelect": "auto",
-                          }
-                        }
-                        testID="Informations légales"
-                      >
-                        <View
-                          style={
-                            Array [
-                              Object {
-                                "alignItems": "center",
-                                "flexDirection": "row",
-                                "justifyContent": "space-between",
-                              },
-                              Array [
-                                Object {
-                                  "paddingVertical": 16,
-                                },
-                              ],
-                            ]
-                          }
-                        >
-                          <View
-                            height={24}
-                            width={24}
-                          >
-                            <Text>
-                              undefined-SVG-Mock
-                            </Text>
-                          </View>
-                          <View
-                            numberOfSpaces={2}
-                            style={
-                              Array [
-                                Object {
-                                  "width": 8,
-                                },
-                              ]
-                            }
-                          />
-                          <View
-                            style={
-                              Array [
-                                Object {
-                                  "flexBasis": 0,
-                                  "flexGrow": 1,
-                                  "flexShrink": 1,
-                                  "textAlign": "left",
-                                },
-                              ]
-                            }
-                          >
-                            <Text
-                              numberOfLines={2}
-                              style={
-                                Array [
-                                  Object {
-                                    "color": "#161617",
-                                    "fontFamily": "Montserrat-Bold",
-                                    "fontSize": 15,
-                                    "lineHeight": 20,
-                                  },
-                                ]
-                              }
-                            >
-                              Informations légales
-                            </Text>
-                          </View>
-                          <View
-                            style={
-                              Array [
-                                Object {
-                                  "alignItems": "flex-end",
-                                },
-                              ]
-                            }
-                          >
-                            <View
-                              height={20}
-                              testID="section-row-navigable-icon"
-                              width={20}
-                            >
-                              <Text>
-                                section-row-navigable-icon-SVG-Mock
-                              </Text>
-                            </View>
-                          </View>
-                        </View>
-                      </View>
-                    </View>
-                    <View
-                      accessibilityRole="none"
-                      style={
-                        Array [
-                          Object {
-                            "display": "flex",
-                          },
-                        ]
-                      }
-                    >
-                      <View
-                        accessibilityLabel="Confidentialité"
-                        accessibilityRole="link"
-                        accessibilityState={
-                          Object {
-                            "disabled": false,
-                          }
-                        }
-                        accessible={true}
-                        collapsable={false}
-                        focusable={true}
-                        onClick={[Function]}
-                        onResponderGrant={[Function]}
-                        onResponderMove={[Function]}
-                        onResponderRelease={[Function]}
-                        onResponderTerminate={[Function]}
-                        onResponderTerminationRequest={[Function]}
-                        onStartShouldSetResponder={[Function]}
-                        style={
-                          Object {
-                            "opacity": 1,
-                            "userSelect": "auto",
-                          }
-                        }
-                        testID="Confidentialité"
-                      >
-                        <View
-                          style={
-                            Array [
-                              Object {
-                                "alignItems": "center",
-                                "flexDirection": "row",
-                                "justifyContent": "space-between",
-                              },
-                              Array [
-                                Object {
-                                  "paddingVertical": 16,
-                                },
-                              ],
-                            ]
-                          }
-                        >
-                          <View
-                            height={24}
-                            width={24}
-                          >
-                            <Text>
-                              undefined-SVG-Mock
-                            </Text>
-                          </View>
-                          <View
-                            numberOfSpaces={2}
-                            style={
-                              Array [
-                                Object {
-                                  "width": 8,
-                                },
-                              ]
-                            }
-                          />
-                          <View
-                            style={
-                              Array [
-                                Object {
-                                  "flexBasis": 0,
-                                  "flexGrow": 1,
-                                  "flexShrink": 1,
-                                  "textAlign": "left",
-                                },
-                              ]
-                            }
-                          >
-                            <Text
-                              numberOfLines={2}
-                              style={
-                                Array [
-                                  Object {
-                                    "color": "#161617",
-                                    "fontFamily": "Montserrat-Bold",
-                                    "fontSize": 15,
-                                    "lineHeight": 20,
-                                  },
-                                ]
-                              }
-                            >
-                              Confidentialité
-                            </Text>
-                          </View>
-                          <View
-                            style={
-                              Array [
-                                Object {
-                                  "alignItems": "flex-end",
-                                },
-                              ]
-                            }
-                          >
-                            <View
-                              height={20}
-                              testID="section-row-navigable-icon"
-                              width={20}
-                            >
-                              <Text>
-                                section-row-navigable-icon-SVG-Mock
-                              </Text>
-                            </View>
-                          </View>
-                        </View>
-                      </View>
-                    </View>
-                  </View>
-                </View>
-                <View
-                  style={
-                    Array [
-                      Object {
-                        "paddingTop": 8,
-                      },
-                    ]
-                  }
-                >
-                  <Text
-                    style={
-                      Array [
-                        Object {
-                          "color": "#696A6F",
-                          "fontFamily": "Montserrat-SemiBold",
-                          "fontSize": 12,
-                          "lineHeight": 16,
-                        },
-                      ]
-                    }
-                  >
-                    Partager le pass Culture
-                  </Text>
-                  <View
-                    numberOfSpaces={2}
-                    style={
-                      Array [
-                        Object {
-                          "height": 8,
-                        },
-                      ]
-                    }
-                  />
-                  <View
-                    style={
-                      Array [
-                        Object {
-                          "backgroundColor": "#F1F1F4",
-                          "height": 1,
-                          "width": "100%",
-                        },
-                      ]
-                    }
-                  />
-                  <View
-                    numberOfSpaces={4}
-                    style={
-                      Array [
-                        Object {
-                          "height": 16,
-                        },
-                      ]
-                    }
-                  />
-                  <View
-                    accessible={false}
-                    collapsable={false}
-                    focusable={true}
-                    onClick={[Function]}
-                    onResponderGrant={[Function]}
-                    onResponderMove={[Function]}
-                    onResponderRelease={[Function]}
-                    onResponderTerminate={[Function]}
-                    onResponderTerminationRequest={[Function]}
-                    onStartShouldSetResponder={[Function]}
-                    style={
-                      Object {
-                        "opacity": 1,
-                        "userSelect": "auto",
-                      }
-                    }
-                  >
+                    />
                     <View
                       style={
                         Array [
                           Object {
-                            "borderRadius": 7,
-                            "overflow": "hidden",
+                            "backgroundColor": "#F1F1F4",
+                            "height": 1,
+                            "width": "100%",
                           },
                         ]
                       }
+                    />
+                    <View
+                      numberOfSpaces={4}
+                      style={
+                        Array [
+                          Object {
+                            "height": 16,
+                          },
+                        ]
+                      }
+                    />
+                    <View
+                      accessibilityLabel="Déconnexion"
+                      accessibilityRole="button"
+                      accessibilityState={
+                        Object {
+                          "disabled": false,
+                        }
+                      }
+                      accessible={true}
+                      collapsable={false}
+                      focusable={true}
+                      onClick={[Function]}
+                      onResponderGrant={[Function]}
+                      onResponderMove={[Function]}
+                      onResponderRelease={[Function]}
+                      onResponderTerminate={[Function]}
+                      onResponderTerminationRequest={[Function]}
+                      onStartShouldSetResponder={[Function]}
+                      style={
+                        Object {
+                          "opacity": 1,
+                          "userSelect": "auto",
+                        }
+                      }
+                      testID="Déconnexion"
                     >
                       <View
-                        accessibilityIgnoresInvertColors={true}
                         style={
                           Array [
                             Object {
-                              "backgroundColor": "#eb0055",
-                              "justifyContent": "center",
-                              "width": "100%",
+                              "alignItems": "center",
+                              "flexDirection": "row",
+                              "justifyContent": "space-between",
                             },
+                            undefined,
                           ]
                         }
                       >
-                        <Image
-                          source={
-                            Object {
-                              "testUri": "../../../public/images/ShareAppBannerImage.png",
-                            }
-                          }
+                        <View
+                          height={24}
+                          width={24}
+                        >
+                          <Text>
+                            undefined-SVG-Mock
+                          </Text>
+                        </View>
+                        <View
+                          numberOfSpaces={2}
                           style={
                             Array [
                               Object {
-                                "bottom": 0,
-                                "left": 0,
-                                "position": "absolute",
-                                "right": 0,
-                                "top": 0,
+                                "width": 8,
                               },
-                              Object {
-                                "height": undefined,
-                                "width": "100%",
-                              },
-                              undefined,
                             ]
                           }
-                          testID="module-background"
                         />
                         <View
                           style={
                             Array [
                               Object {
-                                "alignItems": "center",
-                                "borderColor": "#90949D",
-                                "borderRadius": 7,
-                                "borderStyle": "solid",
-                                "borderWidth": 1,
-                                "flexDirection": "row",
-                                "padding": 16,
-                                "width": "100%",
+                                "flexBasis": 0,
+                                "flexGrow": 1,
+                                "flexShrink": 1,
+                                "textAlign": "left",
                               },
-                              undefined,
                             ]
                           }
                         >
-                          <View
+                          <Text
+                            numberOfLines={2}
                             style={
                               Array [
                                 Object {
-                                  "flexGrow": 1,
-                                  "flexShrink": 1,
-                                  "marginRight": 16,
-                                  "textAlign": "start",
+                                  "color": "#161617",
+                                  "fontFamily": "Montserrat-Bold",
+                                  "fontSize": 15,
+                                  "lineHeight": 20,
                                 },
                               ]
                             }
                           >
-                            <View
-                              style={
-                                Array [
-                                  Object {
-                                    "paddingRight": 32,
-                                  },
-                                ]
-                              }
-                            >
-                              <Text
-                                style={
-                                  Array [
-                                    Object {
-                                      "color": "#ffffff",
-                                      "fontFamily": "Montserrat-Bold",
-                                      "fontSize": 15,
-                                      "lineHeight": 20,
-                                    },
-                                  ]
-                                }
-                              >
-                                Partage le pass Culture
-                              </Text>
-                              <View
-                                numberOfSpaces={1}
-                                style={
-                                  Array [
-                                    Object {
-                                      "height": 4,
-                                    },
-                                  ]
-                                }
-                              />
-                              <Text
-                                style={
-                                  Array [
-                                    Object {
-                                      "color": "#ffffff",
-                                      "fontFamily": "Montserrat-Regular",
-                                      "fontSize": 15,
-                                      "lineHeight": 20,
-                                    },
-                                  ]
-                                }
-                              >
-                                Recommande le bon plan à tes amis !
-                              </Text>
-                            </View>
-                          </View>
-                          <View>
-                            <View
-                              height={24}
-                              width={24}
-                            >
-                              <Text>
-                                undefined-SVG-Mock
-                              </Text>
-                            </View>
-                          </View>
+                            Déconnexion
+                          </Text>
                         </View>
                       </View>
                     </View>
                   </View>
                   <View
-                    numberOfSpaces={4}
                     style={
                       Array [
                         Object {
-                          "height": 16,
-                        },
-                      ]
-                    }
-                  />
-                </View>
-                <View
-                  style={
-                    Array [
-                      Object {
-                        "paddingTop": 8,
-                      },
-                    ]
-                  }
-                >
-                  <Text
-                    style={
-                      Array [
-                        Object {
-                          "color": "#696A6F",
-                          "fontFamily": "Montserrat-SemiBold",
-                          "fontSize": 12,
-                          "lineHeight": 16,
-                        },
-                      ]
-                    }
-                  >
-                    Suivre le pass Culture
-                  </Text>
-                  <View
-                    numberOfSpaces={2}
-                    style={
-                      Array [
-                        Object {
-                          "height": 8,
-                        },
-                      ]
-                    }
-                  />
-                  <View
-                    style={
-                      Array [
-                        Object {
-                          "backgroundColor": "#F1F1F4",
-                          "height": 1,
-                          "width": "100%",
-                        },
-                      ]
-                    }
-                  />
-                  <View
-                    style={
-                      Array [
-                        Object {
-                          "marginBottom": "auto",
-                          "marginLeft": "auto",
-                          "marginRight": "auto",
-                          "marginTop": "auto",
-                          "maxWidth": 500,
-                          "width": "100%",
+                          "paddingTop": 8,
                         },
                       ]
                     }
                   >
                     <View
+                      numberOfSpaces={2}
                       style={
                         Array [
                           Object {
-                            "flexDirection": "row",
-                            "justifyContent": "space-between",
-                            "paddingVertical": 16,
+                            "height": 8,
                           },
                         ]
                       }
-                    >
-                      <View
-                        accessibilityRole="list"
-                        style={
-                          Array [
-                            Object {
-                              "flexBasis": 0,
-                              "flexDirection": "row",
-                              "flexGrow": 1,
-                              "flexShrink": 1,
-                              "justifyContent": "space-between",
-                              "paddingLeft": 0,
-                            },
-                          ]
-                        }
-                      >
-                        <View
-                          accessibilityRole="none"
-                          style={
-                            Array [
-                              Object {
-                                "display": "flex",
-                              },
-                            ]
-                          }
-                        >
-                          <View
-                            accessibilityRole="link"
-                            accessible={false}
-                            collapsable={false}
-                            focusable={true}
-                            onClick={[Function]}
-                            onResponderGrant={[Function]}
-                            onResponderMove={[Function]}
-                            onResponderRelease={[Function]}
-                            onResponderTerminate={[Function]}
-                            onResponderTerminationRequest={[Function]}
-                            onStartShouldSetResponder={[Function]}
-                            style={
-                              Object {
-                                "opacity": 1,
-                                "userSelect": "auto",
-                              }
-                            }
-                          >
-                            <View
-                              style={
-                                Array [
-                                  Object {
-                                    "alignItems": "center",
-                                    "flexDirection": "column",
-                                    "justifyContent": "center",
-                                    "maxWidth": 80,
-                                  },
-                                ]
-                              }
-                            >
-                              <View
-                                style={
-                                  Array [
-                                    Object {
-                                      "alignItems": "center",
-                                      "height": 32,
-                                      "justifyContent": "center",
-                                      "width": 32,
-                                    },
-                                  ]
-                                }
-                              >
-                                <View
-                                  height={24}
-                                  width={24}
-                                >
-                                  <Text>
-                                    undefined-SVG-Mock
-                                  </Text>
-                                </View>
-                              </View>
-                              <View
-                                numberOfSpaces={1}
-                                style={
-                                  Array [
-                                    Object {
-                                      "height": 4,
-                                    },
-                                  ]
-                                }
-                              />
-                              <Text
-                                numberOfLines={2}
-                                style={
-                                  Array [
-                                    Object {
-                                      "color": "#161617",
-                                      "fontFamily": "Montserrat-SemiBold",
-                                      "fontSize": 12,
-                                      "lineHeight": 16,
-                                    },
-                                  ]
-                                }
-                              >
-                                Instagram
-                              </Text>
-                            </View>
-                          </View>
-                        </View>
-                        <View
-                          accessibilityRole="none"
-                          style={
-                            Array [
-                              Object {
-                                "display": "flex",
-                              },
-                            ]
-                          }
-                        >
-                          <View
-                            accessibilityRole="link"
-                            accessible={false}
-                            collapsable={false}
-                            focusable={true}
-                            onClick={[Function]}
-                            onResponderGrant={[Function]}
-                            onResponderMove={[Function]}
-                            onResponderRelease={[Function]}
-                            onResponderTerminate={[Function]}
-                            onResponderTerminationRequest={[Function]}
-                            onStartShouldSetResponder={[Function]}
-                            style={
-                              Object {
-                                "opacity": 1,
-                                "userSelect": "auto",
-                              }
-                            }
-                          >
-                            <View
-                              style={
-                                Array [
-                                  Object {
-                                    "alignItems": "center",
-                                    "flexDirection": "column",
-                                    "justifyContent": "center",
-                                    "maxWidth": 80,
-                                  },
-                                ]
-                              }
-                            >
-                              <View
-                                style={
-                                  Array [
-                                    Object {
-                                      "alignItems": "center",
-                                      "height": 32,
-                                      "justifyContent": "center",
-                                      "width": 32,
-                                    },
-                                  ]
-                                }
-                              >
-                                <View
-                                  height={24}
-                                  width={24}
-                                >
-                                  <Text>
-                                    undefined-SVG-Mock
-                                  </Text>
-                                </View>
-                              </View>
-                              <View
-                                numberOfSpaces={1}
-                                style={
-                                  Array [
-                                    Object {
-                                      "height": 4,
-                                    },
-                                  ]
-                                }
-                              />
-                              <Text
-                                numberOfLines={2}
-                                style={
-                                  Array [
-                                    Object {
-                                      "color": "#161617",
-                                      "fontFamily": "Montserrat-SemiBold",
-                                      "fontSize": 12,
-                                      "lineHeight": 16,
-                                    },
-                                  ]
-                                }
-                              >
-                                Twitter
-                              </Text>
-                            </View>
-                          </View>
-                        </View>
-                        <View
-                          accessibilityRole="none"
-                          style={
-                            Array [
-                              Object {
-                                "display": "flex",
-                              },
-                            ]
-                          }
-                        >
-                          <View
-                            accessibilityRole="link"
-                            accessible={false}
-                            collapsable={false}
-                            focusable={true}
-                            onClick={[Function]}
-                            onResponderGrant={[Function]}
-                            onResponderMove={[Function]}
-                            onResponderRelease={[Function]}
-                            onResponderTerminate={[Function]}
-                            onResponderTerminationRequest={[Function]}
-                            onStartShouldSetResponder={[Function]}
-                            style={
-                              Object {
-                                "opacity": 1,
-                                "userSelect": "auto",
-                              }
-                            }
-                          >
-                            <View
-                              style={
-                                Array [
-                                  Object {
-                                    "alignItems": "center",
-                                    "flexDirection": "column",
-                                    "justifyContent": "center",
-                                    "maxWidth": 80,
-                                  },
-                                ]
-                              }
-                            >
-                              <View
-                                style={
-                                  Array [
-                                    Object {
-                                      "alignItems": "center",
-                                      "height": 32,
-                                      "justifyContent": "center",
-                                      "width": 32,
-                                    },
-                                  ]
-                                }
-                              >
-                                <View
-                                  height={24}
-                                  width={24}
-                                >
-                                  <Text>
-                                    undefined-SVG-Mock
-                                  </Text>
-                                </View>
-                              </View>
-                              <View
-                                numberOfSpaces={1}
-                                style={
-                                  Array [
-                                    Object {
-                                      "height": 4,
-                                    },
-                                  ]
-                                }
-                              />
-                              <Text
-                                numberOfLines={2}
-                                style={
-                                  Array [
-                                    Object {
-                                      "color": "#161617",
-                                      "fontFamily": "Montserrat-SemiBold",
-                                      "fontSize": 12,
-                                      "lineHeight": 16,
-                                    },
-                                  ]
-                                }
-                              >
-                                Tiktok
-                              </Text>
-                            </View>
-                          </View>
-                        </View>
-                        <View
-                          accessibilityRole="none"
-                          style={
-                            Array [
-                              Object {
-                                "display": "flex",
-                              },
-                            ]
-                          }
-                        >
-                          <View
-                            accessibilityRole="link"
-                            accessible={false}
-                            collapsable={false}
-                            focusable={true}
-                            onClick={[Function]}
-                            onResponderGrant={[Function]}
-                            onResponderMove={[Function]}
-                            onResponderRelease={[Function]}
-                            onResponderTerminate={[Function]}
-                            onResponderTerminationRequest={[Function]}
-                            onStartShouldSetResponder={[Function]}
-                            style={
-                              Object {
-                                "opacity": 1,
-                                "userSelect": "auto",
-                              }
-                            }
-                          >
-                            <View
-                              style={
-                                Array [
-                                  Object {
-                                    "alignItems": "center",
-                                    "flexDirection": "column",
-                                    "justifyContent": "center",
-                                    "maxWidth": 80,
-                                  },
-                                ]
-                              }
-                            >
-                              <View
-                                style={
-                                  Array [
-                                    Object {
-                                      "alignItems": "center",
-                                      "height": 32,
-                                      "justifyContent": "center",
-                                      "width": 32,
-                                    },
-                                  ]
-                                }
-                              >
-                                <View
-                                  height={24}
-                                  width={24}
-                                >
-                                  <Text>
-                                    undefined-SVG-Mock
-                                  </Text>
-                                </View>
-                              </View>
-                              <View
-                                numberOfSpaces={1}
-                                style={
-                                  Array [
-                                    Object {
-                                      "height": 4,
-                                    },
-                                  ]
-                                }
-                              />
-                              <Text
-                                numberOfLines={2}
-                                style={
-                                  Array [
-                                    Object {
-                                      "color": "#161617",
-                                      "fontFamily": "Montserrat-SemiBold",
-                                      "fontSize": 12,
-                                      "lineHeight": 16,
-                                    },
-                                  ]
-                                }
-                              >
-                                Facebook
-                              </Text>
-                            </View>
-                          </View>
-                        </View>
-                      </View>
-                    </View>
-                  </View>
-                </View>
-                <View
-                  style={
-                    Array [
-                      Object {
-                        "paddingTop": 8,
-                      },
-                    ]
-                  }
-                >
-                  <View
-                    numberOfSpaces={2}
-                    style={
-                      Array [
-                        Object {
-                          "height": 8,
-                        },
-                      ]
-                    }
-                  />
-                  <View
-                    style={
-                      Array [
-                        Object {
-                          "backgroundColor": "#F1F1F4",
-                          "height": 1,
-                          "width": "100%",
-                        },
-                      ]
-                    }
-                  />
-                  <View
-                    numberOfSpaces={4}
-                    style={
-                      Array [
-                        Object {
-                          "height": 16,
-                        },
-                      ]
-                    }
-                  />
-                  <View
-                    accessibilityLabel="Déconnexion"
-                    accessibilityRole="button"
-                    accessibilityState={
-                      Object {
-                        "disabled": false,
-                      }
-                    }
-                    accessible={true}
-                    collapsable={false}
-                    focusable={true}
-                    onClick={[Function]}
-                    onResponderGrant={[Function]}
-                    onResponderMove={[Function]}
-                    onResponderRelease={[Function]}
-                    onResponderTerminate={[Function]}
-                    onResponderTerminationRequest={[Function]}
-                    onStartShouldSetResponder={[Function]}
-                    style={
-                      Object {
-                        "opacity": 1,
-                        "userSelect": "auto",
-                      }
-                    }
-                    testID="Déconnexion"
-                  >
+                    />
                     <View
                       style={
                         Array [
                           Object {
-                            "alignItems": "center",
-                            "flexDirection": "row",
-                            "justifyContent": "space-between",
+                            "backgroundColor": "#F1F1F4",
+                            "height": 1,
+                            "width": "100%",
                           },
-                          undefined,
+                        ]
+                      }
+                    />
+                    <View
+                      numberOfSpaces={4}
+                      style={
+                        Array [
+                          Object {
+                            "height": 16,
+                          },
+                        ]
+                      }
+                    />
+                    <Text
+                      style={
+                        Array [
+                          Object {
+                            "color": "#696A6F",
+                            "fontFamily": "Montserrat-SemiBold",
+                            "fontSize": 12,
+                            "lineHeight": 16,
+                          },
+                        ]
+                      }
+                    >
+                      Version 1.10.5
+                    </Text>
+                    <View
+                      numberOfSpaces={4}
+                      style={
+                        Array [
+                          Object {
+                            "height": 16,
+                          },
+                        ]
+                      }
+                    />
+                    <View
+                      style={
+                        Array [
+                          Object {
+                            "height": 112,
+                            "width": 160,
+                          },
                         ]
                       }
                     >
                       <View
-                        height={24}
-                        width={24}
+                        accessibilityLabel="République Française - Liberté Égalité Fraternité"
+                        fill="none"
+                        height="100%"
+                        width="100%"
                       >
                         <Text>
                           undefined-SVG-Mock
                         </Text>
                       </View>
-                      <View
-                        numberOfSpaces={2}
-                        style={
-                          Array [
-                            Object {
-                              "width": 8,
-                            },
-                          ]
-                        }
-                      />
-                      <View
-                        style={
-                          Array [
-                            Object {
-                              "flexBasis": 0,
-                              "flexGrow": 1,
-                              "flexShrink": 1,
-                              "textAlign": "left",
-                            },
-                          ]
-                        }
-                      >
-                        <Text
-                          numberOfLines={2}
-                          style={
-                            Array [
-                              Object {
-                                "color": "#161617",
-                                "fontFamily": "Montserrat-Bold",
-                                "fontSize": 15,
-                                "lineHeight": 20,
-                              },
-                            ]
-                          }
-                        >
-                          Déconnexion
-                        </Text>
-                      </View>
                     </View>
-                  </View>
-                </View>
-                <View
-                  style={
-                    Array [
-                      Object {
-                        "paddingTop": 8,
-                      },
-                    ]
-                  }
-                >
-                  <View
-                    numberOfSpaces={2}
-                    style={
-                      Array [
-                        Object {
-                          "height": 8,
-                        },
-                      ]
-                    }
-                  />
-                  <View
-                    style={
-                      Array [
-                        Object {
-                          "backgroundColor": "#F1F1F4",
-                          "height": 1,
-                          "width": "100%",
-                        },
-                      ]
-                    }
-                  />
-                  <View
-                    numberOfSpaces={4}
-                    style={
-                      Array [
-                        Object {
-                          "height": 16,
-                        },
-                      ]
-                    }
-                  />
-                  <Text
-                    style={
-                      Array [
-                        Object {
-                          "color": "#696A6F",
-                          "fontFamily": "Montserrat-SemiBold",
-                          "fontSize": 12,
-                          "lineHeight": 16,
-                        },
-                      ]
-                    }
-                  >
-                    Version 1.10.5
-                  </Text>
-                  <View
-                    numberOfSpaces={4}
-                    style={
-                      Array [
-                        Object {
-                          "height": 16,
-                        },
-                      ]
-                    }
-                  />
-                  <View
-                    style={
-                      Array [
-                        Object {
-                          "height": 112,
-                          "width": 160,
-                        },
-                      ]
-                    }
-                  >
                     <View
-                      accessibilityLabel="République Française - Liberté Égalité Fraternité"
-                      fill="none"
-                      height="100%"
-                      width="100%"
-                    >
-                      <Text>
-                        undefined-SVG-Mock
-                      </Text>
-                    </View>
+                      numberOfSpaces={4}
+                      style={
+                        Array [
+                          Object {
+                            "height": 16,
+                          },
+                        ]
+                      }
+                    />
                   </View>
                   <View
-                    numberOfSpaces={4}
+                    customHeight={72}
+                    enable={true}
                     style={
                       Array [
                         Object {
-                          "height": 16,
+                          "height": 72,
                         },
                       ]
                     }
                   />
                 </View>
-                <View
-                  customHeight={72}
-                  enable={true}
-                  style={
+              </View>
+            </RCTScrollView>
+            <View
+              height={16}
+              style={
+                Array [
+                  Object {
+                    "backdropFilter": "blur(20px)",
+                    "height": 16,
+                    "left": 0,
+                    "overflow": "hidden",
+                    "position": "absolute",
+                    "right": 0,
+                  },
+                ]
+              }
+            >
+              <BlurView
+                blurAmount={8}
+                blurType="light"
+                style={
+                  Array [
+                    Object {
+                      "backgroundColor": "transparent",
+                    },
                     Array [
                       Object {
-                        "height": 72,
+                        "flexBasis": 0,
+                        "flexGrow": 1,
+                        "flexShrink": 1,
                       },
-                    ]
-                  }
-                />
-              </View>
+                    ],
+                  ]
+                }
+              />
             </View>
-          </RCTScrollView>
+          </View>
         </View>
         <View
           onLayout={[Function]}
