@@ -1,8 +1,10 @@
 import colorAlpha from 'color-alpha'
 import React, { FunctionComponent } from 'react'
+import { View } from 'react-native'
 import LinearGradient from 'react-native-linear-gradient'
 import styled from 'styled-components/native'
 
+import { BlackCaption } from 'features/home/components/BlackCaption'
 import { BlackGradient } from 'features/home/components/BlackGradient'
 import { TEXT_BACKGROUND_OPACITY } from 'features/home/components/constants'
 import { getGradientColors } from 'features/home/components/helpers/getGradientColors'
@@ -36,7 +38,7 @@ export const VideoModuleMobile: FunctionComponent<VideoModuleProps> = (props) =>
       </StyledTitleContainer>
       <Spacer.Column numberOfSpaces={5} />
 
-      <StyledWrapper testID="mobile-video-module">
+      <View testID="mobile-video-module">
         <ColorCategoryBackground
           colorCategoryBackgroundHeightUniqueOffer={colorCategoryBackgroundHeightUniqueOffer}
           start={{ x: 0, y: 0 }}
@@ -50,9 +52,7 @@ export const VideoModuleMobile: FunctionComponent<VideoModuleProps> = (props) =>
             testID="video-thumbnail"
             accessibilityRole="button">
             <Thumbnail source={{ uri: props.videoThumbnail }}>
-              <DurationCaptionContainer>
-                <DurationCaption>{videoDuration}</DurationCaption>
-              </DurationCaptionContainer>
+              <DurationCaption label={videoDuration} />
               <TextContainer>
                 <BlackGradient />
                 <BlackBackground>
@@ -74,7 +74,7 @@ export const VideoModuleMobile: FunctionComponent<VideoModuleProps> = (props) =>
             />
           )}
         </VideoOfferContainer>
-      </StyledWrapper>
+      </View>
       {!!props.isMultiOffer && (
         <React.Fragment>
           <Spacer.Column numberOfSpaces={2} />
@@ -94,8 +94,6 @@ const Container = styled.View(({ theme }) => ({
   paddingBottom: theme.home.spaceBetweenModules,
 }))
 
-const StyledWrapper = styled.View({})
-
 const VideoOfferContainer = styled.View(({ theme }) => ({
   marginHorizontal: theme.contentPage.marginHorizontal,
 }))
@@ -111,18 +109,11 @@ const Thumbnail = styled.ImageBackground(({ theme }) => ({
   borderColor: theme.colors.greyMedium,
 }))
 
-const DurationCaptionContainer = styled.View(({ theme }) => ({
+const DurationCaption = styled(BlackCaption)({
   position: 'absolute',
   top: getSpacing(2),
   right: getSpacing(2),
-  backgroundColor: theme.colors.black,
-  borderRadius: getSpacing(1),
-  padding: getSpacing(1),
-}))
-
-const DurationCaption = styled(Typo.Caption)(({ theme }) => ({
-  color: theme.colors.white,
-}))
+})
 
 const PlayerContainer = styled.View({
   position: 'absolute',

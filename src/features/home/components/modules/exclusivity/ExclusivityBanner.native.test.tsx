@@ -2,7 +2,7 @@ import React from 'react'
 
 import { ExclusivityBanner } from 'features/home/components/modules/exclusivity/ExclusivityBanner'
 import { analytics } from 'libs/analytics'
-import { ContentTypes } from 'libs/contentful'
+import { ContentTypes } from 'libs/contentful/types'
 import { render } from 'tests/utils'
 
 const props = {

@@ -13,6 +13,7 @@ export enum HomepageModuleType {
   'ThematicHighlightModule' = 'ThematicHighlightModule',
   'CategoryListModule' = 'CategoryListModule',
   'VideoModule' = 'VideoModule',
+  'HighlightOfferModule' = 'HighlightOfferModule',
 }
 
 export type HomepageTag = 'master' | 'usergrandpublic' | 'userunderage'
@@ -68,6 +69,7 @@ export type HomepageModule =
   | VenuesModule
   | CategoryListModule
   | VideoModule
+  | HighlightOfferModule
 
 export type OffersModule = {
   type: HomepageModuleType.OffersModule
@@ -268,6 +270,15 @@ export interface VideoModuleProps extends VideoModule {
   hideVideoModal: () => void
   offers: Offer[]
 }
+export type HighlightOfferModule = {
+  type: HomepageModuleType.HighlightOfferModule
+  id: string
+  highlightTitle: string
+  offerTitle: string
+  offerId: string
+  image: string
+  color: Color
+}
 
 export type OffersPlaylistParameters = SearchQueryParameters[]
 
@@ -296,6 +307,10 @@ export const isBusinessModule = (module: HomepageModule): module is BusinessModu
 
 export const isExclusivityModule = (module: HomepageModule): module is ExclusivityModule => {
   return module.type === HomepageModuleType.ExclusivityModule
+}
+
+export const isHighlightOfferModule = (module: HomepageModule): module is HighlightOfferModule => {
+  return module.type === HomepageModuleType.HighlightOfferModule
 }
 
 export const isThematicHighlightModule = (

@@ -1,3 +1,4 @@
+import { highlightOfferModuleFixture as formattedHighlightOfferModule } from 'features/home/fixtures/highlightOfferModule.fixture'
 import {
   ExclusivityModule,
   HomepageModuleType,
@@ -176,5 +177,6 @@ export const adaptedHomepage: Homepage = {
     formattedVenuesModule,
     formattedCategoryListModule,
     formattedThematicHighlightModule,
+    formattedHighlightOfferModule,
   ],
 }

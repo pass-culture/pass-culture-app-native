@@ -7,7 +7,7 @@ import { BlackGradient } from 'features/home/components/BlackGradient'
 import { TEXT_BACKGROUND_OPACITY } from 'features/home/components/constants'
 import { computeDateRangeDisplay } from 'features/home/components/helpers/computeDateRangeDisplay'
 import { analytics } from 'libs/analytics'
-import { ContentTypes } from 'libs/contentful'
+import { ContentTypes } from 'libs/contentful/types'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 

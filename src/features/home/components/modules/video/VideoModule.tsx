@@ -8,7 +8,7 @@ import { VideoModuleMobile } from 'features/home/components/modules/video/VideoM
 import { VideoModule as VideoModuleType } from 'features/home/types'
 import { analytics } from 'libs/analytics'
 import { ConsultOfferAnalyticsParams } from 'libs/analytics/types'
-import { ContentTypes } from 'libs/contentful'
+import { ContentTypes } from 'libs/contentful/types'
 import { useModal } from 'ui/components/modals/useModal'
 
 interface VideoModuleBaseProps extends VideoModuleType {

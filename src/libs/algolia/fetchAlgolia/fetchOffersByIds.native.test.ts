@@ -1,7 +1,7 @@
 import algoliasearch from 'algoliasearch'
 
 import { offerAttributesToRetrieve } from 'libs/algolia/fetchAlgolia/buildAlgoliaParameters/offerAttributesToRetrieve'
-import { fetchOfferHits } from 'libs/algolia/fetchAlgolia/fetchOfferHits'
+import { fetchOffersByIds } from 'libs/algolia/fetchAlgolia/fetchOffersByIds'
 import { Range } from 'libs/typesUtils/typeHelpers'
 const mockGetFromDate = jest.fn()
 const mockGetLastOfDate = jest.fn()
@@ -41,11 +41,11 @@ jest.mock('algoliasearch')
 const mockInitIndex = algoliasearch('', '').initIndex
 const search = mockInitIndex('').search as jest.Mock
 
-describe('fetchOfferHits', () => {
+describe('fetchOffersByIds', () => {
   it('should fetch with default search params', () => {
     const queryIds = ['id1', 'id2']
 
-    fetchOfferHits({ objectIds: queryIds, isUserUnderage: false })
+    fetchOffersByIds({ objectIds: queryIds, isUserUnderage: false })
 
     expect(mockInitIndex).toHaveBeenCalledWith('algoliaOffersIndexName')
     expect(search).toHaveBeenCalledWith('', {
@@ -60,7 +60,7 @@ describe('fetchOfferHits', () => {
 
   it('should fetch with underage search params', () => {
     const queryIds = ['id1', 'id2']
-    fetchOfferHits({ objectIds: queryIds, isUserUnderage: true })
+    fetchOffersByIds({ objectIds: queryIds, isUserUnderage: true })
 
     expect(search).toHaveBeenCalledWith('', {
       facetFilters: [

@@ -1,6 +1,6 @@
-import { ContentTypes } from 'libs/contentful'
 import { thematicCategoryInfoFixture } from 'libs/contentful/fixtures/thematicCategoryInfo.fixture'
 import { thematicHighlightInfoFixture } from 'libs/contentful/fixtures/thematicHighlightInfo.fixture'
+import { ContentTypes } from 'libs/contentful/types'
 
 export const homepageEntriesAPIResponse = {
   sys: { type: 'Array' },

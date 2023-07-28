@@ -5,7 +5,7 @@ import { ExclusivityImage } from 'features/home/components/modules/exclusivity/E
 import { ExclusivityBannerProps } from 'features/home/components/modules/exclusivity/ExclusivityModule'
 import { useShouldDisplayExcluOffer } from 'features/home/components/modules/exclusivity/helpers/useShouldDisplayExcluOffer'
 import { analytics } from 'libs/analytics'
-import { ContentTypes } from 'libs/contentful'
+import { ContentTypes } from 'libs/contentful/types'
 import { useHandleFocus } from 'libs/hooks/useHandleFocus'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { customFocusOutline } from 'ui/theme/customFocusOutline/customFocusOutline'

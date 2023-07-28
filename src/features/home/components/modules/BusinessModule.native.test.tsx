@@ -2,15 +2,14 @@ import React from 'react'
 import { Linking } from 'react-native'
 
 import { useAuthContext } from 'features/auth/context/AuthContext'
-import { BusinessModule } from 'features/home/components'
 import { analytics } from 'libs/analytics'
-import { ContentTypes } from 'libs/contentful'
+import { ContentTypes } from 'libs/contentful/types'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { render, fireEvent, waitFor } from 'tests/utils'
 import { SNACK_BAR_TIME_OUT_LONG } from 'ui/components/snackBar/SnackBarContext'
 import { SnackBarHelperSettings } from 'ui/components/snackBar/types'
 
-import { BusinessModuleProps } from './BusinessModule'
+import { BusinessModule, BusinessModuleProps } from './BusinessModule'
 
 jest.mock('features/auth/context/AuthContext')
 const mockUseAuthContext = useAuthContext as jest.Mock
