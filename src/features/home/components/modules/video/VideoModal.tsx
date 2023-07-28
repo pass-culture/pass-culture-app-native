@@ -41,7 +41,7 @@ export const VideoModal: React.FC<VideoModalProps> = (props) => {
     homeEntryId: props.homeEntryId,
   }
 
-  const onPressCloseModal = () => {
+  const onCloseModal = () => {
     analytics.logHasDismissedModal({ moduleId: props.moduleId, modalType: ContentTypes.VIDEO })
     props.hideModal()
   }
@@ -115,7 +115,7 @@ export const VideoModal: React.FC<VideoModalProps> = (props) => {
           </React.Fragment>
         )}
       </StyledScrollView>
-      <StyledTouchable onPress={onPressCloseModal} accessibilityLabel="Fermer la modale vidéo">
+      <StyledTouchable onPress={onCloseModal} accessibilityLabel="Fermer la modale vidéo">
         <StyledCloseIcon />
       </StyledTouchable>
     </AppModal>
