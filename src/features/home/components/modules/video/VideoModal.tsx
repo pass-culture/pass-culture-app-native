@@ -49,7 +49,7 @@ export const VideoModal: React.FC<VideoModalProps> = (props) => {
   const swipeProperties =
     Platform.OS !== 'web'
       ? {
-          onSwipe: props.hideModal,
+          onSwipe: onCloseModal,
           swipeDirection: ModalSwipeDirection.DOWN,
           animationOutTiming: 400,
           propagateSwipe: true,
@@ -65,7 +65,7 @@ export const VideoModal: React.FC<VideoModalProps> = (props) => {
       noPaddingBottom
       scrollEnabled={false}
       customModalHeader={<React.Fragment />}
-      onBackdropPress={props.hideModal}
+      onBackdropPress={onCloseModal}
       {...swipeProperties}>
       <VideoPlayer
         youtubeVideoId={props.youtubeVideoId}
