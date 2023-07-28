@@ -1,13 +1,25 @@
+import { UseMutateFunction } from 'react-query'
+
+import { ApiError } from 'api/apiHelpers'
 import {
-  OfferResponse,
+  BookingReponse,
+  BookOfferRequest,
+  BookOfferResponse,
   FavoriteOfferResponse,
-  UserProfileResponse,
-  YoungStatusType,
-  YoungStatusResponse,
+  OfferResponse,
+  SubcategoryIdEnum,
   SubscriptionStatus,
+  UserProfileResponse,
+  YoungStatusResponse,
+  YoungStatusType,
 } from 'api/gen'
 import { useAuthContext } from 'features/auth/context/AuthContext'
-import { useEndedBookingFromOfferId } from 'features/bookings/api'
+import {
+  useBookings,
+  useEndedBookingFromOfferId,
+  useOngoingOrEndedBooking,
+} from 'features/bookings/api'
+import { useBookOfferMutation } from 'features/bookOffer/api/useBookOfferMutation'
 import { OfferModal } from 'features/offer/enums'
 import { isUserUnderageBeneficiary } from 'features/profile/helpers/isUserUnderageBeneficiary'
 import { analytics } from 'libs/analytics'
@@ -17,6 +29,13 @@ import { ExternalNavigationProps, InternalNavigationProps } from 'ui/components/
 
 import { useOffer } from '../../api/useOffer'
 import { useHasEnoughCredit } from '../useHasEnoughCredit/useHasEnoughCredit'
+
+function getBookedOfferId(
+  offerId: FavoriteOfferResponse['id'],
+  bookedOffersIds: UserProfileResponse['bookedOffers'] = {}
+): number | undefined {
+  return bookedOffersIds[offerId]
+}
 
 const getIsBookedOffer = (
   offerId: FavoriteOfferResponse['id'],
@@ -35,16 +54,41 @@ interface Props {
   isEndedUsedBooking?: boolean
   bottomBannerText?: string
   isDisabled?: boolean
+  bookOffer: UseMutateFunction<BookOfferResponse, Error | ApiError, BookOfferRequest>
+  isBookingLoading: boolean
+  booking: BookingReponse | null | undefined
 }
+
 interface ICTAWordingAndAction {
   modalToDisplay?: OfferModal
   wording?: string
   navigateTo?: InternalNavigationProps['navigateTo']
   externalNav?: ExternalNavigationProps['externalNav']
-  onPress?: () => void
+  onPress?: () => void | Promise<void>
   isEndedUsedBooking?: boolean
   bottomBannerText?: string
   isDisabled?: boolean
+}
+
+function getFreeBookingWording(offer: OfferResponse) {
+  if (!offer) return 'Déjà réservé'
+
+  switch (offer.subcategoryId) {
+    case SubcategoryIdEnum.PODCAST:
+      return 'Écouter le podcast'
+    case SubcategoryIdEnum.VOD:
+      return 'Accéder à la vidéo'
+    case SubcategoryIdEnum.LIVRE_NUMERIQUE:
+      return 'Accéder au livre'
+    case SubcategoryIdEnum.APP_CULTURELLE:
+      return 'Télécharger l’application'
+    case SubcategoryIdEnum.VISITE_VIRTUELLE:
+      return 'Faire la visite virtuelle'
+    case SubcategoryIdEnum.JEU_EN_LIGNE:
+      return 'Jouer au jeu en ligne'
+    default:
+      return 'Accéder à l’offre en ligne'
+  }
 }
 
 // Follow logic of https://www.notion.so/Modalit-s-d-affichage-du-CTA-de-r-servation-dbd30de46c674f3f9ca9f37ce8333241
@@ -58,6 +102,9 @@ export const getCtaWordingAndAction = ({
   bookedOffers,
   isUnderageBeneficiary,
   isEndedUsedBooking,
+  bookOffer,
+  isBookingLoading,
+  booking,
 }: Props): ICTAWordingAndAction | undefined => {
   const { externalTicketOfficeUrl } = offer
 
@@ -89,6 +136,23 @@ export const getCtaWordingAndAction = ({
       wording: 'Réserver l’offre',
       isEndedUsedBooking,
       isDisabled: false,
+    }
+  }
+
+  if (offer.stocks[0].price === 0) {
+    return {
+      wording: getFreeBookingWording(offer),
+      isDisabled: isBookingLoading,
+      async onPress() {
+        if (isAlreadyBookedOffer) {
+          window.open(booking?.completedUrl ?? '')
+        }
+
+        await bookOffer({
+          quantity: 1,
+          stockId: offer.stocks[0].id,
+        })
+      },
     }
   }
 
@@ -198,6 +262,30 @@ export const useCtaWordingAndAction = (props: {
   const mapping = useSubcategoriesMapping()
   const { data: endedBooking } = useEndedBookingFromOfferId(offerId)
 
+  const { refetch: getBookings } = useBookings()
+
+  async function redirectToBookingAction(response: BookOfferResponse) {
+    const bookings = await getBookings()
+    const booking = bookings.data?.ongoing_bookings.find(
+      (booking) => booking.id === response.bookingId
+    )
+
+    if (booking) {
+      window.open(booking.completedUrl ?? '', '_blank')
+    }
+  }
+
+  const { mutate: bookOffer, isLoading: isBookingLoading } = useBookOfferMutation({
+    onSuccess(data) {
+      redirectToBookingAction(data)
+    },
+    onError() {
+      console.log('An error occurred')
+    },
+  })
+  const { isBeneficiary = false, bookedOffers = {}, status } = user ?? {}
+  const { data: booking } = useOngoingOrEndedBooking(getBookedOfferId(offerId, bookedOffers) ?? 0)
+
   if (!offer) return
 
   /* check I have all information to calculate wording
@@ -208,8 +296,8 @@ export const useCtaWordingAndAction = (props: {
    */
   if (isLoggedIn === null || user === null || !offer.venue.id) return
 
-  const { isBeneficiary = false, bookedOffers = {}, status } = user ?? {}
   const userStatus = status?.statusType ? status : { statusType: YoungStatusType.non_eligible }
+
   return getCtaWordingAndAction({
     isLoggedIn,
     userStatus,
@@ -220,5 +308,8 @@ export const useCtaWordingAndAction = (props: {
     bookedOffers,
     isEndedUsedBooking: !!endedBooking?.dateUsed,
     isUnderageBeneficiary,
+    bookOffer,
+    isBookingLoading,
+    booking,
   })
 }

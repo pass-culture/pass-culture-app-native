@@ -181,13 +181,24 @@ export const Offer: FunctionComponent = () => {
       {!!wording && (
         <React.Fragment>
           <CallToActionContainer testID="CTA-button">
-            <CTAButton
-              wording={wording}
-              onPress={onPress}
-              navigateTo={navigateTo}
-              externalNav={externalNav}
-              isDisabled={isDisabled}
-            />
+            {offerResponse.stocks[0].price === 0 ? (
+              <ButtonWithLinearGradient
+                wording={wording + 'héhé'} // have to put an icon before the wording :(
+                onPress={onPress}
+                navigateTo={navigateTo}
+                externalNav={externalNav}
+                isDisabled={isDisabled}
+              />
+            ) : (
+              <CTAButton
+                wording={wording}
+                onPress={onPress}
+                navigateTo={navigateTo}
+                externalNav={externalNav}
+                isDisabled={isDisabled}
+              />
+            )}
+
             <Spacer.Column numberOfSpaces={bottomBannerText ? 4.5 : 6} />
           </CallToActionContainer>
           {bottomBannerText ? <BottomBanner text={bottomBannerText} /> : <Spacer.BottomScreen />}
