@@ -1,8 +1,7 @@
 import algoliasearch from 'algoliasearch'
 
 import { GenreType } from 'api/gen'
-import { LocationType } from 'features/search/enums'
-import { DATE_FILTER_OPTIONS } from 'features/search/enums'
+import { LocationType, DATE_FILTER_OPTIONS } from 'features/search/enums'
 import { MAX_PRICE } from 'features/search/helpers/reducer.helpers'
 import { offerAttributesToRetrieve } from 'libs/algolia/fetchAlgolia/buildAlgoliaParameters/offerAttributesToRetrieve'
 import { fetchOffers } from 'libs/algolia/fetchAlgolia/fetchOffers'

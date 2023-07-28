@@ -1,6 +1,7 @@
 import { SearchResponse } from '@algolia/client-search'
 
 import { SubcategoryIdEnum } from 'api/gen'
+import { AlgoliaVenue } from 'libs/algolia/types'
 import { Offer } from 'shared/offer/types'
 
 export const mockedAlgoliaResponse: SearchResponse<Offer> = {
@@ -167,3 +168,95 @@ export const moreHitsForSimilarOffersPlaylist = [
     venue: {},
   },
 ]
+export const mockedAlgoliaVenueResponse: SearchResponse<AlgoliaVenue> = {
+  hits: [
+    {
+      city: 'CHATEAU-GONTIER-SUR-MAYENNE',
+      name: 'ESPACE CULTUREL LECLERC CHATEAU GONTIER',
+      offerer_name: 'SAS AZE DIS',
+      venue_type: 'CULTURAL_CENTRE',
+      description: '',
+      audio_disability: false,
+      mental_disability: true,
+      motor_disability: true,
+      visual_disability: true,
+      email: 'venue-4803-contact-email@anonymized.email',
+      phone_number: '+33600004803',
+      website: null,
+      facebook: null,
+      twitter: null,
+      instagram: null,
+      snapchat: null,
+      banner_url:
+        'https://storage.googleapis.com/passculture-metier-ehp-staging-assets-fine-grained/assets/venue_default_images/jan-antonin-kolar-hN_zCni3ILg-unsplash_1.png',
+      _geoloc: {
+        lat: 47.82939,
+        lng: -0.68598,
+      },
+      objectID: '9774',
+      _highlightResult: {
+        name: {
+          value: 'ESPACE CULTUREL LECLERC CHATEAU GONTIER',
+          matchLevel: 'none',
+          matchedWords: [],
+        },
+        offerer_name: {
+          value: 'SAS AZE DIS',
+          matchLevel: 'none',
+          matchedWords: [],
+        },
+      },
+    },
+    {
+      city: 'CONCARNEAU',
+      name: 'CAC - Concarneau Scènes',
+      offerer_name: 'COMMUNE DE CONCARNEAU',
+      venue_type: 'CULTURAL_CENTRE',
+      description: '',
+      audio_disability: false,
+      mental_disability: true,
+      motor_disability: true,
+      visual_disability: true,
+      email: 'venue-28599-contact-email@anonymized.email',
+      phone_number: '+33600028599',
+      website: 'https://billetterie-concarneauscenes.tickandlive.com/',
+      facebook: null,
+      twitter: null,
+      instagram: null,
+      snapchat: null,
+      banner_url:
+        'https://storage.googleapis.com/passculture-metier-ehp-staging-assets-fine-grained/assets/venue_default_images/jan-antonin-kolar-hN_zCni3ILg-unsplash_1.png',
+      _geoloc: {
+        lat: 47.87007,
+        lng: -3.92179,
+      },
+      objectID: '972',
+      _highlightResult: {
+        name: {
+          value: 'CAC - Concarneau Scènes',
+          matchLevel: 'none',
+          matchedWords: [],
+        },
+        offerer_name: {
+          value: 'COMMUNE DE CONCARNEAU',
+          matchLevel: 'none',
+          matchedWords: [],
+        },
+        description: {
+          value: '',
+          matchLevel: 'none',
+          matchedWords: [],
+        },
+      },
+    },
+  ],
+  nbHits: 4,
+  page: 0,
+  nbPages: 1,
+  hitsPerPage: 6,
+  exhaustiveNbHits: true,
+  query: '',
+  params:
+    'page=0&facetFilters=%5B%5B%22offer.category%3AMUSIQUE%22%2C%22offer.category%3AINSTRUMENT%22%5D%5D&numericFilters=%5B%5B%22offer.prices%3A+0+TO+300%22%5D%5D&hitsPerPage=6',
+  processingTimeMS: 1,
+}
