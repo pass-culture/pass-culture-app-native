@@ -38,7 +38,7 @@ export const parseType = (types: VenueTypeCode | null | undefined): string => {
 const MAP_TYPE_TO_HOME_LABEL: {
   [k in VenueTypeCode]: string
 } = {
-  [VenueTypeCodeKey.ARTISTIC_COURSE]: 'Pratique artistiques',
+  [VenueTypeCodeKey.ARTISTIC_COURSE]: 'Pratiques artistiques',
   [VenueTypeCodeKey.BOOKSTORE]: 'Librairie',
   [VenueTypeCodeKey.CONCERT_HALL]: 'Salle de concerts',
   [VenueTypeCodeKey.CREATIVE_ARTS_STORE]: 'Magasin d’arts créatifs',
