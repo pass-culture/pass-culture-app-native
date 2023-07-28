@@ -46,7 +46,7 @@ describe('fetchOffersAndVenues', () => {
       {
         indexName: env.ALGOLIA_VENUES_INDEX_NAME,
         params: { aroundRadius: 'all', clickAnalytics: true, hitsPerPage: 35, page: 0 },
-        query: '',
+        query: 'searched query',
       },
     ]
 
