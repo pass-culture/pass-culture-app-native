@@ -41,7 +41,7 @@ export const VideoModal: React.FC<VideoModalProps> = (props) => {
     homeEntryId: props.homeEntryId,
   }
 
-  const onPressCloseModal = () => {
+  const onCloseModal = () => {
     analytics.logHasDismissedModal({ moduleId: props.moduleId, modalType: ContentTypes.VIDEO })
     props.hideModal()
   }
@@ -49,7 +49,7 @@ export const VideoModal: React.FC<VideoModalProps> = (props) => {
   const swipeProperties =
     Platform.OS !== 'web'
       ? {
-          onSwipe: props.hideModal,
+          onSwipe: onCloseModal,
           swipeDirection: ModalSwipeDirection.DOWN,
           animationOutTiming: 400,
           propagateSwipe: true,
@@ -65,7 +65,7 @@ export const VideoModal: React.FC<VideoModalProps> = (props) => {
       noPaddingBottom
       scrollEnabled={false}
       customModalHeader={<React.Fragment />}
-      onBackdropPress={props.hideModal}
+      onBackdropPress={onCloseModal}
       {...swipeProperties}>
       <VideoPlayer
         youtubeVideoId={props.youtubeVideoId}
@@ -115,7 +115,7 @@ export const VideoModal: React.FC<VideoModalProps> = (props) => {
           </React.Fragment>
         )}
       </StyledScrollView>
-      <StyledTouchable onPress={onPressCloseModal} accessibilityLabel="Fermer la modale vidéo">
+      <StyledTouchable onPress={onCloseModal} accessibilityLabel="Fermer la modale vidéo">
         <StyledCloseIcon />
       </StyledTouchable>
     </AppModal>
