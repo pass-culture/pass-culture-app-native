@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Highlight component should render Highlight 1`] = `
+exports[`Highlight component for a offer suggestion should render Highlight 1`] = `
 Array [
   <Text
     style={
@@ -31,6 +31,41 @@ Array [
     testID="nonHighlightedText"
   >
      et youpi matin
+  </Text>,
+]
+`;
+
+exports[`Highlight component for a venue suggestion should render Highlight 1`] = `
+Array [
+  <Text
+    style={
+      Array [
+        Object {
+          "color": "#161617",
+          "fontFamily": "Montserrat-Regular",
+          "fontSize": 15,
+          "lineHeight": 20,
+        },
+      ]
+    }
+    testID="highlightedText"
+  >
+    ciné
+  </Text>,
+  <Text
+    style={
+      Array [
+        Object {
+          "color": "#161617",
+          "fontFamily": "Montserrat-Bold",
+          "fontSize": 15,
+          "lineHeight": 20,
+        },
+      ]
+    }
+    testID="nonHighlightedText"
+  >
+    ma le Paradis
   </Text>,
 ]
 `;

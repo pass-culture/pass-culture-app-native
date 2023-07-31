@@ -2,11 +2,12 @@ import React from 'react'
 
 import { NativeCategoryIdEnumv2, SearchGroupNameEnumv2 } from 'api/gen'
 import { Highlight, HighlightPart } from 'features/search/components/Highlight/Highlight'
+import { mockVenueHits } from 'features/search/fixtures/algolia'
 import { AlgoliaSuggestionHit } from 'libs/algolia'
 import { env } from 'libs/environment'
 import { render, screen } from 'tests/utils'
 
-describe('Highlight component', () => {
+describe('Highlight component for a offer suggestion', () => {
   const hit = {
     query: 'guerre et youpi matin',
     objectID: 'guerre et youpi matin',
@@ -45,7 +46,15 @@ describe('Highlight component', () => {
   } as AlgoliaSuggestionHit
 
   it('should render Highlight', () => {
-    expect(render(<Highlight hit={hit} attribute="query" />)).toMatchSnapshot()
+    expect(render(<Highlight suggestionHit={hit} attribute="query" />)).toMatchSnapshot()
+  })
+})
+
+describe('Highlight component for a venue suggestion', () => {
+  const hit = mockVenueHits[0]
+
+  it('should render Highlight', () => {
+    expect(render(<Highlight venueHit={hit} attribute="name" />)).toMatchSnapshot()
   })
 })
 

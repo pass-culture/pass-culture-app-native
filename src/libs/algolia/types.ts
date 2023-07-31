@@ -11,7 +11,7 @@ import {
 import { DATE_FILTER_OPTIONS, LocationType } from 'features/search/enums'
 import { Venue } from 'features/venue/types'
 import { AlgoliaHit } from 'libs/algolia'
-import { Geoloc as AlgoliaGeoloc } from 'libs/algolia/algolia.d'
+import { Geoloc as AlgoliaGeoloc, HighlightResult } from 'libs/algolia/algolia.d'
 import { transformOfferHit } from 'libs/algolia/fetchAlgolia/transformOfferHit'
 import { Position } from 'libs/geolocation'
 import { VenueTypeCode } from 'libs/parsers'
@@ -125,6 +125,10 @@ export interface OfferModuleQuery {
   }
 }
 
+interface AlgoliaVenueHighlightResult {
+  name: HighlightResult
+}
+
 export interface AlgoliaVenue {
   objectID: string
   city: string
@@ -145,4 +149,5 @@ export interface AlgoliaVenue {
   snapchat: string | null
   banner_url: string | null
   _geoloc: Geoloc
+  _highlightResult?: AlgoliaVenueHighlightResult
 }
