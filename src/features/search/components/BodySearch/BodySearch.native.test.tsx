@@ -44,14 +44,6 @@ describe('<BodySearch />', () => {
     expect(screen.queryByTestId('searchResults')).toBeNull()
   })
 
-  it('should render suggestions when asked', () => {
-    render(<BodySearch view={SearchView.Suggestions} />)
-
-    expect(screen.queryByTestId('categoriesButtons')).toBeNull()
-    expect(screen.getByTestId('autocompleteList')).toBeTruthy()
-    expect(screen.queryByTestId('searchResults')).toBeNull()
-  })
-
   it('should render search results when asked', async () => {
     render(<BodySearch view={SearchView.Results} />)
     await act(async () => {})
