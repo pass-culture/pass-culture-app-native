@@ -89,7 +89,8 @@ const UnmemoizedModule = ({
     [HomepageModuleType.ThematicHighlightModule]: ThematicHighlightModule,
   }
 
-  const ComponentModule = modules[item.type]
+  /* eslint-disable @typescript-eslint/no-explicit-any */
+  const ComponentModule: any = modules[item.type]
   return (
     <ComponentModule
       {...item}
