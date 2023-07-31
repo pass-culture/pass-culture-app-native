@@ -160,7 +160,7 @@ export function BookingDetails() {
 
   const helmetTitle = `Ma réservation pour ${booking.stock.offer.name} | pass Culture`
 
-  const shouldDisplayBookingContactEmail = booking.stock.offer.bookingContact
+  const bookingContactEmail = booking.stock.offer.bookingContact
 
   return (
     <Container>
@@ -217,10 +217,10 @@ export function BookingDetails() {
             </React.Fragment>
           )}
 
-          {!!shouldDisplayBookingContactEmail && (
+          {!!bookingContactEmail && (
             <React.Fragment>
               <Spacer.Column numberOfSpaces={6} />
-              <SectionWithDivider visible={!!shouldDisplayBookingContactEmail}>
+              <SectionWithDivider visible={!!bookingContactEmail}>
                 <InfoContainer>
                   <Spacer.Column numberOfSpaces={6} />
                   <Typo.Title4 {...getHeadingAttrs(2)}>Contact organisateur</Typo.Title4>
@@ -231,7 +231,7 @@ export function BookingDetails() {
                       inline
                       wording="Envoyer un e-mail"
                       accessibilityLabel="Ouvrir le gestionnaire mail pour contacter l’organisateur"
-                      externalNav={{ url: `mailto:${shouldDisplayBookingContactEmail}` }}
+                      externalNav={{ url: `mailto:${bookingContactEmail}` }}
                       icon={EmailFilled}
                     />
                   </SendEmailContainer>

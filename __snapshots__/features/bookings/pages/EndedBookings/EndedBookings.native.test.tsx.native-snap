@@ -215,6 +215,7 @@ Array [
             ],
             "id": 150230,
             "offer": Object {
+              "bookingContact": null,
               "extraData": null,
               "id": 147874,
               "isDigital": true,
