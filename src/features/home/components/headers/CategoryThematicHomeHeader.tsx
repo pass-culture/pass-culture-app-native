@@ -7,7 +7,7 @@ import { BlackBackground } from 'features/home/components/headers/BlackBackgroun
 import { CategoryThematicHeader } from 'features/home/types'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 
-const HEADER_HEIGHT = getSpacing(44)
+const HEADER_HEIGHT = getSpacing(52)
 
 type CategoryThematicHeaderProps = Omit<CategoryThematicHeader, 'type'>
 
