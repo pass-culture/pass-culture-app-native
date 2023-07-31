@@ -37,8 +37,8 @@ type AsProps = {
 } & Record<string, unknown>
 
 type TouchableLinkGenericProps = {
-  onBeforeNavigate?: (event: GestureResponderEvent | MouseEvent) => void
-  onAfterNavigate?: (event: GestureResponderEvent | MouseEvent) => void
+  onBeforeNavigate?: (event: GestureResponderEvent) => void
+  onAfterNavigate?: (event: GestureResponderEvent) => void
   highlight?: boolean // If true, uses TouchableHighlight instead of TouchableOpacity to render component
   hoverUnderlineColor?: ColorsEnum // Color to be used for underline effect on hover. Black if not specified
   isOnPressDebounced?: boolean
@@ -62,8 +62,3 @@ export type TouchableLinkProps = TouchableLinkGenericProps & {
         target: string
       }
 }
-
-export type HandleNavigationWrapperProps = Pick<
-  TouchableLinkProps,
-  'handleNavigation' | 'onBeforeNavigate' | 'onAfterNavigate'
->
