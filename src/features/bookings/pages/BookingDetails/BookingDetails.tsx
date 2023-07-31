@@ -1,6 +1,6 @@
 import { useNavigation, useRoute } from '@react-navigation/native'
 import React from 'react'
-import { Platform, ScrollView, useWindowDimensions } from 'react-native'
+import { Platform, ScrollView, useWindowDimensions, View } from 'react-native'
 import styled from 'styled-components/native'
 
 import { useBookings, useOngoingOrEndedBooking } from 'features/bookings/api'
@@ -26,13 +26,17 @@ import { useSubcategoriesMapping } from 'libs/subcategories'
 import { usePrePopulateOffer } from 'shared/offer/usePrePopulateOffer'
 import { useOpacityTransition } from 'ui/animations/helpers/useOpacityTransition'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
+import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
 import { HeroHeader } from 'ui/components/hero/HeroHeader'
 import { blurImageHeight, heroMarginTop } from 'ui/components/hero/useHeroDimensions'
 import { LoadingPage } from 'ui/components/LoadingPage'
 import { useModal } from 'ui/components/modals/useModal'
+import { SectionWithDivider } from 'ui/components/SectionWithDivider'
 import { Separator } from 'ui/components/Separator'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
+import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouchableLink'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
+import { EmailFilled } from 'ui/svg/icons/EmailFilled'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 import { Helmet } from 'ui/web/global/Helmet'
@@ -155,6 +159,9 @@ export function BookingDetails() {
   }
 
   const helmetTitle = `Ma réservation pour ${booking.stock.offer.name} | pass Culture`
+
+  const bookingContactEmail = booking.stock.offer.bookingContact
+
   return (
     <Container>
       <Helmet title={helmetTitle} />
@@ -172,52 +179,87 @@ export function BookingDetails() {
         <HeroHeader type="offer" imageHeight={blurImageHeight} imageUrl={offer.image?.url} />
         <Spacer.Column numberOfSpaces={heroMarginTop} />
         <TicketSwiper booking={booking} />
-        <ViewWithPadding>
-          <Spacer.Column numberOfSpaces={4} />
-          <OfferRules>{offerRules}</OfferRules>
-          <Spacer.Column numberOfSpaces={offerRules !== '' ? 8 : 2} />
-          <BookingPropertiesSection booking={booking} />
-          {!!shouldDisplayItineraryButton && (
-            <React.Fragment>
-              <Spacer.Column numberOfSpaces={4} />
-              <Separator />
-              <Spacer.Column numberOfSpaces={4} />
-              <SeeItineraryButton
-                externalNav={{
-                  url: getGoogleMapsItineraryUrl(venueFullAddress),
-                  address: venueFullAddress,
-                }}
-                onPress={() =>
-                  offerId && analytics.logConsultItinerary({ offerId, from: 'bookingdetails' })
-                }
-              />
-            </React.Fragment>
-          )}
+        <View>
+          <InfoContainer>
+            <Spacer.Column numberOfSpaces={4} />
+            <OfferRules>{offerRules}</OfferRules>
+            <Spacer.Column numberOfSpaces={offerRules !== '' ? 8 : 2} />
+            <BookingPropertiesSection booking={booking} />
+            {!!shouldDisplayItineraryButton && (
+              <React.Fragment>
+                <Spacer.Column numberOfSpaces={4} />
+                <Separator />
+                <Spacer.Column numberOfSpaces={4} />
+                <SeeItineraryButton
+                  externalNav={{
+                    url: getGoogleMapsItineraryUrl(venueFullAddress),
+                    address: venueFullAddress,
+                  }}
+                  onPress={() =>
+                    offerId && analytics.logConsultItinerary({ offerId, from: 'bookingdetails' })
+                  }
+                />
+              </React.Fragment>
+            )}
+          </InfoContainer>
+
           {!!offer.withdrawalDetails && (
             <React.Fragment>
-              <Spacer.Column numberOfSpaces={8} />
-              <Typo.Title4 {...getHeadingAttrs(2)}>Modalités de retrait</Typo.Title4>
-              <Spacer.Column numberOfSpaces={4} />
-              <Typo.Body testID="withdrawalDetails">{offer.withdrawalDetails}</Typo.Body>
+              <Spacer.Column numberOfSpaces={6} />
+              <SectionWithDivider visible={!!offer.withdrawalDetails}>
+                <InfoContainer>
+                  <Spacer.Column numberOfSpaces={8} />
+                  <Typo.Title4 {...getHeadingAttrs(2)}>Modalités de retrait</Typo.Title4>
+                  <Spacer.Column numberOfSpaces={4} />
+                  <Typo.Body testID="withdrawalDetails">{offer.withdrawalDetails}</Typo.Body>
+                </InfoContainer>
+              </SectionWithDivider>
             </React.Fragment>
           )}
-          <Spacer.Column numberOfSpaces={8} />
-          <InternalTouchableLink
-            enableNavigate={!!netInfo.isConnected}
-            as={ButtonPrimary}
-            wording="Voir le détail de l’offre"
-            navigateTo={{ screen: 'Offer', params: { id: offer.id, from: 'bookingdetails' } }}
-            onBeforeNavigate={onNavigateToOfferPress}
-            fullWidth
-          />
-          <Spacer.Column numberOfSpaces={4} />
-          <BookingDetailsCancelButton
-            booking={booking}
-            onCancel={cancelBooking}
-            onTerminate={showArchiveModal}
-            fullWidth
-          />
-        </ViewWithPadding>
+
+          {!!bookingContactEmail && (
+            <React.Fragment>
+              <Spacer.Column numberOfSpaces={6} />
+              <SectionWithDivider visible={!!bookingContactEmail}>
+                <InfoContainer>
+                  <Spacer.Column numberOfSpaces={6} />
+                  <Typo.Title4 {...getHeadingAttrs(2)}>Contact organisateur</Typo.Title4>
+                  <Spacer.Column numberOfSpaces={4} />
+                  <SendEmailContainer>
+                    <ExternalTouchableLink
+                      as={ButtonTertiaryBlack}
+                      inline
+                      wording="Envoyer un e-mail"
+                      accessibilityLabel="Ouvrir le gestionnaire mail pour contacter l’organisateur"
+                      externalNav={{ url: `mailto:${bookingContactEmail}` }}
+                      icon={EmailFilled}
+                    />
+                  </SendEmailContainer>
+                </InfoContainer>
+              </SectionWithDivider>
+            </React.Fragment>
+          )}
+
+          <Spacer.Column numberOfSpaces={14} />
+
+          <InfoContainer>
+            <InternalTouchableLink
+              enableNavigate={!!netInfo.isConnected}
+              as={ButtonPrimary}
+              wording="Voir le détail de l’offre"
+              navigateTo={{ screen: 'Offer', params: { id: offer.id, from: 'bookingdetails' } }}
+              onBeforeNavigate={onNavigateToOfferPress}
+              fullWidth
+            />
+            <Spacer.Column numberOfSpaces={4} />
+            <BookingDetailsCancelButton
+              booking={booking}
+              onCancel={cancelBooking}
+              onTerminate={showArchiveModal}
+              fullWidth
+            />
+          </InfoContainer>
+        </View>
         <Spacer.Column numberOfSpaces={5} />
       </ScrollView>
       {/* BookingDetailsHeader is called after Body to implement the BlurView for iOS */}
@@ -243,6 +285,10 @@ const OfferRules = styled(Typo.CaptionNeutralInfo)({
   textAlign: 'center',
 })
 
-const ViewWithPadding = styled.View({
+const InfoContainer = styled.View({
   paddingHorizontal: getSpacing(5),
+})
+
+const SendEmailContainer = styled.View({
+  alignItems: 'flex-start',
 })

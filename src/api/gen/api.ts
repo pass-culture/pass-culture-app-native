@@ -342,6 +342,11 @@ export interface BookingOfferExtraData {
  */
 export interface BookingOfferResponse {
   /**
+   * @type {string}
+   * @memberof BookingOfferResponse
+   */
+  bookingContact?: string | null
+  /**
    * @type {BookingOfferExtraData}
    * @memberof BookingOfferResponse
    */
