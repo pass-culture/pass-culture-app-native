@@ -37,6 +37,6 @@ export const exclusivityNatifModuleFixture: ExclusivityContentModel = {
         },
       },
     },
-    offerId: '123456789',
+    offerId: '116656',
   },
 }

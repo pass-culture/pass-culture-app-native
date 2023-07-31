@@ -1,5 +1,5 @@
 import { useRoute } from '@react-navigation/native'
-import React, { FunctionComponent, useEffect } from 'react'
+import React, { useEffect } from 'react'
 import styled from 'styled-components/native'
 
 import { useHomepageData } from 'features/home/api/useHomepageData'
@@ -15,7 +15,7 @@ const Header = () => (
   </ListHeaderContainer>
 )
 
-export const Home: FunctionComponent = () => {
+export function Home() {
   const { params } = useRoute<UseRouteType<'Home'>>()
   const { modules, id } = useHomepageData() || {}
   const { setCustomPosition } = useGeolocation()
