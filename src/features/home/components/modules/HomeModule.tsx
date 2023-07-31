@@ -50,22 +50,6 @@ const UnmemoizedModule = ({
     )
   }
 
-  if (isExclusivityModule(item) && !enableNewExclusivityBlock) {
-    return (
-      <ExclusivityModule
-        moduleId={item.id}
-        title={item.title}
-        alt={item.alt}
-        image={item.image}
-        offerId={item.offerId}
-        displayParameters={item.displayParameters}
-        homeEntryId={homeEntryId}
-        index={index}
-        url={item.url}
-      />
-    )
-  }
-
   if (isVideoModule(item)) {
     return (
       <VideoModule
@@ -77,13 +61,17 @@ const UnmemoizedModule = ({
     )
   }
 
-  if (isHighlightOfferModule(item) && enableNewExclusivityBlock) {
-    return <HighlightOfferModule {...item} />
-  }
+  if (
+    (isHighlightOfferModule(item) && !enableNewExclusivityBlock) ||
+    (isExclusivityModule(item) && enableNewExclusivityBlock)
+  )
+    return <React.Fragment></React.Fragment>
 
   const modules = {
     [HomepageModuleType.BusinessModule]: BusinessModule,
     [HomepageModuleType.CategoryListModule]: CategoryListModule,
+    [HomepageModuleType.ExclusivityModule]: ExclusivityModule,
+    [HomepageModuleType.HighlightOfferModule]: HighlightOfferModule,
     [HomepageModuleType.OffersModule]: OffersModule,
     [HomepageModuleType.RecommendedOffersModule]: RecommendationModule,
     [HomepageModuleType.ThematicHighlightModule]: ThematicHighlightModule,
