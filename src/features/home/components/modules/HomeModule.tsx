@@ -21,6 +21,16 @@ import {
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 
+const modules = {
+  [HomepageModuleType.BusinessModule]: BusinessModule,
+  [HomepageModuleType.CategoryListModule]: CategoryListModule,
+  [HomepageModuleType.ExclusivityModule]: ExclusivityModule,
+  [HomepageModuleType.HighlightOfferModule]: HighlightOfferModule,
+  [HomepageModuleType.OffersModule]: OffersModule,
+  [HomepageModuleType.RecommendedOffersModule]: RecommendationModule,
+  [HomepageModuleType.ThematicHighlightModule]: ThematicHighlightModule,
+}
+
 const UnmemoizedModule = ({
   item,
   index,
@@ -66,16 +76,6 @@ const UnmemoizedModule = ({
     (isExclusivityModule(item) && enableNewExclusivityBlock)
   )
     return <React.Fragment></React.Fragment>
-
-  const modules = {
-    [HomepageModuleType.BusinessModule]: BusinessModule,
-    [HomepageModuleType.CategoryListModule]: CategoryListModule,
-    [HomepageModuleType.ExclusivityModule]: ExclusivityModule,
-    [HomepageModuleType.HighlightOfferModule]: HighlightOfferModule,
-    [HomepageModuleType.OffersModule]: OffersModule,
-    [HomepageModuleType.RecommendedOffersModule]: RecommendationModule,
-    [HomepageModuleType.ThematicHighlightModule]: ThematicHighlightModule,
-  }
 
   /* eslint-disable @typescript-eslint/no-explicit-any */
   const ComponentModule: any = modules[item.type]
