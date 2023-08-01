@@ -24,6 +24,7 @@ import { OfflinePage } from 'libs/network/OfflinePage'
 import { BatchEvent, BatchUser } from 'libs/react-native-batch'
 import { ScrollToTopButton } from 'ui/components/ScrollToTopButton'
 import { Spinner } from 'ui/components/Spinner'
+import { StatusBarBlurredBackground } from 'ui/components/statusBar/statusBarBlurredBackground'
 import { getSpacing, Spacer } from 'ui/theme'
 
 type GenericHomeProps = {
@@ -199,6 +200,7 @@ const OnlineHome: FunctionComponent<GenericHomeProps> = ({
         ) : null}
       </HomeBodyLoadingContainer>
       <Spacer.Column numberOfSpaces={6} />
+      <StatusBarBlurredBackground />
     </Container>
   )
 }

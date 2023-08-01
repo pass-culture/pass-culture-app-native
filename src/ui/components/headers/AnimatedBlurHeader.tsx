@@ -18,6 +18,7 @@ export const AnimatedBlurHeader = ({
   style,
 }: Props) => {
   // There is an issue with the blur on Android: we chose not to render it and use a white background
+  // https://github.com/Kureev/react-native-blur/issues/511
   if (Platform.OS === 'android') return null
 
   return (
