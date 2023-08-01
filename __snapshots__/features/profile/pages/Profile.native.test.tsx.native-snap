@@ -69,7 +69,17 @@ exports[`Profile component should render correctly 1`] = `
             }
           }
         >
-          <View>
+          <View
+            style={
+              Array [
+                Object {
+                  "flexBasis": 0,
+                  "flexGrow": 1,
+                  "flexShrink": 1,
+                },
+              ]
+            }
+          >
             <RCTScrollView
               bounces={false}
               onScroll={[Function]}
