@@ -1,8 +1,6 @@
 import React, { ComponentType, memo } from 'react'
 import styled from 'styled-components/native'
 
-import { BackgroundSecondary } from 'ui/svg/BackgroundSecondary'
-
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export const withWebWrapper = (Component: ComponentType<any>) => {
   return memo(function ComponentWithWebWrapper(props = {}) {
@@ -11,17 +9,17 @@ export const withWebWrapper = (Component: ComponentType<any>) => {
         <SiteContainer>
           <Component {...props} />
         </SiteContainer>
-        <BackgroundSecondary />
       </SiteWrapper>
     )
   })
 }
 
-const SiteWrapper = styled.View({
+const SiteWrapper = styled.View(({ theme }) => ({
   flex: 1,
   margin: 'auto',
   width: '100%',
-})
+  backgroundColor: theme.colors.greyLight,
+}))
 
 const SiteContainer = styled.View(({ theme }) => ({
   flex: 1,
