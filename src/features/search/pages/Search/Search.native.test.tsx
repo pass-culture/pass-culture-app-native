@@ -11,6 +11,7 @@ import { Search } from 'features/search/pages/Search/Search'
 import { SearchState, SearchView } from 'features/search/types'
 import { Venue } from 'features/venue/types'
 import { env } from 'libs/environment'
+import * as useFeatureFlag from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { useNetInfoContext as useNetInfoContextDefault } from 'libs/network/NetInfoWrapper'
 import { placeholderData } from 'libs/subcategories/placeholderData'
 import { mockedSuggestedVenues } from 'libs/venue/fixtures/mockedSuggestedVenues'
@@ -62,7 +63,6 @@ const mockHits = [
   {
     objectID: '1',
     offer: { name: 'Test1', searchGroupName: 'MUSIQUE' },
-    _geoloc: {},
     _highlightResult: {
       query: {
         value: '<mark>Test1</mark>',
@@ -157,6 +157,8 @@ jest.mock('libs/subcategories/useSubcategories', () => ({
   }),
 }))
 
+const useFeatureFlagSpy = jest.spyOn(useFeatureFlag, 'useFeatureFlag')
+
 describe('<Search/>', () => {
   mockUseNetInfoContext.mockReturnValue({ isConnected: true })
 
@@ -177,13 +179,36 @@ describe('<Search/>', () => {
     })
   })
 
-  it('should display suggestions when search view is suggestions', async () => {
-    useRoute.mockReturnValueOnce({ params: { view: SearchView.Suggestions } })
-    render(<Search />)
-    await act(async () => {})
+  describe('When search view is suggestions', () => {
+    beforeEach(() => {
+      useRoute.mockReturnValue({ params: { view: SearchView.Suggestions } })
+    })
 
-    expect(screen.getByText('Test1')).toBeTruthy()
-    expect(screen.getByText('Test2')).toBeTruthy()
+    it('should display offer suggestions', async () => {
+      render(<Search />)
+      await act(async () => {})
+
+      expect(screen.getByTestId('autocompleteOfferItem_1')).toBeTruthy()
+      expect(screen.getByTestId('autocompleteOfferItem_2')).toBeTruthy()
+    })
+
+    it('should not display venue suggestions when wipEnableVenuesInSearchResults feature flag deactivated', async () => {
+      useFeatureFlagSpy.mockReturnValueOnce(false)
+      render(<Search />)
+      await act(async () => {})
+
+      expect(screen.queryByTestId('autocompleteVenueItem_1')).toBeNull()
+      expect(screen.queryByTestId('autocompleteVenueItem_2')).toBeNull()
+    })
+
+    it('should display venue suggestions when wipEnableVenuesInSearchResults feature flag activated', async () => {
+      useFeatureFlagSpy.mockReturnValueOnce(true)
+      render(<Search />)
+      await act(async () => {})
+
+      expect(screen.getByTestId('autocompleteVenueItem_1')).toBeTruthy()
+      expect(screen.getByTestId('autocompleteVenueItem_2')).toBeTruthy()
+    })
   })
 
   it.each([SearchView.Landing, SearchView.Results])(
@@ -193,8 +218,8 @@ describe('<Search/>', () => {
       render(<Search />)
       await act(async () => {})
 
-      expect(screen.queryByText('Test1')).toBeNull()
-      expect(screen.queryByText('Test2')).toBeNull()
+      expect(screen.queryByTestId('autocompleteOfferItem_1')).toBeNull()
+      expect(screen.queryByTestId('autocompleteOfferItem_2')).toBeNull()
     }
   )
 

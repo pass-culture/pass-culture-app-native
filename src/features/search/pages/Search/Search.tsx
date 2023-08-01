@@ -17,6 +17,8 @@ import { InsightsMiddleware } from 'libs/algolia/analytics/InsightsMiddleware'
 import { client } from 'libs/algolia/fetchAlgolia/clients'
 import { buildSearchVenuePosition } from 'libs/algolia/fetchAlgolia/fetchOffersAndVenues/helpers/buildSearchVenuePosition'
 import { env } from 'libs/environment'
+import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
+import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { useGeolocation } from 'libs/geolocation'
 import { useNetInfoContext } from 'libs/network/NetInfoWrapper'
 import { OfflinePage } from 'libs/network/OfflinePage'
@@ -54,6 +56,9 @@ export function Search() {
   const { params } = useRoute<UseRouteType<'Search'>>()
   const { dispatch } = useSearch()
   const { userPosition } = useGeolocation()
+  const enableVenuesInSearchResults = useFeatureFlag(
+    RemoteStoreFeatureFlags.WIP_ENABLE_VENUES_IN_SEARCH_RESULTS
+  )
 
   useEffect(() => {
     dispatch({ type: 'SET_STATE', payload: params ?? { view: SearchView.Landing } })
@@ -81,15 +86,17 @@ export function Search() {
           {currentView === SearchView.Suggestions ? (
             <StyledVerticalUl>
               <AutocompleteOffer />
-              <Index indexName={venuesIndex}>
-                <Configure
-                  hitsPerPage={5}
-                  clickAnalytics
-                  aroundRadius={searchVenuePosition.aroundRadius}
-                  aroundLatLng={searchVenuePosition.aroundLatLng}
-                />
-                <AutocompleteVenue />
-              </Index>
+              {!!enableVenuesInSearchResults && (
+                <Index indexName={venuesIndex}>
+                  <Configure
+                    hitsPerPage={5}
+                    clickAnalytics
+                    aroundRadius={searchVenuePosition.aroundRadius}
+                    aroundLatLng={searchVenuePosition.aroundLatLng}
+                  />
+                  <AutocompleteVenue />
+                </Index>
+              )}
             </StyledVerticalUl>
           ) : (
             <BodySearch view={params?.view} />
