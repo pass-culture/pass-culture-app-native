@@ -1,0 +1,1230 @@
+version: 2.1
+
+###################
+#  ORBS
+###################
+orbs:
+  slack: circleci/slack@4.2
+
+###################
+#  EXECUTORS
+###################
+
+executors:
+  node:
+    docker:
+      - image: cimg/node:18.7.0
+
+  android:
+    docker:
+      - image: cimg/android:2022.04-node
+
+  ios:
+    macos:
+      xcode: '14.2'
+
+  gcp:
+    docker:
+      - image: europe-west1-docker.pkg.dev/passculture-infra-prod/pass-culture-tools/node-gcp:18
+        auth:
+          username: _json_key # default username when using a JSON key file to authenticate
+          password: $GCP_INFRA_KEY
+
+###################
+#  COMMANDS
+###################
+
+commands:
+  gcp-oidc-authenticate:
+    description: 'Authenticate with GCP using a CircleCI OIDC token.'
+    parameters:
+      project_id:
+        type: env_var_name
+        default: GCP_PROJECT
+      workload_identity_pool_provider_id:
+        type: env_var_name
+        default: GCP_WORKLOAD_IDENTITY_POOL_PROVIDER_ID
+      service_account_email:
+        type: env_var_name
+        default: GCP_APP_NATIVE_SERVICE_ACCOUNT
+      gcp_cred_config_file_path:
+        type: string
+        default: /tmp/gcp_cred_config.json
+      oidc_token_file_path:
+        type: string
+        default: /tmp/oidc_token.json
+    steps:
+      - run:
+          name: Login using OpenID Connect
+          command: |
+            # Store OIDC token in temp file
+            echo $CIRCLE_OIDC_TOKEN > << parameters.oidc_token_file_path >>
+
+            # Create a credential configuration for the generated OIDC ID Token
+            gcloud iam workload-identity-pools create-cred-config \
+                "${<< parameters.workload_identity_pool_provider_id >>}"\
+                --output-file="<< parameters.gcp_cred_config_file_path >>" \
+                --service-account="${<< parameters.service_account_email >>}" \
+                --credential-source-file=<< parameters.oidc_token_file_path >>
+
+            # Configure gcloud to leverage the generated credential configuration
+            gcloud auth login --brief --cred-file "<< parameters.gcp_cred_config_file_path >>"
+
+            # Configure Application Default Credentials
+            echo "export GOOGLE_APPLICATION_CREDENTIALS='<< parameters.gcp_cred_config_file_path >>'" | tee -a $BASH_ENV
+
+            # Set default project
+            gcloud --quiet config set project ${GCP_PROJECT}
+
+  install_node_version:
+    description: Install Node version with NVM
+    steps:
+      - run:
+          name: Install Node version with NVM
+          command: |
+            set +e
+            curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.39.1/install.sh | bash
+            echo 'export NVM_DIR="$HOME/.nvm"' >> $BASH_ENV
+            echo '[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"' >> $BASH_ENV
+            source $BASH_ENV
+            nvm install --default
+            nvm use
+
+  install_node_modules:
+    description: Install Node Dependencies
+    steps:
+      - restore_cache:
+          name: Restore Node Modules
+          keys:
+            - node-modules-v17-{{ checksum "yarn.lock" }}-{{ arch }}
+      - run:
+          name: Install Dependencies
+          command: yarn install --immutable
+      - save_cache:
+          name: Save Node Modules
+          key: node-modules-v17-{{ checksum "yarn.lock" }}-{{ arch }}
+          paths:
+            - node_modules
+
+  install_node_modules_proxy:
+    description: Install proxy Node Dependencies
+    steps:
+      - restore_cache:
+          name: Restore Node Modules
+          keys:
+            - node-modules-proxy-v1-{{ checksum "yarn.lock" }}-{{ arch }}
+      - run:
+          name: Install Dependencies
+          command: nvm install 16 && nvm use 16 && yarn install --immutable --cwd server
+      - save_cache:
+          name: Save Node Modules
+          key: node-modules-proxy-v1-{{ checksum "yarn.lock" }}-{{ arch }}
+          paths:
+            - node_modules
+
+  unit_test_proxy:
+    description: Unit Tests Proxy
+    steps:
+      - restore_cache:
+          name: Restore Tests cache
+          keys:
+            - jest-cache-proxy-{{ checksum "yarn.lock" }}-{{ arch }}
+      - run: nvm use 16 && yarn --cwd server test:unit:ci
+      - save_cache:
+          name: Save Tests cache
+          key: jest-cache-proxy-{{ checksum "yarn.lock" }}-{{ arch }}
+          paths:
+            - .jest
+
+  unit_test_native:
+    description: Unit Tests Native
+    steps:
+      - restore_cache:
+          name: Restore Tests cache
+          keys:
+            - jest-cache-{{ arch }}
+      - when:
+          condition:
+            or:
+              - equal: ['master', << pipeline.git.branch >>]
+              - matches:
+                  pattern: /^((patch\/)?v.*|hotfix-(staging|production)-.*)/
+                  value: << pipeline.git.tag >>
+          steps:
+            - run:
+                name: Run tests with JUnit as reporter
+                command: yarn test:unit:ci
+                environment:
+                  JEST_JUNIT_OUTPUT_DIR: ./reports/junit/
+      - unless:
+          condition:
+            or:
+              - equal: ['master', << pipeline.git.branch >>]
+              - matches:
+                  pattern: /^((patch\/)?v.*|hotfix-(staging|production)-.*)/
+                  value: << pipeline.git.tag >>
+          steps:
+            - run:
+                name: Run tests with JUnit as reporter
+                command: yarn test:unit:ci --changedSince=master
+                environment:
+                  JEST_JUNIT_OUTPUT_DIR: ./reports/junit/
+      - store_test_results:
+          path: ./reports/junit/
+      - when:
+          condition:
+            equal: ['master', << pipeline.git.branch >>]
+          steps:
+            - save_cache:
+                name: Save Tests cache
+                key: jest-cache-{{ arch }}-{{ epoch }}
+                paths:
+                  - .jest
+
+  unit_test_web:
+    description: Unit Tests Web
+    steps:
+      - restore_cache:
+          name: Restore Tests cache
+          keys:
+            - jest-cache-web-{{ arch }}
+      - when:
+          condition:
+            or:
+              - equal: ['master', << pipeline.git.branch >>]
+              - matches:
+                  pattern: /^(patch\/)?v.*/
+                  value: << pipeline.git.tag >>
+          steps:
+            - run:
+                name: Run tests with JUnit as reporter
+                command: NODE_OPTIONS=--max-old-space-size=4096 yarn test:unit:web:ci
+                environment:
+                  JEST_JUNIT_OUTPUT_DIR: ./reports/junit/
+      - unless:
+          condition:
+            or:
+              - equal: ['master', << pipeline.git.branch >>]
+              - matches:
+                  pattern: /^((patch\/)?v.*|hotfix-(staging|production)-.*)/
+                  value: << pipeline.git.tag >>
+          steps:
+            - run:
+                name: Run tests with JUnit as reporter
+                command: NODE_OPTIONS=--max-old-space-size=4096 yarn test:unit:web:ci --changedSince=master
+                environment:
+                  JEST_JUNIT_OUTPUT_DIR: ./reports/junit/
+      - store_test_results:
+          path: ./reports/junit/
+      - when:
+          condition:
+            or:
+              - equal: ['master', << pipeline.git.branch >>]
+              - matches:
+                  pattern: /^((patch\/)?v.*|hotfix-(staging|production)-.*)/
+                  value: << pipeline.git.tag >>
+          steps:
+            - save_cache:
+                name: Save Tests cache
+                key: jest-cache-web-{{ arch }}-{{ epoch }}
+                paths:
+                  - .jest
+
+  install_ruby_version:
+    description: Install ruby version with rvm
+    steps:
+      - run:
+          name: Install ruby version with rvm
+          command: |
+            set -e
+            if ! type gpg &>/dev/null
+            then HOMEBREW_NO_AUTO_UPDATE=1 brew install gpg
+            fi
+            for key in \
+              409B6B1796C275462A1703113804BB82D39DC0E3 \
+              7D2BAF1CF37B13E2069D6956105BD0E739499BDB \
+            ; do \
+                gpg --batch --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys "$key" || \
+                gpg --batch --keyserver hkp://ipv4.pool.sks-keyservers.net --recv-keys "$key" || \
+                gpg --batch --keyserver hkp://pgp.mit.edu:80 --recv-keys "$key" ; \
+            done
+            curl -sSL https://get.rvm.io | bash -s stable
+            source ~/.rvm/scripts/rvm
+            rvm install "ruby-$(cat .ruby-version)"
+            rvm use "ruby-$(cat .ruby-version)"
+            echo . $(rvm $(cat .ruby-version) do rvm env --path) >> $BASH_ENV
+
+  # xcode 14.2 requires ruby manual installation https://circleci.com/docs/testing-ios/#switching-rubies-manually
+  install_ruby_version_ios:
+    description: Install ruby version with rbenv
+    steps:
+      - run:
+          name: Install ruby version with rbenv
+          command: |
+            rbenv install "$(cat .ruby-version)"
+            rbenv global "$(cat .ruby-version)" && rbenv rehash
+
+  install_ruby_modules:
+    description: Install Ruby Dependencies
+    steps:
+      - restore_cache:
+          name: Restore Gem dependencies
+          key: bundle-v1-{{ checksum "Gemfile.lock" }}-{{ arch }}
+      - run:
+          name: Install Gem dependencies
+          command: |
+            bundle install --path=vendor/bundle
+      - save_cache:
+          name: Save Gem dependencies
+          key: bundle-v1-{{ checksum "Gemfile.lock" }}-{{ arch }}
+          paths:
+            - .bundle/
+            - vendor/bundle
+
+  skip_testing_soft_deploy_when_new_tag:
+    description: Skip job when new tag to deploy
+    steps:
+      - run: git tag --points-at HEAD | grep -E '^testing_v[0-9]+(\.[0-9]+){2}$' && circleci step halt || true
+
+  setup_android_google_services_config:
+    description: Setup android Google services config
+    steps:
+      - run: echo $ANDROID_GOOGLE_SERVICES_JSON > android/app/google-services.json
+
+  install_cocoapods:
+    description: Install cocoapods
+    steps:
+      - run: cd ios/ && bundle exec pod install
+
+  decode_match_secrets:
+    description: Decode match secrets
+    steps:
+      - run: export MATCH_PASSWORD=$MATCH_PASSWORD_CERTIFICATES
+
+  setup_sentry:
+    description: Setup sentry credentials
+    steps:
+      - run:
+          name: Setup sentry credentials
+          command: |
+            echo "[defaults]" >> ~/.sentryclirc
+            echo "url=https://sentry.passculture.team/" >> ~/.sentryclirc
+            echo "org=sentry" >> ~/.sentryclirc
+            echo "project=application-native" >> ~/.sentryclirc
+            echo "" >> ~/.sentryclirc
+            echo "[auth]" >> ~/.sentryclirc
+            echo "token=$SENTRY_AUTH_TOKEN" >> ~/.sentryclirc
+
+  notify-release-appcenter:
+    description: Send Slack notification for new AppCenter release
+    parameters:
+      env:
+        type: string
+    steps:
+      - run:
+          name: Notify deployed version
+          command: |
+            curl -X POST -H 'Content-type: application/json' \
+            --data '{"channel":"alertes-deploiement","blocks":[{"type":"section","text":{"type": "mrkdwn","text":"*<< parameters.env >>*: Version *<< pipeline.git.tag >>* is now available in Appcenter 🚀"}},{"type":"actions","elements":[{"type":"button","text":{"type":"plain_text","emoji":true,"text":"🤖 Android"},"url":"https://appcenter.ms/orgs/pass-Culture/apps/passculture-<< parameters.env >>-android"},{"type":"button","text":{"type":"plain_text","emoji":true,"text":"🍏 iOS"},"url":"https://appcenter.ms/orgs/pass-Culture/apps/passculture-<< parameters.env >>-ios"},{"type":"button","text":{"type":"plain_text","emoji":true,"text":"🖥 Web"},"url":"https://app.<< parameters.env >>.passculture.team/"}]}]}' \
+            $SLACK_OPS_BOT_URL
+
+  notify-soft-release:
+    description: Send Slack notification for new soft release
+    parameters:
+      env:
+        type: string
+    steps:
+      - run:
+          name: Notify deployed version
+          command: |
+            BOT_MESSAGE="'*<< parameters.env >>* : [App Native] patch *"$CIRCLE_TAG"* has been successfully deployed :muscle:'"
+            curl -X POST -H 'Content-type: application/json' --data "{'text': $BOT_MESSAGE}" $SLACK_OPS_BOT_URL
+
+  notify-release-production:
+    description: Send Slack notification for new production release
+    steps:
+      - run:
+          name: Notify deployed version
+          command: |
+            BOT_MESSAGE="'*production* : [App Native] Version *"$CIRCLE_TAG"* has been successfully deployed for internal tests before store submission :muscle:'"
+            curl -X POST -H 'Content-type: application/json' --data "{'text': $BOT_MESSAGE}" $SLACK_OPS_BOT_URL
+
+  copy_assetlinks:
+    description: Copy assetlinks-<< parameters.env >>.json to assetlinks.json
+    parameters:
+      env:
+        type: string
+    steps:
+      - run: |
+          cp ./public/.well-known/assetlinks-<< parameters.env >>.json ./public/.well-known/assetlinks.json
+
+  build_web:
+    description: Build decliweb
+    parameters:
+      env:
+        type: string
+    steps:
+      - install_node_version
+      - install_node_modules
+      - run: |
+          NODE_OPTIONS='--max-old-space-size=4096 --openssl-legacy-provider' UPLOAD_SOURCEMAPS_TO_SENTRY=true yarn build:<< parameters.env >>
+
+  push-to-bucket:
+    description: Push the built decliweb to a cloudstorage bucket
+    parameters:
+      bucket_name:
+        type: string
+    steps:
+      - run: |
+          set +eo pipefail
+          gsutil rsync -r ./build gs://<< parameters.bucket_name >>
+
+  transition-jira-ticket:
+    description: Transition JIRA ticket to "Revue PM"
+    steps:
+      - run: |
+          ./scripts/transition_jira_ticket.sh
+
+  sonarcloud-scanner:
+    description: Detect bugs and vulnerabilities
+    parameters:
+      directory:
+        default: .
+        description: change directory to run sonar-scanner from a sub directory
+        type: string
+      cache_version:
+        default: '1'
+        description: increment this value if the cache is corrupted and you want to start with a clean cache
+        type: string
+      sonar_token_variable_name:
+        default: SONAR_TOKEN
+        description: the name of the environment variable where the SonarCloud API token is stored
+        type: env_var_name
+    steps:
+      - run:
+          command: mkdir -p /tmp/cache/scanner
+          name: Create cache directory if it doesn't exist
+      - restore_cache:
+          keys:
+            - v<<parameters.cache_version>>-sonarcloud-scanner-4.6.2.2472
+      - run:
+          name: Scan repository with sonar-scanner
+          command: |
+            set -e
+            VERSION=4.6.2.2472
+            SONAR_TOKEN=$<<parameters.sonar_token_variable_name>>
+            SCANNER_DIRECTORY=/tmp/cache/scanner
+            export SONAR_USER_HOME=$SCANNER_DIRECTORY/.sonar
+            OS="linux"
+            echo $SONAR_USER_HOME
+            cd <<parameters.directory>>
+
+            if [[ ! -x "$SCANNER_DIRECTORY/sonar-scanner-$VERSION-$OS/bin/sonar-scanner" ]]; then
+              curl -Ol https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-$VERSION-$OS.zip
+              unzip -qq -o sonar-scanner-cli-$VERSION-$OS.zip -d $SCANNER_DIRECTORY
+            fi
+
+            chmod +x $SCANNER_DIRECTORY/sonar-scanner-$VERSION-$OS/bin/sonar-scanner
+            chmod +x $SCANNER_DIRECTORY/sonar-scanner-$VERSION-$OS/jre/bin/java
+
+            $SCANNER_DIRECTORY/sonar-scanner-$VERSION-$OS/bin/sonar-scanner
+          environment:
+            SONARQUBE_SCANNER_PARAMS: '{"sonar.host.url":"https://sonarcloud.io"}'
+            name: SonarCloud
+      - save_cache:
+          key: v<<parameters.cache_version>>-sonarcloud-scanner-4.6.2.2472
+          paths:
+            - /tmp/cache/scanner
+
+  deploy-web-proxy:
+    parameters:
+      env:
+        type: string
+    steps:
+      - checkout
+      - install_node_version
+      - install_node_modules_proxy
+      - gcp-oidc-authenticate
+      - run:
+          name: Deploy web proxy to <<parameters.env>>
+          command: |
+            if ./scripts/check_server_diff.sh; then
+              nvm use 16 && yarn --cwd server deploy:<<parameters.env>>
+            fi
+
+  notify-slack:
+    description: Send notification to Slack
+    parameters:
+      channel:
+        type: string
+      template:
+        type: string
+        default: FAIL_TEMPLATE_2
+    steps:
+      - slack/notify:
+          event: fail
+          channel: << parameters.channel >>
+
+###################
+#  JOBS
+###################
+
+jobs:
+  checkout-and-install-deps:
+    executor: node
+    working_directory: ~/pass-culture
+    steps:
+      - checkout
+      - install_node_modules
+
+  checkout-and-install-proxy-deps:
+    executor: node
+    working_directory: ~/pass-culture
+    steps:
+      - checkout
+      - install_node_version
+      - install_node_modules_proxy
+
+  test-proxy:
+    executor: node
+    working_directory: ~/pass-culture
+    steps:
+      - checkout
+      - install_node_version
+      - install_node_modules_proxy
+      - run:
+          name: Linter
+          command: nvm use 16 && yarn --cwd server test:lint
+      - run:
+          name: Typescript Type Check
+          command: nvm use 16 && yarn --cwd server test:types
+      - unit_test_proxy
+      - sonarcloud-scanner:
+          directory: server
+          cache_version: proxy-1
+
+  test-lint-and-types:
+    executor: node
+    working_directory: ~/pass-culture
+    steps:
+      - checkout
+      - install_node_modules
+      - run:
+          name: Linter
+          command: |
+            yarn test:lint
+      - run:
+          name: Typescript Type Check
+          command: yarn test:types
+
+  test-native:
+    executor: node
+    working_directory: ~/pass-culture
+    resource_class: large
+    steps:
+      - checkout
+      - install_node_modules
+      - unit_test_native
+      - when:
+          condition:
+            equal: ['master', << pipeline.git.branch >>]
+          steps:
+            - notify-slack:
+                channel: dev-mobile
+      - sonarcloud-scanner
+
+  test-web:
+    executor: node
+    working_directory: ~/pass-culture
+    resource_class: medium+
+    steps:
+      - checkout
+      - install_node_modules
+      - unit_test_web
+      - when:
+          condition:
+            equal: ['master', << pipeline.git.branch >>]
+          steps:
+            - notify-slack:
+                channel: shérif
+
+                  #  notify-hard-testing-release:
+                  #    executor: node
+                  #    working_directory: ~/pass-culture
+                  #    steps:
+                  #      - notify-release-appcenter:
+                  #          env: testing
+
+  transition-jira-ticket:
+    executor: node
+    working_directory: ~/pass-culture
+    steps:
+      - checkout
+      - transition-jira-ticket
+
+        #  notify-hard-staging-release:
+        #    executor: node
+        #    working_directory: ~/pass-culture
+        #    steps:
+        #      - notify-release-appcenter:
+        #          env: staging
+
+  notify-hard-production-release:
+    executor: node
+    working_directory: ~/pass-culture
+    steps:
+      - notify-release-production
+
+  #  deploy-soft-testing:
+  #    executor: android
+  #    working_directory: ~/pass-culture
+  #    steps:
+  #      - checkout
+  #      - skip_testing_soft_deploy_when_new_tag
+  #      - install_node_version
+  #      - install_node_modules
+  #      - install_ruby_version
+  #      - install_ruby_modules
+  #      - setup_sentry
+  #      - run:
+  #          name: Deploy Android App for testing environment
+  #          command: |
+  #            export ANDROID_APPCENTER_API_TOKEN=$ANDROID_TESTING_APPCENTER_API_TOKEN
+  #            ./scripts/deploy.sh -o android -t soft -e testing
+  #      - run:
+  #          name: Deploy IOS App for testing environment
+  #          command: |
+  #            export IOS_APPCENTER_API_TOKEN=$IOS_TESTING_APPCENTER_API_TOKEN
+  #            ./scripts/deploy.sh -o ios -t soft -e testing
+  #      - run:
+  #          name: Notify failed deploy
+  #          command: |
+  #            BOT_MESSAGE="'*testing* : [App Native] soft deployment has failed :collision:'"
+  #            curl -X POST -H 'Content-type: application/json' --data "{'channel':'alertes-deploiement-native','text': $BOT_MESSAGE}" $SLACK_OPS_BOT_URL
+  #          when: on_fail
+  #
+  #  deploy-android-testing-hard:
+  #    executor: android
+  #    working_directory: ~/pass-culture
+  #    resource_class: medium+
+  #    steps:
+  #      - checkout
+  #      - install_node_version
+  #      - install_node_modules
+  #      - install_ruby_version
+  #      - install_ruby_modules
+  #      - setup_sentry
+  #      - run:
+  #          name: Setup android keystore for testing environment
+  #          command: |
+  #            mkdir -p android/keystores
+  #            echo $ANDROID_KEYSTORE_TESTING | base64 -di > android/keystores/testing.keystore
+  #            echo "keyAlias=passculture" >> android/keystores/testing.keystore.properties
+  #            echo "storeFile=testing.keystore" >> android/keystores/testing.keystore.properties
+  #            echo "storePassword=$ANDROID_KEYSTORE_STORE_PASSWORD_TESTING" >> android/keystores/testing.keystore.properties
+  #            echo "keyPassword=$ANDROID_KEYSTORE_KEY_PASSWORD_TESTING" >>  android/keystores/testing.keystore.properties
+  #      - setup_android_google_services_config
+  #      - run:
+  #          name: Deploy Android App for testing environment
+  #          command: |
+  #            export ANDROID_APPCENTER_API_TOKEN=$ANDROID_TESTING_APPCENTER_API_TOKEN
+  #            ./scripts/deploy.sh -o android -t hard -e testing
+  #      - run:
+  #          name: Notify failed deploy
+  #          command: |
+  #            BOT_MESSAGE="'*testing* : [App Native] android hard deployment has failed :collision:'"
+  #            curl -X POST -H 'Content-type: application/json' --data "{'channel':'alertes-deploiement-native','text': $BOT_MESSAGE}" $SLACK_OPS_BOT_URL
+  #          when: on_fail
+  #
+  #  deploy-ios-testing-hard:
+  #    executor: ios
+  #    working_directory: ~/pass-culture
+  #    steps:
+  #      - checkout
+  #      - add_ssh_keys:
+  #          fingerprints:
+  #            - 'c4:20:41:81:06:31:e2:3c:b4:1e:a2:5a:11:d1:39:e1'
+  #      - install_node_version
+  #      - install_node_modules
+  #      - install_ruby_version_ios
+  #      - install_ruby_modules
+  #      - install_cocoapods
+  #      - decode_match_secrets
+  #      - setup_sentry
+  #      - run:
+  #          name: Setup iOS Google services config
+  #          command: echo $IOS_GOOGLE_SERVICES_PLIST_TESTING > ios/GoogleService-Info.plist
+  #      - run:
+  #          name: Deploy IOS App for testing environment
+  #          no_output_timeout: 30m
+  #          command: |
+  #            export IOS_APPCENTER_API_TOKEN=$IOS_TESTING_APPCENTER_API_TOKEN
+  #            ./scripts/deploy.sh -o ios -t hard -e testing
+  #      - run:
+  #          name: Notify failed deploy
+  #          command: |
+  #            BOT_MESSAGE="'*testing* : [App Native] ios hard deployment has failed :collision:'"
+  #            curl -X POST -H 'Content-type: application/json' --data "{'channel':'alertes-deploiement-native','text': $BOT_MESSAGE}" $SLACK_OPS_BOT_URL
+  #          when: on_fail
+
+  #  deploy-ios-staging-hard:
+  #    executor: ios
+  #    working_directory: ~/pass-culture
+  #    steps:
+  #      - checkout
+  #      - add_ssh_keys:
+  #          fingerprints:
+  #            - 'c4:20:41:81:06:31:e2:3c:b4:1e:a2:5a:11:d1:39:e1'
+  #      - install_node_version
+  #      - install_node_modules
+  #      - install_ruby_version_ios
+  #      - install_ruby_modules
+  #      - install_cocoapods
+  #      - decode_match_secrets
+  #      - setup_sentry
+  #      - run:
+  #          name: Setup iOS Google services config
+  #          command: echo $IOS_GOOGLE_SERVICES_PLIST_STAGING > ios/GoogleService-Info.plist
+  #      - run:
+  #          name: Deploy IOS App for staging environment
+  #          no_output_timeout: 30m
+  #          command: |
+  #            export IOS_APPCENTER_API_TOKEN=$IOS_STAGING_APPCENTER_API_TOKEN
+  #            ./scripts/deploy.sh -o ios -t hard -e staging
+  #
+  #  deploy-android-staging-hard:
+  #    executor: android
+  #    working_directory: ~/pass-culture
+  #    resource_class: medium+
+  #    steps:
+  #      - checkout
+  #      - install_node_version
+  #      - install_node_modules
+  #      - install_ruby_version
+  #      - install_ruby_modules
+  #      - setup_sentry
+  #      - run:
+  #          name: Setup android keystore for staging environment
+  #          command: |
+  #            mkdir -p android/keystores
+  #            echo $ANDROID_KEYSTORE_STAGING | base64 -di > android/keystores/staging.keystore
+  #            echo "keyAlias=passculture" >> android/keystores/staging.keystore.properties
+  #            echo "storeFile=staging.keystore" >> android/keystores/staging.keystore.properties
+  #            echo "storePassword=$ANDROID_KEYSTORE_STORE_PASSWORD_STAGING" >> android/keystores/staging.keystore.properties
+  #            echo "keyPassword=$ANDROID_KEYSTORE_KEY_PASSWORD_STAGING" >>  android/keystores/staging.keystore.properties
+  #      - setup_android_google_services_config
+  #      - run:
+  #          name: Deploy Android App for staging environment
+  #          command: |
+  #            export ANDROID_APPCENTER_API_TOKEN=$ANDROID_STAGING_APPCENTER_API_TOKEN
+  #            ./scripts/deploy.sh -o android -t hard -e staging
+  #
+  #  deploy-soft-staging:
+  #    executor: android
+  #    working_directory: ~/pass-culture
+  #    steps:
+  #      - checkout
+  #      - install_node_version
+  #      - install_node_modules
+  #      - install_ruby_version
+  #      - install_ruby_modules
+  #      - setup_sentry
+  #      - run:
+  #          name: Deploy Android Code push for staging environment
+  #          command: |
+  #            export ANDROID_APPCENTER_API_TOKEN=$ANDROID_STAGING_APPCENTER_API_TOKEN
+  #            ./scripts/deploy.sh -o android -t soft -e staging
+  #      - run:
+  #          name: Deploy IOS Code push for staging environment
+  #          command: |
+  #            export IOS_APPCENTER_API_TOKEN=$IOS_STAGING_APPCENTER_API_TOKEN
+  #            ./scripts/deploy.sh -o ios -t soft -e staging
+  #      - notify-soft-release:
+  #          env: staging
+
+  deploy-android-production-hard:
+    executor: android
+    working_directory: ~/pass-culture
+    resource_class: medium+
+    steps:
+      - checkout
+      - install_node_version
+      - install_node_modules
+      - install_ruby_version
+      - install_ruby_modules
+      - setup_sentry
+      - run:
+          name: Setup production keystore for production environment
+          command: |
+            mkdir -p android/keystores
+            echo $ANDROID_KEYSTORE_PRODUCTION | base64 -di > android/keystores/production.keystore
+            echo "keyAlias=android-app-configured-for-upload-key-play-store" >> android/keystores/production.keystore.properties
+            echo "storeFile=production.keystore" >> android/keystores/production.keystore.properties
+            echo "storePassword=$ANDROID_KEYSTORE_STORE_PASSWORD_PRODUCTION" >> android/keystores/production.keystore.properties
+            echo "keyPassword=$ANDROID_KEYSTORE_KEY_PASSWORD_PRODUCTION" >>  android/keystores/production.keystore.properties
+            echo $ANDROID_PLAYSTORE_SERVICE_ACCOUNT | base64 -di > fastlane/playStoreServiceAccount.json
+      - setup_android_google_services_config
+      - run:
+          name: Deploy Android App for production environment
+          command: |
+            ./scripts/deploy.sh -o android -t hard -e production
+
+  deploy-ios-production-hard:
+    executor: ios
+    working_directory: ~/pass-culture
+    steps:
+      - checkout
+      - add_ssh_keys:
+          fingerprints:
+            - 'c4:20:41:81:06:31:e2:3c:b4:1e:a2:5a:11:d1:39:e1'
+      - install_node_version
+      - install_node_modules
+      - install_ruby_version_ios
+      - install_ruby_modules
+      - install_cocoapods
+      - decode_match_secrets
+      - setup_sentry
+      - run:
+          name: Setup iOS Google services config
+          command: echo $IOS_GOOGLE_SERVICES_PLIST_PRODUCTION > ios/GoogleService-Info.plist
+      - run:
+          name: Deploy IOS App for production environment
+          no_output_timeout: 30m
+          command: |
+            ./scripts/deploy.sh -o ios -t hard -e production
+
+  deploy-soft-production:
+    executor: android
+    working_directory: ~/pass-culture
+    steps:
+      - checkout
+      - install_node_version
+      - install_node_modules
+      - install_ruby_version
+      - install_ruby_modules
+      - setup_sentry
+      - run:
+          name: Deploy Android Code push for production environment
+          command: |
+            export ANDROID_APPCENTER_API_TOKEN=$ANDROID_PRODUCTION_APPCENTER_API_TOKEN
+            ./scripts/deploy.sh -o android -t soft -e production
+      - run:
+          name: Deploy IOS Code push for production environment
+          command: |
+            export IOS_APPCENTER_API_TOKEN=$IOS_PRODUCTION_APPCENTER_API_TOKEN
+            ./scripts/deploy.sh -o ios -t soft -e production
+      - notify-soft-release:
+          env: production
+
+  github-action-service-worker-test:
+    executor: node
+    working_directory: ~/pass-culture
+    steps:
+      - checkout
+      - run:
+          name: Service Worker Test
+          command: |
+            VERSION_FROM=$(git tag -l | grep prod-hard | grep $(curl -sS https://passculture.app | awk -F 'name="version" content="' '{print $2}' | awk -F '"' '{print $1}'))
+            VERSION_TO=$CIRCLE_TAG
+            curl -H "Accept: application/vnd.github+json" -H "Authorization: Bearer $APP_NATIVE_GITHUB_ACTIONS_API_TOKEN" --request POST --data '{ "event_type": "service-worker-test", "client_payload": { "versionFrom": "'$VERSION_FROM'", "versionTo":"'$VERSION_TO'" } }' https://api.github.com/repos/pass-culture/pass-culture-app-native/dispatches
+                #  deploy-web-testing:
+                #    executor: gcp
+                #    working_directory: ~/pass-culture
+                #    resource_class: large
+                #    steps:
+                #      - checkout
+                #      - copy_assetlinks:
+                #          env: testing
+                #      - install_node_modules
+                #      - setup_sentry
+                #      - run:
+                #          name: SENTRY_LOG_LEVEL
+                #          command: |
+                #            export SENTRY_LOG_LEVEL="debug webpack -c web/config/webpack.config.js"
+                #      - gcp-oidc-authenticate
+                #      - build_web:
+                #          env: testing
+                #      - push-to-bucket:
+                #          bucket_name: passculture-metier-ehp-testing-decliweb
+                #      - run:
+                #          name: Notify failed deploy
+                #          command: |
+                #            BOT_MESSAGE="'*testing-web* : [App Native] deployment has failed :collision:'"
+                #            curl -X POST -H 'Content-type: application/json' --data "{'channel':'alertes-deploiement-native','text': $BOT_MESSAGE}" $SLACK_OPS_BOT_URL
+                #          when: on_fail
+
+                #  deploy-web-staging:
+                #    executor: gcp
+                #    working_directory: ~/pass-culture
+                #    resource_class: large
+                #    steps:
+                #      - checkout
+                #      - copy_assetlinks:
+                #          env: staging
+                #      - install_node_modules
+                #      - setup_sentry
+                #      - gcp-oidc-authenticate
+                #      - build_web:
+                #          env: staging
+                #      - push-to-bucket:
+                #          bucket_name: passculture-metier-ehp-staging-decliweb
+
+  deploy-web-integration:
+    executor: gcp
+    working_directory: ~/pass-culture
+    resource_class: large
+    steps:
+      - checkout
+      - install_node_modules
+      - setup_sentry
+      - gcp-oidc-authenticate
+      - build_web:
+          env: integration
+      - push-to-bucket:
+          bucket_name: passculture-metier-ehp-integration-decliweb
+
+  deploy-web-prod:
+    executor: gcp
+    working_directory: ~/pass-culture
+    resource_class: large
+    steps:
+      - checkout
+      - copy_assetlinks:
+          env: production
+      - install_node_modules
+      - setup_sentry
+      - gcp-oidc-authenticate
+      - build_web:
+          env: production
+      - push-to-bucket:
+          bucket_name: passculture-metier-prod-production-decliweb
+
+            #  deploy-web-proxy-testing:
+            #    executor: gcp
+            #    working_directory: ~/pass-culture
+            #    steps:
+            #      - deploy-web-proxy:
+            #          env: testing
+
+            #  deploy-web-proxy-staging:
+            #    executor: gcp
+            #    working_directory: ~/pass-culture
+            #    steps:
+            #      - deploy-web-proxy:
+            #          env: staging
+
+  deploy-web-proxy-integration:
+    executor: gcp
+    working_directory: ~/pass-culture
+    steps:
+      - deploy-web-proxy:
+          env: integration
+
+  deploy-web-proxy-production:
+    executor: gcp
+    working_directory: ~/pass-culture
+    steps:
+      - deploy-web-proxy:
+          env: production
+
+###################
+#  WORKFLOWS
+###################
+
+workflows:
+  version: 2.1
+  commit:
+    jobs:
+      - checkout-and-install-deps:
+          filters:
+            tags:
+              only: /.*/
+      - checkout-and-install-proxy-deps:
+          filters:
+            tags:
+              only: /.*/
+      - test-proxy:
+          requires:
+            - checkout-and-install-proxy-deps
+          context: SonarCloud
+      - test-lint-and-types
+      - test-native:
+          filters:
+            tags:
+              only: /.*/
+          context:
+            - SonarCloud
+            - Slack
+      - test-web:
+          filters:
+            tags:
+              only: /.*/
+          context: Slack
+            #    - deploy-soft-testing:
+            #        filters:
+            #          branches:
+            #            only:
+            #              - master
+            #        requires:
+            #          - checkout-and-install-deps
+            #          - test-lint-and-types
+            #          - test-native
+      - transition-jira-ticket:
+          filters:
+            branches:
+              only:
+                - master
+          requires:
+            - checkout-and-install-deps
+            - test-lint-and-types
+            - test-native
+            - test-web
+              #          - deploy-soft-testing
+              #          - deploy-web-testing
+          context: JIRA
+
+            #   - deploy-android-testing-hard:
+            #       filters:
+            #         tags:
+            #           only: /^testing\/v.*/
+            #         branches:
+            #           ignore: /.*/
+            #       requires:
+            #         - checkout-and-install-deps
+            #         - test-lint-and-types
+            #         - test-native
+            #   - deploy-ios-testing-hard:
+            #       filters:
+            #         tags:
+            #           only: /^testing\/v.*/
+            #         branches:
+            #           ignore: /.*/
+            #       requires:
+            #         - checkout-and-install-deps
+            #         - test-lint-and-types
+            #         - test-native
+            #   - notify-hard-testing-release:
+            #       filters:
+            #         tags:
+            #           only: /^testing\/v.*/
+            #         branches:
+            #           ignore: /.*/
+            #       requires:
+            #         - deploy-ios-testing-hard
+            #         - deploy-android-testing-hard
+            #      - deploy-android-staging-hard:
+            #          filters:
+            #            tags:
+            #              only: /^(patch\/)?v.*/
+            #            branches:
+            #              ignore: /.*/
+            #          requires:
+            #            - checkout-and-install-deps
+            #            - test-lint-and-types
+            #            - test-native
+            #      - deploy-ios-staging-hard:
+            #          filters:
+            #            tags:
+            #              only: /^(patch\/)?v.*/
+            #            branches:
+            #              ignore: /.*/
+            #          requires:
+            #            - checkout-and-install-deps
+            #            - test-lint-and-types
+            #            - test-native
+            #      - notify-hard-staging-release:
+            #          filters:
+            #            tags:
+            #              only: /^(patch\/)?v.*/
+            #            branches:
+            #              ignore: /.*/
+            #          requires:
+            #            - deploy-ios-staging-hard
+            #            - deploy-android-staging-hard
+            #      - deploy-soft-staging:
+            #          filters:
+            #            tags:
+            #              only: /^hotfix-staging.*/
+            #            branches:
+            #              ignore: /.*/
+            #          requires:
+            #            - checkout-and-install-deps
+            #            - test-lint-and-types
+            #            - test-native
+      - deploy-android-production-hard:
+          filters:
+            tags:
+              only: /^prod-hard-deploy.*/
+            branches:
+              ignore: /.*/
+          requires:
+            - checkout-and-install-deps
+            - test-lint-and-types
+            - test-native
+      - deploy-ios-production-hard:
+          filters:
+            tags:
+              only: /^prod-hard-deploy.*/
+            branches:
+              ignore: /.*/
+          requires:
+            - checkout-and-install-deps
+            - test-lint-and-types
+            - test-native
+      - notify-hard-production-release:
+          filters:
+            tags:
+              only: /^prod-hard-deploy.*/
+            branches:
+              ignore: /.*/
+          requires:
+            - deploy-ios-production-hard
+            - deploy-android-production-hard
+      - deploy-soft-production:
+          filters:
+            tags:
+              only: /^hotfix-production.*/
+            branches:
+              ignore: /.*/
+          requires:
+            - checkout-and-install-deps
+            - test-lint-and-types
+            - test-native
+      - github-action-service-worker-test:
+          filters:
+            tags:
+              only:
+                - /^(patch\/)?v.*/
+                - /^hotfix-staging.*/
+            branches:
+              ignore: /.*/
+                #     - deploy-web-testing:
+                #         filters:
+                #           tags:
+                #             ignore: /.*/
+                #           branches:
+                #             only: master
+                #         requires:
+                #           - checkout-and-install-deps
+                #           - test-lint-and-types
+                #           - test-web
+                #         context:
+                #           - GCP
+                #           - GCP_APP_NATIVE_EHP
+                #      - deploy-web-staging:
+                #          filters:
+                #            tags:
+                #              only:
+                #                - /^(patch\/)?v.*/
+                #                - /^hotfix-staging.*/
+                #            branches:
+                #              ignore: /.*/
+                #          requires:
+                #            - wait_for_approval_web_to_deploy
+                #          context:
+                #            - GCP
+                #            - GCP_APP_NATIVE_EHP
+      - deploy-web-integration:
+          filters:
+            tags:
+              only:
+                - /^prod-hard-deploy.*/
+                - /^hotfix-prod.*/
+            branches:
+              ignore: /.*/
+          requires:
+            - wait_for_approval_web_to_deploy
+          context:
+            - GCP
+            - GCP_APP_NATIVE_EHP
+      - deploy-web-prod:
+          filters:
+            tags:
+              only:
+                - /^prod-hard-deploy.*/
+                - /^hotfix-prod.*/
+            branches:
+              ignore: /.*/
+          requires:
+            - wait_for_approval_web_to_deploy
+          context:
+            - GCP
+            - GCP_APP_NATIVE_PROD
+              #   - deploy-web-proxy-testing:
+              #       filters:
+              #         tags:
+              #           ignore: /.*/
+              #         branches:
+              #           only: master
+              #       requires:
+              #         - test-proxy
+              #       context:
+              #         - GCP
+              #         - GCP_APP_NATIVE_EHP
+              #      - deploy-web-proxy-staging:
+              #          filters:
+              #            tags:
+              #              only:
+              #                - /^(patch\/)?v.*/
+              #                - /^hotfix-staging.*/
+              #            branches:
+              #              ignore: /.*/
+              #          requires:
+              #            - wait_for_approval_web_proxy_to_deploy
+              #          context:
+              #            - GCP
+              #            - GCP_APP_NATIVE_EHP
+      - deploy-web-proxy-integration:
+          filters:
+            tags:
+              only:
+                - /^prod-hard-deploy.*/
+                - /^hotfix-prod.*/
+            branches:
+              ignore: /.*/
+          requires:
+            - wait_for_approval_web_proxy_to_deploy
+          context:
+            - GCP
+            - GCP_APP_NATIVE_EHP
+      - deploy-web-proxy-production:
+          filters:
+            tags:
+              only:
+                - /^prod-hard-deploy.*/
+                - /^hotfix-prod.*/
+            branches:
+              ignore: /.*/
+          requires:
+            - wait_for_approval_web_proxy_to_deploy
+          context:
+            - GCP
+            - GCP_APP_NATIVE_PROD
+      - wait_for_approval_web_to_deploy:
+          filters:
+            tags:
+              only:
+                - /^prod-hard-deploy.*/
+                - /^hotfix-prod.*/
+                  #                - /^(patch\/)?v.*/
+                  # - /^hotfix-staging.*/
+            branches:
+              ignore: /.*/
+          type: approval
+          requires:
+            - checkout-and-install-deps
+            - test-lint-and-types
+            - test-web
+      - wait_for_approval_web_proxy_to_deploy:
+          filters:
+            tags:
+              only:
+                - /^prod-hard-deploy.*/
+                - /^hotfix-prod.*/
+                  #  - /^(patch\/)?v.*/
+                  # - /^hotfix-staging.*/
+            branches:
+              ignore: /.*/
+          type: approval
+          requires:
+            - test-proxy
