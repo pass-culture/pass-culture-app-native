@@ -20,7 +20,7 @@ exports[`AutocompleteOfferItem component should render AutocompleteOfferItem 1`]
       "paddingBottom": 16,
     }
   }
-  testID="autocompleteOfferItem"
+  testID="autocompleteOfferItem_1"
 >
   <View
     style={

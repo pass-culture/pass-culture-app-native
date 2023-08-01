@@ -178,7 +178,7 @@ describe('AutocompleteOfferItem component', () => {
 
   it('should create a suggestion clicked event when pressing a hit', async () => {
     render(<AutocompleteOfferItem hit={mockHit} sendEvent={mockSendEvent} />)
-    await fireEvent.press(screen.getByTestId('autocompleteOfferItem'))
+    await fireEvent.press(screen.getByTestId('autocompleteOfferItem_1'))
 
     expect(mockSendEvent).toHaveBeenCalledTimes(1)
   })
@@ -186,7 +186,7 @@ describe('AutocompleteOfferItem component', () => {
   describe('when item is not in the first three suggestions', () => {
     it('should execute a search with the query suggestion on hit click', async () => {
       render(<AutocompleteOfferItem hit={mockHit} sendEvent={mockSendEvent} />)
-      await fireEvent.press(screen.getByTestId('autocompleteOfferItem'))
+      await fireEvent.press(screen.getByTestId('autocompleteOfferItem_1'))
 
       expect(navigate).toBeCalledWith(
         ...getTabNavConfig('Search', {
@@ -217,7 +217,7 @@ describe('AutocompleteOfferItem component', () => {
         ],
       }
       render(<AutocompleteOfferItem hit={mockHit} sendEvent={mockSendEvent} />)
-      await fireEvent.press(screen.getByTestId('autocompleteOfferItem'))
+      await fireEvent.press(screen.getByTestId('autocompleteOfferItem_1'))
 
       expect(navigate).toBeCalledWith(
         ...getTabNavConfig('Search', {
@@ -239,7 +239,7 @@ describe('AutocompleteOfferItem component', () => {
     describe('should execute a search with the query suggestion and', () => {
       it('its most popular native category when it associated to only one category on hit click ', async () => {
         render(<AutocompleteOfferItem hit={mockHit} sendEvent={mockSendEvent} shouldShowCategory />)
-        await fireEvent.press(screen.getByTestId('autocompleteOfferItem'))
+        await fireEvent.press(screen.getByTestId('autocompleteOfferItem_1'))
 
         expect(navigate).toBeCalledWith(
           ...getTabNavConfig('Search', {
@@ -264,7 +264,7 @@ describe('AutocompleteOfferItem component', () => {
             shouldShowCategory
           />
         )
-        await fireEvent.press(screen.getByTestId('autocompleteOfferItem'))
+        await fireEvent.press(screen.getByTestId('autocompleteOfferItem_1'))
 
         expect(navigate).toBeCalledWith(
           ...getTabNavConfig('Search', {
@@ -289,7 +289,7 @@ describe('AutocompleteOfferItem component', () => {
             shouldShowCategory
           />
         )
-        await fireEvent.press(screen.getByTestId('autocompleteOfferItem'))
+        await fireEvent.press(screen.getByTestId('autocompleteOfferItem_1'))
 
         expect(navigate).toBeCalledWith(
           ...getTabNavConfig('Search', {
@@ -313,7 +313,7 @@ describe('AutocompleteOfferItem component', () => {
             shouldShowCategory
           />
         )
-        await fireEvent.press(screen.getByTestId('autocompleteOfferItem'))
+        await fireEvent.press(screen.getByTestId('autocompleteOfferItem_1'))
 
         expect(navigate).toBeCalledWith(
           ...getTabNavConfig('Search', {

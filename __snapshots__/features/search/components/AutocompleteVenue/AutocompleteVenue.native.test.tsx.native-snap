@@ -32,7 +32,7 @@ Array [
           "paddingBottom": 16,
         }
       }
-      testID="autocompleteVenueItem"
+      testID="autocompleteVenueItem_9898"
     >
       <View
         style={
@@ -140,7 +140,7 @@ Array [
           "paddingBottom": 16,
         }
       }
-      testID="autocompleteVenueItem"
+      testID="autocompleteVenueItem_9495"
     >
       <View
         style={

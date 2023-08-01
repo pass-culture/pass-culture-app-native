@@ -112,8 +112,10 @@ export function AutocompleteOfferItem({
   const shouldDisplaySuggestion =
     shouldShowCategory && (hasMostPopularHitNativeCategory || hasMostPopularHitCategory)
 
+  const testID = `autocompleteOfferItem_${hit.objectID}`
+
   return (
-    <AutocompleteItemTouchable testID="autocompleteOfferItem" onPress={onPress}>
+    <AutocompleteItemTouchable testID={testID} onPress={onPress}>
       <MagnifyingGlassIconContainer>
         <MagnifyingGlassIcon />
       </MagnifyingGlassIconContainer>

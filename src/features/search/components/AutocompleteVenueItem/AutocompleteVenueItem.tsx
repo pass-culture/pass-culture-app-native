@@ -21,9 +21,10 @@ export function AutocompleteVenueItem({ hit }: AutocompleteVenueItemProps) {
   }
 
   const city = ` ${hit.city}`
+  const testID = `autocompleteVenueItem_${hit.objectID}`
 
   return (
-    <AutocompleteItemTouchable testID="autocompleteVenueItem" onPress={onPress}>
+    <AutocompleteItemTouchable testID={testID} onPress={onPress}>
       <LocationBuildingIconContainer>
         <LocationBuildingIcon />
       </LocationBuildingIconContainer>

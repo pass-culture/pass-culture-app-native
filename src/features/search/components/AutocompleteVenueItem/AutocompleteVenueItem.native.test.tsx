@@ -12,7 +12,7 @@ describe('AutocompleteVenueItem component', () => {
 
   it('should create a suggestion clicked event when pressing a hit', async () => {
     render(<AutocompleteVenueItem hit={mockVenueHits[0]} />)
-    await fireEvent.press(screen.getByTestId('autocompleteVenueItem'))
+    await fireEvent.press(screen.getByTestId('autocompleteVenueItem_9898'))
 
     expect(navigate).toHaveBeenNthCalledWith(1, 'Venue', { id: Number(mockVenueHits[0].objectID) })
   })

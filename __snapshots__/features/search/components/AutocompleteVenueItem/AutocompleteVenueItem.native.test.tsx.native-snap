@@ -20,7 +20,7 @@ exports[`AutocompleteVenueItem component should render AutocompleteVenueItem 1`]
       "paddingBottom": 16,
     }
   }
-  testID="autocompleteVenueItem"
+  testID="autocompleteVenueItem_9898"
 >
   <View
     style={
