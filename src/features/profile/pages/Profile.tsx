@@ -1,7 +1,7 @@
 import { useFocusEffect } from '@react-navigation/native'
 import debounce from 'lodash/debounce'
 import React, { useCallback, useEffect, useRef, useState } from 'react'
-import { NativeScrollEvent, Platform, ScrollView, View } from 'react-native'
+import { NativeScrollEvent, Platform, ScrollView } from 'react-native'
 import styled from 'styled-components/native'
 import { v4 as uuidv4 } from 'uuid'
 
@@ -114,7 +114,7 @@ const OnlineProfile: React.FC = () => {
   }, [])
 
   return (
-    <View>
+    <Container>
       <ScrollView
         bounces={false}
         ref={scrollViewRef}
@@ -261,7 +261,7 @@ const OnlineProfile: React.FC = () => {
         </ProfileContainer>
       </ScrollView>
       <StatusBarBlurredBackground />
-    </View>
+    </Container>
   )
 }
 
@@ -272,6 +272,8 @@ export const Profile: React.FC = () => {
   }
   return <OfflinePage />
 }
+
+const Container = styled.View({ flex: 1 })
 
 const paddingVertical = getSpacing(4)
 
