@@ -1,7 +1,7 @@
 import React, { memo, useState } from 'react'
 import { View } from 'react-native'
 import LinearGradient from 'react-native-linear-gradient'
-import styled from 'styled-components/native'
+import styled, { DefaultTheme, useTheme } from 'styled-components/native'
 
 import { useHighlightOffer } from 'features/home/api/useHighlightOffer'
 import { BlackCaption } from 'features/home/components/BlackCaption'
@@ -16,6 +16,8 @@ import { Spacer, Typo, getSpacing } from 'ui/theme'
 
 const OFFER_IMAGE_HEIGHT = getSpacing(45)
 const BOTTOM_SPACER = getSpacing(6)
+const DESKTOP_OFFER_IMAGE_WIDTH = getSpacing(81)
+const DESKTOP_COLOR_BACKGROUND_HEIGHT = getSpacing(45)
 
 const getColorBackgroundHeight = (offerDetailsHeight: number) => {
   return OFFER_IMAGE_HEIGHT / 2 + offerDetailsHeight + BOTTOM_SPACER
@@ -27,6 +29,7 @@ const UnmemoizedHighlightOfferModule = (props: HighlightOfferModuleProps) => {
   const categoryLabelMapping = useCategoryHomeLabelMapping()
   const categoryIdMapping = useCategoryIdMapping()
   const prePopulateOffer = usePrePopulateOffer()
+  const { isDesktopViewport } = useTheme()
 
   if (!highlightOffer) return null
   const { offer, venue, objectID: offerId } = highlightOffer
@@ -49,7 +52,11 @@ const UnmemoizedHighlightOfferModule = (props: HighlightOfferModuleProps) => {
           start={{ x: 0, y: 0 }}
           end={{ x: 0, y: 1 }}
           colors={getGradientColors(props.color)}
-          height={getColorBackgroundHeight(offerDetailsHeight)}
+          height={
+            isDesktopViewport
+              ? DESKTOP_COLOR_BACKGROUND_HEIGHT
+              : getColorBackgroundHeight(offerDetailsHeight)
+          }
         />
         <StyledTouchableLink
           testID="highlight-offer-image"
@@ -66,7 +73,7 @@ const UnmemoizedHighlightOfferModule = (props: HighlightOfferModuleProps) => {
               categoryId,
             })
           }}>
-          <View>
+          <TouchableContent>
             <OfferImage source={{ uri: props.image }}>
               {!!categoryLabel && <CategoryCaption label={categoryLabel} />}
             </OfferImage>
@@ -80,7 +87,7 @@ const UnmemoizedHighlightOfferModule = (props: HighlightOfferModuleProps) => {
             <ArrowOffer>
               <PlainArrowNext />
             </ArrowOffer>
-          </View>
+          </TouchableContent>
         </StyledTouchableLink>
         <Spacer.Column numberOfSpaces={6} />
       </View>
@@ -119,26 +126,55 @@ const StyledTouchableLink = styled(InternalTouchableLink).attrs(({ theme }) => (
   marginHorizontal: theme.contentPage.marginHorizontal,
 }))
 
+const TouchableContent = styled.View(({ theme }) => ({
+  flexDirection: theme.isDesktopViewport ? 'row' : 'column',
+}))
+
+const getOfferImageDesktopStyle = (theme: DefaultTheme) => ({
+  width: DESKTOP_OFFER_IMAGE_WIDTH,
+  borderTopLeftRadius: theme.borderRadius.radius,
+  borderBottomLeftRadius: theme.borderRadius.radius,
+  borderRightWidth: 0,
+})
+
+const getOfferImageMobileStyle = (theme: DefaultTheme) => ({
+  borderTopLeftRadius: theme.borderRadius.radius,
+  borderTopRightRadius: theme.borderRadius.radius,
+  borderBottomWidth: 0,
+})
+
 const OfferImage = styled.ImageBackground(({ theme }) => ({
   // the overflow: hidden allow to add border radius to the image
   // https://stackoverflow.com/questions/49442165/how-do-you-add-borderradius-to-imagebackground/57616397
   overflow: 'hidden',
   height: OFFER_IMAGE_HEIGHT,
-  borderTopLeftRadius: theme.borderRadius.radius,
-  borderTopRightRadius: theme.borderRadius.radius,
   border: 1,
   borderColor: theme.colors.greyMedium,
-  borderBottomWidth: 0,
+  ...(theme.isDesktopViewport ? getOfferImageDesktopStyle(theme) : getOfferImageMobileStyle(theme)),
 }))
+
+const getOfferDetailsDesktopStyle = (theme: DefaultTheme) => ({
+  borderTopRightRadius: theme.borderRadius.radius,
+  borderBottomRightRadius: theme.borderRadius.radius,
+  borderLeftWidth: 0,
+  flex: 'auto',
+  justifyContent: 'center',
+})
+
+const getOfferDetailsMobileStyle = (theme: DefaultTheme) => ({
+  borderBottomLeftRadius: theme.borderRadius.radius,
+  borderBottomRightRadius: theme.borderRadius.radius,
+  borderTopWidth: 0,
+})
 
 const OfferDetails = styled.View(({ theme }) => ({
   background: theme.colors.white,
   padding: getSpacing(4),
-  borderBottomLeftRadius: theme.borderRadius.radius,
-  borderBottomRightRadius: theme.borderRadius.radius,
   border: 1,
-  borderTopWidth: 0,
   borderColor: theme.colors.greyMedium,
+  ...(theme.isDesktopViewport
+    ? getOfferDetailsDesktopStyle(theme)
+    : getOfferDetailsMobileStyle(theme)),
 }))
 
 const StyledOfferTitle = styled(Typo.ButtonText)``
