@@ -39,7 +39,7 @@ type HighlightProps = (WithSuggestionHitProps | WithVenueHitProps) & {
 export function Highlight({ suggestionHit, venueHit, attribute }: HighlightProps) {
   let attributeValue = ''
   if (suggestionHit) {
-    const { value } = getPropertyByPath(suggestionHit._highlightResult, attribute) || {}
+    const { value } = getPropertyByPath(suggestionHit._highlightResult, attribute)
     attributeValue = value.toString()
   }
   if (venueHit) {
