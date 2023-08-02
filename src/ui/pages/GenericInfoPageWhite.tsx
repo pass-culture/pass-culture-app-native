@@ -17,6 +17,7 @@ import { IconInterface } from 'ui/svg/icons/types'
 import { getSpacing, Typo } from 'ui/theme'
 import { useGrid } from 'ui/theme/grid'
 import { TextProps } from 'ui/theme/typography'
+import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 import { useCustomSafeInsets } from 'ui/theme/useCustomSafeInsets'
 
 type PropsWithAnimation = {
@@ -125,8 +126,10 @@ export const GenericInfoPageWhite: React.FC<Props> = ({
           )}
         </StyledLottieContainer>
         {!!separateIconFromTitle && <Spacer.Flex flex={0.5} />}
-        <StyledTitle>{props.title}</StyledTitle>
-        {!!props.subtitle && <StyledSubtitle>{props.subtitle}</StyledSubtitle>}
+        <StyledTitle {...getHeadingAttrs(1)}>{props.title}</StyledTitle>
+        {!!props.subtitle && (
+          <StyledSubtitle {...getHeadingAttrs(2)}>{props.subtitle}</StyledSubtitle>
+        )}
         <Spacer.Flex flex={0.5} />
         {props.children}
         <Spacer.Flex

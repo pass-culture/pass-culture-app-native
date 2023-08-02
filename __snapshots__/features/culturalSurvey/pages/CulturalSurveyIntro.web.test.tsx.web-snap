@@ -184,22 +184,22 @@ Object {
         <div
           class="css-view-175oi2r r-flexBasis-1iusvr4 r-flexGrow-ayyh6u r-flexShrink-1wbh5a2"
         />
-        <h3
-          aria-level="3"
+        <h1
+          aria-level="1"
           class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-1gknse6 r-fontSize-adyw6z r-lineHeight-135wba7 r-textAlign-q4m81j"
           dir="ltr"
           role="heading"
         >
           Prends 1 minute
-        </h3>
-        <h4
-          aria-level="4"
+        </h1>
+        <h2
+          aria-level="2"
           class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-g6644c r-fontSize-1i10wst r-lineHeight-hbpseb r-textAlign-q4m81j"
           dir="ltr"
           role="heading"
         >
           pour nous parler de tes activités culturelles préférées
-        </h4>
+        </h2>
         <div
           class="css-view-175oi2r r-flexBasis-1iusvr4 r-flexGrow-ayyh6u r-flexShrink-1wbh5a2"
         />
@@ -482,22 +482,22 @@ Object {
       <div
         class="css-view-175oi2r r-flexBasis-1iusvr4 r-flexGrow-ayyh6u r-flexShrink-1wbh5a2"
       />
-      <h3
-        aria-level="3"
+      <h1
+        aria-level="1"
         class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-1gknse6 r-fontSize-adyw6z r-lineHeight-135wba7 r-textAlign-q4m81j"
         dir="ltr"
         role="heading"
       >
         Prends 1 minute
-      </h3>
-      <h4
-        aria-level="4"
+      </h1>
+      <h2
+        aria-level="2"
         class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-g6644c r-fontSize-1i10wst r-lineHeight-hbpseb r-textAlign-q4m81j"
         dir="ltr"
         role="heading"
       >
         pour nous parler de tes activités culturelles préférées
-      </h4>
+      </h2>
       <div
         class="css-view-175oi2r r-flexBasis-1iusvr4 r-flexGrow-ayyh6u r-flexShrink-1wbh5a2"
       />

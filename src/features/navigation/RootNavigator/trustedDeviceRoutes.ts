@@ -25,11 +25,13 @@ export const trustedDeviceRoutes: GenericRoute<TrustedDeviceRootStackParamList>[
       path: 'securisation-compte/choix',
       parse: screenParamsParser['ReinitializePassword'],
     },
+    options: { title: 'Demande de sécurisation de compte' },
   },
   {
     name: 'SuspensionChoice',
     component: SuspensionChoice,
     path: 'securisation-compte/suspension',
+    options: { title: 'Demande de suspension de compte' },
   },
   {
     name: 'SuspensionChoiceExpiredLink',
@@ -41,6 +43,7 @@ export const trustedDeviceRoutes: GenericRoute<TrustedDeviceRootStackParamList>[
     name: 'SuspiciousLoginSuspendedAccount',
     component: SuspiciousLoginSuspendedAccount,
     path: 'securisation-compte/suspension-confirmee',
+    options: { title: 'Confirmation de suspension de compte' },
   },
   // Cheatcode
   {
@@ -52,5 +55,6 @@ export const trustedDeviceRoutes: GenericRoute<TrustedDeviceRootStackParamList>[
     name: 'TrustedDeviceInfos',
     component: TrustedDeviceInfos,
     path: 'appareil-de-confiance-cheatcode-informations',
+    options: { title: 'Informations de l’appareil' },
   },
 ]

@@ -20,7 +20,6 @@ import { BicolorError } from 'ui/svg/icons/BicolorError'
 import { ExternalSiteFilled } from 'ui/svg/icons/ExternalSiteFilled'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 import { LINE_BREAK } from 'ui/theme/constants'
-import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 export function ConfirmDeleteProfile() {
   const { navigate } = useNavigation<UseNavigationType>()
@@ -51,7 +50,7 @@ export function ConfirmDeleteProfile() {
       goBackParams={getTabNavConfig('Profile')}
       separateIconFromTitle={false}
       icon={BicolorError}
-      titleComponent={TitleComponent}
+      titleComponent={Typo.Title2}
       title="Veux-tu vraiment supprimer ton compte&nbsp;?">
       <Content>
         <Typo.ButtonText>Les conséquences&nbsp;:</Typo.ButtonText>
@@ -97,8 +96,6 @@ export function ConfirmDeleteProfile() {
     </GenericInfoPageWhite>
   )
 }
-
-const TitleComponent = styled(Typo.Title2).attrs(getHeadingAttrs(1))``
 
 const Content = styled.View({
   marginTop: getSpacing(2),
