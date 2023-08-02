@@ -11,19 +11,19 @@ type DistanceTagProps = ViewProps & {
 export function DistanceTag({ distance, ...props }: DistanceTagProps) {
   return (
     <Wrapper {...props}>
-      <DistanceText>À {distance}</DistanceText>
+      <DistanceText>à {distance}</DistanceText>
     </Wrapper>
   )
 }
 
-const Wrapper = styled(View)({
+const Wrapper = styled(View)(({ theme }) => ({
   borderRadius: 6,
-  backgroundColor: '#c1a3ff33',
+  backgroundColor: theme.colors.black,
   paddingVertical: getSpacing(1),
   paddingHorizontal: getSpacing(2),
   alignSelf: 'baseline',
-})
+}))
 
 const DistanceText = styled(Typo.Caption)(({ theme }) => ({
-  color: theme.colors.secondary,
+  color: theme.colors.white,
 }))
