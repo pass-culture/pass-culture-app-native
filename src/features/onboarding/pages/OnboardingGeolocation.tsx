@@ -31,7 +31,6 @@ export const OnboardingGeolocation = () => {
     <GenericInfoPageWhite
       mobileBottomFlex={0.1}
       animation={GeolocationAnimation}
-      titleComponent={Typo.Title1}
       onSkip={onSkip}
       title="Découvre les offres près de chez toi">
       <StyledBody>

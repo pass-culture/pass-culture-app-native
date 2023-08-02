@@ -12,7 +12,6 @@ export const CulturalSurveyThanks: React.FC = () => {
     <GenericInfoPageWhite
       mobileBottomFlex={0.1}
       animation={QpiThanks}
-      titleComponent={Typo.Title1}
       title="Un grand merci"
       subtitle="pour tes réponses&nbsp;!">
       <StyledBody>Tu peux dès maintenant découvrir l’étendue du catalogue pass Culture.</StyledBody>

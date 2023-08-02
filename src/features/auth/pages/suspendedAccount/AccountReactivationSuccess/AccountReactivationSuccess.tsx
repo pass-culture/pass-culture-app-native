@@ -12,7 +12,6 @@ export const AccountReactivationSuccess = () => (
   <GenericInfoPageWhite
     mobileBottomFlex={0.1}
     animation={QpiThanks}
-    titleComponent={Typo.Title1}
     title="Ton compte a été réactivé">
     <StyledBody>On est ravi de te revoir&nbsp;!</StyledBody>
     <StyledBody>Tu peux dès maintenant découvrir l’étendue du catalogue pass Culture.</StyledBody>
