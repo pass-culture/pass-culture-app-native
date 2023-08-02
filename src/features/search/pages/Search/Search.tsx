@@ -17,11 +17,11 @@ import { InsightsMiddleware } from 'libs/algolia/analytics/InsightsMiddleware'
 import { client } from 'libs/algolia/fetchAlgolia/clients'
 import { buildSearchVenuePosition } from 'libs/algolia/fetchAlgolia/fetchOffersAndVenues/helpers/buildSearchVenuePosition'
 import { env } from 'libs/environment'
-import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { useGeolocation } from 'libs/geolocation'
 import { useNetInfoContext } from 'libs/network/NetInfoWrapper'
 import { OfflinePage } from 'libs/network/OfflinePage'
+import { FeatureFlag } from 'shared/FeatureFlag/FeatureFlag'
 import { Form } from 'ui/components/Form'
 import { VerticalUl } from 'ui/components/Ul'
 import { getSpacing } from 'ui/theme'
@@ -56,9 +56,6 @@ export function Search() {
   const { params } = useRoute<UseRouteType<'Search'>>()
   const { dispatch } = useSearch()
   const { userPosition } = useGeolocation()
-  const enableVenuesInSearchResults = useFeatureFlag(
-    RemoteStoreFeatureFlags.WIP_ENABLE_VENUES_IN_SEARCH_RESULTS
-  )
 
   useEffect(() => {
     dispatch({ type: 'SET_STATE', payload: params ?? { view: SearchView.Landing } })
@@ -86,7 +83,8 @@ export function Search() {
           {currentView === SearchView.Suggestions ? (
             <StyledVerticalUl>
               <AutocompleteOffer />
-              {!!enableVenuesInSearchResults && (
+              <FeatureFlag
+                featureFlag={RemoteStoreFeatureFlags.WIP_ENABLE_VENUES_IN_SEARCH_RESULTS}>
                 <Index indexName={venuesIndex}>
                   <Configure
                     hitsPerPage={5}
@@ -96,7 +94,7 @@ export function Search() {
                   />
                   <AutocompleteVenue />
                 </Index>
-              )}
+              </FeatureFlag>
             </StyledVerticalUl>
           ) : (
             <BodySearch view={params?.view} />
