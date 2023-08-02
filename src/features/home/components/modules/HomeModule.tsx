@@ -48,6 +48,8 @@ const UnmemoizedModule = ({
     RemoteStoreFeatureFlags.WIP_ENABLE_NEW_EXCLUSIVITY_BLOCK
   )
 
+  /* TODO(PC-23671): Refactor VenuesModule and VideoModule into
+  modules constant after adding tests in HomeModule.native.test.tsx */
   if (isVenuesModule(item)) {
     return (
       <VenuesModule
