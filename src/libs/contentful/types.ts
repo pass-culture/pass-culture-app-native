@@ -455,7 +455,9 @@ type HightlightOfferFields = {
   highlightTitle: string
   offerTitle: string
   offerImage: Image
-  offerId: string
+  offerId?: string
+  offerTag?: string
+  offerEan?: string
   color: Color
 }
 
