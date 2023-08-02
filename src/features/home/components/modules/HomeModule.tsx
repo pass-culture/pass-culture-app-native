@@ -81,6 +81,7 @@ const UnmemoizedModule = ({
 
   /* eslint-disable @typescript-eslint/no-explicit-any */
   const ComponentModule: any = modules[item.type]
+  if (!ComponentModule) return <React.Fragment></React.Fragment>
   return (
     <ComponentModule
       {...item}
