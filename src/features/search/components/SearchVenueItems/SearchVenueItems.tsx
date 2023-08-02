@@ -1,0 +1,101 @@
+import React, { memo } from 'react'
+import { View } from 'react-native'
+import { useTheme } from 'styled-components'
+import styled from 'styled-components/native'
+
+import { VenueTypeLocationIcon } from 'features/home/components/modules/venues/VenueTypeLocationIcon'
+import { DistanceTag } from 'features/offer/components/DistanceTag/DistanceTag'
+import { SearchVenueItemsDetails } from 'features/search/components/SearchVenueItemsDetails/SearchVenueItemsDetails'
+import { AlgoliaVenue } from 'libs/algolia'
+import { useDistance } from 'libs/geolocation/hooks/useDistance'
+import { useHandleFocus } from 'libs/hooks/useHandleFocus'
+import { mapVenueTypeToIcon, VenueTypeCode } from 'libs/parsers'
+import { tileAccessibilityLabel, TileContentType } from 'libs/tileAccessibilityLabel'
+import { ImageTile } from 'ui/components/ImageTile'
+import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
+import { getSpacing } from 'ui/theme'
+import { customFocusOutline } from 'ui/theme/customFocusOutline/customFocusOutline'
+import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
+
+export interface SearchVenueItemsProps {
+  venue: AlgoliaVenue
+  width: number
+  height: number
+  onPress?: () => void
+}
+
+const UnmemoizedSearchVenueItems = ({ venue, height, width, onPress }: SearchVenueItemsProps) => {
+  const { onFocus, onBlur, isFocus } = useHandleFocus()
+  const { colors } = useTheme()
+  const { lat, lng } = venue._geoloc
+  const distance = useDistance({ lat, lng })
+
+  const accessibilityLabel = tileAccessibilityLabel(TileContentType.VENUE, { ...venue, distance })
+
+  return (
+    <View {...getHeadingAttrs(3)}>
+      <StyledTouchableLink
+        height={height + MAX_VENUE_CAPTION_HEIGHT}
+        width={width}
+        navigateTo={{ screen: 'Venue', params: { id: venue.objectID } }}
+        onBeforeNavigate={onPress}
+        onFocus={onFocus}
+        onBlur={onBlur}
+        isFocus={isFocus}
+        accessibilityLabel={accessibilityLabel}>
+        <View>
+          {distance ? <StyledDistanceTag distance={distance} testID="distance-tag" /> : null}
+          {venue.banner_url ? (
+            <ImageTile width={width} height={height} uri={venue.banner_url} />
+          ) : (
+            <VenueTypeTile width={width} height={height} testID="venue-type-tile">
+              <VenueTypeLocationIcon
+                VenueTypeIcon={mapVenueTypeToIcon(venue.venue_type as VenueTypeCode)}
+                iconColor={colors.greySemiDark}
+                backgroundColor={colors.greyLight}
+              />
+            </VenueTypeTile>
+          )}
+          <SearchVenueItemsDetails width={width} name={venue.name} city={venue.city} />
+        </View>
+      </StyledTouchableLink>
+    </View>
+  )
+}
+
+export const SearchVenueItems = memo(UnmemoizedSearchVenueItems)
+
+const MAX_VENUE_CAPTION_HEIGHT = getSpacing(18)
+
+const StyledTouchableLink = styled(InternalTouchableLink).attrs(({ theme }) => ({
+  underlayColor: theme.colors.white,
+}))<{
+  height: number
+  width: number
+  isFocus?: boolean
+}>(({ height, width, theme, isFocus }) => ({
+  width,
+  maxHeight: height,
+  marginVertical: theme.outline.width + theme.outline.offSet,
+  borderRadius: theme.borderRadius.radius,
+  ...customFocusOutline({ isFocus, color: theme.colors.black }),
+}))
+
+const VenueTypeTile = styled.View<{ width: number; height: number }>(
+  ({ theme, width, height }) => ({
+    width: width,
+    height: height,
+    borderRadius: theme.borderRadius.radius,
+    border: `1px solid ${theme.colors.greySemiDark}`,
+    alignItems: 'center',
+    justifyContent: 'center',
+  })
+)
+
+const StyledDistanceTag = styled(DistanceTag)({
+  flex: 1,
+  position: 'absolute',
+  zIndex: 2,
+  top: 4,
+  right: 4,
+})
