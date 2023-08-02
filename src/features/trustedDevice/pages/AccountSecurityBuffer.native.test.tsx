@@ -3,13 +3,12 @@ import React from 'react'
 import { withErrorBoundary } from 'react-error-boundary'
 import { Text } from 'react-native'
 
-import { useRoute } from '__mocks__/@react-navigation/native'
+import { useRoute, replace } from '__mocks__/@react-navigation/native'
 import { navigateToHome } from 'features/navigation/helpers'
 import { env } from 'libs/environment'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { server } from 'tests/server'
-import { act, render, screen } from 'tests/utils'
-import { DOUBLE_LINE_BREAK } from 'ui/theme/constants'
+import { render, screen, waitFor } from 'tests/utils'
 
 import { AccountSecurityBuffer } from './AccountSecurityBuffer'
 
@@ -50,7 +49,7 @@ describe('<AccountSecurityBuffer/>', () => {
     expect(await screen.findByText(LOADING_TEXT)).toBeTruthy()
   })
 
-  it('should display SuspensionChoiceExpiredLink screen when expired token', async () => {
+  it('should navigate to SuspensionChoiceExpiredLink screen when expired token', async () => {
     server.use(
       rest.get(
         `${env.API_BASE_URL}/native/v1/account/suspend/token_validation/${TOKEN}`,
@@ -59,8 +58,9 @@ describe('<AccountSecurityBuffer/>', () => {
     )
     renderAccountSecurityBuffer()
 
-    const SUSPENSION_CHOICE_EXPIRED_LINK_TITLE = `Le lien que tu reçois par e-mail expire 7 jours après sa réception.${DOUBLE_LINE_BREAK}Tu peux toujours contacter le service fraude pour sécuriser ton compte.`
-    expect(await screen.findByText(SUSPENSION_CHOICE_EXPIRED_LINK_TITLE)).toBeTruthy()
+    await waitFor(() => {
+      expect(replace).toHaveBeenNthCalledWith(1, 'SuspensionChoiceExpiredLink')
+    })
   })
 
   it('should navigate to Home when invalid token', async () => {
@@ -72,12 +72,12 @@ describe('<AccountSecurityBuffer/>', () => {
     )
     renderAccountSecurityBuffer()
 
-    await act(async () => {})
-
-    expect(navigateToHome).toHaveBeenCalledTimes(1)
+    await waitFor(() => {
+      expect(navigateToHome).toHaveBeenCalledTimes(1)
+    })
   })
 
-  it('should display AccountSecurity screen when valid token', async () => {
+  it('should navigate to AccountSecurity screen when valid token', async () => {
     server.use(
       rest.get(
         `${env.API_BASE_URL}/native/v1/account/suspend/token_validation/${TOKEN}`,
@@ -86,8 +86,9 @@ describe('<AccountSecurityBuffer/>', () => {
     )
     renderAccountSecurityBuffer()
 
-    const ACCOUNT_SECURITY_TITLE = 'Sécurise ton compte'
-    expect(await screen.findByText(ACCOUNT_SECURITY_TITLE)).toBeTruthy()
+    await waitFor(() => {
+      expect(replace).toHaveBeenNthCalledWith(1, 'AccountSecurity', { token: TOKEN })
+    })
   })
 
   it('should throw error when unexpected error happens while validating token', async () => {

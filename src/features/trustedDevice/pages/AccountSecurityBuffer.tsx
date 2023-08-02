@@ -1,18 +1,17 @@
-import { useRoute } from '@react-navigation/native'
+import { useNavigation, useRoute } from '@react-navigation/native'
 import React, { useEffect } from 'react'
 
 import { navigateToHome } from 'features/navigation/helpers'
-import { UseRouteType } from 'features/navigation/RootNavigator/types'
+import { UseNavigationType, UseRouteType } from 'features/navigation/RootNavigator/types'
 import {
   AccountSecurityStatus,
   useAccountSuspendTokenValidation,
 } from 'features/trustedDevice/api/useAccountSuspendTokenValidation'
-import { AccountSecurity } from 'features/trustedDevice/pages/AccountSecurity'
-import { SuspensionChoiceExpiredLink } from 'features/trustedDevice/pages/SuspensionChoiceExpiredLink'
 import { LoadingPage } from 'ui/components/LoadingPage'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 
 export const AccountSecurityBuffer = () => {
+  const { replace } = useNavigation<UseNavigationType>()
   const { params } = useRoute<UseRouteType<'AccountSecurityBuffer'>>()
 
   const { data: tokenStatus, isLoading } = useAccountSuspendTokenValidation(params.token)
@@ -20,6 +19,10 @@ export const AccountSecurityBuffer = () => {
   const { showErrorSnackBar } = useSnackBarContext()
 
   useEffect(() => {
+    if (tokenStatus === AccountSecurityStatus.EXPIRED_TOKEN) {
+      replace('SuspensionChoiceExpiredLink')
+    }
+
     if (tokenStatus === AccountSecurityStatus.INVALID_TOKEN) {
       const navigateToHomeWithErrorSnackBar = () => {
         navigateToHome()
@@ -30,21 +33,14 @@ export const AccountSecurityBuffer = () => {
       }
       navigateToHomeWithErrorSnackBar()
     }
-  }, [showErrorSnackBar, tokenStatus])
+
+    if (tokenStatus === AccountSecurityStatus.VALID_TOKEN) {
+      replace('AccountSecurity', { token: params.token })
+    }
+  }, [params.token, replace, showErrorSnackBar, tokenStatus])
 
   if (isLoading) {
     return <LoadingPage />
-  }
-
-  switch (tokenStatus) {
-    case AccountSecurityStatus.EXPIRED_TOKEN:
-      return <SuspensionChoiceExpiredLink />
-
-    case AccountSecurityStatus.INVALID_TOKEN:
-      return <React.Fragment />
-
-    case AccountSecurityStatus.VALID_TOKEN:
-      return <AccountSecurity />
   }
 
   return <React.Fragment />
