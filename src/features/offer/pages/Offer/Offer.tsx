@@ -8,6 +8,7 @@ import { UseRouteType } from 'features/navigation/RootNavigator/types'
 import { useOffer } from 'features/offer/api/useOffer'
 import { useSimilarOffers } from 'features/offer/api/useSimilarOffers'
 import { BottomBanner } from 'features/offer/components/BottomBanner/BottomBanner'
+import { CTAButton } from 'features/offer/components/CTAButton/CTAButton'
 import { OfferBody } from 'features/offer/components/OfferBody/OfferBody'
 import { OfferHeader } from 'features/offer/components/OfferHeader/OfferHeader'
 import { OfferWebHead } from 'features/offer/components/OfferWebHead'
@@ -201,38 +202,6 @@ export const Offer: FunctionComponent = () => {
       {CTAOfferModal}
     </Container>
   )
-}
-
-const CTAButton = ({
-  wording,
-  onPress,
-  isDisabled,
-  externalNav,
-  navigateTo,
-}: {
-  wording: string
-  onPress?: () => void
-  isDisabled?: boolean
-  externalNav?: ExternalNavigationProps['externalNav']
-  navigateTo?: InternalNavigationProps['navigateTo']
-}) => {
-  const commonLinkProps: TouchableLinkGenericProps = {
-    as: ButtonWithLinearGradient,
-    wording: wording,
-    onBeforeNavigate: onPress,
-    isDisabled: isDisabled,
-    isOnPressThrottled: true,
-  }
-
-  if (navigateTo) {
-    return <InternalTouchableLink navigateTo={navigateTo} {...commonLinkProps} />
-  }
-  if (externalNav) {
-    return (
-      <ExternalTouchableLink externalNav={externalNav} icon={ExternalSite} {...commonLinkProps} />
-    )
-  }
-  return <ButtonWithLinearGradient wording={wording} onPress={onPress} isDisabled={isDisabled} />
 }
 
 const Container = styled.View(({ theme }) => ({
