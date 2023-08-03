@@ -348,40 +348,6 @@ exports[`ThematicHome should render correctly 1`] = `
         ]
       }
     />
-    <View
-      height={16}
-      style={
-        Array [
-          Object {
-            "backdropFilter": "blur(20px)",
-            "height": 16,
-            "left": 0,
-            "overflow": "hidden",
-            "position": "absolute",
-            "right": 0,
-          },
-        ]
-      }
-    >
-      <BlurView
-        blurAmount={8}
-        blurType="light"
-        style={
-          Array [
-            Object {
-              "backgroundColor": "transparent",
-            },
-            Array [
-              Object {
-                "flexBasis": 0,
-                "flexGrow": 1,
-                "flexShrink": 1,
-              },
-            ],
-          ]
-        }
-      />
-    </View>
   </View>
   <View
     collapsable={false}
