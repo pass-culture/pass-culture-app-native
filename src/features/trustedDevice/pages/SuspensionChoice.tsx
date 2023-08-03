@@ -74,7 +74,7 @@ export const SuspensionChoice = () => {
         <BulletListItem text="tu n’auras plus accès au catalogue." />
       </VerticalUl>
       <Spacer.Column numberOfSpaces={4} />
-      <Typo.ButtonText>Les données qu’on conserve&nbsp;:</Typo.ButtonText>
+      <Typo.ButtonText>Les données que nous conservons&nbsp;:</Typo.ButtonText>
       <Typo.Body>
         Nous gardons toutes les informations personnelles que tu nous as transmises lors de la
         vérification de ton identité.

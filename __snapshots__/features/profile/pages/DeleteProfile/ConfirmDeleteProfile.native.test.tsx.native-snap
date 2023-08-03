@@ -431,7 +431,7 @@ Array [
           ]
         }
       >
-        Les données qu’on conserve :
+        Les données que nous conservons :
       </Text>
       <Text
         style={
