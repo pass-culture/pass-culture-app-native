@@ -123,6 +123,73 @@ describe('BookingDetailsTicketContent', () => {
       render(<BookingDetailsTicketContent booking={bookingWithEan} />)
       expect(screen.queryByTestId('ean')).toBeNull()
     })
+
+    it('should display "Accéder à l’offre" on button when offer is digital and not free', () => {
+      const booking = {
+        ...originalBooking,
+        completedUrl: 'https://example.com',
+        stock: {
+          ...originalBooking.stock,
+          price: 100,
+          offer: {
+            ...originalBooking.stock.offer,
+            isDigital: true,
+          },
+        },
+      }
+      render(<BookingDetailsTicketContent booking={booking} />)
+      expect(screen.getByText('Accéder à l’offre')).toBeTruthy()
+    })
+
+    it('should not display "Accéder à l’offre" on button when offer is digital and free', () => {
+      const booking = {
+        ...originalBooking,
+        completedUrl: 'https://example.com',
+        stock: {
+          ...originalBooking.stock,
+          price: 0,
+          offer: {
+            ...originalBooking.stock.offer,
+            isDigital: true,
+          },
+        },
+      }
+      render(<BookingDetailsTicketContent booking={booking} />)
+      expect(screen.queryByText('Accéder à l’offre')).toBeNull()
+    })
+
+    it('should display specific button wording when offer is digital and free', () => {
+      const booking = {
+        ...originalBooking,
+        completedUrl: 'https://example.com',
+        stock: {
+          ...originalBooking.stock,
+          price: 0,
+          offer: {
+            ...originalBooking.stock.offer,
+            isDigital: true,
+          },
+        },
+      }
+      render(<BookingDetailsTicketContent booking={booking} />)
+      expect(screen.getByText('Accéder à l’offre en ligne')).toBeTruthy()
+    })
+
+    it('should not display specific button wording when offer is digital and not free', () => {
+      const booking = {
+        ...originalBooking,
+        completedUrl: 'https://example.com',
+        stock: {
+          ...originalBooking.stock,
+          price: 100,
+          offer: {
+            ...originalBooking.stock.offer,
+            isDigital: true,
+          },
+        },
+      }
+      render(<BookingDetailsTicketContent booking={booking} />)
+      expect(screen.queryByText('Accéder à l’offre en ligne')).toBeNull()
     })
   })
 })
