@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { SearchVenueItemsDetails } from 'features/search/components/SearchVenueItemsDetails/SearchVenueItemsDetails'
+import { SearchVenueItemDetails } from 'features/search/components/SearchVenueItemsDetails/SearchVenueItemDetails'
 import { render, screen } from 'tests/utils'
 
 const props = {
@@ -9,9 +9,9 @@ const props = {
   city: 'Test City',
 }
 
-describe('SearchVenueItemsDetails', () => {
+describe('SearchVenueItemDetails', () => {
   it('should render venue details correctly', () => {
-    render(<SearchVenueItemsDetails {...props} />)
+    render(<SearchVenueItemDetails {...props} />)
 
     expect(screen.getByText(props.name)).toBeTruthy()
     expect(screen.getByText(props.city)).toBeTruthy()

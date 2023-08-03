@@ -4,11 +4,11 @@ import React from 'react'
 
 import { LENGTH_XS, LENGTH_XXXS } from 'ui/theme'
 
-import { SearchVenueItems } from './SearchVenueItems'
+import { SearchVenueItem } from './SearchVenueItem'
 
 export default {
-  title: 'features/search/SearchVenueItems',
-  component: SearchVenueItems,
+  title: 'features/search/SearchVenueItem',
+  component: SearchVenueItem,
   decorators: [
     (Story) => (
       <NavigationContainer>
@@ -16,7 +16,7 @@ export default {
       </NavigationContainer>
     ),
   ],
-} as ComponentMeta<typeof SearchVenueItems>
+} as ComponentMeta<typeof SearchVenueItem>
 
 const venue = {
   objectID: '5543',
@@ -47,7 +47,7 @@ const venue = {
 const ITEM_HEIGHT = LENGTH_XXXS
 const ITEM_WIDTH = LENGTH_XS
 
-const Template: ComponentStory<typeof SearchVenueItems> = (props) => <SearchVenueItems {...props} />
+const Template: ComponentStory<typeof SearchVenueItem> = (props) => <SearchVenueItem {...props} />
 
 export const Default = Template.bind({})
 Default.args = {

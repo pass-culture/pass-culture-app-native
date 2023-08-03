@@ -5,7 +5,7 @@ import styled from 'styled-components/native'
 
 import { VenueTypeLocationIcon } from 'features/home/components/modules/venues/VenueTypeLocationIcon'
 import { DistanceTag } from 'features/offer/components/DistanceTag/DistanceTag'
-import { SearchVenueItemsDetails } from 'features/search/components/SearchVenueItemsDetails/SearchVenueItemsDetails'
+import { SearchVenueItemDetails } from 'features/search/components/SearchVenueItemsDetails/SearchVenueItemDetails'
 import { AlgoliaVenue } from 'libs/algolia'
 import { useDistance } from 'libs/geolocation/hooks/useDistance'
 import { useHandleFocus } from 'libs/hooks/useHandleFocus'
@@ -17,20 +17,25 @@ import { getSpacing } from 'ui/theme'
 import { customFocusOutline } from 'ui/theme/customFocusOutline/customFocusOutline'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
-export interface SearchVenueItemsProps {
+export interface SearchVenueItemProps {
   venue: AlgoliaVenue
   width: number
   height: number
   onPress?: () => void
 }
 
-const UnmemoizedSearchVenueItems = ({ venue, height, width, onPress }: SearchVenueItemsProps) => {
+const MAX_VENUE_CAPTION_HEIGHT = getSpacing(18)
+
+const UnmemoizedSearchVenueItem = ({ venue, height, width, onPress }: SearchVenueItemProps) => {
   const { onFocus, onBlur, isFocus } = useHandleFocus()
   const { colors } = useTheme()
   const { lat, lng } = venue._geoloc
   const distance = useDistance({ lat, lng })
 
   const accessibilityLabel = tileAccessibilityLabel(TileContentType.VENUE, { ...venue, distance })
+
+  const hasVenueImage = !!venue.banner_url
+  const imageUri = venue.banner_url ?? ''
 
   return (
     <View {...getHeadingAttrs(3)}>
@@ -44,9 +49,9 @@ const UnmemoizedSearchVenueItems = ({ venue, height, width, onPress }: SearchVen
         isFocus={isFocus}
         accessibilityLabel={accessibilityLabel}>
         <View>
-          {distance ? <StyledDistanceTag distance={distance} testID="distance-tag" /> : null}
-          {venue.banner_url ? (
-            <ImageTile width={width} height={height} uri={venue.banner_url} />
+          {!!distance && <StyledDistanceTag distance={distance} />}
+          {hasVenueImage ? (
+            <ImageTile width={width} height={height} uri={imageUri} />
           ) : (
             <VenueTypeTile width={width} height={height} testID="venue-type-tile">
               <VenueTypeLocationIcon
@@ -56,16 +61,14 @@ const UnmemoizedSearchVenueItems = ({ venue, height, width, onPress }: SearchVen
               />
             </VenueTypeTile>
           )}
-          <SearchVenueItemsDetails width={width} name={venue.name} city={venue.city} />
+          <SearchVenueItemDetails width={width} name={venue.name} city={venue.city} />
         </View>
       </StyledTouchableLink>
     </View>
   )
 }
 
-export const SearchVenueItems = memo(UnmemoizedSearchVenueItems)
-
-const MAX_VENUE_CAPTION_HEIGHT = getSpacing(18)
+export const SearchVenueItem = memo(UnmemoizedSearchVenueItem)
 
 const StyledTouchableLink = styled(InternalTouchableLink).attrs(({ theme }) => ({
   underlayColor: theme.colors.white,

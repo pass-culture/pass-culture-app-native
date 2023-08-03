@@ -4,13 +4,13 @@ import styled from 'styled-components/native'
 
 import { Typo, GUTTER_DP } from 'ui/theme'
 
-interface SearchVenueItemsDetailsProps {
+interface SearchVenueItemDetailsProps {
   width: number
   name: string
   city: string
 }
 
-export const SearchVenueItemsDetails = ({ width, name, city }: SearchVenueItemsDetailsProps) => {
+export const SearchVenueItemDetails = ({ width, name, city }: SearchVenueItemDetailsProps) => {
   return (
     <Container maxWidth={width}>
       <VenueName>{name}</VenueName>
