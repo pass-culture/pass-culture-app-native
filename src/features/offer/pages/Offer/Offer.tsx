@@ -22,15 +22,6 @@ import useFunctionOnce from 'libs/hooks/useFunctionOnce'
 import { BatchEvent, BatchUser } from 'libs/react-native-batch'
 import { useSubcategories } from 'libs/subcategories/useSubcategories'
 import { useOpacityTransition } from 'ui/animations/helpers/useOpacityTransition'
-import { ButtonWithLinearGradient } from 'ui/components/buttons/buttonWithLinearGradient/ButtonWithLinearGradient'
-import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouchableLink'
-import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
-import {
-  ExternalNavigationProps,
-  InternalNavigationProps,
-  TouchableLinkGenericProps,
-} from 'ui/components/touchableLink/types'
-import { ExternalSite } from 'ui/svg/icons/ExternalSite'
 import { getSpacing, Spacer } from 'ui/theme'
 
 const trackEventHasSeenOffer = () => BatchUser.trackEvent(BatchEvent.hasSeenOffer)
@@ -58,6 +49,7 @@ export const Offer: FunctionComponent = () => {
   const { data: offer } = useOffer({ offerId })
   const { data } = useSubcategories()
   const { shouldUseAlgoliaRecommend } = useRemoteConfigContext()
+
   const subcategorySearchGroupId = getSearchGroupIdFromSubcategoryId(data, offer?.subcategoryId)
   const sameCategorySimilarOffers = useSimilarOffers({
     offerId,
@@ -76,6 +68,8 @@ export const Offer: FunctionComponent = () => {
   const hasOtherCategoriesSimilarOffers = Boolean(otherCategoriesSimilarOffers?.length)
 
   const fromOfferId = route.params?.fromOfferId
+
+  const isFreeDigitalOffer = (offer?.isDigital && offer?.stocks[0]?.price === 0) ?? false
 
   const logSameCategoryPlaylistVerticalScroll = useFunctionOnce(() => {
     return analytics.logPlaylistVerticalScroll({
@@ -192,6 +186,7 @@ export const Offer: FunctionComponent = () => {
               navigateTo={navigateTo}
               externalNav={externalNav}
               isDisabled={isDisabled}
+              isFreeDigitalOffer={isFreeDigitalOffer}
             />
             <Spacer.Column numberOfSpaces={bottomBannerText ? 4.5 : 6} />
           </CallToActionContainer>

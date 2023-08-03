@@ -1,5 +1,6 @@
 import React from 'react'
 
+import { useAuthContext } from 'features/auth/context/AuthContext'
 import { ButtonWithLinearGradient } from 'ui/components/buttons/buttonWithLinearGradient/ButtonWithLinearGradient'
 import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouchableLink'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
@@ -21,7 +22,9 @@ export function CTAButton({
   isDisabled,
   externalNav,
   navigateTo,
+  isFreeDigitalOffer,
 }: CTAButtonProps) {
+  const { isLoggedIn } = useAuthContext()
   const commonLinkProps = {
     as: ButtonWithLinearGradient,
     wording: wording,
@@ -29,6 +32,8 @@ export function CTAButton({
     isDisabled: isDisabled,
     isOnPressDebounced: true,
   }
+
+  const shouldDisplayIconInButton = isFreeDigitalOffer && isLoggedIn
 
   if (navigateTo) {
     return <InternalTouchableLink navigateTo={navigateTo} {...commonLinkProps} />
@@ -38,5 +43,12 @@ export function CTAButton({
       <ExternalTouchableLink externalNav={externalNav} icon={ExternalSite} {...commonLinkProps} />
     )
   }
-  return <ButtonWithLinearGradient wording={wording} onPress={onPress} isDisabled={isDisabled} />
+  return (
+    <ButtonWithLinearGradient
+      wording={wording}
+      onPress={onPress}
+      isDisabled={isDisabled}
+      icon={shouldDisplayIconInButton ? ExternalSite : undefined}
+    />
+  )
 }
