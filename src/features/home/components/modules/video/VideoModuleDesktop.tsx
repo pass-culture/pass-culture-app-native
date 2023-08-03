@@ -197,6 +197,7 @@ const StyledTitleComponent = styled(Typo.Title3).attrs({
 })({})
 
 const StyledVideoMonoOfferTile = styled(VideoMonoOfferTile)({
+  flex: 1,
   flexGrow: 1,
 })
 
