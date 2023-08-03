@@ -1,7 +1,7 @@
 import React from 'react'
 
 import { useRoute, navigate } from '__mocks__/@react-navigation/native'
-import { SearchGroupNameEnumv2 } from 'api/gen'
+import { NativeCategoryIdEnumv2, SearchGroupNameEnumv2 } from 'api/gen'
 import { initialSearchState } from 'features/search/context/reducer'
 import { SearchWrapper } from 'features/search/context/SearchWrapper'
 import { LocationType } from 'features/search/enums'
@@ -10,6 +10,8 @@ import * as useShowResultsForCategory from 'features/search/helpers/useShowResul
 import { Search } from 'features/search/pages/Search/Search'
 import { SearchState, SearchView } from 'features/search/types'
 import { Venue } from 'features/venue/types'
+import { env } from 'libs/environment'
+import * as useFeatureFlag from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { useNetInfoContext as useNetInfoContextDefault } from 'libs/network/NetInfoWrapper'
 import { placeholderData } from 'libs/subcategories/placeholderData'
 import { mockedSuggestedVenues } from 'libs/venue/fixtures/mockedSuggestedVenues'
@@ -57,6 +59,80 @@ jest.mock('features/auth/context/SettingsContext', () => ({
   useSettingsContext: jest.fn(() => mockSettings()),
 }))
 
+const mockHits = [
+  {
+    objectID: '1',
+    offer: { name: 'Test1', searchGroupName: 'MUSIQUE' },
+    _highlightResult: {
+      query: {
+        value: '<mark>Test1</mark>',
+        matchLevel: 'full',
+        fullyHighlighted: true,
+        matchedWords: ['Test1'],
+      },
+    },
+    [env.ALGOLIA_OFFERS_INDEX_NAME]: {
+      exact_nb_hits: 2,
+      facets: {
+        analytics: {
+          ['offer.searchGroupNamev2']: [
+            {
+              attribute: '',
+              operator: '',
+              value: SearchGroupNameEnumv2.FILMS_SERIES_CINEMA,
+              count: 10,
+            },
+          ],
+          ['offer.nativeCategoryId']: [
+            {
+              attribute: '',
+              operator: '',
+              value: NativeCategoryIdEnumv2.SEANCES_DE_CINEMA,
+              count: 10,
+            },
+          ],
+        },
+      },
+    },
+  },
+  {
+    objectID: '2',
+    offer: { name: 'Test2', searchGroupName: 'MUSIQUE' },
+    _geoloc: {},
+    _highlightResult: {
+      query: {
+        value: '<mark>Test2</mark>',
+        matchLevel: 'full',
+        fullyHighlighted: true,
+        matchedWords: ['Test2'],
+      },
+    },
+    [env.ALGOLIA_OFFERS_INDEX_NAME]: {
+      exact_nb_hits: 2,
+      facets: {
+        analytics: {
+          ['offer.searchGroupNamev2']: [
+            {
+              attribute: '',
+              operator: '',
+              value: SearchGroupNameEnumv2.FILMS_SERIES_CINEMA,
+              count: 10,
+            },
+          ],
+          ['offer.nativeCategoryId']: [
+            {
+              attribute: '',
+              operator: '',
+              value: NativeCategoryIdEnumv2.SEANCES_DE_CINEMA,
+              count: 10,
+            },
+          ],
+        },
+      },
+    },
+  },
+]
+
 jest.mock('react-instantsearch-hooks', () => ({
   ...jest.requireActual('react-instantsearch-hooks'),
   useSearchBox: () => ({
@@ -64,18 +140,7 @@ jest.mock('react-instantsearch-hooks', () => ({
     refine: jest.fn,
   }),
   useInfiniteHits: () => ({
-    hits: [
-      {
-        objectID: '1',
-        offer: { name: 'Test1', searchGroupName: 'MUSIQUE' },
-        _geoloc: {},
-      },
-      {
-        objectID: '2',
-        offer: { name: 'Test2', searchGroupName: 'MUSIQUE' },
-        _geoloc: {},
-      },
-    ],
+    hits: mockHits,
   }),
 }))
 
@@ -91,6 +156,8 @@ jest.mock('libs/subcategories/useSubcategories', () => ({
     data: mockSubcategoriesData,
   }),
 }))
+
+const useFeatureFlagSpy = jest.spyOn(useFeatureFlag, 'useFeatureFlag')
 
 describe('<Search/>', () => {
   mockUseNetInfoContext.mockReturnValue({ isConnected: true })
@@ -111,6 +178,50 @@ describe('<Search/>', () => {
       payload: {},
     })
   })
+
+  describe('When search view is suggestions', () => {
+    beforeEach(() => {
+      useRoute.mockReturnValue({ params: { view: SearchView.Suggestions } })
+    })
+
+    it('should display offer suggestions', async () => {
+      render(<Search />)
+      await act(async () => {})
+
+      expect(screen.getByTestId('autocompleteOfferItem_1')).toBeTruthy()
+      expect(screen.getByTestId('autocompleteOfferItem_2')).toBeTruthy()
+    })
+
+    it('should not display venue suggestions when wipEnableVenuesInSearchResults feature flag deactivated', async () => {
+      useFeatureFlagSpy.mockReturnValueOnce(false)
+      render(<Search />)
+      await act(async () => {})
+
+      expect(screen.queryByTestId('autocompleteVenueItem_1')).toBeNull()
+      expect(screen.queryByTestId('autocompleteVenueItem_2')).toBeNull()
+    })
+
+    it('should display venue suggestions when wipEnableVenuesInSearchResults feature flag activated', async () => {
+      useFeatureFlagSpy.mockReturnValueOnce(true)
+      render(<Search />)
+      await act(async () => {})
+
+      expect(screen.getByTestId('autocompleteVenueItem_1')).toBeTruthy()
+      expect(screen.getByTestId('autocompleteVenueItem_2')).toBeTruthy()
+    })
+  })
+
+  it.each([SearchView.Landing, SearchView.Results])(
+    'should not display suggestions when search view is not suggestions',
+    async (view) => {
+      useRoute.mockReturnValueOnce({ params: { view } })
+      render(<Search />)
+      await act(async () => {})
+
+      expect(screen.queryByTestId('autocompleteOfferItem_1')).toBeNull()
+      expect(screen.queryByTestId('autocompleteOfferItem_2')).toBeNull()
+    }
+  )
 
   describe('When offline', () => {
     it('should display offline page', () => {

@@ -23,13 +23,17 @@ import { useSubcategories } from 'libs/subcategories/useSubcategories'
 import { MagnifyingGlass } from 'ui/svg/icons/MagnifyingGlass'
 import { getSpacing, Typo } from 'ui/theme'
 
-type Props = {
+type AutocompleteOfferItemProps = {
   hit: AlgoliaSuggestionHit
   sendEvent: SendEventForHits
   shouldShowCategory?: boolean
 }
 
-export const SearchAutocompleteItem: React.FC<Props> = ({ hit, sendEvent, shouldShowCategory }) => {
+export function AutocompleteOfferItem({
+  hit,
+  sendEvent,
+  shouldShowCategory,
+}: AutocompleteOfferItemProps) {
   const { query, [env.ALGOLIA_OFFERS_INDEX_NAME]: indexInfos } = hit
   // https://www.algolia.com/doc/guides/building-search-ui/ui-and-ux-patterns/query-suggestions/how-to/adding-category-suggestions/js/#suggestions-with-categories-index-schema
   const { ['offer.searchGroupNamev2']: categories, ['offer.nativeCategoryId']: nativeCategories } =
@@ -108,13 +112,15 @@ export const SearchAutocompleteItem: React.FC<Props> = ({ hit, sendEvent, should
   const shouldDisplaySuggestion =
     shouldShowCategory && (hasMostPopularHitNativeCategory || hasMostPopularHitCategory)
 
+  const testID = `autocompleteOfferItem_${hit.objectID}`
+
   return (
-    <AutocompleteItemTouchable testID="autocompleteItem" onPress={onPress}>
+    <AutocompleteItemTouchable testID={testID} onPress={onPress}>
       <MagnifyingGlassIconContainer>
         <MagnifyingGlassIcon />
       </MagnifyingGlassIconContainer>
       <StyledText numberOfLines={1} ellipsizeMode="tail">
-        <Highlight hit={hit} attribute="query" />
+        <Highlight suggestionHit={hit} attribute="query" />
         {!!shouldDisplaySuggestion && (
           <React.Fragment>
             <Typo.Body> dans </Typo.Body>

@@ -1,24 +1,30 @@
 import { useRoute } from '@react-navigation/native'
 import { SearchClient } from 'algoliasearch'
-import { SendEventForHits } from 'instantsearch.js/es/lib/utils'
-import React, { useEffect } from 'react'
-import { Configure, InstantSearch } from 'react-instantsearch-hooks'
+import React, { useEffect, useMemo } from 'react'
+import { Configure, Index, InstantSearch } from 'react-instantsearch-hooks'
 import { StatusBar } from 'react-native'
+import styled from 'styled-components/native'
 import { v4 as uuidv4 } from 'uuid'
 
 import { UseRouteType } from 'features/navigation/RootNavigator/types'
+import { AutocompleteOffer } from 'features/search/components/AutocompleteOffer/AutocompleteOffer'
+import { AutocompleteVenue } from 'features/search/components/AutocompleteVenue/AutocompleteVenue'
 import { BodySearch } from 'features/search/components/BodySearch/BodySearch'
-import { SearchAutocompleteItem } from 'features/search/components/SearchAutocompleteItem/SearchAutocompleteItem'
 import { SearchHeader } from 'features/search/components/SearchHeader/SearchHeader'
 import { useSearch } from 'features/search/context/SearchWrapper'
 import { SearchView } from 'features/search/types'
-import { AlgoliaSuggestionHit } from 'libs/algolia'
 import { InsightsMiddleware } from 'libs/algolia/analytics/InsightsMiddleware'
 import { client } from 'libs/algolia/fetchAlgolia/clients'
+import { buildSearchVenuePosition } from 'libs/algolia/fetchAlgolia/fetchOffersAndVenues/helpers/buildSearchVenuePosition'
 import { env } from 'libs/environment'
+import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
+import { useGeolocation } from 'libs/geolocation'
 import { useNetInfoContext } from 'libs/network/NetInfoWrapper'
 import { OfflinePage } from 'libs/network/OfflinePage'
+import { FeatureFlag } from 'shared/FeatureFlag/FeatureFlag'
 import { Form } from 'ui/components/Form'
+import { VerticalUl } from 'ui/components/Ul'
+import { getSpacing } from 'ui/theme'
 
 const searchInputID = uuidv4()
 const searchClient: SearchClient = {
@@ -43,15 +49,24 @@ const searchClient: SearchClient = {
   },
 }
 const suggestionsIndex = env.ALGOLIA_SUGGESTIONS_INDEX_NAME
+const venuesIndex = env.ALGOLIA_VENUES_INDEX_NAME
 
 export function Search() {
   const netInfo = useNetInfoContext()
   const { params } = useRoute<UseRouteType<'Search'>>()
   const { dispatch } = useSearch()
+  const { userPosition } = useGeolocation()
 
   useEffect(() => {
     dispatch({ type: 'SET_STATE', payload: params ?? { view: SearchView.Landing } })
   }, [dispatch, params])
+
+  const currentView = useMemo(() => params?.view, [params?.view])
+
+  const searchVenuePosition = useMemo(
+    () => buildSearchVenuePosition(params?.locationFilter, userPosition),
+    [params?.locationFilter, userPosition]
+  )
 
   if (!netInfo.isConnected) {
     return <OfflinePage />
@@ -65,25 +80,31 @@ export function Search() {
           <Configure hitsPerPage={5} clickAnalytics />
           <InsightsMiddleware />
           <SearchHeader searchInputID={searchInputID} />
-          <BodySearch view={params?.view} />
+          {currentView === SearchView.Suggestions ? (
+            <StyledVerticalUl>
+              <AutocompleteOffer />
+              <FeatureFlag
+                featureFlag={RemoteStoreFeatureFlags.WIP_ENABLE_VENUES_IN_SEARCH_RESULTS}>
+                <Index indexName={venuesIndex}>
+                  <Configure
+                    hitsPerPage={5}
+                    clickAnalytics
+                    aroundRadius={searchVenuePosition.aroundRadius}
+                    aroundLatLng={searchVenuePosition.aroundLatLng}
+                  />
+                  <AutocompleteVenue />
+                </Index>
+              </FeatureFlag>
+            </StyledVerticalUl>
+          ) : (
+            <BodySearch view={params?.view} />
+          )}
         </InstantSearch>
       </Form.Flex>
     </React.Fragment>
   )
 }
 
-export type HitProps = {
-  hit: AlgoliaSuggestionHit
-  sendEvent: SendEventForHits
-  shouldShowCategory?: boolean
-}
-
-export function Hit({ hit, sendEvent, shouldShowCategory }: HitProps) {
-  return (
-    <SearchAutocompleteItem
-      hit={hit}
-      sendEvent={sendEvent}
-      shouldShowCategory={shouldShowCategory}
-    />
-  )
-}
+const StyledVerticalUl = styled(VerticalUl)({
+  marginTop: getSpacing(4),
+})
