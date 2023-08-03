@@ -126,6 +126,7 @@ const Thumbnail = styled(ImageBackground)(({ theme }) => ({
   flex: 1,
   border: 1,
   borderColor: theme.colors.greyMedium,
+  backgroundColor: theme.colors.greyLight,
 }))
 
 const DurationCaption = styled(BlackCaption)({

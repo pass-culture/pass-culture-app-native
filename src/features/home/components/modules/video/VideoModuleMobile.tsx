@@ -107,6 +107,7 @@ const Thumbnail = styled.ImageBackground(({ theme }) => ({
   width: '100%',
   border: 1,
   borderColor: theme.colors.greyMedium,
+  backgroundColor: theme.colors.greyLight,
 }))
 
 const DurationCaption = styled(BlackCaption)({
