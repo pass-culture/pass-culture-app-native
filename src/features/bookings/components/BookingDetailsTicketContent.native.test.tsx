@@ -42,7 +42,7 @@ describe('BookingDetailsTicketContent', () => {
   it('should display the access button offer when booking has activation code', () => {
     render(<BookingDetailsTicketContent booking={booking} />)
 
-    expect(screen.getByText('Accéder à l’offre')).toBeTruthy()
+    expect(screen.getByText('Accéder à l’offre en ligne')).toBeTruthy()
   })
 
   it('should not display the access button offer when offer is not digital and booking has no activation code', () => {
@@ -58,7 +58,7 @@ describe('BookingDetailsTicketContent', () => {
       },
     }
     render(<BookingDetailsTicketContent booking={booking} />)
-    expect(screen.queryByText('Accéder à l’offre')).toBeNull()
+    expect(screen.queryByText('Accéder à l’offre en ligne')).toBeNull()
   })
 
   it('should display the access button offer when offer is digital and booking has no activation code', () => {
@@ -74,7 +74,7 @@ describe('BookingDetailsTicketContent', () => {
       },
     }
     render(<BookingDetailsTicketContent booking={booking} />)
-    expect(screen.getByText('Accéder à l’offre')).toBeTruthy()
+    expect(screen.getByText('Accéder à l’offre en ligne')).toBeTruthy()
   })
 
   describe('EAN', () => {
@@ -122,74 +122,6 @@ describe('BookingDetailsTicketContent', () => {
       }
       render(<BookingDetailsTicketContent booking={bookingWithEan} />)
       expect(screen.queryByTestId('ean')).toBeNull()
-    })
-
-    it('should display "Accéder à l’offre" on button when offer is digital and not free', () => {
-      const booking = {
-        ...originalBooking,
-        completedUrl: 'https://example.com',
-        stock: {
-          ...originalBooking.stock,
-          price: 100,
-          offer: {
-            ...originalBooking.stock.offer,
-            isDigital: true,
-          },
-        },
-      }
-      render(<BookingDetailsTicketContent booking={booking} />)
-      expect(screen.getByText('Accéder à l’offre')).toBeTruthy()
-    })
-
-    it('should not display "Accéder à l’offre" on button when offer is digital and free', () => {
-      const booking = {
-        ...originalBooking,
-        completedUrl: 'https://example.com',
-        stock: {
-          ...originalBooking.stock,
-          price: 0,
-          offer: {
-            ...originalBooking.stock.offer,
-            isDigital: true,
-          },
-        },
-      }
-      render(<BookingDetailsTicketContent booking={booking} />)
-      expect(screen.queryByText('Accéder à l’offre')).toBeNull()
-    })
-
-    it('should display specific button wording when offer is digital and free', () => {
-      const booking = {
-        ...originalBooking,
-        completedUrl: 'https://example.com',
-        stock: {
-          ...originalBooking.stock,
-          price: 0,
-          offer: {
-            ...originalBooking.stock.offer,
-            isDigital: true,
-          },
-        },
-      }
-      render(<BookingDetailsTicketContent booking={booking} />)
-      expect(screen.getByText('Accéder à l’offre en ligne')).toBeTruthy()
-    })
-
-    it('should not display specific button wording when offer is digital and not free', () => {
-      const booking = {
-        ...originalBooking,
-        completedUrl: 'https://example.com',
-        stock: {
-          ...originalBooking.stock,
-          price: 100,
-          offer: {
-            ...originalBooking.stock.offer,
-            isDigital: true,
-          },
-        },
-      }
-      render(<BookingDetailsTicketContent booking={booking} />)
-      expect(screen.queryByText('Accéder à l’offre en ligne')).toBeNull()
     })
   })
 })

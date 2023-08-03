@@ -8,7 +8,7 @@ import { TicketBody } from 'features/bookings/components/TicketBody/TicketBody'
 import { TicketCode } from 'features/bookings/components/TicketCode'
 import { getBookingProperties } from 'features/bookings/helpers'
 import { useCategoryId, useSubcategory } from 'libs/subcategories'
-import { getFreeDigitalOfferBookingWording } from 'shared/getFreeDigitalOfferBookingWording/getFreeDigitalOfferBookingWording'
+import { getDigitalOfferBookingWording } from 'shared/getDigitalOfferBookingWording/getDigitalOfferBookingWording'
 import { ButtonWithLinearGradient } from 'ui/components/buttons/buttonWithLinearGradient/ButtonWithLinearGradient'
 import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouchableLink'
 import { ExternalSite } from 'ui/svg/icons/ExternalSite'
@@ -26,7 +26,7 @@ export const BookingDetailsTicketContent: FunctionComponent<BookingDetailsTicket
   externalBookings,
 }) => {
   const { completedUrl } = booking
-  const { offer, beginningDatetime, price } = booking.stock
+  const { offer, beginningDatetime } = booking.stock
   const {
     id: offerId,
     name: offerName,
@@ -34,7 +34,6 @@ export const BookingDetailsTicketContent: FunctionComponent<BookingDetailsTicket
     extraData,
     withdrawalType,
     withdrawalDelay,
-    isDigital,
   } = offer
 
   const { isEvent } = useSubcategory(offerSubcategory)
@@ -44,10 +43,7 @@ export const BookingDetailsTicketContent: FunctionComponent<BookingDetailsTicket
   const ean =
     extraData?.ean && categoryId === CategoryIdEnum.LIVRE ? <Ean ean={extraData.ean} /> : null
 
-  const shouldDisplaySpecificWording = isDigital && price === 0
-  const buttonWording = shouldDisplaySpecificWording
-    ? getFreeDigitalOfferBookingWording(offerSubcategory)
-    : 'Accéder à l’offre'
+  const buttonWording = getDigitalOfferBookingWording(offerSubcategory)
 
   const activationCode = !!booking.activationCode && (
     <TicketCode withdrawalType={withdrawalType ?? undefined} code={booking.activationCode.code} />

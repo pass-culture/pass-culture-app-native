@@ -108,7 +108,7 @@ describe('BookingDetails', () => {
 
       renderBookingDetails(booking)
 
-      const offerButton = screen.getByText('Accéder à l’offre')
+      const offerButton = screen.getByText('Accéder à l’offre en ligne')
       await act(async () => {
         fireEvent.press(offerButton)
       })

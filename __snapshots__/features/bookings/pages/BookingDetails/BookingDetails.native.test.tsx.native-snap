@@ -326,7 +326,7 @@ exports[`BookingDetails should render correctly 1`] = `
                         </Text>
                       </View>
                       <View
-                        accessibilityLabel="Accéder à l’offre"
+                        accessibilityLabel="Accéder à l’offre en ligne"
                         accessibilityRole="link"
                         accessibilityState={
                           Object {
@@ -357,7 +357,7 @@ exports[`BookingDetails should render correctly 1`] = `
                             "userSelect": "auto",
                           }
                         }
-                        testID="Accéder à l’offre"
+                        testID="Accéder à l’offre en ligne"
                       >
                         <View
                           height={48}
@@ -406,7 +406,7 @@ exports[`BookingDetails should render correctly 1`] = `
                               ]
                             }
                           >
-                            Accéder à l’offre
+                            Accéder à l’offre en ligne
                           </Text>
                         </View>
                       </View>
