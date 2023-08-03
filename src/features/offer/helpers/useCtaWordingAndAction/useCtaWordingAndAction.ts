@@ -1,3 +1,6 @@
+import { UseMutateFunction } from 'react-query'
+
+import { ApiError } from 'api/apiHelpers'
 import {
   OfferResponse,
   FavoriteOfferResponse,
@@ -5,14 +8,26 @@ import {
   YoungStatusType,
   YoungStatusResponse,
   SubscriptionStatus,
+  BookOfferResponse,
+  BookOfferRequest,
+  BookingReponse,
 } from 'api/gen'
 import { useAuthContext } from 'features/auth/context/AuthContext'
-import { useEndedBookingFromOfferId } from 'features/bookings/api'
+import {
+  useBookings,
+  useEndedBookingFromOfferId,
+  useOngoingOrEndedBooking,
+} from 'features/bookings/api'
+import { useBookOfferMutation } from 'features/bookOffer/api/useBookOfferMutation'
+import { openUrl } from 'features/navigation/helpers'
 import { OfferModal } from 'features/offer/enums'
+import { getBookingOfferId } from 'features/offer/helpers/getBookingOfferId/getBookingOfferId'
 import { isUserUnderageBeneficiary } from 'features/profile/helpers/isUserUnderageBeneficiary'
 import { analytics } from 'libs/analytics'
 import { useSubcategoriesMapping } from 'libs/subcategories'
 import { Subcategory } from 'libs/subcategories/types'
+import { getDigitalOfferBookingWording } from 'shared/getDigitalOfferBookingWording/getDigitalOfferBookingWording'
+import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 import { ExternalNavigationProps, InternalNavigationProps } from 'ui/components/touchableLink/types'
 
 import { useOffer } from '../../api/useOffer'
@@ -35,13 +50,16 @@ interface Props {
   isEndedUsedBooking?: boolean
   bottomBannerText?: string
   isDisabled?: boolean
+  bookOffer: UseMutateFunction<BookOfferResponse, Error | ApiError, BookOfferRequest>
+  isBookingLoading: boolean
+  booking: BookingReponse | null | undefined
 }
 interface ICTAWordingAndAction {
   modalToDisplay?: OfferModal
   wording?: string
   navigateTo?: InternalNavigationProps['navigateTo']
   externalNav?: ExternalNavigationProps['externalNav']
-  onPress?: () => void
+  onPress?: () => void | Promise<void>
   isEndedUsedBooking?: boolean
   bottomBannerText?: string
   isDisabled?: boolean
@@ -58,10 +76,15 @@ export const getCtaWordingAndAction = ({
   bookedOffers,
   isUnderageBeneficiary,
   isEndedUsedBooking,
+  bookOffer,
+  isBookingLoading,
+  booking,
 }: Props): ICTAWordingAndAction | undefined => {
-  const { externalTicketOfficeUrl } = offer
+  const { externalTicketOfficeUrl, isDigital, stocks, subcategoryId } = offer
 
   const isAlreadyBookedOffer = getIsBookedOffer(offer.id, bookedOffers)
+
+  const isFreeDigitalOffer = isDigital && stocks[0].price === 0
 
   if (!isLoggedIn) {
     return {
@@ -89,6 +112,24 @@ export const getCtaWordingAndAction = ({
       wording: 'Réserver l’offre',
       isEndedUsedBooking,
       isDisabled: false,
+    }
+  }
+
+  if (isFreeDigitalOffer) {
+    return {
+      wording: getDigitalOfferBookingWording(subcategoryId),
+      isDisabled: isBookingLoading,
+      async onPress() {
+        if (isAlreadyBookedOffer) {
+          openUrl(booking?.completedUrl ?? '')
+          return
+        }
+
+        await bookOffer({
+          quantity: 1,
+          stockId: offer.stocks[0].id,
+        })
+      },
     }
   }
 
@@ -197,6 +238,33 @@ export const useCtaWordingAndAction = (props: {
   const isUnderageBeneficiary = isUserUnderageBeneficiary(user)
   const mapping = useSubcategoriesMapping()
   const { data: endedBooking } = useEndedBookingFromOfferId(offerId)
+  const { showErrorSnackBar } = useSnackBarContext()
+
+  const { refetch: getBookings } = useBookings()
+
+  async function redirectToBookingAction(response: BookOfferResponse) {
+    const bookings = await getBookings()
+
+    const booking = bookings.data?.ongoing_bookings.find(
+      (booking) => booking.id === response.bookingId
+    )
+
+    if (booking) {
+      openUrl(booking.completedUrl ?? '')
+    }
+  }
+
+  const { mutate: bookOffer, isLoading: isBookingLoading } = useBookOfferMutation({
+    onSuccess(data) {
+      redirectToBookingAction(data)
+    },
+    onError() {
+      const message = 'Désolé, il est impossible d’ouvrir le lien. Réessaie plus tard.'
+      showErrorSnackBar({ message, timeout: SNACK_BAR_TIME_OUT })
+    },
+  })
+  const { isBeneficiary = false, bookedOffers = {}, status } = user ?? {}
+  const { data: booking } = useOngoingOrEndedBooking(getBookingOfferId(offerId, bookedOffers) ?? 0)
 
   if (!offer) return
 
@@ -208,7 +276,6 @@ export const useCtaWordingAndAction = (props: {
    */
   if (isLoggedIn === null || user === null || !offer.venue.id) return
 
-  const { isBeneficiary = false, bookedOffers = {}, status } = user ?? {}
   const userStatus = status?.statusType ? status : { statusType: YoungStatusType.non_eligible }
   return getCtaWordingAndAction({
     isLoggedIn,
@@ -220,5 +287,8 @@ export const useCtaWordingAndAction = (props: {
     bookedOffers,
     isEndedUsedBooking: !!endedBooking?.dateUsed,
     isUnderageBeneficiary,
+    bookOffer,
+    isBookingLoading,
+    booking,
   })
 }
