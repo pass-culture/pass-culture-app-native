@@ -6,6 +6,7 @@ const noStringCheckBeforeComponent = require('./eslint-custom-rules/no-string-ch
 const todoFormat = require('./eslint-custom-rules/todo-format')
 const apostropheInText = require('./eslint-custom-rules/apostrophe-in-text')
 const useTheRightTestUtils = require('./eslint-custom-rules/use-the-right-test-utils')
+const noUseOfAlgoliaMultipleQueries = require('./eslint-custom-rules/no-use-of-algolia-multiple-queries')
 
 module.exports = {
   'independent-mocks': independentMocks,
@@ -16,4 +17,5 @@ module.exports = {
   'todo-format': todoFormat,
   'apostrophe-in-text': apostropheInText,
   'use-the-right-test-utils': useTheRightTestUtils,
+  'no-use-of-algolia-multiple-queries': noUseOfAlgoliaMultipleQueries
 }

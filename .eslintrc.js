@@ -37,6 +37,7 @@ module.exports = {
     'local-rules/apostrophe-in-text': ['error'],
     'local-rules/todo-format': ['error'],
     'local-rules/use-the-right-test-utils': ['error'],
+    'local-rules/no-use-of-algolia-multiple-queries': ['error'],
     '@typescript-eslint/ban-ts-comment': [
       'error',
       {

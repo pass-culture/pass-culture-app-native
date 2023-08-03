@@ -1,3 +1,4 @@
+/* eslint-disable local-rules/no-use-of-algolia-multiple-queries */
 import { client } from 'libs/algolia/fetchAlgolia/clients'
 import { multipleQueries } from 'libs/algolia/fetchAlgolia/multipleQueries'
 
