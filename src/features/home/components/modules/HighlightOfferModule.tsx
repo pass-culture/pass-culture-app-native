@@ -10,6 +10,7 @@ import { HighlightOfferModule as HighlightOfferModuleProps } from 'features/home
 import { formatDates, getDisplayPrice } from 'libs/parsers'
 import { useCategoryHomeLabelMapping, useCategoryIdMapping } from 'libs/subcategories'
 import { usePrePopulateOffer } from 'shared/offer/usePrePopulateOffer'
+import { theme } from 'theme'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { PlainArrowNext } from 'ui/svg/icons/PlainArrowNext'
 import { Spacer, Typo, getSpacing } from 'ui/theme'
@@ -85,7 +86,7 @@ const UnmemoizedHighlightOfferModule = (props: HighlightOfferModuleProps) => {
               {!!formattedPrice && <AdditionalDetail>{formattedPrice}</AdditionalDetail>}
             </OfferDetails>
             <ArrowOffer>
-              <PlainArrowNext />
+              <PlainArrowNext size={theme.icons.sizes.small} />
             </ArrowOffer>
           </TouchableContent>
         </StyledTouchableLink>

@@ -20,7 +20,8 @@ import { Spacer, Typo, getSpacing } from 'ui/theme'
 
 const THUMBNAIL_HEIGHT_MULTI_OFFER = getSpacing(90)
 const THUMBNAIL_HEIGHT_MONO_OFFER = getSpacing(45)
-const THUMBNAIL_WIDTH = getSpacing(132)
+const THUMBNAIL_WIDTH_MULTI_OFFER = getSpacing(132)
+const THUMBNAIL_WIDTH_MONO_OFFER = getSpacing(82)
 // We do not center the player icon for mono offer, because when the title is 2-line long,
 // the title is to close to the player. So the player is closer to the top.
 const PLAYER_TOP_MARGIN = getSpacing(12.5)
@@ -124,7 +125,7 @@ const Thumbnail = styled(ImageBackground)<{
   overflow: 'hidden',
   borderRadius: theme.borderRadius.radius,
   height: isMultiOffer ? THUMBNAIL_HEIGHT_MULTI_OFFER : THUMBNAIL_HEIGHT_MONO_OFFER,
-  width: THUMBNAIL_WIDTH,
+  width: isMultiOffer ? THUMBNAIL_WIDTH_MULTI_OFFER : THUMBNAIL_WIDTH_MONO_OFFER,
   border: 1,
   borderColor: theme.colors.greyMedium,
 }))
@@ -196,6 +197,7 @@ const StyledTitleComponent = styled(Typo.Title3).attrs({
 })({})
 
 const StyledVideoMonoOfferTile = styled(VideoMonoOfferTile)({
+  flex: 1,
   flexGrow: 1,
 })
 
