@@ -601,8 +601,8 @@ exports[`VideoModal should render correctly if modal visible 1`] = `
                 }
               >
                 <View
-                  height={20}
-                  width={20}
+                  height={24}
+                  width={24}
                 >
                   <Text>
                     undefined-SVG-Mock

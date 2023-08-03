@@ -80,7 +80,7 @@ export const VideoMonoOfferTile: FunctionComponent<Props> = ({
         </OfferInformations>
       </Row>
       <ArrowOffer>
-        <PlainArrowNext />
+        <PlainArrowNext size={theme.icons.sizes.small} />
       </ArrowOffer>
     </OfferInsert>
   )
