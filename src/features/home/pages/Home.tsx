@@ -8,6 +8,7 @@ import { GenericHome } from 'features/home/pages/GenericHome'
 import { UseRouteType } from 'features/navigation/RootNavigator/types'
 import { analytics } from 'libs/analytics'
 import { useGeolocation } from 'libs/geolocation'
+import { StatusBarBlurredBackground } from 'ui/components/statusBar/statusBarBlurredBackground'
 
 const Header = () => (
   <ListHeaderContainer>
@@ -38,6 +39,7 @@ export const Home: FunctionComponent = () => {
       homeId={id}
       Header={<Header />}
       videoModuleId={params?.videoModuleId}
+      statusBar={<StatusBarBlurredBackground />}
     />
   )
 }

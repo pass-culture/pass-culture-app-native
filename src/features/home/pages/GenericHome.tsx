@@ -24,7 +24,6 @@ import { OfflinePage } from 'libs/network/OfflinePage'
 import { BatchEvent, BatchUser } from 'libs/react-native-batch'
 import { ScrollToTopButton } from 'ui/components/ScrollToTopButton'
 import { Spinner } from 'ui/components/Spinner'
-import { StatusBarBlurredBackground } from 'ui/components/statusBar/statusBarBlurredBackground'
 import { getSpacing, Spacer } from 'ui/theme'
 
 type GenericHomeProps = {
@@ -34,6 +33,7 @@ type GenericHomeProps = {
   shouldDisplayScrollToTop?: boolean
   onScroll?: ({ nativeEvent }: NativeSyntheticEvent<NativeScrollEvent>) => void
   videoModuleId?: string
+  statusBar?: React.JSX.Element
 }
 const keyExtractor = (item: HomepageModule) => item.id
 
@@ -74,6 +74,7 @@ const OnlineHome: FunctionComponent<GenericHomeProps> = ({
   shouldDisplayScrollToTop,
   onScroll: givenOnScroll,
   videoModuleId,
+  statusBar,
 }) => {
   const { offersModulesData } = useGetOffersData(modules.filter(isOffersModule))
   const { venuesModulesData } = useGetVenuesData(modules.filter(isVenuesModule))
@@ -200,7 +201,7 @@ const OnlineHome: FunctionComponent<GenericHomeProps> = ({
         ) : null}
       </HomeBodyLoadingContainer>
       <Spacer.Column numberOfSpaces={6} />
-      <StatusBarBlurredBackground />
+      {statusBar ?? <React.Fragment />}
     </Container>
   )
 }
