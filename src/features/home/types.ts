@@ -1,3 +1,5 @@
+import { Animated } from 'react-native'
+
 import { VenueAccessibilityModel, VenueContactModel } from 'api/gen'
 import { SearchQueryParameters, VenueHit } from 'libs/algolia'
 import { OfferAnalyticsParams } from 'libs/analytics/types'
@@ -39,6 +41,8 @@ export type HighlightThematicHeader = {
   endingDate: Date
   introductionTitle?: string
   introductionParagraph?: string
+  gradientTranslation?: Animated.AnimatedInterpolation
+  imageAnimatedHeight?: Animated.AnimatedInterpolation
 }
 
 export type CategoryThematicHeader = {
