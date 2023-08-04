@@ -2,7 +2,10 @@ import { LocationType } from 'features/search/enums'
 import { MAX_RADIUS } from 'features/search/helpers/reducer.helpers'
 import { LocationFilter } from 'features/search/types'
 import { Venue } from 'features/venue/types'
-import { buildSearchVenuePosition } from 'libs/algolia/fetchAlgolia/fetchOffersAndVenues/helpers/buildSearchVenuePosition'
+import {
+  buildSearchVenuePosition,
+  convertKmToMeters,
+} from 'libs/algolia/fetchAlgolia/fetchOffersAndVenues/helpers/buildSearchVenuePosition'
 import { GeoCoordinates } from 'libs/geolocation'
 import { SuggestedPlace } from 'libs/place'
 import { mockedSuggestedVenues } from 'libs/venue/fixtures/mockedSuggestedVenues'
@@ -36,7 +39,7 @@ describe('buildSearchVenuePosition', () => {
       const searchVenuePosition = buildSearchVenuePosition(aroundMeFilter, userPosition)
       expect(searchVenuePosition).toEqual({
         aroundLatLng: `${userPosition.latitude}, ${userPosition.longitude}`,
-        aroundRadius: MAX_RADIUS,
+        aroundRadius: convertKmToMeters(MAX_RADIUS),
       })
     })
     it('should return around radius at "all" when location filter is everywhere', () => {
@@ -49,14 +52,14 @@ describe('buildSearchVenuePosition', () => {
       const searchVenuePosition = buildSearchVenuePosition(venueFilter, userPosition)
       expect(searchVenuePosition).toEqual({
         aroundLatLng: `${venue?._geoloc?.lat}, ${venue?._geoloc?.lng}`,
-        aroundRadius: MAX_RADIUS,
+        aroundRadius: convertKmToMeters(MAX_RADIUS),
       })
     })
     it('should return place position and around radius when location filter is place', () => {
       const searchVenuePosition = buildSearchVenuePosition(placeFilter, userPosition)
       expect(searchVenuePosition).toEqual({
         aroundLatLng: `${Kourou?.geolocation?.latitude}, ${Kourou?.geolocation?.longitude}`,
-        aroundRadius: MAX_RADIUS,
+        aroundRadius: convertKmToMeters(MAX_RADIUS),
       })
     })
   })
@@ -78,15 +81,26 @@ describe('buildSearchVenuePosition', () => {
       const searchVenuePosition = buildSearchVenuePosition(venueFilter)
       expect(searchVenuePosition).toEqual({
         aroundLatLng: `${venue?._geoloc?.lat}, ${venue?._geoloc?.lng}`,
-        aroundRadius: MAX_RADIUS,
+        aroundRadius: convertKmToMeters(MAX_RADIUS),
       })
     })
     it('should return place position and around radius when location filter is place', () => {
       const searchVenuePosition = buildSearchVenuePosition(placeFilter)
       expect(searchVenuePosition).toEqual({
         aroundLatLng: `${Kourou?.geolocation?.latitude}, ${Kourou?.geolocation?.longitude}`,
-        aroundRadius: MAX_RADIUS,
+        aroundRadius: convertKmToMeters(MAX_RADIUS),
       })
     })
+  })
+})
+
+describe('convertKmToMeters', () => {
+  it('should convert kilometers to meters', () => {
+    expect(convertKmToMeters(5)).toEqual(5000)
+    expect(convertKmToMeters(10)).toEqual(10000)
+  })
+
+  it('should return "all" when input is "all"', () => {
+    expect(convertKmToMeters('all')).toEqual('all')
   })
 })
