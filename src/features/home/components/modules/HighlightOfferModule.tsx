@@ -11,6 +11,7 @@ import { formatDates, getDisplayPrice } from 'libs/parsers'
 import { useCategoryHomeLabelMapping, useCategoryIdMapping } from 'libs/subcategories'
 import { usePrePopulateOffer } from 'shared/offer/usePrePopulateOffer'
 import { theme } from 'theme'
+import { FavoriteButton } from 'ui/components/buttons/FavoriteButton'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { PlainArrowNext } from 'ui/svg/icons/PlainArrowNext'
 import { Spacer, Typo, getSpacing } from 'ui/theme'
@@ -90,6 +91,9 @@ const UnmemoizedHighlightOfferModule = (props: HighlightOfferModuleProps) => {
             </ArrowOffer>
           </TouchableContent>
         </StyledTouchableLink>
+        <FavoriteButtonContainer>
+          <FavoriteButton offerId={parseInt(offerId)} />
+        </FavoriteButtonContainer>
         <Spacer.Column numberOfSpaces={6} />
       </View>
     </Container>
@@ -100,6 +104,14 @@ export const HighlightOfferModule = memo(UnmemoizedHighlightOfferModule)
 
 const Container = styled.View(({ theme }) => ({
   paddingBottom: theme.home.spaceBetweenModules,
+}))
+
+const FavoriteButtonContainer = styled.View(({ theme }) => ({
+  position: 'absolute',
+  top: theme.isDesktopViewport ? getSpacing(4) : getSpacing(2),
+  right: theme.isDesktopViewport
+    ? theme.contentPage.marginHorizontal + getSpacing(4)
+    : theme.contentPage.marginHorizontal + getSpacing(2),
 }))
 
 const StyledTitleContainer = styled.View(({ theme }) => ({

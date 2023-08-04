@@ -76,8 +76,15 @@ export const RoundedButton = (props: Props) => {
           />
         </IconContainer>
       ) : (
-        <IconContainer>
-          <Icon size={icons.sizes.small} testID={`icon-${props.iconName}`} />
+        <IconContainer
+          style={{
+            transform: props.scaleAnimatedValue ? [{ scale: props.scaleAnimatedValue }] : undefined,
+          }}>
+          <Icon
+            size={icons.sizes.small}
+            testID={`icon-${props.iconName}`}
+            color={props.finalColor || colors.black}
+          />
         </IconContainer>
       )}
     </StyledTouchable>
