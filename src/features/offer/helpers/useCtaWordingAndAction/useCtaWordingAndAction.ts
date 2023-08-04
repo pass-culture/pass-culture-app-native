@@ -59,7 +59,7 @@ interface ICTAWordingAndAction {
   wording?: string
   navigateTo?: InternalNavigationProps['navigateTo']
   externalNav?: ExternalNavigationProps['externalNav']
-  onPress?: () => void | Promise<void>
+  onPress?: () => void
   isEndedUsedBooking?: boolean
   bottomBannerText?: string
   isDisabled?: boolean
@@ -119,13 +119,13 @@ export const getCtaWordingAndAction = ({
     return {
       wording: getDigitalOfferBookingWording(subcategoryId),
       isDisabled: isBookingLoading,
-      async onPress() {
+      onPress() {
         if (isAlreadyBookedOffer) {
           openUrl(booking?.completedUrl ?? '')
           return
         }
 
-        await bookOffer({
+        bookOffer({
           quantity: 1,
           stockId: offer.stocks[0].id,
         })
