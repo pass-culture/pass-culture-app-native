@@ -39,7 +39,7 @@ const UnmemoizedSearchVenueItem = ({ venue, height, width, onPress }: SearchVenu
 
   return (
     <View {...getHeadingAttrs(3)}>
-      <StyledTouchableLink
+      <SearchVenueTouchableLink
         height={height + MAX_VENUE_CAPTION_HEIGHT}
         width={width}
         navigateTo={{ screen: 'Venue', params: { id: venue.objectID } }}
@@ -53,24 +53,24 @@ const UnmemoizedSearchVenueItem = ({ venue, height, width, onPress }: SearchVenu
           {hasVenueImage ? (
             <ImageTile width={width} height={height} uri={imageUri} />
           ) : (
-            <VenueTypeTile width={width} height={height} testID="venue-type-tile">
+            <SearchVenueTypeTile width={width} height={height} testID="venue-type-tile">
               <VenueTypeLocationIcon
                 VenueTypeIcon={mapVenueTypeToIcon(venue.venue_type as VenueTypeCode)}
                 iconColor={colors.greySemiDark}
                 backgroundColor={colors.greyLight}
               />
-            </VenueTypeTile>
+            </SearchVenueTypeTile>
           )}
           <SearchVenueItemDetails width={width} name={venue.name} city={venue.city} />
         </View>
-      </StyledTouchableLink>
+      </SearchVenueTouchableLink>
     </View>
   )
 }
 
 export const SearchVenueItem = memo(UnmemoizedSearchVenueItem)
 
-const StyledTouchableLink = styled(InternalTouchableLink).attrs(({ theme }) => ({
+const SearchVenueTouchableLink = styled(InternalTouchableLink).attrs(({ theme }) => ({
   underlayColor: theme.colors.white,
 }))<{
   height: number
@@ -84,7 +84,7 @@ const StyledTouchableLink = styled(InternalTouchableLink).attrs(({ theme }) => (
   ...customFocusOutline({ isFocus, color: theme.colors.black }),
 }))
 
-const VenueTypeTile = styled.View<{ width: number; height: number }>(
+const SearchVenueTypeTile = styled.View<{ width: number; height: number }>(
   ({ theme, width, height }) => ({
     width: width,
     height: height,

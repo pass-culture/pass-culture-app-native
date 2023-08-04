@@ -2,7 +2,7 @@ import { NavigationContainer } from '@react-navigation/native'
 import { ComponentMeta, ComponentStory } from '@storybook/react'
 import React from 'react'
 
-import { LENGTH_XS, LENGTH_XXXS } from 'ui/theme'
+import { LENGTH_XS, LENGTH_XXS } from 'ui/theme'
 
 import { SearchVenueItem } from './SearchVenueItem'
 
@@ -44,7 +44,7 @@ const venue = {
   },
 }
 
-const ITEM_HEIGHT = LENGTH_XXXS
+const ITEM_HEIGHT = LENGTH_XXS
 const ITEM_WIDTH = LENGTH_XS
 
 const Template: ComponentStory<typeof SearchVenueItem> = (props) => <SearchVenueItem {...props} />
