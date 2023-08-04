@@ -14,7 +14,7 @@ export interface ExclusivityModuleProps {
   image: string
   moduleId: string
   offerId?: number
-  display?: ExclusivityModuleType['displayParameters']
+  displayParameters?: ExclusivityModuleType['displayParameters']
   url?: string
   homeEntryId: string | undefined
   index: number

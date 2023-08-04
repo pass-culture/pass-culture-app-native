@@ -11,13 +11,9 @@ import { VenuesModule } from 'features/home/components/modules/venues/VenuesModu
 import { VideoModule } from 'features/home/components/modules/video/VideoModule'
 import {
   HomepageModule,
-  isBusinessModule,
-  isCategoryListModule,
+  HomepageModuleType,
   isExclusivityModule,
   isHighlightOfferModule,
-  isOffersModule,
-  isRecommendedOffersModule,
-  isThematicHighlightModule,
   isVenuesModule,
   isVideoModule,
   ModuleData,
@@ -25,12 +21,22 @@ import {
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 
+const modules = {
+  [HomepageModuleType.BusinessModule]: BusinessModule,
+  [HomepageModuleType.CategoryListModule]: CategoryListModule,
+  [HomepageModuleType.ExclusivityModule]: ExclusivityModule,
+  [HomepageModuleType.HighlightOfferModule]: HighlightOfferModule,
+  [HomepageModuleType.OffersModule]: OffersModule,
+  [HomepageModuleType.RecommendedOffersModule]: RecommendationModule,
+  [HomepageModuleType.ThematicHighlightModule]: ThematicHighlightModule,
+}
+
 const UnmemoizedModule = ({
   item,
   index,
   homeEntryId,
-  data,
   videoModuleId,
+  data,
 }: {
   item: HomepageModule
   index: number
@@ -42,20 +48,8 @@ const UnmemoizedModule = ({
     RemoteStoreFeatureFlags.WIP_ENABLE_NEW_EXCLUSIVITY_BLOCK
   )
 
-  if (isOffersModule(item)) {
-    return (
-      <OffersModule
-        moduleId={item.id}
-        search={item.offersModuleParameters}
-        display={item.displayParameters}
-        cover={item.cover ?? null}
-        index={index}
-        homeEntryId={homeEntryId}
-        data={data}
-      />
-    )
-  }
-
+  /* TODO(PC-23671): Refactor VenuesModule and VideoModule into
+  modules constant after adding tests in HomeModule.native.test.tsx */
   if (isVenuesModule(item)) {
     return (
       <VenuesModule
@@ -66,49 +60,6 @@ const UnmemoizedModule = ({
         data={data}
       />
     )
-  }
-
-  if (isRecommendedOffersModule(item)) {
-    return (
-      <RecommendationModule
-        moduleId={item.id}
-        index={index}
-        displayParameters={item.displayParameters}
-        recommendationParameters={item.recommendationParameters}
-        homeEntryId={homeEntryId}
-      />
-    )
-  }
-  if (isExclusivityModule(item) && !enableNewExclusivityBlock) {
-    return (
-      <ExclusivityModule
-        moduleId={item.id}
-        title={item.title}
-        alt={item.alt}
-        image={item.image}
-        offerId={item.offerId}
-        display={item.displayParameters}
-        homeEntryId={homeEntryId}
-        index={index}
-        url={item.url}
-      />
-    )
-  }
-
-  if (isHighlightOfferModule(item) && enableNewExclusivityBlock) {
-    return <HighlightOfferModule {...item} />
-  }
-
-  if (isBusinessModule(item)) {
-    return <BusinessModule {...item} homeEntryId={homeEntryId} index={index} moduleId={item.id} />
-  }
-
-  if (isThematicHighlightModule(item)) {
-    return <ThematicHighlightModule {...item} homeEntryId={homeEntryId} index={index} />
-  }
-
-  if (isCategoryListModule(item)) {
-    return <CategoryListModule {...item} homeEntryId={homeEntryId} index={index} />
   }
 
   if (isVideoModule(item)) {
@@ -122,7 +73,24 @@ const UnmemoizedModule = ({
     )
   }
 
-  return <React.Fragment></React.Fragment>
+  if (
+    (isHighlightOfferModule(item) && !enableNewExclusivityBlock) ||
+    (isExclusivityModule(item) && enableNewExclusivityBlock)
+  )
+    return <React.Fragment></React.Fragment>
+
+  /* eslint-disable @typescript-eslint/no-explicit-any */
+  const ComponentModule: any = modules[item.type]
+  if (!ComponentModule) return <React.Fragment></React.Fragment>
+  return (
+    <ComponentModule
+      {...item}
+      homeEntryId={homeEntryId}
+      index={index}
+      moduleId={item.id}
+      data={data}
+    />
+  )
 }
 
 export const HomeModule = memo(UnmemoizedModule)

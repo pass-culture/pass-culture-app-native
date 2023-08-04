@@ -20,13 +20,13 @@ const UnmemoizedExclusivityOffer = ({
   image: imageURL,
   offerId,
   moduleId,
-  display,
+  displayParameters,
   homeEntryId,
   index,
   style,
 }: ExclusivityOfferProps) => {
   const { onFocus, onBlur, isFocus } = useHandleFocus()
-  const shouldDisplayExcluOffer = useShouldDisplayExcluOffer(display, offerId)
+  const shouldDisplayExcluOffer = useShouldDisplayExcluOffer(displayParameters, offerId)
 
   const handlePressExclu = useCallback(() => {
     if (typeof offerId !== 'number') return
