@@ -3,10 +3,6 @@
  * before some characters in French, such as ! ? : ; € » or after «
  *
  * Ex: "Bienvenue !" should be "Bienvenue&nbsp;!"
- *
- * The work here is based on ESLint documentation: https://eslint.org/docs/latest/developer-guide/working-with-rules
- * and especially for the selectors: https://eslint.org/docs/latest/developer-guide/selectors
- * You can visualize the "node" structure with: https://astexplorer.net/
  */
 
 module.exports = {
