@@ -1,4 +1,4 @@
-import { SearchResponse } from '@algolia/client-search'
+import { Hit, SearchResponse } from '@algolia/client-search'
 import React from 'react'
 
 import {
@@ -18,6 +18,7 @@ import {
   MappingTree,
 } from 'features/search/helpers/categoriesHelpers/mapping-tree'
 import { Venue } from 'features/venue/types'
+import { AlgoliaVenue } from 'libs/algolia'
 import { SuggestedPlace } from 'libs/place'
 import { Range } from 'libs/typesUtils/typeHelpers'
 import { Offer } from 'shared/offer/types'
@@ -116,6 +117,16 @@ export interface SearchListProps {
   userData: SearchResponse<Offer[]>['userData']
   onScroll?: () => void
   onPress?: () => void
+  venues: Hit<AlgoliaVenue>[]
+  renderVenueItem: ({
+    item,
+    height,
+    width,
+  }: {
+    item: AlgoliaVenue
+    height: number
+    width: number
+  }) => React.JSX.Element
 }
 
 export type AnalyticsParams = {

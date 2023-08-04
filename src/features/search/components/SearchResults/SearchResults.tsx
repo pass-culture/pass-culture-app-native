@@ -11,6 +11,7 @@ import { useSearchResults } from 'features/search/api/useSearchResults/useSearch
 import { AutoScrollSwitch } from 'features/search/components/AutoScrollSwitch/AutoScrollSwitch'
 import { SingleFilterButton } from 'features/search/components/Buttons/SingleFilterButton/SingleFilterButton'
 import { SearchList } from 'features/search/components/SearchList/SearchList'
+import { SearchVenueItem } from 'features/search/components/SearchVenueItems/SearchVenueItem'
 import { useSearch } from 'features/search/context/SearchWrapper'
 import { FilterBehaviour } from 'features/search/enums'
 import {
@@ -25,6 +26,7 @@ import { DatesHoursModal } from 'features/search/pages/modals/DatesHoursModal/Da
 import { LocationModal } from 'features/search/pages/modals/LocationModal/LocationModal'
 import { OfferDuoModal } from 'features/search/pages/modals/OfferDuoModal/OfferDuoModal'
 import { PriceModal } from 'features/search/pages/modals/PriceModal/PriceModal'
+import { AlgoliaVenue } from 'libs/algolia'
 import { analytics } from 'libs/analytics'
 import { useIsFalseWithDelay } from 'libs/hooks/useIsFalseWithDelay'
 import { plural } from 'libs/plural'
@@ -55,6 +57,7 @@ export const SearchResults: React.FC = () => {
     isFetching,
     isFetchingNextPage,
     userData,
+    venues,
   } = useSearchResults()
   const { searchState } = useSearch()
   const showSkeleton = useIsFalseWithDelay(isLoading, ANIMATION_DURATION)
@@ -120,6 +123,13 @@ export const SearchResults: React.FC = () => {
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [hasNextPage])
+
+  const renderVenueItem = useCallback(
+    ({ item, height, width }: { item: AlgoliaVenue; height: number; width: number }) => (
+      <SearchVenueItem venue={item} height={height} width={width} />
+    ),
+    []
+  )
 
   const renderItem = useCallback(
     ({ item: hit, index }: { item: Offer; index: number }) => (
@@ -245,6 +255,8 @@ export const SearchResults: React.FC = () => {
           onRefresh={refetch}
           onPress={handlePressFooter}
           userData={userData}
+          venues={venues}
+          renderVenueItem={renderVenueItem}
         />
       </Container>
       {nbHits > 0 && (
