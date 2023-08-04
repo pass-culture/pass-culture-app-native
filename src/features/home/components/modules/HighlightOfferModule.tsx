@@ -151,6 +151,7 @@ const OfferImage = styled.ImageBackground(({ theme }) => ({
   height: OFFER_IMAGE_HEIGHT,
   border: 1,
   borderColor: theme.colors.greyMedium,
+  backgroundColor: theme.colors.greyLight,
   ...(theme.isDesktopViewport ? getOfferImageDesktopStyle(theme) : getOfferImageMobileStyle(theme)),
 }))
 

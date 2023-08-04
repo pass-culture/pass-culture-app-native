@@ -59,8 +59,9 @@ export const VideoModuleDesktop: FunctionComponent<VideoModuleProps> = (props) =
           <StyledTouchableHighlight
             onPress={props.showVideoModal}
             testID="video-thumbnail"
-            accessibilityRole="button">
-            <Thumbnail source={{ uri: props.videoThumbnail }} isMultiOffer={props.isMultiOffer}>
+            accessibilityRole="button"
+            isMultiOffer={props.isMultiOffer}>
+            <Thumbnail source={{ uri: props.videoThumbnail }}>
               <DurationCaption label={videoDuration} />
               <TextContainer>
                 <BlackGradient />
@@ -117,17 +118,15 @@ const VideoOfferContainer = styled.View(({ theme }) => ({
   height: '100%',
 }))
 
-const Thumbnail = styled(ImageBackground)<{
-  isMultiOffer: boolean
-}>(({ theme, isMultiOffer }) => ({
+const Thumbnail = styled(ImageBackground)(({ theme }) => ({
   // the overflow: hidden allow to add border radius to the image
   // https://stackoverflow.com/questions/49442165/how-do-you-add-borderradius-to-imagebackground/57616397
   overflow: 'hidden',
   borderRadius: theme.borderRadius.radius,
-  height: isMultiOffer ? THUMBNAIL_HEIGHT_MULTI_OFFER : THUMBNAIL_HEIGHT_MONO_OFFER,
-  width: isMultiOffer ? THUMBNAIL_WIDTH_MULTI_OFFER : THUMBNAIL_WIDTH_MONO_OFFER,
+  flex: 1,
   border: 1,
   borderColor: theme.colors.greyMedium,
+  backgroundColor: theme.colors.greyLight,
 }))
 
 const DurationCaption = styled(BlackCaption)({
@@ -182,8 +181,10 @@ const VideoTitle = styled(Typo.Title4)(({ theme }) => ({
 
 const StyledTouchableHighlight = styled.TouchableHighlight.attrs(({ theme }) => ({
   underlayColor: theme.colors.white,
-}))(({ theme }) => ({
+}))<{ isMultiOffer: boolean }>(({ theme, isMultiOffer }) => ({
   borderRadius: theme.borderRadius.radius,
+  height: isMultiOffer ? THUMBNAIL_HEIGHT_MULTI_OFFER : THUMBNAIL_HEIGHT_MONO_OFFER,
+  width: isMultiOffer ? THUMBNAIL_WIDTH_MULTI_OFFER : THUMBNAIL_WIDTH_MONO_OFFER,
 }))
 
 const StyledTitleContainer = styled.View(({ theme }) => ({
