@@ -1,0 +1,30 @@
+{
+  "ESLint Rule Test": {
+    "prefix": "eslint-test",
+    "scope": "javascript",
+    "body": [
+      "import { RuleTester } from 'eslint'",
+      "import { config } from './config'",
+      "",
+      "import rule from '../${1:rule-name}'",
+      "",
+      "const ruleTester = new RuleTester()",
+      "",
+      "const tests = {",
+      "  valid: [",
+      "    { code: '${2:valid case}' },",
+      "  ],",
+      "  invalid: [",
+      "    { code: '${3:invalid case}', errors: 1 },",
+      "  ],",
+      "}",
+      "",
+      "tests.valid.forEach((t) => Object.assign(t, config))",
+      "tests.invalid.forEach((t) => Object.assign(t, config))",
+      "",
+      "ruleTester.run('${1:rule-name}', rule, tests)",
+      ""
+    ],
+    "description": "Create a template for testing an ESLint rule"
+  }
+}
