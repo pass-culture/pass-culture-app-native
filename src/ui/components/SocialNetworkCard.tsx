@@ -26,7 +26,7 @@ function SocialNetworkCardComponent(props: SocialNetworkCardProps) {
       onBeforeNavigate={() => {
         analytics.logClickSocialNetwork(name)
       }}
-      isOnPressDebounced>
+      isOnPressThrottled>
       <Container>
         <NetworkIconBox>
           <StyledIcon />

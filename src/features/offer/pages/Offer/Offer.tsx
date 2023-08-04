@@ -24,7 +24,11 @@ import { useOpacityTransition } from 'ui/animations/helpers/useOpacityTransition
 import { ButtonWithLinearGradient } from 'ui/components/buttons/buttonWithLinearGradient/ButtonWithLinearGradient'
 import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouchableLink'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
-import { ExternalNavigationProps, InternalNavigationProps } from 'ui/components/touchableLink/types'
+import {
+  ExternalNavigationProps,
+  InternalNavigationProps,
+  TouchableLinkGenericProps,
+} from 'ui/components/touchableLink/types'
 import { ExternalSite } from 'ui/svg/icons/ExternalSite'
 import { getSpacing, Spacer } from 'ui/theme'
 
@@ -212,12 +216,12 @@ const CTAButton = ({
   externalNav?: ExternalNavigationProps['externalNav']
   navigateTo?: InternalNavigationProps['navigateTo']
 }) => {
-  const commonLinkProps = {
+  const commonLinkProps: TouchableLinkGenericProps = {
     as: ButtonWithLinearGradient,
     wording: wording,
     onBeforeNavigate: onPress,
     isDisabled: isDisabled,
-    isOnPressDebounced: true,
+    isOnPressThrottled: true,
   }
 
   if (navigateTo) {
