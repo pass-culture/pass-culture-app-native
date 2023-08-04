@@ -421,7 +421,22 @@ exports[`SearchResults component should render correctly 1`] = `
           >
             <div
               class="css-view-175oi2r"
-            />
+            >
+              <div
+                class="css-view-175oi2r r-backgroundColor-14a9t8x r-height-109y4c4 r-marginLeft-6uxfom r-marginRight-mbgqwd r-width-iyfy8q"
+              />
+              <div
+                class="css-view-175oi2r r-height-z80fyv"
+              />
+              <h3
+                aria-level="3"
+                class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-1gknse6 r-fontSize-adyw6z r-lineHeight-135wba7 r-marginHorizontal-1hy1u7s"
+                dir="ltr"
+                role="heading"
+              >
+                Les offres
+              </h3>
+            </div>
             <div
               class="css-view-175oi2r r-alignItems-1awozwy r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-justifyContent-1777fci r-marginHorizontal-1hy1u7s"
               role="status"
@@ -919,7 +934,22 @@ exports[`SearchResults component should render correctly 1`] = `
         >
           <div
             class="css-view-175oi2r"
-          />
+          >
+            <div
+              class="css-view-175oi2r r-backgroundColor-14a9t8x r-height-109y4c4 r-marginLeft-6uxfom r-marginRight-mbgqwd r-width-iyfy8q"
+            />
+            <div
+              class="css-view-175oi2r r-height-z80fyv"
+            />
+            <h3
+              aria-level="3"
+              class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-1gknse6 r-fontSize-adyw6z r-lineHeight-135wba7 r-marginHorizontal-1hy1u7s"
+              dir="ltr"
+              role="heading"
+            >
+              Les offres
+            </h3>
+          </div>
           <div
             class="css-view-175oi2r r-alignItems-1awozwy r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-justifyContent-1777fci r-marginHorizontal-1hy1u7s"
             role="status"

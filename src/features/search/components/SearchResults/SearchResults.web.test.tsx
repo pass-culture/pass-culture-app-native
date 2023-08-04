@@ -1,5 +1,6 @@
 import React from 'react'
 
+import { mockedAlgoliaVenueResponse } from 'libs/algolia/__mocks__/mockedAlgoliaResponse'
 import { GeoCoordinates, Position } from 'libs/geolocation'
 import { act, render, screen } from 'tests/utils/web'
 
@@ -20,6 +21,7 @@ jest.mock('features/search/api/useSearchResults/useSearchResults', () => ({
     hasNextPage: mockHasNextPage,
     fetchNextPage: mockFetchNextPage,
     isFetchingNextPage: false,
+    venues: mockedAlgoliaVenueResponse,
   }),
 }))
 
