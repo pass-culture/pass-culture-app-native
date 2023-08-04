@@ -1,4 +1,5 @@
 import React from 'react'
+import { Platform } from 'react-native'
 
 import { useRoute } from '__mocks__/@react-navigation/native'
 import { useHomepageData } from 'features/home/api/useHomepageData'
@@ -18,6 +19,20 @@ const mockUseHomepageData = useHomepageData as jest.Mock
 
 const modules = [formattedVenuesModule]
 
+const mockedHighlightHeaderData = {
+  modules,
+  id: 'fakeEntryId',
+  thematicHeader: {
+    type: ThematicHeaderType.Highlight,
+    imageUrl:
+      'https://images.ctfassets.net/2bg01iqy0isv/5PmtxKY77rq0nYpkCFCbrg/4daa8767efa35827f22bb86e5fc65094/photo-lion_noir-et-blanc_laurent-breillat-610x610.jpeg',
+    subtitle: 'Un sous-titre',
+    title: 'Bloc temps fort',
+    beginningDate: new Date('2022-12-21T23:00:00.000Z'),
+    endingDate: new Date('2023-01-14T23:00:00.000Z'),
+  },
+}
+
 describe('ThematicHome', () => {
   useRoute.mockReturnValue({ params: { entryId: 'fakeEntryId' } })
 
@@ -35,25 +50,37 @@ describe('ThematicHome', () => {
   })
 
   it('should show highlight header when provided', async () => {
-    mockUseHomepageData.mockReturnValueOnce({
-      modules,
-      id: 'fakeEntryId',
-      thematicHeader: {
-        type: ThematicHeaderType.Highlight,
-        imageUrl:
-          'https://images.ctfassets.net/2bg01iqy0isv/5PmtxKY77rq0nYpkCFCbrg/4daa8767efa35827f22bb86e5fc65094/photo-lion_noir-et-blanc_laurent-breillat-610x610.jpeg',
-        subtitle: 'Un sous-titre',
-        title: 'Bloc temps fort',
-        beginningDate: new Date('2022-12-21T23:00:00.000Z'),
-        endingDate: new Date('2023-01-14T23:00:00.000Z'),
-      },
-    })
+    mockUseHomepageData.mockReturnValueOnce(mockedHighlightHeaderData)
 
     renderThematicHome()
     await act(async () => {})
 
     expect(screen.getAllByText('Bloc temps fort')).toBeTruthy()
     expect(screen.getByText('Un sous-titre')).toBeTruthy()
+  })
+
+  it('should show highlight animated header when provided and platform is iOS', async () => {
+    Platform.OS = 'ios'
+
+    mockUseHomepageData.mockReturnValueOnce(mockedHighlightHeaderData)
+
+    renderThematicHome()
+    await act(async () => {})
+
+    expect(await screen.findAllByText('Bloc temps fort')).toBeTruthy()
+    expect(screen.getByTestId('animated-thematic-header')).toBeTruthy()
+  })
+
+  it('should not show highlight animated header when provided and platform is Android', async () => {
+    Platform.OS = 'android'
+
+    mockUseHomepageData.mockReturnValueOnce(mockedHighlightHeaderData)
+
+    renderThematicHome()
+    await act(async () => {})
+
+    expect(await screen.findAllByText('Bloc temps fort')).toBeTruthy()
+    expect(screen.queryByTestId('animated-thematic-header')).toBeNull()
   })
 
   it('should show category header when provided', async () => {
