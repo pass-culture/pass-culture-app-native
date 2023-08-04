@@ -2,7 +2,10 @@ import React from 'react'
 
 import { SearchList } from 'features/search/components/SearchList/SearchList'
 import { SearchListProps } from 'features/search/types'
-import { mockedAlgoliaResponse } from 'libs/algolia/__mocks__/mockedAlgoliaResponse'
+import {
+  mockedAlgoliaResponse,
+  mockedAlgoliaVenueResponse,
+} from 'libs/algolia/__mocks__/mockedAlgoliaResponse'
 import { Offer } from 'shared/offer/types'
 import { render } from 'tests/utils'
 
@@ -10,6 +13,7 @@ jest.mock('react-query')
 
 const mockHits: Offer[] = mockedAlgoliaResponse.hits
 const mockNbHits = mockedAlgoliaResponse.nbHits
+const mockVenues = mockedAlgoliaVenueResponse.hits
 
 describe('<SearchList />', () => {
   const renderItem = jest.fn()
@@ -25,6 +29,8 @@ describe('<SearchList />', () => {
     onEndReached: jest.fn(),
     onScroll: jest.fn(),
     userData: [],
+    venues: mockVenues,
+    renderVenueItem: jest.fn(),
   }
   it('should renders correctly', () => {
     render(<SearchList {...props} />)

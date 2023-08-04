@@ -1,7 +1,10 @@
+import { Hit } from '@algolia/client-search'
 import React from 'react'
 import { v4 as uuidv4 } from 'uuid'
 
 import { useRoute } from '__mocks__/@react-navigation/native'
+import { AlgoliaVenue } from 'libs/algolia'
+import { mockedAlgoliaVenueResponse } from 'libs/algolia/__mocks__/mockedAlgoliaResponse'
 import { GeoCoordinates } from 'libs/geolocation'
 import { render, screen } from 'tests/utils'
 
@@ -20,37 +23,138 @@ jest.mock('libs/geolocation/GeolocationWrapper', () => ({
   }),
 }))
 
+const mockVenues = mockedAlgoliaVenueResponse.hits
+const renderVenueItem = jest.fn()
+const empetyVenues: Hit<AlgoliaVenue>[] = []
+
 describe('<SearchListHeader />', () => {
   it('should display the number of results', () => {
     useRoute.mockReturnValueOnce({
       params: { searchId },
     })
-    render(<SearchListHeader nbHits={10} userData={[]} />)
+    render(
+      <SearchListHeader
+        nbHits={10}
+        userData={[]}
+        venues={mockVenues}
+        renderVenueItem={renderVenueItem}
+      />
+    )
 
     expect(screen.getByText('10 résultats')).toBeTruthy()
   })
 
   it('should not display the geolocation button if position is not null', () => {
-    render(<SearchListHeader nbHits={10} userData={[]} />)
+    render(
+      <SearchListHeader
+        nbHits={10}
+        userData={[]}
+        venues={mockVenues}
+        renderVenueItem={renderVenueItem}
+      />
+    )
     expect(screen.queryByText('Géolocalise-toi')).toBeFalsy()
   })
 
   it('should display the geolocation incitation button when position is null', () => {
     mockPosition = null
-    render(<SearchListHeader nbHits={10} userData={[]} />)
+    render(
+      <SearchListHeader
+        nbHits={10}
+        userData={[]}
+        venues={mockVenues}
+        renderVenueItem={renderVenueItem}
+      />
+    )
 
     expect(screen.getByText('Géolocalise-toi')).toBeTruthy()
   })
 
   it('should display paddingBottom when nbHits is greater than 0', () => {
-    render(<SearchListHeader nbHits={10} userData={[{ message: 'message test' }]} />)
+    render(
+      <SearchListHeader
+        nbHits={10}
+        userData={[{ message: 'message test' }]}
+        venues={mockVenues}
+        renderVenueItem={renderVenueItem}
+      />
+    )
     const bannerContainer = screen.getByTestId('banner-container')
     expect(bannerContainer.props.style).toEqual([{ paddingBottom: 16, paddingHorizontal: 24 }])
   })
 
   it('should not display paddingBottom when nbHits is equal to 0', () => {
-    render(<SearchListHeader nbHits={0} userData={[{ message: 'message test' }]} />)
+    render(
+      <SearchListHeader
+        nbHits={0}
+        userData={[{ message: 'message test' }]}
+        venues={mockVenues}
+        renderVenueItem={renderVenueItem}
+      />
+    )
     const bannerContainer = screen.getByTestId('banner-container')
     expect(bannerContainer.props.style).not.toEqual([{ paddingBottom: 16, paddingHorizontal: 24 }])
+  })
+
+  it('should render venue items when there are venues', () => {
+    render(
+      <SearchListHeader
+        nbHits={10}
+        userData={[]}
+        venues={mockVenues}
+        renderVenueItem={renderVenueItem}
+      />
+    )
+
+    expect(renderVenueItem).toHaveBeenCalledWith({
+      item: {
+        ...mockVenues[0],
+        ...mockVenues[1],
+      },
+      index: 1,
+      target: 'Cell',
+      height: 96,
+      width: 144,
+      playlistType: undefined,
+    })
+  })
+
+  it('should not render venue items when there are not venues', () => {
+    render(
+      <SearchListHeader
+        nbHits={10}
+        userData={[]}
+        venues={empetyVenues}
+        renderVenueItem={renderVenueItem}
+      />
+    )
+
+    expect(renderVenueItem).toHaveBeenCalledTimes(0)
+  })
+
+  it('should render venues nbHits', () => {
+    render(
+      <SearchListHeader
+        nbHits={10}
+        userData={[]}
+        venues={mockVenues}
+        renderVenueItem={renderVenueItem}
+      />
+    )
+
+    expect(screen.getByText('2 résultats')).toBeTruthy()
+  })
+
+  it('should not render venues nbHits', () => {
+    render(
+      <SearchListHeader
+        nbHits={10}
+        userData={[]}
+        venues={empetyVenues}
+        renderVenueItem={renderVenueItem}
+      />
+    )
+
+    expect(screen.queryByText('2 résultats')).toBeNull()
   })
 })
