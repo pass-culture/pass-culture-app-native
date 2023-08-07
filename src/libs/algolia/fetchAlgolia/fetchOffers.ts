@@ -1,5 +1,3 @@
-import { Hit } from '@algolia/client-search'
-
 import { SearchOfferResponse } from 'features/search/api/useSearchResults/useSearchResults'
 import { captureAlgoliaError } from 'libs/algolia/fetchAlgolia/AlgoliaError'
 import { buildOfferSearchParameters } from 'libs/algolia/fetchAlgolia/buildAlgoliaParameters/buildOfferSearchParameters'
@@ -51,6 +49,6 @@ export const fetchOffers = async ({
     return response
   } catch (error) {
     captureAlgoliaError(error)
-    return { hits: [] as Hit<Offer>[], nbHits: 0, page: 0, nbPages: 0 }
+    return { hits: [] as Offer[], nbHits: 0, page: 0, nbPages: 0 }
   }
 }
