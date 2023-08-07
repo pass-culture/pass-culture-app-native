@@ -1,19 +1,20 @@
-import debounce from 'lodash/debounce'
 import React, { createRef, ElementType, useCallback, useEffect } from 'react'
-import { GestureResponderEvent, NativeSyntheticEvent, Platform, TargetedEvent } from 'react-native'
+import { NativeSyntheticEvent, Platform, TargetedEvent } from 'react-native'
 import styled from 'styled-components/native'
 
 import { accessibilityAndTestId } from 'libs/accessibilityAndTestId'
 import { useHandleFocus } from 'libs/hooks/useHandleFocus'
 import { useHandleHover } from 'libs/hooks/useHandleHover'
+import { handleNavigationWrapper } from 'ui/components/touchableLink/handleNavigationWrapper'
 import { TouchableLinkProps } from 'ui/components/touchableLink/types'
 import { TouchableOpacity } from 'ui/components/TouchableOpacity'
+import { useThrottle } from 'ui/hooks/useThrottle'
 // eslint-disable-next-line no-restricted-imports
 import { ColorsEnum } from 'ui/theme/colors'
 import { touchableFocusOutline } from 'ui/theme/customFocusOutline/touchableFocusOutline'
 import { getHoverStyle } from 'ui/theme/getHoverStyle/getHoverStyle'
 
-const ON_PRESS_DEBOUNCE_DELAY = 300
+const ON_PRESS_THROTTLE_DELAY = 300
 
 export function TouchableLink({
   onBeforeNavigate,
@@ -26,7 +27,7 @@ export function TouchableLink({
   onFocus,
   onBlur,
   as: Tag,
-  isOnPressDebounced,
+  isOnPressThrottled,
   hoverUnderlineColor,
   accessibilityLabel,
   testID,
@@ -45,12 +46,7 @@ export function TouchableLink({
       ? { ...linkProps, accessibilityRole: undefined }
       : { accessibilityRole: 'link' }
 
-  async function onClick(event: GestureResponderEvent) {
-    Platform.OS === 'web' && event?.preventDefault()
-    if (onBeforeNavigate) await onBeforeNavigate(event)
-    handleNavigation()
-    if (onAfterNavigate) await onAfterNavigate(event)
-  }
+  const onClick = handleNavigationWrapper({ onBeforeNavigate, onAfterNavigate, handleNavigation })
 
   const onLinkFocus = useCallback(
     (e: NativeSyntheticEvent<TargetedEvent>) => {
@@ -81,7 +77,9 @@ export function TouchableLink({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
-  const callOnClick = isOnPressDebounced ? debounce(onClick, ON_PRESS_DEBOUNCE_DELAY) : onClick
+  const throttledOnClick = useThrottle(onClick, ON_PRESS_THROTTLE_DELAY)
+
+  const callOnClick = isOnPressThrottled ? throttledOnClick : onClick
 
   return (
     <TouchableLinkComponent

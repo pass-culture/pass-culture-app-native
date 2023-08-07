@@ -20,7 +20,9 @@ export const EmailSent: FunctionComponent<Props> = ({ offerDate }) => {
       {Platform.OS !== 'web' && (
         <ButtonWithLinearGradient
           wording="Consulter mes e-mails"
-          onPress={openInbox}
+          onPress={(_event) => {
+            openInbox()
+          }}
           icon={Email}
         />
       )}

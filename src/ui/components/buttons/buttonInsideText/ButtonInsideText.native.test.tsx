@@ -4,7 +4,7 @@ import { render } from 'tests/utils'
 import { theme } from 'theme'
 import { ExternalSiteFilled } from 'ui/svg/icons/ExternalSiteFilled'
 
-import { ButtonInsideText } from '../ButtonInsideText'
+import { ButtonInsideText } from './ButtonInsideText'
 
 const wording = 'Wording'
 

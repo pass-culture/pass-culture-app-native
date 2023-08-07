@@ -1,4 +1,4 @@
-import { getEffectiveBorderRadius } from 'ui/components/buttons/AppButton/utils'
+import { getEffectiveBorderRadius } from './utils'
 
 describe('getEffectiveBorderRadius', () => {
   it('should return the border radius if the border radius is not too high', () => {

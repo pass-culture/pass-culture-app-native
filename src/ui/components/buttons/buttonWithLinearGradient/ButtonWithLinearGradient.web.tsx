@@ -1,4 +1,4 @@
-import React, { SyntheticEvent, useCallback } from 'react'
+import React from 'react'
 import styled from 'styled-components'
 import styledNative, { DefaultTheme } from 'styled-components/native'
 
@@ -34,21 +34,10 @@ export const ButtonWithLinearGradient: React.FC<ButtonWithLinearGradientProps> =
       }))``
     : undefined
 
-  const onClick = useCallback(
-    (event: SyntheticEvent) => {
-      if (type === 'submit' || href) {
-        event.preventDefault()
-      }
-      if (onPress) {
-        onPress()
-      }
-    },
-    [type, href, onPress]
-  )
   return (
     <ButtonComponent
       name={name}
-      onClick={onClick}
+      onClick={onPress}
       disabled={isDisabled}
       type={href ? undefined : type}
       className={className}
