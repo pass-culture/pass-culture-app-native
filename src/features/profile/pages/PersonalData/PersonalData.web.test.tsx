@@ -1,8 +1,11 @@
 import React from 'react'
 
+import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { render, checkAccessibilityFor } from 'tests/utils/web'
 
 import { PersonalData } from './PersonalData'
+
+jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockReturnValue(true)
 
 jest.mock('features/auth/context/AuthContext')
 jest.mock('react-query')

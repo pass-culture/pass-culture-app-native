@@ -7,6 +7,7 @@ import * as ongoingOrEndedBookingAPI from 'features/bookings/api/useOngoingOrEnd
 import { bookingsSnap } from 'features/bookings/fixtures/bookingsSnap'
 import { Booking } from 'features/bookings/types'
 import { withAsyncErrorBoundary } from 'features/errors/hocs/withAsyncErrorBoundary'
+import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { useNetInfoContext as useNetInfoContextDefault } from 'libs/network/NetInfoWrapper'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, checkAccessibilityFor, render } from 'tests/utils/web'
@@ -20,6 +21,8 @@ jest.mock('libs/itinerary/useItinerary')
 jest.mock('features/navigation/navigationRef')
 jest.mock('features/navigation/helpers/openUrl')
 jest.mock('libs/network/useNetInfo', () => jest.requireMock('@react-native-community/netinfo'))
+
+jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockReturnValue(false)
 
 const mockUseNetInfoContext = useNetInfoContextDefault as jest.Mock
 

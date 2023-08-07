@@ -1,6 +1,6 @@
 import React from 'react'
 
-// import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
+import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { render, checkAccessibilityFor, act } from 'tests/utils/web'
 
@@ -10,7 +10,7 @@ jest.mock('shared/user/useAvailableCredit', () => ({
   useAvailableCredit: jest.fn(() => ({ isExpired: false, amount: 2000 })),
 }))
 
-// jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockReturnValue(true)
+jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockReturnValue(false)
 
 describe('<BookingConfirmation />', () => {
   describe('Accessibility', () => {

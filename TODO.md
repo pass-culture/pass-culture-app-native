@@ -9,78 +9,143 @@
 
 ## Tasks
 
-- [ ] 93 tests suites qui fail en web
+Listes des tests a fix :
 
-L'erreur est la suivante :
+- [x] FAIL src/features/bookings/pages/BookingDetails/BookingDetails.web.test.tsx
+- [x] FAIL src/features/profile/pages/PersonalData/PersonalData.web.test.tsx
+- [x] FAIL src/features/forceUpdate/pages/ForceUpdate.web.test.tsx
+- [x] FAIL src/features/bookings/pages/BookingDetails/BookingDetails.web.test.tsx
+- [x] FAIL src/features/search/pages/modals/LocationModal/LocationModal.web.test.tsx
+- [x] FAIL src/features/offer/pages/Offer/Offer.web.test.tsx
+- [x] FAIL src/features/auth/pages/login/Login.web.test.tsx
+- [x] FAIL src/features/share/pages/WebShareModal.web.test.tsx
+- [x] FAIL src/features/auth/pages/signup/SignupForm.web.test.tsx
+- [x] FAIL src/features/search/components/SearchResults/SearchResults.web.test.tsx
 
-```
-  FAIL src/ui/components/touchableLink/ExternalTouchableLink.web.test.tsx
-  ● Test suite failed to run
+---
 
-  Jest encountered an unexpected token
-
-  Jest failed to parse a file. This happens e.g. when your code or its dependencies use non-standard JavaScript syntax, or when Jest is not configured to support such syntax.
-
-  Out of the box Jest supports Babel, which will be used to transform your files into valid JS based on your Babel configuration.
-
-  By default "node_modules" folder is ignored by transformers.
-
-  Here's what you can do:
-  • If you are trying to use ECMAScript Modules, see https://jestjs.io/docs/ecmascript-modules for how to enable it.
-  • If you are trying to use TypeScript, see https://jestjs.io/docs/getting-started#using-typescript
-  • To have some of your "node_modules" files transformed, you can specify a custom "transformIgnorePatterns" in your config.
-  • If you need a custom transformation specify a "transform" option in your config.
-  • If you simply want to mock your non-JS modules (e.g. binary assets) you can stub them out with the "moduleNameMapper" config option.
-
-  You'll find more details and examples of these config options in the docs:
-  https://jestjs.io/docs/configuration
-  For information about custom transformations, see:
-  https://jestjs.io/docs/code-transformation
-
-  Details:
-
-  /Users/lucasbeneston/Desktop/pass-culture-app-native/node_modules/firebase/compat/app/dist/index.esm.js:1
-  ({"Object.<anonymous>":function(module,exports,require,**dirname,**filename,jest){import firebase from '@firebase/app-compat';
-  ^^^^^^
-
-  SyntaxError: Cannot use import statement outside a module
-
-        1 | /* eslint-disable no-restricted-imports */
-
-  > 2 | import firebase from 'firebase/compat/app'
-
-          | ^
-        3 | import 'firebase/compat/firestore'
-        4 |
-        5 | import initializeApp from '../firebase-init'
-
-        at Runtime.createScriptFromCode (node_modules/jest-runtime/build/index.js:1796:14)
-        at Object.<anonymous> (src/libs/firebase/shims/firestore/index.web.ts:2:1)
-```
-
-J'ai essayé de fix le problème en ajoutant ceci dans le jest.web.config qui règle quasiement toutes les erreurs (plus que 8 tests suites qui fail), mais c'est peut-être pas la solution la plus propre :
+Détails
 
 ```
-transformIgnorePatterns: [
-'node_modules/(?!' +
-'firebase' +
-'|@firebase' +
-'|@ptomasroos/react-native-multi-slider' +
-'|react-native-svg-web' +
-'|react-native-animatable' +
-'|react-native-web' +
-'|react-native-modal' +
-'|react-native-calendars' +
-'|react-native-swipe-gestures' +
-'|react-native-permissions' +
-'|react-native-qrcode-svg' +
-'|react-native-country-picker-moda' +
-'|instantsearch.js' +
-')',
-],
-```
+Summary of all failing tests
+ FAIL  src/features/profile/pages/PersonalData/PersonalData.web.test.tsx (30.694 s, 269 MB heap size)
+  ● <PersonalData/> › Accessibility › should not have basic accessibility issues
 
-Les tests qui échouent avec cette solution sont en lien avec firebase. Pour info, j'ai testé de mettre le mock des FF et les tests étaient OK !
+    Oh no! Your test called the following console method:
+      * warn (1 call)
+        > Call 0: "[MSW] Warning: captured a request without a matching request handler:...
+
+      at createComplaint (node_modules/console-fail-test/src/complaining.js:30:19)
+      at node_modules/console-fail-test/src/cft.js:36:59
+      at afterEachCallback (node_modules/console-fail-test/src/environments/jest.js:22:39)
+      at Object.<anonymous> (node_modules/console-fail-test/src/environments/jest.js:15:9)
+
+ FAIL  src/features/forceUpdate/pages/ForceUpdate.web.test.tsx (31.989 s, 268 MB heap size)
+  ● <ForceUpdate/> › Accessibility › should not have basic accessibility issues
+
+    Oh no! Your test called the following console method:
+      * warn (1 call)
+        > Call 0: "[MSW] Warning: captured a request without a matching request handler:...
+
+      at createComplaint (node_modules/console-fail-test/src/complaining.js:30:19)
+      at node_modules/console-fail-test/src/cft.js:36:59
+      at afterEachCallback (node_modules/console-fail-test/src/environments/jest.js:22:39)
+      at Object.<anonymous> (node_modules/console-fail-test/src/environments/jest.js:15:9)
+
+ FAIL  src/features/bookings/pages/BookingDetails/BookingDetails.web.test.tsx (35.694 s, 276 MB heap size)
+  ● BookingDetails › Accessibility › should not have basic accessibility issues
+
+    Oh no! Your test called the following console method:
+      * warn (1 call)
+        > Call 0: "[MSW] Warning: captured a request without a matching request handler:...
+
+      at createComplaint (node_modules/console-fail-test/src/complaining.js:30:19)
+      at node_modules/console-fail-test/src/cft.js:36:59
+      at afterEachCallback (node_modules/console-fail-test/src/environments/jest.js:22:39)
+      at Object.<anonymous> (node_modules/console-fail-test/src/environments/jest.js:15:9)
+
+ FAIL  src/features/search/pages/modals/LocationModal/LocationModal.web.test.tsx (13.029 s, 297 MB heap size)
+  ● <LocationModal/> › should close the modal when clicking close button
+
+    Oh no! Your test called the following console method:
+      * error (1 call)
+        > Call 0: "Warning: An update to %s inside a test was not wrapped in act(...)...., "LocationModal", "...
+
+      at createComplaint (node_modules/console-fail-test/src/complaining.js:30:19)
+      at node_modules/console-fail-test/src/cft.js:36:59
+      at afterEachCallback (node_modules/console-fail-test/src/environments/jest.js:22:39)
+      at Object.<anonymous> (node_modules/console-fail-test/src/environments/jest.js:15:9)
+
+ FAIL  src/features/offer/pages/Offer/Offer.web.test.tsx (40.508 s, 280 MB heap size)
+  ● <Offer/> › Accessibility › should not have basic accessibility issues
+
+    Oh no! Your test called the following console method:
+      * warn (1 call)
+        > Call 0: "[MSW] Warning: captured a request without a matching request handler:...
+
+      at createComplaint (node_modules/console-fail-test/src/complaining.js:30:19)
+      at node_modules/console-fail-test/src/cft.js:36:59
+      at afterEachCallback (node_modules/console-fail-test/src/environments/jest.js:22:39)
+      at Object.<anonymous> (node_modules/console-fail-test/src/environments/jest.js:15:9)
+
+ FAIL  src/features/auth/pages/login/Login.web.test.tsx (32.35 s, 375 MB heap size)
+  ● <Login/> › should display forced login help message when the query param is given
+
+    Oh no! Your test called the following console method:
+      * error (1 call)
+        > Call 0: "Warning: An update to %s inside a test was not wrapped in act(...)...., "ForwardRef(WithRefTextInput)", "...
+
+      at createComplaint (node_modules/console-fail-test/src/complaining.js:30:19)
+      at node_modules/console-fail-test/src/cft.js:36:59
+      at afterEachCallback (node_modules/console-fail-test/src/environments/jest.js:22:39)
+      at Object.<anonymous> (node_modules/console-fail-test/src/environments/jest.js:15:9)
+
+ FAIL  src/features/share/pages/WebShareModal.web.test.tsx (26.405 s, 384 MB heap size)
+  ● <WebShareModal/> › should open the email on the email button click
+
+    Oh no! Your test called the following console method:
+      * warn (2 calls)
+        > Call 0: "[MSW] Warning: captured a request without a matching request handler:...
+        > Call 1: "[MSW] Warning: captured a request without a matching request handler:...
+
+      at createComplaint (node_modules/console-fail-test/src/complaining.js:30:19)
+      at node_modules/console-fail-test/src/cft.js:36:59
+      at afterEachCallback (node_modules/console-fail-test/src/environments/jest.js:22:39)
+      at Object.<anonymous> (node_modules/console-fail-test/src/environments/jest.js:15:9)
+
+ FAIL  src/features/auth/pages/signup/SignupForm.web.test.tsx (51.401 s, 397 MB heap size)
+  ● <SignupForm/> › Accessibility › should not have basic accessibility issues for SetPassword
+
+    thrown: "Exceeded timeout of 10000 ms for a test.
+    Use jest.setTimeout(newTimeout) to increase the timeout value, if this is a long-running test."
+
+      36 |     })
+      37 |
+    > 38 |     it.each`
+         |     ^
+      39 |       stepIndex | component
+      40 |       ${1}      | ${'SetEmail'}
+      41 |       ${2}      | ${'SetPassword'}
+
+      at node_modules/jest-each/build/bind.js:45:11
+          at Array.forEach (<anonymous>)
+      at src/features/auth/pages/signup/SignupForm.web.test.tsx:38:5
+      at describe (src/features/auth/pages/signup/SignupForm.web.test.tsx:23:3)
+      at Object.describe (src/features/auth/pages/signup/SignupForm.web.test.tsx:22:1)
+
+ FAIL  src/features/search/components/SearchResults/SearchResults.web.test.tsx (21.418 s, 373 MB heap size)
+  ● SearchResults component › should render correctly
+
+    Oh no! Your test called the following console method:
+      * error (1 call)
+        > Call 0: "Warning: An update to %s inside a test was not wrapped in act(...)...., "LocationModal", "...
+
+      at createComplaint (node_modules/console-fail-test/src/complaining.js:30:19)
+      at node_modules/console-fail-test/src/cft.js:36:59
+      at afterEachCallback (node_modules/console-fail-test/src/environments/jest.js:22:39)
+      at Object.<anonymous> (node_modules/console-fail-test/src/environments/jest.js:15:9)
+
+```
 
 ---
 
