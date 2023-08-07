@@ -7,13 +7,12 @@ import { fireEvent, render } from 'tests/utils'
 
 const onChange = jest.fn()
 
+jest.useFakeTimers({ legacyFakeTimers: true })
+
 describe('<DateChoice />', () => {
   beforeEach(() => {
     mockdate.set(CURRENT_DATE)
     onChange.mockReset()
-    jest.useFakeTimers({
-      legacyFakeTimers: true,
-    })
   })
 
   it('should call onChange with new Date', () => {

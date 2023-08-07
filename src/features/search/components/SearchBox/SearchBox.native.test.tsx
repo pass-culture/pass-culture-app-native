@@ -80,13 +80,12 @@ const venue: Venue = mockedSuggestedVenues[0]
 
 const searchId = uuidv4()
 
+jest.useFakeTimers({ legacyFakeTimers: true })
+
 describe('SearchBox component', () => {
   const searchInputID = uuidv4()
 
   it('should render SearchBox', async () => {
-    jest.useFakeTimers({
-      legacyFakeTimers: true,
-    })
     const renderAPI = render(<SearchBox searchInputID={searchInputID} />)
     await act(async () => {})
 

@@ -18,9 +18,7 @@ If component is using timed function such as animation, snapshot will always dif
 import { render, screen } from 'tests/utils'
 
 it('should render correctly', async () => {
-  jest.useFakeTimers({
-    legacyFakeTimers: true
-  })
+  jest.useFakeTimers({ legacyFakeTimers: true })
   render(<Page />)
 
   jest.advanceTimersByTime(1000)

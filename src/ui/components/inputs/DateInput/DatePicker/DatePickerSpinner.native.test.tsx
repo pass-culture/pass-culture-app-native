@@ -19,12 +19,11 @@ const props = {
   maximumDate: MAXIMUM_DATE,
 }
 
+jest.useFakeTimers({ legacyFakeTimers: true })
+
 describe('<DatePickerSpinner />', () => {
   beforeEach(() => {
     mockdate.set(CURRENT_DATE)
-    jest.useFakeTimers({
-      legacyFakeTimers: true,
-    })
   })
 
   describe('- navigation -', () => {

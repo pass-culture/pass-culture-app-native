@@ -34,11 +34,10 @@ jest.mock('libs/firebase/remoteConfig/RemoteConfigProvider', () => ({
 
 jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockReturnValue(true)
 
+jest.useFakeTimers({ legacyFakeTimers: true })
+
 describe('<Offer />', () => {
   beforeEach(() => {
-    jest.useFakeTimers({
-      legacyFakeTimers: true,
-    })
     mockUseAuthContext.mockReturnValue({
       isLoggedIn: false,
       setIsLoggedIn: jest.fn(),

@@ -37,20 +37,16 @@ const requestInAppReview = jest.spyOn(reactNativeInAppReview, 'RequestInAppRevie
 
 const mockOfferId = 1337
 
+jest.useFakeTimers({ legacyFakeTimers: true })
+
 describe('<BookingConfirmation />', () => {
   beforeEach(() => {
-    jest.useFakeTimers({
-      legacyFakeTimers: true,
-    })
     useRoute.mockReturnValue({
       params: {
         offerId: mockOfferId,
         bookingId: 345,
       },
     })
-  })
-  afterEach(() => {
-    jest.useRealTimers()
   })
 
   it('should render correctly', () => {

@@ -37,13 +37,12 @@ jest.mock('features/auth/context/SettingsContext')
 
 jest.spyOn(useFilterCountAPI, 'useFilterCount').mockReturnValue(3)
 
+jest.useFakeTimers({ legacyFakeTimers: true })
+
 describe('SearchHeader component', () => {
   const searchInputID = uuidv4()
 
   it('should render SearchHeader', async () => {
-    jest.useFakeTimers({
-      legacyFakeTimers: true,
-    })
     const renderAPI = render(<SearchHeader searchInputID={searchInputID} />)
     await act(async () => {})
 
