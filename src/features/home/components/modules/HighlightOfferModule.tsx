@@ -116,7 +116,14 @@ const UnmemoizedHighlightOfferModule = (props: HighlightOfferModuleProps) => {
           </TouchableContent>
         </StyledTouchableLink>
         <FavoriteButtonContainer>
-          <FavoriteButton offerId={parseInt(offerId)} />
+          <FavoriteButton
+            offerId={parseInt(offerId)}
+            analyticsParams={{
+              from: 'highlightOffer',
+              moduleId: props.id,
+              moduleName: props.highlightTitle,
+            }}
+          />
         </FavoriteButtonContainer>
         <Spacer.Column numberOfSpaces={6} />
       </View>
