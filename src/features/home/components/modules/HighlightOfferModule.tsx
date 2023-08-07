@@ -91,6 +91,13 @@ const UnmemoizedHighlightOfferModule = (props: HighlightOfferModuleProps) => {
               offerId: +offerId,
               categoryId,
             })
+            analytics.logConsultOffer({
+              offerId: +offerId,
+              from: 'highlightOffer',
+              moduleId: props.id,
+              moduleName: props.highlightTitle,
+              homeEntryId: props.homeEntryId,
+            })
           }}>
           <TouchableContent>
             <OfferImage source={{ uri: props.image }}>

@@ -15,6 +15,7 @@ export type Referrals =
   | 'bookingimpossible'
   | 'deeplink'
   | 'exclusivity'
+  | 'highlightOffer'
   | 'setemail'
   | 'similar_offer'
   | 'video'

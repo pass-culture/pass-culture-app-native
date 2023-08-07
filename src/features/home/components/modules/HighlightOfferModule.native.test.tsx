@@ -49,6 +49,25 @@ describe('HighlightOfferModule', () => {
       'entryId'
     )
   })
+
+  it('should send analytics event on offer press', async () => {
+    mockUseHighlightOffer.mockReturnValueOnce(offerFixture)
+
+    renderHighlightModule()
+
+    await act(async () => {
+      fireEvent.press(screen.getByText(highlightOfferModuleFixture.offerTitle))
+    })
+
+    expect(analytics.logConsultOffer).toHaveBeenCalledTimes(1)
+    expect(analytics.logConsultOffer).toHaveBeenCalledWith({
+      offerId: +offerFixture.objectID,
+      from: 'highlightOffer',
+      moduleId: 'fH2FmoYeTzZPjhbz4ZHUW',
+      moduleName: 'L’offre du moment 💥',
+      homeEntryId: 'entryId',
+    })
+  })
 })
 
 const renderHighlightModule = () => {
