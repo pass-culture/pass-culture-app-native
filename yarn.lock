@@ -6953,10 +6953,10 @@
     lodash "^4.17.15"
     redent "^3.0.0"
 
-"@testing-library/jest-native@^5.4.1":
-  version "5.4.1"
-  resolved "https://registry.yarnpkg.com/@testing-library/jest-native/-/jest-native-5.4.1.tgz#88ae27943996551970de5d722525200f9f7cbc96"
-  integrity sha512-VOyJp8LdBpwoG33xjeCcF59Fh9FDUJUjEFdFPbc/3TtVRze+5bSjFMeADEDZ9R2/AM/Qii0q1cPv7Tjk8JkSSw==
+"@testing-library/jest-native@^5.4.2":
+  version "5.4.2"
+  resolved "https://registry.yarnpkg.com/@testing-library/jest-native/-/jest-native-5.4.2.tgz#6b0c987cc57f8d900763e763025d00d26ccbc85f"
+  integrity sha512-Vo/CE1uvCVH1H8YPoOEXLXVsm+BjzSQTq35+wkri1fr0O5D+A2WZ+m3ni5g6f1OCzNKNGIAHmisBEWkDs1P1mw==
   dependencies:
     chalk "^4.1.2"
     jest-diff "^29.0.1"
@@ -6964,10 +6964,10 @@
     pretty-format "^29.0.3"
     redent "^3.0.0"
 
-"@testing-library/react-native@^11.5.4":
-  version "11.5.4"
-  resolved "https://registry.yarnpkg.com/@testing-library/react-native/-/react-native-11.5.4.tgz#5c57c0c5afc3f1960ff491aba68f66adc899e1cc"
-  integrity sha512-6DRzMHqili5pp1JRm7fh80SAP48aR25b37gohlLoKbqGBpDw8BbZTad7Luzktm9MU5DQUm7xyzg07Z1CyveVFA==
+"@testing-library/react-native@^12.1.3":
+  version "12.2.0"
+  resolved "https://registry.yarnpkg.com/@testing-library/react-native/-/react-native-12.2.0.tgz#72d4feed1c21c9c089f6184a1564fb46c22bb9b1"
+  integrity sha512-0r9xCPfy8+IiB8en5viKjiOx0aVUoCOZDUH8lET0R8SEb4/R2sdCTO4UIZjpm9OIA+j5MKt6YSfc4yjF72hE8g==
   dependencies:
     pretty-format "^29.0.0"
 
