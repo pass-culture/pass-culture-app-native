@@ -4,6 +4,8 @@ import { render, checkAccessibilityFor, screen } from 'tests/utils/web'
 
 import { ForceUpdate } from './ForceUpdate'
 
+jest.mock('features/forceUpdate/helpers/useMinimalBuildNumber')
+
 describe('<ForceUpdate/>', () => {
   it('should not display the web app button', () => {
     render(<ForceUpdate resetErrorBoundary={() => null} />)
