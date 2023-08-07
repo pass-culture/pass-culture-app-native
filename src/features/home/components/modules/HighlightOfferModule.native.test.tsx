@@ -4,6 +4,7 @@ import { navigate } from '__mocks__/@react-navigation/native'
 import { useHighlightOffer } from 'features/home/api/useHighlightOffer'
 import { HighlightOfferModule } from 'features/home/components/modules/HighlightOfferModule'
 import { highlightOfferModuleFixture } from 'features/home/fixtures/highlightOfferModule.fixture'
+import { analytics } from 'libs/analytics'
 import { offersFixture } from 'shared/offer/offer.fixture'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, fireEvent, render, screen } from 'tests/utils'
@@ -34,9 +35,27 @@ describe('HighlightOfferModule', () => {
 
     expect(screen.queryByText(highlightOfferModuleFixture.highlightTitle)).toBeFalsy()
   })
+
+  it('should send analytics event on module display', async () => {
+    renderHighlightModule()
+
+    await act(async () => {})
+
+    expect(analytics.logModuleDisplayedOnHomepage).toHaveBeenCalledTimes(1)
+    expect(analytics.logModuleDisplayedOnHomepage).toHaveBeenCalledWith(
+      'fH2FmoYeTzZPjhbz4ZHUW',
+      'highlightOffer',
+      0,
+      'entryId'
+    )
+  })
 })
 
 const renderHighlightModule = () => {
-  // eslint-disable-next-line local-rules/no-react-query-provider-hoc
-  return render(reactQueryProviderHOC(<HighlightOfferModule {...highlightOfferModuleFixture} />))
+  return render(
+    // eslint-disable-next-line local-rules/no-react-query-provider-hoc
+    reactQueryProviderHOC(
+      <HighlightOfferModule {...highlightOfferModuleFixture} index={0} homeEntryId="entryId" />
+    )
+  )
 }
