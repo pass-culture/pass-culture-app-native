@@ -22,7 +22,7 @@ const mockedIdentity: Partial<UserProfileResponse> = {
   phoneNumber: '+33685974563',
 }
 
-const useFeatureFlagSpy = jest.spyOn(useFeatureFlag, 'useFeatureFlag')
+const useFeatureFlagSpy = jest.spyOn(useFeatureFlag, 'useFeatureFlag').mockReturnValue(false)
 
 jest.mock('react-query')
 

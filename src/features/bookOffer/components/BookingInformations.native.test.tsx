@@ -32,7 +32,7 @@ jest.mock('libs/subcategories/useSubcategories', () => ({
   }),
 }))
 
-const mockUseFeatureFlag = jest.spyOn(useFeatureFlag, 'useFeatureFlag')
+const mockUseFeatureFlag = jest.spyOn(useFeatureFlag, 'useFeatureFlag').mockReturnValue(false)
 
 describe('<BookingInformations />', () => {
   it('should return empty component when no offer', async () => {
