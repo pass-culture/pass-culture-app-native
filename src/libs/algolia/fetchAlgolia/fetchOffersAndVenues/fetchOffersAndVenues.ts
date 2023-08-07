@@ -3,9 +3,9 @@ import { Hit, SearchResponse } from '@algolia/client-search'
 import { captureAlgoliaError } from 'libs/algolia/fetchAlgolia/AlgoliaError'
 import { buildOfferSearchParameters } from 'libs/algolia/fetchAlgolia/buildAlgoliaParameters/buildOfferSearchParameters'
 import { offerAttributesToRetrieve } from 'libs/algolia/fetchAlgolia/buildAlgoliaParameters/offerAttributesToRetrieve'
-import { client } from 'libs/algolia/fetchAlgolia/clients'
 import { buildSearchVenuePosition } from 'libs/algolia/fetchAlgolia/fetchOffersAndVenues/helpers/buildSearchVenuePosition'
 import { getSearchVenueQuery } from 'libs/algolia/fetchAlgolia/fetchOffersAndVenues/helpers/getSearchVenueQuery'
+import { multipleQueries } from 'libs/algolia/fetchAlgolia/multipleQueries'
 import { buildHitsPerPage } from 'libs/algolia/fetchAlgolia/utils'
 import { AlgoliaVenue, SearchQueryParameters } from 'libs/algolia/types'
 import { env } from 'libs/environment'
@@ -60,11 +60,9 @@ export const fetchOffersAndVenues = async ({
   ]
 
   try {
-    const response = await client.multipleQueries<Offer | AlgoliaVenue>(queries)
-    const [offersResponse, venuesResponse] = response.results as [
-      SearchResponse<Offer>,
-      SearchResponse<AlgoliaVenue>
-    ]
+    const [offersResponse, venuesResponse] = (await multipleQueries<Offer | AlgoliaVenue>(
+      queries
+    )) as [SearchResponse<Offer>, SearchResponse<AlgoliaVenue>]
 
     if (storeQueryID) storeQueryID(offersResponse.queryID)
 

@@ -3,7 +3,7 @@ import flatten from 'lodash/flatten'
 import { captureAlgoliaError } from 'libs/algolia/fetchAlgolia/AlgoliaError'
 import { buildOfferSearchParameters } from 'libs/algolia/fetchAlgolia/buildAlgoliaParameters/buildOfferSearchParameters'
 import { offerAttributesToRetrieve } from 'libs/algolia/fetchAlgolia/buildAlgoliaParameters/offerAttributesToRetrieve'
-import { client } from 'libs/algolia/fetchAlgolia/clients'
+import { multipleQueries } from 'libs/algolia/fetchAlgolia/multipleQueries'
 import { buildHitsPerPage } from 'libs/algolia/fetchAlgolia/utils'
 import { SearchQueryParameters } from 'libs/algolia/types'
 import { env } from 'libs/environment'
@@ -33,8 +33,7 @@ export const fetchMultipleOffers = async ({
   }))
 
   try {
-    const response = await client.multipleQueries<Offer>(queries)
-    const { results } = response
+    const results = await multipleQueries<Offer>(queries)
 
     return {
       hits: flatten(results.map(({ hits }) => hits)),

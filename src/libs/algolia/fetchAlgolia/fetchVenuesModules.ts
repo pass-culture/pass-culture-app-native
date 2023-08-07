@@ -1,8 +1,8 @@
 import { Venue, VenuesModuleParameters } from 'features/home/types'
 import { AlgoliaVenue } from 'libs/algolia'
 import { captureAlgoliaError } from 'libs/algolia/fetchAlgolia/AlgoliaError'
-import { client } from 'libs/algolia/fetchAlgolia/clients'
 import { buildVenuesModulesQueries } from 'libs/algolia/fetchAlgolia/helpers/buildVenuesModulesQueries'
+import { multipleQueries } from 'libs/algolia/fetchAlgolia/multipleQueries'
 import { Position } from 'libs/geolocation'
 import { VenueTypeCode } from 'libs/parsers'
 
@@ -13,8 +13,8 @@ export const fetchVenuesModules = async (
   const queries = buildVenuesModulesQueries({ paramsList, userLocation })
 
   try {
-    const allResults = await client.multipleQueries<AlgoliaVenue>(queries)
-    const algoliaVenuesList = allResults.results.map(({ hits: hit }) => hit)
+    const results = await multipleQueries<AlgoliaVenue>(queries)
+    const algoliaVenuesList = results.map(({ hits: hit }) => hit)
     return algoliaVenuesList.map((algoliaVenues) => algoliaVenues.map(buildVenue))
   } catch (error) {
     captureAlgoliaError(error)
