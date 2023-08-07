@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components/native'
 
-import { ConsultOfferAnalyticsParams } from 'libs/analytics/types'
+import { OfferAnalyticsParams } from 'libs/analytics/types'
 import { Offer } from 'shared/offer/types'
 import { Separator } from 'ui/components/Separator'
 import { HorizontalOfferTile } from 'ui/components/tiles/HorizontalOfferTile'
@@ -10,7 +10,7 @@ import { Spacer, getSpacing } from 'ui/theme'
 interface OfferListProps {
   offers: Offer[]
   hideModal: () => void
-  analyticsParams: ConsultOfferAnalyticsParams
+  analyticsParams: OfferAnalyticsParams
 }
 
 export const VideoMultiOfferList: React.FC<OfferListProps> = ({

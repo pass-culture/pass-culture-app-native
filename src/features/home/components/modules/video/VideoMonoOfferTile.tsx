@@ -5,7 +5,7 @@ import styled from 'styled-components/native'
 
 import { getTagColor } from 'features/home/components/helpers/getTagColor'
 import { analytics } from 'libs/analytics'
-import { ConsultOfferAnalyticsParams } from 'libs/analytics/types'
+import { OfferAnalyticsParams } from 'libs/analytics/types'
 import { formatDates, getDisplayPrice } from 'libs/parsers'
 import { useCategoryHomeLabelMapping, useCategoryIdMapping } from 'libs/subcategories'
 import { Offer } from 'shared/offer/types'
@@ -19,7 +19,7 @@ type Props = {
   offer: Offer
   color: string
   hideModal: () => void
-  analyticsParams: ConsultOfferAnalyticsParams
+  analyticsParams: OfferAnalyticsParams
   style?: StyleProp<ViewStyle>
 }
 

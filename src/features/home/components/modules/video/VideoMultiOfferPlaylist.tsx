@@ -1,7 +1,7 @@
 import React, { FunctionComponent } from 'react'
 
 import { VideoMultiOfferTile } from 'features/home/components/modules/video/VideoMultiOfferTile'
-import { ConsultOfferAnalyticsParams } from 'libs/analytics/types'
+import { OfferAnalyticsParams } from 'libs/analytics/types'
 import { Offer } from 'shared/offer/types'
 import { theme } from 'theme'
 import { CustomListRenderItem, Playlist } from 'ui/components/Playlist'
@@ -13,7 +13,7 @@ const PLAYLIST_ITEM_WIDTH = theme.tiles.sizes['large'].width
 type Props = {
   offers: Offer[]
   hideModal: () => void
-  analyticsParams: ConsultOfferAnalyticsParams
+  analyticsParams: OfferAnalyticsParams
 }
 
 export const VideoMultiOfferPlaylist: FunctionComponent<Props> = ({

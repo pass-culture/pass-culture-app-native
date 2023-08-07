@@ -4,14 +4,14 @@ import { navigate } from '__mocks__/@react-navigation/native'
 import { mockedAlgoliaResponse } from 'libs/algolia/__mocks__/mockedAlgoliaResponse'
 import * as logClickOnProductAPI from 'libs/algolia/analytics/logClickOnOffer'
 import { analytics } from 'libs/analytics'
-import { ConsultOfferAnalyticsParams } from 'libs/analytics/types'
+import { OfferAnalyticsParams } from 'libs/analytics/types'
 import { fireEvent, render, screen } from 'tests/utils'
 
 import { HorizontalOfferTile } from './HorizontalOfferTile'
 
 const mockOffer = mockedAlgoliaResponse.hits[0]
 const offerId = Number(mockOffer.objectID)
-const mockAnalyticsParams: ConsultOfferAnalyticsParams = {
+const mockAnalyticsParams: OfferAnalyticsParams = {
   from: 'search',
   query: '',
   index: 0,

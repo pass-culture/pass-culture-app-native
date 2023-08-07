@@ -12,13 +12,14 @@ import { TabParamList, TabRouteName } from '../TabBar/types'
 
 export type Referrals =
   | Lowercase<keyof AllNavParamList>
+  | 'bookingimpossible'
   | 'deeplink'
   | 'exclusivity'
-  | 'bookingimpossible'
-  | 'similar_offer'
+  | 'highlightOffer'
   | 'setemail'
-  | 'videoModal'
+  | 'similar_offer'
   | 'video'
+  | 'videoModal'
 
 type BaseThematicHome = {
   homeId: string

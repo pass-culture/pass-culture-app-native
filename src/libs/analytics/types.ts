@@ -14,7 +14,7 @@ export type AnalyticsProvider = {
   logEvent: (eventName: EventName, params?: Record<string, unknown>) => Promise<void>
 } & typeof logEventAnalytics
 
-export type ConsultOfferAnalyticsParams = {
+export type OfferAnalyticsParams = {
   from: Referrals
   query?: string
   index?: number

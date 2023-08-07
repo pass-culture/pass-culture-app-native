@@ -1,4 +1,4 @@
-import React, { memo, useState } from 'react'
+import React, { memo, useEffect, useState } from 'react'
 import { View } from 'react-native'
 import LinearGradient from 'react-native-linear-gradient'
 import styled, { DefaultTheme, useTheme } from 'styled-components/native'
@@ -6,7 +6,9 @@ import styled, { DefaultTheme, useTheme } from 'styled-components/native'
 import { useHighlightOffer } from 'features/home/api/useHighlightOffer'
 import { BlackCaption } from 'features/home/components/BlackCaption'
 import { getGradientColors } from 'features/home/components/helpers/getGradientColors'
-import { HighlightOfferModule as HighlightOfferModuleProps } from 'features/home/types'
+import { HighlightOfferModule as HighlightOfferModuleType } from 'features/home/types'
+import { analytics } from 'libs/analytics'
+import { ContentTypes } from 'libs/contentful/types'
 import { formatDates, getDisplayPrice } from 'libs/parsers'
 import { useCategoryHomeLabelMapping, useCategoryIdMapping } from 'libs/subcategories'
 import { usePrePopulateOffer } from 'shared/offer/usePrePopulateOffer'
@@ -25,6 +27,11 @@ const getColorBackgroundHeight = (offerDetailsHeight: number) => {
   return OFFER_IMAGE_HEIGHT / 2 + offerDetailsHeight + BOTTOM_SPACER
 }
 
+type HighlightOfferModuleProps = HighlightOfferModuleType & {
+  index: number
+  homeEntryId: string | undefined
+}
+
 const UnmemoizedHighlightOfferModule = (props: HighlightOfferModuleProps) => {
   const highlightOffer = useHighlightOffer(props.id, props.offerId)
   const [offerDetailsHeight, setOfferDetailsHeight] = useState(0)
@@ -32,6 +39,16 @@ const UnmemoizedHighlightOfferModule = (props: HighlightOfferModuleProps) => {
   const categoryIdMapping = useCategoryIdMapping()
   const prePopulateOffer = usePrePopulateOffer()
   const { isDesktopViewport } = useTheme()
+
+  useEffect(() => {
+    analytics.logModuleDisplayedOnHomepage(
+      props.id,
+      ContentTypes.HIGHLIGHT_OFFER,
+      props.index,
+      props.homeEntryId
+    )
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
 
   if (!highlightOffer) return null
   const { offer, venue, objectID: offerId } = highlightOffer
@@ -74,6 +91,13 @@ const UnmemoizedHighlightOfferModule = (props: HighlightOfferModuleProps) => {
               offerId: +offerId,
               categoryId,
             })
+            analytics.logConsultOffer({
+              offerId: +offerId,
+              from: 'highlightOffer',
+              moduleId: props.id,
+              moduleName: props.highlightTitle,
+              homeEntryId: props.homeEntryId,
+            })
           }}>
           <TouchableContent>
             <OfferImage source={{ uri: props.image }}>
@@ -92,7 +116,14 @@ const UnmemoizedHighlightOfferModule = (props: HighlightOfferModuleProps) => {
           </TouchableContent>
         </StyledTouchableLink>
         <FavoriteButtonContainer>
-          <FavoriteButton offerId={parseInt(offerId)} />
+          <FavoriteButton
+            offerId={parseInt(offerId)}
+            analyticsParams={{
+              from: 'highlightOffer',
+              moduleId: props.id,
+              moduleName: props.highlightTitle,
+            }}
+          />
         </FavoriteButtonContainer>
         <Spacer.Column numberOfSpaces={6} />
       </View>

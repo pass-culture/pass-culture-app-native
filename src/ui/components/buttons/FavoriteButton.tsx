@@ -9,6 +9,7 @@ import { FavoriteListSurveyModal } from 'features/favorites/favoriteList/FakeDoo
 import { UseRouteType } from 'features/navigation/RootNavigator/types'
 import { SignUpSignInChoiceOfferModal } from 'features/offer/components/SignUpSignInChoiceOfferModal/SignUpSignInChoiceOfferModal'
 import { analytics } from 'libs/analytics'
+import { OfferAnalyticsParams } from 'libs/analytics/types'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { storage } from 'libs/storage'
@@ -25,6 +26,7 @@ interface Props {
     iconBorderColor: Animated.AnimatedInterpolation
     transition: Animated.AnimatedInterpolation
   }
+  analyticsParams?: OfferAnalyticsParams
 }
 
 export const FavoriteButton: React.FC<Props> = (props) => {
@@ -56,11 +58,9 @@ export const FavoriteButton: React.FC<Props> = (props) => {
 
   const { mutate: addFavorite, isLoading: addFavoriteIsLoading } = useAddFavorite({
     onSuccess: () => {
-      if (typeof offerId === 'number') {
-        if (params) {
-          const { from, moduleName, moduleId, searchId } = params
-          analytics.logHasAddedOfferToFavorites({ from, offerId, moduleName, moduleId, searchId })
-        }
+      if (typeof offerId === 'number' && (props.analyticsParams ?? params)) {
+        const { from, moduleName, moduleId, searchId } = props.analyticsParams ?? params
+        analytics.logHasAddedOfferToFavorites({ from, offerId, moduleName, moduleId, searchId })
       }
     },
   })
