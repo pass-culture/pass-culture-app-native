@@ -1,0 +1,29 @@
+{
+  "ESLint Rule": {
+    "prefix": "eslint-rule",
+    "scope": "javascript",
+    "body": [
+      "module.exports = {",
+      "  meta: {",
+      "    docs: {",
+      "      description: '${1:rule description}',",
+      "    },",
+      "  },",
+      "  create(context) {",
+      "    return {",
+      "      '${2:Selector}':",
+      "        (node) => {",
+      "          context.report({",
+      "            node,",
+      "            message:",
+      "              '${3:error message}',",
+      "          })",
+      "        },",
+      "    }",
+      "  },",
+      "}",
+      ""
+      ],
+    "description": "Create a template for an ESLint rule"
+  }
+}
