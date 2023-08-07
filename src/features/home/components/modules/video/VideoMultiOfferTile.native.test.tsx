@@ -4,13 +4,13 @@ import { navigate } from '__mocks__/@react-navigation/native'
 import { VideoMultiOfferTile } from 'features/home/components/modules/video/VideoMultiOfferTile'
 import { mockedAlgoliaResponse } from 'libs/algolia/__mocks__/mockedAlgoliaResponse'
 import { analytics } from 'libs/analytics'
-import { ConsultOfferAnalyticsParams } from 'libs/analytics/types'
+import { OfferAnalyticsParams } from 'libs/analytics/types'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, fireEvent, render, screen } from 'tests/utils'
 
 const mockOffer = mockedAlgoliaResponse.hits[0]
 
-const mockAnalyticsParams: ConsultOfferAnalyticsParams = {
+const mockAnalyticsParams: OfferAnalyticsParams = {
   from: 'home',
   moduleId: 'abcd',
   moduleName: 'salut à tous c’est lujipeka',

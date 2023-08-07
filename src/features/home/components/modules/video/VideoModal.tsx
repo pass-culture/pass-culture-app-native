@@ -8,7 +8,7 @@ import { VideoMultiOfferList } from 'features/home/components/modules/video/Vide
 import { VideoPlayer } from 'features/home/components/modules/video/VideoPlayer'
 import { VideoModule } from 'features/home/types'
 import { analytics } from 'libs/analytics'
-import { ConsultOfferAnalyticsParams } from 'libs/analytics/types'
+import { OfferAnalyticsParams } from 'libs/analytics/types'
 import { ContentTypes } from 'libs/contentful/types'
 import { formatToFrenchDate } from 'libs/parsers'
 import { Offer } from 'shared/offer/types'
@@ -34,7 +34,7 @@ export const VideoModal: React.FC<VideoModalProps> = (props) => {
     size: theme.icons.sizes.smaller,
   }))``
 
-  const analyticsParams: ConsultOfferAnalyticsParams = {
+  const analyticsParams: OfferAnalyticsParams = {
     moduleId: props.id,
     moduleName: props.title,
     from: 'videoModal',

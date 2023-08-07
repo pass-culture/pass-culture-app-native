@@ -1,6 +1,6 @@
 import { VenueAccessibilityModel, VenueContactModel } from 'api/gen'
 import { SearchQueryParameters, VenueHit } from 'libs/algolia'
-import { ConsultOfferAnalyticsParams } from 'libs/analytics/types'
+import { OfferAnalyticsParams } from 'libs/analytics/types'
 import { VenueTypeCode } from 'libs/parsers'
 import { Offer } from 'shared/offer/types'
 
@@ -265,7 +265,7 @@ export interface VideoModuleProps extends VideoModule {
   homeEntryId: string
   shouldShowModal: boolean
   isMultiOffer: boolean
-  analyticsParams: ConsultOfferAnalyticsParams
+  analyticsParams: OfferAnalyticsParams
   showVideoModal: () => void
   hideVideoModal: () => void
   offers: Offer[]
