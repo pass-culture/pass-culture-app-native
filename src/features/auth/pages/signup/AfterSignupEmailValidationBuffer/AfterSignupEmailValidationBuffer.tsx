@@ -7,17 +7,21 @@ import { useValidateEmailMutation } from 'features/auth/api/useValidateEmailMuta
 import { useLoginRoutine } from 'features/auth/helpers/useLoginRoutine'
 import { UseNavigationType, UseRouteType } from 'features/navigation/RootNavigator/types'
 import { homeNavConfig } from 'features/navigation/TabBar/helpers'
+import { useDeviceInfo } from 'features/trustedDevice/helpers/useDeviceInfo'
 import { analytics } from 'libs/analytics'
 import { CampaignEvents, campaignTracker } from 'libs/campaign'
 import { isTimestampExpired } from 'libs/dates'
 // eslint-disable-next-line no-restricted-imports
 import { firebaseAnalytics } from 'libs/firebase/analytics'
+import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
+import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { LoadingPage } from 'ui/components/LoadingPage'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 
 export function AfterSignupEmailValidationBuffer() {
   const { showInfoSnackBar } = useSnackBarContext()
-
+  const enableTrustedDevice = useFeatureFlag(RemoteStoreFeatureFlags.WIP_ENABLE_TRUSTED_DEVICE)
+  const deviceInfo = useDeviceInfo()
   const { replace } = useNavigation<UseNavigationType>()
   const delayedReplace: typeof replace = (...args: Parameters<typeof replace>) => {
     setTimeout(() => {
@@ -27,8 +31,15 @@ export function AfterSignupEmailValidationBuffer() {
 
   const { params } = useRoute<UseRouteType<'AfterSignupEmailValidationBuffer'>>()
 
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  useEffect(beforeEmailValidation, [])
+  useEffect(() => {
+    // Wait for feature flag state to be fetched from Firestore
+    if (enableTrustedDevice === undefined) return
+    // Wait for device info when feature flag is active
+    if (enableTrustedDevice && !deviceInfo) return
+
+    beforeEmailValidation()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [enableTrustedDevice, enableTrustedDevice && !deviceInfo])
 
   const loginRoutine = useLoginRoutine()
 
@@ -42,8 +53,10 @@ export function AfterSignupEmailValidationBuffer() {
       delayedReplace('SignupConfirmationExpiredLink', { email: params.email })
       return
     }
+
     validateEmail({
       emailValidationToken: params.token,
+      deviceInfo: enableTrustedDevice ? deviceInfo : undefined,
     })
   }
 

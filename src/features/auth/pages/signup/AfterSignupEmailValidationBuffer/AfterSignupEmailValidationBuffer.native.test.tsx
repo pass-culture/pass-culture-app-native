@@ -1,8 +1,10 @@
 import mockdate from 'mockdate'
 import { rest } from 'msw'
 import React from 'react'
+import DeviceInfo from 'react-native-device-info'
 
 import { navigate, replace, useRoute } from '__mocks__/@react-navigation/native'
+import { api } from 'api/api'
 import { UserProfileResponse } from 'api/gen'
 import * as Login from 'features/auth/helpers/useLoginRoutine'
 import { homeNavConfig } from 'features/navigation/TabBar/helpers'
@@ -13,9 +15,10 @@ import * as datesLib from 'libs/dates'
 import { env } from 'libs/environment'
 // eslint-disable-next-line no-restricted-imports
 import { firebaseAnalytics } from 'libs/firebase/analytics'
+import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { server } from 'tests/server'
-import { render, waitFor } from 'tests/utils'
+import { act, render, waitFor } from 'tests/utils'
 import { SNACK_BAR_TIME_OUT } from 'ui/components/snackBar/SnackBarContext'
 import { SnackBarHelperSettings } from 'ui/components/snackBar/types'
 
@@ -33,6 +36,11 @@ jest.mock('ui/components/snackBar/SnackBarContext', () => ({
     showInfoSnackBar: jest.fn((props: SnackBarHelperSettings) => mockShowInfoSnackBar(props)),
   }),
 }))
+
+jest.spyOn(DeviceInfo, 'getModel').mockReturnValue('iPhone 13')
+jest.spyOn(DeviceInfo, 'getSystemName').mockReturnValue('iOS')
+const useFeatureFlagSpy = jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockReturnValue(false)
+const apiValidateEmailSpy = jest.spyOn(api, 'postnativev1validateEmail')
 
 // eslint-disable-next-line local-rules/no-react-query-provider-hoc
 const renderPage = () => render(reactQueryProviderHOC(<AfterSignupEmailValidationBuffer />))
@@ -68,6 +76,8 @@ describe('<AfterSignupEmailValidationBuffer />', () => {
         )
       )
       mockLoginRoutine.mockImplementationOnce(() => loginRoutine)
+      mockLoginRoutine.mockImplementationOnce(() => loginRoutine) // second render because of useDeviceInfo
+
       renderPage()
 
       await waitFor(() => {
@@ -93,6 +103,8 @@ describe('<AfterSignupEmailValidationBuffer />', () => {
         )
       )
       mockLoginRoutine.mockImplementationOnce(() => loginRoutine)
+      mockLoginRoutine.mockImplementationOnce(() => loginRoutine) // second render because of useDeviceInfo
+
       renderPage()
 
       await waitFor(() => {
@@ -194,8 +206,7 @@ describe('<AfterSignupEmailValidationBuffer />', () => {
 
   describe('when timestamp is expired', () => {
     it('should redirect to SignupConfirmationExpiredLink', async () => {
-      // eslint-disable-next-line local-rules/independent-mocks
-      jest.spyOn(datesLib, 'isTimestampExpired').mockReturnValue(true)
+      jest.spyOn(datesLib, 'isTimestampExpired').mockReturnValueOnce(true)
       renderPage()
 
       await waitFor(() => {
@@ -203,6 +214,41 @@ describe('<AfterSignupEmailValidationBuffer />', () => {
         expect(replace).toHaveBeenCalledWith('SignupConfirmationExpiredLink', {
           email: 'john@wick.com',
         })
+      })
+    })
+  })
+
+  describe('Email validation API call', () => {
+    it('should validate email without device info when feature flag is disabled', async () => {
+      renderPage()
+
+      await act(() => {})
+
+      expect(apiValidateEmailSpy).toHaveBeenCalledTimes(1)
+      expect(apiValidateEmailSpy).toHaveBeenCalledWith({
+        deviceInfo: undefined,
+        emailValidationToken: 'reerereskjlmkdlsf',
+      })
+    })
+
+    it('should validate email with device info when feature flag is active', async () => {
+      useFeatureFlagSpy.mockReturnValueOnce(true) // first render
+      useFeatureFlagSpy.mockReturnValueOnce(true) // second render because of useDeviceInfo
+      useFeatureFlagSpy.mockReturnValueOnce(true) // third render because of useMutation
+      useFeatureFlagSpy.mockReturnValueOnce(true) // fourth render because of useMutation
+
+      renderPage()
+
+      await act(() => {})
+
+      expect(apiValidateEmailSpy).toHaveBeenCalledTimes(1)
+      expect(apiValidateEmailSpy).toHaveBeenCalledWith({
+        deviceInfo: {
+          deviceId: 'ad7b7b5a169641e27cadbdb35adad9c4ca23099a',
+          os: 'iOS',
+          source: 'iPhone 13',
+        },
+        emailValidationToken: 'reerereskjlmkdlsf',
       })
     })
   })
