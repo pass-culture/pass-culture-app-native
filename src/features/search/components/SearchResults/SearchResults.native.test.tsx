@@ -102,6 +102,8 @@ const Kourou: SuggestedPlace = {
 }
 const venue: Venue = mockedSuggestedVenues[0]
 
+jest.useFakeTimers({ legacyFakeTimers: true })
+
 describe('SearchResults component', () => {
   beforeAll(() => {
     mockHits = []
@@ -114,7 +116,6 @@ describe('SearchResults component', () => {
   })
 
   it('should render correctly', async () => {
-    jest.useFakeTimers('legacy')
     jest.advanceTimersByTime(2000)
     render(<SearchResults />)
     await act(async () => {})

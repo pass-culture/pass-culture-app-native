@@ -35,10 +35,9 @@ jest.mock('features/identityCheck/context/SubscriptionContextProvider', () => ({
   }),
 }))
 
-describe('<IdentityCheckEnd/>', () => {
-  beforeAll(() => jest.useFakeTimers('legacy'))
-  afterAll(() => jest.useRealTimers())
+jest.useFakeTimers({ legacyFakeTimers: true })
 
+describe('<IdentityCheckEnd/>', () => {
   it('should render correctly', () => {
     const renderAPI = render(<IdentityCheckEnd />)
     expect(renderAPI).toMatchSnapshot()

@@ -14,7 +14,7 @@ import { ForgottenPassword } from './ForgottenPassword'
 jest.mock('features/navigation/helpers')
 jest.mock('features/auth/context/SettingsContext')
 jest.mock('libs/monitoring')
-jest.useFakeTimers('legacy')
+jest.useFakeTimers({ legacyFakeTimers: true })
 
 const mockUseNetInfoContext = useNetInfoContextDefault as jest.Mock
 

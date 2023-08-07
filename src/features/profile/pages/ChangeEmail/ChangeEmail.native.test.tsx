@@ -16,7 +16,7 @@ import { SnackBarHelperSettings } from 'ui/components/snackBar/types'
 import { ChangeEmail } from './ChangeEmail'
 
 jest.mock('features/auth/context/AuthContext')
-jest.useFakeTimers('legacy')
+jest.useFakeTimers({ legacyFakeTimers: true })
 
 const mockShowSuccessSnackBar = jest.fn()
 const mockShowErrorSnackBar = jest.fn()
@@ -33,8 +33,6 @@ server.use(
     (_req, res, ctx) => res(ctx.status(200), ctx.json({ expiration: undefined }))
   )
 )
-
-jest.useFakeTimers('legacy')
 
 describe('<ChangeEmail/>', () => {
   beforeEach(simulateUpdateEmailSuccess)
