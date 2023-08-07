@@ -8,10 +8,12 @@ import { UseRouteType } from 'features/navigation/RootNavigator/types'
 import { useOffer } from 'features/offer/api/useOffer'
 import { useSimilarOffers } from 'features/offer/api/useSimilarOffers'
 import { BottomBanner } from 'features/offer/components/BottomBanner/BottomBanner'
+import { CTAButton } from 'features/offer/components/CTAButton/CTAButton'
 import { OfferBody } from 'features/offer/components/OfferBody/OfferBody'
 import { OfferHeader } from 'features/offer/components/OfferHeader/OfferHeader'
 import { OfferWebHead } from 'features/offer/components/OfferWebHead'
 import { PlaylistType } from 'features/offer/enums'
+import { getIsFreeDigitalOffer } from 'features/offer/helpers/getIsFreeDigitalOffer/getIsFreeDigitalOffer'
 import { getSearchGroupIdFromSubcategoryId } from 'features/offer/helpers/getSearchGroupIdFromSubcategoryId/getSearchGroupIdFromSubcategoryId'
 import { useCtaWordingAndAction } from 'features/offer/helpers/useCtaWordingAndAction/useCtaWordingAndAction'
 import { useOfferModal } from 'features/offer/helpers/useOfferModal/useOfferModal'
@@ -21,15 +23,6 @@ import useFunctionOnce from 'libs/hooks/useFunctionOnce'
 import { BatchEvent, BatchUser } from 'libs/react-native-batch'
 import { useSubcategories } from 'libs/subcategories/useSubcategories'
 import { useOpacityTransition } from 'ui/animations/helpers/useOpacityTransition'
-import { ButtonWithLinearGradient } from 'ui/components/buttons/buttonWithLinearGradient/ButtonWithLinearGradient'
-import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouchableLink'
-import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
-import {
-  ExternalNavigationProps,
-  InternalNavigationProps,
-  TouchableLinkGenericProps,
-} from 'ui/components/touchableLink/types'
-import { ExternalSite } from 'ui/svg/icons/ExternalSite'
 import { getSpacing, Spacer } from 'ui/theme'
 
 const trackEventHasSeenOffer = () => BatchUser.trackEvent(BatchEvent.hasSeenOffer)
@@ -57,6 +50,7 @@ export const Offer: FunctionComponent = () => {
   const { data: offer } = useOffer({ offerId })
   const { data } = useSubcategories()
   const { shouldUseAlgoliaRecommend } = useRemoteConfigContext()
+
   const subcategorySearchGroupId = getSearchGroupIdFromSubcategoryId(data, offer?.subcategoryId)
   const sameCategorySimilarOffers = useSimilarOffers({
     offerId,
@@ -75,6 +69,8 @@ export const Offer: FunctionComponent = () => {
   const hasOtherCategoriesSimilarOffers = Boolean(otherCategoriesSimilarOffers?.length)
 
   const fromOfferId = route.params?.fromOfferId
+
+  const isFreeDigitalOffer = getIsFreeDigitalOffer(offer)
 
   const logSameCategoryPlaylistVerticalScroll = useFunctionOnce(() => {
     return analytics.logPlaylistVerticalScroll({
@@ -191,6 +187,7 @@ export const Offer: FunctionComponent = () => {
               navigateTo={navigateTo}
               externalNav={externalNav}
               isDisabled={isDisabled}
+              isFreeDigitalOffer={isFreeDigitalOffer}
             />
             <Spacer.Column numberOfSpaces={bottomBannerText ? 4.5 : 6} />
           </CallToActionContainer>
@@ -201,38 +198,6 @@ export const Offer: FunctionComponent = () => {
       {CTAOfferModal}
     </Container>
   )
-}
-
-const CTAButton = ({
-  wording,
-  onPress,
-  isDisabled,
-  externalNav,
-  navigateTo,
-}: {
-  wording: string
-  onPress?: () => void
-  isDisabled?: boolean
-  externalNav?: ExternalNavigationProps['externalNav']
-  navigateTo?: InternalNavigationProps['navigateTo']
-}) => {
-  const commonLinkProps: TouchableLinkGenericProps = {
-    as: ButtonWithLinearGradient,
-    wording: wording,
-    onBeforeNavigate: onPress,
-    isDisabled: isDisabled,
-    isOnPressThrottled: true,
-  }
-
-  if (navigateTo) {
-    return <InternalTouchableLink navigateTo={navigateTo} {...commonLinkProps} />
-  }
-  if (externalNav) {
-    return (
-      <ExternalTouchableLink externalNav={externalNav} icon={ExternalSite} {...commonLinkProps} />
-    )
-  }
-  return <ButtonWithLinearGradient wording={wording} onPress={onPress} isDisabled={isDisabled} />
 }
 
 const Container = styled.View(({ theme }) => ({

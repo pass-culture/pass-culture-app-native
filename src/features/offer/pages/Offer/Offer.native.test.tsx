@@ -3,6 +3,7 @@ import { rest } from 'msw'
 import { mockedBookingApi } from '__mocks__/fixtures/booking'
 import { BookingsResponse, SearchGroupNameEnumv2 } from 'api/gen'
 import { useAuthContext } from 'features/auth/context/AuthContext'
+import { openUrl } from 'features/navigation/helpers/openUrl'
 import * as useSimilarOffers from 'features/offer/api/useSimilarOffers'
 import { PlaylistType } from 'features/offer/enums'
 import { offerResponseSnap } from 'features/offer/fixtures/offerResponse'
@@ -14,6 +15,7 @@ import { env } from 'libs/environment'
 import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { server } from 'tests/server'
 import { act, fireEvent, screen, waitFor } from 'tests/utils'
+import { SNACK_BAR_TIME_OUT } from 'ui/components/snackBar/SnackBarContext'
 
 /* TODO(PC-21140): Remove this mock when update to Jest 28
   In jest version 28, I don't bring that error :
@@ -32,7 +34,33 @@ jest.mock('libs/firebase/remoteConfig/RemoteConfigProvider', () => ({
   }),
 }))
 
+const mockShowErrorSnackBar = jest.fn()
+jest.mock('ui/components/snackBar/SnackBarContext', () => ({
+  useSnackBarContext: () => ({
+    showErrorSnackBar: mockShowErrorSnackBar,
+  }),
+}))
+
+jest.mock('features/navigation/helpers/openUrl')
+const mockedOpenUrl = openUrl as jest.MockedFunction<typeof openUrl>
+
 jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockReturnValue(true)
+
+const offerDigitalAndFree = {
+  isDigital: true,
+  stocks: [
+    {
+      id: 118929,
+      beginningDatetime: '2021-01-04T13:30:00',
+      price: 0,
+      isBookable: true,
+      isExpired: false,
+      isForbiddenToUnderage: false,
+      isSoldOut: false,
+      features: [],
+    },
+  ],
+}
 
 describe('<Offer />', () => {
   beforeEach(() => {
@@ -381,6 +409,217 @@ describe('<Offer />', () => {
 
     await waitFor(() => {
       expect(screen.queryByText('Réservation impossible')).toBeTruthy()
+    })
+  })
+
+  describe('When offer is digital and free and not already booked', () => {
+    const expectedResponse: BookingsResponse = {
+      ended_bookings: [],
+      hasBookingsAfter18: false,
+      ongoing_bookings: [
+        {
+          ...mockedBookingApi,
+          stock: {
+            ...mockedBookingApi.stock,
+            offer: { ...mockedBookingApi.stock.offer, ...offerDigitalAndFree },
+          },
+          dateUsed: '2023-02-14T10:10:08.800599Z',
+          completedUrl: 'https://www.google.fr/',
+        },
+      ],
+    }
+    describe('When booking API response is success', () => {
+      it('should directly book and redirect to the offer when pressing button to book the offer', async () => {
+        server.use(
+          rest.get(env.API_BASE_URL + '/native/v1/bookings', async (_, res, ctx) =>
+            res(ctx.status(200), ctx.json(expectedResponse))
+          )
+        )
+
+        server.use(
+          rest.post(env.API_BASE_URL + '/native/v1/bookings', (req, res, ctx) =>
+            res(ctx.status(200), ctx.json({ bookingId: 123 }))
+          )
+        )
+
+        // Multiple renders force us to mock auth context as loggedIn user in this test
+        // eslint-disable-next-line local-rules/independent-mocks
+        const newLocal = {
+          isLoggedIn: true,
+          setIsLoggedIn: jest.fn(),
+          isUserLoading: false,
+          refetchUser: jest.fn(),
+          user: beneficiaryUser,
+        }
+        // Multiple renders force us to mock auth context as loggedIn user in this test
+        // eslint-disable-next-line local-rules/independent-mocks
+        mockUseAuthContext.mockReturnValue(newLocal)
+
+        renderOfferPage(undefined, offerDigitalAndFree)
+
+        await act(async () => {
+          fireEvent.press(screen.getByText('Accéder à l’offre en ligne'))
+        })
+
+        expect(mockedOpenUrl).toHaveBeenNthCalledWith(1, 'https://www.google.fr/')
+      })
+
+      it('should not display an error message when pressing button to book the offer', async () => {
+        server.use(
+          rest.get(env.API_BASE_URL + '/native/v1/bookings', async (_, res, ctx) =>
+            res(ctx.status(200), ctx.json(expectedResponse))
+          )
+        )
+
+        server.use(
+          rest.post(env.API_BASE_URL + '/native/v1/bookings', (req, res, ctx) =>
+            res(ctx.status(200), ctx.json({ bookingId: 123 }))
+          )
+        )
+
+        // Multiple renders force us to mock auth context as loggedIn user in this test
+        // eslint-disable-next-line local-rules/independent-mocks
+        const newLocal = {
+          isLoggedIn: true,
+          setIsLoggedIn: jest.fn(),
+          isUserLoading: false,
+          refetchUser: jest.fn(),
+          user: beneficiaryUser,
+        }
+        // Multiple renders force us to mock auth context as loggedIn user in this test
+        // eslint-disable-next-line local-rules/independent-mocks
+        mockUseAuthContext.mockReturnValue(newLocal)
+
+        renderOfferPage(undefined, offerDigitalAndFree)
+
+        await act(async () => {
+          fireEvent.press(screen.getByText('Accéder à l’offre en ligne'))
+        })
+
+        expect(mockShowErrorSnackBar).not.toHaveBeenCalled()
+      })
+    })
+
+    describe('When booking API response is error', () => {
+      it('should not direclty redirect to the offer when pressing button to book the offer', async () => {
+        server.use(
+          rest.get(env.API_BASE_URL + '/native/v1/bookings', async (_, res, ctx) =>
+            res(ctx.status(200), ctx.json(expectedResponse))
+          )
+        )
+
+        server.use(
+          rest.post(env.API_BASE_URL + '/native/v1/bookings', (req, res, ctx) =>
+            res(ctx.status(400))
+          )
+        )
+
+        // Multiple renders force us to mock auth context as loggedIn user in this test
+        // eslint-disable-next-line local-rules/independent-mocks
+        const newLocal = {
+          isLoggedIn: true,
+          setIsLoggedIn: jest.fn(),
+          isUserLoading: false,
+          refetchUser: jest.fn(),
+          user: beneficiaryUser,
+        }
+        // Multiple renders force us to mock auth context as loggedIn user in this test
+        // eslint-disable-next-line local-rules/independent-mocks
+        mockUseAuthContext.mockReturnValue(newLocal)
+
+        renderOfferPage(undefined, offerDigitalAndFree)
+
+        await act(async () => {
+          fireEvent.press(screen.getByText('Accéder à l’offre en ligne'))
+        })
+
+        expect(mockedOpenUrl).not.toHaveBeenCalled()
+      })
+
+      it('should display an error message when pressing button to book the offer', async () => {
+        server.use(
+          rest.get(env.API_BASE_URL + '/native/v1/bookings', async (_, res, ctx) =>
+            res(ctx.status(200), ctx.json(expectedResponse))
+          )
+        )
+
+        server.use(
+          rest.post(env.API_BASE_URL + '/native/v1/bookings', (req, res, ctx) =>
+            res(ctx.status(400))
+          )
+        )
+
+        // Multiple renders force us to mock auth context as loggedIn user in this test
+        // eslint-disable-next-line local-rules/independent-mocks
+        const newLocal = {
+          isLoggedIn: true,
+          setIsLoggedIn: jest.fn(),
+          isUserLoading: false,
+          refetchUser: jest.fn(),
+          user: beneficiaryUser,
+        }
+        // Multiple renders force us to mock auth context as loggedIn user in this test
+        // eslint-disable-next-line local-rules/independent-mocks
+        mockUseAuthContext.mockReturnValue(newLocal)
+
+        renderOfferPage(undefined, offerDigitalAndFree)
+
+        await act(async () => {
+          fireEvent.press(screen.getByText('Accéder à l’offre en ligne'))
+        })
+
+        expect(mockShowErrorSnackBar).toHaveBeenNthCalledWith(1, {
+          message: 'Désolé, il est impossible d’ouvrir le lien. Réessaie plus tard.',
+          timeout: SNACK_BAR_TIME_OUT,
+        })
+      })
+    })
+  })
+
+  describe('When offer is digital and free and already booked', () => {
+    const expectedResponse: BookingsResponse = {
+      ended_bookings: [],
+      hasBookingsAfter18: false,
+      ongoing_bookings: [
+        {
+          ...mockedBookingApi,
+          stock: {
+            ...mockedBookingApi.stock,
+            offer: { ...mockedBookingApi.stock.offer, ...offerDigitalAndFree },
+          },
+          dateUsed: '2023-02-14T10:10:08.800599Z',
+          completedUrl: 'https://www.google.fr/',
+        },
+      ],
+    }
+
+    it('should directly redirect to the offer when pressing offer access button', async () => {
+      server.use(
+        rest.get(env.API_BASE_URL + '/native/v1/bookings', async (_, res, ctx) =>
+          res(ctx.status(200), ctx.json(expectedResponse))
+        )
+      )
+
+      // Multiple renders force us to mock auth context as loggedIn user in this test
+      // eslint-disable-next-line local-rules/independent-mocks
+      const newLocal = {
+        isLoggedIn: true,
+        setIsLoggedIn: jest.fn(),
+        isUserLoading: false,
+        refetchUser: jest.fn(),
+        user: { ...beneficiaryUser, bookedOffers: { 116656: 123 } },
+      }
+      // Multiple renders force us to mock auth context as loggedIn user in this test
+      // eslint-disable-next-line local-rules/independent-mocks
+      mockUseAuthContext.mockReturnValue(newLocal)
+
+      renderOfferPage(undefined, offerDigitalAndFree)
+
+      await act(async () => {
+        fireEvent.press(screen.getByText('Accéder à l’offre en ligne'))
+      })
+
+      expect(mockedOpenUrl).toHaveBeenCalledTimes(1)
     })
   })
 })
