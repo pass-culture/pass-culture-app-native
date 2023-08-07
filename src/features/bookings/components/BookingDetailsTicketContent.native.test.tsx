@@ -3,7 +3,7 @@ import React from 'react'
 import { SubcategoryIdEnum } from 'api/gen'
 import { BookingDetailsTicketContent } from 'features/bookings/components/BookingDetailsTicketContent'
 import { bookingsSnap } from 'features/bookings/fixtures/bookingsSnap'
-import { render } from 'tests/utils'
+import { render, screen } from 'tests/utils'
 
 describe('BookingDetailsTicketContent', () => {
   const originalBooking = bookingsSnap.ongoing_bookings[0]
@@ -20,29 +20,29 @@ describe('BookingDetailsTicketContent', () => {
   }
 
   it('should display the booking activation code when booking has one', () => {
-    const { getByText } = render(<BookingDetailsTicketContent booking={booking} />)
+    render(<BookingDetailsTicketContent booking={booking} />)
 
-    expect(getByText(booking.activationCode.code)).toBeTruthy()
+    expect(screen.getByText(booking.activationCode.code)).toBeTruthy()
   })
 
   it('should not display the booking token when booking has activation code', () => {
-    const { queryByText } = render(<BookingDetailsTicketContent booking={booking} />)
+    render(<BookingDetailsTicketContent booking={booking} />)
 
     // @ts-expect-error: type comes from bookingsSnap it's necessarily a string
-    expect(queryByText(booking.token)).toBeNull()
+    expect(screen.queryByText(booking.token)).toBeNull()
   })
 
   it('should display the booking token when booking has no activation code', () => {
-    const { getByText } = render(<BookingDetailsTicketContent booking={originalBooking} />)
+    render(<BookingDetailsTicketContent booking={originalBooking} />)
 
     // @ts-expect-error: type comes from bookingsSnap it's necessarily a string
-    expect(getByText(booking.token)).toBeTruthy()
+    expect(screen.getByText(booking.token)).toBeTruthy()
   })
 
   it('should display the access button offer when booking has activation code', () => {
-    const { getByText } = render(<BookingDetailsTicketContent booking={booking} />)
+    render(<BookingDetailsTicketContent booking={booking} />)
 
-    expect(getByText('Accéder à l’offre')).toBeTruthy()
+    expect(screen.getByText('Accéder à l’offre en ligne')).toBeTruthy()
   })
 
   it('should not display the access button offer when offer is not digital and booking has no activation code', () => {
@@ -57,8 +57,8 @@ describe('BookingDetailsTicketContent', () => {
         },
       },
     }
-    const { queryByText } = render(<BookingDetailsTicketContent booking={booking} />)
-    expect(queryByText('Accéder à l’offre')).toBeNull()
+    render(<BookingDetailsTicketContent booking={booking} />)
+    expect(screen.queryByText('Accéder à l’offre en ligne')).toBeNull()
   })
 
   it('should display the access button offer when offer is digital and booking has no activation code', () => {
@@ -73,8 +73,8 @@ describe('BookingDetailsTicketContent', () => {
         },
       },
     }
-    const { getByText } = render(<BookingDetailsTicketContent booking={booking} />)
-    expect(getByText('Accéder à l’offre')).toBeTruthy()
+    render(<BookingDetailsTicketContent booking={booking} />)
+    expect(screen.getByText('Accéder à l’offre en ligne')).toBeTruthy()
   })
 
   describe('EAN', () => {
@@ -89,10 +89,8 @@ describe('BookingDetailsTicketContent', () => {
           },
         },
       }
-      const { queryByTestId } = render(
-        <BookingDetailsTicketContent booking={bookingForBookOffer} />
-      )
-      expect(queryByTestId('ean')).toBeTruthy()
+      render(<BookingDetailsTicketContent booking={bookingForBookOffer} />)
+      expect(screen.queryByTestId('ean')).toBeTruthy()
     })
 
     it('should not display EAN when the offer is a book without an EAN', () => {
@@ -107,8 +105,8 @@ describe('BookingDetailsTicketContent', () => {
           },
         },
       }
-      const { queryByTestId } = render(<BookingDetailsTicketContent booking={bookingWithEan} />)
-      expect(queryByTestId('ean')).toBeNull()
+      render(<BookingDetailsTicketContent booking={bookingWithEan} />)
+      expect(screen.queryByTestId('ean')).toBeNull()
     })
 
     it('should not display EAN when the offer is not a book', () => {
@@ -122,8 +120,8 @@ describe('BookingDetailsTicketContent', () => {
           },
         },
       }
-      const { queryByTestId } = render(<BookingDetailsTicketContent booking={bookingWithEan} />)
-      expect(queryByTestId('ean')).toBeNull()
+      render(<BookingDetailsTicketContent booking={bookingWithEan} />)
+      expect(screen.queryByTestId('ean')).toBeNull()
     })
   })
 })
