@@ -58,11 +58,9 @@ export const FavoriteButton: React.FC<Props> = (props) => {
 
   const { mutate: addFavorite, isLoading: addFavoriteIsLoading } = useAddFavorite({
     onSuccess: () => {
-      if (typeof offerId === 'number') {
-        if (props.analyticsParams ?? params) {
-          const { from, moduleName, moduleId, searchId } = props.analyticsParams ?? params
-          analytics.logHasAddedOfferToFavorites({ from, offerId, moduleName, moduleId, searchId })
-        }
+      if (typeof offerId === 'number' && (props.analyticsParams ?? params)) {
+        const { from, moduleName, moduleId, searchId } = props.analyticsParams ?? params
+        analytics.logHasAddedOfferToFavorites({ from, offerId, moduleName, moduleId, searchId })
       }
     },
   })
