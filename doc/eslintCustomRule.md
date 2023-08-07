@@ -2,6 +2,8 @@
 
 ## Mode opératoire
 
+En cas de doute, la règle [use-the-right-test-utils](../eslint-custom-rules/use-the-right-test-utils.js) est bon exemple de règle ESLint custom.
+
 ### 1. Vérifier qu'il n'y a pas une règle existante
 
 Créer une règle custom a un coût, de part sa création, mais aussi par son maintien en place. Donc, s'il existe une règle existante (fournie par une lib elle-même par exemple), il est préférable de l'utiliser directement.
