@@ -9,8 +9,9 @@
 
 ## Tasks
 
-- [ ] Tests web qui fail
-      L'erreur est la suivante :
+- [ ] 93 tests suites qui fail en web
+
+L'erreur est la suivante :
 
 ```
   FAIL src/ui/components/touchableLink/ExternalTouchableLink.web.test.tsx
@@ -57,7 +58,7 @@
         at Object.<anonymous> (src/libs/firebase/shims/firestore/index.web.ts:2:1)
 ```
 
-J'ai essayé de fix le problème en ajoutant ceci dans le jest.web.config qui règle quasiement toutes les erreurs :
+J'ai essayé de fix le problème en ajoutant ceci dans le jest.web.config qui règle quasiement toutes les erreurs (plus que 8 tests suites qui fail), mais c'est peut-être pas la solution la plus propre :
 
 ```
 transformIgnorePatterns: [
