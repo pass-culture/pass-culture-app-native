@@ -157,7 +157,7 @@ export const useModalContent = (
           onLeftIconPress: undefined,
         }
     return getBookingStepModalContent(
-      enablePricesByCategories,
+      !!enablePricesByCategories,
       bookingStepModalLeftIconProps,
       stocks,
       offer.isDuo
