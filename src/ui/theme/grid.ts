@@ -15,6 +15,7 @@ export const MARGIN_DP = 24
 export const GUTTER_DP = 16
 
 // Vertical constants for homepage modules
+export const LENGTH_XXS = PixelRatio.roundToNearestPixel(4 * MARGIN_DP)
 export const LENGTH_XS = PixelRatio.roundToNearestPixel(6 * MARGIN_DP)
 export const LENGTH_S = PixelRatio.roundToNearestPixel(7 * MARGIN_DP)
 export const LENGTH_M = PixelRatio.roundToNearestPixel(9 * MARGIN_DP)

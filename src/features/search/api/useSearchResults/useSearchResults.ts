@@ -1,6 +1,6 @@
 import { Hit, SearchResponse } from '@algolia/client-search'
 import flatten from 'lodash/flatten'
-import { useMemo, useRef } from 'react'
+import { useMemo, useRef, useState } from 'react'
 import { useInfiniteQuery } from 'react-query'
 
 import { useIsUserUnderage } from 'features/profile/helpers/useIsUserUnderage'
@@ -34,7 +34,7 @@ export const useSearchInfiniteQuery = (searchState: SearchState) => {
     RemoteStoreFeatureFlags.WIP_ENABLE_VENUES_IN_SEARCH_RESULTS
   )
 
-  let venues: Hit<AlgoliaVenue>[] = []
+  const [venues, setVenues] = useState<Hit<AlgoliaVenue>[]>([])
 
   const { data, ...infiniteQuery } = useInfiniteQuery<SearchOfferResponse>(
     [QueryKeys.SEARCH_RESULTS, { ...searchState, view: undefined }],
@@ -47,7 +47,8 @@ export const useSearchInfiniteQuery = (searchState: SearchState) => {
           storeQueryID: setCurrentQueryID,
           excludedObjectIds: previousPageObjectIds.current,
         })
-        venues = venuesResponse.hits
+
+        setVenues(venuesResponse.hits)
         analytics.logPerformSearch(searchState, offersResponse.nbHits)
 
         previousPageObjectIds.current = offersResponse.hits.map((hit: Hit<Offer>) => hit.objectID)

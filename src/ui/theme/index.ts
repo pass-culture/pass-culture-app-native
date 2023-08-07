@@ -6,6 +6,7 @@ export { Typo } from 'ui/theme/typography'
 export {
   MARGIN_DP,
   GUTTER_DP,
+  LENGTH_XXS,
   LENGTH_XS,
   LENGTH_S,
   LENGTH_M,
