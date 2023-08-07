@@ -1,4 +1,5 @@
 import React from 'react'
+import { FlatList } from 'react-native-gesture-handler'
 import styled from 'styled-components/native'
 
 import { ConsultOfferAnalyticsParams } from 'libs/analytics/types'
@@ -20,22 +21,34 @@ export const VideoMultiOfferList: React.FC<OfferListProps> = ({
 }) => {
   return (
     <React.Fragment>
-      {offers.map((offer: Offer) => (
-        <React.Fragment key={offer.objectID}>
-          <HorizontalOfferTile
-            offer={offer}
-            onPress={hideModal}
-            analyticsParams={analyticsParams}
-          />
-          <StyledSeparator />
-        </React.Fragment>
-      ))}
+      <FlatList
+        ItemSeparatorComponent={ItemSeparatorComponent}
+        data={offers}
+        renderItem={({ item }) => (
+          <React.Fragment key={item.objectID}>
+            <HorizontalOfferTile
+              offer={item}
+              onPress={hideModal}
+              analyticsParams={analyticsParams}
+            />
+          </React.Fragment>
+        )}
+      />
+      <Spacer.Column numberOfSpaces={4} />
       <Spacer.BottomScreen />
     </React.Fragment>
   )
 }
 
-const StyledSeparator = styled(Separator)({
+const ItemSeparatorContainer = styled.View({
   height: 2,
   marginVertical: getSpacing(4),
 })
+
+function ItemSeparatorComponent() {
+  return (
+    <ItemSeparatorContainer>
+      <Separator />
+    </ItemSeparatorContainer>
+  )
+}
