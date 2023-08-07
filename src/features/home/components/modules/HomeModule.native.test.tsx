@@ -152,6 +152,7 @@ describe('<HomeModule />', () => {
   })
 
   // TODO(PC-23671): Fix this VideoModule test
+  // eslint-disable-next-line jest/no-disabled-tests
   it.skip('should display VideoModule', async () => {
     renderHomeModule(videoModuleFixture)
 
@@ -178,6 +179,7 @@ describe('<HomeModule />', () => {
   })
 
   // TODO(PC-23671): Fix this VenuesModule test
+  // eslint-disable-next-line jest/no-disabled-tests
   it.skip('should display VenuesModule', async () => {
     renderHomeModule(formattedVenuesModule)
 
