@@ -20,7 +20,7 @@
   - [ ] src/features/home/components/modules/video/VideoModal.native.test.tsx
   - [ ] src/features/home/components/modules/video/VideoPlayer.native.test.tsx
   - [ ] src/features/cookies/components/CookiesSettings.native.test.tsx
-  - [ ] src/ui/components/touchable/**tests**/Touchable.native.test.tsx
+  - [x] src/ui/components/touchable/**tests**/Touchable.native.test.tsx
 
 - [ ] 1 test web ❌
   - [ ] src/features/cookies/helpers/setMarketingParams.test.ts
