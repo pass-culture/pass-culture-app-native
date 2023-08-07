@@ -32,7 +32,7 @@ export const ReinitializePassword = () => {
 
   const route = useRoute<UseRouteType<'ReinitializePassword'>>()
   const navigation = useNavigation<UseNavigationType>()
-  const { showSuccessSnackBar } = useSnackBarContext()
+  const { showSuccessSnackBar, showErrorSnackBar } = useSnackBarContext()
 
   const [isTimestampExpirationVerified, setIsTimestampExpirationVerified] = useState(false)
   const {
@@ -66,13 +66,21 @@ export const ReinitializePassword = () => {
     trigger('confirmedPassword')
   }, [password, trigger])
 
-  const { mutate: resetPassword, isLoading } = useResetPasswordMutation(() => {
-    showSuccessSnackBar({
-      message: 'Ton mot de passe est modifié\u00a0!',
-      timeout: SNACK_BAR_TIME_OUT,
-    })
-    analytics.logHasChangedPassword('resetPassword')
-    navigation.navigate('Login')
+  const { mutate: resetPassword, isLoading } = useResetPasswordMutation({
+    onSuccess: () => {
+      showSuccessSnackBar({
+        message: 'Ton mot de passe est modifié\u00a0!',
+        timeout: SNACK_BAR_TIME_OUT,
+      })
+      analytics.logHasChangedPassword('resetPassword')
+      navigation.navigate('Login')
+    },
+    onError: () => {
+      showErrorSnackBar({
+        message: 'Une erreur s’est produite pendant la modification de ton mot de passe.',
+        timeout: SNACK_BAR_TIME_OUT,
+      })
+    },
   })
 
   const submitPassword = useCallback(
