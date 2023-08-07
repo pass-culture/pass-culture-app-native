@@ -62,6 +62,19 @@ describe('buildSearchVenuePosition', () => {
         aroundRadius: convertKmToMeters(MAX_RADIUS),
       })
     })
+
+    it('should set "aroundRadius" to "all" when not provided', () => {
+      const aroundMeWithoutAroundRadius = {
+        ...aroundMeFilter,
+        aroundRadius: null,
+      }
+      const searchVenuePosition = buildSearchVenuePosition(
+        aroundMeWithoutAroundRadius,
+        userPosition
+      )
+
+      expect(searchVenuePosition.aroundRadius).toEqual('all')
+    })
   })
 
   describe('When user does not share his position', () => {
