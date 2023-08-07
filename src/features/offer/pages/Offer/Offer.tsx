@@ -13,6 +13,7 @@ import { OfferBody } from 'features/offer/components/OfferBody/OfferBody'
 import { OfferHeader } from 'features/offer/components/OfferHeader/OfferHeader'
 import { OfferWebHead } from 'features/offer/components/OfferWebHead'
 import { PlaylistType } from 'features/offer/enums'
+import { getIsFreeDigitalOffer } from 'features/offer/helpers/getIsFreeDigitalOffer/getIsFreeDigitalOffer'
 import { getSearchGroupIdFromSubcategoryId } from 'features/offer/helpers/getSearchGroupIdFromSubcategoryId/getSearchGroupIdFromSubcategoryId'
 import { useCtaWordingAndAction } from 'features/offer/helpers/useCtaWordingAndAction/useCtaWordingAndAction'
 import { useOfferModal } from 'features/offer/helpers/useOfferModal/useOfferModal'
@@ -69,7 +70,7 @@ export const Offer: FunctionComponent = () => {
 
   const fromOfferId = route.params?.fromOfferId
 
-  const isFreeDigitalOffer = (offer?.isDigital && offer?.stocks[0]?.price === 0) ?? false
+  const isFreeDigitalOffer = getIsFreeDigitalOffer(offer)
 
   const logSameCategoryPlaylistVerticalScroll = useFunctionOnce(() => {
     return analytics.logPlaylistVerticalScroll({

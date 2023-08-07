@@ -22,6 +22,7 @@ import { useBookOfferMutation } from 'features/bookOffer/api/useBookOfferMutatio
 import { openUrl } from 'features/navigation/helpers'
 import { OfferModal } from 'features/offer/enums'
 import { getBookingOfferId } from 'features/offer/helpers/getBookingOfferId/getBookingOfferId'
+import { getIsFreeDigitalOffer } from 'features/offer/helpers/getIsFreeDigitalOffer/getIsFreeDigitalOffer'
 import { isUserUnderageBeneficiary } from 'features/profile/helpers/isUserUnderageBeneficiary'
 import { analytics } from 'libs/analytics'
 import { useSubcategoriesMapping } from 'libs/subcategories'
@@ -80,11 +81,11 @@ export const getCtaWordingAndAction = ({
   isBookingLoading,
   booking,
 }: Props): ICTAWordingAndAction | undefined => {
-  const { externalTicketOfficeUrl, isDigital, stocks, subcategoryId } = offer
+  const { externalTicketOfficeUrl, subcategoryId } = offer
 
   const isAlreadyBookedOffer = getIsBookedOffer(offer.id, bookedOffers)
 
-  const isFreeDigitalOffer = isDigital && stocks[0].price === 0
+  const isFreeDigitalOffer = getIsFreeDigitalOffer(offer)
 
   if (!isLoggedIn) {
     return {

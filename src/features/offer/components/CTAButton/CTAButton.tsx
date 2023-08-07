@@ -1,11 +1,11 @@
-import React from 'react'
+import React, { useMemo } from 'react'
 
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { ButtonWithLinearGradient } from 'ui/components/buttons/buttonWithLinearGradient/ButtonWithLinearGradient'
 import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouchableLink'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { ExternalNavigationProps, InternalNavigationProps } from 'ui/components/touchableLink/types'
-import { ExternalSite } from 'ui/svg/icons/ExternalSite'
+import { ExternalSite as ExternalSiteIcon } from 'ui/svg/icons/ExternalSite'
 
 type CTAButtonProps = {
   wording: string
@@ -33,14 +33,21 @@ export function CTAButton({
     isOnPressDebounced: true,
   }
 
-  const shouldDisplayIconInButton = isFreeDigitalOffer && isLoggedIn
+  const buttonIcon = useMemo(
+    () => (isFreeDigitalOffer && isLoggedIn ? ExternalSiteIcon : undefined),
+    [isFreeDigitalOffer, isLoggedIn]
+  )
 
   if (navigateTo) {
     return <InternalTouchableLink navigateTo={navigateTo} {...commonLinkProps} />
   }
   if (externalNav) {
     return (
-      <ExternalTouchableLink externalNav={externalNav} icon={ExternalSite} {...commonLinkProps} />
+      <ExternalTouchableLink
+        externalNav={externalNav}
+        icon={ExternalSiteIcon}
+        {...commonLinkProps}
+      />
     )
   }
   return (
@@ -48,7 +55,7 @@ export function CTAButton({
       wording={wording}
       onPress={onPress}
       isDisabled={isDisabled}
-      icon={shouldDisplayIconInButton ? ExternalSite : undefined}
+      icon={buttonIcon}
     />
   )
 }
