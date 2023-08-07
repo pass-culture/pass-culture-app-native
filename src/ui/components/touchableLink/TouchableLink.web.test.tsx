@@ -45,12 +45,7 @@ describe('<TouchableLink />', () => {
     expect(handleNavigationMock).not.toHaveBeenCalled()
   })
 
-  // FIXME(LucasBeneston): Problem with fireEvent + altKey
-  // current behavior : when clicking with alt pressed (using fireEvent) the onClick function is not called
-  // expected behavior : when clicking with alt pressed (using fireEvent) the onClick function should be called without doing the navigation
-  // the test should be well written but doesn't work for unknown reasons
-  // eslint-disable-next-line jest/no-disabled-tests
-  it.skip('should not handleNavigation when altKey', async () => {
+  it('should not handleNavigation when altKey', async () => {
     const handleNavigationMock = jest.fn()
     render(
       <TouchableLink handleNavigation={handleNavigationMock}>
