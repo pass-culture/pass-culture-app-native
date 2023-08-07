@@ -1,0 +1,21 @@
+appId: app.passculture.staging
+---
+# Launch App
+- runFlow: reusableFlows/LaunchApp.yml
+# First Launch
+- runFlow: reusableFlows/FirstLaunch.yml
+
+- tapOn: "Mon profil"
+- scrollUntilVisible:
+    element: "Confidentialité"
+    direction: DOWN
+- tapOn: "Confidentialité"
+- scrollUntilVisible:
+      element: "Enregistrer mes choix"
+      direction: DOWN
+- tapOn: "Enregistrer mes choix"
+- assertVisible:
+    id: "Confidentialité"
+
+# Stop App
+- runFlow: reusableFlows/StopApp.yml

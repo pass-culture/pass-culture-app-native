@@ -1,0 +1,3 @@
+appId: 'app.passculture.staging'
+---
+- stopApp: app.passculture.staging

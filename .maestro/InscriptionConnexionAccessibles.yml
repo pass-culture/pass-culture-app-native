@@ -1,0 +1,18 @@
+appId: app.passculture.staging
+---
+# Launch App
+- runFlow: reusableFlows/LaunchApp.yml
+# First Launch
+- runFlow: reusableFlows/FirstLaunch.yml
+
+- tapOn: "Mon profil"
+- tapOn: "Se connecter"
+- assertVisible: "Connecte-toi"
+- tapOn:
+    id: "icon-back"
+- tapOn: "Créer un compte"
+- assertVisible: "Crée-toi un compte"
+- tapOn: "Revenir en arrière"
+
+# Stop App
+- runFlow: reusableFlows/StopApp.yml

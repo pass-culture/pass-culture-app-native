@@ -1,0 +1,31 @@
+appId: app.passculture.staging
+---
+# Launch App
+- runFlow: reusableFlows/LaunchApp.yml
+# First Launch
+- runFlow: reusableFlows/FirstLaunch.yml
+
+- tapOn: "Mon profil"
+- scrollUntilVisible:
+      element: "Facebook"
+      direction: DOWN
+- tapOn: "Facebook"
+- tapOn: "Retour"
+- tapOn: "Retour"
+- tapOn: "Tiktok"
+- tapOn: "Applications récentes"
+- tapOn:
+    id: "com.sec.android.app.launcher:id/snapshot"
+    index: 0
+- tapOn: "Twitter"
+- tapOn: "Retour"
+- tapOn: "Retour"
+- tapOn: "Instagram"
+- tapOn: "Retour"
+- tapOn: "Applications récentes"
+- tapOn:
+    id: "com.sec.android.app.launcher:id/snapshot"
+    index: 0
+
+# Stop App
+- runFlow: reusableFlows/StopApp.yml

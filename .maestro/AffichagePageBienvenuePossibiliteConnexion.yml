@@ -1,0 +1,18 @@
+appId: app.passculture.staging
+---
+# Launch App
+- runFlow: reusableFlows/LaunchApp.yml
+# First Launch
+- runFlow: reusableFlows/FirstLaunch.yml
+
+- assertVisible: "Bienvenue\_!"
+- tapOn: "Débloque ton crédit"
+- scrollUntilVisible:
+    element: "Se connecter"
+    direction: DOWN
+- tapOn: "Se connecter"
+- tapOn: "Se connecter"
+- assertVisible: "Connecte-toi"
+
+# Stop App
+- runFlow: reusableFlows/StopApp.yml

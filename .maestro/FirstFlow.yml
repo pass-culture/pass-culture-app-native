@@ -1,7 +1,7 @@
-appId: 'app.passculture.test'
+appId: 'app.passculture.staging'
 ---
 - launchApp:
-    appId: 'app.passculture.test'
+    appId: 'app.passculture.staging'
     clearState: true
 
 # TODO: Trouver un mpyen de supprimer les alertes du simulateur

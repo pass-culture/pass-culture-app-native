@@ -1,0 +1,33 @@
+appId: app.passculture.staging
+---
+# Launch App
+- runFlow: reusableFlows/LaunchApp.yml
+# First Launch
+- runFlow: reusableFlows/FirstLaunch.yml
+
+- tapOn: "Mon profil"
+
+- scrollUntilVisible:
+      element: "Informations légales"
+      direction: DOWN
+- tapOn: "Informations légales"
+#- tapOn: "Informations légales"
+
+- scrollUntilVisible:
+      element: "Conditions Générales d’Utilisation"
+      direction: DOWN
+- tapOn: "Conditions Générales d’Utilisation"
+- tapOn: "Retour"
+- tapOn: "Applications récentes"
+- tapOn:
+    id: "com.sec.android.app.launcher:id/snapshot"
+    index: 0
+- tapOn: "Charte de protection des données personnelles"
+- tapOn: "Applications récentes"
+- tapOn:
+    id: "com.sec.android.app.launcher:id/snapshot"
+    index: 0
+- tapOn: "Revenir en arrière"
+
+# Stop App
+- runFlow: reusableFlows/StopApp.yml

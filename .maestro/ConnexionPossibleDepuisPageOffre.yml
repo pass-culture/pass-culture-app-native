@@ -1,0 +1,22 @@
+appId: app.passculture.staging
+---
+# Launch App
+- runFlow: reusableFlows/LaunchApp.yml
+# First Launch
+- runFlow: reusableFlows/FirstLaunch.yml
+
+- tapOn:
+      id: "Rechercher des offres"
+#- tapOn:
+#    id: "Revenir en arrière"
+- tapOn: "Rechercher des offres"
+- tapOn: "Films, séries, cinéma"
+- tapOn:
+    point: "50%,49%"
+- tapOn:
+    id: "Réserver l’offre"
+- tapOn: "Se connecter"
+- assertVisible: "Connecte-toi"
+
+# Stop App
+- runFlow: reusableFlows/StopApp.yml

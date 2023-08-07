@@ -1,0 +1,37 @@
+appId: app.passculture.staging
+---
+# Launch App
+- runFlow: reusableFlows/LaunchApp.yml
+
+- tapOn: "Tout accepter"
+- tapOn: "C’est parti\_!"
+- tapOn: "Utiliser ma position"
+- scrollUntilVisible:
+      element: "Lorsque vous utilisez l'application"
+      direction: DOWN
+- tapOn: "Lorsque vous utilisez l'application"
+- tapOn:
+    id: "j’ai 18 ans"
+- tapOn: "Plus tard"
+- tapOn: "Mon profil"
+- tapOn:
+    id: "Interrupteur Partager ma position"
+- tapOn: "Désactiver la géolocalisation"
+- tapOn: "Autorisations"
+- tapOn: "Position"
+- tapOn: "Ne pas autoriser"
+- tapOn: "Retour"
+- tapOn: "Retour"
+- tapOn:
+    id: "Mon profil"
+- tapOn:
+    id: "Interrupteur Partager ma position"
+- tapOn: "Activer la géolocalisation"
+- tapOn: "Autorisations"
+- tapOn: "Position"
+- tapOn: "Autoriser seulement si l'appli est en cours d'utilisation"
+- tapOn: "Retour"
+- tapOn: "Retour"
+
+# Stop App
+- runFlow: reusableFlows/StopApp.yml

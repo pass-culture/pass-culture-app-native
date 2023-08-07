@@ -1,0 +1,26 @@
+appId: app.passculture.staging
+---
+# Launch App
+- runFlow: reusableFlows/LaunchApp.yml
+
+# First Launch
+- runFlow: reusableFlows/FirstLaunch.yml
+
+- tapOn: "Mon profil"
+- tapOn:
+      id: "Créer un compte"
+- assertVisible: "Crée-toi un compte"
+- inputText: "nicolas.turchetti+test1@passculture.app"
+- tapOn: "J’accepte de recevoir les newsletters, bons plans et recommandations personnalisé\
+    es du pass Culture."
+- tapOn:
+      id: "J’accepte de recevoir les newsletters, bons plans et recommandations personnalisé\
+      es du pass Culture."
+- tapOn: "Continuer vers l’étape Mot de passe"
+- inputText: "/S9c8xF7[hG~Z[bYAP<-uhL}ia&PTv"
+- tapOn: "Continuer vers l’étape Date de naissance"
+- tapOn: "Quitter"
+- tapOn: "Abandonner l’inscription"
+
+# Stop App
+- runFlow: reusableFlows/StopApp.yml

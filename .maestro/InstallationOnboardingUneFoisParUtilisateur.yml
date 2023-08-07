@@ -1,0 +1,24 @@
+appId: app.passculture.staging
+---
+
+# Launch App
+- runFlow: reusableFlows/LaunchApp.yml
+
+- tapOn: "Tout refuser"
+- tapOn:
+    id: "C’est parti\_!"
+- tapOn: "Passer"
+- tapOn:
+    id: "j’ai 18 ans"
+- tapOn: "Plus tard"
+- tapOn: "Applications récentes"
+- tapOn: "Tout fermer"
+
+#- tapOn: "pass Culture S"
+- launchApp:
+      appId: 'app.passculture.staging'
+      clearState: false
+- assertVisible: "Bienvenue\_!"
+- assertVisible: "Débloque ton crédit"
+# Stop App
+- runFlow: reusableFlows/StopApp.yml

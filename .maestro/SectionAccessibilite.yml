@@ -1,0 +1,23 @@
+appId: app.passculture.staging
+---
+# Launch App
+- runFlow: reusableFlows/LaunchApp.yml
+# First Launch
+- runFlow: reusableFlows/FirstLaunch.yml
+- tapOn: "Mon profil"
+- scrollUntilVisible:
+    element: "Accessibilité"
+    direction: DOWN
+- tapOn: "Accessibilité"
+- tapOn: "Les engagements du pass Culture"
+- tapOn: "Revenir en arrière"
+- tapOn: "Parcours recommandés"
+- tapOn: "Revenir en arrière"
+- tapOn: "Déclaration d’accessibilité"
+- tapOn: "Revenir en arrière"
+- tapOn: "Schéma pluriannuel"
+- tapOn: "Revenir en arrière"
+- tapOn: "Revenir en arrière"
+
+# Stop App
+- runFlow: reusableFlows/StopApp.yml

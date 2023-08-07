@@ -1,0 +1,18 @@
+appId: app.passculture.staging
+---
+# Launch App
+- runFlow: reusableFlows/LaunchApp.yml
+# First Launch
+- runFlow: reusableFlows/FirstLaunch.yml
+
+- tapOn: "Mon profil"
+- tapOn: "Se connecter"
+- tapOn:
+    id: "Afficher le mot de passe"
+- tapOn:
+    id: "Afficher le mot de passe"
+- tapOn:
+    id: "Cacher le mot de passe"
+
+# Stop App
+- runFlow: reusableFlows/StopApp.yml

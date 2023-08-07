@@ -1,0 +1,17 @@
+appId: app.passculture.staging
+---
+# Launch App
+- runFlow: reusableFlows/LaunchApp.yml
+# First Launch
+- runFlow: reusableFlows/FirstLaunch.yml
+
+- tapOn: "Mon profil"
+- tapOn: "Nouvelle fenêtre\_: Centre d’aide"
+- assertVisible: "‎aide.passculture.app"
+- tapOn: "Applications récentes"
+- tapOn:
+    id: "com.sec.android.app.launcher:id/snapshot"
+    index: 0
+
+# Stop App
+- runFlow: reusableFlows/StopApp.yml
