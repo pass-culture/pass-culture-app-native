@@ -5,9 +5,10 @@ import { render, fireEvent, screen } from 'tests/utils/web'
 
 import { TouchableLink } from './TouchableLink'
 
+const handleNavigationMock = jest.fn()
+
 describe('<TouchableLink />', () => {
   it('should handleNavigation when no metaKey', async () => {
-    const handleNavigationMock = jest.fn()
     render(
       <TouchableLink handleNavigation={handleNavigationMock}>
         <Text>linkText</Text>
@@ -20,7 +21,6 @@ describe('<TouchableLink />', () => {
   })
 
   it('should not handleNavigation when metaKey', async () => {
-    const handleNavigationMock = jest.fn()
     render(
       <TouchableLink handleNavigation={handleNavigationMock}>
         <Text>linkText</Text>
@@ -33,7 +33,6 @@ describe('<TouchableLink />', () => {
   })
 
   it('should not handleNavigation when shiftKey', async () => {
-    const handleNavigationMock = jest.fn()
     render(
       <TouchableLink handleNavigation={handleNavigationMock}>
         <Text>linkText</Text>
@@ -46,7 +45,6 @@ describe('<TouchableLink />', () => {
   })
 
   it('should not handleNavigation when altKey', async () => {
-    const handleNavigationMock = jest.fn()
     render(
       <TouchableLink handleNavigation={handleNavigationMock}>
         <Text>linkText</Text>
@@ -59,7 +57,6 @@ describe('<TouchableLink />', () => {
   })
 
   it('should not handleNavigation when ctrlKey', async () => {
-    const handleNavigationMock = jest.fn()
     render(
       <TouchableLink handleNavigation={handleNavigationMock}>
         <Text>linkText</Text>
