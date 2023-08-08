@@ -25,7 +25,15 @@ const tests = {
     { code: '<Text>«&nbsp;myText</Text>' },
   ],
   invalid: [
-    // TODO(PC-21172): Add invalid tests (https://passculture.atlassian.net/browse/PC-21172)
+    { code: `'myText !'`, output: `'myText\\u00a0!'`, errors: 1 },
+    { code: `'« myText'`, output: `'«\\u00a0myText'`, errors: 1 },
+    { code: `\`myText :\`` ,output: `\`myText\\u00a0:\``, errors: 1 },
+    { code: `\`« myText\`` ,output: `\`«\\u00a0myText\``, errors: 1 },
+    { code: `"myText ?"` ,output: `"myText&nbsp;?"`, errors: 1 },
+    { code: `"« myText"` ,output: `"«&nbsp;myText"`, errors: 1 },
+    { code: '<Text>myText €</Text>' ,output: '<Text>myText&nbsp;€</Text>', errors: 1 },
+    { code: '<Text>« myText</Text>' ,output: '<Text>«&nbsp;myText</Text>', errors: 1 },
+
   ],
 }
 
