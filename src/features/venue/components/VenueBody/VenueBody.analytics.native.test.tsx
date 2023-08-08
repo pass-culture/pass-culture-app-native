@@ -22,15 +22,9 @@ jest.mock('libs/itinerary/useItinerary', () => ({
   })),
 }))
 
+jest.useFakeTimers({ legacyFakeTimers: true })
+
 describe('<VenueBody /> - Analytics', () => {
-  beforeAll(() => {
-    jest.useFakeTimers('legacy')
-  })
-
-  afterAll(() => {
-    jest.useRealTimers()
-  })
-
   const trigger = async (component: ReactTestInstance) => {
     await act(async () => {
       fireEvent.press(component)

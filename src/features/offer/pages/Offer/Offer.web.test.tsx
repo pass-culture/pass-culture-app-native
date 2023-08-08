@@ -4,9 +4,12 @@ import { OfferResponse } from 'api/gen'
 import { VenueListItem } from 'features/offer/components/VenueSelectionList/VenueSelectionList'
 import { offerResponseSnap } from 'features/offer/fixtures/offerResponse'
 import { Offer } from 'features/offer/pages/Offer/Offer'
+import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { placeholderData } from 'libs/subcategories/placeholderData'
+import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, checkAccessibilityFor, render } from 'tests/utils/web'
-jest.mock('react-query')
+
+jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockReturnValue(true)
 
 const mockedOffer: Partial<OfferResponse> | undefined = offerResponseSnap
 jest.mock('features/offer/api/useOffer', () => ({
@@ -60,7 +63,8 @@ describe('<Offer/>', () => {
   describe('Accessibility', () => {
     it('should not have basic accessibility issues', async () => {
       mockV4.mockReturnValueOnce('offerId')
-      const { container } = render(<Offer />)
+      // eslint-disable-next-line local-rules/no-react-query-provider-hoc
+      const { container } = render(reactQueryProviderHOC(<Offer />))
 
       await act(async () => {
         const results = await checkAccessibilityFor(container)

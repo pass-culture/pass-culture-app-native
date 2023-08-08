@@ -9,9 +9,9 @@ const Children = () => <View testID="accordion-child-view" />
 
 const accordionTitle = 'accordion title'
 
-describe('AccordionItem', () => {
-  beforeAll(() => jest.useFakeTimers('legacy'))
+jest.useFakeTimers({ legacyFakeTimers: true })
 
+describe('AccordionItem', () => {
   it("is closed by default - we don't see the children", () => {
     const accordion = renderAccordion()
     const accordionBody = accordion.getByTestId('accordionBody')

@@ -78,11 +78,9 @@ jest.mock('api/useSearchVenuesOffer/useSearchVenueOffers', () => ({
   }),
 }))
 
-describe('<OfferBody /> - Analytics', () => {
-  beforeAll(() => {
-    jest.useFakeTimers('legacy')
-  })
+jest.useFakeTimers({ legacyFakeTimers: true })
 
+describe('<OfferBody /> - Analytics', () => {
   const trigger = async (component: ReactTestInstance) => {
     fireEvent.press(component)
 

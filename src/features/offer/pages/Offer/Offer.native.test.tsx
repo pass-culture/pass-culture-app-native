@@ -62,9 +62,10 @@ const offerDigitalAndFree = {
   ],
 }
 
+jest.useFakeTimers({ legacyFakeTimers: true })
+
 describe('<Offer />', () => {
   beforeEach(() => {
-    jest.useFakeTimers('legacy')
     mockUseAuthContext.mockReturnValue({
       isLoggedIn: false,
       setIsLoggedIn: jest.fn(),

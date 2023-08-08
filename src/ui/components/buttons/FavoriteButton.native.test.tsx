@@ -69,11 +69,9 @@ const mockUseRemoveFavorite = () => {
   }))
 }
 
-describe('<FavoriteButton />', () => {
-  beforeAll(() => {
-    jest.useFakeTimers('legacy')
-  })
+jest.useFakeTimers({ legacyFakeTimers: true })
 
+describe('<FavoriteButton />', () => {
   it('should render favorite icon', async () => {
     renderOfferHeader()
     await act(async () => {})

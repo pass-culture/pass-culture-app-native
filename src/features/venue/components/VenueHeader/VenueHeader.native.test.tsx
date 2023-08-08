@@ -9,11 +9,9 @@ import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, fireEvent, render } from 'tests/utils'
 
 jest.mock('features/venue/api/useVenue')
+jest.useFakeTimers({ legacyFakeTimers: true })
 
 describe('<VenueHeader />', () => {
-  beforeAll(() => jest.useFakeTimers('legacy'))
-  afterAll(() => jest.useRealTimers())
-
   it('should render all icons', () => {
     const venueHeader = renderVenueHeader()
     expect(venueHeader.queryByTestId('animated-icon-back')).toBeTruthy()

@@ -17,9 +17,9 @@ jest.mock('ui/hooks/useElementHeight', () => ({
   })),
 }))
 
-describe('VenuePartialAccordionDescription', () => {
-  beforeEach(() => jest.useFakeTimers('legacy'))
+jest.useFakeTimers({ legacyFakeTimers: true })
 
+describe('VenuePartialAccordionDescription', () => {
   it("is closed by default and we don't see all the long description", () => {
     const { getByTestId } = render(<VenuePartialAccordionDescription description={description} />)
     const accordionBody = getByTestId('accordionBody')

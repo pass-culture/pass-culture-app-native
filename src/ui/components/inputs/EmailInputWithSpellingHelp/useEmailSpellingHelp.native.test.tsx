@@ -6,7 +6,7 @@ const initialProps: Parameters<typeof useEmailSpellingHelp>[0] = {
   email: '',
 }
 
-jest.useFakeTimers('legacy')
+jest.useFakeTimers({ legacyFakeTimers: true })
 
 describe('useEmailSpellingHelp', () => {
   it('should not display suggestion for empty email', () => {

@@ -22,17 +22,9 @@ const TestReviewComponent = () => {
   return null
 }
 
-describe('useShowReview', () => {
-  beforeAll(() => {
-    jest.useFakeTimers('legacy')
-  })
-  afterEach(() => {
-    jest.runOnlyPendingTimers()
-  })
-  afterAll(() => {
-    jest.useRealTimers()
-  })
+jest.useFakeTimers({ legacyFakeTimers: true })
 
+describe('useShowReview', () => {
   it('should show the review when it is available and we want to show it', () => {
     mockIsAvailable.mockReturnValueOnce(true)
     mockUseReviewInAppInformation.mockReturnValueOnce({ shouldReviewBeRequested: true })
