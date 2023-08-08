@@ -10,12 +10,17 @@ export const adaptHighlightOfferModule = (
   const offerImage = buildImageUrl(module.fields.offerImage.fields?.file.url)
   if (offerImage === undefined) return null
 
+  const { offerId, offerTag, offerEan } = module.fields
+  if (!offerId && !offerTag && !offerEan) return null
+
   return {
     type: HomepageModuleType.HighlightOfferModule,
     id: module.sys.id,
     highlightTitle: module.fields.highlightTitle,
     offerTitle: module.fields.offerTitle,
-    offerId: module.fields.offerId,
+    offerId,
+    offerTag,
+    offerEan,
     image: offerImage,
     color: module.fields.color,
   }

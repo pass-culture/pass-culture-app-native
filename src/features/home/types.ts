@@ -275,7 +275,9 @@ export type HighlightOfferModule = {
   id: string
   highlightTitle: string
   offerTitle: string
-  offerId: string
+  offerId?: string
+  offerTag?: string
+  offerEan?: string
   image: string
   color: Color
 }

@@ -33,7 +33,12 @@ type HighlightOfferModuleProps = HighlightOfferModuleType & {
 }
 
 const UnmemoizedHighlightOfferModule = (props: HighlightOfferModuleProps) => {
-  const highlightOffer = useHighlightOffer(props.id, props.offerId)
+  const highlightOffer = useHighlightOffer({
+    id: props.id,
+    offerId: props.offerId,
+    offerEan: props.offerEan,
+    offerTag: props.offerTag,
+  })
   const [offerDetailsHeight, setOfferDetailsHeight] = useState(0)
   const categoryLabelMapping = useCategoryHomeLabelMapping()
   const categoryIdMapping = useCategoryIdMapping()
