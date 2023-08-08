@@ -101,9 +101,7 @@ describe('GenericHome page - Analytics', () => {
     })
   })
 
-  // FIXME(PC-21142): fix this test
-  // eslint-disable-next-line jest/no-disabled-tests
-  it.skip('should trigger logEvent "AllModulesSeen" only once', async () => {
+  it('should trigger logEvent "AllModulesSeen" only once', async () => {
     renderGenericHome()
     const scrollView = await screen.findByTestId('homeBodyScrollView')
 

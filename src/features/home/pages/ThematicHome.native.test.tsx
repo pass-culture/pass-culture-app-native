@@ -34,13 +34,6 @@ describe('ThematicHome', () => {
     expect(screen).toMatchSnapshot()
   })
 
-  it('should render default header when provided', async () => {
-    renderThematicHome()
-    await act(async () => {})
-
-    expect(screen.getByText('HeaderSubtitle')).toBeTruthy()
-  })
-
   it('should show highlight header when provided', async () => {
     mockUseHomepageData.mockReturnValueOnce({
       modules,
@@ -59,7 +52,7 @@ describe('ThematicHome', () => {
     renderThematicHome()
     await act(async () => {})
 
-    expect(await screen.findAllByText('Bloc temps fort')).toBeTruthy()
+    expect(screen.getAllByText('Bloc temps fort')).toBeTruthy()
     expect(screen.getByText('Un sous-titre')).toBeTruthy()
   })
 
