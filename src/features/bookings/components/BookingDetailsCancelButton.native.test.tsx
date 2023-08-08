@@ -16,7 +16,7 @@ mockdate.set(new Date('2020-12-01T00:00:00Z'))
 jest.mock('shared/user/useAvailableCredit')
 jest.mock('features/auth/context/AuthContext')
 jest.mock('features/profile/helpers/isUserExBeneficiary')
-const mockedisUserExBeneficiary = jest.mocked(isUserExBeneficiary, true)
+const mockedisUserExBeneficiary = jest.mocked(isUserExBeneficiary)
 
 describe('<BookingDetailsCancelButton />', () => {
   it('should display the "Terminer" button for digital offers when booking has activation code', () => {
