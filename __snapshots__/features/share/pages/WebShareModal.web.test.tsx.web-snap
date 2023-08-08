@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<WebShareModal/> should render correctly when hidden 1`] = `
-Object {
+{
   "asFragment": [Function],
   "baseElement": <body
     tabindex="-1"
@@ -65,7 +65,7 @@ Object {
 `;
 
 exports[`<WebShareModal/> should render correctly when shown 1`] = `
-Object {
+{
   "asFragment": [Function],
   "baseElement": .c2 {
   -webkit-flex-direction: row;
