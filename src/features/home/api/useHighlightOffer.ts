@@ -17,6 +17,18 @@ type UseHightlightOfferParams = {
   offerTag?: string
 }
 
+enum QueryMode {
+  ID = 'ID',
+  TAG = 'TAG',
+  EAN = 'EAN',
+}
+
+const selectQueryMode = (offerTag?: string, offerEan?: string) => {
+  if (offerTag) return QueryMode.TAG
+  if (offerEan) return QueryMode.EAN
+  return QueryMode.ID
+}
+
 export const useHighlightOffer = ({
   id,
   offerId,
@@ -61,9 +73,17 @@ export const useHighlightOffer = ({
     })
   }
 
+  const queryByQueryMode = {
+    [QueryMode.ID]: offerByIdQuery,
+    [QueryMode.TAG]: offerByTagQuery,
+    [QueryMode.EAN]: offerByEanQuery,
+  }
+
+  const queryMode = selectQueryMode(offerTag, offerEan)
+
   const { data } = useQuery({
     queryKey: [QueryKeys.HIGHLIGHT_OFFER, id],
-    queryFn: offerEan ? offerByEanQuery : offerTag ? offerByTagQuery : offerByIdQuery,
+    queryFn: queryByQueryMode[queryMode],
     enabled: !!netInfo.isConnected,
   })
   const offers = (data?.map(transformOfferHits) as Offer[]) ?? []
