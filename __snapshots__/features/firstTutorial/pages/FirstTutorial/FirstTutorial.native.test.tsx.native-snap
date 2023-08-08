@@ -3,8 +3,8 @@
 exports[`FirstTutorial page should render first tutorial 1`] = `
 <View
   style={
-    Array [
-      Object {
+    [
+      {
         "alignItems": "center",
         "backgroundColor": "#ffffff",
         "display": "flex",
@@ -18,8 +18,8 @@ exports[`FirstTutorial page should render first tutorial 1`] = `
     customHeight={16}
     enable={true}
     style={
-      Array [
-        Object {
+      [
+        {
           "height": 16,
         },
       ]
@@ -27,8 +27,8 @@ exports[`FirstTutorial page should render first tutorial 1`] = `
   />
   <View
     style={
-      Array [
-        Object {
+      [
+        {
           "alignItems": "center",
           "display": "flex",
           "flexGrow": 1,
@@ -41,8 +41,8 @@ exports[`FirstTutorial page should render first tutorial 1`] = `
   >
     <View
       style={
-        Array [
-          Object {
+        [
+          {
             "alignSelf": "flex-end",
             "paddingHorizontal": 20,
           },
@@ -62,7 +62,7 @@ exports[`FirstTutorial page should render first tutorial 1`] = `
         onResponderTerminationRequest={[Function]}
         onStartShouldSetResponder={[Function]}
         style={
-          Object {
+          {
             "alignItems": "center",
             "backgroundColor": "transparent",
             "borderRadius": 24,
@@ -85,8 +85,8 @@ exports[`FirstTutorial page should render first tutorial 1`] = `
           adjustsFontSizeToFit={false}
           numberOfLines={1}
           style={
-            Array [
-              Object {
+            [
+              {
                 "color": "#696A6F",
                 "fontFamily": "Montserrat-Bold",
                 "fontSize": 15,
@@ -103,8 +103,8 @@ exports[`FirstTutorial page should render first tutorial 1`] = `
     </View>
     <View
       style={
-        Array [
-          Object {
+        [
+          {
             "flexBasis": 0,
             "flexGrow": 1,
             "flexShrink": 1,
@@ -116,7 +116,7 @@ exports[`FirstTutorial page should render first tutorial 1`] = `
       <View
         onLayout={[Function]}
         style={
-          Object {
+          {
             "backgroundColor": "transparent",
             "flex": 1,
           }
@@ -124,7 +124,7 @@ exports[`FirstTutorial page should render first tutorial 1`] = `
       >
         <View
           style={
-            Object {
+            {
               "backgroundColor": "transparent",
               "height": 0,
               "justifyContent": "space-between",
@@ -151,17 +151,17 @@ exports[`FirstTutorial page should render first tutorial 1`] = `
             onStartShouldSetResponder={[Function]}
             onStartShouldSetResponderCapture={[Function]}
             style={
-              Object {
+              {
                 "flexDirection": "row",
                 "height": 0,
                 "left": 0,
                 "position": "absolute",
                 "top": 0,
-                "transform": Array [
-                  Object {
+                "transform": [
+                  {
                     "translateX": 0,
                   },
-                  Object {
+                  {
                     "translateY": 0,
                   },
                 ],
@@ -171,7 +171,7 @@ exports[`FirstTutorial page should render first tutorial 1`] = `
           >
             <View
               style={
-                Object {
+                {
                   "flex": 1,
                   "height": 0,
                   "width": "100%",
@@ -181,8 +181,8 @@ exports[`FirstTutorial page should render first tutorial 1`] = `
               <View
                 accessibilityHidden={false}
                 style={
-                  Array [
-                    Object {
+                  [
+                    {
                       "flexBasis": 0,
                       "flexGrow": 1,
                       "flexShrink": 1,
@@ -194,8 +194,8 @@ exports[`FirstTutorial page should render first tutorial 1`] = `
                 <View
                   flex={2}
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "flexBasis": 0,
                         "flexGrow": 2,
                         "flexShrink": 1,
@@ -206,8 +206,8 @@ exports[`FirstTutorial page should render first tutorial 1`] = `
                 <View
                   accessibilityHidden={true}
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "alignItems": "center",
                         "flexGrow": 1,
                         "height": "30%",
@@ -223,8 +223,8 @@ exports[`FirstTutorial page should render first tutorial 1`] = `
                 <View
                   flex={1}
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "flexBasis": 0,
                         "flexGrow": 1,
                         "flexShrink": 1,
@@ -234,8 +234,8 @@ exports[`FirstTutorial page should render first tutorial 1`] = `
                 />
                 <View
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "overflowY": "auto",
                       },
                     ]
@@ -243,8 +243,8 @@ exports[`FirstTutorial page should render first tutorial 1`] = `
                 >
                   <Text
                     style={
-                      Array [
-                        Object {
+                      [
+                        {
                           "color": "#161617",
                           "fontFamily": "Montserrat-Black",
                           "fontSize": 26,
@@ -260,8 +260,8 @@ c’est...
                   <View
                     numberOfSpaces={4}
                     style={
-                      Array [
-                        Object {
+                      [
+                        {
                           "height": 16,
                         },
                       ]
@@ -269,8 +269,8 @@ c’est...
                   />
                   <Text
                     style={
-                      Array [
-                        Object {
+                      [
+                        {
                           "color": "#696A6F",
                           "fontFamily": "Montserrat-SemiBold",
                           "fontSize": 12,
@@ -286,8 +286,8 @@ c’est...
                 <View
                   flex={2}
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "flexBasis": 0,
                         "flexGrow": 2,
                         "flexShrink": 1,
@@ -299,8 +299,8 @@ c’est...
                   isSmallScreen={false}
                   paddingBottom={40}
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "flexBasis": 0,
                         "flexGrow": 1,
                         "flexShrink": 1,
@@ -314,7 +314,7 @@ c’est...
                     collapsable={false}
                     forwardedRef={[Function]}
                     style={
-                      Object {
+                      {
                         "opacity": 0,
                       }
                     }
@@ -332,7 +332,7 @@ c’est...
                       onResponderTerminationRequest={[Function]}
                       onStartShouldSetResponder={[Function]}
                       style={
-                        Object {
+                        {
                           "alignItems": "center",
                           "backgroundColor": "#eb0055",
                           "borderRadius": 24,
@@ -355,8 +355,8 @@ c’est...
                         adjustsFontSizeToFit={false}
                         numberOfLines={1}
                         style={
-                          Array [
-                            Object {
+                          [
+                            {
                               "color": "#ffffff",
                               "fontFamily": "Montserrat-Bold",
                               "fontSize": 15,
@@ -376,7 +376,7 @@ c’est...
             </View>
             <View
               style={
-                Object {
+                {
                   "flex": 1,
                   "height": 0,
                   "width": "100%",
@@ -386,8 +386,8 @@ c’est...
               <View
                 accessibilityHidden={true}
                 style={
-                  Array [
-                    Object {
+                  [
+                    {
                       "flexBasis": 0,
                       "flexGrow": 1,
                       "flexShrink": 1,
@@ -399,8 +399,8 @@ c’est...
                 <View
                   flex={2}
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "flexBasis": 0,
                         "flexGrow": 2,
                         "flexShrink": 1,
@@ -411,8 +411,8 @@ c’est...
                 <View
                   accessibilityHidden={true}
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "alignItems": "center",
                         "flexGrow": 1,
                         "height": "30%",
@@ -428,8 +428,8 @@ c’est...
                 <View
                   flex={1}
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "flexBasis": 0,
                         "flexGrow": 1,
                         "flexShrink": 1,
@@ -439,8 +439,8 @@ c’est...
                 />
                 <View
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "overflowY": "auto",
                       },
                     ]
@@ -448,8 +448,8 @@ c’est...
                 >
                   <Text
                     style={
-                      Array [
-                        Object {
+                      [
+                        {
                           "color": "#161617",
                           "fontFamily": "Montserrat-Black",
                           "fontSize": 26,
@@ -465,8 +465,8 @@ et si tu as...
                   <View
                     numberOfSpaces={4}
                     style={
-                      Array [
-                        Object {
+                      [
+                        {
                           "height": 16,
                         },
                       ]
@@ -474,8 +474,8 @@ et si tu as...
                   />
                   <View
                     style={
-                      Array [
-                        Object {
+                      [
+                        {
                           "flexDirection": "row",
                           "justifyContent": "center",
                         },
@@ -485,8 +485,8 @@ et si tu as...
                     <View
                       flex={0.5}
                       style={
-                        Array [
-                          Object {
+                        [
+                          {
                             "flexBasis": 0,
                             "flexGrow": 0.5,
                             "flexShrink": 1,
@@ -496,8 +496,8 @@ et si tu as...
                     />
                     <View
                       style={
-                        Array [
-                          Object {
+                        [
+                          {
                             "flexDirection": "column",
                           },
                         ]
@@ -505,16 +505,16 @@ et si tu as...
                     >
                       <View
                         style={
-                          Array [
-                            Object {
+                          [
+                            {
                               "backgroundColor": "#320096",
                               "borderRadius": 4,
                               "height": 20,
                               "justifyContent": "center",
                               "paddingHorizontal": 0,
                               "paddingVertical": 0,
-                              "transform": Array [
-                                Object {
+                              "transform": [
+                                {
                                   "rotate": "-4.34deg",
                                 },
                               ],
@@ -528,15 +528,15 @@ et si tu as...
                       >
                         <Text
                           style={
-                            Array [
-                              Object {
+                            [
+                              {
                                 "alignSelf": "center",
                                 "color": "#ffffff",
                                 "fontFamily": "Montserrat-SemiBold",
                                 "fontSize": 12,
                                 "lineHeight": 16,
-                                "transform": Array [
-                                  Object {
+                                "transform": [
+                                  {
                                     "rotate": "4.34deg",
                                   },
                                 ],
@@ -550,8 +550,8 @@ et si tu as...
                       <View
                         numberOfSpaces={1}
                         style={
-                          Array [
-                            Object {
+                          [
+                            {
                               "height": 4,
                             },
                           ]
@@ -559,8 +559,8 @@ et si tu as...
                       />
                       <Text
                         style={
-                          Array [
-                            Object {
+                          [
+                            {
                               "alignSelf": "center",
                               "color": "#161617",
                               "fontFamily": "Montserrat-SemiBold",
@@ -576,8 +576,8 @@ et si tu as...
                     <View
                       flex={0.25}
                       style={
-                        Array [
-                          Object {
+                        [
+                          {
                             "flexBasis": 0,
                             "flexGrow": 0.25,
                             "flexShrink": 1,
@@ -587,8 +587,8 @@ et si tu as...
                     />
                     <View
                       style={
-                        Array [
-                          Object {
+                        [
+                          {
                             "flexDirection": "column",
                           },
                         ]
@@ -596,16 +596,16 @@ et si tu as...
                     >
                       <View
                         style={
-                          Array [
-                            Object {
+                          [
+                            {
                               "backgroundColor": "#320096",
                               "borderRadius": 4,
                               "height": 20,
                               "justifyContent": "center",
                               "paddingHorizontal": 0,
                               "paddingVertical": 0,
-                              "transform": Array [
-                                Object {
+                              "transform": [
+                                {
                                   "rotate": "-4.34deg",
                                 },
                               ],
@@ -619,15 +619,15 @@ et si tu as...
                       >
                         <Text
                           style={
-                            Array [
-                              Object {
+                            [
+                              {
                                 "alignSelf": "center",
                                 "color": "#ffffff",
                                 "fontFamily": "Montserrat-SemiBold",
                                 "fontSize": 12,
                                 "lineHeight": 16,
-                                "transform": Array [
-                                  Object {
+                                "transform": [
+                                  {
                                     "rotate": "4.34deg",
                                   },
                                 ],
@@ -641,8 +641,8 @@ et si tu as...
                       <View
                         numberOfSpaces={1}
                         style={
-                          Array [
-                            Object {
+                          [
+                            {
                               "height": 4,
                             },
                           ]
@@ -650,8 +650,8 @@ et si tu as...
                       />
                       <Text
                         style={
-                          Array [
-                            Object {
+                          [
+                            {
                               "alignSelf": "center",
                               "color": "#161617",
                               "fontFamily": "Montserrat-SemiBold",
@@ -667,8 +667,8 @@ et si tu as...
                     <View
                       flex={0.25}
                       style={
-                        Array [
-                          Object {
+                        [
+                          {
                             "flexBasis": 0,
                             "flexGrow": 0.25,
                             "flexShrink": 1,
@@ -678,8 +678,8 @@ et si tu as...
                     />
                     <View
                       style={
-                        Array [
-                          Object {
+                        [
+                          {
                             "flexDirection": "column",
                           },
                         ]
@@ -687,16 +687,16 @@ et si tu as...
                     >
                       <View
                         style={
-                          Array [
-                            Object {
+                          [
+                            {
                               "backgroundColor": "#320096",
                               "borderRadius": 4,
                               "height": 20,
                               "justifyContent": "center",
                               "paddingHorizontal": 0,
                               "paddingVertical": 0,
-                              "transform": Array [
-                                Object {
+                              "transform": [
+                                {
                                   "rotate": "-4.34deg",
                                 },
                               ],
@@ -710,15 +710,15 @@ et si tu as...
                       >
                         <Text
                           style={
-                            Array [
-                              Object {
+                            [
+                              {
                                 "alignSelf": "center",
                                 "color": "#ffffff",
                                 "fontFamily": "Montserrat-SemiBold",
                                 "fontSize": 12,
                                 "lineHeight": 16,
-                                "transform": Array [
-                                  Object {
+                                "transform": [
+                                  {
                                     "rotate": "4.34deg",
                                   },
                                 ],
@@ -732,8 +732,8 @@ et si tu as...
                       <View
                         numberOfSpaces={1}
                         style={
-                          Array [
-                            Object {
+                          [
+                            {
                               "height": 4,
                             },
                           ]
@@ -741,8 +741,8 @@ et si tu as...
                       />
                       <Text
                         style={
-                          Array [
-                            Object {
+                          [
+                            {
                               "alignSelf": "center",
                               "color": "#161617",
                               "fontFamily": "Montserrat-SemiBold",
@@ -758,8 +758,8 @@ et si tu as...
                     <View
                       flex={0.25}
                       style={
-                        Array [
-                          Object {
+                        [
+                          {
                             "flexBasis": 0,
                             "flexGrow": 0.25,
                             "flexShrink": 1,
@@ -769,8 +769,8 @@ et si tu as...
                     />
                     <View
                       style={
-                        Array [
-                          Object {
+                        [
+                          {
                             "flexDirection": "column",
                           },
                         ]
@@ -778,16 +778,16 @@ et si tu as...
                     >
                       <View
                         style={
-                          Array [
-                            Object {
+                          [
+                            {
                               "backgroundColor": "#320096",
                               "borderRadius": 4,
                               "height": 20,
                               "justifyContent": "center",
                               "paddingHorizontal": 0,
                               "paddingVertical": 0,
-                              "transform": Array [
-                                Object {
+                              "transform": [
+                                {
                                   "rotate": "-4.34deg",
                                 },
                               ],
@@ -801,15 +801,15 @@ et si tu as...
                       >
                         <Text
                           style={
-                            Array [
-                              Object {
+                            [
+                              {
                                 "alignSelf": "center",
                                 "color": "#ffffff",
                                 "fontFamily": "Montserrat-SemiBold",
                                 "fontSize": 12,
                                 "lineHeight": 16,
-                                "transform": Array [
-                                  Object {
+                                "transform": [
+                                  {
                                     "rotate": "4.34deg",
                                   },
                                 ],
@@ -823,8 +823,8 @@ et si tu as...
                       <View
                         numberOfSpaces={1}
                         style={
-                          Array [
-                            Object {
+                          [
+                            {
                               "height": 4,
                             },
                           ]
@@ -832,8 +832,8 @@ et si tu as...
                       />
                       <Text
                         style={
-                          Array [
-                            Object {
+                          [
+                            {
                               "alignSelf": "center",
                               "color": "#161617",
                               "fontFamily": "Montserrat-SemiBold",
@@ -849,8 +849,8 @@ et si tu as...
                     <View
                       flex={0.5}
                       style={
-                        Array [
-                          Object {
+                        [
+                          {
                             "flexBasis": 0,
                             "flexGrow": 0.5,
                             "flexShrink": 1,
@@ -862,8 +862,8 @@ et si tu as...
                   <View
                     numberOfSpaces={4}
                     style={
-                      Array [
-                        Object {
+                      [
+                        {
                           "height": 16,
                         },
                       ]
@@ -871,8 +871,8 @@ et si tu as...
                   />
                   <Text
                     style={
-                      Array [
-                        Object {
+                      [
+                        {
                           "color": "#696A6F",
                           "fontFamily": "Montserrat-SemiBold",
                           "fontSize": 12,
@@ -888,8 +888,8 @@ et si tu as...
                 <View
                   flex={2}
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "flexBasis": 0,
                         "flexGrow": 2,
                         "flexShrink": 1,
@@ -901,8 +901,8 @@ et si tu as...
                   isSmallScreen={false}
                   paddingBottom={40}
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "flexBasis": 0,
                         "flexGrow": 1,
                         "flexShrink": 1,
@@ -915,12 +915,12 @@ et si tu as...
                   <View
                     collapsable={false}
                     forwardedRef={[Function]}
-                    style={Object {}}
+                    style={{}}
                   >
                     <View
                       style={
-                        Array [
-                          Object {
+                        [
+                          {
                             "height": 48,
                           },
                         ]
@@ -933,7 +933,7 @@ et si tu as...
             </View>
             <View
               style={
-                Object {
+                {
                   "flex": 1,
                   "height": 0,
                   "width": "100%",
@@ -943,8 +943,8 @@ et si tu as...
               <View
                 accessibilityHidden={true}
                 style={
-                  Array [
-                    Object {
+                  [
+                    {
                       "flexBasis": 0,
                       "flexGrow": 1,
                       "flexShrink": 1,
@@ -956,8 +956,8 @@ et si tu as...
                 <View
                   flex={2}
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "flexBasis": 0,
                         "flexGrow": 2,
                         "flexShrink": 1,
@@ -968,8 +968,8 @@ et si tu as...
                 <View
                   accessibilityHidden={true}
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "alignItems": "center",
                         "flexGrow": 1,
                         "height": "30%",
@@ -985,8 +985,8 @@ et si tu as...
                 <View
                   flex={1}
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "flexBasis": 0,
                         "flexGrow": 1,
                         "flexShrink": 1,
@@ -996,8 +996,8 @@ et si tu as...
                 />
                 <View
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "overflowY": "auto",
                       },
                     ]
@@ -1005,8 +1005,8 @@ et si tu as...
                 >
                   <Text
                     style={
-                      Array [
-                        Object {
+                      [
+                        {
                           "color": "#161617",
                           "fontFamily": "Montserrat-Black",
                           "fontSize": 26,
@@ -1022,8 +1022,8 @@ près de chez toi
                   <View
                     numberOfSpaces={4}
                     style={
-                      Array [
-                        Object {
+                      [
+                        {
                           "height": 16,
                         },
                       ]
@@ -1031,8 +1031,8 @@ près de chez toi
                   />
                   <Text
                     style={
-                      Array [
-                        Object {
+                      [
+                        {
                           "color": "#696A6F",
                           "fontFamily": "Montserrat-SemiBold",
                           "fontSize": 12,
@@ -1048,8 +1048,8 @@ près de chez toi
                 <View
                   flex={2}
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "flexBasis": 0,
                         "flexGrow": 2,
                         "flexShrink": 1,
@@ -1061,8 +1061,8 @@ près de chez toi
                   isSmallScreen={false}
                   paddingBottom={40}
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "flexBasis": 0,
                         "flexGrow": 1,
                         "flexShrink": 1,
@@ -1075,12 +1075,12 @@ près de chez toi
                   <View
                     collapsable={false}
                     forwardedRef={[Function]}
-                    style={Object {}}
+                    style={{}}
                   >
                     <View
                       style={
-                        Array [
-                          Object {
+                        [
+                          {
                             "height": 48,
                           },
                         ]
@@ -1093,7 +1093,7 @@ près de chez toi
             </View>
             <View
               style={
-                Object {
+                {
                   "flex": 1,
                   "height": 0,
                   "width": "100%",
@@ -1103,8 +1103,8 @@ près de chez toi
               <View
                 accessibilityHidden={true}
                 style={
-                  Array [
-                    Object {
+                  [
+                    {
                       "flexBasis": 0,
                       "flexGrow": 1,
                       "flexShrink": 1,
@@ -1116,8 +1116,8 @@ près de chez toi
                 <View
                   flex={2}
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "flexBasis": 0,
                         "flexGrow": 2,
                         "flexShrink": 1,
@@ -1128,8 +1128,8 @@ près de chez toi
                 <View
                   accessibilityHidden={true}
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "alignItems": "center",
                         "flexGrow": 1,
                         "height": "30%",
@@ -1145,8 +1145,8 @@ près de chez toi
                 <View
                   flex={1}
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "flexBasis": 0,
                         "flexGrow": 1,
                         "flexShrink": 1,
@@ -1156,8 +1156,8 @@ près de chez toi
                 />
                 <View
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "overflowY": "auto",
                       },
                     ]
@@ -1165,8 +1165,8 @@ près de chez toi
                 >
                   <Text
                     style={
-                      Array [
-                        Object {
+                      [
+                        {
                           "color": "#161617",
                           "fontFamily": "Montserrat-Black",
                           "fontSize": 26,
@@ -1182,8 +1182,8 @@ quotidiennes
                   <View
                     numberOfSpaces={4}
                     style={
-                      Array [
-                        Object {
+                      [
+                        {
                           "height": 16,
                         },
                       ]
@@ -1191,8 +1191,8 @@ quotidiennes
                   />
                   <Text
                     style={
-                      Array [
-                        Object {
+                      [
+                        {
                           "color": "#696A6F",
                           "fontFamily": "Montserrat-SemiBold",
                           "fontSize": 12,
@@ -1208,8 +1208,8 @@ quotidiennes
                 <View
                   flex={2}
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "flexBasis": 0,
                         "flexGrow": 2,
                         "flexShrink": 1,
@@ -1221,8 +1221,8 @@ quotidiennes
                   isSmallScreen={false}
                   paddingBottom={40}
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "flexBasis": 0,
                         "flexGrow": 1,
                         "flexShrink": 1,
@@ -1235,12 +1235,12 @@ quotidiennes
                   <View
                     collapsable={false}
                     forwardedRef={[Function]}
-                    style={Object {}}
+                    style={{}}
                   >
                     <View
                       style={
-                        Array [
-                          Object {
+                        [
+                          {
                             "height": 48,
                           },
                         ]
@@ -1254,7 +1254,7 @@ quotidiennes
           </View>
           <View
             style={
-              Object {
+              {
                 "alignItems": "center",
                 "flexDirection": "row",
                 "height": 0,
@@ -1264,7 +1264,7 @@ quotidiennes
           >
             <View
               style={
-                Object {
+                {
                   "alignItems": "flex-start",
                   "flex": 1,
                   "height": 0,
@@ -1274,7 +1274,7 @@ quotidiennes
             >
               <View
                 style={
-                  Object {
+                  {
                     "alignItems": "center",
                     "justifyContent": "center",
                     "position": "absolute",
@@ -1284,7 +1284,7 @@ quotidiennes
             </View>
             <View
               style={
-                Object {
+                {
                   "alignItems": "center",
                   "flex": 1,
                   "height": 0,
@@ -1294,7 +1294,7 @@ quotidiennes
             >
               <View
                 style={
-                  Object {
+                  {
                     "alignItems": "center",
                     "justifyContent": "center",
                     "position": "absolute",
@@ -1304,7 +1304,7 @@ quotidiennes
             </View>
             <View
               style={
-                Object {
+                {
                   "alignItems": "flex-end",
                   "flex": 1,
                   "height": 0,
@@ -1314,7 +1314,7 @@ quotidiennes
             >
               <View
                 style={
-                  Object {
+                  {
                     "alignItems": "center",
                     "justifyContent": "center",
                     "position": "absolute",
@@ -1325,7 +1325,7 @@ quotidiennes
           </View>
           <View
             style={
-              Object {
+              {
                 "alignItems": "center",
                 "flexDirection": "row",
                 "height": 0,
@@ -1335,7 +1335,7 @@ quotidiennes
           >
             <View
               style={
-                Object {
+                {
                   "alignItems": "flex-start",
                   "flex": 1,
                   "height": 0,
@@ -1345,7 +1345,7 @@ quotidiennes
             >
               <View
                 style={
-                  Object {
+                  {
                     "alignItems": "center",
                     "justifyContent": "center",
                     "position": "absolute",
@@ -1355,7 +1355,7 @@ quotidiennes
             </View>
             <View
               style={
-                Object {
+                {
                   "alignItems": "center",
                   "flex": 1,
                   "height": 0,
@@ -1365,7 +1365,7 @@ quotidiennes
             >
               <View
                 style={
-                  Object {
+                  {
                     "alignItems": "center",
                     "justifyContent": "center",
                     "position": "absolute",
@@ -1375,7 +1375,7 @@ quotidiennes
             </View>
             <View
               style={
-                Object {
+                {
                   "alignItems": "flex-end",
                   "flex": 1,
                   "height": 0,
@@ -1385,7 +1385,7 @@ quotidiennes
             >
               <View
                 style={
-                  Object {
+                  {
                     "alignItems": "center",
                     "justifyContent": "center",
                     "position": "absolute",
@@ -1396,7 +1396,7 @@ quotidiennes
           </View>
           <View
             style={
-              Object {
+              {
                 "alignItems": "center",
                 "flexDirection": "row",
                 "height": 0,
@@ -1406,7 +1406,7 @@ quotidiennes
           >
             <View
               style={
-                Object {
+                {
                   "alignItems": "flex-start",
                   "flex": 1,
                   "height": 0,
@@ -1416,7 +1416,7 @@ quotidiennes
             >
               <View
                 style={
-                  Object {
+                  {
                     "alignItems": "center",
                     "justifyContent": "center",
                     "position": "absolute",
@@ -1426,7 +1426,7 @@ quotidiennes
             </View>
             <View
               style={
-                Object {
+                {
                   "alignItems": "center",
                   "flex": 1,
                   "height": 0,
@@ -1436,7 +1436,7 @@ quotidiennes
             >
               <View
                 style={
-                  Object {
+                  {
                     "alignItems": "center",
                     "justifyContent": "center",
                     "position": "absolute",
@@ -1445,7 +1445,7 @@ quotidiennes
               >
                 <View
                   style={
-                    Object {
+                    {
                       "alignItems": "center",
                       "flexDirection": "row",
                       "justifyContent": "center",
@@ -1456,8 +1456,8 @@ quotidiennes
                 >
                   <View
                     style={
-                      Array [
-                        Object {
+                      [
+                        {
                           "alignSelf": "center",
                           "marginLeft": 4,
                           "marginRight": 4,
@@ -1480,8 +1480,8 @@ quotidiennes
                   </View>
                   <View
                     style={
-                      Array [
-                        Object {
+                      [
+                        {
                           "alignSelf": "center",
                           "marginLeft": 4,
                           "marginRight": 4,
@@ -1504,8 +1504,8 @@ quotidiennes
                   </View>
                   <View
                     style={
-                      Array [
-                        Object {
+                      [
+                        {
                           "alignSelf": "center",
                           "marginLeft": 4,
                           "marginRight": 4,
@@ -1528,8 +1528,8 @@ quotidiennes
                   </View>
                   <View
                     style={
-                      Array [
-                        Object {
+                      [
+                        {
                           "alignSelf": "center",
                           "marginLeft": 4,
                           "marginRight": 4,
@@ -1555,7 +1555,7 @@ quotidiennes
             </View>
             <View
               style={
-                Object {
+                {
                   "alignItems": "flex-end",
                   "flex": 1,
                   "height": 0,
@@ -1565,7 +1565,7 @@ quotidiennes
             >
               <View
                 style={
-                  Object {
+                  {
                     "alignItems": "center",
                     "justifyContent": "center",
                     "position": "absolute",
@@ -1586,7 +1586,7 @@ quotidiennes
                   onResponderTerminationRequest={[Function]}
                   onStartShouldSetResponder={[Function]}
                   style={
-                    Object {
+                    {
                       "marginRight": "70%",
                       "opacity": 1,
                       "userSelect": "auto",
@@ -1613,8 +1613,8 @@ quotidiennes
     <View
       numberOfSpaces={2}
       style={
-        Array [
-          Object {
+        [
+          {
             "height": 8,
           },
         ]
@@ -1625,8 +1625,8 @@ quotidiennes
     customHeight={8}
     enable={true}
     style={
-      Array [
-        Object {
+      [
+        {
           "height": 8,
         },
       ]

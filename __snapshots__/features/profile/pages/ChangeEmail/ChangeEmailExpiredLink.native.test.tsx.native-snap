@@ -3,8 +3,8 @@
 exports[`<ChangeEmailExpiredLink /> should render correctly 1`] = `
 <View
   style={
-    Array [
-      Object {
+    [
+      {
         "alignItems": "center",
         "flexBasis": 0,
         "flexGrow": 1,
@@ -16,8 +16,8 @@ exports[`<ChangeEmailExpiredLink /> should render correctly 1`] = `
   <View
     height="100%"
     style={
-      Array [
-        Object {
+      [
+        {
           "bottom": 0,
           "height": "100%",
           "left": 0,
@@ -42,8 +42,8 @@ exports[`<ChangeEmailExpiredLink /> should render correctly 1`] = `
   </View>
   <View
     style={
-      Array [
-        Object {
+      [
+        {
           "alignItems": "center",
           "flexBasis": 0,
           "flexDirection": "column",
@@ -61,8 +61,8 @@ exports[`<ChangeEmailExpiredLink /> should render correctly 1`] = `
       customHeight={16}
       enable={true}
       style={
-        Array [
-          Object {
+        [
+          {
             "height": 16,
           },
         ]
@@ -70,8 +70,8 @@ exports[`<ChangeEmailExpiredLink /> should render correctly 1`] = `
     />
     <View
       style={
-        Array [
-          Object {
+        [
+          {
             "flexBasis": 0,
             "flexGrow": 1,
             "flexShrink": 1,
@@ -82,8 +82,8 @@ exports[`<ChangeEmailExpiredLink /> should render correctly 1`] = `
     <View
       numberOfSpaces={10}
       style={
-        Array [
-          Object {
+        [
+          {
             "height": 40,
           },
         ]
@@ -100,8 +100,8 @@ exports[`<ChangeEmailExpiredLink /> should render correctly 1`] = `
     <View
       numberOfSpaces={5}
       style={
-        Array [
-          Object {
+        [
+          {
             "height": 20,
           },
         ]
@@ -109,8 +109,8 @@ exports[`<ChangeEmailExpiredLink /> should render correctly 1`] = `
     />
     <Text
       style={
-        Array [
-          Object {
+        [
+          {
             "color": "#ffffff",
             "fontFamily": "Montserrat-Medium",
             "fontSize": 22,
@@ -125,8 +125,8 @@ exports[`<ChangeEmailExpiredLink /> should render correctly 1`] = `
     <View
       numberOfSpaces={5}
       style={
-        Array [
-          Object {
+        [
+          {
             "height": 20,
           },
         ]
@@ -134,8 +134,8 @@ exports[`<ChangeEmailExpiredLink /> should render correctly 1`] = `
     />
     <Text
       style={
-        Array [
-          Object {
+        [
+          {
             "color": "#ffffff",
             "fontFamily": "Montserrat-Regular",
             "fontSize": 15,
@@ -149,8 +149,8 @@ exports[`<ChangeEmailExpiredLink /> should render correctly 1`] = `
     </Text>
     <Text
       style={
-        Array [
-          Object {
+        [
+          {
             "color": "#ffffff",
             "fontFamily": "Montserrat-Regular",
             "fontSize": 15,
@@ -167,8 +167,8 @@ Tu peux faire une nouvelle demande de modification dans ton profil.
     <View
       numberOfSpaces={6}
       style={
-        Array [
-          Object {
+        [
+          {
             "height": 24,
           },
         ]
@@ -177,8 +177,8 @@ Tu peux faire une nouvelle demande de modification dans ton profil.
     <View
       numberOfSpaces={30}
       style={
-        Array [
-          Object {
+        [
+          {
             "height": 120,
           },
         ]
@@ -187,8 +187,8 @@ Tu peux faire une nouvelle demande de modification dans ton profil.
     <View
       flex={0.5}
       style={
-        Array [
-          Object {
+        [
+          {
             "flexBasis": 0,
             "flexGrow": 0.5,
             "flexShrink": 1,
@@ -198,8 +198,8 @@ Tu peux faire une nouvelle demande de modification dans ton profil.
     />
     <View
       style={
-        Array [
-          Object {
+        [
+          {
             "alignSelf": "stretch",
             "flexBasis": 0,
             "flexGrow": 1,
@@ -223,7 +223,7 @@ Tu peux faire une nouvelle demande de modification dans ton profil.
         onResponderTerminationRequest={[Function]}
         onStartShouldSetResponder={[Function]}
         style={
-          Object {
+          {
             "alignItems": "center",
             "backgroundColor": "#ffffff",
             "borderRadius": 24,
@@ -246,8 +246,8 @@ Tu peux faire une nouvelle demande de modification dans ton profil.
           adjustsFontSizeToFit={false}
           numberOfLines={1}
           style={
-            Array [
-              Object {
+            [
+              {
                 "color": "#eb0055",
                 "fontFamily": "Montserrat-Bold",
                 "fontSize": 15,
@@ -264,8 +264,8 @@ Tu peux faire une nouvelle demande de modification dans ton profil.
       <View
         numberOfSpaces={4}
         style={
-          Array [
-            Object {
+          [
+            {
               "height": 16,
             },
           ]
@@ -284,7 +284,7 @@ Tu peux faire une nouvelle demande de modification dans ton profil.
         onResponderTerminationRequest={[Function]}
         onStartShouldSetResponder={[Function]}
         style={
-          Object {
+          {
             "alignItems": "center",
             "backgroundColor": "transparent",
             "borderRadius": 24,
@@ -305,8 +305,8 @@ Tu peux faire une nouvelle demande de modification dans ton profil.
       >
         <View
           style={
-            Array [
-              Object {
+            [
+              {
                 "flexShrink": 0,
               },
             ]
@@ -326,8 +326,8 @@ Tu peux faire une nouvelle demande de modification dans ton profil.
           adjustsFontSizeToFit={false}
           numberOfLines={1}
           style={
-            Array [
-              Object {
+            [
+              {
                 "color": "#ffffff",
                 "fontFamily": "Montserrat-Bold",
                 "fontSize": 15,
@@ -346,8 +346,8 @@ Tu peux faire une nouvelle demande de modification dans ton profil.
       customHeight={8}
       enable={true}
       style={
-        Array [
-          Object {
+        [
+          {
             "height": 8,
           },
         ]
@@ -360,8 +360,8 @@ Tu peux faire une nouvelle demande de modification dans ton profil.
 exports[`<ChangeEmailExpiredLink /> should render correctly when logged out 1`] = `
 <View
   style={
-    Array [
-      Object {
+    [
+      {
         "alignItems": "center",
         "flexBasis": 0,
         "flexGrow": 1,
@@ -373,8 +373,8 @@ exports[`<ChangeEmailExpiredLink /> should render correctly when logged out 1`] 
   <View
     height="100%"
     style={
-      Array [
-        Object {
+      [
+        {
           "bottom": 0,
           "height": "100%",
           "left": 0,
@@ -399,8 +399,8 @@ exports[`<ChangeEmailExpiredLink /> should render correctly when logged out 1`] 
   </View>
   <View
     style={
-      Array [
-        Object {
+      [
+        {
           "alignItems": "center",
           "flexBasis": 0,
           "flexDirection": "column",
@@ -418,8 +418,8 @@ exports[`<ChangeEmailExpiredLink /> should render correctly when logged out 1`] 
       customHeight={16}
       enable={true}
       style={
-        Array [
-          Object {
+        [
+          {
             "height": 16,
           },
         ]
@@ -427,8 +427,8 @@ exports[`<ChangeEmailExpiredLink /> should render correctly when logged out 1`] 
     />
     <View
       style={
-        Array [
-          Object {
+        [
+          {
             "flexBasis": 0,
             "flexGrow": 1,
             "flexShrink": 1,
@@ -439,8 +439,8 @@ exports[`<ChangeEmailExpiredLink /> should render correctly when logged out 1`] 
     <View
       numberOfSpaces={10}
       style={
-        Array [
-          Object {
+        [
+          {
             "height": 40,
           },
         ]
@@ -457,8 +457,8 @@ exports[`<ChangeEmailExpiredLink /> should render correctly when logged out 1`] 
     <View
       numberOfSpaces={5}
       style={
-        Array [
-          Object {
+        [
+          {
             "height": 20,
           },
         ]
@@ -466,8 +466,8 @@ exports[`<ChangeEmailExpiredLink /> should render correctly when logged out 1`] 
     />
     <Text
       style={
-        Array [
-          Object {
+        [
+          {
             "color": "#ffffff",
             "fontFamily": "Montserrat-Medium",
             "fontSize": 22,
@@ -482,8 +482,8 @@ exports[`<ChangeEmailExpiredLink /> should render correctly when logged out 1`] 
     <View
       numberOfSpaces={5}
       style={
-        Array [
-          Object {
+        [
+          {
             "height": 20,
           },
         ]
@@ -491,8 +491,8 @@ exports[`<ChangeEmailExpiredLink /> should render correctly when logged out 1`] 
     />
     <Text
       style={
-        Array [
-          Object {
+        [
+          {
             "color": "#ffffff",
             "fontFamily": "Montserrat-Regular",
             "fontSize": 15,
@@ -506,8 +506,8 @@ exports[`<ChangeEmailExpiredLink /> should render correctly when logged out 1`] 
     </Text>
     <Text
       style={
-        Array [
-          Object {
+        [
+          {
             "color": "#ffffff",
             "fontFamily": "Montserrat-Regular",
             "fontSize": 15,
@@ -524,8 +524,8 @@ Connecte-toi avec ton ancienne adresse e-mail pour faire une nouvelle demande de
     <View
       numberOfSpaces={6}
       style={
-        Array [
-          Object {
+        [
+          {
             "height": 24,
           },
         ]
@@ -534,8 +534,8 @@ Connecte-toi avec ton ancienne adresse e-mail pour faire une nouvelle demande de
     <View
       numberOfSpaces={30}
       style={
-        Array [
-          Object {
+        [
+          {
             "height": 120,
           },
         ]
@@ -544,8 +544,8 @@ Connecte-toi avec ton ancienne adresse e-mail pour faire une nouvelle demande de
     <View
       flex={0.5}
       style={
-        Array [
-          Object {
+        [
+          {
             "flexBasis": 0,
             "flexGrow": 0.5,
             "flexShrink": 1,
@@ -555,8 +555,8 @@ Connecte-toi avec ton ancienne adresse e-mail pour faire une nouvelle demande de
     />
     <View
       style={
-        Array [
-          Object {
+        [
+          {
             "alignSelf": "stretch",
             "flexBasis": 0,
             "flexGrow": 1,
@@ -580,7 +580,7 @@ Connecte-toi avec ton ancienne adresse e-mail pour faire une nouvelle demande de
         onResponderTerminationRequest={[Function]}
         onStartShouldSetResponder={[Function]}
         style={
-          Object {
+          {
             "alignItems": "center",
             "backgroundColor": "#ffffff",
             "borderRadius": 24,
@@ -603,8 +603,8 @@ Connecte-toi avec ton ancienne adresse e-mail pour faire une nouvelle demande de
           adjustsFontSizeToFit={false}
           numberOfLines={1}
           style={
-            Array [
-              Object {
+            [
+              {
                 "color": "#eb0055",
                 "fontFamily": "Montserrat-Bold",
                 "fontSize": 15,
@@ -621,8 +621,8 @@ Connecte-toi avec ton ancienne adresse e-mail pour faire une nouvelle demande de
       <View
         numberOfSpaces={4}
         style={
-          Array [
-            Object {
+          [
+            {
               "height": 16,
             },
           ]
@@ -641,7 +641,7 @@ Connecte-toi avec ton ancienne adresse e-mail pour faire une nouvelle demande de
         onResponderTerminationRequest={[Function]}
         onStartShouldSetResponder={[Function]}
         style={
-          Object {
+          {
             "alignItems": "center",
             "backgroundColor": "transparent",
             "borderRadius": 24,
@@ -662,8 +662,8 @@ Connecte-toi avec ton ancienne adresse e-mail pour faire une nouvelle demande de
       >
         <View
           style={
-            Array [
-              Object {
+            [
+              {
                 "flexShrink": 0,
               },
             ]
@@ -683,8 +683,8 @@ Connecte-toi avec ton ancienne adresse e-mail pour faire une nouvelle demande de
           adjustsFontSizeToFit={false}
           numberOfLines={1}
           style={
-            Array [
-              Object {
+            [
+              {
                 "color": "#ffffff",
                 "fontFamily": "Montserrat-Bold",
                 "fontSize": 15,
@@ -703,8 +703,8 @@ Connecte-toi avec ton ancienne adresse e-mail pour faire une nouvelle demande de
       customHeight={8}
       enable={true}
       style={
-        Array [
-          Object {
+        [
+          {
             "height": 8,
           },
         ]

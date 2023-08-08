@@ -3,8 +3,8 @@
 exports[`<OfferNativeCategoryChoices /> should match snapshot 1`] = `
 <View
   style={
-    Array [
-      Object {
+    [
+      {
         "flexDirection": "column",
         "flexWrap": "wrap",
         "marginBottom": -12,
@@ -16,8 +16,8 @@ exports[`<OfferNativeCategoryChoices /> should match snapshot 1`] = `
   <View
     accessibilityRole="list"
     style={
-      Array [
-        Object {
+      [
+        {
           "flexDirection": "row",
           "flexWrap": "wrap",
           "paddingLeft": 0,
@@ -28,8 +28,8 @@ exports[`<OfferNativeCategoryChoices /> should match snapshot 1`] = `
     <View
       accessibilityRole="none"
       style={
-        Array [
-          Object {
+        [
+          {
             "display": "flex",
           },
         ]
@@ -39,7 +39,7 @@ exports[`<OfferNativeCategoryChoices /> should match snapshot 1`] = `
         accessibilityLabel="Arts visuels"
         accessibilityRole="checkbox"
         accessibilityState={
-          Object {
+          {
             "checked": false,
           }
         }
@@ -54,7 +54,7 @@ exports[`<OfferNativeCategoryChoices /> should match snapshot 1`] = `
         onResponderTerminationRequest={[Function]}
         onStartShouldSetResponder={[Function]}
         style={
-          Object {
+          {
             "alignItems": "center",
             "alignSelf": "flex-start",
             "backgroundColor": "#ffffff",
@@ -74,8 +74,8 @@ exports[`<OfferNativeCategoryChoices /> should match snapshot 1`] = `
         <View
           numberOfSpaces={5}
           style={
-            Array [
-              Object {
+            [
+              {
                 "width": 20,
               },
             ]
@@ -85,8 +85,8 @@ exports[`<OfferNativeCategoryChoices /> should match snapshot 1`] = `
           numberOfLines={1}
           selected={false}
           style={
-            Array [
-              Object {
+            [
+              {
                 "color": "#161617",
                 "fontFamily": "Montserrat-Bold",
                 "fontSize": 15,
@@ -101,8 +101,8 @@ exports[`<OfferNativeCategoryChoices /> should match snapshot 1`] = `
         <View
           numberOfSpaces={5}
           style={
-            Array [
-              Object {
+            [
+              {
                 "width": 20,
               },
             ]
@@ -113,8 +113,8 @@ exports[`<OfferNativeCategoryChoices /> should match snapshot 1`] = `
     <View
       accessibilityRole="none"
       style={
-        Array [
-          Object {
+        [
+          {
             "display": "flex",
           },
         ]
@@ -124,7 +124,7 @@ exports[`<OfferNativeCategoryChoices /> should match snapshot 1`] = `
         accessibilityLabel="Matériels créatifs"
         accessibilityRole="checkbox"
         accessibilityState={
-          Object {
+          {
             "checked": false,
           }
         }
@@ -139,7 +139,7 @@ exports[`<OfferNativeCategoryChoices /> should match snapshot 1`] = `
         onResponderTerminationRequest={[Function]}
         onStartShouldSetResponder={[Function]}
         style={
-          Object {
+          {
             "alignItems": "center",
             "alignSelf": "flex-start",
             "backgroundColor": "#ffffff",
@@ -159,8 +159,8 @@ exports[`<OfferNativeCategoryChoices /> should match snapshot 1`] = `
         <View
           numberOfSpaces={5}
           style={
-            Array [
-              Object {
+            [
+              {
                 "width": 20,
               },
             ]
@@ -170,8 +170,8 @@ exports[`<OfferNativeCategoryChoices /> should match snapshot 1`] = `
           numberOfLines={1}
           selected={false}
           style={
-            Array [
-              Object {
+            [
+              {
                 "color": "#161617",
                 "fontFamily": "Montserrat-Bold",
                 "fontSize": 15,
@@ -186,8 +186,8 @@ exports[`<OfferNativeCategoryChoices /> should match snapshot 1`] = `
         <View
           numberOfSpaces={5}
           style={
-            Array [
-              Object {
+            [
+              {
                 "width": 20,
               },
             ]
@@ -198,8 +198,8 @@ exports[`<OfferNativeCategoryChoices /> should match snapshot 1`] = `
     <View
       accessibilityRole="none"
       style={
-        Array [
-          Object {
+        [
+          {
             "display": "flex",
           },
         ]
@@ -209,7 +209,7 @@ exports[`<OfferNativeCategoryChoices /> should match snapshot 1`] = `
         accessibilityLabel="Pratique artistique en ligne"
         accessibilityRole="checkbox"
         accessibilityState={
-          Object {
+          {
             "checked": false,
           }
         }
@@ -224,7 +224,7 @@ exports[`<OfferNativeCategoryChoices /> should match snapshot 1`] = `
         onResponderTerminationRequest={[Function]}
         onStartShouldSetResponder={[Function]}
         style={
-          Object {
+          {
             "alignItems": "center",
             "alignSelf": "flex-start",
             "backgroundColor": "#ffffff",
@@ -244,8 +244,8 @@ exports[`<OfferNativeCategoryChoices /> should match snapshot 1`] = `
         <View
           numberOfSpaces={5}
           style={
-            Array [
-              Object {
+            [
+              {
                 "width": 20,
               },
             ]
@@ -255,8 +255,8 @@ exports[`<OfferNativeCategoryChoices /> should match snapshot 1`] = `
           numberOfLines={1}
           selected={false}
           style={
-            Array [
-              Object {
+            [
+              {
                 "color": "#161617",
                 "fontFamily": "Montserrat-Bold",
                 "fontSize": 15,
@@ -271,8 +271,8 @@ exports[`<OfferNativeCategoryChoices /> should match snapshot 1`] = `
         <View
           numberOfSpaces={5}
           style={
-            Array [
-              Object {
+            [
+              {
                 "width": 20,
               },
             ]
@@ -283,8 +283,8 @@ exports[`<OfferNativeCategoryChoices /> should match snapshot 1`] = `
     <View
       accessibilityRole="none"
       style={
-        Array [
-          Object {
+        [
+          {
             "display": "flex",
           },
         ]
@@ -294,7 +294,7 @@ exports[`<OfferNativeCategoryChoices /> should match snapshot 1`] = `
         accessibilityLabel="Pratiques & ateliers artistiques"
         accessibilityRole="checkbox"
         accessibilityState={
-          Object {
+          {
             "checked": false,
           }
         }
@@ -309,7 +309,7 @@ exports[`<OfferNativeCategoryChoices /> should match snapshot 1`] = `
         onResponderTerminationRequest={[Function]}
         onStartShouldSetResponder={[Function]}
         style={
-          Object {
+          {
             "alignItems": "center",
             "alignSelf": "flex-start",
             "backgroundColor": "#ffffff",
@@ -329,8 +329,8 @@ exports[`<OfferNativeCategoryChoices /> should match snapshot 1`] = `
         <View
           numberOfSpaces={5}
           style={
-            Array [
-              Object {
+            [
+              {
                 "width": 20,
               },
             ]
@@ -340,8 +340,8 @@ exports[`<OfferNativeCategoryChoices /> should match snapshot 1`] = `
           numberOfLines={1}
           selected={false}
           style={
-            Array [
-              Object {
+            [
+              {
                 "color": "#161617",
                 "fontFamily": "Montserrat-Bold",
                 "fontSize": 15,
@@ -356,8 +356,8 @@ exports[`<OfferNativeCategoryChoices /> should match snapshot 1`] = `
         <View
           numberOfSpaces={5}
           style={
-            Array [
-              Object {
+            [
+              {
                 "width": 20,
               },
             ]

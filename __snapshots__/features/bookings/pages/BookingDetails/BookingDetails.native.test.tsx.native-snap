@@ -3,8 +3,8 @@
 exports[`BookingDetails should render correctly 1`] = `
 <View
   style={
-    Array [
-      Object {
+    [
+      {
         "backgroundColor": "#ffffff",
         "flexBasis": 0,
         "flexGrow": 1,
@@ -19,7 +19,7 @@ exports[`BookingDetails should render correctly 1`] = `
     onScroll={[Function]}
     scrollEventThrottle={20}
     scrollIndicatorInsets={
-      Object {
+      {
         "right": 1,
       }
     }
@@ -28,8 +28,8 @@ exports[`BookingDetails should render correctly 1`] = `
     <View>
       <View
         style={
-          Array [
-            Object {
+          [
+            {
               "alignItems": "center",
               "minHeight": 0,
             },
@@ -38,8 +38,8 @@ exports[`BookingDetails should render correctly 1`] = `
       >
         <View
           style={
-            Array [
-              Object {
+            [
+              {
                 "alignItems": "center",
                 "position": "absolute",
               },
@@ -68,8 +68,8 @@ exports[`BookingDetails should render correctly 1`] = `
       <View
         numberOfSpaces={26}
         style={
-          Array [
-            Object {
+          [
+            {
               "height": 104,
             },
           ]
@@ -79,17 +79,17 @@ exports[`BookingDetails should render correctly 1`] = `
         ItemSeparatorComponent={[Function]}
         bounces={false}
         contentContainerStyle={
-          Object {
+          {
             "flex": 1,
             "justifyContent": "center",
             "paddingHorizontal": 117.60000000000002,
           }
         }
         data={
-          Array [
+          [
             <TicketWithContent
               booking={
-                Object {
+                {
                   "cancellationDate": null,
                   "cancellationReason": null,
                   "completedUrl": "https://example.com",
@@ -97,21 +97,21 @@ exports[`BookingDetails should render correctly 1`] = `
                   "dateCreated": "2021-02-15T23:01:37.925926",
                   "dateUsed": null,
                   "expirationDate": null,
-                  "externalBookings": Array [],
+                  "externalBookings": [],
                   "id": 123,
                   "qrCodeData": "PASSCULTURE:v3;TOKEN:352UW4",
                   "quantity": 10,
-                  "stock": Object {
+                  "stock": {
                     "beginningDatetime": "2021-03-15T20:00:00",
-                    "features": Array [
+                    "features": [
                       "VOSTFR",
                       "3D",
                       "IMAX",
                     ],
                     "id": 150230,
-                    "offer": Object {
+                    "offer": {
                       "bookingContact": null,
-                      "extraData": Object {
+                      "extraData": {
                         "ean": "123456789",
                       },
                       "id": 147874,
@@ -119,10 +119,10 @@ exports[`BookingDetails should render correctly 1`] = `
                       "isPermanent": false,
                       "name": "Avez-vous déjà vu ?",
                       "subcategoryId": "EVENEMENT_PATRIMOINE",
-                      "venue": Object {
+                      "venue": {
                         "address": "1 boulevard de la brique",
                         "city": "Drancy",
-                        "coordinates": Object {
+                        "coordinates": {
                           "latitude": 48.91683,
                           "longitude": 2.43884,
                         },
@@ -161,15 +161,15 @@ exports[`BookingDetails should render correctly 1`] = `
         scrollEventThrottle={50}
         showsHorizontalScrollIndicator={false}
         snapToInterval={740.8}
-        stickyHeaderIndices={Array []}
-        viewabilityConfigCallbackPairs={Array []}
+        stickyHeaderIndices={[]}
+        viewabilityConfigCallbackPairs={[]}
       >
         <View>
           <View
             onLayout={[Function]}
             style={
-              Array [
-                Object {
+              [
+                {
                   "flexDirection": "row",
                 },
                 null,
@@ -178,8 +178,8 @@ exports[`BookingDetails should render correctly 1`] = `
           >
             <View
               style={
-                Array [
-                  Object {
+                [
+                  {
                     "alignItems": "center",
                     "justifyContent": "flex-end",
                     "paddingVertical": 8,
@@ -191,13 +191,13 @@ exports[`BookingDetails should render correctly 1`] = `
             >
               <View
                 style={
-                  Array [
-                    Object {
+                  [
+                    {
                       "alignItems": "center",
                       "flexDirection": "column",
                       "justifyContent": "center",
                       "shadowColor": "#161617",
-                      "shadowOffset": Object {
+                      "shadowOffset": {
                         "height": 2,
                         "width": 0,
                       },
@@ -218,8 +218,8 @@ exports[`BookingDetails should render correctly 1`] = `
                 </View>
                 <View
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "alignItems": "center",
                         "backgroundColor": "#ffffff",
                         "borderColor": "#F1F1F4",
@@ -238,8 +238,8 @@ exports[`BookingDetails should render correctly 1`] = `
                 >
                   <View
                     style={
-                      Array [
-                        Object {
+                      [
+                        {
                           "justifyContent": "center",
                           "minHeight": 192,
                           "width": "100%",
@@ -249,8 +249,8 @@ exports[`BookingDetails should render correctly 1`] = `
                   >
                     <Text
                       style={
-                        Array [
-                          Object {
+                        [
+                          {
                             "color": "#161617",
                             "fontFamily": "Montserrat-Bold",
                             "fontSize": 20,
@@ -267,8 +267,8 @@ exports[`BookingDetails should render correctly 1`] = `
                     <View
                       numberOfSpaces={3}
                       style={
-                        Array [
-                          Object {
+                        [
+                          {
                             "height": 12,
                           },
                         ]
@@ -276,8 +276,8 @@ exports[`BookingDetails should render correctly 1`] = `
                     />
                     <View
                       style={
-                        Array [
-                          Object {
+                        [
+                          {
                             "paddingHorizontal": 8,
                             "paddingVertical": 12,
                           },
@@ -287,7 +287,7 @@ exports[`BookingDetails should render correctly 1`] = `
                       <View
                         accessibilityRole="button"
                         accessibilityState={
-                          Object {
+                          {
                             "disabled": true,
                           }
                         }
@@ -302,7 +302,7 @@ exports[`BookingDetails should render correctly 1`] = `
                         onResponderTerminationRequest={[Function]}
                         onStartShouldSetResponder={[Function]}
                         style={
-                          Object {
+                          {
                             "alignSelf": "center",
                             "marginBottom": 16,
                             "opacity": 1,
@@ -312,8 +312,8 @@ exports[`BookingDetails should render correctly 1`] = `
                       >
                         <Text
                           style={
-                            Array [
-                              Object {
+                            [
+                              {
                                 "color": "#eb0055",
                                 "fontFamily": "Montserrat-Medium",
                                 "fontSize": 22,
@@ -329,7 +329,7 @@ exports[`BookingDetails should render correctly 1`] = `
                         accessibilityLabel="Accéder à l’offre en ligne"
                         accessibilityRole="link"
                         accessibilityState={
-                          Object {
+                          {
                             "disabled": false,
                           }
                         }
@@ -344,7 +344,7 @@ exports[`BookingDetails should render correctly 1`] = `
                         onResponderTerminationRequest={[Function]}
                         onStartShouldSetResponder={[Function]}
                         style={
-                          Object {
+                          {
                             "alignItems": "center",
                             "borderRadius": 24,
                             "justifyContent": "center",
@@ -369,8 +369,8 @@ exports[`BookingDetails should render correctly 1`] = `
                         </View>
                         <View
                           style={
-                            Array [
-                              Object {
+                            [
+                              {
                                 "alignItems": "center",
                                 "flexDirection": "row",
                                 "position": "absolute",
@@ -392,8 +392,8 @@ exports[`BookingDetails should render correctly 1`] = `
                             isDisabled={false}
                             numberOfLines={1}
                             style={
-                              Array [
-                                Object {
+                              [
+                                {
                                   "color": "#ffffff",
                                   "fontFamily": "Montserrat-Bold",
                                   "fontSize": 15,
@@ -429,8 +429,8 @@ exports[`BookingDetails should render correctly 1`] = `
       <View>
         <View
           style={
-            Array [
-              Object {
+            [
+              {
                 "paddingHorizontal": 20,
               },
             ]
@@ -439,8 +439,8 @@ exports[`BookingDetails should render correctly 1`] = `
           <View
             numberOfSpaces={4}
             style={
-              Array [
-                Object {
+              [
+                {
                   "height": 16,
                 },
               ]
@@ -448,8 +448,8 @@ exports[`BookingDetails should render correctly 1`] = `
           />
           <Text
             style={
-              Array [
-                Object {
+              [
+                {
                   "color": "#696A6F",
                   "fontFamily": "Montserrat-SemiBold",
                   "fontSize": 12,
@@ -464,8 +464,8 @@ exports[`BookingDetails should render correctly 1`] = `
           <View
             numberOfSpaces={8}
             style={
-              Array [
-                Object {
+              [
+                {
                   "height": 32,
                 },
               ]
@@ -474,8 +474,8 @@ exports[`BookingDetails should render correctly 1`] = `
           <View>
             <Text
               style={
-                Array [
-                  Object {
+                [
+                  {
                     "color": "#161617",
                     "fontFamily": "Montserrat-Medium",
                     "fontSize": 18,
@@ -489,8 +489,8 @@ exports[`BookingDetails should render correctly 1`] = `
             <View
               numberOfSpaces={4.5}
               style={
-                Array [
-                  Object {
+                [
+                  {
                     "height": 18,
                   },
                 ]
@@ -499,8 +499,8 @@ exports[`BookingDetails should render correctly 1`] = `
             <View
               numberOfSpaces={5}
               style={
-                Array [
-                  Object {
+                [
+                  {
                     "height": 20,
                   },
                 ]
@@ -510,7 +510,7 @@ exports[`BookingDetails should render correctly 1`] = `
               accessibilityLabel="Date : Le 15 mars 2021 à 20h00"
               accessibilityRole="button"
               accessibilityState={
-                Object {
+                {
                   "disabled": true,
                 }
               }
@@ -525,7 +525,7 @@ exports[`BookingDetails should render correctly 1`] = `
               onResponderTerminationRequest={[Function]}
               onStartShouldSetResponder={[Function]}
               style={
-                Object {
+                {
                   "opacity": 1,
                   "userSelect": "auto",
                 }
@@ -534,8 +534,8 @@ exports[`BookingDetails should render correctly 1`] = `
             >
               <View
                 style={
-                  Array [
-                    Object {
+                  [
+                    {
                       "alignItems": "center",
                       "flexDirection": "row",
                       "justifyContent": "space-between",
@@ -555,8 +555,8 @@ exports[`BookingDetails should render correctly 1`] = `
                 <View
                   numberOfSpaces={2}
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "width": 8,
                       },
                     ]
@@ -564,8 +564,8 @@ exports[`BookingDetails should render correctly 1`] = `
                 />
                 <View
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "flexBasis": 0,
                         "flexGrow": 1,
                         "flexShrink": 1,
@@ -576,8 +576,8 @@ exports[`BookingDetails should render correctly 1`] = `
                 >
                   <Text
                     style={
-                      Array [
-                        Object {
+                      [
+                        {
                           "color": "#161617",
                           "fontFamily": "Montserrat-Regular",
                           "fontSize": 15,
@@ -594,8 +594,8 @@ exports[`BookingDetails should render correctly 1`] = `
             <View
               numberOfSpaces={5}
               style={
-                Array [
-                  Object {
+                [
+                  {
                     "height": 20,
                   },
                 ]
@@ -604,8 +604,8 @@ exports[`BookingDetails should render correctly 1`] = `
             <View
               numberOfSpaces={5}
               style={
-                Array [
-                  Object {
+                [
+                  {
                     "height": 20,
                   },
                 ]
@@ -615,7 +615,7 @@ exports[`BookingDetails should render correctly 1`] = `
               accessibilityLabel=""
               accessibilityRole="button"
               accessibilityState={
-                Object {
+                {
                   "disabled": true,
                 }
               }
@@ -630,7 +630,7 @@ exports[`BookingDetails should render correctly 1`] = `
               onResponderTerminationRequest={[Function]}
               onStartShouldSetResponder={[Function]}
               style={
-                Object {
+                {
                   "opacity": 1,
                   "userSelect": "auto",
                 }
@@ -638,8 +638,8 @@ exports[`BookingDetails should render correctly 1`] = `
             >
               <View
                 style={
-                  Array [
-                    Object {
+                  [
+                    {
                       "alignItems": "center",
                       "flexDirection": "row",
                       "justifyContent": "space-between",
@@ -660,8 +660,8 @@ exports[`BookingDetails should render correctly 1`] = `
                 <View
                   numberOfSpaces={2}
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "width": 8,
                       },
                     ]
@@ -669,8 +669,8 @@ exports[`BookingDetails should render correctly 1`] = `
                 />
                 <View
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "flexBasis": 0,
                         "flexGrow": 1,
                         "flexShrink": 1,
@@ -681,8 +681,8 @@ exports[`BookingDetails should render correctly 1`] = `
                 >
                   <Text
                     style={
-                      Array [
-                        Object {
+                      [
+                        {
                           "color": "#161617",
                           "fontFamily": "Montserrat-Regular",
                           "fontSize": 15,
@@ -693,8 +693,8 @@ exports[`BookingDetails should render correctly 1`] = `
                   >
                     <Text
                       style={
-                        Array [
-                          Object {
+                        [
+                          {
                             "color": "#161617",
                             "fontFamily": "Montserrat-Regular",
                             "fontSize": 15,
@@ -708,8 +708,8 @@ exports[`BookingDetails should render correctly 1`] = `
                     </Text>
                     <Text
                       style={
-                        Array [
-                          Object {
+                        [
+                          {
                             "color": "#161617",
                             "fontFamily": "Montserrat-Regular",
                             "fontSize": 15,
@@ -727,8 +727,8 @@ exports[`BookingDetails should render correctly 1`] = `
                     </Text>
                     <Text
                       style={
-                        Array [
-                          Object {
+                        [
+                          {
                             "color": "#161617",
                             "fontFamily": "Montserrat-Regular",
                             "fontSize": 15,
@@ -749,8 +749,8 @@ exports[`BookingDetails should render correctly 1`] = `
           <View
             numberOfSpaces={4}
             style={
-              Array [
-                Object {
+              [
+                {
                   "height": 16,
                 },
               ]
@@ -758,8 +758,8 @@ exports[`BookingDetails should render correctly 1`] = `
           />
           <View
             style={
-              Array [
-                Object {
+              [
+                {
                   "backgroundColor": "#F1F1F4",
                   "height": 1,
                   "width": "100%",
@@ -770,8 +770,8 @@ exports[`BookingDetails should render correctly 1`] = `
           <View
             numberOfSpaces={4}
             style={
-              Array [
-                Object {
+              [
+                {
                   "height": 16,
                 },
               ]
@@ -779,8 +779,8 @@ exports[`BookingDetails should render correctly 1`] = `
           />
           <View
             style={
-              Array [
-                Object {
+              [
+                {
                   "alignItems": "flex-start",
                 },
               ]
@@ -799,7 +799,7 @@ exports[`BookingDetails should render correctly 1`] = `
               onResponderTerminationRequest={[Function]}
               onStartShouldSetResponder={[Function]}
               style={
-                Object {
+                {
                   "alignItems": "center",
                   "backgroundColor": "transparent",
                   "borderRadius": 0,
@@ -822,8 +822,8 @@ exports[`BookingDetails should render correctly 1`] = `
             >
               <View
                 style={
-                  Array [
-                    Object {
+                  [
+                    {
                       "flexShrink": 0,
                     },
                   ]
@@ -844,8 +844,8 @@ exports[`BookingDetails should render correctly 1`] = `
                 adjustsFontSizeToFit={false}
                 numberOfLines={1}
                 style={
-                  Array [
-                    Object {
+                  [
+                    {
                       "color": "#161617",
                       "fontFamily": "Montserrat-Bold",
                       "fontSize": 15,
@@ -864,8 +864,8 @@ exports[`BookingDetails should render correctly 1`] = `
         <View
           numberOfSpaces={14}
           style={
-            Array [
-              Object {
+            [
+              {
                 "height": 56,
               },
             ]
@@ -873,8 +873,8 @@ exports[`BookingDetails should render correctly 1`] = `
         />
         <View
           style={
-            Array [
-              Object {
+            [
+              {
                 "paddingHorizontal": 20,
               },
             ]
@@ -893,7 +893,7 @@ exports[`BookingDetails should render correctly 1`] = `
             onResponderTerminationRequest={[Function]}
             onStartShouldSetResponder={[Function]}
             style={
-              Object {
+              {
                 "alignItems": "center",
                 "backgroundColor": "#eb0055",
                 "borderRadius": 24,
@@ -915,8 +915,8 @@ exports[`BookingDetails should render correctly 1`] = `
               adjustsFontSizeToFit={false}
               numberOfLines={1}
               style={
-                Array [
-                  Object {
+                [
+                  {
                     "color": "#ffffff",
                     "fontFamily": "Montserrat-Bold",
                     "fontSize": 15,
@@ -933,8 +933,8 @@ exports[`BookingDetails should render correctly 1`] = `
           <View
             numberOfSpaces={4}
             style={
-              Array [
-                Object {
+              [
+                {
                   "height": 16,
                 },
               ]
@@ -943,8 +943,8 @@ exports[`BookingDetails should render correctly 1`] = `
           <View
             numberOfSpaces={4}
             style={
-              Array [
-                Object {
+              [
+                {
                   "height": 16,
                 },
               ]
@@ -952,8 +952,8 @@ exports[`BookingDetails should render correctly 1`] = `
           />
           <Text
             style={
-              Array [
-                Object {
+              [
+                {
                   "color": "#696A6F",
                   "fontFamily": "Montserrat-SemiBold",
                   "fontSize": 12,
@@ -971,8 +971,8 @@ exports[`BookingDetails should render correctly 1`] = `
       <View
         numberOfSpaces={5}
         style={
-          Array [
-            Object {
+          [
+            {
               "height": 20,
             },
           ]
@@ -983,7 +983,7 @@ exports[`BookingDetails should render correctly 1`] = `
   <View
     collapsable={false}
     style={
-      Object {
+      {
         "backdropFilter": "blur(0px)",
         "backgroundColor": "rgba(255, 255, 255, 0)",
         "borderBottomColor": "#F1F1F4",
@@ -999,8 +999,8 @@ exports[`BookingDetails should render correctly 1`] = `
       customHeight={16}
       enable={true}
       style={
-        Array [
-          Object {
+        [
+          {
             "height": 16,
           },
         ]
@@ -1010,7 +1010,7 @@ exports[`BookingDetails should render correctly 1`] = `
       collapsable={false}
       height={80}
       style={
-        Object {
+        {
           "height": 80,
           "left": 0,
           "opacity": 0,
@@ -1025,12 +1025,12 @@ exports[`BookingDetails should render correctly 1`] = `
         blurAmount={8}
         blurType="light"
         style={
-          Array [
-            Object {
+          [
+            {
               "backgroundColor": "transparent",
             },
-            Array [
-              Object {
+            [
+              {
                 "flexBasis": 0,
                 "flexGrow": 1,
                 "flexShrink": 1,
@@ -1043,8 +1043,8 @@ exports[`BookingDetails should render correctly 1`] = `
     <View
       numberOfSpaces={2}
       style={
-        Array [
-          Object {
+        [
+          {
             "height": 8,
           },
         ]
@@ -1052,8 +1052,8 @@ exports[`BookingDetails should render correctly 1`] = `
     />
     <View
       style={
-        Array [
-          Object {
+        [
+          {
             "alignItems": "center",
             "flexDirection": "row",
           },
@@ -1062,8 +1062,8 @@ exports[`BookingDetails should render correctly 1`] = `
     >
       <View
         style={
-          Array [
-            Object {
+          [
+            {
               "marginLeft": 12,
               "minWidth": 32,
             },
@@ -1084,7 +1084,7 @@ exports[`BookingDetails should render correctly 1`] = `
           onResponderTerminationRequest={[Function]}
           onStartShouldSetResponder={[Function]}
           style={
-            Object {
+            {
               "borderRadius": 40,
               "opacity": 1,
               "userSelect": "auto",
@@ -1095,7 +1095,7 @@ exports[`BookingDetails should render correctly 1`] = `
           <View
             collapsable={false}
             style={
-              Object {
+              {
                 "alignItems": "center",
                 "aspectRatio": 1,
                 "backgroundColor": "rgba(255, 255, 255, 1)",
@@ -1114,8 +1114,8 @@ exports[`BookingDetails should render correctly 1`] = `
             <View
               size={24}
               style={
-                Array [
-                  Object {
+                [
+                  {
                     "height": 24,
                     "width": 24,
                   },
@@ -1125,7 +1125,7 @@ exports[`BookingDetails should render correctly 1`] = `
               <View
                 collapsable={false}
                 style={
-                  Object {
+                  {
                     "opacity": 1,
                     "position": "absolute",
                   }
@@ -1145,7 +1145,7 @@ exports[`BookingDetails should render correctly 1`] = `
               <View
                 collapsable={false}
                 style={
-                  Object {
+                  {
                     "opacity": 0,
                     "position": "absolute",
                   }
@@ -1168,8 +1168,8 @@ exports[`BookingDetails should render correctly 1`] = `
       </View>
       <View
         style={
-          Array [
-            Object {
+          [
+            {
               "flexBasis": 0,
               "flexGrow": 1,
               "flexShrink": 1,
@@ -1182,7 +1182,7 @@ exports[`BookingDetails should render correctly 1`] = `
         collapsable={false}
         numberOfLines={2}
         style={
-          Object {
+          {
             "flexBasis": 0,
             "flexGrow": 5,
             "flexShrink": 1,
@@ -1194,8 +1194,8 @@ exports[`BookingDetails should render correctly 1`] = `
       >
         <Text
           style={
-            Array [
-              Object {
+            [
+              {
                 "color": "#161617",
                 "fontFamily": "Montserrat-Regular",
                 "fontSize": 15,
@@ -1209,8 +1209,8 @@ exports[`BookingDetails should render correctly 1`] = `
       </Text>
       <View
         style={
-          Array [
-            Object {
+          [
+            {
               "flexBasis": 0,
               "flexGrow": 1,
               "flexShrink": 1,
@@ -1220,8 +1220,8 @@ exports[`BookingDetails should render correctly 1`] = `
       />
       <View
         style={
-          Array [
-            Object {
+          [
+            {
               "marginLeft": 12,
               "minWidth": 32,
             },
@@ -1232,8 +1232,8 @@ exports[`BookingDetails should render correctly 1`] = `
     <View
       numberOfSpaces={2}
       style={
-        Array [
-          Object {
+        [
+          {
             "height": 8,
           },
         ]
@@ -1261,7 +1261,7 @@ exports[`BookingDetails should render correctly 1`] = `
     scrollTo={null}
     statusBarTranslucent={true}
     supportedOrientations={
-      Array [
+      [
         "portrait",
         "landscape",
       ]
@@ -1292,7 +1292,7 @@ exports[`BookingDetails should render correctly 1`] = `
     scrollTo={null}
     statusBarTranslucent={true}
     supportedOrientations={
-      Array [
+      [
         "portrait",
         "landscape",
       ]

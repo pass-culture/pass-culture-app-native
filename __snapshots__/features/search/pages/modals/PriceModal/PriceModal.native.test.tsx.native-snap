@@ -22,7 +22,7 @@ exports[`<PriceModal/> should render modal correctly after animation and with en
   scrollTo={null}
   statusBarTranslucent={true}
   supportedOrientations={
-    Array [
+    [
       "portrait",
       "landscape",
     ]
@@ -45,7 +45,7 @@ exports[`<PriceModal/> should render modal correctly after animation and with en
     onResponderTerminationRequest={[Function]}
     onStartShouldSetResponder={[Function]}
     style={
-      Object {
+      {
         "backgroundColor": "black",
         "bottom": 0,
         "height": 1334,
@@ -79,7 +79,7 @@ exports[`<PriceModal/> should render modal correctly after animation and with en
     scrollTo={null}
     statusBarTranslucent={true}
     style={
-      Object {
+      {
         "alignItems": "center",
         "bottom": 0,
         "flex": 1,
@@ -89,15 +89,15 @@ exports[`<PriceModal/> should render modal correctly after animation and with en
         "position": "absolute",
         "right": 0,
         "top": "auto",
-        "transform": Array [
-          Object {
+        "transform": [
+          {
             "translateY": 1334,
           },
         ],
       }
     }
     supportedOrientations={
-      Array [
+      [
         "portrait",
         "landscape",
       ]
@@ -110,8 +110,8 @@ exports[`<PriceModal/> should render modal correctly after animation and with en
       maxHeight={1334}
       noPadding={true}
       style={
-        Array [
-          Object {
+        [
+          {
             "alignItems": "center",
             "backgroundColor": "#ffffff",
             "borderBottomEndRadius": 0,
@@ -137,8 +137,8 @@ exports[`<PriceModal/> should render modal correctly after animation and with en
       <View
         nativeID="testUuidV4"
         style={
-          Array [
-            Object {
+          [
+            {
               "flexDirection": "row",
               "width": "100%",
             },
@@ -149,8 +149,8 @@ exports[`<PriceModal/> should render modal correctly after animation and with en
         <View
           accessibilityRole="header"
           style={
-            Array [
-              Object {
+            [
+              {
                 "width": "100%",
               },
             ]
@@ -158,15 +158,15 @@ exports[`<PriceModal/> should render modal correctly after animation and with en
         >
           <View
             style={
-              Object {
+              {
                 "height": 64,
               }
             }
           />
           <View
             style={
-              Array [
-                Object {
+              [
+                {
                   "backgroundColor": "#eb0055",
                   "position": "absolute",
                   "top": 0,
@@ -181,8 +181,8 @@ exports[`<PriceModal/> should render modal correctly after animation and with en
               customHeight={16}
               enable={true}
               style={
-                Array [
-                  Object {
+                [
+                  {
                     "height": 16,
                   },
                 ]
@@ -190,8 +190,8 @@ exports[`<PriceModal/> should render modal correctly after animation and with en
             />
             <View
               style={
-                Array [
-                  Object {
+                [
+                  {
                     "alignItems": "center",
                     "height": 48,
                     "justifyContent": "center",
@@ -201,8 +201,8 @@ exports[`<PriceModal/> should render modal correctly after animation and with en
             >
               <View
                 style={
-                  Array [
-                    Object {
+                  [
+                    {
                       "alignItems": "center",
                       "flexDirection": "row",
                       "justifyContent": "space-between",
@@ -214,8 +214,8 @@ exports[`<PriceModal/> should render modal correctly after animation and with en
                 <View
                   positionInHeader="left"
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "alignItems": "center",
                         "flexBasis": 0,
                         "flexDirection": "row",
@@ -233,8 +233,8 @@ exports[`<PriceModal/> should render modal correctly after animation and with en
                   nativeID="testUuidV4"
                   numberOfLines={1}
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "color": "#ffffff",
                         "fontFamily": "Montserrat-Regular",
                         "fontSize": 15,
@@ -249,8 +249,8 @@ exports[`<PriceModal/> should render modal correctly after animation and with en
                 <View
                   positionInHeader="right"
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "alignItems": "center",
                         "flexBasis": 0,
                         "flexDirection": "row",
@@ -278,7 +278,7 @@ exports[`<PriceModal/> should render modal correctly after animation and with en
                     onResponderTerminationRequest={[Function]}
                     onStartShouldSetResponder={[Function]}
                     style={
-                      Object {
+                      {
                         "alignItems": "center",
                         "flexGrow": 1,
                         "height": 40,
@@ -301,8 +301,8 @@ exports[`<PriceModal/> should render modal correctly after animation and with en
                     </View>
                     <Text
                       style={
-                        Array [
-                          Object {
+                        [
+                          {
                             "display": "none",
                           },
                         ]
@@ -322,8 +322,8 @@ exports[`<PriceModal/> should render modal correctly after animation and with en
         onContentSizeChange={[Function]}
         scrollEnabled={true}
         style={
-          Array [
-            Object {
+          [
+            {
               "paddingHorizontal": 24,
               "width": "100%",
             },
@@ -335,8 +335,8 @@ exports[`<PriceModal/> should render modal correctly after animation and with en
           <View
             numberOfSpaces={6}
             style={
-              Array [
-                Object {
+              [
+                {
                   "height": 24,
                 },
               ]
@@ -344,8 +344,8 @@ exports[`<PriceModal/> should render modal correctly after animation and with en
           />
           <View
             style={
-              Array [
-                Object {
+              [
+                {
                   "maxWidth": 500,
                   "width": "100%",
                 },
@@ -358,8 +358,8 @@ exports[`<PriceModal/> should render modal correctly after animation and with en
               <View
                 backgroundColor="#f3ecff"
                 style={
-                  Array [
-                    Object {
+                  [
+                    {
                       "alignItems": "center",
                       "backgroundColor": "#f3ecff",
                       "borderRadius": 8,
@@ -375,8 +375,8 @@ exports[`<PriceModal/> should render modal correctly after animation and with en
               >
                 <View
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "paddingRight": 16,
                       },
                     ]
@@ -393,8 +393,8 @@ exports[`<PriceModal/> should render modal correctly after animation and with en
                 </View>
                 <View
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "flexBasis": 0,
                         "flexGrow": 1,
                         "flexShrink": 1,
@@ -404,8 +404,8 @@ exports[`<PriceModal/> should render modal correctly after animation and with en
                 >
                   <Text
                     style={
-                      Array [
-                        Object {
+                      [
+                        {
                           "color": "#161617",
                           "fontFamily": "Montserrat-SemiBold",
                           "fontSize": 12,
@@ -422,8 +422,8 @@ exports[`<PriceModal/> should render modal correctly after animation and with en
               <View
                 numberOfSpaces={6}
                 style={
-                  Array [
-                    Object {
+                  [
+                    {
                       "height": 24,
                     },
                   ]
@@ -433,8 +433,8 @@ exports[`<PriceModal/> should render modal correctly after animation and with en
             <View
               inverseLayout={false}
               style={
-                Array [
-                  Object {
+                [
+                  {
                     "alignItems": "center",
                     "flexDirection": "row",
                     "justifyContent": "space-between",
@@ -444,8 +444,8 @@ exports[`<PriceModal/> should render modal correctly after animation and with en
             >
               <View
                 style={
-                  Array [
-                    Object {
+                  [
+                    {
                       "flexShrink": 1,
                     },
                   ]
@@ -456,8 +456,8 @@ exports[`<PriceModal/> should render modal correctly after animation and with en
                   htmlFor="testUuidV4"
                   id="testUuidV4"
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "color": "#161617",
                         "fontFamily": "Montserrat-Bold",
                         "fontSize": 15,
@@ -471,8 +471,8 @@ exports[`<PriceModal/> should render modal correctly after animation and with en
                 <View
                   numberOfSpaces={1}
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "height": 4,
                       },
                     ]
@@ -482,8 +482,8 @@ exports[`<PriceModal/> should render modal correctly after animation and with en
               <View
                 numberOfSpaces={2}
                 style={
-                  Array [
-                    Object {
+                  [
+                    {
                       "width": 8,
                     },
                   ]
@@ -491,8 +491,8 @@ exports[`<PriceModal/> should render modal correctly after animation and with en
               />
               <View
                 style={
-                  Array [
-                    Object {
+                  [
+                    {
                       "flexShrink": 0,
                     },
                   ]
@@ -500,8 +500,8 @@ exports[`<PriceModal/> should render modal correctly after animation and with en
               >
                 <View
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "alignItems": "center",
                         "flexDirection": "row",
                       },
@@ -511,8 +511,8 @@ exports[`<PriceModal/> should render modal correctly after animation and with en
                   <Text
                     accessibilityHidden={true}
                     style={
-                      Array [
-                        Object {
+                      [
+                        {
                           "display": "none",
                         },
                       ]
@@ -524,7 +524,7 @@ exports[`<PriceModal/> should render modal correctly after animation and with en
                   <View
                     accessibilityRole="checkbox"
                     accessibilityState={
-                      Object {
+                      {
                         "checked": false,
                         "disabled": false,
                       }
@@ -540,7 +540,7 @@ exports[`<PriceModal/> should render modal correctly after animation and with en
                     onResponderTerminationRequest={[Function]}
                     onStartShouldSetResponder={[Function]}
                     style={
-                      Object {
+                      {
                         "opacity": 1,
                         "userSelect": "auto",
                       }
@@ -550,8 +550,8 @@ exports[`<PriceModal/> should render modal correctly after animation and with en
                     <View
                       active={false}
                       style={
-                        Array [
-                          Object {
+                        [
+                          {
                             "backgroundColor": "#90949D",
                             "borderRadius": 16,
                             "height": 32,
@@ -565,7 +565,7 @@ exports[`<PriceModal/> should render modal correctly after animation and with en
                         collapsable={false}
                         disabled={false}
                         style={
-                          Object {
+                          {
                             "alignItems": "center",
                             "aspectRatio": 1,
                             "backgroundColor": "#ffffff",
@@ -574,7 +574,7 @@ exports[`<PriceModal/> should render modal correctly after animation and with en
                             "justifyContent": "center",
                             "marginLeft": 2,
                             "shadowColor": "#161617",
-                            "shadowOffset": Object {
+                            "shadowOffset": {
                               "height": 2,
                               "width": 0,
                             },
@@ -592,8 +592,8 @@ exports[`<PriceModal/> should render modal correctly after animation and with en
             <View
               numberOfSpaces={6}
               style={
-                Array [
-                  Object {
+                [
+                  {
                     "height": 24,
                   },
                 ]
@@ -601,8 +601,8 @@ exports[`<PriceModal/> should render modal correctly after animation and with en
             />
             <View
               style={
-                Array [
-                  Object {
+                [
+                  {
                     "backgroundColor": "#F1F1F4",
                     "height": 1,
                     "width": "100%",
@@ -613,8 +613,8 @@ exports[`<PriceModal/> should render modal correctly after animation and with en
             <View
               numberOfSpaces={6}
               style={
-                Array [
-                  Object {
+                [
+                  {
                     "height": 24,
                   },
                 ]
@@ -623,8 +623,8 @@ exports[`<PriceModal/> should render modal correctly after animation and with en
             <View
               inverseLayout={false}
               style={
-                Array [
-                  Object {
+                [
+                  {
                     "alignItems": "center",
                     "flexDirection": "row",
                     "justifyContent": "space-between",
@@ -634,8 +634,8 @@ exports[`<PriceModal/> should render modal correctly after animation and with en
             >
               <View
                 style={
-                  Array [
-                    Object {
+                  [
+                    {
                       "flexShrink": 1,
                     },
                   ]
@@ -646,8 +646,8 @@ exports[`<PriceModal/> should render modal correctly after animation and with en
                   htmlFor="testUuidV4"
                   id="testUuidV4"
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "color": "#161617",
                         "fontFamily": "Montserrat-Bold",
                         "fontSize": 15,
@@ -661,8 +661,8 @@ exports[`<PriceModal/> should render modal correctly after animation and with en
                 <View
                   numberOfSpaces={1}
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "height": 4,
                       },
                     ]
@@ -672,8 +672,8 @@ exports[`<PriceModal/> should render modal correctly after animation and with en
               <View
                 numberOfSpaces={2}
                 style={
-                  Array [
-                    Object {
+                  [
+                    {
                       "width": 8,
                     },
                   ]
@@ -681,8 +681,8 @@ exports[`<PriceModal/> should render modal correctly after animation and with en
               />
               <View
                 style={
-                  Array [
-                    Object {
+                  [
+                    {
                       "flexShrink": 0,
                     },
                   ]
@@ -690,8 +690,8 @@ exports[`<PriceModal/> should render modal correctly after animation and with en
               >
                 <View
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "alignItems": "center",
                         "flexDirection": "row",
                       },
@@ -701,8 +701,8 @@ exports[`<PriceModal/> should render modal correctly after animation and with en
                   <Text
                     accessibilityHidden={true}
                     style={
-                      Array [
-                        Object {
+                      [
+                        {
                           "display": "none",
                         },
                       ]
@@ -714,7 +714,7 @@ exports[`<PriceModal/> should render modal correctly after animation and with en
                   <View
                     accessibilityRole="checkbox"
                     accessibilityState={
-                      Object {
+                      {
                         "checked": false,
                         "disabled": false,
                       }
@@ -730,7 +730,7 @@ exports[`<PriceModal/> should render modal correctly after animation and with en
                     onResponderTerminationRequest={[Function]}
                     onStartShouldSetResponder={[Function]}
                     style={
-                      Object {
+                      {
                         "opacity": 1,
                         "userSelect": "auto",
                       }
@@ -740,8 +740,8 @@ exports[`<PriceModal/> should render modal correctly after animation and with en
                     <View
                       active={false}
                       style={
-                        Array [
-                          Object {
+                        [
+                          {
                             "backgroundColor": "#90949D",
                             "borderRadius": 16,
                             "height": 32,
@@ -755,7 +755,7 @@ exports[`<PriceModal/> should render modal correctly after animation and with en
                         collapsable={false}
                         disabled={false}
                         style={
-                          Object {
+                          {
                             "alignItems": "center",
                             "aspectRatio": 1,
                             "backgroundColor": "#ffffff",
@@ -764,7 +764,7 @@ exports[`<PriceModal/> should render modal correctly after animation and with en
                             "justifyContent": "center",
                             "marginLeft": 2,
                             "shadowColor": "#161617",
-                            "shadowOffset": Object {
+                            "shadowOffset": {
                               "height": 2,
                               "width": 0,
                             },
@@ -782,8 +782,8 @@ exports[`<PriceModal/> should render modal correctly after animation and with en
             <View
               numberOfSpaces={6}
               style={
-                Array [
-                  Object {
+                [
+                  {
                     "height": 24,
                   },
                 ]
@@ -791,8 +791,8 @@ exports[`<PriceModal/> should render modal correctly after animation and with en
             />
             <View
               style={
-                Array [
-                  Object {
+                [
+                  {
                     "backgroundColor": "#F1F1F4",
                     "height": 1,
                     "width": "100%",
@@ -803,8 +803,8 @@ exports[`<PriceModal/> should render modal correctly after animation and with en
             <View
               numberOfSpaces={6}
               style={
-                Array [
-                  Object {
+                [
+                  {
                     "height": 24,
                   },
                 ]
@@ -812,8 +812,8 @@ exports[`<PriceModal/> should render modal correctly after animation and with en
             />
             <View
               style={
-                Array [
-                  Object {
+                [
+                  {
                     "alignItems": "flex-start",
                     "display": "flex",
                     "flexDirection": "column",
@@ -826,8 +826,8 @@ exports[`<PriceModal/> should render modal correctly after animation and with en
               <View>
                 <View
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "alignItems": "flex-end",
                         "flexDirection": "row",
                         "justifyContent": "space-between",
@@ -838,8 +838,8 @@ exports[`<PriceModal/> should render modal correctly after animation and with en
                 >
                   <Text
                     style={
-                      Array [
-                        Object {
+                      [
+                        {
                           "color": "#161617",
                           "fontFamily": "Montserrat-Regular",
                           "fontSize": 15,
@@ -855,8 +855,8 @@ exports[`<PriceModal/> should render modal correctly after animation and with en
               <View
                 numberOfSpaces={2}
                 style={
-                  Array [
-                    Object {
+                  [
+                    {
                       "height": 8,
                     },
                   ]
@@ -868,8 +868,8 @@ exports[`<PriceModal/> should render modal correctly after animation and with en
                 isError={false}
                 isFocus={false}
                 style={
-                  Array [
-                    Object {
+                  [
+                    {
                       "alignItems": "center",
                       "backgroundColor": "#ffffff",
                       "borderColor": "#90949D",
@@ -904,8 +904,8 @@ exports[`<PriceModal/> should render modal correctly after animation and with en
                   placeholderTextColor="#696A6F"
                   returnKeyType="next"
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "color": "#696A6F",
                         "flexBasis": 0,
                         "flexGrow": 1,
@@ -929,8 +929,8 @@ exports[`<PriceModal/> should render modal correctly after animation and with en
             <View
               numberOfSpaces={6}
               style={
-                Array [
-                  Object {
+                [
+                  {
                     "height": 24,
                   },
                 ]
@@ -938,8 +938,8 @@ exports[`<PriceModal/> should render modal correctly after animation and with en
             />
             <View
               style={
-                Array [
-                  Object {
+                [
+                  {
                     "alignItems": "flex-start",
                     "display": "flex",
                     "flexDirection": "column",
@@ -952,8 +952,8 @@ exports[`<PriceModal/> should render modal correctly after animation and with en
               <View>
                 <View
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "alignItems": "flex-end",
                         "flexDirection": "row",
                         "justifyContent": "space-between",
@@ -964,8 +964,8 @@ exports[`<PriceModal/> should render modal correctly after animation and with en
                 >
                   <Text
                     style={
-                      Array [
-                        Object {
+                      [
+                        {
                           "color": "#161617",
                           "fontFamily": "Montserrat-Regular",
                           "fontSize": 15,
@@ -978,8 +978,8 @@ exports[`<PriceModal/> should render modal correctly after animation and with en
                   </Text>
                   <Text
                     style={
-                      Array [
-                        Object {
+                      [
+                        {
                           "color": "#696A6F",
                           "fontFamily": "Montserrat-SemiBold",
                           "fontSize": 12,
@@ -995,8 +995,8 @@ exports[`<PriceModal/> should render modal correctly after animation and with en
               <View
                 numberOfSpaces={2}
                 style={
-                  Array [
-                    Object {
+                  [
+                    {
                       "height": 8,
                     },
                   ]
@@ -1008,8 +1008,8 @@ exports[`<PriceModal/> should render modal correctly after animation and with en
                 isError={false}
                 isFocus={false}
                 style={
-                  Array [
-                    Object {
+                  [
+                    {
                       "alignItems": "center",
                       "backgroundColor": "#ffffff",
                       "borderColor": "#90949D",
@@ -1044,8 +1044,8 @@ exports[`<PriceModal/> should render modal correctly after animation and with en
                   placeholderTextColor="#696A6F"
                   returnKeyType="next"
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "color": "#696A6F",
                         "flexBasis": 0,
                         "flexGrow": 1,
@@ -1071,8 +1071,8 @@ exports[`<PriceModal/> should render modal correctly after animation and with en
       </RCTScrollView>
       <View
         style={
-          Array [
-            Object {
+          [
+            {
               "width": "100%",
             },
           ]
@@ -1082,16 +1082,16 @@ exports[`<PriceModal/> should render modal correctly after animation and with en
         <View
           paddingBottom={0}
           style={
-            Array [
-              Object {},
+            [
+              {},
             ]
           }
         >
           <View
             isModal={true}
             style={
-              Array [
-                Object {
+              [
+                {
                   "flexDirection": "row",
                   "justifyContent": "center",
                   "paddingHorizontal": 24,
@@ -1113,7 +1113,7 @@ exports[`<PriceModal/> should render modal correctly after animation and with en
               onResponderTerminationRequest={[Function]}
               onStartShouldSetResponder={[Function]}
               style={
-                Object {
+                {
                   "alignItems": "center",
                   "backgroundColor": "transparent",
                   "borderRadius": 24,
@@ -1135,8 +1135,8 @@ exports[`<PriceModal/> should render modal correctly after animation and with en
             >
               <View
                 style={
-                  Array [
-                    Object {
+                  [
+                    {
                       "flexShrink": 0,
                     },
                   ]
@@ -1156,8 +1156,8 @@ exports[`<PriceModal/> should render modal correctly after animation and with en
                 adjustsFontSizeToFit={false}
                 numberOfLines={1}
                 style={
-                  Array [
-                    Object {
+                  [
+                    {
                       "color": "#161617",
                       "fontFamily": "Montserrat-SemiBold",
                       "fontSize": 12,
@@ -1174,8 +1174,8 @@ exports[`<PriceModal/> should render modal correctly after animation and with en
             <View
               numberOfSpaces={4}
               style={
-                Array [
-                  Object {
+                [
+                  {
                     "height": 16,
                   },
                 ]
@@ -1184,7 +1184,7 @@ exports[`<PriceModal/> should render modal correctly after animation and with en
             <View
               accessibilityLabel="Rechercher"
               accessibilityState={
-                Object {
+                {
                   "disabled": false,
                 }
               }
@@ -1199,7 +1199,7 @@ exports[`<PriceModal/> should render modal correctly after animation and with en
               onResponderTerminationRequest={[Function]}
               onStartShouldSetResponder={[Function]}
               style={
-                Object {
+                {
                   "alignItems": "center",
                   "backgroundColor": "#eb0055",
                   "borderRadius": 24,
@@ -1223,8 +1223,8 @@ exports[`<PriceModal/> should render modal correctly after animation and with en
                 adjustsFontSizeToFit={false}
                 numberOfLines={1}
                 style={
-                  Array [
-                    Object {
+                  [
+                    {
                       "color": "#ffffff",
                       "fontFamily": "Montserrat-Bold",
                       "fontSize": 15,
@@ -1245,8 +1245,8 @@ exports[`<PriceModal/> should render modal correctly after animation and with en
         customHeight={8}
         enable={true}
         style={
-          Array [
-            Object {
+          [
+            {
               "height": 8,
             },
           ]

@@ -4,8 +4,8 @@ exports[`<SeeMore /> renders correctly 1`] = `
 <View
   height={100}
   style={
-    Array [
-      Object {
+    [
+      {
         "alignItems": "center",
         "height": 100,
         "justifyContent": "center",
@@ -18,8 +18,8 @@ exports[`<SeeMore /> renders correctly 1`] = `
   <View
     numberOfSpaces={2}
     style={
-      Array [
-        Object {
+      [
+        {
           "height": 8,
         },
       ]
@@ -38,7 +38,7 @@ exports[`<SeeMore /> renders correctly 1`] = `
     onResponderTerminationRequest={[Function]}
     onStartShouldSetResponder={[Function]}
     style={
-      Object {
+      {
         "alignItems": "center",
         "opacity": 1,
         "userSelect": "auto",
@@ -48,8 +48,8 @@ exports[`<SeeMore /> renders correctly 1`] = `
   >
     <View
       style={
-        Array [
-          Object {
+        [
+          {
             "flexDirection": "row",
           },
         ]
@@ -58,8 +58,8 @@ exports[`<SeeMore /> renders correctly 1`] = `
       <View
         numberOfSpaces={16}
         style={
-          Array [
-            Object {
+          [
+            {
               "width": 64,
             },
           ]
@@ -67,8 +67,8 @@ exports[`<SeeMore /> renders correctly 1`] = `
       />
       <View
         style={
-          Array [
-            Object {
+          [
+            {
               "alignItems": "center",
               "aspectRatio": 1,
               "backgroundColor": "#ffffff",
@@ -79,7 +79,7 @@ exports[`<SeeMore /> renders correctly 1`] = `
               "height": 64,
               "justifyContent": "center",
               "shadowColor": "#161617",
-              "shadowOffset": Object {
+              "shadowOffset": {
                 "height": 8,
                 "width": 0,
               },
@@ -102,8 +102,8 @@ exports[`<SeeMore /> renders correctly 1`] = `
       <View
         numberOfSpaces={16}
         style={
-          Array [
-            Object {
+          [
+            {
               "width": 64,
             },
           ]
@@ -113,8 +113,8 @@ exports[`<SeeMore /> renders correctly 1`] = `
     <View
       numberOfSpaces={2}
       style={
-        Array [
-          Object {
+        [
+          {
             "height": 8,
           },
         ]
@@ -122,8 +122,8 @@ exports[`<SeeMore /> renders correctly 1`] = `
     />
     <View
       style={
-        Array [
-          Object {
+        [
+          {
             "flexDirection": "row",
           },
         ]
@@ -131,8 +131,8 @@ exports[`<SeeMore /> renders correctly 1`] = `
     >
       <Text
         style={
-          Array [
-            Object {
+          [
+            {
               "color": "#eb0055",
               "fontFamily": "Montserrat-Bold",
               "fontSize": 15,

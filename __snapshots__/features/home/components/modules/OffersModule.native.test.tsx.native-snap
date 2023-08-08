@@ -3,8 +3,8 @@
 exports[`OffersModule component should render correctly 1`] = `
 <View
   style={
-    Array [
-      Object {
+    [
+      {
         "paddingBottom": 24,
       },
     ]
@@ -12,8 +12,8 @@ exports[`OffersModule component should render correctly 1`] = `
 >
   <View
     style={
-      Array [
-        Object {
+      [
+        {
           "maxHeight": 68,
           "overflow": "hidden",
         },
@@ -22,8 +22,8 @@ exports[`OffersModule component should render correctly 1`] = `
   >
     <View
       style={
-        Array [
-          Object {
+        [
+          {
             "alignItems": "center",
             "flexDirection": "row",
             "marginHorizontal": 24,
@@ -34,8 +34,8 @@ exports[`OffersModule component should render correctly 1`] = `
       <Text
         numberOfLines={2}
         style={
-          Array [
-            Object {
+          [
+            {
               "color": "#161617",
               "fontFamily": "Montserrat-Bold",
               "fontSize": 20,
@@ -52,8 +52,8 @@ exports[`OffersModule component should render correctly 1`] = `
   <View
     numberOfSpaces={4}
     style={
-      Array [
-        Object {
+      [
+        {
           "height": 16,
         },
       ]
@@ -61,8 +61,8 @@ exports[`OffersModule component should render correctly 1`] = `
   />
   <View
     style={
-      Array [
-        Object {
+      [
+        {
           "position": "relative",
           "width": "100%",
         },
@@ -70,15 +70,15 @@ exports[`OffersModule component should render correctly 1`] = `
     }
   >
     <View
-      style={Object {}}
+      style={{}}
     >
       <RCTScrollView
         ItemSeparatorComponent={
-          Object {
+          {
             "$$typeof": Symbol(react.forward_ref),
-            "attrs": Array [],
+            "attrs": [],
             "inlineStyle": InlineStyle {
-              "rules": Array [
+              "rules": [
                 "width: 16px;",
               ],
             },
@@ -90,11 +90,11 @@ exports[`OffersModule component should render correctly 1`] = `
           }
         }
         ListFooterComponent={
-          Object {
+          {
             "$$typeof": Symbol(react.forward_ref),
-            "attrs": Array [],
+            "attrs": [],
             "inlineStyle": InlineStyle {
-              "rules": Array [
+              "rules": [
                 "width: 24px;",
               ],
             },
@@ -106,11 +106,11 @@ exports[`OffersModule component should render correctly 1`] = `
           }
         }
         ListHeaderComponent={
-          Object {
+          {
             "$$typeof": Symbol(react.forward_ref),
-            "attrs": Array [],
+            "attrs": [],
             "inlineStyle": InlineStyle {
-              "rules": Array [
+              "rules": [
                 "width: 24px;",
               ],
             },
@@ -124,7 +124,7 @@ exports[`OffersModule component should render correctly 1`] = `
         applyWindowCorrection={[Function]}
         canChangeSize={true}
         contentContainerStyle={
-          Object {
+          {
             "backgroundColor": undefined,
             "minHeight": 1,
             "minWidth": 1,
@@ -135,25 +135,25 @@ exports[`OffersModule component should render correctly 1`] = `
         contentHeight={250}
         contentWidth={768}
         data={
-          Array [
-            Object {
-              "_geoloc": Object {
+          [
+            {
+              "_geoloc": {
                 "lat": 48.94374,
                 "lng": 2.48171,
               },
               "objectID": "102280",
-              "offer": Object {
-                "dates": Array [],
+              "offer": {
+                "dates": [],
                 "isDigital": false,
                 "isDuo": false,
                 "name": "La nuit des temps",
-                "prices": Array [
+                "prices": [
                   2800,
                 ],
                 "subcategoryId": "LIVRE_PAPIER",
                 "thumbUrl": "fakeUrlPrefix/thumbs/mediations/CDNQ",
               },
-              "venue": Object {
+              "venue": {
                 "address": "1 rue de la paix",
                 "city": "Paris",
                 "id": 1,
@@ -162,24 +162,24 @@ exports[`OffersModule component should render correctly 1`] = `
                 "publicName": "Lieu 1",
               },
             },
-            Object {
-              "_geoloc": Object {
+            {
+              "_geoloc": {
                 "lat": 48.91265,
                 "lng": 2.4513,
               },
               "objectID": "102272",
-              "offer": Object {
-                "dates": Array [],
+              "offer": {
+                "dates": [],
                 "isDigital": false,
                 "isDuo": false,
                 "name": "I want something more",
-                "prices": Array [
+                "prices": [
                   2300,
                 ],
                 "subcategoryId": "CONCERT",
                 "thumbUrl": "fakeUrlPrefix/thumbs/mediations/CDKQ",
               },
-              "venue": Object {
+              "venue": {
                 "address": "2 rue de la paix",
                 "city": "Paris",
                 "id": 2,
@@ -188,26 +188,26 @@ exports[`OffersModule component should render correctly 1`] = `
                 "publicName": "Lieu 2",
               },
             },
-            Object {
-              "_geoloc": Object {
+            {
+              "_geoloc": {
                 "lat": 4.90339,
                 "lng": -52.31663,
               },
               "objectID": "102249",
-              "offer": Object {
-                "dates": Array [
+              "offer": {
+                "dates": [
                   1605643200,
                 ],
                 "isDigital": false,
                 "isDuo": true,
                 "name": "Un lit sous une rivière",
-                "prices": Array [
+                "prices": [
                   3400,
                 ],
                 "subcategoryId": "CONCERT",
                 "thumbUrl": "fakeUrlPrefix/thumbs/mediations/CDBA",
               },
-              "venue": Object {
+              "venue": {
                 "address": "3 rue de la paix",
                 "city": "Paris",
                 "id": 3,
@@ -216,24 +216,24 @@ exports[`OffersModule component should render correctly 1`] = `
                 "publicName": "Lieu 3",
               },
             },
-            Object {
-              "_geoloc": Object {
+            {
+              "_geoloc": {
                 "lat": 4.90339,
                 "lng": -52.31663,
               },
               "objectID": "102310",
-              "offer": Object {
-                "dates": Array [],
+              "offer": {
+                "dates": [],
                 "isDigital": false,
                 "isDuo": false,
                 "name": "I want something more",
-                "prices": Array [
+                "prices": [
                   2800,
                 ],
                 "subcategoryId": "CONCERT",
                 "thumbUrl": "fakeUrlPrefix/thumbs/mediations/CDZQ",
               },
-              "venue": Object {
+              "venue": {
                 "address": "4 rue de la paix",
                 "city": "Paris",
                 "id": 4,
@@ -246,25 +246,25 @@ exports[`OffersModule component should render correctly 1`] = `
         }
         dataProvider={
           DataProvider {
-            "_data": Array [
-              Object {
-                "_geoloc": Object {
+            "_data": [
+              {
+                "_geoloc": {
                   "lat": 48.94374,
                   "lng": 2.48171,
                 },
                 "objectID": "102280",
-                "offer": Object {
-                  "dates": Array [],
+                "offer": {
+                  "dates": [],
                   "isDigital": false,
                   "isDuo": false,
                   "name": "La nuit des temps",
-                  "prices": Array [
+                  "prices": [
                     2800,
                   ],
                   "subcategoryId": "LIVRE_PAPIER",
                   "thumbUrl": "fakeUrlPrefix/thumbs/mediations/CDNQ",
                 },
-                "venue": Object {
+                "venue": {
                   "address": "1 rue de la paix",
                   "city": "Paris",
                   "id": 1,
@@ -273,24 +273,24 @@ exports[`OffersModule component should render correctly 1`] = `
                   "publicName": "Lieu 1",
                 },
               },
-              Object {
-                "_geoloc": Object {
+              {
+                "_geoloc": {
                   "lat": 48.91265,
                   "lng": 2.4513,
                 },
                 "objectID": "102272",
-                "offer": Object {
-                  "dates": Array [],
+                "offer": {
+                  "dates": [],
                   "isDigital": false,
                   "isDuo": false,
                   "name": "I want something more",
-                  "prices": Array [
+                  "prices": [
                     2300,
                   ],
                   "subcategoryId": "CONCERT",
                   "thumbUrl": "fakeUrlPrefix/thumbs/mediations/CDKQ",
                 },
-                "venue": Object {
+                "venue": {
                   "address": "2 rue de la paix",
                   "city": "Paris",
                   "id": 2,
@@ -299,26 +299,26 @@ exports[`OffersModule component should render correctly 1`] = `
                   "publicName": "Lieu 2",
                 },
               },
-              Object {
-                "_geoloc": Object {
+              {
+                "_geoloc": {
                   "lat": 4.90339,
                   "lng": -52.31663,
                 },
                 "objectID": "102249",
-                "offer": Object {
-                  "dates": Array [
+                "offer": {
+                  "dates": [
                     1605643200,
                   ],
                   "isDigital": false,
                   "isDuo": true,
                   "name": "Un lit sous une rivière",
-                  "prices": Array [
+                  "prices": [
                     3400,
                   ],
                   "subcategoryId": "CONCERT",
                   "thumbUrl": "fakeUrlPrefix/thumbs/mediations/CDBA",
                 },
-                "venue": Object {
+                "venue": {
                   "address": "3 rue de la paix",
                   "city": "Paris",
                   "id": 3,
@@ -327,24 +327,24 @@ exports[`OffersModule component should render correctly 1`] = `
                   "publicName": "Lieu 3",
                 },
               },
-              Object {
-                "_geoloc": Object {
+              {
+                "_geoloc": {
                   "lat": 4.90339,
                   "lng": -52.31663,
                 },
                 "objectID": "102310",
-                "offer": Object {
-                  "dates": Array [],
+                "offer": {
+                  "dates": [],
                   "isDigital": false,
                   "isDuo": false,
                   "name": "I want something more",
-                  "prices": Array [
+                  "prices": [
                     2800,
                   ],
                   "subcategoryId": "CONCERT",
                   "thumbUrl": "fakeUrlPrefix/thumbs/mediations/CDZQ",
                 },
-                "venue": Object {
+                "venue": {
                   "address": "4 rue de la paix",
                   "city": "Paris",
                   "id": 4,
@@ -364,7 +364,7 @@ exports[`OffersModule component should render correctly 1`] = `
         }
         disableRecycling={false}
         estimatedItemSize={192}
-        extendedState={Object {}}
+        extendedState={{}}
         externalScrollView={[Function]}
         finalRenderAheadOffset={187.5}
         forceNonDeterministicRendering={true}
@@ -388,29 +388,29 @@ exports[`OffersModule component should render correctly 1`] = `
               "_isGridHorizontal": true,
               "_isHorizontal": true,
               "_layoutProvider": [Circular],
-              "_layouts": Array [
-                Object {
+              "_layouts": [
+                {
                   "height": 250,
                   "type": 0,
                   "width": 192,
                   "x": 0,
                   "y": 0,
                 },
-                Object {
+                {
                   "height": 250,
                   "type": 0,
                   "width": 192,
                   "x": 192,
                   "y": 0,
                 },
-                Object {
+                {
                   "height": 250,
                   "type": 0,
                   "width": 192,
                   "x": 384,
                   "y": 0,
                 },
-                Object {
+                {
                   "height": 250,
                   "type": 0,
                   "width": 192,
@@ -419,31 +419,31 @@ exports[`OffersModule component should render correctly 1`] = `
                 },
               ],
               "_maxSpan": 1,
-              "_renderWindowSize": Object {
+              "_renderWindowSize": {
                 "height": 250,
                 "width": 800,
               },
               "_totalHeight": 250,
               "_totalWidth": 768,
-              "_window": Object {
+              "_window": {
                 "height": 250,
                 "width": 800,
               },
             },
             "_maxSpan": 1,
-            "_renderWindowSize": Object {
+            "_renderWindowSize": {
               "height": 250,
               "width": 800,
             },
             "_setLayoutForType": [Function],
-            "_tempDim": Object {
+            "_tempDim": {
               "height": 0,
               "width": 0,
             },
             "averageWindow": AverageWindow {
               "currentAverage": 192,
               "currentCount": 1,
-              "inputValues": Array [
+              "inputValues": [
                 192,
                 ,
                 ,
@@ -456,16 +456,16 @@ exports[`OffersModule component should render correctly 1`] = `
               "nextIndex": 1,
             },
             "defaultEstimatedItemSize": 100,
-            "layoutObject": Object {
+            "layoutObject": {
               "size": undefined,
               "span": undefined,
             },
-            "props": Object {
-              "ItemSeparatorComponent": Object {
+            "props": {
+              "ItemSeparatorComponent": {
                 "$$typeof": Symbol(react.forward_ref),
-                "attrs": Array [],
+                "attrs": [],
                 "inlineStyle": InlineStyle {
-                  "rules": Array [
+                  "rules": [
                     "width: 16px;",
                   ],
                 },
@@ -475,11 +475,11 @@ exports[`OffersModule component should render correctly 1`] = `
                 "target": [Function],
                 "withComponent": [Function],
               },
-              "ListFooterComponent": Object {
+              "ListFooterComponent": {
                 "$$typeof": Symbol(react.forward_ref),
-                "attrs": Array [],
+                "attrs": [],
                 "inlineStyle": InlineStyle {
-                  "rules": Array [
+                  "rules": [
                     "width: 24px;",
                   ],
                 },
@@ -489,11 +489,11 @@ exports[`OffersModule component should render correctly 1`] = `
                 "target": [Function],
                 "withComponent": [Function],
               },
-              "ListHeaderComponent": Object {
+              "ListHeaderComponent": {
                 "$$typeof": Symbol(react.forward_ref),
-                "attrs": Array [],
+                "attrs": [],
                 "inlineStyle": InlineStyle {
-                  "rules": Array [
+                  "rules": [
                     "width: 24px;",
                   ],
                 },
@@ -503,25 +503,25 @@ exports[`OffersModule component should render correctly 1`] = `
                 "target": [Function],
                 "withComponent": [Function],
               },
-              "data": Array [
-                Object {
-                  "_geoloc": Object {
+              "data": [
+                {
+                  "_geoloc": {
                     "lat": 48.94374,
                     "lng": 2.48171,
                   },
                   "objectID": "102280",
-                  "offer": Object {
-                    "dates": Array [],
+                  "offer": {
+                    "dates": [],
                     "isDigital": false,
                     "isDuo": false,
                     "name": "La nuit des temps",
-                    "prices": Array [
+                    "prices": [
                       2800,
                     ],
                     "subcategoryId": "LIVRE_PAPIER",
                     "thumbUrl": "fakeUrlPrefix/thumbs/mediations/CDNQ",
                   },
-                  "venue": Object {
+                  "venue": {
                     "address": "1 rue de la paix",
                     "city": "Paris",
                     "id": 1,
@@ -530,24 +530,24 @@ exports[`OffersModule component should render correctly 1`] = `
                     "publicName": "Lieu 1",
                   },
                 },
-                Object {
-                  "_geoloc": Object {
+                {
+                  "_geoloc": {
                     "lat": 48.91265,
                     "lng": 2.4513,
                   },
                   "objectID": "102272",
-                  "offer": Object {
-                    "dates": Array [],
+                  "offer": {
+                    "dates": [],
                     "isDigital": false,
                     "isDuo": false,
                     "name": "I want something more",
-                    "prices": Array [
+                    "prices": [
                       2300,
                     ],
                     "subcategoryId": "CONCERT",
                     "thumbUrl": "fakeUrlPrefix/thumbs/mediations/CDKQ",
                   },
-                  "venue": Object {
+                  "venue": {
                     "address": "2 rue de la paix",
                     "city": "Paris",
                     "id": 2,
@@ -556,26 +556,26 @@ exports[`OffersModule component should render correctly 1`] = `
                     "publicName": "Lieu 2",
                   },
                 },
-                Object {
-                  "_geoloc": Object {
+                {
+                  "_geoloc": {
                     "lat": 4.90339,
                     "lng": -52.31663,
                   },
                   "objectID": "102249",
-                  "offer": Object {
-                    "dates": Array [
+                  "offer": {
+                    "dates": [
                       1605643200,
                     ],
                     "isDigital": false,
                     "isDuo": true,
                     "name": "Un lit sous une rivière",
-                    "prices": Array [
+                    "prices": [
                       3400,
                     ],
                     "subcategoryId": "CONCERT",
                     "thumbUrl": "fakeUrlPrefix/thumbs/mediations/CDBA",
                   },
-                  "venue": Object {
+                  "venue": {
                     "address": "3 rue de la paix",
                     "city": "Paris",
                     "id": 3,
@@ -584,24 +584,24 @@ exports[`OffersModule component should render correctly 1`] = `
                     "publicName": "Lieu 3",
                   },
                 },
-                Object {
-                  "_geoloc": Object {
+                {
+                  "_geoloc": {
                     "lat": 4.90339,
                     "lng": -52.31663,
                   },
                   "objectID": "102310",
-                  "offer": Object {
-                    "dates": Array [],
+                  "offer": {
+                    "dates": [],
                     "isDigital": false,
                     "isDuo": false,
                     "name": "I want something more",
-                    "prices": Array [
+                    "prices": [
                       2800,
                     ],
                     "subcategoryId": "CONCERT",
                     "thumbUrl": "fakeUrlPrefix/thumbs/mediations/CDZQ",
                   },
-                  "venue": Object {
+                  "venue": {
                     "address": "4 rue de la paix",
                     "city": "Paris",
                     "id": 4,
@@ -626,7 +626,7 @@ exports[`OffersModule component should render correctly 1`] = `
               "showsHorizontalScrollIndicator": false,
               "testID": "offersModuleList",
             },
-            "renderWindowInsets": Object {
+            "renderWindowInsets": {
               "height": 0,
               "width": 0,
             },
@@ -655,8 +655,8 @@ exports[`OffersModule component should render correctly 1`] = `
         scrollEventThrottle={200}
         scrollThrottle={16}
         scrollViewProps={
-          Object {
-            "contentContainerStyle": Object {
+          {
+            "contentContainerStyle": {
               "backgroundColor": undefined,
               "minHeight": 1,
               "minWidth": 1,
@@ -666,7 +666,7 @@ exports[`OffersModule component should render correctly 1`] = `
             "onLayout": [Function],
             "onScrollBeginDrag": [Function],
             "refreshControl": undefined,
-            "style": Object {
+            "style": {
               "minHeight": 1,
               "minWidth": 1,
             },
@@ -674,7 +674,7 @@ exports[`OffersModule component should render correctly 1`] = `
         }
         showsHorizontalScrollIndicator={false}
         style={
-          Object {
+          {
             "minHeight": 1,
             "minWidth": 1,
           }
@@ -682,10 +682,10 @@ exports[`OffersModule component should render correctly 1`] = `
         suppressBoundedSizeException={true}
         testID="offersModuleList"
         windowCorrectionConfig={
-          Object {
+          {
             "applyToInitialOffset": true,
             "applyToItemScroll": true,
-            "value": Object {
+            "value": {
               "endCorrection": 0,
               "startCorrection": 0,
               "windowShift": -1,
@@ -696,14 +696,14 @@ exports[`OffersModule component should render correctly 1`] = `
         <View>
           <View
             style={
-              Object {
+              {
                 "flexDirection": "row",
               }
             }
           >
             <View
               style={
-                Object {
+                {
                   "paddingLeft": 0,
                   "paddingTop": 0,
                 }
@@ -711,7 +711,7 @@ exports[`OffersModule component should render correctly 1`] = `
             />
             <View
               style={
-                Array [
+                [
                   undefined,
                   undefined,
                 ]
@@ -719,8 +719,8 @@ exports[`OffersModule component should render correctly 1`] = `
             >
               <View
                 style={
-                  Array [
-                    Object {
+                  [
+                    {
                       "width": 24,
                     },
                   ]
@@ -735,7 +735,7 @@ exports[`OffersModule component should render correctly 1`] = `
               renderAheadOffset={0}
               scrollOffset={0}
               style={
-                Object {
+                {
                   "height": 250,
                   "width": 768,
                 }
@@ -746,7 +746,7 @@ exports[`OffersModule component should render correctly 1`] = `
                 index={2}
                 onLayout={[Function]}
                 style={
-                  Object {
+                  {
                     "alignItems": "stretch",
                     "flexDirection": "row",
                     "height": 250,
@@ -758,7 +758,7 @@ exports[`OffersModule component should render correctly 1`] = `
               >
                 <View
                   style={
-                    Object {
+                    {
                       "flexDirection": "column",
                     }
                   }
@@ -777,13 +777,13 @@ exports[`OffersModule component should render correctly 1`] = `
                       onResponderTerminationRequest={[Function]}
                       onStartShouldSetResponder={[Function]}
                       style={
-                        Array [
-                          Object {
+                        [
+                          {
                             "textDecorationColor": "black",
                             "textDecorationLine": "none",
                             "textDecorationStyle": "solid",
                           },
-                          Object {
+                          {
                             "borderRadius": 8,
                             "height": 360,
                             "marginVertical": 4,
@@ -794,8 +794,8 @@ exports[`OffersModule component should render correctly 1`] = `
                     >
                       <View
                         style={
-                          Array [
-                            Object {
+                          [
+                            {
                               "flexDirection": "column-reverse",
                             },
                           ]
@@ -804,8 +804,8 @@ exports[`OffersModule component should render correctly 1`] = `
                         <View
                           imageWidth={192}
                           style={
-                            Array [
-                              Object {
+                            [
+                              {
                                 "marginTop": 8,
                                 "maxWidth": 192,
                               },
@@ -815,8 +815,8 @@ exports[`OffersModule component should render correctly 1`] = `
                           <Text
                             numberOfLines={2}
                             style={
-                              Array [
-                                Object {
+                              [
+                                {
                                   "color": "#161617",
                                   "fontFamily": "Montserrat-SemiBold",
                                   "fontSize": 12,
@@ -830,8 +830,8 @@ exports[`OffersModule component should render correctly 1`] = `
                           <Text
                             numberOfLines={1}
                             style={
-                              Array [
-                                Object {
+                              [
+                                {
                                   "color": "#696A6F",
                                   "fontFamily": "Montserrat-SemiBold",
                                   "fontSize": 12,
@@ -844,8 +844,8 @@ exports[`OffersModule component should render correctly 1`] = `
                           </Text>
                           <Text
                             style={
-                              Array [
-                                Object {
+                              [
+                                {
                                   "color": "#696A6F",
                                   "fontFamily": "Montserrat-SemiBold",
                                   "fontSize": 12,
@@ -861,15 +861,15 @@ exports[`OffersModule component should render correctly 1`] = `
                         <View>
                           <View
                             style={
-                              Array [
-                                Object {
+                              [
+                                {
                                   "overflow": "hidden",
                                 },
-                                Array [
-                                  Object {
+                                [
+                                  {
                                     "backgroundColor": "#F1F1F4",
                                   },
-                                  Object {
+                                  {
                                     "borderTopLeftRadius": 8,
                                     "borderTopRightRadius": 8,
                                     "height": 264,
@@ -883,12 +883,12 @@ exports[`OffersModule component should render correctly 1`] = `
                               defaultSource={null}
                               resizeMode="cover"
                               source={
-                                Object {
+                                {
                                   "uri": "fakeUrlPrefix/thumbs/mediations/CDBA",
                                 }
                               }
                               style={
-                                Object {
+                                {
                                   "bottom": 0,
                                   "left": 0,
                                   "position": "absolute",
@@ -902,8 +902,8 @@ exports[`OffersModule component should render correctly 1`] = `
                           <View
                             height={24}
                             style={
-                              Array [
-                                Object {
+                              [
+                                {
                                   "alignItems": "center",
                                   "backgroundColor": "#161617",
                                   "borderBottomLeftRadius": 8,
@@ -918,8 +918,8 @@ exports[`OffersModule component should render correctly 1`] = `
                           >
                             <View
                               style={
-                                Array [
-                                  Object {
+                                [
+                                  {
                                     "alignItems": "center",
                                     "flexBasis": 0,
                                     "flexGrow": 1,
@@ -933,8 +933,8 @@ exports[`OffersModule component should render correctly 1`] = `
                               <Text
                                 numberOfLines={1}
                                 style={
-                                  Array [
-                                    Object {
+                                  [
+                                    {
                                       "color": "#ffffff",
                                       "fontFamily": "Montserrat-SemiBold",
                                       "fontSize": 12,
@@ -955,26 +955,26 @@ exports[`OffersModule component should render correctly 1`] = `
                 </View>
                 <View
                   leadingItem={
-                    Object {
-                      "_geoloc": Object {
+                    {
+                      "_geoloc": {
                         "lat": 4.90339,
                         "lng": -52.31663,
                       },
                       "objectID": "102249",
-                      "offer": Object {
-                        "dates": Array [
+                      "offer": {
+                        "dates": [
                           1605643200,
                         ],
                         "isDigital": false,
                         "isDuo": true,
                         "name": "Un lit sous une rivière",
-                        "prices": Array [
+                        "prices": [
                           3400,
                         ],
                         "subcategoryId": "CONCERT",
                         "thumbUrl": "fakeUrlPrefix/thumbs/mediations/CDBA",
                       },
-                      "venue": Object {
+                      "venue": {
                         "address": "3 rue de la paix",
                         "city": "Paris",
                         "id": 3,
@@ -985,31 +985,31 @@ exports[`OffersModule component should render correctly 1`] = `
                     }
                   }
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "width": 16,
                       },
                     ]
                   }
                   trailingItem={
-                    Object {
-                      "_geoloc": Object {
+                    {
+                      "_geoloc": {
                         "lat": 4.90339,
                         "lng": -52.31663,
                       },
                       "objectID": "102310",
-                      "offer": Object {
-                        "dates": Array [],
+                      "offer": {
+                        "dates": [],
                         "isDigital": false,
                         "isDuo": false,
                         "name": "I want something more",
-                        "prices": Array [
+                        "prices": [
                           2800,
                         ],
                         "subcategoryId": "CONCERT",
                         "thumbUrl": "fakeUrlPrefix/thumbs/mediations/CDZQ",
                       },
-                      "venue": Object {
+                      "venue": {
                         "address": "4 rue de la paix",
                         "city": "Paris",
                         "id": 4,
@@ -1025,7 +1025,7 @@ exports[`OffersModule component should render correctly 1`] = `
                 index={1}
                 onLayout={[Function]}
                 style={
-                  Object {
+                  {
                     "alignItems": "stretch",
                     "flexDirection": "row",
                     "height": 250,
@@ -1037,7 +1037,7 @@ exports[`OffersModule component should render correctly 1`] = `
               >
                 <View
                   style={
-                    Object {
+                    {
                       "flexDirection": "column",
                     }
                   }
@@ -1056,13 +1056,13 @@ exports[`OffersModule component should render correctly 1`] = `
                       onResponderTerminationRequest={[Function]}
                       onStartShouldSetResponder={[Function]}
                       style={
-                        Array [
-                          Object {
+                        [
+                          {
                             "textDecorationColor": "black",
                             "textDecorationLine": "none",
                             "textDecorationStyle": "solid",
                           },
-                          Object {
+                          {
                             "borderRadius": 8,
                             "height": 360,
                             "marginVertical": 4,
@@ -1073,8 +1073,8 @@ exports[`OffersModule component should render correctly 1`] = `
                     >
                       <View
                         style={
-                          Array [
-                            Object {
+                          [
+                            {
                               "flexDirection": "column-reverse",
                             },
                           ]
@@ -1083,8 +1083,8 @@ exports[`OffersModule component should render correctly 1`] = `
                         <View
                           imageWidth={192}
                           style={
-                            Array [
-                              Object {
+                            [
+                              {
                                 "marginTop": 8,
                                 "maxWidth": 192,
                               },
@@ -1094,8 +1094,8 @@ exports[`OffersModule component should render correctly 1`] = `
                           <Text
                             numberOfLines={2}
                             style={
-                              Array [
-                                Object {
+                              [
+                                {
                                   "color": "#161617",
                                   "fontFamily": "Montserrat-SemiBold",
                                   "fontSize": 12,
@@ -1108,8 +1108,8 @@ exports[`OffersModule component should render correctly 1`] = `
                           </Text>
                           <Text
                             style={
-                              Array [
-                                Object {
+                              [
+                                {
                                   "color": "#696A6F",
                                   "fontFamily": "Montserrat-SemiBold",
                                   "fontSize": 12,
@@ -1125,15 +1125,15 @@ exports[`OffersModule component should render correctly 1`] = `
                         <View>
                           <View
                             style={
-                              Array [
-                                Object {
+                              [
+                                {
                                   "overflow": "hidden",
                                 },
-                                Array [
-                                  Object {
+                                [
+                                  {
                                     "backgroundColor": "#F1F1F4",
                                   },
-                                  Object {
+                                  {
                                     "borderTopLeftRadius": 8,
                                     "borderTopRightRadius": 8,
                                     "height": 264,
@@ -1147,12 +1147,12 @@ exports[`OffersModule component should render correctly 1`] = `
                               defaultSource={null}
                               resizeMode="cover"
                               source={
-                                Object {
+                                {
                                   "uri": "fakeUrlPrefix/thumbs/mediations/CDKQ",
                                 }
                               }
                               style={
-                                Object {
+                                {
                                   "bottom": 0,
                                   "left": 0,
                                   "position": "absolute",
@@ -1166,8 +1166,8 @@ exports[`OffersModule component should render correctly 1`] = `
                           <View
                             height={24}
                             style={
-                              Array [
-                                Object {
+                              [
+                                {
                                   "alignItems": "center",
                                   "backgroundColor": "#161617",
                                   "borderBottomLeftRadius": 8,
@@ -1182,8 +1182,8 @@ exports[`OffersModule component should render correctly 1`] = `
                           >
                             <View
                               style={
-                                Array [
-                                  Object {
+                                [
+                                  {
                                     "alignItems": "center",
                                     "flexBasis": 0,
                                     "flexGrow": 1,
@@ -1197,8 +1197,8 @@ exports[`OffersModule component should render correctly 1`] = `
                               <Text
                                 numberOfLines={1}
                                 style={
-                                  Array [
-                                    Object {
+                                  [
+                                    {
                                       "color": "#ffffff",
                                       "fontFamily": "Montserrat-SemiBold",
                                       "fontSize": 12,
@@ -1219,24 +1219,24 @@ exports[`OffersModule component should render correctly 1`] = `
                 </View>
                 <View
                   leadingItem={
-                    Object {
-                      "_geoloc": Object {
+                    {
+                      "_geoloc": {
                         "lat": 48.91265,
                         "lng": 2.4513,
                       },
                       "objectID": "102272",
-                      "offer": Object {
-                        "dates": Array [],
+                      "offer": {
+                        "dates": [],
                         "isDigital": false,
                         "isDuo": false,
                         "name": "I want something more",
-                        "prices": Array [
+                        "prices": [
                           2300,
                         ],
                         "subcategoryId": "CONCERT",
                         "thumbUrl": "fakeUrlPrefix/thumbs/mediations/CDKQ",
                       },
-                      "venue": Object {
+                      "venue": {
                         "address": "2 rue de la paix",
                         "city": "Paris",
                         "id": 2,
@@ -1247,33 +1247,33 @@ exports[`OffersModule component should render correctly 1`] = `
                     }
                   }
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "width": 16,
                       },
                     ]
                   }
                   trailingItem={
-                    Object {
-                      "_geoloc": Object {
+                    {
+                      "_geoloc": {
                         "lat": 4.90339,
                         "lng": -52.31663,
                       },
                       "objectID": "102249",
-                      "offer": Object {
-                        "dates": Array [
+                      "offer": {
+                        "dates": [
                           1605643200,
                         ],
                         "isDigital": false,
                         "isDuo": true,
                         "name": "Un lit sous une rivière",
-                        "prices": Array [
+                        "prices": [
                           3400,
                         ],
                         "subcategoryId": "CONCERT",
                         "thumbUrl": "fakeUrlPrefix/thumbs/mediations/CDBA",
                       },
-                      "venue": Object {
+                      "venue": {
                         "address": "3 rue de la paix",
                         "city": "Paris",
                         "id": 3,
@@ -1289,7 +1289,7 @@ exports[`OffersModule component should render correctly 1`] = `
                 index={0}
                 onLayout={[Function]}
                 style={
-                  Object {
+                  {
                     "alignItems": "stretch",
                     "flexDirection": "row",
                     "height": 250,
@@ -1301,7 +1301,7 @@ exports[`OffersModule component should render correctly 1`] = `
               >
                 <View
                   style={
-                    Object {
+                    {
                       "flexDirection": "column",
                     }
                   }
@@ -1320,13 +1320,13 @@ exports[`OffersModule component should render correctly 1`] = `
                       onResponderTerminationRequest={[Function]}
                       onStartShouldSetResponder={[Function]}
                       style={
-                        Array [
-                          Object {
+                        [
+                          {
                             "textDecorationColor": "black",
                             "textDecorationLine": "none",
                             "textDecorationStyle": "solid",
                           },
-                          Object {
+                          {
                             "borderRadius": 8,
                             "height": 360,
                             "marginVertical": 4,
@@ -1337,8 +1337,8 @@ exports[`OffersModule component should render correctly 1`] = `
                     >
                       <View
                         style={
-                          Array [
-                            Object {
+                          [
+                            {
                               "flexDirection": "column-reverse",
                             },
                           ]
@@ -1347,8 +1347,8 @@ exports[`OffersModule component should render correctly 1`] = `
                         <View
                           imageWidth={192}
                           style={
-                            Array [
-                              Object {
+                            [
+                              {
                                 "marginTop": 8,
                                 "maxWidth": 192,
                               },
@@ -1358,8 +1358,8 @@ exports[`OffersModule component should render correctly 1`] = `
                           <Text
                             numberOfLines={2}
                             style={
-                              Array [
-                                Object {
+                              [
+                                {
                                   "color": "#161617",
                                   "fontFamily": "Montserrat-SemiBold",
                                   "fontSize": 12,
@@ -1372,8 +1372,8 @@ exports[`OffersModule component should render correctly 1`] = `
                           </Text>
                           <Text
                             style={
-                              Array [
-                                Object {
+                              [
+                                {
                                   "color": "#696A6F",
                                   "fontFamily": "Montserrat-SemiBold",
                                   "fontSize": 12,
@@ -1389,15 +1389,15 @@ exports[`OffersModule component should render correctly 1`] = `
                         <View>
                           <View
                             style={
-                              Array [
-                                Object {
+                              [
+                                {
                                   "overflow": "hidden",
                                 },
-                                Array [
-                                  Object {
+                                [
+                                  {
                                     "backgroundColor": "#F1F1F4",
                                   },
-                                  Object {
+                                  {
                                     "borderTopLeftRadius": 8,
                                     "borderTopRightRadius": 8,
                                     "height": 264,
@@ -1411,12 +1411,12 @@ exports[`OffersModule component should render correctly 1`] = `
                               defaultSource={null}
                               resizeMode="cover"
                               source={
-                                Object {
+                                {
                                   "uri": "fakeUrlPrefix/thumbs/mediations/CDNQ",
                                 }
                               }
                               style={
-                                Object {
+                                {
                                   "bottom": 0,
                                   "left": 0,
                                   "position": "absolute",
@@ -1430,8 +1430,8 @@ exports[`OffersModule component should render correctly 1`] = `
                           <View
                             height={24}
                             style={
-                              Array [
-                                Object {
+                              [
+                                {
                                   "alignItems": "center",
                                   "backgroundColor": "#161617",
                                   "borderBottomLeftRadius": 8,
@@ -1446,8 +1446,8 @@ exports[`OffersModule component should render correctly 1`] = `
                           >
                             <View
                               style={
-                                Array [
-                                  Object {
+                                [
+                                  {
                                     "alignItems": "center",
                                     "flexBasis": 0,
                                     "flexGrow": 1,
@@ -1461,8 +1461,8 @@ exports[`OffersModule component should render correctly 1`] = `
                               <Text
                                 numberOfLines={1}
                                 style={
-                                  Array [
-                                    Object {
+                                  [
+                                    {
                                       "color": "#ffffff",
                                       "fontFamily": "Montserrat-SemiBold",
                                       "fontSize": 12,
@@ -1483,24 +1483,24 @@ exports[`OffersModule component should render correctly 1`] = `
                 </View>
                 <View
                   leadingItem={
-                    Object {
-                      "_geoloc": Object {
+                    {
+                      "_geoloc": {
                         "lat": 48.94374,
                         "lng": 2.48171,
                       },
                       "objectID": "102280",
-                      "offer": Object {
-                        "dates": Array [],
+                      "offer": {
+                        "dates": [],
                         "isDigital": false,
                         "isDuo": false,
                         "name": "La nuit des temps",
-                        "prices": Array [
+                        "prices": [
                           2800,
                         ],
                         "subcategoryId": "LIVRE_PAPIER",
                         "thumbUrl": "fakeUrlPrefix/thumbs/mediations/CDNQ",
                       },
-                      "venue": Object {
+                      "venue": {
                         "address": "1 rue de la paix",
                         "city": "Paris",
                         "id": 1,
@@ -1511,31 +1511,31 @@ exports[`OffersModule component should render correctly 1`] = `
                     }
                   }
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "width": 16,
                       },
                     ]
                   }
                   trailingItem={
-                    Object {
-                      "_geoloc": Object {
+                    {
+                      "_geoloc": {
                         "lat": 48.91265,
                         "lng": 2.4513,
                       },
                       "objectID": "102272",
-                      "offer": Object {
-                        "dates": Array [],
+                      "offer": {
+                        "dates": [],
                         "isDigital": false,
                         "isDuo": false,
                         "name": "I want something more",
-                        "prices": Array [
+                        "prices": [
                           2300,
                         ],
                         "subcategoryId": "CONCERT",
                         "thumbUrl": "fakeUrlPrefix/thumbs/mediations/CDKQ",
                       },
-                      "venue": Object {
+                      "venue": {
                         "address": "2 rue de la paix",
                         "city": "Paris",
                         "id": 2,
@@ -1551,7 +1551,7 @@ exports[`OffersModule component should render correctly 1`] = `
                 index={3}
                 onLayout={[Function]}
                 style={
-                  Object {
+                  {
                     "alignItems": "stretch",
                     "flexDirection": "row",
                     "height": 250,
@@ -1563,7 +1563,7 @@ exports[`OffersModule component should render correctly 1`] = `
               >
                 <View
                   style={
-                    Object {
+                    {
                       "flexDirection": "column",
                     }
                   }
@@ -1582,13 +1582,13 @@ exports[`OffersModule component should render correctly 1`] = `
                       onResponderTerminationRequest={[Function]}
                       onStartShouldSetResponder={[Function]}
                       style={
-                        Array [
-                          Object {
+                        [
+                          {
                             "textDecorationColor": "black",
                             "textDecorationLine": "none",
                             "textDecorationStyle": "solid",
                           },
-                          Object {
+                          {
                             "borderRadius": 8,
                             "height": 360,
                             "marginVertical": 4,
@@ -1599,8 +1599,8 @@ exports[`OffersModule component should render correctly 1`] = `
                     >
                       <View
                         style={
-                          Array [
-                            Object {
+                          [
+                            {
                               "flexDirection": "column-reverse",
                             },
                           ]
@@ -1609,8 +1609,8 @@ exports[`OffersModule component should render correctly 1`] = `
                         <View
                           imageWidth={192}
                           style={
-                            Array [
-                              Object {
+                            [
+                              {
                                 "marginTop": 8,
                                 "maxWidth": 192,
                               },
@@ -1620,8 +1620,8 @@ exports[`OffersModule component should render correctly 1`] = `
                           <Text
                             numberOfLines={2}
                             style={
-                              Array [
-                                Object {
+                              [
+                                {
                                   "color": "#161617",
                                   "fontFamily": "Montserrat-SemiBold",
                                   "fontSize": 12,
@@ -1634,8 +1634,8 @@ exports[`OffersModule component should render correctly 1`] = `
                           </Text>
                           <Text
                             style={
-                              Array [
-                                Object {
+                              [
+                                {
                                   "color": "#696A6F",
                                   "fontFamily": "Montserrat-SemiBold",
                                   "fontSize": 12,
@@ -1651,15 +1651,15 @@ exports[`OffersModule component should render correctly 1`] = `
                         <View>
                           <View
                             style={
-                              Array [
-                                Object {
+                              [
+                                {
                                   "overflow": "hidden",
                                 },
-                                Array [
-                                  Object {
+                                [
+                                  {
                                     "backgroundColor": "#F1F1F4",
                                   },
-                                  Object {
+                                  {
                                     "borderTopLeftRadius": 8,
                                     "borderTopRightRadius": 8,
                                     "height": 264,
@@ -1673,12 +1673,12 @@ exports[`OffersModule component should render correctly 1`] = `
                               defaultSource={null}
                               resizeMode="cover"
                               source={
-                                Object {
+                                {
                                   "uri": "fakeUrlPrefix/thumbs/mediations/CDZQ",
                                 }
                               }
                               style={
-                                Object {
+                                {
                                   "bottom": 0,
                                   "left": 0,
                                   "position": "absolute",
@@ -1692,8 +1692,8 @@ exports[`OffersModule component should render correctly 1`] = `
                           <View
                             height={24}
                             style={
-                              Array [
-                                Object {
+                              [
+                                {
                                   "alignItems": "center",
                                   "backgroundColor": "#161617",
                                   "borderBottomLeftRadius": 8,
@@ -1708,8 +1708,8 @@ exports[`OffersModule component should render correctly 1`] = `
                           >
                             <View
                               style={
-                                Array [
-                                  Object {
+                                [
+                                  {
                                     "alignItems": "center",
                                     "flexBasis": 0,
                                     "flexGrow": 1,
@@ -1723,8 +1723,8 @@ exports[`OffersModule component should render correctly 1`] = `
                               <Text
                                 numberOfLines={1}
                                 style={
-                                  Array [
-                                    Object {
+                                  [
+                                    {
                                       "color": "#ffffff",
                                       "fontFamily": "Montserrat-SemiBold",
                                       "fontSize": 12,
@@ -1748,7 +1748,7 @@ exports[`OffersModule component should render correctly 1`] = `
             <CellContainer
               index={-1}
               style={
-                Array [
+                [
                   undefined,
                   undefined,
                 ]
@@ -1756,8 +1756,8 @@ exports[`OffersModule component should render correctly 1`] = `
             >
               <View
                 style={
-                  Array [
-                    Object {
+                  [
+                    {
                       "width": 24,
                     },
                   ]
@@ -1766,7 +1766,7 @@ exports[`OffersModule component should render correctly 1`] = `
             </CellContainer>
             <View
               style={
-                Object {
+                {
                   "paddingBottom": 0,
                   "paddingRight": 0,
                 }
@@ -1775,7 +1775,7 @@ exports[`OffersModule component should render correctly 1`] = `
             <View
               pointerEvents="none"
               style={
-                Object {
+                {
                   "opacity": 0,
                 }
               }
@@ -1794,13 +1794,13 @@ exports[`OffersModule component should render correctly 1`] = `
                   onResponderTerminationRequest={[Function]}
                   onStartShouldSetResponder={[Function]}
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "textDecorationColor": "black",
                         "textDecorationLine": "none",
                         "textDecorationStyle": "solid",
                       },
-                      Object {
+                      {
                         "borderRadius": 8,
                         "height": 360,
                         "marginVertical": 4,
@@ -1811,8 +1811,8 @@ exports[`OffersModule component should render correctly 1`] = `
                 >
                   <View
                     style={
-                      Array [
-                        Object {
+                      [
+                        {
                           "flexDirection": "column-reverse",
                         },
                       ]
@@ -1821,8 +1821,8 @@ exports[`OffersModule component should render correctly 1`] = `
                     <View
                       imageWidth={192}
                       style={
-                        Array [
-                          Object {
+                        [
+                          {
                             "marginTop": 8,
                             "maxWidth": 192,
                           },
@@ -1832,8 +1832,8 @@ exports[`OffersModule component should render correctly 1`] = `
                       <Text
                         numberOfLines={2}
                         style={
-                          Array [
-                            Object {
+                          [
+                            {
                               "color": "#161617",
                               "fontFamily": "Montserrat-SemiBold",
                               "fontSize": 12,
@@ -1846,8 +1846,8 @@ exports[`OffersModule component should render correctly 1`] = `
                       </Text>
                       <Text
                         style={
-                          Array [
-                            Object {
+                          [
+                            {
                               "color": "#696A6F",
                               "fontFamily": "Montserrat-SemiBold",
                               "fontSize": 12,
@@ -1863,15 +1863,15 @@ exports[`OffersModule component should render correctly 1`] = `
                     <View>
                       <View
                         style={
-                          Array [
-                            Object {
+                          [
+                            {
                               "overflow": "hidden",
                             },
-                            Array [
-                              Object {
+                            [
+                              {
                                 "backgroundColor": "#F1F1F4",
                               },
-                              Object {
+                              {
                                 "borderTopLeftRadius": 8,
                                 "borderTopRightRadius": 8,
                                 "height": 264,
@@ -1885,12 +1885,12 @@ exports[`OffersModule component should render correctly 1`] = `
                           defaultSource={null}
                           resizeMode="cover"
                           source={
-                            Object {
+                            {
                               "uri": "fakeUrlPrefix/thumbs/mediations/CDKQ",
                             }
                           }
                           style={
-                            Object {
+                            {
                               "bottom": 0,
                               "left": 0,
                               "position": "absolute",
@@ -1904,8 +1904,8 @@ exports[`OffersModule component should render correctly 1`] = `
                       <View
                         height={24}
                         style={
-                          Array [
-                            Object {
+                          [
+                            {
                               "alignItems": "center",
                               "backgroundColor": "#161617",
                               "borderBottomLeftRadius": 8,
@@ -1920,8 +1920,8 @@ exports[`OffersModule component should render correctly 1`] = `
                       >
                         <View
                           style={
-                            Array [
-                              Object {
+                            [
+                              {
                                 "alignItems": "center",
                                 "flexBasis": 0,
                                 "flexGrow": 1,
@@ -1935,8 +1935,8 @@ exports[`OffersModule component should render correctly 1`] = `
                           <Text
                             numberOfLines={1}
                             style={
-                              Array [
-                                Object {
+                              [
+                                {
                                   "color": "#ffffff",
                                   "fontFamily": "Montserrat-SemiBold",
                                   "fontSize": 12,

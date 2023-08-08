@@ -1,11 +1,11 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`BookHourChoice should display filtered stocks for selected Date 1`] = `
-Array [
+[
   <Text
     style={
-      Array [
-        Object {
+      [
+        {
           "color": "#161617",
           "fontFamily": "Montserrat-Medium",
           "fontSize": 18,
@@ -20,8 +20,8 @@ Array [
   <View
     numberOfSpaces={4}
     style={
-      Array [
-        Object {
+      [
+        {
           "height": 16,
         },
       ]
@@ -31,8 +31,8 @@ Array [
     <View
       index={0}
       style={
-        Array [
-          Object {},
+        [
+          {},
         ]
       }
     >
@@ -40,7 +40,7 @@ Array [
         accessibilityLabel="10h00 épuisé"
         accessibilityRole="radio"
         accessibilityState={
-          Object {
+          {
             "checked": false,
             "disabled": true,
           }
@@ -56,7 +56,7 @@ Array [
         onResponderTerminationRequest={[Function]}
         onStartShouldSetResponder={[Function]}
         style={
-          Object {
+          {
             "alignItems": "center",
             "backgroundColor": "#F1F1F4",
             "borderColor": "#F1F1F4",
@@ -78,8 +78,8 @@ Array [
         <View
           isSelected={false}
           style={
-            Array [
-              Object {
+            [
+              {
                 "alignItems": "center",
                 "borderColor": "#90949D",
                 "borderRadius": 8,
@@ -97,8 +97,8 @@ Array [
             disabled={true}
             isSelected={false}
             style={
-              Array [
-                Object {
+              [
+                {
                   "backgroundColor": "#CBCDD2",
                   "borderRadius": 16,
                   "height": 16,
@@ -110,8 +110,8 @@ Array [
         </View>
         <View
           style={
-            Array [
-              Object {
+            [
+              {
                 "flexBasis": 0,
                 "flexGrow": 1,
                 "flexShrink": 1,
@@ -121,8 +121,8 @@ Array [
         >
           <View
             style={
-              Array [
-                Object {
+              [
+                {
                   "alignItems": "center",
                   "flexDirection": "row",
                 },
@@ -131,8 +131,8 @@ Array [
           >
             <View
               style={
-                Array [
-                  Object {
+                [
+                  {
                     "flexBasis": 0,
                     "flexGrow": 1,
                     "flexShrink": 1,
@@ -145,8 +145,8 @@ Array [
                 disabled={true}
                 isHover={false}
                 style={
-                  Array [
-                    Object {
+                  [
+                    {
                       "color": "#696A6F",
                       "fontFamily": "Montserrat-Bold",
                       "fontSize": 15,
@@ -162,8 +162,8 @@ Array [
             <Text
               disabled={true}
               style={
-                Array [
-                  Object {
+                [
+                  {
                     "color": "#696A6F",
                     "fontFamily": "Montserrat-Regular",
                     "fontSize": 15,
@@ -182,8 +182,8 @@ Array [
     <View
       index={1}
       style={
-        Array [
-          Object {
+        [
+          {
             "marginTop": 8,
           },
         ]
@@ -193,7 +193,7 @@ Array [
         accessibilityLabel="20h00 24 €"
         accessibilityRole="radio"
         accessibilityState={
-          Object {
+          {
             "checked": false,
             "disabled": false,
           }
@@ -209,7 +209,7 @@ Array [
         onResponderTerminationRequest={[Function]}
         onStartShouldSetResponder={[Function]}
         style={
-          Object {
+          {
             "alignItems": "center",
             "backgroundColor": "#ffffff",
             "borderColor": "#90949D",
@@ -231,8 +231,8 @@ Array [
         <View
           isSelected={false}
           style={
-            Array [
-              Object {
+            [
+              {
                 "alignItems": "center",
                 "borderColor": "#90949D",
                 "borderRadius": 8,
@@ -250,8 +250,8 @@ Array [
             disabled={false}
             isSelected={false}
             style={
-              Array [
-                Object {
+              [
+                {
                   "backgroundColor": "transparent",
                   "borderRadius": 16,
                   "height": 8,
@@ -263,8 +263,8 @@ Array [
         </View>
         <View
           style={
-            Array [
-              Object {
+            [
+              {
                 "flexBasis": 0,
                 "flexGrow": 1,
                 "flexShrink": 1,
@@ -274,8 +274,8 @@ Array [
         >
           <View
             style={
-              Array [
-                Object {
+              [
+                {
                   "alignItems": "center",
                   "flexDirection": "row",
                 },
@@ -284,8 +284,8 @@ Array [
           >
             <View
               style={
-                Array [
-                  Object {
+                [
+                  {
                     "flexBasis": 0,
                     "flexGrow": 1,
                     "flexShrink": 1,
@@ -298,8 +298,8 @@ Array [
                 disabled={false}
                 isHover={false}
                 style={
-                  Array [
-                    Object {
+                  [
+                    {
                       "color": "#161617",
                       "fontFamily": "Montserrat-Bold",
                       "fontSize": 15,
@@ -315,8 +315,8 @@ Array [
             <Text
               disabled={false}
               style={
-                Array [
-                  Object {
+                [
+                  {
                     "color": "#161617",
                     "fontFamily": "Montserrat-Regular",
                     "fontSize": 15,
@@ -337,11 +337,11 @@ Array [
 `;
 
 exports[`BookHourChoice when hour is already selected should change step to Hour 1`] = `
-Array [
+[
   <Text
     style={
-      Array [
-        Object {
+      [
+        {
           "color": "#161617",
           "fontFamily": "Montserrat-Medium",
           "fontSize": 18,
@@ -356,8 +356,8 @@ Array [
   <View
     numberOfSpaces={4}
     style={
-      Array [
-        Object {
+      [
+        {
           "height": 16,
         },
       ]
@@ -375,7 +375,7 @@ Array [
     onResponderTerminationRequest={[Function]}
     onStartShouldSetResponder={[Function]}
     style={
-      Object {
+      {
         "opacity": 1,
         "userSelect": "auto",
       }
@@ -383,8 +383,8 @@ Array [
   >
     <Text
       style={
-        Array [
-          Object {
+        [
+          {
             "color": "#161617",
             "fontFamily": "Montserrat-Bold",
             "fontSize": 15,

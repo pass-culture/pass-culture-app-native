@@ -3,8 +3,8 @@
 exports[`AnimatedProgressBar should render properly 1`] = `
 <View
   style={
-    Array [
-      Object {
+    [
+      {
         "alignItems": "center",
         "flexDirection": "row",
         "height": 40,
@@ -16,8 +16,8 @@ exports[`AnimatedProgressBar should render properly 1`] = `
   <View
     backgroundColor="#eb0055"
     style={
-      Array [
-        Object {
+      [
+        {
           "alignItems": "center",
           "backgroundColor": "#eb0055",
           "borderRadius": 32,
@@ -42,8 +42,8 @@ exports[`AnimatedProgressBar should render properly 1`] = `
   </View>
   <View
     style={
-      Array [
-        Object {
+      [
+        {
           "borderColor": "#CBCDD2",
           "borderRadius": 20,
           "borderWidth": 2,
@@ -69,7 +69,7 @@ exports[`AnimatedProgressBar should render properly 1`] = `
       onLayout={[Function]}
       progress={0.5}
       style={
-        Object {
+        {
           "backgroundColor": "#eb0055",
           "flexBasis": 0,
           "flexGrow": 0.5,

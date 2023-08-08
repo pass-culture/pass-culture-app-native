@@ -3,8 +3,8 @@
 exports[`<OfferCategoryChoices /> should match snapshot 1`] = `
 <View
   style={
-    Array [
-      Object {
+    [
+      {
         "flexDirection": "column",
         "flexWrap": "wrap",
         "marginBottom": -12,
@@ -16,8 +16,8 @@ exports[`<OfferCategoryChoices /> should match snapshot 1`] = `
   <View
     accessibilityRole="list"
     style={
-      Array [
-        Object {
+      [
+        {
           "flexDirection": "row",
           "flexWrap": "wrap",
           "paddingLeft": 0,
@@ -28,8 +28,8 @@ exports[`<OfferCategoryChoices /> should match snapshot 1`] = `
     <View
       accessibilityRole="none"
       style={
-        Array [
-          Object {
+        [
+          {
             "display": "flex",
           },
         ]
@@ -39,7 +39,7 @@ exports[`<OfferCategoryChoices /> should match snapshot 1`] = `
         accessibilityLabel="Arts & loisirs créatifs"
         accessibilityRole="checkbox"
         accessibilityState={
-          Object {
+          {
             "checked": false,
           }
         }
@@ -54,7 +54,7 @@ exports[`<OfferCategoryChoices /> should match snapshot 1`] = `
         onResponderTerminationRequest={[Function]}
         onStartShouldSetResponder={[Function]}
         style={
-          Object {
+          {
             "alignItems": "center",
             "alignSelf": "flex-start",
             "backgroundColor": "#ffffff",
@@ -74,8 +74,8 @@ exports[`<OfferCategoryChoices /> should match snapshot 1`] = `
         <View
           numberOfSpaces={5}
           style={
-            Array [
-              Object {
+            [
+              {
                 "width": 20,
               },
             ]
@@ -85,8 +85,8 @@ exports[`<OfferCategoryChoices /> should match snapshot 1`] = `
           numberOfLines={1}
           selected={false}
           style={
-            Array [
-              Object {
+            [
+              {
                 "color": "#161617",
                 "fontFamily": "Montserrat-Bold",
                 "fontSize": 15,
@@ -101,8 +101,8 @@ exports[`<OfferCategoryChoices /> should match snapshot 1`] = `
         <View
           numberOfSpaces={5}
           style={
-            Array [
-              Object {
+            [
+              {
                 "width": 20,
               },
             ]
@@ -113,8 +113,8 @@ exports[`<OfferCategoryChoices /> should match snapshot 1`] = `
     <View
       accessibilityRole="none"
       style={
-        Array [
-          Object {
+        [
+          {
             "display": "flex",
           },
         ]
@@ -124,7 +124,7 @@ exports[`<OfferCategoryChoices /> should match snapshot 1`] = `
         accessibilityLabel="Bibliothèques, Médiathèques"
         accessibilityRole="checkbox"
         accessibilityState={
-          Object {
+          {
             "checked": false,
           }
         }
@@ -139,7 +139,7 @@ exports[`<OfferCategoryChoices /> should match snapshot 1`] = `
         onResponderTerminationRequest={[Function]}
         onStartShouldSetResponder={[Function]}
         style={
-          Object {
+          {
             "alignItems": "center",
             "alignSelf": "flex-start",
             "backgroundColor": "#ffffff",
@@ -159,8 +159,8 @@ exports[`<OfferCategoryChoices /> should match snapshot 1`] = `
         <View
           numberOfSpaces={5}
           style={
-            Array [
-              Object {
+            [
+              {
                 "width": 20,
               },
             ]
@@ -170,8 +170,8 @@ exports[`<OfferCategoryChoices /> should match snapshot 1`] = `
           numberOfLines={1}
           selected={false}
           style={
-            Array [
-              Object {
+            [
+              {
                 "color": "#161617",
                 "fontFamily": "Montserrat-Bold",
                 "fontSize": 15,
@@ -186,8 +186,8 @@ exports[`<OfferCategoryChoices /> should match snapshot 1`] = `
         <View
           numberOfSpaces={5}
           style={
-            Array [
-              Object {
+            [
+              {
                 "width": 20,
               },
             ]
@@ -198,8 +198,8 @@ exports[`<OfferCategoryChoices /> should match snapshot 1`] = `
     <View
       accessibilityRole="none"
       style={
-        Array [
-          Object {
+        [
+          {
             "display": "flex",
           },
         ]
@@ -209,7 +209,7 @@ exports[`<OfferCategoryChoices /> should match snapshot 1`] = `
         accessibilityLabel="Cartes jeunes"
         accessibilityRole="checkbox"
         accessibilityState={
-          Object {
+          {
             "checked": false,
           }
         }
@@ -224,7 +224,7 @@ exports[`<OfferCategoryChoices /> should match snapshot 1`] = `
         onResponderTerminationRequest={[Function]}
         onStartShouldSetResponder={[Function]}
         style={
-          Object {
+          {
             "alignItems": "center",
             "alignSelf": "flex-start",
             "backgroundColor": "#ffffff",
@@ -244,8 +244,8 @@ exports[`<OfferCategoryChoices /> should match snapshot 1`] = `
         <View
           numberOfSpaces={5}
           style={
-            Array [
-              Object {
+            [
+              {
                 "width": 20,
               },
             ]
@@ -255,8 +255,8 @@ exports[`<OfferCategoryChoices /> should match snapshot 1`] = `
           numberOfLines={1}
           selected={false}
           style={
-            Array [
-              Object {
+            [
+              {
                 "color": "#161617",
                 "fontFamily": "Montserrat-Bold",
                 "fontSize": 15,
@@ -271,8 +271,8 @@ exports[`<OfferCategoryChoices /> should match snapshot 1`] = `
         <View
           numberOfSpaces={5}
           style={
-            Array [
-              Object {
+            [
+              {
                 "width": 20,
               },
             ]
@@ -283,8 +283,8 @@ exports[`<OfferCategoryChoices /> should match snapshot 1`] = `
     <View
       accessibilityRole="none"
       style={
-        Array [
-          Object {
+        [
+          {
             "display": "flex",
           },
         ]
@@ -294,7 +294,7 @@ exports[`<OfferCategoryChoices /> should match snapshot 1`] = `
         accessibilityLabel="CD, vinyles, musique en ligne"
         accessibilityRole="checkbox"
         accessibilityState={
-          Object {
+          {
             "checked": false,
           }
         }
@@ -309,7 +309,7 @@ exports[`<OfferCategoryChoices /> should match snapshot 1`] = `
         onResponderTerminationRequest={[Function]}
         onStartShouldSetResponder={[Function]}
         style={
-          Object {
+          {
             "alignItems": "center",
             "alignSelf": "flex-start",
             "backgroundColor": "#ffffff",
@@ -329,8 +329,8 @@ exports[`<OfferCategoryChoices /> should match snapshot 1`] = `
         <View
           numberOfSpaces={5}
           style={
-            Array [
-              Object {
+            [
+              {
                 "width": 20,
               },
             ]
@@ -340,8 +340,8 @@ exports[`<OfferCategoryChoices /> should match snapshot 1`] = `
           numberOfLines={1}
           selected={false}
           style={
-            Array [
-              Object {
+            [
+              {
                 "color": "#161617",
                 "fontFamily": "Montserrat-Bold",
                 "fontSize": 15,
@@ -356,8 +356,8 @@ exports[`<OfferCategoryChoices /> should match snapshot 1`] = `
         <View
           numberOfSpaces={5}
           style={
-            Array [
-              Object {
+            [
+              {
                 "width": 20,
               },
             ]
@@ -368,8 +368,8 @@ exports[`<OfferCategoryChoices /> should match snapshot 1`] = `
     <View
       accessibilityRole="none"
       style={
-        Array [
-          Object {
+        [
+          {
             "display": "flex",
           },
         ]
@@ -379,7 +379,7 @@ exports[`<OfferCategoryChoices /> should match snapshot 1`] = `
         accessibilityLabel="Concerts & festivals"
         accessibilityRole="checkbox"
         accessibilityState={
-          Object {
+          {
             "checked": false,
           }
         }
@@ -394,7 +394,7 @@ exports[`<OfferCategoryChoices /> should match snapshot 1`] = `
         onResponderTerminationRequest={[Function]}
         onStartShouldSetResponder={[Function]}
         style={
-          Object {
+          {
             "alignItems": "center",
             "alignSelf": "flex-start",
             "backgroundColor": "#ffffff",
@@ -414,8 +414,8 @@ exports[`<OfferCategoryChoices /> should match snapshot 1`] = `
         <View
           numberOfSpaces={5}
           style={
-            Array [
-              Object {
+            [
+              {
                 "width": 20,
               },
             ]
@@ -425,8 +425,8 @@ exports[`<OfferCategoryChoices /> should match snapshot 1`] = `
           numberOfLines={1}
           selected={false}
           style={
-            Array [
-              Object {
+            [
+              {
                 "color": "#161617",
                 "fontFamily": "Montserrat-Bold",
                 "fontSize": 15,
@@ -441,8 +441,8 @@ exports[`<OfferCategoryChoices /> should match snapshot 1`] = `
         <View
           numberOfSpaces={5}
           style={
-            Array [
-              Object {
+            [
+              {
                 "width": 20,
               },
             ]
@@ -453,8 +453,8 @@ exports[`<OfferCategoryChoices /> should match snapshot 1`] = `
     <View
       accessibilityRole="none"
       style={
-        Array [
-          Object {
+        [
+          {
             "display": "flex",
           },
         ]
@@ -464,7 +464,7 @@ exports[`<OfferCategoryChoices /> should match snapshot 1`] = `
         accessibilityLabel="Conférences & rencontres"
         accessibilityRole="checkbox"
         accessibilityState={
-          Object {
+          {
             "checked": false,
           }
         }
@@ -479,7 +479,7 @@ exports[`<OfferCategoryChoices /> should match snapshot 1`] = `
         onResponderTerminationRequest={[Function]}
         onStartShouldSetResponder={[Function]}
         style={
-          Object {
+          {
             "alignItems": "center",
             "alignSelf": "flex-start",
             "backgroundColor": "#ffffff",
@@ -499,8 +499,8 @@ exports[`<OfferCategoryChoices /> should match snapshot 1`] = `
         <View
           numberOfSpaces={5}
           style={
-            Array [
-              Object {
+            [
+              {
                 "width": 20,
               },
             ]
@@ -510,8 +510,8 @@ exports[`<OfferCategoryChoices /> should match snapshot 1`] = `
           numberOfLines={1}
           selected={false}
           style={
-            Array [
-              Object {
+            [
+              {
                 "color": "#161617",
                 "fontFamily": "Montserrat-Bold",
                 "fontSize": 15,
@@ -526,8 +526,8 @@ exports[`<OfferCategoryChoices /> should match snapshot 1`] = `
         <View
           numberOfSpaces={5}
           style={
-            Array [
-              Object {
+            [
+              {
                 "width": 20,
               },
             ]
@@ -538,8 +538,8 @@ exports[`<OfferCategoryChoices /> should match snapshot 1`] = `
     <View
       accessibilityRole="none"
       style={
-        Array [
-          Object {
+        [
+          {
             "display": "flex",
           },
         ]
@@ -549,7 +549,7 @@ exports[`<OfferCategoryChoices /> should match snapshot 1`] = `
         accessibilityLabel="Évènements en ligne"
         accessibilityRole="checkbox"
         accessibilityState={
-          Object {
+          {
             "checked": false,
           }
         }
@@ -564,7 +564,7 @@ exports[`<OfferCategoryChoices /> should match snapshot 1`] = `
         onResponderTerminationRequest={[Function]}
         onStartShouldSetResponder={[Function]}
         style={
-          Object {
+          {
             "alignItems": "center",
             "alignSelf": "flex-start",
             "backgroundColor": "#ffffff",
@@ -584,8 +584,8 @@ exports[`<OfferCategoryChoices /> should match snapshot 1`] = `
         <View
           numberOfSpaces={5}
           style={
-            Array [
-              Object {
+            [
+              {
                 "width": 20,
               },
             ]
@@ -595,8 +595,8 @@ exports[`<OfferCategoryChoices /> should match snapshot 1`] = `
           numberOfLines={1}
           selected={false}
           style={
-            Array [
-              Object {
+            [
+              {
                 "color": "#161617",
                 "fontFamily": "Montserrat-Bold",
                 "fontSize": 15,
@@ -611,8 +611,8 @@ exports[`<OfferCategoryChoices /> should match snapshot 1`] = `
         <View
           numberOfSpaces={5}
           style={
-            Array [
-              Object {
+            [
+              {
                 "width": 20,
               },
             ]
@@ -623,8 +623,8 @@ exports[`<OfferCategoryChoices /> should match snapshot 1`] = `
     <View
       accessibilityRole="none"
       style={
-        Array [
-          Object {
+        [
+          {
             "display": "flex",
           },
         ]
@@ -634,7 +634,7 @@ exports[`<OfferCategoryChoices /> should match snapshot 1`] = `
         accessibilityLabel="Films, séries, cinéma"
         accessibilityRole="checkbox"
         accessibilityState={
-          Object {
+          {
             "checked": false,
           }
         }
@@ -649,7 +649,7 @@ exports[`<OfferCategoryChoices /> should match snapshot 1`] = `
         onResponderTerminationRequest={[Function]}
         onStartShouldSetResponder={[Function]}
         style={
-          Object {
+          {
             "alignItems": "center",
             "alignSelf": "flex-start",
             "backgroundColor": "#ffffff",
@@ -669,8 +669,8 @@ exports[`<OfferCategoryChoices /> should match snapshot 1`] = `
         <View
           numberOfSpaces={5}
           style={
-            Array [
-              Object {
+            [
+              {
                 "width": 20,
               },
             ]
@@ -680,8 +680,8 @@ exports[`<OfferCategoryChoices /> should match snapshot 1`] = `
           numberOfLines={1}
           selected={false}
           style={
-            Array [
-              Object {
+            [
+              {
                 "color": "#161617",
                 "fontFamily": "Montserrat-Bold",
                 "fontSize": 15,
@@ -696,8 +696,8 @@ exports[`<OfferCategoryChoices /> should match snapshot 1`] = `
         <View
           numberOfSpaces={5}
           style={
-            Array [
-              Object {
+            [
+              {
                 "width": 20,
               },
             ]
@@ -708,8 +708,8 @@ exports[`<OfferCategoryChoices /> should match snapshot 1`] = `
     <View
       accessibilityRole="none"
       style={
-        Array [
-          Object {
+        [
+          {
             "display": "flex",
           },
         ]
@@ -719,7 +719,7 @@ exports[`<OfferCategoryChoices /> should match snapshot 1`] = `
         accessibilityLabel="Instruments de musique"
         accessibilityRole="checkbox"
         accessibilityState={
-          Object {
+          {
             "checked": false,
           }
         }
@@ -734,7 +734,7 @@ exports[`<OfferCategoryChoices /> should match snapshot 1`] = `
         onResponderTerminationRequest={[Function]}
         onStartShouldSetResponder={[Function]}
         style={
-          Object {
+          {
             "alignItems": "center",
             "alignSelf": "flex-start",
             "backgroundColor": "#ffffff",
@@ -754,8 +754,8 @@ exports[`<OfferCategoryChoices /> should match snapshot 1`] = `
         <View
           numberOfSpaces={5}
           style={
-            Array [
-              Object {
+            [
+              {
                 "width": 20,
               },
             ]
@@ -765,8 +765,8 @@ exports[`<OfferCategoryChoices /> should match snapshot 1`] = `
           numberOfLines={1}
           selected={false}
           style={
-            Array [
-              Object {
+            [
+              {
                 "color": "#161617",
                 "fontFamily": "Montserrat-Bold",
                 "fontSize": 15,
@@ -781,8 +781,8 @@ exports[`<OfferCategoryChoices /> should match snapshot 1`] = `
         <View
           numberOfSpaces={5}
           style={
-            Array [
-              Object {
+            [
+              {
                 "width": 20,
               },
             ]
@@ -793,8 +793,8 @@ exports[`<OfferCategoryChoices /> should match snapshot 1`] = `
     <View
       accessibilityRole="none"
       style={
-        Array [
-          Object {
+        [
+          {
             "display": "flex",
           },
         ]
@@ -804,7 +804,7 @@ exports[`<OfferCategoryChoices /> should match snapshot 1`] = `
         accessibilityLabel="Jeux & jeux vidéos"
         accessibilityRole="checkbox"
         accessibilityState={
-          Object {
+          {
             "checked": false,
           }
         }
@@ -819,7 +819,7 @@ exports[`<OfferCategoryChoices /> should match snapshot 1`] = `
         onResponderTerminationRequest={[Function]}
         onStartShouldSetResponder={[Function]}
         style={
-          Object {
+          {
             "alignItems": "center",
             "alignSelf": "flex-start",
             "backgroundColor": "#ffffff",
@@ -839,8 +839,8 @@ exports[`<OfferCategoryChoices /> should match snapshot 1`] = `
         <View
           numberOfSpaces={5}
           style={
-            Array [
-              Object {
+            [
+              {
                 "width": 20,
               },
             ]
@@ -850,8 +850,8 @@ exports[`<OfferCategoryChoices /> should match snapshot 1`] = `
           numberOfLines={1}
           selected={false}
           style={
-            Array [
-              Object {
+            [
+              {
                 "color": "#161617",
                 "fontFamily": "Montserrat-Bold",
                 "fontSize": 15,
@@ -866,8 +866,8 @@ exports[`<OfferCategoryChoices /> should match snapshot 1`] = `
         <View
           numberOfSpaces={5}
           style={
-            Array [
-              Object {
+            [
+              {
                 "width": 20,
               },
             ]
@@ -878,8 +878,8 @@ exports[`<OfferCategoryChoices /> should match snapshot 1`] = `
     <View
       accessibilityRole="none"
       style={
-        Array [
-          Object {
+        [
+          {
             "display": "flex",
           },
         ]
@@ -889,7 +889,7 @@ exports[`<OfferCategoryChoices /> should match snapshot 1`] = `
         accessibilityLabel="Livres"
         accessibilityRole="checkbox"
         accessibilityState={
-          Object {
+          {
             "checked": false,
           }
         }
@@ -904,7 +904,7 @@ exports[`<OfferCategoryChoices /> should match snapshot 1`] = `
         onResponderTerminationRequest={[Function]}
         onStartShouldSetResponder={[Function]}
         style={
-          Object {
+          {
             "alignItems": "center",
             "alignSelf": "flex-start",
             "backgroundColor": "#ffffff",
@@ -924,8 +924,8 @@ exports[`<OfferCategoryChoices /> should match snapshot 1`] = `
         <View
           numberOfSpaces={5}
           style={
-            Array [
-              Object {
+            [
+              {
                 "width": 20,
               },
             ]
@@ -935,8 +935,8 @@ exports[`<OfferCategoryChoices /> should match snapshot 1`] = `
           numberOfLines={1}
           selected={false}
           style={
-            Array [
-              Object {
+            [
+              {
                 "color": "#161617",
                 "fontFamily": "Montserrat-Bold",
                 "fontSize": 15,
@@ -951,8 +951,8 @@ exports[`<OfferCategoryChoices /> should match snapshot 1`] = `
         <View
           numberOfSpaces={5}
           style={
-            Array [
-              Object {
+            [
+              {
                 "width": 20,
               },
             ]
@@ -963,8 +963,8 @@ exports[`<OfferCategoryChoices /> should match snapshot 1`] = `
     <View
       accessibilityRole="none"
       style={
-        Array [
-          Object {
+        [
+          {
             "display": "flex",
           },
         ]
@@ -974,7 +974,7 @@ exports[`<OfferCategoryChoices /> should match snapshot 1`] = `
         accessibilityLabel="Médias & presse"
         accessibilityRole="checkbox"
         accessibilityState={
-          Object {
+          {
             "checked": false,
           }
         }
@@ -989,7 +989,7 @@ exports[`<OfferCategoryChoices /> should match snapshot 1`] = `
         onResponderTerminationRequest={[Function]}
         onStartShouldSetResponder={[Function]}
         style={
-          Object {
+          {
             "alignItems": "center",
             "alignSelf": "flex-start",
             "backgroundColor": "#ffffff",
@@ -1009,8 +1009,8 @@ exports[`<OfferCategoryChoices /> should match snapshot 1`] = `
         <View
           numberOfSpaces={5}
           style={
-            Array [
-              Object {
+            [
+              {
                 "width": 20,
               },
             ]
@@ -1020,8 +1020,8 @@ exports[`<OfferCategoryChoices /> should match snapshot 1`] = `
           numberOfLines={1}
           selected={false}
           style={
-            Array [
-              Object {
+            [
+              {
                 "color": "#161617",
                 "fontFamily": "Montserrat-Bold",
                 "fontSize": 15,
@@ -1036,8 +1036,8 @@ exports[`<OfferCategoryChoices /> should match snapshot 1`] = `
         <View
           numberOfSpaces={5}
           style={
-            Array [
-              Object {
+            [
+              {
                 "width": 20,
               },
             ]
@@ -1048,8 +1048,8 @@ exports[`<OfferCategoryChoices /> should match snapshot 1`] = `
     <View
       accessibilityRole="none"
       style={
-        Array [
-          Object {
+        [
+          {
             "display": "flex",
           },
         ]
@@ -1059,7 +1059,7 @@ exports[`<OfferCategoryChoices /> should match snapshot 1`] = `
         accessibilityLabel="Musées & visites culturelles"
         accessibilityRole="checkbox"
         accessibilityState={
-          Object {
+          {
             "checked": false,
           }
         }
@@ -1074,7 +1074,7 @@ exports[`<OfferCategoryChoices /> should match snapshot 1`] = `
         onResponderTerminationRequest={[Function]}
         onStartShouldSetResponder={[Function]}
         style={
-          Object {
+          {
             "alignItems": "center",
             "alignSelf": "flex-start",
             "backgroundColor": "#ffffff",
@@ -1094,8 +1094,8 @@ exports[`<OfferCategoryChoices /> should match snapshot 1`] = `
         <View
           numberOfSpaces={5}
           style={
-            Array [
-              Object {
+            [
+              {
                 "width": 20,
               },
             ]
@@ -1105,8 +1105,8 @@ exports[`<OfferCategoryChoices /> should match snapshot 1`] = `
           numberOfLines={1}
           selected={false}
           style={
-            Array [
-              Object {
+            [
+              {
                 "color": "#161617",
                 "fontFamily": "Montserrat-Bold",
                 "fontSize": 15,
@@ -1121,8 +1121,8 @@ exports[`<OfferCategoryChoices /> should match snapshot 1`] = `
         <View
           numberOfSpaces={5}
           style={
-            Array [
-              Object {
+            [
+              {
                 "width": 20,
               },
             ]
@@ -1133,8 +1133,8 @@ exports[`<OfferCategoryChoices /> should match snapshot 1`] = `
     <View
       accessibilityRole="none"
       style={
-        Array [
-          Object {
+        [
+          {
             "display": "flex",
           },
         ]
@@ -1144,7 +1144,7 @@ exports[`<OfferCategoryChoices /> should match snapshot 1`] = `
         accessibilityLabel="Spectacles"
         accessibilityRole="checkbox"
         accessibilityState={
-          Object {
+          {
             "checked": false,
           }
         }
@@ -1159,7 +1159,7 @@ exports[`<OfferCategoryChoices /> should match snapshot 1`] = `
         onResponderTerminationRequest={[Function]}
         onStartShouldSetResponder={[Function]}
         style={
-          Object {
+          {
             "alignItems": "center",
             "alignSelf": "flex-start",
             "backgroundColor": "#ffffff",
@@ -1179,8 +1179,8 @@ exports[`<OfferCategoryChoices /> should match snapshot 1`] = `
         <View
           numberOfSpaces={5}
           style={
-            Array [
-              Object {
+            [
+              {
                 "width": 20,
               },
             ]
@@ -1190,8 +1190,8 @@ exports[`<OfferCategoryChoices /> should match snapshot 1`] = `
           numberOfLines={1}
           selected={false}
           style={
-            Array [
-              Object {
+            [
+              {
                 "color": "#161617",
                 "fontFamily": "Montserrat-Bold",
                 "fontSize": 15,
@@ -1206,8 +1206,8 @@ exports[`<OfferCategoryChoices /> should match snapshot 1`] = `
         <View
           numberOfSpaces={5}
           style={
-            Array [
-              Object {
+            [
+              {
                 "width": 20,
               },
             ]

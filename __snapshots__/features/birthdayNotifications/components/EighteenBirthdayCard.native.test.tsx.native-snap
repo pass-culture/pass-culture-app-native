@@ -4,8 +4,8 @@ exports[`<EighteenBirthdayCard /> should render eighteen birthday card 1`] = `
 <View
   accessibilityHidden={false}
   style={
-    Array [
-      Object {
+    [
+      {
         "flexBasis": 0,
         "flexGrow": 1,
         "flexShrink": 1,
@@ -17,8 +17,8 @@ exports[`<EighteenBirthdayCard /> should render eighteen birthday card 1`] = `
   <View
     flex={2}
     style={
-      Array [
-        Object {
+      [
+        {
           "flexBasis": 0,
           "flexGrow": 2,
           "flexShrink": 1,
@@ -29,8 +29,8 @@ exports[`<EighteenBirthdayCard /> should render eighteen birthday card 1`] = `
   <View
     accessibilityHidden={true}
     style={
-      Array [
-        Object {
+      [
+        {
           "alignItems": "center",
           "flexGrow": 1,
           "height": "30%",
@@ -46,8 +46,8 @@ exports[`<EighteenBirthdayCard /> should render eighteen birthday card 1`] = `
   <View
     flex={1}
     style={
-      Array [
-        Object {
+      [
+        {
           "flexBasis": 0,
           "flexGrow": 1,
           "flexShrink": 1,
@@ -57,8 +57,8 @@ exports[`<EighteenBirthdayCard /> should render eighteen birthday card 1`] = `
   />
   <View
     style={
-      Array [
-        Object {
+      [
+        {
           "overflowY": "auto",
         },
       ]
@@ -66,8 +66,8 @@ exports[`<EighteenBirthdayCard /> should render eighteen birthday card 1`] = `
   >
     <Text
       style={
-        Array [
-          Object {
+        [
+          {
             "color": "#161617",
             "fontFamily": "Montserrat-Black",
             "fontSize": 26,
@@ -82,8 +82,8 @@ exports[`<EighteenBirthdayCard /> should render eighteen birthday card 1`] = `
     <View
       numberOfSpaces={4}
       style={
-        Array [
-          Object {
+        [
+          {
             "height": 16,
           },
         ]
@@ -91,8 +91,8 @@ exports[`<EighteenBirthdayCard /> should render eighteen birthday card 1`] = `
     />
     <View
       style={
-        Array [
-          Object {
+        [
+          {
             "flexDirection": "column",
             "justifyContent": "center",
           },
@@ -101,8 +101,8 @@ exports[`<EighteenBirthdayCard /> should render eighteen birthday card 1`] = `
     >
       <Text
         style={
-          Array [
-            Object {
+          [
+            {
               "alignSelf": "center",
               "color": "#161617",
               "fontFamily": "Montserrat-Medium",
@@ -118,8 +118,8 @@ exports[`<EighteenBirthdayCard /> should render eighteen birthday card 1`] = `
       <View
         numberOfSpaces={4}
         style={
-          Array [
-            Object {
+          [
+            {
               "height": 16,
             },
           ]
@@ -129,8 +129,8 @@ exports[`<EighteenBirthdayCard /> should render eighteen birthday card 1`] = `
     <View
       numberOfSpaces={4}
       style={
-        Array [
-          Object {
+        [
+          {
             "height": 16,
           },
         ]
@@ -138,8 +138,8 @@ exports[`<EighteenBirthdayCard /> should render eighteen birthday card 1`] = `
     />
     <Text
       style={
-        Array [
-          Object {
+        [
+          {
             "color": "#696A6F",
             "fontFamily": "Montserrat-SemiBold",
             "fontSize": 12,
@@ -155,8 +155,8 @@ exports[`<EighteenBirthdayCard /> should render eighteen birthday card 1`] = `
   <View
     flex={2}
     style={
-      Array [
-        Object {
+      [
+        {
           "flexBasis": 0,
           "flexGrow": 2,
           "flexShrink": 1,
@@ -168,8 +168,8 @@ exports[`<EighteenBirthdayCard /> should render eighteen birthday card 1`] = `
     isSmallScreen={false}
     paddingBottom={40}
     style={
-      Array [
-        Object {
+      [
+        {
           "flexBasis": 0,
           "flexGrow": 1,
           "flexShrink": 1,
@@ -183,7 +183,7 @@ exports[`<EighteenBirthdayCard /> should render eighteen birthday card 1`] = `
       collapsable={false}
       forwardedRef={[Function]}
       style={
-        Object {
+        {
           "opacity": 0,
         }
       }
@@ -201,7 +201,7 @@ exports[`<EighteenBirthdayCard /> should render eighteen birthday card 1`] = `
         onResponderTerminationRequest={[Function]}
         onStartShouldSetResponder={[Function]}
         style={
-          Object {
+          {
             "alignItems": "center",
             "backgroundColor": "#eb0055",
             "borderRadius": 24,
@@ -224,8 +224,8 @@ exports[`<EighteenBirthdayCard /> should render eighteen birthday card 1`] = `
           adjustsFontSizeToFit={false}
           numberOfLines={1}
           style={
-            Array [
-              Object {
+            [
+              {
                 "color": "#ffffff",
                 "fontFamily": "Montserrat-Bold",
                 "fontSize": 15,
@@ -243,8 +243,8 @@ exports[`<EighteenBirthdayCard /> should render eighteen birthday card 1`] = `
     <View
       marginTop={16}
       style={
-        Array [
-          Object {
+        [
+          {
             "flexGrow": 1,
             "marginTop": 16,
           },
@@ -264,7 +264,7 @@ exports[`<EighteenBirthdayCard /> should render eighteen birthday card 1`] = `
         onResponderTerminationRequest={[Function]}
         onStartShouldSetResponder={[Function]}
         style={
-          Object {
+          {
             "alignItems": "center",
             "backgroundColor": "transparent",
             "borderRadius": 24,
@@ -285,8 +285,8 @@ exports[`<EighteenBirthdayCard /> should render eighteen birthday card 1`] = `
       >
         <View
           style={
-            Array [
-              Object {
+            [
+              {
                 "flexShrink": 0,
               },
             ]
@@ -306,8 +306,8 @@ exports[`<EighteenBirthdayCard /> should render eighteen birthday card 1`] = `
           adjustsFontSizeToFit={false}
           numberOfLines={1}
           style={
-            Array [
-              Object {
+            [
+              {
                 "color": "#161617",
                 "fontFamily": "Montserrat-Bold",
                 "fontSize": 15,

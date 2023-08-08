@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Category component should render correctly 1`] = `
-Array [
+[
   <View
     accessibilityRole="button"
     accessible={false}
@@ -15,7 +15,7 @@ Array [
     onResponderTerminationRequest={[Function]}
     onStartShouldSetResponder={[Function]}
     style={
-      Object {
+      {
         "alignItems": "center",
         "flexDirection": "row",
         "justifyContent": "space-between",
@@ -36,8 +36,8 @@ Array [
     <View
       numberOfSpaces={2}
       style={
-        Array [
-          Object {
+        [
+          {
             "width": 8,
           },
         ]
@@ -45,8 +45,8 @@ Array [
     />
     <View
       style={
-        Array [
-          Object {
+        [
+          {
             "alignItems": "flex-start",
             "flexDirection": "column",
           },
@@ -56,8 +56,8 @@ Array [
       <Text
         numberOfLines={1}
         style={
-          Array [
-            Object {
+          [
+            {
               "color": "#161617",
               "flexShrink": 1,
               "fontFamily": "Montserrat-Bold",
@@ -72,8 +72,8 @@ Array [
     </View>
     <View
       style={
-        Array [
-          Object {
+        [
+          {
             "flexBasis": 0,
             "flexGrow": 1,
             "flexShrink": 1,
@@ -112,7 +112,7 @@ Array [
     scrollTo={null}
     statusBarTranslucent={true}
     supportedOrientations={
-      Array [
+      [
         "portrait",
         "landscape",
       ]

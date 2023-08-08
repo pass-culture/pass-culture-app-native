@@ -1,11 +1,11 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`OnboardingGeolocation should render correctly 1`] = `
-Array [
+[
   <View
     style={
-      Array [
-        Object {
+      [
+        {
           "position": "absolute",
           "right": 24,
           "top": 30,
@@ -28,7 +28,7 @@ Array [
       onResponderTerminationRequest={[Function]}
       onStartShouldSetResponder={[Function]}
       style={
-        Object {
+        {
           "alignItems": "center",
           "backgroundColor": "transparent",
           "borderRadius": 24,
@@ -51,8 +51,8 @@ Array [
         adjustsFontSizeToFit={false}
         numberOfLines={1}
         style={
-          Array [
-            Object {
+          [
+            {
               "color": "#696A6F",
               "fontFamily": "Montserrat-Bold",
               "fontSize": 15,
@@ -69,8 +69,8 @@ Array [
   </View>,
   <View
     style={
-      Array [
-        Object {
+      [
+        {
           "alignSelf": "center",
           "flexBasis": 0,
           "flexGrow": 1,
@@ -86,8 +86,8 @@ Array [
     <View
       flex={2}
       style={
-        Array [
-          Object {
+        [
+          {
             "flexBasis": 0,
             "flexGrow": 2,
             "flexShrink": 1,
@@ -98,8 +98,8 @@ Array [
     <View
       hasHeight={true}
       style={
-        Array [
-          Object {
+        [
+          {
             "alignItems": "center",
             "flexGrow": 1,
             "height": "30%",
@@ -115,8 +115,8 @@ Array [
     <View
       flex={0.5}
       style={
-        Array [
-          Object {
+        [
+          {
             "flexBasis": 0,
             "flexGrow": 0.5,
             "flexShrink": 1,
@@ -126,8 +126,8 @@ Array [
     />
     <Text
       style={
-        Array [
-          Object {
+        [
+          {
             "color": "#161617",
             "fontFamily": "Montserrat-Black",
             "fontSize": 26,
@@ -142,8 +142,8 @@ Array [
     <View
       flex={0.5}
       style={
-        Array [
-          Object {
+        [
+          {
             "flexBasis": 0,
             "flexGrow": 0.5,
             "flexShrink": 1,
@@ -153,8 +153,8 @@ Array [
     />
     <Text
       style={
-        Array [
-          Object {
+        [
+          {
             "color": "#161617",
             "fontFamily": "Montserrat-Regular",
             "fontSize": 15,
@@ -169,8 +169,8 @@ Array [
     <View
       flex={2}
       style={
-        Array [
-          Object {
+        [
+          {
             "flexBasis": 0,
             "flexGrow": 2,
             "flexShrink": 1,
@@ -180,8 +180,8 @@ Array [
     />
     <View
       style={
-        Array [
-          Object {
+        [
+          {
             "paddingBottom": 40,
           },
         ]
@@ -200,7 +200,7 @@ Array [
         onResponderTerminationRequest={[Function]}
         onStartShouldSetResponder={[Function]}
         style={
-          Object {
+          {
             "alignItems": "center",
             "backgroundColor": "#eb0055",
             "borderRadius": 24,
@@ -223,8 +223,8 @@ Array [
           adjustsFontSizeToFit={false}
           numberOfLines={1}
           style={
-            Array [
-              Object {
+            [
+              {
                 "color": "#ffffff",
                 "fontFamily": "Montserrat-Bold",
                 "fontSize": 15,
@@ -242,8 +242,8 @@ Array [
     <View
       flex={0.1}
       style={
-        Array [
-          Object {
+        [
+          {
             "flexBasis": 0,
             "flexGrow": 0.1,
             "flexShrink": 1,

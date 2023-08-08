@@ -3,8 +3,8 @@
 exports[`<OfferDescription /> should render 1`] = `
 <View
   style={
-    Array [
-      Object {
+    [
+      {
         "backgroundColor": "#ffffff",
         "flexBasis": 0,
         "flexGrow": 1,
@@ -16,8 +16,8 @@ exports[`<OfferDescription /> should render 1`] = `
   <View
     accessibilityRole="header"
     style={
-      Array [
-        Object {
+      [
+        {
           "width": "100%",
         },
       ]
@@ -25,15 +25,15 @@ exports[`<OfferDescription /> should render 1`] = `
   >
     <View
       style={
-        Object {
+        {
           "height": 64,
         }
       }
     />
     <View
       style={
-        Array [
-          Object {
+        [
+          {
             "backgroundColor": "#eb0055",
             "position": "absolute",
             "top": 0,
@@ -47,8 +47,8 @@ exports[`<OfferDescription /> should render 1`] = `
         customHeight={16}
         enable={true}
         style={
-          Array [
-            Object {
+          [
+            {
               "height": 16,
             },
           ]
@@ -56,8 +56,8 @@ exports[`<OfferDescription /> should render 1`] = `
       />
       <View
         style={
-          Array [
-            Object {
+          [
+            {
               "alignItems": "center",
               "height": 48,
               "justifyContent": "center",
@@ -67,8 +67,8 @@ exports[`<OfferDescription /> should render 1`] = `
       >
         <View
           style={
-            Array [
-              Object {
+            [
+              {
                 "alignItems": "center",
                 "flexDirection": "row",
                 "justifyContent": "space-between",
@@ -80,8 +80,8 @@ exports[`<OfferDescription /> should render 1`] = `
           <View
             positionInHeader="left"
             style={
-              Array [
-                Object {
+              [
+                {
                   "alignItems": "center",
                   "flexBasis": 0,
                   "flexDirection": "row",
@@ -109,7 +109,7 @@ exports[`<OfferDescription /> should render 1`] = `
               onResponderTerminationRequest={[Function]}
               onStartShouldSetResponder={[Function]}
               style={
-                Object {
+                {
                   "alignItems": "center",
                   "flexGrow": 1,
                   "height": 40,
@@ -132,8 +132,8 @@ exports[`<OfferDescription /> should render 1`] = `
               </View>
               <Text
                 style={
-                  Array [
-                    Object {
+                  [
+                    {
                       "display": "none",
                     },
                   ]
@@ -146,8 +146,8 @@ exports[`<OfferDescription /> should render 1`] = `
           <Text
             numberOfLines={1}
             style={
-              Array [
-                Object {
+              [
+                {
                   "color": "#ffffff",
                   "fontFamily": "Montserrat-Regular",
                   "fontSize": 15,
@@ -162,8 +162,8 @@ exports[`<OfferDescription /> should render 1`] = `
           <View
             positionInHeader="right"
             style={
-              Array [
-                Object {
+              [
+                {
                   "alignItems": "center",
                   "flexBasis": 0,
                   "flexDirection": "row",
@@ -184,8 +184,8 @@ exports[`<OfferDescription /> should render 1`] = `
   <View
     numberOfSpaces={2}
     style={
-      Array [
-        Object {
+      [
+        {
           "height": 8,
         },
       ]
@@ -196,10 +196,10 @@ exports[`<OfferDescription /> should render 1`] = `
     ListFooterComponent={[Function]}
     ListHeaderComponent={[Function]}
     data={
-      Array [
-        Object {
+      [
+        {
           "key": "description",
-          "value": Array [
+          "value": [
             "Depuis de nombreuses années, Christine vit sous un pont, isolée de toute famille et amis. Par une nuit comme il n’en existe que dans les contes, un jeune garçon de 8 ans fait irruption devant son abri. Suli ne parle pas français, il est perdu, séparé de sa mère…
 Tous les détails du film sur AlloCiné: ",
             <ExternalLink
@@ -207,7 +207,7 @@ Tous les détails du film sur AlloCiné: ",
             />,
           ],
         },
-        Object {
+        {
           "key": "photoCredit",
           "value": "Author: photo credit author",
         },
@@ -227,9 +227,9 @@ Tous les détails du film sur AlloCiné: ",
     renderItem={[Function]}
     scrollEventThrottle={50}
     showsHorizontalScrollIndicator={false}
-    stickyHeaderIndices={Array []}
+    stickyHeaderIndices={[]}
     testID="offer-description-list"
-    viewabilityConfigCallbackPairs={Array []}
+    viewabilityConfigCallbackPairs={[]}
   >
     <View>
       <View
@@ -238,8 +238,8 @@ Tous les détails du film sur AlloCiné: ",
         <View
           numberOfSpaces={6}
           style={
-            Array [
-              Object {
+            [
+              {
                 "height": 24,
               },
             ]
@@ -252,8 +252,8 @@ Tous les détails du film sur AlloCiné: ",
       >
         <View
           style={
-            Array [
-              Object {
+            [
+              {
                 "marginHorizontal": 24,
               },
             ]
@@ -261,8 +261,8 @@ Tous les détails du film sur AlloCiné: ",
         >
           <Text
             style={
-              Array [
-                Object {
+              [
+                {
                   "color": "#161617",
                   "fontFamily": "Montserrat-SemiBold",
                   "fontSize": 12,
@@ -276,8 +276,8 @@ Tous les détails du film sur AlloCiné: ",
           <View
             numberOfSpaces={1}
             style={
-              Array [
-                Object {
+              [
+                {
                   "height": 4,
                 },
               ]
@@ -285,8 +285,8 @@ Tous les détails du film sur AlloCiné: ",
           />
           <Text
             style={
-              Array [
-                Object {
+              [
+                {
                   "color": "#161617",
                   "fontFamily": "Montserrat-Regular",
                   "fontSize": 15,
@@ -302,8 +302,8 @@ Tous les détails du film sur AlloCiné:
               accessible={true}
               onPress={[Function]}
               style={
-                Array [
-                  Object {
+                [
+                  {
                     "color": "#161617",
                     "fontFamily": "Montserrat-Bold",
                     "fontSize": 15,
@@ -316,8 +316,8 @@ Tous les détails du film sur AlloCiné:
               <View
                 numberOfSpaces={1}
                 style={
-                  Array [
-                    Object {
+                  [
+                    {
                       "width": 4,
                     },
                   ]
@@ -342,8 +342,8 @@ Tous les détails du film sur AlloCiné:
         <View
           numberOfSpaces={4}
           style={
-            Array [
-              Object {
+            [
+              {
                 "height": 16,
               },
             ]
@@ -356,8 +356,8 @@ Tous les détails du film sur AlloCiné:
       >
         <View
           style={
-            Array [
-              Object {
+            [
+              {
                 "marginHorizontal": 24,
               },
             ]
@@ -365,8 +365,8 @@ Tous les détails du film sur AlloCiné:
         >
           <Text
             style={
-              Array [
-                Object {
+              [
+                {
                   "color": "#161617",
                   "fontFamily": "Montserrat-SemiBold",
                   "fontSize": 12,
@@ -380,8 +380,8 @@ Tous les détails du film sur AlloCiné:
           <View
             numberOfSpaces={1}
             style={
-              Array [
-                Object {
+              [
+                {
                   "height": 4,
                 },
               ]
@@ -389,8 +389,8 @@ Tous les détails du film sur AlloCiné:
           />
           <Text
             style={
-              Array [
-                Object {
+              [
+                {
                   "color": "#161617",
                   "fontFamily": "Montserrat-Regular",
                   "fontSize": 15,
@@ -409,8 +409,8 @@ Tous les détails du film sur AlloCiné:
         <View
           numberOfSpaces={32}
           style={
-            Array [
-              Object {
+            [
+              {
                 "height": 128,
               },
             ]

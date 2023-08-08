@@ -3,8 +3,8 @@
 exports[`<CreditProgressBar /> should render properly 1`] = `
 <View
   style={
-    Array [
-      Object {
+    [
+      {
         "alignItems": "center",
         "borderRadius": 48,
         "flexDirection": "row",
@@ -15,8 +15,8 @@ exports[`<CreditProgressBar /> should render properly 1`] = `
 >
   <View
     style={
-      Array [
-        Object {
+      [
+        {
           "backgroundColor": "#ffffff",
           "borderRadius": 48,
           "flexDirection": "row",
@@ -30,27 +30,27 @@ exports[`<CreditProgressBar /> should render properly 1`] = `
     <BVLinearGradient
       angle={180}
       colors={
-        Array [
+        [
           451608661,
           439484566,
         ]
       }
       endPoint={
-        Object {
+        {
           "x": 1,
           "y": 1,
         }
       }
       locations={null}
       startPoint={
-        Object {
+        {
           "x": 0,
           "y": 0,
         }
       }
       style={
-        Array [
-          Object {
+        [
+          {
             "borderColor": "#ffffff",
             "borderRadius": 48,
             "borderWidth": 2,
@@ -66,28 +66,28 @@ exports[`<CreditProgressBar /> should render properly 1`] = `
     />
     <BVLinearGradient
       colors={
-        Array [
+        [
           872415231,
           4294967295,
           872415231,
         ]
       }
       endPoint={
-        Object {
+        {
           "x": 0.5,
           "y": 1,
         }
       }
       locations={null}
       startPoint={
-        Object {
+        {
           "x": 0.5,
           "y": 0,
         }
       }
       style={
-        Array [
-          Object {
+        [
+          {
             "borderRadius": 48,
             "height": "100%",
             "left": 0,
@@ -101,13 +101,13 @@ exports[`<CreditProgressBar /> should render properly 1`] = `
     <BVLinearGradient
       angle={90}
       colors={
-        Array [
+        [
           4293591125,
           4281467030,
         ]
       }
       endPoint={
-        Object {
+        {
           "x": 0.5,
           "y": 1,
         }
@@ -115,14 +115,14 @@ exports[`<CreditProgressBar /> should render properly 1`] = `
       locations={null}
       progress={0.6}
       startPoint={
-        Object {
+        {
           "x": 0.5,
           "y": 0,
         }
       }
       style={
-        Array [
-          Object {
+        [
+          {
             "borderRadius": 48,
             "flexBasis": 0,
             "flexGrow": 0.6,

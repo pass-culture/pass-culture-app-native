@@ -3,8 +3,8 @@
 exports[`CulturalSurveysQuestions page should render the page with correct layout 1`] = `
 <View
   style={
-    Array [
-      Object {
+    [
+      {
         "alignSelf": "center",
         "display": "flex",
         "flexBasis": 0,
@@ -21,8 +21,8 @@ exports[`CulturalSurveysQuestions page should render the page with correct layou
     customHeight={16}
     enable={true}
     style={
-      Array [
-        Object {
+      [
+        {
           "height": 16,
         },
       ]
@@ -30,8 +30,8 @@ exports[`CulturalSurveysQuestions page should render the page with correct layou
   />
   <View
     style={
-      Array [
-        Object {
+      [
+        {
           "alignItems": "center",
           "flexDirection": "row",
           "height": 64,
@@ -53,7 +53,7 @@ exports[`CulturalSurveysQuestions page should render the page with correct layou
       onResponderTerminationRequest={[Function]}
       onStartShouldSetResponder={[Function]}
       style={
-        Object {
+        {
           "left": 12,
           "opacity": 1,
           "position": "absolute",
@@ -74,8 +74,8 @@ exports[`CulturalSurveysQuestions page should render the page with correct layou
     </View>
     <View
       style={
-        Array [
-          Object {
+        [
+          {
             "flexBasis": 0,
             "flexDirection": "row",
             "flexGrow": 1,
@@ -88,8 +88,8 @@ exports[`CulturalSurveysQuestions page should render the page with correct layou
     >
       <View
         style={
-          Array [
-            Object {
+          [
+            {
               "flexBasis": 0,
               "flexGrow": 1,
               "flexShrink": 1,
@@ -100,8 +100,8 @@ exports[`CulturalSurveysQuestions page should render the page with correct layou
       >
         <View
           style={
-            Array [
-              Object {
+            [
+              {
                 "flexGrow": 1,
               },
             ]
@@ -109,8 +109,8 @@ exports[`CulturalSurveysQuestions page should render the page with correct layou
         >
           <View
             style={
-              Array [
-                Object {
+              [
+                {
                   "flexDirection": "row",
                   "height": 24,
                   "justifyContent": "flex-start",
@@ -120,8 +120,8 @@ exports[`CulturalSurveysQuestions page should render the page with correct layou
           >
             <View
               style={
-                Array [
-                  Object {
+                [
+                  {
                     "alignSelf": "center",
                     "flexBasis": 0,
                     "flexGrow": 1,
@@ -134,8 +134,8 @@ exports[`CulturalSurveysQuestions page should render the page with correct layou
               <View
                 height={40}
                 style={
-                  Array [
-                    Object {
+                  [
+                    {
                       "alignItems": "center",
                       "flexDirection": "row",
                       "height": 40,
@@ -146,8 +146,8 @@ exports[`CulturalSurveysQuestions page should render the page with correct layou
               >
                 <View
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "borderColor": "#CBCDD2",
                         "borderRadius": 48,
                         "borderStyle": "solid",
@@ -165,27 +165,27 @@ exports[`CulturalSurveysQuestions page should render the page with correct layou
                   <BVLinearGradient
                     angle={90}
                     colors={
-                      Array [
+                      [
                         4281467030,
                         4293591125,
                       ]
                     }
                     endPoint={
-                      Object {
+                      {
                         "x": 0.5,
                         "y": 1,
                       }
                     }
                     locations={null}
                     startPoint={
-                      Object {
+                      {
                         "x": 0.5,
                         "y": 0,
                       }
                     }
                     style={
-                      Array [
-                        Object {
+                      [
+                        {
                           "borderRadius": 48,
                           "flexBasis": 0,
                           "flexGrow": 0,
@@ -201,8 +201,8 @@ exports[`CulturalSurveysQuestions page should render the page with correct layou
             </View>
             <View
               style={
-                Array [
-                  Object {
+                [
+                  {
                     "alignSelf": "center",
                   },
                 ]
@@ -210,8 +210,8 @@ exports[`CulturalSurveysQuestions page should render the page with correct layou
             >
               <Text
                 style={
-                  Array [
-                    Object {
+                  [
+                    {
                       "color": "#161617",
                       "fontFamily": "Montserrat-SemiBold",
                       "fontSize": 12,
@@ -230,8 +230,8 @@ exports[`CulturalSurveysQuestions page should render the page with correct layou
       <Text
         numberOfLines={1}
         style={
-          Array [
-            Object {
+          [
+            {
               "color": "#161617",
               "flexBasis": 0,
               "flexGrow": 1,
@@ -252,7 +252,7 @@ exports[`CulturalSurveysQuestions page should render the page with correct layou
   <RCTScrollView
     bottomChildrenViewHeight={0}
     contentContainerStyle={
-      Object {
+      {
         "alignSelf": "center",
         "flexDirection": "column",
         "flexGrow": 1,
@@ -266,8 +266,8 @@ exports[`CulturalSurveysQuestions page should render the page with correct layou
     keyboardShouldPersistTaps="handled"
     onScroll={[Function]}
     style={
-      Array [
-        Object {},
+      [
+        {},
       ]
     }
     testID="cultural-survey-questions-scrollview"
@@ -275,8 +275,8 @@ exports[`CulturalSurveysQuestions page should render the page with correct layou
     <View>
       <Text
         style={
-          Array [
-            Object {
+          [
+            {
               "color": "#161617",
               "fontFamily": "Montserrat-Bold",
               "fontSize": 20,
@@ -289,8 +289,8 @@ exports[`CulturalSurveysQuestions page should render the page with correct layou
       </Text>
       <View
         style={
-          Array [
-            Object {
+          [
+            {
               "paddingBottom": 32,
               "paddingTop": 8,
             },
@@ -299,8 +299,8 @@ exports[`CulturalSurveysQuestions page should render the page with correct layou
       >
         <Text
           style={
-            Array [
-              Object {
+            [
+              {
                 "color": "#696A6F",
                 "fontFamily": "Montserrat-SemiBold",
                 "fontSize": 12,
@@ -315,8 +315,8 @@ exports[`CulturalSurveysQuestions page should render the page with correct layou
       <View
         accessibilityRole="list"
         style={
-          Array [
-            Object {
+          [
+            {
               "flexDirection": "column",
               "paddingLeft": 0,
             },
@@ -326,8 +326,8 @@ exports[`CulturalSurveysQuestions page should render the page with correct layou
         <View
           accessibilityRole="none"
           style={
-            Array [
-              Object {
+            [
+              {
                 "display": "flex",
               },
             ]
@@ -335,8 +335,8 @@ exports[`CulturalSurveysQuestions page should render the page with correct layou
         >
           <View
             style={
-              Array [
-                Object {
+              [
+                {
                   "paddingBottom": 12,
                 },
               ]
@@ -345,27 +345,27 @@ exports[`CulturalSurveysQuestions page should render the page with correct layou
             <BVLinearGradient
               angle={175}
               colors={
-                Array [
+                [
                   4291546578,
                   4291546578,
                 ]
               }
               endPoint={
-                Object {
+                {
                   "x": 0.5,
                   "y": 1,
                 }
               }
               locations={null}
               startPoint={
-                Object {
+                {
                   "x": 0.5,
                   "y": 0,
                 }
               }
               style={
-                Array [
-                  Object {
+                [
+                  {
                     "borderRadius": 8,
                   },
                 ]
@@ -376,7 +376,7 @@ exports[`CulturalSurveysQuestions page should render the page with correct layou
                 accessibilityLabel="Participé à un festival, à une avant-première"
                 accessibilityRole="checkbox"
                 accessibilityState={
-                  Object {
+                  {
                     "checked": false,
                   }
                 }
@@ -391,7 +391,7 @@ exports[`CulturalSurveysQuestions page should render the page with correct layou
                 onResponderTerminationRequest={[Function]}
                 onStartShouldSetResponder={[Function]}
                 style={
-                  Object {
+                  {
                     "alignItems": "center",
                     "backgroundColor": "#ffffff",
                     "borderRadius": 7,
@@ -410,8 +410,8 @@ exports[`CulturalSurveysQuestions page should render the page with correct layou
               >
                 <View
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "alignContent": "center",
                         "marginLeft": 16,
                       },
@@ -430,8 +430,8 @@ exports[`CulturalSurveysQuestions page should render the page with correct layou
                 </View>
                 <View
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "flexShrink": 1,
                         "marginLeft": 16,
                         "marginRight": 40,
@@ -441,8 +441,8 @@ exports[`CulturalSurveysQuestions page should render the page with correct layou
                 >
                   <Text
                     style={
-                      Array [
-                        Object {
+                      [
+                        {
                           "color": "#161617",
                           "fontFamily": "Montserrat-Bold",
                           "fontSize": 15,
@@ -455,8 +455,8 @@ exports[`CulturalSurveysQuestions page should render the page with correct layou
                   </Text>
                   <Text
                     style={
-                      Array [
-                        Object {
+                      [
+                        {
                           "color": "#696A6F",
                           "fontFamily": "Montserrat-SemiBold",
                           "fontSize": 12,
@@ -475,8 +475,8 @@ exports[`CulturalSurveysQuestions page should render the page with correct layou
         <View
           accessibilityRole="none"
           style={
-            Array [
-              Object {
+            [
+              {
                 "display": "flex",
               },
             ]
@@ -484,8 +484,8 @@ exports[`CulturalSurveysQuestions page should render the page with correct layou
         >
           <View
             style={
-              Array [
-                Object {
+              [
+                {
                   "paddingBottom": 12,
                 },
               ]
@@ -494,27 +494,27 @@ exports[`CulturalSurveysQuestions page should render the page with correct layou
             <BVLinearGradient
               angle={175}
               colors={
-                Array [
+                [
                   4291546578,
                   4291546578,
                 ]
               }
               endPoint={
-                Object {
+                {
                   "x": 0.5,
                   "y": 1,
                 }
               }
               locations={null}
               startPoint={
-                Object {
+                {
                   "x": 0.5,
                   "y": 0,
                 }
               }
               style={
-                Array [
-                  Object {
+                [
+                  {
                     "borderRadius": 8,
                   },
                 ]
@@ -525,7 +525,7 @@ exports[`CulturalSurveysQuestions page should render the page with correct layou
                 accessibilityLabel="Assisté à un spectacle Pièce de théâtre, cirque, danse..."
                 accessibilityRole="checkbox"
                 accessibilityState={
-                  Object {
+                  {
                     "checked": false,
                   }
                 }
@@ -540,7 +540,7 @@ exports[`CulturalSurveysQuestions page should render the page with correct layou
                 onResponderTerminationRequest={[Function]}
                 onStartShouldSetResponder={[Function]}
                 style={
-                  Object {
+                  {
                     "alignItems": "center",
                     "backgroundColor": "#ffffff",
                     "borderRadius": 7,
@@ -559,8 +559,8 @@ exports[`CulturalSurveysQuestions page should render the page with correct layou
               >
                 <View
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "alignContent": "center",
                         "marginLeft": 16,
                       },
@@ -578,8 +578,8 @@ exports[`CulturalSurveysQuestions page should render the page with correct layou
                 </View>
                 <View
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "flexShrink": 1,
                         "marginLeft": 16,
                         "marginRight": 40,
@@ -589,8 +589,8 @@ exports[`CulturalSurveysQuestions page should render the page with correct layou
                 >
                   <Text
                     style={
-                      Array [
-                        Object {
+                      [
+                        {
                           "color": "#161617",
                           "fontFamily": "Montserrat-Bold",
                           "fontSize": 15,
@@ -603,8 +603,8 @@ exports[`CulturalSurveysQuestions page should render the page with correct layou
                   </Text>
                   <Text
                     style={
-                      Array [
-                        Object {
+                      [
+                        {
                           "color": "#696A6F",
                           "fontFamily": "Montserrat-SemiBold",
                           "fontSize": 12,
@@ -623,8 +623,8 @@ exports[`CulturalSurveysQuestions page should render the page with correct layou
         <View
           accessibilityRole="none"
           style={
-            Array [
-              Object {
+            [
+              {
                 "display": "flex",
               },
             ]
@@ -632,8 +632,8 @@ exports[`CulturalSurveysQuestions page should render the page with correct layou
         >
           <View
             style={
-              Array [
-                Object {
+              [
+                {
                   "paddingBottom": 12,
                 },
               ]
@@ -642,27 +642,27 @@ exports[`CulturalSurveysQuestions page should render the page with correct layou
             <BVLinearGradient
               angle={175}
               colors={
-                Array [
+                [
                   4291546578,
                   4291546578,
                 ]
               }
               endPoint={
-                Object {
+                {
                   "x": 0.5,
                   "y": 1,
                 }
               }
               locations={null}
               startPoint={
-                Object {
+                {
                   "x": 0.5,
                   "y": 0,
                 }
               }
               style={
-                Array [
-                  Object {
+                [
+                  {
                     "borderRadius": 8,
                   },
                 ]
@@ -673,7 +673,7 @@ exports[`CulturalSurveysQuestions page should render the page with correct layou
                 accessibilityLabel="Allé à la bibliothèque ou à la médiathèque"
                 accessibilityRole="checkbox"
                 accessibilityState={
-                  Object {
+                  {
                     "checked": false,
                   }
                 }
@@ -688,7 +688,7 @@ exports[`CulturalSurveysQuestions page should render the page with correct layou
                 onResponderTerminationRequest={[Function]}
                 onStartShouldSetResponder={[Function]}
                 style={
-                  Object {
+                  {
                     "alignItems": "center",
                     "backgroundColor": "#ffffff",
                     "borderRadius": 7,
@@ -707,8 +707,8 @@ exports[`CulturalSurveysQuestions page should render the page with correct layou
               >
                 <View
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "alignContent": "center",
                         "marginLeft": 16,
                       },
@@ -726,8 +726,8 @@ exports[`CulturalSurveysQuestions page should render the page with correct layou
                 </View>
                 <View
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "flexShrink": 1,
                         "marginLeft": 16,
                         "marginRight": 40,
@@ -737,8 +737,8 @@ exports[`CulturalSurveysQuestions page should render the page with correct layou
                 >
                   <Text
                     style={
-                      Array [
-                        Object {
+                      [
+                        {
                           "color": "#161617",
                           "fontFamily": "Montserrat-Bold",
                           "fontSize": 15,
@@ -751,8 +751,8 @@ exports[`CulturalSurveysQuestions page should render the page with correct layou
                   </Text>
                   <Text
                     style={
-                      Array [
-                        Object {
+                      [
+                        {
                           "color": "#696A6F",
                           "fontFamily": "Montserrat-SemiBold",
                           "fontSize": 12,
@@ -771,8 +771,8 @@ exports[`CulturalSurveysQuestions page should render the page with correct layou
         <View
           accessibilityRole="none"
           style={
-            Array [
-              Object {
+            [
+              {
                 "display": "flex",
               },
             ]
@@ -780,8 +780,8 @@ exports[`CulturalSurveysQuestions page should render the page with correct layou
         >
           <View
             style={
-              Array [
-                Object {
+              [
+                {
                   "paddingBottom": 12,
                 },
               ]
@@ -790,27 +790,27 @@ exports[`CulturalSurveysQuestions page should render the page with correct layou
             <BVLinearGradient
               angle={175}
               colors={
-                Array [
+                [
                   4291546578,
                   4291546578,
                 ]
               }
               endPoint={
-                Object {
+                {
                   "x": 0.5,
                   "y": 1,
                 }
               }
               locations={null}
               startPoint={
-                Object {
+                {
                   "x": 0.5,
                   "y": 0,
                 }
               }
               style={
-                Array [
-                  Object {
+                [
+                  {
                     "borderRadius": 8,
                   },
                 ]
@@ -821,7 +821,7 @@ exports[`CulturalSurveysQuestions page should render the page with correct layou
                 accessibilityLabel="Participé à un jeu escape game, jeu concours"
                 accessibilityRole="checkbox"
                 accessibilityState={
-                  Object {
+                  {
                     "checked": false,
                   }
                 }
@@ -836,7 +836,7 @@ exports[`CulturalSurveysQuestions page should render the page with correct layou
                 onResponderTerminationRequest={[Function]}
                 onStartShouldSetResponder={[Function]}
                 style={
-                  Object {
+                  {
                     "alignItems": "center",
                     "backgroundColor": "#ffffff",
                     "borderRadius": 7,
@@ -855,8 +855,8 @@ exports[`CulturalSurveysQuestions page should render the page with correct layou
               >
                 <View
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "alignContent": "center",
                         "marginLeft": 16,
                       },
@@ -874,8 +874,8 @@ exports[`CulturalSurveysQuestions page should render the page with correct layou
                 </View>
                 <View
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "flexShrink": 1,
                         "marginLeft": 16,
                         "marginRight": 40,
@@ -885,8 +885,8 @@ exports[`CulturalSurveysQuestions page should render the page with correct layou
                 >
                   <Text
                     style={
-                      Array [
-                        Object {
+                      [
+                        {
                           "color": "#161617",
                           "fontFamily": "Montserrat-Bold",
                           "fontSize": 15,
@@ -899,8 +899,8 @@ exports[`CulturalSurveysQuestions page should render the page with correct layou
                   </Text>
                   <Text
                     style={
-                      Array [
-                        Object {
+                      [
+                        {
                           "color": "#696A6F",
                           "fontFamily": "Montserrat-SemiBold",
                           "fontSize": 12,
@@ -919,8 +919,8 @@ exports[`CulturalSurveysQuestions page should render the page with correct layou
         <View
           accessibilityRole="none"
           style={
-            Array [
-              Object {
+            [
+              {
                 "display": "flex",
               },
             ]
@@ -928,8 +928,8 @@ exports[`CulturalSurveysQuestions page should render the page with correct layou
         >
           <View
             style={
-              Array [
-                Object {
+              [
+                {
                   "paddingBottom": 12,
                 },
               ]
@@ -938,27 +938,27 @@ exports[`CulturalSurveysQuestions page should render the page with correct layou
             <BVLinearGradient
               angle={175}
               colors={
-                Array [
+                [
                   4291546578,
                   4291546578,
                 ]
               }
               endPoint={
-                Object {
+                {
                   "x": 0.5,
                   "y": 1,
                 }
               }
               locations={null}
               startPoint={
-                Object {
+                {
                   "x": 0.5,
                   "y": 0,
                 }
               }
               style={
-                Array [
-                  Object {
+                [
+                  {
                     "borderRadius": 8,
                   },
                 ]
@@ -969,7 +969,7 @@ exports[`CulturalSurveysQuestions page should render the page with correct layou
                 accessibilityLabel="Allé à un concert"
                 accessibilityRole="checkbox"
                 accessibilityState={
-                  Object {
+                  {
                     "checked": false,
                   }
                 }
@@ -984,7 +984,7 @@ exports[`CulturalSurveysQuestions page should render the page with correct layou
                 onResponderTerminationRequest={[Function]}
                 onStartShouldSetResponder={[Function]}
                 style={
-                  Object {
+                  {
                     "alignItems": "center",
                     "backgroundColor": "#ffffff",
                     "borderRadius": 7,
@@ -1003,8 +1003,8 @@ exports[`CulturalSurveysQuestions page should render the page with correct layou
               >
                 <View
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "alignContent": "center",
                         "marginLeft": 16,
                       },
@@ -1022,8 +1022,8 @@ exports[`CulturalSurveysQuestions page should render the page with correct layou
                 </View>
                 <View
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "flexShrink": 1,
                         "marginLeft": 16,
                         "marginRight": 40,
@@ -1033,8 +1033,8 @@ exports[`CulturalSurveysQuestions page should render the page with correct layou
                 >
                   <Text
                     style={
-                      Array [
-                        Object {
+                      [
+                        {
                           "color": "#161617",
                           "fontFamily": "Montserrat-Bold",
                           "fontSize": 15,
@@ -1053,8 +1053,8 @@ exports[`CulturalSurveysQuestions page should render the page with correct layou
         <View
           accessibilityRole="none"
           style={
-            Array [
-              Object {
+            [
+              {
                 "display": "flex",
               },
             ]
@@ -1062,8 +1062,8 @@ exports[`CulturalSurveysQuestions page should render the page with correct layou
         >
           <View
             style={
-              Array [
-                Object {
+              [
+                {
                   "paddingBottom": 12,
                 },
               ]
@@ -1072,27 +1072,27 @@ exports[`CulturalSurveysQuestions page should render the page with correct layou
             <BVLinearGradient
               angle={175}
               colors={
-                Array [
+                [
                   4291546578,
                   4291546578,
                 ]
               }
               endPoint={
-                Object {
+                {
                   "x": 0.5,
                   "y": 1,
                 }
               }
               locations={null}
               startPoint={
-                Object {
+                {
                   "x": 0.5,
                   "y": 0,
                 }
               }
               style={
-                Array [
-                  Object {
+                [
+                  {
                     "borderRadius": 8,
                   },
                 ]
@@ -1103,7 +1103,7 @@ exports[`CulturalSurveysQuestions page should render the page with correct layou
                 accessibilityLabel="Allé au cinéma"
                 accessibilityRole="checkbox"
                 accessibilityState={
-                  Object {
+                  {
                     "checked": false,
                   }
                 }
@@ -1118,7 +1118,7 @@ exports[`CulturalSurveysQuestions page should render the page with correct layou
                 onResponderTerminationRequest={[Function]}
                 onStartShouldSetResponder={[Function]}
                 style={
-                  Object {
+                  {
                     "alignItems": "center",
                     "backgroundColor": "#ffffff",
                     "borderRadius": 7,
@@ -1137,8 +1137,8 @@ exports[`CulturalSurveysQuestions page should render the page with correct layou
               >
                 <View
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "alignContent": "center",
                         "marginLeft": 16,
                       },
@@ -1156,8 +1156,8 @@ exports[`CulturalSurveysQuestions page should render the page with correct layou
                 </View>
                 <View
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "flexShrink": 1,
                         "marginLeft": 16,
                         "marginRight": 40,
@@ -1167,8 +1167,8 @@ exports[`CulturalSurveysQuestions page should render the page with correct layou
                 >
                   <Text
                     style={
-                      Array [
-                        Object {
+                      [
+                        {
                           "color": "#161617",
                           "fontFamily": "Montserrat-Bold",
                           "fontSize": 15,
@@ -1187,8 +1187,8 @@ exports[`CulturalSurveysQuestions page should render the page with correct layou
         <View
           accessibilityRole="none"
           style={
-            Array [
-              Object {
+            [
+              {
                 "display": "flex",
               },
             ]
@@ -1196,8 +1196,8 @@ exports[`CulturalSurveysQuestions page should render the page with correct layou
         >
           <View
             style={
-              Array [
-                Object {
+              [
+                {
                   "paddingBottom": 12,
                 },
               ]
@@ -1206,27 +1206,27 @@ exports[`CulturalSurveysQuestions page should render the page with correct layou
             <BVLinearGradient
               angle={175}
               colors={
-                Array [
+                [
                   4291546578,
                   4291546578,
                 ]
               }
               endPoint={
-                Object {
+                {
                   "x": 0.5,
                   "y": 1,
                 }
               }
               locations={null}
               startPoint={
-                Object {
+                {
                   "x": 0.5,
                   "y": 0,
                 }
               }
               style={
-                Array [
-                  Object {
+                [
+                  {
                     "borderRadius": 8,
                   },
                 ]
@@ -1237,7 +1237,7 @@ exports[`CulturalSurveysQuestions page should render the page with correct layou
                 accessibilityLabel="Visité un musée, un monument, une exposition..."
                 accessibilityRole="checkbox"
                 accessibilityState={
-                  Object {
+                  {
                     "checked": false,
                   }
                 }
@@ -1252,7 +1252,7 @@ exports[`CulturalSurveysQuestions page should render the page with correct layou
                 onResponderTerminationRequest={[Function]}
                 onStartShouldSetResponder={[Function]}
                 style={
-                  Object {
+                  {
                     "alignItems": "center",
                     "backgroundColor": "#ffffff",
                     "borderRadius": 7,
@@ -1271,8 +1271,8 @@ exports[`CulturalSurveysQuestions page should render the page with correct layou
               >
                 <View
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "alignContent": "center",
                         "marginLeft": 16,
                       },
@@ -1290,8 +1290,8 @@ exports[`CulturalSurveysQuestions page should render the page with correct layou
                 </View>
                 <View
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "flexShrink": 1,
                         "marginLeft": 16,
                         "marginRight": 40,
@@ -1301,8 +1301,8 @@ exports[`CulturalSurveysQuestions page should render the page with correct layou
                 >
                   <Text
                     style={
-                      Array [
-                        Object {
+                      [
+                        {
                           "color": "#161617",
                           "fontFamily": "Montserrat-Bold",
                           "fontSize": 15,
@@ -1315,8 +1315,8 @@ exports[`CulturalSurveysQuestions page should render the page with correct layou
                   </Text>
                   <Text
                     style={
-                      Array [
-                        Object {
+                      [
+                        {
                           "color": "#696A6F",
                           "fontFamily": "Montserrat-SemiBold",
                           "fontSize": 12,
@@ -1335,8 +1335,8 @@ exports[`CulturalSurveysQuestions page should render the page with correct layou
         <View
           accessibilityRole="none"
           style={
-            Array [
-              Object {
+            [
+              {
                 "display": "flex",
               },
             ]
@@ -1344,8 +1344,8 @@ exports[`CulturalSurveysQuestions page should render the page with correct layou
         >
           <View
             style={
-              Array [
-                Object {
+              [
+                {
                   "paddingBottom": 12,
                 },
               ]
@@ -1354,27 +1354,27 @@ exports[`CulturalSurveysQuestions page should render the page with correct layou
             <BVLinearGradient
               angle={175}
               colors={
-                Array [
+                [
                   4291546578,
                   4291546578,
                 ]
               }
               endPoint={
-                Object {
+                {
                   "x": 0.5,
                   "y": 1,
                 }
               }
               locations={null}
               startPoint={
-                Object {
+                {
                   "x": 0.5,
                   "y": 0,
                 }
               }
               style={
-                Array [
-                  Object {
+                [
+                  {
                     "borderRadius": 8,
                   },
                 ]
@@ -1385,7 +1385,7 @@ exports[`CulturalSurveysQuestions page should render the page with correct layou
                 accessibilityLabel="Participé à une conférence, rencontre ou découverte des métiers de la culture"
                 accessibilityRole="checkbox"
                 accessibilityState={
-                  Object {
+                  {
                     "checked": false,
                   }
                 }
@@ -1400,7 +1400,7 @@ exports[`CulturalSurveysQuestions page should render the page with correct layou
                 onResponderTerminationRequest={[Function]}
                 onStartShouldSetResponder={[Function]}
                 style={
-                  Object {
+                  {
                     "alignItems": "center",
                     "backgroundColor": "#ffffff",
                     "borderRadius": 7,
@@ -1419,8 +1419,8 @@ exports[`CulturalSurveysQuestions page should render the page with correct layou
               >
                 <View
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "alignContent": "center",
                         "marginLeft": 16,
                       },
@@ -1438,8 +1438,8 @@ exports[`CulturalSurveysQuestions page should render the page with correct layou
                 </View>
                 <View
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "flexShrink": 1,
                         "marginLeft": 16,
                         "marginRight": 40,
@@ -1449,8 +1449,8 @@ exports[`CulturalSurveysQuestions page should render the page with correct layou
                 >
                   <Text
                     style={
-                      Array [
-                        Object {
+                      [
+                        {
                           "color": "#161617",
                           "fontFamily": "Montserrat-Bold",
                           "fontSize": 15,
@@ -1463,8 +1463,8 @@ exports[`CulturalSurveysQuestions page should render the page with correct layou
                   </Text>
                   <Text
                     style={
-                      Array [
-                        Object {
+                      [
+                        {
                           "color": "#696A6F",
                           "fontFamily": "Montserrat-SemiBold",
                           "fontSize": 12,
@@ -1483,8 +1483,8 @@ exports[`CulturalSurveysQuestions page should render the page with correct layou
         <View
           accessibilityRole="none"
           style={
-            Array [
-              Object {
+            [
+              {
                 "display": "flex",
               },
             ]
@@ -1492,8 +1492,8 @@ exports[`CulturalSurveysQuestions page should render the page with correct layou
         >
           <View
             style={
-              Array [
-                Object {
+              [
+                {
                   "paddingBottom": 12,
                 },
               ]
@@ -1502,27 +1502,27 @@ exports[`CulturalSurveysQuestions page should render the page with correct layou
             <BVLinearGradient
               angle={175}
               colors={
-                Array [
+                [
                   4291546578,
                   4291546578,
                 ]
               }
               endPoint={
-                Object {
+                {
                   "x": 0.5,
                   "y": 1,
                 }
               }
               locations={null}
               startPoint={
-                Object {
+                {
                   "x": 0.5,
                   "y": 0,
                 }
               }
               style={
-                Array [
-                  Object {
+                [
+                  {
                     "borderRadius": 8,
                   },
                 ]
@@ -1533,7 +1533,7 @@ exports[`CulturalSurveysQuestions page should render the page with correct layou
                 accessibilityLabel="Pris un cours danse, théâtre, musique, dessin"
                 accessibilityRole="checkbox"
                 accessibilityState={
-                  Object {
+                  {
                     "checked": false,
                   }
                 }
@@ -1548,7 +1548,7 @@ exports[`CulturalSurveysQuestions page should render the page with correct layou
                 onResponderTerminationRequest={[Function]}
                 onStartShouldSetResponder={[Function]}
                 style={
-                  Object {
+                  {
                     "alignItems": "center",
                     "backgroundColor": "#ffffff",
                     "borderRadius": 7,
@@ -1567,8 +1567,8 @@ exports[`CulturalSurveysQuestions page should render the page with correct layou
               >
                 <View
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "alignContent": "center",
                         "marginLeft": 16,
                       },
@@ -1586,8 +1586,8 @@ exports[`CulturalSurveysQuestions page should render the page with correct layou
                 </View>
                 <View
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "flexShrink": 1,
                         "marginLeft": 16,
                         "marginRight": 40,
@@ -1597,8 +1597,8 @@ exports[`CulturalSurveysQuestions page should render the page with correct layou
                 >
                   <Text
                     style={
-                      Array [
-                        Object {
+                      [
+                        {
                           "color": "#161617",
                           "fontFamily": "Montserrat-Bold",
                           "fontSize": 15,
@@ -1611,8 +1611,8 @@ exports[`CulturalSurveysQuestions page should render the page with correct layou
                   </Text>
                   <Text
                     style={
-                      Array [
-                        Object {
+                      [
+                        {
                           "color": "#696A6F",
                           "fontFamily": "Montserrat-SemiBold",
                           "fontSize": 12,
@@ -1631,8 +1631,8 @@ exports[`CulturalSurveysQuestions page should render the page with correct layou
         <View
           accessibilityRole="none"
           style={
-            Array [
-              Object {
+            [
+              {
                 "display": "flex",
               },
             ]
@@ -1640,8 +1640,8 @@ exports[`CulturalSurveysQuestions page should render the page with correct layou
         >
           <View
             style={
-              Array [
-                Object {
+              [
+                {
                   "paddingBottom": 12,
                 },
               ]
@@ -1650,27 +1650,27 @@ exports[`CulturalSurveysQuestions page should render the page with correct layou
             <BVLinearGradient
               angle={175}
               colors={
-                Array [
+                [
                   4291546578,
                   4291546578,
                 ]
               }
               endPoint={
-                Object {
+                {
                   "x": 0.5,
                   "y": 1,
                 }
               }
               locations={null}
               startPoint={
-                Object {
+                {
                   "x": 0.5,
                   "y": 0,
                 }
               }
               style={
-                Array [
-                  Object {
+                [
+                  {
                     "borderRadius": 8,
                   },
                 ]
@@ -1681,7 +1681,7 @@ exports[`CulturalSurveysQuestions page should render the page with correct layou
                 accessibilityLabel="Aucune de ces sorties culturelles"
                 accessibilityRole="checkbox"
                 accessibilityState={
-                  Object {
+                  {
                     "checked": false,
                   }
                 }
@@ -1696,7 +1696,7 @@ exports[`CulturalSurveysQuestions page should render the page with correct layou
                 onResponderTerminationRequest={[Function]}
                 onStartShouldSetResponder={[Function]}
                 style={
-                  Object {
+                  {
                     "alignItems": "center",
                     "backgroundColor": "#ffffff",
                     "borderRadius": 7,
@@ -1715,8 +1715,8 @@ exports[`CulturalSurveysQuestions page should render the page with correct layou
               >
                 <View
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "flexShrink": 1,
                         "marginLeft": 16,
                         "marginRight": 40,
@@ -1726,8 +1726,8 @@ exports[`CulturalSurveysQuestions page should render the page with correct layou
                 >
                   <Text
                     style={
-                      Array [
-                        Object {
+                      [
+                        {
                           "color": "#161617",
                           "fontFamily": "Montserrat-Bold",
                           "fontSize": 15,
@@ -1749,8 +1749,8 @@ exports[`CulturalSurveysQuestions page should render the page with correct layou
   <View
     onLayout={[Function]}
     style={
-      Array [
-        Object {
+      [
+        {
           "alignItems": "center",
           "bottom": 0,
           "left": 0,
@@ -1768,7 +1768,7 @@ exports[`CulturalSurveysQuestions page should render the page with correct layou
     <View
       accessibilityLabel="Continuer vers l’étape suivante"
       accessibilityState={
-        Object {
+        {
           "disabled": false,
         }
       }
@@ -1783,7 +1783,7 @@ exports[`CulturalSurveysQuestions page should render the page with correct layou
       onResponderTerminationRequest={[Function]}
       onStartShouldSetResponder={[Function]}
       style={
-        Object {
+        {
           "alignItems": "center",
           "backgroundColor": "#eb0055",
           "borderRadius": 24,
@@ -1806,8 +1806,8 @@ exports[`CulturalSurveysQuestions page should render the page with correct layou
         adjustsFontSizeToFit={false}
         numberOfLines={1}
         style={
-          Array [
-            Object {
+          [
+            {
               "color": "#ffffff",
               "fontFamily": "Montserrat-Bold",
               "fontSize": 15,
@@ -1825,8 +1825,8 @@ exports[`CulturalSurveysQuestions page should render the page with correct layou
       customHeight={8}
       enable={true}
       style={
-        Array [
-          Object {
+        [
+          {
             "height": 8,
           },
         ]

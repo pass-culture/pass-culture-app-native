@@ -3,8 +3,8 @@
 exports[`CulturalSurveyIntro page should render the page with correct layout 1`] = `
 <View
   style={
-    Array [
-      Object {
+    [
+      {
         "alignSelf": "center",
         "flexBasis": 0,
         "flexGrow": 1,
@@ -20,8 +20,8 @@ exports[`CulturalSurveyIntro page should render the page with correct layout 1`]
   <View
     flex={2}
     style={
-      Array [
-        Object {
+      [
+        {
           "flexBasis": 0,
           "flexGrow": 2,
           "flexShrink": 1,
@@ -32,8 +32,8 @@ exports[`CulturalSurveyIntro page should render the page with correct layout 1`]
   <View
     hasHeight={true}
     style={
-      Array [
-        Object {
+      [
+        {
           "alignItems": "center",
           "flexGrow": 1,
           "height": "30%",
@@ -55,8 +55,8 @@ exports[`CulturalSurveyIntro page should render the page with correct layout 1`]
   <View
     flex={0.5}
     style={
-      Array [
-        Object {
+      [
+        {
           "flexBasis": 0,
           "flexGrow": 0.5,
           "flexShrink": 1,
@@ -66,8 +66,8 @@ exports[`CulturalSurveyIntro page should render the page with correct layout 1`]
   />
   <Text
     style={
-      Array [
-        Object {
+      [
+        {
           "color": "#161617",
           "fontFamily": "Montserrat-Bold",
           "fontSize": 20,
@@ -81,8 +81,8 @@ exports[`CulturalSurveyIntro page should render the page with correct layout 1`]
   </Text>
   <Text
     style={
-      Array [
-        Object {
+      [
+        {
           "color": "#161617",
           "fontFamily": "Montserrat-Medium",
           "fontSize": 18,
@@ -97,8 +97,8 @@ exports[`CulturalSurveyIntro page should render the page with correct layout 1`]
   <View
     flex={0.5}
     style={
-      Array [
-        Object {
+      [
+        {
           "flexBasis": 0,
           "flexGrow": 0.5,
           "flexShrink": 1,
@@ -108,8 +108,8 @@ exports[`CulturalSurveyIntro page should render the page with correct layout 1`]
   />
   <Text
     style={
-      Array [
-        Object {
+      [
+        {
           "color": "#161617",
           "fontFamily": "Montserrat-Regular",
           "fontSize": 15,
@@ -135,7 +135,7 @@ exports[`CulturalSurveyIntro page should render the page with correct layout 1`]
       onResponderTerminationRequest={[Function]}
       onStartShouldSetResponder={[Function]}
       style={
-        Object {
+        {
           "alignItems": "center",
           "backgroundColor": "transparent",
           "borderRadius": 24,
@@ -156,8 +156,8 @@ exports[`CulturalSurveyIntro page should render the page with correct layout 1`]
     >
       <View
         style={
-          Array [
-            Object {
+          [
+            {
               "flexShrink": 0,
             },
           ]
@@ -178,8 +178,8 @@ exports[`CulturalSurveyIntro page should render the page with correct layout 1`]
         adjustsFontSizeToFit={false}
         numberOfLines={1}
         style={
-          Array [
-            Object {
+          [
+            {
               "color": "#161617",
               "fontFamily": "Montserrat-Bold",
               "fontSize": 15,
@@ -197,8 +197,8 @@ exports[`CulturalSurveyIntro page should render the page with correct layout 1`]
   <View
     flex={1}
     style={
-      Array [
-        Object {
+      [
+        {
           "flexBasis": 0,
           "flexGrow": 1,
           "flexShrink": 1,
@@ -220,7 +220,7 @@ exports[`CulturalSurveyIntro page should render the page with correct layout 1`]
       onResponderTerminationRequest={[Function]}
       onStartShouldSetResponder={[Function]}
       style={
-        Object {
+        {
           "alignItems": "center",
           "backgroundColor": "#eb0055",
           "borderRadius": 24,
@@ -243,8 +243,8 @@ exports[`CulturalSurveyIntro page should render the page with correct layout 1`]
         adjustsFontSizeToFit={false}
         numberOfLines={1}
         style={
-          Array [
-            Object {
+          [
+            {
               "color": "#ffffff",
               "fontFamily": "Montserrat-Bold",
               "fontSize": 15,
@@ -261,8 +261,8 @@ exports[`CulturalSurveyIntro page should render the page with correct layout 1`]
     <View
       numberOfSpaces={3}
       style={
-        Array [
-          Object {
+        [
+          {
             "height": 12,
           },
         ]
@@ -281,7 +281,7 @@ exports[`CulturalSurveyIntro page should render the page with correct layout 1`]
       onResponderTerminationRequest={[Function]}
       onStartShouldSetResponder={[Function]}
       style={
-        Object {
+        {
           "alignItems": "center",
           "backgroundColor": "transparent",
           "borderRadius": 24,
@@ -302,8 +302,8 @@ exports[`CulturalSurveyIntro page should render the page with correct layout 1`]
     >
       <View
         style={
-          Array [
-            Object {
+          [
+            {
               "flexShrink": 0,
             },
           ]
@@ -323,8 +323,8 @@ exports[`CulturalSurveyIntro page should render the page with correct layout 1`]
         adjustsFontSizeToFit={false}
         numberOfLines={1}
         style={
-          Array [
-            Object {
+          [
+            {
               "color": "#161617",
               "fontFamily": "Montserrat-Bold",
               "fontSize": 15,
@@ -342,8 +342,8 @@ exports[`CulturalSurveyIntro page should render the page with correct layout 1`]
   <View
     flex={1.5}
     style={
-      Array [
-        Object {
+      [
+        {
           "flexBasis": 0,
           "flexGrow": 1.5,
           "flexShrink": 1,

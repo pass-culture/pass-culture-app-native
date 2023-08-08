@@ -4,8 +4,8 @@ exports[`OfferCaption component should render correctly 1`] = `
 <View
   imageWidth={50}
   style={
-    Array [
-      Object {
+    [
+      {
         "marginTop": 8,
         "maxWidth": 50,
       },
@@ -15,8 +15,8 @@ exports[`OfferCaption component should render correctly 1`] = `
   <Text
     numberOfLines={2}
     style={
-      Array [
-        Object {
+      [
+        {
           "color": "#161617",
           "fontFamily": "Montserrat-SemiBold",
           "fontSize": 12,
@@ -30,8 +30,8 @@ exports[`OfferCaption component should render correctly 1`] = `
   <Text
     numberOfLines={1}
     style={
-      Array [
-        Object {
+      [
+        {
           "color": "#696A6F",
           "fontFamily": "Montserrat-SemiBold",
           "fontSize": 12,
@@ -44,8 +44,8 @@ exports[`OfferCaption component should render correctly 1`] = `
   </Text>
   <Text
     style={
-      Array [
-        Object {
+      [
+        {
           "color": "#696A6F",
           "fontFamily": "Montserrat-SemiBold",
           "fontSize": 12,

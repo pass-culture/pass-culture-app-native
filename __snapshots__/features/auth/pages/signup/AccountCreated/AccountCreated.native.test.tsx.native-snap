@@ -1,11 +1,11 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<AccountCreated /> should render correctly 1`] = `
-Array [
+[
   <View
     style={
-      Array [
-        Object {
+      [
+        {
           "alignItems": "center",
           "flexBasis": 0,
           "flexGrow": 1,
@@ -17,8 +17,8 @@ Array [
     <View
       height="100%"
       style={
-        Array [
-          Object {
+        [
+          {
             "bottom": 0,
             "height": "100%",
             "left": 0,
@@ -43,8 +43,8 @@ Array [
     </View>
     <View
       style={
-        Array [
-          Object {
+        [
+          {
             "alignItems": "center",
             "flexBasis": 0,
             "flexDirection": "column",
@@ -62,8 +62,8 @@ Array [
         customHeight={16}
         enable={true}
         style={
-          Array [
-            Object {
+          [
+            {
               "height": 16,
             },
           ]
@@ -71,8 +71,8 @@ Array [
       />
       <View
         style={
-          Array [
-            Object {
+          [
+            {
               "flexBasis": 0,
               "flexGrow": 1,
               "flexShrink": 1,
@@ -83,8 +83,8 @@ Array [
       <View
         numberOfSpaces={10}
         style={
-          Array [
-            Object {
+          [
+            {
               "height": 40,
             },
           ]
@@ -96,8 +96,8 @@ Array [
       <View
         numberOfSpaces={5}
         style={
-          Array [
-            Object {
+          [
+            {
               "height": 20,
             },
           ]
@@ -105,8 +105,8 @@ Array [
       />
       <Text
         style={
-          Array [
-            Object {
+          [
+            {
               "color": "#ffffff",
               "fontFamily": "Montserrat-Medium",
               "fontSize": 22,
@@ -121,8 +121,8 @@ Array [
       <View
         numberOfSpaces={5}
         style={
-          Array [
-            Object {
+          [
+            {
               "height": 20,
             },
           ]
@@ -130,8 +130,8 @@ Array [
       />
       <Text
         style={
-          Array [
-            Object {
+          [
+            {
               "color": "#ffffff",
               "fontFamily": "Montserrat-Regular",
               "fontSize": 15,
@@ -146,8 +146,8 @@ Array [
       <View
         numberOfSpaces={15}
         style={
-          Array [
-            Object {
+          [
+            {
               "height": 60,
             },
           ]
@@ -156,8 +156,8 @@ Array [
       <View
         flex={0.5}
         style={
-          Array [
-            Object {
+          [
+            {
               "flexBasis": 0,
               "flexGrow": 0.5,
               "flexShrink": 1,
@@ -167,8 +167,8 @@ Array [
       />
       <View
         style={
-          Array [
-            Object {
+          [
+            {
               "alignSelf": "stretch",
               "flexBasis": 0,
               "flexGrow": 1,
@@ -192,7 +192,7 @@ Array [
           onResponderTerminationRequest={[Function]}
           onStartShouldSetResponder={[Function]}
           style={
-            Object {
+            {
               "alignItems": "center",
               "backgroundColor": "#ffffff",
               "borderRadius": 24,
@@ -215,8 +215,8 @@ Array [
             adjustsFontSizeToFit={false}
             numberOfLines={1}
             style={
-              Array [
-                Object {
+              [
+                {
                   "color": "#eb0055",
                   "fontFamily": "Montserrat-Bold",
                   "fontSize": 15,
@@ -235,8 +235,8 @@ Array [
         customHeight={8}
         enable={true}
         style={
-          Array [
-            Object {
+          [
+            {
               "height": 8,
             },
           ]

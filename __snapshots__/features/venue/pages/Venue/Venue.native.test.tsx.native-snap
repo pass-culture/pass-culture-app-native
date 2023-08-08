@@ -3,8 +3,8 @@
 exports[`<Venue /> should match snapshot 1`] = `
 <View
   style={
-    Array [
-      Object {
+    [
+      {
         "backgroundColor": "#ffffff",
         "flexBasis": 0,
         "flexGrow": 1,
@@ -18,13 +18,13 @@ exports[`<Venue /> should match snapshot 1`] = `
     onScroll={[Function]}
     scrollEventThrottle={20}
     scrollIndicatorInsets={
-      Object {
+      {
         "right": 1,
       }
     }
     style={
-      Array [
-        Object {
+      [
+        {
           "overflow": "visible",
         },
       ]
@@ -34,8 +34,8 @@ exports[`<Venue /> should match snapshot 1`] = `
     <View>
       <View
         style={
-          Array [
-            Object {
+          [
+            {
               "alignItems": "center",
               "minHeight": 0,
             },
@@ -44,8 +44,8 @@ exports[`<Venue /> should match snapshot 1`] = `
       >
         <View
           style={
-            Array [
-              Object {
+            [
+              {
                 "alignItems": "center",
                 "position": "absolute",
               },
@@ -54,8 +54,8 @@ exports[`<Venue /> should match snapshot 1`] = `
         >
           <View
             style={
-              Array [
-                Object {
+              [
+                {
                   "flexDirection": "row",
                 },
               ]
@@ -155,8 +155,8 @@ exports[`<Venue /> should match snapshot 1`] = `
         <View
           numberOfSpaces={26}
           style={
-            Array [
-              Object {
+            [
+              {
                 "height": 104,
               },
             ]
@@ -164,18 +164,18 @@ exports[`<Venue /> should match snapshot 1`] = `
         />
         <View
           style={
-            Array [
-              Object {
+            [
+              {
                 "bottom": 0,
                 "shadowColor": "#161617",
-                "shadowOffset": Object {
+                "shadowOffset": {
                   "height": 8,
                   "width": 0,
                 },
                 "shadowOpacity": 0.2,
                 "shadowRadius": 12,
               },
-              Object {
+              {
                 "aspectRatio": 1,
                 "borderRadius": 24,
                 "width": 216,
@@ -187,8 +187,8 @@ exports[`<Venue /> should match snapshot 1`] = `
           <View
             borderRadius={24}
             style={
-              Array [
-                Object {
+              [
+                {
                   "alignItems": "center",
                   "borderRadius": 24,
                   "height": "100%",
@@ -212,8 +212,8 @@ exports[`<Venue /> should match snapshot 1`] = `
             </View>
             <View
               style={
-                Array [
-                  Object {
+                [
+                  {
                     "position": "absolute",
                   },
                 ]
@@ -235,8 +235,8 @@ exports[`<Venue /> should match snapshot 1`] = `
       <View
         numberOfSpaces={4}
         style={
-          Array [
-            Object {
+          [
+            {
               "height": 16,
             },
           ]
@@ -244,8 +244,8 @@ exports[`<Venue /> should match snapshot 1`] = `
       />
       <View
         style={
-          Array [
-            Object {
+          [
+            {
               "marginHorizontal": 24,
             },
           ]
@@ -253,8 +253,8 @@ exports[`<Venue /> should match snapshot 1`] = `
       >
         <View
           style={
-            Array [
-              Object {
+            [
+              {
                 "alignItems": "center",
                 "flexDirection": "row",
                 "justifyContent": "center",
@@ -265,8 +265,8 @@ exports[`<Venue /> should match snapshot 1`] = `
         >
           <View
             style={
-              Array [
-                Object {
+              [
+                {
                   "marginRight": 4,
                 },
               ]
@@ -285,8 +285,8 @@ exports[`<Venue /> should match snapshot 1`] = `
           <Text
             numberOfLines={1}
             style={
-              Array [
-                Object {
+              [
+                {
                   "color": "#161617",
                   "flexShrink": 1,
                   "fontFamily": "Montserrat-SemiBold",
@@ -303,8 +303,8 @@ exports[`<Venue /> should match snapshot 1`] = `
         <View
           numberOfSpaces={2}
           style={
-            Array [
-              Object {
+            [
+              {
                 "height": 8,
               },
             ]
@@ -316,8 +316,8 @@ exports[`<Venue /> should match snapshot 1`] = `
           allowFontScaling={false}
           numberOfLines={2}
           style={
-            Array [
-              Object {
+            [
+              {
                 "color": "#161617",
                 "fontFamily": "Montserrat-Bold",
                 "fontSize": 20,
@@ -333,8 +333,8 @@ exports[`<Venue /> should match snapshot 1`] = `
         <View
           numberOfSpaces={4}
           style={
-            Array [
-              Object {
+            [
+              {
                 "height": 16,
               },
             ]
@@ -343,8 +343,8 @@ exports[`<Venue /> should match snapshot 1`] = `
       </View>
       <View
         style={
-          Array [
-            Object {
+          [
+            {
               "alignItems": "flex-start",
               "flexDirection": "row",
             },
@@ -354,8 +354,8 @@ exports[`<Venue /> should match snapshot 1`] = `
         <View
           numberOfSpaces={6}
           style={
-            Array [
-              Object {
+            [
+              {
                 "width": 24,
               },
             ]
@@ -363,8 +363,8 @@ exports[`<Venue /> should match snapshot 1`] = `
         />
         <View
           style={
-            Array [
-              Object {
+            [
+              {
                 "alignItems": "center",
                 "flexBasis": 0,
                 "flexGrow": 1,
@@ -375,8 +375,8 @@ exports[`<Venue /> should match snapshot 1`] = `
         >
           <View
             style={
-              Array [
-                Object {
+              [
+                {
                   "paddingBottom": 4,
                   "paddingLeft": 4,
                   "paddingRight": 4,
@@ -398,8 +398,8 @@ exports[`<Venue /> should match snapshot 1`] = `
           <View
             numberOfSpaces={2}
             style={
-              Array [
-                Object {
+              [
+                {
                   "height": 8,
                 },
               ]
@@ -408,8 +408,8 @@ exports[`<Venue /> should match snapshot 1`] = `
           <Text
             disabled={false}
             style={
-              Array [
-                Object {
+              [
+                {
                   "color": "#161617",
                   "fontFamily": "Montserrat-SemiBold",
                   "fontSize": 12,
@@ -425,8 +425,8 @@ exports[`<Venue /> should match snapshot 1`] = `
         </View>
         <View
           style={
-            Array [
-              Object {
+            [
+              {
                 "alignSelf": "center",
                 "backgroundColor": "#CBCDD2",
                 "height": "92%",
@@ -440,7 +440,7 @@ exports[`<Venue /> should match snapshot 1`] = `
           accessibilityLabel="Géolocalisation désactivée"
           accessibilityRole="button"
           accessibilityState={
-            Object {
+            {
               "disabled": false,
             }
           }
@@ -455,7 +455,7 @@ exports[`<Venue /> should match snapshot 1`] = `
           onResponderTerminationRequest={[Function]}
           onStartShouldSetResponder={[Function]}
           style={
-            Object {
+            {
               "flexBasis": 0,
               "flexDirection": "row",
               "flexGrow": 1,
@@ -468,8 +468,8 @@ exports[`<Venue /> should match snapshot 1`] = `
         >
           <View
             style={
-              Array [
-                Object {
+              [
+                {
                   "alignItems": "center",
                   "flexBasis": 0,
                   "flexGrow": 1,
@@ -480,8 +480,8 @@ exports[`<Venue /> should match snapshot 1`] = `
           >
             <View
               style={
-                Array [
-                  Object {
+                [
+                  {
                     "paddingBottom": 4,
                     "paddingLeft": 4,
                     "paddingRight": 4,
@@ -503,8 +503,8 @@ exports[`<Venue /> should match snapshot 1`] = `
             <View
               numberOfSpaces={2}
               style={
-                Array [
-                  Object {
+                [
+                  {
                     "height": 8,
                   },
                 ]
@@ -513,8 +513,8 @@ exports[`<Venue /> should match snapshot 1`] = `
             <Text
               disabled={true}
               style={
-                Array [
-                  Object {
+                [
+                  {
                     "color": "#696A6F",
                     "fontFamily": "Montserrat-SemiBold",
                     "fontSize": 12,
@@ -532,8 +532,8 @@ exports[`<Venue /> should match snapshot 1`] = `
         <View
           numberOfSpaces={6}
           style={
-            Array [
-              Object {
+            [
+              {
                 "width": 24,
               },
             ]
@@ -542,8 +542,8 @@ exports[`<Venue /> should match snapshot 1`] = `
       </View>
       <View
         style={
-          Array [
-            Object {
+          [
+            {
               "paddingBottom": 24,
               "paddingLeft": 24,
               "paddingRight": 24,
@@ -555,7 +555,7 @@ exports[`<Venue /> should match snapshot 1`] = `
         <View
           collapsable={false}
           style={
-            Object {
+            {
               "height": 0,
               "overflow": "hidden",
             }
@@ -565,8 +565,8 @@ exports[`<Venue /> should match snapshot 1`] = `
           <View
             onLayout={[Function]}
             style={
-              Array [
-                Object {
+              [
+                {
                   "position": "absolute",
                   "top": 0,
                   "width": "100%",
@@ -577,8 +577,8 @@ exports[`<Venue /> should match snapshot 1`] = `
           >
             <Text
               style={
-                Array [
-                  Object {
+                [
+                  {
                     "color": "#161617",
                     "fontFamily": "Montserrat-Regular",
                     "fontSize": 15,
@@ -594,8 +594,8 @@ exports[`<Venue /> should match snapshot 1`] = `
                 accessible={true}
                 onPress={[Function]}
                 style={
-                  Array [
-                    Object {
+                  [
+                    {
                       "color": "#161617",
                       "fontFamily": "Montserrat-Bold",
                       "fontSize": 15,
@@ -608,8 +608,8 @@ exports[`<Venue /> should match snapshot 1`] = `
                 <View
                   numberOfSpaces={1}
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "width": 4,
                       },
                     ]
@@ -637,8 +637,8 @@ exports[`<Venue /> should match snapshot 1`] = `
       <View>
         <View
           style={
-            Array [
-              Object {
+            [
+              {
                 "backgroundColor": "#F1F1F4",
                 "height": 8,
               },
@@ -648,8 +648,8 @@ exports[`<Venue /> should match snapshot 1`] = `
         <View
           numberOfSpaces={6}
           style={
-            Array [
-              Object {
+            [
+              {
                 "height": 24,
               },
             ]
@@ -657,8 +657,8 @@ exports[`<Venue /> should match snapshot 1`] = `
         />
         <View
           style={
-            Array [
-              Object {
+            [
+              {
                 "paddingBottom": 24,
               },
             ]
@@ -666,8 +666,8 @@ exports[`<Venue /> should match snapshot 1`] = `
         >
           <View
             style={
-              Array [
-                Object {
+              [
+                {
                   "maxHeight": 68,
                   "overflow": "hidden",
                 },
@@ -676,8 +676,8 @@ exports[`<Venue /> should match snapshot 1`] = `
           >
             <View
               style={
-                Array [
-                  Object {
+                [
+                  {
                     "alignItems": "center",
                     "flexDirection": "row",
                     "marginHorizontal": 24,
@@ -688,8 +688,8 @@ exports[`<Venue /> should match snapshot 1`] = `
               <Text
                 numberOfLines={2}
                 style={
-                  Array [
-                    Object {
+                  [
+                    {
                       "color": "#161617",
                       "fontFamily": "Montserrat-Medium",
                       "fontSize": 18,
@@ -706,8 +706,8 @@ exports[`<Venue /> should match snapshot 1`] = `
           <View
             numberOfSpaces={4}
             style={
-              Array [
-                Object {
+              [
+                {
                   "height": 16,
                 },
               ]
@@ -715,8 +715,8 @@ exports[`<Venue /> should match snapshot 1`] = `
           />
           <View
             style={
-              Array [
-                Object {
+              [
+                {
                   "position": "relative",
                   "width": "100%",
                 },
@@ -724,15 +724,15 @@ exports[`<Venue /> should match snapshot 1`] = `
             }
           >
             <View
-              style={Object {}}
+              style={{}}
             >
               <RCTScrollView
                 ItemSeparatorComponent={
-                  Object {
+                  {
                     "$$typeof": Symbol(react.forward_ref),
-                    "attrs": Array [],
+                    "attrs": [],
                     "inlineStyle": InlineStyle {
-                      "rules": Array [
+                      "rules": [
                         "width: 16px;",
                       ],
                     },
@@ -744,11 +744,11 @@ exports[`<Venue /> should match snapshot 1`] = `
                   }
                 }
                 ListFooterComponent={
-                  Object {
+                  {
                     "$$typeof": Symbol(react.forward_ref),
-                    "attrs": Array [],
+                    "attrs": [],
                     "inlineStyle": InlineStyle {
-                      "rules": Array [
+                      "rules": [
                         "width: 24px;",
                       ],
                     },
@@ -760,11 +760,11 @@ exports[`<Venue /> should match snapshot 1`] = `
                   }
                 }
                 ListHeaderComponent={
-                  Object {
+                  {
                     "$$typeof": Symbol(react.forward_ref),
-                    "attrs": Array [],
+                    "attrs": [],
                     "inlineStyle": InlineStyle {
-                      "rules": Array [
+                      "rules": [
                         "width: 24px;",
                       ],
                     },
@@ -778,7 +778,7 @@ exports[`<Venue /> should match snapshot 1`] = `
                 applyWindowCorrection={[Function]}
                 canChangeSize={true}
                 contentContainerStyle={
-                  Object {
+                  {
                     "backgroundColor": undefined,
                     "minHeight": 1,
                     "minWidth": 1,
@@ -789,15 +789,15 @@ exports[`<Venue /> should match snapshot 1`] = `
                 contentHeight={250}
                 contentWidth={576}
                 data={
-                  Array [
-                    Object {
-                      "_geoloc": Object {
+                  [
+                    {
+                      "_geoloc": {
                         "lat": 47.8898,
                         "lng": -2.83593,
                       },
                       "objectID": "223342",
-                      "offer": Object {
-                        "dates": Array [
+                      "offer": {
+                        "dates": [
                           1629312300,
                           1629485100,
                           1629657900,
@@ -805,7 +805,7 @@ exports[`<Venue /> should match snapshot 1`] = `
                         "isDigital": false,
                         "isDuo": true,
                         "name": "Titane - VF",
-                        "prices": Array [
+                        "prices": [
                           0,
                           0,
                           0,
@@ -813,16 +813,16 @@ exports[`<Venue /> should match snapshot 1`] = `
                         "subcategoryId": "CINE_PLEIN_AIR",
                         "thumbUrl": "https://storage.googleapis.com/passculture-metier-ehp-testing-assets/thumbs/products/FARMG",
                       },
-                      "venue": Object {},
+                      "venue": {},
                     },
-                    Object {
-                      "_geoloc": Object {
+                    {
+                      "_geoloc": {
                         "lat": 47.8898,
                         "lng": -2.83593,
                       },
                       "objectID": "223338",
-                      "offer": Object {
-                        "dates": Array [
+                      "offer": {
+                        "dates": [
                           1629312300,
                           1629485100,
                           1629657900,
@@ -830,7 +830,7 @@ exports[`<Venue /> should match snapshot 1`] = `
                         "isDigital": false,
                         "isDuo": true,
                         "name": "Bac Nord - VF",
-                        "prices": Array [
+                        "prices": [
                           0,
                           0,
                           0,
@@ -838,16 +838,16 @@ exports[`<Venue /> should match snapshot 1`] = `
                         "subcategoryId": "CINE_PLEIN_AIR",
                         "thumbUrl": "https://storage.googleapis.com/passculture-metier-ehp-testing-assets/thumbs/products/FARMG",
                       },
-                      "venue": Object {},
+                      "venue": {},
                     },
-                    Object {
-                      "_geoloc": Object {
+                    {
+                      "_geoloc": {
                         "lat": 47.8898,
                         "lng": -2.83593,
                       },
                       "objectID": "223339",
-                      "offer": Object {
-                        "dates": Array [
+                      "offer": {
+                        "dates": [
                           1629312300,
                           1629485100,
                           1629657900,
@@ -855,7 +855,7 @@ exports[`<Venue /> should match snapshot 1`] = `
                         "isDigital": false,
                         "isDuo": true,
                         "name": "Black Widow - VF",
-                        "prices": Array [
+                        "prices": [
                           0,
                           0,
                           0,
@@ -863,24 +863,24 @@ exports[`<Venue /> should match snapshot 1`] = `
                         "subcategoryId": "CINE_PLEIN_AIR",
                         "thumbUrl": "https://storage.googleapis.com/passculture-metier-ehp-testing-assets/thumbs/products/FARMA",
                       },
-                      "venue": Object {},
+                      "venue": {},
                     },
-                    Object {
+                    {
                       "dataFooter": true,
                     },
                   ]
                 }
                 dataProvider={
                   DataProvider {
-                    "_data": Array [
-                      Object {
-                        "_geoloc": Object {
+                    "_data": [
+                      {
+                        "_geoloc": {
                           "lat": 47.8898,
                           "lng": -2.83593,
                         },
                         "objectID": "223342",
-                        "offer": Object {
-                          "dates": Array [
+                        "offer": {
+                          "dates": [
                             1629312300,
                             1629485100,
                             1629657900,
@@ -888,7 +888,7 @@ exports[`<Venue /> should match snapshot 1`] = `
                           "isDigital": false,
                           "isDuo": true,
                           "name": "Titane - VF",
-                          "prices": Array [
+                          "prices": [
                             0,
                             0,
                             0,
@@ -896,16 +896,16 @@ exports[`<Venue /> should match snapshot 1`] = `
                           "subcategoryId": "CINE_PLEIN_AIR",
                           "thumbUrl": "https://storage.googleapis.com/passculture-metier-ehp-testing-assets/thumbs/products/FARMG",
                         },
-                        "venue": Object {},
+                        "venue": {},
                       },
-                      Object {
-                        "_geoloc": Object {
+                      {
+                        "_geoloc": {
                           "lat": 47.8898,
                           "lng": -2.83593,
                         },
                         "objectID": "223338",
-                        "offer": Object {
-                          "dates": Array [
+                        "offer": {
+                          "dates": [
                             1629312300,
                             1629485100,
                             1629657900,
@@ -913,7 +913,7 @@ exports[`<Venue /> should match snapshot 1`] = `
                           "isDigital": false,
                           "isDuo": true,
                           "name": "Bac Nord - VF",
-                          "prices": Array [
+                          "prices": [
                             0,
                             0,
                             0,
@@ -921,16 +921,16 @@ exports[`<Venue /> should match snapshot 1`] = `
                           "subcategoryId": "CINE_PLEIN_AIR",
                           "thumbUrl": "https://storage.googleapis.com/passculture-metier-ehp-testing-assets/thumbs/products/FARMG",
                         },
-                        "venue": Object {},
+                        "venue": {},
                       },
-                      Object {
-                        "_geoloc": Object {
+                      {
+                        "_geoloc": {
                           "lat": 47.8898,
                           "lng": -2.83593,
                         },
                         "objectID": "223339",
-                        "offer": Object {
-                          "dates": Array [
+                        "offer": {
+                          "dates": [
                             1629312300,
                             1629485100,
                             1629657900,
@@ -938,7 +938,7 @@ exports[`<Venue /> should match snapshot 1`] = `
                           "isDigital": false,
                           "isDuo": true,
                           "name": "Black Widow - VF",
-                          "prices": Array [
+                          "prices": [
                             0,
                             0,
                             0,
@@ -946,9 +946,9 @@ exports[`<Venue /> should match snapshot 1`] = `
                           "subcategoryId": "CINE_PLEIN_AIR",
                           "thumbUrl": "https://storage.googleapis.com/passculture-metier-ehp-testing-assets/thumbs/products/FARMA",
                         },
-                        "venue": Object {},
+                        "venue": {},
                       },
-                      Object {
+                      {
                         "dataFooter": true,
                       },
                     ],
@@ -962,7 +962,7 @@ exports[`<Venue /> should match snapshot 1`] = `
                 }
                 disableRecycling={false}
                 estimatedItemSize={144}
-                extendedState={Object {}}
+                extendedState={{}}
                 externalScrollView={[Function]}
                 finalRenderAheadOffset={187.5}
                 forceNonDeterministicRendering={true}
@@ -986,29 +986,29 @@ exports[`<Venue /> should match snapshot 1`] = `
                       "_isGridHorizontal": true,
                       "_isHorizontal": true,
                       "_layoutProvider": [Circular],
-                      "_layouts": Array [
-                        Object {
+                      "_layouts": [
+                        {
                           "height": 250,
                           "type": 0,
                           "width": 144,
                           "x": 0,
                           "y": 0,
                         },
-                        Object {
+                        {
                           "height": 250,
                           "type": 0,
                           "width": 144,
                           "x": 144,
                           "y": 0,
                         },
-                        Object {
+                        {
                           "height": 250,
                           "type": 0,
                           "width": 144,
                           "x": 288,
                           "y": 0,
                         },
-                        Object {
+                        {
                           "height": 250,
                           "type": 0,
                           "width": 144,
@@ -1017,31 +1017,31 @@ exports[`<Venue /> should match snapshot 1`] = `
                         },
                       ],
                       "_maxSpan": 1,
-                      "_renderWindowSize": Object {
+                      "_renderWindowSize": {
                         "height": 250,
                         "width": 800,
                       },
                       "_totalHeight": 250,
                       "_totalWidth": 576,
-                      "_window": Object {
+                      "_window": {
                         "height": 250,
                         "width": 800,
                       },
                     },
                     "_maxSpan": 1,
-                    "_renderWindowSize": Object {
+                    "_renderWindowSize": {
                       "height": 250,
                       "width": 800,
                     },
                     "_setLayoutForType": [Function],
-                    "_tempDim": Object {
+                    "_tempDim": {
                       "height": 0,
                       "width": 0,
                     },
                     "averageWindow": AverageWindow {
                       "currentAverage": 144,
                       "currentCount": 1,
-                      "inputValues": Array [
+                      "inputValues": [
                         144,
                         ,
                         ,
@@ -1058,16 +1058,16 @@ exports[`<Venue /> should match snapshot 1`] = `
                       "nextIndex": 1,
                     },
                     "defaultEstimatedItemSize": 100,
-                    "layoutObject": Object {
+                    "layoutObject": {
                       "size": undefined,
                       "span": undefined,
                     },
-                    "props": Object {
-                      "ItemSeparatorComponent": Object {
+                    "props": {
+                      "ItemSeparatorComponent": {
                         "$$typeof": Symbol(react.forward_ref),
-                        "attrs": Array [],
+                        "attrs": [],
                         "inlineStyle": InlineStyle {
-                          "rules": Array [
+                          "rules": [
                             "width: 16px;",
                           ],
                         },
@@ -1077,11 +1077,11 @@ exports[`<Venue /> should match snapshot 1`] = `
                         "target": [Function],
                         "withComponent": [Function],
                       },
-                      "ListFooterComponent": Object {
+                      "ListFooterComponent": {
                         "$$typeof": Symbol(react.forward_ref),
-                        "attrs": Array [],
+                        "attrs": [],
                         "inlineStyle": InlineStyle {
-                          "rules": Array [
+                          "rules": [
                             "width: 24px;",
                           ],
                         },
@@ -1091,11 +1091,11 @@ exports[`<Venue /> should match snapshot 1`] = `
                         "target": [Function],
                         "withComponent": [Function],
                       },
-                      "ListHeaderComponent": Object {
+                      "ListHeaderComponent": {
                         "$$typeof": Symbol(react.forward_ref),
-                        "attrs": Array [],
+                        "attrs": [],
                         "inlineStyle": InlineStyle {
-                          "rules": Array [
+                          "rules": [
                             "width: 24px;",
                           ],
                         },
@@ -1105,15 +1105,15 @@ exports[`<Venue /> should match snapshot 1`] = `
                         "target": [Function],
                         "withComponent": [Function],
                       },
-                      "data": Array [
-                        Object {
-                          "_geoloc": Object {
+                      "data": [
+                        {
+                          "_geoloc": {
                             "lat": 47.8898,
                             "lng": -2.83593,
                           },
                           "objectID": "223342",
-                          "offer": Object {
-                            "dates": Array [
+                          "offer": {
+                            "dates": [
                               1629312300,
                               1629485100,
                               1629657900,
@@ -1121,7 +1121,7 @@ exports[`<Venue /> should match snapshot 1`] = `
                             "isDigital": false,
                             "isDuo": true,
                             "name": "Titane - VF",
-                            "prices": Array [
+                            "prices": [
                               0,
                               0,
                               0,
@@ -1129,16 +1129,16 @@ exports[`<Venue /> should match snapshot 1`] = `
                             "subcategoryId": "CINE_PLEIN_AIR",
                             "thumbUrl": "https://storage.googleapis.com/passculture-metier-ehp-testing-assets/thumbs/products/FARMG",
                           },
-                          "venue": Object {},
+                          "venue": {},
                         },
-                        Object {
-                          "_geoloc": Object {
+                        {
+                          "_geoloc": {
                             "lat": 47.8898,
                             "lng": -2.83593,
                           },
                           "objectID": "223338",
-                          "offer": Object {
-                            "dates": Array [
+                          "offer": {
+                            "dates": [
                               1629312300,
                               1629485100,
                               1629657900,
@@ -1146,7 +1146,7 @@ exports[`<Venue /> should match snapshot 1`] = `
                             "isDigital": false,
                             "isDuo": true,
                             "name": "Bac Nord - VF",
-                            "prices": Array [
+                            "prices": [
                               0,
                               0,
                               0,
@@ -1154,16 +1154,16 @@ exports[`<Venue /> should match snapshot 1`] = `
                             "subcategoryId": "CINE_PLEIN_AIR",
                             "thumbUrl": "https://storage.googleapis.com/passculture-metier-ehp-testing-assets/thumbs/products/FARMG",
                           },
-                          "venue": Object {},
+                          "venue": {},
                         },
-                        Object {
-                          "_geoloc": Object {
+                        {
+                          "_geoloc": {
                             "lat": 47.8898,
                             "lng": -2.83593,
                           },
                           "objectID": "223339",
-                          "offer": Object {
-                            "dates": Array [
+                          "offer": {
+                            "dates": [
                               1629312300,
                               1629485100,
                               1629657900,
@@ -1171,7 +1171,7 @@ exports[`<Venue /> should match snapshot 1`] = `
                             "isDigital": false,
                             "isDuo": true,
                             "name": "Black Widow - VF",
-                            "prices": Array [
+                            "prices": [
                               0,
                               0,
                               0,
@@ -1179,9 +1179,9 @@ exports[`<Venue /> should match snapshot 1`] = `
                             "subcategoryId": "CINE_PLEIN_AIR",
                             "thumbUrl": "https://storage.googleapis.com/passculture-metier-ehp-testing-assets/thumbs/products/FARMA",
                           },
-                          "venue": Object {},
+                          "venue": {},
                         },
-                        Object {
+                        {
                           "dataFooter": true,
                         },
                       ],
@@ -1200,7 +1200,7 @@ exports[`<Venue /> should match snapshot 1`] = `
                       "showsHorizontalScrollIndicator": false,
                       "testID": "offersModuleList",
                     },
-                    "renderWindowInsets": Object {
+                    "renderWindowInsets": {
                       "height": 0,
                       "width": 0,
                     },
@@ -1229,8 +1229,8 @@ exports[`<Venue /> should match snapshot 1`] = `
                 scrollEventThrottle={200}
                 scrollThrottle={16}
                 scrollViewProps={
-                  Object {
-                    "contentContainerStyle": Object {
+                  {
+                    "contentContainerStyle": {
                       "backgroundColor": undefined,
                       "minHeight": 1,
                       "minWidth": 1,
@@ -1240,7 +1240,7 @@ exports[`<Venue /> should match snapshot 1`] = `
                     "onLayout": [Function],
                     "onScrollBeginDrag": [Function],
                     "refreshControl": undefined,
-                    "style": Object {
+                    "style": {
                       "minHeight": 1,
                       "minWidth": 1,
                     },
@@ -1248,7 +1248,7 @@ exports[`<Venue /> should match snapshot 1`] = `
                 }
                 showsHorizontalScrollIndicator={false}
                 style={
-                  Object {
+                  {
                     "minHeight": 1,
                     "minWidth": 1,
                   }
@@ -1256,10 +1256,10 @@ exports[`<Venue /> should match snapshot 1`] = `
                 suppressBoundedSizeException={true}
                 testID="offersModuleList"
                 windowCorrectionConfig={
-                  Object {
+                  {
                     "applyToInitialOffset": true,
                     "applyToItemScroll": true,
-                    "value": Object {
+                    "value": {
                       "endCorrection": 0,
                       "startCorrection": 0,
                       "windowShift": -1,
@@ -1270,14 +1270,14 @@ exports[`<Venue /> should match snapshot 1`] = `
                 <View>
                   <View
                     style={
-                      Object {
+                      {
                         "flexDirection": "row",
                       }
                     }
                   >
                     <View
                       style={
-                        Object {
+                        {
                           "paddingLeft": 0,
                           "paddingTop": 0,
                         }
@@ -1285,7 +1285,7 @@ exports[`<Venue /> should match snapshot 1`] = `
                     />
                     <View
                       style={
-                        Array [
+                        [
                           undefined,
                           undefined,
                         ]
@@ -1293,8 +1293,8 @@ exports[`<Venue /> should match snapshot 1`] = `
                     >
                       <View
                         style={
-                          Array [
-                            Object {
+                          [
+                            {
                               "width": 24,
                             },
                           ]
@@ -1309,7 +1309,7 @@ exports[`<Venue /> should match snapshot 1`] = `
                       renderAheadOffset={0}
                       scrollOffset={0}
                       style={
-                        Object {
+                        {
                           "height": 250,
                           "width": 576,
                         }
@@ -1320,7 +1320,7 @@ exports[`<Venue /> should match snapshot 1`] = `
                         index={1}
                         onLayout={[Function]}
                         style={
-                          Object {
+                          {
                             "alignItems": "stretch",
                             "flexDirection": "row",
                             "height": 250,
@@ -1332,7 +1332,7 @@ exports[`<Venue /> should match snapshot 1`] = `
                       >
                         <View
                           style={
-                            Object {
+                            {
                               "flexDirection": "column",
                             }
                           }
@@ -1351,13 +1351,13 @@ exports[`<Venue /> should match snapshot 1`] = `
                               onResponderTerminationRequest={[Function]}
                               onStartShouldSetResponder={[Function]}
                               style={
-                                Array [
-                                  Object {
+                                [
+                                  {
                                     "textDecorationColor": "black",
                                     "textDecorationLine": "none",
                                     "textDecorationStyle": "solid",
                                   },
-                                  Object {
+                                  {
                                     "borderRadius": 8,
                                     "height": 288,
                                     "marginVertical": 4,
@@ -1368,8 +1368,8 @@ exports[`<Venue /> should match snapshot 1`] = `
                             >
                               <View
                                 style={
-                                  Array [
-                                    Object {
+                                  [
+                                    {
                                       "flexDirection": "column-reverse",
                                     },
                                   ]
@@ -1378,8 +1378,8 @@ exports[`<Venue /> should match snapshot 1`] = `
                                 <View
                                   imageWidth={144}
                                   style={
-                                    Array [
-                                      Object {
+                                    [
+                                      {
                                         "marginTop": 8,
                                         "maxWidth": 144,
                                       },
@@ -1389,8 +1389,8 @@ exports[`<Venue /> should match snapshot 1`] = `
                                   <Text
                                     numberOfLines={2}
                                     style={
-                                      Array [
-                                        Object {
+                                      [
+                                        {
                                           "color": "#161617",
                                           "fontFamily": "Montserrat-SemiBold",
                                           "fontSize": 12,
@@ -1404,8 +1404,8 @@ exports[`<Venue /> should match snapshot 1`] = `
                                   <Text
                                     numberOfLines={1}
                                     style={
-                                      Array [
-                                        Object {
+                                      [
+                                        {
                                           "color": "#696A6F",
                                           "fontFamily": "Montserrat-SemiBold",
                                           "fontSize": 12,
@@ -1418,8 +1418,8 @@ exports[`<Venue /> should match snapshot 1`] = `
                                   </Text>
                                   <Text
                                     style={
-                                      Array [
-                                        Object {
+                                      [
+                                        {
                                           "color": "#696A6F",
                                           "fontFamily": "Montserrat-SemiBold",
                                           "fontSize": 12,
@@ -1435,15 +1435,15 @@ exports[`<Venue /> should match snapshot 1`] = `
                                 <View>
                                   <View
                                     style={
-                                      Array [
-                                        Object {
+                                      [
+                                        {
                                           "overflow": "hidden",
                                         },
-                                        Array [
-                                          Object {
+                                        [
+                                          {
                                             "backgroundColor": "#F1F1F4",
                                           },
-                                          Object {
+                                          {
                                             "borderTopLeftRadius": 8,
                                             "borderTopRightRadius": 8,
                                             "height": 192,
@@ -1457,12 +1457,12 @@ exports[`<Venue /> should match snapshot 1`] = `
                                       defaultSource={null}
                                       resizeMode="cover"
                                       source={
-                                        Object {
+                                        {
                                           "uri": "https://storage.googleapis.com/passculture-metier-ehp-testing-assets/thumbs/products/FARMG",
                                         }
                                       }
                                       style={
-                                        Object {
+                                        {
                                           "bottom": 0,
                                           "left": 0,
                                           "position": "absolute",
@@ -1476,8 +1476,8 @@ exports[`<Venue /> should match snapshot 1`] = `
                                   <View
                                     height={24}
                                     style={
-                                      Array [
-                                        Object {
+                                      [
+                                        {
                                           "alignItems": "center",
                                           "backgroundColor": "#161617",
                                           "borderBottomLeftRadius": 8,
@@ -1492,8 +1492,8 @@ exports[`<Venue /> should match snapshot 1`] = `
                                   >
                                     <View
                                       style={
-                                        Array [
-                                          Object {
+                                        [
+                                          {
                                             "alignItems": "center",
                                             "flexBasis": 0,
                                             "flexGrow": 1,
@@ -1507,8 +1507,8 @@ exports[`<Venue /> should match snapshot 1`] = `
                                       <Text
                                         numberOfLines={1}
                                         style={
-                                          Array [
-                                            Object {
+                                          [
+                                            {
                                               "color": "#ffffff",
                                               "fontFamily": "Montserrat-SemiBold",
                                               "fontSize": 12,
@@ -1529,14 +1529,14 @@ exports[`<Venue /> should match snapshot 1`] = `
                         </View>
                         <View
                           leadingItem={
-                            Object {
-                              "_geoloc": Object {
+                            {
+                              "_geoloc": {
                                 "lat": 47.8898,
                                 "lng": -2.83593,
                               },
                               "objectID": "223338",
-                              "offer": Object {
-                                "dates": Array [
+                              "offer": {
+                                "dates": [
                                   1629312300,
                                   1629485100,
                                   1629657900,
@@ -1544,7 +1544,7 @@ exports[`<Venue /> should match snapshot 1`] = `
                                 "isDigital": false,
                                 "isDuo": true,
                                 "name": "Bac Nord - VF",
-                                "prices": Array [
+                                "prices": [
                                   0,
                                   0,
                                   0,
@@ -1552,25 +1552,25 @@ exports[`<Venue /> should match snapshot 1`] = `
                                 "subcategoryId": "CINE_PLEIN_AIR",
                                 "thumbUrl": "https://storage.googleapis.com/passculture-metier-ehp-testing-assets/thumbs/products/FARMG",
                               },
-                              "venue": Object {},
+                              "venue": {},
                             }
                           }
                           style={
-                            Array [
-                              Object {
+                            [
+                              {
                                 "width": 16,
                               },
                             ]
                           }
                           trailingItem={
-                            Object {
-                              "_geoloc": Object {
+                            {
+                              "_geoloc": {
                                 "lat": 47.8898,
                                 "lng": -2.83593,
                               },
                               "objectID": "223339",
-                              "offer": Object {
-                                "dates": Array [
+                              "offer": {
+                                "dates": [
                                   1629312300,
                                   1629485100,
                                   1629657900,
@@ -1578,7 +1578,7 @@ exports[`<Venue /> should match snapshot 1`] = `
                                 "isDigital": false,
                                 "isDuo": true,
                                 "name": "Black Widow - VF",
-                                "prices": Array [
+                                "prices": [
                                   0,
                                   0,
                                   0,
@@ -1586,7 +1586,7 @@ exports[`<Venue /> should match snapshot 1`] = `
                                 "subcategoryId": "CINE_PLEIN_AIR",
                                 "thumbUrl": "https://storage.googleapis.com/passculture-metier-ehp-testing-assets/thumbs/products/FARMA",
                               },
-                              "venue": Object {},
+                              "venue": {},
                             }
                           }
                         />
@@ -1595,7 +1595,7 @@ exports[`<Venue /> should match snapshot 1`] = `
                         index={2}
                         onLayout={[Function]}
                         style={
-                          Object {
+                          {
                             "alignItems": "stretch",
                             "flexDirection": "row",
                             "height": 250,
@@ -1607,7 +1607,7 @@ exports[`<Venue /> should match snapshot 1`] = `
                       >
                         <View
                           style={
-                            Object {
+                            {
                               "flexDirection": "column",
                             }
                           }
@@ -1626,13 +1626,13 @@ exports[`<Venue /> should match snapshot 1`] = `
                               onResponderTerminationRequest={[Function]}
                               onStartShouldSetResponder={[Function]}
                               style={
-                                Array [
-                                  Object {
+                                [
+                                  {
                                     "textDecorationColor": "black",
                                     "textDecorationLine": "none",
                                     "textDecorationStyle": "solid",
                                   },
-                                  Object {
+                                  {
                                     "borderRadius": 8,
                                     "height": 288,
                                     "marginVertical": 4,
@@ -1643,8 +1643,8 @@ exports[`<Venue /> should match snapshot 1`] = `
                             >
                               <View
                                 style={
-                                  Array [
-                                    Object {
+                                  [
+                                    {
                                       "flexDirection": "column-reverse",
                                     },
                                   ]
@@ -1653,8 +1653,8 @@ exports[`<Venue /> should match snapshot 1`] = `
                                 <View
                                   imageWidth={144}
                                   style={
-                                    Array [
-                                      Object {
+                                    [
+                                      {
                                         "marginTop": 8,
                                         "maxWidth": 144,
                                       },
@@ -1664,8 +1664,8 @@ exports[`<Venue /> should match snapshot 1`] = `
                                   <Text
                                     numberOfLines={2}
                                     style={
-                                      Array [
-                                        Object {
+                                      [
+                                        {
                                           "color": "#161617",
                                           "fontFamily": "Montserrat-SemiBold",
                                           "fontSize": 12,
@@ -1679,8 +1679,8 @@ exports[`<Venue /> should match snapshot 1`] = `
                                   <Text
                                     numberOfLines={1}
                                     style={
-                                      Array [
-                                        Object {
+                                      [
+                                        {
                                           "color": "#696A6F",
                                           "fontFamily": "Montserrat-SemiBold",
                                           "fontSize": 12,
@@ -1693,8 +1693,8 @@ exports[`<Venue /> should match snapshot 1`] = `
                                   </Text>
                                   <Text
                                     style={
-                                      Array [
-                                        Object {
+                                      [
+                                        {
                                           "color": "#696A6F",
                                           "fontFamily": "Montserrat-SemiBold",
                                           "fontSize": 12,
@@ -1710,15 +1710,15 @@ exports[`<Venue /> should match snapshot 1`] = `
                                 <View>
                                   <View
                                     style={
-                                      Array [
-                                        Object {
+                                      [
+                                        {
                                           "overflow": "hidden",
                                         },
-                                        Array [
-                                          Object {
+                                        [
+                                          {
                                             "backgroundColor": "#F1F1F4",
                                           },
-                                          Object {
+                                          {
                                             "borderTopLeftRadius": 8,
                                             "borderTopRightRadius": 8,
                                             "height": 192,
@@ -1732,12 +1732,12 @@ exports[`<Venue /> should match snapshot 1`] = `
                                       defaultSource={null}
                                       resizeMode="cover"
                                       source={
-                                        Object {
+                                        {
                                           "uri": "https://storage.googleapis.com/passculture-metier-ehp-testing-assets/thumbs/products/FARMA",
                                         }
                                       }
                                       style={
-                                        Object {
+                                        {
                                           "bottom": 0,
                                           "left": 0,
                                           "position": "absolute",
@@ -1751,8 +1751,8 @@ exports[`<Venue /> should match snapshot 1`] = `
                                   <View
                                     height={24}
                                     style={
-                                      Array [
-                                        Object {
+                                      [
+                                        {
                                           "alignItems": "center",
                                           "backgroundColor": "#161617",
                                           "borderBottomLeftRadius": 8,
@@ -1767,8 +1767,8 @@ exports[`<Venue /> should match snapshot 1`] = `
                                   >
                                     <View
                                       style={
-                                        Array [
-                                          Object {
+                                        [
+                                          {
                                             "alignItems": "center",
                                             "flexBasis": 0,
                                             "flexGrow": 1,
@@ -1782,8 +1782,8 @@ exports[`<Venue /> should match snapshot 1`] = `
                                       <Text
                                         numberOfLines={1}
                                         style={
-                                          Array [
-                                            Object {
+                                          [
+                                            {
                                               "color": "#ffffff",
                                               "fontFamily": "Montserrat-SemiBold",
                                               "fontSize": 12,
@@ -1804,14 +1804,14 @@ exports[`<Venue /> should match snapshot 1`] = `
                         </View>
                         <View
                           leadingItem={
-                            Object {
-                              "_geoloc": Object {
+                            {
+                              "_geoloc": {
                                 "lat": 47.8898,
                                 "lng": -2.83593,
                               },
                               "objectID": "223339",
-                              "offer": Object {
-                                "dates": Array [
+                              "offer": {
+                                "dates": [
                                   1629312300,
                                   1629485100,
                                   1629657900,
@@ -1819,7 +1819,7 @@ exports[`<Venue /> should match snapshot 1`] = `
                                 "isDigital": false,
                                 "isDuo": true,
                                 "name": "Black Widow - VF",
-                                "prices": Array [
+                                "prices": [
                                   0,
                                   0,
                                   0,
@@ -1827,18 +1827,18 @@ exports[`<Venue /> should match snapshot 1`] = `
                                 "subcategoryId": "CINE_PLEIN_AIR",
                                 "thumbUrl": "https://storage.googleapis.com/passculture-metier-ehp-testing-assets/thumbs/products/FARMA",
                               },
-                              "venue": Object {},
+                              "venue": {},
                             }
                           }
                           style={
-                            Array [
-                              Object {
+                            [
+                              {
                                 "width": 16,
                               },
                             ]
                           }
                           trailingItem={
-                            Object {
+                            {
                               "dataFooter": true,
                             }
                           }
@@ -1848,7 +1848,7 @@ exports[`<Venue /> should match snapshot 1`] = `
                         index={0}
                         onLayout={[Function]}
                         style={
-                          Object {
+                          {
                             "alignItems": "stretch",
                             "flexDirection": "row",
                             "height": 250,
@@ -1860,7 +1860,7 @@ exports[`<Venue /> should match snapshot 1`] = `
                       >
                         <View
                           style={
-                            Object {
+                            {
                               "flexDirection": "column",
                             }
                           }
@@ -1879,13 +1879,13 @@ exports[`<Venue /> should match snapshot 1`] = `
                               onResponderTerminationRequest={[Function]}
                               onStartShouldSetResponder={[Function]}
                               style={
-                                Array [
-                                  Object {
+                                [
+                                  {
                                     "textDecorationColor": "black",
                                     "textDecorationLine": "none",
                                     "textDecorationStyle": "solid",
                                   },
-                                  Object {
+                                  {
                                     "borderRadius": 8,
                                     "height": 288,
                                     "marginVertical": 4,
@@ -1896,8 +1896,8 @@ exports[`<Venue /> should match snapshot 1`] = `
                             >
                               <View
                                 style={
-                                  Array [
-                                    Object {
+                                  [
+                                    {
                                       "flexDirection": "column-reverse",
                                     },
                                   ]
@@ -1906,8 +1906,8 @@ exports[`<Venue /> should match snapshot 1`] = `
                                 <View
                                   imageWidth={144}
                                   style={
-                                    Array [
-                                      Object {
+                                    [
+                                      {
                                         "marginTop": 8,
                                         "maxWidth": 144,
                                       },
@@ -1917,8 +1917,8 @@ exports[`<Venue /> should match snapshot 1`] = `
                                   <Text
                                     numberOfLines={2}
                                     style={
-                                      Array [
-                                        Object {
+                                      [
+                                        {
                                           "color": "#161617",
                                           "fontFamily": "Montserrat-SemiBold",
                                           "fontSize": 12,
@@ -1932,8 +1932,8 @@ exports[`<Venue /> should match snapshot 1`] = `
                                   <Text
                                     numberOfLines={1}
                                     style={
-                                      Array [
-                                        Object {
+                                      [
+                                        {
                                           "color": "#696A6F",
                                           "fontFamily": "Montserrat-SemiBold",
                                           "fontSize": 12,
@@ -1946,8 +1946,8 @@ exports[`<Venue /> should match snapshot 1`] = `
                                   </Text>
                                   <Text
                                     style={
-                                      Array [
-                                        Object {
+                                      [
+                                        {
                                           "color": "#696A6F",
                                           "fontFamily": "Montserrat-SemiBold",
                                           "fontSize": 12,
@@ -1963,15 +1963,15 @@ exports[`<Venue /> should match snapshot 1`] = `
                                 <View>
                                   <View
                                     style={
-                                      Array [
-                                        Object {
+                                      [
+                                        {
                                           "overflow": "hidden",
                                         },
-                                        Array [
-                                          Object {
+                                        [
+                                          {
                                             "backgroundColor": "#F1F1F4",
                                           },
-                                          Object {
+                                          {
                                             "borderTopLeftRadius": 8,
                                             "borderTopRightRadius": 8,
                                             "height": 192,
@@ -1985,12 +1985,12 @@ exports[`<Venue /> should match snapshot 1`] = `
                                       defaultSource={null}
                                       resizeMode="cover"
                                       source={
-                                        Object {
+                                        {
                                           "uri": "https://storage.googleapis.com/passculture-metier-ehp-testing-assets/thumbs/products/FARMG",
                                         }
                                       }
                                       style={
-                                        Object {
+                                        {
                                           "bottom": 0,
                                           "left": 0,
                                           "position": "absolute",
@@ -2004,8 +2004,8 @@ exports[`<Venue /> should match snapshot 1`] = `
                                   <View
                                     height={24}
                                     style={
-                                      Array [
-                                        Object {
+                                      [
+                                        {
                                           "alignItems": "center",
                                           "backgroundColor": "#161617",
                                           "borderBottomLeftRadius": 8,
@@ -2020,8 +2020,8 @@ exports[`<Venue /> should match snapshot 1`] = `
                                   >
                                     <View
                                       style={
-                                        Array [
-                                          Object {
+                                        [
+                                          {
                                             "alignItems": "center",
                                             "flexBasis": 0,
                                             "flexGrow": 1,
@@ -2035,8 +2035,8 @@ exports[`<Venue /> should match snapshot 1`] = `
                                       <Text
                                         numberOfLines={1}
                                         style={
-                                          Array [
-                                            Object {
+                                          [
+                                            {
                                               "color": "#ffffff",
                                               "fontFamily": "Montserrat-SemiBold",
                                               "fontSize": 12,
@@ -2057,14 +2057,14 @@ exports[`<Venue /> should match snapshot 1`] = `
                         </View>
                         <View
                           leadingItem={
-                            Object {
-                              "_geoloc": Object {
+                            {
+                              "_geoloc": {
                                 "lat": 47.8898,
                                 "lng": -2.83593,
                               },
                               "objectID": "223342",
-                              "offer": Object {
-                                "dates": Array [
+                              "offer": {
+                                "dates": [
                                   1629312300,
                                   1629485100,
                                   1629657900,
@@ -2072,7 +2072,7 @@ exports[`<Venue /> should match snapshot 1`] = `
                                 "isDigital": false,
                                 "isDuo": true,
                                 "name": "Titane - VF",
-                                "prices": Array [
+                                "prices": [
                                   0,
                                   0,
                                   0,
@@ -2080,25 +2080,25 @@ exports[`<Venue /> should match snapshot 1`] = `
                                 "subcategoryId": "CINE_PLEIN_AIR",
                                 "thumbUrl": "https://storage.googleapis.com/passculture-metier-ehp-testing-assets/thumbs/products/FARMG",
                               },
-                              "venue": Object {},
+                              "venue": {},
                             }
                           }
                           style={
-                            Array [
-                              Object {
+                            [
+                              {
                                 "width": 16,
                               },
                             ]
                           }
                           trailingItem={
-                            Object {
-                              "_geoloc": Object {
+                            {
+                              "_geoloc": {
                                 "lat": 47.8898,
                                 "lng": -2.83593,
                               },
                               "objectID": "223338",
-                              "offer": Object {
-                                "dates": Array [
+                              "offer": {
+                                "dates": [
                                   1629312300,
                                   1629485100,
                                   1629657900,
@@ -2106,7 +2106,7 @@ exports[`<Venue /> should match snapshot 1`] = `
                                 "isDigital": false,
                                 "isDuo": true,
                                 "name": "Bac Nord - VF",
-                                "prices": Array [
+                                "prices": [
                                   0,
                                   0,
                                   0,
@@ -2114,7 +2114,7 @@ exports[`<Venue /> should match snapshot 1`] = `
                                 "subcategoryId": "CINE_PLEIN_AIR",
                                 "thumbUrl": "https://storage.googleapis.com/passculture-metier-ehp-testing-assets/thumbs/products/FARMG",
                               },
-                              "venue": Object {},
+                              "venue": {},
                             }
                           }
                         />
@@ -2123,7 +2123,7 @@ exports[`<Venue /> should match snapshot 1`] = `
                         index={3}
                         onLayout={[Function]}
                         style={
-                          Object {
+                          {
                             "alignItems": "stretch",
                             "flexDirection": "row",
                             "height": 250,
@@ -2135,7 +2135,7 @@ exports[`<Venue /> should match snapshot 1`] = `
                       >
                         <View
                           style={
-                            Object {
+                            {
                               "flexDirection": "column",
                             }
                           }
@@ -2143,8 +2143,8 @@ exports[`<Venue /> should match snapshot 1`] = `
                           <View
                             height={216}
                             style={
-                              Array [
-                                Object {
+                              [
+                                {
                                   "alignItems": "center",
                                   "height": 216,
                                   "justifyContent": "center",
@@ -2157,8 +2157,8 @@ exports[`<Venue /> should match snapshot 1`] = `
                             <View
                               numberOfSpaces={2}
                               style={
-                                Array [
-                                  Object {
+                                [
+                                  {
                                     "height": 8,
                                   },
                                 ]
@@ -2178,7 +2178,7 @@ exports[`<Venue /> should match snapshot 1`] = `
                               onResponderTerminationRequest={[Function]}
                               onStartShouldSetResponder={[Function]}
                               style={
-                                Object {
+                                {
                                   "alignItems": "center",
                                   "opacity": 1,
                                   "userSelect": "auto",
@@ -2188,8 +2188,8 @@ exports[`<Venue /> should match snapshot 1`] = `
                             >
                               <View
                                 style={
-                                  Array [
-                                    Object {
+                                  [
+                                    {
                                       "flexDirection": "row",
                                     },
                                   ]
@@ -2198,8 +2198,8 @@ exports[`<Venue /> should match snapshot 1`] = `
                                 <View
                                   numberOfSpaces={16}
                                   style={
-                                    Array [
-                                      Object {
+                                    [
+                                      {
                                         "width": 64,
                                       },
                                     ]
@@ -2207,8 +2207,8 @@ exports[`<Venue /> should match snapshot 1`] = `
                                 />
                                 <View
                                   style={
-                                    Array [
-                                      Object {
+                                    [
+                                      {
                                         "alignItems": "center",
                                         "aspectRatio": 1,
                                         "backgroundColor": "#ffffff",
@@ -2219,7 +2219,7 @@ exports[`<Venue /> should match snapshot 1`] = `
                                         "height": 64,
                                         "justifyContent": "center",
                                         "shadowColor": "#161617",
-                                        "shadowOffset": Object {
+                                        "shadowOffset": {
                                           "height": 8,
                                           "width": 0,
                                         },
@@ -2242,8 +2242,8 @@ exports[`<Venue /> should match snapshot 1`] = `
                                 <View
                                   numberOfSpaces={16}
                                   style={
-                                    Array [
-                                      Object {
+                                    [
+                                      {
                                         "width": 64,
                                       },
                                     ]
@@ -2253,8 +2253,8 @@ exports[`<Venue /> should match snapshot 1`] = `
                               <View
                                 numberOfSpaces={2}
                                 style={
-                                  Array [
-                                    Object {
+                                  [
+                                    {
                                       "height": 8,
                                     },
                                   ]
@@ -2262,8 +2262,8 @@ exports[`<Venue /> should match snapshot 1`] = `
                               />
                               <View
                                 style={
-                                  Array [
-                                    Object {
+                                  [
+                                    {
                                       "flexDirection": "row",
                                     },
                                   ]
@@ -2271,8 +2271,8 @@ exports[`<Venue /> should match snapshot 1`] = `
                               >
                                 <Text
                                   style={
-                                    Array [
-                                      Object {
+                                    [
+                                      {
                                         "color": "#eb0055",
                                         "fontFamily": "Montserrat-Bold",
                                         "fontSize": 15,
@@ -2292,7 +2292,7 @@ exports[`<Venue /> should match snapshot 1`] = `
                     <CellContainer
                       index={-1}
                       style={
-                        Array [
+                        [
                           undefined,
                           undefined,
                         ]
@@ -2300,8 +2300,8 @@ exports[`<Venue /> should match snapshot 1`] = `
                     >
                       <View
                         style={
-                          Array [
-                            Object {
+                          [
+                            {
                               "width": 24,
                             },
                           ]
@@ -2310,7 +2310,7 @@ exports[`<Venue /> should match snapshot 1`] = `
                     </CellContainer>
                     <View
                       style={
-                        Object {
+                        {
                           "paddingBottom": 0,
                           "paddingRight": 0,
                         }
@@ -2319,7 +2319,7 @@ exports[`<Venue /> should match snapshot 1`] = `
                     <View
                       pointerEvents="none"
                       style={
-                        Object {
+                        {
                           "opacity": 0,
                         }
                       }
@@ -2338,13 +2338,13 @@ exports[`<Venue /> should match snapshot 1`] = `
                           onResponderTerminationRequest={[Function]}
                           onStartShouldSetResponder={[Function]}
                           style={
-                            Array [
-                              Object {
+                            [
+                              {
                                 "textDecorationColor": "black",
                                 "textDecorationLine": "none",
                                 "textDecorationStyle": "solid",
                               },
-                              Object {
+                              {
                                 "borderRadius": 8,
                                 "height": 288,
                                 "marginVertical": 4,
@@ -2355,8 +2355,8 @@ exports[`<Venue /> should match snapshot 1`] = `
                         >
                           <View
                             style={
-                              Array [
-                                Object {
+                              [
+                                {
                                   "flexDirection": "column-reverse",
                                 },
                               ]
@@ -2365,8 +2365,8 @@ exports[`<Venue /> should match snapshot 1`] = `
                             <View
                               imageWidth={144}
                               style={
-                                Array [
-                                  Object {
+                                [
+                                  {
                                     "marginTop": 8,
                                     "maxWidth": 144,
                                   },
@@ -2376,8 +2376,8 @@ exports[`<Venue /> should match snapshot 1`] = `
                               <Text
                                 numberOfLines={2}
                                 style={
-                                  Array [
-                                    Object {
+                                  [
+                                    {
                                       "color": "#161617",
                                       "fontFamily": "Montserrat-SemiBold",
                                       "fontSize": 12,
@@ -2391,8 +2391,8 @@ exports[`<Venue /> should match snapshot 1`] = `
                               <Text
                                 numberOfLines={1}
                                 style={
-                                  Array [
-                                    Object {
+                                  [
+                                    {
                                       "color": "#696A6F",
                                       "fontFamily": "Montserrat-SemiBold",
                                       "fontSize": 12,
@@ -2405,8 +2405,8 @@ exports[`<Venue /> should match snapshot 1`] = `
                               </Text>
                               <Text
                                 style={
-                                  Array [
-                                    Object {
+                                  [
+                                    {
                                       "color": "#696A6F",
                                       "fontFamily": "Montserrat-SemiBold",
                                       "fontSize": 12,
@@ -2422,15 +2422,15 @@ exports[`<Venue /> should match snapshot 1`] = `
                             <View>
                               <View
                                 style={
-                                  Array [
-                                    Object {
+                                  [
+                                    {
                                       "overflow": "hidden",
                                     },
-                                    Array [
-                                      Object {
+                                    [
+                                      {
                                         "backgroundColor": "#F1F1F4",
                                       },
-                                      Object {
+                                      {
                                         "borderTopLeftRadius": 8,
                                         "borderTopRightRadius": 8,
                                         "height": 192,
@@ -2444,12 +2444,12 @@ exports[`<Venue /> should match snapshot 1`] = `
                                   defaultSource={null}
                                   resizeMode="cover"
                                   source={
-                                    Object {
+                                    {
                                       "uri": "https://storage.googleapis.com/passculture-metier-ehp-testing-assets/thumbs/products/FARMG",
                                     }
                                   }
                                   style={
-                                    Object {
+                                    {
                                       "bottom": 0,
                                       "left": 0,
                                       "position": "absolute",
@@ -2463,8 +2463,8 @@ exports[`<Venue /> should match snapshot 1`] = `
                               <View
                                 height={24}
                                 style={
-                                  Array [
-                                    Object {
+                                  [
+                                    {
                                       "alignItems": "center",
                                       "backgroundColor": "#161617",
                                       "borderBottomLeftRadius": 8,
@@ -2479,8 +2479,8 @@ exports[`<Venue /> should match snapshot 1`] = `
                               >
                                 <View
                                   style={
-                                    Array [
-                                      Object {
+                                    [
+                                      {
                                         "alignItems": "center",
                                         "flexBasis": 0,
                                         "flexGrow": 1,
@@ -2494,8 +2494,8 @@ exports[`<Venue /> should match snapshot 1`] = `
                                   <Text
                                     numberOfLines={1}
                                     style={
-                                      Array [
-                                        Object {
+                                      [
+                                        {
                                           "color": "#ffffff",
                                           "fontFamily": "Montserrat-SemiBold",
                                           "fontSize": 12,
@@ -2522,8 +2522,8 @@ exports[`<Venue /> should match snapshot 1`] = `
         </View>
         <View
           style={
-            Array [
-              Object {
+            [
+              {
                 "marginHorizontal": 24,
               },
             ]
@@ -2533,7 +2533,7 @@ exports[`<Venue /> should match snapshot 1`] = `
             accessibilityLabel="Voir toutes les offres"
             accessibilityRole="link"
             accessibilityState={
-              Object {
+              {
                 "disabled": false,
               }
             }
@@ -2548,7 +2548,7 @@ exports[`<Venue /> should match snapshot 1`] = `
             onResponderTerminationRequest={[Function]}
             onStartShouldSetResponder={[Function]}
             style={
-              Object {
+              {
                 "alignItems": "center",
                 "borderRadius": 24,
                 "justifyContent": "center",
@@ -2573,8 +2573,8 @@ exports[`<Venue /> should match snapshot 1`] = `
             </View>
             <View
               style={
-                Array [
-                  Object {
+                [
+                  {
                     "alignItems": "center",
                     "flexDirection": "row",
                     "position": "absolute",
@@ -2587,8 +2587,8 @@ exports[`<Venue /> should match snapshot 1`] = `
                 isDisabled={false}
                 numberOfLines={1}
                 style={
-                  Array [
-                    Object {
+                  [
+                    {
                       "color": "#ffffff",
                       "fontFamily": "Montserrat-Bold",
                       "fontSize": 15,
@@ -2609,8 +2609,8 @@ exports[`<Venue /> should match snapshot 1`] = `
         <View
           numberOfSpaces={6}
           style={
-            Array [
-              Object {
+            [
+              {
                 "height": 24,
               },
             ]
@@ -2620,8 +2620,8 @@ exports[`<Venue /> should match snapshot 1`] = `
       <View>
         <View
           style={
-            Array [
-              Object {
+            [
+              {
                 "backgroundColor": "#F1F1F4",
                 "height": 8,
               },
@@ -2630,8 +2630,8 @@ exports[`<Venue /> should match snapshot 1`] = `
         />
         <View
           style={
-            Array [
-              Object {
+            [
+              {
                 "marginHorizontal": 24,
               },
             ]
@@ -2640,8 +2640,8 @@ exports[`<Venue /> should match snapshot 1`] = `
           <View
             numberOfSpaces={6}
             style={
-              Array [
-                Object {
+              [
+                {
                   "height": 24,
                 },
               ]
@@ -2649,8 +2649,8 @@ exports[`<Venue /> should match snapshot 1`] = `
           />
           <Text
             style={
-              Array [
-                Object {
+              [
+                {
                   "color": "#161617",
                   "fontFamily": "Montserrat-Medium",
                   "fontSize": 18,
@@ -2664,8 +2664,8 @@ exports[`<Venue /> should match snapshot 1`] = `
           <View
             numberOfSpaces={4}
             style={
-              Array [
-                Object {
+              [
+                {
                   "height": 16,
                 },
               ]
@@ -2673,8 +2673,8 @@ exports[`<Venue /> should match snapshot 1`] = `
           />
           <Text
             style={
-              Array [
-                Object {
+              [
+                {
                   "color": "#161617",
                   "fontFamily": "Montserrat-SemiBold",
                   "fontSize": 12,
@@ -2688,8 +2688,8 @@ exports[`<Venue /> should match snapshot 1`] = `
           <View
             numberOfSpaces={1}
             style={
-              Array [
-                Object {
+              [
+                {
                   "height": 4,
                 },
               ]
@@ -2697,8 +2697,8 @@ exports[`<Venue /> should match snapshot 1`] = `
           />
           <Text
             style={
-              Array [
-                Object {
+              [
+                {
                   "color": "#161617",
                   "fontFamily": "Montserrat-Regular",
                   "fontSize": 15,
@@ -2713,8 +2713,8 @@ exports[`<Venue /> should match snapshot 1`] = `
           <View
             numberOfSpaces={4}
             style={
-              Array [
-                Object {
+              [
+                {
                   "height": 16,
                 },
               ]
@@ -2722,8 +2722,8 @@ exports[`<Venue /> should match snapshot 1`] = `
           />
           <View
             style={
-              Array [
-                Object {
+              [
+                {
                   "backgroundColor": "#CBCDD2",
                   "height": 1,
                 },
@@ -2733,8 +2733,8 @@ exports[`<Venue /> should match snapshot 1`] = `
           <View
             numberOfSpaces={6}
             style={
-              Array [
-                Object {
+              [
+                {
                   "height": 24,
                 },
               ]
@@ -2742,8 +2742,8 @@ exports[`<Venue /> should match snapshot 1`] = `
           />
           <View
             style={
-              Array [
-                Object {
+              [
+                {
                   "alignItems": "flex-start",
                 },
               ]
@@ -2762,7 +2762,7 @@ exports[`<Venue /> should match snapshot 1`] = `
               onResponderTerminationRequest={[Function]}
               onStartShouldSetResponder={[Function]}
               style={
-                Object {
+                {
                   "alignItems": "center",
                   "backgroundColor": "transparent",
                   "borderRadius": 0,
@@ -2785,8 +2785,8 @@ exports[`<Venue /> should match snapshot 1`] = `
             >
               <View
                 style={
-                  Array [
-                    Object {
+                  [
+                    {
                       "flexShrink": 0,
                     },
                   ]
@@ -2807,8 +2807,8 @@ exports[`<Venue /> should match snapshot 1`] = `
                 adjustsFontSizeToFit={false}
                 numberOfLines={1}
                 style={
-                  Array [
-                    Object {
+                  [
+                    {
                       "color": "#161617",
                       "fontFamily": "Montserrat-Bold",
                       "fontSize": 15,
@@ -2826,8 +2826,8 @@ exports[`<Venue /> should match snapshot 1`] = `
           <View
             numberOfSpaces={6}
             style={
-              Array [
-                Object {
+              [
+                {
                   "height": 24,
                 },
               ]
@@ -2838,8 +2838,8 @@ exports[`<Venue /> should match snapshot 1`] = `
       <View>
         <View
           style={
-            Array [
-              Object {
+            [
+              {
                 "backgroundColor": "#F1F1F4",
                 "height": 8,
               },
@@ -2848,8 +2848,8 @@ exports[`<Venue /> should match snapshot 1`] = `
         />
         <View
           style={
-            Array [
-              Object {
+            [
+              {
                 "marginHorizontal": 24,
               },
             ]
@@ -2857,8 +2857,8 @@ exports[`<Venue /> should match snapshot 1`] = `
         >
           <Text
             style={
-              Array [
-                Object {
+              [
+                {
                   "color": "#161617",
                   "fontFamily": "Montserrat-Medium",
                   "fontSize": 18,
@@ -2873,8 +2873,8 @@ exports[`<Venue /> should match snapshot 1`] = `
           </Text>
           <View
             style={
-              Array [
-                Object {
+              [
+                {
                   "flexDirection": "row",
                   "maxWidth": 500,
                   "width": "100%",
@@ -2885,8 +2885,8 @@ exports[`<Venue /> should match snapshot 1`] = `
             <View
               accessibilityRole="list"
               style={
-                Array [
-                  Object {
+                [
+                  {
                     "flexBasis": 0,
                     "flexDirection": "row",
                     "flexGrow": 1,
@@ -2901,8 +2901,8 @@ exports[`<Venue /> should match snapshot 1`] = `
               <View
                 accessibilityRole="none"
                 style={
-                  Array [
-                    Object {
+                  [
+                    {
                       "alignItems": "center",
                       "display": "flex",
                       "flexBasis": "8.333333333333334%",
@@ -2928,7 +2928,7 @@ exports[`<Venue /> should match snapshot 1`] = `
                   onResponderTerminationRequest={[Function]}
                   onStartShouldSetResponder={[Function]}
                   style={
-                    Object {
+                    {
                       "alignItems": "center",
                       "height": 96,
                       "opacity": 1,
@@ -2939,8 +2939,8 @@ exports[`<Venue /> should match snapshot 1`] = `
                 >
                   <View
                     style={
-                      Array [
-                        Object {
+                      [
+                        {
                           "alignItems": "center",
                           "flexBasis": 0,
                           "flexGrow": 1,
@@ -2951,8 +2951,8 @@ exports[`<Venue /> should match snapshot 1`] = `
                   >
                     <View
                       style={
-                        Array [
-                          Object {
+                        [
+                          {
                             "paddingBottom": 4,
                             "paddingLeft": 4,
                             "paddingRight": 4,
@@ -2973,8 +2973,8 @@ exports[`<Venue /> should match snapshot 1`] = `
                     <View
                       numberOfSpaces={2}
                       style={
-                        Array [
-                          Object {
+                        [
+                          {
                             "height": 8,
                           },
                         ]
@@ -2983,8 +2983,8 @@ exports[`<Venue /> should match snapshot 1`] = `
                     <Text
                       disabled={false}
                       style={
-                        Array [
-                          Object {
+                        [
+                          {
                             "color": "#161617",
                             "fontFamily": "Montserrat-SemiBold",
                             "fontSize": 12,
@@ -3004,8 +3004,8 @@ Instagram
               <View
                 accessibilityRole="none"
                 style={
-                  Array [
-                    Object {
+                  [
+                    {
                       "alignItems": "center",
                       "display": "flex",
                       "flexBasis": "8.333333333333334%",
@@ -3031,7 +3031,7 @@ Instagram
                   onResponderTerminationRequest={[Function]}
                   onStartShouldSetResponder={[Function]}
                   style={
-                    Object {
+                    {
                       "alignItems": "center",
                       "height": 96,
                       "opacity": 1,
@@ -3042,8 +3042,8 @@ Instagram
                 >
                   <View
                     style={
-                      Array [
-                        Object {
+                      [
+                        {
                           "alignItems": "center",
                           "flexBasis": 0,
                           "flexGrow": 1,
@@ -3054,8 +3054,8 @@ Instagram
                   >
                     <View
                       style={
-                        Array [
-                          Object {
+                        [
+                          {
                             "paddingBottom": 4,
                             "paddingLeft": 4,
                             "paddingRight": 4,
@@ -3076,8 +3076,8 @@ Instagram
                     <View
                       numberOfSpaces={2}
                       style={
-                        Array [
-                          Object {
+                        [
+                          {
                             "height": 8,
                           },
                         ]
@@ -3086,8 +3086,8 @@ Instagram
                     <Text
                       disabled={false}
                       style={
-                        Array [
-                          Object {
+                        [
+                          {
                             "color": "#161617",
                             "fontFamily": "Montserrat-SemiBold",
                             "fontSize": 12,
@@ -3107,8 +3107,8 @@ WhatsApp
               <View
                 accessibilityRole="none"
                 style={
-                  Array [
-                    Object {
+                  [
+                    {
                       "alignItems": "center",
                       "display": "flex",
                       "flexBasis": "8.333333333333334%",
@@ -3134,7 +3134,7 @@ WhatsApp
                   onResponderTerminationRequest={[Function]}
                   onStartShouldSetResponder={[Function]}
                   style={
-                    Object {
+                    {
                       "alignItems": "center",
                       "height": 96,
                       "opacity": 1,
@@ -3145,8 +3145,8 @@ WhatsApp
                 >
                   <View
                     style={
-                      Array [
-                        Object {
+                      [
+                        {
                           "alignItems": "center",
                           "flexBasis": 0,
                           "flexGrow": 1,
@@ -3157,8 +3157,8 @@ WhatsApp
                   >
                     <View
                       style={
-                        Array [
-                          Object {
+                        [
+                          {
                             "paddingBottom": 4,
                             "paddingLeft": 4,
                             "paddingRight": 4,
@@ -3179,8 +3179,8 @@ WhatsApp
                     <View
                       numberOfSpaces={2}
                       style={
-                        Array [
-                          Object {
+                        [
+                          {
                             "height": 8,
                           },
                         ]
@@ -3189,8 +3189,8 @@ WhatsApp
                     <Text
                       disabled={false}
                       style={
-                        Array [
-                          Object {
+                        [
+                          {
                             "color": "#161617",
                             "fontFamily": "Montserrat-SemiBold",
                             "fontSize": 12,
@@ -3210,8 +3210,8 @@ iMessage
               <View
                 accessibilityRole="none"
                 style={
-                  Array [
-                    Object {
+                  [
+                    {
                       "alignItems": "center",
                       "display": "flex",
                       "flexBasis": "8.333333333333334%",
@@ -3237,7 +3237,7 @@ iMessage
                   onResponderTerminationRequest={[Function]}
                   onStartShouldSetResponder={[Function]}
                   style={
-                    Object {
+                    {
                       "alignItems": "center",
                       "height": 96,
                       "opacity": 1,
@@ -3248,8 +3248,8 @@ iMessage
                 >
                   <View
                     style={
-                      Array [
-                        Object {
+                      [
+                        {
                           "alignItems": "center",
                           "flexBasis": 0,
                           "flexGrow": 1,
@@ -3260,8 +3260,8 @@ iMessage
                   >
                     <View
                       style={
-                        Array [
-                          Object {
+                        [
+                          {
                             "paddingBottom": 4,
                             "paddingLeft": 4,
                             "paddingRight": 4,
@@ -3272,8 +3272,8 @@ iMessage
                     >
                       <View
                         style={
-                          Array [
-                            Object {
+                          [
+                            {
                               "alignItems": "center",
                               "borderColor": "#CBCDD2",
                               "borderRadius": 24,
@@ -3298,8 +3298,8 @@ iMessage
                     <View
                       numberOfSpaces={2}
                       style={
-                        Array [
-                          Object {
+                        [
+                          {
                             "height": 8,
                           },
                         ]
@@ -3308,8 +3308,8 @@ iMessage
                     <Text
                       disabled={false}
                       style={
-                        Array [
-                          Object {
+                        [
+                          {
                             "color": "#161617",
                             "fontFamily": "Montserrat-SemiBold",
                             "fontSize": 12,
@@ -3331,8 +3331,8 @@ d’options
           <View
             numberOfSpaces={4}
             style={
-              Array [
-                Object {
+              [
+                {
                   "height": 16,
                 },
               ]
@@ -3345,8 +3345,8 @@ d’options
       >
         <View
           style={
-            Array [
-              Object {
+            [
+              {
                 "backgroundColor": "#F1F1F4",
                 "height": 8,
               },
@@ -3355,8 +3355,8 @@ d’options
         />
         <View
           style={
-            Array [
-              Object {
+            [
+              {
                 "alignItems": "center",
                 "flexDirection": "row",
               },
@@ -3366,7 +3366,7 @@ d’options
           <View
             accessibilityRole="button"
             accessibilityState={
-              Object {
+              {
                 "expanded": false,
               }
             }
@@ -3381,7 +3381,7 @@ d’options
             onResponderTerminationRequest={[Function]}
             onStartShouldSetResponder={[Function]}
             style={
-              Object {
+              {
                 "flexBasis": 0,
                 "flexGrow": 1,
                 "flexShrink": 1,
@@ -3393,8 +3393,8 @@ d’options
             <View
               nativeID="testUuidV4"
               style={
-                Array [
-                  Object {
+                [
+                  {
                     "alignItems": "center",
                     "flexDirection": "row",
                     "justifyContent": "space-between",
@@ -3407,8 +3407,8 @@ d’options
             >
               <Text
                 style={
-                  Array [
-                    Object {
+                  [
+                    {
                       "color": "#161617",
                       "flexBasis": 0,
                       "flexGrow": 0.9,
@@ -3425,9 +3425,9 @@ d’options
               <View
                 collapsable={false}
                 style={
-                  Object {
-                    "transform": Array [
-                      Object {
+                  {
+                    "transform": [
+                      {
                         "rotateZ": "1.5707963267948966rad",
                       },
                     ],
@@ -3450,7 +3450,7 @@ d’options
         <View
           collapsable={false}
           style={
-            Object {
+            {
               "height": 0,
               "overflow": "hidden",
             }
@@ -3463,8 +3463,8 @@ d’options
             nativeID="testUuidV4"
             onLayout={[Function]}
             style={
-              Array [
-                Object {
+              [
+                {
                   "bottom": 0,
                   "display": "none",
                   "paddingBottom": 24,
@@ -3479,8 +3479,8 @@ d’options
           >
             <Text
               style={
-                Array [
-                  Object {
+                [
+                  {
                     "color": "#161617",
                     "fontFamily": "Montserrat-Regular",
                     "fontSize": 15,
@@ -3495,8 +3495,8 @@ d’options
                 accessible={true}
                 onPress={[Function]}
                 style={
-                  Array [
-                    Object {
+                  [
+                    {
                       "color": "#161617",
                       "fontFamily": "Montserrat-Bold",
                       "fontSize": 15,
@@ -3509,8 +3509,8 @@ d’options
                 <View
                   numberOfSpaces={1}
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "width": 4,
                       },
                     ]
@@ -3539,8 +3539,8 @@ d’options
       >
         <View
           style={
-            Array [
-              Object {
+            [
+              {
                 "backgroundColor": "#F1F1F4",
                 "height": 8,
               },
@@ -3549,8 +3549,8 @@ d’options
         />
         <View
           style={
-            Array [
-              Object {
+            [
+              {
                 "alignItems": "center",
                 "flexDirection": "row",
               },
@@ -3560,7 +3560,7 @@ d’options
           <View
             accessibilityRole="button"
             accessibilityState={
-              Object {
+              {
                 "expanded": false,
               }
             }
@@ -3575,7 +3575,7 @@ d’options
             onResponderTerminationRequest={[Function]}
             onStartShouldSetResponder={[Function]}
             style={
-              Object {
+              {
                 "flexBasis": 0,
                 "flexGrow": 1,
                 "flexShrink": 1,
@@ -3587,8 +3587,8 @@ d’options
             <View
               nativeID="testUuidV4"
               style={
-                Array [
-                  Object {
+                [
+                  {
                     "alignItems": "center",
                     "flexDirection": "row",
                     "justifyContent": "space-between",
@@ -3601,8 +3601,8 @@ d’options
             >
               <Text
                 style={
-                  Array [
-                    Object {
+                  [
+                    {
                       "color": "#161617",
                       "flexBasis": 0,
                       "flexGrow": 0.9,
@@ -3619,9 +3619,9 @@ d’options
               <View
                 collapsable={false}
                 style={
-                  Object {
-                    "transform": Array [
-                      Object {
+                  {
+                    "transform": [
+                      {
                         "rotateZ": "1.5707963267948966rad",
                       },
                     ],
@@ -3644,7 +3644,7 @@ d’options
         <View
           collapsable={false}
           style={
-            Object {
+            {
               "height": 0,
               "overflow": "hidden",
             }
@@ -3657,8 +3657,8 @@ d’options
             nativeID="testUuidV4"
             onLayout={[Function]}
             style={
-              Array [
-                Object {
+              [
+                {
                   "bottom": 0,
                   "display": "none",
                   "paddingBottom": 24,
@@ -3673,8 +3673,8 @@ d’options
           >
             <View
               style={
-                Array [
-                  Object {
+                [
+                  {
                     "flexDirection": "row",
                     "justifyContent": "space-between",
                   },
@@ -3684,8 +3684,8 @@ d’options
               <View
                 accessibilityRole="list"
                 style={
-                  Array [
-                    Object {
+                  [
+                    {
                       "flexBasis": 0,
                       "flexDirection": "row",
                       "flexGrow": 1,
@@ -3700,8 +3700,8 @@ d’options
                   accessibilityRole="none"
                   rightSpacingValue={12}
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "display": "flex",
                         "flexBasis": 0,
                         "flexGrow": 1,
@@ -3715,8 +3715,8 @@ d’options
                     accessibilityLabel="Handicap visuel : Accessible"
                     accessibilityRole="image"
                     style={
-                      Array [
-                        Object {
+                      [
+                        {
                           "flexBasis": 0,
                           "flexGrow": 1,
                           "flexShrink": 1,
@@ -3727,8 +3727,8 @@ d’options
                   >
                     <View
                       style={
-                        Array [
-                          Object {
+                        [
+                          {
                             "alignItems": "center",
                             "aspectRatio": 1,
                             "borderColor": "#CBCDD2",
@@ -3742,8 +3742,8 @@ d’options
                     >
                       <View
                         style={
-                          Array [
-                            Object {
+                          [
+                            {
                               "flexBasis": 0,
                               "flexGrow": 1,
                               "flexShrink": 1,
@@ -3762,8 +3762,8 @@ d’options
                       </View>
                       <View
                         style={
-                          Array [
-                            Object {
+                          [
+                            {
                               "flexBasis": 0,
                               "flexGrow": 1,
                               "flexShrink": 1,
@@ -3773,8 +3773,8 @@ d’options
                       />
                       <View
                         style={
-                          Array [
-                            Object {
+                          [
+                            {
                               "bottom": -12,
                               "position": "absolute",
                             },
@@ -3796,8 +3796,8 @@ d’options
                     <View
                       numberOfSpaces={4}
                       style={
-                        Array [
-                          Object {
+                        [
+                          {
                             "height": 16,
                           },
                         ]
@@ -3805,8 +3805,8 @@ d’options
                     />
                     <View
                       style={
-                        Array [
-                          Object {
+                        [
+                          {
                             "marginBottom": 16,
                             "marginHorizontal": -4,
                           },
@@ -3816,8 +3816,8 @@ d’options
                     >
                       <Text
                         style={
-                          Array [
-                            Object {
+                          [
+                            {
                               "color": "#161617",
                               "fontFamily": "Montserrat-SemiBold",
                               "fontSize": 12,
@@ -3837,8 +3837,8 @@ d’options
                   accessibilityRole="none"
                   rightSpacingValue={12}
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "display": "flex",
                         "flexBasis": 0,
                         "flexGrow": 1,
@@ -3852,8 +3852,8 @@ d’options
                     accessibilityLabel="Handicap psychique ou cognitif : Non accessible"
                     accessibilityRole="image"
                     style={
-                      Array [
-                        Object {
+                      [
+                        {
                           "flexBasis": 0,
                           "flexGrow": 1,
                           "flexShrink": 1,
@@ -3864,8 +3864,8 @@ d’options
                   >
                     <View
                       style={
-                        Array [
-                          Object {
+                        [
+                          {
                             "alignItems": "center",
                             "aspectRatio": 1,
                             "borderColor": "#CBCDD2",
@@ -3879,8 +3879,8 @@ d’options
                     >
                       <View
                         style={
-                          Array [
-                            Object {
+                          [
+                            {
                               "flexBasis": 0,
                               "flexGrow": 1,
                               "flexShrink": 1,
@@ -3899,8 +3899,8 @@ d’options
                       </View>
                       <View
                         style={
-                          Array [
-                            Object {
+                          [
+                            {
                               "flexBasis": 0,
                               "flexGrow": 1,
                               "flexShrink": 1,
@@ -3910,8 +3910,8 @@ d’options
                       />
                       <View
                         style={
-                          Array [
-                            Object {
+                          [
+                            {
                               "bottom": -12,
                               "position": "absolute",
                             },
@@ -3934,8 +3934,8 @@ d’options
                     <View
                       numberOfSpaces={4}
                       style={
-                        Array [
-                          Object {
+                        [
+                          {
                             "height": 16,
                           },
                         ]
@@ -3943,8 +3943,8 @@ d’options
                     />
                     <View
                       style={
-                        Array [
-                          Object {
+                        [
+                          {
                             "marginBottom": 16,
                             "marginHorizontal": -4,
                           },
@@ -3954,8 +3954,8 @@ d’options
                     >
                       <Text
                         style={
-                          Array [
-                            Object {
+                          [
+                            {
                               "color": "#161617",
                               "fontFamily": "Montserrat-SemiBold",
                               "fontSize": 12,
@@ -3975,8 +3975,8 @@ d’options
                   accessibilityRole="none"
                   rightSpacingValue={12}
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "display": "flex",
                         "flexBasis": 0,
                         "flexGrow": 1,
@@ -3990,8 +3990,8 @@ d’options
                     accessibilityLabel="Handicap moteur : Non accessible"
                     accessibilityRole="image"
                     style={
-                      Array [
-                        Object {
+                      [
+                        {
                           "flexBasis": 0,
                           "flexGrow": 1,
                           "flexShrink": 1,
@@ -4002,8 +4002,8 @@ d’options
                   >
                     <View
                       style={
-                        Array [
-                          Object {
+                        [
+                          {
                             "alignItems": "center",
                             "aspectRatio": 1,
                             "borderColor": "#CBCDD2",
@@ -4017,8 +4017,8 @@ d’options
                     >
                       <View
                         style={
-                          Array [
-                            Object {
+                          [
+                            {
                               "flexBasis": 0,
                               "flexGrow": 1,
                               "flexShrink": 1,
@@ -4037,8 +4037,8 @@ d’options
                       </View>
                       <View
                         style={
-                          Array [
-                            Object {
+                          [
+                            {
                               "flexBasis": 0,
                               "flexGrow": 1,
                               "flexShrink": 1,
@@ -4048,8 +4048,8 @@ d’options
                       />
                       <View
                         style={
-                          Array [
-                            Object {
+                          [
+                            {
                               "bottom": -12,
                               "position": "absolute",
                             },
@@ -4072,8 +4072,8 @@ d’options
                     <View
                       numberOfSpaces={4}
                       style={
-                        Array [
-                          Object {
+                        [
+                          {
                             "height": 16,
                           },
                         ]
@@ -4081,8 +4081,8 @@ d’options
                     />
                     <View
                       style={
-                        Array [
-                          Object {
+                        [
+                          {
                             "marginBottom": 16,
                             "marginHorizontal": -4,
                           },
@@ -4092,8 +4092,8 @@ d’options
                     >
                       <Text
                         style={
-                          Array [
-                            Object {
+                          [
+                            {
                               "color": "#161617",
                               "fontFamily": "Montserrat-SemiBold",
                               "fontSize": 12,
@@ -4113,8 +4113,8 @@ d’options
                   accessibilityRole="none"
                   rightSpacingValue={0}
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "display": "flex",
                         "flexBasis": 0,
                         "flexGrow": 1,
@@ -4128,8 +4128,8 @@ d’options
                     accessibilityLabel="Handicap auditif : Non accessible"
                     accessibilityRole="image"
                     style={
-                      Array [
-                        Object {
+                      [
+                        {
                           "flexBasis": 0,
                           "flexGrow": 1,
                           "flexShrink": 1,
@@ -4140,8 +4140,8 @@ d’options
                   >
                     <View
                       style={
-                        Array [
-                          Object {
+                        [
+                          {
                             "alignItems": "center",
                             "aspectRatio": 1,
                             "borderColor": "#CBCDD2",
@@ -4155,8 +4155,8 @@ d’options
                     >
                       <View
                         style={
-                          Array [
-                            Object {
+                          [
+                            {
                               "flexBasis": 0,
                               "flexGrow": 1,
                               "flexShrink": 1,
@@ -4175,8 +4175,8 @@ d’options
                       </View>
                       <View
                         style={
-                          Array [
-                            Object {
+                          [
+                            {
                               "flexBasis": 0,
                               "flexGrow": 1,
                               "flexShrink": 1,
@@ -4186,8 +4186,8 @@ d’options
                       />
                       <View
                         style={
-                          Array [
-                            Object {
+                          [
+                            {
                               "bottom": -12,
                               "position": "absolute",
                             },
@@ -4210,8 +4210,8 @@ d’options
                     <View
                       numberOfSpaces={4}
                       style={
-                        Array [
-                          Object {
+                        [
+                          {
                             "height": 16,
                           },
                         ]
@@ -4219,8 +4219,8 @@ d’options
                     />
                     <View
                       style={
-                        Array [
-                          Object {
+                        [
+                          {
                             "marginBottom": 16,
                             "marginHorizontal": -4,
                           },
@@ -4230,8 +4230,8 @@ d’options
                     >
                       <Text
                         style={
-                          Array [
-                            Object {
+                          [
+                            {
                               "color": "#161617",
                               "fontFamily": "Montserrat-SemiBold",
                               "fontSize": 12,
@@ -4257,8 +4257,8 @@ d’options
       >
         <View
           style={
-            Array [
-              Object {
+            [
+              {
                 "backgroundColor": "#F1F1F4",
                 "height": 8,
               },
@@ -4267,8 +4267,8 @@ d’options
         />
         <View
           style={
-            Array [
-              Object {
+            [
+              {
                 "alignItems": "center",
                 "flexDirection": "row",
               },
@@ -4278,7 +4278,7 @@ d’options
           <View
             accessibilityRole="button"
             accessibilityState={
-              Object {
+              {
                 "expanded": false,
               }
             }
@@ -4293,7 +4293,7 @@ d’options
             onResponderTerminationRequest={[Function]}
             onStartShouldSetResponder={[Function]}
             style={
-              Object {
+              {
                 "flexBasis": 0,
                 "flexGrow": 1,
                 "flexShrink": 1,
@@ -4305,8 +4305,8 @@ d’options
             <View
               nativeID="testUuidV4"
               style={
-                Array [
-                  Object {
+                [
+                  {
                     "alignItems": "center",
                     "flexDirection": "row",
                     "justifyContent": "space-between",
@@ -4319,8 +4319,8 @@ d’options
             >
               <Text
                 style={
-                  Array [
-                    Object {
+                  [
+                    {
                       "color": "#161617",
                       "flexBasis": 0,
                       "flexGrow": 0.9,
@@ -4337,9 +4337,9 @@ d’options
               <View
                 collapsable={false}
                 style={
-                  Object {
-                    "transform": Array [
-                      Object {
+                  {
+                    "transform": [
+                      {
                         "rotateZ": "1.5707963267948966rad",
                       },
                     ],
@@ -4362,7 +4362,7 @@ d’options
         <View
           collapsable={false}
           style={
-            Object {
+            {
               "height": 0,
               "overflow": "hidden",
             }
@@ -4375,8 +4375,8 @@ d’options
             nativeID="testUuidV4"
             onLayout={[Function]}
             style={
-              Array [
-                Object {
+              [
+                {
                   "bottom": 0,
                   "display": "none",
                   "paddingBottom": 24,
@@ -4391,8 +4391,8 @@ d’options
           >
             <View
               style={
-                Array [
-                  Object {
+                [
+                  {
                     "marginVertical": -4,
                   },
                 ]
@@ -4411,7 +4411,7 @@ d’options
                 onResponderTerminationRequest={[Function]}
                 onStartShouldSetResponder={[Function]}
                 style={
-                  Object {
+                  {
                     "alignItems": "center",
                     "flexDirection": "row",
                     "marginVertical": 4,
@@ -4433,8 +4433,8 @@ d’options
                 <View
                   numberOfSpaces={2}
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "width": 8,
                       },
                     ]
@@ -4442,8 +4442,8 @@ d’options
                 />
                 <Text
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "color": "#161617",
                         "fontFamily": "Montserrat-Bold",
                         "fontSize": 15,
@@ -4468,7 +4468,7 @@ d’options
                 onResponderTerminationRequest={[Function]}
                 onStartShouldSetResponder={[Function]}
                 style={
-                  Object {
+                  {
                     "alignItems": "center",
                     "flexDirection": "row",
                     "marginVertical": 4,
@@ -4490,8 +4490,8 @@ d’options
                 <View
                   numberOfSpaces={2}
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "width": 8,
                       },
                     ]
@@ -4499,8 +4499,8 @@ d’options
                 />
                 <Text
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "color": "#161617",
                         "fontFamily": "Montserrat-Bold",
                         "fontSize": 15,
@@ -4525,7 +4525,7 @@ d’options
                 onResponderTerminationRequest={[Function]}
                 onStartShouldSetResponder={[Function]}
                 style={
-                  Object {
+                  {
                     "alignItems": "center",
                     "flexDirection": "row",
                     "marginVertical": 4,
@@ -4548,8 +4548,8 @@ d’options
                 <View
                   numberOfSpaces={2}
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "width": 8,
                       },
                     ]
@@ -4557,8 +4557,8 @@ d’options
                 />
                 <Text
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "color": "#161617",
                         "fontFamily": "Montserrat-Bold",
                         "fontSize": 15,
@@ -4577,8 +4577,8 @@ d’options
       <View>
         <View
           style={
-            Array [
-              Object {
+            [
+              {
                 "backgroundColor": "#F1F1F4",
                 "height": 8,
               },
@@ -4588,8 +4588,8 @@ d’options
         <View
           numberOfSpaces={6}
           style={
-            Array [
-              Object {
+            [
+              {
                 "height": 24,
               },
             ]
@@ -4602,7 +4602,7 @@ d’options
     collapsable={false}
     height={80}
     style={
-      Object {
+      {
         "backdropFilter": "blur(0px)",
         "backgroundColor": "rgba(255, 255, 255, 0)",
         "borderBottomColor": "#F1F1F4",
@@ -4620,8 +4620,8 @@ d’options
       customHeight={16}
       enable={true}
       style={
-        Array [
-          Object {
+        [
+          {
             "height": 16,
           },
         ]
@@ -4631,7 +4631,7 @@ d’options
       collapsable={false}
       height={80}
       style={
-        Object {
+        {
           "height": 80,
           "left": 0,
           "opacity": 0,
@@ -4646,12 +4646,12 @@ d’options
         blurAmount={8}
         blurType="light"
         style={
-          Array [
-            Object {
+          [
+            {
               "backgroundColor": "transparent",
             },
-            Array [
-              Object {
+            [
+              {
                 "flexBasis": 0,
                 "flexGrow": 1,
                 "flexShrink": 1,
@@ -4664,8 +4664,8 @@ d’options
     <View
       numberOfSpaces={2}
       style={
-        Array [
-          Object {
+        [
+          {
             "height": 8,
           },
         ]
@@ -4673,8 +4673,8 @@ d’options
     />
     <View
       style={
-        Array [
-          Object {
+        [
+          {
             "alignItems": "center",
             "flexBasis": 0,
             "flexDirection": "row",
@@ -4687,8 +4687,8 @@ d’options
       <View
         numberOfSpaces={6}
         style={
-          Array [
-            Object {
+          [
+            {
               "width": 24,
             },
           ]
@@ -4708,7 +4708,7 @@ d’options
         onResponderTerminationRequest={[Function]}
         onStartShouldSetResponder={[Function]}
         style={
-          Object {
+          {
             "borderRadius": 40,
             "opacity": 1,
             "userSelect": "auto",
@@ -4719,7 +4719,7 @@ d’options
         <View
           collapsable={false}
           style={
-            Object {
+            {
               "alignItems": "center",
               "aspectRatio": 1,
               "backgroundColor": "rgba(255, 255, 255, 1)",
@@ -4738,8 +4738,8 @@ d’options
           <View
             size={24}
             style={
-              Array [
-                Object {
+              [
+                {
                   "height": 24,
                   "width": 24,
                 },
@@ -4749,7 +4749,7 @@ d’options
             <View
               collapsable={false}
               style={
-                Object {
+                {
                   "opacity": 1,
                   "position": "absolute",
                 }
@@ -4769,7 +4769,7 @@ d’options
             <View
               collapsable={false}
               style={
-                Object {
+                {
                   "opacity": 0,
                   "position": "absolute",
                 }
@@ -4791,8 +4791,8 @@ d’options
       </View>
       <View
         style={
-          Array [
-            Object {
+          [
+            {
               "flexBasis": 0,
               "flexGrow": 1,
               "flexShrink": 1,
@@ -4805,7 +4805,7 @@ d’options
         collapsable={false}
         numberOfLines={2}
         style={
-          Object {
+          {
             "flexShrink": 1,
             "opacity": 0,
             "textAlign": "center",
@@ -4815,8 +4815,8 @@ d’options
       >
         <Text
           style={
-            Array [
-              Object {
+            [
+              {
                 "color": "#161617",
                 "fontFamily": "Montserrat-Regular",
                 "fontSize": 15,
@@ -4830,8 +4830,8 @@ d’options
       </Text>
       <View
         style={
-          Array [
-            Object {
+          [
+            {
               "flexBasis": 0,
               "flexGrow": 1,
               "flexShrink": 1,
@@ -4853,7 +4853,7 @@ d’options
         onResponderTerminationRequest={[Function]}
         onStartShouldSetResponder={[Function]}
         style={
-          Object {
+          {
             "borderRadius": 40,
             "opacity": 1,
             "userSelect": "auto",
@@ -4864,7 +4864,7 @@ d’options
         <View
           collapsable={false}
           style={
-            Object {
+            {
               "alignItems": "center",
               "aspectRatio": 1,
               "backgroundColor": "rgba(255, 255, 255, 1)",
@@ -4883,8 +4883,8 @@ d’options
           <View
             size={24}
             style={
-              Array [
-                Object {
+              [
+                {
                   "height": 24,
                   "width": 24,
                 },
@@ -4894,7 +4894,7 @@ d’options
             <View
               collapsable={false}
               style={
-                Object {
+                {
                   "opacity": 1,
                   "position": "absolute",
                 }
@@ -4914,7 +4914,7 @@ d’options
             <View
               collapsable={false}
               style={
-                Object {
+                {
                   "opacity": 0,
                   "position": "absolute",
                 }
@@ -4937,8 +4937,8 @@ d’options
       <View
         numberOfSpaces={6}
         style={
-          Array [
-            Object {
+          [
+            {
               "width": 24,
             },
           ]
@@ -4948,8 +4948,8 @@ d’options
     <View
       numberOfSpaces={2}
       style={
-        Array [
-          Object {
+        [
+          {
             "height": 8,
           },
         ]

@@ -7,8 +7,8 @@ exports[`SearchInput component should render SearchInput 1`] = `
   isError={false}
   isFocus={false}
   style={
-    Array [
-      Object {
+    [
+      {
         "alignItems": "center",
         "backgroundColor": "#ffffff",
         "borderColor": "#90949D",
@@ -23,7 +23,7 @@ exports[`SearchInput component should render SearchInput 1`] = `
         "paddingTop": 0,
         "width": "100%",
       },
-      Object {
+      {
         "borderRadius": 24,
         "outlineOffset": 0,
       },
@@ -34,8 +34,8 @@ exports[`SearchInput component should render SearchInput 1`] = `
   <View
     numberOfSpaces={1}
     style={
-      Array [
-        Object {
+      [
+        {
           "width": 4,
         },
       ]
@@ -56,8 +56,8 @@ exports[`SearchInput component should render SearchInput 1`] = `
     returnKeyType="search"
     selectionColor="#696A6F"
     style={
-      Array [
-        Object {
+      [
+        {
           "color": "#696A6F",
           "flexBasis": 0,
           "flexGrow": 1,
@@ -70,7 +70,7 @@ exports[`SearchInput component should render SearchInput 1`] = `
           "paddingRight": 0,
           "paddingTop": 0,
         },
-        Object {},
+        {},
       ]
     }
     testID="searchInput"

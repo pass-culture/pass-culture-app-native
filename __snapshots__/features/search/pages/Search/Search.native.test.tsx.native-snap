@@ -3,8 +3,8 @@
 exports[`<Search/> should render Search 1`] = `
 <View
   style={
-    Array [
-      Object {
+    [
+      {
         "flexBasis": 0,
         "flexGrow": 1,
         "flexShrink": 1,
@@ -16,8 +16,8 @@ exports[`<Search/> should render Search 1`] = `
     customHeight={16}
     enable={true}
     style={
-      Array [
-        Object {
+      [
+        {
           "height": 16,
         },
       ]
@@ -25,8 +25,8 @@ exports[`<Search/> should render Search 1`] = `
   />
   <View
     style={
-      Array [
-        Object {
+      [
+        {
           "marginTop": 24,
           "paddingHorizontal": 24,
           "zIndex": 1,
@@ -38,8 +38,8 @@ exports[`<Search/> should render Search 1`] = `
       <Text
         htmlFor="testUuidV4"
         style={
-          Array [
-            Object {
+          [
+            {
               "color": "#161617",
               "fontFamily": "Montserrat-Black",
               "fontSize": 26,
@@ -54,8 +54,8 @@ exports[`<Search/> should render Search 1`] = `
     <View
       numberOfSpaces={4}
       style={
-        Array [
-          Object {
+        [
+          {
             "height": 16,
           },
         ]
@@ -64,8 +64,8 @@ exports[`<Search/> should render Search 1`] = `
     <View>
       <View
         style={
-          Array [
-            Object {
+          [
+            {
               "flexDirection": "row",
             },
           ]
@@ -73,8 +73,8 @@ exports[`<Search/> should render Search 1`] = `
       >
         <View
           style={
-            Array [
-              Object {
+            [
+              {
                 "alignItems": "center",
                 "flexBasis": 0,
                 "flexDirection": "row",
@@ -87,8 +87,8 @@ exports[`<Search/> should render Search 1`] = `
         >
           <View
             style={
-              Array [
-                Object {
+              [
+                {
                   "alignItems": "center",
                   "flexBasis": 0,
                   "flexDirection": "row",
@@ -100,8 +100,8 @@ exports[`<Search/> should render Search 1`] = `
           >
             <View
               style={
-                Array [
-                  Object {
+                [
+                  {
                     "flexBasis": 0,
                     "flexDirection": "row",
                     "flexGrow": 1,
@@ -116,8 +116,8 @@ exports[`<Search/> should render Search 1`] = `
                 isError={false}
                 isFocus={false}
                 style={
-                  Array [
-                    Object {
+                  [
+                    {
                       "alignItems": "center",
                       "backgroundColor": "#ffffff",
                       "borderColor": "#90949D",
@@ -132,11 +132,11 @@ exports[`<Search/> should render Search 1`] = `
                       "paddingTop": 0,
                       "width": "100%",
                     },
-                    Object {
+                    {
                       "borderRadius": 24,
                       "outlineOffset": 0,
                     },
-                    Object {
+                    {
                       "flex": 1,
                     },
                   ]
@@ -146,8 +146,8 @@ exports[`<Search/> should render Search 1`] = `
                 <View
                   numberOfSpaces={1}
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "width": 4,
                       },
                     ]
@@ -155,8 +155,8 @@ exports[`<Search/> should render Search 1`] = `
                 />
                 <View
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "flexShrink": 0,
                       },
                     ]
@@ -174,8 +174,8 @@ exports[`<Search/> should render Search 1`] = `
                 <View
                   numberOfSpaces={1}
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "width": 4,
                       },
                     ]
@@ -200,8 +200,8 @@ exports[`<Search/> should render Search 1`] = `
                   returnKeyType="search"
                   selectionColor="#696A6F"
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "color": "#696A6F",
                         "flexBasis": 0,
                         "flexGrow": 1,
@@ -214,7 +214,7 @@ exports[`<Search/> should render Search 1`] = `
                         "paddingRight": 0,
                         "paddingTop": 0,
                       },
-                      Object {},
+                      {},
                     ]
                   }
                   testID="searchInput"
@@ -227,8 +227,8 @@ exports[`<Search/> should render Search 1`] = `
         <Text
           nativeID="testUuidV4"
           style={
-            Array [
-              Object {
+            [
+              {
                 "display": "none",
               },
             ]
@@ -257,7 +257,7 @@ exports[`<Search/> should render Search 1`] = `
           scrollTo={null}
           statusBarTranslucent={true}
           supportedOrientations={
-            Array [
+            [
               "portrait",
               "landscape",
             ]
@@ -272,8 +272,8 @@ exports[`<Search/> should render Search 1`] = `
   </View>
   <View
     style={
-      Array [
-        Object {
+      [
+        {
           "flexBasis": 0,
           "flexGrow": 1,
           "flexShrink": 1,
@@ -284,16 +284,16 @@ exports[`<Search/> should render Search 1`] = `
   >
     <RCTScrollView
       ListHeaderComponent={
-        Object {
+        {
           "$$typeof": Symbol(react.forward_ref),
-          "attrs": Array [
+          "attrs": [
             [Function],
-            Object {
+            {
               "children": "Explore les catégories",
             },
           ],
           "inlineStyle": InlineStyle {
-            "rules": Array [
+            "rules": [
               [Function],
               [Function],
             ],
@@ -306,21 +306,21 @@ exports[`<Search/> should render Search 1`] = `
         }
       }
       contentContainerStyle={
-        Object {
+        {
           "paddingBottom": 88,
           "paddingHorizontal": 16,
         }
       }
       data={
-        Array [
-          Object {
-            "Icon": Object {
+        [
+          {
+            "Icon": {
               "$$typeof": Symbol(react.forward_ref),
-              "attrs": Array [
+              "attrs": [
                 [Function],
               ],
               "inlineStyle": InlineStyle {
-                "rules": Array [
+                "rules": [
                   "",
                 ],
               },
@@ -332,17 +332,17 @@ exports[`<Search/> should render Search 1`] = `
             },
             "Illustration": [Function],
             "baseColor": "#B85901",
-            "gradients": Array [
-              Object {
+            "gradients": [
+              {
                 "color": "#F99E15",
-                "position": Object {
+                "position": {
                   "x": 0,
                   "y": 0,
                 },
               },
-              Object {
+              {
                 "color": "#B85901",
-                "position": Object {
+                "position": {
                   "x": 0,
                   "y": 0.5,
                 },
@@ -352,14 +352,14 @@ exports[`<Search/> should render Search 1`] = `
             "onPress": [Function],
             "position": 1,
           },
-          Object {
-            "Icon": Object {
+          {
+            "Icon": {
               "$$typeof": Symbol(react.forward_ref),
-              "attrs": Array [
+              "attrs": [
                 [Function],
               ],
               "inlineStyle": InlineStyle {
-                "rules": Array [
+                "rules": [
                   "",
                 ],
               },
@@ -371,17 +371,17 @@ exports[`<Search/> should render Search 1`] = `
             },
             "Illustration": [Function],
             "baseColor": "#0E8474",
-            "gradients": Array [
-              Object {
+            "gradients": [
+              {
                 "color": "#27DCA8",
-                "position": Object {
+                "position": {
                   "x": 0,
                   "y": 0,
                 },
               },
-              Object {
+              {
                 "color": "#0E8474",
-                "position": Object {
+                "position": {
                   "x": 0,
                   "y": 0.5,
                 },
@@ -391,14 +391,14 @@ exports[`<Search/> should render Search 1`] = `
             "onPress": [Function],
             "position": 2,
           },
-          Object {
-            "Icon": Object {
+          {
+            "Icon": {
               "$$typeof": Symbol(react.forward_ref),
-              "attrs": Array [
+              "attrs": [
                 [Function],
               ],
               "inlineStyle": InlineStyle {
-                "rules": Array [
+                "rules": [
                   "",
                 ],
               },
@@ -410,17 +410,17 @@ exports[`<Search/> should render Search 1`] = `
             },
             "Illustration": [Function],
             "baseColor": "#C01371",
-            "gradients": Array [
-              Object {
+            "gradients": [
+              {
                 "color": "#EC3478",
-                "position": Object {
+                "position": {
                   "x": 0,
                   "y": 0,
                 },
               },
-              Object {
+              {
                 "color": "#C01371",
-                "position": Object {
+                "position": {
                   "x": 0,
                   "y": 0.5,
                 },
@@ -430,14 +430,14 @@ exports[`<Search/> should render Search 1`] = `
             "onPress": [Function],
             "position": 3,
           },
-          Object {
-            "Icon": Object {
+          {
+            "Icon": {
               "$$typeof": Symbol(react.forward_ref),
-              "attrs": Array [
+              "attrs": [
                 [Function],
               ],
               "inlineStyle": InlineStyle {
-                "rules": Array [
+                "rules": [
                   "",
                 ],
               },
@@ -449,17 +449,17 @@ exports[`<Search/> should render Search 1`] = `
             },
             "Illustration": [Function],
             "baseColor": "#0E78B7",
-            "gradients": Array [
-              Object {
+            "gradients": [
+              {
                 "color": "#20C5E9",
-                "position": Object {
+                "position": {
                   "x": 0,
                   "y": 0,
                 },
               },
-              Object {
+              {
                 "color": "#0E78B7",
-                "position": Object {
+                "position": {
                   "x": 0,
                   "y": 0.5,
                 },
@@ -469,14 +469,14 @@ exports[`<Search/> should render Search 1`] = `
             "onPress": [Function],
             "position": 4,
           },
-          Object {
-            "Icon": Object {
+          {
+            "Icon": {
               "$$typeof": Symbol(react.forward_ref),
-              "attrs": Array [
+              "attrs": [
                 [Function],
               ],
               "inlineStyle": InlineStyle {
-                "rules": Array [
+                "rules": [
                   "",
                 ],
               },
@@ -488,17 +488,17 @@ exports[`<Search/> should render Search 1`] = `
             },
             "Illustration": [Function],
             "baseColor": "#8337E9",
-            "gradients": Array [
-              Object {
+            "gradients": [
+              {
                 "color": "#AD87FF",
-                "position": Object {
+                "position": {
                   "x": 0,
                   "y": 0,
                 },
               },
-              Object {
+              {
                 "color": "#8337E9",
-                "position": Object {
+                "position": {
                   "x": 0,
                   "y": 0.5,
                 },
@@ -508,14 +508,14 @@ exports[`<Search/> should render Search 1`] = `
             "onPress": [Function],
             "position": 5,
           },
-          Object {
-            "Icon": Object {
+          {
+            "Icon": {
               "$$typeof": Symbol(react.forward_ref),
-              "attrs": Array [
+              "attrs": [
                 [Function],
               ],
               "inlineStyle": InlineStyle {
-                "rules": Array [
+                "rules": [
                   "",
                 ],
               },
@@ -527,17 +527,17 @@ exports[`<Search/> should render Search 1`] = `
             },
             "Illustration": [Function],
             "baseColor": "#CA3F13",
-            "gradients": Array [
-              Object {
+            "gradients": [
+              {
                 "color": "#F8733D",
-                "position": Object {
+                "position": {
                   "x": 0,
                   "y": 0,
                 },
               },
-              Object {
+              {
                 "color": "#CA3F13",
-                "position": Object {
+                "position": {
                   "x": 0,
                   "y": 0.5,
                 },
@@ -547,14 +547,14 @@ exports[`<Search/> should render Search 1`] = `
             "onPress": [Function],
             "position": 6,
           },
-          Object {
-            "Icon": Object {
+          {
+            "Icon": {
               "$$typeof": Symbol(react.forward_ref),
-              "attrs": Array [
+              "attrs": [
                 [Function],
               ],
               "inlineStyle": InlineStyle {
-                "rules": Array [
+                "rules": [
                   "",
                 ],
               },
@@ -566,17 +566,17 @@ exports[`<Search/> should render Search 1`] = `
             },
             "Illustration": [Function],
             "baseColor": "#0E8474",
-            "gradients": Array [
-              Object {
+            "gradients": [
+              {
                 "color": "#27DCA8",
-                "position": Object {
+                "position": {
                   "x": 0,
                   "y": 0,
                 },
               },
-              Object {
+              {
                 "color": "#0E8474",
-                "position": Object {
+                "position": {
                   "x": 0,
                   "y": 0.5,
                 },
@@ -586,14 +586,14 @@ exports[`<Search/> should render Search 1`] = `
             "onPress": [Function],
             "position": 7,
           },
-          Object {
-            "Icon": Object {
+          {
+            "Icon": {
               "$$typeof": Symbol(react.forward_ref),
-              "attrs": Array [
+              "attrs": [
                 [Function],
               ],
               "inlineStyle": InlineStyle {
-                "rules": Array [
+                "rules": [
                   "",
                 ],
               },
@@ -605,17 +605,17 @@ exports[`<Search/> should render Search 1`] = `
             },
             "Illustration": [Function],
             "baseColor": "#B85901",
-            "gradients": Array [
-              Object {
+            "gradients": [
+              {
                 "color": "#F99E15",
-                "position": Object {
+                "position": {
                   "x": 0,
                   "y": 0,
                 },
               },
-              Object {
+              {
                 "color": "#B85901",
-                "position": Object {
+                "position": {
                   "x": 0,
                   "y": 0.5,
                 },
@@ -625,14 +625,14 @@ exports[`<Search/> should render Search 1`] = `
             "onPress": [Function],
             "position": 8,
           },
-          Object {
-            "Icon": Object {
+          {
+            "Icon": {
               "$$typeof": Symbol(react.forward_ref),
-              "attrs": Array [
+              "attrs": [
                 [Function],
               ],
               "inlineStyle": InlineStyle {
-                "rules": Array [
+                "rules": [
                   "",
                 ],
               },
@@ -644,17 +644,17 @@ exports[`<Search/> should render Search 1`] = `
             },
             "Illustration": [Function],
             "baseColor": "#0E78B7",
-            "gradients": Array [
-              Object {
+            "gradients": [
+              {
                 "color": "#20C5E9",
-                "position": Object {
+                "position": {
                   "x": 0,
                   "y": 0,
                 },
               },
-              Object {
+              {
                 "color": "#0E78B7",
-                "position": Object {
+                "position": {
                   "x": 0,
                   "y": 0.5,
                 },
@@ -664,14 +664,14 @@ exports[`<Search/> should render Search 1`] = `
             "onPress": [Function],
             "position": 9,
           },
-          Object {
-            "Icon": Object {
+          {
+            "Icon": {
               "$$typeof": Symbol(react.forward_ref),
-              "attrs": Array [
+              "attrs": [
                 [Function],
               ],
               "inlineStyle": InlineStyle {
-                "rules": Array [
+                "rules": [
                   "",
                 ],
               },
@@ -683,17 +683,17 @@ exports[`<Search/> should render Search 1`] = `
             },
             "Illustration": [Function],
             "baseColor": "#C01371",
-            "gradients": Array [
-              Object {
+            "gradients": [
+              {
                 "color": "#EC3478",
-                "position": Object {
+                "position": {
                   "x": 0,
                   "y": 0,
                 },
               },
-              Object {
+              {
                 "color": "#C01371",
-                "position": Object {
+                "position": {
                   "x": 0,
                   "y": 0.5,
                 },
@@ -703,14 +703,14 @@ exports[`<Search/> should render Search 1`] = `
             "onPress": [Function],
             "position": 10,
           },
-          Object {
-            "Icon": Object {
+          {
+            "Icon": {
               "$$typeof": Symbol(react.forward_ref),
-              "attrs": Array [
+              "attrs": [
                 [Function],
               ],
               "inlineStyle": InlineStyle {
-                "rules": Array [
+                "rules": [
                   "",
                 ],
               },
@@ -722,17 +722,17 @@ exports[`<Search/> should render Search 1`] = `
             },
             "Illustration": [Function],
             "baseColor": "#CA3F13",
-            "gradients": Array [
-              Object {
+            "gradients": [
+              {
                 "color": "#F8733D",
-                "position": Object {
+                "position": {
                   "x": 0,
                   "y": 0,
                 },
               },
-              Object {
+              {
                 "color": "#CA3F13",
-                "position": Object {
+                "position": {
                   "x": 0,
                   "y": 0.5,
                 },
@@ -742,14 +742,14 @@ exports[`<Search/> should render Search 1`] = `
             "onPress": [Function],
             "position": 11,
           },
-          Object {
-            "Icon": Object {
+          {
+            "Icon": {
               "$$typeof": Symbol(react.forward_ref),
-              "attrs": Array [
+              "attrs": [
                 [Function],
               ],
               "inlineStyle": InlineStyle {
-                "rules": Array [
+                "rules": [
                   "",
                 ],
               },
@@ -761,17 +761,17 @@ exports[`<Search/> should render Search 1`] = `
             },
             "Illustration": [Function],
             "baseColor": "#8337E9",
-            "gradients": Array [
-              Object {
+            "gradients": [
+              {
                 "color": "#AD87FF",
-                "position": Object {
+                "position": {
                   "x": 0,
                   "y": 0,
                 },
               },
-              Object {
+              {
                 "color": "#8337E9",
-                "position": Object {
+                "position": {
                   "x": 0,
                   "y": 0.5,
                 },
@@ -781,14 +781,14 @@ exports[`<Search/> should render Search 1`] = `
             "onPress": [Function],
             "position": 12,
           },
-          Object {
-            "Icon": Object {
+          {
+            "Icon": {
               "$$typeof": Symbol(react.forward_ref),
-              "attrs": Array [
+              "attrs": [
                 [Function],
               ],
               "inlineStyle": InlineStyle {
-                "rules": Array [
+                "rules": [
                   "",
                 ],
               },
@@ -798,13 +798,13 @@ exports[`<Search/> should render Search 1`] = `
               "target": [Function],
               "withComponent": [Function],
             },
-            "Illustration": Object {
+            "Illustration": {
               "$$typeof": Symbol(react.forward_ref),
-              "attrs": Array [
+              "attrs": [
                 [Function],
               ],
               "inlineStyle": InlineStyle {
-                "rules": Array [
+                "rules": [
                   "",
                 ],
               },
@@ -815,17 +815,17 @@ exports[`<Search/> should render Search 1`] = `
               "withComponent": [Function],
             },
             "baseColor": "#B85901",
-            "gradients": Array [
-              Object {
+            "gradients": [
+              {
                 "color": "#F99E15",
-                "position": Object {
+                "position": {
                   "x": 0,
                   "y": 0,
                 },
               },
-              Object {
+              {
                 "color": "#B85901",
-                "position": Object {
+                "position": {
                   "x": 0,
                   "y": 0.5,
                 },
@@ -835,14 +835,14 @@ exports[`<Search/> should render Search 1`] = `
             "onPress": [Function],
             "position": 13,
           },
-          Object {
-            "Icon": Object {
+          {
+            "Icon": {
               "$$typeof": Symbol(react.forward_ref),
-              "attrs": Array [
+              "attrs": [
                 [Function],
               ],
               "inlineStyle": InlineStyle {
-                "rules": Array [
+                "rules": [
                   "",
                 ],
               },
@@ -854,17 +854,17 @@ exports[`<Search/> should render Search 1`] = `
             },
             "Illustration": [Function],
             "baseColor": "#0E8474",
-            "gradients": Array [
-              Object {
+            "gradients": [
+              {
                 "color": "#27DCA8",
-                "position": Object {
+                "position": {
                   "x": 0,
                   "y": 0,
                 },
               },
-              Object {
+              {
                 "color": "#0E8474",
-                "position": Object {
+                "position": {
                   "x": 0,
                   "y": 0.5,
                 },
@@ -889,9 +889,9 @@ exports[`<Search/> should render Search 1`] = `
       removeClippedSubviews={false}
       renderItem={[Function]}
       scrollEventThrottle={50}
-      stickyHeaderIndices={Array []}
+      stickyHeaderIndices={[]}
       testID="categoriesButtons"
-      viewabilityConfigCallbackPairs={Array []}
+      viewabilityConfigCallbackPairs={[]}
     >
       <View>
         <View
@@ -899,8 +899,8 @@ exports[`<Search/> should render Search 1`] = `
         >
           <Text
             style={
-              Array [
-                Object {
+              [
+                {
                   "color": "#161617",
                   "fontFamily": "Montserrat-Bold",
                   "fontSize": 20,
@@ -921,15 +921,15 @@ exports[`<Search/> should render Search 1`] = `
         >
           <View
             style={
-              Object {
+              {
                 "flexDirection": "row",
               }
             }
           >
             <View
               style={
-                Array [
-                  Object {
+                [
+                  {
                     "flexBasis": "50%",
                     "paddingBottom": 8,
                     "paddingLeft": 8,
@@ -953,7 +953,7 @@ exports[`<Search/> should render Search 1`] = `
                 onResponderTerminationRequest={[Function]}
                 onStartShouldSetResponder={[Function]}
                 style={
-                  Object {
+                  {
                     "borderRadius": 8,
                     "height": 156,
                     "opacity": 1,
@@ -965,8 +965,8 @@ exports[`<Search/> should render Search 1`] = `
               >
                 <View
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "flexBasis": 0,
                         "flexGrow": 1,
                         "flexShrink": 1,
@@ -978,27 +978,27 @@ exports[`<Search/> should render Search 1`] = `
                 >
                   <BVLinearGradient
                     colors={
-                      Array [
+                      [
                         4294549013,
                         4290271489,
                       ]
                     }
                     endPoint={
-                      Object {
+                      {
                         "x": 0.5,
                         "y": 1,
                       }
                     }
                     locations={null}
                     startPoint={
-                      Object {
+                      {
                         "x": 0.5,
                         "y": 0,
                       }
                     }
                     style={
-                      Array [
-                        Object {
+                      [
+                        {
                           "flexBasis": 0,
                           "flexGrow": 1,
                           "flexShrink": 1,
@@ -1008,8 +1008,8 @@ exports[`<Search/> should render Search 1`] = `
                   >
                     <View
                       style={
-                        Array [
-                          Object {
+                        [
+                          {
                             "position": "absolute",
                           },
                         ]
@@ -1030,8 +1030,8 @@ exports[`<Search/> should render Search 1`] = `
                 <View
                   baseColor="#B85901"
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "backgroundColor": "#B85901",
                         "paddingBottom": 8,
                         "paddingLeft": 8,
@@ -1044,8 +1044,8 @@ exports[`<Search/> should render Search 1`] = `
                 >
                   <Text
                     style={
-                      Array [
-                        Object {
+                      [
+                        {
                           "color": "#ffffff",
                           "fontFamily": "Montserrat-Bold",
                           "fontSize": 15,
@@ -1062,8 +1062,8 @@ exports[`<Search/> should render Search 1`] = `
             </View>
             <View
               style={
-                Array [
-                  Object {
+                [
+                  {
                     "flexBasis": "50%",
                     "paddingBottom": 8,
                     "paddingLeft": 8,
@@ -1087,7 +1087,7 @@ exports[`<Search/> should render Search 1`] = `
                 onResponderTerminationRequest={[Function]}
                 onStartShouldSetResponder={[Function]}
                 style={
-                  Object {
+                  {
                     "borderRadius": 8,
                     "height": 156,
                     "opacity": 1,
@@ -1099,8 +1099,8 @@ exports[`<Search/> should render Search 1`] = `
               >
                 <View
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "flexBasis": 0,
                         "flexGrow": 1,
                         "flexShrink": 1,
@@ -1112,27 +1112,27 @@ exports[`<Search/> should render Search 1`] = `
                 >
                   <BVLinearGradient
                     colors={
-                      Array [
+                      [
                         4280802472,
                         4279141492,
                       ]
                     }
                     endPoint={
-                      Object {
+                      {
                         "x": 0.5,
                         "y": 1,
                       }
                     }
                     locations={null}
                     startPoint={
-                      Object {
+                      {
                         "x": 0.5,
                         "y": 0,
                       }
                     }
                     style={
-                      Array [
-                        Object {
+                      [
+                        {
                           "flexBasis": 0,
                           "flexGrow": 1,
                           "flexShrink": 1,
@@ -1142,8 +1142,8 @@ exports[`<Search/> should render Search 1`] = `
                   >
                     <View
                       style={
-                        Array [
-                          Object {
+                        [
+                          {
                             "position": "absolute",
                           },
                         ]
@@ -1164,8 +1164,8 @@ exports[`<Search/> should render Search 1`] = `
                 <View
                   baseColor="#0E8474"
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "backgroundColor": "#0E8474",
                         "paddingBottom": 8,
                         "paddingLeft": 8,
@@ -1178,8 +1178,8 @@ exports[`<Search/> should render Search 1`] = `
                 >
                   <Text
                     style={
-                      Array [
-                        Object {
+                      [
+                        {
                           "color": "#ffffff",
                           "fontFamily": "Montserrat-Bold",
                           "fontSize": 15,
@@ -1202,15 +1202,15 @@ exports[`<Search/> should render Search 1`] = `
         >
           <View
             style={
-              Object {
+              {
                 "flexDirection": "row",
               }
             }
           >
             <View
               style={
-                Array [
-                  Object {
+                [
+                  {
                     "flexBasis": "50%",
                     "paddingBottom": 8,
                     "paddingLeft": 8,
@@ -1234,7 +1234,7 @@ exports[`<Search/> should render Search 1`] = `
                 onResponderTerminationRequest={[Function]}
                 onStartShouldSetResponder={[Function]}
                 style={
-                  Object {
+                  {
                     "borderRadius": 8,
                     "height": 156,
                     "opacity": 1,
@@ -1246,8 +1246,8 @@ exports[`<Search/> should render Search 1`] = `
               >
                 <View
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "flexBasis": 0,
                         "flexGrow": 1,
                         "flexShrink": 1,
@@ -1259,27 +1259,27 @@ exports[`<Search/> should render Search 1`] = `
                 >
                   <BVLinearGradient
                     colors={
-                      Array [
+                      [
                         4293670008,
                         4290777969,
                       ]
                     }
                     endPoint={
-                      Object {
+                      {
                         "x": 0.5,
                         "y": 1,
                       }
                     }
                     locations={null}
                     startPoint={
-                      Object {
+                      {
                         "x": 0.5,
                         "y": 0,
                       }
                     }
                     style={
-                      Array [
-                        Object {
+                      [
+                        {
                           "flexBasis": 0,
                           "flexGrow": 1,
                           "flexShrink": 1,
@@ -1289,8 +1289,8 @@ exports[`<Search/> should render Search 1`] = `
                   >
                     <View
                       style={
-                        Array [
-                          Object {
+                        [
+                          {
                             "position": "absolute",
                           },
                         ]
@@ -1311,8 +1311,8 @@ exports[`<Search/> should render Search 1`] = `
                 <View
                   baseColor="#C01371"
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "backgroundColor": "#C01371",
                         "paddingBottom": 8,
                         "paddingLeft": 8,
@@ -1325,8 +1325,8 @@ exports[`<Search/> should render Search 1`] = `
                 >
                   <Text
                     style={
-                      Array [
-                        Object {
+                      [
+                        {
                           "color": "#ffffff",
                           "fontFamily": "Montserrat-Bold",
                           "fontSize": 15,
@@ -1343,8 +1343,8 @@ exports[`<Search/> should render Search 1`] = `
             </View>
             <View
               style={
-                Array [
-                  Object {
+                [
+                  {
                     "flexBasis": "50%",
                     "paddingBottom": 8,
                     "paddingLeft": 8,
@@ -1368,7 +1368,7 @@ exports[`<Search/> should render Search 1`] = `
                 onResponderTerminationRequest={[Function]}
                 onStartShouldSetResponder={[Function]}
                 style={
-                  Object {
+                  {
                     "borderRadius": 8,
                     "height": 156,
                     "opacity": 1,
@@ -1380,8 +1380,8 @@ exports[`<Search/> should render Search 1`] = `
               >
                 <View
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "flexBasis": 0,
                         "flexGrow": 1,
                         "flexShrink": 1,
@@ -1393,27 +1393,27 @@ exports[`<Search/> should render Search 1`] = `
                 >
                   <BVLinearGradient
                     colors={
-                      Array [
+                      [
                         4280337897,
                         4279138487,
                       ]
                     }
                     endPoint={
-                      Object {
+                      {
                         "x": 0.5,
                         "y": 1,
                       }
                     }
                     locations={null}
                     startPoint={
-                      Object {
+                      {
                         "x": 0.5,
                         "y": 0,
                       }
                     }
                     style={
-                      Array [
-                        Object {
+                      [
+                        {
                           "flexBasis": 0,
                           "flexGrow": 1,
                           "flexShrink": 1,
@@ -1423,8 +1423,8 @@ exports[`<Search/> should render Search 1`] = `
                   >
                     <View
                       style={
-                        Array [
-                          Object {
+                        [
+                          {
                             "position": "absolute",
                           },
                         ]
@@ -1445,8 +1445,8 @@ exports[`<Search/> should render Search 1`] = `
                 <View
                   baseColor="#0E78B7"
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "backgroundColor": "#0E78B7",
                         "paddingBottom": 8,
                         "paddingLeft": 8,
@@ -1459,8 +1459,8 @@ exports[`<Search/> should render Search 1`] = `
                 >
                   <Text
                     style={
-                      Array [
-                        Object {
+                      [
+                        {
                           "color": "#ffffff",
                           "fontFamily": "Montserrat-Bold",
                           "fontSize": 15,
@@ -1483,15 +1483,15 @@ exports[`<Search/> should render Search 1`] = `
         >
           <View
             style={
-              Object {
+              {
                 "flexDirection": "row",
               }
             }
           >
             <View
               style={
-                Array [
-                  Object {
+                [
+                  {
                     "flexBasis": "50%",
                     "paddingBottom": 8,
                     "paddingLeft": 8,
@@ -1515,7 +1515,7 @@ exports[`<Search/> should render Search 1`] = `
                 onResponderTerminationRequest={[Function]}
                 onStartShouldSetResponder={[Function]}
                 style={
-                  Object {
+                  {
                     "borderRadius": 8,
                     "height": 156,
                     "opacity": 1,
@@ -1527,8 +1527,8 @@ exports[`<Search/> should render Search 1`] = `
               >
                 <View
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "flexBasis": 0,
                         "flexGrow": 1,
                         "flexShrink": 1,
@@ -1540,27 +1540,27 @@ exports[`<Search/> should render Search 1`] = `
                 >
                   <BVLinearGradient
                     colors={
-                      Array [
+                      [
                         4289562623,
                         4286789609,
                       ]
                     }
                     endPoint={
-                      Object {
+                      {
                         "x": 0.5,
                         "y": 1,
                       }
                     }
                     locations={null}
                     startPoint={
-                      Object {
+                      {
                         "x": 0.5,
                         "y": 0,
                       }
                     }
                     style={
-                      Array [
-                        Object {
+                      [
+                        {
                           "flexBasis": 0,
                           "flexGrow": 1,
                           "flexShrink": 1,
@@ -1570,8 +1570,8 @@ exports[`<Search/> should render Search 1`] = `
                   >
                     <View
                       style={
-                        Array [
-                          Object {
+                        [
+                          {
                             "position": "absolute",
                           },
                         ]
@@ -1592,8 +1592,8 @@ exports[`<Search/> should render Search 1`] = `
                 <View
                   baseColor="#8337E9"
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "backgroundColor": "#8337E9",
                         "paddingBottom": 8,
                         "paddingLeft": 8,
@@ -1606,8 +1606,8 @@ exports[`<Search/> should render Search 1`] = `
                 >
                   <Text
                     style={
-                      Array [
-                        Object {
+                      [
+                        {
                           "color": "#ffffff",
                           "fontFamily": "Montserrat-Bold",
                           "fontSize": 15,
@@ -1624,8 +1624,8 @@ exports[`<Search/> should render Search 1`] = `
             </View>
             <View
               style={
-                Array [
-                  Object {
+                [
+                  {
                     "flexBasis": "50%",
                     "paddingBottom": 8,
                     "paddingLeft": 8,
@@ -1649,7 +1649,7 @@ exports[`<Search/> should render Search 1`] = `
                 onResponderTerminationRequest={[Function]}
                 onStartShouldSetResponder={[Function]}
                 style={
-                  Object {
+                  {
                     "borderRadius": 8,
                     "height": 156,
                     "opacity": 1,
@@ -1661,8 +1661,8 @@ exports[`<Search/> should render Search 1`] = `
               >
                 <View
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "flexBasis": 0,
                         "flexGrow": 1,
                         "flexShrink": 1,
@@ -1674,27 +1674,27 @@ exports[`<Search/> should render Search 1`] = `
                 >
                   <BVLinearGradient
                     colors={
-                      Array [
+                      [
                         4294472509,
                         4291444499,
                       ]
                     }
                     endPoint={
-                      Object {
+                      {
                         "x": 0.5,
                         "y": 1,
                       }
                     }
                     locations={null}
                     startPoint={
-                      Object {
+                      {
                         "x": 0.5,
                         "y": 0,
                       }
                     }
                     style={
-                      Array [
-                        Object {
+                      [
+                        {
                           "flexBasis": 0,
                           "flexGrow": 1,
                           "flexShrink": 1,
@@ -1704,8 +1704,8 @@ exports[`<Search/> should render Search 1`] = `
                   >
                     <View
                       style={
-                        Array [
-                          Object {
+                        [
+                          {
                             "position": "absolute",
                           },
                         ]
@@ -1726,8 +1726,8 @@ exports[`<Search/> should render Search 1`] = `
                 <View
                   baseColor="#CA3F13"
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "backgroundColor": "#CA3F13",
                         "paddingBottom": 8,
                         "paddingLeft": 8,
@@ -1740,8 +1740,8 @@ exports[`<Search/> should render Search 1`] = `
                 >
                   <Text
                     style={
-                      Array [
-                        Object {
+                      [
+                        {
                           "color": "#ffffff",
                           "fontFamily": "Montserrat-Bold",
                           "fontSize": 15,
@@ -1764,15 +1764,15 @@ exports[`<Search/> should render Search 1`] = `
         >
           <View
             style={
-              Object {
+              {
                 "flexDirection": "row",
               }
             }
           >
             <View
               style={
-                Array [
-                  Object {
+                [
+                  {
                     "flexBasis": "50%",
                     "paddingBottom": 8,
                     "paddingLeft": 8,
@@ -1796,7 +1796,7 @@ exports[`<Search/> should render Search 1`] = `
                 onResponderTerminationRequest={[Function]}
                 onStartShouldSetResponder={[Function]}
                 style={
-                  Object {
+                  {
                     "borderRadius": 8,
                     "height": 156,
                     "opacity": 1,
@@ -1808,8 +1808,8 @@ exports[`<Search/> should render Search 1`] = `
               >
                 <View
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "flexBasis": 0,
                         "flexGrow": 1,
                         "flexShrink": 1,
@@ -1821,27 +1821,27 @@ exports[`<Search/> should render Search 1`] = `
                 >
                   <BVLinearGradient
                     colors={
-                      Array [
+                      [
                         4280802472,
                         4279141492,
                       ]
                     }
                     endPoint={
-                      Object {
+                      {
                         "x": 0.5,
                         "y": 1,
                       }
                     }
                     locations={null}
                     startPoint={
-                      Object {
+                      {
                         "x": 0.5,
                         "y": 0,
                       }
                     }
                     style={
-                      Array [
-                        Object {
+                      [
+                        {
                           "flexBasis": 0,
                           "flexGrow": 1,
                           "flexShrink": 1,
@@ -1851,8 +1851,8 @@ exports[`<Search/> should render Search 1`] = `
                   >
                     <View
                       style={
-                        Array [
-                          Object {
+                        [
+                          {
                             "position": "absolute",
                           },
                         ]
@@ -1873,8 +1873,8 @@ exports[`<Search/> should render Search 1`] = `
                 <View
                   baseColor="#0E8474"
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "backgroundColor": "#0E8474",
                         "paddingBottom": 8,
                         "paddingLeft": 8,
@@ -1887,8 +1887,8 @@ exports[`<Search/> should render Search 1`] = `
                 >
                   <Text
                     style={
-                      Array [
-                        Object {
+                      [
+                        {
                           "color": "#ffffff",
                           "fontFamily": "Montserrat-Bold",
                           "fontSize": 15,
@@ -1905,8 +1905,8 @@ exports[`<Search/> should render Search 1`] = `
             </View>
             <View
               style={
-                Array [
-                  Object {
+                [
+                  {
                     "flexBasis": "50%",
                     "paddingBottom": 8,
                     "paddingLeft": 8,
@@ -1930,7 +1930,7 @@ exports[`<Search/> should render Search 1`] = `
                 onResponderTerminationRequest={[Function]}
                 onStartShouldSetResponder={[Function]}
                 style={
-                  Object {
+                  {
                     "borderRadius": 8,
                     "height": 156,
                     "opacity": 1,
@@ -1942,8 +1942,8 @@ exports[`<Search/> should render Search 1`] = `
               >
                 <View
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "flexBasis": 0,
                         "flexGrow": 1,
                         "flexShrink": 1,
@@ -1955,27 +1955,27 @@ exports[`<Search/> should render Search 1`] = `
                 >
                   <BVLinearGradient
                     colors={
-                      Array [
+                      [
                         4294549013,
                         4290271489,
                       ]
                     }
                     endPoint={
-                      Object {
+                      {
                         "x": 0.5,
                         "y": 1,
                       }
                     }
                     locations={null}
                     startPoint={
-                      Object {
+                      {
                         "x": 0.5,
                         "y": 0,
                       }
                     }
                     style={
-                      Array [
-                        Object {
+                      [
+                        {
                           "flexBasis": 0,
                           "flexGrow": 1,
                           "flexShrink": 1,
@@ -1985,8 +1985,8 @@ exports[`<Search/> should render Search 1`] = `
                   >
                     <View
                       style={
-                        Array [
-                          Object {
+                        [
+                          {
                             "position": "absolute",
                           },
                         ]
@@ -2007,8 +2007,8 @@ exports[`<Search/> should render Search 1`] = `
                 <View
                   baseColor="#B85901"
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "backgroundColor": "#B85901",
                         "paddingBottom": 8,
                         "paddingLeft": 8,
@@ -2021,8 +2021,8 @@ exports[`<Search/> should render Search 1`] = `
                 >
                   <Text
                     style={
-                      Array [
-                        Object {
+                      [
+                        {
                           "color": "#ffffff",
                           "fontFamily": "Montserrat-Bold",
                           "fontSize": 15,
@@ -2045,15 +2045,15 @@ exports[`<Search/> should render Search 1`] = `
         >
           <View
             style={
-              Object {
+              {
                 "flexDirection": "row",
               }
             }
           >
             <View
               style={
-                Array [
-                  Object {
+                [
+                  {
                     "flexBasis": "50%",
                     "paddingBottom": 8,
                     "paddingLeft": 8,
@@ -2077,7 +2077,7 @@ exports[`<Search/> should render Search 1`] = `
                 onResponderTerminationRequest={[Function]}
                 onStartShouldSetResponder={[Function]}
                 style={
-                  Object {
+                  {
                     "borderRadius": 8,
                     "height": 156,
                     "opacity": 1,
@@ -2089,8 +2089,8 @@ exports[`<Search/> should render Search 1`] = `
               >
                 <View
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "flexBasis": 0,
                         "flexGrow": 1,
                         "flexShrink": 1,
@@ -2102,27 +2102,27 @@ exports[`<Search/> should render Search 1`] = `
                 >
                   <BVLinearGradient
                     colors={
-                      Array [
+                      [
                         4280337897,
                         4279138487,
                       ]
                     }
                     endPoint={
-                      Object {
+                      {
                         "x": 0.5,
                         "y": 1,
                       }
                     }
                     locations={null}
                     startPoint={
-                      Object {
+                      {
                         "x": 0.5,
                         "y": 0,
                       }
                     }
                     style={
-                      Array [
-                        Object {
+                      [
+                        {
                           "flexBasis": 0,
                           "flexGrow": 1,
                           "flexShrink": 1,
@@ -2132,8 +2132,8 @@ exports[`<Search/> should render Search 1`] = `
                   >
                     <View
                       style={
-                        Array [
-                          Object {
+                        [
+                          {
                             "position": "absolute",
                           },
                         ]
@@ -2154,8 +2154,8 @@ exports[`<Search/> should render Search 1`] = `
                 <View
                   baseColor="#0E78B7"
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "backgroundColor": "#0E78B7",
                         "paddingBottom": 8,
                         "paddingLeft": 8,
@@ -2168,8 +2168,8 @@ exports[`<Search/> should render Search 1`] = `
                 >
                   <Text
                     style={
-                      Array [
-                        Object {
+                      [
+                        {
                           "color": "#ffffff",
                           "fontFamily": "Montserrat-Bold",
                           "fontSize": 15,
@@ -2186,8 +2186,8 @@ exports[`<Search/> should render Search 1`] = `
             </View>
             <View
               style={
-                Array [
-                  Object {
+                [
+                  {
                     "flexBasis": "50%",
                     "paddingBottom": 8,
                     "paddingLeft": 8,
@@ -2211,7 +2211,7 @@ exports[`<Search/> should render Search 1`] = `
                 onResponderTerminationRequest={[Function]}
                 onStartShouldSetResponder={[Function]}
                 style={
-                  Object {
+                  {
                     "borderRadius": 8,
                     "height": 156,
                     "opacity": 1,
@@ -2223,8 +2223,8 @@ exports[`<Search/> should render Search 1`] = `
               >
                 <View
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "flexBasis": 0,
                         "flexGrow": 1,
                         "flexShrink": 1,
@@ -2236,27 +2236,27 @@ exports[`<Search/> should render Search 1`] = `
                 >
                   <BVLinearGradient
                     colors={
-                      Array [
+                      [
                         4293670008,
                         4290777969,
                       ]
                     }
                     endPoint={
-                      Object {
+                      {
                         "x": 0.5,
                         "y": 1,
                       }
                     }
                     locations={null}
                     startPoint={
-                      Object {
+                      {
                         "x": 0.5,
                         "y": 0,
                       }
                     }
                     style={
-                      Array [
-                        Object {
+                      [
+                        {
                           "flexBasis": 0,
                           "flexGrow": 1,
                           "flexShrink": 1,
@@ -2266,8 +2266,8 @@ exports[`<Search/> should render Search 1`] = `
                   >
                     <View
                       style={
-                        Array [
-                          Object {
+                        [
+                          {
                             "position": "absolute",
                           },
                         ]
@@ -2288,8 +2288,8 @@ exports[`<Search/> should render Search 1`] = `
                 <View
                   baseColor="#C01371"
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "backgroundColor": "#C01371",
                         "paddingBottom": 8,
                         "paddingLeft": 8,
@@ -2302,8 +2302,8 @@ exports[`<Search/> should render Search 1`] = `
                 >
                   <Text
                     style={
-                      Array [
-                        Object {
+                      [
+                        {
                           "color": "#ffffff",
                           "fontFamily": "Montserrat-Bold",
                           "fontSize": 15,
@@ -2326,15 +2326,15 @@ exports[`<Search/> should render Search 1`] = `
         >
           <View
             style={
-              Object {
+              {
                 "flexDirection": "row",
               }
             }
           >
             <View
               style={
-                Array [
-                  Object {
+                [
+                  {
                     "flexBasis": "50%",
                     "paddingBottom": 8,
                     "paddingLeft": 8,
@@ -2358,7 +2358,7 @@ exports[`<Search/> should render Search 1`] = `
                 onResponderTerminationRequest={[Function]}
                 onStartShouldSetResponder={[Function]}
                 style={
-                  Object {
+                  {
                     "borderRadius": 8,
                     "height": 156,
                     "opacity": 1,
@@ -2370,8 +2370,8 @@ exports[`<Search/> should render Search 1`] = `
               >
                 <View
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "flexBasis": 0,
                         "flexGrow": 1,
                         "flexShrink": 1,
@@ -2383,27 +2383,27 @@ exports[`<Search/> should render Search 1`] = `
                 >
                   <BVLinearGradient
                     colors={
-                      Array [
+                      [
                         4294472509,
                         4291444499,
                       ]
                     }
                     endPoint={
-                      Object {
+                      {
                         "x": 0.5,
                         "y": 1,
                       }
                     }
                     locations={null}
                     startPoint={
-                      Object {
+                      {
                         "x": 0.5,
                         "y": 0,
                       }
                     }
                     style={
-                      Array [
-                        Object {
+                      [
+                        {
                           "flexBasis": 0,
                           "flexGrow": 1,
                           "flexShrink": 1,
@@ -2413,8 +2413,8 @@ exports[`<Search/> should render Search 1`] = `
                   >
                     <View
                       style={
-                        Array [
-                          Object {
+                        [
+                          {
                             "position": "absolute",
                           },
                         ]
@@ -2435,8 +2435,8 @@ exports[`<Search/> should render Search 1`] = `
                 <View
                   baseColor="#CA3F13"
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "backgroundColor": "#CA3F13",
                         "paddingBottom": 8,
                         "paddingLeft": 8,
@@ -2449,8 +2449,8 @@ exports[`<Search/> should render Search 1`] = `
                 >
                   <Text
                     style={
-                      Array [
-                        Object {
+                      [
+                        {
                           "color": "#ffffff",
                           "fontFamily": "Montserrat-Bold",
                           "fontSize": 15,
@@ -2467,8 +2467,8 @@ exports[`<Search/> should render Search 1`] = `
             </View>
             <View
               style={
-                Array [
-                  Object {
+                [
+                  {
                     "flexBasis": "50%",
                     "paddingBottom": 8,
                     "paddingLeft": 8,
@@ -2492,7 +2492,7 @@ exports[`<Search/> should render Search 1`] = `
                 onResponderTerminationRequest={[Function]}
                 onStartShouldSetResponder={[Function]}
                 style={
-                  Object {
+                  {
                     "borderRadius": 8,
                     "height": 156,
                     "opacity": 1,
@@ -2504,8 +2504,8 @@ exports[`<Search/> should render Search 1`] = `
               >
                 <View
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "flexBasis": 0,
                         "flexGrow": 1,
                         "flexShrink": 1,
@@ -2517,27 +2517,27 @@ exports[`<Search/> should render Search 1`] = `
                 >
                   <BVLinearGradient
                     colors={
-                      Array [
+                      [
                         4289562623,
                         4286789609,
                       ]
                     }
                     endPoint={
-                      Object {
+                      {
                         "x": 0.5,
                         "y": 1,
                       }
                     }
                     locations={null}
                     startPoint={
-                      Object {
+                      {
                         "x": 0.5,
                         "y": 0,
                       }
                     }
                     style={
-                      Array [
-                        Object {
+                      [
+                        {
                           "flexBasis": 0,
                           "flexGrow": 1,
                           "flexShrink": 1,
@@ -2547,8 +2547,8 @@ exports[`<Search/> should render Search 1`] = `
                   >
                     <View
                       style={
-                        Array [
-                          Object {
+                        [
+                          {
                             "position": "absolute",
                           },
                         ]
@@ -2569,8 +2569,8 @@ exports[`<Search/> should render Search 1`] = `
                 <View
                   baseColor="#8337E9"
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "backgroundColor": "#8337E9",
                         "paddingBottom": 8,
                         "paddingLeft": 8,
@@ -2583,8 +2583,8 @@ exports[`<Search/> should render Search 1`] = `
                 >
                   <Text
                     style={
-                      Array [
-                        Object {
+                      [
+                        {
                           "color": "#ffffff",
                           "fontFamily": "Montserrat-Bold",
                           "fontSize": 15,
@@ -2607,15 +2607,15 @@ exports[`<Search/> should render Search 1`] = `
         >
           <View
             style={
-              Object {
+              {
                 "flexDirection": "row",
               }
             }
           >
             <View
               style={
-                Array [
-                  Object {
+                [
+                  {
                     "flexBasis": "50%",
                     "paddingBottom": 8,
                     "paddingLeft": 8,
@@ -2639,7 +2639,7 @@ exports[`<Search/> should render Search 1`] = `
                 onResponderTerminationRequest={[Function]}
                 onStartShouldSetResponder={[Function]}
                 style={
-                  Object {
+                  {
                     "borderRadius": 8,
                     "height": 156,
                     "opacity": 1,
@@ -2651,8 +2651,8 @@ exports[`<Search/> should render Search 1`] = `
               >
                 <View
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "flexBasis": 0,
                         "flexGrow": 1,
                         "flexShrink": 1,
@@ -2664,27 +2664,27 @@ exports[`<Search/> should render Search 1`] = `
                 >
                   <BVLinearGradient
                     colors={
-                      Array [
+                      [
                         4294549013,
                         4290271489,
                       ]
                     }
                     endPoint={
-                      Object {
+                      {
                         "x": 0.5,
                         "y": 1,
                       }
                     }
                     locations={null}
                     startPoint={
-                      Object {
+                      {
                         "x": 0.5,
                         "y": 0,
                       }
                     }
                     style={
-                      Array [
-                        Object {
+                      [
+                        {
                           "flexBasis": 0,
                           "flexGrow": 1,
                           "flexShrink": 1,
@@ -2694,8 +2694,8 @@ exports[`<Search/> should render Search 1`] = `
                   >
                     <View
                       style={
-                        Array [
-                          Object {
+                        [
+                          {
                             "position": "absolute",
                           },
                         ]
@@ -2716,8 +2716,8 @@ exports[`<Search/> should render Search 1`] = `
                 <View
                   baseColor="#B85901"
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "backgroundColor": "#B85901",
                         "paddingBottom": 8,
                         "paddingLeft": 8,
@@ -2730,8 +2730,8 @@ exports[`<Search/> should render Search 1`] = `
                 >
                   <Text
                     style={
-                      Array [
-                        Object {
+                      [
+                        {
                           "color": "#ffffff",
                           "fontFamily": "Montserrat-Bold",
                           "fontSize": 15,
@@ -2748,8 +2748,8 @@ exports[`<Search/> should render Search 1`] = `
             </View>
             <View
               style={
-                Array [
-                  Object {
+                [
+                  {
                     "flexBasis": "50%",
                     "paddingBottom": 8,
                     "paddingLeft": 8,
@@ -2773,7 +2773,7 @@ exports[`<Search/> should render Search 1`] = `
                 onResponderTerminationRequest={[Function]}
                 onStartShouldSetResponder={[Function]}
                 style={
-                  Object {
+                  {
                     "borderRadius": 8,
                     "height": 156,
                     "opacity": 1,
@@ -2785,8 +2785,8 @@ exports[`<Search/> should render Search 1`] = `
               >
                 <View
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "flexBasis": 0,
                         "flexGrow": 1,
                         "flexShrink": 1,
@@ -2798,27 +2798,27 @@ exports[`<Search/> should render Search 1`] = `
                 >
                   <BVLinearGradient
                     colors={
-                      Array [
+                      [
                         4280802472,
                         4279141492,
                       ]
                     }
                     endPoint={
-                      Object {
+                      {
                         "x": 0.5,
                         "y": 1,
                       }
                     }
                     locations={null}
                     startPoint={
-                      Object {
+                      {
                         "x": 0.5,
                         "y": 0,
                       }
                     }
                     style={
-                      Array [
-                        Object {
+                      [
+                        {
                           "flexBasis": 0,
                           "flexGrow": 1,
                           "flexShrink": 1,
@@ -2828,8 +2828,8 @@ exports[`<Search/> should render Search 1`] = `
                   >
                     <View
                       style={
-                        Array [
-                          Object {
+                        [
+                          {
                             "position": "absolute",
                           },
                         ]
@@ -2850,8 +2850,8 @@ exports[`<Search/> should render Search 1`] = `
                 <View
                   baseColor="#0E8474"
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "backgroundColor": "#0E8474",
                         "paddingBottom": 8,
                         "paddingLeft": 8,
@@ -2864,8 +2864,8 @@ exports[`<Search/> should render Search 1`] = `
                 >
                   <Text
                     style={
-                      Array [
-                        Object {
+                      [
+                        {
                           "color": "#ffffff",
                           "fontFamily": "Montserrat-Bold",
                           "fontSize": 15,
@@ -2888,8 +2888,8 @@ exports[`<Search/> should render Search 1`] = `
       customHeight={72}
       enable={true}
       style={
-        Array [
-          Object {
+        [
+          {
             "height": 72,
           },
         ]

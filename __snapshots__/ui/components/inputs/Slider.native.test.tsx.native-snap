@@ -1,11 +1,11 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<Slider /> should render correctly 1`] = `
-Array [
+[
   <Text
     style={
-      Array [
-        Object {
+      [
+        {
           "color": "#161617",
           "fontFamily": "Montserrat-Bold",
           "fontSize": 15,
@@ -22,8 +22,8 @@ Array [
   <View
     numberOfSpaces={4}
     style={
-      Array [
-        Object {
+      [
+        {
           "height": 16,
         },
       ]
@@ -32,8 +32,8 @@ Array [
   <View
     shouldShowMinMaxValues={false}
     style={
-      Array [
-        Object {},
+      [
+        {},
       ]
     }
     testID="slider"
@@ -41,13 +41,13 @@ Array [
     <View>
       <View
         style={
-          Array [
-            Object {
+          [
+            {
               "height": 50,
               "justifyContent": "center",
               "position": "relative",
             },
-            Object {
+            {
               "height": 32,
             },
           ]
@@ -55,11 +55,11 @@ Array [
       >
         <View
           style={
-            Array [
-              Object {
+            [
+              {
                 "flexDirection": "row",
               },
-              Object {
+              {
                 "width": 150,
               },
             ]
@@ -67,23 +67,23 @@ Array [
         >
           <View
             style={
-              Array [
-                Object {
+              [
+                {
                   "backgroundColor": "#A7A7A7",
                   "borderRadius": 2,
                   "height": 2,
                 },
-                Object {
+                {
                   "borderRadius": 24,
                   "height": 16,
                   "marginTop": -8,
                 },
-                Object {
+                {
                   "backgroundColor": "#ffffff",
                   "borderColor": "#90949D",
                   "borderWidth": 2,
                 },
-                Object {
+                {
                   "width": 0,
                 },
               ]
@@ -103,21 +103,21 @@ Array [
             onStartShouldSetResponder={[Function]}
             onStartShouldSetResponderCapture={[Function]}
             style={
-              Array [
-                Object {
+              [
+                {
                   "backgroundColor": "#A7A7A7",
                   "borderRadius": 2,
                   "height": 2,
                 },
-                Object {
+                {
                   "borderRadius": 24,
                   "height": 16,
                   "marginTop": -8,
                 },
-                Object {
+                {
                   "backgroundColor": "#eb0055",
                 },
-                Object {
+                {
                   "width": 150,
                 },
               ]
@@ -125,23 +125,23 @@ Array [
           />
           <View
             style={
-              Array [
-                Object {
+              [
+                {
                   "backgroundColor": "#A7A7A7",
                   "borderRadius": 2,
                   "height": 2,
                 },
-                Object {
+                {
                   "borderRadius": 24,
                   "height": 16,
                   "marginTop": -8,
                 },
-                Object {
+                {
                   "backgroundColor": "#ffffff",
                   "borderColor": "#90949D",
                   "borderWidth": 2,
                 },
-                Object {
+                {
                   "width": 0,
                 },
               ]
@@ -149,8 +149,8 @@ Array [
           />
           <View
             style={
-              Array [
-                Object {
+              [
+                {
                   "alignItems": "center",
                   "backgroundColor": "transparent",
                   "height": 48,
@@ -158,7 +158,7 @@ Array [
                   "position": "absolute",
                   "width": 48,
                 },
-                Object {
+                {
                   "left": -24,
                   "top": -24,
                 },
@@ -181,14 +181,14 @@ Array [
               onStartShouldSetResponder={[Function]}
               onStartShouldSetResponderCapture={[Function]}
               style={
-                Array [
-                  Object {
+                [
+                  {
                     "alignItems": "center",
                     "alignSelf": "stretch",
                     "backgroundColor": "transparent",
                     "justifyContent": "center",
                   },
-                  Object {
+                  {
                     "borderRadius": 15,
                   },
                 ]
@@ -208,15 +208,15 @@ Array [
               >
                 <View
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "backgroundColor": "#FFFFFF",
                         "borderColor": "#DDDDDD",
                         "borderRadius": 30,
                         "borderWidth": 1,
                         "height": 30,
                         "shadowColor": "#000000",
-                        "shadowOffset": Object {
+                        "shadowOffset": {
                           "height": 3,
                           "width": 0,
                         },
@@ -224,7 +224,7 @@ Array [
                         "shadowRadius": 1,
                         "width": 30,
                       },
-                      Object {
+                      {
                         "backgroundColor": "#ffffff",
                         "borderColor": "#161617",
                         "borderRadius": 28,
@@ -243,8 +243,8 @@ Array [
           </View>
           <View
             style={
-              Array [
-                Object {
+              [
+                {
                   "alignItems": "center",
                   "backgroundColor": "transparent",
                   "height": 48,
@@ -252,7 +252,7 @@ Array [
                   "position": "absolute",
                   "width": 48,
                 },
-                Object {
+                {
                   "right": -24,
                   "top": -24,
                 },
@@ -274,14 +274,14 @@ Array [
               onStartShouldSetResponder={[Function]}
               onStartShouldSetResponderCapture={[Function]}
               style={
-                Array [
-                  Object {
+                [
+                  {
                     "alignItems": "center",
                     "alignSelf": "stretch",
                     "backgroundColor": "transparent",
                     "justifyContent": "center",
                   },
-                  Object {
+                  {
                     "borderRadius": 15,
                   },
                 ]
@@ -301,15 +301,15 @@ Array [
               >
                 <View
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "backgroundColor": "#FFFFFF",
                         "borderColor": "#DDDDDD",
                         "borderRadius": 30,
                         "borderWidth": 1,
                         "height": 30,
                         "shadowColor": "#000000",
-                        "shadowOffset": Object {
+                        "shadowOffset": {
                           "height": 3,
                           "width": 0,
                         },
@@ -317,7 +317,7 @@ Array [
                         "shadowRadius": 1,
                         "width": 30,
                       },
-                      Object {
+                      {
                         "backgroundColor": "#ffffff",
                         "borderColor": "#161617",
                         "borderRadius": 28,

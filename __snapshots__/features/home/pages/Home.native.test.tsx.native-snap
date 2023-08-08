@@ -3,8 +3,8 @@
 exports[`Home page should render correctly 1`] = `
 <View
   style={
-    Array [
-      Object {
+    [
+      {
         "flexBasis": 1,
         "flexGrow": 1,
         "flexShrink": 0,
@@ -15,8 +15,8 @@ exports[`Home page should render correctly 1`] = `
   <View
     hide={false}
     style={
-      Array [
-        Object {
+      [
+        {
           "height": "100%",
           "overflow": "hidden",
         },
@@ -32,10 +32,10 @@ exports[`Home page should render correctly 1`] = `
       ListHeaderComponent={<Header />}
       bounces={true}
       data={
-        Array [
-          Object {
+        [
+          {
             "data": undefined,
-            "displayParameters": Object {
+            "displayParameters": {
               "layout": "one-item-medium",
               "minOffers": 1,
               "subtitle": "Ceci n’est pas une playlist de lieux",
@@ -43,11 +43,11 @@ exports[`Home page should render correctly 1`] = `
             },
             "id": "105MMz59tftcxXJICXt7ja",
             "type": "VenuesModule",
-            "venuesParameters": Object {
+            "venuesParameters": {
               "hitsPerPage": 15,
               "isGeolocated": false,
               "title": "Exemple de playlist de lieux",
-              "venueTypes": Array [
+              "venueTypes": [
                 "Bibliothèque ou médiathèque",
                 "Arts visuels, arts plastiques et galeries",
                 "Centre culturel",
@@ -86,9 +86,9 @@ exports[`Home page should render correctly 1`] = `
       removeClippedSubviews={false}
       renderItem={[Function]}
       scrollEventThrottle={50}
-      stickyHeaderIndices={Array []}
+      stickyHeaderIndices={[]}
       testID="homeBodyScrollView"
-      viewabilityConfigCallbackPairs={Array []}
+      viewabilityConfigCallbackPairs={[]}
     >
       <View>
         <View
@@ -96,8 +96,8 @@ exports[`Home page should render correctly 1`] = `
         >
           <View
             style={
-              Array [
-                Object {
+              [
+                {
                   "flexGrow": 1,
                   "flexShrink": 0,
                 },
@@ -116,7 +116,7 @@ exports[`Home page should render correctly 1`] = `
               onResponderTerminationRequest={[Function]}
               onStartShouldSetResponder={[Function]}
               style={
-                Object {
+                {
                   "borderColor": "black",
                   "borderStyle": "solid",
                   "borderWidth": 1,
@@ -135,8 +135,8 @@ exports[`Home page should render correctly 1`] = `
             >
               <Text
                 style={
-                  Array [
-                    Object {
+                  [
+                    {
                       "color": "#161617",
                       "fontFamily": "Montserrat-Regular",
                       "fontSize": 15,
@@ -150,8 +150,8 @@ exports[`Home page should render correctly 1`] = `
             </View>
             <View
               style={
-                Array [
-                  Object {
+                [
+                  {
                     "marginBottom": 8,
                     "marginHorizontal": 24,
                     "marginTop": 24,
@@ -163,8 +163,8 @@ exports[`Home page should render correctly 1`] = `
                 customHeight={16}
                 enable={true}
                 style={
-                  Array [
-                    Object {
+                  [
+                    {
                       "height": 16,
                     },
                   ]
@@ -173,8 +173,8 @@ exports[`Home page should render correctly 1`] = `
               <Text
                 numberOfLines={2}
                 style={
-                  Array [
-                    Object {
+                  [
+                    {
                       "color": "#161617",
                       "fontFamily": "Montserrat-Black",
                       "fontSize": 26,
@@ -188,8 +188,8 @@ exports[`Home page should render correctly 1`] = `
             </View>
             <View
               style={
-                Array [
-                  Object {
+                [
+                  {
                     "marginHorizontal": 24,
                   },
                 ]
@@ -197,8 +197,8 @@ exports[`Home page should render correctly 1`] = `
             >
               <Text
                 style={
-                  Array [
-                    Object {
+                  [
+                    {
                       "color": "#161617",
                       "fontFamily": "Montserrat-Regular",
                       "fontSize": 15,
@@ -212,8 +212,8 @@ exports[`Home page should render correctly 1`] = `
               <View
                 numberOfSpaces={6}
                 style={
-                  Array [
-                    Object {
+                  [
+                    {
                       "height": 24,
                     },
                   ]
@@ -221,8 +221,8 @@ exports[`Home page should render correctly 1`] = `
               />
               <View
                 style={
-                  Array [
-                    Object {
+                  [
+                    {
                       "marginBottom": 32,
                     },
                   ]
@@ -241,7 +241,7 @@ exports[`Home page should render correctly 1`] = `
                   onResponderTerminationRequest={[Function]}
                   onStartShouldSetResponder={[Function]}
                   style={
-                    Object {
+                    {
                       "opacity": 1,
                       "userSelect": "auto",
                     }
@@ -249,8 +249,8 @@ exports[`Home page should render correctly 1`] = `
                 >
                   <View
                     style={
-                      Array [
-                        Object {
+                      [
+                        {
                           "borderRadius": 7,
                           "overflow": "hidden",
                         },
@@ -260,8 +260,8 @@ exports[`Home page should render correctly 1`] = `
                     <View
                       accessibilityIgnoresInvertColors={true}
                       style={
-                        Array [
-                          Object {
+                        [
+                          {
                             "backgroundColor": "#eb0055",
                             "justifyContent": "center",
                             "width": "100%",
@@ -271,20 +271,20 @@ exports[`Home page should render correctly 1`] = `
                     >
                       <Image
                         source={
-                          Object {
+                          {
                             "uri": "",
                           }
                         }
                         style={
-                          Array [
-                            Object {
+                          [
+                            {
                               "bottom": 0,
                               "left": 0,
                               "position": "absolute",
                               "right": 0,
                               "top": 0,
                             },
-                            Object {
+                            {
                               "height": undefined,
                               "width": "100%",
                             },
@@ -295,8 +295,8 @@ exports[`Home page should render correctly 1`] = `
                       />
                       <View
                         style={
-                          Array [
-                            Object {
+                          [
+                            {
                               "alignItems": "center",
                               "borderColor": "#90949D",
                               "borderRadius": 7,
@@ -312,8 +312,8 @@ exports[`Home page should render correctly 1`] = `
                       >
                         <View
                           style={
-                            Array [
-                              Object {
+                            [
+                              {
                                 "alignContent": "center",
                                 "marginRight": 16,
                               },
@@ -332,8 +332,8 @@ exports[`Home page should render correctly 1`] = `
                         </View>
                         <View
                           style={
-                            Array [
-                              Object {
+                            [
+                              {
                                 "flexGrow": 1,
                                 "flexShrink": 1,
                                 "marginRight": 16,
@@ -344,8 +344,8 @@ exports[`Home page should render correctly 1`] = `
                         >
                           <Text
                             style={
-                              Array [
-                                Object {
+                              [
+                                {
                                   "color": "#ffffff",
                                   "fontFamily": "Montserrat-Bold",
                                   "fontSize": 15,
@@ -358,8 +358,8 @@ exports[`Home page should render correctly 1`] = `
                           </Text>
                           <Text
                             style={
-                              Array [
-                                Object {
+                              [
+                                {
                                   "color": "#ffffff",
                                   "fontFamily": "Montserrat-Regular",
                                   "fontSize": 15,
@@ -400,8 +400,8 @@ exports[`Home page should render correctly 1`] = `
             customHeight={72}
             enable={true}
             style={
-              Array [
-                Object {
+              [
+                {
                   "height": 72,
                 },
               ]
@@ -414,8 +414,8 @@ exports[`Home page should render correctly 1`] = `
   <View
     numberOfSpaces={6}
     style={
-      Array [
-        Object {
+      [
+        {
           "height": 24,
         },
       ]
@@ -424,8 +424,8 @@ exports[`Home page should render correctly 1`] = `
   <View
     height={16}
     style={
-      Array [
-        Object {
+      [
+        {
           "backdropFilter": "blur(20px)",
           "height": 16,
           "left": 0,
@@ -440,12 +440,12 @@ exports[`Home page should render correctly 1`] = `
       blurAmount={8}
       blurType="light"
       style={
-        Array [
-          Object {
+        [
+          {
             "backgroundColor": "transparent",
           },
-          Array [
-            Object {
+          [
+            {
               "flexBasis": 0,
               "flexGrow": 1,
               "flexShrink": 1,

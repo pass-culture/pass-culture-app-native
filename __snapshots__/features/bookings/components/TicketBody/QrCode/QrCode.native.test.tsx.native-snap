@@ -3,8 +3,8 @@
 exports[`<QrCode/> should render correctly 1`] = `
 <View
   style={
-    Array [
-      Object {
+    [
+      {
         "alignItems": "center",
       },
     ]

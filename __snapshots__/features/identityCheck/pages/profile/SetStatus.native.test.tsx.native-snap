@@ -1,12 +1,12 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<SetStatus/> should render correctly 1`] = `
-Array [
+[
   <View
     accessibilityRole="header"
     style={
-      Array [
-        Object {
+      [
+        {
           "backgroundColor": "rgba(255,255,255,0)",
           "borderBottomColor": "#F1F1F4",
           "borderBottomWidth": 1,
@@ -23,8 +23,8 @@ Array [
       customHeight={16}
       enable={true}
       style={
-        Array [
-          Object {
+        [
+          {
             "height": 16,
           },
         ]
@@ -32,8 +32,8 @@ Array [
     />
     <View
       style={
-        Array [
-          Object {
+        [
+          {
             "alignItems": "center",
             "height": 48,
             "justifyContent": "center",
@@ -43,8 +43,8 @@ Array [
     >
       <View
         style={
-          Array [
-            Object {
+          [
+            {
               "alignItems": "center",
               "flexDirection": "row",
               "justifyContent": "space-between",
@@ -56,8 +56,8 @@ Array [
         <View
           positionInHeader="left"
           style={
-            Array [
-              Object {
+            [
+              {
                 "alignItems": "center",
                 "flexBasis": 0,
                 "flexDirection": "row",
@@ -85,7 +85,7 @@ Array [
             onResponderTerminationRequest={[Function]}
             onStartShouldSetResponder={[Function]}
             style={
-              Object {
+              {
                 "alignItems": "center",
                 "flexGrow": 1,
                 "height": 40,
@@ -108,8 +108,8 @@ Array [
             </View>
             <Text
               style={
-                Array [
-                  Object {
+                [
+                  {
                     "display": "none",
                   },
                 ]
@@ -122,8 +122,8 @@ Array [
         <Text
           numberOfLines={1}
           style={
-            Array [
-              Object {
+            [
+              {
                 "color": "#161617",
                 "fontFamily": "Montserrat-Regular",
                 "fontSize": 15,
@@ -138,8 +138,8 @@ Array [
         <View
           positionInHeader="right"
           style={
-            Array [
-              Object {
+            [
+              {
                 "alignItems": "center",
                 "flexBasis": 0,
                 "flexDirection": "row",
@@ -158,8 +158,8 @@ Array [
   </View>,
   <View
     style={
-      Array [
-        Object {
+      [
+        {
           "flexBasis": 0,
           "flexGrow": 1,
           "flexShrink": 1,
@@ -170,9 +170,9 @@ Array [
     <View
       onLayout={[Function]}
       style={
-        Array [
-          Array [
-            Object {
+        [
+          [
+            {
               "alignItems": "center",
               "backgroundColor": "#ffffff",
               "borderTopLeftRadius": 22,
@@ -186,7 +186,7 @@ Array [
               "paddingTop": 32,
             },
           ],
-          Object {
+          {
             "paddingBottom": 0,
           },
         ]
@@ -194,8 +194,8 @@ Array [
     >
       <View
         style={
-          Array [
-            Object {
+          [
+            {
               "flexBasis": 0,
               "flexGrow": 1,
               "flexShrink": 1,
@@ -208,7 +208,7 @@ Array [
         <RCTScrollView
           bottomChildrenViewHeight={0}
           contentContainerStyle={
-            Object {
+            {
               "flexDirection": "column",
               "flexGrow": 1,
               "paddingBottom": 0,
@@ -219,23 +219,23 @@ Array [
           onContentSizeChange={[Function]}
           onLayout={[Function]}
           style={
-            Array [
-              Object {},
+            [
+              {},
             ]
           }
         >
           <View>
             <View
               style={
-                Object {
+                {
                   "height": 65,
                 }
               }
             />
             <View
               style={
-                Array [
-                  Object {
+                [
+                  {
                     "maxWidth": 500,
                     "width": "100%",
                   },
@@ -244,8 +244,8 @@ Array [
             >
               <View
                 style={
-                  Array [
-                    Object {
+                  [
+                    {
                       "alignItems": "center",
                       "width": "100%",
                     },
@@ -255,8 +255,8 @@ Array [
                 <Text
                   nativeID="testUuidV4"
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "color": "#161617",
                         "fontFamily": "Montserrat-Medium",
                         "fontSize": 18,
@@ -272,8 +272,8 @@ Array [
               <View
                 numberOfSpaces={5}
                 style={
-                  Array [
-                    Object {
+                  [
+                    {
                       "height": 20,
                     },
                   ]
@@ -286,8 +286,8 @@ Array [
                 <View
                   accessibilityRole="list"
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "flexDirection": "column",
                         "paddingLeft": 0,
                       },
@@ -297,8 +297,8 @@ Array [
                   <View
                     accessibilityRole="none"
                     style={
-                      Array [
-                        Object {
+                      [
+                        {
                           "display": "flex",
                         },
                       ]
@@ -308,7 +308,7 @@ Array [
                       accessibilityLabel="Collégien"
                       accessibilityRole="radio"
                       accessibilityState={
-                        Object {
+                        {
                           "checked": false,
                         }
                       }
@@ -323,7 +323,7 @@ Array [
                       onResponderTerminationRequest={[Function]}
                       onStartShouldSetResponder={[Function]}
                       style={
-                        Object {
+                        {
                           "alignItems": "center",
                           "backgroundColor": "#ffffff",
                           "borderColor": "#90949D",
@@ -345,8 +345,8 @@ Array [
                       <View
                         isSelected={false}
                         style={
-                          Array [
-                            Object {
+                          [
+                            {
                               "alignItems": "center",
                               "borderColor": "#90949D",
                               "borderRadius": 8,
@@ -363,8 +363,8 @@ Array [
                         <View
                           isSelected={false}
                           style={
-                            Array [
-                              Object {
+                            [
+                              {
                                 "backgroundColor": "transparent",
                                 "borderRadius": 16,
                                 "height": 8,
@@ -376,8 +376,8 @@ Array [
                       </View>
                       <View
                         style={
-                          Array [
-                            Object {
+                          [
+                            {
                               "flexBasis": 0,
                               "flexGrow": 1,
                               "flexShrink": 1,
@@ -387,8 +387,8 @@ Array [
                       >
                         <View
                           style={
-                            Array [
-                              Object {
+                            [
+                              {
                                 "alignItems": "center",
                                 "flexDirection": "row",
                               },
@@ -397,8 +397,8 @@ Array [
                         >
                           <View
                             style={
-                              Array [
-                                Object {
+                              [
+                                {
                                   "flexBasis": 0,
                                   "flexGrow": 1,
                                   "flexShrink": 1,
@@ -410,8 +410,8 @@ Array [
                             <Text
                               isHover={false}
                               style={
-                                Array [
-                                  Object {
+                                [
+                                  {
                                     "color": "#161617",
                                     "fontFamily": "Montserrat-Bold",
                                     "fontSize": 15,
@@ -426,8 +426,8 @@ Array [
                           </View>
                           <Text
                             style={
-                              Array [
-                                Object {
+                              [
+                                {
                                   "color": "#161617",
                                   "fontFamily": "Montserrat-Regular",
                                   "fontSize": 15,
@@ -443,8 +443,8 @@ Array [
                     <View
                       numberOfSpaces={3}
                       style={
-                        Array [
-                          Object {
+                        [
+                          {
                             "height": 12,
                           },
                         ]
@@ -454,8 +454,8 @@ Array [
                   <View
                     accessibilityRole="none"
                     style={
-                      Array [
-                        Object {
+                      [
+                        {
                           "display": "flex",
                         },
                       ]
@@ -465,7 +465,7 @@ Array [
                       accessibilityLabel="Lycéen"
                       accessibilityRole="radio"
                       accessibilityState={
-                        Object {
+                        {
                           "checked": false,
                         }
                       }
@@ -480,7 +480,7 @@ Array [
                       onResponderTerminationRequest={[Function]}
                       onStartShouldSetResponder={[Function]}
                       style={
-                        Object {
+                        {
                           "alignItems": "center",
                           "backgroundColor": "#ffffff",
                           "borderColor": "#90949D",
@@ -502,8 +502,8 @@ Array [
                       <View
                         isSelected={false}
                         style={
-                          Array [
-                            Object {
+                          [
+                            {
                               "alignItems": "center",
                               "borderColor": "#90949D",
                               "borderRadius": 8,
@@ -520,8 +520,8 @@ Array [
                         <View
                           isSelected={false}
                           style={
-                            Array [
-                              Object {
+                            [
+                              {
                                 "backgroundColor": "transparent",
                                 "borderRadius": 16,
                                 "height": 8,
@@ -533,8 +533,8 @@ Array [
                       </View>
                       <View
                         style={
-                          Array [
-                            Object {
+                          [
+                            {
                               "flexBasis": 0,
                               "flexGrow": 1,
                               "flexShrink": 1,
@@ -544,8 +544,8 @@ Array [
                       >
                         <View
                           style={
-                            Array [
-                              Object {
+                            [
+                              {
                                 "alignItems": "center",
                                 "flexDirection": "row",
                               },
@@ -554,8 +554,8 @@ Array [
                         >
                           <View
                             style={
-                              Array [
-                                Object {
+                              [
+                                {
                                   "flexBasis": 0,
                                   "flexGrow": 1,
                                   "flexShrink": 1,
@@ -567,8 +567,8 @@ Array [
                             <Text
                               isHover={false}
                               style={
-                                Array [
-                                  Object {
+                                [
+                                  {
                                     "color": "#161617",
                                     "fontFamily": "Montserrat-Bold",
                                     "fontSize": 15,
@@ -583,8 +583,8 @@ Array [
                           </View>
                           <Text
                             style={
-                              Array [
-                                Object {
+                              [
+                                {
                                   "color": "#161617",
                                   "fontFamily": "Montserrat-Regular",
                                   "fontSize": 15,
@@ -600,8 +600,8 @@ Array [
                     <View
                       numberOfSpaces={3}
                       style={
-                        Array [
-                          Object {
+                        [
+                          {
                             "height": 12,
                           },
                         ]
@@ -611,8 +611,8 @@ Array [
                   <View
                     accessibilityRole="none"
                     style={
-                      Array [
-                        Object {
+                      [
+                        {
                           "display": "flex",
                         },
                       ]
@@ -622,7 +622,7 @@ Array [
                       accessibilityLabel="Étudiant"
                       accessibilityRole="radio"
                       accessibilityState={
-                        Object {
+                        {
                           "checked": false,
                         }
                       }
@@ -637,7 +637,7 @@ Array [
                       onResponderTerminationRequest={[Function]}
                       onStartShouldSetResponder={[Function]}
                       style={
-                        Object {
+                        {
                           "alignItems": "center",
                           "backgroundColor": "#ffffff",
                           "borderColor": "#90949D",
@@ -659,8 +659,8 @@ Array [
                       <View
                         isSelected={false}
                         style={
-                          Array [
-                            Object {
+                          [
+                            {
                               "alignItems": "center",
                               "borderColor": "#90949D",
                               "borderRadius": 8,
@@ -677,8 +677,8 @@ Array [
                         <View
                           isSelected={false}
                           style={
-                            Array [
-                              Object {
+                            [
+                              {
                                 "backgroundColor": "transparent",
                                 "borderRadius": 16,
                                 "height": 8,
@@ -690,8 +690,8 @@ Array [
                       </View>
                       <View
                         style={
-                          Array [
-                            Object {
+                          [
+                            {
                               "flexBasis": 0,
                               "flexGrow": 1,
                               "flexShrink": 1,
@@ -701,8 +701,8 @@ Array [
                       >
                         <View
                           style={
-                            Array [
-                              Object {
+                            [
+                              {
                                 "alignItems": "center",
                                 "flexDirection": "row",
                               },
@@ -711,8 +711,8 @@ Array [
                         >
                           <View
                             style={
-                              Array [
-                                Object {
+                              [
+                                {
                                   "flexBasis": 0,
                                   "flexGrow": 1,
                                   "flexShrink": 1,
@@ -724,8 +724,8 @@ Array [
                             <Text
                               isHover={false}
                               style={
-                                Array [
-                                  Object {
+                                [
+                                  {
                                     "color": "#161617",
                                     "fontFamily": "Montserrat-Bold",
                                     "fontSize": 15,
@@ -740,8 +740,8 @@ Array [
                           </View>
                           <Text
                             style={
-                              Array [
-                                Object {
+                              [
+                                {
                                   "color": "#161617",
                                   "fontFamily": "Montserrat-Regular",
                                   "fontSize": 15,
@@ -757,8 +757,8 @@ Array [
                     <View
                       numberOfSpaces={3}
                       style={
-                        Array [
-                          Object {
+                        [
+                          {
                             "height": 12,
                           },
                         ]
@@ -768,8 +768,8 @@ Array [
                   <View
                     accessibilityRole="none"
                     style={
-                      Array [
-                        Object {
+                      [
+                        {
                           "display": "flex",
                         },
                       ]
@@ -779,7 +779,7 @@ Array [
                       accessibilityLabel="Employé"
                       accessibilityRole="radio"
                       accessibilityState={
-                        Object {
+                        {
                           "checked": false,
                         }
                       }
@@ -794,7 +794,7 @@ Array [
                       onResponderTerminationRequest={[Function]}
                       onStartShouldSetResponder={[Function]}
                       style={
-                        Object {
+                        {
                           "alignItems": "center",
                           "backgroundColor": "#ffffff",
                           "borderColor": "#90949D",
@@ -816,8 +816,8 @@ Array [
                       <View
                         isSelected={false}
                         style={
-                          Array [
-                            Object {
+                          [
+                            {
                               "alignItems": "center",
                               "borderColor": "#90949D",
                               "borderRadius": 8,
@@ -834,8 +834,8 @@ Array [
                         <View
                           isSelected={false}
                           style={
-                            Array [
-                              Object {
+                            [
+                              {
                                 "backgroundColor": "transparent",
                                 "borderRadius": 16,
                                 "height": 8,
@@ -847,8 +847,8 @@ Array [
                       </View>
                       <View
                         style={
-                          Array [
-                            Object {
+                          [
+                            {
                               "flexBasis": 0,
                               "flexGrow": 1,
                               "flexShrink": 1,
@@ -858,8 +858,8 @@ Array [
                       >
                         <View
                           style={
-                            Array [
-                              Object {
+                            [
+                              {
                                 "alignItems": "center",
                                 "flexDirection": "row",
                               },
@@ -868,8 +868,8 @@ Array [
                         >
                           <View
                             style={
-                              Array [
-                                Object {
+                              [
+                                {
                                   "flexBasis": 0,
                                   "flexGrow": 1,
                                   "flexShrink": 1,
@@ -881,8 +881,8 @@ Array [
                             <Text
                               isHover={false}
                               style={
-                                Array [
-                                  Object {
+                                [
+                                  {
                                     "color": "#161617",
                                     "fontFamily": "Montserrat-Bold",
                                     "fontSize": 15,
@@ -897,8 +897,8 @@ Array [
                           </View>
                           <Text
                             style={
-                              Array [
-                                Object {
+                              [
+                                {
                                   "color": "#161617",
                                   "fontFamily": "Montserrat-Regular",
                                   "fontSize": 15,
@@ -914,8 +914,8 @@ Array [
                     <View
                       numberOfSpaces={3}
                       style={
-                        Array [
-                          Object {
+                        [
+                          {
                             "height": 12,
                           },
                         ]
@@ -925,8 +925,8 @@ Array [
                   <View
                     accessibilityRole="none"
                     style={
-                      Array [
-                        Object {
+                      [
+                        {
                           "display": "flex",
                         },
                       ]
@@ -936,7 +936,7 @@ Array [
                       accessibilityLabel="Apprenti"
                       accessibilityRole="radio"
                       accessibilityState={
-                        Object {
+                        {
                           "checked": false,
                         }
                       }
@@ -951,7 +951,7 @@ Array [
                       onResponderTerminationRequest={[Function]}
                       onStartShouldSetResponder={[Function]}
                       style={
-                        Object {
+                        {
                           "alignItems": "center",
                           "backgroundColor": "#ffffff",
                           "borderColor": "#90949D",
@@ -973,8 +973,8 @@ Array [
                       <View
                         isSelected={false}
                         style={
-                          Array [
-                            Object {
+                          [
+                            {
                               "alignItems": "center",
                               "borderColor": "#90949D",
                               "borderRadius": 8,
@@ -991,8 +991,8 @@ Array [
                         <View
                           isSelected={false}
                           style={
-                            Array [
-                              Object {
+                            [
+                              {
                                 "backgroundColor": "transparent",
                                 "borderRadius": 16,
                                 "height": 8,
@@ -1004,8 +1004,8 @@ Array [
                       </View>
                       <View
                         style={
-                          Array [
-                            Object {
+                          [
+                            {
                               "flexBasis": 0,
                               "flexGrow": 1,
                               "flexShrink": 1,
@@ -1015,8 +1015,8 @@ Array [
                       >
                         <View
                           style={
-                            Array [
-                              Object {
+                            [
+                              {
                                 "alignItems": "center",
                                 "flexDirection": "row",
                               },
@@ -1025,8 +1025,8 @@ Array [
                         >
                           <View
                             style={
-                              Array [
-                                Object {
+                              [
+                                {
                                   "flexBasis": 0,
                                   "flexGrow": 1,
                                   "flexShrink": 1,
@@ -1038,8 +1038,8 @@ Array [
                             <Text
                               isHover={false}
                               style={
-                                Array [
-                                  Object {
+                                [
+                                  {
                                     "color": "#161617",
                                     "fontFamily": "Montserrat-Bold",
                                     "fontSize": 15,
@@ -1054,8 +1054,8 @@ Array [
                           </View>
                           <Text
                             style={
-                              Array [
-                                Object {
+                              [
+                                {
                                   "color": "#161617",
                                   "fontFamily": "Montserrat-Regular",
                                   "fontSize": 15,
@@ -1071,8 +1071,8 @@ Array [
                     <View
                       numberOfSpaces={3}
                       style={
-                        Array [
-                          Object {
+                        [
+                          {
                             "height": 12,
                           },
                         ]
@@ -1082,8 +1082,8 @@ Array [
                   <View
                     accessibilityRole="none"
                     style={
-                      Array [
-                        Object {
+                      [
+                        {
                           "display": "flex",
                         },
                       ]
@@ -1093,7 +1093,7 @@ Array [
                       accessibilityLabel="Alternant"
                       accessibilityRole="radio"
                       accessibilityState={
-                        Object {
+                        {
                           "checked": false,
                         }
                       }
@@ -1108,7 +1108,7 @@ Array [
                       onResponderTerminationRequest={[Function]}
                       onStartShouldSetResponder={[Function]}
                       style={
-                        Object {
+                        {
                           "alignItems": "center",
                           "backgroundColor": "#ffffff",
                           "borderColor": "#90949D",
@@ -1130,8 +1130,8 @@ Array [
                       <View
                         isSelected={false}
                         style={
-                          Array [
-                            Object {
+                          [
+                            {
                               "alignItems": "center",
                               "borderColor": "#90949D",
                               "borderRadius": 8,
@@ -1148,8 +1148,8 @@ Array [
                         <View
                           isSelected={false}
                           style={
-                            Array [
-                              Object {
+                            [
+                              {
                                 "backgroundColor": "transparent",
                                 "borderRadius": 16,
                                 "height": 8,
@@ -1161,8 +1161,8 @@ Array [
                       </View>
                       <View
                         style={
-                          Array [
-                            Object {
+                          [
+                            {
                               "flexBasis": 0,
                               "flexGrow": 1,
                               "flexShrink": 1,
@@ -1172,8 +1172,8 @@ Array [
                       >
                         <View
                           style={
-                            Array [
-                              Object {
+                            [
+                              {
                                 "alignItems": "center",
                                 "flexDirection": "row",
                               },
@@ -1182,8 +1182,8 @@ Array [
                         >
                           <View
                             style={
-                              Array [
-                                Object {
+                              [
+                                {
                                   "flexBasis": 0,
                                   "flexGrow": 1,
                                   "flexShrink": 1,
@@ -1195,8 +1195,8 @@ Array [
                             <Text
                               isHover={false}
                               style={
-                                Array [
-                                  Object {
+                                [
+                                  {
                                     "color": "#161617",
                                     "fontFamily": "Montserrat-Bold",
                                     "fontSize": 15,
@@ -1211,8 +1211,8 @@ Array [
                           </View>
                           <Text
                             style={
-                              Array [
-                                Object {
+                              [
+                                {
                                   "color": "#161617",
                                   "fontFamily": "Montserrat-Regular",
                                   "fontSize": 15,
@@ -1228,8 +1228,8 @@ Array [
                     <View
                       numberOfSpaces={3}
                       style={
-                        Array [
-                          Object {
+                        [
+                          {
                             "height": 12,
                           },
                         ]
@@ -1239,8 +1239,8 @@ Array [
                   <View
                     accessibilityRole="none"
                     style={
-                      Array [
-                        Object {
+                      [
+                        {
                           "display": "flex",
                         },
                       ]
@@ -1250,7 +1250,7 @@ Array [
                       accessibilityLabel="Volontaire"
                       accessibilityRole="radio"
                       accessibilityState={
-                        Object {
+                        {
                           "checked": false,
                         }
                       }
@@ -1265,7 +1265,7 @@ Array [
                       onResponderTerminationRequest={[Function]}
                       onStartShouldSetResponder={[Function]}
                       style={
-                        Object {
+                        {
                           "alignItems": "center",
                           "backgroundColor": "#ffffff",
                           "borderColor": "#90949D",
@@ -1287,8 +1287,8 @@ Array [
                       <View
                         isSelected={false}
                         style={
-                          Array [
-                            Object {
+                          [
+                            {
                               "alignItems": "center",
                               "borderColor": "#90949D",
                               "borderRadius": 8,
@@ -1305,8 +1305,8 @@ Array [
                         <View
                           isSelected={false}
                           style={
-                            Array [
-                              Object {
+                            [
+                              {
                                 "backgroundColor": "transparent",
                                 "borderRadius": 16,
                                 "height": 8,
@@ -1318,8 +1318,8 @@ Array [
                       </View>
                       <View
                         style={
-                          Array [
-                            Object {
+                          [
+                            {
                               "flexBasis": 0,
                               "flexGrow": 1,
                               "flexShrink": 1,
@@ -1329,8 +1329,8 @@ Array [
                       >
                         <View
                           style={
-                            Array [
-                              Object {
+                            [
+                              {
                                 "alignItems": "center",
                                 "flexDirection": "row",
                               },
@@ -1339,8 +1339,8 @@ Array [
                         >
                           <View
                             style={
-                              Array [
-                                Object {
+                              [
+                                {
                                   "flexBasis": 0,
                                   "flexGrow": 1,
                                   "flexShrink": 1,
@@ -1352,8 +1352,8 @@ Array [
                             <Text
                               isHover={false}
                               style={
-                                Array [
-                                  Object {
+                                [
+                                  {
                                     "color": "#161617",
                                     "fontFamily": "Montserrat-Bold",
                                     "fontSize": 15,
@@ -1367,8 +1367,8 @@ Array [
                             </Text>
                             <Text
                               style={
-                                Array [
-                                  Object {
+                                [
+                                  {
                                     "color": "#696A6F",
                                     "fontFamily": "Montserrat-SemiBold",
                                     "fontSize": 12,
@@ -1383,8 +1383,8 @@ Array [
                           </View>
                           <Text
                             style={
-                              Array [
-                                Object {
+                              [
+                                {
                                   "color": "#161617",
                                   "fontFamily": "Montserrat-Regular",
                                   "fontSize": 15,
@@ -1400,8 +1400,8 @@ Array [
                     <View
                       numberOfSpaces={3}
                       style={
-                        Array [
-                          Object {
+                        [
+                          {
                             "height": 12,
                           },
                         ]
@@ -1411,8 +1411,8 @@ Array [
                   <View
                     accessibilityRole="none"
                     style={
-                      Array [
-                        Object {
+                      [
+                        {
                           "display": "flex",
                         },
                       ]
@@ -1422,7 +1422,7 @@ Array [
                       accessibilityLabel="Inactif"
                       accessibilityRole="radio"
                       accessibilityState={
-                        Object {
+                        {
                           "checked": false,
                         }
                       }
@@ -1437,7 +1437,7 @@ Array [
                       onResponderTerminationRequest={[Function]}
                       onStartShouldSetResponder={[Function]}
                       style={
-                        Object {
+                        {
                           "alignItems": "center",
                           "backgroundColor": "#ffffff",
                           "borderColor": "#90949D",
@@ -1459,8 +1459,8 @@ Array [
                       <View
                         isSelected={false}
                         style={
-                          Array [
-                            Object {
+                          [
+                            {
                               "alignItems": "center",
                               "borderColor": "#90949D",
                               "borderRadius": 8,
@@ -1477,8 +1477,8 @@ Array [
                         <View
                           isSelected={false}
                           style={
-                            Array [
-                              Object {
+                            [
+                              {
                                 "backgroundColor": "transparent",
                                 "borderRadius": 16,
                                 "height": 8,
@@ -1490,8 +1490,8 @@ Array [
                       </View>
                       <View
                         style={
-                          Array [
-                            Object {
+                          [
+                            {
                               "flexBasis": 0,
                               "flexGrow": 1,
                               "flexShrink": 1,
@@ -1501,8 +1501,8 @@ Array [
                       >
                         <View
                           style={
-                            Array [
-                              Object {
+                            [
+                              {
                                 "alignItems": "center",
                                 "flexDirection": "row",
                               },
@@ -1511,8 +1511,8 @@ Array [
                         >
                           <View
                             style={
-                              Array [
-                                Object {
+                              [
+                                {
                                   "flexBasis": 0,
                                   "flexGrow": 1,
                                   "flexShrink": 1,
@@ -1524,8 +1524,8 @@ Array [
                             <Text
                               isHover={false}
                               style={
-                                Array [
-                                  Object {
+                                [
+                                  {
                                     "color": "#161617",
                                     "fontFamily": "Montserrat-Bold",
                                     "fontSize": 15,
@@ -1539,8 +1539,8 @@ Array [
                             </Text>
                             <Text
                               style={
-                                Array [
-                                  Object {
+                                [
+                                  {
                                     "color": "#696A6F",
                                     "fontFamily": "Montserrat-SemiBold",
                                     "fontSize": 12,
@@ -1555,8 +1555,8 @@ Array [
                           </View>
                           <Text
                             style={
-                              Array [
-                                Object {
+                              [
+                                {
                                   "color": "#161617",
                                   "fontFamily": "Montserrat-Regular",
                                   "fontSize": 15,
@@ -1572,8 +1572,8 @@ Array [
                     <View
                       numberOfSpaces={3}
                       style={
-                        Array [
-                          Object {
+                        [
+                          {
                             "height": 12,
                           },
                         ]
@@ -1583,8 +1583,8 @@ Array [
                   <View
                     accessibilityRole="none"
                     style={
-                      Array [
-                        Object {
+                      [
+                        {
                           "display": "flex",
                         },
                       ]
@@ -1594,7 +1594,7 @@ Array [
                       accessibilityLabel="Chômeur"
                       accessibilityRole="radio"
                       accessibilityState={
-                        Object {
+                        {
                           "checked": false,
                         }
                       }
@@ -1609,7 +1609,7 @@ Array [
                       onResponderTerminationRequest={[Function]}
                       onStartShouldSetResponder={[Function]}
                       style={
-                        Object {
+                        {
                           "alignItems": "center",
                           "backgroundColor": "#ffffff",
                           "borderColor": "#90949D",
@@ -1631,8 +1631,8 @@ Array [
                       <View
                         isSelected={false}
                         style={
-                          Array [
-                            Object {
+                          [
+                            {
                               "alignItems": "center",
                               "borderColor": "#90949D",
                               "borderRadius": 8,
@@ -1649,8 +1649,8 @@ Array [
                         <View
                           isSelected={false}
                           style={
-                            Array [
-                              Object {
+                            [
+                              {
                                 "backgroundColor": "transparent",
                                 "borderRadius": 16,
                                 "height": 8,
@@ -1662,8 +1662,8 @@ Array [
                       </View>
                       <View
                         style={
-                          Array [
-                            Object {
+                          [
+                            {
                               "flexBasis": 0,
                               "flexGrow": 1,
                               "flexShrink": 1,
@@ -1673,8 +1673,8 @@ Array [
                       >
                         <View
                           style={
-                            Array [
-                              Object {
+                            [
+                              {
                                 "alignItems": "center",
                                 "flexDirection": "row",
                               },
@@ -1683,8 +1683,8 @@ Array [
                         >
                           <View
                             style={
-                              Array [
-                                Object {
+                              [
+                                {
                                   "flexBasis": 0,
                                   "flexGrow": 1,
                                   "flexShrink": 1,
@@ -1696,8 +1696,8 @@ Array [
                             <Text
                               isHover={false}
                               style={
-                                Array [
-                                  Object {
+                                [
+                                  {
                                     "color": "#161617",
                                     "fontFamily": "Montserrat-Bold",
                                     "fontSize": 15,
@@ -1711,8 +1711,8 @@ Array [
                             </Text>
                             <Text
                               style={
-                                Array [
-                                  Object {
+                                [
+                                  {
                                     "color": "#696A6F",
                                     "fontFamily": "Montserrat-SemiBold",
                                     "fontSize": 12,
@@ -1727,8 +1727,8 @@ Array [
                           </View>
                           <Text
                             style={
-                              Array [
-                                Object {
+                              [
+                                {
                                   "color": "#161617",
                                   "fontFamily": "Montserrat-Regular",
                                   "fontSize": 15,
@@ -1744,8 +1744,8 @@ Array [
                     <View
                       numberOfSpaces={3}
                       style={
-                        Array [
-                          Object {
+                        [
+                          {
                             "height": 12,
                           },
                         ]
@@ -1760,8 +1760,8 @@ Array [
         <View
           onLayout={[Function]}
           style={
-            Array [
-              Object {
+            [
+              {
                 "backgroundColor": "#ffffff",
                 "bottom": 0,
                 "left": 0,
@@ -1777,7 +1777,7 @@ Array [
           <View
             accessibilityLabel="Choisis ton statut"
             accessibilityState={
-              Object {
+              {
                 "disabled": true,
               }
             }
@@ -1792,7 +1792,7 @@ Array [
             onResponderTerminationRequest={[Function]}
             onStartShouldSetResponder={[Function]}
             style={
-              Object {
+              {
                 "alignItems": "center",
                 "backgroundColor": "#F1F1F4",
                 "borderRadius": 24,
@@ -1815,8 +1815,8 @@ Array [
               adjustsFontSizeToFit={false}
               numberOfLines={1}
               style={
-                Array [
-                  Object {
+                [
+                  {
                     "color": "#696A6F",
                     "fontFamily": "Montserrat-Bold",
                     "fontSize": 15,
@@ -1834,8 +1834,8 @@ Array [
             customHeight={8}
             enable={true}
             style={
-              Array [
-                Object {
+              [
+                {
                   "height": 8,
                 },
               ]
@@ -1848,8 +1848,8 @@ Array [
   <View
     height={65}
     style={
-      Array [
-        Object {
+      [
+        {
           "backdropFilter": "blur(20px)",
           "height": 65,
           "left": 0,
@@ -1865,12 +1865,12 @@ Array [
       blurAmount={8}
       blurType="light"
       style={
-        Array [
-          Object {
+        [
+          {
             "backgroundColor": "transparent",
           },
-          Array [
-            Object {
+          [
+            {
               "flexBasis": 0,
               "flexGrow": 1,
               "flexShrink": 1,

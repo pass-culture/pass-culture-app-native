@@ -22,7 +22,7 @@ exports[`NonEligibleModal should render correctly for non-eligible over_18 1`] =
     onResponderTerminationRequest={[Function]}
     onStartShouldSetResponder={[Function]}
     style={
-      Object {
+      {
         "backgroundColor": "#00000080",
         "flexDirection": "column",
         "flexGrow": 1,
@@ -37,8 +37,8 @@ exports[`NonEligibleModal should render correctly for non-eligible over_18 1`] =
   />
   <View
     style={
-      Array [
-        Object {
+      [
+        {
           "flexBasis": 0,
           "flexGrow": 1,
           "flexShrink": 1,
@@ -50,8 +50,8 @@ exports[`NonEligibleModal should render correctly for non-eligible over_18 1`] =
   <View
     accessibilityLabelledBy="testUuidV4"
     style={
-      Array [
-        Object {
+      [
+        {
           "alignItems": "center",
           "alignSelf": "center",
           "backgroundColor": "#ffffff",
@@ -67,8 +67,8 @@ exports[`NonEligibleModal should render correctly for non-eligible over_18 1`] =
   >
     <View
       style={
-        Array [
-          Object {
+        [
+          {
             "display": "flex",
             "flexDirection": "row",
             "justifyContent": "center",
@@ -81,8 +81,8 @@ exports[`NonEligibleModal should render correctly for non-eligible over_18 1`] =
       <View
         justifyContent="left"
         style={
-          Array [
-            Object {
+          [
+            {
               "alignItems": "flex-start",
               "flexDirection": "row",
               "height": 28,
@@ -94,8 +94,8 @@ exports[`NonEligibleModal should render correctly for non-eligible over_18 1`] =
       />
       <View
         style={
-          Array [
-            Object {
+          [
+            {
               "flexBasis": 0,
               "flexGrow": 1,
               "flexShrink": 1,
@@ -110,8 +110,8 @@ exports[`NonEligibleModal should render correctly for non-eligible over_18 1`] =
           nativeID="testUuidV4"
           numberOfLines={2}
           style={
-            Array [
-              Object {
+            [
+              {
                 "color": "#161617",
                 "fontFamily": "Montserrat-Bold",
                 "fontSize": 20,
@@ -128,8 +128,8 @@ exports[`NonEligibleModal should render correctly for non-eligible over_18 1`] =
       <View
         justifyContent="right"
         style={
-          Array [
-            Object {
+          [
+            {
               "alignItems": "flex-start",
               "flexDirection": "row",
               "height": 28,
@@ -153,7 +153,7 @@ exports[`NonEligibleModal should render correctly for non-eligible over_18 1`] =
           onResponderTerminationRequest={[Function]}
           onStartShouldSetResponder={[Function]}
           style={
-            Object {
+            {
               "opacity": 1,
               "paddingBottom": 4,
               "paddingLeft": 4,
@@ -179,8 +179,8 @@ exports[`NonEligibleModal should render correctly for non-eligible over_18 1`] =
     <View
       numberOfSpaces={6}
       style={
-        Array [
-          Object {
+        [
+          {
             "height": 24,
           },
         ]
@@ -188,8 +188,8 @@ exports[`NonEligibleModal should render correctly for non-eligible over_18 1`] =
     />
     <View
       style={
-        Array [
-          Object {
+        [
+          {
             "alignItems": "center",
             "maxWidth": 500,
             "width": "100%",
@@ -200,8 +200,8 @@ exports[`NonEligibleModal should render correctly for non-eligible over_18 1`] =
       <View
         numberOfSpaces={2}
         style={
-          Array [
-            Object {
+          [
+            {
               "height": 8,
             },
           ]
@@ -218,8 +218,8 @@ exports[`NonEligibleModal should render correctly for non-eligible over_18 1`] =
       <View
         numberOfSpaces={4}
         style={
-          Array [
-            Object {
+          [
+            {
               "height": 16,
             },
           ]
@@ -227,8 +227,8 @@ exports[`NonEligibleModal should render correctly for non-eligible over_18 1`] =
       />
       <Text
         style={
-          Array [
-            Object {
+          [
+            {
               "color": "#161617",
               "fontFamily": "Montserrat-Regular",
               "fontSize": 15,
@@ -243,8 +243,8 @@ exports[`NonEligibleModal should render correctly for non-eligible over_18 1`] =
       <View
         numberOfSpaces={4}
         style={
-          Array [
-            Object {
+          [
+            {
               "height": 16,
             },
           ]
@@ -252,8 +252,8 @@ exports[`NonEligibleModal should render correctly for non-eligible over_18 1`] =
       />
       <Text
         style={
-          Array [
-            Object {
+          [
+            {
               "color": "#161617",
               "fontFamily": "Montserrat-Regular",
               "fontSize": 15,
@@ -268,8 +268,8 @@ exports[`NonEligibleModal should render correctly for non-eligible over_18 1`] =
       <View
         numberOfSpaces={8}
         style={
-          Array [
-            Object {
+          [
+            {
               "height": 32,
             },
           ]
@@ -288,7 +288,7 @@ exports[`NonEligibleModal should render correctly for non-eligible over_18 1`] =
         onResponderTerminationRequest={[Function]}
         onStartShouldSetResponder={[Function]}
         style={
-          Object {
+          {
             "alignItems": "center",
             "backgroundColor": "#eb0055",
             "borderRadius": 24,
@@ -311,8 +311,8 @@ exports[`NonEligibleModal should render correctly for non-eligible over_18 1`] =
           adjustsFontSizeToFit={false}
           numberOfLines={1}
           style={
-            Array [
-              Object {
+            [
+              {
                 "color": "#ffffff",
                 "fontFamily": "Montserrat-Bold",
                 "fontSize": 15,
@@ -330,8 +330,8 @@ exports[`NonEligibleModal should render correctly for non-eligible over_18 1`] =
   </View>
   <View
     style={
-      Array [
-        Object {
+      [
+        {
           "flexBasis": 0,
           "flexGrow": 1,
           "flexShrink": 1,
@@ -365,7 +365,7 @@ exports[`NonEligibleModal should render correctly for non-eligible under_15 1`] 
     onResponderTerminationRequest={[Function]}
     onStartShouldSetResponder={[Function]}
     style={
-      Object {
+      {
         "backgroundColor": "#00000080",
         "flexDirection": "column",
         "flexGrow": 1,
@@ -380,8 +380,8 @@ exports[`NonEligibleModal should render correctly for non-eligible under_15 1`] 
   />
   <View
     style={
-      Array [
-        Object {
+      [
+        {
           "flexBasis": 0,
           "flexGrow": 1,
           "flexShrink": 1,
@@ -393,8 +393,8 @@ exports[`NonEligibleModal should render correctly for non-eligible under_15 1`] 
   <View
     accessibilityLabelledBy="testUuidV4"
     style={
-      Array [
-        Object {
+      [
+        {
           "alignItems": "center",
           "alignSelf": "center",
           "backgroundColor": "#ffffff",
@@ -410,8 +410,8 @@ exports[`NonEligibleModal should render correctly for non-eligible under_15 1`] 
   >
     <View
       style={
-        Array [
-          Object {
+        [
+          {
             "display": "flex",
             "flexDirection": "row",
             "justifyContent": "center",
@@ -424,8 +424,8 @@ exports[`NonEligibleModal should render correctly for non-eligible under_15 1`] 
       <View
         justifyContent="left"
         style={
-          Array [
-            Object {
+          [
+            {
               "alignItems": "flex-start",
               "flexDirection": "row",
               "height": 28,
@@ -437,8 +437,8 @@ exports[`NonEligibleModal should render correctly for non-eligible under_15 1`] 
       />
       <View
         style={
-          Array [
-            Object {
+          [
+            {
               "flexBasis": 0,
               "flexGrow": 1,
               "flexShrink": 1,
@@ -453,8 +453,8 @@ exports[`NonEligibleModal should render correctly for non-eligible under_15 1`] 
           nativeID="testUuidV4"
           numberOfLines={2}
           style={
-            Array [
-              Object {
+            [
+              {
                 "color": "#161617",
                 "fontFamily": "Montserrat-Bold",
                 "fontSize": 20,
@@ -471,8 +471,8 @@ exports[`NonEligibleModal should render correctly for non-eligible under_15 1`] 
       <View
         justifyContent="right"
         style={
-          Array [
-            Object {
+          [
+            {
               "alignItems": "flex-start",
               "flexDirection": "row",
               "height": 28,
@@ -496,7 +496,7 @@ exports[`NonEligibleModal should render correctly for non-eligible under_15 1`] 
           onResponderTerminationRequest={[Function]}
           onStartShouldSetResponder={[Function]}
           style={
-            Object {
+            {
               "opacity": 1,
               "paddingBottom": 4,
               "paddingLeft": 4,
@@ -522,8 +522,8 @@ exports[`NonEligibleModal should render correctly for non-eligible under_15 1`] 
     <View
       numberOfSpaces={6}
       style={
-        Array [
-          Object {
+        [
+          {
             "height": 24,
           },
         ]
@@ -531,8 +531,8 @@ exports[`NonEligibleModal should render correctly for non-eligible under_15 1`] 
     />
     <View
       style={
-        Array [
-          Object {
+        [
+          {
             "alignItems": "center",
             "maxWidth": 500,
             "width": "100%",
@@ -543,8 +543,8 @@ exports[`NonEligibleModal should render correctly for non-eligible under_15 1`] 
       <View
         numberOfSpaces={2}
         style={
-          Array [
-            Object {
+          [
+            {
               "height": 8,
             },
           ]
@@ -561,8 +561,8 @@ exports[`NonEligibleModal should render correctly for non-eligible under_15 1`] 
       <View
         numberOfSpaces={4}
         style={
-          Array [
-            Object {
+          [
+            {
               "height": 16,
             },
           ]
@@ -570,8 +570,8 @@ exports[`NonEligibleModal should render correctly for non-eligible under_15 1`] 
       />
       <Text
         style={
-          Array [
-            Object {
+          [
+            {
               "color": "#161617",
               "fontFamily": "Montserrat-Regular",
               "fontSize": 15,
@@ -586,8 +586,8 @@ exports[`NonEligibleModal should render correctly for non-eligible under_15 1`] 
       <View
         numberOfSpaces={4}
         style={
-          Array [
-            Object {
+          [
+            {
               "height": 16,
             },
           ]
@@ -606,7 +606,7 @@ exports[`NonEligibleModal should render correctly for non-eligible under_15 1`] 
         onResponderTerminationRequest={[Function]}
         onStartShouldSetResponder={[Function]}
         style={
-          Object {
+          {
             "alignItems": "center",
             "backgroundColor": "transparent",
             "borderRadius": 24,
@@ -627,8 +627,8 @@ exports[`NonEligibleModal should render correctly for non-eligible under_15 1`] 
       >
         <View
           style={
-            Array [
-              Object {
+            [
+              {
                 "flexShrink": 0,
               },
             ]
@@ -649,8 +649,8 @@ exports[`NonEligibleModal should render correctly for non-eligible under_15 1`] 
           adjustsFontSizeToFit={false}
           numberOfLines={1}
           style={
-            Array [
-              Object {
+            [
+              {
                 "color": "#161617",
                 "fontFamily": "Montserrat-Bold",
                 "fontSize": 15,
@@ -667,8 +667,8 @@ exports[`NonEligibleModal should render correctly for non-eligible under_15 1`] 
       <View
         numberOfSpaces={4}
         style={
-          Array [
-            Object {
+          [
+            {
               "height": 16,
             },
           ]
@@ -676,8 +676,8 @@ exports[`NonEligibleModal should render correctly for non-eligible under_15 1`] 
       />
       <Text
         style={
-          Array [
-            Object {
+          [
+            {
               "color": "#161617",
               "fontFamily": "Montserrat-Regular",
               "fontSize": 15,
@@ -692,8 +692,8 @@ exports[`NonEligibleModal should render correctly for non-eligible under_15 1`] 
       <View
         numberOfSpaces={8}
         style={
-          Array [
-            Object {
+          [
+            {
               "height": 32,
             },
           ]
@@ -712,7 +712,7 @@ exports[`NonEligibleModal should render correctly for non-eligible under_15 1`] 
         onResponderTerminationRequest={[Function]}
         onStartShouldSetResponder={[Function]}
         style={
-          Object {
+          {
             "alignItems": "center",
             "backgroundColor": "#eb0055",
             "borderRadius": 24,
@@ -735,8 +735,8 @@ exports[`NonEligibleModal should render correctly for non-eligible under_15 1`] 
           adjustsFontSizeToFit={false}
           numberOfLines={1}
           style={
-            Array [
-              Object {
+            [
+              {
                 "color": "#ffffff",
                 "fontFamily": "Montserrat-Bold",
                 "fontSize": 15,
@@ -754,8 +754,8 @@ exports[`NonEligibleModal should render correctly for non-eligible under_15 1`] 
   </View>
   <View
     style={
-      Array [
-        Object {
+      [
+        {
           "flexBasis": 0,
           "flexGrow": 1,
           "flexShrink": 1,

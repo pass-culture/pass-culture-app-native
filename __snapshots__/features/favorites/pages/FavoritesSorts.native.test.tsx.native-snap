@@ -3,8 +3,8 @@
 exports[`<FavoritesSorts/> should render correctly 1`] = `
 <View
   style={
-    Array [
-      Object {
+    [
+      {
         "backgroundColor": "#ffffff",
         "flexBasis": 0,
         "flexGrow": 1,
@@ -16,8 +16,8 @@ exports[`<FavoritesSorts/> should render correctly 1`] = `
   <View
     accessibilityRole="header"
     style={
-      Array [
-        Object {
+      [
+        {
           "width": "100%",
         },
       ]
@@ -25,15 +25,15 @@ exports[`<FavoritesSorts/> should render correctly 1`] = `
   >
     <View
       style={
-        Object {
+        {
           "height": 64,
         }
       }
     />
     <View
       style={
-        Array [
-          Object {
+        [
+          {
             "backgroundColor": "#eb0055",
             "position": "absolute",
             "top": 0,
@@ -47,8 +47,8 @@ exports[`<FavoritesSorts/> should render correctly 1`] = `
         customHeight={16}
         enable={true}
         style={
-          Array [
-            Object {
+          [
+            {
               "height": 16,
             },
           ]
@@ -56,8 +56,8 @@ exports[`<FavoritesSorts/> should render correctly 1`] = `
       />
       <View
         style={
-          Array [
-            Object {
+          [
+            {
               "alignItems": "center",
               "height": 48,
               "justifyContent": "center",
@@ -67,8 +67,8 @@ exports[`<FavoritesSorts/> should render correctly 1`] = `
       >
         <View
           style={
-            Array [
-              Object {
+            [
+              {
                 "alignItems": "center",
                 "flexDirection": "row",
                 "justifyContent": "space-between",
@@ -80,8 +80,8 @@ exports[`<FavoritesSorts/> should render correctly 1`] = `
           <View
             positionInHeader="left"
             style={
-              Array [
-                Object {
+              [
+                {
                   "alignItems": "center",
                   "flexBasis": 0,
                   "flexDirection": "row",
@@ -109,7 +109,7 @@ exports[`<FavoritesSorts/> should render correctly 1`] = `
               onResponderTerminationRequest={[Function]}
               onStartShouldSetResponder={[Function]}
               style={
-                Object {
+                {
                   "alignItems": "center",
                   "flexGrow": 1,
                   "height": 40,
@@ -132,8 +132,8 @@ exports[`<FavoritesSorts/> should render correctly 1`] = `
               </View>
               <Text
                 style={
-                  Array [
-                    Object {
+                  [
+                    {
                       "display": "none",
                     },
                   ]
@@ -146,8 +146,8 @@ exports[`<FavoritesSorts/> should render correctly 1`] = `
           <Text
             numberOfLines={1}
             style={
-              Array [
-                Object {
+              [
+                {
                   "color": "#ffffff",
                   "fontFamily": "Montserrat-Regular",
                   "fontSize": 15,
@@ -162,8 +162,8 @@ exports[`<FavoritesSorts/> should render correctly 1`] = `
           <View
             positionInHeader="right"
             style={
-              Array [
-                Object {
+              [
+                {
                   "alignItems": "center",
                   "flexBasis": 0,
                   "flexDirection": "row",
@@ -183,8 +183,8 @@ exports[`<FavoritesSorts/> should render correctly 1`] = `
   </View>
   <RCTScrollView
     style={
-      Array [
-        Object {
+      [
+        {
           "flexGrow": 1,
           "paddingLeft": 32,
           "paddingRight": 20,
@@ -196,8 +196,8 @@ exports[`<FavoritesSorts/> should render correctly 1`] = `
       <View
         numberOfSpaces={4}
         style={
-          Array [
-            Object {
+          [
+            {
               "height": 16,
             },
           ]
@@ -205,8 +205,8 @@ exports[`<FavoritesSorts/> should render correctly 1`] = `
       />
       <View
         style={
-          Array [
-            Object {
+          [
+            {
               "alignItems": "center",
               "flexDirection": "row",
             },
@@ -216,8 +216,8 @@ exports[`<FavoritesSorts/> should render correctly 1`] = `
         <View
           numberOfSpaces={12}
           style={
-            Array [
-              Object {
+            [
+              {
                 "height": 48,
               },
             ]
@@ -226,8 +226,8 @@ exports[`<FavoritesSorts/> should render correctly 1`] = `
         <Text
           nativeID="testUuidV4"
           style={
-            Array [
-              Object {
+            [
+              {
                 "color": "#161617",
                 "fontFamily": "Montserrat-Medium",
                 "fontSize": 18,
@@ -246,8 +246,8 @@ exports[`<FavoritesSorts/> should render correctly 1`] = `
         <View
           accessibilityRole="list"
           style={
-            Array [
-              Object {
+            [
+              {
                 "flexDirection": "column",
                 "paddingLeft": 0,
               },
@@ -257,8 +257,8 @@ exports[`<FavoritesSorts/> should render correctly 1`] = `
           <View
             accessibilityRole="none"
             style={
-              Array [
-                Object {
+              [
+                {
                   "display": "flex",
                 },
               ]
@@ -268,7 +268,7 @@ exports[`<FavoritesSorts/> should render correctly 1`] = `
               accessibilityLabel="Trier par Ajouté récemment"
               accessibilityRole="radio"
               accessibilityState={
-                Object {
+                {
                   "checked": true,
                 }
               }
@@ -283,7 +283,7 @@ exports[`<FavoritesSorts/> should render correctly 1`] = `
               onResponderTerminationRequest={[Function]}
               onStartShouldSetResponder={[Function]}
               style={
-                Object {
+                {
                   "alignItems": "center",
                   "flexDirection": "row",
                   "justifyContent": "space-between",
@@ -298,8 +298,8 @@ exports[`<FavoritesSorts/> should render correctly 1`] = `
               <View
                 flex={0.9}
                 style={
-                  Array [
-                    Object {
+                  [
+                    {
                       "alignItems": "center",
                       "flexBasis": 0,
                       "flexDirection": "row",
@@ -311,8 +311,8 @@ exports[`<FavoritesSorts/> should render correctly 1`] = `
               >
                 <View
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "flexShrink": 1,
                       },
                     ]
@@ -322,8 +322,8 @@ exports[`<FavoritesSorts/> should render correctly 1`] = `
                     isSelected={true}
                     numberOfLines={2}
                     style={
-                      Array [
-                        Object {
+                      [
+                        {
                           "color": "#eb0055",
                           "fontFamily": "Montserrat-Bold",
                           "fontSize": 15,
@@ -338,8 +338,8 @@ exports[`<FavoritesSorts/> should render correctly 1`] = `
               </View>
               <View
                 style={
-                  Array [
-                    Object {
+                  [
+                    {
                       "alignItems": "flex-end",
                       "flexBasis": 0,
                       "flexGrow": 0.1,
@@ -366,8 +366,8 @@ exports[`<FavoritesSorts/> should render correctly 1`] = `
           <View
             accessibilityRole="none"
             style={
-              Array [
-                Object {
+              [
+                {
                   "display": "flex",
                 },
               ]
@@ -377,7 +377,7 @@ exports[`<FavoritesSorts/> should render correctly 1`] = `
               accessibilityLabel="Trier par Prix croissant"
               accessibilityRole="radio"
               accessibilityState={
-                Object {
+                {
                   "checked": false,
                 }
               }
@@ -392,7 +392,7 @@ exports[`<FavoritesSorts/> should render correctly 1`] = `
               onResponderTerminationRequest={[Function]}
               onStartShouldSetResponder={[Function]}
               style={
-                Object {
+                {
                   "alignItems": "center",
                   "flexDirection": "row",
                   "justifyContent": "space-between",
@@ -407,8 +407,8 @@ exports[`<FavoritesSorts/> should render correctly 1`] = `
               <View
                 flex={0.9}
                 style={
-                  Array [
-                    Object {
+                  [
+                    {
                       "alignItems": "center",
                       "flexBasis": 0,
                       "flexDirection": "row",
@@ -420,8 +420,8 @@ exports[`<FavoritesSorts/> should render correctly 1`] = `
               >
                 <View
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "flexShrink": 1,
                       },
                     ]
@@ -431,8 +431,8 @@ exports[`<FavoritesSorts/> should render correctly 1`] = `
                     isSelected={false}
                     numberOfLines={2}
                     style={
-                      Array [
-                        Object {
+                      [
+                        {
                           "color": "#161617",
                           "fontFamily": "Montserrat-Bold",
                           "fontSize": 15,
@@ -447,8 +447,8 @@ exports[`<FavoritesSorts/> should render correctly 1`] = `
               </View>
               <View
                 style={
-                  Array [
-                    Object {
+                  [
+                    {
                       "alignItems": "flex-end",
                       "flexBasis": 0,
                       "flexGrow": 0.1,
@@ -475,8 +475,8 @@ exports[`<FavoritesSorts/> should render correctly 1`] = `
           <View
             accessibilityRole="none"
             style={
-              Array [
-                Object {
+              [
+                {
                   "display": "flex",
                 },
               ]
@@ -486,7 +486,7 @@ exports[`<FavoritesSorts/> should render correctly 1`] = `
               accessibilityLabel="Trier par Proximité géographique"
               accessibilityRole="radio"
               accessibilityState={
-                Object {
+                {
                   "checked": false,
                 }
               }
@@ -501,7 +501,7 @@ exports[`<FavoritesSorts/> should render correctly 1`] = `
               onResponderTerminationRequest={[Function]}
               onStartShouldSetResponder={[Function]}
               style={
-                Object {
+                {
                   "alignItems": "center",
                   "flexDirection": "row",
                   "justifyContent": "space-between",
@@ -516,8 +516,8 @@ exports[`<FavoritesSorts/> should render correctly 1`] = `
               <View
                 flex={0.9}
                 style={
-                  Array [
-                    Object {
+                  [
+                    {
                       "alignItems": "center",
                       "flexBasis": 0,
                       "flexDirection": "row",
@@ -529,8 +529,8 @@ exports[`<FavoritesSorts/> should render correctly 1`] = `
               >
                 <View
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "flexShrink": 1,
                       },
                     ]
@@ -540,8 +540,8 @@ exports[`<FavoritesSorts/> should render correctly 1`] = `
                     isSelected={false}
                     numberOfLines={2}
                     style={
-                      Array [
-                        Object {
+                      [
+                        {
                           "color": "#161617",
                           "fontFamily": "Montserrat-Bold",
                           "fontSize": 15,
@@ -556,8 +556,8 @@ exports[`<FavoritesSorts/> should render correctly 1`] = `
               </View>
               <View
                 style={
-                  Array [
-                    Object {
+                  [
+                    {
                       "alignItems": "flex-end",
                       "flexBasis": 0,
                       "flexGrow": 0.1,
@@ -587,8 +587,8 @@ exports[`<FavoritesSorts/> should render correctly 1`] = `
   </RCTScrollView>
   <View
     style={
-      Array [
-        Object {
+      [
+        {
           "paddingBottom": 20,
           "paddingLeft": 20,
           "paddingRight": 20,
@@ -610,7 +610,7 @@ exports[`<FavoritesSorts/> should render correctly 1`] = `
       onResponderTerminationRequest={[Function]}
       onStartShouldSetResponder={[Function]}
       style={
-        Object {
+        {
           "alignItems": "center",
           "alignSelf": "center",
           "backgroundColor": "#eb0055",
@@ -634,8 +634,8 @@ exports[`<FavoritesSorts/> should render correctly 1`] = `
         adjustsFontSizeToFit={false}
         numberOfLines={1}
         style={
-          Array [
-            Object {
+          [
+            {
               "color": "#ffffff",
               "fontFamily": "Montserrat-Bold",
               "fontSize": 15,

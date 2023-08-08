@@ -22,7 +22,7 @@ exports[`<FinishSubscriptionModal /> should display correct body when user needs
   scrollTo={null}
   statusBarTranslucent={true}
   supportedOrientations={
-    Array [
+    [
       "portrait",
       "landscape",
     ]
@@ -45,7 +45,7 @@ exports[`<FinishSubscriptionModal /> should display correct body when user needs
     onResponderTerminationRequest={[Function]}
     onStartShouldSetResponder={[Function]}
     style={
-      Object {
+      {
         "backgroundColor": "black",
         "bottom": 0,
         "height": 1334,
@@ -79,7 +79,7 @@ exports[`<FinishSubscriptionModal /> should display correct body when user needs
     scrollTo={null}
     statusBarTranslucent={true}
     style={
-      Object {
+      {
         "alignItems": "center",
         "bottom": 0,
         "flex": 1,
@@ -89,15 +89,15 @@ exports[`<FinishSubscriptionModal /> should display correct body when user needs
         "position": "absolute",
         "right": 0,
         "top": "auto",
-        "transform": Array [
-          Object {
+        "transform": [
+          {
             "translateY": 1334,
           },
         ],
       }
     }
     supportedOrientations={
-      Array [
+      [
         "portrait",
         "landscape",
       ]
@@ -107,8 +107,8 @@ exports[`<FinishSubscriptionModal /> should display correct body when user needs
     <View
       height={428}
       style={
-        Array [
-          Object {
+        [
+          {
             "alignItems": "center",
             "backgroundColor": "#ffffff",
             "borderBottomEndRadius": 0,
@@ -137,8 +137,8 @@ exports[`<FinishSubscriptionModal /> should display correct body when user needs
       <View
         onLayout={[Function]}
         style={
-          Array [
-            Object {
+          [
+            {
               "display": "flex",
               "flexDirection": "row",
               "justifyContent": "center",
@@ -151,8 +151,8 @@ exports[`<FinishSubscriptionModal /> should display correct body when user needs
         <View
           justifyContent="left"
           style={
-            Array [
-              Object {
+            [
+              {
                 "alignItems": "flex-start",
                 "flexDirection": "row",
                 "height": 28,
@@ -164,8 +164,8 @@ exports[`<FinishSubscriptionModal /> should display correct body when user needs
         />
         <View
           style={
-            Array [
-              Object {
+            [
+              {
                 "flexBasis": 0,
                 "flexGrow": 1,
                 "flexShrink": 1,
@@ -180,8 +180,8 @@ exports[`<FinishSubscriptionModal /> should display correct body when user needs
             nativeID="testUuidV4"
             numberOfLines={2}
             style={
-              Array [
-                Object {
+              [
+                {
                   "color": "#161617",
                   "fontFamily": "Montserrat-Medium",
                   "fontSize": 18,
@@ -199,8 +199,8 @@ pour réserver cette offre
         <View
           justifyContent="right"
           style={
-            Array [
-              Object {
+            [
+              {
                 "alignItems": "flex-start",
                 "flexDirection": "row",
                 "height": 28,
@@ -224,7 +224,7 @@ pour réserver cette offre
             onResponderTerminationRequest={[Function]}
             onStartShouldSetResponder={[Function]}
             style={
-              Object {
+              {
                 "opacity": 1,
                 "paddingBottom": 4,
                 "paddingLeft": 4,
@@ -249,8 +249,8 @@ pour réserver cette offre
       </View>
       <View
         style={
-          Array [
-            Object {
+          [
+            {
               "height": 20,
             },
           ]
@@ -261,8 +261,8 @@ pour réserver cette offre
         backdropColor="#00000080"
         paddingBottom={8}
         style={
-          Array [
-            Object {
+          [
+            {
               "maxHeight": "100%",
               "maxWidth": 480,
               "paddingBottom": 8,
@@ -272,7 +272,7 @@ pour réserver cette offre
         }
       >
         <RCTScrollView
-          contentContainerStyle={Object {}}
+          contentContainerStyle={{}}
           onContentSizeChange={[Function]}
           scrollEnabled={true}
           testID="modalScrollView"
@@ -280,8 +280,8 @@ pour réserver cette offre
           <View>
             <View
               style={
-                Array [
-                  Object {
+                [
+                  {
                     "alignItems": "center",
                     "width": "100%",
                   },
@@ -300,8 +300,8 @@ pour réserver cette offre
               <View
                 numberOfSpaces={6}
                 style={
-                  Array [
-                    Object {
+                  [
+                    {
                       "height": 24,
                     },
                   ]
@@ -309,8 +309,8 @@ pour réserver cette offre
               />
               <Text
                 style={
-                  Array [
-                    Object {
+                  [
+                    {
                       "color": "#161617",
                       "fontFamily": "Montserrat-Regular",
                       "fontSize": 15,
@@ -323,8 +323,8 @@ pour réserver cette offre
                 Vérifie ton identité pour débloquer
                 <Text
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "color": "#161617",
                         "fontFamily": "Montserrat-Regular",
                         "fontSize": 15,
@@ -338,8 +338,8 @@ pour réserver cette offre
                   tes 
                   <Text
                     style={
-                      Array [
-                        Object {
+                      [
+                        {
                           "color": "#161617",
                           "fontFamily": "Montserrat-Bold",
                           "fontSize": 15,
@@ -357,8 +357,8 @@ pour réserver cette offre
               <View
                 numberOfSpaces={6}
                 style={
-                  Array [
-                    Object {
+                  [
+                    {
                       "height": 24,
                     },
                   ]
@@ -366,8 +366,8 @@ pour réserver cette offre
               />
               <Text
                 style={
-                  Array [
-                    Object {
+                  [
+                    {
                       "color": "#696A6F",
                       "fontFamily": "Montserrat-SemiBold",
                       "fontSize": 12,
@@ -381,8 +381,8 @@ pour réserver cette offre
               <View
                 numberOfSpaces={6}
                 style={
-                  Array [
-                    Object {
+                  [
+                    {
                       "height": 24,
                     },
                   ]
@@ -401,7 +401,7 @@ pour réserver cette offre
                 onResponderTerminationRequest={[Function]}
                 onStartShouldSetResponder={[Function]}
                 style={
-                  Object {
+                  {
                     "alignItems": "center",
                     "backgroundColor": "#eb0055",
                     "borderRadius": 24,
@@ -424,8 +424,8 @@ pour réserver cette offre
                   adjustsFontSizeToFit={false}
                   numberOfLines={1}
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "color": "#ffffff",
                         "fontFamily": "Montserrat-Bold",
                         "fontSize": 15,
@@ -470,7 +470,7 @@ exports[`<FinishSubscriptionModal /> should render correctly with eighteen years
   scrollTo={null}
   statusBarTranslucent={true}
   supportedOrientations={
-    Array [
+    [
       "portrait",
       "landscape",
     ]
@@ -493,7 +493,7 @@ exports[`<FinishSubscriptionModal /> should render correctly with eighteen years
     onResponderTerminationRequest={[Function]}
     onStartShouldSetResponder={[Function]}
     style={
-      Object {
+      {
         "backgroundColor": "black",
         "bottom": 0,
         "height": 1334,
@@ -527,7 +527,7 @@ exports[`<FinishSubscriptionModal /> should render correctly with eighteen years
     scrollTo={null}
     statusBarTranslucent={true}
     style={
-      Object {
+      {
         "alignItems": "center",
         "bottom": 0,
         "flex": 1,
@@ -537,15 +537,15 @@ exports[`<FinishSubscriptionModal /> should render correctly with eighteen years
         "position": "absolute",
         "right": 0,
         "top": "auto",
-        "transform": Array [
-          Object {
+        "transform": [
+          {
             "translateY": 1334,
           },
         ],
       }
     }
     supportedOrientations={
-      Array [
+      [
         "portrait",
         "landscape",
       ]
@@ -555,8 +555,8 @@ exports[`<FinishSubscriptionModal /> should render correctly with eighteen years
     <View
       height={428}
       style={
-        Array [
-          Object {
+        [
+          {
             "alignItems": "center",
             "backgroundColor": "#ffffff",
             "borderBottomEndRadius": 0,
@@ -585,8 +585,8 @@ exports[`<FinishSubscriptionModal /> should render correctly with eighteen years
       <View
         onLayout={[Function]}
         style={
-          Array [
-            Object {
+          [
+            {
               "display": "flex",
               "flexDirection": "row",
               "justifyContent": "center",
@@ -599,8 +599,8 @@ exports[`<FinishSubscriptionModal /> should render correctly with eighteen years
         <View
           justifyContent="left"
           style={
-            Array [
-              Object {
+            [
+              {
                 "alignItems": "flex-start",
                 "flexDirection": "row",
                 "height": 28,
@@ -612,8 +612,8 @@ exports[`<FinishSubscriptionModal /> should render correctly with eighteen years
         />
         <View
           style={
-            Array [
-              Object {
+            [
+              {
                 "flexBasis": 0,
                 "flexGrow": 1,
                 "flexShrink": 1,
@@ -628,8 +628,8 @@ exports[`<FinishSubscriptionModal /> should render correctly with eighteen years
             nativeID="testUuidV4"
             numberOfLines={2}
             style={
-              Array [
-                Object {
+              [
+                {
                   "color": "#161617",
                   "fontFamily": "Montserrat-Medium",
                   "fontSize": 18,
@@ -647,8 +647,8 @@ pour réserver cette offre
         <View
           justifyContent="right"
           style={
-            Array [
-              Object {
+            [
+              {
                 "alignItems": "flex-start",
                 "flexDirection": "row",
                 "height": 28,
@@ -672,7 +672,7 @@ pour réserver cette offre
             onResponderTerminationRequest={[Function]}
             onStartShouldSetResponder={[Function]}
             style={
-              Object {
+              {
                 "opacity": 1,
                 "paddingBottom": 4,
                 "paddingLeft": 4,
@@ -697,8 +697,8 @@ pour réserver cette offre
       </View>
       <View
         style={
-          Array [
-            Object {
+          [
+            {
               "height": 20,
             },
           ]
@@ -709,8 +709,8 @@ pour réserver cette offre
         backdropColor="#00000080"
         paddingBottom={8}
         style={
-          Array [
-            Object {
+          [
+            {
               "maxHeight": "100%",
               "maxWidth": 480,
               "paddingBottom": 8,
@@ -720,7 +720,7 @@ pour réserver cette offre
         }
       >
         <RCTScrollView
-          contentContainerStyle={Object {}}
+          contentContainerStyle={{}}
           onContentSizeChange={[Function]}
           scrollEnabled={true}
           testID="modalScrollView"
@@ -728,8 +728,8 @@ pour réserver cette offre
           <View>
             <View
               style={
-                Array [
-                  Object {
+                [
+                  {
                     "alignItems": "center",
                     "width": "100%",
                   },
@@ -748,8 +748,8 @@ pour réserver cette offre
               <View
                 numberOfSpaces={6}
                 style={
-                  Array [
-                    Object {
+                  [
+                    {
                       "height": 24,
                     },
                   ]
@@ -757,8 +757,8 @@ pour réserver cette offre
               />
               <Text
                 style={
-                  Array [
-                    Object {
+                  [
+                    {
                       "color": "#161617",
                       "fontFamily": "Montserrat-Regular",
                       "fontSize": 15,
@@ -771,8 +771,8 @@ pour réserver cette offre
                 Confirme tes informations personnelles pour débloquer
                 <Text
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "color": "#161617",
                         "fontFamily": "Montserrat-Regular",
                         "fontSize": 15,
@@ -786,8 +786,8 @@ pour réserver cette offre
                   tes 
                   <Text
                     style={
-                      Array [
-                        Object {
+                      [
+                        {
                           "color": "#161617",
                           "fontFamily": "Montserrat-Bold",
                           "fontSize": 15,
@@ -805,8 +805,8 @@ pour réserver cette offre
               <View
                 numberOfSpaces={6}
                 style={
-                  Array [
-                    Object {
+                  [
+                    {
                       "height": 24,
                     },
                   ]
@@ -814,8 +814,8 @@ pour réserver cette offre
               />
               <Text
                 style={
-                  Array [
-                    Object {
+                  [
+                    {
                       "color": "#696A6F",
                       "fontFamily": "Montserrat-SemiBold",
                       "fontSize": 12,
@@ -829,8 +829,8 @@ pour réserver cette offre
               <View
                 numberOfSpaces={6}
                 style={
-                  Array [
-                    Object {
+                  [
+                    {
                       "height": 24,
                     },
                   ]
@@ -849,7 +849,7 @@ pour réserver cette offre
                 onResponderTerminationRequest={[Function]}
                 onStartShouldSetResponder={[Function]}
                 style={
-                  Object {
+                  {
                     "alignItems": "center",
                     "backgroundColor": "#eb0055",
                     "borderRadius": 24,
@@ -872,8 +872,8 @@ pour réserver cette offre
                   adjustsFontSizeToFit={false}
                   numberOfLines={1}
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "color": "#ffffff",
                         "fontFamily": "Montserrat-Bold",
                         "fontSize": 15,
@@ -918,7 +918,7 @@ exports[`<FinishSubscriptionModal /> should render correctly with undefined depo
   scrollTo={null}
   statusBarTranslucent={true}
   supportedOrientations={
-    Array [
+    [
       "portrait",
       "landscape",
     ]
@@ -941,7 +941,7 @@ exports[`<FinishSubscriptionModal /> should render correctly with undefined depo
     onResponderTerminationRequest={[Function]}
     onStartShouldSetResponder={[Function]}
     style={
-      Object {
+      {
         "backgroundColor": "black",
         "bottom": 0,
         "height": 1334,
@@ -975,7 +975,7 @@ exports[`<FinishSubscriptionModal /> should render correctly with undefined depo
     scrollTo={null}
     statusBarTranslucent={true}
     style={
-      Object {
+      {
         "alignItems": "center",
         "bottom": 0,
         "flex": 1,
@@ -985,15 +985,15 @@ exports[`<FinishSubscriptionModal /> should render correctly with undefined depo
         "position": "absolute",
         "right": 0,
         "top": "auto",
-        "transform": Array [
-          Object {
+        "transform": [
+          {
             "translateY": 1334,
           },
         ],
       }
     }
     supportedOrientations={
-      Array [
+      [
         "portrait",
         "landscape",
       ]
@@ -1003,8 +1003,8 @@ exports[`<FinishSubscriptionModal /> should render correctly with undefined depo
     <View
       height={428}
       style={
-        Array [
-          Object {
+        [
+          {
             "alignItems": "center",
             "backgroundColor": "#ffffff",
             "borderBottomEndRadius": 0,
@@ -1033,8 +1033,8 @@ exports[`<FinishSubscriptionModal /> should render correctly with undefined depo
       <View
         onLayout={[Function]}
         style={
-          Array [
-            Object {
+          [
+            {
               "display": "flex",
               "flexDirection": "row",
               "justifyContent": "center",
@@ -1047,8 +1047,8 @@ exports[`<FinishSubscriptionModal /> should render correctly with undefined depo
         <View
           justifyContent="left"
           style={
-            Array [
-              Object {
+            [
+              {
                 "alignItems": "flex-start",
                 "flexDirection": "row",
                 "height": 28,
@@ -1060,8 +1060,8 @@ exports[`<FinishSubscriptionModal /> should render correctly with undefined depo
         />
         <View
           style={
-            Array [
-              Object {
+            [
+              {
                 "flexBasis": 0,
                 "flexGrow": 1,
                 "flexShrink": 1,
@@ -1076,8 +1076,8 @@ exports[`<FinishSubscriptionModal /> should render correctly with undefined depo
             nativeID="testUuidV4"
             numberOfLines={2}
             style={
-              Array [
-                Object {
+              [
+                {
                   "color": "#161617",
                   "fontFamily": "Montserrat-Medium",
                   "fontSize": 18,
@@ -1095,8 +1095,8 @@ pour réserver cette offre
         <View
           justifyContent="right"
           style={
-            Array [
-              Object {
+            [
+              {
                 "alignItems": "flex-start",
                 "flexDirection": "row",
                 "height": 28,
@@ -1120,7 +1120,7 @@ pour réserver cette offre
             onResponderTerminationRequest={[Function]}
             onStartShouldSetResponder={[Function]}
             style={
-              Object {
+              {
                 "opacity": 1,
                 "paddingBottom": 4,
                 "paddingLeft": 4,
@@ -1145,8 +1145,8 @@ pour réserver cette offre
       </View>
       <View
         style={
-          Array [
-            Object {
+          [
+            {
               "height": 20,
             },
           ]
@@ -1157,8 +1157,8 @@ pour réserver cette offre
         backdropColor="#00000080"
         paddingBottom={8}
         style={
-          Array [
-            Object {
+          [
+            {
               "maxHeight": "100%",
               "maxWidth": 480,
               "paddingBottom": 8,
@@ -1168,7 +1168,7 @@ pour réserver cette offre
         }
       >
         <RCTScrollView
-          contentContainerStyle={Object {}}
+          contentContainerStyle={{}}
           onContentSizeChange={[Function]}
           scrollEnabled={true}
           testID="modalScrollView"
@@ -1176,8 +1176,8 @@ pour réserver cette offre
           <View>
             <View
               style={
-                Array [
-                  Object {
+                [
+                  {
                     "alignItems": "center",
                     "width": "100%",
                   },
@@ -1196,8 +1196,8 @@ pour réserver cette offre
               <View
                 numberOfSpaces={6}
                 style={
-                  Array [
-                    Object {
+                  [
+                    {
                       "height": 24,
                     },
                   ]
@@ -1205,8 +1205,8 @@ pour réserver cette offre
               />
               <Text
                 style={
-                  Array [
-                    Object {
+                  [
+                    {
                       "color": "#161617",
                       "fontFamily": "Montserrat-Regular",
                       "fontSize": 15,
@@ -1223,8 +1223,8 @@ pour réserver cette offre
               <View
                 numberOfSpaces={6}
                 style={
-                  Array [
-                    Object {
+                  [
+                    {
                       "height": 24,
                     },
                   ]
@@ -1232,8 +1232,8 @@ pour réserver cette offre
               />
               <Text
                 style={
-                  Array [
-                    Object {
+                  [
+                    {
                       "color": "#696A6F",
                       "fontFamily": "Montserrat-SemiBold",
                       "fontSize": 12,
@@ -1247,8 +1247,8 @@ pour réserver cette offre
               <View
                 numberOfSpaces={6}
                 style={
-                  Array [
-                    Object {
+                  [
+                    {
                       "height": 24,
                     },
                   ]
@@ -1267,7 +1267,7 @@ pour réserver cette offre
                 onResponderTerminationRequest={[Function]}
                 onStartShouldSetResponder={[Function]}
                 style={
-                  Object {
+                  {
                     "alignItems": "center",
                     "backgroundColor": "#eb0055",
                     "borderRadius": 24,
@@ -1290,8 +1290,8 @@ pour réserver cette offre
                   adjustsFontSizeToFit={false}
                   numberOfLines={1}
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "color": "#ffffff",
                         "fontFamily": "Montserrat-Bold",
                         "fontSize": 15,

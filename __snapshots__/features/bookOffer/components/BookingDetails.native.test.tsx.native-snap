@@ -3,8 +3,8 @@
 exports[`<BookingDetails /> when user has selected options should render correctly when offer is an event 1`] = `
 <View
   style={
-    Array [
-      Object {
+    [
+      {
         "width": "100%",
       },
     ]
@@ -13,8 +13,8 @@ exports[`<BookingDetails /> when user has selected options should render correct
   <View
     backgroundColor="#f3ecff"
     style={
-      Array [
-        Object {
+      [
+        {
           "alignItems": "center",
           "backgroundColor": "#f3ecff",
           "borderRadius": 8,
@@ -30,8 +30,8 @@ exports[`<BookingDetails /> when user has selected options should render correct
   >
     <View
       style={
-        Array [
-          Object {
+        [
+          {
             "paddingRight": 16,
           },
         ]
@@ -48,8 +48,8 @@ exports[`<BookingDetails /> when user has selected options should render correct
     </View>
     <View
       style={
-        Array [
-          Object {
+        [
+          {
             "flexBasis": 0,
             "flexGrow": 1,
             "flexShrink": 1,
@@ -59,8 +59,8 @@ exports[`<BookingDetails /> when user has selected options should render correct
     >
       <Text
         style={
-          Array [
-            Object {
+          [
+            {
               "color": "#161617",
               "fontFamily": "Montserrat-SemiBold",
               "fontSize": 12,
@@ -77,8 +77,8 @@ exports[`<BookingDetails /> when user has selected options should render correct
   <View
     numberOfSpaces={6}
     style={
-      Array [
-        Object {
+      [
+        {
           "height": 24,
         },
       ]
@@ -86,8 +86,8 @@ exports[`<BookingDetails /> when user has selected options should render correct
   />
   <Text
     style={
-      Array [
-        Object {
+      [
+        {
           "color": "#161617",
           "fontFamily": "Montserrat-Medium",
           "fontSize": 18,
@@ -101,8 +101,8 @@ exports[`<BookingDetails /> when user has selected options should render correct
   <View
     numberOfSpaces={6}
     style={
-      Array [
-        Object {
+      [
+        {
           "height": 24,
         },
       ]
@@ -110,8 +110,8 @@ exports[`<BookingDetails /> when user has selected options should render correct
   />
   <View
     style={
-      Array [
-        Object {
+      [
+        {
           "alignItems": "center",
           "flexDirection": "row",
           "paddingVertical": 2,
@@ -122,8 +122,8 @@ exports[`<BookingDetails /> when user has selected options should render correct
   >
     <View
       style={
-        Array [
-          Object {
+        [
+          {
             "flexShrink": 0,
           },
         ]
@@ -141,8 +141,8 @@ exports[`<BookingDetails /> when user has selected options should render correct
     <View
       numberOfSpaces={3}
       style={
-        Array [
-          Object {
+        [
+          {
             "width": 12,
           },
         ]
@@ -150,8 +150,8 @@ exports[`<BookingDetails /> when user has selected options should render correct
     />
     <Text
       style={
-        Array [
-          Object {
+        [
+          {
             "color": "#161617",
             "fontFamily": "Montserrat-SemiBold",
             "fontSize": 12,
@@ -165,8 +165,8 @@ exports[`<BookingDetails /> when user has selected options should render correct
     <View
       numberOfSpaces={2}
       style={
-        Array [
-          Object {
+        [
+          {
             "width": 8,
           },
         ]
@@ -174,8 +174,8 @@ exports[`<BookingDetails /> when user has selected options should render correct
     />
     <Text
       style={
-        Array [
-          Object {
+        [
+          {
             "color": "#696A6F",
             "fontFamily": "Montserrat-SemiBold",
             "fontSize": 12,
@@ -187,8 +187,8 @@ exports[`<BookingDetails /> when user has selected options should render correct
   </View>
   <View
     style={
-      Array [
-        Object {
+      [
+        {
           "alignItems": "center",
           "flexDirection": "row",
           "paddingVertical": 2,
@@ -199,8 +199,8 @@ exports[`<BookingDetails /> when user has selected options should render correct
   >
     <View
       style={
-        Array [
-          Object {
+        [
+          {
             "flexShrink": 0,
           },
         ]
@@ -218,8 +218,8 @@ exports[`<BookingDetails /> when user has selected options should render correct
     <View
       numberOfSpaces={3}
       style={
-        Array [
-          Object {
+        [
+          {
             "width": 12,
           },
         ]
@@ -227,8 +227,8 @@ exports[`<BookingDetails /> when user has selected options should render correct
     />
     <Text
       style={
-        Array [
-          Object {
+        [
+          {
             "color": "#161617",
             "fontFamily": "Montserrat-SemiBold",
             "fontSize": 12,
@@ -242,8 +242,8 @@ exports[`<BookingDetails /> when user has selected options should render correct
     <View
       numberOfSpaces={2}
       style={
-        Array [
-          Object {
+        [
+          {
             "width": 8,
           },
         ]
@@ -251,8 +251,8 @@ exports[`<BookingDetails /> when user has selected options should render correct
     />
     <Text
       style={
-        Array [
-          Object {
+        [
+          {
             "color": "#696A6F",
             "fontFamily": "Montserrat-SemiBold",
             "fontSize": 12,
@@ -264,8 +264,8 @@ exports[`<BookingDetails /> when user has selected options should render correct
   </View>
   <View
     style={
-      Array [
-        Object {
+      [
+        {
           "alignItems": "center",
           "flexDirection": "row",
           "paddingVertical": 2,
@@ -277,8 +277,8 @@ exports[`<BookingDetails /> when user has selected options should render correct
   >
     <View
       style={
-        Array [
-          Object {
+        [
+          {
             "flexShrink": 0,
           },
         ]
@@ -296,8 +296,8 @@ exports[`<BookingDetails /> when user has selected options should render correct
     <View
       numberOfSpaces={3}
       style={
-        Array [
-          Object {
+        [
+          {
             "width": 12,
           },
         ]
@@ -305,8 +305,8 @@ exports[`<BookingDetails /> when user has selected options should render correct
     />
     <Text
       style={
-        Array [
-          Object {
+        [
+          {
             "alignItems": "center",
             "color": "#161617",
             "fontFamily": "Montserrat-Regular",
@@ -319,8 +319,8 @@ exports[`<BookingDetails /> when user has selected options should render correct
     >
       <Text
         style={
-          Array [
-            Object {
+          [
+            {
               "color": "#161617",
               "fontFamily": "Montserrat-SemiBold",
               "fontSize": 12,
@@ -335,8 +335,8 @@ exports[`<BookingDetails /> when user has selected options should render correct
     <View
       numberOfSpaces={2}
       style={
-        Array [
-          Object {
+        [
+          {
             "width": 8,
           },
         ]
@@ -344,8 +344,8 @@ exports[`<BookingDetails /> when user has selected options should render correct
     />
     <Text
       style={
-        Array [
-          Object {
+        [
+          {
             "color": "#696A6F",
             "fontFamily": "Montserrat-SemiBold",
             "fontSize": 12,
@@ -357,8 +357,8 @@ exports[`<BookingDetails /> when user has selected options should render correct
   </View>
   <View
     style={
-      Array [
-        Object {
+      [
+        {
           "alignItems": "center",
           "flexDirection": "row",
           "paddingVertical": 2,
@@ -369,8 +369,8 @@ exports[`<BookingDetails /> when user has selected options should render correct
   >
     <View
       style={
-        Array [
-          Object {
+        [
+          {
             "flexShrink": 0,
           },
         ]
@@ -389,8 +389,8 @@ exports[`<BookingDetails /> when user has selected options should render correct
     <View
       numberOfSpaces={3}
       style={
-        Array [
-          Object {
+        [
+          {
             "width": 12,
           },
         ]
@@ -398,8 +398,8 @@ exports[`<BookingDetails /> when user has selected options should render correct
     />
     <Text
       style={
-        Array [
-          Object {
+        [
+          {
             "color": "#161617",
             "fontFamily": "Montserrat-Regular",
             "fontSize": 15,
@@ -410,8 +410,8 @@ exports[`<BookingDetails /> when user has selected options should render correct
     >
       <Text
         style={
-          Array [
-            Object {
+          [
+            {
               "color": "#161617",
               "fontFamily": "Montserrat-SemiBold",
               "fontSize": 12,
@@ -427,8 +427,8 @@ exports[`<BookingDetails /> when user has selected options should render correct
     <View
       numberOfSpaces={2}
       style={
-        Array [
-          Object {
+        [
+          {
             "width": 8,
           },
         ]
@@ -436,8 +436,8 @@ exports[`<BookingDetails /> when user has selected options should render correct
     />
     <Text
       style={
-        Array [
-          Object {
+        [
+          {
             "color": "#696A6F",
             "fontFamily": "Montserrat-SemiBold",
             "fontSize": 12,
@@ -450,8 +450,8 @@ exports[`<BookingDetails /> when user has selected options should render correct
   <View
     numberOfSpaces={6}
     style={
-      Array [
-        Object {
+      [
+        {
           "height": 24,
         },
       ]
@@ -459,8 +459,8 @@ exports[`<BookingDetails /> when user has selected options should render correct
   />
   <View
     style={
-      Array [
-        Object {
+      [
+        {
           "backgroundColor": "#F1F1F4",
           "height": 2,
         },
@@ -470,8 +470,8 @@ exports[`<BookingDetails /> when user has selected options should render correct
   <View
     numberOfSpaces={6}
     style={
-      Array [
-        Object {
+      [
+        {
           "height": 24,
         },
       ]
@@ -479,8 +479,8 @@ exports[`<BookingDetails /> when user has selected options should render correct
   />
   <Text
     style={
-      Array [
-        Object {
+      [
+        {
           "color": "#161617",
           "fontFamily": "Montserrat-Medium",
           "fontSize": 18,
@@ -494,8 +494,8 @@ exports[`<BookingDetails /> when user has selected options should render correct
   <View
     numberOfSpaces={2}
     style={
-      Array [
-        Object {
+      [
+        {
           "height": 8,
         },
       ]
@@ -503,8 +503,8 @@ exports[`<BookingDetails /> when user has selected options should render correct
   />
   <Text
     style={
-      Array [
-        Object {
+      [
+        {
           "color": "#161617",
           "fontFamily": "Montserrat-SemiBold",
           "fontSize": 12,
@@ -518,8 +518,8 @@ exports[`<BookingDetails /> when user has selected options should render correct
   <View
     numberOfSpaces={6}
     style={
-      Array [
-        Object {
+      [
+        {
           "height": 24,
         },
       ]
@@ -527,8 +527,8 @@ exports[`<BookingDetails /> when user has selected options should render correct
   />
   <View
     style={
-      Array [
-        Object {
+      [
+        {
           "alignItems": "center",
         },
       ]
@@ -537,7 +537,7 @@ exports[`<BookingDetails /> when user has selected options should render correct
     <View
       accessibilityLabel="Confirmer la réservation"
       accessibilityState={
-        Object {
+        {
           "disabled": false,
         }
       }
@@ -552,7 +552,7 @@ exports[`<BookingDetails /> when user has selected options should render correct
       onResponderTerminationRequest={[Function]}
       onStartShouldSetResponder={[Function]}
       style={
-        Object {
+        {
           "alignItems": "center",
           "backgroundColor": "#eb0055",
           "borderRadius": 24,
@@ -575,8 +575,8 @@ exports[`<BookingDetails /> when user has selected options should render correct
         adjustsFontSizeToFit={false}
         numberOfLines={1}
         style={
-          Array [
-            Object {
+          [
+            {
               "color": "#ffffff",
               "fontFamily": "Montserrat-Bold",
               "fontSize": 15,
@@ -594,8 +594,8 @@ exports[`<BookingDetails /> when user has selected options should render correct
   <Text
     nativeID="testUuidV4"
     style={
-      Array [
-        Object {
+      [
+        {
           "color": "#696A6F",
           "fontFamily": "Montserrat-SemiBold",
           "fontSize": 12,
@@ -614,8 +614,8 @@ exports[`<BookingDetails /> when user has selected options should render correct
 exports[`<BookingDetails /> when user has selected options should render disable CTA when user is underage and stock is forbidden to underage 1`] = `
 <View
   style={
-    Array [
-      Object {
+    [
+      {
         "width": "100%",
       },
     ]
@@ -624,8 +624,8 @@ exports[`<BookingDetails /> when user has selected options should render disable
   <View
     backgroundColor="#f3ecff"
     style={
-      Array [
-        Object {
+      [
+        {
           "alignItems": "center",
           "backgroundColor": "#f3ecff",
           "borderRadius": 8,
@@ -641,8 +641,8 @@ exports[`<BookingDetails /> when user has selected options should render disable
   >
     <View
       style={
-        Array [
-          Object {
+        [
+          {
             "paddingRight": 16,
           },
         ]
@@ -659,8 +659,8 @@ exports[`<BookingDetails /> when user has selected options should render disable
     </View>
     <View
       style={
-        Array [
-          Object {
+        [
+          {
             "flexBasis": 0,
             "flexGrow": 1,
             "flexShrink": 1,
@@ -670,8 +670,8 @@ exports[`<BookingDetails /> when user has selected options should render disable
     >
       <Text
         style={
-          Array [
-            Object {
+          [
+            {
               "color": "#161617",
               "fontFamily": "Montserrat-SemiBold",
               "fontSize": 12,
@@ -688,8 +688,8 @@ exports[`<BookingDetails /> when user has selected options should render disable
   <View
     numberOfSpaces={6}
     style={
-      Array [
-        Object {
+      [
+        {
           "height": 24,
         },
       ]
@@ -697,8 +697,8 @@ exports[`<BookingDetails /> when user has selected options should render disable
   />
   <Text
     style={
-      Array [
-        Object {
+      [
+        {
           "color": "#161617",
           "fontFamily": "Montserrat-Medium",
           "fontSize": 18,
@@ -712,8 +712,8 @@ exports[`<BookingDetails /> when user has selected options should render disable
   <View
     numberOfSpaces={6}
     style={
-      Array [
-        Object {
+      [
+        {
           "height": 24,
         },
       ]
@@ -721,8 +721,8 @@ exports[`<BookingDetails /> when user has selected options should render disable
   />
   <View
     style={
-      Array [
-        Object {
+      [
+        {
           "alignItems": "center",
           "flexDirection": "row",
           "paddingVertical": 2,
@@ -733,8 +733,8 @@ exports[`<BookingDetails /> when user has selected options should render disable
   >
     <View
       style={
-        Array [
-          Object {
+        [
+          {
             "flexShrink": 0,
           },
         ]
@@ -752,8 +752,8 @@ exports[`<BookingDetails /> when user has selected options should render disable
     <View
       numberOfSpaces={3}
       style={
-        Array [
-          Object {
+        [
+          {
             "width": 12,
           },
         ]
@@ -761,8 +761,8 @@ exports[`<BookingDetails /> when user has selected options should render disable
     />
     <Text
       style={
-        Array [
-          Object {
+        [
+          {
             "color": "#161617",
             "fontFamily": "Montserrat-SemiBold",
             "fontSize": 12,
@@ -776,8 +776,8 @@ exports[`<BookingDetails /> when user has selected options should render disable
     <View
       numberOfSpaces={2}
       style={
-        Array [
-          Object {
+        [
+          {
             "width": 8,
           },
         ]
@@ -785,8 +785,8 @@ exports[`<BookingDetails /> when user has selected options should render disable
     />
     <Text
       style={
-        Array [
-          Object {
+        [
+          {
             "color": "#696A6F",
             "fontFamily": "Montserrat-SemiBold",
             "fontSize": 12,
@@ -798,8 +798,8 @@ exports[`<BookingDetails /> when user has selected options should render disable
   </View>
   <View
     style={
-      Array [
-        Object {
+      [
+        {
           "alignItems": "center",
           "flexDirection": "row",
           "paddingVertical": 2,
@@ -810,8 +810,8 @@ exports[`<BookingDetails /> when user has selected options should render disable
   >
     <View
       style={
-        Array [
-          Object {
+        [
+          {
             "flexShrink": 0,
           },
         ]
@@ -829,8 +829,8 @@ exports[`<BookingDetails /> when user has selected options should render disable
     <View
       numberOfSpaces={3}
       style={
-        Array [
-          Object {
+        [
+          {
             "width": 12,
           },
         ]
@@ -838,8 +838,8 @@ exports[`<BookingDetails /> when user has selected options should render disable
     />
     <Text
       style={
-        Array [
-          Object {
+        [
+          {
             "color": "#161617",
             "fontFamily": "Montserrat-SemiBold",
             "fontSize": 12,
@@ -853,8 +853,8 @@ exports[`<BookingDetails /> when user has selected options should render disable
     <View
       numberOfSpaces={2}
       style={
-        Array [
-          Object {
+        [
+          {
             "width": 8,
           },
         ]
@@ -862,8 +862,8 @@ exports[`<BookingDetails /> when user has selected options should render disable
     />
     <Text
       style={
-        Array [
-          Object {
+        [
+          {
             "color": "#696A6F",
             "fontFamily": "Montserrat-SemiBold",
             "fontSize": 12,
@@ -875,8 +875,8 @@ exports[`<BookingDetails /> when user has selected options should render disable
   </View>
   <View
     style={
-      Array [
-        Object {
+      [
+        {
           "alignItems": "center",
           "flexDirection": "row",
           "paddingVertical": 2,
@@ -888,8 +888,8 @@ exports[`<BookingDetails /> when user has selected options should render disable
   >
     <View
       style={
-        Array [
-          Object {
+        [
+          {
             "flexShrink": 0,
           },
         ]
@@ -907,8 +907,8 @@ exports[`<BookingDetails /> when user has selected options should render disable
     <View
       numberOfSpaces={3}
       style={
-        Array [
-          Object {
+        [
+          {
             "width": 12,
           },
         ]
@@ -916,8 +916,8 @@ exports[`<BookingDetails /> when user has selected options should render disable
     />
     <Text
       style={
-        Array [
-          Object {
+        [
+          {
             "alignItems": "center",
             "color": "#161617",
             "fontFamily": "Montserrat-Regular",
@@ -930,8 +930,8 @@ exports[`<BookingDetails /> when user has selected options should render disable
     >
       <Text
         style={
-          Array [
-            Object {
+          [
+            {
               "color": "#161617",
               "fontFamily": "Montserrat-SemiBold",
               "fontSize": 12,
@@ -946,8 +946,8 @@ exports[`<BookingDetails /> when user has selected options should render disable
     <View
       numberOfSpaces={2}
       style={
-        Array [
-          Object {
+        [
+          {
             "width": 8,
           },
         ]
@@ -955,8 +955,8 @@ exports[`<BookingDetails /> when user has selected options should render disable
     />
     <Text
       style={
-        Array [
-          Object {
+        [
+          {
             "color": "#696A6F",
             "fontFamily": "Montserrat-SemiBold",
             "fontSize": 12,
@@ -968,8 +968,8 @@ exports[`<BookingDetails /> when user has selected options should render disable
   </View>
   <View
     style={
-      Array [
-        Object {
+      [
+        {
           "alignItems": "center",
           "flexDirection": "row",
           "paddingVertical": 2,
@@ -980,8 +980,8 @@ exports[`<BookingDetails /> when user has selected options should render disable
   >
     <View
       style={
-        Array [
-          Object {
+        [
+          {
             "flexShrink": 0,
           },
         ]
@@ -1000,8 +1000,8 @@ exports[`<BookingDetails /> when user has selected options should render disable
     <View
       numberOfSpaces={3}
       style={
-        Array [
-          Object {
+        [
+          {
             "width": 12,
           },
         ]
@@ -1009,8 +1009,8 @@ exports[`<BookingDetails /> when user has selected options should render disable
     />
     <Text
       style={
-        Array [
-          Object {
+        [
+          {
             "color": "#161617",
             "fontFamily": "Montserrat-Regular",
             "fontSize": 15,
@@ -1021,8 +1021,8 @@ exports[`<BookingDetails /> when user has selected options should render disable
     >
       <Text
         style={
-          Array [
-            Object {
+          [
+            {
               "color": "#161617",
               "fontFamily": "Montserrat-SemiBold",
               "fontSize": 12,
@@ -1038,8 +1038,8 @@ exports[`<BookingDetails /> when user has selected options should render disable
     <View
       numberOfSpaces={2}
       style={
-        Array [
-          Object {
+        [
+          {
             "width": 8,
           },
         ]
@@ -1047,8 +1047,8 @@ exports[`<BookingDetails /> when user has selected options should render disable
     />
     <Text
       style={
-        Array [
-          Object {
+        [
+          {
             "color": "#696A6F",
             "fontFamily": "Montserrat-SemiBold",
             "fontSize": 12,
@@ -1061,8 +1061,8 @@ exports[`<BookingDetails /> when user has selected options should render disable
   <View
     numberOfSpaces={6}
     style={
-      Array [
-        Object {
+      [
+        {
           "height": 24,
         },
       ]
@@ -1070,8 +1070,8 @@ exports[`<BookingDetails /> when user has selected options should render disable
   />
   <View
     style={
-      Array [
-        Object {
+      [
+        {
           "backgroundColor": "#F1F1F4",
           "height": 2,
         },
@@ -1081,8 +1081,8 @@ exports[`<BookingDetails /> when user has selected options should render disable
   <View
     numberOfSpaces={6}
     style={
-      Array [
-        Object {
+      [
+        {
           "height": 24,
         },
       ]
@@ -1090,8 +1090,8 @@ exports[`<BookingDetails /> when user has selected options should render disable
   />
   <Text
     style={
-      Array [
-        Object {
+      [
+        {
           "color": "#161617",
           "fontFamily": "Montserrat-Medium",
           "fontSize": 18,
@@ -1105,8 +1105,8 @@ exports[`<BookingDetails /> when user has selected options should render disable
   <View
     numberOfSpaces={2}
     style={
-      Array [
-        Object {
+      [
+        {
           "height": 8,
         },
       ]
@@ -1114,8 +1114,8 @@ exports[`<BookingDetails /> when user has selected options should render disable
   />
   <Text
     style={
-      Array [
-        Object {
+      [
+        {
           "color": "#161617",
           "fontFamily": "Montserrat-SemiBold",
           "fontSize": 12,
@@ -1129,8 +1129,8 @@ exports[`<BookingDetails /> when user has selected options should render disable
   <View
     numberOfSpaces={6}
     style={
-      Array [
-        Object {
+      [
+        {
           "height": 24,
         },
       ]
@@ -1138,8 +1138,8 @@ exports[`<BookingDetails /> when user has selected options should render disable
   />
   <View
     style={
-      Array [
-        Object {
+      [
+        {
           "alignItems": "center",
         },
       ]
@@ -1148,7 +1148,7 @@ exports[`<BookingDetails /> when user has selected options should render disable
     <View
       accessibilityLabel="Confirmer la réservation"
       accessibilityState={
-        Object {
+        {
           "disabled": true,
         }
       }
@@ -1163,7 +1163,7 @@ exports[`<BookingDetails /> when user has selected options should render disable
       onResponderTerminationRequest={[Function]}
       onStartShouldSetResponder={[Function]}
       style={
-        Object {
+        {
           "alignItems": "center",
           "backgroundColor": "#F1F1F4",
           "borderRadius": 24,
@@ -1186,8 +1186,8 @@ exports[`<BookingDetails /> when user has selected options should render disable
         adjustsFontSizeToFit={false}
         numberOfLines={1}
         style={
-          Array [
-            Object {
+          [
+            {
               "color": "#696A6F",
               "fontFamily": "Montserrat-Bold",
               "fontSize": 15,
@@ -1205,8 +1205,8 @@ exports[`<BookingDetails /> when user has selected options should render disable
   <Text
     nativeID="testUuidV4"
     style={
-      Array [
-        Object {
+      [
+        {
           "color": "#696A6F",
           "fontFamily": "Montserrat-SemiBold",
           "fontSize": 12,

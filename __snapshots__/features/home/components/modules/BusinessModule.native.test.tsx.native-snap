@@ -3,8 +3,8 @@
 exports[`BusinessModule component should disable click when no URL 1`] = `
 <View
   style={
-    Array [
-      Object {
+    [
+      {
         "flexDirection": "row",
         "paddingBottom": 24,
       },
@@ -14,8 +14,8 @@ exports[`BusinessModule component should disable click when no URL 1`] = `
   <View
     numberOfSpaces={6}
     style={
-      Array [
-        Object {
+      [
+        {
           "width": 24,
         },
       ]
@@ -24,7 +24,7 @@ exports[`BusinessModule component should disable click when no URL 1`] = `
   <View
     accessibilityLabel="firstLine secondLine"
     accessibilityState={
-      Object {
+      {
         "disabled": true,
       }
     }
@@ -38,8 +38,8 @@ exports[`BusinessModule component should disable click when no URL 1`] = `
     onResponderTerminationRequest={[Function]}
     onStartShouldSetResponder={[Function]}
     style={
-      Array [
-        Object {
+      [
+        {
           "borderRadius": 8,
           "textDecorationColor": "black",
           "textDecorationLine": "none",
@@ -50,8 +50,8 @@ exports[`BusinessModule component should disable click when no URL 1`] = `
   >
     <View
       style={
-        Array [
-          Object {
+        [
+          {
             "borderRadius": 8,
             "maxHeight": 144,
             "overflow": "hidden",
@@ -62,8 +62,8 @@ exports[`BusinessModule component should disable click when no URL 1`] = `
       <View
         accessibilityIgnoresInvertColors={true}
         style={
-          Array [
-            Object {
+          [
+            {
               "backgroundColor": "#eb0055",
               "height": 144,
               "justifyContent": "center",
@@ -74,20 +74,20 @@ exports[`BusinessModule component should disable click when no URL 1`] = `
       >
         <Image
           source={
-            Object {
+            {
               "uri": "https://fr.web.img6.acsta.net/medias/nmedia/18/96/46/01/20468669.jpg",
             }
           }
           style={
-            Array [
-              Object {
+            [
+              {
                 "bottom": 0,
                 "left": 0,
                 "position": "absolute",
                 "right": 0,
                 "top": 0,
               },
-              Object {
+              {
                 "height": 144,
                 "width": 912,
               },
@@ -98,8 +98,8 @@ exports[`BusinessModule component should disable click when no URL 1`] = `
         />
         <View
           style={
-            Array [
-              Object {
+            [
+              {
                 "alignItems": "center",
                 "flexDirection": "row",
                 "paddingHorizontal": 6,
@@ -110,8 +110,8 @@ exports[`BusinessModule component should disable click when no URL 1`] = `
         >
           <View
             style={
-              Array [
-                Object {
+              [
+                {
                   "alignItems": "center",
                   "height": 56,
                   "justifyContent": "center",
@@ -131,8 +131,8 @@ exports[`BusinessModule component should disable click when no URL 1`] = `
           </View>
           <View
             style={
-              Array [
-                Object {
+              [
+                {
                   "flexBasis": 0,
                   "flexDirection": "column",
                   "flexGrow": 1,
@@ -145,8 +145,8 @@ exports[`BusinessModule component should disable click when no URL 1`] = `
           >
             <Text
               style={
-                Array [
-                  Object {
+                [
+                  {
                     "color": "#ffffff",
                     "fontFamily": "Montserrat-Bold",
                     "fontSize": 15,
@@ -161,8 +161,8 @@ exports[`BusinessModule component should disable click when no URL 1`] = `
             <Text
               numberOfLines={2}
               style={
-                Array [
-                  Object {
+                [
+                  {
                     "color": "#ffffff",
                     "fontFamily": "Montserrat-Regular",
                     "fontSize": 15,
@@ -181,8 +181,8 @@ exports[`BusinessModule component should disable click when no URL 1`] = `
   <View
     numberOfSpaces={6}
     style={
-      Array [
-        Object {
+      [
+        {
           "width": 24,
         },
       ]
@@ -194,8 +194,8 @@ exports[`BusinessModule component should disable click when no URL 1`] = `
 exports[`BusinessModule component should render correctly - with leftIcon = Idea by default 1`] = `
 <View
   style={
-    Array [
-      Object {
+    [
+      {
         "flexDirection": "row",
         "paddingBottom": 24,
       },
@@ -205,8 +205,8 @@ exports[`BusinessModule component should render correctly - with leftIcon = Idea
   <View
     numberOfSpaces={6}
     style={
-      Array [
-        Object {
+      [
+        {
           "width": 24,
         },
       ]
@@ -216,7 +216,7 @@ exports[`BusinessModule component should render correctly - with leftIcon = Idea
     accessibilityLabel="firstLine secondLine"
     accessibilityRole="link"
     accessibilityState={
-      Object {
+      {
         "disabled": false,
       }
     }
@@ -230,8 +230,8 @@ exports[`BusinessModule component should render correctly - with leftIcon = Idea
     onResponderTerminationRequest={[Function]}
     onStartShouldSetResponder={[Function]}
     style={
-      Array [
-        Object {
+      [
+        {
           "borderRadius": 8,
           "textDecorationColor": "black",
           "textDecorationLine": "none",
@@ -242,8 +242,8 @@ exports[`BusinessModule component should render correctly - with leftIcon = Idea
   >
     <View
       style={
-        Array [
-          Object {
+        [
+          {
             "borderRadius": 8,
             "maxHeight": 144,
             "overflow": "hidden",
@@ -254,8 +254,8 @@ exports[`BusinessModule component should render correctly - with leftIcon = Idea
       <View
         accessibilityIgnoresInvertColors={true}
         style={
-          Array [
-            Object {
+          [
+            {
               "backgroundColor": "#eb0055",
               "height": 144,
               "justifyContent": "center",
@@ -266,20 +266,20 @@ exports[`BusinessModule component should render correctly - with leftIcon = Idea
       >
         <Image
           source={
-            Object {
+            {
               "uri": "https://fr.web.img6.acsta.net/medias/nmedia/18/96/46/01/20468669.jpg",
             }
           }
           style={
-            Array [
-              Object {
+            [
+              {
                 "bottom": 0,
                 "left": 0,
                 "position": "absolute",
                 "right": 0,
                 "top": 0,
               },
-              Object {
+              {
                 "height": 144,
                 "width": 912,
               },
@@ -290,8 +290,8 @@ exports[`BusinessModule component should render correctly - with leftIcon = Idea
         />
         <View
           style={
-            Array [
-              Object {
+            [
+              {
                 "alignItems": "center",
                 "flexDirection": "row",
                 "paddingHorizontal": 6,
@@ -302,8 +302,8 @@ exports[`BusinessModule component should render correctly - with leftIcon = Idea
         >
           <View
             style={
-              Array [
-                Object {
+              [
+                {
                   "alignItems": "center",
                   "height": 56,
                   "justifyContent": "center",
@@ -323,8 +323,8 @@ exports[`BusinessModule component should render correctly - with leftIcon = Idea
           </View>
           <View
             style={
-              Array [
-                Object {
+              [
+                {
                   "flexBasis": 0,
                   "flexDirection": "column",
                   "flexGrow": 1,
@@ -337,8 +337,8 @@ exports[`BusinessModule component should render correctly - with leftIcon = Idea
           >
             <Text
               style={
-                Array [
-                  Object {
+                [
+                  {
                     "color": "#ffffff",
                     "fontFamily": "Montserrat-Bold",
                     "fontSize": 15,
@@ -353,8 +353,8 @@ exports[`BusinessModule component should render correctly - with leftIcon = Idea
             <Text
               numberOfLines={2}
               style={
-                Array [
-                  Object {
+                [
+                  {
                     "color": "#ffffff",
                     "fontFamily": "Montserrat-Regular",
                     "fontSize": 15,
@@ -368,8 +368,8 @@ exports[`BusinessModule component should render correctly - with leftIcon = Idea
           </View>
           <View
             style={
-              Array [
-                Object {
+              [
+                {
                   "alignItems": "center",
                   "height": 56,
                   "justifyContent": "center",
@@ -394,8 +394,8 @@ exports[`BusinessModule component should render correctly - with leftIcon = Idea
   <View
     numberOfSpaces={6}
     style={
-      Array [
-        Object {
+      [
+        {
           "width": 24,
         },
       ]
@@ -407,8 +407,8 @@ exports[`BusinessModule component should render correctly - with leftIcon = Idea
 exports[`BusinessModule component should render correctly - with leftIcon provided 1`] = `
 <View
   style={
-    Array [
-      Object {
+    [
+      {
         "flexDirection": "row",
         "paddingBottom": 24,
       },
@@ -418,8 +418,8 @@ exports[`BusinessModule component should render correctly - with leftIcon provid
   <View
     numberOfSpaces={6}
     style={
-      Array [
-        Object {
+      [
+        {
           "width": 24,
         },
       ]
@@ -429,7 +429,7 @@ exports[`BusinessModule component should render correctly - with leftIcon provid
     accessibilityLabel="firstLine secondLine"
     accessibilityRole="link"
     accessibilityState={
-      Object {
+      {
         "disabled": false,
       }
     }
@@ -443,8 +443,8 @@ exports[`BusinessModule component should render correctly - with leftIcon provid
     onResponderTerminationRequest={[Function]}
     onStartShouldSetResponder={[Function]}
     style={
-      Array [
-        Object {
+      [
+        {
           "borderRadius": 8,
           "textDecorationColor": "black",
           "textDecorationLine": "none",
@@ -455,8 +455,8 @@ exports[`BusinessModule component should render correctly - with leftIcon provid
   >
     <View
       style={
-        Array [
-          Object {
+        [
+          {
             "borderRadius": 8,
             "maxHeight": 144,
             "overflow": "hidden",
@@ -467,8 +467,8 @@ exports[`BusinessModule component should render correctly - with leftIcon provid
       <View
         accessibilityIgnoresInvertColors={true}
         style={
-          Array [
-            Object {
+          [
+            {
               "backgroundColor": "#eb0055",
               "height": 144,
               "justifyContent": "center",
@@ -479,20 +479,20 @@ exports[`BusinessModule component should render correctly - with leftIcon provid
       >
         <Image
           source={
-            Object {
+            {
               "uri": "https://fr.web.img6.acsta.net/medias/nmedia/18/96/46/01/20468669.jpg",
             }
           }
           style={
-            Array [
-              Object {
+            [
+              {
                 "bottom": 0,
                 "left": 0,
                 "position": "absolute",
                 "right": 0,
                 "top": 0,
               },
-              Object {
+              {
                 "height": 144,
                 "width": 912,
               },
@@ -503,8 +503,8 @@ exports[`BusinessModule component should render correctly - with leftIcon provid
         />
         <View
           style={
-            Array [
-              Object {
+            [
+              {
                 "alignItems": "center",
                 "flexDirection": "row",
                 "paddingHorizontal": 6,
@@ -515,8 +515,8 @@ exports[`BusinessModule component should render correctly - with leftIcon provid
         >
           <View
             style={
-              Array [
-                Object {
+              [
+                {
                   "alignItems": "center",
                   "height": 56,
                   "justifyContent": "center",
@@ -527,13 +527,13 @@ exports[`BusinessModule component should render correctly - with leftIcon provid
           >
             <Image
               source={
-                Object {
+                {
                   "uri": "https://images.ctfassets.net/2bg01iqy0isv/1Sh2Ter3f4GgW9m926jqB5/83adbbd38e399d0089ff7b8f0efadf4c/Europe.png",
                 }
               }
               style={
-                Array [
-                  Object {
+                [
+                  {
                     "height": 56,
                     "tintColor": "#ffffff",
                     "width": 56,
@@ -544,8 +544,8 @@ exports[`BusinessModule component should render correctly - with leftIcon provid
           </View>
           <View
             style={
-              Array [
-                Object {
+              [
+                {
                   "flexBasis": 0,
                   "flexDirection": "column",
                   "flexGrow": 1,
@@ -558,8 +558,8 @@ exports[`BusinessModule component should render correctly - with leftIcon provid
           >
             <Text
               style={
-                Array [
-                  Object {
+                [
+                  {
                     "color": "#ffffff",
                     "fontFamily": "Montserrat-Bold",
                     "fontSize": 15,
@@ -574,8 +574,8 @@ exports[`BusinessModule component should render correctly - with leftIcon provid
             <Text
               numberOfLines={2}
               style={
-                Array [
-                  Object {
+                [
+                  {
                     "color": "#ffffff",
                     "fontFamily": "Montserrat-Regular",
                     "fontSize": 15,
@@ -589,8 +589,8 @@ exports[`BusinessModule component should render correctly - with leftIcon provid
           </View>
           <View
             style={
-              Array [
-                Object {
+              [
+                {
                   "alignItems": "center",
                   "height": 56,
                   "justifyContent": "center",
@@ -615,8 +615,8 @@ exports[`BusinessModule component should render correctly - with leftIcon provid
   <View
     numberOfSpaces={6}
     style={
-      Array [
-        Object {
+      [
+        {
           "width": 24,
         },
       ]

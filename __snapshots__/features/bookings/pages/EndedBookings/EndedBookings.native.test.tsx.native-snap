@@ -1,12 +1,12 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`EndedBookings should render correctly 1`] = `
-Array [
+[
   <View
     accessibilityRole="header"
     style={
-      Array [
-        Object {
+      [
+        {
           "width": "100%",
         },
       ]
@@ -14,15 +14,15 @@ Array [
   >
     <View
       style={
-        Object {
+        {
           "height": 64,
         }
       }
     />
     <View
       style={
-        Array [
-          Object {
+        [
+          {
             "backgroundColor": "#eb0055",
             "position": "absolute",
             "top": 0,
@@ -36,8 +36,8 @@ Array [
         customHeight={16}
         enable={true}
         style={
-          Array [
-            Object {
+          [
+            {
               "height": 16,
             },
           ]
@@ -45,8 +45,8 @@ Array [
       />
       <View
         style={
-          Array [
-            Object {
+          [
+            {
               "alignItems": "center",
               "height": 48,
               "justifyContent": "center",
@@ -56,8 +56,8 @@ Array [
       >
         <View
           style={
-            Array [
-              Object {
+            [
+              {
                 "alignItems": "center",
                 "flexDirection": "row",
                 "justifyContent": "space-between",
@@ -69,8 +69,8 @@ Array [
           <View
             positionInHeader="left"
             style={
-              Array [
-                Object {
+              [
+                {
                   "alignItems": "center",
                   "flexBasis": 0,
                   "flexDirection": "row",
@@ -98,7 +98,7 @@ Array [
               onResponderTerminationRequest={[Function]}
               onStartShouldSetResponder={[Function]}
               style={
-                Object {
+                {
                   "alignItems": "center",
                   "flexGrow": 1,
                   "height": 40,
@@ -121,8 +121,8 @@ Array [
               </View>
               <Text
                 style={
-                  Array [
-                    Object {
+                  [
+                    {
                       "display": "none",
                     },
                   ]
@@ -135,8 +135,8 @@ Array [
           <Text
             numberOfLines={1}
             style={
-              Array [
-                Object {
+              [
+                {
                   "color": "#ffffff",
                   "fontFamily": "Montserrat-Regular",
                   "fontSize": 15,
@@ -151,8 +151,8 @@ Array [
           <View
             positionInHeader="right"
             style={
-              Array [
-                Object {
+              [
+                {
                   "alignItems": "center",
                   "flexBasis": 0,
                   "flexDirection": "row",
@@ -172,11 +172,11 @@ Array [
   </View>,
   <RCTScrollView
     ItemSeparatorComponent={
-      Object {
+      {
         "$$typeof": Symbol(react.forward_ref),
-        "attrs": Array [],
+        "attrs": [],
         "inlineStyle": InlineStyle {
-          "rules": Array [
+          "rules": [
             [Function],
             "margin-vertical: 16px;",
           ],
@@ -191,13 +191,13 @@ Array [
     ListFooterComponent={[Function]}
     ListHeaderComponent={[Function]}
     contentContainerStyle={
-      Object {
+      {
         "paddingHorizontal": 20,
       }
     }
     data={
-      Array [
-        Object {
+      [
+        {
           "cancellationDate": "2021-03-15T23:01:37.925926",
           "cancellationReason": "BENEFICIARY",
           "confirmationDate": "2021-02-15T23:01:37.925926",
@@ -206,15 +206,15 @@ Array [
           "expirationDate": null,
           "id": 321,
           "quantity": 10,
-          "stock": Object {
+          "stock": {
             "beginningDatetime": "2021-03-14T20:00:00",
-            "features": Array [
+            "features": [
               "VOSTFR",
               "3D",
               "IMAX",
             ],
             "id": 150230,
-            "offer": Object {
+            "offer": {
               "bookingContact": null,
               "extraData": null,
               "id": 147874,
@@ -222,10 +222,10 @@ Array [
               "isPermanent": false,
               "name": "Avez-vous déjà vu ?",
               "subcategoryId": "EVENEMENT_PATRIMOINE",
-              "venue": Object {
+              "venue": {
                 "address": "1 boulevard de la brique",
                 "city": "Drancy",
-                "coordinates": Object {
+                "coordinates": {
                   "latitude": 48.91683,
                   "longitude": 2.43884,
                 },
@@ -259,8 +259,8 @@ Array [
     removeClippedSubviews={false}
     renderItem={[Function]}
     scrollEventThrottle={50}
-    stickyHeaderIndices={Array []}
-    viewabilityConfigCallbackPairs={Array []}
+    stickyHeaderIndices={[]}
+    viewabilityConfigCallbackPairs={[]}
   >
     <View>
       <View
@@ -269,8 +269,8 @@ Array [
         <View
           numberOfSpaces={6}
           style={
-            Array [
-              Object {
+            [
+              {
                 "height": 24,
               },
             ]
@@ -278,8 +278,8 @@ Array [
         />
         <Text
           style={
-            Array [
-              Object {
+            [
+              {
                 "color": "#696A6F",
                 "fontFamily": "Montserrat-Regular",
                 "fontSize": 15,
@@ -310,7 +310,7 @@ Array [
           onResponderTerminationRequest={[Function]}
           onStartShouldSetResponder={[Function]}
           style={
-            Object {
+            {
               "opacity": 1,
               "userSelect": "auto",
             }
@@ -319,8 +319,8 @@ Array [
         >
           <View
             style={
-              Array [
-                Object {
+              [
+                {
                   "flexDirection": "row",
                 },
               ]
@@ -329,12 +329,12 @@ Array [
             <View
               size="small"
               style={
-                Array [
-                  Object {
+                [
+                  {
                     "borderRadius": 4,
                     "height": 96,
                     "shadowColor": "#696A6F",
-                    "shadowOffset": Object {
+                    "shadowOffset": {
                       "height": 4,
                       "width": 0,
                     },
@@ -348,27 +348,27 @@ Array [
               <BVLinearGradient
                 borderRadius={4}
                 colors={
-                  Array [
+                  [
                     4294046196,
                     4291546578,
                   ]
                 }
                 endPoint={
-                  Object {
+                  {
                     "x": 0.5,
                     "y": 1,
                   }
                 }
                 locations={null}
                 startPoint={
-                  Object {
+                  {
                     "x": 0.5,
                     "y": 0,
                   }
                 }
                 style={
-                  Array [
-                    Object {
+                  [
+                    {
                       "alignItems": "center",
                       "backgroundColor": "#F1F1F4",
                       "borderRadius": 4,
@@ -394,8 +394,8 @@ Array [
             <View
               numberOfSpaces={4}
               style={
-                Array [
-                  Object {
+                [
+                  {
                     "width": 16,
                   },
                 ]
@@ -403,8 +403,8 @@ Array [
             />
             <View
               style={
-                Array [
-                  Object {
+                [
+                  {
                     "flexBasis": 0,
                     "flexGrow": 1,
                     "flexShrink": 1,
@@ -415,8 +415,8 @@ Array [
             >
               <View
                 style={
-                  Array [
-                    Object {
+                  [
+                    {
                       "paddingBottom": 4,
                     },
                   ]
@@ -426,8 +426,8 @@ Array [
                   numberOfLines={2}
                   shrink={true}
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "color": "#161617",
                         "flexShrink": 1,
                         "fontFamily": "Montserrat-Bold",
@@ -441,8 +441,8 @@ Array [
               </View>
               <View
                 style={
-                  Array [
-                    Object {
+                  [
+                    {
                       "alignItems": "center",
                       "flexDirection": "row",
                       "flexWrap": "wrap",
@@ -453,8 +453,8 @@ Array [
                 <View
                   noFullWidth={true}
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "alignItems": "center",
                         "flexDirection": "row-reverse",
                         "justifyContent": "flex-end",
@@ -467,8 +467,8 @@ Array [
                     color="#b60025"
                     noFullWidth={true}
                     style={
-                      Array [
-                        Object {
+                      [
+                        {
                           "color": "#b60025",
                           "flexShrink": 1,
                           "fontFamily": "Montserrat-SemiBold",
@@ -485,8 +485,8 @@ Array [
                   <View
                     numberOfSpaces={1}
                     style={
-                      Array [
-                        Object {
+                      [
+                        {
                           "width": 4,
                         },
                       ]
@@ -494,8 +494,8 @@ Array [
                   />
                   <View
                     style={
-                      Array [
-                        Object {
+                      [
+                        {
                           "flexShrink": 0,
                         },
                       ]
@@ -515,8 +515,8 @@ Array [
                 <View
                   numberOfSpaces={1}
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "width": 4,
                       },
                     ]
@@ -524,8 +524,8 @@ Array [
                 />
                 <Text
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "color": "#696A6F",
                         "fontFamily": "Montserrat-SemiBold",
                         "fontSize": 12,
@@ -547,8 +547,8 @@ Array [
         <View
           numberOfSpaces={12}
           style={
-            Array [
-              Object {
+            [
+              {
                 "height": 48,
               },
             ]

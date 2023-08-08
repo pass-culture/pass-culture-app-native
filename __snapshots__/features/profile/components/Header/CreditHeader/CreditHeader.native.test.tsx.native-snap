@@ -1,11 +1,11 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`CreditHeader Beneficiary is not underage should render correctly with exhausted credit 1`] = `
-Array [
+[
   <View
     style={
-      Array [
-        Object {
+      [
+        {
           "marginBottom": 8,
           "marginHorizontal": 24,
           "marginTop": 24,
@@ -17,8 +17,8 @@ Array [
       customHeight={16}
       enable={true}
       style={
-        Array [
-          Object {
+        [
+          {
             "height": 16,
           },
         ]
@@ -27,8 +27,8 @@ Array [
     <Text
       numberOfLines={2}
       style={
-        Array [
-          Object {
+        [
+          {
             "color": "#161617",
             "fontFamily": "Montserrat-Black",
             "fontSize": 26,
@@ -42,8 +42,8 @@ Array [
   </View>,
   <View
     style={
-      Array [
-        Object {
+      [
+        {
           "marginBottom": 24,
           "marginHorizontal": 24,
         },
@@ -52,8 +52,8 @@ Array [
   >
     <View
       style={
-        Array [
-          Object {
+        [
+          {
             "flexDirection": "row",
             "flexWrap": "wrap",
           },
@@ -62,8 +62,8 @@ Array [
     >
       <Text
         style={
-          Array [
-            Object {
+          [
+            {
               "color": "#161617",
               "fontFamily": "Montserrat-Regular",
               "fontSize": 15,
@@ -76,8 +76,8 @@ Array [
       </Text>
       <Text
         style={
-          Array [
-            Object {
+          [
+            {
               "color": "#161617",
               "fontFamily": "Montserrat-Bold",
               "fontSize": 15,
@@ -93,8 +93,8 @@ Array [
   </View>,
   <View
     style={
-      Array [
-        Object {
+      [
+        {
           "backgroundColor": "#F1F1F4",
           "borderRadius": 8,
           "marginBottom": 8,
@@ -112,8 +112,8 @@ Array [
     >
       <Text
         style={
-          Array [
-            Object {
+          [
+            {
               "color": "#320096",
               "fontFamily": "Montserrat-Medium",
               "fontSize": 38,
@@ -127,8 +127,8 @@ Array [
       <View
         numberOfSpaces={3}
         style={
-          Array [
-            Object {
+          [
+            {
               "height": 12,
             },
           ]
@@ -136,8 +136,8 @@ Array [
       />
       <View
         style={
-          Array [
-            Object {
+          [
+            {
               "alignItems": "center",
               "borderRadius": 48,
               "flexDirection": "row",
@@ -148,8 +148,8 @@ Array [
       >
         <View
           style={
-            Array [
-              Object {
+            [
+              {
                 "backgroundColor": "#ffffff",
                 "borderRadius": 48,
                 "flexDirection": "row",
@@ -163,27 +163,27 @@ Array [
           <BVLinearGradient
             angle={180}
             colors={
-              Array [
+              [
                 451608661,
                 439484566,
               ]
             }
             endPoint={
-              Object {
+              {
                 "x": 1,
                 "y": 1,
               }
             }
             locations={null}
             startPoint={
-              Object {
+              {
                 "x": 0,
                 "y": 0,
               }
             }
             style={
-              Array [
-                Object {
+              [
+                {
                   "borderColor": "#ffffff",
                   "borderRadius": 48,
                   "borderWidth": 2,
@@ -199,28 +199,28 @@ Array [
           />
           <BVLinearGradient
             colors={
-              Array [
+              [
                 872415231,
                 4294967295,
                 872415231,
               ]
             }
             endPoint={
-              Object {
+              {
                 "x": 0.5,
                 "y": 1,
               }
             }
             locations={null}
             startPoint={
-              Object {
+              {
                 "x": 0.5,
                 "y": 0,
               }
             }
             style={
-              Array [
-                Object {
+              [
+                {
                   "borderRadius": 48,
                   "height": "100%",
                   "left": 0,
@@ -234,13 +234,13 @@ Array [
           <BVLinearGradient
             angle={90}
             colors={
-              Array [
+              [
                 4293591125,
                 4281467030,
               ]
             }
             endPoint={
-              Object {
+              {
                 "x": 0.5,
                 "y": 1,
               }
@@ -248,14 +248,14 @@ Array [
             locations={null}
             progress={0}
             startPoint={
-              Object {
+              {
                 "x": 0.5,
                 "y": 0,
               }
             }
             style={
-              Array [
-                Object {
+              [
+                {
                   "borderRadius": 48,
                   "flexBasis": 0,
                   "flexGrow": 0,
@@ -272,8 +272,8 @@ Array [
     <View
       numberOfSpaces={1}
       style={
-        Array [
-          Object {
+        [
+          {
             "height": 4,
           },
         ]
@@ -292,7 +292,7 @@ Array [
       onResponderTerminationRequest={[Function]}
       onStartShouldSetResponder={[Function]}
       style={
-        Object {
+        {
           "alignItems": "center",
           "backgroundColor": "transparent",
           "borderRadius": 24,
@@ -315,8 +315,8 @@ Array [
     >
       <View
         style={
-          Array [
-            Object {
+          [
+            {
               "flexShrink": 0,
             },
           ]
@@ -337,8 +337,8 @@ Array [
         adjustsFontSizeToFit={false}
         numberOfLines={2}
         style={
-          Array [
-            Object {
+          [
+            {
               "color": "#161617",
               "fontFamily": "Montserrat-SemiBold",
               "fontSize": 12,
@@ -357,11 +357,11 @@ Array [
 `;
 
 exports[`CreditHeader Beneficiary is not underage should render correctly with expired credit 1`] = `
-Array [
+[
   <View
     style={
-      Array [
-        Object {
+      [
+        {
           "marginBottom": 8,
           "marginHorizontal": 24,
           "marginTop": 24,
@@ -373,8 +373,8 @@ Array [
       customHeight={16}
       enable={true}
       style={
-        Array [
-          Object {
+        [
+          {
             "height": 16,
           },
         ]
@@ -383,8 +383,8 @@ Array [
     <Text
       numberOfLines={2}
       style={
-        Array [
-          Object {
+        [
+          {
             "color": "#161617",
             "fontFamily": "Montserrat-Black",
             "fontSize": 26,
@@ -398,8 +398,8 @@ Array [
   </View>,
   <View
     style={
-      Array [
-        Object {
+      [
+        {
           "marginBottom": 24,
           "marginHorizontal": 24,
         },
@@ -408,8 +408,8 @@ Array [
   >
     <View
       style={
-        Array [
-          Object {
+        [
+          {
             "flexDirection": "row",
             "flexWrap": "wrap",
           },
@@ -418,8 +418,8 @@ Array [
     >
       <Text
         style={
-          Array [
-            Object {
+          [
+            {
               "color": "#161617",
               "fontFamily": "Montserrat-Regular",
               "fontSize": 15,
@@ -432,8 +432,8 @@ Array [
       </Text>
       <Text
         style={
-          Array [
-            Object {
+          [
+            {
               "color": "#161617",
               "fontFamily": "Montserrat-Bold",
               "fontSize": 15,
@@ -449,8 +449,8 @@ Array [
   </View>,
   <View
     style={
-      Array [
-        Object {
+      [
+        {
           "backgroundColor": "#F1F1F4",
           "borderRadius": 8,
           "marginBottom": 8,
@@ -466,8 +466,8 @@ Array [
     <View
       numberOfSpaces={1}
       style={
-        Array [
-          Object {
+        [
+          {
             "height": 4,
           },
         ]
@@ -486,7 +486,7 @@ Array [
       onResponderTerminationRequest={[Function]}
       onStartShouldSetResponder={[Function]}
       style={
-        Object {
+        {
           "alignItems": "center",
           "backgroundColor": "transparent",
           "borderRadius": 24,
@@ -509,8 +509,8 @@ Array [
     >
       <View
         style={
-          Array [
-            Object {
+          [
+            {
               "flexShrink": 0,
             },
           ]
@@ -531,8 +531,8 @@ Array [
         adjustsFontSizeToFit={false}
         numberOfLines={2}
         style={
-          Array [
-            Object {
+          [
+            {
               "color": "#161617",
               "fontFamily": "Montserrat-SemiBold",
               "fontSize": 12,
@@ -551,11 +551,11 @@ Array [
 `;
 
 exports[`CreditHeader Beneficiary is not underage should render correctly with valid non exhausted credit 1`] = `
-Array [
+[
   <View
     style={
-      Array [
-        Object {
+      [
+        {
           "marginBottom": 8,
           "marginHorizontal": 24,
           "marginTop": 24,
@@ -567,8 +567,8 @@ Array [
       customHeight={16}
       enable={true}
       style={
-        Array [
-          Object {
+        [
+          {
             "height": 16,
           },
         ]
@@ -577,8 +577,8 @@ Array [
     <Text
       numberOfLines={2}
       style={
-        Array [
-          Object {
+        [
+          {
             "color": "#161617",
             "fontFamily": "Montserrat-Black",
             "fontSize": 26,
@@ -592,8 +592,8 @@ Array [
   </View>,
   <View
     style={
-      Array [
-        Object {
+      [
+        {
           "marginBottom": 24,
           "marginHorizontal": 24,
         },
@@ -602,8 +602,8 @@ Array [
   >
     <View
       style={
-        Array [
-          Object {
+        [
+          {
             "flexDirection": "row",
             "flexWrap": "wrap",
           },
@@ -612,8 +612,8 @@ Array [
     >
       <Text
         style={
-          Array [
-            Object {
+          [
+            {
               "color": "#161617",
               "fontFamily": "Montserrat-Regular",
               "fontSize": 15,
@@ -626,8 +626,8 @@ Array [
       </Text>
       <Text
         style={
-          Array [
-            Object {
+          [
+            {
               "color": "#161617",
               "fontFamily": "Montserrat-Bold",
               "fontSize": 15,
@@ -643,8 +643,8 @@ Array [
   </View>,
   <View
     style={
-      Array [
-        Object {
+      [
+        {
           "backgroundColor": "#F1F1F4",
           "borderRadius": 8,
           "marginBottom": 8,
@@ -662,8 +662,8 @@ Array [
     >
       <Text
         style={
-          Array [
-            Object {
+          [
+            {
               "color": "#320096",
               "fontFamily": "Montserrat-Medium",
               "fontSize": 38,
@@ -677,8 +677,8 @@ Array [
       <View
         numberOfSpaces={3}
         style={
-          Array [
-            Object {
+          [
+            {
               "height": 12,
             },
           ]
@@ -686,8 +686,8 @@ Array [
       />
       <View
         style={
-          Array [
-            Object {
+          [
+            {
               "alignItems": "center",
               "borderRadius": 48,
               "flexDirection": "row",
@@ -698,8 +698,8 @@ Array [
       >
         <View
           style={
-            Array [
-              Object {
+            [
+              {
                 "backgroundColor": "#ffffff",
                 "borderRadius": 48,
                 "flexDirection": "row",
@@ -713,27 +713,27 @@ Array [
           <BVLinearGradient
             angle={180}
             colors={
-              Array [
+              [
                 451608661,
                 439484566,
               ]
             }
             endPoint={
-              Object {
+              {
                 "x": 1,
                 "y": 1,
               }
             }
             locations={null}
             startPoint={
-              Object {
+              {
                 "x": 0,
                 "y": 0,
               }
             }
             style={
-              Array [
-                Object {
+              [
+                {
                   "borderColor": "#ffffff",
                   "borderRadius": 48,
                   "borderWidth": 2,
@@ -749,28 +749,28 @@ Array [
           />
           <BVLinearGradient
             colors={
-              Array [
+              [
                 872415231,
                 4294967295,
                 872415231,
               ]
             }
             endPoint={
-              Object {
+              {
                 "x": 0.5,
                 "y": 1,
               }
             }
             locations={null}
             startPoint={
-              Object {
+              {
                 "x": 0.5,
                 "y": 0,
               }
             }
             style={
-              Array [
-                Object {
+              [
+                {
                   "borderRadius": 48,
                   "height": "100%",
                   "left": 0,
@@ -784,13 +784,13 @@ Array [
           <BVLinearGradient
             angle={90}
             colors={
-              Array [
+              [
                 4293591125,
                 4281467030,
               ]
             }
             endPoint={
-              Object {
+              {
                 "x": 0.5,
                 "y": 1,
               }
@@ -798,14 +798,14 @@ Array [
             locations={null}
             progress={0.8}
             startPoint={
-              Object {
+              {
                 "x": 0.5,
                 "y": 0,
               }
             }
             style={
-              Array [
-                Object {
+              [
+                {
                   "borderRadius": 48,
                   "flexBasis": 0,
                   "flexGrow": 0.8,
@@ -822,8 +822,8 @@ Array [
     <View
       numberOfSpaces={6}
       style={
-        Array [
-          Object {
+        [
+          {
             "height": 24,
           },
         ]
@@ -831,8 +831,8 @@ Array [
     />
     <Text
       style={
-        Array [
-          Object {
+        [
+          {
             "color": "#161617",
             "fontFamily": "Montserrat-Regular",
             "fontSize": 15,
@@ -846,8 +846,8 @@ Array [
        
       <Text
         style={
-          Array [
-            Object {
+          [
+            {
               "color": "#320096",
               "fontFamily": "Montserrat-Regular",
               "fontSize": 15,
@@ -863,8 +863,8 @@ Array [
     </Text>
     <Text
       style={
-        Array [
-          Object {
+        [
+          {
             "color": "#161617",
             "fontFamily": "Montserrat-Regular",
             "fontSize": 15,
@@ -878,8 +878,8 @@ Array [
        
       <Text
         style={
-          Array [
-            Object {
+          [
+            {
               "color": "#320096",
               "fontFamily": "Montserrat-Regular",
               "fontSize": 15,
@@ -896,8 +896,8 @@ Array [
     <View
       numberOfSpaces={1}
       style={
-        Array [
-          Object {
+        [
+          {
             "height": 4,
           },
         ]
@@ -916,7 +916,7 @@ Array [
       onResponderTerminationRequest={[Function]}
       onStartShouldSetResponder={[Function]}
       style={
-        Object {
+        {
           "alignItems": "center",
           "backgroundColor": "transparent",
           "borderRadius": 24,
@@ -939,8 +939,8 @@ Array [
     >
       <View
         style={
-          Array [
-            Object {
+          [
+            {
               "flexShrink": 0,
             },
           ]
@@ -961,8 +961,8 @@ Array [
         adjustsFontSizeToFit={false}
         numberOfLines={2}
         style={
-          Array [
-            Object {
+          [
+            {
               "color": "#161617",
               "fontFamily": "Montserrat-SemiBold",
               "fontSize": 12,
@@ -981,11 +981,11 @@ Array [
 `;
 
 exports[`CreditHeader Beneficiary is underage should render correctly for underage beneficiary 1`] = `
-Array [
+[
   <View
     style={
-      Array [
-        Object {
+      [
+        {
           "marginBottom": 8,
           "marginHorizontal": 24,
           "marginTop": 24,
@@ -997,8 +997,8 @@ Array [
       customHeight={16}
       enable={true}
       style={
-        Array [
-          Object {
+        [
+          {
             "height": 16,
           },
         ]
@@ -1007,8 +1007,8 @@ Array [
     <Text
       numberOfLines={2}
       style={
-        Array [
-          Object {
+        [
+          {
             "color": "#161617",
             "fontFamily": "Montserrat-Black",
             "fontSize": 26,
@@ -1022,8 +1022,8 @@ Array [
   </View>,
   <View
     style={
-      Array [
-        Object {
+      [
+        {
           "marginBottom": 24,
           "marginHorizontal": 24,
         },
@@ -1032,8 +1032,8 @@ Array [
   >
     <View
       style={
-        Array [
-          Object {
+        [
+          {
             "flexDirection": "row",
             "flexWrap": "wrap",
           },
@@ -1042,8 +1042,8 @@ Array [
     >
       <Text
         style={
-          Array [
-            Object {
+          [
+            {
               "color": "#161617",
               "fontFamily": "Montserrat-Regular",
               "fontSize": 15,
@@ -1056,8 +1056,8 @@ Array [
       </Text>
       <Text
         style={
-          Array [
-            Object {
+          [
+            {
               "color": "#161617",
               "fontFamily": "Montserrat-Bold",
               "fontSize": 15,
@@ -1073,8 +1073,8 @@ Array [
   </View>,
   <View
     style={
-      Array [
-        Object {
+      [
+        {
           "backgroundColor": "#F1F1F4",
           "borderRadius": 8,
           "marginBottom": 8,
@@ -1092,8 +1092,8 @@ Array [
     >
       <Text
         style={
-          Array [
-            Object {
+          [
+            {
               "color": "#320096",
               "fontFamily": "Montserrat-Medium",
               "fontSize": 38,
@@ -1107,8 +1107,8 @@ Array [
       <View
         numberOfSpaces={3}
         style={
-          Array [
-            Object {
+          [
+            {
               "height": 12,
             },
           ]
@@ -1116,8 +1116,8 @@ Array [
       />
       <View
         style={
-          Array [
-            Object {
+          [
+            {
               "alignItems": "center",
               "borderRadius": 48,
               "flexDirection": "row",
@@ -1128,8 +1128,8 @@ Array [
       >
         <View
           style={
-            Array [
-              Object {
+            [
+              {
                 "backgroundColor": "#ffffff",
                 "borderRadius": 48,
                 "flexDirection": "row",
@@ -1143,27 +1143,27 @@ Array [
           <BVLinearGradient
             angle={180}
             colors={
-              Array [
+              [
                 451608661,
                 439484566,
               ]
             }
             endPoint={
-              Object {
+              {
                 "x": 1,
                 "y": 1,
               }
             }
             locations={null}
             startPoint={
-              Object {
+              {
                 "x": 0,
                 "y": 0,
               }
             }
             style={
-              Array [
-                Object {
+              [
+                {
                   "borderColor": "#ffffff",
                   "borderRadius": 48,
                   "borderWidth": 2,
@@ -1179,28 +1179,28 @@ Array [
           />
           <BVLinearGradient
             colors={
-              Array [
+              [
                 872415231,
                 4294967295,
                 872415231,
               ]
             }
             endPoint={
-              Object {
+              {
                 "x": 0.5,
                 "y": 1,
               }
             }
             locations={null}
             startPoint={
-              Object {
+              {
                 "x": 0.5,
                 "y": 0,
               }
             }
             style={
-              Array [
-                Object {
+              [
+                {
                   "borderRadius": 48,
                   "height": "100%",
                   "left": 0,
@@ -1214,13 +1214,13 @@ Array [
           <BVLinearGradient
             angle={90}
             colors={
-              Array [
+              [
                 4293591125,
                 4281467030,
               ]
             }
             endPoint={
-              Object {
+              {
                 "x": 0.5,
                 "y": 1,
               }
@@ -1228,14 +1228,14 @@ Array [
             locations={null}
             progress={0.8}
             startPoint={
-              Object {
+              {
                 "x": 0.5,
                 "y": 0,
               }
             }
             style={
-              Array [
-                Object {
+              [
+                {
                   "borderRadius": 48,
                   "flexBasis": 0,
                   "flexGrow": 0.8,
@@ -1252,8 +1252,8 @@ Array [
     <View
       numberOfSpaces={1}
       style={
-        Array [
-          Object {
+        [
+          {
             "height": 4,
           },
         ]
@@ -1272,7 +1272,7 @@ Array [
       onResponderTerminationRequest={[Function]}
       onStartShouldSetResponder={[Function]}
       style={
-        Object {
+        {
           "alignItems": "center",
           "backgroundColor": "transparent",
           "borderRadius": 24,
@@ -1295,8 +1295,8 @@ Array [
     >
       <View
         style={
-          Array [
-            Object {
+          [
+            {
               "flexShrink": 0,
             },
           ]
@@ -1317,8 +1317,8 @@ Array [
         adjustsFontSizeToFit={false}
         numberOfLines={2}
         style={
-          Array [
-            Object {
+          [
+            {
               "color": "#161617",
               "fontFamily": "Montserrat-SemiBold",
               "fontSize": 12,

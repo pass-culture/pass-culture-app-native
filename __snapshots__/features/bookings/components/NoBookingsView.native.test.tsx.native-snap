@@ -3,8 +3,8 @@
 exports[`<NoBookingsView /> should render offline no bookings view when netInfo.isConnected is false 1`] = `
 <View
   style={
-    Array [
-      Object {
+    [
+      {
         "flexBasis": 0,
         "flexGrow": 1,
         "flexShrink": 1,
@@ -16,8 +16,8 @@ exports[`<NoBookingsView /> should render offline no bookings view when netInfo.
 >
   <Text
     style={
-      Array [
-        Object {
+      [
+        {
           "color": "#161617",
           "fontFamily": "Montserrat-Regular",
           "fontSize": 15,
@@ -30,8 +30,8 @@ exports[`<NoBookingsView /> should render offline no bookings view when netInfo.
   </Text>
   <View
     style={
-      Array [
-        Object {
+      [
+        {
           "alignItems": "center",
           "flexBasis": 0,
           "flexGrow": 1,
@@ -43,8 +43,8 @@ exports[`<NoBookingsView /> should render offline no bookings view when netInfo.
   >
     <View
       style={
-        Array [
-          Object {
+        [
+          {
             "flexBasis": 0,
             "flexGrow": 1,
             "flexShrink": 1,
@@ -63,8 +63,8 @@ exports[`<NoBookingsView /> should render offline no bookings view when netInfo.
     <View
       numberOfSpaces={4}
       style={
-        Array [
-          Object {
+        [
+          {
             "height": 16,
           },
         ]
@@ -72,8 +72,8 @@ exports[`<NoBookingsView /> should render offline no bookings view when netInfo.
     />
     <Text
       style={
-        Array [
-          Object {
+        [
+          {
             "color": "#161617",
             "fontFamily": "Montserrat-Regular",
             "fontSize": 15,
@@ -91,8 +91,8 @@ Il est possible que certaines réservations ne s’affichent pas hors connexion.
     <View
       numberOfSpaces={4}
       style={
-        Array [
-          Object {
+        [
+          {
             "height": 16,
           },
         ]
@@ -100,8 +100,8 @@ Il est possible que certaines réservations ne s’affichent pas hors connexion.
     />
     <View
       style={
-        Array [
-          Object {
+        [
+          {
             "flexBasis": 0,
             "flexGrow": 1,
             "flexShrink": 1,
@@ -116,8 +116,8 @@ Il est possible que certaines réservations ne s’affichent pas hors connexion.
 exports[`<NoBookingsView /> should render online no bookings view when netInfo.isConnected is true 1`] = `
 <View
   style={
-    Array [
-      Object {
+    [
+      {
         "flexBasis": 0,
         "flexGrow": 1,
         "flexShrink": 1,
@@ -129,8 +129,8 @@ exports[`<NoBookingsView /> should render online no bookings view when netInfo.i
 >
   <Text
     style={
-      Array [
-        Object {
+      [
+        {
           "color": "#161617",
           "fontFamily": "Montserrat-Regular",
           "fontSize": 15,
@@ -143,8 +143,8 @@ exports[`<NoBookingsView /> should render online no bookings view when netInfo.i
   </Text>
   <View
     style={
-      Array [
-        Object {
+      [
+        {
           "alignItems": "center",
           "flexBasis": 0,
           "flexGrow": 1,
@@ -156,8 +156,8 @@ exports[`<NoBookingsView /> should render online no bookings view when netInfo.i
   >
     <View
       style={
-        Array [
-          Object {
+        [
+          {
             "flexBasis": 0,
             "flexGrow": 1,
             "flexShrink": 1,
@@ -176,8 +176,8 @@ exports[`<NoBookingsView /> should render online no bookings view when netInfo.i
     <View
       numberOfSpaces={4}
       style={
-        Array [
-          Object {
+        [
+          {
             "height": 16,
           },
         ]
@@ -185,8 +185,8 @@ exports[`<NoBookingsView /> should render online no bookings view when netInfo.i
     />
     <Text
       style={
-        Array [
-          Object {
+        [
+          {
             "color": "#161617",
             "fontFamily": "Montserrat-Regular",
             "fontSize": 15,
@@ -202,8 +202,8 @@ exports[`<NoBookingsView /> should render online no bookings view when netInfo.i
     <View
       numberOfSpaces={4}
       style={
-        Array [
-          Object {
+        [
+          {
             "height": 16,
           },
         ]
@@ -211,8 +211,8 @@ exports[`<NoBookingsView /> should render online no bookings view when netInfo.i
     />
     <View
       style={
-        Array [
-          Object {
+        [
+          {
             "marginTop": 8,
           },
         ]
@@ -231,7 +231,7 @@ exports[`<NoBookingsView /> should render online no bookings view when netInfo.i
         onResponderTerminationRequest={[Function]}
         onStartShouldSetResponder={[Function]}
         style={
-          Object {
+          {
             "alignItems": "center",
             "backgroundColor": "#eb0055",
             "borderRadius": 24,
@@ -252,8 +252,8 @@ exports[`<NoBookingsView /> should render online no bookings view when netInfo.i
       >
         <View
           style={
-            Array [
-              Object {
+            [
+              {
                 "flexShrink": 0,
               },
             ]
@@ -273,8 +273,8 @@ exports[`<NoBookingsView /> should render online no bookings view when netInfo.i
           adjustsFontSizeToFit={false}
           numberOfLines={1}
           style={
-            Array [
-              Object {
+            [
+              {
                 "color": "#ffffff",
                 "fontFamily": "Montserrat-Bold",
                 "fontSize": 15,
@@ -291,8 +291,8 @@ exports[`<NoBookingsView /> should render online no bookings view when netInfo.i
     </View>
     <View
       style={
-        Array [
-          Object {
+        [
+          {
             "flexBasis": 0,
             "flexGrow": 1,
             "flexShrink": 1,

@@ -3,8 +3,8 @@
 exports[`<GenericAchievement /> should render correctly 1`] = `
 <View
   style={
-    Array [
-      Object {
+    [
+      {
         "alignItems": "center",
         "backgroundColor": "#ffffff",
         "display": "flex",
@@ -18,8 +18,8 @@ exports[`<GenericAchievement /> should render correctly 1`] = `
     customHeight={16}
     enable={true}
     style={
-      Array [
-        Object {
+      [
+        {
           "height": 16,
         },
       ]
@@ -27,8 +27,8 @@ exports[`<GenericAchievement /> should render correctly 1`] = `
   />
   <View
     style={
-      Array [
-        Object {
+      [
+        {
           "alignItems": "center",
           "display": "flex",
           "flexGrow": 1,
@@ -41,8 +41,8 @@ exports[`<GenericAchievement /> should render correctly 1`] = `
   >
     <View
       style={
-        Array [
-          Object {
+        [
+          {
             "flexBasis": 0,
             "flexGrow": 1,
             "flexShrink": 1,
@@ -54,7 +54,7 @@ exports[`<GenericAchievement /> should render correctly 1`] = `
       <View
         onLayout={[Function]}
         style={
-          Object {
+          {
             "backgroundColor": "transparent",
             "flex": 1,
           }
@@ -62,7 +62,7 @@ exports[`<GenericAchievement /> should render correctly 1`] = `
       >
         <View
           style={
-            Object {
+            {
               "backgroundColor": "transparent",
               "height": 0,
               "justifyContent": "space-between",
@@ -89,17 +89,17 @@ exports[`<GenericAchievement /> should render correctly 1`] = `
             onStartShouldSetResponder={[Function]}
             onStartShouldSetResponderCapture={[Function]}
             style={
-              Object {
+              {
                 "flexDirection": "row",
                 "height": 0,
                 "left": 0,
                 "position": "absolute",
                 "top": 0,
-                "transform": Array [
-                  Object {
+                "transform": [
+                  {
                     "translateX": 0,
                   },
-                  Object {
+                  {
                     "translateY": 0,
                   },
                 ],
@@ -109,7 +109,7 @@ exports[`<GenericAchievement /> should render correctly 1`] = `
           >
             <View
               style={
-                Object {
+                {
                   "flex": 1,
                   "height": 0,
                   "width": "100%",
@@ -132,8 +132,8 @@ exports[`<GenericAchievement /> should render correctly 1`] = `
     <View
       numberOfSpaces={2}
       style={
-        Array [
-          Object {
+        [
+          {
             "height": 8,
           },
         ]
@@ -144,8 +144,8 @@ exports[`<GenericAchievement /> should render correctly 1`] = `
     customHeight={8}
     enable={true}
     style={
-      Array [
-        Object {
+      [
+        {
           "height": 8,
         },
       ]

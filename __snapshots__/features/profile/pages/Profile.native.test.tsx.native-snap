@@ -4,8 +4,8 @@ exports[`Profile component should render correctly 1`] = `
 <RNCSafeAreaProvider
   onInsetsChange={[Function]}
   style={
-    Array [
-      Object {
+    [
+      {
         "flex": 1,
       },
       undefined,
@@ -14,7 +14,7 @@ exports[`Profile component should render correctly 1`] = `
 >
   <RNSScreenNavigationContainer
     style={
-      Object {
+      {
         "flex": 1,
         "overflow": "hidden",
       }
@@ -25,7 +25,7 @@ exports[`Profile component should render correctly 1`] = `
       collapsable={false}
       forwardedRef={[Function]}
       gestureResponseDistance={
-        Object {
+        {
           "bottom": -1,
           "end": -1,
           "start": -1,
@@ -33,7 +33,7 @@ exports[`Profile component should render correctly 1`] = `
         }
       }
       style={
-        Object {
+        {
           "bottom": 0,
           "left": 0,
           "position": "absolute",
@@ -47,13 +47,13 @@ exports[`Profile component should render correctly 1`] = `
         accessibilityElementsHidden={false}
         importantForAccessibility="auto"
         style={
-          Array [
-            Object {
+          [
+            {
               "backgroundColor": "rgb(242, 242, 242)",
               "flex": 1,
             },
-            Array [
-              Object {
+            [
+              {
                 "flex": 1,
                 "flexDirection": "column-reverse",
               },
@@ -64,15 +64,15 @@ exports[`Profile component should render correctly 1`] = `
       >
         <View
           style={
-            Object {
+            {
               "flex": 1,
             }
           }
         >
           <View
             style={
-              Array [
-                Object {
+              [
+                {
                   "flexBasis": 0,
                   "flexGrow": 1,
                   "flexShrink": 1,
@@ -89,8 +89,8 @@ exports[`Profile component should render correctly 1`] = `
               <View>
                 <View
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "marginBottom": 8,
                         "marginHorizontal": 24,
                         "marginTop": 24,
@@ -102,8 +102,8 @@ exports[`Profile component should render correctly 1`] = `
                     customHeight={16}
                     enable={true}
                     style={
-                      Array [
-                        Object {
+                      [
+                        {
                           "height": 16,
                         },
                       ]
@@ -112,8 +112,8 @@ exports[`Profile component should render correctly 1`] = `
                   <Text
                     numberOfLines={1}
                     style={
-                      Array [
-                        Object {
+                      [
+                        {
                           "color": "#161617",
                           "fontFamily": "Montserrat-Black",
                           "fontSize": 26,
@@ -127,8 +127,8 @@ exports[`Profile component should render correctly 1`] = `
                 </View>
                 <View
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "backgroundColor": "#ffffff",
                         "flexBasis": 0,
                         "flexDirection": "column",
@@ -142,8 +142,8 @@ exports[`Profile component should render correctly 1`] = `
                   <View
                     numberOfSpaces={4}
                     style={
-                      Array [
-                        Object {
+                      [
+                        {
                           "height": 16,
                         },
                       ]
@@ -151,8 +151,8 @@ exports[`Profile component should render correctly 1`] = `
                   />
                   <View
                     style={
-                      Array [
-                        Object {
+                      [
+                        {
                           "paddingTop": 8,
                         },
                       ]
@@ -160,8 +160,8 @@ exports[`Profile component should render correctly 1`] = `
                   >
                     <Text
                       style={
-                        Array [
-                          Object {
+                        [
+                          {
                             "color": "#696A6F",
                             "fontFamily": "Montserrat-SemiBold",
                             "fontSize": 12,
@@ -175,8 +175,8 @@ exports[`Profile component should render correctly 1`] = `
                     <View
                       numberOfSpaces={2}
                       style={
-                        Array [
-                          Object {
+                        [
+                          {
                             "height": 8,
                           },
                         ]
@@ -184,8 +184,8 @@ exports[`Profile component should render correctly 1`] = `
                     />
                     <View
                       style={
-                        Array [
-                          Object {
+                        [
+                          {
                             "backgroundColor": "#F1F1F4",
                             "height": 1,
                             "width": "100%",
@@ -196,8 +196,8 @@ exports[`Profile component should render correctly 1`] = `
                     <View
                       accessibilityRole="list"
                       style={
-                        Array [
-                          Object {
+                        [
+                          {
                             "flexDirection": "column",
                             "paddingLeft": 0,
                           },
@@ -207,8 +207,8 @@ exports[`Profile component should render correctly 1`] = `
                       <View
                         accessibilityRole="none"
                         style={
-                          Array [
-                            Object {
+                          [
+                            {
                               "display": "flex",
                             },
                           ]
@@ -218,7 +218,7 @@ exports[`Profile component should render correctly 1`] = `
                           accessibilityLabel="Informations personnelles"
                           accessibilityRole="link"
                           accessibilityState={
-                            Object {
+                            {
                               "disabled": false,
                             }
                           }
@@ -233,7 +233,7 @@ exports[`Profile component should render correctly 1`] = `
                           onResponderTerminationRequest={[Function]}
                           onStartShouldSetResponder={[Function]}
                           style={
-                            Object {
+                            {
                               "opacity": 1,
                               "userSelect": "auto",
                             }
@@ -242,14 +242,14 @@ exports[`Profile component should render correctly 1`] = `
                         >
                           <View
                             style={
-                              Array [
-                                Object {
+                              [
+                                {
                                   "alignItems": "center",
                                   "flexDirection": "row",
                                   "justifyContent": "space-between",
                                 },
-                                Array [
-                                  Object {
+                                [
+                                  {
                                     "paddingVertical": 16,
                                   },
                                 ],
@@ -269,8 +269,8 @@ exports[`Profile component should render correctly 1`] = `
                             <View
                               numberOfSpaces={2}
                               style={
-                                Array [
-                                  Object {
+                                [
+                                  {
                                     "width": 8,
                                   },
                                 ]
@@ -278,8 +278,8 @@ exports[`Profile component should render correctly 1`] = `
                             />
                             <View
                               style={
-                                Array [
-                                  Object {
+                                [
+                                  {
                                     "flexBasis": 0,
                                     "flexGrow": 1,
                                     "flexShrink": 1,
@@ -291,8 +291,8 @@ exports[`Profile component should render correctly 1`] = `
                               <Text
                                 numberOfLines={2}
                                 style={
-                                  Array [
-                                    Object {
+                                  [
+                                    {
                                       "color": "#161617",
                                       "fontFamily": "Montserrat-Bold",
                                       "fontSize": 15,
@@ -306,8 +306,8 @@ exports[`Profile component should render correctly 1`] = `
                             </View>
                             <View
                               style={
-                                Array [
-                                  Object {
+                                [
+                                  {
                                     "alignItems": "flex-end",
                                   },
                                 ]
@@ -329,8 +329,8 @@ exports[`Profile component should render correctly 1`] = `
                       <View
                         accessibilityRole="none"
                         style={
-                          Array [
-                            Object {
+                          [
+                            {
                               "display": "flex",
                             },
                           ]
@@ -340,7 +340,7 @@ exports[`Profile component should render correctly 1`] = `
                           accessibilityLabel="Notifications"
                           accessibilityRole="link"
                           accessibilityState={
-                            Object {
+                            {
                               "disabled": false,
                             }
                           }
@@ -355,7 +355,7 @@ exports[`Profile component should render correctly 1`] = `
                           onResponderTerminationRequest={[Function]}
                           onStartShouldSetResponder={[Function]}
                           style={
-                            Object {
+                            {
                               "opacity": 1,
                               "userSelect": "auto",
                             }
@@ -364,14 +364,14 @@ exports[`Profile component should render correctly 1`] = `
                         >
                           <View
                             style={
-                              Array [
-                                Object {
+                              [
+                                {
                                   "alignItems": "center",
                                   "flexDirection": "row",
                                   "justifyContent": "space-between",
                                 },
-                                Array [
-                                  Object {
+                                [
+                                  {
                                     "paddingVertical": 16,
                                   },
                                 ],
@@ -389,8 +389,8 @@ exports[`Profile component should render correctly 1`] = `
                             <View
                               numberOfSpaces={2}
                               style={
-                                Array [
-                                  Object {
+                                [
+                                  {
                                     "width": 8,
                                   },
                                 ]
@@ -398,8 +398,8 @@ exports[`Profile component should render correctly 1`] = `
                             />
                             <View
                               style={
-                                Array [
-                                  Object {
+                                [
+                                  {
                                     "flexBasis": 0,
                                     "flexGrow": 1,
                                     "flexShrink": 1,
@@ -411,8 +411,8 @@ exports[`Profile component should render correctly 1`] = `
                               <Text
                                 numberOfLines={2}
                                 style={
-                                  Array [
-                                    Object {
+                                  [
+                                    {
                                       "color": "#161617",
                                       "fontFamily": "Montserrat-Bold",
                                       "fontSize": 15,
@@ -426,8 +426,8 @@ exports[`Profile component should render correctly 1`] = `
                             </View>
                             <View
                               style={
-                                Array [
-                                  Object {
+                                [
+                                  {
                                     "alignItems": "flex-end",
                                   },
                                 ]
@@ -449,8 +449,8 @@ exports[`Profile component should render correctly 1`] = `
                       <View
                         accessibilityRole="none"
                         style={
-                          Array [
-                            Object {
+                          [
+                            {
                               "display": "flex",
                             },
                           ]
@@ -458,8 +458,8 @@ exports[`Profile component should render correctly 1`] = `
                       >
                         <View
                           style={
-                            Array [
-                              Object {
+                            [
+                              {
                                 "alignItems": "center",
                                 "flexDirection": "row",
                                 "paddingVertical": 16,
@@ -469,8 +469,8 @@ exports[`Profile component should render correctly 1`] = `
                         >
                           <View
                             style={
-                              Array [
-                                Object {
+                              [
+                                {
                                   "alignItems": "center",
                                   "flexBasis": 0,
                                   "flexDirection": "row",
@@ -492,8 +492,8 @@ exports[`Profile component should render correctly 1`] = `
                             <View
                               numberOfSpaces={2}
                               style={
-                                Array [
-                                  Object {
+                                [
+                                  {
                                     "width": 8,
                                   },
                                 ]
@@ -502,8 +502,8 @@ exports[`Profile component should render correctly 1`] = `
                             <Text
                               htmlFor="testUuidV4"
                               style={
-                                Array [
-                                  Object {
+                                [
+                                  {
                                     "color": "#161617",
                                     "fontFamily": "Montserrat-Regular",
                                     "fontSize": 15,
@@ -514,8 +514,8 @@ exports[`Profile component should render correctly 1`] = `
                             >
                               <Text
                                 style={
-                                  Array [
-                                    Object {
+                                  [
+                                    {
                                       "color": "#161617",
                                       "fontFamily": "Montserrat-Bold",
                                       "fontSize": 15,
@@ -530,8 +530,8 @@ exports[`Profile component should render correctly 1`] = `
                           </View>
                           <View
                             style={
-                              Array [
-                                Object {
+                              [
+                                {
                                   "alignItems": "center",
                                   "flexDirection": "row",
                                 },
@@ -541,8 +541,8 @@ exports[`Profile component should render correctly 1`] = `
                             <View
                               numberOfSpaces={5}
                               style={
-                                Array [
-                                  Object {
+                                [
+                                  {
                                     "width": 20,
                                   },
                                 ]
@@ -550,8 +550,8 @@ exports[`Profile component should render correctly 1`] = `
                             />
                             <View
                               style={
-                                Array [
-                                  Object {
+                                [
+                                  {
                                     "alignItems": "center",
                                     "flexDirection": "row",
                                   },
@@ -561,8 +561,8 @@ exports[`Profile component should render correctly 1`] = `
                               <Text
                                 accessibilityHidden={true}
                                 style={
-                                  Array [
-                                    Object {
+                                  [
+                                    {
                                       "display": "none",
                                     },
                                   ]
@@ -574,7 +574,7 @@ exports[`Profile component should render correctly 1`] = `
                               <View
                                 accessibilityRole="checkbox"
                                 accessibilityState={
-                                  Object {
+                                  {
                                     "checked": true,
                                     "disabled": false,
                                   }
@@ -590,7 +590,7 @@ exports[`Profile component should render correctly 1`] = `
                                 onResponderTerminationRequest={[Function]}
                                 onStartShouldSetResponder={[Function]}
                                 style={
-                                  Object {
+                                  {
                                     "opacity": 1,
                                     "userSelect": "auto",
                                   }
@@ -600,8 +600,8 @@ exports[`Profile component should render correctly 1`] = `
                                 <View
                                   active={true}
                                   style={
-                                    Array [
-                                      Object {
+                                    [
+                                      {
                                         "backgroundColor": "#15884f",
                                         "borderRadius": 16,
                                         "height": 32,
@@ -615,7 +615,7 @@ exports[`Profile component should render correctly 1`] = `
                                     collapsable={false}
                                     disabled={false}
                                     style={
-                                      Object {
+                                      {
                                         "alignItems": "center",
                                         "aspectRatio": 1,
                                         "backgroundColor": "#ffffff",
@@ -624,7 +624,7 @@ exports[`Profile component should render correctly 1`] = `
                                         "justifyContent": "center",
                                         "marginLeft": 26,
                                         "shadowColor": "#161617",
-                                        "shadowOffset": Object {
+                                        "shadowOffset": {
                                           "height": 2,
                                           "width": 0,
                                         },
@@ -654,8 +654,8 @@ exports[`Profile component should render correctly 1`] = `
                   </View>
                   <View
                     style={
-                      Array [
-                        Object {
+                      [
+                        {
                           "paddingTop": 8,
                         },
                       ]
@@ -663,8 +663,8 @@ exports[`Profile component should render correctly 1`] = `
                   >
                     <Text
                       style={
-                        Array [
-                          Object {
+                        [
+                          {
                             "color": "#696A6F",
                             "fontFamily": "Montserrat-SemiBold",
                             "fontSize": 12,
@@ -678,8 +678,8 @@ exports[`Profile component should render correctly 1`] = `
                     <View
                       numberOfSpaces={2}
                       style={
-                        Array [
-                          Object {
+                        [
+                          {
                             "height": 8,
                           },
                         ]
@@ -687,8 +687,8 @@ exports[`Profile component should render correctly 1`] = `
                     />
                     <View
                       style={
-                        Array [
-                          Object {
+                        [
+                          {
                             "backgroundColor": "#F1F1F4",
                             "height": 1,
                             "width": "100%",
@@ -699,8 +699,8 @@ exports[`Profile component should render correctly 1`] = `
                     <View
                       accessibilityRole="list"
                       style={
-                        Array [
-                          Object {
+                        [
+                          {
                             "flexDirection": "column",
                             "paddingLeft": 0,
                           },
@@ -710,8 +710,8 @@ exports[`Profile component should render correctly 1`] = `
                       <View
                         accessibilityRole="none"
                         style={
-                          Array [
-                            Object {
+                          [
+                            {
                               "display": "flex",
                             },
                           ]
@@ -721,7 +721,7 @@ exports[`Profile component should render correctly 1`] = `
                           accessibilityLabel="Comment ça marche ?"
                           accessibilityRole="link"
                           accessibilityState={
-                            Object {
+                            {
                               "disabled": false,
                             }
                           }
@@ -736,7 +736,7 @@ exports[`Profile component should render correctly 1`] = `
                           onResponderTerminationRequest={[Function]}
                           onStartShouldSetResponder={[Function]}
                           style={
-                            Object {
+                            {
                               "opacity": 1,
                               "userSelect": "auto",
                             }
@@ -745,14 +745,14 @@ exports[`Profile component should render correctly 1`] = `
                         >
                           <View
                             style={
-                              Array [
-                                Object {
+                              [
+                                {
                                   "alignItems": "center",
                                   "flexDirection": "row",
                                   "justifyContent": "space-between",
                                 },
-                                Array [
-                                  Object {
+                                [
+                                  {
                                     "paddingVertical": 16,
                                   },
                                 ],
@@ -770,8 +770,8 @@ exports[`Profile component should render correctly 1`] = `
                             <View
                               numberOfSpaces={2}
                               style={
-                                Array [
-                                  Object {
+                                [
+                                  {
                                     "width": 8,
                                   },
                                 ]
@@ -779,8 +779,8 @@ exports[`Profile component should render correctly 1`] = `
                             />
                             <View
                               style={
-                                Array [
-                                  Object {
+                                [
+                                  {
                                     "flexBasis": 0,
                                     "flexGrow": 1,
                                     "flexShrink": 1,
@@ -792,8 +792,8 @@ exports[`Profile component should render correctly 1`] = `
                               <Text
                                 numberOfLines={2}
                                 style={
-                                  Array [
-                                    Object {
+                                  [
+                                    {
                                       "color": "#161617",
                                       "fontFamily": "Montserrat-Bold",
                                       "fontSize": 15,
@@ -807,8 +807,8 @@ exports[`Profile component should render correctly 1`] = `
                             </View>
                             <View
                               style={
-                                Array [
-                                  Object {
+                                [
+                                  {
                                     "alignItems": "flex-end",
                                   },
                                 ]
@@ -830,8 +830,8 @@ exports[`Profile component should render correctly 1`] = `
                       <View
                         accessibilityRole="none"
                         style={
-                          Array [
-                            Object {
+                          [
+                            {
                               "display": "flex",
                             },
                           ]
@@ -841,7 +841,7 @@ exports[`Profile component should render correctly 1`] = `
                           accessibilityLabel="Nouvelle fenêtre : Centre d’aide"
                           accessibilityRole="link"
                           accessibilityState={
-                            Object {
+                            {
                               "disabled": false,
                             }
                           }
@@ -856,7 +856,7 @@ exports[`Profile component should render correctly 1`] = `
                           onResponderTerminationRequest={[Function]}
                           onStartShouldSetResponder={[Function]}
                           style={
-                            Object {
+                            {
                               "opacity": 1,
                               "userSelect": "auto",
                             }
@@ -865,14 +865,14 @@ exports[`Profile component should render correctly 1`] = `
                         >
                           <View
                             style={
-                              Array [
-                                Object {
+                              [
+                                {
                                   "alignItems": "center",
                                   "flexDirection": "row",
                                   "justifyContent": "space-between",
                                 },
-                                Array [
-                                  Object {
+                                [
+                                  {
                                     "paddingVertical": 16,
                                   },
                                 ],
@@ -891,8 +891,8 @@ exports[`Profile component should render correctly 1`] = `
                             <View
                               numberOfSpaces={2}
                               style={
-                                Array [
-                                  Object {
+                                [
+                                  {
                                     "width": 8,
                                   },
                                 ]
@@ -900,8 +900,8 @@ exports[`Profile component should render correctly 1`] = `
                             />
                             <View
                               style={
-                                Array [
-                                  Object {
+                                [
+                                  {
                                     "flexBasis": 0,
                                     "flexGrow": 1,
                                     "flexShrink": 1,
@@ -913,8 +913,8 @@ exports[`Profile component should render correctly 1`] = `
                               <Text
                                 numberOfLines={2}
                                 style={
-                                  Array [
-                                    Object {
+                                  [
+                                    {
                                       "color": "#161617",
                                       "fontFamily": "Montserrat-Bold",
                                       "fontSize": 15,
@@ -933,8 +933,8 @@ exports[`Profile component should render correctly 1`] = `
                   </View>
                   <View
                     style={
-                      Array [
-                        Object {
+                      [
+                        {
                           "paddingTop": 8,
                         },
                       ]
@@ -942,8 +942,8 @@ exports[`Profile component should render correctly 1`] = `
                   >
                     <Text
                       style={
-                        Array [
-                          Object {
+                        [
+                          {
                             "color": "#696A6F",
                             "fontFamily": "Montserrat-SemiBold",
                             "fontSize": 12,
@@ -957,8 +957,8 @@ exports[`Profile component should render correctly 1`] = `
                     <View
                       numberOfSpaces={2}
                       style={
-                        Array [
-                          Object {
+                        [
+                          {
                             "height": 8,
                           },
                         ]
@@ -966,8 +966,8 @@ exports[`Profile component should render correctly 1`] = `
                     />
                     <View
                       style={
-                        Array [
-                          Object {
+                        [
+                          {
                             "backgroundColor": "#F1F1F4",
                             "height": 1,
                             "width": "100%",
@@ -978,8 +978,8 @@ exports[`Profile component should render correctly 1`] = `
                     <View
                       accessibilityRole="list"
                       style={
-                        Array [
-                          Object {
+                        [
+                          {
                             "flexDirection": "column",
                             "paddingLeft": 0,
                           },
@@ -989,8 +989,8 @@ exports[`Profile component should render correctly 1`] = `
                       <View
                         accessibilityRole="none"
                         style={
-                          Array [
-                            Object {
+                          [
+                            {
                               "display": "flex",
                             },
                           ]
@@ -1000,7 +1000,7 @@ exports[`Profile component should render correctly 1`] = `
                           accessibilityLabel="Accessibilité"
                           accessibilityRole="link"
                           accessibilityState={
-                            Object {
+                            {
                               "disabled": false,
                             }
                           }
@@ -1015,7 +1015,7 @@ exports[`Profile component should render correctly 1`] = `
                           onResponderTerminationRequest={[Function]}
                           onStartShouldSetResponder={[Function]}
                           style={
-                            Object {
+                            {
                               "opacity": 1,
                               "userSelect": "auto",
                             }
@@ -1024,14 +1024,14 @@ exports[`Profile component should render correctly 1`] = `
                         >
                           <View
                             style={
-                              Array [
-                                Object {
+                              [
+                                {
                                   "alignItems": "center",
                                   "flexDirection": "row",
                                   "justifyContent": "space-between",
                                 },
-                                Array [
-                                  Object {
+                                [
+                                  {
                                     "paddingVertical": 16,
                                   },
                                 ],
@@ -1050,8 +1050,8 @@ exports[`Profile component should render correctly 1`] = `
                             <View
                               numberOfSpaces={2}
                               style={
-                                Array [
-                                  Object {
+                                [
+                                  {
                                     "width": 8,
                                   },
                                 ]
@@ -1059,8 +1059,8 @@ exports[`Profile component should render correctly 1`] = `
                             />
                             <View
                               style={
-                                Array [
-                                  Object {
+                                [
+                                  {
                                     "flexBasis": 0,
                                     "flexGrow": 1,
                                     "flexShrink": 1,
@@ -1072,8 +1072,8 @@ exports[`Profile component should render correctly 1`] = `
                               <Text
                                 numberOfLines={2}
                                 style={
-                                  Array [
-                                    Object {
+                                  [
+                                    {
                                       "color": "#161617",
                                       "fontFamily": "Montserrat-Bold",
                                       "fontSize": 15,
@@ -1087,8 +1087,8 @@ exports[`Profile component should render correctly 1`] = `
                             </View>
                             <View
                               style={
-                                Array [
-                                  Object {
+                                [
+                                  {
                                     "alignItems": "flex-end",
                                   },
                                 ]
@@ -1110,8 +1110,8 @@ exports[`Profile component should render correctly 1`] = `
                       <View
                         accessibilityRole="none"
                         style={
-                          Array [
-                            Object {
+                          [
+                            {
                               "display": "flex",
                             },
                           ]
@@ -1121,7 +1121,7 @@ exports[`Profile component should render correctly 1`] = `
                           accessibilityLabel="Informations légales"
                           accessibilityRole="link"
                           accessibilityState={
-                            Object {
+                            {
                               "disabled": false,
                             }
                           }
@@ -1136,7 +1136,7 @@ exports[`Profile component should render correctly 1`] = `
                           onResponderTerminationRequest={[Function]}
                           onStartShouldSetResponder={[Function]}
                           style={
-                            Object {
+                            {
                               "opacity": 1,
                               "userSelect": "auto",
                             }
@@ -1145,14 +1145,14 @@ exports[`Profile component should render correctly 1`] = `
                         >
                           <View
                             style={
-                              Array [
-                                Object {
+                              [
+                                {
                                   "alignItems": "center",
                                   "flexDirection": "row",
                                   "justifyContent": "space-between",
                                 },
-                                Array [
-                                  Object {
+                                [
+                                  {
                                     "paddingVertical": 16,
                                   },
                                 ],
@@ -1170,8 +1170,8 @@ exports[`Profile component should render correctly 1`] = `
                             <View
                               numberOfSpaces={2}
                               style={
-                                Array [
-                                  Object {
+                                [
+                                  {
                                     "width": 8,
                                   },
                                 ]
@@ -1179,8 +1179,8 @@ exports[`Profile component should render correctly 1`] = `
                             />
                             <View
                               style={
-                                Array [
-                                  Object {
+                                [
+                                  {
                                     "flexBasis": 0,
                                     "flexGrow": 1,
                                     "flexShrink": 1,
@@ -1192,8 +1192,8 @@ exports[`Profile component should render correctly 1`] = `
                               <Text
                                 numberOfLines={2}
                                 style={
-                                  Array [
-                                    Object {
+                                  [
+                                    {
                                       "color": "#161617",
                                       "fontFamily": "Montserrat-Bold",
                                       "fontSize": 15,
@@ -1207,8 +1207,8 @@ exports[`Profile component should render correctly 1`] = `
                             </View>
                             <View
                               style={
-                                Array [
-                                  Object {
+                                [
+                                  {
                                     "alignItems": "flex-end",
                                   },
                                 ]
@@ -1230,8 +1230,8 @@ exports[`Profile component should render correctly 1`] = `
                       <View
                         accessibilityRole="none"
                         style={
-                          Array [
-                            Object {
+                          [
+                            {
                               "display": "flex",
                             },
                           ]
@@ -1241,7 +1241,7 @@ exports[`Profile component should render correctly 1`] = `
                           accessibilityLabel="Confidentialité"
                           accessibilityRole="link"
                           accessibilityState={
-                            Object {
+                            {
                               "disabled": false,
                             }
                           }
@@ -1256,7 +1256,7 @@ exports[`Profile component should render correctly 1`] = `
                           onResponderTerminationRequest={[Function]}
                           onStartShouldSetResponder={[Function]}
                           style={
-                            Object {
+                            {
                               "opacity": 1,
                               "userSelect": "auto",
                             }
@@ -1265,14 +1265,14 @@ exports[`Profile component should render correctly 1`] = `
                         >
                           <View
                             style={
-                              Array [
-                                Object {
+                              [
+                                {
                                   "alignItems": "center",
                                   "flexDirection": "row",
                                   "justifyContent": "space-between",
                                 },
-                                Array [
-                                  Object {
+                                [
+                                  {
                                     "paddingVertical": 16,
                                   },
                                 ],
@@ -1290,8 +1290,8 @@ exports[`Profile component should render correctly 1`] = `
                             <View
                               numberOfSpaces={2}
                               style={
-                                Array [
-                                  Object {
+                                [
+                                  {
                                     "width": 8,
                                   },
                                 ]
@@ -1299,8 +1299,8 @@ exports[`Profile component should render correctly 1`] = `
                             />
                             <View
                               style={
-                                Array [
-                                  Object {
+                                [
+                                  {
                                     "flexBasis": 0,
                                     "flexGrow": 1,
                                     "flexShrink": 1,
@@ -1312,8 +1312,8 @@ exports[`Profile component should render correctly 1`] = `
                               <Text
                                 numberOfLines={2}
                                 style={
-                                  Array [
-                                    Object {
+                                  [
+                                    {
                                       "color": "#161617",
                                       "fontFamily": "Montserrat-Bold",
                                       "fontSize": 15,
@@ -1327,8 +1327,8 @@ exports[`Profile component should render correctly 1`] = `
                             </View>
                             <View
                               style={
-                                Array [
-                                  Object {
+                                [
+                                  {
                                     "alignItems": "flex-end",
                                   },
                                 ]
@@ -1351,8 +1351,8 @@ exports[`Profile component should render correctly 1`] = `
                   </View>
                   <View
                     style={
-                      Array [
-                        Object {
+                      [
+                        {
                           "paddingTop": 8,
                         },
                       ]
@@ -1360,8 +1360,8 @@ exports[`Profile component should render correctly 1`] = `
                   >
                     <Text
                       style={
-                        Array [
-                          Object {
+                        [
+                          {
                             "color": "#696A6F",
                             "fontFamily": "Montserrat-SemiBold",
                             "fontSize": 12,
@@ -1375,8 +1375,8 @@ exports[`Profile component should render correctly 1`] = `
                     <View
                       numberOfSpaces={2}
                       style={
-                        Array [
-                          Object {
+                        [
+                          {
                             "height": 8,
                           },
                         ]
@@ -1384,8 +1384,8 @@ exports[`Profile component should render correctly 1`] = `
                     />
                     <View
                       style={
-                        Array [
-                          Object {
+                        [
+                          {
                             "backgroundColor": "#F1F1F4",
                             "height": 1,
                             "width": "100%",
@@ -1396,8 +1396,8 @@ exports[`Profile component should render correctly 1`] = `
                     <View
                       numberOfSpaces={4}
                       style={
-                        Array [
-                          Object {
+                        [
+                          {
                             "height": 16,
                           },
                         ]
@@ -1415,7 +1415,7 @@ exports[`Profile component should render correctly 1`] = `
                       onResponderTerminationRequest={[Function]}
                       onStartShouldSetResponder={[Function]}
                       style={
-                        Object {
+                        {
                           "opacity": 1,
                           "userSelect": "auto",
                         }
@@ -1423,8 +1423,8 @@ exports[`Profile component should render correctly 1`] = `
                     >
                       <View
                         style={
-                          Array [
-                            Object {
+                          [
+                            {
                               "borderRadius": 7,
                               "overflow": "hidden",
                             },
@@ -1434,8 +1434,8 @@ exports[`Profile component should render correctly 1`] = `
                         <View
                           accessibilityIgnoresInvertColors={true}
                           style={
-                            Array [
-                              Object {
+                            [
+                              {
                                 "backgroundColor": "#eb0055",
                                 "justifyContent": "center",
                                 "width": "100%",
@@ -1445,20 +1445,20 @@ exports[`Profile component should render correctly 1`] = `
                         >
                           <Image
                             source={
-                              Object {
+                              {
                                 "testUri": "../../../public/images/ShareAppBannerImage.png",
                               }
                             }
                             style={
-                              Array [
-                                Object {
+                              [
+                                {
                                   "bottom": 0,
                                   "left": 0,
                                   "position": "absolute",
                                   "right": 0,
                                   "top": 0,
                                 },
-                                Object {
+                                {
                                   "height": undefined,
                                   "width": "100%",
                                 },
@@ -1469,8 +1469,8 @@ exports[`Profile component should render correctly 1`] = `
                           />
                           <View
                             style={
-                              Array [
-                                Object {
+                              [
+                                {
                                   "alignItems": "center",
                                   "borderColor": "#90949D",
                                   "borderRadius": 7,
@@ -1486,8 +1486,8 @@ exports[`Profile component should render correctly 1`] = `
                           >
                             <View
                               style={
-                                Array [
-                                  Object {
+                                [
+                                  {
                                     "flexGrow": 1,
                                     "flexShrink": 1,
                                     "marginRight": 16,
@@ -1498,8 +1498,8 @@ exports[`Profile component should render correctly 1`] = `
                             >
                               <View
                                 style={
-                                  Array [
-                                    Object {
+                                  [
+                                    {
                                       "paddingRight": 32,
                                     },
                                   ]
@@ -1507,8 +1507,8 @@ exports[`Profile component should render correctly 1`] = `
                               >
                                 <Text
                                   style={
-                                    Array [
-                                      Object {
+                                    [
+                                      {
                                         "color": "#ffffff",
                                         "fontFamily": "Montserrat-Bold",
                                         "fontSize": 15,
@@ -1522,8 +1522,8 @@ exports[`Profile component should render correctly 1`] = `
                                 <View
                                   numberOfSpaces={1}
                                   style={
-                                    Array [
-                                      Object {
+                                    [
+                                      {
                                         "height": 4,
                                       },
                                     ]
@@ -1531,8 +1531,8 @@ exports[`Profile component should render correctly 1`] = `
                                 />
                                 <Text
                                   style={
-                                    Array [
-                                      Object {
+                                    [
+                                      {
                                         "color": "#ffffff",
                                         "fontFamily": "Montserrat-Regular",
                                         "fontSize": 15,
@@ -1562,8 +1562,8 @@ exports[`Profile component should render correctly 1`] = `
                     <View
                       numberOfSpaces={4}
                       style={
-                        Array [
-                          Object {
+                        [
+                          {
                             "height": 16,
                           },
                         ]
@@ -1572,8 +1572,8 @@ exports[`Profile component should render correctly 1`] = `
                   </View>
                   <View
                     style={
-                      Array [
-                        Object {
+                      [
+                        {
                           "paddingTop": 8,
                         },
                       ]
@@ -1581,8 +1581,8 @@ exports[`Profile component should render correctly 1`] = `
                   >
                     <Text
                       style={
-                        Array [
-                          Object {
+                        [
+                          {
                             "color": "#696A6F",
                             "fontFamily": "Montserrat-SemiBold",
                             "fontSize": 12,
@@ -1596,8 +1596,8 @@ exports[`Profile component should render correctly 1`] = `
                     <View
                       numberOfSpaces={2}
                       style={
-                        Array [
-                          Object {
+                        [
+                          {
                             "height": 8,
                           },
                         ]
@@ -1605,8 +1605,8 @@ exports[`Profile component should render correctly 1`] = `
                     />
                     <View
                       style={
-                        Array [
-                          Object {
+                        [
+                          {
                             "backgroundColor": "#F1F1F4",
                             "height": 1,
                             "width": "100%",
@@ -1616,8 +1616,8 @@ exports[`Profile component should render correctly 1`] = `
                     />
                     <View
                       style={
-                        Array [
-                          Object {
+                        [
+                          {
                             "marginBottom": "auto",
                             "marginLeft": "auto",
                             "marginRight": "auto",
@@ -1630,8 +1630,8 @@ exports[`Profile component should render correctly 1`] = `
                     >
                       <View
                         style={
-                          Array [
-                            Object {
+                          [
+                            {
                               "flexDirection": "row",
                               "justifyContent": "space-between",
                               "paddingVertical": 16,
@@ -1642,8 +1642,8 @@ exports[`Profile component should render correctly 1`] = `
                         <View
                           accessibilityRole="list"
                           style={
-                            Array [
-                              Object {
+                            [
+                              {
                                 "flexBasis": 0,
                                 "flexDirection": "row",
                                 "flexGrow": 1,
@@ -1657,8 +1657,8 @@ exports[`Profile component should render correctly 1`] = `
                           <View
                             accessibilityRole="none"
                             style={
-                              Array [
-                                Object {
+                              [
+                                {
                                   "display": "flex",
                                 },
                               ]
@@ -1677,7 +1677,7 @@ exports[`Profile component should render correctly 1`] = `
                               onResponderTerminationRequest={[Function]}
                               onStartShouldSetResponder={[Function]}
                               style={
-                                Object {
+                                {
                                   "opacity": 1,
                                   "userSelect": "auto",
                                 }
@@ -1685,8 +1685,8 @@ exports[`Profile component should render correctly 1`] = `
                             >
                               <View
                                 style={
-                                  Array [
-                                    Object {
+                                  [
+                                    {
                                       "alignItems": "center",
                                       "flexDirection": "column",
                                       "justifyContent": "center",
@@ -1697,8 +1697,8 @@ exports[`Profile component should render correctly 1`] = `
                               >
                                 <View
                                   style={
-                                    Array [
-                                      Object {
+                                    [
+                                      {
                                         "alignItems": "center",
                                         "height": 32,
                                         "justifyContent": "center",
@@ -1719,8 +1719,8 @@ exports[`Profile component should render correctly 1`] = `
                                 <View
                                   numberOfSpaces={1}
                                   style={
-                                    Array [
-                                      Object {
+                                    [
+                                      {
                                         "height": 4,
                                       },
                                     ]
@@ -1729,8 +1729,8 @@ exports[`Profile component should render correctly 1`] = `
                                 <Text
                                   numberOfLines={2}
                                   style={
-                                    Array [
-                                      Object {
+                                    [
+                                      {
                                         "color": "#161617",
                                         "fontFamily": "Montserrat-SemiBold",
                                         "fontSize": 12,
@@ -1747,8 +1747,8 @@ exports[`Profile component should render correctly 1`] = `
                           <View
                             accessibilityRole="none"
                             style={
-                              Array [
-                                Object {
+                              [
+                                {
                                   "display": "flex",
                                 },
                               ]
@@ -1767,7 +1767,7 @@ exports[`Profile component should render correctly 1`] = `
                               onResponderTerminationRequest={[Function]}
                               onStartShouldSetResponder={[Function]}
                               style={
-                                Object {
+                                {
                                   "opacity": 1,
                                   "userSelect": "auto",
                                 }
@@ -1775,8 +1775,8 @@ exports[`Profile component should render correctly 1`] = `
                             >
                               <View
                                 style={
-                                  Array [
-                                    Object {
+                                  [
+                                    {
                                       "alignItems": "center",
                                       "flexDirection": "column",
                                       "justifyContent": "center",
@@ -1787,8 +1787,8 @@ exports[`Profile component should render correctly 1`] = `
                               >
                                 <View
                                   style={
-                                    Array [
-                                      Object {
+                                    [
+                                      {
                                         "alignItems": "center",
                                         "height": 32,
                                         "justifyContent": "center",
@@ -1809,8 +1809,8 @@ exports[`Profile component should render correctly 1`] = `
                                 <View
                                   numberOfSpaces={1}
                                   style={
-                                    Array [
-                                      Object {
+                                    [
+                                      {
                                         "height": 4,
                                       },
                                     ]
@@ -1819,8 +1819,8 @@ exports[`Profile component should render correctly 1`] = `
                                 <Text
                                   numberOfLines={2}
                                   style={
-                                    Array [
-                                      Object {
+                                    [
+                                      {
                                         "color": "#161617",
                                         "fontFamily": "Montserrat-SemiBold",
                                         "fontSize": 12,
@@ -1837,8 +1837,8 @@ exports[`Profile component should render correctly 1`] = `
                           <View
                             accessibilityRole="none"
                             style={
-                              Array [
-                                Object {
+                              [
+                                {
                                   "display": "flex",
                                 },
                               ]
@@ -1857,7 +1857,7 @@ exports[`Profile component should render correctly 1`] = `
                               onResponderTerminationRequest={[Function]}
                               onStartShouldSetResponder={[Function]}
                               style={
-                                Object {
+                                {
                                   "opacity": 1,
                                   "userSelect": "auto",
                                 }
@@ -1865,8 +1865,8 @@ exports[`Profile component should render correctly 1`] = `
                             >
                               <View
                                 style={
-                                  Array [
-                                    Object {
+                                  [
+                                    {
                                       "alignItems": "center",
                                       "flexDirection": "column",
                                       "justifyContent": "center",
@@ -1877,8 +1877,8 @@ exports[`Profile component should render correctly 1`] = `
                               >
                                 <View
                                   style={
-                                    Array [
-                                      Object {
+                                    [
+                                      {
                                         "alignItems": "center",
                                         "height": 32,
                                         "justifyContent": "center",
@@ -1899,8 +1899,8 @@ exports[`Profile component should render correctly 1`] = `
                                 <View
                                   numberOfSpaces={1}
                                   style={
-                                    Array [
-                                      Object {
+                                    [
+                                      {
                                         "height": 4,
                                       },
                                     ]
@@ -1909,8 +1909,8 @@ exports[`Profile component should render correctly 1`] = `
                                 <Text
                                   numberOfLines={2}
                                   style={
-                                    Array [
-                                      Object {
+                                    [
+                                      {
                                         "color": "#161617",
                                         "fontFamily": "Montserrat-SemiBold",
                                         "fontSize": 12,
@@ -1927,8 +1927,8 @@ exports[`Profile component should render correctly 1`] = `
                           <View
                             accessibilityRole="none"
                             style={
-                              Array [
-                                Object {
+                              [
+                                {
                                   "display": "flex",
                                 },
                               ]
@@ -1947,7 +1947,7 @@ exports[`Profile component should render correctly 1`] = `
                               onResponderTerminationRequest={[Function]}
                               onStartShouldSetResponder={[Function]}
                               style={
-                                Object {
+                                {
                                   "opacity": 1,
                                   "userSelect": "auto",
                                 }
@@ -1955,8 +1955,8 @@ exports[`Profile component should render correctly 1`] = `
                             >
                               <View
                                 style={
-                                  Array [
-                                    Object {
+                                  [
+                                    {
                                       "alignItems": "center",
                                       "flexDirection": "column",
                                       "justifyContent": "center",
@@ -1967,8 +1967,8 @@ exports[`Profile component should render correctly 1`] = `
                               >
                                 <View
                                   style={
-                                    Array [
-                                      Object {
+                                    [
+                                      {
                                         "alignItems": "center",
                                         "height": 32,
                                         "justifyContent": "center",
@@ -1989,8 +1989,8 @@ exports[`Profile component should render correctly 1`] = `
                                 <View
                                   numberOfSpaces={1}
                                   style={
-                                    Array [
-                                      Object {
+                                    [
+                                      {
                                         "height": 4,
                                       },
                                     ]
@@ -1999,8 +1999,8 @@ exports[`Profile component should render correctly 1`] = `
                                 <Text
                                   numberOfLines={2}
                                   style={
-                                    Array [
-                                      Object {
+                                    [
+                                      {
                                         "color": "#161617",
                                         "fontFamily": "Montserrat-SemiBold",
                                         "fontSize": 12,
@@ -2020,8 +2020,8 @@ exports[`Profile component should render correctly 1`] = `
                   </View>
                   <View
                     style={
-                      Array [
-                        Object {
+                      [
+                        {
                           "paddingTop": 8,
                         },
                       ]
@@ -2030,8 +2030,8 @@ exports[`Profile component should render correctly 1`] = `
                     <View
                       numberOfSpaces={2}
                       style={
-                        Array [
-                          Object {
+                        [
+                          {
                             "height": 8,
                           },
                         ]
@@ -2039,8 +2039,8 @@ exports[`Profile component should render correctly 1`] = `
                     />
                     <View
                       style={
-                        Array [
-                          Object {
+                        [
+                          {
                             "backgroundColor": "#F1F1F4",
                             "height": 1,
                             "width": "100%",
@@ -2051,8 +2051,8 @@ exports[`Profile component should render correctly 1`] = `
                     <View
                       numberOfSpaces={4}
                       style={
-                        Array [
-                          Object {
+                        [
+                          {
                             "height": 16,
                           },
                         ]
@@ -2062,7 +2062,7 @@ exports[`Profile component should render correctly 1`] = `
                       accessibilityLabel="Déconnexion"
                       accessibilityRole="button"
                       accessibilityState={
-                        Object {
+                        {
                           "disabled": false,
                         }
                       }
@@ -2077,7 +2077,7 @@ exports[`Profile component should render correctly 1`] = `
                       onResponderTerminationRequest={[Function]}
                       onStartShouldSetResponder={[Function]}
                       style={
-                        Object {
+                        {
                           "opacity": 1,
                           "userSelect": "auto",
                         }
@@ -2086,8 +2086,8 @@ exports[`Profile component should render correctly 1`] = `
                     >
                       <View
                         style={
-                          Array [
-                            Object {
+                          [
+                            {
                               "alignItems": "center",
                               "flexDirection": "row",
                               "justifyContent": "space-between",
@@ -2107,8 +2107,8 @@ exports[`Profile component should render correctly 1`] = `
                         <View
                           numberOfSpaces={2}
                           style={
-                            Array [
-                              Object {
+                            [
+                              {
                                 "width": 8,
                               },
                             ]
@@ -2116,8 +2116,8 @@ exports[`Profile component should render correctly 1`] = `
                         />
                         <View
                           style={
-                            Array [
-                              Object {
+                            [
+                              {
                                 "flexBasis": 0,
                                 "flexGrow": 1,
                                 "flexShrink": 1,
@@ -2129,8 +2129,8 @@ exports[`Profile component should render correctly 1`] = `
                           <Text
                             numberOfLines={2}
                             style={
-                              Array [
-                                Object {
+                              [
+                                {
                                   "color": "#161617",
                                   "fontFamily": "Montserrat-Bold",
                                   "fontSize": 15,
@@ -2147,8 +2147,8 @@ exports[`Profile component should render correctly 1`] = `
                   </View>
                   <View
                     style={
-                      Array [
-                        Object {
+                      [
+                        {
                           "paddingTop": 8,
                         },
                       ]
@@ -2157,8 +2157,8 @@ exports[`Profile component should render correctly 1`] = `
                     <View
                       numberOfSpaces={2}
                       style={
-                        Array [
-                          Object {
+                        [
+                          {
                             "height": 8,
                           },
                         ]
@@ -2166,8 +2166,8 @@ exports[`Profile component should render correctly 1`] = `
                     />
                     <View
                       style={
-                        Array [
-                          Object {
+                        [
+                          {
                             "backgroundColor": "#F1F1F4",
                             "height": 1,
                             "width": "100%",
@@ -2178,8 +2178,8 @@ exports[`Profile component should render correctly 1`] = `
                     <View
                       numberOfSpaces={4}
                       style={
-                        Array [
-                          Object {
+                        [
+                          {
                             "height": 16,
                           },
                         ]
@@ -2187,8 +2187,8 @@ exports[`Profile component should render correctly 1`] = `
                     />
                     <Text
                       style={
-                        Array [
-                          Object {
+                        [
+                          {
                             "color": "#696A6F",
                             "fontFamily": "Montserrat-SemiBold",
                             "fontSize": 12,
@@ -2202,8 +2202,8 @@ exports[`Profile component should render correctly 1`] = `
                     <View
                       numberOfSpaces={4}
                       style={
-                        Array [
-                          Object {
+                        [
+                          {
                             "height": 16,
                           },
                         ]
@@ -2211,8 +2211,8 @@ exports[`Profile component should render correctly 1`] = `
                     />
                     <View
                       style={
-                        Array [
-                          Object {
+                        [
+                          {
                             "height": 112,
                             "width": 160,
                           },
@@ -2233,8 +2233,8 @@ exports[`Profile component should render correctly 1`] = `
                     <View
                       numberOfSpaces={4}
                       style={
-                        Array [
-                          Object {
+                        [
+                          {
                             "height": 16,
                           },
                         ]
@@ -2245,8 +2245,8 @@ exports[`Profile component should render correctly 1`] = `
                     customHeight={72}
                     enable={true}
                     style={
-                      Array [
-                        Object {
+                      [
+                        {
                           "height": 72,
                         },
                       ]
@@ -2258,8 +2258,8 @@ exports[`Profile component should render correctly 1`] = `
             <View
               height={16}
               style={
-                Array [
-                  Object {
+                [
+                  {
                     "backdropFilter": "blur(20px)",
                     "height": 16,
                     "left": 0,
@@ -2274,12 +2274,12 @@ exports[`Profile component should render correctly 1`] = `
                 blurAmount={8}
                 blurType="light"
                 style={
-                  Array [
-                    Object {
+                  [
+                    {
                       "backgroundColor": "transparent",
                     },
-                    Array [
-                      Object {
+                    [
+                      {
                         "flexBasis": 0,
                         "flexGrow": 1,
                         "flexShrink": 1,
@@ -2299,7 +2299,7 @@ exports[`Profile component should render correctly 1`] = `
             collapsable={false}
             pointerEvents="box-none"
             style={
-              Object {
+              {
                 "bottom": 0,
                 "left": 0,
                 "position": "absolute",
@@ -2312,12 +2312,12 @@ exports[`Profile component should render correctly 1`] = `
             <View
               collapsable={false}
               style={
-                Object {
+                {
                   "backgroundColor": "rgb(255, 255, 255)",
                   "borderBottomColor": "rgb(216, 216, 216)",
                   "flex": 1,
                   "shadowColor": "rgb(216, 216, 216)",
-                  "shadowOffset": Object {
+                  "shadowOffset": {
                     "height": 0.5,
                     "width": 0,
                   },
@@ -2331,7 +2331,7 @@ exports[`Profile component should render correctly 1`] = `
             collapsable={false}
             pointerEvents="box-none"
             style={
-              Object {
+              {
                 "height": 60,
                 "maxHeight": undefined,
                 "minHeight": undefined,
@@ -2343,7 +2343,7 @@ exports[`Profile component should render correctly 1`] = `
             <View
               pointerEvents="none"
               style={
-                Object {
+                {
                   "height": 16,
                 }
               }
@@ -2351,7 +2351,7 @@ exports[`Profile component should render correctly 1`] = `
             <View
               pointerEvents="box-none"
               style={
-                Object {
+                {
                   "alignItems": "stretch",
                   "flex": 1,
                   "flexDirection": "row",
@@ -2362,7 +2362,7 @@ exports[`Profile component should render correctly 1`] = `
                 collapsable={false}
                 pointerEvents="box-none"
                 style={
-                  Object {
+                  {
                     "alignItems": "flex-start",
                     "flexBasis": 0,
                     "flexGrow": 1,
@@ -2375,7 +2375,7 @@ exports[`Profile component should render correctly 1`] = `
                 collapsable={false}
                 pointerEvents="box-none"
                 style={
-                  Object {
+                  {
                     "justifyContent": "center",
                     "marginHorizontal": 16,
                     "maxWidth": 686,
@@ -2388,7 +2388,7 @@ exports[`Profile component should render correctly 1`] = `
                   collapsable={false}
                   numberOfLines={1}
                   style={
-                    Object {
+                    {
                       "color": "rgb(28, 28, 30)",
                       "fontSize": 17,
                       "fontWeight": "600",
@@ -2402,7 +2402,7 @@ exports[`Profile component should render correctly 1`] = `
                 collapsable={false}
                 pointerEvents="box-none"
                 style={
-                  Object {
+                  {
                     "alignItems": "flex-end",
                     "flexBasis": 0,
                     "flexGrow": 1,
@@ -2422,7 +2422,7 @@ exports[`Profile component should render correctly 1`] = `
     onLayout={[Function]}
     pointerEvents="auto"
     style={
-      Object {
+      {
         "backgroundColor": "rgb(255, 255, 255)",
         "borderTopColor": "rgb(216, 216, 216)",
         "borderTopWidth": 0.5,
@@ -2434,8 +2434,8 @@ exports[`Profile component should render correctly 1`] = `
         "paddingHorizontal": 0,
         "position": null,
         "right": 0,
-        "transform": Array [
-          Object {
+        "transform": [
+          {
             "translateY": 0,
           },
         ],
@@ -2445,7 +2445,7 @@ exports[`Profile component should render correctly 1`] = `
     <View
       pointerEvents="none"
       style={
-        Object {
+        {
           "bottom": 0,
           "left": 0,
           "position": "absolute",
@@ -2457,7 +2457,7 @@ exports[`Profile component should render correctly 1`] = `
     <View
       accessibilityRole="tablist"
       style={
-        Object {
+        {
           "flex": 1,
           "flexDirection": "row",
         }
@@ -2467,12 +2467,12 @@ exports[`Profile component should render correctly 1`] = `
         accessibilityLabel="Profile, tab, 1 of 1"
         accessibilityRole="button"
         accessibilityState={
-          Object {
+          {
             "selected": true,
           }
         }
         accessibilityStates={
-          Array [
+          [
             "selected",
           ]
         }
@@ -2489,15 +2489,15 @@ exports[`Profile component should render correctly 1`] = `
         onResponderTerminationRequest={[Function]}
         onStartShouldSetResponder={[Function]}
         style={
-          Array [
-            Object {
+          [
+            {
               "alignItems": "center",
               "flex": 1,
             },
-            Object {
+            {
               "backgroundColor": "transparent",
             },
-            Object {
+            {
               "flexDirection": "column",
               "justifyContent": "flex-end",
             },
@@ -2507,8 +2507,8 @@ exports[`Profile component should render correctly 1`] = `
       >
         <View
           style={
-            Array [
-              Object {
+            [
+              {
                 "flex": 1,
               },
               undefined,
@@ -2517,8 +2517,8 @@ exports[`Profile component should render correctly 1`] = `
         >
           <View
             style={
-              Array [
-                Object {
+              [
+                {
                   "alignItems": "center",
                   "alignSelf": "center",
                   "height": "100%",
@@ -2527,7 +2527,7 @@ exports[`Profile component should render correctly 1`] = `
                   "position": "absolute",
                   "width": "100%",
                 },
-                Object {
+                {
                   "opacity": 1,
                 },
               ]
@@ -2535,11 +2535,11 @@ exports[`Profile component should render correctly 1`] = `
           >
             <Text
               style={
-                Array [
-                  Object {
+                [
+                  {
                     "backgroundColor": "transparent",
                   },
-                  Object {
+                  {
                     "color": "rgb(0, 122, 255)",
                     "fontSize": 25,
                   },
@@ -2552,8 +2552,8 @@ exports[`Profile component should render correctly 1`] = `
           </View>
           <View
             style={
-              Array [
-                Object {
+              [
+                {
                   "alignItems": "center",
                   "alignSelf": "center",
                   "height": "100%",
@@ -2562,7 +2562,7 @@ exports[`Profile component should render correctly 1`] = `
                   "position": "absolute",
                   "width": "100%",
                 },
-                Object {
+                {
                   "opacity": 0,
                 },
               ]
@@ -2570,11 +2570,11 @@ exports[`Profile component should render correctly 1`] = `
           >
             <Text
               style={
-                Array [
-                  Object {
+                [
+                  {
                     "backgroundColor": "transparent",
                   },
-                  Object {
+                  {
                     "color": "#8E8E8F",
                     "fontSize": 25,
                   },
@@ -2589,15 +2589,15 @@ exports[`Profile component should render correctly 1`] = `
         <Text
           numberOfLines={1}
           style={
-            Array [
-              Object {
+            [
+              {
                 "backgroundColor": "transparent",
                 "textAlign": "center",
               },
-              Object {
+              {
                 "color": "rgb(0, 122, 255)",
               },
-              Object {
+              {
                 "fontSize": 10,
               },
               undefined,

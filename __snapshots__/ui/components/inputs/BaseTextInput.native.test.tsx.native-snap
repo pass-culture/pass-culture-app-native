@@ -8,8 +8,8 @@ exports[`<BaseTextInput /> should render correctly 1`] = `
   placeholderTextColor="#696A6F"
   returnKeyType="next"
   style={
-    Array [
-      Object {
+    [
+      {
         "color": "#161617",
         "flexBasis": 0,
         "flexGrow": 1,

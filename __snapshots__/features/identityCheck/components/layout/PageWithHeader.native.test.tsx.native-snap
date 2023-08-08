@@ -1,12 +1,12 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<PageWithHeader/> should render correctly 1`] = `
-Array [
+[
   <View
     accessibilityRole="header"
     style={
-      Array [
-        Object {
+      [
+        {
           "backgroundColor": "rgba(255,255,255,0)",
           "borderBottomColor": "#F1F1F4",
           "borderBottomWidth": 1,
@@ -23,8 +23,8 @@ Array [
       customHeight={16}
       enable={true}
       style={
-        Array [
-          Object {
+        [
+          {
             "height": 16,
           },
         ]
@@ -32,8 +32,8 @@ Array [
     />
     <View
       style={
-        Array [
-          Object {
+        [
+          {
             "alignItems": "center",
             "height": 48,
             "justifyContent": "center",
@@ -43,8 +43,8 @@ Array [
     >
       <View
         style={
-          Array [
-            Object {
+          [
+            {
               "alignItems": "center",
               "flexDirection": "row",
               "justifyContent": "space-between",
@@ -56,8 +56,8 @@ Array [
         <View
           positionInHeader="left"
           style={
-            Array [
-              Object {
+            [
+              {
                 "alignItems": "center",
                 "flexBasis": 0,
                 "flexDirection": "row",
@@ -85,7 +85,7 @@ Array [
             onResponderTerminationRequest={[Function]}
             onStartShouldSetResponder={[Function]}
             style={
-              Object {
+              {
                 "alignItems": "center",
                 "flexGrow": 1,
                 "height": 40,
@@ -108,8 +108,8 @@ Array [
             </View>
             <Text
               style={
-                Array [
-                  Object {
+                [
+                  {
                     "display": "none",
                   },
                 ]
@@ -122,8 +122,8 @@ Array [
         <Text
           numberOfLines={1}
           style={
-            Array [
-              Object {
+            [
+              {
                 "color": "#161617",
                 "fontFamily": "Montserrat-Regular",
                 "fontSize": 15,
@@ -138,8 +138,8 @@ Array [
         <View
           positionInHeader="right"
           style={
-            Array [
-              Object {
+            [
+              {
                 "alignItems": "center",
                 "flexBasis": 0,
                 "flexDirection": "row",
@@ -158,8 +158,8 @@ Array [
   </View>,
   <View
     style={
-      Array [
-        Object {
+      [
+        {
           "flexBasis": 0,
           "flexGrow": 1,
           "flexShrink": 1,
@@ -170,9 +170,9 @@ Array [
     <View
       onLayout={[Function]}
       style={
-        Array [
-          Array [
-            Object {
+        [
+          [
+            {
               "alignItems": "center",
               "backgroundColor": "#ffffff",
               "borderTopLeftRadius": 22,
@@ -186,7 +186,7 @@ Array [
               "paddingTop": 32,
             },
           ],
-          Object {
+          {
             "paddingBottom": 0,
           },
         ]
@@ -194,8 +194,8 @@ Array [
     >
       <View
         style={
-          Array [
-            Object {
+          [
+            {
               "flexBasis": 0,
               "flexGrow": 1,
               "flexShrink": 1,
@@ -208,7 +208,7 @@ Array [
         <RCTScrollView
           bottomChildrenViewHeight={0}
           contentContainerStyle={
-            Object {
+            {
               "flexDirection": "column",
               "flexGrow": 1,
               "paddingBottom": 0,
@@ -219,15 +219,15 @@ Array [
           onContentSizeChange={[Function]}
           onLayout={[Function]}
           style={
-            Array [
-              Object {},
+            [
+              {},
             ]
           }
         >
           <View>
             <View
               style={
-                Object {
+                {
                   "height": 65,
                 }
               }
@@ -240,8 +240,8 @@ Array [
         <View
           onLayout={[Function]}
           style={
-            Array [
-              Object {
+            [
+              {
                 "backgroundColor": "#ffffff",
                 "bottom": 0,
                 "left": 0,
@@ -261,8 +261,8 @@ Array [
             customHeight={8}
             enable={true}
             style={
-              Array [
-                Object {
+              [
+                {
                   "height": 8,
                 },
               ]
@@ -275,8 +275,8 @@ Array [
   <View
     height={65}
     style={
-      Array [
-        Object {
+      [
+        {
           "backdropFilter": "blur(20px)",
           "height": 65,
           "left": 0,
@@ -292,12 +292,12 @@ Array [
       blurAmount={8}
       blurType="light"
       style={
-        Array [
-          Object {
+        [
+          {
             "backgroundColor": "transparent",
           },
-          Array [
-            Object {
+          [
+            {
               "flexBasis": 0,
               "flexGrow": 1,
               "flexShrink": 1,
@@ -311,12 +311,12 @@ Array [
 `;
 
 exports[`<PageWithHeader/> should render correctly on Android, with white header 1`] = `
-Array [
+[
   <View
     accessibilityRole="header"
     style={
-      Array [
-        Object {
+      [
+        {
           "backgroundColor": "#ffffff",
           "borderBottomColor": "#F1F1F4",
           "borderBottomWidth": 1,
@@ -333,8 +333,8 @@ Array [
       customHeight={16}
       enable={true}
       style={
-        Array [
-          Object {
+        [
+          {
             "height": 16,
           },
         ]
@@ -342,8 +342,8 @@ Array [
     />
     <View
       style={
-        Array [
-          Object {
+        [
+          {
             "alignItems": "center",
             "height": 48,
             "justifyContent": "center",
@@ -353,8 +353,8 @@ Array [
     >
       <View
         style={
-          Array [
-            Object {
+          [
+            {
               "alignItems": "center",
               "flexDirection": "row",
               "justifyContent": "space-between",
@@ -366,8 +366,8 @@ Array [
         <View
           positionInHeader="left"
           style={
-            Array [
-              Object {
+            [
+              {
                 "alignItems": "center",
                 "flexBasis": 0,
                 "flexDirection": "row",
@@ -395,7 +395,7 @@ Array [
             onResponderTerminationRequest={[Function]}
             onStartShouldSetResponder={[Function]}
             style={
-              Object {
+              {
                 "alignItems": "center",
                 "flexGrow": 1,
                 "height": 40,
@@ -418,8 +418,8 @@ Array [
             </View>
             <Text
               style={
-                Array [
-                  Object {
+                [
+                  {
                     "display": "none",
                   },
                 ]
@@ -432,8 +432,8 @@ Array [
         <Text
           numberOfLines={1}
           style={
-            Array [
-              Object {
+            [
+              {
                 "color": "#161617",
                 "fontFamily": "Montserrat-Regular",
                 "fontSize": 15,
@@ -448,8 +448,8 @@ Array [
         <View
           positionInHeader="right"
           style={
-            Array [
-              Object {
+            [
+              {
                 "alignItems": "center",
                 "flexBasis": 0,
                 "flexDirection": "row",
@@ -468,8 +468,8 @@ Array [
   </View>,
   <View
     style={
-      Array [
-        Object {
+      [
+        {
           "flexBasis": 0,
           "flexGrow": 1,
           "flexShrink": 1,
@@ -480,9 +480,9 @@ Array [
     <View
       onLayout={[Function]}
       style={
-        Array [
-          Array [
-            Object {
+        [
+          [
+            {
               "alignItems": "center",
               "backgroundColor": "#ffffff",
               "borderTopLeftRadius": 22,
@@ -496,7 +496,7 @@ Array [
               "paddingTop": 32,
             },
           ],
-          Object {
+          {
             "paddingBottom": 0,
           },
         ]
@@ -504,8 +504,8 @@ Array [
     >
       <View
         style={
-          Array [
-            Object {
+          [
+            {
               "flexBasis": 0,
               "flexGrow": 1,
               "flexShrink": 1,
@@ -518,7 +518,7 @@ Array [
         <RCTScrollView
           bottomChildrenViewHeight={0}
           contentContainerStyle={
-            Object {
+            {
               "flexDirection": "column",
               "flexGrow": 1,
               "paddingBottom": 0,
@@ -529,15 +529,15 @@ Array [
           onContentSizeChange={[Function]}
           onLayout={[Function]}
           style={
-            Array [
-              Object {},
+            [
+              {},
             ]
           }
         >
           <View>
             <View
               style={
-                Object {
+                {
                   "height": 65,
                 }
               }
@@ -550,8 +550,8 @@ Array [
         <View
           onLayout={[Function]}
           style={
-            Array [
-              Object {
+            [
+              {
                 "backgroundColor": "#ffffff",
                 "bottom": 0,
                 "left": 0,
@@ -571,8 +571,8 @@ Array [
             customHeight={8}
             enable={true}
             style={
-              Array [
-                Object {
+              [
+                {
                   "height": 8,
                 },
               ]

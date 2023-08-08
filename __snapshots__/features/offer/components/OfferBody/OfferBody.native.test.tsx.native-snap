@@ -6,13 +6,13 @@ exports[`<OfferBody /> report offer should open the report modal upon clicking o
   onScroll={[MockFunction]}
   scrollEventThrottle={20}
   scrollIndicatorInsets={
-    Object {
+    {
       "right": 1,
     }
   }
   style={
-    Array [
-      Object {
+    [
+      {
         "overflow": "visible",
       },
     ]
@@ -22,8 +22,8 @@ exports[`<OfferBody /> report offer should open the report modal upon clicking o
   <View>
     <View
       style={
-        Array [
-          Object {
+        [
+          {
             "alignItems": "center",
             "minHeight": 0,
           },
@@ -32,8 +32,8 @@ exports[`<OfferBody /> report offer should open the report modal upon clicking o
     >
       <View
         style={
-          Array [
-            Object {
+          [
+            {
               "alignItems": "center",
               "position": "absolute",
             },
@@ -44,12 +44,12 @@ exports[`<OfferBody /> report offer should open the report modal upon clicking o
           blurRadius={20}
           resizeMode="cover"
           source={
-            Object {
+            {
               "uri": "https://storage.gra.cloud.ovh.net/v1/AUTH_688df1e25bd84a48a3804e7fa8938085/storage-pc-dev/thumbs/mediations/CW8Q",
             }
           }
           style={
-            Object {
+            {
               "height": 312,
               "width": 960,
             }
@@ -67,8 +67,8 @@ exports[`<OfferBody /> report offer should open the report modal upon clicking o
       <View
         numberOfSpaces={26}
         style={
-          Array [
-            Object {
+          [
+            {
               "height": 104,
             },
           ]
@@ -76,18 +76,18 @@ exports[`<OfferBody /> report offer should open the report modal upon clicking o
       />
       <View
         style={
-          Array [
-            Object {
+          [
+            {
               "bottom": 0,
               "shadowColor": "#161617",
-              "shadowOffset": Object {
+              "shadowOffset": {
                 "height": 8,
                 "width": 0,
               },
               "shadowOpacity": 0.2,
               "shadowRadius": 12,
             },
-            Object {
+            {
               "aspectRatio": 0.6666666666666666,
               "borderRadius": 8,
               "height": 296,
@@ -100,15 +100,15 @@ exports[`<OfferBody /> report offer should open the report modal upon clicking o
       >
         <View
           style={
-            Array [
-              Object {
+            [
+              {
                 "overflow": "hidden",
               },
-              Array [
-                Object {
+              [
+                {
                   "backgroundColor": "#F1F1F4",
                 },
-                Object {
+                {
                   "aspectRatio": 0.6666666666666666,
                   "borderRadius": 8,
                   "height": 296,
@@ -123,12 +123,12 @@ exports[`<OfferBody /> report offer should open the report modal upon clicking o
             defaultSource={null}
             resizeMode="cover"
             source={
-              Object {
+              {
                 "uri": "https://storage.gra.cloud.ovh.net/v1/AUTH_688df1e25bd84a48a3804e7fa8938085/storage-pc-dev/thumbs/mediations/CW8Q",
               }
             }
             style={
-              Object {
+              {
                 "bottom": 0,
                 "left": 0,
                 "position": "absolute",
@@ -143,8 +143,8 @@ exports[`<OfferBody /> report offer should open the report modal upon clicking o
     <View
       numberOfSpaces={4}
       style={
-        Array [
-          Object {
+        [
+          {
             "height": 16,
           },
         ]
@@ -152,8 +152,8 @@ exports[`<OfferBody /> report offer should open the report modal upon clicking o
     />
     <View
       style={
-        Array [
-          Object {
+        [
+          {
             "alignItems": "center",
             "flexDirection": "row",
             "flexWrap": "wrap",
@@ -165,8 +165,8 @@ exports[`<OfferBody /> report offer should open the report modal upon clicking o
     >
       <View
         style={
-          Array [
-            Object {
+          [
+            {
               "alignItems": "center",
               "flexDirection": "row",
             },
@@ -175,8 +175,8 @@ exports[`<OfferBody /> report offer should open the report modal upon clicking o
       >
         <View
           style={
-            Array [
-              Object {
+            [
+              {
                 "marginRight": 4,
               },
             ]
@@ -195,8 +195,8 @@ exports[`<OfferBody /> report offer should open the report modal upon clicking o
         <Text
           numberOfLines={1}
           style={
-            Array [
-              Object {
+            [
+              {
                 "color": "#161617",
                 "flexShrink": 1,
                 "fontFamily": "Montserrat-SemiBold",
@@ -214,8 +214,8 @@ exports[`<OfferBody /> report offer should open the report modal upon clicking o
         isDigital={false}
         numberOfLines={1}
         style={
-          Array [
-            Object {
+          [
+            {
               "color": "#161617",
               "fontFamily": "Montserrat-SemiBold",
               "fontSize": 12,
@@ -231,8 +231,8 @@ exports[`<OfferBody /> report offer should open the report modal upon clicking o
     <View
       numberOfSpaces={2}
       style={
-        Array [
-          Object {
+        [
+          {
             "height": 8,
           },
         ]
@@ -240,8 +240,8 @@ exports[`<OfferBody /> report offer should open the report modal upon clicking o
     />
     <View
       style={
-        Array [
-          Object {
+        [
+          {
             "marginHorizontal": 24,
           },
         ]
@@ -254,8 +254,8 @@ exports[`<OfferBody /> report offer should open the report modal upon clicking o
         allowFontScaling={false}
         numberOfLines={3}
         style={
-          Array [
-            Object {
+          [
+            {
               "color": "#161617",
               "fontFamily": "Montserrat-Bold",
               "fontSize": 20,
@@ -272,8 +272,8 @@ exports[`<OfferBody /> report offer should open the report modal upon clicking o
     <View
       numberOfSpaces={4}
       style={
-        Array [
-          Object {
+        [
+          {
             "height": 16,
           },
         ]
@@ -281,8 +281,8 @@ exports[`<OfferBody /> report offer should open the report modal upon clicking o
     />
     <View
       style={
-        Array [
-          Object {
+        [
+          {
             "alignItems": "flex-start",
             "flexDirection": "row",
           },
@@ -292,8 +292,8 @@ exports[`<OfferBody /> report offer should open the report modal upon clicking o
       <View
         numberOfSpaces={6}
         style={
-          Array [
-            Object {
+          [
+            {
               "width": 24,
             },
           ]
@@ -301,8 +301,8 @@ exports[`<OfferBody /> report offer should open the report modal upon clicking o
       />
       <View
         style={
-          Array [
-            Object {
+          [
+            {
               "alignItems": "center",
               "flexBasis": 0,
               "flexGrow": 1,
@@ -313,8 +313,8 @@ exports[`<OfferBody /> report offer should open the report modal upon clicking o
       >
         <View
           style={
-            Array [
-              Object {
+            [
+              {
                 "paddingBottom": 4,
                 "paddingLeft": 4,
                 "paddingRight": 4,
@@ -336,8 +336,8 @@ exports[`<OfferBody /> report offer should open the report modal upon clicking o
         <View
           numberOfSpaces={2}
           style={
-            Array [
-              Object {
+            [
+              {
                 "height": 8,
               },
             ]
@@ -346,8 +346,8 @@ exports[`<OfferBody /> report offer should open the report modal upon clicking o
         <Text
           disabled={false}
           style={
-            Array [
-              Object {
+            [
+              {
                 "color": "#161617",
                 "fontFamily": "Montserrat-SemiBold",
                 "fontSize": 12,
@@ -363,8 +363,8 @@ exports[`<OfferBody /> report offer should open the report modal upon clicking o
       </View>
       <View
         style={
-          Array [
-            Object {
+          [
+            {
               "alignSelf": "center",
               "backgroundColor": "#CBCDD2",
               "height": "92%",
@@ -376,8 +376,8 @@ exports[`<OfferBody /> report offer should open the report modal upon clicking o
       />
       <View
         style={
-          Array [
-            Object {
+          [
+            {
               "alignItems": "center",
               "flexBasis": 0,
               "flexGrow": 1,
@@ -388,8 +388,8 @@ exports[`<OfferBody /> report offer should open the report modal upon clicking o
       >
         <View
           style={
-            Array [
-              Object {
+            [
+              {
                 "paddingBottom": 4,
                 "paddingLeft": 4,
                 "paddingRight": 4,
@@ -412,8 +412,8 @@ exports[`<OfferBody /> report offer should open the report modal upon clicking o
         <View
           numberOfSpaces={2}
           style={
-            Array [
-              Object {
+            [
+              {
                 "height": 8,
               },
             ]
@@ -422,8 +422,8 @@ exports[`<OfferBody /> report offer should open the report modal upon clicking o
         <Text
           disabled={false}
           style={
-            Array [
-              Object {
+            [
+              {
                 "color": "#161617",
                 "fontFamily": "Montserrat-SemiBold",
                 "fontSize": 12,
@@ -439,8 +439,8 @@ exports[`<OfferBody /> report offer should open the report modal upon clicking o
       </View>
       <View
         style={
-          Array [
-            Object {
+          [
+            {
               "alignSelf": "center",
               "backgroundColor": "#CBCDD2",
               "height": "92%",
@@ -452,8 +452,8 @@ exports[`<OfferBody /> report offer should open the report modal upon clicking o
       />
       <View
         style={
-          Array [
-            Object {
+          [
+            {
               "alignItems": "center",
               "flexBasis": 0,
               "flexGrow": 1,
@@ -464,8 +464,8 @@ exports[`<OfferBody /> report offer should open the report modal upon clicking o
       >
         <View
           style={
-            Array [
-              Object {
+            [
+              {
                 "paddingBottom": 4,
                 "paddingLeft": 4,
                 "paddingRight": 4,
@@ -489,8 +489,8 @@ exports[`<OfferBody /> report offer should open the report modal upon clicking o
         <View
           numberOfSpaces={2}
           style={
-            Array [
-              Object {
+            [
+              {
                 "height": 8,
               },
             ]
@@ -499,8 +499,8 @@ exports[`<OfferBody /> report offer should open the report modal upon clicking o
         <Text
           disabled={false}
           style={
-            Array [
-              Object {
+            [
+              {
                 "color": "#161617",
                 "fontFamily": "Montserrat-SemiBold",
                 "fontSize": 12,
@@ -517,8 +517,8 @@ exports[`<OfferBody /> report offer should open the report modal upon clicking o
       <View
         numberOfSpaces={6}
         style={
-          Array [
-            Object {
+          [
+            {
               "width": 24,
             },
           ]
@@ -527,8 +527,8 @@ exports[`<OfferBody /> report offer should open the report modal upon clicking o
     </View>
     <View
       style={
-        Array [
-          Object {
+        [
+          {
             "alignItems": "center",
             "paddingHorizontal": 24,
           },
@@ -538,8 +538,8 @@ exports[`<OfferBody /> report offer should open the report modal upon clicking o
       <View
         numberOfSpaces={4}
         style={
-          Array [
-            Object {
+          [
+            {
               "height": 16,
             },
           ]
@@ -548,8 +548,8 @@ exports[`<OfferBody /> report offer should open the report modal upon clicking o
       <View
         description=""
         style={
-          Array [
-            Object {
+          [
+            {
               "alignSelf": "center",
             },
           ]
@@ -558,8 +558,8 @@ exports[`<OfferBody /> report offer should open the report modal upon clicking o
       >
         <View
           style={
-            Array [
-              Object {
+            [
+              {
                 "alignItems": "center",
                 "flexDirection": "row",
               },
@@ -579,7 +579,7 @@ exports[`<OfferBody /> report offer should open the report modal upon clicking o
             onResponderTerminationRequest={[Function]}
             onStartShouldSetResponder={[Function]}
             style={
-              Object {
+              {
                 "alignItems": "center",
                 "backgroundColor": "transparent",
                 "borderRadius": 0,
@@ -604,8 +604,8 @@ exports[`<OfferBody /> report offer should open the report modal upon clicking o
               adjustsFontSizeToFit={false}
               numberOfLines={1}
               style={
-                Array [
-                  Object {
+                [
+                  {
                     "color": "#161617",
                     "fontFamily": "Montserrat-Bold",
                     "fontSize": 15,
@@ -622,8 +622,8 @@ exports[`<OfferBody /> report offer should open the report modal upon clicking o
           <View
             numberOfSpaces={1}
             style={
-              Array [
-                Object {
+              [
+                {
                   "width": 4,
                 },
               ]
@@ -643,8 +643,8 @@ exports[`<OfferBody /> report offer should open the report modal upon clicking o
     <View
       numberOfSpaces={4}
       style={
-        Array [
-          Object {
+        [
+          {
             "height": 16,
           },
         ]
@@ -653,8 +653,8 @@ exports[`<OfferBody /> report offer should open the report modal upon clicking o
     <View>
       <View
         style={
-          Array [
-            Object {
+          [
+            {
               "backgroundColor": "#F1F1F4",
               "height": 8,
             },
@@ -663,8 +663,8 @@ exports[`<OfferBody /> report offer should open the report modal upon clicking o
       />
       <View
         style={
-          Array [
-            Object {
+          [
+            {
               "marginHorizontal": 24,
             },
           ]
@@ -672,8 +672,8 @@ exports[`<OfferBody /> report offer should open the report modal upon clicking o
       >
         <Text
           style={
-            Array [
-              Object {
+            [
+              {
                 "color": "#161617",
                 "fontFamily": "Montserrat-Medium",
                 "fontSize": 18,
@@ -688,8 +688,8 @@ exports[`<OfferBody /> report offer should open the report modal upon clicking o
         </Text>
         <Text
           style={
-            Array [
-              Object {
+            [
+              {
                 "color": "#161617",
                 "fontFamily": "Montserrat-Regular",
                 "fontSize": 15,
@@ -707,8 +707,8 @@ exports[`<OfferBody /> report offer should open the report modal upon clicking o
     <View>
       <View
         style={
-          Array [
-            Object {
+          [
+            {
               "backgroundColor": "#F1F1F4",
               "height": 8,
             },
@@ -717,8 +717,8 @@ exports[`<OfferBody /> report offer should open the report modal upon clicking o
       />
       <View
         style={
-          Array [
-            Object {
+          [
+            {
               "marginHorizontal": 24,
             },
           ]
@@ -727,8 +727,8 @@ exports[`<OfferBody /> report offer should open the report modal upon clicking o
         <View
           numberOfSpaces={6}
           style={
-            Array [
-              Object {
+            [
+              {
                 "height": 24,
               },
             ]
@@ -736,8 +736,8 @@ exports[`<OfferBody /> report offer should open the report modal upon clicking o
         />
         <Text
           style={
-            Array [
-              Object {
+            [
+              {
                 "color": "#161617",
                 "fontFamily": "Montserrat-Medium",
                 "fontSize": 18,
@@ -751,8 +751,8 @@ exports[`<OfferBody /> report offer should open the report modal upon clicking o
         <View
           numberOfSpaces={4}
           style={
-            Array [
-              Object {
+            [
+              {
                 "height": 16,
               },
             ]
@@ -772,7 +772,7 @@ exports[`<OfferBody /> report offer should open the report modal upon clicking o
           onResponderTerminationRequest={[Function]}
           onStartShouldSetResponder={[Function]}
           style={
-            Object {
+            {
               "alignItems": "center",
               "flexDirection": "row",
               "opacity": 1,
@@ -784,8 +784,8 @@ exports[`<OfferBody /> report offer should open the report modal upon clicking o
           <View
             numberOfSpaces={2}
             style={
-              Array [
-                Object {
+              [
+                {
                   "width": 8,
                 },
               ]
@@ -793,8 +793,8 @@ exports[`<OfferBody /> report offer should open the report modal upon clicking o
           />
           <View
             style={
-              Array [
-                Object {
+              [
+                {
                   "left": -6,
                 },
               ]
@@ -813,8 +813,8 @@ exports[`<OfferBody /> report offer should open the report modal upon clicking o
           <View
             numberOfSpaces={2}
             style={
-              Array [
-                Object {
+              [
+                {
                   "width": 8,
                 },
               ]
@@ -823,8 +823,8 @@ exports[`<OfferBody /> report offer should open the report modal upon clicking o
           <Text
             numberOfLines={1}
             style={
-              Array [
-                Object {
+              [
+                {
                   "color": "#161617",
                   "flexShrink": 1,
                   "fontFamily": "Montserrat-Bold",
@@ -840,8 +840,8 @@ exports[`<OfferBody /> report offer should open the report modal upon clicking o
           </Text>
           <View
             style={
-              Array [
-                Object {
+              [
+                {
                   "flexBasis": 0,
                   "flexGrow": 1,
                   "flexShrink": 1,
@@ -861,8 +861,8 @@ exports[`<OfferBody /> report offer should open the report modal upon clicking o
         <View
           numberOfSpaces={4}
           style={
-            Array [
-              Object {
+            [
+              {
                 "height": 16,
               },
             ]
@@ -870,8 +870,8 @@ exports[`<OfferBody /> report offer should open the report modal upon clicking o
         />
         <Text
           style={
-            Array [
-              Object {
+            [
+              {
                 "color": "#161617",
                 "fontFamily": "Montserrat-SemiBold",
                 "fontSize": 12,
@@ -885,8 +885,8 @@ exports[`<OfferBody /> report offer should open the report modal upon clicking o
         <View
           numberOfSpaces={1}
           style={
-            Array [
-              Object {
+            [
+              {
                 "height": 4,
               },
             ]
@@ -894,8 +894,8 @@ exports[`<OfferBody /> report offer should open the report modal upon clicking o
         />
         <Text
           style={
-            Array [
-              Object {
+            [
+              {
                 "color": "#161617",
                 "fontFamily": "Montserrat-Regular",
                 "fontSize": 15,
@@ -910,8 +910,8 @@ exports[`<OfferBody /> report offer should open the report modal upon clicking o
         <View
           numberOfSpaces={4}
           style={
-            Array [
-              Object {
+            [
+              {
                 "height": 16,
               },
             ]
@@ -919,8 +919,8 @@ exports[`<OfferBody /> report offer should open the report modal upon clicking o
         />
         <View
           style={
-            Array [
-              Object {
+            [
+              {
                 "backgroundColor": "#CBCDD2",
                 "height": 1,
               },
@@ -930,8 +930,8 @@ exports[`<OfferBody /> report offer should open the report modal upon clicking o
         <View
           numberOfSpaces={6}
           style={
-            Array [
-              Object {
+            [
+              {
                 "height": 24,
               },
             ]
@@ -939,8 +939,8 @@ exports[`<OfferBody /> report offer should open the report modal upon clicking o
         />
         <View
           style={
-            Array [
-              Object {
+            [
+              {
                 "alignItems": "flex-start",
               },
             ]
@@ -959,7 +959,7 @@ exports[`<OfferBody /> report offer should open the report modal upon clicking o
             onResponderTerminationRequest={[Function]}
             onStartShouldSetResponder={[Function]}
             style={
-              Object {
+              {
                 "alignItems": "center",
                 "backgroundColor": "transparent",
                 "borderRadius": 0,
@@ -982,8 +982,8 @@ exports[`<OfferBody /> report offer should open the report modal upon clicking o
           >
             <View
               style={
-                Array [
-                  Object {
+                [
+                  {
                     "flexShrink": 0,
                   },
                 ]
@@ -1004,8 +1004,8 @@ exports[`<OfferBody /> report offer should open the report modal upon clicking o
               adjustsFontSizeToFit={false}
               numberOfLines={1}
               style={
-                Array [
-                  Object {
+                [
+                  {
                     "color": "#161617",
                     "fontFamily": "Montserrat-Bold",
                     "fontSize": 15,
@@ -1023,8 +1023,8 @@ exports[`<OfferBody /> report offer should open the report modal upon clicking o
         <View
           numberOfSpaces={6}
           style={
-            Array [
-              Object {
+            [
+              {
                 "height": 24,
               },
             ]
@@ -1035,8 +1035,8 @@ exports[`<OfferBody /> report offer should open the report modal upon clicking o
     <View>
       <View
         style={
-          Array [
-            Object {
+          [
+            {
               "backgroundColor": "#F1F1F4",
               "height": 8,
             },
@@ -1045,8 +1045,8 @@ exports[`<OfferBody /> report offer should open the report modal upon clicking o
       />
       <View
         style={
-          Array [
-            Object {
+          [
+            {
               "marginHorizontal": 24,
             },
           ]
@@ -1054,8 +1054,8 @@ exports[`<OfferBody /> report offer should open the report modal upon clicking o
       >
         <Text
           style={
-            Array [
-              Object {
+            [
+              {
                 "color": "#161617",
                 "fontFamily": "Montserrat-Medium",
                 "fontSize": 18,
@@ -1070,8 +1070,8 @@ exports[`<OfferBody /> report offer should open the report modal upon clicking o
         </Text>
         <View
           style={
-            Array [
-              Object {
+            [
+              {
                 "flexDirection": "row",
                 "maxWidth": 500,
                 "width": "100%",
@@ -1082,8 +1082,8 @@ exports[`<OfferBody /> report offer should open the report modal upon clicking o
           <View
             accessibilityRole="list"
             style={
-              Array [
-                Object {
+              [
+                {
                   "flexBasis": 0,
                   "flexDirection": "row",
                   "flexGrow": 1,
@@ -1098,8 +1098,8 @@ exports[`<OfferBody /> report offer should open the report modal upon clicking o
             <View
               accessibilityRole="none"
               style={
-                Array [
-                  Object {
+                [
+                  {
                     "alignItems": "center",
                     "display": "flex",
                     "flexBasis": "8.333333333333334%",
@@ -1125,7 +1125,7 @@ exports[`<OfferBody /> report offer should open the report modal upon clicking o
                 onResponderTerminationRequest={[Function]}
                 onStartShouldSetResponder={[Function]}
                 style={
-                  Object {
+                  {
                     "alignItems": "center",
                     "height": 96,
                     "opacity": 1,
@@ -1136,8 +1136,8 @@ exports[`<OfferBody /> report offer should open the report modal upon clicking o
               >
                 <View
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "alignItems": "center",
                         "flexBasis": 0,
                         "flexGrow": 1,
@@ -1148,8 +1148,8 @@ exports[`<OfferBody /> report offer should open the report modal upon clicking o
                 >
                   <View
                     style={
-                      Array [
-                        Object {
+                      [
+                        {
                           "paddingBottom": 4,
                           "paddingLeft": 4,
                           "paddingRight": 4,
@@ -1170,8 +1170,8 @@ exports[`<OfferBody /> report offer should open the report modal upon clicking o
                   <View
                     numberOfSpaces={2}
                     style={
-                      Array [
-                        Object {
+                      [
+                        {
                           "height": 8,
                         },
                       ]
@@ -1180,8 +1180,8 @@ exports[`<OfferBody /> report offer should open the report modal upon clicking o
                   <Text
                     disabled={false}
                     style={
-                      Array [
-                        Object {
+                      [
+                        {
                           "color": "#161617",
                           "fontFamily": "Montserrat-SemiBold",
                           "fontSize": 12,
@@ -1201,8 +1201,8 @@ Instagram
             <View
               accessibilityRole="none"
               style={
-                Array [
-                  Object {
+                [
+                  {
                     "alignItems": "center",
                     "display": "flex",
                     "flexBasis": "8.333333333333334%",
@@ -1228,7 +1228,7 @@ Instagram
                 onResponderTerminationRequest={[Function]}
                 onStartShouldSetResponder={[Function]}
                 style={
-                  Object {
+                  {
                     "alignItems": "center",
                     "height": 96,
                     "opacity": 1,
@@ -1239,8 +1239,8 @@ Instagram
               >
                 <View
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "alignItems": "center",
                         "flexBasis": 0,
                         "flexGrow": 1,
@@ -1251,8 +1251,8 @@ Instagram
                 >
                   <View
                     style={
-                      Array [
-                        Object {
+                      [
+                        {
                           "paddingBottom": 4,
                           "paddingLeft": 4,
                           "paddingRight": 4,
@@ -1273,8 +1273,8 @@ Instagram
                   <View
                     numberOfSpaces={2}
                     style={
-                      Array [
-                        Object {
+                      [
+                        {
                           "height": 8,
                         },
                       ]
@@ -1283,8 +1283,8 @@ Instagram
                   <Text
                     disabled={false}
                     style={
-                      Array [
-                        Object {
+                      [
+                        {
                           "color": "#161617",
                           "fontFamily": "Montserrat-SemiBold",
                           "fontSize": 12,
@@ -1304,8 +1304,8 @@ WhatsApp
             <View
               accessibilityRole="none"
               style={
-                Array [
-                  Object {
+                [
+                  {
                     "alignItems": "center",
                     "display": "flex",
                     "flexBasis": "8.333333333333334%",
@@ -1331,7 +1331,7 @@ WhatsApp
                 onResponderTerminationRequest={[Function]}
                 onStartShouldSetResponder={[Function]}
                 style={
-                  Object {
+                  {
                     "alignItems": "center",
                     "height": 96,
                     "opacity": 1,
@@ -1342,8 +1342,8 @@ WhatsApp
               >
                 <View
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "alignItems": "center",
                         "flexBasis": 0,
                         "flexGrow": 1,
@@ -1354,8 +1354,8 @@ WhatsApp
                 >
                   <View
                     style={
-                      Array [
-                        Object {
+                      [
+                        {
                           "paddingBottom": 4,
                           "paddingLeft": 4,
                           "paddingRight": 4,
@@ -1376,8 +1376,8 @@ WhatsApp
                   <View
                     numberOfSpaces={2}
                     style={
-                      Array [
-                        Object {
+                      [
+                        {
                           "height": 8,
                         },
                       ]
@@ -1386,8 +1386,8 @@ WhatsApp
                   <Text
                     disabled={false}
                     style={
-                      Array [
-                        Object {
+                      [
+                        {
                           "color": "#161617",
                           "fontFamily": "Montserrat-SemiBold",
                           "fontSize": 12,
@@ -1407,8 +1407,8 @@ iMessage
             <View
               accessibilityRole="none"
               style={
-                Array [
-                  Object {
+                [
+                  {
                     "alignItems": "center",
                     "display": "flex",
                     "flexBasis": "8.333333333333334%",
@@ -1434,7 +1434,7 @@ iMessage
                 onResponderTerminationRequest={[Function]}
                 onStartShouldSetResponder={[Function]}
                 style={
-                  Object {
+                  {
                     "alignItems": "center",
                     "height": 96,
                     "opacity": 1,
@@ -1445,8 +1445,8 @@ iMessage
               >
                 <View
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "alignItems": "center",
                         "flexBasis": 0,
                         "flexGrow": 1,
@@ -1457,8 +1457,8 @@ iMessage
                 >
                   <View
                     style={
-                      Array [
-                        Object {
+                      [
+                        {
                           "paddingBottom": 4,
                           "paddingLeft": 4,
                           "paddingRight": 4,
@@ -1469,8 +1469,8 @@ iMessage
                   >
                     <View
                       style={
-                        Array [
-                          Object {
+                        [
+                          {
                             "alignItems": "center",
                             "borderColor": "#CBCDD2",
                             "borderRadius": 24,
@@ -1495,8 +1495,8 @@ iMessage
                   <View
                     numberOfSpaces={2}
                     style={
-                      Array [
-                        Object {
+                      [
+                        {
                           "height": 8,
                         },
                       ]
@@ -1505,8 +1505,8 @@ iMessage
                   <Text
                     disabled={false}
                     style={
-                      Array [
-                        Object {
+                      [
+                        {
                           "color": "#161617",
                           "fontFamily": "Montserrat-SemiBold",
                           "fontSize": 12,
@@ -1528,8 +1528,8 @@ d’options
         <View
           numberOfSpaces={4}
           style={
-            Array [
-              Object {
+            [
+              {
                 "height": 16,
               },
             ]
@@ -1540,8 +1540,8 @@ d’options
     <View>
       <View
         style={
-          Array [
-            Object {
+          [
+            {
               "backgroundColor": "#F1F1F4",
               "height": 8,
             },
@@ -1550,8 +1550,8 @@ d’options
       />
       <View
         style={
-          Array [
-            Object {
+          [
+            {
               "marginHorizontal": 24,
             },
           ]
@@ -1559,8 +1559,8 @@ d’options
       >
         <View
           style={
-            Array [
-              Object {
+            [
+              {
                 "alignItems": "flex-start",
                 "paddingVertical": 20,
               },
@@ -1570,7 +1570,7 @@ d’options
           <View
             accessibilityLabel="Signaler l’offre"
             accessibilityState={
-              Object {
+              {
                 "disabled": false,
               }
             }
@@ -1585,7 +1585,7 @@ d’options
             onResponderTerminationRequest={[Function]}
             onStartShouldSetResponder={[Function]}
             style={
-              Object {
+              {
                 "alignItems": "center",
                 "backgroundColor": "transparent",
                 "borderRadius": 0,
@@ -1608,8 +1608,8 @@ d’options
           >
             <View
               style={
-                Array [
-                  Object {
+                [
+                  {
                     "flexShrink": 0,
                   },
                 ]
@@ -1629,8 +1629,8 @@ d’options
               adjustsFontSizeToFit={false}
               numberOfLines={1}
               style={
-                Array [
-                  Object {
+                [
+                  {
                     "color": "#161617",
                     "fontFamily": "Montserrat-Bold",
                     "fontSize": 15,
@@ -1668,7 +1668,7 @@ d’options
       scrollTo={null}
       statusBarTranslucent={true}
       supportedOrientations={
-        Array [
+        [
           "portrait",
           "landscape",
         ]
@@ -1691,7 +1691,7 @@ d’options
         onResponderTerminationRequest={[Function]}
         onStartShouldSetResponder={[Function]}
         style={
-          Object {
+          {
             "backgroundColor": "black",
             "bottom": 0,
             "height": 1334,
@@ -1725,7 +1725,7 @@ d’options
         scrollTo={null}
         statusBarTranslucent={true}
         style={
-          Object {
+          {
             "alignItems": "center",
             "bottom": 0,
             "flex": 1,
@@ -1735,15 +1735,15 @@ d’options
             "position": "absolute",
             "right": 0,
             "top": "auto",
-            "transform": Array [
-              Object {
+            "transform": [
+              {
                 "translateY": 1334,
               },
             ],
           }
         }
         supportedOrientations={
-          Array [
+          [
             "portrait",
             "landscape",
           ]
@@ -1753,8 +1753,8 @@ d’options
         <View
           height={428}
           style={
-            Array [
-              Object {
+            [
+              {
                 "alignItems": "center",
                 "backgroundColor": "#ffffff",
                 "borderBottomEndRadius": 0,
@@ -1783,8 +1783,8 @@ d’options
           <View
             onLayout={[Function]}
             style={
-              Array [
-                Object {
+              [
+                {
                   "display": "flex",
                   "flexDirection": "row",
                   "justifyContent": "center",
@@ -1797,8 +1797,8 @@ d’options
             <View
               justifyContent="left"
               style={
-                Array [
-                  Object {
+                [
+                  {
                     "alignItems": "flex-start",
                     "flexDirection": "row",
                     "height": 28,
@@ -1810,8 +1810,8 @@ d’options
             />
             <View
               style={
-                Array [
-                  Object {
+                [
+                  {
                     "flexBasis": 0,
                     "flexGrow": 1,
                     "flexShrink": 1,
@@ -1826,8 +1826,8 @@ d’options
                 nativeID="testUuidV4"
                 numberOfLines={2}
                 style={
-                  Array [
-                    Object {
+                  [
+                    {
                       "color": "#161617",
                       "fontFamily": "Montserrat-Medium",
                       "fontSize": 18,
@@ -1844,8 +1844,8 @@ d’options
             <View
               justifyContent="right"
               style={
-                Array [
-                  Object {
+                [
+                  {
                     "alignItems": "flex-start",
                     "flexDirection": "row",
                     "height": 28,
@@ -1869,7 +1869,7 @@ d’options
                 onResponderTerminationRequest={[Function]}
                 onStartShouldSetResponder={[Function]}
                 style={
-                  Object {
+                  {
                     "opacity": 1,
                     "paddingBottom": 4,
                     "paddingLeft": 4,
@@ -1894,8 +1894,8 @@ d’options
           </View>
           <View
             style={
-              Array [
-                Object {
+              [
+                {
                   "height": 20,
                 },
               ]
@@ -1906,8 +1906,8 @@ d’options
             backdropColor="#00000080"
             paddingBottom={8}
             style={
-              Array [
-                Object {
+              [
+                {
                   "maxHeight": "100%",
                   "maxWidth": 480,
                   "paddingBottom": 8,
@@ -1917,7 +1917,7 @@ d’options
             }
           >
             <RCTScrollView
-              contentContainerStyle={Object {}}
+              contentContainerStyle={{}}
               onContentSizeChange={[Function]}
               scrollEnabled={true}
               testID="modalScrollView"
@@ -1925,8 +1925,8 @@ d’options
               <View>
                 <View
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "width": "100%",
                       },
                     ]
@@ -1934,8 +1934,8 @@ d’options
                 >
                   <Text
                     style={
-                      Array [
-                        Object {
+                      [
+                        {
                           "color": "#161617",
                           "fontFamily": "Montserrat-Regular",
                           "fontSize": 15,
@@ -1950,8 +1950,8 @@ d’options
                   <View
                     numberOfSpaces={8}
                     style={
-                      Array [
-                        Object {
+                      [
+                        {
                           "height": 32,
                         },
                       ]
@@ -1959,8 +1959,8 @@ d’options
                   />
                   <View
                     style={
-                      Array [
-                        Object {
+                      [
+                        {
                           "alignItems": "center",
                           "flexDirection": "row",
                         },
@@ -1978,8 +1978,8 @@ d’options
                     <View
                       numberOfSpaces={3.75}
                       style={
-                        Array [
-                          Object {
+                        [
+                          {
                             "width": 15,
                           },
                         ]
@@ -1987,8 +1987,8 @@ d’options
                     />
                     <Text
                       style={
-                        Array [
-                          Object {
+                        [
+                          {
                             "color": "#161617",
                             "flexBasis": 0,
                             "flexGrow": 1,
@@ -2006,8 +2006,8 @@ d’options
                   <View
                     numberOfSpaces={8}
                     style={
-                      Array [
-                        Object {
+                      [
+                        {
                           "height": 32,
                         },
                       ]
@@ -2015,8 +2015,8 @@ d’options
                   />
                   <View
                     style={
-                      Array [
-                        Object {
+                      [
+                        {
                           "alignItems": "center",
                           "flexDirection": "row",
                         },
@@ -2034,8 +2034,8 @@ d’options
                     <View
                       numberOfSpaces={3.75}
                       style={
-                        Array [
-                          Object {
+                        [
+                          {
                             "width": 15,
                           },
                         ]
@@ -2043,8 +2043,8 @@ d’options
                     />
                     <Text
                       style={
-                        Array [
-                          Object {
+                        [
+                          {
                             "color": "#161617",
                             "flexBasis": 0,
                             "flexGrow": 1,
@@ -2062,8 +2062,8 @@ d’options
                   <View
                     numberOfSpaces={13}
                     style={
-                      Array [
-                        Object {
+                      [
+                        {
                           "height": 52,
                         },
                       ]
@@ -2082,7 +2082,7 @@ d’options
                     onResponderTerminationRequest={[Function]}
                     onStartShouldSetResponder={[Function]}
                     style={
-                      Object {
+                      {
                         "alignItems": "center",
                         "backgroundColor": "#eb0055",
                         "borderRadius": 24,
@@ -2105,8 +2105,8 @@ d’options
                       adjustsFontSizeToFit={false}
                       numberOfLines={1}
                       style={
-                        Array [
-                          Object {
+                        [
+                          {
                             "color": "#ffffff",
                             "fontFamily": "Montserrat-Bold",
                             "fontSize": 15,
@@ -2130,8 +2130,8 @@ d’options
     <View>
       <View
         style={
-          Array [
-            Object {
+          [
+            {
               "backgroundColor": "#F1F1F4",
               "height": 8,
             },
@@ -2141,8 +2141,8 @@ d’options
       <View
         numberOfSpaces={6}
         style={
-          Array [
-            Object {
+          [
+            {
               "height": 24,
             },
           ]
@@ -2159,13 +2159,13 @@ exports[`<OfferBody /> should match snapshot for digital offer 1`] = `
   onScroll={[MockFunction]}
   scrollEventThrottle={20}
   scrollIndicatorInsets={
-    Object {
+    {
       "right": 1,
     }
   }
   style={
-    Array [
-      Object {
+    [
+      {
         "overflow": "visible",
       },
     ]
@@ -2175,8 +2175,8 @@ exports[`<OfferBody /> should match snapshot for digital offer 1`] = `
   <View>
     <View
       style={
-        Array [
-          Object {
+        [
+          {
             "alignItems": "center",
             "minHeight": 0,
           },
@@ -2185,8 +2185,8 @@ exports[`<OfferBody /> should match snapshot for digital offer 1`] = `
     >
       <View
         style={
-          Array [
-            Object {
+          [
+            {
               "alignItems": "center",
               "position": "absolute",
             },
@@ -2197,12 +2197,12 @@ exports[`<OfferBody /> should match snapshot for digital offer 1`] = `
           blurRadius={20}
           resizeMode="cover"
           source={
-            Object {
+            {
               "uri": "https://storage.gra.cloud.ovh.net/v1/AUTH_688df1e25bd84a48a3804e7fa8938085/storage-pc-dev/thumbs/mediations/CW8Q",
             }
           }
           style={
-            Object {
+            {
               "height": 312,
               "width": 960,
             }
@@ -2220,8 +2220,8 @@ exports[`<OfferBody /> should match snapshot for digital offer 1`] = `
       <View
         numberOfSpaces={26}
         style={
-          Array [
-            Object {
+          [
+            {
               "height": 104,
             },
           ]
@@ -2229,18 +2229,18 @@ exports[`<OfferBody /> should match snapshot for digital offer 1`] = `
       />
       <View
         style={
-          Array [
-            Object {
+          [
+            {
               "bottom": 0,
               "shadowColor": "#161617",
-              "shadowOffset": Object {
+              "shadowOffset": {
                 "height": 8,
                 "width": 0,
               },
               "shadowOpacity": 0.2,
               "shadowRadius": 12,
             },
-            Object {
+            {
               "aspectRatio": 0.6666666666666666,
               "borderRadius": 8,
               "height": 296,
@@ -2253,15 +2253,15 @@ exports[`<OfferBody /> should match snapshot for digital offer 1`] = `
       >
         <View
           style={
-            Array [
-              Object {
+            [
+              {
                 "overflow": "hidden",
               },
-              Array [
-                Object {
+              [
+                {
                   "backgroundColor": "#F1F1F4",
                 },
-                Object {
+                {
                   "aspectRatio": 0.6666666666666666,
                   "borderRadius": 8,
                   "height": 296,
@@ -2276,12 +2276,12 @@ exports[`<OfferBody /> should match snapshot for digital offer 1`] = `
             defaultSource={null}
             resizeMode="cover"
             source={
-              Object {
+              {
                 "uri": "https://storage.gra.cloud.ovh.net/v1/AUTH_688df1e25bd84a48a3804e7fa8938085/storage-pc-dev/thumbs/mediations/CW8Q",
               }
             }
             style={
-              Object {
+              {
                 "bottom": 0,
                 "left": 0,
                 "position": "absolute",
@@ -2296,8 +2296,8 @@ exports[`<OfferBody /> should match snapshot for digital offer 1`] = `
     <View
       numberOfSpaces={4}
       style={
-        Array [
-          Object {
+        [
+          {
             "height": 16,
           },
         ]
@@ -2305,8 +2305,8 @@ exports[`<OfferBody /> should match snapshot for digital offer 1`] = `
     />
     <View
       style={
-        Array [
-          Object {
+        [
+          {
             "alignItems": "center",
             "flexDirection": "row",
             "flexWrap": "wrap",
@@ -2318,8 +2318,8 @@ exports[`<OfferBody /> should match snapshot for digital offer 1`] = `
     >
       <View
         style={
-          Array [
-            Object {
+          [
+            {
               "alignItems": "center",
               "flexDirection": "row",
             },
@@ -2328,8 +2328,8 @@ exports[`<OfferBody /> should match snapshot for digital offer 1`] = `
       >
         <View
           style={
-            Array [
-              Object {
+            [
+              {
                 "marginRight": 4,
               },
             ]
@@ -2348,8 +2348,8 @@ exports[`<OfferBody /> should match snapshot for digital offer 1`] = `
         <Text
           numberOfLines={1}
           style={
-            Array [
-              Object {
+            [
+              {
                 "color": "#161617",
                 "flexShrink": 1,
                 "fontFamily": "Montserrat-SemiBold",
@@ -2367,8 +2367,8 @@ exports[`<OfferBody /> should match snapshot for digital offer 1`] = `
         isDigital={true}
         numberOfLines={1}
         style={
-          Array [
-            Object {
+          [
+            {
               "color": "#161617",
               "fontFamily": "Montserrat-SemiBold",
               "fontSize": 12,
@@ -2384,8 +2384,8 @@ exports[`<OfferBody /> should match snapshot for digital offer 1`] = `
     <View
       numberOfSpaces={2}
       style={
-        Array [
-          Object {
+        [
+          {
             "height": 8,
           },
         ]
@@ -2393,8 +2393,8 @@ exports[`<OfferBody /> should match snapshot for digital offer 1`] = `
     />
     <View
       style={
-        Array [
-          Object {
+        [
+          {
             "marginHorizontal": 24,
           },
         ]
@@ -2407,8 +2407,8 @@ exports[`<OfferBody /> should match snapshot for digital offer 1`] = `
         allowFontScaling={false}
         numberOfLines={3}
         style={
-          Array [
-            Object {
+          [
+            {
               "color": "#161617",
               "fontFamily": "Montserrat-Bold",
               "fontSize": 20,
@@ -2425,8 +2425,8 @@ exports[`<OfferBody /> should match snapshot for digital offer 1`] = `
     <View
       numberOfSpaces={4}
       style={
-        Array [
-          Object {
+        [
+          {
             "height": 16,
           },
         ]
@@ -2434,8 +2434,8 @@ exports[`<OfferBody /> should match snapshot for digital offer 1`] = `
     />
     <View
       style={
-        Array [
-          Object {
+        [
+          {
             "alignItems": "flex-start",
             "flexDirection": "row",
           },
@@ -2445,8 +2445,8 @@ exports[`<OfferBody /> should match snapshot for digital offer 1`] = `
       <View
         numberOfSpaces={6}
         style={
-          Array [
-            Object {
+          [
+            {
               "width": 24,
             },
           ]
@@ -2454,8 +2454,8 @@ exports[`<OfferBody /> should match snapshot for digital offer 1`] = `
       />
       <View
         style={
-          Array [
-            Object {
+          [
+            {
               "alignItems": "center",
               "flexBasis": 0,
               "flexGrow": 1,
@@ -2466,8 +2466,8 @@ exports[`<OfferBody /> should match snapshot for digital offer 1`] = `
       >
         <View
           style={
-            Array [
-              Object {
+            [
+              {
                 "paddingBottom": 4,
                 "paddingLeft": 4,
                 "paddingRight": 4,
@@ -2489,8 +2489,8 @@ exports[`<OfferBody /> should match snapshot for digital offer 1`] = `
         <View
           numberOfSpaces={2}
           style={
-            Array [
-              Object {
+            [
+              {
                 "height": 8,
               },
             ]
@@ -2499,8 +2499,8 @@ exports[`<OfferBody /> should match snapshot for digital offer 1`] = `
         <Text
           disabled={false}
           style={
-            Array [
-              Object {
+            [
+              {
                 "color": "#161617",
                 "fontFamily": "Montserrat-SemiBold",
                 "fontSize": 12,
@@ -2516,8 +2516,8 @@ exports[`<OfferBody /> should match snapshot for digital offer 1`] = `
       </View>
       <View
         style={
-          Array [
-            Object {
+          [
+            {
               "alignSelf": "center",
               "backgroundColor": "#CBCDD2",
               "height": "92%",
@@ -2529,8 +2529,8 @@ exports[`<OfferBody /> should match snapshot for digital offer 1`] = `
       />
       <View
         style={
-          Array [
-            Object {
+          [
+            {
               "alignItems": "center",
               "flexBasis": 0,
               "flexGrow": 1,
@@ -2541,8 +2541,8 @@ exports[`<OfferBody /> should match snapshot for digital offer 1`] = `
       >
         <View
           style={
-            Array [
-              Object {
+            [
+              {
                 "paddingBottom": 4,
                 "paddingLeft": 4,
                 "paddingRight": 4,
@@ -2565,8 +2565,8 @@ exports[`<OfferBody /> should match snapshot for digital offer 1`] = `
         <View
           numberOfSpaces={2}
           style={
-            Array [
-              Object {
+            [
+              {
                 "height": 8,
               },
             ]
@@ -2575,8 +2575,8 @@ exports[`<OfferBody /> should match snapshot for digital offer 1`] = `
         <Text
           disabled={false}
           style={
-            Array [
-              Object {
+            [
+              {
                 "color": "#161617",
                 "fontFamily": "Montserrat-SemiBold",
                 "fontSize": 12,
@@ -2592,8 +2592,8 @@ exports[`<OfferBody /> should match snapshot for digital offer 1`] = `
       </View>
       <View
         style={
-          Array [
-            Object {
+          [
+            {
               "alignSelf": "center",
               "backgroundColor": "#CBCDD2",
               "height": "92%",
@@ -2605,8 +2605,8 @@ exports[`<OfferBody /> should match snapshot for digital offer 1`] = `
       />
       <View
         style={
-          Array [
-            Object {
+          [
+            {
               "alignItems": "center",
               "flexBasis": 0,
               "flexGrow": 1,
@@ -2617,8 +2617,8 @@ exports[`<OfferBody /> should match snapshot for digital offer 1`] = `
       >
         <View
           style={
-            Array [
-              Object {
+            [
+              {
                 "paddingBottom": 4,
                 "paddingLeft": 4,
                 "paddingRight": 4,
@@ -2642,8 +2642,8 @@ exports[`<OfferBody /> should match snapshot for digital offer 1`] = `
         <View
           numberOfSpaces={2}
           style={
-            Array [
-              Object {
+            [
+              {
                 "height": 8,
               },
             ]
@@ -2652,8 +2652,8 @@ exports[`<OfferBody /> should match snapshot for digital offer 1`] = `
         <Text
           disabled={false}
           style={
-            Array [
-              Object {
+            [
+              {
                 "color": "#161617",
                 "fontFamily": "Montserrat-SemiBold",
                 "fontSize": 12,
@@ -2670,8 +2670,8 @@ exports[`<OfferBody /> should match snapshot for digital offer 1`] = `
       <View
         numberOfSpaces={6}
         style={
-          Array [
-            Object {
+          [
+            {
               "width": 24,
             },
           ]
@@ -2680,8 +2680,8 @@ exports[`<OfferBody /> should match snapshot for digital offer 1`] = `
     </View>
     <View
       style={
-        Array [
-          Object {
+        [
+          {
             "alignItems": "center",
             "paddingHorizontal": 24,
           },
@@ -2691,8 +2691,8 @@ exports[`<OfferBody /> should match snapshot for digital offer 1`] = `
       <View
         numberOfSpaces={4}
         style={
-          Array [
-            Object {
+          [
+            {
               "height": 16,
             },
           ]
@@ -2701,8 +2701,8 @@ exports[`<OfferBody /> should match snapshot for digital offer 1`] = `
       <View
         description=""
         style={
-          Array [
-            Object {
+          [
+            {
               "alignSelf": "center",
             },
           ]
@@ -2711,8 +2711,8 @@ exports[`<OfferBody /> should match snapshot for digital offer 1`] = `
       >
         <View
           style={
-            Array [
-              Object {
+            [
+              {
                 "alignItems": "center",
                 "flexDirection": "row",
               },
@@ -2732,7 +2732,7 @@ exports[`<OfferBody /> should match snapshot for digital offer 1`] = `
             onResponderTerminationRequest={[Function]}
             onStartShouldSetResponder={[Function]}
             style={
-              Object {
+              {
                 "alignItems": "center",
                 "backgroundColor": "transparent",
                 "borderRadius": 0,
@@ -2757,8 +2757,8 @@ exports[`<OfferBody /> should match snapshot for digital offer 1`] = `
               adjustsFontSizeToFit={false}
               numberOfLines={1}
               style={
-                Array [
-                  Object {
+                [
+                  {
                     "color": "#161617",
                     "fontFamily": "Montserrat-Bold",
                     "fontSize": 15,
@@ -2775,8 +2775,8 @@ exports[`<OfferBody /> should match snapshot for digital offer 1`] = `
           <View
             numberOfSpaces={1}
             style={
-              Array [
-                Object {
+              [
+                {
                   "width": 4,
                 },
               ]
@@ -2796,8 +2796,8 @@ exports[`<OfferBody /> should match snapshot for digital offer 1`] = `
     <View
       numberOfSpaces={4}
       style={
-        Array [
-          Object {
+        [
+          {
             "height": 16,
           },
         ]
@@ -2806,8 +2806,8 @@ exports[`<OfferBody /> should match snapshot for digital offer 1`] = `
     <View>
       <View
         style={
-          Array [
-            Object {
+          [
+            {
               "backgroundColor": "#F1F1F4",
               "height": 8,
             },
@@ -2816,8 +2816,8 @@ exports[`<OfferBody /> should match snapshot for digital offer 1`] = `
       />
       <View
         style={
-          Array [
-            Object {
+          [
+            {
               "marginHorizontal": 24,
             },
           ]
@@ -2825,8 +2825,8 @@ exports[`<OfferBody /> should match snapshot for digital offer 1`] = `
       >
         <Text
           style={
-            Array [
-              Object {
+            [
+              {
                 "color": "#161617",
                 "fontFamily": "Montserrat-Medium",
                 "fontSize": 18,
@@ -2841,8 +2841,8 @@ exports[`<OfferBody /> should match snapshot for digital offer 1`] = `
         </Text>
         <View
           style={
-            Array [
-              Object {
+            [
+              {
                 "flexDirection": "row",
                 "maxWidth": 500,
                 "width": "100%",
@@ -2853,8 +2853,8 @@ exports[`<OfferBody /> should match snapshot for digital offer 1`] = `
           <View
             accessibilityRole="list"
             style={
-              Array [
-                Object {
+              [
+                {
                   "flexBasis": 0,
                   "flexDirection": "row",
                   "flexGrow": 1,
@@ -2869,8 +2869,8 @@ exports[`<OfferBody /> should match snapshot for digital offer 1`] = `
             <View
               accessibilityRole="none"
               style={
-                Array [
-                  Object {
+                [
+                  {
                     "alignItems": "center",
                     "display": "flex",
                     "flexBasis": "8.333333333333334%",
@@ -2896,7 +2896,7 @@ exports[`<OfferBody /> should match snapshot for digital offer 1`] = `
                 onResponderTerminationRequest={[Function]}
                 onStartShouldSetResponder={[Function]}
                 style={
-                  Object {
+                  {
                     "alignItems": "center",
                     "height": 96,
                     "opacity": 1,
@@ -2907,8 +2907,8 @@ exports[`<OfferBody /> should match snapshot for digital offer 1`] = `
               >
                 <View
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "alignItems": "center",
                         "flexBasis": 0,
                         "flexGrow": 1,
@@ -2919,8 +2919,8 @@ exports[`<OfferBody /> should match snapshot for digital offer 1`] = `
                 >
                   <View
                     style={
-                      Array [
-                        Object {
+                      [
+                        {
                           "paddingBottom": 4,
                           "paddingLeft": 4,
                           "paddingRight": 4,
@@ -2941,8 +2941,8 @@ exports[`<OfferBody /> should match snapshot for digital offer 1`] = `
                   <View
                     numberOfSpaces={2}
                     style={
-                      Array [
-                        Object {
+                      [
+                        {
                           "height": 8,
                         },
                       ]
@@ -2951,8 +2951,8 @@ exports[`<OfferBody /> should match snapshot for digital offer 1`] = `
                   <Text
                     disabled={false}
                     style={
-                      Array [
-                        Object {
+                      [
+                        {
                           "color": "#161617",
                           "fontFamily": "Montserrat-SemiBold",
                           "fontSize": 12,
@@ -2972,8 +2972,8 @@ Instagram
             <View
               accessibilityRole="none"
               style={
-                Array [
-                  Object {
+                [
+                  {
                     "alignItems": "center",
                     "display": "flex",
                     "flexBasis": "8.333333333333334%",
@@ -2999,7 +2999,7 @@ Instagram
                 onResponderTerminationRequest={[Function]}
                 onStartShouldSetResponder={[Function]}
                 style={
-                  Object {
+                  {
                     "alignItems": "center",
                     "height": 96,
                     "opacity": 1,
@@ -3010,8 +3010,8 @@ Instagram
               >
                 <View
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "alignItems": "center",
                         "flexBasis": 0,
                         "flexGrow": 1,
@@ -3022,8 +3022,8 @@ Instagram
                 >
                   <View
                     style={
-                      Array [
-                        Object {
+                      [
+                        {
                           "paddingBottom": 4,
                           "paddingLeft": 4,
                           "paddingRight": 4,
@@ -3044,8 +3044,8 @@ Instagram
                   <View
                     numberOfSpaces={2}
                     style={
-                      Array [
-                        Object {
+                      [
+                        {
                           "height": 8,
                         },
                       ]
@@ -3054,8 +3054,8 @@ Instagram
                   <Text
                     disabled={false}
                     style={
-                      Array [
-                        Object {
+                      [
+                        {
                           "color": "#161617",
                           "fontFamily": "Montserrat-SemiBold",
                           "fontSize": 12,
@@ -3075,8 +3075,8 @@ WhatsApp
             <View
               accessibilityRole="none"
               style={
-                Array [
-                  Object {
+                [
+                  {
                     "alignItems": "center",
                     "display": "flex",
                     "flexBasis": "8.333333333333334%",
@@ -3102,7 +3102,7 @@ WhatsApp
                 onResponderTerminationRequest={[Function]}
                 onStartShouldSetResponder={[Function]}
                 style={
-                  Object {
+                  {
                     "alignItems": "center",
                     "height": 96,
                     "opacity": 1,
@@ -3113,8 +3113,8 @@ WhatsApp
               >
                 <View
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "alignItems": "center",
                         "flexBasis": 0,
                         "flexGrow": 1,
@@ -3125,8 +3125,8 @@ WhatsApp
                 >
                   <View
                     style={
-                      Array [
-                        Object {
+                      [
+                        {
                           "paddingBottom": 4,
                           "paddingLeft": 4,
                           "paddingRight": 4,
@@ -3147,8 +3147,8 @@ WhatsApp
                   <View
                     numberOfSpaces={2}
                     style={
-                      Array [
-                        Object {
+                      [
+                        {
                           "height": 8,
                         },
                       ]
@@ -3157,8 +3157,8 @@ WhatsApp
                   <Text
                     disabled={false}
                     style={
-                      Array [
-                        Object {
+                      [
+                        {
                           "color": "#161617",
                           "fontFamily": "Montserrat-SemiBold",
                           "fontSize": 12,
@@ -3178,8 +3178,8 @@ iMessage
             <View
               accessibilityRole="none"
               style={
-                Array [
-                  Object {
+                [
+                  {
                     "alignItems": "center",
                     "display": "flex",
                     "flexBasis": "8.333333333333334%",
@@ -3205,7 +3205,7 @@ iMessage
                 onResponderTerminationRequest={[Function]}
                 onStartShouldSetResponder={[Function]}
                 style={
-                  Object {
+                  {
                     "alignItems": "center",
                     "height": 96,
                     "opacity": 1,
@@ -3216,8 +3216,8 @@ iMessage
               >
                 <View
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "alignItems": "center",
                         "flexBasis": 0,
                         "flexGrow": 1,
@@ -3228,8 +3228,8 @@ iMessage
                 >
                   <View
                     style={
-                      Array [
-                        Object {
+                      [
+                        {
                           "paddingBottom": 4,
                           "paddingLeft": 4,
                           "paddingRight": 4,
@@ -3240,8 +3240,8 @@ iMessage
                   >
                     <View
                       style={
-                        Array [
-                          Object {
+                        [
+                          {
                             "alignItems": "center",
                             "borderColor": "#CBCDD2",
                             "borderRadius": 24,
@@ -3266,8 +3266,8 @@ iMessage
                   <View
                     numberOfSpaces={2}
                     style={
-                      Array [
-                        Object {
+                      [
+                        {
                           "height": 8,
                         },
                       ]
@@ -3276,8 +3276,8 @@ iMessage
                   <Text
                     disabled={false}
                     style={
-                      Array [
-                        Object {
+                      [
+                        {
                           "color": "#161617",
                           "fontFamily": "Montserrat-SemiBold",
                           "fontSize": 12,
@@ -3299,8 +3299,8 @@ d’options
         <View
           numberOfSpaces={4}
           style={
-            Array [
-              Object {
+            [
+              {
                 "height": 16,
               },
             ]
@@ -3311,8 +3311,8 @@ d’options
     <View>
       <View
         style={
-          Array [
-            Object {
+          [
+            {
               "backgroundColor": "#F1F1F4",
               "height": 8,
             },
@@ -3321,8 +3321,8 @@ d’options
       />
       <View
         style={
-          Array [
-            Object {
+          [
+            {
               "marginHorizontal": 24,
             },
           ]
@@ -3330,8 +3330,8 @@ d’options
       >
         <View
           style={
-            Array [
-              Object {
+            [
+              {
                 "alignItems": "flex-start",
                 "paddingVertical": 20,
               },
@@ -3341,7 +3341,7 @@ d’options
           <View
             accessibilityLabel="Signaler l’offre"
             accessibilityState={
-              Object {
+              {
                 "disabled": false,
               }
             }
@@ -3356,7 +3356,7 @@ d’options
             onResponderTerminationRequest={[Function]}
             onStartShouldSetResponder={[Function]}
             style={
-              Object {
+              {
                 "alignItems": "center",
                 "backgroundColor": "transparent",
                 "borderRadius": 0,
@@ -3379,8 +3379,8 @@ d’options
           >
             <View
               style={
-                Array [
-                  Object {
+                [
+                  {
                     "flexShrink": 0,
                   },
                 ]
@@ -3400,8 +3400,8 @@ d’options
               adjustsFontSizeToFit={false}
               numberOfLines={1}
               style={
-                Array [
-                  Object {
+                [
+                  {
                     "color": "#161617",
                     "fontFamily": "Montserrat-Bold",
                     "fontSize": 15,
@@ -3439,7 +3439,7 @@ d’options
       scrollTo={null}
       statusBarTranslucent={true}
       supportedOrientations={
-        Array [
+        [
           "portrait",
           "landscape",
         ]
@@ -3452,8 +3452,8 @@ d’options
     <View>
       <View
         style={
-          Array [
-            Object {
+          [
+            {
               "backgroundColor": "#F1F1F4",
               "height": 8,
             },
@@ -3463,8 +3463,8 @@ d’options
       <View
         numberOfSpaces={6}
         style={
-          Array [
-            Object {
+          [
+            {
               "height": 24,
             },
           ]
@@ -3481,13 +3481,13 @@ exports[`<OfferBody /> should match snapshot for physical offer 1`] = `
   onScroll={[MockFunction]}
   scrollEventThrottle={20}
   scrollIndicatorInsets={
-    Object {
+    {
       "right": 1,
     }
   }
   style={
-    Array [
-      Object {
+    [
+      {
         "overflow": "visible",
       },
     ]
@@ -3497,8 +3497,8 @@ exports[`<OfferBody /> should match snapshot for physical offer 1`] = `
   <View>
     <View
       style={
-        Array [
-          Object {
+        [
+          {
             "alignItems": "center",
             "minHeight": 0,
           },
@@ -3507,8 +3507,8 @@ exports[`<OfferBody /> should match snapshot for physical offer 1`] = `
     >
       <View
         style={
-          Array [
-            Object {
+          [
+            {
               "alignItems": "center",
               "position": "absolute",
             },
@@ -3519,12 +3519,12 @@ exports[`<OfferBody /> should match snapshot for physical offer 1`] = `
           blurRadius={20}
           resizeMode="cover"
           source={
-            Object {
+            {
               "uri": "https://storage.gra.cloud.ovh.net/v1/AUTH_688df1e25bd84a48a3804e7fa8938085/storage-pc-dev/thumbs/mediations/CW8Q",
             }
           }
           style={
-            Object {
+            {
               "height": 312,
               "width": 960,
             }
@@ -3542,8 +3542,8 @@ exports[`<OfferBody /> should match snapshot for physical offer 1`] = `
       <View
         numberOfSpaces={26}
         style={
-          Array [
-            Object {
+          [
+            {
               "height": 104,
             },
           ]
@@ -3551,18 +3551,18 @@ exports[`<OfferBody /> should match snapshot for physical offer 1`] = `
       />
       <View
         style={
-          Array [
-            Object {
+          [
+            {
               "bottom": 0,
               "shadowColor": "#161617",
-              "shadowOffset": Object {
+              "shadowOffset": {
                 "height": 8,
                 "width": 0,
               },
               "shadowOpacity": 0.2,
               "shadowRadius": 12,
             },
-            Object {
+            {
               "aspectRatio": 0.6666666666666666,
               "borderRadius": 8,
               "height": 296,
@@ -3575,15 +3575,15 @@ exports[`<OfferBody /> should match snapshot for physical offer 1`] = `
       >
         <View
           style={
-            Array [
-              Object {
+            [
+              {
                 "overflow": "hidden",
               },
-              Array [
-                Object {
+              [
+                {
                   "backgroundColor": "#F1F1F4",
                 },
-                Object {
+                {
                   "aspectRatio": 0.6666666666666666,
                   "borderRadius": 8,
                   "height": 296,
@@ -3598,12 +3598,12 @@ exports[`<OfferBody /> should match snapshot for physical offer 1`] = `
             defaultSource={null}
             resizeMode="cover"
             source={
-              Object {
+              {
                 "uri": "https://storage.gra.cloud.ovh.net/v1/AUTH_688df1e25bd84a48a3804e7fa8938085/storage-pc-dev/thumbs/mediations/CW8Q",
               }
             }
             style={
-              Object {
+              {
                 "bottom": 0,
                 "left": 0,
                 "position": "absolute",
@@ -3618,8 +3618,8 @@ exports[`<OfferBody /> should match snapshot for physical offer 1`] = `
     <View
       numberOfSpaces={4}
       style={
-        Array [
-          Object {
+        [
+          {
             "height": 16,
           },
         ]
@@ -3627,8 +3627,8 @@ exports[`<OfferBody /> should match snapshot for physical offer 1`] = `
     />
     <View
       style={
-        Array [
-          Object {
+        [
+          {
             "alignItems": "center",
             "flexDirection": "row",
             "flexWrap": "wrap",
@@ -3640,8 +3640,8 @@ exports[`<OfferBody /> should match snapshot for physical offer 1`] = `
     >
       <View
         style={
-          Array [
-            Object {
+          [
+            {
               "alignItems": "center",
               "flexDirection": "row",
             },
@@ -3650,8 +3650,8 @@ exports[`<OfferBody /> should match snapshot for physical offer 1`] = `
       >
         <View
           style={
-            Array [
-              Object {
+            [
+              {
                 "marginRight": 4,
               },
             ]
@@ -3670,8 +3670,8 @@ exports[`<OfferBody /> should match snapshot for physical offer 1`] = `
         <Text
           numberOfLines={1}
           style={
-            Array [
-              Object {
+            [
+              {
                 "color": "#161617",
                 "flexShrink": 1,
                 "fontFamily": "Montserrat-SemiBold",
@@ -3689,8 +3689,8 @@ exports[`<OfferBody /> should match snapshot for physical offer 1`] = `
         isDigital={false}
         numberOfLines={1}
         style={
-          Array [
-            Object {
+          [
+            {
               "color": "#161617",
               "fontFamily": "Montserrat-SemiBold",
               "fontSize": 12,
@@ -3706,8 +3706,8 @@ exports[`<OfferBody /> should match snapshot for physical offer 1`] = `
     <View
       numberOfSpaces={2}
       style={
-        Array [
-          Object {
+        [
+          {
             "height": 8,
           },
         ]
@@ -3715,8 +3715,8 @@ exports[`<OfferBody /> should match snapshot for physical offer 1`] = `
     />
     <View
       style={
-        Array [
-          Object {
+        [
+          {
             "marginHorizontal": 24,
           },
         ]
@@ -3729,8 +3729,8 @@ exports[`<OfferBody /> should match snapshot for physical offer 1`] = `
         allowFontScaling={false}
         numberOfLines={3}
         style={
-          Array [
-            Object {
+          [
+            {
               "color": "#161617",
               "fontFamily": "Montserrat-Bold",
               "fontSize": 20,
@@ -3747,8 +3747,8 @@ exports[`<OfferBody /> should match snapshot for physical offer 1`] = `
     <View
       numberOfSpaces={4}
       style={
-        Array [
-          Object {
+        [
+          {
             "height": 16,
           },
         ]
@@ -3756,8 +3756,8 @@ exports[`<OfferBody /> should match snapshot for physical offer 1`] = `
     />
     <View
       style={
-        Array [
-          Object {
+        [
+          {
             "alignItems": "flex-start",
             "flexDirection": "row",
           },
@@ -3767,8 +3767,8 @@ exports[`<OfferBody /> should match snapshot for physical offer 1`] = `
       <View
         numberOfSpaces={6}
         style={
-          Array [
-            Object {
+          [
+            {
               "width": 24,
             },
           ]
@@ -3776,8 +3776,8 @@ exports[`<OfferBody /> should match snapshot for physical offer 1`] = `
       />
       <View
         style={
-          Array [
-            Object {
+          [
+            {
               "alignItems": "center",
               "flexBasis": 0,
               "flexGrow": 1,
@@ -3788,8 +3788,8 @@ exports[`<OfferBody /> should match snapshot for physical offer 1`] = `
       >
         <View
           style={
-            Array [
-              Object {
+            [
+              {
                 "paddingBottom": 4,
                 "paddingLeft": 4,
                 "paddingRight": 4,
@@ -3811,8 +3811,8 @@ exports[`<OfferBody /> should match snapshot for physical offer 1`] = `
         <View
           numberOfSpaces={2}
           style={
-            Array [
-              Object {
+            [
+              {
                 "height": 8,
               },
             ]
@@ -3821,8 +3821,8 @@ exports[`<OfferBody /> should match snapshot for physical offer 1`] = `
         <Text
           disabled={false}
           style={
-            Array [
-              Object {
+            [
+              {
                 "color": "#161617",
                 "fontFamily": "Montserrat-SemiBold",
                 "fontSize": 12,
@@ -3838,8 +3838,8 @@ exports[`<OfferBody /> should match snapshot for physical offer 1`] = `
       </View>
       <View
         style={
-          Array [
-            Object {
+          [
+            {
               "alignSelf": "center",
               "backgroundColor": "#CBCDD2",
               "height": "92%",
@@ -3851,8 +3851,8 @@ exports[`<OfferBody /> should match snapshot for physical offer 1`] = `
       />
       <View
         style={
-          Array [
-            Object {
+          [
+            {
               "alignItems": "center",
               "flexBasis": 0,
               "flexGrow": 1,
@@ -3863,8 +3863,8 @@ exports[`<OfferBody /> should match snapshot for physical offer 1`] = `
       >
         <View
           style={
-            Array [
-              Object {
+            [
+              {
                 "paddingBottom": 4,
                 "paddingLeft": 4,
                 "paddingRight": 4,
@@ -3887,8 +3887,8 @@ exports[`<OfferBody /> should match snapshot for physical offer 1`] = `
         <View
           numberOfSpaces={2}
           style={
-            Array [
-              Object {
+            [
+              {
                 "height": 8,
               },
             ]
@@ -3897,8 +3897,8 @@ exports[`<OfferBody /> should match snapshot for physical offer 1`] = `
         <Text
           disabled={false}
           style={
-            Array [
-              Object {
+            [
+              {
                 "color": "#161617",
                 "fontFamily": "Montserrat-SemiBold",
                 "fontSize": 12,
@@ -3914,8 +3914,8 @@ exports[`<OfferBody /> should match snapshot for physical offer 1`] = `
       </View>
       <View
         style={
-          Array [
-            Object {
+          [
+            {
               "alignSelf": "center",
               "backgroundColor": "#CBCDD2",
               "height": "92%",
@@ -3927,8 +3927,8 @@ exports[`<OfferBody /> should match snapshot for physical offer 1`] = `
       />
       <View
         style={
-          Array [
-            Object {
+          [
+            {
               "alignItems": "center",
               "flexBasis": 0,
               "flexGrow": 1,
@@ -3939,8 +3939,8 @@ exports[`<OfferBody /> should match snapshot for physical offer 1`] = `
       >
         <View
           style={
-            Array [
-              Object {
+            [
+              {
                 "paddingBottom": 4,
                 "paddingLeft": 4,
                 "paddingRight": 4,
@@ -3964,8 +3964,8 @@ exports[`<OfferBody /> should match snapshot for physical offer 1`] = `
         <View
           numberOfSpaces={2}
           style={
-            Array [
-              Object {
+            [
+              {
                 "height": 8,
               },
             ]
@@ -3974,8 +3974,8 @@ exports[`<OfferBody /> should match snapshot for physical offer 1`] = `
         <Text
           disabled={false}
           style={
-            Array [
-              Object {
+            [
+              {
                 "color": "#161617",
                 "fontFamily": "Montserrat-SemiBold",
                 "fontSize": 12,
@@ -3992,8 +3992,8 @@ exports[`<OfferBody /> should match snapshot for physical offer 1`] = `
       <View
         numberOfSpaces={6}
         style={
-          Array [
-            Object {
+          [
+            {
               "width": 24,
             },
           ]
@@ -4002,8 +4002,8 @@ exports[`<OfferBody /> should match snapshot for physical offer 1`] = `
     </View>
     <View
       style={
-        Array [
-          Object {
+        [
+          {
             "alignItems": "center",
             "paddingHorizontal": 24,
           },
@@ -4013,8 +4013,8 @@ exports[`<OfferBody /> should match snapshot for physical offer 1`] = `
       <View
         numberOfSpaces={4}
         style={
-          Array [
-            Object {
+          [
+            {
               "height": 16,
             },
           ]
@@ -4023,8 +4023,8 @@ exports[`<OfferBody /> should match snapshot for physical offer 1`] = `
       <View
         description=""
         style={
-          Array [
-            Object {
+          [
+            {
               "alignSelf": "center",
             },
           ]
@@ -4033,8 +4033,8 @@ exports[`<OfferBody /> should match snapshot for physical offer 1`] = `
       >
         <View
           style={
-            Array [
-              Object {
+            [
+              {
                 "alignItems": "center",
                 "flexDirection": "row",
               },
@@ -4054,7 +4054,7 @@ exports[`<OfferBody /> should match snapshot for physical offer 1`] = `
             onResponderTerminationRequest={[Function]}
             onStartShouldSetResponder={[Function]}
             style={
-              Object {
+              {
                 "alignItems": "center",
                 "backgroundColor": "transparent",
                 "borderRadius": 0,
@@ -4079,8 +4079,8 @@ exports[`<OfferBody /> should match snapshot for physical offer 1`] = `
               adjustsFontSizeToFit={false}
               numberOfLines={1}
               style={
-                Array [
-                  Object {
+                [
+                  {
                     "color": "#161617",
                     "fontFamily": "Montserrat-Bold",
                     "fontSize": 15,
@@ -4097,8 +4097,8 @@ exports[`<OfferBody /> should match snapshot for physical offer 1`] = `
           <View
             numberOfSpaces={1}
             style={
-              Array [
-                Object {
+              [
+                {
                   "width": 4,
                 },
               ]
@@ -4118,8 +4118,8 @@ exports[`<OfferBody /> should match snapshot for physical offer 1`] = `
     <View
       numberOfSpaces={4}
       style={
-        Array [
-          Object {
+        [
+          {
             "height": 16,
           },
         ]
@@ -4128,8 +4128,8 @@ exports[`<OfferBody /> should match snapshot for physical offer 1`] = `
     <View>
       <View
         style={
-          Array [
-            Object {
+          [
+            {
               "backgroundColor": "#F1F1F4",
               "height": 8,
             },
@@ -4138,8 +4138,8 @@ exports[`<OfferBody /> should match snapshot for physical offer 1`] = `
       />
       <View
         style={
-          Array [
-            Object {
+          [
+            {
               "marginHorizontal": 24,
             },
           ]
@@ -4147,8 +4147,8 @@ exports[`<OfferBody /> should match snapshot for physical offer 1`] = `
       >
         <Text
           style={
-            Array [
-              Object {
+            [
+              {
                 "color": "#161617",
                 "fontFamily": "Montserrat-Medium",
                 "fontSize": 18,
@@ -4163,8 +4163,8 @@ exports[`<OfferBody /> should match snapshot for physical offer 1`] = `
         </Text>
         <Text
           style={
-            Array [
-              Object {
+            [
+              {
                 "color": "#161617",
                 "fontFamily": "Montserrat-Regular",
                 "fontSize": 15,
@@ -4182,8 +4182,8 @@ exports[`<OfferBody /> should match snapshot for physical offer 1`] = `
     <View>
       <View
         style={
-          Array [
-            Object {
+          [
+            {
               "backgroundColor": "#F1F1F4",
               "height": 8,
             },
@@ -4192,8 +4192,8 @@ exports[`<OfferBody /> should match snapshot for physical offer 1`] = `
       />
       <View
         style={
-          Array [
-            Object {
+          [
+            {
               "marginHorizontal": 24,
             },
           ]
@@ -4202,8 +4202,8 @@ exports[`<OfferBody /> should match snapshot for physical offer 1`] = `
         <View
           numberOfSpaces={6}
           style={
-            Array [
-              Object {
+            [
+              {
                 "height": 24,
               },
             ]
@@ -4211,8 +4211,8 @@ exports[`<OfferBody /> should match snapshot for physical offer 1`] = `
         />
         <Text
           style={
-            Array [
-              Object {
+            [
+              {
                 "color": "#161617",
                 "fontFamily": "Montserrat-Medium",
                 "fontSize": 18,
@@ -4226,8 +4226,8 @@ exports[`<OfferBody /> should match snapshot for physical offer 1`] = `
         <View
           numberOfSpaces={4}
           style={
-            Array [
-              Object {
+            [
+              {
                 "height": 16,
               },
             ]
@@ -4247,7 +4247,7 @@ exports[`<OfferBody /> should match snapshot for physical offer 1`] = `
           onResponderTerminationRequest={[Function]}
           onStartShouldSetResponder={[Function]}
           style={
-            Object {
+            {
               "alignItems": "center",
               "flexDirection": "row",
               "opacity": 1,
@@ -4259,8 +4259,8 @@ exports[`<OfferBody /> should match snapshot for physical offer 1`] = `
           <View
             numberOfSpaces={2}
             style={
-              Array [
-                Object {
+              [
+                {
                   "width": 8,
                 },
               ]
@@ -4268,8 +4268,8 @@ exports[`<OfferBody /> should match snapshot for physical offer 1`] = `
           />
           <View
             style={
-              Array [
-                Object {
+              [
+                {
                   "left": -6,
                 },
               ]
@@ -4288,8 +4288,8 @@ exports[`<OfferBody /> should match snapshot for physical offer 1`] = `
           <View
             numberOfSpaces={2}
             style={
-              Array [
-                Object {
+              [
+                {
                   "width": 8,
                 },
               ]
@@ -4298,8 +4298,8 @@ exports[`<OfferBody /> should match snapshot for physical offer 1`] = `
           <Text
             numberOfLines={1}
             style={
-              Array [
-                Object {
+              [
+                {
                   "color": "#161617",
                   "flexShrink": 1,
                   "fontFamily": "Montserrat-Bold",
@@ -4315,8 +4315,8 @@ exports[`<OfferBody /> should match snapshot for physical offer 1`] = `
           </Text>
           <View
             style={
-              Array [
-                Object {
+              [
+                {
                   "flexBasis": 0,
                   "flexGrow": 1,
                   "flexShrink": 1,
@@ -4336,8 +4336,8 @@ exports[`<OfferBody /> should match snapshot for physical offer 1`] = `
         <View
           numberOfSpaces={4}
           style={
-            Array [
-              Object {
+            [
+              {
                 "height": 16,
               },
             ]
@@ -4345,8 +4345,8 @@ exports[`<OfferBody /> should match snapshot for physical offer 1`] = `
         />
         <Text
           style={
-            Array [
-              Object {
+            [
+              {
                 "color": "#161617",
                 "fontFamily": "Montserrat-SemiBold",
                 "fontSize": 12,
@@ -4360,8 +4360,8 @@ exports[`<OfferBody /> should match snapshot for physical offer 1`] = `
         <View
           numberOfSpaces={1}
           style={
-            Array [
-              Object {
+            [
+              {
                 "height": 4,
               },
             ]
@@ -4369,8 +4369,8 @@ exports[`<OfferBody /> should match snapshot for physical offer 1`] = `
         />
         <Text
           style={
-            Array [
-              Object {
+            [
+              {
                 "color": "#161617",
                 "fontFamily": "Montserrat-Regular",
                 "fontSize": 15,
@@ -4385,8 +4385,8 @@ exports[`<OfferBody /> should match snapshot for physical offer 1`] = `
         <View
           numberOfSpaces={4}
           style={
-            Array [
-              Object {
+            [
+              {
                 "height": 16,
               },
             ]
@@ -4394,8 +4394,8 @@ exports[`<OfferBody /> should match snapshot for physical offer 1`] = `
         />
         <View
           style={
-            Array [
-              Object {
+            [
+              {
                 "backgroundColor": "#CBCDD2",
                 "height": 1,
               },
@@ -4405,8 +4405,8 @@ exports[`<OfferBody /> should match snapshot for physical offer 1`] = `
         <View
           numberOfSpaces={6}
           style={
-            Array [
-              Object {
+            [
+              {
                 "height": 24,
               },
             ]
@@ -4414,8 +4414,8 @@ exports[`<OfferBody /> should match snapshot for physical offer 1`] = `
         />
         <View
           style={
-            Array [
-              Object {
+            [
+              {
                 "alignItems": "flex-start",
               },
             ]
@@ -4434,7 +4434,7 @@ exports[`<OfferBody /> should match snapshot for physical offer 1`] = `
             onResponderTerminationRequest={[Function]}
             onStartShouldSetResponder={[Function]}
             style={
-              Object {
+              {
                 "alignItems": "center",
                 "backgroundColor": "transparent",
                 "borderRadius": 0,
@@ -4457,8 +4457,8 @@ exports[`<OfferBody /> should match snapshot for physical offer 1`] = `
           >
             <View
               style={
-                Array [
-                  Object {
+                [
+                  {
                     "flexShrink": 0,
                   },
                 ]
@@ -4479,8 +4479,8 @@ exports[`<OfferBody /> should match snapshot for physical offer 1`] = `
               adjustsFontSizeToFit={false}
               numberOfLines={1}
               style={
-                Array [
-                  Object {
+                [
+                  {
                     "color": "#161617",
                     "fontFamily": "Montserrat-Bold",
                     "fontSize": 15,
@@ -4498,8 +4498,8 @@ exports[`<OfferBody /> should match snapshot for physical offer 1`] = `
         <View
           numberOfSpaces={6}
           style={
-            Array [
-              Object {
+            [
+              {
                 "height": 24,
               },
             ]
@@ -4510,8 +4510,8 @@ exports[`<OfferBody /> should match snapshot for physical offer 1`] = `
     <View>
       <View
         style={
-          Array [
-            Object {
+          [
+            {
               "backgroundColor": "#F1F1F4",
               "height": 8,
             },
@@ -4520,8 +4520,8 @@ exports[`<OfferBody /> should match snapshot for physical offer 1`] = `
       />
       <View
         style={
-          Array [
-            Object {
+          [
+            {
               "marginHorizontal": 24,
             },
           ]
@@ -4529,8 +4529,8 @@ exports[`<OfferBody /> should match snapshot for physical offer 1`] = `
       >
         <Text
           style={
-            Array [
-              Object {
+            [
+              {
                 "color": "#161617",
                 "fontFamily": "Montserrat-Medium",
                 "fontSize": 18,
@@ -4545,8 +4545,8 @@ exports[`<OfferBody /> should match snapshot for physical offer 1`] = `
         </Text>
         <View
           style={
-            Array [
-              Object {
+            [
+              {
                 "flexDirection": "row",
                 "maxWidth": 500,
                 "width": "100%",
@@ -4557,8 +4557,8 @@ exports[`<OfferBody /> should match snapshot for physical offer 1`] = `
           <View
             accessibilityRole="list"
             style={
-              Array [
-                Object {
+              [
+                {
                   "flexBasis": 0,
                   "flexDirection": "row",
                   "flexGrow": 1,
@@ -4573,8 +4573,8 @@ exports[`<OfferBody /> should match snapshot for physical offer 1`] = `
             <View
               accessibilityRole="none"
               style={
-                Array [
-                  Object {
+                [
+                  {
                     "alignItems": "center",
                     "display": "flex",
                     "flexBasis": "8.333333333333334%",
@@ -4600,7 +4600,7 @@ exports[`<OfferBody /> should match snapshot for physical offer 1`] = `
                 onResponderTerminationRequest={[Function]}
                 onStartShouldSetResponder={[Function]}
                 style={
-                  Object {
+                  {
                     "alignItems": "center",
                     "height": 96,
                     "opacity": 1,
@@ -4611,8 +4611,8 @@ exports[`<OfferBody /> should match snapshot for physical offer 1`] = `
               >
                 <View
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "alignItems": "center",
                         "flexBasis": 0,
                         "flexGrow": 1,
@@ -4623,8 +4623,8 @@ exports[`<OfferBody /> should match snapshot for physical offer 1`] = `
                 >
                   <View
                     style={
-                      Array [
-                        Object {
+                      [
+                        {
                           "paddingBottom": 4,
                           "paddingLeft": 4,
                           "paddingRight": 4,
@@ -4645,8 +4645,8 @@ exports[`<OfferBody /> should match snapshot for physical offer 1`] = `
                   <View
                     numberOfSpaces={2}
                     style={
-                      Array [
-                        Object {
+                      [
+                        {
                           "height": 8,
                         },
                       ]
@@ -4655,8 +4655,8 @@ exports[`<OfferBody /> should match snapshot for physical offer 1`] = `
                   <Text
                     disabled={false}
                     style={
-                      Array [
-                        Object {
+                      [
+                        {
                           "color": "#161617",
                           "fontFamily": "Montserrat-SemiBold",
                           "fontSize": 12,
@@ -4676,8 +4676,8 @@ Instagram
             <View
               accessibilityRole="none"
               style={
-                Array [
-                  Object {
+                [
+                  {
                     "alignItems": "center",
                     "display": "flex",
                     "flexBasis": "8.333333333333334%",
@@ -4703,7 +4703,7 @@ Instagram
                 onResponderTerminationRequest={[Function]}
                 onStartShouldSetResponder={[Function]}
                 style={
-                  Object {
+                  {
                     "alignItems": "center",
                     "height": 96,
                     "opacity": 1,
@@ -4714,8 +4714,8 @@ Instagram
               >
                 <View
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "alignItems": "center",
                         "flexBasis": 0,
                         "flexGrow": 1,
@@ -4726,8 +4726,8 @@ Instagram
                 >
                   <View
                     style={
-                      Array [
-                        Object {
+                      [
+                        {
                           "paddingBottom": 4,
                           "paddingLeft": 4,
                           "paddingRight": 4,
@@ -4748,8 +4748,8 @@ Instagram
                   <View
                     numberOfSpaces={2}
                     style={
-                      Array [
-                        Object {
+                      [
+                        {
                           "height": 8,
                         },
                       ]
@@ -4758,8 +4758,8 @@ Instagram
                   <Text
                     disabled={false}
                     style={
-                      Array [
-                        Object {
+                      [
+                        {
                           "color": "#161617",
                           "fontFamily": "Montserrat-SemiBold",
                           "fontSize": 12,
@@ -4779,8 +4779,8 @@ WhatsApp
             <View
               accessibilityRole="none"
               style={
-                Array [
-                  Object {
+                [
+                  {
                     "alignItems": "center",
                     "display": "flex",
                     "flexBasis": "8.333333333333334%",
@@ -4806,7 +4806,7 @@ WhatsApp
                 onResponderTerminationRequest={[Function]}
                 onStartShouldSetResponder={[Function]}
                 style={
-                  Object {
+                  {
                     "alignItems": "center",
                     "height": 96,
                     "opacity": 1,
@@ -4817,8 +4817,8 @@ WhatsApp
               >
                 <View
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "alignItems": "center",
                         "flexBasis": 0,
                         "flexGrow": 1,
@@ -4829,8 +4829,8 @@ WhatsApp
                 >
                   <View
                     style={
-                      Array [
-                        Object {
+                      [
+                        {
                           "paddingBottom": 4,
                           "paddingLeft": 4,
                           "paddingRight": 4,
@@ -4851,8 +4851,8 @@ WhatsApp
                   <View
                     numberOfSpaces={2}
                     style={
-                      Array [
-                        Object {
+                      [
+                        {
                           "height": 8,
                         },
                       ]
@@ -4861,8 +4861,8 @@ WhatsApp
                   <Text
                     disabled={false}
                     style={
-                      Array [
-                        Object {
+                      [
+                        {
                           "color": "#161617",
                           "fontFamily": "Montserrat-SemiBold",
                           "fontSize": 12,
@@ -4882,8 +4882,8 @@ iMessage
             <View
               accessibilityRole="none"
               style={
-                Array [
-                  Object {
+                [
+                  {
                     "alignItems": "center",
                     "display": "flex",
                     "flexBasis": "8.333333333333334%",
@@ -4909,7 +4909,7 @@ iMessage
                 onResponderTerminationRequest={[Function]}
                 onStartShouldSetResponder={[Function]}
                 style={
-                  Object {
+                  {
                     "alignItems": "center",
                     "height": 96,
                     "opacity": 1,
@@ -4920,8 +4920,8 @@ iMessage
               >
                 <View
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "alignItems": "center",
                         "flexBasis": 0,
                         "flexGrow": 1,
@@ -4932,8 +4932,8 @@ iMessage
                 >
                   <View
                     style={
-                      Array [
-                        Object {
+                      [
+                        {
                           "paddingBottom": 4,
                           "paddingLeft": 4,
                           "paddingRight": 4,
@@ -4944,8 +4944,8 @@ iMessage
                   >
                     <View
                       style={
-                        Array [
-                          Object {
+                        [
+                          {
                             "alignItems": "center",
                             "borderColor": "#CBCDD2",
                             "borderRadius": 24,
@@ -4970,8 +4970,8 @@ iMessage
                   <View
                     numberOfSpaces={2}
                     style={
-                      Array [
-                        Object {
+                      [
+                        {
                           "height": 8,
                         },
                       ]
@@ -4980,8 +4980,8 @@ iMessage
                   <Text
                     disabled={false}
                     style={
-                      Array [
-                        Object {
+                      [
+                        {
                           "color": "#161617",
                           "fontFamily": "Montserrat-SemiBold",
                           "fontSize": 12,
@@ -5003,8 +5003,8 @@ d’options
         <View
           numberOfSpaces={4}
           style={
-            Array [
-              Object {
+            [
+              {
                 "height": 16,
               },
             ]
@@ -5015,8 +5015,8 @@ d’options
     <View>
       <View
         style={
-          Array [
-            Object {
+          [
+            {
               "backgroundColor": "#F1F1F4",
               "height": 8,
             },
@@ -5025,8 +5025,8 @@ d’options
       />
       <View
         style={
-          Array [
-            Object {
+          [
+            {
               "marginHorizontal": 24,
             },
           ]
@@ -5034,8 +5034,8 @@ d’options
       >
         <View
           style={
-            Array [
-              Object {
+            [
+              {
                 "alignItems": "flex-start",
                 "paddingVertical": 20,
               },
@@ -5045,7 +5045,7 @@ d’options
           <View
             accessibilityLabel="Signaler l’offre"
             accessibilityState={
-              Object {
+              {
                 "disabled": false,
               }
             }
@@ -5060,7 +5060,7 @@ d’options
             onResponderTerminationRequest={[Function]}
             onStartShouldSetResponder={[Function]}
             style={
-              Object {
+              {
                 "alignItems": "center",
                 "backgroundColor": "transparent",
                 "borderRadius": 0,
@@ -5083,8 +5083,8 @@ d’options
           >
             <View
               style={
-                Array [
-                  Object {
+                [
+                  {
                     "flexShrink": 0,
                   },
                 ]
@@ -5104,8 +5104,8 @@ d’options
               adjustsFontSizeToFit={false}
               numberOfLines={1}
               style={
-                Array [
-                  Object {
+                [
+                  {
                     "color": "#161617",
                     "fontFamily": "Montserrat-Bold",
                     "fontSize": 15,
@@ -5143,7 +5143,7 @@ d’options
       scrollTo={null}
       statusBarTranslucent={true}
       supportedOrientations={
-        Array [
+        [
           "portrait",
           "landscape",
         ]
@@ -5156,8 +5156,8 @@ d’options
     <View>
       <View
         style={
-          Array [
-            Object {
+          [
+            {
               "backgroundColor": "#F1F1F4",
               "height": 8,
             },
@@ -5167,8 +5167,8 @@ d’options
       <View
         numberOfSpaces={6}
         style={
-          Array [
-            Object {
+          [
+            {
               "height": 24,
             },
           ]

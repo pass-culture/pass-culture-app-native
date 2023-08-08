@@ -3,8 +3,8 @@
 exports[`NotConnectedFavorites component should render not connected favorites 1`] = `
 <View
   style={
-    Array [
-      Object {
+    [
+      {
         "alignSelf": "center",
         "flexBasis": 0,
         "flexGrow": 1,
@@ -20,8 +20,8 @@ exports[`NotConnectedFavorites component should render not connected favorites 1
   <View
     flex={2}
     style={
-      Array [
-        Object {
+      [
+        {
           "flexBasis": 0,
           "flexGrow": 2,
           "flexShrink": 1,
@@ -32,8 +32,8 @@ exports[`NotConnectedFavorites component should render not connected favorites 1
   <View
     hasHeight={false}
     style={
-      Array [
-        Object {
+      [
+        {
           "alignItems": "center",
           "flexGrow": 1,
           "justifyContent": "center",
@@ -52,8 +52,8 @@ exports[`NotConnectedFavorites component should render not connected favorites 1
   </View>
   <Text
     style={
-      Array [
-        Object {
+      [
+        {
           "color": "#161617",
           "fontFamily": "Montserrat-Medium",
           "fontSize": 18,
@@ -68,8 +68,8 @@ exports[`NotConnectedFavorites component should render not connected favorites 1
   </Text>
   <Text
     style={
-      Array [
-        Object {
+      [
+        {
           "color": "#161617",
           "fontFamily": "Montserrat-Regular",
           "fontSize": 15,
@@ -84,8 +84,8 @@ exports[`NotConnectedFavorites component should render not connected favorites 1
   <View
     flex={0.5}
     style={
-      Array [
-        Object {
+      [
+        {
           "flexBasis": 0,
           "flexGrow": 0.5,
           "flexShrink": 1,
@@ -95,8 +95,8 @@ exports[`NotConnectedFavorites component should render not connected favorites 1
   />
   <View
     style={
-      Array [
-        Object {
+      [
+        {
           "flexDirection": "row",
         },
       ]
@@ -104,8 +104,8 @@ exports[`NotConnectedFavorites component should render not connected favorites 1
   >
     <View
       style={
-        Array [
-          Object {
+        [
+          {
             "flexBasis": 0,
             "flexGrow": 1,
             "flexShrink": 1,
@@ -118,7 +118,7 @@ exports[`NotConnectedFavorites component should render not connected favorites 1
         accessibilityLabel="Créer un compte"
         accessibilityRole="link"
         accessibilityState={
-          Object {
+          {
             "disabled": false,
           }
         }
@@ -133,7 +133,7 @@ exports[`NotConnectedFavorites component should render not connected favorites 1
         onResponderTerminationRequest={[Function]}
         onStartShouldSetResponder={[Function]}
         style={
-          Object {
+          {
             "alignItems": "center",
             "borderRadius": 24,
             "justifyContent": "center",
@@ -158,8 +158,8 @@ exports[`NotConnectedFavorites component should render not connected favorites 1
         </View>
         <View
           style={
-            Array [
-              Object {
+            [
+              {
                 "alignItems": "center",
                 "flexDirection": "row",
                 "position": "absolute",
@@ -172,8 +172,8 @@ exports[`NotConnectedFavorites component should render not connected favorites 1
             isDisabled={false}
             numberOfLines={1}
             style={
-              Array [
-                Object {
+              [
+                {
                   "color": "#ffffff",
                   "fontFamily": "Montserrat-Bold",
                   "fontSize": 15,
@@ -193,8 +193,8 @@ exports[`NotConnectedFavorites component should render not connected favorites 1
       <View
         numberOfSpaces={4}
         style={
-          Array [
-            Object {
+          [
+            {
               "height": 16,
             },
           ]
@@ -202,8 +202,8 @@ exports[`NotConnectedFavorites component should render not connected favorites 1
       />
       <View
         style={
-          Array [
-            Object {
+          [
+            {
               "alignItems": "center",
               "flexDirection": "row",
               "justifyContent": "center",
@@ -213,8 +213,8 @@ exports[`NotConnectedFavorites component should render not connected favorites 1
       >
         <Text
           style={
-            Array [
-              Object {
+            [
+              {
                 "color": "#161617",
                 "fontFamily": "Montserrat-Regular",
                 "fontSize": 15,
@@ -228,8 +228,8 @@ exports[`NotConnectedFavorites component should render not connected favorites 1
           <View
             numberOfSpaces={1}
             style={
-              Array [
-                Object {
+              [
+                {
                   "width": 4,
                 },
               ]
@@ -250,7 +250,7 @@ exports[`NotConnectedFavorites component should render not connected favorites 1
               onResponderTerminationRequest={[Function]}
               onStartShouldSetResponder={[Function]}
               style={
-                Object {
+                {
                   "opacity": 1,
                   "top": 3,
                   "userSelect": "auto",
@@ -261,8 +261,8 @@ exports[`NotConnectedFavorites component should render not connected favorites 1
               <View
                 paddingForIcon={0}
                 style={
-                  Array [
-                    Object {
+                  [
+                    {
                       "flexDirection": "row",
                       "top": 0,
                     },
@@ -282,8 +282,8 @@ exports[`NotConnectedFavorites component should render not connected favorites 1
                 <View
                   numberOfSpaces={1}
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "width": 4,
                       },
                     ]
@@ -292,8 +292,8 @@ exports[`NotConnectedFavorites component should render not connected favorites 1
                 <Text
                   color="#320096"
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "color": "#320096",
                         "fontFamily": "Montserrat-Bold",
                         "fontSize": 15,
@@ -316,8 +316,8 @@ exports[`NotConnectedFavorites component should render not connected favorites 1
     customHeight={8}
     enable={true}
     style={
-      Array [
-        Object {
+      [
+        {
           "height": 8,
         },
       ]
@@ -326,8 +326,8 @@ exports[`NotConnectedFavorites component should render not connected favorites 1
   <View
     flex={2}
     style={
-      Array [
-        Object {
+      [
+        {
           "flexBasis": 0,
           "flexGrow": 2,
           "flexShrink": 1,

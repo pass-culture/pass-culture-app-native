@@ -22,7 +22,7 @@ exports[`<PhoneValidationTipsModal /> should match snapshot 1`] = `
   scrollTo={null}
   statusBarTranslucent={true}
   supportedOrientations={
-    Array [
+    [
       "portrait",
       "landscape",
     ]
@@ -45,7 +45,7 @@ exports[`<PhoneValidationTipsModal /> should match snapshot 1`] = `
     onResponderTerminationRequest={[Function]}
     onStartShouldSetResponder={[Function]}
     style={
-      Object {
+      {
         "backgroundColor": "black",
         "bottom": 0,
         "height": 1334,
@@ -79,7 +79,7 @@ exports[`<PhoneValidationTipsModal /> should match snapshot 1`] = `
     scrollTo={null}
     statusBarTranslucent={true}
     style={
-      Object {
+      {
         "alignItems": "center",
         "bottom": 0,
         "flex": 1,
@@ -89,15 +89,15 @@ exports[`<PhoneValidationTipsModal /> should match snapshot 1`] = `
         "position": "absolute",
         "right": 0,
         "top": "auto",
-        "transform": Array [
-          Object {
+        "transform": [
+          {
             "translateY": 1334,
           },
         ],
       }
     }
     supportedOrientations={
-      Array [
+      [
         "portrait",
         "landscape",
       ]
@@ -107,8 +107,8 @@ exports[`<PhoneValidationTipsModal /> should match snapshot 1`] = `
     <View
       height={428}
       style={
-        Array [
-          Object {
+        [
+          {
             "alignItems": "center",
             "backgroundColor": "#ffffff",
             "borderBottomEndRadius": 0,
@@ -137,8 +137,8 @@ exports[`<PhoneValidationTipsModal /> should match snapshot 1`] = `
       <View
         onLayout={[Function]}
         style={
-          Array [
-            Object {
+          [
+            {
               "display": "flex",
               "flexDirection": "row",
               "justifyContent": "center",
@@ -151,8 +151,8 @@ exports[`<PhoneValidationTipsModal /> should match snapshot 1`] = `
         <View
           justifyContent="left"
           style={
-            Array [
-              Object {
+            [
+              {
                 "alignItems": "flex-start",
                 "flexDirection": "row",
                 "height": 28,
@@ -176,7 +176,7 @@ exports[`<PhoneValidationTipsModal /> should match snapshot 1`] = `
             onResponderTerminationRequest={[Function]}
             onStartShouldSetResponder={[Function]}
             style={
-              Object {
+              {
                 "opacity": 1,
                 "paddingBottom": 4,
                 "paddingLeft": 4,
@@ -197,8 +197,8 @@ exports[`<PhoneValidationTipsModal /> should match snapshot 1`] = `
             </View>
             <Text
               style={
-                Array [
-                  Object {
+                [
+                  {
                     "display": "none",
                   },
                 ]
@@ -210,8 +210,8 @@ exports[`<PhoneValidationTipsModal /> should match snapshot 1`] = `
         </View>
         <View
           style={
-            Array [
-              Object {
+            [
+              {
                 "flexBasis": 0,
                 "flexGrow": 1,
                 "flexShrink": 1,
@@ -226,8 +226,8 @@ exports[`<PhoneValidationTipsModal /> should match snapshot 1`] = `
             nativeID="testUuidV4"
             numberOfLines={2}
             style={
-              Array [
-                Object {
+              [
+                {
                   "color": "#161617",
                   "fontFamily": "Montserrat-Medium",
                   "fontSize": 18,
@@ -244,8 +244,8 @@ exports[`<PhoneValidationTipsModal /> should match snapshot 1`] = `
         <View
           justifyContent="right"
           style={
-            Array [
-              Object {
+            [
+              {
                 "alignItems": "flex-start",
                 "flexDirection": "row",
                 "height": 28,
@@ -258,8 +258,8 @@ exports[`<PhoneValidationTipsModal /> should match snapshot 1`] = `
       </View>
       <View
         style={
-          Array [
-            Object {
+          [
+            {
               "height": 20,
             },
           ]
@@ -270,8 +270,8 @@ exports[`<PhoneValidationTipsModal /> should match snapshot 1`] = `
         backdropColor="#00000080"
         paddingBottom={8}
         style={
-          Array [
-            Object {
+          [
+            {
               "maxHeight": "100%",
               "maxWidth": 480,
               "paddingBottom": 8,
@@ -281,7 +281,7 @@ exports[`<PhoneValidationTipsModal /> should match snapshot 1`] = `
         }
       >
         <RCTScrollView
-          contentContainerStyle={Object {}}
+          contentContainerStyle={{}}
           onContentSizeChange={[Function]}
           scrollEnabled={true}
           testID="modalScrollView"
@@ -289,8 +289,8 @@ exports[`<PhoneValidationTipsModal /> should match snapshot 1`] = `
           <View>
             <Text
               style={
-                Array [
-                  Object {
+                [
+                  {
                     "color": "#696A6F",
                     "fontFamily": "Montserrat-Regular",
                     "fontSize": 15,
@@ -305,8 +305,8 @@ exports[`<PhoneValidationTipsModal /> should match snapshot 1`] = `
             <View
               numberOfSpaces={8}
               style={
-                Array [
-                  Object {
+                [
+                  {
                     "height": 32,
                   },
                 ]
@@ -314,8 +314,8 @@ exports[`<PhoneValidationTipsModal /> should match snapshot 1`] = `
             />
             <View
               style={
-                Array [
-                  Object {
+                [
+                  {
                     "alignItems": "center",
                     "flexDirection": "row",
                   },
@@ -334,8 +334,8 @@ exports[`<PhoneValidationTipsModal /> should match snapshot 1`] = `
               <View
                 numberOfSpaces={3.75}
                 style={
-                  Array [
-                    Object {
+                  [
+                    {
                       "width": 15,
                     },
                   ]
@@ -343,8 +343,8 @@ exports[`<PhoneValidationTipsModal /> should match snapshot 1`] = `
               />
               <View
                 style={
-                  Array [
-                    Object {
+                  [
+                    {
                       "flexDirection": "column",
                       "flexShrink": 1,
                     },
@@ -353,8 +353,8 @@ exports[`<PhoneValidationTipsModal /> should match snapshot 1`] = `
               >
                 <Text
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "color": "#161617",
                         "flexBasis": 0,
                         "flexGrow": 1,
@@ -370,8 +370,8 @@ exports[`<PhoneValidationTipsModal /> should match snapshot 1`] = `
                 </Text>
                 <Text
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "color": "#696A6F",
                         "flexBasis": 0,
                         "flexGrow": 1,
@@ -390,8 +390,8 @@ exports[`<PhoneValidationTipsModal /> should match snapshot 1`] = `
             <View
               numberOfSpaces={8}
               style={
-                Array [
-                  Object {
+                [
+                  {
                     "height": 32,
                   },
                 ]
@@ -399,8 +399,8 @@ exports[`<PhoneValidationTipsModal /> should match snapshot 1`] = `
             />
             <View
               style={
-                Array [
-                  Object {
+                [
+                  {
                     "alignItems": "center",
                     "flexDirection": "row",
                   },
@@ -419,8 +419,8 @@ exports[`<PhoneValidationTipsModal /> should match snapshot 1`] = `
               <View
                 numberOfSpaces={3.75}
                 style={
-                  Array [
-                    Object {
+                  [
+                    {
                       "width": 15,
                     },
                   ]
@@ -428,8 +428,8 @@ exports[`<PhoneValidationTipsModal /> should match snapshot 1`] = `
               />
               <View
                 style={
-                  Array [
-                    Object {
+                  [
+                    {
                       "flexDirection": "column",
                       "flexShrink": 1,
                     },
@@ -438,8 +438,8 @@ exports[`<PhoneValidationTipsModal /> should match snapshot 1`] = `
               >
                 <Text
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "color": "#161617",
                         "flexBasis": 0,
                         "flexGrow": 1,
@@ -455,8 +455,8 @@ exports[`<PhoneValidationTipsModal /> should match snapshot 1`] = `
                 </Text>
                 <Text
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "color": "#696A6F",
                         "flexBasis": 0,
                         "flexGrow": 1,
@@ -475,8 +475,8 @@ exports[`<PhoneValidationTipsModal /> should match snapshot 1`] = `
             <View
               numberOfSpaces={13}
               style={
-                Array [
-                  Object {
+                [
+                  {
                     "height": 52,
                   },
                 ]
@@ -495,7 +495,7 @@ exports[`<PhoneValidationTipsModal /> should match snapshot 1`] = `
               onResponderTerminationRequest={[Function]}
               onStartShouldSetResponder={[Function]}
               style={
-                Object {
+                {
                   "alignItems": "center",
                   "backgroundColor": "#eb0055",
                   "borderRadius": 24,
@@ -518,8 +518,8 @@ exports[`<PhoneValidationTipsModal /> should match snapshot 1`] = `
                 adjustsFontSizeToFit={false}
                 numberOfLines={1}
                 style={
-                  Array [
-                    Object {
+                  [
+                    {
                       "color": "#ffffff",
                       "fontFamily": "Montserrat-Bold",
                       "fontSize": 15,

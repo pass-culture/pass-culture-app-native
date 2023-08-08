@@ -22,7 +22,7 @@ exports[`MarketingModal should render correctly 1`] = `
     onResponderTerminationRequest={[Function]}
     onStartShouldSetResponder={[Function]}
     style={
-      Object {
+      {
         "backgroundColor": "#00000080",
         "flexDirection": "column",
         "flexGrow": 1,
@@ -38,8 +38,8 @@ exports[`MarketingModal should render correctly 1`] = `
   />
   <View
     style={
-      Array [
-        Object {
+      [
+        {
           "flexBasis": 0,
           "flexGrow": 1,
           "flexShrink": 1,
@@ -50,8 +50,8 @@ exports[`MarketingModal should render correctly 1`] = `
   />
   <View
     style={
-      Array [
-        Object {
+      [
+        {
           "alignItems": "center",
           "alignSelf": "center",
           "backgroundColor": "#ffffff",
@@ -66,8 +66,8 @@ exports[`MarketingModal should render correctly 1`] = `
   >
     <View
       style={
-        Array [
-          Object {
+        [
+          {
             "flexGrow": 1,
             "width": "100%",
           },
@@ -76,8 +76,8 @@ exports[`MarketingModal should render correctly 1`] = `
     >
       <View
         style={
-          Array [
-            Object {
+          [
+            {
               "alignItems": "center",
               "flexGrow": 0.5,
             },
@@ -87,8 +87,8 @@ exports[`MarketingModal should render correctly 1`] = `
         <View
           accessibilityIgnoresInvertColors={true}
           style={
-            Array [
-              Object {
+            [
+              {
                 "height": 252,
                 "width": "100%",
               },
@@ -97,20 +97,20 @@ exports[`MarketingModal should render correctly 1`] = `
         >
           <Image
             source={
-              Object {
+              {
                 "uri": "",
               }
             }
             style={
-              Array [
-                Object {
+              [
+                {
                   "bottom": 0,
                   "left": 0,
                   "position": "absolute",
                   "right": 0,
                   "top": 0,
                 },
-                Object {
+                {
                   "height": 252,
                   "width": "100%",
                 },
@@ -122,32 +122,32 @@ exports[`MarketingModal should render correctly 1`] = `
       </View>
       <BVLinearGradient
         colors={
-          Array [
+          [
             16777215,
             4294967295,
           ]
         }
         endPoint={
-          Object {
+          {
             "x": 0.5,
             "y": 1,
           }
         }
         locations={
-          Array [
+          [
             0,
             0.85,
           ]
         }
         startPoint={
-          Object {
+          {
             "x": 0.5,
             "y": 0,
           }
         }
         style={
-          Array [
-            Object {
+          [
+            {
               "height": 72,
               "marginTop": -72,
             },
@@ -156,8 +156,8 @@ exports[`MarketingModal should render correctly 1`] = `
       />
       <View
         style={
-          Array [
-            Object {
+          [
+            {
               "alignItems": "center",
               "flexGrow": 0.5,
             },
@@ -166,8 +166,8 @@ exports[`MarketingModal should render correctly 1`] = `
       >
         <View
           style={
-            Array [
-              Object {
+            [
+              {
                 "alignItems": "center",
                 "maxWidth": 500,
                 "paddingBottom": 32,
@@ -182,8 +182,8 @@ exports[`MarketingModal should render correctly 1`] = `
           <Text
             nativeID="testUuidV4"
             style={
-              Array [
-                Object {
+              [
+                {
                   "color": "#161617",
                   "fontFamily": "Montserrat-Bold",
                   "fontSize": 20,
@@ -198,8 +198,8 @@ exports[`MarketingModal should render correctly 1`] = `
           <View
             numberOfSpaces={6}
             style={
-              Array [
-                Object {
+              [
+                {
                   "height": 24,
                 },
               ]
@@ -211,8 +211,8 @@ exports[`MarketingModal should render correctly 1`] = `
   </View>
   <View
     style={
-      Array [
-        Object {
+      [
+        {
           "flexBasis": 0,
           "flexGrow": 1,
           "flexShrink": 1,

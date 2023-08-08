@@ -3,13 +3,13 @@
 exports[`<TicketWithContent/> should render properly 1`] = `
 <View
   style={
-    Array [
-      Object {
+    [
+      {
         "alignItems": "center",
         "flexDirection": "column",
         "justifyContent": "center",
         "shadowColor": "#161617",
-        "shadowOffset": Object {
+        "shadowOffset": {
           "height": 2,
           "width": 0,
         },
@@ -30,8 +30,8 @@ exports[`<TicketWithContent/> should render properly 1`] = `
   </View>
   <View
     style={
-      Array [
-        Object {
+      [
+        {
           "alignItems": "center",
           "backgroundColor": "#ffffff",
           "borderColor": "#F1F1F4",
@@ -50,8 +50,8 @@ exports[`<TicketWithContent/> should render properly 1`] = `
   >
     <View
       style={
-        Array [
-          Object {
+        [
+          {
             "justifyContent": "center",
             "minHeight": 192,
             "width": "100%",
@@ -61,8 +61,8 @@ exports[`<TicketWithContent/> should render properly 1`] = `
     >
       <Text
         style={
-          Array [
-            Object {
+          [
+            {
               "color": "#161617",
               "fontFamily": "Montserrat-Bold",
               "fontSize": 20,
@@ -79,8 +79,8 @@ exports[`<TicketWithContent/> should render properly 1`] = `
       <View
         numberOfSpaces={3}
         style={
-          Array [
-            Object {
+          [
+            {
               "height": 12,
             },
           ]
@@ -88,8 +88,8 @@ exports[`<TicketWithContent/> should render properly 1`] = `
       />
       <View
         style={
-          Array [
-            Object {
+          [
+            {
               "paddingHorizontal": 8,
               "paddingVertical": 12,
             },
@@ -99,7 +99,7 @@ exports[`<TicketWithContent/> should render properly 1`] = `
         <View
           accessibilityRole="button"
           accessibilityState={
-            Object {
+            {
               "disabled": true,
             }
           }
@@ -114,7 +114,7 @@ exports[`<TicketWithContent/> should render properly 1`] = `
           onResponderTerminationRequest={[Function]}
           onStartShouldSetResponder={[Function]}
           style={
-            Object {
+            {
               "alignSelf": "center",
               "marginBottom": 16,
               "opacity": 1,
@@ -124,8 +124,8 @@ exports[`<TicketWithContent/> should render properly 1`] = `
         >
           <Text
             style={
-              Array [
-                Object {
+              [
+                {
                   "color": "#eb0055",
                   "fontFamily": "Montserrat-Medium",
                   "fontSize": 22,
@@ -139,8 +139,8 @@ exports[`<TicketWithContent/> should render properly 1`] = `
         </View>
         <View
           style={
-            Array [
-              Object {
+            [
+              {
                 "alignItems": "center",
               },
             ]

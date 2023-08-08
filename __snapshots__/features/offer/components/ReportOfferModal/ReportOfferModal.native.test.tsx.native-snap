@@ -22,7 +22,7 @@ exports[`ReportOffer General modal behavior Report offer snapshots should displa
   scrollTo={null}
   statusBarTranslucent={true}
   supportedOrientations={
-    Array [
+    [
       "portrait",
       "landscape",
     ]
@@ -45,7 +45,7 @@ exports[`ReportOffer General modal behavior Report offer snapshots should displa
     onResponderTerminationRequest={[Function]}
     onStartShouldSetResponder={[Function]}
     style={
-      Object {
+      {
         "backgroundColor": "black",
         "bottom": 0,
         "height": 1334,
@@ -79,7 +79,7 @@ exports[`ReportOffer General modal behavior Report offer snapshots should displa
     scrollTo={null}
     statusBarTranslucent={true}
     style={
-      Object {
+      {
         "alignItems": "center",
         "bottom": 0,
         "flex": 1,
@@ -89,15 +89,15 @@ exports[`ReportOffer General modal behavior Report offer snapshots should displa
         "position": "absolute",
         "right": 0,
         "top": "auto",
-        "transform": Array [
-          Object {
+        "transform": [
+          {
             "translateY": 1334,
           },
         ],
       }
     }
     supportedOrientations={
-      Array [
+      [
         "portrait",
         "landscape",
       ]
@@ -107,8 +107,8 @@ exports[`ReportOffer General modal behavior Report offer snapshots should displa
     <View
       height={428}
       style={
-        Array [
-          Object {
+        [
+          {
             "alignItems": "center",
             "backgroundColor": "#ffffff",
             "borderBottomEndRadius": 0,
@@ -137,8 +137,8 @@ exports[`ReportOffer General modal behavior Report offer snapshots should displa
       <View
         onLayout={[Function]}
         style={
-          Array [
-            Object {
+          [
+            {
               "display": "flex",
               "flexDirection": "row",
               "justifyContent": "center",
@@ -151,8 +151,8 @@ exports[`ReportOffer General modal behavior Report offer snapshots should displa
         <View
           justifyContent="left"
           style={
-            Array [
-              Object {
+            [
+              {
                 "alignItems": "flex-start",
                 "flexDirection": "row",
                 "height": 28,
@@ -164,8 +164,8 @@ exports[`ReportOffer General modal behavior Report offer snapshots should displa
         />
         <View
           style={
-            Array [
-              Object {
+            [
+              {
                 "flexBasis": 0,
                 "flexGrow": 1,
                 "flexShrink": 1,
@@ -180,8 +180,8 @@ exports[`ReportOffer General modal behavior Report offer snapshots should displa
             nativeID="testUuidV4"
             numberOfLines={2}
             style={
-              Array [
-                Object {
+              [
+                {
                   "color": "#161617",
                   "fontFamily": "Montserrat-Medium",
                   "fontSize": 18,
@@ -198,8 +198,8 @@ exports[`ReportOffer General modal behavior Report offer snapshots should displa
         <View
           justifyContent="right"
           style={
-            Array [
-              Object {
+            [
+              {
                 "alignItems": "flex-start",
                 "flexDirection": "row",
                 "height": 28,
@@ -223,7 +223,7 @@ exports[`ReportOffer General modal behavior Report offer snapshots should displa
             onResponderTerminationRequest={[Function]}
             onStartShouldSetResponder={[Function]}
             style={
-              Object {
+              {
                 "opacity": 1,
                 "paddingBottom": 4,
                 "paddingLeft": 4,
@@ -248,8 +248,8 @@ exports[`ReportOffer General modal behavior Report offer snapshots should displa
       </View>
       <View
         style={
-          Array [
-            Object {
+          [
+            {
               "height": 20,
             },
           ]
@@ -260,8 +260,8 @@ exports[`ReportOffer General modal behavior Report offer snapshots should displa
         backdropColor="#00000080"
         paddingBottom={8}
         style={
-          Array [
-            Object {
+          [
+            {
               "maxHeight": "100%",
               "maxWidth": 480,
               "paddingBottom": 8,
@@ -271,7 +271,7 @@ exports[`ReportOffer General modal behavior Report offer snapshots should displa
         }
       >
         <RCTScrollView
-          contentContainerStyle={Object {}}
+          contentContainerStyle={{}}
           onContentSizeChange={[Function]}
           scrollEnabled={true}
           testID="modalScrollView"
@@ -279,8 +279,8 @@ exports[`ReportOffer General modal behavior Report offer snapshots should displa
           <View>
             <View
               style={
-                Array [
-                  Object {
+                [
+                  {
                     "width": "100%",
                   },
                 ]
@@ -288,8 +288,8 @@ exports[`ReportOffer General modal behavior Report offer snapshots should displa
             >
               <Text
                 style={
-                  Array [
-                    Object {
+                  [
+                    {
                       "color": "#161617",
                       "fontFamily": "Montserrat-Regular",
                       "fontSize": 15,
@@ -304,8 +304,8 @@ exports[`ReportOffer General modal behavior Report offer snapshots should displa
               <View
                 numberOfSpaces={8}
                 style={
-                  Array [
-                    Object {
+                  [
+                    {
                       "height": 32,
                     },
                   ]
@@ -313,8 +313,8 @@ exports[`ReportOffer General modal behavior Report offer snapshots should displa
               />
               <View
                 style={
-                  Array [
-                    Object {
+                  [
+                    {
                       "alignItems": "center",
                       "flexDirection": "row",
                     },
@@ -332,8 +332,8 @@ exports[`ReportOffer General modal behavior Report offer snapshots should displa
                 <View
                   numberOfSpaces={3.75}
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "width": 15,
                       },
                     ]
@@ -341,8 +341,8 @@ exports[`ReportOffer General modal behavior Report offer snapshots should displa
                 />
                 <Text
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "color": "#161617",
                         "flexBasis": 0,
                         "flexGrow": 1,
@@ -360,8 +360,8 @@ exports[`ReportOffer General modal behavior Report offer snapshots should displa
               <View
                 numberOfSpaces={8}
                 style={
-                  Array [
-                    Object {
+                  [
+                    {
                       "height": 32,
                     },
                   ]
@@ -369,8 +369,8 @@ exports[`ReportOffer General modal behavior Report offer snapshots should displa
               />
               <View
                 style={
-                  Array [
-                    Object {
+                  [
+                    {
                       "alignItems": "center",
                       "flexDirection": "row",
                     },
@@ -388,8 +388,8 @@ exports[`ReportOffer General modal behavior Report offer snapshots should displa
                 <View
                   numberOfSpaces={3.75}
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "width": 15,
                       },
                     ]
@@ -397,8 +397,8 @@ exports[`ReportOffer General modal behavior Report offer snapshots should displa
                 />
                 <Text
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "color": "#161617",
                         "flexBasis": 0,
                         "flexGrow": 1,
@@ -416,8 +416,8 @@ exports[`ReportOffer General modal behavior Report offer snapshots should displa
               <View
                 numberOfSpaces={13}
                 style={
-                  Array [
-                    Object {
+                  [
+                    {
                       "height": 52,
                     },
                   ]
@@ -436,7 +436,7 @@ exports[`ReportOffer General modal behavior Report offer snapshots should displa
                 onResponderTerminationRequest={[Function]}
                 onStartShouldSetResponder={[Function]}
                 style={
-                  Object {
+                  {
                     "alignItems": "center",
                     "backgroundColor": "#eb0055",
                     "borderRadius": 24,
@@ -459,8 +459,8 @@ exports[`ReportOffer General modal behavior Report offer snapshots should displa
                   adjustsFontSizeToFit={false}
                   numberOfLines={1}
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "color": "#ffffff",
                         "fontFamily": "Montserrat-Bold",
                         "fontSize": 15,
@@ -505,7 +505,7 @@ exports[`ReportOffer General modal behavior Report offer snapshots should not di
   scrollTo={null}
   statusBarTranslucent={true}
   supportedOrientations={
-    Array [
+    [
       "portrait",
       "landscape",
     ]

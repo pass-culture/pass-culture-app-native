@@ -13,7 +13,7 @@ exports[`AutocompleteOfferItem component should render AutocompleteOfferItem 1`]
   onResponderTerminationRequest={[Function]}
   onStartShouldSetResponder={[Function]}
   style={
-    Object {
+    {
       "alignItems": "center",
       "flexDirection": "row",
       "opacity": 1,
@@ -24,8 +24,8 @@ exports[`AutocompleteOfferItem component should render AutocompleteOfferItem 1`]
 >
   <View
     style={
-      Array [
-        Object {
+      [
+        {
           "flexShrink": 0,
         },
       ]
@@ -44,8 +44,8 @@ exports[`AutocompleteOfferItem component should render AutocompleteOfferItem 1`]
     ellipsizeMode="tail"
     numberOfLines={1}
     style={
-      Array [
-        Object {
+      [
+        {
           "marginLeft": 8,
         },
       ]
@@ -53,8 +53,8 @@ exports[`AutocompleteOfferItem component should render AutocompleteOfferItem 1`]
   >
     <Text
       style={
-        Array [
-          Object {
+        [
+          {
             "color": "#161617",
             "fontFamily": "Montserrat-Regular",
             "fontSize": 15,
@@ -68,8 +68,8 @@ exports[`AutocompleteOfferItem component should render AutocompleteOfferItem 1`]
     </Text>
     <Text
       style={
-        Array [
-          Object {
+        [
+          {
             "color": "#161617",
             "fontFamily": "Montserrat-Regular",
             "fontSize": 15,
@@ -82,8 +82,8 @@ exports[`AutocompleteOfferItem component should render AutocompleteOfferItem 1`]
     </Text>
     <Text
       style={
-        Array [
-          Object {
+        [
+          {
             "color": "#eb0055",
             "fontFamily": "Montserrat-Bold",
             "fontSize": 15,

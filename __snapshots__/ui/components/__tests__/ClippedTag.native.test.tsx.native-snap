@@ -3,8 +3,8 @@
 exports[`<ClippedTag/> should render correctly 1`] = `
 <View
   style={
-    Array [
-      Object {
+    [
+      {
         "flexDirection": "row",
       },
     ]
@@ -12,8 +12,8 @@ exports[`<ClippedTag/> should render correctly 1`] = `
 >
   <View
     style={
-      Array [
-        Object {
+      [
+        {
           "backgroundColor": "#eb0055",
           "borderBottomLeftRadius": 4,
           "borderTopLeftRadius": 4,
@@ -27,8 +27,8 @@ exports[`<ClippedTag/> should render correctly 1`] = `
     <Text
       numberOfLines={1}
       style={
-        Array [
-          Object {
+        [
+          {
             "color": "#ffffff",
             "fontFamily": "Montserrat-Bold",
             "fontSize": 15,
@@ -53,7 +53,7 @@ exports[`<ClippedTag/> should render correctly 1`] = `
     onResponderTerminationRequest={[Function]}
     onStartShouldSetResponder={[Function]}
     style={
-      Object {
+      {
         "backgroundColor": "#eb0055",
         "borderBottomRightRadius": 24,
         "borderTopRightRadius": 24,
