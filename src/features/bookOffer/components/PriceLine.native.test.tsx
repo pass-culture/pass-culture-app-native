@@ -4,7 +4,7 @@ import { PriceLine } from 'features/bookOffer/components/PriceLine'
 import * as useFeatureFlag from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { render, screen } from 'tests/utils'
 
-const mockUseFeatureFlag = jest.spyOn(useFeatureFlag, 'useFeatureFlag')
+const mockUseFeatureFlag = jest.spyOn(useFeatureFlag, 'useFeatureFlag').mockReturnValue(false)
 
 const attributes = ['VOSTFR', '3D', 'IMAX']
 

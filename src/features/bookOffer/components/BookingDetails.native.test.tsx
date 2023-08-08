@@ -134,6 +134,8 @@ jest.mock('api/useSearchVenuesOffer/useSearchVenueOffers', () => ({
   }),
 }))
 
+jest.spyOn(useFeatureFlag, 'useFeatureFlag').mockReturnValue(false)
+
 describe('<BookingDetails />', () => {
   beforeAll(() => {
     mockVenueList = []
@@ -312,10 +314,6 @@ describe('<BookingDetails />', () => {
   })
 
   describe('When WIP_ENABLE_MULTIVENUE_OFFER feature flag deactivated', () => {
-    beforeEach(() => {
-      jest.spyOn(useFeatureFlag, 'useFeatureFlag').mockReturnValueOnce(false)
-    })
-
     it('should display venue address in information section', async () => {
       mockUseBookingOffer.mockReturnValueOnce({ ...mockOffer, isDuo: true })
 

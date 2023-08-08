@@ -2971,6 +2971,11 @@ export interface UserSuspensionStatusResponse {
  */
 export interface ValidateEmailRequest {
   /**
+   * @type {TrustedDevice}
+   * @memberof ValidateEmailRequest
+   */
+  deviceInfo?: TrustedDevice | null
+  /**
    * @type {string}
    * @memberof ValidateEmailRequest
    */
