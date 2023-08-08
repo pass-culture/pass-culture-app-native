@@ -40,6 +40,24 @@ Dans tous les cas, pour déclencher une erreur, il faut appeler `context.report(
 
 Réitérer cette étape 3, jusqu'à avoir une règle satisfaisante.
 
+### (Bonus) Ajouter un autofix pour un cas d'erreur
+
+Si on veut que la règle ESLint corrige automatiquement un cas d'erreur, il faut ajouter une fonction au champ `fix` à `context.report`, et lui faire retourner l'AST du code corrigé. Pour cela, il faut partir de l'AST erroné, et le modifier grâce aux utilitaires disponibles en paramètre (fixer). Par exemple, pour remplacer le texte du nœud `node`, catché par le sélecteur, par le code corrigé, il suffit de faire :
+
+```js
+context.report({
+  node,
+  message: "<message-d'erreur>",
+  fix: fixer => {
+    return fixer.replaceText(node, "<code-corrigé>");
+  },
+})
+```
+
+Toutes les utilitaires disponibles sont listés [ici](https://eslint.org/docs/latest/extend/custom-rules#applying-fixes).
+
+Pour tester l'autofix, ajouter dans un cas invalide : `output: "<code-corrigé>"`.
+
 ### 4. Tester la règle en conditions réelles
 
 Pour tester la règle dans le projet passCulture :
