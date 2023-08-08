@@ -12,15 +12,15 @@ const tests = {
     // \u00a0 for '« myText'
     { code: `'«\\u00a0myText'` },
     // \u00a0 for `myText !` with characters !, ?, :, » and €
-    { code: `\`myText\\u00a0!\`` },
+    { code: `\`myText\\u00a0:\`` },
     // \u00a0 for `« myText`
     { code: `\`«\\u00a0myText\`` },
     // &nbsp; for "myText !" with characters !, ?, :, » and €
-    { code: `"myText&nbsp;!"` },
+    { code: `"myText&nbsp;?"` },
     // &nbsp; for "« myText"
     { code: `"«&nbsp;myText"` },
     // &nbsp; for <Text>myText !</Text> with characters !, ?, :, » and €
-    { code: '<Text>myText&nbsp;!</Text>' },
+    { code: '<Text>myText&nbsp;€</Text>' },
     // &nbsp; for <Text>« myText</Text>
     { code: '<Text>«&nbsp;myText</Text>' },
   ],
