@@ -1,11 +1,11 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`BookDuoChoice should display two blocs if offer is duo 1`] = `
-Array [
+[
   <Text
     style={
-      Array [
-        Object {
+      [
+        {
           "color": "#161617",
           "fontFamily": "Montserrat-Medium",
           "fontSize": 18,
@@ -20,8 +20,8 @@ Array [
   <View
     numberOfSpaces={2}
     style={
-      Array [
-        Object {
+      [
+        {
           "height": 8,
         },
       ]
@@ -29,8 +29,8 @@ Array [
   />,
   <View
     style={
-      Array [
-        Object {
+      [
+        {
           "flexDirection": "row",
           "flexWrap": "wrap",
           "marginHorizontal": -8,
@@ -42,7 +42,7 @@ Array [
     <View
       accessibilityLabel="Solo 20 € sélectionné"
       accessibilityState={
-        Object {
+        {
           "disabled": false,
         }
       }
@@ -57,7 +57,7 @@ Array [
       onResponderTerminationRequest={[Function]}
       onStartShouldSetResponder={[Function]}
       style={
-        Object {
+        {
           "opacity": 1,
           "paddingBottom": 8,
           "paddingLeft": 8,
@@ -73,8 +73,8 @@ Array [
         disabled={false}
         selected={true}
         style={
-          Array [
-            Object {
+          [
+            {
               "alignItems": "center",
               "backgroundColor": "#eb0055",
               "borderColor": "#eb0055",
@@ -90,8 +90,8 @@ Array [
       >
         <View
           style={
-            Array [
-              Object {
+            [
+              {
                 "position": "absolute",
                 "right": 2,
                 "top": 2,
@@ -111,8 +111,8 @@ Array [
         </View>
         <View
           style={
-            Array [
-              Object {
+            [
+              {
                 "alignItems": "center",
                 "justifyContent": "center",
                 "minHeight": 80,
@@ -134,8 +134,8 @@ Array [
             disabled={false}
             selected={true}
             style={
-              Array [
-                Object {
+              [
+                {
                   "color": "#ffffff",
                   "fontFamily": "Montserrat-Bold",
                   "fontSize": 15,
@@ -150,8 +150,8 @@ Array [
             disabled={false}
             selected={true}
             style={
-              Array [
-                Object {
+              [
+                {
                   "color": "#ffffff",
                   "fontFamily": "Montserrat-SemiBold",
                   "fontSize": 12,
@@ -170,7 +170,7 @@ Array [
     <View
       accessibilityLabel="Duo 40 €"
       accessibilityState={
-        Object {
+        {
           "disabled": false,
         }
       }
@@ -185,7 +185,7 @@ Array [
       onResponderTerminationRequest={[Function]}
       onStartShouldSetResponder={[Function]}
       style={
-        Object {
+        {
           "opacity": 1,
           "paddingBottom": 8,
           "paddingLeft": 8,
@@ -201,8 +201,8 @@ Array [
         disabled={false}
         selected={false}
         style={
-          Array [
-            Object {
+          [
+            {
               "alignItems": "center",
               "backgroundColor": "#ffffff",
               "borderColor": "#696A6F",
@@ -219,8 +219,8 @@ Array [
         <View
           numberOfSpaces={5}
           style={
-            Array [
-              Object {
+            [
+              {
                 "width": 20,
               },
             ]
@@ -228,8 +228,8 @@ Array [
         />
         <View
           style={
-            Array [
-              Object {
+            [
+              {
                 "alignItems": "center",
                 "justifyContent": "center",
                 "minHeight": 80,
@@ -239,8 +239,8 @@ Array [
         >
           <View
             style={
-              Array [
-                Object {
+              [
+                {
                   "flexDirection": "row",
                 },
               ]
@@ -271,8 +271,8 @@ Array [
             disabled={false}
             selected={false}
             style={
-              Array [
-                Object {
+              [
+                {
                   "color": "#161617",
                   "fontFamily": "Montserrat-Bold",
                   "fontSize": 15,
@@ -287,8 +287,8 @@ Array [
             disabled={false}
             selected={false}
             style={
-              Array [
-                Object {
+              [
+                {
                   "color": "#161617",
                   "fontFamily": "Montserrat-SemiBold",
                   "fontSize": 12,

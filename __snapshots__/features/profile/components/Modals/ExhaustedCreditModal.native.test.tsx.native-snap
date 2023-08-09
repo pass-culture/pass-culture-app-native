@@ -22,7 +22,7 @@ exports[`<ExhaustedCreditModal/> should render correctly 1`] = `
     onResponderTerminationRequest={[Function]}
     onStartShouldSetResponder={[Function]}
     style={
-      Object {
+      {
         "backgroundColor": "#00000080",
         "flexDirection": "column",
         "flexGrow": 1,
@@ -37,8 +37,8 @@ exports[`<ExhaustedCreditModal/> should render correctly 1`] = `
   />
   <View
     style={
-      Array [
-        Object {
+      [
+        {
           "flexBasis": 0,
           "flexGrow": 1,
           "flexShrink": 1,
@@ -50,8 +50,8 @@ exports[`<ExhaustedCreditModal/> should render correctly 1`] = `
   <View
     accessibilityLabelledBy="testUuidV4"
     style={
-      Array [
-        Object {
+      [
+        {
           "alignItems": "center",
           "alignSelf": "center",
           "backgroundColor": "#ffffff",
@@ -67,8 +67,8 @@ exports[`<ExhaustedCreditModal/> should render correctly 1`] = `
   >
     <View
       style={
-        Array [
-          Object {
+        [
+          {
             "display": "flex",
             "flexDirection": "row",
             "justifyContent": "center",
@@ -81,8 +81,8 @@ exports[`<ExhaustedCreditModal/> should render correctly 1`] = `
       <View
         justifyContent="left"
         style={
-          Array [
-            Object {
+          [
+            {
               "alignItems": "flex-start",
               "flexDirection": "row",
               "height": 28,
@@ -94,8 +94,8 @@ exports[`<ExhaustedCreditModal/> should render correctly 1`] = `
       />
       <View
         style={
-          Array [
-            Object {
+          [
+            {
               "flexBasis": 0,
               "flexGrow": 1,
               "flexShrink": 1,
@@ -110,8 +110,8 @@ exports[`<ExhaustedCreditModal/> should render correctly 1`] = `
           nativeID="testUuidV4"
           numberOfLines={3}
           style={
-            Array [
-              Object {
+            [
+              {
                 "color": "#161617",
                 "fontFamily": "Montserrat-Bold",
                 "fontSize": 20,
@@ -128,8 +128,8 @@ exports[`<ExhaustedCreditModal/> should render correctly 1`] = `
       <View
         justifyContent="right"
         style={
-          Array [
-            Object {
+          [
+            {
               "alignItems": "flex-start",
               "flexDirection": "row",
               "height": 28,
@@ -153,7 +153,7 @@ exports[`<ExhaustedCreditModal/> should render correctly 1`] = `
           onResponderTerminationRequest={[Function]}
           onStartShouldSetResponder={[Function]}
           style={
-            Object {
+            {
               "opacity": 1,
               "paddingBottom": 4,
               "paddingLeft": 4,
@@ -179,8 +179,8 @@ exports[`<ExhaustedCreditModal/> should render correctly 1`] = `
     <View
       numberOfSpaces={6}
       style={
-        Array [
-          Object {
+        [
+          {
             "height": 24,
           },
         ]
@@ -188,8 +188,8 @@ exports[`<ExhaustedCreditModal/> should render correctly 1`] = `
     />
     <View
       style={
-        Array [
-          Object {
+        [
+          {
             "alignItems": "center",
             "maxWidth": 500,
             "width": "100%",
@@ -199,8 +199,8 @@ exports[`<ExhaustedCreditModal/> should render correctly 1`] = `
     >
       <View
         style={
-          Array [
-            Object {
+          [
+            {
               "alignItems": "center",
             },
           ]
@@ -208,8 +208,8 @@ exports[`<ExhaustedCreditModal/> should render correctly 1`] = `
       >
         <Text
           style={
-            Array [
-              Object {
+            [
+              {
                 "color": "#161617",
                 "fontFamily": "Montserrat-Regular",
                 "fontSize": 15,
@@ -229,8 +229,8 @@ exports[`<ExhaustedCreditModal/> should render correctly 1`] = `
   </View>
   <View
     style={
-      Array [
-        Object {
+      [
+        {
           "flexBasis": 0,
           "flexGrow": 1,
           "flexShrink": 1,

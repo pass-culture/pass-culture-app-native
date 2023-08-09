@@ -3,8 +3,8 @@
 exports[`<GenericInfoPageWhite /> should render correctly 1`] = `
 <View
   style={
-    Array [
-      Object {
+    [
+      {
         "alignSelf": "center",
         "flexBasis": 0,
         "flexGrow": 1,
@@ -20,8 +20,8 @@ exports[`<GenericInfoPageWhite /> should render correctly 1`] = `
   <View
     flex={2}
     style={
-      Array [
-        Object {
+      [
+        {
           "flexBasis": 0,
           "flexGrow": 2,
           "flexShrink": 1,
@@ -32,8 +32,8 @@ exports[`<GenericInfoPageWhite /> should render correctly 1`] = `
   <View
     hasHeight={true}
     style={
-      Array [
-        Object {
+      [
+        {
           "alignItems": "center",
           "flexGrow": 1,
           "height": "30%",
@@ -55,8 +55,8 @@ exports[`<GenericInfoPageWhite /> should render correctly 1`] = `
   <View
     flex={0.5}
     style={
-      Array [
-        Object {
+      [
+        {
           "flexBasis": 0,
           "flexGrow": 0.5,
           "flexShrink": 1,
@@ -66,8 +66,8 @@ exports[`<GenericInfoPageWhite /> should render correctly 1`] = `
   />
   <Text
     style={
-      Array [
-        Object {
+      [
+        {
           "color": "#161617",
           "fontFamily": "Montserrat-Black",
           "fontSize": 26,
@@ -82,8 +82,8 @@ exports[`<GenericInfoPageWhite /> should render correctly 1`] = `
   <View
     flex={0.5}
     style={
-      Array [
-        Object {
+      [
+        {
           "flexBasis": 0,
           "flexGrow": 0.5,
           "flexShrink": 1,
@@ -94,8 +94,8 @@ exports[`<GenericInfoPageWhite /> should render correctly 1`] = `
   <View
     flex={1.5}
     style={
-      Array [
-        Object {
+      [
+        {
           "flexBasis": 0,
           "flexGrow": 1.5,
           "flexShrink": 1,

@@ -14,7 +14,7 @@ exports[`<CreditExplanation/> should render correctly for exhausted credit 1`] =
   onResponderTerminationRequest={[Function]}
   onStartShouldSetResponder={[Function]}
   style={
-    Object {
+    {
       "alignItems": "center",
       "backgroundColor": "transparent",
       "borderRadius": 24,
@@ -37,8 +37,8 @@ exports[`<CreditExplanation/> should render correctly for exhausted credit 1`] =
 >
   <View
     style={
-      Array [
-        Object {
+      [
+        {
           "flexShrink": 0,
         },
       ]
@@ -59,8 +59,8 @@ exports[`<CreditExplanation/> should render correctly for exhausted credit 1`] =
     adjustsFontSizeToFit={false}
     numberOfLines={2}
     style={
-      Array [
-        Object {
+      [
+        {
           "color": "#161617",
           "fontFamily": "Montserrat-SemiBold",
           "fontSize": 12,
@@ -90,7 +90,7 @@ exports[`<CreditExplanation/> should render correctly for expired deposit 1`] = 
   onResponderTerminationRequest={[Function]}
   onStartShouldSetResponder={[Function]}
   style={
-    Object {
+    {
       "alignItems": "center",
       "backgroundColor": "transparent",
       "borderRadius": 24,
@@ -113,8 +113,8 @@ exports[`<CreditExplanation/> should render correctly for expired deposit 1`] = 
 >
   <View
     style={
-      Array [
-        Object {
+      [
+        {
           "flexShrink": 0,
         },
       ]
@@ -135,8 +135,8 @@ exports[`<CreditExplanation/> should render correctly for expired deposit 1`] = 
     adjustsFontSizeToFit={false}
     numberOfLines={2}
     style={
-      Array [
-        Object {
+      [
+        {
           "color": "#161617",
           "fontFamily": "Montserrat-SemiBold",
           "fontSize": 12,
@@ -166,7 +166,7 @@ exports[`<CreditExplanation/> should render correctly for valid credit 1`] = `
   onResponderTerminationRequest={[Function]}
   onStartShouldSetResponder={[Function]}
   style={
-    Object {
+    {
       "alignItems": "center",
       "backgroundColor": "transparent",
       "borderRadius": 24,
@@ -189,8 +189,8 @@ exports[`<CreditExplanation/> should render correctly for valid credit 1`] = `
 >
   <View
     style={
-      Array [
-        Object {
+      [
+        {
           "flexShrink": 0,
         },
       ]
@@ -211,8 +211,8 @@ exports[`<CreditExplanation/> should render correctly for valid credit 1`] = `
     adjustsFontSizeToFit={false}
     numberOfLines={2}
     style={
-      Array [
-        Object {
+      [
+        {
           "color": "#161617",
           "fontFamily": "Montserrat-SemiBold",
           "fontSize": 12,

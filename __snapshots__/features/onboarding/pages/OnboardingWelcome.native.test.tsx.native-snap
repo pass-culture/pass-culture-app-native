@@ -3,8 +3,8 @@
 exports[`OnboardingWelcome should render correctly 1`] = `
 <View
   style={
-    Array [
-      Object {
+    [
+      {
         "flexBasis": 0,
         "flexGrow": 1,
         "flexShrink": 1,
@@ -15,8 +15,8 @@ exports[`OnboardingWelcome should render correctly 1`] = `
   <View
     accessibilityIgnoresInvertColors={true}
     style={
-      Array [
-        Object {
+      [
+        {
           "bottom": 0,
           "left": 0,
           "position": "absolute",
@@ -28,20 +28,20 @@ exports[`OnboardingWelcome should render correctly 1`] = `
   >
     <Image
       source={
-        Object {
+        {
           "testUri": "../../../public/images/WelcomeBackground.jpg",
         }
       }
       style={
-        Array [
-          Object {
+        [
+          {
             "bottom": 0,
             "left": 0,
             "position": "absolute",
             "right": 0,
             "top": 0,
           },
-          Object {
+          {
             "height": undefined,
             "width": "100%",
           },
@@ -52,8 +52,8 @@ exports[`OnboardingWelcome should render correctly 1`] = `
   </View>
   <View
     style={
-      Array [
-        Object {
+      [
+        {
           "flexBasis": 0,
           "flexGrow": 1,
           "flexShrink": 1,
@@ -63,32 +63,32 @@ exports[`OnboardingWelcome should render correctly 1`] = `
   />
   <BVLinearGradient
     colors={
-      Array [
+      [
         16777215,
         4294967295,
       ]
     }
     endPoint={
-      Object {
+      {
         "x": 0.5,
         "y": 1,
       }
     }
     locations={
-      Array [
+      [
         0,
         0.85,
       ]
     }
     startPoint={
-      Object {
+      {
         "x": 0.5,
         "y": 0,
       }
     }
     style={
-      Array [
-        Object {
+      [
+        {
           "height": 200,
         },
       ]
@@ -96,8 +96,8 @@ exports[`OnboardingWelcome should render correctly 1`] = `
   />
   <View
     style={
-      Array [
-        Object {
+      [
+        {
           "alignSelf": "center",
           "backgroundColor": "#ffffff",
           "bottom": 0,
@@ -111,8 +111,8 @@ exports[`OnboardingWelcome should render correctly 1`] = `
   >
     <Text
       style={
-        Array [
-          Object {
+        [
+          {
             "color": "#161617",
             "fontFamily": "Montserrat-Black",
             "fontSize": 26,
@@ -127,8 +127,8 @@ exports[`OnboardingWelcome should render correctly 1`] = `
     <View
       numberOfSpaces={4}
       style={
-        Array [
-          Object {
+        [
+          {
             "height": 16,
           },
         ]
@@ -136,8 +136,8 @@ exports[`OnboardingWelcome should render correctly 1`] = `
     />
     <Text
       style={
-        Array [
-          Object {
+        [
+          {
             "color": "#161617",
             "fontFamily": "Montserrat-Regular",
             "fontSize": 15,
@@ -152,8 +152,8 @@ exports[`OnboardingWelcome should render correctly 1`] = `
     <View
       numberOfSpaces={6}
       style={
-        Array [
-          Object {
+        [
+          {
             "height": 24,
           },
         ]
@@ -163,7 +163,7 @@ exports[`OnboardingWelcome should render correctly 1`] = `
       accessibilityLabel="C’est parti !"
       accessibilityRole="link"
       accessibilityState={
-        Object {
+        {
           "disabled": false,
         }
       }
@@ -178,7 +178,7 @@ exports[`OnboardingWelcome should render correctly 1`] = `
       onResponderTerminationRequest={[Function]}
       onStartShouldSetResponder={[Function]}
       style={
-        Object {
+        {
           "alignItems": "center",
           "borderRadius": 24,
           "justifyContent": "center",
@@ -204,8 +204,8 @@ exports[`OnboardingWelcome should render correctly 1`] = `
       <View
         reverse={true}
         style={
-          Array [
-            Object {
+          [
+            {
               "alignItems": "center",
               "flexDirection": "row-reverse",
               "position": "absolute",
@@ -226,8 +226,8 @@ exports[`OnboardingWelcome should render correctly 1`] = `
           isDisabled={false}
           numberOfLines={1}
           style={
-            Array [
-              Object {
+            [
+              {
                 "color": "#ffffff",
                 "fontFamily": "Montserrat-Bold",
                 "fontSize": 15,
@@ -247,8 +247,8 @@ exports[`OnboardingWelcome should render correctly 1`] = `
     <View
       numberOfSpaces={4}
       style={
-        Array [
-          Object {
+        [
+          {
             "height": 16,
           },
         ]
@@ -256,8 +256,8 @@ exports[`OnboardingWelcome should render correctly 1`] = `
     />
     <View
       style={
-        Array [
-          Object {
+        [
+          {
             "alignItems": "center",
             "flexDirection": "row",
             "justifyContent": "center",
@@ -267,8 +267,8 @@ exports[`OnboardingWelcome should render correctly 1`] = `
     >
       <Text
         style={
-          Array [
-            Object {
+          [
+            {
               "color": "#161617",
               "fontFamily": "Montserrat-Regular",
               "fontSize": 15,
@@ -282,8 +282,8 @@ exports[`OnboardingWelcome should render correctly 1`] = `
         <View
           numberOfSpaces={1}
           style={
-            Array [
-              Object {
+            [
+              {
                 "width": 4,
               },
             ]
@@ -304,7 +304,7 @@ exports[`OnboardingWelcome should render correctly 1`] = `
             onResponderTerminationRequest={[Function]}
             onStartShouldSetResponder={[Function]}
             style={
-              Object {
+              {
                 "opacity": 1,
                 "top": 3,
                 "userSelect": "auto",
@@ -315,8 +315,8 @@ exports[`OnboardingWelcome should render correctly 1`] = `
             <View
               paddingForIcon={0}
               style={
-                Array [
-                  Object {
+                [
+                  {
                     "flexDirection": "row",
                     "top": 0,
                   },
@@ -336,8 +336,8 @@ exports[`OnboardingWelcome should render correctly 1`] = `
               <View
                 numberOfSpaces={1}
                 style={
-                  Array [
-                    Object {
+                  [
+                    {
                       "width": 4,
                     },
                   ]
@@ -346,8 +346,8 @@ exports[`OnboardingWelcome should render correctly 1`] = `
               <Text
                 color="#320096"
                 style={
-                  Array [
-                    Object {
+                  [
+                    {
                       "color": "#320096",
                       "fontFamily": "Montserrat-Bold",
                       "fontSize": 15,
@@ -368,8 +368,8 @@ exports[`OnboardingWelcome should render correctly 1`] = `
       customHeight={8}
       enable={true}
       style={
-        Array [
-          Object {
+        [
+          {
             "height": 8,
           },
         ]

@@ -16,7 +16,7 @@ exports[`VenueTile component should render correctly 1`] = `
     onResponderTerminationRequest={[Function]}
     onStartShouldSetResponder={[Function]}
     style={
-      Object {
+      {
         "borderRadius": 8,
         "marginVertical": 4,
         "maxHeight": 172,
@@ -29,8 +29,8 @@ exports[`VenueTile component should render correctly 1`] = `
   >
     <View
       style={
-        Array [
-          Object {
+        [
+          {
             "flexDirection": "column-reverse",
           },
         ]
@@ -39,8 +39,8 @@ exports[`VenueTile component should render correctly 1`] = `
       <View
         maxWidth={100}
         style={
-          Array [
-            Object {
+          [
+            {
               "marginTop": 8,
               "maxWidth": 100,
             },
@@ -50,8 +50,8 @@ exports[`VenueTile component should render correctly 1`] = `
         <Text
           numberOfLines={2}
           style={
-            Array [
-              Object {
+            [
+              {
                 "color": "#161617",
                 "fontFamily": "Montserrat-Bold",
                 "fontSize": 15,
@@ -64,8 +64,8 @@ exports[`VenueTile component should render correctly 1`] = `
         </Text>
         <View
           style={
-            Array [
-              Object {
+            [
+              {
                 "flexDirection": "row",
               },
             ]
@@ -74,8 +74,8 @@ exports[`VenueTile component should render correctly 1`] = `
           <Text
             numberOfLines={1}
             style={
-              Array [
-                Object {
+              [
+                {
                   "color": "#696A6F",
                   "flexShrink": 1,
                   "fontFamily": "Montserrat-SemiBold",
@@ -91,15 +91,15 @@ exports[`VenueTile component should render correctly 1`] = `
       </View>
       <View
         style={
-          Array [
-            Object {
+          [
+            {
               "overflow": "hidden",
             },
-            Array [
-              Object {
+            [
+              {
                 "backgroundColor": "#F1F1F4",
               },
-              Object {
+              {
                 "borderRadius": 8,
                 "height": 100,
                 "width": 100,
@@ -112,12 +112,12 @@ exports[`VenueTile component should render correctly 1`] = `
           defaultSource={null}
           resizeMode="cover"
           source={
-            Object {
+            {
               "uri": "https://storage.googleapis.com/passculture-metier-ehp-testing-assets/thumbs/mediations/AMHA",
             }
           }
           style={
-            Object {
+            {
               "bottom": 0,
               "left": 0,
               "position": "absolute",

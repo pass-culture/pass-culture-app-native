@@ -3,8 +3,8 @@
 exports[`<BookingEventChoices /> should display date step and hour step and duo step on a snapshot 1`] = `
 <View
   style={
-    Array [
-      Object {
+    [
+      {
         "marginTop": -8,
         "width": "100%",
       },
@@ -13,8 +13,8 @@ exports[`<BookingEventChoices /> should display date step and hour step and duo 
 >
   <View
     style={
-      Array [
-        Object {
+      [
+        {
           "backgroundColor": "#F1F1F4",
           "height": 2,
         },
@@ -24,8 +24,8 @@ exports[`<BookingEventChoices /> should display date step and hour step and duo 
   <View
     numberOfSpaces={4}
     style={
-      Array [
-        Object {
+      [
+        {
           "height": 16,
         },
       ]
@@ -33,8 +33,8 @@ exports[`<BookingEventChoices /> should display date step and hour step and duo 
   />
   <Text
     style={
-      Array [
-        Object {
+      [
+        {
           "color": "#161617",
           "fontFamily": "Montserrat-Medium",
           "fontSize": 18,
@@ -58,7 +58,7 @@ exports[`<BookingEventChoices /> should display date step and hour step and duo 
     onResponderTerminationRequest={[Function]}
     onStartShouldSetResponder={[Function]}
     style={
-      Object {
+      {
         "opacity": 1,
         "userSelect": "auto",
       }
@@ -67,8 +67,8 @@ exports[`<BookingEventChoices /> should display date step and hour step and duo 
     <View
       numberOfSpaces={2}
       style={
-        Array [
-          Object {
+        [
+          {
             "height": 8,
           },
         ]
@@ -76,8 +76,8 @@ exports[`<BookingEventChoices /> should display date step and hour step and duo 
     />
     <Text
       style={
-        Array [
-          Object {
+        [
+          {
             "color": "#161617",
             "fontFamily": "Montserrat-Bold",
             "fontSize": 15,
@@ -92,8 +92,8 @@ exports[`<BookingEventChoices /> should display date step and hour step and duo 
   <View
     numberOfSpaces={6}
     style={
-      Array [
-        Object {
+      [
+        {
           "height": 24,
         },
       ]
@@ -101,8 +101,8 @@ exports[`<BookingEventChoices /> should display date step and hour step and duo 
   />
   <View
     style={
-      Array [
-        Object {
+      [
+        {
           "backgroundColor": "#F1F1F4",
           "height": 2,
         },
@@ -112,8 +112,8 @@ exports[`<BookingEventChoices /> should display date step and hour step and duo 
   <View
     numberOfSpaces={6}
     style={
-      Array [
-        Object {
+      [
+        {
           "height": 24,
         },
       ]
@@ -121,8 +121,8 @@ exports[`<BookingEventChoices /> should display date step and hour step and duo 
   />
   <Text
     style={
-      Array [
-        Object {
+      [
+        {
           "color": "#161617",
           "fontFamily": "Montserrat-Medium",
           "fontSize": 18,
@@ -137,8 +137,8 @@ exports[`<BookingEventChoices /> should display date step and hour step and duo 
   <View
     numberOfSpaces={4}
     style={
-      Array [
-        Object {
+      [
+        {
           "height": 16,
         },
       ]
@@ -156,7 +156,7 @@ exports[`<BookingEventChoices /> should display date step and hour step and duo 
     onResponderTerminationRequest={[Function]}
     onStartShouldSetResponder={[Function]}
     style={
-      Object {
+      {
         "opacity": 1,
         "userSelect": "auto",
       }
@@ -164,8 +164,8 @@ exports[`<BookingEventChoices /> should display date step and hour step and duo 
   >
     <Text
       style={
-        Array [
-          Object {
+        [
+          {
             "color": "#161617",
             "fontFamily": "Montserrat-Bold",
             "fontSize": 15,
@@ -178,8 +178,8 @@ exports[`<BookingEventChoices /> should display date step and hour step and duo 
   <View
     numberOfSpaces={6}
     style={
-      Array [
-        Object {
+      [
+        {
           "height": 24,
         },
       ]
@@ -187,8 +187,8 @@ exports[`<BookingEventChoices /> should display date step and hour step and duo 
   />
   <View
     style={
-      Array [
-        Object {
+      [
+        {
           "backgroundColor": "#F1F1F4",
           "height": 2,
         },
@@ -198,8 +198,8 @@ exports[`<BookingEventChoices /> should display date step and hour step and duo 
   <View
     numberOfSpaces={6}
     style={
-      Array [
-        Object {
+      [
+        {
           "height": 24,
         },
       ]
@@ -207,8 +207,8 @@ exports[`<BookingEventChoices /> should display date step and hour step and duo 
   />
   <Text
     style={
-      Array [
-        Object {
+      [
+        {
           "color": "#161617",
           "fontFamily": "Montserrat-Medium",
           "fontSize": 18,
@@ -223,8 +223,8 @@ exports[`<BookingEventChoices /> should display date step and hour step and duo 
   <View
     numberOfSpaces={2}
     style={
-      Array [
-        Object {
+      [
+        {
           "height": 8,
         },
       ]
@@ -232,8 +232,8 @@ exports[`<BookingEventChoices /> should display date step and hour step and duo 
   />
   <View
     style={
-      Array [
-        Object {
+      [
+        {
           "flexDirection": "row",
           "flexWrap": "wrap",
           "marginHorizontal": -8,
@@ -245,7 +245,7 @@ exports[`<BookingEventChoices /> should display date step and hour step and duo 
     <View
       accessibilityLabel="Solo crédit insuffisant sélectionné"
       accessibilityState={
-        Object {
+        {
           "disabled": true,
         }
       }
@@ -260,7 +260,7 @@ exports[`<BookingEventChoices /> should display date step and hour step and duo 
       onResponderTerminationRequest={[Function]}
       onStartShouldSetResponder={[Function]}
       style={
-        Object {
+        {
           "opacity": 1,
           "paddingBottom": 8,
           "paddingLeft": 8,
@@ -276,8 +276,8 @@ exports[`<BookingEventChoices /> should display date step and hour step and duo 
         disabled={true}
         selected={true}
         style={
-          Array [
-            Object {
+          [
+            {
               "alignItems": "center",
               "backgroundColor": "#eb0055",
               "borderColor": "#eb0055",
@@ -293,8 +293,8 @@ exports[`<BookingEventChoices /> should display date step and hour step and duo 
       >
         <View
           style={
-            Array [
-              Object {
+            [
+              {
                 "position": "absolute",
                 "right": 2,
                 "top": 2,
@@ -314,8 +314,8 @@ exports[`<BookingEventChoices /> should display date step and hour step and duo 
         </View>
         <View
           style={
-            Array [
-              Object {
+            [
+              {
                 "alignItems": "center",
                 "justifyContent": "center",
                 "minHeight": 80,
@@ -337,8 +337,8 @@ exports[`<BookingEventChoices /> should display date step and hour step and duo 
             disabled={true}
             selected={true}
             style={
-              Array [
-                Object {
+              [
+                {
                   "color": "#ffffff",
                   "fontFamily": "Montserrat-Bold",
                   "fontSize": 15,
@@ -353,8 +353,8 @@ exports[`<BookingEventChoices /> should display date step and hour step and duo 
             disabled={true}
             selected={true}
             style={
-              Array [
-                Object {
+              [
+                {
                   "color": "#ffffff",
                   "fontFamily": "Montserrat-SemiBold",
                   "fontSize": 12,
@@ -371,14 +371,14 @@ exports[`<BookingEventChoices /> should display date step and hour step and duo 
         <View
           parentWidth={301.3333333333333}
           style={
-            Array [
-              Object {
+            [
+              {
                 "backgroundColor": "#CBCDD2",
                 "borderRadius": 0.5,
                 "height": 1,
                 "position": "absolute",
-                "transform": Array [
-                  Object {
+                "transform": [
+                  {
                     "rotate": "-14.774550275046582deg",
                   },
                 ],
@@ -392,7 +392,7 @@ exports[`<BookingEventChoices /> should display date step and hour step and duo 
     <View
       accessibilityLabel="Duo crédit insuffisant"
       accessibilityState={
-        Object {
+        {
           "disabled": true,
         }
       }
@@ -407,7 +407,7 @@ exports[`<BookingEventChoices /> should display date step and hour step and duo 
       onResponderTerminationRequest={[Function]}
       onStartShouldSetResponder={[Function]}
       style={
-        Object {
+        {
           "opacity": 1,
           "paddingBottom": 8,
           "paddingLeft": 8,
@@ -423,8 +423,8 @@ exports[`<BookingEventChoices /> should display date step and hour step and duo 
         disabled={true}
         selected={false}
         style={
-          Array [
-            Object {
+          [
+            {
               "alignItems": "center",
               "backgroundColor": "#ffffff",
               "borderColor": "#CBCDD2",
@@ -441,8 +441,8 @@ exports[`<BookingEventChoices /> should display date step and hour step and duo 
         <View
           numberOfSpaces={5}
           style={
-            Array [
-              Object {
+            [
+              {
                 "width": 20,
               },
             ]
@@ -450,8 +450,8 @@ exports[`<BookingEventChoices /> should display date step and hour step and duo 
         />
         <View
           style={
-            Array [
-              Object {
+            [
+              {
                 "alignItems": "center",
                 "justifyContent": "center",
                 "minHeight": 80,
@@ -461,8 +461,8 @@ exports[`<BookingEventChoices /> should display date step and hour step and duo 
         >
           <View
             style={
-              Array [
-                Object {
+              [
+                {
                   "flexDirection": "row",
                 },
               ]
@@ -493,8 +493,8 @@ exports[`<BookingEventChoices /> should display date step and hour step and duo 
             disabled={true}
             selected={false}
             style={
-              Array [
-                Object {
+              [
+                {
                   "color": "#696A6F",
                   "fontFamily": "Montserrat-Bold",
                   "fontSize": 15,
@@ -509,8 +509,8 @@ exports[`<BookingEventChoices /> should display date step and hour step and duo 
             disabled={true}
             selected={false}
             style={
-              Array [
-                Object {
+              [
+                {
                   "color": "#696A6F",
                   "fontFamily": "Montserrat-SemiBold",
                   "fontSize": 12,
@@ -527,14 +527,14 @@ exports[`<BookingEventChoices /> should display date step and hour step and duo 
         <View
           parentWidth={301.3333333333333}
           style={
-            Array [
-              Object {
+            [
+              {
                 "backgroundColor": "#CBCDD2",
                 "borderRadius": 0.5,
                 "height": 1,
                 "position": "absolute",
-                "transform": Array [
-                  Object {
+                "transform": [
+                  {
                     "rotate": "-14.774550275046582deg",
                   },
                 ],
@@ -549,8 +549,8 @@ exports[`<BookingEventChoices /> should display date step and hour step and duo 
   <View
     numberOfSpaces={6}
     style={
-      Array [
-        Object {
+      [
+        {
           "height": 24,
         },
       ]
@@ -559,7 +559,7 @@ exports[`<BookingEventChoices /> should display date step and hour step and duo 
   <View
     accessibilityLabel="Valider ces options"
     accessibilityState={
-      Object {
+      {
         "disabled": false,
       }
     }
@@ -574,7 +574,7 @@ exports[`<BookingEventChoices /> should display date step and hour step and duo 
     onResponderTerminationRequest={[Function]}
     onStartShouldSetResponder={[Function]}
     style={
-      Object {
+      {
         "alignItems": "center",
         "backgroundColor": "#eb0055",
         "borderRadius": 24,
@@ -597,8 +597,8 @@ exports[`<BookingEventChoices /> should display date step and hour step and duo 
       adjustsFontSizeToFit={false}
       numberOfLines={1}
       style={
-        Array [
-          Object {
+        [
+          {
             "color": "#ffffff",
             "fontFamily": "Montserrat-Bold",
             "fontSize": 15,

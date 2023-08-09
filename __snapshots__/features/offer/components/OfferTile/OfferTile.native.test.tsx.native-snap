@@ -15,13 +15,13 @@ exports[`OfferTile component should render correctly 1`] = `
     onResponderTerminationRequest={[Function]}
     onStartShouldSetResponder={[Function]}
     style={
-      Array [
-        Object {
+      [
+        {
           "textDecorationColor": "black",
           "textDecorationLine": "none",
           "textDecorationStyle": "solid",
         },
-        Object {
+        {
           "borderRadius": 8,
           "height": 172,
           "marginVertical": 4,
@@ -32,8 +32,8 @@ exports[`OfferTile component should render correctly 1`] = `
   >
     <View
       style={
-        Array [
-          Object {
+        [
+          {
             "flexDirection": "column-reverse",
           },
         ]
@@ -42,8 +42,8 @@ exports[`OfferTile component should render correctly 1`] = `
       <View
         imageWidth={100}
         style={
-          Array [
-            Object {
+          [
+            {
               "marginTop": 8,
               "maxWidth": 100,
             },
@@ -53,8 +53,8 @@ exports[`OfferTile component should render correctly 1`] = `
         <Text
           numberOfLines={2}
           style={
-            Array [
-              Object {
+            [
+              {
                 "color": "#161617",
                 "fontFamily": "Montserrat-SemiBold",
                 "fontSize": 12,
@@ -68,8 +68,8 @@ exports[`OfferTile component should render correctly 1`] = `
         <Text
           numberOfLines={1}
           style={
-            Array [
-              Object {
+            [
+              {
                 "color": "#696A6F",
                 "fontFamily": "Montserrat-SemiBold",
                 "fontSize": 12,
@@ -82,8 +82,8 @@ exports[`OfferTile component should render correctly 1`] = `
         </Text>
         <Text
           style={
-            Array [
-              Object {
+            [
+              {
                 "color": "#696A6F",
                 "fontFamily": "Montserrat-SemiBold",
                 "fontSize": 12,
@@ -99,15 +99,15 @@ exports[`OfferTile component should render correctly 1`] = `
       <View>
         <View
           style={
-            Array [
-              Object {
+            [
+              {
                 "overflow": "hidden",
               },
-              Array [
-                Object {
+              [
+                {
                   "backgroundColor": "#F1F1F4",
                 },
-                Object {
+                {
                   "borderTopLeftRadius": 8,
                   "borderTopRightRadius": 8,
                   "height": 76,
@@ -121,12 +121,12 @@ exports[`OfferTile component should render correctly 1`] = `
             defaultSource={null}
             resizeMode="cover"
             source={
-              Object {
+              {
                 "uri": "https://storage.gra.cloud.ovh.net/v1/AUTH_688df1e25bd84a48a3804e7fa8938085/storage-pc-dev/thumbs/mediations/CDNQ",
               }
             }
             style={
-              Object {
+              {
                 "bottom": 0,
                 "left": 0,
                 "position": "absolute",
@@ -140,8 +140,8 @@ exports[`OfferTile component should render correctly 1`] = `
         <View
           height={24}
           style={
-            Array [
-              Object {
+            [
+              {
                 "alignItems": "center",
                 "backgroundColor": "#161617",
                 "borderBottomLeftRadius": 8,
@@ -156,8 +156,8 @@ exports[`OfferTile component should render correctly 1`] = `
         >
           <View
             style={
-              Array [
-                Object {
+              [
+                {
                   "alignItems": "center",
                   "flexBasis": 0,
                   "flexGrow": 1,
@@ -171,8 +171,8 @@ exports[`OfferTile component should render correctly 1`] = `
             <Text
               numberOfLines={1}
               style={
-                Array [
-                  Object {
+                [
+                  {
                     "color": "#ffffff",
                     "fontFamily": "Montserrat-SemiBold",
                     "fontSize": 12,
@@ -187,8 +187,8 @@ exports[`OfferTile component should render correctly 1`] = `
           </View>
           <View
             style={
-              Array [
-                Object {
+              [
+                {
                   "backgroundColor": "#ffffff",
                   "height": 16,
                   "width": 1,
@@ -198,8 +198,8 @@ exports[`OfferTile component should render correctly 1`] = `
           />
           <View
             style={
-              Array [
-                Object {
+              [
+                {
                   "alignItems": "center",
                   "flexBasis": 0,
                   "flexGrow": 1,
@@ -212,8 +212,8 @@ exports[`OfferTile component should render correctly 1`] = `
           >
             <Text
               style={
-                Array [
-                  Object {
+                [
+                  {
                     "color": "#ffffff",
                     "fontFamily": "Montserrat-SemiBold",
                     "fontSize": 12,

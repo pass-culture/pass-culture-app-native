@@ -3,8 +3,8 @@
 exports[`VenueType should render correctly 1`] = `
 <View
   style={
-    Array [
-      Object {
+    [
+      {
         "alignItems": "center",
         "flexBasis": 0,
         "flexGrow": 1,
@@ -15,8 +15,8 @@ exports[`VenueType should render correctly 1`] = `
 >
   <View
     style={
-      Array [
-        Object {
+      [
+        {
           "paddingBottom": 4,
           "paddingLeft": 4,
           "paddingRight": 4,
@@ -38,8 +38,8 @@ exports[`VenueType should render correctly 1`] = `
   <View
     numberOfSpaces={2}
     style={
-      Array [
-        Object {
+      [
+        {
           "height": 8,
         },
       ]
@@ -48,8 +48,8 @@ exports[`VenueType should render correctly 1`] = `
   <Text
     disabled={false}
     style={
-      Array [
-        Object {
+      [
+        {
           "color": "#161617",
           "fontFamily": "Montserrat-SemiBold",
           "fontSize": 12,

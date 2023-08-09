@@ -3,8 +3,8 @@
 exports[`<EighteenBirthday /> should render eighteen birthday 1`] = `
 <View
   style={
-    Array [
-      Object {
+    [
+      {
         "alignItems": "center",
         "backgroundColor": "#ffffff",
         "display": "flex",
@@ -18,8 +18,8 @@ exports[`<EighteenBirthday /> should render eighteen birthday 1`] = `
     customHeight={16}
     enable={true}
     style={
-      Array [
-        Object {
+      [
+        {
           "height": 16,
         },
       ]
@@ -27,8 +27,8 @@ exports[`<EighteenBirthday /> should render eighteen birthday 1`] = `
   />
   <View
     style={
-      Array [
-        Object {
+      [
+        {
           "alignItems": "center",
           "display": "flex",
           "flexGrow": 1,
@@ -41,8 +41,8 @@ exports[`<EighteenBirthday /> should render eighteen birthday 1`] = `
   >
     <View
       style={
-        Array [
-          Object {
+        [
+          {
             "flexBasis": 0,
             "flexGrow": 1,
             "flexShrink": 1,
@@ -54,7 +54,7 @@ exports[`<EighteenBirthday /> should render eighteen birthday 1`] = `
       <View
         onLayout={[Function]}
         style={
-          Object {
+          {
             "backgroundColor": "transparent",
             "flex": 1,
           }
@@ -62,7 +62,7 @@ exports[`<EighteenBirthday /> should render eighteen birthday 1`] = `
       >
         <View
           style={
-            Object {
+            {
               "backgroundColor": "transparent",
               "height": 0,
               "justifyContent": "space-between",
@@ -89,17 +89,17 @@ exports[`<EighteenBirthday /> should render eighteen birthday 1`] = `
             onStartShouldSetResponder={[Function]}
             onStartShouldSetResponderCapture={[Function]}
             style={
-              Object {
+              {
                 "flexDirection": "row",
                 "height": 0,
                 "left": 0,
                 "position": "absolute",
                 "top": 0,
-                "transform": Array [
-                  Object {
+                "transform": [
+                  {
                     "translateX": 0,
                   },
-                  Object {
+                  {
                     "translateY": 0,
                   },
                 ],
@@ -109,7 +109,7 @@ exports[`<EighteenBirthday /> should render eighteen birthday 1`] = `
           >
             <View
               style={
-                Object {
+                {
                   "flex": 1,
                   "height": 0,
                   "width": "100%",
@@ -119,8 +119,8 @@ exports[`<EighteenBirthday /> should render eighteen birthday 1`] = `
               <View
                 accessibilityHidden={false}
                 style={
-                  Array [
-                    Object {
+                  [
+                    {
                       "flexBasis": 0,
                       "flexGrow": 1,
                       "flexShrink": 1,
@@ -132,8 +132,8 @@ exports[`<EighteenBirthday /> should render eighteen birthday 1`] = `
                 <View
                   flex={2}
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "flexBasis": 0,
                         "flexGrow": 2,
                         "flexShrink": 1,
@@ -144,8 +144,8 @@ exports[`<EighteenBirthday /> should render eighteen birthday 1`] = `
                 <View
                   accessibilityHidden={true}
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "alignItems": "center",
                         "flexGrow": 1,
                         "height": "30%",
@@ -161,8 +161,8 @@ exports[`<EighteenBirthday /> should render eighteen birthday 1`] = `
                 <View
                   flex={1}
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "flexBasis": 0,
                         "flexGrow": 1,
                         "flexShrink": 1,
@@ -172,8 +172,8 @@ exports[`<EighteenBirthday /> should render eighteen birthday 1`] = `
                 />
                 <View
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "overflowY": "auto",
                       },
                     ]
@@ -181,8 +181,8 @@ exports[`<EighteenBirthday /> should render eighteen birthday 1`] = `
                 >
                   <Text
                     style={
-                      Array [
-                        Object {
+                      [
+                        {
                           "color": "#161617",
                           "fontFamily": "Montserrat-Black",
                           "fontSize": 26,
@@ -197,8 +197,8 @@ exports[`<EighteenBirthday /> should render eighteen birthday 1`] = `
                   <View
                     numberOfSpaces={4}
                     style={
-                      Array [
-                        Object {
+                      [
+                        {
                           "height": 16,
                         },
                       ]
@@ -206,8 +206,8 @@ exports[`<EighteenBirthday /> should render eighteen birthday 1`] = `
                   />
                   <View
                     style={
-                      Array [
-                        Object {
+                      [
+                        {
                           "flexDirection": "column",
                           "justifyContent": "center",
                         },
@@ -216,8 +216,8 @@ exports[`<EighteenBirthday /> should render eighteen birthday 1`] = `
                   >
                     <Text
                       style={
-                        Array [
-                          Object {
+                        [
+                          {
                             "alignSelf": "center",
                             "color": "#161617",
                             "fontFamily": "Montserrat-Medium",
@@ -233,8 +233,8 @@ exports[`<EighteenBirthday /> should render eighteen birthday 1`] = `
                     <View
                       numberOfSpaces={4}
                       style={
-                        Array [
-                          Object {
+                        [
+                          {
                             "height": 16,
                           },
                         ]
@@ -244,8 +244,8 @@ exports[`<EighteenBirthday /> should render eighteen birthday 1`] = `
                   <View
                     numberOfSpaces={4}
                     style={
-                      Array [
-                        Object {
+                      [
+                        {
                           "height": 16,
                         },
                       ]
@@ -253,8 +253,8 @@ exports[`<EighteenBirthday /> should render eighteen birthday 1`] = `
                   />
                   <Text
                     style={
-                      Array [
-                        Object {
+                      [
+                        {
                           "color": "#696A6F",
                           "fontFamily": "Montserrat-SemiBold",
                           "fontSize": 12,
@@ -270,8 +270,8 @@ exports[`<EighteenBirthday /> should render eighteen birthday 1`] = `
                 <View
                   flex={2}
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "flexBasis": 0,
                         "flexGrow": 2,
                         "flexShrink": 1,
@@ -283,8 +283,8 @@ exports[`<EighteenBirthday /> should render eighteen birthday 1`] = `
                   isSmallScreen={false}
                   paddingBottom={40}
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "flexBasis": 0,
                         "flexGrow": 1,
                         "flexShrink": 1,
@@ -298,7 +298,7 @@ exports[`<EighteenBirthday /> should render eighteen birthday 1`] = `
                     collapsable={false}
                     forwardedRef={[Function]}
                     style={
-                      Object {
+                      {
                         "opacity": 0,
                       }
                     }
@@ -316,7 +316,7 @@ exports[`<EighteenBirthday /> should render eighteen birthday 1`] = `
                       onResponderTerminationRequest={[Function]}
                       onStartShouldSetResponder={[Function]}
                       style={
-                        Object {
+                        {
                           "alignItems": "center",
                           "backgroundColor": "#eb0055",
                           "borderRadius": 24,
@@ -339,8 +339,8 @@ exports[`<EighteenBirthday /> should render eighteen birthday 1`] = `
                         adjustsFontSizeToFit={false}
                         numberOfLines={1}
                         style={
-                          Array [
-                            Object {
+                          [
+                            {
                               "color": "#ffffff",
                               "fontFamily": "Montserrat-Bold",
                               "fontSize": 15,
@@ -358,8 +358,8 @@ exports[`<EighteenBirthday /> should render eighteen birthday 1`] = `
                   <View
                     marginTop={16}
                     style={
-                      Array [
-                        Object {
+                      [
+                        {
                           "flexGrow": 1,
                           "marginTop": 16,
                         },
@@ -379,7 +379,7 @@ exports[`<EighteenBirthday /> should render eighteen birthday 1`] = `
                       onResponderTerminationRequest={[Function]}
                       onStartShouldSetResponder={[Function]}
                       style={
-                        Object {
+                        {
                           "alignItems": "center",
                           "backgroundColor": "transparent",
                           "borderRadius": 24,
@@ -400,8 +400,8 @@ exports[`<EighteenBirthday /> should render eighteen birthday 1`] = `
                     >
                       <View
                         style={
-                          Array [
-                            Object {
+                          [
+                            {
                               "flexShrink": 0,
                             },
                           ]
@@ -421,8 +421,8 @@ exports[`<EighteenBirthday /> should render eighteen birthday 1`] = `
                         adjustsFontSizeToFit={false}
                         numberOfLines={1}
                         style={
-                          Array [
-                            Object {
+                          [
+                            {
                               "color": "#161617",
                               "fontFamily": "Montserrat-Bold",
                               "fontSize": 15,
@@ -447,8 +447,8 @@ exports[`<EighteenBirthday /> should render eighteen birthday 1`] = `
     <View
       numberOfSpaces={2}
       style={
-        Array [
-          Object {
+        [
+          {
             "height": 8,
           },
         ]
@@ -459,8 +459,8 @@ exports[`<EighteenBirthday /> should render eighteen birthday 1`] = `
     customHeight={8}
     enable={true}
     style={
-      Array [
-        Object {
+      [
+        {
           "height": 8,
         },
       ]

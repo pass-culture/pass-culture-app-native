@@ -70,11 +70,11 @@ describe('useModalContent', () => {
     expect(result.current.children).toMatchInlineSnapshot(`
       <BookingDetails
         stocks={
-          Array [
-            Object {
+          [
+            {
               "beginningDatetime": "2021-01-01T13:30:00",
               "bookingLimitDatetime": "2021-01-05T13:30:00",
-              "features": Array [],
+              "features": [],
               "id": 118929,
               "isBookable": true,
               "isExpired": false,

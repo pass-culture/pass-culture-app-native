@@ -3,8 +3,8 @@
 exports[`<Favorites/> should render correctly 1`] = `
 <View
   style={
-    Array [
-      Object {
+    [
+      {
         "flexBasis": 0,
         "flexGrow": 1,
         "flexShrink": 1,
@@ -14,8 +14,8 @@ exports[`<Favorites/> should render correctly 1`] = `
 >
   <View
     style={
-      Array [
-        Object {
+      [
+        {
           "marginBottom": 8,
           "marginHorizontal": 24,
           "marginTop": 24,
@@ -27,8 +27,8 @@ exports[`<Favorites/> should render correctly 1`] = `
       customHeight={16}
       enable={true}
       style={
-        Array [
-          Object {
+        [
+          {
             "height": 16,
           },
         ]
@@ -37,8 +37,8 @@ exports[`<Favorites/> should render correctly 1`] = `
     <Text
       numberOfLines={1}
       style={
-        Array [
-          Object {
+        [
+          {
             "color": "#161617",
             "fontFamily": "Montserrat-Black",
             "fontSize": 26,
@@ -52,8 +52,8 @@ exports[`<Favorites/> should render correctly 1`] = `
   </View>
   <View
     style={
-      Array [
-        Object {
+      [
+        {
           "alignSelf": "center",
           "bottom": 88,
           "position": "absolute",
@@ -76,7 +76,7 @@ exports[`<Favorites/> should render correctly 1`] = `
       onResponderTerminationRequest={[Function]}
       onStartShouldSetResponder={[Function]}
       style={
-        Object {
+        {
           "opacity": 1,
           "overflow": "hidden",
           "userSelect": "auto",
@@ -86,27 +86,27 @@ exports[`<Favorites/> should render correctly 1`] = `
     >
       <BVLinearGradient
         colors={
-          Array [
+          [
             4290717535,
             4284091776,
           ]
         }
         endPoint={
-          Object {
+          {
             "x": 1,
             "y": 0,
           }
         }
         locations={null}
         startPoint={
-          Object {
+          {
             "x": 0,
             "y": 0,
           }
         }
         style={
-          Array [
-            Object {
+          [
+            {
               "alignItems": "center",
               "backgroundColor": "#eb0055",
               "borderRadius": 24,
@@ -130,8 +130,8 @@ exports[`<Favorites/> should render correctly 1`] = `
         <View
           numberOfSpaces={1}
           style={
-            Array [
-              Object {
+            [
+              {
                 "width": 4,
               },
             ]
@@ -139,8 +139,8 @@ exports[`<Favorites/> should render correctly 1`] = `
         />
         <Text
           style={
-            Array [
-              Object {
+            [
+              {
                 "color": "#ffffff",
                 "fontFamily": "Montserrat-Bold",
                 "fontSize": 15,
@@ -154,8 +154,8 @@ exports[`<Favorites/> should render correctly 1`] = `
         <View
           numberOfSpaces={2}
           style={
-            Array [
-              Object {
+            [
+              {
                 "width": 8,
               },
             ]
@@ -167,8 +167,8 @@ exports[`<Favorites/> should render correctly 1`] = `
       customHeight={8}
       enable={true}
       style={
-        Array [
-          Object {
+        [
+          {
             "height": 8,
           },
         ]
@@ -177,8 +177,8 @@ exports[`<Favorites/> should render correctly 1`] = `
   </View>
   <View
     style={
-      Array [
-        Object {
+      [
+        {
           "flexBasis": 0,
           "flexGrow": 1,
           "flexShrink": 1,
@@ -189,11 +189,11 @@ exports[`<Favorites/> should render correctly 1`] = `
   >
     <RCTScrollView
       ItemSeparatorComponent={
-        Object {
+        {
           "$$typeof": Symbol(react.forward_ref),
-          "attrs": Array [],
+          "attrs": [],
           "inlineStyle": InlineStyle {
-            "rules": Array [
+            "rules": [
               [Function],
             ],
           },
@@ -206,41 +206,41 @@ exports[`<Favorites/> should render correctly 1`] = `
       }
       ListHeaderComponent={<NumberOfResultsPlaceholder />}
       contentContainerStyle={
-        Object {
+        {
           "flexGrow": 1,
           "paddingBottom": 80,
         }
       }
       data={
-        Array [
-          Object {
+        [
+          {
             "key": "0",
           },
-          Object {
+          {
             "key": "1",
           },
-          Object {
+          {
             "key": "2",
           },
-          Object {
+          {
             "key": "3",
           },
-          Object {
+          {
             "key": "4",
           },
-          Object {
+          {
             "key": "5",
           },
-          Object {
+          {
             "key": "6",
           },
-          Object {
+          {
             "key": "7",
           },
-          Object {
+          {
             "key": "8",
           },
-          Object {
+          {
             "key": "9",
           },
         ]
@@ -259,13 +259,13 @@ exports[`<Favorites/> should render correctly 1`] = `
       renderItem={[Function]}
       scrollEnabled={false}
       scrollEventThrottle={50}
-      stickyHeaderIndices={Array []}
+      stickyHeaderIndices={[]}
       style={
-        Array [
-          Object {},
+        [
+          {},
         ]
       }
-      viewabilityConfigCallbackPairs={Array []}
+      viewabilityConfigCallbackPairs={[]}
     >
       <View>
         <View
@@ -273,8 +273,8 @@ exports[`<Favorites/> should render correctly 1`] = `
         >
           <View
             style={
-              Array [
-                Object {
+              [
+                {
                   "marginHorizontal": 24,
                 },
               ]
@@ -283,8 +283,8 @@ exports[`<Favorites/> should render correctly 1`] = `
             <View
               numberOfSpaces={1}
               style={
-                Array [
-                  Object {
+                [
+                  {
                     "height": 4,
                   },
                 ]
@@ -294,8 +294,8 @@ exports[`<Favorites/> should render correctly 1`] = `
               borderRadius={2}
               height={12}
               style={
-                Array [
-                  Object {
+                [
+                  {
                     "backgroundColor": "#DDDDDD",
                     "borderRadius": 2,
                     "height": 12,
@@ -309,7 +309,7 @@ exports[`<Favorites/> should render correctly 1`] = `
               <BVLinearGradient
                 collapsable={false}
                 colors={
-                  Array [
+                  [
                     4292730333,
                     4293848814,
                     4293848814,
@@ -317,28 +317,28 @@ exports[`<Favorites/> should render correctly 1`] = `
                   ]
                 }
                 endPoint={
-                  Object {
+                  {
                     "x": 1,
                     "y": 0,
                   }
                 }
                 locations={null}
                 startPoint={
-                  Object {
+                  {
                     "x": 0,
                     "y": 0,
                   }
                 }
                 style={
-                  Object {
+                  {
                     "borderRadius": 2,
                     "bottom": 0,
                     "left": 0,
                     "position": "absolute",
                     "right": 0,
                     "top": 0,
-                    "transform": Array [
-                      Object {
+                    "transform": [
+                      {
                         "translateX": -100,
                       },
                     ],
@@ -349,8 +349,8 @@ exports[`<Favorites/> should render correctly 1`] = `
             <View
               numberOfSpaces={5}
               style={
-                Array [
-                  Object {
+                [
+                  {
                     "height": 20,
                   },
                 ]
@@ -364,8 +364,8 @@ exports[`<Favorites/> should render correctly 1`] = `
         >
           <View
             style={
-              Array [
-                Object {
+              [
+                {
                   "marginHorizontal": 24,
                 },
               ]
@@ -373,8 +373,8 @@ exports[`<Favorites/> should render correctly 1`] = `
           >
             <View
               style={
-                Array [
-                  Object {
+                [
+                  {
                     "alignItems": "center",
                     "flexDirection": "row",
                   },
@@ -385,8 +385,8 @@ exports[`<Favorites/> should render correctly 1`] = `
                 borderRadius={4}
                 height={96}
                 style={
-                  Array [
-                    Object {
+                  [
+                    {
                       "backgroundColor": "#DDDDDD",
                       "borderRadius": 4,
                       "height": 96,
@@ -400,7 +400,7 @@ exports[`<Favorites/> should render correctly 1`] = `
                 <BVLinearGradient
                   collapsable={false}
                   colors={
-                    Array [
+                    [
                       4292730333,
                       4293848814,
                       4293848814,
@@ -408,28 +408,28 @@ exports[`<Favorites/> should render correctly 1`] = `
                     ]
                   }
                   endPoint={
-                    Object {
+                    {
                       "x": 1,
                       "y": 0,
                     }
                   }
                   locations={null}
                   startPoint={
-                    Object {
+                    {
                       "x": 0,
                       "y": 0,
                     }
                   }
                   style={
-                    Object {
+                    {
                       "borderRadius": 4,
                       "bottom": 0,
                       "left": 0,
                       "position": "absolute",
                       "right": 0,
                       "top": 0,
-                      "transform": Array [
-                        Object {
+                      "transform": [
+                        {
                           "translateX": -80,
                         },
                       ],
@@ -440,8 +440,8 @@ exports[`<Favorites/> should render correctly 1`] = `
               <View
                 numberOfSpaces={4}
                 style={
-                  Array [
-                    Object {
+                  [
+                    {
                       "width": 16,
                     },
                   ]
@@ -452,8 +452,8 @@ exports[`<Favorites/> should render correctly 1`] = `
                   borderRadius={2}
                   height={12}
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "backgroundColor": "#DDDDDD",
                         "borderRadius": 2,
                         "height": 12,
@@ -467,7 +467,7 @@ exports[`<Favorites/> should render correctly 1`] = `
                   <BVLinearGradient
                     collapsable={false}
                     colors={
-                      Array [
+                      [
                         4292730333,
                         4293848814,
                         4293848814,
@@ -475,28 +475,28 @@ exports[`<Favorites/> should render correctly 1`] = `
                       ]
                     }
                     endPoint={
-                      Object {
+                      {
                         "x": 1,
                         "y": 0,
                       }
                     }
                     locations={null}
                     startPoint={
-                      Object {
+                      {
                         "x": 0,
                         "y": 0,
                       }
                     }
                     style={
-                      Object {
+                      {
                         "borderRadius": 2,
                         "bottom": 0,
                         "left": 0,
                         "position": "absolute",
                         "right": 0,
                         "top": 0,
-                        "transform": Array [
-                          Object {
+                        "transform": [
+                          {
                             "translateX": -300,
                           },
                         ],
@@ -507,8 +507,8 @@ exports[`<Favorites/> should render correctly 1`] = `
                 <View
                   numberOfSpaces={3}
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "height": 12,
                       },
                     ]
@@ -518,8 +518,8 @@ exports[`<Favorites/> should render correctly 1`] = `
                   borderRadius={2}
                   height={12}
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "backgroundColor": "#DDDDDD",
                         "borderRadius": 2,
                         "height": 12,
@@ -533,7 +533,7 @@ exports[`<Favorites/> should render correctly 1`] = `
                   <BVLinearGradient
                     collapsable={false}
                     colors={
-                      Array [
+                      [
                         4292730333,
                         4293848814,
                         4293848814,
@@ -541,28 +541,28 @@ exports[`<Favorites/> should render correctly 1`] = `
                       ]
                     }
                     endPoint={
-                      Object {
+                      {
                         "x": 1,
                         "y": 0,
                       }
                     }
                     locations={null}
                     startPoint={
-                      Object {
+                      {
                         "x": 0,
                         "y": 0,
                       }
                     }
                     style={
-                      Object {
+                      {
                         "borderRadius": 2,
                         "bottom": 0,
                         "left": 0,
                         "position": "absolute",
                         "right": 0,
                         "top": 0,
-                        "transform": Array [
-                          Object {
+                        "transform": [
+                          {
                             "translateX": -150,
                           },
                         ],
@@ -573,8 +573,8 @@ exports[`<Favorites/> should render correctly 1`] = `
                 <View
                   numberOfSpaces={1}
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "height": 4,
                       },
                     ]
@@ -584,8 +584,8 @@ exports[`<Favorites/> should render correctly 1`] = `
                   borderRadius={2}
                   height={12}
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "backgroundColor": "#DDDDDD",
                         "borderRadius": 2,
                         "height": 12,
@@ -599,7 +599,7 @@ exports[`<Favorites/> should render correctly 1`] = `
                   <BVLinearGradient
                     collapsable={false}
                     colors={
-                      Array [
+                      [
                         4292730333,
                         4293848814,
                         4293848814,
@@ -607,28 +607,28 @@ exports[`<Favorites/> should render correctly 1`] = `
                       ]
                     }
                     endPoint={
-                      Object {
+                      {
                         "x": 1,
                         "y": 0,
                       }
                     }
                     locations={null}
                     startPoint={
-                      Object {
+                      {
                         "x": 0,
                         "y": 0,
                       }
                     }
                     style={
-                      Object {
+                      {
                         "borderRadius": 2,
                         "bottom": 0,
                         "left": 0,
                         "position": "absolute",
                         "right": 0,
                         "top": 0,
-                        "transform": Array [
-                          Object {
+                        "transform": [
+                          {
                             "translateX": -200,
                           },
                         ],
@@ -639,8 +639,8 @@ exports[`<Favorites/> should render correctly 1`] = `
                 <View
                   numberOfSpaces={2}
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "height": 8,
                       },
                     ]
@@ -650,8 +650,8 @@ exports[`<Favorites/> should render correctly 1`] = `
                   borderRadius={2}
                   height={12}
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "backgroundColor": "#DDDDDD",
                         "borderRadius": 2,
                         "height": 12,
@@ -665,7 +665,7 @@ exports[`<Favorites/> should render correctly 1`] = `
                   <BVLinearGradient
                     collapsable={false}
                     colors={
-                      Array [
+                      [
                         4292730333,
                         4293848814,
                         4293848814,
@@ -673,28 +673,28 @@ exports[`<Favorites/> should render correctly 1`] = `
                       ]
                     }
                     endPoint={
-                      Object {
+                      {
                         "x": 1,
                         "y": 0,
                       }
                     }
                     locations={null}
                     startPoint={
-                      Object {
+                      {
                         "x": 0,
                         "y": 0,
                       }
                     }
                     style={
-                      Object {
+                      {
                         "borderRadius": 2,
                         "bottom": 0,
                         "left": 0,
                         "position": "absolute",
                         "right": 0,
                         "top": 0,
-                        "transform": Array [
-                          Object {
+                        "transform": [
+                          {
                             "translateX": -40,
                           },
                         ],
@@ -707,8 +707,8 @@ exports[`<Favorites/> should render correctly 1`] = `
           </View>
           <View
             style={
-              Array [
-                Object {
+              [
+                {
                   "flexDirection": "row",
                   "marginLeft": 24,
                   "marginRight": 24,
@@ -719,8 +719,8 @@ exports[`<Favorites/> should render correctly 1`] = `
           >
             <View
               style={
-                Array [
-                  Object {
+                [
+                  {
                     "maxWidth": 280,
                     "minWidth": 120,
                     "width": "47%",
@@ -733,8 +733,8 @@ exports[`<Favorites/> should render correctly 1`] = `
                 fullWidth={true}
                 height={48}
                 style={
-                  Array [
-                    Object {
+                  [
+                    {
                       "backgroundColor": "#DDDDDD",
                       "borderRadius": 24,
                       "height": 48,
@@ -748,7 +748,7 @@ exports[`<Favorites/> should render correctly 1`] = `
                 <BVLinearGradient
                   collapsable={false}
                   colors={
-                    Array [
+                    [
                       4292730333,
                       4293848814,
                       4293848814,
@@ -756,28 +756,28 @@ exports[`<Favorites/> should render correctly 1`] = `
                     ]
                   }
                   endPoint={
-                    Object {
+                    {
                       "x": 1,
                       "y": 0,
                     }
                   }
                   locations={null}
                   startPoint={
-                    Object {
+                    {
                       "x": 0,
                       "y": 0,
                     }
                   }
                   style={
-                    Object {
+                    {
                       "borderRadius": 24,
                       "bottom": 0,
                       "left": 0,
                       "position": "absolute",
                       "right": 0,
                       "top": 0,
-                      "transform": Array [
-                        Object {
+                      "transform": [
+                        {
                           "translateX": -200,
                         },
                       ],
@@ -789,8 +789,8 @@ exports[`<Favorites/> should render correctly 1`] = `
             <View
               numberOfSpaces={5}
               style={
-                Array [
-                  Object {
+                [
+                  {
                     "width": 20,
                   },
                 ]
@@ -798,8 +798,8 @@ exports[`<Favorites/> should render correctly 1`] = `
             />
             <View
               style={
-                Array [
-                  Object {
+                [
+                  {
                     "maxWidth": 280,
                     "minWidth": 120,
                     "width": "47%",
@@ -812,8 +812,8 @@ exports[`<Favorites/> should render correctly 1`] = `
                 fullWidth={true}
                 height={48}
                 style={
-                  Array [
-                    Object {
+                  [
+                    {
                       "backgroundColor": "#DDDDDD",
                       "borderRadius": 24,
                       "height": 48,
@@ -827,7 +827,7 @@ exports[`<Favorites/> should render correctly 1`] = `
                 <BVLinearGradient
                   collapsable={false}
                   colors={
-                    Array [
+                    [
                       4292730333,
                       4293848814,
                       4293848814,
@@ -835,28 +835,28 @@ exports[`<Favorites/> should render correctly 1`] = `
                     ]
                   }
                   endPoint={
-                    Object {
+                    {
                       "x": 1,
                       "y": 0,
                     }
                   }
                   locations={null}
                   startPoint={
-                    Object {
+                    {
                       "x": 0,
                       "y": 0,
                     }
                   }
                   style={
-                    Object {
+                    {
                       "borderRadius": 24,
                       "bottom": 0,
                       "left": 0,
                       "position": "absolute",
                       "right": 0,
                       "top": 0,
-                      "transform": Array [
-                        Object {
+                      "transform": [
+                        {
                           "translateX": -200,
                         },
                       ],
@@ -869,13 +869,13 @@ exports[`<Favorites/> should render correctly 1`] = `
           <View
             highlighted={false}
             leadingItem={
-              Object {
+              {
                 "key": "0",
               }
             }
             style={
-              Array [
-                Object {
+              [
+                {
                   "backgroundColor": "#F1F1F4",
                   "height": 2,
                   "marginHorizontal": 24,
@@ -891,8 +891,8 @@ exports[`<Favorites/> should render correctly 1`] = `
         >
           <View
             style={
-              Array [
-                Object {
+              [
+                {
                   "marginHorizontal": 24,
                 },
               ]
@@ -900,8 +900,8 @@ exports[`<Favorites/> should render correctly 1`] = `
           >
             <View
               style={
-                Array [
-                  Object {
+                [
+                  {
                     "alignItems": "center",
                     "flexDirection": "row",
                   },
@@ -912,8 +912,8 @@ exports[`<Favorites/> should render correctly 1`] = `
                 borderRadius={4}
                 height={96}
                 style={
-                  Array [
-                    Object {
+                  [
+                    {
                       "backgroundColor": "#DDDDDD",
                       "borderRadius": 4,
                       "height": 96,
@@ -927,7 +927,7 @@ exports[`<Favorites/> should render correctly 1`] = `
                 <BVLinearGradient
                   collapsable={false}
                   colors={
-                    Array [
+                    [
                       4292730333,
                       4293848814,
                       4293848814,
@@ -935,28 +935,28 @@ exports[`<Favorites/> should render correctly 1`] = `
                     ]
                   }
                   endPoint={
-                    Object {
+                    {
                       "x": 1,
                       "y": 0,
                     }
                   }
                   locations={null}
                   startPoint={
-                    Object {
+                    {
                       "x": 0,
                       "y": 0,
                     }
                   }
                   style={
-                    Object {
+                    {
                       "borderRadius": 4,
                       "bottom": 0,
                       "left": 0,
                       "position": "absolute",
                       "right": 0,
                       "top": 0,
-                      "transform": Array [
-                        Object {
+                      "transform": [
+                        {
                           "translateX": -80,
                         },
                       ],
@@ -967,8 +967,8 @@ exports[`<Favorites/> should render correctly 1`] = `
               <View
                 numberOfSpaces={4}
                 style={
-                  Array [
-                    Object {
+                  [
+                    {
                       "width": 16,
                     },
                   ]
@@ -979,8 +979,8 @@ exports[`<Favorites/> should render correctly 1`] = `
                   borderRadius={2}
                   height={12}
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "backgroundColor": "#DDDDDD",
                         "borderRadius": 2,
                         "height": 12,
@@ -994,7 +994,7 @@ exports[`<Favorites/> should render correctly 1`] = `
                   <BVLinearGradient
                     collapsable={false}
                     colors={
-                      Array [
+                      [
                         4292730333,
                         4293848814,
                         4293848814,
@@ -1002,28 +1002,28 @@ exports[`<Favorites/> should render correctly 1`] = `
                       ]
                     }
                     endPoint={
-                      Object {
+                      {
                         "x": 1,
                         "y": 0,
                       }
                     }
                     locations={null}
                     startPoint={
-                      Object {
+                      {
                         "x": 0,
                         "y": 0,
                       }
                     }
                     style={
-                      Object {
+                      {
                         "borderRadius": 2,
                         "bottom": 0,
                         "left": 0,
                         "position": "absolute",
                         "right": 0,
                         "top": 0,
-                        "transform": Array [
-                          Object {
+                        "transform": [
+                          {
                             "translateX": -300,
                           },
                         ],
@@ -1034,8 +1034,8 @@ exports[`<Favorites/> should render correctly 1`] = `
                 <View
                   numberOfSpaces={3}
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "height": 12,
                       },
                     ]
@@ -1045,8 +1045,8 @@ exports[`<Favorites/> should render correctly 1`] = `
                   borderRadius={2}
                   height={12}
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "backgroundColor": "#DDDDDD",
                         "borderRadius": 2,
                         "height": 12,
@@ -1060,7 +1060,7 @@ exports[`<Favorites/> should render correctly 1`] = `
                   <BVLinearGradient
                     collapsable={false}
                     colors={
-                      Array [
+                      [
                         4292730333,
                         4293848814,
                         4293848814,
@@ -1068,28 +1068,28 @@ exports[`<Favorites/> should render correctly 1`] = `
                       ]
                     }
                     endPoint={
-                      Object {
+                      {
                         "x": 1,
                         "y": 0,
                       }
                     }
                     locations={null}
                     startPoint={
-                      Object {
+                      {
                         "x": 0,
                         "y": 0,
                       }
                     }
                     style={
-                      Object {
+                      {
                         "borderRadius": 2,
                         "bottom": 0,
                         "left": 0,
                         "position": "absolute",
                         "right": 0,
                         "top": 0,
-                        "transform": Array [
-                          Object {
+                        "transform": [
+                          {
                             "translateX": -150,
                           },
                         ],
@@ -1100,8 +1100,8 @@ exports[`<Favorites/> should render correctly 1`] = `
                 <View
                   numberOfSpaces={1}
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "height": 4,
                       },
                     ]
@@ -1111,8 +1111,8 @@ exports[`<Favorites/> should render correctly 1`] = `
                   borderRadius={2}
                   height={12}
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "backgroundColor": "#DDDDDD",
                         "borderRadius": 2,
                         "height": 12,
@@ -1126,7 +1126,7 @@ exports[`<Favorites/> should render correctly 1`] = `
                   <BVLinearGradient
                     collapsable={false}
                     colors={
-                      Array [
+                      [
                         4292730333,
                         4293848814,
                         4293848814,
@@ -1134,28 +1134,28 @@ exports[`<Favorites/> should render correctly 1`] = `
                       ]
                     }
                     endPoint={
-                      Object {
+                      {
                         "x": 1,
                         "y": 0,
                       }
                     }
                     locations={null}
                     startPoint={
-                      Object {
+                      {
                         "x": 0,
                         "y": 0,
                       }
                     }
                     style={
-                      Object {
+                      {
                         "borderRadius": 2,
                         "bottom": 0,
                         "left": 0,
                         "position": "absolute",
                         "right": 0,
                         "top": 0,
-                        "transform": Array [
-                          Object {
+                        "transform": [
+                          {
                             "translateX": -200,
                           },
                         ],
@@ -1166,8 +1166,8 @@ exports[`<Favorites/> should render correctly 1`] = `
                 <View
                   numberOfSpaces={2}
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "height": 8,
                       },
                     ]
@@ -1177,8 +1177,8 @@ exports[`<Favorites/> should render correctly 1`] = `
                   borderRadius={2}
                   height={12}
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "backgroundColor": "#DDDDDD",
                         "borderRadius": 2,
                         "height": 12,
@@ -1192,7 +1192,7 @@ exports[`<Favorites/> should render correctly 1`] = `
                   <BVLinearGradient
                     collapsable={false}
                     colors={
-                      Array [
+                      [
                         4292730333,
                         4293848814,
                         4293848814,
@@ -1200,28 +1200,28 @@ exports[`<Favorites/> should render correctly 1`] = `
                       ]
                     }
                     endPoint={
-                      Object {
+                      {
                         "x": 1,
                         "y": 0,
                       }
                     }
                     locations={null}
                     startPoint={
-                      Object {
+                      {
                         "x": 0,
                         "y": 0,
                       }
                     }
                     style={
-                      Object {
+                      {
                         "borderRadius": 2,
                         "bottom": 0,
                         "left": 0,
                         "position": "absolute",
                         "right": 0,
                         "top": 0,
-                        "transform": Array [
-                          Object {
+                        "transform": [
+                          {
                             "translateX": -40,
                           },
                         ],
@@ -1234,8 +1234,8 @@ exports[`<Favorites/> should render correctly 1`] = `
           </View>
           <View
             style={
-              Array [
-                Object {
+              [
+                {
                   "flexDirection": "row",
                   "marginLeft": 24,
                   "marginRight": 24,
@@ -1246,8 +1246,8 @@ exports[`<Favorites/> should render correctly 1`] = `
           >
             <View
               style={
-                Array [
-                  Object {
+                [
+                  {
                     "maxWidth": 280,
                     "minWidth": 120,
                     "width": "47%",
@@ -1260,8 +1260,8 @@ exports[`<Favorites/> should render correctly 1`] = `
                 fullWidth={true}
                 height={48}
                 style={
-                  Array [
-                    Object {
+                  [
+                    {
                       "backgroundColor": "#DDDDDD",
                       "borderRadius": 24,
                       "height": 48,
@@ -1275,7 +1275,7 @@ exports[`<Favorites/> should render correctly 1`] = `
                 <BVLinearGradient
                   collapsable={false}
                   colors={
-                    Array [
+                    [
                       4292730333,
                       4293848814,
                       4293848814,
@@ -1283,28 +1283,28 @@ exports[`<Favorites/> should render correctly 1`] = `
                     ]
                   }
                   endPoint={
-                    Object {
+                    {
                       "x": 1,
                       "y": 0,
                     }
                   }
                   locations={null}
                   startPoint={
-                    Object {
+                    {
                       "x": 0,
                       "y": 0,
                     }
                   }
                   style={
-                    Object {
+                    {
                       "borderRadius": 24,
                       "bottom": 0,
                       "left": 0,
                       "position": "absolute",
                       "right": 0,
                       "top": 0,
-                      "transform": Array [
-                        Object {
+                      "transform": [
+                        {
                           "translateX": -200,
                         },
                       ],
@@ -1316,8 +1316,8 @@ exports[`<Favorites/> should render correctly 1`] = `
             <View
               numberOfSpaces={5}
               style={
-                Array [
-                  Object {
+                [
+                  {
                     "width": 20,
                   },
                 ]
@@ -1325,8 +1325,8 @@ exports[`<Favorites/> should render correctly 1`] = `
             />
             <View
               style={
-                Array [
-                  Object {
+                [
+                  {
                     "maxWidth": 280,
                     "minWidth": 120,
                     "width": "47%",
@@ -1339,8 +1339,8 @@ exports[`<Favorites/> should render correctly 1`] = `
                 fullWidth={true}
                 height={48}
                 style={
-                  Array [
-                    Object {
+                  [
+                    {
                       "backgroundColor": "#DDDDDD",
                       "borderRadius": 24,
                       "height": 48,
@@ -1354,7 +1354,7 @@ exports[`<Favorites/> should render correctly 1`] = `
                 <BVLinearGradient
                   collapsable={false}
                   colors={
-                    Array [
+                    [
                       4292730333,
                       4293848814,
                       4293848814,
@@ -1362,28 +1362,28 @@ exports[`<Favorites/> should render correctly 1`] = `
                     ]
                   }
                   endPoint={
-                    Object {
+                    {
                       "x": 1,
                       "y": 0,
                     }
                   }
                   locations={null}
                   startPoint={
-                    Object {
+                    {
                       "x": 0,
                       "y": 0,
                     }
                   }
                   style={
-                    Object {
+                    {
                       "borderRadius": 24,
                       "bottom": 0,
                       "left": 0,
                       "position": "absolute",
                       "right": 0,
                       "top": 0,
-                      "transform": Array [
-                        Object {
+                      "transform": [
+                        {
                           "translateX": -200,
                         },
                       ],
@@ -1396,13 +1396,13 @@ exports[`<Favorites/> should render correctly 1`] = `
           <View
             highlighted={false}
             leadingItem={
-              Object {
+              {
                 "key": "1",
               }
             }
             style={
-              Array [
-                Object {
+              [
+                {
                   "backgroundColor": "#F1F1F4",
                   "height": 2,
                   "marginHorizontal": 24,
@@ -1418,8 +1418,8 @@ exports[`<Favorites/> should render correctly 1`] = `
         >
           <View
             style={
-              Array [
-                Object {
+              [
+                {
                   "marginHorizontal": 24,
                 },
               ]
@@ -1427,8 +1427,8 @@ exports[`<Favorites/> should render correctly 1`] = `
           >
             <View
               style={
-                Array [
-                  Object {
+                [
+                  {
                     "alignItems": "center",
                     "flexDirection": "row",
                   },
@@ -1439,8 +1439,8 @@ exports[`<Favorites/> should render correctly 1`] = `
                 borderRadius={4}
                 height={96}
                 style={
-                  Array [
-                    Object {
+                  [
+                    {
                       "backgroundColor": "#DDDDDD",
                       "borderRadius": 4,
                       "height": 96,
@@ -1454,7 +1454,7 @@ exports[`<Favorites/> should render correctly 1`] = `
                 <BVLinearGradient
                   collapsable={false}
                   colors={
-                    Array [
+                    [
                       4292730333,
                       4293848814,
                       4293848814,
@@ -1462,28 +1462,28 @@ exports[`<Favorites/> should render correctly 1`] = `
                     ]
                   }
                   endPoint={
-                    Object {
+                    {
                       "x": 1,
                       "y": 0,
                     }
                   }
                   locations={null}
                   startPoint={
-                    Object {
+                    {
                       "x": 0,
                       "y": 0,
                     }
                   }
                   style={
-                    Object {
+                    {
                       "borderRadius": 4,
                       "bottom": 0,
                       "left": 0,
                       "position": "absolute",
                       "right": 0,
                       "top": 0,
-                      "transform": Array [
-                        Object {
+                      "transform": [
+                        {
                           "translateX": -80,
                         },
                       ],
@@ -1494,8 +1494,8 @@ exports[`<Favorites/> should render correctly 1`] = `
               <View
                 numberOfSpaces={4}
                 style={
-                  Array [
-                    Object {
+                  [
+                    {
                       "width": 16,
                     },
                   ]
@@ -1506,8 +1506,8 @@ exports[`<Favorites/> should render correctly 1`] = `
                   borderRadius={2}
                   height={12}
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "backgroundColor": "#DDDDDD",
                         "borderRadius": 2,
                         "height": 12,
@@ -1521,7 +1521,7 @@ exports[`<Favorites/> should render correctly 1`] = `
                   <BVLinearGradient
                     collapsable={false}
                     colors={
-                      Array [
+                      [
                         4292730333,
                         4293848814,
                         4293848814,
@@ -1529,28 +1529,28 @@ exports[`<Favorites/> should render correctly 1`] = `
                       ]
                     }
                     endPoint={
-                      Object {
+                      {
                         "x": 1,
                         "y": 0,
                       }
                     }
                     locations={null}
                     startPoint={
-                      Object {
+                      {
                         "x": 0,
                         "y": 0,
                       }
                     }
                     style={
-                      Object {
+                      {
                         "borderRadius": 2,
                         "bottom": 0,
                         "left": 0,
                         "position": "absolute",
                         "right": 0,
                         "top": 0,
-                        "transform": Array [
-                          Object {
+                        "transform": [
+                          {
                             "translateX": -300,
                           },
                         ],
@@ -1561,8 +1561,8 @@ exports[`<Favorites/> should render correctly 1`] = `
                 <View
                   numberOfSpaces={3}
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "height": 12,
                       },
                     ]
@@ -1572,8 +1572,8 @@ exports[`<Favorites/> should render correctly 1`] = `
                   borderRadius={2}
                   height={12}
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "backgroundColor": "#DDDDDD",
                         "borderRadius": 2,
                         "height": 12,
@@ -1587,7 +1587,7 @@ exports[`<Favorites/> should render correctly 1`] = `
                   <BVLinearGradient
                     collapsable={false}
                     colors={
-                      Array [
+                      [
                         4292730333,
                         4293848814,
                         4293848814,
@@ -1595,28 +1595,28 @@ exports[`<Favorites/> should render correctly 1`] = `
                       ]
                     }
                     endPoint={
-                      Object {
+                      {
                         "x": 1,
                         "y": 0,
                       }
                     }
                     locations={null}
                     startPoint={
-                      Object {
+                      {
                         "x": 0,
                         "y": 0,
                       }
                     }
                     style={
-                      Object {
+                      {
                         "borderRadius": 2,
                         "bottom": 0,
                         "left": 0,
                         "position": "absolute",
                         "right": 0,
                         "top": 0,
-                        "transform": Array [
-                          Object {
+                        "transform": [
+                          {
                             "translateX": -150,
                           },
                         ],
@@ -1627,8 +1627,8 @@ exports[`<Favorites/> should render correctly 1`] = `
                 <View
                   numberOfSpaces={1}
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "height": 4,
                       },
                     ]
@@ -1638,8 +1638,8 @@ exports[`<Favorites/> should render correctly 1`] = `
                   borderRadius={2}
                   height={12}
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "backgroundColor": "#DDDDDD",
                         "borderRadius": 2,
                         "height": 12,
@@ -1653,7 +1653,7 @@ exports[`<Favorites/> should render correctly 1`] = `
                   <BVLinearGradient
                     collapsable={false}
                     colors={
-                      Array [
+                      [
                         4292730333,
                         4293848814,
                         4293848814,
@@ -1661,28 +1661,28 @@ exports[`<Favorites/> should render correctly 1`] = `
                       ]
                     }
                     endPoint={
-                      Object {
+                      {
                         "x": 1,
                         "y": 0,
                       }
                     }
                     locations={null}
                     startPoint={
-                      Object {
+                      {
                         "x": 0,
                         "y": 0,
                       }
                     }
                     style={
-                      Object {
+                      {
                         "borderRadius": 2,
                         "bottom": 0,
                         "left": 0,
                         "position": "absolute",
                         "right": 0,
                         "top": 0,
-                        "transform": Array [
-                          Object {
+                        "transform": [
+                          {
                             "translateX": -200,
                           },
                         ],
@@ -1693,8 +1693,8 @@ exports[`<Favorites/> should render correctly 1`] = `
                 <View
                   numberOfSpaces={2}
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "height": 8,
                       },
                     ]
@@ -1704,8 +1704,8 @@ exports[`<Favorites/> should render correctly 1`] = `
                   borderRadius={2}
                   height={12}
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "backgroundColor": "#DDDDDD",
                         "borderRadius": 2,
                         "height": 12,
@@ -1719,7 +1719,7 @@ exports[`<Favorites/> should render correctly 1`] = `
                   <BVLinearGradient
                     collapsable={false}
                     colors={
-                      Array [
+                      [
                         4292730333,
                         4293848814,
                         4293848814,
@@ -1727,28 +1727,28 @@ exports[`<Favorites/> should render correctly 1`] = `
                       ]
                     }
                     endPoint={
-                      Object {
+                      {
                         "x": 1,
                         "y": 0,
                       }
                     }
                     locations={null}
                     startPoint={
-                      Object {
+                      {
                         "x": 0,
                         "y": 0,
                       }
                     }
                     style={
-                      Object {
+                      {
                         "borderRadius": 2,
                         "bottom": 0,
                         "left": 0,
                         "position": "absolute",
                         "right": 0,
                         "top": 0,
-                        "transform": Array [
-                          Object {
+                        "transform": [
+                          {
                             "translateX": -40,
                           },
                         ],
@@ -1761,8 +1761,8 @@ exports[`<Favorites/> should render correctly 1`] = `
           </View>
           <View
             style={
-              Array [
-                Object {
+              [
+                {
                   "flexDirection": "row",
                   "marginLeft": 24,
                   "marginRight": 24,
@@ -1773,8 +1773,8 @@ exports[`<Favorites/> should render correctly 1`] = `
           >
             <View
               style={
-                Array [
-                  Object {
+                [
+                  {
                     "maxWidth": 280,
                     "minWidth": 120,
                     "width": "47%",
@@ -1787,8 +1787,8 @@ exports[`<Favorites/> should render correctly 1`] = `
                 fullWidth={true}
                 height={48}
                 style={
-                  Array [
-                    Object {
+                  [
+                    {
                       "backgroundColor": "#DDDDDD",
                       "borderRadius": 24,
                       "height": 48,
@@ -1802,7 +1802,7 @@ exports[`<Favorites/> should render correctly 1`] = `
                 <BVLinearGradient
                   collapsable={false}
                   colors={
-                    Array [
+                    [
                       4292730333,
                       4293848814,
                       4293848814,
@@ -1810,28 +1810,28 @@ exports[`<Favorites/> should render correctly 1`] = `
                     ]
                   }
                   endPoint={
-                    Object {
+                    {
                       "x": 1,
                       "y": 0,
                     }
                   }
                   locations={null}
                   startPoint={
-                    Object {
+                    {
                       "x": 0,
                       "y": 0,
                     }
                   }
                   style={
-                    Object {
+                    {
                       "borderRadius": 24,
                       "bottom": 0,
                       "left": 0,
                       "position": "absolute",
                       "right": 0,
                       "top": 0,
-                      "transform": Array [
-                        Object {
+                      "transform": [
+                        {
                           "translateX": -200,
                         },
                       ],
@@ -1843,8 +1843,8 @@ exports[`<Favorites/> should render correctly 1`] = `
             <View
               numberOfSpaces={5}
               style={
-                Array [
-                  Object {
+                [
+                  {
                     "width": 20,
                   },
                 ]
@@ -1852,8 +1852,8 @@ exports[`<Favorites/> should render correctly 1`] = `
             />
             <View
               style={
-                Array [
-                  Object {
+                [
+                  {
                     "maxWidth": 280,
                     "minWidth": 120,
                     "width": "47%",
@@ -1866,8 +1866,8 @@ exports[`<Favorites/> should render correctly 1`] = `
                 fullWidth={true}
                 height={48}
                 style={
-                  Array [
-                    Object {
+                  [
+                    {
                       "backgroundColor": "#DDDDDD",
                       "borderRadius": 24,
                       "height": 48,
@@ -1881,7 +1881,7 @@ exports[`<Favorites/> should render correctly 1`] = `
                 <BVLinearGradient
                   collapsable={false}
                   colors={
-                    Array [
+                    [
                       4292730333,
                       4293848814,
                       4293848814,
@@ -1889,28 +1889,28 @@ exports[`<Favorites/> should render correctly 1`] = `
                     ]
                   }
                   endPoint={
-                    Object {
+                    {
                       "x": 1,
                       "y": 0,
                     }
                   }
                   locations={null}
                   startPoint={
-                    Object {
+                    {
                       "x": 0,
                       "y": 0,
                     }
                   }
                   style={
-                    Object {
+                    {
                       "borderRadius": 24,
                       "bottom": 0,
                       "left": 0,
                       "position": "absolute",
                       "right": 0,
                       "top": 0,
-                      "transform": Array [
-                        Object {
+                      "transform": [
+                        {
                           "translateX": -200,
                         },
                       ],
@@ -1923,13 +1923,13 @@ exports[`<Favorites/> should render correctly 1`] = `
           <View
             highlighted={false}
             leadingItem={
-              Object {
+              {
                 "key": "2",
               }
             }
             style={
-              Array [
-                Object {
+              [
+                {
                   "backgroundColor": "#F1F1F4",
                   "height": 2,
                   "marginHorizontal": 24,
@@ -1945,8 +1945,8 @@ exports[`<Favorites/> should render correctly 1`] = `
         >
           <View
             style={
-              Array [
-                Object {
+              [
+                {
                   "marginHorizontal": 24,
                 },
               ]
@@ -1954,8 +1954,8 @@ exports[`<Favorites/> should render correctly 1`] = `
           >
             <View
               style={
-                Array [
-                  Object {
+                [
+                  {
                     "alignItems": "center",
                     "flexDirection": "row",
                   },
@@ -1966,8 +1966,8 @@ exports[`<Favorites/> should render correctly 1`] = `
                 borderRadius={4}
                 height={96}
                 style={
-                  Array [
-                    Object {
+                  [
+                    {
                       "backgroundColor": "#DDDDDD",
                       "borderRadius": 4,
                       "height": 96,
@@ -1981,7 +1981,7 @@ exports[`<Favorites/> should render correctly 1`] = `
                 <BVLinearGradient
                   collapsable={false}
                   colors={
-                    Array [
+                    [
                       4292730333,
                       4293848814,
                       4293848814,
@@ -1989,28 +1989,28 @@ exports[`<Favorites/> should render correctly 1`] = `
                     ]
                   }
                   endPoint={
-                    Object {
+                    {
                       "x": 1,
                       "y": 0,
                     }
                   }
                   locations={null}
                   startPoint={
-                    Object {
+                    {
                       "x": 0,
                       "y": 0,
                     }
                   }
                   style={
-                    Object {
+                    {
                       "borderRadius": 4,
                       "bottom": 0,
                       "left": 0,
                       "position": "absolute",
                       "right": 0,
                       "top": 0,
-                      "transform": Array [
-                        Object {
+                      "transform": [
+                        {
                           "translateX": -80,
                         },
                       ],
@@ -2021,8 +2021,8 @@ exports[`<Favorites/> should render correctly 1`] = `
               <View
                 numberOfSpaces={4}
                 style={
-                  Array [
-                    Object {
+                  [
+                    {
                       "width": 16,
                     },
                   ]
@@ -2033,8 +2033,8 @@ exports[`<Favorites/> should render correctly 1`] = `
                   borderRadius={2}
                   height={12}
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "backgroundColor": "#DDDDDD",
                         "borderRadius": 2,
                         "height": 12,
@@ -2048,7 +2048,7 @@ exports[`<Favorites/> should render correctly 1`] = `
                   <BVLinearGradient
                     collapsable={false}
                     colors={
-                      Array [
+                      [
                         4292730333,
                         4293848814,
                         4293848814,
@@ -2056,28 +2056,28 @@ exports[`<Favorites/> should render correctly 1`] = `
                       ]
                     }
                     endPoint={
-                      Object {
+                      {
                         "x": 1,
                         "y": 0,
                       }
                     }
                     locations={null}
                     startPoint={
-                      Object {
+                      {
                         "x": 0,
                         "y": 0,
                       }
                     }
                     style={
-                      Object {
+                      {
                         "borderRadius": 2,
                         "bottom": 0,
                         "left": 0,
                         "position": "absolute",
                         "right": 0,
                         "top": 0,
-                        "transform": Array [
-                          Object {
+                        "transform": [
+                          {
                             "translateX": -300,
                           },
                         ],
@@ -2088,8 +2088,8 @@ exports[`<Favorites/> should render correctly 1`] = `
                 <View
                   numberOfSpaces={3}
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "height": 12,
                       },
                     ]
@@ -2099,8 +2099,8 @@ exports[`<Favorites/> should render correctly 1`] = `
                   borderRadius={2}
                   height={12}
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "backgroundColor": "#DDDDDD",
                         "borderRadius": 2,
                         "height": 12,
@@ -2114,7 +2114,7 @@ exports[`<Favorites/> should render correctly 1`] = `
                   <BVLinearGradient
                     collapsable={false}
                     colors={
-                      Array [
+                      [
                         4292730333,
                         4293848814,
                         4293848814,
@@ -2122,28 +2122,28 @@ exports[`<Favorites/> should render correctly 1`] = `
                       ]
                     }
                     endPoint={
-                      Object {
+                      {
                         "x": 1,
                         "y": 0,
                       }
                     }
                     locations={null}
                     startPoint={
-                      Object {
+                      {
                         "x": 0,
                         "y": 0,
                       }
                     }
                     style={
-                      Object {
+                      {
                         "borderRadius": 2,
                         "bottom": 0,
                         "left": 0,
                         "position": "absolute",
                         "right": 0,
                         "top": 0,
-                        "transform": Array [
-                          Object {
+                        "transform": [
+                          {
                             "translateX": -150,
                           },
                         ],
@@ -2154,8 +2154,8 @@ exports[`<Favorites/> should render correctly 1`] = `
                 <View
                   numberOfSpaces={1}
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "height": 4,
                       },
                     ]
@@ -2165,8 +2165,8 @@ exports[`<Favorites/> should render correctly 1`] = `
                   borderRadius={2}
                   height={12}
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "backgroundColor": "#DDDDDD",
                         "borderRadius": 2,
                         "height": 12,
@@ -2180,7 +2180,7 @@ exports[`<Favorites/> should render correctly 1`] = `
                   <BVLinearGradient
                     collapsable={false}
                     colors={
-                      Array [
+                      [
                         4292730333,
                         4293848814,
                         4293848814,
@@ -2188,28 +2188,28 @@ exports[`<Favorites/> should render correctly 1`] = `
                       ]
                     }
                     endPoint={
-                      Object {
+                      {
                         "x": 1,
                         "y": 0,
                       }
                     }
                     locations={null}
                     startPoint={
-                      Object {
+                      {
                         "x": 0,
                         "y": 0,
                       }
                     }
                     style={
-                      Object {
+                      {
                         "borderRadius": 2,
                         "bottom": 0,
                         "left": 0,
                         "position": "absolute",
                         "right": 0,
                         "top": 0,
-                        "transform": Array [
-                          Object {
+                        "transform": [
+                          {
                             "translateX": -200,
                           },
                         ],
@@ -2220,8 +2220,8 @@ exports[`<Favorites/> should render correctly 1`] = `
                 <View
                   numberOfSpaces={2}
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "height": 8,
                       },
                     ]
@@ -2231,8 +2231,8 @@ exports[`<Favorites/> should render correctly 1`] = `
                   borderRadius={2}
                   height={12}
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "backgroundColor": "#DDDDDD",
                         "borderRadius": 2,
                         "height": 12,
@@ -2246,7 +2246,7 @@ exports[`<Favorites/> should render correctly 1`] = `
                   <BVLinearGradient
                     collapsable={false}
                     colors={
-                      Array [
+                      [
                         4292730333,
                         4293848814,
                         4293848814,
@@ -2254,28 +2254,28 @@ exports[`<Favorites/> should render correctly 1`] = `
                       ]
                     }
                     endPoint={
-                      Object {
+                      {
                         "x": 1,
                         "y": 0,
                       }
                     }
                     locations={null}
                     startPoint={
-                      Object {
+                      {
                         "x": 0,
                         "y": 0,
                       }
                     }
                     style={
-                      Object {
+                      {
                         "borderRadius": 2,
                         "bottom": 0,
                         "left": 0,
                         "position": "absolute",
                         "right": 0,
                         "top": 0,
-                        "transform": Array [
-                          Object {
+                        "transform": [
+                          {
                             "translateX": -40,
                           },
                         ],
@@ -2288,8 +2288,8 @@ exports[`<Favorites/> should render correctly 1`] = `
           </View>
           <View
             style={
-              Array [
-                Object {
+              [
+                {
                   "flexDirection": "row",
                   "marginLeft": 24,
                   "marginRight": 24,
@@ -2300,8 +2300,8 @@ exports[`<Favorites/> should render correctly 1`] = `
           >
             <View
               style={
-                Array [
-                  Object {
+                [
+                  {
                     "maxWidth": 280,
                     "minWidth": 120,
                     "width": "47%",
@@ -2314,8 +2314,8 @@ exports[`<Favorites/> should render correctly 1`] = `
                 fullWidth={true}
                 height={48}
                 style={
-                  Array [
-                    Object {
+                  [
+                    {
                       "backgroundColor": "#DDDDDD",
                       "borderRadius": 24,
                       "height": 48,
@@ -2329,7 +2329,7 @@ exports[`<Favorites/> should render correctly 1`] = `
                 <BVLinearGradient
                   collapsable={false}
                   colors={
-                    Array [
+                    [
                       4292730333,
                       4293848814,
                       4293848814,
@@ -2337,28 +2337,28 @@ exports[`<Favorites/> should render correctly 1`] = `
                     ]
                   }
                   endPoint={
-                    Object {
+                    {
                       "x": 1,
                       "y": 0,
                     }
                   }
                   locations={null}
                   startPoint={
-                    Object {
+                    {
                       "x": 0,
                       "y": 0,
                     }
                   }
                   style={
-                    Object {
+                    {
                       "borderRadius": 24,
                       "bottom": 0,
                       "left": 0,
                       "position": "absolute",
                       "right": 0,
                       "top": 0,
-                      "transform": Array [
-                        Object {
+                      "transform": [
+                        {
                           "translateX": -200,
                         },
                       ],
@@ -2370,8 +2370,8 @@ exports[`<Favorites/> should render correctly 1`] = `
             <View
               numberOfSpaces={5}
               style={
-                Array [
-                  Object {
+                [
+                  {
                     "width": 20,
                   },
                 ]
@@ -2379,8 +2379,8 @@ exports[`<Favorites/> should render correctly 1`] = `
             />
             <View
               style={
-                Array [
-                  Object {
+                [
+                  {
                     "maxWidth": 280,
                     "minWidth": 120,
                     "width": "47%",
@@ -2393,8 +2393,8 @@ exports[`<Favorites/> should render correctly 1`] = `
                 fullWidth={true}
                 height={48}
                 style={
-                  Array [
-                    Object {
+                  [
+                    {
                       "backgroundColor": "#DDDDDD",
                       "borderRadius": 24,
                       "height": 48,
@@ -2408,7 +2408,7 @@ exports[`<Favorites/> should render correctly 1`] = `
                 <BVLinearGradient
                   collapsable={false}
                   colors={
-                    Array [
+                    [
                       4292730333,
                       4293848814,
                       4293848814,
@@ -2416,28 +2416,28 @@ exports[`<Favorites/> should render correctly 1`] = `
                     ]
                   }
                   endPoint={
-                    Object {
+                    {
                       "x": 1,
                       "y": 0,
                     }
                   }
                   locations={null}
                   startPoint={
-                    Object {
+                    {
                       "x": 0,
                       "y": 0,
                     }
                   }
                   style={
-                    Object {
+                    {
                       "borderRadius": 24,
                       "bottom": 0,
                       "left": 0,
                       "position": "absolute",
                       "right": 0,
                       "top": 0,
-                      "transform": Array [
-                        Object {
+                      "transform": [
+                        {
                           "translateX": -200,
                         },
                       ],
@@ -2450,13 +2450,13 @@ exports[`<Favorites/> should render correctly 1`] = `
           <View
             highlighted={false}
             leadingItem={
-              Object {
+              {
                 "key": "3",
               }
             }
             style={
-              Array [
-                Object {
+              [
+                {
                   "backgroundColor": "#F1F1F4",
                   "height": 2,
                   "marginHorizontal": 24,
@@ -2472,8 +2472,8 @@ exports[`<Favorites/> should render correctly 1`] = `
         >
           <View
             style={
-              Array [
-                Object {
+              [
+                {
                   "marginHorizontal": 24,
                 },
               ]
@@ -2481,8 +2481,8 @@ exports[`<Favorites/> should render correctly 1`] = `
           >
             <View
               style={
-                Array [
-                  Object {
+                [
+                  {
                     "alignItems": "center",
                     "flexDirection": "row",
                   },
@@ -2493,8 +2493,8 @@ exports[`<Favorites/> should render correctly 1`] = `
                 borderRadius={4}
                 height={96}
                 style={
-                  Array [
-                    Object {
+                  [
+                    {
                       "backgroundColor": "#DDDDDD",
                       "borderRadius": 4,
                       "height": 96,
@@ -2508,7 +2508,7 @@ exports[`<Favorites/> should render correctly 1`] = `
                 <BVLinearGradient
                   collapsable={false}
                   colors={
-                    Array [
+                    [
                       4292730333,
                       4293848814,
                       4293848814,
@@ -2516,28 +2516,28 @@ exports[`<Favorites/> should render correctly 1`] = `
                     ]
                   }
                   endPoint={
-                    Object {
+                    {
                       "x": 1,
                       "y": 0,
                     }
                   }
                   locations={null}
                   startPoint={
-                    Object {
+                    {
                       "x": 0,
                       "y": 0,
                     }
                   }
                   style={
-                    Object {
+                    {
                       "borderRadius": 4,
                       "bottom": 0,
                       "left": 0,
                       "position": "absolute",
                       "right": 0,
                       "top": 0,
-                      "transform": Array [
-                        Object {
+                      "transform": [
+                        {
                           "translateX": -80,
                         },
                       ],
@@ -2548,8 +2548,8 @@ exports[`<Favorites/> should render correctly 1`] = `
               <View
                 numberOfSpaces={4}
                 style={
-                  Array [
-                    Object {
+                  [
+                    {
                       "width": 16,
                     },
                   ]
@@ -2560,8 +2560,8 @@ exports[`<Favorites/> should render correctly 1`] = `
                   borderRadius={2}
                   height={12}
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "backgroundColor": "#DDDDDD",
                         "borderRadius": 2,
                         "height": 12,
@@ -2575,7 +2575,7 @@ exports[`<Favorites/> should render correctly 1`] = `
                   <BVLinearGradient
                     collapsable={false}
                     colors={
-                      Array [
+                      [
                         4292730333,
                         4293848814,
                         4293848814,
@@ -2583,28 +2583,28 @@ exports[`<Favorites/> should render correctly 1`] = `
                       ]
                     }
                     endPoint={
-                      Object {
+                      {
                         "x": 1,
                         "y": 0,
                       }
                     }
                     locations={null}
                     startPoint={
-                      Object {
+                      {
                         "x": 0,
                         "y": 0,
                       }
                     }
                     style={
-                      Object {
+                      {
                         "borderRadius": 2,
                         "bottom": 0,
                         "left": 0,
                         "position": "absolute",
                         "right": 0,
                         "top": 0,
-                        "transform": Array [
-                          Object {
+                        "transform": [
+                          {
                             "translateX": -300,
                           },
                         ],
@@ -2615,8 +2615,8 @@ exports[`<Favorites/> should render correctly 1`] = `
                 <View
                   numberOfSpaces={3}
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "height": 12,
                       },
                     ]
@@ -2626,8 +2626,8 @@ exports[`<Favorites/> should render correctly 1`] = `
                   borderRadius={2}
                   height={12}
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "backgroundColor": "#DDDDDD",
                         "borderRadius": 2,
                         "height": 12,
@@ -2641,7 +2641,7 @@ exports[`<Favorites/> should render correctly 1`] = `
                   <BVLinearGradient
                     collapsable={false}
                     colors={
-                      Array [
+                      [
                         4292730333,
                         4293848814,
                         4293848814,
@@ -2649,28 +2649,28 @@ exports[`<Favorites/> should render correctly 1`] = `
                       ]
                     }
                     endPoint={
-                      Object {
+                      {
                         "x": 1,
                         "y": 0,
                       }
                     }
                     locations={null}
                     startPoint={
-                      Object {
+                      {
                         "x": 0,
                         "y": 0,
                       }
                     }
                     style={
-                      Object {
+                      {
                         "borderRadius": 2,
                         "bottom": 0,
                         "left": 0,
                         "position": "absolute",
                         "right": 0,
                         "top": 0,
-                        "transform": Array [
-                          Object {
+                        "transform": [
+                          {
                             "translateX": -150,
                           },
                         ],
@@ -2681,8 +2681,8 @@ exports[`<Favorites/> should render correctly 1`] = `
                 <View
                   numberOfSpaces={1}
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "height": 4,
                       },
                     ]
@@ -2692,8 +2692,8 @@ exports[`<Favorites/> should render correctly 1`] = `
                   borderRadius={2}
                   height={12}
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "backgroundColor": "#DDDDDD",
                         "borderRadius": 2,
                         "height": 12,
@@ -2707,7 +2707,7 @@ exports[`<Favorites/> should render correctly 1`] = `
                   <BVLinearGradient
                     collapsable={false}
                     colors={
-                      Array [
+                      [
                         4292730333,
                         4293848814,
                         4293848814,
@@ -2715,28 +2715,28 @@ exports[`<Favorites/> should render correctly 1`] = `
                       ]
                     }
                     endPoint={
-                      Object {
+                      {
                         "x": 1,
                         "y": 0,
                       }
                     }
                     locations={null}
                     startPoint={
-                      Object {
+                      {
                         "x": 0,
                         "y": 0,
                       }
                     }
                     style={
-                      Object {
+                      {
                         "borderRadius": 2,
                         "bottom": 0,
                         "left": 0,
                         "position": "absolute",
                         "right": 0,
                         "top": 0,
-                        "transform": Array [
-                          Object {
+                        "transform": [
+                          {
                             "translateX": -200,
                           },
                         ],
@@ -2747,8 +2747,8 @@ exports[`<Favorites/> should render correctly 1`] = `
                 <View
                   numberOfSpaces={2}
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "height": 8,
                       },
                     ]
@@ -2758,8 +2758,8 @@ exports[`<Favorites/> should render correctly 1`] = `
                   borderRadius={2}
                   height={12}
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "backgroundColor": "#DDDDDD",
                         "borderRadius": 2,
                         "height": 12,
@@ -2773,7 +2773,7 @@ exports[`<Favorites/> should render correctly 1`] = `
                   <BVLinearGradient
                     collapsable={false}
                     colors={
-                      Array [
+                      [
                         4292730333,
                         4293848814,
                         4293848814,
@@ -2781,28 +2781,28 @@ exports[`<Favorites/> should render correctly 1`] = `
                       ]
                     }
                     endPoint={
-                      Object {
+                      {
                         "x": 1,
                         "y": 0,
                       }
                     }
                     locations={null}
                     startPoint={
-                      Object {
+                      {
                         "x": 0,
                         "y": 0,
                       }
                     }
                     style={
-                      Object {
+                      {
                         "borderRadius": 2,
                         "bottom": 0,
                         "left": 0,
                         "position": "absolute",
                         "right": 0,
                         "top": 0,
-                        "transform": Array [
-                          Object {
+                        "transform": [
+                          {
                             "translateX": -40,
                           },
                         ],
@@ -2815,8 +2815,8 @@ exports[`<Favorites/> should render correctly 1`] = `
           </View>
           <View
             style={
-              Array [
-                Object {
+              [
+                {
                   "flexDirection": "row",
                   "marginLeft": 24,
                   "marginRight": 24,
@@ -2827,8 +2827,8 @@ exports[`<Favorites/> should render correctly 1`] = `
           >
             <View
               style={
-                Array [
-                  Object {
+                [
+                  {
                     "maxWidth": 280,
                     "minWidth": 120,
                     "width": "47%",
@@ -2841,8 +2841,8 @@ exports[`<Favorites/> should render correctly 1`] = `
                 fullWidth={true}
                 height={48}
                 style={
-                  Array [
-                    Object {
+                  [
+                    {
                       "backgroundColor": "#DDDDDD",
                       "borderRadius": 24,
                       "height": 48,
@@ -2856,7 +2856,7 @@ exports[`<Favorites/> should render correctly 1`] = `
                 <BVLinearGradient
                   collapsable={false}
                   colors={
-                    Array [
+                    [
                       4292730333,
                       4293848814,
                       4293848814,
@@ -2864,28 +2864,28 @@ exports[`<Favorites/> should render correctly 1`] = `
                     ]
                   }
                   endPoint={
-                    Object {
+                    {
                       "x": 1,
                       "y": 0,
                     }
                   }
                   locations={null}
                   startPoint={
-                    Object {
+                    {
                       "x": 0,
                       "y": 0,
                     }
                   }
                   style={
-                    Object {
+                    {
                       "borderRadius": 24,
                       "bottom": 0,
                       "left": 0,
                       "position": "absolute",
                       "right": 0,
                       "top": 0,
-                      "transform": Array [
-                        Object {
+                      "transform": [
+                        {
                           "translateX": -200,
                         },
                       ],
@@ -2897,8 +2897,8 @@ exports[`<Favorites/> should render correctly 1`] = `
             <View
               numberOfSpaces={5}
               style={
-                Array [
-                  Object {
+                [
+                  {
                     "width": 20,
                   },
                 ]
@@ -2906,8 +2906,8 @@ exports[`<Favorites/> should render correctly 1`] = `
             />
             <View
               style={
-                Array [
-                  Object {
+                [
+                  {
                     "maxWidth": 280,
                     "minWidth": 120,
                     "width": "47%",
@@ -2920,8 +2920,8 @@ exports[`<Favorites/> should render correctly 1`] = `
                 fullWidth={true}
                 height={48}
                 style={
-                  Array [
-                    Object {
+                  [
+                    {
                       "backgroundColor": "#DDDDDD",
                       "borderRadius": 24,
                       "height": 48,
@@ -2935,7 +2935,7 @@ exports[`<Favorites/> should render correctly 1`] = `
                 <BVLinearGradient
                   collapsable={false}
                   colors={
-                    Array [
+                    [
                       4292730333,
                       4293848814,
                       4293848814,
@@ -2943,28 +2943,28 @@ exports[`<Favorites/> should render correctly 1`] = `
                     ]
                   }
                   endPoint={
-                    Object {
+                    {
                       "x": 1,
                       "y": 0,
                     }
                   }
                   locations={null}
                   startPoint={
-                    Object {
+                    {
                       "x": 0,
                       "y": 0,
                     }
                   }
                   style={
-                    Object {
+                    {
                       "borderRadius": 24,
                       "bottom": 0,
                       "left": 0,
                       "position": "absolute",
                       "right": 0,
                       "top": 0,
-                      "transform": Array [
-                        Object {
+                      "transform": [
+                        {
                           "translateX": -200,
                         },
                       ],
@@ -2977,13 +2977,13 @@ exports[`<Favorites/> should render correctly 1`] = `
           <View
             highlighted={false}
             leadingItem={
-              Object {
+              {
                 "key": "4",
               }
             }
             style={
-              Array [
-                Object {
+              [
+                {
                   "backgroundColor": "#F1F1F4",
                   "height": 2,
                   "marginHorizontal": 24,
@@ -2999,8 +2999,8 @@ exports[`<Favorites/> should render correctly 1`] = `
         >
           <View
             style={
-              Array [
-                Object {
+              [
+                {
                   "marginHorizontal": 24,
                 },
               ]
@@ -3008,8 +3008,8 @@ exports[`<Favorites/> should render correctly 1`] = `
           >
             <View
               style={
-                Array [
-                  Object {
+                [
+                  {
                     "alignItems": "center",
                     "flexDirection": "row",
                   },
@@ -3020,8 +3020,8 @@ exports[`<Favorites/> should render correctly 1`] = `
                 borderRadius={4}
                 height={96}
                 style={
-                  Array [
-                    Object {
+                  [
+                    {
                       "backgroundColor": "#DDDDDD",
                       "borderRadius": 4,
                       "height": 96,
@@ -3035,7 +3035,7 @@ exports[`<Favorites/> should render correctly 1`] = `
                 <BVLinearGradient
                   collapsable={false}
                   colors={
-                    Array [
+                    [
                       4292730333,
                       4293848814,
                       4293848814,
@@ -3043,28 +3043,28 @@ exports[`<Favorites/> should render correctly 1`] = `
                     ]
                   }
                   endPoint={
-                    Object {
+                    {
                       "x": 1,
                       "y": 0,
                     }
                   }
                   locations={null}
                   startPoint={
-                    Object {
+                    {
                       "x": 0,
                       "y": 0,
                     }
                   }
                   style={
-                    Object {
+                    {
                       "borderRadius": 4,
                       "bottom": 0,
                       "left": 0,
                       "position": "absolute",
                       "right": 0,
                       "top": 0,
-                      "transform": Array [
-                        Object {
+                      "transform": [
+                        {
                           "translateX": -80,
                         },
                       ],
@@ -3075,8 +3075,8 @@ exports[`<Favorites/> should render correctly 1`] = `
               <View
                 numberOfSpaces={4}
                 style={
-                  Array [
-                    Object {
+                  [
+                    {
                       "width": 16,
                     },
                   ]
@@ -3087,8 +3087,8 @@ exports[`<Favorites/> should render correctly 1`] = `
                   borderRadius={2}
                   height={12}
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "backgroundColor": "#DDDDDD",
                         "borderRadius": 2,
                         "height": 12,
@@ -3102,7 +3102,7 @@ exports[`<Favorites/> should render correctly 1`] = `
                   <BVLinearGradient
                     collapsable={false}
                     colors={
-                      Array [
+                      [
                         4292730333,
                         4293848814,
                         4293848814,
@@ -3110,28 +3110,28 @@ exports[`<Favorites/> should render correctly 1`] = `
                       ]
                     }
                     endPoint={
-                      Object {
+                      {
                         "x": 1,
                         "y": 0,
                       }
                     }
                     locations={null}
                     startPoint={
-                      Object {
+                      {
                         "x": 0,
                         "y": 0,
                       }
                     }
                     style={
-                      Object {
+                      {
                         "borderRadius": 2,
                         "bottom": 0,
                         "left": 0,
                         "position": "absolute",
                         "right": 0,
                         "top": 0,
-                        "transform": Array [
-                          Object {
+                        "transform": [
+                          {
                             "translateX": -300,
                           },
                         ],
@@ -3142,8 +3142,8 @@ exports[`<Favorites/> should render correctly 1`] = `
                 <View
                   numberOfSpaces={3}
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "height": 12,
                       },
                     ]
@@ -3153,8 +3153,8 @@ exports[`<Favorites/> should render correctly 1`] = `
                   borderRadius={2}
                   height={12}
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "backgroundColor": "#DDDDDD",
                         "borderRadius": 2,
                         "height": 12,
@@ -3168,7 +3168,7 @@ exports[`<Favorites/> should render correctly 1`] = `
                   <BVLinearGradient
                     collapsable={false}
                     colors={
-                      Array [
+                      [
                         4292730333,
                         4293848814,
                         4293848814,
@@ -3176,28 +3176,28 @@ exports[`<Favorites/> should render correctly 1`] = `
                       ]
                     }
                     endPoint={
-                      Object {
+                      {
                         "x": 1,
                         "y": 0,
                       }
                     }
                     locations={null}
                     startPoint={
-                      Object {
+                      {
                         "x": 0,
                         "y": 0,
                       }
                     }
                     style={
-                      Object {
+                      {
                         "borderRadius": 2,
                         "bottom": 0,
                         "left": 0,
                         "position": "absolute",
                         "right": 0,
                         "top": 0,
-                        "transform": Array [
-                          Object {
+                        "transform": [
+                          {
                             "translateX": -150,
                           },
                         ],
@@ -3208,8 +3208,8 @@ exports[`<Favorites/> should render correctly 1`] = `
                 <View
                   numberOfSpaces={1}
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "height": 4,
                       },
                     ]
@@ -3219,8 +3219,8 @@ exports[`<Favorites/> should render correctly 1`] = `
                   borderRadius={2}
                   height={12}
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "backgroundColor": "#DDDDDD",
                         "borderRadius": 2,
                         "height": 12,
@@ -3234,7 +3234,7 @@ exports[`<Favorites/> should render correctly 1`] = `
                   <BVLinearGradient
                     collapsable={false}
                     colors={
-                      Array [
+                      [
                         4292730333,
                         4293848814,
                         4293848814,
@@ -3242,28 +3242,28 @@ exports[`<Favorites/> should render correctly 1`] = `
                       ]
                     }
                     endPoint={
-                      Object {
+                      {
                         "x": 1,
                         "y": 0,
                       }
                     }
                     locations={null}
                     startPoint={
-                      Object {
+                      {
                         "x": 0,
                         "y": 0,
                       }
                     }
                     style={
-                      Object {
+                      {
                         "borderRadius": 2,
                         "bottom": 0,
                         "left": 0,
                         "position": "absolute",
                         "right": 0,
                         "top": 0,
-                        "transform": Array [
-                          Object {
+                        "transform": [
+                          {
                             "translateX": -200,
                           },
                         ],
@@ -3274,8 +3274,8 @@ exports[`<Favorites/> should render correctly 1`] = `
                 <View
                   numberOfSpaces={2}
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "height": 8,
                       },
                     ]
@@ -3285,8 +3285,8 @@ exports[`<Favorites/> should render correctly 1`] = `
                   borderRadius={2}
                   height={12}
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "backgroundColor": "#DDDDDD",
                         "borderRadius": 2,
                         "height": 12,
@@ -3300,7 +3300,7 @@ exports[`<Favorites/> should render correctly 1`] = `
                   <BVLinearGradient
                     collapsable={false}
                     colors={
-                      Array [
+                      [
                         4292730333,
                         4293848814,
                         4293848814,
@@ -3308,28 +3308,28 @@ exports[`<Favorites/> should render correctly 1`] = `
                       ]
                     }
                     endPoint={
-                      Object {
+                      {
                         "x": 1,
                         "y": 0,
                       }
                     }
                     locations={null}
                     startPoint={
-                      Object {
+                      {
                         "x": 0,
                         "y": 0,
                       }
                     }
                     style={
-                      Object {
+                      {
                         "borderRadius": 2,
                         "bottom": 0,
                         "left": 0,
                         "position": "absolute",
                         "right": 0,
                         "top": 0,
-                        "transform": Array [
-                          Object {
+                        "transform": [
+                          {
                             "translateX": -40,
                           },
                         ],
@@ -3342,8 +3342,8 @@ exports[`<Favorites/> should render correctly 1`] = `
           </View>
           <View
             style={
-              Array [
-                Object {
+              [
+                {
                   "flexDirection": "row",
                   "marginLeft": 24,
                   "marginRight": 24,
@@ -3354,8 +3354,8 @@ exports[`<Favorites/> should render correctly 1`] = `
           >
             <View
               style={
-                Array [
-                  Object {
+                [
+                  {
                     "maxWidth": 280,
                     "minWidth": 120,
                     "width": "47%",
@@ -3368,8 +3368,8 @@ exports[`<Favorites/> should render correctly 1`] = `
                 fullWidth={true}
                 height={48}
                 style={
-                  Array [
-                    Object {
+                  [
+                    {
                       "backgroundColor": "#DDDDDD",
                       "borderRadius": 24,
                       "height": 48,
@@ -3383,7 +3383,7 @@ exports[`<Favorites/> should render correctly 1`] = `
                 <BVLinearGradient
                   collapsable={false}
                   colors={
-                    Array [
+                    [
                       4292730333,
                       4293848814,
                       4293848814,
@@ -3391,28 +3391,28 @@ exports[`<Favorites/> should render correctly 1`] = `
                     ]
                   }
                   endPoint={
-                    Object {
+                    {
                       "x": 1,
                       "y": 0,
                     }
                   }
                   locations={null}
                   startPoint={
-                    Object {
+                    {
                       "x": 0,
                       "y": 0,
                     }
                   }
                   style={
-                    Object {
+                    {
                       "borderRadius": 24,
                       "bottom": 0,
                       "left": 0,
                       "position": "absolute",
                       "right": 0,
                       "top": 0,
-                      "transform": Array [
-                        Object {
+                      "transform": [
+                        {
                           "translateX": -200,
                         },
                       ],
@@ -3424,8 +3424,8 @@ exports[`<Favorites/> should render correctly 1`] = `
             <View
               numberOfSpaces={5}
               style={
-                Array [
-                  Object {
+                [
+                  {
                     "width": 20,
                   },
                 ]
@@ -3433,8 +3433,8 @@ exports[`<Favorites/> should render correctly 1`] = `
             />
             <View
               style={
-                Array [
-                  Object {
+                [
+                  {
                     "maxWidth": 280,
                     "minWidth": 120,
                     "width": "47%",
@@ -3447,8 +3447,8 @@ exports[`<Favorites/> should render correctly 1`] = `
                 fullWidth={true}
                 height={48}
                 style={
-                  Array [
-                    Object {
+                  [
+                    {
                       "backgroundColor": "#DDDDDD",
                       "borderRadius": 24,
                       "height": 48,
@@ -3462,7 +3462,7 @@ exports[`<Favorites/> should render correctly 1`] = `
                 <BVLinearGradient
                   collapsable={false}
                   colors={
-                    Array [
+                    [
                       4292730333,
                       4293848814,
                       4293848814,
@@ -3470,28 +3470,28 @@ exports[`<Favorites/> should render correctly 1`] = `
                     ]
                   }
                   endPoint={
-                    Object {
+                    {
                       "x": 1,
                       "y": 0,
                     }
                   }
                   locations={null}
                   startPoint={
-                    Object {
+                    {
                       "x": 0,
                       "y": 0,
                     }
                   }
                   style={
-                    Object {
+                    {
                       "borderRadius": 24,
                       "bottom": 0,
                       "left": 0,
                       "position": "absolute",
                       "right": 0,
                       "top": 0,
-                      "transform": Array [
-                        Object {
+                      "transform": [
+                        {
                           "translateX": -200,
                         },
                       ],
@@ -3504,13 +3504,13 @@ exports[`<Favorites/> should render correctly 1`] = `
           <View
             highlighted={false}
             leadingItem={
-              Object {
+              {
                 "key": "5",
               }
             }
             style={
-              Array [
-                Object {
+              [
+                {
                   "backgroundColor": "#F1F1F4",
                   "height": 2,
                   "marginHorizontal": 24,
@@ -3526,8 +3526,8 @@ exports[`<Favorites/> should render correctly 1`] = `
         >
           <View
             style={
-              Array [
-                Object {
+              [
+                {
                   "marginHorizontal": 24,
                 },
               ]
@@ -3535,8 +3535,8 @@ exports[`<Favorites/> should render correctly 1`] = `
           >
             <View
               style={
-                Array [
-                  Object {
+                [
+                  {
                     "alignItems": "center",
                     "flexDirection": "row",
                   },
@@ -3547,8 +3547,8 @@ exports[`<Favorites/> should render correctly 1`] = `
                 borderRadius={4}
                 height={96}
                 style={
-                  Array [
-                    Object {
+                  [
+                    {
                       "backgroundColor": "#DDDDDD",
                       "borderRadius": 4,
                       "height": 96,
@@ -3562,7 +3562,7 @@ exports[`<Favorites/> should render correctly 1`] = `
                 <BVLinearGradient
                   collapsable={false}
                   colors={
-                    Array [
+                    [
                       4292730333,
                       4293848814,
                       4293848814,
@@ -3570,28 +3570,28 @@ exports[`<Favorites/> should render correctly 1`] = `
                     ]
                   }
                   endPoint={
-                    Object {
+                    {
                       "x": 1,
                       "y": 0,
                     }
                   }
                   locations={null}
                   startPoint={
-                    Object {
+                    {
                       "x": 0,
                       "y": 0,
                     }
                   }
                   style={
-                    Object {
+                    {
                       "borderRadius": 4,
                       "bottom": 0,
                       "left": 0,
                       "position": "absolute",
                       "right": 0,
                       "top": 0,
-                      "transform": Array [
-                        Object {
+                      "transform": [
+                        {
                           "translateX": -80,
                         },
                       ],
@@ -3602,8 +3602,8 @@ exports[`<Favorites/> should render correctly 1`] = `
               <View
                 numberOfSpaces={4}
                 style={
-                  Array [
-                    Object {
+                  [
+                    {
                       "width": 16,
                     },
                   ]
@@ -3614,8 +3614,8 @@ exports[`<Favorites/> should render correctly 1`] = `
                   borderRadius={2}
                   height={12}
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "backgroundColor": "#DDDDDD",
                         "borderRadius": 2,
                         "height": 12,
@@ -3629,7 +3629,7 @@ exports[`<Favorites/> should render correctly 1`] = `
                   <BVLinearGradient
                     collapsable={false}
                     colors={
-                      Array [
+                      [
                         4292730333,
                         4293848814,
                         4293848814,
@@ -3637,28 +3637,28 @@ exports[`<Favorites/> should render correctly 1`] = `
                       ]
                     }
                     endPoint={
-                      Object {
+                      {
                         "x": 1,
                         "y": 0,
                       }
                     }
                     locations={null}
                     startPoint={
-                      Object {
+                      {
                         "x": 0,
                         "y": 0,
                       }
                     }
                     style={
-                      Object {
+                      {
                         "borderRadius": 2,
                         "bottom": 0,
                         "left": 0,
                         "position": "absolute",
                         "right": 0,
                         "top": 0,
-                        "transform": Array [
-                          Object {
+                        "transform": [
+                          {
                             "translateX": -300,
                           },
                         ],
@@ -3669,8 +3669,8 @@ exports[`<Favorites/> should render correctly 1`] = `
                 <View
                   numberOfSpaces={3}
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "height": 12,
                       },
                     ]
@@ -3680,8 +3680,8 @@ exports[`<Favorites/> should render correctly 1`] = `
                   borderRadius={2}
                   height={12}
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "backgroundColor": "#DDDDDD",
                         "borderRadius": 2,
                         "height": 12,
@@ -3695,7 +3695,7 @@ exports[`<Favorites/> should render correctly 1`] = `
                   <BVLinearGradient
                     collapsable={false}
                     colors={
-                      Array [
+                      [
                         4292730333,
                         4293848814,
                         4293848814,
@@ -3703,28 +3703,28 @@ exports[`<Favorites/> should render correctly 1`] = `
                       ]
                     }
                     endPoint={
-                      Object {
+                      {
                         "x": 1,
                         "y": 0,
                       }
                     }
                     locations={null}
                     startPoint={
-                      Object {
+                      {
                         "x": 0,
                         "y": 0,
                       }
                     }
                     style={
-                      Object {
+                      {
                         "borderRadius": 2,
                         "bottom": 0,
                         "left": 0,
                         "position": "absolute",
                         "right": 0,
                         "top": 0,
-                        "transform": Array [
-                          Object {
+                        "transform": [
+                          {
                             "translateX": -150,
                           },
                         ],
@@ -3735,8 +3735,8 @@ exports[`<Favorites/> should render correctly 1`] = `
                 <View
                   numberOfSpaces={1}
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "height": 4,
                       },
                     ]
@@ -3746,8 +3746,8 @@ exports[`<Favorites/> should render correctly 1`] = `
                   borderRadius={2}
                   height={12}
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "backgroundColor": "#DDDDDD",
                         "borderRadius": 2,
                         "height": 12,
@@ -3761,7 +3761,7 @@ exports[`<Favorites/> should render correctly 1`] = `
                   <BVLinearGradient
                     collapsable={false}
                     colors={
-                      Array [
+                      [
                         4292730333,
                         4293848814,
                         4293848814,
@@ -3769,28 +3769,28 @@ exports[`<Favorites/> should render correctly 1`] = `
                       ]
                     }
                     endPoint={
-                      Object {
+                      {
                         "x": 1,
                         "y": 0,
                       }
                     }
                     locations={null}
                     startPoint={
-                      Object {
+                      {
                         "x": 0,
                         "y": 0,
                       }
                     }
                     style={
-                      Object {
+                      {
                         "borderRadius": 2,
                         "bottom": 0,
                         "left": 0,
                         "position": "absolute",
                         "right": 0,
                         "top": 0,
-                        "transform": Array [
-                          Object {
+                        "transform": [
+                          {
                             "translateX": -200,
                           },
                         ],
@@ -3801,8 +3801,8 @@ exports[`<Favorites/> should render correctly 1`] = `
                 <View
                   numberOfSpaces={2}
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "height": 8,
                       },
                     ]
@@ -3812,8 +3812,8 @@ exports[`<Favorites/> should render correctly 1`] = `
                   borderRadius={2}
                   height={12}
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "backgroundColor": "#DDDDDD",
                         "borderRadius": 2,
                         "height": 12,
@@ -3827,7 +3827,7 @@ exports[`<Favorites/> should render correctly 1`] = `
                   <BVLinearGradient
                     collapsable={false}
                     colors={
-                      Array [
+                      [
                         4292730333,
                         4293848814,
                         4293848814,
@@ -3835,28 +3835,28 @@ exports[`<Favorites/> should render correctly 1`] = `
                       ]
                     }
                     endPoint={
-                      Object {
+                      {
                         "x": 1,
                         "y": 0,
                       }
                     }
                     locations={null}
                     startPoint={
-                      Object {
+                      {
                         "x": 0,
                         "y": 0,
                       }
                     }
                     style={
-                      Object {
+                      {
                         "borderRadius": 2,
                         "bottom": 0,
                         "left": 0,
                         "position": "absolute",
                         "right": 0,
                         "top": 0,
-                        "transform": Array [
-                          Object {
+                        "transform": [
+                          {
                             "translateX": -40,
                           },
                         ],
@@ -3869,8 +3869,8 @@ exports[`<Favorites/> should render correctly 1`] = `
           </View>
           <View
             style={
-              Array [
-                Object {
+              [
+                {
                   "flexDirection": "row",
                   "marginLeft": 24,
                   "marginRight": 24,
@@ -3881,8 +3881,8 @@ exports[`<Favorites/> should render correctly 1`] = `
           >
             <View
               style={
-                Array [
-                  Object {
+                [
+                  {
                     "maxWidth": 280,
                     "minWidth": 120,
                     "width": "47%",
@@ -3895,8 +3895,8 @@ exports[`<Favorites/> should render correctly 1`] = `
                 fullWidth={true}
                 height={48}
                 style={
-                  Array [
-                    Object {
+                  [
+                    {
                       "backgroundColor": "#DDDDDD",
                       "borderRadius": 24,
                       "height": 48,
@@ -3910,7 +3910,7 @@ exports[`<Favorites/> should render correctly 1`] = `
                 <BVLinearGradient
                   collapsable={false}
                   colors={
-                    Array [
+                    [
                       4292730333,
                       4293848814,
                       4293848814,
@@ -3918,28 +3918,28 @@ exports[`<Favorites/> should render correctly 1`] = `
                     ]
                   }
                   endPoint={
-                    Object {
+                    {
                       "x": 1,
                       "y": 0,
                     }
                   }
                   locations={null}
                   startPoint={
-                    Object {
+                    {
                       "x": 0,
                       "y": 0,
                     }
                   }
                   style={
-                    Object {
+                    {
                       "borderRadius": 24,
                       "bottom": 0,
                       "left": 0,
                       "position": "absolute",
                       "right": 0,
                       "top": 0,
-                      "transform": Array [
-                        Object {
+                      "transform": [
+                        {
                           "translateX": -200,
                         },
                       ],
@@ -3951,8 +3951,8 @@ exports[`<Favorites/> should render correctly 1`] = `
             <View
               numberOfSpaces={5}
               style={
-                Array [
-                  Object {
+                [
+                  {
                     "width": 20,
                   },
                 ]
@@ -3960,8 +3960,8 @@ exports[`<Favorites/> should render correctly 1`] = `
             />
             <View
               style={
-                Array [
-                  Object {
+                [
+                  {
                     "maxWidth": 280,
                     "minWidth": 120,
                     "width": "47%",
@@ -3974,8 +3974,8 @@ exports[`<Favorites/> should render correctly 1`] = `
                 fullWidth={true}
                 height={48}
                 style={
-                  Array [
-                    Object {
+                  [
+                    {
                       "backgroundColor": "#DDDDDD",
                       "borderRadius": 24,
                       "height": 48,
@@ -3989,7 +3989,7 @@ exports[`<Favorites/> should render correctly 1`] = `
                 <BVLinearGradient
                   collapsable={false}
                   colors={
-                    Array [
+                    [
                       4292730333,
                       4293848814,
                       4293848814,
@@ -3997,28 +3997,28 @@ exports[`<Favorites/> should render correctly 1`] = `
                     ]
                   }
                   endPoint={
-                    Object {
+                    {
                       "x": 1,
                       "y": 0,
                     }
                   }
                   locations={null}
                   startPoint={
-                    Object {
+                    {
                       "x": 0,
                       "y": 0,
                     }
                   }
                   style={
-                    Object {
+                    {
                       "borderRadius": 24,
                       "bottom": 0,
                       "left": 0,
                       "position": "absolute",
                       "right": 0,
                       "top": 0,
-                      "transform": Array [
-                        Object {
+                      "transform": [
+                        {
                           "translateX": -200,
                         },
                       ],
@@ -4031,13 +4031,13 @@ exports[`<Favorites/> should render correctly 1`] = `
           <View
             highlighted={false}
             leadingItem={
-              Object {
+              {
                 "key": "6",
               }
             }
             style={
-              Array [
-                Object {
+              [
+                {
                   "backgroundColor": "#F1F1F4",
                   "height": 2,
                   "marginHorizontal": 24,
@@ -4053,8 +4053,8 @@ exports[`<Favorites/> should render correctly 1`] = `
         >
           <View
             style={
-              Array [
-                Object {
+              [
+                {
                   "marginHorizontal": 24,
                 },
               ]
@@ -4062,8 +4062,8 @@ exports[`<Favorites/> should render correctly 1`] = `
           >
             <View
               style={
-                Array [
-                  Object {
+                [
+                  {
                     "alignItems": "center",
                     "flexDirection": "row",
                   },
@@ -4074,8 +4074,8 @@ exports[`<Favorites/> should render correctly 1`] = `
                 borderRadius={4}
                 height={96}
                 style={
-                  Array [
-                    Object {
+                  [
+                    {
                       "backgroundColor": "#DDDDDD",
                       "borderRadius": 4,
                       "height": 96,
@@ -4089,7 +4089,7 @@ exports[`<Favorites/> should render correctly 1`] = `
                 <BVLinearGradient
                   collapsable={false}
                   colors={
-                    Array [
+                    [
                       4292730333,
                       4293848814,
                       4293848814,
@@ -4097,28 +4097,28 @@ exports[`<Favorites/> should render correctly 1`] = `
                     ]
                   }
                   endPoint={
-                    Object {
+                    {
                       "x": 1,
                       "y": 0,
                     }
                   }
                   locations={null}
                   startPoint={
-                    Object {
+                    {
                       "x": 0,
                       "y": 0,
                     }
                   }
                   style={
-                    Object {
+                    {
                       "borderRadius": 4,
                       "bottom": 0,
                       "left": 0,
                       "position": "absolute",
                       "right": 0,
                       "top": 0,
-                      "transform": Array [
-                        Object {
+                      "transform": [
+                        {
                           "translateX": -80,
                         },
                       ],
@@ -4129,8 +4129,8 @@ exports[`<Favorites/> should render correctly 1`] = `
               <View
                 numberOfSpaces={4}
                 style={
-                  Array [
-                    Object {
+                  [
+                    {
                       "width": 16,
                     },
                   ]
@@ -4141,8 +4141,8 @@ exports[`<Favorites/> should render correctly 1`] = `
                   borderRadius={2}
                   height={12}
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "backgroundColor": "#DDDDDD",
                         "borderRadius": 2,
                         "height": 12,
@@ -4156,7 +4156,7 @@ exports[`<Favorites/> should render correctly 1`] = `
                   <BVLinearGradient
                     collapsable={false}
                     colors={
-                      Array [
+                      [
                         4292730333,
                         4293848814,
                         4293848814,
@@ -4164,28 +4164,28 @@ exports[`<Favorites/> should render correctly 1`] = `
                       ]
                     }
                     endPoint={
-                      Object {
+                      {
                         "x": 1,
                         "y": 0,
                       }
                     }
                     locations={null}
                     startPoint={
-                      Object {
+                      {
                         "x": 0,
                         "y": 0,
                       }
                     }
                     style={
-                      Object {
+                      {
                         "borderRadius": 2,
                         "bottom": 0,
                         "left": 0,
                         "position": "absolute",
                         "right": 0,
                         "top": 0,
-                        "transform": Array [
-                          Object {
+                        "transform": [
+                          {
                             "translateX": -300,
                           },
                         ],
@@ -4196,8 +4196,8 @@ exports[`<Favorites/> should render correctly 1`] = `
                 <View
                   numberOfSpaces={3}
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "height": 12,
                       },
                     ]
@@ -4207,8 +4207,8 @@ exports[`<Favorites/> should render correctly 1`] = `
                   borderRadius={2}
                   height={12}
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "backgroundColor": "#DDDDDD",
                         "borderRadius": 2,
                         "height": 12,
@@ -4222,7 +4222,7 @@ exports[`<Favorites/> should render correctly 1`] = `
                   <BVLinearGradient
                     collapsable={false}
                     colors={
-                      Array [
+                      [
                         4292730333,
                         4293848814,
                         4293848814,
@@ -4230,28 +4230,28 @@ exports[`<Favorites/> should render correctly 1`] = `
                       ]
                     }
                     endPoint={
-                      Object {
+                      {
                         "x": 1,
                         "y": 0,
                       }
                     }
                     locations={null}
                     startPoint={
-                      Object {
+                      {
                         "x": 0,
                         "y": 0,
                       }
                     }
                     style={
-                      Object {
+                      {
                         "borderRadius": 2,
                         "bottom": 0,
                         "left": 0,
                         "position": "absolute",
                         "right": 0,
                         "top": 0,
-                        "transform": Array [
-                          Object {
+                        "transform": [
+                          {
                             "translateX": -150,
                           },
                         ],
@@ -4262,8 +4262,8 @@ exports[`<Favorites/> should render correctly 1`] = `
                 <View
                   numberOfSpaces={1}
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "height": 4,
                       },
                     ]
@@ -4273,8 +4273,8 @@ exports[`<Favorites/> should render correctly 1`] = `
                   borderRadius={2}
                   height={12}
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "backgroundColor": "#DDDDDD",
                         "borderRadius": 2,
                         "height": 12,
@@ -4288,7 +4288,7 @@ exports[`<Favorites/> should render correctly 1`] = `
                   <BVLinearGradient
                     collapsable={false}
                     colors={
-                      Array [
+                      [
                         4292730333,
                         4293848814,
                         4293848814,
@@ -4296,28 +4296,28 @@ exports[`<Favorites/> should render correctly 1`] = `
                       ]
                     }
                     endPoint={
-                      Object {
+                      {
                         "x": 1,
                         "y": 0,
                       }
                     }
                     locations={null}
                     startPoint={
-                      Object {
+                      {
                         "x": 0,
                         "y": 0,
                       }
                     }
                     style={
-                      Object {
+                      {
                         "borderRadius": 2,
                         "bottom": 0,
                         "left": 0,
                         "position": "absolute",
                         "right": 0,
                         "top": 0,
-                        "transform": Array [
-                          Object {
+                        "transform": [
+                          {
                             "translateX": -200,
                           },
                         ],
@@ -4328,8 +4328,8 @@ exports[`<Favorites/> should render correctly 1`] = `
                 <View
                   numberOfSpaces={2}
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "height": 8,
                       },
                     ]
@@ -4339,8 +4339,8 @@ exports[`<Favorites/> should render correctly 1`] = `
                   borderRadius={2}
                   height={12}
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "backgroundColor": "#DDDDDD",
                         "borderRadius": 2,
                         "height": 12,
@@ -4354,7 +4354,7 @@ exports[`<Favorites/> should render correctly 1`] = `
                   <BVLinearGradient
                     collapsable={false}
                     colors={
-                      Array [
+                      [
                         4292730333,
                         4293848814,
                         4293848814,
@@ -4362,28 +4362,28 @@ exports[`<Favorites/> should render correctly 1`] = `
                       ]
                     }
                     endPoint={
-                      Object {
+                      {
                         "x": 1,
                         "y": 0,
                       }
                     }
                     locations={null}
                     startPoint={
-                      Object {
+                      {
                         "x": 0,
                         "y": 0,
                       }
                     }
                     style={
-                      Object {
+                      {
                         "borderRadius": 2,
                         "bottom": 0,
                         "left": 0,
                         "position": "absolute",
                         "right": 0,
                         "top": 0,
-                        "transform": Array [
-                          Object {
+                        "transform": [
+                          {
                             "translateX": -40,
                           },
                         ],
@@ -4396,8 +4396,8 @@ exports[`<Favorites/> should render correctly 1`] = `
           </View>
           <View
             style={
-              Array [
-                Object {
+              [
+                {
                   "flexDirection": "row",
                   "marginLeft": 24,
                   "marginRight": 24,
@@ -4408,8 +4408,8 @@ exports[`<Favorites/> should render correctly 1`] = `
           >
             <View
               style={
-                Array [
-                  Object {
+                [
+                  {
                     "maxWidth": 280,
                     "minWidth": 120,
                     "width": "47%",
@@ -4422,8 +4422,8 @@ exports[`<Favorites/> should render correctly 1`] = `
                 fullWidth={true}
                 height={48}
                 style={
-                  Array [
-                    Object {
+                  [
+                    {
                       "backgroundColor": "#DDDDDD",
                       "borderRadius": 24,
                       "height": 48,
@@ -4437,7 +4437,7 @@ exports[`<Favorites/> should render correctly 1`] = `
                 <BVLinearGradient
                   collapsable={false}
                   colors={
-                    Array [
+                    [
                       4292730333,
                       4293848814,
                       4293848814,
@@ -4445,28 +4445,28 @@ exports[`<Favorites/> should render correctly 1`] = `
                     ]
                   }
                   endPoint={
-                    Object {
+                    {
                       "x": 1,
                       "y": 0,
                     }
                   }
                   locations={null}
                   startPoint={
-                    Object {
+                    {
                       "x": 0,
                       "y": 0,
                     }
                   }
                   style={
-                    Object {
+                    {
                       "borderRadius": 24,
                       "bottom": 0,
                       "left": 0,
                       "position": "absolute",
                       "right": 0,
                       "top": 0,
-                      "transform": Array [
-                        Object {
+                      "transform": [
+                        {
                           "translateX": -200,
                         },
                       ],
@@ -4478,8 +4478,8 @@ exports[`<Favorites/> should render correctly 1`] = `
             <View
               numberOfSpaces={5}
               style={
-                Array [
-                  Object {
+                [
+                  {
                     "width": 20,
                   },
                 ]
@@ -4487,8 +4487,8 @@ exports[`<Favorites/> should render correctly 1`] = `
             />
             <View
               style={
-                Array [
-                  Object {
+                [
+                  {
                     "maxWidth": 280,
                     "minWidth": 120,
                     "width": "47%",
@@ -4501,8 +4501,8 @@ exports[`<Favorites/> should render correctly 1`] = `
                 fullWidth={true}
                 height={48}
                 style={
-                  Array [
-                    Object {
+                  [
+                    {
                       "backgroundColor": "#DDDDDD",
                       "borderRadius": 24,
                       "height": 48,
@@ -4516,7 +4516,7 @@ exports[`<Favorites/> should render correctly 1`] = `
                 <BVLinearGradient
                   collapsable={false}
                   colors={
-                    Array [
+                    [
                       4292730333,
                       4293848814,
                       4293848814,
@@ -4524,28 +4524,28 @@ exports[`<Favorites/> should render correctly 1`] = `
                     ]
                   }
                   endPoint={
-                    Object {
+                    {
                       "x": 1,
                       "y": 0,
                     }
                   }
                   locations={null}
                   startPoint={
-                    Object {
+                    {
                       "x": 0,
                       "y": 0,
                     }
                   }
                   style={
-                    Object {
+                    {
                       "borderRadius": 24,
                       "bottom": 0,
                       "left": 0,
                       "position": "absolute",
                       "right": 0,
                       "top": 0,
-                      "transform": Array [
-                        Object {
+                      "transform": [
+                        {
                           "translateX": -200,
                         },
                       ],
@@ -4558,13 +4558,13 @@ exports[`<Favorites/> should render correctly 1`] = `
           <View
             highlighted={false}
             leadingItem={
-              Object {
+              {
                 "key": "7",
               }
             }
             style={
-              Array [
-                Object {
+              [
+                {
                   "backgroundColor": "#F1F1F4",
                   "height": 2,
                   "marginHorizontal": 24,
@@ -4580,8 +4580,8 @@ exports[`<Favorites/> should render correctly 1`] = `
         >
           <View
             style={
-              Array [
-                Object {
+              [
+                {
                   "marginHorizontal": 24,
                 },
               ]
@@ -4589,8 +4589,8 @@ exports[`<Favorites/> should render correctly 1`] = `
           >
             <View
               style={
-                Array [
-                  Object {
+                [
+                  {
                     "alignItems": "center",
                     "flexDirection": "row",
                   },
@@ -4601,8 +4601,8 @@ exports[`<Favorites/> should render correctly 1`] = `
                 borderRadius={4}
                 height={96}
                 style={
-                  Array [
-                    Object {
+                  [
+                    {
                       "backgroundColor": "#DDDDDD",
                       "borderRadius": 4,
                       "height": 96,
@@ -4616,7 +4616,7 @@ exports[`<Favorites/> should render correctly 1`] = `
                 <BVLinearGradient
                   collapsable={false}
                   colors={
-                    Array [
+                    [
                       4292730333,
                       4293848814,
                       4293848814,
@@ -4624,28 +4624,28 @@ exports[`<Favorites/> should render correctly 1`] = `
                     ]
                   }
                   endPoint={
-                    Object {
+                    {
                       "x": 1,
                       "y": 0,
                     }
                   }
                   locations={null}
                   startPoint={
-                    Object {
+                    {
                       "x": 0,
                       "y": 0,
                     }
                   }
                   style={
-                    Object {
+                    {
                       "borderRadius": 4,
                       "bottom": 0,
                       "left": 0,
                       "position": "absolute",
                       "right": 0,
                       "top": 0,
-                      "transform": Array [
-                        Object {
+                      "transform": [
+                        {
                           "translateX": -80,
                         },
                       ],
@@ -4656,8 +4656,8 @@ exports[`<Favorites/> should render correctly 1`] = `
               <View
                 numberOfSpaces={4}
                 style={
-                  Array [
-                    Object {
+                  [
+                    {
                       "width": 16,
                     },
                   ]
@@ -4668,8 +4668,8 @@ exports[`<Favorites/> should render correctly 1`] = `
                   borderRadius={2}
                   height={12}
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "backgroundColor": "#DDDDDD",
                         "borderRadius": 2,
                         "height": 12,
@@ -4683,7 +4683,7 @@ exports[`<Favorites/> should render correctly 1`] = `
                   <BVLinearGradient
                     collapsable={false}
                     colors={
-                      Array [
+                      [
                         4292730333,
                         4293848814,
                         4293848814,
@@ -4691,28 +4691,28 @@ exports[`<Favorites/> should render correctly 1`] = `
                       ]
                     }
                     endPoint={
-                      Object {
+                      {
                         "x": 1,
                         "y": 0,
                       }
                     }
                     locations={null}
                     startPoint={
-                      Object {
+                      {
                         "x": 0,
                         "y": 0,
                       }
                     }
                     style={
-                      Object {
+                      {
                         "borderRadius": 2,
                         "bottom": 0,
                         "left": 0,
                         "position": "absolute",
                         "right": 0,
                         "top": 0,
-                        "transform": Array [
-                          Object {
+                        "transform": [
+                          {
                             "translateX": -300,
                           },
                         ],
@@ -4723,8 +4723,8 @@ exports[`<Favorites/> should render correctly 1`] = `
                 <View
                   numberOfSpaces={3}
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "height": 12,
                       },
                     ]
@@ -4734,8 +4734,8 @@ exports[`<Favorites/> should render correctly 1`] = `
                   borderRadius={2}
                   height={12}
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "backgroundColor": "#DDDDDD",
                         "borderRadius": 2,
                         "height": 12,
@@ -4749,7 +4749,7 @@ exports[`<Favorites/> should render correctly 1`] = `
                   <BVLinearGradient
                     collapsable={false}
                     colors={
-                      Array [
+                      [
                         4292730333,
                         4293848814,
                         4293848814,
@@ -4757,28 +4757,28 @@ exports[`<Favorites/> should render correctly 1`] = `
                       ]
                     }
                     endPoint={
-                      Object {
+                      {
                         "x": 1,
                         "y": 0,
                       }
                     }
                     locations={null}
                     startPoint={
-                      Object {
+                      {
                         "x": 0,
                         "y": 0,
                       }
                     }
                     style={
-                      Object {
+                      {
                         "borderRadius": 2,
                         "bottom": 0,
                         "left": 0,
                         "position": "absolute",
                         "right": 0,
                         "top": 0,
-                        "transform": Array [
-                          Object {
+                        "transform": [
+                          {
                             "translateX": -150,
                           },
                         ],
@@ -4789,8 +4789,8 @@ exports[`<Favorites/> should render correctly 1`] = `
                 <View
                   numberOfSpaces={1}
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "height": 4,
                       },
                     ]
@@ -4800,8 +4800,8 @@ exports[`<Favorites/> should render correctly 1`] = `
                   borderRadius={2}
                   height={12}
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "backgroundColor": "#DDDDDD",
                         "borderRadius": 2,
                         "height": 12,
@@ -4815,7 +4815,7 @@ exports[`<Favorites/> should render correctly 1`] = `
                   <BVLinearGradient
                     collapsable={false}
                     colors={
-                      Array [
+                      [
                         4292730333,
                         4293848814,
                         4293848814,
@@ -4823,28 +4823,28 @@ exports[`<Favorites/> should render correctly 1`] = `
                       ]
                     }
                     endPoint={
-                      Object {
+                      {
                         "x": 1,
                         "y": 0,
                       }
                     }
                     locations={null}
                     startPoint={
-                      Object {
+                      {
                         "x": 0,
                         "y": 0,
                       }
                     }
                     style={
-                      Object {
+                      {
                         "borderRadius": 2,
                         "bottom": 0,
                         "left": 0,
                         "position": "absolute",
                         "right": 0,
                         "top": 0,
-                        "transform": Array [
-                          Object {
+                        "transform": [
+                          {
                             "translateX": -200,
                           },
                         ],
@@ -4855,8 +4855,8 @@ exports[`<Favorites/> should render correctly 1`] = `
                 <View
                   numberOfSpaces={2}
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "height": 8,
                       },
                     ]
@@ -4866,8 +4866,8 @@ exports[`<Favorites/> should render correctly 1`] = `
                   borderRadius={2}
                   height={12}
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "backgroundColor": "#DDDDDD",
                         "borderRadius": 2,
                         "height": 12,
@@ -4881,7 +4881,7 @@ exports[`<Favorites/> should render correctly 1`] = `
                   <BVLinearGradient
                     collapsable={false}
                     colors={
-                      Array [
+                      [
                         4292730333,
                         4293848814,
                         4293848814,
@@ -4889,28 +4889,28 @@ exports[`<Favorites/> should render correctly 1`] = `
                       ]
                     }
                     endPoint={
-                      Object {
+                      {
                         "x": 1,
                         "y": 0,
                       }
                     }
                     locations={null}
                     startPoint={
-                      Object {
+                      {
                         "x": 0,
                         "y": 0,
                       }
                     }
                     style={
-                      Object {
+                      {
                         "borderRadius": 2,
                         "bottom": 0,
                         "left": 0,
                         "position": "absolute",
                         "right": 0,
                         "top": 0,
-                        "transform": Array [
-                          Object {
+                        "transform": [
+                          {
                             "translateX": -40,
                           },
                         ],
@@ -4923,8 +4923,8 @@ exports[`<Favorites/> should render correctly 1`] = `
           </View>
           <View
             style={
-              Array [
-                Object {
+              [
+                {
                   "flexDirection": "row",
                   "marginLeft": 24,
                   "marginRight": 24,
@@ -4935,8 +4935,8 @@ exports[`<Favorites/> should render correctly 1`] = `
           >
             <View
               style={
-                Array [
-                  Object {
+                [
+                  {
                     "maxWidth": 280,
                     "minWidth": 120,
                     "width": "47%",
@@ -4949,8 +4949,8 @@ exports[`<Favorites/> should render correctly 1`] = `
                 fullWidth={true}
                 height={48}
                 style={
-                  Array [
-                    Object {
+                  [
+                    {
                       "backgroundColor": "#DDDDDD",
                       "borderRadius": 24,
                       "height": 48,
@@ -4964,7 +4964,7 @@ exports[`<Favorites/> should render correctly 1`] = `
                 <BVLinearGradient
                   collapsable={false}
                   colors={
-                    Array [
+                    [
                       4292730333,
                       4293848814,
                       4293848814,
@@ -4972,28 +4972,28 @@ exports[`<Favorites/> should render correctly 1`] = `
                     ]
                   }
                   endPoint={
-                    Object {
+                    {
                       "x": 1,
                       "y": 0,
                     }
                   }
                   locations={null}
                   startPoint={
-                    Object {
+                    {
                       "x": 0,
                       "y": 0,
                     }
                   }
                   style={
-                    Object {
+                    {
                       "borderRadius": 24,
                       "bottom": 0,
                       "left": 0,
                       "position": "absolute",
                       "right": 0,
                       "top": 0,
-                      "transform": Array [
-                        Object {
+                      "transform": [
+                        {
                           "translateX": -200,
                         },
                       ],
@@ -5005,8 +5005,8 @@ exports[`<Favorites/> should render correctly 1`] = `
             <View
               numberOfSpaces={5}
               style={
-                Array [
-                  Object {
+                [
+                  {
                     "width": 20,
                   },
                 ]
@@ -5014,8 +5014,8 @@ exports[`<Favorites/> should render correctly 1`] = `
             />
             <View
               style={
-                Array [
-                  Object {
+                [
+                  {
                     "maxWidth": 280,
                     "minWidth": 120,
                     "width": "47%",
@@ -5028,8 +5028,8 @@ exports[`<Favorites/> should render correctly 1`] = `
                 fullWidth={true}
                 height={48}
                 style={
-                  Array [
-                    Object {
+                  [
+                    {
                       "backgroundColor": "#DDDDDD",
                       "borderRadius": 24,
                       "height": 48,
@@ -5043,7 +5043,7 @@ exports[`<Favorites/> should render correctly 1`] = `
                 <BVLinearGradient
                   collapsable={false}
                   colors={
-                    Array [
+                    [
                       4292730333,
                       4293848814,
                       4293848814,
@@ -5051,28 +5051,28 @@ exports[`<Favorites/> should render correctly 1`] = `
                     ]
                   }
                   endPoint={
-                    Object {
+                    {
                       "x": 1,
                       "y": 0,
                     }
                   }
                   locations={null}
                   startPoint={
-                    Object {
+                    {
                       "x": 0,
                       "y": 0,
                     }
                   }
                   style={
-                    Object {
+                    {
                       "borderRadius": 24,
                       "bottom": 0,
                       "left": 0,
                       "position": "absolute",
                       "right": 0,
                       "top": 0,
-                      "transform": Array [
-                        Object {
+                      "transform": [
+                        {
                           "translateX": -200,
                         },
                       ],
@@ -5085,13 +5085,13 @@ exports[`<Favorites/> should render correctly 1`] = `
           <View
             highlighted={false}
             leadingItem={
-              Object {
+              {
                 "key": "8",
               }
             }
             style={
-              Array [
-                Object {
+              [
+                {
                   "backgroundColor": "#F1F1F4",
                   "height": 2,
                   "marginHorizontal": 24,
@@ -5107,8 +5107,8 @@ exports[`<Favorites/> should render correctly 1`] = `
         >
           <View
             style={
-              Array [
-                Object {
+              [
+                {
                   "marginHorizontal": 24,
                 },
               ]
@@ -5116,8 +5116,8 @@ exports[`<Favorites/> should render correctly 1`] = `
           >
             <View
               style={
-                Array [
-                  Object {
+                [
+                  {
                     "alignItems": "center",
                     "flexDirection": "row",
                   },
@@ -5128,8 +5128,8 @@ exports[`<Favorites/> should render correctly 1`] = `
                 borderRadius={4}
                 height={96}
                 style={
-                  Array [
-                    Object {
+                  [
+                    {
                       "backgroundColor": "#DDDDDD",
                       "borderRadius": 4,
                       "height": 96,
@@ -5143,7 +5143,7 @@ exports[`<Favorites/> should render correctly 1`] = `
                 <BVLinearGradient
                   collapsable={false}
                   colors={
-                    Array [
+                    [
                       4292730333,
                       4293848814,
                       4293848814,
@@ -5151,28 +5151,28 @@ exports[`<Favorites/> should render correctly 1`] = `
                     ]
                   }
                   endPoint={
-                    Object {
+                    {
                       "x": 1,
                       "y": 0,
                     }
                   }
                   locations={null}
                   startPoint={
-                    Object {
+                    {
                       "x": 0,
                       "y": 0,
                     }
                   }
                   style={
-                    Object {
+                    {
                       "borderRadius": 4,
                       "bottom": 0,
                       "left": 0,
                       "position": "absolute",
                       "right": 0,
                       "top": 0,
-                      "transform": Array [
-                        Object {
+                      "transform": [
+                        {
                           "translateX": -80,
                         },
                       ],
@@ -5183,8 +5183,8 @@ exports[`<Favorites/> should render correctly 1`] = `
               <View
                 numberOfSpaces={4}
                 style={
-                  Array [
-                    Object {
+                  [
+                    {
                       "width": 16,
                     },
                   ]
@@ -5195,8 +5195,8 @@ exports[`<Favorites/> should render correctly 1`] = `
                   borderRadius={2}
                   height={12}
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "backgroundColor": "#DDDDDD",
                         "borderRadius": 2,
                         "height": 12,
@@ -5210,7 +5210,7 @@ exports[`<Favorites/> should render correctly 1`] = `
                   <BVLinearGradient
                     collapsable={false}
                     colors={
-                      Array [
+                      [
                         4292730333,
                         4293848814,
                         4293848814,
@@ -5218,28 +5218,28 @@ exports[`<Favorites/> should render correctly 1`] = `
                       ]
                     }
                     endPoint={
-                      Object {
+                      {
                         "x": 1,
                         "y": 0,
                       }
                     }
                     locations={null}
                     startPoint={
-                      Object {
+                      {
                         "x": 0,
                         "y": 0,
                       }
                     }
                     style={
-                      Object {
+                      {
                         "borderRadius": 2,
                         "bottom": 0,
                         "left": 0,
                         "position": "absolute",
                         "right": 0,
                         "top": 0,
-                        "transform": Array [
-                          Object {
+                        "transform": [
+                          {
                             "translateX": -300,
                           },
                         ],
@@ -5250,8 +5250,8 @@ exports[`<Favorites/> should render correctly 1`] = `
                 <View
                   numberOfSpaces={3}
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "height": 12,
                       },
                     ]
@@ -5261,8 +5261,8 @@ exports[`<Favorites/> should render correctly 1`] = `
                   borderRadius={2}
                   height={12}
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "backgroundColor": "#DDDDDD",
                         "borderRadius": 2,
                         "height": 12,
@@ -5276,7 +5276,7 @@ exports[`<Favorites/> should render correctly 1`] = `
                   <BVLinearGradient
                     collapsable={false}
                     colors={
-                      Array [
+                      [
                         4292730333,
                         4293848814,
                         4293848814,
@@ -5284,28 +5284,28 @@ exports[`<Favorites/> should render correctly 1`] = `
                       ]
                     }
                     endPoint={
-                      Object {
+                      {
                         "x": 1,
                         "y": 0,
                       }
                     }
                     locations={null}
                     startPoint={
-                      Object {
+                      {
                         "x": 0,
                         "y": 0,
                       }
                     }
                     style={
-                      Object {
+                      {
                         "borderRadius": 2,
                         "bottom": 0,
                         "left": 0,
                         "position": "absolute",
                         "right": 0,
                         "top": 0,
-                        "transform": Array [
-                          Object {
+                        "transform": [
+                          {
                             "translateX": -150,
                           },
                         ],
@@ -5316,8 +5316,8 @@ exports[`<Favorites/> should render correctly 1`] = `
                 <View
                   numberOfSpaces={1}
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "height": 4,
                       },
                     ]
@@ -5327,8 +5327,8 @@ exports[`<Favorites/> should render correctly 1`] = `
                   borderRadius={2}
                   height={12}
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "backgroundColor": "#DDDDDD",
                         "borderRadius": 2,
                         "height": 12,
@@ -5342,7 +5342,7 @@ exports[`<Favorites/> should render correctly 1`] = `
                   <BVLinearGradient
                     collapsable={false}
                     colors={
-                      Array [
+                      [
                         4292730333,
                         4293848814,
                         4293848814,
@@ -5350,28 +5350,28 @@ exports[`<Favorites/> should render correctly 1`] = `
                       ]
                     }
                     endPoint={
-                      Object {
+                      {
                         "x": 1,
                         "y": 0,
                       }
                     }
                     locations={null}
                     startPoint={
-                      Object {
+                      {
                         "x": 0,
                         "y": 0,
                       }
                     }
                     style={
-                      Object {
+                      {
                         "borderRadius": 2,
                         "bottom": 0,
                         "left": 0,
                         "position": "absolute",
                         "right": 0,
                         "top": 0,
-                        "transform": Array [
-                          Object {
+                        "transform": [
+                          {
                             "translateX": -200,
                           },
                         ],
@@ -5382,8 +5382,8 @@ exports[`<Favorites/> should render correctly 1`] = `
                 <View
                   numberOfSpaces={2}
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "height": 8,
                       },
                     ]
@@ -5393,8 +5393,8 @@ exports[`<Favorites/> should render correctly 1`] = `
                   borderRadius={2}
                   height={12}
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "backgroundColor": "#DDDDDD",
                         "borderRadius": 2,
                         "height": 12,
@@ -5408,7 +5408,7 @@ exports[`<Favorites/> should render correctly 1`] = `
                   <BVLinearGradient
                     collapsable={false}
                     colors={
-                      Array [
+                      [
                         4292730333,
                         4293848814,
                         4293848814,
@@ -5416,28 +5416,28 @@ exports[`<Favorites/> should render correctly 1`] = `
                       ]
                     }
                     endPoint={
-                      Object {
+                      {
                         "x": 1,
                         "y": 0,
                       }
                     }
                     locations={null}
                     startPoint={
-                      Object {
+                      {
                         "x": 0,
                         "y": 0,
                       }
                     }
                     style={
-                      Object {
+                      {
                         "borderRadius": 2,
                         "bottom": 0,
                         "left": 0,
                         "position": "absolute",
                         "right": 0,
                         "top": 0,
-                        "transform": Array [
-                          Object {
+                        "transform": [
+                          {
                             "translateX": -40,
                           },
                         ],
@@ -5450,8 +5450,8 @@ exports[`<Favorites/> should render correctly 1`] = `
           </View>
           <View
             style={
-              Array [
-                Object {
+              [
+                {
                   "flexDirection": "row",
                   "marginLeft": 24,
                   "marginRight": 24,
@@ -5462,8 +5462,8 @@ exports[`<Favorites/> should render correctly 1`] = `
           >
             <View
               style={
-                Array [
-                  Object {
+                [
+                  {
                     "maxWidth": 280,
                     "minWidth": 120,
                     "width": "47%",
@@ -5476,8 +5476,8 @@ exports[`<Favorites/> should render correctly 1`] = `
                 fullWidth={true}
                 height={48}
                 style={
-                  Array [
-                    Object {
+                  [
+                    {
                       "backgroundColor": "#DDDDDD",
                       "borderRadius": 24,
                       "height": 48,
@@ -5491,7 +5491,7 @@ exports[`<Favorites/> should render correctly 1`] = `
                 <BVLinearGradient
                   collapsable={false}
                   colors={
-                    Array [
+                    [
                       4292730333,
                       4293848814,
                       4293848814,
@@ -5499,28 +5499,28 @@ exports[`<Favorites/> should render correctly 1`] = `
                     ]
                   }
                   endPoint={
-                    Object {
+                    {
                       "x": 1,
                       "y": 0,
                     }
                   }
                   locations={null}
                   startPoint={
-                    Object {
+                    {
                       "x": 0,
                       "y": 0,
                     }
                   }
                   style={
-                    Object {
+                    {
                       "borderRadius": 24,
                       "bottom": 0,
                       "left": 0,
                       "position": "absolute",
                       "right": 0,
                       "top": 0,
-                      "transform": Array [
-                        Object {
+                      "transform": [
+                        {
                           "translateX": -200,
                         },
                       ],
@@ -5532,8 +5532,8 @@ exports[`<Favorites/> should render correctly 1`] = `
             <View
               numberOfSpaces={5}
               style={
-                Array [
-                  Object {
+                [
+                  {
                     "width": 20,
                   },
                 ]
@@ -5541,8 +5541,8 @@ exports[`<Favorites/> should render correctly 1`] = `
             />
             <View
               style={
-                Array [
-                  Object {
+                [
+                  {
                     "maxWidth": 280,
                     "minWidth": 120,
                     "width": "47%",
@@ -5555,8 +5555,8 @@ exports[`<Favorites/> should render correctly 1`] = `
                 fullWidth={true}
                 height={48}
                 style={
-                  Array [
-                    Object {
+                  [
+                    {
                       "backgroundColor": "#DDDDDD",
                       "borderRadius": 24,
                       "height": 48,
@@ -5570,7 +5570,7 @@ exports[`<Favorites/> should render correctly 1`] = `
                 <BVLinearGradient
                   collapsable={false}
                   colors={
-                    Array [
+                    [
                       4292730333,
                       4293848814,
                       4293848814,
@@ -5578,28 +5578,28 @@ exports[`<Favorites/> should render correctly 1`] = `
                     ]
                   }
                   endPoint={
-                    Object {
+                    {
                       "x": 1,
                       "y": 0,
                     }
                   }
                   locations={null}
                   startPoint={
-                    Object {
+                    {
                       "x": 0,
                       "y": 0,
                     }
                   }
                   style={
-                    Object {
+                    {
                       "borderRadius": 24,
                       "bottom": 0,
                       "left": 0,
                       "position": "absolute",
                       "right": 0,
                       "top": 0,
-                      "transform": Array [
-                        Object {
+                      "transform": [
+                        {
                           "translateX": -200,
                         },
                       ],

@@ -3,8 +3,8 @@
 exports[`SearchBox component should render SearchBox 1`] = `
 <View
   style={
-    Array [
-      Object {
+    [
+      {
         "flexDirection": "row",
       },
     ]
@@ -12,8 +12,8 @@ exports[`SearchBox component should render SearchBox 1`] = `
 >
   <View
     style={
-      Array [
-        Object {
+      [
+        {
           "alignItems": "center",
           "flexBasis": 0,
           "flexDirection": "row",
@@ -26,8 +26,8 @@ exports[`SearchBox component should render SearchBox 1`] = `
   >
     <View
       style={
-        Array [
-          Object {
+        [
+          {
             "alignItems": "center",
             "flexBasis": 0,
             "flexDirection": "row",
@@ -39,8 +39,8 @@ exports[`SearchBox component should render SearchBox 1`] = `
     >
       <View
         style={
-          Array [
-            Object {
+          [
+            {
               "flexBasis": 0,
               "flexDirection": "row",
               "flexGrow": 1,
@@ -55,8 +55,8 @@ exports[`SearchBox component should render SearchBox 1`] = `
           isError={false}
           isFocus={false}
           style={
-            Array [
-              Object {
+            [
+              {
                 "alignItems": "center",
                 "backgroundColor": "#ffffff",
                 "borderColor": "#90949D",
@@ -71,11 +71,11 @@ exports[`SearchBox component should render SearchBox 1`] = `
                 "paddingTop": 0,
                 "width": "100%",
               },
-              Object {
+              {
                 "borderRadius": 24,
                 "outlineOffset": 0,
               },
-              Object {
+              {
                 "flex": 1,
               },
             ]
@@ -85,8 +85,8 @@ exports[`SearchBox component should render SearchBox 1`] = `
           <View
             numberOfSpaces={1}
             style={
-              Array [
-                Object {
+              [
+                {
                   "width": 4,
                 },
               ]
@@ -94,8 +94,8 @@ exports[`SearchBox component should render SearchBox 1`] = `
           />
           <View
             style={
-              Array [
-                Object {
+              [
+                {
                   "flexShrink": 0,
                 },
               ]
@@ -113,8 +113,8 @@ exports[`SearchBox component should render SearchBox 1`] = `
           <View
             numberOfSpaces={1}
             style={
-              Array [
-                Object {
+              [
+                {
                   "width": 4,
                 },
               ]
@@ -139,8 +139,8 @@ exports[`SearchBox component should render SearchBox 1`] = `
             returnKeyType="search"
             selectionColor="#696A6F"
             style={
-              Array [
-                Object {
+              [
+                {
                   "color": "#696A6F",
                   "flexBasis": 0,
                   "flexGrow": 1,
@@ -153,7 +153,7 @@ exports[`SearchBox component should render SearchBox 1`] = `
                   "paddingRight": 0,
                   "paddingTop": 0,
                 },
-                Object {},
+                {},
               ]
             }
             testID="searchInput"
@@ -166,8 +166,8 @@ exports[`SearchBox component should render SearchBox 1`] = `
   <Text
     nativeID="testUuidV4"
     style={
-      Array [
-        Object {
+      [
+        {
           "display": "none",
         },
       ]
@@ -196,7 +196,7 @@ exports[`SearchBox component should render SearchBox 1`] = `
     scrollTo={null}
     statusBarTranslucent={true}
     supportedOrientations={
-      Array [
+      [
         "portrait",
         "landscape",
       ]

@@ -6,7 +6,7 @@ exports[`useCookiesModalContent hook description should display the CookiesSetti
 <CookiesDetails
   setSettingsCookiesChoice={[MockFunction]}
   settingsCookiesChoice={
-    Object {
+    {
       "customization": false,
       "marketing": false,
       "performance": false,

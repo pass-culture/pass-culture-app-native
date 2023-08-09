@@ -3,8 +3,8 @@
 exports[`<BookingConfirmation /> should render correctly 1`] = `
 <View
   style={
-    Array [
-      Object {
+    [
+      {
         "alignSelf": "center",
         "flexBasis": 0,
         "flexGrow": 1,
@@ -20,8 +20,8 @@ exports[`<BookingConfirmation /> should render correctly 1`] = `
   <View
     flex={2}
     style={
-      Array [
-        Object {
+      [
+        {
           "flexBasis": 0,
           "flexGrow": 2,
           "flexShrink": 1,
@@ -32,8 +32,8 @@ exports[`<BookingConfirmation /> should render correctly 1`] = `
   <View
     hasHeight={false}
     style={
-      Array [
-        Object {
+      [
+        {
           "alignItems": "center",
           "flexGrow": 1,
           "justifyContent": "center",
@@ -52,8 +52,8 @@ exports[`<BookingConfirmation /> should render correctly 1`] = `
   </View>
   <Text
     style={
-      Array [
-        Object {
+      [
+        {
           "color": "#161617",
           "fontFamily": "Montserrat-Medium",
           "fontSize": 22,
@@ -68,8 +68,8 @@ exports[`<BookingConfirmation /> should render correctly 1`] = `
   <View
     flex={0.5}
     style={
-      Array [
-        Object {
+      [
+        {
           "flexBasis": 0,
           "flexGrow": 0.5,
           "flexShrink": 1,
@@ -79,8 +79,8 @@ exports[`<BookingConfirmation /> should render correctly 1`] = `
   />
   <Text
     style={
-      Array [
-        Object {
+      [
+        {
           "color": "#161617",
           "fontFamily": "Montserrat-Regular",
           "fontSize": 15,
@@ -94,8 +94,8 @@ exports[`<BookingConfirmation /> should render correctly 1`] = `
   </Text>
   <Text
     style={
-      Array [
-        Object {
+      [
+        {
           "color": "#161617",
           "fontFamily": "Montserrat-Regular",
           "fontSize": 15,
@@ -109,8 +109,8 @@ exports[`<BookingConfirmation /> should render correctly 1`] = `
   </Text>
   <View
     style={
-      Array [
-        Object {
+      [
+        {
           "flexBasis": 0,
           "flexGrow": 1,
           "flexShrink": 1,
@@ -120,8 +120,8 @@ exports[`<BookingConfirmation /> should render correctly 1`] = `
   />
   <View
     style={
-      Array [
-        Object {
+      [
+        {
           "paddingBottom": 40,
         },
       ]
@@ -140,7 +140,7 @@ exports[`<BookingConfirmation /> should render correctly 1`] = `
       onResponderTerminationRequest={[Function]}
       onStartShouldSetResponder={[Function]}
       style={
-        Object {
+        {
           "alignItems": "center",
           "backgroundColor": "#eb0055",
           "borderRadius": 24,
@@ -163,8 +163,8 @@ exports[`<BookingConfirmation /> should render correctly 1`] = `
         adjustsFontSizeToFit={false}
         numberOfLines={1}
         style={
-          Array [
-            Object {
+          [
+            {
               "color": "#ffffff",
               "fontFamily": "Montserrat-Bold",
               "fontSize": 15,
@@ -181,8 +181,8 @@ exports[`<BookingConfirmation /> should render correctly 1`] = `
     <View
       numberOfSpaces={4}
       style={
-        Array [
-          Object {
+        [
+          {
             "height": 16,
           },
         ]
@@ -201,7 +201,7 @@ exports[`<BookingConfirmation /> should render correctly 1`] = `
       onResponderTerminationRequest={[Function]}
       onStartShouldSetResponder={[Function]}
       style={
-        Object {
+        {
           "alignItems": "center",
           "backgroundColor": "transparent",
           "borderColor": "#eb0055",
@@ -227,8 +227,8 @@ exports[`<BookingConfirmation /> should render correctly 1`] = `
         adjustsFontSizeToFit={false}
         numberOfLines={1}
         style={
-          Array [
-            Object {
+          [
+            {
               "color": "#eb0055",
               "fontFamily": "Montserrat-Bold",
               "fontSize": 15,
@@ -245,8 +245,8 @@ exports[`<BookingConfirmation /> should render correctly 1`] = `
     <View
       numberOfSpaces={4}
       style={
-        Array [
-          Object {
+        [
+          {
             "height": 16,
           },
         ]
@@ -265,7 +265,7 @@ exports[`<BookingConfirmation /> should render correctly 1`] = `
       onResponderTerminationRequest={[Function]}
       onStartShouldSetResponder={[Function]}
       style={
-        Object {
+        {
           "alignItems": "center",
           "backgroundColor": "transparent",
           "borderRadius": 24,
@@ -286,8 +286,8 @@ exports[`<BookingConfirmation /> should render correctly 1`] = `
     >
       <View
         style={
-          Array [
-            Object {
+          [
+            {
               "flexShrink": 0,
             },
           ]
@@ -307,8 +307,8 @@ exports[`<BookingConfirmation /> should render correctly 1`] = `
         adjustsFontSizeToFit={false}
         numberOfLines={1}
         style={
-          Array [
-            Object {
+          [
+            {
               "color": "#eb0055",
               "fontFamily": "Montserrat-Bold",
               "fontSize": 15,
@@ -326,8 +326,8 @@ exports[`<BookingConfirmation /> should render correctly 1`] = `
   <View
     flex={0.1}
     style={
-      Array [
-        Object {
+      [
+        {
           "flexBasis": 0,
           "flexGrow": 0.1,
           "flexShrink": 1,

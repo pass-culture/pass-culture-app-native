@@ -1,11 +1,11 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<BeneficiaryAccountCreated/> should render correctly for 18 year-old beneficiaries 1`] = `
-Array [
+[
   <View
     style={
-      Array [
-        Object {
+      [
+        {
           "alignSelf": "center",
           "flexBasis": 0,
           "flexGrow": 1,
@@ -21,8 +21,8 @@ Array [
     <View
       flex={2}
       style={
-        Array [
-          Object {
+        [
+          {
             "flexBasis": 0,
             "flexGrow": 2,
             "flexShrink": 1,
@@ -33,8 +33,8 @@ Array [
     <View
       hasHeight={true}
       style={
-        Array [
-          Object {
+        [
+          {
             "alignItems": "center",
             "flexGrow": 1,
             "height": "30%",
@@ -50,8 +50,8 @@ Array [
     <View
       flex={0.5}
       style={
-        Array [
-          Object {
+        [
+          {
             "flexBasis": 0,
             "flexGrow": 0.5,
             "flexShrink": 1,
@@ -61,8 +61,8 @@ Array [
     />
     <Text
       style={
-        Array [
-          Object {
+        [
+          {
             "color": "#161617",
             "fontFamily": "Montserrat-Black",
             "fontSize": 26,
@@ -77,8 +77,8 @@ Array [
     <View
       flex={0.5}
       style={
-        Array [
-          Object {
+        [
+          {
             "flexBasis": 0,
             "flexGrow": 0.5,
             "flexShrink": 1,
@@ -88,8 +88,8 @@ Array [
     />
     <Text
       style={
-        Array [
-          Object {
+        [
+          {
             "color": "#161617",
             "fontFamily": "Montserrat-Medium",
             "fontSize": 18,
@@ -104,8 +104,8 @@ Array [
     <View
       numberOfSpaces={4}
       style={
-        Array [
-          Object {
+        [
+          {
             "height": 16,
           },
         ]
@@ -113,8 +113,8 @@ Array [
     />
     <View
       style={
-        Array [
-          Object {
+        [
+          {
             "paddingHorizontal": 40,
           },
         ]
@@ -122,8 +122,8 @@ Array [
     >
       <View
         style={
-          Array [
-            Object {
+          [
+            {
               "alignItems": "center",
               "flexDirection": "row",
               "height": 40,
@@ -135,8 +135,8 @@ Array [
         <View
           backgroundColor="#870087"
           style={
-            Array [
-              Object {
+            [
+              {
                 "alignItems": "center",
                 "backgroundColor": "#870087",
                 "borderRadius": 32,
@@ -161,8 +161,8 @@ Array [
         </View>
         <View
           style={
-            Array [
-              Object {
+            [
+              {
                 "borderColor": "#CBCDD2",
                 "borderRadius": 20,
                 "borderWidth": 2,
@@ -188,7 +188,7 @@ Array [
             onLayout={[Function]}
             progress={1}
             style={
-              Object {
+              {
                 "backgroundColor": "#870087",
                 "flexBasis": 0,
                 "flexGrow": 1,
@@ -204,8 +204,8 @@ Array [
       </View>
       <Text
         style={
-          Array [
-            Object {
+          [
+            {
               "color": "#870087",
               "fontFamily": "Montserrat-Medium",
               "fontSize": 22,
@@ -221,8 +221,8 @@ Array [
     <View
       numberOfSpaces={4}
       style={
-        Array [
-          Object {
+        [
+          {
             "height": 16,
           },
         ]
@@ -230,8 +230,8 @@ Array [
     />
     <Text
       style={
-        Array [
-          Object {
+        [
+          {
             "color": "#161617",
             "fontFamily": "Montserrat-Regular",
             "fontSize": 15,
@@ -246,8 +246,8 @@ Array [
     <View
       numberOfSpaces={5}
       style={
-        Array [
-          Object {
+        [
+          {
             "height": 20,
           },
         ]
@@ -255,8 +255,8 @@ Array [
     />
     <View
       style={
-        Array [
-          Object {
+        [
+          {
             "alignItems": "center",
           },
         ]
@@ -275,7 +275,7 @@ Array [
         onResponderTerminationRequest={[Function]}
         onStartShouldSetResponder={[Function]}
         style={
-          Object {
+          {
             "alignItems": "center",
             "backgroundColor": "#eb0055",
             "borderRadius": 24,
@@ -298,8 +298,8 @@ Array [
           adjustsFontSizeToFit={false}
           numberOfLines={1}
           style={
-            Array [
-              Object {
+            [
+              {
                 "color": "#ffffff",
                 "fontFamily": "Montserrat-Bold",
                 "fontSize": 15,
@@ -317,8 +317,8 @@ Array [
     <View
       flex={1.5}
       style={
-        Array [
-          Object {
+        [
+          {
             "flexBasis": 0,
             "flexGrow": 1.5,
             "flexShrink": 1,
@@ -340,11 +340,11 @@ Array [
 `;
 
 exports[`<BeneficiaryAccountCreated/> should render correctly for underage beneficiaries 1`] = `
-Array [
+[
   <View
     style={
-      Array [
-        Object {
+      [
+        {
           "alignSelf": "center",
           "flexBasis": 0,
           "flexGrow": 1,
@@ -360,8 +360,8 @@ Array [
     <View
       flex={2}
       style={
-        Array [
-          Object {
+        [
+          {
             "flexBasis": 0,
             "flexGrow": 2,
             "flexShrink": 1,
@@ -372,8 +372,8 @@ Array [
     <View
       hasHeight={true}
       style={
-        Array [
-          Object {
+        [
+          {
             "alignItems": "center",
             "flexGrow": 1,
             "height": "30%",
@@ -389,8 +389,8 @@ Array [
     <View
       flex={0.5}
       style={
-        Array [
-          Object {
+        [
+          {
             "flexBasis": 0,
             "flexGrow": 0.5,
             "flexShrink": 1,
@@ -400,8 +400,8 @@ Array [
     />
     <Text
       style={
-        Array [
-          Object {
+        [
+          {
             "color": "#161617",
             "fontFamily": "Montserrat-Black",
             "fontSize": 26,
@@ -416,8 +416,8 @@ Array [
     <View
       flex={0.5}
       style={
-        Array [
-          Object {
+        [
+          {
             "flexBasis": 0,
             "flexGrow": 0.5,
             "flexShrink": 1,
@@ -427,8 +427,8 @@ Array [
     />
     <Text
       style={
-        Array [
-          Object {
+        [
+          {
             "color": "#161617",
             "fontFamily": "Montserrat-Medium",
             "fontSize": 18,
@@ -443,8 +443,8 @@ Array [
     <View
       numberOfSpaces={4}
       style={
-        Array [
-          Object {
+        [
+          {
             "height": 16,
           },
         ]
@@ -452,8 +452,8 @@ Array [
     />
     <View
       style={
-        Array [
-          Object {
+        [
+          {
             "paddingHorizontal": 40,
           },
         ]
@@ -461,8 +461,8 @@ Array [
     >
       <View
         style={
-          Array [
-            Object {
+          [
+            {
               "alignItems": "center",
               "flexDirection": "row",
               "height": 40,
@@ -474,8 +474,8 @@ Array [
         <View
           backgroundColor="#870087"
           style={
-            Array [
-              Object {
+            [
+              {
                 "alignItems": "center",
                 "backgroundColor": "#870087",
                 "borderRadius": 32,
@@ -500,8 +500,8 @@ Array [
         </View>
         <View
           style={
-            Array [
-              Object {
+            [
+              {
                 "borderColor": "#CBCDD2",
                 "borderRadius": 20,
                 "borderWidth": 2,
@@ -527,7 +527,7 @@ Array [
             onLayout={[Function]}
             progress={1}
             style={
-              Object {
+              {
                 "backgroundColor": "#870087",
                 "flexBasis": 0,
                 "flexGrow": 1,
@@ -543,8 +543,8 @@ Array [
       </View>
       <Text
         style={
-          Array [
-            Object {
+          [
+            {
               "color": "#870087",
               "fontFamily": "Montserrat-Medium",
               "fontSize": 22,
@@ -560,8 +560,8 @@ Array [
     <View
       numberOfSpaces={4}
       style={
-        Array [
-          Object {
+        [
+          {
             "height": 16,
           },
         ]
@@ -569,8 +569,8 @@ Array [
     />
     <Text
       style={
-        Array [
-          Object {
+        [
+          {
             "color": "#161617",
             "fontFamily": "Montserrat-Regular",
             "fontSize": 15,
@@ -585,8 +585,8 @@ Array [
     <View
       numberOfSpaces={5}
       style={
-        Array [
-          Object {
+        [
+          {
             "height": 20,
           },
         ]
@@ -594,8 +594,8 @@ Array [
     />
     <View
       style={
-        Array [
-          Object {
+        [
+          {
             "alignItems": "center",
           },
         ]
@@ -614,7 +614,7 @@ Array [
         onResponderTerminationRequest={[Function]}
         onStartShouldSetResponder={[Function]}
         style={
-          Object {
+          {
             "alignItems": "center",
             "backgroundColor": "#eb0055",
             "borderRadius": 24,
@@ -637,8 +637,8 @@ Array [
           adjustsFontSizeToFit={false}
           numberOfLines={1}
           style={
-            Array [
-              Object {
+            [
+              {
                 "color": "#ffffff",
                 "fontFamily": "Montserrat-Bold",
                 "fontSize": 15,
@@ -656,8 +656,8 @@ Array [
     <View
       flex={1.5}
       style={
-        Array [
-          Object {
+        [
+          {
             "flexBasis": 0,
             "flexGrow": 1.5,
             "flexShrink": 1,

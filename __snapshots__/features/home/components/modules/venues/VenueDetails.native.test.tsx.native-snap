@@ -4,8 +4,8 @@ exports[`VenueDetails component should render correctly 1`] = `
 <View
   maxWidth={100}
   style={
-    Array [
-      Object {
+    [
+      {
         "marginTop": 8,
         "maxWidth": 100,
       },
@@ -15,8 +15,8 @@ exports[`VenueDetails component should render correctly 1`] = `
   <Text
     numberOfLines={2}
     style={
-      Array [
-        Object {
+      [
+        {
           "color": "#161617",
           "fontFamily": "Montserrat-Bold",
           "fontSize": 15,
@@ -29,8 +29,8 @@ exports[`VenueDetails component should render correctly 1`] = `
   </Text>
   <View
     style={
-      Array [
-        Object {
+      [
+        {
           "flexDirection": "row",
         },
       ]
@@ -39,8 +39,8 @@ exports[`VenueDetails component should render correctly 1`] = `
     <Text
       numberOfLines={1}
       style={
-        Array [
-          Object {
+        [
+          {
             "color": "#696A6F",
             "flexShrink": 1,
             "fontFamily": "Montserrat-SemiBold",

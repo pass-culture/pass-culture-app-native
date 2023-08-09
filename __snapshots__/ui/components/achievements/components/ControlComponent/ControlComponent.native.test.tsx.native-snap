@@ -15,7 +15,7 @@ exports[`<ControlComponent /> renders render next when type is next 1`] = `
   onResponderTerminationRequest={[Function]}
   onStartShouldSetResponder={[Function]}
   style={
-    Object {
+    {
       "marginBottom": 0,
       "marginLeft": 0,
       "marginRight": 0,
@@ -53,7 +53,7 @@ exports[`<ControlComponent /> should render correctly prev by default 1`] = `
   onResponderTerminationRequest={[Function]}
   onStartShouldSetResponder={[Function]}
   style={
-    Object {
+    {
       "marginBottom": 0,
       "marginLeft": 0,
       "marginRight": 0,
@@ -91,7 +91,7 @@ exports[`<ControlComponent /> should render prev when type is prev 1`] = `
   onResponderTerminationRequest={[Function]}
   onStartShouldSetResponder={[Function]}
   style={
-    Object {
+    {
       "marginBottom": 0,
       "marginLeft": 0,
       "marginRight": 0,

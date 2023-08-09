@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<CountryPicker /> should render correctly 1`] = `
-Array [
+[
   <View
     accessibilityLabel="Ouvrir la modale de choix de l’indicatif téléphonique"
     accessibilityRole="button"
@@ -16,7 +16,7 @@ Array [
     onResponderTerminationRequest={[Function]}
     onStartShouldSetResponder={[Function]}
     style={
-      Object {
+      {
         "alignItems": "center",
         "flexDirection": "row",
         "flexShrink": 0,
@@ -28,8 +28,8 @@ Array [
   >
     <Text
       style={
-        Array [
-          Object {
+        [
+          {
             "color": "#161617",
             "fontFamily": "Montserrat-Regular",
             "fontSize": 15,
@@ -54,8 +54,8 @@ Array [
     <View
       numberOfSpaces={2}
       style={
-        Array [
-          Object {
+        [
+          {
             "width": 8,
           },
         ]
@@ -63,8 +63,8 @@ Array [
     />
     <View
       style={
-        Array [
-          Object {
+        [
+          {
             "borderRightColor": "#696A6F",
             "borderRightWidth": 1,
             "paddingVertical": 10,
@@ -94,7 +94,7 @@ Array [
     scrollTo={null}
     statusBarTranslucent={true}
     supportedOrientations={
-      Array [
+      [
         "portrait",
         "landscape",
       ]

@@ -56,7 +56,6 @@ describe('BookingDetails', () => {
   mockUseNetInfoContext.mockReturnValue({ isConnected: true })
 
   afterEach(() => {
-    jest.restoreAllMocks()
     mockBookings = { ...bookingsSnap }
   })
 

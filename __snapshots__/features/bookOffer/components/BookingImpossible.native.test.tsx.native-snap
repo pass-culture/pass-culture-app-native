@@ -3,8 +3,8 @@
 exports[`<BookingImpossible /> When offer is already favorite should render without CTAs 1`] = `
 <View
   style={
-    Array [
-      Object {
+    [
+      {
         "alignContent": "center",
         "alignItems": "center",
         "justifyContent": "center",
@@ -24,8 +24,8 @@ exports[`<BookingImpossible /> When offer is already favorite should render with
   <View
     numberOfSpaces={6}
     style={
-      Array [
-        Object {
+      [
+        {
           "height": 24,
         },
       ]
@@ -33,8 +33,8 @@ exports[`<BookingImpossible /> When offer is already favorite should render with
   />
   <Text
     style={
-      Array [
-        Object {
+      [
+        {
           "color": "#161617",
           "fontFamily": "Montserrat-Regular",
           "fontSize": 15,
@@ -50,8 +50,8 @@ exports[`<BookingImpossible /> When offer is already favorite should render with
   <View
     numberOfSpaces={6}
     style={
-      Array [
-        Object {
+      [
+        {
           "height": 24,
         },
       ]
@@ -59,8 +59,8 @@ exports[`<BookingImpossible /> When offer is already favorite should render with
   />
   <Text
     style={
-      Array [
-        Object {
+      [
+        {
           "color": "#161617",
           "fontFamily": "Montserrat-Regular",
           "fontSize": 15,
@@ -76,8 +76,8 @@ exports[`<BookingImpossible /> When offer is already favorite should render with
   <View
     numberOfSpaces={6}
     style={
-      Array [
-        Object {
+      [
+        {
           "height": 24,
         },
       ]
@@ -96,7 +96,7 @@ exports[`<BookingImpossible /> When offer is already favorite should render with
     onResponderTerminationRequest={[Function]}
     onStartShouldSetResponder={[Function]}
     style={
-      Object {
+      {
         "alignItems": "center",
         "backgroundColor": "#eb0055",
         "borderRadius": 24,
@@ -119,8 +119,8 @@ exports[`<BookingImpossible /> When offer is already favorite should render with
       adjustsFontSizeToFit={false}
       numberOfLines={1}
       style={
-        Array [
-          Object {
+        [
+          {
             "color": "#ffffff",
             "fontFamily": "Montserrat-Bold",
             "fontSize": 15,
@@ -137,8 +137,8 @@ exports[`<BookingImpossible /> When offer is already favorite should render with
   <View
     numberOfSpaces={4}
     style={
-      Array [
-        Object {
+      [
+        {
           "height": 16,
         },
       ]
@@ -150,8 +150,8 @@ exports[`<BookingImpossible /> When offer is already favorite should render with
 exports[`<BookingImpossible /> When offer is not yet favorite should render with CTAs 1`] = `
 <View
   style={
-    Array [
-      Object {
+    [
+      {
         "alignContent": "center",
         "alignItems": "center",
         "justifyContent": "center",
@@ -171,8 +171,8 @@ exports[`<BookingImpossible /> When offer is not yet favorite should render with
   <View
     numberOfSpaces={6}
     style={
-      Array [
-        Object {
+      [
+        {
           "height": 24,
         },
       ]
@@ -180,8 +180,8 @@ exports[`<BookingImpossible /> When offer is not yet favorite should render with
   />
   <Text
     style={
-      Array [
-        Object {
+      [
+        {
           "color": "#161617",
           "fontFamily": "Montserrat-Regular",
           "fontSize": 15,
@@ -197,8 +197,8 @@ exports[`<BookingImpossible /> When offer is not yet favorite should render with
   <View
     numberOfSpaces={6}
     style={
-      Array [
-        Object {
+      [
+        {
           "height": 24,
         },
       ]
@@ -206,8 +206,8 @@ exports[`<BookingImpossible /> When offer is not yet favorite should render with
   />
   <Text
     style={
-      Array [
-        Object {
+      [
+        {
           "color": "#161617",
           "fontFamily": "Montserrat-Regular",
           "fontSize": 15,
@@ -223,8 +223,8 @@ exports[`<BookingImpossible /> When offer is not yet favorite should render with
   <View
     numberOfSpaces={6}
     style={
-      Array [
-        Object {
+      [
+        {
           "height": 24,
         },
       ]
@@ -243,7 +243,7 @@ exports[`<BookingImpossible /> When offer is not yet favorite should render with
     onResponderTerminationRequest={[Function]}
     onStartShouldSetResponder={[Function]}
     style={
-      Object {
+      {
         "alignItems": "center",
         "backgroundColor": "#eb0055",
         "borderRadius": 24,
@@ -266,8 +266,8 @@ exports[`<BookingImpossible /> When offer is not yet favorite should render with
       adjustsFontSizeToFit={false}
       numberOfLines={1}
       style={
-        Array [
-          Object {
+        [
+          {
             "color": "#ffffff",
             "fontFamily": "Montserrat-Bold",
             "fontSize": 15,
@@ -284,8 +284,8 @@ exports[`<BookingImpossible /> When offer is not yet favorite should render with
   <View
     numberOfSpaces={4}
     style={
-      Array [
-        Object {
+      [
+        {
           "height": 16,
         },
       ]
@@ -304,7 +304,7 @@ exports[`<BookingImpossible /> When offer is not yet favorite should render with
     onResponderTerminationRequest={[Function]}
     onStartShouldSetResponder={[Function]}
     style={
-      Object {
+      {
         "alignItems": "center",
         "backgroundColor": "transparent",
         "borderRadius": 24,
@@ -325,8 +325,8 @@ exports[`<BookingImpossible /> When offer is not yet favorite should render with
   >
     <View
       style={
-        Array [
-          Object {
+        [
+          {
             "flexShrink": 0,
           },
         ]
@@ -346,8 +346,8 @@ exports[`<BookingImpossible /> When offer is not yet favorite should render with
       adjustsFontSizeToFit={false}
       numberOfLines={1}
       style={
-        Array [
-          Object {
+        [
+          {
             "color": "#eb0055",
             "fontFamily": "Montserrat-Bold",
             "fontSize": 15,
@@ -364,8 +364,8 @@ exports[`<BookingImpossible /> When offer is not yet favorite should render with
   <View
     numberOfSpaces={4}
     style={
-      Array [
-        Object {
+      [
+        {
           "height": 16,
         },
       ]

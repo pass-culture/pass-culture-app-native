@@ -327,9 +327,6 @@ describe('<Login/>', () => {
     beforeEach(() => {
       useRoute.mockReturnValue({ params: { offerId: OFFER_ID, from: From.FAVORITE } }) // first render
     })
-    afterEach(() => {
-      jest.restoreAllMocks()
-    })
 
     it('should redirect to Offer page when signin is successful', async () => {
       renderLogin()
@@ -392,10 +389,6 @@ describe('<Login/>', () => {
     beforeEach(() => {
       useRoute.mockReturnValue({ params: { offerId: OFFER_ID, from: From.BOOKING } }) // first render
     })
-    afterEach(() => {
-      jest.restoreAllMocks()
-    })
-
     it('should redirect to the previous offer page and ask to open the booking modal', async () => {
       renderLogin()
 

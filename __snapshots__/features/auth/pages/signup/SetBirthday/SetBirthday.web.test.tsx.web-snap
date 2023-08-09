@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<SetBirthday /> no touch device should render correctly 1`] = `
-Object {
+{
   "asFragment": [Function],
   "baseElement": .c8 {
   -webkit-flex-direction: row;
@@ -2974,7 +2974,7 @@ Object {
 `;
 
 exports[`<SetBirthday /> touch device should render correctly 1`] = `
-Object {
+{
   "asFragment": [Function],
   "baseElement": .c2 {
   -webkit-flex-direction: row;

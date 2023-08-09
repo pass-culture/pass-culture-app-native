@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<AcceptCgu/> should render correctly 1`] = `
-Array [
+[
   <Modal
     hardwareAccelerated={false}
     onRequestClose={[Function]}
@@ -11,8 +11,8 @@ Array [
   />,
   <Text
     style={
-      Array [
-        Object {
+      [
+        {
           "color": "#161617",
           "fontFamily": "Montserrat-Bold",
           "fontSize": 20,
@@ -26,8 +26,8 @@ Array [
   <View
     numberOfSpaces={10}
     style={
-      Array [
-        Object {
+      [
+        {
           "height": 40,
         },
       ]
@@ -35,8 +35,8 @@ Array [
   />,
   <Text
     style={
-      Array [
-        Object {
+      [
+        {
           "color": "#161617",
           "fontFamily": "Montserrat-Regular",
           "fontSize": 15,
@@ -50,8 +50,8 @@ Array [
   <View
     numberOfSpaces={2}
     style={
-      Array [
-        Object {
+      [
+        {
           "height": 8,
         },
       ]
@@ -70,7 +70,7 @@ Array [
     onResponderTerminationRequest={[Function]}
     onStartShouldSetResponder={[Function]}
     style={
-      Object {
+      {
         "alignItems": "center",
         "backgroundColor": "transparent",
         "borderRadius": 24,
@@ -92,8 +92,8 @@ Array [
   >
     <View
       style={
-        Array [
-          Object {
+        [
+          {
             "flexShrink": 0,
           },
         ]
@@ -114,8 +114,8 @@ Array [
       adjustsFontSizeToFit={false}
       numberOfLines={2}
       style={
-        Array [
-          Object {
+        [
+          {
             "color": "#161617",
             "fontFamily": "Montserrat-Bold",
             "fontSize": 15,
@@ -142,7 +142,7 @@ Array [
     onResponderTerminationRequest={[Function]}
     onStartShouldSetResponder={[Function]}
     style={
-      Object {
+      {
         "alignItems": "center",
         "backgroundColor": "transparent",
         "borderRadius": 24,
@@ -164,8 +164,8 @@ Array [
   >
     <View
       style={
-        Array [
-          Object {
+        [
+          {
             "flexShrink": 0,
           },
         ]
@@ -186,8 +186,8 @@ Array [
       adjustsFontSizeToFit={false}
       numberOfLines={2}
       style={
-        Array [
-          Object {
+        [
+          {
             "color": "#161617",
             "fontFamily": "Montserrat-Bold",
             "fontSize": 15,
@@ -204,8 +204,8 @@ Array [
   <View
     numberOfSpaces={6}
     style={
-      Array [
-        Object {
+      [
+        {
           "height": 24,
         },
       ]
@@ -213,8 +213,8 @@ Array [
   />,
   <View
     style={
-      Array [
-        Object {
+      [
+        {
           "backgroundColor": "#F1F1F4",
           "height": 1,
           "width": "100%",
@@ -225,8 +225,8 @@ Array [
   <View
     numberOfSpaces={8}
     style={
-      Array [
-        Object {
+      [
+        {
           "height": 32,
         },
       ]
@@ -234,8 +234,8 @@ Array [
   />,
   <Text
     style={
-      Array [
-        Object {
+      [
+        {
           "color": "#161617",
           "fontFamily": "Montserrat-Regular",
           "fontSize": 15,
@@ -249,8 +249,8 @@ Array [
   <View
     numberOfSpaces={2}
     style={
-      Array [
-        Object {
+      [
+        {
           "height": 8,
         },
       ]
@@ -269,7 +269,7 @@ Array [
     onResponderTerminationRequest={[Function]}
     onStartShouldSetResponder={[Function]}
     style={
-      Object {
+      {
         "alignItems": "center",
         "backgroundColor": "transparent",
         "borderRadius": 24,
@@ -290,8 +290,8 @@ Array [
   >
     <View
       style={
-        Array [
-          Object {
+        [
+          {
             "flexShrink": 0,
           },
         ]
@@ -311,8 +311,8 @@ Array [
       adjustsFontSizeToFit={false}
       numberOfLines={1}
       style={
-        Array [
-          Object {
+        [
+          {
             "color": "#161617",
             "fontFamily": "Montserrat-Bold",
             "fontSize": 15,
@@ -329,8 +329,8 @@ Array [
   <View
     numberOfSpaces={10}
     style={
-      Array [
-        Object {
+      [
+        {
           "height": 40,
         },
       ]
@@ -339,7 +339,7 @@ Array [
   <View
     accessibilityLabel="Accepter les conditions générales d’utilisation et la politique de confidentialité pour s’inscrire"
     accessibilityState={
-      Object {
+      {
         "disabled": false,
       }
     }
@@ -354,7 +354,7 @@ Array [
     onResponderTerminationRequest={[Function]}
     onStartShouldSetResponder={[Function]}
     style={
-      Object {
+      {
         "alignItems": "center",
         "backgroundColor": "#eb0055",
         "borderRadius": 24,
@@ -377,8 +377,8 @@ Array [
       adjustsFontSizeToFit={false}
       numberOfLines={1}
       style={
-        Array [
-          Object {
+        [
+          {
             "color": "#ffffff",
             "fontFamily": "Montserrat-Bold",
             "fontSize": 15,
@@ -395,8 +395,8 @@ Array [
   <View
     numberOfSpaces={5}
     style={
-      Array [
-        Object {
+      [
+        {
           "height": 20,
         },
       ]

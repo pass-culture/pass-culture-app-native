@@ -1,13 +1,13 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`SearchHeader component should render SearchHeader 1`] = `
-Array [
+[
   <View
     customHeight={16}
     enable={true}
     style={
-      Array [
-        Object {
+      [
+        {
           "height": 16,
         },
       ]
@@ -15,8 +15,8 @@ Array [
   />,
   <View
     style={
-      Array [
-        Object {
+      [
+        {
           "marginTop": 24,
           "paddingHorizontal": 24,
           "zIndex": 1,
@@ -28,8 +28,8 @@ Array [
       <Text
         htmlFor="testUuidV4"
         style={
-          Array [
-            Object {
+          [
+            {
               "color": "#161617",
               "fontFamily": "Montserrat-Black",
               "fontSize": 26,
@@ -44,8 +44,8 @@ Array [
     <View
       numberOfSpaces={4}
       style={
-        Array [
-          Object {
+        [
+          {
             "height": 16,
           },
         ]
@@ -54,8 +54,8 @@ Array [
     <View>
       <View
         style={
-          Array [
-            Object {
+          [
+            {
               "flexDirection": "row",
             },
           ]
@@ -63,8 +63,8 @@ Array [
       >
         <View
           style={
-            Array [
-              Object {
+            [
+              {
                 "alignItems": "center",
                 "flexBasis": 0,
                 "flexDirection": "row",
@@ -77,8 +77,8 @@ Array [
         >
           <View
             style={
-              Array [
-                Object {
+              [
+                {
                   "alignItems": "center",
                   "flexBasis": 0,
                   "flexDirection": "row",
@@ -90,8 +90,8 @@ Array [
           >
             <View
               style={
-                Array [
-                  Object {
+                [
+                  {
                     "flexBasis": 0,
                     "flexDirection": "row",
                     "flexGrow": 1,
@@ -106,8 +106,8 @@ Array [
                 isError={false}
                 isFocus={false}
                 style={
-                  Array [
-                    Object {
+                  [
+                    {
                       "alignItems": "center",
                       "backgroundColor": "#ffffff",
                       "borderColor": "#90949D",
@@ -122,11 +122,11 @@ Array [
                       "paddingTop": 0,
                       "width": "100%",
                     },
-                    Object {
+                    {
                       "borderRadius": 24,
                       "outlineOffset": 0,
                     },
-                    Object {
+                    {
                       "flex": 1,
                     },
                   ]
@@ -136,8 +136,8 @@ Array [
                 <View
                   numberOfSpaces={1}
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "width": 4,
                       },
                     ]
@@ -145,8 +145,8 @@ Array [
                 />
                 <View
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "flexShrink": 0,
                       },
                     ]
@@ -164,8 +164,8 @@ Array [
                 <View
                   numberOfSpaces={1}
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "width": 4,
                       },
                     ]
@@ -190,8 +190,8 @@ Array [
                   returnKeyType="search"
                   selectionColor="#696A6F"
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "color": "#696A6F",
                         "flexBasis": 0,
                         "flexGrow": 1,
@@ -204,7 +204,7 @@ Array [
                         "paddingRight": 0,
                         "paddingTop": 0,
                       },
-                      Object {},
+                      {},
                     ]
                   }
                   testID="searchInput"
@@ -217,8 +217,8 @@ Array [
         <Text
           nativeID="testUuidV4"
           style={
-            Array [
-              Object {
+            [
+              {
                 "display": "none",
               },
             ]
@@ -247,7 +247,7 @@ Array [
           scrollTo={null}
           statusBarTranslucent={true}
           supportedOrientations={
-            Array [
+            [
               "portrait",
               "landscape",
             ]

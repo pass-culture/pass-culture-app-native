@@ -3,8 +3,8 @@
 exports[`<TextInput /> should render correctly when NOT focused 1`] = `
 <View
   style={
-    Array [
-      Object {
+    [
+      {
         "alignItems": "flex-start",
         "display": "flex",
         "flexDirection": "column",
@@ -20,8 +20,8 @@ exports[`<TextInput /> should render correctly when NOT focused 1`] = `
     isError={false}
     isFocus={false}
     style={
-      Array [
-        Object {
+      [
+        {
           "alignItems": "center",
           "backgroundColor": "#ffffff",
           "borderColor": "#90949D",
@@ -51,8 +51,8 @@ exports[`<TextInput /> should render correctly when NOT focused 1`] = `
       placeholderTextColor="#696A6F"
       returnKeyType="next"
       style={
-        Array [
-          Object {
+        [
+          {
             "color": "#696A6F",
             "flexBasis": 0,
             "flexGrow": 1,

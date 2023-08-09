@@ -3,8 +3,8 @@
 exports[`<SearchFilter/> should render correctly 1`] = `
 <View
   style={
-    Array [
-      Object {
+    [
+      {
         "backgroundColor": "#ffffff",
         "flexBasis": 0,
         "flexGrow": 1,
@@ -16,8 +16,8 @@ exports[`<SearchFilter/> should render correctly 1`] = `
   <View
     accessibilityRole="header"
     style={
-      Array [
-        Object {
+      [
+        {
           "width": "100%",
         },
       ]
@@ -25,15 +25,15 @@ exports[`<SearchFilter/> should render correctly 1`] = `
   >
     <View
       style={
-        Object {
+        {
           "height": 64,
         }
       }
     />
     <View
       style={
-        Array [
-          Object {
+        [
+          {
             "backgroundColor": "#eb0055",
             "position": "absolute",
             "top": 0,
@@ -47,8 +47,8 @@ exports[`<SearchFilter/> should render correctly 1`] = `
         customHeight={16}
         enable={true}
         style={
-          Array [
-            Object {
+          [
+            {
               "height": 16,
             },
           ]
@@ -56,8 +56,8 @@ exports[`<SearchFilter/> should render correctly 1`] = `
       />
       <View
         style={
-          Array [
-            Object {
+          [
+            {
               "alignItems": "center",
               "height": 48,
               "justifyContent": "center",
@@ -67,8 +67,8 @@ exports[`<SearchFilter/> should render correctly 1`] = `
       >
         <View
           style={
-            Array [
-              Object {
+            [
+              {
                 "alignItems": "center",
                 "flexDirection": "row",
                 "justifyContent": "space-between",
@@ -80,8 +80,8 @@ exports[`<SearchFilter/> should render correctly 1`] = `
           <View
             positionInHeader="left"
             style={
-              Array [
-                Object {
+              [
+                {
                   "alignItems": "center",
                   "flexBasis": 0,
                   "flexDirection": "row",
@@ -98,8 +98,8 @@ exports[`<SearchFilter/> should render correctly 1`] = `
           <Text
             numberOfLines={1}
             style={
-              Array [
-                Object {
+              [
+                {
                   "color": "#ffffff",
                   "fontFamily": "Montserrat-Regular",
                   "fontSize": 15,
@@ -114,8 +114,8 @@ exports[`<SearchFilter/> should render correctly 1`] = `
           <View
             positionInHeader="right"
             style={
-              Array [
-                Object {
+              [
+                {
                   "alignItems": "center",
                   "flexBasis": 0,
                   "flexDirection": "row",
@@ -143,7 +143,7 @@ exports[`<SearchFilter/> should render correctly 1`] = `
               onResponderTerminationRequest={[Function]}
               onStartShouldSetResponder={[Function]}
               style={
-                Object {
+                {
                   "alignItems": "center",
                   "flexGrow": 1,
                   "height": 40,
@@ -166,8 +166,8 @@ exports[`<SearchFilter/> should render correctly 1`] = `
               </View>
               <Text
                 style={
-                  Array [
-                    Object {
+                  [
+                    {
                       "display": "none",
                     },
                   ]
@@ -185,8 +185,8 @@ exports[`<SearchFilter/> should render correctly 1`] = `
     keyboardShouldPersistTaps="always"
     scrollEnabled={true}
     style={
-      Array [
-        Object {
+      [
+        {
           "flexBasis": 0,
           "flexGrow": 1,
           "flexShrink": 1,
@@ -198,8 +198,8 @@ exports[`<SearchFilter/> should render correctly 1`] = `
       <View
         accessibilityRole="list"
         style={
-          Array [
-            Object {
+          [
+            {
               "flexDirection": "column",
               "paddingLeft": 0,
             },
@@ -209,8 +209,8 @@ exports[`<SearchFilter/> should render correctly 1`] = `
         <View
           accessibilityRole="none"
           style={
-            Array [
-              Object {
+            [
+              {
                 "display": "flex",
                 "marginLeft": 24,
                 "marginRight": 24,
@@ -221,8 +221,8 @@ exports[`<SearchFilter/> should render correctly 1`] = `
           <View
             numberOfSpaces={4}
             style={
-              Array [
-                Object {
+              [
+                {
                   "height": 16,
                 },
               ]
@@ -241,7 +241,7 @@ exports[`<SearchFilter/> should render correctly 1`] = `
             onResponderTerminationRequest={[Function]}
             onStartShouldSetResponder={[Function]}
             style={
-              Object {
+              {
                 "alignItems": "center",
                 "flexDirection": "row",
                 "justifyContent": "space-between",
@@ -263,8 +263,8 @@ exports[`<SearchFilter/> should render correctly 1`] = `
             <View
               numberOfSpaces={2}
               style={
-                Array [
-                  Object {
+                [
+                  {
                     "width": 8,
                   },
                 ]
@@ -272,8 +272,8 @@ exports[`<SearchFilter/> should render correctly 1`] = `
             />
             <View
               style={
-                Array [
-                  Object {
+                [
+                  {
                     "alignItems": "flex-start",
                     "flexDirection": "column",
                   },
@@ -283,8 +283,8 @@ exports[`<SearchFilter/> should render correctly 1`] = `
               <Text
                 numberOfLines={1}
                 style={
-                  Array [
-                    Object {
+                  [
+                    {
                       "color": "#161617",
                       "flexShrink": 1,
                       "fontFamily": "Montserrat-Bold",
@@ -299,8 +299,8 @@ exports[`<SearchFilter/> should render correctly 1`] = `
               <Text
                 numberOfLines={1}
                 style={
-                  Array [
-                    Object {
+                  [
+                    {
                       "color": "#696A6F",
                       "flexShrink": 1,
                       "fontFamily": "Montserrat-SemiBold",
@@ -315,8 +315,8 @@ exports[`<SearchFilter/> should render correctly 1`] = `
             </View>
             <View
               style={
-                Array [
-                  Object {
+                [
+                  {
                     "flexBasis": 0,
                     "flexGrow": 1,
                     "flexShrink": 1,
@@ -355,7 +355,7 @@ exports[`<SearchFilter/> should render correctly 1`] = `
             scrollTo={null}
             statusBarTranslucent={true}
             supportedOrientations={
-              Array [
+              [
                 "portrait",
                 "landscape",
               ]
@@ -368,8 +368,8 @@ exports[`<SearchFilter/> should render correctly 1`] = `
           <View
             numberOfSpaces={4}
             style={
-              Array [
-                Object {
+              [
+                {
                   "height": 16,
                 },
               ]
@@ -377,8 +377,8 @@ exports[`<SearchFilter/> should render correctly 1`] = `
           />
           <View
             style={
-              Array [
-                Object {
+              [
+                {
                   "alignSelf": "center",
                   "backgroundColor": "#F1F1F4",
                   "height": 2,
@@ -392,8 +392,8 @@ exports[`<SearchFilter/> should render correctly 1`] = `
         <View
           accessibilityRole="none"
           style={
-            Array [
-              Object {
+            [
+              {
                 "display": "flex",
                 "marginLeft": 24,
                 "marginRight": 24,
@@ -404,8 +404,8 @@ exports[`<SearchFilter/> should render correctly 1`] = `
           <View
             numberOfSpaces={4}
             style={
-              Array [
-                Object {
+              [
+                {
                   "height": 16,
                 },
               ]
@@ -424,7 +424,7 @@ exports[`<SearchFilter/> should render correctly 1`] = `
             onResponderTerminationRequest={[Function]}
             onStartShouldSetResponder={[Function]}
             style={
-              Object {
+              {
                 "alignItems": "center",
                 "flexDirection": "row",
                 "justifyContent": "space-between",
@@ -445,8 +445,8 @@ exports[`<SearchFilter/> should render correctly 1`] = `
             <View
               numberOfSpaces={2}
               style={
-                Array [
-                  Object {
+                [
+                  {
                     "width": 8,
                   },
                 ]
@@ -454,8 +454,8 @@ exports[`<SearchFilter/> should render correctly 1`] = `
             />
             <View
               style={
-                Array [
-                  Object {
+                [
+                  {
                     "alignItems": "flex-start",
                     "flexDirection": "column",
                   },
@@ -465,8 +465,8 @@ exports[`<SearchFilter/> should render correctly 1`] = `
               <Text
                 numberOfLines={1}
                 style={
-                  Array [
-                    Object {
+                  [
+                    {
                       "color": "#161617",
                       "flexShrink": 1,
                       "fontFamily": "Montserrat-Bold",
@@ -481,8 +481,8 @@ exports[`<SearchFilter/> should render correctly 1`] = `
             </View>
             <View
               style={
-                Array [
-                  Object {
+                [
+                  {
                     "flexBasis": 0,
                     "flexGrow": 1,
                     "flexShrink": 1,
@@ -521,7 +521,7 @@ exports[`<SearchFilter/> should render correctly 1`] = `
             scrollTo={null}
             statusBarTranslucent={true}
             supportedOrientations={
-              Array [
+              [
                 "portrait",
                 "landscape",
               ]
@@ -534,8 +534,8 @@ exports[`<SearchFilter/> should render correctly 1`] = `
           <View
             numberOfSpaces={4}
             style={
-              Array [
-                Object {
+              [
+                {
                   "height": 16,
                 },
               ]
@@ -543,8 +543,8 @@ exports[`<SearchFilter/> should render correctly 1`] = `
           />
           <View
             style={
-              Array [
-                Object {
+              [
+                {
                   "alignSelf": "center",
                   "backgroundColor": "#F1F1F4",
                   "height": 2,
@@ -558,8 +558,8 @@ exports[`<SearchFilter/> should render correctly 1`] = `
         <View
           accessibilityRole="none"
           style={
-            Array [
-              Object {
+            [
+              {
                 "display": "flex",
                 "marginLeft": 24,
                 "marginRight": 24,
@@ -570,8 +570,8 @@ exports[`<SearchFilter/> should render correctly 1`] = `
           <View
             numberOfSpaces={4}
             style={
-              Array [
-                Object {
+              [
+                {
                   "height": 16,
                 },
               ]
@@ -590,7 +590,7 @@ exports[`<SearchFilter/> should render correctly 1`] = `
             onResponderTerminationRequest={[Function]}
             onStartShouldSetResponder={[Function]}
             style={
-              Object {
+              {
                 "alignItems": "center",
                 "flexDirection": "row",
                 "justifyContent": "space-between",
@@ -612,8 +612,8 @@ exports[`<SearchFilter/> should render correctly 1`] = `
             <View
               numberOfSpaces={2}
               style={
-                Array [
-                  Object {
+                [
+                  {
                     "width": 8,
                   },
                 ]
@@ -621,8 +621,8 @@ exports[`<SearchFilter/> should render correctly 1`] = `
             />
             <View
               style={
-                Array [
-                  Object {
+                [
+                  {
                     "alignItems": "flex-start",
                     "flexDirection": "column",
                   },
@@ -632,8 +632,8 @@ exports[`<SearchFilter/> should render correctly 1`] = `
               <Text
                 numberOfLines={1}
                 style={
-                  Array [
-                    Object {
+                  [
+                    {
                       "color": "#161617",
                       "flexShrink": 1,
                       "fontFamily": "Montserrat-Bold",
@@ -648,8 +648,8 @@ exports[`<SearchFilter/> should render correctly 1`] = `
             </View>
             <View
               style={
-                Array [
-                  Object {
+                [
+                  {
                     "flexBasis": 0,
                     "flexGrow": 1,
                     "flexShrink": 1,
@@ -688,7 +688,7 @@ exports[`<SearchFilter/> should render correctly 1`] = `
             scrollTo={null}
             statusBarTranslucent={true}
             supportedOrientations={
-              Array [
+              [
                 "portrait",
                 "landscape",
               ]
@@ -701,8 +701,8 @@ exports[`<SearchFilter/> should render correctly 1`] = `
           <View
             marginVertical={16}
             style={
-              Array [
-                Object {
+              [
+                {
                   "alignSelf": "center",
                   "backgroundColor": "#F1F1F4",
                   "height": 2,
@@ -716,8 +716,8 @@ exports[`<SearchFilter/> should render correctly 1`] = `
         <View
           accessibilityRole="none"
           style={
-            Array [
-              Object {
+            [
+              {
                 "display": "flex",
                 "marginLeft": 24,
                 "marginRight": 24,
@@ -738,7 +738,7 @@ exports[`<SearchFilter/> should render correctly 1`] = `
             onResponderTerminationRequest={[Function]}
             onStartShouldSetResponder={[Function]}
             style={
-              Object {
+              {
                 "alignItems": "center",
                 "flexDirection": "row",
                 "justifyContent": "space-between",
@@ -759,8 +759,8 @@ exports[`<SearchFilter/> should render correctly 1`] = `
             <View
               numberOfSpaces={2}
               style={
-                Array [
-                  Object {
+                [
+                  {
                     "width": 8,
                   },
                 ]
@@ -768,8 +768,8 @@ exports[`<SearchFilter/> should render correctly 1`] = `
             />
             <View
               style={
-                Array [
-                  Object {
+                [
+                  {
                     "alignItems": "flex-start",
                     "flexDirection": "column",
                   },
@@ -779,8 +779,8 @@ exports[`<SearchFilter/> should render correctly 1`] = `
               <Text
                 numberOfLines={1}
                 style={
-                  Array [
-                    Object {
+                  [
+                    {
                       "color": "#161617",
                       "flexShrink": 1,
                       "fontFamily": "Montserrat-Bold",
@@ -795,8 +795,8 @@ exports[`<SearchFilter/> should render correctly 1`] = `
             </View>
             <View
               style={
-                Array [
-                  Object {
+                [
+                  {
                     "flexBasis": 0,
                     "flexGrow": 1,
                     "flexShrink": 1,
@@ -835,7 +835,7 @@ exports[`<SearchFilter/> should render correctly 1`] = `
             scrollTo={null}
             statusBarTranslucent={true}
             supportedOrientations={
-              Array [
+              [
                 "portrait",
                 "landscape",
               ]
@@ -852,8 +852,8 @@ exports[`<SearchFilter/> should render correctly 1`] = `
   <View
     isModal={false}
     style={
-      Array [
-        Object {
+      [
+        {
           "flexDirection": "row",
           "justifyContent": "center",
           "paddingBottom": 24,
@@ -876,7 +876,7 @@ exports[`<SearchFilter/> should render correctly 1`] = `
       onResponderTerminationRequest={[Function]}
       onStartShouldSetResponder={[Function]}
       style={
-        Object {
+        {
           "alignItems": "center",
           "backgroundColor": "transparent",
           "borderRadius": 24,
@@ -898,8 +898,8 @@ exports[`<SearchFilter/> should render correctly 1`] = `
     >
       <View
         style={
-          Array [
-            Object {
+          [
+            {
               "flexShrink": 0,
             },
           ]
@@ -919,8 +919,8 @@ exports[`<SearchFilter/> should render correctly 1`] = `
         adjustsFontSizeToFit={false}
         numberOfLines={1}
         style={
-          Array [
-            Object {
+          [
+            {
               "color": "#161617",
               "fontFamily": "Montserrat-SemiBold",
               "fontSize": 12,
@@ -937,8 +937,8 @@ exports[`<SearchFilter/> should render correctly 1`] = `
     <View
       numberOfSpaces={4}
       style={
-        Array [
-          Object {
+        [
+          {
             "height": 16,
           },
         ]
@@ -957,7 +957,7 @@ exports[`<SearchFilter/> should render correctly 1`] = `
       onResponderTerminationRequest={[Function]}
       onStartShouldSetResponder={[Function]}
       style={
-        Object {
+        {
           "alignItems": "center",
           "backgroundColor": "#eb0055",
           "borderRadius": 24,
@@ -981,8 +981,8 @@ exports[`<SearchFilter/> should render correctly 1`] = `
         adjustsFontSizeToFit={false}
         numberOfLines={1}
         style={
-          Array [
-            Object {
+          [
+            {
               "color": "#ffffff",
               "fontFamily": "Montserrat-Bold",
               "fontSize": 15,
@@ -1001,8 +1001,8 @@ exports[`<SearchFilter/> should render correctly 1`] = `
     customHeight={8}
     enable={true}
     style={
-      Array [
-        Object {
+      [
+        {
           "height": 8,
         },
       ]

@@ -1,12 +1,12 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`AgeInformation should render correctly for 15-year-old 1`] = `
-Array [
+[
   <View
     height={64}
     style={
-      Array [
-        Object {
+      [
+        {
           "height": 64,
         },
       ]
@@ -14,8 +14,8 @@ Array [
   />,
   <View
     style={
-      Array [
-        Object {
+      [
+        {
           "position": "absolute",
           "top": 0,
           "width": "100%",
@@ -28,8 +28,8 @@ Array [
       customHeight={16}
       enable={true}
       style={
-        Array [
-          Object {
+        [
+          {
             "height": 16,
           },
         ]
@@ -37,8 +37,8 @@ Array [
     />
     <View
       style={
-        Array [
-          Object {
+        [
+          {
             "height": 48,
             "justifyContent": "center",
             "paddingHorizontal": 12,
@@ -60,7 +60,7 @@ Array [
         onResponderTerminationRequest={[Function]}
         onStartShouldSetResponder={[Function]}
         style={
-          Object {
+          {
             "alignItems": "center",
             "flexGrow": 1,
             "height": 40,
@@ -83,8 +83,8 @@ Array [
         </View>
         <Text
           style={
-            Array [
-              Object {
+            [
+              {
                 "display": "none",
               },
             ]
@@ -99,8 +99,8 @@ Array [
     <View>
       <View
         style={
-          Array [
-            Object {
+          [
+            {
               "marginHorizontal": 24,
             },
           ]
@@ -109,8 +109,8 @@ Array [
         <View
           numberOfSpaces={6}
           style={
-            Array [
-              Object {
+            [
+              {
                 "height": 24,
               },
             ]
@@ -119,8 +119,8 @@ Array [
         <Text
           numberOfLines={3}
           style={
-            Array [
-              Object {
+            [
+              {
                 "color": "#161617",
                 "fontFamily": "Montserrat-Bold",
                 "fontSize": 20,
@@ -134,8 +134,8 @@ Array [
         <View
           numberOfSpaces={4}
           style={
-            Array [
-              Object {
+            [
+              {
                 "height": 16,
               },
             ]
@@ -143,8 +143,8 @@ Array [
         />
         <Text
           style={
-            Array [
-              Object {
+            [
+              {
                 "color": "#161617",
                 "fontFamily": "Montserrat-Medium",
                 "fontSize": 18,
@@ -158,8 +158,8 @@ Array [
         <View
           numberOfSpaces={2}
           style={
-            Array [
-              Object {
+            [
+              {
                 "height": 8,
               },
             ]
@@ -168,8 +168,8 @@ Array [
         <View
           reverse={false}
           style={
-            Array [
-              Object {
+            [
+              {
                 "flexDirection": "column",
               },
             ]
@@ -191,7 +191,7 @@ Array [
               roundedBorders="top"
               status="cette année"
               style={
-                Object {
+                {
                   "alignItems": "center",
                   "backgroundColor": "#ffffff",
                   "borderColor": "#90949D",
@@ -206,8 +206,8 @@ Array [
                   "paddingLeft": 16,
                   "paddingRight": 16,
                   "paddingTop": 16,
-                  "transform": Array [
-                    Object {
+                  "transform": [
+                    {
                       "scale": 0.95,
                     },
                   ],
@@ -216,8 +216,8 @@ Array [
             >
               <View
                 style={
-                  Array [
-                    Object {
+                  [
+                    {
                       "marginRight": 16,
                     },
                   ]
@@ -227,9 +227,9 @@ Array [
                   collapsable={false}
                   forwardedRef={[Function]}
                   style={
-                    Object {
-                      "transform": Array [
-                        Object {
+                    {
+                      "transform": [
+                        {
                           "scale": 0.875,
                         },
                       ],
@@ -244,8 +244,8 @@ Array [
               <View>
                 <Text
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "color": "#320096",
                         "fontFamily": "Montserrat-Bold",
                         "fontSize": 20,
@@ -259,8 +259,8 @@ Array [
                 <View
                   numberOfSpaces={1}
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "height": 4,
                       },
                     ]
@@ -268,8 +268,8 @@ Array [
                 />
                 <Text
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "color": "#320096",
                         "fontFamily": "Montserrat-Regular",
                         "fontSize": 15,
@@ -283,8 +283,8 @@ Array [
               </View>
               <View
                 style={
-                  Array [
-                    Object {
+                  [
+                    {
                       "position": "absolute",
                       "right": 0,
                       "top": 0,
@@ -296,8 +296,8 @@ Array [
                   roundedBorders="top"
                   status="cette année"
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "alignSelf": "flex-start",
                         "backgroundColor": "#15884f",
                         "borderBottomLeftRadius": 8,
@@ -313,8 +313,8 @@ Array [
                   <Text
                     status="cette année"
                     style={
-                      Array [
-                        Object {
+                      [
+                        {
                           "color": "#ffffff",
                           "fontFamily": "Montserrat-SemiBold",
                           "fontSize": 12,
@@ -331,8 +331,8 @@ Array [
             <View
               numberOfSpaces={0.5}
               style={
-                Array [
-                  Object {
+                [
+                  {
                     "height": 2,
                   },
                 ]
@@ -350,8 +350,8 @@ Array [
               onStartShouldSetResponder={[Function]}
               status="à venir"
               style={
-                Array [
-                  Object {
+                [
+                  {
                     "alignItems": "center",
                     "backgroundColor": "#F1F1F4",
                     "borderColor": "#F1F1F4",
@@ -370,8 +370,8 @@ Array [
             >
               <View
                 style={
-                  Array [
-                    Object {
+                  [
+                    {
                       "marginRight": 16,
                     },
                   ]
@@ -389,8 +389,8 @@ Array [
               <View>
                 <Text
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "color": "#161617",
                         "fontFamily": "Montserrat-Bold",
                         "fontSize": 15,
@@ -404,8 +404,8 @@ Array [
                 <View
                   numberOfSpaces={1}
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "height": 4,
                       },
                     ]
@@ -413,8 +413,8 @@ Array [
                 />
                 <Text
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "color": "#161617",
                         "fontFamily": "Montserrat-SemiBold",
                         "fontSize": 12,
@@ -428,8 +428,8 @@ Array [
               </View>
               <View
                 style={
-                  Array [
-                    Object {
+                  [
+                    {
                       "position": "absolute",
                       "right": 0,
                       "top": 0,
@@ -440,8 +440,8 @@ Array [
                 <View
                   status="à venir"
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "alignSelf": "flex-start",
                         "backgroundColor": "#320096",
                         "borderBottomLeftRadius": 8,
@@ -456,8 +456,8 @@ Array [
                   <Text
                     status="à venir"
                     style={
-                      Array [
-                        Object {
+                      [
+                        {
                           "color": "#ffffff",
                           "fontFamily": "Montserrat-SemiBold",
                           "fontSize": 12,
@@ -474,8 +474,8 @@ Array [
             <View
               numberOfSpaces={0.5}
               style={
-                Array [
-                  Object {
+                [
+                  {
                     "height": 2,
                   },
                 ]
@@ -494,8 +494,8 @@ Array [
               roundedBorders="bottom"
               status="à venir"
               style={
-                Array [
-                  Object {
+                [
+                  {
                     "alignItems": "center",
                     "backgroundColor": "#F1F1F4",
                     "borderBottomLeftRadius": 8,
@@ -516,8 +516,8 @@ Array [
             >
               <View
                 style={
-                  Array [
-                    Object {
+                  [
+                    {
                       "marginRight": 16,
                     },
                   ]
@@ -535,8 +535,8 @@ Array [
               <View>
                 <Text
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "color": "#161617",
                         "fontFamily": "Montserrat-Bold",
                         "fontSize": 15,
@@ -550,8 +550,8 @@ Array [
                 <View
                   numberOfSpaces={1}
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "height": 4,
                       },
                     ]
@@ -559,8 +559,8 @@ Array [
                 />
                 <Text
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "color": "#161617",
                         "fontFamily": "Montserrat-SemiBold",
                         "fontSize": 12,
@@ -574,8 +574,8 @@ Array [
               </View>
               <View
                 style={
-                  Array [
-                    Object {
+                  [
+                    {
                       "position": "absolute",
                       "right": 0,
                       "top": 0,
@@ -587,8 +587,8 @@ Array [
                   roundedBorders="bottom"
                   status="à venir"
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "alignSelf": "flex-start",
                         "backgroundColor": "#320096",
                         "borderBottomLeftRadius": 8,
@@ -603,8 +603,8 @@ Array [
                   <Text
                     status="à venir"
                     style={
-                      Array [
-                        Object {
+                      [
+                        {
                           "color": "#ffffff",
                           "fontFamily": "Montserrat-SemiBold",
                           "fontSize": 12,
@@ -621,8 +621,8 @@ Array [
             <View
               numberOfSpaces={0.5}
               style={
-                Array [
-                  Object {
+                [
+                  {
                     "height": 2,
                   },
                 ]
@@ -632,8 +632,8 @@ Array [
           <View
             reverse={false}
             style={
-              Array [
-                Object {
+              [
+                {
                   "flexDirection": "column",
                 },
               ]
@@ -641,8 +641,8 @@ Array [
           >
             <View
               style={
-                Array [
-                  Object {
+                [
+                  {
                     "marginVertical": 14,
                   },
                 ]
@@ -650,8 +650,8 @@ Array [
             >
               <View
                 style={
-                  Array [
-                    Object {
+                  [
+                    {
                       "alignItems": "center",
                       "flexDirection": "row",
                       "paddingHorizontal": 4,
@@ -661,8 +661,8 @@ Array [
               >
                 <View
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "backgroundColor": "#90949D",
                         "flexBasis": 0,
                         "flexGrow": 1,
@@ -675,8 +675,8 @@ Array [
                 />
                 <Text
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "color": "#161617",
                         "fontFamily": "Montserrat-SemiBold",
                         "fontSize": 12,
@@ -690,8 +690,8 @@ Array [
                 </Text>
                 <View
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "backgroundColor": "#90949D",
                         "flexBasis": 0,
                         "flexGrow": 1,
@@ -716,8 +716,8 @@ Array [
               onStartShouldSetResponder={[Function]}
               status="à venir"
               style={
-                Array [
-                  Object {
+                [
+                  {
                     "alignItems": "center",
                     "backgroundColor": "#F1F1F4",
                     "borderColor": "#F1F1F4",
@@ -736,8 +736,8 @@ Array [
             >
               <View
                 style={
-                  Array [
-                    Object {
+                  [
+                    {
                       "marginRight": 16,
                     },
                   ]
@@ -755,8 +755,8 @@ Array [
               <View>
                 <Text
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "color": "#161617",
                         "fontFamily": "Montserrat-Bold",
                         "fontSize": 20,
@@ -770,8 +770,8 @@ Array [
                 <View
                   numberOfSpaces={1}
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "height": 4,
                       },
                     ]
@@ -779,8 +779,8 @@ Array [
                 />
                 <Text
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "color": "#161617",
                         "fontFamily": "Montserrat-Regular",
                         "fontSize": 15,
@@ -794,8 +794,8 @@ Array [
                 <View
                   numberOfSpaces={1}
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "height": 4,
                       },
                     ]
@@ -803,8 +803,8 @@ Array [
                 />
                 <Text
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "color": "#696A6F",
                         "fontFamily": "Montserrat-SemiBold",
                         "fontSize": 10,
@@ -818,8 +818,8 @@ Array [
               </View>
               <View
                 style={
-                  Array [
-                    Object {
+                  [
+                    {
                       "position": "absolute",
                       "right": 0,
                       "top": 0,
@@ -830,8 +830,8 @@ Array [
                 <View
                   status="à venir"
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "alignSelf": "flex-start",
                         "backgroundColor": "#320096",
                         "borderBottomLeftRadius": 8,
@@ -846,8 +846,8 @@ Array [
                   <Text
                     status="à venir"
                     style={
-                      Array [
-                        Object {
+                      [
+                        {
                           "color": "#ffffff",
                           "fontFamily": "Montserrat-SemiBold",
                           "fontSize": 12,
@@ -870,13 +870,13 @@ Array [
     collapsable={false}
     forwardedRef={[Function]}
     style={
-      Object {
+      {
         "backgroundColor": "#ffffff",
         "marginHorizontal": 24,
         "opacity": 0,
         "paddingVertical": 24,
-        "transform": Array [
-          Object {
+        "transform": [
+          {
             "scale": 0.95,
           },
         ],
@@ -887,7 +887,7 @@ Array [
       accessibilityLabel="Créer un compte"
       accessibilityRole="link"
       accessibilityState={
-        Object {
+        {
           "disabled": false,
         }
       }
@@ -902,7 +902,7 @@ Array [
       onResponderTerminationRequest={[Function]}
       onStartShouldSetResponder={[Function]}
       style={
-        Object {
+        {
           "alignItems": "center",
           "borderRadius": 24,
           "justifyContent": "center",
@@ -927,8 +927,8 @@ Array [
       </View>
       <View
         style={
-          Array [
-            Object {
+          [
+            {
               "alignItems": "center",
               "flexDirection": "row",
               "position": "absolute",
@@ -941,8 +941,8 @@ Array [
           isDisabled={false}
           numberOfLines={1}
           style={
-            Array [
-              Object {
+            [
+              {
                 "color": "#ffffff",
                 "fontFamily": "Montserrat-Bold",
                 "fontSize": 15,
@@ -962,8 +962,8 @@ Array [
     <View
       numberOfSpaces={4}
       style={
-        Array [
-          Object {
+        [
+          {
             "height": 16,
           },
         ]
@@ -982,7 +982,7 @@ Array [
       onResponderTerminationRequest={[Function]}
       onStartShouldSetResponder={[Function]}
       style={
-        Object {
+        {
           "alignItems": "center",
           "backgroundColor": "transparent",
           "borderRadius": 24,
@@ -1002,8 +1002,8 @@ Array [
     >
       <View
         style={
-          Array [
-            Object {
+          [
+            {
               "flexShrink": 0,
             },
           ]
@@ -1023,8 +1023,8 @@ Array [
         adjustsFontSizeToFit={false}
         numberOfLines={1}
         style={
-          Array [
-            Object {
+          [
+            {
               "color": "#161617",
               "fontFamily": "Montserrat-Bold",
               "fontSize": 15,
@@ -1043,8 +1043,8 @@ Array [
     customHeight={8}
     enable={true}
     style={
-      Array [
-        Object {
+      [
+        {
           "height": 8,
         },
       ]
@@ -1054,12 +1054,12 @@ Array [
 `;
 
 exports[`AgeInformation should render correctly for 16-year-old 1`] = `
-Array [
+[
   <View
     height={64}
     style={
-      Array [
-        Object {
+      [
+        {
           "height": 64,
         },
       ]
@@ -1067,8 +1067,8 @@ Array [
   />,
   <View
     style={
-      Array [
-        Object {
+      [
+        {
           "position": "absolute",
           "top": 0,
           "width": "100%",
@@ -1081,8 +1081,8 @@ Array [
       customHeight={16}
       enable={true}
       style={
-        Array [
-          Object {
+        [
+          {
             "height": 16,
           },
         ]
@@ -1090,8 +1090,8 @@ Array [
     />
     <View
       style={
-        Array [
-          Object {
+        [
+          {
             "height": 48,
             "justifyContent": "center",
             "paddingHorizontal": 12,
@@ -1113,7 +1113,7 @@ Array [
         onResponderTerminationRequest={[Function]}
         onStartShouldSetResponder={[Function]}
         style={
-          Object {
+          {
             "alignItems": "center",
             "flexGrow": 1,
             "height": 40,
@@ -1136,8 +1136,8 @@ Array [
         </View>
         <Text
           style={
-            Array [
-              Object {
+            [
+              {
                 "display": "none",
               },
             ]
@@ -1152,8 +1152,8 @@ Array [
     <View>
       <View
         style={
-          Array [
-            Object {
+          [
+            {
               "marginHorizontal": 24,
             },
           ]
@@ -1162,8 +1162,8 @@ Array [
         <View
           numberOfSpaces={6}
           style={
-            Array [
-              Object {
+            [
+              {
                 "height": 24,
               },
             ]
@@ -1172,8 +1172,8 @@ Array [
         <Text
           numberOfLines={3}
           style={
-            Array [
-              Object {
+            [
+              {
                 "color": "#161617",
                 "fontFamily": "Montserrat-Bold",
                 "fontSize": 20,
@@ -1187,8 +1187,8 @@ Array [
         <View
           numberOfSpaces={4}
           style={
-            Array [
-              Object {
+            [
+              {
                 "height": 16,
               },
             ]
@@ -1196,8 +1196,8 @@ Array [
         />
         <Text
           style={
-            Array [
-              Object {
+            [
+              {
                 "color": "#161617",
                 "fontFamily": "Montserrat-Medium",
                 "fontSize": 18,
@@ -1211,8 +1211,8 @@ Array [
         <View
           numberOfSpaces={2}
           style={
-            Array [
-              Object {
+            [
+              {
                 "height": 8,
               },
             ]
@@ -1221,8 +1221,8 @@ Array [
         <View
           reverse={false}
           style={
-            Array [
-              Object {
+            [
+              {
                 "flexDirection": "column",
               },
             ]
@@ -1242,8 +1242,8 @@ Array [
               roundedBorders="top"
               status="passé"
               style={
-                Array [
-                  Object {
+                [
+                  {
                     "alignItems": "center",
                     "backgroundColor": "rgba(241,241,244,0.5)",
                     "borderColor": "rgba(241,241,244,0.5)",
@@ -1264,8 +1264,8 @@ Array [
             >
               <View
                 style={
-                  Array [
-                    Object {
+                  [
+                    {
                       "marginRight": 16,
                     },
                   ]
@@ -1283,8 +1283,8 @@ Array [
               <View>
                 <Text
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "color": "#696A6F",
                         "fontFamily": "Montserrat-Bold",
                         "fontSize": 15,
@@ -1298,8 +1298,8 @@ Array [
                 <View
                   numberOfSpaces={1}
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "height": 4,
                       },
                     ]
@@ -1307,8 +1307,8 @@ Array [
                 />
                 <Text
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "color": "#696A6F",
                         "fontFamily": "Montserrat-SemiBold",
                         "fontSize": 12,
@@ -1322,8 +1322,8 @@ Array [
               </View>
               <View
                 style={
-                  Array [
-                    Object {
+                  [
+                    {
                       "position": "absolute",
                       "right": 0,
                       "top": 0,
@@ -1335,8 +1335,8 @@ Array [
                   roundedBorders="top"
                   status="passé"
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "alignSelf": "flex-start",
                         "backgroundColor": "#ffffff",
                         "borderBottomLeftRadius": 8,
@@ -1352,8 +1352,8 @@ Array [
                   <Text
                     status="passé"
                     style={
-                      Array [
-                        Object {
+                      [
+                        {
                           "color": "#696A6F",
                           "fontFamily": "Montserrat-SemiBold",
                           "fontSize": 12,
@@ -1370,8 +1370,8 @@ Array [
             <View
               numberOfSpaces={0.5}
               style={
-                Array [
-                  Object {
+                [
+                  {
                     "height": 2,
                   },
                 ]
@@ -1391,7 +1391,7 @@ Array [
               onStartShouldSetResponder={[Function]}
               status="cette année"
               style={
-                Object {
+                {
                   "alignItems": "center",
                   "backgroundColor": "#ffffff",
                   "borderColor": "#90949D",
@@ -1404,8 +1404,8 @@ Array [
                   "paddingLeft": 16,
                   "paddingRight": 16,
                   "paddingTop": 16,
-                  "transform": Array [
-                    Object {
+                  "transform": [
+                    {
                       "scale": 0.95,
                     },
                   ],
@@ -1414,8 +1414,8 @@ Array [
             >
               <View
                 style={
-                  Array [
-                    Object {
+                  [
+                    {
                       "marginRight": 16,
                     },
                   ]
@@ -1425,9 +1425,9 @@ Array [
                   collapsable={false}
                   forwardedRef={[Function]}
                   style={
-                    Object {
-                      "transform": Array [
-                        Object {
+                    {
+                      "transform": [
+                        {
                           "scale": 0.875,
                         },
                       ],
@@ -1442,8 +1442,8 @@ Array [
               <View>
                 <Text
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "color": "#320096",
                         "fontFamily": "Montserrat-Bold",
                         "fontSize": 20,
@@ -1457,8 +1457,8 @@ Array [
                 <View
                   numberOfSpaces={1}
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "height": 4,
                       },
                     ]
@@ -1466,8 +1466,8 @@ Array [
                 />
                 <Text
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "color": "#320096",
                         "fontFamily": "Montserrat-Regular",
                         "fontSize": 15,
@@ -1481,8 +1481,8 @@ Array [
               </View>
               <View
                 style={
-                  Array [
-                    Object {
+                  [
+                    {
                       "position": "absolute",
                       "right": 0,
                       "top": 0,
@@ -1493,8 +1493,8 @@ Array [
                 <View
                   status="cette année"
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "alignSelf": "flex-start",
                         "backgroundColor": "#15884f",
                         "borderBottomLeftRadius": 8,
@@ -1509,8 +1509,8 @@ Array [
                   <Text
                     status="cette année"
                     style={
-                      Array [
-                        Object {
+                      [
+                        {
                           "color": "#ffffff",
                           "fontFamily": "Montserrat-SemiBold",
                           "fontSize": 12,
@@ -1527,8 +1527,8 @@ Array [
             <View
               numberOfSpaces={0.5}
               style={
-                Array [
-                  Object {
+                [
+                  {
                     "height": 2,
                   },
                 ]
@@ -1547,8 +1547,8 @@ Array [
               roundedBorders="bottom"
               status="à venir"
               style={
-                Array [
-                  Object {
+                [
+                  {
                     "alignItems": "center",
                     "backgroundColor": "#F1F1F4",
                     "borderBottomLeftRadius": 8,
@@ -1569,8 +1569,8 @@ Array [
             >
               <View
                 style={
-                  Array [
-                    Object {
+                  [
+                    {
                       "marginRight": 16,
                     },
                   ]
@@ -1588,8 +1588,8 @@ Array [
               <View>
                 <Text
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "color": "#161617",
                         "fontFamily": "Montserrat-Bold",
                         "fontSize": 15,
@@ -1603,8 +1603,8 @@ Array [
                 <View
                   numberOfSpaces={1}
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "height": 4,
                       },
                     ]
@@ -1612,8 +1612,8 @@ Array [
                 />
                 <Text
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "color": "#161617",
                         "fontFamily": "Montserrat-SemiBold",
                         "fontSize": 12,
@@ -1627,8 +1627,8 @@ Array [
               </View>
               <View
                 style={
-                  Array [
-                    Object {
+                  [
+                    {
                       "position": "absolute",
                       "right": 0,
                       "top": 0,
@@ -1640,8 +1640,8 @@ Array [
                   roundedBorders="bottom"
                   status="à venir"
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "alignSelf": "flex-start",
                         "backgroundColor": "#320096",
                         "borderBottomLeftRadius": 8,
@@ -1656,8 +1656,8 @@ Array [
                   <Text
                     status="à venir"
                     style={
-                      Array [
-                        Object {
+                      [
+                        {
                           "color": "#ffffff",
                           "fontFamily": "Montserrat-SemiBold",
                           "fontSize": 12,
@@ -1674,8 +1674,8 @@ Array [
             <View
               numberOfSpaces={0.5}
               style={
-                Array [
-                  Object {
+                [
+                  {
                     "height": 2,
                   },
                 ]
@@ -1685,8 +1685,8 @@ Array [
           <View
             reverse={false}
             style={
-              Array [
-                Object {
+              [
+                {
                   "flexDirection": "column",
                 },
               ]
@@ -1694,8 +1694,8 @@ Array [
           >
             <View
               style={
-                Array [
-                  Object {
+                [
+                  {
                     "marginVertical": 14,
                   },
                 ]
@@ -1703,8 +1703,8 @@ Array [
             >
               <View
                 style={
-                  Array [
-                    Object {
+                  [
+                    {
                       "alignItems": "center",
                       "flexDirection": "row",
                       "paddingHorizontal": 4,
@@ -1714,8 +1714,8 @@ Array [
               >
                 <View
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "backgroundColor": "#90949D",
                         "flexBasis": 0,
                         "flexGrow": 1,
@@ -1728,8 +1728,8 @@ Array [
                 />
                 <Text
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "color": "#161617",
                         "fontFamily": "Montserrat-SemiBold",
                         "fontSize": 12,
@@ -1743,8 +1743,8 @@ Array [
                 </Text>
                 <View
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "backgroundColor": "#90949D",
                         "flexBasis": 0,
                         "flexGrow": 1,
@@ -1769,8 +1769,8 @@ Array [
               onStartShouldSetResponder={[Function]}
               status="à venir"
               style={
-                Array [
-                  Object {
+                [
+                  {
                     "alignItems": "center",
                     "backgroundColor": "#F1F1F4",
                     "borderColor": "#F1F1F4",
@@ -1789,8 +1789,8 @@ Array [
             >
               <View
                 style={
-                  Array [
-                    Object {
+                  [
+                    {
                       "marginRight": 16,
                     },
                   ]
@@ -1808,8 +1808,8 @@ Array [
               <View>
                 <Text
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "color": "#161617",
                         "fontFamily": "Montserrat-Bold",
                         "fontSize": 20,
@@ -1823,8 +1823,8 @@ Array [
                 <View
                   numberOfSpaces={1}
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "height": 4,
                       },
                     ]
@@ -1832,8 +1832,8 @@ Array [
                 />
                 <Text
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "color": "#161617",
                         "fontFamily": "Montserrat-Regular",
                         "fontSize": 15,
@@ -1847,8 +1847,8 @@ Array [
                 <View
                   numberOfSpaces={1}
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "height": 4,
                       },
                     ]
@@ -1856,8 +1856,8 @@ Array [
                 />
                 <Text
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "color": "#696A6F",
                         "fontFamily": "Montserrat-SemiBold",
                         "fontSize": 10,
@@ -1871,8 +1871,8 @@ Array [
               </View>
               <View
                 style={
-                  Array [
-                    Object {
+                  [
+                    {
                       "position": "absolute",
                       "right": 0,
                       "top": 0,
@@ -1883,8 +1883,8 @@ Array [
                 <View
                   status="à venir"
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "alignSelf": "flex-start",
                         "backgroundColor": "#320096",
                         "borderBottomLeftRadius": 8,
@@ -1899,8 +1899,8 @@ Array [
                   <Text
                     status="à venir"
                     style={
-                      Array [
-                        Object {
+                      [
+                        {
                           "color": "#ffffff",
                           "fontFamily": "Montserrat-SemiBold",
                           "fontSize": 12,
@@ -1923,13 +1923,13 @@ Array [
     collapsable={false}
     forwardedRef={[Function]}
     style={
-      Object {
+      {
         "backgroundColor": "#ffffff",
         "marginHorizontal": 24,
         "opacity": 0,
         "paddingVertical": 24,
-        "transform": Array [
-          Object {
+        "transform": [
+          {
             "scale": 0.95,
           },
         ],
@@ -1940,7 +1940,7 @@ Array [
       accessibilityLabel="Créer un compte"
       accessibilityRole="link"
       accessibilityState={
-        Object {
+        {
           "disabled": false,
         }
       }
@@ -1955,7 +1955,7 @@ Array [
       onResponderTerminationRequest={[Function]}
       onStartShouldSetResponder={[Function]}
       style={
-        Object {
+        {
           "alignItems": "center",
           "borderRadius": 24,
           "justifyContent": "center",
@@ -1980,8 +1980,8 @@ Array [
       </View>
       <View
         style={
-          Array [
-            Object {
+          [
+            {
               "alignItems": "center",
               "flexDirection": "row",
               "position": "absolute",
@@ -1994,8 +1994,8 @@ Array [
           isDisabled={false}
           numberOfLines={1}
           style={
-            Array [
-              Object {
+            [
+              {
                 "color": "#ffffff",
                 "fontFamily": "Montserrat-Bold",
                 "fontSize": 15,
@@ -2015,8 +2015,8 @@ Array [
     <View
       numberOfSpaces={4}
       style={
-        Array [
-          Object {
+        [
+          {
             "height": 16,
           },
         ]
@@ -2035,7 +2035,7 @@ Array [
       onResponderTerminationRequest={[Function]}
       onStartShouldSetResponder={[Function]}
       style={
-        Object {
+        {
           "alignItems": "center",
           "backgroundColor": "transparent",
           "borderRadius": 24,
@@ -2055,8 +2055,8 @@ Array [
     >
       <View
         style={
-          Array [
-            Object {
+          [
+            {
               "flexShrink": 0,
             },
           ]
@@ -2076,8 +2076,8 @@ Array [
         adjustsFontSizeToFit={false}
         numberOfLines={1}
         style={
-          Array [
-            Object {
+          [
+            {
               "color": "#161617",
               "fontFamily": "Montserrat-Bold",
               "fontSize": 15,
@@ -2096,8 +2096,8 @@ Array [
     customHeight={8}
     enable={true}
     style={
-      Array [
-        Object {
+      [
+        {
           "height": 8,
         },
       ]
@@ -2107,12 +2107,12 @@ Array [
 `;
 
 exports[`AgeInformation should render correctly for 17-year-old 1`] = `
-Array [
+[
   <View
     height={64}
     style={
-      Array [
-        Object {
+      [
+        {
           "height": 64,
         },
       ]
@@ -2120,8 +2120,8 @@ Array [
   />,
   <View
     style={
-      Array [
-        Object {
+      [
+        {
           "position": "absolute",
           "top": 0,
           "width": "100%",
@@ -2134,8 +2134,8 @@ Array [
       customHeight={16}
       enable={true}
       style={
-        Array [
-          Object {
+        [
+          {
             "height": 16,
           },
         ]
@@ -2143,8 +2143,8 @@ Array [
     />
     <View
       style={
-        Array [
-          Object {
+        [
+          {
             "height": 48,
             "justifyContent": "center",
             "paddingHorizontal": 12,
@@ -2166,7 +2166,7 @@ Array [
         onResponderTerminationRequest={[Function]}
         onStartShouldSetResponder={[Function]}
         style={
-          Object {
+          {
             "alignItems": "center",
             "flexGrow": 1,
             "height": 40,
@@ -2189,8 +2189,8 @@ Array [
         </View>
         <Text
           style={
-            Array [
-              Object {
+            [
+              {
                 "display": "none",
               },
             ]
@@ -2205,8 +2205,8 @@ Array [
     <View>
       <View
         style={
-          Array [
-            Object {
+          [
+            {
               "marginHorizontal": 24,
             },
           ]
@@ -2215,8 +2215,8 @@ Array [
         <View
           numberOfSpaces={6}
           style={
-            Array [
-              Object {
+            [
+              {
                 "height": 24,
               },
             ]
@@ -2225,8 +2225,8 @@ Array [
         <Text
           numberOfLines={3}
           style={
-            Array [
-              Object {
+            [
+              {
                 "color": "#161617",
                 "fontFamily": "Montserrat-Bold",
                 "fontSize": 20,
@@ -2240,8 +2240,8 @@ Array [
         <View
           numberOfSpaces={4}
           style={
-            Array [
-              Object {
+            [
+              {
                 "height": 16,
               },
             ]
@@ -2249,8 +2249,8 @@ Array [
         />
         <Text
           style={
-            Array [
-              Object {
+            [
+              {
                 "color": "#161617",
                 "fontFamily": "Montserrat-Medium",
                 "fontSize": 18,
@@ -2264,8 +2264,8 @@ Array [
         <View
           numberOfSpaces={2}
           style={
-            Array [
-              Object {
+            [
+              {
                 "height": 8,
               },
             ]
@@ -2274,8 +2274,8 @@ Array [
         <View
           reverse={false}
           style={
-            Array [
-              Object {
+            [
+              {
                 "flexDirection": "column",
               },
             ]
@@ -2295,8 +2295,8 @@ Array [
               roundedBorders="top"
               status="passé"
               style={
-                Array [
-                  Object {
+                [
+                  {
                     "alignItems": "center",
                     "backgroundColor": "rgba(241,241,244,0.5)",
                     "borderColor": "rgba(241,241,244,0.5)",
@@ -2317,8 +2317,8 @@ Array [
             >
               <View
                 style={
-                  Array [
-                    Object {
+                  [
+                    {
                       "marginRight": 16,
                     },
                   ]
@@ -2336,8 +2336,8 @@ Array [
               <View>
                 <Text
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "color": "#696A6F",
                         "fontFamily": "Montserrat-Bold",
                         "fontSize": 15,
@@ -2351,8 +2351,8 @@ Array [
                 <View
                   numberOfSpaces={1}
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "height": 4,
                       },
                     ]
@@ -2360,8 +2360,8 @@ Array [
                 />
                 <Text
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "color": "#696A6F",
                         "fontFamily": "Montserrat-SemiBold",
                         "fontSize": 12,
@@ -2375,8 +2375,8 @@ Array [
               </View>
               <View
                 style={
-                  Array [
-                    Object {
+                  [
+                    {
                       "position": "absolute",
                       "right": 0,
                       "top": 0,
@@ -2388,8 +2388,8 @@ Array [
                   roundedBorders="top"
                   status="passé"
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "alignSelf": "flex-start",
                         "backgroundColor": "#ffffff",
                         "borderBottomLeftRadius": 8,
@@ -2405,8 +2405,8 @@ Array [
                   <Text
                     status="passé"
                     style={
-                      Array [
-                        Object {
+                      [
+                        {
                           "color": "#696A6F",
                           "fontFamily": "Montserrat-SemiBold",
                           "fontSize": 12,
@@ -2423,8 +2423,8 @@ Array [
             <View
               numberOfSpaces={0.5}
               style={
-                Array [
-                  Object {
+                [
+                  {
                     "height": 2,
                   },
                 ]
@@ -2442,8 +2442,8 @@ Array [
               onStartShouldSetResponder={[Function]}
               status="passé"
               style={
-                Array [
-                  Object {
+                [
+                  {
                     "alignItems": "center",
                     "backgroundColor": "rgba(241,241,244,0.5)",
                     "borderColor": "rgba(241,241,244,0.5)",
@@ -2462,8 +2462,8 @@ Array [
             >
               <View
                 style={
-                  Array [
-                    Object {
+                  [
+                    {
                       "marginRight": 16,
                     },
                   ]
@@ -2481,8 +2481,8 @@ Array [
               <View>
                 <Text
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "color": "#696A6F",
                         "fontFamily": "Montserrat-Bold",
                         "fontSize": 15,
@@ -2496,8 +2496,8 @@ Array [
                 <View
                   numberOfSpaces={1}
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "height": 4,
                       },
                     ]
@@ -2505,8 +2505,8 @@ Array [
                 />
                 <Text
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "color": "#696A6F",
                         "fontFamily": "Montserrat-SemiBold",
                         "fontSize": 12,
@@ -2520,8 +2520,8 @@ Array [
               </View>
               <View
                 style={
-                  Array [
-                    Object {
+                  [
+                    {
                       "position": "absolute",
                       "right": 0,
                       "top": 0,
@@ -2532,8 +2532,8 @@ Array [
                 <View
                   status="passé"
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "alignSelf": "flex-start",
                         "backgroundColor": "#ffffff",
                         "borderBottomLeftRadius": 8,
@@ -2548,8 +2548,8 @@ Array [
                   <Text
                     status="passé"
                     style={
-                      Array [
-                        Object {
+                      [
+                        {
                           "color": "#696A6F",
                           "fontFamily": "Montserrat-SemiBold",
                           "fontSize": 12,
@@ -2566,8 +2566,8 @@ Array [
             <View
               numberOfSpaces={0.5}
               style={
-                Array [
-                  Object {
+                [
+                  {
                     "height": 2,
                   },
                 ]
@@ -2588,7 +2588,7 @@ Array [
               roundedBorders="bottom"
               status="cette année"
               style={
-                Object {
+                {
                   "alignItems": "center",
                   "backgroundColor": "#ffffff",
                   "borderBottomLeftRadius": 8,
@@ -2603,8 +2603,8 @@ Array [
                   "paddingLeft": 16,
                   "paddingRight": 16,
                   "paddingTop": 16,
-                  "transform": Array [
-                    Object {
+                  "transform": [
+                    {
                       "scale": 0.95,
                     },
                   ],
@@ -2613,8 +2613,8 @@ Array [
             >
               <View
                 style={
-                  Array [
-                    Object {
+                  [
+                    {
                       "marginRight": 16,
                     },
                   ]
@@ -2624,9 +2624,9 @@ Array [
                   collapsable={false}
                   forwardedRef={[Function]}
                   style={
-                    Object {
-                      "transform": Array [
-                        Object {
+                    {
+                      "transform": [
+                        {
                           "scale": 0.875,
                         },
                       ],
@@ -2641,8 +2641,8 @@ Array [
               <View>
                 <Text
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "color": "#320096",
                         "fontFamily": "Montserrat-Bold",
                         "fontSize": 20,
@@ -2656,8 +2656,8 @@ Array [
                 <View
                   numberOfSpaces={1}
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "height": 4,
                       },
                     ]
@@ -2665,8 +2665,8 @@ Array [
                 />
                 <Text
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "color": "#320096",
                         "fontFamily": "Montserrat-Regular",
                         "fontSize": 15,
@@ -2680,8 +2680,8 @@ Array [
               </View>
               <View
                 style={
-                  Array [
-                    Object {
+                  [
+                    {
                       "position": "absolute",
                       "right": 0,
                       "top": 0,
@@ -2693,8 +2693,8 @@ Array [
                   roundedBorders="bottom"
                   status="cette année"
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "alignSelf": "flex-start",
                         "backgroundColor": "#15884f",
                         "borderBottomLeftRadius": 8,
@@ -2709,8 +2709,8 @@ Array [
                   <Text
                     status="cette année"
                     style={
-                      Array [
-                        Object {
+                      [
+                        {
                           "color": "#ffffff",
                           "fontFamily": "Montserrat-SemiBold",
                           "fontSize": 12,
@@ -2727,8 +2727,8 @@ Array [
             <View
               numberOfSpaces={0.5}
               style={
-                Array [
-                  Object {
+                [
+                  {
                     "height": 2,
                   },
                 ]
@@ -2738,8 +2738,8 @@ Array [
           <View
             reverse={false}
             style={
-              Array [
-                Object {
+              [
+                {
                   "flexDirection": "column",
                 },
               ]
@@ -2747,8 +2747,8 @@ Array [
           >
             <View
               style={
-                Array [
-                  Object {
+                [
+                  {
                     "marginVertical": 14,
                   },
                 ]
@@ -2756,8 +2756,8 @@ Array [
             >
               <View
                 style={
-                  Array [
-                    Object {
+                  [
+                    {
                       "alignItems": "center",
                       "flexDirection": "row",
                       "paddingHorizontal": 4,
@@ -2767,8 +2767,8 @@ Array [
               >
                 <View
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "backgroundColor": "#90949D",
                         "flexBasis": 0,
                         "flexGrow": 1,
@@ -2781,8 +2781,8 @@ Array [
                 />
                 <Text
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "color": "#161617",
                         "fontFamily": "Montserrat-SemiBold",
                         "fontSize": 12,
@@ -2796,8 +2796,8 @@ Array [
                 </Text>
                 <View
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "backgroundColor": "#90949D",
                         "flexBasis": 0,
                         "flexGrow": 1,
@@ -2822,8 +2822,8 @@ Array [
               onStartShouldSetResponder={[Function]}
               status="à venir"
               style={
-                Array [
-                  Object {
+                [
+                  {
                     "alignItems": "center",
                     "backgroundColor": "#F1F1F4",
                     "borderColor": "#F1F1F4",
@@ -2842,8 +2842,8 @@ Array [
             >
               <View
                 style={
-                  Array [
-                    Object {
+                  [
+                    {
                       "marginRight": 16,
                     },
                   ]
@@ -2861,8 +2861,8 @@ Array [
               <View>
                 <Text
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "color": "#161617",
                         "fontFamily": "Montserrat-Bold",
                         "fontSize": 20,
@@ -2876,8 +2876,8 @@ Array [
                 <View
                   numberOfSpaces={1}
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "height": 4,
                       },
                     ]
@@ -2885,8 +2885,8 @@ Array [
                 />
                 <Text
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "color": "#161617",
                         "fontFamily": "Montserrat-Regular",
                         "fontSize": 15,
@@ -2900,8 +2900,8 @@ Array [
                 <View
                   numberOfSpaces={1}
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "height": 4,
                       },
                     ]
@@ -2909,8 +2909,8 @@ Array [
                 />
                 <Text
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "color": "#696A6F",
                         "fontFamily": "Montserrat-SemiBold",
                         "fontSize": 10,
@@ -2924,8 +2924,8 @@ Array [
               </View>
               <View
                 style={
-                  Array [
-                    Object {
+                  [
+                    {
                       "position": "absolute",
                       "right": 0,
                       "top": 0,
@@ -2936,8 +2936,8 @@ Array [
                 <View
                   status="à venir"
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "alignSelf": "flex-start",
                         "backgroundColor": "#320096",
                         "borderBottomLeftRadius": 8,
@@ -2952,8 +2952,8 @@ Array [
                   <Text
                     status="à venir"
                     style={
-                      Array [
-                        Object {
+                      [
+                        {
                           "color": "#ffffff",
                           "fontFamily": "Montserrat-SemiBold",
                           "fontSize": 12,
@@ -2976,13 +2976,13 @@ Array [
     collapsable={false}
     forwardedRef={[Function]}
     style={
-      Object {
+      {
         "backgroundColor": "#ffffff",
         "marginHorizontal": 24,
         "opacity": 0,
         "paddingVertical": 24,
-        "transform": Array [
-          Object {
+        "transform": [
+          {
             "scale": 0.95,
           },
         ],
@@ -2993,7 +2993,7 @@ Array [
       accessibilityLabel="Créer un compte"
       accessibilityRole="link"
       accessibilityState={
-        Object {
+        {
           "disabled": false,
         }
       }
@@ -3008,7 +3008,7 @@ Array [
       onResponderTerminationRequest={[Function]}
       onStartShouldSetResponder={[Function]}
       style={
-        Object {
+        {
           "alignItems": "center",
           "borderRadius": 24,
           "justifyContent": "center",
@@ -3033,8 +3033,8 @@ Array [
       </View>
       <View
         style={
-          Array [
-            Object {
+          [
+            {
               "alignItems": "center",
               "flexDirection": "row",
               "position": "absolute",
@@ -3047,8 +3047,8 @@ Array [
           isDisabled={false}
           numberOfLines={1}
           style={
-            Array [
-              Object {
+            [
+              {
                 "color": "#ffffff",
                 "fontFamily": "Montserrat-Bold",
                 "fontSize": 15,
@@ -3068,8 +3068,8 @@ Array [
     <View
       numberOfSpaces={4}
       style={
-        Array [
-          Object {
+        [
+          {
             "height": 16,
           },
         ]
@@ -3088,7 +3088,7 @@ Array [
       onResponderTerminationRequest={[Function]}
       onStartShouldSetResponder={[Function]}
       style={
-        Object {
+        {
           "alignItems": "center",
           "backgroundColor": "transparent",
           "borderRadius": 24,
@@ -3108,8 +3108,8 @@ Array [
     >
       <View
         style={
-          Array [
-            Object {
+          [
+            {
               "flexShrink": 0,
             },
           ]
@@ -3129,8 +3129,8 @@ Array [
         adjustsFontSizeToFit={false}
         numberOfLines={1}
         style={
-          Array [
-            Object {
+          [
+            {
               "color": "#161617",
               "fontFamily": "Montserrat-Bold",
               "fontSize": 15,
@@ -3149,8 +3149,8 @@ Array [
     customHeight={8}
     enable={true}
     style={
-      Array [
-        Object {
+      [
+        {
           "height": 8,
         },
       ]
@@ -3160,12 +3160,12 @@ Array [
 `;
 
 exports[`AgeInformation should render correctly for 18-year-old 1`] = `
-Array [
+[
   <View
     height={64}
     style={
-      Array [
-        Object {
+      [
+        {
           "height": 64,
         },
       ]
@@ -3173,8 +3173,8 @@ Array [
   />,
   <View
     style={
-      Array [
-        Object {
+      [
+        {
           "position": "absolute",
           "top": 0,
           "width": "100%",
@@ -3187,8 +3187,8 @@ Array [
       customHeight={16}
       enable={true}
       style={
-        Array [
-          Object {
+        [
+          {
             "height": 16,
           },
         ]
@@ -3196,8 +3196,8 @@ Array [
     />
     <View
       style={
-        Array [
-          Object {
+        [
+          {
             "height": 48,
             "justifyContent": "center",
             "paddingHorizontal": 12,
@@ -3219,7 +3219,7 @@ Array [
         onResponderTerminationRequest={[Function]}
         onStartShouldSetResponder={[Function]}
         style={
-          Object {
+          {
             "alignItems": "center",
             "flexGrow": 1,
             "height": 40,
@@ -3242,8 +3242,8 @@ Array [
         </View>
         <Text
           style={
-            Array [
-              Object {
+            [
+              {
                 "display": "none",
               },
             ]
@@ -3258,8 +3258,8 @@ Array [
     <View>
       <View
         style={
-          Array [
-            Object {
+          [
+            {
               "marginHorizontal": 24,
             },
           ]
@@ -3268,8 +3268,8 @@ Array [
         <View
           numberOfSpaces={6}
           style={
-            Array [
-              Object {
+            [
+              {
                 "height": 24,
               },
             ]
@@ -3278,8 +3278,8 @@ Array [
         <Text
           numberOfLines={3}
           style={
-            Array [
-              Object {
+            [
+              {
                 "color": "#161617",
                 "fontFamily": "Montserrat-Bold",
                 "fontSize": 20,
@@ -3293,8 +3293,8 @@ Array [
         <View
           numberOfSpaces={4}
           style={
-            Array [
-              Object {
+            [
+              {
                 "height": 16,
               },
             ]
@@ -3302,8 +3302,8 @@ Array [
         />
         <Text
           style={
-            Array [
-              Object {
+            [
+              {
                 "color": "#161617",
                 "fontFamily": "Montserrat-Medium",
                 "fontSize": 18,
@@ -3317,8 +3317,8 @@ Array [
         <View
           numberOfSpaces={2}
           style={
-            Array [
-              Object {
+            [
+              {
                 "height": 8,
               },
             ]
@@ -3327,8 +3327,8 @@ Array [
         <View
           reverse={true}
           style={
-            Array [
-              Object {
+            [
+              {
                 "flexDirection": "column-reverse",
               },
             ]
@@ -3348,8 +3348,8 @@ Array [
               roundedBorders="top"
               status="passé"
               style={
-                Array [
-                  Object {
+                [
+                  {
                     "alignItems": "center",
                     "backgroundColor": "rgba(241,241,244,0.5)",
                     "borderColor": "rgba(241,241,244,0.5)",
@@ -3370,8 +3370,8 @@ Array [
             >
               <View
                 style={
-                  Array [
-                    Object {
+                  [
+                    {
                       "marginRight": 16,
                     },
                   ]
@@ -3389,8 +3389,8 @@ Array [
               <View>
                 <Text
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "color": "#696A6F",
                         "fontFamily": "Montserrat-Bold",
                         "fontSize": 15,
@@ -3404,8 +3404,8 @@ Array [
                 <View
                   numberOfSpaces={1}
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "height": 4,
                       },
                     ]
@@ -3413,8 +3413,8 @@ Array [
                 />
                 <Text
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "color": "#696A6F",
                         "fontFamily": "Montserrat-SemiBold",
                         "fontSize": 12,
@@ -3428,8 +3428,8 @@ Array [
               </View>
               <View
                 style={
-                  Array [
-                    Object {
+                  [
+                    {
                       "position": "absolute",
                       "right": 0,
                       "top": 0,
@@ -3441,8 +3441,8 @@ Array [
                   roundedBorders="top"
                   status="passé"
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "alignSelf": "flex-start",
                         "backgroundColor": "#ffffff",
                         "borderBottomLeftRadius": 8,
@@ -3458,8 +3458,8 @@ Array [
                   <Text
                     status="passé"
                     style={
-                      Array [
-                        Object {
+                      [
+                        {
                           "color": "#696A6F",
                           "fontFamily": "Montserrat-SemiBold",
                           "fontSize": 12,
@@ -3476,8 +3476,8 @@ Array [
             <View
               numberOfSpaces={0.5}
               style={
-                Array [
-                  Object {
+                [
+                  {
                     "height": 2,
                   },
                 ]
@@ -3495,8 +3495,8 @@ Array [
               onStartShouldSetResponder={[Function]}
               status="passé"
               style={
-                Array [
-                  Object {
+                [
+                  {
                     "alignItems": "center",
                     "backgroundColor": "rgba(241,241,244,0.5)",
                     "borderColor": "rgba(241,241,244,0.5)",
@@ -3515,8 +3515,8 @@ Array [
             >
               <View
                 style={
-                  Array [
-                    Object {
+                  [
+                    {
                       "marginRight": 16,
                     },
                   ]
@@ -3534,8 +3534,8 @@ Array [
               <View>
                 <Text
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "color": "#696A6F",
                         "fontFamily": "Montserrat-Bold",
                         "fontSize": 15,
@@ -3549,8 +3549,8 @@ Array [
                 <View
                   numberOfSpaces={1}
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "height": 4,
                       },
                     ]
@@ -3558,8 +3558,8 @@ Array [
                 />
                 <Text
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "color": "#696A6F",
                         "fontFamily": "Montserrat-SemiBold",
                         "fontSize": 12,
@@ -3573,8 +3573,8 @@ Array [
               </View>
               <View
                 style={
-                  Array [
-                    Object {
+                  [
+                    {
                       "position": "absolute",
                       "right": 0,
                       "top": 0,
@@ -3585,8 +3585,8 @@ Array [
                 <View
                   status="passé"
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "alignSelf": "flex-start",
                         "backgroundColor": "#ffffff",
                         "borderBottomLeftRadius": 8,
@@ -3601,8 +3601,8 @@ Array [
                   <Text
                     status="passé"
                     style={
-                      Array [
-                        Object {
+                      [
+                        {
                           "color": "#696A6F",
                           "fontFamily": "Montserrat-SemiBold",
                           "fontSize": 12,
@@ -3619,8 +3619,8 @@ Array [
             <View
               numberOfSpaces={0.5}
               style={
-                Array [
-                  Object {
+                [
+                  {
                     "height": 2,
                   },
                 ]
@@ -3639,8 +3639,8 @@ Array [
               roundedBorders="bottom"
               status="passé"
               style={
-                Array [
-                  Object {
+                [
+                  {
                     "alignItems": "center",
                     "backgroundColor": "rgba(241,241,244,0.5)",
                     "borderBottomLeftRadius": 8,
@@ -3661,8 +3661,8 @@ Array [
             >
               <View
                 style={
-                  Array [
-                    Object {
+                  [
+                    {
                       "marginRight": 16,
                     },
                   ]
@@ -3680,8 +3680,8 @@ Array [
               <View>
                 <Text
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "color": "#696A6F",
                         "fontFamily": "Montserrat-Bold",
                         "fontSize": 15,
@@ -3695,8 +3695,8 @@ Array [
                 <View
                   numberOfSpaces={1}
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "height": 4,
                       },
                     ]
@@ -3704,8 +3704,8 @@ Array [
                 />
                 <Text
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "color": "#696A6F",
                         "fontFamily": "Montserrat-SemiBold",
                         "fontSize": 12,
@@ -3719,8 +3719,8 @@ Array [
               </View>
               <View
                 style={
-                  Array [
-                    Object {
+                  [
+                    {
                       "position": "absolute",
                       "right": 0,
                       "top": 0,
@@ -3732,8 +3732,8 @@ Array [
                   roundedBorders="bottom"
                   status="passé"
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "alignSelf": "flex-start",
                         "backgroundColor": "#ffffff",
                         "borderBottomLeftRadius": 8,
@@ -3748,8 +3748,8 @@ Array [
                   <Text
                     status="passé"
                     style={
-                      Array [
-                        Object {
+                      [
+                        {
                           "color": "#696A6F",
                           "fontFamily": "Montserrat-SemiBold",
                           "fontSize": 12,
@@ -3766,8 +3766,8 @@ Array [
             <View
               numberOfSpaces={0.5}
               style={
-                Array [
-                  Object {
+                [
+                  {
                     "height": 2,
                   },
                 ]
@@ -3777,8 +3777,8 @@ Array [
           <View
             reverse={true}
             style={
-              Array [
-                Object {
+              [
+                {
                   "flexDirection": "column-reverse",
                 },
               ]
@@ -3786,8 +3786,8 @@ Array [
           >
             <View
               style={
-                Array [
-                  Object {
+                [
+                  {
                     "marginVertical": 14,
                   },
                 ]
@@ -3795,8 +3795,8 @@ Array [
             >
               <View
                 style={
-                  Array [
-                    Object {
+                  [
+                    {
                       "alignItems": "center",
                       "flexDirection": "row",
                       "paddingHorizontal": 4,
@@ -3806,8 +3806,8 @@ Array [
               >
                 <View
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "backgroundColor": "#90949D",
                         "flexBasis": 0,
                         "flexGrow": 1,
@@ -3820,8 +3820,8 @@ Array [
                 />
                 <Text
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "color": "#161617",
                         "fontFamily": "Montserrat-SemiBold",
                         "fontSize": 12,
@@ -3835,8 +3835,8 @@ Array [
                 </Text>
                 <View
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "backgroundColor": "#90949D",
                         "flexBasis": 0,
                         "flexGrow": 1,
@@ -3863,7 +3863,7 @@ Array [
               onStartShouldSetResponder={[Function]}
               status="cette année"
               style={
-                Object {
+                {
                   "alignItems": "center",
                   "backgroundColor": "#ffffff",
                   "borderColor": "#90949D",
@@ -3876,8 +3876,8 @@ Array [
                   "paddingLeft": 16,
                   "paddingRight": 16,
                   "paddingTop": 16,
-                  "transform": Array [
-                    Object {
+                  "transform": [
+                    {
                       "scale": 0.95,
                     },
                   ],
@@ -3886,8 +3886,8 @@ Array [
             >
               <View
                 style={
-                  Array [
-                    Object {
+                  [
+                    {
                       "marginRight": 16,
                     },
                   ]
@@ -3897,9 +3897,9 @@ Array [
                   collapsable={false}
                   forwardedRef={[Function]}
                   style={
-                    Object {
-                      "transform": Array [
-                        Object {
+                    {
+                      "transform": [
+                        {
                           "scale": 0.875,
                         },
                       ],
@@ -3914,8 +3914,8 @@ Array [
               <View>
                 <Text
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "color": "#320096",
                         "fontFamily": "Montserrat-Bold",
                         "fontSize": 20,
@@ -3929,8 +3929,8 @@ Array [
                 <View
                   numberOfSpaces={1}
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "height": 4,
                       },
                     ]
@@ -3938,8 +3938,8 @@ Array [
                 />
                 <Text
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "color": "#320096",
                         "fontFamily": "Montserrat-Regular",
                         "fontSize": 15,
@@ -3953,8 +3953,8 @@ Array [
                 <View
                   numberOfSpaces={1}
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "height": 4,
                       },
                     ]
@@ -3962,8 +3962,8 @@ Array [
                 />
                 <Text
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "color": "#696A6F",
                         "fontFamily": "Montserrat-SemiBold",
                         "fontSize": 10,
@@ -3977,8 +3977,8 @@ Array [
               </View>
               <View
                 style={
-                  Array [
-                    Object {
+                  [
+                    {
                       "position": "absolute",
                       "right": 0,
                       "top": 0,
@@ -3989,8 +3989,8 @@ Array [
                 <View
                   status="cette année"
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "alignSelf": "flex-start",
                         "backgroundColor": "#15884f",
                         "borderBottomLeftRadius": 8,
@@ -4005,8 +4005,8 @@ Array [
                   <Text
                     status="cette année"
                     style={
-                      Array [
-                        Object {
+                      [
+                        {
                           "color": "#ffffff",
                           "fontFamily": "Montserrat-SemiBold",
                           "fontSize": 12,
@@ -4029,13 +4029,13 @@ Array [
     collapsable={false}
     forwardedRef={[Function]}
     style={
-      Object {
+      {
         "backgroundColor": "#ffffff",
         "marginHorizontal": 24,
         "opacity": 0,
         "paddingVertical": 24,
-        "transform": Array [
-          Object {
+        "transform": [
+          {
             "scale": 0.95,
           },
         ],
@@ -4046,7 +4046,7 @@ Array [
       accessibilityLabel="Créer un compte"
       accessibilityRole="link"
       accessibilityState={
-        Object {
+        {
           "disabled": false,
         }
       }
@@ -4061,7 +4061,7 @@ Array [
       onResponderTerminationRequest={[Function]}
       onStartShouldSetResponder={[Function]}
       style={
-        Object {
+        {
           "alignItems": "center",
           "borderRadius": 24,
           "justifyContent": "center",
@@ -4086,8 +4086,8 @@ Array [
       </View>
       <View
         style={
-          Array [
-            Object {
+          [
+            {
               "alignItems": "center",
               "flexDirection": "row",
               "position": "absolute",
@@ -4100,8 +4100,8 @@ Array [
           isDisabled={false}
           numberOfLines={1}
           style={
-            Array [
-              Object {
+            [
+              {
                 "color": "#ffffff",
                 "fontFamily": "Montserrat-Bold",
                 "fontSize": 15,
@@ -4121,8 +4121,8 @@ Array [
     <View
       numberOfSpaces={4}
       style={
-        Array [
-          Object {
+        [
+          {
             "height": 16,
           },
         ]
@@ -4141,7 +4141,7 @@ Array [
       onResponderTerminationRequest={[Function]}
       onStartShouldSetResponder={[Function]}
       style={
-        Object {
+        {
           "alignItems": "center",
           "backgroundColor": "transparent",
           "borderRadius": 24,
@@ -4161,8 +4161,8 @@ Array [
     >
       <View
         style={
-          Array [
-            Object {
+          [
+            {
               "flexShrink": 0,
             },
           ]
@@ -4182,8 +4182,8 @@ Array [
         adjustsFontSizeToFit={false}
         numberOfLines={1}
         style={
-          Array [
-            Object {
+          [
+            {
               "color": "#161617",
               "fontFamily": "Montserrat-Bold",
               "fontSize": 15,
@@ -4202,8 +4202,8 @@ Array [
     customHeight={8}
     enable={true}
     style={
-      Array [
-        Object {
+      [
+        {
           "height": 8,
         },
       ]

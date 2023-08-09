@@ -4,8 +4,8 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
 <View>
   <View
     style={
-      Array [
-        Object {
+      [
+        {
           "flexDirection": "row",
           "paddingBottom": 24,
         },
@@ -15,8 +15,8 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
     <View
       numberOfSpaces={6}
       style={
-        Array [
-          Object {
+        [
+          {
             "width": 24,
           },
         ]
@@ -26,8 +26,8 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
       <View
         numberOfSpaces={1}
         style={
-          Array [
-            Object {
+          [
+            {
               "height": 4,
             },
           ]
@@ -37,8 +37,8 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
         borderRadius={2}
         height={16}
         style={
-          Array [
-            Object {
+          [
+            {
               "backgroundColor": "#DDDDDD",
               "borderRadius": 2,
               "height": 16,
@@ -52,7 +52,7 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
         <BVLinearGradient
           collapsable={false}
           colors={
-            Array [
+            [
               4292730333,
               4293848814,
               4293848814,
@@ -60,28 +60,28 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
             ]
           }
           endPoint={
-            Object {
+            {
               "x": 1,
               "y": 0,
             }
           }
           locations={null}
           startPoint={
-            Object {
+            {
               "x": 0,
               "y": 0,
             }
           }
           style={
-            Object {
+            {
               "borderRadius": 2,
               "bottom": 0,
               "left": 0,
               "position": "absolute",
               "right": 0,
               "top": 0,
-              "transform": Array [
-                Object {
+              "transform": [
+                {
                   "translateX": -250,
                 },
               ],
@@ -92,8 +92,8 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
       <View
         numberOfSpaces={5}
         style={
-          Array [
-            Object {
+          [
+            {
               "height": 20,
             },
           ]
@@ -103,17 +103,17 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
         ItemSeparatorComponent={[Function]}
         collapsable={false}
         data={
-          Array [
-            Object {
+          [
+            {
               "key": "0",
             },
-            Object {
+            {
               "key": "1",
             },
-            Object {
+            {
               "key": "2",
             },
-            Object {
+            {
               "key": "3",
             },
           ]
@@ -136,15 +136,15 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
         renderScrollComponent={[Function]}
         scrollEventThrottle={50}
         showsHorizontalScrollIndicator={false}
-        stickyHeaderIndices={Array []}
-        viewabilityConfigCallbackPairs={Array []}
+        stickyHeaderIndices={[]}
+        viewabilityConfigCallbackPairs={[]}
       >
         <View>
           <View
             onLayout={[Function]}
             style={
-              Array [
-                Object {
+              [
+                {
                   "flexDirection": "row",
                 },
                 null,
@@ -156,8 +156,8 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
                 borderRadius={8}
                 height={288}
                 style={
-                  Array [
-                    Object {
+                  [
+                    {
                       "backgroundColor": "#DDDDDD",
                       "borderRadius": 8,
                       "height": 288,
@@ -171,7 +171,7 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
                 <BVLinearGradient
                   collapsable={false}
                   colors={
-                    Array [
+                    [
                       4292730333,
                       4293848814,
                       4293848814,
@@ -179,28 +179,28 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
                     ]
                   }
                   endPoint={
-                    Object {
+                    {
                       "x": 1,
                       "y": 0,
                     }
                   }
                   locations={null}
                   startPoint={
-                    Object {
+                    {
                       "x": 0,
                       "y": 0,
                     }
                   }
                   style={
-                    Object {
+                    {
                       "borderRadius": 8,
                       "bottom": 0,
                       "left": 0,
                       "position": "absolute",
                       "right": 0,
                       "top": 0,
-                      "transform": Array [
-                        Object {
+                      "transform": [
+                        {
                           "translateX": -240,
                         },
                       ],
@@ -211,8 +211,8 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
               <View
                 numberOfSpaces={3}
                 style={
-                  Array [
-                    Object {
+                  [
+                    {
                       "height": 12,
                     },
                   ]
@@ -222,8 +222,8 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
                 borderRadius={2}
                 height={12}
                 style={
-                  Array [
-                    Object {
+                  [
+                    {
                       "backgroundColor": "#DDDDDD",
                       "borderRadius": 2,
                       "height": 12,
@@ -237,7 +237,7 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
                 <BVLinearGradient
                   collapsable={false}
                   colors={
-                    Array [
+                    [
                       4292730333,
                       4293848814,
                       4293848814,
@@ -245,28 +245,28 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
                     ]
                   }
                   endPoint={
-                    Object {
+                    {
                       "x": 1,
                       "y": 0,
                     }
                   }
                   locations={null}
                   startPoint={
-                    Object {
+                    {
                       "x": 0,
                       "y": 0,
                     }
                   }
                   style={
-                    Object {
+                    {
                       "borderRadius": 2,
                       "bottom": 0,
                       "left": 0,
                       "position": "absolute",
                       "right": 0,
                       "top": 0,
-                      "transform": Array [
-                        Object {
+                      "transform": [
+                        {
                           "translateX": -192.00000000000003,
                         },
                       ],
@@ -277,8 +277,8 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
               <View
                 numberOfSpaces={2}
                 style={
-                  Array [
-                    Object {
+                  [
+                    {
                       "height": 8,
                     },
                   ]
@@ -288,8 +288,8 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
                 borderRadius={2}
                 height={12}
                 style={
-                  Array [
-                    Object {
+                  [
+                    {
                       "backgroundColor": "#DDDDDD",
                       "borderRadius": 2,
                       "height": 12,
@@ -303,7 +303,7 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
                 <BVLinearGradient
                   collapsable={false}
                   colors={
-                    Array [
+                    [
                       4292730333,
                       4293848814,
                       4293848814,
@@ -311,28 +311,28 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
                     ]
                   }
                   endPoint={
-                    Object {
+                    {
                       "x": 1,
                       "y": 0,
                     }
                   }
                   locations={null}
                   startPoint={
-                    Object {
+                    {
                       "x": 0,
                       "y": 0,
                     }
                   }
                   style={
-                    Object {
+                    {
                       "borderRadius": 2,
                       "bottom": 0,
                       "left": 0,
                       "position": "absolute",
                       "right": 0,
                       "top": 0,
-                      "transform": Array [
-                        Object {
+                      "transform": [
+                        {
                           "translateX": -72,
                         },
                       ],
@@ -343,8 +343,8 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
               <View
                 numberOfSpaces={3}
                 style={
-                  Array [
-                    Object {
+                  [
+                    {
                       "height": 12,
                     },
                   ]
@@ -354,8 +354,8 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
             <View
               numberOfSpaces={4}
               style={
-                Array [
-                  Object {
+                [
+                  {
                     "width": 16,
                   },
                 ]
@@ -365,8 +365,8 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
           <View
             onLayout={[Function]}
             style={
-              Array [
-                Object {
+              [
+                {
                   "flexDirection": "row",
                 },
                 null,
@@ -378,8 +378,8 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
                 borderRadius={8}
                 height={288}
                 style={
-                  Array [
-                    Object {
+                  [
+                    {
                       "backgroundColor": "#DDDDDD",
                       "borderRadius": 8,
                       "height": 288,
@@ -393,7 +393,7 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
                 <BVLinearGradient
                   collapsable={false}
                   colors={
-                    Array [
+                    [
                       4292730333,
                       4293848814,
                       4293848814,
@@ -401,28 +401,28 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
                     ]
                   }
                   endPoint={
-                    Object {
+                    {
                       "x": 1,
                       "y": 0,
                     }
                   }
                   locations={null}
                   startPoint={
-                    Object {
+                    {
                       "x": 0,
                       "y": 0,
                     }
                   }
                   style={
-                    Object {
+                    {
                       "borderRadius": 8,
                       "bottom": 0,
                       "left": 0,
                       "position": "absolute",
                       "right": 0,
                       "top": 0,
-                      "transform": Array [
-                        Object {
+                      "transform": [
+                        {
                           "translateX": -240,
                         },
                       ],
@@ -433,8 +433,8 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
               <View
                 numberOfSpaces={3}
                 style={
-                  Array [
-                    Object {
+                  [
+                    {
                       "height": 12,
                     },
                   ]
@@ -444,8 +444,8 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
                 borderRadius={2}
                 height={12}
                 style={
-                  Array [
-                    Object {
+                  [
+                    {
                       "backgroundColor": "#DDDDDD",
                       "borderRadius": 2,
                       "height": 12,
@@ -459,7 +459,7 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
                 <BVLinearGradient
                   collapsable={false}
                   colors={
-                    Array [
+                    [
                       4292730333,
                       4293848814,
                       4293848814,
@@ -467,28 +467,28 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
                     ]
                   }
                   endPoint={
-                    Object {
+                    {
                       "x": 1,
                       "y": 0,
                     }
                   }
                   locations={null}
                   startPoint={
-                    Object {
+                    {
                       "x": 0,
                       "y": 0,
                     }
                   }
                   style={
-                    Object {
+                    {
                       "borderRadius": 2,
                       "bottom": 0,
                       "left": 0,
                       "position": "absolute",
                       "right": 0,
                       "top": 0,
-                      "transform": Array [
-                        Object {
+                      "transform": [
+                        {
                           "translateX": -192.00000000000003,
                         },
                       ],
@@ -499,8 +499,8 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
               <View
                 numberOfSpaces={2}
                 style={
-                  Array [
-                    Object {
+                  [
+                    {
                       "height": 8,
                     },
                   ]
@@ -510,8 +510,8 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
                 borderRadius={2}
                 height={12}
                 style={
-                  Array [
-                    Object {
+                  [
+                    {
                       "backgroundColor": "#DDDDDD",
                       "borderRadius": 2,
                       "height": 12,
@@ -525,7 +525,7 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
                 <BVLinearGradient
                   collapsable={false}
                   colors={
-                    Array [
+                    [
                       4292730333,
                       4293848814,
                       4293848814,
@@ -533,28 +533,28 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
                     ]
                   }
                   endPoint={
-                    Object {
+                    {
                       "x": 1,
                       "y": 0,
                     }
                   }
                   locations={null}
                   startPoint={
-                    Object {
+                    {
                       "x": 0,
                       "y": 0,
                     }
                   }
                   style={
-                    Object {
+                    {
                       "borderRadius": 2,
                       "bottom": 0,
                       "left": 0,
                       "position": "absolute",
                       "right": 0,
                       "top": 0,
-                      "transform": Array [
-                        Object {
+                      "transform": [
+                        {
                           "translateX": -72,
                         },
                       ],
@@ -565,8 +565,8 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
               <View
                 numberOfSpaces={3}
                 style={
-                  Array [
-                    Object {
+                  [
+                    {
                       "height": 12,
                     },
                   ]
@@ -576,8 +576,8 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
             <View
               numberOfSpaces={4}
               style={
-                Array [
-                  Object {
+                [
+                  {
                     "width": 16,
                   },
                 ]
@@ -587,8 +587,8 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
           <View
             onLayout={[Function]}
             style={
-              Array [
-                Object {
+              [
+                {
                   "flexDirection": "row",
                 },
                 null,
@@ -600,8 +600,8 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
                 borderRadius={8}
                 height={288}
                 style={
-                  Array [
-                    Object {
+                  [
+                    {
                       "backgroundColor": "#DDDDDD",
                       "borderRadius": 8,
                       "height": 288,
@@ -615,7 +615,7 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
                 <BVLinearGradient
                   collapsable={false}
                   colors={
-                    Array [
+                    [
                       4292730333,
                       4293848814,
                       4293848814,
@@ -623,28 +623,28 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
                     ]
                   }
                   endPoint={
-                    Object {
+                    {
                       "x": 1,
                       "y": 0,
                     }
                   }
                   locations={null}
                   startPoint={
-                    Object {
+                    {
                       "x": 0,
                       "y": 0,
                     }
                   }
                   style={
-                    Object {
+                    {
                       "borderRadius": 8,
                       "bottom": 0,
                       "left": 0,
                       "position": "absolute",
                       "right": 0,
                       "top": 0,
-                      "transform": Array [
-                        Object {
+                      "transform": [
+                        {
                           "translateX": -240,
                         },
                       ],
@@ -655,8 +655,8 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
               <View
                 numberOfSpaces={3}
                 style={
-                  Array [
-                    Object {
+                  [
+                    {
                       "height": 12,
                     },
                   ]
@@ -666,8 +666,8 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
                 borderRadius={2}
                 height={12}
                 style={
-                  Array [
-                    Object {
+                  [
+                    {
                       "backgroundColor": "#DDDDDD",
                       "borderRadius": 2,
                       "height": 12,
@@ -681,7 +681,7 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
                 <BVLinearGradient
                   collapsable={false}
                   colors={
-                    Array [
+                    [
                       4292730333,
                       4293848814,
                       4293848814,
@@ -689,28 +689,28 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
                     ]
                   }
                   endPoint={
-                    Object {
+                    {
                       "x": 1,
                       "y": 0,
                     }
                   }
                   locations={null}
                   startPoint={
-                    Object {
+                    {
                       "x": 0,
                       "y": 0,
                     }
                   }
                   style={
-                    Object {
+                    {
                       "borderRadius": 2,
                       "bottom": 0,
                       "left": 0,
                       "position": "absolute",
                       "right": 0,
                       "top": 0,
-                      "transform": Array [
-                        Object {
+                      "transform": [
+                        {
                           "translateX": -192.00000000000003,
                         },
                       ],
@@ -721,8 +721,8 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
               <View
                 numberOfSpaces={2}
                 style={
-                  Array [
-                    Object {
+                  [
+                    {
                       "height": 8,
                     },
                   ]
@@ -732,8 +732,8 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
                 borderRadius={2}
                 height={12}
                 style={
-                  Array [
-                    Object {
+                  [
+                    {
                       "backgroundColor": "#DDDDDD",
                       "borderRadius": 2,
                       "height": 12,
@@ -747,7 +747,7 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
                 <BVLinearGradient
                   collapsable={false}
                   colors={
-                    Array [
+                    [
                       4292730333,
                       4293848814,
                       4293848814,
@@ -755,28 +755,28 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
                     ]
                   }
                   endPoint={
-                    Object {
+                    {
                       "x": 1,
                       "y": 0,
                     }
                   }
                   locations={null}
                   startPoint={
-                    Object {
+                    {
                       "x": 0,
                       "y": 0,
                     }
                   }
                   style={
-                    Object {
+                    {
                       "borderRadius": 2,
                       "bottom": 0,
                       "left": 0,
                       "position": "absolute",
                       "right": 0,
                       "top": 0,
-                      "transform": Array [
-                        Object {
+                      "transform": [
+                        {
                           "translateX": -72,
                         },
                       ],
@@ -787,8 +787,8 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
               <View
                 numberOfSpaces={3}
                 style={
-                  Array [
-                    Object {
+                  [
+                    {
                       "height": 12,
                     },
                   ]
@@ -798,8 +798,8 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
             <View
               numberOfSpaces={4}
               style={
-                Array [
-                  Object {
+                [
+                  {
                     "width": 16,
                   },
                 ]
@@ -809,8 +809,8 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
           <View
             onLayout={[Function]}
             style={
-              Array [
-                Object {
+              [
+                {
                   "flexDirection": "row",
                 },
                 null,
@@ -822,8 +822,8 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
                 borderRadius={8}
                 height={288}
                 style={
-                  Array [
-                    Object {
+                  [
+                    {
                       "backgroundColor": "#DDDDDD",
                       "borderRadius": 8,
                       "height": 288,
@@ -837,7 +837,7 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
                 <BVLinearGradient
                   collapsable={false}
                   colors={
-                    Array [
+                    [
                       4292730333,
                       4293848814,
                       4293848814,
@@ -845,28 +845,28 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
                     ]
                   }
                   endPoint={
-                    Object {
+                    {
                       "x": 1,
                       "y": 0,
                     }
                   }
                   locations={null}
                   startPoint={
-                    Object {
+                    {
                       "x": 0,
                       "y": 0,
                     }
                   }
                   style={
-                    Object {
+                    {
                       "borderRadius": 8,
                       "bottom": 0,
                       "left": 0,
                       "position": "absolute",
                       "right": 0,
                       "top": 0,
-                      "transform": Array [
-                        Object {
+                      "transform": [
+                        {
                           "translateX": -240,
                         },
                       ],
@@ -877,8 +877,8 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
               <View
                 numberOfSpaces={3}
                 style={
-                  Array [
-                    Object {
+                  [
+                    {
                       "height": 12,
                     },
                   ]
@@ -888,8 +888,8 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
                 borderRadius={2}
                 height={12}
                 style={
-                  Array [
-                    Object {
+                  [
+                    {
                       "backgroundColor": "#DDDDDD",
                       "borderRadius": 2,
                       "height": 12,
@@ -903,7 +903,7 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
                 <BVLinearGradient
                   collapsable={false}
                   colors={
-                    Array [
+                    [
                       4292730333,
                       4293848814,
                       4293848814,
@@ -911,28 +911,28 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
                     ]
                   }
                   endPoint={
-                    Object {
+                    {
                       "x": 1,
                       "y": 0,
                     }
                   }
                   locations={null}
                   startPoint={
-                    Object {
+                    {
                       "x": 0,
                       "y": 0,
                     }
                   }
                   style={
-                    Object {
+                    {
                       "borderRadius": 2,
                       "bottom": 0,
                       "left": 0,
                       "position": "absolute",
                       "right": 0,
                       "top": 0,
-                      "transform": Array [
-                        Object {
+                      "transform": [
+                        {
                           "translateX": -192.00000000000003,
                         },
                       ],
@@ -943,8 +943,8 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
               <View
                 numberOfSpaces={2}
                 style={
-                  Array [
-                    Object {
+                  [
+                    {
                       "height": 8,
                     },
                   ]
@@ -954,8 +954,8 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
                 borderRadius={2}
                 height={12}
                 style={
-                  Array [
-                    Object {
+                  [
+                    {
                       "backgroundColor": "#DDDDDD",
                       "borderRadius": 2,
                       "height": 12,
@@ -969,7 +969,7 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
                 <BVLinearGradient
                   collapsable={false}
                   colors={
-                    Array [
+                    [
                       4292730333,
                       4293848814,
                       4293848814,
@@ -977,28 +977,28 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
                     ]
                   }
                   endPoint={
-                    Object {
+                    {
                       "x": 1,
                       "y": 0,
                     }
                   }
                   locations={null}
                   startPoint={
-                    Object {
+                    {
                       "x": 0,
                       "y": 0,
                     }
                   }
                   style={
-                    Object {
+                    {
                       "borderRadius": 2,
                       "bottom": 0,
                       "left": 0,
                       "position": "absolute",
                       "right": 0,
                       "top": 0,
-                      "transform": Array [
-                        Object {
+                      "transform": [
+                        {
                           "translateX": -72,
                         },
                       ],
@@ -1009,8 +1009,8 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
               <View
                 numberOfSpaces={3}
                 style={
-                  Array [
-                    Object {
+                  [
+                    {
                       "height": 12,
                     },
                   ]
@@ -1025,8 +1025,8 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
   <View
     numberOfSpaces={6}
     style={
-      Array [
-        Object {
+      [
+        {
           "height": 24,
         },
       ]
@@ -1034,8 +1034,8 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
   />
   <View
     style={
-      Array [
-        Object {
+      [
+        {
           "flexDirection": "row",
           "paddingBottom": 24,
         },
@@ -1045,8 +1045,8 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
     <View
       numberOfSpaces={6}
       style={
-        Array [
-          Object {
+        [
+          {
             "width": 24,
           },
         ]
@@ -1056,8 +1056,8 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
       <View
         numberOfSpaces={1}
         style={
-          Array [
-            Object {
+          [
+            {
               "height": 4,
             },
           ]
@@ -1067,8 +1067,8 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
         borderRadius={2}
         height={16}
         style={
-          Array [
-            Object {
+          [
+            {
               "backgroundColor": "#DDDDDD",
               "borderRadius": 2,
               "height": 16,
@@ -1082,7 +1082,7 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
         <BVLinearGradient
           collapsable={false}
           colors={
-            Array [
+            [
               4292730333,
               4293848814,
               4293848814,
@@ -1090,28 +1090,28 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
             ]
           }
           endPoint={
-            Object {
+            {
               "x": 1,
               "y": 0,
             }
           }
           locations={null}
           startPoint={
-            Object {
+            {
               "x": 0,
               "y": 0,
             }
           }
           style={
-            Object {
+            {
               "borderRadius": 2,
               "bottom": 0,
               "left": 0,
               "position": "absolute",
               "right": 0,
               "top": 0,
-              "transform": Array [
-                Object {
+              "transform": [
+                {
                   "translateX": -250,
                 },
               ],
@@ -1122,8 +1122,8 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
       <View
         numberOfSpaces={5}
         style={
-          Array [
-            Object {
+          [
+            {
               "height": 20,
             },
           ]
@@ -1133,20 +1133,20 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
         ItemSeparatorComponent={[Function]}
         collapsable={false}
         data={
-          Array [
-            Object {
+          [
+            {
               "key": "0",
             },
-            Object {
+            {
               "key": "1",
             },
-            Object {
+            {
               "key": "2",
             },
-            Object {
+            {
               "key": "3",
             },
-            Object {
+            {
               "key": "4",
             },
           ]
@@ -1169,15 +1169,15 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
         renderScrollComponent={[Function]}
         scrollEventThrottle={50}
         showsHorizontalScrollIndicator={false}
-        stickyHeaderIndices={Array []}
-        viewabilityConfigCallbackPairs={Array []}
+        stickyHeaderIndices={[]}
+        viewabilityConfigCallbackPairs={[]}
       >
         <View>
           <View
             onLayout={[Function]}
             style={
-              Array [
-                Object {
+              [
+                {
                   "flexDirection": "row",
                 },
                 null,
@@ -1189,8 +1189,8 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
                 borderRadius={8}
                 height={216}
                 style={
-                  Array [
-                    Object {
+                  [
+                    {
                       "backgroundColor": "#DDDDDD",
                       "borderRadius": 8,
                       "height": 216,
@@ -1204,7 +1204,7 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
                 <BVLinearGradient
                   collapsable={false}
                   colors={
-                    Array [
+                    [
                       4292730333,
                       4293848814,
                       4293848814,
@@ -1212,28 +1212,28 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
                     ]
                   }
                   endPoint={
-                    Object {
+                    {
                       "x": 1,
                       "y": 0,
                     }
                   }
                   locations={null}
                   startPoint={
-                    Object {
+                    {
                       "x": 0,
                       "y": 0,
                     }
                   }
                   style={
-                    Object {
+                    {
                       "borderRadius": 8,
                       "bottom": 0,
                       "left": 0,
                       "position": "absolute",
                       "right": 0,
                       "top": 0,
-                      "transform": Array [
-                        Object {
+                      "transform": [
+                        {
                           "translateX": -180,
                         },
                       ],
@@ -1244,8 +1244,8 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
               <View
                 numberOfSpaces={3}
                 style={
-                  Array [
-                    Object {
+                  [
+                    {
                       "height": 12,
                     },
                   ]
@@ -1255,8 +1255,8 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
                 borderRadius={2}
                 height={12}
                 style={
-                  Array [
-                    Object {
+                  [
+                    {
                       "backgroundColor": "#DDDDDD",
                       "borderRadius": 2,
                       "height": 12,
@@ -1270,7 +1270,7 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
                 <BVLinearGradient
                   collapsable={false}
                   colors={
-                    Array [
+                    [
                       4292730333,
                       4293848814,
                       4293848814,
@@ -1278,28 +1278,28 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
                     ]
                   }
                   endPoint={
-                    Object {
+                    {
                       "x": 1,
                       "y": 0,
                     }
                   }
                   locations={null}
                   startPoint={
-                    Object {
+                    {
                       "x": 0,
                       "y": 0,
                     }
                   }
                   style={
-                    Object {
+                    {
                       "borderRadius": 2,
                       "bottom": 0,
                       "left": 0,
                       "position": "absolute",
                       "right": 0,
                       "top": 0,
-                      "transform": Array [
-                        Object {
+                      "transform": [
+                        {
                           "translateX": -144,
                         },
                       ],
@@ -1310,8 +1310,8 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
               <View
                 numberOfSpaces={2}
                 style={
-                  Array [
-                    Object {
+                  [
+                    {
                       "height": 8,
                     },
                   ]
@@ -1321,8 +1321,8 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
                 borderRadius={2}
                 height={12}
                 style={
-                  Array [
-                    Object {
+                  [
+                    {
                       "backgroundColor": "#DDDDDD",
                       "borderRadius": 2,
                       "height": 12,
@@ -1336,7 +1336,7 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
                 <BVLinearGradient
                   collapsable={false}
                   colors={
-                    Array [
+                    [
                       4292730333,
                       4293848814,
                       4293848814,
@@ -1344,28 +1344,28 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
                     ]
                   }
                   endPoint={
-                    Object {
+                    {
                       "x": 1,
                       "y": 0,
                     }
                   }
                   locations={null}
                   startPoint={
-                    Object {
+                    {
                       "x": 0,
                       "y": 0,
                     }
                   }
                   style={
-                    Object {
+                    {
                       "borderRadius": 2,
                       "bottom": 0,
                       "left": 0,
                       "position": "absolute",
                       "right": 0,
                       "top": 0,
-                      "transform": Array [
-                        Object {
+                      "transform": [
+                        {
                           "translateX": -53.99999999999999,
                         },
                       ],
@@ -1376,8 +1376,8 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
               <View
                 numberOfSpaces={3}
                 style={
-                  Array [
-                    Object {
+                  [
+                    {
                       "height": 12,
                     },
                   ]
@@ -1387,8 +1387,8 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
             <View
               numberOfSpaces={4}
               style={
-                Array [
-                  Object {
+                [
+                  {
                     "width": 16,
                   },
                 ]
@@ -1398,8 +1398,8 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
           <View
             onLayout={[Function]}
             style={
-              Array [
-                Object {
+              [
+                {
                   "flexDirection": "row",
                 },
                 null,
@@ -1411,8 +1411,8 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
                 borderRadius={8}
                 height={216}
                 style={
-                  Array [
-                    Object {
+                  [
+                    {
                       "backgroundColor": "#DDDDDD",
                       "borderRadius": 8,
                       "height": 216,
@@ -1426,7 +1426,7 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
                 <BVLinearGradient
                   collapsable={false}
                   colors={
-                    Array [
+                    [
                       4292730333,
                       4293848814,
                       4293848814,
@@ -1434,28 +1434,28 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
                     ]
                   }
                   endPoint={
-                    Object {
+                    {
                       "x": 1,
                       "y": 0,
                     }
                   }
                   locations={null}
                   startPoint={
-                    Object {
+                    {
                       "x": 0,
                       "y": 0,
                     }
                   }
                   style={
-                    Object {
+                    {
                       "borderRadius": 8,
                       "bottom": 0,
                       "left": 0,
                       "position": "absolute",
                       "right": 0,
                       "top": 0,
-                      "transform": Array [
-                        Object {
+                      "transform": [
+                        {
                           "translateX": -180,
                         },
                       ],
@@ -1466,8 +1466,8 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
               <View
                 numberOfSpaces={3}
                 style={
-                  Array [
-                    Object {
+                  [
+                    {
                       "height": 12,
                     },
                   ]
@@ -1477,8 +1477,8 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
                 borderRadius={2}
                 height={12}
                 style={
-                  Array [
-                    Object {
+                  [
+                    {
                       "backgroundColor": "#DDDDDD",
                       "borderRadius": 2,
                       "height": 12,
@@ -1492,7 +1492,7 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
                 <BVLinearGradient
                   collapsable={false}
                   colors={
-                    Array [
+                    [
                       4292730333,
                       4293848814,
                       4293848814,
@@ -1500,28 +1500,28 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
                     ]
                   }
                   endPoint={
-                    Object {
+                    {
                       "x": 1,
                       "y": 0,
                     }
                   }
                   locations={null}
                   startPoint={
-                    Object {
+                    {
                       "x": 0,
                       "y": 0,
                     }
                   }
                   style={
-                    Object {
+                    {
                       "borderRadius": 2,
                       "bottom": 0,
                       "left": 0,
                       "position": "absolute",
                       "right": 0,
                       "top": 0,
-                      "transform": Array [
-                        Object {
+                      "transform": [
+                        {
                           "translateX": -144,
                         },
                       ],
@@ -1532,8 +1532,8 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
               <View
                 numberOfSpaces={2}
                 style={
-                  Array [
-                    Object {
+                  [
+                    {
                       "height": 8,
                     },
                   ]
@@ -1543,8 +1543,8 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
                 borderRadius={2}
                 height={12}
                 style={
-                  Array [
-                    Object {
+                  [
+                    {
                       "backgroundColor": "#DDDDDD",
                       "borderRadius": 2,
                       "height": 12,
@@ -1558,7 +1558,7 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
                 <BVLinearGradient
                   collapsable={false}
                   colors={
-                    Array [
+                    [
                       4292730333,
                       4293848814,
                       4293848814,
@@ -1566,28 +1566,28 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
                     ]
                   }
                   endPoint={
-                    Object {
+                    {
                       "x": 1,
                       "y": 0,
                     }
                   }
                   locations={null}
                   startPoint={
-                    Object {
+                    {
                       "x": 0,
                       "y": 0,
                     }
                   }
                   style={
-                    Object {
+                    {
                       "borderRadius": 2,
                       "bottom": 0,
                       "left": 0,
                       "position": "absolute",
                       "right": 0,
                       "top": 0,
-                      "transform": Array [
-                        Object {
+                      "transform": [
+                        {
                           "translateX": -53.99999999999999,
                         },
                       ],
@@ -1598,8 +1598,8 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
               <View
                 numberOfSpaces={3}
                 style={
-                  Array [
-                    Object {
+                  [
+                    {
                       "height": 12,
                     },
                   ]
@@ -1609,8 +1609,8 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
             <View
               numberOfSpaces={4}
               style={
-                Array [
-                  Object {
+                [
+                  {
                     "width": 16,
                   },
                 ]
@@ -1620,8 +1620,8 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
           <View
             onLayout={[Function]}
             style={
-              Array [
-                Object {
+              [
+                {
                   "flexDirection": "row",
                 },
                 null,
@@ -1633,8 +1633,8 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
                 borderRadius={8}
                 height={216}
                 style={
-                  Array [
-                    Object {
+                  [
+                    {
                       "backgroundColor": "#DDDDDD",
                       "borderRadius": 8,
                       "height": 216,
@@ -1648,7 +1648,7 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
                 <BVLinearGradient
                   collapsable={false}
                   colors={
-                    Array [
+                    [
                       4292730333,
                       4293848814,
                       4293848814,
@@ -1656,28 +1656,28 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
                     ]
                   }
                   endPoint={
-                    Object {
+                    {
                       "x": 1,
                       "y": 0,
                     }
                   }
                   locations={null}
                   startPoint={
-                    Object {
+                    {
                       "x": 0,
                       "y": 0,
                     }
                   }
                   style={
-                    Object {
+                    {
                       "borderRadius": 8,
                       "bottom": 0,
                       "left": 0,
                       "position": "absolute",
                       "right": 0,
                       "top": 0,
-                      "transform": Array [
-                        Object {
+                      "transform": [
+                        {
                           "translateX": -180,
                         },
                       ],
@@ -1688,8 +1688,8 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
               <View
                 numberOfSpaces={3}
                 style={
-                  Array [
-                    Object {
+                  [
+                    {
                       "height": 12,
                     },
                   ]
@@ -1699,8 +1699,8 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
                 borderRadius={2}
                 height={12}
                 style={
-                  Array [
-                    Object {
+                  [
+                    {
                       "backgroundColor": "#DDDDDD",
                       "borderRadius": 2,
                       "height": 12,
@@ -1714,7 +1714,7 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
                 <BVLinearGradient
                   collapsable={false}
                   colors={
-                    Array [
+                    [
                       4292730333,
                       4293848814,
                       4293848814,
@@ -1722,28 +1722,28 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
                     ]
                   }
                   endPoint={
-                    Object {
+                    {
                       "x": 1,
                       "y": 0,
                     }
                   }
                   locations={null}
                   startPoint={
-                    Object {
+                    {
                       "x": 0,
                       "y": 0,
                     }
                   }
                   style={
-                    Object {
+                    {
                       "borderRadius": 2,
                       "bottom": 0,
                       "left": 0,
                       "position": "absolute",
                       "right": 0,
                       "top": 0,
-                      "transform": Array [
-                        Object {
+                      "transform": [
+                        {
                           "translateX": -144,
                         },
                       ],
@@ -1754,8 +1754,8 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
               <View
                 numberOfSpaces={2}
                 style={
-                  Array [
-                    Object {
+                  [
+                    {
                       "height": 8,
                     },
                   ]
@@ -1765,8 +1765,8 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
                 borderRadius={2}
                 height={12}
                 style={
-                  Array [
-                    Object {
+                  [
+                    {
                       "backgroundColor": "#DDDDDD",
                       "borderRadius": 2,
                       "height": 12,
@@ -1780,7 +1780,7 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
                 <BVLinearGradient
                   collapsable={false}
                   colors={
-                    Array [
+                    [
                       4292730333,
                       4293848814,
                       4293848814,
@@ -1788,28 +1788,28 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
                     ]
                   }
                   endPoint={
-                    Object {
+                    {
                       "x": 1,
                       "y": 0,
                     }
                   }
                   locations={null}
                   startPoint={
-                    Object {
+                    {
                       "x": 0,
                       "y": 0,
                     }
                   }
                   style={
-                    Object {
+                    {
                       "borderRadius": 2,
                       "bottom": 0,
                       "left": 0,
                       "position": "absolute",
                       "right": 0,
                       "top": 0,
-                      "transform": Array [
-                        Object {
+                      "transform": [
+                        {
                           "translateX": -53.99999999999999,
                         },
                       ],
@@ -1820,8 +1820,8 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
               <View
                 numberOfSpaces={3}
                 style={
-                  Array [
-                    Object {
+                  [
+                    {
                       "height": 12,
                     },
                   ]
@@ -1831,8 +1831,8 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
             <View
               numberOfSpaces={4}
               style={
-                Array [
-                  Object {
+                [
+                  {
                     "width": 16,
                   },
                 ]
@@ -1842,8 +1842,8 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
           <View
             onLayout={[Function]}
             style={
-              Array [
-                Object {
+              [
+                {
                   "flexDirection": "row",
                 },
                 null,
@@ -1855,8 +1855,8 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
                 borderRadius={8}
                 height={216}
                 style={
-                  Array [
-                    Object {
+                  [
+                    {
                       "backgroundColor": "#DDDDDD",
                       "borderRadius": 8,
                       "height": 216,
@@ -1870,7 +1870,7 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
                 <BVLinearGradient
                   collapsable={false}
                   colors={
-                    Array [
+                    [
                       4292730333,
                       4293848814,
                       4293848814,
@@ -1878,28 +1878,28 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
                     ]
                   }
                   endPoint={
-                    Object {
+                    {
                       "x": 1,
                       "y": 0,
                     }
                   }
                   locations={null}
                   startPoint={
-                    Object {
+                    {
                       "x": 0,
                       "y": 0,
                     }
                   }
                   style={
-                    Object {
+                    {
                       "borderRadius": 8,
                       "bottom": 0,
                       "left": 0,
                       "position": "absolute",
                       "right": 0,
                       "top": 0,
-                      "transform": Array [
-                        Object {
+                      "transform": [
+                        {
                           "translateX": -180,
                         },
                       ],
@@ -1910,8 +1910,8 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
               <View
                 numberOfSpaces={3}
                 style={
-                  Array [
-                    Object {
+                  [
+                    {
                       "height": 12,
                     },
                   ]
@@ -1921,8 +1921,8 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
                 borderRadius={2}
                 height={12}
                 style={
-                  Array [
-                    Object {
+                  [
+                    {
                       "backgroundColor": "#DDDDDD",
                       "borderRadius": 2,
                       "height": 12,
@@ -1936,7 +1936,7 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
                 <BVLinearGradient
                   collapsable={false}
                   colors={
-                    Array [
+                    [
                       4292730333,
                       4293848814,
                       4293848814,
@@ -1944,28 +1944,28 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
                     ]
                   }
                   endPoint={
-                    Object {
+                    {
                       "x": 1,
                       "y": 0,
                     }
                   }
                   locations={null}
                   startPoint={
-                    Object {
+                    {
                       "x": 0,
                       "y": 0,
                     }
                   }
                   style={
-                    Object {
+                    {
                       "borderRadius": 2,
                       "bottom": 0,
                       "left": 0,
                       "position": "absolute",
                       "right": 0,
                       "top": 0,
-                      "transform": Array [
-                        Object {
+                      "transform": [
+                        {
                           "translateX": -144,
                         },
                       ],
@@ -1976,8 +1976,8 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
               <View
                 numberOfSpaces={2}
                 style={
-                  Array [
-                    Object {
+                  [
+                    {
                       "height": 8,
                     },
                   ]
@@ -1987,8 +1987,8 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
                 borderRadius={2}
                 height={12}
                 style={
-                  Array [
-                    Object {
+                  [
+                    {
                       "backgroundColor": "#DDDDDD",
                       "borderRadius": 2,
                       "height": 12,
@@ -2002,7 +2002,7 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
                 <BVLinearGradient
                   collapsable={false}
                   colors={
-                    Array [
+                    [
                       4292730333,
                       4293848814,
                       4293848814,
@@ -2010,28 +2010,28 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
                     ]
                   }
                   endPoint={
-                    Object {
+                    {
                       "x": 1,
                       "y": 0,
                     }
                   }
                   locations={null}
                   startPoint={
-                    Object {
+                    {
                       "x": 0,
                       "y": 0,
                     }
                   }
                   style={
-                    Object {
+                    {
                       "borderRadius": 2,
                       "bottom": 0,
                       "left": 0,
                       "position": "absolute",
                       "right": 0,
                       "top": 0,
-                      "transform": Array [
-                        Object {
+                      "transform": [
+                        {
                           "translateX": -53.99999999999999,
                         },
                       ],
@@ -2042,8 +2042,8 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
               <View
                 numberOfSpaces={3}
                 style={
-                  Array [
-                    Object {
+                  [
+                    {
                       "height": 12,
                     },
                   ]
@@ -2053,8 +2053,8 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
             <View
               numberOfSpaces={4}
               style={
-                Array [
-                  Object {
+                [
+                  {
                     "width": 16,
                   },
                 ]
@@ -2064,8 +2064,8 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
           <View
             onLayout={[Function]}
             style={
-              Array [
-                Object {
+              [
+                {
                   "flexDirection": "row",
                 },
                 null,
@@ -2077,8 +2077,8 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
                 borderRadius={8}
                 height={216}
                 style={
-                  Array [
-                    Object {
+                  [
+                    {
                       "backgroundColor": "#DDDDDD",
                       "borderRadius": 8,
                       "height": 216,
@@ -2092,7 +2092,7 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
                 <BVLinearGradient
                   collapsable={false}
                   colors={
-                    Array [
+                    [
                       4292730333,
                       4293848814,
                       4293848814,
@@ -2100,28 +2100,28 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
                     ]
                   }
                   endPoint={
-                    Object {
+                    {
                       "x": 1,
                       "y": 0,
                     }
                   }
                   locations={null}
                   startPoint={
-                    Object {
+                    {
                       "x": 0,
                       "y": 0,
                     }
                   }
                   style={
-                    Object {
+                    {
                       "borderRadius": 8,
                       "bottom": 0,
                       "left": 0,
                       "position": "absolute",
                       "right": 0,
                       "top": 0,
-                      "transform": Array [
-                        Object {
+                      "transform": [
+                        {
                           "translateX": -180,
                         },
                       ],
@@ -2132,8 +2132,8 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
               <View
                 numberOfSpaces={3}
                 style={
-                  Array [
-                    Object {
+                  [
+                    {
                       "height": 12,
                     },
                   ]
@@ -2143,8 +2143,8 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
                 borderRadius={2}
                 height={12}
                 style={
-                  Array [
-                    Object {
+                  [
+                    {
                       "backgroundColor": "#DDDDDD",
                       "borderRadius": 2,
                       "height": 12,
@@ -2158,7 +2158,7 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
                 <BVLinearGradient
                   collapsable={false}
                   colors={
-                    Array [
+                    [
                       4292730333,
                       4293848814,
                       4293848814,
@@ -2166,28 +2166,28 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
                     ]
                   }
                   endPoint={
-                    Object {
+                    {
                       "x": 1,
                       "y": 0,
                     }
                   }
                   locations={null}
                   startPoint={
-                    Object {
+                    {
                       "x": 0,
                       "y": 0,
                     }
                   }
                   style={
-                    Object {
+                    {
                       "borderRadius": 2,
                       "bottom": 0,
                       "left": 0,
                       "position": "absolute",
                       "right": 0,
                       "top": 0,
-                      "transform": Array [
-                        Object {
+                      "transform": [
+                        {
                           "translateX": -144,
                         },
                       ],
@@ -2198,8 +2198,8 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
               <View
                 numberOfSpaces={2}
                 style={
-                  Array [
-                    Object {
+                  [
+                    {
                       "height": 8,
                     },
                   ]
@@ -2209,8 +2209,8 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
                 borderRadius={2}
                 height={12}
                 style={
-                  Array [
-                    Object {
+                  [
+                    {
                       "backgroundColor": "#DDDDDD",
                       "borderRadius": 2,
                       "height": 12,
@@ -2224,7 +2224,7 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
                 <BVLinearGradient
                   collapsable={false}
                   colors={
-                    Array [
+                    [
                       4292730333,
                       4293848814,
                       4293848814,
@@ -2232,28 +2232,28 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
                     ]
                   }
                   endPoint={
-                    Object {
+                    {
                       "x": 1,
                       "y": 0,
                     }
                   }
                   locations={null}
                   startPoint={
-                    Object {
+                    {
                       "x": 0,
                       "y": 0,
                     }
                   }
                   style={
-                    Object {
+                    {
                       "borderRadius": 2,
                       "bottom": 0,
                       "left": 0,
                       "position": "absolute",
                       "right": 0,
                       "top": 0,
-                      "transform": Array [
-                        Object {
+                      "transform": [
+                        {
                           "translateX": -53.99999999999999,
                         },
                       ],
@@ -2264,8 +2264,8 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
               <View
                 numberOfSpaces={3}
                 style={
-                  Array [
-                    Object {
+                  [
+                    {
                       "height": 12,
                     },
                   ]
@@ -2280,8 +2280,8 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
   <View
     numberOfSpaces={6}
     style={
-      Array [
-        Object {
+      [
+        {
           "height": 24,
         },
       ]
@@ -2289,8 +2289,8 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
   />
   <View
     style={
-      Array [
-        Object {
+      [
+        {
           "flexDirection": "row",
           "paddingBottom": 24,
         },
@@ -2301,8 +2301,8 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
     <View
       numberOfSpaces={6}
       style={
-        Array [
-          Object {
+        [
+          {
             "width": 24,
           },
         ]
@@ -2312,8 +2312,8 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
       borderRadius={8}
       height={304}
       style={
-        Array [
-          Object {
+        [
+          {
             "backgroundColor": "#DDDDDD",
             "borderRadius": 8,
             "height": 304,
@@ -2327,7 +2327,7 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
       <BVLinearGradient
         collapsable={false}
         colors={
-          Array [
+          [
             4292730333,
             4293848814,
             4293848814,
@@ -2335,28 +2335,28 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
           ]
         }
         endPoint={
-          Object {
+          {
             "x": 1,
             "y": 0,
           }
         }
         locations={null}
         startPoint={
-          Object {
+          {
             "x": 0,
             "y": 0,
           }
         }
         style={
-          Object {
+          {
             "borderRadius": 8,
             "bottom": 0,
             "left": 0,
             "position": "absolute",
             "right": 0,
             "top": 0,
-            "transform": Array [
-              Object {
+            "transform": [
+              {
                 "translateX": -1140,
               },
             ],
@@ -2368,8 +2368,8 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
   <View
     numberOfSpaces={6}
     style={
-      Array [
-        Object {
+      [
+        {
           "height": 24,
         },
       ]
@@ -2377,8 +2377,8 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
   />
   <View
     style={
-      Array [
-        Object {
+      [
+        {
           "flexDirection": "row",
           "paddingBottom": 24,
         },
@@ -2388,8 +2388,8 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
     <View
       numberOfSpaces={6}
       style={
-        Array [
-          Object {
+        [
+          {
             "width": 24,
           },
         ]
@@ -2399,8 +2399,8 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
       <View
         numberOfSpaces={1}
         style={
-          Array [
-            Object {
+          [
+            {
               "height": 4,
             },
           ]
@@ -2410,8 +2410,8 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
         borderRadius={2}
         height={16}
         style={
-          Array [
-            Object {
+          [
+            {
               "backgroundColor": "#DDDDDD",
               "borderRadius": 2,
               "height": 16,
@@ -2425,7 +2425,7 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
         <BVLinearGradient
           collapsable={false}
           colors={
-            Array [
+            [
               4292730333,
               4293848814,
               4293848814,
@@ -2433,28 +2433,28 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
             ]
           }
           endPoint={
-            Object {
+            {
               "x": 1,
               "y": 0,
             }
           }
           locations={null}
           startPoint={
-            Object {
+            {
               "x": 0,
               "y": 0,
             }
           }
           style={
-            Object {
+            {
               "borderRadius": 2,
               "bottom": 0,
               "left": 0,
               "position": "absolute",
               "right": 0,
               "top": 0,
-              "transform": Array [
-                Object {
+              "transform": [
+                {
                   "translateX": -250,
                 },
               ],
@@ -2465,8 +2465,8 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
       <View
         numberOfSpaces={5}
         style={
-          Array [
-            Object {
+          [
+            {
               "height": 20,
             },
           ]
@@ -2476,20 +2476,20 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
         ItemSeparatorComponent={[Function]}
         collapsable={false}
         data={
-          Array [
-            Object {
+          [
+            {
               "key": "0",
             },
-            Object {
+            {
               "key": "1",
             },
-            Object {
+            {
               "key": "2",
             },
-            Object {
+            {
               "key": "3",
             },
-            Object {
+            {
               "key": "4",
             },
           ]
@@ -2512,15 +2512,15 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
         renderScrollComponent={[Function]}
         scrollEventThrottle={50}
         showsHorizontalScrollIndicator={false}
-        stickyHeaderIndices={Array []}
-        viewabilityConfigCallbackPairs={Array []}
+        stickyHeaderIndices={[]}
+        viewabilityConfigCallbackPairs={[]}
       >
         <View>
           <View
             onLayout={[Function]}
             style={
-              Array [
-                Object {
+              [
+                {
                   "flexDirection": "row",
                 },
                 null,
@@ -2532,8 +2532,8 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
                 borderRadius={8}
                 height={216}
                 style={
-                  Array [
-                    Object {
+                  [
+                    {
                       "backgroundColor": "#DDDDDD",
                       "borderRadius": 8,
                       "height": 216,
@@ -2547,7 +2547,7 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
                 <BVLinearGradient
                   collapsable={false}
                   colors={
-                    Array [
+                    [
                       4292730333,
                       4293848814,
                       4293848814,
@@ -2555,28 +2555,28 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
                     ]
                   }
                   endPoint={
-                    Object {
+                    {
                       "x": 1,
                       "y": 0,
                     }
                   }
                   locations={null}
                   startPoint={
-                    Object {
+                    {
                       "x": 0,
                       "y": 0,
                     }
                   }
                   style={
-                    Object {
+                    {
                       "borderRadius": 8,
                       "bottom": 0,
                       "left": 0,
                       "position": "absolute",
                       "right": 0,
                       "top": 0,
-                      "transform": Array [
-                        Object {
+                      "transform": [
+                        {
                           "translateX": -180,
                         },
                       ],
@@ -2587,8 +2587,8 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
               <View
                 numberOfSpaces={3}
                 style={
-                  Array [
-                    Object {
+                  [
+                    {
                       "height": 12,
                     },
                   ]
@@ -2598,8 +2598,8 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
                 borderRadius={2}
                 height={12}
                 style={
-                  Array [
-                    Object {
+                  [
+                    {
                       "backgroundColor": "#DDDDDD",
                       "borderRadius": 2,
                       "height": 12,
@@ -2613,7 +2613,7 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
                 <BVLinearGradient
                   collapsable={false}
                   colors={
-                    Array [
+                    [
                       4292730333,
                       4293848814,
                       4293848814,
@@ -2621,28 +2621,28 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
                     ]
                   }
                   endPoint={
-                    Object {
+                    {
                       "x": 1,
                       "y": 0,
                     }
                   }
                   locations={null}
                   startPoint={
-                    Object {
+                    {
                       "x": 0,
                       "y": 0,
                     }
                   }
                   style={
-                    Object {
+                    {
                       "borderRadius": 2,
                       "bottom": 0,
                       "left": 0,
                       "position": "absolute",
                       "right": 0,
                       "top": 0,
-                      "transform": Array [
-                        Object {
+                      "transform": [
+                        {
                           "translateX": -144,
                         },
                       ],
@@ -2653,8 +2653,8 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
               <View
                 numberOfSpaces={2}
                 style={
-                  Array [
-                    Object {
+                  [
+                    {
                       "height": 8,
                     },
                   ]
@@ -2664,8 +2664,8 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
                 borderRadius={2}
                 height={12}
                 style={
-                  Array [
-                    Object {
+                  [
+                    {
                       "backgroundColor": "#DDDDDD",
                       "borderRadius": 2,
                       "height": 12,
@@ -2679,7 +2679,7 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
                 <BVLinearGradient
                   collapsable={false}
                   colors={
-                    Array [
+                    [
                       4292730333,
                       4293848814,
                       4293848814,
@@ -2687,28 +2687,28 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
                     ]
                   }
                   endPoint={
-                    Object {
+                    {
                       "x": 1,
                       "y": 0,
                     }
                   }
                   locations={null}
                   startPoint={
-                    Object {
+                    {
                       "x": 0,
                       "y": 0,
                     }
                   }
                   style={
-                    Object {
+                    {
                       "borderRadius": 2,
                       "bottom": 0,
                       "left": 0,
                       "position": "absolute",
                       "right": 0,
                       "top": 0,
-                      "transform": Array [
-                        Object {
+                      "transform": [
+                        {
                           "translateX": -53.99999999999999,
                         },
                       ],
@@ -2719,8 +2719,8 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
               <View
                 numberOfSpaces={3}
                 style={
-                  Array [
-                    Object {
+                  [
+                    {
                       "height": 12,
                     },
                   ]
@@ -2730,8 +2730,8 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
             <View
               numberOfSpaces={4}
               style={
-                Array [
-                  Object {
+                [
+                  {
                     "width": 16,
                   },
                 ]
@@ -2741,8 +2741,8 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
           <View
             onLayout={[Function]}
             style={
-              Array [
-                Object {
+              [
+                {
                   "flexDirection": "row",
                 },
                 null,
@@ -2754,8 +2754,8 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
                 borderRadius={8}
                 height={216}
                 style={
-                  Array [
-                    Object {
+                  [
+                    {
                       "backgroundColor": "#DDDDDD",
                       "borderRadius": 8,
                       "height": 216,
@@ -2769,7 +2769,7 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
                 <BVLinearGradient
                   collapsable={false}
                   colors={
-                    Array [
+                    [
                       4292730333,
                       4293848814,
                       4293848814,
@@ -2777,28 +2777,28 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
                     ]
                   }
                   endPoint={
-                    Object {
+                    {
                       "x": 1,
                       "y": 0,
                     }
                   }
                   locations={null}
                   startPoint={
-                    Object {
+                    {
                       "x": 0,
                       "y": 0,
                     }
                   }
                   style={
-                    Object {
+                    {
                       "borderRadius": 8,
                       "bottom": 0,
                       "left": 0,
                       "position": "absolute",
                       "right": 0,
                       "top": 0,
-                      "transform": Array [
-                        Object {
+                      "transform": [
+                        {
                           "translateX": -180,
                         },
                       ],
@@ -2809,8 +2809,8 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
               <View
                 numberOfSpaces={3}
                 style={
-                  Array [
-                    Object {
+                  [
+                    {
                       "height": 12,
                     },
                   ]
@@ -2820,8 +2820,8 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
                 borderRadius={2}
                 height={12}
                 style={
-                  Array [
-                    Object {
+                  [
+                    {
                       "backgroundColor": "#DDDDDD",
                       "borderRadius": 2,
                       "height": 12,
@@ -2835,7 +2835,7 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
                 <BVLinearGradient
                   collapsable={false}
                   colors={
-                    Array [
+                    [
                       4292730333,
                       4293848814,
                       4293848814,
@@ -2843,28 +2843,28 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
                     ]
                   }
                   endPoint={
-                    Object {
+                    {
                       "x": 1,
                       "y": 0,
                     }
                   }
                   locations={null}
                   startPoint={
-                    Object {
+                    {
                       "x": 0,
                       "y": 0,
                     }
                   }
                   style={
-                    Object {
+                    {
                       "borderRadius": 2,
                       "bottom": 0,
                       "left": 0,
                       "position": "absolute",
                       "right": 0,
                       "top": 0,
-                      "transform": Array [
-                        Object {
+                      "transform": [
+                        {
                           "translateX": -144,
                         },
                       ],
@@ -2875,8 +2875,8 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
               <View
                 numberOfSpaces={2}
                 style={
-                  Array [
-                    Object {
+                  [
+                    {
                       "height": 8,
                     },
                   ]
@@ -2886,8 +2886,8 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
                 borderRadius={2}
                 height={12}
                 style={
-                  Array [
-                    Object {
+                  [
+                    {
                       "backgroundColor": "#DDDDDD",
                       "borderRadius": 2,
                       "height": 12,
@@ -2901,7 +2901,7 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
                 <BVLinearGradient
                   collapsable={false}
                   colors={
-                    Array [
+                    [
                       4292730333,
                       4293848814,
                       4293848814,
@@ -2909,28 +2909,28 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
                     ]
                   }
                   endPoint={
-                    Object {
+                    {
                       "x": 1,
                       "y": 0,
                     }
                   }
                   locations={null}
                   startPoint={
-                    Object {
+                    {
                       "x": 0,
                       "y": 0,
                     }
                   }
                   style={
-                    Object {
+                    {
                       "borderRadius": 2,
                       "bottom": 0,
                       "left": 0,
                       "position": "absolute",
                       "right": 0,
                       "top": 0,
-                      "transform": Array [
-                        Object {
+                      "transform": [
+                        {
                           "translateX": -53.99999999999999,
                         },
                       ],
@@ -2941,8 +2941,8 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
               <View
                 numberOfSpaces={3}
                 style={
-                  Array [
-                    Object {
+                  [
+                    {
                       "height": 12,
                     },
                   ]
@@ -2952,8 +2952,8 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
             <View
               numberOfSpaces={4}
               style={
-                Array [
-                  Object {
+                [
+                  {
                     "width": 16,
                   },
                 ]
@@ -2963,8 +2963,8 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
           <View
             onLayout={[Function]}
             style={
-              Array [
-                Object {
+              [
+                {
                   "flexDirection": "row",
                 },
                 null,
@@ -2976,8 +2976,8 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
                 borderRadius={8}
                 height={216}
                 style={
-                  Array [
-                    Object {
+                  [
+                    {
                       "backgroundColor": "#DDDDDD",
                       "borderRadius": 8,
                       "height": 216,
@@ -2991,7 +2991,7 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
                 <BVLinearGradient
                   collapsable={false}
                   colors={
-                    Array [
+                    [
                       4292730333,
                       4293848814,
                       4293848814,
@@ -2999,28 +2999,28 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
                     ]
                   }
                   endPoint={
-                    Object {
+                    {
                       "x": 1,
                       "y": 0,
                     }
                   }
                   locations={null}
                   startPoint={
-                    Object {
+                    {
                       "x": 0,
                       "y": 0,
                     }
                   }
                   style={
-                    Object {
+                    {
                       "borderRadius": 8,
                       "bottom": 0,
                       "left": 0,
                       "position": "absolute",
                       "right": 0,
                       "top": 0,
-                      "transform": Array [
-                        Object {
+                      "transform": [
+                        {
                           "translateX": -180,
                         },
                       ],
@@ -3031,8 +3031,8 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
               <View
                 numberOfSpaces={3}
                 style={
-                  Array [
-                    Object {
+                  [
+                    {
                       "height": 12,
                     },
                   ]
@@ -3042,8 +3042,8 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
                 borderRadius={2}
                 height={12}
                 style={
-                  Array [
-                    Object {
+                  [
+                    {
                       "backgroundColor": "#DDDDDD",
                       "borderRadius": 2,
                       "height": 12,
@@ -3057,7 +3057,7 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
                 <BVLinearGradient
                   collapsable={false}
                   colors={
-                    Array [
+                    [
                       4292730333,
                       4293848814,
                       4293848814,
@@ -3065,28 +3065,28 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
                     ]
                   }
                   endPoint={
-                    Object {
+                    {
                       "x": 1,
                       "y": 0,
                     }
                   }
                   locations={null}
                   startPoint={
-                    Object {
+                    {
                       "x": 0,
                       "y": 0,
                     }
                   }
                   style={
-                    Object {
+                    {
                       "borderRadius": 2,
                       "bottom": 0,
                       "left": 0,
                       "position": "absolute",
                       "right": 0,
                       "top": 0,
-                      "transform": Array [
-                        Object {
+                      "transform": [
+                        {
                           "translateX": -144,
                         },
                       ],
@@ -3097,8 +3097,8 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
               <View
                 numberOfSpaces={2}
                 style={
-                  Array [
-                    Object {
+                  [
+                    {
                       "height": 8,
                     },
                   ]
@@ -3108,8 +3108,8 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
                 borderRadius={2}
                 height={12}
                 style={
-                  Array [
-                    Object {
+                  [
+                    {
                       "backgroundColor": "#DDDDDD",
                       "borderRadius": 2,
                       "height": 12,
@@ -3123,7 +3123,7 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
                 <BVLinearGradient
                   collapsable={false}
                   colors={
-                    Array [
+                    [
                       4292730333,
                       4293848814,
                       4293848814,
@@ -3131,28 +3131,28 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
                     ]
                   }
                   endPoint={
-                    Object {
+                    {
                       "x": 1,
                       "y": 0,
                     }
                   }
                   locations={null}
                   startPoint={
-                    Object {
+                    {
                       "x": 0,
                       "y": 0,
                     }
                   }
                   style={
-                    Object {
+                    {
                       "borderRadius": 2,
                       "bottom": 0,
                       "left": 0,
                       "position": "absolute",
                       "right": 0,
                       "top": 0,
-                      "transform": Array [
-                        Object {
+                      "transform": [
+                        {
                           "translateX": -53.99999999999999,
                         },
                       ],
@@ -3163,8 +3163,8 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
               <View
                 numberOfSpaces={3}
                 style={
-                  Array [
-                    Object {
+                  [
+                    {
                       "height": 12,
                     },
                   ]
@@ -3174,8 +3174,8 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
             <View
               numberOfSpaces={4}
               style={
-                Array [
-                  Object {
+                [
+                  {
                     "width": 16,
                   },
                 ]
@@ -3185,8 +3185,8 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
           <View
             onLayout={[Function]}
             style={
-              Array [
-                Object {
+              [
+                {
                   "flexDirection": "row",
                 },
                 null,
@@ -3198,8 +3198,8 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
                 borderRadius={8}
                 height={216}
                 style={
-                  Array [
-                    Object {
+                  [
+                    {
                       "backgroundColor": "#DDDDDD",
                       "borderRadius": 8,
                       "height": 216,
@@ -3213,7 +3213,7 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
                 <BVLinearGradient
                   collapsable={false}
                   colors={
-                    Array [
+                    [
                       4292730333,
                       4293848814,
                       4293848814,
@@ -3221,28 +3221,28 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
                     ]
                   }
                   endPoint={
-                    Object {
+                    {
                       "x": 1,
                       "y": 0,
                     }
                   }
                   locations={null}
                   startPoint={
-                    Object {
+                    {
                       "x": 0,
                       "y": 0,
                     }
                   }
                   style={
-                    Object {
+                    {
                       "borderRadius": 8,
                       "bottom": 0,
                       "left": 0,
                       "position": "absolute",
                       "right": 0,
                       "top": 0,
-                      "transform": Array [
-                        Object {
+                      "transform": [
+                        {
                           "translateX": -180,
                         },
                       ],
@@ -3253,8 +3253,8 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
               <View
                 numberOfSpaces={3}
                 style={
-                  Array [
-                    Object {
+                  [
+                    {
                       "height": 12,
                     },
                   ]
@@ -3264,8 +3264,8 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
                 borderRadius={2}
                 height={12}
                 style={
-                  Array [
-                    Object {
+                  [
+                    {
                       "backgroundColor": "#DDDDDD",
                       "borderRadius": 2,
                       "height": 12,
@@ -3279,7 +3279,7 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
                 <BVLinearGradient
                   collapsable={false}
                   colors={
-                    Array [
+                    [
                       4292730333,
                       4293848814,
                       4293848814,
@@ -3287,28 +3287,28 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
                     ]
                   }
                   endPoint={
-                    Object {
+                    {
                       "x": 1,
                       "y": 0,
                     }
                   }
                   locations={null}
                   startPoint={
-                    Object {
+                    {
                       "x": 0,
                       "y": 0,
                     }
                   }
                   style={
-                    Object {
+                    {
                       "borderRadius": 2,
                       "bottom": 0,
                       "left": 0,
                       "position": "absolute",
                       "right": 0,
                       "top": 0,
-                      "transform": Array [
-                        Object {
+                      "transform": [
+                        {
                           "translateX": -144,
                         },
                       ],
@@ -3319,8 +3319,8 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
               <View
                 numberOfSpaces={2}
                 style={
-                  Array [
-                    Object {
+                  [
+                    {
                       "height": 8,
                     },
                   ]
@@ -3330,8 +3330,8 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
                 borderRadius={2}
                 height={12}
                 style={
-                  Array [
-                    Object {
+                  [
+                    {
                       "backgroundColor": "#DDDDDD",
                       "borderRadius": 2,
                       "height": 12,
@@ -3345,7 +3345,7 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
                 <BVLinearGradient
                   collapsable={false}
                   colors={
-                    Array [
+                    [
                       4292730333,
                       4293848814,
                       4293848814,
@@ -3353,28 +3353,28 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
                     ]
                   }
                   endPoint={
-                    Object {
+                    {
                       "x": 1,
                       "y": 0,
                     }
                   }
                   locations={null}
                   startPoint={
-                    Object {
+                    {
                       "x": 0,
                       "y": 0,
                     }
                   }
                   style={
-                    Object {
+                    {
                       "borderRadius": 2,
                       "bottom": 0,
                       "left": 0,
                       "position": "absolute",
                       "right": 0,
                       "top": 0,
-                      "transform": Array [
-                        Object {
+                      "transform": [
+                        {
                           "translateX": -53.99999999999999,
                         },
                       ],
@@ -3385,8 +3385,8 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
               <View
                 numberOfSpaces={3}
                 style={
-                  Array [
-                    Object {
+                  [
+                    {
                       "height": 12,
                     },
                   ]
@@ -3396,8 +3396,8 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
             <View
               numberOfSpaces={4}
               style={
-                Array [
-                  Object {
+                [
+                  {
                     "width": 16,
                   },
                 ]
@@ -3407,8 +3407,8 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
           <View
             onLayout={[Function]}
             style={
-              Array [
-                Object {
+              [
+                {
                   "flexDirection": "row",
                 },
                 null,
@@ -3420,8 +3420,8 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
                 borderRadius={8}
                 height={216}
                 style={
-                  Array [
-                    Object {
+                  [
+                    {
                       "backgroundColor": "#DDDDDD",
                       "borderRadius": 8,
                       "height": 216,
@@ -3435,7 +3435,7 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
                 <BVLinearGradient
                   collapsable={false}
                   colors={
-                    Array [
+                    [
                       4292730333,
                       4293848814,
                       4293848814,
@@ -3443,28 +3443,28 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
                     ]
                   }
                   endPoint={
-                    Object {
+                    {
                       "x": 1,
                       "y": 0,
                     }
                   }
                   locations={null}
                   startPoint={
-                    Object {
+                    {
                       "x": 0,
                       "y": 0,
                     }
                   }
                   style={
-                    Object {
+                    {
                       "borderRadius": 8,
                       "bottom": 0,
                       "left": 0,
                       "position": "absolute",
                       "right": 0,
                       "top": 0,
-                      "transform": Array [
-                        Object {
+                      "transform": [
+                        {
                           "translateX": -180,
                         },
                       ],
@@ -3475,8 +3475,8 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
               <View
                 numberOfSpaces={3}
                 style={
-                  Array [
-                    Object {
+                  [
+                    {
                       "height": 12,
                     },
                   ]
@@ -3486,8 +3486,8 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
                 borderRadius={2}
                 height={12}
                 style={
-                  Array [
-                    Object {
+                  [
+                    {
                       "backgroundColor": "#DDDDDD",
                       "borderRadius": 2,
                       "height": 12,
@@ -3501,7 +3501,7 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
                 <BVLinearGradient
                   collapsable={false}
                   colors={
-                    Array [
+                    [
                       4292730333,
                       4293848814,
                       4293848814,
@@ -3509,28 +3509,28 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
                     ]
                   }
                   endPoint={
-                    Object {
+                    {
                       "x": 1,
                       "y": 0,
                     }
                   }
                   locations={null}
                   startPoint={
-                    Object {
+                    {
                       "x": 0,
                       "y": 0,
                     }
                   }
                   style={
-                    Object {
+                    {
                       "borderRadius": 2,
                       "bottom": 0,
                       "left": 0,
                       "position": "absolute",
                       "right": 0,
                       "top": 0,
-                      "transform": Array [
-                        Object {
+                      "transform": [
+                        {
                           "translateX": -144,
                         },
                       ],
@@ -3541,8 +3541,8 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
               <View
                 numberOfSpaces={2}
                 style={
-                  Array [
-                    Object {
+                  [
+                    {
                       "height": 8,
                     },
                   ]
@@ -3552,8 +3552,8 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
                 borderRadius={2}
                 height={12}
                 style={
-                  Array [
-                    Object {
+                  [
+                    {
                       "backgroundColor": "#DDDDDD",
                       "borderRadius": 2,
                       "height": 12,
@@ -3567,7 +3567,7 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
                 <BVLinearGradient
                   collapsable={false}
                   colors={
-                    Array [
+                    [
                       4292730333,
                       4293848814,
                       4293848814,
@@ -3575,28 +3575,28 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
                     ]
                   }
                   endPoint={
-                    Object {
+                    {
                       "x": 1,
                       "y": 0,
                     }
                   }
                   locations={null}
                   startPoint={
-                    Object {
+                    {
                       "x": 0,
                       "y": 0,
                     }
                   }
                   style={
-                    Object {
+                    {
                       "borderRadius": 2,
                       "bottom": 0,
                       "left": 0,
                       "position": "absolute",
                       "right": 0,
                       "top": 0,
-                      "transform": Array [
-                        Object {
+                      "transform": [
+                        {
                           "translateX": -53.99999999999999,
                         },
                       ],
@@ -3607,8 +3607,8 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
               <View
                 numberOfSpaces={3}
                 style={
-                  Array [
-                    Object {
+                  [
+                    {
                       "height": 12,
                     },
                   ]
@@ -3623,8 +3623,8 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
   <View
     numberOfSpaces={6}
     style={
-      Array [
-        Object {
+      [
+        {
           "height": 24,
         },
       ]
@@ -3632,8 +3632,8 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
   />
   <View
     style={
-      Array [
-        Object {
+      [
+        {
           "flexDirection": "row",
           "paddingBottom": 24,
         },
@@ -3643,8 +3643,8 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
     <View
       numberOfSpaces={6}
       style={
-        Array [
-          Object {
+        [
+          {
             "width": 24,
           },
         ]
@@ -3654,8 +3654,8 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
       <View
         numberOfSpaces={1}
         style={
-          Array [
-            Object {
+          [
+            {
               "height": 4,
             },
           ]
@@ -3665,8 +3665,8 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
         borderRadius={2}
         height={16}
         style={
-          Array [
-            Object {
+          [
+            {
               "backgroundColor": "#DDDDDD",
               "borderRadius": 2,
               "height": 16,
@@ -3680,7 +3680,7 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
         <BVLinearGradient
           collapsable={false}
           colors={
-            Array [
+            [
               4292730333,
               4293848814,
               4293848814,
@@ -3688,28 +3688,28 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
             ]
           }
           endPoint={
-            Object {
+            {
               "x": 1,
               "y": 0,
             }
           }
           locations={null}
           startPoint={
-            Object {
+            {
               "x": 0,
               "y": 0,
             }
           }
           style={
-            Object {
+            {
               "borderRadius": 2,
               "bottom": 0,
               "left": 0,
               "position": "absolute",
               "right": 0,
               "top": 0,
-              "transform": Array [
-                Object {
+              "transform": [
+                {
                   "translateX": -250,
                 },
               ],
@@ -3720,8 +3720,8 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
       <View
         numberOfSpaces={5}
         style={
-          Array [
-            Object {
+          [
+            {
               "height": 20,
             },
           ]
@@ -3731,17 +3731,17 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
         ItemSeparatorComponent={[Function]}
         collapsable={false}
         data={
-          Array [
-            Object {
+          [
+            {
               "key": "0",
             },
-            Object {
+            {
               "key": "1",
             },
-            Object {
+            {
               "key": "2",
             },
-            Object {
+            {
               "key": "3",
             },
           ]
@@ -3764,15 +3764,15 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
         renderScrollComponent={[Function]}
         scrollEventThrottle={50}
         showsHorizontalScrollIndicator={false}
-        stickyHeaderIndices={Array []}
-        viewabilityConfigCallbackPairs={Array []}
+        stickyHeaderIndices={[]}
+        viewabilityConfigCallbackPairs={[]}
       >
         <View>
           <View
             onLayout={[Function]}
             style={
-              Array [
-                Object {
+              [
+                {
                   "flexDirection": "row",
                 },
                 null,
@@ -3784,8 +3784,8 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
                 borderRadius={8}
                 height={288}
                 style={
-                  Array [
-                    Object {
+                  [
+                    {
                       "backgroundColor": "#DDDDDD",
                       "borderRadius": 8,
                       "height": 288,
@@ -3799,7 +3799,7 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
                 <BVLinearGradient
                   collapsable={false}
                   colors={
-                    Array [
+                    [
                       4292730333,
                       4293848814,
                       4293848814,
@@ -3807,28 +3807,28 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
                     ]
                   }
                   endPoint={
-                    Object {
+                    {
                       "x": 1,
                       "y": 0,
                     }
                   }
                   locations={null}
                   startPoint={
-                    Object {
+                    {
                       "x": 0,
                       "y": 0,
                     }
                   }
                   style={
-                    Object {
+                    {
                       "borderRadius": 8,
                       "bottom": 0,
                       "left": 0,
                       "position": "absolute",
                       "right": 0,
                       "top": 0,
-                      "transform": Array [
-                        Object {
+                      "transform": [
+                        {
                           "translateX": -240,
                         },
                       ],
@@ -3839,8 +3839,8 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
               <View
                 numberOfSpaces={3}
                 style={
-                  Array [
-                    Object {
+                  [
+                    {
                       "height": 12,
                     },
                   ]
@@ -3850,8 +3850,8 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
                 borderRadius={2}
                 height={12}
                 style={
-                  Array [
-                    Object {
+                  [
+                    {
                       "backgroundColor": "#DDDDDD",
                       "borderRadius": 2,
                       "height": 12,
@@ -3865,7 +3865,7 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
                 <BVLinearGradient
                   collapsable={false}
                   colors={
-                    Array [
+                    [
                       4292730333,
                       4293848814,
                       4293848814,
@@ -3873,28 +3873,28 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
                     ]
                   }
                   endPoint={
-                    Object {
+                    {
                       "x": 1,
                       "y": 0,
                     }
                   }
                   locations={null}
                   startPoint={
-                    Object {
+                    {
                       "x": 0,
                       "y": 0,
                     }
                   }
                   style={
-                    Object {
+                    {
                       "borderRadius": 2,
                       "bottom": 0,
                       "left": 0,
                       "position": "absolute",
                       "right": 0,
                       "top": 0,
-                      "transform": Array [
-                        Object {
+                      "transform": [
+                        {
                           "translateX": -192.00000000000003,
                         },
                       ],
@@ -3905,8 +3905,8 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
               <View
                 numberOfSpaces={2}
                 style={
-                  Array [
-                    Object {
+                  [
+                    {
                       "height": 8,
                     },
                   ]
@@ -3916,8 +3916,8 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
                 borderRadius={2}
                 height={12}
                 style={
-                  Array [
-                    Object {
+                  [
+                    {
                       "backgroundColor": "#DDDDDD",
                       "borderRadius": 2,
                       "height": 12,
@@ -3931,7 +3931,7 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
                 <BVLinearGradient
                   collapsable={false}
                   colors={
-                    Array [
+                    [
                       4292730333,
                       4293848814,
                       4293848814,
@@ -3939,28 +3939,28 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
                     ]
                   }
                   endPoint={
-                    Object {
+                    {
                       "x": 1,
                       "y": 0,
                     }
                   }
                   locations={null}
                   startPoint={
-                    Object {
+                    {
                       "x": 0,
                       "y": 0,
                     }
                   }
                   style={
-                    Object {
+                    {
                       "borderRadius": 2,
                       "bottom": 0,
                       "left": 0,
                       "position": "absolute",
                       "right": 0,
                       "top": 0,
-                      "transform": Array [
-                        Object {
+                      "transform": [
+                        {
                           "translateX": -72,
                         },
                       ],
@@ -3971,8 +3971,8 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
               <View
                 numberOfSpaces={3}
                 style={
-                  Array [
-                    Object {
+                  [
+                    {
                       "height": 12,
                     },
                   ]
@@ -3982,8 +3982,8 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
             <View
               numberOfSpaces={4}
               style={
-                Array [
-                  Object {
+                [
+                  {
                     "width": 16,
                   },
                 ]
@@ -3993,8 +3993,8 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
           <View
             onLayout={[Function]}
             style={
-              Array [
-                Object {
+              [
+                {
                   "flexDirection": "row",
                 },
                 null,
@@ -4006,8 +4006,8 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
                 borderRadius={8}
                 height={288}
                 style={
-                  Array [
-                    Object {
+                  [
+                    {
                       "backgroundColor": "#DDDDDD",
                       "borderRadius": 8,
                       "height": 288,
@@ -4021,7 +4021,7 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
                 <BVLinearGradient
                   collapsable={false}
                   colors={
-                    Array [
+                    [
                       4292730333,
                       4293848814,
                       4293848814,
@@ -4029,28 +4029,28 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
                     ]
                   }
                   endPoint={
-                    Object {
+                    {
                       "x": 1,
                       "y": 0,
                     }
                   }
                   locations={null}
                   startPoint={
-                    Object {
+                    {
                       "x": 0,
                       "y": 0,
                     }
                   }
                   style={
-                    Object {
+                    {
                       "borderRadius": 8,
                       "bottom": 0,
                       "left": 0,
                       "position": "absolute",
                       "right": 0,
                       "top": 0,
-                      "transform": Array [
-                        Object {
+                      "transform": [
+                        {
                           "translateX": -240,
                         },
                       ],
@@ -4061,8 +4061,8 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
               <View
                 numberOfSpaces={3}
                 style={
-                  Array [
-                    Object {
+                  [
+                    {
                       "height": 12,
                     },
                   ]
@@ -4072,8 +4072,8 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
                 borderRadius={2}
                 height={12}
                 style={
-                  Array [
-                    Object {
+                  [
+                    {
                       "backgroundColor": "#DDDDDD",
                       "borderRadius": 2,
                       "height": 12,
@@ -4087,7 +4087,7 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
                 <BVLinearGradient
                   collapsable={false}
                   colors={
-                    Array [
+                    [
                       4292730333,
                       4293848814,
                       4293848814,
@@ -4095,28 +4095,28 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
                     ]
                   }
                   endPoint={
-                    Object {
+                    {
                       "x": 1,
                       "y": 0,
                     }
                   }
                   locations={null}
                   startPoint={
-                    Object {
+                    {
                       "x": 0,
                       "y": 0,
                     }
                   }
                   style={
-                    Object {
+                    {
                       "borderRadius": 2,
                       "bottom": 0,
                       "left": 0,
                       "position": "absolute",
                       "right": 0,
                       "top": 0,
-                      "transform": Array [
-                        Object {
+                      "transform": [
+                        {
                           "translateX": -192.00000000000003,
                         },
                       ],
@@ -4127,8 +4127,8 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
               <View
                 numberOfSpaces={2}
                 style={
-                  Array [
-                    Object {
+                  [
+                    {
                       "height": 8,
                     },
                   ]
@@ -4138,8 +4138,8 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
                 borderRadius={2}
                 height={12}
                 style={
-                  Array [
-                    Object {
+                  [
+                    {
                       "backgroundColor": "#DDDDDD",
                       "borderRadius": 2,
                       "height": 12,
@@ -4153,7 +4153,7 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
                 <BVLinearGradient
                   collapsable={false}
                   colors={
-                    Array [
+                    [
                       4292730333,
                       4293848814,
                       4293848814,
@@ -4161,28 +4161,28 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
                     ]
                   }
                   endPoint={
-                    Object {
+                    {
                       "x": 1,
                       "y": 0,
                     }
                   }
                   locations={null}
                   startPoint={
-                    Object {
+                    {
                       "x": 0,
                       "y": 0,
                     }
                   }
                   style={
-                    Object {
+                    {
                       "borderRadius": 2,
                       "bottom": 0,
                       "left": 0,
                       "position": "absolute",
                       "right": 0,
                       "top": 0,
-                      "transform": Array [
-                        Object {
+                      "transform": [
+                        {
                           "translateX": -72,
                         },
                       ],
@@ -4193,8 +4193,8 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
               <View
                 numberOfSpaces={3}
                 style={
-                  Array [
-                    Object {
+                  [
+                    {
                       "height": 12,
                     },
                   ]
@@ -4204,8 +4204,8 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
             <View
               numberOfSpaces={4}
               style={
-                Array [
-                  Object {
+                [
+                  {
                     "width": 16,
                   },
                 ]
@@ -4215,8 +4215,8 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
           <View
             onLayout={[Function]}
             style={
-              Array [
-                Object {
+              [
+                {
                   "flexDirection": "row",
                 },
                 null,
@@ -4228,8 +4228,8 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
                 borderRadius={8}
                 height={288}
                 style={
-                  Array [
-                    Object {
+                  [
+                    {
                       "backgroundColor": "#DDDDDD",
                       "borderRadius": 8,
                       "height": 288,
@@ -4243,7 +4243,7 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
                 <BVLinearGradient
                   collapsable={false}
                   colors={
-                    Array [
+                    [
                       4292730333,
                       4293848814,
                       4293848814,
@@ -4251,28 +4251,28 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
                     ]
                   }
                   endPoint={
-                    Object {
+                    {
                       "x": 1,
                       "y": 0,
                     }
                   }
                   locations={null}
                   startPoint={
-                    Object {
+                    {
                       "x": 0,
                       "y": 0,
                     }
                   }
                   style={
-                    Object {
+                    {
                       "borderRadius": 8,
                       "bottom": 0,
                       "left": 0,
                       "position": "absolute",
                       "right": 0,
                       "top": 0,
-                      "transform": Array [
-                        Object {
+                      "transform": [
+                        {
                           "translateX": -240,
                         },
                       ],
@@ -4283,8 +4283,8 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
               <View
                 numberOfSpaces={3}
                 style={
-                  Array [
-                    Object {
+                  [
+                    {
                       "height": 12,
                     },
                   ]
@@ -4294,8 +4294,8 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
                 borderRadius={2}
                 height={12}
                 style={
-                  Array [
-                    Object {
+                  [
+                    {
                       "backgroundColor": "#DDDDDD",
                       "borderRadius": 2,
                       "height": 12,
@@ -4309,7 +4309,7 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
                 <BVLinearGradient
                   collapsable={false}
                   colors={
-                    Array [
+                    [
                       4292730333,
                       4293848814,
                       4293848814,
@@ -4317,28 +4317,28 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
                     ]
                   }
                   endPoint={
-                    Object {
+                    {
                       "x": 1,
                       "y": 0,
                     }
                   }
                   locations={null}
                   startPoint={
-                    Object {
+                    {
                       "x": 0,
                       "y": 0,
                     }
                   }
                   style={
-                    Object {
+                    {
                       "borderRadius": 2,
                       "bottom": 0,
                       "left": 0,
                       "position": "absolute",
                       "right": 0,
                       "top": 0,
-                      "transform": Array [
-                        Object {
+                      "transform": [
+                        {
                           "translateX": -192.00000000000003,
                         },
                       ],
@@ -4349,8 +4349,8 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
               <View
                 numberOfSpaces={2}
                 style={
-                  Array [
-                    Object {
+                  [
+                    {
                       "height": 8,
                     },
                   ]
@@ -4360,8 +4360,8 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
                 borderRadius={2}
                 height={12}
                 style={
-                  Array [
-                    Object {
+                  [
+                    {
                       "backgroundColor": "#DDDDDD",
                       "borderRadius": 2,
                       "height": 12,
@@ -4375,7 +4375,7 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
                 <BVLinearGradient
                   collapsable={false}
                   colors={
-                    Array [
+                    [
                       4292730333,
                       4293848814,
                       4293848814,
@@ -4383,28 +4383,28 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
                     ]
                   }
                   endPoint={
-                    Object {
+                    {
                       "x": 1,
                       "y": 0,
                     }
                   }
                   locations={null}
                   startPoint={
-                    Object {
+                    {
                       "x": 0,
                       "y": 0,
                     }
                   }
                   style={
-                    Object {
+                    {
                       "borderRadius": 2,
                       "bottom": 0,
                       "left": 0,
                       "position": "absolute",
                       "right": 0,
                       "top": 0,
-                      "transform": Array [
-                        Object {
+                      "transform": [
+                        {
                           "translateX": -72,
                         },
                       ],
@@ -4415,8 +4415,8 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
               <View
                 numberOfSpaces={3}
                 style={
-                  Array [
-                    Object {
+                  [
+                    {
                       "height": 12,
                     },
                   ]
@@ -4426,8 +4426,8 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
             <View
               numberOfSpaces={4}
               style={
-                Array [
-                  Object {
+                [
+                  {
                     "width": 16,
                   },
                 ]
@@ -4437,8 +4437,8 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
           <View
             onLayout={[Function]}
             style={
-              Array [
-                Object {
+              [
+                {
                   "flexDirection": "row",
                 },
                 null,
@@ -4450,8 +4450,8 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
                 borderRadius={8}
                 height={288}
                 style={
-                  Array [
-                    Object {
+                  [
+                    {
                       "backgroundColor": "#DDDDDD",
                       "borderRadius": 8,
                       "height": 288,
@@ -4465,7 +4465,7 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
                 <BVLinearGradient
                   collapsable={false}
                   colors={
-                    Array [
+                    [
                       4292730333,
                       4293848814,
                       4293848814,
@@ -4473,28 +4473,28 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
                     ]
                   }
                   endPoint={
-                    Object {
+                    {
                       "x": 1,
                       "y": 0,
                     }
                   }
                   locations={null}
                   startPoint={
-                    Object {
+                    {
                       "x": 0,
                       "y": 0,
                     }
                   }
                   style={
-                    Object {
+                    {
                       "borderRadius": 8,
                       "bottom": 0,
                       "left": 0,
                       "position": "absolute",
                       "right": 0,
                       "top": 0,
-                      "transform": Array [
-                        Object {
+                      "transform": [
+                        {
                           "translateX": -240,
                         },
                       ],
@@ -4505,8 +4505,8 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
               <View
                 numberOfSpaces={3}
                 style={
-                  Array [
-                    Object {
+                  [
+                    {
                       "height": 12,
                     },
                   ]
@@ -4516,8 +4516,8 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
                 borderRadius={2}
                 height={12}
                 style={
-                  Array [
-                    Object {
+                  [
+                    {
                       "backgroundColor": "#DDDDDD",
                       "borderRadius": 2,
                       "height": 12,
@@ -4531,7 +4531,7 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
                 <BVLinearGradient
                   collapsable={false}
                   colors={
-                    Array [
+                    [
                       4292730333,
                       4293848814,
                       4293848814,
@@ -4539,28 +4539,28 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
                     ]
                   }
                   endPoint={
-                    Object {
+                    {
                       "x": 1,
                       "y": 0,
                     }
                   }
                   locations={null}
                   startPoint={
-                    Object {
+                    {
                       "x": 0,
                       "y": 0,
                     }
                   }
                   style={
-                    Object {
+                    {
                       "borderRadius": 2,
                       "bottom": 0,
                       "left": 0,
                       "position": "absolute",
                       "right": 0,
                       "top": 0,
-                      "transform": Array [
-                        Object {
+                      "transform": [
+                        {
                           "translateX": -192.00000000000003,
                         },
                       ],
@@ -4571,8 +4571,8 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
               <View
                 numberOfSpaces={2}
                 style={
-                  Array [
-                    Object {
+                  [
+                    {
                       "height": 8,
                     },
                   ]
@@ -4582,8 +4582,8 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
                 borderRadius={2}
                 height={12}
                 style={
-                  Array [
-                    Object {
+                  [
+                    {
                       "backgroundColor": "#DDDDDD",
                       "borderRadius": 2,
                       "height": 12,
@@ -4597,7 +4597,7 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
                 <BVLinearGradient
                   collapsable={false}
                   colors={
-                    Array [
+                    [
                       4292730333,
                       4293848814,
                       4293848814,
@@ -4605,28 +4605,28 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
                     ]
                   }
                   endPoint={
-                    Object {
+                    {
                       "x": 1,
                       "y": 0,
                     }
                   }
                   locations={null}
                   startPoint={
-                    Object {
+                    {
                       "x": 0,
                       "y": 0,
                     }
                   }
                   style={
-                    Object {
+                    {
                       "borderRadius": 2,
                       "bottom": 0,
                       "left": 0,
                       "position": "absolute",
                       "right": 0,
                       "top": 0,
-                      "transform": Array [
-                        Object {
+                      "transform": [
+                        {
                           "translateX": -72,
                         },
                       ],
@@ -4637,8 +4637,8 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
               <View
                 numberOfSpaces={3}
                 style={
-                  Array [
-                    Object {
+                  [
+                    {
                       "height": 12,
                     },
                   ]

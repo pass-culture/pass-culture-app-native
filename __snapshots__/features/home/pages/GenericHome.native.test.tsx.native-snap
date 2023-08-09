@@ -3,8 +3,8 @@
 exports[`GenericHome should display real content 1`] = `
 <View
   style={
-    Array [
-      Object {
+    [
+      {
         "flexBasis": 1,
         "flexGrow": 1,
         "flexShrink": 0,
@@ -15,8 +15,8 @@ exports[`GenericHome should display real content 1`] = `
   <View
     hide={false}
     style={
-      Array [
-        Object {
+      [
+        {
           "height": "100%",
           "overflow": "hidden",
         },
@@ -36,10 +36,10 @@ exports[`GenericHome should display real content 1`] = `
       }
       bounces={true}
       data={
-        Array [
-          Object {
+        [
+          {
             "data": undefined,
-            "displayParameters": Object {
+            "displayParameters": {
               "layout": "one-item-medium",
               "minOffers": 1,
               "subtitle": "Ceci n’est pas une playlist de lieux",
@@ -47,11 +47,11 @@ exports[`GenericHome should display real content 1`] = `
             },
             "id": "105MMz59tftcxXJICXt7ja",
             "type": "VenuesModule",
-            "venuesParameters": Object {
+            "venuesParameters": {
               "hitsPerPage": 15,
               "isGeolocated": false,
               "title": "Exemple de playlist de lieux",
-              "venueTypes": Array [
+              "venueTypes": [
                 "Bibliothèque ou médiathèque",
                 "Arts visuels, arts plastiques et galeries",
                 "Centre culturel",
@@ -90,9 +90,9 @@ exports[`GenericHome should display real content 1`] = `
       removeClippedSubviews={false}
       renderItem={[Function]}
       scrollEventThrottle={50}
-      stickyHeaderIndices={Array []}
+      stickyHeaderIndices={[]}
       testID="homeBodyScrollView"
-      viewabilityConfigCallbackPairs={Array []}
+      viewabilityConfigCallbackPairs={[]}
     >
       <View>
         <View
@@ -100,8 +100,8 @@ exports[`GenericHome should display real content 1`] = `
         >
           <Text
             style={
-              Array [
-                Object {
+              [
+                {
                   "color": "#161617",
                   "fontFamily": "Montserrat-Black",
                   "fontSize": 26,
@@ -124,8 +124,8 @@ exports[`GenericHome should display real content 1`] = `
             customHeight={72}
             enable={true}
             style={
-              Array [
-                Object {
+              [
+                {
                   "height": 72,
                 },
               ]
@@ -138,8 +138,8 @@ exports[`GenericHome should display real content 1`] = `
   <View
     numberOfSpaces={6}
     style={
-      Array [
-        Object {
+      [
+        {
           "height": 24,
         },
       ]
@@ -151,8 +151,8 @@ exports[`GenericHome should display real content 1`] = `
 exports[`GenericHome should display skeleton 1`] = `
 <View
   style={
-    Array [
-      Object {
+    [
+      {
         "flexBasis": 1,
         "flexGrow": 1,
         "flexShrink": 0,
@@ -163,8 +163,8 @@ exports[`GenericHome should display skeleton 1`] = `
   <View
     hide={false}
     style={
-      Array [
-        Object {
+      [
+        {
           "height": "100%",
           "overflow": "hidden",
         },
@@ -184,10 +184,10 @@ exports[`GenericHome should display skeleton 1`] = `
       }
       bounces={true}
       data={
-        Array [
-          Object {
+        [
+          {
             "data": undefined,
-            "displayParameters": Object {
+            "displayParameters": {
               "layout": "one-item-medium",
               "minOffers": 1,
               "subtitle": "Ceci n’est pas une playlist de lieux",
@@ -195,11 +195,11 @@ exports[`GenericHome should display skeleton 1`] = `
             },
             "id": "105MMz59tftcxXJICXt7ja",
             "type": "VenuesModule",
-            "venuesParameters": Object {
+            "venuesParameters": {
               "hitsPerPage": 15,
               "isGeolocated": false,
               "title": "Exemple de playlist de lieux",
-              "venueTypes": Array [
+              "venueTypes": [
                 "Bibliothèque ou médiathèque",
                 "Arts visuels, arts plastiques et galeries",
                 "Centre culturel",
@@ -238,9 +238,9 @@ exports[`GenericHome should display skeleton 1`] = `
       removeClippedSubviews={false}
       renderItem={[Function]}
       scrollEventThrottle={50}
-      stickyHeaderIndices={Array []}
+      stickyHeaderIndices={[]}
       testID="homeBodyScrollView"
-      viewabilityConfigCallbackPairs={Array []}
+      viewabilityConfigCallbackPairs={[]}
     >
       <View>
         <View
@@ -248,8 +248,8 @@ exports[`GenericHome should display skeleton 1`] = `
         >
           <Text
             style={
-              Array [
-                Object {
+              [
+                {
                   "color": "#161617",
                   "fontFamily": "Montserrat-Black",
                   "fontSize": 26,
@@ -272,8 +272,8 @@ exports[`GenericHome should display skeleton 1`] = `
             customHeight={72}
             enable={true}
             style={
-              Array [
-                Object {
+              [
+                {
                   "height": 72,
                 },
               ]
@@ -286,8 +286,8 @@ exports[`GenericHome should display skeleton 1`] = `
   <View
     numberOfSpaces={6}
     style={
-      Array [
-        Object {
+      [
+        {
           "height": 24,
         },
       ]

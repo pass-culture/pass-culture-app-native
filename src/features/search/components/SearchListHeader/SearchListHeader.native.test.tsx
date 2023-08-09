@@ -21,10 +21,6 @@ jest.mock('libs/geolocation/GeolocationWrapper', () => ({
 }))
 
 describe('<SearchListHeader />', () => {
-  afterEach(() => {
-    jest.restoreAllMocks()
-  })
-
   it('should display the number of results', () => {
     useRoute.mockReturnValueOnce({
       params: { searchId },

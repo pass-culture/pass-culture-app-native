@@ -1,12 +1,12 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<UTMParameters /> should render correctly 1`] = `
-Array [
+[
   <View
     accessibilityRole="header"
     style={
-      Array [
-        Object {
+      [
+        {
           "width": "100%",
         },
       ]
@@ -14,15 +14,15 @@ Array [
   >
     <View
       style={
-        Object {
+        {
           "height": 64,
         }
       }
     />
     <View
       style={
-        Array [
-          Object {
+        [
+          {
             "backgroundColor": "#eb0055",
             "position": "absolute",
             "top": 0,
@@ -36,8 +36,8 @@ Array [
         customHeight={16}
         enable={true}
         style={
-          Array [
-            Object {
+          [
+            {
               "height": 16,
             },
           ]
@@ -45,8 +45,8 @@ Array [
       />
       <View
         style={
-          Array [
-            Object {
+          [
+            {
               "alignItems": "center",
               "height": 48,
               "justifyContent": "center",
@@ -56,8 +56,8 @@ Array [
       >
         <View
           style={
-            Array [
-              Object {
+            [
+              {
                 "alignItems": "center",
                 "flexDirection": "row",
                 "justifyContent": "space-between",
@@ -69,8 +69,8 @@ Array [
           <View
             positionInHeader="left"
             style={
-              Array [
-                Object {
+              [
+                {
                   "alignItems": "center",
                   "flexBasis": 0,
                   "flexDirection": "row",
@@ -98,7 +98,7 @@ Array [
               onResponderTerminationRequest={[Function]}
               onStartShouldSetResponder={[Function]}
               style={
-                Object {
+                {
                   "alignItems": "center",
                   "flexGrow": 1,
                   "height": 40,
@@ -121,8 +121,8 @@ Array [
               </View>
               <Text
                 style={
-                  Array [
-                    Object {
+                  [
+                    {
                       "display": "none",
                     },
                   ]
@@ -135,8 +135,8 @@ Array [
           <Text
             numberOfLines={1}
             style={
-              Array [
-                Object {
+              [
+                {
                   "color": "#ffffff",
                   "fontFamily": "Montserrat-Regular",
                   "fontSize": 15,
@@ -151,8 +151,8 @@ Array [
           <View
             positionInHeader="right"
             style={
-              Array [
-                Object {
+              [
+                {
                   "alignItems": "center",
                   "flexBasis": 0,
                   "flexDirection": "row",
@@ -173,8 +173,8 @@ Array [
   <View
     numberOfSpaces={6}
     style={
-      Array [
-        Object {
+      [
+        {
           "height": 24,
         },
       ]
@@ -182,8 +182,8 @@ Array [
   />,
   <View
     style={
-      Array [
-        Object {
+      [
+        {
           "paddingHorizontal": 20,
         },
       ]
@@ -191,8 +191,8 @@ Array [
   >
     <View
       style={
-        Array [
-          Object {
+        [
+          {
             "alignItems": "center",
             "flexDirection": "row",
           },
@@ -206,8 +206,8 @@ Array [
     <View
       numberOfSpaces={2}
       style={
-        Array [
-          Object {
+        [
+          {
             "height": 8,
           },
         ]
@@ -215,8 +215,8 @@ Array [
     />
     <View
       style={
-        Array [
-          Object {
+        [
+          {
             "alignItems": "center",
             "flexDirection": "row",
           },
@@ -230,8 +230,8 @@ Array [
     <View
       numberOfSpaces={2}
       style={
-        Array [
-          Object {
+        [
+          {
             "height": 8,
           },
         ]
@@ -239,8 +239,8 @@ Array [
     />
     <View
       style={
-        Array [
-          Object {
+        [
+          {
             "alignItems": "center",
             "flexDirection": "row",
           },
@@ -254,8 +254,8 @@ Array [
     <View
       numberOfSpaces={2}
       style={
-        Array [
-          Object {
+        [
+          {
             "height": 8,
           },
         ]
@@ -263,8 +263,8 @@ Array [
     />
     <View
       style={
-        Array [
-          Object {
+        [
+          {
             "alignItems": "center",
             "flexDirection": "row",
           },

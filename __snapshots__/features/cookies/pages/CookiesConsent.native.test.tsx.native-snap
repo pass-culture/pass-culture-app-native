@@ -22,7 +22,7 @@ exports[`<CookiesConsent/> should render correctly 1`] = `
   scrollTo={null}
   statusBarTranslucent={true}
   supportedOrientations={
-    Array [
+    [
       "portrait",
       "landscape",
     ]
@@ -45,7 +45,7 @@ exports[`<CookiesConsent/> should render correctly 1`] = `
     onResponderTerminationRequest={[Function]}
     onStartShouldSetResponder={[Function]}
     style={
-      Object {
+      {
         "backgroundColor": "black",
         "bottom": 0,
         "height": 1334,
@@ -79,7 +79,7 @@ exports[`<CookiesConsent/> should render correctly 1`] = `
     scrollTo={null}
     statusBarTranslucent={true}
     style={
-      Object {
+      {
         "alignItems": "center",
         "bottom": 0,
         "flex": 1,
@@ -89,15 +89,15 @@ exports[`<CookiesConsent/> should render correctly 1`] = `
         "position": "absolute",
         "right": 0,
         "top": "auto",
-        "transform": Array [
-          Object {
+        "transform": [
+          {
             "translateY": 1334,
           },
         ],
       }
     }
     supportedOrientations={
-      Array [
+      [
         "portrait",
         "landscape",
       ]
@@ -109,8 +109,8 @@ exports[`<CookiesConsent/> should render correctly 1`] = `
       maxHeight={1318}
       noPadding={true}
       style={
-        Array [
-          Object {
+        [
+          {
             "alignItems": "center",
             "backgroundColor": "#ffffff",
             "borderBottomEndRadius": 0,
@@ -135,8 +135,8 @@ exports[`<CookiesConsent/> should render correctly 1`] = `
       <View
         nativeID="testUuidV4"
         style={
-          Array [
-            Object {
+          [
+            {
               "flexDirection": "row",
               "width": "100%",
             },
@@ -146,8 +146,8 @@ exports[`<CookiesConsent/> should render correctly 1`] = `
       >
         <View
           style={
-            Array [
-              Object {
+            [
+              {
                 "paddingBottom": 20,
                 "paddingHorizontal": 24,
                 "paddingTop": 24,
@@ -158,8 +158,8 @@ exports[`<CookiesConsent/> should render correctly 1`] = `
         >
           <View
             style={
-              Array [
-                Object {
+              [
+                {
                   "display": "flex",
                   "flexDirection": "row",
                   "justifyContent": "center",
@@ -172,8 +172,8 @@ exports[`<CookiesConsent/> should render correctly 1`] = `
             <View
               justifyContent="left"
               style={
-                Array [
-                  Object {
+                [
+                  {
                     "alignItems": "flex-start",
                     "flexDirection": "row",
                     "height": 28,
@@ -185,8 +185,8 @@ exports[`<CookiesConsent/> should render correctly 1`] = `
             />
             <View
               style={
-                Array [
-                  Object {
+                [
+                  {
                     "flexBasis": 0,
                     "flexGrow": 1,
                     "flexShrink": 1,
@@ -200,8 +200,8 @@ exports[`<CookiesConsent/> should render correctly 1`] = `
               <Text
                 numberOfLines={2}
                 style={
-                  Array [
-                    Object {
+                  [
+                    {
                       "color": "#161617",
                       "fontFamily": "Montserrat-Medium",
                       "fontSize": 18,
@@ -218,8 +218,8 @@ exports[`<CookiesConsent/> should render correctly 1`] = `
             <View
               justifyContent="right"
               style={
-                Array [
-                  Object {
+                [
+                  {
                     "alignItems": "flex-start",
                     "flexDirection": "row",
                     "height": 28,
@@ -237,8 +237,8 @@ exports[`<CookiesConsent/> should render correctly 1`] = `
         onContentSizeChange={[Function]}
         scrollEnabled={true}
         style={
-          Array [
-            Object {
+          [
+            {
               "paddingHorizontal": 24,
               "width": "100%",
             },
@@ -249,8 +249,8 @@ exports[`<CookiesConsent/> should render correctly 1`] = `
         <View>
           <Text
             style={
-              Array [
-                Object {
+              [
+                {
                   "color": "#161617",
                   "fontFamily": "Montserrat-Regular",
                   "fontSize": 15,
@@ -264,8 +264,8 @@ exports[`<CookiesConsent/> should render correctly 1`] = `
           <View
             numberOfSpaces={4}
             style={
-              Array [
-                Object {
+              [
+                {
                   "height": 16,
                 },
               ]
@@ -273,8 +273,8 @@ exports[`<CookiesConsent/> should render correctly 1`] = `
           />
           <Text
             style={
-              Array [
-                Object {
+              [
+                {
                   "color": "#161617",
                   "fontFamily": "Montserrat-Regular",
                   "fontSize": 15,
@@ -288,8 +288,8 @@ exports[`<CookiesConsent/> should render correctly 1`] = `
           <View
             numberOfSpaces={4}
             style={
-              Array [
-                Object {
+              [
+                {
                   "height": 16,
                 },
               ]
@@ -297,8 +297,8 @@ exports[`<CookiesConsent/> should render correctly 1`] = `
           />
           <Text
             style={
-              Array [
-                Object {
+              [
+                {
                   "color": "#696A6F",
                   "fontFamily": "Montserrat-SemiBold",
                   "fontSize": 12,
@@ -312,8 +312,8 @@ exports[`<CookiesConsent/> should render correctly 1`] = `
           <View
             numberOfSpaces={4}
             style={
-              Array [
-                Object {
+              [
+                {
                   "height": 16,
                 },
               ]
@@ -323,8 +323,8 @@ exports[`<CookiesConsent/> should render correctly 1`] = `
       </RCTScrollView>
       <View
         style={
-          Array [
-            Object {
+          [
+            {
               "width": "100%",
             },
           ]
@@ -333,8 +333,8 @@ exports[`<CookiesConsent/> should render correctly 1`] = `
       >
         <View
           style={
-            Array [
-              Object {
+            [
+              {
                 "alignItems": "center",
                 "marginTop": 20,
                 "paddingHorizontal": 24,
@@ -344,8 +344,8 @@ exports[`<CookiesConsent/> should render correctly 1`] = `
         >
           <View
             style={
-              Array [
-                Object {
+              [
+                {
                   "flexDirection": "row",
                   "maxWidth": 500,
                   "width": "100%",
@@ -355,8 +355,8 @@ exports[`<CookiesConsent/> should render correctly 1`] = `
           >
             <View
               style={
-                Array [
-                  Object {
+                [
+                  {
                     "flexBasis": 0,
                     "flexGrow": 1,
                     "flexShrink": 1,
@@ -377,7 +377,7 @@ exports[`<CookiesConsent/> should render correctly 1`] = `
                 onResponderTerminationRequest={[Function]}
                 onStartShouldSetResponder={[Function]}
                 style={
-                  Object {
+                  {
                     "alignItems": "center",
                     "backgroundColor": "#eb0055",
                     "borderRadius": 24,
@@ -400,8 +400,8 @@ exports[`<CookiesConsent/> should render correctly 1`] = `
                   adjustsFontSizeToFit={false}
                   numberOfLines={1}
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "color": "#ffffff",
                         "fontFamily": "Montserrat-Bold",
                         "fontSize": 15,
@@ -418,8 +418,8 @@ exports[`<CookiesConsent/> should render correctly 1`] = `
             </View>
             <View
               style={
-                Array [
-                  Object {
+                [
+                  {
                     "height": 0,
                     "width": 8,
                   },
@@ -428,8 +428,8 @@ exports[`<CookiesConsent/> should render correctly 1`] = `
             />
             <View
               style={
-                Array [
-                  Object {
+                [
+                  {
                     "flexBasis": 0,
                     "flexGrow": 1,
                     "flexShrink": 1,
@@ -450,7 +450,7 @@ exports[`<CookiesConsent/> should render correctly 1`] = `
                 onResponderTerminationRequest={[Function]}
                 onStartShouldSetResponder={[Function]}
                 style={
-                  Object {
+                  {
                     "alignItems": "center",
                     "backgroundColor": "#eb0055",
                     "borderRadius": 24,
@@ -473,8 +473,8 @@ exports[`<CookiesConsent/> should render correctly 1`] = `
                   adjustsFontSizeToFit={false}
                   numberOfLines={1}
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "color": "#ffffff",
                         "fontFamily": "Montserrat-Bold",
                         "fontSize": 15,
@@ -493,8 +493,8 @@ exports[`<CookiesConsent/> should render correctly 1`] = `
           <View
             numberOfSpaces={4}
             style={
-              Array [
-                Object {
+              [
+                {
                   "height": 16,
                 },
               ]
@@ -513,7 +513,7 @@ exports[`<CookiesConsent/> should render correctly 1`] = `
             onResponderTerminationRequest={[Function]}
             onStartShouldSetResponder={[Function]}
             style={
-              Object {
+              {
                 "alignItems": "center",
                 "backgroundColor": "transparent",
                 "borderColor": "#eb0055",
@@ -539,8 +539,8 @@ exports[`<CookiesConsent/> should render correctly 1`] = `
               adjustsFontSizeToFit={false}
               numberOfLines={1}
               style={
-                Array [
-                  Object {
+                [
+                  {
                     "color": "#eb0055",
                     "fontFamily": "Montserrat-Bold",
                     "fontSize": 15,
@@ -560,8 +560,8 @@ exports[`<CookiesConsent/> should render correctly 1`] = `
         customHeight={8}
         enable={true}
         style={
-          Array [
-            Object {
+          [
+            {
               "height": 8,
             },
           ]

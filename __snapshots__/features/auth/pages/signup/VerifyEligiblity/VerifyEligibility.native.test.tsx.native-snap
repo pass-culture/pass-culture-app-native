@@ -3,8 +3,8 @@
 exports[`<VerifyEligibility /> should show the correct deposit amount 1`] = `
 <View
   style={
-    Array [
-      Object {
+    [
+      {
         "alignItems": "center",
         "flexBasis": 0,
         "flexGrow": 1,
@@ -18,8 +18,8 @@ exports[`<VerifyEligibility /> should show the correct deposit amount 1`] = `
     customHeight={16}
     enable={true}
     style={
-      Array [
-        Object {
+      [
+        {
           "height": 16,
         },
       ]
@@ -27,8 +27,8 @@ exports[`<VerifyEligibility /> should show the correct deposit amount 1`] = `
   />
   <View
     style={
-      Array [
-        Object {
+      [
+        {
           "maxWidth": 400,
           "paddingHorizontal": 24,
           "paddingTop": 16,
@@ -39,8 +39,8 @@ exports[`<VerifyEligibility /> should show the correct deposit amount 1`] = `
   >
     <View
       style={
-        Array [
-          Object {
+        [
+          {
             "alignSelf": "stretch",
             "flexDirection": "row",
             "justifyContent": "space-between",
@@ -50,8 +50,8 @@ exports[`<VerifyEligibility /> should show the correct deposit amount 1`] = `
     >
       <View
         style={
-          Array [
-            Object {
+          [
+            {
               "height": 88,
               "width": 132,
             },
@@ -71,8 +71,8 @@ exports[`<VerifyEligibility /> should show the correct deposit amount 1`] = `
       </View>
       <View
         style={
-          Array [
-            Object {
+          [
+            {
               "justifyContent": "center",
             },
           ]
@@ -91,8 +91,8 @@ exports[`<VerifyEligibility /> should show the correct deposit amount 1`] = `
     </View>
     <View
       style={
-        Array [
-          Object {
+        [
+          {
             "borderBottomColor": "#CBCDD2",
             "borderBottomWidth": 1,
             "paddingVertical": 12,
@@ -103,8 +103,8 @@ exports[`<VerifyEligibility /> should show the correct deposit amount 1`] = `
   </View>
   <View
     style={
-      Array [
-        Object {
+      [
+        {
           "flexBasis": "auto",
           "flexDirection": "column",
           "flexGrow": 1,
@@ -119,8 +119,8 @@ exports[`<VerifyEligibility /> should show the correct deposit amount 1`] = `
   >
     <View
       style={
-        Array [
-          Object {
+        [
+          {
             "flexBasis": 0,
             "flexGrow": 1,
             "flexShrink": 1,
@@ -131,8 +131,8 @@ exports[`<VerifyEligibility /> should show the correct deposit amount 1`] = `
     <View
       numberOfSpaces={10}
       style={
-        Array [
-          Object {
+        [
+          {
             "height": 40,
           },
         ]
@@ -140,8 +140,8 @@ exports[`<VerifyEligibility /> should show the correct deposit amount 1`] = `
     />
     <Text
       style={
-        Array [
-          Object {
+        [
+          {
             "color": "#161617",
             "fontFamily": "Montserrat-Medium",
             "fontSize": 22,
@@ -155,8 +155,8 @@ exports[`<VerifyEligibility /> should show the correct deposit amount 1`] = `
     <View
       numberOfSpaces={5}
       style={
-        Array [
-          Object {
+        [
+          {
             "height": 20,
           },
         ]
@@ -165,8 +165,8 @@ exports[`<VerifyEligibility /> should show the correct deposit amount 1`] = `
     <View>
       <Text
         style={
-          Array [
-            Object {
+          [
+            {
               "color": "#696A6F",
               "fontFamily": "Montserrat-Regular",
               "fontSize": 15,
@@ -180,8 +180,8 @@ exports[`<VerifyEligibility /> should show the correct deposit amount 1`] = `
       <View
         numberOfSpaces={4}
         style={
-          Array [
-            Object {
+          [
+            {
               "height": 16,
             },
           ]
@@ -189,8 +189,8 @@ exports[`<VerifyEligibility /> should show the correct deposit amount 1`] = `
       />
       <Text
         style={
-          Array [
-            Object {
+          [
+            {
               "color": "#161617",
               "fontFamily": "Montserrat-Bold",
               "fontSize": 15,
@@ -205,8 +205,8 @@ exports[`<VerifyEligibility /> should show the correct deposit amount 1`] = `
     <View
       numberOfSpaces={30}
       style={
-        Array [
-          Object {
+        [
+          {
             "height": 120,
           },
         ]
@@ -215,8 +215,8 @@ exports[`<VerifyEligibility /> should show the correct deposit amount 1`] = `
     <View
       flex={0.5}
       style={
-        Array [
-          Object {
+        [
+          {
             "flexBasis": 0,
             "flexGrow": 0.5,
             "flexShrink": 1,
@@ -227,8 +227,8 @@ exports[`<VerifyEligibility /> should show the correct deposit amount 1`] = `
   </View>
   <View
     style={
-      Array [
-        Object {
+      [
+        {
           "flexBasis": "auto",
           "flexDirection": "column",
           "flexGrow": 1,
@@ -242,8 +242,8 @@ exports[`<VerifyEligibility /> should show the correct deposit amount 1`] = `
   >
     <View
       style={
-        Array [
-          Object {
+        [
+          {
             "alignSelf": "stretch",
             "flexBasis": 0,
             "flexGrow": 1,
@@ -267,7 +267,7 @@ exports[`<VerifyEligibility /> should show the correct deposit amount 1`] = `
         onResponderTerminationRequest={[Function]}
         onStartShouldSetResponder={[Function]}
         style={
-          Object {
+          {
             "alignItems": "center",
             "backgroundColor": "#eb0055",
             "borderRadius": 24,
@@ -290,8 +290,8 @@ exports[`<VerifyEligibility /> should show the correct deposit amount 1`] = `
           adjustsFontSizeToFit={false}
           numberOfLines={1}
           style={
-            Array [
-              Object {
+            [
+              {
                 "color": "#ffffff",
                 "fontFamily": "Montserrat-Bold",
                 "fontSize": 15,
@@ -308,8 +308,8 @@ exports[`<VerifyEligibility /> should show the correct deposit amount 1`] = `
       <View
         numberOfSpaces={4}
         style={
-          Array [
-            Object {
+          [
+            {
               "height": 16,
             },
           ]
@@ -328,7 +328,7 @@ exports[`<VerifyEligibility /> should show the correct deposit amount 1`] = `
         onResponderTerminationRequest={[Function]}
         onStartShouldSetResponder={[Function]}
         style={
-          Object {
+          {
             "alignItems": "center",
             "backgroundColor": "transparent",
             "borderRadius": 24,
@@ -349,8 +349,8 @@ exports[`<VerifyEligibility /> should show the correct deposit amount 1`] = `
       >
         <View
           style={
-            Array [
-              Object {
+            [
+              {
                 "flexShrink": 0,
               },
             ]
@@ -370,8 +370,8 @@ exports[`<VerifyEligibility /> should show the correct deposit amount 1`] = `
           adjustsFontSizeToFit={false}
           numberOfLines={1}
           style={
-            Array [
-              Object {
+            [
+              {
                 "color": "#161617",
                 "fontFamily": "Montserrat-Bold",
                 "fontSize": 15,
@@ -390,8 +390,8 @@ exports[`<VerifyEligibility /> should show the correct deposit amount 1`] = `
       customHeight={8}
       enable={true}
       style={
-        Array [
-          Object {
+        [
+          {
             "height": 8,
           },
         ]

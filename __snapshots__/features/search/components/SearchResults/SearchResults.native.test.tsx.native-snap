@@ -1,13 +1,13 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`SearchResults component should render correctly 1`] = `
-Array [
+[
   <View>
     <View
       numberOfSpaces={2}
       style={
-        Array [
-          Object {
+        [
+          {
             "height": 8,
           },
         ]
@@ -21,8 +21,8 @@ Array [
         <View
           numberOfSpaces={5}
           style={
-            Array [
-              Object {
+            [
+              {
                 "width": 20,
               },
             ]
@@ -31,8 +31,8 @@ Array [
         <View
           accessibilityRole="list"
           style={
-            Array [
-              Object {
+            [
+              {
                 "flexDirection": "row",
                 "paddingLeft": 0,
               },
@@ -42,8 +42,8 @@ Array [
           <View
             accessibilityRole="none"
             style={
-              Array [
-                Object {
+              [
+                {
                   "display": "flex",
                   "marginBottom": 4,
                   "marginLeft": 4,
@@ -67,7 +67,7 @@ Array [
               onResponderTerminationRequest={[Function]}
               onStartShouldSetResponder={[Function]}
               style={
-                Object {
+                {
                   "alignItems": "center",
                   "borderColor": "#eb0055",
                   "borderRadius": 24,
@@ -89,8 +89,8 @@ Array [
               <Text
                 isSelected={true}
                 style={
-                  Array [
-                    Object {
+                  [
+                    {
                       "color": "#eb0055",
                       "fontFamily": "Montserrat-SemiBold",
                       "fontSize": 12,
@@ -105,8 +105,8 @@ Array [
               <View
                 numberOfSpaces={1}
                 style={
-                  Array [
-                    Object {
+                  [
+                    {
                       "width": 4,
                     },
                   ]
@@ -127,8 +127,8 @@ Array [
           <View
             accessibilityRole="none"
             style={
-              Array [
-                Object {
+              [
+                {
                   "display": "flex",
                   "marginBottom": 4,
                   "marginLeft": 4,
@@ -152,7 +152,7 @@ Array [
               onResponderTerminationRequest={[Function]}
               onStartShouldSetResponder={[Function]}
               style={
-                Object {
+                {
                   "alignItems": "center",
                   "borderColor": "#161617",
                   "borderRadius": 24,
@@ -174,8 +174,8 @@ Array [
               <Text
                 isSelected={false}
                 style={
-                  Array [
-                    Object {
+                  [
+                    {
                       "color": "#161617",
                       "fontFamily": "Montserrat-SemiBold",
                       "fontSize": 12,
@@ -192,8 +192,8 @@ Array [
           <View
             accessibilityRole="none"
             style={
-              Array [
-                Object {
+              [
+                {
                   "display": "flex",
                   "marginBottom": 4,
                   "marginLeft": 4,
@@ -217,7 +217,7 @@ Array [
               onResponderTerminationRequest={[Function]}
               onStartShouldSetResponder={[Function]}
               style={
-                Object {
+                {
                   "alignItems": "center",
                   "borderColor": "#161617",
                   "borderRadius": 24,
@@ -239,8 +239,8 @@ Array [
               <Text
                 isSelected={false}
                 style={
-                  Array [
-                    Object {
+                  [
+                    {
                       "color": "#161617",
                       "fontFamily": "Montserrat-SemiBold",
                       "fontSize": 12,
@@ -257,8 +257,8 @@ Array [
           <View
             accessibilityRole="none"
             style={
-              Array [
-                Object {
+              [
+                {
                   "display": "flex",
                   "marginBottom": 4,
                   "marginLeft": 4,
@@ -282,7 +282,7 @@ Array [
               onResponderTerminationRequest={[Function]}
               onStartShouldSetResponder={[Function]}
               style={
-                Object {
+                {
                   "alignItems": "center",
                   "borderColor": "#161617",
                   "borderRadius": 24,
@@ -304,8 +304,8 @@ Array [
               <Text
                 isSelected={false}
                 style={
-                  Array [
-                    Object {
+                  [
+                    {
                       "color": "#161617",
                       "fontFamily": "Montserrat-SemiBold",
                       "fontSize": 12,
@@ -322,8 +322,8 @@ Array [
           <View
             accessibilityRole="none"
             style={
-              Array [
-                Object {
+              [
+                {
                   "display": "flex",
                   "marginBottom": 4,
                   "marginLeft": 4,
@@ -347,7 +347,7 @@ Array [
               onResponderTerminationRequest={[Function]}
               onStartShouldSetResponder={[Function]}
               style={
-                Object {
+                {
                   "alignItems": "center",
                   "borderColor": "#161617",
                   "borderRadius": 24,
@@ -369,8 +369,8 @@ Array [
               <Text
                 isSelected={false}
                 style={
-                  Array [
-                    Object {
+                  [
+                    {
                       "color": "#161617",
                       "fontFamily": "Montserrat-SemiBold",
                       "fontSize": 12,
@@ -388,8 +388,8 @@ Array [
         <View
           numberOfSpaces={5}
           style={
-            Array [
-              Object {
+            [
+              {
                 "width": 20,
               },
             ]
@@ -400,8 +400,8 @@ Array [
     <View
       numberOfSpaces={2}
       style={
-        Array [
-          Object {
+        [
+          {
             "height": 8,
           },
         ]
@@ -410,8 +410,8 @@ Array [
   </View>,
   <View
     style={
-      Array [
-        Object {
+      [
+        {
           "flexBasis": 0,
           "flexGrow": 1,
           "flexShrink": 1,
@@ -422,8 +422,8 @@ Array [
   >
     <View
       style={
-        Array [
-          Object {
+        [
+          {
             "flexBasis": 0,
             "flexDirection": "row",
             "flexGrow": 1,
@@ -435,8 +435,8 @@ Array [
       <View
         accessibilityRole="none"
         style={
-          Array [
-            Object {
+          [
+            {
               "alignItems": "center",
               "flexBasis": 0,
               "flexGrow": 1,
@@ -449,8 +449,8 @@ Array [
       >
         <View
           style={
-            Array [
-              Object {
+            [
+              {
                 "flexShrink": 0,
                 "marginTop": -104,
               },
@@ -468,8 +468,8 @@ Array [
         </View>
         <View
           style={
-            Array [
-              Object {
+            [
+              {
                 "alignItems": "center",
               },
             ]
@@ -477,8 +477,8 @@ Array [
         >
           <Text
             style={
-              Array [
-                Object {
+              [
+                {
                   "color": "#161617",
                   "fontFamily": "Montserrat-Medium",
                   "fontSize": 18,
@@ -492,8 +492,8 @@ Array [
           </Text>
           <Text
             style={
-              Array [
-                Object {
+              [
+                {
                   "color": "#161617",
                   "fontFamily": "Montserrat-Regular",
                   "fontSize": 15,
@@ -507,8 +507,8 @@ Array [
             <Text
               accessibilityLiveRegion="assertive"
               style={
-                Array [
-                  Object {
+                [
+                  {
                     "color": "#696A6F",
                     "fontFamily": "Montserrat-Regular",
                     "fontSize": 15,
@@ -524,8 +524,8 @@ Array [
         <View
           numberOfSpaces={6}
           style={
-            Array [
-              Object {
+            [
+              {
                 "height": 24,
               },
             ]
@@ -545,7 +545,7 @@ Array [
             onResponderTerminationRequest={[Function]}
             onStartShouldSetResponder={[Function]}
             style={
-              Object {
+              {
                 "alignItems": "center",
                 "backgroundColor": "#eb0055",
                 "borderRadius": 24,
@@ -568,8 +568,8 @@ Array [
               adjustsFontSizeToFit={false}
               numberOfLines={1}
               style={
-                Array [
-                  Object {
+                [
+                  {
                     "color": "#ffffff",
                     "fontFamily": "Montserrat-Bold",
                     "fontSize": 15,
@@ -608,7 +608,7 @@ Array [
     scrollTo={null}
     statusBarTranslucent={true}
     supportedOrientations={
-      Array [
+      [
         "portrait",
         "landscape",
       ]
@@ -639,7 +639,7 @@ Array [
     scrollTo={null}
     statusBarTranslucent={true}
     supportedOrientations={
-      Array [
+      [
         "portrait",
         "landscape",
       ]
@@ -670,7 +670,7 @@ Array [
     scrollTo={null}
     statusBarTranslucent={true}
     supportedOrientations={
-      Array [
+      [
         "portrait",
         "landscape",
       ]
@@ -701,7 +701,7 @@ Array [
     scrollTo={null}
     statusBarTranslucent={true}
     supportedOrientations={
-      Array [
+      [
         "portrait",
         "landscape",
       ]
@@ -732,7 +732,7 @@ Array [
     scrollTo={null}
     statusBarTranslucent={true}
     supportedOrientations={
-      Array [
+      [
         "portrait",
         "landscape",
       ]

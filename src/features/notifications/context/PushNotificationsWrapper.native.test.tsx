@@ -22,7 +22,6 @@ describe('usePushNotificationsContext()', () => {
   describe('Showing modal for the first time', () => {
     beforeEach(async () => {
       await storage.clear(PUSH_NOTIFICATIONS_STORAGE_KEY)
-      jest.restoreAllMocks()
     })
 
     it.each`

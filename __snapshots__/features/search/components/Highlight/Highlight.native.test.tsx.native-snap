@@ -1,11 +1,11 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Highlight component for a offer suggestion should render Highlight 1`] = `
-Array [
+[
   <Text
     style={
-      Array [
-        Object {
+      [
+        {
           "color": "#161617",
           "fontFamily": "Montserrat-Regular",
           "fontSize": 15,
@@ -19,8 +19,8 @@ Array [
   </Text>,
   <Text
     style={
-      Array [
-        Object {
+      [
+        {
           "color": "#161617",
           "fontFamily": "Montserrat-Bold",
           "fontSize": 15,
@@ -36,11 +36,11 @@ Array [
 `;
 
 exports[`Highlight component for a venue suggestion should render Highlight 1`] = `
-Array [
+[
   <Text
     style={
-      Array [
-        Object {
+      [
+        {
           "color": "#161617",
           "fontFamily": "Montserrat-Regular",
           "fontSize": 15,
@@ -54,8 +54,8 @@ Array [
   </Text>,
   <Text
     style={
-      Array [
-        Object {
+      [
+        {
           "color": "#161617",
           "fontFamily": "Montserrat-Bold",
           "fontSize": 15,

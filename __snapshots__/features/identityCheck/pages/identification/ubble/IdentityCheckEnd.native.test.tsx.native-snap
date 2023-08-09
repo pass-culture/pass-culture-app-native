@@ -3,8 +3,8 @@
 exports[`<IdentityCheckEnd/> should render correctly 1`] = `
 <View
   style={
-    Array [
-      Object {
+    [
+      {
         "alignItems": "center",
         "flexBasis": 0,
         "flexGrow": 1,
@@ -16,8 +16,8 @@ exports[`<IdentityCheckEnd/> should render correctly 1`] = `
   <View
     height="100%"
     style={
-      Array [
-        Object {
+      [
+        {
           "bottom": 0,
           "height": "100%",
           "left": 0,
@@ -42,8 +42,8 @@ exports[`<IdentityCheckEnd/> should render correctly 1`] = `
   </View>
   <View
     style={
-      Array [
-        Object {
+      [
+        {
           "alignItems": "center",
           "flexBasis": 0,
           "flexDirection": "column",
@@ -61,8 +61,8 @@ exports[`<IdentityCheckEnd/> should render correctly 1`] = `
       customHeight={16}
       enable={true}
       style={
-        Array [
-          Object {
+        [
+          {
             "height": 16,
           },
         ]
@@ -70,8 +70,8 @@ exports[`<IdentityCheckEnd/> should render correctly 1`] = `
     />
     <View
       style={
-        Array [
-          Object {
+        [
+          {
             "flexBasis": 0,
             "flexGrow": 1,
             "flexShrink": 1,
@@ -82,8 +82,8 @@ exports[`<IdentityCheckEnd/> should render correctly 1`] = `
     <View
       numberOfSpaces={10}
       style={
-        Array [
-          Object {
+        [
+          {
             "height": 40,
           },
         ]
@@ -100,8 +100,8 @@ exports[`<IdentityCheckEnd/> should render correctly 1`] = `
     <View
       numberOfSpaces={5}
       style={
-        Array [
-          Object {
+        [
+          {
             "height": 20,
           },
         ]
@@ -109,8 +109,8 @@ exports[`<IdentityCheckEnd/> should render correctly 1`] = `
     />
     <Text
       style={
-        Array [
-          Object {
+        [
+          {
             "color": "#ffffff",
             "fontFamily": "Montserrat-Medium",
             "fontSize": 22,
@@ -125,8 +125,8 @@ exports[`<IdentityCheckEnd/> should render correctly 1`] = `
     <View
       numberOfSpaces={5}
       style={
-        Array [
-          Object {
+        [
+          {
             "height": 20,
           },
         ]
@@ -135,8 +135,8 @@ exports[`<IdentityCheckEnd/> should render correctly 1`] = `
     <View
       numberOfSpaces={10}
       style={
-        Array [
-          Object {
+        [
+          {
             "height": 40,
           },
         ]
@@ -145,8 +145,8 @@ exports[`<IdentityCheckEnd/> should render correctly 1`] = `
     <View
       flex={0.5}
       style={
-        Array [
-          Object {
+        [
+          {
             "flexBasis": 0,
             "flexGrow": 0.5,
             "flexShrink": 1,
@@ -158,8 +158,8 @@ exports[`<IdentityCheckEnd/> should render correctly 1`] = `
       customHeight={8}
       enable={true}
       style={
-        Array [
-          Object {
+        [
+          {
             "height": 8,
           },
         ]

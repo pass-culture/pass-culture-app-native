@@ -3,8 +3,8 @@
 exports[`<NoTicket/> should render correctly 1`] = `
 <View
   style={
-    Array [
-      Object {
+    [
+      {
         "width": "100%",
       },
     ]
@@ -13,8 +13,8 @@ exports[`<NoTicket/> should render correctly 1`] = `
 >
   <View
     style={
-      Array [
-        Object {
+      [
+        {
           "alignItems": "center",
           "marginBottom": 12,
           "marginTop": -16,
@@ -35,8 +35,8 @@ exports[`<NoTicket/> should render correctly 1`] = `
   </View>
   <Text
     style={
-      Array [
-        Object {
+      [
+        {
           "color": "#161617",
           "fontFamily": "Montserrat-Regular",
           "fontSize": 15,

@@ -14,7 +14,7 @@ exports[`AppButton Component * inline property should use inline css style when 
   onResponderTerminationRequest={[Function]}
   onStartShouldSetResponder={[Function]}
   style={
-    Object {
+    {
       "alignItems": "center",
       "borderRadius": 0,
       "borderWidth": 0,
@@ -36,8 +36,8 @@ exports[`AppButton Component * inline property should use inline css style when 
 >
   <View
     style={
-      Array [
-        Object {
+      [
+        {
           "flexShrink": 0,
         },
       ]
@@ -57,8 +57,8 @@ exports[`AppButton Component * inline property should use inline css style when 
     adjustsFontSizeToFit={false}
     numberOfLines={1}
     style={
-      Array [
-        Object {
+      [
+        {
           "color": "#161617",
           "fontFamily": "Montserrat-Bold",
           "fontSize": 15,

@@ -12,8 +12,6 @@ import { EndedBookings } from './EndedBookings'
 jest.mock('react-query')
 
 describe('EndedBookings', () => {
-  afterEach(jest.restoreAllMocks)
-
   it('should render correctly', () => {
     const renderAPI = renderEndedBookings(bookingsSnap)
     expect(renderAPI).toMatchSnapshot()

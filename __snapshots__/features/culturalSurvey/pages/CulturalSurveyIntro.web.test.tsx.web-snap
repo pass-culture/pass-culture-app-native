@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`CulturalSurveyIntro page should render the page with correct layout 1`] = `
-Object {
+{
   "asFragment": [Function],
   "baseElement": .c2 {
   -webkit-flex-direction: row;

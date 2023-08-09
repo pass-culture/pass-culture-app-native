@@ -1,12 +1,12 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<VenueOffers /> should render correctly 1`] = `
-Array [
+[
   <View
     numberOfSpaces={6}
     style={
-      Array [
-        Object {
+      [
+        {
           "height": 24,
         },
       ]
@@ -14,8 +14,8 @@ Array [
   />,
   <View
     style={
-      Array [
-        Object {
+      [
+        {
           "paddingBottom": 24,
         },
       ]
@@ -23,8 +23,8 @@ Array [
   >
     <View
       style={
-        Array [
-          Object {
+        [
+          {
             "maxHeight": 68,
             "overflow": "hidden",
           },
@@ -33,8 +33,8 @@ Array [
     >
       <View
         style={
-          Array [
-            Object {
+          [
+            {
               "alignItems": "center",
               "flexDirection": "row",
               "marginHorizontal": 24,
@@ -45,8 +45,8 @@ Array [
         <Text
           numberOfLines={2}
           style={
-            Array [
-              Object {
+            [
+              {
                 "color": "#161617",
                 "fontFamily": "Montserrat-Medium",
                 "fontSize": 18,
@@ -63,8 +63,8 @@ Array [
     <View
       numberOfSpaces={4}
       style={
-        Array [
-          Object {
+        [
+          {
             "height": 16,
           },
         ]
@@ -72,8 +72,8 @@ Array [
     />
     <View
       style={
-        Array [
-          Object {
+        [
+          {
             "position": "relative",
             "width": "100%",
           },
@@ -81,15 +81,15 @@ Array [
       }
     >
       <View
-        style={Object {}}
+        style={{}}
       >
         <RCTScrollView
           ItemSeparatorComponent={
-            Object {
+            {
               "$$typeof": Symbol(react.forward_ref),
-              "attrs": Array [],
+              "attrs": [],
               "inlineStyle": InlineStyle {
-                "rules": Array [
+                "rules": [
                   "width: 16px;",
                 ],
               },
@@ -101,11 +101,11 @@ Array [
             }
           }
           ListFooterComponent={
-            Object {
+            {
               "$$typeof": Symbol(react.forward_ref),
-              "attrs": Array [],
+              "attrs": [],
               "inlineStyle": InlineStyle {
-                "rules": Array [
+                "rules": [
                   "width: 24px;",
                 ],
               },
@@ -117,11 +117,11 @@ Array [
             }
           }
           ListHeaderComponent={
-            Object {
+            {
               "$$typeof": Symbol(react.forward_ref),
-              "attrs": Array [],
+              "attrs": [],
               "inlineStyle": InlineStyle {
-                "rules": Array [
+                "rules": [
                   "width: 24px;",
                 ],
               },
@@ -135,7 +135,7 @@ Array [
           applyWindowCorrection={[Function]}
           canChangeSize={true}
           contentContainerStyle={
-            Object {
+            {
               "backgroundColor": undefined,
               "minHeight": 1,
               "minWidth": 1,
@@ -146,15 +146,15 @@ Array [
           contentHeight={250}
           contentWidth={576}
           data={
-            Array [
-              Object {
-                "_geoloc": Object {
+            [
+              {
+                "_geoloc": {
                   "lat": 47.8898,
                   "lng": -2.83593,
                 },
                 "objectID": "223342",
-                "offer": Object {
-                  "dates": Array [
+                "offer": {
+                  "dates": [
                     1629312300,
                     1629485100,
                     1629657900,
@@ -162,7 +162,7 @@ Array [
                   "isDigital": false,
                   "isDuo": true,
                   "name": "Titane - VF",
-                  "prices": Array [
+                  "prices": [
                     0,
                     0,
                     0,
@@ -170,16 +170,16 @@ Array [
                   "subcategoryId": "CINE_PLEIN_AIR",
                   "thumbUrl": "https://storage.googleapis.com/passculture-metier-ehp-testing-assets/thumbs/products/FARMG",
                 },
-                "venue": Object {},
+                "venue": {},
               },
-              Object {
-                "_geoloc": Object {
+              {
+                "_geoloc": {
                   "lat": 47.8898,
                   "lng": -2.83593,
                 },
                 "objectID": "223338",
-                "offer": Object {
-                  "dates": Array [
+                "offer": {
+                  "dates": [
                     1629312300,
                     1629485100,
                     1629657900,
@@ -187,7 +187,7 @@ Array [
                   "isDigital": false,
                   "isDuo": true,
                   "name": "Bac Nord - VF",
-                  "prices": Array [
+                  "prices": [
                     0,
                     0,
                     0,
@@ -195,16 +195,16 @@ Array [
                   "subcategoryId": "CINE_PLEIN_AIR",
                   "thumbUrl": "https://storage.googleapis.com/passculture-metier-ehp-testing-assets/thumbs/products/FARMG",
                 },
-                "venue": Object {},
+                "venue": {},
               },
-              Object {
-                "_geoloc": Object {
+              {
+                "_geoloc": {
                   "lat": 47.8898,
                   "lng": -2.83593,
                 },
                 "objectID": "223339",
-                "offer": Object {
-                  "dates": Array [
+                "offer": {
+                  "dates": [
                     1629312300,
                     1629485100,
                     1629657900,
@@ -212,7 +212,7 @@ Array [
                   "isDigital": false,
                   "isDuo": true,
                   "name": "Black Widow - VF",
-                  "prices": Array [
+                  "prices": [
                     0,
                     0,
                     0,
@@ -220,24 +220,24 @@ Array [
                   "subcategoryId": "CINE_PLEIN_AIR",
                   "thumbUrl": "https://storage.googleapis.com/passculture-metier-ehp-testing-assets/thumbs/products/FARMA",
                 },
-                "venue": Object {},
+                "venue": {},
               },
-              Object {
+              {
                 "dataFooter": true,
               },
             ]
           }
           dataProvider={
             DataProvider {
-              "_data": Array [
-                Object {
-                  "_geoloc": Object {
+              "_data": [
+                {
+                  "_geoloc": {
                     "lat": 47.8898,
                     "lng": -2.83593,
                   },
                   "objectID": "223342",
-                  "offer": Object {
-                    "dates": Array [
+                  "offer": {
+                    "dates": [
                       1629312300,
                       1629485100,
                       1629657900,
@@ -245,7 +245,7 @@ Array [
                     "isDigital": false,
                     "isDuo": true,
                     "name": "Titane - VF",
-                    "prices": Array [
+                    "prices": [
                       0,
                       0,
                       0,
@@ -253,16 +253,16 @@ Array [
                     "subcategoryId": "CINE_PLEIN_AIR",
                     "thumbUrl": "https://storage.googleapis.com/passculture-metier-ehp-testing-assets/thumbs/products/FARMG",
                   },
-                  "venue": Object {},
+                  "venue": {},
                 },
-                Object {
-                  "_geoloc": Object {
+                {
+                  "_geoloc": {
                     "lat": 47.8898,
                     "lng": -2.83593,
                   },
                   "objectID": "223338",
-                  "offer": Object {
-                    "dates": Array [
+                  "offer": {
+                    "dates": [
                       1629312300,
                       1629485100,
                       1629657900,
@@ -270,7 +270,7 @@ Array [
                     "isDigital": false,
                     "isDuo": true,
                     "name": "Bac Nord - VF",
-                    "prices": Array [
+                    "prices": [
                       0,
                       0,
                       0,
@@ -278,16 +278,16 @@ Array [
                     "subcategoryId": "CINE_PLEIN_AIR",
                     "thumbUrl": "https://storage.googleapis.com/passculture-metier-ehp-testing-assets/thumbs/products/FARMG",
                   },
-                  "venue": Object {},
+                  "venue": {},
                 },
-                Object {
-                  "_geoloc": Object {
+                {
+                  "_geoloc": {
                     "lat": 47.8898,
                     "lng": -2.83593,
                   },
                   "objectID": "223339",
-                  "offer": Object {
-                    "dates": Array [
+                  "offer": {
+                    "dates": [
                       1629312300,
                       1629485100,
                       1629657900,
@@ -295,7 +295,7 @@ Array [
                     "isDigital": false,
                     "isDuo": true,
                     "name": "Black Widow - VF",
-                    "prices": Array [
+                    "prices": [
                       0,
                       0,
                       0,
@@ -303,9 +303,9 @@ Array [
                     "subcategoryId": "CINE_PLEIN_AIR",
                     "thumbUrl": "https://storage.googleapis.com/passculture-metier-ehp-testing-assets/thumbs/products/FARMA",
                   },
-                  "venue": Object {},
+                  "venue": {},
                 },
-                Object {
+                {
                   "dataFooter": true,
                 },
               ],
@@ -319,7 +319,7 @@ Array [
           }
           disableRecycling={false}
           estimatedItemSize={144}
-          extendedState={Object {}}
+          extendedState={{}}
           externalScrollView={[Function]}
           finalRenderAheadOffset={187.5}
           forceNonDeterministicRendering={true}
@@ -343,29 +343,29 @@ Array [
                 "_isGridHorizontal": true,
                 "_isHorizontal": true,
                 "_layoutProvider": [Circular],
-                "_layouts": Array [
-                  Object {
+                "_layouts": [
+                  {
                     "height": 250,
                     "type": 0,
                     "width": 144,
                     "x": 0,
                     "y": 0,
                   },
-                  Object {
+                  {
                     "height": 250,
                     "type": 0,
                     "width": 144,
                     "x": 144,
                     "y": 0,
                   },
-                  Object {
+                  {
                     "height": 250,
                     "type": 0,
                     "width": 144,
                     "x": 288,
                     "y": 0,
                   },
-                  Object {
+                  {
                     "height": 250,
                     "type": 0,
                     "width": 144,
@@ -374,31 +374,31 @@ Array [
                   },
                 ],
                 "_maxSpan": 1,
-                "_renderWindowSize": Object {
+                "_renderWindowSize": {
                   "height": 250,
                   "width": 800,
                 },
                 "_totalHeight": 250,
                 "_totalWidth": 576,
-                "_window": Object {
+                "_window": {
                   "height": 250,
                   "width": 800,
                 },
               },
               "_maxSpan": 1,
-              "_renderWindowSize": Object {
+              "_renderWindowSize": {
                 "height": 250,
                 "width": 800,
               },
               "_setLayoutForType": [Function],
-              "_tempDim": Object {
+              "_tempDim": {
                 "height": 0,
                 "width": 0,
               },
               "averageWindow": AverageWindow {
                 "currentAverage": 144,
                 "currentCount": 1,
-                "inputValues": Array [
+                "inputValues": [
                   144,
                   ,
                   ,
@@ -415,16 +415,16 @@ Array [
                 "nextIndex": 1,
               },
               "defaultEstimatedItemSize": 100,
-              "layoutObject": Object {
+              "layoutObject": {
                 "size": undefined,
                 "span": undefined,
               },
-              "props": Object {
-                "ItemSeparatorComponent": Object {
+              "props": {
+                "ItemSeparatorComponent": {
                   "$$typeof": Symbol(react.forward_ref),
-                  "attrs": Array [],
+                  "attrs": [],
                   "inlineStyle": InlineStyle {
-                    "rules": Array [
+                    "rules": [
                       "width: 16px;",
                     ],
                   },
@@ -434,11 +434,11 @@ Array [
                   "target": [Function],
                   "withComponent": [Function],
                 },
-                "ListFooterComponent": Object {
+                "ListFooterComponent": {
                   "$$typeof": Symbol(react.forward_ref),
-                  "attrs": Array [],
+                  "attrs": [],
                   "inlineStyle": InlineStyle {
-                    "rules": Array [
+                    "rules": [
                       "width: 24px;",
                     ],
                   },
@@ -448,11 +448,11 @@ Array [
                   "target": [Function],
                   "withComponent": [Function],
                 },
-                "ListHeaderComponent": Object {
+                "ListHeaderComponent": {
                   "$$typeof": Symbol(react.forward_ref),
-                  "attrs": Array [],
+                  "attrs": [],
                   "inlineStyle": InlineStyle {
-                    "rules": Array [
+                    "rules": [
                       "width: 24px;",
                     ],
                   },
@@ -462,15 +462,15 @@ Array [
                   "target": [Function],
                   "withComponent": [Function],
                 },
-                "data": Array [
-                  Object {
-                    "_geoloc": Object {
+                "data": [
+                  {
+                    "_geoloc": {
                       "lat": 47.8898,
                       "lng": -2.83593,
                     },
                     "objectID": "223342",
-                    "offer": Object {
-                      "dates": Array [
+                    "offer": {
+                      "dates": [
                         1629312300,
                         1629485100,
                         1629657900,
@@ -478,7 +478,7 @@ Array [
                       "isDigital": false,
                       "isDuo": true,
                       "name": "Titane - VF",
-                      "prices": Array [
+                      "prices": [
                         0,
                         0,
                         0,
@@ -486,16 +486,16 @@ Array [
                       "subcategoryId": "CINE_PLEIN_AIR",
                       "thumbUrl": "https://storage.googleapis.com/passculture-metier-ehp-testing-assets/thumbs/products/FARMG",
                     },
-                    "venue": Object {},
+                    "venue": {},
                   },
-                  Object {
-                    "_geoloc": Object {
+                  {
+                    "_geoloc": {
                       "lat": 47.8898,
                       "lng": -2.83593,
                     },
                     "objectID": "223338",
-                    "offer": Object {
-                      "dates": Array [
+                    "offer": {
+                      "dates": [
                         1629312300,
                         1629485100,
                         1629657900,
@@ -503,7 +503,7 @@ Array [
                       "isDigital": false,
                       "isDuo": true,
                       "name": "Bac Nord - VF",
-                      "prices": Array [
+                      "prices": [
                         0,
                         0,
                         0,
@@ -511,16 +511,16 @@ Array [
                       "subcategoryId": "CINE_PLEIN_AIR",
                       "thumbUrl": "https://storage.googleapis.com/passculture-metier-ehp-testing-assets/thumbs/products/FARMG",
                     },
-                    "venue": Object {},
+                    "venue": {},
                   },
-                  Object {
-                    "_geoloc": Object {
+                  {
+                    "_geoloc": {
                       "lat": 47.8898,
                       "lng": -2.83593,
                     },
                     "objectID": "223339",
-                    "offer": Object {
-                      "dates": Array [
+                    "offer": {
+                      "dates": [
                         1629312300,
                         1629485100,
                         1629657900,
@@ -528,7 +528,7 @@ Array [
                       "isDigital": false,
                       "isDuo": true,
                       "name": "Black Widow - VF",
-                      "prices": Array [
+                      "prices": [
                         0,
                         0,
                         0,
@@ -536,9 +536,9 @@ Array [
                       "subcategoryId": "CINE_PLEIN_AIR",
                       "thumbUrl": "https://storage.googleapis.com/passculture-metier-ehp-testing-assets/thumbs/products/FARMA",
                     },
-                    "venue": Object {},
+                    "venue": {},
                   },
-                  Object {
+                  {
                     "dataFooter": true,
                   },
                 ],
@@ -557,7 +557,7 @@ Array [
                 "showsHorizontalScrollIndicator": false,
                 "testID": "offersModuleList",
               },
-              "renderWindowInsets": Object {
+              "renderWindowInsets": {
                 "height": 0,
                 "width": 0,
               },
@@ -586,8 +586,8 @@ Array [
           scrollEventThrottle={200}
           scrollThrottle={16}
           scrollViewProps={
-            Object {
-              "contentContainerStyle": Object {
+            {
+              "contentContainerStyle": {
                 "backgroundColor": undefined,
                 "minHeight": 1,
                 "minWidth": 1,
@@ -597,7 +597,7 @@ Array [
               "onLayout": [Function],
               "onScrollBeginDrag": [Function],
               "refreshControl": undefined,
-              "style": Object {
+              "style": {
                 "minHeight": 1,
                 "minWidth": 1,
               },
@@ -605,7 +605,7 @@ Array [
           }
           showsHorizontalScrollIndicator={false}
           style={
-            Object {
+            {
               "minHeight": 1,
               "minWidth": 1,
             }
@@ -613,10 +613,10 @@ Array [
           suppressBoundedSizeException={true}
           testID="offersModuleList"
           windowCorrectionConfig={
-            Object {
+            {
               "applyToInitialOffset": true,
               "applyToItemScroll": true,
-              "value": Object {
+              "value": {
                 "endCorrection": 0,
                 "startCorrection": 0,
                 "windowShift": -1,
@@ -627,14 +627,14 @@ Array [
           <View>
             <View
               style={
-                Object {
+                {
                   "flexDirection": "row",
                 }
               }
             >
               <View
                 style={
-                  Object {
+                  {
                     "paddingLeft": 0,
                     "paddingTop": 0,
                   }
@@ -642,7 +642,7 @@ Array [
               />
               <View
                 style={
-                  Array [
+                  [
                     undefined,
                     undefined,
                   ]
@@ -650,8 +650,8 @@ Array [
               >
                 <View
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "width": 24,
                       },
                     ]
@@ -666,7 +666,7 @@ Array [
                 renderAheadOffset={0}
                 scrollOffset={0}
                 style={
-                  Object {
+                  {
                     "height": 250,
                     "width": 576,
                   }
@@ -677,7 +677,7 @@ Array [
                   index={1}
                   onLayout={[Function]}
                   style={
-                    Object {
+                    {
                       "alignItems": "stretch",
                       "flexDirection": "row",
                       "height": 250,
@@ -689,7 +689,7 @@ Array [
                 >
                   <View
                     style={
-                      Object {
+                      {
                         "flexDirection": "column",
                       }
                     }
@@ -708,13 +708,13 @@ Array [
                         onResponderTerminationRequest={[Function]}
                         onStartShouldSetResponder={[Function]}
                         style={
-                          Array [
-                            Object {
+                          [
+                            {
                               "textDecorationColor": "black",
                               "textDecorationLine": "none",
                               "textDecorationStyle": "solid",
                             },
-                            Object {
+                            {
                               "borderRadius": 8,
                               "height": 288,
                               "marginVertical": 4,
@@ -725,8 +725,8 @@ Array [
                       >
                         <View
                           style={
-                            Array [
-                              Object {
+                            [
+                              {
                                 "flexDirection": "column-reverse",
                               },
                             ]
@@ -735,8 +735,8 @@ Array [
                           <View
                             imageWidth={144}
                             style={
-                              Array [
-                                Object {
+                              [
+                                {
                                   "marginTop": 8,
                                   "maxWidth": 144,
                                 },
@@ -746,8 +746,8 @@ Array [
                             <Text
                               numberOfLines={2}
                               style={
-                                Array [
-                                  Object {
+                                [
+                                  {
                                     "color": "#161617",
                                     "fontFamily": "Montserrat-SemiBold",
                                     "fontSize": 12,
@@ -761,8 +761,8 @@ Array [
                             <Text
                               numberOfLines={1}
                               style={
-                                Array [
-                                  Object {
+                                [
+                                  {
                                     "color": "#696A6F",
                                     "fontFamily": "Montserrat-SemiBold",
                                     "fontSize": 12,
@@ -775,8 +775,8 @@ Array [
                             </Text>
                             <Text
                               style={
-                                Array [
-                                  Object {
+                                [
+                                  {
                                     "color": "#696A6F",
                                     "fontFamily": "Montserrat-SemiBold",
                                     "fontSize": 12,
@@ -792,15 +792,15 @@ Array [
                           <View>
                             <View
                               style={
-                                Array [
-                                  Object {
+                                [
+                                  {
                                     "overflow": "hidden",
                                   },
-                                  Array [
-                                    Object {
+                                  [
+                                    {
                                       "backgroundColor": "#F1F1F4",
                                     },
-                                    Object {
+                                    {
                                       "borderTopLeftRadius": 8,
                                       "borderTopRightRadius": 8,
                                       "height": 192,
@@ -814,12 +814,12 @@ Array [
                                 defaultSource={null}
                                 resizeMode="cover"
                                 source={
-                                  Object {
+                                  {
                                     "uri": "https://storage.googleapis.com/passculture-metier-ehp-testing-assets/thumbs/products/FARMG",
                                   }
                                 }
                                 style={
-                                  Object {
+                                  {
                                     "bottom": 0,
                                     "left": 0,
                                     "position": "absolute",
@@ -833,8 +833,8 @@ Array [
                             <View
                               height={24}
                               style={
-                                Array [
-                                  Object {
+                                [
+                                  {
                                     "alignItems": "center",
                                     "backgroundColor": "#161617",
                                     "borderBottomLeftRadius": 8,
@@ -849,8 +849,8 @@ Array [
                             >
                               <View
                                 style={
-                                  Array [
-                                    Object {
+                                  [
+                                    {
                                       "alignItems": "center",
                                       "flexBasis": 0,
                                       "flexGrow": 1,
@@ -864,8 +864,8 @@ Array [
                                 <Text
                                   numberOfLines={1}
                                   style={
-                                    Array [
-                                      Object {
+                                    [
+                                      {
                                         "color": "#ffffff",
                                         "fontFamily": "Montserrat-SemiBold",
                                         "fontSize": 12,
@@ -886,14 +886,14 @@ Array [
                   </View>
                   <View
                     leadingItem={
-                      Object {
-                        "_geoloc": Object {
+                      {
+                        "_geoloc": {
                           "lat": 47.8898,
                           "lng": -2.83593,
                         },
                         "objectID": "223338",
-                        "offer": Object {
-                          "dates": Array [
+                        "offer": {
+                          "dates": [
                             1629312300,
                             1629485100,
                             1629657900,
@@ -901,7 +901,7 @@ Array [
                           "isDigital": false,
                           "isDuo": true,
                           "name": "Bac Nord - VF",
-                          "prices": Array [
+                          "prices": [
                             0,
                             0,
                             0,
@@ -909,25 +909,25 @@ Array [
                           "subcategoryId": "CINE_PLEIN_AIR",
                           "thumbUrl": "https://storage.googleapis.com/passculture-metier-ehp-testing-assets/thumbs/products/FARMG",
                         },
-                        "venue": Object {},
+                        "venue": {},
                       }
                     }
                     style={
-                      Array [
-                        Object {
+                      [
+                        {
                           "width": 16,
                         },
                       ]
                     }
                     trailingItem={
-                      Object {
-                        "_geoloc": Object {
+                      {
+                        "_geoloc": {
                           "lat": 47.8898,
                           "lng": -2.83593,
                         },
                         "objectID": "223339",
-                        "offer": Object {
-                          "dates": Array [
+                        "offer": {
+                          "dates": [
                             1629312300,
                             1629485100,
                             1629657900,
@@ -935,7 +935,7 @@ Array [
                           "isDigital": false,
                           "isDuo": true,
                           "name": "Black Widow - VF",
-                          "prices": Array [
+                          "prices": [
                             0,
                             0,
                             0,
@@ -943,7 +943,7 @@ Array [
                           "subcategoryId": "CINE_PLEIN_AIR",
                           "thumbUrl": "https://storage.googleapis.com/passculture-metier-ehp-testing-assets/thumbs/products/FARMA",
                         },
-                        "venue": Object {},
+                        "venue": {},
                       }
                     }
                   />
@@ -952,7 +952,7 @@ Array [
                   index={2}
                   onLayout={[Function]}
                   style={
-                    Object {
+                    {
                       "alignItems": "stretch",
                       "flexDirection": "row",
                       "height": 250,
@@ -964,7 +964,7 @@ Array [
                 >
                   <View
                     style={
-                      Object {
+                      {
                         "flexDirection": "column",
                       }
                     }
@@ -983,13 +983,13 @@ Array [
                         onResponderTerminationRequest={[Function]}
                         onStartShouldSetResponder={[Function]}
                         style={
-                          Array [
-                            Object {
+                          [
+                            {
                               "textDecorationColor": "black",
                               "textDecorationLine": "none",
                               "textDecorationStyle": "solid",
                             },
-                            Object {
+                            {
                               "borderRadius": 8,
                               "height": 288,
                               "marginVertical": 4,
@@ -1000,8 +1000,8 @@ Array [
                       >
                         <View
                           style={
-                            Array [
-                              Object {
+                            [
+                              {
                                 "flexDirection": "column-reverse",
                               },
                             ]
@@ -1010,8 +1010,8 @@ Array [
                           <View
                             imageWidth={144}
                             style={
-                              Array [
-                                Object {
+                              [
+                                {
                                   "marginTop": 8,
                                   "maxWidth": 144,
                                 },
@@ -1021,8 +1021,8 @@ Array [
                             <Text
                               numberOfLines={2}
                               style={
-                                Array [
-                                  Object {
+                                [
+                                  {
                                     "color": "#161617",
                                     "fontFamily": "Montserrat-SemiBold",
                                     "fontSize": 12,
@@ -1036,8 +1036,8 @@ Array [
                             <Text
                               numberOfLines={1}
                               style={
-                                Array [
-                                  Object {
+                                [
+                                  {
                                     "color": "#696A6F",
                                     "fontFamily": "Montserrat-SemiBold",
                                     "fontSize": 12,
@@ -1050,8 +1050,8 @@ Array [
                             </Text>
                             <Text
                               style={
-                                Array [
-                                  Object {
+                                [
+                                  {
                                     "color": "#696A6F",
                                     "fontFamily": "Montserrat-SemiBold",
                                     "fontSize": 12,
@@ -1067,15 +1067,15 @@ Array [
                           <View>
                             <View
                               style={
-                                Array [
-                                  Object {
+                                [
+                                  {
                                     "overflow": "hidden",
                                   },
-                                  Array [
-                                    Object {
+                                  [
+                                    {
                                       "backgroundColor": "#F1F1F4",
                                     },
-                                    Object {
+                                    {
                                       "borderTopLeftRadius": 8,
                                       "borderTopRightRadius": 8,
                                       "height": 192,
@@ -1089,12 +1089,12 @@ Array [
                                 defaultSource={null}
                                 resizeMode="cover"
                                 source={
-                                  Object {
+                                  {
                                     "uri": "https://storage.googleapis.com/passculture-metier-ehp-testing-assets/thumbs/products/FARMA",
                                   }
                                 }
                                 style={
-                                  Object {
+                                  {
                                     "bottom": 0,
                                     "left": 0,
                                     "position": "absolute",
@@ -1108,8 +1108,8 @@ Array [
                             <View
                               height={24}
                               style={
-                                Array [
-                                  Object {
+                                [
+                                  {
                                     "alignItems": "center",
                                     "backgroundColor": "#161617",
                                     "borderBottomLeftRadius": 8,
@@ -1124,8 +1124,8 @@ Array [
                             >
                               <View
                                 style={
-                                  Array [
-                                    Object {
+                                  [
+                                    {
                                       "alignItems": "center",
                                       "flexBasis": 0,
                                       "flexGrow": 1,
@@ -1139,8 +1139,8 @@ Array [
                                 <Text
                                   numberOfLines={1}
                                   style={
-                                    Array [
-                                      Object {
+                                    [
+                                      {
                                         "color": "#ffffff",
                                         "fontFamily": "Montserrat-SemiBold",
                                         "fontSize": 12,
@@ -1161,14 +1161,14 @@ Array [
                   </View>
                   <View
                     leadingItem={
-                      Object {
-                        "_geoloc": Object {
+                      {
+                        "_geoloc": {
                           "lat": 47.8898,
                           "lng": -2.83593,
                         },
                         "objectID": "223339",
-                        "offer": Object {
-                          "dates": Array [
+                        "offer": {
+                          "dates": [
                             1629312300,
                             1629485100,
                             1629657900,
@@ -1176,7 +1176,7 @@ Array [
                           "isDigital": false,
                           "isDuo": true,
                           "name": "Black Widow - VF",
-                          "prices": Array [
+                          "prices": [
                             0,
                             0,
                             0,
@@ -1184,18 +1184,18 @@ Array [
                           "subcategoryId": "CINE_PLEIN_AIR",
                           "thumbUrl": "https://storage.googleapis.com/passculture-metier-ehp-testing-assets/thumbs/products/FARMA",
                         },
-                        "venue": Object {},
+                        "venue": {},
                       }
                     }
                     style={
-                      Array [
-                        Object {
+                      [
+                        {
                           "width": 16,
                         },
                       ]
                     }
                     trailingItem={
-                      Object {
+                      {
                         "dataFooter": true,
                       }
                     }
@@ -1205,7 +1205,7 @@ Array [
                   index={0}
                   onLayout={[Function]}
                   style={
-                    Object {
+                    {
                       "alignItems": "stretch",
                       "flexDirection": "row",
                       "height": 250,
@@ -1217,7 +1217,7 @@ Array [
                 >
                   <View
                     style={
-                      Object {
+                      {
                         "flexDirection": "column",
                       }
                     }
@@ -1236,13 +1236,13 @@ Array [
                         onResponderTerminationRequest={[Function]}
                         onStartShouldSetResponder={[Function]}
                         style={
-                          Array [
-                            Object {
+                          [
+                            {
                               "textDecorationColor": "black",
                               "textDecorationLine": "none",
                               "textDecorationStyle": "solid",
                             },
-                            Object {
+                            {
                               "borderRadius": 8,
                               "height": 288,
                               "marginVertical": 4,
@@ -1253,8 +1253,8 @@ Array [
                       >
                         <View
                           style={
-                            Array [
-                              Object {
+                            [
+                              {
                                 "flexDirection": "column-reverse",
                               },
                             ]
@@ -1263,8 +1263,8 @@ Array [
                           <View
                             imageWidth={144}
                             style={
-                              Array [
-                                Object {
+                              [
+                                {
                                   "marginTop": 8,
                                   "maxWidth": 144,
                                 },
@@ -1274,8 +1274,8 @@ Array [
                             <Text
                               numberOfLines={2}
                               style={
-                                Array [
-                                  Object {
+                                [
+                                  {
                                     "color": "#161617",
                                     "fontFamily": "Montserrat-SemiBold",
                                     "fontSize": 12,
@@ -1289,8 +1289,8 @@ Array [
                             <Text
                               numberOfLines={1}
                               style={
-                                Array [
-                                  Object {
+                                [
+                                  {
                                     "color": "#696A6F",
                                     "fontFamily": "Montserrat-SemiBold",
                                     "fontSize": 12,
@@ -1303,8 +1303,8 @@ Array [
                             </Text>
                             <Text
                               style={
-                                Array [
-                                  Object {
+                                [
+                                  {
                                     "color": "#696A6F",
                                     "fontFamily": "Montserrat-SemiBold",
                                     "fontSize": 12,
@@ -1320,15 +1320,15 @@ Array [
                           <View>
                             <View
                               style={
-                                Array [
-                                  Object {
+                                [
+                                  {
                                     "overflow": "hidden",
                                   },
-                                  Array [
-                                    Object {
+                                  [
+                                    {
                                       "backgroundColor": "#F1F1F4",
                                     },
-                                    Object {
+                                    {
                                       "borderTopLeftRadius": 8,
                                       "borderTopRightRadius": 8,
                                       "height": 192,
@@ -1342,12 +1342,12 @@ Array [
                                 defaultSource={null}
                                 resizeMode="cover"
                                 source={
-                                  Object {
+                                  {
                                     "uri": "https://storage.googleapis.com/passculture-metier-ehp-testing-assets/thumbs/products/FARMG",
                                   }
                                 }
                                 style={
-                                  Object {
+                                  {
                                     "bottom": 0,
                                     "left": 0,
                                     "position": "absolute",
@@ -1361,8 +1361,8 @@ Array [
                             <View
                               height={24}
                               style={
-                                Array [
-                                  Object {
+                                [
+                                  {
                                     "alignItems": "center",
                                     "backgroundColor": "#161617",
                                     "borderBottomLeftRadius": 8,
@@ -1377,8 +1377,8 @@ Array [
                             >
                               <View
                                 style={
-                                  Array [
-                                    Object {
+                                  [
+                                    {
                                       "alignItems": "center",
                                       "flexBasis": 0,
                                       "flexGrow": 1,
@@ -1392,8 +1392,8 @@ Array [
                                 <Text
                                   numberOfLines={1}
                                   style={
-                                    Array [
-                                      Object {
+                                    [
+                                      {
                                         "color": "#ffffff",
                                         "fontFamily": "Montserrat-SemiBold",
                                         "fontSize": 12,
@@ -1414,14 +1414,14 @@ Array [
                   </View>
                   <View
                     leadingItem={
-                      Object {
-                        "_geoloc": Object {
+                      {
+                        "_geoloc": {
                           "lat": 47.8898,
                           "lng": -2.83593,
                         },
                         "objectID": "223342",
-                        "offer": Object {
-                          "dates": Array [
+                        "offer": {
+                          "dates": [
                             1629312300,
                             1629485100,
                             1629657900,
@@ -1429,7 +1429,7 @@ Array [
                           "isDigital": false,
                           "isDuo": true,
                           "name": "Titane - VF",
-                          "prices": Array [
+                          "prices": [
                             0,
                             0,
                             0,
@@ -1437,25 +1437,25 @@ Array [
                           "subcategoryId": "CINE_PLEIN_AIR",
                           "thumbUrl": "https://storage.googleapis.com/passculture-metier-ehp-testing-assets/thumbs/products/FARMG",
                         },
-                        "venue": Object {},
+                        "venue": {},
                       }
                     }
                     style={
-                      Array [
-                        Object {
+                      [
+                        {
                           "width": 16,
                         },
                       ]
                     }
                     trailingItem={
-                      Object {
-                        "_geoloc": Object {
+                      {
+                        "_geoloc": {
                           "lat": 47.8898,
                           "lng": -2.83593,
                         },
                         "objectID": "223338",
-                        "offer": Object {
-                          "dates": Array [
+                        "offer": {
+                          "dates": [
                             1629312300,
                             1629485100,
                             1629657900,
@@ -1463,7 +1463,7 @@ Array [
                           "isDigital": false,
                           "isDuo": true,
                           "name": "Bac Nord - VF",
-                          "prices": Array [
+                          "prices": [
                             0,
                             0,
                             0,
@@ -1471,7 +1471,7 @@ Array [
                           "subcategoryId": "CINE_PLEIN_AIR",
                           "thumbUrl": "https://storage.googleapis.com/passculture-metier-ehp-testing-assets/thumbs/products/FARMG",
                         },
-                        "venue": Object {},
+                        "venue": {},
                       }
                     }
                   />
@@ -1480,7 +1480,7 @@ Array [
                   index={3}
                   onLayout={[Function]}
                   style={
-                    Object {
+                    {
                       "alignItems": "stretch",
                       "flexDirection": "row",
                       "height": 250,
@@ -1492,7 +1492,7 @@ Array [
                 >
                   <View
                     style={
-                      Object {
+                      {
                         "flexDirection": "column",
                       }
                     }
@@ -1500,8 +1500,8 @@ Array [
                     <View
                       height={216}
                       style={
-                        Array [
-                          Object {
+                        [
+                          {
                             "alignItems": "center",
                             "height": 216,
                             "justifyContent": "center",
@@ -1514,8 +1514,8 @@ Array [
                       <View
                         numberOfSpaces={2}
                         style={
-                          Array [
-                            Object {
+                          [
+                            {
                               "height": 8,
                             },
                           ]
@@ -1535,7 +1535,7 @@ Array [
                         onResponderTerminationRequest={[Function]}
                         onStartShouldSetResponder={[Function]}
                         style={
-                          Object {
+                          {
                             "alignItems": "center",
                             "opacity": 1,
                             "userSelect": "auto",
@@ -1545,8 +1545,8 @@ Array [
                       >
                         <View
                           style={
-                            Array [
-                              Object {
+                            [
+                              {
                                 "flexDirection": "row",
                               },
                             ]
@@ -1555,8 +1555,8 @@ Array [
                           <View
                             numberOfSpaces={16}
                             style={
-                              Array [
-                                Object {
+                              [
+                                {
                                   "width": 64,
                                 },
                               ]
@@ -1564,8 +1564,8 @@ Array [
                           />
                           <View
                             style={
-                              Array [
-                                Object {
+                              [
+                                {
                                   "alignItems": "center",
                                   "aspectRatio": 1,
                                   "backgroundColor": "#ffffff",
@@ -1576,7 +1576,7 @@ Array [
                                   "height": 64,
                                   "justifyContent": "center",
                                   "shadowColor": "#161617",
-                                  "shadowOffset": Object {
+                                  "shadowOffset": {
                                     "height": 8,
                                     "width": 0,
                                   },
@@ -1599,8 +1599,8 @@ Array [
                           <View
                             numberOfSpaces={16}
                             style={
-                              Array [
-                                Object {
+                              [
+                                {
                                   "width": 64,
                                 },
                               ]
@@ -1610,8 +1610,8 @@ Array [
                         <View
                           numberOfSpaces={2}
                           style={
-                            Array [
-                              Object {
+                            [
+                              {
                                 "height": 8,
                               },
                             ]
@@ -1619,8 +1619,8 @@ Array [
                         />
                         <View
                           style={
-                            Array [
-                              Object {
+                            [
+                              {
                                 "flexDirection": "row",
                               },
                             ]
@@ -1628,8 +1628,8 @@ Array [
                         >
                           <Text
                             style={
-                              Array [
-                                Object {
+                              [
+                                {
                                   "color": "#eb0055",
                                   "fontFamily": "Montserrat-Bold",
                                   "fontSize": 15,
@@ -1649,7 +1649,7 @@ Array [
               <CellContainer
                 index={-1}
                 style={
-                  Array [
+                  [
                     undefined,
                     undefined,
                   ]
@@ -1657,8 +1657,8 @@ Array [
               >
                 <View
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "width": 24,
                       },
                     ]
@@ -1667,7 +1667,7 @@ Array [
               </CellContainer>
               <View
                 style={
-                  Object {
+                  {
                     "paddingBottom": 0,
                     "paddingRight": 0,
                   }
@@ -1676,7 +1676,7 @@ Array [
               <View
                 pointerEvents="none"
                 style={
-                  Object {
+                  {
                     "opacity": 0,
                   }
                 }
@@ -1695,13 +1695,13 @@ Array [
                     onResponderTerminationRequest={[Function]}
                     onStartShouldSetResponder={[Function]}
                     style={
-                      Array [
-                        Object {
+                      [
+                        {
                           "textDecorationColor": "black",
                           "textDecorationLine": "none",
                           "textDecorationStyle": "solid",
                         },
-                        Object {
+                        {
                           "borderRadius": 8,
                           "height": 288,
                           "marginVertical": 4,
@@ -1712,8 +1712,8 @@ Array [
                   >
                     <View
                       style={
-                        Array [
-                          Object {
+                        [
+                          {
                             "flexDirection": "column-reverse",
                           },
                         ]
@@ -1722,8 +1722,8 @@ Array [
                       <View
                         imageWidth={144}
                         style={
-                          Array [
-                            Object {
+                          [
+                            {
                               "marginTop": 8,
                               "maxWidth": 144,
                             },
@@ -1733,8 +1733,8 @@ Array [
                         <Text
                           numberOfLines={2}
                           style={
-                            Array [
-                              Object {
+                            [
+                              {
                                 "color": "#161617",
                                 "fontFamily": "Montserrat-SemiBold",
                                 "fontSize": 12,
@@ -1748,8 +1748,8 @@ Array [
                         <Text
                           numberOfLines={1}
                           style={
-                            Array [
-                              Object {
+                            [
+                              {
                                 "color": "#696A6F",
                                 "fontFamily": "Montserrat-SemiBold",
                                 "fontSize": 12,
@@ -1762,8 +1762,8 @@ Array [
                         </Text>
                         <Text
                           style={
-                            Array [
-                              Object {
+                            [
+                              {
                                 "color": "#696A6F",
                                 "fontFamily": "Montserrat-SemiBold",
                                 "fontSize": 12,
@@ -1779,15 +1779,15 @@ Array [
                       <View>
                         <View
                           style={
-                            Array [
-                              Object {
+                            [
+                              {
                                 "overflow": "hidden",
                               },
-                              Array [
-                                Object {
+                              [
+                                {
                                   "backgroundColor": "#F1F1F4",
                                 },
-                                Object {
+                                {
                                   "borderTopLeftRadius": 8,
                                   "borderTopRightRadius": 8,
                                   "height": 192,
@@ -1801,12 +1801,12 @@ Array [
                             defaultSource={null}
                             resizeMode="cover"
                             source={
-                              Object {
+                              {
                                 "uri": "https://storage.googleapis.com/passculture-metier-ehp-testing-assets/thumbs/products/FARMG",
                               }
                             }
                             style={
-                              Object {
+                              {
                                 "bottom": 0,
                                 "left": 0,
                                 "position": "absolute",
@@ -1820,8 +1820,8 @@ Array [
                         <View
                           height={24}
                           style={
-                            Array [
-                              Object {
+                            [
+                              {
                                 "alignItems": "center",
                                 "backgroundColor": "#161617",
                                 "borderBottomLeftRadius": 8,
@@ -1836,8 +1836,8 @@ Array [
                         >
                           <View
                             style={
-                              Array [
-                                Object {
+                              [
+                                {
                                   "alignItems": "center",
                                   "flexBasis": 0,
                                   "flexGrow": 1,
@@ -1851,8 +1851,8 @@ Array [
                             <Text
                               numberOfLines={1}
                               style={
-                                Array [
-                                  Object {
+                                [
+                                  {
                                     "color": "#ffffff",
                                     "fontFamily": "Montserrat-SemiBold",
                                     "fontSize": 12,
@@ -1879,8 +1879,8 @@ Array [
   </View>,
   <View
     style={
-      Array [
-        Object {
+      [
+        {
           "marginHorizontal": 24,
         },
       ]
@@ -1890,7 +1890,7 @@ Array [
       accessibilityLabel="Voir toutes les offres"
       accessibilityRole="link"
       accessibilityState={
-        Object {
+        {
           "disabled": false,
         }
       }
@@ -1905,7 +1905,7 @@ Array [
       onResponderTerminationRequest={[Function]}
       onStartShouldSetResponder={[Function]}
       style={
-        Object {
+        {
           "alignItems": "center",
           "borderRadius": 24,
           "justifyContent": "center",
@@ -1930,8 +1930,8 @@ Array [
       </View>
       <View
         style={
-          Array [
-            Object {
+          [
+            {
               "alignItems": "center",
               "flexDirection": "row",
               "position": "absolute",
@@ -1944,8 +1944,8 @@ Array [
           isDisabled={false}
           numberOfLines={1}
           style={
-            Array [
-              Object {
+            [
+              {
                 "color": "#ffffff",
                 "fontFamily": "Montserrat-Bold",
                 "fontSize": 15,
@@ -1966,8 +1966,8 @@ Array [
   <View
     numberOfSpaces={6}
     style={
-      Array [
-        Object {
+      [
+        {
           "height": 24,
         },
       ]

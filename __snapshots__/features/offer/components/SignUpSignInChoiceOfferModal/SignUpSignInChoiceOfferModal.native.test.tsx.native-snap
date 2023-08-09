@@ -22,7 +22,7 @@ exports[`SignUpSignInChoiceOfferModal should match previous snapshot 1`] = `
   scrollTo={null}
   statusBarTranslucent={true}
   supportedOrientations={
-    Array [
+    [
       "portrait",
       "landscape",
     ]
@@ -45,7 +45,7 @@ exports[`SignUpSignInChoiceOfferModal should match previous snapshot 1`] = `
     onResponderTerminationRequest={[Function]}
     onStartShouldSetResponder={[Function]}
     style={
-      Object {
+      {
         "backgroundColor": "black",
         "bottom": 0,
         "height": 1334,
@@ -79,7 +79,7 @@ exports[`SignUpSignInChoiceOfferModal should match previous snapshot 1`] = `
     scrollTo={null}
     statusBarTranslucent={true}
     style={
-      Object {
+      {
         "alignItems": "center",
         "bottom": 0,
         "flex": 1,
@@ -89,15 +89,15 @@ exports[`SignUpSignInChoiceOfferModal should match previous snapshot 1`] = `
         "position": "absolute",
         "right": 0,
         "top": "auto",
-        "transform": Array [
-          Object {
+        "transform": [
+          {
             "translateY": 1334,
           },
         ],
       }
     }
     supportedOrientations={
-      Array [
+      [
         "portrait",
         "landscape",
       ]
@@ -107,8 +107,8 @@ exports[`SignUpSignInChoiceOfferModal should match previous snapshot 1`] = `
     <View
       height={428}
       style={
-        Array [
-          Object {
+        [
+          {
             "alignItems": "center",
             "backgroundColor": "#ffffff",
             "borderBottomEndRadius": 0,
@@ -137,8 +137,8 @@ exports[`SignUpSignInChoiceOfferModal should match previous snapshot 1`] = `
       <View
         onLayout={[Function]}
         style={
-          Array [
-            Object {
+          [
+            {
               "display": "flex",
               "flexDirection": "row",
               "justifyContent": "center",
@@ -151,8 +151,8 @@ exports[`SignUpSignInChoiceOfferModal should match previous snapshot 1`] = `
         <View
           justifyContent="left"
           style={
-            Array [
-              Object {
+            [
+              {
                 "alignItems": "flex-start",
                 "flexDirection": "row",
                 "height": 28,
@@ -164,8 +164,8 @@ exports[`SignUpSignInChoiceOfferModal should match previous snapshot 1`] = `
         />
         <View
           style={
-            Array [
-              Object {
+            [
+              {
                 "flexBasis": 0,
                 "flexGrow": 1,
                 "flexShrink": 1,
@@ -180,8 +180,8 @@ exports[`SignUpSignInChoiceOfferModal should match previous snapshot 1`] = `
             nativeID="testUuidV4"
             numberOfLines={2}
             style={
-              Array [
-                Object {
+              [
+                {
                   "color": "#161617",
                   "fontFamily": "Montserrat-Medium",
                   "fontSize": 18,
@@ -199,8 +199,8 @@ retrouver tes favoris
         <View
           justifyContent="right"
           style={
-            Array [
-              Object {
+            [
+              {
                 "alignItems": "flex-start",
                 "flexDirection": "row",
                 "height": 28,
@@ -224,7 +224,7 @@ retrouver tes favoris
             onResponderTerminationRequest={[Function]}
             onStartShouldSetResponder={[Function]}
             style={
-              Object {
+              {
                 "opacity": 1,
                 "paddingBottom": 4,
                 "paddingLeft": 4,
@@ -249,8 +249,8 @@ retrouver tes favoris
       </View>
       <View
         style={
-          Array [
-            Object {
+          [
+            {
               "height": 20,
             },
           ]
@@ -261,8 +261,8 @@ retrouver tes favoris
         backdropColor="#00000080"
         paddingBottom={8}
         style={
-          Array [
-            Object {
+          [
+            {
               "maxHeight": "100%",
               "maxWidth": 480,
               "paddingBottom": 8,
@@ -272,7 +272,7 @@ retrouver tes favoris
         }
       >
         <RCTScrollView
-          contentContainerStyle={Object {}}
+          contentContainerStyle={{}}
           onContentSizeChange={[Function]}
           scrollEnabled={true}
           testID="modalScrollView"
@@ -280,8 +280,8 @@ retrouver tes favoris
           <View>
             <View
               style={
-                Array [
-                  Object {
+                [
+                  {
                     "alignItems": "center",
                     "width": "100%",
                   },
@@ -299,8 +299,8 @@ retrouver tes favoris
               <View
                 numberOfSpaces={6}
                 style={
-                  Array [
-                    Object {
+                  [
+                    {
                       "height": 24,
                     },
                   ]
@@ -308,8 +308,8 @@ retrouver tes favoris
               />
               <Text
                 style={
-                  Array [
-                    Object {
+                  [
+                    {
                       "color": "#161617",
                       "fontFamily": "Montserrat-Regular",
                       "fontSize": 15,
@@ -324,8 +324,8 @@ retrouver tes favoris
               <View
                 numberOfSpaces={6}
                 style={
-                  Array [
-                    Object {
+                  [
+                    {
                       "height": 24,
                     },
                   ]
@@ -333,8 +333,8 @@ retrouver tes favoris
               />
               <View
                 style={
-                  Array [
-                    Object {
+                  [
+                    {
                       "width": "100%",
                     },
                   ]
@@ -344,7 +344,7 @@ retrouver tes favoris
                   accessibilityLabel="Créer un compte"
                   accessibilityRole="link"
                   accessibilityState={
-                    Object {
+                    {
                       "disabled": false,
                     }
                   }
@@ -359,7 +359,7 @@ retrouver tes favoris
                   onResponderTerminationRequest={[Function]}
                   onStartShouldSetResponder={[Function]}
                   style={
-                    Object {
+                    {
                       "alignItems": "center",
                       "borderRadius": 24,
                       "justifyContent": "center",
@@ -384,8 +384,8 @@ retrouver tes favoris
                   </View>
                   <View
                     style={
-                      Array [
-                        Object {
+                      [
+                        {
                           "alignItems": "center",
                           "flexDirection": "row",
                           "position": "absolute",
@@ -398,8 +398,8 @@ retrouver tes favoris
                       isDisabled={false}
                       numberOfLines={1}
                       style={
-                        Array [
-                          Object {
+                        [
+                          {
                             "color": "#ffffff",
                             "fontFamily": "Montserrat-Bold",
                             "fontSize": 15,
@@ -420,8 +420,8 @@ retrouver tes favoris
               <View
                 numberOfSpaces={4}
                 style={
-                  Array [
-                    Object {
+                  [
+                    {
                       "height": 16,
                     },
                   ]
@@ -429,8 +429,8 @@ retrouver tes favoris
               />
               <View
                 style={
-                  Array [
-                    Object {
+                  [
+                    {
                       "alignItems": "center",
                       "flexDirection": "row",
                       "justifyContent": "center",
@@ -440,8 +440,8 @@ retrouver tes favoris
               >
                 <Text
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "color": "#161617",
                         "fontFamily": "Montserrat-Regular",
                         "fontSize": 15,
@@ -455,8 +455,8 @@ retrouver tes favoris
                   <View
                     numberOfSpaces={1}
                     style={
-                      Array [
-                        Object {
+                      [
+                        {
                           "width": 4,
                         },
                       ]
@@ -477,7 +477,7 @@ retrouver tes favoris
                       onResponderTerminationRequest={[Function]}
                       onStartShouldSetResponder={[Function]}
                       style={
-                        Object {
+                        {
                           "opacity": 1,
                           "top": 3,
                           "userSelect": "auto",
@@ -488,8 +488,8 @@ retrouver tes favoris
                       <View
                         paddingForIcon={0}
                         style={
-                          Array [
-                            Object {
+                          [
+                            {
                               "flexDirection": "row",
                               "top": 0,
                             },
@@ -509,8 +509,8 @@ retrouver tes favoris
                         <View
                           numberOfSpaces={1}
                           style={
-                            Array [
-                              Object {
+                            [
+                              {
                                 "width": 4,
                               },
                             ]
@@ -519,8 +519,8 @@ retrouver tes favoris
                         <Text
                           color="#320096"
                           style={
-                            Array [
-                              Object {
+                            [
+                              {
                                 "color": "#320096",
                                 "fontFamily": "Montserrat-Bold",
                                 "fontSize": 15,

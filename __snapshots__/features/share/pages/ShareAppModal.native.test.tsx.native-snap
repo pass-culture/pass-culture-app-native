@@ -22,7 +22,7 @@ exports[`ShareAppModal should match beneficiary modal snapshot when beneficiary 
     onResponderTerminationRequest={[Function]}
     onStartShouldSetResponder={[Function]}
     style={
-      Object {
+      {
         "backgroundColor": "#00000080",
         "flexDirection": "column",
         "flexGrow": 1,
@@ -38,8 +38,8 @@ exports[`ShareAppModal should match beneficiary modal snapshot when beneficiary 
   />
   <View
     style={
-      Array [
-        Object {
+      [
+        {
           "flexBasis": 0,
           "flexGrow": 1,
           "flexShrink": 1,
@@ -50,8 +50,8 @@ exports[`ShareAppModal should match beneficiary modal snapshot when beneficiary 
   />
   <View
     style={
-      Array [
-        Object {
+      [
+        {
           "alignItems": "center",
           "alignSelf": "center",
           "backgroundColor": "#ffffff",
@@ -66,8 +66,8 @@ exports[`ShareAppModal should match beneficiary modal snapshot when beneficiary 
   >
     <View
       style={
-        Array [
-          Object {
+        [
+          {
             "flexGrow": 1,
             "width": "100%",
           },
@@ -76,8 +76,8 @@ exports[`ShareAppModal should match beneficiary modal snapshot when beneficiary 
     >
       <View
         style={
-          Array [
-            Object {
+          [
+            {
               "alignItems": "center",
               "flexGrow": 0.5,
             },
@@ -87,8 +87,8 @@ exports[`ShareAppModal should match beneficiary modal snapshot when beneficiary 
         <View
           accessibilityIgnoresInvertColors={true}
           style={
-            Array [
-              Object {
+            [
+              {
                 "height": 252,
                 "width": "100%",
               },
@@ -97,20 +97,20 @@ exports[`ShareAppModal should match beneficiary modal snapshot when beneficiary 
         >
           <Image
             source={
-              Object {
+              {
                 "testUri": "../../../public/images/ShareAppImage.jpg",
               }
             }
             style={
-              Array [
-                Object {
+              [
+                {
                   "bottom": 0,
                   "left": 0,
                   "position": "absolute",
                   "right": 0,
                   "top": 0,
                 },
-                Object {
+                {
                   "height": 252,
                   "width": "100%",
                 },
@@ -122,32 +122,32 @@ exports[`ShareAppModal should match beneficiary modal snapshot when beneficiary 
       </View>
       <BVLinearGradient
         colors={
-          Array [
+          [
             16777215,
             4294967295,
           ]
         }
         endPoint={
-          Object {
+          {
             "x": 0.5,
             "y": 1,
           }
         }
         locations={
-          Array [
+          [
             0,
             0.85,
           ]
         }
         startPoint={
-          Object {
+          {
             "x": 0.5,
             "y": 0,
           }
         }
         style={
-          Array [
-            Object {
+          [
+            {
               "height": 72,
               "marginTop": -72,
             },
@@ -156,8 +156,8 @@ exports[`ShareAppModal should match beneficiary modal snapshot when beneficiary 
       />
       <View
         style={
-          Array [
-            Object {
+          [
+            {
               "alignItems": "center",
               "flexGrow": 0.5,
             },
@@ -166,8 +166,8 @@ exports[`ShareAppModal should match beneficiary modal snapshot when beneficiary 
       >
         <View
           style={
-            Array [
-              Object {
+            [
+              {
                 "alignItems": "center",
                 "maxWidth": 500,
                 "paddingBottom": 32,
@@ -182,8 +182,8 @@ exports[`ShareAppModal should match beneficiary modal snapshot when beneficiary 
           <Text
             nativeID="testUuidV4"
             style={
-              Array [
-                Object {
+              [
+                {
                   "color": "#161617",
                   "fontFamily": "Montserrat-Bold",
                   "fontSize": 20,
@@ -198,8 +198,8 @@ exports[`ShareAppModal should match beneficiary modal snapshot when beneficiary 
           <View
             numberOfSpaces={6}
             style={
-              Array [
-                Object {
+              [
+                {
                   "height": 24,
                 },
               ]
@@ -207,8 +207,8 @@ exports[`ShareAppModal should match beneficiary modal snapshot when beneficiary 
           />
           <Text
             style={
-              Array [
-                Object {
+              [
+                {
                   "color": "#161617",
                   "fontFamily": "Montserrat-Regular",
                   "fontSize": 15,
@@ -223,8 +223,8 @@ exports[`ShareAppModal should match beneficiary modal snapshot when beneficiary 
           <View
             numberOfSpaces={6}
             style={
-              Array [
-                Object {
+              [
+                {
                   "height": 24,
                 },
               ]
@@ -232,8 +232,8 @@ exports[`ShareAppModal should match beneficiary modal snapshot when beneficiary 
           />
           <View
             style={
-              Array [
-                Object {
+              [
+                {
                   "width": "100%",
                 },
               ]
@@ -243,7 +243,7 @@ exports[`ShareAppModal should match beneficiary modal snapshot when beneficiary 
               accessibilityLabel="Partager l’appli"
               accessibilityRole="link"
               accessibilityState={
-                Object {
+                {
                   "disabled": false,
                 }
               }
@@ -258,7 +258,7 @@ exports[`ShareAppModal should match beneficiary modal snapshot when beneficiary 
               onResponderTerminationRequest={[Function]}
               onStartShouldSetResponder={[Function]}
               style={
-                Object {
+                {
                   "alignItems": "center",
                   "borderRadius": 24,
                   "justifyContent": "center",
@@ -283,8 +283,8 @@ exports[`ShareAppModal should match beneficiary modal snapshot when beneficiary 
               </View>
               <View
                 style={
-                  Array [
-                    Object {
+                  [
+                    {
                       "alignItems": "center",
                       "flexDirection": "row",
                       "position": "absolute",
@@ -305,8 +305,8 @@ exports[`ShareAppModal should match beneficiary modal snapshot when beneficiary 
                   isDisabled={false}
                   numberOfLines={1}
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "color": "#ffffff",
                         "fontFamily": "Montserrat-Bold",
                         "fontSize": 15,
@@ -326,8 +326,8 @@ exports[`ShareAppModal should match beneficiary modal snapshot when beneficiary 
             <View
               numberOfSpaces={4}
               style={
-                Array [
-                  Object {
+                [
+                  {
                     "height": 16,
                   },
                 ]
@@ -346,7 +346,7 @@ exports[`ShareAppModal should match beneficiary modal snapshot when beneficiary 
               onResponderTerminationRequest={[Function]}
               onStartShouldSetResponder={[Function]}
               style={
-                Object {
+                {
                   "alignItems": "center",
                   "backgroundColor": "transparent",
                   "borderRadius": 24,
@@ -367,8 +367,8 @@ exports[`ShareAppModal should match beneficiary modal snapshot when beneficiary 
             >
               <View
                 style={
-                  Array [
-                    Object {
+                  [
+                    {
                       "flexShrink": 0,
                     },
                   ]
@@ -389,8 +389,8 @@ exports[`ShareAppModal should match beneficiary modal snapshot when beneficiary 
                 adjustsFontSizeToFit={false}
                 numberOfLines={1}
                 style={
-                  Array [
-                    Object {
+                  [
+                    {
                       "color": "#161617",
                       "fontFamily": "Montserrat-SemiBold",
                       "fontSize": 12,
@@ -411,8 +411,8 @@ exports[`ShareAppModal should match beneficiary modal snapshot when beneficiary 
   </View>
   <View
     style={
-      Array [
-        Object {
+      [
+        {
           "flexBasis": 0,
           "flexGrow": 1,
           "flexShrink": 1,
@@ -446,7 +446,7 @@ exports[`ShareAppModal should match booking modal snapshot when booking 1`] = `
     onResponderTerminationRequest={[Function]}
     onStartShouldSetResponder={[Function]}
     style={
-      Object {
+      {
         "backgroundColor": "#00000080",
         "flexDirection": "column",
         "flexGrow": 1,
@@ -462,8 +462,8 @@ exports[`ShareAppModal should match booking modal snapshot when booking 1`] = `
   />
   <View
     style={
-      Array [
-        Object {
+      [
+        {
           "flexBasis": 0,
           "flexGrow": 1,
           "flexShrink": 1,
@@ -474,8 +474,8 @@ exports[`ShareAppModal should match booking modal snapshot when booking 1`] = `
   />
   <View
     style={
-      Array [
-        Object {
+      [
+        {
           "alignItems": "center",
           "alignSelf": "center",
           "backgroundColor": "#ffffff",
@@ -490,8 +490,8 @@ exports[`ShareAppModal should match booking modal snapshot when booking 1`] = `
   >
     <View
       style={
-        Array [
-          Object {
+        [
+          {
             "flexGrow": 1,
             "width": "100%",
           },
@@ -500,8 +500,8 @@ exports[`ShareAppModal should match booking modal snapshot when booking 1`] = `
     >
       <View
         style={
-          Array [
-            Object {
+          [
+            {
               "alignItems": "center",
               "flexGrow": 0.5,
             },
@@ -511,8 +511,8 @@ exports[`ShareAppModal should match booking modal snapshot when booking 1`] = `
         <View
           accessibilityIgnoresInvertColors={true}
           style={
-            Array [
-              Object {
+            [
+              {
                 "height": 252,
                 "width": "100%",
               },
@@ -521,20 +521,20 @@ exports[`ShareAppModal should match booking modal snapshot when booking 1`] = `
         >
           <Image
             source={
-              Object {
+              {
                 "testUri": "../../../public/images/ShareAppImage.jpg",
               }
             }
             style={
-              Array [
-                Object {
+              [
+                {
                   "bottom": 0,
                   "left": 0,
                   "position": "absolute",
                   "right": 0,
                   "top": 0,
                 },
-                Object {
+                {
                   "height": 252,
                   "width": "100%",
                 },
@@ -546,32 +546,32 @@ exports[`ShareAppModal should match booking modal snapshot when booking 1`] = `
       </View>
       <BVLinearGradient
         colors={
-          Array [
+          [
             16777215,
             4294967295,
           ]
         }
         endPoint={
-          Object {
+          {
             "x": 0.5,
             "y": 1,
           }
         }
         locations={
-          Array [
+          [
             0,
             0.85,
           ]
         }
         startPoint={
-          Object {
+          {
             "x": 0.5,
             "y": 0,
           }
         }
         style={
-          Array [
-            Object {
+          [
+            {
               "height": 72,
               "marginTop": -72,
             },
@@ -580,8 +580,8 @@ exports[`ShareAppModal should match booking modal snapshot when booking 1`] = `
       />
       <View
         style={
-          Array [
-            Object {
+          [
+            {
               "alignItems": "center",
               "flexGrow": 0.5,
             },
@@ -590,8 +590,8 @@ exports[`ShareAppModal should match booking modal snapshot when booking 1`] = `
       >
         <View
           style={
-            Array [
-              Object {
+            [
+              {
                 "alignItems": "center",
                 "maxWidth": 500,
                 "paddingBottom": 32,
@@ -606,8 +606,8 @@ exports[`ShareAppModal should match booking modal snapshot when booking 1`] = `
           <Text
             nativeID="testUuidV4"
             style={
-              Array [
-                Object {
+              [
+                {
                   "color": "#161617",
                   "fontFamily": "Montserrat-Bold",
                   "fontSize": 20,
@@ -622,8 +622,8 @@ exports[`ShareAppModal should match booking modal snapshot when booking 1`] = `
           <View
             numberOfSpaces={6}
             style={
-              Array [
-                Object {
+              [
+                {
                   "height": 24,
                 },
               ]
@@ -631,8 +631,8 @@ exports[`ShareAppModal should match booking modal snapshot when booking 1`] = `
           />
           <Text
             style={
-              Array [
-                Object {
+              [
+                {
                   "color": "#161617",
                   "fontFamily": "Montserrat-Regular",
                   "fontSize": 15,
@@ -647,8 +647,8 @@ exports[`ShareAppModal should match booking modal snapshot when booking 1`] = `
           <View
             numberOfSpaces={6}
             style={
-              Array [
-                Object {
+              [
+                {
                   "height": 24,
                 },
               ]
@@ -656,8 +656,8 @@ exports[`ShareAppModal should match booking modal snapshot when booking 1`] = `
           />
           <View
             style={
-              Array [
-                Object {
+              [
+                {
                   "width": "100%",
                 },
               ]
@@ -667,7 +667,7 @@ exports[`ShareAppModal should match booking modal snapshot when booking 1`] = `
               accessibilityLabel="Partager l’appli"
               accessibilityRole="link"
               accessibilityState={
-                Object {
+                {
                   "disabled": false,
                 }
               }
@@ -682,7 +682,7 @@ exports[`ShareAppModal should match booking modal snapshot when booking 1`] = `
               onResponderTerminationRequest={[Function]}
               onStartShouldSetResponder={[Function]}
               style={
-                Object {
+                {
                   "alignItems": "center",
                   "borderRadius": 24,
                   "justifyContent": "center",
@@ -707,8 +707,8 @@ exports[`ShareAppModal should match booking modal snapshot when booking 1`] = `
               </View>
               <View
                 style={
-                  Array [
-                    Object {
+                  [
+                    {
                       "alignItems": "center",
                       "flexDirection": "row",
                       "position": "absolute",
@@ -729,8 +729,8 @@ exports[`ShareAppModal should match booking modal snapshot when booking 1`] = `
                   isDisabled={false}
                   numberOfLines={1}
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "color": "#ffffff",
                         "fontFamily": "Montserrat-Bold",
                         "fontSize": 15,
@@ -750,8 +750,8 @@ exports[`ShareAppModal should match booking modal snapshot when booking 1`] = `
             <View
               numberOfSpaces={4}
               style={
-                Array [
-                  Object {
+                [
+                  {
                     "height": 16,
                   },
                 ]
@@ -770,7 +770,7 @@ exports[`ShareAppModal should match booking modal snapshot when booking 1`] = `
               onResponderTerminationRequest={[Function]}
               onStartShouldSetResponder={[Function]}
               style={
-                Object {
+                {
                   "alignItems": "center",
                   "backgroundColor": "transparent",
                   "borderRadius": 24,
@@ -791,8 +791,8 @@ exports[`ShareAppModal should match booking modal snapshot when booking 1`] = `
             >
               <View
                 style={
-                  Array [
-                    Object {
+                  [
+                    {
                       "flexShrink": 0,
                     },
                   ]
@@ -813,8 +813,8 @@ exports[`ShareAppModal should match booking modal snapshot when booking 1`] = `
                 adjustsFontSizeToFit={false}
                 numberOfLines={1}
                 style={
-                  Array [
-                    Object {
+                  [
+                    {
                       "color": "#161617",
                       "fontFamily": "Montserrat-SemiBold",
                       "fontSize": 12,
@@ -835,8 +835,8 @@ exports[`ShareAppModal should match booking modal snapshot when booking 1`] = `
   </View>
   <View
     style={
-      Array [
-        Object {
+      [
+        {
           "flexBasis": 0,
           "flexGrow": 1,
           "flexShrink": 1,
@@ -870,7 +870,7 @@ exports[`ShareAppModal should match underage modal snapshot when underage 1`] = 
     onResponderTerminationRequest={[Function]}
     onStartShouldSetResponder={[Function]}
     style={
-      Object {
+      {
         "backgroundColor": "#00000080",
         "flexDirection": "column",
         "flexGrow": 1,
@@ -886,8 +886,8 @@ exports[`ShareAppModal should match underage modal snapshot when underage 1`] = 
   />
   <View
     style={
-      Array [
-        Object {
+      [
+        {
           "flexBasis": 0,
           "flexGrow": 1,
           "flexShrink": 1,
@@ -898,8 +898,8 @@ exports[`ShareAppModal should match underage modal snapshot when underage 1`] = 
   />
   <View
     style={
-      Array [
-        Object {
+      [
+        {
           "alignItems": "center",
           "alignSelf": "center",
           "backgroundColor": "#ffffff",
@@ -914,8 +914,8 @@ exports[`ShareAppModal should match underage modal snapshot when underage 1`] = 
   >
     <View
       style={
-        Array [
-          Object {
+        [
+          {
             "flexGrow": 1,
             "width": "100%",
           },
@@ -924,8 +924,8 @@ exports[`ShareAppModal should match underage modal snapshot when underage 1`] = 
     >
       <View
         style={
-          Array [
-            Object {
+          [
+            {
               "alignItems": "center",
               "flexGrow": 0.5,
             },
@@ -935,8 +935,8 @@ exports[`ShareAppModal should match underage modal snapshot when underage 1`] = 
         <View
           accessibilityIgnoresInvertColors={true}
           style={
-            Array [
-              Object {
+            [
+              {
                 "height": 252,
                 "width": "100%",
               },
@@ -945,20 +945,20 @@ exports[`ShareAppModal should match underage modal snapshot when underage 1`] = 
         >
           <Image
             source={
-              Object {
+              {
                 "testUri": "../../../public/images/ShareAppImage.jpg",
               }
             }
             style={
-              Array [
-                Object {
+              [
+                {
                   "bottom": 0,
                   "left": 0,
                   "position": "absolute",
                   "right": 0,
                   "top": 0,
                 },
-                Object {
+                {
                   "height": 252,
                   "width": "100%",
                 },
@@ -970,32 +970,32 @@ exports[`ShareAppModal should match underage modal snapshot when underage 1`] = 
       </View>
       <BVLinearGradient
         colors={
-          Array [
+          [
             16777215,
             4294967295,
           ]
         }
         endPoint={
-          Object {
+          {
             "x": 0.5,
             "y": 1,
           }
         }
         locations={
-          Array [
+          [
             0,
             0.85,
           ]
         }
         startPoint={
-          Object {
+          {
             "x": 0.5,
             "y": 0,
           }
         }
         style={
-          Array [
-            Object {
+          [
+            {
               "height": 72,
               "marginTop": -72,
             },
@@ -1004,8 +1004,8 @@ exports[`ShareAppModal should match underage modal snapshot when underage 1`] = 
       />
       <View
         style={
-          Array [
-            Object {
+          [
+            {
               "alignItems": "center",
               "flexGrow": 0.5,
             },
@@ -1014,8 +1014,8 @@ exports[`ShareAppModal should match underage modal snapshot when underage 1`] = 
       >
         <View
           style={
-            Array [
-              Object {
+            [
+              {
                 "alignItems": "center",
                 "maxWidth": 500,
                 "paddingBottom": 32,
@@ -1030,8 +1030,8 @@ exports[`ShareAppModal should match underage modal snapshot when underage 1`] = 
           <Text
             nativeID="testUuidV4"
             style={
-              Array [
-                Object {
+              [
+                {
                   "color": "#161617",
                   "fontFamily": "Montserrat-Bold",
                   "fontSize": 20,
@@ -1046,8 +1046,8 @@ exports[`ShareAppModal should match underage modal snapshot when underage 1`] = 
           <View
             numberOfSpaces={6}
             style={
-              Array [
-                Object {
+              [
+                {
                   "height": 24,
                 },
               ]
@@ -1055,8 +1055,8 @@ exports[`ShareAppModal should match underage modal snapshot when underage 1`] = 
           />
           <Text
             style={
-              Array [
-                Object {
+              [
+                {
                   "color": "#161617",
                   "fontFamily": "Montserrat-Regular",
                   "fontSize": 15,
@@ -1073,8 +1073,8 @@ exports[`ShareAppModal should match underage modal snapshot when underage 1`] = 
           <View
             numberOfSpaces={6}
             style={
-              Array [
-                Object {
+              [
+                {
                   "height": 24,
                 },
               ]
@@ -1082,8 +1082,8 @@ exports[`ShareAppModal should match underage modal snapshot when underage 1`] = 
           />
           <View
             style={
-              Array [
-                Object {
+              [
+                {
                   "width": "100%",
                 },
               ]
@@ -1093,7 +1093,7 @@ exports[`ShareAppModal should match underage modal snapshot when underage 1`] = 
               accessibilityLabel="Partager l’appli"
               accessibilityRole="link"
               accessibilityState={
-                Object {
+                {
                   "disabled": false,
                 }
               }
@@ -1108,7 +1108,7 @@ exports[`ShareAppModal should match underage modal snapshot when underage 1`] = 
               onResponderTerminationRequest={[Function]}
               onStartShouldSetResponder={[Function]}
               style={
-                Object {
+                {
                   "alignItems": "center",
                   "borderRadius": 24,
                   "justifyContent": "center",
@@ -1133,8 +1133,8 @@ exports[`ShareAppModal should match underage modal snapshot when underage 1`] = 
               </View>
               <View
                 style={
-                  Array [
-                    Object {
+                  [
+                    {
                       "alignItems": "center",
                       "flexDirection": "row",
                       "position": "absolute",
@@ -1155,8 +1155,8 @@ exports[`ShareAppModal should match underage modal snapshot when underage 1`] = 
                   isDisabled={false}
                   numberOfLines={1}
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "color": "#ffffff",
                         "fontFamily": "Montserrat-Bold",
                         "fontSize": 15,
@@ -1176,8 +1176,8 @@ exports[`ShareAppModal should match underage modal snapshot when underage 1`] = 
             <View
               numberOfSpaces={4}
               style={
-                Array [
-                  Object {
+                [
+                  {
                     "height": 16,
                   },
                 ]
@@ -1196,7 +1196,7 @@ exports[`ShareAppModal should match underage modal snapshot when underage 1`] = 
               onResponderTerminationRequest={[Function]}
               onStartShouldSetResponder={[Function]}
               style={
-                Object {
+                {
                   "alignItems": "center",
                   "backgroundColor": "transparent",
                   "borderRadius": 24,
@@ -1217,8 +1217,8 @@ exports[`ShareAppModal should match underage modal snapshot when underage 1`] = 
             >
               <View
                 style={
-                  Array [
-                    Object {
+                  [
+                    {
                       "flexShrink": 0,
                     },
                   ]
@@ -1239,8 +1239,8 @@ exports[`ShareAppModal should match underage modal snapshot when underage 1`] = 
                 adjustsFontSizeToFit={false}
                 numberOfLines={1}
                 style={
-                  Array [
-                    Object {
+                  [
+                    {
                       "color": "#161617",
                       "fontFamily": "Montserrat-SemiBold",
                       "fontSize": 12,
@@ -1261,8 +1261,8 @@ exports[`ShareAppModal should match underage modal snapshot when underage 1`] = 
   </View>
   <View
     style={
-      Array [
-        Object {
+      [
+        {
           "flexBasis": 0,
           "flexGrow": 1,
           "flexShrink": 1,

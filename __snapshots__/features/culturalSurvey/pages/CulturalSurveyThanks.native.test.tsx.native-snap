@@ -3,8 +3,8 @@
 exports[`CulturalSurveyThanksPage page should render the page with correct layout 1`] = `
 <View
   style={
-    Array [
-      Object {
+    [
+      {
         "alignSelf": "center",
         "flexBasis": 0,
         "flexGrow": 1,
@@ -20,8 +20,8 @@ exports[`CulturalSurveyThanksPage page should render the page with correct layou
   <View
     flex={2}
     style={
-      Array [
-        Object {
+      [
+        {
           "flexBasis": 0,
           "flexGrow": 2,
           "flexShrink": 1,
@@ -32,8 +32,8 @@ exports[`CulturalSurveyThanksPage page should render the page with correct layou
   <View
     hasHeight={true}
     style={
-      Array [
-        Object {
+      [
+        {
           "alignItems": "center",
           "flexGrow": 1,
           "height": "30%",
@@ -49,8 +49,8 @@ exports[`CulturalSurveyThanksPage page should render the page with correct layou
   <View
     flex={0.5}
     style={
-      Array [
-        Object {
+      [
+        {
           "flexBasis": 0,
           "flexGrow": 0.5,
           "flexShrink": 1,
@@ -60,8 +60,8 @@ exports[`CulturalSurveyThanksPage page should render the page with correct layou
   />
   <Text
     style={
-      Array [
-        Object {
+      [
+        {
           "color": "#161617",
           "fontFamily": "Montserrat-Black",
           "fontSize": 26,
@@ -75,8 +75,8 @@ exports[`CulturalSurveyThanksPage page should render the page with correct layou
   </Text>
   <Text
     style={
-      Array [
-        Object {
+      [
+        {
           "color": "#161617",
           "fontFamily": "Montserrat-Medium",
           "fontSize": 18,
@@ -91,8 +91,8 @@ exports[`CulturalSurveyThanksPage page should render the page with correct layou
   <View
     flex={0.5}
     style={
-      Array [
-        Object {
+      [
+        {
           "flexBasis": 0,
           "flexGrow": 0.5,
           "flexShrink": 1,
@@ -102,8 +102,8 @@ exports[`CulturalSurveyThanksPage page should render the page with correct layou
   />
   <Text
     style={
-      Array [
-        Object {
+      [
+        {
           "color": "#161617",
           "fontFamily": "Montserrat-Regular",
           "fontSize": 15,
@@ -118,8 +118,8 @@ exports[`CulturalSurveyThanksPage page should render the page with correct layou
   <View
     flex={2}
     style={
-      Array [
-        Object {
+      [
+        {
           "flexBasis": 0,
           "flexGrow": 2,
           "flexShrink": 1,
@@ -129,8 +129,8 @@ exports[`CulturalSurveyThanksPage page should render the page with correct layou
   />
   <View
     style={
-      Array [
-        Object {
+      [
+        {
           "paddingBottom": 40,
         },
       ]
@@ -149,7 +149,7 @@ exports[`CulturalSurveyThanksPage page should render the page with correct layou
       onResponderTerminationRequest={[Function]}
       onStartShouldSetResponder={[Function]}
       style={
-        Object {
+        {
           "alignItems": "center",
           "backgroundColor": "#eb0055",
           "borderRadius": 24,
@@ -172,8 +172,8 @@ exports[`CulturalSurveyThanksPage page should render the page with correct layou
         adjustsFontSizeToFit={false}
         numberOfLines={1}
         style={
-          Array [
-            Object {
+          [
+            {
               "color": "#ffffff",
               "fontFamily": "Montserrat-Bold",
               "fontSize": 15,
@@ -191,8 +191,8 @@ exports[`CulturalSurveyThanksPage page should render the page with correct layou
   <View
     flex={0.1}
     style={
-      Array [
-        Object {
+      [
+        {
           "flexBasis": 0,
           "flexGrow": 0.1,
           "flexShrink": 1,

@@ -22,7 +22,7 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
   scrollTo={null}
   statusBarTranslucent={true}
   supportedOrientations={
-    Array [
+    [
       "portrait",
       "landscape",
     ]
@@ -45,7 +45,7 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
     onResponderTerminationRequest={[Function]}
     onStartShouldSetResponder={[Function]}
     style={
-      Object {
+      {
         "backgroundColor": "black",
         "bottom": 0,
         "height": 1334,
@@ -79,7 +79,7 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
     scrollTo={null}
     statusBarTranslucent={true}
     style={
-      Object {
+      {
         "alignItems": "center",
         "bottom": 0,
         "flex": 1,
@@ -89,15 +89,15 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
         "position": "absolute",
         "right": 0,
         "top": "auto",
-        "transform": Array [
-          Object {
+        "transform": [
+          {
             "translateY": 1334,
           },
         ],
       }
     }
     supportedOrientations={
-      Array [
+      [
         "portrait",
         "landscape",
       ]
@@ -110,8 +110,8 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
       maxHeight={1334}
       noPadding={true}
       style={
-        Array [
-          Object {
+        [
+          {
             "alignItems": "center",
             "backgroundColor": "#ffffff",
             "borderBottomEndRadius": 0,
@@ -137,8 +137,8 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
       <View
         nativeID="testUuidV4"
         style={
-          Array [
-            Object {
+          [
+            {
               "flexDirection": "row",
               "width": "100%",
             },
@@ -149,8 +149,8 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
         <View
           accessibilityRole="header"
           style={
-            Array [
-              Object {
+            [
+              {
                 "width": "100%",
               },
             ]
@@ -158,15 +158,15 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
         >
           <View
             style={
-              Object {
+              {
                 "height": 64,
               }
             }
           />
           <View
             style={
-              Array [
-                Object {
+              [
+                {
                   "backgroundColor": "#eb0055",
                   "position": "absolute",
                   "top": 0,
@@ -181,8 +181,8 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
               customHeight={16}
               enable={true}
               style={
-                Array [
-                  Object {
+                [
+                  {
                     "height": 16,
                   },
                 ]
@@ -190,8 +190,8 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
             />
             <View
               style={
-                Array [
-                  Object {
+                [
+                  {
                     "alignItems": "center",
                     "height": 48,
                     "justifyContent": "center",
@@ -201,8 +201,8 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
             >
               <View
                 style={
-                  Array [
-                    Object {
+                  [
+                    {
                       "alignItems": "center",
                       "flexDirection": "row",
                       "justifyContent": "space-between",
@@ -214,8 +214,8 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
                 <View
                   positionInHeader="left"
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "alignItems": "center",
                         "flexBasis": 0,
                         "flexDirection": "row",
@@ -233,8 +233,8 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
                   nativeID="testUuidV4"
                   numberOfLines={1}
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "color": "#ffffff",
                         "fontFamily": "Montserrat-Regular",
                         "fontSize": 15,
@@ -249,8 +249,8 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
                 <View
                   positionInHeader="right"
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "alignItems": "center",
                         "flexBasis": 0,
                         "flexDirection": "row",
@@ -278,7 +278,7 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
                     onResponderTerminationRequest={[Function]}
                     onStartShouldSetResponder={[Function]}
                     style={
-                      Object {
+                      {
                         "alignItems": "center",
                         "flexGrow": 1,
                         "height": 40,
@@ -301,8 +301,8 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
                     </View>
                     <Text
                       style={
-                        Array [
-                          Object {
+                        [
+                          {
                             "display": "none",
                           },
                         ]
@@ -322,8 +322,8 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
         onContentSizeChange={[Function]}
         scrollEnabled={true}
         style={
-          Array [
-            Object {
+          [
+            {
               "paddingHorizontal": 24,
               "width": "100%",
             },
@@ -334,8 +334,8 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
         <View>
           <View
             style={
-              Array [
-                Object {
+              [
+                {
                   "maxWidth": 500,
                   "width": "100%",
                 },
@@ -345,8 +345,8 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
             <View
               accessibilityRole="list"
               style={
-                Array [
-                  Object {
+                [
+                  {
                     "flexDirection": "column",
                     "paddingLeft": 0,
                   },
@@ -356,8 +356,8 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
               <View
                 accessibilityRole="none"
                 style={
-                  Array [
-                    Object {
+                  [
+                    {
                       "display": "flex",
                     },
                   ]
@@ -367,7 +367,7 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
                   accessibilityLabel="Toutes les catégories"
                   accessibilityRole="radio"
                   accessibilityState={
-                    Object {
+                    {
                       "checked": true,
                     }
                   }
@@ -382,7 +382,7 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
                   onResponderTerminationRequest={[Function]}
                   onStartShouldSetResponder={[Function]}
                   style={
-                    Object {
+                    {
                       "alignItems": "center",
                       "flexDirection": "row",
                       "justifyContent": "space-between",
@@ -397,8 +397,8 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
                   <View
                     flex={0.9}
                     style={
-                      Array [
-                        Object {
+                      [
+                        {
                           "alignItems": "center",
                           "flexBasis": 0,
                           "flexDirection": "row",
@@ -410,8 +410,8 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
                   >
                     <View
                       style={
-                        Array [
-                          Object {
+                        [
+                          {
                             "flexShrink": 0,
                           },
                         ]
@@ -429,8 +429,8 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
                     <View
                       numberOfSpaces={2}
                       style={
-                        Array [
-                          Object {
+                        [
+                          {
                             "width": 8,
                           },
                         ]
@@ -438,8 +438,8 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
                     />
                     <View
                       style={
-                        Array [
-                          Object {
+                        [
+                          {
                             "flexShrink": 1,
                           },
                         ]
@@ -449,8 +449,8 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
                         isSelected={true}
                         numberOfLines={2}
                         style={
-                          Array [
-                            Object {
+                          [
+                            {
                               "color": "#eb0055",
                               "fontFamily": "Montserrat-Bold",
                               "fontSize": 15,
@@ -465,8 +465,8 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
                   </View>
                   <View
                     style={
-                      Array [
-                        Object {
+                      [
+                        {
                           "alignItems": "flex-end",
                           "flexBasis": 0,
                           "flexGrow": 0.1,
@@ -493,8 +493,8 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
               <View
                 accessibilityRole="none"
                 style={
-                  Array [
-                    Object {
+                  [
+                    {
                       "display": "flex",
                     },
                   ]
@@ -503,8 +503,8 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
                 <View
                   numberOfSpaces={3}
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "height": 12,
                       },
                     ]
@@ -523,7 +523,7 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
                   onResponderTerminationRequest={[Function]}
                   onStartShouldSetResponder={[Function]}
                   style={
-                    Object {
+                    {
                       "alignItems": "center",
                       "flexDirection": "row",
                       "justifyContent": "space-between",
@@ -544,8 +544,8 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
                   <View
                     numberOfSpaces={2}
                     style={
-                      Array [
-                        Object {
+                      [
+                        {
                           "width": 8,
                         },
                       ]
@@ -553,8 +553,8 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
                   />
                   <View
                     style={
-                      Array [
-                        Object {
+                      [
+                        {
                           "alignItems": "flex-start",
                           "flexDirection": "column",
                         },
@@ -564,8 +564,8 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
                     <Text
                       numberOfLines={1}
                       style={
-                        Array [
-                          Object {
+                        [
+                          {
                             "color": "#161617",
                             "flexShrink": 1,
                             "fontFamily": "Montserrat-Bold",
@@ -580,8 +580,8 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
                   </View>
                   <View
                     style={
-                      Array [
-                        Object {
+                      [
+                        {
                           "flexBasis": 0,
                           "flexGrow": 1,
                           "flexShrink": 1,
@@ -602,8 +602,8 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
                 <View
                   numberOfSpaces={3}
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "height": 12,
                       },
                     ]
@@ -613,8 +613,8 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
               <View
                 accessibilityRole="none"
                 style={
-                  Array [
-                    Object {
+                  [
+                    {
                       "display": "flex",
                     },
                   ]
@@ -623,8 +623,8 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
                 <View
                   numberOfSpaces={3}
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "height": 12,
                       },
                     ]
@@ -643,7 +643,7 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
                   onResponderTerminationRequest={[Function]}
                   onStartShouldSetResponder={[Function]}
                   style={
-                    Object {
+                    {
                       "alignItems": "center",
                       "flexDirection": "row",
                       "justifyContent": "space-between",
@@ -665,8 +665,8 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
                   <View
                     numberOfSpaces={2}
                     style={
-                      Array [
-                        Object {
+                      [
+                        {
                           "width": 8,
                         },
                       ]
@@ -674,8 +674,8 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
                   />
                   <View
                     style={
-                      Array [
-                        Object {
+                      [
+                        {
                           "alignItems": "flex-start",
                           "flexDirection": "column",
                         },
@@ -685,8 +685,8 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
                     <Text
                       numberOfLines={1}
                       style={
-                        Array [
-                          Object {
+                        [
+                          {
                             "color": "#161617",
                             "flexShrink": 1,
                             "fontFamily": "Montserrat-Bold",
@@ -701,8 +701,8 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
                   </View>
                   <View
                     style={
-                      Array [
-                        Object {
+                      [
+                        {
                           "flexBasis": 0,
                           "flexGrow": 1,
                           "flexShrink": 1,
@@ -723,8 +723,8 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
                 <View
                   numberOfSpaces={3}
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "height": 12,
                       },
                     ]
@@ -734,8 +734,8 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
               <View
                 accessibilityRole="none"
                 style={
-                  Array [
-                    Object {
+                  [
+                    {
                       "display": "flex",
                     },
                   ]
@@ -744,8 +744,8 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
                 <View
                   numberOfSpaces={3}
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "height": 12,
                       },
                     ]
@@ -755,7 +755,7 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
                   accessibilityLabel="Cartes jeunes"
                   accessibilityRole="radio"
                   accessibilityState={
-                    Object {
+                    {
                       "checked": false,
                     }
                   }
@@ -770,7 +770,7 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
                   onResponderTerminationRequest={[Function]}
                   onStartShouldSetResponder={[Function]}
                   style={
-                    Object {
+                    {
                       "alignItems": "center",
                       "flexDirection": "row",
                       "justifyContent": "space-between",
@@ -785,8 +785,8 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
                   <View
                     flex={0.9}
                     style={
-                      Array [
-                        Object {
+                      [
+                        {
                           "alignItems": "center",
                           "flexBasis": 0,
                           "flexDirection": "row",
@@ -798,8 +798,8 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
                   >
                     <View
                       style={
-                        Array [
-                          Object {
+                        [
+                          {
                             "flexShrink": 0,
                           },
                         ]
@@ -817,8 +817,8 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
                     <View
                       numberOfSpaces={2}
                       style={
-                        Array [
-                          Object {
+                        [
+                          {
                             "width": 8,
                           },
                         ]
@@ -826,8 +826,8 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
                     />
                     <View
                       style={
-                        Array [
-                          Object {
+                        [
+                          {
                             "flexShrink": 1,
                           },
                         ]
@@ -837,8 +837,8 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
                         isSelected={false}
                         numberOfLines={2}
                         style={
-                          Array [
-                            Object {
+                          [
+                            {
                               "color": "#161617",
                               "fontFamily": "Montserrat-Bold",
                               "fontSize": 15,
@@ -853,8 +853,8 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
                   </View>
                   <View
                     style={
-                      Array [
-                        Object {
+                      [
+                        {
                           "alignItems": "flex-end",
                           "flexBasis": 0,
                           "flexGrow": 0.1,
@@ -880,8 +880,8 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
                 <View
                   numberOfSpaces={3}
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "height": 12,
                       },
                     ]
@@ -891,8 +891,8 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
               <View
                 accessibilityRole="none"
                 style={
-                  Array [
-                    Object {
+                  [
+                    {
                       "display": "flex",
                     },
                   ]
@@ -901,8 +901,8 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
                 <View
                   numberOfSpaces={3}
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "height": 12,
                       },
                     ]
@@ -921,7 +921,7 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
                   onResponderTerminationRequest={[Function]}
                   onStartShouldSetResponder={[Function]}
                   style={
-                    Object {
+                    {
                       "alignItems": "center",
                       "flexDirection": "row",
                       "justifyContent": "space-between",
@@ -942,8 +942,8 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
                   <View
                     numberOfSpaces={2}
                     style={
-                      Array [
-                        Object {
+                      [
+                        {
                           "width": 8,
                         },
                       ]
@@ -951,8 +951,8 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
                   />
                   <View
                     style={
-                      Array [
-                        Object {
+                      [
+                        {
                           "alignItems": "flex-start",
                           "flexDirection": "column",
                         },
@@ -962,8 +962,8 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
                     <Text
                       numberOfLines={1}
                       style={
-                        Array [
-                          Object {
+                        [
+                          {
                             "color": "#161617",
                             "flexShrink": 1,
                             "fontFamily": "Montserrat-Bold",
@@ -978,8 +978,8 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
                   </View>
                   <View
                     style={
-                      Array [
-                        Object {
+                      [
+                        {
                           "flexBasis": 0,
                           "flexGrow": 1,
                           "flexShrink": 1,
@@ -1000,8 +1000,8 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
                 <View
                   numberOfSpaces={3}
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "height": 12,
                       },
                     ]
@@ -1011,8 +1011,8 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
               <View
                 accessibilityRole="none"
                 style={
-                  Array [
-                    Object {
+                  [
+                    {
                       "display": "flex",
                     },
                   ]
@@ -1021,8 +1021,8 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
                 <View
                   numberOfSpaces={3}
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "height": 12,
                       },
                     ]
@@ -1041,7 +1041,7 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
                   onResponderTerminationRequest={[Function]}
                   onStartShouldSetResponder={[Function]}
                   style={
-                    Object {
+                    {
                       "alignItems": "center",
                       "flexDirection": "row",
                       "justifyContent": "space-between",
@@ -1062,8 +1062,8 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
                   <View
                     numberOfSpaces={2}
                     style={
-                      Array [
-                        Object {
+                      [
+                        {
                           "width": 8,
                         },
                       ]
@@ -1071,8 +1071,8 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
                   />
                   <View
                     style={
-                      Array [
-                        Object {
+                      [
+                        {
                           "alignItems": "flex-start",
                           "flexDirection": "column",
                         },
@@ -1082,8 +1082,8 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
                     <Text
                       numberOfLines={1}
                       style={
-                        Array [
-                          Object {
+                        [
+                          {
                             "color": "#161617",
                             "flexShrink": 1,
                             "fontFamily": "Montserrat-Bold",
@@ -1098,8 +1098,8 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
                   </View>
                   <View
                     style={
-                      Array [
-                        Object {
+                      [
+                        {
                           "flexBasis": 0,
                           "flexGrow": 1,
                           "flexShrink": 1,
@@ -1120,8 +1120,8 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
                 <View
                   numberOfSpaces={3}
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "height": 12,
                       },
                     ]
@@ -1131,8 +1131,8 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
               <View
                 accessibilityRole="none"
                 style={
-                  Array [
-                    Object {
+                  [
+                    {
                       "display": "flex",
                     },
                   ]
@@ -1141,8 +1141,8 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
                 <View
                   numberOfSpaces={3}
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "height": 12,
                       },
                     ]
@@ -1161,7 +1161,7 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
                   onResponderTerminationRequest={[Function]}
                   onStartShouldSetResponder={[Function]}
                   style={
-                    Object {
+                    {
                       "alignItems": "center",
                       "flexDirection": "row",
                       "justifyContent": "space-between",
@@ -1182,8 +1182,8 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
                   <View
                     numberOfSpaces={2}
                     style={
-                      Array [
-                        Object {
+                      [
+                        {
                           "width": 8,
                         },
                       ]
@@ -1191,8 +1191,8 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
                   />
                   <View
                     style={
-                      Array [
-                        Object {
+                      [
+                        {
                           "alignItems": "flex-start",
                           "flexDirection": "column",
                         },
@@ -1202,8 +1202,8 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
                     <Text
                       numberOfLines={1}
                       style={
-                        Array [
-                          Object {
+                        [
+                          {
                             "color": "#161617",
                             "flexShrink": 1,
                             "fontFamily": "Montserrat-Bold",
@@ -1218,8 +1218,8 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
                   </View>
                   <View
                     style={
-                      Array [
-                        Object {
+                      [
+                        {
                           "flexBasis": 0,
                           "flexGrow": 1,
                           "flexShrink": 1,
@@ -1240,8 +1240,8 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
                 <View
                   numberOfSpaces={3}
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "height": 12,
                       },
                     ]
@@ -1251,8 +1251,8 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
               <View
                 accessibilityRole="none"
                 style={
-                  Array [
-                    Object {
+                  [
+                    {
                       "display": "flex",
                     },
                   ]
@@ -1261,8 +1261,8 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
                 <View
                   numberOfSpaces={3}
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "height": 12,
                       },
                     ]
@@ -1281,7 +1281,7 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
                   onResponderTerminationRequest={[Function]}
                   onStartShouldSetResponder={[Function]}
                   style={
-                    Object {
+                    {
                       "alignItems": "center",
                       "flexDirection": "row",
                       "justifyContent": "space-between",
@@ -1302,8 +1302,8 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
                   <View
                     numberOfSpaces={2}
                     style={
-                      Array [
-                        Object {
+                      [
+                        {
                           "width": 8,
                         },
                       ]
@@ -1311,8 +1311,8 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
                   />
                   <View
                     style={
-                      Array [
-                        Object {
+                      [
+                        {
                           "alignItems": "flex-start",
                           "flexDirection": "column",
                         },
@@ -1322,8 +1322,8 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
                     <Text
                       numberOfLines={1}
                       style={
-                        Array [
-                          Object {
+                        [
+                          {
                             "color": "#161617",
                             "flexShrink": 1,
                             "fontFamily": "Montserrat-Bold",
@@ -1338,8 +1338,8 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
                   </View>
                   <View
                     style={
-                      Array [
-                        Object {
+                      [
+                        {
                           "flexBasis": 0,
                           "flexGrow": 1,
                           "flexShrink": 1,
@@ -1360,8 +1360,8 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
                 <View
                   numberOfSpaces={3}
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "height": 12,
                       },
                     ]
@@ -1371,8 +1371,8 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
               <View
                 accessibilityRole="none"
                 style={
-                  Array [
-                    Object {
+                  [
+                    {
                       "display": "flex",
                     },
                   ]
@@ -1381,8 +1381,8 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
                 <View
                   numberOfSpaces={3}
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "height": 12,
                       },
                     ]
@@ -1401,7 +1401,7 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
                   onResponderTerminationRequest={[Function]}
                   onStartShouldSetResponder={[Function]}
                   style={
-                    Object {
+                    {
                       "alignItems": "center",
                       "flexDirection": "row",
                       "justifyContent": "space-between",
@@ -1422,8 +1422,8 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
                   <View
                     numberOfSpaces={2}
                     style={
-                      Array [
-                        Object {
+                      [
+                        {
                           "width": 8,
                         },
                       ]
@@ -1431,8 +1431,8 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
                   />
                   <View
                     style={
-                      Array [
-                        Object {
+                      [
+                        {
                           "alignItems": "flex-start",
                           "flexDirection": "column",
                         },
@@ -1442,8 +1442,8 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
                     <Text
                       numberOfLines={1}
                       style={
-                        Array [
-                          Object {
+                        [
+                          {
                             "color": "#161617",
                             "flexShrink": 1,
                             "fontFamily": "Montserrat-Bold",
@@ -1458,8 +1458,8 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
                   </View>
                   <View
                     style={
-                      Array [
-                        Object {
+                      [
+                        {
                           "flexBasis": 0,
                           "flexGrow": 1,
                           "flexShrink": 1,
@@ -1480,8 +1480,8 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
                 <View
                   numberOfSpaces={3}
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "height": 12,
                       },
                     ]
@@ -1491,8 +1491,8 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
               <View
                 accessibilityRole="none"
                 style={
-                  Array [
-                    Object {
+                  [
+                    {
                       "display": "flex",
                     },
                   ]
@@ -1501,8 +1501,8 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
                 <View
                   numberOfSpaces={3}
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "height": 12,
                       },
                     ]
@@ -1521,7 +1521,7 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
                   onResponderTerminationRequest={[Function]}
                   onStartShouldSetResponder={[Function]}
                   style={
-                    Object {
+                    {
                       "alignItems": "center",
                       "flexDirection": "row",
                       "justifyContent": "space-between",
@@ -1542,8 +1542,8 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
                   <View
                     numberOfSpaces={2}
                     style={
-                      Array [
-                        Object {
+                      [
+                        {
                           "width": 8,
                         },
                       ]
@@ -1551,8 +1551,8 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
                   />
                   <View
                     style={
-                      Array [
-                        Object {
+                      [
+                        {
                           "alignItems": "flex-start",
                           "flexDirection": "column",
                         },
@@ -1562,8 +1562,8 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
                     <Text
                       numberOfLines={1}
                       style={
-                        Array [
-                          Object {
+                        [
+                          {
                             "color": "#161617",
                             "flexShrink": 1,
                             "fontFamily": "Montserrat-Bold",
@@ -1578,8 +1578,8 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
                   </View>
                   <View
                     style={
-                      Array [
-                        Object {
+                      [
+                        {
                           "flexBasis": 0,
                           "flexGrow": 1,
                           "flexShrink": 1,
@@ -1600,8 +1600,8 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
                 <View
                   numberOfSpaces={3}
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "height": 12,
                       },
                     ]
@@ -1611,8 +1611,8 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
               <View
                 accessibilityRole="none"
                 style={
-                  Array [
-                    Object {
+                  [
+                    {
                       "display": "flex",
                     },
                   ]
@@ -1621,8 +1621,8 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
                 <View
                   numberOfSpaces={3}
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "height": 12,
                       },
                     ]
@@ -1641,7 +1641,7 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
                   onResponderTerminationRequest={[Function]}
                   onStartShouldSetResponder={[Function]}
                   style={
-                    Object {
+                    {
                       "alignItems": "center",
                       "flexDirection": "row",
                       "justifyContent": "space-between",
@@ -1662,8 +1662,8 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
                   <View
                     numberOfSpaces={2}
                     style={
-                      Array [
-                        Object {
+                      [
+                        {
                           "width": 8,
                         },
                       ]
@@ -1671,8 +1671,8 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
                   />
                   <View
                     style={
-                      Array [
-                        Object {
+                      [
+                        {
                           "alignItems": "flex-start",
                           "flexDirection": "column",
                         },
@@ -1682,8 +1682,8 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
                     <Text
                       numberOfLines={1}
                       style={
-                        Array [
-                          Object {
+                        [
+                          {
                             "color": "#161617",
                             "flexShrink": 1,
                             "fontFamily": "Montserrat-Bold",
@@ -1698,8 +1698,8 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
                   </View>
                   <View
                     style={
-                      Array [
-                        Object {
+                      [
+                        {
                           "flexBasis": 0,
                           "flexGrow": 1,
                           "flexShrink": 1,
@@ -1720,8 +1720,8 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
                 <View
                   numberOfSpaces={3}
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "height": 12,
                       },
                     ]
@@ -1731,8 +1731,8 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
               <View
                 accessibilityRole="none"
                 style={
-                  Array [
-                    Object {
+                  [
+                    {
                       "display": "flex",
                     },
                   ]
@@ -1741,8 +1741,8 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
                 <View
                   numberOfSpaces={3}
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "height": 12,
                       },
                     ]
@@ -1761,7 +1761,7 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
                   onResponderTerminationRequest={[Function]}
                   onStartShouldSetResponder={[Function]}
                   style={
-                    Object {
+                    {
                       "alignItems": "center",
                       "flexDirection": "row",
                       "justifyContent": "space-between",
@@ -1782,8 +1782,8 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
                   <View
                     numberOfSpaces={2}
                     style={
-                      Array [
-                        Object {
+                      [
+                        {
                           "width": 8,
                         },
                       ]
@@ -1791,8 +1791,8 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
                   />
                   <View
                     style={
-                      Array [
-                        Object {
+                      [
+                        {
                           "alignItems": "flex-start",
                           "flexDirection": "column",
                         },
@@ -1802,8 +1802,8 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
                     <Text
                       numberOfLines={1}
                       style={
-                        Array [
-                          Object {
+                        [
+                          {
                             "color": "#161617",
                             "flexShrink": 1,
                             "fontFamily": "Montserrat-Bold",
@@ -1818,8 +1818,8 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
                   </View>
                   <View
                     style={
-                      Array [
-                        Object {
+                      [
+                        {
                           "flexBasis": 0,
                           "flexGrow": 1,
                           "flexShrink": 1,
@@ -1840,8 +1840,8 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
                 <View
                   numberOfSpaces={3}
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "height": 12,
                       },
                     ]
@@ -1851,8 +1851,8 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
               <View
                 accessibilityRole="none"
                 style={
-                  Array [
-                    Object {
+                  [
+                    {
                       "display": "flex",
                     },
                   ]
@@ -1861,8 +1861,8 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
                 <View
                   numberOfSpaces={3}
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "height": 12,
                       },
                     ]
@@ -1881,7 +1881,7 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
                   onResponderTerminationRequest={[Function]}
                   onStartShouldSetResponder={[Function]}
                   style={
-                    Object {
+                    {
                       "alignItems": "center",
                       "flexDirection": "row",
                       "justifyContent": "space-between",
@@ -1902,8 +1902,8 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
                   <View
                     numberOfSpaces={2}
                     style={
-                      Array [
-                        Object {
+                      [
+                        {
                           "width": 8,
                         },
                       ]
@@ -1911,8 +1911,8 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
                   />
                   <View
                     style={
-                      Array [
-                        Object {
+                      [
+                        {
                           "alignItems": "flex-start",
                           "flexDirection": "column",
                         },
@@ -1922,8 +1922,8 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
                     <Text
                       numberOfLines={1}
                       style={
-                        Array [
-                          Object {
+                        [
+                          {
                             "color": "#161617",
                             "flexShrink": 1,
                             "fontFamily": "Montserrat-Bold",
@@ -1938,8 +1938,8 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
                   </View>
                   <View
                     style={
-                      Array [
-                        Object {
+                      [
+                        {
                           "flexBasis": 0,
                           "flexGrow": 1,
                           "flexShrink": 1,
@@ -1960,8 +1960,8 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
                 <View
                   numberOfSpaces={3}
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "height": 12,
                       },
                     ]
@@ -1971,8 +1971,8 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
               <View
                 accessibilityRole="none"
                 style={
-                  Array [
-                    Object {
+                  [
+                    {
                       "display": "flex",
                     },
                   ]
@@ -1981,8 +1981,8 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
                 <View
                   numberOfSpaces={3}
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "height": 12,
                       },
                     ]
@@ -2001,7 +2001,7 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
                   onResponderTerminationRequest={[Function]}
                   onStartShouldSetResponder={[Function]}
                   style={
-                    Object {
+                    {
                       "alignItems": "center",
                       "flexDirection": "row",
                       "justifyContent": "space-between",
@@ -2022,8 +2022,8 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
                   <View
                     numberOfSpaces={2}
                     style={
-                      Array [
-                        Object {
+                      [
+                        {
                           "width": 8,
                         },
                       ]
@@ -2031,8 +2031,8 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
                   />
                   <View
                     style={
-                      Array [
-                        Object {
+                      [
+                        {
                           "alignItems": "flex-start",
                           "flexDirection": "column",
                         },
@@ -2042,8 +2042,8 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
                     <Text
                       numberOfLines={1}
                       style={
-                        Array [
-                          Object {
+                        [
+                          {
                             "color": "#161617",
                             "flexShrink": 1,
                             "fontFamily": "Montserrat-Bold",
@@ -2058,8 +2058,8 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
                   </View>
                   <View
                     style={
-                      Array [
-                        Object {
+                      [
+                        {
                           "flexBasis": 0,
                           "flexGrow": 1,
                           "flexShrink": 1,
@@ -2080,8 +2080,8 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
                 <View
                   numberOfSpaces={3}
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "height": 12,
                       },
                     ]
@@ -2091,8 +2091,8 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
               <View
                 accessibilityRole="none"
                 style={
-                  Array [
-                    Object {
+                  [
+                    {
                       "display": "flex",
                     },
                   ]
@@ -2101,8 +2101,8 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
                 <View
                   numberOfSpaces={3}
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "height": 12,
                       },
                     ]
@@ -2121,7 +2121,7 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
                   onResponderTerminationRequest={[Function]}
                   onStartShouldSetResponder={[Function]}
                   style={
-                    Object {
+                    {
                       "alignItems": "center",
                       "flexDirection": "row",
                       "justifyContent": "space-between",
@@ -2142,8 +2142,8 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
                   <View
                     numberOfSpaces={2}
                     style={
-                      Array [
-                        Object {
+                      [
+                        {
                           "width": 8,
                         },
                       ]
@@ -2151,8 +2151,8 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
                   />
                   <View
                     style={
-                      Array [
-                        Object {
+                      [
+                        {
                           "alignItems": "flex-start",
                           "flexDirection": "column",
                         },
@@ -2162,8 +2162,8 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
                     <Text
                       numberOfLines={1}
                       style={
-                        Array [
-                          Object {
+                        [
+                          {
                             "color": "#161617",
                             "flexShrink": 1,
                             "fontFamily": "Montserrat-Bold",
@@ -2178,8 +2178,8 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
                   </View>
                   <View
                     style={
-                      Array [
-                        Object {
+                      [
+                        {
                           "flexBasis": 0,
                           "flexGrow": 1,
                           "flexShrink": 1,
@@ -2200,8 +2200,8 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
                 <View
                   numberOfSpaces={3}
                   style={
-                    Array [
-                      Object {
+                    [
+                      {
                         "height": 12,
                       },
                     ]
@@ -2214,8 +2214,8 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
       </RCTScrollView>
       <View
         style={
-          Array [
-            Object {
+          [
+            {
               "width": "100%",
             },
           ]
@@ -2225,16 +2225,16 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
         <View
           paddingBottom={0}
           style={
-            Array [
-              Object {},
+            [
+              {},
             ]
           }
         >
           <View
             isModal={true}
             style={
-              Array [
-                Object {
+              [
+                {
                   "flexDirection": "row",
                   "justifyContent": "center",
                   "paddingHorizontal": 24,
@@ -2256,7 +2256,7 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
               onResponderTerminationRequest={[Function]}
               onStartShouldSetResponder={[Function]}
               style={
-                Object {
+                {
                   "alignItems": "center",
                   "backgroundColor": "transparent",
                   "borderRadius": 24,
@@ -2278,8 +2278,8 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
             >
               <View
                 style={
-                  Array [
-                    Object {
+                  [
+                    {
                       "flexShrink": 0,
                     },
                   ]
@@ -2299,8 +2299,8 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
                 adjustsFontSizeToFit={false}
                 numberOfLines={1}
                 style={
-                  Array [
-                    Object {
+                  [
+                    {
                       "color": "#161617",
                       "fontFamily": "Montserrat-SemiBold",
                       "fontSize": 12,
@@ -2317,8 +2317,8 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
             <View
               numberOfSpaces={4}
               style={
-                Array [
-                  Object {
+                [
+                  {
                     "height": 16,
                   },
                 ]
@@ -2327,7 +2327,7 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
             <View
               accessibilityLabel="Rechercher"
               accessibilityState={
-                Object {
+                {
                   "disabled": false,
                 }
               }
@@ -2342,7 +2342,7 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
               onResponderTerminationRequest={[Function]}
               onStartShouldSetResponder={[Function]}
               style={
-                Object {
+                {
                   "alignItems": "center",
                   "backgroundColor": "#eb0055",
                   "borderRadius": 24,
@@ -2366,8 +2366,8 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
                 adjustsFontSizeToFit={false}
                 numberOfLines={1}
                 style={
-                  Array [
-                    Object {
+                  [
+                    {
                       "color": "#ffffff",
                       "fontFamily": "Montserrat-Bold",
                       "fontSize": 15,
@@ -2388,8 +2388,8 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
         customHeight={8}
         enable={true}
         style={
-          Array [
-            Object {
+          [
+            {
               "height": 8,
             },
           ]

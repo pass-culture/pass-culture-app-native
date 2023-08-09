@@ -230,8 +230,6 @@ describe('<OfferBody /> - Analytics', () => {
       useFeatureFlagSpy.mockReturnValue(true)
     })
 
-    afterEach(jest.restoreAllMocks)
-
     it('should log when the users press the change venue modal', async () => {
       mockNbVenueItems = 2
       mockVenueList = offerVenues

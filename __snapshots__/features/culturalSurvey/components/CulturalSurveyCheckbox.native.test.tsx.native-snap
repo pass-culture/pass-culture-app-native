@@ -4,27 +4,27 @@ exports[`CulturalSurveyCheckbox should render correctly 1`] = `
 <BVLinearGradient
   angle={175}
   colors={
-    Array [
+    [
       4291546578,
       4291546578,
     ]
   }
   endPoint={
-    Object {
+    {
       "x": 0.5,
       "y": 1,
     }
   }
   locations={null}
   startPoint={
-    Object {
+    {
       "x": 0.5,
       "y": 0,
     }
   }
   style={
-    Array [
-      Object {
+    [
+      {
         "borderRadius": 8,
       },
     ]
@@ -35,7 +35,7 @@ exports[`CulturalSurveyCheckbox should render correctly 1`] = `
     accessibilityLabel="Visité un musée, un monument, une exposition..."
     accessibilityRole="checkbox"
     accessibilityState={
-      Object {
+      {
         "checked": false,
       }
     }
@@ -50,7 +50,7 @@ exports[`CulturalSurveyCheckbox should render correctly 1`] = `
     onResponderTerminationRequest={[Function]}
     onStartShouldSetResponder={[Function]}
     style={
-      Object {
+      {
         "alignItems": "center",
         "backgroundColor": "#ffffff",
         "borderRadius": 7,
@@ -69,8 +69,8 @@ exports[`CulturalSurveyCheckbox should render correctly 1`] = `
   >
     <View
       style={
-        Array [
-          Object {
+        [
+          {
             "alignContent": "center",
             "marginLeft": 16,
           },
@@ -88,8 +88,8 @@ exports[`CulturalSurveyCheckbox should render correctly 1`] = `
     </View>
     <View
       style={
-        Array [
-          Object {
+        [
+          {
             "flexShrink": 1,
             "marginLeft": 16,
             "marginRight": 40,
@@ -99,8 +99,8 @@ exports[`CulturalSurveyCheckbox should render correctly 1`] = `
     >
       <Text
         style={
-          Array [
-            Object {
+          [
+            {
               "color": "#161617",
               "fontFamily": "Montserrat-Bold",
               "fontSize": 15,
@@ -113,8 +113,8 @@ exports[`CulturalSurveyCheckbox should render correctly 1`] = `
       </Text>
       <Text
         style={
-          Array [
-            Object {
+          [
+            {
               "color": "#696A6F",
               "fontFamily": "Montserrat-SemiBold",
               "fontSize": 12,
@@ -134,27 +134,27 @@ exports[`CulturalSurveyCheckbox should render correctly when pressed 1`] = `
 <BVLinearGradient
   angle={175}
   colors={
-    Array [
+    [
       4281467030,
       4293591125,
     ]
   }
   endPoint={
-    Object {
+    {
       "x": 0.5,
       "y": 1,
     }
   }
   locations={null}
   startPoint={
-    Object {
+    {
       "x": 0.5,
       "y": 0,
     }
   }
   style={
-    Array [
-      Object {
+    [
+      {
         "borderRadius": 8,
       },
     ]
@@ -165,7 +165,7 @@ exports[`CulturalSurveyCheckbox should render correctly when pressed 1`] = `
     accessibilityLabel="Visité un musée, un monument, une exposition..."
     accessibilityRole="checkbox"
     accessibilityState={
-      Object {
+      {
         "checked": true,
       }
     }
@@ -180,7 +180,7 @@ exports[`CulturalSurveyCheckbox should render correctly when pressed 1`] = `
     onResponderTerminationRequest={[Function]}
     onStartShouldSetResponder={[Function]}
     style={
-      Object {
+      {
         "alignItems": "center",
         "backgroundColor": "#ffffff",
         "borderRadius": 7,
@@ -199,8 +199,8 @@ exports[`CulturalSurveyCheckbox should render correctly when pressed 1`] = `
   >
     <View
       style={
-        Array [
-          Object {
+        [
+          {
             "alignContent": "center",
             "marginLeft": 16,
           },
@@ -218,8 +218,8 @@ exports[`CulturalSurveyCheckbox should render correctly when pressed 1`] = `
     </View>
     <View
       style={
-        Array [
-          Object {
+        [
+          {
             "flexShrink": 1,
             "marginLeft": 16,
             "marginRight": 40,
@@ -229,8 +229,8 @@ exports[`CulturalSurveyCheckbox should render correctly when pressed 1`] = `
     >
       <Text
         style={
-          Array [
-            Object {
+          [
+            {
               "color": "#161617",
               "fontFamily": "Montserrat-Bold",
               "fontSize": 15,
@@ -243,8 +243,8 @@ exports[`CulturalSurveyCheckbox should render correctly when pressed 1`] = `
       </Text>
       <Text
         style={
-          Array [
-            Object {
+          [
+            {
               "color": "#696A6F",
               "fontFamily": "Montserrat-SemiBold",
               "fontSize": 12,
@@ -258,8 +258,8 @@ exports[`CulturalSurveyCheckbox should render correctly when pressed 1`] = `
     </View>
     <View
       style={
-        Array [
-          Object {
+        [
+          {
             "alignContent": "center",
             "position": "absolute",
             "right": 16,

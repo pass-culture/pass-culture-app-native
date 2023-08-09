@@ -13,7 +13,7 @@ exports[`Suggestion should display component correctly 1`] = `
   onResponderTerminationRequest={[Function]}
   onStartShouldSetResponder={[Function]}
   style={
-    Object {
+    {
       "opacity": 1,
       "userSelect": "auto",
     }
@@ -21,8 +21,8 @@ exports[`Suggestion should display component correctly 1`] = `
 >
   <View
     style={
-      Array [
-        Object {
+      [
+        {
           "alignItems": "center",
           "flexBasis": 0,
           "flexDirection": "row",
@@ -44,8 +44,8 @@ exports[`Suggestion should display component correctly 1`] = `
     </View>
     <Text
       style={
-        Array [
-          Object {
+        [
+          {
             "color": "#161617",
             "fontFamily": "Montserrat-Regular",
             "fontSize": 15,

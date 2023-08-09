@@ -5,7 +5,7 @@ exports[`<ButtonWithLinearGradient /> should render disabled 1`] = `
   accessibilityLabel="Wording to display"
   accessibilityRole="link"
   accessibilityState={
-    Object {
+    {
       "disabled": true,
     }
   }
@@ -20,7 +20,7 @@ exports[`<ButtonWithLinearGradient /> should render disabled 1`] = `
   onResponderTerminationRequest={[Function]}
   onStartShouldSetResponder={[Function]}
   style={
-    Object {
+    {
       "alignItems": "center",
       "borderRadius": 24,
       "justifyContent": "center",
@@ -37,8 +37,8 @@ exports[`<ButtonWithLinearGradient /> should render disabled 1`] = `
 >
   <View
     style={
-      Array [
-        Object {
+      [
+        {
           "backgroundColor": "#F1F1F4",
           "height": 48,
           "width": "100%",
@@ -48,8 +48,8 @@ exports[`<ButtonWithLinearGradient /> should render disabled 1`] = `
   />
   <View
     style={
-      Array [
-        Object {
+      [
+        {
           "alignItems": "center",
           "flexDirection": "row",
           "position": "absolute",
@@ -62,8 +62,8 @@ exports[`<ButtonWithLinearGradient /> should render disabled 1`] = `
       isDisabled={true}
       numberOfLines={1}
       style={
-        Array [
-          Object {
+        [
+          {
             "color": "#696A6F",
             "fontFamily": "Montserrat-Bold",
             "fontSize": 15,
@@ -87,7 +87,7 @@ exports[`<ButtonWithLinearGradient /> should render not disabled 1`] = `
   accessibilityLabel="Wording to display"
   accessibilityRole="link"
   accessibilityState={
-    Object {
+    {
       "disabled": false,
     }
   }
@@ -102,7 +102,7 @@ exports[`<ButtonWithLinearGradient /> should render not disabled 1`] = `
   onResponderTerminationRequest={[Function]}
   onStartShouldSetResponder={[Function]}
   style={
-    Object {
+    {
       "alignItems": "center",
       "borderRadius": 24,
       "justifyContent": "center",
@@ -127,8 +127,8 @@ exports[`<ButtonWithLinearGradient /> should render not disabled 1`] = `
   </View>
   <View
     style={
-      Array [
-        Object {
+      [
+        {
           "alignItems": "center",
           "flexDirection": "row",
           "position": "absolute",
@@ -141,8 +141,8 @@ exports[`<ButtonWithLinearGradient /> should render not disabled 1`] = `
       isDisabled={false}
       numberOfLines={1}
       style={
-        Array [
-          Object {
+        [
+          {
             "color": "#ffffff",
             "fontFamily": "Montserrat-Bold",
             "fontSize": 15,

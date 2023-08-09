@@ -3,16 +3,16 @@
 exports[`SlantTag should render SlantTag with automatic height and width, and padding if no height/width values are provided 1`] = `
 <View
   style={
-    Array [
-      Object {
+    [
+      {
         "backgroundColor": "#320096",
         "borderRadius": 4,
         "height": "auto",
         "justifyContent": "center",
         "paddingHorizontal": 10,
         "paddingVertical": 2,
-        "transform": Array [
-          Object {
+        "transform": [
+          {
             "rotate": "-4.34deg",
           },
         ],
@@ -23,15 +23,15 @@ exports[`SlantTag should render SlantTag with automatic height and width, and pa
 >
   <Text
     style={
-      Array [
-        Object {
+      [
+        {
           "alignSelf": "center",
           "color": "#ffffff",
           "fontFamily": "Montserrat-SemiBold",
           "fontSize": 12,
           "lineHeight": 16,
-          "transform": Array [
-            Object {
+          "transform": [
+            {
               "rotate": "4.34deg",
             },
           ],
@@ -47,16 +47,16 @@ exports[`SlantTag should render SlantTag with automatic height and width, and pa
 exports[`SlantTag should render SlantTag with given angle if provided 1`] = `
 <View
   style={
-    Array [
-      Object {
+    [
+      {
         "backgroundColor": "#320096",
         "borderRadius": 4,
         "height": "auto",
         "justifyContent": "center",
         "paddingHorizontal": 10,
         "paddingVertical": 2,
-        "transform": Array [
-          Object {
+        "transform": [
+          {
             "rotate": "10deg",
           },
         ],
@@ -68,15 +68,15 @@ exports[`SlantTag should render SlantTag with given angle if provided 1`] = `
 >
   <Text
     style={
-      Array [
-        Object {
+      [
+        {
           "alignSelf": "center",
           "color": "#ffffff",
           "fontFamily": "Montserrat-SemiBold",
           "fontSize": 12,
           "lineHeight": 16,
-          "transform": Array [
-            Object {
+          "transform": [
+            {
               "rotate": "-10deg",
             },
           ],
@@ -93,16 +93,16 @@ exports[`SlantTag should render SlantTag with given angle if provided 1`] = `
 exports[`SlantTag should render SlantTag with provided height and width, and no padding if height/width values are provided 1`] = `
 <View
   style={
-    Array [
-      Object {
+    [
+      {
         "backgroundColor": "#320096",
         "borderRadius": 4,
         "height": 20,
         "justifyContent": "center",
         "paddingHorizontal": 0,
         "paddingVertical": 0,
-        "transform": Array [
-          Object {
+        "transform": [
+          {
             "rotate": "-4.34deg",
           },
         ],
@@ -115,15 +115,15 @@ exports[`SlantTag should render SlantTag with provided height and width, and no 
 >
   <Text
     style={
-      Array [
-        Object {
+      [
+        {
           "alignSelf": "center",
           "color": "#ffffff",
           "fontFamily": "Montserrat-SemiBold",
           "fontSize": 12,
           "lineHeight": 16,
-          "transform": Array [
-            Object {
+          "transform": [
+            {
               "rotate": "4.34deg",
             },
           ],

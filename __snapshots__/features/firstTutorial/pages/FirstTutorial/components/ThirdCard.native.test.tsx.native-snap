@@ -4,8 +4,8 @@ exports[`ThirdCard should render third card 1`] = `
 <View
   accessibilityHidden={false}
   style={
-    Array [
-      Object {
+    [
+      {
         "flexBasis": 0,
         "flexGrow": 1,
         "flexShrink": 1,
@@ -17,8 +17,8 @@ exports[`ThirdCard should render third card 1`] = `
   <View
     flex={2}
     style={
-      Array [
-        Object {
+      [
+        {
           "flexBasis": 0,
           "flexGrow": 2,
           "flexShrink": 1,
@@ -29,8 +29,8 @@ exports[`ThirdCard should render third card 1`] = `
   <View
     accessibilityHidden={true}
     style={
-      Array [
-        Object {
+      [
+        {
           "alignItems": "center",
           "flexGrow": 1,
           "height": "30%",
@@ -46,8 +46,8 @@ exports[`ThirdCard should render third card 1`] = `
   <View
     flex={1}
     style={
-      Array [
-        Object {
+      [
+        {
           "flexBasis": 0,
           "flexGrow": 1,
           "flexShrink": 1,
@@ -57,8 +57,8 @@ exports[`ThirdCard should render third card 1`] = `
   />
   <View
     style={
-      Array [
-        Object {
+      [
+        {
           "overflowY": "auto",
         },
       ]
@@ -66,8 +66,8 @@ exports[`ThirdCard should render third card 1`] = `
   >
     <Text
       style={
-        Array [
-          Object {
+        [
+          {
             "color": "#161617",
             "fontFamily": "Montserrat-Black",
             "fontSize": 26,
@@ -83,8 +83,8 @@ près de chez toi
     <View
       numberOfSpaces={4}
       style={
-        Array [
-          Object {
+        [
+          {
             "height": 16,
           },
         ]
@@ -92,8 +92,8 @@ près de chez toi
     />
     <Text
       style={
-        Array [
-          Object {
+        [
+          {
             "color": "#696A6F",
             "fontFamily": "Montserrat-SemiBold",
             "fontSize": 12,
@@ -109,8 +109,8 @@ près de chez toi
   <View
     flex={2}
     style={
-      Array [
-        Object {
+      [
+        {
           "flexBasis": 0,
           "flexGrow": 2,
           "flexShrink": 1,
@@ -122,8 +122,8 @@ près de chez toi
     isSmallScreen={false}
     paddingBottom={40}
     style={
-      Array [
-        Object {
+      [
+        {
           "flexBasis": 0,
           "flexGrow": 1,
           "flexShrink": 1,
@@ -137,7 +137,7 @@ près de chez toi
       collapsable={false}
       forwardedRef={[Function]}
       style={
-        Object {
+        {
           "opacity": 0,
         }
       }
@@ -155,7 +155,7 @@ près de chez toi
         onResponderTerminationRequest={[Function]}
         onStartShouldSetResponder={[Function]}
         style={
-          Object {
+          {
             "alignItems": "center",
             "backgroundColor": "#eb0055",
             "borderRadius": 24,
@@ -178,8 +178,8 @@ près de chez toi
           adjustsFontSizeToFit={false}
           numberOfLines={1}
           style={
-            Array [
-              Object {
+            [
+              {
                 "color": "#ffffff",
                 "fontFamily": "Montserrat-Bold",
                 "fontSize": 15,
@@ -197,8 +197,8 @@ près de chez toi
     <View
       marginTop={16}
       style={
-        Array [
-          Object {
+        [
+          {
             "flexGrow": 1,
             "marginTop": 16,
           },
@@ -218,7 +218,7 @@ près de chez toi
         onResponderTerminationRequest={[Function]}
         onStartShouldSetResponder={[Function]}
         style={
-          Object {
+          {
             "alignItems": "center",
             "backgroundColor": "transparent",
             "borderRadius": 24,
@@ -239,8 +239,8 @@ près de chez toi
       >
         <View
           style={
-            Array [
-              Object {
+            [
+              {
                 "flexShrink": 0,
               },
             ]
@@ -260,8 +260,8 @@ près de chez toi
           adjustsFontSizeToFit={false}
           numberOfLines={1}
           style={
-            Array [
-              Object {
+            [
+              {
                 "color": "#161617",
                 "fontFamily": "Montserrat-Bold",
                 "fontSize": 15,
