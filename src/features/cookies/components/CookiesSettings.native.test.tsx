@@ -13,7 +13,9 @@ describe('<CookiesSettings/>', () => {
   it('should render correctly', async () => {
     const renderAPI = renderCookiesSettings()
 
-    await screen.findAllByRole('checkbox')
+    await screen.findByTestId(
+      'Interrupteur Assurer la sécurité, prévenir la fraude et corriger les bugs'
+    )
 
     expect(renderAPI).toMatchSnapshot()
   })
@@ -21,16 +23,12 @@ describe('<CookiesSettings/>', () => {
   it('should disable and check essential cookies switch', async () => {
     renderCookiesSettings()
 
-    await screen.findAllByRole('checkbox')
-
-    const essentialToggle = screen.getByTestId(
+    const essentialToggle = await screen.findByTestId(
       'Interrupteur Assurer la sécurité, prévenir la fraude et corriger les bugs'
     )
 
-    expect(essentialToggle.props.accessibilityState).toEqual({
-      disabled: true,
-      checked: true,
-    })
+    expect(essentialToggle).toBeDisabled()
+    expect(essentialToggle).toHaveAccessibilityState({ checked: true })
   })
 
   it('should log accordion toggle', async () => {
