@@ -91,12 +91,12 @@ describe('<BookingButton />', () => {
         - offer isSoldOut = $offer.isSoldOut
         - offer isReleased = $offer.isReleased
         - offer externalTicketOfficeUrl = $offer.externalTicketOfficeUrl`,
-      (...args) => {
+      ({ user, offer, expectedCTA }) => {
         getAvailableCreditMock.mockReturnValueOnce(credit)
         isUserBeneficiaryMock.mockReturnValueOnce(true)
         isUserExBeneficiaryMock.mockReturnValueOnce(false)
 
-        favoriteBookingButtonTestRunner(...args)
+        favoriteBookingButtonTestRunner({ user, offer, expectedCTA })
       }
     )
   })
@@ -130,12 +130,12 @@ describe('<BookingButton />', () => {
         - offer isSoldOut = $offer.isSoldOut
         - offer isReleased = $offer.isReleased
         - offer externalTicketOfficeUrl = $offer.externalTicketOfficeUrl`,
-      (...args) => {
+      ({ user, offer, expectedCTA }) => {
         isUserExBeneficiaryMock.mockReturnValueOnce(true)
         isUserBeneficiaryMock.mockReturnValueOnce(true)
         getAvailableCreditMock.mockReturnValueOnce(expiredCredit)
 
-        favoriteBookingButtonTestRunner(...args)
+        favoriteBookingButtonTestRunner({ user, offer, expectedCTA })
       }
     )
   })
@@ -162,11 +162,11 @@ describe('<BookingButton />', () => {
         - offer isSoldOut = $offer.isSoldOut
         - offer isReleased = $offer.isReleased
         - offer externalTicketOfficeUrl = $offer.externalTicketOfficeUrl`,
-      (...args) => {
+      ({ user, offer, expectedCTA }) => {
         getAvailableCreditMock.mockReturnValueOnce(credit)
         isUserBeneficiaryMock.mockReturnValueOnce(false)
 
-        favoriteBookingButtonTestRunner(...args)
+        favoriteBookingButtonTestRunner({ user, offer, expectedCTA })
       }
     )
   })
