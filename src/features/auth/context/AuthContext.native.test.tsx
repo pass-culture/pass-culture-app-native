@@ -15,7 +15,7 @@ import { QueryKeys } from 'libs/queryKeys'
 import { StorageKey, storage } from 'libs/storage'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { server } from 'tests/server'
-import { act, renderHook, waitFor } from 'tests/utils'
+import { act, renderHook } from 'tests/utils'
 
 import { AuthWrapper, useAuthContext } from './AuthContext'
 
@@ -38,9 +38,9 @@ describe('AuthContext', () => {
 
       const result = renderUseAuthContext()
 
-      await waitFor(() => {
-        expect(result.current.user).toBeUndefined()
-      })
+      await act(async () => {})
+
+      expect(result.current.user).toBeUndefined()
     })
 
     it('should return the user when logged in with internet connection', async () => {
@@ -49,6 +49,7 @@ describe('AuthContext', () => {
       const result = renderUseAuthContext()
 
       await act(async () => {})
+
       expect(result.current.user).toEqual(beneficiaryUser)
     })
 
@@ -60,7 +61,8 @@ describe('AuthContext', () => {
       const result = renderUseAuthContext()
 
       await act(async () => {})
-      expect(result.current.user).toEqual(undefined)
+
+      expect(result.current.user).toBeUndefined()
     })
 
     it('should return undefined when refresh token is expired', async () => {
@@ -72,21 +74,23 @@ describe('AuthContext', () => {
       const result = renderUseAuthContext()
 
       await act(async () => {})
+
       expect(result.current.user).toBeUndefined()
     })
 
     it('should return refetchUser', async () => {
       const result = renderUseAuthContext()
 
-      await waitFor(() => {
-        expect(result.current.refetchUser).toBeDefined()
-      })
+      await act(async () => {})
+
+      expect(result.current.refetchUser).toBeDefined()
     })
 
     it('should set user properties to Amplitude events when user is logged in', async () => {
       storage.saveString('PASSCULTURE_REFRESH_TOKEN', 'token')
 
       renderUseAuthContext()
+
       await act(async () => {})
 
       expect(amplitude.setUserProperties).toHaveBeenCalledWith({
@@ -114,9 +118,9 @@ describe('AuthContext', () => {
 
       renderUseAuthContext()
 
-      await waitFor(() => {
-        expect(amplitude.setUserProperties).not.toHaveBeenCalled()
-      })
+      await act(async () => {})
+
+      expect(amplitude.setUserProperties).not.toHaveBeenCalled()
     })
 
     it('should set user id when user is logged in', async () => {
@@ -128,6 +132,7 @@ describe('AuthContext', () => {
       storage.saveString('PASSCULTURE_REFRESH_TOKEN', 'token')
 
       renderUseAuthContext()
+
       await act(async () => {})
 
       expect(amplitude.setUserId).toHaveBeenCalledWith(nonBeneficiaryUser.id.toString())
