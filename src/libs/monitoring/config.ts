@@ -5,6 +5,11 @@ import { env } from 'libs/environment'
 
 import { version, build } from '../../../package.json'
 
+import * as SentryModule from './sentry'
+
+// Construct a new instrumentation instance. This is needed to communicate between the integration and React
+const routingInstrumentation = new SentryModule.ReactNavigationInstrumentation()
+
 export async function getSentryConfig() {
   let update
   try {
@@ -25,5 +30,11 @@ export async function getSentryConfig() {
     dist,
     tracesSampleRate: 0.01,
     attachScreenshot: true,
+    integrations: [new SentryModule.ReactNativeTracing({ routingInstrumentation })],
+    _experiments: {
+      // profilesSampleRate is relative to tracesSampleRate.
+      // Here, we'll capture profiles for 100% of transactions.
+      profilesSampleRate: 1.0,
+    },
   }
 }

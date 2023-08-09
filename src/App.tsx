@@ -32,6 +32,7 @@ import { firebaseAnalytics } from 'libs/firebase/analytics'
 import { RemoteConfigProvider } from 'libs/firebase/remoteConfig'
 import { LocationWrapper } from 'libs/geolocation'
 import { eventMonitoring } from 'libs/monitoring'
+import { ReactNavigationInstrumentation } from 'libs/monitoring/sentry'
 import { NetInfoWrapper } from 'libs/network/NetInfoWrapper'
 import { OfflineModeContainer } from 'libs/network/OfflineModeContainer'
 import { BatchMessaging, BatchPush } from 'libs/react-native-batch'
@@ -52,6 +53,8 @@ LogBox.ignoreLogs([
   'EventEmitter.removeListener',
 ])
 
+const routingInstrumentation = new ReactNavigationInstrumentation()
+
 const App: FunctionComponent = function () {
   useEffect(() => {
     StatusBar.setBarStyle('dark-content')
@@ -64,7 +67,7 @@ const App: FunctionComponent = function () {
   firebaseAnalytics.useInit()
 
   useEffect(() => {
-    eventMonitoring.init({ enabled: !__DEV__ })
+    eventMonitoring.init({ enabled: true })
   }, [])
 
   useEffect(() => {
@@ -72,6 +75,8 @@ const App: FunctionComponent = function () {
     BatchPush.requestNotificationAuthorization() //  For iOS and Android 13
     BatchMessaging.setFontOverride('Montserrat-Regular', 'Montserrat-Bold', 'Montserrat-Italic')
   }, [])
+
+  const navigation = React.useRef()
 
   return (
     <RemoteConfigProvider>
@@ -97,7 +102,15 @@ const App: FunctionComponent = function () {
                                           <OnboardingWrapper>
                                             <OfflineModeContainer>
                                               <ScreenErrorProvider>
-                                                <AppNavigationContainer />
+                                                <AppNavigationContainer
+                                                  ref={navigation}
+                                                  onReady={() => {
+                                                    // Register the navigation container with the instrumentation
+                                                    routingInstrumentation.registerNavigationContainer(
+                                                      navigation
+                                                    )
+                                                  }}
+                                                />
                                               </ScreenErrorProvider>
                                             </OfflineModeContainer>
                                           </OnboardingWrapper>
@@ -124,6 +137,8 @@ const App: FunctionComponent = function () {
 }
 
 const config = env.ENV !== 'production' ? AutoImmediate : NextResume
-const AppWithCodepush = __DEV__ ? App : CodePush(config)(App)
+const AppWithCodepush = /*__DEV__ ? App : */ eventMonitoring.wrap(
+  CodePush(config)(App)
+) as React.ComponentType<{ tab?: string }>
 
 export { AppWithCodepush as App }

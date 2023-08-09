@@ -7,7 +7,8 @@ import { HomeHeader } from 'features/home/components/headers/HomeHeader'
 import { GenericHome } from 'features/home/pages/GenericHome'
 import { UseRouteType } from 'features/navigation/RootNavigator/types'
 import { analytics } from 'libs/analytics'
-import { useLocation } from 'libs/geolocation'
+import { useGeolocation } from 'libs/geolocation'
+import { eventMonitoring } from 'libs/monitoring'
 import { StatusBarBlurredBackground } from 'ui/components/statusBar/statusBarBlurredBackground'
 
 const Header = () => (
@@ -16,7 +17,7 @@ const Header = () => (
   </ListHeaderContainer>
 )
 
-export const Home: FunctionComponent = () => {
+const ToHome: FunctionComponent = () => {
   const { params } = useRoute<UseRouteType<'Home'>>()
   const { modules, id } = useHomepageData() || {}
   const { setCustomPosition } = useLocation()
@@ -44,6 +45,7 @@ export const Home: FunctionComponent = () => {
   )
 }
 
+export const Home = eventMonitoring.withProfiler(ToHome, { name: 'HomeProfiling' })
 const ListHeaderContainer = styled.View(({ theme }) => ({
   flexGrow: 1,
   flexShrink: 0,
