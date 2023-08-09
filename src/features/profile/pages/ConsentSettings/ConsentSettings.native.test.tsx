@@ -37,7 +37,7 @@ describe('<ConsentSettings/>', () => {
   it('should render correctly', async () => {
     const renderAPI = renderConsentSettings()
 
-    await screen.findAllByRole('checkbox')
+    await screen.findByTestId('Interrupteur Tout accepter')
     expect(renderAPI).toMatchSnapshot()
   })
 
