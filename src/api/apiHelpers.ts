@@ -6,7 +6,7 @@ import { getCodePushId } from 'api/getCodePushId'
 import { navigateFromRef } from 'features/navigation/navigationRef'
 import { env } from 'libs/environment'
 import { Headers } from 'libs/fetch'
-import { decodeAccessToken, getAccessTokenStatus } from 'libs/jwt'
+import { decodeAccessToken, getTokenStatus } from 'libs/jwt'
 import { clearRefreshToken, getRefreshToken } from 'libs/keychain'
 import { eventMonitoring } from 'libs/monitoring'
 import { getDeviceId } from 'libs/react-native-device-info/getDeviceId'
@@ -79,7 +79,7 @@ export const safeFetch = async (
   // @ts-expect-error
   const authorizationHeader: string = options.headers?.['Authorization'] || ''
   const token = authorizationHeader.replace('Bearer ', '')
-  const accessTokenStatus = getAccessTokenStatus(token)
+  const accessTokenStatus = getTokenStatus(token)
 
   if (accessTokenStatus === 'unknown') {
     return createNeedsAuthenticationResponse(url)

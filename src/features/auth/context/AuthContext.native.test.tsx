@@ -23,7 +23,7 @@ mockdate.set(CURRENT_DATE)
 
 jest.unmock('libs/network/NetInfoWrapper')
 const mockedUseNetInfo = useNetInfo as jest.Mock
-const getAccessTokenStatusSpy = jest.spyOn(jwt, 'getAccessTokenStatus').mockReturnValue('valid')
+const getTokenStatusSpy = jest.spyOn(jwt, 'getTokenStatus').mockReturnValue('valid')
 
 describe('AuthContext', () => {
   beforeEach(async () => {
@@ -53,9 +53,9 @@ describe('AuthContext', () => {
     })
 
     it('should return undefined user when logged out (no token)', async () => {
-      getAccessTokenStatusSpy.mockReturnValueOnce('unknown') // first render
-      getAccessTokenStatusSpy.mockReturnValueOnce('unknown') // second render because of cookies state
-      getAccessTokenStatusSpy.mockReturnValueOnce('unknown') // third render because of loading state
+      getTokenStatusSpy.mockReturnValueOnce('unknown') // first render
+      getTokenStatusSpy.mockReturnValueOnce('unknown') // second render because of cookies state
+      getTokenStatusSpy.mockReturnValueOnce('unknown') // third render because of loading state
 
       const result = renderUseAuthContext()
 
@@ -64,9 +64,9 @@ describe('AuthContext', () => {
     })
 
     it('should return undefined when refresh token is expired', async () => {
-      getAccessTokenStatusSpy.mockReturnValueOnce('expired') // first render
-      getAccessTokenStatusSpy.mockReturnValueOnce('expired') // second render because of cookies state
-      getAccessTokenStatusSpy.mockReturnValueOnce('expired') // third render because of loading state
+      getTokenStatusSpy.mockReturnValueOnce('expired') // first render
+      getTokenStatusSpy.mockReturnValueOnce('expired') // second render because of cookies state
+      getTokenStatusSpy.mockReturnValueOnce('expired') // third render because of loading state
       storage.saveString('PASSCULTURE_REFRESH_TOKEN', 'token')
 
       const result = renderUseAuthContext()
@@ -108,9 +108,9 @@ describe('AuthContext', () => {
           res(ctx.status(200), ctx.json(nonBeneficiaryUser))
         )
       )
-      getAccessTokenStatusSpy.mockReturnValueOnce('unknown') // first render
-      getAccessTokenStatusSpy.mockReturnValueOnce('unknown') // second render because of cookies state
-      getAccessTokenStatusSpy.mockReturnValueOnce('unknown') // third render because of loading state
+      getTokenStatusSpy.mockReturnValueOnce('unknown') // first render
+      getTokenStatusSpy.mockReturnValueOnce('unknown') // second render because of cookies state
+      getTokenStatusSpy.mockReturnValueOnce('unknown') // third render because of loading state
 
       renderUseAuthContext()
 

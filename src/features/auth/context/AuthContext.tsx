@@ -9,7 +9,7 @@ import { useCookies } from 'features/cookies/helpers/useCookies'
 import { amplitude } from 'libs/amplitude'
 // eslint-disable-next-line no-restricted-imports
 import { firebaseAnalytics } from 'libs/firebase/analytics'
-import { getAccessTokenStatus, getUserIdFromAccesstoken } from 'libs/jwt'
+import { getTokenStatus, getUserIdFromAccesstoken } from 'libs/jwt'
 import { eventMonitoring } from 'libs/monitoring'
 import { useNetInfoContext } from 'libs/network/NetInfoWrapper'
 import { QueryKeys } from 'libs/queryKeys'
@@ -77,7 +77,7 @@ export const AuthWrapper = memo(function AuthWrapper({
     try {
       const refreshToken = await storage.readString('PASSCULTURE_REFRESH_TOKEN')
       const accessToken = await storage.readString('access_token')
-      const refreshTokenStatus = getAccessTokenStatus(refreshToken)
+      const refreshTokenStatus = getTokenStatus(refreshToken)
 
       switch (refreshTokenStatus) {
         case 'unknown':
