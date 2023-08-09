@@ -17,7 +17,7 @@ function useGetPersistData<TData, TQueryKey>(queryKey: TQueryKey) {
           }
         })
         .catch((error) => {
-          eventMonitoring.captureException(error, { context: { queryKey } })
+          eventMonitoring.captureException(error, { extra: { queryKey } })
         })
     }
   }, [persistData, queryKey])
@@ -31,7 +31,7 @@ function useSetPersistQuery<TData, TError, TQueryKey>(
   useEffect(() => {
     if (!query.isLoading && query.data) {
       AsyncStorage.setItem(String(queryKey), JSON.stringify(query.data)).catch((error) => {
-        eventMonitoring.captureException(error, { context: { queryKey, data: query.data } })
+        eventMonitoring.captureException(error, { extra: { queryKey, data: query.data } })
       })
     }
   }, [query.data, query.isLoading, queryKey])

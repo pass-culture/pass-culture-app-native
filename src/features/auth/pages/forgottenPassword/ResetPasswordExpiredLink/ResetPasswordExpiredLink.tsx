@@ -29,7 +29,7 @@ export function ResetPasswordExpiredLink(props: Props) {
         navigate('ResetPasswordEmailSent', { email })
       },
       onError: () => {
-        throw new AsyncError('NETWORK_REQUEST_FAILED', resetPasswordEmailQuery)
+        throw new AsyncError('NETWORK_REQUEST_FAILED', { retry: resetPasswordEmailQuery })
       },
       cacheTime: 0,
       enabled: false,

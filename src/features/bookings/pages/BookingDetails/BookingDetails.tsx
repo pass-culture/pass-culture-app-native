@@ -118,7 +118,7 @@ export function BookingDetails() {
         },
       })
     }
-    throw new ScreenError(`Booking #${params.id} not found`, BookingNotFound)
+    throw new ScreenError(`Booking #${params.id} not found`, { Screen: BookingNotFound })
   } else if (isError) {
     throw error
   } else if (!booking) {

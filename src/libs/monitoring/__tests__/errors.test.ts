@@ -12,7 +12,7 @@ describe('MonitoringError', () => {
   })
 
   it('should rename MonitoringError to RenamedError', () => {
-    const error = new MonitoringError('error', 'RenamedError')
+    const error = new MonitoringError('error', { name: 'RenamedError' })
     expect(eventMonitoring.captureException).toBeCalledWith(error, undefined)
     expect(error.name).toBe('RenamedError')
   })
@@ -22,7 +22,7 @@ describe('MonitoringError', () => {
     const captureContext: CaptureContext = {
       extra,
     }
-    const error = new MonitoringError('error', captureContext)
+    const error = new MonitoringError('error', { captureContext })
     expect(eventMonitoring.captureException).toBeCalledWith(error, captureContext)
     expect(error.name).toBe('MonitoringError')
   })
@@ -32,7 +32,7 @@ describe('MonitoringError', () => {
     const captureContext: CaptureContext = {
       extra,
     }
-    const error = new MonitoringError('error', 'RenamedError', captureContext)
+    const error = new MonitoringError('error', { name: 'RenamedError', captureContext })
     expect(eventMonitoring.captureException).toBeCalledWith(error, captureContext)
     expect(error.name).toBe('RenamedError')
   })

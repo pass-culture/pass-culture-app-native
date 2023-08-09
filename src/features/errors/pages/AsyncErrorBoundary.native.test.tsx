@@ -26,7 +26,10 @@ describe('AsyncErrorBoundary component', () => {
   it('should call retry with AsyncError', async () => {
     const retry = jest.fn()
     render(
-      <AsyncErrorBoundary error={new AsyncError('error', retry)} resetErrorBoundary={jest.fn()} />
+      <AsyncErrorBoundary
+        error={new AsyncError('error', { retry })}
+        resetErrorBoundary={jest.fn()}
+      />
     )
     const button = await screen.findByText('Réessayer')
     expect(retry).not.toHaveBeenCalled()
@@ -109,13 +112,9 @@ describe('AsyncErrorBoundary component', () => {
     })
 
     it('when error is ScreenError', () => {
-      render(
-        <AsyncErrorBoundary
-          error={new ScreenError('error', MaintenanceErrorPage)}
-          resetErrorBoundary={jest.fn()}
-        />
-      )
-      expect(eventMonitoring.captureException).not.toHaveBeenCalled()
+      const error = new ScreenError('error', { Screen: MaintenanceErrorPage })
+      render(<AsyncErrorBoundary error={error} resetErrorBoundary={jest.fn()} />)
+      expect(eventMonitoring.captureMessage).not.toHaveBeenCalled()
     })
   })
 })

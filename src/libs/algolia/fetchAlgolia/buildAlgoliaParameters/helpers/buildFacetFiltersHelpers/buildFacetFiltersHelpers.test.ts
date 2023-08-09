@@ -117,7 +117,7 @@ describe('buildObjectIdsPredicate', () => {
     const objectIdsPredicate = buildObjectIdsPredicate('15000' as unknown as string[])
     expect(eventMonitoring.captureException).toBeCalledWith(error, {
       level: 'error',
-      objectIds: '15000',
+      extra: { objectIds: '15000' },
     })
     expect(objectIdsPredicate).toEqual([])
   })

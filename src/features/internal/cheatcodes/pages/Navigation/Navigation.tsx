@@ -169,7 +169,9 @@ export function Navigation(): React.JSX.Element {
           <Row half>
             <ButtonPrimary
               wording="ForceUpdate Page"
-              onPress={() => setScreenError(new ScreenError('Test force update page', ForceUpdate))}
+              onPress={() =>
+                setScreenError(new ScreenError('Test force update page', { Screen: ForceUpdate }))
+              }
             />
           </Row>
           <Row half>
