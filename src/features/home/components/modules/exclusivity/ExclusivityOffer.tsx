@@ -4,6 +4,7 @@ import styled from 'styled-components/native'
 import { ExclusivityImage } from 'features/home/components/modules/exclusivity/ExclusivityImage'
 import { ExclusivityBannerProps } from 'features/home/components/modules/exclusivity/ExclusivityModule'
 import { useShouldDisplayExcluOffer } from 'features/home/components/modules/exclusivity/helpers/useShouldDisplayExcluOffer'
+import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { analytics } from 'libs/analytics'
 import { ContentTypes } from 'libs/contentful/types'
 import { useHandleFocus } from 'libs/hooks/useHandleFocus'
@@ -58,7 +59,8 @@ const UnmemoizedExclusivityOffer = ({
       isFocus={isFocus}
       disabled={offerId === undefined}
       style={style}
-      accessibilityLabel={alt}>
+      accessibilityLabel={alt}
+      accessibilityRole={AccessibilityRole.LINK}>
       <ExclusivityImage imageURL={imageURL} alt={alt} />
     </StyledTouchableLink>
   )
