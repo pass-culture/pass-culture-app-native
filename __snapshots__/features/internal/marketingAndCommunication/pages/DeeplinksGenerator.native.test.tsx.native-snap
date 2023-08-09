@@ -278,6 +278,7 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                   "userSelect": "auto",
                 }
               }
+              testID="accordionTouchable"
             >
               <View
                 nativeID="testUuidV4"
@@ -1307,6 +1308,7 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                   "userSelect": "auto",
                 }
               }
+              testID="accordionTouchable"
             >
               <View
                 nativeID="testUuidV4"
@@ -1551,6 +1553,7 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                   "userSelect": "auto",
                 }
               }
+              testID="accordionTouchable"
             >
               <View
                 nativeID="testUuidV4"
@@ -2149,6 +2152,7 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                   "userSelect": "auto",
                 }
               }
+              testID="accordionTouchable"
             >
               <View
                 nativeID="testUuidV4"

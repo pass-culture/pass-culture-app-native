@@ -104,6 +104,7 @@ export const AccordionItem = ({
           accessibilityRole={AccessibilityRole.BUTTON}
           onPress={toggleListItem}
           accessibilityControls={accordionBodyId}
+          testID="accordionTouchable"
           {...accessibilityProps}>
           <View nativeID={accordionLabelId} style={[styles.titleContainer, titleStyle]}>
             <Title>{title}</Title>

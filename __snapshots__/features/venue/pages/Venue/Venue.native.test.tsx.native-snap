@@ -3389,6 +3389,7 @@ d’options
                 "userSelect": "auto",
               }
             }
+            testID="accordionTouchable"
           >
             <View
               nativeID="testUuidV4"
@@ -3583,6 +3584,7 @@ d’options
                 "userSelect": "auto",
               }
             }
+            testID="accordionTouchable"
           >
             <View
               nativeID="testUuidV4"
@@ -4301,6 +4303,7 @@ d’options
                 "userSelect": "auto",
               }
             }
+            testID="accordionTouchable"
           >
             <View
               nativeID="testUuidV4"

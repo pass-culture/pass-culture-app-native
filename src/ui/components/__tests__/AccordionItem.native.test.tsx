@@ -1,7 +1,7 @@
 import React from 'react'
 import { View } from 'react-native'
 
-import { act, fireEvent, render } from 'tests/utils'
+import { act, fireEvent, render, screen } from 'tests/utils'
 
 import { AccordionItem } from '../AccordionItem'
 
@@ -12,28 +12,35 @@ const accordionTitle = 'accordion title'
 jest.useFakeTimers({ legacyFakeTimers: true })
 
 describe('AccordionItem', () => {
-  it("is closed by default - we don't see the children", () => {
+  it("should be closed by default - we don't see the children", () => {
     const accordion = renderAccordion()
     const accordionBody = accordion.getByTestId('accordionBody')
     expect(accordionBody.props.style).toEqual({ height: 0, overflow: 'hidden' })
   })
 
-  it('we see the children after pressing on the title', async () => {
+  it('should display the children after pressing on the title', async () => {
     const accordion = renderAccordion()
-    const accordionBody = accordion.getByTestId('accordionBody')
-    const accordionBodyContainer = accordion.getByTestId('accordionBodyContainer')
-    expect(accordionBody.props.style).toEqual({ height: 0, overflow: 'hidden' })
-    expect(accordion.getByRole('button').props.accessibilityState.expanded).toBeFalsy()
-
-    fireEvent(accordionBodyContainer, 'layout', { nativeEvent: { layout: { height: 30 } } })
+    expect(screen.queryByTestId('accordion-child-view')).toBeFalsy()
 
     act(() => {
       fireEvent.press(accordion.getByText('accordion title'))
       jest.runAllTimers()
     })
 
-    expect(accordionBody.props.style).toEqual({ height: 30, overflow: 'hidden' })
-    expect(accordion.getByRole('button').props.accessibilityState.expanded).toBeTruthy()
+    expect(screen.getByTestId('accordion-child-view')).toBeTruthy()
+  })
+
+  it('should expand for accessibility the accordion after pressing the title', async () => {
+    const accordion = renderAccordion()
+
+    expect(screen.getByTestId('accordionTouchable')).toHaveAccessibilityState({ expanded: false })
+
+    act(() => {
+      fireEvent.press(accordion.getByText('accordion title'))
+      jest.runAllTimers()
+    })
+
+    expect(screen.getByTestId('accordionTouchable')).toHaveAccessibilityState({ expanded: true })
   })
 
   it('correct arrow animation,', async () => {
