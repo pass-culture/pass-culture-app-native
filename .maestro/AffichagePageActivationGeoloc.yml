@@ -6,10 +6,8 @@ appId: app.passculture.staging
 - tapOn: "Tout accepter"
 - tapOn: "C’est parti\_!"
 - tapOn: "Utiliser ma position"
-- scrollUntilVisible:
-      element: "Lorsque vous utilisez l'application"
-      direction: DOWN
-- tapOn: "Lorsque vous utilisez l'application"
+# Geoloc App
+- runFlow: reusableFlows/GeolocApp.yml
 - tapOn:
     id: "j’ai 18 ans"
 - tapOn: "Plus tard"

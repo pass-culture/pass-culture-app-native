@@ -1,4 +1,4 @@
-appId: 'app.passculture.test'
+appId: app.passculture.staging
 ---
 - assertVisible: "Bienvenue sur\_le\_pass\_Culture"
 - tapOn: "C’est parti\_!"

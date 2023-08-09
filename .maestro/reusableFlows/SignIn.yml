@@ -1,4 +1,4 @@
-appId: 'app.passculture.test'
+appId: app.passculture.staging
 ---
 - assertVisible: 'Crée-toi un compte'
 - tapOn: 'tonadresse@email.com'
