@@ -8,6 +8,7 @@ import { beneficiaryUser, nonBeneficiaryUser } from 'fixtures/user'
 // eslint-disable-next-line no-restricted-imports
 import { amplitude } from 'libs/amplitude'
 import { env } from 'libs/environment'
+import * as jwt from 'libs/jwt'
 import { NetInfoWrapper } from 'libs/network/NetInfoWrapper'
 import { useNetInfo } from 'libs/network/useNetInfo'
 import { QueryKeys } from 'libs/queryKeys'
@@ -20,20 +21,21 @@ import { AuthWrapper, useAuthContext } from './AuthContext'
 
 mockdate.set(CURRENT_DATE)
 
-jest.unmock('libs/jwt')
 jest.unmock('libs/network/NetInfoWrapper')
 const mockedUseNetInfo = useNetInfo as jest.Mock
+const getAccessTokenStatusSpy = jest.spyOn(jwt, 'getAccessTokenStatus').mockReturnValue('valid')
 
 describe('AuthContext', () => {
   beforeEach(async () => {
-    await storage.clear('access_token')
+    await storage.clear('PASSCULTURE_REFRESH_TOKEN')
     await storage.clear(QueryKeys.USER_PROFILE as unknown as StorageKey)
   })
 
   describe('useAuthContext', () => {
     it('should not return user when logged in but no internet connection', async () => {
       mockedUseNetInfo.mockReturnValueOnce({ isConnected: false, isInternetReachable: false })
-      storage.saveString('access_token', 'token')
+      storage.saveString('PASSCULTURE_REFRESH_TOKEN', 'token')
+
       const result = renderUseAuthContext()
 
       await waitFor(() => {
@@ -42,18 +44,35 @@ describe('AuthContext', () => {
     })
 
     it('should return the user when logged in with internet connection', async () => {
-      storage.saveString('access_token', 'token')
+      storage.saveString('PASSCULTURE_REFRESH_TOKEN', 'token')
+
       const result = renderUseAuthContext()
 
       await act(async () => {})
       expect(result.current.user).toEqual(beneficiaryUser)
     })
 
-    it('should return undefined user when logged out', async () => {
+    it('should return undefined user when logged out (no token)', async () => {
+      getAccessTokenStatusSpy.mockReturnValueOnce('unknown') // first render
+      getAccessTokenStatusSpy.mockReturnValueOnce('unknown') // second render because of cookies state
+      getAccessTokenStatusSpy.mockReturnValueOnce('unknown') // third render because of loading state
+
       const result = renderUseAuthContext()
 
       await act(async () => {})
       expect(result.current.user).toEqual(undefined)
+    })
+
+    it('should return undefined when refresh token is expired', async () => {
+      getAccessTokenStatusSpy.mockReturnValueOnce('expired') // first render
+      getAccessTokenStatusSpy.mockReturnValueOnce('expired') // second render because of cookies state
+      getAccessTokenStatusSpy.mockReturnValueOnce('expired') // third render because of loading state
+      storage.saveString('PASSCULTURE_REFRESH_TOKEN', 'token')
+
+      const result = renderUseAuthContext()
+
+      await act(async () => {})
+      expect(result.current.user).toBeUndefined()
     })
 
     it('should return refetchUser', async () => {
@@ -65,7 +84,8 @@ describe('AuthContext', () => {
     })
 
     it('should set user properties to Amplitude events when user is logged in', async () => {
-      storage.saveString('access_token', 'token')
+      storage.saveString('PASSCULTURE_REFRESH_TOKEN', 'token')
+
       renderUseAuthContext()
       await act(async () => {})
 
@@ -81,12 +101,16 @@ describe('AuthContext', () => {
         status: 'beneficiary',
       })
     })
+
     it('should not set user properties to Amplitude events when user is not logged in', async () => {
       server.use(
         rest.get<UserProfileResponse>(env.API_BASE_URL + '/native/v1/me', (_req, res, ctx) =>
           res(ctx.status(200), ctx.json(nonBeneficiaryUser))
         )
       )
+      getAccessTokenStatusSpy.mockReturnValueOnce('unknown') // first render
+      getAccessTokenStatusSpy.mockReturnValueOnce('unknown') // second render because of cookies state
+      getAccessTokenStatusSpy.mockReturnValueOnce('unknown') // third render because of loading state
 
       renderUseAuthContext()
 
@@ -96,12 +120,12 @@ describe('AuthContext', () => {
     })
 
     it('should set user id when user is logged in', async () => {
-      storage.saveString('access_token', 'token')
       server.use(
         rest.get<UserProfileResponse>(env.API_BASE_URL + '/native/v1/me', (_req, res, ctx) =>
           res(ctx.status(200), ctx.json(nonBeneficiaryUser))
         )
       )
+      storage.saveString('PASSCULTURE_REFRESH_TOKEN', 'token')
 
       renderUseAuthContext()
       await act(async () => {})
