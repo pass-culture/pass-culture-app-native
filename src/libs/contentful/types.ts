@@ -449,9 +449,9 @@ export type VenuesContentModel = Entry<VenuesFields, ContentTypes.VENUES_PLAYLIS
 
 export type CategoryListContentModel = Entry<CategoryListFields, ContentTypes.CATEGORY_LIST>
 
-export type HighlightOfferContentModel = Entry<HightlightOfferFields, ContentTypes.HIGHLIGHT_OFFER>
+export type HighlightOfferContentModel = Entry<HighlightOfferFields, ContentTypes.HIGHLIGHT_OFFER>
 
-type HightlightOfferFields = {
+type HighlightOfferFields = {
   highlightTitle: string
   offerTitle: string
   offerImage: Image
