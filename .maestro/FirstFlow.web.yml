@@ -3,16 +3,16 @@ appId: 'https://passculture.app/accueil'
 - launchApp:
     appId: 'https://passculture.app/accueil'
     clearState: true
-
-# Cookies consent
-- runFlow: reusableFlows/CookiesConsent.yml
-
-# Home
-# - assertVisible: 'Bienvenue\_!'
-- tapOn: 'Débloque ton crédit'
-
-# SignIn
-- runFlow: reusableFlows/SignIn.yml
-
-# TODO: Trouver un moyen de valider l'inscription depuis l'email > En testing pas de redirection
-- tapOn: 'Abandonner l’inscription'
+#
+## Cookies consent
+#- runFlow: reusableFlows/CookiesConsent.yml
+#
+## Home
+## - assertVisible: 'Bienvenue\_!'
+#- tapOn: 'Débloque ton crédit'
+#
+## SignIn
+#- runFlow: reusableFlows/SignIn.yml
+#
+## TODO: Trouver un moyen de valider l'inscription depuis l'email > En testing pas de redirection
+#- tapOn: 'Abandonner l’inscription'

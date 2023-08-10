@@ -1,0 +1,36 @@
+appId: app.passculture.staging
+---
+# Launch App
+- runFlow: reusableFlows/LaunchApp.yml
+
+- tapOn: "Tout accepter"
+- tapOn: "C’est parti\_!"
+- tapOn: "Passer"
+- tapOn:
+    id: "j’ai 15 ans"
+# Launch App
+- runFlow: reusableFlows/Page15App.yml
+- tapOn:
+    id: "icon-back"
+- tapOn:
+    id: "j’ai 16 ans"
+# Launch App
+- runFlow: reusableFlows/Page16App.yml
+
+- tapOn: "Revenir en arrière"
+- tapOn:
+    id: "j’ai 17 ans"
+# Launch App
+- runFlow: reusableFlows/Page17App.yml
+
+- tapOn: "Revenir en arrière"
+- tapOn:
+    id: "j’ai 18 ans"
+
+# Launch App
+- runFlow: reusableFlows/Page18App.yml
+- tapOn: "Plus tard"
+- tapOn: "Mon profil"
+#
+## Stop App
+- runFlow: reusableFlows/StopApp.yml

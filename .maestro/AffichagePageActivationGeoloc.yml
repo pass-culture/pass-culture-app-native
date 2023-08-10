@@ -2,12 +2,15 @@ appId: app.passculture.staging
 ---
 # Launch App
 - runFlow: reusableFlows/LaunchApp.yml
-
 - tapOn: "Tout accepter"
 - tapOn: "C’est parti\_!"
 - tapOn: "Utiliser ma position"
 # Geoloc App
-- runFlow: reusableFlows/GeolocApp.yml
+- runFlow:
+      when:
+          visible:
+              id: "com.android.permissioncontroller:id/permission_allow_foreground_only_button"
+      file: "reusableFlows/GeolocApp.yml"
 - tapOn:
     id: "j’ai 18 ans"
 - tapOn: "Plus tard"

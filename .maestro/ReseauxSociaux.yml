@@ -11,17 +11,17 @@ appId: app.passculture.staging
       direction: DOWN
 - tapOn: "Facebook"
 - tapOn: "Retour"
-- tapOn: "Retour"
 - tapOn: "Tiktok"
 - tapOn: "Applications récentes"
 - tapOn:
     id: "com.sec.android.app.launcher:id/snapshot"
     index: 0
 - tapOn: "Twitter"
-- tapOn: "Retour"
-- tapOn: "Retour"
+- tapOn: "Applications récentes"
+- tapOn:
+    id: "com.sec.android.app.launcher:id/snapshot"
+    index: 0
 - tapOn: "Instagram"
-- tapOn: "Retour"
 - tapOn: "Applications récentes"
 - tapOn:
     id: "com.sec.android.app.launcher:id/snapshot"
