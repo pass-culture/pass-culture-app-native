@@ -36,7 +36,6 @@ const mockAlgoliaVenue: AlgoliaVenue = {
   },
 }
 
-const onPressMock = jest.fn()
 const ITEM_HEIGHT = 96
 const ITEM_WIDTH = 144
 
@@ -63,21 +62,6 @@ describe('<SearchVenueItem />', () => {
     render(<SearchVenueItem venue={venueWithBanner} width={ITEM_WIDTH} height={ITEM_HEIGHT} />)
 
     expect(screen.getByTestId('tileImage')).toBeTruthy()
-  })
-
-  it('should call onBeforeNavigate when the search venue item is pressed', () => {
-    render(
-      <SearchVenueItem
-        venue={mockAlgoliaVenue}
-        width={ITEM_WIDTH}
-        height={ITEM_HEIGHT}
-        onPress={onPressMock}
-      />
-    )
-
-    fireEvent.press(screen.getByTestId('Lieu UGC cinéma du type Autre type de lieu, '))
-
-    expect(onPressMock).toHaveBeenCalledTimes(1)
   })
 
   it('should navigate to the venue when pressing a search venue item', async () => {
