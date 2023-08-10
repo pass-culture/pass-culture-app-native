@@ -27,7 +27,7 @@ describe('<EmailInputController />', () => {
   })
 
   it('should not show spelling help when not asked', async () => {
-    renderEmailInputController({})
+    renderEmailInputController({ withSpellingHelp: false })
 
     const input = screen.getByPlaceholderText('tonadresse@email.com')
     fireEvent.changeText(input, 'firstname.lastname@gmal.com')
@@ -39,8 +39,8 @@ describe('<EmailInputController />', () => {
     expect(screen.queryByText('Veux-tu plutôt dire firstname.lastname@gmail.com ?')).toBeFalsy()
   })
 
-  it('should show spelling help when asked', async () => {
-    renderEmailInputController({ withSpellingHelp: true })
+  it('should show spelling help by default', async () => {
+    renderEmailInputController({})
 
     const input = screen.getByPlaceholderText('tonadresse@email.com')
     fireEvent.changeText(input, 'firstname.lastname@gmal.com')

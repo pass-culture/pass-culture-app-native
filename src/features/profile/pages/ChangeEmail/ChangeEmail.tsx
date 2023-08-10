@@ -98,7 +98,6 @@ export function ChangeEmail() {
               label="Nouvel e-mail"
               disabled={hasCurrentEmailChange}
               autoFocus
-              withSpellingHelp
               isRequiredField
             />
             <Spacer.Column numberOfSpaces={4} />
