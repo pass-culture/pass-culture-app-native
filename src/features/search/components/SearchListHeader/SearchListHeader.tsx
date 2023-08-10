@@ -1,4 +1,4 @@
-import { Hit, SearchResponse } from '@algolia/client-search'
+import { SearchResponse } from '@algolia/client-search'
 import { useRoute } from '@react-navigation/native'
 import React from 'react'
 import { ScrollViewProps, View } from 'react-native'
@@ -7,9 +7,13 @@ import styled from 'styled-components/native'
 import { SearchGroupNameEnumv2 } from 'api/gen'
 import { UseRouteType } from 'features/navigation/RootNavigator/types'
 import { NumberOfResults } from 'features/search/components/NumberOfResults/NumberOfResults'
+import { SearchVenueItem } from 'features/search/components/SearchVenueItems/SearchVenueItem'
+import { useSearchVenues } from 'features/search/context/SearchVenuesWrapper'
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { AlgoliaVenue } from 'libs/algolia'
 import { analytics } from 'libs/analytics'
+import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
+import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { useGeolocation } from 'libs/geolocation'
 import { Offer } from 'shared/offer/types'
 import { styledButton } from 'ui/components/buttons/styledButton'
@@ -25,36 +29,38 @@ import { getSpacing, LENGTH_XS, LENGTH_XXS, Spacer, Typo } from 'ui/theme'
 interface SearchListHeaderProps extends ScrollViewProps {
   nbHits: number
   userData: SearchResponse<Offer[]>['userData']
-  venues: Hit<AlgoliaVenue>[]
-  renderVenueItem: ({
-    item,
-    height,
-    width,
-  }: {
-    item: AlgoliaVenue
-    height: number
-    width: number
-  }) => React.JSX.Element
 }
+
+const renderVenueItem = ({
+  item,
+  height,
+  width,
+}: {
+  item: AlgoliaVenue
+  height: number
+  width: number
+}) => <SearchVenueItem venue={item} height={height} width={width} />
 
 const VENUE_ITEM_HEIGHT = LENGTH_XXS
 const VENUE_ITEM_WIDTH = LENGTH_XS
 const keyExtractor = (item: AlgoliaVenue) => item.objectID
 
-export const SearchListHeader: React.FC<SearchListHeaderProps> = ({
-  nbHits,
-  userData,
-  venues,
-  renderVenueItem,
-}) => {
+export const SearchListHeader: React.FC<SearchListHeaderProps> = ({ nbHits, userData }) => {
+  const { searchVenuesState: venues } = useSearchVenues()
   const { userPosition: position, showGeolocPermissionModal } = useGeolocation()
   const { params } = useRoute<UseRouteType<'Search'>>()
-  const shouldDisplayAvailableUserDataMessage = userData && userData.length > 0
+  const enableVenuesInSearchResults = useFeatureFlag(
+    RemoteStoreFeatureFlags.WIP_ENABLE_VENUES_IN_SEARCH_RESULTS
+  )
+
+  const shouldDisplayAvailableUserDataMessage = userData?.length > 0
   const unavailableOfferMessage = shouldDisplayAvailableUserDataMessage ? userData[0]?.message : ''
   const venueTitle = shouldDisplayAvailableUserDataMessage
     ? userData[0].venue_playlist_title
     : 'Les lieux culturels'
+  const offerTitle = 'Les offres'
 
+  const shouldDisplayVenuesPlaylist = venues.hits?.length && enableVenuesInSearchResults
   const onPress = () => {
     analytics.logActivateGeolocfromSearchResults()
     showGeolocPermissionModal()
@@ -65,8 +71,6 @@ export const SearchListHeader: React.FC<SearchListHeaderProps> = ({
     params?.offerCategories?.[0] !== SearchGroupNameEnumv2.EVENEMENTS_EN_LIGNE &&
     nbHits > 0 &&
     !shouldDisplayAvailableUserDataMessage
-
-  const title = 'Les offres'
 
   return (
     <React.Fragment>
@@ -92,20 +96,21 @@ export const SearchListHeader: React.FC<SearchListHeaderProps> = ({
           <InfoBanner message={unavailableOfferMessage} icon={Error} />
         </BannerOfferNotPresentContainer>
       )}
-      {!!venues.length && (
+      {!!shouldDisplayVenuesPlaylist && (
         <React.Fragment>
-          <Spacer.Column numberOfSpaces={2} />
+          <Spacer.Column numberOfSpaces={3} />
           <View>
             <Title>{venueTitle}</Title>
-            <NumberOfResults nbHits={venues.length} />
+            <NumberOfResults nbHits={venues.hits.length} />
             <Playlist
-              data={venues}
+              data={venues.hits}
               itemHeight={VENUE_ITEM_HEIGHT}
               itemWidth={VENUE_ITEM_WIDTH}
               renderItem={renderVenueItem}
               renderHeader={undefined}
               renderFooter={undefined}
               keyExtractor={keyExtractor}
+              testID="search-venue-lit"
             />
           </View>
           <Spacer.Column numberOfSpaces={3} />
@@ -113,7 +118,7 @@ export const SearchListHeader: React.FC<SearchListHeaderProps> = ({
       )}
       <StyledSeparator />
       <Spacer.Column numberOfSpaces={5} />
-      <Title>{title}</Title>
+      <Title>{offerTitle}</Title>
       <NumberOfResults nbHits={nbHits} />
     </React.Fragment>
   )

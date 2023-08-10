@@ -36,6 +36,14 @@ jest.mock('features/search/context/SearchWrapper', () => ({
   }),
 }))
 
+const mockSearchVenuesState = mockedAlgoliaVenueResponse
+jest.mock('features/search/context/SearchVenuesWrapper', () => ({
+  useSearchVenues: () => ({
+    searchVenuesState: mockSearchVenuesState,
+    dispatch: jest.fn(),
+  }),
+}))
+
 jest.mock('features/auth/context/AuthContext')
 const mockUser = { ...beneficiaryUser, domainsCredit: { all: { initial: 8000, remaining: 7000 } } }
 const mockUseAuthContext = useAuthContext as jest.MockedFunction<typeof useAuthContext>
@@ -123,7 +131,6 @@ describe('SearchResults component', () => {
     jest.advanceTimersByTime(2000)
     render(<SearchResults />)
     await act(async () => {})
-
     expect(screen).toMatchSnapshot()
   })
 

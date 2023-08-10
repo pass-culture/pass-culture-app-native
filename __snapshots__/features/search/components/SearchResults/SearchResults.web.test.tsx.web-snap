@@ -423,6 +423,165 @@ exports[`SearchResults component should render correctly 1`] = `
               class="css-view-175oi2r"
             >
               <div
+                class="css-view-175oi2r r-height-tbmifm"
+              />
+              <div
+                class="css-view-175oi2r"
+              >
+                <h3
+                  aria-level="3"
+                  class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-1gknse6 r-fontSize-adyw6z r-lineHeight-135wba7 r-marginHorizontal-1hy1u7s"
+                  dir="ltr"
+                  role="heading"
+                >
+                  Les lieux culturels
+                </h3>
+                <div
+                  class="css-view-175oi2r r-marginBottom-1ifxtd0 r-marginHorizontal-1hy1u7s r-marginTop-14gqq1x"
+                  role="status"
+                >
+                  <h2
+                    aria-level="2"
+                    class="css-text-1rynq56 r-color-v2ubm6 r-fontFamily-yv33h5 r-fontSize-a023e6 r-lineHeight-rjixqe"
+                    dir="ltr"
+                    role="heading"
+                  >
+                    2 résultats
+                  </h2>
+                </div>
+                <div
+                  class="css-view-175oi2r r-position-bnwqim r-width-13qz1uu"
+                >
+                  <div
+                    class="css-view-175oi2r r-WebkitOverflowScrolling-150rngu r-flexDirection-18u37iz r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-transform-1sncvnh r-overflowX-11yh6sk r-overflowY-buy8e9 r-touchAction-19z077z r-scrollbarWidth-2eszeu"
+                    data-testid="search-venue-lit"
+                  >
+                    <div
+                      class="css-view-175oi2r r-flexDirection-18u37iz"
+                    >
+                      <div
+                        class="css-view-175oi2r"
+                      >
+                        <div
+                          class="css-view-175oi2r r-width-lrsllp"
+                        />
+                      </div>
+                      <div
+                        class="css-view-175oi2r r-flexDirection-18u37iz"
+                      >
+                        <h3
+                          aria-level="3"
+                          class="css-view-175oi2r"
+                          role="heading"
+                        >
+                          <div
+                            aria-label="Lieu ESPACE CULTUREL LECLERC CHATEAU GONTIER du type Autre type de lieu, à 900+ km"
+                            class="css-view-175oi2r r-transitionProperty-1i6wzkk r-cursor-1loqt21 r-touchAction-1otgn73 r-userSelect-bj6uhd r-borderRadius-1xfd6ze r-marginVertical-1p6iasa r-maxHeight-9stuvb r-width-1sqjfdd"
+                            data-testid="Lieu ESPACE CULTUREL LECLERC CHATEAU GONTIER du type Autre type de lieu, à 900+ km"
+                            style="transition-duration: 0s;"
+                            tabindex="0"
+                          >
+                            <div
+                              class="css-view-175oi2r"
+                            >
+                              <div
+                                class="css-view-175oi2r r-alignSelf-1wv73ep r-backgroundColor-colhrt r-borderRadius-kdyh1x r-paddingHorizontal-1pn2ns4 r-paddingVertical-oyd9sg r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-position-u8s1d r-right-v2u3o6 r-top-s5r7i3 r-zIndex-136ojw6"
+                              >
+                                <div
+                                  class="css-text-1rynq56 r-color-jwli3a r-fontFamily-aeuvnr r-fontSize-1enofrn r-lineHeight-1cwl3u0"
+                                  dir="ltr"
+                                >
+                                  à 
+                                  900+ km
+                                </div>
+                              </div>
+                              <div
+                                class="css-view-175oi2r r-marginTop-knv0ih r-maxWidth-1a0sep6"
+                              >
+                                <div
+                                  class="css-text-1rynq56 r-WebkitBoxOrient-8akbws r-display-krxsd3 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-color-1rmcaf9 r-fontFamily-1gknse6 r-fontSize-a023e6 r-lineHeight-rjixqe"
+                                  dir="ltr"
+                                >
+                                  ESPACE CULTUREL LECLERC CHATEAU GONTIER
+                                </div>
+                                <div
+                                  class="css-text-1rynq56 r-WebkitBoxOrient-8akbws r-display-krxsd3 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-color-v2ubm6 r-flexShrink-1wbh5a2 r-fontFamily-aeuvnr r-fontSize-1enofrn r-lineHeight-1cwl3u0"
+                                  dir="ltr"
+                                >
+                                  CHATEAU-GONTIER-SUR-MAYENNE
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </h3>
+                        <div
+                          class="css-view-175oi2r r-width-1janqcz"
+                        />
+                      </div>
+                      <div
+                        class="css-view-175oi2r r-flexDirection-18u37iz"
+                      >
+                        <h3
+                          aria-level="3"
+                          class="css-view-175oi2r"
+                          role="heading"
+                        >
+                          <div
+                            aria-label="Lieu CAC - Concarneau Scènes du type Autre type de lieu, à 900+ km"
+                            class="css-view-175oi2r r-transitionProperty-1i6wzkk r-cursor-1loqt21 r-touchAction-1otgn73 r-userSelect-bj6uhd r-borderRadius-1xfd6ze r-marginVertical-1p6iasa r-maxHeight-9stuvb r-width-1sqjfdd"
+                            data-testid="Lieu CAC - Concarneau Scènes du type Autre type de lieu, à 900+ km"
+                            style="transition-duration: 0s;"
+                            tabindex="0"
+                          >
+                            <div
+                              class="css-view-175oi2r"
+                            >
+                              <div
+                                class="css-view-175oi2r r-alignSelf-1wv73ep r-backgroundColor-colhrt r-borderRadius-kdyh1x r-paddingHorizontal-1pn2ns4 r-paddingVertical-oyd9sg r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-position-u8s1d r-right-v2u3o6 r-top-s5r7i3 r-zIndex-136ojw6"
+                              >
+                                <div
+                                  class="css-text-1rynq56 r-color-jwli3a r-fontFamily-aeuvnr r-fontSize-1enofrn r-lineHeight-1cwl3u0"
+                                  dir="ltr"
+                                >
+                                  à 
+                                  900+ km
+                                </div>
+                              </div>
+                              <div
+                                class="css-view-175oi2r r-marginTop-knv0ih r-maxWidth-1a0sep6"
+                              >
+                                <div
+                                  class="css-text-1rynq56 r-WebkitBoxOrient-8akbws r-display-krxsd3 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-color-1rmcaf9 r-fontFamily-1gknse6 r-fontSize-a023e6 r-lineHeight-rjixqe"
+                                  dir="ltr"
+                                >
+                                  CAC - Concarneau Scènes
+                                </div>
+                                <div
+                                  class="css-text-1rynq56 r-WebkitBoxOrient-8akbws r-display-krxsd3 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-color-v2ubm6 r-flexShrink-1wbh5a2 r-fontFamily-aeuvnr r-fontSize-1enofrn r-lineHeight-1cwl3u0"
+                                  dir="ltr"
+                                >
+                                  CONCARNEAU
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </h3>
+                      </div>
+                      <div
+                        class="css-view-175oi2r"
+                      >
+                        <div
+                          class="css-view-175oi2r r-width-lrsllp"
+                        />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div
+                class="css-view-175oi2r r-height-tbmifm"
+              />
+              <div
                 class="css-view-175oi2r r-backgroundColor-14a9t8x r-height-109y4c4 r-marginLeft-6uxfom r-marginRight-mbgqwd r-width-iyfy8q"
               />
               <div
@@ -935,6 +1094,165 @@ exports[`SearchResults component should render correctly 1`] = `
           <div
             class="css-view-175oi2r"
           >
+            <div
+              class="css-view-175oi2r r-height-tbmifm"
+            />
+            <div
+              class="css-view-175oi2r"
+            >
+              <h3
+                aria-level="3"
+                class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-1gknse6 r-fontSize-adyw6z r-lineHeight-135wba7 r-marginHorizontal-1hy1u7s"
+                dir="ltr"
+                role="heading"
+              >
+                Les lieux culturels
+              </h3>
+              <div
+                class="css-view-175oi2r r-marginBottom-1ifxtd0 r-marginHorizontal-1hy1u7s r-marginTop-14gqq1x"
+                role="status"
+              >
+                <h2
+                  aria-level="2"
+                  class="css-text-1rynq56 r-color-v2ubm6 r-fontFamily-yv33h5 r-fontSize-a023e6 r-lineHeight-rjixqe"
+                  dir="ltr"
+                  role="heading"
+                >
+                  2 résultats
+                </h2>
+              </div>
+              <div
+                class="css-view-175oi2r r-position-bnwqim r-width-13qz1uu"
+              >
+                <div
+                  class="css-view-175oi2r r-WebkitOverflowScrolling-150rngu r-flexDirection-18u37iz r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-transform-1sncvnh r-overflowX-11yh6sk r-overflowY-buy8e9 r-touchAction-19z077z r-scrollbarWidth-2eszeu"
+                  data-testid="search-venue-lit"
+                >
+                  <div
+                    class="css-view-175oi2r r-flexDirection-18u37iz"
+                  >
+                    <div
+                      class="css-view-175oi2r"
+                    >
+                      <div
+                        class="css-view-175oi2r r-width-lrsllp"
+                      />
+                    </div>
+                    <div
+                      class="css-view-175oi2r r-flexDirection-18u37iz"
+                    >
+                      <h3
+                        aria-level="3"
+                        class="css-view-175oi2r"
+                        role="heading"
+                      >
+                        <div
+                          aria-label="Lieu ESPACE CULTUREL LECLERC CHATEAU GONTIER du type Autre type de lieu, à 900+ km"
+                          class="css-view-175oi2r r-transitionProperty-1i6wzkk r-cursor-1loqt21 r-touchAction-1otgn73 r-userSelect-bj6uhd r-borderRadius-1xfd6ze r-marginVertical-1p6iasa r-maxHeight-9stuvb r-width-1sqjfdd"
+                          data-testid="Lieu ESPACE CULTUREL LECLERC CHATEAU GONTIER du type Autre type de lieu, à 900+ km"
+                          style="transition-duration: 0s;"
+                          tabindex="0"
+                        >
+                          <div
+                            class="css-view-175oi2r"
+                          >
+                            <div
+                              class="css-view-175oi2r r-alignSelf-1wv73ep r-backgroundColor-colhrt r-borderRadius-kdyh1x r-paddingHorizontal-1pn2ns4 r-paddingVertical-oyd9sg r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-position-u8s1d r-right-v2u3o6 r-top-s5r7i3 r-zIndex-136ojw6"
+                            >
+                              <div
+                                class="css-text-1rynq56 r-color-jwli3a r-fontFamily-aeuvnr r-fontSize-1enofrn r-lineHeight-1cwl3u0"
+                                dir="ltr"
+                              >
+                                à 
+                                900+ km
+                              </div>
+                            </div>
+                            <div
+                              class="css-view-175oi2r r-marginTop-knv0ih r-maxWidth-1a0sep6"
+                            >
+                              <div
+                                class="css-text-1rynq56 r-WebkitBoxOrient-8akbws r-display-krxsd3 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-color-1rmcaf9 r-fontFamily-1gknse6 r-fontSize-a023e6 r-lineHeight-rjixqe"
+                                dir="ltr"
+                              >
+                                ESPACE CULTUREL LECLERC CHATEAU GONTIER
+                              </div>
+                              <div
+                                class="css-text-1rynq56 r-WebkitBoxOrient-8akbws r-display-krxsd3 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-color-v2ubm6 r-flexShrink-1wbh5a2 r-fontFamily-aeuvnr r-fontSize-1enofrn r-lineHeight-1cwl3u0"
+                                dir="ltr"
+                              >
+                                CHATEAU-GONTIER-SUR-MAYENNE
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </h3>
+                      <div
+                        class="css-view-175oi2r r-width-1janqcz"
+                      />
+                    </div>
+                    <div
+                      class="css-view-175oi2r r-flexDirection-18u37iz"
+                    >
+                      <h3
+                        aria-level="3"
+                        class="css-view-175oi2r"
+                        role="heading"
+                      >
+                        <div
+                          aria-label="Lieu CAC - Concarneau Scènes du type Autre type de lieu, à 900+ km"
+                          class="css-view-175oi2r r-transitionProperty-1i6wzkk r-cursor-1loqt21 r-touchAction-1otgn73 r-userSelect-bj6uhd r-borderRadius-1xfd6ze r-marginVertical-1p6iasa r-maxHeight-9stuvb r-width-1sqjfdd"
+                          data-testid="Lieu CAC - Concarneau Scènes du type Autre type de lieu, à 900+ km"
+                          style="transition-duration: 0s;"
+                          tabindex="0"
+                        >
+                          <div
+                            class="css-view-175oi2r"
+                          >
+                            <div
+                              class="css-view-175oi2r r-alignSelf-1wv73ep r-backgroundColor-colhrt r-borderRadius-kdyh1x r-paddingHorizontal-1pn2ns4 r-paddingVertical-oyd9sg r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-position-u8s1d r-right-v2u3o6 r-top-s5r7i3 r-zIndex-136ojw6"
+                            >
+                              <div
+                                class="css-text-1rynq56 r-color-jwli3a r-fontFamily-aeuvnr r-fontSize-1enofrn r-lineHeight-1cwl3u0"
+                                dir="ltr"
+                              >
+                                à 
+                                900+ km
+                              </div>
+                            </div>
+                            <div
+                              class="css-view-175oi2r r-marginTop-knv0ih r-maxWidth-1a0sep6"
+                            >
+                              <div
+                                class="css-text-1rynq56 r-WebkitBoxOrient-8akbws r-display-krxsd3 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-color-1rmcaf9 r-fontFamily-1gknse6 r-fontSize-a023e6 r-lineHeight-rjixqe"
+                                dir="ltr"
+                              >
+                                CAC - Concarneau Scènes
+                              </div>
+                              <div
+                                class="css-text-1rynq56 r-WebkitBoxOrient-8akbws r-display-krxsd3 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-color-v2ubm6 r-flexShrink-1wbh5a2 r-fontFamily-aeuvnr r-fontSize-1enofrn r-lineHeight-1cwl3u0"
+                                dir="ltr"
+                              >
+                                CONCARNEAU
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </h3>
+                    </div>
+                    <div
+                      class="css-view-175oi2r"
+                    >
+                      <div
+                        class="css-view-175oi2r r-width-lrsllp"
+                      />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div
+              class="css-view-175oi2r r-height-tbmifm"
+            />
             <div
               class="css-view-175oi2r r-backgroundColor-14a9t8x r-height-109y4c4 r-marginLeft-6uxfom r-marginRight-mbgqwd r-width-iyfy8q"
             />

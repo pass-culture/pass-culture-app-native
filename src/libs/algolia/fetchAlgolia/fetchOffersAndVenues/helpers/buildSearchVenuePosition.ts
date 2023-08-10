@@ -8,8 +8,8 @@ type SearchVenuePositionType = {
   aroundRadius: number | 'all'
 }
 
-export function convertKmToMeters(aroundRadiusKm: number | 'all'): number | 'all' {
-  if (aroundRadiusKm === 'all') {
+export function convertKmToMeters(aroundRadiusKm: number | 'all') {
+  if (aroundRadiusKm === 'all' || aroundRadiusKm === 0) {
     return 'all'
   }
   return aroundRadiusKm * 1000

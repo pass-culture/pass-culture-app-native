@@ -6,6 +6,7 @@ import {
   mockedAlgoliaResponse,
   mockedAlgoliaVenueResponse,
 } from 'libs/algolia/__mocks__/mockedAlgoliaResponse'
+import * as useFeatureFlag from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { Offer } from 'shared/offer/types'
 import { render } from 'tests/utils'
 
@@ -13,7 +14,16 @@ jest.mock('react-query')
 
 const mockHits: Offer[] = mockedAlgoliaResponse.hits
 const mockNbHits = mockedAlgoliaResponse.nbHits
-const mockVenues = mockedAlgoliaVenueResponse.hits
+
+const mockSearchVenuesState = mockedAlgoliaVenueResponse
+jest.mock('features/search/context/SearchVenuesWrapper', () => ({
+  useSearchVenues: () => ({
+    searchVenuesState: mockSearchVenuesState,
+    dispatch: jest.fn(),
+  }),
+}))
+
+jest.spyOn(useFeatureFlag, 'useFeatureFlag').mockReturnValue(true)
 
 describe('<SearchList />', () => {
   const renderItem = jest.fn()
@@ -29,10 +39,8 @@ describe('<SearchList />', () => {
     onEndReached: jest.fn(),
     onScroll: jest.fn(),
     userData: [],
-    venues: mockVenues,
-    renderVenueItem: jest.fn(),
   }
-  it('should renders correctly', () => {
+  it('should renders correctly', async () => {
     render(<SearchList {...props} />)
 
     expect(renderItem).toHaveBeenCalledWith({
