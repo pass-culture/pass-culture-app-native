@@ -336,13 +336,13 @@ describe('Search reducer', () => {
     it('should handle INIT', () => {
       const action: Action = { type: 'INIT' }
       const newState = searchVenuesReducer(state, action)
-      expect(newState.venues).toStrictEqual([])
+      expect(newState.hits).toStrictEqual([])
     })
 
     it('should handle SET_VENUES', () => {
-      const action: Action = { type: 'SET_VENUES', payload: mockedAlgoliaVenueResponse }
+      const action: Action = { type: 'SET_VENUES', payload: mockedAlgoliaVenueResponse.hits }
       const newState = searchVenuesReducer(state, action)
-      expect(newState.venues).toStrictEqual(mockedAlgoliaVenueResponse)
+      expect(newState.hits).toStrictEqual(mockedAlgoliaVenueResponse.hits)
     })
   })
 })
