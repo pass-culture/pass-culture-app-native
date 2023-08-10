@@ -153,6 +153,7 @@
     "react-native-code-push": "^7.0.4",
     "react-native-country-picker-modal": "^2.0.0",
     "react-native-date-picker": "^4.2.2",
+    "react-native-detector": "^0.2.3",
     "react-native-device-info": "^10.3.0",
     "react-native-email-link": "^1.10.0",
     "react-native-fast-image": "^8.6.3",
