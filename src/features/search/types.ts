@@ -80,6 +80,10 @@ export interface SearchState {
   minBookingsThreshold?: number
 }
 
+export interface SearchVenuesState {
+  hits: Hit<AlgoliaVenue>[]
+}
+
 export type OfferTypes = keyof SearchState['offerTypes']
 
 export type UserData = {
@@ -117,16 +121,6 @@ export interface SearchListProps {
   userData: SearchResponse<Offer[]>['userData']
   onScroll?: () => void
   onPress?: () => void
-  venues: Hit<AlgoliaVenue>[]
-  renderVenueItem: ({
-    item,
-    height,
-    width,
-  }: {
-    item: AlgoliaVenue
-    height: number
-    width: number
-  }) => React.JSX.Element
 }
 
 export type AnalyticsParams = {

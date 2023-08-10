@@ -15,6 +15,7 @@ import { ScreenErrorProvider } from 'features/errors/pages/ScreenErrorProvider'
 import { FavoritesWrapper } from 'features/favorites/context/FavoritesWrapper'
 import { SubscriptionContextProvider } from 'features/identityCheck/context/SubscriptionContextProvider'
 import { AppNavigationContainer } from 'features/navigation/NavigationContainer'
+import { SearchVenuesWrapper } from 'features/search/context/SearchVenuesWrapper'
 import { SearchWrapper } from 'features/search/context/SearchWrapper'
 import { initAlgoliaAnalytics } from 'libs/algolia/analytics/initAlgoliaAnalytics'
 import { SearchAnalyticsWrapper } from 'libs/algolia/analytics/SearchAnalyticsWrapper'
@@ -60,18 +61,20 @@ export function App() {
                           <FavoritesWrapper>
                             <SearchAnalyticsWrapper>
                               <SearchWrapper>
-                                <SnackBarProvider>
-                                  <CulturalSurveyContextProvider>
-                                    <SubscriptionContextProvider>
-                                      <AppWebHead />
-                                      <ScreenErrorProvider>
-                                        <Suspense fallback={<LoadingPage />}>
-                                          <AppNavigationContainer />
-                                        </Suspense>
-                                      </ScreenErrorProvider>
-                                    </SubscriptionContextProvider>
-                                  </CulturalSurveyContextProvider>
-                                </SnackBarProvider>
+                                <SearchVenuesWrapper>
+                                  <SnackBarProvider>
+                                    <CulturalSurveyContextProvider>
+                                      <SubscriptionContextProvider>
+                                        <AppWebHead />
+                                        <ScreenErrorProvider>
+                                          <Suspense fallback={<LoadingPage />}>
+                                            <AppNavigationContainer />
+                                          </Suspense>
+                                        </ScreenErrorProvider>
+                                      </SubscriptionContextProvider>
+                                    </CulturalSurveyContextProvider>
+                                  </SnackBarProvider>
+                                </SearchVenuesWrapper>
                               </SearchWrapper>
                             </SearchAnalyticsWrapper>
                           </FavoritesWrapper>
