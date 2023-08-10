@@ -20,8 +20,8 @@ export enum ColorsEnum {
   WHITE = '#ffffff',
   GOLD = '#B85901',
   AQUAMARINE = '#0E8474',
-  SKYBLUE = '#0E78B7',
-  DEEPPINK = '#C01371',
+  SKY_BLUE = '#0E78B7',
+  DEEP_PINK = '#C01371',
   CORAL = '#CA3F13',
   LILAC = '#8337E9',
 }
