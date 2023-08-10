@@ -129,6 +129,7 @@ export const logEventAnalytics: typeof actualLogEventAnalytics = {
   logResendEmailResetPasswordExpiredLink: jest.fn(),
   logResendEmailSignupConfirmationExpiredLink: jest.fn(),
   logSaveNewMail: jest.fn(),
+  logScreenshot: jest.fn(),
   logScreenViewComeBackLater: jest.fn(),
   logScreenViewDMSIntroduction: jest.fn(),
   logScreenViewExpiredOrLostId: jest.fn(),
