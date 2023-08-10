@@ -19,11 +19,17 @@ export enum ColorsEnum {
   TRANSPARENT = 'transparent',
   WHITE = '#ffffff',
   GOLD = '#B85901',
+  GOLD_LIGHT = '#FA9F16',
   AQUAMARINE = '#0E8474',
+  AQUAMARINE_LIGHT = '#27DCA8',
   SKY_BLUE = '#0E78B7',
+  SKY_BLUE_LIGHT = '#20C5E9',
   DEEP_PINK = '#C01371',
+  DEEP_PINK_LIGHT = '#EC3478',
   CORAL = '#CA3F13',
+  CORAL_LIGHT = '#F8733D',
   LILAC = '#8337E9',
+  LILAC_LIGHT = '#AD87FF',
 }
 export enum UniqueColors {
   BRAND = '#870087',

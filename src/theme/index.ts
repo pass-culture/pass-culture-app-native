@@ -140,11 +140,17 @@ export interface AppThemeType {
     transparent: ColorsEnum
     white: ColorsEnum
     gold: ColorsEnum
+    goldLight: ColorsEnum
     aquamarine: ColorsEnum
+    aquamarineLight: ColorsEnum
     skyBlue: ColorsEnum
+    skyBlueLight: ColorsEnum
     deepPink: ColorsEnum
+    deepPinkLight: ColorsEnum
     coral: ColorsEnum
+    coralLight: ColorsEnum
     lilac: ColorsEnum
+    lilacLight: ColorsEnum
   }
   uniqueColors: {
     tabBar: UniqueColors
@@ -586,11 +592,17 @@ export const theme: AppThemeType = {
     transparent: ColorsEnum.TRANSPARENT,
     white: ColorsEnum.WHITE,
     gold: ColorsEnum.GOLD,
+    goldLight: ColorsEnum.GOLD_LIGHT,
     aquamarine: ColorsEnum.AQUAMARINE,
+    aquamarineLight: ColorsEnum.AQUAMARINE_LIGHT,
     skyBlue: ColorsEnum.SKY_BLUE,
+    skyBlueLight: ColorsEnum.SKY_BLUE_LIGHT,
     deepPink: ColorsEnum.DEEP_PINK,
+    deepPinkLight: ColorsEnum.DEEP_PINK_LIGHT,
     coral: ColorsEnum.CORAL,
+    coralLight: ColorsEnum.CORAL_LIGHT,
     lilac: ColorsEnum.LILAC,
+    lilacLight: ColorsEnum.LILAC_LIGHT,
   },
   uniqueColors: {
     tabBar: UniqueColors.TAB_BAR,

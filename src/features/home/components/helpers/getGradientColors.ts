@@ -3,17 +3,17 @@ import { theme } from 'theme'
 export const getGradientColors = (color: string) => {
   switch (color) {
     case 'Gold':
-      return ['#FA9F16FF', theme.colors.gold]
+      return [theme.colors.goldLight, theme.colors.gold]
     case 'Aquamarine':
-      return ['#27DCA8FF', theme.colors.aquamarine]
+      return [theme.colors.aquamarineLight, theme.colors.aquamarine]
     case 'SkyBlue':
-      return ['#20C5E9FF', theme.colors.skyBlue]
+      return [theme.colors.skyBlueLight, theme.colors.skyBlue]
     case 'DeepPink':
-      return ['#EC3478FF', theme.colors.deepPink]
+      return [theme.colors.deepPinkLight, theme.colors.deepPink]
     case 'Coral':
-      return ['#F8733DFF', theme.colors.coral]
+      return [theme.colors.coralLight, theme.colors.coral]
     case 'Lilac':
-      return ['#AD87FFFF', theme.colors.lilac]
+      return [theme.colors.lilacLight, theme.colors.lilac]
     default:
       return [theme.colors.white, theme.colors.white]
   }

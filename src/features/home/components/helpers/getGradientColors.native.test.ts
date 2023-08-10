@@ -7,7 +7,7 @@ describe('getTagColor', () => {
 
     const color = getGradientColors(input)
 
-    expect(color[0]).toEqual('#FA9F16FF')
+    expect(color[0]).toEqual(theme.colors.goldLight)
     expect(color[1]).toEqual(theme.colors.gold)
   })
   it('should return aquamarine color code', () => {
@@ -15,7 +15,7 @@ describe('getTagColor', () => {
 
     const color = getGradientColors(input)
 
-    expect(color[0]).toEqual('#27DCA8FF')
+    expect(color[0]).toEqual(theme.colors.aquamarineLight)
     expect(color[1]).toEqual(theme.colors.aquamarine)
   })
   it('should return skyBlue color code', () => {
@@ -23,7 +23,7 @@ describe('getTagColor', () => {
 
     const color = getGradientColors(input)
 
-    expect(color[0]).toEqual('#20C5E9FF')
+    expect(color[0]).toEqual(theme.colors.skyBlueLight)
     expect(color[1]).toEqual(theme.colors.skyBlue)
   })
   it('should return deepPink color code', () => {
@@ -31,7 +31,7 @@ describe('getTagColor', () => {
 
     const color = getGradientColors(input)
 
-    expect(color[0]).toEqual('#EC3478FF')
+    expect(color[0]).toEqual(theme.colors.deepPinkLight)
     expect(color[1]).toEqual(theme.colors.deepPink)
   })
   it('should return coral color code', () => {
@@ -39,7 +39,7 @@ describe('getTagColor', () => {
 
     const color = getGradientColors(input)
 
-    expect(color[0]).toEqual('#F8733DFF')
+    expect(color[0]).toEqual(theme.colors.coralLight)
     expect(color[1]).toEqual(theme.colors.coral)
   })
   it('should return lilac color code', () => {
@@ -47,7 +47,7 @@ describe('getTagColor', () => {
 
     const color = getGradientColors(input)
 
-    expect(color[0]).toEqual('#AD87FFFF')
+    expect(color[0]).toEqual(theme.colors.lilacLight)
     expect(color[1]).toEqual(theme.colors.lilac)
   })
   it('should return black color code by default', () => {
