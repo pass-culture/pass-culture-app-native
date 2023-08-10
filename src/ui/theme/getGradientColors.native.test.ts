@@ -1,5 +1,5 @@
-import { getGradientColors } from 'features/home/components/helpers/getGradientColors'
 import { theme } from 'theme'
+import { getGradientColors } from 'ui/theme/getGradientColors'
 
 describe('getTagColor', () => {
   it('should return gold color code', () => {

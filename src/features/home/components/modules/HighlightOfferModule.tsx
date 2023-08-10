@@ -5,7 +5,6 @@ import styled, { DefaultTheme, useTheme } from 'styled-components/native'
 
 import { useHighlightOffer } from 'features/home/api/useHighlightOffer'
 import { BlackCaption } from 'features/home/components/BlackCaption'
-import { getGradientColors } from 'features/home/components/helpers/getGradientColors'
 import { HighlightOfferModule as HighlightOfferModuleType } from 'features/home/types'
 import { analytics } from 'libs/analytics'
 import { ContentTypes } from 'libs/contentful/types'
@@ -17,6 +16,7 @@ import { FavoriteButton } from 'ui/components/buttons/FavoriteButton'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { PlainArrowNext } from 'ui/svg/icons/PlainArrowNext'
 import { Spacer, Typo, getSpacing } from 'ui/theme'
+import { getGradientColors } from 'ui/theme/getGradientColors'
 
 const OFFER_IMAGE_HEIGHT = getSpacing(45)
 const BOTTOM_SPACER = getSpacing(6)

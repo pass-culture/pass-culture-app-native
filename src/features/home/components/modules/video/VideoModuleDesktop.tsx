@@ -8,7 +8,6 @@ import styled from 'styled-components/native'
 import { BlackCaption } from 'features/home/components/BlackCaption'
 import { BlackGradient } from 'features/home/components/BlackGradient'
 import { TEXT_BACKGROUND_OPACITY } from 'features/home/components/constants'
-import { getGradientColors } from 'features/home/components/helpers/getGradientColors'
 import { VideoMonoOfferTile } from 'features/home/components/modules/video/VideoMonoOfferTile'
 import { VideoModuleProps } from 'features/home/types'
 import { Offer } from 'shared/offer/types'
@@ -17,6 +16,7 @@ import { Separator } from 'ui/components/Separator'
 import { HorizontalOfferTile } from 'ui/components/tiles/HorizontalOfferTile'
 import { Play } from 'ui/svg/icons/Play'
 import { Spacer, Typo, getSpacing } from 'ui/theme'
+import { getGradientColors } from 'ui/theme/getGradientColors'
 
 const THUMBNAIL_HEIGHT_MULTI_OFFER = getSpacing(90)
 const THUMBNAIL_HEIGHT_MONO_OFFER = getSpacing(45)
