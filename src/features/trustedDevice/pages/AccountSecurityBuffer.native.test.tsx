@@ -5,6 +5,7 @@ import { Text } from 'react-native'
 
 import { useRoute, replace } from '__mocks__/@react-navigation/native'
 import { navigateToHome } from 'features/navigation/helpers'
+import { ROUTE_PARAMS } from 'features/trustedDevice/fixtures/fixtures'
 import { env } from 'libs/environment'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { server } from 'tests/server'
@@ -14,8 +15,6 @@ import { AccountSecurityBuffer } from './AccountSecurityBuffer'
 
 jest.unmock('jwt-decode')
 jest.mock('features/navigation/helpers')
-
-const TOKEN = 'token.123.token'
 
 const consoleError = console.error
 const catchErrorSilently = async (fn: () => Promise<unknown>) => {
@@ -32,14 +31,14 @@ const catchErrorSilently = async (fn: () => Promise<unknown>) => {
 describe('<AccountSecurityBuffer/>', () => {
   beforeEach(() => {
     useRoute
-      .mockReturnValueOnce({ params: { token: TOKEN } })
-      .mockReturnValueOnce({ params: { token: TOKEN } })
+      .mockReturnValueOnce({ params: ROUTE_PARAMS })
+      .mockReturnValueOnce({ params: ROUTE_PARAMS })
   })
 
   it('should display loading page when is loading', async () => {
     server.use(
       rest.get(
-        `${env.API_BASE_URL}/native/v1/account/suspend/token_validation/${TOKEN}`,
+        `${env.API_BASE_URL}/native/v1/account/suspend/token_validation/${ROUTE_PARAMS.token}`,
         (_req, res, ctx) => res(ctx.delay(1000))
       )
     )
@@ -52,7 +51,7 @@ describe('<AccountSecurityBuffer/>', () => {
   it('should navigate to SuspensionChoiceExpiredLink screen when expired token', async () => {
     server.use(
       rest.get(
-        `${env.API_BASE_URL}/native/v1/account/suspend/token_validation/${TOKEN}`,
+        `${env.API_BASE_URL}/native/v1/account/suspend/token_validation/${ROUTE_PARAMS.token}`,
         (_req, res, ctx) => res(ctx.status(401))
       )
     )
@@ -66,7 +65,7 @@ describe('<AccountSecurityBuffer/>', () => {
   it('should navigate to Home when invalid token', async () => {
     server.use(
       rest.get(
-        `${env.API_BASE_URL}/native/v1/account/suspend/token_validation/${TOKEN}`,
+        `${env.API_BASE_URL}/native/v1/account/suspend/token_validation/${ROUTE_PARAMS.token}`,
         (_req, res, ctx) => res(ctx.status(400))
       )
     )
@@ -80,21 +79,21 @@ describe('<AccountSecurityBuffer/>', () => {
   it('should navigate to AccountSecurity screen when valid token', async () => {
     server.use(
       rest.get(
-        `${env.API_BASE_URL}/native/v1/account/suspend/token_validation/${TOKEN}`,
+        `${env.API_BASE_URL}/native/v1/account/suspend/token_validation/${ROUTE_PARAMS.token}`,
         (_req, res, ctx) => res(ctx.status(200))
       )
     )
     renderAccountSecurityBuffer()
 
     await waitFor(() => {
-      expect(replace).toHaveBeenNthCalledWith(1, 'AccountSecurity', { token: TOKEN })
+      expect(replace).toHaveBeenNthCalledWith(1, 'AccountSecurity', ROUTE_PARAMS)
     })
   })
 
   it('should throw error when unexpected error happens while validating token', async () => {
     server.use(
       rest.get(
-        `${env.API_BASE_URL}/native/v1/account/suspend/token_validation/${TOKEN}`,
+        `${env.API_BASE_URL}/native/v1/account/suspend/token_validation/${ROUTE_PARAMS.token}`,
         (_req, res, ctx) => res(ctx.status(500))
       )
     )

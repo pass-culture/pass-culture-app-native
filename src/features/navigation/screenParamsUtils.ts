@@ -63,9 +63,15 @@ const searchParamsParser = {
 export const screenParamsParser: ParamsParsers = {
   AccountSecurity: {
     token: identityFn,
+    email: decodeURIComponent,
+    reset_password_token: identityFn,
+    expiration_timestamp: Number,
   },
   AccountSecurityBuffer: {
     token: identityFn,
+    email: decodeURIComponent,
+    reset_password_token: identityFn,
+    expiration_timestamp: Number,
   },
   AfterSignupEmailValidationBuffer: {
     email: decodeURIComponent,
