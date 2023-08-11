@@ -3,12 +3,10 @@ import { ScrollView } from 'react-native'
 import styled from 'styled-components/native'
 
 import { LinkToComponent } from 'features/internal/cheatcodes/components/LinkToComponent'
+import { ROUTE_PARAMS } from 'features/trustedDevice/fixtures/fixtures'
 import { PageHeaderSecondary } from 'ui/components/headers/PageHeaderSecondary'
 import { TextInput } from 'ui/components/inputs/TextInput'
 import { getSpacing, Spacer } from 'ui/theme'
-
-const TOKEN =
-  'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiIxIiwibG9jYXRpb24iOiJQYXJpcyIsImRhdGVDcmVhdGVkIjoiMjAyMy0wNi0wOVQxMDowMDowMFoiLCJvcyI6ImlPUyIsInNvdXJjZSI6ImlQaG9uZSAxMyJ9.0x9m4wEh0QKefPSsCOJDVrA-xVRGnUcoJR_vEbjNtaE'
 
 export function NavigationTrustedDevice(): React.JSX.Element {
   const [value, setValue] = useState('')
@@ -21,11 +19,11 @@ export function NavigationTrustedDevice(): React.JSX.Element {
         <LinkToComponent name="SuspensionChoice" />
         <LinkToComponent name="SuspensionChoiceExpiredLink" />
         <LinkToComponent name="SuspiciousLoginSuspendedAccount" />
-        <LinkToComponent name="AccountSecurity" navigationParams={{ token: TOKEN }} />
+        <LinkToComponent name="AccountSecurity" navigationParams={ROUTE_PARAMS} />
         <BufferContainer>
           <LinkToComponent
             name="AccountSecurityBuffer"
-            navigationParams={{ token: value }}
+            navigationParams={{ ...ROUTE_PARAMS, token: value }}
             half={false}
             disabled={value.length < 1}
           />

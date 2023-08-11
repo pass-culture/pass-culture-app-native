@@ -47,15 +47,15 @@ export function NavigationSignUp(): React.JSX.Element {
       <PageHeaderSecondary title="SignUp 🎨" />
       <StyledContainer>
         <LinkToComponent
-          title={'IdentityCheck 🎨'}
+          title="IdentityCheck 🎨"
           onPress={() => navigate('NavigationIdentityCheck')}
         />
         <LinkToComponent
-          title={'NewIdentificationFlow 🎨'}
+          title="NewIdentificationFlow 🎨"
           onPress={() => navigate('NewIdentificationFlow')}
         />
         <LinkToComponent
-          title={'Account confirmation lien expiré'}
+          title="Account confirmation lien expiré"
           onPress={() =>
             navigate('SignupConfirmationExpiredLink', {
               email: 'john@wick.com',
@@ -63,7 +63,7 @@ export function NavigationSignUp(): React.JSX.Element {
           }
         />
         <LinkToComponent
-          title={'Validate Email'}
+          title="Validate Email"
           onPress={() =>
             navigate('AfterSignupEmailValidationBuffer', {
               token: 'whichTokenDoYouWantReally',
@@ -72,9 +72,9 @@ export function NavigationSignUp(): React.JSX.Element {
             })
           }
         />
-        <LinkToComponent title={'Account Created'} onPress={() => navigate('AccountCreated')} />
+        <LinkToComponent title="Account Created" onPress={() => navigate('AccountCreated')} />
         <LinkToComponent
-          title={'BeneficiaryAccountCreated'}
+          title="BeneficiaryAccountCreated"
           onPress={() => navigate('BeneficiaryAccountCreated')}
         />
         <LinkToComponent

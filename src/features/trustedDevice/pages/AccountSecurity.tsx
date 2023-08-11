@@ -7,6 +7,7 @@ import { DeviceInformationsBanner } from 'features/trustedDevice/components/Devi
 import { formatTokenInfo } from 'features/trustedDevice/helpers/formatTokenInfo'
 import { getTokenInfo } from 'features/trustedDevice/helpers/getTokenInfo'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
+import { ButtonSecondary } from 'ui/components/buttons/ButtonSecondary'
 import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { GenericInfoPageWhite } from 'ui/pages/GenericInfoPageWhite'
@@ -40,16 +41,23 @@ export const AccountSecurity = () => {
         modifier ton mot de passe ou de suspendre ton compte temporairement.
       </Typo.Body>
       <Spacer.Column numberOfSpaces={6} />
-      {/* <InternalTouchableLink
+      <InternalTouchableLink
         wording="Modifier mon mot de passe"
-        navigateTo={{ screen: 'ChangePassword' }}
+        navigateTo={{
+          screen: 'ReinitializePassword',
+          params: {
+            token: params.reset_password_token,
+            email: params.email,
+            expiration_timestamp: params.reset_token_expiration_timestamp,
+          },
+        }}
         as={ButtonPrimary}
       />
-      <Spacer.Column numberOfSpaces={4} /> */}
+      <Spacer.Column numberOfSpaces={4} />
       <InternalTouchableLink
         wording="Suspendre mon compte"
         navigateTo={{ screen: 'SuspensionChoice', params: { token: params.token } }}
-        as={ButtonPrimary}
+        as={ButtonSecondary}
       />
       <Spacer.Column numberOfSpaces={2} />
       <ButtonTertiaryBlack

@@ -35,9 +35,9 @@ export const AccountSecurityBuffer = () => {
     }
 
     if (tokenStatus === AccountSecurityStatus.VALID_TOKEN) {
-      replace('AccountSecurity', { token: params.token })
+      replace('AccountSecurity', params)
     }
-  }, [params.token, replace, showErrorSnackBar, tokenStatus])
+  }, [params, replace, showErrorSnackBar, tokenStatus])
 
   if (isLoading) {
     return <LoadingPage />

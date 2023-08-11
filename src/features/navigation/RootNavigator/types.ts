@@ -69,8 +69,18 @@ export type OnboardingRootStackParamList = {
 }
 
 export type TrustedDeviceRootStackParamList = {
-  AccountSecurity: { token: string }
-  AccountSecurityBuffer: { token: string }
+  AccountSecurity: {
+    token: string
+    email: string
+    reset_password_token: string
+    reset_token_expiration_timestamp: number
+  }
+  AccountSecurityBuffer: {
+    token: string
+    email: string
+    reset_password_token: string
+    reset_token_expiration_timestamp: number
+  }
   NavigationTrustedDevice: undefined
   SuspensionChoice: { token: string }
   SuspensionChoiceExpiredLink: undefined
