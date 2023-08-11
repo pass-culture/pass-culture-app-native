@@ -2,6 +2,7 @@ import React from 'react'
 
 import { SearchCategoriesIllustrations } from 'features/internal/cheatcodes/pages/AppComponents/illustrationsExports'
 import { fireEvent, render } from 'tests/utils'
+import { theme } from 'theme'
 
 import { CategoryButton } from './CategoryButton'
 
@@ -13,10 +14,7 @@ describe('CategoryButton', () => {
         Illustration={SearchCategoriesIllustrations.LibrariesMediaLibraries}
         baseColor="#870087"
         onPress={jest.fn()}
-        gradients={[
-          { color: '#EC3478', position: { x: 0, y: 0 } },
-          { color: '#C01371', position: { x: 0, y: 0.5 } },
-        ]}
+        gradients={[theme.colors.deepPinkLight, theme.colors.deepPink]}
       />
     )
     expect(categoryButton).toMatchSnapshot()
@@ -30,10 +28,7 @@ describe('CategoryButton', () => {
         Illustration={SearchCategoriesIllustrations.LibrariesMediaLibraries}
         baseColor="#870087"
         onPress={handleClick}
-        gradients={[
-          { color: '#EC3478', position: { x: 0, y: 0 } },
-          { color: '#C01371', position: { x: 0, y: 0.5 } },
-        ]}
+        gradients={[theme.colors.deepPinkLight, theme.colors.deepPink]}
       />
     )
 
@@ -50,10 +45,7 @@ describe('CategoryButton', () => {
         label="Bibliothèques & Médiathèques"
         Illustration={SearchCategoriesIllustrations.LibrariesMediaLibraries}
         onPress={handleClick}
-        gradients={[
-          { color: '#EC3478', position: { x: 0, y: 0 } },
-          { color: '#C01371', position: { x: 0, y: 0.5 } },
-        ]}
+        gradients={[theme.colors.deepPinkLight, theme.colors.deepPink]}
       />
     )
 

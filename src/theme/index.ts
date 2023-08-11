@@ -34,7 +34,7 @@ interface Typography {
 }
 
 export interface AppThemeType {
-  appContentWidth: number
+  appContentWidth: number // computed dynamically in ThemeProvider.tsx
   minScreenHeight: number
   appBarHeight: number
   navTopHeight: number
@@ -50,7 +50,7 @@ export interface AppThemeType {
   isDesktopViewport?: boolean // computed dynamically in ThemeProvider.tsx
   isTouch: boolean
   isNative: boolean
-  isSmallScreen: boolean
+  isSmallScreen: boolean // computed dynamically in ThemeProvider.tsx
   showTabBar: boolean // computed dynamically in ThemeProvider.tsx
   activeOpacity: number
   controlComponent: {
@@ -76,7 +76,7 @@ export interface AppThemeType {
     iconSize: number
     fontSize: number
     labelMinScreenWidth: number
-    showLabels: boolean
+    showLabels: boolean // computed dynamically in ThemeProvider.tsx
   }
   ticket: {
     maxWidth: number
@@ -140,11 +140,17 @@ export interface AppThemeType {
     transparent: ColorsEnum
     white: ColorsEnum
     gold: ColorsEnum
+    goldLight: ColorsEnum
     aquamarine: ColorsEnum
+    aquamarineLight: ColorsEnum
     skyBlue: ColorsEnum
+    skyBlueLight: ColorsEnum
     deepPink: ColorsEnum
+    deepPinkLight: ColorsEnum
     coral: ColorsEnum
+    coralLight: ColorsEnum
     lilac: ColorsEnum
+    lilacLight: ColorsEnum
   }
   uniqueColors: {
     tabBar: UniqueColors
@@ -586,11 +592,17 @@ export const theme: AppThemeType = {
     transparent: ColorsEnum.TRANSPARENT,
     white: ColorsEnum.WHITE,
     gold: ColorsEnum.GOLD,
+    goldLight: ColorsEnum.GOLD_LIGHT,
     aquamarine: ColorsEnum.AQUAMARINE,
-    skyBlue: ColorsEnum.SKYBLUE,
-    deepPink: ColorsEnum.DEEPPINK,
+    aquamarineLight: ColorsEnum.AQUAMARINE_LIGHT,
+    skyBlue: ColorsEnum.SKY_BLUE,
+    skyBlueLight: ColorsEnum.SKY_BLUE_LIGHT,
+    deepPink: ColorsEnum.DEEP_PINK,
+    deepPinkLight: ColorsEnum.DEEP_PINK_LIGHT,
     coral: ColorsEnum.CORAL,
+    coralLight: ColorsEnum.CORAL_LIGHT,
     lilac: ColorsEnum.LILAC,
+    lilacLight: ColorsEnum.LILAC_LIGHT,
   },
   uniqueColors: {
     tabBar: UniqueColors.TAB_BAR,
@@ -877,4 +889,4 @@ export const theme: AppThemeType = {
   home: {
     spaceBetweenModules: getSpacing(6),
   },
-}
+} as const

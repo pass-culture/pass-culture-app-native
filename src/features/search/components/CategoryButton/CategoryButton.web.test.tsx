@@ -2,6 +2,7 @@ import React from 'react'
 
 import { SearchCategoriesIllustrations } from 'features/internal/cheatcodes/pages/AppComponents/illustrationsExports'
 import { checkAccessibilityFor, render } from 'tests/utils/web'
+import { theme } from 'theme'
 
 import { CategoryButton } from './CategoryButton'
 
@@ -13,10 +14,7 @@ describe('<Checkbox />', () => {
         Illustration={SearchCategoriesIllustrations.LibrariesMediaLibraries}
         baseColor="#870087"
         onPress={jest.fn()}
-        gradients={[
-          { color: '#EC3478', position: { x: 0, y: 0 } },
-          { color: '#C01371', position: { x: 0, y: 0.5 } },
-        ]}
+        gradients={[theme.colors.deepPinkLight, theme.colors.deepPink]}
       />
     )
     const results = await checkAccessibilityFor(container)

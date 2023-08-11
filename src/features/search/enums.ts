@@ -6,6 +6,7 @@ import { categoriesIcons } from 'ui/svg/icons/bicolor/exports/categoriesIcons'
 import { AccessibleIcon, BicolorIconInterface } from 'ui/svg/icons/types'
 // eslint-disable-next-line no-restricted-imports
 import { ColorsEnum } from 'ui/theme/colors'
+import { gradientColorsMapping } from 'ui/theme/gradientColorsMapping'
 
 export enum DATE_FILTER_OPTIONS {
   TODAY = 'today',
@@ -27,13 +28,7 @@ export enum CategoriesModalView {
   GENRES = 'GENRES',
 }
 
-export type Gradient = {
-  color: ColorsEnum | string
-  position: {
-    x: number
-    y: number
-  }
-}
+export type Gradient = Array<ColorsEnum>
 
 type CategoryCriteria = {
   [category in SearchGroupNameEnumv2]: {
@@ -41,7 +36,7 @@ type CategoryCriteria = {
     illustration: category extends SearchGroupNameEnumv2.NONE ? undefined : React.FC<AccessibleIcon>
     facetFilter: SearchGroupNameEnumv2
     baseColor: category extends SearchGroupNameEnumv2.NONE ? undefined : ColorsEnum | string
-    gradients: category extends SearchGroupNameEnumv2.NONE ? undefined : Array<Gradient>
+    gradients: category extends SearchGroupNameEnumv2.NONE ? undefined : Gradient
     position: category extends SearchGroupNameEnumv2.NONE ? undefined : number
   }
 }
@@ -60,10 +55,7 @@ export const CATEGORY_CRITERIA: Partial<CategoryCriteria> = {
     illustration: SearchCategoriesIllustrations.ArtsCrafts,
     facetFilter: SearchGroupNameEnumv2.ARTS_LOISIRS_CREATIFS,
     baseColor: theme.colors.lilac,
-    gradients: [
-      { color: '#AD87FF', position: { x: 0, y: 0 } },
-      { color: theme.colors.lilac, position: { x: 0, y: 0.5 } },
-    ],
+    gradients: gradientColorsMapping.Lilac,
     position: 5,
   },
   [SearchGroupNameEnumv2.BIBLIOTHEQUES_MEDIATHEQUE]: {
@@ -71,10 +63,7 @@ export const CATEGORY_CRITERIA: Partial<CategoryCriteria> = {
     illustration: SearchCategoriesIllustrations.LibrariesMediaLibraries,
     facetFilter: SearchGroupNameEnumv2.BIBLIOTHEQUES_MEDIATHEQUE,
     baseColor: theme.colors.coral,
-    gradients: [
-      { color: '#F8733D', position: { x: 0, y: 0 } },
-      { color: theme.colors.coral, position: { x: 0, y: 0.5 } },
-    ],
+    gradients: gradientColorsMapping.Coral,
     position: 11,
   },
   [SearchGroupNameEnumv2.CARTES_JEUNES]: {
@@ -82,10 +71,7 @@ export const CATEGORY_CRITERIA: Partial<CategoryCriteria> = {
     illustration: SearchCategoriesIllustrations.YouthCards,
     facetFilter: SearchGroupNameEnumv2.CARTES_JEUNES,
     baseColor: theme.colors.lilac,
-    gradients: [
-      { color: '#AD87FF', position: { x: 0, y: 0 } },
-      { color: theme.colors.lilac, position: { x: 0, y: 0.5 } },
-    ],
+    gradients: gradientColorsMapping.Lilac,
     position: 12,
   },
   [SearchGroupNameEnumv2.CD_VINYLE_MUSIQUE_EN_LIGNE]: {
@@ -93,10 +79,7 @@ export const CATEGORY_CRITERIA: Partial<CategoryCriteria> = {
     illustration: SearchCategoriesIllustrations.CDVinylsOnlineMusic,
     facetFilter: SearchGroupNameEnumv2.CD_VINYLE_MUSIQUE_EN_LIGNE,
     baseColor: theme.colors.skyBlue,
-    gradients: [
-      { color: '#20C5E9', position: { x: 0, y: 0 } },
-      { color: theme.colors.skyBlue, position: { x: 0, y: 0.5 } },
-    ],
+    gradients: gradientColorsMapping.SkyBlue,
     position: 4,
   },
   [SearchGroupNameEnumv2.CONCERTS_FESTIVALS]: {
@@ -104,10 +87,7 @@ export const CATEGORY_CRITERIA: Partial<CategoryCriteria> = {
     illustration: SearchCategoriesIllustrations.ConcertsFestivals,
     facetFilter: SearchGroupNameEnumv2.CONCERTS_FESTIVALS,
     baseColor: theme.colors.gold,
-    gradients: [
-      { color: '#F99E15', position: { x: 0, y: 0 } },
-      { color: theme.colors.gold, position: { x: 0, y: 0.5 } },
-    ],
+    gradients: gradientColorsMapping.Gold,
     position: 1,
   },
   [SearchGroupNameEnumv2.RENCONTRES_CONFERENCES]: {
@@ -115,10 +95,7 @@ export const CATEGORY_CRITERIA: Partial<CategoryCriteria> = {
     illustration: SearchCategoriesIllustrations.ConferencesMeetings,
     facetFilter: SearchGroupNameEnumv2.RENCONTRES_CONFERENCES,
     baseColor: theme.colors.gold,
-    gradients: [
-      { color: '#F99E15', position: { x: 0, y: 0 } },
-      { color: theme.colors.gold, position: { x: 0, y: 0.5 } },
-    ],
+    gradients: gradientColorsMapping.Gold,
     position: 13,
   },
   [SearchGroupNameEnumv2.EVENEMENTS_EN_LIGNE]: {
@@ -126,10 +103,7 @@ export const CATEGORY_CRITERIA: Partial<CategoryCriteria> = {
     illustration: SearchCategoriesIllustrations.OnlineEvents,
     facetFilter: SearchGroupNameEnumv2.EVENEMENTS_EN_LIGNE,
     baseColor: theme.colors.aquamarine,
-    gradients: [
-      { color: '#27DCA8', position: { x: 0, y: 0 } },
-      { color: theme.colors.aquamarine, position: { x: 0, y: 0.5 } },
-    ],
+    gradients: gradientColorsMapping.Aquamarine,
     position: 14,
   },
   [SearchGroupNameEnumv2.FILMS_SERIES_CINEMA]: {
@@ -137,10 +111,7 @@ export const CATEGORY_CRITERIA: Partial<CategoryCriteria> = {
     illustration: SearchCategoriesIllustrations.FilmsSeriesCinema,
     facetFilter: SearchGroupNameEnumv2.FILMS_SERIES_CINEMA,
     baseColor: theme.colors.aquamarine,
-    gradients: [
-      { color: '#27DCA8', position: { x: 0, y: 0 } },
-      { color: theme.colors.aquamarine, position: { x: 0, y: 0.5 } },
-    ],
+    gradients: gradientColorsMapping.Aquamarine,
     position: 2,
   },
   [SearchGroupNameEnumv2.INSTRUMENTS]: {
@@ -148,10 +119,7 @@ export const CATEGORY_CRITERIA: Partial<CategoryCriteria> = {
     illustration: SearchCategoriesIllustrations.MusicalInstruments,
     facetFilter: SearchGroupNameEnumv2.INSTRUMENTS,
     baseColor: theme.colors.skyBlue,
-    gradients: [
-      { color: '#20C5E9', position: { x: 0, y: 0 } },
-      { color: theme.colors.skyBlue, position: { x: 0, y: 0.5 } },
-    ],
+    gradients: gradientColorsMapping.SkyBlue,
     position: 9,
   },
   [SearchGroupNameEnumv2.JEUX_JEUX_VIDEOS]: {
@@ -159,10 +127,7 @@ export const CATEGORY_CRITERIA: Partial<CategoryCriteria> = {
     illustration: SearchCategoriesIllustrations.GamesVideoGames,
     facetFilter: SearchGroupNameEnumv2.JEUX_JEUX_VIDEOS,
     baseColor: theme.colors.gold,
-    gradients: [
-      { color: '#F99E15', position: { x: 0, y: 0 } },
-      { color: theme.colors.gold, position: { x: 0, y: 0.5 } },
-    ],
+    gradients: gradientColorsMapping.Gold,
     position: 8,
   },
   [SearchGroupNameEnumv2.LIVRES]: {
@@ -170,10 +135,7 @@ export const CATEGORY_CRITERIA: Partial<CategoryCriteria> = {
     illustration: SearchCategoriesIllustrations.Books,
     facetFilter: SearchGroupNameEnumv2.LIVRES,
     baseColor: theme.colors.deepPink,
-    gradients: [
-      { color: '#EC3478', position: { x: 0, y: 0 } },
-      { color: theme.colors.deepPink, position: { x: 0, y: 0.5 } },
-    ],
+    gradients: gradientColorsMapping.DeepPink,
     position: 3,
   },
   [SearchGroupNameEnumv2.MEDIA_PRESSE]: {
@@ -181,10 +143,7 @@ export const CATEGORY_CRITERIA: Partial<CategoryCriteria> = {
     illustration: SearchCategoriesIllustrations.MediaPress,
     facetFilter: SearchGroupNameEnumv2.MEDIA_PRESSE,
     baseColor: theme.colors.deepPink,
-    gradients: [
-      { color: '#EC3478', position: { x: 0, y: 0 } },
-      { color: theme.colors.deepPink, position: { x: 0, y: 0.5 } },
-    ],
+    gradients: gradientColorsMapping.DeepPink,
     position: 10,
   },
   [SearchGroupNameEnumv2.MUSEES_VISITES_CULTURELLES]: {
@@ -192,10 +151,7 @@ export const CATEGORY_CRITERIA: Partial<CategoryCriteria> = {
     illustration: SearchCategoriesIllustrations.MuseumCulturalVisits,
     facetFilter: SearchGroupNameEnumv2.MUSEES_VISITES_CULTURELLES,
     baseColor: theme.colors.aquamarine,
-    gradients: [
-      { color: '#27DCA8', position: { x: 0, y: 0 } },
-      { color: theme.colors.aquamarine, position: { x: 0, y: 0.5 } },
-    ],
+    gradients: gradientColorsMapping.Aquamarine,
     position: 7,
   },
   [SearchGroupNameEnumv2.SPECTACLES]: {
@@ -203,10 +159,7 @@ export const CATEGORY_CRITERIA: Partial<CategoryCriteria> = {
     illustration: SearchCategoriesIllustrations.Shows,
     facetFilter: SearchGroupNameEnumv2.SPECTACLES,
     baseColor: theme.colors.coral,
-    gradients: [
-      { color: '#F8733D', position: { x: 0, y: 0 } },
-      { color: theme.colors.coral, position: { x: 0, y: 0.5 } },
-    ],
+    gradients: gradientColorsMapping.Coral,
     position: 6,
   },
 }

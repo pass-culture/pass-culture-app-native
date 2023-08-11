@@ -7,12 +7,12 @@ import styled from 'styled-components/native'
 import { BlackCaption } from 'features/home/components/BlackCaption'
 import { BlackGradient } from 'features/home/components/BlackGradient'
 import { TEXT_BACKGROUND_OPACITY } from 'features/home/components/constants'
-import { getGradientColors } from 'features/home/components/helpers/getGradientColors'
 import { VideoMonoOfferTile } from 'features/home/components/modules/video/VideoMonoOfferTile'
 import { VideoMultiOfferPlaylist } from 'features/home/components/modules/video/VideoMultiOfferPlaylist'
 import { VideoModuleProps } from 'features/home/types'
 import { Play } from 'ui/svg/icons/Play'
 import { Spacer, Typo, getSpacing } from 'ui/theme'
+import { gradientColorsMapping } from 'ui/theme/gradientColorsMapping'
 
 const THUMBNAIL_HEIGHT = getSpacing(45)
 // We do not center the player icon, because when the title is 2-line long,
@@ -43,7 +43,7 @@ export const VideoModuleMobile: FunctionComponent<VideoModuleProps> = (props) =>
           colorCategoryBackgroundHeightUniqueOffer={colorCategoryBackgroundHeightUniqueOffer}
           start={{ x: 0, y: 0 }}
           end={{ x: 0, y: 1 }}
-          colors={getGradientColors(props.color)}
+          colors={gradientColorsMapping[props.color]}
           isMultiOffer={props.isMultiOffer}
         />
         <VideoOfferContainer>
