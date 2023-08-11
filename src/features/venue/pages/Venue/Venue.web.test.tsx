@@ -4,7 +4,7 @@ import React from 'react'
 import { useRoute } from '__mocks__/@react-navigation/native'
 import { venueResponseSnap } from 'features/venue/fixtures/venueResponseSnap'
 import { Venue } from 'features/venue/pages/Venue/Venue'
-import { checkAccessibilityFor, render } from 'tests/utils/web'
+import { checkAccessibilityFor, render, act } from 'tests/utils/web'
 
 mockdate.set(new Date('2021-08-15T00:00:00Z'))
 
@@ -20,9 +20,7 @@ jest.mock('uuid', () => ({
 
 const venueId = venueResponseSnap.id
 
-// TODO(PC-21801): temporary skip this flaky test until github actions migration
-// eslint-disable-next-line jest/no-disabled-tests
-describe.skip('<Venue />', () => {
+describe('<Venue />', () => {
   useRoute.mockImplementation(() => ({ params: { venueId } }))
 
   describe('Accessibility', () => {
@@ -33,8 +31,10 @@ describe.skip('<Venue />', () => {
         .mockReturnValueOnce('contactAccordionID')
       const { container } = render(<Venue />)
 
-      const results = await checkAccessibilityFor(container)
-      expect(results).toHaveNoViolations()
+      await act(async () => {
+        const results = await checkAccessibilityFor(container)
+        expect(results).toHaveNoViolations()
+      })
     })
   })
 })
