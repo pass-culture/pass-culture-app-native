@@ -1,6 +1,6 @@
 import { theme } from 'theme'
 
-export const getGradientColors = {
+export const gradientColorsMapping = {
   Gold: [theme.colors.goldLight, theme.colors.gold],
   Aquamarine: [theme.colors.aquamarineLight, theme.colors.aquamarine],
   SkyBlue: [theme.colors.skyBlueLight, theme.colors.skyBlue],

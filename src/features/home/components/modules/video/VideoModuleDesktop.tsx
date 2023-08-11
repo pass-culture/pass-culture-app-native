@@ -16,7 +16,7 @@ import { Separator } from 'ui/components/Separator'
 import { HorizontalOfferTile } from 'ui/components/tiles/HorizontalOfferTile'
 import { Play } from 'ui/svg/icons/Play'
 import { Spacer, Typo, getSpacing } from 'ui/theme'
-import { getGradientColors } from 'ui/theme/getGradientColors'
+import { gradientColorsMapping } from 'ui/theme/gradientColorsMapping'
 
 const THUMBNAIL_HEIGHT_MULTI_OFFER = getSpacing(90)
 const THUMBNAIL_HEIGHT_MONO_OFFER = getSpacing(45)
@@ -52,7 +52,7 @@ export const VideoModuleDesktop: FunctionComponent<VideoModuleProps> = (props) =
         <ColorCategoryBackground
           start={{ x: 0, y: 0 }}
           end={{ x: 0, y: 1 }}
-          colors={getGradientColors[props.color]}
+          colors={gradientColorsMapping[props.color]}
           isMultiOffer={props.isMultiOffer}
         />
         <VideoOfferContainer>

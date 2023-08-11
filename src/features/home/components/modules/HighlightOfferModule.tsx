@@ -16,7 +16,7 @@ import { FavoriteButton } from 'ui/components/buttons/FavoriteButton'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { PlainArrowNext } from 'ui/svg/icons/PlainArrowNext'
 import { Spacer, Typo, getSpacing } from 'ui/theme'
-import { getGradientColors } from 'ui/theme/getGradientColors'
+import { gradientColorsMapping } from 'ui/theme/gradientColorsMapping'
 
 const OFFER_IMAGE_HEIGHT = getSpacing(45)
 const BOTTOM_SPACER = getSpacing(6)
@@ -75,7 +75,7 @@ const UnmemoizedHighlightOfferModule = (props: HighlightOfferModuleProps) => {
         <ColorCategoryBackground
           start={{ x: 0, y: 0 }}
           end={{ x: 0, y: 1 }}
-          colors={getGradientColors[props.color]}
+          colors={gradientColorsMapping[props.color]}
           height={
             isDesktopViewport
               ? DESKTOP_COLOR_BACKGROUND_HEIGHT
