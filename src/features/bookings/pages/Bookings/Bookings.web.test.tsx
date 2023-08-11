@@ -18,9 +18,7 @@ mockUseSubcategories.mockReturnValue({
 } as UseQueryResult<SubcategoriesResponseModelv2, unknown>)
 
 describe('Bookings', () => {
-  // TODO(PC-21801): temporary skip this flaky test until github actions migration
-  // eslint-disable-next-line jest/no-disabled-tests
-  describe.skip('Accessibility', () => {
+  describe('Accessibility', () => {
     it('should not have basic accessibility issues', async () => {
       const { container } = renderBookings(bookingsSnap)
 

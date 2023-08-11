@@ -85,9 +85,7 @@ jest.mock('uuid', () => ({
 
 describe('<Search/>', () => {
   describe('Accessibility', () => {
-    // TODO(PC-21801): temporary skip this flaky test until github actions migration
-    // eslint-disable-next-line jest/no-disabled-tests
-    it.skip('should not have basic accessibility issues', async () => {
+    it('should not have basic accessibility issues', async () => {
       mockUseNetInfoContext.mockReturnValueOnce({ isConnected: true })
       const { container } = render(<Search />)
 
