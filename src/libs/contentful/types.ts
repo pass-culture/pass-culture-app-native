@@ -341,6 +341,7 @@ type ThematicCategoryInfoFields = {
   displayedTitle: string
   displayedSubtitle?: string
   image: Image
+  color: Color
 }
 
 export type ThematicHighlightFields = {

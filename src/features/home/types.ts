@@ -231,6 +231,7 @@ export type CategoryBlock = {
   title: string
   homeEntryId: string
   image?: string
+  color: Color
 }
 
 export enum Color {
