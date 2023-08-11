@@ -92,6 +92,7 @@ const SearchVenueTypeTile = styled.View<{ width: number; height: number }>(
     border: `1px solid ${theme.colors.greySemiDark}`,
     alignItems: 'center',
     justifyContent: 'center',
+    backgroundColor: theme.colors.greyLight,
   })
 )
 
