@@ -2,13 +2,15 @@ import mockdate from 'mockdate'
 import { rest } from 'msw'
 import React from 'react'
 
+import * as jwt from '__mocks__/jwt-decode'
+import { BatchUser } from '__mocks__/libs/react-native-batch'
 import { UserProfileResponse } from 'api/gen'
 import { CURRENT_DATE } from 'features/auth/fixtures/fixtures'
 import { beneficiaryUser, nonBeneficiaryUser } from 'fixtures/user'
 // eslint-disable-next-line no-restricted-imports
 import { amplitude } from 'libs/amplitude'
 import { env } from 'libs/environment'
-import * as jwt from 'libs/jwt'
+import { eventMonitoring } from 'libs/monitoring'
 import { NetInfoWrapper } from 'libs/network/NetInfoWrapper'
 import { useNetInfo } from 'libs/network/useNetInfo'
 import { QueryKeys } from 'libs/queryKeys'
@@ -19,14 +21,29 @@ import { act, renderHook } from 'tests/utils'
 
 import { AuthWrapper, useAuthContext } from './AuthContext'
 
-mockdate.set(CURRENT_DATE)
-
+jest.unmock('libs/jwt')
 jest.unmock('libs/network/NetInfoWrapper')
 const mockedUseNetInfo = useNetInfo as jest.Mock
-const getTokenStatusSpy = jest.spyOn(jwt, 'getTokenStatus').mockReturnValue('valid')
+
+const tokenRemainingLifetimeInMs = 10 * 60 * 1000
+const decodedTokenWithRemainingLifetime = {
+  exp: (CURRENT_DATE.getTime() + tokenRemainingLifetimeInMs) / 1000,
+  iat: 1691670780,
+  jti: '7f82c8b0-6222-42be-b913-cdf53958f17d',
+  sub: 'bene_18@example.com',
+  nbf: 1691670780,
+  user_claims: { user_id: 1234 },
+}
+const decodeAccessTokenSpy = jest
+  .spyOn(jwt, 'default')
+  .mockReturnValue(decodedTokenWithRemainingLifetime)
+
+jest.useFakeTimers({ legacyFakeTimers: true })
 
 describe('AuthContext', () => {
   beforeEach(async () => {
+    mockdate.set(CURRENT_DATE)
+    await storage.clear('access_token')
     await storage.clear('PASSCULTURE_REFRESH_TOKEN')
     await storage.clear(QueryKeys.USER_PROFILE as unknown as StorageKey)
   })
@@ -54,10 +71,6 @@ describe('AuthContext', () => {
     })
 
     it('should return undefined user when logged out (no token)', async () => {
-      getTokenStatusSpy.mockReturnValueOnce('unknown') // first render
-      getTokenStatusSpy.mockReturnValueOnce('unknown') // second render because of cookies state
-      getTokenStatusSpy.mockReturnValueOnce('unknown') // third render because of loading state
-
       const result = renderUseAuthContext()
 
       await act(async () => {})
@@ -66,10 +79,15 @@ describe('AuthContext', () => {
     })
 
     it('should return undefined when refresh token is expired', async () => {
-      getTokenStatusSpy.mockReturnValueOnce('expired') // first render
-      getTokenStatusSpy.mockReturnValueOnce('expired') // second render because of cookies state
-      getTokenStatusSpy.mockReturnValueOnce('expired') // third render because of loading state
       storage.saveString('PASSCULTURE_REFRESH_TOKEN', 'token')
+
+      const expiredToken = {
+        ...decodedTokenWithRemainingLifetime,
+        exp: (CURRENT_DATE.getTime() - 1) / 1000,
+      }
+      decodeAccessTokenSpy.mockReturnValueOnce(expiredToken) // first render
+      decodeAccessTokenSpy.mockReturnValueOnce(expiredToken) // second render because of useCookies
+      decodeAccessTokenSpy.mockReturnValueOnce(expiredToken) // third render because of useUserProfileInfo
 
       const result = renderUseAuthContext()
 
@@ -112,9 +130,6 @@ describe('AuthContext', () => {
           res(ctx.status(200), ctx.json(nonBeneficiaryUser))
         )
       )
-      getTokenStatusSpy.mockReturnValueOnce('unknown') // first render
-      getTokenStatusSpy.mockReturnValueOnce('unknown') // second render because of cookies state
-      getTokenStatusSpy.mockReturnValueOnce('unknown') // third render because of loading state
 
       renderUseAuthContext()
 
@@ -136,6 +151,34 @@ describe('AuthContext', () => {
       await act(async () => {})
 
       expect(amplitude.setUserId).toHaveBeenCalledWith(nonBeneficiaryUser.id.toString())
+    })
+
+    it('should log out user when refresh token is no longer valid', async () => {
+      storage.saveString('PASSCULTURE_REFRESH_TOKEN', 'token')
+      const result = renderUseAuthContext()
+
+      await act(async () => {}) // We need this first act to make sure all updates are finished before advancing timers
+      await act(async () => {
+        mockdate.set(CURRENT_DATE.getTime() + tokenRemainingLifetimeInMs)
+        jest.advanceTimersByTime(tokenRemainingLifetimeInMs)
+      })
+
+      expect(result.current.isLoggedIn).toBe(false)
+    })
+
+    it('should log to Sentry when error occurs', async () => {
+      storage.saveString('access_token', 'access_token')
+      storage.saveString('PASSCULTURE_REFRESH_TOKEN', 'token')
+      const error = new Error('Batch error')
+      BatchUser.editor.mockImplementationOnce(() => {
+        throw error
+      })
+
+      renderUseAuthContext()
+
+      await act(async () => {})
+
+      expect(eventMonitoring.captureException).toHaveBeenCalledWith(error)
     })
   })
 })

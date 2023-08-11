@@ -145,13 +145,8 @@ export const refreshAccessToken = async (
     refreshedAccessToken = refreshAccessTokenWithRetriesOnError(api, remainingRetries).then(
       (result) => {
         if (result.result) {
-          const token = decodeAccessToken(result.result)
-          if (token) {
-            const tokenExpirationInSeconds = token.exp
-            const tokenIssueDateInSeconds = token.iat
-            const lifetimeInMs = (tokenExpirationInSeconds - tokenIssueDateInSeconds) * 1000
-            setTimeout(removeRefreshedAccessToken, lifetimeInMs)
-          }
+          const lifetimeInMs = computeTokenRemainingLifetimeInMs(result.result)
+          setTimeout(removeRefreshedAccessToken, lifetimeInMs)
         }
         return result
       }
@@ -209,6 +204,19 @@ const extractResponseBody = async (response: Response): Promise<string> => {
     return await response.json()
   }
   return await response.text()
+}
+
+export const computeTokenRemainingLifetimeInMs = (encodedToken: string): number | undefined => {
+  const token = decodeAccessToken(encodedToken)
+
+  if (token) {
+    const tokenExpirationInMs = token.exp * 1000
+    const currentDateInMs = Date.now()
+    const lifetimeInMs = tokenExpirationInMs - currentDateInMs
+    return lifetimeInMs
+  }
+
+  return undefined
 }
 
 // In this case, the following `any` is not that much of a problem in the context of usage

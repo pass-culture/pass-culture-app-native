@@ -1,8 +1,9 @@
 import pick from 'lodash/pick'
-import React, { memo, useCallback, useContext, useEffect, useMemo, useState } from 'react'
+import React, { memo, useCallback, useContext, useEffect, useMemo, useRef, useState } from 'react'
 import { QueryObserverResult } from 'react-query'
 
 import { api } from 'api/api'
+import { computeTokenRemainingLifetimeInMs } from 'api/apiHelpers'
 import { UserProfileResponse } from 'api/gen'
 import { useCookies } from 'features/cookies/helpers/useCookies'
 // eslint-disable-next-line no-restricted-imports
@@ -64,6 +65,7 @@ export const AuthWrapper = memo(function AuthWrapper({
 }: {
   children: React.JSX.Element
 }) {
+  const timeoutRef = useRef<number>()
   const [loading, setLoading] = useState(true)
   const [isLoggedIn, setIsLoggedIn] = useState(false)
   const connectServicesRequiringUserId = useConnectServicesRequiringUserId()
@@ -87,6 +89,12 @@ export const AuthWrapper = memo(function AuthWrapper({
         case 'valid':
           setIsLoggedIn(true)
           connectServicesRequiringUserId(accessToken)
+          if (refreshToken) {
+            const remainingLifetimeInMs = computeTokenRemainingLifetimeInMs(refreshToken)
+            timeoutRef.current = globalThis.setTimeout(() => {
+              setIsLoggedIn(false)
+            }, remainingLifetimeInMs)
+          }
           return
       }
     } catch (err) {
@@ -99,6 +107,10 @@ export const AuthWrapper = memo(function AuthWrapper({
 
   useEffect(() => {
     readTokenAndConnectUser()
+
+    return () => {
+      if (timeoutRef.current) clearTimeout(timeoutRef.current)
+    }
   }, [readTokenAndConnectUser])
 
   useEffect(() => {
