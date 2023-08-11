@@ -99,9 +99,8 @@ describe('<LocationModal/>', () => {
   it('should render modal correctly after animation and with enabled submit', async () => {
     renderLocationModal()
 
-    await waitFor(() => {
-      expect(screen.getByLabelText('Rechercher')).toBeEnabled()
-    })
+    const searchButton = await screen.findByLabelText('Rechercher')
+    expect(searchButton).toBeEnabled()
 
     expect(screen).toMatchSnapshot()
   })

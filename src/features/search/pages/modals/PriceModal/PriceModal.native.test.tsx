@@ -50,12 +50,12 @@ describe('<PriceModal/>', () => {
   })
 
   it('should render modal correctly after animation and with enabled submit', async () => {
-    const renderAPI = renderSearchPrice()
-    await waitFor(() => {
-      expect(screen.getByText('Rechercher')).toBeEnabled()
-    })
+    renderSearchPrice()
 
-    expect(renderAPI).toMatchSnapshot()
+    const searchButton = await screen.findByLabelText('Rechercher')
+    expect(searchButton).toBeEnabled()
+
+    expect(screen).toMatchSnapshot()
   })
 
   describe('without previous value in the search state', () => {
