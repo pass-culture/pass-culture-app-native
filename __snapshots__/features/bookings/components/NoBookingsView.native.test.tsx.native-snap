@@ -18,10 +18,10 @@ exports[`<NoBookingsView /> should render offline no bookings view when netInfo.
     style={
       [
         {
-          "color": "#161617",
-          "fontFamily": "Montserrat-Regular",
-          "fontSize": 15,
-          "lineHeight": 20,
+          "color": "#696A6F",
+          "fontFamily": "Montserrat-SemiBold",
+          "fontSize": 12,
+          "lineHeight": 16,
         },
       ]
     }
@@ -131,10 +131,10 @@ exports[`<NoBookingsView /> should render online no bookings view when netInfo.i
     style={
       [
         {
-          "color": "#161617",
-          "fontFamily": "Montserrat-Regular",
-          "fontSize": 15,
-          "lineHeight": 20,
+          "color": "#696A6F",
+          "fontFamily": "Montserrat-SemiBold",
+          "fontSize": 12,
+          "lineHeight": 16,
         },
       ]
     }

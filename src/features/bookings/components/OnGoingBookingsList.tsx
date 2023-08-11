@@ -131,7 +131,7 @@ const Container = styled.View<{ flex?: number }>(({ flex }) => ({
   height: '100%',
 }))
 
-const BookingsCount = styled(Typo.Body).attrs(() => getHeadingAttrs(2))(({ theme }) => ({
+const BookingsCount = styled(Typo.Caption).attrs(() => getHeadingAttrs(2))(({ theme }) => ({
   paddingHorizontal: getSpacing(6),
   paddingBottom: getSpacing(4),
   color: theme.colors.greyDark,
