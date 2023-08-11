@@ -11,8 +11,8 @@ type Props = {
 export const Subtitle = ({ startSubtitle, boldEndSubtitle }: Props) => {
   return (
     <Row>
-      <Typo.Body>{startSubtitle}</Typo.Body>
-      {!!boldEndSubtitle && <Typo.ButtonText>&nbsp;{boldEndSubtitle}</Typo.ButtonText>}
+      <CaptionSubtitle>{startSubtitle}</CaptionSubtitle>
+      {!!boldEndSubtitle && <ButtonTextSubtitle>&nbsp;{boldEndSubtitle}</ButtonTextSubtitle>}
     </Row>
   )
 }
@@ -20,4 +20,13 @@ export const Subtitle = ({ startSubtitle, boldEndSubtitle }: Props) => {
 const Row = styled.View({
   flexDirection: 'row',
   flexWrap: 'wrap',
+  alignItems: 'center',
 })
+
+const CaptionSubtitle = styled(Typo.Caption)(({ theme }) => ({
+  color: theme.colors.greyDark,
+}))
+
+const ButtonTextSubtitle = styled(Typo.ButtonText)(({ theme }) => ({
+  color: theme.colors.greyDark,
+}))

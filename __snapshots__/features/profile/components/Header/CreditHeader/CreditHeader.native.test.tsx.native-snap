@@ -6,7 +6,7 @@ exports[`CreditHeader Beneficiary is not underage should render correctly with e
     style={
       [
         {
-          "marginBottom": 8,
+          "marginBottom": 4,
           "marginHorizontal": 24,
           "marginTop": 24,
         },
@@ -54,6 +54,7 @@ exports[`CreditHeader Beneficiary is not underage should render correctly with e
       style={
         [
           {
+            "alignItems": "center",
             "flexDirection": "row",
             "flexWrap": "wrap",
           },
@@ -64,10 +65,10 @@ exports[`CreditHeader Beneficiary is not underage should render correctly with e
         style={
           [
             {
-              "color": "#161617",
-              "fontFamily": "Montserrat-Regular",
-              "fontSize": 15,
-              "lineHeight": 20,
+              "color": "#696A6F",
+              "fontFamily": "Montserrat-SemiBold",
+              "fontSize": 12,
+              "lineHeight": 16,
             },
           ]
         }
@@ -78,7 +79,7 @@ exports[`CreditHeader Beneficiary is not underage should render correctly with e
         style={
           [
             {
-              "color": "#161617",
+              "color": "#696A6F",
               "fontFamily": "Montserrat-Bold",
               "fontSize": 15,
               "lineHeight": 20,
@@ -362,7 +363,7 @@ exports[`CreditHeader Beneficiary is not underage should render correctly with e
     style={
       [
         {
-          "marginBottom": 8,
+          "marginBottom": 4,
           "marginHorizontal": 24,
           "marginTop": 24,
         },
@@ -410,6 +411,7 @@ exports[`CreditHeader Beneficiary is not underage should render correctly with e
       style={
         [
           {
+            "alignItems": "center",
             "flexDirection": "row",
             "flexWrap": "wrap",
           },
@@ -420,10 +422,10 @@ exports[`CreditHeader Beneficiary is not underage should render correctly with e
         style={
           [
             {
-              "color": "#161617",
-              "fontFamily": "Montserrat-Regular",
-              "fontSize": 15,
-              "lineHeight": 20,
+              "color": "#696A6F",
+              "fontFamily": "Montserrat-SemiBold",
+              "fontSize": 12,
+              "lineHeight": 16,
             },
           ]
         }
@@ -434,7 +436,7 @@ exports[`CreditHeader Beneficiary is not underage should render correctly with e
         style={
           [
             {
-              "color": "#161617",
+              "color": "#696A6F",
               "fontFamily": "Montserrat-Bold",
               "fontSize": 15,
               "lineHeight": 20,
@@ -556,7 +558,7 @@ exports[`CreditHeader Beneficiary is not underage should render correctly with v
     style={
       [
         {
-          "marginBottom": 8,
+          "marginBottom": 4,
           "marginHorizontal": 24,
           "marginTop": 24,
         },
@@ -604,6 +606,7 @@ exports[`CreditHeader Beneficiary is not underage should render correctly with v
       style={
         [
           {
+            "alignItems": "center",
             "flexDirection": "row",
             "flexWrap": "wrap",
           },
@@ -614,10 +617,10 @@ exports[`CreditHeader Beneficiary is not underage should render correctly with v
         style={
           [
             {
-              "color": "#161617",
-              "fontFamily": "Montserrat-Regular",
-              "fontSize": 15,
-              "lineHeight": 20,
+              "color": "#696A6F",
+              "fontFamily": "Montserrat-SemiBold",
+              "fontSize": 12,
+              "lineHeight": 16,
             },
           ]
         }
@@ -628,7 +631,7 @@ exports[`CreditHeader Beneficiary is not underage should render correctly with v
         style={
           [
             {
-              "color": "#161617",
+              "color": "#696A6F",
               "fontFamily": "Montserrat-Bold",
               "fontSize": 15,
               "lineHeight": 20,
@@ -986,7 +989,7 @@ exports[`CreditHeader Beneficiary is underage should render correctly for undera
     style={
       [
         {
-          "marginBottom": 8,
+          "marginBottom": 4,
           "marginHorizontal": 24,
           "marginTop": 24,
         },
@@ -1034,6 +1037,7 @@ exports[`CreditHeader Beneficiary is underage should render correctly for undera
       style={
         [
           {
+            "alignItems": "center",
             "flexDirection": "row",
             "flexWrap": "wrap",
           },
@@ -1044,10 +1048,10 @@ exports[`CreditHeader Beneficiary is underage should render correctly for undera
         style={
           [
             {
-              "color": "#161617",
-              "fontFamily": "Montserrat-Regular",
-              "fontSize": 15,
-              "lineHeight": 20,
+              "color": "#696A6F",
+              "fontFamily": "Montserrat-SemiBold",
+              "fontSize": 12,
+              "lineHeight": 16,
             },
           ]
         }
@@ -1058,7 +1062,7 @@ exports[`CreditHeader Beneficiary is underage should render correctly for undera
         style={
           [
             {
-              "color": "#161617",
+              "color": "#696A6F",
               "fontFamily": "Montserrat-Bold",
               "fontSize": 15,
               "lineHeight": 20,
