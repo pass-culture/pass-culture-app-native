@@ -61,7 +61,7 @@ export const CATEGORY_CRITERIA: Partial<CategoryCriteria> = {
     facetFilter: SearchGroupNameEnumv2.ARTS_LOISIRS_CREATIFS,
     baseColor: theme.colors.lilac,
     gradients: [
-      { color: '#AD87FF', position: { x: 0, y: 0 } },
+      { color: theme.colors.lilacLight, position: { x: 0, y: 0 } },
       { color: theme.colors.lilac, position: { x: 0, y: 0.5 } },
     ],
     position: 5,
@@ -72,7 +72,7 @@ export const CATEGORY_CRITERIA: Partial<CategoryCriteria> = {
     facetFilter: SearchGroupNameEnumv2.BIBLIOTHEQUES_MEDIATHEQUE,
     baseColor: theme.colors.coral,
     gradients: [
-      { color: '#F8733D', position: { x: 0, y: 0 } },
+      { color: theme.colors.coralLight, position: { x: 0, y: 0 } },
       { color: theme.colors.coral, position: { x: 0, y: 0.5 } },
     ],
     position: 11,
@@ -83,7 +83,7 @@ export const CATEGORY_CRITERIA: Partial<CategoryCriteria> = {
     facetFilter: SearchGroupNameEnumv2.CARTES_JEUNES,
     baseColor: theme.colors.lilac,
     gradients: [
-      { color: '#AD87FF', position: { x: 0, y: 0 } },
+      { color: theme.colors.lilacLight, position: { x: 0, y: 0 } },
       { color: theme.colors.lilac, position: { x: 0, y: 0.5 } },
     ],
     position: 12,
@@ -94,7 +94,7 @@ export const CATEGORY_CRITERIA: Partial<CategoryCriteria> = {
     facetFilter: SearchGroupNameEnumv2.CD_VINYLE_MUSIQUE_EN_LIGNE,
     baseColor: theme.colors.skyBlue,
     gradients: [
-      { color: '#20C5E9', position: { x: 0, y: 0 } },
+      { color: theme.colors.skyBlueLight, position: { x: 0, y: 0 } },
       { color: theme.colors.skyBlue, position: { x: 0, y: 0.5 } },
     ],
     position: 4,
@@ -105,7 +105,7 @@ export const CATEGORY_CRITERIA: Partial<CategoryCriteria> = {
     facetFilter: SearchGroupNameEnumv2.CONCERTS_FESTIVALS,
     baseColor: theme.colors.gold,
     gradients: [
-      { color: '#F99E15', position: { x: 0, y: 0 } },
+      { color: theme.colors.goldLight, position: { x: 0, y: 0 } },
       { color: theme.colors.gold, position: { x: 0, y: 0.5 } },
     ],
     position: 1,
@@ -116,7 +116,7 @@ export const CATEGORY_CRITERIA: Partial<CategoryCriteria> = {
     facetFilter: SearchGroupNameEnumv2.RENCONTRES_CONFERENCES,
     baseColor: theme.colors.gold,
     gradients: [
-      { color: '#F99E15', position: { x: 0, y: 0 } },
+      { color: theme.colors.goldLight, position: { x: 0, y: 0 } },
       { color: theme.colors.gold, position: { x: 0, y: 0.5 } },
     ],
     position: 13,
@@ -127,7 +127,7 @@ export const CATEGORY_CRITERIA: Partial<CategoryCriteria> = {
     facetFilter: SearchGroupNameEnumv2.EVENEMENTS_EN_LIGNE,
     baseColor: theme.colors.aquamarine,
     gradients: [
-      { color: '#27DCA8', position: { x: 0, y: 0 } },
+      { color: theme.colors.aquamarineLight, position: { x: 0, y: 0 } },
       { color: theme.colors.aquamarine, position: { x: 0, y: 0.5 } },
     ],
     position: 14,
@@ -138,7 +138,7 @@ export const CATEGORY_CRITERIA: Partial<CategoryCriteria> = {
     facetFilter: SearchGroupNameEnumv2.FILMS_SERIES_CINEMA,
     baseColor: theme.colors.aquamarine,
     gradients: [
-      { color: '#27DCA8', position: { x: 0, y: 0 } },
+      { color: theme.colors.aquamarineLight, position: { x: 0, y: 0 } },
       { color: theme.colors.aquamarine, position: { x: 0, y: 0.5 } },
     ],
     position: 2,
@@ -149,7 +149,7 @@ export const CATEGORY_CRITERIA: Partial<CategoryCriteria> = {
     facetFilter: SearchGroupNameEnumv2.INSTRUMENTS,
     baseColor: theme.colors.skyBlue,
     gradients: [
-      { color: '#20C5E9', position: { x: 0, y: 0 } },
+      { color: theme.colors.skyBlueLight, position: { x: 0, y: 0 } },
       { color: theme.colors.skyBlue, position: { x: 0, y: 0.5 } },
     ],
     position: 9,
@@ -160,7 +160,7 @@ export const CATEGORY_CRITERIA: Partial<CategoryCriteria> = {
     facetFilter: SearchGroupNameEnumv2.JEUX_JEUX_VIDEOS,
     baseColor: theme.colors.gold,
     gradients: [
-      { color: '#F99E15', position: { x: 0, y: 0 } },
+      { color: theme.colors.goldLight, position: { x: 0, y: 0 } },
       { color: theme.colors.gold, position: { x: 0, y: 0.5 } },
     ],
     position: 8,
@@ -171,7 +171,7 @@ export const CATEGORY_CRITERIA: Partial<CategoryCriteria> = {
     facetFilter: SearchGroupNameEnumv2.LIVRES,
     baseColor: theme.colors.deepPink,
     gradients: [
-      { color: '#EC3478', position: { x: 0, y: 0 } },
+      { color: theme.colors.deepPinkLight, position: { x: 0, y: 0 } },
       { color: theme.colors.deepPink, position: { x: 0, y: 0.5 } },
     ],
     position: 3,
@@ -182,7 +182,7 @@ export const CATEGORY_CRITERIA: Partial<CategoryCriteria> = {
     facetFilter: SearchGroupNameEnumv2.MEDIA_PRESSE,
     baseColor: theme.colors.deepPink,
     gradients: [
-      { color: '#EC3478', position: { x: 0, y: 0 } },
+      { color: theme.colors.deepPinkLight, position: { x: 0, y: 0 } },
       { color: theme.colors.deepPink, position: { x: 0, y: 0.5 } },
     ],
     position: 10,
@@ -193,7 +193,7 @@ export const CATEGORY_CRITERIA: Partial<CategoryCriteria> = {
     facetFilter: SearchGroupNameEnumv2.MUSEES_VISITES_CULTURELLES,
     baseColor: theme.colors.aquamarine,
     gradients: [
-      { color: '#27DCA8', position: { x: 0, y: 0 } },
+      { color: theme.colors.aquamarineLight, position: { x: 0, y: 0 } },
       { color: theme.colors.aquamarine, position: { x: 0, y: 0.5 } },
     ],
     position: 7,
@@ -204,7 +204,7 @@ export const CATEGORY_CRITERIA: Partial<CategoryCriteria> = {
     facetFilter: SearchGroupNameEnumv2.SPECTACLES,
     baseColor: theme.colors.coral,
     gradients: [
-      { color: '#F8733D', position: { x: 0, y: 0 } },
+      { color: theme.colors.coralLight, position: { x: 0, y: 0 } },
       { color: theme.colors.coral, position: { x: 0, y: 0.5 } },
     ],
     position: 6,

@@ -19,7 +19,7 @@ Default.args = {
   Illustration: SearchCategoriesIllustrations.Books,
   baseColor: theme.colors.coral,
   gradients: [
-    { color: '#F8733D', position: { x: 0, y: 0 } },
+    { color: theme.colors.coralLight, position: { x: 0, y: 0 } },
     { color: theme.colors.coral, position: { x: 0, y: 0.5 } },
   ],
 }
