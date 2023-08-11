@@ -73,13 +73,13 @@ export type TrustedDeviceRootStackParamList = {
     token: string
     email: string
     reset_password_token: string
-    expiration_timestamp: number
+    reset_token_expiration_timestamp: number
   }
   AccountSecurityBuffer: {
     token: string
     email: string
     reset_password_token: string
-    expiration_timestamp: number
+    reset_token_expiration_timestamp: number
   }
   NavigationTrustedDevice: undefined
   SuspensionChoice: { token: string }
