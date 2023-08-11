@@ -16,6 +16,7 @@ const hideError: unknown = false
 describe('VideoPlayer', () => {
   it('should render error view when showErrorView is true', async () => {
     mockUseState.mockImplementationOnce(() => showErrorUseState(showError))
+    mockUseState.mockImplementationOnce(() => showErrorUseState(showError))
 
     renderVideoPlayer()
 
@@ -27,6 +28,7 @@ describe('VideoPlayer', () => {
   })
 
   it('should not render error view when showErrorView is false', async () => {
+    mockUseState.mockImplementationOnce(() => showErrorUseState(hideError))
     mockUseState.mockImplementationOnce(() => showErrorUseState(hideError))
 
     renderVideoPlayer()

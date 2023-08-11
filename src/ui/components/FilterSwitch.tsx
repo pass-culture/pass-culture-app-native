@@ -52,7 +52,9 @@ const FilterSwitch: FunctionComponent<FilterSwitchProps> = (props) => {
 
   useSpaceBarAction(isFocus ? toggle : undefined)
 
-  const e2eIdentifiers = useE2eTestId(testID ? `Interrupteur ${testID}` : 'Interrupteur')
+  const testIdFull = testID ? `Interrupteur ${testID}` : 'Interrupteur'
+
+  const e2eIdentifiers = useE2eTestId(testIdFull)
 
   return (
     <FilterSwitchContainer>
@@ -62,7 +64,10 @@ const FilterSwitch: FunctionComponent<FilterSwitchProps> = (props) => {
       <TouchableOpacity
         onPress={toggle}
         disabled={disabled}
-        {...accessibleCheckboxProps({ checked: active, label: props.accessibilityLabel })}
+        {...accessibleCheckboxProps({
+          checked: active,
+          label: props.accessibilityLabel,
+        })}
         accessibilityDescribedBy={props.accessibilityDescribedBy}
         accessibilityLabelledBy={props.accessibilityLabelledBy}
         onFocus={onFocus}

@@ -2,11 +2,10 @@ import React from 'react'
 
 import { VideoModal } from 'features/home/components/modules/video/VideoModal'
 import { videoModuleFixture } from 'features/home/fixtures/videoModule.fixture'
-import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { mockedAlgoliaResponse } from 'libs/algolia/__mocks__/mockedAlgoliaResponse'
 import { analytics } from 'libs/analytics'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { act, fireEvent, render, screen, waitFor } from 'tests/utils'
+import { act, fireEvent, render, screen } from 'tests/utils'
 
 const hideModalMock = jest.fn()
 
@@ -16,11 +15,9 @@ describe('VideoModal', () => {
   it('should render correctly if modal visible', async () => {
     renderVideoModal()
 
-    await waitFor(() => {
-      // We are searching for the translateY to be 0 to finish the animation of the modal in the snapshot
-      expect(screen.getAllByRole(AccessibilityRole.DIALOG)[1]).toHaveStyle({
-        transform: [{ translateY: 0 }],
-      })
+    await act(async () => {
+      const sleep = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms))
+      await sleep(300)
     })
 
     expect(screen).toMatchSnapshot()

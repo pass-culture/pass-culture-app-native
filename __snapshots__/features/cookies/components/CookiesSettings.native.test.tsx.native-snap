@@ -342,6 +342,7 @@ exports[`<CookiesSettings/> should render correctly 1`] = `
           "userSelect": "auto",
         }
       }
+      testID="accordionTouchable"
     >
       <View
         nativeID="testUuidV4"
@@ -684,6 +685,7 @@ exports[`<CookiesSettings/> should render correctly 1`] = `
           "userSelect": "auto",
         }
       }
+      testID="accordionTouchable"
     >
       <View
         nativeID="testUuidV4"
@@ -1026,6 +1028,7 @@ exports[`<CookiesSettings/> should render correctly 1`] = `
           "userSelect": "auto",
         }
       }
+      testID="accordionTouchable"
     >
       <View
         nativeID="testUuidV4"
@@ -1371,6 +1374,7 @@ exports[`<CookiesSettings/> should render correctly 1`] = `
           "userSelect": "auto",
         }
       }
+      testID="accordionTouchable"
     >
       <View
         nativeID="testUuidV4"
