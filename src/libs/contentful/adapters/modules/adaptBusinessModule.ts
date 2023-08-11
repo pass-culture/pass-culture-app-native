@@ -4,20 +4,17 @@ import { BusinessContentModel } from 'libs/contentful/types'
 
 export const adaptBusinessModule = (module: BusinessContentModel): BusinessModule | null => {
   // if a mandatory module is unpublished/deleted, we can't handle the module, so we return null
-  if (module.fields === undefined) return null
-
-  const image = buildImageUrl(module.fields.image.fields?.file.url)
-  if (image === undefined) return null
+  if (module.fields?.image.fields === undefined) return null
 
   const leftIcon = buildImageUrl(module.fields.leftIcon?.fields?.file.url)
   return {
     type: HomepageModuleType.BusinessModule,
     id: module.sys.id,
     analyticsTitle: module.fields.title,
-    image: image,
+    image: buildImageUrl(module.fields.image.fields.file.url),
     title: module.fields.firstLine,
     subtitle: module.fields.secondLine,
-    leftIcon: leftIcon,
+    leftIcon,
     url: module.fields.url,
     shouldTargetNotConnectedUsers: module.fields.targetNotConnectedUsersOnly,
   }
