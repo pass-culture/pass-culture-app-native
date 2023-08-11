@@ -19,6 +19,7 @@ export enum RemoteStoreFeatureFlags {
   FAV_LIST_FAKE_DOOR = 'favListFakeDoor',
   WIP_DISABLE_STORE_REVIEW = 'wipDisabledStoreReview',
   WIP_CHANGE_EMAIL = 'wipChangeEmail',
+  WIP_ENABLE_APP_LOCATION = 'wipEnableAppLocation',
   WIP_ENABLE_MULTIVENUE_OFFER = 'wipEnableMultivenueOffer',
   WIP_ENABLE_TRUSTED_DEVICE = 'wipEnableTrustedDevice',
   WIP_ENABLE_NEW_EXCLUSIVITY_BLOCK = 'wipEnableNewExclusivityBlock',
