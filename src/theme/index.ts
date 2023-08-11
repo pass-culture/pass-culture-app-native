@@ -34,7 +34,7 @@ interface Typography {
 }
 
 export interface AppThemeType {
-  appContentWidth: number
+  appContentWidth: number // computed dynamically in ThemeProvider.tsx
   minScreenHeight: number
   appBarHeight: number
   navTopHeight: number
@@ -50,7 +50,7 @@ export interface AppThemeType {
   isDesktopViewport?: boolean // computed dynamically in ThemeProvider.tsx
   isTouch: boolean
   isNative: boolean
-  isSmallScreen: boolean
+  isSmallScreen: boolean // computed dynamically in ThemeProvider.tsx
   showTabBar: boolean // computed dynamically in ThemeProvider.tsx
   activeOpacity: number
   controlComponent: {
@@ -76,7 +76,7 @@ export interface AppThemeType {
     iconSize: number
     fontSize: number
     labelMinScreenWidth: number
-    showLabels: boolean
+    showLabels: boolean // computed dynamically in ThemeProvider.tsx
   }
   ticket: {
     maxWidth: number
@@ -889,4 +889,4 @@ export const theme: AppThemeType = {
   home: {
     spaceBetweenModules: getSpacing(6),
   },
-}
+} as const
