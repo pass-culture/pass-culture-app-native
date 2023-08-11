@@ -15,6 +15,7 @@ describe.each([
   RemoteStoreFeatureFlags.FAV_LIST_FAKE_DOOR,
   RemoteStoreFeatureFlags.WIP_CHANGE_EMAIL,
   RemoteStoreFeatureFlags.WIP_DISABLE_STORE_REVIEW,
+  RemoteStoreFeatureFlags.WIP_ENABLE_APP_LOCATION,
   RemoteStoreFeatureFlags.WIP_ENABLE_MULTIVENUE_OFFER,
   RemoteStoreFeatureFlags.WIP_ENABLE_TRUSTED_DEVICE,
   RemoteStoreFeatureFlags.WIP_ENABLE_NEW_EXCLUSIVITY_BLOCK,
