@@ -52,9 +52,9 @@ describe('ReinitializePassword Page', () => {
       fireEvent.changeText(confirmationInput, 'user@AZERTY123')
     })
 
-    const continueButton = screen.getByText('Continuer')
+    const connectButton = screen.getByText('Se connecter')
 
-    expect(continueButton).toBeEnabled()
+    expect(connectButton).toBeEnabled()
   })
 
   it('should display the matching error when the passwords dont match', async () => {
@@ -84,7 +84,7 @@ describe('ReinitializePassword Page', () => {
       fireEvent.changeText(confirmationInput, 'user@AZERTY123')
     })
     await act(async () => {
-      fireEvent.press(screen.getByText('Continuer'))
+      fireEvent.press(screen.getByText('Se connecter'))
     })
 
     expect(navigate).toHaveBeenNthCalledWith(1, 'Login')
@@ -101,7 +101,7 @@ describe('ReinitializePassword Page', () => {
       fireEvent.changeText(confirmationInput, 'user@AZERTY123')
     })
     await act(async () => {
-      fireEvent.press(screen.getByText('Continuer'))
+      fireEvent.press(screen.getByText('Se connecter'))
     })
 
     expect(analytics.logHasChangedPassword).toBeCalledWith('resetPassword')
@@ -118,7 +118,7 @@ describe('ReinitializePassword Page', () => {
       fireEvent.changeText(confirmationInput, 'user@AZERTY123')
     })
     await act(async () => {
-      fireEvent.press(screen.getByText('Continuer'))
+      fireEvent.press(screen.getByText('Se connecter'))
     })
 
     expect(mockShowSuccessSnackBar).toBeCalledWith({
@@ -139,7 +139,7 @@ describe('ReinitializePassword Page', () => {
       fireEvent.changeText(confirmationInput, 'user@AZERTY123')
     })
     await act(async () => {
-      fireEvent.press(screen.getByText('Continuer'))
+      fireEvent.press(screen.getByText('Se connecter'))
     })
 
     expect(mockShowErrorSnackBar).toBeCalledWith({

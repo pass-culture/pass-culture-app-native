@@ -127,7 +127,7 @@ export const ReinitializePassword = () => {
         />
         <Spacer.Column numberOfSpaces={10} />
         <ButtonPrimary
-          wording="Continuer"
+          wording="Se connecter"
           onPress={handleSubmit(submitPassword)}
           disabled={!isValid || isLoading}
           isLoading={isLoading}
