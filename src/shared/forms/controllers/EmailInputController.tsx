@@ -21,7 +21,7 @@ export const EmailInputController = <
 >({
   name,
   control,
-  withSpellingHelp,
+  withSpellingHelp = true,
   onSpellingHelpPress,
   ...otherEmailInputProps
 }: PropsWithChildren<Props<TFieldValues, TName>>): ReactElement => {
