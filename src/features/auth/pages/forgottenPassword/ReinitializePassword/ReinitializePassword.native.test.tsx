@@ -1,13 +1,16 @@
 import { rest } from 'msw'
 import React from 'react'
+import DeviceInfo from 'react-native-device-info'
 
 import { useRoute, replace } from '__mocks__/@react-navigation/native'
+import { api } from 'api/api'
 import { AccountState } from 'api/gen'
 import * as LoginRoutine from 'features/auth/helpers/useLoginRoutine'
 import { navigateToHome } from 'features/navigation/helpers'
 import { analytics } from 'libs/analytics'
 import * as datesLib from 'libs/dates'
 import { env } from 'libs/environment'
+import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { server } from 'tests/server'
 import { act, fireEvent, render, screen } from 'tests/utils'
@@ -37,6 +40,12 @@ useRoute.mockReturnValue({ params: ROUTE_PARAMS })
 const loginRoutine = jest.fn()
 const mockLoginRoutine = jest.spyOn(LoginRoutine, 'useLoginRoutine')
 mockLoginRoutine.mockImplementation(() => loginRoutine)
+
+const apiReinitializePasswordSpy = jest.spyOn(api, 'postnativev1resetPassword')
+
+const useFeatureFlagSpy = jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockReturnValue(false)
+jest.spyOn(DeviceInfo, 'getModel').mockReturnValue('iPhone 13')
+jest.spyOn(DeviceInfo, 'getSystemName').mockReturnValue('iOS')
 
 describe('ReinitializePassword Page', () => {
   it('should match snapshot', async () => {
@@ -79,6 +88,58 @@ describe('ReinitializePassword Page', () => {
     expect(notMatchingErrorText).toBeTruthy()
   })
 
+  it('should request new password on connect button', async () => {
+    renderReinitializePassword()
+    const passwordInput = screen.getByPlaceholderText('Ton mot de passe')
+    const confirmationInput = screen.getByPlaceholderText('Confirmer le mot de passe')
+    await act(async () => {
+      fireEvent.changeText(passwordInput, 'user@AZERTY123')
+    })
+    await act(async () => {
+      fireEvent.changeText(confirmationInput, 'user@AZERTY123')
+    })
+    await act(async () => {
+      fireEvent.press(screen.getByText('Se connecter'))
+    })
+
+    expect(apiReinitializePasswordSpy).toHaveBeenCalledWith({
+      newPassword: 'user@AZERTY123',
+      resetPasswordToken: ROUTE_PARAMS.token,
+      deviceInfo: undefined,
+    })
+  })
+
+  it('should send device info if trusted device feature flag is activated', async () => {
+    // Due to multiple renders we need to mock the feature flag many times
+    // eslint-disable-next-line local-rules/independent-mocks
+    useFeatureFlagSpy.mockReturnValue(true)
+
+    renderReinitializePassword()
+    const passwordInput = screen.getByPlaceholderText('Ton mot de passe')
+    const confirmationInput = screen.getByPlaceholderText('Confirmer le mot de passe')
+    await act(async () => {
+      fireEvent.changeText(passwordInput, 'user@AZERTY123')
+    })
+    await act(async () => {
+      fireEvent.changeText(confirmationInput, 'user@AZERTY123')
+    })
+    await act(async () => {
+      fireEvent.press(screen.getByText('Se connecter'))
+    })
+
+    expect(apiReinitializePasswordSpy).toHaveBeenCalledWith({
+      newPassword: 'user@AZERTY123',
+      resetPasswordToken: ROUTE_PARAMS.token,
+      deviceInfo: {
+        deviceId: 'ad7b7b5a169641e27cadbdb35adad9c4ca23099a',
+        os: 'iOS',
+        source: 'iPhone 13',
+      },
+    })
+
+    // eslint-disable-next-line local-rules/independent-mocks
+    useFeatureFlagSpy.mockReturnValue(false)
+  })
   it('should connect the user when password is reset', async () => {
     server.use(
       rest.post(env.API_BASE_URL + '/native/v1/reset_password', async (_, res, ctx) =>
