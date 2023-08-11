@@ -113,7 +113,7 @@ export const HomeHeader: FunctionComponent = function () {
       )}
       <PageHeader title={welcomeTitle} numberOfLines={2} />
       <PageContent>
-        <Typo.Body>{getSubtitle()}</Typo.Body>
+        <CaptionSubtitle>{getSubtitle()}</CaptionSubtitle>
         <Spacer.Column numberOfSpaces={6} />
         {Banner}
       </PageContent>
@@ -124,6 +124,10 @@ export const HomeHeader: FunctionComponent = function () {
 const PageContent = styled.View({
   marginHorizontal: getSpacing(6),
 })
+
+const CaptionSubtitle = styled(Typo.Caption)(({ theme }) => ({
+  color: theme.colors.greyDark,
+}))
 
 const CheatCodeButtonContainer = styled(TouchableOpacity)(({ theme }) => ({
   position: 'absolute',

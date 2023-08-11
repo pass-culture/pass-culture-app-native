@@ -152,7 +152,7 @@ exports[`Home page should render correctly 1`] = `
               style={
                 [
                   {
-                    "marginBottom": 8,
+                    "marginBottom": 4,
                     "marginHorizontal": 24,
                     "marginTop": 24,
                   },
@@ -199,10 +199,10 @@ exports[`Home page should render correctly 1`] = `
                 style={
                   [
                     {
-                      "color": "#161617",
-                      "fontFamily": "Montserrat-Regular",
-                      "fontSize": 15,
-                      "lineHeight": 20,
+                      "color": "#696A6F",
+                      "fontFamily": "Montserrat-SemiBold",
+                      "fontSize": 12,
+                      "lineHeight": 16,
                     },
                   ]
                 }
