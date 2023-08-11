@@ -1,5 +1,3 @@
-import { act } from 'react-test-renderer'
-
 import { useVideoOffers } from 'features/home/api/useVideoOffers'
 import { OffersModuleParameters } from 'features/home/types'
 import { mockedAlgoliaResponse } from 'libs/algolia/__mocks__/mockedAlgoliaResponse'
@@ -8,7 +6,7 @@ import { fetchOffersByIds } from 'libs/algolia/fetchAlgolia/fetchOffersByIds'
 import { offersFixture } from 'shared/offer/offer.fixture'
 import { Offer } from 'shared/offer/types'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { renderHook } from 'tests/utils'
+import { renderHook, act } from 'tests/utils'
 
 jest.mock('libs/algolia/fetchAlgolia/fetchOffersByIds', () => ({
   fetchOffersByIds: jest.fn(),

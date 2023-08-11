@@ -1,7 +1,5 @@
-import { act } from 'react-test-renderer'
-
 import { useIsFalseWithDelay } from 'libs/hooks/useIsFalseWithDelay'
-import { renderHook } from 'tests/utils'
+import { renderHook, act } from 'tests/utils'
 
 let condition = false
 const DELAY = 1000

@@ -1,7 +1,6 @@
 import React from 'react'
-import { act } from 'react-dom/test-utils'
 
-import { render, checkAccessibilityFor } from 'tests/utils/web'
+import { render, act, checkAccessibilityFor } from 'tests/utils/web'
 
 import { ChangePassword } from './ChangePassword'
 
