@@ -9,12 +9,12 @@ export const NumberOfResults: React.FC<{ nbFavorites: number }> = ({ nbFavorites
   if (!nbFavorites) return <React.Fragment />
   return (
     <Container>
-      <Body>
+      <Caption>
         {plural(nbFavorites, {
           one: '# favori',
           other: '# favoris',
         })}
-      </Body>
+      </Caption>
     </Container>
   )
 }
@@ -24,6 +24,6 @@ const Container = styled.View({
   marginBottom: getSpacing(4),
 })
 
-const Body = styled(Typo.Body).attrs(() => getHeadingAttrs(2))(({ theme }) => ({
+const Caption = styled(Typo.Caption).attrs(() => getHeadingAttrs(2))(({ theme }) => ({
   color: theme.colors.greyDark,
 }))
