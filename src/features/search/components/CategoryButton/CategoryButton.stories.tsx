@@ -18,8 +18,5 @@ Default.args = {
   label: 'Bibliothèques & Médiathèques',
   Illustration: SearchCategoriesIllustrations.Books,
   baseColor: theme.colors.coral,
-  gradients: [
-    { color: theme.colors.coralLight, position: { x: 0, y: 0 } },
-    { color: theme.colors.coral, position: { x: 0, y: 0.5 } },
-  ],
+  gradients: [theme.colors.coralLight, theme.colors.coral],
 }

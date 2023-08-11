@@ -30,50 +30,35 @@ Default.args = {
       Illustration: SearchCategoriesIllustrations.LibrariesMediaLibraries,
       onPress: action('Jeux'),
       baseColor: theme.colors.coral,
-      gradients: [
-        { color: theme.colors.coralLight, position: { x: 0, y: 0 } },
-        { color: theme.colors.coral, position: { x: 0, y: 0.5 } },
-      ],
+      gradients: [theme.colors.coralLight, theme.colors.coral],
     },
     {
       label: 'CD, vinyles, musique en ligne',
       Illustration: SearchCategoriesIllustrations.CDVinylsOnlineMusic,
       onPress: action('Musique'),
       baseColor: theme.colors.skyBlue,
-      gradients: [
-        { color: theme.colors.skyBlueLight, position: { x: 0, y: 0 } },
-        { color: theme.colors.skyBlue, position: { x: 0, y: 0.5 } },
-      ],
+      gradients: [theme.colors.skyBlueLight, theme.colors.skyBlue],
     },
     {
       label: 'Cinéma',
       Illustration: SearchCategoriesIllustrations.FilmsSeriesCinema,
       onPress: action('Cinéma'),
       baseColor: theme.colors.aquamarine,
-      gradients: [
-        { color: theme.colors.aquamarineLight, position: { x: 0, y: 0 } },
-        { color: theme.colors.aquamarine, position: { x: 0, y: 0.5 } },
-      ],
+      gradients: [theme.colors.aquamarineLight, theme.colors.aquamarine],
     },
     {
       label: 'Conférences, rencontres',
       Illustration: SearchCategoriesIllustrations.ConferencesMeetings,
       onPress: action('Livre'),
       baseColor: theme.colors.gold,
-      gradients: [
-        { color: theme.colors.goldLight, position: { x: 0, y: 0 } },
-        { color: theme.colors.gold, position: { x: 0, y: 0.5 } },
-      ],
+      gradients: [theme.colors.goldLight, theme.colors.gold],
     },
     {
       label: 'Théâtre',
       Illustration: SearchCategoriesIllustrations.Shows,
       onPress: action('Théâtre'),
       baseColor: theme.colors.coral,
-      gradients: [
-        { color: theme.colors.coralLight, position: { x: 0, y: 0 } },
-        { color: theme.colors.coral, position: { x: 0, y: 0.5 } },
-      ],
+      gradients: [theme.colors.coralLight, theme.colors.coral],
     },
   ],
 }

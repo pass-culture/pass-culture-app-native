@@ -14,7 +14,7 @@ export type CategoryButtonProps = {
   label: string
   Illustration?: FunctionComponent<AccessibleIcon>
   baseColor?: string
-  gradients: Gradient[]
+  gradients: Gradient
   onPress: () => void
   children?: never
 }
@@ -37,7 +37,7 @@ export const CategoryButton: FunctionComponent<CategoryButtonProps> = ({
       accessibilityLabel={`Catégorie ${label}`}
       hoverUnderlineColor={theme.colors.white}>
       <IllustrationContainer>
-        <StyledLinearGradient colors={[gradients[0].color, gradients[1].color]}>
+        <StyledLinearGradient colors={[gradients[0], gradients[1]]}>
           {!!Illustration && (
             <IllustrationWrapper>
               <Illustration />

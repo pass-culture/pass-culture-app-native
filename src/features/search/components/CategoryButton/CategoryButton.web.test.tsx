@@ -14,10 +14,7 @@ describe('<Checkbox />', () => {
         Illustration={SearchCategoriesIllustrations.LibrariesMediaLibraries}
         baseColor="#870087"
         onPress={jest.fn()}
-        gradients={[
-          { color: theme.colors.deepPinkLight, position: { x: 0, y: 0 } },
-          { color: theme.colors.deepPink, position: { x: 0, y: 0.5 } },
-        ]}
+        gradients={[theme.colors.deepPinkLight, theme.colors.deepPink]}
       />
     )
     const results = await checkAccessibilityFor(container)

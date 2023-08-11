@@ -21,10 +21,7 @@ describe('useAvailableCategories', () => {
         illustration: SearchCategoriesIllustrations.ArtsCrafts,
         facetFilter: SearchGroupNameEnumv2.ARTS_LOISIRS_CREATIFS,
         baseColor: theme.colors.lilac,
-        gradients: [
-          { color: theme.colors.lilacLight, position: { x: 0, y: 0 } },
-          { color: theme.colors.lilac, position: { x: 0, y: 0.5 } },
-        ],
+        gradients: [theme.colors.lilacLight, theme.colors.lilac],
         position: 5,
       },
       {
@@ -32,10 +29,7 @@ describe('useAvailableCategories', () => {
         illustration: SearchCategoriesIllustrations.LibrariesMediaLibraries,
         facetFilter: SearchGroupNameEnumv2.BIBLIOTHEQUES_MEDIATHEQUE,
         baseColor: theme.colors.coral,
-        gradients: [
-          { color: theme.colors.coralLight, position: { x: 0, y: 0 } },
-          { color: theme.colors.coral, position: { x: 0, y: 0.5 } },
-        ],
+        gradients: [theme.colors.coralLight, theme.colors.coral],
         position: 11,
       },
       {
@@ -43,10 +37,7 @@ describe('useAvailableCategories', () => {
         illustration: SearchCategoriesIllustrations.YouthCards,
         facetFilter: SearchGroupNameEnumv2.CARTES_JEUNES,
         baseColor: theme.colors.lilac,
-        gradients: [
-          { color: theme.colors.lilacLight, position: { x: 0, y: 0 } },
-          { color: theme.colors.lilac, position: { x: 0, y: 0.5 } },
-        ],
+        gradients: [theme.colors.lilacLight, theme.colors.lilac],
         position: 12,
       },
       {
@@ -54,10 +45,7 @@ describe('useAvailableCategories', () => {
         illustration: SearchCategoriesIllustrations.CDVinylsOnlineMusic,
         facetFilter: SearchGroupNameEnumv2.CD_VINYLE_MUSIQUE_EN_LIGNE,
         baseColor: theme.colors.skyBlue,
-        gradients: [
-          { color: theme.colors.skyBlueLight, position: { x: 0, y: 0 } },
-          { color: theme.colors.skyBlue, position: { x: 0, y: 0.5 } },
-        ],
+        gradients: [theme.colors.skyBlueLight, theme.colors.skyBlue],
         position: 4,
       },
       {
@@ -65,10 +53,7 @@ describe('useAvailableCategories', () => {
         illustration: SearchCategoriesIllustrations.ConcertsFestivals,
         facetFilter: SearchGroupNameEnumv2.CONCERTS_FESTIVALS,
         baseColor: theme.colors.gold,
-        gradients: [
-          { color: theme.colors.goldLight, position: { x: 0, y: 0 } },
-          { color: theme.colors.gold, position: { x: 0, y: 0.5 } },
-        ],
+        gradients: [theme.colors.goldLight, theme.colors.gold],
         position: 1,
       },
       {
@@ -76,10 +61,7 @@ describe('useAvailableCategories', () => {
         illustration: SearchCategoriesIllustrations.ConferencesMeetings,
         facetFilter: SearchGroupNameEnumv2.RENCONTRES_CONFERENCES,
         baseColor: theme.colors.gold,
-        gradients: [
-          { color: theme.colors.goldLight, position: { x: 0, y: 0 } },
-          { color: theme.colors.gold, position: { x: 0, y: 0.5 } },
-        ],
+        gradients: [theme.colors.goldLight, theme.colors.gold],
         position: 13,
       },
       {
@@ -87,10 +69,7 @@ describe('useAvailableCategories', () => {
         illustration: SearchCategoriesIllustrations.OnlineEvents,
         facetFilter: SearchGroupNameEnumv2.EVENEMENTS_EN_LIGNE,
         baseColor: theme.colors.aquamarine,
-        gradients: [
-          { color: theme.colors.aquamarineLight, position: { x: 0, y: 0 } },
-          { color: theme.colors.aquamarine, position: { x: 0, y: 0.5 } },
-        ],
+        gradients: [theme.colors.aquamarineLight, theme.colors.aquamarine],
         position: 14,
       },
       {
@@ -98,10 +77,7 @@ describe('useAvailableCategories', () => {
         illustration: SearchCategoriesIllustrations.FilmsSeriesCinema,
         facetFilter: SearchGroupNameEnumv2.FILMS_SERIES_CINEMA,
         baseColor: theme.colors.aquamarine,
-        gradients: [
-          { color: theme.colors.aquamarineLight, position: { x: 0, y: 0 } },
-          { color: theme.colors.aquamarine, position: { x: 0, y: 0.5 } },
-        ],
+        gradients: [theme.colors.aquamarineLight, theme.colors.aquamarine],
         position: 2,
       },
       {
@@ -109,10 +85,7 @@ describe('useAvailableCategories', () => {
         illustration: SearchCategoriesIllustrations.MusicalInstruments,
         facetFilter: SearchGroupNameEnumv2.INSTRUMENTS,
         baseColor: theme.colors.skyBlue,
-        gradients: [
-          { color: theme.colors.skyBlueLight, position: { x: 0, y: 0 } },
-          { color: theme.colors.skyBlue, position: { x: 0, y: 0.5 } },
-        ],
+        gradients: [theme.colors.skyBlueLight, theme.colors.skyBlue],
         position: 9,
       },
       {
@@ -120,10 +93,7 @@ describe('useAvailableCategories', () => {
         illustration: SearchCategoriesIllustrations.GamesVideoGames,
         facetFilter: SearchGroupNameEnumv2.JEUX_JEUX_VIDEOS,
         baseColor: theme.colors.gold,
-        gradients: [
-          { color: theme.colors.goldLight, position: { x: 0, y: 0 } },
-          { color: theme.colors.gold, position: { x: 0, y: 0.5 } },
-        ],
+        gradients: [theme.colors.goldLight, theme.colors.gold],
         position: 8,
       },
       {
@@ -131,10 +101,7 @@ describe('useAvailableCategories', () => {
         illustration: SearchCategoriesIllustrations.Books,
         facetFilter: SearchGroupNameEnumv2.LIVRES,
         baseColor: theme.colors.deepPink,
-        gradients: [
-          { color: theme.colors.deepPinkLight, position: { x: 0, y: 0 } },
-          { color: theme.colors.deepPink, position: { x: 0, y: 0.5 } },
-        ],
+        gradients: [theme.colors.deepPinkLight, theme.colors.deepPink],
         position: 3,
       },
       {
@@ -142,10 +109,7 @@ describe('useAvailableCategories', () => {
         illustration: SearchCategoriesIllustrations.MediaPress,
         facetFilter: SearchGroupNameEnumv2.MEDIA_PRESSE,
         baseColor: theme.colors.deepPink,
-        gradients: [
-          { color: theme.colors.deepPinkLight, position: { x: 0, y: 0 } },
-          { color: theme.colors.deepPink, position: { x: 0, y: 0.5 } },
-        ],
+        gradients: [theme.colors.deepPinkLight, theme.colors.deepPink],
         position: 10,
       },
       {
@@ -153,10 +117,7 @@ describe('useAvailableCategories', () => {
         illustration: SearchCategoriesIllustrations.MuseumCulturalVisits,
         facetFilter: SearchGroupNameEnumv2.MUSEES_VISITES_CULTURELLES,
         baseColor: theme.colors.aquamarine,
-        gradients: [
-          { color: theme.colors.aquamarineLight, position: { x: 0, y: 0 } },
-          { color: theme.colors.aquamarine, position: { x: 0, y: 0.5 } },
-        ],
+        gradients: [theme.colors.aquamarineLight, theme.colors.aquamarine],
         position: 7,
       },
       {
@@ -164,10 +125,7 @@ describe('useAvailableCategories', () => {
         illustration: SearchCategoriesIllustrations.Shows,
         facetFilter: SearchGroupNameEnumv2.SPECTACLES,
         baseColor: theme.colors.coral,
-        gradients: [
-          { color: theme.colors.coralLight, position: { x: 0, y: 0 } },
-          { color: theme.colors.coral, position: { x: 0, y: 0.5 } },
-        ],
+        gradients: [theme.colors.coralLight, theme.colors.coral],
         position: 6,
       },
     ])
@@ -191,10 +149,7 @@ describe('useAvailableCategories', () => {
         illustration: SearchCategoriesIllustrations.ArtsCrafts,
         facetFilter: SearchGroupNameEnumv2.ARTS_LOISIRS_CREATIFS,
         baseColor: theme.colors.lilac,
-        gradients: [
-          { color: theme.colors.lilacLight, position: { x: 0, y: 0 } },
-          { color: theme.colors.lilac, position: { x: 0, y: 0.5 } },
-        ],
+        gradients: [theme.colors.lilacLight, theme.colors.lilac],
         position: 5,
       },
       {
@@ -202,10 +157,7 @@ describe('useAvailableCategories', () => {
         illustration: SearchCategoriesIllustrations.LibrariesMediaLibraries,
         facetFilter: SearchGroupNameEnumv2.BIBLIOTHEQUES_MEDIATHEQUE,
         baseColor: theme.colors.coral,
-        gradients: [
-          { color: theme.colors.coralLight, position: { x: 0, y: 0 } },
-          { color: theme.colors.coral, position: { x: 0, y: 0.5 } },
-        ],
+        gradients: [theme.colors.coralLight, theme.colors.coral],
         position: 11,
       },
     ])
