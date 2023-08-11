@@ -25,9 +25,7 @@ describe('<Favorites/>', () => {
   describe('Accessibility', () => {
     mockUseNetInfoContext.mockReturnValue({ isConnected: true })
 
-    // TODO(PC-21801): temporary skip this flaky test until github actions migration
-    // eslint-disable-next-line jest/no-disabled-tests
-    it.skip('should not have basic accessibility issues when user is logged in', async () => {
+    it('should not have basic accessibility issues when user is logged in', async () => {
       const { container } = renderFavorites({ isLoggedIn: true })
 
       await act(async () => {
@@ -40,18 +38,14 @@ describe('<Favorites/>', () => {
       const { container } = renderFavorites({ isLoggedIn: false })
 
       const results = await checkAccessibilityFor(container)
-
       expect(results).toHaveNoViolations()
     })
 
-    // TODO(PC-21801): temporary skip this flaky test until github actions migration
-    // eslint-disable-next-line jest/no-disabled-tests
-    it.skip('should not have basic accessibility issues when user is logged in but offline', async () => {
+    it('should not have basic accessibility issues when user is logged in but offline', async () => {
       mockUseNetInfoContext.mockReturnValueOnce({ isConnected: false })
       const { container } = renderFavorites({ isLoggedIn: true })
 
       const results = await checkAccessibilityFor(container)
-
       expect(results).toHaveNoViolations()
     })
   })
