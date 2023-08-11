@@ -34,7 +34,8 @@ describe('Home page', () => {
       id: 'fakeEntryId',
     })
     renderHome()
-    await act(async () => {})
+
+    await screen.findByText('Bienvenue !')
 
     expect(screen).toMatchSnapshot()
   })

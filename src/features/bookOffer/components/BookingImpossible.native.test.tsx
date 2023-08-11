@@ -108,7 +108,10 @@ describe('<BookingImpossible />', () => {
     it('should render with CTAs', async () => {
       // eslint-disable-next-line local-rules/no-react-query-provider-hoc
       render(reactQueryProviderHOC(<BookingImpossible />))
-      await act(async () => {})
+
+      await screen.findByText(
+        'Les conditions générales d’utilisation de l’App Store iOS ne permettent pas de réserver cette offre sur l’application.'
+      )
 
       expect(screen).toMatchSnapshot()
     })

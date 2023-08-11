@@ -1,10 +1,9 @@
 import React from 'react'
-import { act } from 'react-test-renderer'
 
 import { offerVenueResponseSnap as venue } from 'features/offer/fixtures/offerVenueReponse'
 import { mockedFullAddress as address } from 'libs/address/fixtures/mockedFormatFullAddress'
 import { WhereSection } from 'libs/geolocation/components/WhereSection'
-import { fireEvent, render } from 'tests/utils'
+import { fireEvent, render, act } from 'tests/utils'
 
 jest.mock('react-query')
 jest.mock('libs/itinerary/useItinerary', () => ({

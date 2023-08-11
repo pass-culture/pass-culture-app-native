@@ -4,7 +4,7 @@ import { useAuthContext } from 'features/auth/context/AuthContext'
 import { initialFavoritesState as mockInitialFavoritesState } from 'features/favorites/context/reducer'
 import { useNetInfoContext as useNetInfoContextDefault } from 'libs/network/NetInfoWrapper'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { render, screen, act } from 'tests/utils'
+import { render, screen } from 'tests/utils'
 
 import { Favorites } from './Favorites'
 
@@ -21,17 +21,13 @@ jest.mock('features/favorites/context/FavoritesWrapper', () => ({
 jest.mock('features/auth/context/AuthContext')
 const mockUseAuthContext = useAuthContext as jest.MockedFunction<typeof useAuthContext>
 
-/* TODO(PC-21140): Remove this mock when update to Jest 28
-  In jest version 28, I don't bring that error :
-  TypeError: requestAnimationFrame is not a function */
-jest.mock('react-native/Libraries/Animated/animations/TimingAnimation')
-
 describe('<Favorites/>', () => {
   mockUseNetInfoContext.mockReturnValue({ isConnected: true })
 
   it('should render correctly', async () => {
     renderFavorites({ isLoggedIn: true })
-    await act(async () => {})
+
+    await screen.findByText('Mes favoris')
 
     expect(screen).toMatchSnapshot()
   })

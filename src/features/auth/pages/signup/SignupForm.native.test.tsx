@@ -39,9 +39,9 @@ describe('Signup Form', () => {
   `('should render correctly for $component', async ({ stepIndex }) => {
     mockUseState.mockImplementationOnce(() => realUseState(stepIndex))
     mockUseState.mockImplementationOnce(() => realUseState(stepIndex))
-
     render(<SignupForm />)
-    await act(async () => {})
+
+    await screen.findByText('Inscription')
 
     expect(screen).toMatchSnapshot()
   })
