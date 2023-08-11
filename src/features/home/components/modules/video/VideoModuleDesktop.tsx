@@ -52,7 +52,7 @@ export const VideoModuleDesktop: FunctionComponent<VideoModuleProps> = (props) =
         <ColorCategoryBackground
           start={{ x: 0, y: 0 }}
           end={{ x: 0, y: 1 }}
-          colors={getGradientColors(props.color)}
+          colors={getGradientColors[props.color]}
           isMultiOffer={props.isMultiOffer}
         />
         <VideoOfferContainer>

@@ -1,20 +1,10 @@
 import { theme } from 'theme'
 
-export const getGradientColors = (color: string) => {
-  switch (color) {
-    case 'Gold':
-      return [theme.colors.goldLight, theme.colors.gold]
-    case 'Aquamarine':
-      return [theme.colors.aquamarineLight, theme.colors.aquamarine]
-    case 'SkyBlue':
-      return [theme.colors.skyBlueLight, theme.colors.skyBlue]
-    case 'DeepPink':
-      return [theme.colors.deepPinkLight, theme.colors.deepPink]
-    case 'Coral':
-      return [theme.colors.coralLight, theme.colors.coral]
-    case 'Lilac':
-      return [theme.colors.lilacLight, theme.colors.lilac]
-    default:
-      return [theme.colors.white, theme.colors.white]
-  }
+export const getGradientColors = {
+  Gold: [theme.colors.goldLight, theme.colors.gold],
+  Aquamarine: [theme.colors.aquamarineLight, theme.colors.aquamarine],
+  SkyBlue: [theme.colors.skyBlueLight, theme.colors.skyBlue],
+  DeepPink: [theme.colors.deepPinkLight, theme.colors.deepPink],
+  Coral: [theme.colors.coralLight, theme.colors.coral],
+  Lilac: [theme.colors.lilacLight, theme.colors.lilac],
 }
