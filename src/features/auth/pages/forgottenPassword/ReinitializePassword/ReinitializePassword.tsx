@@ -3,7 +3,9 @@ import { useFocusEffect, useNavigation, useRoute } from '@react-navigation/nativ
 import React, { useCallback, useEffect, useState } from 'react'
 import { useForm } from 'react-hook-form'
 
+import { AccountState, ResetPasswordResponse } from 'api/gen'
 import { useResetPasswordMutation } from 'features/auth/api/useResetPasswordMutation'
+import { useLoginRoutine } from 'features/auth/helpers/useLoginRoutine'
 import { reinitializePasswordSchema } from 'features/auth/pages/forgottenPassword/ReinitializePassword/schema/reinitializePasswordSchema'
 import { navigateToHome } from 'features/navigation/helpers'
 import { UseNavigationType, UseRouteType } from 'features/navigation/RootNavigator/types'
@@ -33,6 +35,7 @@ export const ReinitializePassword = () => {
   const route = useRoute<UseRouteType<'ReinitializePassword'>>()
   const navigation = useNavigation<UseNavigationType>()
   const { showSuccessSnackBar, showErrorSnackBar } = useSnackBarContext()
+  const loginRoutine = useLoginRoutine()
 
   const [isTimestampExpirationVerified, setIsTimestampExpirationVerified] = useState(false)
   const {
@@ -67,13 +70,21 @@ export const ReinitializePassword = () => {
   }, [password, trigger])
 
   const { mutate: resetPassword, isLoading } = useResetPasswordMutation({
-    onSuccess: () => {
+    onSuccess: (response: ResetPasswordResponse) => {
       showSuccessSnackBar({
         message: 'Ton mot de passe est modifié\u00a0!',
         timeout: SNACK_BAR_TIME_OUT,
       })
       analytics.logHasChangedPassword('resetPassword')
-      navigation.navigate('Login')
+      loginRoutine(
+        {
+          accessToken: response.accessToken,
+          refreshToken: response.refreshToken,
+          accountState: AccountState.ACTIVE,
+        },
+        'fromReinitializePassword'
+      )
+      navigateToHome()
     },
     onError: () => {
       showErrorSnackBar({

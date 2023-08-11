@@ -1,7 +1,10 @@
 import { rest } from 'msw'
 import React from 'react'
 
-import { useRoute, navigate, replace } from '__mocks__/@react-navigation/native'
+import { useRoute, replace } from '__mocks__/@react-navigation/native'
+import { AccountState } from 'api/gen'
+import * as LoginRoutine from 'features/auth/helpers/useLoginRoutine'
+import { navigateToHome } from 'features/navigation/helpers'
 import { analytics } from 'libs/analytics'
 import * as datesLib from 'libs/dates'
 import { env } from 'libs/environment'
@@ -12,6 +15,8 @@ import { SNACK_BAR_TIME_OUT } from 'ui/components/snackBar/SnackBarContext'
 import { SnackBarHelperSettings } from 'ui/components/snackBar/types'
 
 import { ReinitializePassword } from './ReinitializePassword'
+
+jest.mock('features/navigation/helpers')
 
 const ROUTE_PARAMS = {
   email: 'john@.example.com',
@@ -28,11 +33,12 @@ jest.mock('ui/components/snackBar/SnackBarContext', () => ({
   }),
 }))
 
-describe('ReinitializePassword Page', () => {
-  beforeAll(() => {
-    useRoute.mockReturnValue({ params: ROUTE_PARAMS })
-  })
+useRoute.mockReturnValue({ params: ROUTE_PARAMS })
+const loginRoutine = jest.fn()
+const mockLoginRoutine = jest.spyOn(LoginRoutine, 'useLoginRoutine')
+mockLoginRoutine.mockImplementation(() => loginRoutine)
 
+describe('ReinitializePassword Page', () => {
   it('should match snapshot', async () => {
     renderReinitializePassword()
     await act(async () => {})
@@ -73,7 +79,41 @@ describe('ReinitializePassword Page', () => {
     expect(notMatchingErrorText).toBeTruthy()
   })
 
-  it('should redirect to login page WHEN password is reset', async () => {
+  it('should connect the user when password is reset', async () => {
+    server.use(
+      rest.post(env.API_BASE_URL + '/native/v1/reset_password', async (_, res, ctx) =>
+        res.once(
+          ctx.status(200),
+          ctx.json({ accessToken: 'accessToken', refreshToken: 'refreshToken' })
+        )
+      )
+    )
+
+    renderReinitializePassword()
+    const passwordInput = screen.getByPlaceholderText('Ton mot de passe')
+    const confirmationInput = screen.getByPlaceholderText('Confirmer le mot de passe')
+
+    await act(async () => {
+      fireEvent.changeText(passwordInput, 'user@AZERTY123')
+    })
+    await act(async () => {
+      fireEvent.changeText(confirmationInput, 'user@AZERTY123')
+    })
+    await act(async () => {
+      fireEvent.press(screen.getByText('Se connecter'))
+    })
+
+    expect(loginRoutine).toHaveBeenCalledWith(
+      {
+        accessToken: 'accessToken',
+        refreshToken: 'refreshToken',
+        accountState: AccountState.ACTIVE,
+      },
+      'fromReinitializePassword'
+    )
+  })
+
+  it('should redirect to home page when password is reset', async () => {
     renderReinitializePassword()
     const passwordInput = screen.getByPlaceholderText('Ton mot de passe')
     const confirmationInput = screen.getByPlaceholderText('Confirmer le mot de passe')
@@ -87,7 +127,7 @@ describe('ReinitializePassword Page', () => {
       fireEvent.press(screen.getByText('Se connecter'))
     })
 
-    expect(navigate).toHaveBeenNthCalledWith(1, 'Login')
+    expect(navigateToHome).toHaveBeenCalledTimes(1)
   })
 
   it('should log analytics WHEN password is reset', async () => {

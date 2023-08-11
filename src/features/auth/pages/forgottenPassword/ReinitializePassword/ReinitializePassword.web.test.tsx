@@ -1,6 +1,7 @@
 import React from 'react'
 import { SafeAreaProvider } from 'react-native-safe-area-context'
 
+import * as LoginRoutine from 'features/auth/helpers/useLoginRoutine'
 import { render, checkAccessibilityFor, act } from 'tests/utils/web'
 
 import { ReinitializePassword } from './ReinitializePassword'
@@ -14,6 +15,8 @@ jest.mock('uuid', () => {
     v4: jest.fn(() => value++),
   }
 })
+
+jest.spyOn(LoginRoutine, 'useLoginRoutine').mockReturnValue(jest.fn())
 
 describe('<ReinitializePassword/>', () => {
   describe('Accessibility', () => {
