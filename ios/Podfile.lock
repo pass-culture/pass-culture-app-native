@@ -482,6 +482,8 @@ PODS:
     - React-Core
   - react-native-date-picker (4.2.2):
     - React-Core
+  - react-native-detector (0.2.3):
+    - React
   - react-native-flipper (0.161.0):
     - React-Core
   - react-native-flipper-performance-plugin (0.3.1):
@@ -702,6 +704,7 @@ DEPENDENCIES:
   - "react-native-blur (from `../node_modules/@react-native-community/blur`)"
   - "react-native-config (from `../node_modules/@bam.tech/react-native-config`)"
   - react-native-date-picker (from `../node_modules/react-native-date-picker`)
+  - react-native-detector (from `../node_modules/react-native-detector`)
   - react-native-flipper (from `../node_modules/react-native-flipper`)
   - react-native-flipper-performance-plugin (from `../node_modules/react-native-flipper-performance-plugin`)
   - react-native-geolocation-service (from `../node_modules/react-native-geolocation-service`)
@@ -858,6 +861,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/@bam.tech/react-native-config"
   react-native-date-picker:
     :path: "../node_modules/react-native-date-picker"
+  react-native-detector:
+    :path: "../node_modules/react-native-detector"
   react-native-flipper:
     :path: "../node_modules/react-native-flipper"
   react-native-flipper-performance-plugin:
@@ -1016,6 +1021,7 @@ SPEC CHECKSUMS:
   react-native-blur: cfdad7b3c01d725ab62a8a729f42ea463998afa2
   react-native-config: 5e2fe7217716b5472ed7901477620b1370335d67
   react-native-date-picker: 9088350e06918f7d842a34c171acadc66583cb94
+  react-native-detector: 751696a5534f6bbc11be87515cca3d8d32593d73
   react-native-flipper: ea555c5b21d9d15814999327aecf31b98ac87079
   react-native-flipper-performance-plugin: 2b873b68da3e368afeaf29c9c7a8c2b0ff908c4f
   react-native-geolocation-service: 608e1da71a1ac31b4de64d9ef2815f697978c55b
