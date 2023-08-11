@@ -22,7 +22,7 @@ export function NavigationIdentityCheck(): React.JSX.Element {
   const { navigate } = useNavigation<UseNavigationType>()
 
   const trigger = (message: EduConnectErrorMessageEnum) => {
-    setScreenError(new ScreenError(message, NotEligibleEduConnect))
+    setScreenError(new ScreenError(message, { Screen: NotEligibleEduConnect }))
   }
 
   if (screenError) throw screenError

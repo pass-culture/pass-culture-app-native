@@ -16,11 +16,11 @@ export const ScreenErrorProvider = ({
   const mustUpdateApp = useMustUpdateApp()
 
   if (mustUpdateApp) {
-    throw new ScreenError('Must update app', ForceUpdate)
+    throw new ScreenError('Must update app', { Screen: ForceUpdate })
   }
 
   if (status === MAINTENANCE.ON) {
-    throw new ScreenError('Under maintenance', MaintenanceErrorPage)
+    throw new ScreenError('Under maintenance', { Screen: MaintenanceErrorPage })
   }
 
   return children ? <React.Fragment>{children}</React.Fragment> : null

@@ -34,7 +34,7 @@ export const NavigationErrors: FunctionComponent = () => {
   async function errorAsync() {
     setAsyncTestReqCount((v) => ++v)
     if (asyncTestReqCount <= MAX_ASYNC_TEST_REQ_COUNT) {
-      throw new AsyncError('NETWORK_REQUEST_FAILED', errorAsyncQuery)
+      throw new AsyncError('NETWORK_REQUEST_FAILED', { retry: errorAsyncQuery })
     }
     return null
   }
@@ -71,7 +71,7 @@ export const NavigationErrors: FunctionComponent = () => {
               setScreenError(
                 new ScreenError(
                   'Échec de la requête https://cdn.contentful.com/spaces/2bg01iqy0isv/environments/testing/entries?include=2&content_type=homepageNatif&access_token=<TOKEN>, code: 400',
-                  NoContentError
+                  { Screen: NoContentError }
                 )
               )
             }
@@ -88,9 +88,11 @@ export const NavigationErrors: FunctionComponent = () => {
             wording="Maintenance Page"
             onPress={() =>
               setScreenError(
-                new ScreenError('Test maintenance page', () => (
-                  <Maintenance message="Some maintenance message that is set in Firestore" />
-                ))
+                new ScreenError('Test maintenance page', {
+                  Screen: () => (
+                    <Maintenance message="Some maintenance message that is set in Firestore" />
+                  ),
+                })
               )
             }
           />

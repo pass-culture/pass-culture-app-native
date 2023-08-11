@@ -11,7 +11,7 @@ const getVenueById = async (venueId: number | null) => {
   try {
     return await api.getnativev1venuevenueId(venueId)
   } catch (error) {
-    throw new VenueNotFoundError(venueId, VenueNotFound)
+    throw new VenueNotFoundError(venueId, { Screen: VenueNotFound })
   }
 }
 

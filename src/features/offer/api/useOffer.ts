@@ -9,13 +9,13 @@ import { QueryKeys } from 'libs/queryKeys'
 
 async function getOfferById(offerId: number) {
   if (!offerId) {
-    throw new OfferNotFoundError(offerId, OfferNotFound)
+    throw new OfferNotFoundError(offerId, { Screen: OfferNotFound })
   }
   try {
     return await api.getnativev1offerofferId(offerId)
   } catch (error) {
     if (error instanceof ApiError && error.statusCode === 404) {
-      throw new OfferNotFoundError(offerId, OfferNotFound)
+      throw new OfferNotFoundError(offerId, { Screen: OfferNotFound })
     }
     throw error
   }

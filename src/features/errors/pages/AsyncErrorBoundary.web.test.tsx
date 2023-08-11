@@ -43,7 +43,7 @@ describe('AsyncErrorBoundary component', () => {
     const retry = jest.fn()
     render(
       <AsyncErrorBoundary
-        error={new AsyncError('error', retry)}
+        error={new AsyncError('error', { retry })}
         resetErrorBoundary={resetErrorBoundary}
       />
     )

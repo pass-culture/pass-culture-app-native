@@ -33,7 +33,7 @@ export function SignupConfirmationExpiredLink(props: Props) {
       navigate('SignupConfirmationEmailSent', { email })
       return result
     } catch (err) {
-      throw new AsyncError('NETWORK_REQUEST_FAILED', signupConfirmationExpiredLinkQuery)
+      throw new AsyncError('NETWORK_REQUEST_FAILED', { retry: signupConfirmationExpiredLinkQuery })
     }
   }
 

@@ -188,43 +188,46 @@ PODS:
     - GoogleUtilities/Network (~> 7.7)
     - "GoogleUtilities/NSData+zlib (~> 7.7)"
     - nanopb (~> 2.30908.0)
-  - GoogleDataTransport (9.1.2):
-    - GoogleUtilities/Environment (~> 7.2)
-    - nanopb (~> 2.30908.0)
+  - GoogleDataTransport (9.2.5):
+    - GoogleUtilities/Environment (~> 7.7)
+    - nanopb (< 2.30910.0, >= 2.30908.0)
     - PromisesObjC (< 3.0, >= 1.2)
-  - GoogleUtilities/AppDelegateSwizzler (7.7.0):
+  - GoogleUtilities/AppDelegateSwizzler (7.11.5):
     - GoogleUtilities/Environment
     - GoogleUtilities/Logger
     - GoogleUtilities/Network
-  - GoogleUtilities/Environment (7.7.0):
+  - GoogleUtilities/Environment (7.11.5):
     - PromisesObjC (< 3.0, >= 1.2)
-  - GoogleUtilities/ISASwizzler (7.7.0)
-  - GoogleUtilities/Logger (7.7.0):
+  - GoogleUtilities/ISASwizzler (7.11.5)
+  - GoogleUtilities/Logger (7.11.5):
     - GoogleUtilities/Environment
-  - GoogleUtilities/MethodSwizzler (7.7.0):
+  - GoogleUtilities/MethodSwizzler (7.11.5):
     - GoogleUtilities/Logger
-  - GoogleUtilities/Network (7.7.0):
+  - GoogleUtilities/Network (7.11.5):
     - GoogleUtilities/Logger
     - "GoogleUtilities/NSData+zlib"
     - GoogleUtilities/Reachability
-  - "GoogleUtilities/NSData+zlib (7.7.0)"
-  - GoogleUtilities/Reachability (7.7.0):
+  - "GoogleUtilities/NSData+zlib (7.11.5)"
+  - GoogleUtilities/Reachability (7.11.5):
     - GoogleUtilities/Logger
-  - GoogleUtilities/UserDefaults (7.7.0):
+  - GoogleUtilities/UserDefaults (7.11.5):
     - GoogleUtilities/Logger
   - hermes-engine (0.70.10)
   - JWT (3.0.0-beta.14):
     - Base64 (~> 1.1.2)
   - libevent (2.1.12)
-  - libwebp (1.2.1):
-    - libwebp/demux (= 1.2.1)
-    - libwebp/mux (= 1.2.1)
-    - libwebp/webp (= 1.2.1)
-  - libwebp/demux (1.2.1):
+  - libwebp (1.3.1):
+    - libwebp/demux (= 1.3.1)
+    - libwebp/mux (= 1.3.1)
+    - libwebp/sharpyuv (= 1.3.1)
+    - libwebp/webp (= 1.3.1)
+  - libwebp/demux (1.3.1):
     - libwebp/webp
-  - libwebp/mux (1.2.1):
+  - libwebp/mux (1.3.1):
     - libwebp/demux
-  - libwebp/webp (1.2.1)
+  - libwebp/sharpyuv (1.3.1)
+  - libwebp/webp (1.3.1):
+    - libwebp/sharpyuv
   - lottie-ios (3.2.3)
   - lottie-react-native (5.1.3):
     - lottie-ios (~> 3.2.3)
@@ -241,7 +244,7 @@ PODS:
     - RNPermissions
   - Permission-Notifications (3.8.0):
     - RNPermissions
-  - PromisesObjC (2.1.0)
+  - PromisesObjC (2.3.1)
   - RCT-Folly (2021.07.22.00):
     - boost
     - DoubleConversion
@@ -616,9 +619,9 @@ PODS:
   - RNScreens (3.20.0):
     - React-Core
     - React-RCTImage
-  - RNSentry (4.2.2):
+  - RNSentry (5.8.1):
     - React-Core
-    - Sentry (= 7.22.0)
+    - Sentry/HybridSDK (= 8.9.3)
   - RNShare (8.2.2):
     - React-Core
   - RNSVG (13.6.0):
@@ -626,13 +629,13 @@ PODS:
   - SDWebImage (5.11.1):
     - SDWebImage/Core (= 5.11.1)
   - SDWebImage/Core (5.11.1)
-  - SDWebImageWebPCoder (0.8.4):
+  - SDWebImageWebPCoder (0.8.5):
     - libwebp (~> 1.0)
     - SDWebImage/Core (~> 5.10)
-  - Sentry (7.22.0):
-    - Sentry/Core (= 7.22.0)
-  - Sentry/Core (7.22.0)
-  - SocketRocket (0.6.0)
+  - Sentry/HybridSDK (8.9.3):
+    - SentryPrivate (= 8.9.3)
+  - SentryPrivate (8.9.3)
+  - SocketRocket (0.6.1)
   - SSZipArchive (2.2.3)
   - Yoga (1.14.0)
   - YogaKit (1.18.1):
@@ -780,6 +783,7 @@ SPEC REPOS:
     - SDWebImage
     - SDWebImageWebPCoder
     - Sentry
+    - SentryPrivate
     - SocketRocket
     - SSZipArchive
     - YogaKit
@@ -979,12 +983,12 @@ SPEC CHECKSUMS:
   fmt: ff9d55029c625d3757ed641535fd4a75fedc7ce9
   glog: 04b94705f318337d7ead9e6d17c019bd9b1f6b1b
   GoogleAppMeasurement: 4c19f031220c72464d460c9daa1fb5d1acce958e
-  GoogleDataTransport: 629c20a4d363167143f30ea78320d5a7eb8bd940
-  GoogleUtilities: e0913149f6b0625b553d70dae12b49fc62914fd1
+  GoogleDataTransport: 54dee9d48d14580407f8f5fbf2f496e92437a2f2
+  GoogleUtilities: 13e2c67ede716b8741c7989e26893d151b2b2084
   hermes-engine: 409b787d72bde225a3e5ce982f9c3ace6ff56691
   JWT: ef71dfb03e1f842081e64dc42eef0e164f35d251
   libevent: 4049cae6c81cdb3654a443be001fb9bdceff7913
-  libwebp: 98a37e597e40bfdb4c911fc98f2c53d0b12d05fc
+  libwebp: 33dc822fbbf4503668d09f7885bbfedc76c45e96
   lottie-ios: c058aeafa76daa4cf64d773554bccc8385d0150e
   lottie-react-native: a501112fa980529ccb80b9f3ee117a7f98c6af3a
   nanopb: a0ba3315591a9ae0a16a309ee504766e90db0c96
@@ -992,7 +996,7 @@ SPEC CHECKSUMS:
   Permission-Camera: e6d142d7d8b714afe0a83e5e6ae17eb949f1e3e9
   Permission-LocationWhenInUse: 1c80e4797ae587642a83125e80b86686cefeba53
   Permission-Notifications: aa91ec29236626ff59cb60e08389c0a59a9d32c5
-  PromisesObjC: 99b6f43f9e1044bd87a95a60beff28c2c44ddb72
+  PromisesObjC: c50d2056b5253dadbd6c2bea79b0674bd5a52fa4
   RCT-Folly: 0080d0a6ebf2577475bda044aa59e2ca1f909cda
   RCTRequired: 23f0d5d0dea22af22f30f146e090a7d16e6b8be7
   RCTTypeSafety: ca3de65d46a130875bf7816788998f13525f3235
@@ -1050,13 +1054,14 @@ SPEC CHECKSUMS:
   RNLaunchNavigator: 058ccdb86a80a9424d5e37f6ec54379e3018c52b
   RNPermissions: 215c54462104b3925b412b0fb3c9c497b21c358b
   RNScreens: 218801c16a2782546d30bd2026bb625c0302d70f
-  RNSentry: f03937a2cf86c7029ba31fbbf5618c55d223cd62
+  RNSentry: 221d8c3f0bf0d951e9ecc89d3e42ee97aab9d7c0
   RNShare: d82e10f6b7677f4b0048c23709bd04098d5aee6c
   RNSVG: 3a79c0c4992213e4f06c08e62730c5e7b9e4dc17
   SDWebImage: a7f831e1a65eb5e285e3fb046a23fcfbf08e696d
-  SDWebImageWebPCoder: f93010f3f6c031e2f8fb3081ca4ee6966c539815
-  Sentry: 30b51086ca9aac23337880152e95538f7e177f7f
-  SocketRocket: fccef3f9c5cedea1353a9ef6ada904fde10d6608
+  SDWebImageWebPCoder: 908b83b6adda48effe7667cd2b7f78c897e5111d
+  Sentry: 97161cac725da1ecbe77d1445bf8a61c1e5667f1
+  SentryPrivate: 9a76def09fb08f9501997b8df946e8097947b94f
+  SocketRocket: f32cd54efbe0f095c4d7594881e52619cfe80b17
   SSZipArchive: 62d4947b08730e4cda640473b0066d209ff033c9
   Yoga: 0518155cfbcc68c56223422f6a20a71b82e307d2
   YogaKit: f782866e155069a2cca2517aafea43200b01fd5a

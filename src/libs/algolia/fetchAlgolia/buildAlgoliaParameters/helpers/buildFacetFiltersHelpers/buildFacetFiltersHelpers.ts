@@ -42,7 +42,7 @@ export const buildObjectIdsPredicate = (objectIds: string[]) => {
   } catch (error) {
     eventMonitoring.captureException(error, {
       level: 'error',
-      objectIds,
+      extra: { objectIds },
     })
     return []
   }

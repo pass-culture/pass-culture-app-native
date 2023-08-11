@@ -16,7 +16,7 @@ const getHomepageNatifContent = async () => {
   } catch (e) {
     const error = e as Error
     // FIXME(voisinhugo): do we need this optional chaining? If yes, ScreenError should accept undefined message
-    throw new ScreenError(error?.message, NoContentError)
+    throw new ScreenError(error?.message, { Screen: NoContentError })
   }
 }
 const useGetHomepageList = () => {

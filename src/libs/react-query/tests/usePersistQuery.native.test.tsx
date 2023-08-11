@@ -60,7 +60,7 @@ describe('usePersistQuery', () => {
       const persistDataStr = await AsyncStorage.getItem(queryKey)
       expect(persistDataStr).toBeFalsy()
       expect(eventMonitoring.captureException).toBeCalledWith(error, {
-        context: { queryKey, data: onlineData },
+        extra: { queryKey, data: onlineData },
       })
     })
   })
@@ -102,7 +102,7 @@ describe('usePersistQuery', () => {
       await flushAllPromisesWithAct()
 
       expect(eventMonitoring.captureException).toBeCalledWith(error, {
-        context: { queryKey },
+        extra: { queryKey },
       })
     })
 
