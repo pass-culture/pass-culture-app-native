@@ -4,7 +4,7 @@ import styled from 'styled-components/native'
 
 import { DistanceTag } from 'features/offer/components/DistanceTag/DistanceTag'
 import { VenueDetail } from 'features/offer/types'
-import { getSpacing, Spacer, Typo } from 'ui/theme'
+import { Spacer, Typo } from 'ui/theme'
 import { getHoverStyle } from 'ui/theme/getHoverStyle/getHoverStyle'
 
 export interface VenueDetailsProps extends VenueDetail, ViewProps {
@@ -39,7 +39,6 @@ const Wrapper = styled(View)({
   justifyContent: 'center',
   flexGrow: 1,
   flexShrink: 1,
-  height: getSpacing(24),
 })
 
 const Title = styled(Typo.ButtonText).attrs({
