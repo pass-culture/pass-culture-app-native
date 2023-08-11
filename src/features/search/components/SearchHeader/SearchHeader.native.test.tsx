@@ -3,7 +3,7 @@ import { v4 as uuidv4 } from 'uuid'
 
 import { SearchHeader } from 'features/search/components/SearchHeader/SearchHeader'
 import * as useFilterCountAPI from 'features/search/helpers/useFilterCount/useFilterCount'
-import { act, render } from 'tests/utils'
+import { render, screen } from 'tests/utils'
 
 jest.mock('libs/firebase/analytics')
 
@@ -43,9 +43,10 @@ describe('SearchHeader component', () => {
   const searchInputID = uuidv4()
 
   it('should render SearchHeader', async () => {
-    const renderAPI = render(<SearchHeader searchInputID={searchInputID} />)
-    await act(async () => {})
+    render(<SearchHeader searchInputID={searchInputID} />)
 
-    expect(renderAPI).toMatchSnapshot()
+    await screen.findByText('Recherche une offre')
+
+    expect(screen).toMatchSnapshot()
   })
 })

@@ -40,10 +40,11 @@ describe('<SearchFilter/>', () => {
       locationType: LocationType.AROUND_ME,
       aroundRadius: 100,
     }
-    const { toJSON } = renderSearchFilter()
-    await act(async () => {})
+    renderSearchFilter()
 
-    expect(toJSON()).toMatchSnapshot()
+    await screen.findByText('Filtrer')
+
+    expect(screen).toMatchSnapshot()
   })
 
   it('should load url params when opening the general filters page', async () => {

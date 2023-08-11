@@ -4,7 +4,7 @@ import { useAuthContext } from 'features/auth/context/AuthContext'
 import { initialFavoritesState as mockInitialFavoritesState } from 'features/favorites/context/reducer'
 import { useNetInfoContext as useNetInfoContextDefault } from 'libs/network/NetInfoWrapper'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { render, screen, act } from 'tests/utils'
+import { render, screen } from 'tests/utils'
 
 import { Favorites } from './Favorites'
 
@@ -26,7 +26,8 @@ describe('<Favorites/>', () => {
 
   it('should render correctly', async () => {
     renderFavorites({ isLoggedIn: true })
-    await act(async () => {})
+
+    await screen.findByText('Mes favoris')
 
     expect(screen).toMatchSnapshot()
   })

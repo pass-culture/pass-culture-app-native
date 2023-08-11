@@ -35,7 +35,8 @@ describe('ReinitializePassword Page', () => {
 
   it('should match snapshot', async () => {
     renderReinitializePassword()
-    await act(async () => {})
+
+    await screen.findByText('Nouveau mot de passe')
 
     expect(screen).toMatchSnapshot()
   })

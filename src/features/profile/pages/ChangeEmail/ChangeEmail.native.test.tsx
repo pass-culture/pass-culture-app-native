@@ -40,7 +40,7 @@ describe('<ChangeEmail/>', () => {
   it('should render correctly', async () => {
     renderChangeEmail()
 
-    await act(async () => {})
+    await screen.findByText('Modifier mon e-mail')
 
     expect(screen).toMatchSnapshot()
   })

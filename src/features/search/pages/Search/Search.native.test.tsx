@@ -163,10 +163,11 @@ describe('<Search/>', () => {
   mockUseNetInfoContext.mockReturnValue({ isConnected: true })
 
   it('should render Search', async () => {
-    const search = render(<Search />)
-    await act(async () => {})
+    render(<Search />)
 
-    expect(search).toMatchSnapshot()
+    await screen.findByText('Recherche une offre')
+
+    expect(screen).toMatchSnapshot()
   })
 
   it('should handle coming from "See More" correctly', async () => {

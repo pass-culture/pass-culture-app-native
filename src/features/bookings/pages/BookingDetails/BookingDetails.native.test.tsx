@@ -86,7 +86,7 @@ describe('BookingDetails', () => {
     booking.completedUrl = 'https://example.com'
     renderBookingDetails(booking)
 
-    await act(async () => {})
+    await screen.findByText('Ma réservation')
 
     expect(screen).toMatchSnapshot()
   })
