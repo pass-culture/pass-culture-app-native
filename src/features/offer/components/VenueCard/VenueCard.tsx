@@ -4,6 +4,7 @@ import styled from 'styled-components/native'
 import { useHandleFocus } from 'libs/hooks/useHandleFocus'
 import { useHandleHover } from 'libs/hooks/useHandleHover'
 import { TouchableOpacity } from 'ui/components/TouchableOpacity'
+import { BicolorArrowRight } from 'ui/svg/icons/BicolorArrowRight'
 import { getSpacing } from 'ui/theme'
 import { customFocusOutline } from 'ui/theme/customFocusOutline/customFocusOutline'
 
@@ -29,6 +30,11 @@ export function VenueCard({ onPress, ...props }: VenueCardProps) {
       onMouseEnter={onMouseEnter}
       onMouseLeave={onMouseLeave}>
       <VenueDetails {...props} isHover={isHover} />
+      <ArrowWrapper>
+        <ArrowCircleBox>
+          <StyledArrowRight />
+        </ArrowCircleBox>
+      </ArrowWrapper>
     </Wrapper>
   )
 }
@@ -36,6 +42,8 @@ export function VenueCard({ onPress, ...props }: VenueCardProps) {
 const Wrapper = styled(TouchableOpacity)<{
   isFocus?: boolean
 }>(({ theme, isFocus }) => ({
+  display: 'flex',
+  flexDirection: 'row',
   backgroundColor: theme.colors.white,
   borderRadius: getSpacing(2),
   borderWidth: 1,
@@ -44,3 +52,21 @@ const Wrapper = styled(TouchableOpacity)<{
   padding: getSpacing(4),
   ...customFocusOutline({ color: theme.colors.black, isFocus }),
 }))
+
+const ArrowWrapper = styled.View({
+  justifyContent: 'flex-end',
+})
+
+const ArrowCircleBox = styled.View({
+  backgroundColor: 'black',
+  borderRadius: 50,
+  width: getSpacing(5),
+  height: getSpacing(5),
+  justifyContent: 'center',
+  alignItems: 'center',
+})
+
+const StyledArrowRight = styled(BicolorArrowRight).attrs(({ theme }) => ({
+  color: theme.colors.white,
+  size: getSpacing(3),
+}))``
