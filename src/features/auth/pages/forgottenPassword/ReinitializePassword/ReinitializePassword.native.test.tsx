@@ -55,7 +55,7 @@ describe('ReinitializePassword Page', () => {
     expect(screen).toMatchSnapshot()
   })
 
-  it('should enable the submit button when passwords are equals and filled and password is correct', async () => {
+  it('should enable the submit button when inputs are valid', async () => {
     renderReinitializePassword()
 
     const passwordInput = screen.getByPlaceholderText('Ton mot de passe')
@@ -72,7 +72,7 @@ describe('ReinitializePassword Page', () => {
     expect(connectButton).toBeEnabled()
   })
 
-  it('should display the matching error when the passwords dont match', async () => {
+  it('should display error when the passwords dont match', async () => {
     renderReinitializePassword()
     const passwordInput = screen.getByPlaceholderText('Ton mot de passe')
     const confirmationInput = screen.getByPlaceholderText('Confirmer le mot de passe')
@@ -88,7 +88,7 @@ describe('ReinitializePassword Page', () => {
     expect(notMatchingErrorText).toBeTruthy()
   })
 
-  it('should request new password on connect button', async () => {
+  it('should request password reinitialization on connect button', async () => {
     renderReinitializePassword()
     const passwordInput = screen.getByPlaceholderText('Ton mot de passe')
     const confirmationInput = screen.getByPlaceholderText('Confirmer le mot de passe')
@@ -140,7 +140,7 @@ describe('ReinitializePassword Page', () => {
     // eslint-disable-next-line local-rules/independent-mocks
     useFeatureFlagSpy.mockReturnValue(false)
   })
-  it('should connect the user when password is reset', async () => {
+  it('should connect the user when password is successfully reset', async () => {
     server.use(
       rest.post(env.API_BASE_URL + '/native/v1/reset_password', async (_, res, ctx) =>
         res.once(
@@ -174,7 +174,7 @@ describe('ReinitializePassword Page', () => {
     )
   })
 
-  it('should redirect to home page when password is reset', async () => {
+  it('should redirect to home page when password is successfully reset', async () => {
     renderReinitializePassword()
     const passwordInput = screen.getByPlaceholderText('Ton mot de passe')
     const confirmationInput = screen.getByPlaceholderText('Confirmer le mot de passe')
@@ -191,7 +191,7 @@ describe('ReinitializePassword Page', () => {
     expect(navigateToHome).toHaveBeenCalledTimes(1)
   })
 
-  it('should log analytics WHEN password is reset', async () => {
+  it('should log analytics when password is successfully reset', async () => {
     renderReinitializePassword()
     const passwordInput = screen.getByPlaceholderText('Ton mot de passe')
     const confirmationInput = screen.getByPlaceholderText('Confirmer le mot de passe')
@@ -208,7 +208,7 @@ describe('ReinitializePassword Page', () => {
     expect(analytics.logHasChangedPassword).toBeCalledWith('resetPassword')
   })
 
-  it('should show success snack bar WHEN password is reset', async () => {
+  it('should show success snack bar when password is successfully reset', async () => {
     renderReinitializePassword()
     const passwordInput = screen.getByPlaceholderText('Ton mot de passe')
     const confirmationInput = screen.getByPlaceholderText('Confirmer le mot de passe')
@@ -228,7 +228,7 @@ describe('ReinitializePassword Page', () => {
     })
   })
 
-  it('should show error snack bar WHEN error', async () => {
+  it('should show error snack bar when reinitialize password request fails', async () => {
     simulateResetPasswordError()
     renderReinitializePassword()
     const passwordInput = screen.getByPlaceholderText('Ton mot de passe')

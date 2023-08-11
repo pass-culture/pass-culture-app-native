@@ -7,8 +7,6 @@ import { render, checkAccessibilityFor, act } from 'tests/utils/web'
 
 import { ReinitializePassword } from './ReinitializePassword'
 
-jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockReturnValue(false)
-
 jest.mock('react-query')
 
 jest.mock('uuid', () => {
@@ -20,6 +18,7 @@ jest.mock('uuid', () => {
 })
 
 jest.spyOn(LoginRoutine, 'useLoginRoutine').mockReturnValue(jest.fn())
+jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockReturnValue(false)
 
 describe('<ReinitializePassword/>', () => {
   describe('Accessibility', () => {
