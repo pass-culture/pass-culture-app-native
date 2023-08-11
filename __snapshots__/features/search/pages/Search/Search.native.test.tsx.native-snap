@@ -333,20 +333,8 @@ exports[`<Search/> should render Search 1`] = `
             "Illustration": [Function],
             "baseColor": "#B85901",
             "gradients": [
-              {
-                "color": "#F99E15",
-                "position": {
-                  "x": 0,
-                  "y": 0,
-                },
-              },
-              {
-                "color": "#B85901",
-                "position": {
-                  "x": 0,
-                  "y": 0.5,
-                },
-              },
+              "#FA9F16",
+              "#B85901",
             ],
             "label": "Concerts & festivals",
             "onPress": [Function],
@@ -372,20 +360,8 @@ exports[`<Search/> should render Search 1`] = `
             "Illustration": [Function],
             "baseColor": "#0E8474",
             "gradients": [
-              {
-                "color": "#27DCA8",
-                "position": {
-                  "x": 0,
-                  "y": 0,
-                },
-              },
-              {
-                "color": "#0E8474",
-                "position": {
-                  "x": 0,
-                  "y": 0.5,
-                },
-              },
+              "#27DCA8",
+              "#0E8474",
             ],
             "label": "Films, séries, cinéma",
             "onPress": [Function],
@@ -411,20 +387,8 @@ exports[`<Search/> should render Search 1`] = `
             "Illustration": [Function],
             "baseColor": "#C01371",
             "gradients": [
-              {
-                "color": "#EC3478",
-                "position": {
-                  "x": 0,
-                  "y": 0,
-                },
-              },
-              {
-                "color": "#C01371",
-                "position": {
-                  "x": 0,
-                  "y": 0.5,
-                },
-              },
+              "#EC3478",
+              "#C01371",
             ],
             "label": "Livres",
             "onPress": [Function],
@@ -450,20 +414,8 @@ exports[`<Search/> should render Search 1`] = `
             "Illustration": [Function],
             "baseColor": "#0E78B7",
             "gradients": [
-              {
-                "color": "#20C5E9",
-                "position": {
-                  "x": 0,
-                  "y": 0,
-                },
-              },
-              {
-                "color": "#0E78B7",
-                "position": {
-                  "x": 0,
-                  "y": 0.5,
-                },
-              },
+              "#20C5E9",
+              "#0E78B7",
             ],
             "label": "CD, vinyles, musique en ligne",
             "onPress": [Function],
@@ -489,20 +441,8 @@ exports[`<Search/> should render Search 1`] = `
             "Illustration": [Function],
             "baseColor": "#8337E9",
             "gradients": [
-              {
-                "color": "#AD87FF",
-                "position": {
-                  "x": 0,
-                  "y": 0,
-                },
-              },
-              {
-                "color": "#8337E9",
-                "position": {
-                  "x": 0,
-                  "y": 0.5,
-                },
-              },
+              "#AD87FF",
+              "#8337E9",
             ],
             "label": "Arts & loisirs créatifs",
             "onPress": [Function],
@@ -528,20 +468,8 @@ exports[`<Search/> should render Search 1`] = `
             "Illustration": [Function],
             "baseColor": "#CA3F13",
             "gradients": [
-              {
-                "color": "#F8733D",
-                "position": {
-                  "x": 0,
-                  "y": 0,
-                },
-              },
-              {
-                "color": "#CA3F13",
-                "position": {
-                  "x": 0,
-                  "y": 0.5,
-                },
-              },
+              "#F8733D",
+              "#CA3F13",
             ],
             "label": "Spectacles",
             "onPress": [Function],
@@ -567,20 +495,8 @@ exports[`<Search/> should render Search 1`] = `
             "Illustration": [Function],
             "baseColor": "#0E8474",
             "gradients": [
-              {
-                "color": "#27DCA8",
-                "position": {
-                  "x": 0,
-                  "y": 0,
-                },
-              },
-              {
-                "color": "#0E8474",
-                "position": {
-                  "x": 0,
-                  "y": 0.5,
-                },
-              },
+              "#27DCA8",
+              "#0E8474",
             ],
             "label": "Musées & visites culturelles",
             "onPress": [Function],
@@ -606,20 +522,8 @@ exports[`<Search/> should render Search 1`] = `
             "Illustration": [Function],
             "baseColor": "#B85901",
             "gradients": [
-              {
-                "color": "#F99E15",
-                "position": {
-                  "x": 0,
-                  "y": 0,
-                },
-              },
-              {
-                "color": "#B85901",
-                "position": {
-                  "x": 0,
-                  "y": 0.5,
-                },
-              },
+              "#FA9F16",
+              "#B85901",
             ],
             "label": "Jeux & jeux vidéos",
             "onPress": [Function],
@@ -645,20 +549,8 @@ exports[`<Search/> should render Search 1`] = `
             "Illustration": [Function],
             "baseColor": "#0E78B7",
             "gradients": [
-              {
-                "color": "#20C5E9",
-                "position": {
-                  "x": 0,
-                  "y": 0,
-                },
-              },
-              {
-                "color": "#0E78B7",
-                "position": {
-                  "x": 0,
-                  "y": 0.5,
-                },
-              },
+              "#20C5E9",
+              "#0E78B7",
             ],
             "label": "Instruments de musique",
             "onPress": [Function],
@@ -684,20 +576,8 @@ exports[`<Search/> should render Search 1`] = `
             "Illustration": [Function],
             "baseColor": "#C01371",
             "gradients": [
-              {
-                "color": "#EC3478",
-                "position": {
-                  "x": 0,
-                  "y": 0,
-                },
-              },
-              {
-                "color": "#C01371",
-                "position": {
-                  "x": 0,
-                  "y": 0.5,
-                },
-              },
+              "#EC3478",
+              "#C01371",
             ],
             "label": "Médias & presse",
             "onPress": [Function],
@@ -723,20 +603,8 @@ exports[`<Search/> should render Search 1`] = `
             "Illustration": [Function],
             "baseColor": "#CA3F13",
             "gradients": [
-              {
-                "color": "#F8733D",
-                "position": {
-                  "x": 0,
-                  "y": 0,
-                },
-              },
-              {
-                "color": "#CA3F13",
-                "position": {
-                  "x": 0,
-                  "y": 0.5,
-                },
-              },
+              "#F8733D",
+              "#CA3F13",
             ],
             "label": "Bibliothèques, Médiathèques",
             "onPress": [Function],
@@ -762,20 +630,8 @@ exports[`<Search/> should render Search 1`] = `
             "Illustration": [Function],
             "baseColor": "#8337E9",
             "gradients": [
-              {
-                "color": "#AD87FF",
-                "position": {
-                  "x": 0,
-                  "y": 0,
-                },
-              },
-              {
-                "color": "#8337E9",
-                "position": {
-                  "x": 0,
-                  "y": 0.5,
-                },
-              },
+              "#AD87FF",
+              "#8337E9",
             ],
             "label": "Cartes jeunes",
             "onPress": [Function],
@@ -816,20 +672,8 @@ exports[`<Search/> should render Search 1`] = `
             },
             "baseColor": "#B85901",
             "gradients": [
-              {
-                "color": "#F99E15",
-                "position": {
-                  "x": 0,
-                  "y": 0,
-                },
-              },
-              {
-                "color": "#B85901",
-                "position": {
-                  "x": 0,
-                  "y": 0.5,
-                },
-              },
+              "#FA9F16",
+              "#B85901",
             ],
             "label": "Conférences & rencontres",
             "onPress": [Function],
@@ -855,20 +699,8 @@ exports[`<Search/> should render Search 1`] = `
             "Illustration": [Function],
             "baseColor": "#0E8474",
             "gradients": [
-              {
-                "color": "#27DCA8",
-                "position": {
-                  "x": 0,
-                  "y": 0,
-                },
-              },
-              {
-                "color": "#0E8474",
-                "position": {
-                  "x": 0,
-                  "y": 0.5,
-                },
-              },
+              "#27DCA8",
+              "#0E8474",
             ],
             "label": "Évènements en ligne",
             "onPress": [Function],
@@ -979,7 +811,7 @@ exports[`<Search/> should render Search 1`] = `
                   <BVLinearGradient
                     colors={
                       [
-                        4294549013,
+                        4294614806,
                         4290271489,
                       ]
                     }
@@ -1956,7 +1788,7 @@ exports[`<Search/> should render Search 1`] = `
                   <BVLinearGradient
                     colors={
                       [
-                        4294549013,
+                        4294614806,
                         4290271489,
                       ]
                     }
@@ -2665,7 +2497,7 @@ exports[`<Search/> should render Search 1`] = `
                   <BVLinearGradient
                     colors={
                       [
-                        4294549013,
+                        4294614806,
                         4290271489,
                       ]
                     }
