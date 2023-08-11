@@ -2051,6 +2051,11 @@ export interface ResendEmailValidationRequest {
  */
 export interface ResetPasswordRequest {
   /**
+   * @type {TrustedDevice}
+   * @memberof ResetPasswordRequest
+   */
+  deviceInfo?: TrustedDevice | null
+  /**
    * @type {string}
    * @memberof ResetPasswordRequest
    */
@@ -2060,6 +2065,22 @@ export interface ResetPasswordRequest {
    * @memberof ResetPasswordRequest
    */
   resetPasswordToken: string
+}
+/**
+ * @export
+ * @interface ResetPasswordResponse
+ */
+export interface ResetPasswordResponse {
+  /**
+   * @type {string}
+   * @memberof ResetPasswordResponse
+   */
+  accessToken: string
+  /**
+   * @type {string}
+   * @memberof ResetPasswordResponse
+   */
+  refreshToken: string
 }
 /**
  * @export
@@ -4912,7 +4933,7 @@ export const DefaultApiFp = function(api: DefaultApi, configuration?: Configurat
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    async postnativev1resetPassword(body?: ResetPasswordRequest, options?: any): Promise<EmptyResponse> {
+    async postnativev1resetPassword(body?: ResetPasswordRequest, options?: any): Promise<ResetPasswordResponse> {
       const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).postnativev1resetPassword(body, options)
       const response = await safeFetch(configuration?.basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
       return handleGeneratedApiResponse(response)
