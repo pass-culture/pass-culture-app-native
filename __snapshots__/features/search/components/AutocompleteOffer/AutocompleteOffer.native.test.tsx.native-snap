@@ -2,233 +2,260 @@
 
 exports[`AutocompleteOffer component should render AutocompleteOffer 1`] = `
 [
-  <View
-    accessibilityRole="none"
+  <Text
     style={
       [
         {
-          "display": "flex",
-          "paddingHorizontal": 24,
+          "color": "#696A6F",
+          "fontFamily": "Montserrat-SemiBold",
+          "fontSize": 12,
+          "lineHeight": 16,
+        },
+      ]
+    }
+  >
+    Suggestions
+  </Text>,
+  <View
+    accessibilityRole="list"
+    style={
+      [
+        {
+          "flexDirection": "column",
+          "marginTop": 16,
+          "paddingLeft": 0,
         },
       ]
     }
   >
     <View
-      accessible={true}
-      collapsable={false}
-      focusable={true}
-      onClick={[Function]}
-      onResponderGrant={[Function]}
-      onResponderMove={[Function]}
-      onResponderRelease={[Function]}
-      onResponderTerminate={[Function]}
-      onResponderTerminationRequest={[Function]}
-      onStartShouldSetResponder={[Function]}
+      accessibilityRole="none"
       style={
-        {
-          "alignItems": "center",
-          "flexDirection": "row",
-          "opacity": 1,
-          "paddingBottom": 16,
-        }
+        [
+          {
+            "display": "flex",
+          },
+        ]
       }
-      testID="autocompleteOfferItem_1"
     >
       <View
+        accessible={true}
+        collapsable={false}
+        focusable={true}
+        onClick={[Function]}
+        onResponderGrant={[Function]}
+        onResponderMove={[Function]}
+        onResponderRelease={[Function]}
+        onResponderTerminate={[Function]}
+        onResponderTerminationRequest={[Function]}
+        onStartShouldSetResponder={[Function]}
         style={
-          [
-            {
-              "flexShrink": 0,
-            },
-          ]
+          {
+            "alignItems": "center",
+            "flexDirection": "row",
+            "opacity": 1,
+            "paddingBottom": 16,
+          }
         }
+        testID="autocompleteOfferItem_1"
       >
         <View
-          height={16}
-          width={16}
+          style={
+            [
+              {
+                "flexShrink": 0,
+              },
+            ]
+          }
         >
-          <Text>
-            undefined-SVG-Mock
-          </Text>
+          <View
+            fill="none"
+            height={16}
+            width={16}
+          >
+            <Text>
+              undefined-SVG-Mock
+            </Text>
+          </View>
         </View>
+        <Text
+          ellipsizeMode="tail"
+          numberOfLines={1}
+          style={
+            [
+              {
+                "marginLeft": 8,
+              },
+            ]
+          }
+        >
+          <Text
+            style={
+              [
+                {
+                  "color": "#161617",
+                  "fontFamily": "Montserrat-Regular",
+                  "fontSize": 15,
+                  "lineHeight": 20,
+                },
+              ]
+            }
+            testID="highlightedText"
+          >
+            cinéma
+          </Text>
+          <Text
+            style={
+              [
+                {
+                  "color": "#161617",
+                  "fontFamily": "Montserrat-Regular",
+                  "fontSize": 15,
+                  "lineHeight": 20,
+                },
+              ]
+            }
+          >
+             dans 
+          </Text>
+          <Text
+            style={
+              [
+                {
+                  "color": "#eb0055",
+                  "fontFamily": "Montserrat-Bold",
+                  "fontSize": 15,
+                  "lineHeight": 20,
+                },
+              ]
+            }
+          >
+            Séances de cinéma
+          </Text>
+        </Text>
       </View>
-      <Text
-        ellipsizeMode="tail"
-        numberOfLines={1}
-        style={
-          [
-            {
-              "marginLeft": 8,
-            },
-          ]
-        }
-      >
-        <Text
-          style={
-            [
-              {
-                "color": "#161617",
-                "fontFamily": "Montserrat-Regular",
-                "fontSize": 15,
-                "lineHeight": 20,
-              },
-            ]
-          }
-          testID="highlightedText"
-        >
-          cinéma
-        </Text>
-        <Text
-          style={
-            [
-              {
-                "color": "#161617",
-                "fontFamily": "Montserrat-Regular",
-                "fontSize": 15,
-                "lineHeight": 20,
-              },
-            ]
-          }
-        >
-           dans 
-        </Text>
-        <Text
-          style={
-            [
-              {
-                "color": "#eb0055",
-                "fontFamily": "Montserrat-Bold",
-                "fontSize": 15,
-                "lineHeight": 20,
-              },
-            ]
-          }
-        >
-          Séances de cinéma
-        </Text>
-      </Text>
     </View>
-  </View>,
-  <View
-    accessibilityRole="none"
-    style={
-      [
-        {
-          "display": "flex",
-          "paddingHorizontal": 24,
-        },
-      ]
-    }
-  >
     <View
-      accessible={true}
-      collapsable={false}
-      focusable={true}
-      onClick={[Function]}
-      onResponderGrant={[Function]}
-      onResponderMove={[Function]}
-      onResponderRelease={[Function]}
-      onResponderTerminate={[Function]}
-      onResponderTerminationRequest={[Function]}
-      onStartShouldSetResponder={[Function]}
+      accessibilityRole="none"
       style={
-        {
-          "alignItems": "center",
-          "flexDirection": "row",
-          "opacity": 1,
-          "paddingBottom": 16,
-        }
+        [
+          {
+            "display": "flex",
+          },
+        ]
       }
-      testID="autocompleteOfferItem_2"
     >
       <View
+        accessible={true}
+        collapsable={false}
+        focusable={true}
+        onClick={[Function]}
+        onResponderGrant={[Function]}
+        onResponderMove={[Function]}
+        onResponderRelease={[Function]}
+        onResponderTerminate={[Function]}
+        onResponderTerminationRequest={[Function]}
+        onStartShouldSetResponder={[Function]}
         style={
-          [
-            {
-              "flexShrink": 0,
-            },
-          ]
+          {
+            "alignItems": "center",
+            "flexDirection": "row",
+            "opacity": 1,
+            "paddingBottom": 16,
+          }
         }
+        testID="autocompleteOfferItem_2"
       >
         <View
-          height={16}
-          width={16}
+          style={
+            [
+              {
+                "flexShrink": 0,
+              },
+            ]
+          }
         >
-          <Text>
-            undefined-SVG-Mock
-          </Text>
+          <View
+            fill="none"
+            height={16}
+            width={16}
+          >
+            <Text>
+              undefined-SVG-Mock
+            </Text>
+          </View>
         </View>
+        <Text
+          ellipsizeMode="tail"
+          numberOfLines={1}
+          style={
+            [
+              {
+                "marginLeft": 8,
+              },
+            ]
+          }
+        >
+          <Text
+            style={
+              [
+                {
+                  "color": "#161617",
+                  "fontFamily": "Montserrat-Regular",
+                  "fontSize": 15,
+                  "lineHeight": 20,
+                },
+              ]
+            }
+            testID="highlightedText"
+          >
+            cinéma
+          </Text>
+          <Text
+            style={
+              [
+                {
+                  "color": "#161617",
+                  "fontFamily": "Montserrat-Bold",
+                  "fontSize": 15,
+                  "lineHeight": 20,
+                },
+              ]
+            }
+            testID="nonHighlightedText"
+          >
+             itinérant
+          </Text>
+          <Text
+            style={
+              [
+                {
+                  "color": "#161617",
+                  "fontFamily": "Montserrat-Regular",
+                  "fontSize": 15,
+                  "lineHeight": 20,
+                },
+              ]
+            }
+          >
+             dans 
+          </Text>
+          <Text
+            style={
+              [
+                {
+                  "color": "#eb0055",
+                  "fontFamily": "Montserrat-Bold",
+                  "fontSize": 15,
+                  "lineHeight": 20,
+                },
+              ]
+            }
+          >
+            Séances de cinéma
+          </Text>
+        </Text>
       </View>
-      <Text
-        ellipsizeMode="tail"
-        numberOfLines={1}
-        style={
-          [
-            {
-              "marginLeft": 8,
-            },
-          ]
-        }
-      >
-        <Text
-          style={
-            [
-              {
-                "color": "#161617",
-                "fontFamily": "Montserrat-Regular",
-                "fontSize": 15,
-                "lineHeight": 20,
-              },
-            ]
-          }
-          testID="highlightedText"
-        >
-          cinéma
-        </Text>
-        <Text
-          style={
-            [
-              {
-                "color": "#161617",
-                "fontFamily": "Montserrat-Bold",
-                "fontSize": 15,
-                "lineHeight": 20,
-              },
-            ]
-          }
-          testID="nonHighlightedText"
-        >
-           itinérant
-        </Text>
-        <Text
-          style={
-            [
-              {
-                "color": "#161617",
-                "fontFamily": "Montserrat-Regular",
-                "fontSize": 15,
-                "lineHeight": 20,
-              },
-            ]
-          }
-        >
-           dans 
-        </Text>
-        <Text
-          style={
-            [
-              {
-                "color": "#eb0055",
-                "fontFamily": "Montserrat-Bold",
-                "fontSize": 15,
-                "lineHeight": 20,
-              },
-            ]
-          }
-        >
-          Séances de cinéma
-        </Text>
-      </Text>
     </View>
   </View>,
 ]

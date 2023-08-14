@@ -5,28 +5,40 @@ import styled from 'styled-components/native'
 import { AutocompleteOfferItem } from 'features/search/components/AutocompleteOfferItem/AutocompleteOfferItem'
 import { AlgoliaSuggestionHit } from 'libs/algolia'
 import { Li } from 'ui/components/Li'
-import { getSpacing } from 'ui/theme'
+import { VerticalUl } from 'ui/components/Ul'
+import { getSpacing, Typo } from 'ui/theme'
+import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 type AutocompleteOfferProps = UseInfiniteHitsProps
 
 export function AutocompleteOffer({ ...props }: AutocompleteOfferProps) {
   const { hits, sendEvent } = useInfiniteHits(props)
 
-  return (
+  return hits.length > 0 ? (
     <React.Fragment>
-      {hits.map((item, index) => (
-        <StyledLi key={item.objectID}>
-          <AutocompleteOfferItem
-            hit={item as unknown as AlgoliaSuggestionHit}
-            sendEvent={sendEvent}
-            shouldShowCategory={index < 3}
-          />
-        </StyledLi>
-      ))}
+      <AutocompleteOfferTitleText>Suggestions</AutocompleteOfferTitleText>
+
+      <StyledVerticalUl>
+        {hits.map((item, index) => (
+          <Li key={item.objectID}>
+            <AutocompleteOfferItem
+              hit={item as unknown as AlgoliaSuggestionHit}
+              sendEvent={sendEvent}
+              shouldShowCategory={index < 3}
+            />
+          </Li>
+        ))}
+      </StyledVerticalUl>
     </React.Fragment>
+  ) : (
+    <React.Fragment />
   )
 }
 
-const StyledLi = styled(Li)({
-  paddingHorizontal: getSpacing(6),
+const StyledVerticalUl = styled(VerticalUl)({
+  marginTop: getSpacing(4),
 })
+
+const AutocompleteOfferTitleText = styled(Typo.Caption).attrs(getHeadingAttrs(2))(({ theme }) => ({
+  color: theme.colors.greyDark,
+}))

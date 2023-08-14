@@ -23,8 +23,7 @@ import { useNetInfoContext } from 'libs/network/NetInfoWrapper'
 import { OfflinePage } from 'libs/network/OfflinePage'
 import { FeatureFlag } from 'shared/FeatureFlag/FeatureFlag'
 import { Form } from 'ui/components/Form'
-import { VerticalUl } from 'ui/components/Ul'
-import { getSpacing } from 'ui/theme'
+import { Spacer, getSpacing } from 'ui/theme'
 
 const searchInputID = uuidv4()
 const searchClient: SearchClient = {
@@ -81,7 +80,8 @@ export function Search() {
           <InsightsMiddleware />
           <SearchHeader searchInputID={searchInputID} />
           {currentView === SearchView.Suggestions ? (
-            <StyledVerticalUl>
+            <Container>
+              <Spacer.Column numberOfSpaces={4} />
               <AutocompleteOffer />
               <FeatureFlag
                 featureFlag={RemoteStoreFeatureFlags.WIP_ENABLE_VENUES_IN_SEARCH_RESULTS}>
@@ -95,7 +95,7 @@ export function Search() {
                   <AutocompleteVenue />
                 </Index>
               </FeatureFlag>
-            </StyledVerticalUl>
+            </Container>
           ) : (
             <BodySearch view={params?.view} />
           )}
@@ -105,6 +105,7 @@ export function Search() {
   )
 }
 
-const StyledVerticalUl = styled(VerticalUl)({
-  marginTop: getSpacing(4),
+const Container = styled.View({
+  paddingLeft: getSpacing(6),
+  paddingRight: getSpacing(6),
 })
