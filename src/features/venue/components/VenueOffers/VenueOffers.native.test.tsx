@@ -88,6 +88,7 @@ describe('<VenueOffers />', () => {
           },
         },
         view: SearchView.Results,
+        previousView: SearchView.Results,
       },
       screen: 'Search',
     })

@@ -3,6 +3,8 @@ import { v4 as uuidv4 } from 'uuid'
 
 import { navigate, useRoute } from '__mocks__/@react-navigation/native'
 import { SearchGroupNameEnumv2 } from 'api/gen'
+import { mockGoBack } from 'features/navigation/__mocks__/useGoBack'
+import { navigationRef } from 'features/navigation/navigationRef'
 import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
 import { initialSearchState } from 'features/search/context/reducer'
 import { LocationType } from 'features/search/enums'
@@ -13,7 +15,7 @@ import { Venue } from 'features/venue/types'
 import { GeoCoordinates, Position } from 'libs/geolocation'
 import { SuggestedPlace } from 'libs/place'
 import { mockedSuggestedVenues } from 'libs/venue/fixtures/mockedSuggestedVenues'
-import { fireEvent, render, act } from 'tests/utils'
+import { fireEvent, render, act, screen } from 'tests/utils'
 import * as useModalAPI from 'ui/components/modals/useModal'
 
 import { SearchBox } from './SearchBox'
@@ -24,8 +26,9 @@ let mockSearchState: SearchState = {
   priceRange: [0, 20],
 }
 
+const mockDispatch = jest.fn()
 jest.mock('features/search/context/SearchWrapper', () => ({
-  useSearch: () => ({ searchState: mockSearchState }),
+  useSearch: () => ({ searchState: mockSearchState, dispatch: mockDispatch }),
 }))
 
 jest.mock('libs/firebase/analytics')
@@ -71,6 +74,26 @@ jest.mock('libs/geolocation/GeolocationWrapper', () => ({
   }),
 }))
 
+jest.mock('features/navigation/navigationRef')
+
+const mockRoutes = [
+  { key: 'TabNavigator1', name: 'TabNavigator', params: { screen: 'Bookings' } },
+  {
+    key: 'TabNavigator2',
+    name: 'TabNavigator',
+    params: { screen: 'Search', params: { view: SearchView.Results } },
+  },
+]
+
+const mockRoutesWithVenue = [
+  { key: 'Venue1', name: 'Venue', params: { id: 22912 } },
+  {
+    key: 'TabNavigator2',
+    name: 'TabNavigator',
+    params: { screen: 'Search', params: { view: SearchView.Results } },
+  },
+]
+
 const Kourou: SuggestedPlace = {
   label: 'Kourou',
   info: 'Guyane',
@@ -83,6 +106,17 @@ const searchId = uuidv4()
 jest.useFakeTimers({ legacyFakeTimers: true })
 
 describe('SearchBox component', () => {
+  beforeEach(() => {
+    jest.spyOn(navigationRef, 'getState').mockReturnValue({
+      key: 'Navigator',
+      index: 1,
+      routeNames: ['TabNavigator'],
+      routes: mockRoutes,
+      type: 'tab',
+      stale: false,
+    })
+  })
+
   const searchInputID = uuidv4()
 
   it('should render SearchBox', async () => {
@@ -211,6 +245,34 @@ describe('SearchBox component', () => {
         )
       }
     )
+
+    it('should not reset location to eveywhere when current and previous views are not identical', async () => {
+      useRoute.mockReturnValueOnce({
+        params: { view: SearchView.Results, previousView: SearchView.Results },
+      })
+      render(<SearchBox searchInputID={searchInputID} />)
+      const previousButton = screen.getByTestId('Revenir en arrière')
+
+      await act(async () => {
+        fireEvent.press(previousButton)
+      })
+
+      expect(mockDispatch).not.toHaveBeenCalled()
+    })
+
+    it('should not execute go back when current and previous views are not identical', async () => {
+      useRoute.mockReturnValueOnce({
+        params: { view: SearchView.Results, previousView: SearchView.Results },
+      })
+      render(<SearchBox searchInputID={searchInputID} />)
+      const previousButton = screen.getByTestId('Revenir en arrière')
+
+      await act(async () => {
+        fireEvent.press(previousButton)
+      })
+
+      expect(mockGoBack).not.toHaveBeenCalled()
+    })
 
     it('should stay on the current view when focusing search input and being on the suggestions', async () => {
       useRoute.mockReturnValueOnce({ params: { view: SearchView.Suggestions } })
@@ -410,4 +472,46 @@ describe('SearchBox component', () => {
       expect(queryByText(locationButtonLabel)).toBeTruthy()
     }
   )
+})
+
+describe('SearchBox component with venue previous route', () => {
+  beforeEach(() => {
+    jest.spyOn(navigationRef, 'getState').mockReturnValue({
+      key: 'Navigator',
+      index: 1,
+      routeNames: ['TabNavigator'],
+      routes: mockRoutesWithVenue,
+      type: 'tab',
+      stale: false,
+    })
+  })
+  const searchInputID = uuidv4()
+
+  it('should reset location to eveywhere when current and previous views are identical and previous route is Venue', async () => {
+    useRoute.mockReturnValueOnce({
+      params: { view: SearchView.Results, previousView: SearchView.Results },
+    })
+    render(<SearchBox searchInputID={searchInputID} />)
+    const previousButton = screen.getByTestId('Revenir en arrière')
+
+    await act(async () => {
+      fireEvent.press(previousButton)
+    })
+
+    expect(mockDispatch).toHaveBeenNthCalledWith(1, { type: 'SET_LOCATION_EVERYWHERE' })
+  })
+
+  it('should execute go back when current and previous views are identical and previous route is Venue', async () => {
+    useRoute.mockReturnValueOnce({
+      params: { view: SearchView.Results, previousView: SearchView.Results },
+    })
+    render(<SearchBox searchInputID={searchInputID} />)
+    const previousButton = screen.getByTestId('Revenir en arrière')
+
+    await act(async () => {
+      fireEvent.press(previousButton)
+    })
+
+    expect(mockGoBack).toHaveBeenCalledTimes(1)
+  })
 })

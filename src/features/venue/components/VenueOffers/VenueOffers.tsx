@@ -55,6 +55,7 @@ export const VenueOffers: React.FC<Props> = ({ venueId, layout = 'two-items' }) 
             },
           }
         : {}),
+      previousView: SearchView.Results,
       view: SearchView.Results,
     })
   }, [params, venue])
