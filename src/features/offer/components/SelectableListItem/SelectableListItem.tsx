@@ -67,6 +67,7 @@ const Wrapper = styled(TouchableOpacity)<{
   isSelected?: boolean
 }>(({ theme, isFocus, isSelected, disabled }) => {
   return {
+    height: 92,
     backgroundColor: disabled ? theme.colors.greyLight : theme.colors.white,
     borderRadius: getSpacing(2),
     borderStyle: 'solid',
