@@ -375,7 +375,9 @@
     "validator": "^13.7.0",
     "@react-navigation/core": "6.2.2",
     "react-side-effect": "2.1.2",
-    "react-is": "^16.13.1"
+    "react-is": "^16.13.1",
+    "@sentry/core": "7.62.0",
+    "@sentry/utils": "7.62.0"
   },
   "exports": {
     ".": "./index.js",
