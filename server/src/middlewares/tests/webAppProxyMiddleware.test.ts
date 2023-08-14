@@ -117,6 +117,36 @@ describe('metasResponseInterceptor', () => {
 
         expect(response).toMatch(hasCanonicalWith(`${env.APP_PUBLIC_URL}/`))
       })
+
+      it.each(['/recherche?query=%22test%22&view=%22Results%22', '/recherche?date=null'])(
+        'should add noindex tag to search page with paramters %s',
+        async (path) => {
+          const url = `${env.APP_PUBLIC_URL}${path}`
+
+          const response = await htmlResponseFor(url)
+
+          expect(response).toContain('<meta name="robots" content="noindex" />')
+        }
+      )
+
+      it('should index search landing page', async () => {
+        const url = `${env.APP_PUBLIC_URL}/recherche`
+
+        const response = await htmlResponseFor(url)
+
+        expect(response).not.toContain('<meta name="robots" content="noindex" />')
+      })
+
+      it.each(['/recherche/filtres', '/recherche/filtres?query=%22test%22&view=%22Results%22'])(
+        'should index search filter page %s',
+        async (path) => {
+          const url = `${env.APP_PUBLIC_URL}${path}`
+
+          const response = await htmlResponseFor(url)
+
+          expect(response).not.toContain('<meta name="robots" content="noindex" />')
+        }
+      )
     })
   })
 

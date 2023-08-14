@@ -21,14 +21,14 @@ const options = {
   onProxyRes: responseInterceptor(metasResponseInterceptor),
 }
 
-const addCanonicalLinkToHTML = (html: string, href: string): string => {
-  const url = new URL(href.startsWith('/') ? env.APP_PUBLIC_URL + href : href)
-
-  return html.replace(
+const addCanonicalLinkToHTML = (html: string, url: URL): string =>
+  html.replace(
     '<head>',
     `<head><link rel="canonical" href="${env.APP_PUBLIC_URL}${url.pathname}" />`
   )
-}
+
+const addNoIndexToHTML = (html: string): string =>
+  html.replace('<head>', `<head><meta name="robots" content="noindex" />`)
 
 export async function metasResponseInterceptor(
   responseBuffer: Buffer,
@@ -51,7 +51,15 @@ export async function metasResponseInterceptor(
   // error with istanbul thinking there is a else path
   if (req.url) {
     match = ENTITY_PATH_REGEXP.exec(req.url)
-    html = addCanonicalLinkToHTML(html, req.url)
+
+    const url = new URL(req.url.startsWith('/') ? env.APP_PUBLIC_URL + req.url : req.url)
+    html = addCanonicalLinkToHTML(html, url)
+
+    const isSearchPageWithParams =
+      url.pathname === '/recherche' && [...url.searchParams.keys()].length
+    if (isSearchPageWithParams) {
+      html = addNoIndexToHTML(html)
+    }
   }
 
   const [endpoint, entityKey, id] = match || []
