@@ -5,7 +5,7 @@ import { ButtonWithLinearGradient } from 'ui/components/buttons/buttonWithLinear
 import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouchableLink'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { ExternalNavigationProps, InternalNavigationProps } from 'ui/components/touchableLink/types'
-import { ExternalSite as ExternalSiteIcon } from 'ui/svg/icons/ExternalSite'
+import { ExternalSiteFilled as ExternalSiteFilledIcon } from 'ui/svg/icons/ExternalSiteFilled'
 
 type CTAButtonProps = {
   wording: string
@@ -34,7 +34,7 @@ export function CTAButton({
   }
 
   const buttonIcon = useMemo(
-    () => (isFreeDigitalOffer && isLoggedIn ? ExternalSiteIcon : undefined),
+    () => (isFreeDigitalOffer && isLoggedIn ? ExternalSiteFilledIcon : undefined),
     [isFreeDigitalOffer, isLoggedIn]
   )
 
@@ -45,7 +45,7 @@ export function CTAButton({
     return (
       <ExternalTouchableLink
         externalNav={externalNav}
-        icon={ExternalSiteIcon}
+        icon={ExternalSiteFilledIcon}
         {...commonLinkProps}
       />
     )

@@ -11,7 +11,7 @@ import { useCategoryId, useSubcategory } from 'libs/subcategories'
 import { getDigitalOfferBookingWording } from 'shared/getDigitalOfferBookingWording/getDigitalOfferBookingWording'
 import { ButtonWithLinearGradient } from 'ui/components/buttons/buttonWithLinearGradient/ButtonWithLinearGradient'
 import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouchableLink'
-import { ExternalSite } from 'ui/svg/icons/ExternalSite'
+import { ExternalSiteFilled as ExternalSiteFilledIcon } from 'ui/svg/icons/ExternalSiteFilled'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
@@ -52,7 +52,7 @@ export const BookingDetailsTicketContent: FunctionComponent<BookingDetailsTicket
     <ExternalTouchableLink
       as={ButtonWithLinearGradient}
       wording={buttonWording}
-      icon={ExternalSite}
+      icon={ExternalSiteFilledIcon}
       externalNav={{ url: completedUrl, params: { analyticsData: { offerId } } }}
     />
   ) : null
