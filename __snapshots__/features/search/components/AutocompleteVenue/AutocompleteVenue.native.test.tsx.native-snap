@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`AutocompleteVenue component should render AutocompleteVenue 1`] = `
+exports[`AutocompleteVenue component With venue hits should render AutocompleteVenue 1`] = `
 [
   <Text
     style={

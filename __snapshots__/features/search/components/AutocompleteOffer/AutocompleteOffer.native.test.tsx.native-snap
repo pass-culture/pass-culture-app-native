@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`AutocompleteOffer component should render AutocompleteOffer 1`] = `
+exports[`AutocompleteOffer component With suggestion hits should render AutocompleteOffer 1`] = `
 [
   <Text
     style={
