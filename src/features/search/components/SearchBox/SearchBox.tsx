@@ -14,14 +14,17 @@ import styled from 'styled-components/native'
 import { v4 as uuidv4 } from 'uuid'
 
 import { useSettingsContext } from 'features/auth/context/SettingsContext'
+import { navigationRef } from 'features/navigation/navigationRef'
 import { UseNavigationType, UseRouteType } from 'features/navigation/RootNavigator/types'
-import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
+import { getTabNavConfig, homeNavConfig } from 'features/navigation/TabBar/helpers'
+import { useGoBack } from 'features/navigation/useGoBack'
 import { FilterButton } from 'features/search/components/Buttons/FilterButton/FilterButton'
 import { HiddenNavigateToSuggestionsButton } from 'features/search/components/Buttons/HiddenNavigateToSuggestionsButton'
 import { SearchMainInput } from 'features/search/components/SearchMainInput/SearchMainInput'
 import { initialSearchState } from 'features/search/context/reducer'
 import { useSearch } from 'features/search/context/SearchWrapper'
 import { FilterBehaviour, LocationType } from 'features/search/enums'
+import { getIsSearchPreviousRoute } from 'features/search/helpers/getIsSearchPreviousRoute/getIsSearchPreviousRoute'
 import { useFilterCount } from 'features/search/helpers/useFilterCount/useFilterCount'
 import { useHasPosition } from 'features/search/helpers/useHasPosition/useHasPosition'
 import { useLocationChoice } from 'features/search/helpers/useLocationChoice/useLocationChoice'
@@ -49,8 +52,9 @@ export const SearchBox: React.FunctionComponent<Props> = ({
   ...props
 }) => {
   const { params } = useRoute<UseRouteType<'Search'>>()
-  const { searchState } = useSearch()
+  const { searchState, dispatch } = useSearch()
   const { navigate } = useNavigation<UseNavigationType>()
+  const { goBack } = useGoBack(...homeNavConfig)
   const [query, setQuery] = useState<string>(params?.query ?? '')
   const { locationFilter, section, locationType } = useLocationType(searchState)
   const { label: locationLabel } = useLocationChoice(section)
@@ -135,30 +139,43 @@ export const SearchBox: React.FunctionComponent<Props> = ({
   const onPressArrowBack = useCallback(() => {
     // To force remove focus on search input
     Keyboard.dismiss()
-    // Only close autocomplete list if open
-    const previousView = params?.previousView ? params?.previousView : SearchView.Landing
-    if (
-      params?.view === SearchView.Suggestions &&
-      previousView !== SearchView.Landing &&
-      appEnableAutocomplete
-    ) {
-      return pushWithSearch({
-        ...params,
-        view: SearchView.Results,
-      })
-    }
 
-    pushWithSearch(
-      {
-        locationFilter,
-      },
-      {
-        reset: true,
-      }
+    // TODO(clesausse): remove this code when new venue page will be create
+    // when pressing Voir toutes les offres on venue page
+    const isSearchPreviousRoute = getIsSearchPreviousRoute(
+      navigationRef.getState().routes,
+      params?.previousView
     )
 
+    if (isSearchPreviousRoute) {
+      // Only close autocomplete list if open
+      const previousView = params?.previousView ? params?.previousView : SearchView.Landing
+      if (
+        params?.view === SearchView.Suggestions &&
+        previousView !== SearchView.Landing &&
+        appEnableAutocomplete
+      ) {
+        return pushWithSearch({
+          ...params,
+          view: SearchView.Results,
+        })
+      }
+
+      pushWithSearch(
+        {
+          locationFilter,
+        },
+        {
+          reset: true,
+        }
+      )
+    } else {
+      dispatch({ type: 'SET_LOCATION_EVERYWHERE' })
+      goBack()
+    }
+
     setQuery('')
-  }, [appEnableAutocomplete, locationFilter, params, pushWithSearch])
+  }, [appEnableAutocomplete, dispatch, goBack, locationFilter, params, pushWithSearch])
 
   const onSubmitQuery = useCallback(
     (event: NativeSyntheticEvent<TextInputSubmitEditingEventData>) => {
