@@ -9,6 +9,9 @@ import { InternalNavigationProps } from 'ui/components/touchableLink/types'
 import { getSpacing, Typo } from 'ui/theme'
 import { gradientColorsMapping } from 'ui/theme/gradientColorsMapping'
 
+import { Shape } from './Shape'
+
+const BLOCK_HEIGHT = getSpacing(18)
 
 interface CategoryBlockProps {
   title: string
@@ -26,7 +29,8 @@ export const CategoryBlock: FunctionComponent<CategoryBlockProps> = ({
 }) => (
   <StyledInternalTouchableLink onBeforeNavigate={onBeforePress} navigateTo={navigateTo}>
     <ColoredContainer colors={gradientColorsMapping[color]}>
-        <StyledTitle numberOfLines={2}>{title}</StyledTitle>
+      <StyledShape color={color} height={BLOCK_HEIGHT} />
+      <StyledTitle numberOfLines={2}>{title}</StyledTitle>
     </ColoredContainer>
   </StyledInternalTouchableLink>
 )
@@ -39,6 +43,8 @@ const ColoredContainer = styled(LinearGradient).attrs({
   borderRadius: theme.borderRadius.radius,
 }))
 
+const StyledShape = styled(Shape)({ position: 'absolute', right: 0 })
+
 const StyledTitle = styled(Typo.ButtonText)({
   color: theme.colors.white,
   paddingVertical: getSpacing(4),
@@ -48,5 +54,5 @@ const StyledTitle = styled(Typo.ButtonText)({
 const StyledInternalTouchableLink = styled(InternalTouchableLink).attrs(({ theme }) => ({
   hoverUnderlineColor: theme.colors.white,
 }))({
-  height: getSpacing(18),
+  height: BLOCK_HEIGHT,
 })
