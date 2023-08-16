@@ -80,7 +80,7 @@ export function Search() {
           <InsightsMiddleware />
           <SearchHeader searchInputID={searchInputID} />
           {currentView === SearchView.Suggestions ? (
-            <Container>
+            <StyledScrollView keyboardShouldPersistTaps="handled">
               <Spacer.Column numberOfSpaces={4} />
               <AutocompleteOffer />
               <FeatureFlag
@@ -95,7 +95,7 @@ export function Search() {
                   <AutocompleteVenue />
                 </Index>
               </FeatureFlag>
-            </Container>
+            </StyledScrollView>
           ) : (
             <BodySearch view={params?.view} />
           )}
@@ -105,7 +105,7 @@ export function Search() {
   )
 }
 
-const Container = styled.View({
+const StyledScrollView = styled.ScrollView({
   paddingLeft: getSpacing(6),
   paddingRight: getSpacing(6),
 })
