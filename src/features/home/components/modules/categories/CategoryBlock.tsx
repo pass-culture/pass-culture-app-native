@@ -35,14 +35,14 @@ const ColoredContainer = styled(LinearGradient).attrs({
   start: { x: 0, y: 0 },
   end: { x: 0, y: 1 },
 })(({ theme }) => ({
-  paddingVertical: getSpacing(4),
-  paddingHorizontal: getSpacing(3),
   flex: 1,
   borderRadius: theme.borderRadius.radius,
 }))
 
 const StyledTitle = styled(Typo.ButtonText)({
   color: theme.colors.white,
+  paddingVertical: getSpacing(4),
+  paddingHorizontal: getSpacing(3),
 })
 
 const StyledInternalTouchableLink = styled(InternalTouchableLink).attrs(({ theme }) => ({
