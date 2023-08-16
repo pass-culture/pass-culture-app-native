@@ -1,19 +1,20 @@
 import React from 'react'
+import { Share } from 'react-native'
 
 import { navigate } from '__mocks__/@react-navigation/native'
 import { BookingCancellationReasons } from 'api/gen'
 import { bookingsSnap } from 'features/bookings/fixtures/bookingsSnap'
 import { Booking } from 'features/bookings/types'
 import { analytics } from 'libs/analytics'
+import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { fireEvent, render, screen } from 'tests/utils'
 
 import { EndedBookingItem } from './EndedBookingItem'
 
-jest.mock('react-query')
-
 describe('EndedBookingItem', () => {
   it('should display offer title', () => {
     renderEndedBookingItem(bookingsSnap.ended_bookings[0])
+
     expect(screen.queryByText('Avez-vous déjà vu ?')).toBeTruthy()
   })
 
@@ -22,6 +23,7 @@ describe('EndedBookingItem', () => {
       ...bookingsSnap.ended_bookings[0],
       dateUsed: '2021-03-16T23:01:37.925926',
     })
+
     expect(screen.queryByText('Réservation utilisée')).toBeTruthy()
     expect(screen.queryByText('le 16/03/2021')).toBeTruthy()
   })
@@ -31,6 +33,7 @@ describe('EndedBookingItem', () => {
       ...bookingsSnap.ended_bookings[0],
       cancellationReason: BookingCancellationReasons.OFFERER,
     })
+
     expect(screen.queryByText('Annulée')).toBeTruthy()
     expect(screen.queryByText('le 15/03/2021')).toBeTruthy()
   })
@@ -40,6 +43,7 @@ describe('EndedBookingItem', () => {
       ...bookingsSnap.ended_bookings[0],
       cancellationReason: BookingCancellationReasons.BENEFICIARY,
     })
+
     expect(screen.queryByText('Réservation annulée')).toBeTruthy()
     expect(screen.queryByText('le 15/03/2021')).toBeTruthy()
   })
@@ -49,6 +53,7 @@ describe('EndedBookingItem', () => {
       ...bookingsSnap.ended_bookings[0],
       cancellationReason: BookingCancellationReasons.EXPIRED,
     })
+
     expect(screen.queryByText('Réservation annulée')).toBeTruthy()
     expect(screen.queryByText('le 15/03/2021')).toBeTruthy()
   })
@@ -59,6 +64,7 @@ describe('EndedBookingItem', () => {
       cancellationDate: null,
       cancellationReason: null,
     })
+
     expect(screen.queryByText('Réservation archivée')).toBeTruthy()
   })
 
@@ -98,8 +104,44 @@ describe('EndedBookingItem', () => {
       id: 321,
     })
   })
+
+  it('should call share when press share icon', async () => {
+    const share = jest.spyOn(Share, 'share')
+    renderEndedBookingItem({
+      ...bookingsSnap.ended_bookings[0],
+      cancellationDate: null,
+      cancellationReason: null,
+    })
+
+    const shareButton = await screen.findByLabelText(
+      `Partager l’offre ${bookingsSnap.ended_bookings[0].stock.offer.name}`
+    )
+    fireEvent.press(shareButton)
+
+    expect(share).toHaveBeenCalledTimes(1)
+  })
+
+  it('should log analytics when press share icon', async () => {
+    renderEndedBookingItem({
+      ...bookingsSnap.ended_bookings[0],
+      cancellationDate: null,
+      cancellationReason: null,
+    })
+
+    const shareButton = await screen.findByLabelText(
+      `Partager l’offre ${bookingsSnap.ended_bookings[0].stock.offer.name}`
+    )
+    fireEvent.press(shareButton)
+
+    expect(analytics.logShare).toHaveBeenNthCalledWith(1, {
+      type: 'Offer',
+      from: 'endedbookings',
+      id: bookingsSnap.ended_bookings[0].stock.offer.id,
+    })
+  })
 })
 
 function renderEndedBookingItem(booking: Booking) {
-  return render(<EndedBookingItem booking={booking} />)
+  // eslint-disable-next-line local-rules/no-react-query-provider-hoc
+  return render(reactQueryProviderHOC(<EndedBookingItem booking={booking} />))
 }
