@@ -1,3 +1,4 @@
+import { Color } from 'features/home/types'
 import { ContentTypes, ThematicCategoryInfo } from 'libs/contentful/types'
 
 export const thematicCategoryInfoFixture: ThematicCategoryInfo = {
@@ -34,6 +35,7 @@ export const thematicCategoryInfoFixture: ThematicCategoryInfo = {
     title: 'catégorie cinéma',
     displayedTitle: 'Cinéma',
     displayedSubtitle: 'Sous-titre cinéma',
+    color: Color.Lilac,
     image: {
       sys: {
         space: {
