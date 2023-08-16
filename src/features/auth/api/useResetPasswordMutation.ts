@@ -1,10 +1,10 @@
 import { useMutation } from 'react-query'
 
 import { api } from 'api/api'
-import { ResetPasswordRequest } from 'api/gen'
+import { ResetPasswordRequest, ResetPasswordResponse } from 'api/gen'
 
 interface MutationOptions {
-  onSuccess: () => void
+  onSuccess: (response: ResetPasswordResponse) => void
   onError: (error: unknown) => void
 }
 

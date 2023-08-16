@@ -3,12 +3,17 @@ import { useFocusEffect, useNavigation, useRoute } from '@react-navigation/nativ
 import React, { useCallback, useEffect, useState } from 'react'
 import { useForm } from 'react-hook-form'
 
+import { AccountState, ResetPasswordResponse } from 'api/gen'
 import { useResetPasswordMutation } from 'features/auth/api/useResetPasswordMutation'
+import { useLoginRoutine } from 'features/auth/helpers/useLoginRoutine'
 import { reinitializePasswordSchema } from 'features/auth/pages/forgottenPassword/ReinitializePassword/schema/reinitializePasswordSchema'
 import { navigateToHome } from 'features/navigation/helpers'
 import { UseNavigationType, UseRouteType } from 'features/navigation/RootNavigator/types'
+import { useDeviceInfo } from 'features/trustedDevice/helpers/useDeviceInfo'
 import { analytics } from 'libs/analytics'
 import { isTimestampExpired } from 'libs/dates'
+import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
+import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { PasswordInputController } from 'shared/forms/controllers/PasswordInputController'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { Form } from 'ui/components/Form'
@@ -33,6 +38,9 @@ export const ReinitializePassword = () => {
   const route = useRoute<UseRouteType<'ReinitializePassword'>>()
   const navigation = useNavigation<UseNavigationType>()
   const { showSuccessSnackBar, showErrorSnackBar } = useSnackBarContext()
+  const loginRoutine = useLoginRoutine()
+  const deviceInfo = useDeviceInfo()
+  const enableTrustedDevice = useFeatureFlag(RemoteStoreFeatureFlags.WIP_ENABLE_TRUSTED_DEVICE)
 
   const [isTimestampExpirationVerified, setIsTimestampExpirationVerified] = useState(false)
   const {
@@ -67,13 +75,21 @@ export const ReinitializePassword = () => {
   }, [password, trigger])
 
   const { mutate: resetPassword, isLoading } = useResetPasswordMutation({
-    onSuccess: () => {
+    onSuccess: (response: ResetPasswordResponse) => {
       showSuccessSnackBar({
         message: 'Ton mot de passe est modifié\u00a0!',
         timeout: SNACK_BAR_TIME_OUT,
       })
       analytics.logHasChangedPassword('resetPassword')
-      navigation.navigate('Login')
+      loginRoutine(
+        {
+          accessToken: response.accessToken,
+          refreshToken: response.refreshToken,
+          accountState: AccountState.ACTIVE,
+        },
+        'fromReinitializePassword'
+      )
+      navigateToHome()
     },
     onError: () => {
       showErrorSnackBar({
@@ -89,10 +105,11 @@ export const ReinitializePassword = () => {
         resetPassword({
           newPassword,
           resetPasswordToken: route.params.token,
+          deviceInfo: enableTrustedDevice ? deviceInfo : undefined,
         })
       }
     },
-    [isValid, resetPassword, route.params.token]
+    [isValid, resetPassword, route.params.token, enableTrustedDevice, deviceInfo]
   )
 
   if (!isTimestampExpirationVerified) {
@@ -127,7 +144,7 @@ export const ReinitializePassword = () => {
         />
         <Spacer.Column numberOfSpaces={10} />
         <ButtonPrimary
-          wording="Continuer"
+          wording="Se connecter"
           onPress={handleSubmit(submitPassword)}
           disabled={!isValid || isLoading}
           isLoading={isLoading}
