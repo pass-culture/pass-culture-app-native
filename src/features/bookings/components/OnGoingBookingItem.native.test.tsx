@@ -1,13 +1,15 @@
 import { addDays, formatISO } from 'date-fns'
 import mockdate from 'mockdate'
 import React from 'react'
+import { Share } from 'react-native'
 
 import { navigate } from '__mocks__/@react-navigation/native'
 import { SubcategoryIdEnum, WithdrawalTypeEnum } from 'api/gen'
 import { FREE_OFFER_CATEGORIES_TO_ARCHIVE } from 'features/bookings/constants'
 import { bookingsSnap } from 'features/bookings/fixtures/bookingsSnap'
 import { Booking } from 'features/bookings/types'
-import { fireEvent, render } from 'tests/utils'
+import { analytics } from 'libs/analytics'
+import { fireEvent, render, screen } from 'tests/utils'
 
 import { OnGoingBookingItem } from './OnGoingBookingItem'
 
@@ -16,9 +18,9 @@ describe('OnGoingBookingItem', () => {
   const initialBooking: Booking = bookingsSnap.ongoing_bookings[0]
 
   it('should navigate to the booking details page', () => {
-    const { getByTestId } = renderOnGoingBookingItem(initialBooking)
+    renderOnGoingBookingItem(initialBooking)
 
-    const item = getByTestId(/Réservation de l’offre/)
+    const item = screen.getByTestId(/Réservation de l’offre/)
     fireEvent.press(item)
 
     expect(navigate).toHaveBeenCalledWith('BookingDetails', { id: 123 })
@@ -39,14 +41,15 @@ describe('OnGoingBookingItem', () => {
     }
 
     it('should display withdrawal reminder', () => {
-      const { getByTestId } = renderOnGoingBookingItem(booking)
+      renderOnGoingBookingItem(booking)
 
-      expect(getByTestId('on-site-withdrawal-container')).toBeTruthy()
+      expect(screen.getByTestId('on-site-withdrawal-container')).toBeTruthy()
     })
 
     it('should not display event reminder', () => {
-      const { queryByTestId } = renderOnGoingBookingItem(booking)
-      expect(queryByTestId('withdraw-container')).toBeNull()
+      renderOnGoingBookingItem(booking)
+
+      expect(screen.queryByTestId('withdraw-container')).toBeNull()
     })
   })
 
@@ -65,13 +68,15 @@ describe('OnGoingBookingItem', () => {
     }
 
     it('should not display withdrawal reminder', () => {
-      const { queryByTestId } = renderOnGoingBookingItem(booking)
-      expect(queryByTestId('on-site-withdrawal-container')).toBeNull()
+      renderOnGoingBookingItem(booking)
+
+      expect(screen.queryByTestId('on-site-withdrawal-container')).toBeNull()
     })
 
     it('should display event reminder', () => {
-      const { getByTestId } = renderOnGoingBookingItem(booking)
-      expect(getByTestId('withdraw-container')).toBeTruthy()
+      renderOnGoingBookingItem(booking)
+
+      expect(screen.getByTestId('withdraw-container')).toBeTruthy()
     })
   })
 
@@ -79,6 +84,7 @@ describe('OnGoingBookingItem', () => {
     afterAll(() => {
       mockdate.set(new Date())
     })
+
     it('should display expiration message : "Ta réservation s\'archivera dans XX jours"', () => {
       mockdate.set(new Date('2021-02-20T00:00:00Z'))
       const booking = {
@@ -92,9 +98,9 @@ describe('OnGoingBookingItem', () => {
           },
         },
       }
-      const { getByText } = renderOnGoingBookingItem(booking, bookings)
+      renderOnGoingBookingItem(booking, bookings)
 
-      expect(getByText('Ta réservation s’archivera dans 25 jours')).toBeTruthy()
+      expect(screen.getByText('Ta réservation s’archivera dans 25 jours')).toBeTruthy()
     })
 
     it.each(FREE_OFFER_CATEGORIES_TO_ARCHIVE.map((category) => [category, 0]))(
@@ -112,9 +118,9 @@ describe('OnGoingBookingItem', () => {
             },
           },
         }
-        const { getByText } = renderOnGoingBookingItem(booking, bookings)
+        renderOnGoingBookingItem(booking, bookings)
 
-        expect(getByText('Ta réservation s’archivera dans 25 jours')).toBeTruthy()
+        expect(screen.getByText('Ta réservation s’archivera dans 25 jours')).toBeTruthy()
       }
     )
 
@@ -133,9 +139,9 @@ describe('OnGoingBookingItem', () => {
             },
           },
         }
-        const { queryByText } = renderOnGoingBookingItem(booking)
+        renderOnGoingBookingItem(booking)
 
-        expect(queryByText('Ta réservation s’archivera dans 25 jours')).toBeFalsy()
+        expect(screen.queryByText('Ta réservation s’archivera dans 25 jours')).toBeFalsy()
       }
     )
 
@@ -152,9 +158,36 @@ describe('OnGoingBookingItem', () => {
           },
         },
       }
-      const { queryByTestId } = renderOnGoingBookingItem(booking, bookings)
+      renderOnGoingBookingItem(booking, bookings)
 
-      expect(queryByTestId('expiration-booking-container')).toBeNull()
+      expect(screen.queryByTestId('expiration-booking-container')).toBeNull()
+    })
+  })
+
+  it('should call share when press share icon', async () => {
+    const share = jest.spyOn(Share, 'share')
+    renderOnGoingBookingItem(initialBooking, bookings)
+
+    const shareButton = await screen.findByLabelText(
+      `Partager l’offre ${initialBooking.stock.offer.name}`
+    )
+    fireEvent.press(shareButton)
+
+    expect(share).toHaveBeenCalledTimes(1)
+  })
+
+  it('should log analytics when press share icon', async () => {
+    renderOnGoingBookingItem(initialBooking, bookings)
+
+    const shareButton = await screen.findByLabelText(
+      `Partager l’offre ${initialBooking.stock.offer.name}`
+    )
+    fireEvent.press(shareButton)
+
+    expect(analytics.logShare).toHaveBeenNthCalledWith(1, {
+      type: 'Offer',
+      from: 'bookings',
+      id: initialBooking.stock.offer.id,
     })
   })
 })
