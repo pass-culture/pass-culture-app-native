@@ -11,7 +11,6 @@ import { EighteenBirthdayCard } from './EighteenBirthdayCard'
 
 const mockShowInfoSnackBar = jest.fn()
 
-jest.mock('react-query')
 jest.mock('ui/components/snackBar/SnackBarContext', () => ({
   useSnackBarContext: () => ({
     showInfoSnackBar: jest.fn((props: SnackBarHelperSettings) => mockShowInfoSnackBar(props)),

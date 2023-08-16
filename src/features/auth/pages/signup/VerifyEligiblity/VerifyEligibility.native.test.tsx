@@ -9,7 +9,6 @@ import { VerifyEligibility } from './VerifyEligibility'
 
 jest.mock('features/navigation/helpers')
 jest.mock('features/navigation/navigationRef')
-jest.mock('react-query')
 
 describe('<VerifyEligibility />', () => {
   it('should show the correct deposit amount', () => {
