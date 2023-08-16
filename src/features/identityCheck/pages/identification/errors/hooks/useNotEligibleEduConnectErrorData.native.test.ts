@@ -7,12 +7,9 @@ import { renderHook } from 'tests/utils'
 import { UserErrorWhite } from 'ui/svg/BicolorUserError'
 import { Email } from 'ui/svg/icons/Email'
 
-jest.mock('features/auth/helpers/useBeneficiaryValidationNavigation')
 jest.mock('features/auth/helpers/contactSupport')
 
 describe('useNotEligibleEduConnectErrorData', () => {
-  const mockSetError = jest.fn()
-
   const expectedDuplicatedUserData = {
     Illustration: UserErrorWhite,
     title: 'As-tu déja un compte\u00a0?',
@@ -45,8 +42,7 @@ describe('useNotEligibleEduConnectErrorData', () => {
     primaryButton: {
       text: 'Vérifier mon identité',
       navigateTo: {
-        params: undefined,
-        screen: '',
+        screen: 'SelectIDOrigin',
       },
     },
     isGoHomeTertiaryButtonVisible: true,
@@ -76,7 +72,7 @@ describe('useNotEligibleEduConnectErrorData', () => {
     ({ eduConnectError, expectedData }) => {
       const {
         result: { current: data },
-      } = renderHook(() => useNotEligibleEduConnectErrorData(eduConnectError, mockSetError))
+      } = renderHook(() => useNotEligibleEduConnectErrorData(eduConnectError))
 
       expect(data).toEqual(expectedData)
     }

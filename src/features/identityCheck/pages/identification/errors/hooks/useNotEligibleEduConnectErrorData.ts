@@ -3,7 +3,6 @@ import { FunctionComponent } from 'react'
 import { TextStyle } from 'react-native'
 
 import { contactSupport } from 'features/auth/helpers/contactSupport'
-import { useBeneficiaryValidationNavigation } from 'features/auth/helpers/useBeneficiaryValidationNavigation'
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { ExternalNavigationProps, InternalNavigationProps } from 'ui/components/touchableLink/types'
 import { UserErrorWhite } from 'ui/svg/BicolorUserError'
@@ -50,9 +49,7 @@ const UserAgeNotValidErrorData: NotEligibleEduConnectErrorData = {
   descriptionAlignment: 'center',
 }
 
-const getInvalidInformationErrorData = (
-  navigateTo?: InternalNavigationProps['navigateTo']
-): NotEligibleEduConnectErrorData => ({
+const InvalidInformationErrorData: NotEligibleEduConnectErrorData = {
   Illustration: UserErrorWhite,
   title: 'Oh non\u00a0!',
   description:
@@ -62,10 +59,10 @@ const getInvalidInformationErrorData = (
   descriptionAlignment: 'center',
   primaryButton: {
     text: 'Vérifier mon identité',
-    navigateTo,
+    navigateTo: { screen: 'SelectIDOrigin' },
   },
   isGoHomeTertiaryButtonVisible: true,
-})
+}
 
 const getUserTypeNotStudentErrorData = (
   onPrimaryButtonPress: () => void,
@@ -108,15 +105,11 @@ const DuplicateUserErrorData: NotEligibleEduConnectErrorData = {
   isGoHomeTertiaryButtonVisible: true,
 }
 
-export function useNotEligibleEduConnectErrorData(
-  message: EduConnectErrorMessageEnum | string,
-  setError: (error: Error | undefined) => void
-) {
-  const { nextBeneficiaryValidationStepNavConfig } = useBeneficiaryValidationNavigation(setError)
+export function useNotEligibleEduConnectErrorData(message: EduConnectErrorMessageEnum | string) {
   const { goBack } = useNavigation<UseNavigationType>()
   switch (message) {
     case EduConnectErrorMessageEnum.UserAgeNotValid18YearsOld:
-      return getInvalidInformationErrorData(nextBeneficiaryValidationStepNavConfig)
+      return InvalidInformationErrorData
 
     case EduConnectErrorMessageEnum.UserAgeNotValid:
       return UserAgeNotValidErrorData

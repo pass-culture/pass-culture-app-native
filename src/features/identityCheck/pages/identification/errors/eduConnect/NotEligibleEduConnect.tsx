@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useEffect, useRef } from 'react'
 import { TextProps, TextStyle } from 'react-native'
 import styled from 'styled-components/native'
 
@@ -20,7 +20,6 @@ export const NotEligibleEduConnect = ({
   resetErrorBoundary,
 }: ScreenErrorProps) => {
   const timer = useRef<number>()
-  const [error, setError] = useState<Error | undefined>()
   const {
     title,
     description,
@@ -28,7 +27,7 @@ export const NotEligibleEduConnect = ({
     Illustration,
     primaryButton: primaryButtonProps,
     isGoHomeTertiaryButtonVisible = false,
-  } = useNotEligibleEduConnectErrorData(message, setError)
+  } = useNotEligibleEduConnectErrorData(message)
 
   useEffect(
     () => () => {
@@ -44,10 +43,6 @@ export const NotEligibleEduConnect = ({
     // if we reset too fast, it will rerun the failed query, this as no effect on the UI but that's not desired.
     const beforeResetDelayInMs = 300
     timer.current = globalThis.setTimeout(resetErrorBoundary, beforeResetDelayInMs)
-  }
-
-  if (error) {
-    throw error
   }
 
   const helmetTitle = `Page erreur\u00a0: ${title} | pass Culture`
