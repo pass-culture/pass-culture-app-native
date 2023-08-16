@@ -7,6 +7,8 @@ export const env: Environment = {
   ALGOLIA_VENUE_OFFERS_INDEX_NAME: 'algoliaVenueOffersIndexName',
   ALGOLIA_VENUES_INDEX_NAME: 'algoliaVenuesIndexName',
   ALGOLIA_SUGGESTIONS_INDEX_NAME: 'algoliaSuggestionsIndexName',
+  ALGOLIA_VENUES_INDEX_PLAYLIST_SEARCH_NEWEST: 'algoliaVenuesIndexPlaylistSearchNewest',
+  ALGOLIA_VENUES_INDEX_PLAYLIST_SEARCH: 'algoliaVenuesIndexPlaylistSearch',
   AMPLITUDE_API_KEY: 'amplitudeApiKey',
   ANDROID_APP_ID: 'app.android',
   API_BASE_URL: 'https://localhost',
