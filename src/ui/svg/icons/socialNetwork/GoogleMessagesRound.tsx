@@ -4,8 +4,11 @@ import styled from 'styled-components/native'
 
 import { AccessibleSvg } from 'ui/svg/AccessibleSvg'
 import { AccessibleIcon } from 'ui/svg/icons/types'
+import { svgIdentifier } from 'ui/svg/utils'
 
 const GoogleMessagesRoundSvg = ({ size, accessibilityLabel, testID }: AccessibleIcon) => {
+  const { id: clipPathId, fill: clipPath } = svgIdentifier('clipPath')
+
   return (
     <AccessibleSvg
       width={size}
@@ -14,7 +17,7 @@ const GoogleMessagesRoundSvg = ({ size, accessibilityLabel, testID }: Accessible
       testID={testID}
       viewBox="0 0 48 48">
       <Rect width={48} height={48} rx={24} fill="none" />
-      <G clip-path="url(#clip0_2020_23155)">
+      <G clipPath={clipPath}>
         <Path
           d="M24.0125 47.9753C37.2605 47.9753 48.0002 37.2357 48.0002 23.9877C48.0002 10.7397 37.2605 5.34058e-05 24.0125 5.34058e-05C10.7646 5.34058e-05 0.0249329 10.7397 0.0249329 23.9877C0.0249329 37.2357 10.7646 47.9753 24.0125 47.9753Z"
           fill="#1A73E8"
@@ -41,7 +44,7 @@ const GoogleMessagesRoundSvg = ({ size, accessibilityLabel, testID }: Accessible
         />
       </G>
       <Defs>
-        <ClipPath id="clip0_2020_23155">
+        <ClipPath id={clipPathId}>
           <Rect width="48" height="48" fill="white" />
         </ClipPath>
       </Defs>
