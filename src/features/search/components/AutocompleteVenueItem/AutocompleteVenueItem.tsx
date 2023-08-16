@@ -28,7 +28,7 @@ export function AutocompleteVenueItem({ hit }: AutocompleteVenueItemProps) {
       <LocationBuildingIconContainer>
         <LocationBuildingFilledIcon />
       </LocationBuildingIconContainer>
-      <StyledText numberOfLines={1} ellipsizeMode="tail">
+      <StyledText numberOfLines={2} ellipsizeMode="tail">
         <Highlight venueHit={hit} attribute="name" />
         <Typo.Body>{city}</Typo.Body>
       </StyledText>

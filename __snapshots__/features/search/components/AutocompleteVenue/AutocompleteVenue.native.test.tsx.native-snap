@@ -80,7 +80,7 @@ exports[`AutocompleteVenue component With venue hits should render AutocompleteV
         </View>
         <Text
           ellipsizeMode="tail"
-          numberOfLines={1}
+          numberOfLines={2}
           style={
             [
               {
@@ -188,7 +188,7 @@ exports[`AutocompleteVenue component With venue hits should render AutocompleteV
         </View>
         <Text
           ellipsizeMode="tail"
-          numberOfLines={1}
+          numberOfLines={2}
           style={
             [
               {
