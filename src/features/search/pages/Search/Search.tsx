@@ -12,6 +12,7 @@ import { AutocompleteVenue } from 'features/search/components/AutocompleteVenue/
 import { BodySearch } from 'features/search/components/BodySearch/BodySearch'
 import { SearchHeader } from 'features/search/components/SearchHeader/SearchHeader'
 import { useSearch } from 'features/search/context/SearchWrapper'
+import { LocationType } from 'features/search/enums'
 import { SearchView } from 'features/search/types'
 import { InsightsMiddleware } from 'libs/algolia/analytics/InsightsMiddleware'
 import { client } from 'libs/algolia/fetchAlgolia/clients'
@@ -48,7 +49,8 @@ const searchClient: SearchClient = {
   },
 }
 const suggestionsIndex = env.ALGOLIA_SUGGESTIONS_INDEX_NAME
-const venuesIndex = env.ALGOLIA_VENUES_INDEX_NAME
+const venuesIndexSearch = env.ALGOLIA_VENUES_INDEX_PLAYLIST_SEARCH
+const venuesIndexSearchNewest = env.ALGOLIA_VENUES_INDEX_PLAYLIST_SEARCH_NEWEST
 
 export function Search() {
   const netInfo = useNetInfoContext()
@@ -71,6 +73,11 @@ export function Search() {
     return <OfflinePage />
   }
 
+  const currentVenuesIndex =
+    params?.locationFilter?.locationType === LocationType.EVERYWHERE
+      ? venuesIndexSearchNewest
+      : venuesIndexSearch
+
   return (
     <React.Fragment>
       <StatusBar barStyle="dark-content" />
@@ -85,7 +92,7 @@ export function Search() {
               <AutocompleteOffer />
               <FeatureFlag
                 featureFlag={RemoteStoreFeatureFlags.WIP_ENABLE_VENUES_IN_SEARCH_RESULTS}>
-                <Index indexName={venuesIndex}>
+                <Index indexName={currentVenuesIndex}>
                   <Configure
                     hitsPerPage={5}
                     clickAnalytics
