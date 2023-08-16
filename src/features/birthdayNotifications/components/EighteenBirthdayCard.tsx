@@ -22,17 +22,24 @@ const DescriptionText = (text: string) => {
   return Component
 }
 
+const getPageWording = (userRequiresIdCheck?: boolean) => {
+  if (userRequiresIdCheck) {
+    return {
+      text: 'Vérifie ton identité pour débloquer tes 300\u00a0€.',
+      buttonText: 'Vérifier mon identité',
+    }
+  }
+  return {
+    text: 'Confirme tes informations personnelles pour débloquer tes 300\u00a0€.',
+    buttonText: 'Confirmer mes informations',
+  }
+}
+
 export function EighteenBirthdayCard(props: AchievementCardKeyProps) {
   const { user } = useAuthContext()
   const { navigate } = useNavigation<UseNavigationType>()
 
-  let text = 'Confirme tes informations personnelles pour débloquer tes 300\u00a0€.'
-  let buttonText = 'Confirmer mes informations'
-
-  if (user?.requiresIdCheck === true) {
-    text = 'Vérifie ton identité pour débloquer tes 300\u00a0€.'
-    buttonText = 'Vérifier mon identité'
-  }
+  const pageWording = getPageWording(user?.requiresIdCheck)
 
   const navigateToStepper = () => navigate('Stepper')
 
@@ -40,9 +47,9 @@ export function EighteenBirthdayCard(props: AchievementCardKeyProps) {
     <GenericAchievementCard
       animation={TutorialPassLogo}
       buttonCallback={navigateToStepper}
-      buttonText={buttonText}
+      buttonText={pageWording.buttonText}
       pauseAnimationOnRenderAtFrame={62}
-      centerChild={DescriptionText(text)}
+      centerChild={DescriptionText(pageWording.text)}
       text={'Ton crédit précédent a été remis à 0\u00a0€.'}
       title="Tu as 18 ans&nbsp;!"
       swiperRef={props.swiperRef}
