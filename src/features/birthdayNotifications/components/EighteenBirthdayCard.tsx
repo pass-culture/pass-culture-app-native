@@ -1,8 +1,9 @@
-import React, { useState } from 'react'
+import { useNavigation } from '@react-navigation/native'
+import React from 'react'
 import styled from 'styled-components/native'
 
 import { useAuthContext } from 'features/auth/context/AuthContext'
-import { useBeneficiaryValidationNavigation } from 'features/auth/helpers/useBeneficiaryValidationNavigation'
+import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import TutorialPassLogo from 'ui/animations/eighteen_birthday.json'
 import { AchievementCardKeyProps, GenericAchievementCard } from 'ui/components/achievements'
 import { Spacer } from 'ui/components/spacer/Spacer'
@@ -22,14 +23,8 @@ const DescriptionText = (text: string) => {
 }
 
 export function EighteenBirthdayCard(props: AchievementCardKeyProps) {
-  const [error, setError] = useState<Error | undefined>()
   const { user } = useAuthContext()
-
-  const { navigateToNextBeneficiaryValidationStep } = useBeneficiaryValidationNavigation(setError)
-
-  if (error) {
-    throw error
-  }
+  const { navigate } = useNavigation<UseNavigationType>()
 
   let text = 'Confirme tes informations personnelles pour débloquer tes 300\u00a0€.'
   let buttonText = 'Confirmer mes informations'
@@ -39,10 +34,12 @@ export function EighteenBirthdayCard(props: AchievementCardKeyProps) {
     buttonText = 'Vérifier mon identité'
   }
 
+  const navigateToStepper = () => navigate('Stepper')
+
   return (
     <GenericAchievementCard
       animation={TutorialPassLogo}
-      buttonCallback={navigateToNextBeneficiaryValidationStep}
+      buttonCallback={navigateToStepper}
       buttonText={buttonText}
       pauseAnimationOnRenderAtFrame={62}
       centerChild={DescriptionText(text)}

@@ -1,8 +1,8 @@
 import React, { RefObject } from 'react'
 import Swiper from 'react-native-web-swiper'
 
+import { navigate } from '__mocks__/@react-navigation/native'
 import { AuthContext } from 'features/auth/context/AuthContext'
-import { useBeneficiaryValidationNavigation } from 'features/auth/helpers/useBeneficiaryValidationNavigation'
 import { fireEvent, render, screen } from 'tests/utils'
 import { SnackBarHelperSettings } from 'ui/components/snackBar/types'
 
@@ -11,7 +11,6 @@ import { EighteenBirthdayCard } from './EighteenBirthdayCard'
 const mockShowInfoSnackBar = jest.fn()
 
 jest.mock('react-query')
-jest.mock('features/auth/helpers/useBeneficiaryValidationNavigation')
 jest.mock('ui/components/snackBar/SnackBarContext', () => ({
   useSnackBarContext: () => ({
     showInfoSnackBar: jest.fn((props: SnackBarHelperSettings) => mockShowInfoSnackBar(props)),
@@ -25,17 +24,12 @@ describe('<EighteenBirthdayCard />', () => {
     expect(firstTutorial).toMatchSnapshot()
   })
 
-  it('should navigate to nextBeneficiaryValidationStep on press "Vérifier mon identité"', () => {
-    const setError = jest.fn()
-    const {
-      navigateToNextBeneficiaryValidationStep: mockedNavigateToNextBeneficiaryValidationStep,
-    } = useBeneficiaryValidationNavigation(setError)
-
+  it('should navigate to Stepper on press "Vérifier mon identité"', () => {
     renderEighteenBirthdayCard()
 
     fireEvent.press(screen.getByText('Confirmer mes informations'))
 
-    expect(mockedNavigateToNextBeneficiaryValidationStep).toHaveBeenCalledTimes(1)
+    expect(navigate).toHaveBeenCalledWith('Stepper')
   })
 })
 
