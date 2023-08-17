@@ -34,16 +34,7 @@ appId: app.passculture.staging
 
 - tapOn: "Supprimer mon compte"
 #Page de suppression
-- assertVisible: "Ton compte a été désactivé"
-- assertVisible: "\U0001f622\_On est super triste de te voir partir."
-- assertVisible: "Tu as 60 jours pour changer d’avis. Tu pourras facilement réactiver\
-    \ ton compte en te connectant."
-- assertVisible: "Une fois ce délai écoulé, tu n’auras plus accès à ton compte pass\
-    \ Culture."
-- assertVisible:
-    id: "Retourner à l’accueil"
-- assertVisible:
-    id: "Réactiver mon compte"
+- runFlow: reusableFlows/AccountDeactivationPage.yml
 
 - tapOn: "Retourner à l’accueil"
 - tapOn: "Mon profil"
@@ -58,17 +49,12 @@ appId: app.passculture.staging
 - tapOn: "Se connecter"
 
 #Page de désactivation
-- assertVisible: "Ton compte est désactivé"
-- assertVisible: "Une fois cette date passée, ton compte pass Culture sera définitivement\
-    \ supprimé."
-- assertVisible: "Réactiver mon compte"
+- runFlow: reusableFlows/AccountDeactivationConfirmationPage.yml
 - tapOn: "Réactiver mon compte"
 
  #Page de réactivation
-- assertVisible: "Ton compte a été réactivé"
-- assertVisible: "On est ravi de te revoir\_!"
-- assertVisible: "Tu peux dès maintenant découvrir l’étendue du catalogue pass Culture."
-- assertVisible: "Découvrir le catalogue"
+- runFlow: reusableFlows/AccountReactivationPage.yml
+
 - tapOn:
     id: "Découvrir le catalogue"
 

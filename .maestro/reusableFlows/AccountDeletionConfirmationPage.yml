@@ -1,0 +1,16 @@
+appId: app.passculture.staging
+---
+#AccountDeletionConfirmationPage
+- assertVisible: "Veux-tu vraiment supprimer ton compte\_?"
+- assertVisible: "Les conséquences\_:"
+- assertVisible: "tes réservations sont annulées sauf pour certains cas précisés dans\
+    \ les \n0"
+- assertVisible: "conditions générales d’utilisation"
+- assertVisible: "si tu as un dossier en cours, tu ne pourras pas en déposer un nouveau"
+- assertVisible: "tu n’auras plus accès au catalogue"
+- assertVisible: "Les données que nous conservons\_:"
+- assertVisible: "Nous gardons toutes les informations personnelles que tu nous as\
+    \ transmises lors de la vérification de ton identité."
+- assertVisible:
+        id: "Supprimer mon compte"
+- assertVisible: "Consulter l’article d’aide"
