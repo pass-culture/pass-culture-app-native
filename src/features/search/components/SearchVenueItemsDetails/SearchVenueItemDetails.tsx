@@ -29,5 +29,5 @@ const VenueName = styled(Typo.ButtonText).attrs({
 })({})
 
 const CityLabel = styled(Typo.Caption).attrs({
-  numberOfLines: 1,
+  numberOfLines: 2,
 })(({ theme }) => ({ flexShrink: 1, color: theme.colors.greyDark }))

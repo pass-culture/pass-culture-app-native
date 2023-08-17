@@ -10,6 +10,8 @@ import { AlgoliaVenue } from 'libs/algolia'
 import { useDistance } from 'libs/geolocation/hooks/useDistance'
 import { useHandleFocus } from 'libs/hooks/useHandleFocus'
 import { mapVenueTypeToIcon, VenueTypeCode } from 'libs/parsers'
+import { QueryKeys } from 'libs/queryKeys'
+import { queryClient } from 'libs/react-query/queryClient'
 import { tileAccessibilityLabel, TileContentType } from 'libs/tileAccessibilityLabel'
 import { ImageTile } from 'ui/components/ImageTile'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
@@ -21,12 +23,17 @@ export interface SearchVenueItemProps {
   venue: AlgoliaVenue
   width: number
   height: number
-  onPress?: () => void
 }
 
 const MAX_VENUE_CAPTION_HEIGHT = getSpacing(18)
 
-const UnmemoizedSearchVenueItem = ({ venue, height, width, onPress }: SearchVenueItemProps) => {
+const mergeVenueData = (venue: AlgoliaVenue) => (prevData: AlgoliaVenue | undefined) => ({
+  ...venue,
+  accessibility: {},
+  ...(prevData ?? {}),
+})
+
+const UnmemoizedSearchVenueItem = ({ venue, height, width }: SearchVenueItemProps) => {
   const { onFocus, onBlur, isFocus } = useHandleFocus()
   const { colors } = useTheme()
   const { lat, lng } = venue._geoloc
@@ -37,13 +44,18 @@ const UnmemoizedSearchVenueItem = ({ venue, height, width, onPress }: SearchVenu
   const hasVenueImage = !!venue.banner_url
   const imageUri = venue.banner_url ?? ''
 
+  function handlePressVenue() {
+    // We pre-populate the query-cache with the data from the search result for a smooth transition
+    queryClient.setQueryData([QueryKeys.VENUE, venue.objectID], mergeVenueData(venue))
+  }
+
   return (
     <View {...getHeadingAttrs(3)}>
       <SearchVenueTouchableLink
         height={height + MAX_VENUE_CAPTION_HEIGHT}
         width={width}
         navigateTo={{ screen: 'Venue', params: { id: venue.objectID } }}
-        onBeforeNavigate={onPress}
+        onBeforeNavigate={handlePressVenue}
         onFocus={onFocus}
         onBlur={onBlur}
         isFocus={isFocus}

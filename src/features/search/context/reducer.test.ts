@@ -1,10 +1,17 @@
 import mockdate from 'mockdate'
 
 import { SearchGroupNameEnumv2 } from 'api/gen'
-import { initialSearchState, Action, searchReducer } from 'features/search/context/reducer'
+import {
+  initialSearchState,
+  Action,
+  searchReducer,
+  initialSearchVenuesState,
+  searchVenuesReducer,
+} from 'features/search/context/reducer'
 import { LocationType } from 'features/search/enums'
 import { DATE_FILTER_OPTIONS } from 'features/search/enums'
 import { SearchState, SearchView } from 'features/search/types'
+import { mockedAlgoliaVenueResponse } from 'libs/algolia/__mocks__/mockedAlgoliaResponse'
 import { SuggestedPlace } from 'libs/place'
 
 const Today = new Date(2020, 10, 1)
@@ -321,5 +328,21 @@ describe('Search reducer', () => {
     const newState = searchReducer(state, action)
 
     expect(newState.locationFilter).toStrictEqual({ locationType: LocationType.VENUE, venue })
+  })
+
+  describe('searchVenueReducer', () => {
+    const state = initialSearchVenuesState
+
+    it('should handle INIT', () => {
+      const action: Action = { type: 'INIT' }
+      const newState = searchVenuesReducer(state, action)
+      expect(newState.hits).toStrictEqual([])
+    })
+
+    it('should handle SET_VENUES', () => {
+      const action: Action = { type: 'SET_VENUES', payload: mockedAlgoliaVenueResponse.hits }
+      const newState = searchVenuesReducer(state, action)
+      expect(newState.hits).toStrictEqual(mockedAlgoliaVenueResponse.hits)
+    })
   })
 })

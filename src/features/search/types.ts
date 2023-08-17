@@ -1,4 +1,4 @@
-import { SearchResponse } from '@algolia/client-search'
+import { Hit, SearchResponse } from '@algolia/client-search'
 import React from 'react'
 
 import {
@@ -18,6 +18,7 @@ import {
   MappingTree,
 } from 'features/search/helpers/categoriesHelpers/mapping-tree'
 import { Venue } from 'features/venue/types'
+import { AlgoliaVenue } from 'libs/algolia'
 import { SuggestedPlace } from 'libs/place'
 import { Range } from 'libs/typesUtils/typeHelpers'
 import { Offer } from 'shared/offer/types'
@@ -77,6 +78,10 @@ export interface SearchState {
   // TODO(EveJulliard): re typer la fonction parseSearchParameters
   // pour supprimer minBookingsThreshold du type SearchState
   minBookingsThreshold?: number
+}
+
+export interface SearchVenuesState {
+  hits: Hit<AlgoliaVenue>[]
 }
 
 export type OfferTypes = keyof SearchState['offerTypes']

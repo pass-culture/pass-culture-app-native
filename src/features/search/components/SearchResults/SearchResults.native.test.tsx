@@ -11,7 +11,10 @@ import { MAX_RADIUS } from 'features/search/helpers/reducer.helpers'
 import { LocationFilter, SearchState, UserData } from 'features/search/types'
 import { Venue } from 'features/venue/types'
 import { beneficiaryUser, nonBeneficiaryUser } from 'fixtures/user'
-import { mockedAlgoliaResponse } from 'libs/algolia/__mocks__/mockedAlgoliaResponse'
+import {
+  mockedAlgoliaResponse,
+  mockedAlgoliaVenueResponse,
+} from 'libs/algolia/__mocks__/mockedAlgoliaResponse'
 import { analytics } from 'libs/analytics'
 import { GeoCoordinates, Position } from 'libs/geolocation'
 import { SuggestedPlace } from 'libs/place'
@@ -29,6 +32,14 @@ let mockSearchState = searchState
 jest.mock('features/search/context/SearchWrapper', () => ({
   useSearch: () => ({
     searchState: mockSearchState,
+    dispatch: jest.fn(),
+  }),
+}))
+
+const mockSearchVenuesState = mockedAlgoliaVenueResponse
+jest.mock('features/search/context/SearchVenuesWrapper', () => ({
+  useSearchVenues: () => ({
+    searchVenuesState: mockSearchVenuesState,
     dispatch: jest.fn(),
   }),
 }))
@@ -70,6 +81,7 @@ jest.mock('features/search/api/useSearchResults/useSearchResults', () => ({
     fetchNextPage: mockFetchNextPage,
     isFetchingNextPage: false,
     userData: mockUserData,
+    venues: mockedAlgoliaVenueResponse,
   }),
 }))
 
@@ -119,7 +131,6 @@ describe('SearchResults component', () => {
     jest.advanceTimersByTime(2000)
     render(<SearchResults />)
     await act(async () => {})
-
     expect(screen).toMatchSnapshot()
   })
 

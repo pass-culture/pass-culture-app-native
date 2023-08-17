@@ -8,26 +8,38 @@ type SearchVenuePositionType = {
   aroundRadius: number | 'all'
 }
 
+export function convertKmToMeters(aroundRadiusKm: number | 'all') {
+  if (aroundRadiusKm === 'all' || aroundRadiusKm === 0) {
+    return 'all'
+  }
+  return aroundRadiusKm * 1000
+}
+
 export function buildSearchVenuePosition(locationFilter?: LocationFilter, userPosition?: Position) {
   let searchVenuePosition: SearchVenuePositionType = { aroundRadius: 'all' }
+
   if (userPosition && locationFilter?.locationType === LocationType.AROUND_ME) {
+    const aroundRadius = locationFilter.aroundRadius ?? 'all'
+
     searchVenuePosition = {
       aroundLatLng: `${userPosition.latitude}, ${userPosition.longitude}`,
-      aroundRadius: locationFilter?.aroundRadius ?? 'all',
+      aroundRadius: convertKmToMeters(aroundRadius),
     }
   }
   if (locationFilter?.locationType === LocationType.PLACE && locationFilter?.place?.geolocation) {
     const placePosition = locationFilter?.place?.geolocation
+
     searchVenuePosition = {
       aroundLatLng: `${placePosition.latitude}, ${placePosition.longitude}`,
-      aroundRadius: locationFilter?.aroundRadius,
+      aroundRadius: convertKmToMeters(locationFilter?.aroundRadius),
     }
   }
   if (locationFilter?.locationType === LocationType.VENUE && locationFilter?.venue?._geoloc) {
-    const placePosition = locationFilter?.venue?._geoloc
+    const venuePosition = locationFilter?.venue?._geoloc
+
     searchVenuePosition = {
-      aroundLatLng: `${placePosition.lat}, ${placePosition.lng}`,
-      aroundRadius: MAX_RADIUS,
+      aroundLatLng: `${venuePosition.lat}, ${venuePosition.lng}`,
+      aroundRadius: convertKmToMeters(MAX_RADIUS),
     }
   }
 
