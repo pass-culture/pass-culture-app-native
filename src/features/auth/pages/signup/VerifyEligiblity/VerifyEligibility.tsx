@@ -1,8 +1,7 @@
-import React, { FunctionComponent, useState } from 'react'
+import React, { FunctionComponent } from 'react'
 import { View } from 'react-native'
 import styled from 'styled-components/native'
 
-import { useBeneficiaryValidationNavigation } from 'features/auth/helpers/useBeneficiaryValidationNavigation'
 import { navigateToHomeConfig } from 'features/navigation/helpers'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
@@ -12,25 +11,16 @@ import { PlainArrowNext } from 'ui/svg/icons/PlainArrowNext'
 import { Spacer, Typo } from 'ui/theme'
 
 export const VerifyEligibility: FunctionComponent = () => {
-  const [error, setError] = useState<Error | undefined>()
-  const { nextBeneficiaryValidationStepNavConfig } = useBeneficiaryValidationNavigation(setError)
-
-  if (error) {
-    throw error
-  }
-
   return (
     <GenericOfficialPage
       title="Vérifie ton identité pour débloquer ton crédit"
       buttons={[
-        !!nextBeneficiaryValidationStepNavConfig && (
-          <InternalTouchableLink
-            key={1}
-            as={ButtonPrimary}
-            wording="Commencer la vérification"
-            navigateTo={nextBeneficiaryValidationStepNavConfig}
-          />
-        ),
+        <InternalTouchableLink
+          key={1}
+          as={ButtonPrimary}
+          wording="Commencer la vérification"
+          navigateTo={{ screen: 'Stepper' }}
+        />,
         <InternalTouchableLink
           key={2}
           as={ButtonTertiaryBlack}

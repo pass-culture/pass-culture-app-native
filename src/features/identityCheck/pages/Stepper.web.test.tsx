@@ -11,8 +11,6 @@ import { Stepper } from './Stepper'
 
 mockdate.set(new Date('2020-12-01T00:00:00.000Z'))
 
-jest.mock('features/auth/api/useNextSubscriptionStep')
-
 jest.mock('features/identityCheck/pages/helpers/useSetCurrentSubscriptionStep', () => ({
   useSetSubscriptionStepAndMethod: jest.fn(() => ({
     subscription: jest.fn(),
