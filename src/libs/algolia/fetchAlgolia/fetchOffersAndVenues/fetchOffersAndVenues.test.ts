@@ -1,5 +1,6 @@
 import algoliasearch from 'algoliasearch'
 
+import { LocationType } from 'features/search/enums'
 import { fetchOffersAndVenues } from 'libs/algolia/fetchAlgolia/fetchOffersAndVenues/fetchOffersAndVenues'
 import { SearchQueryParameters } from 'libs/algolia/types'
 import { env } from 'libs/environment'
@@ -44,7 +45,101 @@ describe('fetchOffersAndVenues', () => {
         query: 'searched query',
       },
       {
-        indexName: env.ALGOLIA_VENUES_INDEX_NAME,
+        indexName: env.ALGOLIA_VENUES_INDEX_PLAYLIST_SEARCH_NEWEST,
+        params: { aroundRadius: 'all', clickAnalytics: true, hitsPerPage: 35, page: 0 },
+        query: 'searched query',
+      },
+    ]
+
+    expect(mockMultipleQueries).toHaveBeenCalledWith(expectedResult)
+  })
+
+  it('should execute multi query with venues search newest index when location type is EVERYWHERE', () => {
+    const query = 'searched query'
+
+    fetchOffersAndVenues({
+      parameters: {
+        query,
+        locationFilter: { locationType: LocationType.EVERYWHERE },
+      } as SearchQueryParameters,
+      userLocation: null,
+      isUserUnderage: false,
+    })
+
+    const expectedResult = [
+      {
+        indexName: env.ALGOLIA_OFFERS_INDEX_NAME,
+        params: {
+          attributesToHighlight: [],
+          attributesToRetrieve: [
+            'offer.dates',
+            'offer.isDigital',
+            'offer.isDuo',
+            'offer.isEducational',
+            'offer.name',
+            'offer.prices',
+            'offer.subcategoryId',
+            'offer.thumbUrl',
+            'objectID',
+            '_geoloc',
+            'venue',
+          ],
+          clickAnalytics: true,
+          facetFilters: [['offer.isEducational:false']],
+          numericFilters: [['offer.prices: 0 TO 300']],
+          page: 0,
+        },
+        query: 'searched query',
+      },
+      {
+        indexName: env.ALGOLIA_VENUES_INDEX_PLAYLIST_SEARCH_NEWEST,
+        params: { aroundRadius: 'all', clickAnalytics: true, hitsPerPage: 35, page: 0 },
+        query: 'searched query',
+      },
+    ]
+
+    expect(mockMultipleQueries).toHaveBeenCalledWith(expectedResult)
+  })
+
+  it('should execute multi query with venues search index when location type is AROUNDME', () => {
+    const query = 'searched query'
+
+    fetchOffersAndVenues({
+      parameters: {
+        query,
+        locationFilter: { locationType: LocationType.AROUND_ME },
+      } as SearchQueryParameters,
+      userLocation: null,
+      isUserUnderage: false,
+    })
+
+    const expectedResult = [
+      {
+        indexName: env.ALGOLIA_OFFERS_INDEX_NAME,
+        params: {
+          attributesToHighlight: [],
+          attributesToRetrieve: [
+            'offer.dates',
+            'offer.isDigital',
+            'offer.isDuo',
+            'offer.isEducational',
+            'offer.name',
+            'offer.prices',
+            'offer.subcategoryId',
+            'offer.thumbUrl',
+            'objectID',
+            '_geoloc',
+            'venue',
+          ],
+          clickAnalytics: true,
+          facetFilters: [['offer.isEducational:false']],
+          numericFilters: [['offer.prices: 0 TO 300']],
+          page: 0,
+        },
+        query: 'searched query',
+      },
+      {
+        indexName: env.ALGOLIA_VENUES_INDEX_PLAYLIST_SEARCH,
         params: { aroundRadius: 'all', clickAnalytics: true, hitsPerPage: 35, page: 0 },
         query: 'searched query',
       },
