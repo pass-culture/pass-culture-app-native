@@ -40,6 +40,10 @@ const GreyLock = styled(Lock).attrs(({ theme }) => ({
   color: theme.colors.greySemiDark,
 }))``
 
+const MediumGreyLock = styled(Lock).attrs(({ theme }) => ({
+  color: theme.colors.greyMedium,
+}))``
+
 const GreyWarning = styled(Warning).attrs(({ theme }) => ({
   color: theme.colors.greySemiDark,
   size: theme.icons.sizes.smaller,
@@ -59,7 +63,7 @@ const stepperPropsMapping = new Map<15 | 16 | 17 | 18, VerticalStepperProps[]>([
   [
     16,
     [
-      { variant: StepVariant.complete, iconComponent: <GreyLock /> },
+      { variant: StepVariant.complete, iconComponent: <MediumGreyLock /> },
       { variant: StepVariant.in_progress, iconComponent: <BicolorUnlock /> },
       { variant: StepVariant.future, iconComponent: <GreyLock /> },
       { variant: StepVariant.future, iconComponent: <GreyWarning /> },
@@ -69,8 +73,8 @@ const stepperPropsMapping = new Map<15 | 16 | 17 | 18, VerticalStepperProps[]>([
   [
     17,
     [
-      { variant: StepVariant.complete, iconComponent: <GreyLock /> },
-      { variant: StepVariant.complete, iconComponent: <GreyLock /> },
+      { variant: StepVariant.complete, iconComponent: <MediumGreyLock /> },
+      { variant: StepVariant.complete, iconComponent: <MediumGreyLock /> },
       { variant: StepVariant.in_progress, iconComponent: <BicolorUnlock /> },
       { variant: StepVariant.future, iconComponent: <GreyWarning /> },
       { variant: StepVariant.future, iconComponent: <GreyLock /> },
@@ -79,9 +83,9 @@ const stepperPropsMapping = new Map<15 | 16 | 17 | 18, VerticalStepperProps[]>([
   [
     18,
     [
-      { variant: StepVariant.complete, iconComponent: <GreyLock /> },
-      { variant: StepVariant.complete, iconComponent: <GreyLock /> },
-      { variant: StepVariant.complete, iconComponent: <GreyLock /> },
+      { variant: StepVariant.complete, iconComponent: <MediumGreyLock /> },
+      { variant: StepVariant.complete, iconComponent: <MediumGreyLock /> },
+      { variant: StepVariant.complete, iconComponent: <MediumGreyLock /> },
       { variant: StepVariant.in_progress, iconComponent: <BicolorUnlock /> },
     ],
   ],
