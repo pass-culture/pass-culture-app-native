@@ -45,7 +45,7 @@ describe('SearchHeader component', () => {
   it('should render SearchHeader', async () => {
     render(<SearchHeader searchInputID={searchInputID} />)
 
-    await screen.findByText('Recherche une offre')
+    await screen.findByText('Rechercher')
 
     expect(screen).toMatchSnapshot()
   })

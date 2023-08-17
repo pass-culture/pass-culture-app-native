@@ -91,7 +91,7 @@ exports[`Profile component should render correctly 1`] = `
                   style={
                     [
                       {
-                        "marginBottom": 8,
+                        "marginBottom": 4,
                         "marginHorizontal": 24,
                         "marginTop": 24,
                       },

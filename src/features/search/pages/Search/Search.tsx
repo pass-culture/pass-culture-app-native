@@ -79,7 +79,7 @@ export function Search() {
         <InstantSearch searchClient={searchClient} indexName={suggestionsIndex}>
           <Configure hitsPerPage={5} clickAnalytics />
           <InsightsMiddleware />
-          <SearchHeader searchInputID={searchInputID} />
+          <SearchHeader searchInputID={searchInputID} searchView={currentView} />
           {currentView === SearchView.Suggestions ? (
             <StyledVerticalUl>
               <AutocompleteOffer />

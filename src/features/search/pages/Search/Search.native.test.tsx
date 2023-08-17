@@ -165,7 +165,7 @@ describe('<Search/>', () => {
   it('should render Search', async () => {
     render(<Search />)
 
-    await screen.findByText('Recherche une offre')
+    await screen.findByText('Rechercher')
 
     expect(screen).toMatchSnapshot()
   })

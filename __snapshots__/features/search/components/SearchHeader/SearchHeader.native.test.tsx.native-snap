@@ -38,9 +38,24 @@ exports[`SearchHeader component should render SearchHeader 1`] = `
           ]
         }
       >
-        Recherche une offre
+        Rechercher
       </Text>
     </View>
+    <Text
+      style={
+        [
+          {
+            "color": "#696A6F",
+            "fontFamily": "Montserrat-SemiBold",
+            "fontSize": 12,
+            "lineHeight": 16,
+            "marginTop": 4,
+          },
+        ]
+      }
+    >
+      Toutes les offres à portée de main
+    </Text>
     <View
       numberOfSpaces={4}
       style={

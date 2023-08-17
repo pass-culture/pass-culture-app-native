@@ -20,5 +20,5 @@ export const PageHeader = ({ title, numberOfLines = 1 }: Props) => {
 const TitleContainer = styled.View(({ theme }) => ({
   marginTop: getSpacing(6),
   marginHorizontal: theme.contentPage.marginHorizontal,
-  marginBottom: getSpacing(2),
+  marginBottom: getSpacing(1),
 }))

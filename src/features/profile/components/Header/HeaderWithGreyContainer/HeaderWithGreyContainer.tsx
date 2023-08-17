@@ -20,7 +20,7 @@ export const HeaderWithGreyContainer: FunctionComponent<PropsWithChildren> = ({
       <PageHeader title={title} numberOfLines={2} />
       {!!subtitle && (
         <SubtitleContainer>
-          {typeof subtitle === 'string' ? <Typo.Body>{subtitle}</Typo.Body> : subtitle}
+          {typeof subtitle === 'string' ? <CaptionSubtitle>{subtitle}</CaptionSubtitle> : subtitle}
         </SubtitleContainer>
       )}
       {!!children && <GreyContainer>{children}</GreyContainer>}
@@ -41,4 +41,8 @@ const GreyContainer = styled.View(({ theme }) => ({
   marginBottom: getSpacing(2),
   width: theme.isDesktopViewport ? 'fit-content' : undefined,
   minWidth: theme.isDesktopViewport ? theme.contentPage.maxWidth : undefined,
+}))
+
+const CaptionSubtitle = styled(Typo.Caption)(({ theme }) => ({
+  color: theme.colors.greyDark,
 }))

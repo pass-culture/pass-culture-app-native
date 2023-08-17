@@ -37,7 +37,7 @@ export const NoResultsView = ({
 
   return (
     <Container>
-      <Typo.Body>{title}</Typo.Body>
+      <CaptionTitle>{title}</CaptionTitle>
       <CenteredContainer>
         <Spacer.Flex />
         {!!Icon && <Icon />}
@@ -66,6 +66,10 @@ const Container = styled.View(({ theme }) => ({
   flex: 1,
   marginBottom: theme.tabBar.height,
   marginHorizontal: theme.contentPage.marginHorizontal,
+}))
+
+const CaptionTitle = styled(Typo.Caption)(({ theme }) => ({
+  color: theme.colors.greyDark,
 }))
 
 const CenteredContainer = styled.View({
