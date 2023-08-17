@@ -16,6 +16,15 @@ Eighteen.args = {
   age: 18,
 }
 
+export const Seventeen = Template.bind({})
+Seventeen.args = {
+  age: 17,
+}
+export const Sixteen = Template.bind({})
+Sixteen.args = {
+  age: 16,
+}
+
 export const Fifteen = Template.bind({})
 Fifteen.args = {
   age: 15,
