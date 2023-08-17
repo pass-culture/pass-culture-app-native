@@ -14,28 +14,19 @@ appId: app.passculture.staging
 - tapOn:
         id: "Mot de passe"
 - inputText: ${PASSWORD}
-- tapOn:
-    point: "91%,89%"
-#- tapOn: "Se connecter"
+
+- tapOn: "Se connecter"
 #pour sortir de la saisie
-#- tapOn:
-#    id: "Se connecter"
+- tapOn:
+    id: "Se connecter"
 
 - tapOn: "Plus tard"
 - tapOn:
     id: "Mon profil"
 
-- scrollUntilVisible:
-    element: "Version\_1.252.1"
-#    element: ${VERSION}
-    direction: DOWN
-
+- tapOn: "Informations personnelles"
 - assertVisible:
-    text: "Déconnexion"
-    index: 1
-
-- tapOn:
-    text: "Déconnexion"
+    text: "Supprimer mon compte"
     index: 1
 
 # Stop App

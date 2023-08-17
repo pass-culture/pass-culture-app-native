@@ -1,0 +1,51 @@
+appId: app.passculture.staging
+---
+# Launch App
+- runFlow: reusableFlows/LaunchApp.yml
+# First Launch
+- runFlow: reusableFlows/FirstLaunch.yml
+- tapOn:
+      id: "Mon profil"
+- tapOn: "Se connecter"
+- assertVisible: "Connecte-toi"
+- tapOn:
+        id: "Entrée pour l’email"
+- inputText: ${USERNAME}
+- tapOn:
+        id: "Mot de passe"
+- inputText: ${PASSWORD}
+
+- tapOn: "Se connecter"
+#pour sortir de la saisie
+- tapOn:
+    id: "Se connecter"
+
+- tapOn: "Plus tard"
+- tapOn:
+    id: "Mon profil"
+
+- tapOn: "Informations personnelles"
+- assertVisible:
+    text: "Supprimer mon compte"
+    index: 1
+
+- tapOn:
+    id: "Supprimer mon compte"
+
+- assertVisible: "Veux-tu vraiment supprimer ton compte\_?"
+- assertVisible: "Les conséquences\_:"
+- assertVisible: "tes réservations sont annulées sauf pour certains cas précisés dans\
+    \ les \n0"
+- assertVisible: "conditions générales d’utilisation"
+- assertVisible: "si tu as un dossier en cours, tu ne pourras pas en déposer un nouveau"
+- assertVisible: "tu n’auras plus accès au catalogue"
+- assertVisible: "Les données que nous conservons\_:"
+- assertVisible: "Nous gardons toutes les informations personnelles que tu nous as\
+    \ transmises lors de la vérification de ton identité."
+- assertVisible:
+    id: "Supprimer mon compte"
+- assertVisible: "Consulter l’article d’aide"
+
+
+# Stop App
+#- runFlow: reusableFlows/StopApp.yml
