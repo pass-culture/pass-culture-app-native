@@ -19,7 +19,12 @@ export const OnboardingTimeline: FunctionComponent<Props> = ({ age }) => {
   return (
     <StyledView>
       {stepperProps?.map((props, index) => (
-        <VerticalStepper key={index} {...props} />
+        <VerticalStepper
+          key={index}
+          {...props}
+          isFirst={index === 0}
+          isLast={index === stepperProps.length - 1}
+        />
       ))}
     </StyledView>
   )
@@ -44,40 +49,40 @@ const stepperPropsMapping = new Map<15 | 16 | 17 | 18, VerticalStepperProps[]>([
   [
     15,
     [
-      { variant: StepVariant.in_progress, iconComponent: <BicolorUnlock />, isFirst: true },
+      { variant: StepVariant.in_progress, iconComponent: <BicolorUnlock /> },
       { variant: StepVariant.future, iconComponent: <GreyLock /> },
       { variant: StepVariant.future, iconComponent: <GreyLock /> },
       { variant: StepVariant.future, iconComponent: <GreyWarning /> },
-      { variant: StepVariant.future, iconComponent: <GreyLock />, isLast: true },
+      { variant: StepVariant.future, iconComponent: <GreyLock /> },
     ],
   ],
   [
     16,
     [
-      { variant: StepVariant.complete, iconComponent: <GreyLock />, isFirst: true },
+      { variant: StepVariant.complete, iconComponent: <GreyLock /> },
       { variant: StepVariant.in_progress, iconComponent: <BicolorUnlock /> },
       { variant: StepVariant.future, iconComponent: <GreyLock /> },
       { variant: StepVariant.future, iconComponent: <GreyWarning /> },
-      { variant: StepVariant.future, iconComponent: <GreyLock />, isLast: true },
+      { variant: StepVariant.future, iconComponent: <GreyLock /> },
     ],
   ],
   [
     17,
     [
-      { variant: StepVariant.complete, iconComponent: <GreyLock />, isFirst: true },
+      { variant: StepVariant.complete, iconComponent: <GreyLock /> },
       { variant: StepVariant.complete, iconComponent: <GreyLock /> },
       { variant: StepVariant.in_progress, iconComponent: <BicolorUnlock /> },
       { variant: StepVariant.future, iconComponent: <GreyWarning /> },
-      { variant: StepVariant.future, iconComponent: <GreyLock />, isLast: true },
+      { variant: StepVariant.future, iconComponent: <GreyLock /> },
     ],
   ],
   [
     18,
     [
-      { variant: StepVariant.complete, iconComponent: <GreyLock />, isFirst: true },
       { variant: StepVariant.complete, iconComponent: <GreyLock /> },
       { variant: StepVariant.complete, iconComponent: <GreyLock /> },
-      { variant: StepVariant.in_progress, iconComponent: <BicolorUnlock />, isLast: true },
+      { variant: StepVariant.complete, iconComponent: <GreyLock /> },
+      { variant: StepVariant.in_progress, iconComponent: <BicolorUnlock /> },
     ],
   ],
 ])
