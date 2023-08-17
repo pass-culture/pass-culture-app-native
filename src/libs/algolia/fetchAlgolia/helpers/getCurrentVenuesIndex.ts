@@ -5,8 +5,9 @@ export function getCurrentVenuesIndex(locationType?: LocationType) {
   const venuesIndexSearch = env.ALGOLIA_VENUES_INDEX_PLAYLIST_SEARCH
   const venuesIndexSearchNewest = env.ALGOLIA_VENUES_INDEX_PLAYLIST_SEARCH_NEWEST
 
-  const currentVenuesIndex =
-    locationType === LocationType.EVERYWHERE ? venuesIndexSearchNewest : venuesIndexSearch
+  if (!locationType || locationType === LocationType.EVERYWHERE) {
+    return venuesIndexSearchNewest
+  }
 
-  return currentVenuesIndex
+  return venuesIndexSearch
 }

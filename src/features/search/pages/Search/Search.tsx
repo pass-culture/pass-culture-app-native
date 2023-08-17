@@ -67,11 +67,13 @@ export function Search() {
     [params?.locationFilter, userPosition]
   )
 
+  const currentVenuesIndex = useMemo(() => {
+    return getCurrentVenuesIndex(params?.locationFilter?.locationType)
+  }, [params?.locationFilter?.locationType])
+
   if (!netInfo.isConnected) {
     return <OfflinePage />
   }
-
-  const currentVenuesIndex = getCurrentVenuesIndex(params?.locationFilter?.locationType)
 
   return (
     <React.Fragment>

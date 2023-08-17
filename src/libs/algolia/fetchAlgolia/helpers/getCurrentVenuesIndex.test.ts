@@ -8,15 +8,17 @@ describe('getCurrentVenuesIndex', () => {
     expect(result).toEqual('algoliaVenuesIndexPlaylistSearchNewest')
   })
 
-  it('should return algoliaVenuesIndexPlaylistSearch when locationType is not EVERYWHERE', () => {
-    const params = LocationType.AROUND_ME
-    const result = getCurrentVenuesIndex(params)
-    expect(result).toEqual('algoliaVenuesIndexPlaylistSearch')
-  })
+  it.each([LocationType.AROUND_ME, LocationType.PLACE, LocationType.VENUE])(
+    'should return algoliaVenuesIndexPlaylistSearch when locationType is %s',
+    (locationType) => {
+      const result = getCurrentVenuesIndex(locationType)
+      expect(result).toEqual('algoliaVenuesIndexPlaylistSearch')
+    }
+  )
 
-  it('should return algoliaVenuesIndexPlaylistSearch when locationFilter is undefined', () => {
+  it('should return algoliaVenuesIndexPlaylistSearchNewest when locationFilter is undefined', () => {
     const params = undefined
     const result = getCurrentVenuesIndex(params)
-    expect(result).toEqual('algoliaVenuesIndexPlaylistSearch')
+    expect(result).toEqual('algoliaVenuesIndexPlaylistSearchNewest')
   })
 })
