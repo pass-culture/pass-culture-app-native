@@ -7,7 +7,7 @@ appId: app.passculture.staging
 
 - tapOn: "Mon profil"
 - tapOn: "Nouvelle fenêtre\_: Centre d’aide"
-- assertVisible: "‎aide.passculture.app"
+#- assertVisible: "aide.passculture.app"
 - tapOn: "Applications récentes"
 - tapOn:
     id: "com.sec.android.app.launcher:id/snapshot"

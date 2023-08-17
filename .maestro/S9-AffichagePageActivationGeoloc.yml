@@ -10,8 +10,7 @@ appId: app.passculture.staging
       when:
           visible:
               id: "com.android.permissioncontroller:id/permission_allow_foreground_only_button"
-      file: "reusableFlows/GeolocApp.yml"
-
+      file: "reusableFlows/GeolocAppS9.yml"
 
 # Stop App
 - runFlow: reusableFlows/StopApp.yml

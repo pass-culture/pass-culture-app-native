@@ -1,0 +1,42 @@
+appId: app.passculture.staging
+---
+# Launch App
+- runFlow: reusableFlows/LaunchApp.yml
+# First Launch
+- runFlow: reusableFlows/FirstLaunch.yml
+- tapOn:
+      id: "Mon profil"
+- tapOn: "Se connecter"
+- assertVisible: "Connecte-toi"
+- tapOn:
+        id: "Entrée pour l’email"
+- inputText: ${USERNAME}
+- tapOn:
+        id: "Mot de passe"
+- inputText: ${PASSWORD}
+- tapOn:
+    point: "91%,89%"
+#- tapOn: "Se connecter"
+#pour sortir de la saisie
+#- tapOn:
+#    id: "Se connecter"
+
+- tapOn: "Plus tard"
+- tapOn:
+    id: "Mon profil"
+
+- scrollUntilVisible:
+    element: "Version\_1.252.1"
+#    element: ${VERSION}
+    direction: DOWN
+
+- assertVisible:
+    text: "Déconnexion"
+    index: 1
+
+- tapOn:
+    text: "Déconnexion"
+    index: 1
+
+# Stop App
+#- runFlow: reusableFlows/StopApp.yml
