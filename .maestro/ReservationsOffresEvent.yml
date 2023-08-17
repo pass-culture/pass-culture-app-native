@@ -1,0 +1,77 @@
+appId: app.passculture.staging
+---
+# Launch App
+- runFlow: reusableFlows/LaunchApp.yml
+# First Launch
+- runFlow: reusableFlows/FirstLaunch.yml
+
+- tapOn:
+      id: "Rechercher des offres"
+#- tapOn:
+#    id: "Revenir en arrière"
+- tapOn: "Rechercher des offres"
+- tapOn: "Films, séries, cinéma"
+- tapOn:
+    point: "50%,49%"
+- tapOn:
+    id: "Réserver l’offre"
+- tapOn: "Se connecter"
+- assertVisible: "Connecte-toi"
+
+- tapOn:
+    id: "Entrée pour l’email"
+- inputText: ${USERNAME}
+- tapOn:
+    id: "Mot de passe"
+- inputText: ${PASSWORD}
+
+- tapOn: "Se connecter"
+#pour sortir de la saisie
+- tapOn:
+    id: "Se connecter"
+
+- tapOn: "Plus tard"
+
+- tapOn: "Rechercher des offres"
+- tapOn: "Catégories\_: Filtre sélectionné"
+- tapOn: "Films, séries, cinéma"
+- tapOn: "Rechercher"
+- tapOn:
+      point: "49%,32%"
+- tapOn:
+      point: "50%,34%"
+- tapOn: "Réserver l’offre"
+#PreBookingReservation
+- runFlow: reusableFlows/PreBookingPage.yml
+
+- tapOn: "Confirmer la réservation"
+#BookingConfirmationPage
+- runFlow: reusableFlows/BookingConfirmationPage.yml
+- tapOn: "Voir ma réservation"
+- assertVisible: "Pour profiter de ta réservation, tu dois présenter ta carte d’identité\
+    \ et ce code à 6 caractères. N’oublie pas que tu n’as pas le droit de le revendre\
+    \ ou le céder."
+- assertVisible: "Ma réservation"
+- tapOn:
+      id: "animated-icon-back"
+- assertVisible:
+      text: "Mes réservations"
+      index: 0
+- assertVisible: "Mes réservations"
+
+- tapOn:
+      point: "61%,16%"
+
+- scrollUntilVisible:
+      element: "Annuler ma réservation"
+      direction: DOWN
+
+- tapOn: "Annuler ma réservation"
+#BookingCancellationPage
+- runFlow: reusableFlows/BookingCancellationPage.yml
+
+- tapOn: "Annuler ma réservation"
+- assertVisible: "Réservations terminées"
+
+# Stop App
+#- runFlow: reusableFlows/StopApp.yml

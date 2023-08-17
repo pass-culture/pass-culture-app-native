@@ -1,5 +1,10 @@
 appId: app.passculture.staging
 ---
+#AffichageBoutonSupprimerSectionInfosPerso
+#AffichagePageConfirmationClicBoutonSupprimerSectionInfosPerso
+#ReactivationPossibleCompteSupprimeMoins60Jours
+#ConnexionAutomatiqueSuiteReactivationCompte
+#DeconnexionUtilisateurApresConfirmationSuppressionCompte
 # Launch App
 - runFlow: reusableFlows/LaunchApp.yml
 # First Launch
@@ -32,6 +37,10 @@ appId: app.passculture.staging
 - tapOn:
     id: "Supprimer mon compte"
 
+#Page de suppression
+- runFlow: reusableFlows/AccountDeletionPage.yml
+# AccountDeletionConfirmationPage
+- runFlow: reusableFlows/AccountDeletionConfirmationPage.yml
 - tapOn: "Supprimer mon compte"
 
 - tapOn: "Retourner à l’accueil"
@@ -49,9 +58,11 @@ appId: app.passculture.staging
 - tapOn: "Se connecter"
 
 #Page de désactivation
+- runFlow: reusableFlows/AccountDeactivationPage.yml
 - tapOn: "Réactiver mon compte"
 
- #Page de réactivation
+#Page de réactivation
+- runFlow: reusableFlows/AccountReactivationPage.yml
 - tapOn:
     id: "Découvrir le catalogue"
 
