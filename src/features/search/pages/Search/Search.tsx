@@ -12,11 +12,11 @@ import { AutocompleteVenue } from 'features/search/components/AutocompleteVenue/
 import { BodySearch } from 'features/search/components/BodySearch/BodySearch'
 import { SearchHeader } from 'features/search/components/SearchHeader/SearchHeader'
 import { useSearch } from 'features/search/context/SearchWrapper'
-import { LocationType } from 'features/search/enums'
 import { SearchView } from 'features/search/types'
 import { InsightsMiddleware } from 'libs/algolia/analytics/InsightsMiddleware'
 import { client } from 'libs/algolia/fetchAlgolia/clients'
 import { buildSearchVenuePosition } from 'libs/algolia/fetchAlgolia/fetchOffersAndVenues/helpers/buildSearchVenuePosition'
+import { getCurrentVenuesIndex } from 'libs/algolia/fetchAlgolia/helpers/getCurrentVenuesIndex'
 import { env } from 'libs/environment'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { useGeolocation } from 'libs/geolocation'
@@ -49,8 +49,6 @@ const searchClient: SearchClient = {
   },
 }
 const suggestionsIndex = env.ALGOLIA_SUGGESTIONS_INDEX_NAME
-const venuesIndexSearch = env.ALGOLIA_VENUES_INDEX_PLAYLIST_SEARCH
-const venuesIndexSearchNewest = env.ALGOLIA_VENUES_INDEX_PLAYLIST_SEARCH_NEWEST
 
 export function Search() {
   const netInfo = useNetInfoContext()
@@ -73,10 +71,7 @@ export function Search() {
     return <OfflinePage />
   }
 
-  const currentVenuesIndex =
-    params?.locationFilter?.locationType === LocationType.EVERYWHERE
-      ? venuesIndexSearchNewest
-      : venuesIndexSearch
+  const currentVenuesIndex = getCurrentVenuesIndex(params?.locationFilter?.locationType)
 
   return (
     <React.Fragment>
