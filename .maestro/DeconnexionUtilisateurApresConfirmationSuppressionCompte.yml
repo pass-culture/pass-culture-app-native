@@ -1,0 +1,60 @@
+appId: app.passculture.staging
+---
+# Launch App
+- runFlow: reusableFlows/LaunchApp.yml
+# First Launch
+- runFlow: reusableFlows/FirstLaunch.yml
+- tapOn:
+      id: "Mon profil"
+- tapOn: "Se connecter"
+- assertVisible: "Connecte-toi"
+- tapOn:
+        id: "Entrée pour l’email"
+- inputText: ${USERNAME}
+- tapOn:
+        id: "Mot de passe"
+- inputText: ${PASSWORD}
+
+- tapOn: "Se connecter"
+#pour sortir de la saisie
+- tapOn:
+    id: "Se connecter"
+
+- tapOn: "Plus tard"
+- tapOn:
+    id: "Mon profil"
+
+- tapOn: "Informations personnelles"
+- assertVisible:
+    text: "Supprimer mon compte"
+    index: 1
+
+- tapOn:
+    id: "Supprimer mon compte"
+
+- tapOn: "Supprimer mon compte"
+
+- tapOn: "Retourner à l’accueil"
+- tapOn: "Mon profil"
+- assertVisible: "Se connecter"
+
+- tapOn: "Se connecter"
+- tapOn:
+    id: "Entrée pour l’email"
+- inputText: ${USERNAME}
+- tapOn:
+    id: "Mot de passe"
+- inputText: ${PASSWORD}
+- tapOn: "Se connecter"
+- tapOn: "Se connecter"
+
+#Page de désactivation
+- tapOn: "Réactiver mon compte"
+
+ #Page de réactivation
+- tapOn:
+    id: "Découvrir le catalogue"
+
+#- tapOn: "Découvrir le catalogue"
+# Stop App
+#- runFlow: reusableFlows/StopApp.yml

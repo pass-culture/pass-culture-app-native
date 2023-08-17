@@ -1,0 +1,43 @@
+appId: app.passculture.staging
+---
+# Launch App
+- runFlow: reusableFlows/LaunchApp.yml
+- tapOn: "Tout accepter"
+- tapOn: "C’est parti\_!"
+- tapOn: "Passer"
+
+- assertVisible: "Pour commencer, peux-tu nous dire ton âge\_?"
+- assertVisible: "Cela permet de savoir si tu peux bénéficier du pass Culture."
+- assertVisible:
+    text: "j’ai 15 ans"
+    index: 1
+- assertVisible:
+    text: "j’ai 16 ans"
+    index: 1
+- assertVisible:
+    text: "j’ai 17 ans"
+    index: 1
+- assertVisible:
+    text: "j’ai 18 ans"
+    index: 1
+- assertVisible: "Autre"
+- assertVisible: "j’ai moins de 15 ans ou plus de 18 ans"
+
+- tapOn:
+    id: "icon-back"
+- tapOn: "Passer"
+- tapOn:
+    id: "j’ai 15 ans"
+- tapOn: "Plus tard"
+
+#- tapOn: "Mon profil"
+#- tapOn: "Se connecter"
+#- assertVisible: "Connecte-toi"
+#- tapOn:
+#    id: "icon-back"
+#- tapOn: "Créer un compte"
+#- assertVisible: "Crée-toi un compte"
+#- tapOn: "Revenir en arrière"
+
+# Stop App
+#- runFlow: reusableFlows/StopApp.yml
