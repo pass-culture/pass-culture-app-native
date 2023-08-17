@@ -15,15 +15,8 @@ appId: app.passculture.staging
     point: "50%,49%"
 - tapOn:
     id: "Réserver l’offre"
-- tapOn: "Se connecter"
-- assertVisible: "Connecte-toi"
-
-- tapOn:
-    id: "Entrée pour l’email"
-- inputText: ${USERNAME}
-- tapOn:
-    id: "Mot de passe"
-- inputText: ${PASSWORD}
+# Se connecter
+- runFlow: reusableFlows/ToLogin.yml
 
 - tapOn: "Se connecter"
 #pour sortir de la saisie

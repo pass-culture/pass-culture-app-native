@@ -6,16 +6,10 @@ appId: app.passculture.staging
 - runFlow: reusableFlows/FirstLaunch.yml
 - tapOn:
       id: "Mon profil"
+# Se connecter
+- runFlow: reusableFlows/ToLogin.yml
 - tapOn: "Se connecter"
-- assertVisible: "Connecte-toi"
-- tapOn:
-        id: "Entrée pour l’email"
-- inputText: ${USERNAME}
-- tapOn:
-        id: "Mot de passe"
-- inputText: ${PASSWORD}
 
-- tapOn: "Se connecter"
 #pour sortir de la saisie
 - tapOn:
     id: "Se connecter"
