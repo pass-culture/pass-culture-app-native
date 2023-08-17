@@ -17,6 +17,13 @@ useBookingsSpy.mockReturnValue({ data: bookingsSnap, isFetching: false } as Quer
   unknown
 >)
 describe('Bookings', () => {
+  it('should render correctly', async () => {
+    renderBookings()
+
+    await screen.findByText('Mes réservations')
+    expect(screen).toMatchSnapshot()
+  })
+
   it('should always execute the query (in cache or in network)', async () => {
     renderBookings()
     await act(async () => {})
