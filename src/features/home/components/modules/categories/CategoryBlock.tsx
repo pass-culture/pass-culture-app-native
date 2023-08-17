@@ -11,7 +11,7 @@ import { gradientColorsMapping } from 'ui/theme/gradientColorsMapping'
 
 import { Shape } from './Shape'
 
-const BLOCK_HEIGHT = getSpacing(18)
+const BLOCK_HEIGHT = getSpacing(24)
 
 interface CategoryBlockProps {
   title: string
@@ -40,6 +40,7 @@ const ColoredContainer = styled(LinearGradient).attrs({
   end: { x: 0, y: 1 },
 })(({ theme }) => ({
   flex: 1,
+  flexDirection: 'column-reverse',
   borderRadius: theme.borderRadius.radius,
 }))
 
@@ -47,7 +48,7 @@ const StyledShape = styled(Shape)({ position: 'absolute', right: 0 })
 
 const StyledTitle = styled(Typo.ButtonText)({
   color: theme.colors.white,
-  paddingVertical: getSpacing(4),
+  paddingVertical: getSpacing(3),
   paddingHorizontal: getSpacing(3),
 })
 
