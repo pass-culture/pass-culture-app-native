@@ -41,22 +41,12 @@ appId: app.passculture.staging
 - tapOn:
       point: "50%,34%"
 - tapOn: "Réserver l’offre"
-- assertVisible: "Détails de la réservation"
-- assertVisible: "Les biens acquis ou réservés sur le pass Culture sont destinés à\
-    \ un usage strictement personnel et ne peuvent faire l’objet de revente."
-- assertVisible: "Informations"
-- assertVisible: "Lieu de retrait"
-- assertVisible: "Conditions d’annulation"
-- assertVisible: "Cette réservation est annulable"
-- assertVisible: "Confirmer la réservation"
+#PreBookingReservation
+- runFlow: reusableFlows/PreBookingPage.yml
+
 - tapOn: "Confirmer la réservation"
-- assertVisible: "Réservation confirmée\_!"
-- assertVisible:
-      id: "Voir ma réservation"
-- assertVisible:
-      id: "Partager l’offre"
-- assertVisible:
-      id: "Retourner à l’accueil"
+#BookingConfirmationPage
+- runFlow: reusableFlows/BookingConfirmationPage.yml
 - tapOn: "Voir ma réservation"
 - assertVisible: "Pour profiter de ta réservation, tu dois présenter ta carte d’identité\
     \ et ce code à 6 caractères. N’oublie pas que tu n’as pas le droit de le revendre\
@@ -77,14 +67,10 @@ appId: app.passculture.staging
       direction: DOWN
 
 - tapOn: "Annuler ma réservation"
+#BookingCancellationPage
+- runFlow: reusableFlows/BookingCancellationPage.yml
 
-- assertVisible: "Tu es sur le point d’annuler"
-- assertVisible:
-      id: "Annuler ma réservation"
-- assertVisible:
-      id: "Retourner à ma réservation"
 - tapOn: "Annuler ma réservation"
-
 - assertVisible: "Réservations terminées"
 
 # Stop App

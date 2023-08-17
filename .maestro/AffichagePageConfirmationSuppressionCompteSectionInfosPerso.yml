@@ -49,7 +49,7 @@ appId: app.passculture.staging
 - tapOn: "Se connecter"
 
 #Page de désactivation
-- runFlow: reusableFlows/AccountDeactivationConfirmationPage.yml
+- runFlow: reusableFlows/AccountDeactivationPage.yml
 - tapOn: "Réactiver mon compte"
 
  #Page de réactivation

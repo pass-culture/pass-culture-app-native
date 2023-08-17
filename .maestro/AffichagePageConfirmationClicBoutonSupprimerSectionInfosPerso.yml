@@ -32,7 +32,7 @@ appId: app.passculture.staging
 - tapOn:
     id: "Supprimer mon compte"
 
-# First Launch
+# AccountDeletionConfirmationPage
 - runFlow: reusableFlows/AccountDeletionConfirmationPage.yml
 
 

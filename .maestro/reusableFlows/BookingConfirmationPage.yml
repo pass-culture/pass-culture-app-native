@@ -1,0 +1,12 @@
+appId: app.passculture.staging
+---
+#BookingConfirmationPage
+- assertVisible: "Réservation confirmée\_!"
+- assertVisible:
+    id: "Voir ma réservation"
+- assertVisible:
+    id: "Partager l’offre"
+- assertVisible:
+    id: "Retourner à l’accueil"
+
+
