@@ -1,63 +1,59 @@
-import colorAlpha from 'color-alpha'
 import React, { FunctionComponent } from 'react'
+import LinearGradient from 'react-native-linear-gradient'
 import styled from 'styled-components/native'
 
+import { Color } from 'features/home/types'
 import { theme } from 'theme'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { InternalNavigationProps } from 'ui/components/touchableLink/types'
 import { getSpacing, Typo } from 'ui/theme'
+import { gradientColorsMapping } from 'ui/theme/gradientColorsMapping'
 
-interface FilterProps {
-  color: string
-  opacity: number
-}
+import { Shape } from './Shape'
+
+const BLOCK_HEIGHT = getSpacing(24)
 
 interface CategoryBlockProps {
   title: string
   navigateTo: InternalNavigationProps['navigateTo']
-  filter: FilterProps
   image?: string
+  color: Color
   onBeforePress: () => void | Promise<void>
 }
 
 export const CategoryBlock: FunctionComponent<CategoryBlockProps> = ({
   title,
   navigateTo,
-  image,
-  filter,
+  color,
   onBeforePress,
 }) => (
   <StyledInternalTouchableLink onBeforeNavigate={onBeforePress} navigateTo={navigateTo}>
-    <ImageBackground source={{ uri: image }}>
-      <ContainerWithFilter filter={filter}>
-        <StyledTitle numberOfLines={2}>{title}</StyledTitle>
-      </ContainerWithFilter>
-    </ImageBackground>
+    <ColoredContainer colors={gradientColorsMapping[color]}>
+      <StyledShape color={color} height={BLOCK_HEIGHT} />
+      <StyledTitle numberOfLines={2}>{title}</StyledTitle>
+    </ColoredContainer>
   </StyledInternalTouchableLink>
 )
 
-const ContainerWithFilter = styled.View<{ filter: FilterProps }>(({ filter }) => ({
-  paddingVertical: getSpacing(4),
-  paddingHorizontal: getSpacing(3),
-  backgroundColor: colorAlpha(filter.color, filter.opacity),
+const ColoredContainer = styled(LinearGradient).attrs({
+  start: { x: 0, y: 0 },
+  end: { x: 0, y: 1 },
+})(({ theme }) => ({
   flex: 1,
+  flexDirection: 'column-reverse',
   borderRadius: theme.borderRadius.radius,
 }))
 
+const StyledShape = styled(Shape)({ position: 'absolute', right: 0 })
+
 const StyledTitle = styled(Typo.ButtonText)({
   color: theme.colors.white,
-})
-
-const ImageBackground = styled.ImageBackground({
-  //the overflow: hidden allow to add border radius to the image
-  //https://stackoverflow.com/questions/49442165/how-do-you-add-borderradius-to-imagebackground/57616397
-  overflow: 'hidden',
-  borderRadius: theme.borderRadius.radius,
-  flex: 1,
+  paddingVertical: getSpacing(3),
+  paddingHorizontal: getSpacing(3),
 })
 
 const StyledInternalTouchableLink = styled(InternalTouchableLink).attrs(({ theme }) => ({
   hoverUnderlineColor: theme.colors.white,
 }))({
-  height: getSpacing(18),
+  height: BLOCK_HEIGHT,
 })

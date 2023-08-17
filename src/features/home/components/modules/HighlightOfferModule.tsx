@@ -165,7 +165,7 @@ const ColorCategoryBackground = styled(LinearGradient)<{
   right: 0,
   left: 0,
   bottom: 0,
-  height: height,
+  height,
 }))
 
 const StyledTouchableLink = styled(InternalTouchableLink).attrs(({ theme }) => ({

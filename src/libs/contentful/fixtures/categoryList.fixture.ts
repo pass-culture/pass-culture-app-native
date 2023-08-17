@@ -1,3 +1,4 @@
+import { Color } from 'features/home/types'
 import { CategoryListContentModel, ContentTypes } from 'libs/contentful/types'
 
 export const categoryListFixture: CategoryListContentModel = {
@@ -98,6 +99,7 @@ export const categoryListFixture: CategoryListContentModel = {
             fields: {
               title: 'Livres',
               displayedTitle: 'Livres',
+              color: Color.Gold,
               image: {
                 sys: {
                   space: {
@@ -208,6 +210,7 @@ export const categoryListFixture: CategoryListContentModel = {
             fields: {
               title: 'Chasse au trésor - Cinéma',
               displayedTitle: 'Cinéma',
+              color: Color.SkyBlue,
               image: {
                 sys: {
                   space: {

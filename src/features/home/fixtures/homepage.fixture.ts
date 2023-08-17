@@ -10,6 +10,7 @@ import {
   ThematicHighlightModule,
   CategoryListModule,
   ThematicHeaderType,
+  Color,
 } from 'features/home/types'
 
 export const formattedBusinessModule: BusinessModule = {
@@ -150,6 +151,7 @@ export const formattedCategoryListModule: CategoryListModule = {
       image:
         'https://images.ctfassets.net/2bg01iqy0isv/1uTePwMo6qxJo7bMM7VLeX/fdea7eb6fd7ab2003a5f1eeaba2565e9/17-insta-1080x1350_560x800.jpg',
       homeEntryId: '6DCThxvbPFKAo04SVRZtwY',
+      color: Color.Gold,
     },
     {
       id: '7s8Pcu34LbJytAIU1iZA0N',
@@ -157,6 +159,7 @@ export const formattedCategoryListModule: CategoryListModule = {
       image:
         'https://images.ctfassets.net/2bg01iqy0isv/1IujqyX9w3ugcGGbKlolbp/d11cdb6d0dee5e6d3fb2b072031a01e7/i107848-eduquer-un-chaton.jpeg',
       homeEntryId: '6DCThxvbPFKAo04SVRZtwY',
+      color: Color.SkyBlue,
     },
   ],
 }

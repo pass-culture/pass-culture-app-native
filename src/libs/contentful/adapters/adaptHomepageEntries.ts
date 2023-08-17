@@ -27,7 +27,7 @@ const adaptThematicHeader = (homepageEntry: HomepageNatifEntry) => {
     // if a mandatory module is unpublished/deleted, we can't handle the header, so we return the default one
     if (thematicHeaderFields?.image.fields === undefined) return adaptDefaultHeader(homepageEntry)
 
-    return {
+    const highlightThematicHeader: HighlightThematicHeader = {
       type: ThematicHeaderType.Highlight,
       title: thematicHeaderFields.displayedTitle,
       subtitle: thematicHeaderFields.displayedSubtitle,
@@ -36,7 +36,8 @@ const adaptThematicHeader = (homepageEntry: HomepageNatifEntry) => {
       endingDate: new Date(thematicHeaderFields.endingDatetime),
       introductionTitle: thematicHeaderFields.introductionTitle,
       introductionParagraph: thematicHeaderFields.introductionParagraph,
-    } as HighlightThematicHeader
+    }
+    return highlightThematicHeader
   }
 
   if (isThematicCategoryInfo(thematicHeader)) {
@@ -44,12 +45,13 @@ const adaptThematicHeader = (homepageEntry: HomepageNatifEntry) => {
     // if a mandatory module is unpublished/deleted, we can't handle the header, so we return the default one
     if (thematicHeaderFields?.image.fields === undefined) return adaptDefaultHeader(homepageEntry)
 
-    return {
+    const categoryThematicHeader: CategoryThematicHeader = {
       type: ThematicHeaderType.Category,
       title: thematicHeaderFields.displayedTitle,
       subtitle: thematicHeaderFields.displayedSubtitle,
       imageUrl: buildImageUrl(thematicHeaderFields.image.fields.file.url),
-    } as CategoryThematicHeader
+    }
+    return categoryThematicHeader
   }
 
   return adaptDefaultHeader(homepageEntry)
