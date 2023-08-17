@@ -32,6 +32,7 @@ exports[`AutocompleteVenueItem component should render AutocompleteVenueItem 1`]
     }
   >
     <View
+      fill="none"
       height={16}
       width={16}
     >
@@ -42,7 +43,7 @@ exports[`AutocompleteVenueItem component should render AutocompleteVenueItem 1`]
   </View>
   <Text
     ellipsizeMode="tail"
-    numberOfLines={1}
+    numberOfLines={2}
     style={
       [
         {

@@ -20,7 +20,7 @@ import { AlgoliaSuggestionHit } from 'libs/algolia'
 import { env } from 'libs/environment'
 import { useSearchGroupLabel } from 'libs/subcategories'
 import { useSubcategories } from 'libs/subcategories/useSubcategories'
-import { MagnifyingGlass } from 'ui/svg/icons/MagnifyingGlass'
+import { MagnifyingGlassFilled } from 'ui/svg/icons/MagnifyingGlassFilled'
 import { getSpacing, Typo } from 'ui/theme'
 
 type AutocompleteOfferItemProps = {
@@ -117,7 +117,7 @@ export function AutocompleteOfferItem({
   return (
     <AutocompleteItemTouchable testID={testID} onPress={onPress}>
       <MagnifyingGlassIconContainer>
-        <MagnifyingGlassIcon />
+        <MagnifyingGlassFilledIcon />
       </MagnifyingGlassIconContainer>
       <StyledText numberOfLines={1} ellipsizeMode="tail">
         <Highlight suggestionHit={hit} attribute="query" />
@@ -142,7 +142,7 @@ const AutocompleteItemTouchable = styled.TouchableOpacity({
   paddingBottom: getSpacing(4),
 })
 
-const MagnifyingGlassIcon = styled(MagnifyingGlass).attrs(({ theme }) => ({
+const MagnifyingGlassFilledIcon = styled(MagnifyingGlassFilled).attrs(({ theme }) => ({
   size: theme.icons.sizes.extraSmall,
   color: theme.colors.greyDark,
 }))``

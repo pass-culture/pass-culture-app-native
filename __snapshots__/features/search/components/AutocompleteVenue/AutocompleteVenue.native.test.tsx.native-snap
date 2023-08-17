@@ -1,221 +1,248 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`AutocompleteVenue component should render AutocompleteVenue 1`] = `
+exports[`AutocompleteVenue component With venue hits should render AutocompleteVenue 1`] = `
 [
-  <View
-    accessibilityRole="none"
+  <Text
     style={
       [
         {
-          "display": "flex",
-          "paddingHorizontal": 24,
+          "color": "#696A6F",
+          "fontFamily": "Montserrat-SemiBold",
+          "fontSize": 12,
+          "lineHeight": 16,
+        },
+      ]
+    }
+  >
+    Points de vente
+  </Text>,
+  <View
+    accessibilityRole="list"
+    style={
+      [
+        {
+          "flexDirection": "column",
+          "marginTop": 16,
+          "paddingLeft": 0,
         },
       ]
     }
   >
     <View
-      accessible={true}
-      collapsable={false}
-      focusable={true}
-      onClick={[Function]}
-      onResponderGrant={[Function]}
-      onResponderMove={[Function]}
-      onResponderRelease={[Function]}
-      onResponderTerminate={[Function]}
-      onResponderTerminationRequest={[Function]}
-      onStartShouldSetResponder={[Function]}
+      accessibilityRole="none"
       style={
-        {
-          "alignItems": "center",
-          "flexDirection": "row",
-          "opacity": 1,
-          "paddingBottom": 16,
-        }
+        [
+          {
+            "display": "flex",
+          },
+        ]
       }
-      testID="autocompleteVenueItem_9898"
     >
       <View
+        accessible={true}
+        collapsable={false}
+        focusable={true}
+        onClick={[Function]}
+        onResponderGrant={[Function]}
+        onResponderMove={[Function]}
+        onResponderRelease={[Function]}
+        onResponderTerminate={[Function]}
+        onResponderTerminationRequest={[Function]}
+        onStartShouldSetResponder={[Function]}
         style={
-          [
-            {
-              "flexShrink": 0,
-            },
-          ]
+          {
+            "alignItems": "center",
+            "flexDirection": "row",
+            "opacity": 1,
+            "paddingBottom": 16,
+          }
         }
+        testID="autocompleteVenueItem_9898"
       >
         <View
-          height={16}
-          width={16}
+          style={
+            [
+              {
+                "flexShrink": 0,
+              },
+            ]
+          }
         >
-          <Text>
-            undefined-SVG-Mock
-          </Text>
+          <View
+            fill="none"
+            height={16}
+            width={16}
+          >
+            <Text>
+              undefined-SVG-Mock
+            </Text>
+          </View>
         </View>
+        <Text
+          ellipsizeMode="tail"
+          numberOfLines={2}
+          style={
+            [
+              {
+                "marginLeft": 8,
+              },
+            ]
+          }
+        >
+          <Text
+            style={
+              [
+                {
+                  "color": "#161617",
+                  "fontFamily": "Montserrat-Regular",
+                  "fontSize": 15,
+                  "lineHeight": 20,
+                },
+              ]
+            }
+            testID="highlightedText"
+          >
+            ciné
+          </Text>
+          <Text
+            style={
+              [
+                {
+                  "color": "#161617",
+                  "fontFamily": "Montserrat-Bold",
+                  "fontSize": 15,
+                  "lineHeight": 20,
+                },
+              ]
+            }
+            testID="nonHighlightedText"
+          >
+            ma le Paradis
+          </Text>
+          <Text
+            style={
+              [
+                {
+                  "color": "#161617",
+                  "fontFamily": "Montserrat-Regular",
+                  "fontSize": 15,
+                  "lineHeight": 20,
+                },
+              ]
+            }
+          >
+             Quiberon
+          </Text>
+        </Text>
       </View>
-      <Text
-        ellipsizeMode="tail"
-        numberOfLines={1}
-        style={
-          [
-            {
-              "marginLeft": 8,
-            },
-          ]
-        }
-      >
-        <Text
-          style={
-            [
-              {
-                "color": "#161617",
-                "fontFamily": "Montserrat-Regular",
-                "fontSize": 15,
-                "lineHeight": 20,
-              },
-            ]
-          }
-          testID="highlightedText"
-        >
-          ciné
-        </Text>
-        <Text
-          style={
-            [
-              {
-                "color": "#161617",
-                "fontFamily": "Montserrat-Bold",
-                "fontSize": 15,
-                "lineHeight": 20,
-              },
-            ]
-          }
-          testID="nonHighlightedText"
-        >
-          ma le Paradis
-        </Text>
-        <Text
-          style={
-            [
-              {
-                "color": "#161617",
-                "fontFamily": "Montserrat-Regular",
-                "fontSize": 15,
-                "lineHeight": 20,
-              },
-            ]
-          }
-        >
-           Quiberon
-        </Text>
-      </Text>
     </View>
-  </View>,
-  <View
-    accessibilityRole="none"
-    style={
-      [
-        {
-          "display": "flex",
-          "paddingHorizontal": 24,
-        },
-      ]
-    }
-  >
     <View
-      accessible={true}
-      collapsable={false}
-      focusable={true}
-      onClick={[Function]}
-      onResponderGrant={[Function]}
-      onResponderMove={[Function]}
-      onResponderRelease={[Function]}
-      onResponderTerminate={[Function]}
-      onResponderTerminationRequest={[Function]}
-      onStartShouldSetResponder={[Function]}
+      accessibilityRole="none"
       style={
-        {
-          "alignItems": "center",
-          "flexDirection": "row",
-          "opacity": 1,
-          "paddingBottom": 16,
-        }
+        [
+          {
+            "display": "flex",
+          },
+        ]
       }
-      testID="autocompleteVenueItem_9495"
     >
       <View
+        accessible={true}
+        collapsable={false}
+        focusable={true}
+        onClick={[Function]}
+        onResponderGrant={[Function]}
+        onResponderMove={[Function]}
+        onResponderRelease={[Function]}
+        onResponderTerminate={[Function]}
+        onResponderTerminationRequest={[Function]}
+        onStartShouldSetResponder={[Function]}
         style={
-          [
-            {
-              "flexShrink": 0,
-            },
-          ]
+          {
+            "alignItems": "center",
+            "flexDirection": "row",
+            "opacity": 1,
+            "paddingBottom": 16,
+          }
         }
+        testID="autocompleteVenueItem_9495"
       >
         <View
-          height={16}
-          width={16}
+          style={
+            [
+              {
+                "flexShrink": 0,
+              },
+            ]
+          }
         >
-          <Text>
-            undefined-SVG-Mock
-          </Text>
+          <View
+            fill="none"
+            height={16}
+            width={16}
+          >
+            <Text>
+              undefined-SVG-Mock
+            </Text>
+          </View>
         </View>
+        <Text
+          ellipsizeMode="tail"
+          numberOfLines={2}
+          style={
+            [
+              {
+                "marginLeft": 8,
+              },
+            ]
+          }
+        >
+          <Text
+            style={
+              [
+                {
+                  "color": "#161617",
+                  "fontFamily": "Montserrat-Regular",
+                  "fontSize": 15,
+                  "lineHeight": 20,
+                },
+              ]
+            }
+            testID="highlightedText"
+          >
+            Ciné
+          </Text>
+          <Text
+            style={
+              [
+                {
+                  "color": "#161617",
+                  "fontFamily": "Montserrat-Bold",
+                  "fontSize": 15,
+                  "lineHeight": 20,
+                },
+              ]
+            }
+            testID="nonHighlightedText"
+          >
+            -Lot TOUR DE FAURE
+          </Text>
+          <Text
+            style={
+              [
+                {
+                  "color": "#161617",
+                  "fontFamily": "Montserrat-Regular",
+                  "fontSize": 15,
+                  "lineHeight": 20,
+                },
+              ]
+            }
+          >
+             Tour-de-Faure
+          </Text>
+        </Text>
       </View>
-      <Text
-        ellipsizeMode="tail"
-        numberOfLines={1}
-        style={
-          [
-            {
-              "marginLeft": 8,
-            },
-          ]
-        }
-      >
-        <Text
-          style={
-            [
-              {
-                "color": "#161617",
-                "fontFamily": "Montserrat-Regular",
-                "fontSize": 15,
-                "lineHeight": 20,
-              },
-            ]
-          }
-          testID="highlightedText"
-        >
-          Ciné
-        </Text>
-        <Text
-          style={
-            [
-              {
-                "color": "#161617",
-                "fontFamily": "Montserrat-Bold",
-                "fontSize": 15,
-                "lineHeight": 20,
-              },
-            ]
-          }
-          testID="nonHighlightedText"
-        >
-          -Lot TOUR DE FAURE
-        </Text>
-        <Text
-          style={
-            [
-              {
-                "color": "#161617",
-                "fontFamily": "Montserrat-Regular",
-                "fontSize": 15,
-                "lineHeight": 20,
-              },
-            ]
-          }
-        >
-           Tour-de-Faure
-        </Text>
-      </Text>
     </View>
   </View>,
 ]

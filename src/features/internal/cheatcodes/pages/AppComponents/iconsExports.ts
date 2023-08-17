@@ -73,6 +73,7 @@ import { Key } from 'ui/svg/icons/Key'
 import { LegalNotices } from 'ui/svg/icons/LegalNotices'
 import { LifeBuoy } from 'ui/svg/icons/LifeBuoy'
 import { LocationBuilding } from 'ui/svg/icons/LocationBuilding'
+import { LocationBuildingFilled } from 'ui/svg/icons/LocationBuildingFilled'
 import { LocationPointer } from 'ui/svg/icons/LocationPointer'
 import { LocationPointerNotFilled } from 'ui/svg/icons/LocationPointerNotFilled'
 import { LocationPointerWithBorder } from 'ui/svg/icons/LocationPointerWithBorder'
@@ -80,6 +81,7 @@ import { Lock } from 'ui/svg/icons/Lock'
 import { Logo } from 'ui/svg/icons/Logo'
 import { LogoPassCulture as PassCultureIcon } from 'ui/svg/icons/LogoPassCulture'
 import { MagnifyingGlass } from 'ui/svg/icons/MagnifyingGlass'
+import { MagnifyingGlassFilled } from 'ui/svg/icons/MagnifyingGlassFilled'
 import { More } from 'ui/svg/icons/More'
 import { OfferEvent } from 'ui/svg/icons/OfferEvent'
 import { Offers } from 'ui/svg/icons/Offers'
@@ -198,9 +200,11 @@ export const SecondaryAndBiggerIcons = {
   LegalNotices,
   LifeBuoy,
   LocationBuilding,
+  LocationBuildingFilled,
   LocationPointerNotFilled,
   Logo,
   MagnifyingGlass,
+  MagnifyingGlassFilled,
   More,
   NewIcon,
   OfferEvent,
@@ -235,6 +239,7 @@ export const TertiaryAndSmallerIcons = {
   Key,
   LocationPointer,
   LocationPointerWithBorder,
+  MagnifyingGlass,
   Lock,
   PhoneFilled,
   PlainArrowNext,

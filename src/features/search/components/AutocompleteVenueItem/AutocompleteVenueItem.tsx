@@ -6,7 +6,7 @@ import styled from 'styled-components/native'
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { Highlight } from 'features/search/components/Highlight/Highlight'
 import { AlgoliaVenue } from 'libs/algolia'
-import { LocationBuilding } from 'ui/svg/icons/LocationBuilding'
+import { LocationBuildingFilled } from 'ui/svg/icons/LocationBuildingFilled'
 import { getSpacing, Typo } from 'ui/theme'
 
 type AutocompleteVenueItemProps = {
@@ -26,9 +26,9 @@ export function AutocompleteVenueItem({ hit }: AutocompleteVenueItemProps) {
   return (
     <AutocompleteItemTouchable testID={testID} onPress={onPress}>
       <LocationBuildingIconContainer>
-        <LocationBuildingIcon />
+        <LocationBuildingFilledIcon />
       </LocationBuildingIconContainer>
-      <StyledText numberOfLines={1} ellipsizeMode="tail">
+      <StyledText numberOfLines={2} ellipsizeMode="tail">
         <Highlight venueHit={hit} attribute="name" />
         <Typo.Body>{city}</Typo.Body>
       </StyledText>
@@ -44,7 +44,7 @@ const AutocompleteItemTouchable = styled.TouchableOpacity({
   paddingBottom: getSpacing(4),
 })
 
-const LocationBuildingIcon = styled(LocationBuilding).attrs(({ theme }) => ({
+const LocationBuildingFilledIcon = styled(LocationBuildingFilled).attrs(({ theme }) => ({
   size: theme.icons.sizes.extraSmall,
   color: theme.colors.greyDark,
 }))``

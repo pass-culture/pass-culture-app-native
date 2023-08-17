@@ -32,6 +32,7 @@ exports[`AutocompleteOfferItem component should render AutocompleteOfferItem 1`]
     }
   >
     <View
+      fill="none"
       height={16}
       width={16}
     >
