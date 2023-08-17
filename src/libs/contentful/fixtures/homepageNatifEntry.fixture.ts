@@ -8,7 +8,7 @@ import { thematicHighlightModuleFixture } from 'libs/contentful/fixtures/themati
 import { venuesNatifModuleFixture } from 'libs/contentful/fixtures/venuesModule.fixture'
 import { ClassicThematicHeader, ContentTypes, HomepageNatifEntry } from 'libs/contentful/types'
 
-const classicThematicHeaderFixture: ClassicThematicHeader = {
+export const classicThematicHeaderFixture: ClassicThematicHeader = {
   sys: {
     space: {
       sys: {

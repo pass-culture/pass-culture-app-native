@@ -1,3 +1,4 @@
+import { classicThematicHeaderFixture } from 'libs/contentful/fixtures/homepageNatifEntry.fixture'
 import { thematicCategoryInfoFixture } from 'libs/contentful/fixtures/thematicCategoryInfo.fixture'
 import { thematicHighlightInfoFixture } from 'libs/contentful/fixtures/thematicHighlightInfo.fixture'
 import { ContentTypes } from 'libs/contentful/types'
@@ -59,8 +60,7 @@ export const homepageEntriesAPIResponse = {
       fields: {
         modules: [{ sys: { type: 'Link', linkType: 'Entry', id: '24FUVnnPPJ9v7JHkO7eaXK' } }],
         title: 'Homepage test démo août 2020',
-        thematicHeaderTitle: 'cinéma',
-        thematicHeaderSubtitle: 'Fais le plein de cinéma',
+        thematicHeader: classicThematicHeaderFixture,
       },
     },
     {
