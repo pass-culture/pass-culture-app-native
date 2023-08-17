@@ -49,7 +49,7 @@ const GreyWarning = styled(Warning).attrs(({ theme }) => ({
   size: theme.icons.sizes.smaller,
 }))``
 
-const stepperPropsMapping = new Map<15 | 16 | 17 | 18, VerticalStepperProps[]>([
+const stepperPropsMapping = new Map<Props['age'], VerticalStepperProps[]>([
   [
     15,
     [
