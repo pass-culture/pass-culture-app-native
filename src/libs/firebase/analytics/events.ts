@@ -140,6 +140,7 @@ export enum AnalyticsEvent {
   TRY_SELECT_DEPOSIT = 'TrySelectDeposit',
   USE_FILTER = 'UseFilter',
   VENUE_CONTACT = 'VenueContact',
+  VENUE_PLAYLIST_DISPLAYED_ON_SEARCH_RESULTS = 'VenuePlaylistDisplayedOnSearchResults',
   VENUE_SEE_ALL_OFFERS_CLICKED = 'VenueSeeAllOffersClicked',
   VENUE_SEE_MORE_CLICKED = 'VenueSeeMoreClicked',
 }

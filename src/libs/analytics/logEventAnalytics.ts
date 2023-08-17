@@ -603,6 +603,15 @@ export const logEventAnalytics = {
     analytics.logEvent({ firebase: AnalyticsEvent.TRY_SELECT_DEPOSIT }, { age }),
   logVenueContact: (params: { type: keyof VenueContactModel; venueId: number }) =>
     analytics.logEvent({ firebase: AnalyticsEvent.VENUE_CONTACT }, params),
+  logVenuePlaylistDisplayedOnSearchResults: (params: {
+    searchId?: string
+    isGeolocated?: boolean
+    searchNbResults?: number
+  }) =>
+    analytics.logEvent(
+      { firebase: AnalyticsEvent.VENUE_PLAYLIST_DISPLAYED_ON_SEARCH_RESULTS },
+      params
+    ),
   logVenueSeeAllOffersClicked: (venueId: number) =>
     analytics.logEvent({ firebase: AnalyticsEvent.VENUE_SEE_ALL_OFFERS_CLICKED }, { venueId }),
   logVenueSeeMoreClicked: (venueId: number) =>
