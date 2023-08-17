@@ -174,5 +174,5 @@ export const useSimilarOffers = ({
     fetchSimilarOffers()
   }, [fetchAlgolia, fetchApiReco, shouldUseAlgoliaRecommend])
 
-  return useAlgoliaSimilarOffers(similarOffersIds ?? [])
+  return useAlgoliaSimilarOffers(similarOffersIds ?? [], true)
 }
