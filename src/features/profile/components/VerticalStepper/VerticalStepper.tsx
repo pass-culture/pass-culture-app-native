@@ -84,6 +84,7 @@ export const VerticalStepper = memo(function VerticalStepper({
 
   const BottomLine = useCallback(
     (props: CustomComponentProps) => {
+      if (props.isLast) return <BottomFilledLine isLast />
       switch (variant) {
         case StepVariant.in_progress:
         case StepVariant.future:
@@ -135,8 +136,7 @@ const TopFilledLine = styled(FilledLine)<FirstOrLastProps>(({ isFirst }) => ({
 }))
 
 const BottomFilledLine = styled(FilledLine)<FirstOrLastProps>(({ isLast }) => ({
-  borderBottomLeftRadius: isLast ? 2 : 0,
-  borderBottomRightRadius: isLast ? 2 : 0,
+  opacity: isLast ? 0 : 1,
 }))
 
 const InProgressIcon = styled.View(({ theme }) => ({
