@@ -15,7 +15,7 @@ import { StepVariant } from './types'
  * We may also want to do something else in this case, so TypeScript is ready to handle
  * these cases!
  */
-type VerticalStepperProps = FirstOrLastProps &
+export type VerticalStepperProps = FirstOrLastProps &
   StepVariantProps & {
     /**
      * Use this if you want to override middle icon.
