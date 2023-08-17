@@ -50,10 +50,14 @@ const adaptThematicHeader = (homepageEntry: HomepageNatifEntry) => {
   }
 
   if (isClassicThematicHeader(thematicHeader)) {
+    const thematicHeaderFields = thematicHeader.fields
+    // if a mandatory module is unpublished/deleted, we can't handle the header, so we return the default one
+    if (thematicHeaderFields === undefined) return
+
     const classicHeader: DefaultThematicHeader = {
       type: ThematicHeaderType.Default,
-      title: homepageEntry.fields.thematicHeader?.fields?.displayedTitle,
-      subtitle: homepageEntry.fields.thematicHeader?.fields?.displayedSubtitle,
+      title: thematicHeaderFields.displayedTitle,
+      subtitle: thematicHeaderFields.displayedSubtitle,
     }
     return classicHeader
   }
