@@ -4,6 +4,7 @@ export enum ContentTypes {
   ALGOLIA = 'algolia',
   ALGOLIA_PARAMETERS = 'algoliaParameters',
   BOOK_TYPES = 'bookTypes',
+  CLASSIC_THEMATIC_HEADER = 'classicThematicHeader',
   DISPLAY_PARAMETERS = 'displayParameters',
   EXCLUSIVITY = 'exclusivity',
   EXCLUSIVITY_DISPLAY_PARAMETERS = 'exclusivityDisplayParameters',
@@ -164,6 +165,17 @@ type ProvidedThematicCategoryInfo = ProvidedEntry<
 export type ThematicHighlightInfo = Entry<
   ThematicHighlightInfoFields,
   ContentTypes.THEMATIC_HIGHLIGHT_INFO
+>
+
+type ClassicThematicHeaderFields = {
+  title: string
+  displayedTitle: string
+  displayedSubtitle?: string
+}
+
+export type ClassicThematicHeader = Entry<
+  ClassicThematicHeaderFields,
+  ContentTypes.CLASSIC_THEMATIC_HEADER
 >
 
 export type VideoContentModel = Entry<VideoFields, ContentTypes.VIDEO>
@@ -412,13 +424,11 @@ export interface HomepageNatifEntry {
   fields: HomepageNatifFields
 }
 
-type ThematicHeader = ThematicHighlightInfo | ThematicCategoryInfo
+type ThematicHeader = ThematicHighlightInfo | ThematicCategoryInfo | ClassicThematicHeader
 
 interface HomepageNatifFields {
   title: string
   modules: HomepageNatifModule[]
-  thematicHeaderTitle?: string
-  thematicHeaderSubtitle?: string
   thematicHeader?: ThematicHeader
 }
 
@@ -500,6 +510,11 @@ export const isThematicCategoryInfo = (
   thematicHeader?: ThematicHeader
 ): thematicHeader is ThematicCategoryInfo =>
   thematicHeader?.sys.contentType?.sys.id === ContentTypes.THEMATIC_CATEGORY_INFO
+
+export const isClassicThematicHeader = (
+  thematicHeader?: ThematicHeader
+): thematicHeader is ClassicThematicHeader =>
+  thematicHeader?.sys.contentType?.sys.id === ContentTypes.CLASSIC_THEMATIC_HEADER
 
 export const isVideoContentModel = (module: HomepageNatifModule): module is VideoContentModel =>
   module.sys.contentType?.sys.id === ContentTypes.VIDEO

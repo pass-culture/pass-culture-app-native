@@ -9,15 +9,10 @@ import { adaptHomepageNatifModules } from 'libs/contentful/adapters/adaptHomepag
 import { buildImageUrl } from 'libs/contentful/adapters/helpers/buildImageUrl'
 import {
   HomepageNatifEntry,
+  isClassicThematicHeader,
   isThematicCategoryInfo,
   isThematicHighlightInfo,
 } from 'libs/contentful/types'
-
-const adaptDefaultHeader = (homepageEntry: HomepageNatifEntry): DefaultThematicHeader => ({
-  type: ThematicHeaderType.Default,
-  title: homepageEntry.fields.thematicHeaderTitle,
-  subtitle: homepageEntry.fields.thematicHeaderSubtitle,
-})
 
 const adaptThematicHeader = (homepageEntry: HomepageNatifEntry) => {
   const thematicHeader = homepageEntry.fields.thematicHeader
@@ -25,7 +20,7 @@ const adaptThematicHeader = (homepageEntry: HomepageNatifEntry) => {
   if (isThematicHighlightInfo(thematicHeader)) {
     const thematicHeaderFields = thematicHeader.fields
     // if a mandatory module is unpublished/deleted, we can't handle the header, so we return the default one
-    if (thematicHeaderFields?.image.fields === undefined) return adaptDefaultHeader(homepageEntry)
+    if (thematicHeaderFields?.image.fields === undefined) return
 
     const highlightThematicHeader: HighlightThematicHeader = {
       type: ThematicHeaderType.Highlight,
@@ -43,7 +38,7 @@ const adaptThematicHeader = (homepageEntry: HomepageNatifEntry) => {
   if (isThematicCategoryInfo(thematicHeader)) {
     const thematicHeaderFields = thematicHeader.fields
     // if a mandatory module is unpublished/deleted, we can't handle the header, so we return the default one
-    if (thematicHeaderFields?.image.fields === undefined) return adaptDefaultHeader(homepageEntry)
+    if (thematicHeaderFields?.image.fields === undefined) return
 
     const categoryThematicHeader: CategoryThematicHeader = {
       type: ThematicHeaderType.Category,
@@ -54,7 +49,15 @@ const adaptThematicHeader = (homepageEntry: HomepageNatifEntry) => {
     return categoryThematicHeader
   }
 
-  return adaptDefaultHeader(homepageEntry)
+  if (isClassicThematicHeader(thematicHeader)) {
+    const classicHeader: DefaultThematicHeader = {
+      type: ThematicHeaderType.Default,
+      title: homepageEntry.fields.thematicHeader?.fields?.displayedTitle,
+      subtitle: homepageEntry.fields.thematicHeader?.fields?.displayedSubtitle,
+    }
+    return classicHeader
+  }
+  return
 }
 
 export const adaptHomepageEntries = (homepageNatifEntries: HomepageNatifEntry[]): Homepage[] => {
