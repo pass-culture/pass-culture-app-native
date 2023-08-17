@@ -42,6 +42,7 @@ export function VenueCard({ onPress, ...props }: VenueCardProps) {
 const Wrapper = styled(TouchableOpacity)<{
   isFocus?: boolean
 }>(({ theme, isFocus }) => ({
+  maxWidth: getSpacing(125),
   display: 'flex',
   flexDirection: 'row',
   backgroundColor: theme.colors.white,
@@ -60,13 +61,13 @@ const ArrowWrapper = styled.View({
 const ArrowCircleBox = styled.View({
   backgroundColor: 'black',
   borderRadius: 50,
-  width: getSpacing(5),
-  height: getSpacing(5),
+  width: getSpacing(6),
+  height: getSpacing(6),
   justifyContent: 'center',
   alignItems: 'center',
 })
 
 const StyledArrowRight = styled(BicolorArrowRight).attrs(({ theme }) => ({
   color: theme.colors.white,
-  size: getSpacing(3),
+  size: theme.icons.sizes.extraSmall,
 }))``
