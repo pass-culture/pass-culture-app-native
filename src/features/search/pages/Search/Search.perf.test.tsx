@@ -2,6 +2,7 @@ import React from 'react'
 
 import { useRoute } from '__mocks__/@react-navigation/native'
 import algoliasearch from '__mocks__/algoliasearch'
+import { SearchVenuesWrapper } from 'features/search/context/SearchVenuesWrapper'
 import { SearchWrapper } from 'features/search/context/SearchWrapper'
 import { mockSuggestionHits } from 'features/search/fixtures/algolia'
 import { Search } from 'features/search/pages/Search/Search'
@@ -48,11 +49,16 @@ describe('<Search />', () => {
     })
 
     it('Performance test for Search Results page', async () => {
-      await measurePerformance(<SearchPage />, {
-        scenario: async () => {
-          await act(async () => {})
-        },
-      })
+      await measurePerformance(
+        <SearchVenuesWrapper>
+          <SearchPage />
+        </SearchVenuesWrapper>,
+        {
+          scenario: async () => {
+            await act(async () => {})
+          },
+        }
+      )
     })
   })
 
