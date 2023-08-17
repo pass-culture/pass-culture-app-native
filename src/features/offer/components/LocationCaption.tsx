@@ -26,7 +26,10 @@ export const LocationCaption: FunctionComponent<Props> = ({ venue, isDigital }: 
             <LocationPointer accessibilityLabel="Adresse" />
           )}
         </IconContainer>
-        {!!locationName && <StyledText numberOfLines={1}>{`${locationName}, `}</StyledText>}
+        {
+          /* uses non-breaking space instead of space because otherwise its is not visible on web */
+          !!locationName && <StyledText numberOfLines={1}>{`${locationName},\u00a0`}</StyledText>
+        }
       </StyledView>
       {!!where && (
         <WhereText numberOfLines={1} isDigital={isDigital}>

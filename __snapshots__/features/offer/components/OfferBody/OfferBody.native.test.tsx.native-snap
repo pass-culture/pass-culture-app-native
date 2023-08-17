@@ -207,7 +207,7 @@ exports[`<OfferBody /> report offer should open the report modal upon clicking o
             ]
           }
         >
-          Cinéma de la fin, 
+          Cinéma de la fin, 
         </Text>
       </View>
       <Text
@@ -2360,7 +2360,7 @@ exports[`<OfferBody /> should match snapshot for digital offer 1`] = `
             ]
           }
         >
-          Ferme des sarbacanes, 
+          Ferme des sarbacanes, 
         </Text>
       </View>
       <Text
@@ -3682,7 +3682,7 @@ exports[`<OfferBody /> should match snapshot for physical offer 1`] = `
             ]
           }
         >
-          Cinéma de la fin, 
+          Cinéma de la fin, 
         </Text>
       </View>
       <Text
