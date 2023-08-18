@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useState } from 'react'
+import React, { FunctionComponent, useEffect, useMemo, useState } from 'react'
 import * as ReactMobilePicker from 'react-mobile-picker'
 import { TextInput } from 'react-native'
 import styled from 'styled-components/native'
@@ -23,10 +23,17 @@ const birthdateInputErrorId = uuidv4()
 const ISO8601_DATE_STRING_RE =
   /^(\d{4})-(\d{2})-(\d{2})T(\d{2}):(\d{2}):(\d{2}(?:\.\d*)?)((-(\d{2}):(\d{2})|Z)?)$/gi
 
-export function DatePickerSpinner(props: DatePickerProps) {
-  const defaultDate = getDateValuesString(props.defaultSelectedDate)
+export const DatePickerSpinner: FunctionComponent<DatePickerProps> = ({
+  defaultSelectedDate,
+  maximumDate,
+  minimumDate,
+  onChange,
+  errorMessage,
+}) => {
+  const defaultDate = getDateValuesString(defaultSelectedDate)
+  const maximumYear = getDateValuesString(maximumDate ?? new Date()).year
   const [date, setDate] = useState(defaultDate)
-  const [hiddenValue, setHiddenValue] = useState(props.defaultSelectedDate.toISOString())
+  const [hiddenValue, setHiddenValue] = useState(defaultSelectedDate.toISOString())
 
   const optionGroups = useMemo(() => {
     const { month: selectedMonth, year: selectedYear } = date
@@ -34,10 +41,9 @@ export function DatePickerSpinner(props: DatePickerProps) {
     return {
       day: getDatesInMonth(selectedMonthIndex, selectedYear),
       month: monthNamesShort,
-      year: getPastYears(props.minimumDate.getFullYear(), defaultDate.year),
+      year: getPastYears(minimumDate.getFullYear(), maximumYear),
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [date, monthNamesShort, getYears])
+  }, [date, maximumYear, minimumDate])
 
   function onDateChange(name: string, value: number | string) {
     setDate((prevDateValues) => ({ ...prevDateValues, [name]: value }))
@@ -47,7 +53,7 @@ export function DatePickerSpinner(props: DatePickerProps) {
   const birthdate = new Date(`${date.year}-${pad(dateMonth)}-${pad(Number(date.day))}`)
 
   useEffect(() => {
-    props.onChange(birthdate)
+    onChange(birthdate)
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [date])
 
@@ -66,15 +72,15 @@ export function DatePickerSpinner(props: DatePickerProps) {
 
   return (
     <React.Fragment>
-      <DateInputDisplay date={birthdate} isError={!!props.errorMessage} />
+      <DateInputDisplay date={birthdate} isError={!!errorMessage} />
       <HiddenInput
         testID="hidden-input-birthdate"
         value={hiddenValue}
         onChangeText={setHiddenValue}
       />
       <InputError
-        visible={!!props.errorMessage}
-        messageId={props.errorMessage}
+        visible={!!errorMessage}
+        messageId={errorMessage}
         numberOfSpacesTop={2}
         relatedInputId={birthdateInputErrorId}
       />
