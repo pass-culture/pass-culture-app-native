@@ -3,7 +3,7 @@ import React from 'react'
 import styled from 'styled-components/native'
 
 import { CreditStatus } from 'features/onboarding/types'
-import { getSpacing, Spacer } from 'ui/theme'
+import { getSpacing, Spacer, Typo } from 'ui/theme'
 
 import { CreditBlock } from './CreditBlock'
 
@@ -35,7 +35,7 @@ const ListContainer = styled.View({
 
 const eighteenYearOldProps = {
   underage: false,
-  title: '300\u00a0€',
+  title: <Typo.Title3>{'300\u00a0€'}</Typo.Title3>,
   age: 18,
   description: 'Tu auras 2 ans pour utiliser tes 300\u00a0€',
   roundedBorders: undefined,
@@ -44,7 +44,7 @@ const eighteenYearOldProps = {
 
 const underageProps = {
   underage: true,
-  title: '20\u00a0€',
+  title: <Typo.Title3>{'20\u00a0€'}</Typo.Title3>,
   age: 15,
   roundedBorders: undefined,
   creditStatus: CreditStatus.ONGOING,

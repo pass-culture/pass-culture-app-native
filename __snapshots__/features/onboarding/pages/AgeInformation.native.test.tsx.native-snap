@@ -1467,7 +1467,7 @@ exports[`AgeInformation should render correctly for 16-year-old 1`] = `
                     ]
                   }
                 >
-                  + 30 €
+                  30 €
                 </Text>
               </View>
               <View
@@ -2501,7 +2501,7 @@ exports[`AgeInformation should render correctly for 17-year-old 1`] = `
                     ]
                   }
                 >
-                  + 30 €
+                  30 €
                 </Text>
               </View>
               <View
@@ -2659,7 +2659,7 @@ exports[`AgeInformation should render correctly for 17-year-old 1`] = `
                     ]
                   }
                 >
-                  + 30 €
+                  30 €
                 </Text>
               </View>
               <View
@@ -3549,7 +3549,7 @@ exports[`AgeInformation should render correctly for 18-year-old 1`] = `
                     ]
                   }
                 >
-                  + 30 €
+                  30 €
                 </Text>
               </View>
               <View
@@ -3693,7 +3693,7 @@ exports[`AgeInformation should render correctly for 18-year-old 1`] = `
                     ]
                   }
                 >
-                  + 30 €
+                  30 €
                 </Text>
               </View>
               <View

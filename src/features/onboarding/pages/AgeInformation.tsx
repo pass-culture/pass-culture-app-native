@@ -12,6 +12,7 @@ import {
 import { homeNavConfig } from 'features/navigation/TabBar/helpers'
 import { AgeSeparator } from 'features/onboarding/components/AgeSeparator'
 import { CreditBlock } from 'features/onboarding/components/CreditBlock'
+import { getCreditBlockTitle } from 'features/onboarding/helpers/getCreditBlockTitle'
 import { getCreditStatusFromAge } from 'features/onboarding/helpers/getCreditStatusFromAge'
 import { OnboardingPage } from 'features/onboarding/pages/OnboardingPage'
 import { analytics } from 'libs/analytics'
@@ -87,11 +88,11 @@ export const AgeInformation = ({ route }: AgeInformationProps): React.JSX.Elemen
       <Spacer.Column numberOfSpaces={2} />
       <Container reverse={isEighteen}>
         <View>
-          {underageInfo.map(({ age, deposit }, index) => (
+          {underageInfo.map(({ age, deposit }) => (
             <React.Fragment key={age}>
               <CreditBlock
                 creditStatus={getCreditStatusFromAge(userAge, age)}
-                title={(index !== 0 ? '+ ' : '') + deposit}
+                title={getCreditBlockTitle({ age, userAge, deposit })}
                 age={age}
                 onPress={() => logTrySelectDeposit(age)}
               />
@@ -103,7 +104,11 @@ export const AgeInformation = ({ route }: AgeInformationProps): React.JSX.Elemen
           <AgeSeparator isEighteen={isEighteen} />
           <CreditBlock
             creditStatus={getCreditStatusFromAge(userAge, eighteenYearOldInfo.age)}
-            title={eighteenYearOldInfo.deposit}
+            title={getCreditBlockTitle({
+              age: eighteenYearOldInfo.age,
+              userAge,
+              deposit: eighteenYearOldInfo.deposit,
+            })}
             age={eighteenYearOldInfo.age}
             description={`Tu auras 2 ans pour utiliser tes ${eighteenYearOldInfo.deposit}`}
             onPress={() => logTrySelectDeposit(eighteenYearOldInfo.age)}

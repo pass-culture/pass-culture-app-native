@@ -9,10 +9,9 @@ import { getBackgroundColor } from 'features/onboarding/helpers/getBackgroundCol
 import { CreditStatus } from 'features/onboarding/types'
 import { AnimatedView, NAV_DELAY_IN_MS } from 'libs/react-native-animatable'
 import { getSpacing, getSpacingString, Spacer, Typo } from 'ui/theme'
-import { getNoHeadingAttrs } from 'ui/theme/typographyAttrs/getNoHeadingAttrs'
 
 type Props = {
-  title: string
+  title: React.ReactElement
   age: number
   description?: string
   creditStatus: CreditStatus
@@ -35,8 +34,6 @@ export const CreditBlock: FunctionComponent<Props> = ({
   creditStatus,
   onPress,
 }) => {
-  const TitleText: React.JSXElementConstructor<{ children: string }> =
-    creditStatus === CreditStatus.ONGOING ? TitleSecondary : Typo.ButtonText
   const AgeText = creditStatus === CreditStatus.ONGOING ? BodySecondary : Typo.CaptionNeutralInfo
 
   const statusIsOngoing = creditStatus === CreditStatus.ONGOING
@@ -60,7 +57,7 @@ export const CreditBlock: FunctionComponent<Props> = ({
         <View>
           <AgeText>{`à ${age} ans`}</AgeText>
           <Spacer.Column numberOfSpaces={1} />
-          <TitleText>{title}</TitleText>
+          {title}
           {!!description && (
             <React.Fragment>
               <Spacer.Column numberOfSpaces={1} />
@@ -83,12 +80,6 @@ const DescriptionText = styled(Typo.Caption)(({ theme }) => ({
 }))
 
 const BodySecondary = styled(Typo.Body)(({ theme }) => ({
-  color: theme.colors.secondary,
-}))
-
-const Title = styled(Typo.Title3).attrs(getNoHeadingAttrs)``
-
-const TitleSecondary = styled(Title)(({ theme }) => ({
   color: theme.colors.secondary,
 }))
 
