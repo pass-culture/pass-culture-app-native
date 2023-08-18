@@ -247,14 +247,14 @@ exports[`AgeInformation should render correctly for 15-year-old 1`] = `
                     [
                       {
                         "color": "#320096",
-                        "fontFamily": "Montserrat-Bold",
-                        "fontSize": 20,
-                        "lineHeight": 24,
+                        "fontFamily": "Montserrat-Regular",
+                        "fontSize": 15,
+                        "lineHeight": 20,
                       },
                     ]
                   }
                 >
-                  20 €
+                  à 15 ans
                 </Text>
                 <View
                   numberOfSpaces={1}
@@ -271,14 +271,14 @@ exports[`AgeInformation should render correctly for 15-year-old 1`] = `
                     [
                       {
                         "color": "#320096",
-                        "fontFamily": "Montserrat-Regular",
-                        "fontSize": 15,
-                        "lineHeight": 20,
+                        "fontFamily": "Montserrat-Bold",
+                        "fontSize": 20,
+                        "lineHeight": 24,
                       },
                     ]
                   }
                 >
-                  à 15 ans
+                  20 €
                 </Text>
               </View>
               <View
@@ -392,14 +392,14 @@ exports[`AgeInformation should render correctly for 15-year-old 1`] = `
                     [
                       {
                         "color": "#161617",
-                        "fontFamily": "Montserrat-Bold",
-                        "fontSize": 15,
-                        "lineHeight": 20,
+                        "fontFamily": "Montserrat-SemiBold",
+                        "fontSize": 12,
+                        "lineHeight": 16,
                       },
                     ]
                   }
                 >
-                  + 30 €
+                  à 16 ans
                 </Text>
                 <View
                   numberOfSpaces={1}
@@ -416,14 +416,14 @@ exports[`AgeInformation should render correctly for 15-year-old 1`] = `
                     [
                       {
                         "color": "#161617",
-                        "fontFamily": "Montserrat-SemiBold",
-                        "fontSize": 12,
-                        "lineHeight": 16,
+                        "fontFamily": "Montserrat-Bold",
+                        "fontSize": 15,
+                        "lineHeight": 20,
                       },
                     ]
                   }
                 >
-                  à 16 ans
+                  + 30 €
                 </Text>
               </View>
               <View
@@ -538,14 +538,14 @@ exports[`AgeInformation should render correctly for 15-year-old 1`] = `
                     [
                       {
                         "color": "#161617",
-                        "fontFamily": "Montserrat-Bold",
-                        "fontSize": 15,
-                        "lineHeight": 20,
+                        "fontFamily": "Montserrat-SemiBold",
+                        "fontSize": 12,
+                        "lineHeight": 16,
                       },
                     ]
                   }
                 >
-                  + 30 €
+                  à 17 ans
                 </Text>
                 <View
                   numberOfSpaces={1}
@@ -562,14 +562,14 @@ exports[`AgeInformation should render correctly for 15-year-old 1`] = `
                     [
                       {
                         "color": "#161617",
-                        "fontFamily": "Montserrat-SemiBold",
-                        "fontSize": 12,
-                        "lineHeight": 16,
+                        "fontFamily": "Montserrat-Bold",
+                        "fontSize": 15,
+                        "lineHeight": 20,
                       },
                     ]
                   }
                 >
-                  à 17 ans
+                  + 30 €
                 </Text>
               </View>
               <View
@@ -758,14 +758,14 @@ exports[`AgeInformation should render correctly for 15-year-old 1`] = `
                     [
                       {
                         "color": "#161617",
-                        "fontFamily": "Montserrat-Bold",
-                        "fontSize": 20,
-                        "lineHeight": 24,
+                        "fontFamily": "Montserrat-Regular",
+                        "fontSize": 15,
+                        "lineHeight": 20,
                       },
                     ]
                   }
                 >
-                  300 €
+                  à 18 ans
                 </Text>
                 <View
                   numberOfSpaces={1}
@@ -782,14 +782,14 @@ exports[`AgeInformation should render correctly for 15-year-old 1`] = `
                     [
                       {
                         "color": "#161617",
-                        "fontFamily": "Montserrat-Regular",
-                        "fontSize": 15,
-                        "lineHeight": 20,
+                        "fontFamily": "Montserrat-Bold",
+                        "fontSize": 20,
+                        "lineHeight": 24,
                       },
                     ]
                   }
                 >
-                  à 18 ans
+                  300 €
                 </Text>
                 <View
                   numberOfSpaces={1}
@@ -1286,14 +1286,14 @@ exports[`AgeInformation should render correctly for 16-year-old 1`] = `
                     [
                       {
                         "color": "#696A6F",
-                        "fontFamily": "Montserrat-Bold",
-                        "fontSize": 15,
-                        "lineHeight": 20,
+                        "fontFamily": "Montserrat-SemiBold",
+                        "fontSize": 12,
+                        "lineHeight": 16,
                       },
                     ]
                   }
                 >
-                  20 €
+                  à 15 ans
                 </Text>
                 <View
                   numberOfSpaces={1}
@@ -1310,14 +1310,14 @@ exports[`AgeInformation should render correctly for 16-year-old 1`] = `
                     [
                       {
                         "color": "#696A6F",
-                        "fontFamily": "Montserrat-SemiBold",
-                        "fontSize": 12,
-                        "lineHeight": 16,
+                        "fontFamily": "Montserrat-Bold",
+                        "fontSize": 15,
+                        "lineHeight": 20,
                       },
                     ]
                   }
                 >
-                  à 15 ans
+                  20 €
                 </Text>
               </View>
               <View
@@ -1445,14 +1445,14 @@ exports[`AgeInformation should render correctly for 16-year-old 1`] = `
                     [
                       {
                         "color": "#320096",
-                        "fontFamily": "Montserrat-Bold",
-                        "fontSize": 20,
-                        "lineHeight": 24,
+                        "fontFamily": "Montserrat-Regular",
+                        "fontSize": 15,
+                        "lineHeight": 20,
                       },
                     ]
                   }
                 >
-                  + 30 €
+                  à 16 ans
                 </Text>
                 <View
                   numberOfSpaces={1}
@@ -1469,14 +1469,14 @@ exports[`AgeInformation should render correctly for 16-year-old 1`] = `
                     [
                       {
                         "color": "#320096",
-                        "fontFamily": "Montserrat-Regular",
-                        "fontSize": 15,
-                        "lineHeight": 20,
+                        "fontFamily": "Montserrat-Bold",
+                        "fontSize": 20,
+                        "lineHeight": 24,
                       },
                     ]
                   }
                 >
-                  à 16 ans
+                  + 30 €
                 </Text>
               </View>
               <View
@@ -1591,14 +1591,14 @@ exports[`AgeInformation should render correctly for 16-year-old 1`] = `
                     [
                       {
                         "color": "#161617",
-                        "fontFamily": "Montserrat-Bold",
-                        "fontSize": 15,
-                        "lineHeight": 20,
+                        "fontFamily": "Montserrat-SemiBold",
+                        "fontSize": 12,
+                        "lineHeight": 16,
                       },
                     ]
                   }
                 >
-                  + 30 €
+                  à 17 ans
                 </Text>
                 <View
                   numberOfSpaces={1}
@@ -1615,14 +1615,14 @@ exports[`AgeInformation should render correctly for 16-year-old 1`] = `
                     [
                       {
                         "color": "#161617",
-                        "fontFamily": "Montserrat-SemiBold",
-                        "fontSize": 12,
-                        "lineHeight": 16,
+                        "fontFamily": "Montserrat-Bold",
+                        "fontSize": 15,
+                        "lineHeight": 20,
                       },
                     ]
                   }
                 >
-                  à 17 ans
+                  + 30 €
                 </Text>
               </View>
               <View
@@ -1811,14 +1811,14 @@ exports[`AgeInformation should render correctly for 16-year-old 1`] = `
                     [
                       {
                         "color": "#161617",
-                        "fontFamily": "Montserrat-Bold",
-                        "fontSize": 20,
-                        "lineHeight": 24,
+                        "fontFamily": "Montserrat-Regular",
+                        "fontSize": 15,
+                        "lineHeight": 20,
                       },
                     ]
                   }
                 >
-                  300 €
+                  à 18 ans
                 </Text>
                 <View
                   numberOfSpaces={1}
@@ -1835,14 +1835,14 @@ exports[`AgeInformation should render correctly for 16-year-old 1`] = `
                     [
                       {
                         "color": "#161617",
-                        "fontFamily": "Montserrat-Regular",
-                        "fontSize": 15,
-                        "lineHeight": 20,
+                        "fontFamily": "Montserrat-Bold",
+                        "fontSize": 20,
+                        "lineHeight": 24,
                       },
                     ]
                   }
                 >
-                  à 18 ans
+                  300 €
                 </Text>
                 <View
                   numberOfSpaces={1}
@@ -2339,14 +2339,14 @@ exports[`AgeInformation should render correctly for 17-year-old 1`] = `
                     [
                       {
                         "color": "#696A6F",
-                        "fontFamily": "Montserrat-Bold",
-                        "fontSize": 15,
-                        "lineHeight": 20,
+                        "fontFamily": "Montserrat-SemiBold",
+                        "fontSize": 12,
+                        "lineHeight": 16,
                       },
                     ]
                   }
                 >
-                  20 €
+                  à 15 ans
                 </Text>
                 <View
                   numberOfSpaces={1}
@@ -2363,14 +2363,14 @@ exports[`AgeInformation should render correctly for 17-year-old 1`] = `
                     [
                       {
                         "color": "#696A6F",
-                        "fontFamily": "Montserrat-SemiBold",
-                        "fontSize": 12,
-                        "lineHeight": 16,
+                        "fontFamily": "Montserrat-Bold",
+                        "fontSize": 15,
+                        "lineHeight": 20,
                       },
                     ]
                   }
                 >
-                  à 15 ans
+                  20 €
                 </Text>
               </View>
               <View
@@ -2484,14 +2484,14 @@ exports[`AgeInformation should render correctly for 17-year-old 1`] = `
                     [
                       {
                         "color": "#696A6F",
-                        "fontFamily": "Montserrat-Bold",
-                        "fontSize": 15,
-                        "lineHeight": 20,
+                        "fontFamily": "Montserrat-SemiBold",
+                        "fontSize": 12,
+                        "lineHeight": 16,
                       },
                     ]
                   }
                 >
-                  + 30 €
+                  à 16 ans
                 </Text>
                 <View
                   numberOfSpaces={1}
@@ -2508,14 +2508,14 @@ exports[`AgeInformation should render correctly for 17-year-old 1`] = `
                     [
                       {
                         "color": "#696A6F",
-                        "fontFamily": "Montserrat-SemiBold",
-                        "fontSize": 12,
-                        "lineHeight": 16,
+                        "fontFamily": "Montserrat-Bold",
+                        "fontSize": 15,
+                        "lineHeight": 20,
                       },
                     ]
                   }
                 >
-                  à 16 ans
+                  + 30 €
                 </Text>
               </View>
               <View
@@ -2644,14 +2644,14 @@ exports[`AgeInformation should render correctly for 17-year-old 1`] = `
                     [
                       {
                         "color": "#320096",
-                        "fontFamily": "Montserrat-Bold",
-                        "fontSize": 20,
-                        "lineHeight": 24,
+                        "fontFamily": "Montserrat-Regular",
+                        "fontSize": 15,
+                        "lineHeight": 20,
                       },
                     ]
                   }
                 >
-                  + 30 €
+                  à 17 ans
                 </Text>
                 <View
                   numberOfSpaces={1}
@@ -2668,14 +2668,14 @@ exports[`AgeInformation should render correctly for 17-year-old 1`] = `
                     [
                       {
                         "color": "#320096",
-                        "fontFamily": "Montserrat-Regular",
-                        "fontSize": 15,
-                        "lineHeight": 20,
+                        "fontFamily": "Montserrat-Bold",
+                        "fontSize": 20,
+                        "lineHeight": 24,
                       },
                     ]
                   }
                 >
-                  à 17 ans
+                  + 30 €
                 </Text>
               </View>
               <View
@@ -2864,14 +2864,14 @@ exports[`AgeInformation should render correctly for 17-year-old 1`] = `
                     [
                       {
                         "color": "#161617",
-                        "fontFamily": "Montserrat-Bold",
-                        "fontSize": 20,
-                        "lineHeight": 24,
+                        "fontFamily": "Montserrat-Regular",
+                        "fontSize": 15,
+                        "lineHeight": 20,
                       },
                     ]
                   }
                 >
-                  300 €
+                  à 18 ans
                 </Text>
                 <View
                   numberOfSpaces={1}
@@ -2888,14 +2888,14 @@ exports[`AgeInformation should render correctly for 17-year-old 1`] = `
                     [
                       {
                         "color": "#161617",
-                        "fontFamily": "Montserrat-Regular",
-                        "fontSize": 15,
-                        "lineHeight": 20,
+                        "fontFamily": "Montserrat-Bold",
+                        "fontSize": 20,
+                        "lineHeight": 24,
                       },
                     ]
                   }
                 >
-                  à 18 ans
+                  300 €
                 </Text>
                 <View
                   numberOfSpaces={1}
@@ -3392,14 +3392,14 @@ exports[`AgeInformation should render correctly for 18-year-old 1`] = `
                     [
                       {
                         "color": "#696A6F",
-                        "fontFamily": "Montserrat-Bold",
-                        "fontSize": 15,
-                        "lineHeight": 20,
+                        "fontFamily": "Montserrat-SemiBold",
+                        "fontSize": 12,
+                        "lineHeight": 16,
                       },
                     ]
                   }
                 >
-                  20 €
+                  à 15 ans
                 </Text>
                 <View
                   numberOfSpaces={1}
@@ -3416,14 +3416,14 @@ exports[`AgeInformation should render correctly for 18-year-old 1`] = `
                     [
                       {
                         "color": "#696A6F",
-                        "fontFamily": "Montserrat-SemiBold",
-                        "fontSize": 12,
-                        "lineHeight": 16,
+                        "fontFamily": "Montserrat-Bold",
+                        "fontSize": 15,
+                        "lineHeight": 20,
                       },
                     ]
                   }
                 >
-                  à 15 ans
+                  20 €
                 </Text>
               </View>
               <View
@@ -3537,14 +3537,14 @@ exports[`AgeInformation should render correctly for 18-year-old 1`] = `
                     [
                       {
                         "color": "#696A6F",
-                        "fontFamily": "Montserrat-Bold",
-                        "fontSize": 15,
-                        "lineHeight": 20,
+                        "fontFamily": "Montserrat-SemiBold",
+                        "fontSize": 12,
+                        "lineHeight": 16,
                       },
                     ]
                   }
                 >
-                  + 30 €
+                  à 16 ans
                 </Text>
                 <View
                   numberOfSpaces={1}
@@ -3561,14 +3561,14 @@ exports[`AgeInformation should render correctly for 18-year-old 1`] = `
                     [
                       {
                         "color": "#696A6F",
-                        "fontFamily": "Montserrat-SemiBold",
-                        "fontSize": 12,
-                        "lineHeight": 16,
+                        "fontFamily": "Montserrat-Bold",
+                        "fontSize": 15,
+                        "lineHeight": 20,
                       },
                     ]
                   }
                 >
-                  à 16 ans
+                  + 30 €
                 </Text>
               </View>
               <View
@@ -3683,14 +3683,14 @@ exports[`AgeInformation should render correctly for 18-year-old 1`] = `
                     [
                       {
                         "color": "#696A6F",
-                        "fontFamily": "Montserrat-Bold",
-                        "fontSize": 15,
-                        "lineHeight": 20,
+                        "fontFamily": "Montserrat-SemiBold",
+                        "fontSize": 12,
+                        "lineHeight": 16,
                       },
                     ]
                   }
                 >
-                  + 30 €
+                  à 17 ans
                 </Text>
                 <View
                   numberOfSpaces={1}
@@ -3707,14 +3707,14 @@ exports[`AgeInformation should render correctly for 18-year-old 1`] = `
                     [
                       {
                         "color": "#696A6F",
-                        "fontFamily": "Montserrat-SemiBold",
-                        "fontSize": 12,
-                        "lineHeight": 16,
+                        "fontFamily": "Montserrat-Bold",
+                        "fontSize": 15,
+                        "lineHeight": 20,
                       },
                     ]
                   }
                 >
-                  à 17 ans
+                  + 30 €
                 </Text>
               </View>
               <View
@@ -3917,14 +3917,14 @@ exports[`AgeInformation should render correctly for 18-year-old 1`] = `
                     [
                       {
                         "color": "#320096",
-                        "fontFamily": "Montserrat-Bold",
-                        "fontSize": 20,
-                        "lineHeight": 24,
+                        "fontFamily": "Montserrat-Regular",
+                        "fontSize": 15,
+                        "lineHeight": 20,
                       },
                     ]
                   }
                 >
-                  300 €
+                  à 18 ans
                 </Text>
                 <View
                   numberOfSpaces={1}
@@ -3941,14 +3941,14 @@ exports[`AgeInformation should render correctly for 18-year-old 1`] = `
                     [
                       {
                         "color": "#320096",
-                        "fontFamily": "Montserrat-Regular",
-                        "fontSize": 15,
-                        "lineHeight": 20,
+                        "fontFamily": "Montserrat-Bold",
+                        "fontSize": 20,
+                        "lineHeight": 24,
                       },
                     ]
                   }
                 >
-                  à 18 ans
+                  300 €
                 </Text>
                 <View
                   numberOfSpaces={1}

@@ -72,9 +72,9 @@ export const CreditBlock: FunctionComponent<Props> = ({
           <CreditBlockIcon status={creditStatus} />
         </IconContainer>
         <View>
-          <TitleText>{title}</TitleText>
-          <Spacer.Column numberOfSpaces={1} />
           <AgeText>{`à ${age} ans`}</AgeText>
+          <Spacer.Column numberOfSpaces={1} />
+          <TitleText>{title}</TitleText>
           {!!description && (
             <React.Fragment>
               <Spacer.Column numberOfSpaces={1} />
