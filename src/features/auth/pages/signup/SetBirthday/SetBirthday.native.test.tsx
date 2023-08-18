@@ -83,4 +83,18 @@ describe('<SetBirthday />', () => {
       expect(spinnerDate.getFullYear()).toBe(2020 - userAge)
     }
   )
+
+  it('should set a default birthdate if the user has already added his birthdate', () => {
+    const propsWithPreviousBirthdate = {
+      ...props,
+      previousSignupData: {
+        ...props.previousSignupData,
+        birthdate: '12-11-1994',
+      },
+    }
+    render(<SetBirthday {...propsWithPreviousBirthdate} />)
+
+    const datePicker = screen.getByTestId('date-picker-spinner-native')
+    expect(datePicker.props.date).toBe(new Date('1994-12-11').getTime())
+  })
 })

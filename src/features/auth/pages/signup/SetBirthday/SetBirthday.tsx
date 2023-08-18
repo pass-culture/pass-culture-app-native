@@ -14,35 +14,39 @@ import { BicolorIdCard } from 'ui/svg/icons/BicolorIdCard'
 import { Spacer, Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
-export const SetBirthday: FunctionComponent<PreValidationSignupNormalStepProps> = (props) => {
+export const SetBirthday: FunctionComponent<PreValidationSignupNormalStepProps> = ({
+  goToNextStep,
+  accessibilityLabelForNextStep,
+  previousSignupData,
+}) => {
   const CURRENT_YEAR = new Date().getFullYear()
-  const DEFAULT_SELECTED_DATE = new Date(new Date().setFullYear(CURRENT_YEAR - UNDER_YOUNGEST_AGE))
-
+  const DEFAULT_SELECTED_DATE = previousSignupData.birthdate
+    ? new Date(previousSignupData.birthdate)
+    : new Date(new Date().setFullYear(CURRENT_YEAR - UNDER_YOUNGEST_AGE))
   const [defaultSelectedDate, setDefaultSelectedDate] = useState(DEFAULT_SELECTED_DATE)
   const MAXIMUM_SPINNER_DATE = new Date(CURRENT_YEAR - UNDER_YOUNGEST_AGE, 11, 31)
 
   useEffect(() => {
     const setDate = async () => {
       const userAge = await storage.readObject<number | string>('user_age')
-      if (typeof userAge === 'number') {
+      if (!previousSignupData.birthdate && typeof userAge === 'number') {
         setDefaultSelectedDate(new Date(new Date().setFullYear(CURRENT_YEAR - userAge)))
       }
     }
 
     setDate()
-  }, [CURRENT_YEAR])
+  }, [CURRENT_YEAR, previousSignupData.birthdate])
 
   const [date, setDate] = useState<Date | undefined>()
 
   const birthdate = date ? formatDateToISOStringWithoutTime(date) : undefined
   const { isDisabled, errorMessage } = useDatePickerErrorHandler(date)
 
-  const goToNextStep = useCallback(() => {
+  const onGoToNextStep = useCallback(() => {
     if (birthdate) {
-      props.goToNextStep({ birthdate })
+      goToNextStep({ birthdate })
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [birthdate, props.goToNextStep])
+  }, [birthdate, goToNextStep])
 
   return (
     <Form.MaxWidth>
@@ -64,9 +68,9 @@ export const SetBirthday: FunctionComponent<PreValidationSignupNormalStepProps> 
         <Spacer.Column numberOfSpaces={10} />
         <ButtonPrimary
           wording="Continuer"
-          accessibilityLabel={props.accessibilityLabelForNextStep}
+          accessibilityLabel={accessibilityLabelForNextStep}
           disabled={isDisabled}
-          onPress={goToNextStep}
+          onPress={onGoToNextStep}
         />
         <Spacer.Column numberOfSpaces={5} />
       </InnerContainer>
