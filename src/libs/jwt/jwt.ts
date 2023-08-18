@@ -27,11 +27,11 @@ export const getUserIdFromAccesstoken = (accessToken: string) => {
   return tokenContent?.user_claims?.user_id ?? null
 }
 
-type AccessTokenStatus = 'valid' | 'expired' | 'unknown'
+type TokenStatus = 'valid' | 'expired' | 'unknown'
 
-export const getAccessTokenStatus = (accessToken: string | null): AccessTokenStatus => {
-  if (!accessToken) return 'unknown'
-  const tokenContent = decodeAccessToken(accessToken)
+export const getTokenStatus = (token: string | null): TokenStatus => {
+  if (!token) return 'unknown'
+  const tokenContent = decodeAccessToken(token)
   if (!tokenContent?.exp) return 'unknown'
   return tokenContent.exp * 1000 > Date.now() ? 'valid' : 'expired'
 }

@@ -1,17 +1,17 @@
 import * as jwtDecode from 'jwt-decode'
 
-import { getAccessTokenStatus } from 'libs/jwt'
+import { getTokenStatus } from 'libs/jwt'
 
 jest.unmock('libs/jwt')
 
-describe('getAccessTokenStatus', () => {
+describe('getTokenStatus', () => {
   const mockJwtDecode = jest.spyOn(jwtDecode, 'default')
   const fakeAccessToken = 'this is a fake access token, because we mock result of jwt-decode'
 
   it('unknown status given no access token', () => {
     const fakeAccessToken = null
 
-    const accessTokenStatus = getAccessTokenStatus(fakeAccessToken)
+    const accessTokenStatus = getTokenStatus(fakeAccessToken)
 
     expect(accessTokenStatus).toBe('unknown')
   })
@@ -21,7 +21,7 @@ describe('getAccessTokenStatus', () => {
       throw new Error("this token can't be read")
     })
 
-    const accessTokenStatus = getAccessTokenStatus(fakeAccessToken)
+    const accessTokenStatus = getTokenStatus(fakeAccessToken)
 
     expect(accessTokenStatus).toBe('unknown')
   })
@@ -31,7 +31,7 @@ describe('getAccessTokenStatus', () => {
       exp: new Date().getTime() / 1000 - 1,
     } as jwtDecode.JwtPayload)
 
-    const accessTokenStatus = getAccessTokenStatus(fakeAccessToken)
+    const accessTokenStatus = getTokenStatus(fakeAccessToken)
 
     expect(accessTokenStatus).toBe('expired')
   })
@@ -41,7 +41,7 @@ describe('getAccessTokenStatus', () => {
       exp: new Date().getTime() / 1000 + 1,
     } as jwtDecode.JwtPayload)
 
-    const accessTokenStatus = getAccessTokenStatus(fakeAccessToken)
+    const accessTokenStatus = getTokenStatus(fakeAccessToken)
 
     expect(accessTokenStatus).toBe('valid')
   })
