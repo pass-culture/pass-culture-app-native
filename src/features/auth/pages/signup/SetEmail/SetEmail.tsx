@@ -54,13 +54,14 @@ const NewsletterCheckboxControlled = ({
 export const SetEmail: FunctionComponent<PreValidationSignupNormalStepProps> = ({
   goToNextStep,
   accessibilityLabelForNextStep,
+  previousSignupData,
 }) => {
   const { params } = useRoute<UseRouteType<'SignupForm'>>()
   const theme = useTheme()
   const { control, handleSubmit, watch } = useForm<FormValues>({
     defaultValues: {
-      email: '',
-      marketingEmailSubscription: false,
+      email: previousSignupData.email,
+      marketingEmailSubscription: previousSignupData.marketingEmailSubscription ?? false,
     },
     resolver: yupResolver(setEmailSchema),
     mode: 'onSubmit',
