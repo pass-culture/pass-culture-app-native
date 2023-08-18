@@ -34,6 +34,10 @@ appId: app.passculture.staging
       point: "50%,34%"
 - tapOn:
     id: "animated-icon-favorite"
+- tapOn:
+    id: "animated-icon-favorite-filled"
+- tapOn:
+    id: "animated-icon-favorite"
 
 - tapOn:
     id: "animated-icon-back"
