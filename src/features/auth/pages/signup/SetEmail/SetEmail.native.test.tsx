@@ -16,6 +16,13 @@ const openUrl = jest.spyOn(OpenUrlAPI, 'openUrl')
 const props = {
   goToNextStep: jest.fn(),
   signUp: jest.fn(),
+  previousSignupData: {
+    email: '',
+    marketingEmailSubscription: false,
+    password: '',
+    birthdate: '',
+    postalCode: '',
+  },
 }
 
 jest.useFakeTimers({ legacyFakeTimers: true })

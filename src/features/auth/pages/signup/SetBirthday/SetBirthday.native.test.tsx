@@ -13,7 +13,17 @@ import { fireEvent, render, screen } from 'tests/utils'
 
 import { SetBirthday } from './SetBirthday'
 
-const props = { goToNextStep: jest.fn(), signUp: jest.fn() }
+const props = {
+  goToNextStep: jest.fn(),
+  signUp: jest.fn(),
+  previousSignupData: {
+    email: '',
+    marketingEmailSubscription: false,
+    password: '',
+    birthdate: '',
+    postalCode: '',
+  },
+}
 
 const specificUserAges = [15, 16, 17, 18]
 // null is the return value of storage when there is no value corresponding to the key
