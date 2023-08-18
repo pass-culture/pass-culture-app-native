@@ -156,7 +156,7 @@ export const homepageList: Homepage[] = [
         type: HomepageModuleType.OffersModule,
       },
     ],
-    tags: [],
+    tags: ['master'],
   },
   {
     tags: [],

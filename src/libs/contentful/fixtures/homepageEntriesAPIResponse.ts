@@ -11,7 +11,15 @@ export const homepageEntriesAPIResponse = {
   items: [
     {
       metadata: {
-        tags: [],
+        tags: [
+          {
+            sys: {
+              type: 'Link',
+              linkType: 'Tag',
+              id: 'master',
+            },
+          },
+        ],
       },
       sys: {
         space: { sys: { type: 'Link', linkType: 'Space', id: '2bg01iqy0isv' } },
