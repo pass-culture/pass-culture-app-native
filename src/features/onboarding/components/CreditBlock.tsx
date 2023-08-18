@@ -6,16 +6,15 @@ import { CreditBlockIcon } from 'features/onboarding/components/CreditBlockIcon'
 import { CreditStatusTag } from 'features/onboarding/components/CreditStatusTag'
 import { customEaseInOut, DURATION_IN_MS } from 'features/onboarding/helpers/animationProps'
 import { getBackgroundColor } from 'features/onboarding/helpers/getBackgroundColor'
-import { getTitleComponent, getAgeComponent } from 'features/onboarding/helpers/getTextComponent'
 import { CreditStatus } from 'features/onboarding/types'
 import { AnimatedView, NAV_DELAY_IN_MS } from 'libs/react-native-animatable'
 import { getSpacing, getSpacingString, Spacer, Typo } from 'ui/theme'
+import { getNoHeadingAttrs } from 'ui/theme/typographyAttrs/getNoHeadingAttrs'
 
 type Props = {
   title: string
   age: number
   description?: string
-  underage: boolean
   creditStatus: CreditStatus
   onPress: () => void
 }
@@ -33,18 +32,12 @@ export const CreditBlock: FunctionComponent<Props> = ({
   title,
   age,
   description,
-  underage,
   creditStatus,
   onPress,
 }) => {
-  const TitleText: React.JSXElementConstructor<{ children: string }> = getTitleComponent(
-    underage,
-    creditStatus
-  )
-  const AgeText: React.JSXElementConstructor<{ children: string }> = getAgeComponent(
-    underage,
-    creditStatus
-  )
+  const TitleText: React.JSXElementConstructor<{ children: string }> =
+    creditStatus === CreditStatus.ONGOING ? TitleSecondary : Typo.ButtonText
+  const AgeText = creditStatus === CreditStatus.ONGOING ? BodySecondary : Typo.CaptionNeutralInfo
 
   const statusIsOngoing = creditStatus === CreditStatus.ONGOING
 
@@ -87,6 +80,16 @@ const DescriptionText = styled(Typo.Caption)(({ theme }) => ({
   fontSize: theme.tabBar.fontSize,
   lineHeight: getSpacingString(3),
   color: theme.colors.greyDark,
+}))
+
+const BodySecondary = styled(Typo.Body)(({ theme }) => ({
+  color: theme.colors.secondary,
+}))
+
+const Title = styled(Typo.Title3).attrs(getNoHeadingAttrs)``
+
+const TitleSecondary = styled(Title)(({ theme }) => ({
+  color: theme.colors.secondary,
 }))
 
 const Container = styled.View<{

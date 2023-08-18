@@ -387,7 +387,7 @@ exports[`AgeInformation should render correctly for 15-year-old 1`] = `
                   style={
                     [
                       {
-                        "color": "#161617",
+                        "color": "#696A6F",
                         "fontFamily": "Montserrat-SemiBold",
                         "fontSize": 12,
                         "lineHeight": 16,
@@ -531,7 +531,7 @@ exports[`AgeInformation should render correctly for 15-year-old 1`] = `
                   style={
                     [
                       {
-                        "color": "#161617",
+                        "color": "#696A6F",
                         "fontFamily": "Montserrat-SemiBold",
                         "fontSize": 12,
                         "lineHeight": 16,
@@ -751,10 +751,10 @@ exports[`AgeInformation should render correctly for 15-year-old 1`] = `
                   style={
                     [
                       {
-                        "color": "#161617",
-                        "fontFamily": "Montserrat-Regular",
-                        "fontSize": 15,
-                        "lineHeight": 20,
+                        "color": "#696A6F",
+                        "fontFamily": "Montserrat-SemiBold",
+                        "fontSize": 12,
+                        "lineHeight": 16,
                       },
                     ]
                   }
@@ -777,8 +777,8 @@ exports[`AgeInformation should render correctly for 15-year-old 1`] = `
                       {
                         "color": "#161617",
                         "fontFamily": "Montserrat-Bold",
-                        "fontSize": 20,
-                        "lineHeight": 24,
+                        "fontSize": 15,
+                        "lineHeight": 20,
                       },
                     ]
                   }
@@ -1301,7 +1301,7 @@ exports[`AgeInformation should render correctly for 16-year-old 1`] = `
                   style={
                     [
                       {
-                        "color": "#696A6F",
+                        "color": "#161617",
                         "fontFamily": "Montserrat-Bold",
                         "fontSize": 15,
                         "lineHeight": 20,
@@ -1579,7 +1579,7 @@ exports[`AgeInformation should render correctly for 16-year-old 1`] = `
                   style={
                     [
                       {
-                        "color": "#161617",
+                        "color": "#696A6F",
                         "fontFamily": "Montserrat-SemiBold",
                         "fontSize": 12,
                         "lineHeight": 16,
@@ -1799,10 +1799,10 @@ exports[`AgeInformation should render correctly for 16-year-old 1`] = `
                   style={
                     [
                       {
-                        "color": "#161617",
-                        "fontFamily": "Montserrat-Regular",
-                        "fontSize": 15,
-                        "lineHeight": 20,
+                        "color": "#696A6F",
+                        "fontFamily": "Montserrat-SemiBold",
+                        "fontSize": 12,
+                        "lineHeight": 16,
                       },
                     ]
                   }
@@ -1825,8 +1825,8 @@ exports[`AgeInformation should render correctly for 16-year-old 1`] = `
                       {
                         "color": "#161617",
                         "fontFamily": "Montserrat-Bold",
-                        "fontSize": 20,
-                        "lineHeight": 24,
+                        "fontSize": 15,
+                        "lineHeight": 20,
                       },
                     ]
                   }
@@ -2349,7 +2349,7 @@ exports[`AgeInformation should render correctly for 17-year-old 1`] = `
                   style={
                     [
                       {
-                        "color": "#696A6F",
+                        "color": "#161617",
                         "fontFamily": "Montserrat-Bold",
                         "fontSize": 15,
                         "lineHeight": 20,
@@ -2493,7 +2493,7 @@ exports[`AgeInformation should render correctly for 17-year-old 1`] = `
                   style={
                     [
                       {
-                        "color": "#696A6F",
+                        "color": "#161617",
                         "fontFamily": "Montserrat-Bold",
                         "fontSize": 15,
                         "lineHeight": 20,
@@ -2847,10 +2847,10 @@ exports[`AgeInformation should render correctly for 17-year-old 1`] = `
                   style={
                     [
                       {
-                        "color": "#161617",
-                        "fontFamily": "Montserrat-Regular",
-                        "fontSize": 15,
-                        "lineHeight": 20,
+                        "color": "#696A6F",
+                        "fontFamily": "Montserrat-SemiBold",
+                        "fontSize": 12,
+                        "lineHeight": 16,
                       },
                     ]
                   }
@@ -2873,8 +2873,8 @@ exports[`AgeInformation should render correctly for 17-year-old 1`] = `
                       {
                         "color": "#161617",
                         "fontFamily": "Montserrat-Bold",
-                        "fontSize": 20,
-                        "lineHeight": 24,
+                        "fontSize": 15,
+                        "lineHeight": 20,
                       },
                     ]
                   }
@@ -3397,7 +3397,7 @@ exports[`AgeInformation should render correctly for 18-year-old 1`] = `
                   style={
                     [
                       {
-                        "color": "#696A6F",
+                        "color": "#161617",
                         "fontFamily": "Montserrat-Bold",
                         "fontSize": 15,
                         "lineHeight": 20,
@@ -3541,7 +3541,7 @@ exports[`AgeInformation should render correctly for 18-year-old 1`] = `
                   style={
                     [
                       {
-                        "color": "#696A6F",
+                        "color": "#161617",
                         "fontFamily": "Montserrat-Bold",
                         "fontSize": 15,
                         "lineHeight": 20,
@@ -3685,7 +3685,7 @@ exports[`AgeInformation should render correctly for 18-year-old 1`] = `
                   style={
                     [
                       {
-                        "color": "#696A6F",
+                        "color": "#161617",
                         "fontFamily": "Montserrat-Bold",
                         "fontSize": 15,
                         "lineHeight": 20,
