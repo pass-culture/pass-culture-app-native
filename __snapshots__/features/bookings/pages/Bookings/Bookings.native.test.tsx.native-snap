@@ -1,0 +1,893 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Bookings should render correctly 1`] = `
+<View
+  style={
+    [
+      {
+        "flexBasis": 0,
+        "flexGrow": 1,
+        "flexShrink": 1,
+      },
+    ]
+  }
+>
+  <View
+    style={
+      [
+        {
+          "marginBottom": 4,
+          "marginHorizontal": 24,
+          "marginTop": 24,
+        },
+      ]
+    }
+  >
+    <View
+      customHeight={16}
+      enable={true}
+      style={
+        [
+          {
+            "height": 16,
+          },
+        ]
+      }
+    />
+    <Text
+      numberOfLines={1}
+      style={
+        [
+          {
+            "color": "#161617",
+            "fontFamily": "Montserrat-Black",
+            "fontSize": 26,
+            "lineHeight": 34,
+          },
+        ]
+      }
+    >
+      Mes réservations
+    </Text>
+  </View>
+  <View
+    flex={1}
+    style={
+      [
+        {
+          "flexBasis": 0,
+          "flexGrow": 1,
+          "flexShrink": 1,
+          "height": "100%",
+        },
+      ]
+    }
+  >
+    <RCTScrollView
+      ItemSeparatorComponent={[Function]}
+      ListEmptyComponent={<NoBookingsView />}
+      ListFooterComponent={[Function]}
+      ListHeaderComponent={[Function]}
+      contentContainerStyle={
+        {
+          "flexGrow": 1,
+          "paddingBottom": 72,
+        }
+      }
+      data={
+        [
+          {
+            "cancellationDate": null,
+            "cancellationReason": null,
+            "confirmationDate": "2021-03-15T23:01:37.925926",
+            "dateCreated": "2021-02-15T23:01:37.925926",
+            "dateUsed": null,
+            "expirationDate": null,
+            "externalBookings": [],
+            "id": 123,
+            "qrCodeData": "PASSCULTURE:v3;TOKEN:352UW4",
+            "quantity": 10,
+            "stock": {
+              "beginningDatetime": "2021-03-15T20:00:00",
+              "features": [
+                "VOSTFR",
+                "3D",
+                "IMAX",
+              ],
+              "id": 150230,
+              "offer": {
+                "bookingContact": null,
+                "extraData": {
+                  "ean": "123456789",
+                },
+                "id": 147874,
+                "isDigital": true,
+                "isPermanent": false,
+                "name": "Avez-vous déjà vu ?",
+                "subcategoryId": "EVENEMENT_PATRIMOINE",
+                "venue": {
+                  "address": "1 boulevard de la brique",
+                  "city": "Drancy",
+                  "coordinates": {
+                    "latitude": 48.91683,
+                    "longitude": 2.43884,
+                  },
+                  "id": 2185,
+                  "name": "Maison de la Brique",
+                  "postalCode": "93700",
+                },
+                "withdrawalDetails": null,
+              },
+              "price": 400,
+              "priceCategoryLabel": "Cat 4",
+            },
+            "token": "352UW4",
+            "totalAmount": 1900,
+          },
+          {
+            "cancellationDate": null,
+            "cancellationReason": null,
+            "confirmationDate": "2021-03-15T23:01:37.925926",
+            "dateCreated": "2021-02-15T23:01:37.925926",
+            "dateUsed": null,
+            "expirationDate": null,
+            "externalBookings": [
+              {
+                "barcode": "PASSCULTURE:v3;TOKEN:352UW4",
+                "seat": "A12",
+              },
+              {
+                "barcode": "PASSCULTURE:v3;TOKEN:352UW4",
+                "seat": "A13",
+              },
+            ],
+            "id": 124,
+            "qrCodeData": "PASSCULTURE:v3;TOKEN:352UW4",
+            "quantity": 10,
+            "stock": {
+              "beginningDatetime": "2021-03-15T20:00:00",
+              "features": [
+                "VOSTFR",
+                "3D",
+                "IMAX",
+              ],
+              "id": 150230,
+              "offer": {
+                "bookingContact": null,
+                "extraData": {
+                  "ean": "123456789",
+                },
+                "id": 147874,
+                "isDigital": false,
+                "isPermanent": false,
+                "name": "Avez-vous déjà vu ?",
+                "subcategoryId": "EVENEMENT_PATRIMOINE",
+                "venue": {
+                  "address": "1 boulevard de la brique",
+                  "city": "Drancy",
+                  "coordinates": {
+                    "latitude": 48.91683,
+                    "longitude": 2.43884,
+                  },
+                  "id": 2185,
+                  "name": "Maison de la Brique",
+                  "postalCode": "93700",
+                },
+                "withdrawalDetails": null,
+                "withdrawalType": "on_site",
+              },
+              "price": 400,
+              "priceCategoryLabel": "Cat 4",
+            },
+            "token": "352UW4",
+            "totalAmount": 1900,
+          },
+        ]
+      }
+      getItem={[Function]}
+      getItemCount={[Function]}
+      itemAs="li"
+      keyExtractor={[Function]}
+      listAs="ul"
+      onContentSizeChange={[Function]}
+      onLayout={[Function]}
+      onMomentumScrollBegin={[Function]}
+      onMomentumScrollEnd={[Function]}
+      onScroll={[Function]}
+      onScrollBeginDrag={[Function]}
+      onScrollEndDrag={[Function]}
+      refreshing={false}
+      removeClippedSubviews={false}
+      renderItem={[Function]}
+      scrollEnabled={true}
+      scrollEventThrottle={400}
+      stickyHeaderIndices={[]}
+      testID="OnGoingBookingsList"
+      viewabilityConfigCallbackPairs={[]}
+    >
+      <View>
+        <View
+          onLayout={[Function]}
+        >
+          <Text
+            style={
+              [
+                {
+                  "color": "#696A6F",
+                  "fontFamily": "Montserrat-SemiBold",
+                  "fontSize": 12,
+                  "lineHeight": 16,
+                  "paddingBottom": 16,
+                  "paddingHorizontal": 24,
+                },
+              ]
+            }
+          >
+            2 réservations en cours
+          </Text>
+        </View>
+        <View
+          onLayout={[Function]}
+          style={null}
+        >
+          <View
+            accessibilityLabel="Réservation de l’offre Avez-vous déjà vu ?, pour Le 15 mars 2021 à 20h00"
+            accessibilityRole="link"
+            accessible={true}
+            collapsable={false}
+            focusable={true}
+            onClick={[Function]}
+            onResponderGrant={[Function]}
+            onResponderMove={[Function]}
+            onResponderRelease={[Function]}
+            onResponderTerminate={[Function]}
+            onResponderTerminationRequest={[Function]}
+            onStartShouldSetResponder={[Function]}
+            style={
+              {
+                "flexDirection": "row",
+                "marginHorizontal": 24,
+                "opacity": 1,
+                "paddingRight": 40,
+                "userSelect": "auto",
+              }
+            }
+            testID="Réservation de l’offre Avez-vous déjà vu ?, pour Le 15 mars 2021 à 20h00"
+          >
+            <View
+              size="tall"
+              style={
+                [
+                  {
+                    "borderRadius": 4,
+                    "height": 120,
+                    "shadowColor": "#696A6F",
+                    "shadowOffset": {
+                      "height": 4,
+                      "width": 0,
+                    },
+                    "shadowOpacity": 0.2,
+                    "shadowRadius": 4,
+                    "width": 80,
+                  },
+                ]
+              }
+            >
+              <BVLinearGradient
+                borderRadius={4}
+                colors={
+                  [
+                    4294046196,
+                    4291546578,
+                  ]
+                }
+                endPoint={
+                  {
+                    "x": 0.5,
+                    "y": 1,
+                  }
+                }
+                locations={null}
+                startPoint={
+                  {
+                    "x": 0.5,
+                    "y": 0,
+                  }
+                }
+                style={
+                  [
+                    {
+                      "alignItems": "center",
+                      "backgroundColor": "#F1F1F4",
+                      "borderRadius": 4,
+                      "height": "100%",
+                      "justifyContent": "center",
+                      "width": "100%",
+                    },
+                  ]
+                }
+                testID="imagePlaceholder"
+              >
+                <View
+                  height={32}
+                  testID="categoryIcon"
+                  width={32}
+                >
+                  <Text>
+                    categoryIcon-SVG-Mock
+                  </Text>
+                </View>
+              </BVLinearGradient>
+            </View>
+            <View
+              style={
+                [
+                  {
+                    "flexBasis": 0,
+                    "flexGrow": 1,
+                    "flexShrink": 1,
+                    "paddingLeft": 16,
+                    "paddingRight": 4,
+                  },
+                ]
+              }
+            >
+              <View
+                style={
+                  [
+                    {
+                      "paddingBottom": 4,
+                    },
+                  ]
+                }
+              >
+                <Text
+                  numberOfLines={2}
+                  shrink={true}
+                  style={
+                    [
+                      {
+                        "color": "#161617",
+                        "flexShrink": 1,
+                        "fontFamily": "Montserrat-Bold",
+                        "fontSize": 15,
+                      },
+                    ]
+                  }
+                >
+                  Avez-vous déjà vu ?
+                </Text>
+              </View>
+              <Text
+                style={
+                  [
+                    {
+                      "color": "#696A6F",
+                      "fontFamily": "Montserrat-Regular",
+                      "fontSize": 15,
+                      "lineHeight": 20,
+                    },
+                  ]
+                }
+              >
+                Le 15 mars 2021 à 20h00
+              </Text>
+              <View
+                style={
+                  [
+                    {
+                      "flexBasis": 0,
+                      "flexGrow": 1,
+                      "flexShrink": 1,
+                    },
+                  ]
+                }
+              />
+            </View>
+          </View>
+          <View
+            style={
+              [
+                {
+                  "borderRadius": 40,
+                  "marginRight": 24,
+                  "position": "absolute",
+                  "right": 0,
+                  "top": 0,
+                },
+              ]
+            }
+          >
+            <View
+              accessibilityLabel="Partager l’offre Avez-vous déjà vu ?"
+              accessibilityRole="button"
+              accessible={true}
+              collapsable={false}
+              focusable={true}
+              onClick={[Function]}
+              onResponderGrant={[Function]}
+              onResponderMove={[Function]}
+              onResponderRelease={[Function]}
+              onResponderTerminate={[Function]}
+              onResponderTerminationRequest={[Function]}
+              onStartShouldSetResponder={[Function]}
+              style={
+                {
+                  "borderRadius": 40,
+                  "opacity": 1,
+                  "userSelect": "auto",
+                }
+              }
+              testID="Partager l’offre Avez-vous déjà vu ?"
+            >
+              <View
+                collapsable={false}
+                style={
+                  {
+                    "alignItems": "center",
+                    "aspectRatio": 1,
+                    "backgroundColor": "#ffffff",
+                    "borderColor": "#F1F1F4",
+                    "borderRadius": 40,
+                    "borderStyle": "solid",
+                    "borderWidth": 1,
+                    "height": 40,
+                    "justifyContent": "center",
+                    "transform": undefined,
+                    "width": 40,
+                  }
+                }
+              >
+                <View
+                  height={24}
+                  testID="icon-share"
+                  width={24}
+                >
+                  <Text>
+                    icon-share-SVG-Mock
+                  </Text>
+                </View>
+              </View>
+            </View>
+          </View>
+          <View
+            style={
+              [
+                {
+                  "marginHorizontal": 24,
+                  "marginVertical": 16,
+                },
+              ]
+            }
+          >
+            <View
+              style={
+                [
+                  {
+                    "backgroundColor": "#F1F1F4",
+                    "height": 1,
+                    "width": "100%",
+                  },
+                ]
+              }
+            />
+          </View>
+        </View>
+        <View
+          onLayout={[Function]}
+          style={null}
+        >
+          <View
+            accessibilityLabel="Réservation de l’offre Avez-vous déjà vu ?, pour Le 15 mars 2021 à 20h00"
+            accessibilityRole="link"
+            accessible={true}
+            collapsable={false}
+            focusable={true}
+            onClick={[Function]}
+            onResponderGrant={[Function]}
+            onResponderMove={[Function]}
+            onResponderRelease={[Function]}
+            onResponderTerminate={[Function]}
+            onResponderTerminationRequest={[Function]}
+            onStartShouldSetResponder={[Function]}
+            style={
+              {
+                "flexDirection": "row",
+                "marginHorizontal": 24,
+                "opacity": 1,
+                "paddingRight": 40,
+                "userSelect": "auto",
+              }
+            }
+            testID="Réservation de l’offre Avez-vous déjà vu ?, pour Le 15 mars 2021 à 20h00"
+          >
+            <View
+              size="tall"
+              style={
+                [
+                  {
+                    "borderRadius": 4,
+                    "height": 120,
+                    "shadowColor": "#696A6F",
+                    "shadowOffset": {
+                      "height": 4,
+                      "width": 0,
+                    },
+                    "shadowOpacity": 0.2,
+                    "shadowRadius": 4,
+                    "width": 80,
+                  },
+                ]
+              }
+            >
+              <BVLinearGradient
+                borderRadius={4}
+                colors={
+                  [
+                    4294046196,
+                    4291546578,
+                  ]
+                }
+                endPoint={
+                  {
+                    "x": 0.5,
+                    "y": 1,
+                  }
+                }
+                locations={null}
+                startPoint={
+                  {
+                    "x": 0.5,
+                    "y": 0,
+                  }
+                }
+                style={
+                  [
+                    {
+                      "alignItems": "center",
+                      "backgroundColor": "#F1F1F4",
+                      "borderRadius": 4,
+                      "height": "100%",
+                      "justifyContent": "center",
+                      "width": "100%",
+                    },
+                  ]
+                }
+                testID="imagePlaceholder"
+              >
+                <View
+                  height={32}
+                  testID="categoryIcon"
+                  width={32}
+                >
+                  <Text>
+                    categoryIcon-SVG-Mock
+                  </Text>
+                </View>
+              </BVLinearGradient>
+            </View>
+            <View
+              style={
+                [
+                  {
+                    "flexBasis": 0,
+                    "flexGrow": 1,
+                    "flexShrink": 1,
+                    "paddingLeft": 16,
+                    "paddingRight": 4,
+                  },
+                ]
+              }
+            >
+              <View
+                style={
+                  [
+                    {
+                      "paddingBottom": 4,
+                    },
+                  ]
+                }
+              >
+                <Text
+                  numberOfLines={2}
+                  shrink={true}
+                  style={
+                    [
+                      {
+                        "color": "#161617",
+                        "flexShrink": 1,
+                        "fontFamily": "Montserrat-Bold",
+                        "fontSize": 15,
+                      },
+                    ]
+                  }
+                >
+                  Avez-vous déjà vu ?
+                </Text>
+              </View>
+              <Text
+                style={
+                  [
+                    {
+                      "color": "#696A6F",
+                      "fontFamily": "Montserrat-Regular",
+                      "fontSize": 15,
+                      "lineHeight": 20,
+                    },
+                  ]
+                }
+              >
+                Le 15 mars 2021 à 20h00
+              </Text>
+              <View
+                style={
+                  [
+                    {
+                      "flexBasis": 0,
+                      "flexGrow": 1,
+                      "flexShrink": 1,
+                    },
+                  ]
+                }
+              />
+            </View>
+          </View>
+          <View
+            style={
+              [
+                {
+                  "borderRadius": 40,
+                  "marginRight": 24,
+                  "position": "absolute",
+                  "right": 0,
+                  "top": 0,
+                },
+              ]
+            }
+          >
+            <View
+              accessibilityLabel="Partager l’offre Avez-vous déjà vu ?"
+              accessibilityRole="button"
+              accessible={true}
+              collapsable={false}
+              focusable={true}
+              onClick={[Function]}
+              onResponderGrant={[Function]}
+              onResponderMove={[Function]}
+              onResponderRelease={[Function]}
+              onResponderTerminate={[Function]}
+              onResponderTerminationRequest={[Function]}
+              onStartShouldSetResponder={[Function]}
+              style={
+                {
+                  "borderRadius": 40,
+                  "opacity": 1,
+                  "userSelect": "auto",
+                }
+              }
+              testID="Partager l’offre Avez-vous déjà vu ?"
+            >
+              <View
+                collapsable={false}
+                style={
+                  {
+                    "alignItems": "center",
+                    "aspectRatio": 1,
+                    "backgroundColor": "#ffffff",
+                    "borderColor": "#F1F1F4",
+                    "borderRadius": 40,
+                    "borderStyle": "solid",
+                    "borderWidth": 1,
+                    "height": 40,
+                    "justifyContent": "center",
+                    "transform": undefined,
+                    "width": 40,
+                  }
+                }
+              >
+                <View
+                  height={24}
+                  testID="icon-share"
+                  width={24}
+                >
+                  <Text>
+                    icon-share-SVG-Mock
+                  </Text>
+                </View>
+              </View>
+            </View>
+          </View>
+        </View>
+        <View
+          onLayout={[Function]}
+        >
+          <View
+            safeBottom={16}
+            style={
+              [
+                {
+                  "marginBottom": 8,
+                  "paddingHorizontal": 24,
+                  "paddingVertical": 16,
+                },
+              ]
+            }
+          >
+            <View
+              style={
+                [
+                  {
+                    "backgroundColor": "#F1F1F4",
+                    "height": 1,
+                    "width": "100%",
+                  },
+                ]
+              }
+            />
+            <View
+              numberOfSpaces={4}
+              style={
+                [
+                  {
+                    "height": 16,
+                  },
+                ]
+              }
+            />
+            <View
+              style={
+                [
+                  {
+                    "justifyContent": "center",
+                    "width": "100%",
+                  },
+                ]
+              }
+            >
+              <View
+                accessibilityLabel="Réservation terminée"
+                accessibilityRole="link"
+                accessibilityState={
+                  {
+                    "disabled": false,
+                  }
+                }
+                accessible={true}
+                collapsable={false}
+                focusable={true}
+                onClick={[Function]}
+                onResponderGrant={[Function]}
+                onResponderMove={[Function]}
+                onResponderRelease={[Function]}
+                onResponderTerminate={[Function]}
+                onResponderTerminationRequest={[Function]}
+                onStartShouldSetResponder={[Function]}
+                style={
+                  {
+                    "opacity": 1,
+                    "userSelect": "auto",
+                  }
+                }
+                testID="Réservation terminée"
+              >
+                <View
+                  style={
+                    [
+                      {
+                        "alignItems": "center",
+                        "flexDirection": "row",
+                        "justifyContent": "space-between",
+                      },
+                      undefined,
+                    ]
+                  }
+                >
+                  <View
+                    style={
+                      [
+                        {
+                          "alignSelf": "center",
+                          "backgroundColor": "#eb0055",
+                          "borderColor": "#ffffff",
+                          "borderRadius": 12,
+                          "borderStyle": "solid",
+                          "borderWidth": 1,
+                        },
+                      ]
+                    }
+                  >
+                    <View
+                      style={
+                        [
+                          {
+                            "height": 16,
+                            "minWidth": 16,
+                            "paddingHorizontal": 2,
+                          },
+                        ]
+                      }
+                    >
+                      <Text
+                        style={
+                          [
+                            {
+                              "color": "#ffffff",
+                              "fontFamily": "Montserrat-SemiBold",
+                              "fontSize": 12,
+                              "lineHeight": 16,
+                              "textAlign": "center",
+                            },
+                          ]
+                        }
+                      >
+                        1
+                      </Text>
+                    </View>
+                  </View>
+                  <View
+                    numberOfSpaces={2}
+                    style={
+                      [
+                        {
+                          "width": 8,
+                        },
+                      ]
+                    }
+                  />
+                  <View
+                    style={
+                      [
+                        {
+                          "flexBasis": 0,
+                          "flexGrow": 1,
+                          "flexShrink": 1,
+                          "textAlign": "left",
+                        },
+                      ]
+                    }
+                  >
+                    <Text
+                      numberOfLines={2}
+                      style={
+                        [
+                          {
+                            "color": "#161617",
+                            "fontFamily": "Montserrat-Bold",
+                            "fontSize": 15,
+                            "lineHeight": 20,
+                          },
+                        ]
+                      }
+                    >
+                      Réservation terminée
+                    </Text>
+                  </View>
+                  <View
+                    style={
+                      [
+                        {
+                          "alignItems": "flex-end",
+                        },
+                      ]
+                    }
+                  >
+                    <View
+                      height={20}
+                      testID="section-row-navigable-icon"
+                      width={20}
+                    >
+                      <Text>
+                        section-row-navigable-icon-SVG-Mock
+                      </Text>
+                    </View>
+                  </View>
+                </View>
+              </View>
+            </View>
+          </View>
+        </View>
+      </View>
+    </RCTScrollView>
+  </View>
+</View>
+`;
