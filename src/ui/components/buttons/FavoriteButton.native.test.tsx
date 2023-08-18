@@ -53,7 +53,7 @@ const useFeatureFlagSpy = jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockRe
 const useAddFavoriteSpy = jest.spyOn(useAddFavoriteAPI, 'useAddFavorite')
 const useRemoveFavoriteSpy = jest.spyOn(useRemoveFavoriteAPI, 'useRemoveFavorite')
 
-const mockUseAddFavorite = () => {
+const mockUseAddFavoriteLoading = () => {
   // @ts-ignore we don't use the other properties of UseMutationResult (such as failureCount)
   useAddFavoriteSpy.mockImplementation(() => ({
     mutate: jest.fn(),
@@ -73,7 +73,7 @@ jest.useFakeTimers({ legacyFakeTimers: true })
 
 describe('<FavoriteButton />', () => {
   it('should render favorite icon', async () => {
-    renderOfferHeader()
+    renderFavoriteButton()
     await act(async () => {})
 
     expect(screen.queryByTestId('icon-favorite')).toBeTruthy()
@@ -86,7 +86,7 @@ describe('<FavoriteButton />', () => {
       refetchUser: jest.fn(),
       isUserLoading: false,
     })
-    renderOfferHeader()
+    renderFavoriteButton()
 
     await act(async () => {
       fireEvent.press(screen.getByTestId('icon-favorite'))
@@ -97,7 +97,7 @@ describe('<FavoriteButton />', () => {
 
   it('should show a favorite filled icon when viewing a offer in favorite - logged in users', async () => {
     const favoriteOfferId = 146193
-    renderOfferHeader({ id: favoriteOfferId })
+    renderFavoriteButton({ id: favoriteOfferId })
 
     await waitFor(() => {
       expect(screen.getByTestId('icon-favorite-filled')).toBeTruthy()
@@ -105,7 +105,7 @@ describe('<FavoriteButton />', () => {
   })
 
   it('should update correctly the cache when adding a favorite - logged in users', async () => {
-    renderOfferHeader({
+    renderFavoriteButton({
       id: favoriteResponseSnap.offer.id,
     })
     fireEvent.press(screen.getByTestId('icon-favorite'))
@@ -134,7 +134,7 @@ describe('<FavoriteButton />', () => {
 
   it('should show favorite list modal when pressing favorite icon and feature flag is activated', async () => {
     const favoriteOfferId = 146193
-    renderOfferHeader({ id: favoriteOfferId })
+    renderFavoriteButton({ id: favoriteOfferId })
 
     fireEvent.press(screen.getByTestId('icon-favorite'))
 
@@ -145,7 +145,7 @@ describe('<FavoriteButton />', () => {
 
   it('should not show favorite list modal when pressing favorite icon but feature flag is not activated', async () => {
     useFeatureFlagSpy.mockReturnValueOnce(false)
-    renderOfferHeader()
+    renderFavoriteButton()
 
     await act(async () => {
       fireEvent.press(screen.getByTestId('icon-favorite'))
@@ -155,7 +155,7 @@ describe('<FavoriteButton />', () => {
   })
 
   it('should track the user has seen favorite list modal when pressing favorite icon and feature flag is activated', async () => {
-    renderOfferHeader()
+    renderFavoriteButton()
 
     fireEvent.press(screen.getByTestId('icon-favorite'))
 
@@ -166,7 +166,7 @@ describe('<FavoriteButton />', () => {
 
   it('should show error snackbar when remove favorite fails - logged in users', async () => {
     const favoriteOfferId = 146193
-    renderOfferHeader({
+    renderFavoriteButton({
       id: favoriteOfferId,
       hasRemoveFavoriteError: true,
     })
@@ -181,7 +181,7 @@ describe('<FavoriteButton />', () => {
   })
 
   it('should show error when adding an offer in favorite fails because user as too many favorites - logged in users', async () => {
-    renderOfferHeader({
+    renderFavoriteButton({
       hasTooManyFavorites: true,
       id: favoriteResponseSnap.offer.id,
     })
@@ -207,7 +207,7 @@ describe('<FavoriteButton />', () => {
           moduleName,
         },
       }))
-      renderOfferHeader({
+      renderFavoriteButton({
         id: offerId,
       })
       fireEvent.press(screen.getByTestId('icon-favorite'))
@@ -231,7 +231,7 @@ describe('<FavoriteButton />', () => {
           searchId,
         },
       }))
-      renderOfferHeader({
+      renderFavoriteButton({
         id: offerId,
       })
       fireEvent.press(screen.getByTestId('icon-favorite'))
@@ -248,7 +248,7 @@ describe('<FavoriteButton />', () => {
 
   it('should not show favorite list modal when the user has already seen the fake door', async () => {
     storage.saveObject('has_seen_fav_list_fake_door', true)
-    renderOfferHeader()
+    renderFavoriteButton()
 
     const favButton = screen.getByTestId('icon-favorite')
     await act(async () => {
@@ -259,16 +259,16 @@ describe('<FavoriteButton />', () => {
   })
 
   it('should enable the favorites button when is not loading', async () => {
-    renderOfferHeader()
+    renderFavoriteButton()
     await act(async () => {})
 
     expect(screen.getByLabelText('Mettre en favoris')).not.toBeDisabled()
   })
 
   it('should disabled the favorites button when is loading', async () => {
-    mockUseAddFavorite()
+    mockUseAddFavoriteLoading()
     mockUseRemoveFavorite()
-    renderOfferHeader()
+    renderFavoriteButton()
     await act(async () => {})
 
     expect(screen.getByLabelText('Mettre en favoris')).toBeDisabled()
@@ -291,7 +291,7 @@ const defaultOptions = {
   hasTooManyFavorites: false,
 }
 
-function renderOfferHeader(options: Options = defaultOptions) {
+function renderFavoriteButton(options: Options = defaultOptions) {
   const { id, hasAddFavoriteError, hasRemoveFavoriteError, hasTooManyFavorites } = {
     ...defaultOptions,
     ...options,
