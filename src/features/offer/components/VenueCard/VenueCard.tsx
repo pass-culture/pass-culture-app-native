@@ -4,7 +4,7 @@ import styled from 'styled-components/native'
 import { useHandleFocus } from 'libs/hooks/useHandleFocus'
 import { useHandleHover } from 'libs/hooks/useHandleHover'
 import { TouchableOpacity } from 'ui/components/TouchableOpacity'
-import { BicolorArrowRight } from 'ui/svg/icons/BicolorArrowRight'
+import { PlainArrowNext } from 'ui/svg/icons/PlainArrowNext'
 import { getSpacing } from 'ui/theme'
 import { customFocusOutline } from 'ui/theme/customFocusOutline/customFocusOutline'
 
@@ -31,9 +31,7 @@ export function VenueCard({ onPress, ...props }: VenueCardProps) {
       onMouseLeave={onMouseLeave}>
       <VenueDetails {...props} isHover={isHover} />
       <ArrowWrapper>
-        <ArrowCircleBox>
-          <StyledArrowRight />
-        </ArrowCircleBox>
+        <StyledPlainArrowNext />
       </ArrowWrapper>
     </Wrapper>
   )
@@ -58,16 +56,6 @@ const ArrowWrapper = styled.View({
   justifyContent: 'flex-end',
 })
 
-const ArrowCircleBox = styled.View({
-  backgroundColor: 'black',
-  borderRadius: 50,
-  width: getSpacing(6),
-  height: getSpacing(6),
-  justifyContent: 'center',
-  alignItems: 'center',
-})
-
-const StyledArrowRight = styled(BicolorArrowRight).attrs(({ theme }) => ({
-  color: theme.colors.white,
-  size: theme.icons.sizes.extraSmall,
+const StyledPlainArrowNext = styled(PlainArrowNext).attrs(({ theme }) => ({
+  size: theme.icons.sizes.small,
 }))``
