@@ -1,6 +1,6 @@
 import { SearchResponse } from '@algolia/client-search'
 import { useRoute } from '@react-navigation/native'
-import React from 'react'
+import React, { useEffect, useMemo } from 'react'
 import { ScrollViewProps, View } from 'react-native'
 import styled from 'styled-components/native'
 
@@ -9,12 +9,14 @@ import { UseRouteType } from 'features/navigation/RootNavigator/types'
 import { NumberOfResults } from 'features/search/components/NumberOfResults/NumberOfResults'
 import { SearchVenueItem } from 'features/search/components/SearchVenueItems/SearchVenueItem'
 import { useSearchVenues } from 'features/search/context/SearchVenuesWrapper'
+import { LocationType } from 'features/search/enums'
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { AlgoliaVenue } from 'libs/algolia'
 import { analytics } from 'libs/analytics'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { useGeolocation } from 'libs/geolocation'
+import { useFunctionOnce } from 'libs/hooks'
 import { Offer } from 'shared/offer/types'
 import { styledButton } from 'ui/components/buttons/styledButton'
 import { InfoBanner } from 'ui/components/InfoBanner'
@@ -53,6 +55,22 @@ export const SearchListHeader: React.FC<SearchListHeaderProps> = ({ nbHits, user
     RemoteStoreFeatureFlags.WIP_ENABLE_VENUES_IN_SEARCH_RESULTS
   )
 
+  const isGeolocated = useMemo(
+    () =>
+      Boolean(
+        params?.locationFilter && params?.locationFilter?.locationType !== LocationType.EVERYWHERE
+      ),
+    [params?.locationFilter]
+  )
+
+  const logVenuePlaylistDisplayedOnSearchResults = useFunctionOnce(() =>
+    analytics.logVenuePlaylistDisplayedOnSearchResults({
+      searchId: params?.searchId,
+      isGeolocated,
+      searchNbResults: venues.hits.length,
+    })
+  )
+
   const shouldDisplayAvailableUserDataMessage = userData?.length > 0
   const unavailableOfferMessage = shouldDisplayAvailableUserDataMessage ? userData[0]?.message : ''
   const venueTitle = shouldDisplayAvailableUserDataMessage
@@ -60,11 +78,18 @@ export const SearchListHeader: React.FC<SearchListHeaderProps> = ({ nbHits, user
     : 'Les lieux culturels'
   const offerTitle = 'Les offres'
 
-  const shouldDisplayVenuesPlaylist = venues.hits?.length && enableVenuesInSearchResults
+  const shouldDisplayVenuesPlaylist = Boolean(venues.hits?.length && enableVenuesInSearchResults)
   const onPress = () => {
     analytics.logActivateGeolocfromSearchResults()
     showGeolocPermissionModal()
   }
+
+  useEffect(() => {
+    if (shouldDisplayVenuesPlaylist) {
+      logVenuePlaylistDisplayedOnSearchResults()
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [logVenuePlaylistDisplayedOnSearchResults, shouldDisplayVenuesPlaylist])
 
   const shouldDisplayGeolocationButton =
     position === null &&
@@ -110,7 +135,7 @@ export const SearchListHeader: React.FC<SearchListHeaderProps> = ({ nbHits, user
               renderHeader={undefined}
               renderFooter={undefined}
               keyExtractor={keyExtractor}
-              testID="search-venue-lit"
+              testID="search-venue-list"
             />
           </View>
           <Spacer.Column numberOfSpaces={3} />
