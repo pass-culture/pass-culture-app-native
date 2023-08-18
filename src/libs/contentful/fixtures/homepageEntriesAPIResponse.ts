@@ -1,3 +1,4 @@
+import { classicThematicHeaderFixture } from 'libs/contentful/fixtures/homepageNatifEntry.fixture'
 import { thematicCategoryInfoFixture } from 'libs/contentful/fixtures/thematicCategoryInfo.fixture'
 import { thematicHighlightInfoFixture } from 'libs/contentful/fixtures/thematicHighlightInfo.fixture'
 import { ContentTypes } from 'libs/contentful/types'
@@ -10,7 +11,15 @@ export const homepageEntriesAPIResponse = {
   items: [
     {
       metadata: {
-        tags: [],
+        tags: [
+          {
+            sys: {
+              type: 'Link',
+              linkType: 'Tag',
+              id: 'master',
+            },
+          },
+        ],
       },
       sys: {
         space: { sys: { type: 'Link', linkType: 'Space', id: '2bg01iqy0isv' } },
@@ -59,8 +68,7 @@ export const homepageEntriesAPIResponse = {
       fields: {
         modules: [{ sys: { type: 'Link', linkType: 'Entry', id: '24FUVnnPPJ9v7JHkO7eaXK' } }],
         title: 'Homepage test démo août 2020',
-        thematicHeaderTitle: 'cinéma',
-        thematicHeaderSubtitle: 'Fais le plein de cinéma',
+        thematicHeader: classicThematicHeaderFixture,
       },
     },
     {

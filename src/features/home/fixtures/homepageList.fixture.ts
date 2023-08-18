@@ -156,12 +156,7 @@ export const homepageList: Homepage[] = [
         type: HomepageModuleType.OffersModule,
       },
     ],
-    tags: [],
-    thematicHeader: {
-      subtitle: undefined,
-      title: undefined,
-      type: ThematicHeaderType.Default,
-    },
+    tags: ['master'],
   },
   {
     tags: [],
@@ -180,8 +175,8 @@ export const homepageList: Homepage[] = [
       },
     ],
     thematicHeader: {
-      title: 'cinéma',
-      subtitle: 'Fais le plein de cinéma',
+      title: 'Un titre court',
+      subtitle: 'Unsoustitretroplongquidépassebeaucoupbeaucoupbeaucoupbeaucoupbeaucoupbeaucoup',
       type: ThematicHeaderType.Default,
     },
   },

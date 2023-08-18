@@ -6,7 +6,45 @@ import { highlightOfferContentModelFixture } from 'libs/contentful/fixtures/high
 import { recommendationNatifModuleFixture } from 'libs/contentful/fixtures/recommendationNatifModule.fixture'
 import { thematicHighlightModuleFixture } from 'libs/contentful/fixtures/thematicHighlightModule.fixture'
 import { venuesNatifModuleFixture } from 'libs/contentful/fixtures/venuesModule.fixture'
-import { ContentTypes, HomepageNatifEntry } from 'libs/contentful/types'
+import { ClassicThematicHeader, ContentTypes, HomepageNatifEntry } from 'libs/contentful/types'
+
+export const classicThematicHeaderFixture: ClassicThematicHeader = {
+  sys: {
+    space: {
+      sys: {
+        type: 'Link',
+        linkType: 'Space',
+        id: '2bg01iqy0isv',
+      },
+    },
+    id: '60vR54AgFyZrEjljpvNhwe',
+    type: 'Entry',
+    createdAt: '2023-08-17T15:24:36.535Z',
+    updatedAt: '2023-08-17T15:24:44.191Z',
+    environment: {
+      sys: {
+        id: 'testing',
+        type: 'Link',
+        linkType: 'Environment',
+      },
+    },
+    revision: 2,
+    contentType: {
+      sys: {
+        type: 'Link',
+        linkType: 'ContentType',
+        id: ContentTypes.CLASSIC_THEMATIC_HEADER,
+      },
+    },
+    locale: 'en-US',
+  },
+  fields: {
+    title: 'Header test',
+    displayedTitle: 'Un titre court',
+    displayedSubtitle:
+      'Unsoustitretroplongquidépassebeaucoupbeaucoupbeaucoupbeaucoupbeaucoupbeaucoup',
+  },
+}
 
 export const homepageNatifEntryFixture: HomepageNatifEntry = {
   metadata: { tags: [] },
@@ -35,8 +73,6 @@ export const homepageNatifEntryFixture: HomepageNatifEntry = {
       highlightOfferContentModelFixture,
     ],
     title: 'Test home N-1 Evek',
-    thematicHeaderTitle: 'Un titre court',
-    thematicHeaderSubtitle:
-      'Unsoustitretroplongquidépassebeaucoupbeaucoupbeaucoupbeaucoupbeaucoupbeaucoup',
+    thematicHeader: classicThematicHeaderFixture,
   },
 }

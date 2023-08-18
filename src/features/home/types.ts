@@ -26,7 +26,7 @@ export enum ThematicHeaderType {
 
 export type DefaultThematicHeader = {
   type: ThematicHeaderType.Default
-  title?: string
+  title: string
   subtitle?: string
 }
 
