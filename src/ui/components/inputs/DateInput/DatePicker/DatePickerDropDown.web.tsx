@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { FunctionComponent, useEffect, useState } from 'react'
 import { v4 as uuidv4 } from 'uuid'
 
 import { DateInputDesktop } from 'ui/components/inputs/DateInput/atoms/DateInputDesktop.web'
@@ -6,16 +6,22 @@ import { DatePickerProps } from 'ui/components/inputs/DateInput/DatePicker/types
 import { InputError } from 'ui/components/inputs/InputError'
 import { Spacer } from 'ui/theme'
 
-export function DatePickerDropDown(props: DatePickerProps) {
+export const DatePickerDropDown: FunctionComponent<DatePickerProps> = ({
+  onChange,
+  minimumDate,
+  maximumDate,
+  defaultSelectedDate,
+  errorMessage,
+}) => {
   const [date, setDate] = useState<Date | undefined>()
 
   const birthdateInputErrorId = uuidv4()
 
   useEffect(() => {
     if (date) {
-      props.onChange(date)
+      onChange(date)
     } else {
-      props.onChange(undefined)
+      onChange(undefined)
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [date])
@@ -24,18 +30,19 @@ export function DatePickerDropDown(props: DatePickerProps) {
     <React.Fragment>
       <DateInputDesktop
         onChange={setDate}
-        minimumDate={props.minimumDate}
-        defaultSelectedDate={props.defaultSelectedDate}
+        minimumDate={minimumDate}
+        maximumDate={maximumDate}
+        defaultSelectedDate={defaultSelectedDate}
         accessibilityDescribedBy={birthdateInputErrorId}
-        errorMessage={props.errorMessage}
+        errorMessage={errorMessage}
       />
       <InputError
-        visible={!!props.errorMessage}
-        messageId={props.errorMessage}
+        visible={!!errorMessage}
+        messageId={errorMessage}
         numberOfSpacesTop={2}
         relatedInputId={birthdateInputErrorId}
       />
-      {!!props.errorMessage && <Spacer.Column numberOfSpaces={6} />}
+      {!!errorMessage && <Spacer.Column numberOfSpaces={6} />}
       <Spacer.Column numberOfSpaces={4} />
     </React.Fragment>
   )

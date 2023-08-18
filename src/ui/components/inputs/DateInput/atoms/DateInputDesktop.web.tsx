@@ -1,4 +1,4 @@
-import React, { useMemo, useState, useEffect } from 'react'
+import React, { useMemo, useState, useEffect, FunctionComponent } from 'react'
 import styled from 'styled-components/native'
 
 import { dayNumbers } from 'shared/date/days'
@@ -16,33 +16,41 @@ type InitialDateProps = {
   year?: string
 }
 
-const INITIAL_DATE: InitialDateProps = {
-  day: undefined,
-  month: undefined,
-  year: undefined,
-}
-
-export function DateInputDesktop(props: DatePickerProps) {
-  const [date, setDate] = useState<InitialDateProps>(INITIAL_DATE)
+export const DateInputDesktop: FunctionComponent<DatePickerProps> = ({
+  defaultSelectedDate,
+  maximumDate,
+  minimumDate,
+  onChange,
+  accessibilityDescribedBy,
+  errorMessage,
+}) => {
+  const [date, setDate] = useState<InitialDateProps>({
+    day: undefined,
+    month: undefined,
+    year: undefined,
+  })
 
   const optionGroups = useMemo(() => {
-    const defaultSelectedYear = props.defaultSelectedDate.getFullYear().toString()
+    const maximumYear = getDateValuesString(maximumDate ?? defaultSelectedDate).year
+    const minimumYear = minimumDate.getFullYear()
+    const years = getPastYears(minimumYear, maximumYear)
+
     if (date.year === undefined || date.month === undefined || date.day === undefined) {
       return {
         days: dayNumbers,
         months: monthNames,
-        years: getPastYears(props.minimumDate.getFullYear(), defaultSelectedYear),
+        years,
       }
     }
+
     const { month: selectedMonth, year: selectedYear } = date
     const selectedMonthIndex = monthNames.indexOf(selectedMonth).toString()
     return {
       days: getDatesInMonth(selectedMonthIndex, selectedYear),
       months: monthNames,
-      years: getPastYears(props.minimumDate.getFullYear(), defaultSelectedYear),
+      years,
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [date, monthNames, getYears])
+  }, [date, defaultSelectedDate, maximumDate, minimumDate])
 
   const onPartialDateChange = (key: keyof InitialDateProps) => (value: string) => {
     setDate((prevDateValues) => ({ ...prevDateValues, [key]: value }))
@@ -57,14 +65,12 @@ export function DateInputDesktop(props: DatePickerProps) {
   }
 
   useEffect(() => {
-    props.onChange(getValidDate())
+    onChange(getValidDate())
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [date])
 
   return (
-    <Container
-      testID="date-picker-dropdown"
-      accessibilityDescribedBy={props.accessibilityDescribedBy}>
+    <Container testID="date-picker-dropdown" accessibilityDescribedBy={accessibilityDescribedBy}>
       <DropDownContainer>
         <DropDown
           label="Jour"
@@ -73,7 +79,7 @@ export function DateInputDesktop(props: DatePickerProps) {
           onChange={onPartialDateChange('day')}
           noBorderRadiusRight
           accessibilityLabel="Entrée pour le jour de la date de naissance"
-          isError={!!props.errorMessage}
+          isError={!!errorMessage}
         />
       </DropDownContainer>
       <Spacer.Row numberOfSpaces={2} />
@@ -86,7 +92,7 @@ export function DateInputDesktop(props: DatePickerProps) {
           noBorderRadiusRight
           noBorderRadiusLeft
           accessibilityLabel="Entrée pour le mois de la date de naissance"
-          isError={!!props.errorMessage}
+          isError={!!errorMessage}
         />
       </DropDownContainer>
       <Spacer.Row numberOfSpaces={2} />
@@ -98,7 +104,7 @@ export function DateInputDesktop(props: DatePickerProps) {
           onChange={onPartialDateChange('year')}
           noBorderRadiusLeft
           accessibilityLabel="Entrée pour l’année de la date de naissance"
-          isError={!!props.errorMessage}
+          isError={!!errorMessage}
         />
       </DropDownContainer>
     </Container>
