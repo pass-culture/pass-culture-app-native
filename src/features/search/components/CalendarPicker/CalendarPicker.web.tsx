@@ -6,17 +6,13 @@ import { Theme as RNCalendarTheme, DateData } from 'react-native-calendars/src/t
 import styled, { useTheme } from 'styled-components/native'
 import { v4 as uuidv4 } from 'uuid'
 
-import {
-  monthNamesShort,
-  getDatesInMonth,
-  getYears,
-  monthNames,
-  dayNames,
-  dayNamesShort,
-  getDateValuesString,
-} from 'features/bookOffer/components/Calendar/Calendar.utils'
 import { MonthHeader } from 'features/bookOffer/components/Calendar/MonthHeader'
 import { isBeforeToday } from 'features/search/helpers/isBeforeToday/isBeforeToday'
+import { dayNames, dayNamesShort } from 'shared/date/days'
+import { getDatesInMonth } from 'shared/date/getDatesInMonth'
+import { getDateValuesString } from 'shared/date/getDateValuesString'
+import { getYears } from 'shared/date/getYears'
+import { monthNames, monthNamesShort } from 'shared/date/months'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { InputError } from 'ui/components/inputs/InputError'
 import { AppModal } from 'ui/components/modals/AppModal'

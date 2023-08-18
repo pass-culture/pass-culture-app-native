@@ -4,14 +4,11 @@ import { TextInput } from 'react-native'
 import styled from 'styled-components/native'
 import { v4 as uuidv4 } from 'uuid'
 
-import {
-  getDatesInMonth,
-  getDateValuesString,
-  getPastYears,
-  getYears,
-  monthNamesShort,
-} from 'features/bookOffer/components/Calendar/Calendar.utils'
 import { pad } from 'libs/parsers'
+import { getDatesInMonth } from 'shared/date/getDatesInMonth'
+import { getDateValuesString } from 'shared/date/getDateValuesString'
+import { getPastYears } from 'shared/date/getPastYears'
+import { monthNamesShort } from 'shared/date/months'
 import { DateInputDisplay } from 'ui/components/inputs/DateInput/atoms/DateInputDisplay'
 import { DatePickerProps } from 'ui/components/inputs/DateInput/DatePicker/types'
 import { InputError } from 'ui/components/inputs/InputError'

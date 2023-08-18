@@ -1,13 +1,11 @@
 import React, { useMemo, useState, useEffect } from 'react'
 import styled from 'styled-components/native'
 
-import {
-  dayNumbers,
-  getDatesInMonth,
-  getPastYears,
-  getYears,
-  monthNames,
-} from 'features/bookOffer/components/Calendar/Calendar.utils'
+import { dayNumbers } from 'shared/date/days'
+import { getDatesInMonth } from 'shared/date/getDatesInMonth'
+import { getDateValuesString } from 'shared/date/getDateValuesString'
+import { getPastYears } from 'shared/date/getPastYears'
+import { monthNames } from 'shared/date/months'
 import { DatePickerProps } from 'ui/components/inputs/DateInput/DatePicker/types'
 import { DropDown } from 'ui/components/inputs/DropDown/DropDown'
 import { Spacer } from 'ui/theme'
