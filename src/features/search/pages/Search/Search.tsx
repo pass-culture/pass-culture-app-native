@@ -16,6 +16,7 @@ import { SearchView } from 'features/search/types'
 import { InsightsMiddleware } from 'libs/algolia/analytics/InsightsMiddleware'
 import { client } from 'libs/algolia/fetchAlgolia/clients'
 import { buildSearchVenuePosition } from 'libs/algolia/fetchAlgolia/fetchOffersAndVenues/helpers/buildSearchVenuePosition'
+import { getCurrentVenuesIndex } from 'libs/algolia/fetchAlgolia/helpers/getCurrentVenuesIndex'
 import { env } from 'libs/environment'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { useGeolocation } from 'libs/geolocation'
@@ -48,7 +49,6 @@ const searchClient: SearchClient = {
   },
 }
 const suggestionsIndex = env.ALGOLIA_SUGGESTIONS_INDEX_NAME
-const venuesIndex = env.ALGOLIA_VENUES_INDEX_NAME
 
 export function Search() {
   const netInfo = useNetInfoContext()
@@ -66,6 +66,10 @@ export function Search() {
     () => buildSearchVenuePosition(params?.locationFilter, userPosition),
     [params?.locationFilter, userPosition]
   )
+
+  const currentVenuesIndex = useMemo(() => {
+    return getCurrentVenuesIndex(params?.locationFilter?.locationType)
+  }, [params?.locationFilter?.locationType])
 
   if (!netInfo.isConnected) {
     return <OfflinePage />
@@ -85,7 +89,7 @@ export function Search() {
               <AutocompleteOffer />
               <FeatureFlag
                 featureFlag={RemoteStoreFeatureFlags.WIP_ENABLE_VENUES_IN_SEARCH_RESULTS}>
-                <Index indexName={venuesIndex}>
+                <Index indexName={currentVenuesIndex}>
                   <Configure
                     hitsPerPage={5}
                     clickAnalytics
