@@ -1,5 +1,3 @@
-import cloneDeep from 'lodash/cloneDeep'
-
 function limitStateSize(newState: Record<string, unknown>) {
   if (newState.index !== undefined && newState.routes) {
     newState.routes = [(newState.routes as [])[newState.index as number]]
@@ -9,5 +7,5 @@ function limitStateSize(newState: Record<string, unknown>) {
 }
 
 export function sanitizeNavigationState(state: Record<string, unknown>) {
-  return limitStateSize(cloneDeep(state))
+  return limitStateSize(structuredClone(state))
 }

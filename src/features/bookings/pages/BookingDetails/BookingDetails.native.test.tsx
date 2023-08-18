@@ -1,4 +1,3 @@
-import cloneDeep from 'lodash/cloneDeep'
 import React from 'react'
 import { UseQueryResult } from 'react-query'
 
@@ -82,7 +81,7 @@ describe('BookingDetails', () => {
   })
 
   it('should render correctly', async () => {
-    const booking = cloneDeep(bookingsSnap.ongoing_bookings[0])
+    const booking = structuredClone(bookingsSnap.ongoing_bookings[0])
     booking.completedUrl = 'https://example.com'
     renderBookingDetails(booking)
 
@@ -101,7 +100,7 @@ describe('BookingDetails', () => {
     })
 
     it('should display offer link button if offer is digital and open url on press', async () => {
-      const booking = cloneDeep(bookingsSnap.ongoing_bookings[0])
+      const booking = structuredClone(bookingsSnap.ongoing_bookings[0])
       booking.stock.offer.isDigital = true
       booking.completedUrl = 'https://example.com'
 
@@ -133,7 +132,7 @@ describe('BookingDetails', () => {
     })
 
     it('should display booking qr code if offer is physical', async () => {
-      const booking = cloneDeep(bookingsSnap.ongoing_bookings[0])
+      const booking = structuredClone(bookingsSnap.ongoing_bookings[0])
       booking.stock.offer.isDigital = false
       renderBookingDetails(booking)
 
@@ -143,7 +142,7 @@ describe('BookingDetails', () => {
     })
 
     it('should display EAN code if offer is a book (digital or physical)', async () => {
-      const booking = cloneDeep(bookingsSnap.ongoing_bookings[0])
+      const booking = structuredClone(bookingsSnap.ongoing_bookings[0])
       booking.stock.offer.subcategoryId = SubcategoryIdEnum.LIVRE_PAPIER
       renderBookingDetails(booking)
 
@@ -155,7 +154,7 @@ describe('BookingDetails', () => {
 
   describe('Offer rules', () => {
     it('should display rules for a digital offer', async () => {
-      const booking = cloneDeep(bookingsSnap.ongoing_bookings[0])
+      const booking = structuredClone(bookingsSnap.ongoing_bookings[0])
       booking.stock.offer.isDigital = true
 
       renderBookingDetails(booking)
@@ -170,7 +169,7 @@ describe('BookingDetails', () => {
     })
 
     it('should display rules for a digital offer with activation code', async () => {
-      const booking = cloneDeep(bookingsSnap.ongoing_bookings[0])
+      const booking = structuredClone(bookingsSnap.ongoing_bookings[0])
       booking.stock.offer.isDigital = true
       booking.activationCode = {
         code: 'fdfdfsds',
@@ -193,7 +192,7 @@ describe('BookingDetails', () => {
     ])(
       'should display rules for a %s & non-digital offer',
       async (type, isEvent, withdrawalType) => {
-        let booking = cloneDeep(bookingsSnap.ongoing_bookings[0])
+        let booking = structuredClone(bookingsSnap.ongoing_bookings[0])
         booking = {
           ...booking,
           stock: { ...booking.stock, offer: { ...booking.stock.offer, withdrawalType } },
@@ -316,7 +315,7 @@ describe('BookingDetails', () => {
 
   describe('cancellation button', () => {
     it('should log event "CancelBooking" when cancelling booking', async () => {
-      const booking = cloneDeep(bookingsSnap.ongoing_bookings[0])
+      const booking = structuredClone(bookingsSnap.ongoing_bookings[0])
       const date = new Date()
       date.setDate(date.getDate() + 1)
       booking.confirmationDate = date.toISOString()
