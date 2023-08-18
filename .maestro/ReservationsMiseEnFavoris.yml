@@ -1,0 +1,58 @@
+appId: app.passculture.staging
+---
+# Launch App
+- runFlow: reusableFlows/LaunchApp.yml
+# First Launch
+- runFlow: reusableFlows/FirstLaunch.yml
+
+- tapOn:
+      id: "Rechercher des offres"
+#- tapOn:
+#    id: "Revenir en arrière"
+- tapOn: "Rechercher des offres"
+- tapOn: "Films, séries, cinéma"
+- tapOn:
+    point: "50%,49%"
+#Mise en favoris
+- tapOn:
+    id: "animated-icon-favorite"
+# Se connecter
+- runFlow: reusableFlows/ToLogin.yml
+- tapOn: "Se connecter"
+#pour sortir de la saisie
+- tapOn:
+    id: "Se connecter"
+- tapOn: "Plus tard"
+
+- tapOn: "Rechercher des offres"
+- tapOn: "Catégories\_: Filtre sélectionné"
+- tapOn: "Films, séries, cinéma"
+- tapOn: "Rechercher"
+- tapOn:
+      point: "49%,32%"
+- tapOn:
+      point: "50%,34%"
+- tapOn:
+    id: "animated-icon-favorite"
+
+- tapOn:
+    id: "animated-icon-back"
+- tapOn: "Mes favoris"
+- assertVisible: "1 favori"
+- assertVisible: "Supprimer"
+- assertVisible: "Réserver"
+- tapOn: "Supprimer"
+- assertVisible:
+    text: "Mes favoris"
+    index: 0
+- assertVisible: "Retrouve toutes tes offres en un clin d’oeil"
+- assertVisible: "Tu n’as pas encore de favori\_?\nExplore le catalogue pass Culture\
+    \ et ajoute les offres en favori pour les retrouver facilement\_!"
+- assertVisible:
+    id: "Découvrir le catalogue"
+- tapOn:
+    id: "Découvrir le catalogue"
+- assertVisible: "Recherche une offre"
+
+# Stop App
+#- runFlow: reusableFlows/StopApp.yml

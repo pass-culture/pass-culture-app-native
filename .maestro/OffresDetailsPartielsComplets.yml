@@ -1,0 +1,79 @@
+appId: app.passculture.staging
+---
+# Launch App
+- runFlow: reusableFlows/LaunchApp.yml
+# First Launch
+- runFlow: reusableFlows/FirstLaunch.yml
+
+- tapOn:
+      id: "Rechercher des offres"
+#- tapOn:
+#    id: "Revenir en arrière"
+- tapOn: "Rechercher des offres"
+- tapOn: "Films, séries, cinéma"
+- tapOn:
+      point: "50%,49%"
+- tapOn:
+      id: "Réserver l’offre"
+# Se connecter
+- runFlow: reusableFlows/ToLogin.yml
+
+- tapOn: "Se connecter"
+#pour sortir de la saisie
+- tapOn:
+    id: "Se connecter"
+
+- tapOn: "Plus tard"
+
+- tapOn: "Rechercher des offres"
+
+- tapOn:
+    point: "50%,37%"
+
+- assertVisible: "Visite de la Maison-Atelier Foujita"
+- assertVisible: "Visite"
+- assertVisible: "À deux\_!"
+- assertVisible: "Gratuit"
+- assertVisible: "En 1991, Kimiyo Foujita a fait don du dernier atelier de son époux,\
+    \ le peintre franco-japonais Léonard Foujita au Conseil départemental de l'Essonne,\
+    \ qui a exaucé le vœu de l’artiste en permettant la conservation et l’ouverture\
+    \ au public de ce lieu de mémoire unique en Ile-de-France.\nSituée en vallée de\
+    \ Chevreuse, la petite maison rurale a été réaménagée par le peintre au début\
+    \ des années 1960. Dans ce site préservé, le visiteur pourra découvrir l’atmosphè\
+    re intime d’un peintre de l'Ecole de Paris. \nAu dernier étage de la maison, l’\
+    atelier de l’artiste est conservé intact. Pinceaux, pigments, maquettes et peintures\
+    \ murales (préparation de l’œuvre réalisée dans la chapelle ND de la Paix à Reims)\
+    \ révèlent toute la richesse et les secrets d’un créateur.\nDans le presbytère,\
+    \ espace d’accueil du lieu de mémoire, le visiteur pourra prolonger sa visite\
+    \ à travers des expositions temporaires."
+
+- scrollUntilVisible:
+      element: "voir plus"
+      direction: DOWN
+- tapOn: "voir plus"
+
+- assertVisible: "Durée"
+- assertVisible: "1h"
+- assertVisible: "En 1991, Kimiyo Foujita a fait don du dernier atelier de son époux,\
+    \ le peintre franco-japonais Léonard Foujita au Conseil départemental de l'Essonne,\
+    \ qui a exaucé le vœu de l’artiste en permettant la conservation et l’ouverture\
+    \ au public de ce lieu de mémoire unique en Ile-de-France.\nSituée en vallée de\
+    \ Chevreuse, la petite maison rurale a été réaménagée par le peintre au début\
+    \ des années 1960. Dans ce site préservé, le visiteur pourra découvrir l’atmosphè\
+    re intime d’un peintre de l'Ecole de Paris. \nAu dernier étage de la maison, l’\
+    atelier de l’artiste est conservé intact. Pinceaux, pigments, maquettes et peintures\
+    \ murales (préparation de l’œuvre réalisée dans la chapelle ND de la Paix à Reims)\
+    \ révèlent toute la richesse et les secrets d’un créateur.\nDans le presbytère,\
+    \ espace d’accueil du lieu de mémoire, le visiteur pourra prolonger sa visite\
+    \ à travers des expositions temporaires."
+- assertVisible: "Crédit photo"
+- assertVisible: "© Henri Perrot"
+- tapOn:
+      id: "icon-back"
+- tapOn:
+      id: "final-animated-icon-back"
+- tapOn:
+      id: "icon-back"
+
+# Stop App
+#- runFlow: reusableFlows/StopApp.yml
