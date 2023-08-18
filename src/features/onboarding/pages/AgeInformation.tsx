@@ -45,10 +45,10 @@ export const AgeInformation = ({ route }: AgeInformationProps): React.JSX.Elemen
     eighteenYearsOldDeposit,
   } = useDepositAmountsByAge()
 
-  const underageInfo: { age: number; deposit: string; position?: 'top' | 'bottom' }[] = [
-    { age: 15, deposit: fifteenYearsOldDeposit, position: 'top' },
+  const underageInfo: { age: number; deposit: string }[] = [
+    { age: 15, deposit: fifteenYearsOldDeposit },
     { age: 16, deposit: sixteenYearsOldDeposit },
-    { age: 17, deposit: seventeenYearsOldDeposit, position: 'bottom' },
+    { age: 17, deposit: seventeenYearsOldDeposit },
   ]
   const eighteenYearOldInfo = { age: 18, deposit: eighteenYearsOldDeposit }
 
@@ -87,14 +87,13 @@ export const AgeInformation = ({ route }: AgeInformationProps): React.JSX.Elemen
       <Spacer.Column numberOfSpaces={2} />
       <Container reverse={isEighteen}>
         <View>
-          {underageInfo.map(({ age, deposit, position }, index) => (
+          {underageInfo.map(({ age, deposit }, index) => (
             <React.Fragment key={age}>
               <CreditBlock
                 underage
                 creditStatus={getCreditStatusFromAge(userAge, age)}
                 title={(index !== 0 ? '+ ' : '') + deposit}
                 age={age}
-                roundedBorders={position}
                 onPress={() => logTrySelectDeposit(age)}
               />
               <Spacer.Column numberOfSpaces={0.5} />

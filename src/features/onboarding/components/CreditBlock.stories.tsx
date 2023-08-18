@@ -20,11 +20,11 @@ export default {
 const Template: ComponentStory<typeof CreditBlock> = (props) => <CreditBlock {...props} />
 const List: ComponentStory<typeof CreditBlock> = (props) => (
   <ListContainer>
-    <CreditBlock {...props} roundedBorders="top" creditStatus={CreditStatus.GONE} />
+    <CreditBlock {...props} creditStatus={CreditStatus.GONE} />
     <Spacer.Column numberOfSpaces={0.5} />
     <CreditBlock {...props} />
     <Spacer.Column numberOfSpaces={0.5} />
-    <CreditBlock {...props} roundedBorders="bottom" creditStatus={CreditStatus.COMING} />
+    <CreditBlock {...props} creditStatus={CreditStatus.COMING} />
   </ListContainer>
 )
 

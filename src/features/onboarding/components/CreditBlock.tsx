@@ -6,7 +6,6 @@ import { CreditBlockIcon } from 'features/onboarding/components/CreditBlockIcon'
 import { CreditStatusTag } from 'features/onboarding/components/CreditStatusTag'
 import { customEaseInOut, DURATION_IN_MS } from 'features/onboarding/helpers/animationProps'
 import { getBackgroundColor } from 'features/onboarding/helpers/getBackgroundColor'
-import { getBorderStyle } from 'features/onboarding/helpers/getBorderStyle'
 import { getTitleComponent, getAgeComponent } from 'features/onboarding/helpers/getTextComponent'
 import { CreditStatus } from 'features/onboarding/types'
 import { AnimatedView, NAV_DELAY_IN_MS } from 'libs/react-native-animatable'
@@ -17,7 +16,6 @@ type Props = {
   age: number
   description?: string
   underage: boolean
-  roundedBorders?: 'top' | 'bottom' // To determine if top or bottom corners should be rounded more
   creditStatus: CreditStatus
   onPress: () => void
 }
@@ -36,7 +34,6 @@ export const CreditBlock: FunctionComponent<Props> = ({
   age,
   description,
   underage,
-  roundedBorders,
   creditStatus,
   onPress,
 }) => {
@@ -63,11 +60,7 @@ export const CreditBlock: FunctionComponent<Props> = ({
 
   return (
     <TouchableWithoutFeedback onPress={onPress}>
-      <Container
-        as={ViewComponent}
-        roundedBorders={roundedBorders}
-        status={creditStatus}
-        {...viewProps}>
+      <Container as={ViewComponent} status={creditStatus} {...viewProps}>
         <IconContainer>
           <CreditBlockIcon status={creditStatus} />
         </IconContainer>
@@ -83,7 +76,7 @@ export const CreditBlock: FunctionComponent<Props> = ({
           )}
         </View>
         <TagContainer>
-          <CreditStatusTag status={creditStatus} roundedBorders={roundedBorders} />
+          <CreditStatusTag status={creditStatus} />
         </TagContainer>
       </Container>
     </TouchableWithoutFeedback>
@@ -98,9 +91,11 @@ const DescriptionText = styled(Typo.Caption)(({ theme }) => ({
 
 const Container = styled.View<{
   status: CreditStatus
-  roundedBorders?: Props['roundedBorders']
-}>(({ theme, status, roundedBorders }) => ({
-  ...getBorderStyle(theme, status, roundedBorders),
+}>(({ theme, status }) => ({
+  borderColor:
+    status === CreditStatus.ONGOING ? theme.colors.greySemiDark : getBackgroundColor(theme, status),
+  borderWidth: getSpacing(0.25),
+  borderRadius: getSpacing(1),
   backgroundColor: getBackgroundColor(theme, status),
   padding: getSpacing(4),
   flexDirection: 'row',

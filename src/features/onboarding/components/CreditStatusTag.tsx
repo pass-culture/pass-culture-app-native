@@ -1,22 +1,17 @@
 import React from 'react'
 import styled from 'styled-components/native'
 
-import {
-  EDGE_BLOCK_BORDER_RADIUS,
-  CREDIT_BLOCK_BORDER_WIDTH,
-} from 'features/onboarding/helpers/getBorderStyle'
 import { getTagColor } from 'features/onboarding/helpers/getTagColor'
 import { CreditStatus } from 'features/onboarding/types'
 import { getSpacing, Typo } from 'ui/theme'
 
 interface Props {
   status: CreditStatus
-  roundedBorders?: 'top' | 'bottom'
 }
 
-export const CreditStatusTag: React.FC<Props> = ({ status, roundedBorders }) => {
+export const CreditStatusTag: React.FC<Props> = ({ status }) => {
   return (
-    <Container status={status} roundedBorders={roundedBorders}>
+    <Container status={status}>
       <StyledText status={status}>{status}</StyledText>
     </Container>
   )
@@ -26,12 +21,11 @@ const StyledText = styled(Typo.Caption)<{ status: CreditStatus }>(({ theme, stat
   color: status === CreditStatus.GONE ? theme.colors.greyDark : theme.colors.white,
 }))
 
-const Container = styled.View<Props>(({ theme, status, roundedBorders }) => ({
+const Container = styled.View<Props>(({ theme, status }) => ({
   paddingVertical: getSpacing(1),
   paddingHorizontal: getSpacing(3),
   borderRadius: getSpacing(0.25),
-  borderTopRightRadius:
-    roundedBorders === 'top' ? EDGE_BLOCK_BORDER_RADIUS - CREDIT_BLOCK_BORDER_WIDTH : undefined,
+  borderTopRightRadius: getSpacing(0.75),
   borderBottomLeftRadius: getSpacing(2),
   backgroundColor: getTagColor(theme, status),
   textAlign: 'center',

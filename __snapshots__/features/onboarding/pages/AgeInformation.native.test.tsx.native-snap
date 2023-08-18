@@ -188,16 +188,13 @@ exports[`AgeInformation should render correctly for 15-year-old 1`] = `
               onResponderTerminate={[Function]}
               onResponderTerminationRequest={[Function]}
               onStartShouldSetResponder={[Function]}
-              roundedBorders="top"
               status="cette année"
               style={
                 {
                   "alignItems": "center",
                   "backgroundColor": "#ffffff",
                   "borderColor": "#90949D",
-                  "borderRadius": 2,
-                  "borderTopLeftRadius": 8,
-                  "borderTopRightRadius": 8,
+                  "borderRadius": 4,
                   "borderWidth": 1,
                   "flexDirection": "row",
                   "marginHorizontal": 0,
@@ -293,7 +290,6 @@ exports[`AgeInformation should render correctly for 15-year-old 1`] = `
                 }
               >
                 <View
-                  roundedBorders="top"
                   status="cette année"
                   style={
                     [
@@ -302,7 +298,7 @@ exports[`AgeInformation should render correctly for 15-year-old 1`] = `
                         "backgroundColor": "#15884f",
                         "borderBottomLeftRadius": 8,
                         "borderRadius": 1,
-                        "borderTopRightRadius": 7,
+                        "borderTopRightRadius": 3,
                         "paddingHorizontal": 12,
                         "paddingVertical": 4,
                         "textAlign": "center",
@@ -355,7 +351,7 @@ exports[`AgeInformation should render correctly for 15-year-old 1`] = `
                     "alignItems": "center",
                     "backgroundColor": "#F1F1F4",
                     "borderColor": "#F1F1F4",
-                    "borderRadius": 2,
+                    "borderRadius": 4,
                     "borderWidth": 1,
                     "flexDirection": "row",
                     "marginHorizontal": 4,
@@ -446,6 +442,7 @@ exports[`AgeInformation should render correctly for 15-year-old 1`] = `
                         "backgroundColor": "#320096",
                         "borderBottomLeftRadius": 8,
                         "borderRadius": 1,
+                        "borderTopRightRadius": 3,
                         "paddingHorizontal": 12,
                         "paddingVertical": 4,
                         "textAlign": "center",
@@ -491,17 +488,14 @@ exports[`AgeInformation should render correctly for 15-year-old 1`] = `
               onResponderTerminate={[Function]}
               onResponderTerminationRequest={[Function]}
               onStartShouldSetResponder={[Function]}
-              roundedBorders="bottom"
               status="à venir"
               style={
                 [
                   {
                     "alignItems": "center",
                     "backgroundColor": "#F1F1F4",
-                    "borderBottomLeftRadius": 8,
-                    "borderBottomRightRadius": 8,
                     "borderColor": "#F1F1F4",
-                    "borderRadius": 2,
+                    "borderRadius": 4,
                     "borderWidth": 1,
                     "flexDirection": "row",
                     "marginHorizontal": 4,
@@ -584,7 +578,6 @@ exports[`AgeInformation should render correctly for 15-year-old 1`] = `
                 }
               >
                 <View
-                  roundedBorders="bottom"
                   status="à venir"
                   style={
                     [
@@ -593,6 +586,7 @@ exports[`AgeInformation should render correctly for 15-year-old 1`] = `
                         "backgroundColor": "#320096",
                         "borderBottomLeftRadius": 8,
                         "borderRadius": 1,
+                        "borderTopRightRadius": 3,
                         "paddingHorizontal": 12,
                         "paddingVertical": 4,
                         "textAlign": "center",
@@ -721,7 +715,7 @@ exports[`AgeInformation should render correctly for 15-year-old 1`] = `
                     "alignItems": "center",
                     "backgroundColor": "#F1F1F4",
                     "borderColor": "#F1F1F4",
-                    "borderRadius": 2,
+                    "borderRadius": 4,
                     "borderWidth": 1,
                     "flexDirection": "row",
                     "marginHorizontal": 4,
@@ -836,6 +830,7 @@ exports[`AgeInformation should render correctly for 15-year-old 1`] = `
                         "backgroundColor": "#320096",
                         "borderBottomLeftRadius": 8,
                         "borderRadius": 1,
+                        "borderTopRightRadius": 3,
                         "paddingHorizontal": 12,
                         "paddingVertical": 4,
                         "textAlign": "center",
@@ -1239,7 +1234,6 @@ exports[`AgeInformation should render correctly for 16-year-old 1`] = `
               onResponderTerminate={[Function]}
               onResponderTerminationRequest={[Function]}
               onStartShouldSetResponder={[Function]}
-              roundedBorders="top"
               status="passé"
               style={
                 [
@@ -1247,9 +1241,7 @@ exports[`AgeInformation should render correctly for 16-year-old 1`] = `
                     "alignItems": "center",
                     "backgroundColor": "rgba(241,241,244,0.5)",
                     "borderColor": "rgba(241,241,244,0.5)",
-                    "borderRadius": 2,
-                    "borderTopLeftRadius": 8,
-                    "borderTopRightRadius": 8,
+                    "borderRadius": 4,
                     "borderWidth": 1,
                     "flexDirection": "row",
                     "marginHorizontal": 4,
@@ -1332,7 +1324,6 @@ exports[`AgeInformation should render correctly for 16-year-old 1`] = `
                 }
               >
                 <View
-                  roundedBorders="top"
                   status="passé"
                   style={
                     [
@@ -1341,7 +1332,7 @@ exports[`AgeInformation should render correctly for 16-year-old 1`] = `
                         "backgroundColor": "#ffffff",
                         "borderBottomLeftRadius": 8,
                         "borderRadius": 1,
-                        "borderTopRightRadius": 7,
+                        "borderTopRightRadius": 3,
                         "paddingHorizontal": 12,
                         "paddingVertical": 4,
                         "textAlign": "center",
@@ -1395,7 +1386,7 @@ exports[`AgeInformation should render correctly for 16-year-old 1`] = `
                   "alignItems": "center",
                   "backgroundColor": "#ffffff",
                   "borderColor": "#90949D",
-                  "borderRadius": 2,
+                  "borderRadius": 4,
                   "borderWidth": 1,
                   "flexDirection": "row",
                   "marginHorizontal": 0,
@@ -1499,6 +1490,7 @@ exports[`AgeInformation should render correctly for 16-year-old 1`] = `
                         "backgroundColor": "#15884f",
                         "borderBottomLeftRadius": 8,
                         "borderRadius": 1,
+                        "borderTopRightRadius": 3,
                         "paddingHorizontal": 12,
                         "paddingVertical": 4,
                         "textAlign": "center",
@@ -1544,17 +1536,14 @@ exports[`AgeInformation should render correctly for 16-year-old 1`] = `
               onResponderTerminate={[Function]}
               onResponderTerminationRequest={[Function]}
               onStartShouldSetResponder={[Function]}
-              roundedBorders="bottom"
               status="à venir"
               style={
                 [
                   {
                     "alignItems": "center",
                     "backgroundColor": "#F1F1F4",
-                    "borderBottomLeftRadius": 8,
-                    "borderBottomRightRadius": 8,
                     "borderColor": "#F1F1F4",
-                    "borderRadius": 2,
+                    "borderRadius": 4,
                     "borderWidth": 1,
                     "flexDirection": "row",
                     "marginHorizontal": 4,
@@ -1637,7 +1626,6 @@ exports[`AgeInformation should render correctly for 16-year-old 1`] = `
                 }
               >
                 <View
-                  roundedBorders="bottom"
                   status="à venir"
                   style={
                     [
@@ -1646,6 +1634,7 @@ exports[`AgeInformation should render correctly for 16-year-old 1`] = `
                         "backgroundColor": "#320096",
                         "borderBottomLeftRadius": 8,
                         "borderRadius": 1,
+                        "borderTopRightRadius": 3,
                         "paddingHorizontal": 12,
                         "paddingVertical": 4,
                         "textAlign": "center",
@@ -1774,7 +1763,7 @@ exports[`AgeInformation should render correctly for 16-year-old 1`] = `
                     "alignItems": "center",
                     "backgroundColor": "#F1F1F4",
                     "borderColor": "#F1F1F4",
-                    "borderRadius": 2,
+                    "borderRadius": 4,
                     "borderWidth": 1,
                     "flexDirection": "row",
                     "marginHorizontal": 4,
@@ -1889,6 +1878,7 @@ exports[`AgeInformation should render correctly for 16-year-old 1`] = `
                         "backgroundColor": "#320096",
                         "borderBottomLeftRadius": 8,
                         "borderRadius": 1,
+                        "borderTopRightRadius": 3,
                         "paddingHorizontal": 12,
                         "paddingVertical": 4,
                         "textAlign": "center",
@@ -2292,7 +2282,6 @@ exports[`AgeInformation should render correctly for 17-year-old 1`] = `
               onResponderTerminate={[Function]}
               onResponderTerminationRequest={[Function]}
               onStartShouldSetResponder={[Function]}
-              roundedBorders="top"
               status="passé"
               style={
                 [
@@ -2300,9 +2289,7 @@ exports[`AgeInformation should render correctly for 17-year-old 1`] = `
                     "alignItems": "center",
                     "backgroundColor": "rgba(241,241,244,0.5)",
                     "borderColor": "rgba(241,241,244,0.5)",
-                    "borderRadius": 2,
-                    "borderTopLeftRadius": 8,
-                    "borderTopRightRadius": 8,
+                    "borderRadius": 4,
                     "borderWidth": 1,
                     "flexDirection": "row",
                     "marginHorizontal": 4,
@@ -2385,7 +2372,6 @@ exports[`AgeInformation should render correctly for 17-year-old 1`] = `
                 }
               >
                 <View
-                  roundedBorders="top"
                   status="passé"
                   style={
                     [
@@ -2394,7 +2380,7 @@ exports[`AgeInformation should render correctly for 17-year-old 1`] = `
                         "backgroundColor": "#ffffff",
                         "borderBottomLeftRadius": 8,
                         "borderRadius": 1,
-                        "borderTopRightRadius": 7,
+                        "borderTopRightRadius": 3,
                         "paddingHorizontal": 12,
                         "paddingVertical": 4,
                         "textAlign": "center",
@@ -2447,7 +2433,7 @@ exports[`AgeInformation should render correctly for 17-year-old 1`] = `
                     "alignItems": "center",
                     "backgroundColor": "rgba(241,241,244,0.5)",
                     "borderColor": "rgba(241,241,244,0.5)",
-                    "borderRadius": 2,
+                    "borderRadius": 4,
                     "borderWidth": 1,
                     "flexDirection": "row",
                     "marginHorizontal": 4,
@@ -2538,6 +2524,7 @@ exports[`AgeInformation should render correctly for 17-year-old 1`] = `
                         "backgroundColor": "#ffffff",
                         "borderBottomLeftRadius": 8,
                         "borderRadius": 1,
+                        "borderTopRightRadius": 3,
                         "paddingHorizontal": 12,
                         "paddingVertical": 4,
                         "textAlign": "center",
@@ -2585,16 +2572,13 @@ exports[`AgeInformation should render correctly for 17-year-old 1`] = `
               onResponderTerminate={[Function]}
               onResponderTerminationRequest={[Function]}
               onStartShouldSetResponder={[Function]}
-              roundedBorders="bottom"
               status="cette année"
               style={
                 {
                   "alignItems": "center",
                   "backgroundColor": "#ffffff",
-                  "borderBottomLeftRadius": 8,
-                  "borderBottomRightRadius": 8,
                   "borderColor": "#90949D",
-                  "borderRadius": 2,
+                  "borderRadius": 4,
                   "borderWidth": 1,
                   "flexDirection": "row",
                   "marginHorizontal": 0,
@@ -2690,7 +2674,6 @@ exports[`AgeInformation should render correctly for 17-year-old 1`] = `
                 }
               >
                 <View
-                  roundedBorders="bottom"
                   status="cette année"
                   style={
                     [
@@ -2699,6 +2682,7 @@ exports[`AgeInformation should render correctly for 17-year-old 1`] = `
                         "backgroundColor": "#15884f",
                         "borderBottomLeftRadius": 8,
                         "borderRadius": 1,
+                        "borderTopRightRadius": 3,
                         "paddingHorizontal": 12,
                         "paddingVertical": 4,
                         "textAlign": "center",
@@ -2827,7 +2811,7 @@ exports[`AgeInformation should render correctly for 17-year-old 1`] = `
                     "alignItems": "center",
                     "backgroundColor": "#F1F1F4",
                     "borderColor": "#F1F1F4",
-                    "borderRadius": 2,
+                    "borderRadius": 4,
                     "borderWidth": 1,
                     "flexDirection": "row",
                     "marginHorizontal": 4,
@@ -2942,6 +2926,7 @@ exports[`AgeInformation should render correctly for 17-year-old 1`] = `
                         "backgroundColor": "#320096",
                         "borderBottomLeftRadius": 8,
                         "borderRadius": 1,
+                        "borderTopRightRadius": 3,
                         "paddingHorizontal": 12,
                         "paddingVertical": 4,
                         "textAlign": "center",
@@ -3345,7 +3330,6 @@ exports[`AgeInformation should render correctly for 18-year-old 1`] = `
               onResponderTerminate={[Function]}
               onResponderTerminationRequest={[Function]}
               onStartShouldSetResponder={[Function]}
-              roundedBorders="top"
               status="passé"
               style={
                 [
@@ -3353,9 +3337,7 @@ exports[`AgeInformation should render correctly for 18-year-old 1`] = `
                     "alignItems": "center",
                     "backgroundColor": "rgba(241,241,244,0.5)",
                     "borderColor": "rgba(241,241,244,0.5)",
-                    "borderRadius": 2,
-                    "borderTopLeftRadius": 8,
-                    "borderTopRightRadius": 8,
+                    "borderRadius": 4,
                     "borderWidth": 1,
                     "flexDirection": "row",
                     "marginHorizontal": 4,
@@ -3438,7 +3420,6 @@ exports[`AgeInformation should render correctly for 18-year-old 1`] = `
                 }
               >
                 <View
-                  roundedBorders="top"
                   status="passé"
                   style={
                     [
@@ -3447,7 +3428,7 @@ exports[`AgeInformation should render correctly for 18-year-old 1`] = `
                         "backgroundColor": "#ffffff",
                         "borderBottomLeftRadius": 8,
                         "borderRadius": 1,
-                        "borderTopRightRadius": 7,
+                        "borderTopRightRadius": 3,
                         "paddingHorizontal": 12,
                         "paddingVertical": 4,
                         "textAlign": "center",
@@ -3500,7 +3481,7 @@ exports[`AgeInformation should render correctly for 18-year-old 1`] = `
                     "alignItems": "center",
                     "backgroundColor": "rgba(241,241,244,0.5)",
                     "borderColor": "rgba(241,241,244,0.5)",
-                    "borderRadius": 2,
+                    "borderRadius": 4,
                     "borderWidth": 1,
                     "flexDirection": "row",
                     "marginHorizontal": 4,
@@ -3591,6 +3572,7 @@ exports[`AgeInformation should render correctly for 18-year-old 1`] = `
                         "backgroundColor": "#ffffff",
                         "borderBottomLeftRadius": 8,
                         "borderRadius": 1,
+                        "borderTopRightRadius": 3,
                         "paddingHorizontal": 12,
                         "paddingVertical": 4,
                         "textAlign": "center",
@@ -3636,17 +3618,14 @@ exports[`AgeInformation should render correctly for 18-year-old 1`] = `
               onResponderTerminate={[Function]}
               onResponderTerminationRequest={[Function]}
               onStartShouldSetResponder={[Function]}
-              roundedBorders="bottom"
               status="passé"
               style={
                 [
                   {
                     "alignItems": "center",
                     "backgroundColor": "rgba(241,241,244,0.5)",
-                    "borderBottomLeftRadius": 8,
-                    "borderBottomRightRadius": 8,
                     "borderColor": "rgba(241,241,244,0.5)",
-                    "borderRadius": 2,
+                    "borderRadius": 4,
                     "borderWidth": 1,
                     "flexDirection": "row",
                     "marginHorizontal": 4,
@@ -3729,7 +3708,6 @@ exports[`AgeInformation should render correctly for 18-year-old 1`] = `
                 }
               >
                 <View
-                  roundedBorders="bottom"
                   status="passé"
                   style={
                     [
@@ -3738,6 +3716,7 @@ exports[`AgeInformation should render correctly for 18-year-old 1`] = `
                         "backgroundColor": "#ffffff",
                         "borderBottomLeftRadius": 8,
                         "borderRadius": 1,
+                        "borderTopRightRadius": 3,
                         "paddingHorizontal": 12,
                         "paddingVertical": 4,
                         "textAlign": "center",
@@ -3867,7 +3846,7 @@ exports[`AgeInformation should render correctly for 18-year-old 1`] = `
                   "alignItems": "center",
                   "backgroundColor": "#ffffff",
                   "borderColor": "#90949D",
-                  "borderRadius": 2,
+                  "borderRadius": 4,
                   "borderWidth": 1,
                   "flexDirection": "row",
                   "marginHorizontal": 0,
@@ -3995,6 +3974,7 @@ exports[`AgeInformation should render correctly for 18-year-old 1`] = `
                         "backgroundColor": "#15884f",
                         "borderBottomLeftRadius": 8,
                         "borderRadius": 1,
+                        "borderTopRightRadius": 3,
                         "paddingHorizontal": 12,
                         "paddingVertical": 4,
                         "textAlign": "center",
