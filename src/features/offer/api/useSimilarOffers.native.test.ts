@@ -98,7 +98,7 @@ describe('useSimilarOffers', () => {
         categoryIncluded: SearchGroupNameEnumv2.FILMS_SERIES_CINEMA,
       })
     )
-    expect(algoliaSpy).toHaveBeenCalledWith([])
+    expect(algoliaSpy).toHaveBeenCalledWith([], true)
   })
 
   describe('when Algolia Recommend AB Testing desactivated', () => {

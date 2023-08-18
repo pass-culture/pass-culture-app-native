@@ -1,11 +1,14 @@
 import { useAlgoliaSimilarOffers } from 'features/offer/api/useAlgoliaSimilarOffers'
+import * as getSimilarOffersInOrder from 'features/offer/helpers/getSimilarOffersInOrder/getSimilarOffersInOrder'
 import { mockedAlgoliaResponse } from 'libs/algolia/__mocks__/mockedAlgoliaResponse'
 import * as fetchOffersByIdsAPI from 'libs/algolia/fetchAlgolia/fetchOffersByIds'
 import * as filterOfferHitAPI from 'libs/algolia/fetchAlgolia/transformOfferHit'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { renderHook, waitFor } from 'tests/utils'
+import { act, renderHook, waitFor } from 'tests/utils'
 
 jest.mock('features/auth/context/AuthContext')
+
+const getSimilarOffersInOrderSpy = jest.spyOn(getSimilarOffersInOrder, 'getSimilarOffersInOrder')
 
 const ids = ['102280', '102272', '102249', '102310']
 describe('useAlgoliaSimilarOffers', () => {
@@ -56,5 +59,32 @@ describe('useAlgoliaSimilarOffers', () => {
       wrapper: ({ children }) => reactQueryProviderHOC(children),
     })
     expect(result.current).toBeUndefined()
+  })
+
+  it('should call function to preserve ids offer order when shouldPreserveIdsOrder is true', async () => {
+    renderHook(() => useAlgoliaSimilarOffers(ids, true), {
+      // eslint-disable-next-line local-rules/no-react-query-provider-hoc
+      wrapper: ({ children }) => reactQueryProviderHOC(children),
+    })
+    await act(async () => {})
+    expect(getSimilarOffersInOrderSpy).toHaveBeenCalledTimes(1)
+  })
+
+  it('should not call function to preserve ids offer order when shouldPreserveIdsOrder is undefined', async () => {
+    renderHook(() => useAlgoliaSimilarOffers(ids), {
+      // eslint-disable-next-line local-rules/no-react-query-provider-hoc
+      wrapper: ({ children }) => reactQueryProviderHOC(children),
+    })
+    await act(async () => {})
+    expect(getSimilarOffersInOrderSpy).not.toHaveBeenCalled()
+  })
+
+  it('should not call function to preserve ids offer order when shouldPreserveIdsOrder is false', async () => {
+    renderHook(() => useAlgoliaSimilarOffers(ids, false), {
+      // eslint-disable-next-line local-rules/no-react-query-provider-hoc
+      wrapper: ({ children }) => reactQueryProviderHOC(children),
+    })
+    await act(async () => {})
+    expect(getSimilarOffersInOrderSpy).not.toHaveBeenCalled()
   })
 })
