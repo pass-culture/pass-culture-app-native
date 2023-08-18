@@ -27,6 +27,9 @@ const props = {
 
 jest.useFakeTimers({ legacyFakeTimers: true })
 
+const INCORRECT_EMAIL_MESSAGE =
+  'L’e-mail renseigné est incorrect. Exemple de format attendu\u00a0: edith.piaf@email.fr'
+
 describe('<SetEmail />', () => {
   it('should disable validate button when email input is not filled', () => {
     const { getByText } = render(<SetEmail {...props} />)
@@ -90,11 +93,7 @@ describe('<SetEmail />', () => {
       fireEvent.press(continueButton)
     })
 
-    expect(
-      queryByText(
-        'L’e-mail renseigné est incorrect. Exemple de format attendu\u00a0: edith.piaf@email.fr'
-      )
-    ).toBeFalsy()
+    expect(queryByText(INCORRECT_EMAIL_MESSAGE)).toBeFalsy()
   })
 
   it('should reject invalid email when trying to submit', async () => {
@@ -110,11 +109,7 @@ describe('<SetEmail />', () => {
       fireEvent.press(continueButton)
     })
 
-    expect(
-      queryByText(
-        'L’e-mail renseigné est incorrect. Exemple de format attendu : edith.piaf@email.fr'
-      )
-    ).toBeTruthy()
+    expect(queryByText(INCORRECT_EMAIL_MESSAGE)).toBeTruthy()
   })
 
   it('should log analytics when clicking on "Se connecter" button', async () => {
