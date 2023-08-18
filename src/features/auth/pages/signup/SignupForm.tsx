@@ -178,6 +178,7 @@ export const SignupForm: FunctionComponent = () => {
           signUp={signUp}
           email={signupData.email}
           accessibilityLabelForNextStep={accessibilityLabelForNextStep}
+          previousSignupData={signupData}
         />
       </StyledScrollView>
       <QuitSignupModal
