@@ -1,5 +1,3 @@
-import { cloneDeep } from 'lodash'
-
 import {
   formattedBusinessModule,
   formattedCategoryListModule,
@@ -48,7 +46,7 @@ describe('adaptHomepageModules', () => {
     it('should catch the error and log to Sentry if the provided data is corrupted', () => {
       const spyWarn = jest.spyOn(global.console, 'warn').mockImplementationOnce(() => null)
 
-      const contentModel = cloneDeep(businessNatifModuleFixture)
+      const contentModel = structuredClone(businessNatifModuleFixture)
       // @ts-ignore: the following content model is voluntarily broken, cf. PC-21362
       contentModel.fields.image = undefined
 
