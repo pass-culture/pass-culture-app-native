@@ -325,11 +325,11 @@ exports[`AgeInformation should render correctly for 15-year-old 1`] = `
               </View>
             </View>
             <View
-              numberOfSpaces={0.5}
+              numberOfSpaces={2}
               style={
                 [
                   {
-                    "height": 2,
+                    "height": 8,
                   },
                 ]
               }
@@ -469,11 +469,11 @@ exports[`AgeInformation should render correctly for 15-year-old 1`] = `
               </View>
             </View>
             <View
-              numberOfSpaces={0.5}
+              numberOfSpaces={2}
               style={
                 [
                   {
-                    "height": 2,
+                    "height": 8,
                   },
                 ]
               }
@@ -613,11 +613,11 @@ exports[`AgeInformation should render correctly for 15-year-old 1`] = `
               </View>
             </View>
             <View
-              numberOfSpaces={0.5}
+              numberOfSpaces={2}
               style={
                 [
                   {
-                    "height": 2,
+                    "height": 8,
                   },
                 ]
               }
@@ -1359,11 +1359,11 @@ exports[`AgeInformation should render correctly for 16-year-old 1`] = `
               </View>
             </View>
             <View
-              numberOfSpaces={0.5}
+              numberOfSpaces={2}
               style={
                 [
                   {
-                    "height": 2,
+                    "height": 8,
                   },
                 ]
               }
@@ -1517,11 +1517,11 @@ exports[`AgeInformation should render correctly for 16-year-old 1`] = `
               </View>
             </View>
             <View
-              numberOfSpaces={0.5}
+              numberOfSpaces={2}
               style={
                 [
                   {
-                    "height": 2,
+                    "height": 8,
                   },
                 ]
               }
@@ -1661,11 +1661,11 @@ exports[`AgeInformation should render correctly for 16-year-old 1`] = `
               </View>
             </View>
             <View
-              numberOfSpaces={0.5}
+              numberOfSpaces={2}
               style={
                 [
                   {
-                    "height": 2,
+                    "height": 8,
                   },
                 ]
               }
@@ -2407,11 +2407,11 @@ exports[`AgeInformation should render correctly for 17-year-old 1`] = `
               </View>
             </View>
             <View
-              numberOfSpaces={0.5}
+              numberOfSpaces={2}
               style={
                 [
                   {
-                    "height": 2,
+                    "height": 8,
                   },
                 ]
               }
@@ -2551,11 +2551,11 @@ exports[`AgeInformation should render correctly for 17-year-old 1`] = `
               </View>
             </View>
             <View
-              numberOfSpaces={0.5}
+              numberOfSpaces={2}
               style={
                 [
                   {
-                    "height": 2,
+                    "height": 8,
                   },
                 ]
               }
@@ -2709,11 +2709,11 @@ exports[`AgeInformation should render correctly for 17-year-old 1`] = `
               </View>
             </View>
             <View
-              numberOfSpaces={0.5}
+              numberOfSpaces={2}
               style={
                 [
                   {
-                    "height": 2,
+                    "height": 8,
                   },
                 ]
               }
@@ -3455,11 +3455,11 @@ exports[`AgeInformation should render correctly for 18-year-old 1`] = `
               </View>
             </View>
             <View
-              numberOfSpaces={0.5}
+              numberOfSpaces={2}
               style={
                 [
                   {
-                    "height": 2,
+                    "height": 8,
                   },
                 ]
               }
@@ -3599,11 +3599,11 @@ exports[`AgeInformation should render correctly for 18-year-old 1`] = `
               </View>
             </View>
             <View
-              numberOfSpaces={0.5}
+              numberOfSpaces={2}
               style={
                 [
                   {
-                    "height": 2,
+                    "height": 8,
                   },
                 ]
               }
@@ -3743,11 +3743,11 @@ exports[`AgeInformation should render correctly for 18-year-old 1`] = `
               </View>
             </View>
             <View
-              numberOfSpaces={0.5}
+              numberOfSpaces={2}
               style={
                 [
                   {
-                    "height": 2,
+                    "height": 8,
                   },
                 ]
               }

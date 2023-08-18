@@ -96,7 +96,7 @@ export const AgeInformation = ({ route }: AgeInformationProps): React.JSX.Elemen
                 age={age}
                 onPress={() => logTrySelectDeposit(age)}
               />
-              <Spacer.Column numberOfSpaces={0.5} />
+              <Spacer.Column numberOfSpaces={2} />
             </React.Fragment>
           ))}
         </View>
