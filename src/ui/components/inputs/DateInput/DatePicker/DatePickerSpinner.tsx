@@ -46,6 +46,7 @@ export function DatePickerSpinner(props: DatePickerProps) {
 const SMALL_SCREEN_SPINNER_HEIGHT = getSpacing(25)
 const SpinnerDatePicker = styled(DatePicker).attrs(({ theme }) => ({
   textColor: theme.colors.black,
+  theme: 'auto',
 }))(({ theme }) => ({
   height: theme.isSmallScreen ? SMALL_SCREEN_SPINNER_HEIGHT : undefined,
   width: '100%',
