@@ -93,7 +93,7 @@ export const AgeInformation = ({ route }: AgeInformationProps): React.JSX.Elemen
                 underage
                 creditStatus={getCreditStatusFromAge(userAge, age)}
                 title={(index !== 0 ? '+ ' : '') + deposit}
-                subtitle={`à ${age} ans`}
+                age={age}
                 roundedBorders={position}
                 onPress={() => logTrySelectDeposit(age)}
               />
@@ -107,7 +107,7 @@ export const AgeInformation = ({ route }: AgeInformationProps): React.JSX.Elemen
             underage={false}
             creditStatus={getCreditStatusFromAge(userAge, eighteenYearOldInfo.age)}
             title={eighteenYearOldInfo.deposit}
-            subtitle={`à ${eighteenYearOldInfo.age} ans`}
+            age={eighteenYearOldInfo.age}
             description={`Tu auras 2 ans pour utiliser tes ${eighteenYearOldInfo.deposit}`}
             onPress={() => logTrySelectDeposit(eighteenYearOldInfo.age)}
           />

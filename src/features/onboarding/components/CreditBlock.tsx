@@ -14,7 +14,7 @@ import { getSpacing, getSpacingString, Spacer, Typo } from 'ui/theme'
 
 type Props = {
   title: string
-  subtitle: string
+  age: number
   description?: string
   underage: boolean
   roundedBorders?: 'top' | 'bottom' // To determine if top or bottom corners should be rounded more
@@ -33,7 +33,7 @@ const containerAnimation = {
 
 export const CreditBlock: FunctionComponent<Props> = ({
   title,
-  subtitle,
+  age,
   description,
   underage,
   roundedBorders,
@@ -74,7 +74,7 @@ export const CreditBlock: FunctionComponent<Props> = ({
         <View>
           <TitleText>{title}</TitleText>
           <Spacer.Column numberOfSpaces={1} />
-          <AgeText>{subtitle}</AgeText>
+          <AgeText>{`à ${age} ans`}</AgeText>
           {!!description && (
             <React.Fragment>
               <Spacer.Column numberOfSpaces={1} />

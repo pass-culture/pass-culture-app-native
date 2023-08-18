@@ -36,7 +36,7 @@ const ListContainer = styled.View({
 const eighteenYearOldProps = {
   underage: false,
   title: '300\u00a0€',
-  subtitle: 'à 18 ans',
+  age: 18,
   description: 'Tu auras 2 ans pour utiliser tes 300\u00a0€',
   roundedBorders: undefined,
   creditStatus: CreditStatus.ONGOING,
@@ -45,7 +45,7 @@ const eighteenYearOldProps = {
 const underageProps = {
   underage: true,
   title: '20\u00a0€',
-  subtitle: 'à 15 ans',
+  age: 15,
   roundedBorders: undefined,
   creditStatus: CreditStatus.ONGOING,
 }
