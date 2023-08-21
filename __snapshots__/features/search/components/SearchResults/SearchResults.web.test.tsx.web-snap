@@ -454,7 +454,7 @@ exports[`SearchResults component should render correctly 1`] = `
                 >
                   <div
                     class="css-view-175oi2r r-WebkitOverflowScrolling-150rngu r-flexDirection-18u37iz r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-transform-1sncvnh r-overflowX-11yh6sk r-overflowY-buy8e9 r-touchAction-19z077z r-scrollbarWidth-2eszeu"
-                    data-testid="search-venue-lit"
+                    data-testid="search-venue-list"
                   >
                     <div
                       class="css-view-175oi2r r-flexDirection-18u37iz"
@@ -1126,7 +1126,7 @@ exports[`SearchResults component should render correctly 1`] = `
               >
                 <div
                   class="css-view-175oi2r r-WebkitOverflowScrolling-150rngu r-flexDirection-18u37iz r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-transform-1sncvnh r-overflowX-11yh6sk r-overflowY-buy8e9 r-touchAction-19z077z r-scrollbarWidth-2eszeu"
-                  data-testid="search-venue-lit"
+                  data-testid="search-venue-list"
                 >
                   <div
                     class="css-view-175oi2r r-flexDirection-18u37iz"
