@@ -25,3 +25,11 @@ Error.args = {
   options: monthNames,
   isError: true,
 }
+
+export const WithDefaultSelectedValue = Template.bind({})
+WithDefaultSelectedValue.args = {
+  label: 'Mois',
+  placeholder: 'Mois',
+  options: monthNames,
+  value: monthNames[7],
+}

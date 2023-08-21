@@ -4,8 +4,9 @@ import React from 'react'
 import { MINIMUM_DATE, CURRENT_DATE, DEFAULT_SELECTED_DATE } from 'features/auth/fixtures/fixtures'
 import { fireEvent, render, screen } from 'tests/utils/web'
 import { DatePickerDropDown } from 'ui/components/inputs/DateInput/DatePicker/DatePickerDropDown.web'
+import { DatePickerProps } from 'ui/components/inputs/DateInput/DatePicker/types'
 
-const props = {
+const props: DatePickerProps & { onChange: jest.Mock<DatePickerProps['onChange']> } = {
   onChange: jest.fn(),
   defaultSelectedDate: DEFAULT_SELECTED_DATE,
   minimumDate: MINIMUM_DATE,
@@ -17,6 +18,14 @@ describe('<DatePickerDropDown />', () => {
     props.onChange.mockReset()
   })
 
+  it('should set a default date...', () => {
+    render(<DatePickerDropDown {...props} />)
+
+    expect(screen.getByLabelText('Jour')).toHaveValue('1')
+    expect(screen.getByLabelText('Mois')).toHaveValue('Décembre')
+    expect(screen.getByLabelText('Année')).toHaveValue('2006')
+  })
+
   it('should call onChange with undefined date when a date is not selected', () => {
     render(<DatePickerDropDown {...props} />)
 
@@ -24,7 +33,7 @@ describe('<DatePickerDropDown />', () => {
     fireEvent.change(screen.getByTestId('select-Mois'), { target: { value: '' } })
     fireEvent.change(screen.getByTestId('select-Année'), { target: { value: '' } })
 
-    expect(props.onChange).toHaveBeenCalledWith(undefined) // first render trigger useEffect
+    expect(props.onChange).toHaveBeenNthCalledWith(1, undefined) // first render trigger useEffect
   })
 
   it('should call onChange with the selected date when a date is selected', () => {

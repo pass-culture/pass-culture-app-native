@@ -24,11 +24,19 @@ export const DateInputDesktop: FunctionComponent<DatePickerProps> = ({
   accessibilityDescribedBy,
   errorMessage,
 }) => {
+  const DEFAULT_SELECTED_DATE = new Date(defaultSelectedDate)
+  const dayFromDefaultSelectedDate = DEFAULT_SELECTED_DATE.getDay().toString()
+  const monthFromDefaultSelectedDate = monthNames.at(DEFAULT_SELECTED_DATE.getMonth())
+  const yearFromDefaultSelectedDate = DEFAULT_SELECTED_DATE.getFullYear().toString()
+
   const [date, setDate] = useState<InitialDateProps>({
-    day: undefined,
-    month: undefined,
-    year: undefined,
+    day: dayFromDefaultSelectedDate ?? undefined,
+    month: monthFromDefaultSelectedDate ?? undefined,
+    year: yearFromDefaultSelectedDate ?? undefined,
   })
+
+  // console.log({ defaultSelectedDate })
+  // console.log({ date })
 
   const optionGroups = useMemo(() => {
     const maximumYear = getDateValuesString(maximumDate ?? defaultSelectedDate).year
@@ -65,6 +73,7 @@ export const DateInputDesktop: FunctionComponent<DatePickerProps> = ({
     <Container testID="date-picker-dropdown" accessibilityDescribedBy={accessibilityDescribedBy}>
       <DropDownContainer>
         <DropDown
+          value={date.day}
           label="Jour"
           placeholder="JJ"
           options={optionGroups.days}
@@ -77,6 +86,7 @@ export const DateInputDesktop: FunctionComponent<DatePickerProps> = ({
       <Spacer.Row numberOfSpaces={2} />
       <DropDownContainer>
         <DropDown
+          value={date.month}
           label="Mois"
           placeholder="Mois"
           options={optionGroups.months}
@@ -90,6 +100,7 @@ export const DateInputDesktop: FunctionComponent<DatePickerProps> = ({
       <Spacer.Row numberOfSpaces={2} />
       <DropDownContainer>
         <DropDown
+          value={date.year}
           label="Année"
           placeholder="AAAA"
           options={optionGroups.years}

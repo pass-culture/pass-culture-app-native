@@ -8,4 +8,5 @@ export const DropDown = (_: {
   noBorderRadiusLeft?: boolean
   accessibilityLabel?: string
   isError?: boolean
+  value?: string
 }) => null
