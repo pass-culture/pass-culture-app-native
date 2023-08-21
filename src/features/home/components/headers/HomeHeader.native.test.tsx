@@ -127,22 +127,6 @@ describe('HomeHeader', () => {
     expect(await screen.findByText('Géolocalise-toi')).toBeTruthy()
   })
 
-  it('should have CheatMenu button when FEATURE_FLIPPING_ONLY_VISIBLE_ON_TESTING=true', async () => {
-    env.FEATURE_FLIPPING_ONLY_VISIBLE_ON_TESTING = true
-    renderHomeHeader()
-    await act(async () => {})
-
-    expect(await screen.findByText('CheatMenu')).toBeTruthy()
-  })
-
-  it('should NOT have CheatMenu button when NOT FEATURE_FLIPPING_ONLY_VISIBLE_ON_TESTING=false', async () => {
-    env.FEATURE_FLIPPING_ONLY_VISIBLE_ON_TESTING = false
-    renderHomeHeader()
-    await act(async () => {})
-
-    expect(screen.queryByText('CheatMenu')).toBeNull()
-  })
-
   it('should display SignupBanner when user is not logged in', async () => {
     const useAuthContextNotLoggedInMock = {
       isLoggedIn: false,

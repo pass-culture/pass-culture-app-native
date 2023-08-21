@@ -5,7 +5,8 @@ import { UserProfileResponse, YoungStatusType } from 'api/gen'
 import { ProfileHeader } from 'features/profile/components/Header/ProfileHeader/ProfileHeader'
 import { domains_credit_v1 } from 'features/profile/fixtures/domainsCredit'
 import { isUserUnderageBeneficiary } from 'features/profile/helpers/isUserUnderageBeneficiary'
-import { render } from 'tests/utils'
+import { env } from 'libs/environment'
+import { act, render, screen } from 'tests/utils'
 
 jest.mock('react-query')
 
@@ -88,5 +89,21 @@ describe('ProfileHeader', () => {
   it('should display the NonBeneficiaryHeader Header if user is eligible exunderage beneficiary', () => {
     const ProfileHeaderComponent = render(<ProfileHeader user={exUnderageBeneficiaryUser} />)
     expect(ProfileHeaderComponent).toMatchSnapshot()
+  })
+
+  it('should have CheatMenu button when FEATURE_FLIPPING_ONLY_VISIBLE_ON_TESTING=true', async () => {
+    env.FEATURE_FLIPPING_ONLY_VISIBLE_ON_TESTING = true
+    render(<ProfileHeader user={undefined} />)
+    await act(async () => {})
+
+    expect(await screen.findByText('CheatMenu')).toBeTruthy()
+  })
+
+  it('should NOT have CheatMenu button when NOT FEATURE_FLIPPING_ONLY_VISIBLE_ON_TESTING=false', async () => {
+    env.FEATURE_FLIPPING_ONLY_VISIBLE_ON_TESTING = false
+    render(<ProfileHeader user={undefined} />)
+    await act(async () => {})
+
+    expect(screen.queryByText('CheatMenu')).toBeNull()
   })
 })

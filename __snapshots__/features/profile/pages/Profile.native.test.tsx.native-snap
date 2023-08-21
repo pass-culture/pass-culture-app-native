@@ -88,6 +88,49 @@ exports[`Profile component should render correctly 1`] = `
             >
               <View>
                 <View
+                  accessible={true}
+                  collapsable={false}
+                  focusable={true}
+                  onClick={[Function]}
+                  onResponderGrant={[Function]}
+                  onResponderMove={[Function]}
+                  onResponderRelease={[Function]}
+                  onResponderTerminate={[Function]}
+                  onResponderTerminationRequest={[Function]}
+                  onStartShouldSetResponder={[Function]}
+                  style={
+                    {
+                      "borderColor": "black",
+                      "borderStyle": "solid",
+                      "borderWidth": 1,
+                      "opacity": 1,
+                      "paddingBottom": 4,
+                      "paddingLeft": 4,
+                      "paddingRight": 4,
+                      "paddingTop": 4,
+                      "position": "absolute",
+                      "right": 8,
+                      "top": 28,
+                      "zIndex": 1,
+                    }
+                  }
+                >
+                  <Text
+                    style={
+                      [
+                        {
+                          "color": "#161617",
+                          "fontFamily": "Montserrat-Regular",
+                          "fontSize": 15,
+                          "lineHeight": 20,
+                        },
+                      ]
+                    }
+                  >
+                    CheatMenu
+                  </Text>
+                </View>
+                <View
                   style={
                     [
                       {

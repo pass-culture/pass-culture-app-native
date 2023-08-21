@@ -1,6 +1,4 @@
-import { useNavigation } from '@react-navigation/native'
 import React, { FunctionComponent, useMemo } from 'react'
-import { Platform } from 'react-native'
 import styled from 'styled-components/native'
 
 import { BannerName } from 'api/gen'
@@ -9,26 +7,19 @@ import { useHomeBanner } from 'features/home/api/useHomeBanner'
 import { ActivationBanner } from 'features/home/components/banners/ActivationBanner'
 import { GeolocationBanner } from 'features/home/components/banners/GeolocationBanner'
 import { SignupBanner } from 'features/home/components/banners/SignupBanner'
-import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { isUserBeneficiary } from 'features/profile/helpers/isUserBeneficiary'
-import { env } from 'libs/environment'
 import { useGeolocation, GeolocPermissionState } from 'libs/geolocation'
 import { formatToFrenchDecimal } from 'libs/parsers'
 import { useAvailableCredit } from 'shared/user/useAvailableCredit'
 import { PageHeader } from 'ui/components/headers/PageHeader'
-import { TouchableOpacity } from 'ui/components/TouchableOpacity'
 import { ArrowAgain } from 'ui/svg/icons/ArrowAgain'
 import { BicolorUnlock } from 'ui/svg/icons/BicolorUnlock'
 import { BirthdayCake } from 'ui/svg/icons/BirthdayCake'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
-import { useCustomSafeInsets } from 'ui/theme/useCustomSafeInsets'
 
 export const HomeHeader: FunctionComponent = function () {
-  const navigation = useNavigation<UseNavigationType>()
   const availableCredit = useAvailableCredit()
-  const { top } = useCustomSafeInsets()
   const { isLoggedIn, user } = useAuthContext()
-
   const { permissionState } = useGeolocation()
   const isGeolocated = permissionState === GeolocPermissionState.GRANTED
   const { data } = useHomeBanner(isGeolocated)
@@ -104,13 +95,6 @@ export const HomeHeader: FunctionComponent = function () {
 
   return (
     <React.Fragment>
-      {!!env.FEATURE_FLIPPING_ONLY_VISIBLE_ON_TESTING && (
-        <CheatCodeButtonContainer
-          onPress={() => navigation.navigate(Platform.OS === 'web' ? 'Navigation' : 'CheatMenu')}
-          style={{ top: getSpacing(3) + top }}>
-          <Typo.Body>CheatMenu</Typo.Body>
-        </CheatCodeButtonContainer>
-      )}
       <PageHeader title={welcomeTitle} numberOfLines={2} />
       <PageContent>
         <CaptionSubtitle>{getSubtitle()}</CaptionSubtitle>
@@ -127,14 +111,6 @@ const PageContent = styled.View({
 
 const CaptionSubtitle = styled(Typo.Caption)(({ theme }) => ({
   color: theme.colors.greyDark,
-}))
-
-const CheatCodeButtonContainer = styled(TouchableOpacity)(({ theme }) => ({
-  position: 'absolute',
-  right: getSpacing(2),
-  zIndex: theme.zIndex.cheatCodeButton,
-  border: 1,
-  padding: getSpacing(1),
 }))
 
 const BannerContainer = styled.View({
