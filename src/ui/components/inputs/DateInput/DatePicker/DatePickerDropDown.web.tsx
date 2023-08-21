@@ -18,11 +18,7 @@ export const DatePickerDropDown: FunctionComponent<DatePickerProps> = ({
   const birthdateInputErrorId = uuidv4()
 
   useEffect(() => {
-    if (date) {
-      onChange(date)
-    } else {
-      onChange(undefined)
-    }
+    onChange(date)
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [date])
 
@@ -42,8 +38,7 @@ export const DatePickerDropDown: FunctionComponent<DatePickerProps> = ({
         numberOfSpacesTop={2}
         relatedInputId={birthdateInputErrorId}
       />
-      {!!errorMessage && <Spacer.Column numberOfSpaces={6} />}
-      <Spacer.Column numberOfSpaces={4} />
+      <Spacer.Column numberOfSpaces={errorMessage ? 10 : 4} />
     </React.Fragment>
   )
 }
