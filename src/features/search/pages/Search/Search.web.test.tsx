@@ -99,6 +99,8 @@ describe('<Search/>', () => {
       mockUseNetInfoContext.mockReturnValueOnce({ isConnected: false })
       const { container } = render(<Search />)
 
+      await act(async () => {})
+
       await act(async () => {
         const results = await checkAccessibilityFor(container)
         expect(results).toHaveNoViolations()

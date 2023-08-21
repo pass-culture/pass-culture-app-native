@@ -188,16 +188,13 @@ exports[`AgeInformation should render correctly for 15-year-old 1`] = `
               onResponderTerminate={[Function]}
               onResponderTerminationRequest={[Function]}
               onStartShouldSetResponder={[Function]}
-              roundedBorders="top"
               status="cette année"
               style={
                 {
                   "alignItems": "center",
                   "backgroundColor": "#ffffff",
                   "borderColor": "#90949D",
-                  "borderRadius": 2,
-                  "borderTopLeftRadius": 8,
-                  "borderTopRightRadius": 8,
+                  "borderRadius": 4,
                   "borderWidth": 1,
                   "flexDirection": "row",
                   "marginHorizontal": 0,
@@ -247,14 +244,14 @@ exports[`AgeInformation should render correctly for 15-year-old 1`] = `
                     [
                       {
                         "color": "#320096",
-                        "fontFamily": "Montserrat-Bold",
-                        "fontSize": 20,
-                        "lineHeight": 24,
+                        "fontFamily": "Montserrat-Regular",
+                        "fontSize": 15,
+                        "lineHeight": 20,
                       },
                     ]
                   }
                 >
-                  20 €
+                  à 15 ans
                 </Text>
                 <View
                   numberOfSpaces={1}
@@ -271,14 +268,14 @@ exports[`AgeInformation should render correctly for 15-year-old 1`] = `
                     [
                       {
                         "color": "#320096",
-                        "fontFamily": "Montserrat-Regular",
-                        "fontSize": 15,
-                        "lineHeight": 20,
+                        "fontFamily": "Montserrat-Bold",
+                        "fontSize": 20,
+                        "lineHeight": 24,
                       },
                     ]
                   }
                 >
-                  à 15 ans
+                  20 €
                 </Text>
               </View>
               <View
@@ -293,7 +290,6 @@ exports[`AgeInformation should render correctly for 15-year-old 1`] = `
                 }
               >
                 <View
-                  roundedBorders="top"
                   status="cette année"
                   style={
                     [
@@ -302,7 +298,7 @@ exports[`AgeInformation should render correctly for 15-year-old 1`] = `
                         "backgroundColor": "#15884f",
                         "borderBottomLeftRadius": 8,
                         "borderRadius": 1,
-                        "borderTopRightRadius": 7,
+                        "borderTopRightRadius": 3,
                         "paddingHorizontal": 12,
                         "paddingVertical": 4,
                         "textAlign": "center",
@@ -329,11 +325,11 @@ exports[`AgeInformation should render correctly for 15-year-old 1`] = `
               </View>
             </View>
             <View
-              numberOfSpaces={0.5}
+              numberOfSpaces={2}
               style={
                 [
                   {
-                    "height": 2,
+                    "height": 8,
                   },
                 ]
               }
@@ -355,7 +351,7 @@ exports[`AgeInformation should render correctly for 15-year-old 1`] = `
                     "alignItems": "center",
                     "backgroundColor": "#F1F1F4",
                     "borderColor": "#F1F1F4",
-                    "borderRadius": 2,
+                    "borderRadius": 4,
                     "borderWidth": 1,
                     "flexDirection": "row",
                     "marginHorizontal": 4,
@@ -391,31 +387,7 @@ exports[`AgeInformation should render correctly for 15-year-old 1`] = `
                   style={
                     [
                       {
-                        "color": "#161617",
-                        "fontFamily": "Montserrat-Bold",
-                        "fontSize": 15,
-                        "lineHeight": 20,
-                      },
-                    ]
-                  }
-                >
-                  + 30 €
-                </Text>
-                <View
-                  numberOfSpaces={1}
-                  style={
-                    [
-                      {
-                        "height": 4,
-                      },
-                    ]
-                  }
-                />
-                <Text
-                  style={
-                    [
-                      {
-                        "color": "#161617",
+                        "color": "#696A6F",
                         "fontFamily": "Montserrat-SemiBold",
                         "fontSize": 12,
                         "lineHeight": 16,
@@ -425,6 +397,30 @@ exports[`AgeInformation should render correctly for 15-year-old 1`] = `
                 >
                   à 16 ans
                 </Text>
+                <View
+                  numberOfSpaces={1}
+                  style={
+                    [
+                      {
+                        "height": 4,
+                      },
+                    ]
+                  }
+                />
+                <Text
+                  style={
+                    [
+                      {
+                        "color": "#161617",
+                        "fontFamily": "Montserrat-Bold",
+                        "fontSize": 15,
+                        "lineHeight": 20,
+                      },
+                    ]
+                  }
+                >
+                  + 30 €
+                </Text>
               </View>
               <View
                 style={
@@ -446,6 +442,7 @@ exports[`AgeInformation should render correctly for 15-year-old 1`] = `
                         "backgroundColor": "#320096",
                         "borderBottomLeftRadius": 8,
                         "borderRadius": 1,
+                        "borderTopRightRadius": 3,
                         "paddingHorizontal": 12,
                         "paddingVertical": 4,
                         "textAlign": "center",
@@ -472,11 +469,11 @@ exports[`AgeInformation should render correctly for 15-year-old 1`] = `
               </View>
             </View>
             <View
-              numberOfSpaces={0.5}
+              numberOfSpaces={2}
               style={
                 [
                   {
-                    "height": 2,
+                    "height": 8,
                   },
                 ]
               }
@@ -491,17 +488,14 @@ exports[`AgeInformation should render correctly for 15-year-old 1`] = `
               onResponderTerminate={[Function]}
               onResponderTerminationRequest={[Function]}
               onStartShouldSetResponder={[Function]}
-              roundedBorders="bottom"
               status="à venir"
               style={
                 [
                   {
                     "alignItems": "center",
                     "backgroundColor": "#F1F1F4",
-                    "borderBottomLeftRadius": 8,
-                    "borderBottomRightRadius": 8,
                     "borderColor": "#F1F1F4",
-                    "borderRadius": 2,
+                    "borderRadius": 4,
                     "borderWidth": 1,
                     "flexDirection": "row",
                     "marginHorizontal": 4,
@@ -537,15 +531,15 @@ exports[`AgeInformation should render correctly for 15-year-old 1`] = `
                   style={
                     [
                       {
-                        "color": "#161617",
-                        "fontFamily": "Montserrat-Bold",
-                        "fontSize": 15,
-                        "lineHeight": 20,
+                        "color": "#696A6F",
+                        "fontFamily": "Montserrat-SemiBold",
+                        "fontSize": 12,
+                        "lineHeight": 16,
                       },
                     ]
                   }
                 >
-                  + 30 €
+                  à 17 ans
                 </Text>
                 <View
                   numberOfSpaces={1}
@@ -562,14 +556,14 @@ exports[`AgeInformation should render correctly for 15-year-old 1`] = `
                     [
                       {
                         "color": "#161617",
-                        "fontFamily": "Montserrat-SemiBold",
-                        "fontSize": 12,
-                        "lineHeight": 16,
+                        "fontFamily": "Montserrat-Bold",
+                        "fontSize": 15,
+                        "lineHeight": 20,
                       },
                     ]
                   }
                 >
-                  à 17 ans
+                  + 30 €
                 </Text>
               </View>
               <View
@@ -584,7 +578,6 @@ exports[`AgeInformation should render correctly for 15-year-old 1`] = `
                 }
               >
                 <View
-                  roundedBorders="bottom"
                   status="à venir"
                   style={
                     [
@@ -593,6 +586,7 @@ exports[`AgeInformation should render correctly for 15-year-old 1`] = `
                         "backgroundColor": "#320096",
                         "borderBottomLeftRadius": 8,
                         "borderRadius": 1,
+                        "borderTopRightRadius": 3,
                         "paddingHorizontal": 12,
                         "paddingVertical": 4,
                         "textAlign": "center",
@@ -619,11 +613,11 @@ exports[`AgeInformation should render correctly for 15-year-old 1`] = `
               </View>
             </View>
             <View
-              numberOfSpaces={0.5}
+              numberOfSpaces={2}
               style={
                 [
                   {
-                    "height": 2,
+                    "height": 8,
                   },
                 ]
               }
@@ -721,7 +715,7 @@ exports[`AgeInformation should render correctly for 15-year-old 1`] = `
                     "alignItems": "center",
                     "backgroundColor": "#F1F1F4",
                     "borderColor": "#F1F1F4",
-                    "borderRadius": 2,
+                    "borderRadius": 4,
                     "borderWidth": 1,
                     "flexDirection": "row",
                     "marginHorizontal": 4,
@@ -757,15 +751,15 @@ exports[`AgeInformation should render correctly for 15-year-old 1`] = `
                   style={
                     [
                       {
-                        "color": "#161617",
-                        "fontFamily": "Montserrat-Bold",
-                        "fontSize": 20,
-                        "lineHeight": 24,
+                        "color": "#696A6F",
+                        "fontFamily": "Montserrat-SemiBold",
+                        "fontSize": 12,
+                        "lineHeight": 16,
                       },
                     ]
                   }
                 >
-                  300 €
+                  à 18 ans
                 </Text>
                 <View
                   numberOfSpaces={1}
@@ -782,14 +776,14 @@ exports[`AgeInformation should render correctly for 15-year-old 1`] = `
                     [
                       {
                         "color": "#161617",
-                        "fontFamily": "Montserrat-Regular",
+                        "fontFamily": "Montserrat-Bold",
                         "fontSize": 15,
                         "lineHeight": 20,
                       },
                     ]
                   }
                 >
-                  à 18 ans
+                  300 €
                 </Text>
                 <View
                   numberOfSpaces={1}
@@ -836,6 +830,7 @@ exports[`AgeInformation should render correctly for 15-year-old 1`] = `
                         "backgroundColor": "#320096",
                         "borderBottomLeftRadius": 8,
                         "borderRadius": 1,
+                        "borderTopRightRadius": 3,
                         "paddingHorizontal": 12,
                         "paddingVertical": 4,
                         "textAlign": "center",
@@ -1239,7 +1234,6 @@ exports[`AgeInformation should render correctly for 16-year-old 1`] = `
               onResponderTerminate={[Function]}
               onResponderTerminationRequest={[Function]}
               onStartShouldSetResponder={[Function]}
-              roundedBorders="top"
               status="passé"
               style={
                 [
@@ -1247,9 +1241,7 @@ exports[`AgeInformation should render correctly for 16-year-old 1`] = `
                     "alignItems": "center",
                     "backgroundColor": "rgba(241,241,244,0.5)",
                     "borderColor": "rgba(241,241,244,0.5)",
-                    "borderRadius": 2,
-                    "borderTopLeftRadius": 8,
-                    "borderTopRightRadius": 8,
+                    "borderRadius": 4,
                     "borderWidth": 1,
                     "flexDirection": "row",
                     "marginHorizontal": 4,
@@ -1286,14 +1278,14 @@ exports[`AgeInformation should render correctly for 16-year-old 1`] = `
                     [
                       {
                         "color": "#696A6F",
-                        "fontFamily": "Montserrat-Bold",
-                        "fontSize": 15,
-                        "lineHeight": 20,
+                        "fontFamily": "Montserrat-SemiBold",
+                        "fontSize": 12,
+                        "lineHeight": 16,
                       },
                     ]
                   }
                 >
-                  20 €
+                  à 15 ans
                 </Text>
                 <View
                   numberOfSpaces={1}
@@ -1309,15 +1301,15 @@ exports[`AgeInformation should render correctly for 16-year-old 1`] = `
                   style={
                     [
                       {
-                        "color": "#696A6F",
-                        "fontFamily": "Montserrat-SemiBold",
-                        "fontSize": 12,
-                        "lineHeight": 16,
+                        "color": "#161617",
+                        "fontFamily": "Montserrat-Bold",
+                        "fontSize": 15,
+                        "lineHeight": 20,
                       },
                     ]
                   }
                 >
-                  à 15 ans
+                  20 €
                 </Text>
               </View>
               <View
@@ -1332,7 +1324,6 @@ exports[`AgeInformation should render correctly for 16-year-old 1`] = `
                 }
               >
                 <View
-                  roundedBorders="top"
                   status="passé"
                   style={
                     [
@@ -1341,7 +1332,7 @@ exports[`AgeInformation should render correctly for 16-year-old 1`] = `
                         "backgroundColor": "#ffffff",
                         "borderBottomLeftRadius": 8,
                         "borderRadius": 1,
-                        "borderTopRightRadius": 7,
+                        "borderTopRightRadius": 3,
                         "paddingHorizontal": 12,
                         "paddingVertical": 4,
                         "textAlign": "center",
@@ -1368,11 +1359,11 @@ exports[`AgeInformation should render correctly for 16-year-old 1`] = `
               </View>
             </View>
             <View
-              numberOfSpaces={0.5}
+              numberOfSpaces={2}
               style={
                 [
                   {
-                    "height": 2,
+                    "height": 8,
                   },
                 ]
               }
@@ -1395,7 +1386,7 @@ exports[`AgeInformation should render correctly for 16-year-old 1`] = `
                   "alignItems": "center",
                   "backgroundColor": "#ffffff",
                   "borderColor": "#90949D",
-                  "borderRadius": 2,
+                  "borderRadius": 4,
                   "borderWidth": 1,
                   "flexDirection": "row",
                   "marginHorizontal": 0,
@@ -1445,14 +1436,14 @@ exports[`AgeInformation should render correctly for 16-year-old 1`] = `
                     [
                       {
                         "color": "#320096",
-                        "fontFamily": "Montserrat-Bold",
-                        "fontSize": 20,
-                        "lineHeight": 24,
+                        "fontFamily": "Montserrat-Regular",
+                        "fontSize": 15,
+                        "lineHeight": 20,
                       },
                     ]
                   }
                 >
-                  + 30 €
+                  à 16 ans
                 </Text>
                 <View
                   numberOfSpaces={1}
@@ -1469,14 +1460,14 @@ exports[`AgeInformation should render correctly for 16-year-old 1`] = `
                     [
                       {
                         "color": "#320096",
-                        "fontFamily": "Montserrat-Regular",
-                        "fontSize": 15,
-                        "lineHeight": 20,
+                        "fontFamily": "Montserrat-Bold",
+                        "fontSize": 20,
+                        "lineHeight": 24,
                       },
                     ]
                   }
                 >
-                  à 16 ans
+                  30 €
                 </Text>
               </View>
               <View
@@ -1499,6 +1490,7 @@ exports[`AgeInformation should render correctly for 16-year-old 1`] = `
                         "backgroundColor": "#15884f",
                         "borderBottomLeftRadius": 8,
                         "borderRadius": 1,
+                        "borderTopRightRadius": 3,
                         "paddingHorizontal": 12,
                         "paddingVertical": 4,
                         "textAlign": "center",
@@ -1525,11 +1517,11 @@ exports[`AgeInformation should render correctly for 16-year-old 1`] = `
               </View>
             </View>
             <View
-              numberOfSpaces={0.5}
+              numberOfSpaces={2}
               style={
                 [
                   {
-                    "height": 2,
+                    "height": 8,
                   },
                 ]
               }
@@ -1544,17 +1536,14 @@ exports[`AgeInformation should render correctly for 16-year-old 1`] = `
               onResponderTerminate={[Function]}
               onResponderTerminationRequest={[Function]}
               onStartShouldSetResponder={[Function]}
-              roundedBorders="bottom"
               status="à venir"
               style={
                 [
                   {
                     "alignItems": "center",
                     "backgroundColor": "#F1F1F4",
-                    "borderBottomLeftRadius": 8,
-                    "borderBottomRightRadius": 8,
                     "borderColor": "#F1F1F4",
-                    "borderRadius": 2,
+                    "borderRadius": 4,
                     "borderWidth": 1,
                     "flexDirection": "row",
                     "marginHorizontal": 4,
@@ -1590,15 +1579,15 @@ exports[`AgeInformation should render correctly for 16-year-old 1`] = `
                   style={
                     [
                       {
-                        "color": "#161617",
-                        "fontFamily": "Montserrat-Bold",
-                        "fontSize": 15,
-                        "lineHeight": 20,
+                        "color": "#696A6F",
+                        "fontFamily": "Montserrat-SemiBold",
+                        "fontSize": 12,
+                        "lineHeight": 16,
                       },
                     ]
                   }
                 >
-                  + 30 €
+                  à 17 ans
                 </Text>
                 <View
                   numberOfSpaces={1}
@@ -1615,14 +1604,14 @@ exports[`AgeInformation should render correctly for 16-year-old 1`] = `
                     [
                       {
                         "color": "#161617",
-                        "fontFamily": "Montserrat-SemiBold",
-                        "fontSize": 12,
-                        "lineHeight": 16,
+                        "fontFamily": "Montserrat-Bold",
+                        "fontSize": 15,
+                        "lineHeight": 20,
                       },
                     ]
                   }
                 >
-                  à 17 ans
+                  + 30 €
                 </Text>
               </View>
               <View
@@ -1637,7 +1626,6 @@ exports[`AgeInformation should render correctly for 16-year-old 1`] = `
                 }
               >
                 <View
-                  roundedBorders="bottom"
                   status="à venir"
                   style={
                     [
@@ -1646,6 +1634,7 @@ exports[`AgeInformation should render correctly for 16-year-old 1`] = `
                         "backgroundColor": "#320096",
                         "borderBottomLeftRadius": 8,
                         "borderRadius": 1,
+                        "borderTopRightRadius": 3,
                         "paddingHorizontal": 12,
                         "paddingVertical": 4,
                         "textAlign": "center",
@@ -1672,11 +1661,11 @@ exports[`AgeInformation should render correctly for 16-year-old 1`] = `
               </View>
             </View>
             <View
-              numberOfSpaces={0.5}
+              numberOfSpaces={2}
               style={
                 [
                   {
-                    "height": 2,
+                    "height": 8,
                   },
                 ]
               }
@@ -1774,7 +1763,7 @@ exports[`AgeInformation should render correctly for 16-year-old 1`] = `
                     "alignItems": "center",
                     "backgroundColor": "#F1F1F4",
                     "borderColor": "#F1F1F4",
-                    "borderRadius": 2,
+                    "borderRadius": 4,
                     "borderWidth": 1,
                     "flexDirection": "row",
                     "marginHorizontal": 4,
@@ -1810,15 +1799,15 @@ exports[`AgeInformation should render correctly for 16-year-old 1`] = `
                   style={
                     [
                       {
-                        "color": "#161617",
-                        "fontFamily": "Montserrat-Bold",
-                        "fontSize": 20,
-                        "lineHeight": 24,
+                        "color": "#696A6F",
+                        "fontFamily": "Montserrat-SemiBold",
+                        "fontSize": 12,
+                        "lineHeight": 16,
                       },
                     ]
                   }
                 >
-                  300 €
+                  à 18 ans
                 </Text>
                 <View
                   numberOfSpaces={1}
@@ -1835,14 +1824,14 @@ exports[`AgeInformation should render correctly for 16-year-old 1`] = `
                     [
                       {
                         "color": "#161617",
-                        "fontFamily": "Montserrat-Regular",
+                        "fontFamily": "Montserrat-Bold",
                         "fontSize": 15,
                         "lineHeight": 20,
                       },
                     ]
                   }
                 >
-                  à 18 ans
+                  300 €
                 </Text>
                 <View
                   numberOfSpaces={1}
@@ -1889,6 +1878,7 @@ exports[`AgeInformation should render correctly for 16-year-old 1`] = `
                         "backgroundColor": "#320096",
                         "borderBottomLeftRadius": 8,
                         "borderRadius": 1,
+                        "borderTopRightRadius": 3,
                         "paddingHorizontal": 12,
                         "paddingVertical": 4,
                         "textAlign": "center",
@@ -2292,7 +2282,6 @@ exports[`AgeInformation should render correctly for 17-year-old 1`] = `
               onResponderTerminate={[Function]}
               onResponderTerminationRequest={[Function]}
               onStartShouldSetResponder={[Function]}
-              roundedBorders="top"
               status="passé"
               style={
                 [
@@ -2300,9 +2289,7 @@ exports[`AgeInformation should render correctly for 17-year-old 1`] = `
                     "alignItems": "center",
                     "backgroundColor": "rgba(241,241,244,0.5)",
                     "borderColor": "rgba(241,241,244,0.5)",
-                    "borderRadius": 2,
-                    "borderTopLeftRadius": 8,
-                    "borderTopRightRadius": 8,
+                    "borderRadius": 4,
                     "borderWidth": 1,
                     "flexDirection": "row",
                     "marginHorizontal": 4,
@@ -2339,14 +2326,14 @@ exports[`AgeInformation should render correctly for 17-year-old 1`] = `
                     [
                       {
                         "color": "#696A6F",
-                        "fontFamily": "Montserrat-Bold",
-                        "fontSize": 15,
-                        "lineHeight": 20,
+                        "fontFamily": "Montserrat-SemiBold",
+                        "fontSize": 12,
+                        "lineHeight": 16,
                       },
                     ]
                   }
                 >
-                  20 €
+                  à 15 ans
                 </Text>
                 <View
                   numberOfSpaces={1}
@@ -2362,15 +2349,15 @@ exports[`AgeInformation should render correctly for 17-year-old 1`] = `
                   style={
                     [
                       {
-                        "color": "#696A6F",
-                        "fontFamily": "Montserrat-SemiBold",
-                        "fontSize": 12,
-                        "lineHeight": 16,
+                        "color": "#161617",
+                        "fontFamily": "Montserrat-Bold",
+                        "fontSize": 15,
+                        "lineHeight": 20,
                       },
                     ]
                   }
                 >
-                  à 15 ans
+                  20 €
                 </Text>
               </View>
               <View
@@ -2385,7 +2372,6 @@ exports[`AgeInformation should render correctly for 17-year-old 1`] = `
                 }
               >
                 <View
-                  roundedBorders="top"
                   status="passé"
                   style={
                     [
@@ -2394,7 +2380,7 @@ exports[`AgeInformation should render correctly for 17-year-old 1`] = `
                         "backgroundColor": "#ffffff",
                         "borderBottomLeftRadius": 8,
                         "borderRadius": 1,
-                        "borderTopRightRadius": 7,
+                        "borderTopRightRadius": 3,
                         "paddingHorizontal": 12,
                         "paddingVertical": 4,
                         "textAlign": "center",
@@ -2421,11 +2407,11 @@ exports[`AgeInformation should render correctly for 17-year-old 1`] = `
               </View>
             </View>
             <View
-              numberOfSpaces={0.5}
+              numberOfSpaces={2}
               style={
                 [
                   {
-                    "height": 2,
+                    "height": 8,
                   },
                 ]
               }
@@ -2447,7 +2433,7 @@ exports[`AgeInformation should render correctly for 17-year-old 1`] = `
                     "alignItems": "center",
                     "backgroundColor": "rgba(241,241,244,0.5)",
                     "borderColor": "rgba(241,241,244,0.5)",
-                    "borderRadius": 2,
+                    "borderRadius": 4,
                     "borderWidth": 1,
                     "flexDirection": "row",
                     "marginHorizontal": 4,
@@ -2484,14 +2470,14 @@ exports[`AgeInformation should render correctly for 17-year-old 1`] = `
                     [
                       {
                         "color": "#696A6F",
-                        "fontFamily": "Montserrat-Bold",
-                        "fontSize": 15,
-                        "lineHeight": 20,
+                        "fontFamily": "Montserrat-SemiBold",
+                        "fontSize": 12,
+                        "lineHeight": 16,
                       },
                     ]
                   }
                 >
-                  + 30 €
+                  à 16 ans
                 </Text>
                 <View
                   numberOfSpaces={1}
@@ -2507,15 +2493,15 @@ exports[`AgeInformation should render correctly for 17-year-old 1`] = `
                   style={
                     [
                       {
-                        "color": "#696A6F",
-                        "fontFamily": "Montserrat-SemiBold",
-                        "fontSize": 12,
-                        "lineHeight": 16,
+                        "color": "#161617",
+                        "fontFamily": "Montserrat-Bold",
+                        "fontSize": 15,
+                        "lineHeight": 20,
                       },
                     ]
                   }
                 >
-                  à 16 ans
+                  30 €
                 </Text>
               </View>
               <View
@@ -2538,6 +2524,7 @@ exports[`AgeInformation should render correctly for 17-year-old 1`] = `
                         "backgroundColor": "#ffffff",
                         "borderBottomLeftRadius": 8,
                         "borderRadius": 1,
+                        "borderTopRightRadius": 3,
                         "paddingHorizontal": 12,
                         "paddingVertical": 4,
                         "textAlign": "center",
@@ -2564,11 +2551,11 @@ exports[`AgeInformation should render correctly for 17-year-old 1`] = `
               </View>
             </View>
             <View
-              numberOfSpaces={0.5}
+              numberOfSpaces={2}
               style={
                 [
                   {
-                    "height": 2,
+                    "height": 8,
                   },
                 ]
               }
@@ -2585,16 +2572,13 @@ exports[`AgeInformation should render correctly for 17-year-old 1`] = `
               onResponderTerminate={[Function]}
               onResponderTerminationRequest={[Function]}
               onStartShouldSetResponder={[Function]}
-              roundedBorders="bottom"
               status="cette année"
               style={
                 {
                   "alignItems": "center",
                   "backgroundColor": "#ffffff",
-                  "borderBottomLeftRadius": 8,
-                  "borderBottomRightRadius": 8,
                   "borderColor": "#90949D",
-                  "borderRadius": 2,
+                  "borderRadius": 4,
                   "borderWidth": 1,
                   "flexDirection": "row",
                   "marginHorizontal": 0,
@@ -2644,14 +2628,14 @@ exports[`AgeInformation should render correctly for 17-year-old 1`] = `
                     [
                       {
                         "color": "#320096",
-                        "fontFamily": "Montserrat-Bold",
-                        "fontSize": 20,
-                        "lineHeight": 24,
+                        "fontFamily": "Montserrat-Regular",
+                        "fontSize": 15,
+                        "lineHeight": 20,
                       },
                     ]
                   }
                 >
-                  + 30 €
+                  à 17 ans
                 </Text>
                 <View
                   numberOfSpaces={1}
@@ -2668,14 +2652,14 @@ exports[`AgeInformation should render correctly for 17-year-old 1`] = `
                     [
                       {
                         "color": "#320096",
-                        "fontFamily": "Montserrat-Regular",
-                        "fontSize": 15,
-                        "lineHeight": 20,
+                        "fontFamily": "Montserrat-Bold",
+                        "fontSize": 20,
+                        "lineHeight": 24,
                       },
                     ]
                   }
                 >
-                  à 17 ans
+                  30 €
                 </Text>
               </View>
               <View
@@ -2690,7 +2674,6 @@ exports[`AgeInformation should render correctly for 17-year-old 1`] = `
                 }
               >
                 <View
-                  roundedBorders="bottom"
                   status="cette année"
                   style={
                     [
@@ -2699,6 +2682,7 @@ exports[`AgeInformation should render correctly for 17-year-old 1`] = `
                         "backgroundColor": "#15884f",
                         "borderBottomLeftRadius": 8,
                         "borderRadius": 1,
+                        "borderTopRightRadius": 3,
                         "paddingHorizontal": 12,
                         "paddingVertical": 4,
                         "textAlign": "center",
@@ -2725,11 +2709,11 @@ exports[`AgeInformation should render correctly for 17-year-old 1`] = `
               </View>
             </View>
             <View
-              numberOfSpaces={0.5}
+              numberOfSpaces={2}
               style={
                 [
                   {
-                    "height": 2,
+                    "height": 8,
                   },
                 ]
               }
@@ -2827,7 +2811,7 @@ exports[`AgeInformation should render correctly for 17-year-old 1`] = `
                     "alignItems": "center",
                     "backgroundColor": "#F1F1F4",
                     "borderColor": "#F1F1F4",
-                    "borderRadius": 2,
+                    "borderRadius": 4,
                     "borderWidth": 1,
                     "flexDirection": "row",
                     "marginHorizontal": 4,
@@ -2863,15 +2847,15 @@ exports[`AgeInformation should render correctly for 17-year-old 1`] = `
                   style={
                     [
                       {
-                        "color": "#161617",
-                        "fontFamily": "Montserrat-Bold",
-                        "fontSize": 20,
-                        "lineHeight": 24,
+                        "color": "#696A6F",
+                        "fontFamily": "Montserrat-SemiBold",
+                        "fontSize": 12,
+                        "lineHeight": 16,
                       },
                     ]
                   }
                 >
-                  300 €
+                  à 18 ans
                 </Text>
                 <View
                   numberOfSpaces={1}
@@ -2888,14 +2872,14 @@ exports[`AgeInformation should render correctly for 17-year-old 1`] = `
                     [
                       {
                         "color": "#161617",
-                        "fontFamily": "Montserrat-Regular",
+                        "fontFamily": "Montserrat-Bold",
                         "fontSize": 15,
                         "lineHeight": 20,
                       },
                     ]
                   }
                 >
-                  à 18 ans
+                  300 €
                 </Text>
                 <View
                   numberOfSpaces={1}
@@ -2942,6 +2926,7 @@ exports[`AgeInformation should render correctly for 17-year-old 1`] = `
                         "backgroundColor": "#320096",
                         "borderBottomLeftRadius": 8,
                         "borderRadius": 1,
+                        "borderTopRightRadius": 3,
                         "paddingHorizontal": 12,
                         "paddingVertical": 4,
                         "textAlign": "center",
@@ -3345,7 +3330,6 @@ exports[`AgeInformation should render correctly for 18-year-old 1`] = `
               onResponderTerminate={[Function]}
               onResponderTerminationRequest={[Function]}
               onStartShouldSetResponder={[Function]}
-              roundedBorders="top"
               status="passé"
               style={
                 [
@@ -3353,9 +3337,7 @@ exports[`AgeInformation should render correctly for 18-year-old 1`] = `
                     "alignItems": "center",
                     "backgroundColor": "rgba(241,241,244,0.5)",
                     "borderColor": "rgba(241,241,244,0.5)",
-                    "borderRadius": 2,
-                    "borderTopLeftRadius": 8,
-                    "borderTopRightRadius": 8,
+                    "borderRadius": 4,
                     "borderWidth": 1,
                     "flexDirection": "row",
                     "marginHorizontal": 4,
@@ -3387,30 +3369,6 @@ exports[`AgeInformation should render correctly for 18-year-old 1`] = `
                 </View>
               </View>
               <View>
-                <Text
-                  style={
-                    [
-                      {
-                        "color": "#696A6F",
-                        "fontFamily": "Montserrat-Bold",
-                        "fontSize": 15,
-                        "lineHeight": 20,
-                      },
-                    ]
-                  }
-                >
-                  20 €
-                </Text>
-                <View
-                  numberOfSpaces={1}
-                  style={
-                    [
-                      {
-                        "height": 4,
-                      },
-                    ]
-                  }
-                />
                 <Text
                   style={
                     [
@@ -3425,6 +3383,30 @@ exports[`AgeInformation should render correctly for 18-year-old 1`] = `
                 >
                   à 15 ans
                 </Text>
+                <View
+                  numberOfSpaces={1}
+                  style={
+                    [
+                      {
+                        "height": 4,
+                      },
+                    ]
+                  }
+                />
+                <Text
+                  style={
+                    [
+                      {
+                        "color": "#161617",
+                        "fontFamily": "Montserrat-Bold",
+                        "fontSize": 15,
+                        "lineHeight": 20,
+                      },
+                    ]
+                  }
+                >
+                  20 €
+                </Text>
               </View>
               <View
                 style={
@@ -3438,7 +3420,6 @@ exports[`AgeInformation should render correctly for 18-year-old 1`] = `
                 }
               >
                 <View
-                  roundedBorders="top"
                   status="passé"
                   style={
                     [
@@ -3447,7 +3428,7 @@ exports[`AgeInformation should render correctly for 18-year-old 1`] = `
                         "backgroundColor": "#ffffff",
                         "borderBottomLeftRadius": 8,
                         "borderRadius": 1,
-                        "borderTopRightRadius": 7,
+                        "borderTopRightRadius": 3,
                         "paddingHorizontal": 12,
                         "paddingVertical": 4,
                         "textAlign": "center",
@@ -3474,11 +3455,11 @@ exports[`AgeInformation should render correctly for 18-year-old 1`] = `
               </View>
             </View>
             <View
-              numberOfSpaces={0.5}
+              numberOfSpaces={2}
               style={
                 [
                   {
-                    "height": 2,
+                    "height": 8,
                   },
                 ]
               }
@@ -3500,7 +3481,7 @@ exports[`AgeInformation should render correctly for 18-year-old 1`] = `
                     "alignItems": "center",
                     "backgroundColor": "rgba(241,241,244,0.5)",
                     "borderColor": "rgba(241,241,244,0.5)",
-                    "borderRadius": 2,
+                    "borderRadius": 4,
                     "borderWidth": 1,
                     "flexDirection": "row",
                     "marginHorizontal": 4,
@@ -3532,30 +3513,6 @@ exports[`AgeInformation should render correctly for 18-year-old 1`] = `
                 </View>
               </View>
               <View>
-                <Text
-                  style={
-                    [
-                      {
-                        "color": "#696A6F",
-                        "fontFamily": "Montserrat-Bold",
-                        "fontSize": 15,
-                        "lineHeight": 20,
-                      },
-                    ]
-                  }
-                >
-                  + 30 €
-                </Text>
-                <View
-                  numberOfSpaces={1}
-                  style={
-                    [
-                      {
-                        "height": 4,
-                      },
-                    ]
-                  }
-                />
                 <Text
                   style={
                     [
@@ -3570,6 +3527,30 @@ exports[`AgeInformation should render correctly for 18-year-old 1`] = `
                 >
                   à 16 ans
                 </Text>
+                <View
+                  numberOfSpaces={1}
+                  style={
+                    [
+                      {
+                        "height": 4,
+                      },
+                    ]
+                  }
+                />
+                <Text
+                  style={
+                    [
+                      {
+                        "color": "#161617",
+                        "fontFamily": "Montserrat-Bold",
+                        "fontSize": 15,
+                        "lineHeight": 20,
+                      },
+                    ]
+                  }
+                >
+                  30 €
+                </Text>
               </View>
               <View
                 style={
@@ -3591,6 +3572,7 @@ exports[`AgeInformation should render correctly for 18-year-old 1`] = `
                         "backgroundColor": "#ffffff",
                         "borderBottomLeftRadius": 8,
                         "borderRadius": 1,
+                        "borderTopRightRadius": 3,
                         "paddingHorizontal": 12,
                         "paddingVertical": 4,
                         "textAlign": "center",
@@ -3617,11 +3599,11 @@ exports[`AgeInformation should render correctly for 18-year-old 1`] = `
               </View>
             </View>
             <View
-              numberOfSpaces={0.5}
+              numberOfSpaces={2}
               style={
                 [
                   {
-                    "height": 2,
+                    "height": 8,
                   },
                 ]
               }
@@ -3636,17 +3618,14 @@ exports[`AgeInformation should render correctly for 18-year-old 1`] = `
               onResponderTerminate={[Function]}
               onResponderTerminationRequest={[Function]}
               onStartShouldSetResponder={[Function]}
-              roundedBorders="bottom"
               status="passé"
               style={
                 [
                   {
                     "alignItems": "center",
                     "backgroundColor": "rgba(241,241,244,0.5)",
-                    "borderBottomLeftRadius": 8,
-                    "borderBottomRightRadius": 8,
                     "borderColor": "rgba(241,241,244,0.5)",
-                    "borderRadius": 2,
+                    "borderRadius": 4,
                     "borderWidth": 1,
                     "flexDirection": "row",
                     "marginHorizontal": 4,
@@ -3683,14 +3662,14 @@ exports[`AgeInformation should render correctly for 18-year-old 1`] = `
                     [
                       {
                         "color": "#696A6F",
-                        "fontFamily": "Montserrat-Bold",
-                        "fontSize": 15,
-                        "lineHeight": 20,
+                        "fontFamily": "Montserrat-SemiBold",
+                        "fontSize": 12,
+                        "lineHeight": 16,
                       },
                     ]
                   }
                 >
-                  + 30 €
+                  à 17 ans
                 </Text>
                 <View
                   numberOfSpaces={1}
@@ -3706,15 +3685,15 @@ exports[`AgeInformation should render correctly for 18-year-old 1`] = `
                   style={
                     [
                       {
-                        "color": "#696A6F",
-                        "fontFamily": "Montserrat-SemiBold",
-                        "fontSize": 12,
-                        "lineHeight": 16,
+                        "color": "#161617",
+                        "fontFamily": "Montserrat-Bold",
+                        "fontSize": 15,
+                        "lineHeight": 20,
                       },
                     ]
                   }
                 >
-                  à 17 ans
+                  30 €
                 </Text>
               </View>
               <View
@@ -3729,7 +3708,6 @@ exports[`AgeInformation should render correctly for 18-year-old 1`] = `
                 }
               >
                 <View
-                  roundedBorders="bottom"
                   status="passé"
                   style={
                     [
@@ -3738,6 +3716,7 @@ exports[`AgeInformation should render correctly for 18-year-old 1`] = `
                         "backgroundColor": "#ffffff",
                         "borderBottomLeftRadius": 8,
                         "borderRadius": 1,
+                        "borderTopRightRadius": 3,
                         "paddingHorizontal": 12,
                         "paddingVertical": 4,
                         "textAlign": "center",
@@ -3764,11 +3743,11 @@ exports[`AgeInformation should render correctly for 18-year-old 1`] = `
               </View>
             </View>
             <View
-              numberOfSpaces={0.5}
+              numberOfSpaces={2}
               style={
                 [
                   {
-                    "height": 2,
+                    "height": 8,
                   },
                 ]
               }
@@ -3867,7 +3846,7 @@ exports[`AgeInformation should render correctly for 18-year-old 1`] = `
                   "alignItems": "center",
                   "backgroundColor": "#ffffff",
                   "borderColor": "#90949D",
-                  "borderRadius": 2,
+                  "borderRadius": 4,
                   "borderWidth": 1,
                   "flexDirection": "row",
                   "marginHorizontal": 0,
@@ -3917,14 +3896,14 @@ exports[`AgeInformation should render correctly for 18-year-old 1`] = `
                     [
                       {
                         "color": "#320096",
-                        "fontFamily": "Montserrat-Bold",
-                        "fontSize": 20,
-                        "lineHeight": 24,
+                        "fontFamily": "Montserrat-Regular",
+                        "fontSize": 15,
+                        "lineHeight": 20,
                       },
                     ]
                   }
                 >
-                  300 €
+                  à 18 ans
                 </Text>
                 <View
                   numberOfSpaces={1}
@@ -3941,14 +3920,14 @@ exports[`AgeInformation should render correctly for 18-year-old 1`] = `
                     [
                       {
                         "color": "#320096",
-                        "fontFamily": "Montserrat-Regular",
-                        "fontSize": 15,
-                        "lineHeight": 20,
+                        "fontFamily": "Montserrat-Bold",
+                        "fontSize": 20,
+                        "lineHeight": 24,
                       },
                     ]
                   }
                 >
-                  à 18 ans
+                  300 €
                 </Text>
                 <View
                   numberOfSpaces={1}
@@ -3995,6 +3974,7 @@ exports[`AgeInformation should render correctly for 18-year-old 1`] = `
                         "backgroundColor": "#15884f",
                         "borderBottomLeftRadius": 8,
                         "borderRadius": 1,
+                        "borderTopRightRadius": 3,
                         "paddingHorizontal": 12,
                         "paddingVertical": 4,
                         "textAlign": "center",

@@ -6,18 +6,14 @@ import { CreditBlockIcon } from 'features/onboarding/components/CreditBlockIcon'
 import { CreditStatusTag } from 'features/onboarding/components/CreditStatusTag'
 import { customEaseInOut, DURATION_IN_MS } from 'features/onboarding/helpers/animationProps'
 import { getBackgroundColor } from 'features/onboarding/helpers/getBackgroundColor'
-import { getBorderStyle } from 'features/onboarding/helpers/getBorderStyle'
-import { getTitleComponent, getAgeComponent } from 'features/onboarding/helpers/getTextComponent'
 import { CreditStatus } from 'features/onboarding/types'
 import { AnimatedView, NAV_DELAY_IN_MS } from 'libs/react-native-animatable'
 import { getSpacing, getSpacingString, Spacer, Typo } from 'ui/theme'
 
 type Props = {
-  title: string
-  subtitle: string
+  title: React.ReactElement
+  age: number
   description?: string
-  underage: boolean
-  roundedBorders?: 'top' | 'bottom' // To determine if top or bottom corners should be rounded more
   creditStatus: CreditStatus
   onPress: () => void
 }
@@ -33,21 +29,12 @@ const containerAnimation = {
 
 export const CreditBlock: FunctionComponent<Props> = ({
   title,
-  subtitle,
+  age,
   description,
-  underage,
-  roundedBorders,
   creditStatus,
   onPress,
 }) => {
-  const TitleText: React.JSXElementConstructor<{ children: string }> = getTitleComponent(
-    underage,
-    creditStatus
-  )
-  const AgeText: React.JSXElementConstructor<{ children: string }> = getAgeComponent(
-    underage,
-    creditStatus
-  )
+  const AgeText = creditStatus === CreditStatus.ONGOING ? BodySecondary : Typo.CaptionNeutralInfo
 
   const statusIsOngoing = creditStatus === CreditStatus.ONGOING
 
@@ -63,18 +50,14 @@ export const CreditBlock: FunctionComponent<Props> = ({
 
   return (
     <TouchableWithoutFeedback onPress={onPress}>
-      <Container
-        as={ViewComponent}
-        roundedBorders={roundedBorders}
-        status={creditStatus}
-        {...viewProps}>
+      <Container as={ViewComponent} status={creditStatus} {...viewProps}>
         <IconContainer>
           <CreditBlockIcon status={creditStatus} />
         </IconContainer>
         <View>
-          <TitleText>{title}</TitleText>
+          <AgeText>{`à ${age} ans`}</AgeText>
           <Spacer.Column numberOfSpaces={1} />
-          <AgeText>{subtitle}</AgeText>
+          {title}
           {!!description && (
             <React.Fragment>
               <Spacer.Column numberOfSpaces={1} />
@@ -83,7 +66,7 @@ export const CreditBlock: FunctionComponent<Props> = ({
           )}
         </View>
         <TagContainer>
-          <CreditStatusTag status={creditStatus} roundedBorders={roundedBorders} />
+          <CreditStatusTag status={creditStatus} />
         </TagContainer>
       </Container>
     </TouchableWithoutFeedback>
@@ -96,11 +79,17 @@ const DescriptionText = styled(Typo.Caption)(({ theme }) => ({
   color: theme.colors.greyDark,
 }))
 
+const BodySecondary = styled(Typo.Body)(({ theme }) => ({
+  color: theme.colors.secondary,
+}))
+
 const Container = styled.View<{
   status: CreditStatus
-  roundedBorders?: Props['roundedBorders']
-}>(({ theme, status, roundedBorders }) => ({
-  ...getBorderStyle(theme, status, roundedBorders),
+}>(({ theme, status }) => ({
+  borderColor:
+    status === CreditStatus.ONGOING ? theme.colors.greySemiDark : getBackgroundColor(theme, status),
+  borderWidth: getSpacing(0.25),
+  borderRadius: getSpacing(1),
   backgroundColor: getBackgroundColor(theme, status),
   padding: getSpacing(4),
   flexDirection: 'row',

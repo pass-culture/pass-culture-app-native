@@ -12,6 +12,7 @@ import {
 import { homeNavConfig } from 'features/navigation/TabBar/helpers'
 import { AgeSeparator } from 'features/onboarding/components/AgeSeparator'
 import { CreditBlock } from 'features/onboarding/components/CreditBlock'
+import { CreditBlockTitle } from 'features/onboarding/helpers/CreditBlockTitle'
 import { getCreditStatusFromAge } from 'features/onboarding/helpers/getCreditStatusFromAge'
 import { OnboardingPage } from 'features/onboarding/pages/OnboardingPage'
 import { analytics } from 'libs/analytics'
@@ -45,10 +46,10 @@ export const AgeInformation = ({ route }: AgeInformationProps): React.JSX.Elemen
     eighteenYearsOldDeposit,
   } = useDepositAmountsByAge()
 
-  const underageInfo: { age: number; deposit: string; position?: 'top' | 'bottom' }[] = [
-    { age: 15, deposit: fifteenYearsOldDeposit, position: 'top' },
+  const underageInfo: { age: number; deposit: string }[] = [
+    { age: 15, deposit: fifteenYearsOldDeposit },
     { age: 16, deposit: sixteenYearsOldDeposit },
-    { age: 17, deposit: seventeenYearsOldDeposit, position: 'bottom' },
+    { age: 17, deposit: seventeenYearsOldDeposit },
   ]
   const eighteenYearOldInfo = { age: 18, deposit: eighteenYearsOldDeposit }
 
@@ -87,27 +88,30 @@ export const AgeInformation = ({ route }: AgeInformationProps): React.JSX.Elemen
       <Spacer.Column numberOfSpaces={2} />
       <Container reverse={isEighteen}>
         <View>
-          {underageInfo.map(({ age, deposit, position }, index) => (
+          {underageInfo.map(({ age, deposit }) => (
             <React.Fragment key={age}>
               <CreditBlock
-                underage
                 creditStatus={getCreditStatusFromAge(userAge, age)}
-                title={(index !== 0 ? '+ ' : '') + deposit}
-                subtitle={`à ${age} ans`}
-                roundedBorders={position}
+                title={<CreditBlockTitle age={age} userAge={userAge} deposit={deposit} />}
+                age={age}
                 onPress={() => logTrySelectDeposit(age)}
               />
-              <Spacer.Column numberOfSpaces={0.5} />
+              <Spacer.Column numberOfSpaces={2} />
             </React.Fragment>
           ))}
         </View>
         <Container reverse={isEighteen}>
           <AgeSeparator isEighteen={isEighteen} />
           <CreditBlock
-            underage={false}
             creditStatus={getCreditStatusFromAge(userAge, eighteenYearOldInfo.age)}
-            title={eighteenYearOldInfo.deposit}
-            subtitle={`à ${eighteenYearOldInfo.age} ans`}
+            title={
+              <CreditBlockTitle
+                age={eighteenYearOldInfo.age}
+                userAge={userAge}
+                deposit={eighteenYearOldInfo.deposit}
+              />
+            }
+            age={eighteenYearOldInfo.age}
             description={`Tu auras 2 ans pour utiliser tes ${eighteenYearOldInfo.deposit}`}
             onPress={() => logTrySelectDeposit(eighteenYearOldInfo.age)}
           />

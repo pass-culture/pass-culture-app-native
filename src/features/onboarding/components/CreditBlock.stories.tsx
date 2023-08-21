@@ -3,7 +3,7 @@ import React from 'react'
 import styled from 'styled-components/native'
 
 import { CreditStatus } from 'features/onboarding/types'
-import { getSpacing, Spacer } from 'ui/theme'
+import { getSpacing, Spacer, Typo } from 'ui/theme'
 
 import { CreditBlock } from './CreditBlock'
 
@@ -20,11 +20,19 @@ export default {
 const Template: ComponentStory<typeof CreditBlock> = (props) => <CreditBlock {...props} />
 const List: ComponentStory<typeof CreditBlock> = (props) => (
   <ListContainer>
-    <CreditBlock {...props} roundedBorders="top" creditStatus={CreditStatus.GONE} />
+    <CreditBlock
+      {...props}
+      creditStatus={CreditStatus.GONE}
+      title={<Typo.Title3>30&nbsp;€</Typo.Title3>}
+    />
     <Spacer.Column numberOfSpaces={0.5} />
     <CreditBlock {...props} />
     <Spacer.Column numberOfSpaces={0.5} />
-    <CreditBlock {...props} roundedBorders="bottom" creditStatus={CreditStatus.COMING} />
+    <CreditBlock
+      {...props}
+      creditStatus={CreditStatus.COMING}
+      title={<Typo.Title3>30&nbsp;€</Typo.Title3>}
+    />
   </ListContainer>
 )
 
@@ -33,46 +41,42 @@ const ListContainer = styled.View({
   justifyContent: 'center',
 })
 
-const eighteenYearOldProps = {
-  underage: false,
-  title: '300\u00a0€',
-  subtitle: 'à 18 ans',
-  description: 'Tu auras 2 ans pour utiliser tes 300\u00a0€',
-  roundedBorders: undefined,
+const StyledTitle3 = styled(Typo.Title3)(({ theme }) => ({
+  color: theme.colors.secondary,
+}))
+
+export const OngoingCredit = Template.bind({})
+OngoingCredit.args = {
+  title: <StyledTitle3>300&nbsp;€</StyledTitle3>,
+  age: 18,
   creditStatus: CreditStatus.ONGOING,
 }
 
-const underageProps = {
-  underage: true,
-  title: '20\u00a0€',
-  subtitle: 'à 15 ans',
-  roundedBorders: undefined,
-  creditStatus: CreditStatus.ONGOING,
-}
-
-export const Eighteen = Template.bind({})
-Eighteen.args = eighteenYearOldProps
-
-export const YoungerThanEighteen = Template.bind({})
-YoungerThanEighteen.args = { ...eighteenYearOldProps, creditStatus: CreditStatus.COMING }
-
-export const OlderThanEighteen = Template.bind({})
-OlderThanEighteen.args = { ...eighteenYearOldProps, creditStatus: CreditStatus.GONE }
-
-export const Underage = Template.bind({})
-Underage.args = underageProps
-
-export const YoungerThanUnderage = Template.bind({})
-YoungerThanUnderage.args = {
-  ...underageProps,
+export const ComingCredit = Template.bind({})
+ComingCredit.args = {
+  title: <Typo.Title3>300&nbsp;€</Typo.Title3>,
+  age: 18,
   creditStatus: CreditStatus.COMING,
 }
 
-export const OlderThanUnderage = Template.bind({})
-OlderThanUnderage.args = {
-  ...underageProps,
+export const GoneCredit = Template.bind({})
+GoneCredit.args = {
+  title: <Typo.Title3>30&nbsp;€</Typo.Title3>,
+  age: 17,
   creditStatus: CreditStatus.GONE,
 }
 
+export const withDescription = Template.bind({})
+withDescription.args = {
+  title: <Typo.Title3>300&nbsp;€</Typo.Title3>,
+  age: 18,
+  description: 'Tu auras 2 ans pour utiliser tes 300\u00a0€',
+  creditStatus: CreditStatus.COMING,
+}
+
 export const CreditBlockList = List.bind({})
-CreditBlockList.args = underageProps
+CreditBlockList.args = {
+  title: <StyledTitle3>30&nbsp;€</StyledTitle3>,
+  age: 17,
+  creditStatus: CreditStatus.ONGOING,
+}
