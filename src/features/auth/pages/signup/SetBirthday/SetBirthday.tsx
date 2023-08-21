@@ -20,22 +20,25 @@ export const SetBirthday: FunctionComponent<PreValidationSignupNormalStepProps> 
   previousSignupData,
 }) => {
   const CURRENT_YEAR = new Date().getFullYear()
-  const DEFAULT_SELECTED_DATE = previousSignupData.birthdate
-    ? new Date(previousSignupData.birthdate)
-    : new Date(new Date().setFullYear(CURRENT_YEAR - UNDER_YOUNGEST_AGE))
-  const [defaultSelectedDate, setDefaultSelectedDate] = useState(DEFAULT_SELECTED_DATE)
+  const PREVIOUS_BIRTHDATE_PROVIDED = previousSignupData.birthdate
   const MAXIMUM_SPINNER_DATE = new Date(CURRENT_YEAR - UNDER_YOUNGEST_AGE, 11, 31)
+
+  const DEFAULT_SELECTED_DATE = PREVIOUS_BIRTHDATE_PROVIDED
+    ? new Date(PREVIOUS_BIRTHDATE_PROVIDED)
+    : new Date(new Date().setFullYear(CURRENT_YEAR - UNDER_YOUNGEST_AGE))
+
+  const [defaultSelectedDate, setDefaultSelectedDate] = useState(DEFAULT_SELECTED_DATE)
 
   useEffect(() => {
     const setDate = async () => {
       const userAge = await storage.readObject<number | string>('user_age')
-      if (!previousSignupData.birthdate && typeof userAge === 'number') {
+      if (!PREVIOUS_BIRTHDATE_PROVIDED && typeof userAge === 'number') {
         setDefaultSelectedDate(new Date(new Date().setFullYear(CURRENT_YEAR - userAge)))
       }
     }
 
     setDate()
-  }, [CURRENT_YEAR, previousSignupData.birthdate])
+  }, [CURRENT_YEAR, PREVIOUS_BIRTHDATE_PROVIDED])
 
   const [date, setDate] = useState<Date | undefined>()
 
