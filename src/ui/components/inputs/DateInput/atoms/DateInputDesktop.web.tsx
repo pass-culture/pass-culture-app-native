@@ -56,16 +56,8 @@ export const DateInputDesktop: FunctionComponent<DatePickerProps> = ({
     setDate((prevDateValues) => ({ ...prevDateValues, [key]: value }))
   }
 
-  const getValidDate = () => {
-    if (!date.year || !date.month || !date.day) return
-
-    const dateMonth = monthNames.indexOf(date.month)
-    const maybeValidDate = new Date(Number(date.year), dateMonth, Number(date.day))
-    return maybeValidDate.getDate() == Number(date.day) ? maybeValidDate : undefined
-  }
-
   useEffect(() => {
-    onChange(getValidDate())
+    onChange(getValidDate(date))
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [date])
 
@@ -109,6 +101,14 @@ export const DateInputDesktop: FunctionComponent<DatePickerProps> = ({
       </DropDownContainer>
     </Container>
   )
+}
+
+const getValidDate = (date: InitialDateProps) => {
+  if (!date.year || !date.month || !date.day) return
+
+  const dateMonth = monthNames.indexOf(date.month)
+  const maybeValidDate = new Date(Number(date.year), dateMonth, Number(date.day))
+  return maybeValidDate.getDate() == Number(date.day) ? maybeValidDate : undefined
 }
 
 const Container = styled.View(({ theme }) => ({
