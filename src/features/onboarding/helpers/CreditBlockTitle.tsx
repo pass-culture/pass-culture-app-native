@@ -14,7 +14,7 @@ export const CreditBlockTitle = ({ age, userAge, deposit }: Props): React.ReactE
   const TitleText: React.JSXElementConstructor<{ children: string }> =
     age === userAge ? TitleSecondary : Typo.ButtonText
 
-  if (age > userAge) {
+  if (age !== 18 && age > userAge) {
     return <TitleText>{`+ ${deposit}`}</TitleText>
   }
   return <TitleText>{deposit}</TitleText>

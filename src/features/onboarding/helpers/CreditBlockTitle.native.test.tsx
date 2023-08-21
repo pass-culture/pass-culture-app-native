@@ -18,6 +18,12 @@ describe('CreditBlockTitle', () => {
     expect(screen.queryByText('20\u00a0€')).toBeTruthy()
   })
 
+  it('should return correct text for 18 years old credit', () => {
+    render(<CreditBlockTitle age={18} userAge={16} deposit={'300\u00a0€'} />)
+
+    expect(screen.queryByText('300\u00a0€')).toBeTruthy()
+  })
+
   it('should return secondary text for ongoing credit', () => {
     render(<CreditBlockTitle age={15} userAge={15} deposit={'20\u00a0€'} />)
 
