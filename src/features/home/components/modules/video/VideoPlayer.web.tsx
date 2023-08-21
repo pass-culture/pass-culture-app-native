@@ -42,7 +42,7 @@ export const VideoPlayer: React.FC<VideoPlayerProps> = ({
   const playerRef = useRef<YouTube>(null)
 
   const logConsultVideo = () => {
-    analytics.logConsultVideo({ from: 'home', moduleId })
+    analytics.logConsultVideo({ from: 'home', moduleId, homeEntryId })
   }
 
   const replayVideo = () => {
