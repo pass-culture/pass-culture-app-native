@@ -8,6 +8,7 @@ import { UserProfileResponse } from 'api/gen'
 import { useCookies } from 'features/cookies/helpers/useCookies'
 // eslint-disable-next-line no-restricted-imports
 import { amplitude } from 'libs/amplitude'
+import { useAppStateChange } from 'libs/appState'
 // eslint-disable-next-line no-restricted-imports
 import { firebaseAnalytics } from 'libs/firebase/analytics'
 import { getTokenStatus, getUserIdFromAccesstoken } from 'libs/jwt'
@@ -21,6 +22,7 @@ import { getAge } from 'shared/user/getAge'
 
 import { version as appVersion } from '../../../../package.json'
 
+const MAX_DELAY_VALUE_FOR_SET_TIMEOUT_IN_MS = 2_147_483_647
 export interface IAuthContext {
   isLoggedIn: boolean
   setIsLoggedIn: (isLoggedIn: boolean) => void
@@ -91,9 +93,13 @@ export const AuthWrapper = memo(function AuthWrapper({
           connectServicesRequiringUserId(accessToken)
           if (refreshToken) {
             const remainingLifetimeInMs = computeTokenRemainingLifetimeInMs(refreshToken)
-            timeoutRef.current = globalThis.setTimeout(() => {
-              setIsLoggedIn(false)
-            }, remainingLifetimeInMs)
+            if (
+              remainingLifetimeInMs &&
+              remainingLifetimeInMs < MAX_DELAY_VALUE_FOR_SET_TIMEOUT_IN_MS
+            )
+              timeoutRef.current = globalThis.setTimeout(() => {
+                setIsLoggedIn(false)
+              }, remainingLifetimeInMs)
           }
           return
       }
@@ -112,6 +118,8 @@ export const AuthWrapper = memo(function AuthWrapper({
       if (timeoutRef.current) clearTimeout(timeoutRef.current)
     }
   }, [readTokenAndConnectUser])
+
+  useAppStateChange(readTokenAndConnectUser, () => void 0, [isLoggedIn])
 
   useEffect(() => {
     if (!user?.id) return
