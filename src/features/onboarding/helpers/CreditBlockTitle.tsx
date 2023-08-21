@@ -4,15 +4,13 @@ import styled from 'styled-components/native'
 import { Typo } from 'ui/theme'
 import { getNoHeadingAttrs } from 'ui/theme/typographyAttrs/getNoHeadingAttrs'
 
-export const getCreditBlockTitle = ({
-  age,
-  userAge,
-  deposit,
-}: {
+interface Props {
   age: number
   userAge: number
   deposit: string
-}): React.ReactElement => {
+}
+
+export const CreditBlockTitle = ({ age, userAge, deposit }: Props): React.ReactElement => {
   const TitleText: React.JSXElementConstructor<{ children: string }> =
     age === userAge ? TitleSecondary : Typo.ButtonText
 
