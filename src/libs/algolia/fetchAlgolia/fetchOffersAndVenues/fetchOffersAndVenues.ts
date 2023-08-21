@@ -5,6 +5,7 @@ import { buildOfferSearchParameters } from 'libs/algolia/fetchAlgolia/buildAlgol
 import { offerAttributesToRetrieve } from 'libs/algolia/fetchAlgolia/buildAlgoliaParameters/offerAttributesToRetrieve'
 import { buildSearchVenuePosition } from 'libs/algolia/fetchAlgolia/fetchOffersAndVenues/helpers/buildSearchVenuePosition'
 import { getSearchVenueQuery } from 'libs/algolia/fetchAlgolia/fetchOffersAndVenues/helpers/getSearchVenueQuery'
+import { getCurrentVenuesIndex } from 'libs/algolia/fetchAlgolia/helpers/getCurrentVenuesIndex'
 import { multipleQueries } from 'libs/algolia/fetchAlgolia/multipleQueries'
 import { buildHitsPerPage } from 'libs/algolia/fetchAlgolia/utils'
 import { AlgoliaVenue, SearchQueryParameters } from 'libs/algolia/types'
@@ -28,9 +29,10 @@ export const fetchOffersAndVenues = async ({
   isUserUnderage,
   storeQueryID,
   offersIndex = env.ALGOLIA_OFFERS_INDEX_NAME,
-  venuesIndex = env.ALGOLIA_VENUES_INDEX_NAME,
 }: FetchOfferAndVenuesArgs) => {
   const searchParameters = buildOfferSearchParameters(parameters, userLocation, isUserUnderage)
+
+  const currentVenuesIndex = getCurrentVenuesIndex(parameters?.locationFilter?.locationType)
 
   const queries = [
     {
@@ -48,7 +50,7 @@ export const fetchOffersAndVenues = async ({
       },
     },
     {
-      indexName: venuesIndex,
+      indexName: currentVenuesIndex,
       query: getSearchVenueQuery(parameters),
       params: {
         page: 0,
