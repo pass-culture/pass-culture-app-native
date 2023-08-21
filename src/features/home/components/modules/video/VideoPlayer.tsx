@@ -37,7 +37,7 @@ export const VideoPlayer: React.FC<VideoPlayerProps> = ({
 
   const playerRef = useRef<YoutubeIframeRef>(null)
 
-  // Make sure the video stop playing when app is not in an active state (eg: backgroung/inactive)
+  // Make sure the video stop playing when app is not in an active state (eg: background/inactive)
   useEffect(() => {
     const subscription = AppState.addEventListener('change', (nextAppState) => {
       if (nextAppState !== 'active') {
@@ -52,7 +52,7 @@ export const VideoPlayer: React.FC<VideoPlayerProps> = ({
 
   const playVideo = () => {
     setIsPlaying(true)
-    analytics.logConsultVideo({ from: 'home', moduleId })
+    analytics.logConsultVideo({ from: 'home', moduleId, homeEntryId })
   }
 
   const replayVideo = () => {

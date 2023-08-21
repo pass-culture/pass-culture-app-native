@@ -229,7 +229,7 @@ export const logEventAnalytics = {
     moduleId?: string
     homeEntryId?: string
   }) => analytics.logEvent({ firebase: AnalyticsEvent.CONSULT_VENUE }, params),
-  logConsultVideo: (params: { from: Referrals; moduleId: string }) =>
+  logConsultVideo: (params: { from: Referrals; moduleId: string; homeEntryId: string }) =>
     analytics.logEvent({ firebase: AnalyticsEvent.CONSULT_VIDEO }, params),
   logConsultWholeOffer: (offerId: number) =>
     analytics.logEvent({ firebase: AnalyticsEvent.CONSULT_WHOLE_OFFER }, { offerId }),
