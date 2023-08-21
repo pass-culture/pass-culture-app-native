@@ -52,7 +52,7 @@ jobs:
           yarn --cwd server deploy:${{ inputs.ENV }}
   slack_notify:
     runs-on: [self-hosted, linux, x64]
-    if: ${{ always() && github.ref == 'refs/heads/master' }}
+    if: ${{ always() }}
     needs: web_proxy_deploy
     steps:
       - name: Connect to Secret Manager

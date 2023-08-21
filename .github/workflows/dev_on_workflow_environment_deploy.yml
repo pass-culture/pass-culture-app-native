@@ -102,7 +102,7 @@ jobs:
           ANDROID_APPCENTER_API_TOKEN: ${{ steps.secrets.outputs.ANDROID_APPCENTER_API_TOKEN }}
   slack_notify:
     runs-on: [self-hosted, linux, x64]
-    if: ${{ always() && github.ref == 'refs/heads/master' }}
+    if: ${{ always() }}
     needs: sentry_and_deploy
     steps:
       - name: Connect to Secret Manager
