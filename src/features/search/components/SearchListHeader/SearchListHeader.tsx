@@ -129,6 +129,8 @@ export const SearchListHeader: React.FC<SearchListHeaderProps> = ({ nbHits, user
             <NumberOfResults nbHits={venues.hits.length} />
             <Playlist
               data={venues.hits}
+              // +4 to take into account the margin top
+              scrollButtonOffsetY={VENUE_ITEM_HEIGHT / 2 + 4}
               itemHeight={VENUE_ITEM_HEIGHT}
               itemWidth={VENUE_ITEM_WIDTH}
               renderItem={renderVenueItem}
