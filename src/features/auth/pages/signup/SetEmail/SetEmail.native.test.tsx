@@ -214,4 +214,18 @@ describe('<SetEmail />', () => {
     const marketingEmailSubscriptionCheckbox = screen.getByRole('checkbox')
     expect(marketingEmailSubscriptionCheckbox.props.accessibilityState.checked).toBe(true)
   })
+
+  it('should set a default marketing email subscription choice to false', () => {
+    const propsWithoutMarketingEmailSubscription = {
+      ...props,
+      previousSignupData: {
+        ...props.previousSignupData,
+        marketingEmailSubscription: undefined,
+      },
+    }
+    render(<SetEmail {...propsWithoutMarketingEmailSubscription} />)
+
+    const marketingEmailSubscriptionCheckbox = screen.getByRole('checkbox')
+    expect(marketingEmailSubscriptionCheckbox.props.accessibilityState.checked).toBe(false)
+  })
 })
