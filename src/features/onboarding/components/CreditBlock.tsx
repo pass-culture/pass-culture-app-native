@@ -2,7 +2,6 @@ import React, { FunctionComponent } from 'react'
 import { View, TouchableWithoutFeedback } from 'react-native'
 import styled from 'styled-components/native'
 
-import { CreditBlockIcon } from 'features/onboarding/components/CreditBlockIcon'
 import { CreditStatusTag } from 'features/onboarding/components/CreditStatusTag'
 import { customEaseInOut, DURATION_IN_MS } from 'features/onboarding/helpers/animationProps'
 import { getBackgroundColor } from 'features/onboarding/helpers/getBackgroundColor'
@@ -51,9 +50,6 @@ export const CreditBlock: FunctionComponent<Props> = ({
   return (
     <TouchableWithoutFeedback onPress={onPress}>
       <Container as={ViewComponent} status={creditStatus} {...viewProps}>
-        <IconContainer>
-          <CreditBlockIcon status={creditStatus} />
-        </IconContainer>
         <View>
           <AgeText>{`à ${age} ans`}</AgeText>
           <Spacer.Column numberOfSpaces={1} />
@@ -97,10 +93,6 @@ const Container = styled.View<{
   overflow: 'hidden',
   marginHorizontal: status !== CreditStatus.ONGOING ? getSpacing(1) : 0,
 }))
-
-const IconContainer = styled.View({
-  marginRight: getSpacing(4),
-})
 
 const TagContainer = styled.View({
   position: 'absolute',
