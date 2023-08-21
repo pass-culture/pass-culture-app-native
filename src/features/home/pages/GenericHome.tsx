@@ -186,6 +186,7 @@ const OnlineHome: FunctionComponent<GenericHomeProps> = ({
           initialNumToRender={initialNumToRender}
           removeClippedSubviews={false}
           onContentSizeChange={onContentSizeChange}
+          scrollEventThrottle={16}
           bounces
         />
         {shouldDisplayScrollToTop ? (
