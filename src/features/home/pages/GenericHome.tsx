@@ -4,7 +4,6 @@ import {
   FlatList,
   NativeScrollEvent,
   NativeSyntheticEvent,
-  Platform,
   ScrollView,
   useWindowDimensions,
 } from 'react-native'
@@ -90,7 +89,7 @@ const OnlineHome: FunctionComponent<GenericHomeProps> = ({
   const { height: screenHeight } = useWindowDimensions()
   const modulesIntervalId = useRef(0)
 
-  const modulesToDisplay = Platform.OS === 'web' ? modules : modules.slice(0, maxIndex)
+  const modulesToDisplay = modules.slice(0, maxIndex)
 
   modulesToDisplay.forEach((module) => {
     if (isOffersModule(module)) {
@@ -109,7 +108,7 @@ const OnlineHome: FunctionComponent<GenericHomeProps> = ({
       // Load more modules when we are one screen away from the end
       const { nativeEvent } = event
       if (isCloseToBottom({ ...nativeEvent, padding: screenHeight })) {
-        if (Platform.OS !== 'web' && maxIndex < modules.length) {
+        if (maxIndex < modules.length) {
           setIsLoading(true)
           setMaxIndex(maxIndex + maxToRenderPerBatch)
         }
