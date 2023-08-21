@@ -6,7 +6,8 @@ import {
   VerticalStepper,
   VerticalStepperProps,
 } from 'features/profile/components/VerticalStepper/VerticalStepper'
-import { BicolorUnlock } from 'ui/svg/icons/BicolorUnlock'
+import LottieView from 'libs/lottie'
+import OnboardingUnlock from 'ui/animations/onboarding_unlock.json'
 import { Warning } from 'ui/svg/icons/BicolorWarning'
 import { Lock } from 'ui/svg/icons/Lock'
 
@@ -49,11 +50,20 @@ const GreyWarning = styled(Warning).attrs(({ theme }) => ({
   size: theme.icons.sizes.smaller,
 }))``
 
+const StyledLottieView = styled(LottieView)(({ theme }) => ({
+  width: theme.icons.sizes.standard,
+  height: theme.icons.sizes.standard,
+}))
+
+const AnimatedBicolorUnlock = () => (
+  <StyledLottieView source={OnboardingUnlock} autoPlay loop={false} />
+)
+
 const stepperPropsMapping = new Map<Props['age'], VerticalStepperProps[]>([
   [
     15,
     [
-      { variant: StepVariant.in_progress, iconComponent: <BicolorUnlock /> },
+      { variant: StepVariant.in_progress, iconComponent: <AnimatedBicolorUnlock /> },
       { variant: StepVariant.future, iconComponent: <GreyLock /> },
       { variant: StepVariant.future, iconComponent: <GreyLock /> },
       { variant: StepVariant.future, iconComponent: <GreyWarning /> },
@@ -64,7 +74,7 @@ const stepperPropsMapping = new Map<Props['age'], VerticalStepperProps[]>([
     16,
     [
       { variant: StepVariant.complete, iconComponent: <MediumGreyLock /> },
-      { variant: StepVariant.in_progress, iconComponent: <BicolorUnlock /> },
+      { variant: StepVariant.in_progress, iconComponent: <AnimatedBicolorUnlock /> },
       { variant: StepVariant.future, iconComponent: <GreyLock /> },
       { variant: StepVariant.future, iconComponent: <GreyWarning /> },
       { variant: StepVariant.future, iconComponent: <GreyLock /> },
@@ -75,7 +85,7 @@ const stepperPropsMapping = new Map<Props['age'], VerticalStepperProps[]>([
     [
       { variant: StepVariant.complete, iconComponent: <MediumGreyLock /> },
       { variant: StepVariant.complete, iconComponent: <MediumGreyLock /> },
-      { variant: StepVariant.in_progress, iconComponent: <BicolorUnlock /> },
+      { variant: StepVariant.in_progress, iconComponent: <AnimatedBicolorUnlock /> },
       { variant: StepVariant.future, iconComponent: <GreyWarning /> },
       { variant: StepVariant.future, iconComponent: <GreyLock /> },
     ],
@@ -86,7 +96,7 @@ const stepperPropsMapping = new Map<Props['age'], VerticalStepperProps[]>([
       { variant: StepVariant.complete, iconComponent: <MediumGreyLock /> },
       { variant: StepVariant.complete, iconComponent: <MediumGreyLock /> },
       { variant: StepVariant.complete, iconComponent: <MediumGreyLock /> },
-      { variant: StepVariant.in_progress, iconComponent: <BicolorUnlock /> },
+      { variant: StepVariant.in_progress, iconComponent: <AnimatedBicolorUnlock /> },
     ],
   ],
 ])
