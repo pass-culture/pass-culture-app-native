@@ -22,7 +22,7 @@ import { getAge } from 'shared/user/getAge'
 
 import { version as appVersion } from '../../../../package.json'
 
-const MAX_DELAY_VALUE_FOR_SET_TIMEOUT_IN_MS = 2147483647
+const MAX_DELAY_VALUE_FOR_SET_TIMEOUT_IN_MS = 2_147_483_647
 export interface IAuthContext {
   isLoggedIn: boolean
   setIsLoggedIn: (isLoggedIn: boolean) => void
