@@ -1,5 +1,5 @@
 import React, { FunctionComponent, useMemo } from 'react'
-import styled from 'styled-components/native'
+import styled, { useTheme } from 'styled-components/native'
 
 import { BannerName } from 'api/gen'
 import { useAuthContext } from 'features/auth/context/AuthContext'
@@ -7,7 +7,10 @@ import { useHomeBanner } from 'features/home/api/useHomeBanner'
 import { ActivationBanner } from 'features/home/components/banners/ActivationBanner'
 import { GeolocationBanner } from 'features/home/components/banners/GeolocationBanner'
 import { SignupBanner } from 'features/home/components/banners/SignupBanner'
+import { LocationWidget } from 'features/location/components/LocationWidget'
 import { isUserBeneficiary } from 'features/profile/helpers/isUserBeneficiary'
+import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
+import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { useGeolocation, GeolocPermissionState } from 'libs/geolocation'
 import { formatToFrenchDecimal } from 'libs/parsers'
 import { useAvailableCredit } from 'shared/user/useAvailableCredit'
@@ -24,6 +27,8 @@ export const HomeHeader: FunctionComponent = function () {
   const isGeolocated = permissionState === GeolocPermissionState.GRANTED
   const { data } = useHomeBanner(isGeolocated)
   const homeBanner = data?.banner
+  const { isDesktopViewport } = useTheme()
+  const enableAppLocation = useFeatureFlag(RemoteStoreFeatureFlags.WIP_ENABLE_APP_LOCATION)
 
   const welcomeTitle =
     user?.firstName && isLoggedIn ? `Bonjour ${user.firstName}` : 'Bienvenue\u00a0!'
@@ -93,8 +98,16 @@ export const HomeHeader: FunctionComponent = function () {
     return null
   }, [isLoggedIn, homeBanner])
 
+  const shouldDisplayLocationWidget = !isDesktopViewport && enableAppLocation
+
   return (
     <React.Fragment>
+      {shouldDisplayLocationWidget ? (
+        <LocationWidgetContainer>
+          <Spacer.TopScreen />
+          <LocationWidget />
+        </LocationWidgetContainer>
+      ) : null}
       <PageHeader title={welcomeTitle} numberOfLines={2} />
       <PageContent>
         <CaptionSubtitle>{getSubtitle()}</CaptionSubtitle>
@@ -116,3 +129,10 @@ const CaptionSubtitle = styled(Typo.Caption)(({ theme }) => ({
 const BannerContainer = styled.View({
   marginBottom: getSpacing(8),
 })
+
+const LocationWidgetContainer = styled.View(({ theme }) => ({
+  position: 'absolute',
+  right: getSpacing(6),
+  top: getSpacing(6),
+  zIndex: theme.zIndex.locationWidget,
+}))

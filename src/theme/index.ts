@@ -182,6 +182,7 @@ export interface AppThemeType {
     floatingButton: ZIndex
     homeOfferCoverIcons: ZIndex
     header: ZIndex
+    locationWidget: ZIndex
     modalHeader: ZIndex
     progressbar: ZIndex
     playlistsButton: ZIndex
@@ -634,6 +635,7 @@ export const theme: AppThemeType = {
     floatingButton: ZIndex.FLOATING_BUTTON,
     homeOfferCoverIcons: ZIndex.HOME_OFFER_COVER_ICONS,
     header: ZIndex.HEADER,
+    locationWidget: ZIndex.LOCATION_WIDGET,
     modalHeader: ZIndex.MODAL_HEADER,
     progressbar: ZIndex.PROGRESSBAR,
     playlistsButton: ZIndex.PLAYLIST_BUTTON,
