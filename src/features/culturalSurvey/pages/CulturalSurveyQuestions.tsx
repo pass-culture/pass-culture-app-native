@@ -5,12 +5,7 @@ import { LayoutChangeEvent, NativeScrollEvent } from 'react-native'
 import styled from 'styled-components/native'
 
 import { extractApiErrorMessage } from 'api/apiHelpers'
-import {
-  CulturalSurveyAnswer,
-  CulturalSurveyAnswerEnum,
-  CulturalSurveyQuestion,
-  CulturalSurveyQuestionEnum,
-} from 'api/gen'
+import { CulturalSurveyAnswer, CulturalSurveyAnswerEnum, CulturalSurveyQuestionEnum } from 'api/gen'
 import { useCulturalSurveyAnswersMutation } from 'features/culturalSurvey/api/useCulturalSurveyAnswers'
 import { useCulturalSurveyQuestions } from 'features/culturalSurvey/api/useCulturalSurveyQuestions'
 import { CulturalSurveyCheckbox } from 'features/culturalSurvey/components/CulturalSurveyCheckbox'
@@ -93,9 +88,9 @@ export const CulturalSurveyQuestions = ({
     onError,
   })
 
-  const culturalSurveyQuestion = culturalSurveyQuestionsData?.questions.find(
+  const culturalSurveyQuestion = culturalSurveyQuestionsData.questions.find(
     (question) => question.id === route.params.question
-  ) as CulturalSurveyQuestion
+  )
 
   const logCulturalSurveyScrolledToBottom = useFunctionOnce(
     useCallback(
