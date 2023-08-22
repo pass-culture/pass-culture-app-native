@@ -19,26 +19,26 @@ export const SetBirthday: FunctionComponent<PreValidationSignupNormalStepProps> 
   accessibilityLabelForNextStep,
   previousSignupData,
 }) => {
-  const CURRENT_YEAR = new Date().getFullYear()
-  const PREVIOUS_BIRTHDATE_PROVIDED = previousSignupData.birthdate
-  const MAXIMUM_SPINNER_DATE = new Date(CURRENT_YEAR - UNDER_YOUNGEST_AGE, 11, 31)
+  const currentYear = new Date().getFullYear()
+  const previousBirthdateProvided = previousSignupData.birthdate
+  const maximumSpinnerDate = new Date(currentYear - UNDER_YOUNGEST_AGE, 11, 31)
 
-  const DEFAULT_SELECTED_DATE = PREVIOUS_BIRTHDATE_PROVIDED
-    ? new Date(PREVIOUS_BIRTHDATE_PROVIDED)
-    : new Date(new Date().setFullYear(CURRENT_YEAR - UNDER_YOUNGEST_AGE))
+  const initialDate = previousBirthdateProvided
+    ? new Date(previousBirthdateProvided)
+    : new Date(new Date().setFullYear(currentYear - UNDER_YOUNGEST_AGE))
 
-  const [defaultSelectedDate, setDefaultSelectedDate] = useState(DEFAULT_SELECTED_DATE)
+  const [defaultSelectedDate, setDefaultSelectedDate] = useState(initialDate)
 
   useEffect(() => {
     const setDate = async () => {
       const userAge = await storage.readObject<number | string>('user_age')
-      if (!PREVIOUS_BIRTHDATE_PROVIDED && typeof userAge === 'number') {
-        setDefaultSelectedDate(new Date(new Date().setFullYear(CURRENT_YEAR - userAge)))
+      if (!previousBirthdateProvided && typeof userAge === 'number') {
+        setDefaultSelectedDate(new Date(new Date().setFullYear(currentYear - userAge)))
       }
     }
 
     setDate()
-  }, [CURRENT_YEAR, PREVIOUS_BIRTHDATE_PROVIDED])
+  }, [currentYear, previousBirthdateProvided])
 
   const [date, setDate] = useState<Date | undefined>()
 
@@ -65,7 +65,7 @@ export const SetBirthday: FunctionComponent<PreValidationSignupNormalStepProps> 
           onChange={setDate}
           errorMessage={errorMessage}
           defaultSelectedDate={defaultSelectedDate}
-          maximumDate={MAXIMUM_SPINNER_DATE}
+          maximumDate={maximumSpinnerDate}
           minimumDate={MINIMUM_DATE}
         />
         <Spacer.Column numberOfSpaces={10} />
