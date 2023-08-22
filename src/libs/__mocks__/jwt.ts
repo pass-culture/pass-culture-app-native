@@ -1,3 +1,3 @@
-export const getTokenStatus = jest.fn(() => {
+export const getAccessTokenStatus = jest.fn(() => {
   return 'valid'
 })

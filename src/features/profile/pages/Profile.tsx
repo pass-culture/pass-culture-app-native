@@ -265,7 +265,7 @@ const OnlineProfile: React.FC = () => {
   )
 }
 
-export function Profile() {
+export const Profile: React.FC = () => {
   const netInfo = useNetInfoContext()
   if (netInfo.isConnected) {
     return <OnlineProfile />
