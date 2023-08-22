@@ -112,6 +112,6 @@ const StyledDistanceTag = styled(DistanceTag)({
   flex: 1,
   position: 'absolute',
   zIndex: 2,
-  top: 4,
-  right: 4,
+  top: 8,
+  right: 8,
 })

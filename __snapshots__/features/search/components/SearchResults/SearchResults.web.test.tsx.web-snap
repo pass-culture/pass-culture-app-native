@@ -485,7 +485,7 @@ exports[`SearchResults component should render correctly 1`] = `
                               class="css-view-175oi2r"
                             >
                               <div
-                                class="css-view-175oi2r r-alignSelf-1wv73ep r-backgroundColor-colhrt r-borderRadius-kdyh1x r-paddingHorizontal-1pn2ns4 r-paddingVertical-oyd9sg r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-position-u8s1d r-right-v2u3o6 r-top-s5r7i3 r-zIndex-136ojw6"
+                                class="css-view-175oi2r r-alignSelf-1wv73ep r-backgroundColor-colhrt r-borderRadius-kdyh1x r-paddingHorizontal-1pn2ns4 r-paddingVertical-oyd9sg r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-position-u8s1d r-right-3mc0re r-top-1yxedwg r-zIndex-136ojw6"
                               >
                                 <div
                                   class="css-text-1rynq56 r-color-jwli3a r-fontFamily-aeuvnr r-fontSize-1enofrn r-lineHeight-1cwl3u0"
@@ -537,7 +537,7 @@ exports[`SearchResults component should render correctly 1`] = `
                               class="css-view-175oi2r"
                             >
                               <div
-                                class="css-view-175oi2r r-alignSelf-1wv73ep r-backgroundColor-colhrt r-borderRadius-kdyh1x r-paddingHorizontal-1pn2ns4 r-paddingVertical-oyd9sg r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-position-u8s1d r-right-v2u3o6 r-top-s5r7i3 r-zIndex-136ojw6"
+                                class="css-view-175oi2r r-alignSelf-1wv73ep r-backgroundColor-colhrt r-borderRadius-kdyh1x r-paddingHorizontal-1pn2ns4 r-paddingVertical-oyd9sg r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-position-u8s1d r-right-3mc0re r-top-1yxedwg r-zIndex-136ojw6"
                               >
                                 <div
                                   class="css-text-1rynq56 r-color-jwli3a r-fontFamily-aeuvnr r-fontSize-1enofrn r-lineHeight-1cwl3u0"
@@ -1157,7 +1157,7 @@ exports[`SearchResults component should render correctly 1`] = `
                             class="css-view-175oi2r"
                           >
                             <div
-                              class="css-view-175oi2r r-alignSelf-1wv73ep r-backgroundColor-colhrt r-borderRadius-kdyh1x r-paddingHorizontal-1pn2ns4 r-paddingVertical-oyd9sg r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-position-u8s1d r-right-v2u3o6 r-top-s5r7i3 r-zIndex-136ojw6"
+                              class="css-view-175oi2r r-alignSelf-1wv73ep r-backgroundColor-colhrt r-borderRadius-kdyh1x r-paddingHorizontal-1pn2ns4 r-paddingVertical-oyd9sg r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-position-u8s1d r-right-3mc0re r-top-1yxedwg r-zIndex-136ojw6"
                             >
                               <div
                                 class="css-text-1rynq56 r-color-jwli3a r-fontFamily-aeuvnr r-fontSize-1enofrn r-lineHeight-1cwl3u0"
@@ -1209,7 +1209,7 @@ exports[`SearchResults component should render correctly 1`] = `
                             class="css-view-175oi2r"
                           >
                             <div
-                              class="css-view-175oi2r r-alignSelf-1wv73ep r-backgroundColor-colhrt r-borderRadius-kdyh1x r-paddingHorizontal-1pn2ns4 r-paddingVertical-oyd9sg r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-position-u8s1d r-right-v2u3o6 r-top-s5r7i3 r-zIndex-136ojw6"
+                              class="css-view-175oi2r r-alignSelf-1wv73ep r-backgroundColor-colhrt r-borderRadius-kdyh1x r-paddingHorizontal-1pn2ns4 r-paddingVertical-oyd9sg r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-position-u8s1d r-right-3mc0re r-top-1yxedwg r-zIndex-136ojw6"
                             >
                               <div
                                 class="css-text-1rynq56 r-color-jwli3a r-fontFamily-aeuvnr r-fontSize-1enofrn r-lineHeight-1cwl3u0"
