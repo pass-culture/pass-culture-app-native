@@ -29,7 +29,7 @@ export const useGetHeaderHeight = () => {
   return HEADER_HEIGHT + top + 1
 }
 
-// Component naming : this component needs to be used with a PlaceHolder component
+// Component naming: this component needs to be used with a PlaceHolder component
 // that has the height of the header as it is an absolute view
 export const PageHeaderWithoutPlaceholder: FunctionComponent<Props> = ({
   title,

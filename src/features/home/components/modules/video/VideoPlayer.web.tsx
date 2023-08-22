@@ -51,7 +51,7 @@ export const VideoPlayer: React.FC<VideoPlayerProps> = ({
 
   // remove the fullscreen video for Chrome - mobile as
   // the dimensions are not appropriated and not working
-  const fs = isChrome && isMobileDeviceDetectOnWeb ? false : true
+  const isFullscreenEnabled = !(isChrome && isMobileDeviceDetectOnWeb)
 
   const opts: YouTubeProps['opts'] = {
     height: playerHeight,
@@ -60,7 +60,7 @@ export const VideoPlayer: React.FC<VideoPlayerProps> = ({
       autoplay: true,
       modestbranding: true,
       rel: false,
-      fs: fs,
+      fs: isFullscreenEnabled,
     },
   }
 
