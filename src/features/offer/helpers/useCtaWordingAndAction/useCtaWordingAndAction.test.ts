@@ -494,7 +494,7 @@ describe('getCtaWordingAndAction', () => {
         }) || {}
 
       if (onPress) onPress()
-      expect(analytics.logClickBookOffer).toHaveBeenNthCalledWith(1, baseOffer.id)
+      expect(analytics.logClickBookOffer).toHaveBeenNthCalledWith(1, { offerId: baseOffer.id })
     })
 
     it('logs event ConsultAvailableDates when we click CTA "Voir les disponibilités" (beneficiary user)', () => {
