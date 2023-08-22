@@ -1,7 +1,9 @@
+import { useRoute } from '@react-navigation/native'
 import React, { useMemo, useCallback } from 'react'
 import { PixelRatio } from 'react-native'
 import styled from 'styled-components/native'
 
+import { UseRouteType } from 'features/navigation/RootNavigator/types'
 import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
 import { LocationType } from 'features/search/enums'
 import { SearchView } from 'features/search/types'
@@ -36,6 +38,8 @@ export const VenueOffers: React.FC<Props> = ({ venueId, layout = 'two-items' }) 
   const { data: venueOffers } = useVenueOffers(venueId)
   const { userPosition: position } = useGeolocation()
   const params = useVenueSearchParameters(venueId)
+  const route = useRoute<UseRouteType<'Offer'>>()
+
   const searchTabNavConfig = useMemo(() => {
     return getTabNavConfig('Search', {
       ...params,
@@ -86,6 +90,7 @@ export const VenueOffers: React.FC<Props> = ({ venueId, layout = 'two-items' }) 
           venueId={venue?.id}
           width={width}
           height={height}
+          searchId={route.params?.searchId}
         />
       )
     },
