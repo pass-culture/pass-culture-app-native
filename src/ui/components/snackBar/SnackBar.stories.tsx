@@ -9,10 +9,11 @@ import { SnackBar, SnackBarProps } from './SnackBar'
 import { SnackBarProvider, useSnackBarContext } from './SnackBarContext'
 import { SnackBarType } from './types'
 
-export default {
+const meta: ComponentMeta<typeof SnackBar> = {
   title: 'ui/SnackBar',
   component: SnackBar,
-} as ComponentMeta<typeof SnackBar>
+}
+export default meta
 
 const Template: ComponentStory<typeof SnackBar> = (props) => <SnackBar {...props} />
 

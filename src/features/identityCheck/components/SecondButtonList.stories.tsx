@@ -5,7 +5,7 @@ import React from 'react'
 import { SecondButtonList } from 'features/identityCheck/components/SecondButtonList'
 import { BicolorSmartphone } from 'ui/svg/icons/BicolorSmartphone'
 
-export default {
+const meta: ComponentMeta<typeof SecondButtonList> = {
   title: 'ui/SecondButtonList',
   component: SecondButtonList,
   decorators: [
@@ -15,7 +15,8 @@ export default {
       </NavigationContainer>
     ),
   ],
-} as ComponentMeta<typeof SecondButtonList>
+}
+export default meta
 
 const Template: ComponentStory<typeof SecondButtonList> = (props) => <SecondButtonList {...props} />
 

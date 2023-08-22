@@ -3,10 +3,11 @@ import React from 'react'
 
 import { EmailInput } from './EmailInput'
 
-export default {
+const meta: ComponentMeta<typeof EmailInput> = {
   title: 'ui/inputs/EmailInput',
   component: EmailInput,
-} as ComponentMeta<typeof EmailInput>
+}
+export default meta
 
 const Template: ComponentStory<typeof EmailInput> = (args) => <EmailInput {...args} />
 

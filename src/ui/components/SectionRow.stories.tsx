@@ -7,7 +7,7 @@ import { SectionRow } from 'ui/components/SectionRow'
 import { EditPen } from 'ui/svg/icons/EditPen'
 import { Email } from 'ui/svg/icons/Email'
 
-export default {
+const meta: ComponentMeta<typeof SectionRow> = {
   title: 'ui/sections/SectionRow',
   component: SectionRow,
   argTypes: {
@@ -23,7 +23,8 @@ export default {
       </NavigationContainer>
     ),
   ],
-} as ComponentMeta<typeof SectionRow>
+}
+export default meta
 
 const Template: ComponentStory<typeof SectionRow> = (props) => <SectionRow {...props} />
 

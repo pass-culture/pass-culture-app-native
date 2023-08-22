@@ -5,10 +5,11 @@ import { VerticalUl } from 'ui/components/Ul'
 
 import { BulletListItem } from './BulletListItem'
 
-export default {
+const meta: ComponentMeta<typeof BulletListItem> = {
   title: 'ui/BulletListItem',
   component: BulletListItem,
-} as ComponentMeta<typeof BulletListItem>
+}
+export default meta
 
 const Template: ComponentStory<typeof BulletListItem> = (props) => (
   <VerticalUl>

@@ -4,10 +4,11 @@ import { Controller, useForm } from 'react-hook-form'
 
 import { EmailInputWithSpellingHelp } from './EmailInputWithSpellingHelp'
 
-export default {
+const meta: ComponentMeta<typeof EmailInputWithSpellingHelp> = {
   title: 'ui/inputs/EmailInputWithSpellingHelp',
   component: EmailInputWithSpellingHelp,
-} as ComponentMeta<typeof EmailInputWithSpellingHelp>
+}
+export default meta
 
 const Template: ComponentStory<typeof EmailInputWithSpellingHelp> = (props) => {
   const { control } = useForm<{ email: string }>({

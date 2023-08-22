@@ -3,10 +3,11 @@ import React from 'react'
 
 import { Subtitle } from './Subtitle'
 
-export default {
+const meta: ComponentMeta<typeof Subtitle> = {
   title: 'features/profile/Subtitle',
   component: Subtitle,
-} as ComponentMeta<typeof Subtitle>
+}
+export default meta
 
 const Template: ComponentStory<typeof Subtitle> = (props) => <Subtitle {...props} />
 

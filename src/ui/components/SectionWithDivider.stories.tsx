@@ -6,10 +6,11 @@ import { Typo } from 'ui/theme'
 
 import { SectionWithDivider } from './SectionWithDivider'
 
-export default {
+const meta: ComponentMeta<typeof SectionWithDivider> = {
   title: 'ui/sections/SectionWithDivider',
   component: SectionWithDivider,
-} as ComponentMeta<typeof SectionWithDivider>
+}
+export default meta
 
 const Template: ComponentStory<typeof SectionWithDivider> = (props) => (
   <SectionWithDivider {...props} />

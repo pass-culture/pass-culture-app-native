@@ -6,7 +6,7 @@ import { theme } from 'theme'
 
 import { SectionWithSwitch } from './SectionWithSwitch'
 
-export default {
+const meta: ComponentMeta<typeof SectionWithSwitch> = {
   title: 'ui/sections/SectionWithSwitch',
   component: SectionWithSwitch,
   parameters: {
@@ -19,7 +19,8 @@ export default {
       </NavigationContainer>
     ),
   ],
-} as ComponentMeta<typeof SectionWithSwitch>
+}
+export default meta
 
 export const Template: ComponentStory<typeof SectionWithSwitch> = () => (
   <SectionWithSwitch title="Section with switch title" toggleLabel="Toggle label" />

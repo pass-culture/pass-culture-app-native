@@ -4,10 +4,11 @@ import React from 'react'
 
 import { SearchMainInput } from './SearchMainInput'
 
-export default {
+const meta: ComponentMeta<typeof SearchMainInput> = {
   title: 'Features/search/SearchMainInput',
   component: SearchMainInput,
-} as ComponentMeta<typeof SearchMainInput>
+}
+export default meta
 
 const Template: ComponentStory<typeof SearchMainInput> = (args) => <SearchMainInput {...args} />
 

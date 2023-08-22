@@ -6,10 +6,11 @@ import { theme } from 'theme'
 
 import { VerticalDots } from './VerticalDots'
 
-export default {
+const meta: ComponentMeta<typeof VerticalDots> = {
   title: 'features/profile/VerticalDots',
   component: VerticalDots,
-} as ComponentMeta<typeof VerticalDots>
+}
+export default meta
 
 const Template: ComponentStory<typeof VerticalDots> = (props) => (
   <View style={{ width: props.parentWidth, height: props.parentHeight }}>

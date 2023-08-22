@@ -3,10 +3,11 @@ import React from 'react'
 
 import { BottomBanner } from './BottomBanner'
 
-export default {
+const meta: ComponentMeta<typeof BottomBanner> = {
   title: 'features/offer/BottomBanner',
   component: BottomBanner,
-} as ComponentMeta<typeof BottomBanner>
+}
+export default meta
 
 export const Default: ComponentStory<typeof BottomBanner> = (props) => <BottomBanner {...props} />
 

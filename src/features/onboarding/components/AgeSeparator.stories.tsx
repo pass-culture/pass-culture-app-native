@@ -3,10 +3,11 @@ import React from 'react'
 
 import { AgeSeparator } from './AgeSeparator'
 
-export default {
+const meta: ComponentMeta<typeof AgeSeparator> = {
   title: 'features/onboarding/AgeSeparator',
   component: AgeSeparator,
-} as ComponentMeta<typeof AgeSeparator>
+}
+export default meta
 
 const Template: ComponentStory<typeof AgeSeparator> = (props) => <AgeSeparator {...props} />
 

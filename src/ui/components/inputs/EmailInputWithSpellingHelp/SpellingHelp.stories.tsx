@@ -5,13 +5,14 @@ import { theme } from 'theme'
 
 import { SpellingHelp } from './SpellingHelp'
 
-export default {
+const meta: ComponentMeta<typeof SpellingHelp> = {
   title: 'ui/inputs/EmailInputWithSpellingHelp/SpellingHelp',
   component: SpellingHelp,
   parameters: {
     chromatic: { viewports: [theme.breakpoints.xxs, theme.breakpoints.md] },
   },
-} as ComponentMeta<typeof SpellingHelp>
+}
+export default meta
 
 const Template: ComponentStory<typeof SpellingHelp> = (props) => <SpellingHelp {...props} />
 

@@ -3,10 +3,11 @@ import React from 'react'
 
 import { Slider } from './Slider'
 
-export default {
+const meta: ComponentMeta<typeof Slider> = {
   title: 'ui/inputs/Slider',
   component: Slider,
-} as ComponentMeta<typeof Slider>
+}
+export default meta
 
 const Template: ComponentStory<typeof Slider> = (props) => <Slider {...props} />
 

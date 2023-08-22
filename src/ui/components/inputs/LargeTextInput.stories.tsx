@@ -3,10 +3,11 @@ import React from 'react'
 
 import { LargeTextInput } from './LargeTextInput'
 
-export default {
+const meta: ComponentMeta<typeof LargeTextInput> = {
   title: 'ui/inputs/LargeTextInput',
   component: LargeTextInput,
-} as ComponentMeta<typeof LargeTextInput>
+}
+export default meta
 
 const Template: ComponentStory<typeof LargeTextInput> = (args) => <LargeTextInput {...args} />
 

@@ -3,10 +3,11 @@ import React from 'react'
 
 import { ChangeEmailDisclaimer } from './ChangeEmailDisclaimer'
 
-export default {
+const meta: ComponentMeta<typeof ChangeEmailDisclaimer> = {
   title: 'features/profile/disclaimers/ChangeEmailDisclaimer',
   component: ChangeEmailDisclaimer,
-} as ComponentMeta<typeof ChangeEmailDisclaimer>
+}
+export default meta
 
 export const Template: ComponentStory<typeof ChangeEmailDisclaimer> = () => (
   <ChangeEmailDisclaimer />

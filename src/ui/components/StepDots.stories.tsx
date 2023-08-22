@@ -3,10 +3,11 @@ import React from 'react'
 
 import { StepDots } from './StepDots'
 
-export default {
+const meta: ComponentMeta<typeof StepDots> = {
   title: 'ui/StepDots',
   component: StepDots,
-} as ComponentMeta<typeof StepDots>
+}
+export default meta
 
 const Template: ComponentStory<typeof StepDots> = (props) => <StepDots {...props} />
 

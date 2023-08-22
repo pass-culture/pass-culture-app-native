@@ -4,10 +4,11 @@ import React from 'react'
 import { ShareMessagingApp } from 'ui/components/ShareMessagingApp'
 import { Network } from 'ui/components/ShareMessagingApp'
 
-export default {
+const meta: ComponentMeta<typeof ShareMessagingApp> = {
   title: 'ui/share/ShareMessagingApp',
   component: ShareMessagingApp,
-} as ComponentMeta<typeof ShareMessagingApp>
+}
+export default meta
 
 const Template: ComponentStory<typeof ShareMessagingApp> = (args) => <ShareMessagingApp {...args} />
 

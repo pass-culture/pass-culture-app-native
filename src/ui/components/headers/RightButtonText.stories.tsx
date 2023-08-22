@@ -3,10 +3,11 @@ import React from 'react'
 
 import { RightButtonText } from './RightButtonText'
 
-export default {
+const meta: ComponentMeta<typeof RightButtonText> = {
   title: 'ui/headers/RightButtonText',
   component: RightButtonText,
-} as ComponentMeta<typeof RightButtonText>
+}
+export default meta
 
 const Template: ComponentStory<typeof RightButtonText> = (props) => <RightButtonText {...props} />
 

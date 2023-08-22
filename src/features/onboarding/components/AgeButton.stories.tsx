@@ -19,7 +19,7 @@ const StyledBody = styled(Typo.Body)(({ theme }) => ({
   color: theme.colors.secondary,
 }))
 
-export default {
+const meta: ComponentMeta<typeof AgeButton> = {
   title: 'features/onboarding/AgeButton',
   component: AgeButton,
   argTypes: {
@@ -35,7 +35,8 @@ export default {
       </NavigationContainer>
     ),
   ],
-} as ComponentMeta<typeof AgeButton>
+}
+export default meta
 
 const Template: ComponentStory<typeof AgeButton> = (props) => <AgeButton {...props} />
 

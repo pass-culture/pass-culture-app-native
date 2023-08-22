@@ -7,10 +7,11 @@ import { Email } from 'ui/svg/icons/Email'
 
 import { AnimatedProgressBar } from './AnimatedProgressBar'
 
-export default {
+const meta: ComponentMeta<typeof AnimatedProgressBar> = {
   title: 'ui/progressBars/AnimatedProgressBar',
   component: AnimatedProgressBar,
-} as ComponentMeta<typeof AnimatedProgressBar>
+}
+export default meta
 
 const Template: ComponentStory<typeof AnimatedProgressBar> = (props) => (
   <AnimatedProgressBar {...props} />

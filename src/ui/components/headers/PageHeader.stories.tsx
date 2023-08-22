@@ -3,10 +3,11 @@ import React from 'react'
 
 import { PageHeader } from './PageHeader'
 
-export default {
+const meta: ComponentMeta<typeof PageHeader> = {
   title: 'ui/PageHeader',
   component: PageHeader,
-} as ComponentMeta<typeof PageHeader>
+}
+export default meta
 
 const Template: ComponentStory<typeof PageHeader> = (props) => <PageHeader {...props} />
 

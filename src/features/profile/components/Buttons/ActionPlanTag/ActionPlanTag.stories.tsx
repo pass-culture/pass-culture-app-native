@@ -3,10 +3,11 @@ import React from 'react'
 
 import { ActionPlanTag } from './ActionPlanTag'
 
-export default {
+const meta: ComponentMeta<typeof ActionPlanTag> = {
   title: 'features/profile/buttons/ActionPlanTag',
   component: ActionPlanTag,
-} as ComponentMeta<typeof ActionPlanTag>
+}
+export default meta
 
 const Template: ComponentStory<typeof ActionPlanTag> = (props) => <ActionPlanTag {...props} />
 

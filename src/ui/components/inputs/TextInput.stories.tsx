@@ -5,10 +5,11 @@ import { Eye } from 'ui/svg/icons/Eye'
 
 import { TextInput } from './TextInput'
 
-export default {
+const meta: ComponentMeta<typeof TextInput> = {
   title: 'ui/inputs/TextInput',
   component: TextInput,
-} as ComponentMeta<typeof TextInput>
+}
+export default meta
 
 const Template: ComponentStory<typeof TextInput> = (args) => <TextInput {...args} />
 

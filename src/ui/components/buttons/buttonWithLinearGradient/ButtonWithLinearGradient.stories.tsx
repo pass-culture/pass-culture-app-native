@@ -6,10 +6,11 @@ import { PlainArrowNext } from 'ui/svg/icons/PlainArrowNext'
 
 import { ButtonWithLinearGradient } from './ButtonWithLinearGradient'
 
-export default {
+const meta: ComponentMeta<typeof ButtonWithLinearGradient> = {
   title: 'ui/buttons/ButtonWithLinearGradient',
   component: ButtonWithLinearGradient,
-} as ComponentMeta<typeof ButtonWithLinearGradient>
+}
+export default meta
 
 const Template: ComponentStory<typeof ButtonWithLinearGradient> = (props) => (
   <ButtonWithLinearGradient {...props} />

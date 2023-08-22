@@ -3,10 +3,11 @@ import React from 'react'
 
 import { PasswordInput } from './PasswordInput'
 
-export default {
+const meta: ComponentMeta<typeof PasswordInput> = {
   title: 'ui/inputs/PasswordInput',
   component: PasswordInput,
-} as ComponentMeta<typeof PasswordInput>
+}
+export default meta
 
 const Template: ComponentStory<typeof PasswordInput> = (args) => <PasswordInput {...args} />
 

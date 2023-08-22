@@ -7,7 +7,7 @@ import { ReactQueryClientProvider } from 'libs/react-query/ReactQueryClientProvi
 
 import { VideoModule } from './VideoModule'
 
-export default {
+const meta: ComponentMeta<typeof VideoModule> = {
   title: 'Features/home/VideoModule',
   component: VideoModule,
   decorators: [
@@ -19,7 +19,8 @@ export default {
       </ReactQueryClientProvider>
     ),
   ],
-} as ComponentMeta<typeof VideoModule>
+}
+export default meta
 
 const Template: ComponentStory<typeof VideoModule> = (props) => <VideoModule {...props} />
 

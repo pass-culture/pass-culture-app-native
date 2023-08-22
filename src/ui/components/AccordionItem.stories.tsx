@@ -7,7 +7,7 @@ import { Typo } from 'ui/theme'
 
 import { AccordionItem } from './AccordionItem'
 
-export default {
+const meta: ComponentMeta<typeof AccordionItem> = {
   title: 'ui/AccordionItem',
   component: AccordionItem,
   decorators: [
@@ -17,7 +17,8 @@ export default {
       </NavigationContainer>
     ),
   ],
-} as ComponentMeta<typeof AccordionItem>
+}
+export default meta
 
 const Template: ComponentStory<typeof AccordionItem> = (props) => <AccordionItem {...props} />
 const children = 'children'

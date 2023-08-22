@@ -4,7 +4,7 @@ import React from 'react'
 
 import { Checkbox } from './Checkbox'
 
-export default {
+const meta: ComponentMeta<typeof Checkbox> = {
   title: 'ui/inputs/Checkbox',
   component: Checkbox,
   decorators: [
@@ -14,7 +14,8 @@ export default {
       </NavigationContainer>
     ),
   ],
-} as ComponentMeta<typeof Checkbox>
+}
+export default meta
 
 const Template: ComponentStory<typeof Checkbox> = (args) => <Checkbox {...args} />
 

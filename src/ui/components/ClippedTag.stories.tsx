@@ -3,10 +3,11 @@ import React from 'react'
 
 import { ClippedTag } from './ClippedTag'
 
-export default {
+const meta: ComponentMeta<typeof ClippedTag> = {
   title: 'ui/tags/ClippedTag',
   component: ClippedTag,
-} as ComponentMeta<typeof ClippedTag>
+}
+export default meta
 
 const Template: ComponentStory<typeof ClippedTag> = (props) => <ClippedTag {...props} />
 

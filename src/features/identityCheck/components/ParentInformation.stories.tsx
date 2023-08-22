@@ -4,7 +4,7 @@ import React from 'react'
 
 import { ParentInformation } from './ParentInformation'
 
-export default {
+const meta: ComponentMeta<typeof ParentInformation> = {
   title: 'Features/identityCheck/ParentInformation',
   component: ParentInformation,
   decorators: [
@@ -14,7 +14,8 @@ export default {
       </NavigationContainer>
     ),
   ],
-} as ComponentMeta<typeof ParentInformation>
+}
+export default meta
 
 const Template: ComponentStory<typeof ParentInformation> = (props) => (
   <ParentInformation {...props} />

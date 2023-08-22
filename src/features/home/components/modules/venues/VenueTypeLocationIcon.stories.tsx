@@ -6,10 +6,11 @@ import { Bag } from 'ui/svg/icons/bicolor/Bag'
 
 import { VenueTypeLocationIcon } from './VenueTypeLocationIcon'
 
-export default {
+const meta: ComponentMeta<typeof VenueTypeLocationIcon> = {
   title: 'Features/Home/VenueTypeLocationIcon',
   component: VenueTypeLocationIcon,
-} as ComponentMeta<typeof VenueTypeLocationIcon>
+}
+export default meta
 
 const Template: ComponentStory<typeof VenueTypeLocationIcon> = (props) => (
   <VenueTypeLocationIcon {...props} />

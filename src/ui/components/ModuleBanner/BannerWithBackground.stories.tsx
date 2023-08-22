@@ -10,7 +10,7 @@ import { Typo } from 'ui/theme'
 
 import { BannerWithBackground } from './BannerWithBackground'
 
-export default {
+const meta: ComponentMeta<typeof BannerWithBackground> = {
   title: 'ui/banners/BannerWithBackground',
   component: BannerWithBackground,
   argTypes: {
@@ -25,7 +25,8 @@ export default {
       NoIcon: undefined,
     }),
   },
-} as ComponentMeta<typeof BannerWithBackground>
+}
+export default meta
 
 const Template: ComponentStory<typeof BannerWithBackground> = (props) => (
   <BannerWithBackground {...props} />

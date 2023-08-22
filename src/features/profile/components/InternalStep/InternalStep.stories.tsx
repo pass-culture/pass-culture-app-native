@@ -12,11 +12,12 @@ import { StepVariant } from '../VerticalStepper/types'
 
 import { InternalStep } from './InternalStep'
 
-export default {
+const meta: ComponentMeta<typeof InternalStep> = {
   title: 'features/profile/InternalStep',
   component: InternalStep,
   argTypes: {},
-} as ComponentMeta<typeof InternalStep>
+}
+export default meta
 
 const Template: Story<ComponentProps<typeof InternalStep>> = (props) => <InternalStep {...props} />
 

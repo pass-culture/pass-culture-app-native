@@ -9,7 +9,7 @@ import { BicolorArrowRight } from 'ui/svg/icons/BicolorArrowRight'
 
 import { ScrollButtonForNotTouchDevice } from './ScrollButtonForNotTouchDevice'
 
-export default {
+const meta: ComponentMeta<typeof ScrollButtonForNotTouchDevice> = {
   title: 'ui/buttons/ScrollButtonForNotTouchDevice',
   component: ScrollButtonForNotTouchDevice,
   decorators: [
@@ -27,7 +27,8 @@ export default {
       right: 'right',
     }),
   },
-} as ComponentMeta<typeof ScrollButtonForNotTouchDevice>
+}
+export default meta
 
 const Template: ComponentStory<typeof ScrollButtonForNotTouchDevice> = (args) => (
   <ScrollButtonForNotTouchDevice {...args} />

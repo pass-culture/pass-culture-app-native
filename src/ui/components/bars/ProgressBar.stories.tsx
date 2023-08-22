@@ -5,10 +5,11 @@ import { theme } from 'theme'
 
 import { ProgressBar } from './ProgressBar'
 
-export default {
+const meta: ComponentMeta<typeof ProgressBar> = {
   title: 'ui/progressBars/ProgressBar',
   component: ProgressBar,
-} as ComponentMeta<typeof ProgressBar>
+}
+export default meta
 
 const Template: ComponentStory<typeof ProgressBar> = (props) => <ProgressBar {...props} />
 

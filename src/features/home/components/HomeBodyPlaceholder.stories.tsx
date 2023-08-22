@@ -3,10 +3,11 @@ import React from 'react'
 
 import { HomeBodyPlaceholder } from './HomeBodyPlaceholder'
 
-export default {
+const meta: ComponentMeta<typeof HomeBodyPlaceholder> = {
   title: 'ui/placeholders',
   component: HomeBodyPlaceholder,
-} as ComponentMeta<typeof HomeBodyPlaceholder>
+}
+export default meta
 
 export const HomeBody: ComponentStory<typeof HomeBodyPlaceholder> = () => <HomeBodyPlaceholder />
 HomeBody.storyName = 'HomeBodyPlaceholder'

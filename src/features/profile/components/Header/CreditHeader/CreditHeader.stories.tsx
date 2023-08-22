@@ -6,7 +6,7 @@ import { domains_credit_v1, domains_credit_v2 } from 'features/profile/fixtures/
 
 import { CreditHeader } from './CreditHeader'
 
-export default {
+const meta: ComponentMeta<typeof CreditHeader> = {
   title: 'ui/CreditHeader',
   component: CreditHeader,
   decorators: [
@@ -16,7 +16,8 @@ export default {
       </NavigationContainer>
     ),
   ],
-} as ComponentMeta<typeof CreditHeader>
+}
+export default meta
 
 const Template: ComponentStory<typeof CreditHeader> = (props) => <CreditHeader {...props} />
 

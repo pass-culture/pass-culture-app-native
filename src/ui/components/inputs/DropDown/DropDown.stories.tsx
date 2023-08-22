@@ -4,10 +4,11 @@ import React from 'react'
 import { monthNames } from 'features/bookOffer/components/Calendar/Calendar.utils'
 import { DropDown } from 'ui/components/inputs/DropDown/DropDown'
 
-export default {
+const meta: ComponentMeta<typeof DropDown> = {
   title: 'ui/inputs/DropDown',
   component: DropDown,
-} as ComponentMeta<typeof DropDown>
+}
+export default meta
 
 const Template: ComponentStory<typeof DropDown> = (args) => <DropDown {...args} />
 

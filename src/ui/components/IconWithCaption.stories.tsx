@@ -6,13 +6,14 @@ import { categoriesIcons } from 'ui/svg/icons/bicolor/exports/categoriesIcons'
 
 import { IconWithCaption } from './IconWithCaption'
 
-export default {
+const meta: ComponentMeta<typeof IconWithCaption> = {
   title: 'ui/IconWithCaption',
   component: IconWithCaption,
   argTypes: {
     Icon: selectArgTypeFromObject(categoriesIcons),
   },
-} as ComponentMeta<typeof IconWithCaption>
+}
+export default meta
 
 const Template: ComponentStory<typeof IconWithCaption> = (args) => <IconWithCaption {...args} />
 

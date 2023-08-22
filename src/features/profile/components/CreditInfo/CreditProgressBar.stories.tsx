@@ -6,10 +6,11 @@ import { getSpacing } from 'ui/theme'
 
 import { CreditProgressBar } from './CreditProgressBar'
 
-export default {
+const meta: ComponentMeta<typeof CreditProgressBar> = {
   title: 'Features/Profile/CreditProgressBar',
   component: CreditProgressBar,
-} as ComponentMeta<typeof CreditProgressBar>
+}
+export default meta
 
 const Template: ComponentStory<typeof CreditProgressBar> = (props) => (
   <GreyContainer>

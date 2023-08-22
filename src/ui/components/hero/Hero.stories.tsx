@@ -9,7 +9,7 @@ import { Hero } from './Hero'
 // eslint-disable-next-line import/no-unresolved
 import { useQueryDecorator } from '/.storybook/mocks/react-query'
 
-export default {
+const meta: ComponentMeta<typeof Hero> = {
   title: 'ui/Hero',
   component: Hero,
   decorators: [useQueryDecorator],
@@ -22,7 +22,8 @@ export default {
       settings: { enableFrontImageResizing: false },
     },
   },
-} as ComponentMeta<typeof Hero>
+}
+export default meta
 
 const Template: ComponentStory<typeof Hero> = (props) => <Hero {...props} />
 

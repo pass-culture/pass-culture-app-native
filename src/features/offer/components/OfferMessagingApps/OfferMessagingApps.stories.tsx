@@ -5,7 +5,7 @@ import { ReactQueryClientProvider } from 'libs/react-query/ReactQueryClientProvi
 
 import { OfferMessagingApps } from './OfferMessagingApps'
 
-export default {
+const meta: ComponentMeta<typeof OfferMessagingApps> = {
   title: 'features/offer/MessagingApps',
   component: OfferMessagingApps,
   decorators: [
@@ -15,7 +15,8 @@ export default {
       </ReactQueryClientProvider>
     ),
   ],
-} as ComponentMeta<typeof OfferMessagingApps>
+}
+export default meta
 
 const Template: ComponentStory<typeof OfferMessagingApps> = (args) => (
   <OfferMessagingApps {...args} />

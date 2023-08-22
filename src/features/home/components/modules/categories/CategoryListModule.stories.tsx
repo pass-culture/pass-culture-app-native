@@ -6,7 +6,7 @@ import { categoryBlockList } from 'features/home/fixtures/categoryBlockList.fixt
 
 import { CategoryListModule } from './CategoryListModule'
 
-export default {
+const componentMeta: ComponentMeta<typeof CategoryListModule> = {
   title: 'features/home/CategoryListModule',
   component: CategoryListModule,
   decorators: [
@@ -16,7 +16,8 @@ export default {
       </NavigationContainer>
     ),
   ],
-} as ComponentMeta<typeof CategoryListModule>
+}
+export default componentMeta
 
 const Template: ComponentStory<typeof CategoryListModule> = (props) => (
   <CategoryListModule {...props} />

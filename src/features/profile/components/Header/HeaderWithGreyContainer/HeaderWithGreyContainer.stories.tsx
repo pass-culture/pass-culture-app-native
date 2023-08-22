@@ -9,7 +9,7 @@ import { Typo } from 'ui/theme'
 
 import { HeaderWithGreyContainer } from './HeaderWithGreyContainer'
 
-export default {
+const meta: ComponentMeta<typeof HeaderWithGreyContainer> = {
   title: 'features/Profile/HeaderWithGreyContainer',
   component: HeaderWithGreyContainer,
   decorators: [
@@ -19,7 +19,8 @@ export default {
       </NavigationContainer>
     ),
   ],
-} as ComponentMeta<typeof HeaderWithGreyContainer>
+}
+export default meta
 
 const Template: ComponentStory<typeof HeaderWithGreyContainer> = (props) => (
   <HeaderWithGreyContainer {...props} />

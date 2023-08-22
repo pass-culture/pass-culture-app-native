@@ -4,10 +4,11 @@ import React from 'react'
 import { DEFAULT_SELECTED_DATE, MINIMUM_DATE } from 'features/auth/fixtures/fixtures'
 import { DateInput } from 'ui/components/inputs/DateInput/DateInput'
 
-export default {
+const meta: ComponentMeta<typeof DateInput> = {
   title: 'ui/inputs/DateInput',
   component: DateInput,
-} as ComponentMeta<typeof DateInput>
+}
+export default meta
 
 const Template: ComponentStory<typeof DateInput> = (args) => <DateInput {...args} />
 

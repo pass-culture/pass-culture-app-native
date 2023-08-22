@@ -8,7 +8,7 @@ import { Spacer, Typo } from 'ui/theme'
 
 import { ButtonInsideText } from './ButtonInsideText'
 
-export default {
+const meta: ComponentMeta<typeof ButtonInsideText> = {
   title: 'ui/buttons/ButtonInsideText',
   component: ButtonInsideText,
   argTypes: {
@@ -17,7 +17,8 @@ export default {
       ExternalSiteFilled,
     }),
   },
-} as ComponentMeta<typeof ButtonInsideText>
+}
+export default meta
 
 const Template: ComponentStory<typeof ButtonInsideText> = (args) => <ButtonInsideText {...args} />
 

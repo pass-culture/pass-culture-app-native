@@ -5,10 +5,11 @@ import { CreditStatus } from 'features/onboarding/types'
 
 import { CreditStatusTag } from './CreditStatusTag'
 
-export default {
+const meta: ComponentMeta<typeof CreditStatusTag> = {
   title: 'features/onboarding/CreditStatusTag',
   component: CreditStatusTag,
-} as ComponentMeta<typeof CreditStatusTag>
+}
+export default meta
 
 const Template: ComponentStory<typeof CreditStatusTag> = (props) => <CreditStatusTag {...props} />
 
