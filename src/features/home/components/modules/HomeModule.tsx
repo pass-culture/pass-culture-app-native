@@ -77,11 +77,11 @@ const UnmemoizedModule = ({
     (isHighlightOfferModule(item) && !enableNewExclusivityBlock) ||
     (isExclusivityModule(item) && enableNewExclusivityBlock)
   )
-    return <React.Fragment></React.Fragment>
+    return <React.Fragment />
 
   /* eslint-disable @typescript-eslint/no-explicit-any */
   const ComponentModule: any = modules[item.type]
-  if (!ComponentModule) return <React.Fragment></React.Fragment>
+  if (!ComponentModule) return <React.Fragment />
   return (
     <ComponentModule
       {...item}
