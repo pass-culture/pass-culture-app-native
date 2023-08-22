@@ -56,7 +56,7 @@ export const OffersModule = (props: OffersModuleProps) => {
   const searchTabConfig = getTabNavConfig('Search', searchParams)
   const moduleName = displayParameters.title ?? parameters.title
   const logHasSeenAllTilesOnce = useFunctionOnce(() =>
-    analytics.logAllTilesSeen(moduleName, playlistItems.length)
+    analytics.logAllTilesSeen({ moduleName, numberOfTiles: playlistItems.length })
   )
 
   const showSeeMore =
