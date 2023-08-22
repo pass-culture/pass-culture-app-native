@@ -1,7 +1,7 @@
 import { api } from 'api/api'
 import { refreshAccessToken } from 'api/apiHelpers'
 import { env } from 'libs/environment'
-import { getTokenStatus } from 'libs/jwt'
+import { getAccessTokenStatus } from 'libs/jwt'
 import { storage } from 'libs/storage'
 
 export const eduConnectClient = {
@@ -10,7 +10,7 @@ export const eduConnectClient = {
   },
   async getAccessToken() {
     const accessToken = await storage.readString('access_token')
-    const accessTokenStatus = getTokenStatus(accessToken)
+    const accessTokenStatus = getAccessTokenStatus(accessToken)
     if (accessTokenStatus === 'unknown') {
       return Promise.reject(new Error('eduConnectClient failed to decodeAccessToken'))
     }

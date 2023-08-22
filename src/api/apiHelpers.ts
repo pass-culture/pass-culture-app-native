@@ -6,7 +6,7 @@ import { getCodePushId } from 'api/getCodePushId'
 import { navigateFromRef } from 'features/navigation/navigationRef'
 import { env } from 'libs/environment'
 import { Headers } from 'libs/fetch'
-import { decodeAccessToken, getTokenStatus } from 'libs/jwt'
+import { decodeAccessToken, getAccessTokenStatus } from 'libs/jwt'
 import { clearRefreshToken, getRefreshToken } from 'libs/keychain'
 import { eventMonitoring } from 'libs/monitoring'
 import { getDeviceId } from 'libs/react-native-device-info/getDeviceId'
@@ -79,7 +79,7 @@ export const safeFetch = async (
   // @ts-expect-error
   const authorizationHeader: string = options.headers?.['Authorization'] || ''
   const token = authorizationHeader.replace('Bearer ', '')
-  const accessTokenStatus = getTokenStatus(token)
+  const accessTokenStatus = getAccessTokenStatus(token)
 
   if (accessTokenStatus === 'unknown') {
     return createNeedsAuthenticationResponse(url)
@@ -145,8 +145,13 @@ export const refreshAccessToken = async (
     refreshedAccessToken = refreshAccessTokenWithRetriesOnError(api, remainingRetries).then(
       (result) => {
         if (result.result) {
-          const lifetimeInMs = computeTokenRemainingLifetimeInMs(result.result)
-          setTimeout(removeRefreshedAccessToken, lifetimeInMs)
+          const token = decodeAccessToken(result.result)
+          if (token) {
+            const tokenExpirationInSeconds = token.exp
+            const tokenIssueDateInSeconds = token.iat
+            const lifetimeInMs = (tokenExpirationInSeconds - tokenIssueDateInSeconds) * 1000
+            setTimeout(removeRefreshedAccessToken, lifetimeInMs)
+          }
         }
         return result
       }
@@ -204,19 +209,6 @@ const extractResponseBody = async (response: Response): Promise<string> => {
     return await response.json()
   }
   return await response.text()
-}
-
-export const computeTokenRemainingLifetimeInMs = (encodedToken: string): number | undefined => {
-  const token = decodeAccessToken(encodedToken)
-
-  if (token) {
-    const tokenExpirationInMs = token.exp * 1000
-    const currentDateInMs = Date.now()
-    const lifetimeInMs = tokenExpirationInMs - currentDateInMs
-    return lifetimeInMs
-  }
-
-  return undefined
 }
 
 // In this case, the following `any` is not that much of a problem in the context of usage

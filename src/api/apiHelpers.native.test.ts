@@ -1,10 +1,8 @@
 import AsyncStorage from '@react-native-async-storage/async-storage'
-import mockdate from 'mockdate'
 import { rest } from 'msw'
 import { Platform } from 'react-native'
 import CodePush from 'react-native-code-push'
 
-import { CURRENT_DATE } from 'features/auth/fixtures/fixtures'
 import * as NavigationRef from 'features/navigation/navigationRef'
 import { env } from 'libs/environment'
 import * as jwt from 'libs/jwt'
@@ -21,11 +19,8 @@ import {
   refreshAccessToken,
   RefreshTokenExpiredResponse,
   safeFetch,
-  computeTokenRemainingLifetimeInMs,
 } from './apiHelpers'
 import { Configuration, DefaultApi, RefreshResponse } from './gen'
-
-mockdate.set(CURRENT_DATE)
 
 const configuration: Configuration = {
   basePath: env.API_BASE_URL,
@@ -50,7 +45,6 @@ const respondWith = async (
 
 const accessToken =
   'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTY4OTI1NjM1NywianRpIjoiNTFkMjc5OGMtZDc1YS00NjQ1LTg0ZTAtNTgxYmQ3NTQzZGY3IiwidHlwZSI6ImFjY2VzcyIsInN1YiI6ImJlbmVfMThAZXhhbXBsZS5jb20iLCJuYmYiOjE2ODkyNTYzNTcsImV4cCI6MTY4OTI1NzI1NywidXNlcl9jbGFpbXMiOnsidXNlcl9pZCI6MTI3MTN9fQ.OW09vfchjTx-0LfZiaAJu8eMd9aftExhxR4bUsgl3xw'
-const tokenRemainingLifetimeInMs = 10 * 60 * 1000
 const decodedAccessToken = {
   fresh: false,
   iat: 1689576398,
@@ -58,7 +52,7 @@ const decodedAccessToken = {
   type: 'access',
   sub: 'bene_18@example.com',
   nbf: 1689576398,
-  exp: (CURRENT_DATE.getTime() + tokenRemainingLifetimeInMs) / 1000,
+  exp: 1689577298,
   user_claims: {
     user_id: 12713,
   },
@@ -79,7 +73,7 @@ jest.useFakeTimers({ legacyFakeTimers: true })
 
 describe('[api] helpers', () => {
   const mockFetch = jest.spyOn(global, 'fetch')
-  const mockGetTokenStatus = jest.spyOn(jwt, 'getTokenStatus')
+  const mockGetAccessTokenStatus = jest.spyOn(jwt, 'getAccessTokenStatus')
   const mockGetRefreshToken = jest.spyOn(Keychain, 'getRefreshToken')
   const mockClearRefreshToken = jest.spyOn(Keychain, 'clearRefreshToken')
 
@@ -87,7 +81,7 @@ describe('[api] helpers', () => {
 
   describe('[method] safeFetch', () => {
     it('should call fetch with populated header', async () => {
-      mockGetTokenStatus.mockReturnValueOnce('valid')
+      mockGetAccessTokenStatus.mockReturnValueOnce('valid')
       mockFetch.mockResolvedValueOnce(respondWith('apiResponse'))
       const response = await safeFetch('url', optionsWithAccessToken, api)
       expect(mockFetch).toHaveBeenCalledWith('url', {
@@ -105,7 +99,7 @@ describe('[api] helpers', () => {
     })
 
     it('should call fetch with populated header when route is in NotAuthenticatedCalls', async () => {
-      mockGetTokenStatus.mockReturnValueOnce('valid')
+      mockGetAccessTokenStatus.mockReturnValueOnce('valid')
       mockFetch.mockResolvedValueOnce(respondWith('apiResponse'))
       const response = await safeFetch('native/v1/account', optionsWithAccessToken, api)
       expect(mockFetch).toHaveBeenCalledWith('native/v1/account', {
@@ -130,7 +124,7 @@ describe('[api] helpers', () => {
         )
       )
 
-      mockGetTokenStatus.mockReturnValueOnce('expired')
+      mockGetAccessTokenStatus.mockReturnValueOnce('expired')
 
       const response = await safeFetch(apiUrl, optionsWithAccessToken, api)
 
@@ -138,7 +132,7 @@ describe('[api] helpers', () => {
     })
 
     it('forces user to login when refresh token is expired', async () => {
-      mockGetTokenStatus.mockReturnValueOnce('expired')
+      mockGetAccessTokenStatus.mockReturnValueOnce('expired')
       // mock refresh access token response
       mockFetch.mockRejectedValueOnce(new ApiError(401, 'unauthorized'))
       // mock refresh access token response for the retry
@@ -150,7 +144,7 @@ describe('[api] helpers', () => {
     })
 
     it('regenerates the access token and fetch the real url after when the access token is expired', async () => {
-      mockGetTokenStatus.mockReturnValueOnce('expired')
+      mockGetAccessTokenStatus.mockReturnValueOnce('expired')
       const expectedResponse = respondWith('some api response')
       mockFetch
         .mockResolvedValueOnce(respondWith({ accessToken }))
@@ -173,7 +167,7 @@ describe('[api] helpers', () => {
     })
 
     it('should call refreshAccessToken route once when no error', async () => {
-      mockGetTokenStatus.mockReturnValueOnce('expired').mockReturnValueOnce('expired')
+      mockGetAccessTokenStatus.mockReturnValueOnce('expired').mockReturnValueOnce('expired')
       const expectedResponse = respondWith('some api response')
       mockFetch
         .mockResolvedValueOnce(respondWith({ accessToken }))
@@ -191,7 +185,7 @@ describe('[api] helpers', () => {
     })
 
     it('should not call refreshAccessToken route while the token is still valid', async () => {
-      mockGetTokenStatus.mockReturnValueOnce('expired').mockReturnValueOnce('expired')
+      mockGetAccessTokenStatus.mockReturnValueOnce('expired').mockReturnValueOnce('expired')
       const expectedResponse = respondWith('some api response')
       mockFetch
         .mockResolvedValueOnce(respondWith({ accessToken }))
@@ -200,7 +194,7 @@ describe('[api] helpers', () => {
 
       await safeFetch(apiUrl, optionsWithAccessToken, api)
 
-      jest.advanceTimersByTime(tokenRemainingLifetimeInMs - 1)
+      jest.advanceTimersByTime(15 * 60 * 1000 - 1)
 
       await safeFetch(apiUrl, optionsWithAccessToken, api)
 
@@ -210,7 +204,7 @@ describe('[api] helpers', () => {
     })
 
     it("should call refreshAccessToken route again after 15 minutes (access token's lifetime)", async () => {
-      mockGetTokenStatus.mockReturnValueOnce('expired').mockReturnValueOnce('expired')
+      mockGetAccessTokenStatus.mockReturnValueOnce('expired').mockReturnValueOnce('expired')
       const expectedResponse = respondWith('some api response')
       mockFetch
         .mockResolvedValueOnce(respondWith({ accessToken }))
@@ -220,7 +214,7 @@ describe('[api] helpers', () => {
 
       await safeFetch(apiUrl, optionsWithAccessToken, api)
 
-      jest.advanceTimersByTime(tokenRemainingLifetimeInMs)
+      jest.advanceTimersByTime(15 * 60 * 1000)
 
       await safeFetch(apiUrl, optionsWithAccessToken, api)
 
@@ -230,7 +224,7 @@ describe('[api] helpers', () => {
     })
 
     it('needs authentication response when there is no access token', async () => {
-      mockGetTokenStatus.mockReturnValueOnce('unknown')
+      mockGetAccessTokenStatus.mockReturnValueOnce('unknown')
 
       const response = await safeFetch(apiUrl, {}, api)
 
@@ -239,7 +233,7 @@ describe('[api] helpers', () => {
     })
 
     it('needs authentication response when there is no refresh token', async () => {
-      mockGetTokenStatus.mockReturnValueOnce('expired')
+      mockGetAccessTokenStatus.mockReturnValueOnce('expired')
       mockGetRefreshToken.mockResolvedValueOnce(null)
 
       const response = await safeFetch(apiUrl, optionsWithAccessToken, api)
@@ -249,7 +243,7 @@ describe('[api] helpers', () => {
     })
 
     it('needs authentication response when cannot get refresh token', async () => {
-      mockGetTokenStatus.mockReturnValueOnce('expired')
+      mockGetAccessTokenStatus.mockReturnValueOnce('expired')
       mockGetRefreshToken.mockRejectedValueOnce(new Error())
 
       const response = await safeFetch(apiUrl, optionsWithAccessToken, api)
@@ -258,7 +252,7 @@ describe('[api] helpers', () => {
     })
 
     it('retries to regenerate the access token when the access token is expired and the first try to regenerate fails', async () => {
-      mockGetTokenStatus.mockReturnValueOnce('expired')
+      mockGetAccessTokenStatus.mockReturnValueOnce('expired')
       const password = 'refreshToken'
       mockGetRefreshToken.mockResolvedValueOnce(password).mockResolvedValueOnce(password)
       const expectedResponse = respondWith('some api response')
@@ -516,17 +510,6 @@ describe('[api] helpers', () => {
 
     it('should return false when error code is 400', () => {
       expect(isAPIExceptionCapturedAsInfo(400)).toEqual(false)
-    })
-  })
-
-  describe('computeTokenRemainingLifetimeInMs', () => {
-    it('should return undefined when token can not be decoded', () => {
-      jest.spyOn(jwt, 'decodeAccessToken').mockReturnValueOnce(null)
-      expect(computeTokenRemainingLifetimeInMs('abc')).toBeUndefined()
-    })
-
-    it('should return remaining lifetime in milliseconds', () => {
-      expect(computeTokenRemainingLifetimeInMs('abc')).toEqual(tokenRemainingLifetimeInMs)
     })
   })
 })
