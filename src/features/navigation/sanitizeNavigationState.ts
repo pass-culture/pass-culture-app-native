@@ -1,13 +1,14 @@
+import { NavigationState } from '@react-navigation/native'
 import cloneDeep from 'lodash/cloneDeep'
 
-function limitStateSize(newState: Record<string, unknown>) {
+function limitStateSize(newState: Writable<NavigationState>) {
   if (newState.index !== undefined && newState.routes) {
-    newState.routes = [(newState.routes as [])[newState.index as number]]
+    newState.routes = [newState.routes[newState.index]]
     newState.index = 0
   }
   return newState
 }
 
-export function sanitizeNavigationState(state: Record<string, unknown>) {
+export function sanitizeNavigationState(state: NavigationState) {
   return limitStateSize(cloneDeep(state))
 }
