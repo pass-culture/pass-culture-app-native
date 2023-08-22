@@ -10,13 +10,15 @@ const LockSvg: React.FunctionComponent<AccessibleIcon> = ({
   color,
   testID,
   accessibilityLabel,
+  ...props
 }) => (
   <AccessibleSvg
     width={size}
     height={size}
     viewBox="0 0 48 48"
     testID={testID}
-    accessibilityLabel={accessibilityLabel}>
+    accessibilityLabel={accessibilityLabel}
+    {...props}>
     <Path
       fillRule="evenodd"
       clipRule="evenodd"

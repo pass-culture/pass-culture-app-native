@@ -13,6 +13,7 @@ const NotMemoizedBicolorWarning: React.FC<AccessibleBicolorIconInterface> = ({
   color2,
   accessibilityLabel,
   testID,
+  ...props
 }) => {
   const { id: gradientId, fill: gradientFill } = svgIdentifier()
 
@@ -22,7 +23,8 @@ const NotMemoizedBicolorWarning: React.FC<AccessibleBicolorIconInterface> = ({
       height={size}
       viewBox="0 0 48 48"
       accessibilityLabel={accessibilityLabel}
-      testID={testID}>
+      testID={testID}
+      {...props}>
       <Defs>
         <LinearGradient id={gradientId} x1="16.056%" x2="83.944%" y1="0%" y2="100%">
           <Stop offset="0%" stopColor={color} />

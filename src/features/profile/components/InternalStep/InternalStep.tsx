@@ -2,19 +2,29 @@ import React from 'react'
 import { View } from 'react-native'
 import styled from 'styled-components/native'
 
-import { FirstOrLastProps, StepVariantProps } from 'features/profile/types'
 import { getSpacing } from 'ui/theme'
 
 import { StepProps } from '../Step/Step'
-import { VerticalStepper } from '../VerticalStepper/VerticalStepper'
+import { VerticalStepper, VerticalStepperProps } from '../VerticalStepper/VerticalStepper'
 
-type InternalStepProps = StepProps & FirstOrLastProps & StepVariantProps
+type InternalStepProps = StepProps & VerticalStepperProps
 
-export function InternalStep({ variant, children, isFirst, isLast }: InternalStepProps) {
+export function InternalStep({
+  variant,
+  children,
+  isFirst,
+  isLast,
+  iconComponent,
+}: InternalStepProps) {
   return (
     <Wrapper>
       <View>
-        <VerticalStepper variant={variant} isFirst={isFirst} isLast={isLast} />
+        <VerticalStepper
+          variant={variant}
+          isFirst={isFirst}
+          isLast={isLast}
+          iconComponent={iconComponent}
+        />
       </View>
       <Content>{children}</Content>
     </Wrapper>
