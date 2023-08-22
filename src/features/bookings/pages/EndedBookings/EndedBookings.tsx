@@ -8,7 +8,11 @@ import { Booking } from 'features/bookings/types'
 import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
 import { useGoBack } from 'features/navigation/useGoBack'
 import { plural } from 'libs/plural'
-import { PageHeaderSecondary } from 'ui/components/headers/PageHeaderSecondary'
+import { BlurHeader } from 'ui/components/headers/BlurHeader'
+import {
+  PageHeaderWithoutPlaceholder,
+  useGetHeaderHeight,
+} from 'ui/components/headers/PageHeaderWithoutPlaceholder'
 import { Separator } from 'ui/components/Separator'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
@@ -19,6 +23,7 @@ const keyExtractor: (item: Booking) => string = (item) => item.id.toString()
 export const EndedBookings: React.FC = () => {
   const { data: bookings } = useBookings()
   const { goBack } = useGoBack(...getTabNavConfig('Bookings'))
+  const headerHeight = useGetHeaderHeight()
 
   const endedBookingsCount = bookings?.ended_bookings?.length ?? 0
   const endedBookingsLabel = plural(endedBookingsCount, {
@@ -29,6 +34,7 @@ export const EndedBookings: React.FC = () => {
   const ListHeaderComponent = useCallback(
     () => (
       <React.Fragment>
+        <Placeholder height={headerHeight} />
         <Spacer.Column numberOfSpaces={6} />
         <EndedBookingsCount>{endedBookingsLabel}</EndedBookingsCount>
       </React.Fragment>
@@ -39,7 +45,7 @@ export const EndedBookings: React.FC = () => {
 
   return (
     <React.Fragment>
-      <PageHeaderSecondary onGoBack={goBack} title="Réservations terminées" />
+      <PageHeaderWithoutPlaceholder title="Réservations terminées" onGoBack={goBack} />
       <FlatList
         listAs="ul"
         itemAs="li"
@@ -51,9 +57,14 @@ export const EndedBookings: React.FC = () => {
         ListHeaderComponent={ListHeaderComponent}
         ListFooterComponent={ListFooterComponent}
       />
+      <BlurHeader height={headerHeight} />
     </React.Fragment>
   )
 }
+
+const Placeholder = styled.View<{ height: number }>(({ height }) => ({
+  height,
+}))
 
 const EndedBookingsCount = styled(Typo.Body).attrs(getHeadingAttrs(2))(({ theme }) => ({
   color: theme.colors.greyDark,
