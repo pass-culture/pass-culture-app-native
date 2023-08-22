@@ -38,6 +38,7 @@ export const Offer: FunctionComponent = () => {
   const trackEventHasSeenOfferOnce = useFunctionOnce(trackEventHasSeenOffer)
   const offerId = route.params?.id
   const searchId = route.params?.searchId
+  const from = route.params?.from
 
   const { data: offerResponse } = useOffer({ offerId })
 
@@ -137,7 +138,7 @@ export const Offer: FunctionComponent = () => {
     isEndedUsedBooking,
     bottomBannerText,
     isDisabled,
-  } = useCtaWordingAndAction({ offerId }) ?? {}
+  } = useCtaWordingAndAction({ offerId, from, searchId }) ?? {}
 
   const { OfferModal: CTAOfferModal, showModal: showOfferModal } = useOfferModal({
     modalToDisplay,

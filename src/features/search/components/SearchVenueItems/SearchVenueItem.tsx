@@ -1,9 +1,11 @@
+import { useRoute } from '@react-navigation/native'
 import React, { memo } from 'react'
 import { View } from 'react-native'
 import { useTheme } from 'styled-components'
 import styled from 'styled-components/native'
 
 import { VenueTypeLocationIcon } from 'features/home/components/modules/venues/VenueTypeLocationIcon'
+import { UseRouteType } from 'features/navigation/RootNavigator/types'
 import { DistanceTag } from 'features/offer/components/DistanceTag/DistanceTag'
 import { SearchVenueItemDetails } from 'features/search/components/SearchVenueItemsDetails/SearchVenueItemDetails'
 import { AlgoliaVenue } from 'libs/algolia'
@@ -38,6 +40,7 @@ const UnmemoizedSearchVenueItem = ({ venue, height, width }: SearchVenueItemProp
   const { colors } = useTheme()
   const { lat, lng } = venue._geoloc
   const distance = useDistance({ lat, lng })
+  const { params } = useRoute<UseRouteType<'Search'>>()
 
   const accessibilityLabel = tileAccessibilityLabel(TileContentType.VENUE, { ...venue, distance })
 
@@ -54,7 +57,10 @@ const UnmemoizedSearchVenueItem = ({ venue, height, width }: SearchVenueItemProp
       <SearchVenueTouchableLink
         height={height + MAX_VENUE_CAPTION_HEIGHT}
         width={width}
-        navigateTo={{ screen: 'Venue', params: { id: Number(venue.objectID) } }}
+        navigateTo={{
+          screen: 'Venue',
+          params: { id: Number(venue.objectID), from: 'venue', searchId: params?.searchId },
+        }}
         onBeforeNavigate={handlePressVenue}
         onFocus={onFocus}
         onBlur={onBlur}

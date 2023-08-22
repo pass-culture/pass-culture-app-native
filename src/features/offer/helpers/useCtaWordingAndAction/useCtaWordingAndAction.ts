@@ -20,6 +20,7 @@ import {
 } from 'features/bookings/api'
 import { useBookOfferMutation } from 'features/bookOffer/api/useBookOfferMutation'
 import { openUrl } from 'features/navigation/helpers'
+import { Referrals } from 'features/navigation/RootNavigator/types'
 import { OfferModal } from 'features/offer/enums'
 import { getBookingOfferId } from 'features/offer/helpers/getBookingOfferId/getBookingOfferId'
 import { getIsFreeDigitalOffer } from 'features/offer/helpers/getIsFreeDigitalOffer/getIsFreeDigitalOffer'
@@ -54,6 +55,8 @@ interface Props {
   bookOffer: UseMutateFunction<BookOfferResponse, Error | ApiError, BookOfferRequest>
   isBookingLoading: boolean
   booking: BookingReponse | null | undefined
+  from?: Referrals
+  searchId?: string
 }
 interface ICTAWordingAndAction {
   modalToDisplay?: OfferModal
@@ -80,6 +83,8 @@ export const getCtaWordingAndAction = ({
   bookOffer,
   isBookingLoading,
   booking,
+  from,
+  searchId,
 }: Props): ICTAWordingAndAction | undefined => {
   const { externalTicketOfficeUrl, subcategoryId } = offer
 
@@ -209,7 +214,7 @@ export const getCtaWordingAndAction = ({
       wording: 'Réserver l’offre',
       isDisabled: false,
       onPress: () => {
-        analytics.logClickBookOffer(offer.id)
+        analytics.logClickBookOffer({ offerId: offer.id, from, searchId })
       },
     }
   }
@@ -231,8 +236,10 @@ export const getCtaWordingAndAction = ({
 
 export const useCtaWordingAndAction = (props: {
   offerId: number
+  from?: Referrals
+  searchId?: string
 }): ICTAWordingAndAction | undefined => {
-  const { offerId } = props
+  const { offerId, from, searchId } = props
   const { isLoggedIn, user } = useAuthContext()
   const { data: offer } = useOffer({ offerId })
   const hasEnoughCredit = useHasEnoughCredit(offerId)
@@ -291,5 +298,7 @@ export const useCtaWordingAndAction = (props: {
     bookOffer,
     isBookingLoading,
     booking,
+    from,
+    searchId,
   })
 }
