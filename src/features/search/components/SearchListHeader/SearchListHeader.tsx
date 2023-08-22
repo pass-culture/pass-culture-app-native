@@ -63,12 +63,16 @@ export const SearchListHeader: React.FC<SearchListHeaderProps> = ({ nbHits, user
     [params?.locationFilter]
   )
 
-  const logVenuePlaylistDisplayedOnSearchResults = useFunctionOnce(() =>
+  const logVenuePlaylistDisplayedOnSearchResultsOnce = useFunctionOnce(() =>
     analytics.logVenuePlaylistDisplayedOnSearchResults({
       searchId: params?.searchId,
       isGeolocated,
       searchNbResults: venues.hits.length,
     })
+  )
+
+  const logAllTilesSeenOnce = useFunctionOnce(() =>
+    analytics.logAllTilesSeen({ searchId: params?.searchId })
   )
 
   const shouldDisplayAvailableUserDataMessage = userData?.length > 0
@@ -86,10 +90,10 @@ export const SearchListHeader: React.FC<SearchListHeaderProps> = ({ nbHits, user
 
   useEffect(() => {
     if (shouldDisplayVenuesPlaylist) {
-      logVenuePlaylistDisplayedOnSearchResults()
+      logVenuePlaylistDisplayedOnSearchResultsOnce()
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [logVenuePlaylistDisplayedOnSearchResults, shouldDisplayVenuesPlaylist])
+  }, [logVenuePlaylistDisplayedOnSearchResultsOnce, shouldDisplayVenuesPlaylist])
 
   const shouldDisplayGeolocationButton =
     position === null &&
@@ -136,6 +140,7 @@ export const SearchListHeader: React.FC<SearchListHeaderProps> = ({ nbHits, user
               renderFooter={undefined}
               keyExtractor={keyExtractor}
               testID="search-venue-list"
+              onEndReached={logAllTilesSeenOnce}
             />
           </View>
           <Spacer.Column numberOfSpaces={3} />
