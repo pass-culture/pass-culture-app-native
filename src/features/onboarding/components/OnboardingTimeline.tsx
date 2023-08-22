@@ -1,33 +1,48 @@
-import React, { FunctionComponent, ReactNode } from 'react'
+import React, { FunctionComponent } from 'react'
 import styled from 'styled-components/native'
 
+import { CreditBlock } from 'features/onboarding/components/CreditBlock'
+import { CreditBlockTitle } from 'features/onboarding/helpers/CreditBlockTitle'
+import { getCreditStatusFromAge } from 'features/onboarding/helpers/getCreditStatusFromAge'
 import { InternalStep } from 'features/profile/components/InternalStep/InternalStep'
 import { StepVariant } from 'features/profile/components/VerticalStepper/types'
 import { VerticalStepperProps } from 'features/profile/components/VerticalStepper/VerticalStepper'
+import { analytics } from 'libs/analytics'
 import LottieView from 'libs/lottie'
 import OnboardingUnlock from 'ui/animations/onboarding_unlock.json'
 import { Warning } from 'ui/svg/icons/BicolorWarning'
 import { Lock } from 'ui/svg/icons/Lock'
-import { getSpacing } from 'ui/theme'
+import { getSpacing, Spacer, Typo } from 'ui/theme'
 
 interface Props {
   age: 15 | 16 | 17 | 18
-  children: ReactNode
 }
 
-export const OnboardingTimeline: FunctionComponent<Props> = ({ age, children }) => {
+export const OnboardingTimeline: FunctionComponent<Props> = ({ age }) => {
   const stepperProps = stepperPropsMapping.get(age)
   return (
     <StyledView>
-      {stepperProps?.map((props, index) => (
-        <InternalStep
-          key={index}
-          {...props}
-          isFirst={index === 0}
-          isLast={index === stepperProps.length - 1}>
-          {children}
-        </InternalStep>
-      ))}
+      {stepperProps?.map((props, index) => {
+        return (
+          <InternalStep
+            key={index}
+            {...props}
+            isFirst={index === 0}
+            isLast={index === stepperProps.length - 1}>
+            {props.creditStep === 'separator' ? (
+              <StyledBody>Remise à 0 du crédit</StyledBody>
+            ) : (
+              <CreditBlock
+                creditStatus={getCreditStatusFromAge(age, 15 + index)}
+                title={<CreditBlockTitle age={props.creditStep} userAge={age} deposit={'200€'} />}
+                age={props.creditStep}
+                onPress={() => analytics.logTrySelectDeposit(age)}
+              />
+            )}
+            <Spacer.Column numberOfSpaces={2} />
+          </InternalStep>
+        )
+      })}
     </StyledView>
   )
 }
@@ -35,7 +50,6 @@ export const OnboardingTimeline: FunctionComponent<Props> = ({ age, children }) 
 const StyledView = styled.View({
   flexGrow: 1,
   flexDirection: 'column',
-  height: 500,
 })
 
 const GreyLock = styled(Lock).attrs(({ theme }) => ({
@@ -62,48 +76,74 @@ const StyledLottieView = styled(LottieView)(({ theme }) => ({
   height: theme.icons.sizes.standard,
 }))
 
+const StyledBody = styled(Typo.Body)({
+  marginVertical: getSpacing(2),
+  marginLeft: getSpacing(1.5),
+  justifyContent: 'center',
+})
+
 const AnimatedBicolorUnlock = () => (
   <StyledLottieView source={OnboardingUnlock} autoPlay loop={false} />
 )
 
-const stepperPropsMapping = new Map<Props['age'], VerticalStepperProps[]>([
+type creditStep = 15 | 16 | 17 | 18 | 'separator'
+
+type CreditComponentProps = VerticalStepperProps & { creditStep: creditStep }
+
+const stepperPropsMapping = new Map<Props['age'], CreditComponentProps[]>([
   [
     15,
     [
-      { variant: StepVariant.in_progress, iconComponent: <AnimatedBicolorUnlock /> },
-      { variant: StepVariant.future, iconComponent: <GreyLock /> },
-      { variant: StepVariant.future, iconComponent: <GreyLock /> },
-      { variant: StepVariant.future, iconComponent: <GreyWarning /> },
-      { variant: StepVariant.future, iconComponent: <GreyLock /> },
+      {
+        creditStep: 15,
+        variant: StepVariant.in_progress,
+        iconComponent: <AnimatedBicolorUnlock />,
+      },
+      { creditStep: 16, variant: StepVariant.future, iconComponent: <GreyLock /> },
+      { creditStep: 17, variant: StepVariant.future, iconComponent: <GreyLock /> },
+      { creditStep: 'separator', variant: StepVariant.future, iconComponent: <GreyWarning /> },
+      { creditStep: 18, variant: StepVariant.future, iconComponent: <GreyLock /> },
     ],
   ],
   [
     16,
     [
-      { variant: StepVariant.complete, iconComponent: <MediumGreyLock /> },
-      { variant: StepVariant.in_progress, iconComponent: <AnimatedBicolorUnlock /> },
-      { variant: StepVariant.future, iconComponent: <GreyLock /> },
-      { variant: StepVariant.future, iconComponent: <GreyWarning /> },
-      { variant: StepVariant.future, iconComponent: <GreyLock /> },
+      { creditStep: 15, variant: StepVariant.complete, iconComponent: <MediumGreyLock /> },
+      {
+        creditStep: 16,
+        variant: StepVariant.in_progress,
+        iconComponent: <AnimatedBicolorUnlock />,
+      },
+      { creditStep: 17, variant: StepVariant.future, iconComponent: <GreyLock /> },
+      { creditStep: 'separator', variant: StepVariant.future, iconComponent: <GreyWarning /> },
+      { creditStep: 18, variant: StepVariant.future, iconComponent: <GreyLock /> },
     ],
   ],
   [
     17,
     [
-      { variant: StepVariant.complete, iconComponent: <MediumGreyLock /> },
-      { variant: StepVariant.complete, iconComponent: <MediumGreyLock /> },
-      { variant: StepVariant.in_progress, iconComponent: <AnimatedBicolorUnlock /> },
-      { variant: StepVariant.future, iconComponent: <GreyWarning /> },
-      { variant: StepVariant.future, iconComponent: <GreyLock /> },
+      { creditStep: 15, variant: StepVariant.complete, iconComponent: <MediumGreyLock /> },
+      { creditStep: 16, variant: StepVariant.complete, iconComponent: <MediumGreyLock /> },
+      {
+        creditStep: 17,
+        variant: StepVariant.in_progress,
+        iconComponent: <AnimatedBicolorUnlock />,
+      },
+      { creditStep: 'separator', variant: StepVariant.future, iconComponent: <GreyWarning /> },
+      { creditStep: 18, variant: StepVariant.future, iconComponent: <GreyLock /> },
     ],
   ],
   [
     18,
     [
-      { variant: StepVariant.complete, iconComponent: <MediumGreyLock /> },
-      { variant: StepVariant.complete, iconComponent: <MediumGreyLock /> },
-      { variant: StepVariant.complete, iconComponent: <MediumGreyLock /> },
-      { variant: StepVariant.in_progress, iconComponent: <AnimatedBicolorUnlock /> },
+      { creditStep: 15, variant: StepVariant.complete, iconComponent: <MediumGreyLock /> },
+      { creditStep: 16, variant: StepVariant.complete, iconComponent: <MediumGreyLock /> },
+      { creditStep: 17, variant: StepVariant.complete, iconComponent: <MediumGreyLock /> },
+      {
+        creditStep: 18,
+        variant: StepVariant.in_progress,
+        iconComponent: <AnimatedBicolorUnlock />,
+      },
     ],
   ],
 ])
