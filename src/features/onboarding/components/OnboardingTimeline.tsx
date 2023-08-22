@@ -9,6 +9,7 @@ import { StepVariant } from 'features/profile/components/VerticalStepper/types'
 import { VerticalStepperProps } from 'features/profile/components/VerticalStepper/VerticalStepper'
 import { analytics } from 'libs/analytics'
 import LottieView from 'libs/lottie'
+import { useDepositAmountsByAge } from 'shared/user/useDepositAmountsByAge'
 import OnboardingUnlock from 'ui/animations/onboarding_unlock.json'
 import { Warning } from 'ui/svg/icons/BicolorWarning'
 import { Lock } from 'ui/svg/icons/Lock'
@@ -19,6 +20,20 @@ interface Props {
 }
 
 export const OnboardingTimeline: FunctionComponent<Props> = ({ age }) => {
+  const {
+    fifteenYearsOldDeposit,
+    sixteenYearsOldDeposit,
+    seventeenYearsOldDeposit,
+    eighteenYearsOldDeposit,
+  } = useDepositAmountsByAge()
+
+  const depositsByAge = new Map<Props['age'], string>([
+    [15, fifteenYearsOldDeposit],
+    [16, sixteenYearsOldDeposit],
+    [17, seventeenYearsOldDeposit],
+    [18, eighteenYearsOldDeposit],
+  ])
+
   const stepperProps = stepperPropsMapping.get(age)
   return (
     <StyledView>
@@ -33,8 +48,14 @@ export const OnboardingTimeline: FunctionComponent<Props> = ({ age }) => {
               <StyledBody>Remise à 0 du crédit</StyledBody>
             ) : (
               <CreditBlock
-                creditStatus={getCreditStatusFromAge(age, 15 + index)}
-                title={<CreditBlockTitle age={props.creditStep} userAge={age} deposit={'200€'} />}
+                creditStatus={getCreditStatusFromAge(age, props.creditStep)}
+                title={
+                  <CreditBlockTitle
+                    age={props.creditStep}
+                    userAge={age}
+                    deposit={depositsByAge.get(props.creditStep) ?? ''}
+                  />
+                }
                 age={props.creditStep}
                 onPress={() => analytics.logTrySelectDeposit(age)}
               />
