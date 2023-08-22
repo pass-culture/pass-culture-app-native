@@ -49,6 +49,10 @@ export const getAnimationState = (
         : headerTransition.interpolate(headerBackgroundInterpolation()),
     borderBottomWidth: headerTransition.interpolate(strokeBorderInterpolation()),
     backdropFilter: headerTransition.interpolate(blurHeaderWebInterpolation()),
+    // This is necessary to make the blur work on Safari (usually added by styled-components)
+    ...(Platform.OS === 'web'
+      ? { WebkitBackdropFilter: headerTransition.interpolate(blurHeaderWebInterpolation()) }
+      : {}),
   },
   blurContainerNative: {
     opacity: headerTransition,
