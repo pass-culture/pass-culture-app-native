@@ -6,7 +6,7 @@ import { sanitizeNavigationState } from 'features/navigation/sanitizeNavigationS
 import { analytics } from 'libs/analytics'
 import { storage } from 'libs/storage'
 
-export function onNavigationStateChange(state: NavigationState): void {
+export function onNavigationStateChange(state?: NavigationState): void {
   if (!state || !state.routes) {
     return
   }

@@ -69,7 +69,6 @@ export const AppNavigationContainer = () => {
     <NavigationContainer
       linking={linking}
       initialState={initialNavigationState}
-      // @ts-expect-error the typing of onNavigationStateChange() is good enough
       onStateChange={onNavigationStateChange}
       fallback={<LoadingPage />}
       ref={navigationRef}
