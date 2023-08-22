@@ -54,7 +54,7 @@ const UnmemoizedSearchVenueItem = ({ venue, height, width }: SearchVenueItemProp
       <SearchVenueTouchableLink
         height={height + MAX_VENUE_CAPTION_HEIGHT}
         width={width}
-        navigateTo={{ screen: 'Venue', params: { id: venue.objectID } }}
+        navigateTo={{ screen: 'Venue', params: { id: Number(venue.objectID) } }}
         onBeforeNavigate={handlePressVenue}
         onFocus={onFocus}
         onBlur={onBlur}

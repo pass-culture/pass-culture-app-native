@@ -70,7 +70,7 @@ describe('<SearchVenueItem />', () => {
     fireEvent.press(screen.getByTestId(/Lieu/))
 
     await waitFor(() => {
-      expect(navigate).toHaveBeenCalledWith('Venue', { id: mockAlgoliaVenue.objectID })
+      expect(navigate).toHaveBeenCalledWith('Venue', { id: Number(mockAlgoliaVenue.objectID) })
     })
   })
 
