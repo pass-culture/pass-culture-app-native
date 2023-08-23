@@ -28,7 +28,7 @@ To be able to install and run the iOS and Android mobile apps, you first need to
 
 - Install `node`
 - Install `yarn`
-- Configure Sentry through [this tutorial](https://github.com/pass-culture/pass-culture-app-native/blob/master/doc/standards/sentry.md#-configure-sentry-cli)
+- Configure Sentry through [this tutorial](https://github.com/pass-culture/pass-culture-app-native/blob/master/doc/installation/sentry.md#-configure-sentry-cli)
 - Run `yarn install` to install all the dependencies
 
 #### 📱 Mobile
@@ -60,11 +60,11 @@ We use [Flipper](https://fbflipper.com/) to debug the network logs, `react-query
 
 In the `doc/` folder you will find the `dev standards` the team members follow:
 
-- [code structure](./doc/standards/codeStructure.md).
-- [error and crash management](./doc/standards/errorManagement.md).
-- [variable naming](./doc/standards/naming.md).
-- [testing strategy](./doc/standards/testStrategy.md).
-- [PR title format](./doc/standards/pr-title.md).
+- [code structure](./doc/development/codeStructure.md).
+- [error and crash management](./doc/development/errorManagement.md).
+- [variable naming](./doc/development/naming.md).
+- [testing strategy](./doc/development/tests/unit-test/).
+- [PR title format](./doc/pull-request.md).
 
 <details>
   <summary>To add a dev standard</summary>
