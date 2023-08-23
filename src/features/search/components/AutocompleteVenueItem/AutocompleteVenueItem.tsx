@@ -6,6 +6,7 @@ import styled from 'styled-components/native'
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { Highlight } from 'features/search/components/Highlight/Highlight'
 import { AlgoliaVenue } from 'libs/algolia'
+import { analytics } from 'libs/analytics'
 import { LocationBuildingFilled } from 'ui/svg/icons/LocationBuildingFilled'
 import { getSpacing, Typo } from 'ui/theme'
 
@@ -16,7 +17,8 @@ type AutocompleteVenueItemProps = {
 export function AutocompleteVenueItem({ hit }: AutocompleteVenueItemProps) {
   const { navigate } = useNavigation<UseNavigationType>()
 
-  const onPress = () => {
+  async function onPress() {
+    await analytics.logConsultVenue({ venueId: Number(hit.objectID), from: 'searchAutoComplete' })
     navigate('Venue', { id: Number(hit.objectID) })
   }
 

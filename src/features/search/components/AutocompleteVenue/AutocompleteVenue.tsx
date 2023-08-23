@@ -11,7 +11,7 @@ import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 type AutocompleteVenueProps = UseInfiniteHitsProps
 
-export function AutocompleteVenue({ ...props }: AutocompleteVenueProps) {
+export function AutocompleteVenue(props: AutocompleteVenueProps) {
   const { hits } = useInfiniteHits(props)
 
   return hits.length > 0 ? (

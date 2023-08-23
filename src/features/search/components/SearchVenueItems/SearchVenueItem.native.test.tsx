@@ -1,7 +1,9 @@
 import React from 'react'
+import { v4 as uuidv4 } from 'uuid'
 
-import { navigate } from '__mocks__/@react-navigation/native'
+import { navigate, useRoute } from '__mocks__/@react-navigation/native'
 import { AlgoliaVenue } from 'libs/algolia'
+import { analytics } from 'libs/analytics'
 import { fireEvent, render, screen, waitFor } from 'tests/utils'
 
 import { SearchVenueItem } from './SearchVenueItem'
@@ -38,6 +40,7 @@ const mockAlgoliaVenue: AlgoliaVenue = {
 
 const ITEM_HEIGHT = 96
 const ITEM_WIDTH = 144
+const searchId = uuidv4()
 
 describe('<SearchVenueItem />', () => {
   it('should render venue item correctly', () => {
@@ -45,6 +48,22 @@ describe('<SearchVenueItem />', () => {
 
     expect(screen.getByText(mockAlgoliaVenue.name)).toBeTruthy()
     expect(screen.getByText(mockAlgoliaVenue.city)).toBeTruthy()
+  })
+
+  it('should log to analytics', async () => {
+    useRoute.mockReturnValueOnce({ params: { searchId } })
+
+    render(<SearchVenueItem venue={mockAlgoliaVenue} width={ITEM_WIDTH} height={ITEM_HEIGHT} />)
+
+    fireEvent.press(screen.getByTestId(/Lieu/))
+
+    await waitFor(() => {
+      expect(analytics.logConsultVenue).toHaveBeenCalledWith({
+        venueId: Number(mockAlgoliaVenue.objectID),
+        searchId,
+        from: 'searchVenuePlaylist',
+      })
+    })
   })
 
   it('should render a venue type tile icon when banner_url is not provided', () => {

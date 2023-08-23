@@ -1,12 +1,15 @@
+import { useRoute } from '@react-navigation/native'
 import React, { memo } from 'react'
 import { View } from 'react-native'
 import { useTheme } from 'styled-components'
 import styled from 'styled-components/native'
 
 import { VenueTypeLocationIcon } from 'features/home/components/modules/venues/VenueTypeLocationIcon'
+import { UseRouteType } from 'features/navigation/RootNavigator/types'
 import { DistanceTag } from 'features/offer/components/DistanceTag/DistanceTag'
 import { SearchVenueItemDetails } from 'features/search/components/SearchVenueItemsDetails/SearchVenueItemDetails'
 import { AlgoliaVenue } from 'libs/algolia'
+import { analytics } from 'libs/analytics'
 import { useDistance } from 'libs/geolocation/hooks/useDistance'
 import { useHandleFocus } from 'libs/hooks/useHandleFocus'
 import { mapVenueTypeToIcon, VenueTypeCode } from 'libs/parsers'
@@ -41,12 +44,19 @@ const UnmemoizedSearchVenueItem = ({ venue, height, width, searchId }: SearchVen
   const distance = useDistance({ lat, lng })
   // const { params } = useRoute<UseRouteType<'Search'>>()
 
+  const { params } = useRoute<UseRouteType<'Search'>>()
+
   const accessibilityLabel = tileAccessibilityLabel(TileContentType.VENUE, { ...venue, distance })
 
   const hasVenueImage = !!venue.banner_url
   const imageUri = venue.banner_url ?? ''
 
-  function handlePressVenue() {
+  async function handlePressVenue() {
+    await analytics.logConsultVenue({
+      venueId: Number(venue.objectID),
+      searchId: params?.searchId,
+      from: 'searchVenuePlaylist',
+    })
     // We pre-populate the query-cache with the data from the search result for a smooth transition
     queryClient.setQueryData([QueryKeys.VENUE, venue.objectID], mergeVenueData(venue))
   }

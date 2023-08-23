@@ -21,6 +21,8 @@ export type Referrals =
   | 'venue'
   | 'video'
   | 'videoModal'
+  | 'searchVenuePlaylist'
+  | 'searchAutoComplete'
 
 type BaseThematicHome = {
   homeId: string
@@ -227,6 +229,7 @@ export type RootStackParamList = {
   Venue: {
     id: number
     from?: Referrals
+    searchId?: string
   }
   DeeplinksGenerator: undefined
   UTMParameters: undefined
