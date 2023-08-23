@@ -1,5 +1,5 @@
 import { useRoute } from '@react-navigation/native'
-import React, { FunctionComponent, useEffect } from 'react'
+import React, { FunctionComponent, useEffect, useRef } from 'react'
 import styled from 'styled-components/native'
 
 import { useHomepageData } from 'features/home/api/useHomepageData'
@@ -11,6 +11,28 @@ import { useGeolocation } from 'libs/geolocation'
 import { eventMonitoring } from 'libs/monitoring'
 import { StatusBarBlurredBackground } from 'ui/components/statusBar/statusBarBlurredBackground'
 
+export const usePerformanceCalculation = (name: string) => {
+  const transaction = useRef<any>(null)
+  if (transaction.current === null) {
+    transaction.current = eventMonitoring.startTransaction({ name })
+  }
+
+  const finish = () => {
+    if (transaction.current) {
+      transaction.current.finish()
+      transaction.current = null
+    }
+  }
+
+  useEffect(() => {
+    return () => {
+      finish()
+    }
+  }, [])
+
+  return { finish }
+}
+
 const Header = () => (
   <ListHeaderContainer>
     <HomeHeader />
@@ -18,6 +40,7 @@ const Header = () => (
 )
 
 const ToHome: FunctionComponent = () => {
+  usePerformanceCalculation('HomeTestPierreCedric2')
   const { params } = useRoute<UseRouteType<'Home'>>()
   const { modules, id } = useHomepageData() || {}
   const { setCustomPosition } = useLocation()

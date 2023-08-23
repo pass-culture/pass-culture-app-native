@@ -15,6 +15,7 @@ import { useShowSkeleton } from 'features/home/api/useShowSkeleton'
 import { HomeBodyPlaceholder } from 'features/home/components/HomeBodyPlaceholder'
 import { HomeModule } from 'features/home/components/modules/HomeModule'
 import { useOnScroll } from 'features/home/pages/helpers/useOnScroll'
+import { usePerformanceCalculation } from 'features/home/pages/Home'
 import { HomepageModule, isOffersModule, isVenuesModule } from 'features/home/types'
 import { analytics, isCloseToBottom } from 'libs/analytics'
 import useFunctionOnce from 'libs/hooks/useFunctionOnce'
@@ -94,6 +95,8 @@ const OnlineHome: FunctionComponent<GenericHomeProps> = ({
 
   const modulesToDisplay = modules.slice(0, maxIndex)
 
+  const { finish } = usePerformanceCalculation('HomeTestPierreCedric2')
+
   modulesToDisplay.forEach((module) => {
     if (isOffersModule(module)) {
       module.data = offersModulesData.find((mod) => mod.moduleId === module.id)
@@ -137,6 +140,7 @@ const OnlineHome: FunctionComponent<GenericHomeProps> = ({
   const onContentSizeChange = () => setIsLoading(false)
 
   useEffect(() => {
+    finish()
     return () => clearInterval(modulesIntervalId.current)
   }, [])
 
