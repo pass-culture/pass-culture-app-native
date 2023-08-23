@@ -15,13 +15,13 @@ import { useShowSkeleton } from 'features/home/api/useShowSkeleton'
 import { HomeBodyPlaceholder } from 'features/home/components/HomeBodyPlaceholder'
 import { HomeModule } from 'features/home/components/modules/HomeModule'
 import { useOnScroll } from 'features/home/pages/helpers/useOnScroll'
-import { usePerformanceCalculation } from 'features/home/pages/Home'
 import { HomepageModule, isOffersModule, isVenuesModule } from 'features/home/types'
 import { analytics, isCloseToBottom } from 'libs/analytics'
 import useFunctionOnce from 'libs/hooks/useFunctionOnce'
 import { useNetInfoContext } from 'libs/network/NetInfoWrapper'
 import { OfflinePage } from 'libs/network/OfflinePage'
 import { BatchEvent, BatchUser } from 'libs/react-native-batch'
+import { usePerformanceCalculation } from 'shared/usePerformanceCalculation/usePerformanceCalculation'
 import { ScrollToTopButton } from 'ui/components/ScrollToTopButton'
 import { Spinner } from 'ui/components/Spinner'
 import { getSpacing, Spacer } from 'ui/theme'
@@ -95,7 +95,7 @@ const OnlineHome: FunctionComponent<GenericHomeProps> = ({
 
   const modulesToDisplay = modules.slice(0, maxIndex)
 
-  const { finish } = usePerformanceCalculation('HomeTestPierreCedric2')
+  const { finish } = usePerformanceCalculation('HomeTestPierreCedric4')
 
   modulesToDisplay.forEach((module) => {
     if (isOffersModule(module)) {
