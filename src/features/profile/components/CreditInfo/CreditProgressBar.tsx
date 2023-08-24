@@ -28,8 +28,12 @@ const CreditProgressBarComponent: React.FC<CreditProgressBarProps> = ({
   return (
     <Container>
       <ProgressBarContainer height={height}>
-        <GradientShadow colors={shadowColors} />
-        <SecondGradientShadow />
+        {height === 'normal' && (
+          <React.Fragment>
+            <GradientShadow colors={shadowColors} />
+            <SecondGradientShadow />
+          </React.Fragment>
+        )}
         <LinearGradientBar progress={progress} colors={colors} testID="progress-bar" />
       </ProgressBarContainer>
     </Container>
@@ -111,6 +115,6 @@ const ProgressBarContainer = styled.View<Pick<CreditProgressBarProps, 'height'>>
     height: getSpacing(height === 'normal' ? 4.5 : 2),
     width: '100%',
     zIndex: theme.zIndex.progressbar,
-    backgroundColor: theme.colors.white,
+    backgroundColor: height === 'normal' ? theme.colors.white : theme.colors.greyMedium,
   })
 )
