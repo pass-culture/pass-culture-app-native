@@ -147,8 +147,8 @@ export const logEventAnalytics = {
       firebase: AnalyticsEvent.CHOOSE_UBBLE_METHOD,
       amplitude: AmplitudeEvent.CHOOSE_METHOD_UBBLE,
     }),
-  logClickBookOffer: (offerId: number) =>
-    analytics.logEvent({ firebase: AnalyticsEvent.CLICK_BOOK_OFFER }, { offerId }),
+  logClickBookOffer: (params: { offerId: number; from?: Referrals; searchId?: string }) =>
+    analytics.logEvent({ firebase: AnalyticsEvent.CLICK_BOOK_OFFER }, params),
   logClickForceUpdate: (appVersionId: number) =>
     analytics.logEvent({ firebase: AnalyticsEvent.CLICK_FORCE_UPDATE }, { appVersionId }),
   logClickSeeMore: (params: { moduleName: string; moduleId: string }) =>

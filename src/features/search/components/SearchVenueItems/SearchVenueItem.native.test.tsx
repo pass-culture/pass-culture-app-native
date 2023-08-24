@@ -65,12 +65,23 @@ describe('<SearchVenueItem />', () => {
   })
 
   it('should navigate to the venue when pressing a search venue item', async () => {
-    render(<SearchVenueItem venue={mockAlgoliaVenue} width={ITEM_WIDTH} height={ITEM_HEIGHT} />)
+    render(
+      <SearchVenueItem
+        venue={mockAlgoliaVenue}
+        width={ITEM_WIDTH}
+        height={ITEM_HEIGHT}
+        searchId="testUuidV4"
+      />
+    )
 
     fireEvent.press(screen.getByTestId(/Lieu/))
 
     await waitFor(() => {
-      expect(navigate).toHaveBeenCalledWith('Venue', { id: mockAlgoliaVenue.objectID })
+      expect(navigate).toHaveBeenCalledWith('Venue', {
+        id: Number(mockAlgoliaVenue.objectID),
+        from: 'venue',
+        searchId: 'testUuidV4',
+      })
     })
   })
 

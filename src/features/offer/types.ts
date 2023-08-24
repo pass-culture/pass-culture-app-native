@@ -25,6 +25,7 @@ export interface OfferTileProps {
   fromMultivenueOfferId?: number
   shouldUseAlgoliaRecommend?: boolean
   playlistType?: PlaylistType
+  searchId?: string
 }
 
 export interface SimilarOffersResponse {
