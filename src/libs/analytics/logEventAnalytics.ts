@@ -53,6 +53,7 @@ export type OfferAnalyticsData = {
 
 type OfferIdOrVenueId = { offerId: number; venueId?: never } | { venueId: number; offerId?: never }
 
+/* eslint sort-keys-fix/sort-keys-fix: "error" */
 export const logEventAnalytics = {
   logAcceptNotifications: () =>
     analytics.logEvent({ firebase: AnalyticsEvent.ACCEPT_NOTIFICATIONS }),
@@ -78,10 +79,10 @@ export const logEventAnalytics = {
     analytics.logEvent(
       { firebase: AnalyticsEvent.BOOKING_CONFIRMATION },
       {
-        offerId,
         bookingId,
-        fromOfferId,
         fromMultivenueOfferId,
+        fromOfferId,
+        offerId,
       }
     ),
   logBookingDetailsScrolledToBottom: (offerId: number) =>
@@ -92,7 +93,7 @@ export const logEventAnalytics = {
       }
     ),
   logBookingError: (offerId: number, code: string) =>
-    analytics.logEvent({ firebase: AnalyticsEvent.BOOKING_ERROR }, { offerId, code }),
+    analytics.logEvent({ firebase: AnalyticsEvent.BOOKING_ERROR }, { code, offerId }),
   logBookingImpossibleiOS: (offerId: number) =>
     analytics.logEvent({ firebase: AnalyticsEvent.BOOKING_IMPOSSIBLE_IOS }, { offerId }),
   logBookingOfferConfirmDates: (offerId: number) =>
@@ -114,8 +115,8 @@ export const logEventAnalytics = {
     analytics.logEvent(
       { firebase: AnalyticsEvent.CANCEL_BOOKING_FUNNEL },
       {
-        step: STEP_LABEL[step],
         offerId,
+        step: STEP_LABEL[step],
       }
     ),
   logCancelSignup: (pageName: string) =>
@@ -130,8 +131,8 @@ export const logEventAnalytics = {
     analytics.logEvent(
       { firebase: AnalyticsEvent.CHANGE_SEARCH_LOCATION },
       {
-        type: params.type,
         searchId,
+        type: params.type,
         ...(params.type === 'venue' && { venueId: params.venueId }),
       }
     ),
@@ -139,13 +140,13 @@ export const logEventAnalytics = {
     analytics.logEvent({ amplitude: AmplitudeEvent.CHECK_EDUCONNECT_DATA_CLICKED }),
   logChooseEduConnectMethod: () =>
     analytics.logEvent({
-      firebase: AnalyticsEvent.CHOOSE_EDUCONNECT_METHOD,
       amplitude: AmplitudeEvent.CHOOSE_METHOD_EDUCONNECT,
+      firebase: AnalyticsEvent.CHOOSE_EDUCONNECT_METHOD,
     }),
   logChooseUbbleMethod: () =>
     analytics.logEvent({
-      firebase: AnalyticsEvent.CHOOSE_UBBLE_METHOD,
       amplitude: AmplitudeEvent.CHOOSE_METHOD_UBBLE,
+      firebase: AnalyticsEvent.CHOOSE_UBBLE_METHOD,
     }),
   logClickBookOffer: (params: { offerId: number; from?: Referrals; searchId?: string }) =>
     analytics.logEvent({ firebase: AnalyticsEvent.CLICK_BOOK_OFFER }, params),
@@ -232,25 +233,25 @@ export const logEventAnalytics = {
     analytics.logEvent({ firebase: AnalyticsEvent.CONSULT_WITHDRAWAL_MODALITIES }, params),
   logContinueCGU: () =>
     analytics.logEvent({
-      firebase: AnalyticsEvent.CONTINUE_CGU,
       amplitude: AmplitudeEvent.ACCEPT_CGU_CLICKED,
+      firebase: AnalyticsEvent.CONTINUE_CGU,
     }),
   logContinueIdentityCheck: () =>
     analytics.logEvent({ firebase: AnalyticsEvent.CONTINUE_IDENTITY_CHECK }),
   logContinueSetBirthday: () =>
     analytics.logEvent({
-      firebase: AnalyticsEvent.CONTINUE_SET_BIRTHDAY,
       amplitude: AmplitudeEvent.CONTINUE_SET_BIRTHDAY,
+      firebase: AnalyticsEvent.CONTINUE_SET_BIRTHDAY,
     }),
   logContinueSetEmail: () =>
     analytics.logEvent({
-      firebase: AnalyticsEvent.CONTINUE_SET_EMAIL,
       amplitude: AmplitudeEvent.CONTINUE_SET_EMAIL,
+      firebase: AnalyticsEvent.CONTINUE_SET_EMAIL,
     }),
   logContinueSetPassword: () =>
     analytics.logEvent({
-      firebase: AnalyticsEvent.CONTINUE_SET_PASSWORD,
       amplitude: AmplitudeEvent.CONTINUE_SET_PASSWORD,
+      firebase: AnalyticsEvent.CONTINUE_SET_PASSWORD,
     }),
   logContinueSignup: () => analytics.logEvent({ firebase: AnalyticsEvent.CONTINUE_SIGNUP }),
   logCulturalSurveyScrolledToBottom: (params: { questionId?: string }) =>
@@ -287,10 +288,10 @@ export const logEventAnalytics = {
     ),
   logGoToUbble: ({ from }: { from: string }) =>
     analytics.logEvent({ amplitude: AmplitudeEvent.GO_TO_UBBLE }, { from }),
-  logHasActivateGeolocFromTutorial: () =>
-    analytics.logEvent({ firebase: AnalyticsEvent.HAS_ACTIVATE_GEOLOC_FROM_TUTORIAL }),
   logHasAcceptedAllCookies: () =>
     analytics.logEvent({ firebase: AnalyticsEvent.HAS_ACCEPTED_ALL_COOKIES }),
+  logHasActivateGeolocFromTutorial: () =>
+    analytics.logEvent({ firebase: AnalyticsEvent.HAS_ACTIVATE_GEOLOC_FROM_TUTORIAL }),
   logHasAddedOfferToFavorites: (params: {
     offerId: number
     from?: Referrals
@@ -339,8 +340,8 @@ export const logEventAnalytics = {
     analytics.logEvent({ firebase: AnalyticsEvent.HAS_STARTED_CULTURAL_SURVEY }),
   logHelpCenterContactSignupConfirmationEmailSent: () =>
     analytics.logEvent({
-      firebase: AnalyticsEvent.HELP_CENTER_CONTACT_SIGNUP_CONFIRMATION_EMAIL_SENT,
       amplitude: AmplitudeEvent.EMAIL_CONFIRMATION_HELPCENTER_CLICKED,
+      firebase: AnalyticsEvent.HELP_CENTER_CONTACT_SIGNUP_CONFIRMATION_EMAIL_SENT,
     }),
   logHighlightBlockClicked: (params: { moduleId: string; entryId: string; toEntryId: string }) =>
     analytics.logEvent({ firebase: AnalyticsEvent.HIGHLIGHT_BLOCK_CLICKED }, params),
@@ -351,7 +352,7 @@ export const logEventAnalytics = {
   }) => analytics.logEvent({ firebase: AnalyticsEvent.IDENTITY_CHECK_ABORT }, params),
   logIdentityCheckStep: (nextStep: DeprecatedIdentityCheckStep | IdentityCheckStep) =>
     analytics.logEvent(
-      { firebase: AnalyticsEvent.IDENTITY_CHECK_STEP, amplitude: AmplitudeEvent.STEPPER_CLICKED },
+      { amplitude: AmplitudeEvent.STEPPER_CLICKED, firebase: AnalyticsEvent.IDENTITY_CHECK_STEP },
       { nextStep, step: nextStep }
     ),
   logIdentityCheckSuccess: (params: { method: IdentityCheckMethod }) =>
@@ -375,10 +376,10 @@ export const logEventAnalytics = {
     analytics.logEvent(
       { firebase: AnalyticsEvent.MODULE_DISPLAYED_ON_HOMEPAGE },
       {
+        homeEntryId,
+        index,
         moduleId,
         moduleType,
-        index,
-        homeEntryId,
       }
     ),
   logMultivenueOptionDisplayed: (offerId: number) =>
@@ -394,7 +395,7 @@ export const logEventAnalytics = {
       }
     ),
   logOfferSeenDuration: (offerId: number, duration: number) =>
-    analytics.logEvent({ firebase: AnalyticsEvent.OFFER_SEEN_DURATION }, { offerId, duration }),
+    analytics.logEvent({ firebase: AnalyticsEvent.OFFER_SEEN_DURATION }, { duration, offerId }),
   logOnboardingAgeInformationClicked: (params: {
     type: 'account_creation' | 'account_creation_skipped'
   }) =>
@@ -414,8 +415,8 @@ export const logEventAnalytics = {
   logOnboardingStarted: (params: { type: 'login' | 'start' }) =>
     analytics.logEvent(
       {
-        firebase: AnalyticsEvent.ONBOARDING_STARTED,
         amplitude: AmplitudeEvent.ONBOARDING_STARTED,
+        firebase: AnalyticsEvent.ONBOARDING_STARTED,
       },
       params
     ),
@@ -429,18 +430,39 @@ export const logEventAnalytics = {
     analytics.logEvent(
       { firebase: AnalyticsEvent.OPEN_EXTERNAL_URL },
       {
-        url: urlWithValueMaxLength(url),
         offerId: params.offerId,
+        url: urlWithValueMaxLength(url),
       }
     ),
   logOpenLocationSettings: () =>
     analytics.logEvent({ firebase: AnalyticsEvent.OPEN_LOCATION_SETTINGS }),
   logOpenNotificationSettings: () =>
     analytics.logEvent({ firebase: AnalyticsEvent.OPEN_NOTIFICATION_SETTINGS }),
+  logPerformSearch: (searchState: SearchState, nbHits: number) =>
+    analytics.logEvent(
+      { firebase: AnalyticsEvent.PERFORM_SEARCH },
+      {
+        ...buildPerformSearchState(searchState),
+        searchNbResults: nbHits,
+      }
+    ),
   logPhoneNumberClicked: () =>
     analytics.logEvent({ amplitude: AmplitudeEvent.PHONE_NUMBER_CLICKED }),
   logPhoneValidationCodeClicked: () =>
     analytics.logEvent({ amplitude: AmplitudeEvent.PHONE_VALIDATION_CODE_CLICKED }),
+  logPlaylistHorizontalScroll: (fromOfferId?: number) =>
+    analytics.logEvent(
+      { firebase: AnalyticsEvent.PLAYLIST_HORIZONTAL_SCROLL },
+      {
+        fromOfferId,
+      }
+    ),
+  logPlaylistVerticalScroll: (params: {
+    fromOfferId?: number
+    offerId?: number
+    playlistType?: PlaylistType
+    shouldUseAlgoliaRecommend?: boolean
+  }) => analytics.logEvent({ firebase: AnalyticsEvent.PLAYLIST_VERTICAL_SCROLL }, params),
   logProfilScrolledToBottom: () =>
     analytics.logEvent({ firebase: AnalyticsEvent.PROFIL_SCROLLED_TO_BOTTOM }),
   logProfilSignUp: () =>
@@ -468,20 +490,18 @@ export const logEventAnalytics = {
       firebase: AnalyticsEvent.RESEND_EMAIL_SIGNUP_CONFIRMATION_EXPIRED_LINK,
     }),
   logSaveNewMail: () => analytics.logEvent({ firebase: AnalyticsEvent.SAVE_NEW_MAIL }),
-  logScreenshot: (params: { from: string; id?: number }) =>
-    analytics.logEvent({ firebase: AnalyticsEvent.SCREENSHOT }, params),
   logScreenViewComeBackLater: () =>
     analytics.logEvent({ amplitude: AmplitudeEvent.SCREEN_VIEW_COME_BACK_LATER }),
   logScreenViewDMSIntroduction: () =>
     analytics.logEvent({ amplitude: AmplitudeEvent.SCREEN_VIEW_DMS_INTRODUCTION }),
   logScreenViewExpiredOrLostId: () =>
     analytics.logEvent({ amplitude: AmplitudeEvent.SCREEN_VIEW_EXPIRED_OR_LOST_ID }),
-  logScreenViewIdentityFork: () =>
-    analytics.logEvent({ amplitude: AmplitudeEvent.SCREEN_VIEW_IDENTITY_FORK }),
   logScreenViewIdentityCheckEnd: () =>
     analytics.logEvent({ amplitude: AmplitudeEvent.SCREEN_VIEW_IDENTITY_CHECK_END }),
   logScreenViewIdentityCheckHonor: () =>
     analytics.logEvent({ amplitude: AmplitudeEvent.SCREEN_VIEW_IDENTITY_CHECK_HONOR }),
+  logScreenViewIdentityFork: () =>
+    analytics.logEvent({ amplitude: AmplitudeEvent.SCREEN_VIEW_IDENTITY_FORK }),
   logScreenViewSelectIdOrigin: () =>
     analytics.logEvent({ amplitude: AmplitudeEvent.SCREEN_VIEW_SELECT_ID_ORIGIN }),
   logScreenViewSelectIdStatus: () =>
@@ -502,14 +522,8 @@ export const logEventAnalytics = {
     analytics.logEvent({ amplitude: AmplitudeEvent.SCREEN_VIEW_SET_SCHOOL_TYPE }),
   logScreenViewSetStatus: () =>
     analytics.logEvent({ amplitude: AmplitudeEvent.SCREEN_VIEW_SET_STATUS }),
-  logPerformSearch: (searchState: SearchState, nbHits: number) =>
-    analytics.logEvent(
-      { firebase: AnalyticsEvent.PERFORM_SEARCH },
-      {
-        ...buildPerformSearchState(searchState),
-        searchNbResults: nbHits,
-      }
-    ),
+  logScreenshot: (params: { from: string; id?: number }) =>
+    analytics.logEvent({ firebase: AnalyticsEvent.SCREENSHOT }, params),
   logSearchScrollToPage: (page: number, searchId?: string) =>
     analytics.logEvent({ firebase: AnalyticsEvent.SEARCH_SCROLL_TO_PAGE }, { page, searchId }),
   logSeeMyBooking: (offerId: number) =>
@@ -517,11 +531,13 @@ export const logEventAnalytics = {
   logSelectAge: (age: number | string) =>
     analytics.logEvent(
       {
-        firebase: AnalyticsEvent.SELECT_AGE,
         amplitude: AmplitudeEvent.ONBOARDING_AGE_SELECTION_CLICKED,
+        firebase: AnalyticsEvent.SELECT_AGE,
       },
       { age }
     ),
+  logSelectIdStatusClicked: (type: IDStatus) =>
+    analytics.logEvent({ amplitude: AmplitudeEvent.SELECT_ID_STATUS_CLICKED }, { type }),
   logSendActivationMailAgain: (numberOfTimes: number) =>
     analytics.logEvent(
       { firebase: AnalyticsEvent.SEND_ACTIVATION_MAIL_AGAIN },
@@ -529,8 +545,6 @@ export const logEventAnalytics = {
         times: numberOfTimes,
       }
     ),
-  logSelectIdStatusClicked: (type: IDStatus) =>
-    analytics.logEvent({ amplitude: AmplitudeEvent.SELECT_ID_STATUS_CLICKED }, { type }),
   logSetAddressClicked: () => analytics.logEvent({ amplitude: AmplitudeEvent.SET_ADDRESS_CLICKED }),
   logSetIdOriginClicked: (type: IDOrigin) =>
     analytics.logEvent({ amplitude: AmplitudeEvent.SET_ID_ORIGIN_CLICKED }, { type }),
@@ -563,7 +577,7 @@ export const logEventAnalytics = {
     analytics.logEvent({ firebase: AnalyticsEvent.SIGN_IN_FROM_OFFER }, { offerId }),
   logSignUpClicked: ({ from }: { from: string }) =>
     analytics.logEvent(
-      { firebase: AnalyticsEvent.SIGN_UP, amplitude: AmplitudeEvent.CREATE_ACCOUNT_CLICKED },
+      { amplitude: AmplitudeEvent.CREATE_ACCOUNT_CLICKED, firebase: AnalyticsEvent.SIGN_UP },
       { from }
     ),
   logSignUpFromAuthenticationModal: (offerId: number) =>
@@ -579,19 +593,6 @@ export const logEventAnalytics = {
     analytics.logEvent({ firebase: AnalyticsEvent.SIGN_UP_FROM_OFFER }, { offerId }),
   logSignUpTooYoung: (age: number) =>
     analytics.logEvent({ firebase: AnalyticsEvent.SIGN_UP_TOO_YOUNG }, { age }),
-  logPlaylistHorizontalScroll: (fromOfferId?: number) =>
-    analytics.logEvent(
-      { firebase: AnalyticsEvent.PLAYLIST_HORIZONTAL_SCROLL },
-      {
-        fromOfferId,
-      }
-    ),
-  logPlaylistVerticalScroll: (params: {
-    fromOfferId?: number
-    offerId?: number
-    playlistType?: PlaylistType
-    shouldUseAlgoliaRecommend?: boolean
-  }) => analytics.logEvent({ firebase: AnalyticsEvent.PLAYLIST_VERTICAL_SCROLL }, params),
   logStartDMSTransmission: () =>
     analytics.logEvent({ firebase: AnalyticsEvent.START_DMS_TRANSMISSION }),
   logTrySelectDeposit: (age: number) =>

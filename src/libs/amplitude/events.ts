@@ -1,3 +1,4 @@
+/* eslint sort-keys-fix/sort-keys-fix: "error" */
 export enum AmplitudeEvent {
   ACCEPT_CGU_CLICKED = 'accept_cgu_clicked',
   ACCOUNT_CREATED_START_CLICKED = 'account_created_start_clicked',
