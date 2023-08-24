@@ -6,6 +6,10 @@ import { StyleSheet, View } from 'react-native'
 import { StepVariant } from 'features/profile/components/VerticalStepper/types'
 import { VerticalStepper } from 'features/profile/components/VerticalStepper/VerticalStepper'
 
+type VerticalStepperStoryProps = ComponentProps<typeof VerticalStepper> & {
+  wrapper: 'normal' | 'large' | 'small'
+}
+
 export default {
   title: 'features/profile/VerticalStepper',
   component: VerticalStepper,
@@ -33,11 +37,7 @@ It may exist 0 or more completed and future steps.`,
   },
 } as ComponentMeta<typeof VerticalStepper>
 
-const WrapperTemplate: Story<
-  ComponentProps<typeof VerticalStepper> & {
-    wrapper: 'normal' | 'large' | 'small'
-  }
-> = ({ wrapper = 'normal', ...props }) => (
+const WrapperTemplate: Story<VerticalStepperStoryProps> = ({ wrapper = 'normal', ...props }) => (
   <View
     style={[
       wrapper === 'normal' && styles.wrapper,
