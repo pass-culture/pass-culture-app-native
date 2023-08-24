@@ -13,7 +13,7 @@ interface CreditProgressBarProps {
   height?: 'normal' | 'small'
 }
 
-export const MINIMUM_PROGRESS_BAR_SIZE = 0.02
+const MINIMUM_PROGRESS_BAR_SIZE = 0.02
 const MINIMUM_PROGRESS_BAR_SIZE_SM = 0.07
 const MINIMUM_PROGRESS_BAR_SIZE_MD = 0.03
 const PROGRESS_BAR_BORDER_RADIUS = getSpacing(12)
