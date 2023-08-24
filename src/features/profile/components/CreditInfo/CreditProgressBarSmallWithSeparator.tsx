@@ -1,8 +1,8 @@
-import { CreditProgressBar } from 'features/profile/components/CreditInfo/CreditProgressBar'
 import React from 'react'
 import { View } from 'react-native'
 import styled from 'styled-components/native'
 
+import { CreditProgressBar } from 'features/profile/components/CreditInfo/CreditProgressBar'
 import { getSpacing } from 'ui/theme'
 
 interface Props {

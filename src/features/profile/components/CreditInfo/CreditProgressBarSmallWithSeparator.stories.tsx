@@ -3,6 +3,7 @@ import React from 'react'
 import styled from 'styled-components/native'
 
 import { getSpacing } from 'ui/theme'
+
 import { CreditProgressBarSmallWithSeparator } from './CreditProgressBarSmallWithSeparator'
 
 export default {
