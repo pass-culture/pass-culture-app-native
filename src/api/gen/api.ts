@@ -2828,6 +2828,11 @@ export interface UserProfileResponse {
    * @type {string}
    * @memberof UserProfileResponse
    */
+  depositActivationDate?: string | null
+  /**
+   * @type {string}
+   * @memberof UserProfileResponse
+   */
   depositExpirationDate?: string | null
   /**
    * @type {DepositType}
