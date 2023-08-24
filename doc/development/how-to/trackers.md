@@ -6,13 +6,18 @@ To have access to analytics we need trackers. In order to do so, we use Firebase
 
 ## Key points
 
-1. Add a Firebase and an Amplitude event in your code (following alphabetical order)
+1. Run the script `yarn add:tracker --provider=[amplitude|firebase] <TrackerName>` with TrackerName in PascalCase. This will create the files needed for the tracker.
 
-   a. For Firebase, add your event in [src/libs/firebase/analytics/events.ts](../../src/libs/firebase/analytics/events.ts). For Amplitude, add your event in [src/libs/amplitude/events.ts](../../src/libs/amplitude/events.ts)
+   <details>
+   <summary>Manually</summary>
+   Add a Firebase and an Amplitude event in your code (following alphabetical order)
 
-   b. Add a function called `log<YourEvent>` in [src/libs/analytics/logEventAnalytics.ts](../../src/libs/analytics/logEventAnalytics.ts), where you will call the method `logEvent` of `analytics` (from [src/libs/analytics/index.ts](../../src/libs/analytics/index.ts)), with the firebase and/or amplitude event name(s). If an event name is not specificied for one of these providers, then the event won't be triggered by that provider.
+      a. For Firebase, add your event in [src/libs/firebase/analytics/events.ts](../../src/libs/firebase/analytics/events.ts). For Amplitude, add your event in [src/libs/amplitude/events.ts](../../src/libs/amplitude/events.ts)
 
-   c. Add a mock of your function in [src/libs/analytics/\_\_mocks\_\_/provider.ts](../../src/libs/analytics/__mocks__/logEventAnalytics.ts)
+      b. Add a function called `log<YourEvent>` in [src/libs/analytics/logEventAnalytics.ts](../../src/libs/analytics/logEventAnalytics.ts), where you will call the method `logEvent` of `analytics` (from [src/libs/analytics/index.ts](../../src/libs/analytics/index.ts)), with the firebase and/or amplitude event name(s). If an event name is not specified for one of these providers, then the event won't be triggered by that provider.
+
+      c. Add a mock of your function in [src/libs/analytics/\_\_mocks\_\_/provider.ts](../../src/libs/analytics/__mocks__/logEventAnalytics.ts)
+   </details>
 
 2. Call your analytics function in a callback before giving it as a props to your button
 
