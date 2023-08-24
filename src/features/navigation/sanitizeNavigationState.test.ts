@@ -1,13 +1,20 @@
+import { NavigationState } from '@react-navigation/native'
+
 import { SearchView } from 'features/search/types'
 
 import { sanitizeNavigationState } from './sanitizeNavigationState'
 
 describe('sanitizeNavigationState', () => {
-  const state = {
+  const state: NavigationState = {
     index: 1,
+    key: 'stack-JIratXd-2D1Ia1ebVgL-C',
+    stale: false,
+    type: 'stack',
+    routeNames: ['TabNavigator'],
     routes: [
       {
         name: 'TabNavigator',
+        key: 'stack-rdubnndFgaqXyYK6noV_e',
         params: { screen: 'Search', params: { locationFilter: { locationType: 'EVERYWHERE' } } },
         state: {
           routeNames: ['Home', 'Search'],
@@ -27,6 +34,7 @@ describe('sanitizeNavigationState', () => {
       },
       {
         name: 'TabNavigator',
+        key: 'stack-rdubnndFgaqXyYK6noV_e',
         params: {
           screen: 'Search',
           params: { locationFilter: { locationType: 'EVERYWHERE' }, view: SearchView.Results },
