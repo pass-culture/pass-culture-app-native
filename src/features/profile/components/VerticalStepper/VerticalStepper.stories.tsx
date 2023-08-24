@@ -1,16 +1,17 @@
-import { ComponentMeta } from '@storybook/react'
+import { Meta } from '@storybook/react'
 import { Story } from '@storybook/react/dist/ts3.9/client/preview/types-6-0'
 import React, { ComponentProps } from 'react'
 import { StyleSheet, View } from 'react-native'
 
 import { StepVariant } from 'features/profile/components/VerticalStepper/types'
 import { VerticalStepper } from 'features/profile/components/VerticalStepper/VerticalStepper'
+import { selectArgTypeFromObject } from 'libs/storybook/selectArgTypeFromObject'
 
 type VerticalStepperStoryProps = ComponentProps<typeof VerticalStepper> & {
   wrapper: 'normal' | 'large' | 'small'
 }
 
-export default {
+const meta: Meta<VerticalStepperStoryProps> = {
   title: 'features/profile/VerticalStepper',
   component: VerticalStepper,
   argTypes: {
@@ -26,8 +27,7 @@ Each one has its own styling, and it should always be only one "in-progress" ste
 It may exist 0 or more completed and future steps.`,
     },
     wrapper: {
-      type: 'select',
-      options: ['normal', 'large', 'small'],
+      ...selectArgTypeFromObject({ normal: 'normal', large: 'large', small: 'small' }),
       description: 'ONLY USED IN STORYBOOK. NOT AVAILABLE IN THE COMPONENT',
     },
     iconComponent: {
@@ -35,7 +35,8 @@ It may exist 0 or more completed and future steps.`,
       control: { disable: true },
     },
   },
-} as ComponentMeta<typeof VerticalStepper>
+}
+export default meta
 
 const WrapperTemplate: Story<VerticalStepperStoryProps> = ({ wrapper = 'normal', ...props }) => (
   <View
