@@ -47,6 +47,7 @@ jobs:
             ANDROID_KEYSTORE_STORE_PASSWORD:passculture-metier-ehp/passculture-app-native-android-${{ inputs.ENV }}-keystore-store-password
             ANDROID_KEYSTORE_KEY_PASSWORD:passculture-metier-ehp/passculture-app-native-android-${{ inputs.ENV }}-keystore-key-password
             ANDROID_KEYSTORE:passculture-metier-ehp/passculture-app-native-${{ inputs.ENV }}-keystore
+            ANDROID_PLAYSTORE_SERVICE_ACCOUNT:passculture-metier-ehp/passculture-app-native-android-${{ inputs.ENV }}-service-account
             IOS_APPCENTER_API_TOKEN:passculture-metier-ehp/passculture-app-native-ios-${{ inputs.ENV }}-token
             SENTRY_AUTH_TOKEN:passculture-metier-ehp/passculture-app-native-sentry-token
       - name: 'Render Sentry Template'
@@ -90,6 +91,9 @@ jobs:
       - name: Setup android Google services config
         if: ${{ inputs.TYPE == 'hard'}}
         run: echo '${{ steps.secrets.outputs.ANDROID_GOOGLE_SERVICES_JSON }}' > android/app/google-services.json
+      - name: Setup android Google services config
+        if: ${{ inputs.TYPE == 'hard'}}
+        run: echo '${{ steps.secrets.outputs.ANDROID_PLAYSTORE_SERVICE_ACCOUNT }}' > fastlane/playStoreServiceAccount.json
       - name: Deploy hard android for ${{ inputs.ENV }}
         if: ${{ inputs.TYPE == 'hard'}}
         run: |
