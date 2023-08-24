@@ -5,7 +5,7 @@ import React from 'react'
 
 import { VenueSelectionModal } from './VenueSelectionModal'
 
-export default {
+const meta: ComponentMeta<typeof VenueSelectionModal> = {
   title: 'features/offer/VenueSelectionModal',
   component: VenueSelectionModal,
   args: {
@@ -20,9 +20,9 @@ export default {
     onSubmit: { control: { disable: true } },
     onClosePress: { control: { disable: true } },
     items: { control: { disable: true } },
-    selectedItem: { control: { disable: true } },
   },
-} as ComponentMeta<typeof VenueSelectionModal>
+}
+export default meta
 
 const DynamicTemplate: ComponentStory<typeof VenueSelectionModal> = (props) => {
   return (
