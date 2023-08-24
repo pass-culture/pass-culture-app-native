@@ -9,7 +9,10 @@ import { UseRouteType } from 'features/navigation/RootNavigator/types'
 import { analytics } from 'libs/analytics'
 import { useGeolocation } from 'libs/geolocation'
 import { eventMonitoring } from 'libs/monitoring'
-import { usePerformanceCalculation } from 'shared/usePerformanceCalculation/usePerformanceCalculation'
+import {
+  usePerformanceCalculation,
+  PERF_HOME_GLOBAL,
+} from 'shared/usePerformanceCalculation/usePerformanceCalculation'
 import { StatusBarBlurredBackground } from 'ui/components/statusBar/statusBarBlurredBackground'
 
 const Header = () => (
@@ -19,7 +22,7 @@ const Header = () => (
 )
 
 const ToHome: FunctionComponent = () => {
-  usePerformanceCalculation('HomeTestPierreCedric4')
+  usePerformanceCalculation().start(PERF_HOME_GLOBAL)
   const { params } = useRoute<UseRouteType<'Home'>>()
   const { modules, id } = useHomepageData() || {}
   const { setCustomPosition } = useLocation()

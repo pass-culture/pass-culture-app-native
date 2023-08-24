@@ -21,7 +21,10 @@ import useFunctionOnce from 'libs/hooks/useFunctionOnce'
 import { useNetInfoContext } from 'libs/network/NetInfoWrapper'
 import { OfflinePage } from 'libs/network/OfflinePage'
 import { BatchEvent, BatchUser } from 'libs/react-native-batch'
-import { usePerformanceCalculation } from 'shared/usePerformanceCalculation/usePerformanceCalculation'
+import {
+  usePerformanceCalculation,
+  PERF_HOME_GLOBAL,
+} from 'shared/usePerformanceCalculation/usePerformanceCalculation'
 import { ScrollToTopButton } from 'ui/components/ScrollToTopButton'
 import { Spinner } from 'ui/components/Spinner'
 import { getSpacing, Spacer } from 'ui/theme'
@@ -140,9 +143,12 @@ const OnlineHome: FunctionComponent<GenericHomeProps> = ({
   const onContentSizeChange = () => setIsLoading(false)
 
   useEffect(() => {
-    finish()
     return () => clearInterval(modulesIntervalId.current)
   }, [])
+
+  useEffect(() => {
+    if (!showSkeleton) finish(PERF_HOME_GLOBAL)
+  }, [showSkeleton, finish])
 
   useEffect(() => {
     // We use this to load more modules, in case the content size doesn't change after the load triggered by onEndReached (i.e. no new modules were shown).
