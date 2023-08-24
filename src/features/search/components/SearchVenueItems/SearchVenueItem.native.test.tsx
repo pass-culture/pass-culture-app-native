@@ -1,7 +1,7 @@
 import React from 'react'
 import { v4 as uuidv4 } from 'uuid'
 
-import { navigate, useRoute } from '__mocks__/@react-navigation/native'
+import { navigate } from '__mocks__/@react-navigation/native'
 import { AlgoliaVenue } from 'libs/algolia'
 import { analytics } from 'libs/analytics'
 import { fireEvent, render, screen, waitFor } from 'tests/utils'
@@ -51,9 +51,14 @@ describe('<SearchVenueItem />', () => {
   })
 
   it('should log to analytics', async () => {
-    useRoute.mockReturnValueOnce({ params: { searchId } })
-
-    render(<SearchVenueItem venue={mockAlgoliaVenue} width={ITEM_WIDTH} height={ITEM_HEIGHT} />)
+    render(
+      <SearchVenueItem
+        venue={mockAlgoliaVenue}
+        width={ITEM_WIDTH}
+        height={ITEM_HEIGHT}
+        searchId={searchId}
+      />
+    )
 
     fireEvent.press(screen.getByTestId(/Lieu/))
 

@@ -9,9 +9,11 @@ import { VerticalUl } from 'ui/components/Ul'
 import { getSpacing, Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
-type AutocompleteVenueProps = UseInfiniteHitsProps
+type AutocompleteVenueProps = UseInfiniteHitsProps & {
+  onItemPress: (venueId: number) => Promise<void>
+}
 
-export function AutocompleteVenue(props: AutocompleteVenueProps) {
+export function AutocompleteVenue({ onItemPress, ...props }: AutocompleteVenueProps) {
   const { hits } = useInfiniteHits(props)
 
   return hits.length > 0 ? (
@@ -21,7 +23,10 @@ export function AutocompleteVenue(props: AutocompleteVenueProps) {
       <StyledVerticalUl>
         {hits.map((item) => (
           <Li key={item.objectID}>
-            <AutocompleteVenueItem hit={item as unknown as AlgoliaVenue} />
+            <AutocompleteVenueItem
+              hit={item as unknown as AlgoliaVenue}
+              onPress={() => onItemPress(Number(item.objectID))}
+            />
           </Li>
         ))}
       </StyledVerticalUl>

@@ -6,19 +6,19 @@ import styled from 'styled-components/native'
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { Highlight } from 'features/search/components/Highlight/Highlight'
 import { AlgoliaVenue } from 'libs/algolia'
-import { analytics } from 'libs/analytics'
 import { LocationBuildingFilled } from 'ui/svg/icons/LocationBuildingFilled'
 import { getSpacing, Typo } from 'ui/theme'
 
 type AutocompleteVenueItemProps = {
   hit: AlgoliaVenue
+  onPress: () => Promise<void>
 }
 
-export function AutocompleteVenueItem({ hit }: AutocompleteVenueItemProps) {
+export function AutocompleteVenueItem({ hit, onPress }: AutocompleteVenueItemProps) {
   const { navigate } = useNavigation<UseNavigationType>()
 
-  async function onPress() {
-    await analytics.logConsultVenue({ venueId: Number(hit.objectID), from: 'searchAutoComplete' })
+  async function handlePress() {
+    await onPress()
     navigate('Venue', { id: Number(hit.objectID) })
   }
 
@@ -26,7 +26,7 @@ export function AutocompleteVenueItem({ hit }: AutocompleteVenueItemProps) {
   const testID = `autocompleteVenueItem_${hit.objectID}`
 
   return (
-    <AutocompleteItemTouchable testID={testID} onPress={onPress}>
+    <AutocompleteItemTouchable testID={testID} onPress={handlePress}>
       <LocationBuildingIconContainer>
         <LocationBuildingFilledIcon />
       </LocationBuildingIconContainer>
