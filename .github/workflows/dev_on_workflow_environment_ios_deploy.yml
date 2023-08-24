@@ -79,7 +79,7 @@ jobs:
           MATCH_GIT_URL: ${{ steps.secrets.outputs.MATCH_GIT_URL }}
   slack_notify:
     runs-on: [self-hosted, linux, x64]
-    if: ${{ always() && github.ref == 'refs/heads/master' }}
+    if: ${{ always() }}
     needs: sentry_and_deploy
     steps:
       - name: Connect to Secret Manager
