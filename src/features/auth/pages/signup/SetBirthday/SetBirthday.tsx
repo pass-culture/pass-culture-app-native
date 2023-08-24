@@ -14,35 +14,42 @@ import { BicolorIdCard } from 'ui/svg/icons/BicolorIdCard'
 import { Spacer, Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
-export const SetBirthday: FunctionComponent<PreValidationSignupNormalStepProps> = (props) => {
-  const CURRENT_YEAR = new Date().getFullYear()
-  const DEFAULT_SELECTED_DATE = new Date(new Date().setFullYear(CURRENT_YEAR - UNDER_YOUNGEST_AGE))
+export const SetBirthday: FunctionComponent<PreValidationSignupNormalStepProps> = ({
+  goToNextStep,
+  accessibilityLabelForNextStep,
+  previousSignupData,
+}) => {
+  const currentYear = new Date().getFullYear()
+  const previousBirthdateProvided = previousSignupData.birthdate
+  const maximumSpinnerDate = new Date(currentYear - UNDER_YOUNGEST_AGE, 11, 31)
 
-  const [defaultSelectedDate, setDefaultSelectedDate] = useState(DEFAULT_SELECTED_DATE)
-  const MAXIMUM_SPINNER_DATE = new Date(CURRENT_YEAR - UNDER_YOUNGEST_AGE, 11, 31)
+  const initialDate = previousBirthdateProvided
+    ? new Date(previousBirthdateProvided)
+    : new Date(new Date().setFullYear(currentYear - UNDER_YOUNGEST_AGE))
+
+  const [defaultSelectedDate, setDefaultSelectedDate] = useState(initialDate)
 
   useEffect(() => {
     const setDate = async () => {
       const userAge = await storage.readObject<number | string>('user_age')
-      if (typeof userAge === 'number') {
-        setDefaultSelectedDate(new Date(new Date().setFullYear(CURRENT_YEAR - userAge)))
+      if (!previousBirthdateProvided && typeof userAge === 'number') {
+        setDefaultSelectedDate(new Date(new Date().setFullYear(currentYear - userAge)))
       }
     }
 
     setDate()
-  }, [CURRENT_YEAR])
+  }, [currentYear, previousBirthdateProvided])
 
   const [date, setDate] = useState<Date | undefined>()
 
   const birthdate = date ? formatDateToISOStringWithoutTime(date) : undefined
   const { isDisabled, errorMessage } = useDatePickerErrorHandler(date)
 
-  const goToNextStep = useCallback(() => {
+  const onGoToNextStep = useCallback(() => {
     if (birthdate) {
-      props.goToNextStep({ birthdate })
+      goToNextStep({ birthdate })
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [birthdate, props.goToNextStep])
+  }, [birthdate, goToNextStep])
 
   return (
     <Form.MaxWidth>
@@ -58,15 +65,15 @@ export const SetBirthday: FunctionComponent<PreValidationSignupNormalStepProps> 
           onChange={setDate}
           errorMessage={errorMessage}
           defaultSelectedDate={defaultSelectedDate}
-          maximumDate={MAXIMUM_SPINNER_DATE}
+          maximumDate={maximumSpinnerDate}
           minimumDate={MINIMUM_DATE}
         />
         <Spacer.Column numberOfSpaces={10} />
         <ButtonPrimary
           wording="Continuer"
-          accessibilityLabel={props.accessibilityLabelForNextStep}
+          accessibilityLabel={accessibilityLabelForNextStep}
           disabled={isDisabled}
-          onPress={goToNextStep}
+          onPress={onGoToNextStep}
         />
         <Spacer.Column numberOfSpaces={5} />
       </InnerContainer>

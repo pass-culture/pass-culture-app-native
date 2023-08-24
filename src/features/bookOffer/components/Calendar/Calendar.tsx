@@ -5,19 +5,24 @@ import { DateData, Theme } from 'react-native-calendars/src/types'
 import styled from 'styled-components/native'
 
 import { OfferStockResponse } from 'api/gen'
+import { useSelectDay, DayComponent } from 'features/bookOffer/components/Calendar/DayComponent'
+import { MonthHeader } from 'features/bookOffer/components/Calendar/MonthHeader'
+import {
+  defaultMarking,
+  Marking,
+  useMarkedDates,
+  MarkedDates,
+} from 'features/bookOffer/components/Calendar/useMarkedDates'
 import { OfferStatus } from 'features/bookOffer/helpers/utils'
 import { accessibilityAndTestId } from 'libs/accessibilityAndTestId'
 import { analytics } from 'libs/analytics'
 import { formatToFrenchDecimal } from 'libs/parsers'
+import { dayNames, dayNamesShort } from 'shared/date/days'
+import { monthNames, monthNamesShort } from 'shared/date/months'
 import { TouchableOpacity } from 'ui/components/TouchableOpacity'
 import { ArrowNext as DefaultArrowNext } from 'ui/svg/icons/ArrowNext'
 import { ArrowPrevious as DefaultArrowPrevious } from 'ui/svg/icons/ArrowPrevious'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
-
-import { monthNames, monthNamesShort, dayNames, dayNamesShort } from './Calendar.utils'
-import { DayComponent, useSelectDay } from './DayComponent'
-import { MonthHeader } from './MonthHeader'
-import { defaultMarking, Marking, useMarkedDates, MarkedDates } from './useMarkedDates'
 
 LocaleConfig.locales['fr'] = {
   monthNames,
