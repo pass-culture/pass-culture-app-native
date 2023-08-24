@@ -16,13 +16,13 @@ export type Referrals =
   | 'deeplink'
   | 'exclusivity'
   | 'highlightOffer'
+  | 'searchAutoComplete'
+  | 'searchVenuePlaylist'
   | 'setemail'
   | 'similar_offer'
   | 'venue'
   | 'video'
   | 'videoModal'
-  | 'searchVenuePlaylist'
-  | 'searchAutoComplete'
 
 type BaseThematicHome = {
   homeId: string
