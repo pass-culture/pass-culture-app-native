@@ -1,11 +1,9 @@
-import { useRoute } from '@react-navigation/native'
 import React, { memo } from 'react'
 import { View } from 'react-native'
 import { useTheme } from 'styled-components'
 import styled from 'styled-components/native'
 
 import { VenueTypeLocationIcon } from 'features/home/components/modules/venues/VenueTypeLocationIcon'
-import { UseRouteType } from 'features/navigation/RootNavigator/types'
 import { DistanceTag } from 'features/offer/components/DistanceTag/DistanceTag'
 import { SearchVenueItemDetails } from 'features/search/components/SearchVenueItemsDetails/SearchVenueItemDetails'
 import { AlgoliaVenue } from 'libs/algolia'
@@ -25,6 +23,7 @@ export interface SearchVenueItemProps {
   venue: AlgoliaVenue
   width: number
   height: number
+  searchId?: string
 }
 
 const MAX_VENUE_CAPTION_HEIGHT = getSpacing(18)
@@ -35,12 +34,12 @@ const mergeVenueData = (venue: AlgoliaVenue) => (prevData: AlgoliaVenue | undefi
   ...(prevData ?? {}),
 })
 
-const UnmemoizedSearchVenueItem = ({ venue, height, width }: SearchVenueItemProps) => {
+const UnmemoizedSearchVenueItem = ({ venue, height, width, searchId }: SearchVenueItemProps) => {
   const { onFocus, onBlur, isFocus } = useHandleFocus()
   const { colors } = useTheme()
   const { lat, lng } = venue._geoloc
   const distance = useDistance({ lat, lng })
-  const { params } = useRoute<UseRouteType<'Search'>>()
+  // const { params } = useRoute<UseRouteType<'Search'>>()
 
   const accessibilityLabel = tileAccessibilityLabel(TileContentType.VENUE, { ...venue, distance })
 
@@ -59,7 +58,7 @@ const UnmemoizedSearchVenueItem = ({ venue, height, width }: SearchVenueItemProp
         width={width}
         navigateTo={{
           screen: 'Venue',
-          params: { id: Number(venue.objectID), from: 'venue', searchId: params?.searchId },
+          params: { id: Number(venue.objectID), from: 'venue', searchId },
         }}
         onBeforeNavigate={handlePressVenue}
         onFocus={onFocus}
