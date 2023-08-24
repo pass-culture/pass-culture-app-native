@@ -21,28 +21,28 @@ To have access to analytics we need trackers. In order to do so, we use Firebase
 
 2. Call your analytics function in a callback before giving it as a props to your button
 
-3. Test the behaviour :
-   - in Firebase :
+3. Test the behavior:
+   - in Firebase:
 
       a. Open the Firebase console and go to the [DebugView](https://console.firebase.google.com/u/4/project/passculture-native/analytics/app/android:app.passculture/debugview)
 
       b. Find your device in the list (arm64 is for M1, x86_64 for regular macOS)
-      b2. If you are connected, you can check your user ID in the debugView to match the one in your cheatcodes
+      b2. If you are connected, you can check your user ID in the debugView to match the one in your cheat codes
 
-      c. Find your event in the occuring event list (it could be a bit slow)
+      c. Find your event in the occurring event list (it could be a bit slow)
 
-   - in Amplitude :
-   
+   - in Amplitude:
+
       a. Open the Amplitude [event table](https://data.eu.amplitude.com/passculture/pass%20Culture%20testing/events/main/latest/?view=All)
 
       b. Sort the table by last seen.
 
-      c. Find your event in the occuring events list (it could be a bit slow)
+      c. Find your event in the occurring events list (it could be a bit slow)
 
 ## Mistakes to avoid when following the standard
 
 - Forget to create the mock, you will not be able to test that your function is called
 - Not adding your event in the alphabetical order
-- Not following the naming stantard (PascalCase for Firebase, snake_case for Amplitude)
+- Not following the naming standard (PascalCase for Firebase, snake_case for Amplitude)
 - Look in the wrong debugging device in Firebase, to avoid that, try to check other event when navigating on the app before
 - Not accepting the app to track your informations during your first opening
