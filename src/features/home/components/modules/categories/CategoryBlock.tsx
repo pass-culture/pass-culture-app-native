@@ -48,8 +48,7 @@ const StyledShape = styled(Shape)({ position: 'absolute', right: 0 })
 
 const StyledTitle = styled(Typo.ButtonText)({
   color: theme.colors.white,
-  paddingVertical: getSpacing(3),
-  paddingHorizontal: getSpacing(3),
+  margin: getSpacing(3),
 })
 
 const StyledInternalTouchableLink = styled(InternalTouchableLink).attrs(({ theme }) => ({
