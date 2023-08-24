@@ -2,7 +2,7 @@ import { useRoute } from '@react-navigation/native'
 import { SearchClient } from 'algoliasearch'
 import React, { useCallback, useEffect, useMemo } from 'react'
 import { Configure, Index, InstantSearch } from 'react-instantsearch-hooks'
-import { StatusBar } from 'react-native'
+import { Keyboard, StatusBar } from 'react-native'
 import styled from 'styled-components/native'
 import { v4 as uuidv4 } from 'uuid'
 
@@ -89,7 +89,10 @@ export function Search() {
           <InsightsMiddleware />
           <SearchHeader searchInputID={searchInputID} searchView={currentView} />
           {currentView === SearchView.Suggestions ? (
-            <StyledScrollView keyboardShouldPersistTaps="handled">
+            <StyledScrollView
+              keyboardShouldPersistTaps="handled"
+              onScroll={Keyboard.dismiss}
+              scrollEventThrottle={400}>
               <Spacer.Column numberOfSpaces={4} />
               <AutocompleteOffer />
               <FeatureFlag
