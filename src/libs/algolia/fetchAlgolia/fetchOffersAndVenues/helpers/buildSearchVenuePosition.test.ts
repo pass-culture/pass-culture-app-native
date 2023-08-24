@@ -6,7 +6,7 @@ import {
   buildSearchVenuePosition,
   convertKmToMeters,
 } from 'libs/algolia/fetchAlgolia/fetchOffersAndVenues/helpers/buildSearchVenuePosition'
-import { GeoCoordinates } from 'libs/geolocation'
+import { Position } from 'libs/geolocation'
 import { SuggestedPlace } from 'libs/place'
 import { mockedSuggestedVenues } from 'libs/venue/fixtures/mockedSuggestedVenues'
 
@@ -17,7 +17,7 @@ const Kourou: SuggestedPlace = {
 }
 const venue: Venue = mockedSuggestedVenues[0]
 
-const userPosition = { latitude: 66, longitude: 66 } as GeoCoordinates
+const userPosition: Position = { latitude: 66, longitude: 66 }
 const aroundMeFilter: LocationFilter = {
   locationType: LocationType.AROUND_ME,
   aroundRadius: MAX_RADIUS,
@@ -42,9 +42,10 @@ describe('buildSearchVenuePosition', () => {
         aroundRadius: convertKmToMeters(MAX_RADIUS),
       })
     })
-    it('should return around radius at "all" when location filter is everywhere', () => {
+    it('should return user position and around radius at "all" when location filter is everywhere', () => {
       const searchVenuePosition = buildSearchVenuePosition(everywhereFilter, userPosition)
       expect(searchVenuePosition).toEqual({
+        aroundLatLng: `${userPosition.latitude}, ${userPosition.longitude}`,
         aroundRadius: 'all',
       })
     })
