@@ -148,6 +148,7 @@ exports[`CreditHeader Beneficiary is not underage should render correctly with e
         }
       >
         <View
+          height="normal"
           style={
             [
               {
@@ -700,6 +701,7 @@ exports[`CreditHeader Beneficiary is not underage should render correctly with v
         }
       >
         <View
+          height="normal"
           style={
             [
               {
@@ -1131,6 +1133,7 @@ exports[`CreditHeader Beneficiary is underage should render correctly for undera
         }
       >
         <View
+          height="normal"
           style={
             [
               {
