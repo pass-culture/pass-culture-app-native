@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { Path, Defs, LinearGradient, Stop, ClipPath, Rect } from 'react-native-svg'
+import { Path, Defs, LinearGradient, Stop } from 'react-native-svg'
 import styled from 'styled-components/native'
 
 import { AccessibleSvg } from 'ui/svg/AccessibleSvg'
@@ -122,9 +122,6 @@ const UbbleSvg: React.FunctionComponent<AccessibleIcon> = ({
           <Stop offset="0.4662" stopColor="#3B8BF3" />
           <Stop offset="1" stopColor="#7314F5" />
         </LinearGradient>
-        <ClipPath id="clip0_3962_10903">
-          <Rect width="38.4" height="38.4" fill="white" transform="translate(0.800781 0.800049)" />
-        </ClipPath>
       </Defs>
     </AccessibleSvg>
   )
