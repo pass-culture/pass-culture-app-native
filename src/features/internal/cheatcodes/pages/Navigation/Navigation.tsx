@@ -144,6 +144,12 @@ export function Navigation(): React.JSX.Element {
           </Row>
           <Row half>
             <ButtonPrimary
+              wording="New Tutorial ❔"
+              onPress={() => navigate('Tutorial', { selectedAge: 15 })}
+            />
+          </Row>
+          <Row half>
+            <ButtonPrimary
               wording="First Tutorial"
               onPress={() => navigate('FirstTutorial', { shouldCloseAppOnBackAction: false })}
             />
