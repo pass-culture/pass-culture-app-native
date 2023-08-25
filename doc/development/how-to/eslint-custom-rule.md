@@ -18,7 +18,7 @@ Sinon, continuer ce mode opératoire.
 
 - Dans [.eslintrc.js](../.eslintrc.js), ajouter dans `rules` : `'local-rules/<ma-règle-ESLint>': ['error'],`
 
-- Créer un fichier de test dans `/eslint-custom-rules/__tests__` : `<ma-règle-ESLint>.test.js`, et utiliser le snippet `eslint-rule-test` pour générer des tests à remplir.
+- Créer un fichier de test dans `/eslint-custom-rules/__tests__` : `<ma-règle-ESLint>.test.js`, et utiliser le snippet `eslint-test` pour générer des tests à remplir.
 
 ### 3. Écrire une règle
 
@@ -31,8 +31,8 @@ Puis, pour améliorer la règle, il faut comprendre l'Abstract Syntax Tree (AST)
 Une fois une particularité de notre cas identifiée, l'ajouter à la règle. Il y a 2 façons de faire :
 
 - soit avec un sélecteur AST (préférable) : il s'agit de sélecteur semblable aux sélecteurs CSS.
-Par exemple, `MemberExpression[object.name=clef][property.name=champs]` va exécuter son code si on rencontre le code `clef.champs`.
-Plus d'informations [ici](https://eslint.org/docs/latest/extend/selectors#what-syntax-can-selectors-have).
+  Par exemple, `MemberExpression[object.name=clef][property.name=champs]` va exécuter son code si on rencontre le code `clef.champs`.
+  Plus d'informations [ici](https://eslint.org/docs/latest/extend/selectors#what-syntax-can-selectors-have).
 
 - soit en manipulant l'AST à la main, en faisant des conditions nous-même.
 
@@ -48,8 +48,8 @@ Si on veut que la règle ESLint corrige automatiquement un cas d'erreur, il faut
 context.report({
   node,
   message: "<message-d'erreur>",
-  fix: fixer => {
-    return fixer.replaceText(node, "<code-corrigé>");
+  fix: (fixer) => {
+    return fixer.replaceText(node, '<code-corrigé>')
   },
 })
 ```
