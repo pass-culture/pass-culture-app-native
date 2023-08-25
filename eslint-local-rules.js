@@ -7,15 +7,17 @@ const todoFormat = require('./eslint-custom-rules/todo-format')
 const apostropheInText = require('./eslint-custom-rules/apostrophe-in-text')
 const useTheRightTestUtils = require('./eslint-custom-rules/use-the-right-test-utils')
 const noUseOfAlgoliaMultipleQueries = require('./eslint-custom-rules/no-use-of-algolia-multiple-queries')
+const noHardcodeIdInSvg = require('./eslint-custom-rules/no-hardcoded-id-in-svg')
 
 module.exports = {
   'independent-mocks': independentMocks,
   'nbsp-in-text': nbspInText,
+  'no-hardcoded-id-in-svg': noHardcodeIdInSvg,
   'no-raw-text': noRawText,
   'no-react-query-provider-hoc': noReactQueryProviderHOC,
   'no-string-check-before-component': noStringCheckBeforeComponent,
   'todo-format': todoFormat,
   'apostrophe-in-text': apostropheInText,
   'use-the-right-test-utils': useTheRightTestUtils,
-  'no-use-of-algolia-multiple-queries': noUseOfAlgoliaMultipleQueries
+  'no-use-of-algolia-multiple-queries': noUseOfAlgoliaMultipleQueries,
 }

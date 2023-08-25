@@ -30,6 +30,7 @@ module.exports = {
   rules: {
     'testing-library/await-async-utils': ['error'],
     'local-rules/independent-mocks': ['error'],
+    'local-rules/no-hardcoded-id-in-svg': ['error'],
     'local-rules/no-raw-text': ['error'],
     'local-rules/no-string-check-before-component': ['error'],
     'local-rules/no-react-query-provider-hoc': ['error'],
