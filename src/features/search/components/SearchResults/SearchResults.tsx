@@ -26,6 +26,7 @@ import { LocationModal } from 'features/search/pages/modals/LocationModal/Locati
 import { OfferDuoModal } from 'features/search/pages/modals/OfferDuoModal/OfferDuoModal'
 import { PriceModal } from 'features/search/pages/modals/PriceModal/PriceModal'
 import { analytics } from 'libs/analytics'
+import { useGeolocation } from 'libs/geolocation'
 import { useIsFalseWithDelay } from 'libs/hooks/useIsFalseWithDelay'
 import { plural } from 'libs/plural'
 import { Offer } from 'shared/offer/types'
@@ -61,6 +62,7 @@ export const SearchResults: React.FC = () => {
   const isRefreshing = useIsFalseWithDelay(isFetching, ANIMATION_DURATION)
   const isFocused = useIsFocused()
   const { user } = useAuthContext()
+  const { userPosition } = useGeolocation()
 
   const { headerTransition: scrollButtonTransition, onScroll } = useOpacityTransition()
 
@@ -109,6 +111,12 @@ export const SearchResults: React.FC = () => {
     ),
     [nbHits, searchState]
   )
+
+  useEffect(() => {
+    if (userPosition) {
+      refetch()
+    }
+  }, [refetch, userPosition])
 
   const onEndReached = useCallback(() => {
     if (data && hasNextPage) {
