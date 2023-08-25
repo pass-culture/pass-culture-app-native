@@ -145,7 +145,7 @@ describe('NotificationSettings', () => {
         const toggleSwitch = screen.getByTestId('Interrupteur Autoriser l’envoi d’e-mails')
         fireEvent.press(toggleSwitch)
 
-        expect(screen.queryAllByTestId('modal-notifications-permission-modal')).toBeTruthy()
+        expect(screen.queryAllByTestId('modal-notifications-permission-modal')).not.toHaveLength(0)
       }
     )
   })

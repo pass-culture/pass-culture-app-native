@@ -74,7 +74,7 @@ describe('ForceUpdate display logic', () => {
 
     screen.getByText('Respect de ta vie privée')
 
-    expect(screen.queryAllByText('Mise à jour de l’application')).toBeTruthy()
+    expect(screen.queryAllByText('Mise à jour de l’application')).not.toHaveLength(0)
   })
 })
 
