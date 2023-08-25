@@ -10,7 +10,8 @@ import {
 
 // Transaction name has seen in Sentry
 // PERF_[PAGE_NAME]_GLOBAL | [NAME]
-export const PERF_HOME_GLOBAL = 'HOME:GLOBAL'
+export const PERF_HOME_ZERO = 'HOME:ZERO:1'
+export const PERF_HOME_GLOBAL = 'HOME:GLOBAL:2'
 
 // Start the hook in the first line of a component
 // usePerformanceCalculation().start(PERF_NAME)
@@ -29,7 +30,6 @@ export const usePerformanceCalculation = () => {
   const finish = (name: string) => {
     const transaction = getTransaction(transactions.current, name)
     if (transaction) {
-      transaction.finish()
       removeTransaction(transactions.current, name)
     }
   }
