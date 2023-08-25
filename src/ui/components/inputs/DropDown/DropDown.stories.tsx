@@ -1,7 +1,7 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react'
 import React from 'react'
 
-import { monthNames } from 'features/bookOffer/components/Calendar/Calendar.utils'
+import { monthNames } from 'shared/date/months'
 import { DropDown } from 'ui/components/inputs/DropDown/DropDown'
 
 const meta: ComponentMeta<typeof DropDown> = {

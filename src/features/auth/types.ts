@@ -15,18 +15,14 @@ export type SignupData = {
   postalCode: string
 }
 
-export interface PreValidationSignupStepProps {
-  accessibilityLabelForNextStep?: string
-  goToNextStep: (signupData: Partial<SignupData>) => void
-  signUp: (token: string) => Promise<void>
-}
-
 export type PreValidationSignupNormalStepProps = {
   accessibilityLabelForNextStep?: string
   goToNextStep: (signupData: Partial<SignupData>) => void
+  previousSignupData: Partial<SignupData>
 }
 
 export type PreValidationSignupLastStepProps = {
   accessibilityLabelForNextStep?: string
   signUp: (token: string) => Promise<void>
+  previousSignupData: Partial<SignupData>
 }

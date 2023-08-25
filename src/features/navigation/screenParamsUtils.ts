@@ -118,6 +118,7 @@ export const screenParamsParser: ParamsParsers = {
   Venue: {
     id: (value) => (value ? Number(value) : 0),
     from: identityFn,
+    searchId: identityFn,
   },
   Search: searchParamsParser,
   SearchFilter: searchParamsParser,

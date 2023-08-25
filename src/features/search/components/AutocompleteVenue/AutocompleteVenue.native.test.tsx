@@ -4,7 +4,7 @@ import React from 'react'
 
 import { AutocompleteVenue } from 'features/search/components/AutocompleteVenue/AutocompleteVenue'
 import { mockVenueHits } from 'features/search/fixtures/algolia'
-import { render, screen } from 'tests/utils'
+import { fireEvent, render, screen } from 'tests/utils'
 
 let mockHits: Hit<BaseHit>[] = []
 jest.mock('react-instantsearch-hooks', () => ({
@@ -20,12 +20,21 @@ describe('AutocompleteVenue component', () => {
     })
 
     it('should render AutocompleteVenue', () => {
-      expect(render(<AutocompleteVenue />)).toMatchSnapshot()
+      expect(render(<AutocompleteVenue onItemPress={jest.fn()} />)).toMatchSnapshot()
     })
 
     it('should display "Points de vente"', () => {
-      render(<AutocompleteVenue />)
+      render(<AutocompleteVenue onItemPress={jest.fn()} />)
       expect(screen.getByText('Points de vente')).toBeTruthy()
+    })
+
+    it('should call `onItemPress` on press', async () => {
+      const onItemPress = jest.fn()
+      render(<AutocompleteVenue onItemPress={onItemPress} />)
+
+      await fireEvent.press(screen.getByTestId('autocompleteVenueItem_9898'))
+
+      expect(onItemPress).toHaveBeenCalledWith(9898)
     })
   })
 
@@ -34,8 +43,9 @@ describe('AutocompleteVenue component', () => {
       mockHits = []
     })
 
-    it('should not display "Points de vente"', () => {
-      render(<AutocompleteVenue />)
+    it('should not display "Points de vente"', async () => {
+      render(<AutocompleteVenue onItemPress={jest.fn()} />)
+
       expect(screen.queryByText('Points de vente')).toBeFalsy()
     })
   })

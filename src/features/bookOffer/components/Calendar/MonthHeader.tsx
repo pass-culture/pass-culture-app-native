@@ -1,9 +1,8 @@
 import React from 'react'
 
+import { monthNames } from 'shared/date/months'
 import { Typo } from 'ui/theme/typography'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
-
-import { monthNames } from './Calendar.utils'
 
 type Props = {
   date: Date

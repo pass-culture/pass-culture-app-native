@@ -4,7 +4,17 @@ import { act, fireEvent, render, screen } from 'tests/utils'
 
 import { SetPassword } from './SetPassword'
 
-const props = { goToNextStep: jest.fn(), signUp: jest.fn() }
+const props = {
+  goToNextStep: jest.fn(),
+  signUp: jest.fn(),
+  previousSignupData: {
+    email: '',
+    marketingEmailSubscription: false,
+    password: '',
+    birthdate: '',
+    postalCode: '',
+  },
+}
 
 describe('SetPassword Page', () => {
   it('should render correctly', () => {

@@ -47,6 +47,7 @@ jobs:
         uses: 'google-github-actions/get-secretmanager-secrets@v1'
         with:
           secrets: |-
+            FASTLANE_APPLE_APPLICATION_SPECIFIC_PASSWORD:passculture-metier-ehp/passculture-app-native-ios-fastlane-password
             IOS_APPCENTER_API_TOKEN:passculture-metier-ehp/passculture-app-native-ios-${{ inputs.ENV }}-token
             IOS_GOOGLE_SERVICES_PLIST:passculture-metier-ehp/passculture-app-native-ios-google-services-plist-${{ inputs.ENV }}
             MATCH_GIT_URL:passculture-metier-ehp/passculture-app-native-match-git-url
@@ -71,13 +72,14 @@ jobs:
         run: |
           bundle exec fastlane ios deploy --env ${{ inputs.ENV }} --verbose
         env:
+          FASTLANE_APPLE_APPLICATION_SPECIFIC_PASSWORD: ${{ steps.secrets.outputs.FASTLANE_APPLE_APPLICATION_SPECIFIC_PASSWORD }}
           IOS_APPCENTER_API_TOKEN: ${{ steps.secrets.outputs.IOS_APPCENTER_API_TOKEN }}
           MATCH_PASSWORD: ${{ steps.secrets.outputs.MATCH_PASSWORD }}
           MATCH_USERNAME: ${{ steps.secrets.outputs.MATCH_USERNAME }}
           MATCH_GIT_URL: ${{ steps.secrets.outputs.MATCH_GIT_URL }}
   slack_notify:
     runs-on: [self-hosted, linux, x64]
-    if: ${{ always() && github.ref == 'refs/heads/master' }}
+    if: ${{ always() }}
     needs: sentry_and_deploy
     steps:
       - name: Connect to Secret Manager

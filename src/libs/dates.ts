@@ -1,4 +1,4 @@
-import { monthNames } from 'features/bookOffer/components/Calendar/Calendar.utils'
+import { monthNames } from 'shared/date/months'
 
 /**
  *Compare timestamps using this margin expressed in seconds for a better UX experience.

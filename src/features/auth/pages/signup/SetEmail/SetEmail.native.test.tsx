@@ -16,9 +16,19 @@ const openUrl = jest.spyOn(OpenUrlAPI, 'openUrl')
 const props = {
   goToNextStep: jest.fn(),
   signUp: jest.fn(),
+  previousSignupData: {
+    email: '',
+    marketingEmailSubscription: false,
+    password: '',
+    birthdate: '',
+    postalCode: '',
+  },
 }
 
 jest.useFakeTimers({ legacyFakeTimers: true })
+
+const INCORRECT_EMAIL_MESSAGE =
+  'L’e-mail renseigné est incorrect. Exemple de format attendu\u00a0: edith.piaf@email.fr'
 
 describe('<SetEmail />', () => {
   it('should disable validate button when email input is not filled', () => {
@@ -83,11 +93,7 @@ describe('<SetEmail />', () => {
       fireEvent.press(continueButton)
     })
 
-    expect(
-      queryByText(
-        'L’e-mail renseigné est incorrect. Exemple de format attendu\u00a0: edith.piaf@email.fr'
-      )
-    ).toBeFalsy()
+    expect(queryByText(INCORRECT_EMAIL_MESSAGE)).toBeFalsy()
   })
 
   it('should reject invalid email when trying to submit', async () => {
@@ -103,11 +109,7 @@ describe('<SetEmail />', () => {
       fireEvent.press(continueButton)
     })
 
-    expect(
-      queryByText(
-        'L’e-mail renseigné est incorrect. Exemple de format attendu : edith.piaf@email.fr'
-      )
-    ).toBeTruthy()
+    expect(queryByText(INCORRECT_EMAIL_MESSAGE)).toBeTruthy()
   })
 
   it('should log analytics when clicking on "Se connecter" button', async () => {
@@ -183,5 +185,47 @@ describe('<SetEmail />', () => {
     render(<SetEmail {...props} />)
 
     expect(analytics.logScreenViewSetEmail).toHaveBeenCalledTimes(1)
+  })
+
+  it('should set a default email if the user has already added his email', () => {
+    const propsWithPreviousEmail = {
+      ...props,
+      previousSignupData: {
+        ...props.previousSignupData,
+        email: 'john.doe@gmail.com',
+      },
+    }
+    render(<SetEmail {...propsWithPreviousEmail} />)
+
+    const emailInput = screen.getByTestId('Entrée pour l’email')
+    expect(emailInput.props.value).toBe('john.doe@gmail.com')
+  })
+
+  it('should set a default marketing email subscription choice to true if the user has already chosen', () => {
+    const propsWithPreviousEmail = {
+      ...props,
+      previousSignupData: {
+        ...props.previousSignupData,
+        marketingEmailSubscription: true,
+      },
+    }
+    render(<SetEmail {...propsWithPreviousEmail} />)
+
+    const marketingEmailSubscriptionCheckbox = screen.getByRole('checkbox')
+    expect(marketingEmailSubscriptionCheckbox.props.accessibilityState.checked).toBe(true)
+  })
+
+  it('should set a default marketing email subscription choice to false', () => {
+    const propsWithoutMarketingEmailSubscription = {
+      ...props,
+      previousSignupData: {
+        ...props.previousSignupData,
+        marketingEmailSubscription: undefined,
+      },
+    }
+    render(<SetEmail {...propsWithoutMarketingEmailSubscription} />)
+
+    const marketingEmailSubscriptionCheckbox = screen.getByRole('checkbox')
+    expect(marketingEmailSubscriptionCheckbox.props.accessibilityState.checked).toBe(false)
   })
 })

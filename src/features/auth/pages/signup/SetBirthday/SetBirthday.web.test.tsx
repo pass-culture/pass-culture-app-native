@@ -6,7 +6,17 @@ import { fireEvent, render, screen } from 'tests/utils/web'
 
 import { SetBirthday } from './SetBirthday'
 
-const props = { goToNextStep: jest.fn(), signUp: jest.fn() }
+const props = {
+  goToNextStep: jest.fn(),
+  signUp: jest.fn(),
+  previousSignupData: {
+    email: '',
+    marketingEmailSubscription: false,
+    password: '',
+    birthdate: '',
+    postalCode: '',
+  },
+}
 
 jest.mock('features/auth/context/SettingsContext')
 
