@@ -11,12 +11,14 @@ import { getSpacing, Typo } from 'ui/theme'
 
 type AutocompleteVenueItemProps = {
   hit: AlgoliaVenue
+  onPress: () => Promise<void>
 }
 
-export function AutocompleteVenueItem({ hit }: AutocompleteVenueItemProps) {
+export function AutocompleteVenueItem({ hit, onPress }: AutocompleteVenueItemProps) {
   const { navigate } = useNavigation<UseNavigationType>()
 
-  const onPress = () => {
+  async function handlePress() {
+    await onPress()
     navigate('Venue', { id: Number(hit.objectID) })
   }
 
@@ -24,7 +26,7 @@ export function AutocompleteVenueItem({ hit }: AutocompleteVenueItemProps) {
   const testID = `autocompleteVenueItem_${hit.objectID}`
 
   return (
-    <AutocompleteItemTouchable testID={testID} onPress={onPress}>
+    <AutocompleteItemTouchable testID={testID} onPress={handlePress}>
       <LocationBuildingIconContainer>
         <LocationBuildingFilledIcon />
       </LocationBuildingIconContainer>

@@ -222,6 +222,7 @@ export const logEventAnalytics = {
     moduleName?: string
     moduleId?: string
     homeEntryId?: string
+    searchId?: string
   }) => analytics.logEvent({ firebase: AnalyticsEvent.CONSULT_VENUE }, params),
   logConsultVideo: (params: { from: Referrals; moduleId: string; homeEntryId: string }) =>
     analytics.logEvent({ firebase: AnalyticsEvent.CONSULT_VIDEO }, params),

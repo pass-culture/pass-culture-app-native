@@ -1,6 +1,6 @@
 import { useRoute } from '@react-navigation/native'
 import { SearchClient } from 'algoliasearch'
-import React, { useEffect, useMemo } from 'react'
+import React, { useCallback, useEffect, useMemo } from 'react'
 import { Configure, Index, InstantSearch } from 'react-instantsearch-hooks'
 import { StatusBar } from 'react-native'
 import styled from 'styled-components/native'
@@ -17,6 +17,7 @@ import { InsightsMiddleware } from 'libs/algolia/analytics/InsightsMiddleware'
 import { client } from 'libs/algolia/fetchAlgolia/clients'
 import { buildSearchVenuePosition } from 'libs/algolia/fetchAlgolia/fetchOffersAndVenues/helpers/buildSearchVenuePosition'
 import { getCurrentVenuesIndex } from 'libs/algolia/fetchAlgolia/helpers/getCurrentVenuesIndex'
+import { analytics } from 'libs/analytics'
 import { env } from 'libs/environment'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { useGeolocation } from 'libs/geolocation'
@@ -71,6 +72,10 @@ export function Search() {
     return getCurrentVenuesIndex(params?.locationFilter?.locationType)
   }, [params?.locationFilter?.locationType])
 
+  const onVenuePress = useCallback(async (venueId: number) => {
+    await analytics.logConsultVenue({ venueId, from: 'searchAutoComplete' })
+  }, [])
+
   if (!netInfo.isConnected) {
     return <OfflinePage />
   }
@@ -96,7 +101,7 @@ export function Search() {
                     aroundRadius={searchVenuePosition.aroundRadius}
                     aroundLatLng={searchVenuePosition.aroundLatLng}
                   />
-                  <AutocompleteVenue />
+                  <AutocompleteVenue onItemPress={onVenuePress} />
                 </Index>
               </FeatureFlag>
             </StyledScrollView>

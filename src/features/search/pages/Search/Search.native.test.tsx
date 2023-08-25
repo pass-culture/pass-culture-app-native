@@ -10,6 +10,7 @@ import * as useShowResultsForCategory from 'features/search/helpers/useShowResul
 import { Search } from 'features/search/pages/Search/Search'
 import { SearchState, SearchView } from 'features/search/types'
 import { Venue } from 'features/venue/types'
+import { analytics } from 'libs/analytics'
 import { env } from 'libs/environment'
 import * as useFeatureFlag from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { useNetInfoContext as useNetInfoContextDefault } from 'libs/network/NetInfoWrapper'
@@ -209,6 +210,21 @@ describe('<Search/>', () => {
 
       expect(screen.getByTestId('autocompleteVenueItem_1')).toBeTruthy()
       expect(screen.getByTestId('autocompleteVenueItem_2')).toBeTruthy()
+    })
+
+    it('should handle venue press', async () => {
+      useFeatureFlagSpy.mockReturnValueOnce(true)
+      render(<Search />)
+      await act(async () => {})
+
+      expect(screen.getByTestId('autocompleteVenueItem_1')).toBeTruthy()
+
+      await fireEvent.press(screen.getByTestId('autocompleteVenueItem_1'))
+
+      expect(analytics.logConsultVenue).toHaveBeenCalledWith({
+        from: 'searchAutoComplete',
+        venueId: 1,
+      })
     })
   })
 

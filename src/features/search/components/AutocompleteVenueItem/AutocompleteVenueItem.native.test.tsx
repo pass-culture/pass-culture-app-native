@@ -1,19 +1,23 @@
 import React from 'react'
 
-import { navigate } from '__mocks__/@react-navigation/native'
 import { AutocompleteVenueItem } from 'features/search/components/AutocompleteVenueItem/AutocompleteVenueItem'
 import { mockVenueHits } from 'features/search/fixtures/algolia'
 import { fireEvent, render, screen } from 'tests/utils'
 
 describe('AutocompleteVenueItem component', () => {
   it('should render AutocompleteVenueItem', () => {
-    expect(render(<AutocompleteVenueItem hit={mockVenueHits[0]} />)).toMatchSnapshot()
+    expect(
+      render(<AutocompleteVenueItem hit={mockVenueHits[0]} onPress={jest.fn()} />)
+    ).toMatchSnapshot()
   })
 
-  it('should create a suggestion clicked event when pressing a hit', async () => {
-    render(<AutocompleteVenueItem hit={mockVenueHits[0]} />)
+  it('should call onPress on press', async () => {
+    const pressHandler = jest.fn()
+
+    render(<AutocompleteVenueItem hit={mockVenueHits[0]} onPress={pressHandler} />)
+
     await fireEvent.press(screen.getByTestId('autocompleteVenueItem_9898'))
 
-    expect(navigate).toHaveBeenNthCalledWith(1, 'Venue', { id: Number(mockVenueHits[0].objectID) })
+    expect(pressHandler).toHaveBeenCalledTimes(1)
   })
 })

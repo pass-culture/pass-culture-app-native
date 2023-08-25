@@ -16,6 +16,8 @@ export type Referrals =
   | 'deeplink'
   | 'exclusivity'
   | 'highlightOffer'
+  | 'searchAutoComplete'
+  | 'searchVenuePlaylist'
   | 'setemail'
   | 'similar_offer'
   | 'venue'
@@ -227,6 +229,7 @@ export type RootStackParamList = {
   Venue: {
     id: number
     from?: Referrals
+    searchId?: string
   }
   DeeplinksGenerator: undefined
   UTMParameters: undefined
