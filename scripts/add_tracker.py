@@ -36,7 +36,7 @@ def parse_command_line():
             provider = value
         elif option in ("-h", "--help"):
             usage()
-            sys.exit(1)
+            sys.exit(0)
 
     if not is_pascal_case(args[0]):
         usage()
