@@ -4,6 +4,7 @@ module.exports = {
     'react-native',
     'react-hooks',
     'typescript-sort-keys',
+    'sort-keys-fix',
     'eslint-plugin-local-rules',
     'testing-library',
     'jest',
@@ -256,6 +257,7 @@ module.exports = {
         ],
       },
     ],
+    'sort-keys-fix/sort-keys-fix': 'off',
   },
   settings: {
     react: {
