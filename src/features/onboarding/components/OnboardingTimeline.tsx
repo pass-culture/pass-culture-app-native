@@ -38,6 +38,8 @@ export const OnboardingTimeline: FunctionComponent<Props> = ({ age }) => {
   return (
     <StyledView>
       {stepperProps?.map((props, index) => {
+        const blockDescription =
+          props.creditStep === 18 ? 'Tu auras 2 ans pour utiliser tes 300\u00a0€' : undefined
         return (
           <InternalStep
             key={index}
@@ -57,6 +59,7 @@ export const OnboardingTimeline: FunctionComponent<Props> = ({ age }) => {
                   />
                 }
                 age={props.creditStep}
+                description={blockDescription}
                 onPress={() => analytics.logTrySelectDeposit(age)}
               />
             )}

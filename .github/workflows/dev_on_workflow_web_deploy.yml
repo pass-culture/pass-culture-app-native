@@ -70,7 +70,7 @@ jobs:
           gsutil rsync -r build gs://${{ inputs.BUCKET_NAME }}
   slack_notify:
     runs-on: [self-hosted, linux, x64]
-    if: ${{ always() && github.ref == 'refs/heads/master' }}
+    if: ${{ always() }}
     needs: web_deploy
     steps:
       - name: Connect to Secret Manager

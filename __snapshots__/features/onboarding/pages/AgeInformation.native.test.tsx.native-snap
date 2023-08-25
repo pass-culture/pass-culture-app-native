@@ -1177,6 +1177,30 @@ exports[`AgeInformation should render correctly for 15-year-old 1`] = `
                   >
                     300 €
                   </Text>
+                  <View
+                    numberOfSpaces={1}
+                    style={
+                      [
+                        {
+                          "height": 4,
+                        },
+                      ]
+                    }
+                  />
+                  <Text
+                    style={
+                      [
+                        {
+                          "color": "#696A6F",
+                          "fontFamily": "Montserrat-SemiBold",
+                          "fontSize": 10,
+                          "lineHeight": 12,
+                        },
+                      ]
+                    }
+                  >
+                    Tu auras 2 ans pour utiliser tes 300 €
+                  </Text>
                 </View>
                 <View
                   style={
@@ -2591,6 +2615,30 @@ exports[`AgeInformation should render correctly for 16-year-old 1`] = `
                   >
                     300 €
                   </Text>
+                  <View
+                    numberOfSpaces={1}
+                    style={
+                      [
+                        {
+                          "height": 4,
+                        },
+                      ]
+                    }
+                  />
+                  <Text
+                    style={
+                      [
+                        {
+                          "color": "#696A6F",
+                          "fontFamily": "Montserrat-SemiBold",
+                          "fontSize": 10,
+                          "lineHeight": 12,
+                        },
+                      ]
+                    }
+                  >
+                    Tu auras 2 ans pour utiliser tes 300 €
+                  </Text>
                 </View>
                 <View
                   style={
@@ -3992,6 +4040,30 @@ exports[`AgeInformation should render correctly for 17-year-old 1`] = `
                   >
                     300 €
                   </Text>
+                  <View
+                    numberOfSpaces={1}
+                    style={
+                      [
+                        {
+                          "height": 4,
+                        },
+                      ]
+                    }
+                  />
+                  <Text
+                    style={
+                      [
+                        {
+                          "color": "#696A6F",
+                          "fontFamily": "Montserrat-SemiBold",
+                          "fontSize": 10,
+                          "lineHeight": 12,
+                        },
+                      ]
+                    }
+                  >
+                    Tu auras 2 ans pour utiliser tes 300 €
+                  </Text>
                 </View>
                 <View
                   style={
@@ -5243,6 +5315,30 @@ exports[`AgeInformation should render correctly for 18-year-old 1`] = `
                     }
                   >
                     300 €
+                  </Text>
+                  <View
+                    numberOfSpaces={1}
+                    style={
+                      [
+                        {
+                          "height": 4,
+                        },
+                      ]
+                    }
+                  />
+                  <Text
+                    style={
+                      [
+                        {
+                          "color": "#696A6F",
+                          "fontFamily": "Montserrat-SemiBold",
+                          "fontSize": 10,
+                          "lineHeight": 12,
+                        },
+                      ]
+                    }
+                  >
+                    Tu auras 2 ans pour utiliser tes 300 €
                   </Text>
                 </View>
                 <View

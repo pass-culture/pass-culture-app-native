@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { monthNames } from 'features/bookOffer/components/Calendar/Calendar.utils'
+import { monthNames } from 'shared/date/months'
 import { fireEvent, render, screen } from 'tests/utils/web'
 import { DropDown } from 'ui/components/inputs/DropDown/DropDown.web'
 

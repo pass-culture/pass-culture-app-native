@@ -14,24 +14,25 @@ type FormValues = {
   password: string
 }
 
-export const SetPassword: FunctionComponent<PreValidationSignupNormalStepProps> = (props) => {
+export const SetPassword: FunctionComponent<PreValidationSignupNormalStepProps> = ({
+  goToNextStep,
+  accessibilityLabelForNextStep,
+}) => {
   const {
     control,
     handleSubmit,
     formState: { isValid },
   } = useForm<FormValues>({
-    defaultValues: {
-      password: '',
-    },
+    defaultValues: { password: '' },
     resolver: yupResolver(setPasswordSchema),
     mode: 'onChange',
   })
 
-  const goToNextStep = useCallback(
+  const onGoToNextStep = useCallback(
     ({ password }: FormValues) => {
-      props.goToNextStep({ password })
+      goToNextStep({ password })
     },
-    [props]
+    [goToNextStep]
   )
 
   return (
@@ -51,8 +52,8 @@ export const SetPassword: FunctionComponent<PreValidationSignupNormalStepProps> 
       <Spacer.Column numberOfSpaces={10} />
       <ButtonPrimary
         wording="Continuer"
-        accessibilityLabel={props.accessibilityLabelForNextStep}
-        onPress={handleSubmit(goToNextStep)}
+        accessibilityLabel={accessibilityLabelForNextStep}
+        onPress={handleSubmit(onGoToNextStep)}
         disabled={!isValid}
       />
       <Spacer.Column numberOfSpaces={5} />

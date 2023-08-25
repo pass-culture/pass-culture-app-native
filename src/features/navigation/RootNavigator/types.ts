@@ -18,6 +18,7 @@ export type Referrals =
   | 'highlightOffer'
   | 'setemail'
   | 'similar_offer'
+  | 'venue'
   | 'video'
   | 'videoModal'
 

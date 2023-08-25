@@ -45,7 +45,17 @@ function simulateConnectedNetwork() {
   })
 }
 
-const props = { goToNextStep: jest.fn(), signUp: jest.fn() }
+const props = {
+  goToNextStep: jest.fn(),
+  signUp: jest.fn(),
+  previousSignupData: {
+    email: '',
+    marketingEmailSubscription: false,
+    password: '',
+    birthdate: '',
+    postalCode: '',
+  },
+}
 
 describe('<AcceptCgu/>', () => {
   it('should render correctly', () => {

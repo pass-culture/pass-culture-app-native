@@ -33,15 +33,18 @@ interface SearchListHeaderProps extends ScrollViewProps {
   userData: SearchResponse<Offer[]>['userData']
 }
 
-const renderVenueItem = ({
-  item,
-  height,
-  width,
-}: {
-  item: AlgoliaVenue
-  height: number
-  width: number
-}) => <SearchVenueItem venue={item} height={height} width={width} />
+const renderVenueItem = (
+  {
+    item,
+    height,
+    width,
+  }: {
+    item: AlgoliaVenue
+    height: number
+    width: number
+  },
+  searchId?: string
+) => <SearchVenueItem venue={item} height={height} width={width} searchId={searchId} />
 
 const VENUE_ITEM_HEIGHT = LENGTH_XXS
 const VENUE_ITEM_WIDTH = LENGTH_XS
@@ -137,7 +140,9 @@ export const SearchListHeader: React.FC<SearchListHeaderProps> = ({ nbHits, user
               scrollButtonOffsetY={VENUE_ITEM_HEIGHT / 2 + 4}
               itemHeight={VENUE_ITEM_HEIGHT}
               itemWidth={VENUE_ITEM_WIDTH}
-              renderItem={renderVenueItem}
+              renderItem={({ item, height, width }) =>
+                renderVenueItem({ item, height, width }, params?.searchId)
+              }
               renderHeader={undefined}
               renderFooter={undefined}
               keyExtractor={keyExtractor}
