@@ -14,10 +14,10 @@ curl -sSL https://raw.githubusercontent.com/rvm/rvm/master/binscripts/rvm-instal
 
 Install a version of Ruby that's 2.7.5 or higher (version of Ruby is indicated in the Gemfile on the root of the repo) with :
 
-   ```sh
-   rvm install "version"
-   rvm use "version"
-   ```
+```sh
+rvm install "version"
+rvm use "version"
+```
 
 We use [bundler][2] to install our Ruby gems. You can install it with `gem install bundler`.
 
@@ -65,7 +65,7 @@ Connect your device to the computer and run `yarn ios:testing --device` or use t
 
 - For Xcode Simulator
 
-Run `yarn ios:testing` or use the Xcode interface. 
+Run `yarn ios:testing` or use the Xcode interface.
 This will also start the metro server. If not, run `yarn start` in another tab.
 
 ### 😤 Troubleshooting
@@ -80,31 +80,31 @@ If this error pops up while trying to build with Xcode it means that Xcode can�
 
 #### First option
 
-  Run `ln -s "\$(which node)" /usr/local/bin/node`
+Run `ln -s "\$(which node)" /usr/local/bin/node`
 
-  If it says “File exists”, `rm /usr/local/bin/node` and rerun the command above.
+If it says “File exists”, `rm /usr/local/bin/node` and rerun the command above.
 
-  Drawback ❌: This sym-link will be obsolete as soon as the path of your node instance changes. To prevent this, you can command above to your .bashrc. Thus, the command will be run each time you open a new terminal
+Drawback ❌: This sym-link will be obsolete as soon as the path of your node instance changes. To prevent this, you can command above to your .bashrc. Thus, the command will be run each time you open a new terminal
 
 #### Second option
 
-  Add node with brew : `brew install node`
+Add node with brew : `brew install node`
 
-  Drawback ❌: If you were using a node version manager (nvm, fnm, ...) you will now have two different node instances
+Drawback ❌: If you were using a node version manager (nvm, fnm, ...) you will now have two different node instances
 
 </details>
 <br />
 <details>
   <summary>❌ error: An organization slug is required (provide with --org)</summary>
 
-This error means that the ~/.sentryclirc file has not been added correctly. Please run through [this tutorial again](https://github.com/pass-culture/pass-culture-app-native/blob/master/doc/standards/sentry.md#-configure-sentry-cli)
+This error means that the ~/.sentryclirc file has not been added correctly. Please run through [this tutorial again](https://github.com/pass-culture/pass-culture-app-native/blob/master/doc/installation/sentry.md#-configure-sentry-cli)
 
 </details>
 <br />
 <details>
   <summary>sentry reported an error: Invalid Token (http status: 401)</summary>
   
-This error means that the sentry token you generated is invalid. Please run through [this tutorial again](https://github.com/pass-culture/pass-culture-app-native/blob/master/doc/standards/sentry.md#-configure-sentry-cli) and be careful with the scope permissions 😉
+This error means that the sentry token you generated is invalid. Please run through [this tutorial again](https://github.com/pass-culture/pass-culture-app-native/blob/master/doc/installation/sentry.md#-configure-sentry-cli) and be careful with the scope permissions 😉
 
 </details>
 <br />
