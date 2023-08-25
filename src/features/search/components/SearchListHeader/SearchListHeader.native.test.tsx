@@ -5,13 +5,11 @@ import { v4 as uuidv4 } from 'uuid'
 import { useRoute } from '__mocks__/@react-navigation/native'
 import { LocationType } from 'features/search/enums'
 import { MAX_RADIUS } from 'features/search/helpers/reducer.helpers'
-import { Venue } from 'features/venue/types'
 import { mockedAlgoliaVenueResponse } from 'libs/algolia/__mocks__/mockedAlgoliaResponse'
 import { analytics } from 'libs/analytics'
 import * as useFeatureFlag from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { GeoCoordinates } from 'libs/geolocation'
 import { SuggestedPlace } from 'libs/place'
-import { mockedSuggestedVenues } from 'libs/venue/fixtures/mockedSuggestedVenues'
 import { act, render, screen } from 'tests/utils'
 
 import { SearchListHeader } from './SearchListHeader'
@@ -211,7 +209,6 @@ const kourou: SuggestedPlace = {
   info: 'Guyane',
   geolocation: { longitude: -52.669736, latitude: 5.16186 },
 }
-const venue: Venue = mockedSuggestedVenues[0]
 
 describe('<SearchListHeader />', () => {
   it('should display the number of results', () => {
@@ -265,7 +262,6 @@ describe('<SearchListHeader />', () => {
       ${{ locationType: LocationType.EVERYWHERE }}                                     | ${false}     | ${LocationType.EVERYWHERE}
       ${{ locationType: LocationType.AROUND_ME, aroundRadius: MAX_RADIUS }}            | ${true}      | ${LocationType.AROUND_ME}
       ${{ locationType: LocationType.PLACE, place: kourou, aroundRadius: MAX_RADIUS }} | ${true}      | ${LocationType.PLACE}
-      ${{ locationType: LocationType.VENUE, venue }}                                   | ${true}      | ${LocationType.VENUE}
     `(
       'should trigger VenuePlaylistDisplayedOnSearchResults log when there are venues and location type is $locationType with isGeolocated param = $isGeolocated',
       ({ locationFilter, isGeolocated }) => {
@@ -280,6 +276,14 @@ describe('<SearchListHeader />', () => {
         })
       }
     )
+
+    it('should not trigger VenuePlaylistDisplayedOnSearchResults log when there are venues and location type is VENUE with isGeolocated param = true', () => {
+      useRoute.mockReturnValueOnce({
+        params: { searchId, locationFilter: { locationType: LocationType.VENUE } },
+      })
+      render(<SearchListHeader nbHits={10} userData={[]} />)
+      expect(analytics.logVenuePlaylistDisplayedOnSearchResults).not.toHaveBeenCalled()
+    })
 
     it('should trigger AllTilesSeen log when there are venues', async () => {
       useRoute.mockReturnValueOnce({
@@ -348,7 +352,10 @@ describe('<SearchListHeader />', () => {
       expect(screen.queryByText('2 résultats')).toBeNull()
     })
 
-    it('should not render venue items when there are not venues', () => {
+    it('should not render venue items when we search from venues', () => {
+      useRoute.mockReturnValueOnce({
+        params: { locationFilter: { locationType: LocationType.VENUE } },
+      })
       render(<SearchListHeader nbHits={10} userData={[]} />)
 
       expect(screen.queryByTestId('search-venue-list')).toBeNull()
