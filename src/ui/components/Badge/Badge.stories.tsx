@@ -3,10 +3,11 @@ import React from 'react'
 
 import { Badge } from './Badge'
 
-export default {
+const meta: ComponentMeta<typeof Badge> = {
   title: 'ui/Badge',
   component: Badge,
-} as ComponentMeta<typeof Badge>
+}
+export default meta
 
 const Template: ComponentStory<typeof Badge> = (args) => <Badge {...args} />
 

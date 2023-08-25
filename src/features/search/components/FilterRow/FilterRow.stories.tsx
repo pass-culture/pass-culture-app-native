@@ -10,10 +10,11 @@ import { Sort as SortIconDefault } from 'ui/svg/icons/Sort'
 
 import { FilterRow } from './FilterRow'
 
-export default {
+const meta: ComponentMeta<typeof FilterRow> = {
   title: 'Features/search/FilterRow',
   component: FilterRow,
-} as ComponentMeta<typeof FilterRow>
+}
+export default meta
 
 const Template: ComponentStory<typeof FilterRow> = (props) => <FilterRow {...props} />
 

@@ -10,7 +10,7 @@ import { StoryContainer } from 'ui/storybook/StoryContainer'
 import { EditPen } from 'ui/svg/icons/EditPen'
 import { Email } from 'ui/svg/icons/Email'
 
-export default {
+const meta: ComponentMeta<typeof ButtonQuaternaryPrimary> = {
   title: 'ui/buttons/ButtonQuaternary',
   component: ButtonQuaternaryPrimary,
   argTypes: {
@@ -19,7 +19,8 @@ export default {
       EditPen,
     }),
   },
-} as ComponentMeta<typeof ButtonQuaternaryPrimary>
+}
+export default meta
 
 const Template: ComponentStory<typeof ButtonQuaternaryPrimary> = (props) => (
   <React.Fragment>

@@ -10,7 +10,7 @@ import { openGoogleMapsItinerary } from './openGoogleMapsItinerary'
 import { UseItineraryResult } from './types'
 
 const appEnumTypeGuard = (app: string): app is AppEnum =>
-  Object.values(AppEnum).includes(app as AppEnum)
+  Object.values<string>(AppEnum).includes(app)
 
 enum BackupSolution {
   GOOGLE_MAPS_WEB,

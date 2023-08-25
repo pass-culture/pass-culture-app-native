@@ -13,7 +13,7 @@ import { Step } from '../Step/Step'
 
 import { StepList, StepListProps } from './StepList'
 
-export default {
+const meta: ComponentMeta<typeof StepList> = {
   title: 'features/profile/StepList',
   component: StepList,
   args: {
@@ -22,7 +22,8 @@ export default {
   argTypes: {
     children: { control: { disable: true } },
   },
-} as ComponentMeta<typeof StepList>
+}
+export default meta
 
 const styles = StyleSheet.create({
   contentActive: {

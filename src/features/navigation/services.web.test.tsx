@@ -106,7 +106,6 @@ const NestedStackNavigator = () => (
 )
 function navigationRender() {
   return render(
-    // @ts-expect-error the typing of onNavigationStateChange() is good enough
     <NavigationContainer ref={navigationRef} onStateChange={onNavigationStateChange}>
       <Stack.Navigator initialRouteName="Screen1">
         <Stack.Screen name="Screen1" component={Screen} />

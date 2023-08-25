@@ -4,7 +4,7 @@ import React, { useState } from 'react'
 
 import { RadioButtonWithBorder } from './RadioButtonWithBorder'
 
-export default {
+const meta: ComponentMeta<typeof RadioButtonWithBorder> = {
   title: 'ui/inputs/radioButtons/RadioButtonWithBorder',
   component: RadioButtonWithBorder,
   decorators: [
@@ -14,7 +14,8 @@ export default {
       </NavigationContainer>
     ),
   ],
-} as ComponentMeta<typeof RadioButtonWithBorder>
+}
+export default meta
 
 const Template: ComponentStory<typeof RadioButtonWithBorder> = (args) => (
   <RadioButtonWithBorder {...args} />

@@ -3,10 +3,11 @@ import React from 'react'
 
 import { SingleFilterButton } from './SingleFilterButton'
 
-export default {
+const meta: ComponentMeta<typeof SingleFilterButton> = {
   title: 'Features/search/SingleFilterButton',
   component: SingleFilterButton,
-} as ComponentMeta<typeof SingleFilterButton>
+}
+export default meta
 
 const Template: ComponentStory<typeof SingleFilterButton> = (props) => (
   <SingleFilterButton {...props} />

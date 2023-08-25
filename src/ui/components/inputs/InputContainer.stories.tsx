@@ -3,10 +3,11 @@ import React from 'react'
 
 import { InputContainer } from './InputContainer'
 
-export default {
+const meta: ComponentMeta<typeof InputContainer> = {
   title: 'ui/inputs/InputContainer',
   component: InputContainer,
-} as ComponentMeta<typeof InputContainer>
+}
+export default meta
 
 const Template: ComponentStory<typeof InputContainer> = (args) => <InputContainer {...args} />
 

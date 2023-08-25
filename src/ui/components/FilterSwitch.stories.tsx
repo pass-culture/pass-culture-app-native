@@ -8,7 +8,7 @@ import { Typo } from 'ui/theme'
 
 import FilterSwitch from './FilterSwitch'
 
-export default {
+const meta: ComponentMeta<typeof FilterSwitch> = {
   title: 'ui/FilterSwitch',
   component: FilterSwitch,
   decorators: [
@@ -18,7 +18,8 @@ export default {
       </NavigationContainer>
     ),
   ],
-} as ComponentMeta<typeof FilterSwitch>
+}
+export default meta
 
 const Template: ComponentStory<typeof FilterSwitch> = (props) => (
   <StyledView>

@@ -253,7 +253,7 @@ export const logEventAnalytics = {
       amplitude: AmplitudeEvent.CONTINUE_SET_PASSWORD,
     }),
   logContinueSignup: () => analytics.logEvent({ firebase: AnalyticsEvent.CONTINUE_SIGNUP }),
-  logCulturalSurveyScrolledToBottom: (params: { questionId: string }) =>
+  logCulturalSurveyScrolledToBottom: (params: { questionId?: string }) =>
     analytics.logEvent({ firebase: AnalyticsEvent.CULTURAL_SURVEY_SCROLLED_TO_BOTTOM }, params),
   logDiscoverOffers: (from: Referrals) =>
     analytics.logEvent({ firebase: AnalyticsEvent.DISCOVER_OFFERS }, { from }),

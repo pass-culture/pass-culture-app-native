@@ -7,16 +7,17 @@ import { BicolorClock } from 'ui/svg/icons/BicolorClock'
 
 import { GenericColoredBanner } from './GenericColoredBanner'
 
-export default {
+const meta: ComponentMeta<typeof GenericColoredBanner> = {
   title: 'ui/banners/GenericColoredBanner',
   component: GenericColoredBanner,
   argTypes: {
-    icon: selectArgTypeFromObject({
+    Icon: selectArgTypeFromObject({
       BicolorClock,
       NoIcon: undefined,
     }),
   },
-} as ComponentMeta<typeof GenericColoredBanner>
+}
+export default meta
 
 const Template: ComponentStory<typeof GenericColoredBanner> = (props) => (
   <GenericColoredBanner {...props} />

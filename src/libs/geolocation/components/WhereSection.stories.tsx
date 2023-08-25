@@ -8,7 +8,7 @@ import { ReactQueryClientProvider } from 'libs/react-query/ReactQueryClientProvi
 
 import { WhereSection } from './WhereSection'
 
-export default {
+const meta: ComponentMeta<typeof WhereSection> = {
   title: 'ui/tutu',
   component: WhereSection,
   decorators: [
@@ -18,7 +18,8 @@ export default {
       </ReactQueryClientProvider>
     ),
   ],
-} as ComponentMeta<typeof WhereSection>
+}
+export default meta
 
 const Template: ComponentStory<typeof WhereSection> = (props) => <WhereSection {...props} />
 

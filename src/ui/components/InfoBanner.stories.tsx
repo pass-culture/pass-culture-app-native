@@ -9,7 +9,7 @@ import { PlainArrowNext } from 'ui/svg/icons/PlainArrowNext'
 
 import { InfoBanner } from './InfoBanner'
 
-export default {
+const meta: ComponentMeta<typeof InfoBanner> = {
   title: 'ui/banners/InfoBanner',
   component: InfoBanner,
   argTypes: {
@@ -18,7 +18,8 @@ export default {
       NoIcon: undefined,
     }),
   },
-} as ComponentMeta<typeof InfoBanner>
+}
+export default meta
 
 const Template: ComponentStory<typeof InfoBanner> = (props) => <InfoBanner {...props} />
 

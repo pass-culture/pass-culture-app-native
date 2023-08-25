@@ -8,14 +8,15 @@ import { getSpacing, Spacer, Typo } from 'ui/theme'
 import { CreditBlock } from './CreditBlock'
 
 const ANIMATION_DELAY = 2
-export default {
+const meta: ComponentMeta<typeof CreditBlock> = {
   title: 'features/onboarding/CreditBlock',
   component: CreditBlock,
   parameters: {
     // Wait for animation to finish before snapshot
     chromatic: { delay: ANIMATION_DELAY },
   },
-} as ComponentMeta<typeof CreditBlock>
+}
+export default meta
 
 const Template: ComponentStory<typeof CreditBlock> = (props) => <CreditBlock {...props} />
 const List: ComponentStory<typeof CreditBlock> = (props) => (

@@ -6,7 +6,7 @@ import { LENGTH_XS, LENGTH_XXS } from 'ui/theme'
 
 import { SearchVenueItem } from './SearchVenueItem'
 
-export default {
+const meta: ComponentMeta<typeof SearchVenueItem> = {
   title: 'features/search/SearchVenueItem',
   component: SearchVenueItem,
   decorators: [
@@ -16,7 +16,8 @@ export default {
       </NavigationContainer>
     ),
   ],
-} as ComponentMeta<typeof SearchVenueItem>
+}
+export default meta
 
 const venue = {
   objectID: '5543',

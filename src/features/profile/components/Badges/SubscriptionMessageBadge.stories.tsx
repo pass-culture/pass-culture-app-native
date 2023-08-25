@@ -5,10 +5,11 @@ import { CallToActionIcon, PopOverIcon } from 'api/gen'
 
 import { SubscriptionMessageBadge } from './SubscriptionMessageBadge'
 
-export default {
+const meta: ComponentMeta<typeof SubscriptionMessageBadge> = {
   title: 'features/profile/SubscriptionMessageBadge',
   component: SubscriptionMessageBadge,
-} as ComponentMeta<typeof SubscriptionMessageBadge>
+}
+export default meta
 
 const Template: ComponentStory<typeof SubscriptionMessageBadge> = (props) => (
   <SubscriptionMessageBadge {...props} />

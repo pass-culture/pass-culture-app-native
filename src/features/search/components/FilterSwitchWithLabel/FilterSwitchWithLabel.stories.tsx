@@ -4,7 +4,7 @@ import React from 'react'
 
 import { FilterSwitchWithLabel } from 'features/search/components/FilterSwitchWithLabel/FilterSwitchWithLabel'
 
-export default {
+const meta: ComponentMeta<typeof FilterSwitchWithLabel> = {
   title: 'Features/search/FilterSwitchWithLabel',
   component: FilterSwitchWithLabel,
   decorators: [
@@ -14,7 +14,8 @@ export default {
       </NavigationContainer>
     ),
   ],
-} as ComponentMeta<typeof FilterSwitchWithLabel>
+}
+export default meta
 
 const Template: ComponentStory<typeof FilterSwitchWithLabel> = (props) => (
   <FilterSwitchWithLabel {...props} />

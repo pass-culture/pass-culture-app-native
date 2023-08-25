@@ -4,7 +4,7 @@ import React from 'react'
 
 import { EditButton } from './EditButton'
 
-export default {
+const meta: ComponentMeta<typeof EditButton> = {
   title: 'features/profile/buttons/EditButton',
   component: EditButton,
   decorators: [
@@ -14,7 +14,8 @@ export default {
       </NavigationContainer>
     ),
   ],
-} as ComponentMeta<typeof EditButton>
+}
+export default meta
 
 const Template: ComponentStory<typeof EditButton> = (props) => <EditButton {...props} />
 

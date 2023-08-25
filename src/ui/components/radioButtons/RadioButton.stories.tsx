@@ -9,7 +9,7 @@ import { Email } from 'ui/svg/icons/Email'
 
 import { RadioButton } from './RadioButton'
 
-export default {
+const meta: ComponentMeta<typeof RadioButton> = {
   title: 'ui/inputs/radioButtons/RadioButton',
   component: RadioButton,
   decorators: [
@@ -26,7 +26,8 @@ export default {
       VideoGame,
     }),
   },
-} as ComponentMeta<typeof RadioButton>
+}
+export default meta
 
 const Template: ComponentStory<typeof RadioButton> = (args) => <RadioButton {...args} />
 

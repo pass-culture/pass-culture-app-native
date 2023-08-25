@@ -9,7 +9,7 @@ import { ThematicHighlightModule } from './ThematicHighlightModule'
 
 mockDate.set(CURRENT_DATE)
 
-export default {
+const componentMeta: ComponentMeta<typeof ThematicHighlightModule> = {
   title: 'Features/Home/ThematicHighlightModule',
   component: ThematicHighlightModule,
   decorators: [
@@ -19,7 +19,8 @@ export default {
       </NavigationContainer>
     ),
   ],
-} as ComponentMeta<typeof ThematicHighlightModule>
+}
+export default componentMeta
 
 const Template: ComponentStory<typeof ThematicHighlightModule> = (props) => (
   <ThematicHighlightModule {...props} />

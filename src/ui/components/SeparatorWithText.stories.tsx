@@ -3,10 +3,11 @@ import React from 'react'
 
 import { SeparatorWithText } from 'ui/components/SeparatorWithText'
 
-export default {
+const meta: ComponentMeta<typeof SeparatorWithText> = {
   title: 'ui/sections/SeparatorWithText',
   component: SeparatorWithText,
-} as ComponentMeta<typeof SeparatorWithText>
+}
+export default meta
 
 const Template: ComponentStory<typeof SeparatorWithText> = (props) => (
   <SeparatorWithText {...props} />

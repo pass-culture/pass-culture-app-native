@@ -4,7 +4,7 @@ import React from 'react'
 
 import { RadioSelector } from './RadioSelector'
 
-export default {
+const meta: ComponentMeta<typeof RadioSelector> = {
   title: 'ui/inputs/RadioSelector',
   component: RadioSelector,
   parameters: {
@@ -27,7 +27,8 @@ export default {
       </NavigationContainer>
     ),
   ],
-} as ComponentMeta<typeof RadioSelector>
+}
+export default meta
 
 const Template: ComponentStory<typeof RadioSelector> = (args) => <RadioSelector {...args} />
 export const Default = Template.bind({})

@@ -4,10 +4,11 @@ import { StyleSheet, View } from 'react-native'
 
 import { VenueDetails } from './VenueDetails'
 
-export default {
+const meta: ComponentMeta<typeof VenueDetails> = {
   title: 'features/offer/VenueDetails',
   component: VenueDetails,
-} as ComponentMeta<typeof VenueDetails>
+}
+export default meta
 
 const Template: ComponentStory<typeof VenueDetails> = (props) => <VenueDetails {...props} />
 const WrappedTemplate: ComponentStory<typeof VenueDetails> = (props) => (

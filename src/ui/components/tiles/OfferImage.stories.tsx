@@ -10,7 +10,7 @@ import { OfferImage } from './OfferImage'
 // eslint-disable-next-line import/no-unresolved
 import { useQueryDecorator } from '/.storybook/mocks/react-query'
 
-export default {
+const meta: ComponentMeta<typeof OfferImage> = {
   title: 'ui/tiles/OfferImage',
   component: OfferImage,
   argTypes: {
@@ -26,7 +26,8 @@ export default {
       settings: { enableFrontImageResizing: false },
     },
   },
-} as ComponentMeta<typeof OfferImage>
+}
+export default meta
 
 const Template: ComponentStory<typeof OfferImage> = (props) => <OfferImage {...props} />
 

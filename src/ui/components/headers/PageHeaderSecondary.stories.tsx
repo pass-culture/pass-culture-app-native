@@ -4,7 +4,7 @@ import React from 'react'
 
 import { PageHeaderSecondary } from './PageHeaderSecondary'
 
-export default {
+const meta: ComponentMeta<typeof PageHeaderSecondary> = {
   title: 'ui/headers/PageHeaderSecondary',
   component: PageHeaderSecondary,
   decorators: [
@@ -14,7 +14,8 @@ export default {
       </NavigationContainer>
     ),
   ],
-} as ComponentMeta<typeof PageHeaderSecondary>
+}
+export default meta
 
 const Template: ComponentStory<typeof PageHeaderSecondary> = (props) => (
   <PageHeaderSecondary {...props} />

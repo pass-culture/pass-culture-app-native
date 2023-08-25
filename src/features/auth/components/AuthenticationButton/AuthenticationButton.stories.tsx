@@ -4,7 +4,7 @@ import React from 'react'
 
 import { AuthenticationButton } from './AuthenticationButton'
 
-export default {
+const meta: ComponentMeta<typeof AuthenticationButton> = {
   title: 'Features/auth/LogInButton',
   component: AuthenticationButton,
   decorators: [
@@ -14,7 +14,8 @@ export default {
       </NavigationContainer>
     ),
   ],
-} as ComponentMeta<typeof AuthenticationButton>
+}
+export default meta
 
 const Template: ComponentStory<typeof AuthenticationButton> = (props) => (
   <AuthenticationButton {...props} />

@@ -8,7 +8,7 @@ import { LENGTH_S } from 'ui/theme'
 
 import { VenueTile } from './VenueTile'
 
-export default {
+const meta: ComponentMeta<typeof VenueTile> = {
   title: 'Features/Home/VenueTile',
   component: VenueTile,
   decorators: [
@@ -20,7 +20,8 @@ export default {
       </ReactQueryClientProvider>
     ),
   ],
-} as ComponentMeta<typeof VenueTile>
+}
+export default meta
 
 const Template: ComponentStory<typeof VenueTile> = (props) => <VenueTile {...props} />
 

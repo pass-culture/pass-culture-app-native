@@ -1,21 +1,13 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react'
 import React from 'react'
 
-import { selectArgTypeFromObject } from 'libs/storybook/selectArgTypeFromObject'
-import { BicolorClock } from 'ui/svg/icons/BicolorClock'
-
 import { ErrorBanner } from './ErrorBanner'
 
-export default {
+const meta: ComponentMeta<typeof ErrorBanner> = {
   title: 'ui/banners/ErrorBanner',
   component: ErrorBanner,
-  argTypes: {
-    icon: selectArgTypeFromObject({
-      BicolorClock,
-      NoIcon: undefined,
-    }),
-  },
-} as ComponentMeta<typeof ErrorBanner>
+}
+export default meta
 
 const Template: ComponentStory<typeof ErrorBanner> = (props) => <ErrorBanner {...props} />
 

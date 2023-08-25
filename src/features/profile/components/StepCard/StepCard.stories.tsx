@@ -6,10 +6,11 @@ import { Email } from 'ui/svg/icons/Email'
 
 import { StepCard, StepCardType } from './StepCard'
 
-export default {
+const meta: ComponentMeta<typeof StepCard> = {
   title: 'features/profile/StepCard',
   component: StepCard,
-} as ComponentMeta<typeof StepCard>
+}
+export default meta
 
 const Template: ComponentStory<typeof StepCard> = (props) => <StepCard {...props} />
 export const Default = Template.bind({})

@@ -19,7 +19,7 @@ const DisabledIdCardIcon: React.FC<AccessibleIcon> = () => (
   />
 )
 
-export default {
+const meta: ComponentMeta<typeof StepButton> = {
   title: 'ui/StepButton',
   component: StepButton,
   decorators: [
@@ -29,7 +29,8 @@ export default {
       </NavigationContainer>
     ),
   ],
-} as ComponentMeta<typeof StepButton>
+}
+export default meta
 
 const Template: ComponentStory<typeof StepButton> = (props) => <StepButton {...props} />
 

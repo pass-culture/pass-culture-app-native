@@ -3,10 +3,11 @@ import React from 'react'
 
 import { DotComponent } from './DotComponent'
 
-export default {
+const meta: ComponentMeta<typeof DotComponent> = {
   title: 'ui/dotComponent',
   component: DotComponent,
-} as ComponentMeta<typeof DotComponent>
+}
+export default meta
 
 const Template: ComponentStory<typeof DotComponent> = (props) => <DotComponent {...props} />
 export const Done = Template.bind({})

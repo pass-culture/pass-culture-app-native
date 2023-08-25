@@ -6,10 +6,11 @@ import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 
 import { ThreeShapesTicket } from './ThreeShapesTicket'
 
-export default {
+const meta: ComponentMeta<typeof ThreeShapesTicket> = {
   title: 'Features/bookings/ThreeShapesTicket',
   component: ThreeShapesTicket,
-} as ComponentMeta<typeof ThreeShapesTicket>
+}
+export default meta
 
 const Template: ComponentStory<typeof ThreeShapesTicket> = (props) => (
   <ThreeShapesTicket {...props} />

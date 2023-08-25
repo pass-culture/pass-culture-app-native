@@ -3,10 +3,11 @@ import React from 'react'
 
 import { SelectionLabel } from './SelectionLabel'
 
-export default {
+const meta: ComponentMeta<typeof SelectionLabel> = {
   title: 'Features/search/SelectionLabel',
   component: SelectionLabel,
-} as ComponentMeta<typeof SelectionLabel>
+}
+export default meta
 
 const Template: ComponentStory<typeof SelectionLabel> = (props) => <SelectionLabel {...props} />
 

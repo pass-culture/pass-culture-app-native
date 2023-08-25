@@ -6,10 +6,11 @@ import { getSpacing } from 'ui/theme'
 
 import { SlantTag } from './SlantTag'
 
-export default {
+const meta: ComponentMeta<typeof SlantTag> = {
   title: 'ui/tags/SlantTag',
   component: SlantTag,
-} as ComponentMeta<typeof SlantTag>
+}
+export default meta
 
 const Template: ComponentStory<typeof SlantTag> = (props) => (
   <SlantTagWrapper>

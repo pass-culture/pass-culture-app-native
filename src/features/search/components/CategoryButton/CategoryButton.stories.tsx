@@ -6,10 +6,11 @@ import { theme } from 'theme'
 
 import { CategoryButton } from './CategoryButton'
 
-export default {
+const meta: ComponentMeta<typeof CategoryButton> = {
   title: 'Features/search/CategoryButton',
   component: CategoryButton,
-} as ComponentMeta<typeof CategoryButton>
+}
+export default meta
 
 const Template: ComponentStory<typeof CategoryButton> = (props) => <CategoryButton {...props} />
 

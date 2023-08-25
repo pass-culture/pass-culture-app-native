@@ -3,10 +3,11 @@ import React from 'react'
 
 import { OnboardingTimeline } from './OnboardingTimeline'
 
-export default {
+const meta: ComponentMeta<typeof OnboardingTimeline> = {
   title: 'features/onboarding/OnboardingTimeline',
   component: OnboardingTimeline,
-} as ComponentMeta<typeof OnboardingTimeline>
+}
+export default meta
 
 const Template: ComponentStory<typeof OnboardingTimeline> = (props) => (
   <OnboardingTimeline {...props} />

@@ -6,10 +6,11 @@ import { Typo } from 'ui/theme'
 
 import { QuickAccess } from './QuickAccess'
 
-export default {
+const meta: ComponentMeta<typeof QuickAccess> = {
   title: 'ui/a11y/QuickAccess',
   component: QuickAccess,
-} as ComponentMeta<typeof QuickAccess>
+}
+export default meta
 
 const caption = 'QuickAccess'
 const body = ' is a component that should be visible only when giving focus'

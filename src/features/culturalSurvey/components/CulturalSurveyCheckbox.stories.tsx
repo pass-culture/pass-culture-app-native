@@ -4,10 +4,11 @@ import React from 'react'
 import { CulturalSurveyCheckbox } from 'features/culturalSurvey/components/CulturalSurveyCheckbox'
 import { culturalSurveyIcons } from 'ui/svg/icons/bicolor/exports/culturalSurveyIcons'
 
-export default {
+const meta: ComponentMeta<typeof CulturalSurveyCheckbox> = {
   title: 'Features/culturalSurvey/CulturalSurveyCheckbox',
   component: CulturalSurveyCheckbox,
-} as ComponentMeta<typeof CulturalSurveyCheckbox>
+}
+export default meta
 
 const Template: ComponentStory<typeof CulturalSurveyCheckbox> = (props) => (
   <CulturalSurveyCheckbox {...props} />

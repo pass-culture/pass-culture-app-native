@@ -8,7 +8,7 @@ import { Spacer } from 'ui/theme'
 
 import { CategoryBlock } from './CategoryBlock'
 
-export default {
+const componentMeta: ComponentMeta<typeof CategoryBlock> = {
   title: 'features/home/CategoryBlock',
   component: CategoryBlock,
   decorators: [
@@ -18,7 +18,8 @@ export default {
       </NavigationContainer>
     ),
   ],
-} as ComponentMeta<typeof CategoryBlock>
+}
+export default componentMeta
 
 export const CategoryBlockWithoutImage: ComponentStory<typeof CategoryBlock> = () => (
   <Container>

@@ -9,10 +9,11 @@ import { getSpacing } from 'ui/theme'
 
 import { CategoriesButtonsDisplay } from './CategoriesButtonsDisplay'
 
-export default {
+const meta: ComponentMeta<typeof CategoriesButtonsDisplay> = {
   title: 'Features/search/CategoriesButtons',
   component: CategoriesButtonsDisplay,
-} as ComponentMeta<typeof CategoriesButtonsDisplay>
+}
+export default meta
 
 const BodyWrapper = styled.View({
   marginHorizontal: -getSpacing(4),

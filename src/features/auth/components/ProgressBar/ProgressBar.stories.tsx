@@ -5,14 +5,15 @@ import { ProgressBar } from './ProgressBar'
 
 const ANIMATION_DURATION_IN_S = 1
 
-export default {
+const meta: ComponentMeta<typeof ProgressBar> = {
   title: 'features/auth/ProgressBar',
   component: ProgressBar,
   parameters: {
     // Wait for animation to finish before snapshot
     chromatic: { delay: ANIMATION_DURATION_IN_S },
   },
-} as ComponentMeta<typeof ProgressBar>
+}
+export default meta
 
 const Template: ComponentStory<typeof ProgressBar> = (props) => <ProgressBar {...props} />
 export const FirstStep = Template.bind({})

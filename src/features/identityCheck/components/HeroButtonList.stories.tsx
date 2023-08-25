@@ -8,7 +8,7 @@ import { Emoji } from 'ui/components/Emoji'
 import { BicolorSmartphone } from 'ui/svg/icons/BicolorSmartphone'
 import { Typo } from 'ui/theme'
 
-export default {
+const meta: ComponentMeta<typeof HeroButtonList> = {
   title: 'Features/identityCheck/HeroButtonList',
   component: HeroButtonList,
   decorators: [
@@ -18,7 +18,8 @@ export default {
       </NavigationContainer>
     ),
   ],
-} as ComponentMeta<typeof HeroButtonList>
+}
+export default meta
 
 const Template: ComponentStory<typeof HeroButtonList> = (props) => <HeroButtonList {...props} />
 

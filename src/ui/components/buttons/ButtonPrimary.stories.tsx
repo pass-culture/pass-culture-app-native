@@ -9,7 +9,7 @@ import { Email } from 'ui/svg/icons/Email'
 
 import { ButtonPrimary } from './ButtonPrimary'
 
-export default {
+const meta: ComponentMeta<typeof ButtonPrimary> = {
   title: 'ui/buttons/ButtonPrimary',
   component: ButtonPrimary,
   argTypes: {
@@ -18,7 +18,8 @@ export default {
       EditPen,
     }),
   },
-} as ComponentMeta<typeof ButtonPrimary>
+}
+export default meta
 
 const Template: ComponentStory<typeof ButtonPrimary> = (props) => (
   <React.Fragment>

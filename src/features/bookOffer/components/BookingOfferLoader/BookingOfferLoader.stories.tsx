@@ -4,10 +4,11 @@ import React from 'react'
 
 import { BookingOfferLoader } from 'features/bookOffer/components/BookingOfferLoader/BookingOfferLoader'
 
-export default {
+const meta: ComponentMeta<typeof BookingOfferLoader> = {
   title: 'features/bookOffer/BookingOfferLoader',
   component: BookingOfferLoader,
-} as ComponentMeta<typeof BookingOfferLoader>
+}
+export default meta
 
 const DynamicTemplate: ComponentStory<typeof BookingOfferLoader> = (props) => {
   return (

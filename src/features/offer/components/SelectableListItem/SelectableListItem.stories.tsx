@@ -8,7 +8,7 @@ import { Typo } from 'ui/theme'
 
 import { SelectableListItem } from './SelectableListItem'
 
-export default {
+const meta: Meta<typeof SelectableListItem> = {
   title: 'features/offer/SelectableListItem',
   component: SelectableListItem,
   parameters: {
@@ -21,7 +21,8 @@ export default {
   argTypes: {
     onSelect: { control: { disable: true } },
   },
-} as Meta<typeof SelectableListItem>
+}
+export default meta
 
 const Template: ComponentStory<typeof SelectableListItem> = (props) => (
   <SelectableListItem {...props} />

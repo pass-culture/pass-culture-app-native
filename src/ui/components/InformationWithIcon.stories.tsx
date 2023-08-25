@@ -5,10 +5,11 @@ import { BicolorClock } from 'ui/svg/icons/BicolorClock'
 
 import { InformationWithIcon } from './InformationWithIcon'
 
-export default {
+const meta: ComponentMeta<typeof InformationWithIcon> = {
   title: 'ui/InformationWithIcon',
   component: InformationWithIcon,
-} as ComponentMeta<typeof InformationWithIcon>
+}
+export default meta
 
 const Template: ComponentStory<typeof InformationWithIcon> = (props) => (
   <InformationWithIcon {...props} />

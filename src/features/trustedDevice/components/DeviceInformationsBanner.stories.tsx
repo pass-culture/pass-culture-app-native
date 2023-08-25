@@ -3,10 +3,11 @@ import React from 'react'
 
 import { DeviceInformationsBanner } from './DeviceInformationsBanner'
 
-export default {
+const meta: ComponentMeta<typeof DeviceInformationsBanner> = {
   title: 'features/trustedDevice/DeviceInformationsBanner',
   component: DeviceInformationsBanner,
-} as ComponentMeta<typeof DeviceInformationsBanner>
+}
+export default meta
 
 const Template: ComponentStory<typeof DeviceInformationsBanner> = (props) => (
   <DeviceInformationsBanner {...props} />

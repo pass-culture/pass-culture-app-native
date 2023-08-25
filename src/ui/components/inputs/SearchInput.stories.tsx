@@ -7,10 +7,11 @@ import { MagnifyingGlass } from 'ui/svg/icons/MagnifyingGlass'
 
 import { SearchInput } from './SearchInput'
 
-export default {
+const meta: ComponentMeta<typeof SearchInput> = {
   title: 'ui/inputs/SearchInput',
   component: SearchInput,
-} as ComponentMeta<typeof SearchInput>
+}
+export default meta
 
 const Template: ComponentStory<typeof SearchInput> = (args) => <SearchInput {...args} />
 
