@@ -37,6 +37,7 @@ module.exports = {
     'local-rules/no-react-query-provider-hoc': ['error'],
     'local-rules/nbsp-in-text': ['error'],
     'local-rules/apostrophe-in-text': ['error'],
+    'local-rules/no-truthy-check-after-queryAll-matchers': ['error'],
     'local-rules/todo-format': ['error'],
     'local-rules/use-the-right-test-utils': ['error'],
     'local-rules/no-use-of-algolia-multiple-queries': ['error'],
