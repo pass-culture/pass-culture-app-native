@@ -12,11 +12,12 @@ import {
 import * as Auth from 'features/auth/context/AuthContext'
 import { nonBeneficiaryUser } from 'fixtures/user'
 import { env } from 'libs/environment'
+import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { GeolocPermissionState, useGeolocation } from 'libs/geolocation'
 import { Credit, useAvailableCredit } from 'shared/user/useAvailableCredit'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { server } from 'tests/server'
-import { act, render, screen } from 'tests/utils'
+import { act, render, screen, waitFor } from 'tests/utils'
 
 import { HomeHeader } from './HomeHeader'
 
@@ -43,6 +44,8 @@ mockUseAuthContext.mockReturnValue({
   setIsLoggedIn: jest.fn(),
   refetchUser: jest.fn(),
 })
+
+const useFeatureFlagSpy = jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockReturnValue(false)
 
 describe('HomeHeader', () => {
   it.each`
@@ -125,22 +128,6 @@ describe('HomeHeader', () => {
     renderHomeHeader()
 
     expect(await screen.findByText('Géolocalise-toi')).toBeTruthy()
-  })
-
-  it('should have CheatMenu button when FEATURE_FLIPPING_ONLY_VISIBLE_ON_TESTING=true', async () => {
-    env.FEATURE_FLIPPING_ONLY_VISIBLE_ON_TESTING = true
-    renderHomeHeader()
-    await act(async () => {})
-
-    expect(await screen.findByText('CheatMenu')).toBeTruthy()
-  })
-
-  it('should NOT have CheatMenu button when NOT FEATURE_FLIPPING_ONLY_VISIBLE_ON_TESTING=false', async () => {
-    env.FEATURE_FLIPPING_ONLY_VISIBLE_ON_TESTING = false
-    renderHomeHeader()
-    await act(async () => {})
-
-    expect(screen.queryByText('CheatMenu')).toBeNull()
   })
 
   it('should display SignupBanner when user is not logged in', async () => {
@@ -228,12 +215,37 @@ describe('HomeHeader', () => {
     expect(screen.getByText('Confirme tes informations')).toBeTruthy()
     expect(screen.getByTestId('BirthdayCake')).toBeTruthy()
   })
+
+  it('should show LocationWidget when ENABLE_APP_LOCATION is on and when isDesktopViewport is false', async () => {
+    useFeatureFlagSpy.mockReturnValueOnce(true)
+    renderHomeHeader()
+
+    expect(await screen.findByText('Me localiser')).toBeTruthy()
+  })
+
+  it('should not show LocationWidget when ENABLE_APP_LOCATION is on and isDesktopViewport is true', async () => {
+    useFeatureFlagSpy.mockReturnValueOnce(true)
+    renderHomeHeader(true)
+
+    await waitFor(() => {
+      expect(screen.queryByText('Me localiser')).toBeNull()
+    })
+  })
+
+  it('should not show LocationWidget when ENABLE_APP_LOCATION is off and isDesktopViewport is false', async () => {
+    useFeatureFlagSpy.mockReturnValueOnce(false)
+    renderHomeHeader()
+
+    await waitFor(() => {
+      expect(screen.queryByText('Me localiser')).toBeNull()
+    })
+  })
 })
 
-function renderHomeHeader() {
-  return render(<HomeHeader />, {
-    // eslint-disable-next-line local-rules/no-react-query-provider-hoc
-    wrapper: ({ children }) => reactQueryProviderHOC(children),
+function renderHomeHeader(isDesktopViewport?: boolean) {
+  // eslint-disable-next-line local-rules/no-react-query-provider-hoc
+  return render(reactQueryProviderHOC(<HomeHeader />), {
+    theme: { isDesktopViewport: isDesktopViewport ?? false },
   })
 }
 

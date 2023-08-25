@@ -1,7 +1,5 @@
-import { useNavigation } from '@react-navigation/native'
 import React, { FunctionComponent, useMemo } from 'react'
-import { Platform } from 'react-native'
-import styled from 'styled-components/native'
+import styled, { useTheme } from 'styled-components/native'
 
 import { BannerName } from 'api/gen'
 import { useAuthContext } from 'features/auth/context/AuthContext'
@@ -9,30 +7,28 @@ import { useHomeBanner } from 'features/home/api/useHomeBanner'
 import { ActivationBanner } from 'features/home/components/banners/ActivationBanner'
 import { GeolocationBanner } from 'features/home/components/banners/GeolocationBanner'
 import { SignupBanner } from 'features/home/components/banners/SignupBanner'
-import { UseNavigationType } from 'features/navigation/RootNavigator/types'
+import { LocationWidget } from 'features/location/components/LocationWidget'
 import { isUserBeneficiary } from 'features/profile/helpers/isUserBeneficiary'
-import { env } from 'libs/environment'
+import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
+import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { useGeolocation, GeolocPermissionState } from 'libs/geolocation'
 import { formatToFrenchDecimal } from 'libs/parsers'
 import { useAvailableCredit } from 'shared/user/useAvailableCredit'
 import { PageHeader } from 'ui/components/headers/PageHeader'
-import { TouchableOpacity } from 'ui/components/TouchableOpacity'
 import { ArrowAgain } from 'ui/svg/icons/ArrowAgain'
 import { BicolorUnlock } from 'ui/svg/icons/BicolorUnlock'
 import { BirthdayCake } from 'ui/svg/icons/BirthdayCake'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
-import { useCustomSafeInsets } from 'ui/theme/useCustomSafeInsets'
 
 export const HomeHeader: FunctionComponent = function () {
-  const navigation = useNavigation<UseNavigationType>()
   const availableCredit = useAvailableCredit()
-  const { top } = useCustomSafeInsets()
   const { isLoggedIn, user } = useAuthContext()
-
   const { permissionState } = useGeolocation()
   const isGeolocated = permissionState === GeolocPermissionState.GRANTED
   const { data } = useHomeBanner(isGeolocated)
   const homeBanner = data?.banner
+  const { isDesktopViewport } = useTheme()
+  const enableAppLocation = useFeatureFlag(RemoteStoreFeatureFlags.WIP_ENABLE_APP_LOCATION)
 
   const welcomeTitle =
     user?.firstName && isLoggedIn ? `Bonjour ${user.firstName}` : 'Bienvenue\u00a0!'
@@ -102,15 +98,16 @@ export const HomeHeader: FunctionComponent = function () {
     return null
   }, [isLoggedIn, homeBanner])
 
+  const shouldDisplayLocationWidget = !isDesktopViewport && enableAppLocation
+
   return (
     <React.Fragment>
-      {!!env.FEATURE_FLIPPING_ONLY_VISIBLE_ON_TESTING && (
-        <CheatCodeButtonContainer
-          onPress={() => navigation.navigate(Platform.OS === 'web' ? 'Navigation' : 'CheatMenu')}
-          style={{ top: getSpacing(3) + top }}>
-          <Typo.Body>CheatMenu</Typo.Body>
-        </CheatCodeButtonContainer>
-      )}
+      {shouldDisplayLocationWidget ? (
+        <LocationWidgetContainer>
+          <Spacer.TopScreen />
+          <LocationWidget />
+        </LocationWidgetContainer>
+      ) : null}
       <PageHeader title={welcomeTitle} numberOfLines={2} />
       <PageContent>
         <CaptionSubtitle>{getSubtitle()}</CaptionSubtitle>
@@ -129,14 +126,13 @@ const CaptionSubtitle = styled(Typo.Caption)(({ theme }) => ({
   color: theme.colors.greyDark,
 }))
 
-const CheatCodeButtonContainer = styled(TouchableOpacity)(({ theme }) => ({
-  position: 'absolute',
-  right: getSpacing(2),
-  zIndex: theme.zIndex.cheatCodeButton,
-  border: 1,
-  padding: getSpacing(1),
-}))
-
 const BannerContainer = styled.View({
   marginBottom: getSpacing(8),
 })
+
+const LocationWidgetContainer = styled.View(({ theme }) => ({
+  position: 'absolute',
+  right: getSpacing(6),
+  top: getSpacing(6),
+  zIndex: theme.zIndex.locationWidget,
+}))

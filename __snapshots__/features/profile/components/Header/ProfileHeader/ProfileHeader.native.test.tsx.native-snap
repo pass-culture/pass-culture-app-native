@@ -3,6 +3,49 @@
 exports[`ProfileHeader should display the LoggedOutHeader if no user 1`] = `
 [
   <View
+    accessible={true}
+    collapsable={false}
+    focusable={true}
+    onClick={[Function]}
+    onResponderGrant={[Function]}
+    onResponderMove={[Function]}
+    onResponderRelease={[Function]}
+    onResponderTerminate={[Function]}
+    onResponderTerminationRequest={[Function]}
+    onStartShouldSetResponder={[Function]}
+    style={
+      {
+        "borderColor": "black",
+        "borderStyle": "solid",
+        "borderWidth": 1,
+        "opacity": 1,
+        "paddingBottom": 4,
+        "paddingLeft": 4,
+        "paddingRight": 4,
+        "paddingTop": 4,
+        "position": "absolute",
+        "right": 8,
+        "top": 28,
+        "zIndex": 1,
+      }
+    }
+  >
+    <Text
+      style={
+        [
+          {
+            "color": "#161617",
+            "fontFamily": "Montserrat-Regular",
+            "fontSize": 15,
+            "lineHeight": 20,
+          },
+        ]
+      }
+    >
+      CheatMenu
+    </Text>
+  </View>,
+  <View
     style={
       [
         {
@@ -316,83 +359,173 @@ exports[`ProfileHeader should display the LoggedOutHeader if no user 1`] = `
 `;
 
 exports[`ProfileHeader should display the NonBeneficiaryHeader Header if user is eligible exunderage beneficiary 1`] = `
-<View
-  style={
-    [
-      {
-        "marginBottom": 4,
-        "marginHorizontal": 24,
-        "marginTop": 24,
-      },
-    ]
-  }
->
+[
   <View
-    customHeight={16}
-    enable={true}
+    accessible={true}
+    collapsable={false}
+    focusable={true}
+    onClick={[Function]}
+    onResponderGrant={[Function]}
+    onResponderMove={[Function]}
+    onResponderRelease={[Function]}
+    onResponderTerminate={[Function]}
+    onResponderTerminationRequest={[Function]}
+    onStartShouldSetResponder={[Function]}
     style={
-      [
-        {
-          "height": 16,
-        },
-      ]
+      {
+        "borderColor": "black",
+        "borderStyle": "solid",
+        "borderWidth": 1,
+        "opacity": 1,
+        "paddingBottom": 4,
+        "paddingLeft": 4,
+        "paddingRight": 4,
+        "paddingTop": 4,
+        "position": "absolute",
+        "right": 8,
+        "top": 28,
+        "zIndex": 1,
+      }
     }
-  />
-  <Text
-    numberOfLines={1}
+  >
+    <Text
+      style={
+        [
+          {
+            "color": "#161617",
+            "fontFamily": "Montserrat-Regular",
+            "fontSize": 15,
+            "lineHeight": 20,
+          },
+        ]
+      }
+    >
+      CheatMenu
+    </Text>
+  </View>,
+  <View
     style={
       [
         {
-          "color": "#161617",
-          "fontFamily": "Montserrat-Black",
-          "fontSize": 26,
-          "lineHeight": 34,
+          "marginBottom": 4,
+          "marginHorizontal": 24,
+          "marginTop": 24,
         },
       ]
     }
   >
-    Mon profil
-  </Text>
-</View>
+    <View
+      customHeight={16}
+      enable={true}
+      style={
+        [
+          {
+            "height": 16,
+          },
+        ]
+      }
+    />
+    <Text
+      numberOfLines={1}
+      style={
+        [
+          {
+            "color": "#161617",
+            "fontFamily": "Montserrat-Black",
+            "fontSize": 26,
+            "lineHeight": 34,
+          },
+        ]
+      }
+    >
+      Mon profil
+    </Text>
+  </View>,
+]
 `;
 
 exports[`ProfileHeader should display the NonBeneficiaryHeader Header if user is not beneficiary 1`] = `
-<View
-  style={
-    [
-      {
-        "marginBottom": 4,
-        "marginHorizontal": 24,
-        "marginTop": 24,
-      },
-    ]
-  }
->
+[
   <View
-    customHeight={16}
-    enable={true}
+    accessible={true}
+    collapsable={false}
+    focusable={true}
+    onClick={[Function]}
+    onResponderGrant={[Function]}
+    onResponderMove={[Function]}
+    onResponderRelease={[Function]}
+    onResponderTerminate={[Function]}
+    onResponderTerminationRequest={[Function]}
+    onStartShouldSetResponder={[Function]}
     style={
-      [
-        {
-          "height": 16,
-        },
-      ]
+      {
+        "borderColor": "black",
+        "borderStyle": "solid",
+        "borderWidth": 1,
+        "opacity": 1,
+        "paddingBottom": 4,
+        "paddingLeft": 4,
+        "paddingRight": 4,
+        "paddingTop": 4,
+        "position": "absolute",
+        "right": 8,
+        "top": 28,
+        "zIndex": 1,
+      }
     }
-  />
-  <Text
-    numberOfLines={1}
+  >
+    <Text
+      style={
+        [
+          {
+            "color": "#161617",
+            "fontFamily": "Montserrat-Regular",
+            "fontSize": 15,
+            "lineHeight": 20,
+          },
+        ]
+      }
+    >
+      CheatMenu
+    </Text>
+  </View>,
+  <View
     style={
       [
         {
-          "color": "#161617",
-          "fontFamily": "Montserrat-Black",
-          "fontSize": 26,
-          "lineHeight": 34,
+          "marginBottom": 4,
+          "marginHorizontal": 24,
+          "marginTop": 24,
         },
       ]
     }
   >
-    Mon profil
-  </Text>
-</View>
+    <View
+      customHeight={16}
+      enable={true}
+      style={
+        [
+          {
+            "height": 16,
+          },
+        ]
+      }
+    />
+    <Text
+      numberOfLines={1}
+      style={
+        [
+          {
+            "color": "#161617",
+            "fontFamily": "Montserrat-Black",
+            "fontSize": 26,
+            "lineHeight": 34,
+          },
+        ]
+      }
+    >
+      Mon profil
+    </Text>
+  </View>,
+]
 `;

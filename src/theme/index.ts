@@ -19,7 +19,7 @@ import { BorderRadiusEnum, Breakpoints } from 'ui/theme/grid'
 import { IconSizesType, iconSizes } from 'ui/theme/iconSizes'
 import { IllustrationSizesType, illustrationSizes } from 'ui/theme/illustrationSizes'
 // eslint-disable-next-line no-restricted-imports
-import { ZIndex } from 'ui/theme/layers'
+import { zIndex } from 'ui/theme/layers'
 
 const isNative = Platform.OS === 'ios' || Platform.OS === 'android'
 const isTouchWeb = Platform.OS === 'web' && (isMobileDeviceDetectOnWeb || isTabletDeviceDetectOnWeb)
@@ -176,19 +176,20 @@ export interface AppThemeType {
     checkbox: BorderRadiusEnum
   }
   zIndex: {
-    background: ZIndex
-    cheatCodeButton: ZIndex
-    favoritePastilleContent: ZIndex
-    floatingButton: ZIndex
-    homeOfferCoverIcons: ZIndex
-    header: ZIndex
-    modalHeader: ZIndex
-    progressbar: ZIndex
-    playlistsButton: ZIndex
-    progressbarIcon: ZIndex
-    tabBar: ZIndex
-    headerNav: ZIndex
-    snackbar: ZIndex
+    background: number
+    cheatCodeButton: number
+    favoritePastilleContent: number
+    floatingButton: number
+    homeOfferCoverIcons: number
+    header: number
+    locationWidget: number
+    modalHeader: number
+    progressbar: number
+    playlistsButton: number
+    progressbarIcon: number
+    tabBar: number
+    headerNav: number
+    snackbar: number
   }
   offlineMode: {
     banner: {
@@ -628,19 +629,20 @@ export const theme: AppThemeType = {
     checkbox: BorderRadiusEnum.CHECKBOX_RADIUS,
   },
   zIndex: {
-    background: ZIndex.BACKGROUND,
-    cheatCodeButton: ZIndex.CHEAT_CODE_BUTTON,
-    favoritePastilleContent: ZIndex.FAVORITE_PASTILLE_CONTENT,
-    floatingButton: ZIndex.FLOATING_BUTTON,
-    homeOfferCoverIcons: ZIndex.HOME_OFFER_COVER_ICONS,
-    header: ZIndex.HEADER,
-    modalHeader: ZIndex.MODAL_HEADER,
-    progressbar: ZIndex.PROGRESSBAR,
-    playlistsButton: ZIndex.PLAYLIST_BUTTON,
-    progressbarIcon: ZIndex.PROGRESSBAR_ICON,
-    tabBar: ZIndex.TAB_BAR,
-    headerNav: ZIndex.HEADER_NAV,
-    snackbar: ZIndex.SNACKBAR,
+    background: zIndex.background,
+    cheatCodeButton: zIndex.cheatCodeButton,
+    favoritePastilleContent: zIndex.favoritePastilleContent,
+    floatingButton: zIndex.floatingButton,
+    homeOfferCoverIcons: zIndex.homeOfferCoverIcons,
+    header: zIndex.header,
+    locationWidget: zIndex.locationWidget,
+    modalHeader: zIndex.modalHeader,
+    progressbar: zIndex.progressbar,
+    playlistsButton: zIndex.playlistButton,
+    progressbarIcon: zIndex.progressbarIcon,
+    tabBar: zIndex.tabBar,
+    headerNav: zIndex.headerNav,
+    snackbar: zIndex.snackbar,
   },
   offlineMode: {
     banner: {
