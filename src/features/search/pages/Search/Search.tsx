@@ -90,6 +90,7 @@ export function Search() {
           <SearchHeader searchInputID={searchInputID} searchView={currentView} />
           {currentView === SearchView.Suggestions ? (
             <StyledScrollView
+              testID="autocompleteScrollView"
               keyboardShouldPersistTaps="handled"
               onScroll={Keyboard.dismiss}
               scrollEventThrottle={400}>
