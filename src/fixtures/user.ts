@@ -45,6 +45,7 @@ export const beneficiaryUser: UserProfileResponse = {
   status: { statusType: YoungStatusType.beneficiary },
   depositType: DepositType.GRANT_18,
   eligibility: EligibilityType['age-18'],
+  depositActivationDate: '2021-11-19T11:00:00Z',
   eligibilityEndDatetime: '2023-11-19T11:00:00Z',
   birthDate: format(EIGHTEEN_AGE_DATE, 'yyyy-MM-dd'),
 }
