@@ -79,8 +79,8 @@ const OnlineHome: FunctionComponent<GenericHomeProps> = ({
   onScroll: givenOnScroll,
   videoModuleId,
   statusBar,
+  finish,
 }) => {
-  const { finish } = usePerformanceCalculation()
   const { offersModulesData } = useGetOffersData(modules.filter(isOffersModule))
   const { venuesModulesData } = useGetVenuesData(modules.filter(isVenuesModule))
   const logHasSeenAllModules = useFunctionOnce(() => analytics.logAllModulesSeen(modules.length))

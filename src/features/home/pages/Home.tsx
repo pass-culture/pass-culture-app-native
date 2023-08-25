@@ -23,7 +23,7 @@ const Header = () => (
 )
 
 const ToHome: FunctionComponent = () => {
-  const { start } = usePerformanceCalculation()
+  const { start, finish } = usePerformanceCalculation()
   start(PERF_HOME_ZERO)
   start(PERF_HOME_GLOBAL)
   const { params } = useRoute<UseRouteType<'Home'>>()
@@ -49,6 +49,7 @@ const ToHome: FunctionComponent = () => {
       Header={<Header />}
       videoModuleId={params?.videoModuleId}
       statusBar={<StatusBarBlurredBackground />}
+      finish={finish}
     />
   )
 }

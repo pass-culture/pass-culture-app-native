@@ -1,17 +1,36 @@
 import { Transaction } from '@sentry/types'
 import { useEffect, useRef } from 'react'
 
+import { eventMonitoring } from 'libs/monitoring'
 import {
-  addTransaction,
-  getTransaction,
-  removeTransaction,
-  transactionDoesNotExist,
+  IActionner,
+  ITransactions,
 } from 'shared/usePerformanceCalculation/helpers/usePerformanceCalculationHelpers'
+
+class SentryActionner extends IActionner {
+  getName(transaction) {
+    return transaction.name
+  }
+
+  startTransaction(name: string) {
+    return eventMonitoring.startTransaction({ name })
+  }
+
+  endTransaction(transaction) {
+    transaction.finish()
+  }
+}
+
+export class SentryTransactions extends ITransactions {
+  constructor() {
+    super(new SentryActionner())
+  }
+}
 
 // Transaction name has seen in Sentry
 // PERF_[PAGE_NAME]_GLOBAL | [NAME]
-export const PERF_HOME_ZERO = 'HOME:ZERO:1'
-export const PERF_HOME_GLOBAL = 'HOME:GLOBAL:2'
+export const PERF_HOME_ZERO = 'HOME:ON_CREATE'
+export const PERF_HOME_GLOBAL = 'HOME:AFTER_SKELETON'
 
 // Start the hook in the first line of a component
 // usePerformanceCalculation().start(PERF_NAME)
@@ -19,26 +38,21 @@ export const PERF_HOME_GLOBAL = 'HOME:GLOBAL:2'
 // const {finish}=usePerformanceCalculation()
 // finish(PERF_NAME)
 export const usePerformanceCalculation = () => {
-  const transactions = useRef<Transaction[]>([])
+  const transactions = useRef<ITransactions>(new SentryTransactions())
 
   const start = (name: string) => {
-    if (transactionDoesNotExist(transactions.current, name)) {
-      addTransaction(transactions.current, name)
-    }
+    transactions.current?.addTransaction(name)
   }
 
   const finish = (name: string) => {
-    const transaction = getTransaction(transactions.current, name)
-    if (transaction) {
-      removeTransaction(transactions.current, name)
-    }
+    transactions.current?.removeTransaction(name)
   }
 
   // Only used to clean up the transaction's array
   useEffect(() => {
     return () => {
-      transactions.current.forEach((transaction) => transaction.finish())
-      transactions.current = []
+      delete transactions.current
+      transactions.current = null
     }
   }, [])
 

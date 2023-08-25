@@ -1,23 +1,41 @@
-import { Transaction } from '@sentry/types'
-
-import { eventMonitoring } from 'libs/monitoring'
-
-export function getTransaction(transactions: Transaction[], name: string) {
-  return transactions.find((transaction) => transaction.name === name)
+export class IActionner {
+  getName(transaction)
+  startTransaction(name: string)
+  endTransaction(transaction)
 }
 
-export function transactionDoesNotExist(transactions: Transaction[], name: string) {
-  return transactions.find((transaction) => transaction.name === name) === undefined
-}
+export class ITransactions {
+  constructor(actionner: IActionner) {
+    this.transactions = []
+    this.actionner = actionner
+  }
 
-export function addTransaction(transactions: Transaction[], name: string) {
-  const transaction = eventMonitoring.startTransaction({ name })
-  transactions.push(transaction)
-}
+  getTransactionIndex(name: string) {
+    return this.transactions.findIndex(
+      (transaction) => this.actionner.getName(transaction) === name
+    )
+  }
 
-export function removeTransaction(transactions: Transaction[], name: string) {
-  const itemIndex = transactions.findIndex((transaction) => transaction.name === name)
-  if (itemIndex > -1) {
-    transactions.splice(itemIndex, 1)
+  addTransaction(name: string) {
+    const itemIndex = this.getTransactionIndex(name)
+    if (itemIndex <= 0) {
+      const transaction = this.actionner.startTransaction(name)
+      this.transactions.push(transaction)
+    }
+  }
+
+  removeTransaction(name: string) {
+    const itemIndex = this.getTransactionIndex(name)
+    if (itemIndex > -1) {
+      this.actionner.endTransaction(this.transactions[itemIndex])
+      this.transactions.splice(itemIndex, 1)
+    }
+  }
+
+  removeAllTransactions() {
+    this.transactions.forEach((transaction) => {
+      this.actionner.endTransaction(transaction)
+    })
+    this.transactions = []
   }
 }
