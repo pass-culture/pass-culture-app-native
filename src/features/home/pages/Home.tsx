@@ -11,6 +11,7 @@ import { useGeolocation } from 'libs/geolocation'
 import { eventMonitoring } from 'libs/monitoring'
 import {
   usePerformanceCalculation,
+  PERF_HOME_ZERO,
   PERF_HOME_GLOBAL,
 } from 'shared/usePerformanceCalculation/usePerformanceCalculation'
 import { StatusBarBlurredBackground } from 'ui/components/statusBar/statusBarBlurredBackground'
@@ -22,7 +23,9 @@ const Header = () => (
 )
 
 const ToHome: FunctionComponent = () => {
-  usePerformanceCalculation().start(PERF_HOME_GLOBAL)
+  const { start } = usePerformanceCalculation()
+  start(PERF_HOME_ZERO)
+  start(PERF_HOME_GLOBAL)
   const { params } = useRoute<UseRouteType<'Home'>>()
   const { modules, id } = useHomepageData() || {}
   const { setCustomPosition } = useLocation()

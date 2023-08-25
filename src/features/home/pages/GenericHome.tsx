@@ -23,6 +23,7 @@ import { OfflinePage } from 'libs/network/OfflinePage'
 import { BatchEvent, BatchUser } from 'libs/react-native-batch'
 import {
   usePerformanceCalculation,
+  PERF_HOME_ZERO,
   PERF_HOME_GLOBAL,
 } from 'shared/usePerformanceCalculation/usePerformanceCalculation'
 import { ScrollToTopButton } from 'ui/components/ScrollToTopButton'
@@ -79,6 +80,7 @@ const OnlineHome: FunctionComponent<GenericHomeProps> = ({
   videoModuleId,
   statusBar,
 }) => {
+  const { finish } = usePerformanceCalculation()
   const { offersModulesData } = useGetOffersData(modules.filter(isOffersModule))
   const { venuesModulesData } = useGetVenuesData(modules.filter(isVenuesModule))
   const logHasSeenAllModules = useFunctionOnce(() => analytics.logAllModulesSeen(modules.length))
@@ -97,8 +99,6 @@ const OnlineHome: FunctionComponent<GenericHomeProps> = ({
   const flatListHeaderStyle = { zIndex: theme.zIndex.header }
 
   const modulesToDisplay = modules.slice(0, maxIndex)
-
-  const { finish } = usePerformanceCalculation('HomeTestPierreCedric4')
 
   modulesToDisplay.forEach((module) => {
     if (isOffersModule(module)) {
@@ -143,11 +143,14 @@ const OnlineHome: FunctionComponent<GenericHomeProps> = ({
   const onContentSizeChange = () => setIsLoading(false)
 
   useEffect(() => {
+    finish(PERF_HOME_ZERO)
     return () => clearInterval(modulesIntervalId.current)
   }, [])
 
   useEffect(() => {
-    if (!showSkeleton) finish(PERF_HOME_GLOBAL)
+    if (!showSkeleton) {
+      finish(PERF_HOME_GLOBAL)
+    }
   }, [showSkeleton, finish])
 
   useEffect(() => {
