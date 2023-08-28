@@ -479,7 +479,7 @@ exports[`SearchResults component should render correctly 1`] = `
                           >
                             <div
                               aria-label="Lieu ESPACE CULTUREL LECLERC CHATEAU GONTIER du type Autre type de lieu, à 900+ km"
-                              class="css-view-175oi2r r-transitionProperty-1i6wzkk r-cursor-1loqt21 r-touchAction-1otgn73 r-userSelect-bj6uhd r-borderRadius-1xfd6ze r-marginVertical-1p6iasa r-maxHeight-9stuvb r-width-1sqjfdd"
+                              class="css-view-175oi2r r-transitionProperty-1i6wzkk r-cursor-1loqt21 r-touchAction-1otgn73 r-userSelect-bj6uhd r-borderRadius-1xfd6ze r-marginVertical-1p6iasa r-maxHeight-1ykvnaz r-width-1sqjfdd"
                               data-testid="Lieu ESPACE CULTUREL LECLERC CHATEAU GONTIER du type Autre type de lieu, à 900+ km"
                               style="transition-duration: 0s;"
                               tabindex="0"
@@ -499,7 +499,7 @@ exports[`SearchResults component should render correctly 1`] = `
                                   </div>
                                 </div>
                                 <div
-                                  class="css-view-175oi2r r-marginTop-knv0ih r-maxWidth-1a0sep6"
+                                  class="css-view-175oi2r r-marginTop-knv0ih r-maxWidth-1a0sep6 r-minHeight-1d5ogoq"
                                 >
                                   <div
                                     class="css-text-1rynq56 r-WebkitBoxOrient-8akbws r-display-krxsd3 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-color-1rmcaf9 r-fontFamily-1gknse6 r-fontSize-a023e6 r-lineHeight-rjixqe"
@@ -531,7 +531,7 @@ exports[`SearchResults component should render correctly 1`] = `
                           >
                             <div
                               aria-label="Lieu CAC - Concarneau Scènes du type Autre type de lieu, à 900+ km"
-                              class="css-view-175oi2r r-transitionProperty-1i6wzkk r-cursor-1loqt21 r-touchAction-1otgn73 r-userSelect-bj6uhd r-borderRadius-1xfd6ze r-marginVertical-1p6iasa r-maxHeight-9stuvb r-width-1sqjfdd"
+                              class="css-view-175oi2r r-transitionProperty-1i6wzkk r-cursor-1loqt21 r-touchAction-1otgn73 r-userSelect-bj6uhd r-borderRadius-1xfd6ze r-marginVertical-1p6iasa r-maxHeight-1ykvnaz r-width-1sqjfdd"
                               data-testid="Lieu CAC - Concarneau Scènes du type Autre type de lieu, à 900+ km"
                               style="transition-duration: 0s;"
                               tabindex="0"
@@ -551,7 +551,7 @@ exports[`SearchResults component should render correctly 1`] = `
                                   </div>
                                 </div>
                                 <div
-                                  class="css-view-175oi2r r-marginTop-knv0ih r-maxWidth-1a0sep6"
+                                  class="css-view-175oi2r r-marginTop-knv0ih r-maxWidth-1a0sep6 r-minHeight-1d5ogoq"
                                 >
                                   <div
                                     class="css-text-1rynq56 r-WebkitBoxOrient-8akbws r-display-krxsd3 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-color-1rmcaf9 r-fontFamily-1gknse6 r-fontSize-a023e6 r-lineHeight-rjixqe"
@@ -1155,7 +1155,7 @@ exports[`SearchResults component should render correctly 1`] = `
                         >
                           <div
                             aria-label="Lieu ESPACE CULTUREL LECLERC CHATEAU GONTIER du type Autre type de lieu, à 900+ km"
-                            class="css-view-175oi2r r-transitionProperty-1i6wzkk r-cursor-1loqt21 r-touchAction-1otgn73 r-userSelect-bj6uhd r-borderRadius-1xfd6ze r-marginVertical-1p6iasa r-maxHeight-9stuvb r-width-1sqjfdd"
+                            class="css-view-175oi2r r-transitionProperty-1i6wzkk r-cursor-1loqt21 r-touchAction-1otgn73 r-userSelect-bj6uhd r-borderRadius-1xfd6ze r-marginVertical-1p6iasa r-maxHeight-1ykvnaz r-width-1sqjfdd"
                             data-testid="Lieu ESPACE CULTUREL LECLERC CHATEAU GONTIER du type Autre type de lieu, à 900+ km"
                             style="transition-duration: 0s;"
                             tabindex="0"
@@ -1175,7 +1175,7 @@ exports[`SearchResults component should render correctly 1`] = `
                                 </div>
                               </div>
                               <div
-                                class="css-view-175oi2r r-marginTop-knv0ih r-maxWidth-1a0sep6"
+                                class="css-view-175oi2r r-marginTop-knv0ih r-maxWidth-1a0sep6 r-minHeight-1d5ogoq"
                               >
                                 <div
                                   class="css-text-1rynq56 r-WebkitBoxOrient-8akbws r-display-krxsd3 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-color-1rmcaf9 r-fontFamily-1gknse6 r-fontSize-a023e6 r-lineHeight-rjixqe"
@@ -1207,7 +1207,7 @@ exports[`SearchResults component should render correctly 1`] = `
                         >
                           <div
                             aria-label="Lieu CAC - Concarneau Scènes du type Autre type de lieu, à 900+ km"
-                            class="css-view-175oi2r r-transitionProperty-1i6wzkk r-cursor-1loqt21 r-touchAction-1otgn73 r-userSelect-bj6uhd r-borderRadius-1xfd6ze r-marginVertical-1p6iasa r-maxHeight-9stuvb r-width-1sqjfdd"
+                            class="css-view-175oi2r r-transitionProperty-1i6wzkk r-cursor-1loqt21 r-touchAction-1otgn73 r-userSelect-bj6uhd r-borderRadius-1xfd6ze r-marginVertical-1p6iasa r-maxHeight-1ykvnaz r-width-1sqjfdd"
                             data-testid="Lieu CAC - Concarneau Scènes du type Autre type de lieu, à 900+ km"
                             style="transition-duration: 0s;"
                             tabindex="0"
@@ -1227,7 +1227,7 @@ exports[`SearchResults component should render correctly 1`] = `
                                 </div>
                               </div>
                               <div
-                                class="css-view-175oi2r r-marginTop-knv0ih r-maxWidth-1a0sep6"
+                                class="css-view-175oi2r r-marginTop-knv0ih r-maxWidth-1a0sep6 r-minHeight-1d5ogoq"
                               >
                                 <div
                                   class="css-text-1rynq56 r-WebkitBoxOrient-8akbws r-display-krxsd3 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-color-1rmcaf9 r-fontFamily-1gknse6 r-fontSize-a023e6 r-lineHeight-rjixqe"

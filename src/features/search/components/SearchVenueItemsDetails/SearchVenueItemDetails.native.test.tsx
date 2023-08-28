@@ -7,6 +7,7 @@ const props = {
   width: 300,
   name: 'Test Venue',
   city: 'Test City',
+  height: 172,
 }
 
 describe('SearchVenueItemDetails', () => {
