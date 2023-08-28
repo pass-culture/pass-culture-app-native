@@ -50,6 +50,11 @@ jobs:
       - name: 'Push proxy for input env'
         run: |
           yarn --cwd server deploy:${{ inputs.ENV }}
+      - name: 'Clear unused apps'
+        run: |
+          gcloud app versions list --service=web-proxy-${{ inputs.ENV }} --format="table[no-heading](id)" \
+            | grep -v $(gcloud app versions list --service=web-proxy-${{ inputs.ENV }} --hide-no-traffic --format="table[no-heading](id)") \
+            | xargs gcloud app versions delete --service=web-proxy-${{ inputs.ENV }}
   slack_notify:
     runs-on: [self-hosted, linux, x64]
     if: ${{ always() }}
