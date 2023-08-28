@@ -1,9 +1,9 @@
 import { useFocusEffect, useRoute } from '@react-navigation/native'
-import React, { FunctionComponent, useCallback } from 'react'
+import React, { FunctionComponent, useCallback, useEffect } from 'react'
 import { NativeScrollEvent } from 'react-native'
 import styled from 'styled-components/native'
 
-import { SearchGroupNameEnumv2 } from 'api/gen'
+import { NativeCategoryIdEnumv2, SearchGroupNameEnumv2 } from 'api/gen'
 import { UseRouteType } from 'features/navigation/RootNavigator/types'
 import { useOffer } from 'features/offer/api/useOffer'
 import { useSimilarOffers } from 'features/offer/api/useSimilarOffers'
@@ -27,6 +27,16 @@ import { getSpacing, Spacer } from 'ui/theme'
 
 const trackEventHasSeenOffer = () => BatchUser.trackEvent(BatchEvent.hasSeenOffer)
 
+const OFFER_SEARCH_GROUPS_ELIGIBLE_FOR_SURVEY = [
+  SearchGroupNameEnumv2.CONCERTS_FESTIVALS,
+  SearchGroupNameEnumv2.LIVRES,
+]
+const OFFER_NATIVE_CATEGORIES_ELIGIBLE_FOR_SURVEY = [
+  NativeCategoryIdEnumv2.SEANCES_DE_CINEMA,
+  NativeCategoryIdEnumv2.VISITES_CULTURELLES,
+]
+const trackEventHasSeenOfferForSurvey = () => BatchUser.trackEvent(BatchEvent.hasSeenOfferForSurvey)
+
 const PLAYLIST_HEIGHT = 300
 
 const getPlaylistsHeight = (numberOfPlaylists: number) => {
@@ -36,6 +46,7 @@ const getPlaylistsHeight = (numberOfPlaylists: number) => {
 export const Offer: FunctionComponent = () => {
   const route = useRoute<UseRouteType<'Offer'>>()
   const trackEventHasSeenOfferOnce = useFunctionOnce(trackEventHasSeenOffer)
+  const trackEventHasSeenOfferForSurveyOnce = useFunctionOnce(trackEventHasSeenOfferForSurvey)
   const offerId = route.params?.id
   const searchId = route.params?.searchId
   const from = route.params?.from
@@ -52,7 +63,7 @@ export const Offer: FunctionComponent = () => {
   const { data } = useSubcategories()
   const { shouldUseAlgoliaRecommend } = useRemoteConfigContext()
 
-  const { searchGroupName } =
+  const { searchGroupName, nativeCategory } =
     getSearchGroupAndNativeCategoryFromSubcategoryId(data, offer?.subcategoryId) || {}
   const sameCategorySimilarOffers = useSimilarOffers({
     offerId,
@@ -73,6 +84,10 @@ export const Offer: FunctionComponent = () => {
   const fromOfferId = route.params?.fromOfferId
 
   const isFreeDigitalOffer = getIsFreeDigitalOffer(offer)
+
+  const shouldTriggerBatchSurveyEvent =
+    (searchGroupName && OFFER_SEARCH_GROUPS_ELIGIBLE_FOR_SURVEY.includes(searchGroupName)) ||
+    (nativeCategory && OFFER_NATIVE_CATEGORIES_ELIGIBLE_FOR_SURVEY.includes(nativeCategory))
 
   const logSameCategoryPlaylistVerticalScroll = useFunctionOnce(() => {
     return analytics.logPlaylistVerticalScroll({
@@ -96,6 +111,9 @@ export const Offer: FunctionComponent = () => {
     listener: ({ nativeEvent }) => {
       if (isCloseToBottom(nativeEvent)) {
         logConsultWholeOffer()
+        if (shouldTriggerBatchSurveyEvent) {
+          trackEventHasSeenOfferForSurveyOnce()
+        }
       }
       handleLogPlaylistVerticalScroll(nativeEvent)
     },
@@ -155,6 +173,17 @@ export const Offer: FunctionComponent = () => {
       }
     }, [trackEventHasSeenOfferOnce, route.params.openModalOnNavigation, showOfferModal])
   )
+
+  useEffect(() => {
+    let timeoutId: number
+    if (shouldTriggerBatchSurveyEvent) {
+      timeoutId = setTimeout(() => {
+        trackEventHasSeenOfferForSurveyOnce()
+      }, 5000)
+    }
+
+    return () => clearTimeout(timeoutId)
+  }, [shouldTriggerBatchSurveyEvent, trackEventHasSeenOfferForSurveyOnce])
 
   const onPress = () => {
     onPressCTA?.()
