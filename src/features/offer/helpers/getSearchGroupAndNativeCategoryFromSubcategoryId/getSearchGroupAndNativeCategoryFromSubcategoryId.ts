@@ -1,6 +1,6 @@
 import { SubcategoriesResponseModelv2, SubcategoryIdEnum, SubcategoryIdEnumv2 } from 'api/gen'
 
-export const getSearchGroupIdFromSubcategoryId = (
+export const getSearchGroupAndNativeCategoryFromSubcategoryId = (
   data?: SubcategoriesResponseModelv2,
   subcategoryId?: SubcategoryIdEnum
 ) => {
@@ -8,7 +8,14 @@ export const getSearchGroupIdFromSubcategoryId = (
     return
   }
 
-  return data.subcategories.find(
+  const subcategory = data.subcategories.find(
     (subcategory) => subcategory.id === (subcategoryId as unknown as SubcategoryIdEnumv2)
-  )?.searchGroupName
+  )
+
+  if (!subcategory) return
+
+  return {
+    searchGroupName: subcategory.searchGroupName,
+    nativeCategory: subcategory.nativeCategoryId,
+  }
 }

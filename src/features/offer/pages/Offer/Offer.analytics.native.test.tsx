@@ -1,10 +1,12 @@
 import { rest } from 'msw'
 
+import { SubcategoryIdEnum } from 'api/gen'
 import { offerResponseSnap } from 'features/offer/fixtures/offerResponse'
 import { offerId, renderOfferPage } from 'features/offer/helpers/renderOfferPageTestUtil'
 import { analytics } from 'libs/analytics'
+import { BatchEvent, BatchUser } from 'libs/react-native-batch'
 import { server } from 'tests/server'
-import { act } from 'tests/utils'
+import { act, bottomScrollEvent, fireEvent, middleScrollEvent, screen } from 'tests/utils'
 
 server.use(
   rest.get(
@@ -19,6 +21,10 @@ server.use(
     }
   )
 )
+
+const BATCH_TRIGGER_DELAY_IN_MS = 5000
+
+jest.useFakeTimers({ legacyFakeTimers: true })
 
 describe('<Offer /> - Analytics', () => {
   const nativeEventMiddle = {
@@ -67,5 +73,72 @@ describe('<Offer /> - Analytics', () => {
     })
 
     expect(analytics.logConsultWholeOffer).not.toHaveBeenCalled()
+  })
+
+  describe('Batch trigger', () => {
+    it('should trigger has_seen_offer_for_survey event after 5 seconds', async () => {
+      renderOfferPage()
+
+      await act(() => {})
+      jest.advanceTimersByTime(BATCH_TRIGGER_DELAY_IN_MS)
+
+      expect(BatchUser.trackEvent).toHaveBeenCalledWith(BatchEvent.hasSeenOfferForSurvey)
+    })
+
+    it('should not trigger has_seen_offer_for_survey event before 5 seconds have elapsed', async () => {
+      renderOfferPage()
+
+      await act(() => {})
+      jest.advanceTimersByTime(BATCH_TRIGGER_DELAY_IN_MS - 1)
+
+      expect(BatchUser.trackEvent).not.toHaveBeenCalledWith(BatchEvent.hasSeenOfferForSurvey)
+    })
+
+    it('should trigger has_seen_offer_for_survey event on scroll to bottom', async () => {
+      renderOfferPage()
+
+      await act(() => {})
+      fireEvent.scroll(screen.getByTestId('offer-container'), bottomScrollEvent)
+
+      expect(BatchUser.trackEvent).toHaveBeenCalledWith(BatchEvent.hasSeenOfferForSurvey)
+    })
+
+    it('should not trigger has_seen_offer_for_survey event on scroll to middle', async () => {
+      renderOfferPage()
+
+      await act(() => {})
+      fireEvent.scroll(screen.getByTestId('offer-container'), middleScrollEvent)
+
+      expect(BatchUser.trackEvent).not.toHaveBeenCalledWith(BatchEvent.hasSeenOfferForSurvey)
+    })
+
+    it('should trigger has_seen_offer_for_survey event once on scroll to bottom and after 5 seconds', async () => {
+      renderOfferPage()
+
+      await act(() => {})
+      fireEvent.scroll(screen.getByTestId('offer-container'), bottomScrollEvent)
+      jest.advanceTimersByTime(BATCH_TRIGGER_DELAY_IN_MS)
+
+      expect(BatchUser.trackEvent).toHaveBeenCalledTimes(2) // Two different Batch events are triggered on this page
+      expect(BatchUser.trackEvent).toHaveBeenCalledWith(BatchEvent.hasSeenOffer)
+      expect(BatchUser.trackEvent).toHaveBeenCalledWith(BatchEvent.hasSeenOfferForSurvey)
+    })
+
+    it.each([
+      SubcategoryIdEnum.ABO_BIBLIOTHEQUE,
+      SubcategoryIdEnum.CONCOURS,
+      SubcategoryIdEnum.MATERIEL_ART_CREATIF,
+      SubcategoryIdEnum.CARTE_JEUNES,
+    ])(
+      'should not trigger has_seen_offer_for_survey event for uneligible offer type %s',
+      async (subcategoryId) => {
+        renderOfferPage(undefined, { subcategoryId })
+
+        await act(() => {})
+        jest.advanceTimersByTime(BATCH_TRIGGER_DELAY_IN_MS)
+
+        expect(BatchUser.trackEvent).not.toHaveBeenCalledWith(BatchEvent.hasSeenOfferForSurvey)
+      }
+    )
   })
 })

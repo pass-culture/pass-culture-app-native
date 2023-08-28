@@ -7,19 +7,38 @@ import { useVenue } from 'features/venue/api/useVenue'
 import { VenueBody } from 'features/venue/components/VenueBody/VenueBody'
 import { VenueHeader } from 'features/venue/components/VenueHeader/VenueHeader'
 import { VenueWebHeader } from 'features/venue/components/VenueWebHeader'
-import { analytics } from 'libs/analytics'
+import { analytics, isCloseToBottom } from 'libs/analytics'
+import { useFunctionOnce } from 'libs/hooks'
+import { BatchEvent, BatchUser } from 'libs/react-native-batch'
 import { useOpacityTransition } from 'ui/animations/helpers/useOpacityTransition'
+
+const trackEventHasSeenVenueForSurvey = () => BatchUser.trackEvent(BatchEvent.hasSeenVenueForSurvey)
 
 export const Venue: FunctionComponent = () => {
   const { params } = useRoute<UseRouteType<'Venue'>>()
   const { data: venue } = useVenue(params.id)
-  const { headerTransition, onScroll } = useOpacityTransition()
+  const triggerBatch = useFunctionOnce(trackEventHasSeenVenueForSurvey)
+  const { headerTransition, onScroll } = useOpacityTransition({
+    listener: ({ nativeEvent }) => {
+      if (isCloseToBottom(nativeEvent)) {
+        triggerBatch()
+      }
+    },
+  })
 
   useEffect(() => {
     if (params.from === 'deeplink' && venue?.id) {
       analytics.logConsultVenue({ venueId: venue.id, from: params.from })
     }
   }, [params.from, venue?.id])
+
+  useEffect(() => {
+    const timeoutId = setTimeout(() => {
+      triggerBatch()
+    }, 5000)
+
+    return () => clearTimeout(timeoutId)
+  }, [triggerBatch])
 
   if (!venue) return <React.Fragment></React.Fragment>
 
