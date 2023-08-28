@@ -6,18 +6,18 @@ import { CreditProgressBar } from 'features/profile/components/CreditInfo/Credit
 import { getSpacing } from 'ui/theme'
 
 interface Props {
-  progress: '1/3' | '2/3' | '3/3' | '1/2' | '2/2'
+  currentStep: number
+  totalStep: number
 }
 
-export const CreditBarWithSeparator: React.FC<Props> = ({ progress }) => {
-  const [numerator, denominator] = progress.split('/').map(Number)
-  const progressInPercentage = (numerator / denominator) * 100
-  const separatorWidthIncrement = 100 / denominator
+export const CreditBarWithSeparator: React.FC<Props> = ({ currentStep, totalStep }) => {
+  const progressInPercentage = (currentStep / totalStep) * 100
+  const separatorWidthIncrement = 100 / totalStep
 
   return (
     <View>
       <CreditProgressBar progress={progressInPercentage / 100} height="small" />
-      {Array.from({ length: denominator }).map((_, index) => {
+      {Array.from({ length: totalStep }).map((_, index) => {
         const separatorWidth = separatorWidthIncrement * (index + 1)
         return <Separator width={separatorWidth} key={separatorWidth} />
       })}

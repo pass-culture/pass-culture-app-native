@@ -24,25 +24,30 @@ const GreyContainer = styled.View(({ theme }) => ({
 
 export const OneInThree = Template.bind({})
 OneInThree.args = {
-  progress: '1/3',
+  currentStep: 1,
+  totalStep: 3,
 }
 
 export const TwoInThree = Template.bind({})
 TwoInThree.args = {
-  progress: '2/3',
+  currentStep: 2,
+  totalStep: 3,
 }
 
 export const ThreeInThree = Template.bind({})
 ThreeInThree.args = {
-  progress: '3/3',
+  currentStep: 3,
+  totalStep: 3,
 }
 
 export const OneInTwo = Template.bind({})
 OneInTwo.args = {
-  progress: '1/2',
+  currentStep: 1,
+  totalStep: 2,
 }
 
 export const TwoInTwo = Template.bind({})
 TwoInTwo.args = {
-  progress: '2/2',
+  currentStep: 2,
+  totalStep: 2,
 }
