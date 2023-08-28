@@ -1,9 +1,10 @@
 import { formatToSlashedFrenchDate } from 'libs/dates'
-import { formatToHour } from 'libs/parsers/formatDates'
+import { formatToHour, localizeUTCDate } from 'libs/parsers/formatDates'
 
-export const formatDateToLastUpdatedAtMessage = (lastUpdatedDate: string | undefined) => {
+export const formatDateToLastUpdatedAtMessage = (lastUpdatedDate: string | Date | undefined) => {
   if (!lastUpdatedDate) return
-  const day = formatToSlashedFrenchDate(new Date(lastUpdatedDate).toISOString())
-  const hour = formatToHour(new Date(lastUpdatedDate))
+  const localDate = new Date(localizeUTCDate(lastUpdatedDate))
+  const day = formatToSlashedFrenchDate(localDate)
+  const hour = formatToHour(localDate)
   return `${day} à ${hour}`
 }

@@ -203,3 +203,9 @@ export const isTomorrow = (someDate: Date) => {
     someDate.getFullYear() == tomorrow.getFullYear()
   )
 }
+
+export const localizeUTCDate = (someDate: Date | string) => {
+  const utcDate = new Date(someDate)
+  const timeZoneOffest = new Date(someDate).getTimezoneOffset()
+  return utcDate.setMinutes(utcDate.getMinutes() - timeZoneOffest)
+}
