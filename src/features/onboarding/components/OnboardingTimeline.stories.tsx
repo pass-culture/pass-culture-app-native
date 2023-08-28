@@ -1,11 +1,17 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react'
 import React from 'react'
 
+import { ANIMATION_DELAY } from 'features/home/api/useShowSkeleton'
+
 import { OnboardingTimeline } from './OnboardingTimeline'
 
 const meta: ComponentMeta<typeof OnboardingTimeline> = {
   title: 'features/onboarding/OnboardingTimeline',
   component: OnboardingTimeline,
+  parameters: {
+    // Wait for animation to finish before snapshot
+    chromatic: { delay: ANIMATION_DELAY },
+  },
 }
 export default meta
 
