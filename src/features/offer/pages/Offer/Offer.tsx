@@ -14,7 +14,7 @@ import { OfferHeader } from 'features/offer/components/OfferHeader/OfferHeader'
 import { OfferWebHead } from 'features/offer/components/OfferWebHead'
 import { PlaylistType } from 'features/offer/enums'
 import { getIsFreeDigitalOffer } from 'features/offer/helpers/getIsFreeDigitalOffer/getIsFreeDigitalOffer'
-import { getSearchGroupIdFromSubcategoryId } from 'features/offer/helpers/getSearchGroupIdFromSubcategoryId/getSearchGroupIdFromSubcategoryId'
+import { getSearchGroupAndNativeCategoryFromSubcategoryId } from 'features/offer/helpers/getSearchGroupAndNativeCategoryFromSubcategoryId/getSearchGroupAndNativeCategoryFromSubcategoryId'
 import { useCtaWordingAndAction } from 'features/offer/helpers/useCtaWordingAndAction/useCtaWordingAndAction'
 import { useOfferModal } from 'features/offer/helpers/useOfferModal/useOfferModal'
 import { analytics, isCloseToBottom } from 'libs/analytics'
@@ -52,12 +52,13 @@ export const Offer: FunctionComponent = () => {
   const { data } = useSubcategories()
   const { shouldUseAlgoliaRecommend } = useRemoteConfigContext()
 
-  const subcategorySearchGroupId = getSearchGroupIdFromSubcategoryId(data, offer?.subcategoryId)
+  const { searchGroupName } =
+    getSearchGroupAndNativeCategoryFromSubcategoryId(data, offer?.subcategoryId) || {}
   const sameCategorySimilarOffers = useSimilarOffers({
     offerId,
     position: offer?.venue.coordinates,
     shouldUseAlgoliaRecommend,
-    categoryIncluded: subcategorySearchGroupId ?? SearchGroupNameEnumv2.NONE,
+    categoryIncluded: searchGroupName ?? SearchGroupNameEnumv2.NONE,
   })
   const hasSameCategorySimilarOffers = Boolean(sameCategorySimilarOffers?.length)
 
@@ -65,7 +66,7 @@ export const Offer: FunctionComponent = () => {
     offerId,
     position: offer?.venue.coordinates,
     shouldUseAlgoliaRecommend,
-    categoryExcluded: subcategorySearchGroupId ?? SearchGroupNameEnumv2.NONE,
+    categoryExcluded: searchGroupName ?? SearchGroupNameEnumv2.NONE,
   })
   const hasOtherCategoriesSimilarOffers = Boolean(otherCategoriesSimilarOffers?.length)
 
