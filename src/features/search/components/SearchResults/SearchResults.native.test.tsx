@@ -69,6 +69,7 @@ let mockHits: Offer[] = []
 let mockNbHits = 0
 const mockHasNextPage = true
 const mockFetchNextPage = jest.fn()
+const mockRefetch = jest.fn()
 let mockUserData: UserData[] = []
 jest.mock('features/search/api/useSearchResults/useSearchResults', () => ({
   useSearchResults: () => ({
@@ -82,7 +83,7 @@ jest.mock('features/search/api/useSearchResults/useSearchResults', () => ({
     isFetchingNextPage: false,
     userData: mockUserData,
     venues: mockedAlgoliaVenueResponse,
-    refetch: jest.fn(),
+    refetch: mockRefetch,
   }),
 }))
 
@@ -466,6 +467,33 @@ describe('SearchResults component', () => {
     })
 
     expect(mockShowGeolocPermissionModal).toHaveBeenCalledTimes(1)
+  })
+
+  it('should refetch results when user position received in a second time', async () => {
+    mockPosition = null
+    render(<SearchResults />)
+    await act(async () => {})
+    expect(mockRefetch).not.toHaveBeenCalled()
+
+    mockPosition = DEFAULT_POSITION
+    screen.rerender(<SearchResults />)
+    expect(mockRefetch).toHaveBeenCalledTimes(1)
+  })
+
+  it('should refetch results when user stop to share his position', async () => {
+    mockPosition = DEFAULT_POSITION
+    render(<SearchResults />)
+    await act(async () => {})
+    // previousUserPosition is empty in first rendering
+    expect(mockRefetch).toHaveBeenCalledTimes(1)
+
+    screen.rerender(<SearchResults />)
+    expect(mockRefetch).toHaveBeenCalledTimes(1)
+
+    mockPosition = null
+    screen.rerender(<SearchResults />)
+    // first rendering + rendering when user stop to share his position
+    expect(mockRefetch).toHaveBeenCalledTimes(2)
   })
 
   it('should log open geolocation activation incitation modal when pressing geolocation incitation button', async () => {

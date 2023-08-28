@@ -20,6 +20,7 @@ import {
 import { useHasPosition } from 'features/search/helpers/useHasPosition/useHasPosition'
 import { useLocationChoice } from 'features/search/helpers/useLocationChoice/useLocationChoice'
 import { useLocationType } from 'features/search/helpers/useLocationType/useLocationType'
+import { usePrevious } from 'features/search/helpers/usePrevious'
 import { CategoriesModal } from 'features/search/pages/modals/CategoriesModal/CategoriesModal'
 import { DatesHoursModal } from 'features/search/pages/modals/DatesHoursModal/DatesHoursModal'
 import { LocationModal } from 'features/search/pages/modals/LocationModal/LocationModal'
@@ -63,6 +64,7 @@ export const SearchResults: React.FC = () => {
   const isFocused = useIsFocused()
   const { user } = useAuthContext()
   const { userPosition } = useGeolocation()
+  const previousUserPosition = usePrevious(userPosition)
 
   const { headerTransition: scrollButtonTransition, onScroll } = useOpacityTransition()
 
@@ -112,11 +114,15 @@ export const SearchResults: React.FC = () => {
     [nbHits, searchState]
   )
 
+  const shouldRefetchResults = Boolean(
+    (userPosition && !previousUserPosition) || (!userPosition && previousUserPosition)
+  )
+
   useEffect(() => {
-    if (userPosition) {
+    if (shouldRefetchResults) {
       refetch()
     }
-  }, [refetch, userPosition])
+  }, [refetch, shouldRefetchResults])
 
   const onEndReached = useCallback(() => {
     if (data && hasNextPage) {
