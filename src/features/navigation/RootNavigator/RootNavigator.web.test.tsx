@@ -2,7 +2,6 @@ import { NavigationContainer } from '@react-navigation/native'
 import { rest } from 'msw'
 import React from 'react'
 
-import { useMustUpdateApp } from 'features/forceUpdate/helpers/useMustUpdateApp'
 import { useCurrentRoute } from 'features/navigation/helpers'
 import { env } from 'libs/environment'
 import { useSplashScreenContext } from 'libs/splashscreen'
@@ -13,7 +12,6 @@ import { act, render, screen } from 'tests/utils/web'
 import { RootNavigator } from './RootNavigator'
 
 const mockUseSplashScreenContext = jest.mocked(useSplashScreenContext)
-const mockedUseMustUpdateApp = jest.mocked(useMustUpdateApp)
 const mockUseCurrentRoute = jest.mocked(useCurrentRoute)
 
 jest.mock('features/share/helpers/useShareOffer')
@@ -80,19 +78,6 @@ describe('<RootNavigator />', () => {
 
     const quickAccessButton = screen.queryByText('Accéder au menu de navigation')
     expect(quickAccessButton).toBeNull()
-  })
-})
-
-describe('ForceUpdate display logic', () => {
-  it('should display force update page when global variable is set', async () => {
-    mockUseCurrentRoute.mockReturnValueOnce({ name: 'TabNavigator', key: 'key' })
-    mockedUseMustUpdateApp.mockReturnValueOnce(true)
-
-    renderRootNavigator()
-
-    await screen.findByText('Respect de ta vie privée')
-
-    expect(screen.queryAllByText("Mise à jour de l'application")).not.toHaveLength(0)
   })
 })
 

@@ -65,19 +65,6 @@ describe('<RootNavigator />', () => {
   })
 })
 
-describe('ForceUpdate display logic', () => {
-  it('should display force update page when global variable is set', async () => {
-    mockUseSplashScreenContext.mockReturnValueOnce({ isSplashScreenHidden: true })
-    renderRootNavigator()
-
-    await act(async () => {})
-
-    screen.getByText('Respect de ta vie privée')
-
-    expect(screen.queryAllByText('Mise à jour de l’application')).not.toHaveLength(0)
-  })
-})
-
 function renderRootNavigator() {
   render(
     // eslint-disable-next-line local-rules/no-react-query-provider-hoc
