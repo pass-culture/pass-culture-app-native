@@ -25,7 +25,7 @@ interface CategoriesSectionProps<
 > {
   allLabel: string
   allValue: N
-  data: T
+  data?: T
   descriptionContext: DescriptionContext
   getIcon?: T extends MappingTree
     ? (categoryName: SearchGroupNameEnumv2) => FC<BicolorIconInterface> | undefined
@@ -77,36 +77,38 @@ export function CategoriesSection<
         />
       </ListItem>
 
-      {Object.entries(data).map(([k, item]) => {
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any
-        const shouldHideArrow = !(item as any).children
-        const key = k as N
+      {data
+        ? Object.entries(data).map(([k, item]) => {
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
+            const shouldHideArrow = !(item as any).children
+            const key = k as N
 
-        return (
-          <ListItem key={k}>
-            <Spacer.Column numberOfSpaces={3} />
+            return (
+              <ListItem key={k}>
+                <Spacer.Column numberOfSpaces={3} />
 
-            {shouldHideArrow ? (
-              <RadioButton
-                label={item.label}
-                isSelected={key === value}
-                onSelect={() => handleSelect(key)}
-                icon={handleGetIcon(k as SearchGroupNameEnumv2)}
-              />
-            ) : (
-              <FilterRow
-                icon={handleGetIcon(k as SearchGroupNameEnumv2)}
-                shouldColorIcon
-                title={item.label}
-                description={getDescription(subcategoriesData, descriptionContext, k)}
-                onPress={() => handleSelect(key)}
-                captionId={k}
-              />
-            )}
-            <Spacer.Column numberOfSpaces={3} />
-          </ListItem>
-        )
-      })}
+                {shouldHideArrow ? (
+                  <RadioButton
+                    label={item.label}
+                    isSelected={key === value}
+                    onSelect={() => handleSelect(key)}
+                    icon={handleGetIcon(k as SearchGroupNameEnumv2)}
+                  />
+                ) : (
+                  <FilterRow
+                    icon={handleGetIcon(k as SearchGroupNameEnumv2)}
+                    shouldColorIcon
+                    title={item.label}
+                    description={getDescription(subcategoriesData, descriptionContext, k)}
+                    onPress={() => handleSelect(key)}
+                    captionId={k}
+                  />
+                )}
+                <Spacer.Column numberOfSpaces={3} />
+              </ListItem>
+            )
+          })
+        : null}
     </VerticalUl>
   )
 }
