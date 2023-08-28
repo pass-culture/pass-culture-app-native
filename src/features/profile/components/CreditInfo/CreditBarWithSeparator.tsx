@@ -9,7 +9,7 @@ interface Props {
   progress: '1/3' | '2/3' | '3/3' | '1/2' | '2/2'
 }
 
-export const CreditProgressBarSmallWithSeparator: React.FC<Props> = ({ progress }) => {
+export const CreditBarWithSeparator: React.FC<Props> = ({ progress }) => {
   const [numerator, denominator] = progress.split('/').map(Number)
   const progressInPercentage = (numerator / denominator) * 100
   const separatorWidthIncrement = 100 / denominator

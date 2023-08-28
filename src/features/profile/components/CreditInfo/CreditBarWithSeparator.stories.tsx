@@ -4,16 +4,16 @@ import styled from 'styled-components/native'
 
 import { getSpacing } from 'ui/theme'
 
-import { CreditProgressBarSmallWithSeparator } from './CreditProgressBarSmallWithSeparator'
+import { CreditBarWithSeparator } from './CreditBarWithSeparator'
 
 export default {
-  title: 'Features/Profile/CreditProgressBarSmallWithSeparator',
-  component: CreditProgressBarSmallWithSeparator,
-} as ComponentMeta<typeof CreditProgressBarSmallWithSeparator>
+  title: 'Features/Profile/CreditBarWithSeparator',
+  component: CreditBarWithSeparator,
+} as ComponentMeta<typeof CreditBarWithSeparator>
 
-const Template: ComponentStory<typeof CreditProgressBarSmallWithSeparator> = (props) => (
+const Template: ComponentStory<typeof CreditBarWithSeparator> = (props) => (
   <GreyContainer>
-    <CreditProgressBarSmallWithSeparator {...props} />
+    <CreditBarWithSeparator {...props} />
   </GreyContainer>
 )
 
