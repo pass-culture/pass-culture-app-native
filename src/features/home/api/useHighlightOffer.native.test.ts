@@ -6,7 +6,7 @@ import { fetchOffersByTags } from 'libs/algolia/fetchAlgolia/fetchOffersByTags'
 import { offersFixture } from 'shared/offer/offer.fixture'
 import { Offer } from 'shared/offer/types'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { act, renderHook } from 'tests/utils'
+import { renderHook, waitFor } from 'tests/utils'
 
 jest.mock('libs/algolia/fetchAlgolia/fetchOffersByIds', () => ({
   fetchOffersByIds: jest.fn(),
@@ -31,8 +31,7 @@ describe('useHighlightOffer', () => {
 
     const { result } = renderUseHighlightOfferHook({ offerId: 'offerId1' })
 
-    await act(async () => {})
-    expect(result.current).toEqual(offersFixture[0])
+    await waitFor(() => expect(result.current).toEqual(offersFixture[0]))
   })
 
   it('should return offer when offerTag is provided', async () => {
@@ -40,8 +39,7 @@ describe('useHighlightOffer', () => {
 
     const { result } = renderUseHighlightOfferHook({ offerTag: 'test-tag' })
 
-    await act(async () => {})
-    expect(result.current).toEqual(offersFixture[0])
+    await waitFor(() => expect(result.current).toEqual(offersFixture[0]))
   })
 
   it('should return offer when offerEan is provided', async () => {
@@ -49,15 +47,13 @@ describe('useHighlightOffer', () => {
 
     const { result } = renderUseHighlightOfferHook({ offerEan: '1234567891234' })
 
-    await act(async () => {})
-    expect(result.current).toEqual(offersFixture[0])
+    await waitFor(() => expect(result.current).toEqual(offersFixture[0]))
   })
 
   it('should return undefined when no offer id or tag or ean is provided', async () => {
     const { result } = renderUseHighlightOfferHook({})
 
-    await act(async () => {})
-    expect(result.current).toBe(undefined)
+    await waitFor(() => expect(result.current).toBe(undefined))
   })
 })
 
