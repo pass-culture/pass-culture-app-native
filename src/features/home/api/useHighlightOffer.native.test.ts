@@ -3,6 +3,8 @@ import { mockedAlgoliaResponse } from 'libs/algolia/__mocks__/mockedAlgoliaRespo
 import { fetchOffersByEan } from 'libs/algolia/fetchAlgolia/fetchOffersByEan'
 import { fetchOffersByIds } from 'libs/algolia/fetchAlgolia/fetchOffersByIds'
 import { fetchOffersByTags } from 'libs/algolia/fetchAlgolia/fetchOffersByTags'
+import { useGeolocation } from 'libs/geolocation'
+import { IGeolocationContext } from 'libs/geolocation/types'
 import { offersFixture } from 'shared/offer/offer.fixture'
 import { Offer } from 'shared/offer/types'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
@@ -24,6 +26,9 @@ jest.mock('libs/algolia/fetchAlgolia/fetchOffersByEan', () => ({
 const mockFetchOffersByEan = fetchOffersByEan as jest.MockedFunction<typeof fetchOffersByEan>
 
 const mockOffers: Offer[] = mockedAlgoliaResponse.hits
+
+jest.mock('libs/geolocation')
+const mockUseGeolocation = jest.mocked(useGeolocation)
 
 describe('useHighlightOffer', () => {
   it('should return offer when offerId is provided', async () => {
@@ -55,9 +60,84 @@ describe('useHighlightOffer', () => {
 
     await waitFor(() => expect(result.current).toBe(undefined))
   })
+
+  describe('geolocation', () => {
+    it('should return offer when isGeolocated is true and the distance to the offer is within the radius', async () => {
+      const mockOffer = mockOffers[0]
+      // eslint-disable-next-line local-rules/independent-mocks
+      mockUseGeolocation.mockReturnValue({
+        userPosition: { latitude: mockOffer._geoloc.lat, longitude: mockOffer._geoloc.lng },
+      } as IGeolocationContext)
+
+      mockFetchOffersByIds.mockResolvedValueOnce([mockOffer])
+      const { result } = renderUseHighlightOfferHook({
+        offerId: '102280',
+        isGeolocated: true,
+        aroundRadius: 100,
+      })
+
+      await waitFor(() => expect(result.current).toEqual(offersFixture[0]))
+    })
+
+    it('should not return offer when isGeolocated is true and the distance to the offer is beyond radius', async () => {
+      const mockOffer = mockOffers[0]
+      // eslint-disable-next-line local-rules/independent-mocks
+      mockUseGeolocation.mockReturnValue({
+        userPosition: { latitude: 1, longitude: 1 },
+      } as IGeolocationContext)
+
+      mockFetchOffersByIds.mockResolvedValueOnce([mockOffer])
+      const { result } = renderUseHighlightOfferHook({
+        offerId: '102280',
+        isGeolocated: true,
+        aroundRadius: 100,
+      })
+
+      await waitFor(() => expect(result.current).toBe(undefined))
+    })
+
+    it('should not return offer when isGeolocated is true and the user position is not defined', async () => {
+      const mockOffer = mockOffers[0]
+      // eslint-disable-next-line local-rules/independent-mocks
+      mockUseGeolocation.mockReturnValue({
+        userPosition: undefined,
+      } as IGeolocationContext)
+
+      mockFetchOffersByIds.mockResolvedValueOnce([mockOffer])
+      const { result } = renderUseHighlightOfferHook({
+        offerId: '102280',
+        isGeolocated: true,
+        aroundRadius: 100,
+      })
+
+      await waitFor(() => expect(result.current).toBe(undefined))
+    })
+
+    it('should return offer when isGeolocated is true and around radius is not defined', async () => {
+      const mockOffer = mockOffers[0]
+      // eslint-disable-next-line local-rules/independent-mocks
+      mockUseGeolocation.mockReturnValue({
+        userPosition: { latitude: mockOffer._geoloc.lat, longitude: mockOffer._geoloc.lng },
+      } as IGeolocationContext)
+
+      mockFetchOffersByIds.mockResolvedValueOnce([mockOffer])
+      const { result } = renderUseHighlightOfferHook({
+        offerId: '102280',
+        isGeolocated: true,
+      })
+
+      await waitFor(() => expect(result.current).toEqual(offersFixture[0]))
+    })
+  })
 })
 
-type Params = { offerId?: string; offerEan?: string; offerTag?: string }
+type Params = {
+  offerId?: string
+  offerEan?: string
+  offerTag?: string
+  isGeolocated?: boolean
+  aroundRadius?: number
+}
 
 function renderUseHighlightOfferHook(params: Params) {
   return renderHook(() => useHighlightOffer({ id: 'moduleId', ...params }), {
