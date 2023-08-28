@@ -1,4 +1,5 @@
 import React from 'react'
+import { Keyboard } from 'react-native'
 
 import { useRoute, navigate } from '__mocks__/@react-navigation/native'
 import { NativeCategoryIdEnumv2, SearchGroupNameEnumv2 } from 'api/gen'
@@ -225,6 +226,26 @@ describe('<Search/>', () => {
         from: 'searchAutoComplete',
         venueId: 1,
       })
+    })
+
+    it('should dismiss keyboard on scroll', async () => {
+      const scrollEventBottom = {
+        nativeEvent: {
+          layoutMeasurement: { height: 1000 },
+          contentOffset: { y: 900 },
+          contentSize: { height: 1600 },
+        },
+      }
+      const keyboardDismissSpy = jest.spyOn(Keyboard, 'dismiss')
+      useFeatureFlagSpy.mockReturnValueOnce(true)
+      render(<Search />)
+      await act(async () => {})
+
+      const scrollView = screen.getByTestId('autocompleteScrollView')
+      // 1st scroll to bottom => trigger
+      scrollView.props.onScroll(scrollEventBottom)
+
+      expect(keyboardDismissSpy).toHaveBeenCalledTimes(1)
     })
   })
 
