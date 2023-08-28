@@ -1,15 +1,22 @@
+import timezoneMock from 'timezone-mock'
+
 import { renderHook } from 'tests/utils'
 
 import { formatDateToLastUpdatedAtMessage } from './formatDateToLastUpdatedAtMessage'
 
 describe('formatDateToLastUpdatedAtMessage', () => {
+  afterAll(() => timezoneMock.unregister())
+
   it('should not return formatted date when last updated date is not provided', () => {
     const { result } = renderHook(() => formatDateToLastUpdatedAtMessage(undefined))
     expect(result.current).toBeUndefined()
   })
 
   it('should return formatted date when last updated date is provided', () => {
-    const { result } = renderHook(() => formatDateToLastUpdatedAtMessage('2021-10-25T12:30Z'))
-    expect(result.current).toEqual('25/10/2021 à 12h30')
+    // Brazil/East timezone is equivalent to UTC-3 on the 28th of August
+    timezoneMock.register('Brazil/East')
+
+    const { result } = renderHook(() => formatDateToLastUpdatedAtMessage('2023-08-28 12:00:00'))
+    expect(result.current).toEqual('28/08/2023 à 09h00')
   })
 })
