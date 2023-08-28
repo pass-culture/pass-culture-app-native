@@ -33,11 +33,12 @@ type HighlightOfferModuleProps = HighlightOfferModuleType & {
 }
 
 const UnmemoizedHighlightOfferModule = (props: HighlightOfferModuleProps) => {
+  const { id, offerId, offerEan, offerTag } = props
   const highlightOffer = useHighlightOffer({
-    id: props.id,
-    offerId: props.offerId,
-    offerEan: props.offerEan,
-    offerTag: props.offerTag,
+    id,
+    offerId,
+    offerEan,
+    offerTag,
   })
   const [offerDetailsHeight, setOfferDetailsHeight] = useState(0)
   const categoryLabelMapping = useCategoryHomeLabelMapping()
@@ -56,7 +57,7 @@ const UnmemoizedHighlightOfferModule = (props: HighlightOfferModuleProps) => {
   }, [])
 
   if (!highlightOffer) return null
-  const { offer, venue, objectID: offerId } = highlightOffer
+  const { offer, venue, objectID: highlightOfferId } = highlightOffer
 
   const timestampsInMillis = offer.dates?.map((timestampInSec) => timestampInSec * 1000)
   const formattedDate = formatDates(timestampsInMillis)
@@ -88,16 +89,16 @@ const UnmemoizedHighlightOfferModule = (props: HighlightOfferModuleProps) => {
           highlight
           navigateTo={{
             screen: 'Offer',
-            params: { id: offerId },
+            params: { id: highlightOfferId },
           }}
           onBeforeNavigate={() => {
             prePopulateOffer({
               ...offer,
-              offerId: +offerId,
+              offerId: +highlightOfferId,
               categoryId,
             })
             analytics.logConsultOffer({
-              offerId: +offerId,
+              offerId: +highlightOfferId,
               from: 'highlightOffer',
               moduleId: props.id,
               moduleName: props.highlightTitle,
@@ -122,7 +123,7 @@ const UnmemoizedHighlightOfferModule = (props: HighlightOfferModuleProps) => {
         </StyledTouchableLink>
         <FavoriteButtonContainer>
           <FavoriteButton
-            offerId={parseInt(offerId)}
+            offerId={parseInt(highlightOfferId)}
             analyticsParams={{
               from: 'highlightOffer',
               moduleId: props.id,
