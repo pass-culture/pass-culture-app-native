@@ -32,7 +32,10 @@ export const fetchOffersAndVenues = async ({
 }: FetchOfferAndVenuesArgs) => {
   const searchParameters = buildOfferSearchParameters(parameters, userLocation, isUserUnderage)
 
-  const currentVenuesIndex = getCurrentVenuesIndex(parameters?.locationFilter?.locationType)
+  const currentVenuesIndex = getCurrentVenuesIndex(
+    parameters?.locationFilter?.locationType,
+    userLocation
+  )
 
   const queries = [
     {

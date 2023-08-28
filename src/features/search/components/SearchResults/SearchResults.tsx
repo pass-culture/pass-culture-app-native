@@ -20,12 +20,14 @@ import {
 import { useHasPosition } from 'features/search/helpers/useHasPosition/useHasPosition'
 import { useLocationChoice } from 'features/search/helpers/useLocationChoice/useLocationChoice'
 import { useLocationType } from 'features/search/helpers/useLocationType/useLocationType'
+import { usePrevious } from 'features/search/helpers/usePrevious'
 import { CategoriesModal } from 'features/search/pages/modals/CategoriesModal/CategoriesModal'
 import { DatesHoursModal } from 'features/search/pages/modals/DatesHoursModal/DatesHoursModal'
 import { LocationModal } from 'features/search/pages/modals/LocationModal/LocationModal'
 import { OfferDuoModal } from 'features/search/pages/modals/OfferDuoModal/OfferDuoModal'
 import { PriceModal } from 'features/search/pages/modals/PriceModal/PriceModal'
 import { analytics } from 'libs/analytics'
+import { useGeolocation } from 'libs/geolocation'
 import { useIsFalseWithDelay } from 'libs/hooks/useIsFalseWithDelay'
 import { plural } from 'libs/plural'
 import { Offer } from 'shared/offer/types'
@@ -61,6 +63,8 @@ export const SearchResults: React.FC = () => {
   const isRefreshing = useIsFalseWithDelay(isFetching, ANIMATION_DURATION)
   const isFocused = useIsFocused()
   const { user } = useAuthContext()
+  const { userPosition } = useGeolocation()
+  const previousUserPosition = usePrevious(userPosition)
 
   const { headerTransition: scrollButtonTransition, onScroll } = useOpacityTransition()
 
@@ -109,6 +113,16 @@ export const SearchResults: React.FC = () => {
     ),
     [nbHits, searchState]
   )
+
+  const shouldRefetchResults = Boolean(
+    (userPosition && !previousUserPosition) || (!userPosition && previousUserPosition)
+  )
+
+  useEffect(() => {
+    if (shouldRefetchResults) {
+      refetch()
+    }
+  }, [refetch, shouldRefetchResults])
 
   const onEndReached = useCallback(() => {
     if (data && hasNextPage) {

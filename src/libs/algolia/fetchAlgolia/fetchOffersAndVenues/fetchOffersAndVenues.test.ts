@@ -67,7 +67,7 @@ describe('fetchOffersAndVenues', () => {
     expect(mockMultipleQueries).toHaveBeenCalledWith(expectedResult)
   })
 
-  it('should execute multi query with venues playlist search newest index when location type is EVERYWHERE', () => {
+  it('should execute multi query with venues playlist search newest index when location type is EVERYWHERE and user not share his position', () => {
     const query = 'searched query'
 
     fetchOffersAndVenues({
@@ -107,6 +107,61 @@ describe('fetchOffersAndVenues', () => {
       {
         indexName: env.ALGOLIA_VENUES_INDEX_PLAYLIST_SEARCH_NEWEST,
         params: { aroundRadius: 'all', clickAnalytics: true, hitsPerPage: 35, page: 0 },
+        query: 'searched query',
+      },
+    ]
+
+    expect(mockMultipleQueries).toHaveBeenCalledWith(expectedResult)
+  })
+
+  it('should execute multi query with venues playlist search index when location type is EVERYWHERE and user shares his position', () => {
+    const query = 'searched query'
+
+    fetchOffersAndVenues({
+      parameters: {
+        query,
+        locationFilter: { locationType: LocationType.EVERYWHERE },
+      } as SearchQueryParameters,
+      userLocation,
+      isUserUnderage: false,
+    })
+
+    const expectedResult = [
+      {
+        indexName: env.ALGOLIA_OFFERS_INDEX_NAME,
+        params: {
+          aroundLatLng: '42, 43',
+          aroundRadius: 'all',
+          attributesToHighlight: [],
+          attributesToRetrieve: [
+            'offer.dates',
+            'offer.isDigital',
+            'offer.isDuo',
+            'offer.isEducational',
+            'offer.name',
+            'offer.prices',
+            'offer.subcategoryId',
+            'offer.thumbUrl',
+            'objectID',
+            '_geoloc',
+            'venue',
+          ],
+          clickAnalytics: true,
+          facetFilters: [['offer.isEducational:false']],
+          numericFilters: [['offer.prices: 0 TO 300']],
+          page: 0,
+        },
+        query: 'searched query',
+      },
+      {
+        indexName: env.ALGOLIA_VENUES_INDEX_PLAYLIST_SEARCH,
+        params: {
+          aroundLatLng: '42, 43',
+          aroundRadius: 'all',
+          clickAnalytics: true,
+          hitsPerPage: 35,
+          page: 0,
+        },
         query: 'searched query',
       },
     ]

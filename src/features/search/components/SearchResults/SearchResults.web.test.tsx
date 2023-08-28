@@ -23,6 +23,7 @@ jest.mock('features/search/api/useSearchResults/useSearchResults', () => ({
     fetchNextPage: mockFetchNextPage,
     isFetchingNextPage: false,
     venues: mockedAlgoliaVenueResponse,
+    refetch: jest.fn(),
   }),
 }))
 
