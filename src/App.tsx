@@ -40,6 +40,7 @@ import { SafeAreaProvider } from 'libs/react-native-save-area-provider'
 import { ReactQueryClientProvider } from 'libs/react-query/ReactQueryClientProvider'
 import { SplashScreenProvider } from 'libs/splashscreen'
 import { ThemeProvider } from 'libs/styled'
+import { PerformanceWrapper } from 'shared/performance/context/PerformanceWrapper'
 import { theme } from 'theme'
 import { SnackBarProvider } from 'ui/components/snackBar/SnackBarContext'
 
@@ -87,45 +88,47 @@ const App: FunctionComponent = function () {
               {/* All react-query calls should be nested inside NetInfoWrapper to ensure the user has internet connection */}
               <E2eContextProvider>
                 <NetInfoWrapper>
-                  <SettingsWrapper>
-                    <AuthWrapper>
-                      <LocationWrapper>
-                        <FavoritesWrapper>
-                          <SearchAnalyticsWrapper>
-                            <SearchWrapper>
-                              <SnackBarProvider>
-                                <CulturalSurveyContextProvider>
-                                  <SubscriptionContextProvider>
-                                    <SplashScreenProvider>
-                                      <PushNotificationsWrapper>
-                                        <ShareAppWrapper>
-                                          <OnboardingWrapper>
-                                            <OfflineModeContainer>
-                                              <ScreenErrorProvider>
-                                                <AppNavigationContainer
-                                                  ref={navigation}
-                                                  onReady={() => {
-                                                    // Register the navigation container with the instrumentation
-                                                    routingInstrumentation.registerNavigationContainer(
-                                                      navigation
-                                                    )
-                                                  }}
-                                                />
-                                              </ScreenErrorProvider>
-                                            </OfflineModeContainer>
-                                          </OnboardingWrapper>
-                                        </ShareAppWrapper>
-                                      </PushNotificationsWrapper>
-                                    </SplashScreenProvider>
-                                  </SubscriptionContextProvider>
-                                </CulturalSurveyContextProvider>
-                              </SnackBarProvider>
-                            </SearchWrapper>
-                          </SearchAnalyticsWrapper>
-                        </FavoritesWrapper>
-                      </LocationWrapper>
-                    </AuthWrapper>
-                  </SettingsWrapper>
+                  <PerformanceWrapper>
+                    <SettingsWrapper>
+                      <AuthWrapper>
+                        <LocationWrapper>
+                          <FavoritesWrapper>
+                            <SearchAnalyticsWrapper>
+                              <SearchWrapper>
+                                <SnackBarProvider>
+                                  <CulturalSurveyContextProvider>
+                                    <SubscriptionContextProvider>
+                                      <SplashScreenProvider>
+                                        <PushNotificationsWrapper>
+                                          <ShareAppWrapper>
+                                            <OnboardingWrapper>
+                                              <OfflineModeContainer>
+                                                <ScreenErrorProvider>
+                                                  <AppNavigationContainer
+                                                    ref={navigation}
+                                                    onReady={() => {
+                                                      // Register the navigation container with the instrumentation
+                                                      routingInstrumentation.registerNavigationContainer(
+                                                        navigation
+                                                      )
+                                                    }}
+                                                  />
+                                                </ScreenErrorProvider>
+                                              </OfflineModeContainer>
+                                            </OnboardingWrapper>
+                                          </ShareAppWrapper>
+                                        </PushNotificationsWrapper>
+                                      </SplashScreenProvider>
+                                    </SubscriptionContextProvider>
+                                  </CulturalSurveyContextProvider>
+                                </SnackBarProvider>
+                              </SearchWrapper>
+                            </SearchAnalyticsWrapper>
+                          </FavoritesWrapper>
+                        </LocationWrapper>
+                      </AuthWrapper>
+                    </SettingsWrapper>
+                  </PerformanceWrapper>
                 </NetInfoWrapper>
               </E2eContextProvider>
             </ErrorBoundary>
