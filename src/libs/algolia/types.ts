@@ -132,6 +132,7 @@ interface AlgoliaVenueHighlightResult {
 export interface AlgoliaVenue {
   objectID: string
   city: string
+  postalCode: string | null
   name: string
   offerer_name: string
   venue_type: string

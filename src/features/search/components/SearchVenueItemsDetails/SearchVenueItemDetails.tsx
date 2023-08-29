@@ -8,19 +8,19 @@ interface SearchVenueItemDetailsProps {
   width: number
   height: number
   name: string
-  city: string
+  shortAddress: string
 }
 
 export const SearchVenueItemDetails = ({
   width,
   height,
   name,
-  city,
+  shortAddress,
 }: SearchVenueItemDetailsProps) => {
   return (
     <Container maxWidth={width} minHeight={height}>
       <VenueName>{name}</VenueName>
-      <CityLabel>{city}</CityLabel>
+      <ShortAddressLabel>{shortAddress}</ShortAddressLabel>
     </Container>
   )
 }
@@ -37,6 +37,6 @@ const VenueName = styled(Typo.ButtonText).attrs({
   numberOfLines: 2,
 })({})
 
-const CityLabel = styled(Typo.Caption).attrs({
+const ShortAddressLabel = styled(Typo.Caption).attrs({
   numberOfLines: 2,
 })(({ theme }) => ({ flexShrink: 1, color: theme.colors.greyDark }))

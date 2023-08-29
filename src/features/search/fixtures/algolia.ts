@@ -77,6 +77,7 @@ export const mockSuggestionHits = [
 export const mockVenueHits = [
   {
     city: 'Quiberon',
+    postalCode: '56270',
     name: 'cinéma le Paradis',
     offerer_name: 'COMMUNE DE QUIBERON',
     venue_type: 'MOVIE',
@@ -112,6 +113,7 @@ export const mockVenueHits = [
   },
   {
     city: 'Tour-de-Faure',
+    postalCode: '46330',
     name: 'Ciné-Lot TOUR DE FAURE',
     offerer_name: 'FEDERATION DEP DES FOYERS RURAUX DU LOT',
     venue_type: 'TRAVELING_CINEMA',

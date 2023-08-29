@@ -20,6 +20,7 @@ describe('fetchVenues', () => {
     audio_disability: false,
     banner_url: null,
     city: 'Saint-Benoît',
+    postalCode: '86280',
     description: 'Share small center heart energy bring main.',
     email: 'contact@venue.com',
     facebook: null,

@@ -23,6 +23,7 @@ const venue = {
   objectID: '5543',
   name: 'UGC cinéma',
   city: 'Paris',
+  postalCode: '75000',
   offerer_name: 'séance de cinéma chandra',
   venue_type: 'MOVIE',
   description: 'film',

@@ -17,6 +17,7 @@ const mockAlgoliaVenue: AlgoliaVenue = {
   objectID: '5543',
   name: 'UGC cinéma',
   city: 'Paris',
+  postalCode: '75000',
   offerer_name: 'séance de cinéma chandra',
   venue_type: 'MOVIE',
   description: 'film',
@@ -47,7 +48,9 @@ describe('<SearchVenueItem />', () => {
     render(<SearchVenueItem venue={mockAlgoliaVenue} width={ITEM_WIDTH} height={ITEM_HEIGHT} />)
 
     expect(screen.getByText(mockAlgoliaVenue.name)).toBeTruthy()
-    expect(screen.getByText(mockAlgoliaVenue.city)).toBeTruthy()
+    expect(
+      screen.getByText(`${mockAlgoliaVenue.city}, ${mockAlgoliaVenue.postalCode}`)
+    ).toBeTruthy()
   })
 
   it('should log to analytics', async () => {
@@ -121,5 +124,29 @@ describe('<SearchVenueItem />', () => {
     render(<SearchVenueItem venue={mockAlgoliaVenue} width={ITEM_WIDTH} height={ITEM_HEIGHT} />)
 
     expect(screen.queryByText('à 10 km')).toBeFalsy()
+  })
+
+  it('should display only the city when postal code is null', () => {
+    render(
+      <SearchVenueItem
+        venue={{ ...mockAlgoliaVenue, postalCode: null }}
+        width={ITEM_WIDTH}
+        height={ITEM_HEIGHT}
+      />
+    )
+
+    expect(screen.queryByText(mockAlgoliaVenue.city)).toBeTruthy()
+  })
+
+  it('should display only the city when postal code is an empty string', () => {
+    render(
+      <SearchVenueItem
+        venue={{ ...mockAlgoliaVenue, postalCode: '' }}
+        width={ITEM_WIDTH}
+        height={ITEM_HEIGHT}
+      />
+    )
+
+    expect(screen.queryByText(mockAlgoliaVenue.city)).toBeTruthy()
   })
 })
