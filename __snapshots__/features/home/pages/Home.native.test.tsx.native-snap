@@ -105,10 +105,22 @@ exports[`Home page should render correctly 1`] = `
             }
           >
             <View
+              customHeight={16}
+              enable={true}
               style={
                 [
                   {
-                    "marginBottom": 4,
+                    "height": 16,
+                  },
+                ]
+              }
+            />
+            <View
+              style={
+                [
+                  {
+                    "flexDirection": "row",
+                    "justifyContent": "space-between",
                     "marginHorizontal": 24,
                     "marginTop": 24,
                   },
@@ -116,31 +128,54 @@ exports[`Home page should render correctly 1`] = `
               }
             >
               <View
-                customHeight={16}
-                enable={true}
                 style={
                   [
                     {
-                      "height": 16,
-                    },
-                  ]
-                }
-              />
-              <Text
-                numberOfLines={2}
-                style={
-                  [
-                    {
-                      "color": "#161617",
-                      "fontFamily": "Montserrat-Black",
-                      "fontSize": 26,
-                      "lineHeight": 34,
+                      "flexShrink": 1,
                     },
                   ]
                 }
               >
-                Bienvenue !
-              </Text>
+                <Text
+                  numberOfLines={2}
+                  style={
+                    [
+                      {
+                        "color": "#161617",
+                        "fontFamily": "Montserrat-Black",
+                        "fontSize": 26,
+                        "lineHeight": 34,
+                      },
+                    ]
+                  }
+                >
+                  Bienvenue !
+                </Text>
+                <View
+                  numberOfSpaces={1}
+                  style={
+                    [
+                      {
+                        "height": 4,
+                      },
+                    ]
+                  }
+                />
+                <Text
+                  style={
+                    [
+                      {
+                        "color": "#696A6F",
+                        "fontFamily": "Montserrat-SemiBold",
+                        "fontSize": 12,
+                        "lineHeight": 16,
+                      },
+                    ]
+                  }
+                >
+                  Toute la culture à portée de main
+                </Text>
+              </View>
             </View>
             <View
               style={
@@ -151,20 +186,6 @@ exports[`Home page should render correctly 1`] = `
                 ]
               }
             >
-              <Text
-                style={
-                  [
-                    {
-                      "color": "#696A6F",
-                      "fontFamily": "Montserrat-SemiBold",
-                      "fontSize": 12,
-                      "lineHeight": 16,
-                    },
-                  ]
-                }
-              >
-                Toute la culture à portée de main
-              </Text>
               <View
                 numberOfSpaces={6}
                 style={
