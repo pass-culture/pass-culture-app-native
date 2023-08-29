@@ -18,7 +18,7 @@ import { PageHeader } from 'ui/components/headers/PageHeader'
 import { ArrowAgain } from 'ui/svg/icons/ArrowAgain'
 import { BicolorUnlock } from 'ui/svg/icons/BicolorUnlock'
 import { BirthdayCake } from 'ui/svg/icons/BirthdayCake'
-import { getSpacing, Spacer, Typo } from 'ui/theme'
+import { getSpacing, Spacer } from 'ui/theme'
 
 export const HomeHeader: FunctionComponent = function () {
   const availableCredit = useAvailableCredit()
@@ -70,7 +70,7 @@ export const HomeHeader: FunctionComponent = function () {
         </BannerContainer>
       )
 
-    if (homeBanner?.name === BannerName.geolocation_banner)
+    if (homeBanner?.name === BannerName.geolocation_banner && !enableAppLocation)
       return (
         <BannerContainer>
           <GeolocationBanner title={homeBanner.title} subtitle={homeBanner.text} />
@@ -96,21 +96,16 @@ export const HomeHeader: FunctionComponent = function () {
       )
 
     return null
-  }, [isLoggedIn, homeBanner])
+  }, [isLoggedIn, homeBanner, enableAppLocation])
 
   const shouldDisplayLocationWidget = !isDesktopViewport && enableAppLocation
 
   return (
     <React.Fragment>
-      {shouldDisplayLocationWidget ? (
-        <LocationWidgetContainer>
-          <Spacer.TopScreen />
-          <LocationWidget />
-        </LocationWidgetContainer>
-      ) : null}
-      <PageHeader title={welcomeTitle} numberOfLines={2} />
+      <PageHeader title={welcomeTitle} subtitle={getSubtitle()} numberOfLines={2}>
+        {shouldDisplayLocationWidget ? <LocationWidget /> : null}
+      </PageHeader>
       <PageContent>
-        <CaptionSubtitle>{getSubtitle()}</CaptionSubtitle>
         <Spacer.Column numberOfSpaces={6} />
         {Banner}
       </PageContent>
@@ -122,17 +117,6 @@ const PageContent = styled.View({
   marginHorizontal: getSpacing(6),
 })
 
-const CaptionSubtitle = styled(Typo.Caption)(({ theme }) => ({
-  color: theme.colors.greyDark,
-}))
-
 const BannerContainer = styled.View({
   marginBottom: getSpacing(8),
 })
-
-const LocationWidgetContainer = styled.View(({ theme }) => ({
-  position: 'absolute',
-  right: getSpacing(6),
-  top: getSpacing(6),
-  zIndex: theme.zIndex.locationWidget,
-}))

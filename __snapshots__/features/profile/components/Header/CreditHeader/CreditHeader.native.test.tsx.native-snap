@@ -3,10 +3,22 @@
 exports[`CreditHeader Beneficiary is not underage should render correctly with exhausted credit 1`] = `
 [
   <View
+    customHeight={16}
+    enable={true}
     style={
       [
         {
-          "marginBottom": 4,
+          "height": 16,
+        },
+      ]
+    }
+  />,
+  <View
+    style={
+      [
+        {
+          "flexDirection": "row",
+          "justifyContent": "space-between",
           "marginHorizontal": 24,
           "marginTop": 24,
         },
@@ -14,31 +26,40 @@ exports[`CreditHeader Beneficiary is not underage should render correctly with e
     }
   >
     <View
-      customHeight={16}
-      enable={true}
       style={
         [
           {
-            "height": 16,
-          },
-        ]
-      }
-    />
-    <Text
-      numberOfLines={2}
-      style={
-        [
-          {
-            "color": "#161617",
-            "fontFamily": "Montserrat-Black",
-            "fontSize": 26,
-            "lineHeight": 34,
+            "flexShrink": 1,
           },
         ]
       }
     >
-      Rosa Bonheur
-    </Text>
+      <Text
+        numberOfLines={2}
+        style={
+          [
+            {
+              "color": "#161617",
+              "fontFamily": "Montserrat-Black",
+              "fontSize": 26,
+              "lineHeight": 34,
+            },
+          ]
+        }
+      >
+        Rosa Bonheur
+      </Text>
+      <View
+        numberOfSpaces={1}
+        style={
+          [
+            {
+              "height": 4,
+            },
+          ]
+        }
+      />
+    </View>
   </View>,
   <View
     style={
@@ -361,10 +382,22 @@ exports[`CreditHeader Beneficiary is not underage should render correctly with e
 exports[`CreditHeader Beneficiary is not underage should render correctly with expired credit 1`] = `
 [
   <View
+    customHeight={16}
+    enable={true}
     style={
       [
         {
-          "marginBottom": 4,
+          "height": 16,
+        },
+      ]
+    }
+  />,
+  <View
+    style={
+      [
+        {
+          "flexDirection": "row",
+          "justifyContent": "space-between",
           "marginHorizontal": 24,
           "marginTop": 24,
         },
@@ -372,31 +405,40 @@ exports[`CreditHeader Beneficiary is not underage should render correctly with e
     }
   >
     <View
-      customHeight={16}
-      enable={true}
       style={
         [
           {
-            "height": 16,
-          },
-        ]
-      }
-    />
-    <Text
-      numberOfLines={2}
-      style={
-        [
-          {
-            "color": "#161617",
-            "fontFamily": "Montserrat-Black",
-            "fontSize": 26,
-            "lineHeight": 34,
+            "flexShrink": 1,
           },
         ]
       }
     >
-      Rosa Bonheur
-    </Text>
+      <Text
+        numberOfLines={2}
+        style={
+          [
+            {
+              "color": "#161617",
+              "fontFamily": "Montserrat-Black",
+              "fontSize": 26,
+              "lineHeight": 34,
+            },
+          ]
+        }
+      >
+        Rosa Bonheur
+      </Text>
+      <View
+        numberOfSpaces={1}
+        style={
+          [
+            {
+              "height": 4,
+            },
+          ]
+        }
+      />
+    </View>
   </View>,
   <View
     style={
@@ -556,10 +598,22 @@ exports[`CreditHeader Beneficiary is not underage should render correctly with e
 exports[`CreditHeader Beneficiary is not underage should render correctly with valid non exhausted credit 1`] = `
 [
   <View
+    customHeight={16}
+    enable={true}
     style={
       [
         {
-          "marginBottom": 4,
+          "height": 16,
+        },
+      ]
+    }
+  />,
+  <View
+    style={
+      [
+        {
+          "flexDirection": "row",
+          "justifyContent": "space-between",
           "marginHorizontal": 24,
           "marginTop": 24,
         },
@@ -567,31 +621,40 @@ exports[`CreditHeader Beneficiary is not underage should render correctly with v
     }
   >
     <View
-      customHeight={16}
-      enable={true}
       style={
         [
           {
-            "height": 16,
-          },
-        ]
-      }
-    />
-    <Text
-      numberOfLines={2}
-      style={
-        [
-          {
-            "color": "#161617",
-            "fontFamily": "Montserrat-Black",
-            "fontSize": 26,
-            "lineHeight": 34,
+            "flexShrink": 1,
           },
         ]
       }
     >
-      Rosa Bonheur
-    </Text>
+      <Text
+        numberOfLines={2}
+        style={
+          [
+            {
+              "color": "#161617",
+              "fontFamily": "Montserrat-Black",
+              "fontSize": 26,
+              "lineHeight": 34,
+            },
+          ]
+        }
+      >
+        Rosa Bonheur
+      </Text>
+      <View
+        numberOfSpaces={1}
+        style={
+          [
+            {
+              "height": 4,
+            },
+          ]
+        }
+      />
+    </View>
   </View>,
   <View
     style={
@@ -988,10 +1051,22 @@ exports[`CreditHeader Beneficiary is not underage should render correctly with v
 exports[`CreditHeader Beneficiary is underage should render correctly for underage beneficiary 1`] = `
 [
   <View
+    customHeight={16}
+    enable={true}
     style={
       [
         {
-          "marginBottom": 4,
+          "height": 16,
+        },
+      ]
+    }
+  />,
+  <View
+    style={
+      [
+        {
+          "flexDirection": "row",
+          "justifyContent": "space-between",
           "marginHorizontal": 24,
           "marginTop": 24,
         },
@@ -999,31 +1074,40 @@ exports[`CreditHeader Beneficiary is underage should render correctly for undera
     }
   >
     <View
-      customHeight={16}
-      enable={true}
       style={
         [
           {
-            "height": 16,
-          },
-        ]
-      }
-    />
-    <Text
-      numberOfLines={2}
-      style={
-        [
-          {
-            "color": "#161617",
-            "fontFamily": "Montserrat-Black",
-            "fontSize": 26,
-            "lineHeight": 34,
+            "flexShrink": 1,
           },
         ]
       }
     >
-      Rosa Bonheur
-    </Text>
+      <Text
+        numberOfLines={2}
+        style={
+          [
+            {
+              "color": "#161617",
+              "fontFamily": "Montserrat-Black",
+              "fontSize": 26,
+              "lineHeight": 34,
+            },
+          ]
+        }
+      >
+        Rosa Bonheur
+      </Text>
+      <View
+        numberOfSpaces={1}
+        style={
+          [
+            {
+              "height": 4,
+            },
+          ]
+        }
+      />
+    </View>
   </View>,
   <View
     style={
