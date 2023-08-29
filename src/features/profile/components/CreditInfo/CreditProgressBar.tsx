@@ -10,21 +10,30 @@ import { ColorsEnum } from 'ui/theme/colors'
 interface CreditProgressBarProps {
   progress: number
   colors: ColorsEnum[]
+  height?: 'normal' | 'small'
 }
 
-export const MINIMUM_PROGRESS_BAR_SIZE = 0.02
+const MINIMUM_PROGRESS_BAR_SIZE = 0.02
 const MINIMUM_PROGRESS_BAR_SIZE_SM = 0.07
 const MINIMUM_PROGRESS_BAR_SIZE_MD = 0.03
 const PROGRESS_BAR_BORDER_RADIUS = getSpacing(12)
 
-const CreditProgressBarComponent: React.FC<CreditProgressBarProps> = ({ colors, progress }) => {
+const CreditProgressBarComponent: React.FC<CreditProgressBarProps> = ({
+  colors,
+  progress,
+  height = 'normal',
+}) => {
   const shadowColors = [colorAlpha(colors[0], 0.1), colorAlpha(colors[1], 0.1)]
 
   return (
     <Container>
-      <ProgressBarContainer>
-        <GradientShadow colors={shadowColors} />
-        <SecondGradientShadow />
+      <ProgressBarContainer height={height}>
+        {height === 'normal' && (
+          <React.Fragment>
+            <GradientShadow colors={shadowColors} />
+            <SecondGradientShadow />
+          </React.Fragment>
+        )}
         <LinearGradientBar progress={progress} colors={colors} testID="progress-bar" />
       </ProgressBarContainer>
     </Container>
@@ -99,11 +108,13 @@ const Container = styled.View({
   borderRadius: PROGRESS_BAR_BORDER_RADIUS,
 })
 
-const ProgressBarContainer = styled.View(({ theme }) => ({
-  flexDirection: 'row',
-  borderRadius: PROGRESS_BAR_BORDER_RADIUS,
-  height: getSpacing(4.5),
-  width: '100%',
-  zIndex: theme.zIndex.progressbar,
-  backgroundColor: theme.colors.white,
-}))
+const ProgressBarContainer = styled.View<Pick<CreditProgressBarProps, 'height'>>(
+  ({ theme, height }) => ({
+    flexDirection: 'row',
+    borderRadius: PROGRESS_BAR_BORDER_RADIUS,
+    height: getSpacing(height === 'normal' ? 4.5 : 2),
+    width: '100%',
+    zIndex: theme.zIndex.progressbar,
+    backgroundColor: height === 'normal' ? theme.colors.white : theme.colors.greyMedium,
+  })
+)

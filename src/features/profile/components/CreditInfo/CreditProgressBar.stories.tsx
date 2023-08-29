@@ -37,3 +37,9 @@ export const Full = Template.bind({})
 Full.args = {
   progress: 1,
 }
+
+export const Small = Template.bind({})
+Small.args = {
+  progress: 0.5,
+  height: 'small',
+}
