@@ -172,6 +172,7 @@ export const mockedAlgoliaVenueResponse: SearchResponse<AlgoliaVenue> = {
   hits: [
     {
       city: 'CHATEAU-GONTIER-SUR-MAYENNE',
+      postalCode: '53200',
       name: 'ESPACE CULTUREL LECLERC CHATEAU GONTIER',
       offerer_name: 'SAS AZE DIS',
       venue_type: 'CULTURAL_CENTRE',
@@ -205,6 +206,7 @@ export const mockedAlgoliaVenueResponse: SearchResponse<AlgoliaVenue> = {
     },
     {
       city: 'CONCARNEAU',
+      postalCode: '29900',
       name: 'CAC - Concarneau Scènes',
       offerer_name: 'COMMUNE DE CONCARNEAU',
       venue_type: 'CULTURAL_CENTRE',

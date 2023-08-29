@@ -511,7 +511,7 @@ exports[`SearchResults component should render correctly 1`] = `
                                     class="css-text-1rynq56 r-WebkitBoxOrient-8akbws r-display-krxsd3 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-color-v2ubm6 r-flexShrink-1wbh5a2 r-fontFamily-aeuvnr r-fontSize-1enofrn r-lineHeight-1cwl3u0"
                                     dir="ltr"
                                   >
-                                    CHATEAU-GONTIER-SUR-MAYENNE
+                                    CHATEAU-GONTIER-SUR-MAYENNE, 53200
                                   </div>
                                 </div>
                               </div>
@@ -563,7 +563,7 @@ exports[`SearchResults component should render correctly 1`] = `
                                     class="css-text-1rynq56 r-WebkitBoxOrient-8akbws r-display-krxsd3 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-color-v2ubm6 r-flexShrink-1wbh5a2 r-fontFamily-aeuvnr r-fontSize-1enofrn r-lineHeight-1cwl3u0"
                                     dir="ltr"
                                   >
-                                    CONCARNEAU
+                                    CONCARNEAU, 29900
                                   </div>
                                 </div>
                               </div>
@@ -1187,7 +1187,7 @@ exports[`SearchResults component should render correctly 1`] = `
                                   class="css-text-1rynq56 r-WebkitBoxOrient-8akbws r-display-krxsd3 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-color-v2ubm6 r-flexShrink-1wbh5a2 r-fontFamily-aeuvnr r-fontSize-1enofrn r-lineHeight-1cwl3u0"
                                   dir="ltr"
                                 >
-                                  CHATEAU-GONTIER-SUR-MAYENNE
+                                  CHATEAU-GONTIER-SUR-MAYENNE, 53200
                                 </div>
                               </div>
                             </div>
@@ -1239,7 +1239,7 @@ exports[`SearchResults component should render correctly 1`] = `
                                   class="css-text-1rynq56 r-WebkitBoxOrient-8akbws r-display-krxsd3 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-color-v2ubm6 r-flexShrink-1wbh5a2 r-fontFamily-aeuvnr r-fontSize-1enofrn r-lineHeight-1cwl3u0"
                                   dir="ltr"
                                 >
-                                  CONCARNEAU
+                                  CONCARNEAU, 29900
                                 </div>
                               </div>
                             </div>

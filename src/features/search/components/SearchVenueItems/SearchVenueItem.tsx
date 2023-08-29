@@ -87,7 +87,7 @@ const UnmemoizedSearchVenueItem = ({ venue, height, width, searchId }: SearchVen
             width={width}
             height={height + MAX_VENUE_CAPTION_HEIGHT}
             name={venue.name}
-            city={venue.city}
+            city={[venue.city, venue.postalCode].filter(Boolean).join(', ')}
           />
         </View>
       </SearchVenueTouchableLink>
