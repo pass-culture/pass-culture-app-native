@@ -124,6 +124,32 @@ export const OFFER_RESPONSE_SNAPSHOT = {
   },
 }
 
+export const OFFER_RESPONSE_SNAPSHOT_WITH_DANGEROUS_METADATA = {
+  ...OFFER_RESPONSE_SNAPSHOT,
+  id: 1234,
+  name: '</script><script>alert("you have been pranked")</script>',
+  metadata: {
+    '@context': 'https://schema.org',
+    '@type': 'Product',
+    name: '</script><script>alert("you have been pwned")</script>',
+    location: {
+      '@type': 'Place',
+      name: '</script><script>alert("you have been hacked")</script>',
+      address: {
+        '@type': 'PostalAddress',
+        streetAddress: '2 RUE LAMENNAIS',
+        postalCode: '75008',
+        addressLocality: 'PARIS 8',
+      },
+      geo: {
+        '@type': 'GeoCoordinates',
+        latitude: 20,
+        longitude: 2,
+      },
+    },
+  },
+}
+
 export const VENUE_WITH_BANNER_RESPONSE_SNAPSHOT = {
   id: 5543,
   name: '<img src="data:image/gif;base64 onerror="javascript:alert("hack")" />Le Petit Rintintin 1',

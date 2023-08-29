@@ -126,13 +126,33 @@ export async function replaceHtmlMetas(
   })
 
   if (entity['metadata']) {
+    const metadata = recursiveEncode(entity['metadata'])
+
     html = html.replace(
       '</head>',
-      `  <script type="application/ld+json">${JSON.stringify(
-        entity['metadata']
-      )}</script>\n  </head>`
+      `  <script type="application/ld+json">${JSON.stringify(metadata)}</script>\n  </head>`
     )
   }
 
   return html
+}
+
+type NestedMetadata = string | number | boolean | { [key: string]: NestedMetadata }
+type Metadata = Record<string, NestedMetadata>
+
+const encodeWhateverType = (value: NestedMetadata): NestedMetadata => {
+  switch (typeof value) {
+    case 'object':
+      return recursiveEncode(value)
+    case 'string':
+      return encode(value)
+    default:
+      return value
+  }
+}
+
+const recursiveEncode = (entityMetadata: Metadata): Metadata => {
+  return Object.entries(entityMetadata)
+    .map<[string, NestedMetadata]>(([key, value]) => [key, encodeWhateverType(value)])
+    .reduce((newMetadata, [key, value]) => ({ ...newMetadata, [key]: value }), {})
 }
