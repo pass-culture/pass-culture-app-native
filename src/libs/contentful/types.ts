@@ -459,6 +459,8 @@ type HightlightOfferFields = {
   offerTag?: string
   offerEan?: string
   color: Color
+  isGeolocated?: boolean
+  aroundRadius?: number
 }
 
 export const isAlgoliaContentModel = (module: HomepageNatifModule): module is AlgoliaContentModel =>

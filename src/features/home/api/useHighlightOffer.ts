@@ -6,15 +6,19 @@ import { fetchOffersByEan } from 'libs/algolia/fetchAlgolia/fetchOffersByEan'
 import { fetchOffersByIds } from 'libs/algolia/fetchAlgolia/fetchOffersByIds'
 import { fetchOffersByTags } from 'libs/algolia/fetchAlgolia/fetchOffersByTags'
 import { useTransformOfferHits } from 'libs/algolia/fetchAlgolia/transformOfferHit'
+import { Position } from 'libs/geolocation/types'
 import { useNetInfoContext } from 'libs/network/NetInfoWrapper'
+import { computeDistanceInMeters } from 'libs/parsers'
 import { QueryKeys } from 'libs/queryKeys'
-import { Offer } from 'shared/offer/types'
+import { Offer, OfferLocation } from 'shared/offer/types'
 
 type UseHightlightOfferParams = {
   id: string
   offerId?: string
   offerEan?: string
   offerTag?: string
+  isGeolocated?: boolean
+  aroundRadius?: number
 }
 
 enum QueryMode {
@@ -34,6 +38,8 @@ export const useHighlightOffer = ({
   offerId,
   offerEan,
   offerTag,
+  isGeolocated,
+  aroundRadius,
 }: UseHightlightOfferParams) => {
   const isUserUnderage = useIsUserUnderage()
   const netInfo = useNetInfoContext()
@@ -87,5 +93,31 @@ export const useHighlightOffer = ({
     enabled: !!netInfo.isConnected,
   })
   const offers = (data?.map(transformOfferHits) as Offer[]) ?? []
-  return offers[0]
+  const highlightOffer = offers[0]
+
+  if (shouldDisplayHighlightOffer(position, highlightOffer?._geoloc, isGeolocated, aroundRadius)) {
+    return highlightOffer
+  }
+  return undefined
+}
+
+const shouldDisplayHighlightOffer = (
+  position: Position,
+  offerLocation?: OfferLocation,
+  isGeolocated?: boolean,
+  aroundRadius?: number
+) => {
+  if (!isGeolocated || !aroundRadius) return true
+  if (!position || !offerLocation) return false
+
+  const { lat: latitude, lng: longitude } = offerLocation
+  if (!latitude || !longitude) return false
+
+  const distance = computeDistanceInMeters(
+    latitude,
+    longitude,
+    position.latitude,
+    position.longitude
+  )
+  return distance <= 1000 * aroundRadius
 }
