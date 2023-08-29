@@ -6,7 +6,7 @@ import { render, screen } from 'tests/utils'
 const props = {
   width: 300,
   name: 'Test Venue',
-  city: 'Test City',
+  shortAddress: 'Paris, 75000',
   height: 172,
 }
 
@@ -15,6 +15,6 @@ describe('SearchVenueItemDetails', () => {
     render(<SearchVenueItemDetails {...props} />)
 
     expect(screen.getByText(props.name)).toBeTruthy()
-    expect(screen.getByText(props.city)).toBeTruthy()
+    expect(screen.getByText(props.shortAddress)).toBeTruthy()
   })
 })
