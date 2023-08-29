@@ -155,9 +155,9 @@ export const SearchListHeader: React.FC<SearchListHeaderProps> = ({ nbHits, user
             />
           </View>
           <Spacer.Column numberOfSpaces={3} />
+          <StyledSeparator />
         </React.Fragment>
       )}
-      <StyledSeparator />
       <Spacer.Column numberOfSpaces={5} />
       <Title>{offerTitle}</Title>
       <NumberOfResults nbHits={nbHits} />
