@@ -1,4 +1,5 @@
 import React from 'react'
+import { v4 as uuidv4 } from 'uuid'
 
 import { push } from '__mocks__/@react-navigation/native'
 import { CategoryIdEnum, HomepageLabelNameEnum } from 'api/gen'
@@ -7,12 +8,13 @@ import { PlaylistType } from 'features/offer/enums'
 import { mockedAlgoliaResponse } from 'libs/algolia/__mocks__/mockedAlgoliaResponse'
 import { analytics } from 'libs/analytics'
 import { queryCache, reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { fireEvent, render } from 'tests/utils'
+import { fireEvent, render, screen } from 'tests/utils'
 
 import { OfferTile } from './OfferTile'
 
 const offer = mockedAlgoliaResponse.hits[0].offer
 const offerId = 116656
+const searchId = uuidv4()
 
 const props = {
   analyticsFrom: 'home' as Referrals,
@@ -37,14 +39,14 @@ describe('OfferTile component', () => {
 
   it('should render correctly', () => {
     // eslint-disable-next-line local-rules/no-react-query-provider-hoc
-    const { toJSON } = render(reactQueryProviderHOC(<OfferTile {...props} />))
-    expect(toJSON()).toMatchSnapshot()
+    render(reactQueryProviderHOC(<OfferTile {...props} />))
+    expect(screen.toJSON()).toMatchSnapshot()
   })
 
   it('should navigate to the offer when clicking on the image', async () => {
     // eslint-disable-next-line local-rules/no-react-query-provider-hoc
-    const { getByTestId } = render(reactQueryProviderHOC(<OfferTile {...props} />))
-    await fireEvent.press(getByTestId('tileImage'))
+    render(reactQueryProviderHOC(<OfferTile {...props} />))
+    await fireEvent.press(screen.getByTestId('tileImage'))
     expect(push).toHaveBeenCalledWith('Offer', {
       id: offerId,
       from: 'home',
@@ -54,8 +56,8 @@ describe('OfferTile component', () => {
 
   it('Analytics - should log ConsultOffer that user opened the offer', async () => {
     // eslint-disable-next-line local-rules/no-react-query-provider-hoc
-    const { getByTestId } = render(reactQueryProviderHOC(<OfferTile {...props} />))
-    await fireEvent.press(getByTestId('tileImage'))
+    render(reactQueryProviderHOC(<OfferTile {...props} />))
+    await fireEvent.press(screen.getByTestId('tileImage'))
     expect(analytics.logConsultOffer).toHaveBeenCalledWith({
       offerId,
       from: 'home',
@@ -71,8 +73,8 @@ describe('OfferTile component', () => {
       playlistType: PlaylistType.SAME_CATEGORY_SIMILAR_OFFERS,
     }
     // eslint-disable-next-line local-rules/no-react-query-provider-hoc
-    const { getByTestId } = render(reactQueryProviderHOC(<OfferTile {...propsFromSimilarOffers} />))
-    await fireEvent.press(getByTestId('tileImage'))
+    render(reactQueryProviderHOC(<OfferTile {...propsFromSimilarOffers} />))
+    await fireEvent.press(screen.getByTestId('tileImage'))
     expect(analytics.logConsultOffer).toHaveBeenCalledWith({
       offerId,
       from: 'similar_offer',
@@ -84,11 +86,11 @@ describe('OfferTile component', () => {
   })
 
   it('Analytics - should log ConsultOffer with homeEntryId if provide', async () => {
-    const { getByTestId } = render(
+    render(
       // eslint-disable-next-line local-rules/no-react-query-provider-hoc
       reactQueryProviderHOC(<OfferTile {...props} homeEntryId={'abcd'} />)
     )
-    await fireEvent.press(getByTestId('tileImage'))
+    await fireEvent.press(screen.getByTestId('tileImage'))
     expect(analytics.logConsultOffer).toHaveBeenCalledWith({
       offerId,
       from: 'home',
@@ -97,10 +99,35 @@ describe('OfferTile component', () => {
     })
   })
 
+  it('Analytics - should log ConsultOffer from venue offers playlist and from search venues playlist', async () => {
+    const propsFromSearchVenuesPlaylist = {
+      offerId,
+      analyticsFrom: 'venue' as Referrals,
+      venueId: 1,
+      searchId,
+      categoryLabel: HomepageLabelNameEnum.MUSIQUE,
+      categoryId: CategoryIdEnum.MUSIQUE_LIVE,
+      subcategoryId: offer.subcategoryId,
+      price: '28 €',
+      width: 100,
+      height: 100,
+      thumbUrl: offer.thumbUrl,
+    }
+    // eslint-disable-next-line local-rules/no-react-query-provider-hoc
+    render(reactQueryProviderHOC(<OfferTile {...propsFromSearchVenuesPlaylist} />))
+    await fireEvent.press(screen.getByTestId('tileImage'))
+    expect(analytics.logConsultOffer).toHaveBeenCalledWith({
+      offerId,
+      from: 'venue',
+      venueId: 1,
+      searchId,
+    })
+  })
+
   it('should prepopulate react-query cache when clicking on offer', async () => {
     // eslint-disable-next-line local-rules/no-react-query-provider-hoc
-    const { getByTestId } = render(reactQueryProviderHOC(<OfferTile {...props} />))
-    await fireEvent.press(getByTestId('tileImage'))
+    render(reactQueryProviderHOC(<OfferTile {...props} />))
+    await fireEvent.press(screen.getByTestId('tileImage'))
 
     const queryHash = JSON.stringify(['offer', offerId])
     const query = queryCache.get(queryHash)

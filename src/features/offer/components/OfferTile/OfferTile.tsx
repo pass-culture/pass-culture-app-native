@@ -54,6 +54,7 @@ const UnmemoizedOfferTile = (props: OfferTileProps) => {
       fromOfferId,
       shouldUseAlgoliaRecommend,
       playlistType,
+      searchId,
     })
   }
 
