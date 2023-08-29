@@ -1,12 +1,21 @@
+import { NavigationContainer } from '@react-navigation/native'
 import { ComponentStory, ComponentMeta } from '@storybook/react'
 import React from 'react'
 
 import { LocationWidget } from './LocationWidget'
 
-export default {
+const meta: ComponentMeta<typeof LocationWidget> = {
   title: 'Features/Location/LocationWidget',
   component: LocationWidget,
-} as ComponentMeta<typeof LocationWidget>
+  decorators: [
+    (Story) => (
+      <NavigationContainer>
+        <Story />
+      </NavigationContainer>
+    ),
+  ],
+}
+export default meta
 
 const Template: ComponentStory<typeof LocationWidget> = () => <LocationWidget />
 
