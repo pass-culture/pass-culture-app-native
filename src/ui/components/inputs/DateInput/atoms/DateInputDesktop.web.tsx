@@ -65,6 +65,7 @@ export const DateInputDesktop: FunctionComponent<DatePickerProps> = ({
     <Container testID="date-picker-dropdown" accessibilityDescribedBy={accessibilityDescribedBy}>
       <DropDownContainer>
         <DropDown
+          value={date.day}
           label="Jour"
           placeholder="JJ"
           options={optionGroups.days}
@@ -77,6 +78,7 @@ export const DateInputDesktop: FunctionComponent<DatePickerProps> = ({
       <Spacer.Row numberOfSpaces={2} />
       <DropDownContainer>
         <DropDown
+          value={date.month}
           label="Mois"
           placeholder="Mois"
           options={optionGroups.months}
@@ -90,6 +92,7 @@ export const DateInputDesktop: FunctionComponent<DatePickerProps> = ({
       <Spacer.Row numberOfSpaces={2} />
       <DropDownContainer>
         <DropDown
+          value={date.year}
           label="Année"
           placeholder="AAAA"
           options={optionGroups.years}
