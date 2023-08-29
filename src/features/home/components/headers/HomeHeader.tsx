@@ -70,7 +70,7 @@ export const HomeHeader: FunctionComponent = function () {
         </BannerContainer>
       )
 
-    if (homeBanner?.name === BannerName.geolocation_banner)
+    if (homeBanner?.name === BannerName.geolocation_banner && !enableAppLocation)
       return (
         <BannerContainer>
           <GeolocationBanner title={homeBanner.title} subtitle={homeBanner.text} />
@@ -96,7 +96,7 @@ export const HomeHeader: FunctionComponent = function () {
       )
 
     return null
-  }, [isLoggedIn, homeBanner])
+  }, [isLoggedIn, homeBanner, enableAppLocation])
 
   const shouldDisplayLocationWidget = !isDesktopViewport && enableAppLocation
 
