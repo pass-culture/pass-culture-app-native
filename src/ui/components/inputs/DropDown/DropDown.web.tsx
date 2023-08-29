@@ -17,6 +17,7 @@ type Props = {
   noBorderRadiusLeft?: boolean
   accessibilityLabel?: string
   isError?: boolean
+  value?: string
 }
 
 export function DropDown({
@@ -28,8 +29,10 @@ export function DropDown({
   noBorderRadiusLeft = false,
   accessibilityLabel,
   isError = false,
+  value,
 }: Props) {
-  const [isEmpty, setIsEmpty] = useState(true)
+  const [isEmpty, setIsEmpty] = useState(!value)
+
   const onChangeDate: React.ChangeEventHandler<HTMLSelectElement> = (event) => {
     onChange(event.target.value)
     setIsEmpty(!event.target.value)
@@ -50,7 +53,8 @@ export function DropDown({
           isEmpty={isEmpty}
           noBorderRadiusRight={noBorderRadiusRight}
           noBorderRadiusLeft={noBorderRadiusLeft}
-          isError={isError}>
+          isError={isError}
+          value={value}>
           <StyledOption value="">{placeholder}</StyledOption>
           {options.map((option) => (
             <StyledOption key={option} value={option} data-testid="select-option">

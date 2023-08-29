@@ -11,6 +11,7 @@ export const DatePickerDropDown: FunctionComponent<DatePickerProps> = ({
   minimumDate,
   maximumDate,
   defaultSelectedDate,
+  previousBirthdateProvided,
   errorMessage,
 }) => {
   const [date, setDate] = useState<Date | undefined>()
@@ -29,6 +30,7 @@ export const DatePickerDropDown: FunctionComponent<DatePickerProps> = ({
         minimumDate={minimumDate}
         maximumDate={maximumDate}
         defaultSelectedDate={defaultSelectedDate}
+        previousBirthdateProvided={previousBirthdateProvided}
         accessibilityDescribedBy={birthdateInputErrorId}
         errorMessage={errorMessage}
       />

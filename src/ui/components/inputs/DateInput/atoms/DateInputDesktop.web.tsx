@@ -23,11 +23,14 @@ export const DateInputDesktop: FunctionComponent<DatePickerProps> = ({
   onChange,
   accessibilityDescribedBy,
   errorMessage,
+  previousBirthdateProvided,
 }) => {
+  const { day, month, year } = getDefaultDateValues(previousBirthdateProvided)
+
   const [date, setDate] = useState<InitialDateProps>({
-    day: undefined,
-    month: undefined,
-    year: undefined,
+    day,
+    month,
+    year,
   })
 
   const optionGroups = useMemo(() => {
@@ -65,6 +68,7 @@ export const DateInputDesktop: FunctionComponent<DatePickerProps> = ({
     <Container testID="date-picker-dropdown" accessibilityDescribedBy={accessibilityDescribedBy}>
       <DropDownContainer>
         <DropDown
+          value={date.day}
           label="Jour"
           placeholder="JJ"
           options={optionGroups.days}
@@ -77,6 +81,7 @@ export const DateInputDesktop: FunctionComponent<DatePickerProps> = ({
       <Spacer.Row numberOfSpaces={2} />
       <DropDownContainer>
         <DropDown
+          value={date.month}
           label="Mois"
           placeholder="Mois"
           options={optionGroups.months}
@@ -90,6 +95,7 @@ export const DateInputDesktop: FunctionComponent<DatePickerProps> = ({
       <Spacer.Row numberOfSpaces={2} />
       <DropDownContainer>
         <DropDown
+          value={date.year}
           label="Année"
           placeholder="AAAA"
           options={optionGroups.years}
@@ -101,6 +107,23 @@ export const DateInputDesktop: FunctionComponent<DatePickerProps> = ({
       </DropDownContainer>
     </Container>
   )
+}
+
+const getDefaultDateValues = (previousBirthdate?: string): InitialDateProps => {
+  if (!previousBirthdate)
+    return {
+      day: undefined,
+      month: undefined,
+      year: undefined,
+    }
+
+  const birthDate = new Date(previousBirthdate)
+
+  return {
+    day: birthDate.getUTCDate().toString(),
+    month: monthNames.at(birthDate.getUTCMonth()),
+    year: birthDate.getUTCFullYear().toString(),
+  }
 }
 
 const getValidDate = (date: InitialDateProps) => {
