@@ -17,11 +17,10 @@ export function formatFullAddress(
     } else {
       fullAddress = fullAddress.concat(`${postalCode}`)
     }
-  } else {
-    if (isNotEmpty(city)) {
-      fullAddress = fullAddress.concat(`${city}`)
-    }
+  } else if (isNotEmpty(city)) {
+    fullAddress = fullAddress.concat(`${city}`)
   }
+
   return fullAddress
 }
 

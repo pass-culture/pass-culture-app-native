@@ -84,12 +84,10 @@ export const GenericAchievementCard: FunctionComponent<AchievementCardProps> = (
     if (!lottieAnimation) return
     if (props.index === props.activeIndex) {
       lottieAnimation.play(0, props.pauseAnimationOnRenderAtFrame)
-    } else {
       // !!! : pause() does not exit on lottie-react-native web API and the typing is not showing it.
       // Even without pause(), the animation still behave as expected on the web.
-      if (lottieAnimation.pause) {
-        lottieAnimation.pause()
-      }
+    } else if (lottieAnimation.pause) {
+      lottieAnimation.pause()
     }
   }, [props.activeIndex, props.index, props.pauseAnimationOnRenderAtFrame])
 

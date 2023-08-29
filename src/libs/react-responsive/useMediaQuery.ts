@@ -66,12 +66,10 @@ export function getMediaQueryFromDimensions({
       mq = windowWidth >= minWidth
     } else if (maxWidth !== undefined && minWidth !== undefined) {
       mq = windowWidth <= maxWidth && windowWidth >= minWidth
-    } else {
-      if (!hasHeightMq) {
-        throw new Error(
-          `useMediaQuery was used without minWidth, maxWidth, minHeight and maxHeight. At least one is necessary`
-        )
-      }
+    } else if (!hasHeightMq) {
+      throw new Error(
+        `useMediaQuery was used without minWidth, maxWidth, minHeight and maxHeight. At least one is necessary`
+      )
     }
   }
 
