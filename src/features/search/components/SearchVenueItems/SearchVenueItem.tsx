@@ -27,7 +27,7 @@ export interface SearchVenueItemProps {
   searchId?: string
 }
 
-const MAX_VENUE_CAPTION_HEIGHT = getSpacing(18)
+const MAX_VENUE_CAPTION_HEIGHT = getSpacing(19)
 
 const mergeVenueData = (venue: AlgoliaVenue) => (prevData: AlgoliaVenue | undefined) => ({
   ...venue,
@@ -83,7 +83,12 @@ const UnmemoizedSearchVenueItem = ({ venue, height, width, searchId }: SearchVen
               />
             </SearchVenueTypeTile>
           )}
-          <SearchVenueItemDetails width={width} name={venue.name} city={venue.city} />
+          <SearchVenueItemDetails
+            width={width}
+            height={height + MAX_VENUE_CAPTION_HEIGHT}
+            name={venue.name}
+            city={venue.city}
+          />
         </View>
       </SearchVenueTouchableLink>
     </View>

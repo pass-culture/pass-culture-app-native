@@ -11,10 +11,11 @@ import { renderHook } from 'tests/utils'
 import { useShowResultsForCategory } from './useShowResultsForCategory'
 
 let mockSearchState = initialSearchState
+const mockDispatch = jest.fn()
 jest.mock('features/search/context/SearchWrapper', () => ({
   useSearch: () => ({
     searchState: mockSearchState,
-    dispatch: jest.fn(),
+    dispatch: mockDispatch,
   }),
 }))
 
@@ -93,6 +94,36 @@ describe('useShowResultsForCategory', () => {
         searchId,
       },
       screen: 'Search',
+    })
+  })
+
+  it('should dispatch state to avoid useless fetch the time that the url parameters are loaded', () => {
+    const { result: resultCallback } = renderHook(useShowResultsForCategory)
+
+    resultCallback.current(SearchGroupNameEnumv2.EVENEMENTS_EN_LIGNE)
+
+    expect(mockDispatch).toHaveBeenNthCalledWith(1, {
+      type: 'SET_STATE',
+      payload: {
+        beginningDatetime: undefined,
+        date: null,
+        endingDatetime: undefined,
+        hitsPerPage: 20,
+        isOnline: true,
+        locationFilter: { locationType: 'EVERYWHERE' },
+        offerCategories: [SearchGroupNameEnumv2.EVENEMENTS_EN_LIGNE],
+        offerIsDuo: false,
+        offerIsFree: false,
+        offerIsNew: false,
+        offerSubcategories: [],
+        offerTypes: { isDigital: false, isEvent: false, isThing: false },
+        priceRange: [0, 300],
+        query: 'Big flo et Oli',
+        view: SearchView.Results,
+        tags: [],
+        timeRange: null,
+        searchId,
+      },
     })
   })
 })

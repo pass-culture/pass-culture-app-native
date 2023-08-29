@@ -11,7 +11,7 @@ import { SearchView } from 'features/search/types'
 import { useSubcategories } from 'libs/subcategories/useSubcategories'
 
 export const useShowResultsForCategory = (): OnPressCategory => {
-  const { searchState } = useSearch()
+  const { searchState, dispatch } = useSearch()
   const { navigate } = useNavigation<UseNavigationType>()
   const { data } = useSubcategories()
 
@@ -29,8 +29,9 @@ export const useShowResultsForCategory = (): OnPressCategory => {
         searchId,
         isOnline: isOnlyOnline(data, pressedCategory) || undefined,
       }
+      dispatch({ type: 'SET_STATE', payload: newSearchState })
       navigate(...getTabNavConfig('Search', newSearchState))
     },
-    [data, navigate, searchState]
+    [data, dispatch, navigate, searchState]
   )
 }
