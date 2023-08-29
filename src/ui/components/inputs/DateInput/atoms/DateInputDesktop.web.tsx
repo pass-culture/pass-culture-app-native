@@ -23,11 +23,14 @@ export const DateInputDesktop: FunctionComponent<DatePickerProps> = ({
   onChange,
   accessibilityDescribedBy,
   errorMessage,
+  previousBirthdateProvided,
 }) => {
+  const { day, month, year } = getDefaultDateValues(previousBirthdateProvided)
+
   const [date, setDate] = useState<InitialDateProps>({
-    day: undefined,
-    month: undefined,
-    year: undefined,
+    day,
+    month,
+    year,
   })
 
   const optionGroups = useMemo(() => {
@@ -104,6 +107,23 @@ export const DateInputDesktop: FunctionComponent<DatePickerProps> = ({
       </DropDownContainer>
     </Container>
   )
+}
+
+const getDefaultDateValues = (previousBirthdate?: string): InitialDateProps => {
+  if (!previousBirthdate)
+    return {
+      day: undefined,
+      month: undefined,
+      year: undefined,
+    }
+
+  const birthDate = new Date(previousBirthdate)
+
+  return {
+    day: birthDate.getUTCDate().toString(),
+    month: monthNames.at(birthDate.getUTCMonth()),
+    year: birthDate.getUTCFullYear().toString(),
+  }
 }
 
 const getValidDate = (date: InitialDateProps) => {
