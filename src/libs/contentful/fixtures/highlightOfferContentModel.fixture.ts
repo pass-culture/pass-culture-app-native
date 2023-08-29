@@ -76,5 +76,7 @@ export const highlightOfferContentModelFixture: HighlightOfferContentModel = {
     },
     color: Color.SkyBlue,
     offerId: '20859',
+    isGeolocated: true,
+    aroundRadius: 50,
   },
 }

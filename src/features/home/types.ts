@@ -285,6 +285,8 @@ export type HighlightOfferModule = {
   offerEan?: string
   image: string
   color: Color
+  isGeolocated?: boolean
+  aroundRadius?: number
 }
 
 export type OffersPlaylistParameters = SearchQueryParameters[]
