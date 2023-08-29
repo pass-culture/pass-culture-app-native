@@ -5,7 +5,7 @@ import { videoModuleFixture } from 'features/home/fixtures/videoModule.fixture'
 import { mockedAlgoliaResponse } from 'libs/algolia/__mocks__/mockedAlgoliaResponse'
 import { analytics } from 'libs/analytics'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { act, fireEvent, render, screen } from 'tests/utils'
+import { act, fireEvent, render, screen, waitForModalToShow } from 'tests/utils'
 
 const hideModalMock = jest.fn()
 
@@ -15,10 +15,7 @@ describe('VideoModal', () => {
   it('should render correctly if modal visible', async () => {
     renderVideoModal()
 
-    await act(async () => {
-      const sleep = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms))
-      await sleep(300)
-    })
+    await waitForModalToShow()
 
     expect(screen).toMatchSnapshot()
   })

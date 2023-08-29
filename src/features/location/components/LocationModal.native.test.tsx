@@ -1,7 +1,7 @@
 import React from 'react'
 
 import { LocationModal } from 'features/location/components/LocationModal'
-import { act, render, screen } from 'tests/utils'
+import { render, screen, waitForModalToShow } from 'tests/utils'
 
 const hideModalMock = jest.fn()
 
@@ -9,10 +9,7 @@ describe('LocationModal', () => {
   it('should render correctly if modal visible', async () => {
     renderLocationModal()
 
-    await act(async () => {
-      const sleep = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms))
-      await sleep(300)
-    })
+    await waitForModalToShow()
 
     expect(screen).toMatchSnapshot()
   })

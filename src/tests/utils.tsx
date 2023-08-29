@@ -159,3 +159,10 @@ export const bottomScrollEvent = {
     contentSize: { height: 1600 },
   },
 }
+
+export async function waitForModalToShow() {
+  await act(async () => {
+    const sleep = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms))
+    await sleep(300)
+  })
+}
