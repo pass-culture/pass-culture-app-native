@@ -104,7 +104,7 @@ describe('NotificationSettings', () => {
         },
       } as UserProfileResponse)
 
-      await screen.findByText('Autoriser l’envoi d’e-mails')
+      await screen.findByText('Autoriser les notifications marketing')
 
       const toggleSwitch = screen.getByTestId('Interrupteur Autoriser les notifications marketing')
       fireEvent.press(toggleSwitch)
@@ -121,9 +121,9 @@ describe('NotificationSettings', () => {
         },
       } as UserProfileResponse)
 
-      await screen.findByText('Autoriser l’envoi d’e-mails')
+      await screen.findByText('Autoriser les notifications marketing')
 
-      const toggleSwitch = screen.getByTestId('Interrupteur Autoriser l’envoi d’e-mails')
+      const toggleSwitch = screen.getByTestId('Interrupteur Autoriser les notifications marketing')
       fireEvent.press(toggleSwitch)
 
       expect(toggleSwitch.parent?.props.accessibilityState.checked).toBeFalsy()
@@ -136,16 +136,18 @@ describe('NotificationSettings', () => {
         renderNotificationSettings(permission, {
           subscriptions: {
             marketingEmail: true,
-            marketingPush: false, // the user push setting doesnt care
+            marketingPush: false, // the user push setting doesn't care
           },
         } as UserProfileResponse)
 
-        await screen.findByText('Autoriser l’envoi d’e-mails')
+        await screen.findByText('Autoriser les notifications marketing')
 
-        const toggleSwitch = screen.getByTestId('Interrupteur Autoriser l’envoi d’e-mails')
+        const toggleSwitch = screen.getByTestId(
+          'Interrupteur Autoriser les notifications marketing'
+        )
         fireEvent.press(toggleSwitch)
 
-        expect(screen.queryAllByTestId('modal-notifications-permission-modal')).toBeTruthy()
+        expect(screen.queryAllByTestId('modal-notifications-permission-modal')).not.toHaveLength(0)
       }
     )
   })
