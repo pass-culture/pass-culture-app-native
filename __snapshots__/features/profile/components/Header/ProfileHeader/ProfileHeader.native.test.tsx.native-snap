@@ -46,10 +46,22 @@ exports[`ProfileHeader should display the LoggedOutHeader if no user 1`] = `
     </Text>
   </View>,
   <View
+    customHeight={16}
+    enable={true}
     style={
       [
         {
-          "marginBottom": 4,
+          "height": 16,
+        },
+      ]
+    }
+  />,
+  <View
+    style={
+      [
+        {
+          "flexDirection": "row",
+          "justifyContent": "space-between",
           "marginHorizontal": 24,
           "marginTop": 24,
         },
@@ -57,31 +69,40 @@ exports[`ProfileHeader should display the LoggedOutHeader if no user 1`] = `
     }
   >
     <View
-      customHeight={16}
-      enable={true}
       style={
         [
           {
-            "height": 16,
-          },
-        ]
-      }
-    />
-    <Text
-      numberOfLines={2}
-      style={
-        [
-          {
-            "color": "#161617",
-            "fontFamily": "Montserrat-Black",
-            "fontSize": 26,
-            "lineHeight": 34,
+            "flexShrink": 1,
           },
         ]
       }
     >
-      Mon profil
-    </Text>
+      <Text
+        numberOfLines={2}
+        style={
+          [
+            {
+              "color": "#161617",
+              "fontFamily": "Montserrat-Black",
+              "fontSize": 26,
+              "lineHeight": 34,
+            },
+          ]
+        }
+      >
+        Mon profil
+      </Text>
+      <View
+        numberOfSpaces={1}
+        style={
+          [
+            {
+              "height": 4,
+            },
+          ]
+        }
+      />
+    </View>
   </View>,
   <View
     style={
@@ -404,10 +425,22 @@ exports[`ProfileHeader should display the NonBeneficiaryHeader Header if user is
     </Text>
   </View>,
   <View
+    customHeight={16}
+    enable={true}
     style={
       [
         {
-          "marginBottom": 4,
+          "height": 16,
+        },
+      ]
+    }
+  />,
+  <View
+    style={
+      [
+        {
+          "flexDirection": "row",
+          "justifyContent": "space-between",
           "marginHorizontal": 24,
           "marginTop": 24,
         },
@@ -415,31 +448,40 @@ exports[`ProfileHeader should display the NonBeneficiaryHeader Header if user is
     }
   >
     <View
-      customHeight={16}
-      enable={true}
       style={
         [
           {
-            "height": 16,
-          },
-        ]
-      }
-    />
-    <Text
-      numberOfLines={1}
-      style={
-        [
-          {
-            "color": "#161617",
-            "fontFamily": "Montserrat-Black",
-            "fontSize": 26,
-            "lineHeight": 34,
+            "flexShrink": 1,
           },
         ]
       }
     >
-      Mon profil
-    </Text>
+      <Text
+        numberOfLines={1}
+        style={
+          [
+            {
+              "color": "#161617",
+              "fontFamily": "Montserrat-Black",
+              "fontSize": 26,
+              "lineHeight": 34,
+            },
+          ]
+        }
+      >
+        Mon profil
+      </Text>
+      <View
+        numberOfSpaces={1}
+        style={
+          [
+            {
+              "height": 4,
+            },
+          ]
+        }
+      />
+    </View>
   </View>,
 ]
 `;
@@ -490,10 +532,22 @@ exports[`ProfileHeader should display the NonBeneficiaryHeader Header if user is
     </Text>
   </View>,
   <View
+    customHeight={16}
+    enable={true}
     style={
       [
         {
-          "marginBottom": 4,
+          "height": 16,
+        },
+      ]
+    }
+  />,
+  <View
+    style={
+      [
+        {
+          "flexDirection": "row",
+          "justifyContent": "space-between",
           "marginHorizontal": 24,
           "marginTop": 24,
         },
@@ -501,31 +555,40 @@ exports[`ProfileHeader should display the NonBeneficiaryHeader Header if user is
     }
   >
     <View
-      customHeight={16}
-      enable={true}
       style={
         [
           {
-            "height": 16,
-          },
-        ]
-      }
-    />
-    <Text
-      numberOfLines={1}
-      style={
-        [
-          {
-            "color": "#161617",
-            "fontFamily": "Montserrat-Black",
-            "fontSize": 26,
-            "lineHeight": 34,
+            "flexShrink": 1,
           },
         ]
       }
     >
-      Mon profil
-    </Text>
+      <Text
+        numberOfLines={1}
+        style={
+          [
+            {
+              "color": "#161617",
+              "fontFamily": "Montserrat-Black",
+              "fontSize": 26,
+              "lineHeight": 34,
+            },
+          ]
+        }
+      >
+        Mon profil
+      </Text>
+      <View
+        numberOfSpaces={1}
+        style={
+          [
+            {
+              "height": 4,
+            },
+          ]
+        }
+      />
+    </View>
   </View>,
 ]
 `;
