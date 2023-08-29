@@ -23,5 +23,7 @@ export const adaptHighlightOfferModule = (
     offerEan,
     image: offerImage,
     color: module.fields.color,
+    isGeolocated: module.fields.isGeolocated,
+    aroundRadius: module.fields.aroundRadius,
   }
 }

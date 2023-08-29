@@ -1,5 +1,10 @@
 import { SubcategoryIdEnum } from 'api/gen'
 
+export type OfferLocation = {
+  lat?: number | null
+  lng?: number | null
+}
+
 export interface Offer {
   offer: {
     dates?: number[]
@@ -12,10 +17,7 @@ export interface Offer {
     thumbUrl?: string
   }
   objectID: string
-  _geoloc: {
-    lat?: number | null
-    lng?: number | null
-  }
+  _geoloc: OfferLocation
   venue: {
     departmentCode?: string
     id?: number
