@@ -4,14 +4,26 @@ updates:
     directory: '/'
     schedule:
       interval: 'weekly'
+    ignore:
+      - dependency-name: ['react-native', 'react', 'react-native-web']
+      - dependency-name: '*'
+        update-types: ['version-update:semver-major']
+    commit-message:
+      prefix: '(BSR) chore(deps):'
     reviewers:
       - 'Lucasbeneston'
       - 'bruno-ebstein-pass-culture'
       - 'pierrecanthelou'
+
   - package-ecosystem: 'bundler'
     directory: '/'
     schedule:
       interval: 'weekly'
+    ignore:
+      - dependency-name: '*'
+        update-types: ['version-update:semver-major']
+    commit-message:
+      prefix: '(BSR) chore(deps):'
     reviewers:
       - 'Lucasbeneston'
       - 'bruno-ebstein-pass-culture'
