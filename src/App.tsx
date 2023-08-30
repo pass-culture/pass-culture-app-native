@@ -31,7 +31,7 @@ import { env } from 'libs/environment'
 // eslint-disable-next-line no-restricted-imports
 import { firebaseAnalytics } from 'libs/firebase/analytics'
 import { RemoteConfigProvider } from 'libs/firebase/remoteConfig'
-import { GeolocationWrapper } from 'libs/geolocation'
+import { LocationWrapper } from 'libs/geolocation'
 import { eventMonitoring } from 'libs/monitoring'
 import { NetInfoWrapper } from 'libs/network/NetInfoWrapper'
 import { OfflineModeContainer } from 'libs/network/OfflineModeContainer'
@@ -85,7 +85,7 @@ const App: FunctionComponent = function () {
                 <NetInfoWrapper>
                   <SettingsWrapper>
                     <AuthWrapper>
-                      <GeolocationWrapper>
+                      <LocationWrapper>
                         <FavoritesWrapper>
                           <SearchAnalyticsWrapper>
                             <SearchWrapper>
@@ -113,7 +113,7 @@ const App: FunctionComponent = function () {
                             </SearchWrapper>
                           </SearchAnalyticsWrapper>
                         </FavoritesWrapper>
-                      </GeolocationWrapper>
+                      </LocationWrapper>
                     </AuthWrapper>
                   </SettingsWrapper>
                 </NetInfoWrapper>

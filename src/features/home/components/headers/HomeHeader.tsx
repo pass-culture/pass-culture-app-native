@@ -11,7 +11,7 @@ import { LocationWidget } from 'features/location/components/LocationWidget'
 import { isUserBeneficiary } from 'features/profile/helpers/isUserBeneficiary'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
-import { useGeolocation, GeolocPermissionState } from 'libs/geolocation'
+import { useLocation, GeolocPermissionState } from 'libs/geolocation'
 import { formatToFrenchDecimal } from 'libs/parsers'
 import { useAvailableCredit } from 'shared/user/useAvailableCredit'
 import { PageHeader } from 'ui/components/headers/PageHeader'
@@ -23,7 +23,7 @@ import { getSpacing, Spacer } from 'ui/theme'
 export const HomeHeader: FunctionComponent = function () {
   const availableCredit = useAvailableCredit()
   const { isLoggedIn, user } = useAuthContext()
-  const { permissionState } = useGeolocation()
+  const { permissionState } = useLocation()
   const isGeolocated = permissionState === GeolocPermissionState.GRANTED
   const { data } = useHomeBanner(isGeolocated)
   const homeBanner = data?.banner

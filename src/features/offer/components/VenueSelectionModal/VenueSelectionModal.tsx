@@ -8,7 +8,7 @@ import {
   VenueSelectionListProps,
 } from 'features/offer/components/VenueSelectionList/VenueSelectionList'
 import { AutoScrollSwitch } from 'features/search/components/AutoScrollSwitch/AutoScrollSwitch'
-import { GeolocPermissionState, useGeolocation } from 'libs/geolocation'
+import { GeolocPermissionState, useLocation } from 'libs/geolocation'
 import { GeolocationActivationModal } from 'libs/geolocation/components/GeolocationActivationModal'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { AppModal } from 'ui/components/modals/AppModal'
@@ -61,7 +61,7 @@ export function VenueSelectionModal({
     permissionState,
     requestGeolocPermission,
     onPressGeolocPermissionModalButton: onPressGeolocPermissionModalButtonDefault,
-  } = useGeolocation()
+  } = useLocation()
 
   const {
     showModal: showGeolocPermissionModal,

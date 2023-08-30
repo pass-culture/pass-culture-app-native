@@ -19,8 +19,8 @@ const mockPermissionState = GeolocPermissionState.NEVER_ASK_AGAIN
 const mockShowGeolocPermissionModal = jest.fn()
 const mockRequestGeolocPermission = jest.fn()
 
-jest.mock('libs/geolocation/GeolocationWrapper', () => ({
-  useGeolocation: () => ({
+jest.mock('libs/geolocation/LocationWrapper', () => ({
+  useLocation: () => ({
     permissionState: mockPermissionState,
     requestGeolocPermission: mockRequestGeolocPermission,
     showGeolocPermissionModal: mockShowGeolocPermissionModal,

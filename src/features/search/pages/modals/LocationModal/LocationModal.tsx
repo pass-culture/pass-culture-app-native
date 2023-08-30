@@ -21,7 +21,7 @@ import { SuggestedPlaces } from 'features/search/pages/SuggestedPlaces/Suggested
 import { SearchState } from 'features/search/types'
 import { Venue } from 'features/venue/types'
 import { analytics } from 'libs/analytics'
-import { GeolocPermissionState, useGeolocation } from 'libs/geolocation'
+import { GeolocPermissionState, useLocation } from 'libs/geolocation'
 import { GeolocationActivationModal } from 'libs/geolocation/components/GeolocationActivationModal'
 import { SuggestedPlace } from 'libs/place'
 import { Form } from 'ui/components/Form'
@@ -111,7 +111,7 @@ export const LocationModal: FunctionComponent<LocationModalProps> = ({
     permissionState,
     requestGeolocPermission,
     onPressGeolocPermissionModalButton: onPressGeolocPermissionModalButtonDefault,
-  } = useGeolocation()
+  } = useLocation()
   const searchPlaceOrVenueInputRef = useRef<RNTextInput | null>(null)
   const { sliderLength } = useGetFullscreenModalSliderLength()
 

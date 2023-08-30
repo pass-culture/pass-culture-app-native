@@ -13,7 +13,7 @@ import * as Auth from 'features/auth/context/AuthContext'
 import { nonBeneficiaryUser } from 'fixtures/user'
 import { env } from 'libs/environment'
 import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
-import { GeolocPermissionState, useGeolocation } from 'libs/geolocation'
+import { GeolocPermissionState, useLocation } from 'libs/geolocation'
 import { Credit, useAvailableCredit } from 'shared/user/useAvailableCredit'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { server } from 'tests/server'
@@ -27,7 +27,7 @@ jest.mock('shared/user/useAvailableCredit')
 const mockUseAvailableCredit = useAvailableCredit as jest.MockedFunction<typeof useAvailableCredit>
 
 jest.mock('libs/geolocation')
-const mockUseGeolocation = useGeolocation as jest.Mock
+const mockUseGeolocation = useLocation as jest.Mock
 mockdate.set(new Date('2022-12-01T00:00:00Z'))
 
 const mockedUser = {

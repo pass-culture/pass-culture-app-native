@@ -23,7 +23,7 @@ export type RequestGeolocPermissionParams = {
 export type AskGeolocPermission = () => Promise<GeolocPermissionState>
 export type ReadGeolocPermission = () => Promise<GeolocPermissionState>
 
-export type IGeolocationContext = {
+export type ILocationContext = {
   userPosition: Position
   customPosition: Position
   setCustomPosition: Dispatch<SetStateAction<Position>>

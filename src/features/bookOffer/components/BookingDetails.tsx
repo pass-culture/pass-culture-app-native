@@ -22,7 +22,7 @@ import { ANIMATION_DURATION } from 'features/venue/components/VenuePartialAccord
 import { formatFullAddressStartsWithPostalCode } from 'libs/address/useFormatFullAddress'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
-import { useGeolocation } from 'libs/geolocation'
+import { useLocation } from 'libs/geolocation'
 import { useIsFalseWithDelay } from 'libs/hooks/useIsFalseWithDelay'
 import { formatToFrenchDecimal } from 'libs/parsers'
 import { useSubcategoriesMapping } from 'libs/subcategories'
@@ -78,7 +78,7 @@ export function BookingDetails({ stocks, onPressBookOffer, isLoading }: BookingD
   )
 
   const { onScroll: onScrollModal } = useOpacityTransition()
-  const { userPosition: position } = useGeolocation()
+  const { userPosition: position } = useLocation()
   const defaultSearchVenueOffers = {
     offerId: 0,
     venueId: undefined,

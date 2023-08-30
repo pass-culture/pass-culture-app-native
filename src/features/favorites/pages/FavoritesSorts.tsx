@@ -9,7 +9,7 @@ import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
 import { useGoBack } from 'features/navigation/useGoBack'
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { analytics } from 'libs/analytics'
-import { GeolocPermissionState, useGeolocation } from 'libs/geolocation'
+import { GeolocPermissionState, useLocation } from 'libs/geolocation'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { PageHeaderSecondary } from 'ui/components/headers/PageHeaderSecondary'
 import { InputError } from 'ui/components/inputs/InputError'
@@ -34,7 +34,7 @@ export const FavoritesSorts: React.FC = () => {
     permissionState,
     requestGeolocPermission,
     showGeolocPermissionModal,
-  } = useGeolocation()
+  } = useLocation()
   const { sortBy: selectedSortBy, dispatch } = useFavoritesState()
   const [stagedSelectedSortBy, setStagedSelectedSortBy] = useState(selectedSortBy)
   const titleID = uuidv4()
