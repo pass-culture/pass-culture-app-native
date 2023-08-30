@@ -386,7 +386,7 @@ export const routes: Route[] = [
     name: 'Tutorial',
     component: AgeInformationTutorial,
     path: 'comment-ca-marche',
-    options: { title: 'Étape 1 sur 4 | Tutoriel "Comment ça marche"' },
+    options: { title: 'Tutoriel "Comment ça marche"' },
   },
   {
     name: 'FirstTutorial',
