@@ -9,7 +9,6 @@ import { UseRouteType } from 'features/navigation/RootNavigator/types'
 import { analytics } from 'libs/analytics'
 import { useGeolocation } from 'libs/geolocation'
 import { useFunctionOnce } from 'libs/hooks'
-import { eventMonitoring } from 'libs/monitoring'
 import {
   usePerformanceCalculation,
   PERF_HOME_ZERO,
@@ -23,7 +22,7 @@ const Header = () => (
   </ListHeaderContainer>
 )
 
-const ToHome: FunctionComponent = () => {
+export const Home: FunctionComponent = () => {
   const { start } = usePerformanceCalculation()
   const startPerfHomeZeroOnce = useFunctionOnce(() => start(PERF_HOME_ZERO))
   const startPerfHomeGlobalOnce = useFunctionOnce(() => start(PERF_HOME_GLOBAL))
@@ -57,7 +56,6 @@ const ToHome: FunctionComponent = () => {
   )
 }
 
-export const Home = eventMonitoring.withProfiler(ToHome, { name: 'HomeProfiling' })
 const ListHeaderContainer = styled.View(({ theme }) => ({
   flexGrow: 1,
   flexShrink: 0,

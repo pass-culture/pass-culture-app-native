@@ -2,6 +2,8 @@ import React from 'react'
 
 import { useHomepageData } from 'features/home/api/useHomepageData'
 import { formattedBusinessModule } from 'features/home/fixtures/homepage.fixture'
+import { initialPerformanceState } from 'shared/performance/context/reducer'
+import { PerformanceState } from 'shared/performance/types'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { render, checkAccessibilityFor, act } from 'tests/utils/web'
 
@@ -18,6 +20,11 @@ const mockUseHomepageData = useHomepageData as jest.Mock
 jest.mock('libs/geolocation')
 
 jest.mock('libs/firebase/firestore/featureFlags/useFeatureFlag')
+
+const mockPerformanceState: PerformanceState = initialPerformanceState
+jest.mock('shared/performance/context/PerformanceWrapper', () => ({
+  usePerformance: () => ({ performanceState: mockPerformanceState, dispatch: jest.fn() }),
+}))
 
 describe('<Home/>', () => {
   describe('Accessibility', () => {
