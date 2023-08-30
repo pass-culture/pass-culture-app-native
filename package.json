@@ -54,7 +54,7 @@
     "prune:scan": "yarn --silent ts-prune",
     "prune:count": "yarn prune:scan | wc -l",
     "start": "react-native start",
-    "start:web": "node web/scripts/start.js",
+    "start:web": "node --openssl-legacy-provider web/scripts/start.js",
     "start:web:development": "ENV=development yarn start:web",
     "start:web:integration": "ENV=integration yarn start:web",
     "start:web:production": "ENV=production yarn start:web",
