@@ -56,11 +56,35 @@ exports[`<AgeInformationTutorial /> should display not logged in version when us
         Le pass Culture à 15 ans
       </Text>
       <View
-        numberOfSpaces={8}
+        numberOfSpaces={6}
         style={
           [
             {
-              "height": 32,
+              "height": 24,
+            },
+          ]
+        }
+      />
+      <Text
+        style={
+          [
+            {
+              "color": "#161617",
+              "fontFamily": "Montserrat-Regular",
+              "fontSize": 15,
+              "lineHeight": 20,
+            },
+          ]
+        }
+      >
+        Crédit activé à 18 ans
+      </Text>
+      <View
+        numberOfSpaces={4}
+        style={
+          [
+            {
+              "height": 16,
             },
           ]
         }
@@ -742,11 +766,35 @@ exports[`<AgeInformationTutorial /> should render correctly when logged in 1`] =
         Comment ça marche ?
       </Text>
       <View
-        numberOfSpaces={8}
+        numberOfSpaces={6}
         style={
           [
             {
-              "height": 32,
+              "height": 24,
+            },
+          ]
+        }
+      />
+      <Text
+        style={
+          [
+            {
+              "color": "#161617",
+              "fontFamily": "Montserrat-Regular",
+              "fontSize": 15,
+              "lineHeight": 20,
+            },
+          ]
+        }
+      >
+        Crédit activé à 18 ans
+      </Text>
+      <View
+        numberOfSpaces={4}
+        style={
+          [
+            {
+              "height": 16,
             },
           ]
         }

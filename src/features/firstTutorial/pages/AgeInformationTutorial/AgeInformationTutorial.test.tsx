@@ -34,4 +34,13 @@ describe('<AgeInformationTutorial />', () => {
 
     expect(screen).toMatchSnapshot()
   })
+
+  it('should display activation age', () => {
+    mockUseAuthContext.mockReturnValueOnce({
+      ...defaultAuthContext,
+    })
+    render(<AgeInformationTutorial selectedAge={18} />)
+
+    expect(screen.getByText('Crédit activé à 18 ans')).toBeTruthy()
+  })
 })

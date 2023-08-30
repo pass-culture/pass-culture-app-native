@@ -5,6 +5,7 @@ import styled from 'styled-components/native'
 import { AuthenticationButton } from 'features/auth/components/AuthenticationButton/AuthenticationButton'
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
+import { useDepositActivationAge } from 'features/profile/helpers/useDepositActivationAge'
 import { getAge } from 'shared/user/getAge'
 import { useOpacityTransition } from 'ui/animations/helpers/useOpacityTransition'
 import { ButtonQuaternarySecondary } from 'ui/components/buttons/ButtonQuarternarySecondary'
@@ -30,6 +31,11 @@ export const AgeInformationTutorial: FunctionComponent<Props> = ({ selectedAge }
   const defaultAge = selectedAge ?? 15
   const age = user?.birthDate ? getAge(user.birthDate) : defaultAge
 
+  const activationAge = useDepositActivationAge()
+  const activationText = activationAge
+    ? `Crédit activé à ${activationAge} ans`
+    : 'Crédit pas encore activé'
+
   const headerTitle = isLoggedIn ? 'Comment ça marche\u00a0?' : `Le pass Culture à ${age} ans`
 
   return (
@@ -40,7 +46,10 @@ export const AgeInformationTutorial: FunctionComponent<Props> = ({ selectedAge }
         <Typo.Title3 numberOfLines={3} {...getHeadingAttrs(1)}>
           {headerTitle}
         </Typo.Title3>
-        <Spacer.Column numberOfSpaces={8} />
+        <Spacer.Column numberOfSpaces={6} />
+        {/* À supprimer lors de la vraie implémentation*/}
+        <Typo.Body>{activationText}</Typo.Body>
+        <Spacer.Column numberOfSpaces={4} />
         <InfoBanner message="Cette page a-t-elle été utile&nbsp;? Aide-nous à l’améliorer en répondant à notre questionnaire.">
           <ButtonQuaternarySecondary
             justifyContent="flex-start"
