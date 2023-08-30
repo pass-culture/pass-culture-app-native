@@ -22,10 +22,10 @@ import { useNetInfoContext } from 'libs/network/NetInfoWrapper'
 import { OfflinePage } from 'libs/network/OfflinePage'
 import { BatchEvent, BatchUser } from 'libs/react-native-batch'
 import {
-  usePerformanceCalculation,
   PERF_HOME_ZERO,
   PERF_HOME_GLOBAL,
-} from 'shared/usePerformanceCalculation/usePerformanceCalculation'
+  usePerformanceCalculation,
+} from 'shared/performance/usePerformanceCalculation/usePerformanceCalculation'
 import { ScrollToTopButton } from 'ui/components/ScrollToTopButton'
 import { Spinner } from 'ui/components/Spinner'
 import { getSpacing, Spacer } from 'ui/theme'
@@ -79,11 +79,12 @@ const OnlineHome: FunctionComponent<GenericHomeProps> = ({
   onScroll: givenOnScroll,
   videoModuleId,
   statusBar,
-  finish,
 }) => {
   const { offersModulesData } = useGetOffersData(modules.filter(isOffersModule))
   const { venuesModulesData } = useGetVenuesData(modules.filter(isVenuesModule))
-  const logHasSeenAllModules = useFunctionOnce(() => analytics.logAllModulesSeen(modules.length))
+  const logHasSeenAllModules = useFunctionOnce(
+    async () => await analytics.logAllModulesSeen(modules.length)
+  )
   const trackEventHasSeenAllModules = useFunctionOnce(() =>
     BatchUser.trackEvent(BatchEvent.hasSeenAllTheHomepage)
   )
@@ -97,6 +98,9 @@ const OnlineHome: FunctionComponent<GenericHomeProps> = ({
   const theme = useTheme()
 
   const flatListHeaderStyle = { zIndex: theme.zIndex.header }
+  const { finish } = usePerformanceCalculation()
+  const finishPerfHomeZeroOnce = useFunctionOnce(() => finish(PERF_HOME_ZERO))
+  const finishPerfHomeGlobalOnce = useFunctionOnce(() => finish(PERF_HOME_GLOBAL))
 
   const modulesToDisplay = modules.slice(0, maxIndex)
 
@@ -108,6 +112,10 @@ const OnlineHome: FunctionComponent<GenericHomeProps> = ({
       module.data = venuesModulesData.find((mod) => mod.moduleId === module.id)
     }
   })
+
+  if (modules.length > 0 && modulesToDisplay.length === maxIndex) {
+    finishPerfHomeZeroOnce()
+  }
 
   const scrollRef = useRef<FlatList>(null)
   useScrollToTop(scrollRef)
@@ -143,15 +151,14 @@ const OnlineHome: FunctionComponent<GenericHomeProps> = ({
   const onContentSizeChange = () => setIsLoading(false)
 
   useEffect(() => {
-    finish(PERF_HOME_ZERO)
     return () => clearInterval(modulesIntervalId.current)
   }, [])
 
   useEffect(() => {
     if (!showSkeleton) {
-      finish(PERF_HOME_GLOBAL)
+      finishPerfHomeGlobalOnce()
     }
-  }, [showSkeleton, finish])
+  }, [showSkeleton, finishPerfHomeGlobalOnce])
 
   useEffect(() => {
     // We use this to load more modules, in case the content size doesn't change after the load triggered by onEndReached (i.e. no new modules were shown).

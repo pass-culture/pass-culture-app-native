@@ -7,6 +7,8 @@ import { formattedVenuesModule } from 'features/home/fixtures/homepage.fixture'
 import { ThematicHome } from 'features/home/pages/ThematicHome'
 import { ThematicHeaderType } from 'features/home/types'
 import { analytics } from 'libs/analytics'
+import { initialPerformanceState } from 'shared/performance/context/reducer'
+import { PerformanceState } from 'shared/performance/types'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, render, screen } from 'tests/utils'
 
@@ -32,6 +34,11 @@ const mockedHighlightHeaderData = {
     endingDate: new Date('2023-01-14T23:00:00.000Z'),
   },
 }
+
+const mockPerformanceState: PerformanceState = initialPerformanceState
+jest.mock('shared/performance/context/PerformanceWrapper', () => ({
+  usePerformance: () => ({ performanceState: mockPerformanceState, dispatch: jest.fn() }),
+}))
 
 describe('ThematicHome', () => {
   useRoute.mockReturnValue({ params: { entryId: 'fakeEntryId' } })

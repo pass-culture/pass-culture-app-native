@@ -8,12 +8,13 @@ import { GenericHome } from 'features/home/pages/GenericHome'
 import { UseRouteType } from 'features/navigation/RootNavigator/types'
 import { analytics } from 'libs/analytics'
 import { useGeolocation } from 'libs/geolocation'
+import { useFunctionOnce } from 'libs/hooks'
 import { eventMonitoring } from 'libs/monitoring'
 import {
   usePerformanceCalculation,
   PERF_HOME_ZERO,
   PERF_HOME_GLOBAL,
-} from 'shared/usePerformanceCalculation/usePerformanceCalculation'
+} from 'shared/performance/usePerformanceCalculation/usePerformanceCalculation'
 import { StatusBarBlurredBackground } from 'ui/components/statusBar/statusBarBlurredBackground'
 
 const Header = () => (
@@ -23,12 +24,15 @@ const Header = () => (
 )
 
 const ToHome: FunctionComponent = () => {
-  const { start, finish } = usePerformanceCalculation()
-  start(PERF_HOME_ZERO)
-  start(PERF_HOME_GLOBAL)
+  const { start } = usePerformanceCalculation()
+  const startPerfHomeZeroOnce = useFunctionOnce(() => start(PERF_HOME_ZERO))
+  const startPerfHomeGlobalOnce = useFunctionOnce(() => start(PERF_HOME_GLOBAL))
   const { params } = useRoute<UseRouteType<'Home'>>()
   const { modules, id } = useHomepageData() || {}
   const { setCustomPosition } = useLocation()
+
+  startPerfHomeZeroOnce()
+  startPerfHomeGlobalOnce()
 
   useEffect(() => {
     if (id) {
@@ -49,7 +53,6 @@ const ToHome: FunctionComponent = () => {
       Header={<Header />}
       videoModuleId={params?.videoModuleId}
       statusBar={<StatusBarBlurredBackground />}
-      finish={finish}
     />
   )
 }

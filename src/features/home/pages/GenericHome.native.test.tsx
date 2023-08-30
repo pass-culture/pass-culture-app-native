@@ -6,6 +6,8 @@ import { GenericHome } from 'features/home/pages/GenericHome'
 import { analytics } from 'libs/analytics'
 import { useNetInfoContext as useNetInfoContextDefault } from 'libs/network/NetInfoWrapper'
 import { BatchUser } from 'libs/react-native-batch'
+import { initialPerformanceState } from 'shared/performance/context/reducer'
+import { PerformanceState } from 'shared/performance/types'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { render, waitFor, screen, fireEvent, act } from 'tests/utils'
 import { Typo } from 'ui/theme'
@@ -22,6 +24,19 @@ jest.mock('features/auth/context/AuthContext', () => ({
 const defaultModules = [formattedVenuesModule]
 const homeId = 'fake-id'
 const Header = <Typo.Title1>Header</Typo.Title1>
+
+const mockPerformanceState: PerformanceState = initialPerformanceState
+jest.mock('shared/performance/context/PerformanceWrapper', () => ({
+  usePerformance: () => ({ performanceState: mockPerformanceState, dispatch: jest.fn() }),
+}))
+
+const mockFinishTransaction = jest.fn()
+jest.mock('shared/performance/usePerformanceCalculation/usePerformanceCalculation', () => ({
+  usePerformanceCalculation: () => ({
+    start: jest.fn(),
+    finish: mockFinishTransaction,
+  }),
+}))
 
 describe('GenericHome', () => {
   mockUseNetInfoContext.mockReturnValue({ isConnected: true })
@@ -48,6 +63,20 @@ describe('GenericHome', () => {
 
     expect(await screen.findByText('Pas de réseau internet')).toBeOnTheScreen()
   })
+
+  // it('should finish home global transaction when skeleton not display', async () => {
+  //   useShowSkeletonSpy.mockReturnValueOnce(true)
+  //   renderGenericHome()
+  //   await act(async () => {})
+  //   expect(mockFinishTransaction).not.toHaveBeenCalled()
+  //   screen.rerender(
+  //     // eslint-disable-next-line local-rules/no-react-query-provider-hoc
+  //     reactQueryProviderHOC(
+  //       <GenericHome modules={defaultModules} Header={Header} homeId={homeId} />
+  //     )
+  //   )
+  //   expect(mockFinishTransaction).toHaveBeenCalledTimes(1)
+  // })
 })
 
 describe('GenericHome page - Analytics', () => {
