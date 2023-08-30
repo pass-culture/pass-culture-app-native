@@ -4,6 +4,7 @@ import { useAuthContext } from 'features/auth/context/AuthContext'
 import { AgeInformationTutorial } from 'features/firstTutorial/pages/AgeInformationTutorial/AgeInformationTutorial'
 import * as NavigationHelpers from 'features/navigation/helpers/openUrl'
 import { beneficiaryUser } from 'fixtures/user'
+import { env } from 'libs/environment'
 import { fireEvent, render, screen } from 'tests/utils'
 
 jest.mock('features/auth/context/AuthContext')
@@ -52,10 +53,6 @@ describe('<AgeInformationTutorial />', () => {
     const link = screen.getByText('Donner mon avis')
     fireEvent.press(link)
 
-    expect(openUrl).toHaveBeenCalledWith(
-      'https://passculture.qualtrics.com/jfe/form/SV_8rkHZvOvmtdq4V8',
-      undefined,
-      true
-    )
+    expect(openUrl).toHaveBeenCalledWith(env.TUTORIAL_FEEDBACK_LINK, undefined, true)
   })
 })

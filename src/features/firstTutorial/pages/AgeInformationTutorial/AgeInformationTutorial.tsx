@@ -6,6 +6,7 @@ import { AuthenticationButton } from 'features/auth/components/AuthenticationBut
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { useDepositActivationAge } from 'features/profile/helpers/useDepositActivationAge'
+import { env } from 'libs/environment'
 import { getAge } from 'shared/user/getAge'
 import { useOpacityTransition } from 'ui/animations/helpers/useOpacityTransition'
 import { ButtonQuaternarySecondary } from 'ui/components/buttons/ButtonQuarternarySecondary'
@@ -57,7 +58,7 @@ export const AgeInformationTutorial: FunctionComponent<Props> = ({ selectedAge }
             justifyContent="flex-start"
             icon={ExternalSiteFilled}
             wording="Donner mon avis"
-            externalNav={{ url: 'https://passculture.qualtrics.com/jfe/form/SV_8rkHZvOvmtdq4V8' }}
+            externalNav={{ url: env.TUTORIAL_FEEDBACK_LINK }}
           />
         </InfoBanner>
         {!isLoggedIn ? (

@@ -60,6 +60,7 @@ export interface Environment {
   SIGNUP_POSTAL_CODE: string
   SITE_KEY: string
   SUPPORT_EMAIL_ADDRESS: string
+  TUTORIAL_FEEDBACK_LINK: string
   FRAUD_EMAIL_ADDRESS: string
   URL_PREFIX: string
   WEBAPP_V2_DOMAIN: string

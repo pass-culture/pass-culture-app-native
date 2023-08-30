@@ -65,6 +65,7 @@ export const env: Environment = {
   SIGNUP_POSTAL_CODE: '',
   SITE_KEY: 'SITE_KEY',
   SUPPORT_EMAIL_ADDRESS: 'support@test.passculture.app',
+  TUTORIAL_FEEDBACK_LINK: 'https://passculture.qualtrics.com/jfe/form/SV_8rkHZvOvmtdq4V8',
   FRAUD_EMAIL_ADDRESS: 'service.fraude@test.passculture.app',
   URL_PREFIX: 'passculture',
   WEBAPP_V2_DOMAIN: 'webapp-v2.example.com',
