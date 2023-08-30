@@ -1,19 +1,15 @@
 import { useNavigation } from '@react-navigation/native'
-import React, { FunctionComponent, useState } from 'react'
-import { Animated, Platform } from 'react-native'
-import { useTheme } from 'styled-components'
+import React, { FunctionComponent } from 'react'
 import styled from 'styled-components/native'
 
 import { AuthenticationButton } from 'features/auth/components/AuthenticationButton/AuthenticationButton'
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { getAge } from 'shared/user/getAge'
-import { getAnimationState } from 'ui/animations/helpers/getAnimationState'
 import { useOpacityTransition } from 'ui/animations/helpers/useOpacityTransition'
 import { ButtonQuaternarySecondary } from 'ui/components/buttons/ButtonQuarternarySecondary'
 import { ButtonWithLinearGradient } from 'ui/components/buttons/buttonWithLinearGradient/ButtonWithLinearGradient'
-import { RoundedButton } from 'ui/components/buttons/RoundedButton'
-import { AnimatedBlurHeader } from 'ui/components/headers/AnimatedBlurHeader'
+import { AnimatedBlurHeaderTitle } from 'ui/components/headers/AnimatedBlurHeader'
 import { useGetHeaderHeight } from 'ui/components/headers/PageHeaderWithoutPlaceholder'
 import { InfoBanner } from 'ui/components/InfoBanner'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
@@ -30,14 +26,6 @@ export const AgeInformationTutorial: FunctionComponent<Props> = ({ selectedAge }
   const { goBack } = useNavigation<UseNavigationType>()
   const { onScroll, headerTransition } = useOpacityTransition()
   const headerHeight = useGetHeaderHeight()
-  const theme = useTheme()
-  const { animationState, containerStyle, blurContainerNative } = getAnimationState(
-    theme,
-    headerTransition
-  )
-
-  const [ariaHiddenTitle, setAriaHiddenTitle] = useState(true)
-  headerTransition.addListener((opacity) => setAriaHiddenTitle(opacity.value !== 1))
 
   const defaultAge = selectedAge ?? 15
   const age = user?.birthDate ? getAge(user.birthDate) : defaultAge
@@ -74,29 +62,11 @@ export const AgeInformationTutorial: FunctionComponent<Props> = ({ selectedAge }
         ) : null}
         <Placeholder height={2000} />
       </StyledScrollView>
-      <HeaderContainer style={containerStyle} height={headerHeight}>
-        <Spacer.TopScreen />
-        <AnimatedBlurHeader height={headerHeight} style={blurContainerNative} />
-        <Spacer.Column numberOfSpaces={2} />
-        <Row>
-          <Spacer.Row numberOfSpaces={6} />
-          <RoundedButton
-            animationState={animationState}
-            iconName="back"
-            onPress={goBack}
-            accessibilityLabel="Revenir en arrière"
-            finalColor={theme.colors.black}
-          />
-          <Spacer.Row numberOfSpaces={10} />
-          <Spacer.Flex />
-          <Title style={{ opacity: headerTransition }} accessibilityHidden={ariaHiddenTitle}>
-            <Body>{headerTitle}</Body>
-          </Title>
-          <Spacer.Flex />
-          <Spacer.Row numberOfSpaces={25} />
-        </Row>
-        <Spacer.Column numberOfSpaces={2} />
-      </HeaderContainer>
+      <AnimatedBlurHeaderTitle
+        headerTitle={headerTitle}
+        headerTransition={headerTransition}
+        onBackPress={goBack}
+      />
     </React.Fragment>
   )
 }
@@ -122,33 +92,3 @@ const Container = styled.View({
 const Placeholder = styled.View<{ height: number }>(({ height }) => ({
   height,
 }))
-
-const HeaderContainer = styled(Animated.View)<{ height: number }>(({ theme, height }) => ({
-  position: 'absolute',
-  top: 0,
-  left: 0,
-  right: 0,
-  height,
-  zIndex: theme.zIndex.header,
-  borderBottomColor: theme.colors.greyLight,
-  borderBottomWidth: 1,
-}))
-
-const Title = styled(Animated.Text).attrs({
-  numberOfLines: 2,
-})(({ theme }) => ({
-  flexShrink: 1,
-  textAlign: 'center',
-  color: theme.colors.white,
-  ...(Platform.OS === 'web' ? { whiteSpace: 'pre-wrap' } : {}),
-}))
-
-const Body = styled(Typo.Body)(({ theme }) => ({
-  color: theme.colors.black,
-}))
-
-const Row = styled.View({
-  flex: 1,
-  flexDirection: 'row',
-  alignItems: 'center',
-})
