@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
 import { Animated, Platform, ViewStyle } from 'react-native'
-import styled from 'styled-components/native'
-import { useTheme } from 'styled-components/native'
+import styled, { useTheme } from 'styled-components/native'
 
 import { getAnimationState } from 'ui/animations/helpers/getAnimationState'
 import { BlurView } from 'ui/components/BlurView'
