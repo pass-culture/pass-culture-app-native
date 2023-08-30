@@ -12,6 +12,13 @@ import { AnimatedBlurHeaderTitle } from './AnimatedBlurHeader'
 const meta: ComponentMeta<typeof AnimatedBlurHeaderTitle> = {
   title: 'ui/headers/AnimatedBlurHeaderTitle',
   component: AnimatedBlurHeaderTitle,
+  parameters: {
+    axe: {
+      // We ignore this rule as the error is caused by the implementation of the story and not the component itself
+      // The accessibility of this header is already tested in all pages using it
+      disabledRules: ['scrollable-region-focusable'],
+    },
+  },
 }
 export default meta
 
