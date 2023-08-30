@@ -13,6 +13,7 @@ import { ButtonWithLinearGradient } from 'ui/components/buttons/buttonWithLinear
 import { AnimatedBlurHeaderTitle } from 'ui/components/headers/AnimatedBlurHeader'
 import { useGetHeaderHeight } from 'ui/components/headers/PageHeaderWithoutPlaceholder'
 import { InfoBanner } from 'ui/components/InfoBanner'
+import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouchableLink'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { ExternalSiteFilled } from 'ui/svg/icons/ExternalSiteFilled'
 import { Spacer, Typo, getSpacing } from 'ui/theme'
@@ -51,10 +52,12 @@ export const AgeInformationTutorial: FunctionComponent<Props> = ({ selectedAge }
         <Typo.Body>{activationText}</Typo.Body>
         <Spacer.Column numberOfSpaces={4} />
         <InfoBanner message="Cette page a-t-elle été utile&nbsp;? Aide-nous à l’améliorer en répondant à notre questionnaire.">
-          <ButtonQuaternarySecondary
+          <ExternalTouchableLink
+            as={ButtonQuaternarySecondary}
             justifyContent="flex-start"
             icon={ExternalSiteFilled}
             wording="Donner mon avis"
+            externalNav={{ url: 'https://passculture.qualtrics.com/jfe/form/SV_8rkHZvOvmtdq4V8' }}
           />
         </InfoBanner>
         {!isLoggedIn ? (

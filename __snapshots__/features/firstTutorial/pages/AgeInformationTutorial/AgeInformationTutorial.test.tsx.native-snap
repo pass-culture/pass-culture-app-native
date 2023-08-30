@@ -137,7 +137,7 @@ exports[`<AgeInformationTutorial /> should display not logged in version when us
             accessibilityLabel="Donner mon avis"
             accessible={true}
             collapsable={false}
-            focusable={false}
+            focusable={true}
             onClick={[Function]}
             onResponderGrant={[Function]}
             onResponderMove={[Function]}
@@ -847,7 +847,7 @@ exports[`<AgeInformationTutorial /> should render correctly when logged in 1`] =
             accessibilityLabel="Donner mon avis"
             accessible={true}
             collapsable={false}
-            focusable={false}
+            focusable={true}
             onClick={[Function]}
             onResponderGrant={[Function]}
             onResponderMove={[Function]}
