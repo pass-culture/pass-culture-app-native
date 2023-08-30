@@ -49,9 +49,8 @@ const Template: ComponentStory<typeof AnimatedBlurHeaderTitle> = (props) => {
 export const Default = Template.bind({})
 Default.args = {
   headerTitle: 'Titre',
-  headerTransition: undefined,
 }
 
-const Container = styled.View({ height: 400, overflow: 'hidden' })
+const Container = styled.View({ height: 400 })
 
 const Content = styled.View({ height: 200, backgroundColor: 'blue' })
