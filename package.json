@@ -318,7 +318,7 @@
     "prettier": "^2.5.1",
     "react-dev-utils": "^11.0.4",
     "react-native-flipper": "0.161.0",
-    "react-native-flipper-performance-plugin": "^0.3.1",
+    "react-native-flipper-performance-plugin": "^0.4.0",
     "react-native-svg-web": "^1.0.9",
     "react-native-web-linear-gradient": "^1.1.2",
     "react-query-native-devtools": "^3.0.1",
