@@ -44,7 +44,8 @@ export const Home: FunctionComponent = () => {
   )
 }
 
-const ListHeaderContainer = styled.View({
+const ListHeaderContainer = styled.View(({ theme }) => ({
   flexGrow: 1,
   flexShrink: 0,
-})
+  zIndex: theme.zIndex.header,
+}))

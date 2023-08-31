@@ -31,6 +31,7 @@ const HeaderContainer = styled.View(({ theme }) => ({
   marginTop: getSpacing(6),
   marginHorizontal: theme.contentPage.marginHorizontal,
   justifyContent: 'space-between',
+  zIndex: theme.zIndex.header,
 }))
 
 const TitleContainer = styled.View({
