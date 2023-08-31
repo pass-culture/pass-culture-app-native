@@ -62,7 +62,7 @@ const Pointer = ({ style }: { style?: ComponentProps<typeof Svg>['style'] }) => 
 const StyledPointer = styled(Pointer)({
   position: 'relative',
   alignSelf: 'flex-end',
-  right: 14,
+  right: getSpacing(3.5),
 })
 
 const Background = styled.View(({ theme }) => ({
