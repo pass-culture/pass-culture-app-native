@@ -14,6 +14,7 @@ export type StorageKey =
   | 'has_seen_tutorials'
   | 'phone_validation_code_asked_at'
   | 'react_navigation_persistence'
+  | 'times_location_tooltip_has_been_displayed'
   | 'times_review_has_been_requested'
   | 'traffic_campaign'
   | 'traffic_medium'
