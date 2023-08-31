@@ -64,6 +64,7 @@ exports[`ProfileHeader should display the LoggedOutHeader if no user 1`] = `
           "justifyContent": "space-between",
           "marginHorizontal": 24,
           "marginTop": 24,
+          "zIndex": 1,
         },
       ]
     }
@@ -443,6 +444,7 @@ exports[`ProfileHeader should display the NonBeneficiaryHeader Header if user is
           "justifyContent": "space-between",
           "marginHorizontal": 24,
           "marginTop": 24,
+          "zIndex": 1,
         },
       ]
     }
@@ -550,6 +552,7 @@ exports[`ProfileHeader should display the NonBeneficiaryHeader Header if user is
           "justifyContent": "space-between",
           "marginHorizontal": 24,
           "marginTop": 24,
+          "zIndex": 1,
         },
       ]
     }
