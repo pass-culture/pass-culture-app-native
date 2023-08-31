@@ -1,7 +1,7 @@
 import { useMemo } from 'react'
 import { useQuery } from 'react-query'
 
-import { getSimilarOffersInOrder } from 'features/offer/helpers/getSimilarOffersInOrder/getSimilarOffersInOrder'
+import { getSimilarOrRecoOffersInOrder } from 'features/offer/helpers/getSimilarOrRecoOffersInOrder/getSimilarOrRecoOffersInOrder'
 import { useIsUserUnderage } from 'features/profile/helpers/useIsUserUnderage'
 import { IncompleteSearchHit } from 'libs/algolia'
 import { fetchOffersByIds } from 'libs/algolia/fetchAlgolia/fetchOffersByIds'
@@ -26,7 +26,7 @@ export const useAlgoliaSimilarOffers = (
     if (!hits || hits.length === 0) return
 
     if (shouldPreserveIdsOrder) {
-      const offers = getSimilarOffersInOrder(ids, hits)
+      const offers = getSimilarOrRecoOffersInOrder(ids, hits)
       return (offers as IncompleteSearchHit[]).filter(filterOfferHit).map(transformHits) as Offer[]
     }
 
