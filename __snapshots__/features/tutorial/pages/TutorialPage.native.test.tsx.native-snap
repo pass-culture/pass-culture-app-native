@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`OnboardingPage should render correctly 1`] = `
+exports[`TutorialPage should render correctly 1`] = `
 [
   <View
     height={64}

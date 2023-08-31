@@ -1,17 +1,18 @@
 import React from 'react'
 
-import { OnboardingPage } from 'features/tutorial/pages/onboarding/OnboardingPage'
 import { fireEvent, render } from 'tests/utils'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 
-describe('OnboardingPage', () => {
+import { TutorialPage } from './TutorialPage'
+
+describe('TutorialPage', () => {
   it('should render correctly', () => {
-    const renderAPI = renderOnBoardingPage()
+    const renderAPI = renderTutorialPage()
     expect(renderAPI).toMatchSnapshot()
   })
 
   it('should trigger onPress when clicking on button', async () => {
-    const { getByLabelText } = renderOnBoardingPage()
+    const { getByLabelText } = renderTutorialPage()
 
     const button = getByLabelText('Continuer')
     fireEvent.press(button)
@@ -21,9 +22,9 @@ describe('OnboardingPage', () => {
 })
 
 const onPress = jest.fn()
-const renderOnBoardingPage = () =>
+const renderTutorialPage = () =>
   render(
-    <OnboardingPage
+    <TutorialPage
       title="Titre"
       subtitle="Sous-titre"
       buttons={[<ButtonPrimary key={1} wording="Continuer" onPress={onPress} />]}

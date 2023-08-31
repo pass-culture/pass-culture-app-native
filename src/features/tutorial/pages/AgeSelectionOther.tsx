@@ -7,7 +7,7 @@ import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { homeNavConfig } from 'features/navigation/TabBar/helpers'
 import { AgeButton } from 'features/tutorial/components/AgeButton'
 import { useOnboardingContext } from 'features/tutorial/context/OnboardingWrapper'
-import { OnboardingPage } from 'features/tutorial/pages/onboarding/OnboardingPage'
+import { TutorialPage } from 'features/tutorial/pages/TutorialPage'
 import { NonEligible } from 'features/tutorial/types'
 import { analytics } from 'libs/analytics'
 import { storage } from 'libs/storage'
@@ -33,7 +33,7 @@ export const AgeSelectionOther: FunctionComponent = () => {
   }, [showNonEligibleModal, reset])
 
   return (
-    <OnboardingPage>
+    <TutorialPage>
       <AgeButton
         onBeforeNavigate={onUnder15Press}
         navigateTo={navigateToHomeConfig}
@@ -57,7 +57,7 @@ export const AgeSelectionOther: FunctionComponent = () => {
           j’ai <Title3Text>plus de 18 ans</Title3Text>
         </Title4Text>
       </AgeButton>
-    </OnboardingPage>
+    </TutorialPage>
   )
 }
 

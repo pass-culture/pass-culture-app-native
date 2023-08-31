@@ -9,7 +9,7 @@ import { getSpacing, Spacer, Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 import { useCustomSafeInsets } from 'ui/theme/useCustomSafeInsets'
 
-interface OnboardingPageProps {
+interface Props {
   title?: string
   subtitle?: string
   buttons?: Array<ReactNode>
@@ -29,7 +29,7 @@ const buttonsContainerAnimation = {
 }
 
 const HEADER_HEIGHT = getSpacing(12)
-export const OnboardingPage: FunctionComponent<OnboardingPageProps> = ({
+export const TutorialPage: FunctionComponent<Props> = ({
   title,
   subtitle,
   buttons,
