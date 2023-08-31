@@ -4,7 +4,8 @@ import styled, { useTheme } from 'styled-components/native'
 
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { AnimatedRef, AnimatedView } from 'libs/react-native-animatable'
-import { TouchableOpacity } from 'ui/components/TouchableOpacity'
+import { styledButton } from 'ui/components/buttons/styledButton'
+import { Touchable } from 'ui/components/touchable/Touchable'
 import { useEscapeKeyAction } from 'ui/hooks/useEscapeKeyAction'
 import { Clear } from 'ui/svg/icons/Clear'
 import { Typo, getSpacing } from 'ui/theme'
@@ -78,7 +79,7 @@ const StyledText = styled(Typo.Caption)(({ theme }) => ({
   color: theme.colors.white,
 }))
 
-const StyledClearContainer = styled(TouchableOpacity)({
+const StyledClearContainer = styledButton(Touchable)({
   marginLeft: getSpacing(2),
 })
 
