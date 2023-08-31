@@ -118,7 +118,7 @@
     "@shopify/flash-list": "^1.4.1",
     "@typeform/embed-react": "^1.20.0",
     "@zootools/email-spell-checker": "^1.11.0",
-    "algoliasearch": "^4.15.0",
+    "algoliasearch": "^4.19.1",
     "amplitude-js": "^8.16.1",
     "caniuse-lite": "^1.0.30001519",
     "chromatic": "^6.19.8",
