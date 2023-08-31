@@ -1,12 +1,12 @@
 import { useMemo } from 'react'
 import { useQuery } from 'react-query'
 
-import { getSimilarOrRecoOffersInOrder } from 'features/offer/helpers/getSimilarOrRecoOffersInOrder/getSimilarOrRecoOffersInOrder'
 import { useIsUserUnderage } from 'features/profile/helpers/useIsUserUnderage'
 import { IncompleteSearchHit } from 'libs/algolia'
 import { fetchOffersByIds } from 'libs/algolia/fetchAlgolia/fetchOffersByIds'
 import { useTransformOfferHits, filterOfferHit } from 'libs/algolia/fetchAlgolia/transformOfferHit'
 import { QueryKeys } from 'libs/queryKeys'
+import { getSimilarOrRecoOffersInOrder } from 'shared/offer/getSimilarOrRecoOffersInOrder'
 import { Offer } from 'shared/offer/types'
 
 export const useAlgoliaSimilarOffers = (

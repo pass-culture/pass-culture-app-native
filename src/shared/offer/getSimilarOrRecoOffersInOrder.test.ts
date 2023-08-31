@@ -1,6 +1,6 @@
 import { SubcategoryIdEnum } from 'api/gen'
-import { getSimilarOrRecoOffersInOrder } from 'features/offer/helpers/getSimilarOrRecoOffersInOrder/getSimilarOrRecoOffersInOrder'
 import { mockedAlgoliaResponse } from 'libs/algolia/__mocks__/mockedAlgoliaResponse'
+import { getSimilarOrRecoOffersInOrder } from 'shared/offer/getSimilarOrRecoOffersInOrder'
 
 describe('getSimilarOffersInOrder', () => {
   const ids = ['102310', '102249', '102272', '102280']
