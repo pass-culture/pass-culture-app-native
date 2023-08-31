@@ -2,7 +2,6 @@ import { useNavigation, useRoute } from '@react-navigation/native'
 import React, { useCallback } from 'react'
 import styled from 'styled-components/native'
 
-import { contactSupport } from 'features/auth/helpers/contactSupport'
 import { UseNavigationType, UseRouteType } from 'features/navigation/RootNavigator/types'
 import { useSuspendForSuspiciousLoginMutation } from 'features/trustedDevice/helpers/useSuspendForSuspiciousLoginMutation'
 import { env } from 'libs/environment'
@@ -89,10 +88,10 @@ export const SuspensionChoice = () => {
         <Spacer.Column numberOfSpaces={2} />
         <ExternalTouchableLink
           as={ButtonTertiaryBlack}
-          wording="Contacter le support"
-          accessibilityLabel="Ouvrir le gestionnaire mail pour contacter le support"
+          wording="Contacter le service fraude"
+          accessibilityLabel="Ouvrir le gestionnaire mail pour contacter le service fraude"
           icon={EmailFilled}
-          externalNav={contactSupport.forGenericQuestion}
+          externalNav={{ url: `mailto:${env.FRAUD_EMAIL_ADDRESS}` }}
         />
       </ButtonContainer>
     </GenericInfoPageWhite>
