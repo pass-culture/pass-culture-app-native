@@ -1,10 +1,10 @@
 import { NavigationOnboarding } from 'features/internal/cheatcodes/pages/NavigationOnboarding/NavigationOnboarding'
 import { OnboardingRootStackParamList, GenericRoute } from 'features/navigation/RootNavigator/types'
-import { AgeInformation } from 'features/onboarding/pages/AgeInformation'
-import { AgeSelection } from 'features/onboarding/pages/AgeSelection'
-import { AgeSelectionOther } from 'features/onboarding/pages/AgeSelectionOther'
-import { OnboardingGeolocation } from 'features/onboarding/pages/OnboardingGeolocation'
-import { OnboardingWelcome } from 'features/onboarding/pages/OnboardingWelcome'
+import { AgeInformation } from 'features/tutorial/pages/AgeInformation'
+import { AgeSelection } from 'features/tutorial/pages/AgeSelection'
+import { AgeSelectionOther } from 'features/tutorial/pages/AgeSelectionOther'
+import { OnboardingGeolocation } from 'features/tutorial/pages/OnboardingGeolocation'
+import { OnboardingWelcome } from 'features/tutorial/pages/OnboardingWelcome'
 
 export const onboardingRoutes: GenericRoute<OnboardingRootStackParamList>[] = [
   {
