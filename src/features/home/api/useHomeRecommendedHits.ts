@@ -78,5 +78,5 @@ export const useHomeRecommendedHits = (
     )
   }, [getRecommendedIds, recommendationParameters, recommendationEndpoint, subcategoryLabelMapping])
 
-  return useAlgoliaRecommendedHits(recommendedIds ?? [], moduleId)
+  return useAlgoliaRecommendedHits(recommendedIds ?? [], moduleId, true)
 }

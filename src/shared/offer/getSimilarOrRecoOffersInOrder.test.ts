@@ -1,13 +1,13 @@
 import { SubcategoryIdEnum } from 'api/gen'
-import { getSimilarOffersInOrder } from 'features/offer/helpers/getSimilarOffersInOrder/getSimilarOffersInOrder'
 import { mockedAlgoliaResponse } from 'libs/algolia/__mocks__/mockedAlgoliaResponse'
+import { getSimilarOrRecoOffersInOrder } from 'shared/offer/getSimilarOrRecoOffersInOrder'
 
 describe('getSimilarOffersInOrder', () => {
   const ids = ['102310', '102249', '102272', '102280']
   const offers = mockedAlgoliaResponse.hits
 
   it('should return offers in ids array order', () => {
-    const similarOffersInOrder = getSimilarOffersInOrder(ids, offers)
+    const similarOffersInOrder = getSimilarOrRecoOffersInOrder(ids, offers)
     expect(similarOffersInOrder).toEqual([
       {
         offer: {
@@ -101,7 +101,7 @@ describe('getSimilarOffersInOrder', () => {
   })
 
   it('should not return offers in offers array order', () => {
-    const similarOffersInOrder = getSimilarOffersInOrder(ids, offers)
+    const similarOffersInOrder = getSimilarOrRecoOffersInOrder(ids, offers)
     expect(similarOffersInOrder).not.toEqual(offers)
   })
 })
