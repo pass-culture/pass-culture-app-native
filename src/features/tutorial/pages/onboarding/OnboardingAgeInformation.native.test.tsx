@@ -4,7 +4,7 @@ import React from 'react'
 import { navigate, reset } from '__mocks__/@react-navigation/native'
 import { OnboardingRootStackParamList } from 'features/navigation/RootNavigator/types'
 import { homeNavConfig } from 'features/navigation/TabBar/helpers'
-import { AgeInformation } from 'features/tutorial/pages/onboarding/OnboardingAgeInformation'
+import { OnboardingAgeInformation } from 'features/tutorial/pages/onboarding/OnboardingAgeInformation'
 import { CreditStatus } from 'features/tutorial/types'
 import { analytics } from 'libs/analytics'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
@@ -12,7 +12,7 @@ import { fireEvent, render, waitFor } from 'tests/utils'
 
 const AGES = [15, 16, 17, 18]
 
-describe('AgeInformation', () => {
+describe('OnboardingAgeInformation', () => {
   it.each(AGES)('should render correctly for %s-year-old', (age) => {
     const renderAPI = renderAgeInformation({ age })
     expect(renderAPI).toMatchSnapshot()
@@ -106,6 +106,6 @@ const renderAgeInformation = (navigationParams: { age: number }) => {
   >
   return render(
     // eslint-disable-next-line local-rules/no-react-query-provider-hoc
-    reactQueryProviderHOC(<AgeInformation {...navProps} />)
+    reactQueryProviderHOC(<OnboardingAgeInformation {...navProps} />)
   )
 }

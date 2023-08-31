@@ -24,35 +24,33 @@ const onBeforeNavigate = async (age?: EligibleAges) => {
   age && (await storage.saveObject('user_age', age))
 }
 
-export const AgeSelectionButtons: React.JSX.Element[] = ageButtons.map(({ age }) => {
-  return (
-    <AgeButton
-      key={age}
-      icon={age ? BicolorAll : undefined}
-      dense={!age}
-      onBeforeNavigate={async () => onBeforeNavigate(age)}
-      navigateTo={
-        age ? { screen: 'AgeInformation', params: { age } } : { screen: 'AgeSelectionOther' }
-      }
-      accessibilityLabel={`j’ai ${age} ans`}>
-      {age ? (
-        <Title4Text>
-          j’ai <Title3Text>{age} ans</Title3Text>
-        </Title4Text>
-      ) : (
-        <Title4Text>Autre</Title4Text>
-      )}
-      {!age && (
-        <React.Fragment>
-          <Spacer.Column numberOfSpaces={1} />
-          <Typo.CaptionNeutralInfo numberOfLines={2}>
-            j’ai moins de 15 ans ou plus de 18 ans
-          </Typo.CaptionNeutralInfo>
-        </React.Fragment>
-      )}
-    </AgeButton>
-  )
-})
+export const AgeSelectionButtons: React.JSX.Element[] = ageButtons.map(({ age }) => (
+  <AgeButton
+    key={age}
+    icon={age ? BicolorAll : undefined}
+    dense={!age}
+    onBeforeNavigate={async () => onBeforeNavigate(age)}
+    navigateTo={
+      age ? { screen: 'AgeInformation', params: { age } } : { screen: 'AgeSelectionOther' }
+    }
+    accessibilityLabel={`j’ai ${age} ans`}>
+    {age ? (
+      <Title4Text>
+        j’ai <Title3Text>{age} ans</Title3Text>
+      </Title4Text>
+    ) : (
+      <Title4Text>Autre</Title4Text>
+    )}
+    {!age && (
+      <React.Fragment>
+        <Spacer.Column numberOfSpaces={1} />
+        <Typo.CaptionNeutralInfo numberOfLines={2}>
+          j’ai moins de 15 ans ou plus de 18 ans
+        </Typo.CaptionNeutralInfo>
+      </React.Fragment>
+    )}
+  </AgeButton>
+))
 
 const BicolorAll = styled(All).attrs(({ theme }) => ({
   color: theme.colors.primary,

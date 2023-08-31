@@ -1,11 +1,11 @@
 import React, { FunctionComponent } from 'react'
 
+import { AgeSelectionButtons } from 'features/tutorial/components/AgeSelectionButtons'
 import { OnboardingPage } from 'features/tutorial/pages/onboarding/OnboardingPage'
 import { AccessibilityList } from 'ui/components/accessibility/AccessibilityList'
 import { Spacer } from 'ui/theme'
-import { AgeSelectionButtons } from 'features/tutorial/components/AgeSelectionButtons'
 
-export const AgeSelection: FunctionComponent = () => {
+export const OnboardingAgeSelection: FunctionComponent = () => {
   return (
     <OnboardingPage
       title="Pour commencer, peux-tu nous dire ton âge&nbsp;?"

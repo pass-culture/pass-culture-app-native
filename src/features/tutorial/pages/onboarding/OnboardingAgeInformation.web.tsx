@@ -1,1 +1,1 @@
-export const AgeInformation = () => null
+export const OnboardingAgeInformation = () => null
