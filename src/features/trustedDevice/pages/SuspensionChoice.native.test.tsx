@@ -2,7 +2,6 @@ import { rest } from 'msw'
 import React from 'react'
 
 import { navigate } from '__mocks__/@react-navigation/native'
-import { contactSupport } from 'features/auth/helpers/contactSupport'
 import * as NavigationHelpers from 'features/navigation/helpers/openUrl'
 import { env } from 'libs/environment'
 import { eventMonitoring, MonitoringError } from 'libs/monitoring'
@@ -73,14 +72,10 @@ describe('<SuspensionChoice/>', () => {
   it('should open mail app when clicking on "Contacter le support" button', () => {
     renderSuspensionChoice()
 
-    const contactSupportButton = screen.getByText('Contacter le support')
+    const contactSupportButton = screen.getByText('Contacter le service fraude')
     fireEvent.press(contactSupportButton)
 
-    expect(openUrl).toBeCalledWith(
-      contactSupport.forGenericQuestion.url,
-      contactSupport.forGenericQuestion.params,
-      true
-    )
+    expect(openUrl).toBeCalledWith(`mailto:service.fraude@test.passculture.app`, undefined, true)
   })
 
   it('should open CGU url when clicking on "conditions générales d’utilisation" button', () => {

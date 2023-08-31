@@ -35,6 +35,7 @@ export const LocationWidget: React.FC = () => {
 
 const StyledTouchable = styledButton(Touchable)({
   alignItems: 'center',
+  marginLeft: getSpacing(2),
 })
 
 const StyledCaption = styled(Typo.Caption)({
