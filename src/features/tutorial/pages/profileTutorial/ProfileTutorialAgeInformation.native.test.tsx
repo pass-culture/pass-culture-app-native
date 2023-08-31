@@ -1,11 +1,12 @@
 import React from 'react'
 
 import { useAuthContext } from 'features/auth/context/AuthContext'
-import { AgeInformationTutorial } from 'features/firstTutorial/pages/AgeInformationTutorial/AgeInformationTutorial'
 import * as NavigationHelpers from 'features/navigation/helpers/openUrl'
 import { beneficiaryUser } from 'fixtures/user'
 import { env } from 'libs/environment'
 import { fireEvent, render, screen } from 'tests/utils'
+
+import { ProfileTutorialAgeInformation } from './ProfileTutorialAgeInformation'
 
 jest.mock('features/auth/context/AuthContext')
 const mockUseAuthContext = useAuthContext as jest.MockedFunction<typeof useAuthContext>
@@ -20,10 +21,10 @@ const defaultAuthContext = {
 
 const openUrl = jest.spyOn(NavigationHelpers, 'openUrl')
 
-describe('<AgeInformationTutorial />', () => {
+describe('<ProfileTutorialAgeInformation />', () => {
   it('should render correctly when logged in', () => {
     mockUseAuthContext.mockReturnValueOnce(defaultAuthContext)
-    render(<AgeInformationTutorial selectedAge={15} />)
+    render(<ProfileTutorialAgeInformation selectedAge={15} />)
 
     expect(screen).toMatchSnapshot()
   })
@@ -34,7 +35,7 @@ describe('<AgeInformationTutorial />', () => {
       isLoggedIn: false,
       user: undefined,
     })
-    render(<AgeInformationTutorial selectedAge={15} />)
+    render(<ProfileTutorialAgeInformation selectedAge={15} />)
 
     expect(screen).toMatchSnapshot()
   })

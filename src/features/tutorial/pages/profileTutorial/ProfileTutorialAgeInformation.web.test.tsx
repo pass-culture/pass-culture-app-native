@@ -2,12 +2,12 @@ import React from 'react'
 
 import { render, checkAccessibilityFor } from 'tests/utils/web'
 
-import { AgeInformationTutorial } from './AgeInformationTutorial'
+import { ProfileTutorialAgeInformation } from './ProfileTutorialAgeInformation'
 
-describe('<AgeInformationTutorial/>', () => {
+describe('<ProfileTutorialAgeInformation/>', () => {
   describe('Accessibility', () => {
     it('should not have basic accessibility issues', async () => {
-      const { container } = render(<AgeInformationTutorial />)
+      const { container } = render(<ProfileTutorialAgeInformation />)
 
       const results = await checkAccessibilityFor(container)
 

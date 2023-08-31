@@ -24,7 +24,7 @@ interface Props {
   selectedAge?: 15 | 16 | 17 | 18
 }
 
-export const AgeInformationTutorial: FunctionComponent<Props> = ({ selectedAge }) => {
+export const ProfileTutorialAgeInformation: FunctionComponent<Props> = ({ selectedAge }) => {
   const { isLoggedIn, user } = useAuthContext()
   const { goBack } = useNavigation<UseNavigationType>()
   const { onScroll, headerTransition } = useOpacityTransition()

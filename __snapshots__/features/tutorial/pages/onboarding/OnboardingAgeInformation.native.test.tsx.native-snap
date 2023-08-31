@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`AgeInformation should render correctly for 15-year-old 1`] = `
+exports[`OnboardingAgeInformation should render correctly for 15-year-old 1`] = `
 [
   <View
     height={64}
@@ -1451,7 +1451,7 @@ exports[`AgeInformation should render correctly for 15-year-old 1`] = `
 ]
 `;
 
-exports[`AgeInformation should render correctly for 16-year-old 1`] = `
+exports[`OnboardingAgeInformation should render correctly for 16-year-old 1`] = `
 [
   <View
     height={64}
@@ -2889,7 +2889,7 @@ exports[`AgeInformation should render correctly for 16-year-old 1`] = `
 ]
 `;
 
-exports[`AgeInformation should render correctly for 17-year-old 1`] = `
+exports[`OnboardingAgeInformation should render correctly for 17-year-old 1`] = `
 [
   <View
     height={64}
@@ -4314,7 +4314,7 @@ exports[`AgeInformation should render correctly for 17-year-old 1`] = `
 ]
 `;
 
-exports[`AgeInformation should render correctly for 18-year-old 1`] = `
+exports[`OnboardingAgeInformation should render correctly for 18-year-old 1`] = `
 [
   <View
     height={64}

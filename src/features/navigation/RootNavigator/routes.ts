@@ -22,7 +22,6 @@ import { BookingConfirmation } from 'features/bookOffer/pages/BookingConfirmatio
 import { withAsyncErrorBoundary } from 'features/errors/hocs/withAsyncErrorBoundary'
 import { BannedCountryError } from 'features/errors/pages/BannedCountryError'
 import { FavoritesSorts } from 'features/favorites/pages/FavoritesSorts'
-import { AgeInformationTutorial } from 'features/firstTutorial/pages/AgeInformationTutorial/AgeInformationTutorial'
 import { FirstTutorial } from 'features/firstTutorial/pages/FirstTutorial/FirstTutorial'
 import { ThematicHome } from 'features/home/pages/ThematicHome'
 import { AppComponents } from 'features/internal/cheatcodes/pages/AppComponents/AppComponents'
@@ -64,6 +63,7 @@ import { SuspendAccountConfirmation } from 'features/profile/pages/SuspendAccoun
 import { TrackEmailChange } from 'features/profile/pages/TrackEmailChange/TrackEmailChange'
 import { ValidateEmailChange } from 'features/profile/pages/ValidateEmailChange/ValidateEmailChange'
 import { SearchFilter } from 'features/search/pages/SearchFilter/SearchFilter'
+import { ProfileTutorialAgeInformation } from 'features/tutorial/pages/profileTutorial/ProfileTutorialAgeInformation'
 import { Venue } from 'features/venue/pages/Venue/Venue'
 import { ABTestingPOC } from 'libs/firebase/remoteConfig/ABTestingPOC'
 
@@ -384,7 +384,7 @@ export const routes: Route[] = [
   },
   {
     name: 'Tutorial',
-    component: AgeInformationTutorial,
+    component: ProfileTutorialAgeInformation,
     path: 'comment-ca-marche',
     options: { title: 'Tutoriel "Comment ça marche"' },
   },
