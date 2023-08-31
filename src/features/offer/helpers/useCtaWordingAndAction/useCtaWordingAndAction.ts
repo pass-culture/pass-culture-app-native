@@ -121,36 +121,6 @@ export const getCtaWordingAndAction = ({
     }
   }
 
-  if (isFreeDigitalOffer) {
-    return {
-      wording: getDigitalOfferBookingWording(subcategoryId),
-      isDisabled: isBookingLoading,
-      onPress() {
-        if (isAlreadyBookedOffer) {
-          openUrl(booking?.completedUrl ?? '')
-          return
-        }
-
-        bookOffer({
-          quantity: 1,
-          stockId: offer.stocks[0].id,
-        })
-      },
-    }
-  }
-
-  if (isAlreadyBookedOffer) {
-    return {
-      wording: 'Voir ma réservation',
-      isDisabled: false,
-      navigateTo: {
-        screen: 'BookingDetails',
-        params: { id: bookedOffers[offer.id] },
-        fromRef: true,
-      },
-    }
-  }
-
   if (userStatus.statusType === YoungStatusType.eligible) {
     const common = {
       wording: 'Réserver l’offre',
@@ -183,6 +153,36 @@ export const getCtaWordingAndAction = ({
             analytics.logConsultErrorApplicationModal(offer.id)
           },
         }
+    }
+  }
+
+  if (isFreeDigitalOffer) {
+    return {
+      wording: getDigitalOfferBookingWording(subcategoryId),
+      isDisabled: isBookingLoading,
+      onPress() {
+        if (isAlreadyBookedOffer) {
+          openUrl(booking?.completedUrl ?? '')
+          return
+        }
+
+        bookOffer({
+          quantity: 1,
+          stockId: offer.stocks[0].id,
+        })
+      },
+    }
+  }
+
+  if (isAlreadyBookedOffer) {
+    return {
+      wording: 'Voir ma réservation',
+      isDisabled: false,
+      navigateTo: {
+        screen: 'BookingDetails',
+        params: { id: bookedOffers[offer.id] },
+        fromRef: true,
+      },
     }
   }
 
