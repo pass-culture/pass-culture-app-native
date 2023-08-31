@@ -22,6 +22,7 @@ import { BookingConfirmation } from 'features/bookOffer/pages/BookingConfirmatio
 import { withAsyncErrorBoundary } from 'features/errors/hocs/withAsyncErrorBoundary'
 import { BannedCountryError } from 'features/errors/pages/BannedCountryError'
 import { FavoritesSorts } from 'features/favorites/pages/FavoritesSorts'
+import { AgeInformationTutorial } from 'features/firstTutorial/pages/AgeInformationTutorial/AgeInformationTutorial'
 import { FirstTutorial } from 'features/firstTutorial/pages/FirstTutorial/FirstTutorial'
 import { ThematicHome } from 'features/home/pages/ThematicHome'
 import { AppComponents } from 'features/internal/cheatcodes/pages/AppComponents/AppComponents'
@@ -380,6 +381,12 @@ export const routes: Route[] = [
     component: NotYetUnderageEligibility,
     path: 'cest-pour-bientot',
     options: { title: 'C’est pour bientôt' },
+  },
+  {
+    name: 'Tutorial',
+    component: AgeInformationTutorial,
+    path: 'comment-ca-marche',
+    options: { title: 'Tutoriel "Comment ça marche"' },
   },
   {
     name: 'FirstTutorial',
