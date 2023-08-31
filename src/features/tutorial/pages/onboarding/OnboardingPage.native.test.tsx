@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { OnboardingPage } from 'features/tutorial/pages/OnboardingPage'
+import { OnboardingPage } from 'features/tutorial/pages/onboarding/OnboardingPage'
 import { fireEvent, render } from 'tests/utils'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 

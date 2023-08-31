@@ -6,7 +6,7 @@ import { ANIMATION_DELAY } from 'features/home/api/useShowSkeleton'
 import { OnboardingTimeline } from './OnboardingTimeline'
 
 const meta: ComponentMeta<typeof OnboardingTimeline> = {
-  title: 'features/onboarding/OnboardingTimeline',
+  title: 'features/tutorial/OnboardingTimeline',
   component: OnboardingTimeline,
   parameters: {
     // Wait for animation to finish before snapshot

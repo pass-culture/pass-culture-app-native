@@ -6,7 +6,7 @@ import { CreditStatus } from 'features/tutorial/types'
 import { CreditStatusTag } from './CreditStatusTag'
 
 const meta: ComponentMeta<typeof CreditStatusTag> = {
-  title: 'features/onboarding/CreditStatusTag',
+  title: 'features/tutorial/CreditStatusTag',
   component: CreditStatusTag,
 }
 export default meta

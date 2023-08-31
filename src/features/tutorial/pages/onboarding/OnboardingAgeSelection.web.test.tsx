@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { AgeSelection } from 'features/tutorial/pages/AgeSelection'
+import { AgeSelection } from 'features/tutorial/pages/onboarding/OnboardingAgeSelection'
 import { render } from 'tests/utils/web'
 
 describe('AgeSelection', () => {

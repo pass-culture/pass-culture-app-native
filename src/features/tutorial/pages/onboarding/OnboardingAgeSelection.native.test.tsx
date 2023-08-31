@@ -1,7 +1,7 @@
 import React from 'react'
 
 import { navigate } from '__mocks__/@react-navigation/native'
-import { AgeSelection } from 'features/tutorial/pages/AgeSelection'
+import { AgeSelection } from 'features/tutorial/pages/onboarding/OnboardingAgeSelection'
 import { analytics } from 'libs/analytics'
 import { storage } from 'libs/storage'
 import { fireEvent, render, waitFor } from 'tests/utils'

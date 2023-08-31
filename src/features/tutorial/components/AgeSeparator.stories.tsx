@@ -4,7 +4,7 @@ import React from 'react'
 import { AgeSeparator } from './AgeSeparator'
 
 const meta: ComponentMeta<typeof AgeSeparator> = {
-  title: 'features/onboarding/AgeSeparator',
+  title: 'features/tutorial/AgeSeparator',
   component: AgeSeparator,
 }
 export default meta

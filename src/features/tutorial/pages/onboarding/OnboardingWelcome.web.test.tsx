@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { OnboardingWelcome } from 'features/tutorial/pages/OnboardingWelcome'
+import { OnboardingWelcome } from 'features/tutorial/pages/onboarding/OnboardingWelcome'
 import { render } from 'tests/utils/web'
 
 describe('OnboardingWelcome', () => {

@@ -9,7 +9,7 @@ import { CreditBlock } from './CreditBlock'
 
 const ANIMATION_DELAY = 2
 const meta: ComponentMeta<typeof CreditBlock> = {
-  title: 'features/onboarding/CreditBlock',
+  title: 'features/tutorial/CreditBlock',
   component: CreditBlock,
   parameters: {
     // Wait for animation to finish before snapshot

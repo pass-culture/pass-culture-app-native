@@ -20,7 +20,7 @@ const StyledBody = styled(Typo.Body)(({ theme }) => ({
 }))
 
 const meta: ComponentMeta<typeof AgeButton> = {
-  title: 'features/onboarding/AgeButton',
+  title: 'features/tutorial/AgeButton',
   component: AgeButton,
   argTypes: {
     icon: selectArgTypeFromObject({

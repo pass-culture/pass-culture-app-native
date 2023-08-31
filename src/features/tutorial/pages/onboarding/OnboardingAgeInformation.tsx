@@ -9,7 +9,7 @@ import {
 } from 'features/navigation/RootNavigator/types'
 import { homeNavConfig } from 'features/navigation/TabBar/helpers'
 import { OnboardingTimeline } from 'features/tutorial/components/OnboardingTimeline'
-import { OnboardingPage } from 'features/tutorial/pages/OnboardingPage'
+import { OnboardingPage } from 'features/tutorial/pages/onboarding/OnboardingPage'
 import { analytics } from 'libs/analytics'
 import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
 import { ButtonWithLinearGradient } from 'ui/components/buttons/buttonWithLinearGradient/ButtonWithLinearGradient'

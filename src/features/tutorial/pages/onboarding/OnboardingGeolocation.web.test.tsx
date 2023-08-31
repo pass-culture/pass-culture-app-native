@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { OnboardingGeolocation } from 'features/tutorial/pages/OnboardingGeolocation'
+import { OnboardingGeolocation } from 'features/tutorial/pages/onboarding/OnboardingGeolocation'
 import { render } from 'tests/utils/web'
 
 describe('OnboardingGeolocation', () => {

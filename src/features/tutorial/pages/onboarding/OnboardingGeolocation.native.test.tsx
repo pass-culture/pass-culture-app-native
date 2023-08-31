@@ -1,7 +1,7 @@
 import React from 'react'
 
 import { navigate } from '__mocks__/@react-navigation/native'
-import { OnboardingGeolocation } from 'features/tutorial/pages/OnboardingGeolocation'
+import { OnboardingGeolocation } from 'features/tutorial/pages/onboarding/OnboardingGeolocation'
 import { analytics } from 'libs/analytics'
 import { fireEvent, render } from 'tests/utils'
 
