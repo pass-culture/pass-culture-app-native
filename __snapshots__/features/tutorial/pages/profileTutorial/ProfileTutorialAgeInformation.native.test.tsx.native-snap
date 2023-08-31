@@ -1,0 +1,1229 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<ProfileTutorialAgeInformation /> should display not logged in version when user is not loggedIn 1`] = `
+[
+  <RCTScrollView
+    contentContainerStyle={
+      {
+        "alignSelf": "center",
+        "maxWidth": 500,
+        "paddingHorizontal": 24,
+        "width": "100%",
+      }
+    }
+    onScroll={[Function]}
+    scrollEventThrottle={16}
+    style={
+      [
+        {},
+      ]
+    }
+  >
+    <View>
+      <View
+        height={65}
+        style={
+          [
+            {
+              "height": 65,
+            },
+          ]
+        }
+      />
+      <View
+        numberOfSpaces={7}
+        style={
+          [
+            {
+              "height": 28,
+            },
+          ]
+        }
+      />
+      <Text
+        numberOfLines={3}
+        style={
+          [
+            {
+              "color": "#161617",
+              "fontFamily": "Montserrat-Bold",
+              "fontSize": 20,
+              "lineHeight": 24,
+            },
+          ]
+        }
+      >
+        Le pass Culture à 15 ans
+      </Text>
+      <View
+        numberOfSpaces={6}
+        style={
+          [
+            {
+              "height": 24,
+            },
+          ]
+        }
+      />
+      <Text
+        style={
+          [
+            {
+              "color": "#161617",
+              "fontFamily": "Montserrat-Regular",
+              "fontSize": 15,
+              "lineHeight": 20,
+            },
+          ]
+        }
+      >
+        Crédit activé à 18 ans
+      </Text>
+      <View
+        numberOfSpaces={4}
+        style={
+          [
+            {
+              "height": 16,
+            },
+          ]
+        }
+      />
+      <View
+        backgroundColor="#f3ecff"
+        style={
+          [
+            {
+              "alignItems": "center",
+              "backgroundColor": "#f3ecff",
+              "borderRadius": 8,
+              "flexDirection": "row",
+              "justifyContent": "space-between",
+              "paddingBottom": 16,
+              "paddingLeft": 16,
+              "paddingRight": 16,
+              "paddingTop": 16,
+            },
+          ]
+        }
+      >
+        <View
+          style={
+            [
+              {
+                "flexBasis": 0,
+                "flexGrow": 1,
+                "flexShrink": 1,
+              },
+            ]
+          }
+        >
+          <Text
+            style={
+              [
+                {
+                  "color": "#161617",
+                  "fontFamily": "Montserrat-SemiBold",
+                  "fontSize": 12,
+                  "lineHeight": 16,
+                },
+              ]
+            }
+            textColor="#161617"
+          >
+            Cette page a-t-elle été utile ? Aide-nous à l’améliorer en répondant à notre questionnaire.
+          </Text>
+          <View
+            numberOfSpaces={2}
+            style={
+              [
+                {
+                  "height": 8,
+                },
+              ]
+            }
+          />
+          <View
+            accessibilityLabel="Donner mon avis"
+            accessible={true}
+            collapsable={false}
+            focusable={true}
+            onClick={[Function]}
+            onResponderGrant={[Function]}
+            onResponderMove={[Function]}
+            onResponderRelease={[Function]}
+            onResponderTerminate={[Function]}
+            onResponderTerminationRequest={[Function]}
+            onStartShouldSetResponder={[Function]}
+            style={
+              {
+                "alignItems": "center",
+                "backgroundColor": "transparent",
+                "borderRadius": 0,
+                "borderWidth": 0,
+                "flexDirection": "row",
+                "justifyContent": "flex-start",
+                "marginTop": 0,
+                "maxWidth": 500,
+                "minHeight": 20,
+                "opacity": 1,
+                "paddingBottom": 0,
+                "paddingLeft": 0,
+                "paddingRight": 0,
+                "paddingTop": 0,
+                "userSelect": "auto",
+                "width": "auto",
+              }
+            }
+            testID="Donner mon avis"
+          >
+            <View
+              style={
+                [
+                  {
+                    "flexShrink": 0,
+                  },
+                ]
+              }
+            >
+              <View
+                accessibilityLabel="Nouvelle fenêtre"
+                height={16}
+                testID="button-icon"
+                width={16}
+              >
+                <Text>
+                  button-icon-SVG-Mock
+                </Text>
+              </View>
+            </View>
+            <Text
+              adjustsFontSizeToFit={false}
+              numberOfLines={1}
+              style={
+                [
+                  {
+                    "color": "#320096",
+                    "fontFamily": "Montserrat-SemiBold",
+                    "fontSize": 12,
+                    "lineHeight": 16,
+                    "marginLeft": 4,
+                    "maxWidth": "100%",
+                  },
+                ]
+              }
+            >
+              Donner mon avis
+            </Text>
+          </View>
+        </View>
+      </View>
+      <View
+        style={
+          [
+            {
+              "flexDirection": "column",
+            },
+          ]
+        }
+      >
+        <View
+          numberOfSpaces={4}
+          style={
+            [
+              {
+                "height": 16,
+              },
+            ]
+          }
+        />
+        <View
+          accessibilityLabel="Créer un compte"
+          accessibilityRole="link"
+          accessibilityState={
+            {
+              "disabled": false,
+            }
+          }
+          accessible={true}
+          collapsable={false}
+          focusable={true}
+          onClick={[Function]}
+          onResponderGrant={[Function]}
+          onResponderMove={[Function]}
+          onResponderRelease={[Function]}
+          onResponderTerminate={[Function]}
+          onResponderTerminationRequest={[Function]}
+          onStartShouldSetResponder={[Function]}
+          style={
+            {
+              "alignItems": "center",
+              "borderRadius": 24,
+              "justifyContent": "center",
+              "opacity": 1,
+              "overflow": "hidden",
+              "paddingBottom": 0,
+              "paddingLeft": 0,
+              "paddingRight": 0,
+              "paddingTop": 0,
+              "userSelect": "auto",
+            }
+          }
+          testID="Créer un compte"
+        >
+          <View
+            height={48}
+            width="100%"
+          >
+            <Text>
+              undefined-SVG-Mock
+            </Text>
+          </View>
+          <View
+            style={
+              [
+                {
+                  "alignItems": "center",
+                  "flexDirection": "row",
+                  "position": "absolute",
+                },
+              ]
+            }
+          >
+            <Text
+              adjustsFontSizeToFit={true}
+              isDisabled={false}
+              numberOfLines={1}
+              style={
+                [
+                  {
+                    "color": "#ffffff",
+                    "fontFamily": "Montserrat-Bold",
+                    "fontSize": 15,
+                    "lineHeight": 20,
+                    "paddingBottom": 8,
+                    "paddingLeft": 8,
+                    "paddingRight": 8,
+                    "paddingTop": 8,
+                  },
+                ]
+              }
+            >
+              Créer un compte
+            </Text>
+          </View>
+        </View>
+        <View
+          numberOfSpaces={4}
+          style={
+            [
+              {
+                "height": 16,
+              },
+            ]
+          }
+        />
+        <View
+          style={
+            [
+              {
+                "alignItems": "center",
+                "flexDirection": "row",
+                "justifyContent": "center",
+              },
+            ]
+          }
+        >
+          <Text
+            style={
+              [
+                {
+                  "color": "#161617",
+                  "fontFamily": "Montserrat-Regular",
+                  "fontSize": 15,
+                  "lineHeight": 20,
+                  "textAlign": "center",
+                },
+              ]
+            }
+          >
+            Déjà un compte ?
+            <View
+              numberOfSpaces={1}
+              style={
+                [
+                  {
+                    "width": 4,
+                  },
+                ]
+              }
+            />
+            <View>
+              <View
+                accessibilityLabel="Se connecter"
+                accessibilityRole="link"
+                accessible={true}
+                collapsable={false}
+                focusable={true}
+                onClick={[Function]}
+                onResponderGrant={[Function]}
+                onResponderMove={[Function]}
+                onResponderRelease={[Function]}
+                onResponderTerminate={[Function]}
+                onResponderTerminationRequest={[Function]}
+                onStartShouldSetResponder={[Function]}
+                style={
+                  {
+                    "opacity": 1,
+                    "top": 3,
+                    "userSelect": "auto",
+                  }
+                }
+                testID="Se connecter"
+              >
+                <View
+                  paddingForIcon={0}
+                  style={
+                    [
+                      {
+                        "flexDirection": "row",
+                        "top": 0,
+                      },
+                    ]
+                  }
+                >
+                  <View
+                    fill="#320096"
+                    height={20}
+                    testID="button-icon"
+                    width={20}
+                  >
+                    <Text>
+                      button-icon-SVG-Mock
+                    </Text>
+                  </View>
+                  <View
+                    numberOfSpaces={1}
+                    style={
+                      [
+                        {
+                          "width": 4,
+                        },
+                      ]
+                    }
+                  />
+                  <Text
+                    color="#320096"
+                    style={
+                      [
+                        {
+                          "color": "#320096",
+                          "fontFamily": "Montserrat-Bold",
+                          "fontSize": 15,
+                          "lineHeight": 20,
+                        },
+                      ]
+                    }
+                    typography="ButtonText"
+                  >
+                    Se connecter
+                  </Text>
+                </View>
+              </View>
+            </View>
+          </Text>
+        </View>
+      </View>
+      <View
+        height={2000}
+        style={
+          [
+            {
+              "height": 2000,
+            },
+          ]
+        }
+      />
+    </View>
+  </RCTScrollView>,
+  <View
+    collapsable={false}
+    height={65}
+    style={
+      {
+        "backdropFilter": "blur(0px)",
+        "backgroundColor": "rgba(255, 255, 255, 0)",
+        "borderBottomColor": "#F1F1F4",
+        "borderBottomWidth": 0,
+        "height": 65,
+        "left": 0,
+        "position": "absolute",
+        "right": 0,
+        "top": 0,
+        "zIndex": 1,
+      }
+    }
+  >
+    <View
+      customHeight={16}
+      enable={true}
+      style={
+        [
+          {
+            "height": 16,
+          },
+        ]
+      }
+    />
+    <View
+      collapsable={false}
+      height={65}
+      style={
+        {
+          "height": 65,
+          "left": 0,
+          "opacity": 0,
+          "overflow": "hidden",
+          "position": "absolute",
+          "right": 0,
+          "top": 0,
+        }
+      }
+    >
+      <BlurView
+        blurAmount={8}
+        blurType="light"
+        style={
+          [
+            {
+              "backgroundColor": "transparent",
+            },
+            [
+              {
+                "flexBasis": 0,
+                "flexGrow": 1,
+                "flexShrink": 1,
+              },
+            ],
+          ]
+        }
+      />
+    </View>
+    <View
+      numberOfSpaces={2}
+      style={
+        [
+          {
+            "height": 8,
+          },
+        ]
+      }
+    />
+    <View
+      style={
+        [
+          {
+            "alignItems": "center",
+            "flexBasis": 0,
+            "flexDirection": "row",
+            "flexGrow": 1,
+            "flexShrink": 1,
+          },
+        ]
+      }
+    >
+      <View
+        numberOfSpaces={6}
+        style={
+          [
+            {
+              "width": 24,
+            },
+          ]
+        }
+      />
+      <View
+        accessibilityLabel="Revenir en arrière"
+        accessibilityRole="button"
+        accessible={true}
+        collapsable={false}
+        focusable={true}
+        onClick={[Function]}
+        onResponderGrant={[Function]}
+        onResponderMove={[Function]}
+        onResponderRelease={[Function]}
+        onResponderTerminate={[Function]}
+        onResponderTerminationRequest={[Function]}
+        onStartShouldSetResponder={[Function]}
+        style={
+          {
+            "borderRadius": 40,
+            "opacity": 1,
+            "userSelect": "auto",
+          }
+        }
+        testID="Revenir en arrière"
+      >
+        <View
+          collapsable={false}
+          style={
+            {
+              "alignItems": "center",
+              "aspectRatio": 1,
+              "backgroundColor": "rgba(255, 255, 255, 1)",
+              "borderColor": "rgba(241, 241, 244, 1)",
+              "borderRadius": 40,
+              "borderStyle": "solid",
+              "borderWidth": 1,
+              "height": 40,
+              "justifyContent": "center",
+              "transform": undefined,
+              "width": 40,
+            }
+          }
+          testID="AnimatedHeaderIconRoundContainer"
+        >
+          <View
+            size={24}
+            style={
+              [
+                {
+                  "height": 24,
+                  "width": 24,
+                },
+              ]
+            }
+          >
+            <View
+              collapsable={false}
+              style={
+                {
+                  "opacity": 1,
+                  "position": "absolute",
+                }
+              }
+              testID="initial-icon-container"
+            >
+              <View
+                height={24}
+                testID="animated-icon-back"
+                width={24}
+              >
+                <Text>
+                  animated-icon-back-SVG-Mock
+                </Text>
+              </View>
+            </View>
+            <View
+              collapsable={false}
+              style={
+                {
+                  "opacity": 0,
+                  "position": "absolute",
+                }
+              }
+              testID="final-icon-container"
+            >
+              <View
+                height={24}
+                testID="final-animated-icon-back"
+                width={24}
+              >
+                <Text>
+                  final-animated-icon-back-SVG-Mock
+                </Text>
+              </View>
+            </View>
+          </View>
+        </View>
+      </View>
+      <View
+        numberOfSpaces={10}
+        style={
+          [
+            {
+              "width": 40,
+            },
+          ]
+        }
+      />
+      <View
+        style={
+          [
+            {
+              "flexBasis": 0,
+              "flexGrow": 1,
+              "flexShrink": 1,
+            },
+          ]
+        }
+      />
+      <Text
+        accessibilityHidden={true}
+        collapsable={false}
+        numberOfLines={2}
+        style={
+          {
+            "color": "#ffffff",
+            "flexShrink": 1,
+            "opacity": 0,
+            "textAlign": "center",
+          }
+        }
+      >
+        <Text
+          style={
+            [
+              {
+                "color": "#161617",
+                "fontFamily": "Montserrat-Regular",
+                "fontSize": 15,
+                "lineHeight": 20,
+              },
+            ]
+          }
+        >
+          Le pass Culture à 15 ans
+        </Text>
+      </Text>
+      <View
+        style={
+          [
+            {
+              "flexBasis": 0,
+              "flexGrow": 1,
+              "flexShrink": 1,
+            },
+          ]
+        }
+      />
+      <View
+        numberOfSpaces={25}
+        style={
+          [
+            {
+              "width": 100,
+            },
+          ]
+        }
+      />
+    </View>
+    <View
+      numberOfSpaces={2}
+      style={
+        [
+          {
+            "height": 8,
+          },
+        ]
+      }
+    />
+  </View>,
+]
+`;
+
+exports[`<ProfileTutorialAgeInformation /> should render correctly when logged in 1`] = `
+[
+  <RCTScrollView
+    contentContainerStyle={
+      {
+        "alignSelf": "center",
+        "maxWidth": 500,
+        "paddingHorizontal": 24,
+        "width": "100%",
+      }
+    }
+    onScroll={[Function]}
+    scrollEventThrottle={16}
+    style={
+      [
+        {},
+      ]
+    }
+  >
+    <View>
+      <View
+        height={65}
+        style={
+          [
+            {
+              "height": 65,
+            },
+          ]
+        }
+      />
+      <View
+        numberOfSpaces={7}
+        style={
+          [
+            {
+              "height": 28,
+            },
+          ]
+        }
+      />
+      <Text
+        numberOfLines={3}
+        style={
+          [
+            {
+              "color": "#161617",
+              "fontFamily": "Montserrat-Bold",
+              "fontSize": 20,
+              "lineHeight": 24,
+            },
+          ]
+        }
+      >
+        Comment ça marche ?
+      </Text>
+      <View
+        numberOfSpaces={6}
+        style={
+          [
+            {
+              "height": 24,
+            },
+          ]
+        }
+      />
+      <Text
+        style={
+          [
+            {
+              "color": "#161617",
+              "fontFamily": "Montserrat-Regular",
+              "fontSize": 15,
+              "lineHeight": 20,
+            },
+          ]
+        }
+      >
+        Crédit activé à 18 ans
+      </Text>
+      <View
+        numberOfSpaces={4}
+        style={
+          [
+            {
+              "height": 16,
+            },
+          ]
+        }
+      />
+      <View
+        backgroundColor="#f3ecff"
+        style={
+          [
+            {
+              "alignItems": "center",
+              "backgroundColor": "#f3ecff",
+              "borderRadius": 8,
+              "flexDirection": "row",
+              "justifyContent": "space-between",
+              "paddingBottom": 16,
+              "paddingLeft": 16,
+              "paddingRight": 16,
+              "paddingTop": 16,
+            },
+          ]
+        }
+      >
+        <View
+          style={
+            [
+              {
+                "flexBasis": 0,
+                "flexGrow": 1,
+                "flexShrink": 1,
+              },
+            ]
+          }
+        >
+          <Text
+            style={
+              [
+                {
+                  "color": "#161617",
+                  "fontFamily": "Montserrat-SemiBold",
+                  "fontSize": 12,
+                  "lineHeight": 16,
+                },
+              ]
+            }
+            textColor="#161617"
+          >
+            Cette page a-t-elle été utile ? Aide-nous à l’améliorer en répondant à notre questionnaire.
+          </Text>
+          <View
+            numberOfSpaces={2}
+            style={
+              [
+                {
+                  "height": 8,
+                },
+              ]
+            }
+          />
+          <View
+            accessibilityLabel="Donner mon avis"
+            accessible={true}
+            collapsable={false}
+            focusable={true}
+            onClick={[Function]}
+            onResponderGrant={[Function]}
+            onResponderMove={[Function]}
+            onResponderRelease={[Function]}
+            onResponderTerminate={[Function]}
+            onResponderTerminationRequest={[Function]}
+            onStartShouldSetResponder={[Function]}
+            style={
+              {
+                "alignItems": "center",
+                "backgroundColor": "transparent",
+                "borderRadius": 0,
+                "borderWidth": 0,
+                "flexDirection": "row",
+                "justifyContent": "flex-start",
+                "marginTop": 0,
+                "maxWidth": 500,
+                "minHeight": 20,
+                "opacity": 1,
+                "paddingBottom": 0,
+                "paddingLeft": 0,
+                "paddingRight": 0,
+                "paddingTop": 0,
+                "userSelect": "auto",
+                "width": "auto",
+              }
+            }
+            testID="Donner mon avis"
+          >
+            <View
+              style={
+                [
+                  {
+                    "flexShrink": 0,
+                  },
+                ]
+              }
+            >
+              <View
+                accessibilityLabel="Nouvelle fenêtre"
+                height={16}
+                testID="button-icon"
+                width={16}
+              >
+                <Text>
+                  button-icon-SVG-Mock
+                </Text>
+              </View>
+            </View>
+            <Text
+              adjustsFontSizeToFit={false}
+              numberOfLines={1}
+              style={
+                [
+                  {
+                    "color": "#320096",
+                    "fontFamily": "Montserrat-SemiBold",
+                    "fontSize": 12,
+                    "lineHeight": 16,
+                    "marginLeft": 4,
+                    "maxWidth": "100%",
+                  },
+                ]
+              }
+            >
+              Donner mon avis
+            </Text>
+          </View>
+        </View>
+      </View>
+      <View
+        height={2000}
+        style={
+          [
+            {
+              "height": 2000,
+            },
+          ]
+        }
+      />
+    </View>
+  </RCTScrollView>,
+  <View
+    collapsable={false}
+    height={65}
+    style={
+      {
+        "backdropFilter": "blur(0px)",
+        "backgroundColor": "rgba(255, 255, 255, 0)",
+        "borderBottomColor": "#F1F1F4",
+        "borderBottomWidth": 0,
+        "height": 65,
+        "left": 0,
+        "position": "absolute",
+        "right": 0,
+        "top": 0,
+        "zIndex": 1,
+      }
+    }
+  >
+    <View
+      customHeight={16}
+      enable={true}
+      style={
+        [
+          {
+            "height": 16,
+          },
+        ]
+      }
+    />
+    <View
+      collapsable={false}
+      height={65}
+      style={
+        {
+          "height": 65,
+          "left": 0,
+          "opacity": 0,
+          "overflow": "hidden",
+          "position": "absolute",
+          "right": 0,
+          "top": 0,
+        }
+      }
+    >
+      <BlurView
+        blurAmount={8}
+        blurType="light"
+        style={
+          [
+            {
+              "backgroundColor": "transparent",
+            },
+            [
+              {
+                "flexBasis": 0,
+                "flexGrow": 1,
+                "flexShrink": 1,
+              },
+            ],
+          ]
+        }
+      />
+    </View>
+    <View
+      numberOfSpaces={2}
+      style={
+        [
+          {
+            "height": 8,
+          },
+        ]
+      }
+    />
+    <View
+      style={
+        [
+          {
+            "alignItems": "center",
+            "flexBasis": 0,
+            "flexDirection": "row",
+            "flexGrow": 1,
+            "flexShrink": 1,
+          },
+        ]
+      }
+    >
+      <View
+        numberOfSpaces={6}
+        style={
+          [
+            {
+              "width": 24,
+            },
+          ]
+        }
+      />
+      <View
+        accessibilityLabel="Revenir en arrière"
+        accessibilityRole="button"
+        accessible={true}
+        collapsable={false}
+        focusable={true}
+        onClick={[Function]}
+        onResponderGrant={[Function]}
+        onResponderMove={[Function]}
+        onResponderRelease={[Function]}
+        onResponderTerminate={[Function]}
+        onResponderTerminationRequest={[Function]}
+        onStartShouldSetResponder={[Function]}
+        style={
+          {
+            "borderRadius": 40,
+            "opacity": 1,
+            "userSelect": "auto",
+          }
+        }
+        testID="Revenir en arrière"
+      >
+        <View
+          collapsable={false}
+          style={
+            {
+              "alignItems": "center",
+              "aspectRatio": 1,
+              "backgroundColor": "rgba(255, 255, 255, 1)",
+              "borderColor": "rgba(241, 241, 244, 1)",
+              "borderRadius": 40,
+              "borderStyle": "solid",
+              "borderWidth": 1,
+              "height": 40,
+              "justifyContent": "center",
+              "transform": undefined,
+              "width": 40,
+            }
+          }
+          testID="AnimatedHeaderIconRoundContainer"
+        >
+          <View
+            size={24}
+            style={
+              [
+                {
+                  "height": 24,
+                  "width": 24,
+                },
+              ]
+            }
+          >
+            <View
+              collapsable={false}
+              style={
+                {
+                  "opacity": 1,
+                  "position": "absolute",
+                }
+              }
+              testID="initial-icon-container"
+            >
+              <View
+                height={24}
+                testID="animated-icon-back"
+                width={24}
+              >
+                <Text>
+                  animated-icon-back-SVG-Mock
+                </Text>
+              </View>
+            </View>
+            <View
+              collapsable={false}
+              style={
+                {
+                  "opacity": 0,
+                  "position": "absolute",
+                }
+              }
+              testID="final-icon-container"
+            >
+              <View
+                height={24}
+                testID="final-animated-icon-back"
+                width={24}
+              >
+                <Text>
+                  final-animated-icon-back-SVG-Mock
+                </Text>
+              </View>
+            </View>
+          </View>
+        </View>
+      </View>
+      <View
+        numberOfSpaces={10}
+        style={
+          [
+            {
+              "width": 40,
+            },
+          ]
+        }
+      />
+      <View
+        style={
+          [
+            {
+              "flexBasis": 0,
+              "flexGrow": 1,
+              "flexShrink": 1,
+            },
+          ]
+        }
+      />
+      <Text
+        accessibilityHidden={true}
+        collapsable={false}
+        numberOfLines={2}
+        style={
+          {
+            "color": "#ffffff",
+            "flexShrink": 1,
+            "opacity": 0,
+            "textAlign": "center",
+          }
+        }
+      >
+        <Text
+          style={
+            [
+              {
+                "color": "#161617",
+                "fontFamily": "Montserrat-Regular",
+                "fontSize": 15,
+                "lineHeight": 20,
+              },
+            ]
+          }
+        >
+          Comment ça marche ?
+        </Text>
+      </Text>
+      <View
+        style={
+          [
+            {
+              "flexBasis": 0,
+              "flexGrow": 1,
+              "flexShrink": 1,
+            },
+          ]
+        }
+      />
+      <View
+        numberOfSpaces={25}
+        style={
+          [
+            {
+              "width": 100,
+            },
+          ]
+        }
+      />
+    </View>
+    <View
+      numberOfSpaces={2}
+      style={
+        [
+          {
+            "height": 8,
+          },
+        ]
+      }
+    />
+  </View>,
+]
+`;
