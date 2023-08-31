@@ -2,6 +2,7 @@ import React, { ComponentProps, FunctionComponent, useEffect, useRef } from 'rea
 import { Path, Svg } from 'react-native-svg'
 import styled, { useTheme } from 'styled-components/native'
 
+import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { AnimatedRef, AnimatedView } from 'libs/react-native-animatable'
 import { TouchableOpacity } from 'ui/components/TouchableOpacity'
 import { Clear } from 'ui/svg/icons/Clear'
@@ -27,11 +28,15 @@ export const Tooltip: FunctionComponent<Props> = ({ label, isVisible, onHide, st
   if (!isVisible) return null
 
   return (
-    <AnimatedView duration={FADE_IN_DURATION} style={style} ref={containerRef}>
+    <AnimatedView
+      duration={FADE_IN_DURATION}
+      style={style}
+      ref={containerRef}
+      accessibilityRole={AccessibilityRole.TOOLTIP}>
       <StyledPointer />
       <Background>
         <StyledText>{label}</StyledText>
-        <StyledClearContainer onPress={onHide}>
+        <StyledClearContainer onPress={onHide} accessibilityLabel="Fermer le tooltip">
           <StyledClearIcon />
         </StyledClearContainer>
       </Background>
