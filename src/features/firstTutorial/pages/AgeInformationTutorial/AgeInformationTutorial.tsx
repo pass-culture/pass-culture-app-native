@@ -53,12 +53,14 @@ export const AgeInformationTutorial: FunctionComponent<Props> = ({ selectedAge }
         <Typo.Body>{activationText}</Typo.Body>
         <Spacer.Column numberOfSpaces={4} />
         <InfoBanner message="Cette page a-t-elle été utile&nbsp;? Aide-nous à l’améliorer en répondant à notre questionnaire.">
+          <Spacer.Column numberOfSpaces={2} />
           <ExternalTouchableLink
             as={ButtonQuaternarySecondary}
             justifyContent="flex-start"
             icon={ExternalSiteFilled}
             wording="Donner mon avis"
             externalNav={{ url: env.TUTORIAL_FEEDBACK_LINK }}
+            inline
           />
         </InfoBanner>
         {!isLoggedIn ? (

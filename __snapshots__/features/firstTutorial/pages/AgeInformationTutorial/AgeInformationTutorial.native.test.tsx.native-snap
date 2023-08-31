@@ -134,6 +134,16 @@ exports[`<AgeInformationTutorial /> should display not logged in version when us
             Cette page a-t-elle été utile ? Aide-nous à l’améliorer en répondant à notre questionnaire.
           </Text>
           <View
+            numberOfSpaces={2}
+            style={
+              [
+                {
+                  "height": 8,
+                },
+              ]
+            }
+          />
+          <View
             accessibilityLabel="Donner mon avis"
             accessible={true}
             collapsable={false}
@@ -149,18 +159,20 @@ exports[`<AgeInformationTutorial /> should display not logged in version when us
               {
                 "alignItems": "center",
                 "backgroundColor": "transparent",
-                "borderRadius": 24,
+                "borderRadius": 0,
+                "borderWidth": 0,
                 "flexDirection": "row",
                 "justifyContent": "flex-start",
+                "marginTop": 0,
                 "maxWidth": 500,
-                "minHeight": 40,
+                "minHeight": 20,
                 "opacity": 1,
-                "paddingBottom": 2,
+                "paddingBottom": 0,
                 "paddingLeft": 0,
                 "paddingRight": 0,
-                "paddingTop": 2,
+                "paddingTop": 0,
                 "userSelect": "auto",
-                "width": "100%",
+                "width": "auto",
               }
             }
             testID="Donner mon avis"
@@ -844,6 +856,16 @@ exports[`<AgeInformationTutorial /> should render correctly when logged in 1`] =
             Cette page a-t-elle été utile ? Aide-nous à l’améliorer en répondant à notre questionnaire.
           </Text>
           <View
+            numberOfSpaces={2}
+            style={
+              [
+                {
+                  "height": 8,
+                },
+              ]
+            }
+          />
+          <View
             accessibilityLabel="Donner mon avis"
             accessible={true}
             collapsable={false}
@@ -859,18 +881,20 @@ exports[`<AgeInformationTutorial /> should render correctly when logged in 1`] =
               {
                 "alignItems": "center",
                 "backgroundColor": "transparent",
-                "borderRadius": 24,
+                "borderRadius": 0,
+                "borderWidth": 0,
                 "flexDirection": "row",
                 "justifyContent": "flex-start",
+                "marginTop": 0,
                 "maxWidth": 500,
-                "minHeight": 40,
+                "minHeight": 20,
                 "opacity": 1,
-                "paddingBottom": 2,
+                "paddingBottom": 0,
                 "paddingLeft": 0,
                 "paddingRight": 0,
-                "paddingTop": 2,
+                "paddingTop": 0,
                 "userSelect": "auto",
-                "width": "100%",
+                "width": "auto",
               }
             }
             testID="Donner mon avis"
