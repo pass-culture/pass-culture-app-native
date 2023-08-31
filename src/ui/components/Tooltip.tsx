@@ -5,6 +5,7 @@ import styled, { useTheme } from 'styled-components/native'
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { AnimatedRef, AnimatedView } from 'libs/react-native-animatable'
 import { TouchableOpacity } from 'ui/components/TouchableOpacity'
+import { useEscapeKeyAction } from 'ui/hooks/useEscapeKeyAction'
 import { Clear } from 'ui/svg/icons/Clear'
 import { Typo, getSpacing } from 'ui/theme'
 
@@ -24,6 +25,8 @@ export const Tooltip: FunctionComponent<Props> = ({ label, isVisible, onHide, st
       containerRef.current?.fadeIn?.()
     }
   }, [isVisible])
+
+  useEscapeKeyAction(isVisible ? onHide : undefined)
 
   if (!isVisible) return null
 
