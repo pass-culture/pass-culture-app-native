@@ -63,7 +63,7 @@ export const LocationWidget: React.FC = () => {
         label="Configure ta position et découvre les offres dans la zone géographique de ton choix."
         isVisible={isTooltipVisible}
         onHide={hideTooltip}
-        widgetHeight={widgetWidth}
+        widgetWidth={widgetWidth}
       />
       <StyledTouchable
         onPress={showLocationModal}
@@ -79,10 +79,10 @@ export const LocationWidget: React.FC = () => {
   )
 }
 
-const StyledTooltip = styled(Tooltip)<{ widgetHeight?: number }>(({ theme, widgetHeight }) => ({
+const StyledTooltip = styled(Tooltip)<{ widgetWidth?: number }>(({ theme, widgetWidth }) => ({
   position: 'absolute',
   top: WIDGET_HEIGHT + getSpacing(2),
-  right: (widgetHeight ?? LOCATION_TITLE_MAX_WIDTH) / 2 - TOOLTIP_POINTER_DISTANCE_FROM_RIGHT,
+  right: (widgetWidth ?? LOCATION_TITLE_MAX_WIDTH) / 2 - TOOLTIP_POINTER_DISTANCE_FROM_RIGHT,
   zIndex: theme.zIndex.header,
   width: TOOLTIP_WIDTH,
 }))
