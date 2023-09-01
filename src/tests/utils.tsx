@@ -166,3 +166,4 @@ export async function waitForModalToShow() {
     await sleep(300)
   })
 }
+export const waitForModalToHide = waitForModalToShow
