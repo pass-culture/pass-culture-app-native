@@ -31,6 +31,9 @@ export const LocationModal = ({ visible, dismissModal }: LocationModalProps) => 
     }
   }, [visible])
 
+  const onSubmit = () => {
+    dismissModal()
+  }
 
   const onClose = () => {
     setSelectedOption(LocationOption.NONE)
@@ -90,6 +93,7 @@ export const LocationModal = ({ visible, dismissModal }: LocationModalProps) => 
         <ButtonPrimary
           wording={'Valider la localisation'}
           disabled={selectedOption === LocationOption.NONE}
+          onPress={onSubmit}
         />
       </ButtonContainer>
     </AppModal>
