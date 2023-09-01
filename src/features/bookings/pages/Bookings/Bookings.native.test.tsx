@@ -36,7 +36,7 @@ describe('Bookings', () => {
     renderBookings()
     await act(async () => {})
 
-    expect(screen.getByText('2 réservations en cours')).toBeTruthy()
+    expect(screen.getByText('2 réservations en cours')).toBeOnTheScreen()
   })
 
   it('should display the empty bookings dedicated view', async () => {
@@ -52,15 +52,15 @@ describe('Bookings', () => {
 
     await act(async () => {})
 
-    expect(await screen.findByText('Découvrir le catalogue')).toBeTruthy()
+    expect(await screen.findByText('Découvrir le catalogue')).toBeOnTheScreen()
   })
 
   it('should display ended bookings CTA with the right number', async () => {
     renderBookings()
     await act(async () => {})
 
-    expect(screen.queryByText('1')).toBeTruthy()
-    expect(screen.queryByText('Réservation terminée')).toBeTruthy()
+    expect(screen.queryByText('1')).toBeOnTheScreen()
+    expect(screen.queryByText('Réservation terminée')).toBeOnTheScreen()
   })
 
   it('should navigate to ended bookings page on press ended bookings CTA', async () => {

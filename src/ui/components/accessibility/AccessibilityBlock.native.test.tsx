@@ -13,10 +13,10 @@ describe('AccessibilityBlock', () => {
         visualDisability={false}
       />
     )
-    expect(queryByTestId('Handicap visuel')).toBeTruthy()
-    expect(queryByTestId('Handicap moteur')).toBeTruthy()
-    expect(queryByTestId('Handicap psychique ou cognitif')).toBeTruthy()
-    expect(queryByTestId('Handicap auditif')).toBeTruthy()
+    expect(queryByTestId('Handicap visuel')).toBeOnTheScreen()
+    expect(queryByTestId('Handicap moteur')).toBeOnTheScreen()
+    expect(queryByTestId('Handicap psychique ou cognitif')).toBeOnTheScreen()
+    expect(queryByTestId('Handicap auditif')).toBeOnTheScreen()
   })
   it('renders only available handicap information', () => {
     const { queryByTestId } = render(
@@ -27,9 +27,9 @@ describe('AccessibilityBlock', () => {
         visualDisability={false}
       />
     )
-    expect(queryByTestId('Handicap visuel')).toBeTruthy()
-    expect(queryByTestId('Handicap moteur')).toBeTruthy()
-    expect(queryByTestId('Handicap psychique ou cognitif')).toBeTruthy()
+    expect(queryByTestId('Handicap visuel')).toBeOnTheScreen()
+    expect(queryByTestId('Handicap moteur')).toBeOnTheScreen()
+    expect(queryByTestId('Handicap psychique ou cognitif')).toBeOnTheScreen()
     expect(queryByTestId('Handicap auditif')).toBeNull()
   })
 })

@@ -156,7 +156,7 @@ describe('<VenueSelectionModal />', () => {
         />
       )
 
-      expect(screen.getByText('Lieux disponibles autour de moi')).toBeTruthy()
+      expect(screen.getByText('Lieux disponibles autour de moi')).toBeOnTheScreen()
     })
 
     it('should not display "Lieux à proximité de “LIBRAIRIE SILLAGE”" (offer venue name)', () => {
@@ -196,7 +196,7 @@ describe('<VenueSelectionModal />', () => {
         />
       )
 
-      expect(screen.getByText('Active ta géolocalisation')).toBeTruthy()
+      expect(screen.getByText('Active ta géolocalisation')).toBeOnTheScreen()
     })
 
     it('should not display "Lieux disponibles autour de moi"', () => {
@@ -234,7 +234,7 @@ describe('<VenueSelectionModal />', () => {
         />
       )
 
-      expect(screen.getByText('Lieux à proximité de “LIBRAIRIE SILLAGE”')).toBeTruthy()
+      expect(screen.getByText('Lieux à proximité de “LIBRAIRIE SILLAGE”')).toBeOnTheScreen()
     })
 
     it('should open "Paramètres de localisation" modal when pressing "Active ta géolocalisation" button and permission is never ask again', () => {

@@ -79,7 +79,7 @@ describe('TabBar', () => {
     ].sort()
 
     expectedTabsTestIds.map((tab) => {
-      expect(getByTestId(tab)).toBeTruthy()
+      expect(getByTestId(tab)).toBeOnTheScreen()
     })
   })
 
@@ -102,7 +102,7 @@ describe('TabBar', () => {
     ].sort()
 
     expectedTabsTestIds.map((tab) => {
-      expect(getByTestId(tab)).toBeTruthy()
+      expect(getByTestId(tab)).toBeOnTheScreen()
     })
   })
 
@@ -120,7 +120,7 @@ describe('TabBar', () => {
       })),
     })
     const renderAPI = renderTabBar()
-    expect(renderAPI.getByTestId('Mon profil sélectionné')).toBeTruthy()
+    expect(renderAPI.getByTestId('Mon profil sélectionné')).toBeOnTheScreen()
 
     const profileTab = renderAPI.getByTestId('Mon profil')
     fireEvent.press(profileTab)
@@ -131,7 +131,7 @@ describe('TabBar', () => {
 
   it('should reset navigation when clicked on selected home tab', async () => {
     const renderAPI = renderTabBar()
-    expect(renderAPI.getByTestId('Accueil sélectionné')).toBeTruthy()
+    expect(renderAPI.getByTestId('Accueil sélectionné')).toBeOnTheScreen()
 
     const homeTab = renderAPI.getByTestId('Accueil')
     fireEvent.press(homeTab)

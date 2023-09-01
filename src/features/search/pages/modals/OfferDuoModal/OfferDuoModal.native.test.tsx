@@ -54,7 +54,7 @@ describe('<OfferDuoModal/>', () => {
       const renderAPI = renderOfferDuoModal({}, isDesktopViewport)
 
       const header = renderAPI.queryByTestId('pageHeader')
-      expect(header).toBeTruthy()
+      expect(header).toBeOnTheScreen()
     })
 
     it('should not have header when viewport width is desktop', () => {
@@ -72,7 +72,7 @@ describe('<OfferDuoModal/>', () => {
         })
 
         await waitFor(() => {
-          expect(screen.getByTestId('Revenir en arrière')).toBeTruthy()
+          expect(screen.getByTestId('Revenir en arrière')).toBeOnTheScreen()
         })
       })
 
@@ -177,7 +177,7 @@ describe('<OfferDuoModal/>', () => {
       })
 
       await waitFor(() => {
-        expect(screen.getByText('Appliquer le filtre')).toBeTruthy()
+        expect(screen.getByText('Appliquer le filtre')).toBeOnTheScreen()
       })
     })
 

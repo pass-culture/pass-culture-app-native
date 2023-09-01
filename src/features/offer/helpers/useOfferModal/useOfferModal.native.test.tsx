@@ -65,6 +65,8 @@ describe('useOfferModal', () => {
     const { getByText } = render(
       <TestOfferModal modalToDisplay={OfferModal.FINISH_SUBSCRIPTION} offerId={1000} />
     )
-    expect(getByText('Débloque ton crédit' + LINE_BREAK + 'pour réserver cette offre')).toBeTruthy()
+    expect(
+      getByText('Débloque ton crédit' + LINE_BREAK + 'pour réserver cette offre')
+    ).toBeOnTheScreen()
   })
 })

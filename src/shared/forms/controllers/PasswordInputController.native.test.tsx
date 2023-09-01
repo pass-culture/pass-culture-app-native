@@ -26,13 +26,13 @@ describe('<PasswordInputController />', () => {
       const input = screen.getByPlaceholderText('Ton mot de passe')
       fireEvent.changeText(input, 'pass')
 
-      expect(screen.getByText('error')).toBeTruthy()
+      expect(screen.getByText('error')).toBeOnTheScreen()
     })
 
     it('should show that password is mandatory', async () => {
       renderPasswordInputController({})
 
-      expect(screen.getByText('Obligatoire')).toBeTruthy()
+      expect(screen.getByText('Obligatoire')).toBeOnTheScreen()
     })
 
     it('should not show password validation', () => {
@@ -70,7 +70,7 @@ describe('<PasswordInputController />', () => {
       const input = screen.getByPlaceholderText('Ton mot de passe')
       fireEvent.changeText(input, 'a')
 
-      expect(screen.getByText(rules)).toBeTruthy()
+      expect(screen.getByText(rules)).toBeOnTheScreen()
     })
   })
 
@@ -84,7 +84,7 @@ describe('<PasswordInputController />', () => {
     ])('should show password validation rules', (rules) => {
       renderPasswordInputController({ withSecurityRules: true, securityRulesAlwaysVisible: true })
 
-      expect(screen.getByText(rules)).toBeTruthy()
+      expect(screen.getByText(rules)).toBeOnTheScreen()
     })
   })
 })

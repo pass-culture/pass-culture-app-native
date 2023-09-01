@@ -39,7 +39,7 @@ describe('<BodySearch />', () => {
   it('should render categories buttons by default', () => {
     render(<BodySearch />)
 
-    expect(screen.getByTestId('categoriesButtons')).toBeTruthy()
+    expect(screen.getByTestId('categoriesButtons')).toBeOnTheScreen()
     expect(screen.queryByTestId('autocompleteList')).toBeNull()
     expect(screen.queryByTestId('searchResults')).toBeNull()
   })
@@ -50,6 +50,6 @@ describe('<BodySearch />', () => {
 
     expect(screen.queryByTestId('categoriesButtons')).toBeNull()
     expect(screen.queryByTestId('autocompleteList')).toBeNull()
-    expect(screen.findByTestId('searchResults')).toBeTruthy()
+    expect(await screen.findByTestId('searchResults')).toBeOnTheScreen()
   })
 })

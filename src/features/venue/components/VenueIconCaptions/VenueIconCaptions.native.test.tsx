@@ -37,7 +37,7 @@ describe('<VenueIconCaptions />', () => {
         locationCoordinates={locationCoordinates}
       />
     )
-    expect(queryByLabelText('Distance depuis la localisation')).toBeTruthy()
+    expect(queryByLabelText('Distance depuis la localisation')).toBeOnTheScreen()
     expect(queryByLabelText('Activer la localisation')).toBeNull()
 
     mockDistance = null
@@ -48,7 +48,7 @@ describe('<VenueIconCaptions />', () => {
         locationCoordinates={locationCoordinates}
       />
     )
-    expect(queryByLabelText('Géolocalisation désactivée')).toBeTruthy()
+    expect(queryByLabelText('Géolocalisation désactivée')).toBeOnTheScreen()
     expect(queryByLabelText('Distance depuis la localisation')).toBeNull()
   })
 
@@ -60,7 +60,7 @@ describe('<VenueIconCaptions />', () => {
         locationCoordinates={locationCoordinates}
       />
     )
-    expect(getByText('Autre type de lieu')).toBeTruthy()
+    expect(getByText('Autre type de lieu')).toBeOnTheScreen()
   })
 
   it('should display correct label for venue type if type is not null', () => {
@@ -71,7 +71,7 @@ describe('<VenueIconCaptions />', () => {
         locationCoordinates={locationCoordinates}
       />
     )
-    expect(getByText('Cinéma - Salle de projections')).toBeTruthy()
+    expect(getByText('Cinéma - Salle de projections')).toBeOnTheScreen()
   })
 
   it('should show distance if geolocation enabled', () => {
@@ -83,7 +83,7 @@ describe('<VenueIconCaptions />', () => {
         locationCoordinates={locationCoordinates}
       />
     )
-    expect(queryByText('10 km')).toBeTruthy()
+    expect(queryByText('10 km')).toBeOnTheScreen()
   })
 
   it("should doesn't show distance if geolocation disabled", () => {
@@ -96,7 +96,7 @@ describe('<VenueIconCaptions />', () => {
       />
     )
     expect(queryByText('10 km')).toBeNull()
-    expect(queryByText('Géolocalisation désactivée')).toBeTruthy()
+    expect(queryByText('Géolocalisation désactivée')).toBeOnTheScreen()
   })
 
   it('should open "Activate geolocation" modal when clicking on "Géolocalisation désactivée" if geolocation disabled', () => {

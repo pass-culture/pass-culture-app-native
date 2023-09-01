@@ -84,7 +84,7 @@ describe('SetPhoneValidationCode', () => {
 
     fireEvent.press(screen.getByText('Code non reçu\u00a0?'))
 
-    expect(screen.queryByText('Demander un autre code')).toBeTruthy()
+    expect(screen.queryByText('Demander un autre code')).toBeOnTheScreen()
   })
   it('should display input error message if code request fails', async () => {
     mockFetch.mockRejectedValueOnce(
@@ -107,7 +107,7 @@ describe('SetPhoneValidationCode', () => {
         screen.getByText(
           'Le code est invalide. Saisis le dernier code reçu par SMS. Il te reste 4 tentatives.'
         )
-      ).toBeTruthy()
+      ).toBeOnTheScreen()
     })
   })
   it('should navigate to TooManyAttempts if too many attempts', async () => {

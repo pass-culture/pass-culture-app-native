@@ -68,7 +68,7 @@ describe('ValidateEmailChange', () => {
 
   it('should render new email address', () => {
     render(<ValidateEmailChange navigation={navigation} route={route} />)
-    expect(screen.getByText('john@doe.com')).toBeTruthy()
+    expect(screen.getByText('john@doe.com')).toBeOnTheScreen()
   })
 
   it('should sign out if submit is success and user is logged in', async () => {

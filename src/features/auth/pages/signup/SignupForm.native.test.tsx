@@ -49,7 +49,9 @@ describe('Signup Form', () => {
   it('should have accessibility label indicating current step and total steps', async () => {
     render(<SignupForm />)
 
-    expect(await screen.findByText('Étape 1 sur 5', { includeHiddenElements: true })).toBeTruthy()
+    expect(
+      await screen.findByText('Étape 1 sur 5', { includeHiddenElements: true })
+    ).toBeOnTheScreen()
   })
 
   describe('Quit button', () => {
@@ -71,7 +73,7 @@ describe('Signup Form', () => {
 
       fireEvent.press(screen.getByText('Quitter'))
 
-      expect(screen.queryByText('Veux-tu abandonner l’inscription ?')).toBeTruthy()
+      expect(screen.queryByText('Veux-tu abandonner l’inscription ?')).toBeOnTheScreen()
     })
 
     it('should go back to home when pressing close button on email confirmation sent', async () => {
@@ -167,7 +169,7 @@ describe('Signup Form', () => {
       })
 
       const firstStepTitle = await screen.findByText('Crée-toi un compte')
-      expect(firstStepTitle).toBeTruthy()
+      expect(firstStepTitle).toBeOnTheScreen()
     })
 
     it('should not display backButton on confirmation email sent page', async () => {
@@ -214,7 +216,7 @@ describe('Signup Form', () => {
 
     await act(async () => fireEvent.press(screen.getByText('Accepter et s’inscrire')))
 
-    expect(screen.getByText('Confirme ton adresse e-mail')).toBeTruthy()
+    expect(screen.getByText('Confirme ton adresse e-mail')).toBeOnTheScreen()
   })
 
   it('should call logContinueSetEmail when clicking on next step from SetEmail', async () => {

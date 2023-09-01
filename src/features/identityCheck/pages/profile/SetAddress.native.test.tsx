@@ -55,9 +55,9 @@ describe('<SetAddress/>', () => {
     fireEvent.changeText(input, QUERY_ADDRESS)
 
     await waitFor(() => {
-      expect(screen.getByText(mockedSuggestedPlaces.features[0].properties.label)).toBeTruthy()
-      expect(screen.getByText(mockedSuggestedPlaces.features[1].properties.label)).toBeTruthy()
-      expect(screen.getByText(mockedSuggestedPlaces.features[2].properties.label)).toBeTruthy()
+      expect(screen.getByText(mockedSuggestedPlaces.features[0].properties.label)).toBeOnTheScreen()
+      expect(screen.getByText(mockedSuggestedPlaces.features[1].properties.label)).toBeOnTheScreen()
+      expect(screen.getByText(mockedSuggestedPlaces.features[2].properties.label)).toBeOnTheScreen()
     })
   })
 

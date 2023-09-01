@@ -32,7 +32,7 @@ describe('BicolorFavoriteCount component', () => {
     const { getByTestId } = renderBicolorFavoriteCount({ isLoggedIn: true })
 
     await waitFor(() => {
-      expect(getByTestId('bicolor-favorite-count')).toBeTruthy()
+      expect(getByTestId('bicolor-favorite-count')).toBeOnTheScreen()
     })
   })
 
@@ -40,7 +40,7 @@ describe('BicolorFavoriteCount component', () => {
     const { getByText } = renderBicolorFavoriteCount({ isLoggedIn: true, count: 10000 })
 
     await waitFor(() => {
-      expect(getByText('99')).toBeTruthy()
+      expect(getByText('99')).toBeOnTheScreen()
     })
   })
 
@@ -48,14 +48,14 @@ describe('BicolorFavoriteCount component', () => {
     const { getByText } = renderBicolorFavoriteCount({ isLoggedIn: true })
 
     await waitFor(() => {
-      expect(getByText(defaultOptions.count.toString())).toBeTruthy()
+      expect(getByText(defaultOptions.count.toString())).toBeOnTheScreen()
     })
   })
 
   it('should show 0 within badge when no favorite', async () => {
     const { getByText } = renderBicolorFavoriteCount({ isLoggedIn: true, count: 0 })
     await waitFor(() => {
-      expect(getByText('0')).toBeTruthy()
+      expect(getByText('0')).toBeOnTheScreen()
     })
   })
 

@@ -85,7 +85,7 @@ describe('HomeHeader', () => {
       renderHomeHeader()
       await act(async () => {})
 
-      expect(await screen.findByText(subtitle)).toBeTruthy()
+      expect(await screen.findByText(subtitle)).toBeOnTheScreen()
     }
   )
 
@@ -112,7 +112,7 @@ describe('HomeHeader', () => {
 
     renderHomeHeader()
 
-    expect(await screen.findByText('Géolocalise-toi')).toBeTruthy()
+    expect(await screen.findByText('Géolocalise-toi')).toBeOnTheScreen()
   })
 
   it('should display geolocation banner when geolocation is never ask again', async () => {
@@ -127,7 +127,7 @@ describe('HomeHeader', () => {
 
     renderHomeHeader()
 
-    expect(await screen.findByText('Géolocalise-toi')).toBeTruthy()
+    expect(await screen.findByText('Géolocalise-toi')).toBeOnTheScreen()
   })
 
   it('should display SignupBanner when user is not logged in', async () => {
@@ -144,7 +144,7 @@ describe('HomeHeader', () => {
     renderHomeHeader()
     await act(async () => {})
 
-    expect(await screen.findByText('Débloque ton crédit')).toBeTruthy()
+    expect(await screen.findByText('Débloque ton crédit')).toBeOnTheScreen()
   })
 
   it('should display activation banner with BicolorUnlock icon when banner api call return activation banner', async () => {
@@ -165,9 +165,9 @@ describe('HomeHeader', () => {
 
     renderHomeHeader()
 
-    expect(await screen.findByText('Débloque tes 1000\u00a0€')).toBeTruthy()
-    expect(screen.getByText('à dépenser sur l’application')).toBeTruthy()
-    expect(screen.getByTestId('BicolorUnlock')).toBeTruthy()
+    expect(await screen.findByText('Débloque tes 1000\u00a0€')).toBeOnTheScreen()
+    expect(screen.getByText('à dépenser sur l’application')).toBeOnTheScreen()
+    expect(screen.getByTestId('BicolorUnlock')).toBeOnTheScreen()
   })
 
   it('should display activation banner with ArrowAgain icon when banner api call return retry_identity_check_banner', async () => {
@@ -188,9 +188,9 @@ describe('HomeHeader', () => {
 
     renderHomeHeader()
 
-    expect(await screen.findByText('Retente ubble')).toBeTruthy()
-    expect(screen.getByText('pour débloquer ton crédit')).toBeTruthy()
-    expect(screen.getByTestId('ArrowAgain')).toBeTruthy()
+    expect(await screen.findByText('Retente ubble')).toBeOnTheScreen()
+    expect(screen.getByText('pour débloquer ton crédit')).toBeOnTheScreen()
+    expect(screen.getByTestId('ArrowAgain')).toBeOnTheScreen()
   })
 
   it('should display activation banner with BirthdayCake icon when banner api call return transition_17_18_banner', async () => {
@@ -211,9 +211,9 @@ describe('HomeHeader', () => {
 
     renderHomeHeader()
 
-    expect(await screen.findByText('Débloque tes 600\u00a0€')).toBeTruthy()
-    expect(screen.getByText('Confirme tes informations')).toBeTruthy()
-    expect(screen.getByTestId('BirthdayCake')).toBeTruthy()
+    expect(await screen.findByText('Débloque tes 600\u00a0€')).toBeOnTheScreen()
+    expect(screen.getByText('Confirme tes informations')).toBeOnTheScreen()
+    expect(screen.getByTestId('BirthdayCake')).toBeOnTheScreen()
   })
 
   it('should show LocationWidget when ENABLE_APP_LOCATION is on and when isDesktopViewport is false', async () => {

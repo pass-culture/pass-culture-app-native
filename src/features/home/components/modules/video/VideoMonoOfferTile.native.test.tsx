@@ -37,7 +37,7 @@ describe('VideoMonoOfferTile', () => {
 
     await act(async () => {})
 
-    expect(screen.getByTestId('imagePlaceholder')).toBeTruthy()
+    expect(screen.getByTestId('imagePlaceholder')).toBeOnTheScreen()
   })
 
   it('should log ConsultOffer on when pressing it', async () => {

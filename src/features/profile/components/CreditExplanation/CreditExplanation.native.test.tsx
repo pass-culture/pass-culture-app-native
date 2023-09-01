@@ -48,7 +48,7 @@ describe('<CreditExplanation/>', () => {
     )
     const explanationButton = getByTestId(' Pourquoi cette limite ?')
     fireEvent.press(explanationButton)
-    expect(queryByTestId('modalHeader')).toBeTruthy()
+    expect(queryByTestId('modalHeader')).toBeOnTheScreen()
   })
 
   describe('Analytics', () => {

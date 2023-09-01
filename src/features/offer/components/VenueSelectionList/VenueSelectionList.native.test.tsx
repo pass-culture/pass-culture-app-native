@@ -97,7 +97,7 @@ describe('<VenueSelectionList />', () => {
       />
     )
 
-    expect(screen.getByText('à 500 m')).toBeTruthy()
+    expect(screen.getByText('à 500 m')).toBeOnTheScreen()
   })
 
   it('should not display distance when user not share his position', () => {

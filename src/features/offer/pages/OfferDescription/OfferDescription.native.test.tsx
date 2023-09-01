@@ -25,7 +25,7 @@ describe('<OfferDescription />', () => {
 
     await waitFor(() => {
       expect(screen.toJSON()).toMatchSnapshot()
-      expect(screen.getByText('En détails')).toBeTruthy()
+      expect(screen.getByText('En détails')).toBeOnTheScreen()
       expect(screen.queryByText('Durée')).toBeNull()
     })
   })
@@ -34,8 +34,8 @@ describe('<OfferDescription />', () => {
     mockedOffer = { ...offerResponseSnap, extraData: { durationMinutes: 20 }, description: '' }
     render(<OfferDescription />)
     await waitFor(() => {
-      expect(screen.getByText('Durée')).toBeTruthy()
-      expect(screen.getByText('Author: photo credit author')).toBeTruthy()
+      expect(screen.getByText('Durée')).toBeOnTheScreen()
+      expect(screen.getByText('Author: photo credit author')).toBeOnTheScreen()
       expect(screen.queryByText('En détails')).toBeNull()
     })
   })
@@ -55,12 +55,12 @@ describe('<OfferDescription />', () => {
     render(<OfferDescription />)
 
     await waitFor(() => {
-      expect(screen.getByText('Auteur')).toBeTruthy()
-      expect(screen.getByText('Metteur en scène')).toBeTruthy()
-      expect(screen.getByText('Interprète')).toBeTruthy()
-      expect(screen.getByText('Intervenant')).toBeTruthy()
-      expect(screen.getByText('EAN')).toBeTruthy()
-      expect(screen.getByText('VISA')).toBeTruthy()
+      expect(screen.getByText('Auteur')).toBeOnTheScreen()
+      expect(screen.getByText('Metteur en scène')).toBeOnTheScreen()
+      expect(screen.getByText('Interprète')).toBeOnTheScreen()
+      expect(screen.getByText('Intervenant')).toBeOnTheScreen()
+      expect(screen.getByText('EAN')).toBeOnTheScreen()
+      expect(screen.getByText('VISA')).toBeOnTheScreen()
     })
   })
 

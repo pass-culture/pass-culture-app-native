@@ -117,7 +117,7 @@ describe('<AcceptCgu/>', () => {
     fireEvent.press(screen.getByText('Accepter et s’inscrire'))
 
     expect(recaptchaWebviewModal.props.visible).toBeFalsy()
-    expect(screen.queryByText('Hors connexion\u00a0: en attente du réseau.')).toBeTruthy()
+    expect(screen.queryByText('Hors connexion\u00a0: en attente du réseau.')).toBeOnTheScreen()
     expect(screen.queryByTestId('Chargement en cours')).toBeNull()
   })
 
@@ -164,7 +164,7 @@ describe('<AcceptCgu/>', () => {
       expect(props.signUp).toHaveBeenCalledWith('fakeToken')
       expect(
         screen.queryByText('Un problème est survenu pendant l’inscription, réessaie plus tard.')
-      ).toBeTruthy()
+      ).toBeOnTheScreen()
       expect(screen.queryByTestId('Chargement en cours')).toBeNull()
     })
   })
@@ -181,7 +181,7 @@ describe('<AcceptCgu/>', () => {
     await waitFor(() => {
       expect(
         screen.queryByText('Un problème est survenu pendant l’inscription, réessaie plus tard.')
-      ).toBeTruthy()
+      ).toBeOnTheScreen()
       expect(captureMonitoringError).toHaveBeenNthCalledWith(
         1,
         'someError',
@@ -202,7 +202,9 @@ describe('<AcceptCgu/>', () => {
     simulateWebviewMessage(recaptchaWebview, '{ "message": "expire" }')
 
     await waitFor(() => {
-      expect(screen.queryByText('Le token reCAPTCHA a expiré, tu peux réessayer.')).toBeTruthy()
+      expect(
+        screen.queryByText('Le token reCAPTCHA a expiré, tu peux réessayer.')
+      ).toBeOnTheScreen()
       expect(props.signUp).not.toBeCalled()
       expect(navigate).not.toBeCalled()
       expect(screen.queryByTestId('Chargement en cours')).toBeNull()

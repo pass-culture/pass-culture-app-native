@@ -21,7 +21,7 @@ describe('BookingOfferModalFooter', () => {
   describe('when current step is date selection', () => {
     it('should display "Valider la date"', () => {
       render(<BookingOfferModalFooter />)
-      expect(screen.getByText('Valider la date')).toBeTruthy()
+      expect(screen.getByText('Valider la date')).toBeOnTheScreen()
     })
 
     it('should not change step when date not selected', () => {
@@ -63,7 +63,7 @@ describe('BookingOfferModalFooter', () => {
     })
     it('should display "Valider lʼhoraire"', () => {
       render(<BookingOfferModalFooter />)
-      expect(screen.getByText('Valider lʼhoraire')).toBeTruthy()
+      expect(screen.getByText('Valider lʼhoraire')).toBeOnTheScreen()
     })
 
     it('should not change step when hour not selected', () => {
@@ -160,7 +160,7 @@ describe('BookingOfferModalFooter', () => {
     })
     it('should display "Valider le prix"', () => {
       render(<BookingOfferModalFooter hasPricesStep />)
-      expect(screen.getByText('Valider le prix')).toBeTruthy()
+      expect(screen.getByText('Valider le prix')).toBeOnTheScreen()
     })
 
     it('should not change step when stock not selected', () => {
@@ -222,7 +222,7 @@ describe('BookingOfferModalFooter', () => {
     })
     it('should display "Finaliser ma réservation"', () => {
       render(<BookingOfferModalFooter isDuo />)
-      expect(screen.getByText('Finaliser ma réservation')).toBeTruthy()
+      expect(screen.getByText('Finaliser ma réservation')).toBeOnTheScreen()
     })
 
     it('should not change step when quantity not selected', () => {

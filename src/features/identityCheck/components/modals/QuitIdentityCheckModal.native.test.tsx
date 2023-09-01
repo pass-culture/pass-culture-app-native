@@ -31,7 +31,7 @@ describe('<QuitIdentityCheckModal/>', () => {
     renderQuitIdentityCheckModal(true)
 
     const title = screen.queryByText('Veux-tu abandonner la vérification d’identité ?')
-    expect(title).toBeTruthy()
+    expect(title).toBeOnTheScreen()
   })
 
   it('should call resume function when clicking on "Continuer la vérification"', () => {

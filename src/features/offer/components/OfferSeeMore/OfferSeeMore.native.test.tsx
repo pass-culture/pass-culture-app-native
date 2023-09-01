@@ -11,12 +11,12 @@ describe('OfferSeeMore', () => {
   it('displays the short wording when no props are precised', () => {
     const { queryByText } = render(<OfferSeeMore id={123} />)
     expect(queryByText('Voir plus d’informations')).toBeNull()
-    expect(queryByText('voir plus')).toBeTruthy()
+    expect(queryByText('voir plus')).toBeOnTheScreen()
   })
   it('displays the long wording when precised', () => {
     const { queryByText } = render(<OfferSeeMore id={123} longWording />)
     expect(queryByText('voir plus')).toBeNull()
-    expect(queryByText('Voir plus d’informations')).toBeTruthy()
+    expect(queryByText('Voir plus d’informations')).toBeOnTheScreen()
   })
   describe('Analytics', () => {
     it('should log ConsultDescriptionDetails each time we open the details', async () => {

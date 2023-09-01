@@ -110,7 +110,7 @@ describe('<OnGoingBookingsList /> - Analytics', () => {
 
       const placeholder = queryByTestId('BookingsPlaceholder')
 
-      expect(placeholder).toBeTruthy()
+      expect(placeholder).toBeOnTheScreen()
     })
 
     it('when subcategories are loading', () => {
@@ -122,7 +122,7 @@ describe('<OnGoingBookingsList /> - Analytics', () => {
 
       const placeholder = queryByTestId('BookingsPlaceholder')
 
-      expect(placeholder).toBeTruthy()
+      expect(placeholder).toBeOnTheScreen()
     })
   })
 

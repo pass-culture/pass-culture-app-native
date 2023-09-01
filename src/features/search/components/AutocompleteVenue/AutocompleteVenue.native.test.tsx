@@ -25,7 +25,7 @@ describe('AutocompleteVenue component', () => {
 
     it('should display "Points de vente"', () => {
       render(<AutocompleteVenue onItemPress={jest.fn()} />)
-      expect(screen.getByText('Points de vente')).toBeTruthy()
+      expect(screen.getByText('Points de vente')).toBeOnTheScreen()
     })
 
     it('should call `onItemPress` on press', async () => {

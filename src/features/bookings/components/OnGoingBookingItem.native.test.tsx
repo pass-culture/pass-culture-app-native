@@ -43,7 +43,7 @@ describe('OnGoingBookingItem', () => {
     it('should display withdrawal reminder', () => {
       renderOnGoingBookingItem(booking)
 
-      expect(screen.getByTestId('on-site-withdrawal-container')).toBeTruthy()
+      expect(screen.getByTestId('on-site-withdrawal-container')).toBeOnTheScreen()
     })
 
     it('should not display event reminder', () => {
@@ -76,7 +76,7 @@ describe('OnGoingBookingItem', () => {
     it('should display event reminder', () => {
       renderOnGoingBookingItem(booking)
 
-      expect(screen.getByTestId('withdraw-container')).toBeTruthy()
+      expect(screen.getByTestId('withdraw-container')).toBeOnTheScreen()
     })
   })
 
@@ -100,7 +100,7 @@ describe('OnGoingBookingItem', () => {
       }
       renderOnGoingBookingItem(booking, bookings)
 
-      expect(screen.getByText('Ta réservation s’archivera dans 25 jours')).toBeTruthy()
+      expect(screen.getByText('Ta réservation s’archivera dans 25 jours')).toBeOnTheScreen()
     })
 
     it.each(FREE_OFFER_CATEGORIES_TO_ARCHIVE.map((category) => [category, 0]))(
@@ -120,7 +120,7 @@ describe('OnGoingBookingItem', () => {
         }
         renderOnGoingBookingItem(booking, bookings)
 
-        expect(screen.getByText('Ta réservation s’archivera dans 25 jours')).toBeTruthy()
+        expect(screen.getByText('Ta réservation s’archivera dans 25 jours')).toBeOnTheScreen()
       }
     )
 

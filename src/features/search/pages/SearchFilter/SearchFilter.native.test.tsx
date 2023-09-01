@@ -146,7 +146,7 @@ describe('<SearchFilter/>', () => {
     renderSearchFilter()
     await act(async () => {})
 
-    expect(screen.getByTestId('Fermer')).toBeTruthy()
+    expect(screen.getByTestId('Fermer')).toBeOnTheScreen()
   })
 
   it('should not display back button on header', async () => {

@@ -33,7 +33,7 @@ describe('QuitSignupModal', () => {
     const { queryByText } = renderQuitSignupModal(true)
 
     const button = queryByText('Veux-tu abandonner l’inscription ?')
-    expect(button).toBeTruthy()
+    expect(button).toBeOnTheScreen()
   })
 
   it('should call resume function when clicking on "Continuer l’inscription"', () => {

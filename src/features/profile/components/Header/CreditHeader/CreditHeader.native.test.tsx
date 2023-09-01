@@ -41,7 +41,7 @@ describe('CreditHeader', () => {
     it('should display user name', () => {
       const { queryByText } = renderCreditHeader()
       const name = queryByText('Rosa Bonheur')
-      expect(name).toBeTruthy()
+      expect(name).toBeOnTheScreen()
     })
 
     it('should display deposit expiration date', () => {
@@ -49,27 +49,27 @@ describe('CreditHeader', () => {
       const depositExpirationDate = queryByText(
         formatToSlashedFrenchDate(setDateOneDayEarlier(dateInFuture))
       )
-      expect(depositExpirationDate).toBeTruthy()
+      expect(depositExpirationDate).toBeOnTheScreen()
     })
 
     it('should display credit ceilings', () => {
       const { queryByTestId } = renderCreditHeader()
       const digitalCredit = queryByTestId('domains-credit-digital')
       const physicalCredit = queryByTestId('domains-credit-physical')
-      expect(digitalCredit).toBeTruthy()
-      expect(physicalCredit).toBeTruthy()
+      expect(digitalCredit).toBeOnTheScreen()
+      expect(physicalCredit).toBeOnTheScreen()
     })
 
     it('should display credit info', () => {
       const { queryByTestId } = renderCreditHeader()
       const creditInfo = queryByTestId('credit-info')
-      expect(creditInfo).toBeTruthy()
+      expect(creditInfo).toBeOnTheScreen()
     })
 
     it('should display explanation button', () => {
       const { queryByTestId } = renderCreditHeader()
       const explanationButton = queryByTestId('Pourquoi cette limite ?')
-      expect(explanationButton).toBeTruthy()
+      expect(explanationButton).toBeOnTheScreen()
     })
 
     it('should not display credit info and ceilings for expired credit', () => {

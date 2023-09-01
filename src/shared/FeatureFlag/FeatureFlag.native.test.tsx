@@ -18,7 +18,7 @@ describe('<FeatureFlag />', () => {
         {children}
       </FeatureFlag>
     )
-    expect(screen.getByTestId('children')).toBeTruthy()
+    expect(screen.getByTestId('children')).toBeOnTheScreen()
   })
 
   it('should not display childen when feature flag deactivated', () => {

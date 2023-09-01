@@ -40,13 +40,13 @@ describe('AccessibilityAtom', () => {
       <AccessibilityAtom handicap={HandicapCategory.MENTAL} isAccessible />
     )
     expect(queryByTestId('invalidTestId')).toBeNull()
-    expect(queryByTestId('validTestId')).toBeTruthy()
+    expect(queryByTestId('validTestId')).toBeOnTheScreen()
   })
   it('should displat the invalidIcon when isValid is false', () => {
     const { queryByTestId } = render(
       <AccessibilityAtom handicap={HandicapCategory.MENTAL} isAccessible={false} />
     )
-    expect(queryByTestId('invalidTestId')).toBeTruthy()
+    expect(queryByTestId('invalidTestId')).toBeOnTheScreen()
     expect(queryByTestId('validTestId')).toBeNull()
   })
 })

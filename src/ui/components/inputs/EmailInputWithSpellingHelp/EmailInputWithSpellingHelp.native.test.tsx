@@ -35,7 +35,7 @@ describe('<EmailInputWithSpellingHelp />', () => {
     })
 
     const suggestionButton = queryByText('Veux-tu plutôt dire firstname.lastname@gmail.com ?')
-    expect(suggestionButton).toBeTruthy()
+    expect(suggestionButton).toBeOnTheScreen()
   })
 
   it('should add suggestion to the input when user select the suggestion', async () => {

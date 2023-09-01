@@ -11,7 +11,7 @@ describe('FilterButton', () => {
     const { queryByText } = render(<FilterButton activeFilters={2} />)
 
     await waitFor(() => {
-      expect(queryByText('2')).toBeTruthy()
+      expect(queryByText('2')).toBeOnTheScreen()
     })
   })
 
@@ -44,7 +44,7 @@ describe('FilterButton', () => {
       const { queryByLabelText } = render(<FilterButton activeFilters={2} />)
 
       await waitFor(() => {
-        expect(queryByLabelText('Voir tous les filtres\u00a0: 2 filtres actifs')).toBeTruthy()
+        expect(queryByLabelText('Voir tous les filtres\u00a0: 2 filtres actifs')).toBeOnTheScreen()
       })
     })
 
@@ -52,7 +52,7 @@ describe('FilterButton', () => {
       const { queryByLabelText } = render(<FilterButton activeFilters={1} />)
 
       await waitFor(() => {
-        expect(queryByLabelText('Voir tous les filtres\u00a0: 1 filtre actif')).toBeTruthy()
+        expect(queryByLabelText('Voir tous les filtres\u00a0: 1 filtre actif')).toBeOnTheScreen()
       })
     })
 
@@ -60,7 +60,7 @@ describe('FilterButton', () => {
       const { queryByLabelText } = render(<FilterButton activeFilters={0} />)
 
       await waitFor(() => {
-        expect(queryByLabelText('Voir tous les filtres')).toBeTruthy()
+        expect(queryByLabelText('Voir tous les filtres')).toBeOnTheScreen()
       })
     })
   })

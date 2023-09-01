@@ -217,7 +217,7 @@ describe('<SearchListHeader />', () => {
     })
     render(<SearchListHeader nbHits={10} userData={[]} />)
 
-    expect(screen.getByText('10 résultats')).toBeTruthy()
+    expect(screen.getByText('10 résultats')).toBeOnTheScreen()
   })
 
   it('should not display the geolocation button if position is not null', () => {
@@ -229,7 +229,7 @@ describe('<SearchListHeader />', () => {
     mockPosition = null
     render(<SearchListHeader nbHits={10} userData={[]} />)
 
-    expect(screen.getByText('Géolocalise-toi')).toBeTruthy()
+    expect(screen.getByText('Géolocalise-toi')).toBeOnTheScreen()
   })
 
   it('should display paddingBottom when nbHits is greater than 0', () => {
@@ -247,13 +247,13 @@ describe('<SearchListHeader />', () => {
   describe('When wipEnableVenuesInSearchResults feature flag activated', () => {
     it('should render venue items when there are venues', () => {
       render(<SearchListHeader nbHits={10} userData={[]} />)
-      expect(screen.getByTestId('search-venue-list')).toBeTruthy()
+      expect(screen.getByTestId('search-venue-list')).toBeOnTheScreen()
     })
 
     it('should render venues nbHits', () => {
       render(<SearchListHeader nbHits={10} userData={[]} />)
 
-      expect(screen.getByText('8 résultats')).toBeTruthy()
+      expect(screen.getByText('8 résultats')).toBeOnTheScreen()
     })
 
     it.each`

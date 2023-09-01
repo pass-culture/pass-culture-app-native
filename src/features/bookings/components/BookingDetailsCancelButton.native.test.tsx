@@ -26,7 +26,7 @@ describe('<BookingDetailsCancelButton />', () => {
       code: 'someCode',
     }
     renderBookingDetailsCancelButton(booking)
-    expect(screen.getByTestId('Terminer')).toBeTruthy()
+    expect(screen.getByTestId('Terminer')).toBeOnTheScreen()
   })
 
   it('should display button if confirmationDate is null', () => {
@@ -34,7 +34,7 @@ describe('<BookingDetailsCancelButton />', () => {
     booking.confirmationDate = null
     booking.stock.offer.isDigital = false
     renderBookingDetailsCancelButton(booking)
-    expect(screen.getByTestId('Annuler ma réservation')).toBeTruthy()
+    expect(screen.getByTestId('Annuler ma réservation')).toBeOnTheScreen()
   })
 
   it('should display button if confirmation date is not expired', () => {
@@ -44,7 +44,7 @@ describe('<BookingDetailsCancelButton />', () => {
     booking.confirmationDate = date.toISOString()
     booking.stock.offer.isDigital = false
     renderBookingDetailsCancelButton(booking)
-    expect(screen.getByTestId('Annuler ma réservation')).toBeTruthy()
+    expect(screen.getByTestId('Annuler ma réservation')).toBeOnTheScreen()
   })
 
   it('should not display button if confirmation date is expired', async () => {
@@ -94,7 +94,7 @@ describe('<BookingDetailsCancelButton />', () => {
       screen.getByText(
         'Tu ne peux plus annuler ta réservation\u00a0: elle devait être annulée avant le\u00a01 novembre 2020'
       )
-    ).toBeTruthy()
+    ).toBeOnTheScreen()
   })
 
   it('should block user if cancellation date is over and user is ex beneficiary ', () => {
@@ -107,7 +107,7 @@ describe('<BookingDetailsCancelButton />', () => {
       screen.getByText(
         'Ton crédit est expiré.\nTu ne peux plus annuler ta réservation\u00a0: elle devait être annulée avant le 1 novembre 2020'
       )
-    ).toBeTruthy()
+    ).toBeOnTheScreen()
   })
 
   it("should display cancel button and expiration date message when confirmation date is null and that's it a digital booking", () => {
@@ -118,8 +118,8 @@ describe('<BookingDetailsCancelButton />', () => {
     renderBookingDetailsCancelButton(booking)
     const expirationDateMessage = 'Ta réservation sera archivée le 17/03/2021'
 
-    expect(screen.getByTestId('Annuler ma réservation')).toBeTruthy()
-    expect(screen.getByText(expirationDateMessage)).toBeTruthy()
+    expect(screen.getByTestId('Annuler ma réservation')).toBeOnTheScreen()
+    expect(screen.getByText(expirationDateMessage)).toBeOnTheScreen()
   })
 
   it('should display only an expiration date message when the booking is digital and is not still cancellable', () => {
@@ -130,7 +130,7 @@ describe('<BookingDetailsCancelButton />', () => {
     const expirationDateMessage =
       'Tu ne peux plus annuler ta réservation. Elle expirera automatiquement le 17/03/2021'
 
-    expect(screen.getByText(expirationDateMessage)).toBeTruthy()
+    expect(screen.getByText(expirationDateMessage)).toBeOnTheScreen()
   })
 
   it('should not display any message if there is no confirmation date', () => {
@@ -159,7 +159,7 @@ describe('<BookingDetailsCancelButton />', () => {
       booking.stock.offer.subcategoryId = SubcategoryIdEnum.ABO_MUSEE
 
       renderBookingDetailsCancelButton(booking)
-      expect(screen.getByTestId('Annuler ma réservation')).toBeTruthy()
+      expect(screen.getByTestId('Annuler ma réservation')).toBeOnTheScreen()
     })
   })
 
@@ -172,7 +172,7 @@ describe('<BookingDetailsCancelButton />', () => {
       booking.stock.price = 0
 
       renderBookingDetailsCancelButton(booking)
-      expect(screen.getByText('Ta réservation sera archivée le 17/03/2021')).toBeTruthy()
+      expect(screen.getByText('Ta réservation sera archivée le 17/03/2021')).toBeOnTheScreen()
     })
 
     it('should not display cancel button', () => {

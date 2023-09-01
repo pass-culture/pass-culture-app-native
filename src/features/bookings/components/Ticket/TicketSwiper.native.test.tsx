@@ -17,13 +17,13 @@ describe('<TicketSwiper/>', () => {
   it('should display ticket without external bookings information if there are no external bookings (empty externalBookings array)', () => {
     booking.externalBookings = []
     const { queryByTestId } = render(<TicketSwiper booking={booking} />)
-    expect(queryByTestId('ticket-without-external-bookings-information')).toBeTruthy()
+    expect(queryByTestId('ticket-without-external-bookings-information')).toBeOnTheScreen()
   })
 
   it('should display one ticket with external bookings information if there are one external booking', () => {
     booking.externalBookings = [{ barcode: 'PASSCULTURE:v3;TOKEN:352UW4', seat: 'A12' }]
     const { queryByTestId } = render(<TicketSwiper booking={booking} />)
-    expect(queryByTestId('ticket-with-external-bookings-information')).toBeTruthy()
+    expect(queryByTestId('ticket-with-external-bookings-information')).toBeOnTheScreen()
   })
 
   it('should display as many tickets as the number of tickets', () => {
@@ -48,7 +48,7 @@ describe('<TicketSwiper/>', () => {
         { barcode: 'PASSCULTURE:v3;TOKEN:352UW4', seat: 'A13' },
       ]
       const { queryByTestId } = render(<TicketSwiper booking={booking} />)
-      expect(queryByTestId('swiper-tickets-controls')).toBeTruthy()
+      expect(queryByTestId('swiper-tickets-controls')).toBeOnTheScreen()
     })
   })
 })

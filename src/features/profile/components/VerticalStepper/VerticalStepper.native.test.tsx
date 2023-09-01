@@ -22,6 +22,6 @@ describe('<VerticalStepper />', () => {
 
     render(<VerticalStepper variant={StepVariant.future} iconComponent={customComponent} />)
 
-    expect(screen.getByTestId('custom-icon-component')).toBeTruthy()
+    expect(screen.getByTestId('custom-icon-component')).toBeOnTheScreen()
   })
 })

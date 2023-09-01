@@ -51,7 +51,7 @@ describe('<ForgottenPassword />', () => {
       jest.advanceTimersByTime(SUGGESTION_DELAY_IN_MS)
     })
 
-    expect(screen.queryByText('Veux-tu plutôt dire john.doe@gmail.com\u00a0?')).toBeTruthy()
+    expect(screen.queryByText('Veux-tu plutôt dire john.doe@gmail.com\u00a0?')).toBeOnTheScreen()
   })
 
   it('should redirect to Login when clicking on ArrowPrevious icon', async () => {
@@ -77,7 +77,7 @@ describe('<ForgottenPassword />', () => {
     fireEvent.press(screen.getByText('Valider'))
 
     expect(recaptchaWebviewModal.props.visible).toBeFalsy()
-    expect(screen.queryByText('Hors connexion : en attente du réseau.')).toBeTruthy()
+    expect(screen.queryByText('Hors connexion : en attente du réseau.')).toBeOnTheScreen()
     expect(screen.queryByTestId('Chargement en cours')).toBeNull()
   })
 
@@ -123,7 +123,7 @@ describe('<ForgottenPassword />', () => {
 
     expect(
       screen.queryByText('Un problème est survenu pendant la réinitialisation, réessaie plus tard.')
-    ).toBeTruthy()
+    ).toBeOnTheScreen()
     expect(captureMonitoringError).toHaveBeenNthCalledWith(
       1,
       'someError',
@@ -148,7 +148,7 @@ describe('<ForgottenPassword />', () => {
         screen.queryByText(
           'Un problème est survenu pendant la réinitialisation, réessaie plus tard.'
         )
-      ).toBeTruthy()
+      ).toBeOnTheScreen()
       expect(captureMonitoringError).toHaveBeenNthCalledWith(
         1,
         'Échec de la requête https://localhost/native/v1/request_password_reset, code: 400',
@@ -233,7 +233,7 @@ describe('<ForgottenPassword />', () => {
         screen.queryByText(
           'L’e-mail renseigné est incorrect. Exemple de format attendu : edith.piaf@email.fr'
         )
-      ).toBeTruthy()
+      ).toBeOnTheScreen()
     })
   })
 })

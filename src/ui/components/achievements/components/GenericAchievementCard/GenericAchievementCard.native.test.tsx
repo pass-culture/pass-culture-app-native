@@ -35,9 +35,9 @@ describe('<GenericAchievementCard />', () => {
       lastIndex: 0,
     })
 
-    expect(screen.getByText(title, { exact: false })).toBeTruthy()
-    expect(screen.getByText(subTitle, { exact: false })).toBeTruthy()
-    expect(screen.getByText(text)).toBeTruthy()
+    expect(screen.getByText(title, { exact: false })).toBeOnTheScreen()
+    expect(screen.getByText(subTitle, { exact: false })).toBeOnTheScreen()
+    expect(screen.getByText(text)).toBeOnTheScreen()
 
     const button = screen.getByText(buttonText)
     fireEvent.press(button)
@@ -59,9 +59,9 @@ describe('<GenericAchievementCard />', () => {
       lastIndex: 0,
     })
 
-    expect(screen.getByText(title, { exact: false })).toBeTruthy()
-    expect(screen.getByText(subTitle, { exact: false })).toBeTruthy()
-    expect(screen.getByText(text)).toBeTruthy()
+    expect(screen.getByText(title, { exact: false })).toBeOnTheScreen()
+    expect(screen.getByText(subTitle, { exact: false })).toBeOnTheScreen()
+    expect(screen.getByText(text)).toBeOnTheScreen()
 
     const button = screen.getByText(buttonText)
     fireEvent.press(button)
@@ -139,7 +139,7 @@ describe('<GenericAchievementCard />', () => {
     )
 
     expect(screen.queryByText(buttonText)).toBeNull()
-    expect(screen.getByTestId('invisible-button-height')).toBeTruthy()
+    expect(screen.getByTestId('invisible-button-height')).toBeOnTheScreen()
   })
 
   it('should have a button and no invisible-button-height when active index', () => {
@@ -158,7 +158,7 @@ describe('<GenericAchievementCard />', () => {
       />
     )
 
-    expect(screen.getByText(buttonText)).toBeTruthy()
+    expect(screen.getByText(buttonText)).toBeOnTheScreen()
     expect(screen.queryByTestId('invisible-button-height')).toBeNull()
   })
 

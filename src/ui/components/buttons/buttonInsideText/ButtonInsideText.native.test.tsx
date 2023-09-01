@@ -18,7 +18,7 @@ describe('ButtonInsideText Component', () => {
       const { queryByTestId } = render(
         <ButtonInsideText wording={wording} icon={ExternalSiteFilled} />
       )
-      expect(queryByTestId('button-icon')).toBeTruthy()
+      expect(queryByTestId('button-icon')).toBeOnTheScreen()
     })
   })
   describe('* typography property', () => {

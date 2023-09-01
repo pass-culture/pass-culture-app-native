@@ -21,7 +21,7 @@ describe('SectionRowContent', () => {
     const { queryByTestId } = render(
       <SectionRowContent type="navigable" title="navigable" icon={Close} onPress={onPress} />
     )
-    expect(queryByTestId('section-row-navigable-icon')).toBeTruthy()
+    expect(queryByTestId('section-row-navigable-icon')).toBeOnTheScreen()
   })
 
   it('should not render the next arrow icon when type is "clickable"', () => {

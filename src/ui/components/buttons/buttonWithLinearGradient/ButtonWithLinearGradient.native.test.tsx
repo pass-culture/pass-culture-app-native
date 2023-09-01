@@ -11,7 +11,7 @@ describe('<ButtonWithLinearGradient />', () => {
     const { toJSON, queryByText } = render(
       <ButtonWithLinearGradient wording="Wording to display" onPress={onPress} />
     )
-    expect(queryByText('Wording to display')).toBeTruthy()
+    expect(queryByText('Wording to display')).toBeOnTheScreen()
     expect(toJSON()).toMatchSnapshot()
   })
 
@@ -19,7 +19,7 @@ describe('<ButtonWithLinearGradient />', () => {
     const { toJSON, queryByText } = render(
       <ButtonWithLinearGradient wording="Wording to display" onPress={onPress} isDisabled />
     )
-    expect(queryByText('Wording to display')).toBeTruthy()
+    expect(queryByText('Wording to display')).toBeOnTheScreen()
     expect(toJSON()).toMatchSnapshot()
   })
 })

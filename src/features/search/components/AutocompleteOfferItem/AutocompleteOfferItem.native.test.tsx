@@ -334,7 +334,7 @@ describe('AutocompleteOfferItem component', () => {
       it('when it associated to only one category', async () => {
         render(<AutocompleteOfferItem hit={mockHit} sendEvent={mockSendEvent} shouldShowCategory />)
 
-        expect(screen.getByText('Séances de cinéma')).toBeTruthy()
+        expect(screen.getByText('Séances de cinéma')).toBeOnTheScreen()
       })
 
       it('when it associated to the most popular category', async () => {
@@ -346,7 +346,7 @@ describe('AutocompleteOfferItem component', () => {
           />
         )
 
-        expect(screen.getByText('Arts visuels')).toBeTruthy()
+        expect(screen.getByText('Arts visuels')).toBeOnTheScreen()
       })
     })
 
@@ -404,7 +404,7 @@ describe('AutocompleteOfferItem component', () => {
           />
         )
 
-        expect(screen.getByText('Films, séries, cinéma')).toBeTruthy()
+        expect(screen.getByText('Films, séries, cinéma')).toBeOnTheScreen()
       })
 
       it('has not native category associated to the suggestion', async () => {
@@ -416,7 +416,7 @@ describe('AutocompleteOfferItem component', () => {
           />
         )
 
-        expect(screen.getByText('Films, séries, cinéma')).toBeTruthy()
+        expect(screen.getByText('Films, séries, cinéma')).toBeOnTheScreen()
       })
     })
   })

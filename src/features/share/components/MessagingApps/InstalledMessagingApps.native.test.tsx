@@ -23,7 +23,7 @@ describe('<InstalledMessagingApps />', () => {
     canOpenURLSpy.mockResolvedValueOnce(true)
     render(<InstalledMessagingApps {...props} />)
 
-    expect(await screen.findByText(`Envoyer sur ${[Network.instagram]}`)).toBeTruthy()
+    expect(await screen.findByText(`Envoyer sur ${[Network.instagram]}`)).toBeOnTheScreen()
   })
 
   it('should hide social medium when not installed', async () => {

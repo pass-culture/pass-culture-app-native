@@ -97,7 +97,7 @@ describe('<FavoritesSorts/>', () => {
 
     fireEvent.press(getByText('Proximité géographique'))
 
-    expect(queryByText(mockPositionError.message)).toBeTruthy()
+    expect(queryByText(mockPositionError.message)).toBeOnTheScreen()
   })
 
   it('should trigger analytics=AROUND_ME when clicking on "Proximité géographique" then accepting geoloc then validating', async () => {

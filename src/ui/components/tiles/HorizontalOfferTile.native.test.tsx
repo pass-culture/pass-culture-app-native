@@ -71,7 +71,7 @@ describe('HorizontalOfferTile component', () => {
   it('should show distance if geolocation enabled', () => {
     mockDistance = '10 km'
     render(<HorizontalOfferTile offer={mockOffer} analyticsParams={mockAnalyticsParams} />)
-    expect(screen.queryByText('10 km')).toBeTruthy()
+    expect(screen.queryByText('10 km')).toBeOnTheScreen()
   })
 
   describe('When pressing an offer without object id', () => {

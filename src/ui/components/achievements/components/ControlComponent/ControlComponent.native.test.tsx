@@ -10,7 +10,7 @@ describe('<ControlComponent />', () => {
   it('should render correctly prev by default', () => {
     const renderAPI = renderControlComponent()
     expect(renderAPI).toMatchSnapshot()
-    expect(renderAPI.getByTestId('arrowPrevious')).toBeTruthy()
+    expect(renderAPI.getByTestId('arrowPrevious')).toBeOnTheScreen()
     expect(() => renderAPI.getByTestId('arrowNext')).toThrowError()
   })
 
@@ -21,7 +21,7 @@ describe('<ControlComponent />', () => {
       type: 'prev',
     })
     expect(renderAPI).toMatchSnapshot()
-    expect(renderAPI.getByTestId('arrowPrevious')).toBeTruthy()
+    expect(renderAPI.getByTestId('arrowPrevious')).toBeOnTheScreen()
     expect(() => renderAPI.getByTestId('arrowNext')).toThrowError()
   })
 
@@ -32,7 +32,7 @@ describe('<ControlComponent />', () => {
       type: 'next',
     })
     expect(renderAPI).toMatchSnapshot()
-    expect(renderAPI.getByTestId('arrowNext')).toBeTruthy()
+    expect(renderAPI.getByTestId('arrowNext')).toBeOnTheScreen()
     expect(() => renderAPI.getByTestId('arrowPrevious')).toThrowError()
   })
 

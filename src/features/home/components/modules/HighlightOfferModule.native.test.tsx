@@ -108,7 +108,7 @@ describe('HighlightOfferModule', () => {
     renderHighlightModule()
 
     await act(async () => {
-      expect(screen.getByText('34 € - Duo')).toBeTruthy()
+      expect(screen.getByText('34 € - Duo')).toBeOnTheScreen()
       expect(screen.queryByText('34 €')).toBeNull()
     })
   })
@@ -119,7 +119,7 @@ describe('HighlightOfferModule', () => {
     renderHighlightModule()
 
     await act(async () => {
-      expect(screen.getByText('28 €')).toBeTruthy()
+      expect(screen.getByText('28 €')).toBeOnTheScreen()
       expect(screen.queryByText('28 € - Duo')).toBeNull()
     })
   })

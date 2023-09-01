@@ -28,8 +28,8 @@ describe('BeneficiaryCeilings', () => {
       const physicalCredit = queryByTestId('domains-credit-physical')
 
       await waitFor(() => {
-        expect(digitalCredit).toBeTruthy()
-        expect(physicalCredit).toBeTruthy()
+        expect(digitalCredit).toBeOnTheScreen()
+        expect(physicalCredit).toBeOnTheScreen()
       })
     })
   })
@@ -42,7 +42,7 @@ describe('BeneficiaryCeilings', () => {
       const physicalCredit = queryByTestId('domains-credit-physical')
 
       await waitFor(() => {
-        expect(digitalCredit).toBeTruthy()
+        expect(digitalCredit).toBeOnTheScreen()
         expect(physicalCredit).toBeFalsy()
       })
     })

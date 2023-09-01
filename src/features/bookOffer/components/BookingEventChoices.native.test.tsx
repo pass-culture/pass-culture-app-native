@@ -61,7 +61,7 @@ describe('<BookingEventChoices />', () => {
   })
   it('should display only date step at beginning', () => {
     render(<BookingEventChoices stocks={[]} />)
-    expect(screen.queryByTestId('DateStep')).toBeTruthy()
+    expect(screen.queryByTestId('DateStep')).toBeOnTheScreen()
     expect(screen.queryByTestId('HourStep')).toBeNull()
     expect(screen.queryByTestId('DuoStep')).toBeNull()
   })
@@ -78,8 +78,8 @@ describe('<BookingEventChoices />', () => {
       dispatch: jest.fn(),
     }))
     render(<BookingEventChoices stocks={[]} />)
-    expect(screen.queryByTestId('DateStep')).toBeTruthy()
-    expect(screen.queryByTestId('HourStep')).toBeTruthy()
+    expect(screen.queryByTestId('DateStep')).toBeOnTheScreen()
+    expect(screen.queryByTestId('HourStep')).toBeOnTheScreen()
     expect(screen.queryByTestId('DuoStep')).toBeNull()
   })
 
@@ -95,9 +95,9 @@ describe('<BookingEventChoices />', () => {
       dispatch: jest.fn(),
     }))
     render(<BookingEventChoices stocks={[]} />)
-    expect(screen.queryByTestId('DateStep')).toBeTruthy()
-    expect(screen.queryByTestId('HourStep')).toBeTruthy()
-    expect(screen.queryByTestId('DuoStep')).toBeTruthy()
+    expect(screen.queryByTestId('DateStep')).toBeOnTheScreen()
+    expect(screen.queryByTestId('HourStep')).toBeOnTheScreen()
+    expect(screen.queryByTestId('DuoStep')).toBeOnTheScreen()
   })
 
   it('should display date step and hour step and duo step on a snapshot', async () => {
@@ -170,7 +170,7 @@ describe('<BookingEventChoices />', () => {
 
     it('should display "Choisir les options"', () => {
       render(<BookingEventChoices stocks={[]} />)
-      expect(screen.getByText('Choisir les options')).toBeTruthy()
+      expect(screen.getByText('Choisir les options')).toBeOnTheScreen()
     })
 
     it('should not change step when the button is disabled', () => {
@@ -196,7 +196,7 @@ describe('<BookingEventChoices />', () => {
 
     it('should display "Valider ces options"', () => {
       render(<BookingEventChoices stocks={[]} />)
-      expect(screen.getByText('Valider ces options')).toBeTruthy()
+      expect(screen.getByText('Valider ces options')).toBeOnTheScreen()
     })
 
     it('should change step to confirmation screen when the button is enabled', () => {

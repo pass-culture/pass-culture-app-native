@@ -16,7 +16,7 @@ describe('InputError Component', () => {
     )
 
     const text = queryByText('message')
-    expect(text).toBeTruthy()
+    expect(text).toBeOnTheScreen()
   })
   it('should hide the given message', () => {
     const { queryByText } = render(

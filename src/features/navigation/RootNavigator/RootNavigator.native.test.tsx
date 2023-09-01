@@ -48,7 +48,7 @@ describe('<RootNavigator />', () => {
     renderRootNavigator()
     await act(async () => {})
     const privacyPolicyTitle = screen.getByText('Respect de ta vie privée')
-    expect(privacyPolicyTitle).toBeTruthy()
+    expect(privacyPolicyTitle).toBeOnTheScreen()
   })
 
   it('should not display quick access button in native', async () => {

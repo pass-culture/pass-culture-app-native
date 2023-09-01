@@ -60,7 +60,7 @@ describe('<VenueOffers />', () => {
 
   it('should display "En voir plus" button if nbHits is more than hits.length', () => {
     const { queryByText } = render(<VenueOffers venueId={venueId} />)
-    expect(queryByText('En voir plus')).toBeTruthy()
+    expect(queryByText('En voir plus')).toBeOnTheScreen()
   })
 
   it(`should not display "En voir plus" button if nbHits is same as hits.length`, () => {

@@ -30,13 +30,13 @@ describe('<DeeplinksHistory />', () => {
       setKeepHistory: (keepHistory) => keepHistory,
       rehydrateHistory: (history) => history,
     })
-    expect(renderAPI.queryByText('#0')).toBeTruthy()
-    expect(renderAPI.queryByText(history[0].universalLink)).toBeTruthy()
-    expect(renderAPI.queryByText(history[0].firebaseLink)).toBeTruthy()
+    expect(renderAPI.queryByText('#0')).toBeOnTheScreen()
+    expect(renderAPI.queryByText(history[0].universalLink)).toBeOnTheScreen()
+    expect(renderAPI.queryByText(history[0].firebaseLink)).toBeOnTheScreen()
 
-    expect(renderAPI.queryByText('#1')).toBeTruthy()
-    expect(renderAPI.queryByText(history[1].universalLink)).toBeTruthy()
-    expect(renderAPI.queryByText(history[1].firebaseLink)).toBeTruthy()
+    expect(renderAPI.queryByText('#1')).toBeOnTheScreen()
+    expect(renderAPI.queryByText(history[1].universalLink)).toBeOnTheScreen()
+    expect(renderAPI.queryByText(history[1].firebaseLink)).toBeOnTheScreen()
   })
 
   it('should purge history when mac_persist is not true', async () => {

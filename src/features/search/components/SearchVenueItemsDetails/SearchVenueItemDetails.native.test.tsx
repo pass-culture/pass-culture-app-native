@@ -14,7 +14,7 @@ describe('SearchVenueItemDetails', () => {
   it('should render venue details correctly', () => {
     render(<SearchVenueItemDetails {...props} />)
 
-    expect(screen.getByText(props.name)).toBeTruthy()
-    expect(screen.getByText(props.shortAddress)).toBeTruthy()
+    expect(screen.getByText(props.name)).toBeOnTheScreen()
+    expect(screen.getByText(props.shortAddress)).toBeOnTheScreen()
   })
 })

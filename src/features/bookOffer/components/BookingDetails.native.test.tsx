@@ -245,7 +245,7 @@ describe('<BookingDetails />', () => {
         onPressBookOffer: mockOnPressBookOffer,
       })
 
-      expect(screen.getByTestId('loadingScreen')).toBeTruthy()
+      expect(screen.getByTestId('loadingScreen')).toBeOnTheScreen()
     })
   })
 
@@ -309,7 +309,7 @@ describe('<BookingDetails />', () => {
       renderBookingDetails({ stocks: mockDigitalStocks, onPressBookOffer: mockOnPressBookOffer })
       await act(async () => {})
 
-      expect(await screen.findByTestId('DuoChoiceSelector')).toBeTruthy()
+      expect(await screen.findByTestId('DuoChoiceSelector')).toBeOnTheScreen()
     })
   })
 
@@ -324,7 +324,7 @@ describe('<BookingDetails />', () => {
       renderBookingDetails({ stocks: mockStocks, onPressBookOffer: mockOnPressBookOffer })
       await act(async () => {})
 
-      expect(await screen.findByTestId('address')).toBeTruthy()
+      expect(await screen.findByTestId('address')).toBeOnTheScreen()
     })
 
     it('should not display venue section', async () => {
@@ -481,7 +481,7 @@ describe('<BookingDetails />', () => {
       renderBookingDetails({ stocks: mockStocks, onPressBookOffer: mockOnPressBookOffer })
       await act(async () => {})
 
-      expect(await screen.findByText('Lieu de retrait')).toBeTruthy()
+      expect(await screen.findByText('Lieu de retrait')).toBeOnTheScreen()
     })
 
     it('should display venue name in venue section', async () => {
@@ -498,7 +498,7 @@ describe('<BookingDetails />', () => {
       renderBookingDetails({ stocks: mockStocks, onPressBookOffer: mockOnPressBookOffer })
       await act(async () => {})
 
-      expect(await screen.findByTestId('venueName')).toBeTruthy()
+      expect(await screen.findByTestId('venueName')).toBeOnTheScreen()
     })
 
     it('should display venue address in venue section', async () => {
@@ -515,7 +515,7 @@ describe('<BookingDetails />', () => {
       renderBookingDetails({ stocks: mockStocks, onPressBookOffer: mockOnPressBookOffer })
       await act(async () => {})
 
-      expect(await screen.findByTestId('venueAddress')).toBeTruthy()
+      expect(await screen.findByTestId('venueAddress')).toBeOnTheScreen()
     })
 
     it('should display "Modifier" button when offer subcategory is "Livre papier", EAN defined and that there are other venues offering the same offer', async () => {
@@ -535,7 +535,7 @@ describe('<BookingDetails />', () => {
       renderBookingDetails({ stocks: mockStocks, onPressBookOffer: mockOnPressBookOffer })
       await act(async () => {})
 
-      expect(await screen.findByText('Modifier')).toBeTruthy()
+      expect(await screen.findByText('Modifier')).toBeOnTheScreen()
     })
 
     it('should not display "Modifier" button when offer subcategory is "Livre papier", EAN defined and that there are not other venues offering the same offer', async () => {
@@ -575,7 +575,7 @@ describe('<BookingDetails />', () => {
       renderBookingDetails({ stocks: mockStocks, onPressBookOffer: mockOnPressBookOffer })
       await act(async () => {})
 
-      expect(await screen.findByText('Modifier')).toBeTruthy()
+      expect(await screen.findByText('Modifier')).toBeOnTheScreen()
     })
 
     it('should not display "Modifier" button when offer subcategory is "Livre audio physique", EAN defined and that there are not other venues offering the same offer', async () => {

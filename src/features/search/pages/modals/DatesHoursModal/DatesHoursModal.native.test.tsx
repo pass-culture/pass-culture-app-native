@@ -80,7 +80,7 @@ describe('<DatesHoursModal/>', () => {
       }
       renderDatesHoursModal()
       await act(async () => {
-        expect(screen.getByText('Samedi 29 octobre 2022')).toBeTruthy()
+        expect(screen.getByText('Samedi 29 octobre 2022')).toBeOnTheScreen()
       })
     })
 
@@ -92,7 +92,7 @@ describe('<DatesHoursModal/>', () => {
       renderDatesHoursModal()
 
       await act(async () => {
-        expect(screen.getByText(`18\u00a0h et 22\u00a0h`)).toBeTruthy()
+        expect(screen.getByText(`18\u00a0h et 22\u00a0h`)).toBeOnTheScreen()
       })
     })
   })
@@ -243,14 +243,14 @@ describe('<DatesHoursModal/>', () => {
         const slider = screen.getByTestId('slider').children[0] as ReactTestInstance
         slider.props.onValuesChangeFinish([18, 23])
       })
-      expect(screen.getByText(`18\u00a0h et 23\u00a0h`)).toBeTruthy()
+      expect(screen.getByText(`18\u00a0h et 23\u00a0h`)).toBeOnTheScreen()
 
       const resetButton = screen.getByText('Réinitialiser')
       await act(async () => {
         fireEvent.press(resetButton)
         fireEvent.press(toggleHour)
       })
-      expect(screen.getByText(`8\u00a0h et 22\u00a0h`)).toBeTruthy()
+      expect(screen.getByText(`8\u00a0h et 22\u00a0h`)).toBeOnTheScreen()
     })
 
     it('time range selected when desactivating hour toggle', async () => {
@@ -268,13 +268,13 @@ describe('<DatesHoursModal/>', () => {
         const slider = screen.getByTestId('slider').children[0] as ReactTestInstance
         slider.props.onValuesChangeFinish([18, 23])
       })
-      expect(screen.getByText(`18\u00a0h et 23\u00a0h`)).toBeTruthy()
+      expect(screen.getByText(`18\u00a0h et 23\u00a0h`)).toBeOnTheScreen()
 
       await act(async () => {
         fireEvent.press(toggleHour)
         fireEvent.press(toggleHour)
       })
-      expect(screen.getByText(`8\u00a0h et 22\u00a0h`)).toBeTruthy()
+      expect(screen.getByText(`8\u00a0h et 22\u00a0h`)).toBeOnTheScreen()
     })
   })
 
@@ -346,7 +346,7 @@ describe('<DatesHoursModal/>', () => {
       })
 
       await waitFor(() => {
-        expect(screen.getByText('Appliquer le filtre')).toBeTruthy()
+        expect(screen.getByText('Appliquer le filtre')).toBeOnTheScreen()
         expect(screen.getByText('Appliquer le filtre')).toBeEnabled()
       })
     })
@@ -520,7 +520,7 @@ describe('<DatesHoursModal/>', () => {
         expect(screen.getByLabelText('Appliquer le filtre')).toBeEnabled()
       })
 
-      expect(screen.getByTestId('Revenir en arrière')).toBeTruthy()
+      expect(screen.getByTestId('Revenir en arrière')).toBeOnTheScreen()
     })
 
     it('should close the modal and general filter page when pressing close button when the modal is opening from general filter page', async () => {

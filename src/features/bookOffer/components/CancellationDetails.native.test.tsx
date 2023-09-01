@@ -122,19 +122,19 @@ describe('<CancellationDetails /> when isDigital = true', () => {
 })
 
 const expectNotCancellable = (page: RenderAPI) => {
-  expect(page.queryByText('Cette réservation n’est pas annulable')).toBeTruthy()
+  expect(page.queryByText('Cette réservation n’est pas annulable')).toBeOnTheScreen()
   expect(page.queryByText(/Cette réservation est annulable/)).toBeNull()
   expect(page.queryByText(/Cette réservation peut être annulée jusqu’au/)).toBeNull()
 }
 
 const expectCancellable = (page: RenderAPI) => {
   expect(page.queryByText('Cette réservation n’est pas annulable')).toBeNull()
-  expect(page.queryByText(/Cette réservation est annulable/)).toBeTruthy()
+  expect(page.queryByText(/Cette réservation est annulable/)).toBeOnTheScreen()
   expect(page.queryByText(/Cette réservation peut être annulée jusqu’au/)).toBeNull()
 }
 
 const expectCancellableBefore = (page: RenderAPI) => {
   expect(page.queryByText('Cette réservation n’est pas annulable')).toBeNull()
   expect(page.queryByText(/Cette réservation est annulable/)).toBeNull()
-  expect(page.queryByText(/Cette réservation peut être annulée jusqu’au/)).toBeTruthy()
+  expect(page.queryByText(/Cette réservation peut être annulée jusqu’au/)).toBeOnTheScreen()
 }

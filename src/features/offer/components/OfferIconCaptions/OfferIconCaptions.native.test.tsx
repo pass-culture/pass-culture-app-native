@@ -138,7 +138,7 @@ describe('<OfferIconCaptions />', () => {
 
       await waitFor(() => {
         if (show === 'show') {
-          expect(screen.queryByText(/À deux !/)).toBeTruthy()
+          expect(screen.queryByText(/À deux !/)).toBeOnTheScreen()
         } else {
           expect(screen.queryByText(/À deux !!/)).toBeNull()
         }

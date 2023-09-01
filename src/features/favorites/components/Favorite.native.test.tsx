@@ -67,7 +67,7 @@ describe('<Favorite /> component', () => {
     renderFavorite()
     await act(async () => {})
 
-    expect(await screen.findByText('10 km')).toBeTruthy()
+    expect(await screen.findByText('10 km')).toBeOnTheScreen()
   })
 
   it('should delete favorite on button click', async () => {

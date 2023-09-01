@@ -34,7 +34,7 @@ describe('Location component', () => {
     const { getByText, queryByText } = render(<Location />)
 
     await act(async () => {})
-    expect(getByText(RadioButtonLocation.EVERYWHERE)).toBeTruthy()
+    expect(getByText(RadioButtonLocation.EVERYWHERE)).toBeOnTheScreen()
     expect(queryByText(RadioButtonLocation.AROUND_ME)).toBeFalsy()
     expect(queryByText(RadioButtonLocation.CHOOSE_PLACE_OR_VENUE)).toBeFalsy()
   })
@@ -61,7 +61,7 @@ describe('Location component', () => {
     await act(async () => {})
 
     expect(queryByText(RadioButtonLocation.EVERYWHERE)).toBeFalsy()
-    expect(getByText(RadioButtonLocation.AROUND_ME)).toBeTruthy()
+    expect(getByText(RadioButtonLocation.AROUND_ME)).toBeOnTheScreen()
     expect(queryByText(RadioButtonLocation.CHOOSE_PLACE_OR_VENUE)).toBeFalsy()
   })
 
@@ -77,7 +77,7 @@ describe('Location component', () => {
 
     expect(queryByText(RadioButtonLocation.EVERYWHERE)).toBeFalsy()
     expect(queryByText(RadioButtonLocation.AROUND_ME)).toBeFalsy()
-    expect(getByText(RadioButtonLocation.CHOOSE_PLACE_OR_VENUE)).toBeTruthy()
+    expect(getByText(RadioButtonLocation.CHOOSE_PLACE_OR_VENUE)).toBeOnTheScreen()
   })
 
   it("should have PLACE description's when selected", async () => {
@@ -92,7 +92,7 @@ describe('Location component', () => {
 
     expect(queryByText(RadioButtonLocation.EVERYWHERE)).toBeFalsy()
     expect(queryByText(RadioButtonLocation.AROUND_ME)).toBeFalsy()
-    expect(getByText(RadioButtonLocation.CHOOSE_PLACE_OR_VENUE)).toBeTruthy()
+    expect(getByText(RadioButtonLocation.CHOOSE_PLACE_OR_VENUE)).toBeOnTheScreen()
   })
 
   it('should open modal when clicked', async () => {

@@ -273,7 +273,7 @@ function favoriteBookingButtonTestRunner({
   if (expectedCTA === ExpectedCTA.ExternalBooking) {
     fireEvent.press(renderAPI.getByText('Réserver'))
     expect(onInAppBooking).not.toBeCalled()
-    expect(renderAPI.queryByText('button-icon-SVG-Mock')).toBeTruthy()
+    expect(renderAPI.queryByText('button-icon-SVG-Mock')).toBeOnTheScreen()
     expect(mockedOpenUrl).toBeCalledWith(
       offer.externalTicketOfficeUrl,
       {
@@ -293,7 +293,7 @@ function favoriteBookingButtonTestRunner({
     expect(onInAppBooking).not.toBeCalled()
     expect(renderAPI.queryByText('button-icon-SVG-Mock')).toBeNull()
     expect(mockedOpenUrl).not.toBeCalled()
-    expect(renderAPI.queryByText('Offre réservée')).toBeTruthy()
+    expect(renderAPI.queryByText('Offre réservée')).toBeOnTheScreen()
     expect(renderAPI.queryByText('Offre expirée')).toBeNull()
     expect(renderAPI.queryByText('Offre épuisée')).toBeNull()
     expect(renderAPI.queryByText('Crédit insuffisant')).toBeNull()
@@ -304,7 +304,7 @@ function favoriteBookingButtonTestRunner({
     expect(renderAPI.queryByText('button-icon-SVG-Mock')).toBeNull()
     expect(mockedOpenUrl).not.toBeCalled()
     expect(renderAPI.queryByText('Offre réservée')).toBeNull()
-    expect(renderAPI.queryByText('Offre expirée')).toBeTruthy()
+    expect(renderAPI.queryByText('Offre expirée')).toBeOnTheScreen()
     expect(renderAPI.queryByText('Offre épuisée')).toBeNull()
     expect(renderAPI.queryByText('Crédit insuffisant')).toBeNull()
     return
@@ -315,7 +315,7 @@ function favoriteBookingButtonTestRunner({
     expect(mockedOpenUrl).not.toBeCalled()
     expect(renderAPI.queryByText('Offre réservée')).toBeNull()
     expect(renderAPI.queryByText('Offre expirée')).toBeNull()
-    expect(renderAPI.queryByText('Offre épuisée')).toBeTruthy()
+    expect(renderAPI.queryByText('Offre épuisée')).toBeOnTheScreen()
     expect(renderAPI.queryByText('Crédit insuffisant')).toBeNull()
     return
   }
@@ -326,7 +326,7 @@ function favoriteBookingButtonTestRunner({
     expect(renderAPI.queryByText('Offre réservée')).toBeNull()
     expect(renderAPI.queryByText('Offre expirée')).toBeNull()
     expect(renderAPI.queryByText('Offre épuisée')).toBeNull()
-    expect(renderAPI.queryByText('Crédit insuffisant')).toBeTruthy()
+    expect(renderAPI.queryByText('Crédit insuffisant')).toBeOnTheScreen()
     return
   }
   if (expectedCTA === ExpectedCTA.NoButton) {

@@ -97,7 +97,7 @@ describe('BookingDetails', () => {
       renderBookingDetails(booking)
       await act(async () => {})
 
-      expect(await screen.findByText('352UW4')).toBeTruthy()
+      expect(await screen.findByText('352UW4')).toBeOnTheScreen()
     })
 
     it('should display offer link button if offer is digital and open url on press', async () => {
@@ -139,7 +139,7 @@ describe('BookingDetails', () => {
 
       await act(async () => {})
 
-      expect(await screen.findByTestId('qr-code')).toBeTruthy()
+      expect(await screen.findByTestId('qr-code')).toBeOnTheScreen()
     })
 
     it('should display EAN code if offer is a book (digital or physical)', async () => {
@@ -149,7 +149,7 @@ describe('BookingDetails', () => {
 
       await act(async () => {})
 
-      expect(await screen.findByText('123456789')).toBeTruthy()
+      expect(await screen.findByText('123456789')).toBeOnTheScreen()
     })
   })
 
@@ -166,7 +166,7 @@ describe('BookingDetails', () => {
         await screen.findByText(
           'Ce code à 6 caractères est ta preuve d’achat\u00a0! N’oublie pas que tu n’as pas le droit de le revendre ou le céder.'
         )
-      ).toBeTruthy()
+      ).toBeOnTheScreen()
     })
 
     it('should display rules for a digital offer with activation code', async () => {
@@ -184,7 +184,7 @@ describe('BookingDetails', () => {
         await screen.findByText(
           'Ce code est ta preuve d’achat, il te permet d’accéder à ton offre\u00a0! N’oublie pas que tu n’as pas le droit de le revendre ou le céder.'
         )
-      ).toBeTruthy()
+      ).toBeOnTheScreen()
     })
 
     it.each([
@@ -210,7 +210,7 @@ describe('BookingDetails', () => {
           await screen.findByText(
             'Pour profiter de ta réservation, tu dois présenter ta carte d’identité et ce code à 6 caractères. N’oublie pas que tu n’as pas le droit de le revendre ou le céder.'
           )
-        ).toBeTruthy()
+        ).toBeOnTheScreen()
       }
     )
   })
@@ -223,8 +223,8 @@ describe('BookingDetails', () => {
 
       await act(async () => {})
 
-      expect(screen.queryByText('Modalités de retrait')).toBeTruthy()
-      expect(screen.queryByText('Voici comment récupérer ton bien')).toBeTruthy()
+      expect(screen.queryByText('Modalités de retrait')).toBeOnTheScreen()
+      expect(screen.queryByText('Voici comment récupérer ton bien')).toBeOnTheScreen()
     })
 
     it('should not display withdrawal details', async () => {
@@ -248,8 +248,8 @@ describe('BookingDetails', () => {
       renderBookingDetails(booking)
       await act(async () => {})
 
-      expect(screen.getByText('Contact organisateur')).toBeTruthy()
-      expect(screen.getByText('Envoyer un e-mail')).toBeTruthy()
+      expect(screen.getByText('Contact organisateur')).toBeOnTheScreen()
+      expect(screen.getByText('Envoyer un e-mail')).toBeOnTheScreen()
     })
     it('should not display booking email contact when there is no booking contact email', async () => {
       const booking = bookingsSnap.ongoing_bookings[0]
@@ -443,12 +443,12 @@ describe('BookingDetails', () => {
       renderBookingDetails(undefined, { dataUpdatedAt: new Date().getTime() })
       await act(async () => {})
 
-      expect(screen.queryByText('Réservation introuvable !')).toBeTruthy()
+      expect(screen.queryByText('Réservation introuvable !')).toBeOnTheScreen()
       expect(
         screen.queryByText(
           `Désolé, nous ne retrouvons pas ta réservation. Peut-être a-t-elle été annulée. N’hésite pas à retrouver la liste de tes réservations terminées et annulées pour t’en assurer.`
         )
-      ).toBeTruthy()
+      ).toBeOnTheScreen()
     })
 
     it('should not render ScreenError BookingNotFound when booking is not found and no data exists', async () => {
@@ -477,7 +477,7 @@ describe('BookingDetails', () => {
       await act(async () => {})
 
       const itineraryButton = await screen.findByText('Voir l’itinéraire')
-      expect(itineraryButton).toBeTruthy()
+      expect(itineraryButton).toBeOnTheScreen()
 
       openItinerary.mockRestore()
       getBookingProperties.mockRestore()

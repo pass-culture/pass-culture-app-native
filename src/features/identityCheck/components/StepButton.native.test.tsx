@@ -60,7 +60,7 @@ describe('StepButton', () => {
 
       const stepButton = render(<StepButton step={identificationStep} />)
 
-      expect(stepButton.queryByTestId(stepTestId)).toBeTruthy()
+      expect(stepButton.queryByTestId(stepTestId)).toBeOnTheScreen()
     }
   )
 })

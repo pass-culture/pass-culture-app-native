@@ -51,16 +51,16 @@ describe('<CategoriesModal/>', () => {
 
     it('should show all categories', () => {
       renderCategories()
-      expect(screen.getByText('Toutes les catégories')).toBeTruthy()
-      expect(screen.getByText('Films, séries, cinéma')).toBeTruthy()
-      expect(screen.getByText('Musées & visites culturelles')).toBeTruthy()
-      expect(screen.getByText('Jeux & jeux vidéos')).toBeTruthy()
+      expect(screen.getByText('Toutes les catégories')).toBeOnTheScreen()
+      expect(screen.getByText('Films, séries, cinéma')).toBeOnTheScreen()
+      expect(screen.getByText('Musées & visites culturelles')).toBeOnTheScreen()
+      expect(screen.getByText('Jeux & jeux vidéos')).toBeOnTheScreen()
     })
 
     it('should not show categories when the backend returns no category', () => {
       mockData = { ...mockData, searchGroups: [] }
       renderCategories()
-      expect(screen.getByText('Toutes les catégories')).toBeTruthy()
+      expect(screen.getByText('Toutes les catégories')).toBeOnTheScreen()
       expect(screen.queryByText('Films, séries, cinéma')).toBeFalsy()
       expect(screen.queryByText('Musées & visites culturelles')).toBeFalsy()
       expect(screen.queryByText('Jeux & jeux vidéos')).toBeFalsy()
@@ -74,8 +74,8 @@ describe('<CategoriesModal/>', () => {
         ],
       }
       renderCategories()
-      expect(screen.getByText('Toutes les catégories')).toBeTruthy()
-      expect(screen.queryByText('Films, séries, cinéma')).toBeTruthy()
+      expect(screen.getByText('Toutes les catégories')).toBeOnTheScreen()
+      expect(screen.queryByText('Films, séries, cinéma')).toBeOnTheScreen()
       expect(screen.queryByText('Musées & visites culturelles')).toBeFalsy()
       expect(screen.queryByText('Jeux & jeux vidéos')).toBeFalsy()
     })
@@ -177,7 +177,7 @@ describe('<CategoriesModal/>', () => {
     it('should render native categories', () => {
       renderCategories()
 
-      expect(screen.getByText('Livres papier')).toBeTruthy()
+      expect(screen.getByText('Livres papier')).toBeOnTheScreen()
     })
 
     it('should go back to categories view', () => {
@@ -186,7 +186,7 @@ describe('<CategoriesModal/>', () => {
       })
       const previousButton = screen.getByTestId('Revenir en arrière')
       fireEvent.press(previousButton)
-      expect(screen.getByText('Catégories')).toBeTruthy()
+      expect(screen.getByText('Catégories')).toBeOnTheScreen()
     })
 
     it('should navigate with correct search parameters when search button is pressed', async () => {
@@ -262,7 +262,7 @@ describe('<CategoriesModal/>', () => {
       renderCategories()
 
       fireEvent.press(screen.getByText('Livres papier'))
-      expect(screen.getByText('Bandes dessinées')).toBeTruthy()
+      expect(screen.getByText('Bandes dessinées')).toBeOnTheScreen()
     })
 
     it('should go back to native categories view', () => {
@@ -272,7 +272,7 @@ describe('<CategoriesModal/>', () => {
       const previousButton = screen.getByTestId('Revenir en arrière')
 
       fireEvent.press(previousButton)
-      expect(screen.getByText('Livres')).toBeTruthy()
+      expect(screen.getByText('Livres')).toBeOnTheScreen()
     })
 
     it('should navigate with correct search parameters when search button is pressed', async () => {
@@ -379,7 +379,7 @@ describe('<CategoriesModal/>', () => {
       })
 
       await waitFor(() => {
-        expect(screen.getByText('Appliquer le filtre')).toBeTruthy()
+        expect(screen.getByText('Appliquer le filtre')).toBeOnTheScreen()
       })
     })
 
@@ -417,7 +417,7 @@ describe('<CategoriesModal/>', () => {
       })
 
       await waitFor(() => {
-        expect(screen.getByTestId('Revenir en arrière')).toBeTruthy()
+        expect(screen.getByTestId('Revenir en arrière')).toBeOnTheScreen()
       })
     })
 

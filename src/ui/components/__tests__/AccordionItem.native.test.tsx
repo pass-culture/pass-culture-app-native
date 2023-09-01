@@ -27,7 +27,7 @@ describe('AccordionItem', () => {
       jest.runAllTimers()
     })
 
-    expect(screen.getByTestId('accordion-child-view')).toBeTruthy()
+    expect(screen.getByTestId('accordion-child-view')).toBeOnTheScreen()
   })
 
   it('should expand for accessibility the accordion after pressing the title', async () => {

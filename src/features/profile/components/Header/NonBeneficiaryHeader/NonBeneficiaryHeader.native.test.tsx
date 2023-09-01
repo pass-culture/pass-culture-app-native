@@ -74,11 +74,11 @@ describe('<NonBeneficiaryHeader/>', () => {
         endDatetime: '2022-02-30T00:00Z',
       })
 
-      expect(await screen.findByTestId('eligibility-banner-container')).toBeTruthy()
+      expect(await screen.findByTestId('eligibility-banner-container')).toBeOnTheScreen()
 
-      expect(screen.getByText('Débloque tes 1000\u00a0€')).toBeTruthy()
-      expect(screen.queryByTestId('BicolorUnlock')).toBeTruthy()
-      expect(screen.getByText('à dépenser sur l’application')).toBeTruthy()
+      expect(screen.getByText('Débloque tes 1000\u00a0€')).toBeOnTheScreen()
+      expect(screen.queryByTestId('BicolorUnlock')).toBeOnTheScreen()
+      expect(screen.getByText('à dépenser sur l’application')).toBeOnTheScreen()
     })
 
     it("should render the transition 17 to 18 banner when beneficiary's user is now 18", async () => {
@@ -102,11 +102,11 @@ describe('<NonBeneficiaryHeader/>', () => {
         endDatetime: '2022-02-30T00:00Z',
       })
 
-      expect(await screen.findByTestId('eligibility-banner-container')).toBeTruthy()
+      expect(await screen.findByTestId('eligibility-banner-container')).toBeOnTheScreen()
 
-      expect(screen.getByText('Débloque tes 400\u00a0€')).toBeTruthy()
-      expect(screen.getByTestId('BirthdayCake')).toBeTruthy()
-      expect(screen.getByText('à dépenser sur l’application')).toBeTruthy()
+      expect(screen.getByText('Débloque tes 400\u00a0€')).toBeOnTheScreen()
+      expect(screen.getByTestId('BirthdayCake')).toBeOnTheScreen()
+      expect(screen.getByText('à dépenser sur l’application')).toBeOnTheScreen()
     })
   })
 
@@ -124,7 +124,7 @@ describe('<NonBeneficiaryHeader/>', () => {
       await act(async () => {})
 
       expect(screen.queryByTestId('eligibility-banner-container')).toBeNull()
-      expect(screen.getByText('Ton inscription est en cours de traitement.')).toBeTruthy()
+      expect(screen.getByText('Ton inscription est en cours de traitement.')).toBeOnTheScreen()
     })
   })
 
@@ -141,7 +141,7 @@ describe('<NonBeneficiaryHeader/>', () => {
 
       await act(async () => {})
 
-      expect(screen.getByTestId('subscription-message-badge')).toBeTruthy()
+      expect(screen.getByTestId('subscription-message-badge')).toBeOnTheScreen()
     })
   })
 
@@ -154,7 +154,7 @@ describe('<NonBeneficiaryHeader/>', () => {
 
       await act(async () => {})
 
-      expect(screen.getByTestId('younger-badge')).toBeTruthy()
+      expect(screen.getByTestId('younger-badge')).toBeOnTheScreen()
     })
   })
 

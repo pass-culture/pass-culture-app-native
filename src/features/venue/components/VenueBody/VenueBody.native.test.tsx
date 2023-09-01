@@ -61,7 +61,7 @@ describe('<VenueBody />', () => {
 
   it('should show withdrawalDetails', async () => {
     await renderVenueBody(venueId)
-    expect(screen.queryByText('Modalités de retrait')).toBeTruthy()
+    expect(screen.queryByText('Modalités de retrait')).toBeOnTheScreen()
   })
 
   it('should not show withdrawalDetails if withdrawalDetails is null', async () => {

@@ -14,15 +14,15 @@ describe('<OfflineModeContainer />', () => {
 
   it('should render children and show banner when offline at init when isConnected is false', () => {
     const renderAPI = renderOfflineModeContainer()
-    expect(renderAPI.queryByText('Hello World')).toBeTruthy()
-    expect(renderAPI.queryByText('aucune connexion internet.')).toBeTruthy()
+    expect(renderAPI.queryByText('Hello World')).toBeOnTheScreen()
+    expect(renderAPI.queryByText('aucune connexion internet.')).toBeOnTheScreen()
   })
 
   it('should render children and not show banner when offline at init when isConnected is true', () => {
     mockUseNetInfoContext.mockImplementationOnce(() => ({ isConnected: true }))
     const renderAPI = renderOfflineModeContainer()
     expect(renderAPI.queryByText('aucune connexion internet.')).toBeFalsy()
-    expect(renderAPI.queryByText('Hello World')).toBeTruthy()
+    expect(renderAPI.queryByText('Hello World')).toBeOnTheScreen()
   })
 
   it('should not show "aucune connexion internet." at init, then show when isConnected is false, then hide when isConnected switch back to true', () => {
@@ -39,7 +39,7 @@ describe('<OfflineModeContainer />', () => {
     }))
     renderAPI.rerender(getJsx())
 
-    expect(renderAPI.queryByText('aucune connexion internet.')).toBeTruthy()
+    expect(renderAPI.queryByText('aucune connexion internet.')).toBeOnTheScreen()
   })
 })
 

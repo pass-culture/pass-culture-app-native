@@ -17,7 +17,7 @@ describe('<NativeCategoryValue />', () => {
 
     const { getByText } = render(<NativeCategoryValue nativeCategoryId={nativeCategoryId} />)
 
-    expect(getByText('Musique en ligne')).toBeTruthy()
+    expect(getByText('Musique en ligne')).toBeOnTheScreen()
   })
 
   it('should render anything when UNKNOW nativeCategoryId are passed', () => {

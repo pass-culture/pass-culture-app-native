@@ -127,7 +127,7 @@ describe('<BookingInformations />', () => {
     const myComponent = render(<BookingInformations />)
     expect(myComponent).toMatchSnapshot()
 
-    expect(screen.getByTestId('price-line__label')).toBeTruthy()
+    expect(screen.getByTestId('price-line__label')).toBeOnTheScreen()
   })
 
   describe('When wipAttributesCinemaOffers feature flag activated', () => {
@@ -155,8 +155,8 @@ describe('<BookingInformations />', () => {
       const myComponent = render(<BookingInformations />)
       expect(myComponent).toMatchSnapshot()
 
-      expect(screen.getByText('- VOSTFR 3D IMAX')).toBeTruthy()
-      expect(screen.getByTestId('price-line__attributes')).toBeTruthy()
+      expect(screen.getByText('- VOSTFR 3D IMAX')).toBeOnTheScreen()
+      expect(screen.getByTestId('price-line__attributes')).toBeOnTheScreen()
     })
     it('should not display stock attributes when the offer has not it', () => {
       // @ts-expect-error mock is not real type

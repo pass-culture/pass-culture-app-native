@@ -43,6 +43,6 @@ describe('<RecreditBirthdayNotification />', () => {
       'Pour tes 16 ans, 50\u00a0€ ont été ajoutés à ton compte. Tu disposes maintenant de :'
     )
 
-    expect(recreditText).toBeTruthy()
+    expect(recreditText).toBeOnTheScreen()
   })
 })

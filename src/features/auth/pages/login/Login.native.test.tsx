@@ -126,7 +126,7 @@ describe('<Login/>', () => {
       jest.advanceTimersByTime(SUGGESTION_DELAY_IN_MS)
     })
 
-    expect(screen.queryByText('Veux-tu plutôt dire john.doe@gmail.com\u00a0?')).toBeTruthy()
+    expect(screen.queryByText('Veux-tu plutôt dire john.doe@gmail.com\u00a0?')).toBeOnTheScreen()
   })
 
   it('should sign in when "Se connecter" is clicked without device info when feature flag is disabled', async () => {
@@ -263,7 +263,7 @@ describe('<Login/>', () => {
       await screen.findByText(
         'L’e-mail renseigné est incorrect. Exemple de format attendu : edith.piaf@email.fr'
       )
-    ).toBeTruthy()
+    ).toBeOnTheScreen()
   })
 
   it('should show error message and error inputs WHEN signin has failed because of wrong credentials', async () => {
@@ -273,7 +273,7 @@ describe('<Login/>', () => {
     await fillInputs()
     await act(() => fireEvent.press(screen.getByText('Se connecter')))
 
-    expect(screen.getByText('E-mail ou mot de passe incorrect')).toBeTruthy()
+    expect(screen.getByText('E-mail ou mot de passe incorrect')).toBeOnTheScreen()
     expect(navigate).not.toBeCalled()
   })
 
@@ -286,7 +286,7 @@ describe('<Login/>', () => {
 
     expect(
       screen.queryByText('Erreur réseau. Tu peux réessayer une fois la connexion réétablie')
-    ).toBeTruthy()
+    ).toBeOnTheScreen()
     expect(navigate).not.toBeCalled()
   })
 
@@ -297,7 +297,9 @@ describe('<Login/>', () => {
     await fillInputs()
     await act(() => fireEvent.press(screen.getByText('Se connecter')))
 
-    expect(screen.queryByText('Nombre de tentatives dépassé. Réessaye dans 1 minute')).toBeTruthy()
+    expect(
+      screen.queryByText('Nombre de tentatives dépassé. Réessaye dans 1 minute')
+    ).toBeOnTheScreen()
     expect(navigate).not.toBeCalled()
   })
 

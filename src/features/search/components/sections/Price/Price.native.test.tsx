@@ -22,7 +22,7 @@ describe('Price component', () => {
 
     await act(async () => {})
 
-    expect(await screen.findByText('5\u00a0€ et plus')).toBeTruthy()
+    expect(await screen.findByText('5\u00a0€ et plus')).toBeOnTheScreen()
   })
 
   it('should display the search price description when maximum price selected', async () => {
@@ -31,7 +31,7 @@ describe('Price component', () => {
 
     await act(async () => {})
 
-    expect(await screen.findByText('10\u00a0€ et moins')).toBeTruthy()
+    expect(await screen.findByText('10\u00a0€ et moins')).toBeOnTheScreen()
   })
 
   it('should display the search price description when minimum and maximum prices selected', async () => {
@@ -40,7 +40,7 @@ describe('Price component', () => {
 
     await act(async () => {})
 
-    expect(await screen.findByText('de 5\u00a0€ à 10\u00a0€')).toBeTruthy()
+    expect(await screen.findByText('de 5\u00a0€ à 10\u00a0€')).toBeOnTheScreen()
   })
 
   it('should display the search price description with "Gratuit" when minimum and maximum prices selected and are 0', async () => {
@@ -49,7 +49,7 @@ describe('Price component', () => {
 
     await act(async () => {})
 
-    expect(await screen.findByText('Gratuit')).toBeTruthy()
+    expect(await screen.findByText('Gratuit')).toBeOnTheScreen()
   })
 
   it('should open the categories filter modal when clicking on the category button', async () => {
@@ -64,6 +64,6 @@ describe('Price component', () => {
 
     const fullscreenModalScrollView = screen.getByTestId('fullscreenModalScrollView')
 
-    expect(fullscreenModalScrollView).toBeTruthy()
+    expect(fullscreenModalScrollView).toBeOnTheScreen()
   })
 })

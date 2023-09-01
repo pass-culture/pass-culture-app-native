@@ -38,8 +38,8 @@ describe('NotificationSettings', () => {
       Platform.OS = 'ios'
       renderNotificationSettings('granted', {} as UserProfileResponse)
 
-      expect(await screen.findByText('Autoriser l’envoi d’e-mails')).toBeTruthy()
-      expect(screen.queryByText('Autoriser les notifications marketing')).toBeTruthy()
+      expect(await screen.findByText('Autoriser l’envoi d’e-mails')).toBeOnTheScreen()
+      expect(screen.queryByText('Autoriser les notifications marketing')).toBeOnTheScreen()
     })
 
     it('should only display the email switch on android', async () => {
@@ -49,7 +49,7 @@ describe('NotificationSettings', () => {
       Platform.OS = 'android'
       renderNotificationSettings('granted', {} as UserProfileResponse)
 
-      expect(await screen.findByText('Autoriser l’envoi d’e-mails')).toBeTruthy()
+      expect(await screen.findByText('Autoriser l’envoi d’e-mails')).toBeOnTheScreen()
       expect(screen.queryByText('Autoriser les notifications marketing')).toBeFalsy()
     })
   })
@@ -67,7 +67,7 @@ describe('NotificationSettings', () => {
       await screen.findByText('Autoriser l’envoi d’e-mails')
 
       const pushSwitch = screen.getByTestId('Interrupteur Autoriser les notifications marketing')
-      expect(pushSwitch.parent?.props.accessibilityState.checked).toBeTruthy()
+      expect(pushSwitch.parent?.props.accessibilityState.checked).toBe(true)
     })
 
     it.each<[PermissionStatus, boolean]>([
@@ -90,7 +90,7 @@ describe('NotificationSettings', () => {
         await screen.findByText('Autoriser l’envoi d’e-mails')
 
         const pushSwitch = screen.getByTestId('Interrupteur Autoriser l’envoi d’e-mails')
-        expect(pushSwitch.parent?.props.accessibilityState.checked).toBeFalsy()
+        expect(pushSwitch.parent?.props.accessibilityState.checked).toBe(false)
       }
     )
   })
@@ -109,8 +109,8 @@ describe('NotificationSettings', () => {
       const toggleSwitch = screen.getByTestId('Interrupteur Autoriser les notifications marketing')
       fireEvent.press(toggleSwitch)
 
-      expect(toggleSwitch.parent?.props.accessibilityState.checked).toBeTruthy()
-      expect((toggleSwitch.children[0] as ReactTestInstance).props.active).toBeTruthy()
+      expect(toggleSwitch.parent?.props.accessibilityState.checked).toBe(true)
+      expect((toggleSwitch.children[0] as ReactTestInstance).props.active).toBe(true)
     })
 
     it('should disable the switch when permission=="granted" and push previously allowed', async () => {
@@ -126,8 +126,8 @@ describe('NotificationSettings', () => {
       const toggleSwitch = screen.getByTestId('Interrupteur Autoriser les notifications marketing')
       fireEvent.press(toggleSwitch)
 
-      expect(toggleSwitch.parent?.props.accessibilityState.checked).toBeFalsy()
-      expect((toggleSwitch.children[0] as ReactTestInstance).props.active).toBeFalsy()
+      expect(toggleSwitch.parent?.props.accessibilityState.checked).toBe(false)
+      expect((toggleSwitch.children[0] as ReactTestInstance).props.active).toBe(false)
     })
 
     it.each<PermissionStatus>(['unavailable', 'blocked', 'denied', 'limited'])(
@@ -165,7 +165,7 @@ describe('NotificationSettings', () => {
 
       const saveButton = screen.queryByTestId('Enregistrer les modifications')
 
-      expect(saveButton).toBeFalsy()
+      expect(saveButton).not.toBeOnTheScreen()
     })
 
     it('should enable the save button when the email switch changed', async () => {

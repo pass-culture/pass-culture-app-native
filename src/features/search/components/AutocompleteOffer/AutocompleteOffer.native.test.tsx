@@ -32,7 +32,7 @@ describe('AutocompleteOffer component', () => {
 
     it('should display "Suggestions"', () => {
       render(<AutocompleteOffer />)
-      expect(screen.getByText('Suggestions')).toBeTruthy()
+      expect(screen.getByText('Suggestions')).toBeOnTheScreen()
     })
   })
 
