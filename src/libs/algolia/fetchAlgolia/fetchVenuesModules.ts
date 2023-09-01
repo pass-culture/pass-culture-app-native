@@ -50,5 +50,7 @@ const buildVenue = (venue: AlgoliaVenue): Venue => {
     name: venue.name,
     publicName: venue.name,
     venueTypeCode: venue.venue_type as VenueTypeCode,
+    city: venue.city,
+    postalCode: venue.postalCode,
   }
 }

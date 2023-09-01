@@ -19,9 +19,4 @@ describe('VenueDetails component', () => {
     const { toJSON } = render(<VenueDetails {...props} />)
     expect(toJSON()).toMatchSnapshot()
   })
-
-  it('should show distance prop when provided', () => {
-    const { getByText } = render(<VenueDetails {...props} distance={'100km'} />)
-    expect(getByText(' | 100km')).toBeOnTheScreen()
-  })
 })

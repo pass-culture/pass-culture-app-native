@@ -27,15 +27,46 @@ exports[`VenueTile component should render correctly 1`] = `
     }
     testID="Lieu Le Petit Rintintin 1 du type Salle de projections, "
   >
-    <View
-      style={
-        [
-          {
-            "flexDirection": "column-reverse",
-          },
-        ]
-      }
-    >
+    <View>
+      <View
+        style={
+          [
+            {
+              "overflow": "hidden",
+            },
+            [
+              {
+                "backgroundColor": "#F1F1F4",
+              },
+              {
+                "borderRadius": 8,
+                "height": 100,
+                "width": 100,
+              },
+            ],
+          ]
+        }
+      >
+        <FastImageView
+          defaultSource={null}
+          resizeMode="cover"
+          source={
+            {
+              "uri": "https://storage.googleapis.com/passculture-metier-ehp-testing-assets/thumbs/mediations/AMHA",
+            }
+          }
+          style={
+            {
+              "bottom": 0,
+              "left": 0,
+              "position": "absolute",
+              "right": 0,
+              "top": 0,
+            }
+          }
+          testID="tileImage"
+        />
+      </View>
       <View
         maxWidth={100}
         style={
@@ -43,6 +74,7 @@ exports[`VenueTile component should render correctly 1`] = `
             {
               "marginTop": 8,
               "maxWidth": 100,
+              "position": "relative",
             },
           ]
         }
@@ -84,49 +116,8 @@ exports[`VenueTile component should render correctly 1`] = `
                 },
               ]
             }
-          >
-            Salle de projections
-          </Text>
+          />
         </View>
-      </View>
-      <View
-        style={
-          [
-            {
-              "overflow": "hidden",
-            },
-            [
-              {
-                "backgroundColor": "#F1F1F4",
-              },
-              {
-                "borderRadius": 8,
-                "height": 100,
-                "width": 100,
-              },
-            ],
-          ]
-        }
-      >
-        <FastImageView
-          defaultSource={null}
-          resizeMode="cover"
-          source={
-            {
-              "uri": "https://storage.googleapis.com/passculture-metier-ehp-testing-assets/thumbs/mediations/AMHA",
-            }
-          }
-          style={
-            {
-              "bottom": 0,
-              "left": 0,
-              "position": "absolute",
-              "right": 0,
-              "top": 0,
-            }
-          }
-          testID="tileImage"
-        />
       </View>
     </View>
   </View>

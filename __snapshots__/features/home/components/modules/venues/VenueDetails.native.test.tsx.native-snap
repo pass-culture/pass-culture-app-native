@@ -8,6 +8,7 @@ exports[`VenueDetails component should render correctly 1`] = `
       {
         "marginTop": 8,
         "maxWidth": 100,
+        "position": "relative",
       },
     ]
   }
@@ -49,9 +50,7 @@ exports[`VenueDetails component should render correctly 1`] = `
           },
         ]
       }
-    >
-      Musée
-    </Text>
+    />
   </View>
 </View>
 `;

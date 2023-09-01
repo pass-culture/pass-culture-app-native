@@ -3,7 +3,7 @@ import React from 'react'
 import { navigate } from '__mocks__/@react-navigation/native'
 import { mockVenues } from 'libs/algolia/__mocks__/mockedVenues'
 import { analytics } from 'libs/analytics'
-import { fireEvent, render, waitFor } from 'tests/utils'
+import { fireEvent, render, screen, waitFor } from 'tests/utils'
 
 import { VenueTile, VenueTileProps } from './VenueTile'
 
@@ -27,9 +27,9 @@ describe('VenueTile component', () => {
   })
 
   it('should navigate to the venue when clicking on the venue tile', async () => {
-    const { getByTestId } = render(<VenueTile {...props} />)
+    render(<VenueTile {...props} />)
 
-    fireEvent.press(getByTestId(/Lieu/))
+    fireEvent.press(screen.getByTestId(/Lieu/))
 
     await waitFor(() => {
       expect(navigate).toHaveBeenCalledWith('Venue', { id: venue.id })
@@ -37,9 +37,9 @@ describe('VenueTile component', () => {
   })
 
   it('should log analytics event ConsultVenue when pressing on the venue tile', () => {
-    const { getByTestId } = render(<VenueTile {...props} />)
+    render(<VenueTile {...props} />)
 
-    fireEvent.press(getByTestId(/Lieu/))
+    fireEvent.press(screen.getByTestId(/Lieu/))
 
     expect(analytics.logConsultVenue).toHaveBeenNthCalledWith(1, {
       venueId: venue.id,
@@ -50,9 +50,9 @@ describe('VenueTile component', () => {
   })
 
   it('should log analytics event ConsultVenue with homeEntryId when provided', () => {
-    const { getByTestId } = render(<VenueTile {...props} homeEntryId={'abcd'} />)
+    render(<VenueTile {...props} homeEntryId={'abcd'} />)
 
-    fireEvent.press(getByTestId(/Lieu/))
+    fireEvent.press(screen.getByTestId(/Lieu/))
 
     expect(analytics.logConsultVenue).toHaveBeenNthCalledWith(1, {
       venueId: venue.id,
@@ -62,10 +62,14 @@ describe('VenueTile component', () => {
       homeEntryId: 'abcd',
     })
   })
+
   it('should show venue placeholder when no venue does not have image', () => {
-    const { getByTestId } = render(
-      <VenueTile {...props} venue={{ ...venue, bannerUrl: undefined }} />
-    )
-    expect(getByTestId('venue-type-tile')).toBeOnTheScreen()
+    render(<VenueTile {...props} venue={{ ...venue, bannerUrl: undefined }} />)
+    expect(screen.getByTestId('venue-type-tile')).toBeOnTheScreen()
+  })
+
+  it('should show distance prop when provided', () => {
+    render(<VenueTile {...props} userPosition={{ latitude: 2, longitude: 1 }} />)
+    expect(screen.getByTestId('distance-tag')).toBeTruthy()
   })
 })
