@@ -1,11 +1,17 @@
 import React from 'react'
 
-import { AgeSelectionOther } from 'features/tutorial/pages/AgeSelectionOther'
-import { render } from 'tests/utils/web'
+import { render, checkAccessibilityFor } from 'tests/utils/web'
 
-describe('AgeSelectionOther', () => {
-  it('should render null in web', () => {
-    const { container } = render(<AgeSelectionOther />)
-    expect(container).toBeEmptyDOMElement()
+import { AgeSelectionOther } from './AgeSelectionOther'
+
+describe('<AgeSelectionOther/>', () => {
+  describe('Accessibility', () => {
+    it('should not have basic accessibility issues', async () => {
+      const { container } = render(<AgeSelectionOther />)
+
+      const results = await checkAccessibilityFor(container)
+
+      expect(results).toHaveNoViolations()
+    })
   })
 })
