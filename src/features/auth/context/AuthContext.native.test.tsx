@@ -10,6 +10,7 @@ import { beneficiaryUser, nonBeneficiaryUser } from 'fixtures/user'
 // eslint-disable-next-line no-restricted-imports
 import { amplitude } from 'libs/amplitude'
 import { env } from 'libs/environment'
+import { saveRefreshToken, clearRefreshToken } from 'libs/keychain'
 import { eventMonitoring } from 'libs/monitoring'
 import { NetInfoWrapper } from 'libs/network/NetInfoWrapper'
 import { useNetInfo } from 'libs/network/useNetInfo'
@@ -22,6 +23,7 @@ import { act, renderHook } from 'tests/utils'
 import { AuthWrapper, useAuthContext } from './AuthContext'
 
 jest.unmock('libs/jwt')
+jest.unmock('libs/keychain')
 jest.unmock('libs/network/NetInfoWrapper')
 const mockedUseNetInfo = useNetInfo as jest.Mock
 
@@ -42,14 +44,14 @@ describe('AuthContext', () => {
   beforeEach(async () => {
     mockdate.set(CURRENT_DATE)
     await storage.clear('access_token')
-    await storage.clear('PASSCULTURE_REFRESH_TOKEN')
+    await clearRefreshToken()
     await storage.clear(QueryKeys.USER_PROFILE as unknown as StorageKey)
   })
 
   describe('useAuthContext', () => {
     it('should not return user when logged in but no internet connection', async () => {
       mockedUseNetInfo.mockReturnValueOnce({ isConnected: false, isInternetReachable: false })
-      storage.saveString('PASSCULTURE_REFRESH_TOKEN', 'token')
+      await saveRefreshToken('token')
 
       const result = renderUseAuthContext()
 
@@ -59,7 +61,7 @@ describe('AuthContext', () => {
     })
 
     it('should return the user when logged in with internet connection', async () => {
-      storage.saveString('PASSCULTURE_REFRESH_TOKEN', 'token')
+      await saveRefreshToken('token')
 
       const result = renderUseAuthContext()
 
@@ -77,7 +79,7 @@ describe('AuthContext', () => {
     })
 
     it('should return undefined when refresh token is expired', async () => {
-      storage.saveString('PASSCULTURE_REFRESH_TOKEN', 'token')
+      await saveRefreshToken('token')
 
       const expiredToken = {
         ...decodedTokenWithRemainingLifetime,
@@ -103,7 +105,7 @@ describe('AuthContext', () => {
     })
 
     it('should set user properties to Amplitude events when user is logged in', async () => {
-      storage.saveString('PASSCULTURE_REFRESH_TOKEN', 'token')
+      await saveRefreshToken('token')
 
       renderUseAuthContext()
 
@@ -142,7 +144,7 @@ describe('AuthContext', () => {
           res(ctx.status(200), ctx.json(nonBeneficiaryUser))
         )
       )
-      storage.saveString('PASSCULTURE_REFRESH_TOKEN', 'token')
+      await saveRefreshToken('token')
 
       renderUseAuthContext()
 
@@ -152,7 +154,7 @@ describe('AuthContext', () => {
     })
 
     it('should log out user when refresh token is no longer valid', async () => {
-      storage.saveString('PASSCULTURE_REFRESH_TOKEN', 'token')
+      await saveRefreshToken('token')
       const result = renderUseAuthContext()
 
       await act(async () => {}) // We need this first act to make sure all updates are finished before advancing timers
@@ -166,7 +168,7 @@ describe('AuthContext', () => {
 
     it('should log to Sentry when error occurs', async () => {
       storage.saveString('access_token', 'access_token')
-      storage.saveString('PASSCULTURE_REFRESH_TOKEN', 'token')
+      await saveRefreshToken('token')
       const error = new Error('Batch error')
       BatchUser.editor.mockImplementationOnce(() => {
         throw error

@@ -12,6 +12,7 @@ import { useAppStateChange } from 'libs/appState'
 // eslint-disable-next-line no-restricted-imports
 import { firebaseAnalytics } from 'libs/firebase/analytics'
 import { getTokenStatus, getUserIdFromAccesstoken } from 'libs/jwt'
+import { getRefreshToken } from 'libs/keychain'
 import { eventMonitoring } from 'libs/monitoring'
 import { useNetInfoContext } from 'libs/network/NetInfoWrapper'
 import { QueryKeys } from 'libs/queryKeys'
@@ -79,7 +80,7 @@ export const AuthWrapper = memo(function AuthWrapper({
 
   const readTokenAndConnectUser = useCallback(async () => {
     try {
-      const refreshToken = await storage.readString('PASSCULTURE_REFRESH_TOKEN')
+      const refreshToken = await getRefreshToken()
       const accessToken = await storage.readString('access_token')
       const refreshTokenStatus = getTokenStatus(refreshToken)
 
