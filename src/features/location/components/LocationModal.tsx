@@ -23,20 +23,23 @@ export const LocationModal = ({ visible, dismissModal }: LocationModalProps) => 
     useLocation()
 
   const isGeolocated = !!userPosition
+  const [selectedOption, setSelectedOption] = React.useState<LocationOption>(
+    isGeolocated ? LocationOption.GEOLOCATION : LocationOption.NONE
+  )
   const onHideRef = useRef<() => void>()
 
   useEffect(() => {
     if (visible) {
+      setSelectedOption(isGeolocated ? LocationOption.GEOLOCATION : LocationOption.NONE)
       onHideRef.current = undefined
     }
-  }, [visible])
+  }, [visible, isGeolocated])
 
   const onSubmit = () => {
     dismissModal()
   }
 
   const onClose = () => {
-    setSelectedOption(LocationOption.NONE)
     dismissModal()
   }
 
