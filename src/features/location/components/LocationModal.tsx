@@ -44,18 +44,24 @@ export const LocationModal = ({ visible, dismissModal }: LocationModalProps) => 
   }
 
   const onGeolocationButtonPressed = async () => {
-    if (permissionState === GeolocPermissionState.GRANTED) return
-    if (permissionState === GeolocPermissionState.NEVER_ASK_AGAIN) {
+    const selectButton = () => setSelectedOption(LocationOption.GEOLOCATION)
+
+    if (permissionState === GeolocPermissionState.GRANTED) {
+      selectButton()
+    } else if (permissionState === GeolocPermissionState.NEVER_ASK_AGAIN) {
       dismissModal()
       onHideRef.current = showGeolocPermissionModal
     } else {
-      await requestGeolocPermission()
+      await requestGeolocPermission({
+        onAcceptance: selectButton,
+      })
     }
   }
 
   const onButtonPressed = (option: LocationOption) => () => {
     if (option === LocationOption.GEOLOCATION) {
       onGeolocationButtonPressed()
+      return
     }
     setSelectedOption(option)
   }
