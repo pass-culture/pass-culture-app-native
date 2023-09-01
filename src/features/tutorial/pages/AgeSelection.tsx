@@ -45,7 +45,7 @@ export const AgeSelection: FunctionComponent<Props> = ({ route }: Props) => {
         navigateTo={
           age
             ? { screen: 'OnboardingAgeInformation', params: { age } }
-            : { screen: 'AgeSelectionOther' }
+            : { screen: 'AgeSelectionOther', params: { type } }
         }
         accessibilityLabel={`${startButtonTitle} ${age} ans`}>
         {age ? (

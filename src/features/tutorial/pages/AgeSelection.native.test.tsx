@@ -1,7 +1,7 @@
 import { StackScreenProps } from '@react-navigation/stack'
 import React from 'react'
 
-import { navigate } from '__mocks__/@react-navigation/native'
+import { navigate, useRoute } from '__mocks__/@react-navigation/native'
 import { TutorialRootStackParamList } from 'features/navigation/RootNavigator/types'
 import { analytics } from 'libs/analytics'
 import { storage } from 'libs/storage'
@@ -40,13 +40,14 @@ describe('AgeSelection', () => {
     )
 
     it('should navigate to AgeSelectionOther page when pressing "Autre"', async () => {
+      useRoute.mockReturnValueOnce({ params: { type: 'onboarding' } })
       renderAgeSelection({ type: 'onboarding' })
 
       const button = screen.getByText('Autre')
       fireEvent.press(button)
 
       await waitFor(() => {
-        expect(navigate).toHaveBeenCalledWith('AgeSelectionOther', undefined)
+        expect(navigate).toHaveBeenCalledWith('AgeSelectionOther', { type: 'onboarding' })
       })
     })
 
