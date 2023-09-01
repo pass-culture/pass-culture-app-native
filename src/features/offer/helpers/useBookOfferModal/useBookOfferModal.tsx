@@ -20,7 +20,7 @@ type Output = {
   showModal: () => void
 }
 
-export const useOfferModal = ({
+export const useBookOfferModal = ({
   modalToDisplay,
   offerId,
   isEndedUsedBooking,

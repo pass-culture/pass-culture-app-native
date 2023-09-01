@@ -2,7 +2,10 @@ import React, { FunctionComponent } from 'react'
 import { Text } from 'react-native'
 
 import { OfferModal } from 'features/offer/enums'
-import { OfferModalProps, useOfferModal } from 'features/offer/helpers/useOfferModal/useOfferModal'
+import {
+  OfferModalProps,
+  useBookOfferModal,
+} from 'features/offer/helpers/useBookOfferModal/useBookOfferModal'
 import { renderHook, render } from 'tests/utils'
 import { LINE_BREAK } from 'ui/theme/constants'
 
@@ -23,13 +26,13 @@ jest.mock('ui/components/modals/useModal.ts', () => ({
 }))
 
 const TestOfferModal: FunctionComponent<OfferModalProps> = (props) => {
-  const { OfferModal } = useOfferModal(props)
+  const { OfferModal } = useBookOfferModal(props)
   return OfferModal
 }
 
 describe('useOfferModal', () => {
   it('do not display anything when there is no modal to display', () => {
-    const { result } = renderHook(() => useOfferModal({ offerId: 1000 }))
+    const { result } = renderHook(() => useBookOfferModal({ offerId: 1000 }))
     expect(result.current.OfferModal).toBeNull()
   })
 
