@@ -32,6 +32,8 @@ interface Props {
 
 export const AgeSelection: FunctionComponent<Props> = ({ type }) => {
   const AgeSelectionButtons = ageButtons.map(({ age }) => {
+    const startButtonTitle = type === 'onboarding' ? 'j’ai' : 'à'
+
     return (
       <AgeButton
         key={age}
@@ -43,10 +45,11 @@ export const AgeSelection: FunctionComponent<Props> = ({ type }) => {
             ? { screen: 'OnboardingAgeInformation', params: { age } }
             : { screen: 'AgeSelectionOther' }
         }
-        accessibilityLabel={`j’ai ${age} ans`}>
+        accessibilityLabel={`${startButtonTitle} ${age} ans`}>
         {age ? (
           <Title4Text>
-            j’ai <Title3Text>{age} ans</Title3Text>
+            {startButtonTitle}
+            <Title3Text> {age} ans</Title3Text>
           </Title4Text>
         ) : (
           <Title4Text>Autre</Title4Text>
@@ -55,7 +58,7 @@ export const AgeSelection: FunctionComponent<Props> = ({ type }) => {
           <React.Fragment>
             <Spacer.Column numberOfSpaces={1} />
             <Typo.CaptionNeutralInfo numberOfLines={2}>
-              j’ai moins de 15 ans ou plus de 18 ans
+              {startButtonTitle} moins de 15 ans ou plus de 18 ans
             </Typo.CaptionNeutralInfo>
           </React.Fragment>
         )}

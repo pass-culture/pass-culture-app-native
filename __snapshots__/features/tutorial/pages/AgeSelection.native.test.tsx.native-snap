@@ -273,7 +273,7 @@ exports[`AgeSelection onboarding should render correctly 1`] = `
                       ]
                     }
                   >
-                    j’ai 
+                    j’ai
                     <Text
                       style={
                         [
@@ -286,6 +286,7 @@ exports[`AgeSelection onboarding should render correctly 1`] = `
                         ]
                       }
                     >
+                       
                       15
                        ans
                     </Text>
@@ -409,7 +410,7 @@ exports[`AgeSelection onboarding should render correctly 1`] = `
                       ]
                     }
                   >
-                    j’ai 
+                    j’ai
                     <Text
                       style={
                         [
@@ -422,6 +423,7 @@ exports[`AgeSelection onboarding should render correctly 1`] = `
                         ]
                       }
                     >
+                       
                       16
                        ans
                     </Text>
@@ -545,7 +547,7 @@ exports[`AgeSelection onboarding should render correctly 1`] = `
                       ]
                     }
                   >
-                    j’ai 
+                    j’ai
                     <Text
                       style={
                         [
@@ -558,6 +560,7 @@ exports[`AgeSelection onboarding should render correctly 1`] = `
                         ]
                       }
                     >
+                       
                       17
                        ans
                     </Text>
@@ -681,7 +684,7 @@ exports[`AgeSelection onboarding should render correctly 1`] = `
                       ]
                     }
                   >
-                    j’ai 
+                    j’ai
                     <Text
                       style={
                         [
@@ -694,6 +697,7 @@ exports[`AgeSelection onboarding should render correctly 1`] = `
                         ]
                       }
                     >
+                       
                       18
                        ans
                     </Text>
@@ -823,7 +827,8 @@ exports[`AgeSelection onboarding should render correctly 1`] = `
                       ]
                     }
                   >
-                    j’ai moins de 15 ans ou plus de 18 ans
+                    j’ai
+                     moins de 15 ans ou plus de 18 ans
                   </Text>
                 </View>
                 <View>
@@ -1056,7 +1061,7 @@ exports[`AgeSelection profileTutorial should render correctly 1`] = `
             }
           >
             <View
-              accessibilityLabel="j’ai 15 ans"
+              accessibilityLabel="à 15 ans"
               accessibilityRole="link"
               accessible={true}
               collapsable={false}
@@ -1074,7 +1079,7 @@ exports[`AgeSelection profileTutorial should render correctly 1`] = `
                   "userSelect": "auto",
                 }
               }
-              testID="j’ai 15 ans"
+              testID="à 15 ans"
             >
               <View
                 style={
@@ -1140,7 +1145,7 @@ exports[`AgeSelection profileTutorial should render correctly 1`] = `
                       ]
                     }
                   >
-                    j’ai 
+                    à
                     <Text
                       style={
                         [
@@ -1153,6 +1158,7 @@ exports[`AgeSelection profileTutorial should render correctly 1`] = `
                         ]
                       }
                     >
+                       
                       15
                        ans
                     </Text>
@@ -1192,7 +1198,7 @@ exports[`AgeSelection profileTutorial should render correctly 1`] = `
             }
           >
             <View
-              accessibilityLabel="j’ai 16 ans"
+              accessibilityLabel="à 16 ans"
               accessibilityRole="link"
               accessible={true}
               collapsable={false}
@@ -1210,7 +1216,7 @@ exports[`AgeSelection profileTutorial should render correctly 1`] = `
                   "userSelect": "auto",
                 }
               }
-              testID="j’ai 16 ans"
+              testID="à 16 ans"
             >
               <View
                 style={
@@ -1276,7 +1282,7 @@ exports[`AgeSelection profileTutorial should render correctly 1`] = `
                       ]
                     }
                   >
-                    j’ai 
+                    à
                     <Text
                       style={
                         [
@@ -1289,6 +1295,7 @@ exports[`AgeSelection profileTutorial should render correctly 1`] = `
                         ]
                       }
                     >
+                       
                       16
                        ans
                     </Text>
@@ -1328,7 +1335,7 @@ exports[`AgeSelection profileTutorial should render correctly 1`] = `
             }
           >
             <View
-              accessibilityLabel="j’ai 17 ans"
+              accessibilityLabel="à 17 ans"
               accessibilityRole="link"
               accessible={true}
               collapsable={false}
@@ -1346,7 +1353,7 @@ exports[`AgeSelection profileTutorial should render correctly 1`] = `
                   "userSelect": "auto",
                 }
               }
-              testID="j’ai 17 ans"
+              testID="à 17 ans"
             >
               <View
                 style={
@@ -1412,7 +1419,7 @@ exports[`AgeSelection profileTutorial should render correctly 1`] = `
                       ]
                     }
                   >
-                    j’ai 
+                    à
                     <Text
                       style={
                         [
@@ -1425,6 +1432,7 @@ exports[`AgeSelection profileTutorial should render correctly 1`] = `
                         ]
                       }
                     >
+                       
                       17
                        ans
                     </Text>
@@ -1464,7 +1472,7 @@ exports[`AgeSelection profileTutorial should render correctly 1`] = `
             }
           >
             <View
-              accessibilityLabel="j’ai 18 ans"
+              accessibilityLabel="à 18 ans"
               accessibilityRole="link"
               accessible={true}
               collapsable={false}
@@ -1482,7 +1490,7 @@ exports[`AgeSelection profileTutorial should render correctly 1`] = `
                   "userSelect": "auto",
                 }
               }
-              testID="j’ai 18 ans"
+              testID="à 18 ans"
             >
               <View
                 style={
@@ -1548,7 +1556,7 @@ exports[`AgeSelection profileTutorial should render correctly 1`] = `
                       ]
                     }
                   >
-                    j’ai 
+                    à
                     <Text
                       style={
                         [
@@ -1561,6 +1569,7 @@ exports[`AgeSelection profileTutorial should render correctly 1`] = `
                         ]
                       }
                     >
+                       
                       18
                        ans
                     </Text>
@@ -1600,7 +1609,7 @@ exports[`AgeSelection profileTutorial should render correctly 1`] = `
             }
           >
             <View
-              accessibilityLabel="j’ai undefined ans"
+              accessibilityLabel="à undefined ans"
               accessibilityRole="link"
               accessible={true}
               collapsable={false}
@@ -1618,7 +1627,7 @@ exports[`AgeSelection profileTutorial should render correctly 1`] = `
                   "userSelect": "auto",
                 }
               }
-              testID="j’ai undefined ans"
+              testID="à undefined ans"
             >
               <View
                 style={
@@ -1690,7 +1699,8 @@ exports[`AgeSelection profileTutorial should render correctly 1`] = `
                       ]
                     }
                   >
-                    j’ai moins de 15 ans ou plus de 18 ans
+                    à
+                     moins de 15 ans ou plus de 18 ans
                   </Text>
                 </View>
                 <View>
