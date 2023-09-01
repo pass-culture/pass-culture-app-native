@@ -5,7 +5,7 @@ import { OfferModal } from 'features/offer/enums'
 import {
   OfferModalProps,
   useBookOfferModal,
-} from 'features/offer/helpers/useBookOfferModal/useBookOfferModal'
+} from 'shared/offer/helpers/useBookOfferModal'
 import { renderHook, render } from 'tests/utils'
 import { LINE_BREAK } from 'ui/theme/constants'
 
