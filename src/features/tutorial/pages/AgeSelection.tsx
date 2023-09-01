@@ -26,7 +26,11 @@ const onBeforeNavigate = async (age?: EligibleAges) => {
   age && (await storage.saveObject('user_age', age))
 }
 
-export const AgeSelection: FunctionComponent = () => {
+interface Props {
+  type: 'onboarding' | 'profileTutorial'
+}
+
+export const AgeSelection: FunctionComponent<Props> = ({ type }) => {
   const AgeSelectionButtons = ageButtons.map(({ age }) => {
     return (
       <AgeButton
@@ -59,10 +63,18 @@ export const AgeSelection: FunctionComponent = () => {
     )
   })
 
+  const title =
+    type === 'onboarding'
+      ? 'Pour commencer, peux-tu nous dire ton âge\u00a0?'
+      : 'Comment ça marche\u00a0?'
+
+  const subtitle =
+    type === 'onboarding'
+      ? 'Cela permet de savoir si tu peux bénéficier du pass Culture.'
+      : 'De 15 à 18 ans, le pass Culture offre un crédit à dépenser dans l’application pour des activités culturelles.'
+
   return (
-    <TutorialPage
-      title="Pour commencer, peux-tu nous dire ton âge&nbsp;?"
-      subtitle="Cela permet de savoir si tu peux bénéficier du pass Culture.">
+    <TutorialPage title={title} subtitle={subtitle}>
       <AccessibilityList
         items={AgeSelectionButtons}
         Separator={<Spacer.Column numberOfSpaces={4} />}

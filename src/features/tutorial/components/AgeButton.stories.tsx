@@ -61,7 +61,7 @@ const WithIcon = Template.bind({})
 WithIcon.args = {
   children: TextExample({}),
   icon: BicolorAll,
-  navigateTo: { screen: 'AgeSelection' },
+  navigateTo: { screen: 'AgeSelection', params: { type: 'onboarding' } },
 }
 
 // TODO(PC-17931): Fix this story
@@ -69,7 +69,7 @@ const WithoutIcon = Template.bind({})
 WithoutIcon.args = {
   children: TextExample({}),
   icon: undefined,
-  navigateTo: { screen: 'AgeSelection' },
+  navigateTo: { screen: 'AgeSelection', params: { type: 'onboarding' } },
 }
 
 // TODO(PC-17931): Fix this story
@@ -77,7 +77,7 @@ const WithSubtitle = Template.bind({})
 WithSubtitle.args = {
   children: TextExample({ withSubtitle: true }),
   icon: BicolorAll,
-  navigateTo: { screen: 'AgeSelection' },
+  navigateTo: { screen: 'AgeSelection', params: { type: 'onboarding' } },
 }
 
 // TODO(PC-17931): Fix this story
@@ -86,7 +86,7 @@ Dense.args = {
   children: TextExample({}),
   icon: BicolorAll,
   dense: true,
-  navigateTo: { screen: 'AgeSelection' },
+  navigateTo: { screen: 'AgeSelection', params: { type: 'onboarding' } },
 }
 
 // TODO(PC-17931): Fix this story
@@ -95,7 +95,7 @@ DenseWithSubtitle.args = {
   children: TextExample({ withSubtitle: true }),
   icon: BicolorAll,
   dense: true,
-  navigateTo: { screen: 'AgeSelection' },
+  navigateTo: { screen: 'AgeSelection', params: { type: 'onboarding' } },
 }
 
 // TODO(PC-17931): Fix this story
@@ -104,5 +104,5 @@ DenseWithoutIcon.args = {
   children: TextExample({}),
   dense: true,
   icon: undefined,
-  navigateTo: { screen: 'AgeSelection' },
+  navigateTo: { screen: 'AgeSelection', params: { type: 'onboarding' } },
 }

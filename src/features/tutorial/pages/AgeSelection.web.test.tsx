@@ -6,7 +6,7 @@ import { AgeSelection } from './AgeSelection'
 
 describe('AgeSelection', () => {
   it('should render null in web', () => {
-    const { container } = render(<AgeSelection />)
+    const { container } = render(<AgeSelection type="onboarding" />)
     expect(container).toBeEmptyDOMElement()
   })
 })

@@ -23,6 +23,6 @@ const Template: ComponentStory<typeof SecondButtonList> = (props) => <SecondButt
 export const Default = Template.bind({})
 Default.args = {
   label: 'test',
-  navigateTo: { screen: 'AgeSelection' },
+  navigateTo: { screen: 'Login' },
   leftIcon: BicolorSmartphone,
 }
