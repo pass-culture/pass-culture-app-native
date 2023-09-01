@@ -21,6 +21,7 @@ exports[`CreditHeader Beneficiary is not underage should render correctly with e
           "justifyContent": "space-between",
           "marginHorizontal": 24,
           "marginTop": 24,
+          "zIndex": 1,
         },
       ]
     }
@@ -400,6 +401,7 @@ exports[`CreditHeader Beneficiary is not underage should render correctly with e
           "justifyContent": "space-between",
           "marginHorizontal": 24,
           "marginTop": 24,
+          "zIndex": 1,
         },
       ]
     }
@@ -616,6 +618,7 @@ exports[`CreditHeader Beneficiary is not underage should render correctly with v
           "justifyContent": "space-between",
           "marginHorizontal": 24,
           "marginTop": 24,
+          "zIndex": 1,
         },
       ]
     }
@@ -1069,6 +1072,7 @@ exports[`CreditHeader Beneficiary is underage should render correctly for undera
           "justifyContent": "space-between",
           "marginHorizontal": 24,
           "marginTop": 24,
+          "zIndex": 1,
         },
       ]
     }

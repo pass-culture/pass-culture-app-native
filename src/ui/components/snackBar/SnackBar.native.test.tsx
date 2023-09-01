@@ -43,7 +43,7 @@ describe('SnackBar Component', () => {
       expect(message.props.color).toEqual(theme.colors.white)
     })
 
-    it('should not display proress bar if timeout is not provided', () => {
+    it('should not display progress bar if timeout is not provided', () => {
       const { queryByTestId } = render(
         renderSnackBar({
           visible: true,

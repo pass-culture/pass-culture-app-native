@@ -30,6 +30,11 @@ exports[`Home page should render correctly 1`] = `
         />
       }
       ListHeaderComponent={<Header />}
+      ListHeaderComponentStyle={
+        {
+          "zIndex": 1,
+        }
+      }
       bounces={true}
       data={
         [
@@ -93,6 +98,11 @@ exports[`Home page should render correctly 1`] = `
       <View>
         <View
           onLayout={[Function]}
+          style={
+            {
+              "zIndex": 1,
+            }
+          }
         >
           <View
             style={
@@ -100,6 +110,7 @@ exports[`Home page should render correctly 1`] = `
                 {
                   "flexGrow": 1,
                   "flexShrink": 0,
+                  "zIndex": 1,
                 },
               ]
             }
@@ -123,6 +134,7 @@ exports[`Home page should render correctly 1`] = `
                     "justifyContent": "space-between",
                     "marginHorizontal": 24,
                     "marginTop": 24,
+                    "zIndex": 1,
                   },
                 ]
               }

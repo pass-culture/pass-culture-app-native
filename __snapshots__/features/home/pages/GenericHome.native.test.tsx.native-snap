@@ -34,6 +34,11 @@ exports[`GenericHome should display real content 1`] = `
           Header
         </Styled(Text)>
       }
+      ListHeaderComponentStyle={
+        {
+          "zIndex": 1,
+        }
+      }
       bounces={true}
       data={
         [
@@ -97,6 +102,11 @@ exports[`GenericHome should display real content 1`] = `
       <View>
         <View
           onLayout={[Function]}
+          style={
+            {
+              "zIndex": 1,
+            }
+          }
         >
           <Text
             style={
@@ -182,6 +192,11 @@ exports[`GenericHome should display skeleton 1`] = `
           Header
         </Styled(Text)>
       }
+      ListHeaderComponentStyle={
+        {
+          "zIndex": 1,
+        }
+      }
       bounces={true}
       data={
         [
@@ -245,6 +260,11 @@ exports[`GenericHome should display skeleton 1`] = `
       <View>
         <View
           onLayout={[Function]}
+          style={
+            {
+              "zIndex": 1,
+            }
+          }
         >
           <Text
             style={

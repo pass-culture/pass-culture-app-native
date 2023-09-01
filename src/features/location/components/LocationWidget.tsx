@@ -1,17 +1,54 @@
-import React from 'react'
-import { Animated } from 'react-native'
+import React, { useEffect } from 'react'
+import { Animated, LayoutChangeEvent } from 'react-native'
 import styled from 'styled-components/native'
 
 import { LocationModal } from 'features/location/components/LocationModal'
-import { styledButton } from 'ui/components/buttons/styledButton'
+import { useGeolocation } from 'libs/geolocation'
+import { storage } from 'libs/storage'
 import { useModal } from 'ui/components/modals/useModal'
-import { Touchable } from 'ui/components/touchable/Touchable'
+import { Tooltip } from 'ui/components/Tooltip'
+import { TouchableOpacity } from 'ui/components/TouchableOpacity'
 import { BicolorLocationPointer } from 'ui/svg/icons/BicolorLocationPointer'
 import { getSpacing, Typo } from 'ui/theme'
 
 const LOCATION_TITLE_MAX_WIDTH = getSpacing(20)
+const WIDGET_HEIGHT = getSpacing(10 + 1 + 4) // roundedButton + padding + caption
+const TOOLTIP_WIDTH = getSpacing(58)
+const TOOLTIP_POINTER_DISTANCE_FROM_RIGHT = getSpacing(5)
 
 export const LocationWidget: React.FC = () => {
+  const [isTooltipVisible, setIsTooltipVisible] = React.useState(false)
+  const [widgetWidth, setWidgetWidth] = React.useState<number | undefined>()
+  const { userPosition } = useGeolocation()
+
+  const hideTooltip = () => setIsTooltipVisible(false)
+
+  function onWidgetLayout(event: LayoutChangeEvent) {
+    const { width } = event.nativeEvent.layout
+    setWidgetWidth(width)
+  }
+
+  useEffect(() => {
+    const displayTooltipIfNeeded = async () => {
+      const timesLocationTooltipHasBeenDisplayed = Number(
+        await storage.readString('times_location_tooltip_has_been_displayed')
+      )
+      setIsTooltipVisible(timesLocationTooltipHasBeenDisplayed < 1 || !userPosition)
+      await storage.saveString(
+        'times_location_tooltip_has_been_displayed',
+        String(timesLocationTooltipHasBeenDisplayed + 1)
+      )
+    }
+    const timeoutOn = setTimeout(displayTooltipIfNeeded, 1000)
+    const timeoutOff = setTimeout(hideTooltip, 9000)
+
+    return () => {
+      clearTimeout(timeoutOn)
+      clearTimeout(timeoutOff)
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps -- should only be called on mount
+  }, [])
+
   const locationTitle = 'Me localiser'
 
   const {
@@ -21,19 +58,36 @@ export const LocationWidget: React.FC = () => {
   } = useModal()
 
   return (
-    <StyledTouchable
-      onPress={showLocationModal}
-      accessibilityLabel="Ouvrir la modale de localisation">
-      <IconContainer>
-        <LocationPointer />
-      </IconContainer>
-      <StyledCaption numberOfLines={1}>{locationTitle}</StyledCaption>
+    <React.Fragment>
+      <StyledTooltip
+        label="Configure ta position et découvre les offres dans la zone géographique de ton choix."
+        isVisible={isTooltipVisible}
+        onHide={hideTooltip}
+        widgetWidth={widgetWidth}
+      />
+      <StyledTouchable
+        onPress={showLocationModal}
+        accessibilityLabel="Ouvrir la modale de localisation"
+        onLayout={onWidgetLayout}>
+        <IconContainer>
+          <LocationPointer />
+        </IconContainer>
+        <StyledCaption numberOfLines={1}>{locationTitle}</StyledCaption>
+      </StyledTouchable>
       <LocationModal visible={locationModalVisible} dismissModal={hideLocationModal} />
-    </StyledTouchable>
+    </React.Fragment>
   )
 }
 
-const StyledTouchable = styledButton(Touchable)({
+const StyledTooltip = styled(Tooltip)<{ widgetWidth?: number }>(({ theme, widgetWidth }) => ({
+  position: 'absolute',
+  top: WIDGET_HEIGHT + getSpacing(2),
+  right: (widgetWidth ?? LOCATION_TITLE_MAX_WIDTH) / 2 - TOOLTIP_POINTER_DISTANCE_FROM_RIGHT,
+  zIndex: theme.zIndex.header,
+  width: TOOLTIP_WIDTH,
+}))
+
+const StyledTouchable = styled(TouchableOpacity)({
   alignItems: 'center',
   marginLeft: getSpacing(2),
 })

@@ -7,7 +7,7 @@ import {
   ScrollView,
   useWindowDimensions,
 } from 'react-native'
-import styled from 'styled-components/native'
+import styled, { useTheme } from 'styled-components/native'
 
 import { useGetOffersData } from 'features/home/api/useGetOffersData'
 import { useGetVenuesData } from 'features/home/api/useGetVenuesData'
@@ -88,6 +88,9 @@ const OnlineHome: FunctionComponent<GenericHomeProps> = ({
   const [isLoading, setIsLoading] = useState(false)
   const { height: screenHeight } = useWindowDimensions()
   const modulesIntervalId = useRef(0)
+  const theme = useTheme()
+
+  const flatListHeaderStyle = { zIndex: theme.zIndex.header }
 
   const modulesToDisplay = modules.slice(0, maxIndex)
 
@@ -182,6 +185,7 @@ const OnlineHome: FunctionComponent<GenericHomeProps> = ({
             <FooterComponent hasShownAll={modulesToDisplay.length >= modules.length} />
           }
           ListHeaderComponent={Header}
+          ListHeaderComponentStyle={flatListHeaderStyle}
           initialNumToRender={initialNumToRender}
           removeClippedSubviews={false}
           onContentSizeChange={onContentSizeChange}

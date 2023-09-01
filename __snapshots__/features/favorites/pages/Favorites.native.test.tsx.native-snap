@@ -31,6 +31,7 @@ exports[`<Favorites/> should render correctly 1`] = `
           "justifyContent": "space-between",
           "marginHorizontal": 24,
           "marginTop": 24,
+          "zIndex": 1,
         },
       ]
     }
