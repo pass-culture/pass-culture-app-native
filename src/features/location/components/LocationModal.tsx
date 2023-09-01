@@ -53,7 +53,7 @@ export const LocationModal = ({ visible, dismissModal }: LocationModalProps) => 
     }
   }
 
-  const onButtonPressed = (option: LocationOption) => {
+  const onButtonPressed = (option: LocationOption) => () => {
     if (option === LocationOption.GEOLOCATION) {
       onGeolocationButtonPressed()
     }
@@ -71,7 +71,7 @@ export const LocationModal = ({ visible, dismissModal }: LocationModalProps) => 
       scrollEnabled={false}
       onModalHide={onHideRef.current}>
       <LocationModalButton
-        onPress={() => onButtonPressed(LocationOption.GEOLOCATION)}
+        onPress={onButtonPressed(LocationOption.GEOLOCATION)}
         icon={PositionFilled}
         color={
           selectedOption === LocationOption.GEOLOCATION ? theme.colors.primary : theme.colors.black
@@ -81,7 +81,7 @@ export const LocationModal = ({ visible, dismissModal }: LocationModalProps) => 
       />
       <Separator />
       <LocationModalButton
-        onPress={() => onButtonPressed(LocationOption.CUSTOM_POSITION)}
+        onPress={onButtonPressed(LocationOption.CUSTOM_POSITION)}
         icon={MagnifyingGlassFilled}
         color={
           selectedOption === LocationOption.CUSTOM_POSITION
