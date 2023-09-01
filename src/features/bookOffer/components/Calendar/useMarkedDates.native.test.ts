@@ -30,11 +30,11 @@ describe('useMarkedDates()', () => {
 
   it('should mark selected date correctly', () => {
     let hook = renderHook(() => useMarkedDates([offerStockResponseSnap], credit))
-    expect(hook.result.current['2021-01-01'].selected).toBeTruthy()
+    expect(hook.result.current['2021-01-01'].selected).toBe(true)
 
     mockBookingState.date = new Date(2021, 4, 4)
     hook = renderHook(() => useMarkedDates([offerStockResponseSnap], credit))
-    expect(hook.result.current['2021-01-01'].selected).toBeFalsy()
+    expect(hook.result.current['2021-01-01'].selected).toBe(false)
   })
 
   it('should skip stocks without date', () => {

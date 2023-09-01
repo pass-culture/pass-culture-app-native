@@ -37,28 +37,28 @@ describe('useOfferModal', () => {
     const { getByText } = render(
       <TestOfferModal modalToDisplay={OfferModal.APPLICATION_PROCESSING} offerId={1000} />
     )
-    expect(getByText('C’est pour bientôt\u00a0!')).toBeTruthy()
+    expect(getByText('C’est pour bientôt\u00a0!')).toBeOnTheScreen()
   })
 
   it('should return authentication modal when asked', () => {
     const { getByText } = render(
       <TestOfferModal modalToDisplay={OfferModal.AUTHENTICATION} offerId={1000} />
     )
-    expect(getByText('Identifie-toi' + LINE_BREAK + 'pour réserver l’offre')).toBeTruthy()
+    expect(getByText('Identifie-toi' + LINE_BREAK + 'pour réserver l’offre')).toBeOnTheScreen()
   })
 
   it('should return booking modal when asked', () => {
     const { getByText } = render(
       <TestOfferModal modalToDisplay={OfferModal.BOOKING} offerId={1000} />
     )
-    expect(getByText('BookingOfferModal')).toBeTruthy()
+    expect(getByText('BookingOfferModal')).toBeOnTheScreen()
   })
 
   it('should return error application modal when asked', () => {
     const { getByText } = render(
       <TestOfferModal modalToDisplay={OfferModal.ERROR_APPLICATION} offerId={1000} />
     )
-    expect(getByText('Tu n’as pas encore obtenu' + LINE_BREAK + 'ton crédit')).toBeTruthy()
+    expect(getByText('Tu n’as pas encore obtenu' + LINE_BREAK + 'ton crédit')).toBeOnTheScreen()
   })
 
   it('should return finish subscription modal when asked', () => {

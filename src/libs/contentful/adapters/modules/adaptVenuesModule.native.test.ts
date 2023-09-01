@@ -7,7 +7,7 @@ describe('adaptVenuesModule', () => {
   it('should adapt a venues module', () => {
     const rawVenuesModule = venuesNatifModuleFixture
 
-    expect(isVenuesContentModel(rawVenuesModule)).toBeTruthy()
+    expect(isVenuesContentModel(rawVenuesModule)).toBe(true)
     expect(adaptVenuesModule(rawVenuesModule)).toEqual(formattedVenuesModule)
   })
 

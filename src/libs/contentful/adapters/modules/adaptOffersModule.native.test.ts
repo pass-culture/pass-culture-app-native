@@ -13,7 +13,7 @@ describe('adaptOffersModule', () => {
   it('should adapt an offers module without additional offers', () => {
     const rawAlgoliaNatifModule = algoliaNatifModuleFixture
 
-    expect(isAlgoliaContentModel(rawAlgoliaNatifModule)).toBeTruthy()
+    expect(isAlgoliaContentModel(rawAlgoliaNatifModule)).toBe(true)
 
     expect(adaptOffersModule(rawAlgoliaNatifModule)).toEqual(formattedOffersModule)
   })

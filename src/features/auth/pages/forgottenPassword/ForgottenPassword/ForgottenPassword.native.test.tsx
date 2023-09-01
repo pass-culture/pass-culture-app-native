@@ -91,7 +91,7 @@ describe('<ForgottenPassword />', () => {
     fireEvent.changeText(emailInput, 'john.doe@gmail.com')
     fireEvent.press(screen.getByText('Valider'))
 
-    expect(recaptchaWebviewModal.props.visible).toBeTruthy()
+    expect(recaptchaWebviewModal.props.visible).toBe(true)
   })
 
   it('should redirect to ResetPasswordEmailSent when password reset request is successful', async () => {

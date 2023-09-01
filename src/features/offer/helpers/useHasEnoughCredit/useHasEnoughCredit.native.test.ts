@@ -40,9 +40,9 @@ describe('hasEnoughCredit', () => {
     const domainsCredit = { [ExpenseDomain.all]: { initial: 50000, remaining: 5000 } }
     const domains = [ExpenseDomain.all]
 
-    expect(hasEnoughCredit(domains, null, domainsCredit)).toBeTruthy()
-    expect(hasEnoughCredit(domains, undefined, domainsCredit)).toBeTruthy()
-    expect(hasEnoughCredit(domains, 0, domainsCredit)).toBeTruthy()
+    expect(hasEnoughCredit(domains, null, domainsCredit)).toBe(true)
+    expect(hasEnoughCredit(domains, undefined, domainsCredit)).toBe(true)
+    expect(hasEnoughCredit(domains, 0, domainsCredit)).toBe(true)
   })
 
   it('should return false if domainsCredit is falsy', () => {
@@ -61,17 +61,17 @@ describe('hasEnoughCredit', () => {
     }
 
     let domains = [ExpenseDomain.all]
-    expect(hasEnoughCredit(domains, 5000, domainsCredit)).toBeTruthy()
-    expect(hasEnoughCredit(domains, 6000, domainsCredit)).toBeFalsy()
+    expect(hasEnoughCredit(domains, 5000, domainsCredit)).toBe(true)
+    expect(hasEnoughCredit(domains, 6000, domainsCredit)).toBe(false)
 
     domains = [ExpenseDomain.all, ExpenseDomain.digital]
-    expect(hasEnoughCredit(domains, 5000, domainsCredit)).toBeFalsy()
-    expect(hasEnoughCredit(domains, 2000, domainsCredit)).toBeTruthy()
+    expect(hasEnoughCredit(domains, 5000, domainsCredit)).toBe(false)
+    expect(hasEnoughCredit(domains, 2000, domainsCredit)).toBe(true)
 
     domains = [ExpenseDomain.all, ExpenseDomain.digital, ExpenseDomain.physical]
-    expect(hasEnoughCredit(domains, 5000, domainsCredit)).toBeFalsy()
-    expect(hasEnoughCredit(domains, 2000, domainsCredit)).toBeFalsy()
-    expect(hasEnoughCredit(domains, 1000, domainsCredit)).toBeTruthy()
+    expect(hasEnoughCredit(domains, 5000, domainsCredit)).toBe(false)
+    expect(hasEnoughCredit(domains, 2000, domainsCredit)).toBe(false)
+    expect(hasEnoughCredit(domains, 1000, domainsCredit)).toBe(true)
   })
 
   it('should be bookable if it respects all the domains remaining credit - after generalisation', () => {
@@ -82,16 +82,16 @@ describe('hasEnoughCredit', () => {
     }
 
     let domains = [ExpenseDomain.all]
-    expect(hasEnoughCredit(domains, 3000, domainsCredit)).toBeTruthy()
-    expect(hasEnoughCredit(domains, 5000, domainsCredit)).toBeFalsy()
+    expect(hasEnoughCredit(domains, 3000, domainsCredit)).toBe(true)
+    expect(hasEnoughCredit(domains, 5000, domainsCredit)).toBe(false)
 
     domains = [ExpenseDomain.all, ExpenseDomain.digital]
-    expect(hasEnoughCredit(domains, 3000, domainsCredit)).toBeFalsy()
-    expect(hasEnoughCredit(domains, 1000, domainsCredit)).toBeTruthy()
+    expect(hasEnoughCredit(domains, 3000, domainsCredit)).toBe(false)
+    expect(hasEnoughCredit(domains, 1000, domainsCredit)).toBe(true)
 
     domains = [ExpenseDomain.all, ExpenseDomain.digital, ExpenseDomain.physical]
-    expect(hasEnoughCredit(domains, 3000, domainsCredit)).toBeFalsy()
-    expect(hasEnoughCredit(domains, 1000, domainsCredit)).toBeTruthy()
+    expect(hasEnoughCredit(domains, 3000, domainsCredit)).toBe(false)
+    expect(hasEnoughCredit(domains, 1000, domainsCredit)).toBe(true)
   })
 })
 
@@ -100,7 +100,7 @@ describe('useHasEnoughCredit', () => {
     mockedOffer = undefined
     const { result } = renderHook(() => useHasEnoughCredit(10))
 
-    expect(result.current).toBeFalsy()
+    expect(result.current).toBe(false)
   })
 
   it('should return false if the user does not have domainsCredit', () => {
@@ -114,7 +114,7 @@ describe('useHasEnoughCredit', () => {
     })
     const { result } = renderHook(() => useHasEnoughCredit(10))
 
-    expect(result.current).toBeFalsy()
+    expect(result.current).toBe(false)
   })
 
   it('should return false if the user does not have enough credit for the offer', () => {
@@ -127,7 +127,7 @@ describe('useHasEnoughCredit', () => {
     })
     const { result } = renderHook(() => useHasEnoughCredit(10))
 
-    expect(result.current).toBeFalsy()
+    expect(result.current).toBe(false)
   })
 
   it('should return true if the user has enough credit for the offer', () => {
@@ -141,6 +141,6 @@ describe('useHasEnoughCredit', () => {
     })
     const { result } = renderHook(() => useHasEnoughCredit(10))
 
-    expect(result.current).toBeTruthy()
+    expect(result.current).toBe(true)
   })
 })

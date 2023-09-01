@@ -130,7 +130,7 @@ describe('<AcceptCgu/>', () => {
 
     fireEvent.press(screen.getByText('Accepter et s’inscrire'))
 
-    expect(recaptchaWebviewModal.props.visible).toBeTruthy()
+    expect(recaptchaWebviewModal.props.visible).toBe(true)
   })
 
   it('should call API to create user account when reCAPTCHA challenge is successful', async () => {

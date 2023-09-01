@@ -76,7 +76,7 @@ describe('<OfferHeader />', () => {
     })
 
     await waitFor(() => {
-      expect(screen.getByTestId('offerHeaderName').props.accessibilityHidden).toBeFalsy()
+      expect(screen.getByTestId('offerHeaderName').props.accessibilityHidden).toBe(false)
       expect(screen.getByTestId('offerHeaderName').props.style.opacity).toBe(1)
     })
   })
