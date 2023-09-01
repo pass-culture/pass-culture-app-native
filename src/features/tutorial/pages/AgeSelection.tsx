@@ -26,7 +26,7 @@ const onBeforeNavigate = async (age?: EligibleAges) => {
   age && (await storage.saveObject('user_age', age))
 }
 
-export const OnboardingAgeSelection: FunctionComponent = () => {
+export const AgeSelection: FunctionComponent = () => {
   const AgeSelectionButtons = ageButtons.map(({ age }) => {
     return (
       <AgeButton

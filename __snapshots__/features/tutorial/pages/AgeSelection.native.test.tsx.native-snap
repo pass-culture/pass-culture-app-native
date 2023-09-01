@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`OnboardingAgeSelection should render correctly 1`] = `
+exports[`AgeSelection should render correctly 1`] = `
 [
   <View
     height={64}
