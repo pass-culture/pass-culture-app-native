@@ -1,8 +1,9 @@
-import React from 'react'
+import React, { useEffect, useRef } from 'react'
 import styled from 'styled-components/native'
 
 import { LocationModalButton } from 'features/location/components/LocationModalButton'
 import { LocationOption } from 'features/location/enums'
+import { GeolocPermissionState, useLocation } from 'libs/geolocation'
 import { theme } from 'theme'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { AppModal } from 'ui/components/modals/AppModal'
@@ -18,14 +19,36 @@ interface LocationModalProps {
 }
 
 export const LocationModal = ({ visible, dismissModal }: LocationModalProps) => {
+  const { permissionState, requestGeolocPermission, showGeolocPermissionModal } = useLocation()
   const [selectedOption, setSelectedOption] = React.useState<LocationOption>(LocationOption.NONE)
+  const onHideRef = useRef<() => void>()
+
+  useEffect(() => {
+    if (visible) {
+      onHideRef.current = undefined
+    }
+  }, [visible])
+
 
   const onClose = () => {
     setSelectedOption(LocationOption.NONE)
     dismissModal()
   }
 
+  const onGeolocationButtonPressed = async () => {
+    if (permissionState === GeolocPermissionState.GRANTED) return
+    if (permissionState === GeolocPermissionState.NEVER_ASK_AGAIN) {
+      dismissModal()
+      onHideRef.current = showGeolocPermissionModal
+    } else {
+      await requestGeolocPermission()
+    }
+  }
+
   const onButtonPressed = (option: LocationOption) => {
+    if (option === LocationOption.GEOLOCATION) {
+      onGeolocationButtonPressed()
+    }
     setSelectedOption(option)
   }
 
@@ -37,7 +60,8 @@ export const LocationModal = ({ visible, dismissModal }: LocationModalProps) => 
       rightIcon={Close}
       onRightIconPress={onClose}
       isUpToStatusBar
-      scrollEnabled={false}>
+      scrollEnabled={false}
+      onModalHide={onHideRef.current}>
       <LocationModalButton
         onPress={() => onButtonPressed(LocationOption.GEOLOCATION)}
         icon={PositionFilled}
