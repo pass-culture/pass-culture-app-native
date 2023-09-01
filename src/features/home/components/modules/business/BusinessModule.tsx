@@ -3,6 +3,8 @@ import { PixelRatio } from 'react-native'
 import styled, { useTheme } from 'styled-components/native'
 
 import { useAuthContext } from 'features/auth/context/AuthContext'
+import { getBusinessUrl } from 'features/home/components/modules/business/helpers/getBusinessUrl'
+import { showBusinessModule } from 'features/home/components/modules/business/helpers/showBusinessModule'
 import { openUrl } from 'features/navigation/helpers'
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { analytics } from 'libs/analytics'
@@ -15,8 +17,6 @@ import { ArrowNext } from 'ui/svg/icons/ArrowNext'
 import { Idea } from 'ui/svg/icons/Idea'
 import { Typo, getSpacing, MARGIN_DP, LENGTH_XS, RATIO_BUSINESS, Spacer } from 'ui/theme'
 import { customFocusOutline } from 'ui/theme/customFocusOutline/customFocusOutline'
-
-import { getBusinessUrl, showBusinessModule } from './BusinessModule.utils'
 
 export interface BusinessModuleProps {
   homeEntryId: string | undefined
