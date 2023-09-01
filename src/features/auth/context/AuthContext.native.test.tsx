@@ -27,14 +27,19 @@ jest.unmock('libs/keychain')
 jest.unmock('libs/network/NetInfoWrapper')
 const mockedUseNetInfo = useNetInfo as jest.Mock
 
+const MAX_AVERAGE_SESSION_DURATION_IN_MS = 60 * 60 * 1000
 const tokenRemainingLifetimeInMs = 10 * 60 * 1000
-const decodedTokenWithRemainingLifetime = {
-  exp: (CURRENT_DATE.getTime() + tokenRemainingLifetimeInMs) / 1000,
+const defaultDecodedToken = {
   iat: 1691670780,
   jti: '7f82c8b0-6222-42be-b913-cdf53958f17d',
   sub: 'bene_18@example.com',
   nbf: 1691670780,
   user_claims: { user_id: 1234 },
+}
+const tokenExpirationDate = (CURRENT_DATE.getTime() + tokenRemainingLifetimeInMs) / 1000
+const decodedTokenWithRemainingLifetime = {
+  ...defaultDecodedToken,
+  exp: tokenExpirationDate,
 }
 const decodeTokenSpy = jest.spyOn(jwt, 'default').mockReturnValue(decodedTokenWithRemainingLifetime)
 
@@ -46,6 +51,10 @@ describe('AuthContext', () => {
     await storage.clear('access_token')
     await clearRefreshToken()
     await storage.clear(QueryKeys.USER_PROFILE as unknown as StorageKey)
+    decodeTokenSpy.mockReturnValue({
+      ...defaultDecodedToken,
+      exp: tokenExpirationDate,
+    })
   })
 
   describe('useAuthContext', () => {
@@ -163,6 +172,26 @@ describe('AuthContext', () => {
         jest.advanceTimersByTime(tokenRemainingLifetimeInMs)
       })
 
+      expect(setTimeout).toHaveBeenCalledWith(expect.any(Function), tokenRemainingLifetimeInMs)
+      expect(result.current.isLoggedIn).toBe(false)
+    })
+
+    it('should not log out user using setTimeout when refresh token remaining lifetime is longer than max average session duration', async () => {
+      decodedTokenWithRemainingLifetime.exp =
+        (CURRENT_DATE.getTime() + MAX_AVERAGE_SESSION_DURATION_IN_MS) / 1000
+      await saveRefreshToken('token')
+      const result = renderUseAuthContext()
+
+      await act(async () => {}) // We need this first act to make sure all updates are finished before advancing timers
+      await act(async () => {
+        mockdate.set(CURRENT_DATE.getTime() + MAX_AVERAGE_SESSION_DURATION_IN_MS)
+        jest.advanceTimersByTime(MAX_AVERAGE_SESSION_DURATION_IN_MS)
+      })
+
+      expect(setTimeout).not.toHaveBeenCalledWith(
+        expect.any(Function),
+        MAX_AVERAGE_SESSION_DURATION_IN_MS
+      )
       expect(result.current.isLoggedIn).toBe(false)
     })
 

@@ -23,7 +23,7 @@ import { getAge } from 'shared/user/getAge'
 
 import { version as appVersion } from '../../../../package.json'
 
-const MAX_DELAY_VALUE_FOR_SET_TIMEOUT_IN_MS = 2147483647
+const MAX_AVERAGE_SESSION_DURATION_IN_MS = 60 * 60 * 1000
 export interface IAuthContext {
   isLoggedIn: boolean
   setIsLoggedIn: (isLoggedIn: boolean) => void
@@ -96,11 +96,12 @@ export const AuthWrapper = memo(function AuthWrapper({
             const remainingLifetimeInMs = computeTokenRemainingLifetimeInMs(refreshToken)
             if (
               remainingLifetimeInMs &&
-              remainingLifetimeInMs < MAX_DELAY_VALUE_FOR_SET_TIMEOUT_IN_MS
-            )
+              remainingLifetimeInMs < MAX_AVERAGE_SESSION_DURATION_IN_MS
+            ) {
               timeoutRef.current = globalThis.setTimeout(() => {
                 setIsLoggedIn(false)
               }, remainingLifetimeInMs)
+            }
           }
           return
       }
