@@ -5,6 +5,7 @@ import styled from 'styled-components/native'
 import { AuthenticationButton } from 'features/auth/components/AuthenticationButton/AuthenticationButton'
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
+import { CreditBarWithSeparator } from 'features/profile/components/CreditInfo/CreditBarWithSeparator'
 import { useDepositActivationAge } from 'features/profile/helpers/useDepositActivationAge'
 import { env } from 'libs/environment'
 import { getAge } from 'shared/user/getAge'
@@ -49,6 +50,9 @@ export const ProfileTutorialAgeInformation: FunctionComponent<Props> = ({ select
           {headerTitle}
         </Typo.Title3>
         <Spacer.Column numberOfSpaces={6} />
+        <GreyContainer>
+          <CreditBarWithSeparator currentStep={1} totalStep={2} />
+        </GreyContainer>
         {/* À supprimer lors de la vraie implémentation*/}
         <Typo.Body>{activationText}</Typo.Body>
         <Spacer.Column numberOfSpaces={4} />
@@ -85,6 +89,11 @@ export const ProfileTutorialAgeInformation: FunctionComponent<Props> = ({ select
     </React.Fragment>
   )
 }
+
+const GreyContainer = styled.View(({ theme }) => ({
+  backgroundColor: theme.colors.greyLight,
+  padding: getSpacing(3),
+}))
 
 const StyledScrollView = styled.ScrollView.attrs(({ theme }) => ({
   contentContainerStyle: {

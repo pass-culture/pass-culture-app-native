@@ -27,11 +27,16 @@ export const CreditBarWithSeparator: React.FC<Props> = ({ currentStep, totalStep
 
 const Separator = styled.View<{ width: number }>(({ theme, width }) => ({
   borderRadius: getSpacing(2),
-  height: getSpacing(2),
+  height: getSpacing(3),
   width: `${width}%`,
-  outlineColor: theme.colors.white,
-  outlineStyle: theme.outline.style,
-  outlineWidth: theme.outline.width,
+  borderColor: theme.colors.white,
+  borderStyle: 'solid',
+  borderWidth: getSpacing(0.5),
+  // borderBottomWidth: getSpacing(0.5),
+  // borderTopWidth: getSpacing(0.5),
+  // borderLeftWidth: getSpacing(0.5),
+  // borderRightWidth: getSpacing(0.5),
   position: 'absolute',
   left: 0,
+  top: -2,
 }))
