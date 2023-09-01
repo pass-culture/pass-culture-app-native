@@ -1,21 +1,21 @@
 import { NavigationOnboarding } from 'features/internal/cheatcodes/pages/NavigationOnboarding/NavigationOnboarding'
 import { OnboardingRootStackParamList, GenericRoute } from 'features/navigation/RootNavigator/types'
+import { AgeSelection } from 'features/tutorial/pages/AgeSelection'
 import { AgeSelectionOther } from 'features/tutorial/pages/AgeSelectionOther'
 import { OnboardingAgeInformation } from 'features/tutorial/pages/onboarding/OnboardingAgeInformation'
-import { OnboardingAgeSelection } from 'features/tutorial/pages/onboarding/OnboardingAgeSelection'
 import { OnboardingGeolocation } from 'features/tutorial/pages/onboarding/OnboardingGeolocation'
 import { OnboardingWelcome } from 'features/tutorial/pages/onboarding/OnboardingWelcome'
 
 export const onboardingRoutes: GenericRoute<OnboardingRootStackParamList>[] = [
   {
-    name: 'AgeInformation',
+    name: 'OnboardingAgeInformation',
     component: OnboardingAgeInformation,
     path: 'selection-age/eligible',
     options: { title: 'Information d’âge' },
   },
   {
     name: 'AgeSelection',
-    component: OnboardingAgeSelection,
+    component: AgeSelection,
     path: 'selection-age',
     options: { title: 'Sélection d’âge' },
   },

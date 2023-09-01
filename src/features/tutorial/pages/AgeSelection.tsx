@@ -26,7 +26,7 @@ const onBeforeNavigate = async (age?: EligibleAges) => {
   age && (await storage.saveObject('user_age', age))
 }
 
-export const OnboardingAgeSelection: FunctionComponent = () => {
+export const AgeSelection: FunctionComponent = () => {
   const AgeSelectionButtons = ageButtons.map(({ age }) => {
     return (
       <AgeButton
@@ -35,7 +35,9 @@ export const OnboardingAgeSelection: FunctionComponent = () => {
         dense={!age}
         onBeforeNavigate={async () => onBeforeNavigate(age)}
         navigateTo={
-          age ? { screen: 'AgeInformation', params: { age } } : { screen: 'AgeSelectionOther' }
+          age
+            ? { screen: 'OnboardingAgeInformation', params: { age } }
+            : { screen: 'AgeSelectionOther' }
         }
         accessibilityLabel={`j’ai ${age} ans`}>
         {age ? (

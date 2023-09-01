@@ -10,15 +10,15 @@ const AGES = [15, 16, 17, 18]
 
 describe('OnboardingAgeInformation', () => {
   it.each(AGES)('should render null in web', (age) => {
-    const { container } = renderAgeInformation({ age })
+    const { container } = renderOnboardingAgeInformation({ age })
     expect(container).toBeEmptyDOMElement()
   })
 })
 
-const renderAgeInformation = (navigationParams: { age: number }) => {
+const renderOnboardingAgeInformation = (navigationParams: { age: number }) => {
   const navProps = { route: { params: navigationParams } } as StackScreenProps<
     OnboardingRootStackParamList,
-    'AgeInformation'
+    'OnboardingAgeInformation'
   >
   return render(
     // eslint-disable-next-line local-rules/no-react-query-provider-hoc
