@@ -23,11 +23,7 @@ export async function clearRefreshToken(): Promise<void> {
 
 export async function getRefreshToken(): Promise<string | null> {
   try {
-    const credentials = { password: await AsyncStorage.getItem(REFRESH_TOKEN_KEY) }
-    if (credentials) {
-      return (credentials as unknown as { password: string }).password
-    }
-    return null
+    return await AsyncStorage.getItem(REFRESH_TOKEN_KEY)
   } catch {
     throw Error('Keychain non accessible')
   }
