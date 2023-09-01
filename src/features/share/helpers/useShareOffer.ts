@@ -6,7 +6,7 @@ import { formatShareOfferMessage } from 'features/share/helpers/formatShareOffer
 import { getOfferUrl } from 'features/share/helpers/getOfferUrl'
 import { ShareOutput } from 'features/share/types'
 import { share } from 'libs/share'
-import { getOfferLocationName } from 'shared/offer/getOfferLocationName'
+import { getOfferLocationName } from 'shared/offer/helpers/getOfferLocationName'
 import { DOUBLE_LINE_BREAK } from 'ui/theme/constants'
 
 const doNothingFn = () => {
