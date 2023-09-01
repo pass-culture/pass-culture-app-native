@@ -22,7 +22,7 @@ export function NavigationOnboarding(): React.JSX.Element {
         <LinkToComponent name="OnboardingWelcome" />
         <LinkToComponent name="OnboardingGeolocation" />
         <LinkToComponent name="AgeSelection" navigationParams={{ type: 'onboarding' }} />
-        <LinkToComponent name="AgeSelectionOther" />
+        <LinkToComponent name="AgeSelectionOther" navigationParams={{ type: 'onboarding' }} />
         <LinkToComponent
           name="OnboardingAgeInformation"
           title="AgeInfo - 15 ans"

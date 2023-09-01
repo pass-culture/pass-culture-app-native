@@ -64,7 +64,7 @@ export type CulturalSurveyRootStackParamList = {
 
 export type TutorialRootStackParamList = {
   AgeSelection: { type: 'onboarding' | 'profileTutorial' }
-  AgeSelectionOther: undefined
+  AgeSelectionOther: { type: 'onboarding' | 'profileTutorial' }
   NavigationTutorial: undefined
   NavigationOnboarding: undefined
   NavigationProfileTutorial: undefined

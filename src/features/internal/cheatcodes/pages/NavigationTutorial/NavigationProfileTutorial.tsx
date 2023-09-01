@@ -12,7 +12,7 @@ export function NavigationProfileTutorial(): React.JSX.Element {
       <PageHeaderSecondary title="Tutoriel profil" />
       <StyledContainer>
         <LinkToComponent name="AgeSelection" navigationParams={{ type: 'profileTutorial' }} />
-        <LinkToComponent name="AgeSelectionOther" />
+        <LinkToComponent name="AgeSelectionOther" navigationParams={{ type: 'profileTutorial' }} />
         <LinkToComponent
           name="ProfileTutorialAgeInformation"
           title="ProfileTutorialAgeInformation - 15 ans"

@@ -1,6 +1,349 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`AgeSelectionOther should render correctly 1`] = `
+exports[`AgeSelectionOther onboarding profileTutorial should render correctly 1`] = `
+[
+  <View
+    height={64}
+    style={
+      [
+        {
+          "height": 64,
+        },
+      ]
+    }
+  />,
+  <View
+    style={
+      [
+        {
+          "position": "absolute",
+          "top": 0,
+          "width": "100%",
+          "zIndex": 1,
+        },
+      ]
+    }
+  >
+    <View
+      customHeight={16}
+      enable={true}
+      style={
+        [
+          {
+            "height": 16,
+          },
+        ]
+      }
+    />
+    <View
+      style={
+        [
+          {
+            "height": 48,
+            "justifyContent": "center",
+            "paddingHorizontal": 12,
+          },
+        ]
+      }
+    >
+      <View
+        accessibilityLabel="Revenir en arrière"
+        accessibilityRole="button"
+        accessible={true}
+        collapsable={false}
+        focusable={true}
+        onClick={[Function]}
+        onResponderGrant={[Function]}
+        onResponderMove={[Function]}
+        onResponderRelease={[Function]}
+        onResponderTerminate={[Function]}
+        onResponderTerminationRequest={[Function]}
+        onStartShouldSetResponder={[Function]}
+        style={
+          {
+            "alignItems": "center",
+            "flexGrow": 1,
+            "height": 40,
+            "justifyContent": "center",
+            "maxWidth": 40,
+            "opacity": 1,
+            "userSelect": "auto",
+          }
+        }
+        testID="Revenir en arrière"
+      >
+        <View
+          height={24}
+          testID="icon-back"
+          width={24}
+        >
+          <Text>
+            icon-back-SVG-Mock
+          </Text>
+        </View>
+        <Text
+          style={
+            [
+              {
+                "display": "none",
+              },
+            ]
+          }
+        >
+          Retour
+        </Text>
+      </View>
+    </View>
+  </View>,
+  <RCTScrollView>
+    <View>
+      <View
+        style={
+          [
+            {
+              "marginHorizontal": 24,
+            },
+          ]
+        }
+      >
+        <View
+          numberOfSpaces={4}
+          style={
+            [
+              {
+                "height": 16,
+              },
+            ]
+          }
+        />
+        <View
+          accessibilityLabel="à moins de 15 ans"
+          accessibilityRole="link"
+          accessible={true}
+          collapsable={false}
+          focusable={true}
+          onClick={[Function]}
+          onResponderGrant={[Function]}
+          onResponderMove={[Function]}
+          onResponderRelease={[Function]}
+          onResponderTerminate={[Function]}
+          onResponderTerminationRequest={[Function]}
+          onStartShouldSetResponder={[Function]}
+          style={
+            {
+              "opacity": 1,
+              "userSelect": "auto",
+            }
+          }
+          testID="à moins de 15 ans"
+        >
+          <View
+            style={
+              [
+                {
+                  "alignItems": "center",
+                  "borderColor": "#90949D",
+                  "borderRadius": 7,
+                  "borderStyle": "solid",
+                  "borderWidth": 1,
+                  "flexDirection": "row",
+                  "padding": 16,
+                  "width": "100%",
+                },
+                [
+                  {
+                    "paddingVertical": 24,
+                  },
+                ],
+              ]
+            }
+          >
+            <View
+              style={
+                [
+                  {
+                    "flexGrow": 1,
+                    "flexShrink": 1,
+                    "marginRight": 16,
+                    "textAlign": "start",
+                  },
+                ]
+              }
+            >
+              <Text
+                style={
+                  [
+                    {
+                      "color": "#320096",
+                      "fontFamily": "Montserrat-Medium",
+                      "fontSize": 18,
+                      "lineHeight": 22,
+                    },
+                  ]
+                }
+              >
+                à
+                <Text
+                  style={
+                    [
+                      {
+                        "color": "#320096",
+                        "fontFamily": "Montserrat-Bold",
+                        "fontSize": 20,
+                        "lineHeight": 24,
+                      },
+                    ]
+                  }
+                >
+                   moins de 15 ans
+                </Text>
+              </Text>
+            </View>
+            <View>
+              <View
+                height={24}
+                width={24}
+              >
+                <Text>
+                  undefined-SVG-Mock
+                </Text>
+              </View>
+            </View>
+          </View>
+        </View>
+        <View
+          numberOfSpaces={4}
+          style={
+            [
+              {
+                "height": 16,
+              },
+            ]
+          }
+        />
+        <View
+          accessibilityLabel="à plus de 18 ans"
+          accessibilityRole="link"
+          accessible={true}
+          collapsable={false}
+          focusable={true}
+          onClick={[Function]}
+          onResponderGrant={[Function]}
+          onResponderMove={[Function]}
+          onResponderRelease={[Function]}
+          onResponderTerminate={[Function]}
+          onResponderTerminationRequest={[Function]}
+          onStartShouldSetResponder={[Function]}
+          style={
+            {
+              "opacity": 1,
+              "userSelect": "auto",
+            }
+          }
+          testID="à plus de 18 ans"
+        >
+          <View
+            style={
+              [
+                {
+                  "alignItems": "center",
+                  "borderColor": "#90949D",
+                  "borderRadius": 7,
+                  "borderStyle": "solid",
+                  "borderWidth": 1,
+                  "flexDirection": "row",
+                  "padding": 16,
+                  "width": "100%",
+                },
+                [
+                  {
+                    "paddingVertical": 24,
+                  },
+                ],
+              ]
+            }
+          >
+            <View
+              style={
+                [
+                  {
+                    "flexGrow": 1,
+                    "flexShrink": 1,
+                    "marginRight": 16,
+                    "textAlign": "start",
+                  },
+                ]
+              }
+            >
+              <Text
+                style={
+                  [
+                    {
+                      "color": "#320096",
+                      "fontFamily": "Montserrat-Medium",
+                      "fontSize": 18,
+                      "lineHeight": 22,
+                    },
+                  ]
+                }
+              >
+                à
+                <Text
+                  style={
+                    [
+                      {
+                        "color": "#320096",
+                        "fontFamily": "Montserrat-Bold",
+                        "fontSize": 20,
+                        "lineHeight": 24,
+                      },
+                    ]
+                  }
+                >
+                   plus de 18 ans
+                </Text>
+              </Text>
+            </View>
+            <View>
+              <View
+                height={24}
+                width={24}
+              >
+                <Text>
+                  undefined-SVG-Mock
+                </Text>
+              </View>
+            </View>
+          </View>
+        </View>
+      </View>
+      <View
+        numberOfSpaces={6}
+        style={
+          [
+            {
+              "height": 24,
+            },
+          ]
+        }
+      />
+    </View>
+  </RCTScrollView>,
+  <View
+    customHeight={8}
+    enable={true}
+    style={
+      [
+        {
+          "height": 8,
+        },
+      ]
+    }
+  />,
+]
+`;
+
+exports[`AgeSelectionOther onboarding should render correctly 1`] = `
 [
   <View
     height={64}
@@ -182,7 +525,7 @@ exports[`AgeSelectionOther should render correctly 1`] = `
                   ]
                 }
               >
-                j’ai 
+                j’ai
                 <Text
                   style={
                     [
@@ -195,7 +538,7 @@ exports[`AgeSelectionOther should render correctly 1`] = `
                     ]
                   }
                 >
-                  moins de 15 ans
+                   moins de 15 ans
                 </Text>
               </Text>
             </View>
@@ -287,7 +630,7 @@ exports[`AgeSelectionOther should render correctly 1`] = `
                   ]
                 }
               >
-                j’ai 
+                j’ai
                 <Text
                   style={
                     [
@@ -300,7 +643,7 @@ exports[`AgeSelectionOther should render correctly 1`] = `
                     ]
                   }
                 >
-                  plus de 18 ans
+                   plus de 18 ans
                 </Text>
               </Text>
             </View>
