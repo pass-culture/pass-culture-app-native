@@ -19,8 +19,10 @@ interface LocationModalProps {
 }
 
 export const LocationModal = ({ visible, dismissModal }: LocationModalProps) => {
-  const { permissionState, requestGeolocPermission, showGeolocPermissionModal } = useLocation()
-  const [selectedOption, setSelectedOption] = React.useState<LocationOption>(LocationOption.NONE)
+  const { userPosition, permissionState, requestGeolocPermission, showGeolocPermissionModal } =
+    useLocation()
+
+  const isGeolocated = !!userPosition
   const onHideRef = useRef<() => void>()
 
   useEffect(() => {
@@ -69,7 +71,7 @@ export const LocationModal = ({ visible, dismissModal }: LocationModalProps) => 
           selectedOption === LocationOption.GEOLOCATION ? theme.colors.primary : theme.colors.black
         }
         title={'Utiliser ma position actuelle'}
-        subtitle={'Géolocalisation désactivée'}
+        subtitle={isGeolocated ? undefined : 'Géolocalisation désactivée'}
       />
       <Separator />
       <LocationModalButton
