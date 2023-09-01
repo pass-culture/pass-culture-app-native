@@ -4,7 +4,7 @@ import React from 'react'
 
 import { navigateToHomeConfig } from 'features/navigation/helpers'
 import {
-  OnboardingRootStackParamList,
+  TutorialRootStackParamList,
   UseNavigationType,
 } from 'features/navigation/RootNavigator/types'
 import { homeNavConfig } from 'features/navigation/TabBar/helpers'
@@ -18,7 +18,7 @@ import { ClockFilled } from 'ui/svg/icons/ClockFilled'
 import { Spacer, Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
-type Props = StackScreenProps<OnboardingRootStackParamList, 'OnboardingAgeInformation'>
+type Props = StackScreenProps<TutorialRootStackParamList, 'OnboardingAgeInformation'>
 
 const onSignupPress = () => {
   analytics.logOnboardingAgeInformationClicked({ type: 'account_creation' })

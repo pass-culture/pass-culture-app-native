@@ -1,6 +1,8 @@
+import { StackScreenProps } from '@react-navigation/stack'
 import React from 'react'
 
 import { navigate } from '__mocks__/@react-navigation/native'
+import { TutorialRootStackParamList } from 'features/navigation/RootNavigator/types'
 import { analytics } from 'libs/analytics'
 import { storage } from 'libs/storage'
 import { fireEvent, render, screen, waitFor } from 'tests/utils'
@@ -18,7 +20,7 @@ describe('AgeSelection', () => {
 
   describe('onboarding', () => {
     it('should render correctly', () => {
-      render(<AgeSelection type="onboarding" />)
+      renderAgeSelection({ type: 'onboarding' })
 
       expect(screen).toMatchSnapshot()
     })
@@ -26,7 +28,7 @@ describe('AgeSelection', () => {
     it.each(AGES)(
       'should navigate to OnboardingAgeInformation page with params age=%s when pressing "j’ai %s ans"',
       async (age) => {
-        render(<AgeSelection type="onboarding" />)
+        renderAgeSelection({ type: 'onboarding' })
 
         const button = screen.getByText(`${age} ans`)
         fireEvent.press(button)
@@ -38,7 +40,7 @@ describe('AgeSelection', () => {
     )
 
     it('should navigate to AgeSelectionOther page when pressing "Autre"', async () => {
-      render(<AgeSelection type="onboarding" />)
+      renderAgeSelection({ type: 'onboarding' })
 
       const button = screen.getByText('Autre')
       fireEvent.press(button)
@@ -49,7 +51,7 @@ describe('AgeSelection', () => {
     })
 
     it.each(AGES)('should log analytics with params age=%s when pressing "j’ai %s ans"', (age) => {
-      render(<AgeSelection type="onboarding" />)
+      renderAgeSelection({ type: 'onboarding' })
 
       const button = screen.getByText(`${age} ans`)
       fireEvent.press(button)
@@ -58,7 +60,7 @@ describe('AgeSelection', () => {
     })
 
     it('should log analytics when pressing "Autre"', () => {
-      render(<AgeSelection type="onboarding" />)
+      renderAgeSelection({ type: 'onboarding' })
 
       const button = screen.getByText('Autre')
       fireEvent.press(button)
@@ -69,7 +71,7 @@ describe('AgeSelection', () => {
     it.each(AGES)(
       'should set user age to %s in local storage  when pressing "j’ai %s ans"',
       async (age) => {
-        render(<AgeSelection type="onboarding" />)
+        renderAgeSelection({ type: 'onboarding' })
 
         const button = screen.getByText(`${age} ans`)
         fireEvent.press(button)
@@ -82,9 +84,17 @@ describe('AgeSelection', () => {
 
   describe('profileTutorial', () => {
     it('should render correctly', () => {
-      render(<AgeSelection type="profileTutorial" />)
+      renderAgeSelection({ type: 'profileTutorial' })
 
       expect(screen).toMatchSnapshot()
     })
   })
 })
+
+const renderAgeSelection = (navigationParams: { type: string }) => {
+  const navProps = { route: { params: navigationParams } } as StackScreenProps<
+    TutorialRootStackParamList,
+    'AgeSelection'
+  >
+  return render(<AgeSelection {...navProps} />)
+}

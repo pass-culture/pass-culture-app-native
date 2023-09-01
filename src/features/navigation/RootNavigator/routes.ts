@@ -41,7 +41,7 @@ import { UTMParameters } from 'features/internal/marketingAndCommunication/pages
 import { PageNotFound } from 'features/navigation/pages/PageNotFound'
 import { accessibilityRoutes } from 'features/navigation/RootNavigator/accessibilityRoutes'
 import { culturalSurveyRoutes } from 'features/navigation/RootNavigator/culturalSurveyRoutes'
-import { onboardingRoutes } from 'features/navigation/RootNavigator/onboardingRoutes'
+import { tutorialRoutes } from 'features/navigation/RootNavigator/onboardingRoutes'
 import { subscriptionRoutes } from 'features/navigation/RootNavigator/subscriptionRoutes'
 import { trustedDeviceRoutes } from 'features/navigation/RootNavigator/trustedDeviceRoutes'
 import { screenParamsParser, screenParamsStringifier } from 'features/navigation/screenParamsUtils'
@@ -72,7 +72,7 @@ import { Route } from './types'
 export const routes: Route[] = [
   ...accessibilityRoutes,
   ...culturalSurveyRoutes,
-  ...onboardingRoutes,
+  ...tutorialRoutes,
   ...subscriptionRoutes,
   ...trustedDeviceRoutes,
   {

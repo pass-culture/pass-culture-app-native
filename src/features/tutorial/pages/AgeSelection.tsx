@@ -1,6 +1,8 @@
+import { StackScreenProps } from '@react-navigation/stack'
 import React, { FunctionComponent } from 'react'
 import styled from 'styled-components/native'
 
+import { TutorialRootStackParamList } from 'features/navigation/RootNavigator/types'
 import { AgeButton } from 'features/tutorial/components/AgeButton'
 import { TutorialPage } from 'features/tutorial/pages/TutorialPage'
 import { EligibleAges } from 'features/tutorial/types'
@@ -10,6 +12,8 @@ import { AccessibilityList } from 'ui/components/accessibility/AccessibilityList
 import { All } from 'ui/svg/icons/bicolor/All'
 import { Spacer, Typo } from 'ui/theme'
 import { getNoHeadingAttrs } from 'ui/theme/typographyAttrs/getNoHeadingAttrs'
+
+type Props = StackScreenProps<TutorialRootStackParamList, 'AgeSelection'>
 
 const OTHER = 'other'
 
@@ -26,11 +30,9 @@ const onBeforeNavigate = async (age?: EligibleAges) => {
   age && (await storage.saveObject('user_age', age))
 }
 
-interface Props {
-  type: 'onboarding' | 'profileTutorial'
-}
+export const AgeSelection: FunctionComponent<Props> = ({ route }: Props) => {
+  const type = route.params.type
 
-export const AgeSelection: FunctionComponent<Props> = ({ type }) => {
   const AgeSelectionButtons = ageButtons.map(({ age }) => {
     const startButtonTitle = type === 'onboarding' ? 'j’ai' : 'à'
 

@@ -62,13 +62,16 @@ export type CulturalSurveyRootStackParamList = {
   FAQWebview: undefined
 }
 
-export type OnboardingRootStackParamList = {
+export type TutorialRootStackParamList = {
   AgeSelection: { type: 'onboarding' | 'profileTutorial' }
   AgeSelectionOther: undefined
+  NavigationTutorial: undefined
   NavigationOnboarding: undefined
+  NavigationProfileTutorial: undefined
   OnboardingAgeInformation: { age: 15 | 16 | 17 | 18 }
   OnboardingGeolocation: undefined
   OnboardingWelcome: undefined
+  ProfileTutorialAgeInformation: { selectedAge: 15 | 16 | 17 | 18 }
 }
 
 export type TrustedDeviceRootStackParamList = {
@@ -242,7 +245,7 @@ export type RootStackParamList = {
   ThematicHeaders: undefined
 } & AccessibilityRootStackParamList &
   CulturalSurveyRootStackParamList &
-  OnboardingRootStackParamList &
+  TutorialRootStackParamList &
   SubscriptionRootStackParamList &
   TrustedDeviceRootStackParamList
 

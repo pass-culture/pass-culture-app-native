@@ -2,7 +2,7 @@ import { StackScreenProps } from '@react-navigation/stack'
 import React from 'react'
 
 import { navigate, reset } from '__mocks__/@react-navigation/native'
-import { OnboardingRootStackParamList } from 'features/navigation/RootNavigator/types'
+import { TutorialRootStackParamList } from 'features/navigation/RootNavigator/types'
 import { homeNavConfig } from 'features/navigation/TabBar/helpers'
 import { OnboardingAgeInformation } from 'features/tutorial/pages/onboarding/OnboardingAgeInformation'
 import { CreditStatus } from 'features/tutorial/types'
@@ -101,7 +101,7 @@ describe('OnboardingAgeInformation', () => {
 
 const renderOnboardingAgeInformation = (navigationParams: { age: number }) => {
   const navProps = { route: { params: navigationParams } } as StackScreenProps<
-    OnboardingRootStackParamList,
+    TutorialRootStackParamList,
     'OnboardingAgeInformation'
   >
   return render(
