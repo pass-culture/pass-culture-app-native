@@ -28,6 +28,6 @@ describe('SectionRowContent', () => {
     const { queryByTestId } = render(
       <SectionRowContent type="clickable" title="clickable" icon={Close} onPress={onPress} />
     )
-    expect(queryByTestId('section-row-navigable-icon')).toBeFalsy()
+    expect(queryByTestId('section-row-navigable-icon')).not.toBeOnTheScreen()
   })
 })

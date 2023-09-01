@@ -62,7 +62,7 @@ describe('<OfferDuoModal/>', () => {
       const renderAPI = renderOfferDuoModal({}, isDesktopViewport)
 
       const header = renderAPI.queryByTestId('pageHeader')
-      expect(header).toBeFalsy()
+      expect(header).not.toBeOnTheScreen()
     })
 
     describe('Buttons', () => {

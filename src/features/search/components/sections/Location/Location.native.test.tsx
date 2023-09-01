@@ -35,8 +35,8 @@ describe('Location component', () => {
 
     await act(async () => {})
     expect(getByText(RadioButtonLocation.EVERYWHERE)).toBeOnTheScreen()
-    expect(queryByText(RadioButtonLocation.AROUND_ME)).toBeFalsy()
-    expect(queryByText(RadioButtonLocation.CHOOSE_PLACE_OR_VENUE)).toBeFalsy()
+    expect(queryByText(RadioButtonLocation.AROUND_ME)).not.toBeOnTheScreen()
+    expect(queryByText(RadioButtonLocation.CHOOSE_PLACE_OR_VENUE)).not.toBeOnTheScreen()
   })
 
   it('should not have description when EVERYWHERE selected and position is null', async () => {
@@ -45,9 +45,9 @@ describe('Location component', () => {
 
     await act(async () => {})
 
-    expect(queryByText(RadioButtonLocation.EVERYWHERE)).toBeFalsy()
-    expect(queryByText(RadioButtonLocation.AROUND_ME)).toBeFalsy()
-    expect(queryByText(RadioButtonLocation.CHOOSE_PLACE_OR_VENUE)).toBeFalsy()
+    expect(queryByText(RadioButtonLocation.EVERYWHERE)).not.toBeOnTheScreen()
+    expect(queryByText(RadioButtonLocation.AROUND_ME)).not.toBeOnTheScreen()
+    expect(queryByText(RadioButtonLocation.CHOOSE_PLACE_OR_VENUE)).not.toBeOnTheScreen()
   })
 
   it("should have AROUND_ME description's when selected", async () => {
@@ -60,9 +60,9 @@ describe('Location component', () => {
 
     await act(async () => {})
 
-    expect(queryByText(RadioButtonLocation.EVERYWHERE)).toBeFalsy()
+    expect(queryByText(RadioButtonLocation.EVERYWHERE)).not.toBeOnTheScreen()
     expect(getByText(RadioButtonLocation.AROUND_ME)).toBeOnTheScreen()
-    expect(queryByText(RadioButtonLocation.CHOOSE_PLACE_OR_VENUE)).toBeFalsy()
+    expect(queryByText(RadioButtonLocation.CHOOSE_PLACE_OR_VENUE)).not.toBeOnTheScreen()
   })
 
   it("should have VENUE description's when selected", async () => {
@@ -75,8 +75,8 @@ describe('Location component', () => {
 
     await act(async () => {})
 
-    expect(queryByText(RadioButtonLocation.EVERYWHERE)).toBeFalsy()
-    expect(queryByText(RadioButtonLocation.AROUND_ME)).toBeFalsy()
+    expect(queryByText(RadioButtonLocation.EVERYWHERE)).not.toBeOnTheScreen()
+    expect(queryByText(RadioButtonLocation.AROUND_ME)).not.toBeOnTheScreen()
     expect(getByText(RadioButtonLocation.CHOOSE_PLACE_OR_VENUE)).toBeOnTheScreen()
   })
 
@@ -90,8 +90,8 @@ describe('Location component', () => {
 
     await act(async () => {})
 
-    expect(queryByText(RadioButtonLocation.EVERYWHERE)).toBeFalsy()
-    expect(queryByText(RadioButtonLocation.AROUND_ME)).toBeFalsy()
+    expect(queryByText(RadioButtonLocation.EVERYWHERE)).not.toBeOnTheScreen()
+    expect(queryByText(RadioButtonLocation.AROUND_ME)).not.toBeOnTheScreen()
     expect(getByText(RadioButtonLocation.CHOOSE_PLACE_OR_VENUE)).toBeOnTheScreen()
   })
 

@@ -61,9 +61,9 @@ describe('<CategoriesModal/>', () => {
       mockData = { ...mockData, searchGroups: [] }
       renderCategories()
       expect(screen.getByText('Toutes les catégories')).toBeOnTheScreen()
-      expect(screen.queryByText('Films, séries, cinéma')).toBeFalsy()
-      expect(screen.queryByText('Musées & visites culturelles')).toBeFalsy()
-      expect(screen.queryByText('Jeux & jeux vidéos')).toBeFalsy()
+      expect(screen.queryByText('Films, séries, cinéma')).not.toBeOnTheScreen()
+      expect(screen.queryByText('Musées & visites culturelles')).not.toBeOnTheScreen()
+      expect(screen.queryByText('Jeux & jeux vidéos')).not.toBeOnTheScreen()
     })
 
     it('should show only categories exisiting in categories return from backend', () => {
@@ -76,8 +76,8 @@ describe('<CategoriesModal/>', () => {
       renderCategories()
       expect(screen.getByText('Toutes les catégories')).toBeOnTheScreen()
       expect(screen.queryByText('Films, séries, cinéma')).toBeOnTheScreen()
-      expect(screen.queryByText('Musées & visites culturelles')).toBeFalsy()
-      expect(screen.queryByText('Jeux & jeux vidéos')).toBeFalsy()
+      expect(screen.queryByText('Musées & visites culturelles')).not.toBeOnTheScreen()
+      expect(screen.queryByText('Jeux & jeux vidéos')).not.toBeOnTheScreen()
     })
 
     it('should set the selected category filter on navigate when one is set', async () => {

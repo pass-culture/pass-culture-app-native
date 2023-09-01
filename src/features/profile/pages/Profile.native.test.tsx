@@ -149,7 +149,7 @@ describe('Profile component', () => {
         const positionErrorMessage = screen.queryByText(
           `La géolocalisation est temporairement inutilisable sur ton téléphone`
         )
-        expect(positionErrorMessage).toBeFalsy()
+        expect(positionErrorMessage).not.toBeOnTheScreen()
         expect(geolocSwitch.parent?.props.accessibilityState.checked).toBe(true)
       })
 
@@ -283,7 +283,7 @@ describe('Profile component', () => {
       renderProfile()
 
       const signoutButton = screen.queryByText('Déconnexion')
-      expect(signoutButton).toBeFalsy()
+      expect(signoutButton).not.toBeOnTheScreen()
     })
 
     it('should delete the refreshToken, clean user profile and remove user ID from batch when pressed', () => {

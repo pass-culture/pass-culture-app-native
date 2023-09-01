@@ -174,7 +174,7 @@ describe('<AppModal />', () => {
 
     const fullscreenModalScrollView = screen.queryByTestId('fullscreenModalScrollView')
 
-    expect(fullscreenModalScrollView).toBeFalsy()
+    expect(fullscreenModalScrollView).not.toBeOnTheScreen()
   })
 
   it('should display fullscreen modal view when isFullscreen = true and scrollEnabled = false', () => {
@@ -192,7 +192,7 @@ describe('<AppModal />', () => {
 
     const fullscreenModalView = screen.queryByTestId('fullscreenModalView')
 
-    expect(fullscreenModalView).toBeFalsy()
+    expect(fullscreenModalView).not.toBeOnTheScreen()
   })
 
   describe('backdrop callback', () => {

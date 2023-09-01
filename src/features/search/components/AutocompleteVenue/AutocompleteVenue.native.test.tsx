@@ -46,7 +46,7 @@ describe('AutocompleteVenue component', () => {
     it('should not display "Points de vente"', async () => {
       render(<AutocompleteVenue onItemPress={jest.fn()} />)
 
-      expect(screen.queryByText('Points de vente')).toBeFalsy()
+      expect(screen.queryByText('Points de vente')).not.toBeOnTheScreen()
     })
   })
 })

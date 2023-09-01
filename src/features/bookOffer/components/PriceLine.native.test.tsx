@@ -30,8 +30,8 @@ describe('<PriceLine />', () => {
     mockUseFeatureFlag.mockReturnValueOnce(false)
     render(<PriceLine unitPrice={500} quantity={2} attributes={attributes} />)
 
-    expect(screen.queryByText('- VOSTFR 3D IMAX')).toBeFalsy()
-    expect(screen.queryByTestId('price-line__attributes')).toBeFalsy()
+    expect(screen.queryByText('- VOSTFR 3D IMAX')).not.toBeOnTheScreen()
+    expect(screen.queryByTestId('price-line__attributes')).not.toBeOnTheScreen()
   })
 
   it('should set default quantity to 1', () => {

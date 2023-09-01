@@ -41,7 +41,7 @@ describe('<PasswordInputController />', () => {
       const input = screen.getByPlaceholderText('Ton mot de passe')
       fireEvent.changeText(input, 'user@AZERTY123')
 
-      expect(screen.queryByText('12 Caractères')).toBeFalsy()
+      expect(screen.queryByText('12 Caractères')).not.toBeOnTheScreen()
     })
   })
 
@@ -55,7 +55,7 @@ describe('<PasswordInputController />', () => {
     ])('should not show password validation rules when empty', (rule) => {
       renderPasswordInputController({ withSecurityRules: true })
 
-      expect(screen.queryByText(rule)).toBeFalsy()
+      expect(screen.queryByText(rule)).not.toBeOnTheScreen()
     })
 
     it.each([

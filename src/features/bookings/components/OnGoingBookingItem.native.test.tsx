@@ -141,7 +141,7 @@ describe('OnGoingBookingItem', () => {
         }
         renderOnGoingBookingItem(booking)
 
-        expect(screen.queryByText('Ta réservation s’archivera dans 25 jours')).toBeFalsy()
+        expect(screen.queryByText('Ta réservation s’archivera dans 25 jours')).not.toBeOnTheScreen()
       }
     )
 

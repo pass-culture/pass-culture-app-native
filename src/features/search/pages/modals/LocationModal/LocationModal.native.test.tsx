@@ -206,7 +206,7 @@ describe('<LocationModal/>', () => {
     renderLocationModal()
 
     await act(async () => {
-      expect(screen.queryByText('Dans un rayon de\u00a0:')).toBeFalsy()
+      expect(screen.queryByText('Dans un rayon de\u00a0:')).not.toBeOnTheScreen()
     })
 
     const radioButton = screen.getByTestId(RadioButtonLocation.AROUND_ME)
@@ -220,7 +220,7 @@ describe('<LocationModal/>', () => {
     renderLocationModal()
 
     await act(async () => {
-      expect(screen.queryByTestId('slider')).toBeFalsy()
+      expect(screen.queryByTestId('slider')).not.toBeOnTheScreen()
     })
 
     const radioButton = screen.getByTestId(RadioButtonLocation.AROUND_ME)
@@ -253,7 +253,7 @@ describe('<LocationModal/>', () => {
     mockPosition = null
     mockPermissionState = GeolocPermissionState.NEVER_ASK_AGAIN
     renderLocationModal()
-    expect(screen.queryByText(geolocationModalText)).toBeFalsy()
+    expect(screen.queryByText(geolocationModalText)).not.toBeOnTheScreen()
 
     const radioButton = screen.getByTestId(RadioButtonLocation.AROUND_ME)
     await act(async () => {
@@ -267,7 +267,7 @@ describe('<LocationModal/>', () => {
       fireEvent.press(openSettingsButton)
     })
 
-    expect(screen.queryByText(geolocationModalText)).toBeFalsy()
+    expect(screen.queryByText(geolocationModalText)).not.toBeOnTheScreen()
   })
 
   it('should not change location filter on Autour de moi radio button press when position is null', async () => {

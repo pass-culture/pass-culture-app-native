@@ -20,7 +20,7 @@ describe('<EmailInputWithSpellingHelp />', () => {
     const { queryByText } = render(<EmailInputWithSpellingHelp {...props} email="" />)
 
     const suggestionButton = queryByText('Appliquer la modification')
-    expect(suggestionButton).toBeFalsy()
+    expect(suggestionButton).not.toBeOnTheScreen()
   })
 
   it('should display suggestion with a corrected email when the email is mystyped', async () => {

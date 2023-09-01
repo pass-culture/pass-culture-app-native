@@ -111,7 +111,7 @@ describe('<FavoritesSorts/>', () => {
         renderAPI.queryByText(
           `La géolocalisation est temporairement inutilisable sur ton téléphone`
         )
-      ).toBeFalsy()
+      ).not.toBeOnTheScreen()
       expect(analytics.logHasAppliedFavoritesSorting).toBeCalledWith({
         sortBy: 'AROUND_ME',
       })

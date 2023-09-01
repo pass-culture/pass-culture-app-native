@@ -23,7 +23,7 @@ describe('<EmailInputController />', () => {
   it('should not show error when form input is valid', () => {
     renderEmailInputController({})
 
-    expect(screen.queryByText('error')).toBeFalsy()
+    expect(screen.queryByText('error')).not.toBeOnTheScreen()
   })
 
   it('should not show spelling help when not asked', async () => {
@@ -36,7 +36,9 @@ describe('<EmailInputController />', () => {
       jest.advanceTimersByTime(SUGGESTION_DELAY_IN_MS)
     })
 
-    expect(screen.queryByText('Veux-tu plutôt dire firstname.lastname@gmail.com ?')).toBeFalsy()
+    expect(
+      screen.queryByText('Veux-tu plutôt dire firstname.lastname@gmail.com ?')
+    ).not.toBeOnTheScreen()
   })
 
   it('should show spelling help by default', async () => {

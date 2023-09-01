@@ -93,7 +93,7 @@ describe('<SetEmail />', () => {
       fireEvent.press(continueButton)
     })
 
-    expect(queryByText(INCORRECT_EMAIL_MESSAGE)).toBeFalsy()
+    expect(queryByText(INCORRECT_EMAIL_MESSAGE)).not.toBeOnTheScreen()
   })
 
   it('should reject invalid email when trying to submit', async () => {

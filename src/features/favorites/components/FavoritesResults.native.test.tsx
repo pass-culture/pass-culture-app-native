@@ -56,7 +56,7 @@ describe('FavoritesResults component', () => {
     const button = await screen.findByText('Découvrir le catalogue')
     const sortByButton = screen.queryByText('Trier')
     expect(button).toBeTruthy()
-    expect(sortByButton).toBeFalsy()
+    expect(sortByButton).not.toBeOnTheScreen()
   })
 
   it('should show favorite placeholder on init', async () => {
@@ -107,7 +107,7 @@ describe('FavoritesResults component', () => {
     renderFavoritesResults()
 
     await waitFor(() => {
-      expect(screen.queryByText('Crée une liste de favoris')).toBeFalsy()
+      expect(screen.queryByText('Crée une liste de favoris')).not.toBeOnTheScreen()
     })
   })
 })

@@ -35,13 +35,13 @@ describe('HighlightThematicHomeHeader', () => {
     const props = { ...imageProps, introductionTitle }
     render(<HighlightThematicHomeHeader {...props} />)
 
-    expect(screen.queryByText(introductionTitle)).toBeFalsy()
+    expect(screen.queryByText(introductionTitle)).not.toBeOnTheScreen()
   })
 
   it('should not display introduction when only introduction paragraph is provided', () => {
     const props = { ...imageProps, introductionParagraph }
     render(<HighlightThematicHomeHeader {...props} />)
 
-    expect(screen.queryByText(introductionTitle)).toBeFalsy()
+    expect(screen.queryByText(introductionTitle)).not.toBeOnTheScreen()
   })
 })

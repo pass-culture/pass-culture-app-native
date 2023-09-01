@@ -43,7 +43,7 @@ describe('AutocompleteOffer component', () => {
 
     it('should not display "Suggestions"', () => {
       render(<AutocompleteOffer />)
-      expect(screen.queryByText('Suggestions')).toBeFalsy()
+      expect(screen.queryByText('Suggestions')).not.toBeOnTheScreen()
     })
   })
 })

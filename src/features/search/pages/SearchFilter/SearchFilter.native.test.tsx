@@ -153,7 +153,7 @@ describe('<SearchFilter/>', () => {
     renderSearchFilter()
     await act(async () => {})
 
-    expect(screen.queryByTestId('Revenir en arrière')).toBeFalsy()
+    expect(screen.queryByTestId('Revenir en arrière')).not.toBeOnTheScreen()
   })
 })
 

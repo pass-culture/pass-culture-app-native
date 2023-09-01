@@ -123,7 +123,7 @@ describe('<SearchVenueItem />', () => {
     mockDistance = null
     render(<SearchVenueItem venue={mockAlgoliaVenue} width={ITEM_WIDTH} height={ITEM_HEIGHT} />)
 
-    expect(screen.queryByText('à 10 km')).toBeFalsy()
+    expect(screen.queryByText('à 10 km')).not.toBeOnTheScreen()
   })
 
   it('should display only the city when postal code is null', () => {

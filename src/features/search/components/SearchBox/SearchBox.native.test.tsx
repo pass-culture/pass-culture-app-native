@@ -152,7 +152,7 @@ describe('SearchBox component', () => {
     const previousButton = queryByTestId('Revenir en arrière')
 
     await act(async () => {
-      expect(previousButton).toBeFalsy()
+      expect(previousButton).not.toBeOnTheScreen()
     })
   })
 

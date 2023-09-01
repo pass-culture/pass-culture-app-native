@@ -217,7 +217,7 @@ describe('<ForgottenPassword />', () => {
         screen.queryByText(
           'L’e-mail renseigné est incorrect. Exemple de format attendu : edith.piaf@email.fr'
         )
-      ).toBeFalsy()
+      ).not.toBeOnTheScreen()
     })
 
     it('should display invalid email format when email format is valid', () => {

@@ -222,7 +222,7 @@ describe('<SearchListHeader />', () => {
 
   it('should not display the geolocation button if position is not null', () => {
     render(<SearchListHeader nbHits={10} userData={[]} />)
-    expect(screen.queryByText('Géolocalise-toi')).toBeFalsy()
+    expect(screen.queryByText('Géolocalise-toi')).not.toBeOnTheScreen()
   })
 
   it('should display the geolocation incitation button when position is null', () => {

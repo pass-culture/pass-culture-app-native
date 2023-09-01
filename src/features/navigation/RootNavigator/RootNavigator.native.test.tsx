@@ -38,7 +38,7 @@ describe('<RootNavigator />', () => {
     renderRootNavigator()
 
     const privacyPolicyTitle = screen.queryByText('Respect de ta vie privée')
-    expect(privacyPolicyTitle).toBeFalsy()
+    expect(privacyPolicyTitle).not.toBeOnTheScreen()
   })
 
   it('should display PrivacyPolicy if splash screen is hidden', async () => {

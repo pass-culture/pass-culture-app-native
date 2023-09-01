@@ -43,7 +43,7 @@ describe('BeneficiaryCeilings', () => {
 
       await waitFor(() => {
         expect(digitalCredit).toBeOnTheScreen()
-        expect(physicalCredit).toBeFalsy()
+        expect(physicalCredit).not.toBeOnTheScreen()
       })
     })
   })

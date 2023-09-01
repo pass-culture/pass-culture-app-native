@@ -65,7 +65,7 @@ describe('BicolorFavoriteCount component', () => {
     const renderAPI = renderBicolorFavoriteCount({ isLoggedIn: true, count: 10 })
     await act(async () => {})
 
-    expect(renderAPI.queryByTestId('bicolor-favorite-count')).toBeFalsy()
+    expect(renderAPI.queryByTestId('bicolor-favorite-count')).not.toBeOnTheScreen()
   })
 })
 

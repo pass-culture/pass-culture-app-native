@@ -278,7 +278,7 @@ describe('SearchResults component', () => {
 
         const isInverseLayout = screen.queryByTestId('inverseLayout')
 
-        expect(isInverseLayout).toBeFalsy()
+        expect(isInverseLayout).not.toBeOnTheScreen()
       })
     })
 
@@ -297,7 +297,7 @@ describe('SearchResults component', () => {
         render(<SearchResults />)
         await act(async () => {})
 
-        expect(screen.queryByText('Duo')).toBeFalsy()
+        expect(screen.queryByText('Duo')).not.toBeOnTheScreen()
       })
     })
 
@@ -316,7 +316,7 @@ describe('SearchResults component', () => {
         render(<SearchResults />)
         await act(async () => {})
 
-        expect(screen.queryByText('Duo')).toBeFalsy()
+        expect(screen.queryByText('Duo')).not.toBeOnTheScreen()
       })
     })
 
@@ -335,7 +335,7 @@ describe('SearchResults component', () => {
         render(<SearchResults />)
         await act(async () => {})
 
-        expect(screen.queryByText('Duo')).toBeFalsy()
+        expect(screen.queryByText('Duo')).not.toBeOnTheScreen()
       })
     })
   })
@@ -345,7 +345,7 @@ describe('SearchResults component', () => {
       render(<SearchResults />)
       await act(async () => {})
 
-      expect(screen.queryByText('Géolocalise-toi')).toBeFalsy()
+      expect(screen.queryByText('Géolocalise-toi')).not.toBeOnTheScreen()
     })
 
     it.each`
@@ -359,7 +359,7 @@ describe('SearchResults component', () => {
       render(<SearchResults />)
       await act(async () => {})
 
-      expect(screen.queryByText('Géolocalise-toi')).toBeFalsy()
+      expect(screen.queryByText('Géolocalise-toi')).not.toBeOnTheScreen()
     })
 
     it('when position is null and no results search', async () => {
@@ -367,7 +367,7 @@ describe('SearchResults component', () => {
       render(<SearchResults />)
       await act(async () => {})
 
-      expect(screen.queryByText('Géolocalise-toi')).toBeFalsy()
+      expect(screen.queryByText('Géolocalise-toi')).not.toBeOnTheScreen()
     })
   })
 
@@ -529,7 +529,7 @@ describe('SearchResults component', () => {
       render(<SearchResults />)
       await act(async () => {})
 
-      expect(screen.queryByText('Géolocalise-toi')).toBeFalsy()
+      expect(screen.queryByText('Géolocalise-toi')).not.toBeOnTheScreen()
     })
   })
 
@@ -553,7 +553,7 @@ describe('SearchResults component', () => {
       render(<SearchResults />)
       await act(async () => {})
 
-      expect(screen.queryByText('Offre non disponible sur le pass Culture.')).toBeFalsy()
+      expect(screen.queryByText('Offre non disponible sur le pass Culture.')).not.toBeOnTheScreen()
     })
   })
 })

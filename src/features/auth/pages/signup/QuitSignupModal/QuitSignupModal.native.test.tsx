@@ -26,7 +26,7 @@ describe('QuitSignupModal', () => {
     const { queryByText } = renderQuitSignupModal(false)
 
     const title = queryByText('Veux-tu abandonner l’inscription ?')
-    expect(title).toBeFalsy()
+    expect(title).not.toBeOnTheScreen()
   })
 
   it('should display the modal when visible is true', () => {

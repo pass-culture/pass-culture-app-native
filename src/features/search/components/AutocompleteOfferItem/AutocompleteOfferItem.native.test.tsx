@@ -204,7 +204,7 @@ describe('AutocompleteOfferItem component', () => {
     it('should not display the most popular native category of the query suggestion', async () => {
       render(<AutocompleteOfferItem hit={mockHit} sendEvent={mockSendEvent} />)
 
-      expect(screen.queryByText('Séances de cinéma')).toBeFalsy()
+      expect(screen.queryByText('Séances de cinéma')).not.toBeOnTheScreen()
     })
 
     it('should not execute the search with the category, native category and genre of the previous search on hit click', async () => {

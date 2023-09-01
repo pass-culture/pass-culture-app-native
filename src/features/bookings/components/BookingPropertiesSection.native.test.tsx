@@ -74,8 +74,8 @@ describe('<BookingPropertiesSection />', () => {
     mockUseFeatureFlag.mockReturnValueOnce(false)
     renderBookingProperties(booking)
 
-    expect(screen.queryByText('- VOSTFR 3D IMAX')).toBeFalsy()
-    expect(screen.queryByTestId('price-line__attributes')).toBeFalsy()
+    expect(screen.queryByText('- VOSTFR 3D IMAX')).not.toBeOnTheScreen()
+    expect(screen.queryByTestId('price-line__attributes')).not.toBeOnTheScreen()
   })
 })
 

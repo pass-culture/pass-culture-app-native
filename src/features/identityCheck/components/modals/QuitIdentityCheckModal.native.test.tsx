@@ -24,7 +24,7 @@ describe('<QuitIdentityCheckModal/>', () => {
     renderQuitIdentityCheckModal(false)
 
     const title = screen.queryByText('Veux-tu abandonner la vérification d’identité\u00a0?')
-    expect(title).toBeFalsy()
+    expect(title).not.toBeOnTheScreen()
   })
 
   it('should display the modal when visible is true', () => {

@@ -45,7 +45,7 @@ describe('HighlightOfferModule', () => {
 
     await act(async () => {})
 
-    expect(screen.queryByText(highlightOfferModuleFixture.highlightTitle)).toBeFalsy()
+    expect(screen.queryByText(highlightOfferModuleFixture.highlightTitle)).not.toBeOnTheScreen()
   })
 
   it('should send analytics event on module display', async () => {

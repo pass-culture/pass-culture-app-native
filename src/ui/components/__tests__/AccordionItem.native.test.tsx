@@ -20,7 +20,7 @@ describe('AccordionItem', () => {
 
   it('should display the children after pressing on the title', async () => {
     const accordion = renderAccordion()
-    expect(screen.queryByTestId('accordion-child-view')).toBeFalsy()
+    expect(screen.queryByTestId('accordion-child-view')).not.toBeOnTheScreen()
 
     act(() => {
       fireEvent.press(accordion.getByText('accordion title'))

@@ -98,7 +98,7 @@ describe('SnackBar Component', () => {
       )
       const icon = queryByTestId('snackbar-icon')
 
-      expect(icon).toBeFalsy()
+      expect(icon).not.toBeOnTheScreen()
     })
 
     it('should trigger onClose when the closeIcon is clicked', async () => {

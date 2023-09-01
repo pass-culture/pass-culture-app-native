@@ -169,7 +169,7 @@ describe('<BookingInformations />', () => {
       const myComponent = render(<BookingInformations />)
       expect(myComponent).toMatchSnapshot()
 
-      expect(screen.queryByTestId('price-line__attributes')).toBeFalsy()
+      expect(screen.queryByTestId('price-line__attributes')).not.toBeOnTheScreen()
     })
   })
 
@@ -198,7 +198,7 @@ describe('<BookingInformations />', () => {
       const myComponent = render(<BookingInformations />)
       expect(myComponent).toMatchSnapshot()
 
-      expect(screen.queryByTestId('price-line__attributes')).toBeFalsy()
+      expect(screen.queryByTestId('price-line__attributes')).not.toBeOnTheScreen()
     })
 
     it('should not display stock attributes when the offer has not it', () => {
@@ -212,7 +212,7 @@ describe('<BookingInformations />', () => {
       const myComponent = render(<BookingInformations />)
       expect(myComponent).toMatchSnapshot()
 
-      expect(screen.queryByTestId('price-line__attributes')).toBeFalsy()
+      expect(screen.queryByTestId('price-line__attributes')).not.toBeOnTheScreen()
     })
   })
 

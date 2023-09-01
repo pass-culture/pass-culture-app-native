@@ -57,6 +57,6 @@ describe('SearchInput component', () => {
       />
     )
 
-    expect(queryByText('Obligatoire')).toBeFalsy()
+    expect(queryByText('Obligatoire')).not.toBeOnTheScreen()
   })
 })

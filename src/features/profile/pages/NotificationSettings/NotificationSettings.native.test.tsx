@@ -50,7 +50,7 @@ describe('NotificationSettings', () => {
       renderNotificationSettings('granted', {} as UserProfileResponse)
 
       expect(await screen.findByText('Autoriser l’envoi d’e-mails')).toBeOnTheScreen()
-      expect(screen.queryByText('Autoriser les notifications marketing')).toBeFalsy()
+      expect(screen.queryByText('Autoriser les notifications marketing')).not.toBeOnTheScreen()
     })
   })
 

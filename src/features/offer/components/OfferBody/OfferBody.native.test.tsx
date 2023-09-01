@@ -195,8 +195,8 @@ describe('<OfferBody />', () => {
 
       await screen.findByText('Envoyer sur Instagram')
 
-      expect(screen.queryByTestId('sameCategorySimilarOffers')).toBeFalsy()
-      expect(screen.queryByTestId('otherCategoriesSimilarOffers')).toBeFalsy()
+      expect(screen.queryByTestId('sameCategorySimilarOffers')).not.toBeOnTheScreen()
+      expect(screen.queryByTestId('otherCategoriesSimilarOffers')).not.toBeOnTheScreen()
     })
 
     it('should display similar offers list when offer has some', async () => {

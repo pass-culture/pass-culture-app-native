@@ -32,7 +32,7 @@ describe('OfferDuo component', () => {
       },
     })
     const { queryByText } = renderOfferDuo()
-    expect(queryByText(`Activé`)).toBeFalsy()
+    expect(queryByText(`Activé`)).not.toBeOnTheScreen()
   })
 })
 

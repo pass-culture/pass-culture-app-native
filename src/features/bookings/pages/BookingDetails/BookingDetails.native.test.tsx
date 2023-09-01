@@ -236,8 +236,8 @@ describe('BookingDetails', () => {
       const title = screen.queryByText('Modalités de retrait')
       const withdrawalText = screen.queryByTestId('withdrawalDetails')
 
-      expect(title).toBeFalsy()
-      expect(withdrawalText).toBeFalsy()
+      expect(title).not.toBeOnTheScreen()
+      expect(withdrawalText).not.toBeOnTheScreen()
     })
   })
 
@@ -256,8 +256,8 @@ describe('BookingDetails', () => {
       booking.stock.offer.bookingContact = undefined
       renderBookingDetails(booking)
       await act(async () => {})
-      expect(screen.queryByText('Contact Organisateur')).toBeFalsy()
-      expect(screen.queryByText('Envoyer un e-mail')).toBeFalsy()
+      expect(screen.queryByText('Contact Organisateur')).not.toBeOnTheScreen()
+      expect(screen.queryByText('Envoyer un e-mail')).not.toBeOnTheScreen()
     })
     it('should open mail app when clicking on "Envoyer un e-mail"', async () => {
       const booking = bookingsSnap.ongoing_bookings[0]
@@ -512,7 +512,7 @@ describe('BookingDetails', () => {
 
         const itineraryButton = screen.queryByText('Voir l’itinéraire')
 
-        expect(itineraryButton).toBeFalsy()
+        expect(itineraryButton).not.toBeOnTheScreen()
 
         openItinerary.mockRestore()
         getBookingProperties.mockRestore()

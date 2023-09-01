@@ -141,7 +141,7 @@ describe('PersonalData', () => {
       isBeneficiary: false,
     } as UserProfileResponse)
 
-    expect(screen.queryByTestId('Modifier e-mail')).toBeFalsy()
+    expect(screen.queryByTestId('Modifier e-mail')).not.toBeOnTheScreen()
   })
 })
 

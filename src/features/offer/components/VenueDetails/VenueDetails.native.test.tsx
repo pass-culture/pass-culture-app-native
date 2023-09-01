@@ -14,6 +14,6 @@ describe('<VenueDetails />', () => {
   it('should hide distance tag when no distance given', () => {
     render(<VenueDetails title="Jest" address="Somewhere in you memory" />)
 
-    expect(screen.queryByText(/300m/)).toBeFalsy()
+    expect(screen.queryByText(/300m/)).not.toBeOnTheScreen()
   })
 })
