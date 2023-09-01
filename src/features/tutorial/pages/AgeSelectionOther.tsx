@@ -4,8 +4,10 @@ import React, { FunctionComponent, useCallback } from 'react'
 import styled from 'styled-components/native'
 
 import { navigateToHomeConfig } from 'features/navigation/helpers'
-import { UseNavigationType } from 'features/navigation/RootNavigator/types'
-import { TutorialRootStackParamList } from 'features/navigation/RootNavigator/types'
+import {
+  UseNavigationType,
+  TutorialRootStackParamList,
+} from 'features/navigation/RootNavigator/types'
 import { homeNavConfig } from 'features/navigation/TabBar/helpers'
 import { AgeButton } from 'features/tutorial/components/AgeButton'
 import { useOnboardingContext } from 'features/tutorial/context/OnboardingWrapper'
