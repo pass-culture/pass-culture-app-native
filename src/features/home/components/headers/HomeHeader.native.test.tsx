@@ -220,7 +220,7 @@ describe('HomeHeader', () => {
     useFeatureFlagSpy.mockReturnValueOnce(true)
     renderHomeHeader()
 
-    expect(await screen.findByText('Me localiser')).toBeTruthy()
+    expect(await screen.findByText('Ma position')).toBeTruthy()
   })
 
   it('should not show LocationWidget when ENABLE_APP_LOCATION is on and isDesktopViewport is true', async () => {
@@ -228,7 +228,7 @@ describe('HomeHeader', () => {
     renderHomeHeader(true)
 
     await waitFor(() => {
-      expect(screen.queryByText('Me localiser')).not.toBeOnTheScreen()
+      expect(screen.queryByText('Ma position')).not.toBeOnTheScreen()
     })
   })
 
@@ -237,7 +237,7 @@ describe('HomeHeader', () => {
     renderHomeHeader()
 
     await waitFor(() => {
-      expect(screen.queryByText('Me localiser')).not.toBeOnTheScreen()
+      expect(screen.queryByText('Ma position')).not.toBeOnTheScreen()
     })
   })
 })
