@@ -67,6 +67,7 @@ const UnmemoizedHighlightOfferModule = (props: HighlightOfferModuleProps) => {
   const venueName = venue.name
   const categoryLabel = categoryLabelMapping[offer.subcategoryId]
   const categoryId = categoryIdMapping[offer.subcategoryId]
+  const priceText = offer.isDuo ? `${formattedPrice} - Duo` : formattedPrice
 
   return (
     <Container>
@@ -116,7 +117,7 @@ const UnmemoizedHighlightOfferModule = (props: HighlightOfferModuleProps) => {
               <StyledOfferTitle>{props.offerTitle}</StyledOfferTitle>
               {!!formattedDate && <AdditionalDetail>{formattedDate}</AdditionalDetail>}
               {!!venueName && <AdditionalDetail>{venueName}</AdditionalDetail>}
-              {!!formattedPrice && <AdditionalDetail>{formattedPrice}</AdditionalDetail>}
+              {!!formattedPrice && <AdditionalDetail>{priceText}</AdditionalDetail>}
             </OfferDetails>
             <ArrowOffer>
               <PlainArrowNext size={theme.icons.sizes.small} />
