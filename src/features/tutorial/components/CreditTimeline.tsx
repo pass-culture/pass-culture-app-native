@@ -17,7 +17,10 @@ type Age = 15 | 16 | 17 | 18
 
 type CreditStep = 15 | 16 | 17 | 18 | 'separator'
 
-export type CreditComponentProps = { creditStep: CreditStep; description?: string }
+export type CreditComponentProps = {
+  creditStep: CreditStep
+  children?: React.ReactNode
+}
 
 type Props = {
   age: Age
@@ -56,17 +59,15 @@ export const CreditTimeline = ({ stepperProps, age }: Props) => {
             isLast={index === stepperProps.length - 1}>
             <CreditBlock
               creditStatus={creditStatus}
-              title={
-                <CreditBlockTitle
-                  age={props.creditStep}
-                  userAge={age}
-                  deposit={depositsByAge.get(props.creditStep) ?? ''}
-                />
-              }
               age={props.creditStep}
-              description={props.description}
-              onPress={() => analytics.logTrySelectDeposit(age)}
-            />
+              onPress={() => analytics.logTrySelectDeposit(age)}>
+              <CreditBlockTitle
+                age={props.creditStep}
+                userAge={age}
+                deposit={depositsByAge.get(props.creditStep) ?? ''}
+              />
+              {props.children}
+            </CreditBlock>
 
             <Spacer.Column numberOfSpaces={2} />
           </InternalStep>

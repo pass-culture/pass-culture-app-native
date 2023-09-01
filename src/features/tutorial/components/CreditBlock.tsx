@@ -7,14 +7,13 @@ import { customEaseInOut, DURATION_IN_MS } from 'features/tutorial/helpers/anima
 import { getBackgroundColor } from 'features/tutorial/helpers/getBackgroundColor'
 import { CreditStatus } from 'features/tutorial/types'
 import { AnimatedView, NAV_DELAY_IN_MS } from 'libs/react-native-animatable'
-import { getSpacing, getSpacingString, Spacer, Typo } from 'ui/theme'
+import { getSpacing, Spacer, Typo } from 'ui/theme'
 
 type Props = {
-  title: React.ReactElement
   age: number
-  description?: string
   creditStatus: CreditStatus
   onPress: () => void
+  children?: React.ReactNode
 }
 
 const containerAnimation = {
@@ -26,13 +25,7 @@ const containerAnimation = {
   },
 }
 
-export const CreditBlock: FunctionComponent<Props> = ({
-  title,
-  age,
-  description,
-  creditStatus,
-  onPress,
-}) => {
+export const CreditBlock: FunctionComponent<Props> = ({ age, creditStatus, onPress, children }) => {
   const AgeText = creditStatus === CreditStatus.ONGOING ? BodySecondary : Typo.CaptionNeutralInfo
 
   const statusIsOngoing = creditStatus === CreditStatus.ONGOING
@@ -53,13 +46,7 @@ export const CreditBlock: FunctionComponent<Props> = ({
         <View>
           <AgeText>{`à ${age} ans`}</AgeText>
           <Spacer.Column numberOfSpaces={1} />
-          {title}
-          {!!description && (
-            <React.Fragment>
-              <Spacer.Column numberOfSpaces={1} />
-              <DescriptionText>{description}</DescriptionText>
-            </React.Fragment>
-          )}
+          {children}
         </View>
         <TagContainer>
           <CreditStatusTag status={creditStatus} />
@@ -68,12 +55,6 @@ export const CreditBlock: FunctionComponent<Props> = ({
     </TouchableWithoutFeedback>
   )
 }
-
-const DescriptionText = styled(Typo.Caption)(({ theme }) => ({
-  fontSize: theme.tabBar.fontSize,
-  lineHeight: getSpacingString(3),
-  color: theme.colors.greyDark,
-}))
 
 const BodySecondary = styled(Typo.Body)(({ theme }) => ({
   color: theme.colors.secondary,
