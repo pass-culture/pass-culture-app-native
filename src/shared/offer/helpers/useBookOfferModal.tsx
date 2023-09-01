@@ -1,12 +1,11 @@
 import React, { ReactElement } from 'react'
 
 import { BookingOfferModal } from 'features/bookOffer/pages/BookingOfferModal'
-import { OfferModal } from 'features/offer/enums'
 import { ApplicationProcessingModal } from 'shared/offer/components/ApplicationProcessingModal/ApplicationProcessingModal'
 import { AuthenticationModal } from 'shared/offer/components/AuthenticationModal/AuthenticationModal'
-import { From } from 'shared/offer/components/AuthenticationModal/fromEnum'
 import { ErrorApplicationModal } from 'shared/offer/components/ErrorApplicationModal/ErrorApplicationModal'
 import { FinishSubscriptionModal } from 'shared/offer/components/FinishSubscriptionModal/FinishSubscriptionModal'
+import { From, OfferModal } from 'shared/offer/enums'
 import { useModal } from 'ui/components/modals/useModal'
 
 export type OfferModalProps = {

@@ -6,7 +6,7 @@ import { CulturalSurveyQuestionEnum } from 'api/gen/api'
 import { SearchState } from 'features/search/types'
 import { Venue } from 'features/venue/types'
 import { SuggestedPlace } from 'libs/place'
-import { From } from 'shared/offer/components/AuthenticationModal/fromEnum'
+import { From } from 'shared/offer/enums'
 
 import { TabParamList, TabRouteName } from '../TabBar/types'
 

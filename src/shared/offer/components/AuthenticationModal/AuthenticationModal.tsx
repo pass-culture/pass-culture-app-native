@@ -3,6 +3,7 @@ import styled from 'styled-components/native'
 
 import { AuthenticationButton } from 'features/auth/components/AuthenticationButton/AuthenticationButton'
 import { analytics } from 'libs/analytics'
+import { From } from 'shared/offer/enums'
 import { theme } from 'theme'
 import { ButtonWithLinearGradient } from 'ui/components/buttons/buttonWithLinearGradient/ButtonWithLinearGradient'
 import { AppModalWithIllustration } from 'ui/components/modals/AppModalWithIllustration'
@@ -10,8 +11,6 @@ import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouch
 import { BicolorUserIdentification } from 'ui/svg/BicolorUserIdentification'
 import { Spacer, Typo } from 'ui/theme'
 import { LINE_BREAK } from 'ui/theme/constants'
-
-import { From } from './fromEnum'
 
 type Props = {
   visible: boolean

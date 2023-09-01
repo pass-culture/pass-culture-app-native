@@ -1,7 +1,7 @@
 import React, { FunctionComponent } from 'react'
 import { Text } from 'react-native'
 
-import { OfferModal } from 'features/offer/enums'
+import { OfferModal } from 'shared/offer/enums'
 import { OfferModalProps, useBookOfferModal } from 'shared/offer/helpers/useBookOfferModal'
 import { renderHook, render } from 'tests/utils'
 import { LINE_BREAK } from 'ui/theme/constants'
