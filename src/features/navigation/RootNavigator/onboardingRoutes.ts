@@ -8,7 +8,7 @@ import { OnboardingWelcome } from 'features/tutorial/pages/onboarding/Onboarding
 
 export const onboardingRoutes: GenericRoute<OnboardingRootStackParamList>[] = [
   {
-    name: 'AgeInformation',
+    name: 'OnboardingAgeInformation',
     component: OnboardingAgeInformation,
     path: 'selection-age/eligible',
     options: { title: 'Information d’âge' },

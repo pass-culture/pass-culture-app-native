@@ -22,7 +22,7 @@ describe('AgeSelection', () => {
   })
 
   it.each(AGES)(
-    'should navigate to AgeInformation page with params age=%s when pressing "j’ai %s ans"',
+    'should navigate to OnboardingAgeInformation page with params age=%s when pressing "j’ai %s ans"',
     async (age) => {
       const { getByText } = render(<AgeSelection />)
       const button = getByText(`${age} ans`)
@@ -30,7 +30,7 @@ describe('AgeSelection', () => {
       fireEvent.press(button)
 
       await waitFor(() => {
-        expect(navigate).toHaveBeenCalledWith('AgeInformation', { age })
+        expect(navigate).toHaveBeenCalledWith('OnboardingAgeInformation', { age })
       })
     }
   )

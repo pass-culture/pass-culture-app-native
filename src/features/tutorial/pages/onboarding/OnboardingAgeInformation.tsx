@@ -18,14 +18,14 @@ import { ClockFilled } from 'ui/svg/icons/ClockFilled'
 import { Spacer, Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
-type AgeInformationProps = StackScreenProps<OnboardingRootStackParamList, 'AgeInformation'>
+type Props = StackScreenProps<OnboardingRootStackParamList, 'OnboardingAgeInformation'>
 
 const onSignupPress = () => {
   analytics.logOnboardingAgeInformationClicked({ type: 'account_creation' })
   analytics.logSignUpClicked({ from: 'onboarding' })
 }
 
-export const OnboardingAgeInformation = ({ route }: AgeInformationProps): React.JSX.Element => {
+export const OnboardingAgeInformation = ({ route }: Props): React.JSX.Element => {
   const { reset } = useNavigation<UseNavigationType>()
   const userAge = route.params.age
 

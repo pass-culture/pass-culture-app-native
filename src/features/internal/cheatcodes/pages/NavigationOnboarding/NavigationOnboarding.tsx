@@ -24,22 +24,22 @@ export function NavigationOnboarding(): React.JSX.Element {
         <LinkToComponent name="AgeSelection" />
         <LinkToComponent name="AgeSelectionOther" />
         <LinkToComponent
-          name="AgeInformation"
+          name="OnboardingAgeInformation"
           title="AgeInfo - 15 ans"
           navigationParams={{ age: 15 }}
         />
         <LinkToComponent
-          name="AgeInformation"
+          name="OnboardingAgeInformation"
           title="AgeInfo - 16 ans"
           navigationParams={{ age: 16 }}
         />
         <LinkToComponent
-          name="AgeInformation"
+          name="OnboardingAgeInformation"
           title="AgeInfo - 17 ans"
           navigationParams={{ age: 17 }}
         />
         <LinkToComponent
-          name="AgeInformation"
+          name="OnboardingAgeInformation"
           title="AgeInfo - 18 ans"
           navigationParams={{ age: 18 }}
         />

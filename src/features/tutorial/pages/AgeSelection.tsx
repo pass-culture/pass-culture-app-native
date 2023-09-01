@@ -35,7 +35,9 @@ export const AgeSelection: FunctionComponent = () => {
         dense={!age}
         onBeforeNavigate={async () => onBeforeNavigate(age)}
         navigateTo={
-          age ? { screen: 'AgeInformation', params: { age } } : { screen: 'AgeSelectionOther' }
+          age
+            ? { screen: 'OnboardingAgeInformation', params: { age } }
+            : { screen: 'AgeSelectionOther' }
         }
         accessibilityLabel={`j’ai ${age} ans`}>
         {age ? (
