@@ -1,15 +1,15 @@
 import React, { memo, useContext, useMemo, useReducer } from 'react'
 
 import {
-  Action,
   initialSearchVenuesState,
+  SearchVenuesAction,
   searchVenuesReducer,
 } from 'features/search/context/reducer'
 import { SearchVenuesState } from 'features/search/types'
 
 interface ISearchVenuesContext {
   searchVenuesState: SearchVenuesState
-  dispatch: React.Dispatch<Action>
+  dispatch: React.Dispatch<SearchVenuesAction>
 }
 
 const SearchVenuesContext = React.createContext<ISearchVenuesContext | null>(null)

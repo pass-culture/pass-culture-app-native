@@ -33,6 +33,7 @@ export const initialSearchState: SearchState = {
 
 export const initialSearchVenuesState: SearchVenuesState = {
   hits: [],
+  userData: undefined,
 }
 
 export type Action =
@@ -60,6 +61,11 @@ export type Action =
   | { type: 'SET_LOCATION_VENUE'; payload: Venue }
   | { type: 'SET_QUERY'; payload: string }
   | { type: 'SET_VENUES'; payload: Hit<AlgoliaVenue>[] }
+
+export type SearchVenuesAction =
+  | { type: 'INIT' }
+  | { type: 'SET_VENUES'; payload: Hit<AlgoliaVenue>[] }
+  | { type: 'SET_USER_DATA'; payload: { venue_playlist_title: string } }
 
 export const searchReducer = (state: SearchState, action: Action): SearchState => {
   switch (action.type) {
@@ -161,13 +167,15 @@ export const searchReducer = (state: SearchState, action: Action): SearchState =
 
 export const searchVenuesReducer = (
   state: SearchVenuesState,
-  action: Action
+  action: SearchVenuesAction
 ): SearchVenuesState => {
   switch (action.type) {
     case 'INIT':
       return initialSearchVenuesState
     case 'SET_VENUES':
       return { ...state, hits: action.payload }
+    case 'SET_USER_DATA':
+      return { ...state, userData: action.payload }
     default:
       return state
   }
