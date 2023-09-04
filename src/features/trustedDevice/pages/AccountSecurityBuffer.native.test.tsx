@@ -45,7 +45,7 @@ describe('<AccountSecurityBuffer/>', () => {
     renderAccountSecurityBuffer()
 
     const LOADING_TEXT = 'Chargement en cours...'
-    expect(await screen.findByText(LOADING_TEXT)).toBeTruthy()
+    expect(await screen.findByText(LOADING_TEXT)).toBeOnTheScreen()
   })
 
   it('should navigate to SuspensionChoiceExpiredLink screen when expired token', async () => {

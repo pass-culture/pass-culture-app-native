@@ -13,7 +13,7 @@ describe('<ExhaustedCreditModal/>', () => {
 
   it('should display nothing if modal is not visible', () => {
     const renderAPI = render(<ExhaustedCreditModal visible={false} hideModal={hideModalMock} />)
-    expect(renderAPI.toJSON()).toBeNull()
+    expect(renderAPI.toJSON()).not.toBeOnTheScreen()
   })
 
   it('should call hideModal function when clicking on Close icon', () => {

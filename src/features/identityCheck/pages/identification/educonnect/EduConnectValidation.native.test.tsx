@@ -48,9 +48,9 @@ describe('<EduConnectValidation />', () => {
 
   it('should display user infos with props given', () => {
     const { getByText } = render(<EduConnectValidation />)
-    expect(getByText('John')).toBeTruthy()
-    expect(getByText('Doe')).toBeTruthy()
-    expect(getByText('28/01/1993')).toBeTruthy()
+    expect(getByText('John')).toBeOnTheScreen()
+    expect(getByText('Doe')).toBeOnTheScreen()
+    expect(getByText('28/01/1993')).toBeOnTheScreen()
   })
   it("should trigger tracker when the 'Valider mes informations' button is pressed", () => {
     const { getByText } = render(<EduConnectValidation />)

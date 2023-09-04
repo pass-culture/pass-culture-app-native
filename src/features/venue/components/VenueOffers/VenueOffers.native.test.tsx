@@ -60,7 +60,7 @@ describe('<VenueOffers />', () => {
 
   it('should display "En voir plus" button if nbHits is more than hits.length', () => {
     const { queryByText } = render(<VenueOffers venueId={venueId} />)
-    expect(queryByText('En voir plus')).toBeTruthy()
+    expect(queryByText('En voir plus')).toBeOnTheScreen()
   })
 
   it(`should not display "En voir plus" button if nbHits is same as hits.length`, () => {
@@ -69,7 +69,7 @@ describe('<VenueOffers />', () => {
     } as UseQueryResult<{ hits: Offer[]; nbHits: number }, unknown>)
 
     const { queryByText } = render(<VenueOffers venueId={venueId} />)
-    expect(queryByText('En voir plus')).toBeNull()
+    expect(queryByText('En voir plus')).not.toBeOnTheScreen()
   })
 
   it(`should set search state when clicking "En voir plus" button`, async () => {

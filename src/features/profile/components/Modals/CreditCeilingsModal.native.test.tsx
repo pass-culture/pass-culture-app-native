@@ -30,7 +30,7 @@ describe('<CreditCeilingsModal/>', () => {
         hideModal={hideModalMock}
       />
     )
-    expect(renderAPI.toJSON()).toBeNull()
+    expect(renderAPI.toJSON()).not.toBeOnTheScreen()
   })
 
   it('should call hideModal function when clicking on Close icon', () => {
@@ -54,8 +54,8 @@ describe('<CreditCeilingsModal/>', () => {
         hideModal={hideModalMock}
       />
     )
-    expect(queryByTestId('creditText')).not.toBeNull()
-    expect(queryByTestId('creditTextWithPhysicalCeiling')).toBeNull()
+    expect(queryByTestId('creditText')).toBeOnTheScreen()
+    expect(queryByTestId('creditTextWithPhysicalCeiling')).not.toBeOnTheScreen()
   })
 
   it('should display text with physical ceiling if it exists', () => {
@@ -66,7 +66,7 @@ describe('<CreditCeilingsModal/>', () => {
         hideModal={hideModalMock}
       />
     )
-    expect(queryByTestId('creditText')).toBeNull()
-    expect(queryByTestId('creditTextWithPhysicalCeiling')).not.toBeNull()
+    expect(queryByTestId('creditText')).not.toBeOnTheScreen()
+    expect(queryByTestId('creditTextWithPhysicalCeiling')).toBeOnTheScreen()
   })
 })

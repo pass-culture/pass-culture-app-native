@@ -37,7 +37,7 @@ describe('<SetCity/>', () => {
         screen.getByText(
           'Ce code postal est introuvable. Réessaye un autre code postal ou renseigne un arrondissement (ex: 75001).'
         )
-      ).toBeTruthy()
+      ).toBeOnTheScreen()
     })
   })
 
@@ -49,8 +49,8 @@ describe('<SetCity/>', () => {
     fireEvent.changeText(input, POSTAL_CODE)
 
     await waitFor(() => {
-      expect(screen.getByText(mockedSuggestedCities[0].nom)).toBeTruthy()
-      expect(screen.getByText(mockedSuggestedCities[1].nom)).toBeTruthy()
+      expect(screen.getByText(mockedSuggestedCities[0].nom)).toBeOnTheScreen()
+      expect(screen.getByText(mockedSuggestedCities[1].nom)).toBeOnTheScreen()
     })
   })
 

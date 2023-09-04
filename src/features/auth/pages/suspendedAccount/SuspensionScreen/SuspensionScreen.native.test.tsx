@@ -34,20 +34,20 @@ describe('<SuspensionsScreen />', () => {
     mockSuspensionStatus.status = AccountState.SUSPENDED_UPON_USER_REQUEST
     render(<SuspensionScreen />)
 
-    expect(screen.getByText('Ton compte est désactivé')).toBeTruthy()
+    expect(screen.getByText('Ton compte est désactivé')).toBeOnTheScreen()
   })
   it('should display SuspiciousLoginSuspendedAccount component if account is suspended for suspicious login reported by user', () => {
     mockSuspensionStatus.status = AccountState.SUSPICIOUS_LOGIN_REPORTED_BY_USER
     render(<SuspensionScreen />)
 
-    expect(screen.getByText('Ton compte a été suspendu')).toBeTruthy()
+    expect(screen.getByText('Ton compte a été suspendu')).toBeOnTheScreen()
   })
 
   it('should display FraudulentSuspendedAccount component if account is suspended for fraud', () => {
     mockSuspensionStatus.status = AccountState.SUSPENDED
     render(<SuspensionScreen />)
 
-    expect(screen.getByText('Ton compte a été suspendu')).toBeTruthy()
+    expect(screen.getByText('Ton compte a été suspendu')).toBeOnTheScreen()
   })
 
   it('should redirect to home if account is not suspended', () => {

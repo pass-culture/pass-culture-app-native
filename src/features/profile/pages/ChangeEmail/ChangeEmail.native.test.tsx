@@ -53,7 +53,7 @@ describe('<ChangeEmail/>', () => {
       jest.advanceTimersByTime(SUGGESTION_DELAY_IN_MS)
     })
 
-    expect(screen.queryByText('Veux-tu plutôt dire user@gmail.com\u00a0?')).toBeTruthy()
+    expect(screen.queryByText('Veux-tu plutôt dire user@gmail.com\u00a0?')).toBeOnTheScreen()
   })
 
   describe('email change already in progress', () => {
@@ -153,7 +153,7 @@ describe('<ChangeEmail/>', () => {
     })
 
     const errorMessage = screen.queryByText('L’e-mail saisi est identique à ton e-mail actuel')
-    expect(errorMessage).toBeTruthy()
+    expect(errorMessage).toBeOnTheScreen()
   })
 
   describe('When user gives wrong password', () => {
@@ -173,7 +173,7 @@ describe('<ChangeEmail/>', () => {
       await submitForm()
 
       const errorMessage = screen.queryByText('Mot de passe incorrect')
-      expect(errorMessage).toBeTruthy()
+      expect(errorMessage).toBeOnTheScreen()
     })
 
     it('should log analytics', async () => {

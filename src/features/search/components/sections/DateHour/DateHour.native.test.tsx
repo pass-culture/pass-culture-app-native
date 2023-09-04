@@ -32,7 +32,7 @@ describe('DateHour component', () => {
     render(<DateHour />)
     await act(async () => {})
 
-    expect(await screen.findByText('le Jeudi 3 mars 2022')).toBeTruthy()
+    expect(await screen.findByText('le Jeudi 3 mars 2022')).toBeOnTheScreen()
   })
 
   it('should display only hours when only hours is selected', async () => {
@@ -46,7 +46,7 @@ describe('DateHour component', () => {
     render(<DateHour />)
     await act(async () => {})
 
-    expect(await screen.findByText('entre 9h et 20h')).toBeTruthy()
+    expect(await screen.findByText('entre 9h et 20h')).toBeOnTheScreen()
   })
 
   it('should display correct text with week selected', async () => {
@@ -63,7 +63,7 @@ describe('DateHour component', () => {
     render(<DateHour />)
     await act(async () => {})
 
-    expect(await screen.findByText('cette semaine')).toBeTruthy()
+    expect(await screen.findByText('cette semaine')).toBeOnTheScreen()
   })
 
   it('should display correct text with week-end selected', async () => {
@@ -80,6 +80,6 @@ describe('DateHour component', () => {
     render(<DateHour />)
     await act(async () => {})
 
-    expect(await screen.findByText('ce week-end')).toBeTruthy()
+    expect(await screen.findByText('ce week-end')).toBeOnTheScreen()
   })
 })

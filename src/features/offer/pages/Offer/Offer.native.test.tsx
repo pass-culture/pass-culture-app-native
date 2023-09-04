@@ -97,7 +97,7 @@ describe('<Offer />', () => {
       fireEvent.press(bookingOfferButton)
     })
 
-    expect(screen.queryByText('Identifie-toi pour réserver l’offre')).toBeTruthy()
+    expect(screen.queryByText('Identifie-toi pour réserver l’offre')).toBeOnTheScreen()
   })
 
   it('should log analytics when display authentication modal', async () => {
@@ -363,7 +363,7 @@ describe('<Offer />', () => {
 
     await act(async () => {})
 
-    expect(await screen.findByText('Valider la date')).toBeTruthy()
+    expect(await screen.findByText('Valider la date')).toBeOnTheScreen()
   })
 
   it('should display reservation impossible when user has already booked the offer', async () => {
@@ -404,7 +404,7 @@ describe('<Offer />', () => {
     fireEvent.press(screen.getByText('Voir les disponibilités'))
 
     await waitFor(() => {
-      expect(screen.queryByText('Réservation impossible')).toBeTruthy()
+      expect(screen.queryByText('Réservation impossible')).toBeOnTheScreen()
     })
   })
 

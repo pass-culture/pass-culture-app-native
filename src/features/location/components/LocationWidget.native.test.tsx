@@ -35,7 +35,7 @@ describe('LocationWidget', () => {
       screen.getByText(
         'Configure ta position et découvre les offres dans la zone géographique de ton choix.'
       )
-    ).toBeTruthy()
+    ).toBeOnTheScreen()
 
     await act(async () => {
       jest.advanceTimersByTime(8000)
@@ -45,7 +45,7 @@ describe('LocationWidget', () => {
       screen.queryByText(
         'Configure ta position et découvre les offres dans la zone géographique de ton choix.'
       )
-    ).toBeFalsy()
+    ).not.toBeOnTheScreen()
   })
 
   it('should hide tooltip when pressing close button', async () => {
@@ -64,7 +64,7 @@ describe('LocationWidget', () => {
       screen.queryByText(
         'Configure ta position et découvre les offres dans la zone géographique de ton choix.'
       )
-    ).toBeFalsy()
+    ).not.toBeOnTheScreen()
   })
 })
 

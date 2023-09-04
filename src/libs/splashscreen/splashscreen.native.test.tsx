@@ -23,7 +23,7 @@ describe('useSplashScreenContext()', () => {
       result.current.hideSplashScreen?.()
     })
 
-    expect(result.current.isSplashScreenHidden).toBeTruthy()
+    expect(result.current.isSplashScreenHidden).toBe(true)
   })
 
   it('should not hide splashscreen when it has not been shown for long enough', () => {
@@ -34,7 +34,7 @@ describe('useSplashScreenContext()', () => {
       jest.advanceTimersByTime(MIN_SPLASHSCREEN_DURATION_IN_MS - 1)
     })
 
-    expect(result.current.isSplashScreenHidden).toBeFalsy()
+    expect(result.current.isSplashScreenHidden).toBe(false)
   })
 
   it('should hide splashscreen when it has been shown for long enough', () => {
@@ -45,7 +45,7 @@ describe('useSplashScreenContext()', () => {
       jest.advanceTimersByTime(MIN_SPLASHSCREEN_DURATION_IN_MS)
     })
 
-    expect(result.current.isSplashScreenHidden).toBeTruthy()
+    expect(result.current.isSplashScreenHidden).toBe(true)
   })
 })
 

@@ -42,8 +42,8 @@ describe('BookPricesChoice', () => {
   it('should render prices of stocks in parameter', () => {
     render(<BookPricesChoice stocks={mockStocks} />)
 
-    expect(screen.getByText('Pelouse or')).toBeTruthy()
-    expect(screen.getByText('Pelouse')).toBeTruthy()
+    expect(screen.getByText('Pelouse or')).toBeOnTheScreen()
+    expect(screen.getByText('Pelouse')).toBeOnTheScreen()
   })
 
   it('should select price stock when pressing a price and offer is duo', () => {

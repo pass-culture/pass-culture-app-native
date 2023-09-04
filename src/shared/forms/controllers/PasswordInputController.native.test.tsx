@@ -15,7 +15,7 @@ describe('<PasswordInputController />', () => {
         error: { type: 'custom', message: 'error' },
       })
 
-      expect(screen.queryByText('error')).toBeNull()
+      expect(screen.queryByText('error')).not.toBeOnTheScreen()
     })
 
     it('should show error when form is invalid and password is not empty', async () => {
@@ -26,13 +26,13 @@ describe('<PasswordInputController />', () => {
       const input = screen.getByPlaceholderText('Ton mot de passe')
       fireEvent.changeText(input, 'pass')
 
-      expect(screen.getByText('error')).toBeTruthy()
+      expect(screen.getByText('error')).toBeOnTheScreen()
     })
 
     it('should show that password is mandatory', async () => {
       renderPasswordInputController({})
 
-      expect(screen.getByText('Obligatoire')).toBeTruthy()
+      expect(screen.getByText('Obligatoire')).toBeOnTheScreen()
     })
 
     it('should not show password validation', () => {
@@ -41,7 +41,7 @@ describe('<PasswordInputController />', () => {
       const input = screen.getByPlaceholderText('Ton mot de passe')
       fireEvent.changeText(input, 'user@AZERTY123')
 
-      expect(screen.queryByText('12 Caractères')).toBeFalsy()
+      expect(screen.queryByText('12 Caractères')).not.toBeOnTheScreen()
     })
   })
 
@@ -55,7 +55,7 @@ describe('<PasswordInputController />', () => {
     ])('should not show password validation rules when empty', (rule) => {
       renderPasswordInputController({ withSecurityRules: true })
 
-      expect(screen.queryByText(rule)).toBeFalsy()
+      expect(screen.queryByText(rule)).not.toBeOnTheScreen()
     })
 
     it.each([
@@ -70,7 +70,7 @@ describe('<PasswordInputController />', () => {
       const input = screen.getByPlaceholderText('Ton mot de passe')
       fireEvent.changeText(input, 'a')
 
-      expect(screen.getByText(rules)).toBeTruthy()
+      expect(screen.getByText(rules)).toBeOnTheScreen()
     })
   })
 
@@ -84,7 +84,7 @@ describe('<PasswordInputController />', () => {
     ])('should show password validation rules', (rules) => {
       renderPasswordInputController({ withSecurityRules: true, securityRulesAlwaysVisible: true })
 
-      expect(screen.getByText(rules)).toBeTruthy()
+      expect(screen.getByText(rules)).toBeOnTheScreen()
     })
   })
 })

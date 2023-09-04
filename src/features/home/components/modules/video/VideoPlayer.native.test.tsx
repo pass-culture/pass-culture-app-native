@@ -24,7 +24,7 @@ describe('VideoPlayer', () => {
       'Une erreur s’est produite pendant le chargement de la vidéo.'
     )
 
-    expect(errorMessage).not.toBeNull()
+    expect(errorMessage).toBeOnTheScreen()
   })
 
   it('should not render error view when showErrorView is false', async () => {
@@ -37,7 +37,7 @@ describe('VideoPlayer', () => {
       'Une erreur s’est produite pendant le chargement de la vidéo.'
     )
 
-    expect(errorMessage).toBeNull()
+    expect(errorMessage).not.toBeOnTheScreen()
   })
 })
 

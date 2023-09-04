@@ -165,7 +165,7 @@ describe('<AppModal />', () => {
 
     const fullscreenModalScrollView = screen.getByTestId('fullscreenModalScrollView')
 
-    expect(fullscreenModalScrollView).toBeTruthy()
+    expect(fullscreenModalScrollView).toBeOnTheScreen()
   })
 
   it('should not display fullscreen modal scroll view when isFullscreen = true and scrollEnabled = false', () => {
@@ -174,7 +174,7 @@ describe('<AppModal />', () => {
 
     const fullscreenModalScrollView = screen.queryByTestId('fullscreenModalScrollView')
 
-    expect(fullscreenModalScrollView).toBeFalsy()
+    expect(fullscreenModalScrollView).not.toBeOnTheScreen()
   })
 
   it('should display fullscreen modal view when isFullscreen = true and scrollEnabled = false', () => {
@@ -183,7 +183,7 @@ describe('<AppModal />', () => {
 
     const fullscreenModalView = screen.getByTestId('fullscreenModalView')
 
-    expect(fullscreenModalView).toBeTruthy()
+    expect(fullscreenModalView).toBeOnTheScreen()
   })
 
   it('should not display fullscreen modal view when isFullscreen = true and scrollEnabled = true', () => {
@@ -192,7 +192,7 @@ describe('<AppModal />', () => {
 
     const fullscreenModalView = screen.queryByTestId('fullscreenModalView')
 
-    expect(fullscreenModalView).toBeFalsy()
+    expect(fullscreenModalView).not.toBeOnTheScreen()
   })
 
   describe('backdrop callback', () => {
@@ -319,7 +319,7 @@ describe('<AppModal />', () => {
       render(<AppModal {...modalProps} />)
       const customModalHeader = screen.getByTestId('customModalHeader')
 
-      expect(customModalHeader).toBeTruthy()
+      expect(customModalHeader).toBeOnTheScreen()
     })
 
     it('should display a fixed modal bottom if specified', () => {
@@ -327,14 +327,14 @@ describe('<AppModal />', () => {
       render(<AppModal {...modalProps} />)
       const fixedModalBottom = screen.getByTestId('fixedModalBottom')
 
-      expect(fixedModalBottom).toBeTruthy()
+      expect(fixedModalBottom).toBeOnTheScreen()
     })
   })
 
   describe('Spacer between header and content', () => {
     it('should display it', () => {
       render(<AppModal {...defaultProps} />)
-      expect(screen.getByTestId('spacerBetweenHeaderAndContent')).toBeTruthy()
+      expect(screen.getByTestId('spacerBetweenHeaderAndContent')).toBeOnTheScreen()
     })
 
     it('should not display it', () => {
@@ -343,7 +343,7 @@ describe('<AppModal />', () => {
         shouldAddSpacerBetweenHeaderAndContent: false,
       }
       render(<AppModal {...modalProps} />)
-      expect(screen.queryByTestId('spacerBetweenHeaderAndContent')).toBeNull()
+      expect(screen.queryByTestId('spacerBetweenHeaderAndContent')).not.toBeOnTheScreen()
     })
   })
 })

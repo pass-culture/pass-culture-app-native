@@ -15,7 +15,7 @@ describe('EndedBookingItem', () => {
   it('should display offer title', () => {
     renderEndedBookingItem(bookingsSnap.ended_bookings[0])
 
-    expect(screen.queryByText('Avez-vous déjà vu ?')).toBeTruthy()
+    expect(screen.queryByText('Avez-vous déjà vu ?')).toBeOnTheScreen()
   })
 
   it('should display "Réservation utilisée" and dateUsed labels if booking was used', () => {
@@ -24,8 +24,8 @@ describe('EndedBookingItem', () => {
       dateUsed: '2021-03-16T23:01:37.925926',
     })
 
-    expect(screen.queryByText('Réservation utilisée')).toBeTruthy()
-    expect(screen.queryByText('le 16/03/2021')).toBeTruthy()
+    expect(screen.queryByText('Réservation utilisée')).toBeOnTheScreen()
+    expect(screen.queryByText('le 16/03/2021')).toBeOnTheScreen()
   })
 
   it('should display "Annulée" and cancellationDate labels if booking was cancelled by offerer', () => {
@@ -34,8 +34,8 @@ describe('EndedBookingItem', () => {
       cancellationReason: BookingCancellationReasons.OFFERER,
     })
 
-    expect(screen.queryByText('Annulée')).toBeTruthy()
-    expect(screen.queryByText('le 15/03/2021')).toBeTruthy()
+    expect(screen.queryByText('Annulée')).toBeOnTheScreen()
+    expect(screen.queryByText('le 15/03/2021')).toBeOnTheScreen()
   })
 
   it('should display "Réservation annulée" and cancellationDate labels if booking was cancelled by beneficiary and offer is not digital without expiration date', () => {
@@ -44,8 +44,8 @@ describe('EndedBookingItem', () => {
       cancellationReason: BookingCancellationReasons.BENEFICIARY,
     })
 
-    expect(screen.queryByText('Réservation annulée')).toBeTruthy()
-    expect(screen.queryByText('le 15/03/2021')).toBeTruthy()
+    expect(screen.queryByText('Réservation annulée')).toBeOnTheScreen()
+    expect(screen.queryByText('le 15/03/2021')).toBeOnTheScreen()
   })
 
   it('should display "Réservation annulée" and cancellationDate labels if booking was expired and offer is not digital without expiration date', () => {
@@ -54,8 +54,8 @@ describe('EndedBookingItem', () => {
       cancellationReason: BookingCancellationReasons.EXPIRED,
     })
 
-    expect(screen.queryByText('Réservation annulée')).toBeTruthy()
-    expect(screen.queryByText('le 15/03/2021')).toBeTruthy()
+    expect(screen.queryByText('Réservation annulée')).toBeOnTheScreen()
+    expect(screen.queryByText('le 15/03/2021')).toBeOnTheScreen()
   })
 
   it('should display "Réservation archivée" when offer is digital without expiration date and not cancelled', () => {
@@ -65,7 +65,7 @@ describe('EndedBookingItem', () => {
       cancellationReason: null,
     })
 
-    expect(screen.queryByText('Réservation archivée')).toBeTruthy()
+    expect(screen.queryByText('Réservation archivée')).toBeOnTheScreen()
   })
 
   it('should navigate to offer page when offer is not digital without expiration date', async () => {

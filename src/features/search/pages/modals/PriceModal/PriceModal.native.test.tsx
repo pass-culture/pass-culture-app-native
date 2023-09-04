@@ -389,7 +389,7 @@ describe('<PriceModal/>', () => {
     const creditBanner = screen.queryByText('Il te reste 70 € sur ton pass Culture.')
 
     await waitFor(() => {
-      expect(creditBanner).toBeTruthy()
+      expect(creditBanner).toBeOnTheScreen()
     })
   })
 
@@ -402,7 +402,7 @@ describe('<PriceModal/>', () => {
     const inputError = screen.getByText(
       `Format du prix incorrect. Exemple de format attendu\u00a0: 10,00`
     )
-    expect(inputError).toBeTruthy()
+    expect(inputError).toBeOnTheScreen()
   })
 
   it('should display an error when the expected format of maximum price is incorrect', async () => {
@@ -414,7 +414,7 @@ describe('<PriceModal/>', () => {
     const inputError = screen.getByText(
       `Format du prix incorrect. Exemple de format attendu\u00a0: 10,00`
     )
-    expect(inputError).toBeTruthy()
+    expect(inputError).toBeOnTheScreen()
   })
 
   it('should display the initial credit in maximum price input placeholder', async () => {
@@ -425,7 +425,7 @@ describe('<PriceModal/>', () => {
     })
 
     const maxPriceInput = screen.getByPlaceholderText('80')
-    expect(maxPriceInput).toBeTruthy()
+    expect(maxPriceInput).toBeOnTheScreen()
   })
 
   it('should display the initial credit in right label maximum price input', async () => {
@@ -436,7 +436,7 @@ describe('<PriceModal/>', () => {
     })
 
     const rightLabelMaxInput = screen.getByText(`max : 80 €`)
-    expect(rightLabelMaxInput).toBeTruthy()
+    expect(rightLabelMaxInput).toBeOnTheScreen()
   })
 
   describe('should close the modal ', () => {
@@ -476,11 +476,13 @@ describe('<PriceModal/>', () => {
 
     await act(async () => fireEvent.changeText(minPriceInput, '9999'))
 
-    expect(screen.queryByText('Le prix indiqué ne doit pas dépasser 80\u00a0€')).toBeTruthy()
+    expect(screen.queryByText('Le prix indiqué ne doit pas dépasser 80\u00a0€')).toBeOnTheScreen()
 
     await act(async () => fireEvent.press(onlyFreeOffersToggle))
 
-    expect(screen.queryByText('Le prix indiqué ne doit pas dépasser 80\u00a0€')).toBeNull()
+    expect(
+      screen.queryByText('Le prix indiqué ne doit pas dépasser 80\u00a0€')
+    ).not.toBeOnTheScreen()
   })
 
   it('should hide maxPrice error when onlyFreeOffers is pressed', async () => {
@@ -491,11 +493,13 @@ describe('<PriceModal/>', () => {
 
     await act(async () => fireEvent.changeText(maxPriceInput, '9999'))
 
-    expect(screen.queryByText('Le prix indiqué ne doit pas dépasser 80\u00a0€')).toBeTruthy()
+    expect(screen.queryByText('Le prix indiqué ne doit pas dépasser 80\u00a0€')).toBeOnTheScreen()
 
     await act(async () => fireEvent.press(onlyFreeOffersToggle))
 
-    expect(screen.queryByText('Le prix indiqué ne doit pas dépasser 80\u00a0€')).toBeNull()
+    expect(
+      screen.queryByText('Le prix indiqué ne doit pas dépasser 80\u00a0€')
+    ).not.toBeOnTheScreen()
   })
 
   it('should hide maxPrice error when limitCreditSearch is pressed', async () => {
@@ -506,11 +510,13 @@ describe('<PriceModal/>', () => {
 
     await act(async () => fireEvent.changeText(maxPriceInput, '9999'))
 
-    expect(screen.queryByText('Le prix indiqué ne doit pas dépasser 80\u00a0€')).toBeTruthy()
+    expect(screen.queryByText('Le prix indiqué ne doit pas dépasser 80\u00a0€')).toBeOnTheScreen()
 
     await act(async () => fireEvent.press(limitCreditSearchToggle))
 
-    expect(screen.queryByText('Le prix indiqué ne doit pas dépasser 80\u00a0€')).toBeNull()
+    expect(
+      screen.queryByText('Le prix indiqué ne doit pas dépasser 80\u00a0€')
+    ).not.toBeOnTheScreen()
   })
 
   describe('when user is not logged in', () => {
@@ -527,7 +533,7 @@ describe('<PriceModal/>', () => {
 
       const toggleLimitCreditSearch = screen.queryByTestId('Interrupteur limitCreditSearch')
 
-      expect(toggleLimitCreditSearch).toBeNull()
+      expect(toggleLimitCreditSearch).not.toBeOnTheScreen()
     })
 
     it('should not display credit banner', async () => {
@@ -538,7 +544,7 @@ describe('<PriceModal/>', () => {
       })
 
       const creditBanner = screen.queryByTestId('creditBanner')
-      expect(creditBanner).toBeNull()
+      expect(creditBanner).not.toBeOnTheScreen()
     })
 
     it('should display the credit given to 18 year olds in maximum price input placeholder', async () => {
@@ -550,7 +556,7 @@ describe('<PriceModal/>', () => {
 
       const maxPriceInput = screen.getByPlaceholderText(`${MAX_PRICE}`)
 
-      expect(maxPriceInput).toBeTruthy()
+      expect(maxPriceInput).toBeOnTheScreen()
     })
 
     it('should display the credit given to 18 year olds in right label maximum price input', async () => {
@@ -562,7 +568,7 @@ describe('<PriceModal/>', () => {
 
       const rightLabelMaxInput = screen.getByText(`max : ${MAX_PRICE} €`)
 
-      expect(rightLabelMaxInput).toBeTruthy()
+      expect(rightLabelMaxInput).toBeOnTheScreen()
     })
   })
 
@@ -582,7 +588,7 @@ describe('<PriceModal/>', () => {
       })
 
       const toggleLimitCreditSearch = screen.queryByTestId('Interrupteur limitCreditSearch')
-      expect(toggleLimitCreditSearch).toBeNull()
+      expect(toggleLimitCreditSearch).not.toBeOnTheScreen()
     })
 
     it('should not display credit banner', async () => {
@@ -594,7 +600,7 @@ describe('<PriceModal/>', () => {
 
       const creditBanner = screen.queryByTestId('creditBanner')
 
-      expect(creditBanner).toBeNull()
+      expect(creditBanner).not.toBeOnTheScreen()
     })
 
     it('should display the credit given to 18 year olds in maximum price input placeholder', async () => {
@@ -606,7 +612,7 @@ describe('<PriceModal/>', () => {
 
       const maxPriceInput = screen.getByPlaceholderText(`${MAX_PRICE}`)
 
-      expect(maxPriceInput).toBeTruthy()
+      expect(maxPriceInput).toBeOnTheScreen()
     })
 
     it('should display the credit given to 18 year olds in right label maximum price input', async () => {
@@ -618,7 +624,7 @@ describe('<PriceModal/>', () => {
 
       const rightLabelMaxInput = screen.getByText(`max : ${MAX_PRICE} €`)
 
-      expect(rightLabelMaxInput).toBeTruthy()
+      expect(rightLabelMaxInput).toBeOnTheScreen()
     })
   })
 
@@ -629,7 +635,7 @@ describe('<PriceModal/>', () => {
       })
 
       await waitFor(() => {
-        expect(screen.getByText('Appliquer le filtre')).toBeTruthy()
+        expect(screen.getByText('Appliquer le filtre')).toBeOnTheScreen()
         expect(screen.getByText('Appliquer le filtre')).toBeEnabled()
       })
     })
@@ -788,7 +794,7 @@ describe('<PriceModal/>', () => {
         expect(screen.getByText('Appliquer le filtre')).toBeEnabled()
       })
 
-      expect(screen.getByTestId('Revenir en arrière')).toBeTruthy()
+      expect(screen.getByTestId('Revenir en arrière')).toBeOnTheScreen()
     })
 
     it('should close the modal and general filter page when pressing close button when the modal is opening from general filter page', async () => {

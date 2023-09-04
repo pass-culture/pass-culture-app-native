@@ -29,7 +29,7 @@ describe('<BookingPropertiesSection />', () => {
     const { getByText } = renderBookingProperties(booking)
 
     await waitFor(() => {
-      expect(getByText('Christophe\u00a0Dupont')).toBeTruthy()
+      expect(getByText('Christophe\u00a0Dupont')).toBeOnTheScreen()
     })
   })
 
@@ -38,7 +38,7 @@ describe('<BookingPropertiesSection />', () => {
     const { getByTestId } = renderBookingProperties(booking)
 
     await waitFor(() => {
-      expect(getByTestId('duo-icon')).toBeTruthy()
+      expect(getByTestId('duo-icon')).toBeOnTheScreen()
     })
   })
 
@@ -46,7 +46,7 @@ describe('<BookingPropertiesSection />', () => {
     const { getByText } = renderBookingProperties(booking)
 
     await waitFor(() => {
-      expect(getByText('Le 15 mars 2021 à 20h00')).toBeTruthy()
+      expect(getByText('Le 15 mars 2021 à 20h00')).toBeOnTheScreen()
     })
   })
 
@@ -55,7 +55,7 @@ describe('<BookingPropertiesSection />', () => {
     booking.stock.offer.isPermanent = false
     const { getByText } = renderBookingProperties(booking)
     await waitFor(() => {
-      expect(getByText('Maison de la Brique, Drancy')).toBeTruthy()
+      expect(getByText('Maison de la Brique, Drancy')).toBeOnTheScreen()
     })
   })
 
@@ -63,19 +63,19 @@ describe('<BookingPropertiesSection />', () => {
     mockUseFeatureFlag.mockReturnValueOnce(true)
     renderBookingProperties(booking)
 
-    expect(screen.getByText('8\u00a0€')).toBeTruthy()
-    expect(screen.getByText('(4\u00a0€ x 2 places)')).toBeTruthy()
-    expect(screen.getByText('- VOSTFR 3D IMAX')).toBeTruthy()
-    expect(screen.getByTestId('price-line__price-detail')).toBeTruthy()
-    expect(screen.getByTestId('price-line__attributes')).toBeTruthy()
+    expect(screen.getByText('8\u00a0€')).toBeOnTheScreen()
+    expect(screen.getByText('(4\u00a0€ x 2 places)')).toBeOnTheScreen()
+    expect(screen.getByText('- VOSTFR 3D IMAX')).toBeOnTheScreen()
+    expect(screen.getByTestId('price-line__price-detail')).toBeOnTheScreen()
+    expect(screen.getByTestId('price-line__attributes')).toBeOnTheScreen()
   })
 
   it("should not show cinema's attributes when wipAttributesCinemaOffers feature flag deactivated", () => {
     mockUseFeatureFlag.mockReturnValueOnce(false)
     renderBookingProperties(booking)
 
-    expect(screen.queryByText('- VOSTFR 3D IMAX')).toBeFalsy()
-    expect(screen.queryByTestId('price-line__attributes')).toBeFalsy()
+    expect(screen.queryByText('- VOSTFR 3D IMAX')).not.toBeOnTheScreen()
+    expect(screen.queryByTestId('price-line__attributes')).not.toBeOnTheScreen()
   })
 })
 

@@ -43,13 +43,13 @@ describe('OnGoingBookingItem', () => {
     it('should display withdrawal reminder', () => {
       renderOnGoingBookingItem(booking)
 
-      expect(screen.getByTestId('on-site-withdrawal-container')).toBeTruthy()
+      expect(screen.getByTestId('on-site-withdrawal-container')).toBeOnTheScreen()
     })
 
     it('should not display event reminder', () => {
       renderOnGoingBookingItem(booking)
 
-      expect(screen.queryByTestId('withdraw-container')).toBeNull()
+      expect(screen.queryByTestId('withdraw-container')).not.toBeOnTheScreen()
     })
   })
 
@@ -70,13 +70,13 @@ describe('OnGoingBookingItem', () => {
     it('should not display withdrawal reminder', () => {
       renderOnGoingBookingItem(booking)
 
-      expect(screen.queryByTestId('on-site-withdrawal-container')).toBeNull()
+      expect(screen.queryByTestId('on-site-withdrawal-container')).not.toBeOnTheScreen()
     })
 
     it('should display event reminder', () => {
       renderOnGoingBookingItem(booking)
 
-      expect(screen.getByTestId('withdraw-container')).toBeTruthy()
+      expect(screen.getByTestId('withdraw-container')).toBeOnTheScreen()
     })
   })
 
@@ -100,7 +100,7 @@ describe('OnGoingBookingItem', () => {
       }
       renderOnGoingBookingItem(booking, bookings)
 
-      expect(screen.getByText('Ta réservation s’archivera dans 25 jours')).toBeTruthy()
+      expect(screen.getByText('Ta réservation s’archivera dans 25 jours')).toBeOnTheScreen()
     })
 
     it.each(FREE_OFFER_CATEGORIES_TO_ARCHIVE.map((category) => [category, 0]))(
@@ -120,7 +120,7 @@ describe('OnGoingBookingItem', () => {
         }
         renderOnGoingBookingItem(booking, bookings)
 
-        expect(screen.getByText('Ta réservation s’archivera dans 25 jours')).toBeTruthy()
+        expect(screen.getByText('Ta réservation s’archivera dans 25 jours')).toBeOnTheScreen()
       }
     )
 
@@ -141,7 +141,7 @@ describe('OnGoingBookingItem', () => {
         }
         renderOnGoingBookingItem(booking)
 
-        expect(screen.queryByText('Ta réservation s’archivera dans 25 jours')).toBeFalsy()
+        expect(screen.queryByText('Ta réservation s’archivera dans 25 jours')).not.toBeOnTheScreen()
       }
     )
 
@@ -160,7 +160,7 @@ describe('OnGoingBookingItem', () => {
       }
       renderOnGoingBookingItem(booking, bookings)
 
-      expect(screen.queryByTestId('expiration-booking-container')).toBeNull()
+      expect(screen.queryByTestId('expiration-booking-container')).not.toBeOnTheScreen()
     })
   })
 

@@ -13,12 +13,12 @@ describe('<DeeplinksResult />', () => {
 
   it('should display deeplinks results', () => {
     const renderAPI = render(<DeeplinksResult result={result} />)
-    expect(renderAPI.getByText(result.firebaseLink)).toBeTruthy()
-    expect(renderAPI.getByText(result.universalLink)).toBeTruthy()
+    expect(renderAPI.getByText(result.firebaseLink)).toBeOnTheScreen()
+    expect(renderAPI.getByText(result.universalLink)).toBeOnTheScreen()
   })
 
   it('should display message when no results are provided', async () => {
     const renderAPI = render(<DeeplinksResult />)
-    expect(renderAPI.getByText(`Vous devez d’abord générer un lien`)).toBeTruthy()
+    expect(renderAPI.getByText(`Vous devez d’abord générer un lien`)).toBeOnTheScreen()
   })
 })

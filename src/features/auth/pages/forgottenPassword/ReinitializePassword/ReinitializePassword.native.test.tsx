@@ -86,7 +86,7 @@ describe('ReinitializePassword Page', () => {
 
     const notMatchingErrorText = screen.queryByText('Les mots de passe ne concordent pas')
 
-    expect(notMatchingErrorText).toBeTruthy()
+    expect(notMatchingErrorText).toBeOnTheScreen()
   })
 
   it('should request password reinitialization on connect button', async () => {

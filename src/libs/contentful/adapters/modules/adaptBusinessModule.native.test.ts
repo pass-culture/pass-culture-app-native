@@ -20,7 +20,7 @@ describe('adaptBusinessModule', () => {
     }
     const rawBusinessModule = businessNatifModuleFixture
 
-    expect(isBusinessContentModel(rawBusinessModule)).toBeTruthy()
+    expect(isBusinessContentModel(rawBusinessModule)).toBe(true)
     expect(adaptBusinessModule(rawBusinessModule)).toEqual(formattedBusinessModule)
   })
 

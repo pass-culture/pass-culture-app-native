@@ -126,7 +126,7 @@ describe('Usage of AsyncErrorBoundary as fallback in ErrorBoundary', () => {
 
     renderErrorBoundary()
 
-    expect(screen.getByText('Oups\u00a0!')).toBeTruthy()
+    expect(screen.getByText('Oups\u00a0!')).toBeOnTheScreen()
   })
 })
 

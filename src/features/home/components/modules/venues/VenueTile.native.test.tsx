@@ -66,6 +66,6 @@ describe('VenueTile component', () => {
     const { getByTestId } = render(
       <VenueTile {...props} venue={{ ...venue, bannerUrl: undefined }} />
     )
-    expect(getByTestId('venue-type-tile')).toBeTruthy()
+    expect(getByTestId('venue-type-tile')).toBeOnTheScreen()
   })
 })

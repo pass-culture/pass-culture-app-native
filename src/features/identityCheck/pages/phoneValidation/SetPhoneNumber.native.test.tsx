@@ -53,7 +53,7 @@ describe('SetPhoneNumber', () => {
 
   it('should show modal on first render', async () => {
     renderSetPhoneNumber()
-    await waitFor(() => expect(screen.getByText('J’ai compris')).toBeTruthy())
+    await waitFor(() => expect(screen.getByText('J’ai compris')).toBeOnTheScreen())
   })
   it('should have a different color if 1 attempt is remaining', async () => {
     jest.spyOn(useModalAPI, 'useModal').mockReturnValueOnce({
@@ -149,7 +149,7 @@ describe('SetPhoneNumber', () => {
       fireEvent.press(continueButton)
 
       await waitFor(() => {
-        expect(screen.getByText('Le numéro est invalide.')).toBeTruthy()
+        expect(screen.getByText('Le numéro est invalide.')).toBeOnTheScreen()
       })
     })
 

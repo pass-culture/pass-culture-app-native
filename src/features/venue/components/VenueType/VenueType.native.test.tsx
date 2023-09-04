@@ -15,6 +15,6 @@ describe('VenueType', () => {
 
   it('should display a correctly label', () => {
     const { getByText } = render(<VenueType type={VenueTypeCodeKey.MOVIE} label={typeLabel} />)
-    expect(getByText('Cinéma - Salle de projections')).toBeTruthy()
+    expect(getByText('Cinéma - Salle de projections')).toBeOnTheScreen()
   })
 })

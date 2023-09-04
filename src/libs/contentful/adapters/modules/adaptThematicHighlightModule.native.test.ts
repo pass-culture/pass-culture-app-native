@@ -8,7 +8,7 @@ describe('adaptThematicHighlightModule', () => {
   it('should adapt an thematic highlight module', () => {
     const rawThematicHighlightModule = thematicHighlightModuleFixture
 
-    expect(isThematicHighlightContentModel(rawThematicHighlightModule)).toBeTruthy()
+    expect(isThematicHighlightContentModel(rawThematicHighlightModule)).toBe(true)
     expect(adaptThematicHighlightModule(rawThematicHighlightModule)).toEqual(
       formattedThematicHighlightModule
     )

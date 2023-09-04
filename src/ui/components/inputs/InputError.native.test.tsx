@@ -16,7 +16,7 @@ describe('InputError Component', () => {
     )
 
     const text = queryByText('message')
-    expect(text).toBeTruthy()
+    expect(text).toBeOnTheScreen()
   })
   it('should hide the given message', () => {
     const { queryByText } = render(
@@ -29,7 +29,7 @@ describe('InputError Component', () => {
     )
 
     const text = queryByText('message')
-    expect(text).toBeFalsy()
+    expect(text).not.toBeOnTheScreen()
   })
   it('should display the right top space', () => {
     const { getByTestId } = render(

@@ -7,7 +7,7 @@ describe('adaptRecommendationModule', () => {
   it('should adapt a recommendedOffers module', () => {
     const rawRecommendationModule = recommendationNatifModuleFixture
 
-    expect(isRecommendationContentModel(rawRecommendationModule)).toBeTruthy()
+    expect(isRecommendationContentModel(rawRecommendationModule)).toBe(true)
     expect(adaptRecommendationModule(rawRecommendationModule)).toEqual(
       formattedRecommendedOffersModule
     )

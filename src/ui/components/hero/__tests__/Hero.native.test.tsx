@@ -10,18 +10,18 @@ describe('HeroImage', () => {
     const { queryByTestId } = render(
       <Hero imageUrl={''} type="offer" categoryId={CategoryIdEnum.CINEMA} />
     )
-    expect(queryByTestId('BackgroundPlaceholder')).toBeTruthy()
-    expect(queryByTestId('categoryIcon')).toBeTruthy()
-    expect(queryByTestId('imagePlaceholder')).toBeTruthy()
+    expect(queryByTestId('BackgroundPlaceholder')).toBeOnTheScreen()
+    expect(queryByTestId('categoryIcon')).toBeOnTheScreen()
+    expect(queryByTestId('imagePlaceholder')).toBeOnTheScreen()
   })
 
   it('shows both placeholders when url is undefined', () => {
     const { queryByTestId } = render(
       <Hero imageUrl={undefined} type="offer" categoryId={CategoryIdEnum.CINEMA} />
     )
-    expect(queryByTestId('BackgroundPlaceholder')).toBeTruthy()
-    expect(queryByTestId('categoryIcon')).toBeTruthy()
-    expect(queryByTestId('imagePlaceholder')).toBeTruthy()
+    expect(queryByTestId('BackgroundPlaceholder')).toBeOnTheScreen()
+    expect(queryByTestId('categoryIcon')).toBeOnTheScreen()
+    expect(queryByTestId('imagePlaceholder')).toBeOnTheScreen()
   })
 
   it('does not show placeholders when an url is defined', () => {
@@ -32,8 +32,8 @@ describe('HeroImage', () => {
         categoryId={CategoryIdEnum.CINEMA}
       />
     )
-    expect(queryByTestId('BackgroundPlaceholder')).toBeNull()
-    expect(queryByTestId('categoryIcon')).toBeNull()
-    expect(queryByTestId('imagePlaceholder')).toBeNull()
+    expect(queryByTestId('BackgroundPlaceholder')).not.toBeOnTheScreen()
+    expect(queryByTestId('categoryIcon')).not.toBeOnTheScreen()
+    expect(queryByTestId('imagePlaceholder')).not.toBeOnTheScreen()
   })
 })

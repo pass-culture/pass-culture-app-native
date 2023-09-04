@@ -55,8 +55,8 @@ describe('ThematicHome', () => {
     renderThematicHome()
     await act(async () => {})
 
-    expect(screen.getAllByText('Bloc temps fort')).toBeTruthy()
-    expect(screen.getByText('Un sous-titre')).toBeTruthy()
+    expect(screen.getAllByText('Bloc temps fort')).not.toHaveLength(0)
+    expect(screen.getByText('Un sous-titre')).toBeOnTheScreen()
   })
 
   it('should show highlight animated header when provided and platform is iOS', async () => {
@@ -67,8 +67,8 @@ describe('ThematicHome', () => {
     renderThematicHome()
     await act(async () => {})
 
-    expect(await screen.findAllByText('Bloc temps fort')).toBeTruthy()
-    expect(screen.getByTestId('animated-thematic-header')).toBeTruthy()
+    expect(await screen.findAllByText('Bloc temps fort')).not.toHaveLength(0)
+    expect(screen.getByTestId('animated-thematic-header')).toBeOnTheScreen()
   })
 
   it('should not show highlight animated header when provided and platform is Android', async () => {
@@ -79,8 +79,8 @@ describe('ThematicHome', () => {
     renderThematicHome()
     await act(async () => {})
 
-    expect(await screen.findAllByText('Bloc temps fort')).toBeTruthy()
-    expect(screen.queryByTestId('animated-thematic-header')).toBeNull()
+    expect(await screen.findAllByText('Bloc temps fort')).not.toHaveLength(0)
+    expect(screen.queryByTestId('animated-thematic-header')).not.toBeOnTheScreen()
   })
 
   it('should show category header when provided', async () => {
@@ -99,8 +99,8 @@ describe('ThematicHome', () => {
     renderThematicHome()
     await act(async () => {})
 
-    expect(await screen.findAllByText('Catégorie cinéma')).toBeTruthy()
-    expect(screen.getByText('Un sous-titre')).toBeTruthy()
+    expect(await screen.findAllByText('Catégorie cinéma')).not.toHaveLength(0)
+    expect(screen.getByText('Un sous-titre')).toBeOnTheScreen()
   })
 
   it('should log ConsultHome', async () => {

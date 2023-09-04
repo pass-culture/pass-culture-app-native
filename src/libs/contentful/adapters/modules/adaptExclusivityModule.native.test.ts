@@ -7,7 +7,7 @@ describe('adaptExclusivityModule', () => {
   it('should adapt an exclusivity module', () => {
     const rawExclusivityNatifModule = exclusivityNatifModuleFixture
 
-    expect(isExclusivityContentModel(rawExclusivityNatifModule)).toBeTruthy()
+    expect(isExclusivityContentModel(rawExclusivityNatifModule)).toBe(true)
     expect(adaptExclusivityModule(rawExclusivityNatifModule)).toEqual(formattedExclusivityModule)
   })
 

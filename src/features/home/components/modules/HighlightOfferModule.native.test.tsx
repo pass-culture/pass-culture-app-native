@@ -45,7 +45,7 @@ describe('HighlightOfferModule', () => {
 
     await act(async () => {})
 
-    expect(screen.queryByText(highlightOfferModuleFixture.highlightTitle)).toBeFalsy()
+    expect(screen.queryByText(highlightOfferModuleFixture.highlightTitle)).not.toBeOnTheScreen()
   })
 
   it('should send analytics event on module display', async () => {
@@ -108,8 +108,8 @@ describe('HighlightOfferModule', () => {
     renderHighlightModule()
 
     await act(async () => {
-      expect(screen.getByText('34 € - Duo')).toBeTruthy()
-      expect(screen.queryByText('34 €')).toBeNull()
+      expect(screen.getByText('34 € - Duo')).toBeOnTheScreen()
+      expect(screen.queryByText('34 €')).not.toBeOnTheScreen()
     })
   })
 
@@ -119,8 +119,8 @@ describe('HighlightOfferModule', () => {
     renderHighlightModule()
 
     await act(async () => {
-      expect(screen.getByText('28 €')).toBeTruthy()
-      expect(screen.queryByText('28 € - Duo')).toBeNull()
+      expect(screen.getByText('28 €')).toBeOnTheScreen()
+      expect(screen.queryByText('28 € - Duo')).not.toBeOnTheScreen()
     })
   })
 })

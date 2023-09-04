@@ -55,7 +55,7 @@ describe('<GenericAchievement />', () => {
       children: [<TestCard activeIndex={0} index={0} key={0} />],
     })
 
-    expect(screen.getByText('swipeRef exist')).toBeTruthy()
+    expect(screen.getByText('swipeRef exist')).toBeOnTheScreen()
     expect(() => screen.getByText('swipeRef does not exist')).toThrow()
   })
 
@@ -65,7 +65,7 @@ describe('<GenericAchievement />', () => {
       children: [<TestCard activeIndex={0} index={0} key={0} />],
     })
 
-    expect(screen.getByText('name exist')).toBeTruthy()
+    expect(screen.getByText('name exist')).toBeOnTheScreen()
     expect(() => screen.getByText('name does not exist')).toThrow()
   })
 
@@ -95,7 +95,7 @@ describe('<GenericAchievement />', () => {
       ],
     })
 
-    expect(screen.queryByText('Tout passer')).toBeTruthy()
+    expect(screen.queryByText('Tout passer')).toBeOnTheScreen()
   })
 
   it('should not have a skip all button when just one cards', () => {
@@ -104,7 +104,7 @@ describe('<GenericAchievement />', () => {
       children: [<TestCard activeIndex={0} index={0} key={0} />],
     })
 
-    expect(screen.queryByText('Tout passer')).toBeNull()
+    expect(screen.queryByText('Tout passer')).not.toBeOnTheScreen()
   })
 
   it('should trigger analytics with a custom name instead of Achievement1', () => {

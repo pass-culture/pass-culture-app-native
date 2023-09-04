@@ -31,7 +31,7 @@ describe('useBookOfferMutation', () => {
     await waitFor(() => {
       expect(props.onSuccess).toHaveBeenCalledTimes(1)
       expect(props.onError).not.toHaveBeenCalled()
-      expect(queryCache.find(['userProfile'])?.state.isInvalidated).toBeTruthy()
+      expect(queryCache.find(['userProfile'])?.state.isInvalidated).toBe(true)
     })
   })
 

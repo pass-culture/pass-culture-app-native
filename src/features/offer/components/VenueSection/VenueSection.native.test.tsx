@@ -28,7 +28,7 @@ describe('<VenueSection />', () => {
         title="Lieu de retrait"
       />
     )
-    expect(screen.queryByText('Voir l’itinéraire')).toBeTruthy()
+    expect(screen.queryByText('Voir l’itinéraire')).toBeOnTheScreen()
   })
 
   it('should display public venue name when specified', () => {
@@ -41,7 +41,7 @@ describe('<VenueSection />', () => {
       />
     )
 
-    expect(screen.queryByText('Le Petit Rintintin')).toBeTruthy()
+    expect(screen.queryByText('Le Petit Rintintin')).toBeOnTheScreen()
   })
 
   it('should not display venue name when public venue name specified', () => {
@@ -54,7 +54,7 @@ describe('<VenueSection />', () => {
       />
     )
 
-    expect(screen.queryByText('Le Petit Rintintin 1')).toBeNull()
+    expect(screen.queryByText('Le Petit Rintintin 1')).not.toBeOnTheScreen()
   })
 
   it('should display venue name when public venue name unspecified', () => {
@@ -67,7 +67,7 @@ describe('<VenueSection />', () => {
       />
     )
 
-    expect(screen.queryByText('Le Petit Rintintin 1')).toBeTruthy()
+    expect(screen.queryByText('Le Petit Rintintin 1')).toBeOnTheScreen()
   })
 
   describe('should not display "Voir l’itinéraire" button', () => {
@@ -80,7 +80,7 @@ describe('<VenueSection />', () => {
           title="Lieu de retrait"
         />
       )
-      expect(screen.queryByText('Voir l’itinéraire')).toBeNull()
+      expect(screen.queryByText('Voir l’itinéraire')).not.toBeOnTheScreen()
     })
 
     it('when only venue address specified', () => {
@@ -92,7 +92,7 @@ describe('<VenueSection />', () => {
           title="Lieu de retrait"
         />
       )
-      expect(screen.queryByText('Voir l’itinéraire')).toBeNull()
+      expect(screen.queryByText('Voir l’itinéraire')).not.toBeOnTheScreen()
     })
 
     it('when only venue postal code specified', () => {
@@ -104,7 +104,7 @@ describe('<VenueSection />', () => {
           title="Lieu de retrait"
         />
       )
-      expect(screen.queryByText('Voir l’itinéraire')).toBeNull()
+      expect(screen.queryByText('Voir l’itinéraire')).not.toBeOnTheScreen()
     })
 
     it('when only venue city specified', () => {
@@ -116,7 +116,7 @@ describe('<VenueSection />', () => {
           title="Lieu de retrait"
         />
       )
-      expect(screen.queryByText('Voir l’itinéraire')).toBeNull()
+      expect(screen.queryByText('Voir l’itinéraire')).not.toBeOnTheScreen()
     })
 
     it('when only venue city and postal code specified', () => {
@@ -128,7 +128,7 @@ describe('<VenueSection />', () => {
           title="Lieu de retrait"
         />
       )
-      expect(screen.queryByText('Voir l’itinéraire')).toBeNull()
+      expect(screen.queryByText('Voir l’itinéraire')).not.toBeOnTheScreen()
     })
 
     it('when only venue city and address specified', () => {
@@ -140,7 +140,7 @@ describe('<VenueSection />', () => {
           title="Lieu de retrait"
         />
       )
-      expect(screen.queryByText('Voir l’itinéraire')).toBeNull()
+      expect(screen.queryByText('Voir l’itinéraire')).not.toBeOnTheScreen()
     })
 
     it('when only venue postal code and address specified', () => {
@@ -152,7 +152,7 @@ describe('<VenueSection />', () => {
           title="Lieu de retrait"
         />
       )
-      expect(screen.queryByText('Voir l’itinéraire')).toBeNull()
+      expect(screen.queryByText('Voir l’itinéraire')).not.toBeOnTheScreen()
     })
   })
 
@@ -181,7 +181,7 @@ describe('<VenueSection />', () => {
           title="Lieu de retrait"
         />
       )
-      expect(screen.queryByTestId('venue-card')).toBeTruthy()
+      expect(screen.queryByTestId('venue-card')).toBeOnTheScreen()
     })
 
     it('should not display not clickable venue information', () => {
@@ -193,7 +193,7 @@ describe('<VenueSection />', () => {
           title="Lieu de retrait"
         />
       )
-      expect(screen.queryByTestId('venue-info')).toBeNull()
+      expect(screen.queryByTestId('venue-info')).not.toBeOnTheScreen()
     })
 
     it('should log ConsultVenue when pressing venue card', () => {
@@ -239,7 +239,7 @@ describe('<VenueSection />', () => {
           title="Lieu de retrait"
         />
       )
-      expect(screen.queryByTestId('venue-info')).toBeTruthy()
+      expect(screen.queryByTestId('venue-info')).toBeOnTheScreen()
     })
 
     it('should not display clickable venue card', () => {
@@ -250,7 +250,7 @@ describe('<VenueSection />', () => {
           title="Lieu de retrait"
         />
       )
-      expect(screen.queryByTestId('venue-card')).toBeNull()
+      expect(screen.queryByTestId('venue-card')).not.toBeOnTheScreen()
     })
   })
 })

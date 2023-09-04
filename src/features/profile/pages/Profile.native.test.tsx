@@ -113,7 +113,7 @@ describe('Profile component', () => {
     mockUseNetInfoContext.mockReturnValueOnce({ isConnected: false })
     renderProfile()
 
-    expect(screen.queryByText('Pas de réseau internet')).toBeTruthy()
+    expect(screen.queryByText('Pas de réseau internet')).toBeOnTheScreen()
   })
 
   it('should display the version with the CodePush version label', async () => {
@@ -121,13 +121,13 @@ describe('Profile component', () => {
     useVersionSpy.mockReturnValueOnce(mockVersion)
     await renderProfile()
 
-    expect(screen.getByText(mockVersion)).toBeTruthy()
+    expect(screen.getByText(mockVersion)).toBeOnTheScreen()
   })
 
   it('should not display the Code push version label when it is not available', async () => {
     await renderProfile()
 
-    expect(screen.getByText('Version\u00A01.10.5')).toBeTruthy()
+    expect(screen.getByText('Version\u00A01.10.5')).toBeOnTheScreen()
   })
 
   describe('user settings section', () => {
@@ -149,8 +149,8 @@ describe('Profile component', () => {
         const positionErrorMessage = screen.queryByText(
           `La géolocalisation est temporairement inutilisable sur ton téléphone`
         )
-        expect(positionErrorMessage).toBeFalsy()
-        expect(geolocSwitch.parent?.props.accessibilityState.checked).toBeTruthy()
+        expect(positionErrorMessage).not.toBeOnTheScreen()
+        expect(geolocSwitch.parent?.props.accessibilityState.checked).toBe(true)
       })
 
       it('should display position error message if geoloc permission is granted but position is null', () => {
@@ -162,7 +162,7 @@ describe('Profile component', () => {
         }
         renderProfile()
 
-        expect(screen.queryByText(mockPositionError.message)).toBeTruthy()
+        expect(screen.queryByText(mockPositionError.message)).toBeOnTheScreen()
       })
 
       it('should display switch OFF if geoloc permission is denied', () => {
@@ -170,7 +170,7 @@ describe('Profile component', () => {
         renderProfile()
 
         const geolocSwitch = screen.getByTestId('Interrupteur Partager ma position')
-        expect(geolocSwitch.parent?.props.accessibilityState.checked).toBeFalsy()
+        expect(geolocSwitch.parent?.props.accessibilityState.checked).toBe(false)
       })
 
       it('should open "Deactivate geoloc" modal when clicking on ACTIVE switch and call mockFavoriteDispatch()', () => {
@@ -256,7 +256,7 @@ describe('Profile component', () => {
       renderProfile()
 
       const shareButton = screen.queryByText('Partage le pass Culture')
-      expect(shareButton).toBeTruthy()
+      expect(shareButton).toBeOnTheScreen()
     })
 
     it('should share app on banner press', () => {
@@ -274,7 +274,7 @@ describe('Profile component', () => {
       renderProfile()
 
       const signoutButton = screen.getByText('Déconnexion')
-      expect(signoutButton).toBeTruthy()
+      expect(signoutButton).toBeOnTheScreen()
     })
 
     it('should NOT display signout row if the user is NOT connected', () => {
@@ -283,7 +283,7 @@ describe('Profile component', () => {
       renderProfile()
 
       const signoutButton = screen.queryByText('Déconnexion')
-      expect(signoutButton).toBeFalsy()
+      expect(signoutButton).not.toBeOnTheScreen()
     })
 
     it('should delete the refreshToken, clean user profile and remove user ID from batch when pressed', () => {

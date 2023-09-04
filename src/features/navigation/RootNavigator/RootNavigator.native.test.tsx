@@ -38,7 +38,7 @@ describe('<RootNavigator />', () => {
     renderRootNavigator()
 
     const privacyPolicyTitle = screen.queryByText('Respect de ta vie privée')
-    expect(privacyPolicyTitle).toBeFalsy()
+    expect(privacyPolicyTitle).not.toBeOnTheScreen()
   })
 
   it('should display PrivacyPolicy if splash screen is hidden', async () => {
@@ -48,7 +48,7 @@ describe('<RootNavigator />', () => {
     renderRootNavigator()
     await act(async () => {})
     const privacyPolicyTitle = screen.getByText('Respect de ta vie privée')
-    expect(privacyPolicyTitle).toBeTruthy()
+    expect(privacyPolicyTitle).toBeOnTheScreen()
   })
 
   it('should not display quick access button in native', async () => {
@@ -61,7 +61,7 @@ describe('<RootNavigator />', () => {
     screen.getByText('Respect de ta vie privée')
 
     const quickAccessButton = screen.queryByText('Accéder au menu de navigation')
-    expect(quickAccessButton).toBeNull()
+    expect(quickAccessButton).not.toBeOnTheScreen()
   })
 })
 

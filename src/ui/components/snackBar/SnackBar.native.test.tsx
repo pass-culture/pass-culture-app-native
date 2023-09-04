@@ -56,32 +56,32 @@ describe('SnackBar Component', () => {
         })
       )
       const progressBar = queryByTestId('snackbar-progressbar')
-      expect(progressBar).toBeNull()
+      expect(progressBar).not.toBeOnTheScreen()
     })
 
     it('should render the content container when visible=true', () => {
       const { queryByTestId } = render(renderHelperSnackBar(true, { message: 'message' }))
 
-      expect(queryByTestId('snackbar-message')).toBeTruthy()
+      expect(queryByTestId('snackbar-message')).toBeOnTheScreen()
     })
 
     it('should render the content container when visible=false only if already rendered', async () => {
       const { queryByTestId, rerender } = render(
         renderHelperSnackBar(false, { message: 'message' }, 0)
       )
-      expect(queryByTestId('snackbar-container')).toBeNull()
+      expect(queryByTestId('snackbar-container')).not.toBeOnTheScreen()
 
       rerender(renderHelperSnackBar(true, { message: 'message' }, 1))
-      expect(queryByTestId('snackbar-container')).toBeTruthy()
+      expect(queryByTestId('snackbar-container')).toBeOnTheScreen()
 
       rerender(renderHelperSnackBar(false, { message: 'message' }, 2))
-      expect(queryByTestId('snackbar-container')).toBeTruthy()
+      expect(queryByTestId('snackbar-container')).toBeOnTheScreen()
     })
 
     it('should render the illustration icon when provided when visible', () => {
       const { queryByTestId } = render(renderHelperSnackBar(true, { message: 'message' }))
 
-      expect(queryByTestId('snackbar-icon')).toBeTruthy()
+      expect(queryByTestId('snackbar-icon')).toBeOnTheScreen()
     })
 
     it('should not render the illustration icon when not provided', () => {
@@ -98,7 +98,7 @@ describe('SnackBar Component', () => {
       )
       const icon = queryByTestId('snackbar-icon')
 
-      expect(icon).toBeFalsy()
+      expect(icon).not.toBeOnTheScreen()
     })
 
     it('should trigger onClose when the closeIcon is clicked', async () => {

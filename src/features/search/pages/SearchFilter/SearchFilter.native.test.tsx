@@ -146,14 +146,14 @@ describe('<SearchFilter/>', () => {
     renderSearchFilter()
     await act(async () => {})
 
-    expect(screen.getByTestId('Fermer')).toBeTruthy()
+    expect(screen.getByTestId('Fermer')).toBeOnTheScreen()
   })
 
   it('should not display back button on header', async () => {
     renderSearchFilter()
     await act(async () => {})
 
-    expect(screen.queryByTestId('Revenir en arrière')).toBeFalsy()
+    expect(screen.queryByTestId('Revenir en arrière')).not.toBeOnTheScreen()
   })
 })
 

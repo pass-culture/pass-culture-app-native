@@ -22,6 +22,6 @@ describe('VenueDetails component', () => {
 
   it('should show distance prop when provided', () => {
     const { getByText } = render(<VenueDetails {...props} distance={'100km'} />)
-    expect(getByText(' | 100km')).toBeTruthy()
+    expect(getByText(' | 100km')).toBeOnTheScreen()
   })
 })

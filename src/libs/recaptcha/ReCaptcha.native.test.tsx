@@ -23,7 +23,7 @@ describe('<ReCaptcha />', () => {
   it('should not render webview when modal is not visible', () => {
     const renderAPI = renderReCaptcha({ ...reCaptchaProps, isVisible: false })
     const recaptchaWebview = renderAPI.queryByTestId('recaptcha-webview')
-    expect(recaptchaWebview).toBeFalsy()
+    expect(recaptchaWebview).not.toBeOnTheScreen()
   })
 
   it("should call onSuccess() callback when webview's message is success", () => {

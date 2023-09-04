@@ -14,8 +14,8 @@ jest.useFakeTimers({ legacyFakeTimers: true })
 describe('<VenueHeader />', () => {
   it('should render all icons', () => {
     const venueHeader = renderVenueHeader()
-    expect(venueHeader.queryByTestId('animated-icon-back')).toBeTruthy()
-    expect(venueHeader.queryByTestId('animated-icon-share')).toBeTruthy()
+    expect(venueHeader.queryByTestId('animated-icon-back')).toBeOnTheScreen()
+    expect(venueHeader.queryByTestId('animated-icon-share')).toBeOnTheScreen()
   })
 
   it('should goBack when we press on the back button', () => {
@@ -26,7 +26,7 @@ describe('<VenueHeader />', () => {
 
   it('should fully display the title at the end of the animation', () => {
     const { animatedValue, getByTestId } = renderVenueHeader()
-    expect(getByTestId('venueHeaderName').props.accessibilityHidden).toBeTruthy()
+    expect(getByTestId('venueHeaderName').props.accessibilityHidden).toBe(true)
     expect(getByTestId('venueHeaderName').props.style.opacity).toBe(0)
 
     act(() => {
@@ -34,7 +34,7 @@ describe('<VenueHeader />', () => {
       jest.runAllTimers()
     })
 
-    expect(getByTestId('venueHeaderName').props.accessibilityHidden).toBeFalsy()
+    expect(getByTestId('venueHeaderName').props.accessibilityHidden).toBe(false)
     expect(getByTestId('venueHeaderName').props.style.opacity).toBe(1)
   })
 

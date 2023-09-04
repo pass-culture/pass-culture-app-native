@@ -50,8 +50,8 @@ describe('BookDuoChoice', () => {
 
     const duoChoice = screen.queryByTestId('DuoChoice2-price')
 
-    expect(soloChoice).toBeTruthy()
-    expect(duoChoice).toBeTruthy()
+    expect(soloChoice).toBeOnTheScreen()
+    expect(duoChoice).toBeOnTheScreen()
 
     expect(screen).toMatchSnapshot()
   })
