@@ -1,9 +1,13 @@
 import { useNavigation } from '@react-navigation/native'
+import { StackScreenProps } from '@react-navigation/stack'
 import React, { FunctionComponent, useCallback } from 'react'
 import styled from 'styled-components/native'
 
 import { navigateToHomeConfig } from 'features/navigation/helpers'
-import { UseNavigationType } from 'features/navigation/RootNavigator/types'
+import {
+  UseNavigationType,
+  TutorialRootStackParamList,
+} from 'features/navigation/RootNavigator/types'
 import { homeNavConfig } from 'features/navigation/TabBar/helpers'
 import { AgeButton } from 'features/tutorial/components/AgeButton'
 import { useOnboardingContext } from 'features/tutorial/context/OnboardingWrapper'
@@ -14,7 +18,11 @@ import { storage } from 'libs/storage'
 import { Spacer, Typo } from 'ui/theme'
 import { getNoHeadingAttrs } from 'ui/theme/typographyAttrs/getNoHeadingAttrs'
 
-export const AgeSelectionOther: FunctionComponent = () => {
+type Props = StackScreenProps<TutorialRootStackParamList, 'AgeSelection'>
+
+export const AgeSelectionOther: FunctionComponent<Props> = ({ route }: Props) => {
+  const type = route.params.type
+
   const { showNonEligibleModal } = useOnboardingContext()
   const { reset } = useNavigation<UseNavigationType>()
 
@@ -32,17 +40,21 @@ export const AgeSelectionOther: FunctionComponent = () => {
     await storage.saveObject('user_age', NonEligible.OVER_18)
   }, [showNonEligibleModal, reset])
 
+  const title = type === 'onboarding' ? 'Quel âge as-tu\u00a0?' : 'Comment ça marche\u00a0?'
+  const startButtonTitle = type === 'onboarding' ? 'j’ai' : 'à'
+
   return (
-    <TutorialPage>
+    <TutorialPage title={title}>
       <AgeButton
         onBeforeNavigate={onUnder15Press}
         navigateTo={navigateToHomeConfig}
         // We disable navigation because we reset the navigation before,
         // but we still want to use a link (not just a button) for accessibility reason
         enableNavigate={false}
-        accessibilityLabel="j’ai moins de 15 ans">
+        accessibilityLabel={`${startButtonTitle} moins de 15 ans`}>
         <Title4Text>
-          j’ai <Title3Text>moins de 15 ans</Title3Text>
+          {startButtonTitle}
+          <Title3Text> moins de 15 ans</Title3Text>
         </Title4Text>
       </AgeButton>
       <Spacer.Column numberOfSpaces={4} />
@@ -52,9 +64,10 @@ export const AgeSelectionOther: FunctionComponent = () => {
         // We disable navigation because we reset the navigation before,
         // but we still want to use a link (not just a button) for accessibility reason
         enableNavigate={false}
-        accessibilityLabel="j’ai plus de 18 ans">
+        accessibilityLabel={`${startButtonTitle} plus de 18 ans`}>
         <Title4Text>
-          j’ai <Title3Text>plus de 18 ans</Title3Text>
+          {startButtonTitle}
+          <Title3Text> plus de 18 ans</Title3Text>
         </Title4Text>
       </AgeButton>
     </TutorialPage>

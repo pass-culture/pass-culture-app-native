@@ -16,13 +16,13 @@ export const OnboardingGeolocation = () => {
 
   const onSkip = useCallback(() => {
     analytics.logOnboardingGeolocationClicked({ type: 'skipped' })
-    navigate('AgeSelection')
+    navigate('AgeSelection', { type: 'onboarding' })
   }, [navigate])
 
   const onGeolocationButtonPress = useCallback(async () => {
     analytics.logOnboardingGeolocationClicked({ type: 'use_my_position' })
     await requestGeolocPermission({
-      onSubmit: () => navigate('AgeSelection'),
+      onSubmit: () => navigate('AgeSelection', { type: 'onboarding' }),
       onAcceptance: analytics.logHasActivateGeolocFromTutorial,
     })
   }, [navigate, requestGeolocPermission])

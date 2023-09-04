@@ -1,18 +1,15 @@
-import { NavigationOnboarding } from 'features/internal/cheatcodes/pages/NavigationOnboarding/NavigationOnboarding'
-import { OnboardingRootStackParamList, GenericRoute } from 'features/navigation/RootNavigator/types'
+import { NavigationOnboarding } from 'features/internal/cheatcodes/pages/NavigationTutorial/NavigationOnboarding'
+import { NavigationProfileTutorial } from 'features/internal/cheatcodes/pages/NavigationTutorial/NavigationProfileTutorial'
+import { NavigationTutorial } from 'features/internal/cheatcodes/pages/NavigationTutorial/NavigationTutorial'
+import { TutorialRootStackParamList, GenericRoute } from 'features/navigation/RootNavigator/types'
 import { AgeSelection } from 'features/tutorial/pages/AgeSelection'
 import { AgeSelectionOther } from 'features/tutorial/pages/AgeSelectionOther'
 import { OnboardingAgeInformation } from 'features/tutorial/pages/onboarding/OnboardingAgeInformation'
 import { OnboardingGeolocation } from 'features/tutorial/pages/onboarding/OnboardingGeolocation'
 import { OnboardingWelcome } from 'features/tutorial/pages/onboarding/OnboardingWelcome'
+import { ProfileTutorialAgeInformation } from 'features/tutorial/pages/profileTutorial/ProfileTutorialAgeInformation'
 
-export const onboardingRoutes: GenericRoute<OnboardingRootStackParamList>[] = [
-  {
-    name: 'OnboardingAgeInformation',
-    component: OnboardingAgeInformation,
-    path: 'selection-age/eligible',
-    options: { title: 'Information d’âge' },
-  },
+export const tutorialRoutes: GenericRoute<TutorialRootStackParamList>[] = [
   {
     name: 'AgeSelection',
     component: AgeSelection,
@@ -26,9 +23,10 @@ export const onboardingRoutes: GenericRoute<OnboardingRootStackParamList>[] = [
     options: { title: 'Sélection d’âge' },
   },
   {
-    name: 'NavigationOnboarding',
-    component: NavigationOnboarding,
-    path: 'cheat-navigation-onboarding',
+    name: 'OnboardingAgeInformation',
+    component: OnboardingAgeInformation,
+    path: 'selection-age/eligible',
+    options: { title: 'Information d’âge' },
   },
   {
     name: 'OnboardingGeolocation',
@@ -41,5 +39,26 @@ export const onboardingRoutes: GenericRoute<OnboardingRootStackParamList>[] = [
     component: OnboardingWelcome,
     path: 'bienvenue',
     options: { title: 'Bienvenue' },
+  },
+  {
+    name: 'CheatcodeNavigationTutorial',
+    component: NavigationTutorial,
+    path: 'cheat-navigation-tutorial',
+  },
+  {
+    name: 'CheatcodeNavigationOnboarding',
+    component: NavigationOnboarding,
+    path: 'cheat-navigation-onboarding',
+  },
+  {
+    name: 'CheatcodeNavigationProfileTutorial',
+    component: NavigationProfileTutorial,
+    path: 'cheat-navigation-profile-tutorial',
+  },
+  {
+    name: 'ProfileTutorialAgeInformation',
+    component: ProfileTutorialAgeInformation,
+    path: 'tutoriel/selection-age/eligible',
+    options: { title: 'Information d’âge' },
   },
 ]

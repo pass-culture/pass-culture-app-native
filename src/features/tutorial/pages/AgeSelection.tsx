@@ -1,6 +1,8 @@
+import { StackScreenProps } from '@react-navigation/stack'
 import React, { FunctionComponent } from 'react'
 import styled from 'styled-components/native'
 
+import { TutorialRootStackParamList } from 'features/navigation/RootNavigator/types'
 import { AgeButton } from 'features/tutorial/components/AgeButton'
 import { TutorialPage } from 'features/tutorial/pages/TutorialPage'
 import { EligibleAges } from 'features/tutorial/types'
@@ -10,6 +12,8 @@ import { AccessibilityList } from 'ui/components/accessibility/AccessibilityList
 import { All } from 'ui/svg/icons/bicolor/All'
 import { Spacer, Typo } from 'ui/theme'
 import { getNoHeadingAttrs } from 'ui/theme/typographyAttrs/getNoHeadingAttrs'
+
+type Props = StackScreenProps<TutorialRootStackParamList, 'AgeSelection'>
 
 const OTHER = 'other'
 
@@ -26,8 +30,12 @@ const onBeforeNavigate = async (age?: EligibleAges) => {
   age && (await storage.saveObject('user_age', age))
 }
 
-export const AgeSelection: FunctionComponent = () => {
+export const AgeSelection: FunctionComponent<Props> = ({ route }: Props) => {
+  const type = route.params.type
+
   const AgeSelectionButtons = ageButtons.map(({ age }) => {
+    const startButtonTitle = type === 'onboarding' ? 'j’ai' : 'à'
+
     return (
       <AgeButton
         key={age}
@@ -37,12 +45,13 @@ export const AgeSelection: FunctionComponent = () => {
         navigateTo={
           age
             ? { screen: 'OnboardingAgeInformation', params: { age } }
-            : { screen: 'AgeSelectionOther' }
+            : { screen: 'AgeSelectionOther', params: { type } }
         }
-        accessibilityLabel={`j’ai ${age} ans`}>
+        accessibilityLabel={`${startButtonTitle} ${age} ans`}>
         {age ? (
           <Title4Text>
-            j’ai <Title3Text>{age} ans</Title3Text>
+            {startButtonTitle}
+            <Title3Text> {age} ans</Title3Text>
           </Title4Text>
         ) : (
           <Title4Text>Autre</Title4Text>
@@ -51,7 +60,7 @@ export const AgeSelection: FunctionComponent = () => {
           <React.Fragment>
             <Spacer.Column numberOfSpaces={1} />
             <Typo.CaptionNeutralInfo numberOfLines={2}>
-              j’ai moins de 15 ans ou plus de 18 ans
+              {startButtonTitle} moins de 15 ans ou plus de 18 ans
             </Typo.CaptionNeutralInfo>
           </React.Fragment>
         )}
@@ -59,10 +68,18 @@ export const AgeSelection: FunctionComponent = () => {
     )
   })
 
+  const title =
+    type === 'onboarding'
+      ? 'Pour commencer, peux-tu nous dire ton âge\u00a0?'
+      : 'Comment ça marche\u00a0?'
+
+  const subtitle =
+    type === 'onboarding'
+      ? 'Cela permet de savoir si tu peux bénéficier du pass Culture.'
+      : 'De 15 à 18 ans, le pass Culture offre un crédit à dépenser dans l’application pour des activités culturelles.'
+
   return (
-    <TutorialPage
-      title="Pour commencer, peux-tu nous dire ton âge&nbsp;?"
-      subtitle="Cela permet de savoir si tu peux bénéficier du pass Culture.">
+    <TutorialPage title={title} subtitle={subtitle}>
       <AccessibilityList
         items={AgeSelectionButtons}
         Separator={<Spacer.Column numberOfSpaces={4} />}

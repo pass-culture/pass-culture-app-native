@@ -22,7 +22,7 @@ describe('OnboardingGeolocation', () => {
     const button = getByLabelText('Aller à l’écran suivant')
     fireEvent.press(button)
 
-    expect(navigate).toHaveBeenCalledWith('AgeSelection')
+    expect(navigate).toHaveBeenCalledWith('AgeSelection', { type: 'onboarding' })
   })
 
   it('should request geoloc permission when "Utiliser ma position" is clicked', async () => {

@@ -21,8 +21,8 @@ export function NavigationOnboarding(): React.JSX.Element {
       <StyledContainer>
         <LinkToComponent name="OnboardingWelcome" />
         <LinkToComponent name="OnboardingGeolocation" />
-        <LinkToComponent name="AgeSelection" />
-        <LinkToComponent name="AgeSelectionOther" />
+        <LinkToComponent name="AgeSelection" navigationParams={{ type: 'onboarding' }} />
+        <LinkToComponent name="AgeSelectionOther" navigationParams={{ type: 'onboarding' }} />
         <LinkToComponent
           name="OnboardingAgeInformation"
           title="AgeInfo - 15 ans"
