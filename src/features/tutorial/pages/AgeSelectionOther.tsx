@@ -40,10 +40,11 @@ export const AgeSelectionOther: FunctionComponent<Props> = ({ route }: Props) =>
     await storage.saveObject('user_age', NonEligible.OVER_18)
   }, [showNonEligibleModal, reset])
 
+  const title = type === 'onboarding' ? 'Quel âge as-tu\u00a0?' : 'Comment ça marche\u00a0?'
   const startButtonTitle = type === 'onboarding' ? 'j’ai' : 'à'
 
   return (
-    <TutorialPage>
+    <TutorialPage title={title}>
       <AgeButton
         onBeforeNavigate={onUnder15Press}
         navigateTo={navigateToHomeConfig}

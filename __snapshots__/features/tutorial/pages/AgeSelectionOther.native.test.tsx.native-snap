@@ -107,6 +107,31 @@ exports[`AgeSelectionOther onboarding profileTutorial should render correctly 1`
         }
       >
         <View
+          numberOfSpaces={6}
+          style={
+            [
+              {
+                "height": 24,
+              },
+            ]
+          }
+        />
+        <Text
+          numberOfLines={3}
+          style={
+            [
+              {
+                "color": "#161617",
+                "fontFamily": "Montserrat-Bold",
+                "fontSize": 20,
+                "lineHeight": 24,
+              },
+            ]
+          }
+        >
+          Comment ça marche ?
+        </Text>
+        <View
           numberOfSpaces={4}
           style={
             [
@@ -449,6 +474,31 @@ exports[`AgeSelectionOther onboarding should render correctly 1`] = `
           ]
         }
       >
+        <View
+          numberOfSpaces={6}
+          style={
+            [
+              {
+                "height": 24,
+              },
+            ]
+          }
+        />
+        <Text
+          numberOfLines={3}
+          style={
+            [
+              {
+                "color": "#161617",
+                "fontFamily": "Montserrat-Bold",
+                "fontSize": 20,
+                "lineHeight": 24,
+              },
+            ]
+          }
+        >
+          Quel âge as-tu ?
+        </Text>
         <View
           numberOfSpaces={4}
           style={
