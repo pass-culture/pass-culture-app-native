@@ -19,7 +19,7 @@ describe('FilterButton', () => {
     const { queryByTestId } = render(<FilterButton activeFilters={0} />)
 
     await waitFor(() => {
-      expect(queryByTestId('searchFilterBadge')).toBeNull()
+      expect(queryByTestId('searchFilterBadge')).not.toBeOnTheScreen()
     })
   })
 

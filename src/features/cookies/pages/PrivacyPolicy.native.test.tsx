@@ -39,7 +39,7 @@ describe('<PrivacyPolicy />', () => {
     const renderAPI = await renderPrivacyPolicy()
 
     const title = renderAPI.queryByText('Choisir les cookies')
-    expect(title).toBeNull()
+    expect(title).not.toBeOnTheScreen()
   })
 
   it('should show cookies modal when cookies is unknown', async () => {

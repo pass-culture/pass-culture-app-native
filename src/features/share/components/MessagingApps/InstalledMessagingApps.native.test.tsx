@@ -31,7 +31,7 @@ describe('<InstalledMessagingApps />', () => {
     render(<InstalledMessagingApps {...props} />)
     await act(async () => {})
 
-    expect(screen.queryByText(`Envoyer sur ${[Network.instagram]}`)).toBeNull()
+    expect(screen.queryByText(`Envoyer sur ${[Network.instagram]}`)).not.toBeOnTheScreen()
   })
 
   it('should not display more than 3 social media apps', async () => {

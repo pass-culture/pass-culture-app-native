@@ -15,7 +15,7 @@ describe('<PasswordInputController />', () => {
         error: { type: 'custom', message: 'error' },
       })
 
-      expect(screen.queryByText('error')).toBeNull()
+      expect(screen.queryByText('error')).not.toBeOnTheScreen()
     })
 
     it('should show error when form is invalid and password is not empty', async () => {

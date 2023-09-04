@@ -27,7 +27,7 @@ describe('<AddToFavoriteButton />', () => {
     const { queryByText } = renderButton({ offerId: favoriteOfferId })
 
     await waitFor(() => {
-      expect(queryByText('Mettre en favori')).toBeNull()
+      expect(queryByText('Mettre en favori')).not.toBeOnTheScreen()
     })
   })
 

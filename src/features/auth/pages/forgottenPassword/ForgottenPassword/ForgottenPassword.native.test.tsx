@@ -78,7 +78,7 @@ describe('<ForgottenPassword />', () => {
 
     expect(recaptchaWebviewModal.props.visible).toBeFalsy()
     expect(screen.queryByText('Hors connexion : en attente du réseau.')).toBeOnTheScreen()
-    expect(screen.queryByTestId('Chargement en cours')).toBeNull()
+    expect(screen.queryByTestId('Chargement en cours')).not.toBeOnTheScreen()
   })
 
   it("should open reCAPTCHA challenge's modal when pressing on validate button", () => {
@@ -108,7 +108,7 @@ describe('<ForgottenPassword />', () => {
       expect(replace).toHaveBeenCalledWith('ResetPasswordEmailSent', {
         email: 'john.doe@gmail.com',
       })
-      expect(screen.queryByTestId('Chargement en cours')).toBeNull()
+      expect(screen.queryByTestId('Chargement en cours')).not.toBeOnTheScreen()
     })
   })
 
@@ -130,7 +130,7 @@ describe('<ForgottenPassword />', () => {
       'ForgottenPasswordOnRecaptchaError'
     )
     expect(navigate).not.toBeCalled()
-    expect(screen.queryByTestId('Chargement en cours')).toBeNull()
+    expect(screen.queryByTestId('Chargement en cours')).not.toBeOnTheScreen()
   })
 
   it('should NOT redirect to ResetPasswordEmailSent when reset password request API call has failed', async () => {
@@ -155,7 +155,7 @@ describe('<ForgottenPassword />', () => {
         'ForgottenPasswordRequestResetError'
       )
       expect(navigate).not.toBeCalled()
-      expect(screen.queryByTestId('Chargement en cours')).toBeNull()
+      expect(screen.queryByTestId('Chargement en cours')).not.toBeOnTheScreen()
     })
   })
 

@@ -56,7 +56,7 @@ describe('SnackBar Component', () => {
         })
       )
       const progressBar = queryByTestId('snackbar-progressbar')
-      expect(progressBar).toBeNull()
+      expect(progressBar).not.toBeOnTheScreen()
     })
 
     it('should render the content container when visible=true', () => {
@@ -69,7 +69,7 @@ describe('SnackBar Component', () => {
       const { queryByTestId, rerender } = render(
         renderHelperSnackBar(false, { message: 'message' }, 0)
       )
-      expect(queryByTestId('snackbar-container')).toBeNull()
+      expect(queryByTestId('snackbar-container')).not.toBeOnTheScreen()
 
       rerender(renderHelperSnackBar(true, { message: 'message' }, 1))
       expect(queryByTestId('snackbar-container')).toBeOnTheScreen()

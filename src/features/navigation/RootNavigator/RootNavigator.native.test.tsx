@@ -61,7 +61,7 @@ describe('<RootNavigator />', () => {
     screen.getByText('Respect de ta vie privée')
 
     const quickAccessButton = screen.queryByText('Accéder au menu de navigation')
-    expect(quickAccessButton).toBeNull()
+    expect(quickAccessButton).not.toBeOnTheScreen()
   })
 })
 

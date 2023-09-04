@@ -86,7 +86,7 @@ describe('<HomeModule />', () => {
     renderHomeModule(formattedExclusivityModule)
 
     await waitFor(() => {
-      expect(screen.queryByLabelText('Week-end FRAC')).toBeNull()
+      expect(screen.queryByLabelText('Week-end FRAC')).not.toBeOnTheScreen()
     })
   })
 
@@ -108,7 +108,7 @@ describe('<HomeModule />', () => {
     renderHomeModule(highlightOfferModuleFixture)
 
     await waitFor(() => {
-      expect(screen.queryByText(highlightOfferModuleFixture.highlightTitle)).toBeNull()
+      expect(screen.queryByText(highlightOfferModuleFixture.highlightTitle)).not.toBeOnTheScreen()
     })
   })
 

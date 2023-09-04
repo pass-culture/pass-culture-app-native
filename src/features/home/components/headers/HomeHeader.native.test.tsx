@@ -102,7 +102,7 @@ describe('HomeHeader', () => {
     renderHomeHeader()
     await act(async () => {})
 
-    expect(screen.queryByText('Géolocalise-toi')).toBeNull()
+    expect(screen.queryByText('Géolocalise-toi')).not.toBeOnTheScreen()
   })
 
   it('should display geolocation banner when geolocation is denied', async () => {
@@ -228,7 +228,7 @@ describe('HomeHeader', () => {
     renderHomeHeader(true)
 
     await waitFor(() => {
-      expect(screen.queryByText('Me localiser')).toBeNull()
+      expect(screen.queryByText('Me localiser')).not.toBeOnTheScreen()
     })
   })
 
@@ -237,7 +237,7 @@ describe('HomeHeader', () => {
     renderHomeHeader()
 
     await waitFor(() => {
-      expect(screen.queryByText('Me localiser')).toBeNull()
+      expect(screen.queryByText('Me localiser')).not.toBeOnTheScreen()
     })
   })
 })

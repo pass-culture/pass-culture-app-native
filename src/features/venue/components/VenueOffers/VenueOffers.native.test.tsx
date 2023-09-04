@@ -69,7 +69,7 @@ describe('<VenueOffers />', () => {
     } as UseQueryResult<{ hits: Offer[]; nbHits: number }, unknown>)
 
     const { queryByText } = render(<VenueOffers venueId={venueId} />)
-    expect(queryByText('En voir plus')).toBeNull()
+    expect(queryByText('En voir plus')).not.toBeOnTheScreen()
   })
 
   it(`should set search state when clicking "En voir plus" button`, async () => {

@@ -53,7 +53,7 @@ describe('<BookingDetailsCancelButton />', () => {
     booking.confirmationDate = '2020-03-15T23:01:37.925926'
     booking.stock.offer.isDigital = false
     renderBookingDetailsCancelButton(booking)
-    expect(screen.queryByTestId('Annuler ma réservation')).toBeNull()
+    expect(screen.queryByTestId('Annuler ma réservation')).not.toBeOnTheScreen()
   })
 
   it('should call onCancel', () => {
@@ -138,7 +138,7 @@ describe('<BookingDetailsCancelButton />', () => {
     booking.confirmationDate = null
 
     renderBookingDetailsCancelButton(booking)
-    expect(screen.queryByTestId('cancel-annulation-message')).toBeNull()
+    expect(screen.queryByTestId('cancel-annulation-message')).not.toBeOnTheScreen()
   })
 
   describe("When it's an offer category to archieve and it's not free", () => {
@@ -149,7 +149,7 @@ describe('<BookingDetailsCancelButton />', () => {
       booking.stock.offer.subcategoryId = SubcategoryIdEnum.ABO_MUSEE
 
       renderBookingDetailsCancelButton(booking)
-      expect(screen.queryByText('Ta réservation sera archivée le 17/03/2021')).toBeNull()
+      expect(screen.queryByText('Ta réservation sera archivée le 17/03/2021')).not.toBeOnTheScreen()
     })
 
     it('should display cancel button', () => {
@@ -183,7 +183,7 @@ describe('<BookingDetailsCancelButton />', () => {
       booking.stock.price = 0
 
       renderBookingDetailsCancelButton(booking)
-      expect(screen.queryByTestId('Annuler ma réservation')).toBeNull()
+      expect(screen.queryByTestId('Annuler ma réservation')).not.toBeOnTheScreen()
     })
   })
 })

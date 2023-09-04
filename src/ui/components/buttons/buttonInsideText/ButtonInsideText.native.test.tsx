@@ -12,7 +12,7 @@ describe('ButtonInsideText Component', () => {
   describe('* Icon property', () => {
     it('should not display icon when not provided', () => {
       const { queryByTestId } = render(<ButtonInsideText wording={wording} />)
-      expect(queryByTestId('button-icon')).toBeNull()
+      expect(queryByTestId('button-icon')).not.toBeOnTheScreen()
     })
     it('should display icon when provided', () => {
       const { queryByTestId } = render(

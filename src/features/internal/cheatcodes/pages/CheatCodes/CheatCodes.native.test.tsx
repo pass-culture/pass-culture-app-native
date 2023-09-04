@@ -39,7 +39,7 @@ describe('CheatCodes component', () => {
 
     buttonIsdisplayed
       ? expect(instance.queryByText('Check update')).toBeOnTheScreen()
-      : expect(instance.queryByText('Check update')).toBeNull()
+      : expect(instance.queryByText('Check update')).not.toBeOnTheScreen()
     expect.assertions(1)
   })
 

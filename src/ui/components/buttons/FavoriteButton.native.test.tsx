@@ -151,7 +151,7 @@ describe('<FavoriteButton />', () => {
       fireEvent.press(screen.getByTestId('icon-favorite'))
     })
 
-    expect(screen.queryByText('Crée une liste de favoris !')).toBeNull()
+    expect(screen.queryByText('Crée une liste de favoris !')).not.toBeOnTheScreen()
   })
 
   it('should track the user has seen favorite list modal when pressing favorite icon and feature flag is activated', async () => {
@@ -255,7 +255,7 @@ describe('<FavoriteButton />', () => {
       fireEvent.press(favButton)
     })
 
-    expect(screen.queryByText('Crée une liste de favoris !')).toBeNull()
+    expect(screen.queryByText('Crée une liste de favoris !')).not.toBeOnTheScreen()
   })
 
   it('should enable the favorites button when is not loading', async () => {

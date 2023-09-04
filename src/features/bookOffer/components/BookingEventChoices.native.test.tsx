@@ -62,8 +62,8 @@ describe('<BookingEventChoices />', () => {
   it('should display only date step at beginning', () => {
     render(<BookingEventChoices stocks={[]} />)
     expect(screen.queryByTestId('DateStep')).toBeOnTheScreen()
-    expect(screen.queryByTestId('HourStep')).toBeNull()
-    expect(screen.queryByTestId('DuoStep')).toBeNull()
+    expect(screen.queryByTestId('HourStep')).not.toBeOnTheScreen()
+    expect(screen.queryByTestId('DuoStep')).not.toBeOnTheScreen()
   })
 
   it('should display date step and hour step', async () => {
@@ -80,7 +80,7 @@ describe('<BookingEventChoices />', () => {
     render(<BookingEventChoices stocks={[]} />)
     expect(screen.queryByTestId('DateStep')).toBeOnTheScreen()
     expect(screen.queryByTestId('HourStep')).toBeOnTheScreen()
-    expect(screen.queryByTestId('DuoStep')).toBeNull()
+    expect(screen.queryByTestId('DuoStep')).not.toBeOnTheScreen()
   })
 
   it('should display date step and hour step and duo step', async () => {
@@ -150,7 +150,7 @@ describe('<BookingEventChoices />', () => {
     const hourBloc = screen.getByTestId('HourChoice1-label')
     fireEvent.press(hourBloc)
 
-    expect(screen.queryByTestId('DuoStep')).toBeNull()
+    expect(screen.queryByTestId('DuoStep')).not.toBeOnTheScreen()
     expect(mockDispatch).toHaveBeenCalledWith({ type: 'SELECT_STOCK', payload: 1 })
   })
 
@@ -208,6 +208,8 @@ describe('<BookingEventChoices />', () => {
 
   it('should not display button when prices by categories feature flag disabled', () => {
     render(<BookingEventChoices stocks={[]} enablePricesByCategories />)
-    expect(screen.queryByTestId('modalButtonWithoutEnabledPricesByCategories')).toBeNull()
+    expect(
+      screen.queryByTestId('modalButtonWithoutEnabledPricesByCategories')
+    ).not.toBeOnTheScreen()
   })
 })

@@ -268,7 +268,7 @@ describe('BookingOfferModalFooter', () => {
 
     it('should not display footer', () => {
       render(<BookingOfferModalFooter hasPricesStep />)
-      expect(screen.queryByTestId('bookingOfferModalFooter')).toBeNull()
+      expect(screen.queryByTestId('bookingOfferModalFooter')).not.toBeOnTheScreen()
     })
   })
 })

@@ -270,6 +270,6 @@ describe('<BookingInformations />', () => {
       venue: mockOffer.venue,
     })
     render(<BookingInformations shouldDisplayAddress={false} />)
-    expect(screen.queryByText('RUE DE CALI')).toBeNull()
+    expect(screen.queryByText('RUE DE CALI')).not.toBeOnTheScreen()
   })
 })

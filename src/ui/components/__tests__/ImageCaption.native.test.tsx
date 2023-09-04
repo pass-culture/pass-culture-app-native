@@ -22,6 +22,6 @@ describe('ImageCaption component', () => {
 
   it('should not display the distance if not available', () => {
     const { queryByTestId } = render(<ImageCaption {...props} distance={undefined} />)
-    expect(queryByTestId('distanceImageCaption')).toBeNull()
+    expect(queryByTestId('distanceImageCaption')).not.toBeOnTheScreen()
   })
 })

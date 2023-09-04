@@ -426,7 +426,7 @@ describe('SearchBox component', () => {
       const { queryByTestId } = render(<SearchBox searchInputID={searchInputID} />)
 
       await act(async () => {
-        expect(queryByTestId(/Voir tous les filtres/)).toBeNull()
+        expect(queryByTestId(/Voir tous les filtres/)).not.toBeOnTheScreen()
       })
     }
   )

@@ -18,6 +18,6 @@ describe('CheatMenuButton', () => {
     render(<CheatMenuButton />)
     await act(async () => {})
 
-    expect(screen.queryByText('CheatMenu')).toBeNull()
+    expect(screen.queryByText('CheatMenu')).not.toBeOnTheScreen()
   })
 })

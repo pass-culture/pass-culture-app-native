@@ -11,7 +11,7 @@ describe('FavoriteListBanner', () => {
   it('should return null when feature flag is not activated', () => {
     useFeatureFlagSpy.mockReturnValueOnce(false)
     render(<FavoriteListBanner />)
-    expect(screen.toJSON()).toBeNull()
+    expect(screen.toJSON()).not.toBeOnTheScreen()
   })
   it('should open modal when clicking the banner', () => {
     render(<FavoriteListBanner />)

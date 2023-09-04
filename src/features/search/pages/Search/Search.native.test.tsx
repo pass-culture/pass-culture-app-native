@@ -200,8 +200,8 @@ describe('<Search/>', () => {
       render(<Search />)
       await act(async () => {})
 
-      expect(screen.queryByTestId('autocompleteVenueItem_1')).toBeNull()
-      expect(screen.queryByTestId('autocompleteVenueItem_2')).toBeNull()
+      expect(screen.queryByTestId('autocompleteVenueItem_1')).not.toBeOnTheScreen()
+      expect(screen.queryByTestId('autocompleteVenueItem_2')).not.toBeOnTheScreen()
     })
 
     it('should display venue suggestions when wipEnableVenuesInSearchResults feature flag activated', async () => {
@@ -256,8 +256,8 @@ describe('<Search/>', () => {
       render(<Search />)
       await act(async () => {})
 
-      expect(screen.queryByTestId('autocompleteOfferItem_1')).toBeNull()
-      expect(screen.queryByTestId('autocompleteOfferItem_2')).toBeNull()
+      expect(screen.queryByTestId('autocompleteOfferItem_1')).not.toBeOnTheScreen()
+      expect(screen.queryByTestId('autocompleteOfferItem_2')).not.toBeOnTheScreen()
     }
   )
 

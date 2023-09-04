@@ -26,7 +26,7 @@ describe('<OfferDescription />', () => {
     await waitFor(() => {
       expect(screen.toJSON()).toMatchSnapshot()
       expect(screen.getByText('En détails')).toBeOnTheScreen()
-      expect(screen.queryByText('Durée')).toBeNull()
+      expect(screen.queryByText('Durée')).not.toBeOnTheScreen()
     })
   })
 
@@ -36,7 +36,7 @@ describe('<OfferDescription />', () => {
     await waitFor(() => {
       expect(screen.getByText('Durée')).toBeOnTheScreen()
       expect(screen.getByText('Author: photo credit author')).toBeOnTheScreen()
-      expect(screen.queryByText('En détails')).toBeNull()
+      expect(screen.queryByText('En détails')).not.toBeOnTheScreen()
     })
   })
 
@@ -79,12 +79,12 @@ describe('<OfferDescription />', () => {
     render(<OfferDescription />)
 
     await waitFor(() => {
-      expect(screen.queryByText('Auteur')).toBeNull()
-      expect(screen.queryByText('Metteur en scène')).toBeNull()
-      expect(screen.queryByText('Interprète')).toBeNull()
-      expect(screen.queryByText('Intervenant')).toBeNull()
-      expect(screen.queryByText('EAN')).toBeNull()
-      expect(screen.queryByText('VISA')).toBeNull()
+      expect(screen.queryByText('Auteur')).not.toBeOnTheScreen()
+      expect(screen.queryByText('Metteur en scène')).not.toBeOnTheScreen()
+      expect(screen.queryByText('Interprète')).not.toBeOnTheScreen()
+      expect(screen.queryByText('Intervenant')).not.toBeOnTheScreen()
+      expect(screen.queryByText('EAN')).not.toBeOnTheScreen()
+      expect(screen.queryByText('VISA')).not.toBeOnTheScreen()
     })
   })
 })

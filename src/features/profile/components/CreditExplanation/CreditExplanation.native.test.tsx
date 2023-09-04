@@ -39,7 +39,7 @@ describe('<CreditExplanation/>', () => {
     const { queryByTestId } = render(
       <CreditExplanation isDepositExpired={false} domainsCredit={domains_credit_v1} />
     )
-    expect(queryByTestId('modalHeader')).toBeNull()
+    expect(queryByTestId('modalHeader')).not.toBeOnTheScreen()
   })
 
   it('should display modal when button is triggered', () => {
@@ -90,7 +90,7 @@ describe('<CreditExplanation/>', () => {
       const renderAPI = render(
         <CreditExplanation isDepositExpired={false} domainsCredit={domains_credit_v1} />
       )
-      expect(renderAPI.toJSON()).toBeNull()
+      expect(renderAPI.toJSON()).not.toBeOnTheScreen()
     })
   })
 })

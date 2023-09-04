@@ -343,7 +343,7 @@ describe('<AppModal />', () => {
         shouldAddSpacerBetweenHeaderAndContent: false,
       }
       render(<AppModal {...modalProps} />)
-      expect(screen.queryByTestId('spacerBetweenHeaderAndContent')).toBeNull()
+      expect(screen.queryByTestId('spacerBetweenHeaderAndContent')).not.toBeOnTheScreen()
     })
   })
 })

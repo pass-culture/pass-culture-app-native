@@ -32,8 +32,8 @@ describe('HeroImage', () => {
         categoryId={CategoryIdEnum.CINEMA}
       />
     )
-    expect(queryByTestId('BackgroundPlaceholder')).toBeNull()
-    expect(queryByTestId('categoryIcon')).toBeNull()
-    expect(queryByTestId('imagePlaceholder')).toBeNull()
+    expect(queryByTestId('BackgroundPlaceholder')).not.toBeOnTheScreen()
+    expect(queryByTestId('categoryIcon')).not.toBeOnTheScreen()
+    expect(queryByTestId('imagePlaceholder')).not.toBeOnTheScreen()
   })
 })

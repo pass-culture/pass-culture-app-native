@@ -309,14 +309,14 @@ describe('<SearchListHeader />', () => {
       mockSearchVenuesState.hits = []
       render(<SearchListHeader nbHits={10} userData={[]} />)
 
-      expect(screen.queryByTestId('search-venue-list')).toBeNull()
+      expect(screen.queryByTestId('search-venue-list')).not.toBeOnTheScreen()
     })
 
     it('should not render venues nbHits', () => {
       mockSearchVenuesState.hits = []
       render(<SearchListHeader nbHits={10} userData={[]} />)
 
-      expect(screen.queryByText('2 résultats')).toBeNull()
+      expect(screen.queryByText('2 résultats')).not.toBeOnTheScreen()
     })
 
     it('should not trigger VenuePlaylistDisplayedOnSearchResults log when there are not venues', () => {
@@ -343,13 +343,13 @@ describe('<SearchListHeader />', () => {
     it('should not render venue items when there are venues', () => {
       render(<SearchListHeader nbHits={10} userData={[]} />)
 
-      expect(screen.queryByTestId('search-venue-list')).toBeNull()
+      expect(screen.queryByTestId('search-venue-list')).not.toBeOnTheScreen()
     })
 
     it('should not render venues nbHits when there are venues', () => {
       render(<SearchListHeader nbHits={10} userData={[]} />)
 
-      expect(screen.queryByText('2 résultats')).toBeNull()
+      expect(screen.queryByText('2 résultats')).not.toBeOnTheScreen()
     })
 
     it('should not render venue items when we search from venues', () => {
@@ -358,13 +358,13 @@ describe('<SearchListHeader />', () => {
       })
       render(<SearchListHeader nbHits={10} userData={[]} />)
 
-      expect(screen.queryByTestId('search-venue-list')).toBeNull()
+      expect(screen.queryByTestId('search-venue-list')).not.toBeOnTheScreen()
     })
 
     it('should not render venues nbHits when there are not venues', () => {
       render(<SearchListHeader nbHits={10} userData={[]} />)
 
-      expect(screen.queryByText('2 résultats')).toBeNull()
+      expect(screen.queryByText('2 résultats')).not.toBeOnTheScreen()
     })
 
     it('should not trigger VenuePlaylistDisplayedOnSearchResults log when received venues', () => {

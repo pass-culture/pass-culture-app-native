@@ -176,10 +176,10 @@ describe('BookHourChoice when prices by category feature flag activated and ther
 
   it('should not display hour item with stock selection', () => {
     render(<BookHourChoice enablePricesByCategories />)
-    expect(screen.queryByTestId('HourChoice18755-label')).toBeNull()
-    expect(screen.queryByTestId('HourChoice18756-label')).toBeNull()
-    expect(screen.queryByTestId('HourChoice18757-label')).toBeNull()
-    expect(screen.queryByTestId('HourChoice18758-label')).toBeNull()
+    expect(screen.queryByTestId('HourChoice18755-label')).not.toBeOnTheScreen()
+    expect(screen.queryByTestId('HourChoice18756-label')).not.toBeOnTheScreen()
+    expect(screen.queryByTestId('HourChoice18757-label')).not.toBeOnTheScreen()
+    expect(screen.queryByTestId('HourChoice18758-label')).not.toBeOnTheScreen()
   })
 
   it('should display "épuisé" when there are not stock bookable on hour item', () => {
@@ -213,7 +213,7 @@ describe('BookHourChoice when prices by category feature flag activated and ther
 
   it('should render only one hour choice with the minimum price', () => {
     render(<BookHourChoice enablePricesByCategories />)
-    expect(screen.queryByText(`dès 210\u00a0€`)).toBeNull()
+    expect(screen.queryByText(`dès 210\u00a0€`)).not.toBeOnTheScreen()
     expect(screen.getByText(`210\u00a0€`)).toBeOnTheScreen()
   })
 
@@ -224,7 +224,7 @@ describe('BookHourChoice when prices by category feature flag activated and ther
 
   it('should not display hour item without stock selection', () => {
     render(<BookHourChoice enablePricesByCategories />)
-    expect(screen.queryByTestId('HourChoice2023-04-01T20:00:00Z-label')).toBeNull()
+    expect(screen.queryByTestId('HourChoice2023-04-01T20:00:00Z-label')).not.toBeOnTheScreen()
   })
 
   it('should select the stock when pressing an hour item', () => {
@@ -276,8 +276,8 @@ describe('BookHourChoice when prices by category feature flag desactivated and t
 
   it('should not display hour item without stock selection', () => {
     render(<BookHourChoice />)
-    expect(screen.queryByTestId('HourChoice2023-04-01T18:00:00Z-label')).toBeNull()
-    expect(screen.queryByTestId('HourChoice2023-04-01T20:00:00Z-label')).toBeNull()
+    expect(screen.queryByTestId('HourChoice2023-04-01T18:00:00Z-label')).not.toBeOnTheScreen()
+    expect(screen.queryByTestId('HourChoice2023-04-01T20:00:00Z-label')).not.toBeOnTheScreen()
   })
 })
 
@@ -309,6 +309,6 @@ describe('BookHourChoice when prices by category feature flag desactivated and t
 
   it('should not display hour item without stock selection', () => {
     render(<BookHourChoice />)
-    expect(screen.queryByTestId('HourChoice2023-04-01T20:00:00Z-label')).toBeNull()
+    expect(screen.queryByTestId('HourChoice2023-04-01T20:00:00Z-label')).not.toBeOnTheScreen()
   })
 })

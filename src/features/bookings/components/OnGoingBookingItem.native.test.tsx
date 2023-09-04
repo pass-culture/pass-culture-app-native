@@ -49,7 +49,7 @@ describe('OnGoingBookingItem', () => {
     it('should not display event reminder', () => {
       renderOnGoingBookingItem(booking)
 
-      expect(screen.queryByTestId('withdraw-container')).toBeNull()
+      expect(screen.queryByTestId('withdraw-container')).not.toBeOnTheScreen()
     })
   })
 
@@ -70,7 +70,7 @@ describe('OnGoingBookingItem', () => {
     it('should not display withdrawal reminder', () => {
       renderOnGoingBookingItem(booking)
 
-      expect(screen.queryByTestId('on-site-withdrawal-container')).toBeNull()
+      expect(screen.queryByTestId('on-site-withdrawal-container')).not.toBeOnTheScreen()
     })
 
     it('should display event reminder', () => {
@@ -160,7 +160,7 @@ describe('OnGoingBookingItem', () => {
       }
       renderOnGoingBookingItem(booking, bookings)
 
-      expect(screen.queryByTestId('expiration-booking-container')).toBeNull()
+      expect(screen.queryByTestId('expiration-booking-container')).not.toBeOnTheScreen()
     })
   })
 

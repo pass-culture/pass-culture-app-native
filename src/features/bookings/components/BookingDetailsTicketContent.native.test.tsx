@@ -29,7 +29,7 @@ describe('BookingDetailsTicketContent', () => {
     render(<BookingDetailsTicketContent booking={booking} />)
 
     // @ts-expect-error: type comes from bookingsSnap it's necessarily a string
-    expect(screen.queryByText(booking.token)).toBeNull()
+    expect(screen.queryByText(booking.token)).not.toBeOnTheScreen()
   })
 
   it('should display the booking token when booking has no activation code', () => {
@@ -58,7 +58,7 @@ describe('BookingDetailsTicketContent', () => {
       },
     }
     render(<BookingDetailsTicketContent booking={booking} />)
-    expect(screen.queryByText('Accéder à l’offre en ligne')).toBeNull()
+    expect(screen.queryByText('Accéder à l’offre en ligne')).not.toBeOnTheScreen()
   })
 
   it('should display the access button offer when offer is digital and booking has no activation code', () => {
@@ -106,7 +106,7 @@ describe('BookingDetailsTicketContent', () => {
         },
       }
       render(<BookingDetailsTicketContent booking={bookingWithEan} />)
-      expect(screen.queryByTestId('ean')).toBeNull()
+      expect(screen.queryByTestId('ean')).not.toBeOnTheScreen()
     })
 
     it('should not display EAN when the offer is not a book', () => {
@@ -121,7 +121,7 @@ describe('BookingDetailsTicketContent', () => {
         },
       }
       render(<BookingDetailsTicketContent booking={bookingWithEan} />)
-      expect(screen.queryByTestId('ean')).toBeNull()
+      expect(screen.queryByTestId('ean')).not.toBeOnTheScreen()
     })
   })
 })

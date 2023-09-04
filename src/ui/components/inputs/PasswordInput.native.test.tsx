@@ -10,13 +10,13 @@ describe('<PasswordInput />', () => {
     const { queryByLabelText, getByTestId } = render(<PasswordInput />)
 
     expect(queryByLabelText('Afficher le mot de passe')).toBeOnTheScreen()
-    expect(queryByLabelText('Cacher le mot de passe')).toBeNull()
+    expect(queryByLabelText('Cacher le mot de passe')).not.toBeOnTheScreen()
 
     const switchPasswordVisibilityButton = getByTestId('Afficher le mot de passe')
 
     fireEvent.press(switchPasswordVisibilityButton)
     expect(queryByLabelText('Cacher le mot de passe')).toBeOnTheScreen()
-    expect(queryByLabelText('Afficher le mot de passe')).toBeNull()
+    expect(queryByLabelText('Afficher le mot de passe')).not.toBeOnTheScreen()
   })
 
   it('should render ref correctly', () => {

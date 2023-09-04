@@ -123,7 +123,7 @@ describe('<NonBeneficiaryHeader/>', () => {
 
       await act(async () => {})
 
-      expect(screen.queryByTestId('eligibility-banner-container')).toBeNull()
+      expect(screen.queryByTestId('eligibility-banner-container')).not.toBeOnTheScreen()
       expect(screen.getByText('Ton inscription est en cours de traitement.')).toBeOnTheScreen()
     })
   })
@@ -172,10 +172,12 @@ describe('<NonBeneficiaryHeader/>', () => {
 
       await act(async () => {})
 
-      expect(screen.queryByTestId('subscription-message-badge')).toBeNull()
-      expect(screen.queryByTestId('eligibility-banner-container')).toBeNull()
-      expect(screen.queryByText('Ton inscription est en cours de traitement.')).toBeNull()
-      expect(screen.queryByTestId('younger-badge')).toBeNull()
+      expect(screen.queryByTestId('subscription-message-badge')).not.toBeOnTheScreen()
+      expect(screen.queryByTestId('eligibility-banner-container')).not.toBeOnTheScreen()
+      expect(
+        screen.queryByText('Ton inscription est en cours de traitement.')
+      ).not.toBeOnTheScreen()
+      expect(screen.queryByTestId('younger-badge')).not.toBeOnTheScreen()
     })
   })
 })

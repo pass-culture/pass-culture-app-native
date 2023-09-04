@@ -61,7 +61,7 @@ describe('Signup Form', () => {
       await screen.findByText('Crée-toi un compte')
 
       const goBackButton = screen.queryByText('Quitter')
-      expect(goBackButton).toBeNull()
+      expect(goBackButton).not.toBeOnTheScreen()
     })
 
     it('should open quit modal when pressing quit button on second step', async () => {
@@ -192,7 +192,7 @@ describe('Signup Form', () => {
 
       await act(async () => fireEvent.press(screen.getByText('Accepter et s’inscrire')))
 
-      expect(screen.queryByLabelText('Revenir en arrière')).toBeNull()
+      expect(screen.queryByLabelText('Revenir en arrière')).not.toBeOnTheScreen()
     })
   })
 

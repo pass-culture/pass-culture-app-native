@@ -28,6 +28,6 @@ describe('<FeatureFlag />', () => {
         {children}
       </FeatureFlag>
     )
-    expect(screen.queryByTestId('children')).toBeNull()
+    expect(screen.queryByTestId('children')).not.toBeOnTheScreen()
   })
 })

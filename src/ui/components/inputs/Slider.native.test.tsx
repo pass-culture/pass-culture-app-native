@@ -30,13 +30,13 @@ describe('<Slider />', () => {
     it('should show one value if there are 1 value in the array values', () => {
       const { queryByText } = render(<Slider values={[100]} showValues />)
       expect(queryByText('100')).toBeOnTheScreen()
-      expect(queryByText('0 - 100')).toBeNull()
+      expect(queryByText('0 - 100')).not.toBeOnTheScreen()
     })
 
     it('should not show values if showValues is false', () => {
       const { queryByText } = render(<Slider values={[100]} showValues={false} />)
-      expect(queryByText('100')).toBeNull()
-      expect(queryByText('0 - 100')).toBeNull()
+      expect(queryByText('100')).not.toBeOnTheScreen()
+      expect(queryByText('0 - 100')).not.toBeOnTheScreen()
     })
 
     it('should show minimum value if shouldShowMinMaxValues is true', () => {

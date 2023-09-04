@@ -359,7 +359,7 @@ describe('AutocompleteOfferItem component', () => {
         />
       )
 
-      expect(screen.queryByText('dans')).toBeNull()
+      expect(screen.queryByText('dans')).not.toBeOnTheScreen()
     })
 
     it('should not display the most popular native category of the query suggestion when it is not associated to the most popular category', async () => {
@@ -371,14 +371,14 @@ describe('AutocompleteOfferItem component', () => {
         />
       )
 
-      expect(screen.queryByText('Arts visuels')).toBeNull()
+      expect(screen.queryByText('Arts visuels')).not.toBeOnTheScreen()
     })
 
     describe('should not display the most popular category of the query suggestion when native category', () => {
       it('associated to only one category', async () => {
         render(<AutocompleteOfferItem hit={mockHit} sendEvent={mockSendEvent} shouldShowCategory />)
 
-        expect(screen.queryByText('Films, séries, cinéma')).toBeNull()
+        expect(screen.queryByText('Films, séries, cinéma')).not.toBeOnTheScreen()
       })
 
       it('associated to the most popular category', async () => {
@@ -390,7 +390,7 @@ describe('AutocompleteOfferItem component', () => {
           />
         )
 
-        expect(screen.queryByText('Films, séries, cinéma')).toBeNull()
+        expect(screen.queryByText('Films, séries, cinéma')).not.toBeOnTheScreen()
       })
     })
 

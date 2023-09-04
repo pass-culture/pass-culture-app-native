@@ -138,7 +138,7 @@ describe('<GenericAchievementCard />', () => {
       />
     )
 
-    expect(screen.queryByText(buttonText)).toBeNull()
+    expect(screen.queryByText(buttonText)).not.toBeOnTheScreen()
     expect(screen.getByTestId('invisible-button-height')).toBeOnTheScreen()
   })
 
@@ -159,7 +159,7 @@ describe('<GenericAchievementCard />', () => {
     )
 
     expect(screen.getByText(buttonText)).toBeOnTheScreen()
-    expect(screen.queryByTestId('invisible-button-height')).toBeNull()
+    expect(screen.queryByTestId('invisible-button-height')).not.toBeOnTheScreen()
   })
 
   it('should pause animation when not on active index', async () => {

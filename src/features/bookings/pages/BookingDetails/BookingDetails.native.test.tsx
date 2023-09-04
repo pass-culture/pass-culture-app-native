@@ -129,7 +129,7 @@ describe('BookingDetails', () => {
 
       await act(async () => {})
 
-      expect(screen.queryByText('Accéder à l’offre')).toBeNull()
+      expect(screen.queryByText('Accéder à l’offre')).not.toBeOnTheScreen()
     })
 
     it('should display booking qr code if offer is physical', async () => {
@@ -455,7 +455,7 @@ describe('BookingDetails', () => {
       renderBookingDetails(undefined, { dataUpdatedAt: 0 })
       await act(async () => {})
 
-      expect(screen.queryByText('Réservation introuvable\u00a0!')).toBeNull()
+      expect(screen.queryByText('Réservation introuvable\u00a0!')).not.toBeOnTheScreen()
     })
   })
 

@@ -80,7 +80,7 @@ describe('SetPhoneValidationCode', () => {
   it("should have modal closed on render, and open modal when clicking on 'code non reçu'", async () => {
     renderSetPhoneValidationCode()
 
-    expect(screen.queryByText('Demander un autre code')).toBeNull()
+    expect(screen.queryByText('Demander un autre code')).not.toBeOnTheScreen()
 
     fireEvent.press(screen.getByText('Code non reçu\u00a0?'))
 

@@ -40,16 +40,16 @@ describe('<BodySearch />', () => {
     render(<BodySearch />)
 
     expect(screen.getByTestId('categoriesButtons')).toBeOnTheScreen()
-    expect(screen.queryByTestId('autocompleteList')).toBeNull()
-    expect(screen.queryByTestId('searchResults')).toBeNull()
+    expect(screen.queryByTestId('autocompleteList')).not.toBeOnTheScreen()
+    expect(screen.queryByTestId('searchResults')).not.toBeOnTheScreen()
   })
 
   it('should render search results when asked', async () => {
     render(<BodySearch view={SearchView.Results} />)
     await act(async () => {})
 
-    expect(screen.queryByTestId('categoriesButtons')).toBeNull()
-    expect(screen.queryByTestId('autocompleteList')).toBeNull()
+    expect(screen.queryByTestId('categoriesButtons')).not.toBeOnTheScreen()
+    expect(screen.queryByTestId('autocompleteList')).not.toBeOnTheScreen()
     expect(await screen.findByTestId('searchResults')).toBeOnTheScreen()
   })
 })

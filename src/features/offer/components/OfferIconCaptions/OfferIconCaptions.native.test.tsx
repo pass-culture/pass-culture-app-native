@@ -140,7 +140,7 @@ describe('<OfferIconCaptions />', () => {
         if (show === 'show') {
           expect(screen.queryByText(/À deux !/)).toBeOnTheScreen()
         } else {
-          expect(screen.queryByText(/À deux !!/)).toBeNull()
+          expect(screen.queryByText(/À deux !!/)).not.toBeOnTheScreen()
         }
       })
     }

@@ -184,7 +184,7 @@ describe('<BookingDetails />', () => {
     it('should not display the Duo selector when the offer is not duo', () => {
       renderBookingDetails({ stocks: mockDigitalStocks, onPressBookOffer: mockOnPressBookOffer })
 
-      expect(screen.queryByTestId('DuoChoiceSelector')).toBeNull()
+      expect(screen.queryByTestId('DuoChoiceSelector')).not.toBeOnTheScreen()
     })
   })
 
@@ -235,7 +235,7 @@ describe('<BookingDetails />', () => {
         onPressBookOffer: mockOnPressBookOffer,
       })
 
-      expect(screen.queryByTestId('loadingScreen')).toBeNull()
+      expect(screen.queryByTestId('loadingScreen')).not.toBeOnTheScreen()
     })
 
     it('should display the loading screen when booking validation is in progress', () => {
@@ -296,7 +296,7 @@ describe('<BookingDetails />', () => {
 
       renderBookingDetails({ stocks: mockDigitalStocks, onPressBookOffer: mockOnPressBookOffer })
 
-      expect(screen.queryByTestId('DuoChoiceSelector')).toBeNull()
+      expect(screen.queryByTestId('DuoChoiceSelector')).not.toBeOnTheScreen()
     })
 
     it('should display the Duo selector when the offer is duo and not an event', async () => {
@@ -341,7 +341,7 @@ describe('<BookingDetails />', () => {
       renderBookingDetails({ stocks: mockStocks, onPressBookOffer: mockOnPressBookOffer })
       await act(async () => {})
 
-      expect(screen.queryByText('Lieu de retrait')).toBeNull()
+      expect(screen.queryByText('Lieu de retrait')).not.toBeOnTheScreen()
     })
 
     it('should not display venue name in venue section', async () => {
@@ -358,7 +358,7 @@ describe('<BookingDetails />', () => {
       renderBookingDetails({ stocks: mockStocks, onPressBookOffer: mockOnPressBookOffer })
       await act(async () => {})
 
-      expect(screen.queryByTestId('venueName')).toBeNull()
+      expect(screen.queryByTestId('venueName')).not.toBeOnTheScreen()
     })
 
     it('should not display venue address in venue section', async () => {
@@ -375,7 +375,7 @@ describe('<BookingDetails />', () => {
       renderBookingDetails({ stocks: mockStocks, onPressBookOffer: mockOnPressBookOffer })
       await act(async () => {})
 
-      expect(screen.queryByTestId('venueAddress')).toBeNull()
+      expect(screen.queryByTestId('venueAddress')).not.toBeOnTheScreen()
     })
 
     it('should not display "Modifier" button when offer subcategory is "Livre papier" and EAN defined', async () => {
@@ -393,7 +393,7 @@ describe('<BookingDetails />', () => {
       renderBookingDetails({ stocks: mockStocks, onPressBookOffer: mockOnPressBookOffer })
       await act(async () => {})
 
-      expect(screen.queryByText('Modifier')).toBeNull()
+      expect(screen.queryByText('Modifier')).not.toBeOnTheScreen()
     })
 
     it('should not display "Modifier" button when offer subcategory is "Livre audio physique" and EAN defined', async () => {
@@ -411,7 +411,7 @@ describe('<BookingDetails />', () => {
       renderBookingDetails({ stocks: mockStocks, onPressBookOffer: mockOnPressBookOffer })
       await act(async () => {})
 
-      expect(screen.queryByText('Modifier')).toBeNull()
+      expect(screen.queryByText('Modifier')).not.toBeOnTheScreen()
     })
 
     it('should not display "Modifier" button when offer subcategory is "Livre papier" and EAN not defined', async () => {
@@ -428,7 +428,7 @@ describe('<BookingDetails />', () => {
       renderBookingDetails({ stocks: mockStocks, onPressBookOffer: mockOnPressBookOffer })
       await act(async () => {})
 
-      expect(screen.queryByText('Modifier')).toBeNull()
+      expect(screen.queryByText('Modifier')).not.toBeOnTheScreen()
     })
 
     it('should not display "Modifier" button when offer subcategory is "Livre audio physique" and EAN not defined', async () => {
@@ -445,7 +445,7 @@ describe('<BookingDetails />', () => {
       renderBookingDetails({ stocks: mockStocks, onPressBookOffer: mockOnPressBookOffer })
       await act(async () => {})
 
-      expect(screen.queryByText('Modifier')).toBeNull()
+      expect(screen.queryByText('Modifier')).not.toBeOnTheScreen()
     })
   })
 
@@ -464,7 +464,7 @@ describe('<BookingDetails />', () => {
       renderBookingDetails({ stocks: mockStocks, onPressBookOffer: mockOnPressBookOffer })
       await act(async () => {})
 
-      expect(screen.queryByTestId('address')).toBeNull()
+      expect(screen.queryByTestId('address')).not.toBeOnTheScreen()
     })
 
     it('should display venue section', async () => {
@@ -555,7 +555,7 @@ describe('<BookingDetails />', () => {
       renderBookingDetails({ stocks: mockStocks, onPressBookOffer: mockOnPressBookOffer })
       await act(async () => {})
 
-      expect(screen.queryByText('Modifier')).toBeNull()
+      expect(screen.queryByText('Modifier')).not.toBeOnTheScreen()
     })
 
     it('should display "Modifier" button when offer subcategory is "Livre audio physique", EAN defined and that there are other venues offering the same offer', async () => {
@@ -595,7 +595,7 @@ describe('<BookingDetails />', () => {
       renderBookingDetails({ stocks: mockStocks, onPressBookOffer: mockOnPressBookOffer })
       await act(async () => {})
 
-      expect(screen.queryByText('Modifier')).toBeNull()
+      expect(screen.queryByText('Modifier')).not.toBeOnTheScreen()
     })
 
     it('should not display "Modifier" button when offer subcategory is "Livre papier" and EAN not defined', async () => {
@@ -612,7 +612,7 @@ describe('<BookingDetails />', () => {
       renderBookingDetails({ stocks: mockStocks, onPressBookOffer: mockOnPressBookOffer })
       await act(async () => {})
 
-      expect(screen.queryByText('Modifier')).toBeNull()
+      expect(screen.queryByText('Modifier')).not.toBeOnTheScreen()
     })
 
     it('should not display "Modifier" button when offer subcategory is "Livre audio physique" and EAN not defined', async () => {
@@ -629,7 +629,7 @@ describe('<BookingDetails />', () => {
       renderBookingDetails({ stocks: mockStocks, onPressBookOffer: mockOnPressBookOffer })
       await act(async () => {})
 
-      expect(screen.queryByText('Modifier')).toBeNull()
+      expect(screen.queryByText('Modifier')).not.toBeOnTheScreen()
     })
 
     it('should open venue selection modal when pressing "Modifier" button', async () => {

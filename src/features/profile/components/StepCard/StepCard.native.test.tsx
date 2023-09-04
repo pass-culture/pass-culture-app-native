@@ -88,7 +88,7 @@ describe('<StepCard />', () => {
       />
     )
 
-    expect(screen.queryByText(subtitle)).toBeNull()
+    expect(screen.queryByText(subtitle)).not.toBeOnTheScreen()
   })
 
   it('should not return the subtitle when type is StepCardType.DISABLED', () => {
@@ -101,6 +101,6 @@ describe('<StepCard />', () => {
       />
     )
 
-    expect(screen.queryByText(subtitle)).toBeNull()
+    expect(screen.queryByText(subtitle)).not.toBeOnTheScreen()
   })
 })

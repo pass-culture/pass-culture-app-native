@@ -63,7 +63,7 @@ describe('TrackEmailChange', () => {
       isLoading: false,
     } as UseEmailUpdateStatusMock)
     render(<TrackEmailChange />)
-    expect(screen.queryByText('Confirme ta demande')).toBeNull()
+    expect(screen.queryByText('Confirme ta demande')).not.toBeOnTheScreen()
   })
 
   it('should display "Confirmation de ta demande" when current step is not UPDATE_REQUEST', () => {
@@ -89,7 +89,7 @@ describe('TrackEmailChange', () => {
       isLoading: false,
     } as UseEmailUpdateStatusMock)
     render(<TrackEmailChange />)
-    expect(screen.queryByText('Confirmation de ta demande')).toBeNull()
+    expect(screen.queryByText('Confirmation de ta demande')).not.toBeOnTheScreen()
   })
 
   it('should display "Valide ta nouvelle adresse" when current step is CONFIRMATION', () => {
@@ -115,7 +115,7 @@ describe('TrackEmailChange', () => {
       isLoading: false,
     } as UseEmailUpdateStatusMock)
     render(<TrackEmailChange />)
-    expect(screen.queryByText('Valide ta nouvelle adresse')).toBeNull()
+    expect(screen.queryByText('Valide ta nouvelle adresse')).not.toBeOnTheScreen()
   })
 
   it('should display "Validation de ta nouvelle adresse" when current step is not CONFIRMATION', () => {
@@ -141,7 +141,7 @@ describe('TrackEmailChange', () => {
       isLoading: false,
     } as UseEmailUpdateStatusMock)
     render(<TrackEmailChange />)
-    expect(screen.queryByText('Validation de ta nouvelle adresse')).toBeNull()
+    expect(screen.queryByText('Validation de ta nouvelle adresse')).not.toBeOnTheScreen()
   })
 
   it('should display "Connecte-toi sur ta nouvelle adresse" when current step is VALIDATION', () => {
@@ -167,7 +167,7 @@ describe('TrackEmailChange', () => {
       isLoading: false,
     } as UseEmailUpdateStatusMock)
     render(<TrackEmailChange />)
-    expect(screen.queryByText('Connecte-toi sur ta nouvelle adresse')).toBeNull()
+    expect(screen.queryByText('Connecte-toi sur ta nouvelle adresse')).not.toBeOnTheScreen()
   })
 
   it('should display "Connexion sur ta nouvelle adresse" when current step is not VALIDATION', () => {
@@ -193,7 +193,7 @@ describe('TrackEmailChange', () => {
       isLoading: false,
     } as UseEmailUpdateStatusMock)
     render(<TrackEmailChange />)
-    expect(screen.queryByText('Connexion sur ta nouvelle adresse')).toBeNull()
+    expect(screen.queryByText('Connexion sur ta nouvelle adresse')).not.toBeOnTheScreen()
   })
 
   it('should redirect to previous screen when clicking on ArrowPrevious icon', async () => {

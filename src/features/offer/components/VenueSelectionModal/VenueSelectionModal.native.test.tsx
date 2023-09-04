@@ -137,7 +137,7 @@ describe('<VenueSelectionModal />', () => {
         />
       )
 
-      expect(screen.queryByText('Active ta géolocalisation')).toBeNull()
+      expect(screen.queryByText('Active ta géolocalisation')).not.toBeOnTheScreen()
     })
 
     it('should display "Lieux disponibles autour de moi"', () => {
@@ -175,7 +175,7 @@ describe('<VenueSelectionModal />', () => {
         />
       )
 
-      expect(screen.queryByText('Lieux à proximité de “LIBRAIRIE SILLAGE”')).toBeNull()
+      expect(screen.queryByText('Lieux à proximité de “LIBRAIRIE SILLAGE”')).not.toBeOnTheScreen()
     })
   })
 
@@ -215,7 +215,7 @@ describe('<VenueSelectionModal />', () => {
         />
       )
 
-      expect(screen.queryByText('Lieux disponibles autour de moi')).toBeNull()
+      expect(screen.queryByText('Lieux disponibles autour de moi')).not.toBeOnTheScreen()
     })
 
     it('should display "Lieux à proximité de “LIBRAIRIE SILLAGE”" (offer venue name)', () => {

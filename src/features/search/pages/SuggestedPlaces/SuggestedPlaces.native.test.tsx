@@ -45,7 +45,7 @@ describe('<SuggestedPlaces/>', () => {
     const { queryByText } = render(
       <SuggestedPlaces query="" setSelectedPlaceOrVenue={mockSetSelectedPlaceOrVenue} />
     )
-    expect(queryByText('Aucun lieu ne correspond à ta recherche')).toBeNull()
+    expect(queryByText('Aucun lieu ne correspond à ta recherche')).not.toBeOnTheScreen()
   })
 
   it('should not show empty component if the results are still loading', () => {
@@ -54,6 +54,6 @@ describe('<SuggestedPlaces/>', () => {
     const { queryByText } = render(
       <SuggestedPlaces query="paris" setSelectedPlaceOrVenue={mockSetSelectedPlaceOrVenue} />
     )
-    expect(queryByText('Aucun lieu ne correspond à ta recherche')).toBeNull()
+    expect(queryByText('Aucun lieu ne correspond à ta recherche')).not.toBeOnTheScreen()
   })
 })

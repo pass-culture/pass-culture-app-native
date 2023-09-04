@@ -227,7 +227,7 @@ describe('<BookingOfferModalComponent />', () => {
 
   it('should not display modal with prices by categories', () => {
     render(<BookingOfferModalComponent visible offerId={20} />)
-    expect(screen.queryByTestId('modalWithPricesByCategories')).toBeNull()
+    expect(screen.queryByTestId('modalWithPricesByCategories')).not.toBeOnTheScreen()
   })
 
   describe('when prices by categories feature flag activated', () => {
@@ -260,7 +260,7 @@ describe('<BookingOfferModalComponent />', () => {
 
     it('should not display modal without prices by categories', () => {
       render(<BookingOfferModalComponent visible offerId={20} />)
-      expect(screen.queryByTestId('modalWithoutPricesByCategories')).toBeNull()
+      expect(screen.queryByTestId('modalWithoutPricesByCategories')).not.toBeOnTheScreen()
     })
   })
 

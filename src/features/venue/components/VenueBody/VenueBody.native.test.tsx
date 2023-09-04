@@ -56,7 +56,7 @@ describe('<VenueBody />', () => {
 
   it('should not show venue banner in where section', async () => {
     await renderVenueBody(venueId)
-    expect(screen.queryByTestId(`Lieu ${venueResponseSnap.name}`)).toBeNull()
+    expect(screen.queryByTestId(`Lieu ${venueResponseSnap.name}`)).not.toBeOnTheScreen()
   })
 
   it('should show withdrawalDetails', async () => {
@@ -69,7 +69,7 @@ describe('<VenueBody />', () => {
       data: { ...venueResponseSnap, withdrawalDetails: null },
     } as UseQueryResult<VenueResponse>)
     await renderVenueBody(venueId)
-    expect(screen.queryByText('Modalités de retrait')).toBeNull()
+    expect(screen.queryByText('Modalités de retrait')).not.toBeOnTheScreen()
   })
 
   it('should open social medium on share button press', async () => {

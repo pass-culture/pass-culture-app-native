@@ -10,8 +10,8 @@ describe('<TicketSwiper/>', () => {
   it('should display ticket without external bookings information if there are no external bookings (externalBookings is null)', () => {
     booking.externalBookings = null
     const { queryByTestId } = render(<TicketSwiper booking={booking} />)
-    expect(queryByTestId('ticket-without-external-bookings-information')).toBeNull()
-    expect(queryByTestId('ticket-with-external-bookings-information')).toBeNull()
+    expect(queryByTestId('ticket-without-external-bookings-information')).not.toBeOnTheScreen()
+    expect(queryByTestId('ticket-with-external-bookings-information')).not.toBeOnTheScreen()
   })
 
   it('should display ticket without external bookings information if there are no external bookings (empty externalBookings array)', () => {
@@ -39,7 +39,7 @@ describe('<TicketSwiper/>', () => {
     it('should not show if number of ticket is equal to one', () => {
       booking.externalBookings = [{ barcode: 'PASSCULTURE:v3;TOKEN:352UW4', seat: 'A12' }]
       const { queryByTestId } = render(<TicketSwiper booking={booking} />)
-      expect(queryByTestId('swiper-tickets-controls')).toBeNull()
+      expect(queryByTestId('swiper-tickets-controls')).not.toBeOnTheScreen()
     })
 
     it('should show if number of ticket is greater than one', () => {

@@ -24,6 +24,6 @@ describe('<NativeCategoryValue />', () => {
     const nativeCategoryId = 'UNKNOWN' as NativeCategoryIdEnumv2
     const { queryByTestId } = render(<NativeCategoryValue nativeCategoryId={nativeCategoryId} />)
 
-    expect(queryByTestId('native-category-value')).toBeNull()
+    expect(queryByTestId('native-category-value')).not.toBeOnTheScreen()
   })
 })

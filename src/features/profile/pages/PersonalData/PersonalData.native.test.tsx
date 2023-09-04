@@ -64,7 +64,7 @@ describe('PersonalData', () => {
     expect(screen.queryByText('Rosa Bonheur')).toBeOnTheScreen()
     expect(screen.queryByText('Adresse e-mail')).toBeOnTheScreen()
     expect(screen.queryByText('rosa.bonheur@gmail.com')).toBeOnTheScreen()
-    expect(screen.queryByText('Numéro de téléphone')).toBeNull()
+    expect(screen.queryByText('Numéro de téléphone')).not.toBeOnTheScreen()
     expect(screen.queryByText('Mot de passe')).toBeOnTheScreen()
     expect(screen.queryByText('*'.repeat(12))).toBeOnTheScreen()
     expect(screen.queryByText('Supprimer mon compte')).toBeOnTheScreen()
@@ -76,10 +76,10 @@ describe('PersonalData', () => {
       isBeneficiary: false,
     } as UserProfileResponse)
 
-    expect(screen.queryByText('Prénom et nom')).toBeNull()
+    expect(screen.queryByText('Prénom et nom')).not.toBeOnTheScreen()
     expect(screen.queryByText('Adresse e-mail')).toBeOnTheScreen()
     expect(screen.queryByText('Mot de passe')).toBeOnTheScreen()
-    expect(screen.queryByText('Numéro de téléphone')).toBeNull()
+    expect(screen.queryByText('Numéro de téléphone')).not.toBeOnTheScreen()
     expect(screen.queryByText('Supprimer mon compte')).toBeOnTheScreen()
   })
 

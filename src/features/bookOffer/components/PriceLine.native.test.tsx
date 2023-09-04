@@ -38,6 +38,6 @@ describe('<PriceLine />', () => {
     render(<PriceLine unitPrice={500} />)
 
     expect(screen.getByText('5\u00a0€')).toBeOnTheScreen()
-    expect(screen.queryByTestId('price-line__price-detail')).toBeNull()
+    expect(screen.queryByTestId('price-line__price-detail')).not.toBeOnTheScreen()
   })
 })

@@ -58,7 +58,7 @@ describe('OfferPartialDescription', () => {
     })
 
     await screen.findByText('Voir plus d’informations')
-    expect(screen.queryByTestId('offerPartialDescriptionBody')).toBeNull()
+    expect(screen.queryByTestId('offerPartialDescriptionBody')).not.toBeOnTheScreen()
   })
 
   describe('SeeMore button', () => {
@@ -199,7 +199,7 @@ describe('OfferPartialDescription', () => {
         })
         await act(async () => {})
 
-        expect(screen.queryByTestId('offerSeeMoreContainer')).toBeNull()
+        expect(screen.queryByTestId('offerSeeMoreContainer')).not.toBeOnTheScreen()
       })
 
       it('when the description is small enough to be fully readable', async () => {
@@ -222,7 +222,7 @@ describe('OfferPartialDescription', () => {
         await act(async () => {
           descriptionComponent.props.onTextLayout({ nativeEvent: { lines } })
         })
-        expect(screen.queryByTestId('offerSeeMoreContainer')).toBeNull()
+        expect(screen.queryByTestId('offerSeeMoreContainer')).not.toBeOnTheScreen()
       })
     })
   })

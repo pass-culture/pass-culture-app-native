@@ -24,7 +24,7 @@ describe('BicolorFavoriteCount component', () => {
     const { queryByTestId } = renderBicolorFavoriteCount({ isLoggedIn: false })
 
     await waitFor(() => {
-      expect(queryByTestId('bicolor-favorite-count')).toBeNull()
+      expect(queryByTestId('bicolor-favorite-count')).not.toBeOnTheScreen()
     })
   })
 

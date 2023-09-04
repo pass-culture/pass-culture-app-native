@@ -22,19 +22,19 @@ describe('AppButton Component', () => {
     })
     it('should not display icon when not provided', () => {
       const { queryByTestId } = render(<AppButton {...baseProps} icon={undefined} />)
-      expect(queryByTestId('button-icon')).toBeNull()
+      expect(queryByTestId('button-icon')).not.toBeOnTheScreen()
     })
   })
   describe('* isLoading property', () => {
     it('should display right elements when isLoading equals true', () => {
       const { queryByTestId } = render(<AppButton {...baseProps} isLoading />)
       expect(queryByTestId('Chargement en cours')).toBeOnTheScreen()
-      expect(queryByTestId('button-icon')).toBeNull()
+      expect(queryByTestId('button-icon')).not.toBeOnTheScreen()
     })
     it('should display right elements when isLoading equals false', () => {
       const { queryByTestId } = render(<AppButton {...baseProps} isLoading={false} />)
       expect(queryByTestId('button-icon')).toBeOnTheScreen()
-      expect(queryByTestId('Chargement en cours')).toBeNull()
+      expect(queryByTestId('Chargement en cours')).not.toBeOnTheScreen()
     })
   })
   describe('* Disabled property', () => {

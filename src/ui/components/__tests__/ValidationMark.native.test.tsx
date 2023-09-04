@@ -9,7 +9,7 @@ describe('ValidationMark', () => {
     const { queryByTestId } = render(
       <ValidationMark invalidTestID="invalidTestId" validtestID="validTestId" isValid />
     )
-    expect(queryByTestId('invalidTestId')).toBeNull()
+    expect(queryByTestId('invalidTestId')).not.toBeOnTheScreen()
     expect(queryByTestId('validTestId')).toBeOnTheScreen()
   })
   it('should displat the invalidIcon when isValid is false', () => {
@@ -17,6 +17,6 @@ describe('ValidationMark', () => {
       <ValidationMark invalidTestID="invalidTestId" validtestID="validTestId" isValid={false} />
     )
     expect(queryByTestId('invalidTestId')).toBeOnTheScreen()
-    expect(queryByTestId('validTestId')).toBeNull()
+    expect(queryByTestId('validTestId')).not.toBeOnTheScreen()
   })
 })

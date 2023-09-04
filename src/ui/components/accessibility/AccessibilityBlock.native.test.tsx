@@ -30,6 +30,6 @@ describe('AccessibilityBlock', () => {
     expect(queryByTestId('Handicap visuel')).toBeOnTheScreen()
     expect(queryByTestId('Handicap moteur')).toBeOnTheScreen()
     expect(queryByTestId('Handicap psychique ou cognitif')).toBeOnTheScreen()
-    expect(queryByTestId('Handicap auditif')).toBeNull()
+    expect(queryByTestId('Handicap auditif')).not.toBeOnTheScreen()
   })
 })

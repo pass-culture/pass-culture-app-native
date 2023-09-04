@@ -113,6 +113,6 @@ describe('<VenueSelectionList />', () => {
       />
     )
 
-    expect(screen.queryByText('à 500 m')).toBeNull()
+    expect(screen.queryByText('à 500 m')).not.toBeOnTheScreen()
   })
 })

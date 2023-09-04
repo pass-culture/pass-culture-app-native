@@ -80,7 +80,7 @@ describe('ThematicHome', () => {
     await act(async () => {})
 
     expect(await screen.findAllByText('Bloc temps fort')).not.toHaveLength(0)
-    expect(screen.queryByTestId('animated-thematic-header')).toBeNull()
+    expect(screen.queryByTestId('animated-thematic-header')).not.toBeOnTheScreen()
   })
 
   it('should show category header when provided', async () => {

@@ -480,7 +480,9 @@ describe('<PriceModal/>', () => {
 
     await act(async () => fireEvent.press(onlyFreeOffersToggle))
 
-    expect(screen.queryByText('Le prix indiqué ne doit pas dépasser 80\u00a0€')).toBeNull()
+    expect(
+      screen.queryByText('Le prix indiqué ne doit pas dépasser 80\u00a0€')
+    ).not.toBeOnTheScreen()
   })
 
   it('should hide maxPrice error when onlyFreeOffers is pressed', async () => {
@@ -495,7 +497,9 @@ describe('<PriceModal/>', () => {
 
     await act(async () => fireEvent.press(onlyFreeOffersToggle))
 
-    expect(screen.queryByText('Le prix indiqué ne doit pas dépasser 80\u00a0€')).toBeNull()
+    expect(
+      screen.queryByText('Le prix indiqué ne doit pas dépasser 80\u00a0€')
+    ).not.toBeOnTheScreen()
   })
 
   it('should hide maxPrice error when limitCreditSearch is pressed', async () => {
@@ -510,7 +514,9 @@ describe('<PriceModal/>', () => {
 
     await act(async () => fireEvent.press(limitCreditSearchToggle))
 
-    expect(screen.queryByText('Le prix indiqué ne doit pas dépasser 80\u00a0€')).toBeNull()
+    expect(
+      screen.queryByText('Le prix indiqué ne doit pas dépasser 80\u00a0€')
+    ).not.toBeOnTheScreen()
   })
 
   describe('when user is not logged in', () => {
@@ -527,7 +533,7 @@ describe('<PriceModal/>', () => {
 
       const toggleLimitCreditSearch = screen.queryByTestId('Interrupteur limitCreditSearch')
 
-      expect(toggleLimitCreditSearch).toBeNull()
+      expect(toggleLimitCreditSearch).not.toBeOnTheScreen()
     })
 
     it('should not display credit banner', async () => {
@@ -538,7 +544,7 @@ describe('<PriceModal/>', () => {
       })
 
       const creditBanner = screen.queryByTestId('creditBanner')
-      expect(creditBanner).toBeNull()
+      expect(creditBanner).not.toBeOnTheScreen()
     })
 
     it('should display the credit given to 18 year olds in maximum price input placeholder', async () => {
@@ -582,7 +588,7 @@ describe('<PriceModal/>', () => {
       })
 
       const toggleLimitCreditSearch = screen.queryByTestId('Interrupteur limitCreditSearch')
-      expect(toggleLimitCreditSearch).toBeNull()
+      expect(toggleLimitCreditSearch).not.toBeOnTheScreen()
     })
 
     it('should not display credit banner', async () => {
@@ -594,7 +600,7 @@ describe('<PriceModal/>', () => {
 
       const creditBanner = screen.queryByTestId('creditBanner')
 
-      expect(creditBanner).toBeNull()
+      expect(creditBanner).not.toBeOnTheScreen()
     })
 
     it('should display the credit given to 18 year olds in maximum price input placeholder', async () => {

@@ -118,7 +118,7 @@ describe('<AcceptCgu/>', () => {
 
     expect(recaptchaWebviewModal.props.visible).toBeFalsy()
     expect(screen.queryByText('Hors connexion\u00a0: en attente du réseau.')).toBeOnTheScreen()
-    expect(screen.queryByTestId('Chargement en cours')).toBeNull()
+    expect(screen.queryByTestId('Chargement en cours')).not.toBeOnTheScreen()
   })
 
   it("should open reCAPTCHA challenge's modal when pressing on signup button", () => {
@@ -144,7 +144,7 @@ describe('<AcceptCgu/>', () => {
 
     await waitFor(() => {
       expect(props.signUp).toHaveBeenCalledWith('fakeToken')
-      expect(screen.queryByTestId('Chargement en cours')).toBeNull()
+      expect(screen.queryByTestId('Chargement en cours')).not.toBeOnTheScreen()
     })
   })
 
@@ -165,7 +165,7 @@ describe('<AcceptCgu/>', () => {
       expect(
         screen.queryByText('Un problème est survenu pendant l’inscription, réessaie plus tard.')
       ).toBeOnTheScreen()
-      expect(screen.queryByTestId('Chargement en cours')).toBeNull()
+      expect(screen.queryByTestId('Chargement en cours')).not.toBeOnTheScreen()
     })
   })
 
@@ -188,7 +188,7 @@ describe('<AcceptCgu/>', () => {
         'AcceptCguOnReCaptchaError'
       )
       expect(props.signUp).not.toBeCalled()
-      expect(screen.queryByTestId('Chargement en cours')).toBeNull()
+      expect(screen.queryByTestId('Chargement en cours')).not.toBeOnTheScreen()
     })
   })
 
@@ -207,7 +207,7 @@ describe('<AcceptCgu/>', () => {
       ).toBeOnTheScreen()
       expect(props.signUp).not.toBeCalled()
       expect(navigate).not.toBeCalled()
-      expect(screen.queryByTestId('Chargement en cours')).toBeNull()
+      expect(screen.queryByTestId('Chargement en cours')).not.toBeOnTheScreen()
     })
   })
 })
