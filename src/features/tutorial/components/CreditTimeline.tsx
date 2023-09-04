@@ -11,14 +11,15 @@ import { getStepperVariantFromCreditStatus } from 'features/tutorial/helpers/get
 import { analytics } from 'libs/analytics'
 import { useDepositAmountsByAge } from 'shared/user/useDepositAmountsByAge'
 import { Warning } from 'ui/svg/icons/BicolorWarning'
-import { Spacer, Typo, getSpacing } from 'ui/theme'
+import { Spacer, getSpacing } from 'ui/theme'
 
 type Age = 15 | 16 | 17 | 18
 
-type CreditStep = 15 | 16 | 17 | 18 | 'separator'
+type CreditStep = 15 | 16 | 17 | 18 | 'information'
 
 export type CreditComponentProps = {
   creditStep: CreditStep
+  iconComponent?: React.JSX.Element
   children?: React.ReactNode
 }
 
@@ -46,7 +47,18 @@ export const CreditTimeline = ({ stepperProps, age }: Props) => {
   return (
     <Container>
       {stepperProps.map((props, index) => {
-        if (props.creditStep === 'separator') return <EigtheenSeparator key={index} />
+        const iconComponent = props.iconComponent ?? <GreyWarning />
+        if (props.creditStep === 'information')
+          return (
+            <InternalStep
+              key={'information ' + index}
+              variant={StepVariant.future}
+              isLast={index === stepperProps.length - 1}
+              iconComponent={iconComponent}>
+              {props.children}
+              <Spacer.Column numberOfSpaces={2} />
+            </InternalStep>
+          )
         const creditStatus = getCreditStatusFromAge(age, props.creditStep)
         const stepVariant = getStepperVariantFromCreditStatus(creditStatus)
 
@@ -77,26 +89,9 @@ export const CreditTimeline = ({ stepperProps, age }: Props) => {
   )
 }
 
-const EigtheenSeparator = () => {
-  return (
-    <React.Fragment>
-      <InternalStep key={'separator'} variant={StepVariant.future} iconComponent={<GreyWarning />}>
-        <StyledBody>Remise à 0 du crédit</StyledBody>
-        <Spacer.Column numberOfSpaces={2} />
-      </InternalStep>
-    </React.Fragment>
-  )
-}
-
 const Container = styled.View({
   flexGrow: 1,
   flexDirection: 'column',
-})
-
-const StyledBody = styled(Typo.Body)({
-  marginVertical: getSpacing(2),
-  marginLeft: getSpacing(1.5),
-  justifyContent: 'center',
 })
 
 const GreyWarning = styled(Warning).attrs(({ theme }) => ({

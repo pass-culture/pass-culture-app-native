@@ -1,6 +1,8 @@
 import React, { FunctionComponent } from 'react'
+import styled from 'styled-components/native'
 
 import { CreditComponentProps, CreditTimeline } from 'features/tutorial/components/CreditTimeline'
+import { Spacer, Typo, getSpacing, getSpacingString } from 'ui/theme'
 
 interface Props {
   age: 15 | 16 | 17 | 18
@@ -28,6 +30,12 @@ const CreditBlockContent = ({ description }: { description: string }) => {
   )
 }
 
+const StyledBody = styled(Typo.Body)({
+  marginVertical: getSpacing(2),
+  marginLeft: getSpacing(1.5),
+  justifyContent: 'center',
+})
+
 const stepperPropsMapping = new Map<Props['age'], CreditComponentProps[]>([
   [
     15,
@@ -35,6 +43,7 @@ const stepperPropsMapping = new Map<Props['age'], CreditComponentProps[]>([
       { creditStep: 15 },
       { creditStep: 16 },
       { creditStep: 17 },
+      { creditStep: 'information', children: <StyledBody>Remise à 0 du crédit</StyledBody> },
       {
         creditStep: 18,
         children: (
@@ -49,6 +58,7 @@ const stepperPropsMapping = new Map<Props['age'], CreditComponentProps[]>([
       { creditStep: 15 },
       { creditStep: 16 },
       { creditStep: 17 },
+      { creditStep: 'information', children: <StyledBody>Remise à 0 du crédit</StyledBody> },
       {
         creditStep: 18,
         children: (
@@ -63,6 +73,7 @@ const stepperPropsMapping = new Map<Props['age'], CreditComponentProps[]>([
       { creditStep: 15 },
       { creditStep: 16 },
       { creditStep: 17 },
+      { creditStep: 'information', children: <StyledBody>Remise à 0 du crédit</StyledBody> },
       {
         creditStep: 18,
         children: (
