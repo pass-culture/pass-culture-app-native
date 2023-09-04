@@ -15,13 +15,16 @@ export function NavigationTutorial(): React.JSX.Element {
     <ScrollView>
       <PageHeaderSecondary title="Tutorial ❔" />
       <StyledContainer>
-        <LinkToComponent title="Onboarding  🛶" onPress={() => navigate('NavigationOnboarding')} />
         <LinkToComponent
-          title="ProfileTutorial 👤"
-          onPress={() => navigate('NavigationProfileTutorial')}
+          title="Onboarding  🛶"
+          onPress={() => navigate('CheatcodeNavigationOnboarding')}
         />
         <LinkToComponent
-          title="FirestTutorial [DEPRECATED]"
+          title="ProfileTutorial 👤"
+          onPress={() => navigate('CheatcodeNavigationProfileTutorial')}
+        />
+        <LinkToComponent
+          title="FirstTutorial [DEPRECATED]"
           onPress={() => navigate('FirstTutorial', { shouldCloseAppOnBackAction: false })}
         />
       </StyledContainer>

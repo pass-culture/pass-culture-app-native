@@ -137,7 +137,10 @@ export function Navigation(): React.JSX.Element {
             <ButtonPrimary wording="POC A/B testing" onPress={() => navigate('ABTestingPOC')} />
           </Row>
           <Row half>
-            <ButtonPrimary wording="Tutorial ❔" onPress={() => navigate('NavigationTutorial')} />
+            <ButtonPrimary
+              wording="Tutorial ❔"
+              onPress={() => navigate('CheatcodeNavigationTutorial')}
+            />
           </Row>
           <Row half>
             <ButtonPrimary wording="Venue 🏛️" onPress={() => navigate('Venue', { id: venueId })} />

@@ -41,17 +41,17 @@ export const tutorialRoutes: GenericRoute<TutorialRootStackParamList>[] = [
     options: { title: 'Bienvenue' },
   },
   {
-    name: 'NavigationTutorial',
+    name: 'CheatcodeNavigationTutorial',
     component: NavigationTutorial,
     path: 'cheat-navigation-tutorial',
   },
   {
-    name: 'NavigationOnboarding',
+    name: 'CheatcodeNavigationOnboarding',
     component: NavigationOnboarding,
     path: 'cheat-navigation-onboarding',
   },
   {
-    name: 'NavigationProfileTutorial',
+    name: 'CheatcodeNavigationProfileTutorial',
     component: NavigationProfileTutorial,
     path: 'cheat-navigation-profile-tutorial',
   },
