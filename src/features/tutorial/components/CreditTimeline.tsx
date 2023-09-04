@@ -4,7 +4,7 @@ import styled from 'styled-components/native'
 import { InternalStep } from 'features/profile/components/InternalStep/InternalStep'
 import { StepVariant } from 'features/profile/components/VerticalStepper/types'
 import { CreditBlock } from 'features/tutorial/components/CreditBlock'
-import { CreditBlockTitle } from 'features/tutorial/helpers/CreditBlockTitle'
+import { OnboardingCreditBlockTitle } from 'features/tutorial/components/onboarding/OnboardingCreditBlockTitle'
 import { getCreditStatusFromAge } from 'features/tutorial/helpers/getCreditStatusFromAge'
 import { getStepperIconFromCreditStatus } from 'features/tutorial/helpers/getStepperIconFromCreditStatus'
 import { getStepperVariantFromCreditStatus } from 'features/tutorial/helpers/getStepperVariantFromCreditStatus'
@@ -73,7 +73,7 @@ export const CreditTimeline = ({ stepperProps, age }: Props) => {
               creditStatus={creditStatus}
               age={props.creditStep}
               onPress={() => analytics.logTrySelectDeposit(age)}>
-              <CreditBlockTitle
+              <OnboardingCreditBlockTitle
                 age={props.creditStep}
                 userAge={age}
                 deposit={depositsByAge.get(props.creditStep) ?? ''}
