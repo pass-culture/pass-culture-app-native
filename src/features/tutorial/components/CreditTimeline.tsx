@@ -5,6 +5,7 @@ import { InternalStep } from 'features/profile/components/InternalStep/InternalS
 import { StepVariant } from 'features/profile/components/VerticalStepper/types'
 import { CreditBlock } from 'features/tutorial/components/CreditBlock'
 import { OnboardingCreditBlockTitle } from 'features/tutorial/components/onboarding/OnboardingCreditBlockTitle'
+import { ProfileTutorialCreditBlockTitle } from 'features/tutorial/components/profileTutorial/ProfileTutorialCreditBlockTitle'
 import { getCreditStatusFromAge } from 'features/tutorial/helpers/getCreditStatusFromAge'
 import { getStepperIconFromCreditStatus } from 'features/tutorial/helpers/getStepperIconFromCreditStatus'
 import { getStepperVariantFromCreditStatus } from 'features/tutorial/helpers/getStepperVariantFromCreditStatus'
@@ -29,7 +30,7 @@ type Props = {
   type: 'onboarding' | 'profileTutorial'
 }
 
-export const CreditTimeline = ({ stepperProps, age }: Props) => {
+export const CreditTimeline = ({ stepperProps, age, type }: Props) => {
   const {
     fifteenYearsOldDeposit,
     sixteenYearsOldDeposit,
@@ -43,6 +44,10 @@ export const CreditTimeline = ({ stepperProps, age }: Props) => {
     [17, seventeenYearsOldDeposit],
     [18, eighteenYearsOldDeposit],
   ])
+  const SpaceBetweenBlock = type === 'onboarding' ? 2 : 6
+
+  const CreditBlockTitle =
+    type === 'onboarding' ? OnboardingCreditBlockTitle : ProfileTutorialCreditBlockTitle
 
   return (
     <Container>
@@ -56,7 +61,7 @@ export const CreditTimeline = ({ stepperProps, age }: Props) => {
               isLast={index === stepperProps.length - 1}
               iconComponent={iconComponent}>
               {props.children}
-              <Spacer.Column numberOfSpaces={2} />
+              <Spacer.Column numberOfSpaces={SpaceBetweenBlock} />
             </InternalStep>
           )
         const creditStatus = getCreditStatusFromAge(age, props.creditStep)
@@ -73,7 +78,7 @@ export const CreditTimeline = ({ stepperProps, age }: Props) => {
               creditStatus={creditStatus}
               age={props.creditStep}
               onPress={() => analytics.logTrySelectDeposit(age)}>
-              <OnboardingCreditBlockTitle
+              <CreditBlockTitle
                 age={props.creditStep}
                 userAge={age}
                 deposit={depositsByAge.get(props.creditStep) ?? ''}
@@ -81,7 +86,7 @@ export const CreditTimeline = ({ stepperProps, age }: Props) => {
               {props.children}
             </CreditBlock>
 
-            <Spacer.Column numberOfSpaces={2} />
+            <Spacer.Column numberOfSpaces={SpaceBetweenBlock} />
           </InternalStep>
         )
       })}
