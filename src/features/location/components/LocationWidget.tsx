@@ -4,6 +4,7 @@ import styled from 'styled-components/native'
 
 import { LocationModal } from 'features/location/components/LocationModal'
 import { useGeolocation } from 'libs/geolocation'
+import { useSplashScreenContext } from 'libs/splashscreen'
 import { storage } from 'libs/storage'
 import { useModal } from 'ui/components/modals/useModal'
 import { Tooltip } from 'ui/components/Tooltip'
@@ -20,6 +21,7 @@ export const LocationWidget: React.FC = () => {
   const [isTooltipVisible, setIsTooltipVisible] = React.useState(false)
   const [widgetWidth, setWidgetWidth] = React.useState<number | undefined>()
   const { userPosition } = useGeolocation()
+  const { isSplashScreenHidden } = useSplashScreenContext()
 
   const hideTooltip = () => setIsTooltipVisible(false)
 
@@ -29,6 +31,8 @@ export const LocationWidget: React.FC = () => {
   }
 
   useEffect(() => {
+    if (!isSplashScreenHidden) return
+
     const displayTooltipIfNeeded = async () => {
       const timesLocationTooltipHasBeenDisplayed = Number(
         await storage.readString('times_location_tooltip_has_been_displayed')
@@ -46,8 +50,8 @@ export const LocationWidget: React.FC = () => {
       clearTimeout(timeoutOn)
       clearTimeout(timeoutOff)
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps -- should only be called on mount
-  }, [])
+    // eslint-disable-next-line react-hooks/exhaustive-deps -- should only be called on startup
+  }, [isSplashScreenHidden])
 
   const locationTitle = 'Me localiser'
 
