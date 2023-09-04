@@ -10,7 +10,11 @@ interface Props {
   deposit: string
 }
 
-export const CreditBlockTitle = ({ age, userAge, deposit }: Props): React.ReactElement => {
+export const OnboardingCreditBlockTitle = ({
+  age,
+  userAge,
+  deposit,
+}: Props): React.ReactElement => {
   const TitleText: React.JSXElementConstructor<{ children: string }> =
     age === userAge ? TitleSecondary : Typo.ButtonText
 
