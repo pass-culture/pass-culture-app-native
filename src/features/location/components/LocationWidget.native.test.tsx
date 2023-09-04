@@ -3,6 +3,7 @@ import React from 'react'
 import { LocationWidget } from 'features/location/components/LocationWidget'
 import { act, fireEvent, render, screen } from 'tests/utils'
 
+jest.mock('libs/splashscreen')
 const mockShowModal = jest.fn()
 jest.mock('ui/components/modals/useModal', () => ({
   useModal: () => ({
