@@ -4,7 +4,8 @@ import styled, { useTheme } from 'styled-components/native'
 
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { getBusinessUrl } from 'features/home/components/modules/business/helpers/getBusinessUrl'
-import { showBusinessModule } from 'features/home/components/modules/business/helpers/showBusinessModule'
+import { useShouldDisplayBusinessModule } from 'features/home/components/modules/business/helpers/useShouldDisplayBusinessModule'
+import { LocationCircleArea } from 'features/home/types'
 import { openUrl } from 'features/navigation/helpers'
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { analytics } from 'libs/analytics'
@@ -29,6 +30,7 @@ export interface BusinessModuleProps {
   leftIcon?: string
   url?: string
   shouldTargetNotConnectedUsers?: boolean
+  localizationArea?: LocationCircleArea
 }
 
 const UnmemoizedBusinessModule = (props: BusinessModuleProps) => {
@@ -44,6 +46,7 @@ const UnmemoizedBusinessModule = (props: BusinessModuleProps) => {
     index,
     shouldTargetNotConnectedUsers: targetNotConnectedUsersOnly,
     moduleId,
+    localizationArea,
   } = props
   const isDisabled = !url
   const { appContentWidth } = useTheme()
@@ -80,7 +83,11 @@ const UnmemoizedBusinessModule = (props: BusinessModuleProps) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [url, user, shouldRedirect])
 
-  const shouldModuleBeDisplayed = showBusinessModule(targetNotConnectedUsersOnly, isLoggedIn)
+  const shouldModuleBeDisplayed = useShouldDisplayBusinessModule(
+    targetNotConnectedUsersOnly,
+    isLoggedIn,
+    localizationArea
+  )
 
   useEffect(() => {
     if (shouldModuleBeDisplayed) {
