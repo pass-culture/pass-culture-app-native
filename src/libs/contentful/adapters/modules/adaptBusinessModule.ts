@@ -17,5 +17,10 @@ export const adaptBusinessModule = (module: BusinessContentModel): BusinessModul
     leftIcon,
     url: module.fields.url,
     shouldTargetNotConnectedUsers: module.fields.targetNotConnectedUsersOnly,
+    localizationArea: {
+      latitude: module.fields.latitude,
+      longitude: module.fields.longitude,
+      radius: module.fields.radius,
+    },
   }
 }
