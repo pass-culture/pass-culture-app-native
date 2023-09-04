@@ -12,12 +12,12 @@ import { getPosition } from './getPosition'
 import { requestGeolocPermission } from './requestGeolocPermission'
 import {
   GeolocationError,
-  IGeolocationContext,
+  ILocationContext,
   RequestGeolocPermissionParams,
   Position,
 } from './types'
 
-const GeolocationContext = React.createContext<IGeolocationContext>({
+const LocationContext = React.createContext<ILocationContext>({
   userPosition: undefined,
   customPosition: undefined,
   setCustomPosition: () => null,
@@ -31,7 +31,7 @@ const GeolocationContext = React.createContext<IGeolocationContext>({
   onPressGeolocPermissionModalButton: () => null,
 })
 
-export const GeolocationWrapper = memo(function GeolocationWrapper({
+export const LocationWrapper = memo(function LocationWrapper({
   children,
 }: {
   children: React.JSX.Element
@@ -151,19 +151,19 @@ export const GeolocationWrapper = memo(function GeolocationWrapper({
     ]
   )
   return (
-    <GeolocationContext.Provider value={value}>
+    <LocationContext.Provider value={value}>
       {children}
       <GeolocationActivationModal
         isGeolocPermissionModalVisible={isGeolocPermissionModalVisible}
         hideGeolocPermissionModal={hideGeolocPermissionModal}
         onPressGeolocPermissionModalButton={onPressGeolocPermissionModalButton}
       />
-    </GeolocationContext.Provider>
+    </LocationContext.Provider>
   )
 })
 
-export function useGeolocation(): IGeolocationContext {
-  return useContext(GeolocationContext)
+export function useLocation(): ILocationContext {
+  return useContext(LocationContext)
 }
 
 function isGranted(permission: GeolocPermissionState) {

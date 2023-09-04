@@ -1,10 +1,10 @@
 import { SearchState } from 'features/search/types'
-import { useGeolocation } from 'libs/geolocation'
+import { useLocation } from 'libs/geolocation'
 
 export const useFilterCount = (searchState: SearchState): number => {
   const { offerCategories, minPrice, maxPrice, offerIsFree, offerIsDuo, date, timeRange } =
     searchState
-  const { userPosition: position } = useGeolocation()
+  const { userPosition: position } = useLocation()
   const hasCategories = offerCategories.length > 0
   const hasPrices = ((!!minPrice && Number(minPrice) > 0) || !!maxPrice) && !offerIsFree
   const hasActivatedFreeOffer = offerIsFree ?? false

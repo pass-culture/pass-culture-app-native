@@ -11,7 +11,7 @@ import { useSearchAnalyticsState } from 'libs/algolia/analytics/SearchAnalyticsW
 import { fetchOffersAndVenues } from 'libs/algolia/fetchAlgolia/fetchOffersAndVenues/fetchOffersAndVenues'
 import { useTransformOfferHits } from 'libs/algolia/fetchAlgolia/transformOfferHit'
 import { analytics } from 'libs/analytics'
-import { useGeolocation } from 'libs/geolocation'
+import { useLocation } from 'libs/geolocation'
 import { QueryKeys } from 'libs/queryKeys'
 import { getNextPageParam } from 'shared/getNextPageParam/getNextPageParam'
 import { Offer } from 'shared/offer/types'
@@ -22,7 +22,7 @@ export type SearchOfferResponse = Pick<
 >
 
 export const useSearchInfiniteQuery = (searchState: SearchState) => {
-  const { userPosition: position } = useGeolocation()
+  const { userPosition: position } = useLocation()
   const isUserUnderage = useIsUserUnderage()
   const transformHits = useTransformOfferHits()
   const { setCurrentQueryID } = useSearchAnalyticsState()

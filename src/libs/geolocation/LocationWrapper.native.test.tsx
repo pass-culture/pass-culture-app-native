@@ -3,8 +3,8 @@ import { requestGeolocPermission } from 'libs/geolocation/requestGeolocPermissio
 import { renderHook, waitFor } from 'tests/utils'
 
 import { GeolocPermissionState, GeolocPositionError } from './enums'
-import { GeolocationWrapper, useGeolocation } from './GeolocationWrapper'
 import { getPosition } from './getPosition'
+import { LocationWrapper, useLocation } from './LocationWrapper'
 import { GeolocationError } from './types'
 
 const mockGetPosition = jest.mocked(getPosition)
@@ -21,7 +21,7 @@ const onRefusal = jest.fn()
 
 const MOCK_POSITION = { latitude: 90, longitude: 90 }
 
-describe('useGeolocation()', () => {
+describe('useLocation()', () => {
   beforeEach(() => {
     mockGetPositionSuccess()
   })
@@ -130,5 +130,5 @@ function mockGetPositionFail() {
 }
 
 function renderGeolocationHook() {
-  return renderHook(useGeolocation, { wrapper: GeolocationWrapper })
+  return renderHook(useLocation, { wrapper: LocationWrapper })
 }

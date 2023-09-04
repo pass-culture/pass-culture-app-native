@@ -10,7 +10,7 @@ class OnboardingGeolocation extends AppScreen {
     return find('Aller à l’écran suivant')
   }
 
-  get useGeolocation() {
+  get useLocation() {
     return find('Utiliser ma position')
   }
 

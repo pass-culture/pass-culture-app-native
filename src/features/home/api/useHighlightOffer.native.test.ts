@@ -3,8 +3,8 @@ import { mockedAlgoliaResponse } from 'libs/algolia/__mocks__/mockedAlgoliaRespo
 import { fetchOffersByEan } from 'libs/algolia/fetchAlgolia/fetchOffersByEan'
 import { fetchOffersByIds } from 'libs/algolia/fetchAlgolia/fetchOffersByIds'
 import { fetchOffersByTags } from 'libs/algolia/fetchAlgolia/fetchOffersByTags'
-import { useGeolocation } from 'libs/geolocation'
-import { IGeolocationContext } from 'libs/geolocation/types'
+import { useLocation } from 'libs/geolocation'
+import { ILocationContext } from 'libs/geolocation/types'
 import { offersFixture } from 'shared/offer/offer.fixture'
 import { Offer } from 'shared/offer/types'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
@@ -28,7 +28,7 @@ const mockFetchOffersByEan = fetchOffersByEan as jest.MockedFunction<typeof fetc
 const mockOffers: Offer[] = mockedAlgoliaResponse.hits
 
 jest.mock('libs/geolocation')
-const mockUseGeolocation = jest.mocked(useGeolocation)
+const mockUseGeolocation = jest.mocked(useLocation)
 
 describe('useHighlightOffer', () => {
   it('should return offer when offerId is provided', async () => {
@@ -67,7 +67,7 @@ describe('useHighlightOffer', () => {
       // eslint-disable-next-line local-rules/independent-mocks
       mockUseGeolocation.mockReturnValue({
         userPosition: { latitude: mockOffer._geoloc.lat, longitude: mockOffer._geoloc.lng },
-      } as IGeolocationContext)
+      } as ILocationContext)
 
       mockFetchOffersByIds.mockResolvedValueOnce([mockOffer])
       const { result } = renderUseHighlightOfferHook({
@@ -84,7 +84,7 @@ describe('useHighlightOffer', () => {
       // eslint-disable-next-line local-rules/independent-mocks
       mockUseGeolocation.mockReturnValue({
         userPosition: { latitude: 1, longitude: 1 },
-      } as IGeolocationContext)
+      } as ILocationContext)
 
       mockFetchOffersByIds.mockResolvedValueOnce([mockOffer])
       const { result } = renderUseHighlightOfferHook({
@@ -101,7 +101,7 @@ describe('useHighlightOffer', () => {
       // eslint-disable-next-line local-rules/independent-mocks
       mockUseGeolocation.mockReturnValue({
         userPosition: undefined,
-      } as IGeolocationContext)
+      } as ILocationContext)
 
       mockFetchOffersByIds.mockResolvedValueOnce([mockOffer])
       const { result } = renderUseHighlightOfferHook({
@@ -118,7 +118,7 @@ describe('useHighlightOffer', () => {
       // eslint-disable-next-line local-rules/independent-mocks
       mockUseGeolocation.mockReturnValue({
         userPosition: { latitude: mockOffer._geoloc.lat, longitude: mockOffer._geoloc.lng },
-      } as IGeolocationContext)
+      } as ILocationContext)
 
       mockFetchOffersByIds.mockResolvedValueOnce([mockOffer])
       const { result } = renderUseHighlightOfferHook({

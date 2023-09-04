@@ -3,13 +3,14 @@ import { Animated, LayoutChangeEvent } from 'react-native'
 import styled from 'styled-components/native'
 
 import { LocationModal } from 'features/location/components/LocationModal'
-import { useGeolocation } from 'libs/geolocation'
+import { useLocation } from 'libs/geolocation'
 import { useSplashScreenContext } from 'libs/splashscreen'
 import { storage } from 'libs/storage'
 import { useModal } from 'ui/components/modals/useModal'
 import { Tooltip } from 'ui/components/Tooltip'
 import { TouchableOpacity } from 'ui/components/TouchableOpacity'
 import { BicolorLocationPointer } from 'ui/svg/icons/BicolorLocationPointer'
+import { LocationPointer } from 'ui/svg/icons/LocationPointer'
 import { getSpacing, Typo } from 'ui/theme'
 
 const LOCATION_TITLE_MAX_WIDTH = getSpacing(20)
@@ -20,8 +21,11 @@ const TOOLTIP_POINTER_DISTANCE_FROM_RIGHT = getSpacing(5)
 export const LocationWidget: React.FC = () => {
   const [isTooltipVisible, setIsTooltipVisible] = React.useState(false)
   const [widgetWidth, setWidgetWidth] = React.useState<number | undefined>()
-  const { userPosition } = useGeolocation()
   const { isSplashScreenHidden } = useSplashScreenContext()
+
+  const { userPosition } = useLocation()
+  const isGeolocated = !!userPosition
+  const locationTitle = isGeolocated ? 'Ma position' : 'Me localiser'
 
   const hideTooltip = () => setIsTooltipVisible(false)
 
@@ -53,8 +57,6 @@ export const LocationWidget: React.FC = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps -- should only be called on startup
   }, [isSplashScreenHidden])
 
-  const locationTitle = 'Me localiser'
-
   const {
     visible: locationModalVisible,
     showModal: showLocationModal,
@@ -73,8 +75,8 @@ export const LocationWidget: React.FC = () => {
         onPress={showLocationModal}
         accessibilityLabel="Ouvrir la modale de localisation"
         onLayout={onWidgetLayout}>
-        <IconContainer>
-          <LocationPointer />
+        <IconContainer isActive={isGeolocated}>
+          {isGeolocated ? <LocationPointerFilled /> : <LocationPointerNotFilled />}
         </IconContainer>
         <StyledCaption numberOfLines={1}>{locationTitle}</StyledCaption>
       </StyledTouchable>
@@ -101,17 +103,22 @@ const StyledCaption = styled(Typo.Caption)({
   maxWidth: LOCATION_TITLE_MAX_WIDTH,
 })
 
-const IconContainer = styled(Animated.View)(({ theme }) => ({
+const IconContainer = styled(Animated.View)<{ isActive: boolean }>(({ theme, isActive }) => ({
   width: theme.buttons.roundedButton.size,
   height: theme.buttons.roundedButton.size,
   borderRadius: theme.buttons.roundedButton.size,
-  border: 1,
+  border: isActive ? 2 : 1,
   justifyContent: 'center',
   alignItems: 'center',
-  borderColor: theme.colors.greyDark,
+  borderColor: isActive ? theme.colors.black : theme.colors.greyDark,
 }))
 
-export const LocationPointer = styled(BicolorLocationPointer).attrs(({ theme }) => ({
+const LocationPointerFilled = styled(LocationPointer).attrs(({ theme }) => ({
+  color: theme.colors.primary,
+  size: theme.icons.sizes.small,
+}))({})
+
+const LocationPointerNotFilled = styled(BicolorLocationPointer).attrs(({ theme }) => ({
   color: theme.colors.black,
   color2: theme.colors.black,
   size: theme.icons.sizes.small,

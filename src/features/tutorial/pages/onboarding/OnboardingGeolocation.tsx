@@ -4,7 +4,7 @@ import styled from 'styled-components/native'
 
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { analytics } from 'libs/analytics'
-import { useGeolocation } from 'libs/geolocation'
+import { useLocation } from 'libs/geolocation'
 import GeolocationAnimation from 'ui/animations/geolocalisation.json'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { GenericInfoPageWhite } from 'ui/pages/GenericInfoPageWhite'
@@ -12,7 +12,7 @@ import { getSpacing, Spacer, Typo } from 'ui/theme'
 
 export const OnboardingGeolocation = () => {
   const { navigate } = useNavigation<UseNavigationType>()
-  const { requestGeolocPermission } = useGeolocation()
+  const { requestGeolocPermission } = useLocation()
 
   const onSkip = useCallback(() => {
     analytics.logOnboardingGeolocationClicked({ type: 'skipped' })

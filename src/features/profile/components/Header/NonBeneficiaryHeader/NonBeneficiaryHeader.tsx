@@ -10,7 +10,7 @@ import { SubscriptionMessageBadge } from 'features/profile/components/Badges/Sub
 import { YoungerBadge } from 'features/profile/components/Badges/YoungerBadge'
 import { EligibilityMessage } from 'features/profile/components/Header/NonBeneficiaryHeader/EligibilityMessage'
 import { formatToSlashedFrenchDate } from 'libs/dates'
-import { useGeolocation, GeolocPermissionState } from 'libs/geolocation'
+import { useLocation, GeolocPermissionState } from 'libs/geolocation'
 import { PageHeader } from 'ui/components/headers/PageHeader'
 import { BicolorUnlock } from 'ui/svg/icons/BicolorUnlock'
 import { BirthdayCake } from 'ui/svg/icons/BirthdayCake'
@@ -28,7 +28,7 @@ function NonBeneficiaryHeaderComponent({
   const today = new Date()
   const { data: subscription } = useNextSubscriptionStep()
 
-  const { permissionState } = useGeolocation()
+  const { permissionState } = useLocation()
   const isGeolocated = permissionState === GeolocPermissionState.GRANTED
   const { data } = useHomeBanner(isGeolocated)
   const homeBanner = data?.banner

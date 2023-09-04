@@ -3,7 +3,7 @@ import styled from 'styled-components/native'
 
 import { Coordinates } from 'api/gen'
 import { VenueType } from 'features/venue/components/VenueType/VenueType'
-import { GeolocPermissionState, useGeolocation } from 'libs/geolocation'
+import { GeolocPermissionState, useLocation } from 'libs/geolocation'
 import { useDistance } from 'libs/geolocation/hooks/useDistance'
 import { VenueTypeCode } from 'libs/parsers'
 import { styledButton } from 'ui/components/buttons/styledButton'
@@ -16,7 +16,7 @@ import { getSpacing, Spacer } from 'ui/theme'
 type Props = { type: VenueTypeCode | null; label: string; locationCoordinates: Coordinates }
 
 export const VenueIconCaptions: React.FC<Props> = ({ type, label, locationCoordinates }) => {
-  const { permissionState, requestGeolocPermission, showGeolocPermissionModal } = useGeolocation()
+  const { permissionState, requestGeolocPermission, showGeolocPermissionModal } = useLocation()
   const { latitude: lat, longitude: lng } = locationCoordinates
   const distanceToLocation = useDistance({ lat, lng })
 

@@ -14,7 +14,7 @@ import { useVenueSearchParameters } from 'features/venue/helpers/useVenueSearchP
 import { analytics } from 'libs/analytics'
 import { getPlaylistItemDimensionsFromLayout } from 'libs/contentful/dimensions'
 import { Layout } from 'libs/contentful/types'
-import { useGeolocation } from 'libs/geolocation'
+import { useLocation } from 'libs/geolocation'
 import { formatDates, getDisplayPrice } from 'libs/parsers'
 import { useCategoryIdMapping, useCategoryHomeLabelMapping } from 'libs/subcategories'
 import { Offer } from 'shared/offer/types'
@@ -36,7 +36,7 @@ const keyExtractor = (item: Offer) => item.objectID
 export const VenueOffers: React.FC<Props> = ({ venueId, layout = 'two-items' }) => {
   const { data: venue } = useVenue(venueId)
   const { data: venueOffers } = useVenueOffers(venueId)
-  const { userPosition: position } = useGeolocation()
+  const { userPosition: position } = useLocation()
   const params = useVenueSearchParameters(venueId)
   const route = useRoute<UseRouteType<'Offer'>>()
 

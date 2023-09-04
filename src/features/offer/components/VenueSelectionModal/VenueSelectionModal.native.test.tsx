@@ -1,7 +1,7 @@
 import React from 'react'
 
 import { VenueListItem } from 'features/offer/components/VenueSelectionList/VenueSelectionList'
-import { GeolocPermissionState, useGeolocation } from 'libs/geolocation'
+import { GeolocPermissionState, useLocation } from 'libs/geolocation'
 import {
   requestGeolocPermission,
   onPressGeolocPermissionModalButton,
@@ -12,7 +12,7 @@ import * as useModalAPI from 'ui/components/modals/useModal'
 import { VenueSelectionModal } from './VenueSelectionModal'
 
 jest.mock('libs/geolocation')
-const mockUseGeolocation = useGeolocation as jest.Mock
+const mockUseGeolocation = useLocation as jest.Mock
 
 describe('<VenueSelectionModal />', () => {
   const items: VenueListItem[] = [

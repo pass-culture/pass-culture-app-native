@@ -20,7 +20,7 @@ import { getCurrentVenuesIndex } from 'libs/algolia/fetchAlgolia/helpers/getCurr
 import { analytics } from 'libs/analytics'
 import { env } from 'libs/environment'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
-import { useGeolocation } from 'libs/geolocation'
+import { useLocation } from 'libs/geolocation'
 import { useNetInfoContext } from 'libs/network/NetInfoWrapper'
 import { OfflinePage } from 'libs/network/OfflinePage'
 import { FeatureFlag } from 'shared/FeatureFlag/FeatureFlag'
@@ -55,7 +55,7 @@ export function Search() {
   const netInfo = useNetInfoContext()
   const { params } = useRoute<UseRouteType<'Search'>>()
   const { dispatch } = useSearch()
-  const { userPosition } = useGeolocation()
+  const { userPosition } = useLocation()
 
   useEffect(() => {
     dispatch({ type: 'SET_STATE', payload: params ?? { view: SearchView.Landing } })

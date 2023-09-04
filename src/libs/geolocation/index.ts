@@ -1,16 +1,16 @@
 import { checkGeolocPermission } from './checkGeolocPermission'
 import { GEOLOCATION_USER_ERROR_MESSAGE, GeolocPermissionState, GeolocPositionError } from './enums'
-import { useGeolocation, GeolocationWrapper } from './GeolocationWrapper'
+import { useLocation, LocationWrapper } from './LocationWrapper'
 import { requestGeolocPermission } from './requestGeolocPermission'
-import { GeoCoordinates, GeolocationError, IGeolocationContext, Position } from './types'
+import { GeoCoordinates, GeolocationError, ILocationContext, Position } from './types'
 
 export {
-  useGeolocation,
-  GeolocationWrapper,
+  useLocation,
+  LocationWrapper,
   requestGeolocPermission,
   checkGeolocPermission,
   GEOLOCATION_USER_ERROR_MESSAGE,
   GeolocPermissionState,
   GeolocPositionError,
 }
-export type { GeoCoordinates, GeolocationError, IGeolocationContext, Position }
+export type { GeoCoordinates, GeolocationError, ILocationContext, Position }
