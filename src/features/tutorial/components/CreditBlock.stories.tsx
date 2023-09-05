@@ -75,7 +75,7 @@ withDescription.args = {
     <React.Fragment>
       <Typo.Title3>300&nbsp;€</Typo.Title3>
       <Spacer.Column numberOfSpaces={2} />
-      <StyledBody>'Tu auras 2 ans pour utiliser tes 300\u00a0€'</StyledBody>
+      <StyledBody>Tu auras 2 ans pour utiliser tes 300\u00a0€</StyledBody>
     </React.Fragment>
   ),
   age: 18,
