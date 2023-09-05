@@ -12,7 +12,7 @@ describe('ButtonInsideText Component', () => {
   describe('* Icon property', () => {
     it('should not display icon when not provided', () => {
       render(<ButtonInsideText wording={wording} />)
-      expect(screen.queryByTestId('button-icon')).toBeFalsy()
+      expect(screen.queryByTestId('button-icon')).not.toBeInTheDocument()
     })
     it('should display icon when provided', () => {
       render(<ButtonInsideText wording={wording} icon={ExternalSiteFilled} />)

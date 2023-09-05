@@ -29,6 +29,6 @@ describe('InputError Component', () => {
     )
 
     const text = screen.queryByText('message')
-    expect(text).toBeFalsy()
+    expect(text).not.toBeInTheDocument()
   })
 })

@@ -48,7 +48,7 @@ describe('<RootNavigator />', () => {
     renderRootNavigator()
     await act(async () => {}) // Warning: An update to BicolorFavoriteCount inside a test was not wrapped in act(...).
     const privacyPolicyTitle = screen.queryByText('Respect de ta vie privée')
-    expect(privacyPolicyTitle).toBeFalsy()
+    expect(privacyPolicyTitle).not.toBeInTheDocument()
   })
 
   it('should display PrivacyPolicy if splash screen is hidden', async () => {

@@ -60,7 +60,7 @@ describe('FavoritesResults component', () => {
     const sortByButton = screen.queryByText('Trier')
 
     expect(button).toBeInTheDocument()
-    expect(sortByButton).toBeFalsy()
+    expect(sortByButton).not.toBeInTheDocument()
   })
 
   it('should show favorite placeholder on init', async () => {
