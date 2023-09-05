@@ -291,6 +291,9 @@ interface BusinessFields {
   image: Image
   url?: string
   targetNotConnectedUsersOnly?: boolean
+  latitude?: number
+  longitude?: number
+  radius?: number
 }
 
 // Taken from https://app.contentful.com/spaces/2bg01iqy0isv/content_types/exclusivity/fields

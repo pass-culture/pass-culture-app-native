@@ -1,6 +1,6 @@
 import React, { memo } from 'react'
 
-import { BusinessModule } from 'features/home/components/modules/BusinessModule'
+import { BusinessModule } from 'features/home/components/modules/business/BusinessModule'
 import { CategoryListModule } from 'features/home/components/modules/categories/CategoryListModule'
 import { ExclusivityModule } from 'features/home/components/modules/exclusivity/ExclusivityModule'
 import { HighlightOfferModule } from 'features/home/components/modules/HighlightOfferModule'

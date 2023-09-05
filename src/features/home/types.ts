@@ -129,6 +129,13 @@ export type BusinessModule = {
   leftIcon?: string
   url?: string
   shouldTargetNotConnectedUsers?: boolean
+  localizationArea?: LocationCircleArea
+}
+
+export type LocationCircleArea = {
+  latitude: number
+  longitude: number
+  radius: number
 }
 
 export type ExclusivityModule = {
