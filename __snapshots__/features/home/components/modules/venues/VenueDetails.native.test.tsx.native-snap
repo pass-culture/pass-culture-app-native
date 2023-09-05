@@ -50,7 +50,9 @@ exports[`VenueDetails component should render correctly 1`] = `
           },
         ]
       }
-    />
+    >
+      Paris, 75000
+    </Text>
   </View>
 </View>
 `;
