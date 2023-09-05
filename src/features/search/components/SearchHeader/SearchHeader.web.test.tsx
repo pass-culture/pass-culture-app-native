@@ -31,7 +31,7 @@ describe('SearchHeader component', () => {
       render(<SearchHeader searchInputID={searchInputID} />)
       await act(async () => {})
 
-      expect(await screen.findByText('Recherche par mots-clés')).toBeTruthy()
+      expect(await screen.findByText('Recherche par mots-clés')).toBeInTheDocument()
     }
   )
 

@@ -30,7 +30,7 @@ describe('<LocationModal/>', () => {
       const header = screen.queryByTestId('pageHeader')
 
       await waitFor(() => {
-        expect(header).toBeTruthy()
+        expect(header).toBeInTheDocument()
       })
     })
 

@@ -93,7 +93,7 @@ describe('<HomeModule />', () => {
       const { container } = renderHomeModule(highlightOfferModuleFixture)
 
       await act(async () => {
-        expect(screen.getByText(highlightOfferModuleFixture.highlightTitle)).toBeTruthy()
+        expect(screen.getByText(highlightOfferModuleFixture.highlightTitle)).toBeInTheDocument()
       })
 
       const results = await checkAccessibilityFor(container)
@@ -103,7 +103,7 @@ describe('<HomeModule />', () => {
     it('Business module should not have basic accessibility issues', async () => {
       const { container } = renderHomeModule(formattedBusinessModule)
 
-      expect(screen.getByText('Débloque ton crédit !')).toBeTruthy()
+      expect(screen.getByText('Débloque ton crédit !')).toBeInTheDocument()
 
       const results = await checkAccessibilityFor(container)
       expect(results).toHaveNoViolations()
@@ -112,7 +112,7 @@ describe('<HomeModule />', () => {
     it('CategoryList module should not have basic accessibility issues', async () => {
       const { container } = renderHomeModule(formattedCategoryListModule)
 
-      expect(await screen.findByText('Cette semaine sur le pass')).toBeTruthy()
+      expect(await screen.findByText('Cette semaine sur le pass')).toBeInTheDocument()
 
       const results = await checkAccessibilityFor(container)
       expect(results).toHaveNoViolations()
@@ -141,7 +141,7 @@ describe('<HomeModule />', () => {
 
       const { container } = renderHomeModule(formattedRecommendedOffersModule)
       await act(async () => {})
-      expect(screen.getByText('Tes évènements en ligne')).toBeTruthy()
+      expect(screen.getByText('Tes évènements en ligne')).toBeInTheDocument()
 
       let results
       await act(async () => {
@@ -156,7 +156,7 @@ describe('<HomeModule />', () => {
       const { container } = renderHomeModule(formattedThematicHighlightModule)
 
       await act(async () => {})
-      expect(screen.getByText('Temps très fort')).toBeTruthy()
+      expect(screen.getByText('Temps très fort')).toBeInTheDocument()
 
       const results = await checkAccessibilityFor(container)
       expect(results).toHaveNoViolations()
@@ -166,7 +166,7 @@ describe('<HomeModule />', () => {
       const { container } = renderHomeModule(formattedOffersModule, defaultData)
 
       await act(async () => {})
-      expect(screen.getByText('La nuit des temps')).toBeTruthy()
+      expect(screen.getByText('La nuit des temps')).toBeInTheDocument()
 
       let results
       await act(async () => {

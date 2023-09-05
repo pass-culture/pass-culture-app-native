@@ -30,7 +30,7 @@ describe('<SearchFilter/>', () => {
     await act(async () => {}) // fixes 3 warnings "An update to %s inside a test was not wrapped in act" for LocationModal, PriceModal and DatesHoursModal
 
     await waitFor(() => {
-      expect(screen.getByTestId('Revenir en arrière')).toBeTruthy()
+      expect(screen.getByTestId('Revenir en arrière')).toBeInTheDocument()
     })
   })
 
