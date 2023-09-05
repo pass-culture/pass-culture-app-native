@@ -133,9 +133,9 @@ export type BusinessModule = {
 }
 
 export type LocationCircleArea = {
-  latitude?: number
-  longitude?: number
-  radius?: number
+  latitude: number
+  longitude: number
+  radius: number
 }
 
 export type ExclusivityModule = {

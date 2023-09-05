@@ -1,5 +1,6 @@
 import { BusinessModule, HomepageModuleType } from 'features/home/types'
 import { buildImageUrl } from 'libs/contentful/adapters/helpers/buildImageUrl'
+import { buildLocalization } from 'libs/contentful/adapters/modules/helpers/buildLocalization'
 import { BusinessContentModel } from 'libs/contentful/types'
 
 export const adaptBusinessModule = (module: BusinessContentModel): BusinessModule | null => {
@@ -7,6 +8,11 @@ export const adaptBusinessModule = (module: BusinessContentModel): BusinessModul
   if (module.fields?.image.fields === undefined) return null
 
   const leftIcon = buildImageUrl(module.fields.leftIcon?.fields?.file.url)
+  const localizationArea = buildLocalization(
+    module.fields.latitude,
+    module.fields.longitude,
+    module.fields.radius
+  )
   return {
     type: HomepageModuleType.BusinessModule,
     id: module.sys.id,
@@ -17,10 +23,6 @@ export const adaptBusinessModule = (module: BusinessContentModel): BusinessModul
     leftIcon,
     url: module.fields.url,
     shouldTargetNotConnectedUsers: module.fields.targetNotConnectedUsersOnly,
-    localizationArea: {
-      latitude: module.fields.latitude,
-      longitude: module.fields.longitude,
-      radius: module.fields.radius,
-    },
+    localizationArea,
   }
 }
