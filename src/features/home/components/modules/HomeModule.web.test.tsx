@@ -80,7 +80,7 @@ describe('<HomeModule />', () => {
 
       // we need to use findAllByLabelText because 'Week-end FRAC' is assigned twice
       // in alt property for image and touchable link
-      expect(await screen.findAllByLabelText('Week-end FRAC')).toBeTruthy()
+      expect(await screen.findAllByLabelText('Week-end FRAC')).not.toHaveLength(0)
 
       const results = await checkAccessibilityFor(container)
       expect(results).toHaveNoViolations()
