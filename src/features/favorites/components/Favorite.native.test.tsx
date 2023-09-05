@@ -4,7 +4,7 @@ import { Share } from 'react-native'
 
 import { navigate } from '__mocks__/@react-navigation/native'
 import { api } from 'api/api'
-import { ExpenseDomain, FavoriteResponse, UserProfileResponse } from 'api/gen'
+import { ExpenseDomain, FavoriteResponse, UserProfileResponse, YoungStatusType } from 'api/gen'
 import { initialFavoritesState } from 'features/favorites/context/reducer'
 import { favoriteResponseSnap as favorite } from 'features/favorites/fixtures/favoriteResponseSnap'
 import { analytics } from 'libs/analytics'
@@ -32,6 +32,9 @@ const user: UserProfileResponse = {
   isBeneficiary: true,
   bookedOffers: {},
   domainsCredit: { [ExpenseDomain.all]: { initial: 500, remaining: 300 } },
+  status: {
+    statusType: YoungStatusType.beneficiary,
+  },
 } as UserProfileResponse
 const onInAppBooking = jest.fn()
 
