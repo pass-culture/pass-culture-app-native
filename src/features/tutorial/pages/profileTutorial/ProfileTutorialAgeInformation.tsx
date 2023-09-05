@@ -41,15 +41,6 @@ export const ProfileTutorialAgeInformation: FunctionComponent<Props> = ({ select
 
   const headerTitle = isLoggedIn ? 'Comment ça marche\u00a0?' : `Le pass Culture à ${age} ans`
 
-  const Timeline = () => {
-    switch (age) {
-      case 15:
-        return <TutorialTimelineFifteen />
-      default:
-        return null
-    }
-  }
-
   return (
     <React.Fragment>
       <StyledScrollView onScroll={onScroll} scrollEventThrottle={16}>
@@ -62,7 +53,7 @@ export const ProfileTutorialAgeInformation: FunctionComponent<Props> = ({ select
         {/* À supprimer lors de la vraie implémentation*/}
         <Typo.Body>{activationText}</Typo.Body>
         <Spacer.Column numberOfSpaces={2} />
-        <Timeline />
+        <Timeline age={age} />
         <Spacer.Column numberOfSpaces={4} />
         <InfoBanner message="Cette page a-t-elle été utile&nbsp;? Aide-nous à l’améliorer en répondant à notre questionnaire.">
           <Spacer.Column numberOfSpaces={2} />
@@ -95,6 +86,15 @@ export const ProfileTutorialAgeInformation: FunctionComponent<Props> = ({ select
       />
     </React.Fragment>
   )
+}
+
+const Timeline = ({ age }: { age: number | undefined }) => {
+  switch (age) {
+    case 15:
+      return <TutorialTimelineFifteen />
+    default:
+      return null
+  }
 }
 
 const StyledScrollView = styled.ScrollView.attrs(({ theme }) => ({
