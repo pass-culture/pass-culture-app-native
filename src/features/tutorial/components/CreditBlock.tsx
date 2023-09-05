@@ -69,8 +69,6 @@ const Container = styled.View<{
   borderRadius: getSpacing(1),
   backgroundColor: getBackgroundColor(theme, status),
   padding: getSpacing(4),
-  flexDirection: 'row',
-  alignItems: 'center',
   overflow: 'hidden',
   marginHorizontal: status !== CreditStatus.ONGOING ? getSpacing(1) : 0,
 }))

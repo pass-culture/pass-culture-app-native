@@ -210,12 +210,10 @@ exports[`<ProfileTutorialAgeInformation /> should display not logged in version 
               status="cette année"
               style={
                 {
-                  "alignItems": "center",
                   "backgroundColor": "#ffffff",
                   "borderColor": "#90949D",
                   "borderRadius": 4,
                   "borderWidth": 1,
-                  "flexDirection": "row",
                   "marginHorizontal": 0,
                   "overflow": "hidden",
                   "paddingBottom": 16,
@@ -420,9 +418,9 @@ exports[`<ProfileTutorialAgeInformation /> should display not logged in version 
                   style={
                     [
                       {
-                        "alignItems": "flex-start",
                         "flexDirection": "column",
                         "paddingLeft": 0,
+                        "width": "100%",
                       },
                     ]
                   }
@@ -441,30 +439,32 @@ exports[`<ProfileTutorialAgeInformation /> should display not logged in version 
                       style={
                         [
                           {
+                            "alignItems": "center",
                             "flexDirection": "row",
-                            "justifyContent": "center",
                           },
                         ]
                       }
                     >
                       <View
-                        height={16}
-                        width={16}
-                      >
-                        <Text>
-                          undefined-SVG-Mock
-                        </Text>
-                      </View>
-                      <View
-                        numberOfSpaces={2}
                         style={
                           [
                             {
-                              "width": 8,
+                              "height": 16,
+                              "marginRight": 8,
+                              "width": 16,
                             },
                           ]
                         }
-                      />
+                      >
+                        <View
+                          height={16}
+                          width={16}
+                        >
+                          <Text>
+                            undefined-SVG-Mock
+                          </Text>
+                        </View>
+                      </View>
                       <Text
                         style={
                           [
@@ -481,17 +481,17 @@ exports[`<ProfileTutorialAgeInformation /> should display not logged in version 
                         Tu as 1 an pour activer ton crédit.
                       </Text>
                     </View>
+                    <View
+                      numberOfSpaces={4}
+                      style={
+                        [
+                          {
+                            "height": 16,
+                          },
+                        ]
+                      }
+                    />
                   </View>
-                  <View
-                    numberOfSpaces={4}
-                    style={
-                      [
-                        {
-                          "height": 16,
-                        },
-                      ]
-                    }
-                  />
                   <View
                     accessibilityRole="none"
                     style={
@@ -506,30 +506,32 @@ exports[`<ProfileTutorialAgeInformation /> should display not logged in version 
                       style={
                         [
                           {
+                            "alignItems": "center",
                             "flexDirection": "row",
-                            "justifyContent": "center",
                           },
                         ]
                       }
                     >
                       <View
-                        height={16}
-                        width={16}
-                      >
-                        <Text>
-                          undefined-SVG-Mock
-                        </Text>
-                      </View>
-                      <View
-                        numberOfSpaces={2}
                         style={
                           [
                             {
-                              "width": 8,
+                              "height": 16,
+                              "marginRight": 8,
+                              "width": 16,
                             },
                           ]
                         }
-                      />
+                      >
+                        <View
+                          height={16}
+                          width={16}
+                        >
+                          <Text>
+                            undefined-SVG-Mock
+                          </Text>
+                        </View>
+                      </View>
                       <Text
                         style={
                           [
@@ -547,16 +549,6 @@ exports[`<ProfileTutorialAgeInformation /> should display not logged in version 
                       </Text>
                     </View>
                   </View>
-                  <View
-                    numberOfSpaces={4}
-                    style={
-                      [
-                        {
-                          "height": 16,
-                        },
-                      ]
-                    }
-                  />
                 </View>
               </View>
               <View
@@ -738,12 +730,10 @@ exports[`<ProfileTutorialAgeInformation /> should display not logged in version 
               style={
                 [
                   {
-                    "alignItems": "center",
                     "backgroundColor": "#F1F1F4",
                     "borderColor": "#F1F1F4",
                     "borderRadius": 4,
                     "borderWidth": 1,
-                    "flexDirection": "row",
                     "marginHorizontal": 4,
                     "overflow": "hidden",
                     "paddingBottom": 16,
@@ -1106,12 +1096,10 @@ exports[`<ProfileTutorialAgeInformation /> should display not logged in version 
               style={
                 [
                   {
-                    "alignItems": "center",
                     "backgroundColor": "#F1F1F4",
                     "borderColor": "#F1F1F4",
                     "borderRadius": 4,
                     "borderWidth": 1,
-                    "flexDirection": "row",
                     "marginHorizontal": 4,
                     "overflow": "hidden",
                     "paddingBottom": 16,
@@ -1636,12 +1624,10 @@ exports[`<ProfileTutorialAgeInformation /> should display not logged in version 
               style={
                 [
                   {
-                    "alignItems": "center",
                     "backgroundColor": "#F1F1F4",
                     "borderColor": "#F1F1F4",
                     "borderRadius": 4,
                     "borderWidth": 1,
-                    "flexDirection": "row",
                     "marginHorizontal": 4,
                     "overflow": "hidden",
                     "paddingBottom": 16,
@@ -1881,9 +1867,9 @@ exports[`<ProfileTutorialAgeInformation /> should display not logged in version 
                   style={
                     [
                       {
-                        "alignItems": "flex-start",
                         "flexDirection": "column",
                         "paddingLeft": 0,
+                        "width": "100%",
                       },
                     ]
                   }
@@ -1902,30 +1888,33 @@ exports[`<ProfileTutorialAgeInformation /> should display not logged in version 
                       style={
                         [
                           {
+                            "alignItems": "center",
                             "flexDirection": "row",
-                            "justifyContent": "center",
+                            "flexShrink": 1,
                           },
                         ]
                       }
                     >
                       <View
-                        height={16}
-                        width={16}
-                      >
-                        <Text>
-                          undefined-SVG-Mock
-                        </Text>
-                      </View>
-                      <View
-                        numberOfSpaces={2}
                         style={
                           [
                             {
-                              "width": 8,
+                              "height": 16,
+                              "marginRight": 8,
+                              "width": 16,
                             },
                           ]
                         }
-                      />
+                      >
+                        <View
+                          height={16}
+                          width={16}
+                        >
+                          <Text>
+                            undefined-SVG-Mock
+                          </Text>
+                        </View>
+                      </View>
                       <Text
                         style={
                           [
@@ -1942,17 +1931,17 @@ exports[`<ProfileTutorialAgeInformation /> should display not logged in version 
                         Tu as 1 an pour confirmer ton identité et activer ce crédit.
                       </Text>
                     </View>
+                    <View
+                      numberOfSpaces={4}
+                      style={
+                        [
+                          {
+                            "height": 16,
+                          },
+                        ]
+                      }
+                    />
                   </View>
-                  <View
-                    numberOfSpaces={4}
-                    style={
-                      [
-                        {
-                          "height": 16,
-                        },
-                      ]
-                    }
-                  />
                   <View
                     accessibilityRole="none"
                     style={
@@ -1967,30 +1956,33 @@ exports[`<ProfileTutorialAgeInformation /> should display not logged in version 
                       style={
                         [
                           {
+                            "alignItems": "center",
                             "flexDirection": "row",
-                            "justifyContent": "center",
+                            "flexShrink": 1,
                           },
                         ]
                       }
                     >
                       <View
-                        height={16}
-                        width={16}
-                      >
-                        <Text>
-                          undefined-SVG-Mock
-                        </Text>
-                      </View>
-                      <View
-                        numberOfSpaces={2}
                         style={
                           [
                             {
-                              "width": 8,
+                              "height": 16,
+                              "marginRight": 8,
+                              "width": 16,
                             },
                           ]
                         }
-                      />
+                      >
+                        <View
+                          height={16}
+                          width={16}
+                        >
+                          <Text>
+                            undefined-SVG-Mock
+                          </Text>
+                        </View>
+                      </View>
                       <Text
                         style={
                           [
@@ -2007,17 +1999,17 @@ exports[`<ProfileTutorialAgeInformation /> should display not logged in version 
                         Après activation, tu as 2 ans pour dépenser ton crédit.
                       </Text>
                     </View>
+                    <View
+                      numberOfSpaces={4}
+                      style={
+                        [
+                          {
+                            "height": 16,
+                          },
+                        ]
+                      }
+                    />
                   </View>
-                  <View
-                    numberOfSpaces={4}
-                    style={
-                      [
-                        {
-                          "height": 16,
-                        },
-                      ]
-                    }
-                  />
                   <View
                     accessibilityRole="none"
                     style={
@@ -2032,30 +2024,33 @@ exports[`<ProfileTutorialAgeInformation /> should display not logged in version 
                       style={
                         [
                           {
+                            "alignItems": "center",
                             "flexDirection": "row",
-                            "justifyContent": "center",
+                            "flexShrink": 1,
                           },
                         ]
                       }
                     >
                       <View
-                        height={16}
-                        width={16}
-                      >
-                        <Text>
-                          undefined-SVG-Mock
-                        </Text>
-                      </View>
-                      <View
-                        numberOfSpaces={2}
                         style={
                           [
                             {
-                              "width": 8,
+                              "height": 16,
+                              "marginRight": 8,
+                              "width": 16,
                             },
                           ]
                         }
-                      />
+                      >
+                        <View
+                          height={16}
+                          width={16}
+                        >
+                          <Text>
+                            undefined-SVG-Mock
+                          </Text>
+                        </View>
+                      </View>
                       <Text
                         style={
                           [
