@@ -868,14 +868,15 @@ exports[`<ProfileTutorialAgeInformation /> should display not logged in version 
                     style={
                       [
                         {
+                          "borderColor": "#ffffff",
                           "borderRadius": 8,
-                          "height": 8,
+                          "borderWidth": 2,
+                          "height": 12,
                           "left": 0,
-                          "outlineColor": "#ffffff",
-                          "outlineStyle": "solid",
-                          "outlineWidth": 2,
                           "position": "absolute",
+                          "top": -2,
                           "width": "33.333333333333336%",
+                          "zIndex": 1,
                         },
                       ]
                     }
@@ -885,14 +886,15 @@ exports[`<ProfileTutorialAgeInformation /> should display not logged in version 
                     style={
                       [
                         {
+                          "borderColor": "#ffffff",
                           "borderRadius": 8,
-                          "height": 8,
+                          "borderWidth": 2,
+                          "height": 12,
                           "left": 0,
-                          "outlineColor": "#ffffff",
-                          "outlineStyle": "solid",
-                          "outlineWidth": 2,
                           "position": "absolute",
+                          "top": -2,
                           "width": "66.66666666666667%",
+                          "zIndex": 1,
                         },
                       ]
                     }
@@ -902,14 +904,15 @@ exports[`<ProfileTutorialAgeInformation /> should display not logged in version 
                     style={
                       [
                         {
+                          "borderColor": "#ffffff",
                           "borderRadius": 8,
-                          "height": 8,
+                          "borderWidth": 2,
+                          "height": 12,
                           "left": 0,
-                          "outlineColor": "#ffffff",
-                          "outlineStyle": "solid",
-                          "outlineWidth": 2,
                           "position": "absolute",
+                          "top": -2,
                           "width": "100%",
+                          "zIndex": 1,
                         },
                       ]
                     }
@@ -1234,14 +1237,15 @@ exports[`<ProfileTutorialAgeInformation /> should display not logged in version 
                     style={
                       [
                         {
+                          "borderColor": "#ffffff",
                           "borderRadius": 8,
-                          "height": 8,
+                          "borderWidth": 2,
+                          "height": 12,
                           "left": 0,
-                          "outlineColor": "#ffffff",
-                          "outlineStyle": "solid",
-                          "outlineWidth": 2,
                           "position": "absolute",
+                          "top": -2,
                           "width": "33.333333333333336%",
+                          "zIndex": 1,
                         },
                       ]
                     }
@@ -1251,14 +1255,15 @@ exports[`<ProfileTutorialAgeInformation /> should display not logged in version 
                     style={
                       [
                         {
+                          "borderColor": "#ffffff",
                           "borderRadius": 8,
-                          "height": 8,
+                          "borderWidth": 2,
+                          "height": 12,
                           "left": 0,
-                          "outlineColor": "#ffffff",
-                          "outlineStyle": "solid",
-                          "outlineWidth": 2,
                           "position": "absolute",
+                          "top": -2,
                           "width": "66.66666666666667%",
+                          "zIndex": 1,
                         },
                       ]
                     }
@@ -1268,14 +1273,15 @@ exports[`<ProfileTutorialAgeInformation /> should display not logged in version 
                     style={
                       [
                         {
+                          "borderColor": "#ffffff",
                           "borderRadius": 8,
-                          "height": 8,
+                          "borderWidth": 2,
+                          "height": 12,
                           "left": 0,
-                          "outlineColor": "#ffffff",
-                          "outlineStyle": "solid",
-                          "outlineWidth": 2,
                           "position": "absolute",
+                          "top": -2,
                           "width": "100%",
+                          "zIndex": 1,
                         },
                       ]
                     }
