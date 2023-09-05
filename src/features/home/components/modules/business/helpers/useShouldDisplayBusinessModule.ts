@@ -1,6 +1,6 @@
+import { getLocalizationCompliance } from 'features/home/components/modules/business/helpers/getLocalizationCompliance'
 import { useHomePosition } from 'features/home/helpers/useHomePosition'
 import { LocationCircleArea } from 'features/home/types'
-import { computeDistanceInMeters } from 'libs/parsers'
 
 export function useShouldDisplayBusinessModule(
   targetNotConnectedUsersOnly: boolean | undefined,
@@ -9,26 +9,8 @@ export function useShouldDisplayBusinessModule(
 ) {
   const { position: userPosition } = useHomePosition()
 
-  // Target localized users if module is localized (i.e. : latitude, longitude and radius are given in Contentful)
-  let isLocalizationCompliant = true
-  if (
-    !!moduleLocationArea &&
-    !!moduleLocationArea.latitude &&
-    !!moduleLocationArea.longitude &&
-    !!moduleLocationArea.radius
-  ) {
-    if (userPosition) {
-      const distance = computeDistanceInMeters(
-        moduleLocationArea.latitude,
-        moduleLocationArea.longitude,
-        userPosition.latitude,
-        userPosition.longitude
-      )
-      isLocalizationCompliant = distance <= moduleLocationArea.radius * 1000
-    } else {
-      isLocalizationCompliant = false
-    }
-  }
+  // Target localized users if module is localized (i.e.: latitude, longitude and radius are given in Contentful)
+  const isLocalizationCompliant = getLocalizationCompliance(moduleLocationArea, userPosition)
 
   // Target both type of users
   if (targetNotConnectedUsersOnly === undefined && isLocalizationCompliant) return true
