@@ -7,6 +7,7 @@ import { AuthWrapper } from 'features/auth/context/AuthContext'
 import { Profile } from 'features/profile/pages/Profile'
 import { beneficiaryUser } from 'fixtures/user'
 import { env } from 'libs/environment'
+import { decodedTokenWithRemainingLifetime } from 'libs/jwt/fixtures'
 import { storage } from 'libs/storage'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { server } from 'tests/server'
@@ -19,15 +20,6 @@ server.use(
   )
 )
 
-const tokenRemainingLifetimeInMs = 10 * 60 * 1000
-const decodedTokenWithRemainingLifetime = {
-  exp: (new Date().getTime() + tokenRemainingLifetimeInMs) / 1000,
-  iat: 1691670780,
-  jti: '7f82c8b0-6222-42be-b913-cdf53958f17d',
-  sub: 'bene_18@example.com',
-  nbf: 1691670780,
-  user_claims: { user_id: 1234 },
-}
 jest.unmock('libs/jwt')
 jest.spyOn(jwt, 'default').mockReturnValue(decodedTokenWithRemainingLifetime)
 

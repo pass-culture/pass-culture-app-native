@@ -10,6 +10,7 @@ import { beneficiaryUser, nonBeneficiaryUser } from 'fixtures/user'
 // eslint-disable-next-line no-restricted-imports
 import { amplitude } from 'libs/amplitude'
 import { env } from 'libs/environment'
+import { decodedTokenWithRemainingLifetime, tokenRemainingLifetimeInMs } from 'libs/jwt/fixtures'
 import { saveRefreshToken, clearRefreshToken } from 'libs/keychain'
 import { eventMonitoring } from 'libs/monitoring'
 import { NetInfoWrapper } from 'libs/network/NetInfoWrapper'
@@ -28,20 +29,8 @@ jest.unmock('libs/network/NetInfoWrapper')
 const mockedUseNetInfo = useNetInfo as jest.Mock
 
 const MAX_AVERAGE_SESSION_DURATION_IN_MS = 60 * 60 * 1000
-const tokenRemainingLifetimeInMs = 10 * 60 * 1000
-const defaultDecodedToken = {
-  iat: 1691670780,
-  jti: '7f82c8b0-6222-42be-b913-cdf53958f17d',
-  sub: 'bene_18@example.com',
-  nbf: 1691670780,
-  user_claims: { user_id: 1234 },
-}
 const tokenExpirationDate = (CURRENT_DATE.getTime() + tokenRemainingLifetimeInMs) / 1000
-const decodedTokenWithRemainingLifetime = {
-  ...defaultDecodedToken,
-  exp: tokenExpirationDate,
-}
-const decodeTokenSpy = jest.spyOn(jwt, 'default').mockReturnValue(decodedTokenWithRemainingLifetime)
+const decodeTokenSpy = jest.spyOn(jwt, 'default')
 
 jest.useFakeTimers({ legacyFakeTimers: true })
 
@@ -52,7 +41,7 @@ describe('AuthContext', () => {
     await clearRefreshToken()
     await storage.clear(QueryKeys.USER_PROFILE as unknown as StorageKey)
     decodeTokenSpy.mockReturnValue({
-      ...defaultDecodedToken,
+      ...decodedTokenWithRemainingLifetime,
       exp: tokenExpirationDate,
     })
   })

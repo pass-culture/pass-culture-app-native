@@ -5,6 +5,7 @@ import { AuthWrapper } from 'features/auth/context/AuthContext'
 import { paginatedFavoritesResponseSnap } from 'features/favorites/fixtures/paginatedFavoritesResponseSnap'
 import { simulateBackend } from 'features/favorites/helpers/simulateBackend'
 import { Favorites } from 'features/favorites/pages/Favorites'
+import { decodedTokenWithRemainingLifetime } from 'libs/jwt/fixtures'
 import { storage } from 'libs/storage'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { measurePerformance, screen } from 'tests/utils'
@@ -24,15 +25,6 @@ offerIds.map((offerId) => {
   })
 })
 
-const tokenRemainingLifetimeInMs = 10 * 60 * 1000
-const decodedTokenWithRemainingLifetime = {
-  exp: (Date.now() + tokenRemainingLifetimeInMs) / 1000,
-  iat: 1691670780,
-  jti: '7f82c8b0-6222-42be-b913-cdf53958f17d',
-  sub: 'bene_18@example.com',
-  nbf: 1691670780,
-  user_claims: { user_id: 1234 },
-}
 jest.unmock('libs/jwt')
 jest.spyOn(jwt, 'default').mockReturnValue(decodedTokenWithRemainingLifetime)
 
