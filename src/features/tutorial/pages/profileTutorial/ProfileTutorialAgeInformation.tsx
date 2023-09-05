@@ -87,7 +87,6 @@ export const ProfileTutorialAgeInformation: FunctionComponent<Props> = ({ select
             <StyledLoginButton />
           </Container>
         ) : null}
-        <Placeholder height={2000} />
       </StyledScrollView>
       <AnimatedBlurHeaderTitle
         headerTitle={headerTitle}
