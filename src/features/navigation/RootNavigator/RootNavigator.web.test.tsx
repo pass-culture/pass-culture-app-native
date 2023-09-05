@@ -77,7 +77,7 @@ describe('<RootNavigator />', () => {
     await screen.findByText('Respect de ta vie privée')
 
     const quickAccessButton = screen.queryByText('Accéder au menu de navigation')
-    expect(quickAccessButton).toBeNull()
+    expect(quickAccessButton).not.toBeInTheDocument()
   })
 })
 

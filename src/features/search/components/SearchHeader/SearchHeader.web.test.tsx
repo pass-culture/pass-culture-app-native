@@ -60,7 +60,7 @@ describe('SearchHeader component', () => {
     await act(async () => {})
 
     await waitFor(() => {
-      expect(screen.queryByText('Recherche par mots-clés')).toBeNull()
+      expect(screen.queryByText('Recherche par mots-clés')).not.toBeInTheDocument()
     })
   })
 

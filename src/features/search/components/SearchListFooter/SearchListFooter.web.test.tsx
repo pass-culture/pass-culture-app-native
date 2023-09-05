@@ -17,7 +17,7 @@ describe('SearchListFooter', () => {
   it('should render without "Afficher plus de résultats" button when autoScrollEnabled is true', () => {
     render(<SearchListFooter {...defaultProps} autoScrollEnabled />)
 
-    expect(screen.queryByText('Afficher plus de résultats')).toBeNull()
+    expect(screen.queryByText('Afficher plus de résultats')).not.toBeInTheDocument()
   })
 
   it('should render with "Afficher plus de résultats" button when autoScrollEnabled is false and hits are less than nbHits', () => {
@@ -58,7 +58,7 @@ describe('SearchListFooter', () => {
 
     render(<SearchListFooter {...props} />)
 
-    expect(screen.queryByText('Afficher plus de résultats')).toBeNull()
+    expect(screen.queryByText('Afficher plus de résultats')).not.toBeInTheDocument()
   })
 
   it('should render the activity indicator and footer when isFetchingNextPage is true and hits are less than nbHits', () => {
@@ -83,6 +83,6 @@ describe('SearchListFooter', () => {
 
     render(<SearchListFooter {...props} />)
 
-    expect(screen.queryByTestId('activity-indicator')).toBeNull()
+    expect(screen.queryByTestId('activity-indicator')).not.toBeInTheDocument()
   })
 })
