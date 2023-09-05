@@ -1,11 +1,11 @@
 import mockdate from 'mockdate'
 
 import { OfferResponse, YoungStatusType, SubscriptionStatus, SearchGroupNameEnumv2 } from 'api/gen'
-import { OfferModal } from 'features/offer/enums'
 import { offerResponseSnap as baseOffer } from 'features/offer/fixtures/offerResponse'
 import { analytics } from 'libs/analytics'
 import { placeholderData } from 'libs/subcategories/placeholderData'
 import { Subcategory } from 'libs/subcategories/types'
+import { OfferModal } from 'shared/offer/enums'
 
 import { getCtaWordingAndAction } from './useCtaWordingAndAction'
 
