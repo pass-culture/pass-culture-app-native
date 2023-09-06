@@ -64,7 +64,7 @@ describe('GenericHome', () => {
     })
 
     afterAll(() => {
-      useShowSkeletonSpy.mockReset()
+      useShowSkeletonSpy.mockReturnValue(false)
     })
 
     it('should finish home global transaction when skeleton not display', async () => {
