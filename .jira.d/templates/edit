@@ -12,3 +12,7 @@ update:
   customfield_10060: # commit hash
     - set: "{{ .overrides.customfield_10060 }}"
   {{- end -}}
+  {{if .overrides.customfield_10085 }}
+  customfield_10085: # repository
+    - set: "{{ .overrides.customfield_10085 }}"
+  {{- end -}}
