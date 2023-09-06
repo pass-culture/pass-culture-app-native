@@ -39,7 +39,7 @@ describe('<OfferCategoryChoices />', () => {
     mockData = { ...mockData, searchGroups: [] }
     const onChange = jest.fn()
     render(<OfferCategoryChoices onChange={onChange} />)
-    expect(screen.queryByText('Arts & loisirs créatifs')).toBeFalsy()
-    expect(screen.queryByText('Conférences & rencontres')).toBeFalsy()
+    expect(screen.queryByText('Arts & loisirs créatifs')).not.toBeOnTheScreen()
+    expect(screen.queryByText('Conférences & rencontres')).not.toBeOnTheScreen()
   })
 })

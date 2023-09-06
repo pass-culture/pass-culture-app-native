@@ -154,10 +154,10 @@ describe('<BookingOfferModalComponent />', () => {
   it('should show AlreadyBooked when isEndedUsedBooking is true', () => {
     const offerId = 30
     render(<BookingOfferModalComponent visible offerId={offerId} isEndedUsedBooking />)
-    expect(screen.queryByText('Tu as déjà réservé :')).toBeTruthy()
+    expect(screen.queryByText('Tu as déjà réservé :')).toBeOnTheScreen()
     expect(
       screen.queryByTestId(`Nouvelle fenêtre : Pourquoi limiter les réservations\u00a0?`)
-    ).toBeTruthy()
+    ).toBeOnTheScreen()
   })
 
   describe('when offer is duo', () => {
@@ -222,12 +222,12 @@ describe('<BookingOfferModalComponent />', () => {
 
   it('should display modal without prices by categories', () => {
     render(<BookingOfferModalComponent visible offerId={20} />)
-    expect(screen.getByTestId('modalWithoutPricesByCategories')).toBeTruthy()
+    expect(screen.getByTestId('modalWithoutPricesByCategories')).toBeOnTheScreen()
   })
 
   it('should not display modal with prices by categories', () => {
     render(<BookingOfferModalComponent visible offerId={20} />)
-    expect(screen.queryByTestId('modalWithPricesByCategories')).toBeNull()
+    expect(screen.queryByTestId('modalWithPricesByCategories')).not.toBeOnTheScreen()
   })
 
   describe('when prices by categories feature flag activated', () => {
@@ -255,12 +255,12 @@ describe('<BookingOfferModalComponent />', () => {
     it('should display modal with prices by categories', () => {
       mockUseOffer.mockReturnValueOnce({ data: { ...mockOffer, stocks: mockStocks } })
       render(<BookingOfferModalComponent visible offerId={20} />)
-      expect(screen.getByTestId('modalWithPricesByCategories')).toBeTruthy()
+      expect(screen.getByTestId('modalWithPricesByCategories')).toBeOnTheScreen()
     })
 
     it('should not display modal without prices by categories', () => {
       render(<BookingOfferModalComponent visible offerId={20} />)
-      expect(screen.queryByTestId('modalWithoutPricesByCategories')).toBeNull()
+      expect(screen.queryByTestId('modalWithoutPricesByCategories')).not.toBeOnTheScreen()
     })
   })
 

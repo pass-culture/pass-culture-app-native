@@ -1,7 +1,7 @@
 import React from 'react'
 
 import { analytics } from 'libs/analytics'
-import { useGeolocation } from 'libs/geolocation'
+import { useLocation } from 'libs/geolocation'
 import GeolocationAnimation from 'ui/animations/geolocalisation.json'
 import {
   AchievementCardKeyProps,
@@ -9,7 +9,7 @@ import {
 } from 'ui/components/achievements/components/GenericAchievementCard/GenericAchievementCard'
 
 export function ThirdCard(props: AchievementCardKeyProps) {
-  const { requestGeolocPermission } = useGeolocation()
+  const { requestGeolocPermission } = useLocation()
 
   async function onGeolocationButtonPress() {
     await requestGeolocPermission({

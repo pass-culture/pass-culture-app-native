@@ -33,7 +33,7 @@ describe('Category component', () => {
     mockSearchState = { ...initialSearchState, offerCategories: [SearchGroupNameEnumv2.LIVRES] }
     const { getByText } = render(<Category />)
 
-    expect(getByText('Livres')).toBeTruthy()
+    expect(getByText('Livres')).toBeOnTheScreen()
   })
 
   it('should display selected native category', () => {
@@ -44,7 +44,7 @@ describe('Category component', () => {
     }
     const { getByText } = render(<Category />)
 
-    expect(getByText('Livres papier')).toBeTruthy()
+    expect(getByText('Livres papier')).toBeOnTheScreen()
   })
 
   it('should display selected genre', () => {
@@ -58,7 +58,7 @@ describe('Category component', () => {
     }
     const { getByText } = render(<Category />)
 
-    expect(getByText('Livres papier - Bandes dessinées')).toBeTruthy()
+    expect(getByText('Livres papier - Bandes dessinées')).toBeOnTheScreen()
   })
 
   it('should open the categories filter modal when clicking on the category button', async () => {
@@ -71,6 +71,6 @@ describe('Category component', () => {
 
     const fullscreenModalScrollView = getByTestId('fullscreenModalScrollView')
 
-    expect(fullscreenModalScrollView).toBeTruthy()
+    expect(fullscreenModalScrollView).toBeOnTheScreen()
   })
 })

@@ -11,7 +11,7 @@ interface LocationModalButtonProps {
   icon: FunctionComponent<IconInterface>
   color?: ColorsEnum
   title: string
-  subtitle: string
+  subtitle?: string
   onPress: () => void
 }
 
@@ -29,8 +29,12 @@ export const LocationModalButton = ({
         <Spacer.Row numberOfSpaces={2} />
         <StyledButtonText color={color}>{title}</StyledButtonText>
       </TopContainer>
-      <Spacer.Column numberOfSpaces={1} />
-      <StyledCaption>{subtitle}</StyledCaption>
+      {!!subtitle && (
+        <React.Fragment>
+          <Spacer.Column numberOfSpaces={1} />
+          <StyledCaption>{subtitle}</StyledCaption>
+        </React.Fragment>
+      )}
     </StyledTouchableOpacity>
   )
 }

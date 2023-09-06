@@ -83,6 +83,7 @@ export const homepageList: Homepage[] = [
         title: 'Donne ton avis...',
         type: HomepageModuleType.BusinessModule,
         url: 'https://passculture.typeform.com/to/PYl2WwKC?email={email}',
+        localizationArea: undefined,
       },
       {
         analyticsTitle: 'FAQ pass Culture',
@@ -95,6 +96,7 @@ export const homepageList: Homepage[] = [
         title: 'En savoir plus sur le pass Culture',
         type: HomepageModuleType.BusinessModule,
         url: 'https://passculture.zendesk.com/hc/fr/',
+        localizationArea: undefined,
       },
       {
         analyticsTitle: 'Crée un compte\u00a0!',
@@ -107,6 +109,7 @@ export const homepageList: Homepage[] = [
         title: 'Crée un compte\u00a0!',
         type: HomepageModuleType.BusinessModule,
         url: 'https://passculture.zendesk.com/hc/fr/',
+        localizationArea: undefined,
       },
       {
         cover: undefined,
@@ -172,6 +175,7 @@ export const homepageList: Homepage[] = [
         subtitle: 'Consulte notre FAQ\u00a0!',
         url: 'https://passculture.zendesk.com/hc/fr/',
         shouldTargetNotConnectedUsers: true,
+        localizationArea: undefined,
       },
     ],
     thematicHeader: {

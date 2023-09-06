@@ -39,14 +39,14 @@ describe('AccessibilityAtom', () => {
     const { queryByTestId } = render(
       <AccessibilityAtom handicap={HandicapCategory.MENTAL} isAccessible />
     )
-    expect(queryByTestId('invalidTestId')).toBeNull()
-    expect(queryByTestId('validTestId')).toBeTruthy()
+    expect(queryByTestId('invalidTestId')).not.toBeOnTheScreen()
+    expect(queryByTestId('validTestId')).toBeOnTheScreen()
   })
   it('should displat the invalidIcon when isValid is false', () => {
     const { queryByTestId } = render(
       <AccessibilityAtom handicap={HandicapCategory.MENTAL} isAccessible={false} />
     )
-    expect(queryByTestId('invalidTestId')).toBeTruthy()
-    expect(queryByTestId('validTestId')).toBeNull()
+    expect(queryByTestId('invalidTestId')).toBeOnTheScreen()
+    expect(queryByTestId('validTestId')).not.toBeOnTheScreen()
   })
 })

@@ -46,7 +46,7 @@ describe('GenericHome', () => {
     mockUseNetInfoContext.mockReturnValueOnce({ isConnected: false })
     renderGenericHome()
 
-    expect(await screen.findByText('Pas de réseau internet')).toBeTruthy()
+    expect(await screen.findByText('Pas de réseau internet')).toBeOnTheScreen()
   })
 })
 
@@ -137,7 +137,7 @@ describe('GenericHome page - Analytics', () => {
       scrollView && scrollView.props.onScroll(scrollEventBottom)
     })
 
-    expect(await screen.findByTestId('spinner')).toBeTruthy()
+    expect(await screen.findByTestId('spinner')).toBeOnTheScreen()
   })
 })
 

@@ -76,7 +76,7 @@ describe('<FavoriteButton />', () => {
     renderFavoriteButton()
     await act(async () => {})
 
-    expect(screen.queryByTestId('icon-favorite')).toBeTruthy()
+    expect(screen.queryByTestId('icon-favorite')).toBeOnTheScreen()
   })
 
   it('should display SignIn modal when pressing Favorite - not logged in users', async () => {
@@ -92,7 +92,7 @@ describe('<FavoriteButton />', () => {
       fireEvent.press(screen.getByTestId('icon-favorite'))
     })
 
-    expect(screen.queryByText('Identifie-toi pour retrouver tes favoris')).toBeTruthy()
+    expect(screen.queryByText('Identifie-toi pour retrouver tes favoris')).toBeOnTheScreen()
   })
 
   it('should show a favorite filled icon when viewing a offer in favorite - logged in users', async () => {
@@ -100,7 +100,7 @@ describe('<FavoriteButton />', () => {
     renderFavoriteButton({ id: favoriteOfferId })
 
     await waitFor(() => {
-      expect(screen.getByTestId('icon-favorite-filled')).toBeTruthy()
+      expect(screen.getByTestId('icon-favorite-filled')).toBeOnTheScreen()
     })
   })
 
@@ -139,7 +139,7 @@ describe('<FavoriteButton />', () => {
     fireEvent.press(screen.getByTestId('icon-favorite'))
 
     await waitFor(() => {
-      expect(screen.getByText('Crée une liste de favoris !')).toBeTruthy()
+      expect(screen.getByText('Crée une liste de favoris !')).toBeOnTheScreen()
     })
   })
 
@@ -151,7 +151,7 @@ describe('<FavoriteButton />', () => {
       fireEvent.press(screen.getByTestId('icon-favorite'))
     })
 
-    expect(screen.queryByText('Crée une liste de favoris !')).toBeNull()
+    expect(screen.queryByText('Crée une liste de favoris !')).not.toBeOnTheScreen()
   })
 
   it('should track the user has seen favorite list modal when pressing favorite icon and feature flag is activated', async () => {
@@ -255,7 +255,7 @@ describe('<FavoriteButton />', () => {
       fireEvent.press(favButton)
     })
 
-    expect(screen.queryByText('Crée une liste de favoris !')).toBeNull()
+    expect(screen.queryByText('Crée une liste de favoris !')).not.toBeOnTheScreen()
   })
 
   it('should enable the favorites button when is not loading', async () => {

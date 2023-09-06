@@ -129,6 +129,13 @@ export type BusinessModule = {
   leftIcon?: string
   url?: string
   shouldTargetNotConnectedUsers?: boolean
+  localizationArea?: LocationCircleArea
+}
+
+export type LocationCircleArea = {
+  latitude: number
+  longitude: number
+  radius: number
 }
 
 export type ExclusivityModule = {
@@ -221,6 +228,8 @@ export type Venue = {
   longitude?: number
   name: string
   venueTypeCode: VenueTypeCode
+  city: string
+  postalCode: string | null
 }
 
 export type CategoryListModule = {

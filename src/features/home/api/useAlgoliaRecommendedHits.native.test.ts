@@ -2,8 +2,14 @@ import { useAlgoliaRecommendedHits } from 'features/home/api/useAlgoliaRecommend
 import { mockedAlgoliaResponse } from 'libs/algolia/__mocks__/mockedAlgoliaResponse'
 import * as fetchOffersByIdsAPI from 'libs/algolia/fetchAlgolia/fetchOffersByIds'
 import * as filterOfferHitAPI from 'libs/algolia/fetchAlgolia/transformOfferHit'
+import * as getSimilarOrRecoOffersInOrder from 'shared/offer/getSimilarOrRecoOffersInOrder'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { renderHook, waitFor } from 'tests/utils'
+import { act, renderHook, waitFor } from 'tests/utils'
+
+const getSimilarOffersInOrderSpy = jest.spyOn(
+  getSimilarOrRecoOffersInOrder,
+  'getSimilarOrRecoOffersInOrder'
+)
 
 const ids = ['102280', '102272', '102249', '102310']
 describe('useAlgoliaRecommendedHits', () => {
@@ -54,5 +60,32 @@ describe('useAlgoliaRecommendedHits', () => {
       wrapper: ({ children }) => reactQueryProviderHOC(children),
     })
     expect(result.current).toBeUndefined()
+  })
+
+  it('should call function to preserve ids offer order when shouldPreserveIdsOrder is true', async () => {
+    renderHook(() => useAlgoliaRecommendedHits(ids, 'abcd', true), {
+      // eslint-disable-next-line local-rules/no-react-query-provider-hoc
+      wrapper: ({ children }) => reactQueryProviderHOC(children),
+    })
+    await act(async () => {})
+    expect(getSimilarOffersInOrderSpy).toHaveBeenCalledTimes(1)
+  })
+
+  it('should not call function to preserve ids offer order when shouldPreserveIdsOrder is undefined', async () => {
+    renderHook(() => useAlgoliaRecommendedHits(ids, 'abcd'), {
+      // eslint-disable-next-line local-rules/no-react-query-provider-hoc
+      wrapper: ({ children }) => reactQueryProviderHOC(children),
+    })
+    await act(async () => {})
+    expect(getSimilarOffersInOrderSpy).not.toHaveBeenCalled()
+  })
+
+  it('should not call function to preserve ids offer order when shouldPreserveIdsOrder is false', async () => {
+    renderHook(() => useAlgoliaRecommendedHits(ids, 'abcd', false), {
+      // eslint-disable-next-line local-rules/no-react-query-provider-hoc
+      wrapper: ({ children }) => reactQueryProviderHOC(children),
+    })
+    await act(async () => {})
+    expect(getSimilarOffersInOrderSpy).not.toHaveBeenCalled()
   })
 })

@@ -16,7 +16,7 @@ import { SHARE_APP_BANNER_IMAGE_SOURCE } from 'features/share/components/shareAp
 import { shareApp } from 'features/share/helpers/shareApp'
 import { analytics, isCloseToBottom } from 'libs/analytics'
 import { env } from 'libs/environment'
-import { GeolocPermissionState, useGeolocation } from 'libs/geolocation'
+import { GeolocPermissionState, useLocation } from 'libs/geolocation'
 import useFunctionOnce from 'libs/hooks/useFunctionOnce'
 import { useNetInfoContext } from 'libs/network/NetInfoWrapper'
 import { OfflinePage } from 'libs/network/OfflinePage'
@@ -52,7 +52,7 @@ const OnlineProfile: React.FC = () => {
   const locationActivationErrorId = uuidv4()
 
   const { userPositionError, permissionState, requestGeolocPermission, showGeolocPermissionModal } =
-    useGeolocation()
+    useLocation()
   const [isGeolocSwitchActive, setIsGeolocSwitchActive] = useState<boolean>(
     permissionState === GeolocPermissionState.GRANTED
   )
@@ -265,7 +265,7 @@ const OnlineProfile: React.FC = () => {
   )
 }
 
-export const Profile: React.FC = () => {
+export function Profile() {
   const netInfo = useNetInfoContext()
   if (netInfo.isConnected) {
     return <OnlineProfile />

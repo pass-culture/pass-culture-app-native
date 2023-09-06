@@ -13,7 +13,7 @@ import * as Auth from 'features/auth/context/AuthContext'
 import { nonBeneficiaryUser } from 'fixtures/user'
 import { env } from 'libs/environment'
 import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
-import { GeolocPermissionState, useGeolocation } from 'libs/geolocation'
+import { GeolocPermissionState, useLocation } from 'libs/geolocation'
 import { Credit, useAvailableCredit } from 'shared/user/useAvailableCredit'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { server } from 'tests/server'
@@ -27,7 +27,7 @@ jest.mock('shared/user/useAvailableCredit')
 const mockUseAvailableCredit = useAvailableCredit as jest.MockedFunction<typeof useAvailableCredit>
 
 jest.mock('libs/geolocation')
-const mockUseGeolocation = useGeolocation as jest.Mock
+const mockUseGeolocation = useLocation as jest.Mock
 mockdate.set(new Date('2022-12-01T00:00:00Z'))
 
 const mockedUser = {
@@ -85,7 +85,7 @@ describe('HomeHeader', () => {
       renderHomeHeader()
       await act(async () => {})
 
-      expect(await screen.findByText(subtitle)).toBeTruthy()
+      expect(await screen.findByText(subtitle)).toBeOnTheScreen()
     }
   )
 
@@ -102,7 +102,7 @@ describe('HomeHeader', () => {
     renderHomeHeader()
     await act(async () => {})
 
-    expect(screen.queryByText('Géolocalise-toi')).toBeNull()
+    expect(screen.queryByText('Géolocalise-toi')).not.toBeOnTheScreen()
   })
 
   it('should display geolocation banner when geolocation is denied', async () => {
@@ -112,7 +112,7 @@ describe('HomeHeader', () => {
 
     renderHomeHeader()
 
-    expect(await screen.findByText('Géolocalise-toi')).toBeTruthy()
+    expect(await screen.findByText('Géolocalise-toi')).toBeOnTheScreen()
   })
 
   it('should display geolocation banner when geolocation is never ask again', async () => {
@@ -127,7 +127,7 @@ describe('HomeHeader', () => {
 
     renderHomeHeader()
 
-    expect(await screen.findByText('Géolocalise-toi')).toBeTruthy()
+    expect(await screen.findByText('Géolocalise-toi')).toBeOnTheScreen()
   })
 
   it('should display SignupBanner when user is not logged in', async () => {
@@ -144,7 +144,7 @@ describe('HomeHeader', () => {
     renderHomeHeader()
     await act(async () => {})
 
-    expect(await screen.findByText('Débloque ton crédit')).toBeTruthy()
+    expect(await screen.findByText('Débloque ton crédit')).toBeOnTheScreen()
   })
 
   it('should display activation banner with BicolorUnlock icon when banner api call return activation banner', async () => {
@@ -165,9 +165,9 @@ describe('HomeHeader', () => {
 
     renderHomeHeader()
 
-    expect(await screen.findByText('Débloque tes 1000\u00a0€')).toBeTruthy()
-    expect(screen.getByText('à dépenser sur l’application')).toBeTruthy()
-    expect(screen.getByTestId('BicolorUnlock')).toBeTruthy()
+    expect(await screen.findByText('Débloque tes 1000\u00a0€')).toBeOnTheScreen()
+    expect(screen.getByText('à dépenser sur l’application')).toBeOnTheScreen()
+    expect(screen.getByTestId('BicolorUnlock')).toBeOnTheScreen()
   })
 
   it('should display activation banner with ArrowAgain icon when banner api call return retry_identity_check_banner', async () => {
@@ -188,9 +188,9 @@ describe('HomeHeader', () => {
 
     renderHomeHeader()
 
-    expect(await screen.findByText('Retente ubble')).toBeTruthy()
-    expect(screen.getByText('pour débloquer ton crédit')).toBeTruthy()
-    expect(screen.getByTestId('ArrowAgain')).toBeTruthy()
+    expect(await screen.findByText('Retente ubble')).toBeOnTheScreen()
+    expect(screen.getByText('pour débloquer ton crédit')).toBeOnTheScreen()
+    expect(screen.getByTestId('ArrowAgain')).toBeOnTheScreen()
   })
 
   it('should display activation banner with BirthdayCake icon when banner api call return transition_17_18_banner', async () => {
@@ -211,16 +211,16 @@ describe('HomeHeader', () => {
 
     renderHomeHeader()
 
-    expect(await screen.findByText('Débloque tes 600\u00a0€')).toBeTruthy()
-    expect(screen.getByText('Confirme tes informations')).toBeTruthy()
-    expect(screen.getByTestId('BirthdayCake')).toBeTruthy()
+    expect(await screen.findByText('Débloque tes 600\u00a0€')).toBeOnTheScreen()
+    expect(screen.getByText('Confirme tes informations')).toBeOnTheScreen()
+    expect(screen.getByTestId('BirthdayCake')).toBeOnTheScreen()
   })
 
   it('should show LocationWidget when ENABLE_APP_LOCATION is on and when isDesktopViewport is false', async () => {
     useFeatureFlagSpy.mockReturnValueOnce(true)
     renderHomeHeader()
 
-    expect(await screen.findByText('Me localiser')).toBeTruthy()
+    expect(await screen.findByText('Ma position')).toBeTruthy()
   })
 
   it('should not show LocationWidget when ENABLE_APP_LOCATION is on and isDesktopViewport is true', async () => {
@@ -228,7 +228,7 @@ describe('HomeHeader', () => {
     renderHomeHeader(true)
 
     await waitFor(() => {
-      expect(screen.queryByText('Me localiser')).toBeNull()
+      expect(screen.queryByText('Ma position')).not.toBeOnTheScreen()
     })
   })
 
@@ -237,7 +237,7 @@ describe('HomeHeader', () => {
     renderHomeHeader()
 
     await waitFor(() => {
-      expect(screen.queryByText('Me localiser')).toBeNull()
+      expect(screen.queryByText('Ma position')).not.toBeOnTheScreen()
     })
   })
 })

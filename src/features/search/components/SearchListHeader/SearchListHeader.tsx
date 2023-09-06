@@ -15,7 +15,7 @@ import { AlgoliaVenue } from 'libs/algolia'
 import { analytics } from 'libs/analytics'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
-import { useGeolocation } from 'libs/geolocation'
+import { useLocation } from 'libs/geolocation'
 import { useFunctionOnce } from 'libs/hooks'
 import { Offer } from 'shared/offer/types'
 import { styledButton } from 'ui/components/buttons/styledButton'
@@ -52,7 +52,7 @@ const keyExtractor = (item: AlgoliaVenue) => item.objectID
 
 export const SearchListHeader: React.FC<SearchListHeaderProps> = ({ nbHits, userData }) => {
   const { searchVenuesState: venues } = useSearchVenues()
-  const { userPosition: position, showGeolocPermissionModal } = useGeolocation()
+  const { userPosition: position, showGeolocPermissionModal } = useLocation()
   const { params } = useRoute<UseRouteType<'Search'>>()
   const enableVenuesInSearchResults = useFeatureFlag(
     RemoteStoreFeatureFlags.WIP_ENABLE_VENUES_IN_SEARCH_RESULTS

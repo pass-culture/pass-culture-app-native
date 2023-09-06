@@ -18,14 +18,14 @@ describe('useReviewInAppInformation', () => {
 
     await act(async () => {})
 
-    expect(result.current.shouldReviewBeRequested).toBeTruthy()
+    expect(result.current.shouldReviewBeRequested).toBe(true)
   })
 
   it('should return shouldReviewBeRequested = true if review Modal has been seen three times', async () => {
     storage.saveObject('times_review_has_been_requested', 3)
     const { result } = renderHook(() => useReviewInAppInformation())
     await act(async () => {})
-    expect(result.current.shouldReviewBeRequested).toBeTruthy()
+    expect(result.current.shouldReviewBeRequested).toBe(true)
   })
 
   it('should return shouldReviewBeRequested = false if review Modal has been seen more than three times', async () => {
@@ -42,6 +42,6 @@ describe('useReviewInAppInformation', () => {
     const { result } = renderHook(() => useReviewInAppInformation())
     await act(async () => {})
 
-    expect(result.current.shouldReviewBeRequested).toBeTruthy()
+    expect(result.current.shouldReviewBeRequested).toBe(true)
   })
 })

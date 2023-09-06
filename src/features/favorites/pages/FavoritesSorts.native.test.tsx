@@ -27,8 +27,8 @@ const mockTriggerPositionUpdate = jest.fn()
 const mockShowGeolocPermissionModal = jest.fn()
 const mockRequestGeolocPermission = jest.fn()
 
-jest.mock('libs/geolocation/GeolocationWrapper', () => ({
-  useGeolocation: () => ({
+jest.mock('libs/geolocation/LocationWrapper', () => ({
+  useLocation: () => ({
     permissionState: mockPermissionState,
     userPosition: mockPosition,
     userPositionError: mockPositionError,
@@ -97,7 +97,7 @@ describe('<FavoritesSorts/>', () => {
 
     fireEvent.press(getByText('Proximité géographique'))
 
-    expect(queryByText(mockPositionError.message)).toBeTruthy()
+    expect(queryByText(mockPositionError.message)).toBeOnTheScreen()
   })
 
   it('should trigger analytics=AROUND_ME when clicking on "Proximité géographique" then accepting geoloc then validating', async () => {
@@ -111,7 +111,7 @@ describe('<FavoritesSorts/>', () => {
         renderAPI.queryByText(
           `La géolocalisation est temporairement inutilisable sur ton téléphone`
         )
-      ).toBeFalsy()
+      ).not.toBeOnTheScreen()
       expect(analytics.logHasAppliedFavoritesSorting).toBeCalledWith({
         sortBy: 'AROUND_ME',
       })

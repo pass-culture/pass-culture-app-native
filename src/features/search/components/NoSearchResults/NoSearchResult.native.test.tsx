@@ -19,8 +19,8 @@ describe('NoSearchResult component', () => {
     const textContinuation = getByText(
       'Vérifie ta localisation ou modifie tes filtres pour trouver plus de résultats.'
     )
-    expect(text).toBeTruthy()
-    expect(textContinuation).toBeTruthy()
+    expect(text).toBeOnTheScreen()
+    expect(textContinuation).toBeOnTheScreen()
   })
 
   it('should show the message with query entered', () => {
@@ -33,9 +33,9 @@ describe('NoSearchResult component', () => {
       'Essaye un autre mot-clé, vérifie ta localisation ou modifie tes filtres pour trouver plus de résultats.'
     )
 
-    expect(text).toBeTruthy()
-    expect(complement).toBeTruthy()
-    expect(textContinuation).toBeTruthy()
+    expect(text).toBeOnTheScreen()
+    expect(complement).toBeOnTheScreen()
+    expect(textContinuation).toBeOnTheScreen()
   })
 
   it('should redirect to the general filters page when pressing "Modifier mes filtres" button', async () => {

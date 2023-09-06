@@ -27,7 +27,7 @@ describe('ModalHeader component', () => {
       }
       const { queryByTestId } = render(<ModalHeader {...propsWithoutLeftIcon} />)
       const leftIcon = queryByTestId('Revenir en arrière')
-      expect(leftIcon).toBeNull()
+      expect(leftIcon).not.toBeOnTheScreen()
     })
     it('should be visible when the icon is provided', async () => {
       const { getByTestId, findByTestId } = render(<ModalHeader {...props} />)
@@ -47,7 +47,7 @@ describe('ModalHeader component', () => {
       }
       const { queryByTestId } = render(<ModalHeader {...propsWithoutRightIcon} />)
       const rightIcon = queryByTestId('Fermer la modale')
-      expect(rightIcon).toBeNull()
+      expect(rightIcon).not.toBeOnTheScreen()
     })
     it('should be visible when the icon is provided', async () => {
       const { getByTestId, findByTestId } = render(<ModalHeader {...props} />)

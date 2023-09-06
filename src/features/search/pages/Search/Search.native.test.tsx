@@ -191,8 +191,8 @@ describe('<Search/>', () => {
       render(<Search />)
       await act(async () => {})
 
-      expect(screen.getByTestId('autocompleteOfferItem_1')).toBeTruthy()
-      expect(screen.getByTestId('autocompleteOfferItem_2')).toBeTruthy()
+      expect(screen.getByTestId('autocompleteOfferItem_1')).toBeOnTheScreen()
+      expect(screen.getByTestId('autocompleteOfferItem_2')).toBeOnTheScreen()
     })
 
     it('should not display venue suggestions when wipEnableVenuesInSearchResults feature flag deactivated', async () => {
@@ -200,8 +200,8 @@ describe('<Search/>', () => {
       render(<Search />)
       await act(async () => {})
 
-      expect(screen.queryByTestId('autocompleteVenueItem_1')).toBeNull()
-      expect(screen.queryByTestId('autocompleteVenueItem_2')).toBeNull()
+      expect(screen.queryByTestId('autocompleteVenueItem_1')).not.toBeOnTheScreen()
+      expect(screen.queryByTestId('autocompleteVenueItem_2')).not.toBeOnTheScreen()
     })
 
     it('should display venue suggestions when wipEnableVenuesInSearchResults feature flag activated', async () => {
@@ -209,8 +209,8 @@ describe('<Search/>', () => {
       render(<Search />)
       await act(async () => {})
 
-      expect(screen.getByTestId('autocompleteVenueItem_1')).toBeTruthy()
-      expect(screen.getByTestId('autocompleteVenueItem_2')).toBeTruthy()
+      expect(screen.getByTestId('autocompleteVenueItem_1')).toBeOnTheScreen()
+      expect(screen.getByTestId('autocompleteVenueItem_2')).toBeOnTheScreen()
     })
 
     it('should handle venue press', async () => {
@@ -218,7 +218,7 @@ describe('<Search/>', () => {
       render(<Search />)
       await act(async () => {})
 
-      expect(screen.getByTestId('autocompleteVenueItem_1')).toBeTruthy()
+      expect(screen.getByTestId('autocompleteVenueItem_1')).toBeOnTheScreen()
 
       await fireEvent.press(screen.getByTestId('autocompleteVenueItem_1'))
 
@@ -256,8 +256,8 @@ describe('<Search/>', () => {
       render(<Search />)
       await act(async () => {})
 
-      expect(screen.queryByTestId('autocompleteOfferItem_1')).toBeNull()
-      expect(screen.queryByTestId('autocompleteOfferItem_2')).toBeNull()
+      expect(screen.queryByTestId('autocompleteOfferItem_1')).not.toBeOnTheScreen()
+      expect(screen.queryByTestId('autocompleteOfferItem_2')).not.toBeOnTheScreen()
     }
   )
 
@@ -265,7 +265,7 @@ describe('<Search/>', () => {
     it('should display offline page', () => {
       mockUseNetInfoContext.mockReturnValueOnce({ isConnected: false })
       const renderAPI = render(<Search />)
-      expect(renderAPI.getByText('Pas de réseau internet')).toBeTruthy()
+      expect(renderAPI.getByText('Pas de réseau internet')).toBeOnTheScreen()
     })
   })
 
@@ -280,7 +280,7 @@ describe('<Search/>', () => {
 
       const categoriesButtons = screen.getByTestId('categoriesButtons')
 
-      expect(categoriesButtons).toBeTruthy()
+      expect(categoriesButtons).toBeOnTheScreen()
     })
 
     it('should show results for a category when pressing a category button', async () => {
@@ -307,7 +307,7 @@ describe('<Search/>', () => {
       render(<Search />)
       await act(async () => {})
 
-      expect(screen.getByTestId('searchResults')).toBeTruthy()
+      expect(screen.getByTestId('searchResults')).toBeOnTheScreen()
     })
 
     it('should navigate to the search filter page when pressing the search filter button', async () => {

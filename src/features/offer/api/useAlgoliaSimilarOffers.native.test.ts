@@ -1,14 +1,17 @@
 import { useAlgoliaSimilarOffers } from 'features/offer/api/useAlgoliaSimilarOffers'
-import * as getSimilarOffersInOrder from 'features/offer/helpers/getSimilarOffersInOrder/getSimilarOffersInOrder'
 import { mockedAlgoliaResponse } from 'libs/algolia/__mocks__/mockedAlgoliaResponse'
 import * as fetchOffersByIdsAPI from 'libs/algolia/fetchAlgolia/fetchOffersByIds'
 import * as filterOfferHitAPI from 'libs/algolia/fetchAlgolia/transformOfferHit'
+import * as getSimilarOrRecoOffersInOrder from 'shared/offer/getSimilarOrRecoOffersInOrder'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, renderHook, waitFor } from 'tests/utils'
 
 jest.mock('features/auth/context/AuthContext')
 
-const getSimilarOffersInOrderSpy = jest.spyOn(getSimilarOffersInOrder, 'getSimilarOffersInOrder')
+const getSimilarOffersInOrderSpy = jest.spyOn(
+  getSimilarOrRecoOffersInOrder,
+  'getSimilarOrRecoOffersInOrder'
+)
 
 const ids = ['102280', '102272', '102249', '102310']
 describe('useAlgoliaSimilarOffers', () => {

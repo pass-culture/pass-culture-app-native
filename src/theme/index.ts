@@ -156,6 +156,7 @@ export interface AppThemeType {
     tabBar: UniqueColors
     greyOverlay: UniqueColors
     backgroundColor: UniqueColors
+    backgroundSurface: UniqueColors
     foregroundColor: UniqueColors
     brand: UniqueColors
     brandDark: UniqueColors
@@ -609,6 +610,7 @@ export const theme: AppThemeType = {
     tabBar: UniqueColors.TAB_BAR,
     greyOverlay: UniqueColors.GREY_OVERLAY,
     backgroundColor: UniqueColors.BACKGROUND_COLOR,
+    backgroundSurface: UniqueColors.BACKGROUND_SURFACE,
     foregroundColor: UniqueColors.FOREGROUND_COLOR,
     brand: UniqueColors.BRAND,
     brandDark: UniqueColors.BRAND_DARK,

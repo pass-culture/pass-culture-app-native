@@ -23,7 +23,7 @@ describe('NoFavoritesResult component', () => {
     const text = render(<NoFavoritesResult />).getByText(
       `Retrouve toutes tes offres en un clin d’oeil`
     )
-    expect(text).toBeTruthy()
+    expect(text).toBeOnTheScreen()
   })
 
   it('should navigate to Search when pressing button and log event', async () => {

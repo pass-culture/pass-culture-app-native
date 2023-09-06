@@ -1,12 +1,12 @@
 import React from 'react'
 
 import { GeolocationBanner } from 'features/home/components/banners/GeolocationBanner'
-import { GeolocPermissionState, useGeolocation } from 'libs/geolocation'
+import { GeolocPermissionState, useLocation } from 'libs/geolocation'
 import { showGeolocPermissionModal, requestGeolocPermission } from 'libs/geolocation/__mocks__'
 import { fireEvent, render, screen } from 'tests/utils'
 
 jest.mock('libs/geolocation')
-const mockUseGeolocation = useGeolocation as jest.Mock
+const mockUseGeolocation = useLocation as jest.Mock
 
 describe('<GeolocationBanner />', () => {
   it('should open "Paramètres de localisation" modal when pressing button and permission is never ask again', () => {

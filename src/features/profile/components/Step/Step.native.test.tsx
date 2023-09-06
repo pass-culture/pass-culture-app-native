@@ -13,6 +13,6 @@ describe('<Step />', () => {
       </Step>
     )
 
-    expect(screen.queryByTestId('test-view')).toBeNull()
+    expect(screen.queryByTestId('test-view')).not.toBeOnTheScreen()
   })
 })

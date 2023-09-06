@@ -63,7 +63,7 @@ describe('VideoModule', () => {
 
     await act(async () => {})
 
-    expect(multiOfferList).not.toBeNull()
+    expect(multiOfferList).toBeOnTheScreen()
   })
 
   it('should render mobile design if mobile viewport', async () => {
@@ -74,7 +74,7 @@ describe('VideoModule', () => {
 
     await act(async () => {})
 
-    expect(multiOfferList).not.toBeNull()
+    expect(multiOfferList).toBeOnTheScreen()
   })
 
   it('should render desktop design if desktop viewport', async () => {
@@ -85,7 +85,7 @@ describe('VideoModule', () => {
 
     await act(async () => {})
 
-    expect(multiOfferList).not.toBeNull()
+    expect(multiOfferList).toBeOnTheScreen()
   })
 })
 

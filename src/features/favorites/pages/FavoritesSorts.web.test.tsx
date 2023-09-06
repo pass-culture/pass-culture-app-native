@@ -14,8 +14,8 @@ const mockPermissionState = GeolocPermissionState.GRANTED
 const mockPosition: Position = DEFAULT_POSITION
 const mockPositionError: GeolocationError | null = null
 
-jest.mock('libs/geolocation/GeolocationWrapper', () => ({
-  useGeolocation: () => ({
+jest.mock('libs/geolocation/LocationWrapper', () => ({
+  useLocation: () => ({
     permissionState: mockPermissionState,
     userPosition: mockPosition,
     userPositionError: mockPositionError,

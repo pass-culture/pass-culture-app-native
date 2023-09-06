@@ -3,7 +3,7 @@ import React, { RefObject } from 'react'
 import Swiper from 'react-native-web-swiper'
 
 import { analytics } from 'libs/analytics'
-import { GeolocationWrapper, GeolocPermissionState } from 'libs/geolocation'
+import { LocationWrapper, GeolocPermissionState } from 'libs/geolocation'
 import { requestGeolocPermission } from 'libs/geolocation/requestGeolocPermission'
 import { act, fireEvent, render, waitFor } from 'tests/utils'
 import { GenericAchievement } from 'ui/components/achievements'
@@ -21,7 +21,7 @@ describe('ThirdCard', () => {
     mockRequestGeolocPermission.mockResolvedValue(GeolocPermissionState.DENIED)
     const ref = { current: { goToNext: jest.fn() } }
     const { getByText } = render(
-      <GeolocationWrapper>
+      <LocationWrapper>
         <GenericAchievement screenName="FirstTutorial">
           <ThirdCard
             swiperRef={ref as unknown as RefObject<Swiper>}
@@ -30,7 +30,7 @@ describe('ThirdCard', () => {
             lastIndex={0}
           />
         </GenericAchievement>
-      </GeolocationWrapper>
+      </LocationWrapper>
     )
     fireEvent.press(getByText('Utiliser ma position'))
     await waitFor(() => {
@@ -42,7 +42,7 @@ describe('ThirdCard', () => {
     mockRequestGeolocPermission.mockResolvedValue(GeolocPermissionState.GRANTED)
     const ref = { current: { goToNext: jest.fn() } }
     const { getByText } = render(
-      <GeolocationWrapper>
+      <LocationWrapper>
         <GenericAchievement screenName="FirstTutorial">
           <ThirdCard
             swiperRef={ref as unknown as RefObject<Swiper>}
@@ -51,7 +51,7 @@ describe('ThirdCard', () => {
             lastIndex={0}
           />
         </GenericAchievement>
-      </GeolocationWrapper>
+      </LocationWrapper>
     )
     fireEvent.press(getByText('Utiliser ma position'))
     await waitFor(() => {
@@ -63,14 +63,14 @@ describe('ThirdCard', () => {
     mockRequestGeolocPermission.mockResolvedValue(GeolocPermissionState.GRANTED)
     const ref = { current: { goToNext: jest.fn() } }
     const { getByText } = render(
-      <GeolocationWrapper>
+      <LocationWrapper>
         <ThirdCard
           lastIndex={0}
           swiperRef={ref as unknown as RefObject<Swiper>}
           index={0}
           activeIndex={0}
         />
-      </GeolocationWrapper>
+      </LocationWrapper>
     )
     await act(() => {
       fireEvent.press(getByText('Utiliser ma position'))

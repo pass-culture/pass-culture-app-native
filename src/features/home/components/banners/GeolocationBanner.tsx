@@ -1,7 +1,7 @@
 import React, { FunctionComponent, useCallback } from 'react'
 import styled from 'styled-components/native'
 
-import { useGeolocation, GeolocPermissionState } from 'libs/geolocation'
+import { useLocation, GeolocPermissionState } from 'libs/geolocation'
 import { GenericBanner } from 'ui/components/ModuleBanner/GenericBanner'
 import { Touchable } from 'ui/components/touchable/Touchable'
 import { BicolorEverywhere as Everywhere } from 'ui/svg/icons/BicolorEverywhere'
@@ -14,7 +14,7 @@ type Props = {
 }
 
 export const GeolocationBanner: FunctionComponent<Props> = ({ title, subtitle, onPress }) => {
-  const { permissionState, requestGeolocPermission, showGeolocPermissionModal } = useGeolocation()
+  const { permissionState, requestGeolocPermission, showGeolocPermissionModal } = useLocation()
 
   const onPressGeolocationBanner = useCallback(async () => {
     if (permissionState === GeolocPermissionState.NEVER_ASK_AGAIN) {

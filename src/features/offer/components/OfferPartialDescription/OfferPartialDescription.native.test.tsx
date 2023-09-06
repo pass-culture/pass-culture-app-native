@@ -48,7 +48,7 @@ describe('OfferPartialDescription', () => {
     renderOfferDescription(defaultParams)
     await act(async () => {})
 
-    expect(await screen.findByTestId('externalSiteIcon')).toBeTruthy()
+    expect(await screen.findByTestId('externalSiteIcon')).toBeOnTheScreen()
   })
 
   it("shouldn't render an empty line and a spacer when description is empty", async () => {
@@ -58,7 +58,7 @@ describe('OfferPartialDescription', () => {
     })
 
     await screen.findByText('Voir plus d’informations')
-    expect(screen.queryByTestId('offerPartialDescriptionBody')).toBeNull()
+    expect(screen.queryByTestId('offerPartialDescriptionBody')).not.toBeOnTheScreen()
   })
 
   describe('SeeMore button', () => {
@@ -100,7 +100,7 @@ describe('OfferPartialDescription', () => {
       renderOfferDescription(defaultParams)
       await act(async () => {})
 
-      expect(await screen.findByTestId('offerSeeMoreContainer')).toBeTruthy()
+      expect(await screen.findByTestId('offerSeeMoreContainer')).toBeOnTheScreen()
     })
 
     describe('should be rendered', () => {
@@ -129,7 +129,7 @@ describe('OfferPartialDescription', () => {
           descriptionComponent.props.onTextLayout({ nativeEvent: { lines } })
         })
 
-        expect(await screen.findByTestId('offerSeeMoreContainer')).toBeTruthy()
+        expect(await screen.findByTestId('offerSeeMoreContainer')).toBeOnTheScreen()
       })
 
       it('when there is image on the description page', async () => {
@@ -140,7 +140,7 @@ describe('OfferPartialDescription', () => {
         })
         await act(async () => {})
 
-        expect(await screen.findByTestId('offerSeeMoreContainer')).toBeTruthy()
+        expect(await screen.findByTestId('offerSeeMoreContainer')).toBeOnTheScreen()
       })
 
       it('when there is extraData on the description page', async () => {
@@ -163,7 +163,7 @@ describe('OfferPartialDescription', () => {
           ...defaultParams,
           description: undefined,
         })
-        expect(await screen.findByTestId('offerSeeMoreContainer')).toBeTruthy()
+        expect(await screen.findByTestId('offerSeeMoreContainer')).toBeOnTheScreen()
       })
 
       it('when the description is small enough to be fully readable and there is image on the description page', async () => {
@@ -187,7 +187,7 @@ describe('OfferPartialDescription', () => {
           descriptionComponent.props.onTextLayout({ nativeEvent: { lines } })
         })
 
-        expect(screen.queryByTestId('offerSeeMoreContainer')).toBeTruthy()
+        expect(screen.queryByTestId('offerSeeMoreContainer')).toBeOnTheScreen()
       })
     })
     describe("shouldn't be rendered", () => {
@@ -199,7 +199,7 @@ describe('OfferPartialDescription', () => {
         })
         await act(async () => {})
 
-        expect(screen.queryByTestId('offerSeeMoreContainer')).toBeNull()
+        expect(screen.queryByTestId('offerSeeMoreContainer')).not.toBeOnTheScreen()
       })
 
       it('when the description is small enough to be fully readable', async () => {
@@ -222,7 +222,7 @@ describe('OfferPartialDescription', () => {
         await act(async () => {
           descriptionComponent.props.onTextLayout({ nativeEvent: { lines } })
         })
-        expect(screen.queryByTestId('offerSeeMoreContainer')).toBeNull()
+        expect(screen.queryByTestId('offerSeeMoreContainer')).not.toBeOnTheScreen()
       })
     })
   })

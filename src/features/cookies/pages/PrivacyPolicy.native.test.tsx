@@ -39,7 +39,7 @@ describe('<PrivacyPolicy />', () => {
     const renderAPI = await renderPrivacyPolicy()
 
     const title = renderAPI.queryByText('Choisir les cookies')
-    expect(title).toBeNull()
+    expect(title).not.toBeOnTheScreen()
   })
 
   it('should show cookies modal when cookies is unknown', async () => {
@@ -50,7 +50,7 @@ describe('<PrivacyPolicy />', () => {
     const renderAPI = await renderPrivacyPolicy()
 
     const title = renderAPI.queryByText('Choisir les cookies')
-    expect(title).toBeTruthy()
+    expect(title).toBeOnTheScreen()
   })
 
   it('should not show cookies modal when fetching cookies is defined but user has made cookie choice', async () => {
@@ -65,7 +65,7 @@ describe('<PrivacyPolicy />', () => {
     const renderAPI = await renderPrivacyPolicy()
 
     const title = renderAPI.queryByText('Choisir les cookies')
-    expect(title).toBeFalsy()
+    expect(title).not.toBeOnTheScreen()
   })
 
   it('should show cookies modal when fetching cookies is defined and user has made cookie choice', async () => {
@@ -80,7 +80,7 @@ describe('<PrivacyPolicy />', () => {
     const renderAPI = await renderPrivacyPolicy()
 
     const title = renderAPI.queryByText('Choisir les cookies')
-    expect(title).toBeTruthy()
+    expect(title).toBeOnTheScreen()
   })
 })
 

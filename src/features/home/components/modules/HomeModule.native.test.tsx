@@ -50,8 +50,8 @@ jest.mock('features/auth/context/AuthContext', () => ({
 const DEFAULT_POSITION: GeoCoordinates = { latitude: 2, longitude: 40 }
 const mockPosition: Position = DEFAULT_POSITION
 
-jest.mock('libs/geolocation/GeolocationWrapper', () => ({
-  useGeolocation: () => ({
+jest.mock('libs/geolocation/LocationWrapper', () => ({
+  useLocation: () => ({
     userPosition: mockPosition,
   }),
 }))
@@ -78,7 +78,7 @@ describe('<HomeModule />', () => {
 
     // we need to use findAllByLabelText because 'Week-end FRAC' is assigned twice
     // in alt property for image and touchable link
-    expect(await screen.findAllByLabelText('Week-end FRAC')).toBeTruthy()
+    expect(await screen.findAllByLabelText('Week-end FRAC')).not.toHaveLength(0)
   })
 
   it('should not display old exclusivity module when feature flag is true', async () => {
@@ -86,7 +86,7 @@ describe('<HomeModule />', () => {
     renderHomeModule(formattedExclusivityModule)
 
     await waitFor(() => {
-      expect(screen.queryByLabelText('Week-end FRAC')).toBeNull()
+      expect(screen.queryByLabelText('Week-end FRAC')).not.toBeOnTheScreen()
     })
   })
 
@@ -97,7 +97,7 @@ describe('<HomeModule />', () => {
     renderHomeModule(highlightOfferModuleFixture)
 
     await act(async () => {
-      expect(screen.getByText(highlightOfferModuleFixture.highlightTitle)).toBeTruthy()
+      expect(screen.getByText(highlightOfferModuleFixture.highlightTitle)).toBeOnTheScreen()
     })
   })
 
@@ -108,20 +108,20 @@ describe('<HomeModule />', () => {
     renderHomeModule(highlightOfferModuleFixture)
 
     await waitFor(() => {
-      expect(screen.queryByText(highlightOfferModuleFixture.highlightTitle)).toBeNull()
+      expect(screen.queryByText(highlightOfferModuleFixture.highlightTitle)).not.toBeOnTheScreen()
     })
   })
 
   it('should display BusinessModule', async () => {
     renderHomeModule(formattedBusinessModule)
 
-    expect(await screen.findByText('Débloque ton crédit\u00a0! ')).toBeTruthy()
+    expect(await screen.findByText('Débloque ton crédit\u00a0! ')).toBeOnTheScreen()
   })
 
   it('should display CategoryListModule', async () => {
     renderHomeModule(formattedCategoryListModule)
 
-    expect(await screen.findByText('Cette semaine sur le pass')).toBeTruthy()
+    expect(await screen.findByText('Cette semaine sur le pass')).toBeOnTheScreen()
   })
 
   it('should display RecommendationModule', async () => {
@@ -148,7 +148,7 @@ describe('<HomeModule />', () => {
     renderHomeModule(formattedRecommendedOffersModule)
     await act(async () => {})
 
-    expect(screen.getByText('Tes évènements en ligne')).toBeTruthy()
+    expect(screen.getByText('Tes évènements en ligne')).toBeOnTheScreen()
   })
 
   // TODO(PC-23671): Fix this VideoModule test
@@ -158,7 +158,7 @@ describe('<HomeModule />', () => {
 
     await act(async () => {})
 
-    expect(screen.getByText('Découvre Lujipeka')).toBeTruthy()
+    expect(screen.getByText('Découvre Lujipeka')).toBeOnTheScreen()
   })
 
   it('should display ThematicHighlightModule', async () => {
@@ -168,14 +168,14 @@ describe('<HomeModule />', () => {
 
     await act(async () => {})
 
-    expect(screen.getByText('Temps très fort')).toBeTruthy()
+    expect(screen.getByText('Temps très fort')).toBeOnTheScreen()
   })
 
   it('should display OffersModule', async () => {
     renderHomeModule(formattedOffersModule, defaultData)
 
     await act(async () => {})
-    expect(screen.getByText('La nuit des temps')).toBeTruthy()
+    expect(screen.getByText('La nuit des temps')).toBeOnTheScreen()
   })
 
   // TODO(PC-23671): Fix this VenuesModule test
@@ -184,7 +184,7 @@ describe('<HomeModule />', () => {
     renderHomeModule(formattedVenuesModule)
 
     await act(async () => {})
-    expect(screen.getByText('La nuit des temps')).toBeTruthy()
+    expect(screen.getByText('La nuit des temps')).toBeOnTheScreen()
   })
 })
 

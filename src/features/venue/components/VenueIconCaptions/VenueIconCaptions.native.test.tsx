@@ -19,8 +19,8 @@ const mockPermissionState = GeolocPermissionState.NEVER_ASK_AGAIN
 const mockShowGeolocPermissionModal = jest.fn()
 const mockRequestGeolocPermission = jest.fn()
 
-jest.mock('libs/geolocation/GeolocationWrapper', () => ({
-  useGeolocation: () => ({
+jest.mock('libs/geolocation/LocationWrapper', () => ({
+  useLocation: () => ({
     permissionState: mockPermissionState,
     requestGeolocPermission: mockRequestGeolocPermission,
     showGeolocPermissionModal: mockShowGeolocPermissionModal,
@@ -37,8 +37,8 @@ describe('<VenueIconCaptions />', () => {
         locationCoordinates={locationCoordinates}
       />
     )
-    expect(queryByLabelText('Distance depuis la localisation')).toBeTruthy()
-    expect(queryByLabelText('Activer la localisation')).toBeNull()
+    expect(queryByLabelText('Distance depuis la localisation')).toBeOnTheScreen()
+    expect(queryByLabelText('Activer la localisation')).not.toBeOnTheScreen()
 
     mockDistance = null
     rerender(
@@ -48,8 +48,8 @@ describe('<VenueIconCaptions />', () => {
         locationCoordinates={locationCoordinates}
       />
     )
-    expect(queryByLabelText('Géolocalisation désactivée')).toBeTruthy()
-    expect(queryByLabelText('Distance depuis la localisation')).toBeNull()
+    expect(queryByLabelText('Géolocalisation désactivée')).toBeOnTheScreen()
+    expect(queryByLabelText('Distance depuis la localisation')).not.toBeOnTheScreen()
   })
 
   it('should display a default label "Autre type de lieu" for venue type if type is null', async () => {
@@ -60,7 +60,7 @@ describe('<VenueIconCaptions />', () => {
         locationCoordinates={locationCoordinates}
       />
     )
-    expect(getByText('Autre type de lieu')).toBeTruthy()
+    expect(getByText('Autre type de lieu')).toBeOnTheScreen()
   })
 
   it('should display correct label for venue type if type is not null', () => {
@@ -71,7 +71,7 @@ describe('<VenueIconCaptions />', () => {
         locationCoordinates={locationCoordinates}
       />
     )
-    expect(getByText('Cinéma - Salle de projections')).toBeTruthy()
+    expect(getByText('Cinéma - Salle de projections')).toBeOnTheScreen()
   })
 
   it('should show distance if geolocation enabled', () => {
@@ -83,7 +83,7 @@ describe('<VenueIconCaptions />', () => {
         locationCoordinates={locationCoordinates}
       />
     )
-    expect(queryByText('10 km')).toBeTruthy()
+    expect(queryByText('10 km')).toBeOnTheScreen()
   })
 
   it("should doesn't show distance if geolocation disabled", () => {
@@ -95,8 +95,8 @@ describe('<VenueIconCaptions />', () => {
         locationCoordinates={locationCoordinates}
       />
     )
-    expect(queryByText('10 km')).toBeNull()
-    expect(queryByText('Géolocalisation désactivée')).toBeTruthy()
+    expect(queryByText('10 km')).not.toBeOnTheScreen()
+    expect(queryByText('Géolocalisation désactivée')).toBeOnTheScreen()
   })
 
   it('should open "Activate geolocation" modal when clicking on "Géolocalisation désactivée" if geolocation disabled', () => {

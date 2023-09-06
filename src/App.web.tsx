@@ -23,7 +23,7 @@ import { AppWebHead } from 'libs/appWebHead'
 import { E2eContextProvider } from 'libs/e2e/E2eContextProvider'
 import { env } from 'libs/environment'
 import { RemoteConfigProvider } from 'libs/firebase/remoteConfig'
-import { GeolocationWrapper } from 'libs/geolocation'
+import { LocationWrapper } from 'libs/geolocation'
 import { eventMonitoring } from 'libs/monitoring'
 import { SafeAreaProvider } from 'libs/react-native-save-area-provider'
 import { ReactQueryClientProvider } from 'libs/react-query/ReactQueryClientProvider'
@@ -57,7 +57,7 @@ export function App() {
                   <AuthWrapper>
                     <ErrorBoundary FallbackComponent={AsyncErrorBoundaryWithoutNavigation}>
                       <E2eContextProvider>
-                        <GeolocationWrapper>
+                        <LocationWrapper>
                           <FavoritesWrapper>
                             <SearchAnalyticsWrapper>
                               <SearchWrapper>
@@ -78,7 +78,7 @@ export function App() {
                               </SearchWrapper>
                             </SearchAnalyticsWrapper>
                           </FavoritesWrapper>
-                        </GeolocationWrapper>
+                        </LocationWrapper>
                       </E2eContextProvider>
                     </ErrorBoundary>
                   </AuthWrapper>

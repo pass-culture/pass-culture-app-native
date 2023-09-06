@@ -51,7 +51,7 @@ describe('<ForgottenPassword />', () => {
       jest.advanceTimersByTime(SUGGESTION_DELAY_IN_MS)
     })
 
-    expect(screen.queryByText('Veux-tu plutôt dire john.doe@gmail.com\u00a0?')).toBeTruthy()
+    expect(screen.queryByText('Veux-tu plutôt dire john.doe@gmail.com\u00a0?')).toBeOnTheScreen()
   })
 
   it('should redirect to Login when clicking on ArrowPrevious icon', async () => {
@@ -77,8 +77,8 @@ describe('<ForgottenPassword />', () => {
     fireEvent.press(screen.getByText('Valider'))
 
     expect(recaptchaWebviewModal.props.visible).toBeFalsy()
-    expect(screen.queryByText('Hors connexion : en attente du réseau.')).toBeTruthy()
-    expect(screen.queryByTestId('Chargement en cours')).toBeNull()
+    expect(screen.queryByText('Hors connexion : en attente du réseau.')).toBeOnTheScreen()
+    expect(screen.queryByTestId('Chargement en cours')).not.toBeOnTheScreen()
   })
 
   it("should open reCAPTCHA challenge's modal when pressing on validate button", () => {
@@ -91,7 +91,7 @@ describe('<ForgottenPassword />', () => {
     fireEvent.changeText(emailInput, 'john.doe@gmail.com')
     fireEvent.press(screen.getByText('Valider'))
 
-    expect(recaptchaWebviewModal.props.visible).toBeTruthy()
+    expect(recaptchaWebviewModal.props.visible).toBe(true)
   })
 
   it('should redirect to ResetPasswordEmailSent when password reset request is successful', async () => {
@@ -108,7 +108,7 @@ describe('<ForgottenPassword />', () => {
       expect(replace).toHaveBeenCalledWith('ResetPasswordEmailSent', {
         email: 'john.doe@gmail.com',
       })
-      expect(screen.queryByTestId('Chargement en cours')).toBeNull()
+      expect(screen.queryByTestId('Chargement en cours')).not.toBeOnTheScreen()
     })
   })
 
@@ -123,14 +123,14 @@ describe('<ForgottenPassword />', () => {
 
     expect(
       screen.queryByText('Un problème est survenu pendant la réinitialisation, réessaie plus tard.')
-    ).toBeTruthy()
+    ).toBeOnTheScreen()
     expect(captureMonitoringError).toHaveBeenNthCalledWith(
       1,
       'someError',
       'ForgottenPasswordOnRecaptchaError'
     )
     expect(navigate).not.toBeCalled()
-    expect(screen.queryByTestId('Chargement en cours')).toBeNull()
+    expect(screen.queryByTestId('Chargement en cours')).not.toBeOnTheScreen()
   })
 
   it('should NOT redirect to ResetPasswordEmailSent when reset password request API call has failed', async () => {
@@ -148,14 +148,14 @@ describe('<ForgottenPassword />', () => {
         screen.queryByText(
           'Un problème est survenu pendant la réinitialisation, réessaie plus tard.'
         )
-      ).toBeTruthy()
+      ).toBeOnTheScreen()
       expect(captureMonitoringError).toHaveBeenNthCalledWith(
         1,
         'Échec de la requête https://localhost/native/v1/request_password_reset, code: 400',
         'ForgottenPasswordRequestResetError'
       )
       expect(navigate).not.toBeCalled()
-      expect(screen.queryByTestId('Chargement en cours')).toBeNull()
+      expect(screen.queryByTestId('Chargement en cours')).not.toBeOnTheScreen()
     })
   })
 
@@ -217,7 +217,7 @@ describe('<ForgottenPassword />', () => {
         screen.queryByText(
           'L’e-mail renseigné est incorrect. Exemple de format attendu : edith.piaf@email.fr'
         )
-      ).toBeFalsy()
+      ).not.toBeOnTheScreen()
     })
 
     it('should display invalid email format when email format is valid', () => {
@@ -233,7 +233,7 @@ describe('<ForgottenPassword />', () => {
         screen.queryByText(
           'L’e-mail renseigné est incorrect. Exemple de format attendu : edith.piaf@email.fr'
         )
-      ).toBeTruthy()
+      ).toBeOnTheScreen()
     })
   })
 })

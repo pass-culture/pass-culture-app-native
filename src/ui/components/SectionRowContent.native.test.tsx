@@ -21,13 +21,13 @@ describe('SectionRowContent', () => {
     const { queryByTestId } = render(
       <SectionRowContent type="navigable" title="navigable" icon={Close} onPress={onPress} />
     )
-    expect(queryByTestId('section-row-navigable-icon')).toBeTruthy()
+    expect(queryByTestId('section-row-navigable-icon')).toBeOnTheScreen()
   })
 
   it('should not render the next arrow icon when type is "clickable"', () => {
     const { queryByTestId } = render(
       <SectionRowContent type="clickable" title="clickable" icon={Close} onPress={onPress} />
     )
-    expect(queryByTestId('section-row-navigable-icon')).toBeFalsy()
+    expect(queryByTestId('section-row-navigable-icon')).not.toBeOnTheScreen()
   })
 })

@@ -39,16 +39,16 @@ describe('<ContactBlock/>', () => {
 
   it('should display the email, phoneNumber and website', () => {
     const { queryByText } = render(<ContactBlock venueId={venueId} />)
-    expect(queryByText('E-mail')).toBeTruthy()
-    expect(queryByText('Téléphone')).toBeTruthy()
-    expect(queryByText('Site internet')).toBeTruthy()
+    expect(queryByText('E-mail')).toBeOnTheScreen()
+    expect(queryByText('Téléphone')).toBeOnTheScreen()
+    expect(queryByText('Site internet')).toBeOnTheScreen()
   })
 
   it('should display 3 different icons if email, phoneNumber and website are enable', () => {
     const { getAllByTestId } = render(<ContactBlock venueId={venueId} />)
-    expect(getAllByTestId('Icon E-mail')).toBeTruthy()
-    expect(getAllByTestId('Icon Téléphone')).toBeTruthy()
-    expect(getAllByTestId('Icon Site internet')).toBeTruthy()
+    expect(getAllByTestId('Icon E-mail')).not.toHaveLength(0)
+    expect(getAllByTestId('Icon Téléphone')).not.toHaveLength(0)
+    expect(getAllByTestId('Icon Site internet')).not.toHaveLength(0)
   })
 
   it('should log event VenueContact when opening email', () => {

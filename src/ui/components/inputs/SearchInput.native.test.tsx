@@ -44,7 +44,7 @@ describe('SearchInput component', () => {
       />
     )
 
-    expect(queryByText('Obligatoire')).toBeTruthy()
+    expect(queryByText('Obligatoire')).toBeOnTheScreen()
   })
 
   it('should not display "Obligatoire" when isRequiredField = false and has label', async () => {
@@ -57,6 +57,6 @@ describe('SearchInput component', () => {
       />
     )
 
-    expect(queryByText('Obligatoire')).toBeFalsy()
+    expect(queryByText('Obligatoire')).not.toBeOnTheScreen()
   })
 })

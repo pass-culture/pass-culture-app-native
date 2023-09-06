@@ -32,12 +32,12 @@ jest.mock('features/navigation/navigationRef')
 describe('TrackEmailChange', () => {
   it('should render the component correctly', () => {
     render(<TrackEmailChange />)
-    expect(screen.getByText('Suivi de ton changement d’e-mail')).toBeTruthy()
+    expect(screen.getByText('Suivi de ton changement d’e-mail')).toBeOnTheScreen()
   })
 
   it('should display "Envoi de ta demande"', () => {
     render(<TrackEmailChange />)
-    expect(screen.getByText('Envoi de ta demande')).toBeTruthy()
+    expect(screen.getByText('Envoi de ta demande')).toBeOnTheScreen()
   })
 
   it('should display "Confirme ta demande" when current step is UPDATE_REQUEST', () => {
@@ -50,7 +50,7 @@ describe('TrackEmailChange', () => {
       isLoading: false,
     } as UseEmailUpdateStatusMock)
     render(<TrackEmailChange />)
-    expect(screen.getByText('Confirme ta demande')).toBeTruthy()
+    expect(screen.getByText('Confirme ta demande')).toBeOnTheScreen()
   })
 
   it('should not display "Confirme ta demande" when current step is not UPDATE_REQUEST', () => {
@@ -63,7 +63,7 @@ describe('TrackEmailChange', () => {
       isLoading: false,
     } as UseEmailUpdateStatusMock)
     render(<TrackEmailChange />)
-    expect(screen.queryByText('Confirme ta demande')).toBeNull()
+    expect(screen.queryByText('Confirme ta demande')).not.toBeOnTheScreen()
   })
 
   it('should display "Confirmation de ta demande" when current step is not UPDATE_REQUEST', () => {
@@ -76,7 +76,7 @@ describe('TrackEmailChange', () => {
       isLoading: false,
     } as UseEmailUpdateStatusMock)
     render(<TrackEmailChange />)
-    expect(screen.getByText('Confirmation de ta demande')).toBeTruthy()
+    expect(screen.getByText('Confirmation de ta demande')).toBeOnTheScreen()
   })
 
   it('should not display "Confirmation de ta demande" when current step is UPDATE_REQUEST', () => {
@@ -89,7 +89,7 @@ describe('TrackEmailChange', () => {
       isLoading: false,
     } as UseEmailUpdateStatusMock)
     render(<TrackEmailChange />)
-    expect(screen.queryByText('Confirmation de ta demande')).toBeNull()
+    expect(screen.queryByText('Confirmation de ta demande')).not.toBeOnTheScreen()
   })
 
   it('should display "Valide ta nouvelle adresse" when current step is CONFIRMATION', () => {
@@ -102,7 +102,7 @@ describe('TrackEmailChange', () => {
       isLoading: false,
     } as UseEmailUpdateStatusMock)
     render(<TrackEmailChange />)
-    expect(screen.getByText('Valide ta nouvelle adresse')).toBeTruthy()
+    expect(screen.getByText('Valide ta nouvelle adresse')).toBeOnTheScreen()
   })
 
   it('should not display "Valide ta nouvelle adresse" when current step is not CONFIRMATION', () => {
@@ -115,7 +115,7 @@ describe('TrackEmailChange', () => {
       isLoading: false,
     } as UseEmailUpdateStatusMock)
     render(<TrackEmailChange />)
-    expect(screen.queryByText('Valide ta nouvelle adresse')).toBeNull()
+    expect(screen.queryByText('Valide ta nouvelle adresse')).not.toBeOnTheScreen()
   })
 
   it('should display "Validation de ta nouvelle adresse" when current step is not CONFIRMATION', () => {
@@ -128,7 +128,7 @@ describe('TrackEmailChange', () => {
       isLoading: false,
     } as UseEmailUpdateStatusMock)
     render(<TrackEmailChange />)
-    expect(screen.getByText('Validation de ta nouvelle adresse')).toBeTruthy()
+    expect(screen.getByText('Validation de ta nouvelle adresse')).toBeOnTheScreen()
   })
 
   it('should not display "Validation de ta nouvelle adresse" when current step is CONFIRMATION', () => {
@@ -141,7 +141,7 @@ describe('TrackEmailChange', () => {
       isLoading: false,
     } as UseEmailUpdateStatusMock)
     render(<TrackEmailChange />)
-    expect(screen.queryByText('Validation de ta nouvelle adresse')).toBeNull()
+    expect(screen.queryByText('Validation de ta nouvelle adresse')).not.toBeOnTheScreen()
   })
 
   it('should display "Connecte-toi sur ta nouvelle adresse" when current step is VALIDATION', () => {
@@ -154,7 +154,7 @@ describe('TrackEmailChange', () => {
       isLoading: false,
     } as UseEmailUpdateStatusMock)
     render(<TrackEmailChange />)
-    expect(screen.getByText('Connecte-toi sur ta nouvelle adresse')).toBeTruthy()
+    expect(screen.getByText('Connecte-toi sur ta nouvelle adresse')).toBeOnTheScreen()
   })
 
   it('should not display "Connecte-toi sur ta nouvelle adresse" when current step is not VALIDATION', () => {
@@ -167,7 +167,7 @@ describe('TrackEmailChange', () => {
       isLoading: false,
     } as UseEmailUpdateStatusMock)
     render(<TrackEmailChange />)
-    expect(screen.queryByText('Connecte-toi sur ta nouvelle adresse')).toBeNull()
+    expect(screen.queryByText('Connecte-toi sur ta nouvelle adresse')).not.toBeOnTheScreen()
   })
 
   it('should display "Connexion sur ta nouvelle adresse" when current step is not VALIDATION', () => {
@@ -180,7 +180,7 @@ describe('TrackEmailChange', () => {
       isLoading: false,
     } as UseEmailUpdateStatusMock)
     render(<TrackEmailChange />)
-    expect(screen.getByText('Connexion sur ta nouvelle adresse')).toBeTruthy()
+    expect(screen.getByText('Connexion sur ta nouvelle adresse')).toBeOnTheScreen()
   })
 
   it('should not display "Connexion sur ta nouvelle adresse" when current step is VALIDATION', () => {
@@ -193,7 +193,7 @@ describe('TrackEmailChange', () => {
       isLoading: false,
     } as UseEmailUpdateStatusMock)
     render(<TrackEmailChange />)
-    expect(screen.queryByText('Connexion sur ta nouvelle adresse')).toBeNull()
+    expect(screen.queryByText('Connexion sur ta nouvelle adresse')).not.toBeOnTheScreen()
   })
 
   it('should redirect to previous screen when clicking on ArrowPrevious icon', async () => {
@@ -221,7 +221,7 @@ describe('TrackEmailChange', () => {
       isLoading: false,
     } as UseEmailUpdateStatusMock)
     render(<TrackEmailChange />)
-    expect(screen.getByText('Depuis l’email envoyé à example@example.com')).toBeTruthy()
+    expect(screen.getByText('Depuis l’email envoyé à example@example.com')).toBeOnTheScreen()
   })
 
   it('should display the new user email when the step is confirmation of your change of e-mail address on your old e-mail address', () => {
@@ -234,7 +234,7 @@ describe('TrackEmailChange', () => {
       isLoading: false,
     } as UseEmailUpdateStatusMock)
     render(<TrackEmailChange />)
-    expect(screen.getByText('Depuis l’email envoyé à new@example.com')).toBeTruthy()
+    expect(screen.getByText('Depuis l’email envoyé à new@example.com')).toBeOnTheScreen()
   })
 
   describe('should navigate to home', () => {

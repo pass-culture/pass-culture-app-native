@@ -24,33 +24,33 @@ describe('<Slider />', () => {
   describe('values', () => {
     it('should show two values if there are 2 values in the array values', () => {
       const { queryByText } = render(<Slider values={[0, 100]} showValues />)
-      expect(queryByText('0 - 100')).toBeTruthy()
+      expect(queryByText('0 - 100')).toBeOnTheScreen()
     })
 
     it('should show one value if there are 1 value in the array values', () => {
       const { queryByText } = render(<Slider values={[100]} showValues />)
-      expect(queryByText('100')).toBeTruthy()
-      expect(queryByText('0 - 100')).toBeNull()
+      expect(queryByText('100')).toBeOnTheScreen()
+      expect(queryByText('0 - 100')).not.toBeOnTheScreen()
     })
 
     it('should not show values if showValues is false', () => {
       const { queryByText } = render(<Slider values={[100]} showValues={false} />)
-      expect(queryByText('100')).toBeNull()
-      expect(queryByText('0 - 100')).toBeNull()
+      expect(queryByText('100')).not.toBeOnTheScreen()
+      expect(queryByText('0 - 100')).not.toBeOnTheScreen()
     })
 
     it('should show minimum value if shouldShowMinMaxValues is true', () => {
       const { queryByText } = render(
         <Slider values={[100]} shouldShowMinMaxValues min={0} showValues={false} />
       )
-      expect(queryByText('0')).toBeTruthy()
+      expect(queryByText('0')).toBeOnTheScreen()
     })
 
     it('should show maximim value if shouldShowMinMaxValues is true', () => {
       const { queryByText } = render(
         <Slider values={[100]} shouldShowMinMaxValues max={100} showValues={false} />
       )
-      expect(queryByText('100')).toBeTruthy()
+      expect(queryByText('100')).toBeOnTheScreen()
     })
 
     it('should show minimum and maximum complement when defined', () => {
@@ -63,7 +63,7 @@ describe('<Slider />', () => {
           minMaxValuesComplement={`\u00a0km`}
         />
       )
-      expect(queryByText('100\u00a0km')).toBeTruthy()
+      expect(queryByText('100\u00a0km')).toBeOnTheScreen()
     })
   })
 })

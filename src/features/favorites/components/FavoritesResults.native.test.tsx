@@ -56,7 +56,7 @@ describe('FavoritesResults component', () => {
     const button = await screen.findByText('Découvrir le catalogue')
     const sortByButton = screen.queryByText('Trier')
     expect(button).toBeTruthy()
-    expect(sortByButton).toBeFalsy()
+    expect(sortByButton).not.toBeOnTheScreen()
   })
 
   it('should show favorite placeholder on init', async () => {
@@ -68,7 +68,7 @@ describe('FavoritesResults component', () => {
 
     renderFavoritesResults()
     const container = await screen.findByTestId('FavoritesResultsPlaceHolder')
-    expect(container).toBeTruthy()
+    expect(container).toBeOnTheScreen()
   })
 
   it('should show number of result and sortBy button', async () => {
@@ -88,16 +88,16 @@ describe('FavoritesResults component', () => {
     const container = await screen.findByText(
       `${paginatedFavoritesResponseSnap.nbFavorites} favoris`
     )
-    expect(container).toBeTruthy()
+    expect(container).toBeOnTheScreen()
     const sortByButton = screen.getByText('Trier')
-    expect(sortByButton).toBeTruthy()
+    expect(sortByButton).toBeOnTheScreen()
   })
 
   it('should show favorite list banner when the user hasnt already seen it', async () => {
     useFeatureFlagSpy.mockReturnValueOnce(true)
     renderFavoritesResults()
 
-    expect(await screen.findByText('Crée une liste de favoris')).toBeTruthy()
+    expect(await screen.findByText('Crée une liste de favoris')).toBeOnTheScreen()
   })
 
   it('should not show favorite list banner when the user has already seen the fake door', async () => {
@@ -107,7 +107,7 @@ describe('FavoritesResults component', () => {
     renderFavoritesResults()
 
     await waitFor(() => {
-      expect(screen.queryByText('Crée une liste de favoris')).toBeFalsy()
+      expect(screen.queryByText('Crée une liste de favoris')).not.toBeOnTheScreen()
     })
   })
 })

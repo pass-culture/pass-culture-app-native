@@ -7,7 +7,7 @@ import { HomeHeader } from 'features/home/components/headers/HomeHeader'
 import { GenericHome } from 'features/home/pages/GenericHome'
 import { UseRouteType } from 'features/navigation/RootNavigator/types'
 import { analytics } from 'libs/analytics'
-import { useGeolocation } from 'libs/geolocation'
+import { useLocation } from 'libs/geolocation'
 import { StatusBarBlurredBackground } from 'ui/components/statusBar/statusBarBlurredBackground'
 
 const Header = () => (
@@ -19,7 +19,7 @@ const Header = () => (
 export const Home: FunctionComponent = () => {
   const { params } = useRoute<UseRouteType<'Home'>>()
   const { modules, id } = useHomepageData() || {}
-  const { setCustomPosition } = useGeolocation()
+  const { setCustomPosition } = useLocation()
 
   useEffect(() => {
     if (id) {
@@ -44,7 +44,8 @@ export const Home: FunctionComponent = () => {
   )
 }
 
-const ListHeaderContainer = styled.View({
+const ListHeaderContainer = styled.View(({ theme }) => ({
   flexGrow: 1,
   flexShrink: 0,
-})
+  zIndex: theme.zIndex.header,
+}))

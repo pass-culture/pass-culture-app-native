@@ -17,7 +17,7 @@ describe('TicketBody', () => {
   describe('<QrCode/> display', () => {
     it('should display the QR code when the the booking have a QR code and the offer subcategory allows to have a qr code', () => {
       const { queryByTestId } = render(<TicketBody {...initialProps} />)
-      expect(queryByTestId('qr-code')).toBeTruthy()
+      expect(queryByTestId('qr-code')).toBeOnTheScreen()
     })
 
     it('should not display the QR code when event subcategory is in subcategories list without QR code display', () => {
@@ -25,14 +25,14 @@ describe('TicketBody', () => {
         <TicketBody {...initialProps} subcategoryId={SubcategoryIdEnum.FESTIVAL_MUSIQUE} />
       )
 
-      expect(queryByTestId('qr-code')).toBeNull()
+      expect(queryByTestId('qr-code')).not.toBeOnTheScreen()
     })
   })
 
   describe('Withdrawal', () => {
     it("should not display withdrawal informations for legacy offer that doesn't withdrawal informations", () => {
       const { queryByTestId } = render(<TicketBody {...initialProps} withdrawalType={undefined} />)
-      expect(queryByTestId('withdrawal-info')).toBeNull()
+      expect(queryByTestId('withdrawal-info')).not.toBeOnTheScreen()
     })
 
     describe('<NoTicket/> display', () => {
@@ -45,7 +45,7 @@ describe('TicketBody', () => {
             withdrawalDelay={0}
           />
         )
-        expect(queryByTestId('withdrawal-info-no-ticket')).toBeTruthy()
+        expect(queryByTestId('withdrawal-info-no-ticket')).toBeOnTheScreen()
       })
     })
 
@@ -59,7 +59,7 @@ describe('TicketBody', () => {
           withdrawalDelay={twoDays}
         />
       )
-      expect(queryByTestId('withdrawal-info-email')).toBeTruthy()
+      expect(queryByTestId('withdrawal-info-email')).toBeOnTheScreen()
     })
 
     describe('<TicketWithdrawal/> display', () => {
@@ -71,7 +71,7 @@ describe('TicketBody', () => {
             withdrawalType={WithdrawalTypeEnum.on_site}
           />
         )
-        expect(queryByTestId('withdrawal-info')).toBeTruthy()
+        expect(queryByTestId('withdrawal-info')).toBeOnTheScreen()
       })
     })
   })

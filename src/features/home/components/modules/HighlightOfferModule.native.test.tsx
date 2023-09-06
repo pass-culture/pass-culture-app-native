@@ -12,6 +12,7 @@ import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, fireEvent, render, screen } from 'tests/utils'
 
 const offerFixture = offersFixture[0]
+const duoOfferFixture = offersFixture[2]
 
 jest.mock('features/home/api/useHighlightOffer')
 const mockUseHighlightOffer = useHighlightOffer as jest.Mock
@@ -44,7 +45,7 @@ describe('HighlightOfferModule', () => {
 
     await act(async () => {})
 
-    expect(screen.queryByText(highlightOfferModuleFixture.highlightTitle)).toBeFalsy()
+    expect(screen.queryByText(highlightOfferModuleFixture.highlightTitle)).not.toBeOnTheScreen()
   })
 
   it('should send analytics event on module display', async () => {
@@ -98,6 +99,28 @@ describe('HighlightOfferModule', () => {
       from: 'highlightOffer',
       moduleId: 'fH2FmoYeTzZPjhbz4ZHUW',
       moduleName: 'L’offre du moment 💥',
+    })
+  })
+
+  it('should show "- Duo" after price if offer isDuo', async () => {
+    mockUseHighlightOffer.mockReturnValueOnce(duoOfferFixture)
+
+    renderHighlightModule()
+
+    await act(async () => {
+      expect(screen.getByText('34 € - Duo')).toBeOnTheScreen()
+      expect(screen.queryByText('34 €')).not.toBeOnTheScreen()
+    })
+  })
+
+  it('should not show "- Duo" after price if offer is not isDuo', async () => {
+    mockUseHighlightOffer.mockReturnValueOnce(offerFixture)
+
+    renderHighlightModule()
+
+    await act(async () => {
+      expect(screen.getByText('28 €')).toBeOnTheScreen()
+      expect(screen.queryByText('28 € - Duo')).not.toBeOnTheScreen()
     })
   })
 })

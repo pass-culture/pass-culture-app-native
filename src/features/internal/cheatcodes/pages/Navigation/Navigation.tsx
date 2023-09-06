@@ -112,12 +112,6 @@ export function Navigation(): React.JSX.Element {
           </Row>
           <Row half>
             <ButtonPrimary
-              wording="Onboarding 🛶"
-              onPress={() => navigate('NavigationOnboarding')}
-            />
-          </Row>
-          <Row half>
-            <ButtonPrimary
               wording="Sentry"
               onPress={() => {
                 const message = `SENTRY_${env.ENV}_TEST_${uuidv4().slice(0, 5)}`.toUpperCase()
@@ -144,14 +138,8 @@ export function Navigation(): React.JSX.Element {
           </Row>
           <Row half>
             <ButtonPrimary
-              wording="New Tutorial ❔"
-              onPress={() => navigate('Tutorial', { selectedAge: 15 })}
-            />
-          </Row>
-          <Row half>
-            <ButtonPrimary
-              wording="First Tutorial"
-              onPress={() => navigate('FirstTutorial', { shouldCloseAppOnBackAction: false })}
+              wording="Tutorial ❔"
+              onPress={() => navigate('CheatcodeNavigationTutorial')}
             />
           </Row>
           <Row half>

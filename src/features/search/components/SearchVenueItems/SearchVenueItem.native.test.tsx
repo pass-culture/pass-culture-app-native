@@ -47,10 +47,10 @@ describe('<SearchVenueItem />', () => {
   it('should render venue item correctly', () => {
     render(<SearchVenueItem venue={mockAlgoliaVenue} width={ITEM_WIDTH} height={ITEM_HEIGHT} />)
 
-    expect(screen.getByText(mockAlgoliaVenue.name)).toBeTruthy()
+    expect(screen.getByText(mockAlgoliaVenue.name)).toBeOnTheScreen()
     expect(
       screen.getByText(`${mockAlgoliaVenue.city}, ${mockAlgoliaVenue.postalCode}`)
-    ).toBeTruthy()
+    ).toBeOnTheScreen()
   })
 
   it('should log to analytics', async () => {
@@ -77,7 +77,7 @@ describe('<SearchVenueItem />', () => {
   it('should render a venue type tile icon when banner_url is not provided', () => {
     render(<SearchVenueItem venue={mockAlgoliaVenue} width={ITEM_WIDTH} height={ITEM_HEIGHT} />)
 
-    expect(screen.getByTestId('venue-type-tile')).toBeTruthy()
+    expect(screen.getByTestId('venue-type-tile')).toBeOnTheScreen()
   })
 
   it('should render a banner image when banner_url is provided', () => {
@@ -88,7 +88,7 @@ describe('<SearchVenueItem />', () => {
     }
     render(<SearchVenueItem venue={venueWithBanner} width={ITEM_WIDTH} height={ITEM_HEIGHT} />)
 
-    expect(screen.getByTestId('tileImage')).toBeTruthy()
+    expect(screen.getByTestId('tileImage')).toBeOnTheScreen()
   })
 
   it('should navigate to the venue when pressing a search venue item', async () => {
@@ -116,14 +116,14 @@ describe('<SearchVenueItem />', () => {
     mockDistance = '10 km'
     render(<SearchVenueItem venue={mockAlgoliaVenue} width={ITEM_WIDTH} height={ITEM_HEIGHT} />)
 
-    expect(screen.getByText('à 10 km')).toBeTruthy()
+    expect(screen.getByText('à 10 km')).toBeOnTheScreen()
   })
 
   it('should not display the distance tag when distance is not available', () => {
     mockDistance = null
     render(<SearchVenueItem venue={mockAlgoliaVenue} width={ITEM_WIDTH} height={ITEM_HEIGHT} />)
 
-    expect(screen.queryByText('à 10 km')).toBeFalsy()
+    expect(screen.queryByText('à 10 km')).not.toBeOnTheScreen()
   })
 
   it('should display only the city when postal code is null', () => {
@@ -135,7 +135,7 @@ describe('<SearchVenueItem />', () => {
       />
     )
 
-    expect(screen.queryByText(mockAlgoliaVenue.city)).toBeTruthy()
+    expect(screen.queryByText(mockAlgoliaVenue.city)).toBeOnTheScreen()
   })
 
   it('should display only the city when postal code is an empty string', () => {
@@ -147,6 +147,6 @@ describe('<SearchVenueItem />', () => {
       />
     )
 
-    expect(screen.queryByText(mockAlgoliaVenue.city)).toBeTruthy()
+    expect(screen.queryByText(mockAlgoliaVenue.city)).toBeOnTheScreen()
   })
 })

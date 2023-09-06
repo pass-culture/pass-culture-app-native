@@ -13,13 +13,13 @@ describe('<SeatWithQrCode/>', () => {
     const { queryByText } = render(
       <SeatWithQrCode seatIndex={seatIndex} seat={seat} barcode={barcode} />
     )
-    expect(queryByText(`Place\u00a0${seatIndex}\u00a0:${whiteSpace}`)).toBeTruthy()
+    expect(queryByText(`Place\u00a0${seatIndex}\u00a0:${whiteSpace}`)).toBeOnTheScreen()
   })
 
   it('should display the seat number if there is a seat number', async () => {
     const { queryByText } = render(
       <SeatWithQrCode seatIndex={seatIndex} seat={seat} barcode={barcode} />
     )
-    expect(queryByText(`Siège\u00a0${seat}`)).toBeTruthy()
+    expect(queryByText(`Siège\u00a0${seat}`)).toBeOnTheScreen()
   })
 })

@@ -61,7 +61,7 @@ describe('OffersModule component', () => {
 
   it('should not render if data is undefined', () => {
     render(<OffersModule {...{ ...props, data: undefined }} />)
-    expect(screen.toJSON()).toBeNull()
+    expect(screen.toJSON()).not.toBeOnTheScreen()
   })
 })
 
