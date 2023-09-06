@@ -1,9 +1,9 @@
 import pick from 'lodash/pick'
-import React, { memo, useCallback, useContext, useEffect, useMemo, useState } from 'react'
+import React, { memo, useCallback, useContext, useEffect, useMemo, useRef, useState } from 'react'
 import { QueryObserverResult } from 'react-query'
 
 import { api } from 'api/api'
-import { refreshAccessToken } from 'api/apiHelpers'
+import { computeTokenRemainingLifetimeInMs } from 'api/apiHelpers'
 import { UserProfileResponse } from 'api/gen'
 import { useCookies } from 'features/cookies/helpers/useCookies'
 // eslint-disable-next-line no-restricted-imports
@@ -11,7 +11,8 @@ import { amplitude } from 'libs/amplitude'
 import { useAppStateChange } from 'libs/appState'
 // eslint-disable-next-line no-restricted-imports
 import { firebaseAnalytics } from 'libs/firebase/analytics'
-import { getAccessTokenStatus, getUserIdFromAccesstoken } from 'libs/jwt'
+import { getTokenStatus, getUserIdFromAccesstoken } from 'libs/jwt'
+import { getRefreshToken } from 'libs/keychain'
 import { eventMonitoring } from 'libs/monitoring'
 import { useNetInfoContext } from 'libs/network/NetInfoWrapper'
 import { QueryKeys } from 'libs/queryKeys'
@@ -22,6 +23,7 @@ import { getAge } from 'shared/user/getAge'
 
 import { version as appVersion } from '../../../../package.json'
 
+const MAX_AVERAGE_SESSION_DURATION_IN_MS = 60 * 60 * 1000
 export interface IAuthContext {
   isLoggedIn: boolean
   setIsLoggedIn: (isLoggedIn: boolean) => void
@@ -32,6 +34,7 @@ export interface IAuthContext {
 
 export const useConnectServicesRequiringUserId = (): ((accessToken: string | null) => void) => {
   const { setUserId: setUserIdToCookiesChoice } = useCookies()
+
   return useCallback(
     (accessToken) => {
       if (!accessToken) return
@@ -65,6 +68,7 @@ export const AuthWrapper = memo(function AuthWrapper({
 }: {
   children: React.JSX.Element
 }) {
+  const timeoutRef = useRef<number>()
   const [loading, setLoading] = useState(true)
   const [isLoggedIn, setIsLoggedIn] = useState(false)
   const connectServicesRequiringUserId = useConnectServicesRequiringUserId()
@@ -76,27 +80,30 @@ export const AuthWrapper = memo(function AuthWrapper({
 
   const readTokenAndConnectUser = useCallback(async () => {
     try {
-      let accessToken = await storage.readString('access_token')
-      const accessTokenStatus = getAccessTokenStatus(accessToken)
+      const refreshToken = await getRefreshToken()
+      const accessToken = await storage.readString('access_token')
+      const refreshTokenStatus = getTokenStatus(refreshToken)
 
-      if (accessTokenStatus === 'expired') {
-        // refreshAccessToken calls the backend to get a new access token
-        // and also saves it to the storage
-        const { result, error } = await refreshAccessToken(api)
-
-        if (error) {
-          eventMonitoring.captureException(new Error(`AuthWrapper ${error}`))
+      switch (refreshTokenStatus) {
+        case 'unknown':
+        case 'expired':
           setIsLoggedIn(false)
           return
-        }
-
-        if (result) {
-          accessToken = result
-        }
-      }
-      if (accessTokenStatus === 'valid') {
-        setIsLoggedIn(true)
-        connectServicesRequiringUserId(accessToken)
+        case 'valid':
+          setIsLoggedIn(true)
+          connectServicesRequiringUserId(accessToken)
+          if (refreshToken) {
+            const remainingLifetimeInMs = computeTokenRemainingLifetimeInMs(refreshToken)
+            if (
+              remainingLifetimeInMs &&
+              remainingLifetimeInMs < MAX_AVERAGE_SESSION_DURATION_IN_MS
+            ) {
+              timeoutRef.current = globalThis.setTimeout(() => {
+                setIsLoggedIn(false)
+              }, remainingLifetimeInMs)
+            }
+          }
+          return
       }
     } catch (err) {
       eventMonitoring.captureException(err)
@@ -108,7 +115,13 @@ export const AuthWrapper = memo(function AuthWrapper({
 
   useEffect(() => {
     readTokenAndConnectUser()
+
+    return () => {
+      if (timeoutRef.current) clearTimeout(timeoutRef.current)
+    }
   }, [readTokenAndConnectUser])
+
+  useAppStateChange(readTokenAndConnectUser, () => void 0, [isLoggedIn])
 
   useEffect(() => {
     if (!user?.id) return
@@ -129,8 +142,6 @@ export const AuthWrapper = memo(function AuthWrapper({
     })
     amplitude.setUserId(user.id.toString())
   }, [user])
-
-  useAppStateChange(readTokenAndConnectUser, () => void 0, [isLoggedIn])
 
   const value = useMemo(
     () => ({ isLoggedIn, setIsLoggedIn, user, refetchUser, isUserLoading }),
