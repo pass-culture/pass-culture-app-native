@@ -4,16 +4,13 @@ import styled from 'styled-components/native'
 
 import { useHomepageData } from 'features/home/api/useHomepageData'
 import { HomeHeader } from 'features/home/components/headers/HomeHeader'
+import { PERF_HOME_CREATION, PERF_HOME_LOADING } from 'features/home/constants'
 import { GenericHome } from 'features/home/pages/GenericHome'
 import { UseRouteType } from 'features/navigation/RootNavigator/types'
 import { analytics } from 'libs/analytics'
 import { useLocation } from 'libs/geolocation'
 import { useFunctionOnce } from 'libs/hooks'
-import {
-  usePerformanceCalculation,
-  PERF_HOME_GLOBAL,
-  PERF_HOME_ZERO,
-} from 'shared/performance/usePerformanceCalculation/usePerformanceCalculation'
+import { usePerformanceCalculation } from 'shared/performance/usePerformanceCalculation/usePerformanceCalculation'
 import { StatusBarBlurredBackground } from 'ui/components/statusBar/statusBarBlurredBackground'
 
 const Header = () => (
@@ -24,14 +21,14 @@ const Header = () => (
 
 export const Home: FunctionComponent = () => {
   const { start } = usePerformanceCalculation()
-  const startPerfHomeGlobalOnce = useFunctionOnce(() => start(PERF_HOME_GLOBAL))
-  const startPerfHomeZeroOnce = useFunctionOnce(() => start(PERF_HOME_ZERO))
+  const startPerfHomeLoadingOnce = useFunctionOnce(() => start(PERF_HOME_LOADING))
+  const startPerfHomeCreationOnce = useFunctionOnce(() => start(PERF_HOME_CREATION))
   const { params } = useRoute<UseRouteType<'Home'>>()
   const { modules, id } = useHomepageData() || {}
   const { setCustomPosition } = useLocation()
 
-  startPerfHomeZeroOnce()
-  startPerfHomeGlobalOnce()
+  startPerfHomeCreationOnce()
+  startPerfHomeLoadingOnce()
 
   useEffect(() => {
     if (id) {

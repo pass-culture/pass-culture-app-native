@@ -1,0 +1,2 @@
+export const PERF_HOME_CREATION = 'HOME:CREATION'
+export const PERF_HOME_LOADING = 'HOME:LOADING'

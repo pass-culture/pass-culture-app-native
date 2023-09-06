@@ -5,11 +5,6 @@ import {
   startTransaction,
 } from 'shared/performance/helpers/performanceHelpers'
 
-// Transaction name has seen in Sentry
-// PERF_[PAGE_NAME]_GLOBAL | [NAME]
-export const PERF_HOME_ZERO = 'HOME:ON_CREATE'
-export const PERF_HOME_GLOBAL = 'HOME:AFTER_SKELETON'
-
 const transactions: Transaction[] = []
 
 // Start the hook in the first line of a component
