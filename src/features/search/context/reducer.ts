@@ -65,7 +65,7 @@ export type Action =
 export type SearchVenuesAction =
   | { type: 'INIT' }
   | { type: 'SET_VENUES'; payload: Hit<AlgoliaVenue>[] }
-  | { type: 'SET_USER_DATA'; payload: { venue_playlist_title: string } }
+  | { type: 'SET_USER_DATA'; payload: [{ venue_playlist_title: string }] }
 
 export const searchReducer = (state: SearchState, action: Action): SearchState => {
   switch (action.type) {
