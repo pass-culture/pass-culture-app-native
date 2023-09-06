@@ -4,8 +4,6 @@ import { useRoute } from '__mocks__/@react-navigation/native'
 import { useHomepageData } from 'features/home/api/useHomepageData'
 import { formattedVenuesModule } from 'features/home/fixtures/homepage.fixture'
 import { analytics } from 'libs/analytics'
-import { initialPerformanceState } from 'shared/performance/context/reducer'
-import { PerformanceState } from 'shared/performance/types'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, render, screen } from 'tests/utils'
 
@@ -20,11 +18,6 @@ jest.mock('features/home/api/useHomepageData')
 const mockUseHomepageData = useHomepageData as jest.Mock
 
 jest.mock('libs/geolocation')
-
-const mockPerformanceState: PerformanceState = initialPerformanceState
-jest.mock('shared/performance/context/PerformanceWrapper', () => ({
-  usePerformance: () => ({ performanceState: mockPerformanceState, dispatch: jest.fn() }),
-}))
 
 const mockStartTransaction = jest.fn()
 jest.mock('shared/performance/usePerformanceCalculation/usePerformanceCalculation', () => ({
@@ -77,7 +70,7 @@ describe('Home page', () => {
     renderHome()
     await act(async () => {})
 
-    expect(mockStartTransaction).toHaveBeenCalledTimes(1)
+    expect(mockStartTransaction).toHaveBeenCalledTimes(2)
   })
 })
 

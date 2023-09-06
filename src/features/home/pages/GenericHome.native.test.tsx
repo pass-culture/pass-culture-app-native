@@ -6,8 +6,6 @@ import { GenericHome } from 'features/home/pages/GenericHome'
 import { analytics } from 'libs/analytics'
 import { useNetInfoContext as useNetInfoContextDefault } from 'libs/network/NetInfoWrapper'
 import { BatchUser } from 'libs/react-native-batch'
-import { initialPerformanceState } from 'shared/performance/context/reducer'
-import { PerformanceState } from 'shared/performance/types'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { render, waitFor, screen, fireEvent, act } from 'tests/utils'
 import { Typo } from 'ui/theme'
@@ -24,11 +22,6 @@ jest.mock('features/auth/context/AuthContext', () => ({
 const defaultModules = [formattedVenuesModule]
 const homeId = 'fake-id'
 const Header = <Typo.Title1>Header</Typo.Title1>
-
-const mockPerformanceState: PerformanceState = initialPerformanceState
-jest.mock('shared/performance/context/PerformanceWrapper', () => ({
-  usePerformance: () => ({ performanceState: mockPerformanceState, dispatch: jest.fn() }),
-}))
 
 const mockFinishTransaction = jest.fn()
 jest.mock('shared/performance/usePerformanceCalculation/usePerformanceCalculation', () => ({
@@ -77,7 +70,7 @@ describe('GenericHome', () => {
     it('should finish home global transaction when skeleton not display', async () => {
       renderGenericHome()
       await act(async () => {})
-      expect(mockFinishTransaction).not.toHaveBeenCalled()
+      expect(mockFinishTransaction).toHaveBeenCalledTimes(1)
       useShowSkeletonSpy.mockReturnValueOnce(false)
       screen.rerender(
         // eslint-disable-next-line local-rules/no-react-query-provider-hoc
@@ -86,7 +79,7 @@ describe('GenericHome', () => {
         )
       )
       await act(async () => {})
-      expect(mockFinishTransaction).toHaveBeenCalledTimes(1)
+      expect(mockFinishTransaction).toHaveBeenCalledTimes(2)
     })
   })
 })

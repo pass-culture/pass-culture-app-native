@@ -23,6 +23,7 @@ import { OfflinePage } from 'libs/network/OfflinePage'
 import { BatchEvent, BatchUser } from 'libs/react-native-batch'
 import {
   PERF_HOME_GLOBAL,
+  PERF_HOME_ZERO,
   usePerformanceCalculation,
 } from 'shared/performance/usePerformanceCalculation/usePerformanceCalculation'
 import { ScrollToTopButton } from 'ui/components/ScrollToTopButton'
@@ -99,6 +100,7 @@ const OnlineHome: FunctionComponent<GenericHomeProps> = ({
   const flatListHeaderStyle = { zIndex: theme.zIndex.header }
   const { finish } = usePerformanceCalculation()
   const finishPerfHomeGlobalOnce = useFunctionOnce(() => finish(PERF_HOME_GLOBAL))
+  const finishPerfHomeZeroOnce = useFunctionOnce(() => finish(PERF_HOME_ZERO))
 
   const modulesToDisplay = modules.slice(0, maxIndex)
 
@@ -145,8 +147,9 @@ const OnlineHome: FunctionComponent<GenericHomeProps> = ({
   const onContentSizeChange = () => setIsLoading(false)
 
   useEffect(() => {
+    finishPerfHomeZeroOnce()
     return () => clearInterval(modulesIntervalId.current)
-  }, [])
+  }, [finishPerfHomeZeroOnce])
 
   useEffect(() => {
     if (!showSkeleton) {

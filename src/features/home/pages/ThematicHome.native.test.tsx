@@ -35,12 +35,10 @@ const mockedHighlightHeaderData = {
   },
 }
 
-const mockPerformanceState: PerformanceState = initialPerformanceState
-jest.mock('shared/performance/context/PerformanceWrapper', () => ({
-  usePerformance: () => ({ performanceState: mockPerformanceState, dispatch: jest.fn() }),
-}))
-
 describe('ThematicHome', () => {
+  beforeEach(() => {
+    jest.spyOn(console, 'warn').mockImplementation()
+  })
   useRoute.mockReturnValue({ params: { entryId: 'fakeEntryId' } })
 
   mockUseHomepageData.mockReturnValue({

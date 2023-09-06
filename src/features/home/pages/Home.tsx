@@ -12,6 +12,7 @@ import { useFunctionOnce } from 'libs/hooks'
 import {
   usePerformanceCalculation,
   PERF_HOME_GLOBAL,
+  PERF_HOME_ZERO,
 } from 'shared/performance/usePerformanceCalculation/usePerformanceCalculation'
 import { StatusBarBlurredBackground } from 'ui/components/statusBar/statusBarBlurredBackground'
 
@@ -24,10 +25,12 @@ const Header = () => (
 export const Home: FunctionComponent = () => {
   const { start } = usePerformanceCalculation()
   const startPerfHomeGlobalOnce = useFunctionOnce(() => start(PERF_HOME_GLOBAL))
+  const startPerfHomeZeroOnce = useFunctionOnce(() => start(PERF_HOME_ZERO))
   const { params } = useRoute<UseRouteType<'Home'>>()
   const { modules, id } = useHomepageData() || {}
   const { setCustomPosition } = useLocation()
 
+  startPerfHomeZeroOnce()
   startPerfHomeGlobalOnce()
 
   useEffect(() => {
