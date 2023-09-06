@@ -36,8 +36,8 @@ jobs:
           JIRA_BASE_URL: ${{ secrets.JIRA_BASE_URL }}
           JIRA_USER_EMAIL: ${{ secrets.JIRA_USER_EMAIL }}
           JIRA_API_TOKEN: ${{ secrets.JIRA_API_TOKEN }}
-          
 
+      # jira issue key example : PC-24026
       - name: Get jira issue key in commit
         id: get_jira_key
         uses: atlassian/gajira-find-issue-key@master
@@ -52,11 +52,11 @@ jobs:
           JIRA_API_TOKEN: ${{ secrets.JIRA_API_TOKEN }}
         run: |
           issue_type=$(jira view ${{ steps.get_jira_key.outputs.issue }} --template viewTicketType)
-          if [[ $issue_type != "OPS Task" ]]; then 
+          if [[ $issue_type != "OPS Task" ]]; then
             echo "status=${{ steps.get_jira_key.outputs.issue }}" >> $GITHUB_OUTPUT
           fi
 
-  # run only if previous job issue-number has set his output to the issue number 
+  # run only if previous job issue-number has set his output to the issue number
   update-jira-issues:
     runs-on: [self-hosted, linux, x64]
     needs: issue-number
@@ -110,4 +110,5 @@ jobs:
             --override customfield_10044=false \
             --override customfield_10059=${{ needs.issue-number.outputs.commit-number }} \
             --override customfield_10060=${{ needs.issue-number.outputs.commit-hash }} \
+            --override customfield_10085="pass-culture-app-native" \
             --noedit
