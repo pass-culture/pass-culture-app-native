@@ -16,8 +16,8 @@ appId: app.passculture.staging
           text: "à venir"
           index: 0
 - assertVisible:
-          text: "+ 30\_€"
-          index: 1
+    text: "+ 30\_€"
+    index: 0
 - assertVisible: "à 17 ans"
 - assertVisible: "remise à 0 du crédit"
 - assertVisible:

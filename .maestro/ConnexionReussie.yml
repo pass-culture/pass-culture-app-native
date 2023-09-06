@@ -19,10 +19,10 @@ appId: app.passculture.staging
     id: "Mon profil"
 
 - scrollUntilVisible:
-    element: "Version\_1.252.1"
+    element: "Version\_1.254.1"
     direction: DOWN
 
-- assertVisible: "Version\_1.252.1"
+- assertVisible: "Version\_1.254.1"
 
 # Stop App
 - runFlow: reusableFlows/StopApp.yml

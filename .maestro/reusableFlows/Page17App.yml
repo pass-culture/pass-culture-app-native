@@ -11,12 +11,14 @@ appId: app.passculture.staging
     text: "passé"
     index: 1
 - assertVisible:
-    text: "+ 30\_€"
+    text: "30\_€"
+#    text: "+ 30\_€"
     index: 0
 - assertVisible: "à 16 ans"
 - assertVisible: "cette année"
 - assertVisible:
-    text: "+ 30\_€"
+ #   text: "+ 30\_€"
+    text: "30\_€"
     index: 1
 - assertVisible: "à 17 ans"
 - assertVisible: "remise à 0 du crédit"

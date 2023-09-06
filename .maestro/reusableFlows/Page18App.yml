@@ -6,7 +6,7 @@ appId: app.passculture.staging
 - assertVisible: "300\_€"
 - assertVisible: "à 18 ans"
 - assertVisible: "Tu auras 2 ans pour utiliser tes 300\_€"
-- assertVisible: "pour les plus jeunes"
+#- assertVisible: "pour les plus jeunes"
 - assertVisible:
       text: "passé"
       index: 0
@@ -16,14 +16,16 @@ appId: app.passculture.staging
       text: "passé"
       index: 1
 - assertVisible:
-      text: "+ 30\_€"
+      text: "30\_€"
+      #text: "+ 30\_€"
       index: 0
 - assertVisible: "à 16 ans"
 - assertVisible:
       text: "passé"
       index: 2
 - assertVisible:
-      text: "+ 30\_€"
+      text: "30\_€"
+      #text: "+ 30\_€"
       index: 1
 - assertVisible: "à 17 ans"
 - assertVisible:

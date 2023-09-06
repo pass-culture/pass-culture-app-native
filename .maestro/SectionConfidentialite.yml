@@ -9,6 +9,12 @@ appId: app.passculture.staging
 - scrollUntilVisible:
     element: "Confidentialité"
     direction: DOWN
+    
+- scrollUntilVisible:
+    element: "Suivre le pass Culture"
+    direction: DOWN
+- assertVisible: "Suivre le pass Culture"
+
 - tapOn: "Confidentialité"
 - scrollUntilVisible:
       element: "Enregistrer mes choix"

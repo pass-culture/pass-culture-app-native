@@ -54,7 +54,9 @@ appId: app.passculture.staging
 - tapOn:
     id: "Voir les disponibilités"
 - tapOn:
-    point: "76%,65%"
+    point: "37%,59%"
+#- tapOn:
+#    point: "76%,65%"
 - assertVisible:
     id: "Valider la date"
 - tapOn: "Valider la date"

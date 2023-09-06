@@ -13,6 +13,12 @@ appId: app.passculture.staging
 - scrollUntilVisible:
       element: "Informations légales"
       direction: DOWN
+
+- scrollUntilVisible:
+    element: "Suivre le pass Culture"
+    direction: DOWN
+- assertVisible: "Suivre le pass Culture"
+
 - tapOn: "Informations légales"
 #- tapOn: "Informations légales"
 
