@@ -7,6 +7,7 @@ import styled from 'styled-components/native'
 import { VenueResponse } from 'api/gen'
 import { VenueDetails } from 'features/home/components/modules/venues/VenueDetails'
 import { VenueTypeLocationIcon } from 'features/home/components/modules/venues/VenueTypeLocationIcon'
+import { DistanceTag } from 'features/offer/components/DistanceTag/DistanceTag'
 import { VenueHit } from 'libs/algolia'
 import { analytics } from 'libs/analytics'
 import { Position } from 'libs/geolocation'
@@ -70,13 +71,8 @@ const UnmemoizedVenueTile = (props: VenueTileProps) => {
         onBlur={onBlur}
         isFocus={isFocus}
         accessibilityLabel={accessibilityLabel}>
-        <Container>
-          <VenueDetails
-            width={width}
-            name={venue.name}
-            venueType={venue.venueTypeCode || null}
-            distance={distance}
-          />
+        <View>
+          {!!distance && <StyledDistanceTag testID="distance-tag" distance={distance} />}
           {venue.bannerUrl ? (
             <ImageTile width={width} height={height} uri={venue.bannerUrl} />
           ) : (
@@ -88,7 +84,13 @@ const UnmemoizedVenueTile = (props: VenueTileProps) => {
               />
             </VenueTypeTile>
           )}
-        </Container>
+          <VenueDetails
+            width={width}
+            name={venue.name}
+            city={venue.city}
+            postalCode={venue.postalCode}
+          />
+        </View>
       </StyledTouchableLink>
     </View>
   )
@@ -97,8 +99,6 @@ const UnmemoizedVenueTile = (props: VenueTileProps) => {
 export const VenueTile = memo(UnmemoizedVenueTile)
 
 const MAX_VENUE_CAPTION_HEIGHT = getSpacing(18)
-
-const Container = styled.View({ flexDirection: 'column-reverse' })
 
 const StyledTouchableLink = styled(InternalTouchableLink).attrs(({ theme }) => ({
   underlayColor: theme.colors.white,
@@ -125,3 +125,11 @@ const VenueTypeTile = styled.View<{ width: number; height: number }>(
     justifyContent: 'center',
   })
 )
+
+const StyledDistanceTag = styled(DistanceTag)({
+  flex: 1,
+  position: 'absolute',
+  zIndex: 2,
+  top: 8,
+  right: 8,
+})

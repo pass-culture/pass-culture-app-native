@@ -228,6 +228,8 @@ export type Venue = {
   longitude?: number
   name: string
   venueTypeCode: VenueTypeCode
+  city: string
+  postalCode: string | null
 }
 
 export type CategoryListModule = {
