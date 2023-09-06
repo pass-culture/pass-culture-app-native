@@ -6,6 +6,7 @@ import { AuthenticationButton } from 'features/auth/components/AuthenticationBut
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { useDepositActivationAge } from 'features/profile/helpers/useDepositActivationAge'
+import { TutorialTimelineFifteen } from 'features/tutorial/components/TutorialTimelineFifteen'
 import { env } from 'libs/environment'
 import { getAge } from 'shared/user/getAge'
 import { useOpacityTransition } from 'ui/animations/helpers/useOpacityTransition'
@@ -31,7 +32,7 @@ export const ProfileTutorialAgeInformation: FunctionComponent<Props> = ({ select
   const headerHeight = useGetHeaderHeight()
 
   const defaultAge = selectedAge ?? 15
-  const age = user?.birthDate ? getAge(user.birthDate) : defaultAge
+  const age = isLoggedIn && user?.birthDate ? getAge(user.birthDate) : defaultAge
 
   const activationAge = useDepositActivationAge()
   const activationText = activationAge
@@ -51,6 +52,8 @@ export const ProfileTutorialAgeInformation: FunctionComponent<Props> = ({ select
         <Spacer.Column numberOfSpaces={6} />
         {/* À supprimer lors de la vraie implémentation*/}
         <Typo.Body>{activationText}</Typo.Body>
+        <Spacer.Column numberOfSpaces={2} />
+        <Timeline age={age} />
         <Spacer.Column numberOfSpaces={4} />
         <InfoBanner message="Cette page a-t-elle été utile&nbsp;? Aide-nous à l’améliorer en répondant à notre questionnaire.">
           <Spacer.Column numberOfSpaces={2} />
@@ -75,7 +78,6 @@ export const ProfileTutorialAgeInformation: FunctionComponent<Props> = ({ select
             <StyledLoginButton />
           </Container>
         ) : null}
-        <Placeholder height={2000} />
       </StyledScrollView>
       <AnimatedBlurHeaderTitle
         headerTitle={headerTitle}
@@ -84,6 +86,15 @@ export const ProfileTutorialAgeInformation: FunctionComponent<Props> = ({ select
       />
     </React.Fragment>
   )
+}
+
+const Timeline = ({ age }: { age: number | undefined }) => {
+  switch (age) {
+    case 15:
+      return <TutorialTimelineFifteen />
+    default:
+      return null
+  }
 }
 
 const StyledScrollView = styled.ScrollView.attrs(({ theme }) => ({

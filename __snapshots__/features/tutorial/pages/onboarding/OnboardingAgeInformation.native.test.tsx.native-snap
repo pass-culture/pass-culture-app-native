@@ -286,12 +286,10 @@ exports[`OnboardingAgeInformation should render correctly for 15-year-old 1`] = 
                 status="cette année"
                 style={
                   {
-                    "alignItems": "center",
                     "backgroundColor": "#ffffff",
                     "borderColor": "#90949D",
                     "borderRadius": 4,
                     "borderWidth": 1,
-                    "flexDirection": "row",
                     "marginHorizontal": 0,
                     "overflow": "hidden",
                     "paddingBottom": 16,
@@ -525,12 +523,10 @@ exports[`OnboardingAgeInformation should render correctly for 15-year-old 1`] = 
                 style={
                   [
                     {
-                      "alignItems": "center",
                       "backgroundColor": "#F1F1F4",
                       "borderColor": "#F1F1F4",
                       "borderRadius": 4,
                       "borderWidth": 1,
-                      "flexDirection": "row",
                       "marginHorizontal": 4,
                       "overflow": "hidden",
                       "paddingBottom": 16,
@@ -760,12 +756,10 @@ exports[`OnboardingAgeInformation should render correctly for 15-year-old 1`] = 
                 style={
                   [
                     {
-                      "alignItems": "center",
                       "backgroundColor": "#F1F1F4",
                       "borderColor": "#F1F1F4",
                       "borderRadius": 4,
                       "borderWidth": 1,
-                      "flexDirection": "row",
                       "marginHorizontal": 4,
                       "overflow": "hidden",
                       "paddingBottom": 16,
@@ -1122,12 +1116,10 @@ exports[`OnboardingAgeInformation should render correctly for 15-year-old 1`] = 
                 style={
                   [
                     {
-                      "alignItems": "center",
                       "backgroundColor": "#F1F1F4",
                       "borderColor": "#F1F1F4",
                       "borderRadius": 4,
                       "borderWidth": 1,
-                      "flexDirection": "row",
                       "marginHorizontal": 4,
                       "overflow": "hidden",
                       "paddingBottom": 16,
@@ -1734,12 +1726,10 @@ exports[`OnboardingAgeInformation should render correctly for 16-year-old 1`] = 
                 style={
                   [
                     {
-                      "alignItems": "center",
                       "backgroundColor": "rgba(241,241,244,0.5)",
                       "borderColor": "rgba(241,241,244,0.5)",
                       "borderRadius": 4,
                       "borderWidth": 1,
-                      "flexDirection": "row",
                       "marginHorizontal": 4,
                       "overflow": "hidden",
                       "paddingBottom": 16,
@@ -1959,12 +1949,10 @@ exports[`OnboardingAgeInformation should render correctly for 16-year-old 1`] = 
                 status="cette année"
                 style={
                   {
-                    "alignItems": "center",
                     "backgroundColor": "#ffffff",
                     "borderColor": "#90949D",
                     "borderRadius": 4,
                     "borderWidth": 1,
-                    "flexDirection": "row",
                     "marginHorizontal": 0,
                     "overflow": "hidden",
                     "paddingBottom": 16,
@@ -2198,12 +2186,10 @@ exports[`OnboardingAgeInformation should render correctly for 16-year-old 1`] = 
                 style={
                   [
                     {
-                      "alignItems": "center",
                       "backgroundColor": "#F1F1F4",
                       "borderColor": "#F1F1F4",
                       "borderRadius": 4,
                       "borderWidth": 1,
-                      "flexDirection": "row",
                       "marginHorizontal": 4,
                       "overflow": "hidden",
                       "paddingBottom": 16,
@@ -2560,12 +2546,10 @@ exports[`OnboardingAgeInformation should render correctly for 16-year-old 1`] = 
                 style={
                   [
                     {
-                      "alignItems": "center",
                       "backgroundColor": "#F1F1F4",
                       "borderColor": "#F1F1F4",
                       "borderRadius": 4,
                       "borderWidth": 1,
-                      "flexDirection": "row",
                       "marginHorizontal": 4,
                       "overflow": "hidden",
                       "paddingBottom": 16,
@@ -3172,12 +3156,10 @@ exports[`OnboardingAgeInformation should render correctly for 17-year-old 1`] = 
                 style={
                   [
                     {
-                      "alignItems": "center",
                       "backgroundColor": "rgba(241,241,244,0.5)",
                       "borderColor": "rgba(241,241,244,0.5)",
                       "borderRadius": 4,
                       "borderWidth": 1,
-                      "flexDirection": "row",
                       "marginHorizontal": 4,
                       "overflow": "hidden",
                       "paddingBottom": 16,
@@ -3394,12 +3376,10 @@ exports[`OnboardingAgeInformation should render correctly for 17-year-old 1`] = 
                 style={
                   [
                     {
-                      "alignItems": "center",
                       "backgroundColor": "rgba(241,241,244,0.5)",
                       "borderColor": "rgba(241,241,244,0.5)",
                       "borderRadius": 4,
                       "borderWidth": 1,
-                      "flexDirection": "row",
                       "marginHorizontal": 4,
                       "overflow": "hidden",
                       "paddingBottom": 16,
@@ -3619,12 +3599,10 @@ exports[`OnboardingAgeInformation should render correctly for 17-year-old 1`] = 
                 status="cette année"
                 style={
                   {
-                    "alignItems": "center",
                     "backgroundColor": "#ffffff",
                     "borderColor": "#90949D",
                     "borderRadius": 4,
                     "borderWidth": 1,
-                    "flexDirection": "row",
                     "marginHorizontal": 0,
                     "overflow": "hidden",
                     "paddingBottom": 16,
@@ -3985,12 +3963,10 @@ exports[`OnboardingAgeInformation should render correctly for 17-year-old 1`] = 
                 style={
                   [
                     {
-                      "alignItems": "center",
                       "backgroundColor": "#F1F1F4",
                       "borderColor": "#F1F1F4",
                       "borderRadius": 4,
                       "borderWidth": 1,
-                      "flexDirection": "row",
                       "marginHorizontal": 4,
                       "overflow": "hidden",
                       "paddingBottom": 16,
@@ -4597,12 +4573,10 @@ exports[`OnboardingAgeInformation should render correctly for 18-year-old 1`] = 
                 style={
                   [
                     {
-                      "alignItems": "center",
                       "backgroundColor": "rgba(241,241,244,0.5)",
                       "borderColor": "rgba(241,241,244,0.5)",
                       "borderRadius": 4,
                       "borderWidth": 1,
-                      "flexDirection": "row",
                       "marginHorizontal": 4,
                       "overflow": "hidden",
                       "paddingBottom": 16,
@@ -4819,12 +4793,10 @@ exports[`OnboardingAgeInformation should render correctly for 18-year-old 1`] = 
                 style={
                   [
                     {
-                      "alignItems": "center",
                       "backgroundColor": "rgba(241,241,244,0.5)",
                       "borderColor": "rgba(241,241,244,0.5)",
                       "borderRadius": 4,
                       "borderWidth": 1,
-                      "flexDirection": "row",
                       "marginHorizontal": 4,
                       "overflow": "hidden",
                       "paddingBottom": 16,
@@ -5041,12 +5013,10 @@ exports[`OnboardingAgeInformation should render correctly for 18-year-old 1`] = 
                 style={
                   [
                     {
-                      "alignItems": "center",
                       "backgroundColor": "rgba(241,241,244,0.5)",
                       "borderColor": "rgba(241,241,244,0.5)",
                       "borderRadius": 4,
                       "borderWidth": 1,
-                      "flexDirection": "row",
                       "marginHorizontal": 4,
                       "overflow": "hidden",
                       "paddingBottom": 16,
@@ -5257,12 +5227,10 @@ exports[`OnboardingAgeInformation should render correctly for 18-year-old 1`] = 
                 status="cette année"
                 style={
                   {
-                    "alignItems": "center",
                     "backgroundColor": "#ffffff",
                     "borderColor": "#90949D",
                     "borderRadius": 4,
                     "borderWidth": 1,
-                    "flexDirection": "row",
                     "marginHorizontal": 0,
                     "overflow": "hidden",
                     "paddingBottom": 16,
