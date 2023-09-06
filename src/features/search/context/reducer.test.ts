@@ -10,7 +10,7 @@ import {
 } from 'features/search/context/reducer'
 import { LocationType } from 'features/search/enums'
 import { DATE_FILTER_OPTIONS } from 'features/search/enums'
-import { SearchState, SearchView } from 'features/search/types'
+import { SearchState, SearchVenuesState, SearchView } from 'features/search/types'
 import { mockedAlgoliaVenueResponse } from 'libs/algolia/__mocks__/mockedAlgoliaResponse'
 import { SuggestedPlace } from 'libs/place'
 
@@ -343,6 +343,25 @@ describe('Search reducer', () => {
       const action: Action = { type: 'SET_VENUES', payload: mockedAlgoliaVenueResponse.hits }
       const newState = searchVenuesReducer(state, action)
       expect(newState.hits).toStrictEqual(mockedAlgoliaVenueResponse.hits)
+    })
+  })
+})
+
+describe('searchVenuesReducer', () => {
+  it('should set user data', () => {
+    const initialState: SearchVenuesState = {
+      hits: [],
+      userData: undefined,
+    }
+
+    const nextState = searchVenuesReducer(initialState, {
+      type: 'SET_USER_DATA',
+      payload: [{ venue_playlist_title: 'Test' }],
+    })
+
+    expect(nextState).toStrictEqual({
+      hits: [],
+      userData: [{ venue_playlist_title: 'Test' }],
     })
   })
 })

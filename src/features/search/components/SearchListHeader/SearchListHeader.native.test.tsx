@@ -220,6 +220,19 @@ describe('<SearchListHeader />', () => {
     expect(screen.getByText('10 résultats')).toBeOnTheScreen()
   })
 
+  it('should show correct title when NO userData exists', () => {
+    mockSearchVenuesState.userData = undefined
+    render(<SearchListHeader nbHits={10} userData={[]} />)
+    expect(screen.queryByText('Les lieux culturels')).toBeOnTheScreen()
+  })
+
+  it('should show correct title when userData exists', () => {
+    mockSearchVenuesState.userData = [{ venue_playlist_title: 'test' }]
+    render(<SearchListHeader nbHits={10} userData={[]} />)
+    expect(screen.queryByText('Les lieux culturels')).not.toBeOnTheScreen()
+    expect(screen.queryByText('test')).toBeOnTheScreen()
+  })
+
   it('should not display the geolocation button if position is not null', () => {
     render(<SearchListHeader nbHits={10} userData={[]} />)
     expect(screen.queryByText('Géolocalise-toi')).not.toBeOnTheScreen()

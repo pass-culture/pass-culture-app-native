@@ -53,6 +53,10 @@ describe('useSearchResults', () => {
         type: 'SET_VENUES',
         payload: mockedAlgoliaVenueResponse.hits,
       })
+      expect(mockDispatch).toHaveBeenCalledWith({
+        type: 'SET_USER_DATA',
+        payload: mockedAlgoliaVenueResponse.userData,
+      })
     })
 
     it('should log perform search when received API result', async () => {
