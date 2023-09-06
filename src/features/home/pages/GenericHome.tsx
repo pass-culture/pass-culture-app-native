@@ -22,7 +22,6 @@ import { useNetInfoContext } from 'libs/network/NetInfoWrapper'
 import { OfflinePage } from 'libs/network/OfflinePage'
 import { BatchEvent, BatchUser } from 'libs/react-native-batch'
 import {
-  PERF_HOME_ZERO,
   PERF_HOME_GLOBAL,
   usePerformanceCalculation,
 } from 'shared/performance/usePerformanceCalculation/usePerformanceCalculation'
@@ -99,7 +98,6 @@ const OnlineHome: FunctionComponent<GenericHomeProps> = ({
 
   const flatListHeaderStyle = { zIndex: theme.zIndex.header }
   const { finish } = usePerformanceCalculation()
-  const finishPerfHomeZeroOnce = useFunctionOnce(() => finish(PERF_HOME_ZERO))
   const finishPerfHomeGlobalOnce = useFunctionOnce(() => finish(PERF_HOME_GLOBAL))
 
   const modulesToDisplay = modules.slice(0, maxIndex)
@@ -112,10 +110,6 @@ const OnlineHome: FunctionComponent<GenericHomeProps> = ({
       module.data = venuesModulesData.find((mod) => mod.moduleId === module.id)
     }
   })
-
-  if (modules.length > 0 && modulesToDisplay.length === maxIndex) {
-    finishPerfHomeZeroOnce()
-  }
 
   const scrollRef = useRef<FlatList>(null)
   useScrollToTop(scrollRef)

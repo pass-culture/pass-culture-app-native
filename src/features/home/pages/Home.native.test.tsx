@@ -77,7 +77,7 @@ describe('Home page', () => {
     renderHome()
     await act(async () => {})
 
-    expect(mockStartTransaction).toHaveBeenCalledTimes(2)
+    expect(mockStartTransaction).toHaveBeenCalledTimes(1)
   })
 })
 

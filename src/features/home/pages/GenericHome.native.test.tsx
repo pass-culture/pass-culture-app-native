@@ -12,7 +12,7 @@ import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { render, waitFor, screen, fireEvent, act } from 'tests/utils'
 import { Typo } from 'ui/theme'
 
-const useShowSkeletonSpy = jest.spyOn(showSkeletonAPI, 'useShowSkeleton')
+const useShowSkeletonSpy = jest.spyOn(showSkeletonAPI, 'useShowSkeleton').mockReturnValue(false)
 
 jest.mock('libs/network/useNetInfo', () => jest.requireMock('@react-native-community/netinfo'))
 const mockUseNetInfoContext = useNetInfoContextDefault as jest.Mock
@@ -40,43 +40,55 @@ jest.mock('shared/performance/usePerformanceCalculation/usePerformanceCalculatio
 
 describe('GenericHome', () => {
   mockUseNetInfoContext.mockReturnValue({ isConnected: true })
-  useShowSkeletonSpy.mockReturnValue(false)
 
-  it('should display skeleton', async () => {
-    useShowSkeletonSpy.mockReturnValueOnce(true)
-    const home = renderGenericHome()
-    await act(async () => {})
+  describe('With not displayed skeleton by default', () => {
+    it('should display skeleton', async () => {
+      useShowSkeletonSpy.mockReturnValueOnce(true)
+      const home = renderGenericHome()
+      await act(async () => {})
 
-    expect(home).toMatchSnapshot()
+      expect(home).toMatchSnapshot()
+    })
+
+    it('should display real content', async () => {
+      const home = renderGenericHome()
+      await act(async () => {})
+
+      expect(home).toMatchSnapshot()
+    })
+
+    it('should display offline page when not connected', async () => {
+      mockUseNetInfoContext.mockReturnValueOnce({ isConnected: false })
+      renderGenericHome()
+
+      expect(await screen.findByText('Pas de réseau internet')).toBeOnTheScreen()
+    })
   })
 
-  it('should display real content', async () => {
-    const home = renderGenericHome()
-    await act(async () => {})
+  describe('With displayed skeleton by default', () => {
+    beforeAll(() => {
+      useShowSkeletonSpy.mockReturnValue(true)
+    })
 
-    expect(home).toMatchSnapshot()
+    afterAll(() => {
+      useShowSkeletonSpy.mockReset()
+    })
+
+    it('should finish home global transaction when skeleton not display', async () => {
+      renderGenericHome()
+      await act(async () => {})
+      expect(mockFinishTransaction).not.toHaveBeenCalled()
+      useShowSkeletonSpy.mockReturnValueOnce(false)
+      screen.rerender(
+        // eslint-disable-next-line local-rules/no-react-query-provider-hoc
+        reactQueryProviderHOC(
+          <GenericHome modules={defaultModules} Header={Header} homeId={homeId} />
+        )
+      )
+      await act(async () => {})
+      expect(mockFinishTransaction).toHaveBeenCalledTimes(1)
+    })
   })
-
-  it('should display offline page when not connected', async () => {
-    mockUseNetInfoContext.mockReturnValueOnce({ isConnected: false })
-    renderGenericHome()
-
-    expect(await screen.findByText('Pas de réseau internet')).toBeOnTheScreen()
-  })
-
-  // it('should finish home global transaction when skeleton not display', async () => {
-  //   useShowSkeletonSpy.mockReturnValueOnce(true)
-  //   renderGenericHome()
-  //   await act(async () => {})
-  //   expect(mockFinishTransaction).not.toHaveBeenCalled()
-  //   screen.rerender(
-  //     // eslint-disable-next-line local-rules/no-react-query-provider-hoc
-  //     reactQueryProviderHOC(
-  //       <GenericHome modules={defaultModules} Header={Header} homeId={homeId} />
-  //     )
-  //   )
-  //   expect(mockFinishTransaction).toHaveBeenCalledTimes(1)
-  // })
 })
 
 describe('GenericHome page - Analytics', () => {
