@@ -96,8 +96,8 @@ const DEFAULT_POSITION = { latitude: 2, longitude: 40 } as GeoCoordinates
 let mockPosition: Position = DEFAULT_POSITION
 const mockShowGeolocPermissionModal = jest.fn()
 
-jest.mock('libs/geolocation/GeolocationWrapper', () => ({
-  useGeolocation: () => ({
+jest.mock('libs/geolocation/LocationWrapper', () => ({
+  useLocation: () => ({
     userPosition: mockPosition,
     showGeolocPermissionModal: mockShowGeolocPermissionModal,
   }),
@@ -171,7 +171,7 @@ describe('SearchResults component', () => {
       render(<SearchResults />)
       await act(async () => {})
 
-      expect(screen.getByTestId('Catégories')).toBeTruthy()
+      expect(screen.getByTestId('Catégories')).toBeOnTheScreen()
     })
 
     it('should open the categories filter modal when pressing the category button', async () => {
@@ -184,7 +184,7 @@ describe('SearchResults component', () => {
 
       const fullscreenModalScrollView = screen.getByTestId('fullscreenModalScrollView')
 
-      expect(fullscreenModalScrollView).toBeTruthy()
+      expect(fullscreenModalScrollView).toBeOnTheScreen()
     })
 
     it('should display an icon and change color in category button when has category selected', async () => {
@@ -196,7 +196,7 @@ describe('SearchResults component', () => {
 
       const categoryButtonIcon = screen.getByTestId('categoryButtonIcon')
 
-      expect(categoryButtonIcon).toBeTruthy()
+      expect(categoryButtonIcon).toBeOnTheScreen()
 
       const categoryButton = screen.getByTestId('Catégories\u00a0: Filtre sélectionné')
       expect(categoryButton).toHaveStyle({ borderColor: theme.colors.primary })
@@ -211,7 +211,7 @@ describe('SearchResults component', () => {
       render(<SearchResults />)
       await act(async () => {})
 
-      expect(screen.getByTestId('Prix')).toBeTruthy()
+      expect(screen.getByTestId('Prix')).toBeOnTheScreen()
     })
 
     it('should open the prices filter modal when pressing the prices filter button', async () => {
@@ -224,7 +224,7 @@ describe('SearchResults component', () => {
 
       const fullscreenModalScrollView = screen.getByTestId('fullscreenModalScrollView')
 
-      expect(fullscreenModalScrollView).toBeTruthy()
+      expect(fullscreenModalScrollView).toBeOnTheScreen()
     })
 
     it('should display an icon and change color in prices filter button when has prices filter selected', async () => {
@@ -235,7 +235,7 @@ describe('SearchResults component', () => {
       await act(async () => {})
 
       const priceButtonIcon = screen.getByTestId('priceButtonIcon')
-      expect(priceButtonIcon).toBeTruthy()
+      expect(priceButtonIcon).toBeOnTheScreen()
 
       const priceButton = screen.getByTestId('Prix\u00a0: Filtre sélectionné')
       expect(priceButton).toHaveStyle({ borderColor: theme.colors.primary })
@@ -261,7 +261,7 @@ describe('SearchResults component', () => {
         render(<SearchResults />)
         await act(async () => {})
 
-        expect(screen.getByTestId('Duo')).toBeTruthy()
+        expect(screen.getByTestId('Duo')).toBeOnTheScreen()
       })
 
       it('should open the duo filter modal when pressing the duo filter button', async () => {
@@ -274,11 +274,11 @@ describe('SearchResults component', () => {
 
         const fullscreenModalScrollView = screen.getByTestId('fullscreenModalScrollView')
 
-        expect(fullscreenModalScrollView).toBeTruthy()
+        expect(fullscreenModalScrollView).toBeOnTheScreen()
 
         const isInverseLayout = screen.queryByTestId('inverseLayout')
 
-        expect(isInverseLayout).toBeFalsy()
+        expect(isInverseLayout).not.toBeOnTheScreen()
       })
     })
 
@@ -297,7 +297,7 @@ describe('SearchResults component', () => {
         render(<SearchResults />)
         await act(async () => {})
 
-        expect(screen.queryByText('Duo')).toBeFalsy()
+        expect(screen.queryByText('Duo')).not.toBeOnTheScreen()
       })
     })
 
@@ -316,7 +316,7 @@ describe('SearchResults component', () => {
         render(<SearchResults />)
         await act(async () => {})
 
-        expect(screen.queryByText('Duo')).toBeFalsy()
+        expect(screen.queryByText('Duo')).not.toBeOnTheScreen()
       })
     })
 
@@ -335,7 +335,7 @@ describe('SearchResults component', () => {
         render(<SearchResults />)
         await act(async () => {})
 
-        expect(screen.queryByText('Duo')).toBeFalsy()
+        expect(screen.queryByText('Duo')).not.toBeOnTheScreen()
       })
     })
   })
@@ -345,7 +345,7 @@ describe('SearchResults component', () => {
       render(<SearchResults />)
       await act(async () => {})
 
-      expect(screen.queryByText('Géolocalise-toi')).toBeFalsy()
+      expect(screen.queryByText('Géolocalise-toi')).not.toBeOnTheScreen()
     })
 
     it.each`
@@ -359,7 +359,7 @@ describe('SearchResults component', () => {
       render(<SearchResults />)
       await act(async () => {})
 
-      expect(screen.queryByText('Géolocalise-toi')).toBeFalsy()
+      expect(screen.queryByText('Géolocalise-toi')).not.toBeOnTheScreen()
     })
 
     it('when position is null and no results search', async () => {
@@ -367,7 +367,7 @@ describe('SearchResults component', () => {
       render(<SearchResults />)
       await act(async () => {})
 
-      expect(screen.queryByText('Géolocalise-toi')).toBeFalsy()
+      expect(screen.queryByText('Géolocalise-toi')).not.toBeOnTheScreen()
     })
   })
 
@@ -376,7 +376,7 @@ describe('SearchResults component', () => {
       render(<SearchResults />)
       await act(async () => {})
 
-      expect(screen.getByTestId('Localisation')).toBeTruthy()
+      expect(screen.getByTestId('Localisation')).toBeOnTheScreen()
     })
 
     it.each`
@@ -405,7 +405,7 @@ describe('SearchResults component', () => {
         render(<SearchResults />)
         await act(async () => {})
 
-        expect(screen.queryByText(locationButtonLabel)).toBeTruthy()
+        expect(screen.queryByText(locationButtonLabel)).toBeOnTheScreen()
       }
     )
   })
@@ -415,7 +415,7 @@ describe('SearchResults component', () => {
       render(<SearchResults />)
       await act(async () => {})
 
-      expect(screen.queryByTestId('Dates & heures')).toBeTruthy()
+      expect(screen.queryByTestId('Dates & heures')).toBeOnTheScreen()
     })
 
     it('should open the type filter modal when pressing the type filter button', async () => {
@@ -428,7 +428,7 @@ describe('SearchResults component', () => {
 
       const fullscreenModalScrollView = screen.getByTestId('fullscreenModalScrollView')
 
-      expect(fullscreenModalScrollView).toBeTruthy()
+      expect(fullscreenModalScrollView).toBeOnTheScreen()
     })
 
     it.each`
@@ -445,7 +445,7 @@ describe('SearchResults component', () => {
         await act(async () => {})
 
         const datesHoursButtonIcon = screen.getByTestId('datesHoursButtonIcon')
-        expect(datesHoursButtonIcon).toBeTruthy()
+        expect(datesHoursButtonIcon).toBeOnTheScreen()
 
         const datesHoursButton = screen.getByTestId('Dates & heures\u00a0: Filtre sélectionné')
         expect(datesHoursButton).toHaveStyle({ borderColor: theme.colors.primary })
@@ -520,7 +520,7 @@ describe('SearchResults component', () => {
       render(<SearchResults />)
       await act(async () => {})
 
-      expect(screen.queryByText('Géolocalise-toi')).toBeTruthy()
+      expect(screen.queryByText('Géolocalise-toi')).toBeOnTheScreen()
     })
 
     it('when position is null and query is not an offer not present', async () => {
@@ -529,7 +529,7 @@ describe('SearchResults component', () => {
       render(<SearchResults />)
       await act(async () => {})
 
-      expect(screen.queryByText('Géolocalise-toi')).toBeFalsy()
+      expect(screen.queryByText('Géolocalise-toi')).not.toBeOnTheScreen()
     })
   })
 
@@ -542,7 +542,7 @@ describe('SearchResults component', () => {
       render(<SearchResults />)
       await act(async () => {})
 
-      expect(screen.queryByText('Offre non disponible sur le pass Culture.')).toBeTruthy()
+      expect(screen.queryByText('Offre non disponible sur le pass Culture.')).toBeOnTheScreen()
     })
 
     it('should not display when query is an available offer', async () => {
@@ -553,7 +553,7 @@ describe('SearchResults component', () => {
       render(<SearchResults />)
       await act(async () => {})
 
-      expect(screen.queryByText('Offre non disponible sur le pass Culture.')).toBeFalsy()
+      expect(screen.queryByText('Offre non disponible sur le pass Culture.')).not.toBeOnTheScreen()
     })
   })
 })

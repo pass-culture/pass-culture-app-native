@@ -1,18 +1,10 @@
-import React, {
-  FunctionComponent,
-  useRef,
-  useEffect,
-  RefObject,
-  useCallback,
-  useState,
-  memo,
-} from 'react'
-import { Platform, View, ViewProps, ViewStyle } from 'react-native'
+import React, { FunctionComponent, useRef, useEffect, useCallback, useState, memo } from 'react'
+import { Platform, View } from 'react-native'
 import { useSafeAreaInsets } from 'react-native-safe-area-context'
 import styled from 'styled-components/native'
 
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
-import { AnimatableProperties, AnimatedView } from 'libs/react-native-animatable'
+import { AnimatedRef, AnimatedView } from 'libs/react-native-animatable'
 import { SnackBarProgressBar } from 'ui/components/snackBar/SnackBarProgressBar'
 import { Touchable } from 'ui/components/touchable/Touchable'
 import { Close as DefaultClose } from 'ui/svg/icons/Close'
@@ -20,13 +12,6 @@ import { AccessibleIcon } from 'ui/svg/icons/types'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 // eslint-disable-next-line no-restricted-imports
 import { ColorsEnum } from 'ui/theme/colors'
-
-type RefType = RefObject<
-  React.Component<AnimatableProperties<ViewStyle> & ViewProps, never, never> & {
-    fadeOutUp: (duration: number) => Promise<void>
-    fadeInDown: (duration: number) => Promise<void>
-  }
-> | null
 
 export type SnackBarProps = {
   visible: boolean
@@ -45,18 +30,18 @@ const _SnackBar = (props: SnackBarProps) => {
   const firstRender = useRef(true)
   const animationDuration = props.animationDuration || 500
 
-  const containerRef: RefType = useRef(null)
-  const progressBarContainerRef: RefType = useRef(null)
+  const containerRef: AnimatedRef = useRef(null)
+  const progressBarContainerRef: AnimatedRef = useRef(null)
   const [isVisible, setVisible] = useState(props.visible)
 
   async function triggerApparitionAnimation() {
     setVisible(true)
-    progressBarContainerRef?.current?.fadeInDown(animationDuration)
-    containerRef?.current?.fadeInDown(animationDuration)
+    progressBarContainerRef.current?.fadeInDown?.(animationDuration)
+    containerRef.current?.fadeInDown?.(animationDuration)
   }
   async function triggerVanishAnimation() {
-    progressBarContainerRef?.current?.fadeOutUp(animationDuration)
-    containerRef?.current?.fadeOutUp(animationDuration).then(() => {
+    progressBarContainerRef.current?.fadeOutUp?.(animationDuration)
+    containerRef.current?.fadeOutUp?.(animationDuration).then(() => {
       setVisible(false)
     })
   }

@@ -7,7 +7,7 @@
 
 ### Key points
 
-In order to handle errors globally in the application, we have defined an `ErrorBoundary` component on top of `GeolocationWrapper`.
+In order to handle errors globally in the application, we have defined an `ErrorBoundary` component on top of `LocationWrapper`.
 Which means he also wrap the `RootNavigator` one.
 
 ### ErrorBoundary
@@ -29,7 +29,7 @@ export const MyComponent = withErrorBoundary(React.memo(MyWrappedComponent), {
 
 `ErrorBoundaries` can't handle some type of errors coming from the child component
 and especially errors during asynchronous calls such as API calls triggered by user action
-(see more details here : https://fr.reactjs.org/docs/error-boundaries.html).
+(see more details here : <https://fr.reactjs.org/docs/error-boundaries.html>).
 For example, this component (inside an ErrorBoundary) will not be intercepted:
 
 ```tsx
@@ -91,4 +91,4 @@ export function MyComponent(props: Props) {
 
 ### Resources
 
-https://fr.reactjs.org/docs/error-boundaries.html
+<https://fr.reactjs.org/docs/error-boundaries.html>

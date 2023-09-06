@@ -16,7 +16,7 @@ describe('SecondCard', () => {
 
     expect(
       getByText('de 15 à 18 ans\u00a0: l’État offre un crédit à dépenser dans l’application.')
-    ).toBeTruthy()
+    ).toBeOnTheScreen()
   })
 
   it('should swipe to next card on button press', () => {

@@ -99,9 +99,9 @@ describe('<SuspendAccountConfirmation />', () => {
       isLoading: false,
     } as UseEmailUpdateStatusMock)
     render(<SuspendAccountConfirmation navigation={navigation} route={route} />)
-    expect(screen.getByText('Souhaites-tu suspendre ton compte pass Culture ?')).toBeTruthy()
-    expect(screen.getByText('Oui, suspendre mon compte')).toBeTruthy()
-    expect(screen.getByText('Ne pas suspendre mon compte')).toBeTruthy()
+    expect(screen.getByText('Souhaites-tu suspendre ton compte pass Culture ?')).toBeOnTheScreen()
+    expect(screen.getByText('Oui, suspendre mon compte')).toBeOnTheScreen()
+    expect(screen.getByText('Ne pas suspendre mon compte')).toBeOnTheScreen()
   })
 
   it('should navigate to email change tracking when pressing "Confirmer la demande" button and API response is success', async () => {

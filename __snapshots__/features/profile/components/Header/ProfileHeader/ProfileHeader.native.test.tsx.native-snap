@@ -3,47 +3,74 @@
 exports[`ProfileHeader should display the LoggedOutHeader if no user 1`] = `
 [
   <View
-    accessible={true}
-    collapsable={false}
-    focusable={true}
-    onClick={[Function]}
-    onResponderGrant={[Function]}
-    onResponderMove={[Function]}
-    onResponderRelease={[Function]}
-    onResponderTerminate={[Function]}
-    onResponderTerminationRequest={[Function]}
-    onStartShouldSetResponder={[Function]}
     style={
-      {
-        "borderColor": "black",
-        "borderStyle": "solid",
-        "borderWidth": 1,
-        "opacity": 1,
-        "paddingBottom": 4,
-        "paddingLeft": 4,
-        "paddingRight": 4,
-        "paddingTop": 4,
-        "position": "absolute",
-        "right": 8,
-        "top": 28,
-        "zIndex": 1,
-      }
+      [
+        {
+          "borderColor": "#696A6F",
+          "borderRadius": 8,
+          "borderStyle": "solid",
+          "borderWidth": 2,
+          "paddingHorizontal": 4,
+          "position": "absolute",
+          "right": 24,
+          "top": 40,
+          "zIndex": 50,
+        },
+      ]
     }
+    topSafeInsets={16}
   >
-    <Text
+    <View
+      accessibilityLabel="CheatMenu"
+      accessible={true}
+      collapsable={false}
+      focusable={true}
+      onClick={[Function]}
+      onResponderGrant={[Function]}
+      onResponderMove={[Function]}
+      onResponderRelease={[Function]}
+      onResponderTerminate={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onStartShouldSetResponder={[Function]}
       style={
-        [
-          {
-            "color": "#161617",
-            "fontFamily": "Montserrat-Regular",
-            "fontSize": 15,
-            "lineHeight": 20,
-          },
-        ]
+        {
+          "alignItems": "center",
+          "backgroundColor": "transparent",
+          "borderRadius": 24,
+          "flexDirection": "row",
+          "justifyContent": "center",
+          "maxWidth": 500,
+          "minHeight": 32,
+          "opacity": 1,
+          "paddingBottom": 2,
+          "paddingLeft": 2,
+          "paddingRight": 2,
+          "paddingTop": 2,
+          "userSelect": "auto",
+          "width": "100%",
+        }
       }
+      testID="CheatMenu"
     >
-      CheatMenu
-    </Text>
+      <Text
+        adjustsFontSizeToFit={false}
+        numberOfLines={1}
+        style={
+          [
+            {
+              "color": "#696A6F",
+              "fontFamily": "Montserrat-Bold",
+              "fontSize": 15,
+              "lineHeight": 20,
+              "marginLeft": 0,
+              "maxWidth": "100%",
+            },
+          ]
+        }
+      >
+        CheatMenu
+      </Text>
+    </View>
   </View>,
   <View
     customHeight={16}
@@ -64,6 +91,7 @@ exports[`ProfileHeader should display the LoggedOutHeader if no user 1`] = `
           "justifyContent": "space-between",
           "marginHorizontal": 24,
           "marginTop": 24,
+          "zIndex": 1,
         },
       ]
     }
@@ -382,47 +410,74 @@ exports[`ProfileHeader should display the LoggedOutHeader if no user 1`] = `
 exports[`ProfileHeader should display the NonBeneficiaryHeader Header if user is eligible exunderage beneficiary 1`] = `
 [
   <View
-    accessible={true}
-    collapsable={false}
-    focusable={true}
-    onClick={[Function]}
-    onResponderGrant={[Function]}
-    onResponderMove={[Function]}
-    onResponderRelease={[Function]}
-    onResponderTerminate={[Function]}
-    onResponderTerminationRequest={[Function]}
-    onStartShouldSetResponder={[Function]}
     style={
-      {
-        "borderColor": "black",
-        "borderStyle": "solid",
-        "borderWidth": 1,
-        "opacity": 1,
-        "paddingBottom": 4,
-        "paddingLeft": 4,
-        "paddingRight": 4,
-        "paddingTop": 4,
-        "position": "absolute",
-        "right": 8,
-        "top": 28,
-        "zIndex": 1,
-      }
+      [
+        {
+          "borderColor": "#696A6F",
+          "borderRadius": 8,
+          "borderStyle": "solid",
+          "borderWidth": 2,
+          "paddingHorizontal": 4,
+          "position": "absolute",
+          "right": 24,
+          "top": 40,
+          "zIndex": 50,
+        },
+      ]
     }
+    topSafeInsets={16}
   >
-    <Text
+    <View
+      accessibilityLabel="CheatMenu"
+      accessible={true}
+      collapsable={false}
+      focusable={true}
+      onClick={[Function]}
+      onResponderGrant={[Function]}
+      onResponderMove={[Function]}
+      onResponderRelease={[Function]}
+      onResponderTerminate={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onStartShouldSetResponder={[Function]}
       style={
-        [
-          {
-            "color": "#161617",
-            "fontFamily": "Montserrat-Regular",
-            "fontSize": 15,
-            "lineHeight": 20,
-          },
-        ]
+        {
+          "alignItems": "center",
+          "backgroundColor": "transparent",
+          "borderRadius": 24,
+          "flexDirection": "row",
+          "justifyContent": "center",
+          "maxWidth": 500,
+          "minHeight": 32,
+          "opacity": 1,
+          "paddingBottom": 2,
+          "paddingLeft": 2,
+          "paddingRight": 2,
+          "paddingTop": 2,
+          "userSelect": "auto",
+          "width": "100%",
+        }
       }
+      testID="CheatMenu"
     >
-      CheatMenu
-    </Text>
+      <Text
+        adjustsFontSizeToFit={false}
+        numberOfLines={1}
+        style={
+          [
+            {
+              "color": "#696A6F",
+              "fontFamily": "Montserrat-Bold",
+              "fontSize": 15,
+              "lineHeight": 20,
+              "marginLeft": 0,
+              "maxWidth": "100%",
+            },
+          ]
+        }
+      >
+        CheatMenu
+      </Text>
+    </View>
   </View>,
   <View
     customHeight={16}
@@ -443,6 +498,7 @@ exports[`ProfileHeader should display the NonBeneficiaryHeader Header if user is
           "justifyContent": "space-between",
           "marginHorizontal": 24,
           "marginTop": 24,
+          "zIndex": 1,
         },
       ]
     }
@@ -489,47 +545,74 @@ exports[`ProfileHeader should display the NonBeneficiaryHeader Header if user is
 exports[`ProfileHeader should display the NonBeneficiaryHeader Header if user is not beneficiary 1`] = `
 [
   <View
-    accessible={true}
-    collapsable={false}
-    focusable={true}
-    onClick={[Function]}
-    onResponderGrant={[Function]}
-    onResponderMove={[Function]}
-    onResponderRelease={[Function]}
-    onResponderTerminate={[Function]}
-    onResponderTerminationRequest={[Function]}
-    onStartShouldSetResponder={[Function]}
     style={
-      {
-        "borderColor": "black",
-        "borderStyle": "solid",
-        "borderWidth": 1,
-        "opacity": 1,
-        "paddingBottom": 4,
-        "paddingLeft": 4,
-        "paddingRight": 4,
-        "paddingTop": 4,
-        "position": "absolute",
-        "right": 8,
-        "top": 28,
-        "zIndex": 1,
-      }
+      [
+        {
+          "borderColor": "#696A6F",
+          "borderRadius": 8,
+          "borderStyle": "solid",
+          "borderWidth": 2,
+          "paddingHorizontal": 4,
+          "position": "absolute",
+          "right": 24,
+          "top": 40,
+          "zIndex": 50,
+        },
+      ]
     }
+    topSafeInsets={16}
   >
-    <Text
+    <View
+      accessibilityLabel="CheatMenu"
+      accessible={true}
+      collapsable={false}
+      focusable={true}
+      onClick={[Function]}
+      onResponderGrant={[Function]}
+      onResponderMove={[Function]}
+      onResponderRelease={[Function]}
+      onResponderTerminate={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onStartShouldSetResponder={[Function]}
       style={
-        [
-          {
-            "color": "#161617",
-            "fontFamily": "Montserrat-Regular",
-            "fontSize": 15,
-            "lineHeight": 20,
-          },
-        ]
+        {
+          "alignItems": "center",
+          "backgroundColor": "transparent",
+          "borderRadius": 24,
+          "flexDirection": "row",
+          "justifyContent": "center",
+          "maxWidth": 500,
+          "minHeight": 32,
+          "opacity": 1,
+          "paddingBottom": 2,
+          "paddingLeft": 2,
+          "paddingRight": 2,
+          "paddingTop": 2,
+          "userSelect": "auto",
+          "width": "100%",
+        }
       }
+      testID="CheatMenu"
     >
-      CheatMenu
-    </Text>
+      <Text
+        adjustsFontSizeToFit={false}
+        numberOfLines={1}
+        style={
+          [
+            {
+              "color": "#696A6F",
+              "fontFamily": "Montserrat-Bold",
+              "fontSize": 15,
+              "lineHeight": 20,
+              "marginLeft": 0,
+              "maxWidth": "100%",
+            },
+          ]
+        }
+      >
+        CheatMenu
+      </Text>
+    </View>
   </View>,
   <View
     customHeight={16}
@@ -550,6 +633,7 @@ exports[`ProfileHeader should display the NonBeneficiaryHeader Header if user is
           "justifyContent": "space-between",
           "marginHorizontal": 24,
           "marginTop": 24,
+          "zIndex": 1,
         },
       ]
     }

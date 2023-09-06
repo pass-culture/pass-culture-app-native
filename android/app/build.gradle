@@ -158,7 +158,7 @@ def reactNativeArchitectures() {
  * Signing
  *
  * The app is signed with keystore located in the keystores/ folder.
- * Keystores passwords are crypted with transcrypt and located in
+ * Keystore passwords are encrypted with transcrypt and located in
  * keystores/*.keystore.properties files.
  */
 def keystorePropertiesFile = rootProject.file("keystores/${project.env.get("ENV")}.keystore.properties")

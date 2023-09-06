@@ -15,7 +15,7 @@ import { FilterBehaviour, LocationType } from 'features/search/enums'
 import { MAX_RADIUS } from 'features/search/helpers/reducer.helpers'
 import { SearchView } from 'features/search/types'
 import { analytics } from 'libs/analytics'
-import { useGeolocation } from 'libs/geolocation'
+import { useLocation } from 'libs/geolocation'
 import { useFunctionOnce } from 'libs/hooks'
 import { PageHeaderSecondary } from 'ui/components/headers/PageHeaderSecondary'
 import { Li } from 'ui/components/Li'
@@ -28,7 +28,7 @@ export const SearchFilter: React.FC = () => {
   const logReinitializeFilters = useFunctionOnce(() => {
     analytics.logReinitializeFilters(searchState.searchId)
   })
-  const { userPosition: position } = useGeolocation()
+  const { userPosition: position } = useLocation()
   const { user } = useAuthContext()
   const { params } = useRoute<UseRouteType<'SearchFilter'>>()
   const { isDesktopViewport, isMobileViewport } = useTheme()

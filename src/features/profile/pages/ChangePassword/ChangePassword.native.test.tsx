@@ -63,7 +63,7 @@ describe('ChangePassword', () => {
       fireEvent.changeText(confirmationInput, '123456--')
     })
 
-    expect(screen.queryByText('Les mots de passe ne concordent pas')).toBeTruthy()
+    expect(screen.queryByText('Les mots de passe ne concordent pas')).toBeOnTheScreen()
   })
 
   it('should display success snackbar and navigate to Profile when the password is updated', async () => {
@@ -126,6 +126,6 @@ describe('ChangePassword', () => {
     await act(async () => {
       fireEvent.press(continueButton)
     })
-    expect(screen.getByText('Mot de passe incorrect')).toBeTruthy()
+    expect(screen.getByText('Mot de passe incorrect')).toBeOnTheScreen()
   })
 })

@@ -89,6 +89,8 @@ export type VenueHit = Pick<
   | 'longitude'
   | 'name'
   | 'publicName'
+  | 'city'
+  | 'postalCode'
 > & {
   venueTypeCode: VenueTypeCode
 }

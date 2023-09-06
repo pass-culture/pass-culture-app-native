@@ -20,14 +20,14 @@ describe('AccordionItem', () => {
 
   it('should display the children after pressing on the title', async () => {
     const accordion = renderAccordion()
-    expect(screen.queryByTestId('accordion-child-view')).toBeFalsy()
+    expect(screen.queryByTestId('accordion-child-view')).not.toBeOnTheScreen()
 
     act(() => {
       fireEvent.press(accordion.getByText('accordion title'))
       jest.runAllTimers()
     })
 
-    expect(screen.getByTestId('accordion-child-view')).toBeTruthy()
+    expect(screen.getByTestId('accordion-child-view')).toBeOnTheScreen()
   })
 
   it('should expand for accessibility the accordion after pressing the title', async () => {

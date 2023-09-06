@@ -2,26 +2,21 @@ import React from 'react'
 import { PixelRatio } from 'react-native'
 import styled from 'styled-components/native'
 
-import { parseTypeHomeLabel, VenueTypeCode } from 'libs/parsers'
 import { Typo, GUTTER_DP } from 'ui/theme'
 
 interface VenueDetailsProps {
   width: number
   name: string
-  venueType: VenueTypeCode | null
-  distance?: string
+  city?: string | null
+  postalCode?: string | null
 }
 
-export const VenueDetails = (props: VenueDetailsProps) => {
-  const { width, name, venueType, distance } = props
-  const typeLabel = parseTypeHomeLabel(venueType)
-
+export const VenueDetails = ({ width, name, city, postalCode }: VenueDetailsProps) => {
   return (
     <Container maxWidth={width}>
       <VenueName>{name}</VenueName>
       <Row>
-        <TypeLabel>{typeLabel}</TypeLabel>
-        {!!distance && <Typo.CaptionNeutralInfo> | {distance}</Typo.CaptionNeutralInfo>}
+        <TypeLabel>{[city, postalCode].filter(Boolean).join(', ')}</TypeLabel>
       </Row>
     </Container>
   )
@@ -30,6 +25,7 @@ export const VenueDetails = (props: VenueDetailsProps) => {
 const Container = styled.View<{ maxWidth: number }>(({ maxWidth }) => ({
   maxWidth,
   marginTop: PixelRatio.roundToNearestPixel(GUTTER_DP / 2),
+  position: 'relative',
 }))
 
 const VenueName = styled(Typo.ButtonText).attrs({

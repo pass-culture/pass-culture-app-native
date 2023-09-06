@@ -7,7 +7,7 @@ describe('adaptCategoryListModule', () => {
   it('should adapt a CategoryList module', () => {
     const rawCategoryListModule = categoryListFixture
 
-    expect(isCategoryListContentModel(rawCategoryListModule)).toBeTruthy()
+    expect(isCategoryListContentModel(rawCategoryListModule)).toBe(true)
     expect(adaptCategoryListModule(rawCategoryListModule)).toEqual(formattedCategoryListModule)
   })
 })

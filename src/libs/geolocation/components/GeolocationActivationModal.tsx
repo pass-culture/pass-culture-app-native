@@ -4,7 +4,7 @@ import styled from 'styled-components/native'
 
 import { analytics } from 'libs/analytics'
 import { GeolocPermissionState } from 'libs/geolocation/enums'
-import { useGeolocation } from 'libs/geolocation/GeolocationWrapper'
+import { useLocation } from 'libs/geolocation/LocationWrapper'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { AppInformationModal } from 'ui/components/modals/AppInformationModal'
 import { BicolorLocationPointer } from 'ui/svg/icons/BicolorLocationPointer'
@@ -28,7 +28,7 @@ export const GeolocationActivationModal: React.FC<Props> = ({
   hideGeolocPermissionModal,
   onPressGeolocPermissionModalButton,
 }) => {
-  const { permissionState } = useGeolocation()
+  const { permissionState } = useLocation()
   const callToActionMessage =
     permissionState === GeolocPermissionState.GRANTED
       ? 'Désactiver la géolocalisation'

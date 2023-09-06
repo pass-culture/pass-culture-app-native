@@ -64,12 +64,12 @@ describe('HighlightPart component', () => {
   it('should use body typo when the part of the hit is highlighted', () => {
     render(<HighlightPart isHighlighted>{children}</HighlightPart>)
 
-    expect(screen.queryByTestId('highlightedText')).toBeTruthy()
+    expect(screen.queryByTestId('highlightedText')).toBeOnTheScreen()
   })
 
   it('should use button text typo when the part of the hit is not highlighted', () => {
     render(<HighlightPart isHighlighted={false}>{children}</HighlightPart>)
 
-    expect(screen.queryByTestId('nonHighlightedText')).toBeTruthy()
+    expect(screen.queryByTestId('nonHighlightedText')).toBeOnTheScreen()
   })
 })

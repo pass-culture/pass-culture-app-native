@@ -29,7 +29,7 @@ describe('PhoneValidationTooManySMSSent', () => {
   })
   it('should display "1 heure" in description', async () => {
     const { getByText } = renderPhoneValidationTooManySMSSent()
-    expect(getByText('Tu pourras réessayer dans 1 heure.')).toBeTruthy()
+    expect(getByText('Tu pourras réessayer dans 1 heure.')).toBeOnTheScreen()
   })
   it('should display "2 heures" in description', async () => {
     mockedPhoneValidationRemainingAttempts.mockReturnValueOnce({
@@ -38,7 +38,7 @@ describe('PhoneValidationTooManySMSSent', () => {
       isLastAttempt: false,
     })
     const { getByText } = renderPhoneValidationTooManySMSSent()
-    expect(getByText('Tu pourras réessayer dans 7 heures.')).toBeTruthy()
+    expect(getByText('Tu pourras réessayer dans 7 heures.')).toBeOnTheScreen()
   })
   it('should redirect to Home when clicking on homepage button', async () => {
     const { getByText } = renderPhoneValidationTooManySMSSent()

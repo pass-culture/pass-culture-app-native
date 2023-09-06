@@ -19,10 +19,10 @@ import { FavoritesWrapper } from 'features/favorites/context/FavoritesWrapper'
 import { SubscriptionContextProvider } from 'features/identityCheck/context/SubscriptionContextProvider'
 import { AppNavigationContainer } from 'features/navigation/NavigationContainer'
 import { PushNotificationsWrapper } from 'features/notifications/context/PushNotificationsWrapper'
-import { OnboardingWrapper } from 'features/onboarding/context/OnboardingWrapper'
 import { SearchVenuesWrapper } from 'features/search/context/SearchVenuesWrapper'
 import { SearchWrapper } from 'features/search/context/SearchWrapper'
 import { ShareAppWrapper } from 'features/share/context/ShareAppWrapper'
+import { OnboardingWrapper } from 'features/tutorial/context/OnboardingWrapper'
 import { initAlgoliaAnalytics } from 'libs/algolia/analytics/initAlgoliaAnalytics'
 import { SearchAnalyticsWrapper } from 'libs/algolia/analytics/SearchAnalyticsWrapper'
 import { AutoImmediate, NextResume } from 'libs/codepush/options'
@@ -31,7 +31,7 @@ import { env } from 'libs/environment'
 // eslint-disable-next-line no-restricted-imports
 import { firebaseAnalytics } from 'libs/firebase/analytics'
 import { RemoteConfigProvider } from 'libs/firebase/remoteConfig'
-import { GeolocationWrapper } from 'libs/geolocation'
+import { LocationWrapper } from 'libs/geolocation'
 import { eventMonitoring } from 'libs/monitoring'
 import { NetInfoWrapper } from 'libs/network/NetInfoWrapper'
 import { OfflineModeContainer } from 'libs/network/OfflineModeContainer'
@@ -85,7 +85,7 @@ const App: FunctionComponent = function () {
                 <NetInfoWrapper>
                   <SettingsWrapper>
                     <AuthWrapper>
-                      <GeolocationWrapper>
+                      <LocationWrapper>
                         <FavoritesWrapper>
                           <SearchAnalyticsWrapper>
                             <SearchWrapper>
@@ -113,7 +113,7 @@ const App: FunctionComponent = function () {
                             </SearchWrapper>
                           </SearchAnalyticsWrapper>
                         </FavoritesWrapper>
-                      </GeolocationWrapper>
+                      </LocationWrapper>
                     </AuthWrapper>
                   </SettingsWrapper>
                 </NetInfoWrapper>

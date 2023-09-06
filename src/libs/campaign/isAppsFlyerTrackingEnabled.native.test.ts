@@ -22,7 +22,7 @@ describe('isAppsFlyerTrackingEnabled', () => {
 
     const enabled = await isAppsFlyerTrackingEnabled()
 
-    expect(enabled).toBeFalsy()
+    expect(enabled).toBe(false)
   })
 
   it('should return true when all cookies are accepted', async () => {
@@ -38,7 +38,7 @@ describe('isAppsFlyerTrackingEnabled', () => {
     })
     const enabled = await isAppsFlyerTrackingEnabled()
 
-    expect(enabled).toBeTruthy()
+    expect(enabled).toBe(true)
   })
 
   it('should return false when all cookies are refused', async () => {
@@ -55,7 +55,7 @@ describe('isAppsFlyerTrackingEnabled', () => {
 
     const enabled = await isAppsFlyerTrackingEnabled()
 
-    expect(enabled).toBeFalsy()
+    expect(enabled).toBe(false)
   })
 
   it('should return true when marketing cookies are accepted', async () => {
@@ -72,7 +72,7 @@ describe('isAppsFlyerTrackingEnabled', () => {
 
     const enabled = await isAppsFlyerTrackingEnabled()
 
-    expect(enabled).toBeTruthy()
+    expect(enabled).toBe(true)
   })
 })
 

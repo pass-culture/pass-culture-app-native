@@ -9,6 +9,6 @@ describe('<EmailSent/>', () => {
   it('should display the button "Consulter mes e-mails"', () => {
     render(<EmailSent offerDate={offerDate} />)
 
-    expect(screen.queryByTestId('Consulter mes e-mails')).toBeTruthy()
+    expect(screen.queryByTestId('Consulter mes e-mails')).toBeOnTheScreen()
   })
 })

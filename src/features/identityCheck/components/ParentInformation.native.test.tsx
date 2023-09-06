@@ -5,12 +5,12 @@ import { analytics } from 'libs/analytics/__mocks__/provider'
 import { render, screen, fireEvent } from 'tests/utils'
 
 describe('<ParentInformation/>', () => {
-  it('should open modal on click ', () => {
+  it('should open modal on click ', async () => {
     render(<ParentInformation />)
 
     fireEvent.press(screen.getByText('En savoir plus'))
 
-    expect(screen.findByText('Comment inscrire mon enfant\u00a0?')).toBeTruthy()
+    expect(await screen.findByText('Comment inscrire mon enfant\u00a0?')).toBeOnTheScreen()
   })
 
   it('should log analytics on modal opening', () => {

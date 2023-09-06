@@ -45,8 +45,8 @@ const mockHideGeolocPermissionModal = jest.fn()
 const mockOnPressGeolocPermissionModalButton = jest.fn()
 const mockRequestGeolocPermission = jest.fn()
 
-jest.mock('libs/geolocation/GeolocationWrapper', () => ({
-  useGeolocation: () => ({
+jest.mock('libs/geolocation/LocationWrapper', () => ({
+  useLocation: () => ({
     permissionState: mockPermissionState,
     userPosition: mockPosition,
     userPositionError: mockPositionError,
@@ -198,7 +198,7 @@ describe('<LocationModal/>', () => {
       fireEvent.press(radioButton)
     })
 
-    expect(screen.queryByText(mockPositionError.message)).toBeTruthy()
+    expect(screen.queryByText(mockPositionError.message)).toBeOnTheScreen()
   })
 
   it('should display the selected radius when select Autour de moi radio button', async () => {
@@ -206,28 +206,28 @@ describe('<LocationModal/>', () => {
     renderLocationModal()
 
     await act(async () => {
-      expect(screen.queryByText('Dans un rayon de\u00a0:')).toBeFalsy()
+      expect(screen.queryByText('Dans un rayon de\u00a0:')).not.toBeOnTheScreen()
     })
 
     const radioButton = screen.getByTestId(RadioButtonLocation.AROUND_ME)
     await act(async () => {
       fireEvent.press(radioButton)
     })
-    expect(screen.queryByText('Dans un rayon de\u00a0:')).toBeTruthy()
+    expect(screen.queryByText('Dans un rayon de\u00a0:')).toBeOnTheScreen()
   })
 
   it('should display the slider when select Autour de moi radio button', async () => {
     renderLocationModal()
 
     await act(async () => {
-      expect(screen.queryByTestId('slider')).toBeFalsy()
+      expect(screen.queryByTestId('slider')).not.toBeOnTheScreen()
     })
 
     const radioButton = screen.getByTestId(RadioButtonLocation.AROUND_ME)
     await act(async () => {
       fireEvent.press(radioButton)
     })
-    expect(screen.queryByTestId('slider')).toBeTruthy()
+    expect(screen.queryByTestId('slider')).toBeOnTheScreen()
   })
 
   it('should display Aucune localisation in RadioButtonLocation.EVERYWHERE when position is null', async () => {
@@ -235,7 +235,7 @@ describe('<LocationModal/>', () => {
     renderLocationModal()
 
     await act(async () => {
-      expect(screen.queryByText('Aucune localisation')).toBeTruthy()
+      expect(screen.queryByText('Aucune localisation')).toBeOnTheScreen()
     })
   })
 
@@ -243,7 +243,7 @@ describe('<LocationModal/>', () => {
     renderLocationModal()
 
     await act(async () => {
-      expect(screen.queryByText('Partout')).toBeTruthy()
+      expect(screen.queryByText('Partout')).toBeOnTheScreen()
     })
   })
 
@@ -253,21 +253,21 @@ describe('<LocationModal/>', () => {
     mockPosition = null
     mockPermissionState = GeolocPermissionState.NEVER_ASK_AGAIN
     renderLocationModal()
-    expect(screen.queryByText(geolocationModalText)).toBeFalsy()
+    expect(screen.queryByText(geolocationModalText)).not.toBeOnTheScreen()
 
     const radioButton = screen.getByTestId(RadioButtonLocation.AROUND_ME)
     await act(async () => {
       fireEvent.press(radioButton)
     })
 
-    expect(screen.queryByText(geolocationModalText)).toBeTruthy()
+    expect(screen.queryByText(geolocationModalText)).toBeOnTheScreen()
 
     const openSettingsButton = screen.getByText('Activer la géolocalisation')
     await act(async () => {
       fireEvent.press(openSettingsButton)
     })
 
-    expect(screen.queryByText(geolocationModalText)).toBeFalsy()
+    expect(screen.queryByText(geolocationModalText)).not.toBeOnTheScreen()
   })
 
   it('should not change location filter on Autour de moi radio button press when position is null', async () => {
@@ -361,7 +361,7 @@ describe('<LocationModal/>', () => {
       }
       renderLocationModal()
       await act(async () => {
-        expect(screen.getByText('50\u00a0km')).toBeTruthy()
+        expect(screen.getByText('50\u00a0km')).toBeOnTheScreen()
       })
 
       const resetButton = screen.getByText('Réinitialiser')
@@ -549,7 +549,7 @@ describe('<LocationModal/>', () => {
       })
 
       await waitFor(() => {
-        expect(screen.getByText('Appliquer le filtre')).toBeTruthy()
+        expect(screen.getByText('Appliquer le filtre')).toBeOnTheScreen()
         expect(screen.getByText('Appliquer le filtre')).toBeEnabled()
       })
     })
@@ -744,7 +744,7 @@ describe('<LocationModal/>', () => {
         expect(screen.getByLabelText('Appliquer le filtre')).toBeEnabled()
       })
 
-      expect(screen.getByTestId('Revenir en arrière')).toBeTruthy()
+      expect(screen.getByTestId('Revenir en arrière')).toBeOnTheScreen()
     })
 
     it('should close the modal and general filter page when pressing close button when the modal is opening from general filter page', async () => {

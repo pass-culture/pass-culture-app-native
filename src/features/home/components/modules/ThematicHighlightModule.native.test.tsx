@@ -26,7 +26,7 @@ describe('ThematicHighlightModule', () => {
         endingDate={CURRENT_DATE}
       />
     )
-    expect(screen.queryByText(formattedThematicHighlightModule.title)).toBeTruthy()
+    expect(screen.queryByText(formattedThematicHighlightModule.title)).toBeOnTheScreen()
   })
 
   it('should not render if the ending date is passed', () => {
@@ -38,7 +38,7 @@ describe('ThematicHighlightModule', () => {
         endingDate={PASSED_DATE}
       />
     )
-    expect(screen.queryByText(formattedThematicHighlightModule.title)).toBeNull()
+    expect(screen.queryByText(formattedThematicHighlightModule.title)).not.toBeOnTheScreen()
   })
 
   it('should log ModuleDisplayedOnHomePage event when seeing the module', () => {

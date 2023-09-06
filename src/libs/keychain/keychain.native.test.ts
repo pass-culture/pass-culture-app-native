@@ -43,7 +43,7 @@ describe('getRefreshToken()', () => {
     const refreshToken = await getRefreshToken()
 
     expect(Keychain.getGenericPassword).toHaveBeenCalledTimes(1)
-    expect(refreshToken).toEqual('password')
+    expect(refreshToken).toEqual('fake_access_token')
   })
 
   it('should return false when no credentials are found', async () => {

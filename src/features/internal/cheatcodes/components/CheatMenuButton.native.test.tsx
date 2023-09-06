@@ -10,7 +10,7 @@ describe('CheatMenuButton', () => {
     render(<CheatMenuButton />)
     await act(async () => {})
 
-    expect(await screen.findByText('CheatMenu')).toBeTruthy()
+    expect(await screen.findByText('CheatMenu')).toBeOnTheScreen()
   })
 
   it('should NOT have CheatMenu button when NOT FEATURE_FLIPPING_ONLY_VISIBLE_ON_TESTING=false', async () => {
@@ -18,6 +18,6 @@ describe('CheatMenuButton', () => {
     render(<CheatMenuButton />)
     await act(async () => {})
 
-    expect(screen.queryByText('CheatMenu')).toBeNull()
+    expect(screen.queryByText('CheatMenu')).not.toBeOnTheScreen()
   })
 })

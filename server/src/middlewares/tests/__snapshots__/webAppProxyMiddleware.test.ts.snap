@@ -1,53 +1,5 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`metasResponseInterceptor with real backend should request the real testing backend and get the offer data 1`] = `
-"<!doctype html>
-<html lang=\\"fr\\">
-  <head><link rel=\\"canonical\\" href=\\"http://localhost:8080/offre/1\\" />
-    <meta charset=\\"utf-8\\">
-    <title>pass Culture</title>
-    <meta name=\\"title\\" content=\\"pass Culture | Atelier danses urbaines\\" />
-    <meta name=\\"description\\" content=\\"Les danseurs de tout style et de tout niveau, mais aussi tous les curieux, sont invités à participer à cet atelier conçu comme un moment de partage et animé par un danseur professionnel et un dj.\\" />
-    <meta name=\\"author\\" content=\\"pass Culture\\"/>
-    <meta property=\\"og:type\\" content=\\"website\\"/>
-    <meta property=\\"og:url\\" content=\\"http://localhost:8080/offre/1\\" />
-    <meta property=\\"og:title\\" content=\\"pass Culture | Atelier danses urbaines\\" />
-    <meta property=\\"og:description\\" content=\\"Les danseurs de tout style et de tout niveau, mais aussi tous les curieux, sont invités à participer à cet atelier conçu comme un moment de partage et animé par un danseur professionnel et un dj.\\" />
-    <meta property=\\"og:image\\" content=\\"https://storage.googleapis.com/passculture-metier-ehp-staging-assets-fine-grained/thumbs/mediations/HE\\" />
-    <meta property=\\"og:image:alt\\" content=\\"Atelier danses urbaines\\" />
-    <meta property=\\"og:locale\\" content=\\"fr_FR\\"/>
-    <meta property=\\"og:site_name\\" content=\\"pass Culture\\"/>
-    <meta name=\\"twitter:card\\" content=\\"summary\\" />
-    <meta name=\\"twitter:url\\" content=\\"http://localhost:8080/offre/1\\" />
-    <meta name=\\"twitter:title\\" content=\\"pass Culture | Atelier danses urbaines\\" />
-    <meta name=\\"twitter:description\\" content=\\"Les danseurs de tout style et de tout niveau, mais aussi tous les curieux, sont invités à participer à cet atelier conçu comme un moment de partage et animé par un danseur professionnel et un dj.\\" />
-    <meta name=\\"twitter:image\\" content=\\"https://storage.googleapis.com/passculture-metier-ehp-staging-assets-fine-grained/thumbs/mediations/HE\\" />
-    <meta name=\\"twitter:image:alt\\" content=\\"Atelier danses urbaines\\" />
-    <meta name=\\"twitter:site\\" content=\\"@pass_Culture\\"/>
-    <meta name=\\"twitter:app:country\\" content=\\"FR\\"/>
-    <meta name=\\"twitter:app:name:iphone\\" content=\\"pass Culture\\"/>
-    <meta name=\\"twitter:app:id:iphone\\" content=\\"1557887412\\"/>
-    <meta name=\\"twitter:app:url:iphone\\" content=\\"passculture://http://localhost:8080/offre/1\\" />
-    <meta name=\\"twitter:app:name:ipad\\" content=\\"pass Culture\\"/>
-    <meta name=\\"twitter:app:id:ipad\\" content=\\"1557887412\\"/>
-    <meta name=\\"twitter:app:url:ipad\\" content=\\"passculture://http://localhost:8080/offre/1\\" />
-    <meta name=\\"twitter:app:name:googleplay\\" content=\\"pass Culture\\"/>
-    <meta name=\\"twitter:app:id:googleplay\\" content=\\"app.passculture.testing\\"/>
-    <meta name=\\"twitter:app:url:googleplay\\" content=\\"passculture://http://localhost:8080/offre/1\\" />
-    <meta property=\\"al:ios:app_name\\" content=\\"pass Culture\\"/>
-    <meta property=\\"al:ios:app_store_id\\" content=\\"1557887412\\"/>
-    <meta property=\\"al:ios:url\\" content=\\"passculture://https://app.testing.passculture.team\\"/>
-    <meta property=\\"al:android:url\\" content=\\"passculture://https://app.testing.passculture.team\\">
-    <meta property=\\"al:android:app_name\\" content=\\"pass Culture\\"/>
-    <meta property=\\"al:android:package\\" content=\\"app.passculture.testing\\"/>
-    <script type=\\"application/ld+json\\">{\\"@context\\":\\"https://schema.org\\",\\"@type\\":\\"Event\\",\\"name\\":\\"Atelier danses urbaines\\",\\"description\\":\\"Les danseurs de tout style et de tout niveau, mais aussi tous les curieux, sont invités à participer à cet atelier conçu comme un moment de partage et animé par un danseur professionnel et un dj.\\",\\"image\\":\\"https://storage.googleapis.com/passculture-metier-ehp-staging-assets-fine-grained/thumbs/mediations/HE\\",\\"offers\\":{\\"@type\\":\\"AggregateOffer\\",\\"priceCurrency\\":\\"EUR\\",\\"lowPrice\\":\\"0.00\\"},\\"location\\":{\\"@type\\":\\"Place\\",\\"name\\":\\"Le Centquatre-Paris\\",\\"address\\":{\\"@type\\":\\"PostalAddress\\",\\"streetAddress\\":\\"5 rue Curial\\",\\"postalCode\\":\\"75019\\",\\"addressLocality\\":\\"Paris\\"},\\"geo\\":{\\"@type\\":\\"GeoCoordinates\\",\\"latitude\\":\\"48.89005\\",\\"longitude\\":\\"2.37068\\"}},\\"startDate\\":\\"2018-05-19T14:00\\"}</script>
-  </head>
-  <body>
-    <p>Hello world</p>
-  </body>
-</html>"
-`;
-
 exports[`metasResponseInterceptor with real backend should request the real testing backend and get the venue data 1`] = `
 "<!doctype html>
 <html lang=\\"fr\\">

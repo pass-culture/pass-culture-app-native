@@ -51,9 +51,9 @@ describe('<OfferHeader />', () => {
     renderOfferHeader()
     await act(async () => {})
 
-    expect(screen.queryByTestId('animated-icon-back')).toBeTruthy()
-    expect(screen.queryByTestId('animated-icon-share')).toBeTruthy()
-    expect(screen.queryByTestId('animated-icon-favorite')).toBeTruthy()
+    expect(screen.queryByTestId('animated-icon-back')).toBeOnTheScreen()
+    expect(screen.queryByTestId('animated-icon-share')).toBeOnTheScreen()
+    expect(screen.queryByTestId('animated-icon-favorite')).toBeOnTheScreen()
   })
 
   it('should goBack when we press on the back button', async () => {
@@ -76,7 +76,7 @@ describe('<OfferHeader />', () => {
     })
 
     await waitFor(() => {
-      expect(screen.getByTestId('offerHeaderName').props.accessibilityHidden).toBeFalsy()
+      expect(screen.getByTestId('offerHeaderName').props.accessibilityHidden).toBe(false)
       expect(screen.getByTestId('offerHeaderName').props.style.opacity).toBe(1)
     })
   })

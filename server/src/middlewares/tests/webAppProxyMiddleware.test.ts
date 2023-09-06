@@ -181,9 +181,33 @@ describe('metasResponseInterceptor', () => {
         res
       )
 
-      const htmlWithoutOfferId = html.toString()
+      const domParser = new DOMParser()
+      const document = domParser.parseFromString(html.toString(), 'text/html')
+      const metadataScript = document.querySelector('[type=application/ld+json]')
+      const metadata = JSON.parse(metadataScript?.innerHTML || '{}')
 
-      expect(htmlWithoutOfferId).toMatchSnapshot()
+      expect(metadata['@context']).toEqual('https://schema.org')
+      expect(metadata['@type']).toEqual('Event')
+      expect(metadata.name).toEqual('Atelier danses urbaines')
+      expect(metadata.description).toEqual(
+        'Les danseurs de tout style et de tout niveau, mais aussi tous les curieux, sont invités à participer à cet atelier conçu comme un moment de partage et animé par un danseur professionnel et un dj.'
+      )
+      expect(metadata.image).toEqual(
+        'https://storage.googleapis.com/passculture-metier-ehp-staging-assets-fine-grained/thumbs/mediations/HE'
+      )
+      expect(metadata.startDate).toEqual('2018-05-19T14:00')
+      expect(metadata.offers['@type']).toEqual('AggregateOffer')
+      expect(metadata.offers.lowPrice).toEqual('0.00')
+      expect(metadata.offers.priceCurrency).toEqual('EUR')
+      expect(metadata.location['@type']).toEqual('Place')
+      expect(metadata.location.name).toEqual('Le Centquatre-Paris')
+      expect(metadata.location.address['@type']).toEqual('PostalAddress')
+      expect(metadata.location.address.streetAddress).toEqual('5 rue Curial')
+      expect(metadata.location.address.postalCode).toEqual('75019')
+      expect(metadata.location.address.addressLocality).toEqual('Paris')
+      expect(metadata.location.geo['@type']).toEqual('GeoCoordinates')
+      expect(metadata.location.geo.latitude).toEqual('48.89005')
+      expect(metadata.location.geo.longitude).toEqual('2.37068')
     })
 
     it('should request the real testing backend and get the venue data', async () => {

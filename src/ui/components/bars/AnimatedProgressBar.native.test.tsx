@@ -39,7 +39,7 @@ describe('AnimatedProgressBar', () => {
     expect(style.flexGrow).toEqual(expectedProgress)
 
     const progressBarIcon = getByText('progress-bar-icon-SVG-Mock')
-    expect(progressBarIcon).toBeTruthy()
+    expect(progressBarIcon).toBeOnTheScreen()
   })
 
   it('should have the right length and color when animated', () => {
@@ -61,6 +61,6 @@ describe('AnimatedProgressBar', () => {
     expect(style.flexGrow).toEqual(1)
 
     const progressBarIcon = getByText('progress-bar-icon-SVG-Mock')
-    expect(progressBarIcon).toBeTruthy()
+    expect(progressBarIcon).toBeOnTheScreen()
   })
 })

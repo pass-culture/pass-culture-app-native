@@ -13,14 +13,14 @@ describe('<StepCard />', () => {
   it('should render title and icon', () => {
     render(<StepCard title={title} icon={<BicolorAroundMe />} />)
 
-    expect(screen.getByText(title)).toBeTruthy()
-    expect(screen.getByTestId('stepcard-icon')).toBeTruthy()
+    expect(screen.getByText(title)).toBeOnTheScreen()
+    expect(screen.getByTestId('stepcard-icon')).toBeOnTheScreen()
   })
 
   it('should render subtitle', () => {
     render(<StepCard title={title} subtitle={subtitle} icon={<BicolorAroundMe />} />)
 
-    expect(screen.getByText(subtitle)).toBeTruthy()
+    expect(screen.getByText(subtitle)).toBeOnTheScreen()
   })
 
   it('should return the wrapper greyMedium when type is StepCardType.DISABLED', () => {
@@ -88,7 +88,7 @@ describe('<StepCard />', () => {
       />
     )
 
-    expect(screen.queryByText(subtitle)).toBeNull()
+    expect(screen.queryByText(subtitle)).not.toBeOnTheScreen()
   })
 
   it('should not return the subtitle when type is StepCardType.DISABLED', () => {
@@ -101,6 +101,6 @@ describe('<StepCard />', () => {
       />
     )
 
-    expect(screen.queryByText(subtitle)).toBeNull()
+    expect(screen.queryByText(subtitle)).not.toBeOnTheScreen()
   })
 })

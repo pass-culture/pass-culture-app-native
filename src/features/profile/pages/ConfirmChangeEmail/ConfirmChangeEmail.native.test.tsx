@@ -75,9 +75,9 @@ describe('<ConfirmChangeEmail />', () => {
 
   it('should display confirmation message and buttons', () => {
     render(<ConfirmChangeEmail navigation={navigation} route={route} />)
-    expect(screen.getByText('Confirmes-tu la demande de changement d’e-mail ?')).toBeTruthy()
-    expect(screen.getByText('Confirmer la demande')).toBeTruthy()
-    expect(screen.getByText('Fermer')).toBeTruthy()
+    expect(screen.getByText('Confirmes-tu la demande de changement d’e-mail ?')).toBeOnTheScreen()
+    expect(screen.getByText('Confirmer la demande')).toBeOnTheScreen()
+    expect(screen.getByText('Fermer')).toBeOnTheScreen()
   })
 
   it('should navigate to email change tracking when pressing "Confirmer la demande" button and API response is success', async () => {

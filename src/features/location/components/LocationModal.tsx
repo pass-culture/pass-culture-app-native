@@ -1,8 +1,9 @@
-import React from 'react'
+import React, { useEffect, useRef } from 'react'
 import styled from 'styled-components/native'
 
 import { LocationModalButton } from 'features/location/components/LocationModalButton'
 import { LocationOption } from 'features/location/enums'
+import { GeolocPermissionState, useLocation } from 'libs/geolocation'
 import { theme } from 'theme'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { AppModal } from 'ui/components/modals/AppModal'
@@ -18,14 +19,50 @@ interface LocationModalProps {
 }
 
 export const LocationModal = ({ visible, dismissModal }: LocationModalProps) => {
-  const [selectedOption, setSelectedOption] = React.useState<LocationOption>(LocationOption.NONE)
+  const { userPosition, permissionState, requestGeolocPermission, showGeolocPermissionModal } =
+    useLocation()
 
-  const onClose = () => {
-    setSelectedOption(LocationOption.NONE)
+  const isGeolocated = !!userPosition
+  const defaultOption = isGeolocated ? LocationOption.GEOLOCATION : LocationOption.NONE
+  const [selectedOption, setSelectedOption] = React.useState<LocationOption>(defaultOption)
+
+  const onHideRef = useRef<() => void>()
+
+  useEffect(() => {
+    if (visible) {
+      setSelectedOption(defaultOption)
+      onHideRef.current = undefined
+    }
+  }, [visible, defaultOption])
+
+  const onSubmit = () => {
     dismissModal()
   }
 
-  const onButtonPressed = (option: LocationOption) => {
+  const onClose = () => {
+    dismissModal()
+  }
+
+  const onGeolocationButtonPressed = async () => {
+    const selectButton = () => setSelectedOption(LocationOption.GEOLOCATION)
+
+    if (permissionState === GeolocPermissionState.GRANTED) {
+      selectButton()
+    } else if (permissionState === GeolocPermissionState.NEVER_ASK_AGAIN) {
+      dismissModal()
+      onHideRef.current = showGeolocPermissionModal
+    } else {
+      await requestGeolocPermission({
+        onAcceptance: selectButton,
+      })
+    }
+  }
+
+  const onButtonPressed = (option: LocationOption) => () => {
+    if (option === LocationOption.GEOLOCATION) {
+      onGeolocationButtonPressed()
+      return
+    }
     setSelectedOption(option)
   }
 
@@ -37,19 +74,20 @@ export const LocationModal = ({ visible, dismissModal }: LocationModalProps) => 
       rightIcon={Close}
       onRightIconPress={onClose}
       isUpToStatusBar
-      scrollEnabled={false}>
+      scrollEnabled={false}
+      onModalHide={onHideRef.current}>
       <LocationModalButton
-        onPress={() => onButtonPressed(LocationOption.GEOLOCATION)}
+        onPress={onButtonPressed(LocationOption.GEOLOCATION)}
         icon={PositionFilled}
         color={
           selectedOption === LocationOption.GEOLOCATION ? theme.colors.primary : theme.colors.black
         }
         title={'Utiliser ma position actuelle'}
-        subtitle={'Géolocalisation désactivée'}
+        subtitle={isGeolocated ? undefined : 'Géolocalisation désactivée'}
       />
       <Separator />
       <LocationModalButton
-        onPress={() => onButtonPressed(LocationOption.CUSTOM_POSITION)}
+        onPress={onButtonPressed(LocationOption.CUSTOM_POSITION)}
         icon={MagnifyingGlassFilled}
         color={
           selectedOption === LocationOption.CUSTOM_POSITION
@@ -64,6 +102,7 @@ export const LocationModal = ({ visible, dismissModal }: LocationModalProps) => 
         <ButtonPrimary
           wording={'Valider la localisation'}
           disabled={selectedOption === LocationOption.NONE}
+          onPress={onSubmit}
         />
       </ButtonContainer>
     </AppModal>

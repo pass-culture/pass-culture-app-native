@@ -23,7 +23,7 @@ describe('<InstalledMessagingApps />', () => {
     canOpenURLSpy.mockResolvedValueOnce(true)
     render(<InstalledMessagingApps {...props} />)
 
-    expect(await screen.findByText(`Envoyer sur ${[Network.instagram]}`)).toBeTruthy()
+    expect(await screen.findByText(`Envoyer sur ${[Network.instagram]}`)).toBeOnTheScreen()
   })
 
   it('should hide social medium when not installed', async () => {
@@ -31,7 +31,7 @@ describe('<InstalledMessagingApps />', () => {
     render(<InstalledMessagingApps {...props} />)
     await act(async () => {})
 
-    expect(screen.queryByText(`Envoyer sur ${[Network.instagram]}`)).toBeNull()
+    expect(screen.queryByText(`Envoyer sur ${[Network.instagram]}`)).not.toBeOnTheScreen()
   })
 
   it('should not display more than 3 social media apps', async () => {

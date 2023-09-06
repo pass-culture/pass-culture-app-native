@@ -68,8 +68,8 @@ jest.mock('features/auth/context/SettingsContext', () => ({
 const DEFAULT_POSITION: GeoCoordinates = { latitude: 2, longitude: 40 }
 let mockPosition: Position = DEFAULT_POSITION
 
-jest.mock('libs/geolocation/GeolocationWrapper', () => ({
-  useGeolocation: () => ({
+jest.mock('libs/geolocation/LocationWrapper', () => ({
+  useLocation: () => ({
     userPosition: mockPosition,
   }),
 }))
@@ -152,7 +152,7 @@ describe('SearchBox component', () => {
     const previousButton = queryByTestId('Revenir en arrière')
 
     await act(async () => {
-      expect(previousButton).toBeFalsy()
+      expect(previousButton).not.toBeOnTheScreen()
     })
   })
 
@@ -162,7 +162,7 @@ describe('SearchBox component', () => {
     const previousButton = getByTestId('Revenir en arrière')
 
     await act(async () => {
-      expect(previousButton).toBeTruthy()
+      expect(previousButton).toBeOnTheScreen()
     })
   })
 
@@ -172,7 +172,7 @@ describe('SearchBox component', () => {
     const previousButton = getByTestId('Revenir en arrière')
 
     await act(async () => {
-      expect(previousButton).toBeTruthy()
+      expect(previousButton).toBeOnTheScreen()
     })
   })
 
@@ -415,7 +415,7 @@ describe('SearchBox component', () => {
     const { queryByTestId } = render(<SearchBox searchInputID={searchInputID} />)
 
     await act(async () => {
-      expect(queryByTestId('Voir tous les filtres\u00a0: 3 filtres actifs')).toBeTruthy()
+      expect(queryByTestId('Voir tous les filtres\u00a0: 3 filtres actifs')).toBeOnTheScreen()
     })
   })
 
@@ -426,7 +426,7 @@ describe('SearchBox component', () => {
       const { queryByTestId } = render(<SearchBox searchInputID={searchInputID} />)
 
       await act(async () => {
-        expect(queryByTestId(/Voir tous les filtres/)).toBeNull()
+        expect(queryByTestId(/Voir tous les filtres/)).not.toBeOnTheScreen()
       })
     }
   )
@@ -469,7 +469,7 @@ describe('SearchBox component', () => {
       const { queryByText } = render(<SearchBox searchInputID={searchInputID} />)
       await act(async () => {})
 
-      expect(queryByText(locationButtonLabel)).toBeTruthy()
+      expect(queryByText(locationButtonLabel)).toBeOnTheScreen()
     }
   )
 })

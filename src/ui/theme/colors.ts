@@ -37,6 +37,7 @@ export enum UniqueColors {
   GREEN_DISABLED = '#b8d7c1',
   GREY_OVERLAY = '#00000080',
   BACKGROUND_COLOR = '#DDDDDD',
+  BACKGROUND_SURFACE = '#212121',
   FOREGROUND_COLOR = '#EEEEEE',
   TAB_BAR = '#fffffff8',
 }

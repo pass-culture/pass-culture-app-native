@@ -77,5 +77,8 @@ export const businessNatifModuleFixture: BusinessContentModel = {
     },
     url: 'https://passculture.app/creation-compte',
     targetNotConnectedUsersOnly: true,
+    latitude: 2,
+    longitude: 40,
+    radius: 20,
   },
 }

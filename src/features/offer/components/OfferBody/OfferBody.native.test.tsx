@@ -182,7 +182,7 @@ describe('<OfferBody />', () => {
   it('should show venue banner in where section', async () => {
     renderOfferBody()
 
-    expect(await screen.findByTestId(`Lieu ${mockOffer.venue.name}`)).toBeTruthy()
+    expect(await screen.findByTestId(`Lieu ${mockOffer.venue.name}`)).toBeOnTheScreen()
   })
 
   describe('similar offers', () => {
@@ -195,8 +195,8 @@ describe('<OfferBody />', () => {
 
       await screen.findByText('Envoyer sur Instagram')
 
-      expect(screen.queryByTestId('sameCategorySimilarOffers')).toBeFalsy()
-      expect(screen.queryByTestId('otherCategoriesSimilarOffers')).toBeFalsy()
+      expect(screen.queryByTestId('sameCategorySimilarOffers')).not.toBeOnTheScreen()
+      expect(screen.queryByTestId('otherCategoriesSimilarOffers')).not.toBeOnTheScreen()
     })
 
     it('should display similar offers list when offer has some', async () => {
@@ -207,8 +207,8 @@ describe('<OfferBody />', () => {
 
       await screen.findByText('Envoyer sur Instagram')
 
-      expect(screen.queryByTestId('sameCategorySimilarOffers')).toBeTruthy()
-      expect(screen.queryByTestId('otherCategoriesSimilarOffers')).toBeTruthy()
+      expect(screen.queryByTestId('sameCategorySimilarOffers')).toBeOnTheScreen()
+      expect(screen.queryByTestId('otherCategoriesSimilarOffers')).toBeOnTheScreen()
     })
 
     describe('Same category similar offers', () => {
@@ -252,7 +252,7 @@ describe('<OfferBody />', () => {
       renderOfferBody()
 
       await waitFor(() => {
-        expect(screen.queryByText('Plus d’options')).toBeTruthy()
+        expect(screen.queryByText('Plus d’options')).toBeOnTheScreen()
       })
     })
 
@@ -294,7 +294,7 @@ describe('<OfferBody />', () => {
       renderOfferBody()
       await screen.findByTestId('offer-container')
 
-      expect(screen.queryByText('Accessibilité')).toBeNull()
+      expect(screen.queryByText('Accessibilité')).not.toBeOnTheScreen()
     })
 
     it('should display accessibility when disabilities are defined', async () => {
@@ -325,14 +325,14 @@ describe('<OfferBody />', () => {
       renderOfferBody()
       await screen.findByTestId('offer-container')
 
-      expect(screen.queryByText('Modalités de retrait')).toBeNull()
+      expect(screen.queryByText('Modalités de retrait')).not.toBeOnTheScreen()
     })
 
     it('should not display withdrawal details when not specified', async () => {
       renderOfferBody()
       await screen.findByTestId('offer-container')
 
-      expect(screen.queryByText('Modalités de retrait')).toBeNull()
+      expect(screen.queryByText('Modalités de retrait')).not.toBeOnTheScreen()
     })
   })
 
@@ -358,8 +358,8 @@ describe('<OfferBody />', () => {
 
     await screen.findByTestId('offer-container')
 
-    expect(screen.queryByText('Voir l’itinéraire')).toBeNull()
-    expect(screen.queryByText('Distance')).toBeNull()
+    expect(screen.queryByText('Voir l’itinéraire')).not.toBeOnTheScreen()
+    expect(screen.queryByText('Distance')).not.toBeOnTheScreen()
   })
 
   describe('report offer', () => {
@@ -421,7 +421,7 @@ describe('<OfferBody />', () => {
       renderOfferBody()
 
       await screen.findByTestId('offer-container')
-      expect(screen.queryByText('Voir d’autres lieux disponibles')).toBeNull()
+      expect(screen.queryByText('Voir d’autres lieux disponibles')).not.toBeOnTheScreen()
     })
 
     it('should not display other venues available button when offer subcategory is "Livres papier" and offer has an EAN', async () => {
@@ -435,29 +435,29 @@ describe('<OfferBody />', () => {
       renderOfferBody()
 
       await screen.findByTestId('offer-container')
-      expect(screen.queryByText('Voir d’autres lieux disponibles')).toBeNull()
+      expect(screen.queryByText('Voir d’autres lieux disponibles')).not.toBeOnTheScreen()
     })
 
     it('should not display other venues available button when offer subcategory is not "Livres papier" or "Livres audio physiques"', async () => {
       renderOfferBody()
 
       await screen.findByTestId('offer-container')
-      expect(screen.queryByText('Voir d’autres lieux disponibles')).toBeNull()
+      expect(screen.queryByText('Voir d’autres lieux disponibles')).not.toBeOnTheScreen()
     })
 
     it('should display old venue section', async () => {
       renderOfferBody()
 
       await screen.findByTestId('offer-container')
-      expect(screen.queryByText('Où\u00a0?')).toBeTruthy()
+      expect(screen.queryByText('Où\u00a0?')).toBeOnTheScreen()
     })
 
     it('should not display new venue section', async () => {
       renderOfferBody()
 
       await screen.findByTestId('offer-container')
-      expect(screen.queryByTestId('venueCard')).toBeNull()
-      expect(screen.queryByTestId('venueInfos')).toBeNull()
+      expect(screen.queryByTestId('venueCard')).not.toBeOnTheScreen()
+      expect(screen.queryByTestId('venueInfos')).not.toBeOnTheScreen()
     })
   })
 
@@ -483,7 +483,7 @@ describe('<OfferBody />', () => {
       renderOfferBody()
 
       await screen.findByTestId('offer-container')
-      expect(screen.getByText('Voir d’autres lieux disponibles')).toBeTruthy()
+      expect(screen.getByText('Voir d’autres lieux disponibles')).toBeOnTheScreen()
     })
 
     it('should not display other venues available button when offer subcategory is "Livres audio physiques", offer has an EAN and that there are not other venues offering the same offer', async () => {
@@ -499,7 +499,7 @@ describe('<OfferBody />', () => {
       renderOfferBody()
 
       await screen.findByTestId('offer-container')
-      expect(screen.queryByText('Voir d’autres lieux disponibles')).toBeNull()
+      expect(screen.queryByText('Voir d’autres lieux disponibles')).not.toBeOnTheScreen()
     })
 
     it('should not display other venues available button when offer subcategory is "Livres audio physiques" and offer has not an EAN', async () => {
@@ -509,7 +509,7 @@ describe('<OfferBody />', () => {
       renderOfferBody()
 
       await screen.findByTestId('offer-container')
-      expect(screen.queryByText('Voir d’autres lieux disponibles')).toBeNull()
+      expect(screen.queryByText('Voir d’autres lieux disponibles')).not.toBeOnTheScreen()
     })
 
     it('should display other venues available button when offer subcategory is "Livres papier", offer has an EAN  and that there are other venues offering the same offer', async () => {
@@ -525,7 +525,7 @@ describe('<OfferBody />', () => {
       renderOfferBody()
 
       await screen.findByTestId('offer-container')
-      expect(screen.getByText('Voir d’autres lieux disponibles')).toBeTruthy()
+      expect(screen.getByText('Voir d’autres lieux disponibles')).toBeOnTheScreen()
     })
 
     it('should not display other venues available button when offer subcategory is "Livres papier", offer has an EAN  and that there are other venues offering the same offer', async () => {
@@ -541,7 +541,7 @@ describe('<OfferBody />', () => {
       renderOfferBody()
 
       await screen.findByTestId('offer-container')
-      expect(screen.queryByText('Voir d’autres lieux disponibles')).toBeNull()
+      expect(screen.queryByText('Voir d’autres lieux disponibles')).not.toBeOnTheScreen()
     })
 
     it('should not display other venues available button when offer subcategory is "Livres papier" and offer has not an EAN', async () => {
@@ -553,21 +553,21 @@ describe('<OfferBody />', () => {
       renderOfferBody()
 
       await screen.findByTestId('offer-container')
-      expect(screen.queryByText('Voir d’autres lieux disponibles')).toBeNull()
+      expect(screen.queryByText('Voir d’autres lieux disponibles')).not.toBeOnTheScreen()
     })
 
     it('should not display other venues available button when offer subcategory is not "Livres papier" or "Livres audio physiques"', async () => {
       renderOfferBody()
 
       await screen.findByTestId('offer-container')
-      expect(screen.queryByText('Voir d’autres lieux disponibles')).toBeNull()
+      expect(screen.queryByText('Voir d’autres lieux disponibles')).not.toBeOnTheScreen()
     })
 
     it('should not display old venue section', async () => {
       renderOfferBody()
 
       await screen.findByTestId('offer-container')
-      expect(screen.queryByText('Où\u00a0?')).toBeNull()
+      expect(screen.queryByText('Où\u00a0?')).not.toBeOnTheScreen()
     })
 
     describe('should display new venue section', () => {
@@ -578,7 +578,7 @@ describe('<OfferBody />', () => {
         renderOfferBody()
 
         await screen.findByTestId('offer-container')
-        expect(screen.queryByText('Lieu de retrait')).toBeTruthy()
+        expect(screen.queryByText('Lieu de retrait')).toBeOnTheScreen()
       })
 
       it('With "Lieu de l’événement" in title when event offer', async () => {
@@ -588,7 +588,7 @@ describe('<OfferBody />', () => {
         renderOfferBody()
 
         await screen.findByTestId('offer-container')
-        expect(screen.queryByText('Lieu de l’événement')).toBeTruthy()
+        expect(screen.queryByText('Lieu de l’événement')).toBeOnTheScreen()
       })
 
       it('With "Lieu de projection" in title when offer subcategory is "Séances de cinéma"', async () => {
@@ -598,7 +598,7 @@ describe('<OfferBody />', () => {
         renderOfferBody()
 
         await screen.findByTestId('offer-container')
-        expect(screen.queryByText('Lieu de projection')).toBeTruthy()
+        expect(screen.queryByText('Lieu de projection')).toBeOnTheScreen()
       })
     })
 

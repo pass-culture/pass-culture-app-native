@@ -80,7 +80,7 @@ describe('Stepper navigation', () => {
     })
     render(<Stepper />)
 
-    expect(screen.getByText('Le document que tu as présenté est expiré.')).toBeTruthy()
+    expect(screen.getByText('Le document que tu as présenté est expiré.')).toBeOnTheScreen()
   })
 
   it('should stay on stepper when next_step is null and initialCredit is not between 0 and 300 euros', async () => {

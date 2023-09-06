@@ -32,7 +32,7 @@ import { analytics } from 'libs/analytics'
 import { getPlaylistItemDimensionsFromLayout } from 'libs/contentful/dimensions'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
-import { useGeolocation } from 'libs/geolocation'
+import { useLocation } from 'libs/geolocation'
 import { WhereSection } from 'libs/geolocation/components/WhereSection'
 import { useIsFalseWithDelay } from 'libs/hooks/useIsFalseWithDelay'
 import { formatDates, formatDistance, getDisplayPrice, getFormattedDates } from 'libs/parsers'
@@ -90,7 +90,7 @@ export const OfferBody: FunctionComponent<Props> = ({
     offer?.subcategoryId === SubcategoryIdEnum.LIVRE_PAPIER ||
       offer?.subcategoryId === SubcategoryIdEnum.LIVRE_AUDIO_PHYSIQUE
   )
-  const { userPosition: position } = useGeolocation()
+  const { userPosition: position } = useLocation()
 
   const shouldFetchSearchVenueOffers = Boolean(
     enableMultivenueOffer && isMultivenueCompatibleOffer && offer?.extraData?.ean

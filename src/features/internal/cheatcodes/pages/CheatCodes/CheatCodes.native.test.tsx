@@ -38,8 +38,8 @@ describe('CheatCodes component', () => {
     await screen.findByText('CheatCodes')
 
     buttonIsdisplayed
-      ? expect(instance.queryByText('Check update')).toBeTruthy()
-      : expect(instance.queryByText('Check update')).toBeNull()
+      ? expect(instance.queryByText('Check update')).toBeOnTheScreen()
+      : expect(instance.queryByText('Check update')).not.toBeOnTheScreen()
     expect.assertions(1)
   })
 
@@ -48,7 +48,7 @@ describe('CheatCodes component', () => {
     renderCheatCodes()
 
     expect(BatchUser.getInstallationID).toHaveBeenCalledTimes(1)
-    expect(await screen.findByText(`Batch installation ID: ${installationID}`)).toBeTruthy()
+    expect(await screen.findByText(`Batch installation ID: ${installationID}`)).toBeOnTheScreen()
   })
 })
 

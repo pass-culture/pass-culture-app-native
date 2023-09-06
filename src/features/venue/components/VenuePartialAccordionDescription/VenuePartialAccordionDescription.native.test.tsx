@@ -31,7 +31,7 @@ describe('VenuePartialAccordionDescription', () => {
 
   it('doesnt show description container when description is undefined', () => {
     const { queryByTestId } = render(<VenuePartialAccordionDescription description={undefined} />)
-    expect(queryByTestId('descriptionContainer')).toBeNull()
+    expect(queryByTestId('descriptionContainer')).not.toBeOnTheScreen()
   })
 
   it('we see all the description after pressing on the "voir plus" button and display "voir moins" button', async () => {
@@ -77,17 +77,17 @@ describe('VenuePartialAccordionDescription', () => {
     const { queryByText } = render(
       <VenuePartialAccordionDescription description={shortDescription} />
     )
-    expect(queryByText('voir plus')).toBeNull()
+    expect(queryByText('voir plus')).not.toBeOnTheScreen()
   })
 
   it('show credit when credit is defined', () => {
     const credit = 'Picture credit'
     const { queryByTestId } = render(<VenuePartialAccordionDescription credit={credit} />)
-    expect(queryByTestId('credit')).not.toBeNull()
+    expect(queryByTestId('credit')).toBeOnTheScreen()
   })
 
   it('doesnt show credit when credit is undefined', () => {
     const { queryByTestId } = render(<VenuePartialAccordionDescription />)
-    expect(queryByTestId('credit')).toBeNull()
+    expect(queryByTestId('credit')).not.toBeOnTheScreen()
   })
 })

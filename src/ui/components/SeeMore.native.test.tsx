@@ -26,6 +26,6 @@ describe('<SeeMore />', () => {
   it('is a link when navigateTo is given', () => {
     const { getByRole } = render(<SeeMore {...props} navigateTo={{ screen: 'Accessibility' }} />)
 
-    expect(getByRole('link')).toBeTruthy()
+    expect(getByRole('link')).toBeOnTheScreen()
   })
 })

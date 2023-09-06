@@ -62,7 +62,7 @@ describe('<TouchableLink />', () => {
       const expectedStyle = screen.getByText(buttonText).props.style
       const link = screen.getByText(buttonText)
 
-      expect(screen.getByText(buttonText)).toBeTruthy()
+      expect(screen.getByText(buttonText)).toBeOnTheScreen()
       expect(link.props.style).toEqual(expectedStyle)
     })
   })

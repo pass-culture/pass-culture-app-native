@@ -17,13 +17,13 @@ describe('<EmailInputController />', () => {
       error: { type: 'custom', message: 'Email has an incorrect format' },
     })
 
-    expect(screen.getByText('Email has an incorrect format')).toBeTruthy()
+    expect(screen.getByText('Email has an incorrect format')).toBeOnTheScreen()
   })
 
   it('should not show error when form input is valid', () => {
     renderEmailInputController({})
 
-    expect(screen.queryByText('error')).toBeFalsy()
+    expect(screen.queryByText('error')).not.toBeOnTheScreen()
   })
 
   it('should not show spelling help when not asked', async () => {
@@ -36,7 +36,9 @@ describe('<EmailInputController />', () => {
       jest.advanceTimersByTime(SUGGESTION_DELAY_IN_MS)
     })
 
-    expect(screen.queryByText('Veux-tu plutôt dire firstname.lastname@gmail.com ?')).toBeFalsy()
+    expect(
+      screen.queryByText('Veux-tu plutôt dire firstname.lastname@gmail.com ?')
+    ).not.toBeOnTheScreen()
   })
 
   it('should show spelling help by default', async () => {
@@ -48,7 +50,7 @@ describe('<EmailInputController />', () => {
     await act(async () => {
       jest.advanceTimersByTime(SUGGESTION_DELAY_IN_MS)
     })
-    expect(screen.getByText('Veux-tu plutôt dire firstname.lastname@gmail.com ?')).toBeTruthy()
+    expect(screen.getByText('Veux-tu plutôt dire firstname.lastname@gmail.com ?')).toBeOnTheScreen()
   })
 
   it('should perform action on spelling help press when given', async () => {

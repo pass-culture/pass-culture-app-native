@@ -52,6 +52,11 @@ exports[`ThematicHome should render correctly 1`] = `
             }
           />
         }
+        ListHeaderComponentStyle={
+          {
+            "zIndex": 1,
+          }
+        }
         bounces={true}
         data={
           [
@@ -115,6 +120,11 @@ exports[`ThematicHome should render correctly 1`] = `
         <View>
           <View
             onLayout={[Function]}
+            style={
+              {
+                "zIndex": 1,
+              }
+            }
           >
             <View
               style={

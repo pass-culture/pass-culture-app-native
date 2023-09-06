@@ -35,7 +35,7 @@ describe('<EighteenBirthdayCard />', () => {
   it('should render information confirmation wording when user does not require IdCheck', () => {
     renderEighteenBirthdayCard()
 
-    expect(screen.getByText('Confirmer mes informations')).toBeTruthy()
+    expect(screen.getByText('Confirmer mes informations')).toBeOnTheScreen()
   })
 
   it('should render identification wording when user requires IdCheck', () => {
@@ -44,7 +44,9 @@ describe('<EighteenBirthdayCard />', () => {
       user: { ...nonBeneficiaryUser, requiresIdCheck: true },
     })
 
-    expect(screen.getByText('Vérifie ton identité pour débloquer tes 300\u00a0€.')).toBeTruthy()
+    expect(
+      screen.getByText('Vérifie ton identité pour débloquer tes 300\u00a0€.')
+    ).toBeOnTheScreen()
   })
 })
 

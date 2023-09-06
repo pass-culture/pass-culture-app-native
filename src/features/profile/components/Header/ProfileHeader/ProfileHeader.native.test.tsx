@@ -66,18 +66,18 @@ describe('ProfileHeader', () => {
 
   it('should display the BeneficiaryHeader if user is beneficiary', () => {
     const { getByText } = render(<ProfileHeader user={user} />)
-    expect(getByText('Profite de ton crédit jusqu’au')).toBeTruthy()
+    expect(getByText('Profite de ton crédit jusqu’au')).toBeOnTheScreen()
   })
 
   it('should display the BeneficiaryHeader if user is underage beneficiary', () => {
     mockedisUserUnderageBeneficiary.mockReturnValueOnce(true)
     const { getByText } = render(<ProfileHeader user={user} />)
-    expect(getByText('Profite de ton crédit jusqu’au')).toBeTruthy()
+    expect(getByText('Profite de ton crédit jusqu’au')).toBeOnTheScreen()
   })
 
   it('should display the ExBeneficiary Header if credit is expired', () => {
     const { getByText } = render(<ProfileHeader user={exBeneficiaryUser} />)
-    expect(getByText('Ton crédit a expiré le')).toBeTruthy()
+    expect(getByText('Ton crédit a expiré le')).toBeOnTheScreen()
   })
 
   it('should display the NonBeneficiaryHeader Header if user is not beneficiary', () => {
