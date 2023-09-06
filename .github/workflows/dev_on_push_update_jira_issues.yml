@@ -1,5 +1,5 @@
 name: Update jira issues
-concurrency: ${{ github.workflow }}-${{ github.ref }}
+
 on:
   push:
     branches:
