@@ -27,7 +27,6 @@ import { eventMonitoring } from 'libs/monitoring'
 import { SafeAreaProvider } from 'libs/react-native-save-area-provider'
 import { ReactQueryClientProvider } from 'libs/react-query/ReactQueryClientProvider'
 import { ThemeProvider } from 'libs/styled'
-import { PerformanceWrapper } from 'shared/performance/context/PerformanceWrapper'
 import { theme } from 'theme'
 import { LoadingPage } from 'ui/components/LoadingPage'
 import { SnackBarProvider } from 'ui/components/snackBar/SnackBarContext'
@@ -53,36 +52,34 @@ export function App() {
           <ThemeProvider theme={theme}>
             <SafeAreaProvider>
               <ReactQueryClientProvider>
-                <PerformanceWrapper>
-                  <SettingsWrapper>
-                    <AuthWrapper>
-                      <ErrorBoundary FallbackComponent={AsyncErrorBoundaryWithoutNavigation}>
-                        <E2eContextProvider>
-                          <LocationWrapper>
-                            <FavoritesWrapper>
-                              <SearchAnalyticsWrapper>
-                                <SearchWrapper>
-                                  <SnackBarProvider>
-                                    <CulturalSurveyContextProvider>
-                                      <SubscriptionContextProvider>
-                                        <AppWebHead />
-                                        <ScreenErrorProvider>
-                                          <Suspense fallback={<LoadingPage />}>
-                                            <AppNavigationContainer />
-                                          </Suspense>
-                                        </ScreenErrorProvider>
-                                      </SubscriptionContextProvider>
-                                    </CulturalSurveyContextProvider>
-                                  </SnackBarProvider>
-                                </SearchWrapper>
-                              </SearchAnalyticsWrapper>
-                            </FavoritesWrapper>
-                          </LocationWrapper>
-                        </E2eContextProvider>
-                      </ErrorBoundary>
-                    </AuthWrapper>
-                  </SettingsWrapper>
-                </PerformanceWrapper>
+                <SettingsWrapper>
+                  <AuthWrapper>
+                    <ErrorBoundary FallbackComponent={AsyncErrorBoundaryWithoutNavigation}>
+                      <E2eContextProvider>
+                        <LocationWrapper>
+                          <FavoritesWrapper>
+                            <SearchAnalyticsWrapper>
+                              <SearchWrapper>
+                                <SnackBarProvider>
+                                  <CulturalSurveyContextProvider>
+                                    <SubscriptionContextProvider>
+                                      <AppWebHead />
+                                      <ScreenErrorProvider>
+                                        <Suspense fallback={<LoadingPage />}>
+                                          <AppNavigationContainer />
+                                        </Suspense>
+                                      </ScreenErrorProvider>
+                                    </SubscriptionContextProvider>
+                                  </CulturalSurveyContextProvider>
+                                </SnackBarProvider>
+                              </SearchWrapper>
+                            </SearchAnalyticsWrapper>
+                          </FavoritesWrapper>
+                        </LocationWrapper>
+                      </E2eContextProvider>
+                    </ErrorBoundary>
+                  </AuthWrapper>
+                </SettingsWrapper>
               </ReactQueryClientProvider>
             </SafeAreaProvider>
           </ThemeProvider>
