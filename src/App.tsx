@@ -140,8 +140,14 @@ const App: FunctionComponent = function () {
 }
 
 const config = env.ENV !== 'production' ? AutoImmediate : NextResume
+const AppWithoutMonitoring = CodePush(config)(App)
+
 const AppWithCodepush = /*__DEV__ ? App : */ eventMonitoring.wrap(
-  CodePush(config)(App)
+  AppWithoutMonitoring
 ) as React.ComponentType<{ tab?: string }>
 
-export { AppWithCodepush as App }
+/**
+ * We have an import bug in the test file App.native.test.tsx with the new eventMonitoring wrapper : WEIRD !!!
+ * So we define the old App wrapper for the test to pass
+ */
+export { AppWithCodepush as App, AppWithoutMonitoring }

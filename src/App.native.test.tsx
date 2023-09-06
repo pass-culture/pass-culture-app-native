@@ -4,7 +4,7 @@ import { campaignTracker } from 'libs/campaign'
 import { BatchMessaging, BatchPush } from 'libs/react-native-batch'
 import { render } from 'tests/utils'
 
-import { App } from './App'
+import { AppWithoutMonitoring as App } from './App'
 
 jest.mock('features/navigation/NavigationContainer/NavigationContainer', () => ({
   AppNavigationContainer: () => 'Placeholder for NavigationContainer',
