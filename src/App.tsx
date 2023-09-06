@@ -67,7 +67,7 @@ const App: FunctionComponent = function () {
   firebaseAnalytics.useInit()
 
   useEffect(() => {
-    eventMonitoring.init({ enabled: true })
+    eventMonitoring.init({ enabled: !__DEV__ })
   }, [])
 
   useEffect(() => {
@@ -137,11 +137,11 @@ const App: FunctionComponent = function () {
 }
 
 const config = env.ENV !== 'production' ? AutoImmediate : NextResume
-const AppWithoutMonitoring = /*__DEV__ ? App :*/ CodePush(config)(App)
+const AppWithoutMonitoring = __DEV__ ? App : CodePush(config)(App)
 
-const AppWithCodepush = /*__DEV__ ? App : */ eventMonitoring.wrap(
-  AppWithoutMonitoring
-) as React.ComponentType<{ tab?: string }>
+const AppWithCodepush = eventMonitoring.wrap(AppWithoutMonitoring) as React.ComponentType<{
+  tab?: string
+}>
 
 /**
  * We have an import bug in the test file App.native.test.tsx with the new eventMonitoring wrapper : WEIRD !!!
