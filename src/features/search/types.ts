@@ -82,7 +82,7 @@ export interface SearchState {
 
 export interface SearchVenuesState {
   hits: Hit<AlgoliaVenue>[]
-  userData?: { venue_playlist_title: string }
+  userData?: [{ venue_playlist_title: string }]
 }
 
 export type OfferTypes = keyof SearchState['offerTypes']

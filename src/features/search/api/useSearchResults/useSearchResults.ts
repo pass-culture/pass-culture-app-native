@@ -41,7 +41,10 @@ export const useSearchInfiniteQuery = (searchState: SearchState) => {
       })
 
       dispatch({ type: 'SET_VENUES', payload: venuesResponse.hits })
-      // dispatch({ type: 'SET_USER_DATA', payload: venuesResponse?.pages[0]?.userData })
+      dispatch({
+        type: 'SET_USER_DATA',
+        payload: venuesResponse?.userData,
+      })
       analytics.logPerformSearch(searchState, offersResponse.nbHits)
 
       previousPageObjectIds.current = offersResponse.hits.map((hit: Hit<Offer>) => hit.objectID)
