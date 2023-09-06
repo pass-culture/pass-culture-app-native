@@ -12,7 +12,7 @@ appId: app.passculture.staging
 - tapOn: "Rechercher des offres"
 - tapOn: "Films, séries, cinéma"
 - tapOn:
-      point: "50%,49%"
+    point: "50%,71%"
 - tapOn:
       id: "Réserver l’offre"
 # Se connecter
@@ -27,8 +27,28 @@ appId: app.passculture.staging
 
 - tapOn: "Rechercher des offres"
 
+- tapOn: "Dates & heures"
 - tapOn:
-    point: "50%,37%"
+    id: "Interrupteur date"
+- assertVisible: "Date"
+- assertVisible:
+    text: "Seules les sorties seront affichées"
+    index: 0
+- assertVisible: "Aujourd’hui"
+- assertVisible: "Cette semaine"
+- assertVisible: "Ce week-end"
+- assertVisible: "Date précise"
+- assertVisible: "Heure"
+- assertVisible:
+    text: "Seules les sorties seront affichées"
+    index: 1
+- tapOn: "Cette semaine"
+- tapOn: "Rechercher"
+
+- tapOn:
+    point: "49%,84%"
+- tapOn:
+    point: "49%,84%"
 
 - assertVisible: "Visite de la Maison-Atelier Foujita"
 - assertVisible: "Visite"

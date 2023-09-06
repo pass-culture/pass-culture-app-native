@@ -12,7 +12,7 @@ appId: app.passculture.staging
 - tapOn: "Rechercher des offres"
 - tapOn: "Films, séries, cinéma"
 - tapOn:
-    point: "50%,49%"
+    point: "50%,71%"
 #Mise en favoris
 - tapOn:
     id: "animated-icon-favorite"
@@ -29,9 +29,9 @@ appId: app.passculture.staging
 - tapOn: "Films, séries, cinéma"
 - tapOn: "Rechercher"
 - tapOn:
-      point: "49%,32%"
+    point: "49%,69%"
 - tapOn:
-      point: "50%,34%"
+    point: "49%,69%"
 - tapOn:
     id: "animated-icon-favorite"
 - tapOn:
@@ -56,7 +56,9 @@ appId: app.passculture.staging
     id: "Découvrir le catalogue"
 - tapOn:
     id: "Découvrir le catalogue"
-- assertVisible: "Recherche une offre"
+
+- assertVisible: "Rechercher des offres"
+#- assertVisible: "Recherche une offre"
 
 # Stop App
 #- runFlow: reusableFlows/StopApp.yml

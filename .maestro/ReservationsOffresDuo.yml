@@ -12,7 +12,7 @@ appId: app.passculture.staging
 - tapOn: "Rechercher des offres"
 - tapOn: "Films, séries, cinéma"
 - tapOn:
-    point: "50%,49%"
+      point: "50%,71%"
 - tapOn:
     id: "Réserver l’offre"
 # Se connecter
@@ -41,9 +41,9 @@ appId: app.passculture.staging
 
 
 - tapOn:
-    point: "50%,37%"
+    point: "49%,84%"
 - tapOn:
-    point: "50%,37%"
+    point: "49%,84%"
 - assertVisible:
     id: "Voir les disponibilités"
 - tapOn:
