@@ -16,6 +16,7 @@ import { useBookingStock } from 'features/bookOffer/helpers/useBookingStock'
 import { useModalContent } from 'features/bookOffer/helpers/useModalContent'
 import { UseNavigationType, UseRouteType } from 'features/navigation/RootNavigator/types'
 import { useOffer } from 'features/offer/api/useOffer'
+import { SimilarOffersResponseParams } from 'features/offer/types'
 import { useLogOfferConversion } from 'libs/algolia/analytics/logOfferConversion'
 import { analytics } from 'libs/analytics'
 import { CampaignEvents, campaignTracker } from 'libs/campaign'
@@ -59,13 +60,22 @@ export const BookingOfferModalComponent: React.FC<BookingOfferModalComponentProp
   const fromOfferId = route.params?.fromOfferId
   const fromMultivenueOfferId = route.params?.fromMultivenueOfferId
   const algoliaOfferId = offerId?.toString()
+  const apiRecoParams: SimilarOffersResponseParams = route.params?.apiRecoParams
+    ? JSON.parse(route.params?.apiRecoParams)
+    : undefined
 
   const onBookOfferSuccess = useCallback(
     ({ bookingId }: { bookingId: number }) => {
       dismissModal()
 
       if (offerId) {
-        analytics.logBookingConfirmation(offerId, bookingId, fromOfferId, fromMultivenueOfferId)
+        analytics.logBookingConfirmation({
+          ...apiRecoParams,
+          offerId,
+          bookingId,
+          fromOfferId,
+          fromMultivenueOfferId,
+        })
         if (isFromSearch && algoliaOfferId) {
           logOfferConversion(algoliaOfferId)
         }
@@ -82,16 +92,17 @@ export const BookingOfferModalComponent: React.FC<BookingOfferModalComponentProp
       }
     },
     [
-      algoliaOfferId,
       dismissModal,
+      offerId,
+      apiRecoParams,
       fromOfferId,
       fromMultivenueOfferId,
       isFromSearch,
-      logOfferConversion,
-      navigate,
-      offer?.subcategoryId,
-      offerId,
+      algoliaOfferId,
       selectedStock,
+      offer?.subcategoryId,
+      navigate,
+      logOfferConversion,
     ]
   )
 

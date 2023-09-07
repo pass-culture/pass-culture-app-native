@@ -17,7 +17,6 @@ import { getIsFreeDigitalOffer } from 'features/offer/helpers/getIsFreeDigitalOf
 import { getSearchGroupAndNativeCategoryFromSubcategoryId } from 'features/offer/helpers/getSearchGroupAndNativeCategoryFromSubcategoryId/getSearchGroupAndNativeCategoryFromSubcategoryId'
 import { useCtaWordingAndAction } from 'features/offer/helpers/useCtaWordingAndAction/useCtaWordingAndAction'
 import { useOfferModal } from 'features/offer/helpers/useOfferModal/useOfferModal'
-import { SimilarOffersResponseParams } from 'features/offer/types'
 import { analytics, isCloseToBottom } from 'libs/analytics'
 import { useRemoteConfigContext } from 'libs/firebase/remoteConfig'
 import useFunctionOnce from 'libs/hooks/useFunctionOnce'
@@ -51,9 +50,6 @@ export const Offer: FunctionComponent = () => {
   const offerId = route.params?.id
   const searchId = route.params?.searchId
   const from = route.params?.from
-  const apiRecoParams: SimilarOffersResponseParams = route.params?.apiRecoParams
-    ? JSON.parse(route.params?.apiRecoParams)
-    : undefined
 
   const { data: offerResponse } = useOffer({ offerId })
 
@@ -173,7 +169,6 @@ export const Offer: FunctionComponent = () => {
     modalToDisplay,
     offerId,
     isEndedUsedBooking,
-    apiRecoParams,
   })
 
   useFocusEffect(
