@@ -1,7 +1,7 @@
 import colorAlpha from 'color-alpha'
 
+import { CreditStatus } from 'features/tutorial/enums'
 import { getBackgroundColor } from 'features/tutorial/helpers/getBackgroundColor'
-import { CreditStatus } from 'features/tutorial/types'
 import { theme } from 'theme'
 
 describe('getBackgroundColor', () => {

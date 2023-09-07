@@ -1,8 +1,8 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react'
 import React from 'react'
 
-import { CreditStatus } from 'features/tutorial/types'
-import { Typo } from 'ui/theme'
+import { CreditStatus } from 'features/tutorial/enums'
+import { getSpacing, Spacer, Typo } from 'ui/theme'
 
 import { CreditBlock } from './CreditBlock'
 

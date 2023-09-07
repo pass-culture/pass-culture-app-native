@@ -1,5 +1,5 @@
+import { NonEligible } from 'features/tutorial/enums'
 import { getModalInfoForNonEligible } from 'features/tutorial/helpers/getModalInfoForNonEligible'
-import { NonEligible } from 'features/tutorial/types'
 
 describe('getModalInfoForNonEligible', () => {
   it('should have FAQ link for underage non-eligible', () => {

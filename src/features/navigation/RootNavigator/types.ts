@@ -4,6 +4,7 @@ import { ComponentType } from 'react'
 
 import { CulturalSurveyQuestionEnum } from 'api/gen/api'
 import { SearchState } from 'features/search/types'
+import { TutorialType } from 'features/tutorial/types'
 import { Venue } from 'features/venue/types'
 import { SuggestedPlace } from 'libs/place'
 import { From } from 'shared/offer/enums'
@@ -63,8 +64,8 @@ export type CulturalSurveyRootStackParamList = {
 }
 
 export type TutorialRootStackParamList = {
-  AgeSelection: { type: 'onboarding' | 'profileTutorial' }
-  AgeSelectionOther: { type: 'onboarding' | 'profileTutorial' }
+  AgeSelection: TutorialType
+  AgeSelectionOther: TutorialType
   CheatcodeNavigationTutorial: undefined
   CheatcodeNavigationOnboarding: undefined
   CheatcodeNavigationProfileTutorial: undefined

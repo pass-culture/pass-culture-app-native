@@ -2,6 +2,7 @@ import React, { FunctionComponent } from 'react'
 import styled from 'styled-components/native'
 
 import { CreditComponentProps, CreditTimeline } from 'features/tutorial/components/CreditTimeline'
+import { Tutorial } from 'features/tutorial/enums'
 import { Spacer, Typo, getSpacing, getSpacingString } from 'ui/theme'
 
 interface Props {
@@ -12,7 +13,7 @@ export const OnboardingTimeline: FunctionComponent<Props> = ({ age }) => {
   const stepperProps = stepperPropsMapping.get(age)
   if (!stepperProps) return null
 
-  return <CreditTimeline age={age} stepperProps={stepperProps} type="onboarding" />
+  return <CreditTimeline age={age} stepperProps={stepperProps} type={Tutorial.ONBOARDING} />
 }
 
 const DescriptionText = styled(Typo.Caption)(({ theme }) => ({

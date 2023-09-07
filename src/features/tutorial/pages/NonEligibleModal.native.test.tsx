@@ -1,8 +1,8 @@
 import React from 'react'
 
 import * as NavigationHelpers from 'features/navigation/helpers/openUrl'
+import { NonEligible } from 'features/tutorial/enums'
 import { NonEligibleModal } from 'features/tutorial/pages/NonEligibleModal'
-import { NonEligible } from 'features/tutorial/types'
 import { env } from 'libs/environment/__mocks__/envFixtures'
 import { fireEvent, render } from 'tests/utils'
 

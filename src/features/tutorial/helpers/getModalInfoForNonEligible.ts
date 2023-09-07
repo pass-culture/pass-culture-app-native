@@ -1,4 +1,4 @@
-import { NonEligible } from 'features/tutorial/types'
+import { NonEligible } from 'features/tutorial/enums'
 
 export const getModalInfoForNonEligible = (modalType: NonEligible) => {
   if (modalType === NonEligible.UNDER_15) {

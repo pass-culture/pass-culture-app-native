@@ -1,5 +1,5 @@
+import { CreditStatus } from 'features/tutorial/enums'
 import { getTagColor } from 'features/tutorial/helpers/getTagColor'
-import { CreditStatus } from 'features/tutorial/types'
 import { theme } from 'theme'
 
 describe('getTagColor', () => {

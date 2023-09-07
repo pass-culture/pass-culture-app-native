@@ -1,7 +1,7 @@
 import React, { memo, useCallback, useContext, useMemo, useState } from 'react'
 
+import { NonEligible } from 'features/tutorial/enums'
 import { NonEligibleModal } from 'features/tutorial/pages/NonEligibleModal'
-import { NonEligible } from 'features/tutorial/types'
 import { useModal } from 'ui/components/modals/useModal'
 
 interface OnboardingContextValue {

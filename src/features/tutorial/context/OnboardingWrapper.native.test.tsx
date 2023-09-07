@@ -2,7 +2,7 @@ import {
   OnboardingWrapper,
   useOnboardingContext,
 } from 'features/tutorial/context/OnboardingWrapper'
-import { NonEligible } from 'features/tutorial/types'
+import { NonEligible } from 'features/tutorial/enums'
 import { renderHook, act } from 'tests/utils'
 
 const mockShowModal = jest.fn()

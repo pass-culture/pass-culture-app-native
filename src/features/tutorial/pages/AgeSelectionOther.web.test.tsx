@@ -2,6 +2,7 @@ import { StackScreenProps } from '@react-navigation/stack'
 import React from 'react'
 
 import { TutorialRootStackParamList } from 'features/navigation/RootNavigator/types'
+import { Tutorial } from 'features/tutorial/enums'
 import { render, checkAccessibilityFor } from 'tests/utils/web'
 
 import { AgeSelectionOther } from './AgeSelectionOther'
@@ -9,7 +10,7 @@ import { AgeSelectionOther } from './AgeSelectionOther'
 describe('<AgeSelectionOther/>', () => {
   describe('Accessibility', () => {
     it('should not have basic accessibility issues for onboarding tutorial', async () => {
-      const { container } = renderAgeSelectionOther({ type: 'onboarding' })
+      const { container } = renderAgeSelectionOther({ type: Tutorial.ONBOARDING })
 
       const results = await checkAccessibilityFor(container)
 
@@ -17,7 +18,7 @@ describe('<AgeSelectionOther/>', () => {
     })
 
     it('should not have basic accessibility issues for profile tutorial', async () => {
-      const { container } = renderAgeSelectionOther({ type: 'profileTutorial' })
+      const { container } = renderAgeSelectionOther({ type: Tutorial.PROFILE_TUTORIAL })
 
       const results = await checkAccessibilityFor(container)
 

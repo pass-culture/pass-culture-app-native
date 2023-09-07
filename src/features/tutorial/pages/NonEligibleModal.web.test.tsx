@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { NonEligible } from 'features/tutorial/types'
+import { NonEligible } from 'features/tutorial/enums'
 import { render, checkAccessibilityFor } from 'tests/utils/web'
 
 import { NonEligibleModal } from './NonEligibleModal'
