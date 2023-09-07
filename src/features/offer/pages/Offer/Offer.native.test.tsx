@@ -24,7 +24,7 @@ const mockUseAuthContext = useAuthContext as jest.MockedFunction<typeof useAuthC
 const useSimilarOffersSpy = jest
   .spyOn(useSimilarOffers, 'useSimilarOffers')
   .mockImplementation()
-  .mockReturnValue({ similarOffers: undefined, defaultParams: undefined })
+  .mockReturnValue({ similarOffers: undefined, apiRecoParams: undefined })
 
 let mockShouldUseAlgoliaRecommend = false
 jest.mock('libs/firebase/remoteConfig/RemoteConfigProvider', () => ({
@@ -45,7 +45,7 @@ const mockedOpenUrl = openUrl as jest.MockedFunction<typeof openUrl>
 
 jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockReturnValue(true)
 
-const defaultParams: SimilarOffersResponseParams = {
+const apiRecoParams: SimilarOffersResponseParams = {
   call_id: '1',
   filtered: true,
   geo_located: false,
@@ -155,11 +155,11 @@ describe('<Offer />', () => {
     it('should log two logPlaylistVerticalScroll events when scrolling vertical and reaching the bottom when there are 2 playlists', async () => {
       useSimilarOffersSpy.mockReturnValueOnce({
         similarOffers: mockedAlgoliaResponse.hits,
-        defaultParams,
+        apiRecoParams,
       })
       useSimilarOffersSpy.mockReturnValueOnce({
         similarOffers: mockedAlgoliaResponse.hits,
-        defaultParams,
+        apiRecoParams,
       })
 
       const { getByTestId } = renderOfferPage()
@@ -170,14 +170,14 @@ describe('<Offer />', () => {
       })
 
       expect(analytics.logPlaylistVerticalScroll).toHaveBeenNthCalledWith(1, {
-        ...defaultParams,
+        ...apiRecoParams,
         fromOfferId: undefined,
         offerId: 116656,
         playlistType: PlaylistType.SAME_CATEGORY_SIMILAR_OFFERS,
         shouldUseAlgoliaRecommend: false,
       })
       expect(analytics.logPlaylistVerticalScroll).toHaveBeenNthCalledWith(2, {
-        ...defaultParams,
+        ...apiRecoParams,
         fromOfferId: undefined,
         offerId: 116656,
         playlistType: PlaylistType.OTHER_CATEGORIES_SIMILAR_OFFERS,
@@ -186,8 +186,8 @@ describe('<Offer />', () => {
     })
 
     it('should not log two logPlaylistVerticalScroll events when scrolling vertical and reaching the bottom when playlist are empty', async () => {
-      useSimilarOffersSpy.mockReturnValueOnce({ similarOffers: [], defaultParams })
-      useSimilarOffersSpy.mockReturnValueOnce({ similarOffers: [], defaultParams })
+      useSimilarOffersSpy.mockReturnValueOnce({ similarOffers: [], apiRecoParams })
+      useSimilarOffersSpy.mockReturnValueOnce({ similarOffers: [], apiRecoParams })
       const { getByTestId } = renderOfferPage()
       const scrollView = getByTestId('offer-container')
 
@@ -197,14 +197,14 @@ describe('<Offer />', () => {
 
       await waitFor(() => {
         expect(analytics.logPlaylistVerticalScroll).not.toHaveBeenNthCalledWith(1, {
-          ...defaultParams,
+          ...apiRecoParams,
           fromOfferId: undefined,
           offerId: 116656,
           playlistType: PlaylistType.SAME_CATEGORY_SIMILAR_OFFERS,
           shouldUseAlgoliaRecommend: false,
         })
         expect(analytics.logPlaylistVerticalScroll).not.toHaveBeenNthCalledWith(2, {
-          ...defaultParams,
+          ...apiRecoParams,
           fromOfferId: undefined,
           offerId: 116656,
           playlistType: PlaylistType.OTHER_CATEGORIES_SIMILAR_OFFERS,
@@ -217,9 +217,9 @@ describe('<Offer />', () => {
       beforeAll(() => {
         useSimilarOffersSpy.mockReturnValueOnce({
           similarOffers: mockedAlgoliaResponse.hits,
-          defaultParams,
+          apiRecoParams,
         })
-        useSimilarOffersSpy.mockReturnValueOnce({ similarOffers: [], defaultParams })
+        useSimilarOffersSpy.mockReturnValueOnce({ similarOffers: [], apiRecoParams })
       })
 
       it('should log logPlaylistVerticalScroll event with same category similar offers playlist param when scrolling vertical and reaching the bottom ', async () => {
@@ -231,7 +231,7 @@ describe('<Offer />', () => {
         })
 
         expect(analytics.logPlaylistVerticalScroll).toHaveBeenNthCalledWith(1, {
-          ...defaultParams,
+          ...apiRecoParams,
           fromOfferId: undefined,
           offerId: 116656,
           playlistType: PlaylistType.SAME_CATEGORY_SIMILAR_OFFERS,
@@ -258,10 +258,10 @@ describe('<Offer />', () => {
 
     describe('When there is only other categories similar offers playlist', () => {
       beforeAll(() => {
-        useSimilarOffersSpy.mockReturnValueOnce({ similarOffers: [], defaultParams })
+        useSimilarOffersSpy.mockReturnValueOnce({ similarOffers: [], apiRecoParams })
         useSimilarOffersSpy.mockReturnValueOnce({
           similarOffers: mockedAlgoliaResponse.hits,
-          defaultParams,
+          apiRecoParams,
         })
       })
 
@@ -274,7 +274,7 @@ describe('<Offer />', () => {
         })
 
         expect(analytics.logPlaylistVerticalScroll).toHaveBeenNthCalledWith(1, {
-          ...defaultParams,
+          ...apiRecoParams,
           fromOfferId: undefined,
           offerId: 116656,
           playlistType: PlaylistType.OTHER_CATEGORIES_SIMILAR_OFFERS,
@@ -302,11 +302,11 @@ describe('<Offer />', () => {
     it('should not log logPlaylistVerticalScroll event when scrolling vertical and not reaching the bottom', async () => {
       useSimilarOffersSpy.mockReturnValueOnce({
         similarOffers: mockedAlgoliaResponse.hits,
-        defaultParams,
+        apiRecoParams,
       })
       useSimilarOffersSpy.mockReturnValueOnce({
         similarOffers: mockedAlgoliaResponse.hits,
-        defaultParams,
+        apiRecoParams,
       })
       renderOfferPage()
       const scrollView = screen.getByTestId('offer-container')
@@ -316,14 +316,14 @@ describe('<Offer />', () => {
       })
 
       expect(analytics.logPlaylistVerticalScroll).not.toHaveBeenNthCalledWith(1, {
-        ...defaultParams,
+        ...apiRecoParams,
         fromOfferId: undefined,
         offerId: 116656,
         playlistType: PlaylistType.SAME_CATEGORY_SIMILAR_OFFERS,
         shouldUseAlgoliaRecommend: false,
       })
       expect(analytics.logPlaylistVerticalScroll).not.toHaveBeenNthCalledWith(2, {
-        ...defaultParams,
+        ...apiRecoParams,
         fromOfferId: undefined,
         offerId: 116656,
         playlistType: PlaylistType.OTHER_CATEGORIES_SIMILAR_OFFERS,
@@ -334,11 +334,11 @@ describe('<Offer />', () => {
     it('should log logPlaylistVerticalScroll with the event param fromOfferId & offerId', async () => {
       useSimilarOffersSpy.mockReturnValueOnce({
         similarOffers: mockedAlgoliaResponse.hits,
-        defaultParams,
+        apiRecoParams,
       })
       useSimilarOffersSpy.mockReturnValueOnce({
         similarOffers: mockedAlgoliaResponse.hits,
-        defaultParams,
+        apiRecoParams,
       })
       const fromOfferId = 1
       const offerId = 116656
@@ -350,14 +350,14 @@ describe('<Offer />', () => {
       })
 
       expect(analytics.logPlaylistVerticalScroll).toHaveBeenNthCalledWith(1, {
-        ...defaultParams,
+        ...apiRecoParams,
         fromOfferId,
         offerId,
         playlistType: PlaylistType.SAME_CATEGORY_SIMILAR_OFFERS,
         shouldUseAlgoliaRecommend: false,
       })
       expect(analytics.logPlaylistVerticalScroll).toHaveBeenNthCalledWith(2, {
-        ...defaultParams,
+        ...apiRecoParams,
         fromOfferId,
         offerId,
         playlistType: PlaylistType.OTHER_CATEGORIES_SIMILAR_OFFERS,
@@ -372,11 +372,11 @@ describe('<Offer />', () => {
       it('should log two logPlaylistVerticalScroll events when scrolling vertical and reaching the bottom when there are 2 playlists when A/B Testing activated', async () => {
         useSimilarOffersSpy.mockReturnValueOnce({
           similarOffers: mockedAlgoliaResponse.hits,
-          defaultParams,
+          apiRecoParams,
         })
         useSimilarOffersSpy.mockReturnValueOnce({
           similarOffers: mockedAlgoliaResponse.hits,
-          defaultParams,
+          apiRecoParams,
         })
         const { getByTestId } = renderOfferPage()
         const scrollView = getByTestId('offer-container')
@@ -386,14 +386,14 @@ describe('<Offer />', () => {
         })
 
         expect(analytics.logPlaylistVerticalScroll).toHaveBeenNthCalledWith(1, {
-          ...defaultParams,
+          ...apiRecoParams,
           fromOfferId: undefined,
           offerId: 116656,
           playlistType: PlaylistType.SAME_CATEGORY_SIMILAR_OFFERS,
           shouldUseAlgoliaRecommend: true,
         })
         expect(analytics.logPlaylistVerticalScroll).toHaveBeenNthCalledWith(2, {
-          ...defaultParams,
+          ...apiRecoParams,
           fromOfferId: undefined,
           offerId: 116656,
           playlistType: PlaylistType.OTHER_CATEGORIES_SIMILAR_OFFERS,

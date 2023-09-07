@@ -17,6 +17,7 @@ import { getIsFreeDigitalOffer } from 'features/offer/helpers/getIsFreeDigitalOf
 import { getSearchGroupAndNativeCategoryFromSubcategoryId } from 'features/offer/helpers/getSearchGroupAndNativeCategoryFromSubcategoryId/getSearchGroupAndNativeCategoryFromSubcategoryId'
 import { useCtaWordingAndAction } from 'features/offer/helpers/useCtaWordingAndAction/useCtaWordingAndAction'
 import { useOfferModal } from 'features/offer/helpers/useOfferModal/useOfferModal'
+import { SimilarOffersResponseParams } from 'features/offer/types'
 import { analytics, isCloseToBottom } from 'libs/analytics'
 import { useRemoteConfigContext } from 'libs/firebase/remoteConfig'
 import useFunctionOnce from 'libs/hooks/useFunctionOnce'
@@ -50,6 +51,9 @@ export const Offer: FunctionComponent = () => {
   const offerId = route.params?.id
   const searchId = route.params?.searchId
   const from = route.params?.from
+  const apiRecoParams: SimilarOffersResponseParams = route.params?.apiRecoParams
+    ? JSON.parse(route.params?.apiRecoParams)
+    : undefined
 
   const { data: offerResponse } = useOffer({ offerId })
 
@@ -65,7 +69,7 @@ export const Offer: FunctionComponent = () => {
 
   const { searchGroupName, nativeCategory } =
     getSearchGroupAndNativeCategoryFromSubcategoryId(data, offer?.subcategoryId) || {}
-  const { similarOffers: sameCategorySimilarOffers, defaultParams: defaultParamsSameCategory } =
+  const { similarOffers: sameCategorySimilarOffers, apiRecoParams: apiRecoParamsSameCategory } =
     useSimilarOffers({
       offerId,
       position: offer?.venue.coordinates,
@@ -76,7 +80,7 @@ export const Offer: FunctionComponent = () => {
 
   const {
     similarOffers: otherCategoriesSimilarOffers,
-    defaultParams: defaultParamsOtherCategories,
+    apiRecoParams: apiRecoParamsOtherCategories,
   } = useSimilarOffers({
     offerId,
     position: offer?.venue.coordinates,
@@ -95,7 +99,7 @@ export const Offer: FunctionComponent = () => {
 
   const logSameCategoryPlaylistVerticalScroll = useFunctionOnce(() => {
     return analytics.logPlaylistVerticalScroll({
-      ...defaultParamsSameCategory,
+      ...apiRecoParamsSameCategory,
       fromOfferId,
       offerId,
       playlistType: PlaylistType.SAME_CATEGORY_SIMILAR_OFFERS,
@@ -105,7 +109,7 @@ export const Offer: FunctionComponent = () => {
 
   const logOtherCategoriesPlaylistVerticalScroll = useFunctionOnce(() => {
     return analytics.logPlaylistVerticalScroll({
-      ...defaultParamsOtherCategories,
+      ...apiRecoParamsOtherCategories,
       fromOfferId,
       offerId,
       playlistType: PlaylistType.OTHER_CATEGORIES_SIMILAR_OFFERS,
@@ -169,6 +173,7 @@ export const Offer: FunctionComponent = () => {
     modalToDisplay,
     offerId,
     isEndedUsedBooking,
+    apiRecoParams,
   })
 
   useFocusEffect(
@@ -205,9 +210,9 @@ export const Offer: FunctionComponent = () => {
         offerId={offerId}
         onScroll={onScroll}
         sameCategorySimilarOffers={sameCategorySimilarOffers}
-        defaultParamsSameCategory={defaultParamsSameCategory}
+        apiRecoParamsSameCategory={apiRecoParamsSameCategory}
         otherCategoriesSimilarOffers={otherCategoriesSimilarOffers}
-        defaultParamsOtherCategories={defaultParamsOtherCategories}
+        apiRecoParamsOtherCategories={apiRecoParamsOtherCategories}
         shouldUseAlgoliaRecommend={shouldUseAlgoliaRecommend}
       />
       {/* OfferHeader is called after Body to implement the BlurView for iOS */}

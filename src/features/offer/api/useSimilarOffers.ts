@@ -175,6 +175,6 @@ export const useSimilarOffers = ({
       (shouldUseAlgoliaRecommend ? similarOffersIds : apiRecoResponse?.results) ?? [],
       true
     ),
-    defaultParams: apiRecoResponse?.params,
+    apiRecoParams: apiRecoResponse?.params,
   }
 }

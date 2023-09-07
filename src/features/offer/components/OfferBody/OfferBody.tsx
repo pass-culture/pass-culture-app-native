@@ -62,9 +62,9 @@ interface Props {
   offerId: number
   onScroll: () => void
   sameCategorySimilarOffers?: Offer[]
-  defaultParamsSameCategory?: SimilarOffersResponseParams
+  apiRecoParamsSameCategory?: SimilarOffersResponseParams
   otherCategoriesSimilarOffers?: Offer[]
-  defaultParamsOtherCategories?: SimilarOffersResponseParams
+  apiRecoParamsOtherCategories?: SimilarOffersResponseParams
   shouldUseAlgoliaRecommend?: boolean
 }
 
@@ -78,9 +78,9 @@ export const OfferBody: FunctionComponent<Props> = ({
   offerId,
   onScroll,
   sameCategorySimilarOffers,
-  defaultParamsSameCategory,
+  apiRecoParamsSameCategory,
   otherCategoriesSimilarOffers,
-  defaultParamsOtherCategories,
+  apiRecoParamsOtherCategories,
   shouldUseAlgoliaRecommend,
 }) => {
   const { navigate } = useNavigation<UseNavigationType>()
@@ -167,7 +167,7 @@ export const OfferBody: FunctionComponent<Props> = ({
         height: number
         playlistType?: PlaylistType
       },
-      defaultApiRecoParams?: SimilarOffersResponseParams
+      apiRecoParams?: SimilarOffersResponseParams
     ) => {
       const timestampsInMillis = item.offer.dates?.map((timestampInSec) => timestampInSec * 1000)
       return (
@@ -188,7 +188,7 @@ export const OfferBody: FunctionComponent<Props> = ({
           fromOfferId={offerId}
           shouldUseAlgoliaRecommend={shouldUseAlgoliaRecommend}
           playlistType={playlistType}
-          defaultParamsApiReco={defaultApiRecoParams}
+          apiRecoParams={apiRecoParams}
         />
       )
     },
@@ -397,7 +397,7 @@ export const OfferBody: FunctionComponent<Props> = ({
             itemWidth={itemWidth}
             itemHeight={itemHeight}
             renderItem={({ item, width, height, playlistType }) =>
-              renderItem({ item, width, height, playlistType }, defaultParamsSameCategory)
+              renderItem({ item, width, height, playlistType }, apiRecoParamsSameCategory)
             }
             keyExtractor={keyExtractor}
             title="Dans la même catégorie"
@@ -415,7 +415,7 @@ export const OfferBody: FunctionComponent<Props> = ({
             itemWidth={itemWidth}
             itemHeight={itemHeight}
             renderItem={({ item, width, height, playlistType }) =>
-              renderItem({ item, width, height, playlistType }, defaultParamsOtherCategories)
+              renderItem({ item, width, height, playlistType }, apiRecoParamsOtherCategories)
             }
             keyExtractor={keyExtractor}
             title="Ça peut aussi te plaire"

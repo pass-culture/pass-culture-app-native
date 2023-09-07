@@ -26,7 +26,7 @@ export interface OfferTileProps {
   shouldUseAlgoliaRecommend?: boolean
   playlistType?: PlaylistType
   searchId?: string
-  defaultParamsApiReco?: SimilarOffersResponseParams
+  apiRecoParams?: SimilarOffersResponseParams
 }
 
 export interface SimilarOffersResponseParams {
