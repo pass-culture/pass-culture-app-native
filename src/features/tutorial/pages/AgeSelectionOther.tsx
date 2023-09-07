@@ -9,10 +9,10 @@ import {
   TutorialRootStackParamList,
 } from 'features/navigation/RootNavigator/types'
 import { homeNavConfig } from 'features/navigation/TabBar/helpers'
-import { AgeButton } from 'features/tutorial/components/AgeButton'
+import { AgeButtonOther } from 'features/tutorial/components/AgeButtonOther'
 import { useOnboardingContext } from 'features/tutorial/context/OnboardingWrapper'
+import { NonEligible, Tutorial } from 'features/tutorial/enums'
 import { TutorialPage } from 'features/tutorial/pages/TutorialPage'
-import { NonEligible } from 'features/tutorial/types'
 import { analytics } from 'libs/analytics'
 import { storage } from 'libs/storage'
 import { Spacer, Typo } from 'ui/theme'
@@ -29,23 +29,30 @@ export const AgeSelectionOther: FunctionComponent<Props> = ({ route }: Props) =>
   const onUnder15Press = useCallback(async () => {
     analytics.logSelectAge(NonEligible.UNDER_15)
     showNonEligibleModal(NonEligible.UNDER_15)
-    reset({ index: 0, routes: [{ name: homeNavConfig[0] }] })
-    await storage.saveObject('user_age', NonEligible.UNDER_15)
-  }, [showNonEligibleModal, reset])
+
+    if (type === Tutorial.ONBOARDING) {
+      reset({ index: 0, routes: [{ name: homeNavConfig[0] }] })
+      await storage.saveObject('user_age', NonEligible.UNDER_15)
+    }
+  }, [type, showNonEligibleModal, reset])
 
   const onOver18Press = useCallback(async () => {
     analytics.logSelectAge(NonEligible.OVER_18)
     showNonEligibleModal(NonEligible.OVER_18)
-    reset({ index: 0, routes: [{ name: homeNavConfig[0] }] })
-    await storage.saveObject('user_age', NonEligible.OVER_18)
-  }, [showNonEligibleModal, reset])
 
-  const title = type === 'onboarding' ? 'Quel âge as-tu\u00a0?' : 'Comment ça marche\u00a0?'
-  const startButtonTitle = type === 'onboarding' ? 'j’ai' : 'à'
+    if (type === Tutorial.ONBOARDING) {
+      reset({ index: 0, routes: [{ name: homeNavConfig[0] }] })
+      await storage.saveObject('user_age', NonEligible.OVER_18)
+    }
+  }, [type, showNonEligibleModal, reset])
+
+  const title = type === Tutorial.ONBOARDING ? 'Quel âge as-tu\u00a0?' : 'Comment ça marche\u00a0?'
+  const startButtonTitle = type === Tutorial.ONBOARDING ? 'j’ai' : 'à'
 
   return (
     <TutorialPage title={title}>
-      <AgeButton
+      <AgeButtonOther
+        type={type}
         onBeforeNavigate={onUnder15Press}
         navigateTo={navigateToHomeConfig}
         // We disable navigation because we reset the navigation before,
@@ -56,9 +63,10 @@ export const AgeSelectionOther: FunctionComponent<Props> = ({ route }: Props) =>
           {startButtonTitle}
           <Title3Text> moins de 15 ans</Title3Text>
         </Title4Text>
-      </AgeButton>
+      </AgeButtonOther>
       <Spacer.Column numberOfSpaces={4} />
-      <AgeButton
+      <AgeButtonOther
+        type={type}
         onBeforeNavigate={onOver18Press}
         navigateTo={navigateToHomeConfig}
         // We disable navigation because we reset the navigation before,
@@ -69,7 +77,7 @@ export const AgeSelectionOther: FunctionComponent<Props> = ({ route }: Props) =>
           {startButtonTitle}
           <Title3Text> plus de 18 ans</Title3Text>
         </Title4Text>
-      </AgeButton>
+      </AgeButtonOther>
     </TutorialPage>
   )
 }
