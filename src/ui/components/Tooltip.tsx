@@ -1,3 +1,4 @@
+import { useFocusEffect } from '@react-navigation/core'
 import React, { ComponentProps, FunctionComponent, useEffect, useRef } from 'react'
 import { Path, Svg } from 'react-native-svg'
 import styled, { useTheme } from 'styled-components/native'
@@ -27,6 +28,14 @@ export const Tooltip: FunctionComponent<Props> = ({ label, isVisible, onHide, st
     }
   }, [isVisible])
 
+  // Hide tooltip when navigating away
+  useFocusEffect(() => {
+    return () => {
+      onHide?.()
+    }
+  })
+
+  // For a11y reason, hide tooltip when pressing escape key
   useEscapeKeyAction(isVisible ? onHide : undefined)
 
   if (!isVisible) return null
