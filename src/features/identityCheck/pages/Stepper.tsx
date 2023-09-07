@@ -11,7 +11,9 @@ import { StepButton } from 'features/identityCheck/components/StepButton'
 import { useRehydrateProfile } from 'features/identityCheck/pages/helpers/useRehydrateProfile'
 import { useSetSubscriptionStepAndMethod } from 'features/identityCheck/pages/helpers/useSetCurrentSubscriptionStep'
 import { useStepperInfo } from 'features/identityCheck/pages/helpers/useStepperInfo'
+import { StepButtonState } from 'features/identityCheck/types'
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
+import { StepList } from 'features/profile/components/StepList/StepList'
 import { analytics } from 'libs/analytics'
 import { hasOngoingCredit } from 'shared/user/useAvailableCredit'
 import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
@@ -33,6 +35,10 @@ export const Stepper = () => {
     subtitle: stepperSubtitle,
     errorMessage,
   } = useStepperInfo()
+
+  const activeStepIndex = steps.findIndex(
+    (step) => step.stepState === StepButtonState.CURRENT || step.stepState === StepButtonState.RETRY
+  )
 
   const { subscription } = useSetSubscriptionStepAndMethod()
   const { showErrorSnackBar } = useSnackBarContext()
@@ -78,19 +84,22 @@ export const Stepper = () => {
 
   const stepList = (
     <VerticalUl>
-      {steps.map((step) => (
-        <Li key={step.name}>
-          <StepButtonContainer>
-            <StepButton
-              step={step}
-              navigateTo={{ screen: step.firstScreen }}
-              onPress={() => {
-                analytics.logIdentityCheckStep(step.name)
-              }}
-            />
-          </StepButtonContainer>
-        </Li>
-      ))}
+      <StepList activeStepIndex={activeStepIndex}>
+        {steps.map((step, index) => (
+          <Li key={step.name}>
+            <StepButtonContainer>
+              <StepButton
+                step={step}
+                navigateTo={{ screen: step.firstScreen }}
+                onPress={() => {
+                  analytics.logIdentityCheckStep(step.name)
+                }}
+              />
+              {index === steps.length - 1 ? null : <Spacer.Column numberOfSpaces={2} />}
+            </StepButtonContainer>
+          </Li>
+        ))}
+      </StepList>
     </VerticalUl>
   )
 
