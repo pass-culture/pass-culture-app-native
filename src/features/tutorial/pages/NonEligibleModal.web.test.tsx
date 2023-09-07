@@ -1,14 +1,23 @@
 import React from 'react'
 
-import { NonEligibleModal } from 'features/tutorial/pages/NonEligibleModal'
 import { NonEligible } from 'features/tutorial/types'
-import { render } from 'tests/utils/web'
+import { render, checkAccessibilityFor } from 'tests/utils/web'
 
-describe('NonEligibleModal', () => {
-  it.each(Object.values(NonEligible))('should render null in web', (modalType) => {
-    const { container } = render(
-      <NonEligibleModal visible hideModal={jest.fn()} modalType={modalType} />
+import { NonEligibleModal } from './NonEligibleModal'
+
+describe('<NonEligibleModal/>', () => {
+  describe('Accessibility', () => {
+    it.each(Object.values(NonEligible))(
+      'should not have basic accessibility issues',
+      async (modalType) => {
+        const { container } = render(
+          <NonEligibleModal visible hideModal={jest.fn()} modalType={modalType} />
+        )
+
+        const results = await checkAccessibilityFor(container)
+
+        expect(results).toHaveNoViolations()
+      }
     )
-    expect(container).toBeEmptyDOMElement()
   })
 })
