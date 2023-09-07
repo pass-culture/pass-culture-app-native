@@ -50,6 +50,8 @@ jest.mock('features/favorites/context/FavoritesWrapper', () => ({
   }),
 }))
 
+const shareSpy = jest.spyOn(Share, 'share').mockResolvedValue({ action: Share.sharedAction })
+
 describe('<Favorite /> component', () => {
   it('should navigate to the offer when clicking on the favorite', async () => {
     renderFavorite()
@@ -108,7 +110,6 @@ describe('<Favorite /> component', () => {
   })
 
   it('should call share when press share icon', async () => {
-    const share = jest.spyOn(Share, 'share')
     renderFavorite()
 
     const shareButton = await screen.findByLabelText(`Partager l’offre ${favorite.offer.name}`)
@@ -116,7 +117,7 @@ describe('<Favorite /> component', () => {
       fireEvent.press(shareButton)
     })
 
-    expect(share).toHaveBeenCalledTimes(1)
+    expect(shareSpy).toHaveBeenCalledTimes(1)
   })
 
   it('should log analytics when press share icon', async () => {

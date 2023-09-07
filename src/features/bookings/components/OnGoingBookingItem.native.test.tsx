@@ -13,6 +13,8 @@ import { fireEvent, render, screen } from 'tests/utils'
 
 import { OnGoingBookingItem } from './OnGoingBookingItem'
 
+jest.spyOn(Share, 'share').mockResolvedValue({ action: Share.sharedAction })
+
 describe('OnGoingBookingItem', () => {
   const bookings = bookingsSnap.ongoing_bookings
   const initialBooking: Booking = bookingsSnap.ongoing_bookings[0]

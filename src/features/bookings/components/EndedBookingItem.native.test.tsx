@@ -11,6 +11,8 @@ import { fireEvent, render, screen } from 'tests/utils'
 
 import { EndedBookingItem } from './EndedBookingItem'
 
+jest.spyOn(Share, 'share').mockResolvedValue({ action: Share.sharedAction })
+
 describe('EndedBookingItem', () => {
   it('should display offer title', () => {
     renderEndedBookingItem(bookingsSnap.ended_bookings[0])
