@@ -95,6 +95,7 @@ export const Offer: FunctionComponent = () => {
 
   const logSameCategoryPlaylistVerticalScroll = useFunctionOnce(() => {
     return analytics.logPlaylistVerticalScroll({
+      ...defaultParamsSameCategory,
       fromOfferId,
       offerId,
       playlistType: PlaylistType.SAME_CATEGORY_SIMILAR_OFFERS,
@@ -104,6 +105,7 @@ export const Offer: FunctionComponent = () => {
 
   const logOtherCategoriesPlaylistVerticalScroll = useFunctionOnce(() => {
     return analytics.logPlaylistVerticalScroll({
+      ...defaultParamsOtherCategories,
       fromOfferId,
       offerId,
       playlistType: PlaylistType.OTHER_CATEGORIES_SIMILAR_OFFERS,
