@@ -206,15 +206,15 @@ class RegistrationAcceptCgu extends AppScreen {
 
 class SignupConfirmationEmailSent extends AppScreen {
   constructor() {
-    super('SignupConfirmationEmailSent', true)
+    super('Consulter notre centre d’aide', true)
+  }
+
+  get openFAQ() {
+    return find('Consulter notre centre d’aide')
   }
 
   get close() {
-    return find('Abandonner l’inscription')
-  }
-
-  get back() {
-    return find('Revenir en arrière')
+    return find('Fermer')
   }
 }
 
