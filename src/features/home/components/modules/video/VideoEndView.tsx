@@ -1,6 +1,6 @@
 import colorAlpha from 'color-alpha'
 import React from 'react'
-import { StyleProp, ViewStyle } from 'react-native'
+import { StyleProp, View, ViewStyle } from 'react-native'
 import styled from 'styled-components/native'
 
 import { ButtonWithCaption } from 'features/home/components/modules/video/ButtonWithCaption'
@@ -69,7 +69,7 @@ export const VideoEndView: React.FC<{
   )
 }
 
-const VideoEndViewContainer = styled.View({
+const VideoEndViewContainer = styled(View)({
   position: 'absolute',
 })
 

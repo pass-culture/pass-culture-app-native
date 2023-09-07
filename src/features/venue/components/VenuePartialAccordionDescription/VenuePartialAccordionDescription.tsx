@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react'
-import { Animated, Easing, TouchableWithoutFeedback, Platform } from 'react-native'
+import { Animated, Easing, TouchableWithoutFeedback, Platform, View } from 'react-native'
 import styled from 'styled-components/native'
 
 import { highlightLinks } from 'libs/parsers/highlightLinks'
@@ -102,7 +102,7 @@ const StyledAnimatedView = styled(Animated.View)({
   overflow: 'hidden',
 })
 
-const DescriptionContainer = styled.View({
+const DescriptionContainer = styled(View)({
   position: 'absolute',
   top: 0,
   width: '100%',

@@ -1,7 +1,7 @@
 import { useNavigation } from '@react-navigation/native'
 import { StackScreenProps } from '@react-navigation/stack'
 import React, { useCallback, useEffect, useState } from 'react'
-import { LayoutChangeEvent, NativeScrollEvent } from 'react-native'
+import { LayoutChangeEvent, NativeScrollEvent, View } from 'react-native'
 import styled from 'styled-components/native'
 
 import { extractApiErrorMessage } from 'api/apiHelpers'
@@ -250,7 +250,7 @@ const CaptionContainer = styled.View({
   paddingBottom: getSpacing(8),
 })
 
-const FixedBottomChildrenView = styled.View({
+const FixedBottomChildrenView = styled(View)({
   alignItems: 'center',
   position: 'absolute',
   bottom: 0,

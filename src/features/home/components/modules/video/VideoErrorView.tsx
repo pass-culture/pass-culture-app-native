@@ -1,5 +1,5 @@
 import React from 'react'
-import { StyleProp, ViewStyle } from 'react-native'
+import { StyleProp, View, ViewStyle } from 'react-native'
 import styled from 'styled-components/native'
 
 import { HeaderBackground } from 'ui/svg/HeaderBackground'
@@ -23,7 +23,7 @@ export const VideoErrorView: React.FC<{
   )
 }
 
-const VideoPlayerErrorViewContainer = styled.View({
+const VideoPlayerErrorViewContainer = styled(View)({
   position: 'absolute',
   borderTopLeftRadius: getSpacing(4),
   borderTopRightRadius: getSpacing(4),
