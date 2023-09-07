@@ -1,7 +1,10 @@
+import { NavigationContainer } from '@react-navigation/native'
 import React from 'react'
 
 import { LocationWidget } from 'features/location/components/LocationWidget'
 import { act, fireEvent, render, screen } from 'tests/utils/web'
+
+jest.unmock('@react-navigation/native')
 
 describe('LocationWidget', () => {
   afterEach(async () => {
@@ -13,7 +16,11 @@ describe('LocationWidget', () => {
 
   it('should hide tooltip when pressing close button', async () => {
     jest.useFakeTimers()
-    render(<LocationWidget />)
+    render(
+      <NavigationContainer>
+        <LocationWidget />
+      </NavigationContainer>
+    )
 
     await act(async () => {
       jest.advanceTimersByTime(1000)
