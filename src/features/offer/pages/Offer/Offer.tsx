@@ -65,7 +65,8 @@ export const Offer: FunctionComponent = () => {
 
   const { searchGroupName, nativeCategory } =
     getSearchGroupAndNativeCategoryFromSubcategoryId(data, offer?.subcategoryId) || {}
-  const sameCategorySimilarOffers = useSimilarOffers({
+  const { similarOffers: sameCategorySimilarOffers, defaultParams: defaultParamsSameCategory } =
+    useSimilarOffers({
     offerId,
     position: offer?.venue.coordinates,
     shouldUseAlgoliaRecommend,
@@ -73,7 +74,10 @@ export const Offer: FunctionComponent = () => {
   })
   const hasSameCategorySimilarOffers = Boolean(sameCategorySimilarOffers?.length)
 
-  const otherCategoriesSimilarOffers = useSimilarOffers({
+  const {
+    similarOffers: otherCategoriesSimilarOffers,
+    defaultParams: defaultParamsOtherCategories,
+  } = useSimilarOffers({
     offerId,
     position: offer?.venue.coordinates,
     shouldUseAlgoliaRecommend,

@@ -8,8 +8,6 @@ import { useAlgoliaSimilarOffers } from 'features/offer/api/useAlgoliaSimilarOff
 import { getAlgoliaRecommendParams } from 'features/offer/helpers/getAlgoliaRecommendParams/getAlgoliaRecommendParams'
 import { SimilarOffersResponse } from 'features/offer/types'
 import { env } from 'libs/environment'
-// eslint-disable-next-line no-restricted-imports
-import { firebaseAnalytics } from 'libs/firebase/analytics'
 import { eventMonitoring } from 'libs/monitoring'
 import { useSubcategories } from 'libs/subcategories/useSubcategories'
 
@@ -92,10 +90,7 @@ export const getAlgoliaFrequentlyBoughtTogether = async (
 export const getApiRecoSimilarOffers = async (similarOffersEndpoint: string) => {
   const similarOffers = await fetch(similarOffersEndpoint)
     .then((response) => response.json())
-    .then((data: SimilarOffersResponse) => {
-      firebaseAnalytics.setDefaultEventParameters(data.params)
-      return data.results
-    })
+    .then((data: SimilarOffersResponse) => data)
     .catch((e) => {
       eventMonitoring.captureException(e)
       return undefined
@@ -146,6 +141,7 @@ export const useSimilarOffers = ({
   )
   const similarOffersEndpoint = getSimilarOffersEndpoint(offerId, profile?.id, position, categories)
   const [similarOffersIds, setSimilarOffersIds] = useState<string[]>()
+  const [apiRecoResponse, setApiRecoResponse] = useState<SimilarOffersResponse>()
 
   const fetchAlgolia = useCallback(async () => {
     if (!offerId || (categoryIncluded && !isLoadedOfferPosition)) return
@@ -159,7 +155,7 @@ export const useSimilarOffers = ({
 
   const fetchApiReco = useCallback(async () => {
     if (!similarOffersEndpoint || !isLoadedOfferPosition) return
-    setSimilarOffersIds(await getApiRecoSimilarOffers(similarOffersEndpoint))
+    setApiRecoResponse(await getApiRecoSimilarOffers(similarOffersEndpoint))
   }, [isLoadedOfferPosition, similarOffersEndpoint])
 
   useEffect(() => {
@@ -174,5 +170,11 @@ export const useSimilarOffers = ({
     fetchSimilarOffers()
   }, [fetchAlgolia, fetchApiReco, shouldUseAlgoliaRecommend])
 
-  return useAlgoliaSimilarOffers(similarOffersIds ?? [], true)
+  return {
+    similarOffers: useAlgoliaSimilarOffers(
+      (shouldUseAlgoliaRecommend ? similarOffersIds : apiRecoResponse?.results) ?? [],
+      true
+    ),
+    defaultParams: apiRecoResponse?.params,
+  }
 }
