@@ -34,7 +34,7 @@ const headerBackgroundAndroidInterpolation = () => ({
 
 export const getAnimationState = (
   theme: DefaultTheme,
-  headerTransition: Animated.AnimatedInterpolation
+  headerTransition: Animated.AnimatedInterpolation<string | number>
 ) => ({
   animationState: {
     iconBackgroundColor: headerTransition.interpolate(iconBackgroundInterpolation(theme)),
