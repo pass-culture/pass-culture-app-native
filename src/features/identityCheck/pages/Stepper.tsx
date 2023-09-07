@@ -17,10 +17,8 @@ import { StepList } from 'features/profile/components/StepList/StepList'
 import { analytics } from 'libs/analytics'
 import { hasOngoingCredit } from 'shared/user/useAvailableCredit'
 import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
-import { Li } from 'ui/components/Li'
 import { useModal } from 'ui/components/modals/useModal'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
-import { VerticalUl } from 'ui/components/Ul'
 import { Invalidate } from 'ui/svg/icons/Invalidate'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
@@ -83,24 +81,20 @@ export const Stepper = () => {
   }, [subscription])
 
   const stepList = (
-    <VerticalUl>
-      <StepList activeStepIndex={activeStepIndex}>
-        {steps.map((step, index) => (
-          <Li key={step.name}>
-            <StepButtonContainer>
-              <StepButton
-                step={step}
-                navigateTo={{ screen: step.firstScreen }}
-                onPress={() => {
-                  analytics.logIdentityCheckStep(step.name)
-                }}
-              />
-              {index === steps.length - 1 ? null : <Spacer.Column numberOfSpaces={2} />}
-            </StepButtonContainer>
-          </Li>
-        ))}
-      </StepList>
-    </VerticalUl>
+    <StepList activeStepIndex={activeStepIndex}>
+      {steps.map((step, index) => (
+        <StepButtonContainer key={step.name}>
+          <StepButton
+            step={step}
+            navigateTo={{ screen: step.firstScreen }}
+            onPress={() => {
+              analytics.logIdentityCheckStep(step.name)
+            }}
+          />
+          {index === steps.length - 1 ? null : <Spacer.Column numberOfSpaces={2} />}
+        </StepButtonContainer>
+      ))}
+    </StepList>
   )
 
   return (
