@@ -763,6 +763,7 @@ exports[`<Search/> should render Search 1`] = `
           </Text>
         </View>
         <View
+          onFocusCapture={[Function]}
           onLayout={[Function]}
           style={null}
         >
@@ -789,6 +790,23 @@ exports[`<Search/> should render Search 1`] = `
               <View
                 accessibilityLabel="Catégorie Concerts & festivals"
                 accessibilityRole="button"
+                accessibilityState={
+                  {
+                    "busy": undefined,
+                    "checked": undefined,
+                    "disabled": undefined,
+                    "expanded": undefined,
+                    "selected": undefined,
+                  }
+                }
+                accessibilityValue={
+                  {
+                    "max": undefined,
+                    "min": undefined,
+                    "now": undefined,
+                    "text": undefined,
+                  }
+                }
                 accessible={true}
                 collapsable={false}
                 focusable={true}
@@ -923,6 +941,23 @@ exports[`<Search/> should render Search 1`] = `
               <View
                 accessibilityLabel="Catégorie Films, séries, cinéma"
                 accessibilityRole="button"
+                accessibilityState={
+                  {
+                    "busy": undefined,
+                    "checked": undefined,
+                    "disabled": undefined,
+                    "expanded": undefined,
+                    "selected": undefined,
+                  }
+                }
+                accessibilityValue={
+                  {
+                    "max": undefined,
+                    "min": undefined,
+                    "now": undefined,
+                    "text": undefined,
+                  }
+                }
                 accessible={true}
                 collapsable={false}
                 focusable={true}
@@ -1044,6 +1079,7 @@ exports[`<Search/> should render Search 1`] = `
           </View>
         </View>
         <View
+          onFocusCapture={[Function]}
           onLayout={[Function]}
           style={null}
         >
@@ -1070,6 +1106,23 @@ exports[`<Search/> should render Search 1`] = `
               <View
                 accessibilityLabel="Catégorie Livres"
                 accessibilityRole="button"
+                accessibilityState={
+                  {
+                    "busy": undefined,
+                    "checked": undefined,
+                    "disabled": undefined,
+                    "expanded": undefined,
+                    "selected": undefined,
+                  }
+                }
+                accessibilityValue={
+                  {
+                    "max": undefined,
+                    "min": undefined,
+                    "now": undefined,
+                    "text": undefined,
+                  }
+                }
                 accessible={true}
                 collapsable={false}
                 focusable={true}
@@ -1204,6 +1257,23 @@ exports[`<Search/> should render Search 1`] = `
               <View
                 accessibilityLabel="Catégorie CD, vinyles, musique en ligne"
                 accessibilityRole="button"
+                accessibilityState={
+                  {
+                    "busy": undefined,
+                    "checked": undefined,
+                    "disabled": undefined,
+                    "expanded": undefined,
+                    "selected": undefined,
+                  }
+                }
+                accessibilityValue={
+                  {
+                    "max": undefined,
+                    "min": undefined,
+                    "now": undefined,
+                    "text": undefined,
+                  }
+                }
                 accessible={true}
                 collapsable={false}
                 focusable={true}
@@ -1325,6 +1395,7 @@ exports[`<Search/> should render Search 1`] = `
           </View>
         </View>
         <View
+          onFocusCapture={[Function]}
           onLayout={[Function]}
           style={null}
         >
@@ -1351,6 +1422,23 @@ exports[`<Search/> should render Search 1`] = `
               <View
                 accessibilityLabel="Catégorie Arts & loisirs créatifs"
                 accessibilityRole="button"
+                accessibilityState={
+                  {
+                    "busy": undefined,
+                    "checked": undefined,
+                    "disabled": undefined,
+                    "expanded": undefined,
+                    "selected": undefined,
+                  }
+                }
+                accessibilityValue={
+                  {
+                    "max": undefined,
+                    "min": undefined,
+                    "now": undefined,
+                    "text": undefined,
+                  }
+                }
                 accessible={true}
                 collapsable={false}
                 focusable={true}
@@ -1485,6 +1573,23 @@ exports[`<Search/> should render Search 1`] = `
               <View
                 accessibilityLabel="Catégorie Spectacles"
                 accessibilityRole="button"
+                accessibilityState={
+                  {
+                    "busy": undefined,
+                    "checked": undefined,
+                    "disabled": undefined,
+                    "expanded": undefined,
+                    "selected": undefined,
+                  }
+                }
+                accessibilityValue={
+                  {
+                    "max": undefined,
+                    "min": undefined,
+                    "now": undefined,
+                    "text": undefined,
+                  }
+                }
                 accessible={true}
                 collapsable={false}
                 focusable={true}
@@ -1606,6 +1711,7 @@ exports[`<Search/> should render Search 1`] = `
           </View>
         </View>
         <View
+          onFocusCapture={[Function]}
           onLayout={[Function]}
           style={null}
         >
@@ -1632,6 +1738,23 @@ exports[`<Search/> should render Search 1`] = `
               <View
                 accessibilityLabel="Catégorie Musées & visites culturelles"
                 accessibilityRole="button"
+                accessibilityState={
+                  {
+                    "busy": undefined,
+                    "checked": undefined,
+                    "disabled": undefined,
+                    "expanded": undefined,
+                    "selected": undefined,
+                  }
+                }
+                accessibilityValue={
+                  {
+                    "max": undefined,
+                    "min": undefined,
+                    "now": undefined,
+                    "text": undefined,
+                  }
+                }
                 accessible={true}
                 collapsable={false}
                 focusable={true}
@@ -1766,6 +1889,23 @@ exports[`<Search/> should render Search 1`] = `
               <View
                 accessibilityLabel="Catégorie Jeux & jeux vidéos"
                 accessibilityRole="button"
+                accessibilityState={
+                  {
+                    "busy": undefined,
+                    "checked": undefined,
+                    "disabled": undefined,
+                    "expanded": undefined,
+                    "selected": undefined,
+                  }
+                }
+                accessibilityValue={
+                  {
+                    "max": undefined,
+                    "min": undefined,
+                    "now": undefined,
+                    "text": undefined,
+                  }
+                }
                 accessible={true}
                 collapsable={false}
                 focusable={true}
@@ -1887,6 +2027,7 @@ exports[`<Search/> should render Search 1`] = `
           </View>
         </View>
         <View
+          onFocusCapture={[Function]}
           onLayout={[Function]}
           style={null}
         >
@@ -1913,6 +2054,23 @@ exports[`<Search/> should render Search 1`] = `
               <View
                 accessibilityLabel="Catégorie Instruments de musique"
                 accessibilityRole="button"
+                accessibilityState={
+                  {
+                    "busy": undefined,
+                    "checked": undefined,
+                    "disabled": undefined,
+                    "expanded": undefined,
+                    "selected": undefined,
+                  }
+                }
+                accessibilityValue={
+                  {
+                    "max": undefined,
+                    "min": undefined,
+                    "now": undefined,
+                    "text": undefined,
+                  }
+                }
                 accessible={true}
                 collapsable={false}
                 focusable={true}
@@ -2047,6 +2205,23 @@ exports[`<Search/> should render Search 1`] = `
               <View
                 accessibilityLabel="Catégorie Médias & presse"
                 accessibilityRole="button"
+                accessibilityState={
+                  {
+                    "busy": undefined,
+                    "checked": undefined,
+                    "disabled": undefined,
+                    "expanded": undefined,
+                    "selected": undefined,
+                  }
+                }
+                accessibilityValue={
+                  {
+                    "max": undefined,
+                    "min": undefined,
+                    "now": undefined,
+                    "text": undefined,
+                  }
+                }
                 accessible={true}
                 collapsable={false}
                 focusable={true}
@@ -2168,6 +2343,7 @@ exports[`<Search/> should render Search 1`] = `
           </View>
         </View>
         <View
+          onFocusCapture={[Function]}
           onLayout={[Function]}
           style={null}
         >
@@ -2194,6 +2370,23 @@ exports[`<Search/> should render Search 1`] = `
               <View
                 accessibilityLabel="Catégorie Bibliothèques, Médiathèques"
                 accessibilityRole="button"
+                accessibilityState={
+                  {
+                    "busy": undefined,
+                    "checked": undefined,
+                    "disabled": undefined,
+                    "expanded": undefined,
+                    "selected": undefined,
+                  }
+                }
+                accessibilityValue={
+                  {
+                    "max": undefined,
+                    "min": undefined,
+                    "now": undefined,
+                    "text": undefined,
+                  }
+                }
                 accessible={true}
                 collapsable={false}
                 focusable={true}
@@ -2328,6 +2521,23 @@ exports[`<Search/> should render Search 1`] = `
               <View
                 accessibilityLabel="Catégorie Cartes jeunes"
                 accessibilityRole="button"
+                accessibilityState={
+                  {
+                    "busy": undefined,
+                    "checked": undefined,
+                    "disabled": undefined,
+                    "expanded": undefined,
+                    "selected": undefined,
+                  }
+                }
+                accessibilityValue={
+                  {
+                    "max": undefined,
+                    "min": undefined,
+                    "now": undefined,
+                    "text": undefined,
+                  }
+                }
                 accessible={true}
                 collapsable={false}
                 focusable={true}
@@ -2449,6 +2659,7 @@ exports[`<Search/> should render Search 1`] = `
           </View>
         </View>
         <View
+          onFocusCapture={[Function]}
           onLayout={[Function]}
           style={null}
         >
@@ -2475,6 +2686,23 @@ exports[`<Search/> should render Search 1`] = `
               <View
                 accessibilityLabel="Catégorie Conférences & rencontres"
                 accessibilityRole="button"
+                accessibilityState={
+                  {
+                    "busy": undefined,
+                    "checked": undefined,
+                    "disabled": undefined,
+                    "expanded": undefined,
+                    "selected": undefined,
+                  }
+                }
+                accessibilityValue={
+                  {
+                    "max": undefined,
+                    "min": undefined,
+                    "now": undefined,
+                    "text": undefined,
+                  }
+                }
                 accessible={true}
                 collapsable={false}
                 focusable={true}
@@ -2609,6 +2837,23 @@ exports[`<Search/> should render Search 1`] = `
               <View
                 accessibilityLabel="Catégorie Évènements en ligne"
                 accessibilityRole="button"
+                accessibilityState={
+                  {
+                    "busy": undefined,
+                    "checked": undefined,
+                    "disabled": undefined,
+                    "expanded": undefined,
+                    "selected": undefined,
+                  }
+                }
+                accessibilityValue={
+                  {
+                    "max": undefined,
+                    "min": undefined,
+                    "now": undefined,
+                    "text": undefined,
+                  }
+                }
                 accessible={true}
                 collapsable={false}
                 focusable={true}

@@ -33,6 +33,15 @@ exports[`<PriceModal/> should render modal correctly after animation and with en
   visible={true}
 >
   <View
+    accessibilityState={
+      {
+        "busy": undefined,
+        "checked": undefined,
+        "disabled": undefined,
+        "expanded": undefined,
+        "selected": undefined,
+      }
+    }
     accessible={true}
     collapsable={false}
     focusable={true}
@@ -267,6 +276,23 @@ exports[`<PriceModal/> should render modal correctly after animation and with en
                   <View
                     accessibilityLabel="Fermer"
                     accessibilityRole="button"
+                    accessibilityState={
+                      {
+                        "busy": undefined,
+                        "checked": undefined,
+                        "disabled": undefined,
+                        "expanded": undefined,
+                        "selected": undefined,
+                      }
+                    }
+                    accessibilityValue={
+                      {
+                        "max": undefined,
+                        "min": undefined,
+                        "now": undefined,
+                        "text": undefined,
+                      }
+                    }
                     accessible={true}
                     collapsable={false}
                     focusable={true}
@@ -525,8 +551,19 @@ exports[`<PriceModal/> should render modal correctly after animation and with en
                     accessibilityRole="checkbox"
                     accessibilityState={
                       {
+                        "busy": undefined,
                         "checked": false,
                         "disabled": false,
+                        "expanded": undefined,
+                        "selected": undefined,
+                      }
+                    }
+                    accessibilityValue={
+                      {
+                        "max": undefined,
+                        "min": undefined,
+                        "now": undefined,
+                        "text": undefined,
                       }
                     }
                     accessible={false}
@@ -715,8 +752,19 @@ exports[`<PriceModal/> should render modal correctly after animation and with en
                     accessibilityRole="checkbox"
                     accessibilityState={
                       {
+                        "busy": undefined,
                         "checked": false,
                         "disabled": false,
+                        "expanded": undefined,
+                        "selected": undefined,
+                      }
+                    }
+                    accessibilityValue={
+                      {
+                        "max": undefined,
+                        "min": undefined,
+                        "now": undefined,
+                        "text": undefined,
                       }
                     }
                     accessible={false}
@@ -1102,6 +1150,23 @@ exports[`<PriceModal/> should render modal correctly after animation and with en
           >
             <View
               accessibilityLabel="Réinitialiser"
+              accessibilityState={
+                {
+                  "busy": undefined,
+                  "checked": undefined,
+                  "disabled": undefined,
+                  "expanded": undefined,
+                  "selected": undefined,
+                }
+              }
+              accessibilityValue={
+                {
+                  "max": undefined,
+                  "min": undefined,
+                  "now": undefined,
+                  "text": undefined,
+                }
+              }
               accessible={true}
               collapsable={false}
               focusable={true}
@@ -1185,7 +1250,19 @@ exports[`<PriceModal/> should render modal correctly after animation and with en
               accessibilityLabel="Rechercher"
               accessibilityState={
                 {
+                  "busy": undefined,
+                  "checked": undefined,
                   "disabled": false,
+                  "expanded": undefined,
+                  "selected": undefined,
+                }
+              }
+              accessibilityValue={
+                {
+                  "max": undefined,
+                  "min": undefined,
+                  "now": undefined,
+                  "text": undefined,
                 }
               }
               accessible={true}

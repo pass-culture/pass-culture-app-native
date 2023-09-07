@@ -3,6 +3,23 @@
 exports[`<CreditExplanation/> should render correctly for exhausted credit 1`] = `
 <View
   accessibilityLabel="J’ai dépensé tout mon crédit, que faire ?"
+  accessibilityState={
+    {
+      "busy": undefined,
+      "checked": undefined,
+      "disabled": undefined,
+      "expanded": undefined,
+      "selected": undefined,
+    }
+  }
+  accessibilityValue={
+    {
+      "max": undefined,
+      "min": undefined,
+      "now": undefined,
+      "text": undefined,
+    }
+  }
   accessible={true}
   collapsable={false}
   focusable={true}
@@ -79,6 +96,23 @@ exports[`<CreditExplanation/> should render correctly for exhausted credit 1`] =
 exports[`<CreditExplanation/> should render correctly for expired deposit 1`] = `
 <View
   accessibilityLabel="Mon crédit est expiré, que faire ?"
+  accessibilityState={
+    {
+      "busy": undefined,
+      "checked": undefined,
+      "disabled": undefined,
+      "expanded": undefined,
+      "selected": undefined,
+    }
+  }
+  accessibilityValue={
+    {
+      "max": undefined,
+      "min": undefined,
+      "now": undefined,
+      "text": undefined,
+    }
+  }
   accessible={true}
   collapsable={false}
   focusable={true}
@@ -155,6 +189,23 @@ exports[`<CreditExplanation/> should render correctly for expired deposit 1`] = 
 exports[`<CreditExplanation/> should render correctly for valid credit 1`] = `
 <View
   accessibilityLabel="Pourquoi cette limite ?"
+  accessibilityState={
+    {
+      "busy": undefined,
+      "checked": undefined,
+      "disabled": undefined,
+      "expanded": undefined,
+      "selected": undefined,
+    }
+  }
+  accessibilityValue={
+    {
+      "max": undefined,
+      "min": undefined,
+      "now": undefined,
+      "text": undefined,
+    }
+  }
   accessible={true}
   collapsable={false}
   focusable={true}

@@ -43,7 +43,19 @@ exports[`BookDuoChoice should display two blocs if offer is duo 1`] = `
       accessibilityLabel="Solo 20 € sélectionné"
       accessibilityState={
         {
+          "busy": undefined,
+          "checked": undefined,
           "disabled": false,
+          "expanded": undefined,
+          "selected": undefined,
+        }
+      }
+      accessibilityValue={
+        {
+          "max": undefined,
+          "min": undefined,
+          "now": undefined,
+          "text": undefined,
         }
       }
       accessible={true}
@@ -171,7 +183,19 @@ exports[`BookDuoChoice should display two blocs if offer is duo 1`] = `
       accessibilityLabel="Duo 40 €"
       accessibilityState={
         {
+          "busy": undefined,
+          "checked": undefined,
           "disabled": false,
+          "expanded": undefined,
+          "selected": undefined,
+        }
+      }
+      accessibilityValue={
+        {
+          "max": undefined,
+          "min": undefined,
+          "now": undefined,
+          "text": undefined,
         }
       }
       accessible={true}

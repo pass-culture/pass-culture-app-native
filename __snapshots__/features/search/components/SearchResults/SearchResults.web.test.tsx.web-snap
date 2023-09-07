@@ -304,7 +304,7 @@ exports[`SearchResults component should render correctly 1`] = `
               >
                 <button
                   aria-label="Partout : Filtre sélectionné"
-                  class="c3 c4 sc-eCImPb c4"
+                  class="c3 c4 sc-dcJsrY c4"
                   data-testid="Partout : Filtre sélectionné"
                   tabindex="0"
                   title="Partout : Filtre sélectionné"
@@ -340,7 +340,7 @@ exports[`SearchResults component should render correctly 1`] = `
               >
                 <button
                   aria-label="Catégories"
-                  class="c3 c5 sc-eCImPb c5"
+                  class="c3 c5 sc-dcJsrY c5"
                   data-testid="Catégories"
                   tabindex="0"
                   title="Catégories"
@@ -361,7 +361,7 @@ exports[`SearchResults component should render correctly 1`] = `
               >
                 <button
                   aria-label="Prix"
-                  class="c3 c5 sc-eCImPb c5"
+                  class="c3 c5 sc-dcJsrY c5"
                   data-testid="Prix"
                   tabindex="0"
                   title="Prix"
@@ -382,7 +382,7 @@ exports[`SearchResults component should render correctly 1`] = `
               >
                 <button
                   aria-label="Dates & heures"
-                  class="c3 c5 sc-eCImPb c5"
+                  class="c3 c5 sc-dcJsrY c5"
                   data-testid="Dates & heures"
                   tabindex="0"
                   title="Dates & heures"
@@ -980,7 +980,7 @@ exports[`SearchResults component should render correctly 1`] = `
             >
               <button
                 aria-label="Partout : Filtre sélectionné"
-                class="c3 c4 sc-eCImPb c4"
+                class="c3 c4 sc-dcJsrY c4"
                 data-testid="Partout : Filtre sélectionné"
                 tabindex="0"
                 title="Partout : Filtre sélectionné"
@@ -1016,7 +1016,7 @@ exports[`SearchResults component should render correctly 1`] = `
             >
               <button
                 aria-label="Catégories"
-                class="c3 c5 sc-eCImPb c5"
+                class="c3 c5 sc-dcJsrY c5"
                 data-testid="Catégories"
                 tabindex="0"
                 title="Catégories"
@@ -1037,7 +1037,7 @@ exports[`SearchResults component should render correctly 1`] = `
             >
               <button
                 aria-label="Prix"
-                class="c3 c5 sc-eCImPb c5"
+                class="c3 c5 sc-dcJsrY c5"
                 data-testid="Prix"
                 tabindex="0"
                 title="Prix"
@@ -1058,7 +1058,7 @@ exports[`SearchResults component should render correctly 1`] = `
             >
               <button
                 aria-label="Dates & heures"
-                class="c3 c5 sc-eCImPb c5"
+                class="c3 c5 sc-dcJsrY c5"
                 data-testid="Dates & heures"
                 tabindex="0"
                 title="Dates & heures"

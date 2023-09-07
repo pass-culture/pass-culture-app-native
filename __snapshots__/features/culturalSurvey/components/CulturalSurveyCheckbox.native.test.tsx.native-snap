@@ -36,7 +36,19 @@ exports[`CulturalSurveyCheckbox should render correctly 1`] = `
     accessibilityRole="checkbox"
     accessibilityState={
       {
+        "busy": undefined,
         "checked": false,
+        "disabled": undefined,
+        "expanded": undefined,
+        "selected": undefined,
+      }
+    }
+    accessibilityValue={
+      {
+        "max": undefined,
+        "min": undefined,
+        "now": undefined,
+        "text": undefined,
       }
     }
     accessible={true}
@@ -166,7 +178,19 @@ exports[`CulturalSurveyCheckbox should render correctly when pressed 1`] = `
     accessibilityRole="checkbox"
     accessibilityState={
       {
+        "busy": undefined,
         "checked": true,
+        "disabled": undefined,
+        "expanded": undefined,
+        "selected": undefined,
+      }
+    }
+    accessibilityValue={
+      {
+        "max": undefined,
+        "min": undefined,
+        "now": undefined,
+        "text": undefined,
       }
     }
     accessible={true}

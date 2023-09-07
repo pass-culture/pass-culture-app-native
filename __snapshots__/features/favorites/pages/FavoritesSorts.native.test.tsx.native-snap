@@ -98,6 +98,23 @@ exports[`<FavoritesSorts/> should render correctly 1`] = `
             <View
               accessibilityLabel="Revenir en arrière"
               accessibilityRole="button"
+              accessibilityState={
+                {
+                  "busy": undefined,
+                  "checked": undefined,
+                  "disabled": undefined,
+                  "expanded": undefined,
+                  "selected": undefined,
+                }
+              }
+              accessibilityValue={
+                {
+                  "max": undefined,
+                  "min": undefined,
+                  "now": undefined,
+                  "text": undefined,
+                }
+              }
               accessible={true}
               collapsable={false}
               focusable={true}
@@ -269,7 +286,19 @@ exports[`<FavoritesSorts/> should render correctly 1`] = `
               accessibilityRole="radio"
               accessibilityState={
                 {
+                  "busy": undefined,
                   "checked": true,
+                  "disabled": undefined,
+                  "expanded": undefined,
+                  "selected": undefined,
+                }
+              }
+              accessibilityValue={
+                {
+                  "max": undefined,
+                  "min": undefined,
+                  "now": undefined,
+                  "text": undefined,
                 }
               }
               accessible={true}
@@ -378,7 +407,19 @@ exports[`<FavoritesSorts/> should render correctly 1`] = `
               accessibilityRole="radio"
               accessibilityState={
                 {
+                  "busy": undefined,
                   "checked": false,
+                  "disabled": undefined,
+                  "expanded": undefined,
+                  "selected": undefined,
+                }
+              }
+              accessibilityValue={
+                {
+                  "max": undefined,
+                  "min": undefined,
+                  "now": undefined,
+                  "text": undefined,
                 }
               }
               accessible={true}
@@ -487,7 +528,19 @@ exports[`<FavoritesSorts/> should render correctly 1`] = `
               accessibilityRole="radio"
               accessibilityState={
                 {
+                  "busy": undefined,
                   "checked": false,
+                  "disabled": undefined,
+                  "expanded": undefined,
+                  "selected": undefined,
+                }
+              }
+              accessibilityValue={
+                {
+                  "max": undefined,
+                  "min": undefined,
+                  "now": undefined,
+                  "text": undefined,
                 }
               }
               accessible={true}
@@ -599,6 +652,23 @@ exports[`<FavoritesSorts/> should render correctly 1`] = `
   >
     <View
       accessibilityLabel="Valider"
+      accessibilityState={
+        {
+          "busy": undefined,
+          "checked": undefined,
+          "disabled": undefined,
+          "expanded": undefined,
+          "selected": undefined,
+        }
+      }
+      accessibilityValue={
+        {
+          "max": undefined,
+          "min": undefined,
+          "now": undefined,
+          "text": undefined,
+        }
+      }
       accessible={true}
       collapsable={false}
       focusable={true}

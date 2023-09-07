@@ -5,6 +5,14 @@ exports[`OfferTile component should render correctly 1`] = `
   <View
     accessibilityLabel="Offre La nuit des temps de la catégorie MUSIQUE, à 1,2km,  Dès le 12 mars 2020, prix 28 €. "
     accessibilityRole="link"
+    accessibilityValue={
+      {
+        "max": undefined,
+        "min": undefined,
+        "now": undefined,
+        "text": undefined,
+      }
+    }
     accessible={true}
     focusable={true}
     onClick={[Function]}

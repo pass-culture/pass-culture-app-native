@@ -74,6 +74,23 @@ exports[`<SetStatus/> should render correctly 1`] = `
           <View
             accessibilityLabel="Revenir en arrière"
             accessibilityRole="button"
+            accessibilityState={
+              {
+                "busy": undefined,
+                "checked": undefined,
+                "disabled": undefined,
+                "expanded": undefined,
+                "selected": undefined,
+              }
+            }
+            accessibilityValue={
+              {
+                "max": undefined,
+                "min": undefined,
+                "now": undefined,
+                "text": undefined,
+              }
+            }
             accessible={true}
             collapsable={false}
             focusable={true}
@@ -309,7 +326,19 @@ exports[`<SetStatus/> should render correctly 1`] = `
                       accessibilityRole="radio"
                       accessibilityState={
                         {
+                          "busy": undefined,
                           "checked": false,
+                          "disabled": undefined,
+                          "expanded": undefined,
+                          "selected": undefined,
+                        }
+                      }
+                      accessibilityValue={
+                        {
+                          "max": undefined,
+                          "min": undefined,
+                          "now": undefined,
+                          "text": undefined,
                         }
                       }
                       accessible={true}
@@ -467,7 +496,19 @@ exports[`<SetStatus/> should render correctly 1`] = `
                       accessibilityRole="radio"
                       accessibilityState={
                         {
+                          "busy": undefined,
                           "checked": false,
+                          "disabled": undefined,
+                          "expanded": undefined,
+                          "selected": undefined,
+                        }
+                      }
+                      accessibilityValue={
+                        {
+                          "max": undefined,
+                          "min": undefined,
+                          "now": undefined,
+                          "text": undefined,
                         }
                       }
                       accessible={true}
@@ -625,7 +666,19 @@ exports[`<SetStatus/> should render correctly 1`] = `
                       accessibilityRole="radio"
                       accessibilityState={
                         {
+                          "busy": undefined,
                           "checked": false,
+                          "disabled": undefined,
+                          "expanded": undefined,
+                          "selected": undefined,
+                        }
+                      }
+                      accessibilityValue={
+                        {
+                          "max": undefined,
+                          "min": undefined,
+                          "now": undefined,
+                          "text": undefined,
                         }
                       }
                       accessible={true}
@@ -783,7 +836,19 @@ exports[`<SetStatus/> should render correctly 1`] = `
                       accessibilityRole="radio"
                       accessibilityState={
                         {
+                          "busy": undefined,
                           "checked": false,
+                          "disabled": undefined,
+                          "expanded": undefined,
+                          "selected": undefined,
+                        }
+                      }
+                      accessibilityValue={
+                        {
+                          "max": undefined,
+                          "min": undefined,
+                          "now": undefined,
+                          "text": undefined,
                         }
                       }
                       accessible={true}
@@ -941,7 +1006,19 @@ exports[`<SetStatus/> should render correctly 1`] = `
                       accessibilityRole="radio"
                       accessibilityState={
                         {
+                          "busy": undefined,
                           "checked": false,
+                          "disabled": undefined,
+                          "expanded": undefined,
+                          "selected": undefined,
+                        }
+                      }
+                      accessibilityValue={
+                        {
+                          "max": undefined,
+                          "min": undefined,
+                          "now": undefined,
+                          "text": undefined,
                         }
                       }
                       accessible={true}
@@ -1099,7 +1176,19 @@ exports[`<SetStatus/> should render correctly 1`] = `
                       accessibilityRole="radio"
                       accessibilityState={
                         {
+                          "busy": undefined,
                           "checked": false,
+                          "disabled": undefined,
+                          "expanded": undefined,
+                          "selected": undefined,
+                        }
+                      }
+                      accessibilityValue={
+                        {
+                          "max": undefined,
+                          "min": undefined,
+                          "now": undefined,
+                          "text": undefined,
                         }
                       }
                       accessible={true}
@@ -1257,7 +1346,19 @@ exports[`<SetStatus/> should render correctly 1`] = `
                       accessibilityRole="radio"
                       accessibilityState={
                         {
+                          "busy": undefined,
                           "checked": false,
+                          "disabled": undefined,
+                          "expanded": undefined,
+                          "selected": undefined,
+                        }
+                      }
+                      accessibilityValue={
+                        {
+                          "max": undefined,
+                          "min": undefined,
+                          "now": undefined,
+                          "text": undefined,
                         }
                       }
                       accessible={true}
@@ -1430,7 +1531,19 @@ exports[`<SetStatus/> should render correctly 1`] = `
                       accessibilityRole="radio"
                       accessibilityState={
                         {
+                          "busy": undefined,
                           "checked": false,
+                          "disabled": undefined,
+                          "expanded": undefined,
+                          "selected": undefined,
+                        }
+                      }
+                      accessibilityValue={
+                        {
+                          "max": undefined,
+                          "min": undefined,
+                          "now": undefined,
+                          "text": undefined,
                         }
                       }
                       accessible={true}
@@ -1603,7 +1716,19 @@ exports[`<SetStatus/> should render correctly 1`] = `
                       accessibilityRole="radio"
                       accessibilityState={
                         {
+                          "busy": undefined,
                           "checked": false,
+                          "disabled": undefined,
+                          "expanded": undefined,
+                          "selected": undefined,
+                        }
+                      }
+                      accessibilityValue={
+                        {
+                          "max": undefined,
+                          "min": undefined,
+                          "now": undefined,
+                          "text": undefined,
                         }
                       }
                       accessible={true}
@@ -1787,7 +1912,19 @@ exports[`<SetStatus/> should render correctly 1`] = `
             accessibilityLabel="Choisis ton statut"
             accessibilityState={
               {
+                "busy": undefined,
+                "checked": undefined,
                 "disabled": true,
+                "expanded": undefined,
+                "selected": undefined,
+              }
+            }
+            accessibilityValue={
+              {
+                "max": undefined,
+                "min": undefined,
+                "now": undefined,
+                "text": undefined,
               }
             }
             accessible={true}

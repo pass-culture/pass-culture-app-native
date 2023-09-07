@@ -41,8 +41,19 @@ exports[`BookHourChoice should display filtered stocks for selected Date 1`] = `
         accessibilityRole="radio"
         accessibilityState={
           {
+            "busy": undefined,
             "checked": false,
             "disabled": true,
+            "expanded": undefined,
+            "selected": undefined,
+          }
+        }
+        accessibilityValue={
+          {
+            "max": undefined,
+            "min": undefined,
+            "now": undefined,
+            "text": undefined,
           }
         }
         accessible={true}
@@ -195,8 +206,19 @@ exports[`BookHourChoice should display filtered stocks for selected Date 1`] = `
         accessibilityRole="radio"
         accessibilityState={
           {
+            "busy": undefined,
             "checked": false,
             "disabled": false,
+            "expanded": undefined,
+            "selected": undefined,
+          }
+        }
+        accessibilityValue={
+          {
+            "max": undefined,
+            "min": undefined,
+            "now": undefined,
+            "text": undefined,
           }
         }
         accessible={true}
@@ -366,6 +388,23 @@ exports[`BookHourChoice when hour is already selected should change step to Hour
     }
   />,
   <View
+    accessibilityState={
+      {
+        "busy": undefined,
+        "checked": undefined,
+        "disabled": undefined,
+        "expanded": undefined,
+        "selected": undefined,
+      }
+    }
+    accessibilityValue={
+      {
+        "max": undefined,
+        "min": undefined,
+        "now": undefined,
+        "text": undefined,
+      }
+    }
     accessible={false}
     collapsable={false}
     focusable={true}

@@ -124,6 +124,7 @@ exports[`GenericHome With not displayed skeleton by default should display real 
           </Text>
         </View>
         <View
+          onFocusCapture={[Function]}
           onLayout={[Function]}
           style={null}
         />
@@ -282,6 +283,7 @@ exports[`GenericHome With not displayed skeleton by default should display skele
           </Text>
         </View>
         <View
+          onFocusCapture={[Function]}
           onLayout={[Function]}
           style={null}
         />
