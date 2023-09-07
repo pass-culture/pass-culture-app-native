@@ -57,7 +57,7 @@ export default class GmailClient {
   )
 
   private static CONFIRM_EMAIL_RE = new RegExp(
-    `\\[\\*?\\*?Confirmer mon adresse email\\*?\\*?\\]\\((https?:\\/\\/(${GmailClient.ALLOWED_FDL_DOMAINES.join(
+    `\\[?\\*?\\*?Confirmer mon adresse email\\*?\\*?\\]\\((https?:\\/\\/(${GmailClient.ALLOWED_FDL_DOMAINES.join(
       '|'
     ).replace(/\./g, '\\.')})\\/\\?link=(.*))\\)`
   )
