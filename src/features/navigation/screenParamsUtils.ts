@@ -101,6 +101,7 @@ export const screenParamsParser: ParamsParsers = {
     fromMultivenueOfferId: identityFn,
     openModalOnNavigation: identityFn,
     searchId: identityFn,
+    apiRecoParams: identityFn,
   },
   Home: {
     latitude: Number,
