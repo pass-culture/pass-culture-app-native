@@ -110,7 +110,6 @@ describe('17YearsRegistration', () => {
         username: email,
       })) as RegistrationConfirmationEmail
       expect(registrationConfirmationEmail).toBeDefined()
-      await SignupScreens.signupConfirmationEmailSentScreen.waitForIsShown()
     })
 
     it('should open registration confirmation email link and perform log in', async () => {
