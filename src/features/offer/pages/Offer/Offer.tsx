@@ -67,11 +67,11 @@ export const Offer: FunctionComponent = () => {
     getSearchGroupAndNativeCategoryFromSubcategoryId(data, offer?.subcategoryId) || {}
   const { similarOffers: sameCategorySimilarOffers, defaultParams: defaultParamsSameCategory } =
     useSimilarOffers({
-    offerId,
-    position: offer?.venue.coordinates,
-    shouldUseAlgoliaRecommend,
-    categoryIncluded: searchGroupName ?? SearchGroupNameEnumv2.NONE,
-  })
+      offerId,
+      position: offer?.venue.coordinates,
+      shouldUseAlgoliaRecommend,
+      categoryIncluded: searchGroupName ?? SearchGroupNameEnumv2.NONE,
+    })
   const hasSameCategorySimilarOffers = Boolean(sameCategorySimilarOffers?.length)
 
   const {
@@ -205,7 +205,9 @@ export const Offer: FunctionComponent = () => {
         offerId={offerId}
         onScroll={onScroll}
         sameCategorySimilarOffers={sameCategorySimilarOffers}
+        defaultParamsSameCategory={defaultParamsSameCategory}
         otherCategoriesSimilarOffers={otherCategoriesSimilarOffers}
+        defaultParamsOtherCategories={defaultParamsOtherCategories}
         shouldUseAlgoliaRecommend={shouldUseAlgoliaRecommend}
       />
       {/* OfferHeader is called after Body to implement the BlurView for iOS */}

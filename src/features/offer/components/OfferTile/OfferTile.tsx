@@ -30,6 +30,7 @@ const UnmemoizedOfferTile = (props: OfferTileProps) => {
     shouldUseAlgoliaRecommend,
     playlistType,
     searchId,
+    defaultParamsApiReco,
     ...offer
   } = props
 
@@ -45,6 +46,7 @@ const UnmemoizedOfferTile = (props: OfferTileProps) => {
     // We pre-populate the query-cache with the data from the search result for a smooth transition
     prePopulateOffer(offer)
     analytics.logConsultOffer({
+      ...defaultParamsApiReco,
       offerId,
       from: fromOfferId ? 'similar_offer' : analyticsFrom,
       moduleName,
