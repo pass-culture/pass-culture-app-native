@@ -17,7 +17,7 @@ describe('SearchListFooter', () => {
   it('should render without "Afficher plus de résultats" button when autoScrollEnabled is true', () => {
     render(<SearchListFooter {...defaultProps} autoScrollEnabled />)
 
-    expect(screen.queryByText('Afficher plus de résultats')).toBeNull()
+    expect(screen.queryByText('Afficher plus de résultats')).not.toBeInTheDocument()
   })
 
   it('should render with "Afficher plus de résultats" button when autoScrollEnabled is false and hits are less than nbHits', () => {
@@ -29,7 +29,7 @@ describe('SearchListFooter', () => {
 
     render(<SearchListFooter {...props} />)
 
-    expect(screen.getByText('Afficher plus de résultats')).toBeTruthy()
+    expect(screen.getByText('Afficher plus de résultats')).toBeInTheDocument()
   })
 
   it('should call onEndReached when "Afficher plus de résultats" button is pressed', () => {
@@ -58,7 +58,7 @@ describe('SearchListFooter', () => {
 
     render(<SearchListFooter {...props} />)
 
-    expect(screen.queryByText('Afficher plus de résultats')).toBeNull()
+    expect(screen.queryByText('Afficher plus de résultats')).not.toBeInTheDocument()
   })
 
   it('should render the activity indicator and footer when isFetchingNextPage is true and hits are less than nbHits', () => {
@@ -70,8 +70,8 @@ describe('SearchListFooter', () => {
 
     render(<SearchListFooter {...props} />)
 
-    expect(screen.getByTestId('activity-indicator')).toBeTruthy()
-    expect(screen.getByTestId('footer')).toBeTruthy()
+    expect(screen.getByTestId('activity-indicator')).toBeInTheDocument()
+    expect(screen.getByTestId('footer')).toBeInTheDocument()
   })
 
   it('should not render the activity indicator and footer when isFetchingNextPage is true and hits are equal to nbHits', () => {
@@ -83,6 +83,6 @@ describe('SearchListFooter', () => {
 
     render(<SearchListFooter {...props} />)
 
-    expect(screen.queryByTestId('activity-indicator')).toBeNull()
+    expect(screen.queryByTestId('activity-indicator')).not.toBeInTheDocument()
   })
 })

@@ -25,7 +25,7 @@ describe('<CategoriesModal/>', () => {
 
     const pageHeader = screen.getByTestId('pageHeader')
 
-    expect(pageHeader).toBeTruthy()
+    expect(pageHeader).toBeInTheDocument()
   })
 
   describe('Accessibility', () => {

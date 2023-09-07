@@ -22,7 +22,7 @@ describe('CalendarPicker web component', () => {
       />
     )
     const button = screen.getByText('Valider la date')
-    expect(button).not.toBeNull()
+    expect(button).toBeInTheDocument()
   })
 
   it('should validation button close the calendar', () => {
@@ -36,7 +36,7 @@ describe('CalendarPicker web component', () => {
     )
     const button = screen.getByText('Valider la date')
     fireEvent.click(button)
-    expect(button).not.toBeNull()
+    expect(button).toBeInTheDocument()
     expect(mockHideCalendar).toHaveBeenCalledTimes(1)
   })
 
@@ -51,7 +51,7 @@ describe('CalendarPicker web component', () => {
     )
     const button = screen.getByText('Valider la date')
     fireEvent.click(button)
-    expect(button).not.toBeNull()
+    expect(button).toBeInTheDocument()
     expect(mockHideCalendar).toHaveBeenCalledTimes(1)
     expect(mockSetSelectedDate).toHaveBeenCalledTimes(1)
   })

@@ -11,7 +11,7 @@ describe('<Checkbox />', () => {
 
     const checkbox = screen.getByRole('checkbox')
 
-    expect(checkbox).toBeTruthy()
+    expect(checkbox).toBeInTheDocument()
   })
 
   it('is linked to his label', () => {

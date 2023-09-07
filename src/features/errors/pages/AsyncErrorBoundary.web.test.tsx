@@ -32,7 +32,7 @@ describe('AsyncErrorBoundary component', () => {
     render(
       <AsyncErrorBoundary error={new Error('error')} resetErrorBoundary={resetErrorBoundary} />
     )
-    expect(screen.queryByTestId('Revenir en arrière')).toBeTruthy()
+    expect(screen.queryByTestId('Revenir en arrière')).toBeInTheDocument()
 
     fireEvent.click(screen.getByTestId('Revenir en arrière'))
 

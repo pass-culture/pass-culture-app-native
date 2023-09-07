@@ -17,11 +17,11 @@ describe('ImageCaption component', () => {
   it('should render correctly', () => {
     const renderAPI = render(<ImageCaption {...props} />)
     expect(renderAPI).toMatchSnapshot()
-    expect(screen.queryByTestId('distanceImageCaption')).toBeTruthy()
+    expect(screen.queryByTestId('distanceImageCaption')).toBeInTheDocument()
   })
 
   it('should not display the distance if not available', () => {
     render(<ImageCaption {...props} distance={undefined} />)
-    expect(screen.queryByTestId('distanceImageCaption')).toBeNull()
+    expect(screen.queryByTestId('distanceImageCaption')).not.toBeInTheDocument()
   })
 })
