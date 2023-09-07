@@ -23,7 +23,8 @@
     "skipLibCheck": true,
     "sourceMap": true,
     "removeComments": true,
-    "downlevelIteration": true
+    "downlevelIteration": true,
+    "types": ["@types/styled-components-react-native"]
   },
   "exclude": [
     "build/**",
@@ -37,5 +38,6 @@
     "coverage/**",
     "./server/**",
     "./e2e/**"
-  ]
+  ],
+  "extends": "@tsconfig/react-native/tsconfig.json"
 }
