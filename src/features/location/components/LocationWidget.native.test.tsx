@@ -1,7 +1,10 @@
+import { NavigationContainer } from '@react-navigation/native'
 import React from 'react'
 
 import { LocationWidget } from 'features/location/components/LocationWidget'
 import { act, fireEvent, render, screen } from 'tests/utils'
+
+jest.unmock('@react-navigation/native')
 
 jest.mock('libs/splashscreen')
 const mockShowModal = jest.fn()
@@ -69,5 +72,9 @@ describe('LocationWidget', () => {
 })
 
 const renderLocationWidget = () => {
-  render(<LocationWidget />)
+  render(
+    <NavigationContainer>
+      <LocationWidget />
+    </NavigationContainer>
+  )
 }
