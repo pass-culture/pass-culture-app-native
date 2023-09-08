@@ -75,8 +75,14 @@ export const fetchOffersAndVenues = async ({
   } catch (error) {
     captureAlgoliaError(error)
     return {
-      offersResponse: { hits: [] as Hit<Offer>[], nbHits: 0, page: 0, nbPages: 0 },
-      venuesResponse: { hits: [] as Hit<AlgoliaVenue>[], nbHits: 0, page: 0, nbPages: 0 },
+      offersResponse: { hits: [] as Hit<Offer>[], nbHits: 0, page: 0, nbPages: 0, userData: null },
+      venuesResponse: {
+        hits: [] as Hit<AlgoliaVenue>[],
+        nbHits: 0,
+        page: 0,
+        nbPages: 0,
+        userData: null,
+      },
     }
   }
 }

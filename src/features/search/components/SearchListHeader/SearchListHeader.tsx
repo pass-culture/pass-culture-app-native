@@ -80,9 +80,7 @@ export const SearchListHeader: React.FC<SearchListHeaderProps> = ({ nbHits, user
 
   const shouldDisplayAvailableUserDataMessage = userData?.length > 0
   const unavailableOfferMessage = shouldDisplayAvailableUserDataMessage ? userData[0]?.message : ''
-  const venueTitle = shouldDisplayAvailableUserDataMessage
-    ? userData[0].venue_playlist_title
-    : 'Les lieux culturels'
+  const venueTitle = venues.userData?.[0]?.venue_playlist_title || 'Les lieux culturels'
   const offerTitle = 'Les offres'
 
   const shouldDisplayVenuesPlaylist = Boolean(

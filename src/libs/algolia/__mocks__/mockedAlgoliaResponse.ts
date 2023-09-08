@@ -248,4 +248,9 @@ export const mockedAlgoliaVenueResponse: SearchResponse<AlgoliaVenue> = {
   params:
     'page=0&facetFilters=%5B%5B%22offer.category%3AMUSIQUE%22%2C%22offer.category%3AINSTRUMENT%22%5D%5D&numericFilters=%5B%5B%22offer.prices%3A+0+TO+300%22%5D%5D&hitsPerPage=6',
   processingTimeMS: 1,
+  userData: [
+    {
+      venue_playlist_title: 'test',
+    },
+  ],
 }

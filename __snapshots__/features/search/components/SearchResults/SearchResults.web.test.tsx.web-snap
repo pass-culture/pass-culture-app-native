@@ -437,7 +437,7 @@ exports[`SearchResults component should render correctly 1`] = `
                     dir="ltr"
                     role="heading"
                   >
-                    Les lieux culturels
+                    test
                   </h3>
                   <div
                     class="css-view-175oi2r r-marginBottom-1ifxtd0 r-marginHorizontal-1hy1u7s r-marginTop-14gqq1x"
@@ -1113,7 +1113,7 @@ exports[`SearchResults component should render correctly 1`] = `
                   dir="ltr"
                   role="heading"
                 >
-                  Les lieux culturels
+                  test
                 </h3>
                 <div
                   class="css-view-175oi2r r-marginBottom-1ifxtd0 r-marginHorizontal-1hy1u7s r-marginTop-14gqq1x"
