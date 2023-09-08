@@ -6,6 +6,7 @@ import { Coordinates, SearchGroupNameEnumv2, SearchGroupResponseModelv2 } from '
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { useAlgoliaSimilarOffers } from 'features/offer/api/useAlgoliaSimilarOffers'
 import { getAlgoliaRecommendParams } from 'features/offer/helpers/getAlgoliaRecommendParams/getAlgoliaRecommendParams'
+import { getIsLoadedOfferPosition } from 'features/offer/helpers/getIsLoadedOfferPosition/getIsLoadedOfferPosition'
 import { SimilarOffersResponse } from 'features/offer/types'
 import { env } from 'libs/environment'
 import { eventMonitoring } from 'libs/monitoring'
@@ -136,9 +137,7 @@ export const useSimilarOffers = ({
 
   const { user: profile } = useAuthContext()
   // API called when offer position loaded
-  const isLoadedOfferPosition = Boolean(
-    position?.latitude !== undefined && position?.longitude !== undefined
-  )
+  const isLoadedOfferPosition = getIsLoadedOfferPosition(position)
   const similarOffersEndpoint = getSimilarOffersEndpoint(offerId, profile?.id, position, categories)
   const [similarOffersIds, setSimilarOffersIds] = useState<string[]>()
   const [apiRecoResponse, setApiRecoResponse] = useState<SimilarOffersResponse>()
