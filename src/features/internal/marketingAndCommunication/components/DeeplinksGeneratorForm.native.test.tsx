@@ -33,8 +33,8 @@ describe('<DeeplinksGeneratorForm />', () => {
 
     expect(onCreate).toHaveBeenNthCalledWith(1, {
       firebaseLink:
-        'https://passcultureapptesting.page.link/?link=https%3A%2F%2Fwebapp-v2.example.com%2Faccueil&apn=app.android&isi=1557887412&ibi=app.ios&efr=1',
-      universalLink: 'https://webapp-v2.example.com/accueil',
+        'https://passcultureapptesting.page.link/?link=https%3A%2F%2Fwebapp-v2.example.com%2Faccueil%3Ffrom%3Ddeeplink&apn=app.android&isi=1557887412&ibi=app.ios&efr=1',
+      universalLink: 'https://webapp-v2.example.com/accueil?from=deeplink',
     })
 
     fireEvent.press(profile)
@@ -42,8 +42,8 @@ describe('<DeeplinksGeneratorForm />', () => {
     fireEvent.press(generateButton)
     expect(onCreate).toHaveBeenNthCalledWith(2, {
       firebaseLink:
-        'https://passcultureapptesting.page.link/?link=https%3A%2F%2Fwebapp-v2.example.com%2Fprofil&apn=app.android&isi=1557887412&ibi=app.ios&efr=1',
-      universalLink: 'https://webapp-v2.example.com/profil',
+        'https://passcultureapptesting.page.link/?link=https%3A%2F%2Fwebapp-v2.example.com%2Fprofil%3Ffrom%3Ddeeplink&apn=app.android&isi=1557887412&ibi=app.ios&efr=1',
+      universalLink: 'https://webapp-v2.example.com/profil?from=deeplink',
     })
   })
 
@@ -59,9 +59,9 @@ describe('<DeeplinksGeneratorForm />', () => {
 
     expect(onCreate).toHaveBeenNthCalledWith(1, {
       firebaseLink:
-        'https://passcultureapptesting.page.link/?link=https%3A%2F%2Fwebapp-v2.example.com%2Frecherche%3Fview%3D%2522Results%2522%26showResults%3Dtrue%26locationFilter%3D%257B%2522locationType%2522%253A%2522EVERYWHERE%2522%257D%26noFocus%3Dtrue%26beginningDatetime%3D%25222022-08-09T00%253A00%253A00.000Z%2522%26endingDatetime%3D%25222022-08-09T00%253A00%253A00.000Z%2522&apn=app.android&isi=1557887412&ibi=app.ios&efr=1',
+        'https://passcultureapptesting.page.link/?link=https%3A%2F%2Fwebapp-v2.example.com%2Frecherche%3Fview%3D%2522Results%2522%26showResults%3Dtrue%26locationFilter%3D%257B%2522locationType%2522%253A%2522EVERYWHERE%2522%257D%26noFocus%3Dtrue%26from%3Ddeeplink%26beginningDatetime%3D%25222022-08-09T00%253A00%253A00.000Z%2522%26endingDatetime%3D%25222022-08-09T00%253A00%253A00.000Z%2522&apn=app.android&isi=1557887412&ibi=app.ios&efr=1',
       universalLink:
-        'https://webapp-v2.example.com/recherche?view=%22Results%22&showResults=true&locationFilter=%7B%22locationType%22%3A%22EVERYWHERE%22%7D&noFocus=true&beginningDatetime=%222022-08-09T00%3A00%3A00.000Z%22&endingDatetime=%222022-08-09T00%3A00%3A00.000Z%22',
+        'https://webapp-v2.example.com/recherche?view=%22Results%22&showResults=true&locationFilter=%7B%22locationType%22%3A%22EVERYWHERE%22%7D&noFocus=true&from=deeplink&beginningDatetime=%222022-08-09T00%3A00%3A00.000Z%22&endingDatetime=%222022-08-09T00%3A00%3A00.000Z%22',
     })
   })
 
@@ -83,9 +83,9 @@ describe('<DeeplinksGeneratorForm />', () => {
 
     expect(onCreate).toHaveBeenNthCalledWith(1, {
       firebaseLink:
-        'https://passcultureapptesting.page.link/?link=https%3A%2F%2Fwebapp-v2.example.com%2Frecherche%3Fview%3D%2522Results%2522%26showResults%3Dtrue%26locationFilter%3D%257B%2522locationType%2522%253A%2522EVERYWHERE%2522%257D%26noFocus%3Dtrue%26beginningDatetime%3D%25222022-08-09T00%253A00%253A00.000Z%2522%26endingDatetime%3D%25222022-08-09T00%253A00%253A00.000Z%2522%26offerCategories%3D%255B%2522ARTS_LOISIRS_CREATIFS%2522%255D%26offerNativeCategories%3D%255B%2522ARTS_VISUELS%2522%255D&apn=app.android&isi=1557887412&ibi=app.ios&efr=1',
+        'https://passcultureapptesting.page.link/?link=https%3A%2F%2Fwebapp-v2.example.com%2Frecherche%3Fview%3D%2522Results%2522%26showResults%3Dtrue%26locationFilter%3D%257B%2522locationType%2522%253A%2522EVERYWHERE%2522%257D%26noFocus%3Dtrue%26from%3Ddeeplink%26beginningDatetime%3D%25222022-08-09T00%253A00%253A00.000Z%2522%26endingDatetime%3D%25222022-08-09T00%253A00%253A00.000Z%2522%26offerCategories%3D%255B%2522ARTS_LOISIRS_CREATIFS%2522%255D%26offerNativeCategories%3D%255B%2522ARTS_VISUELS%2522%255D&apn=app.android&isi=1557887412&ibi=app.ios&efr=1',
       universalLink:
-        'https://webapp-v2.example.com/recherche?view=%22Results%22&showResults=true&locationFilter=%7B%22locationType%22%3A%22EVERYWHERE%22%7D&noFocus=true&beginningDatetime=%222022-08-09T00%3A00%3A00.000Z%22&endingDatetime=%222022-08-09T00%3A00%3A00.000Z%22&offerCategories=%5B%22ARTS_LOISIRS_CREATIFS%22%5D&offerNativeCategories=%5B%22ARTS_VISUELS%22%5D',
+        'https://webapp-v2.example.com/recherche?view=%22Results%22&showResults=true&locationFilter=%7B%22locationType%22%3A%22EVERYWHERE%22%7D&noFocus=true&from=deeplink&beginningDatetime=%222022-08-09T00%3A00%3A00.000Z%22&endingDatetime=%222022-08-09T00%3A00%3A00.000Z%22&offerCategories=%5B%22ARTS_LOISIRS_CREATIFS%22%5D&offerNativeCategories=%5B%22ARTS_VISUELS%22%5D',
     })
 
     categoryButton = getByText('Concerts & festivals')
@@ -96,35 +96,31 @@ describe('<DeeplinksGeneratorForm />', () => {
 
     expect(onCreate).toHaveBeenNthCalledWith(2, {
       firebaseLink:
-        'https://passcultureapptesting.page.link/?link=https%3A%2F%2Fwebapp-v2.example.com%2Frecherche%3Fview%3D%2522Results%2522%26showResults%3Dtrue%26locationFilter%3D%257B%2522locationType%2522%253A%2522EVERYWHERE%2522%257D%26noFocus%3Dtrue%26beginningDatetime%3D%25222022-08-09T00%253A00%253A00.000Z%2522%26endingDatetime%3D%25222022-08-09T00%253A00%253A00.000Z%2522%26offerCategories%3D%255B%2522CONCERTS_FESTIVALS%2522%255D&apn=app.android&isi=1557887412&ibi=app.ios&efr=1',
+        'https://passcultureapptesting.page.link/?link=https%3A%2F%2Fwebapp-v2.example.com%2Frecherche%3Fview%3D%2522Results%2522%26showResults%3Dtrue%26locationFilter%3D%257B%2522locationType%2522%253A%2522EVERYWHERE%2522%257D%26noFocus%3Dtrue%26from%3Ddeeplink%26beginningDatetime%3D%25222022-08-09T00%253A00%253A00.000Z%2522%26endingDatetime%3D%25222022-08-09T00%253A00%253A00.000Z%2522%26offerCategories%3D%255B%2522CONCERTS_FESTIVALS%2522%255D&apn=app.android&isi=1557887412&ibi=app.ios&efr=1',
       universalLink:
-        'https://webapp-v2.example.com/recherche?view=%22Results%22&showResults=true&locationFilter=%7B%22locationType%22%3A%22EVERYWHERE%22%7D&noFocus=true&beginningDatetime=%222022-08-09T00%3A00%3A00.000Z%22&endingDatetime=%222022-08-09T00%3A00%3A00.000Z%22&offerCategories=%5B%22CONCERTS_FESTIVALS%22%5D',
+        'https://webapp-v2.example.com/recherche?view=%22Results%22&showResults=true&locationFilter=%7B%22locationType%22%3A%22EVERYWHERE%22%7D&noFocus=true&from=deeplink&beginningDatetime=%222022-08-09T00%3A00%3A00.000Z%22&endingDatetime=%222022-08-09T00%3A00%3A00.000Z%22&offerCategories=%5B%22CONCERTS_FESTIVALS%22%5D',
     })
   })
 })
 
 describe('getDefaultScreenParams', () => {
-  it('should return an object with view, locationFilter and noFocus params when screen is Search', () => {
+  it('should return an object with view, locationFilter, noFocus, from params when screen is Search', () => {
     const defaultParams = getDefaultScreenParams('Search')
     expect(defaultParams).toEqual({
       view: SearchView.Results,
       locationFilter: { locationType: LocationType.EVERYWHERE },
       noFocus: true,
-    })
-  })
-
-  it('should return an object with from param when screen is Venue', () => {
-    const defaultParams = getDefaultScreenParams('Venue')
-    expect(defaultParams).toEqual({
       from: 'deeplink',
     })
   })
 
-  it.each(['Offer', 'Home', 'Profile', 'SignupForm', 'ThematicHome'])(
-    'should return an empty object when screen is %s',
+  it.each(['Offer', 'Venue', 'Home', 'Profile', 'SignupForm', 'ThematicHome'])(
+    'should return an object with from param set to "deeplink" when screen is %s',
     (screen) => {
       const defaultParams = getDefaultScreenParams(screen as ScreensUsedByMarketing)
-      expect(defaultParams).toEqual({})
+      expect(defaultParams).toEqual({
+        from: 'deeplink',
+      })
     }
   )
 })
