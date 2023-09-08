@@ -42,31 +42,11 @@ const StyledTitle3 = styled(Typo.Title3)(({ theme }) => ({
   color: theme.colors.secondary,
 }))
 
-const StyledBody = styled(Typo.Body)({
-  marginVertical: getSpacing(2),
-  marginLeft: getSpacing(1.5),
-  justifyContent: 'center',
-})
-
 export const OngoingCredit = Template.bind({})
 OngoingCredit.args = {
   age: 18,
   creditStatus: CreditStatus.ONGOING,
   children: <StyledTitle3>300&nbsp;€</StyledTitle3>,
-}
-
-export const ComingCredit = Template.bind({})
-ComingCredit.args = {
-  children: <Typo.Title3>300&nbsp;€</Typo.Title3>,
-  age: 18,
-  creditStatus: CreditStatus.COMING,
-}
-
-export const GoneCredit = Template.bind({})
-GoneCredit.args = {
-  children: <Typo.Title3>30&nbsp;€</Typo.Title3>,
-  age: 17,
-  creditStatus: CreditStatus.GONE,
 }
 
 export const withDescription = Template.bind({})
@@ -75,7 +55,7 @@ withDescription.args = {
     <React.Fragment>
       <Typo.Title3>300&nbsp;€</Typo.Title3>
       <Spacer.Column numberOfSpaces={2} />
-      <StyledBody>Tu auras 2 ans pour utiliser tes 300&nbsp;€</StyledBody>
+      <Typo.Body>Tu auras 2 ans pour utiliser tes 300&nbsp;€</Typo.Body>
     </React.Fragment>
   ),
   age: 18,
