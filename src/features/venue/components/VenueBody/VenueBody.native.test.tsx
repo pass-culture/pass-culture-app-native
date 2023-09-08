@@ -37,8 +37,9 @@ jest.mock('libs/subcategories/useSubcategories', () => ({
 
 const canOpenURLSpy = jest.spyOn(Linking, 'canOpenURL')
 const mockShareSingle = jest.spyOn(Share, 'shareSingle')
-const mockNativeShare = jest.spyOn(NativeShare, 'share')
-jest.spyOn(NativeShare, 'share').mockResolvedValue({ action: NativeShare.sharedAction })
+const mockNativeShare = jest
+  .spyOn(NativeShare, 'share')
+  .mockResolvedValue({ action: NativeShare.sharedAction })
 
 const venueId = venueResponseSnap.id
 
