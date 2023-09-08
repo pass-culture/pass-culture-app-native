@@ -242,6 +242,7 @@ exports[`NonEligibleModal should render correctly for non-eligible over_18 1`] =
         }
       />
       <View
+        fill="none"
         height={156}
         width={200}
       >
