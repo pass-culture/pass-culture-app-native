@@ -25,7 +25,12 @@ const containerAnimation = {
   },
 }
 
-export const CreditBlock: FunctionComponent<Props> = ({ age, creditStatus, onPress, children }) => {
+export const AgeCreditBlock: FunctionComponent<Props> = ({
+  age,
+  creditStatus,
+  onPress,
+  children,
+}) => {
   const AgeText = creditStatus === CreditStatus.ONGOING ? BodySecondary : Typo.CaptionNeutralInfo
 
   const statusIsOngoing = creditStatus === CreditStatus.ONGOING

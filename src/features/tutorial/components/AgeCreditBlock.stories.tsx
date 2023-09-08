@@ -5,12 +5,12 @@ import styled from 'styled-components/native'
 import { CreditStatus } from 'features/tutorial/types'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 
-import { CreditBlock } from './CreditBlock'
+import { AgeCreditBlock } from './AgeCreditBlock'
 
 const ANIMATION_DELAY = 2
-const meta: ComponentMeta<typeof CreditBlock> = {
-  title: 'features/tutorial/CreditBlock',
-  component: CreditBlock,
+const meta: ComponentMeta<typeof AgeCreditBlock> = {
+  title: 'features/tutorial/AgeCreditBlock',
+  component: AgeCreditBlock,
   parameters: {
     // Wait for animation to finish before snapshot
     chromatic: { delay: ANIMATION_DELAY },
@@ -18,18 +18,18 @@ const meta: ComponentMeta<typeof CreditBlock> = {
 }
 export default meta
 
-const Template: ComponentStory<typeof CreditBlock> = (props) => <CreditBlock {...props} />
-const List: ComponentStory<typeof CreditBlock> = (props) => (
+const Template: ComponentStory<typeof AgeCreditBlock> = (props) => <AgeCreditBlock {...props} />
+const List: ComponentStory<typeof AgeCreditBlock> = (props) => (
   <ListContainer>
-    <CreditBlock {...props} creditStatus={CreditStatus.GONE}>
+    <AgeCreditBlock {...props} creditStatus={CreditStatus.GONE}>
       <Typo.Title3>30&nbsp;€</Typo.Title3>
-    </CreditBlock>
+    </AgeCreditBlock>
     <Spacer.Column numberOfSpaces={0.5} />
-    <CreditBlock {...props} />
+    <AgeCreditBlock {...props} />
     <Spacer.Column numberOfSpaces={0.5} />
-    <CreditBlock {...props} creditStatus={CreditStatus.COMING}>
+    <AgeCreditBlock {...props} creditStatus={CreditStatus.COMING}>
       <Typo.Title3>30&nbsp;€</Typo.Title3>
-    </CreditBlock>
+    </AgeCreditBlock>
   </ListContainer>
 )
 
@@ -75,7 +75,7 @@ withDescription.args = {
     <React.Fragment>
       <Typo.Title3>300&nbsp;€</Typo.Title3>
       <Spacer.Column numberOfSpaces={2} />
-      <StyledBody>Tu auras 2 ans pour utiliser tes 300\u00a0€</StyledBody>
+      <StyledBody>Tu auras 2 ans pour utiliser tes 300&nbsp;€</StyledBody>
     </React.Fragment>
   ),
   age: 18,
