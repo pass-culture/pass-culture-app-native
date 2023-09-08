@@ -13,10 +13,12 @@ import { analytics } from 'libs/analytics'
 import { useDepositAmountsByAge } from 'shared/user/useDepositAmountsByAge'
 import { Warning } from 'ui/svg/icons/BicolorWarning'
 import { Spacer, getSpacing } from 'ui/theme'
+import { CreditStatus } from 'features/tutorial/types'
+import { CreditBlock } from 'features/tutorial/components/CreditBlock'
 
 type Age = 15 | 16 | 17 | 18
 
-type CreditStep = 15 | 16 | 17 | 18 | 'information'
+type CreditStep = 15 | 16 | 17 | 18 | 'information' | 'pastStep'
 
 export type CreditComponentProps = {
   creditStep: CreditStep
@@ -52,8 +54,8 @@ export const CreditTimeline = ({ stepperProps, age, type }: Props) => {
   return (
     <Container>
       {stepperProps.map((props, index) => {
-        const iconComponent = props.iconComponent ?? <GreyWarning />
-        if (props.creditStep === 'information')
+        if (props.creditStep === 'information') {
+          const iconComponent = props.iconComponent ?? <GreyWarning />
           return (
             <InternalStep
               key={'information ' + index}
@@ -64,6 +66,22 @@ export const CreditTimeline = ({ stepperProps, age, type }: Props) => {
               <Spacer.Column numberOfSpaces={SpaceBetweenBlock} />
             </InternalStep>
           )
+        }
+
+        if (props.creditStep === 'pastStep') {
+          const iconComponent =
+            props.iconComponent ?? getStepperIconFromCreditStatus(CreditStatus.GONE)
+          return (
+            <InternalStep
+              key={'pastStep ' + index}
+              variant={StepVariant.complete}
+              isFirst={index === 0}
+              iconComponent={iconComponent}>
+              <CreditBlock creditStatus={CreditStatus.GONE}>{props.children}</CreditBlock>
+              <Spacer.Column numberOfSpaces={SpaceBetweenBlock} />
+            </InternalStep>
+          )
+        }
         const creditStatus = getCreditStatusFromAge(age, props.creditStep)
         const stepVariant = getStepperVariantFromCreditStatus(creditStatus)
 
