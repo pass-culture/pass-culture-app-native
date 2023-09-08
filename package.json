@@ -198,7 +198,7 @@
     "@babel/preset-env": "^7.20.0",
     "@babel/preset-react": "^7.12.5",
     "@babel/preset-typescript": "^7.13.0",
-    "@babel/runtime": "^7.20.0",
+    "@babel/runtime": "^7.22.10",
     "@chanzuckerberg/axe-storybook-testing": "^7.1.1",
     "@google-cloud/local-auth": "^2.1.1",
     "@lhci/cli": "0.11.x",
@@ -360,6 +360,7 @@
     "workbox-webpack-plugin": "^6.1.5"
   },
   "resolutions": {
+    "@babel/runtime": "^7.22.10",
     "@sentry/hub": "7.8.*",
     "@sentry/utils": "7.62.0",
     "ansi-regex": "^5.0.1",
