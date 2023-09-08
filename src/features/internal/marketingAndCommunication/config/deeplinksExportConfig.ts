@@ -5,7 +5,7 @@ import { build } from '../../../../../package.json'
 
 export type ScreensUsedByMarketing = Extract<
   ScreenNames,
-  'Offer' | 'Venue' | 'Home' | 'Search' | 'Profile' | 'SignupForm' | 'ThematicHome'
+  'Offer' | 'Venue' | 'Home' | 'Search' | 'Profile' | 'SignupForm' | 'ThematicHome' | 'Stepper'
 >
 
 type ScreensUsedByMarketingParamsList = Pick<AllNavParamList, ScreensUsedByMarketing>
@@ -133,6 +133,7 @@ export const SCREENS_CONFIG: {
   },
   Profile: {},
   SignupForm: {},
+  Stepper: {},
 }
 
 type MarketingParams = 'utm_campaign' | 'utm_source' | 'utm_medium' | 'utm_content'
