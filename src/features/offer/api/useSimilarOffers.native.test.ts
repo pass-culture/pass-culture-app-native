@@ -195,9 +195,8 @@ describe('useSimilarOffers', () => {
             shouldUseAlgoliaRecommend: true,
           })
         )
-        await waitFor(() => {
-          expect(getRelatedProductsSpy).not.toHaveBeenCalled()
-        })
+        await act(async () => {})
+        expect(getRelatedProductsSpy).not.toHaveBeenCalled()
       })
     })
 
@@ -224,10 +223,8 @@ describe('useSimilarOffers', () => {
       })
     })
 
-    it.skip('should call related products API when offer and category included provided and not shared offer position loaded', async () => {
-      const getRelatedProductsSpy = jest
-        .spyOn(recommendCore, 'getRelatedProducts')
-        .mockResolvedValueOnce({ recommendations: [{ objectID: String(mockOfferId) }] })
+    // FIXME(PC-24326): Fix 'thrown: "Exceeded timeout of 10000 ms for a test' error
+    it.skip('should call related products API when offer and category included provided and shared offer position loaded', () => {
       renderHook(() =>
         useSimilarOffers({
           offerId: mockOfferId,
@@ -237,10 +234,13 @@ describe('useSimilarOffers', () => {
         })
       )
       expect(getRelatedProductsSpy).toHaveBeenCalledTimes(1)
-      await act(async () => {})
     })
 
-    it.skip('should call related products API when offer and category included provided and shared offer position loaded', async () => {
+    // FIXME(PC-24326): Fix 'thrown: "Exceeded timeout of 10000 ms for a test' error
+    it.skip('should call related products API when offer and category included provided and not shared offer position loaded', () => {
+      const getRelatedProductsSpy = jest
+        .spyOn(recommendCore, 'getRelatedProducts')
+        .mockResolvedValueOnce({ recommendations: [{ objectID: String(mockOfferId) }] })
       renderHook(() =>
         useSimilarOffers({
           offerId: mockOfferId,
@@ -250,7 +250,6 @@ describe('useSimilarOffers', () => {
         })
       )
       expect(getRelatedProductsSpy).toHaveBeenCalledTimes(1)
-      await act(async () => {})
     })
 
     it('should call frequently bought together API when offer and category excluded provided', async () => {
@@ -261,8 +260,8 @@ describe('useSimilarOffers', () => {
           shouldUseAlgoliaRecommend: true,
         })
       )
-      expect(getFrequentlyBoughtTogetherSpy).toHaveBeenCalledTimes(1)
       await act(async () => {})
+      expect(getFrequentlyBoughtTogetherSpy).toHaveBeenCalledTimes(1)
     })
 
     it('should log sentry when frequently bought together API called with an error', async () => {
