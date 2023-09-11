@@ -230,7 +230,7 @@ describe('useSimilarOffers', () => {
           offerId: mockOfferId,
           categoryIncluded: SearchGroupNameEnumv2.FILMS_SERIES_CINEMA,
           shouldUseAlgoliaRecommend: true,
-          position: { latitude: null, longitude: null },
+          position: { latitude: 10, longitude: 15 },
         })
       )
       expect(getRelatedProductsSpy).toHaveBeenCalledTimes(1)
@@ -238,15 +238,12 @@ describe('useSimilarOffers', () => {
 
     // FIXME(PC-24326): Fix 'thrown: "Exceeded timeout of 10000 ms for a test' error
     it.skip('should call related products API when offer and category included provided and not shared offer position loaded', () => {
-      const getRelatedProductsSpy = jest
-        .spyOn(recommendCore, 'getRelatedProducts')
-        .mockResolvedValueOnce({ recommendations: [{ objectID: String(mockOfferId) }] })
       renderHook(() =>
         useSimilarOffers({
           offerId: mockOfferId,
           categoryIncluded: SearchGroupNameEnumv2.FILMS_SERIES_CINEMA,
           shouldUseAlgoliaRecommend: true,
-          position: { latitude: 10, longitude: 15 },
+          position: { latitude: null, longitude: null },
         })
       )
       expect(getRelatedProductsSpy).toHaveBeenCalledTimes(1)
