@@ -30,9 +30,10 @@ type Props = {
   age: Age
   stepperProps: CreditComponentProps[]
   type: 'onboarding' | 'profileTutorial'
+  testID?: string
 }
 
-export const CreditTimeline = ({ stepperProps, age, type }: Props) => {
+export const CreditTimeline = ({ stepperProps, age, type, testID }: Props) => {
   const {
     fifteenYearsOldDeposit,
     sixteenYearsOldDeposit,
@@ -52,7 +53,7 @@ export const CreditTimeline = ({ stepperProps, age, type }: Props) => {
     type === 'onboarding' ? OnboardingCreditBlockTitle : ProfileTutorialCreditBlockTitle
 
   return (
-    <Container>
+    <Container testID={testID}>
       {stepperProps.map((props, index) => {
         const isLast = index === stepperProps.length - 1
         const isFirst = index === 0

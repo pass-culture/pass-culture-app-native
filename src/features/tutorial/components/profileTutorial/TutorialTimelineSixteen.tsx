@@ -26,7 +26,14 @@ export const TutorialTimelineSixteen = ({ activatedAt }: Props) => {
     { creditStep: 'pastStep', children: <FirstBlock text={firstBlockText} /> },
     ...SixteenStepperProps,
   ]
-  return <CreditTimeline age={16} stepperProps={fullStepperProps} type="profileTutorial" />
+  return (
+    <CreditTimeline
+      age={16}
+      stepperProps={fullStepperProps}
+      type="profileTutorial"
+      testID="sixteen-timeline"
+    />
+  )
 }
 
 const GreyOffers = styled(Offers).attrs(({ theme }) => ({

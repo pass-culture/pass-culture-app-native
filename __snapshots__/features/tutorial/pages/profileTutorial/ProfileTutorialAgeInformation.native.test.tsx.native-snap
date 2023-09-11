@@ -74,6 +74,7 @@ exports[`<ProfileTutorialAgeInformation /> should display not logged in version 
             },
           ]
         }
+        testID="fifteen-timeline"
       >
         <View
           style={

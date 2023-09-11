@@ -10,7 +10,14 @@ import { Warning } from 'ui/svg/icons/BicolorWarning'
 import { Offers } from 'ui/svg/icons/Offers'
 
 export const TutorialTimelineFifteen: () => React.ReactElement = () => {
-  return <CreditTimeline age={15} stepperProps={FifteenStepperProps} type="profileTutorial" />
+  return (
+    <CreditTimeline
+      age={15}
+      stepperProps={FifteenStepperProps}
+      type="profileTutorial"
+      testID="fifteen-timeline"
+    />
+  )
 }
 
 const GreyOffers = styled(Offers).attrs(({ theme }) => ({

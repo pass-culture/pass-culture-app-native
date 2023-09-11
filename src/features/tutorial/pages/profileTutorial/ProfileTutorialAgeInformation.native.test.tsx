@@ -14,8 +14,6 @@ import { TutorialRootStackParamList } from 'features/navigation/RootNavigator/ty
 import { beneficiaryUser } from 'fixtures/user'
 import { env } from 'libs/environment'
 import { fireEvent, render, screen } from 'tests/utils'
-// eslint-disable-next-line no-restricted-imports
-import { ColorsEnum } from 'ui/theme/colors'
 
 import { ProfileTutorialAgeInformation } from './ProfileTutorialAgeInformation'
 
@@ -60,7 +58,7 @@ describe('<ProfileTutorialAgeInformation />', () => {
     mockUseAuthContext.mockReturnValueOnce({ ...defaultAuthContext, user: sixteenUser })
     render(<ProfileTutorialAgeInformation {...navProps} />)
 
-    expect(screen.getByText('à 16 ans')).toHaveStyle({ color: ColorsEnum.SECONDARY })
+    expect(screen.getByTestId('sixteen-timeline')).toBeOnTheScreen()
   })
 
   it('should display that the user has activated credit at 15 when logged in at 16', () => {
