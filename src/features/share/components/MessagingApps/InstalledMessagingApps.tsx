@@ -32,7 +32,7 @@ export const InstalledMessagingApps = ({
           key={network}
           network={network}
           shareMessage={shareMessage}
-          shareUrl={shareUrl}
+          shareUrl={`${shareUrl}&utm_source=${network}`}
           onPressAnalytics={messagingAppAnalytics}
         />
       ))}

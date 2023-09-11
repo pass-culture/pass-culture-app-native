@@ -19,13 +19,14 @@ const shareOptions = {
   dialogTitle: shareTitle, // android only
 }
 
-export const useShareOffer = (offerId: number): ShareOutput => {
+export const useShareOffer = (offerId: number, utmMedium: string): ShareOutput => {
   const { data: offer } = useOffer({ offerId })
 
   return getShareOffer({
     offerId: offer?.id,
     offerName: offer?.name,
     venueName: offer ? getOfferLocationName(offer.venue, offer.isDigital) : undefined,
+    utmMedium,
   })
 }
 
@@ -33,9 +34,15 @@ type PartialOffer = {
   offerId: OfferResponse['id'] | undefined
   offerName: OfferResponse['name'] | undefined
   venueName: OfferVenueResponse['name'] | undefined
+  utmMedium: string
 }
 
-export const getShareOffer = ({ offerId, offerName, venueName }: PartialOffer): ShareOutput => {
+export const getShareOffer = ({
+  offerId,
+  offerName,
+  venueName,
+  utmMedium,
+}: PartialOffer): ShareOutput => {
   if (!offerId || !offerName || !venueName) {
     return {
       share: doNothingFn,
@@ -48,7 +55,7 @@ export const getShareOffer = ({ offerId, offerName, venueName }: PartialOffer): 
     venueName,
   })
 
-  const shareUrl = getOfferUrl(offerId)
+  const shareUrl = getOfferUrl(offerId, utmMedium)
   const shareAndroidMessage = message + DOUBLE_LINE_BREAK + shareUrl
   // url share content param is only for iOS, so we add url in message for android
   const shareMessage = Platform.OS === 'android' ? shareAndroidMessage : message

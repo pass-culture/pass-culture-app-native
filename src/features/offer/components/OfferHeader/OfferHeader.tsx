@@ -36,7 +36,7 @@ export const OfferHeader: React.FC<Props> = (props) => {
   } = useModal(false)
 
   const { goBack } = useGoBack(...getTabNavConfig('Search'))
-  const { share: shareOffer, shareContent } = useShareOffer(offerId)
+  const { share: shareOffer, shareContent } = useShareOffer(offerId, 'header')
   const { top } = useSafeAreaInsets()
   const headerHeight = theme.appBarHeight + top
 
