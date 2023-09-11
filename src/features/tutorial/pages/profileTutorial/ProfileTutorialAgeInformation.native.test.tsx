@@ -77,7 +77,7 @@ describe('<ProfileTutorialAgeInformation />', () => {
     expect(screen.getByText('Tu as reçu 20 € à 15 ans')).toBeOnTheScreen()
   })
 
-  it('should display that the user couldnt have 15 credit if more than 15 years old', () => {
+  it('should display that the user couldn‘t have 15 credit if more than 15 years old', () => {
     mockUseAuthContext.mockReturnValueOnce({ ...defaultAuthContext, isLoggedIn: false })
     render(<ProfileTutorialAgeInformation {...navPropsSixteenSelected} />)
 
