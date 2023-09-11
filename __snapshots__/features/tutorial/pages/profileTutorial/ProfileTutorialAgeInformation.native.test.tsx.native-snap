@@ -65,30 +65,6 @@ exports[`<ProfileTutorialAgeInformation /> should display not logged in version 
           ]
         }
       />
-      <Text
-        style={
-          [
-            {
-              "color": "#161617",
-              "fontFamily": "Montserrat-Regular",
-              "fontSize": 15,
-              "lineHeight": 20,
-            },
-          ]
-        }
-      >
-        Crédit activé à 18 ans
-      </Text>
-      <View
-        numberOfSpaces={2}
-        style={
-          [
-            {
-              "height": 8,
-            },
-          ]
-        }
-      />
       <View
         style={
           [
@@ -3042,30 +3018,6 @@ exports[`<ProfileTutorialAgeInformation /> should render correctly when logged i
           [
             {
               "height": 24,
-            },
-          ]
-        }
-      />
-      <Text
-        style={
-          [
-            {
-              "color": "#161617",
-              "fontFamily": "Montserrat-Regular",
-              "fontSize": 15,
-              "lineHeight": 20,
-            },
-          ]
-        }
-      >
-        Crédit activé à 18 ans
-      </Text>
-      <View
-        numberOfSpaces={2}
-        style={
-          [
-            {
-              "height": 8,
             },
           ]
         }

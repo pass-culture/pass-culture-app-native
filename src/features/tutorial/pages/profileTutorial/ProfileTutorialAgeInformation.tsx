@@ -36,9 +36,6 @@ export const ProfileTutorialAgeInformation: FunctionComponent<Props> = ({ select
   const age = isLoggedIn && user?.birthDate ? getAge(user.birthDate) : defaultAge
 
   const activationAge = useDepositActivationAge()
-  const activationText = activationAge
-    ? `Crédit activé à ${activationAge} ans`
-    : 'Crédit pas encore activé'
 
   const headerTitle = isLoggedIn ? 'Comment ça marche\u00a0?' : `Le pass Culture à ${age} ans`
 
@@ -51,9 +48,6 @@ export const ProfileTutorialAgeInformation: FunctionComponent<Props> = ({ select
           {headerTitle}
         </Typo.Title3>
         <Spacer.Column numberOfSpaces={6} />
-        {/* À supprimer lors de la vraie implémentation*/}
-        <Typo.Body>{activationText}</Typo.Body>
-        <Spacer.Column numberOfSpaces={2} />
         <Timeline age={age} activationAge={activationAge} />
         <Spacer.Column numberOfSpaces={4} />
         <InfoBanner message="Cette page a-t-elle été utile&nbsp;? Aide-nous à l’améliorer en répondant à notre questionnaire.">
