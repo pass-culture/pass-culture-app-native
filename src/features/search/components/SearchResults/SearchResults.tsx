@@ -127,8 +127,8 @@ export const SearchResults: React.FC = () => {
   const onEndReached = useCallback(() => {
     if (data && hasNextPage) {
       const [lastPage] = data.pages.slice(-1)
-      if (lastPage.page > 0) {
-        analytics.logSearchScrollToPage(lastPage.page, params?.searchId)
+      if (lastPage.offers.page > 0) {
+        analytics.logSearchScrollToPage(lastPage.offers.page, params?.searchId)
       }
       fetchNextPage()
     }

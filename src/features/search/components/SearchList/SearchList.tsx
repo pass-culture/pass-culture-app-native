@@ -27,6 +27,7 @@ export const SearchList: React.FC<SearchListProps> = React.forwardRef<
       onEndReached,
       onScroll,
       userData,
+      venuesUserData,
     },
     ref
   ) => {
@@ -37,9 +38,16 @@ export const SearchList: React.FC<SearchListProps> = React.forwardRef<
         estimatedItemSize={HIT_SIZE}
         ref={ref}
         testID="searchResultsFlashlist"
-        data={hits}
+        data={hits.offers}
         keyExtractor={keyExtractor}
-        ListHeaderComponent={<SearchListHeader nbHits={nbHits} userData={userData} />}
+        ListHeaderComponent={
+          <SearchListHeader
+            nbHits={nbHits}
+            userData={userData}
+            venues={hits.venues}
+            venuesUserData={venuesUserData}
+          />
+        }
         ItemSeparatorComponent={Separator}
         renderItem={renderItem}
         refreshing={refreshing}

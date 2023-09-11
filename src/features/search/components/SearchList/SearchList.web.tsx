@@ -38,14 +38,16 @@ export const SearchList: React.FC<SearchListProps> = forwardRef<FlatList<Offer>,
         itemAs="li"
         ref={ref}
         testID="searchResultsFlatlist"
-        data={hits}
+        data={hits.offers}
         keyExtractor={keyExtractor}
-        ListHeaderComponent={<SearchListHeader nbHits={nbHits} userData={userData} />}
+        ListHeaderComponent={
+          <SearchListHeader nbHits={nbHits} userData={userData} venues={hits.venues} />
+        }
         ItemSeparatorComponent={Separator}
         ListFooterComponent={
           <SearchListFooter
             isFetchingNextPage={isFetchingNextPage}
-            nbLoadedHits={hits.length}
+            nbLoadedHits={hits.offers?.length}
             nbHits={nbHits}
             autoScrollEnabled={autoScrollEnabled}
             onPress={onPress}

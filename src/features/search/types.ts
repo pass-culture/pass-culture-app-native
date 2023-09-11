@@ -11,6 +11,7 @@ import {
   SubcategoryIdEnumv2,
 } from 'api/gen'
 import { Referrals } from 'features/navigation/RootNavigator/types'
+import { SearchOfferHits } from 'features/search/api/useSearchResults/useSearchResults'
 import { CategoriesModalView, DATE_FILTER_OPTIONS } from 'features/search/enums'
 import {
   MappedGenreTypes,
@@ -112,7 +113,8 @@ export type MappedData = MappingTree | MappedNativeCategories | MappedGenreTypes
 
 export interface SearchListProps {
   nbHits: number
-  hits: Offer[]
+  hits: SearchOfferHits
+  venuesUserData: any[]
   renderItem: ({ item, index }: { item: Offer; index: number }) => React.JSX.Element
   autoScrollEnabled: boolean
   refreshing: boolean
