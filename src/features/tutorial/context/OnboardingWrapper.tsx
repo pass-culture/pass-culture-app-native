@@ -1,28 +1,30 @@
 import React, { memo, useCallback, useContext, useMemo, useState } from 'react'
 
-import { NonEligible } from 'features/tutorial/enums'
+import { NonEligible, Tutorial } from 'features/tutorial/enums'
 import { NonEligibleModal } from 'features/tutorial/pages/NonEligibleModal'
 import { useModal } from 'ui/components/modals/useModal'
 
 interface OnboardingContextValue {
-  showNonEligibleModal: (modalType: NonEligible) => void
+  showNonEligibleModal: (age: NonEligible, type: Tutorial) => void
 }
 
 const OnboardingContext = React.createContext<OnboardingContextValue>({
   showNonEligibleModal: () => null,
 })
 
-export const OnboardingWrapper = memo(function OnboardingWrapper({
-  children,
-}: {
+interface Props {
   children: React.JSX.Element
-}) {
+}
+
+export const OnboardingWrapper = memo(function OnboardingWrapper({ children }: Props) {
   const { showModal, ...modalProps } = useModal(false)
-  const [modalType, setModalType] = useState(NonEligible.UNDER_15)
+  const [age, setAge] = useState(NonEligible.UNDER_15)
+  const [type, setType] = useState(Tutorial.ONBOARDING)
 
   const showNonEligibleModal = useCallback(
-    (modalType: NonEligible) => {
-      setModalType(modalType)
+    (age: NonEligible, type: Tutorial) => {
+      setAge(age)
+      setType(type)
       showModal()
     },
     [showModal]
@@ -38,7 +40,7 @@ export const OnboardingWrapper = memo(function OnboardingWrapper({
   return (
     <OnboardingContext.Provider value={value}>
       {children}
-      <NonEligibleModal modalType={modalType} {...modalProps} />
+      <NonEligibleModal age={age} type={type} {...modalProps} />
     </OnboardingContext.Provider>
   )
 })

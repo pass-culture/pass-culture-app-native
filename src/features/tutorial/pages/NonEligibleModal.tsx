@@ -2,7 +2,7 @@ import React, { useCallback } from 'react'
 import styled from 'styled-components/native'
 
 import { openUrl } from 'features/navigation/helpers'
-import { NonEligible } from 'features/tutorial/enums'
+import { NonEligible, Tutorial } from 'features/tutorial/enums'
 import { getModalInfoForNonEligible } from 'features/tutorial/helpers/getModalInfoForNonEligible'
 import { env } from 'libs/environment'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
@@ -14,12 +14,13 @@ import { Spacer, Typo } from 'ui/theme'
 type Props = {
   visible: boolean
   hideModal: () => void
-  modalType: NonEligible
+  age: NonEligible
+  type: Tutorial
 }
 
-export const NonEligibleModal = ({ visible, hideModal, modalType }: Props) => {
+export const NonEligibleModal = ({ visible, hideModal, age, type }: Props) => {
   const { title, firstParagraph, secondParagraph, withFAQLink, Illustration } =
-    getModalInfoForNonEligible(modalType)
+    getModalInfoForNonEligible(age, type)
 
   const StyledIllustration = styled(Illustration).attrs(({ theme }) => ({
     size: theme.illustrations.sizes.fullPage,
