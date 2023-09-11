@@ -19,8 +19,8 @@ export const BicolorFavoriteCount: React.FC<BicolorIconInterface> = ({
   color2,
   thin = false,
   testID,
-}) => {  
-  const { showTabBar } = useTheme()  
+}) => {
+  const { showTabBar } = useTheme()
   const netInfo = useNetInfoContext()
   const { isLoggedIn } = useAuthContext()
   const { data: favoritesCount } = useFavoritesCount()
@@ -35,7 +35,7 @@ export const BicolorFavoriteCount: React.FC<BicolorIconInterface> = ({
   const pastilleDimensions = {
     width: typeof size === 'number' ? size * widthFactor : 21,
     height: typeof size === 'number' ? size * heightFactor : 15,
-  }  
+  }
   const hasTooMany = favoritesCount >= COUNT_MAX
   const count = hasTooMany ? COUNT_MAX - 1 : favoritesCount || '0'
   const plusSign = hasTooMany ? '+' : ''
@@ -57,7 +57,7 @@ export const BicolorFavoriteCount: React.FC<BicolorIconInterface> = ({
           showTabBar={showTabBar}
           accessibilityLabel={accessibilityLabel}
           accessibilityLiveRegion="polite">
-          <TextContainer height={pastilleDimensions.height} >
+          <TextContainer height={pastilleDimensions.height}>
             <Count>{count}</Count>
             <Plus>{plusSign}</Plus>
           </TextContainer>
@@ -101,7 +101,7 @@ const PastilleContent = styled.View<{ height: number; width: number; showTabBar:
 )
 
 const TextContainer = styled.Text<{ height: number }>(({ height }) => ({
-  height:  height + getSpacing(1) ,
+  height: height + getSpacing(1),
   textAlign: 'center',
 }))
 

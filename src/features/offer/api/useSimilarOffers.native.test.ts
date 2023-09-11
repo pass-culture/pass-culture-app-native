@@ -224,6 +224,7 @@ describe('useSimilarOffers', () => {
     })
 
     // FIXME(PC-24326): Fix 'thrown: "Exceeded timeout of 10000 ms for a test' error
+    // eslint-disable-next-line jest/no-disabled-tests
     it.skip('should call related products API when offer and category included provided and shared offer position loaded', () => {
       renderHook(() =>
         useSimilarOffers({
@@ -237,6 +238,7 @@ describe('useSimilarOffers', () => {
     })
 
     // FIXME(PC-24326): Fix 'thrown: "Exceeded timeout of 10000 ms for a test' error
+    // eslint-disable-next-line jest/no-disabled-tests
     it.skip('should call related products API when offer and category included provided and not shared offer position loaded', () => {
       renderHook(() =>
         useSimilarOffers({
