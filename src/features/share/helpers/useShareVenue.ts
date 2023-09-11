@@ -11,12 +11,12 @@ const doNothingFn = () => {
   // do nothing when we don't have a venue
 }
 
-function getVenueUrl(id: number) {
+function getVenueUrl(id: number, utmMedium: string) {
   const path = getScreenPath('Venue', { id })
-  return `${WEBAPP_V2_URL}${path}`
+  return `${WEBAPP_V2_URL}${path}?utm_campaign=share_venue&utm_medium=${utmMedium}`
 }
 
-export const useShareVenue = (venueId: number): ShareOutput => {
+export const useShareVenue = (venueId: number, utmMedium: string): ShareOutput => {
   const { data: venue } = useVenue(venueId)
 
   if (!venue)
@@ -25,7 +25,7 @@ export const useShareVenue = (venueId: number): ShareOutput => {
       shareContent: undefined,
     }
 
-  const shareUrl = getVenueUrl(venue.id)
+  const shareUrl = getVenueUrl(venue.id, utmMedium)
   const venueName = venue.publicName || venue.name
   const shareTitle = `Retrouve "${venueName}" sur le pass Culture`
   const shareAndroidMessage = shareTitle + DOUBLE_LINE_BREAK + shareUrl

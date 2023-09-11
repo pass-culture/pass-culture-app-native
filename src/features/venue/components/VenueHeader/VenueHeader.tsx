@@ -28,7 +28,7 @@ export const VenueHeader: React.FC<Props> = (props) => {
   const { headerTransition, title, venueId } = props
   const { goBack } = useGoBack(...getTabNavConfig('Search'))
 
-  const { share: shareVenue, shareContent } = useShareVenue(venueId)
+  const { share: shareVenue, shareContent } = useShareVenue(venueId, 'header')
   const {
     visible: shareVenueModalVisible,
     showModal: showShareVenueModal,
