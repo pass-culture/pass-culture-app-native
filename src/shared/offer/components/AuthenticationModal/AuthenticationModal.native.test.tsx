@@ -1,8 +1,8 @@
 import React from 'react'
 
 import { navigate } from '__mocks__/@react-navigation/native'
-import { From } from 'features/offer/components/AuthenticationModal/fromEnum'
 import { analytics } from 'libs/analytics'
+import { From } from 'shared/offer/enums'
 import { fireEvent, render, waitFor } from 'tests/utils'
 
 import { AuthenticationModal } from './AuthenticationModal'

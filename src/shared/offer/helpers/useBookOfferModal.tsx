@@ -1,12 +1,11 @@
 import React, { ReactElement } from 'react'
 
 import { BookingOfferModal } from 'features/bookOffer/pages/BookingOfferModal'
-import { ApplicationProcessingModal } from 'features/offer/components/ApplicationProcessingModal/ApplicationProcessingModal'
-import { AuthenticationModal } from 'features/offer/components/AuthenticationModal/AuthenticationModal'
-import { From } from 'features/offer/components/AuthenticationModal/fromEnum'
-import { ErrorApplicationModal } from 'features/offer/components/ErrorApplicationModal/ErrorApplicationModal'
-import { FinishSubscriptionModal } from 'features/offer/components/FinishSubscriptionModal/FinishSubscriptionModal'
-import { OfferModal } from 'features/offer/enums'
+import { ApplicationProcessingModal } from 'shared/offer/components/ApplicationProcessingModal/ApplicationProcessingModal'
+import { AuthenticationModal } from 'shared/offer/components/AuthenticationModal/AuthenticationModal'
+import { ErrorApplicationModal } from 'shared/offer/components/ErrorApplicationModal/ErrorApplicationModal'
+import { FinishSubscriptionModal } from 'shared/offer/components/FinishSubscriptionModal/FinishSubscriptionModal'
+import { From, OfferModal } from 'shared/offer/enums'
 import { useModal } from 'ui/components/modals/useModal'
 
 export type OfferModalProps = {
@@ -20,7 +19,7 @@ type Output = {
   showModal: () => void
 }
 
-export const useOfferModal = ({
+export const useBookOfferModal = ({
   modalToDisplay,
   offerId,
   isEndedUsedBooking,

@@ -21,7 +21,6 @@ import {
 import { useBookOfferMutation } from 'features/bookOffer/api/useBookOfferMutation'
 import { openUrl } from 'features/navigation/helpers'
 import { Referrals } from 'features/navigation/RootNavigator/types'
-import { OfferModal } from 'features/offer/enums'
 import { getBookingOfferId } from 'features/offer/helpers/getBookingOfferId/getBookingOfferId'
 import { getIsFreeDigitalOffer } from 'features/offer/helpers/getIsFreeDigitalOffer/getIsFreeDigitalOffer'
 import { isUserUnderageBeneficiary } from 'features/profile/helpers/isUserUnderageBeneficiary'
@@ -29,6 +28,7 @@ import { analytics } from 'libs/analytics'
 import { useSubcategoriesMapping } from 'libs/subcategories'
 import { Subcategory } from 'libs/subcategories/types'
 import { getDigitalOfferBookingWording } from 'shared/getDigitalOfferBookingWording/getDigitalOfferBookingWording'
+import { OfferModal } from 'shared/offer/enums'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 import { ExternalNavigationProps, InternalNavigationProps } from 'ui/components/touchableLink/types'
 
@@ -121,36 +121,6 @@ export const getCtaWordingAndAction = ({
     }
   }
 
-  if (isFreeDigitalOffer) {
-    return {
-      wording: getDigitalOfferBookingWording(subcategoryId),
-      isDisabled: isBookingLoading,
-      onPress() {
-        if (isAlreadyBookedOffer) {
-          openUrl(booking?.completedUrl ?? '')
-          return
-        }
-
-        bookOffer({
-          quantity: 1,
-          stockId: offer.stocks[0].id,
-        })
-      },
-    }
-  }
-
-  if (isAlreadyBookedOffer) {
-    return {
-      wording: 'Voir ma réservation',
-      isDisabled: false,
-      navigateTo: {
-        screen: 'BookingDetails',
-        params: { id: bookedOffers[offer.id] },
-        fromRef: true,
-      },
-    }
-  }
-
   if (userStatus.statusType === YoungStatusType.eligible) {
     const common = {
       wording: 'Réserver l’offre',
@@ -183,6 +153,36 @@ export const getCtaWordingAndAction = ({
             analytics.logConsultErrorApplicationModal(offer.id)
           },
         }
+    }
+  }
+
+  if (isFreeDigitalOffer) {
+    return {
+      wording: getDigitalOfferBookingWording(subcategoryId),
+      isDisabled: isBookingLoading,
+      onPress() {
+        if (isAlreadyBookedOffer) {
+          openUrl(booking?.completedUrl ?? '')
+          return
+        }
+
+        bookOffer({
+          quantity: 1,
+          stockId: offer.stocks[0].id,
+        })
+      },
+    }
+  }
+
+  if (isAlreadyBookedOffer) {
+    return {
+      wording: 'Voir ma réservation',
+      isDisabled: false,
+      navigateTo: {
+        screen: 'BookingDetails',
+        params: { id: bookedOffers[offer.id] },
+        fromRef: true,
+      },
     }
   }
 

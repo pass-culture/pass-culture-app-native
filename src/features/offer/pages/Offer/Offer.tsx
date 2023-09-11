@@ -16,12 +16,12 @@ import { PlaylistType } from 'features/offer/enums'
 import { getIsFreeDigitalOffer } from 'features/offer/helpers/getIsFreeDigitalOffer/getIsFreeDigitalOffer'
 import { getSearchGroupAndNativeCategoryFromSubcategoryId } from 'features/offer/helpers/getSearchGroupAndNativeCategoryFromSubcategoryId/getSearchGroupAndNativeCategoryFromSubcategoryId'
 import { useCtaWordingAndAction } from 'features/offer/helpers/useCtaWordingAndAction/useCtaWordingAndAction'
-import { useOfferModal } from 'features/offer/helpers/useOfferModal/useOfferModal'
 import { analytics, isCloseToBottom } from 'libs/analytics'
 import { useRemoteConfigContext } from 'libs/firebase/remoteConfig'
 import useFunctionOnce from 'libs/hooks/useFunctionOnce'
 import { BatchEvent, BatchUser } from 'libs/react-native-batch'
 import { useSubcategories } from 'libs/subcategories/useSubcategories'
+import { useBookOfferModal } from 'shared/offer/helpers/useBookOfferModal'
 import { useOpacityTransition } from 'ui/animations/helpers/useOpacityTransition'
 import { getSpacing, Spacer } from 'ui/theme'
 
@@ -159,7 +159,7 @@ export const Offer: FunctionComponent = () => {
     isDisabled,
   } = useCtaWordingAndAction({ offerId, from, searchId }) ?? {}
 
-  const { OfferModal: CTAOfferModal, showModal: showOfferModal } = useOfferModal({
+  const { OfferModal: CTAOfferModal, showModal: showOfferModal } = useBookOfferModal({
     modalToDisplay,
     offerId,
     isEndedUsedBooking,
