@@ -19,7 +19,7 @@ export const TutorialTimelineSixteen = ({ activatedAt }: Props) => {
   const { fifteenYearsOldDeposit } = useDepositAmountsByAge()
   const firstBlockText =
     activatedAt === 15
-      ? `Tu as reçu ${fifteenYearsOldDeposit} à 15 ans`
+      ? `Tu as reçu ${fifteenYearsOldDeposit} à 15\u00a0ans`
       : 'Le crédit précédent n’est plus disponible car tu as plus de 15 ans.'
 
   const fullStepperProps: CreditComponentProps[] = [
