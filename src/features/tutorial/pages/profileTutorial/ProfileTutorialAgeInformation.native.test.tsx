@@ -1,3 +1,4 @@
+import { StackScreenProps } from '@react-navigation/stack'
 import { format } from 'date-fns'
 import mockdate from 'mockdate'
 import React from 'react'
@@ -9,6 +10,7 @@ import {
   SIXTEEN_AGE_DATE,
 } from 'features/auth/fixtures/fixtures'
 import * as NavigationHelpers from 'features/navigation/helpers/openUrl'
+import { TutorialRootStackParamList } from 'features/navigation/RootNavigator/types'
 import { beneficiaryUser } from 'fixtures/user'
 import { env } from 'libs/environment'
 import { fireEvent, render, screen } from 'tests/utils'
@@ -32,6 +34,16 @@ const sixteenUser = { ...beneficiaryUser, birthDate: format(SIXTEEN_AGE_DATE, 'y
 
 const openUrl = jest.spyOn(NavigationHelpers, 'openUrl')
 
+const navProps = { route: { params: { selectedAge: 15 } } } as StackScreenProps<
+  TutorialRootStackParamList,
+  'ProfileTutorialAgeInformation'
+>
+
+const navPropsSixteenSelected = { route: { params: { selectedAge: 16 } } } as StackScreenProps<
+  TutorialRootStackParamList,
+  'ProfileTutorialAgeInformation'
+>
+
 describe('<ProfileTutorialAgeInformation />', () => {
   beforeEach(() => {
     mockdate.set(CURRENT_DATE)
@@ -39,14 +51,14 @@ describe('<ProfileTutorialAgeInformation />', () => {
   it('should render correctly when logged in at 15', () => {
     const fifteenUser = { ...beneficiaryUser, birthdate: FIFTEEN_YEARS_OLD_FIRST_DAY_DATE }
     mockUseAuthContext.mockReturnValueOnce({ ...defaultAuthContext, user: fifteenUser })
-    render(<ProfileTutorialAgeInformation />)
+    render(<ProfileTutorialAgeInformation {...navProps} />)
 
     expect(screen).toMatchSnapshot()
   })
 
   it('should display 16 timeline when logged in at 16', () => {
     mockUseAuthContext.mockReturnValueOnce({ ...defaultAuthContext, user: sixteenUser })
-    render(<ProfileTutorialAgeInformation />)
+    render(<ProfileTutorialAgeInformation {...navProps} />)
 
     expect(screen.getByText('à 16 ans')).toHaveStyle({ color: ColorsEnum.SECONDARY })
   })
@@ -60,14 +72,14 @@ describe('<ProfileTutorialAgeInformation />', () => {
       ...defaultAuthContext,
       user: { ...sixteenUser, depositActivationDate: '2019-12-01T00:00:00.000Z' },
     }) // for the useDepositActivationAge hook call
-    render(<ProfileTutorialAgeInformation />)
+    render(<ProfileTutorialAgeInformation {...navProps} />)
 
     expect(screen.getByText('Tu as reçu 20 € à 15 ans')).toBeOnTheScreen()
   })
 
   it('should display that the user couldnt have 15 credit if more than 15 years old', () => {
     mockUseAuthContext.mockReturnValueOnce({ ...defaultAuthContext, isLoggedIn: false })
-    render(<ProfileTutorialAgeInformation selectedAge={16} />)
+    render(<ProfileTutorialAgeInformation {...navPropsSixteenSelected} />)
 
     expect(
       screen.getByText(' Le crédit précédent n’est plus disponible car tu as plus de 15 ans.')
@@ -80,14 +92,14 @@ describe('<ProfileTutorialAgeInformation />', () => {
       isLoggedIn: false,
       user: undefined,
     })
-    render(<ProfileTutorialAgeInformation selectedAge={15} />)
+    render(<ProfileTutorialAgeInformation {...navProps} />)
 
     expect(screen).toMatchSnapshot()
   })
 
   it("should open questionnaire when pressing on 'Donner mon avis'", () => {
     mockUseAuthContext.mockReturnValueOnce(defaultAuthContext)
-    render(<ProfileTutorialAgeInformation selectedAge={18} />)
+    render(<ProfileTutorialAgeInformation {...navProps} />)
 
     const link = screen.getByText('Donner mon avis')
     fireEvent.press(link)
