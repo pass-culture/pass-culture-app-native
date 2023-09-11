@@ -7,6 +7,7 @@ import { EighteenBlockDescription } from 'features/tutorial/components/profileTu
 import { InformationStepContent } from 'features/tutorial/components/profileTutorial/InformationStepContent'
 import { UnderageBlockDescription } from 'features/tutorial/components/profileTutorial/UnderageBlockDescription'
 import { useDepositAmountsByAge } from 'shared/user/useDepositAmountsByAge'
+import { Warning } from 'ui/svg/icons/BicolorWarning'
 import { Offers } from 'ui/svg/icons/Offers'
 import { Spacer, Typo } from 'ui/theme'
 
@@ -32,6 +33,10 @@ const GreyOffers = styled(Offers).attrs(({ theme }) => ({
   color: theme.colors.greySemiDark,
 }))``
 
+const GreyWarning = styled(Warning).attrs(({ theme }) => ({
+  color: theme.colors.greySemiDark,
+}))``
+
 const StyledCaption = styled(Typo.Caption)(({ theme }) => ({
   color: theme.colors.greyDark,
 }))
@@ -51,6 +56,7 @@ const SixteenStepperProps: CreditComponentProps[] = [
   { creditStep: 17, children: <CreditBarWithSeparator currentStep={2} totalStep={3} /> },
   {
     creditStep: 'information',
+    iconComponent: <GreyWarning />,
     children: (
       <InformationStepContent title="La veille de tes 18 ans" subtitle="Ton crédit est remis à 0" />
     ),

@@ -6,6 +6,7 @@ import { CreditComponentProps, CreditTimeline } from 'features/tutorial/componen
 import { EighteenBlockDescription } from 'features/tutorial/components/profileTutorial/EighteenBlockDescription'
 import { InformationStepContent } from 'features/tutorial/components/profileTutorial/InformationStepContent'
 import { UnderageBlockDescription } from 'features/tutorial/components/profileTutorial/UnderageBlockDescription'
+import { Warning } from 'ui/svg/icons/BicolorWarning'
 import { Offers } from 'ui/svg/icons/Offers'
 
 export const TutorialTimelineFifteen: () => React.ReactElement = () => {
@@ -16,12 +17,17 @@ const GreyOffers = styled(Offers).attrs(({ theme }) => ({
   color: theme.colors.greySemiDark,
 }))``
 
+const GreyWarning = styled(Warning).attrs(({ theme }) => ({
+  color: theme.colors.greySemiDark,
+}))``
+
 const FifteenStepperProps: CreditComponentProps[] = [
   { creditStep: 15, children: <UnderageBlockDescription /> },
   { creditStep: 16, children: <CreditBarWithSeparator currentStep={2} totalStep={3} /> },
   { creditStep: 17, children: <CreditBarWithSeparator currentStep={3} totalStep={3} /> },
   {
     creditStep: 'information',
+    iconComponent: <GreyWarning />,
     children: (
       <InformationStepContent title="La veille de tes 18 ans" subtitle="Ton crédit est remis à 0" />
     ),

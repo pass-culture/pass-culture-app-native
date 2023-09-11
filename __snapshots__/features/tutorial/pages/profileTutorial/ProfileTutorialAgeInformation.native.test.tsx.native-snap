@@ -1413,8 +1413,8 @@ exports[`<ProfileTutorialAgeInformation /> should display not logged in version 
                 }
               >
                 <View
-                  height={20}
-                  width={20}
+                  height={32}
+                  width={32}
                 >
                   <Text>
                     undefined-SVG-Mock
