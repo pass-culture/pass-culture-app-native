@@ -6,6 +6,7 @@ import { AuthenticationButton } from 'features/auth/components/AuthenticationBut
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { useDepositActivationAge } from 'features/profile/helpers/useDepositActivationAge'
+import { TutorialTimelineSixteen } from 'features/tutorial/components/profileTutorial/TutorialTimelineSixteen'
 import { TutorialTimelineFifteen } from 'features/tutorial/components/TutorialTimelineFifteen'
 import { env } from 'libs/environment'
 import { getAge } from 'shared/user/getAge'
@@ -53,7 +54,7 @@ export const ProfileTutorialAgeInformation: FunctionComponent<Props> = ({ select
         {/* À supprimer lors de la vraie implémentation*/}
         <Typo.Body>{activationText}</Typo.Body>
         <Spacer.Column numberOfSpaces={2} />
-        <Timeline age={age} />
+        <Timeline age={age} activationAge={activationAge} />
         <Spacer.Column numberOfSpaces={4} />
         <InfoBanner message="Cette page a-t-elle été utile&nbsp;? Aide-nous à l’améliorer en répondant à notre questionnaire.">
           <Spacer.Column numberOfSpaces={2} />
@@ -88,10 +89,18 @@ export const ProfileTutorialAgeInformation: FunctionComponent<Props> = ({ select
   )
 }
 
-const Timeline = ({ age }: { age: number | undefined }) => {
+const Timeline = ({
+  age,
+  activationAge,
+}: {
+  age: number | undefined
+  activationAge?: number | null
+}) => {
   switch (age) {
     case 15:
       return <TutorialTimelineFifteen />
+    case 16:
+      return <TutorialTimelineSixteen activatedAt={activationAge} />
     default:
       return null
   }
