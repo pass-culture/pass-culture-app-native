@@ -11,7 +11,7 @@ interface Props extends AgeButtonProps, TutorialType {}
 export const AgeButtonOther: FunctionComponent<Props> = (props) => {
   if (props.type === Tutorial.PROFILE_TUTORIAL) {
     return (
-      <Touchable onPress={props.onBeforeNavigate} accessibilityLabel={props.accessibilityLabel}>
+      <Touchable onPress={props.onPress} accessibilityLabel={props.accessibilityLabel}>
         <AgeButtonContainer dense={props.dense} LeftIcon={props.icon}>
           {props.children}
         </AgeButtonContainer>

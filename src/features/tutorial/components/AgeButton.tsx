@@ -10,7 +10,7 @@ export const AgeButton: FunctionComponent<AgeButtonProps> = ({
   navigateTo,
   accessibilityLabel,
   enableNavigate,
-  onBeforeNavigate,
+  onPress: onBeforeNavigate,
   children,
 }) => {
   return (

@@ -53,7 +53,7 @@ export const AgeSelectionOther: FunctionComponent<Props> = ({ route }: Props) =>
     <TutorialPage title={title}>
       <AgeButtonOther
         type={type}
-        onBeforeNavigate={onUnder15Press}
+        onPress={onUnder15Press}
         navigateTo={navigateToHomeConfig}
         // We disable navigation because we reset the navigation before,
         // but we still want to use a link (not just a button) for accessibility reason
@@ -67,7 +67,7 @@ export const AgeSelectionOther: FunctionComponent<Props> = ({ route }: Props) =>
       <Spacer.Column numberOfSpaces={4} />
       <AgeButtonOther
         type={type}
-        onBeforeNavigate={onOver18Press}
+        onPress={onOver18Press}
         navigateTo={navigateToHomeConfig}
         // We disable navigation because we reset the navigation before,
         // but we still want to use a link (not just a button) for accessibility reason

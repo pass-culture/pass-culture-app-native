@@ -14,7 +14,7 @@ export interface AgeButtonProps {
   enableNavigate?: boolean
   icon?: FunctionComponent<IconInterface>
   navigateTo: InternalNavigationProps['navigateTo']
-  onBeforeNavigate?: () => void
+  onPress?: () => void
   children: React.ReactNode
 }
 
