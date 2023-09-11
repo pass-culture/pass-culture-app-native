@@ -25,7 +25,9 @@ export const ShareAppModal: FunctionComponent<Props> = ({ visible, hideModal, mo
   const openShareAppModal = useCallback(() => {
     analytics.logShareApp({ type: modalType })
     hideModal()
-    setTimeout(shareApp, 0)
+    const utmMedium =
+      modalType === ShareAppModalType.BENEFICIARY ? 'beneficiary_modal' : 'uneligible_modal'
+    setTimeout(() => shareApp(utmMedium), 0)
   }, [modalType, hideModal])
 
   const closeModal = useCallback(() => {
