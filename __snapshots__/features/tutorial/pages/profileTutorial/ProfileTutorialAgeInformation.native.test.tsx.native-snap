@@ -2679,6 +2679,16 @@ exports[`<ProfileTutorialAgeInformation /> should display not logged in version 
           </Text>
         </View>
       </View>
+      <View
+        numberOfSpaces={8}
+        style={
+          [
+            {
+              "height": 32,
+            },
+          ]
+        }
+      />
     </View>
   </RCTScrollView>,
   <View
@@ -3161,6 +3171,16 @@ exports[`<ProfileTutorialAgeInformation /> should render correctly when logged i
           </View>
         </View>
       </View>
+      <View
+        numberOfSpaces={8}
+        style={
+          [
+            {
+              "height": 32,
+            },
+          ]
+        }
+      />
     </View>
   </RCTScrollView>,
   <View

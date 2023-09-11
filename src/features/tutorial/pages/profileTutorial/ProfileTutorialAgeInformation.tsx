@@ -75,6 +75,7 @@ export const ProfileTutorialAgeInformation: FunctionComponent<Props> = ({ route 
             <StyledLoginButton />
           </Container>
         ) : null}
+        <Spacer.Column numberOfSpaces={8} />
       </StyledScrollView>
       <AnimatedBlurHeaderTitle
         headerTitle={headerTitle}
