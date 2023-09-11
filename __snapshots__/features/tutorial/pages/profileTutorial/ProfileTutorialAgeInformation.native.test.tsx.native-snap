@@ -196,6 +196,16 @@ exports[`<ProfileTutorialAgeInformation /> should display not logged in version 
             }
           >
             <View
+              numberOfSpaces={3}
+              style={
+                [
+                  {
+                    "height": 12,
+                  },
+                ]
+              }
+            />
+            <View
               accessible={true}
               collapsable={false}
               focusable={true}
@@ -598,11 +608,11 @@ exports[`<ProfileTutorialAgeInformation /> should display not logged in version 
               </View>
             </View>
             <View
-              numberOfSpaces={6}
+              numberOfSpaces={3}
               style={
                 [
                   {
-                    "height": 24,
+                    "height": 12,
                   },
                 ]
               }
@@ -716,6 +726,16 @@ exports[`<ProfileTutorialAgeInformation /> should display not logged in version 
               ]
             }
           >
+            <View
+              numberOfSpaces={3}
+              style={
+                [
+                  {
+                    "height": 12,
+                  },
+                ]
+              }
+            />
             <View
               accessible={true}
               focusable={true}
@@ -967,11 +987,11 @@ exports[`<ProfileTutorialAgeInformation /> should display not logged in version 
               </View>
             </View>
             <View
-              numberOfSpaces={6}
+              numberOfSpaces={3}
               style={
                 [
                   {
-                    "height": 24,
+                    "height": 12,
                   },
                 ]
               }
@@ -1085,6 +1105,16 @@ exports[`<ProfileTutorialAgeInformation /> should display not logged in version 
               ]
             }
           >
+            <View
+              numberOfSpaces={3}
+              style={
+                [
+                  {
+                    "height": 12,
+                  },
+                ]
+              }
+            />
             <View
               accessible={true}
               focusable={true}
@@ -1336,11 +1366,11 @@ exports[`<ProfileTutorialAgeInformation /> should display not logged in version 
               </View>
             </View>
             <View
-              numberOfSpaces={6}
+              numberOfSpaces={3}
               style={
                 [
                   {
-                    "height": 24,
+                    "height": 12,
                   },
                 ]
               }
@@ -1454,6 +1484,16 @@ exports[`<ProfileTutorialAgeInformation /> should display not logged in version 
               ]
             }
           >
+            <View
+              numberOfSpaces={3}
+              style={
+                [
+                  {
+                    "height": 12,
+                  },
+                ]
+              }
+            />
             <Text
               numberOfLines={3}
               style={
@@ -1498,11 +1538,11 @@ exports[`<ProfileTutorialAgeInformation /> should display not logged in version 
               Ton crédit est remis à 0
             </Text>
             <View
-              numberOfSpaces={6}
+              numberOfSpaces={3}
               style={
                 [
                   {
-                    "height": 24,
+                    "height": 12,
                   },
                 ]
               }
@@ -1616,6 +1656,16 @@ exports[`<ProfileTutorialAgeInformation /> should display not logged in version 
               ]
             }
           >
+            <View
+              numberOfSpaces={3}
+              style={
+                [
+                  {
+                    "height": 12,
+                  },
+                ]
+              }
+            />
             <View
               accessible={true}
               focusable={true}
@@ -2123,11 +2173,11 @@ exports[`<ProfileTutorialAgeInformation /> should display not logged in version 
               </View>
             </View>
             <View
-              numberOfSpaces={6}
+              numberOfSpaces={3}
               style={
                 [
                   {
-                    "height": 24,
+                    "height": 12,
                   },
                 ]
               }
@@ -2232,6 +2282,16 @@ exports[`<ProfileTutorialAgeInformation /> should display not logged in version 
               ]
             }
           >
+            <View
+              numberOfSpaces={3}
+              style={
+                [
+                  {
+                    "height": 12,
+                  },
+                ]
+              }
+            />
             <Text
               numberOfLines={3}
               style={
@@ -2276,11 +2336,11 @@ exports[`<ProfileTutorialAgeInformation /> should display not logged in version 
               Tu peux continuer à réserver des offres gratuites autour de chez toi.
             </Text>
             <View
-              numberOfSpaces={6}
+              numberOfSpaces={3}
               style={
                 [
                   {
-                    "height": 24,
+                    "height": 12,
                   },
                 ]
               }
@@ -2921,7 +2981,7 @@ exports[`<ProfileTutorialAgeInformation /> should display not logged in version 
 ]
 `;
 
-exports[`<ProfileTutorialAgeInformation /> should render correctly when logged in 1`] = `
+exports[`<ProfileTutorialAgeInformation /> should render correctly when logged in at 15 1`] = `
 [
   <RCTScrollView
     contentContainerStyle={
