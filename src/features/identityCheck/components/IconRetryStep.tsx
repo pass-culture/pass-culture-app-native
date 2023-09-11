@@ -1,8 +1,9 @@
 import React, { FunctionComponent } from 'react'
-import styled from 'styled-components/native'
+import styled, { useTheme } from 'styled-components/native'
 
 import { TryAgain } from 'ui/svg/icons/TryAgain'
 import { AccessibleIcon } from 'ui/svg/icons/types'
+import { getSpacing } from 'ui/theme'
 
 interface IconStepRetryProps {
   Icon: FunctionComponent<
@@ -13,11 +14,13 @@ interface IconStepRetryProps {
   testID?: string
 }
 export const IconRetryStep: FunctionComponent<IconStepRetryProps> = ({ Icon, testID }) => {
+  const theme = useTheme()
+
   return (
     <Container testID={testID}>
-      <Icon size={32} />
+      <Icon size={theme.icons.sizes.standard} />
       <IconContainer>
-        <TryAgain size={16} />
+        <StyledTryAgain />
       </IconContainer>
     </Container>
   )
@@ -28,7 +31,12 @@ const IconContainer = styled.View({
   bottom: 0,
   right: 0,
 })
+
 const Container = styled.View({
-  width: 36,
-  height: 34,
+  width: getSpacing(9),
+  height: getSpacing(8.5),
 })
+
+const StyledTryAgain = styled(TryAgain).attrs(({ theme }) => ({
+  size: theme.icons.sizes.extraSmall,
+}))``
