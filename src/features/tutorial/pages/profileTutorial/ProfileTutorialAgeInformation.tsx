@@ -10,8 +10,8 @@ import {
   UseNavigationType,
 } from 'features/navigation/RootNavigator/types'
 import { useDepositActivationAge } from 'features/profile/helpers/useDepositActivationAge'
-import { TutorialTimelineSixteen } from 'features/tutorial/components/profileTutorial/TutorialTimelineSixteen'
-import { TutorialTimelineFifteen } from 'features/tutorial/components/TutorialTimelineFifteen'
+import { TutorialTimelineFifteen } from 'features/tutorial/components/profileTutorial/Timelines/TutorialTimelineFifteen'
+import { TutorialTimelineSixteen } from 'features/tutorial/components/profileTutorial/Timelines/TutorialTimelineSixteen'
 import { env } from 'libs/environment'
 import { getAge } from 'shared/user/getAge'
 import { useOpacityTransition } from 'ui/animations/helpers/useOpacityTransition'
