@@ -99,13 +99,72 @@ describe('AgeSelectionOther', () => {
       const userAge = await storage.readObject('user_age')
       expect(userAge).toBe('over_18')
     })
+  })
 
-    describe('profileTutorial', () => {
-      it('should render correctly', () => {
-        renderAgeSelectionOther({ type: Tutorial.PROFILE_TUTORIAL })
+  describe('profileTutorial', () => {
+    it('should render correctly', () => {
+      renderAgeSelectionOther({ type: Tutorial.PROFILE_TUTORIAL })
 
-        expect(screen).toMatchSnapshot()
+      expect(screen).toMatchSnapshot()
+    })
+
+    it('should show modal when pressing "j’ai moins de 15 ans"', () => {
+      renderAgeSelectionOther({ type: Tutorial.PROFILE_TUTORIAL })
+      const button = screen.getByText('moins de 15 ans')
+
+      fireEvent.press(button)
+      expect(mockShowModal).toHaveBeenCalledTimes(1)
+    })
+
+    it('should show modal when pressing "j’ai plus de 18 ans"', () => {
+      renderAgeSelectionOther({ type: Tutorial.PROFILE_TUTORIAL })
+
+      const button = screen.getByText('plus de 18 ans')
+      fireEvent.press(button)
+
+      expect(mockShowModal).toHaveBeenCalledTimes(1)
+    })
+
+    it('should not navigate to home when pressing "j’ai moins de 15 ans"', async () => {
+      renderAgeSelectionOther({ type: Tutorial.PROFILE_TUTORIAL })
+
+      const button = screen.getByText('moins de 15 ans')
+      fireEvent.press(button)
+
+      await waitFor(() => {
+        expect(reset).not.toHaveBeenCalled()
       })
+    })
+
+    it('should not navigate to home when pressing "j’ai plus de 18 ans"', async () => {
+      renderAgeSelectionOther({ type: Tutorial.PROFILE_TUTORIAL })
+
+      const button = screen.getByText('plus de 18 ans')
+      fireEvent.press(button)
+
+      await waitFor(() => {
+        expect(reset).not.toHaveBeenCalled()
+      })
+    })
+
+    it('should not save user age to local storage "j’ai moins de 15 ans"', async () => {
+      renderAgeSelectionOther({ type: Tutorial.PROFILE_TUTORIAL })
+
+      const button = screen.getByText('moins de 15 ans')
+      fireEvent.press(button)
+
+      const userAge = await storage.readObject('user_age')
+      expect(userAge).toBeNull()
+    })
+
+    it('should not save user age to local storage when pressing "j’ai plus de 18 ans"', async () => {
+      renderAgeSelectionOther({ type: Tutorial.PROFILE_TUTORIAL })
+
+      const button = screen.getByText('plus de 18 ans')
+      fireEvent.press(button)
+
+      const userAge = await storage.readObject('user_age')
+      expect(userAge).toBeNull()
     })
   })
 })
