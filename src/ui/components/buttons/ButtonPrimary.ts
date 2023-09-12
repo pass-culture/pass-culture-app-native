@@ -23,7 +23,7 @@ export const ButtonPrimary = styledButton(AppButton).attrs<BaseButtonProps>(
       })``
     }
 
-    let backgroundColor = theme.buttons.primary.backgroundColor
+    let backgroundColor: string = theme.buttons.primary.backgroundColor
 
     if (isLoading) {
       backgroundColor = theme.buttons.loading.primary.backgroundColor

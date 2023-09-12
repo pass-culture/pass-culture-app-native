@@ -49,7 +49,7 @@ export const ButtonSecondaryWhite = styledButton(AppButton).attrs<BaseButtonProp
   }
 )(({ theme, isLoading, disabled }) => {
   let borderWidth = theme.buttons.secondaryWhite.borderWidth
-  let borderColor = theme.buttons.secondaryWhite.borderColor
+  let borderColor: string = theme.buttons.secondaryWhite.borderColor
 
   if (isLoading) {
     borderColor = theme.buttons.loading.secondaryWhite.borderColor

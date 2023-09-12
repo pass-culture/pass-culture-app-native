@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { ComponentProps } from 'react'
 // we import FastImage to get the resizeMode, not to use it as a component
 // eslint-disable-next-line no-restricted-imports
 import FastImage from 'react-native-fast-image'
@@ -23,20 +23,21 @@ export const Hero: React.FC<HeroProps & { imageUrl?: string }> = (props) => {
   const { imageUrl, ...placeholderProps } = props
   const { heroBackgroundHeight, imageStyle } = useHeroDimensions(placeholderProps.type, !!imageUrl)
 
-  const ImagePlaceholder = styled(DefaultImagePlaceholder).attrs(({ theme }) =>
-    placeholderProps.type === 'offer'
-      ? {
-          Icon: mapCategoryToIcon(placeholderProps.categoryId),
-          backgroundColors: [theme.colors.greyLight, theme.colors.greyMedium],
-          borderRadius: theme.borderRadius.radius,
-          size: PLACEHOLDER_ICON_SIZE,
-        }
-      : {
-          Icon: mapVenueTypeToIcon(placeholderProps.venueType),
-          borderRadius: theme.borderRadius.button,
-          iconColor: theme.colors.white,
-          size: PLACEHOLDER_ICON_SIZE,
-        }
+  const ImagePlaceholder = styled(DefaultImagePlaceholder).attrs(
+    ({ theme }): ComponentProps<typeof DefaultImagePlaceholder> =>
+      placeholderProps.type === 'offer'
+        ? {
+            Icon: mapCategoryToIcon(placeholderProps.categoryId),
+            backgroundColors: [theme.colors.greyLight, theme.colors.greyMedium],
+            borderRadius: theme.borderRadius.radius,
+            size: PLACEHOLDER_ICON_SIZE,
+          }
+        : {
+            Icon: mapVenueTypeToIcon(placeholderProps.venueType),
+            borderRadius: theme.borderRadius.button,
+            iconColor: theme.colors.white,
+            size: PLACEHOLDER_ICON_SIZE,
+          }
   )``
 
   return (
