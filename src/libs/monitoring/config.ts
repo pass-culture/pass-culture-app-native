@@ -33,8 +33,8 @@ export async function getSentryConfig() {
     integrations: [new SentryModule.ReactNativeTracing({ routingInstrumentation })],
     _experiments: {
       // profilesSampleRate is relative to tracesSampleRate.
-      // Here, we'll capture profiles for 100% of transactions.
-      profilesSampleRate: 1.0,
+      // Here, we'll capture profiles for 1% of transactions.
+      profilesSampleRate: 0.01,
     },
   }
 }

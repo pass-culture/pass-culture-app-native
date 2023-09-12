@@ -67,17 +67,29 @@ describe('GenericHome', () => {
       useShowSkeletonSpy.mockReturnValue(false)
     })
 
-    it('should finish home global transaction when skeleton not display', async () => {
+    it('should finish home component creation performance transaction when component created', async () => {
       renderGenericHome()
+
       await act(async () => {})
       expect(mockFinishTransaction).toHaveBeenCalledTimes(1)
+    })
+
+    it('should finish home loading performance transaction when home page loaded', async () => {
+      renderGenericHome()
+
+      await act(async () => {})
+      // home component creation performance transaction
+      expect(mockFinishTransaction).toHaveBeenCalledTimes(1)
+
       useShowSkeletonSpy.mockReturnValueOnce(false)
+      // home component creation performance transaction + home loading performance transaction
       screen.rerender(
         // eslint-disable-next-line local-rules/no-react-query-provider-hoc
         reactQueryProviderHOC(
           <GenericHome modules={defaultModules} Header={Header} homeId={homeId} />
         )
       )
+
       await act(async () => {})
       expect(mockFinishTransaction).toHaveBeenCalledTimes(2)
     })

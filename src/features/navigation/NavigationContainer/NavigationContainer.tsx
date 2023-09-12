@@ -32,7 +32,11 @@ const DOCUMENT_TITLE_OPTIONS: DocumentTitleOptions = {
   },
 }
 
-export const AppNavigationContainer = ({ onReady }: { onReady?: () => void }) => {
+type Props = {
+  onReady?: () => void
+}
+
+export const AppNavigationContainer = ({ onReady }: Props) => {
   const { hideSplashScreen } = useSplashScreenContext()
   const theme = useTheme()
 

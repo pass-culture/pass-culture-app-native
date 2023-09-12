@@ -8,10 +8,10 @@ import {
 const transactions: Transaction[] = []
 
 // Start the hook in the first line of a component
-// usePerformanceCalculation().start(PERF_NAME)
+// usePerformanceCalculation().start(PERFORMANCE_TRANSACTION_NAME)
 // Then stop it inside this one or a child component
 // const {finish}=usePerformanceCalculation()
-// finish(PERF_NAME)
+// finish(PERFORMANCE_TRANSACTION_NAME)
 export function usePerformanceCalculation() {
   return {
     start: (name: string) => {

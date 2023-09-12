@@ -14,7 +14,7 @@ import { useGetVenuesData } from 'features/home/api/useGetVenuesData'
 import { useShowSkeleton } from 'features/home/api/useShowSkeleton'
 import { HomeBodyPlaceholder } from 'features/home/components/HomeBodyPlaceholder'
 import { HomeModule } from 'features/home/components/modules/HomeModule'
-import { PERF_HOME_CREATION, PERF_HOME_LOADING } from 'features/home/constants'
+import { PERFORMANCE_HOME_CREATION, PERFORMANCE_HOME_LOADING } from 'features/home/constants'
 import { useOnScroll } from 'features/home/pages/helpers/useOnScroll'
 import { HomepageModule, isOffersModule, isVenuesModule } from 'features/home/types'
 import { analytics, isCloseToBottom } from 'libs/analytics'
@@ -96,8 +96,8 @@ const OnlineHome: FunctionComponent<GenericHomeProps> = ({
 
   const flatListHeaderStyle = { zIndex: theme.zIndex.header }
   const { finish } = usePerformanceCalculation()
-  const finishPerfHomeLoadingOnce = useFunctionOnce(() => finish(PERF_HOME_LOADING))
-  const finishPerfHomeCreationOnce = useFunctionOnce(() => finish(PERF_HOME_CREATION))
+  const finishPerfHomeLoadingOnce = useFunctionOnce(() => finish(PERFORMANCE_HOME_LOADING))
+  const finishPerfHomeCreationOnce = useFunctionOnce(() => finish(PERFORMANCE_HOME_CREATION))
 
   const modulesToDisplay = modules.slice(0, maxIndex)
 

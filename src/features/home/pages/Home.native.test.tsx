@@ -60,7 +60,7 @@ describe('Home page', () => {
     expect(analytics.logConsultHome).toHaveBeenNthCalledWith(1, { homeEntryId: 'fakeEntryId' })
   })
 
-  it('should start Sentry performance transaction to measure loading', async () => {
+  it('should start Sentry performance transaction to measure component creation and home loading', async () => {
     useRoute.mockReturnValueOnce({ params: undefined })
     mockUseHomepageData.mockReturnValueOnce({
       modules: [formattedVenuesModule],
@@ -70,7 +70,8 @@ describe('Home page', () => {
     renderHome()
     await act(async () => {})
 
-    expect(mockStartTransaction).toHaveBeenCalledTimes(2)
+    expect(mockStartTransaction).toHaveBeenNthCalledWith(1, 'HOME:CREATION')
+    expect(mockStartTransaction).toHaveBeenNthCalledWith(2, 'HOME:LOADING')
   })
 })
 

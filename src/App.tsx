@@ -137,14 +137,16 @@ const App: FunctionComponent = function () {
 }
 
 const config = env.ENV !== 'production' ? AutoImmediate : NextResume
-const AppWithoutMonitoring = __DEV__ ? App : CodePush(config)(App)
-
-const AppWithCodepush = eventMonitoring.wrap(AppWithoutMonitoring) as React.ComponentType<{
+const AppWithoutMonitoring = App
+const AppWithMonitoring = eventMonitoring.wrap(AppWithoutMonitoring) as React.ComponentType<{
   tab?: string
 }>
+const AppWithCodepush = __DEV__ ? AppWithMonitoring : CodePush(config)(AppWithMonitoring)
 
 /**
- * We have an import bug in the test file App.native.test.tsx with the new eventMonitoring wrapper : WEIRD !!!
+ * We have an import bug in the test file App.native.test.tsx with the new eventMonitoring wrapper : WEIRD !!! :
+ * Element type is invalid: expected a string (for built-in components) or a class/function (for composite components)
+ * but got: undefined. You likely forgot to export your component from the file it's defined in, or you might have mixed up default and named imports.
  * So we define the old App wrapper for the test to pass
  */
 export { AppWithCodepush as App, AppWithoutMonitoring }
