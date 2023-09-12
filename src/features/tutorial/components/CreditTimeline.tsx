@@ -7,7 +7,7 @@ import { AgeCreditBlock } from 'features/tutorial/components/AgeCreditBlock'
 import { CreditBlock } from 'features/tutorial/components/CreditBlock'
 import { OnboardingCreditBlockTitle } from 'features/tutorial/components/onboarding/OnboardingCreditBlockTitle'
 import { ProfileTutorialCreditBlockTitle } from 'features/tutorial/components/profileTutorial/ProfileTutorialCreditBlockTitle'
-import { Tutorial } from 'features/tutorial/enums'
+import { CreditStatus, Tutorial } from 'features/tutorial/enums'
 import { getCreditStatusFromAge } from 'features/tutorial/helpers/getCreditStatusFromAge'
 import { getStepperIconFromCreditStatus } from 'features/tutorial/helpers/getStepperIconFromCreditStatus'
 import { getStepperVariantFromCreditStatus } from 'features/tutorial/helpers/getStepperVariantFromCreditStatus'
@@ -30,7 +30,6 @@ export type CreditComponentProps = {
 interface Props extends TutorialType {
   age: Age
   stepperProps: CreditComponentProps[]
-  type: 'onboarding' | 'profileTutorial'
   testID?: string
 }
 

@@ -2,7 +2,7 @@ import React, { FunctionComponent } from 'react'
 import styled from 'styled-components/native'
 
 import { CreditBlock } from 'features/tutorial/components/CreditBlock'
-import { CreditStatus } from 'features/tutorial/types'
+import { CreditStatus } from 'features/tutorial/enums'
 import { Spacer, Typo } from 'ui/theme'
 
 type Props = {
