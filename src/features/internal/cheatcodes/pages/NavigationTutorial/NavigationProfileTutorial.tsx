@@ -15,8 +15,13 @@ export function NavigationProfileTutorial(): React.JSX.Element {
         <LinkToComponent name="AgeSelectionOther" navigationParams={{ type: 'profileTutorial' }} />
         <LinkToComponent
           name="ProfileTutorialAgeInformation"
-          title="ProfileTutorialAgeInformation - 15 ans"
+          title="Page 15 ans"
           navigationParams={{ selectedAge: 15 }}
+        />
+        <LinkToComponent
+          name="ProfileTutorialAgeInformation"
+          title="Page 16 ans"
+          navigationParams={{ selectedAge: 16 }}
         />
       </StyledContainer>
       <Spacer.BottomScreen />
