@@ -210,13 +210,19 @@ export const OfferBody: FunctionComponent<Props> = ({
   const onNewOfferVenueSelected = useCallback(
     (nextOfferId: number) => {
       hideChangeVenueModal()
+      analytics.logConsultOffer({
+        offerId: nextOfferId,
+        from: 'offer',
+        fromMultivenueOfferId: offerId,
+        shouldUseAlgoliaRecommend,
+      })
       navigate('Offer', {
         fromOfferId: offerId,
         id: nextOfferId,
         fromMultivenueOfferId: offerId,
       })
     },
-    [hideChangeVenueModal, navigate, offerId]
+    [hideChangeVenueModal, navigate, offerId, shouldUseAlgoliaRecommend]
   )
 
   const handleBeforeNavigateToItinerary = useCallback(() => {
