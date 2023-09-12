@@ -7,6 +7,7 @@ import { useAuthContext } from 'features/auth/context/AuthContext'
 import {
   CURRENT_DATE,
   FIFTEEN_YEARS_OLD_FIRST_DAY_DATE,
+  SEVENTEEN_AGE_DATE,
   SIXTEEN_AGE_DATE,
 } from 'features/auth/fixtures/fixtures'
 import * as NavigationHelpers from 'features/navigation/helpers/openUrl'
@@ -29,6 +30,10 @@ const defaultAuthContext = {
 }
 
 const sixteenUser = { ...beneficiaryUser, birthDate: format(SIXTEEN_AGE_DATE, 'yyyy-MM-dd') }
+const seventeenUser = {
+  ...beneficiaryUser,
+  birthDate: format(SEVENTEEN_AGE_DATE, 'yyyy-MM-dd'),
+}
 
 const openUrl = jest.spyOn(NavigationHelpers, 'openUrl')
 
@@ -38,6 +43,11 @@ const navProps = { route: { params: { selectedAge: 15 } } } as StackScreenProps<
 >
 
 const navPropsSixteenSelected = { route: { params: { selectedAge: 16 } } } as StackScreenProps<
+  TutorialRootStackParamList,
+  'ProfileTutorialAgeInformation'
+>
+
+const navPropsSeventeenSelected = { route: { params: { selectedAge: 17 } } } as StackScreenProps<
   TutorialRootStackParamList,
   'ProfileTutorialAgeInformation'
 >
@@ -61,6 +71,13 @@ describe('<ProfileTutorialAgeInformation />', () => {
     expect(screen.getByTestId('sixteen-timeline')).toBeOnTheScreen()
   })
 
+  it('should display 16 timeline when logged in at 17', () => {
+    mockUseAuthContext.mockReturnValueOnce({ ...defaultAuthContext, user: seventeenUser })
+    render(<ProfileTutorialAgeInformation {...navProps} />)
+
+    expect(screen.getByTestId('seventeen-timeline')).toBeOnTheScreen()
+  })
+
   it('should display that the user has activated credit at 15 when logged in at 16', () => {
     mockUseAuthContext.mockReturnValueOnce({
       ...defaultAuthContext,
@@ -81,6 +98,17 @@ describe('<ProfileTutorialAgeInformation />', () => {
 
     expect(
       screen.getByText(' Le crédit précédent n’est plus disponible car tu as plus de 15 ans.')
+    ).toBeOnTheScreen()
+  })
+
+  it('should display that the user couldn‘t have 15 or 16 credit if more than 16 years old', () => {
+    mockUseAuthContext.mockReturnValueOnce({ ...defaultAuthContext, isLoggedIn: false })
+    render(<ProfileTutorialAgeInformation {...navPropsSeventeenSelected} />)
+
+    expect(
+      screen.getByText(
+        'Les crédits précédents ne sont plus disponibles car tu as plus de 16\u00a0ans.'
+      )
     ).toBeOnTheScreen()
   })
 

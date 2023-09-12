@@ -11,6 +11,7 @@ import {
 } from 'features/navigation/RootNavigator/types'
 import { useDepositActivationAge } from 'features/profile/helpers/useDepositActivationAge'
 import { TutorialTimelineFifteen } from 'features/tutorial/components/profileTutorial/Timelines/TutorialTimelineFifteen'
+import { TutorialTimelineSeventeen } from 'features/tutorial/components/profileTutorial/Timelines/TutorialTimelineSeventeen'
 import { TutorialTimelineSixteen } from 'features/tutorial/components/profileTutorial/Timelines/TutorialTimelineSixteen'
 import { env } from 'libs/environment'
 import { getAge } from 'shared/user/getAge'
@@ -98,6 +99,8 @@ const Timeline = ({
       return <TutorialTimelineFifteen />
     case 16:
       return <TutorialTimelineSixteen activatedAt={activationAge} />
+    case 17:
+      return <TutorialTimelineSeventeen activatedAt={activationAge} />
     default:
       return null
   }
