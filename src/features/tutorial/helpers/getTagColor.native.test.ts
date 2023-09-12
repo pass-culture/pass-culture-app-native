@@ -1,15 +1,17 @@
 import { CreditStatus } from 'features/tutorial/enums'
 import { getTagColor } from 'features/tutorial/helpers/getTagColor'
-import { theme } from 'theme'
+import { computedTheme } from 'tests/computedTheme'
 
 describe('getTagColor', () => {
   it('should return white for GONE status', () => {
-    expect(getTagColor(theme, CreditStatus.GONE)).toEqual(theme.colors.white)
+    expect(getTagColor(computedTheme, CreditStatus.GONE)).toEqual(computedTheme.colors.white)
   })
   it('should return green for ONGOING status', () => {
-    expect(getTagColor(theme, CreditStatus.ONGOING)).toEqual(theme.colors.greenValid)
+    expect(getTagColor(computedTheme, CreditStatus.ONGOING)).toEqual(
+      computedTheme.colors.greenValid
+    )
   })
   it('should return secondary for COMING status', () => {
-    expect(getTagColor(theme, CreditStatus.COMING)).toEqual(theme.colors.secondary)
+    expect(getTagColor(computedTheme, CreditStatus.COMING)).toEqual(computedTheme.colors.secondary)
   })
 })
