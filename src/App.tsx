@@ -19,7 +19,6 @@ import { FavoritesWrapper } from 'features/favorites/context/FavoritesWrapper'
 import { SubscriptionContextProvider } from 'features/identityCheck/context/SubscriptionContextProvider'
 import { AppNavigationContainer } from 'features/navigation/NavigationContainer'
 import { PushNotificationsWrapper } from 'features/notifications/context/PushNotificationsWrapper'
-import { SearchVenuesWrapper } from 'features/search/context/SearchVenuesWrapper'
 import { SearchWrapper } from 'features/search/context/SearchWrapper'
 import { ShareAppWrapper } from 'features/share/context/ShareAppWrapper'
 import { OnboardingWrapper } from 'features/tutorial/context/OnboardingWrapper'
@@ -89,27 +88,25 @@ const App: FunctionComponent = function () {
                         <FavoritesWrapper>
                           <SearchAnalyticsWrapper>
                             <SearchWrapper>
-                              <SearchVenuesWrapper>
-                                <SnackBarProvider>
-                                  <CulturalSurveyContextProvider>
-                                    <SubscriptionContextProvider>
-                                      <SplashScreenProvider>
-                                        <PushNotificationsWrapper>
-                                          <ShareAppWrapper>
-                                            <OnboardingWrapper>
-                                              <OfflineModeContainer>
-                                                <ScreenErrorProvider>
-                                                  <AppNavigationContainer />
-                                                </ScreenErrorProvider>
-                                              </OfflineModeContainer>
-                                            </OnboardingWrapper>
-                                          </ShareAppWrapper>
-                                        </PushNotificationsWrapper>
-                                      </SplashScreenProvider>
-                                    </SubscriptionContextProvider>
-                                  </CulturalSurveyContextProvider>
-                                </SnackBarProvider>
-                              </SearchVenuesWrapper>
+                              <SnackBarProvider>
+                                <CulturalSurveyContextProvider>
+                                  <SubscriptionContextProvider>
+                                    <SplashScreenProvider>
+                                      <PushNotificationsWrapper>
+                                        <ShareAppWrapper>
+                                          <OnboardingWrapper>
+                                            <OfflineModeContainer>
+                                              <ScreenErrorProvider>
+                                                <AppNavigationContainer />
+                                              </ScreenErrorProvider>
+                                            </OfflineModeContainer>
+                                          </OnboardingWrapper>
+                                        </ShareAppWrapper>
+                                      </PushNotificationsWrapper>
+                                    </SplashScreenProvider>
+                                  </SubscriptionContextProvider>
+                                </CulturalSurveyContextProvider>
+                              </SnackBarProvider>
                             </SearchWrapper>
                           </SearchAnalyticsWrapper>
                         </FavoritesWrapper>

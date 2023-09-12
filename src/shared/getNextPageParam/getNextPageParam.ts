@@ -1,5 +1,3 @@
 // first page is 0
-import { SearchOfferResponse } from 'features/search/api/useSearchResults/useSearchResults'
-
-export const getNextPageParam = ({ offers: { nbPages, page } }: SearchOfferResponse) =>
+export const getNextPageParam = ({ nbPages, page }: { nbPages: number; page: number }) =>
   page + 1 < nbPages ? page + 1 : undefined

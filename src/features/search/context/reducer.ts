@@ -3,7 +3,7 @@ import { Hit } from '@algolia/client-search'
 import { SearchGroupNameEnumv2 } from 'api/gen'
 import { DATE_FILTER_OPTIONS, LocationType } from 'features/search/enums'
 import { MAX_RADIUS, sortCategories, addOrRemove } from 'features/search/helpers/reducer.helpers'
-import { SearchState, SearchVenuesState, SearchView } from 'features/search/types'
+import { SearchState, SearchView } from 'features/search/types'
 import { Venue } from 'features/venue/types'
 import { AlgoliaVenue } from 'libs/algolia'
 import { SuggestedPlace } from 'libs/place'
@@ -31,11 +31,6 @@ export const initialSearchState: SearchState = {
   view: SearchView.Landing,
 }
 
-export const initialSearchVenuesState: SearchVenuesState = {
-  hits: [],
-  userData: undefined,
-}
-
 export type Action =
   | { type: 'INIT' }
   | { type: 'SET_STATE_FROM_DEFAULT'; payload: Partial<SearchState> }
@@ -61,11 +56,6 @@ export type Action =
   | { type: 'SET_LOCATION_VENUE'; payload: Venue }
   | { type: 'SET_QUERY'; payload: string }
   | { type: 'SET_VENUES'; payload: Hit<AlgoliaVenue>[] }
-
-export type SearchVenuesAction =
-  | { type: 'INIT' }
-  | { type: 'SET_VENUES'; payload: Hit<AlgoliaVenue>[] }
-  | { type: 'SET_USER_DATA'; payload: [{ venue_playlist_title: string }] }
 
 export const searchReducer = (state: SearchState, action: Action): SearchState => {
   switch (action.type) {
@@ -160,22 +150,6 @@ export const searchReducer = (state: SearchState, action: Action): SearchState =
       }
     case 'SET_QUERY':
       return { ...state, query: action.payload }
-    default:
-      return state
-  }
-}
-
-export const searchVenuesReducer = (
-  state: SearchVenuesState,
-  action: SearchVenuesAction
-): SearchVenuesState => {
-  switch (action.type) {
-    case 'INIT':
-      return initialSearchVenuesState
-    case 'SET_VENUES':
-      return { ...state, hits: action.payload }
-    case 'SET_USER_DATA':
-      return { ...state, userData: action.payload }
     default:
       return state
   }
