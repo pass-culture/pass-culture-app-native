@@ -139,47 +139,7 @@ exports[`Stepper navigation should render correctly 1`] = `
             ]
           }
         >
-          <View
-            accessibilityLabel="Numéro de téléphone complété"
-            accessibilityRole="link"
-            accessibilityState={
-              {
-                "busy": undefined,
-                "checked": undefined,
-                "disabled": true,
-                "expanded": undefined,
-                "selected": undefined,
-              }
-            }
-            accessibilityValue={
-              {
-                "max": undefined,
-                "min": undefined,
-                "now": undefined,
-                "text": undefined,
-              }
-            }
-            accessible={true}
-            collapsable={false}
-            focusable={false}
-            onClick={[Function]}
-            onResponderGrant={[Function]}
-            onResponderMove={[Function]}
-            onResponderRelease={[Function]}
-            onResponderTerminate={[Function]}
-            onResponderTerminationRequest={[Function]}
-            onStartShouldSetResponder={[Function]}
-            style={
-              {
-                "flexDirection": "row",
-                "justifyContent": "center",
-                "opacity": 1,
-                "userSelect": "auto",
-                "width": "100%",
-              }
-            }
-            testID="Numéro de téléphone complété"
-          >
+          <View>
             <View
               style={
                 [
@@ -200,159 +160,11 @@ exports[`Stepper navigation should render correctly 1`] = `
                 style={
                   [
                     {
-                      "paddingBottom": 16,
-                      "paddingLeft": 16,
-                      "paddingRight": 16,
-                      "paddingTop": 16,
-                    },
-                  ]
-                }
-              >
-                <View
-                  height={32}
-                  testID="BicolorSmartphone"
-                  width={32}
-                >
-                  <Text>
-                    BicolorSmartphone-SVG-Mock
-                  </Text>
-                </View>
-              </View>
-              <View
-                style={
-                  [
-                    {
-                      "flexDirection": "column",
-                    },
-                  ]
-                }
-              >
-                <Text
-                  stepState="completed"
-                  style={
-                    [
-                      {
-                        "color": "#696A6F",
-                        "fontFamily": "Montserrat-Bold",
-                        "fontSize": 15,
-                        "lineHeight": 20,
-                      },
-                    ]
-                  }
-                >
-                  Numéro de téléphone
-                </Text>
-              </View>
-            </View>
-          </View>
-        </View>
-      </View>
-      <View
-        accessibilityRole="none"
-        style={
-          [
-            {
-              "display": "flex",
-            },
-          ]
-        }
-      >
-        <View
-          style={
-            [
-              {
-                "alignItems": "center",
-              },
-            ]
-          }
-        >
-          <View
-            accessibilityLabel="Identification non complété"
-            accessibilityRole="link"
-            accessibilityState={
-              {
-                "busy": undefined,
-                "checked": undefined,
-                "disabled": false,
-                "expanded": undefined,
-                "selected": undefined,
-              }
-            }
-            accessibilityValue={
-              {
-                "max": undefined,
-                "min": undefined,
-                "now": undefined,
-                "text": undefined,
-              }
-            }
-            accessible={true}
-            collapsable={false}
-            focusable={true}
-            onClick={[Function]}
-            onResponderGrant={[Function]}
-            onResponderMove={[Function]}
-            onResponderRelease={[Function]}
-            onResponderTerminate={[Function]}
-            onResponderTerminationRequest={[Function]}
-            onStartShouldSetResponder={[Function]}
-            style={
-              {
-                "flexDirection": "row",
-                "justifyContent": "center",
-                "opacity": 1,
-                "userSelect": "auto",
-                "width": "100%",
-              }
-            }
-            testID="Identification non complété"
-          >
-            <View
-              style={
-                [
-                  {
-                    "alignItems": "center",
-                    "borderColor": "#90949D",
-                    "borderRadius": 7,
-                    "borderStyle": "solid",
-                    "borderWidth": 1,
-                    "flexDirection": "row",
-                    "padding": 16,
-                    "width": "100%",
-                  },
-                  [
-                    {
-                      "borderColor": "#161617",
-                      "height": 92,
-                      "marginTop": 8,
-                    },
-                  ],
-                ]
-              }
-            >
-              <View
-                style={
-                  [
-                    {
-                      "alignContent": "center",
-                      "marginRight": 16,
-                    },
-                  ]
-                }
-              >
-                <View
-                  height={32}
-                  width={32}
-                >
-                  <Text>
-                    undefined-SVG-Mock
-                  </Text>
-                </View>
-              </View>
-              <View
-                style={
-                  [
-                    {
+                      "backgroundColor": "#CBCDD2",
+                      "borderRadius": 2,
+                      "borderTopLeftRadius": 2,
+                      "borderTopRightRadius": 2,
+                      "flexBasis": 0,
                       "flexGrow": 1,
                       "flexShrink": 1,
                       "width": 2,
@@ -418,7 +230,19 @@ exports[`Stepper navigation should render correctly 1`] = `
               accessibilityRole="link"
               accessibilityState={
                 {
+                  "busy": undefined,
+                  "checked": undefined,
                   "disabled": true,
+                  "expanded": undefined,
+                  "selected": undefined,
+                }
+              }
+              accessibilityValue={
+                {
+                  "max": undefined,
+                  "min": undefined,
+                  "now": undefined,
+                  "text": undefined,
                 }
               }
               accessible={true}
@@ -451,6 +275,7 @@ exports[`Stepper navigation should render correctly 1`] = `
                       "borderRadius": 8,
                       "borderWidth": 1,
                       "flexDirection": "row",
+                      "marginTop": 8,
                     },
                     {
                       "borderColor": "#F1F1F4",
@@ -543,47 +368,7 @@ exports[`Stepper navigation should render correctly 1`] = `
             ]
           }
         >
-          <View
-            accessibilityLabel="Profil non complété"
-            accessibilityRole="link"
-            accessibilityState={
-              {
-                "busy": undefined,
-                "checked": undefined,
-                "disabled": true,
-                "expanded": undefined,
-                "selected": undefined,
-              }
-            }
-            accessibilityValue={
-              {
-                "max": undefined,
-                "min": undefined,
-                "now": undefined,
-                "text": undefined,
-              }
-            }
-            accessible={true}
-            collapsable={false}
-            focusable={false}
-            onClick={[Function]}
-            onResponderGrant={[Function]}
-            onResponderMove={[Function]}
-            onResponderRelease={[Function]}
-            onResponderTerminate={[Function]}
-            onResponderTerminationRequest={[Function]}
-            onStartShouldSetResponder={[Function]}
-            style={
-              {
-                "flexDirection": "row",
-                "justifyContent": "center",
-                "opacity": 1,
-                "userSelect": "auto",
-                "width": "100%",
-              }
-            }
-            testID="Profil non complété"
-          >
+          <View>
             <View
               style={
                 [
@@ -687,7 +472,19 @@ exports[`Stepper navigation should render correctly 1`] = `
               accessibilityRole="link"
               accessibilityState={
                 {
+                  "busy": undefined,
+                  "checked": undefined,
                   "disabled": false,
+                  "expanded": undefined,
+                  "selected": undefined,
+                }
+              }
+              accessibilityValue={
+                {
+                  "max": undefined,
+                  "min": undefined,
+                  "now": undefined,
+                  "text": undefined,
                 }
               }
               accessible={true}
@@ -840,47 +637,7 @@ exports[`Stepper navigation should render correctly 1`] = `
             ]
           }
         >
-          <View
-            accessibilityLabel="Confirmation non complété"
-            accessibilityRole="link"
-            accessibilityState={
-              {
-                "busy": undefined,
-                "checked": undefined,
-                "disabled": true,
-                "expanded": undefined,
-                "selected": undefined,
-              }
-            }
-            accessibilityValue={
-              {
-                "max": undefined,
-                "min": undefined,
-                "now": undefined,
-                "text": undefined,
-              }
-            }
-            accessible={true}
-            collapsable={false}
-            focusable={false}
-            onClick={[Function]}
-            onResponderGrant={[Function]}
-            onResponderMove={[Function]}
-            onResponderRelease={[Function]}
-            onResponderTerminate={[Function]}
-            onResponderTerminationRequest={[Function]}
-            onStartShouldSetResponder={[Function]}
-            style={
-              {
-                "flexDirection": "row",
-                "justifyContent": "center",
-                "opacity": 1,
-                "userSelect": "auto",
-                "width": "100%",
-              }
-            }
-            testID="Confirmation non complété"
-          >
+          <View>
             <View
               style={
                 [
@@ -990,7 +747,19 @@ exports[`Stepper navigation should render correctly 1`] = `
               accessibilityRole="link"
               accessibilityState={
                 {
+                  "busy": undefined,
+                  "checked": undefined,
                   "disabled": true,
+                  "expanded": undefined,
+                  "selected": undefined,
+                }
+              }
+              accessibilityValue={
+                {
+                  "max": undefined,
+                  "min": undefined,
+                  "now": undefined,
+                  "text": undefined,
                 }
               }
               accessible={true}
@@ -1023,6 +792,7 @@ exports[`Stepper navigation should render correctly 1`] = `
                       "borderRadius": 8,
                       "borderWidth": 1,
                       "flexDirection": "row",
+                      "marginTop": 8,
                     },
                     {
                       "borderColor": "#CBCDD2",
@@ -1216,7 +986,19 @@ exports[`Stepper navigation should render correctly 1`] = `
               accessibilityRole="link"
               accessibilityState={
                 {
+                  "busy": undefined,
+                  "checked": undefined,
                   "disabled": true,
+                  "expanded": undefined,
+                  "selected": undefined,
+                }
+              }
+              accessibilityValue={
+                {
+                  "max": undefined,
+                  "min": undefined,
+                  "now": undefined,
+                  "text": undefined,
                 }
               }
               accessible={true}
@@ -1249,6 +1031,7 @@ exports[`Stepper navigation should render correctly 1`] = `
                       "borderRadius": 8,
                       "borderWidth": 1,
                       "flexDirection": "row",
+                      "marginTop": 8,
                     },
                     {
                       "borderColor": "#CBCDD2",

@@ -289,6 +289,16 @@ exports[`OnboardingAgeInformation should render correctly for 15-year-old 1`] = 
               }
             >
               <View
+                numberOfSpaces={1}
+                style={
+                  [
+                    {
+                      "height": 4,
+                    },
+                  ]
+                }
+              />
+              <View
                 accessibilityState={
                   {
                     "busy": undefined,
@@ -536,6 +546,16 @@ exports[`OnboardingAgeInformation should render correctly for 15-year-old 1`] = 
               }
             >
               <View
+                numberOfSpaces={1}
+                style={
+                  [
+                    {
+                      "height": 4,
+                    },
+                  ]
+                }
+              />
+              <View
                 accessibilityState={
                   {
                     "busy": undefined,
@@ -777,6 +797,16 @@ exports[`OnboardingAgeInformation should render correctly for 15-year-old 1`] = 
                 ]
               }
             >
+              <View
+                numberOfSpaces={1}
+                style={
+                  [
+                    {
+                      "height": 4,
+                    },
+                  ]
+                }
+              />
               <View
                 accessibilityState={
                   {
@@ -1156,6 +1186,16 @@ exports[`OnboardingAgeInformation should render correctly for 15-year-old 1`] = 
                 ]
               }
             >
+              <View
+                numberOfSpaces={1}
+                style={
+                  [
+                    {
+                      "height": 4,
+                    },
+                  ]
+                }
+              />
               <View
                 accessibilityState={
                   {
@@ -1822,6 +1862,16 @@ exports[`OnboardingAgeInformation should render correctly for 16-year-old 1`] = 
               }
             >
               <View
+                numberOfSpaces={1}
+                style={
+                  [
+                    {
+                      "height": 4,
+                    },
+                  ]
+                }
+              />
+              <View
                 accessibilityState={
                   {
                     "busy": undefined,
@@ -2052,6 +2102,16 @@ exports[`OnboardingAgeInformation should render correctly for 16-year-old 1`] = 
                 ]
               }
             >
+              <View
+                numberOfSpaces={1}
+                style={
+                  [
+                    {
+                      "height": 4,
+                    },
+                  ]
+                }
+              />
               <View
                 accessibilityState={
                   {
@@ -2299,6 +2359,16 @@ exports[`OnboardingAgeInformation should render correctly for 16-year-old 1`] = 
                 ]
               }
             >
+              <View
+                numberOfSpaces={1}
+                style={
+                  [
+                    {
+                      "height": 4,
+                    },
+                  ]
+                }
+              />
               <View
                 accessibilityState={
                   {
@@ -2678,6 +2748,16 @@ exports[`OnboardingAgeInformation should render correctly for 16-year-old 1`] = 
                 ]
               }
             >
+              <View
+                numberOfSpaces={1}
+                style={
+                  [
+                    {
+                      "height": 4,
+                    },
+                  ]
+                }
+              />
               <View
                 accessibilityState={
                   {
@@ -3344,6 +3424,16 @@ exports[`OnboardingAgeInformation should render correctly for 17-year-old 1`] = 
               }
             >
               <View
+                numberOfSpaces={1}
+                style={
+                  [
+                    {
+                      "height": 4,
+                    },
+                  ]
+                }
+              />
+              <View
                 accessibilityState={
                   {
                     "busy": undefined,
@@ -3572,6 +3662,16 @@ exports[`OnboardingAgeInformation should render correctly for 17-year-old 1`] = 
                 ]
               }
             >
+              <View
+                numberOfSpaces={1}
+                style={
+                  [
+                    {
+                      "height": 4,
+                    },
+                  ]
+                }
+              />
               <View
                 accessibilityState={
                   {
@@ -3803,6 +3903,16 @@ exports[`OnboardingAgeInformation should render correctly for 17-year-old 1`] = 
                 ]
               }
             >
+              <View
+                numberOfSpaces={1}
+                style={
+                  [
+                    {
+                      "height": 4,
+                    },
+                  ]
+                }
+              />
               <View
                 accessibilityState={
                   {
@@ -4187,6 +4297,16 @@ exports[`OnboardingAgeInformation should render correctly for 17-year-old 1`] = 
                 ]
               }
             >
+              <View
+                numberOfSpaces={1}
+                style={
+                  [
+                    {
+                      "height": 4,
+                    },
+                  ]
+                }
+              />
               <View
                 accessibilityState={
                   {
@@ -4853,6 +4973,16 @@ exports[`OnboardingAgeInformation should render correctly for 18-year-old 1`] = 
               }
             >
               <View
+                numberOfSpaces={1}
+                style={
+                  [
+                    {
+                      "height": 4,
+                    },
+                  ]
+                }
+              />
+              <View
                 accessibilityState={
                   {
                     "busy": undefined,
@@ -5081,6 +5211,16 @@ exports[`OnboardingAgeInformation should render correctly for 18-year-old 1`] = 
                 ]
               }
             >
+              <View
+                numberOfSpaces={1}
+                style={
+                  [
+                    {
+                      "height": 4,
+                    },
+                  ]
+                }
+              />
               <View
                 accessibilityState={
                   {
@@ -5311,6 +5451,16 @@ exports[`OnboardingAgeInformation should render correctly for 18-year-old 1`] = 
               }
             >
               <View
+                numberOfSpaces={1}
+                style={
+                  [
+                    {
+                      "height": 4,
+                    },
+                  ]
+                }
+              />
+              <View
                 accessibilityState={
                   {
                     "busy": undefined,
@@ -5532,6 +5682,16 @@ exports[`OnboardingAgeInformation should render correctly for 18-year-old 1`] = 
                 ]
               }
             >
+              <View
+                numberOfSpaces={1}
+                style={
+                  [
+                    {
+                      "height": 4,
+                    },
+                  ]
+                }
+              />
               <View
                 accessibilityState={
                   {

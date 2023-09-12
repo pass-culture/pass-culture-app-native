@@ -173,6 +173,16 @@ exports[`<ProfileTutorialAgeInformation /> should display not logged in version 
             }
           >
             <View
+              numberOfSpaces={3}
+              style={
+                [
+                  {
+                    "height": 12,
+                  },
+                ]
+              }
+            />
+            <View
               accessibilityState={
                 {
                   "busy": undefined,
@@ -703,6 +713,16 @@ exports[`<ProfileTutorialAgeInformation /> should display not logged in version 
             }
           >
             <View
+              numberOfSpaces={3}
+              style={
+                [
+                  {
+                    "height": 12,
+                  },
+                ]
+              }
+            />
+            <View
               accessibilityState={
                 {
                   "busy": undefined,
@@ -1080,6 +1100,16 @@ exports[`<ProfileTutorialAgeInformation /> should display not logged in version 
               ]
             }
           >
+            <View
+              numberOfSpaces={3}
+              style={
+                [
+                  {
+                    "height": 12,
+                  },
+                ]
+              }
+            />
             <View
               accessibilityState={
                 {
@@ -1630,6 +1660,16 @@ exports[`<ProfileTutorialAgeInformation /> should display not logged in version 
               ]
             }
           >
+            <View
+              numberOfSpaces={3}
+              style={
+                [
+                  {
+                    "height": 12,
+                  },
+                ]
+              }
+            />
             <View
               accessibilityState={
                 {
