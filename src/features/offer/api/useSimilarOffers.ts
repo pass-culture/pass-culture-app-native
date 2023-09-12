@@ -6,10 +6,9 @@ import { Coordinates, SearchGroupNameEnumv2, SearchGroupResponseModelv2 } from '
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { useAlgoliaSimilarOffers } from 'features/offer/api/useAlgoliaSimilarOffers'
 import { getAlgoliaRecommendParams } from 'features/offer/helpers/getAlgoliaRecommendParams/getAlgoliaRecommendParams'
+import { getIsLoadedOfferPosition } from 'features/offer/helpers/getIsLoadedOfferPosition/getIsLoadedOfferPosition'
 import { SimilarOffersResponse } from 'features/offer/types'
 import { env } from 'libs/environment'
-// eslint-disable-next-line no-restricted-imports
-import { firebaseAnalytics } from 'libs/firebase/analytics'
 import { eventMonitoring } from 'libs/monitoring'
 import { useSubcategories } from 'libs/subcategories/useSubcategories'
 
@@ -92,10 +91,7 @@ export const getAlgoliaFrequentlyBoughtTogether = async (
 export const getApiRecoSimilarOffers = async (similarOffersEndpoint: string) => {
   const similarOffers = await fetch(similarOffersEndpoint)
     .then((response) => response.json())
-    .then((data: SimilarOffersResponse) => {
-      firebaseAnalytics.setDefaultEventParameters(data.params)
-      return data.results
-    })
+    .then((data: SimilarOffersResponse) => data)
     .catch((e) => {
       eventMonitoring.captureException(e)
       return undefined
@@ -141,11 +137,10 @@ export const useSimilarOffers = ({
 
   const { user: profile } = useAuthContext()
   // API called when offer position loaded
-  const isLoadedOfferPosition = Boolean(
-    position?.latitude !== undefined && position?.longitude !== undefined
-  )
+  const isLoadedOfferPosition = getIsLoadedOfferPosition(position)
   const similarOffersEndpoint = getSimilarOffersEndpoint(offerId, profile?.id, position, categories)
   const [similarOffersIds, setSimilarOffersIds] = useState<string[]>()
+  const [apiRecoResponse, setApiRecoResponse] = useState<SimilarOffersResponse>()
 
   const fetchAlgolia = useCallback(async () => {
     if (!offerId || (categoryIncluded && !isLoadedOfferPosition)) return
@@ -159,7 +154,7 @@ export const useSimilarOffers = ({
 
   const fetchApiReco = useCallback(async () => {
     if (!similarOffersEndpoint || !isLoadedOfferPosition) return
-    setSimilarOffersIds(await getApiRecoSimilarOffers(similarOffersEndpoint))
+    setApiRecoResponse(await getApiRecoSimilarOffers(similarOffersEndpoint))
   }, [isLoadedOfferPosition, similarOffersEndpoint])
 
   useEffect(() => {
@@ -174,5 +169,11 @@ export const useSimilarOffers = ({
     fetchSimilarOffers()
   }, [fetchAlgolia, fetchApiReco, shouldUseAlgoliaRecommend])
 
-  return useAlgoliaSimilarOffers(similarOffersIds ?? [], true)
+  return {
+    similarOffers: useAlgoliaSimilarOffers(
+      (shouldUseAlgoliaRecommend ? similarOffersIds : apiRecoResponse?.results) ?? [],
+      true
+    ),
+    apiRecoParams: apiRecoResponse?.params,
+  }
 }

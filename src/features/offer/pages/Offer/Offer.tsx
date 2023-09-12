@@ -65,15 +65,19 @@ export const Offer: FunctionComponent = () => {
 
   const { searchGroupName, nativeCategory } =
     getSearchGroupAndNativeCategoryFromSubcategoryId(data, offer?.subcategoryId) || {}
-  const sameCategorySimilarOffers = useSimilarOffers({
-    offerId,
-    position: offer?.venue.coordinates,
-    shouldUseAlgoliaRecommend,
-    categoryIncluded: searchGroupName ?? SearchGroupNameEnumv2.NONE,
-  })
+  const { similarOffers: sameCategorySimilarOffers, apiRecoParams: apiRecoParamsSameCategory } =
+    useSimilarOffers({
+      offerId,
+      position: offer?.venue.coordinates,
+      shouldUseAlgoliaRecommend,
+      categoryIncluded: searchGroupName ?? SearchGroupNameEnumv2.NONE,
+    })
   const hasSameCategorySimilarOffers = Boolean(sameCategorySimilarOffers?.length)
 
-  const otherCategoriesSimilarOffers = useSimilarOffers({
+  const {
+    similarOffers: otherCategoriesSimilarOffers,
+    apiRecoParams: apiRecoParamsOtherCategories,
+  } = useSimilarOffers({
     offerId,
     position: offer?.venue.coordinates,
     shouldUseAlgoliaRecommend,
@@ -91,6 +95,7 @@ export const Offer: FunctionComponent = () => {
 
   const logSameCategoryPlaylistVerticalScroll = useFunctionOnce(() => {
     return analytics.logPlaylistVerticalScroll({
+      ...apiRecoParamsSameCategory,
       fromOfferId,
       offerId,
       playlistType: PlaylistType.SAME_CATEGORY_SIMILAR_OFFERS,
@@ -100,6 +105,7 @@ export const Offer: FunctionComponent = () => {
 
   const logOtherCategoriesPlaylistVerticalScroll = useFunctionOnce(() => {
     return analytics.logPlaylistVerticalScroll({
+      ...apiRecoParamsOtherCategories,
       fromOfferId,
       offerId,
       playlistType: PlaylistType.OTHER_CATEGORIES_SIMILAR_OFFERS,
@@ -199,7 +205,9 @@ export const Offer: FunctionComponent = () => {
         offerId={offerId}
         onScroll={onScroll}
         sameCategorySimilarOffers={sameCategorySimilarOffers}
+        apiRecoParamsSameCategory={apiRecoParamsSameCategory}
         otherCategoriesSimilarOffers={otherCategoriesSimilarOffers}
+        apiRecoParamsOtherCategories={apiRecoParamsOtherCategories}
         shouldUseAlgoliaRecommend={shouldUseAlgoliaRecommend}
       />
       {/* OfferHeader is called after Body to implement the BlurView for iOS */}

@@ -12,12 +12,10 @@ import {
   useSimilarOffers,
 } from 'features/offer/api/useSimilarOffers'
 import { env } from 'libs/environment'
-// eslint-disable-next-line no-restricted-imports
-import { firebaseAnalytics } from 'libs/firebase/analytics'
 import { eventMonitoring } from 'libs/monitoring'
 import { placeholderData } from 'libs/subcategories/placeholderData'
 import { server } from 'tests/server'
-import { renderHook, waitFor } from 'tests/utils'
+import { act, renderHook, waitFor } from 'tests/utils'
 
 const mockUserId = 1234
 const mockOfferId = 1
@@ -72,16 +70,18 @@ describe('useSimilarOffers', () => {
     .spyOn(recommendCore, 'getFrequentlyBoughtTogether')
     .mockImplementation()
   const getRelatedProductsSpy = jest.spyOn(recommendCore, 'getRelatedProducts').mockImplementation()
-  const fetchApiRecoSpy = jest.spyOn(global, 'fetch')
+  const fetchApiRecoSpy = jest.spyOn(global, 'fetch').mockImplementation()
 
-  it('should call Algolia hook', () => {
+  it('should call Algolia hook', async () => {
     renderHook(() =>
       useSimilarOffers({
         offerId: mockOfferId,
         categoryIncluded: SearchGroupNameEnumv2.FILMS_SERIES_CINEMA,
       })
     )
-    expect(algoliaSpy).toHaveBeenCalledTimes(1)
+    await act(async () => {
+      expect(algoliaSpy).toHaveBeenCalledTimes(1)
+    })
     renderHook(() =>
       useSimilarOffers({
         offerId: mockOfferId,
@@ -89,7 +89,9 @@ describe('useSimilarOffers', () => {
         categoryExcluded: SearchGroupNameEnumv2.FILMS_SERIES_CINEMA,
       })
     )
-    expect(algoliaSpy).toHaveBeenCalledTimes(2)
+    await act(async () => {
+      expect(algoliaSpy).toHaveBeenCalledTimes(2)
+    })
   })
 
   it('should not call Algolia hook when no offer id provided', () => {
@@ -101,7 +103,7 @@ describe('useSimilarOffers', () => {
     expect(algoliaSpy).toHaveBeenCalledWith([], true)
   })
 
-  describe('when Algolia Recommend AB Testing desactivated', () => {
+  describe('when Algolia Recommend AB Testing deactivated', () => {
     it('should not call similar offers API when no offer provided', () => {
       renderHook(() =>
         useSimilarOffers({
@@ -123,7 +125,7 @@ describe('useSimilarOffers', () => {
       expect(fetchApiRecoSpy).not.toHaveBeenCalled()
     })
 
-    it('should call similar offers API when offer id provided and shared offer position loaded', () => {
+    it('should call similar offers API when offer id provided and shared offer position loaded', async () => {
       renderHook(() =>
         useSimilarOffers({
           offerId: mockOfferId,
@@ -132,10 +134,11 @@ describe('useSimilarOffers', () => {
           position: { latitude: 10, longitude: 15 },
         })
       )
+      await act(async () => {})
       expect(fetchApiRecoSpy).toHaveBeenCalledTimes(1)
     })
 
-    it('should call similar offers API when offer id provided and not shared offer position loaded ', () => {
+    it('should call similar offers API when offer id provided and shared offer position not loaded ', async () => {
       renderHook(() =>
         useSimilarOffers({
           offerId: mockOfferId,
@@ -144,6 +147,7 @@ describe('useSimilarOffers', () => {
           position: { latitude: null, longitude: null },
         })
       )
+      await act(async () => {})
       expect(fetchApiRecoSpy).toHaveBeenCalledTimes(1)
     })
   })
@@ -406,21 +410,12 @@ describe('getApiRecoSimilarOffers', () => {
   })
 
   it('should return recommendations when reco similar offers API called', async () => {
-    const expectedResponse = respondWith({ results: ['102280', '102281'] })
+    const expectedResponse = respondWith({ params, results: ['102280', '102281'] })
     fetchApiRecoSpy.mockReturnValueOnce(Promise.resolve(expectedResponse))
 
     const apiReco = await getApiRecoSimilarOffers(endpoint)
 
-    expect(apiReco).toEqual(['102280', '102281'])
-  })
-
-  it('should log response body parameters on firebase when fetch call succeeds', async () => {
-    const expectedResponse = respondWith({ params, results: ['102280', '102281'] })
-    fetchApiRecoSpy.mockReturnValueOnce(Promise.resolve(expectedResponse))
-
-    await getApiRecoSimilarOffers(endpoint)
-
-    expect(firebaseAnalytics.setDefaultEventParameters).toHaveBeenCalledWith(params)
+    expect(apiReco).toEqual({ params, results: ['102280', '102281'] })
   })
 })
 

@@ -203,6 +203,7 @@ export type RootStackParamList = {
     fromMultivenueOfferId?: number
     openModalOnNavigation?: boolean
     searchId?: string
+    apiRecoParams?: string
   }
   OfferDescription: { id: number }
   SuspendAccountConfirmation: { token: string }

@@ -20,6 +20,7 @@ import { VenueSelectionModal } from 'features/offer/components/VenueSelectionMod
 import { PlaylistType } from 'features/offer/enums'
 import { getVenueSectionTitle } from 'features/offer/helpers/getVenueSectionTitle/getVenueSectionTitle'
 import { useTrackOfferSeenDuration } from 'features/offer/helpers/useTrackOfferSeenDuration'
+import { SimilarOffersResponseParams } from 'features/offer/types'
 import { isUserBeneficiary } from 'features/profile/helpers/isUserBeneficiary'
 import { isUserExBeneficiary } from 'features/profile/helpers/isUserExBeneficiary'
 import { ANIMATION_DURATION } from 'features/venue/components/VenuePartialAccordionDescription/VenuePartialAccordionDescription'
@@ -51,7 +52,6 @@ import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
 import { Hero } from 'ui/components/hero/Hero'
 import { useModal } from 'ui/components/modals/useModal'
 import { PassPlaylist } from 'ui/components/PassPlaylist'
-import { CustomListRenderItem } from 'ui/components/Playlist'
 import { SectionWithDivider } from 'ui/components/SectionWithDivider'
 import { useScrollWhenAccordionItemOpens } from 'ui/hooks/useScrollWhenAccordionOpens'
 import { Flag as DefaultFlag } from 'ui/svg/icons/Flag'
@@ -62,7 +62,9 @@ interface Props {
   offerId: number
   onScroll: () => void
   sameCategorySimilarOffers?: Offer[]
+  apiRecoParamsSameCategory?: SimilarOffersResponseParams
   otherCategoriesSimilarOffers?: Offer[]
+  apiRecoParamsOtherCategories?: SimilarOffersResponseParams
   shouldUseAlgoliaRecommend?: boolean
 }
 
@@ -76,7 +78,9 @@ export const OfferBody: FunctionComponent<Props> = ({
   offerId,
   onScroll,
   sameCategorySimilarOffers,
+  apiRecoParamsSameCategory,
   otherCategoriesSimilarOffers,
+  apiRecoParamsOtherCategories,
   shouldUseAlgoliaRecommend,
 }) => {
   const { navigate } = useNavigation<UseNavigationType>()
@@ -150,8 +154,21 @@ export const OfferBody: FunctionComponent<Props> = ({
 
   const { itemWidth, itemHeight } = getPlaylistItemDimensionsFromLayout('two-items')
 
-  const renderItem: CustomListRenderItem<Offer> = useCallback(
-    ({ item, width, height, playlistType }) => {
+  const renderItem = useCallback(
+    (
+      {
+        item,
+        width,
+        height,
+        playlistType,
+      }: {
+        item: Offer
+        width: number
+        height: number
+        playlistType?: PlaylistType
+      },
+      apiRecoParams?: SimilarOffersResponseParams
+    ) => {
       const timestampsInMillis = item.offer.dates?.map((timestampInSec) => timestampInSec * 1000)
       return (
         <OfferTile
@@ -171,6 +188,7 @@ export const OfferBody: FunctionComponent<Props> = ({
           fromOfferId={offerId}
           shouldUseAlgoliaRecommend={shouldUseAlgoliaRecommend}
           playlistType={playlistType}
+          apiRecoParams={apiRecoParams}
         />
       )
     },
@@ -378,7 +396,9 @@ export const OfferBody: FunctionComponent<Props> = ({
             data={sameCategorySimilarOffers}
             itemWidth={itemWidth}
             itemHeight={itemHeight}
-            renderItem={renderItem}
+            renderItem={({ item, width, height, playlistType }) =>
+              renderItem({ item, width, height, playlistType }, apiRecoParamsSameCategory)
+            }
             keyExtractor={keyExtractor}
             title="Dans la même catégorie"
             onEndReached={trackingOnHorizontalScroll}
@@ -394,7 +414,9 @@ export const OfferBody: FunctionComponent<Props> = ({
             data={otherCategoriesSimilarOffers}
             itemWidth={itemWidth}
             itemHeight={itemHeight}
-            renderItem={renderItem}
+            renderItem={({ item, width, height, playlistType }) =>
+              renderItem({ item, width, height, playlistType }, apiRecoParamsOtherCategories)
+            }
             keyExtractor={keyExtractor}
             title="Ça peut aussi te plaire"
             onEndReached={trackingOnHorizontalScroll}

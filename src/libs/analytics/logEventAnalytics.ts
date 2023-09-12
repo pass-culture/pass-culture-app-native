@@ -70,21 +70,12 @@ export const logEventAnalytics = {
     analytics.logEvent({ firebase: AnalyticsEvent.ALL_TILES_SEEN }, params),
   logBackToHomeFromEduconnectError: (params: { fromError: string }) =>
     analytics.logEvent({ firebase: AnalyticsEvent.BACK_TO_HOME_FROM_EDUCONNECT_ERROR }, params),
-  logBookingConfirmation: (
-    offerId: number,
-    bookingId: number,
-    fromOfferId?: number,
+  logBookingConfirmation: (params: {
+    offerId: number
+    bookingId: number
+    fromOfferId?: number
     fromMultivenueOfferId?: number
-  ) =>
-    analytics.logEvent(
-      { firebase: AnalyticsEvent.BOOKING_CONFIRMATION },
-      {
-        bookingId,
-        fromMultivenueOfferId,
-        fromOfferId,
-        offerId,
-      }
-    ),
+  }) => analytics.logEvent({ firebase: AnalyticsEvent.BOOKING_CONFIRMATION }, params),
   logBookingDetailsScrolledToBottom: (offerId: number) =>
     analytics.logEvent(
       { firebase: AnalyticsEvent.BOOKING_DETAILS_SCROLLED_TO_BOTTOM },
