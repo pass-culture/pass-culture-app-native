@@ -10,6 +10,7 @@ import { SearchOfferHits } from 'features/search/api/useSearchResults/useSearchR
 import { NumberOfResults } from 'features/search/components/NumberOfResults/NumberOfResults'
 import { SearchVenueItem } from 'features/search/components/SearchVenueItems/SearchVenueItem'
 import { LocationType } from 'features/search/enums'
+import { VenuesUserData } from 'features/search/types'
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { AlgoliaVenue } from 'libs/algolia'
 import { analytics } from 'libs/analytics'
@@ -32,7 +33,7 @@ interface SearchListHeaderProps extends ScrollViewProps {
   nbHits: number
   userData: SearchResponse<Offer[]>['userData']
   venues?: SearchOfferHits['venues']
-  venuesUserData: any[]
+  venuesUserData: VenuesUserData
 }
 
 const renderVenueItem = (

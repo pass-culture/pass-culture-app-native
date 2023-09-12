@@ -105,10 +105,14 @@ export type CategoriesViewData =
 
 export type MappedData = MappingTree | MappedNativeCategories | MappedGenreTypes
 
+export type VenueUserTitleRule = { venue_playlist_title: string }
+export type VenueUserData = VenueUserTitleRule | undefined
+export type VenuesUserData = VenueUserData[] | undefined
+
 export interface SearchListProps {
   nbHits: number
   hits: SearchOfferHits
-  venuesUserData: any[]
+  venuesUserData: VenuesUserData
   renderItem: ({ item, index }: { item: Offer; index: number }) => React.JSX.Element
   autoScrollEnabled: boolean
   refreshing: boolean
