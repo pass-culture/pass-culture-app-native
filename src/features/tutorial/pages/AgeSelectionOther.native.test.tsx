@@ -5,7 +5,7 @@ import { reset } from '__mocks__/@react-navigation/native'
 import { TutorialRootStackParamList } from 'features/navigation/RootNavigator/types'
 import { homeNavConfig } from 'features/navigation/TabBar/helpers'
 import { OnboardingWrapper } from 'features/tutorial/context/OnboardingWrapper'
-import { Tutorial } from 'features/tutorial/enums'
+import { NonEligible, Tutorial } from 'features/tutorial/enums'
 import { AgeSelectionOther } from 'features/tutorial/pages/AgeSelectionOther'
 import { analytics } from 'libs/analytics'
 import { storage } from 'libs/storage'
@@ -71,13 +71,28 @@ describe('AgeSelectionOther', () => {
       })
     })
 
+    it('should log analytics when pressing "j’ai moins de 15 ans"', () => {
+      renderAgeSelectionOther({ type: Tutorial.ONBOARDING })
+
+      const button = screen.getByText('moins de 15 ans')
+      fireEvent.press(button)
+
+      expect(analytics.logSelectAge).toHaveBeenCalledWith({
+        age: NonEligible.UNDER_15,
+        from: Tutorial.ONBOARDING,
+      })
+    })
+
     it('should log analytics when pressing "j’ai plus de 18 ans"', () => {
       renderAgeSelectionOther({ type: Tutorial.ONBOARDING })
 
       const button = screen.getByText('plus de 18 ans')
       fireEvent.press(button)
 
-      expect(analytics.logSelectAge).toHaveBeenCalledWith('over_18')
+      expect(analytics.logSelectAge).toHaveBeenCalledWith({
+        age: NonEligible.OVER_18,
+        from: Tutorial.ONBOARDING,
+      })
     })
 
     it('should save user age to local storage "j’ai moins de 15 ans"', async () => {
@@ -87,7 +102,7 @@ describe('AgeSelectionOther', () => {
       fireEvent.press(button)
 
       const userAge = await storage.readObject('user_age')
-      expect(userAge).toBe('under_15')
+      expect(userAge).toBe(NonEligible.UNDER_15)
     })
 
     it('should save user age to local storage when pressing "j’ai plus de 18 ans"', async () => {
@@ -97,7 +112,7 @@ describe('AgeSelectionOther', () => {
       fireEvent.press(button)
 
       const userAge = await storage.readObject('user_age')
-      expect(userAge).toBe('over_18')
+      expect(userAge).toBe(NonEligible.OVER_18)
     })
   })
 
@@ -144,6 +159,30 @@ describe('AgeSelectionOther', () => {
 
       await waitFor(() => {
         expect(reset).not.toHaveBeenCalled()
+      })
+    })
+
+    it('should log analytics when pressing "j’ai moins de 15 ans"', () => {
+      renderAgeSelectionOther({ type: Tutorial.PROFILE_TUTORIAL })
+
+      const button = screen.getByText('moins de 15 ans')
+      fireEvent.press(button)
+
+      expect(analytics.logSelectAge).toHaveBeenCalledWith({
+        age: NonEligible.UNDER_15,
+        from: Tutorial.PROFILE_TUTORIAL,
+      })
+    })
+
+    it('should log analytics when pressing "j’ai plus de 18 ans"', () => {
+      renderAgeSelectionOther({ type: Tutorial.PROFILE_TUTORIAL })
+
+      const button = screen.getByText('plus de 18 ans')
+      fireEvent.press(button)
+
+      expect(analytics.logSelectAge).toHaveBeenCalledWith({
+        age: NonEligible.OVER_18,
+        from: Tutorial.PROFILE_TUTORIAL,
       })
     })
 

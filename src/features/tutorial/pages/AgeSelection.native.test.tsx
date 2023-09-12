@@ -58,7 +58,7 @@ describe('AgeSelection', () => {
       const button = screen.getByText(`${age} ans`)
       fireEvent.press(button)
 
-      expect(analytics.logSelectAge).toHaveBeenCalledWith(age)
+      expect(analytics.logSelectAge).toHaveBeenCalledWith({ age, from: Tutorial.ONBOARDING })
     })
 
     it('should log analytics when pressing "Autre"', () => {
@@ -67,7 +67,10 @@ describe('AgeSelection', () => {
       const button = screen.getByText('Autre')
       fireEvent.press(button)
 
-      expect(analytics.logSelectAge).toHaveBeenCalledWith('other')
+      expect(analytics.logSelectAge).toHaveBeenCalledWith({
+        age: 'other',
+        from: Tutorial.ONBOARDING,
+      })
     })
 
     it.each(AGES)(
@@ -89,6 +92,15 @@ describe('AgeSelection', () => {
       renderAgeSelection({ type: Tutorial.PROFILE_TUTORIAL })
 
       expect(screen).toMatchSnapshot()
+    })
+
+    it.each(AGES)('should log analytics with params age=%s when pressing "j’ai %s ans"', (age) => {
+      renderAgeSelection({ type: Tutorial.PROFILE_TUTORIAL })
+
+      const button = screen.getByText(`${age} ans`)
+      fireEvent.press(button)
+
+      expect(analytics.logSelectAge).toHaveBeenCalledWith({ age, from: Tutorial.PROFILE_TUTORIAL })
     })
   })
 })

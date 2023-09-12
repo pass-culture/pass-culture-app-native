@@ -27,7 +27,7 @@ export const AgeSelectionOther: FunctionComponent<Props> = ({ route }: Props) =>
   const { reset } = useNavigation<UseNavigationType>()
 
   const onUnder15Press = useCallback(async () => {
-    analytics.logSelectAge(NonEligible.UNDER_15)
+    analytics.logSelectAge({ age: NonEligible.UNDER_15, from: type })
     showNonEligibleModal(NonEligible.UNDER_15, type)
 
     if (type === Tutorial.ONBOARDING) {
@@ -37,7 +37,7 @@ export const AgeSelectionOther: FunctionComponent<Props> = ({ route }: Props) =>
   }, [type, showNonEligibleModal, reset])
 
   const onOver18Press = useCallback(async () => {
-    analytics.logSelectAge(NonEligible.OVER_18)
+    analytics.logSelectAge({ age: NonEligible.OVER_18, from: type })
     showNonEligibleModal(NonEligible.OVER_18, type)
 
     if (type === Tutorial.ONBOARDING) {

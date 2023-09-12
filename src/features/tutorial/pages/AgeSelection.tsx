@@ -26,8 +26,8 @@ const ageButtons: { age?: EligibleAges }[] = [
   { age: undefined },
 ]
 
-const onBeforeNavigate = async (age?: EligibleAges) => {
-  analytics.logSelectAge(age ?? OTHER)
+const onBeforeNavigate = async (type: Tutorial, age?: EligibleAges) => {
+  analytics.logSelectAge({ age: age ?? OTHER, from: type })
   age && (await storage.saveObject('user_age', age))
 }
 
@@ -42,7 +42,7 @@ export const AgeSelection: FunctionComponent<Props> = ({ route }: Props) => {
         key={age}
         icon={age ? BicolorAll : undefined}
         dense={!age}
-        onPress={async () => onBeforeNavigate(age)}
+        onPress={async () => onBeforeNavigate(type, age)}
         navigateTo={
           age
             ? { screen: 'OnboardingAgeInformation', params: { age } }
