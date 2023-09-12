@@ -74,7 +74,7 @@ const getRelatedProductsSpy = jest
 const fetchApiRecoSpy = jest.spyOn(global, 'fetch')
 
 describe('useSimilarOffers', () => {
-  it('should call Algolia hook', () => {
+  it('should call Algolia hook', async () => {
     renderHook(() =>
       useSimilarOffers({
         offerId: mockOfferId,

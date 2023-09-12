@@ -71,7 +71,7 @@ export const StepButton = ({ step, navigateTo, onPress }: Props) => {
   )
 }
 
-const BaseStyleComponent = styled.View(({ theme }) => ({
+const BaseStyleComponent = styled(View)(({ theme }) => ({
   marginTop: getSpacing(2),
   backgroundColor: theme.colors.white,
   borderRadius: theme.borderRadius.radius,

@@ -9,6 +9,8 @@ import { getAlgoliaRecommendParams } from 'features/offer/helpers/getAlgoliaReco
 import { getIsLoadedOfferPosition } from 'features/offer/helpers/getIsLoadedOfferPosition/getIsLoadedOfferPosition'
 import { SimilarOffersResponse } from 'features/offer/types'
 import { env } from 'libs/environment'
+// eslint-disable-next-line no-restricted-imports
+import { firebaseAnalytics } from 'libs/firebase/analytics'
 import { eventMonitoring } from 'libs/monitoring'
 import { useSubcategories } from 'libs/subcategories/useSubcategories'
 
