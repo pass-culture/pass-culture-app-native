@@ -9,8 +9,6 @@ import { getAlgoliaRecommendParams } from 'features/offer/helpers/getAlgoliaReco
 import { getIsLoadedOfferPosition } from 'features/offer/helpers/getIsLoadedOfferPosition/getIsLoadedOfferPosition'
 import { SimilarOffersResponse } from 'features/offer/types'
 import { env } from 'libs/environment'
-// eslint-disable-next-line no-restricted-imports
-import { firebaseAnalytics } from 'libs/firebase/analytics'
 import { eventMonitoring } from 'libs/monitoring'
 import { useSubcategories } from 'libs/subcategories/useSubcategories'
 
@@ -98,8 +96,7 @@ export const getApiRecoSimilarOffers = async (similarOffersEndpoint: string) => 
   try {
     const similarOffers = await fetch(similarOffersEndpoint)
     const json: SimilarOffersResponse = await similarOffers.json()
-    firebaseAnalytics.setDefaultEventParameters(json.params)
-    return json.results
+    return json
   } catch (e) {
     eventMonitoring.captureException(e)
     return undefined
