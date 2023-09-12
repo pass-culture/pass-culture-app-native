@@ -72,7 +72,6 @@ export const StepButton = ({ step, navigateTo, onPress }: Props) => {
 }
 
 const BaseStyleComponent = styled.View(({ theme }) => ({
-  marginTop: getSpacing(2),
   backgroundColor: theme.colors.white,
   borderRadius: theme.borderRadius.radius,
   flexDirection: 'row',
@@ -99,13 +98,11 @@ const BaseContainer: FunctionComponent<BaseContainerProps> = ({ LeftIcon, style,
 const CurrentContainer = styled(GenericBanner)(({ theme }) => ({
   height: getSpacing(23),
   borderColor: theme.colors.black,
-  marginTop: getSpacing(2),
 }))
 
 const RetryContainer = styled(GenericBanner)(({ theme }) => ({
   height: getSpacing(23),
   borderColor: theme.colors.black,
-  marginTop: getSpacing(2),
 }))
 
 const DisabledContainer = styled(BaseContainer)(({ theme }) => ({
