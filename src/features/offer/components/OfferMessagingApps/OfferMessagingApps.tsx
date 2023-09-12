@@ -13,7 +13,7 @@ type MessagingAppsProps = {
 export const OfferMessagingApps = ({ isEvent, offerId }: MessagingAppsProps) => {
   const title = isEvent ? 'Vas-y en bande organisée\u00a0!' : 'Partage ce bon plan\u00a0!'
 
-  const { share, shareContent } = useShareOffer(offerId)
+  const { share, shareContent } = useShareOffer(offerId, 'social_media')
 
   const messagingAppAnalytics = useCallback(
     (social: Social | 'Other') => {

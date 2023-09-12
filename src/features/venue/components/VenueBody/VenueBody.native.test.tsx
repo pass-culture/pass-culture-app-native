@@ -83,7 +83,7 @@ describe('<VenueBody />', () => {
     expect(mockShareSingle).toHaveBeenCalledWith({
       social: Social.Instagram,
       message: encodeURI(
-        `Retrouve "${venueResponseSnap.name}" sur le pass Culture\nhttps://webapp-v2.example.com/lieu/5543`
+        `Retrouve "${venueResponseSnap.name}" sur le pass Culture\nhttps://webapp-v2.example.com/lieu/5543?utm_campaign=share_venue&utm_medium=social_media&utm_source=Instagram`
       ),
       type: 'text',
       url: undefined,

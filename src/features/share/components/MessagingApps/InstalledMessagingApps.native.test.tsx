@@ -10,7 +10,7 @@ import { Network } from 'ui/components/ShareMessagingApp'
 import { InstalledMessagingApps } from './InstalledMessagingApps'
 
 const shareMessage = 'Retrouve cette offre sur le passCulture'
-const shareUrl = 'https://passculture.app/accueil'
+const shareUrl = 'https://passculture.app/accueil?utm_campaign=share_offer'
 const logShareMock = jest.fn()
 
 const props = { shareMessage, shareUrl, messagingAppAnalytics: logShareMock }
@@ -57,7 +57,7 @@ describe('<InstalledMessagingApps />', () => {
     expect(mockShareSingle).toHaveBeenCalledWith({
       social: Social.Instagram,
       message: encodeURI(
-        'Retrouve cette offre sur le passCulture\nhttps://passculture.app/accueil'
+        'Retrouve cette offre sur le passCulture\nhttps://passculture.app/accueil?utm_campaign=share_offer&utm_source=Instagram'
       ),
       type: 'text',
       url: undefined,
@@ -75,7 +75,7 @@ describe('<InstalledMessagingApps />', () => {
     expect(mockShareSingle).toHaveBeenCalledWith({
       social: Social.Whatsapp,
       message: 'Retrouve cette offre sur le passCulture',
-      url: 'https://passculture.app/accueil',
+      url: 'https://passculture.app/accueil?utm_campaign=share_offer&utm_source=WhatsApp',
     })
   })
 

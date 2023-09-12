@@ -266,12 +266,12 @@ describe('<OfferBody />', () => {
         fireEvent.press(socialMediumButton)
       })
 
+      const expectedUrl = `${getOfferUrl(offerId, 'social_media')}&utm_source=${Network.instagram}`
+
       expect(mockShareSingle).toHaveBeenCalledWith({
         social: Social.Instagram,
         message: encodeURI(
-          `Retrouve "${mockOffer.name}" chez "${
-            mockOffer.venue.name
-          }" sur le pass Culture\n${getOfferUrl(offerId)}`
+          `Retrouve "${mockOffer.name}" chez "${mockOffer.venue.name}" sur le pass Culture\n${expectedUrl}`
         ),
         type: 'text',
         url: undefined,

@@ -132,6 +132,7 @@ export const Favorite: React.FC<Props> = (props) => {
     offerId: offer.id,
     offerName: offer.name,
     venueName: offer.venueName,
+    utmMedium: 'favorite',
   })
 
   const pressShareOffer = useCallback(() => {
