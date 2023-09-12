@@ -20,10 +20,9 @@ export const ButtonSecondaryWhite = styledButton(AppButton).attrs<BaseButtonProp
       })``
     }
 
-    let backgroundColor = theme.buttons.secondaryWhite.backgroundColor
-    if (disabled) {
-      backgroundColor = theme.buttons.disabled.secondaryWhite.backgroundColor
-    }
+    const backgroundColor = disabled
+      ? theme.buttons.disabled.secondaryWhite.backgroundColor
+      : theme.buttons.secondaryWhite.backgroundColor
 
     const Title = styled(Typo.ButtonText)({
       maxWidth: '100%',
