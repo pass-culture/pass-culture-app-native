@@ -59,7 +59,6 @@ export const SearchListHeader: React.FC<SearchListHeaderProps> = ({
   venues,
   venuesUserData,
 }) => {
-  // const { searchVenuesState: venues } = useSearchVenues()
   const { userPosition: position, showGeolocPermissionModal } = useLocation()
   const { params } = useRoute<UseRouteType<'Search'>>()
   const enableVenuesInSearchResults = useFeatureFlag(
