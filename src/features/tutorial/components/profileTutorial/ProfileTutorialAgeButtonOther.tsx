@@ -9,13 +9,9 @@ interface Props extends ProfileTutorialAgeButtonOtherProps, TutorialType {}
 export const ProfileTutorialAgeButtonOther: FunctionComponent<Props> = ({
   onPress,
   accessibilityLabel,
-  dense,
-  icon,
   children,
 }) => (
   <Touchable onPress={onPress} accessibilityLabel={accessibilityLabel}>
-    <AgeButtonContainer dense={dense} LeftIcon={icon}>
-      {children}
-    </AgeButtonContainer>
+    <AgeButtonContainer>{children}</AgeButtonContainer>
   </Touchable>
 )

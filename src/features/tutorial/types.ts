@@ -20,9 +20,6 @@ export interface AgeButtonProps {
 
 export interface ProfileTutorialAgeButtonOtherProps {
   accessibilityLabel: string
-  dense?: boolean
-  enableNavigate?: boolean
-  icon?: FunctionComponent<IconInterface>
   onPress?: () => void
   children: React.ReactNode
 }
