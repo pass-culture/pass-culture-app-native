@@ -6,10 +6,11 @@ import styled from 'styled-components/native'
 
 import { SearchGroupNameEnumv2 } from 'api/gen'
 import { UseRouteType } from 'features/navigation/RootNavigator/types'
+import { SearchOfferHits } from 'features/search/api/useSearchResults/useSearchResults'
 import { NumberOfResults } from 'features/search/components/NumberOfResults/NumberOfResults'
 import { SearchVenueItem } from 'features/search/components/SearchVenueItems/SearchVenueItem'
-import { useSearchVenues } from 'features/search/context/SearchVenuesWrapper'
 import { LocationType } from 'features/search/enums'
+import { VenuesUserData } from 'features/search/types'
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { AlgoliaVenue } from 'libs/algolia'
 import { analytics } from 'libs/analytics'
@@ -31,6 +32,8 @@ import { getSpacing, LENGTH_XS, LENGTH_XXS, Spacer, Typo } from 'ui/theme'
 interface SearchListHeaderProps extends ScrollViewProps {
   nbHits: number
   userData: SearchResponse<Offer[]>['userData']
+  venues?: SearchOfferHits['venues']
+  venuesUserData: VenuesUserData
 }
 
 const renderVenueItem = (
@@ -50,8 +53,12 @@ const VENUE_ITEM_HEIGHT = LENGTH_XXS
 const VENUE_ITEM_WIDTH = LENGTH_XS
 const keyExtractor = (item: AlgoliaVenue) => item.objectID
 
-export const SearchListHeader: React.FC<SearchListHeaderProps> = ({ nbHits, userData }) => {
-  const { searchVenuesState: venues } = useSearchVenues()
+export const SearchListHeader: React.FC<SearchListHeaderProps> = ({
+  nbHits,
+  userData,
+  venues,
+  venuesUserData,
+}) => {
   const { userPosition: position, showGeolocPermissionModal } = useLocation()
   const { params } = useRoute<UseRouteType<'Search'>>()
   const enableVenuesInSearchResults = useFeatureFlag(
@@ -70,7 +77,7 @@ export const SearchListHeader: React.FC<SearchListHeaderProps> = ({ nbHits, user
     analytics.logVenuePlaylistDisplayedOnSearchResults({
       searchId: params?.searchId,
       isGeolocated,
-      searchNbResults: venues.hits.length,
+      searchNbResults: venues?.length,
     })
   )
 
@@ -80,12 +87,12 @@ export const SearchListHeader: React.FC<SearchListHeaderProps> = ({ nbHits, user
 
   const shouldDisplayAvailableUserDataMessage = userData?.length > 0
   const unavailableOfferMessage = shouldDisplayAvailableUserDataMessage ? userData[0]?.message : ''
-  const venueTitle = venues.userData?.[0]?.venue_playlist_title || 'Les lieux culturels'
+  const venueTitle = venuesUserData?.[0]?.venue_playlist_title || 'Les lieux culturels'
   const offerTitle = 'Les offres'
 
   const shouldDisplayVenuesPlaylist = Boolean(
     params?.locationFilter?.locationType !== LocationType.VENUE &&
-      venues.hits?.length &&
+      venues?.length &&
       enableVenuesInSearchResults
   )
   const onPress = () => {
@@ -135,9 +142,9 @@ export const SearchListHeader: React.FC<SearchListHeaderProps> = ({ nbHits, user
           <Spacer.Column numberOfSpaces={3} />
           <View>
             <Title>{venueTitle}</Title>
-            <NumberOfResults nbHits={venues.hits.length} />
+            <NumberOfResults nbHits={venues?.length ?? 0} />
             <Playlist
-              data={venues.hits}
+              data={venues ?? []}
               // +4 to take into account the margin top
               scrollButtonOffsetY={VENUE_ITEM_HEIGHT / 2 + 4}
               itemHeight={VENUE_ITEM_HEIGHT}

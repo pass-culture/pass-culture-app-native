@@ -1,4 +1,4 @@
-import { Hit, SearchResponse } from '@algolia/client-search'
+import { SearchResponse } from '@algolia/client-search'
 import React from 'react'
 
 import {
@@ -11,6 +11,7 @@ import {
   SubcategoryIdEnumv2,
 } from 'api/gen'
 import { Referrals } from 'features/navigation/RootNavigator/types'
+import { SearchOfferHits } from 'features/search/api/useSearchResults/useSearchResults'
 import { CategoriesModalView, DATE_FILTER_OPTIONS } from 'features/search/enums'
 import {
   MappedGenreTypes,
@@ -18,7 +19,6 @@ import {
   MappingTree,
 } from 'features/search/helpers/categoriesHelpers/mapping-tree'
 import { Venue } from 'features/venue/types'
-import { AlgoliaVenue } from 'libs/algolia'
 import { SuggestedPlace } from 'libs/place'
 import { Range } from 'libs/typesUtils/typeHelpers'
 import { Offer } from 'shared/offer/types'
@@ -80,11 +80,6 @@ export interface SearchState {
   minBookingsThreshold?: number
 }
 
-export interface SearchVenuesState {
-  hits: Hit<AlgoliaVenue>[]
-  userData?: [{ venue_playlist_title: string }]
-}
-
 export type OfferTypes = keyof SearchState['offerTypes']
 
 export type UserData = {
@@ -110,9 +105,14 @@ export type CategoriesViewData =
 
 export type MappedData = MappingTree | MappedNativeCategories | MappedGenreTypes
 
+export type VenueUserTitleRule = { venue_playlist_title: string }
+export type VenueUserData = VenueUserTitleRule | undefined
+export type VenuesUserData = VenueUserData[] | undefined
+
 export interface SearchListProps {
   nbHits: number
-  hits: Offer[]
+  hits: SearchOfferHits
+  venuesUserData: VenuesUserData
   renderItem: ({ item, index }: { item: Offer; index: number }) => React.JSX.Element
   autoScrollEnabled: boolean
   refreshing: boolean

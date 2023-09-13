@@ -1,5 +1,5 @@
 import { useSearchInfiniteQuery } from 'features/search/api/useSearchResults/useSearchResults'
-import { initialSearchState, initialSearchVenuesState } from 'features/search/context/reducer'
+import { initialSearchState } from 'features/search/context/reducer'
 import { SearchState, SearchView } from 'features/search/types'
 import {
   mockedAlgoliaVenueResponse,
@@ -9,15 +9,6 @@ import * as fetchAlgoliaOffersAndVenues from 'libs/algolia/fetchAlgolia/fetchOff
 import { analytics } from 'libs/analytics'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { flushAllPromisesWithAct, renderHook } from 'tests/utils'
-
-const mockSearchVenuesState = initialSearchVenuesState
-const mockDispatch = jest.fn()
-jest.mock('features/search/context/SearchVenuesWrapper', () => ({
-  useSearchVenues: () => ({
-    searchVenuesState: mockSearchVenuesState,
-    dispatch: mockDispatch,
-  }),
-}))
 
 describe('useSearchResults', () => {
   describe('useSearchInfiniteQuery', () => {
@@ -38,25 +29,6 @@ describe('useSearchResults', () => {
       await flushAllPromisesWithAct()
 
       expect(fetchAlgoliaOffersAndVenuesSpy).toHaveBeenCalledTimes(1)
-    })
-
-    it('should dispatch useSearchVenues correctly', async () => {
-      renderHook(useSearchInfiniteQuery, {
-        // eslint-disable-next-line local-rules/no-react-query-provider-hoc
-        wrapper: ({ children }) => reactQueryProviderHOC(children),
-        initialProps: initialSearchState,
-      })
-
-      await flushAllPromisesWithAct()
-
-      expect(mockDispatch).toHaveBeenCalledWith({
-        type: 'SET_VENUES',
-        payload: mockedAlgoliaVenueResponse.hits,
-      })
-      expect(mockDispatch).toHaveBeenCalledWith({
-        type: 'SET_USER_DATA',
-        payload: mockedAlgoliaVenueResponse.userData,
-      })
     })
 
     it('should log perform search when received API result', async () => {
