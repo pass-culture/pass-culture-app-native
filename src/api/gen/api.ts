@@ -159,11 +159,6 @@ export enum ActivityIdEnum {
  */
 export interface ActivityResponseModel {
   /**
-   * @type {Array<SchoolTypesIdEnum>}
-   * @memberof ActivityResponseModel
-   */
-  associatedSchoolTypesIds?: Array<SchoolTypesIdEnum> | null
-  /**
    * @type {string}
    * @memberof ActivityResponseModel
    */
@@ -179,6 +174,7 @@ export interface ActivityResponseModel {
    */
   label: string
 }
+
 /**
  * An enumeration.
  * @export
@@ -188,6 +184,17 @@ export enum AgentType {
   'browser_computer' = 'browser_computer',
   'browser_mobile' = 'browser_mobile',
   'agent_mobile' = 'agent_mobile',
+}
+/**
+ * @export
+ * @interface ActivityTypesResponse
+ */
+export interface ActivityTypesResponse {
+  /**
+   * @type {Array<ActivityResponseModel>}
+   * @memberof ActivityTypesResponse
+   */
+  activities: Array<ActivityResponseModel>
 }
 /**
  * @export
@@ -308,7 +315,7 @@ export enum BookingCancellationReasons {
   'EXPIRED' = 'EXPIRED',
   'FRAUD' = 'FRAUD',
   'REFUSED_BY_INSTITUTE' = 'REFUSED_BY_INSTITUTE',
-}
+  }
 /**
  * @export
  * @interface BookingDisplayStatusRequest
@@ -644,7 +651,7 @@ export enum CategoryIdEnum {
  * @interface ChangeBeneficiaryEmailBody
  */
 export interface ChangeBeneficiaryEmailBody {
-  /**
+    /**
    * @type {string}
    * @memberof ChangeBeneficiaryEmailBody
    */
@@ -1673,7 +1680,7 @@ export interface OfferResponse {
    * @memberof OfferResponse
    */
   isSoldOut: boolean
-  /**
+    /**
    * @type {string}
    * @memberof OfferResponse
    */
@@ -2448,7 +2455,7 @@ export enum SubcategoryIdEnum {
   'SPECTACLE_VENTE_DISTANCE' = 'SPECTACLE_VENTE_DISTANCE',
   'SUPPORT_PHYSIQUE_FILM' = 'SUPPORT_PHYSIQUE_FILM',
   'SUPPORT_PHYSIQUE_MUSIQUE' = 'SUPPORT_PHYSIQUE_MUSIQUE',
-  'TELECHARGEMENT_LIVRE_AUDIO' = 'TELECHARGEMENT_LIVRE_AUDIO',
+    'TELECHARGEMENT_LIVRE_AUDIO' = 'TELECHARGEMENT_LIVRE_AUDIO',
   'TELECHARGEMENT_MUSIQUE' = 'TELECHARGEMENT_MUSIQUE',
   'VISITE_GUIDEE' = 'VISITE_GUIDEE',
   'VISITE_VIRTUELLE' = 'VISITE_VIRTUELLE',
@@ -2528,7 +2535,7 @@ export enum SubcategoryIdEnumv2 {
   'SPECTACLE_VENTE_DISTANCE' = 'SPECTACLE_VENTE_DISTANCE',
   'SUPPORT_PHYSIQUE_FILM' = 'SUPPORT_PHYSIQUE_FILM',
   'SUPPORT_PHYSIQUE_MUSIQUE' = 'SUPPORT_PHYSIQUE_MUSIQUE',
-  'TELECHARGEMENT_LIVRE_AUDIO' = 'TELECHARGEMENT_LIVRE_AUDIO',
+    'TELECHARGEMENT_LIVRE_AUDIO' = 'TELECHARGEMENT_LIVRE_AUDIO',
   'TELECHARGEMENT_MUSIQUE' = 'TELECHARGEMENT_MUSIQUE',
   'VISITE_GUIDEE' = 'VISITE_GUIDEE',
   'VISITE_VIRTUELLE' = 'VISITE_VIRTUELLE',
@@ -2734,7 +2741,7 @@ export interface SubscriptionStepperResponse {
    * @memberof SubscriptionStepperResponse
    */
   errorMessage?: string | null
-  /**
+    /**
    * @type {Array<SubscriptionStepDetailsResponse>}
    * @memberof SubscriptionStepperResponse
    */
@@ -2824,7 +2831,7 @@ export interface UserProfileResponse {
    * @memberof UserProfileResponse
    */
   bookedOffers: { [key: string]: number; }
-  /**
+/**
    * @type {string}
    * @memberof UserProfileResponse
    */
@@ -2971,7 +2978,7 @@ export enum UserRole {
   'ADMIN' = 'ADMIN',
   'BENEFICIARY' = 'BENEFICIARY',
   'PRO' = 'PRO',
-  'UNDERAGE_BENEFICIARY' = 'UNDERAGE_BENEFICIARY',
+    'UNDERAGE_BENEFICIARY' = 'UNDERAGE_BENEFICIARY',
   'TEST' = 'TEST',
 }
 /**
@@ -3227,7 +3234,7 @@ export enum VenueTypeCodeKey {
   'CREATIVE_ARTS_STORE' = 'CREATIVE_ARTS_STORE',
   'CULTURAL_CENTRE' = 'CULTURAL_CENTRE',
   'DIGITAL' = 'DIGITAL',
-
+  
   'FESTIVAL' = 'FESTIVAL',
   'GAMES' = 'GAMES',
   'LIBRARY' = 'LIBRARY',
@@ -3249,7 +3256,7 @@ export enum VenueTypeCodeKey {
  */
 export enum WithdrawalTypeEnum {
   'by_email' = 'by_email',
-  'no_ticket' = 'no_ticket',
+    'no_ticket' = 'no_ticket',
   'on_site' = 'on_site',
 }
 /**
@@ -3489,7 +3496,7 @@ export const DefaultApiFetchParamCreator = function (configuration?: Configurati
     },
     /**
      * @summary get_offer <GET>
-     * @param {number} offer_id 
+* @param {number} offer_id 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
@@ -3506,7 +3513,7 @@ export const DefaultApiFetchParamCreator = function (configuration?: Configurati
         encodeURIComponent(String(offer_id))
       )
       let secureOptions = Object.assign(options, { credentials: 'omit' })
-      const localVarRequestOptions = Object.assign({ method: 'GET' }, secureOptions)
+            const localVarRequestOptions = Object.assign({ method: 'GET' }, secureOptions)
       const localVarHeaderParameter = await getAuthenticationHeaders(secureOptions)
       localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers)
       return {
@@ -3516,13 +3523,13 @@ export const DefaultApiFetchParamCreator = function (configuration?: Configurati
     },
     /**
      * @summary report_offer_reasons <GET>
-     * @param {*} [options] Override http request option.
+          * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
     async getnativev1offerreportreasons(options: any = {}): Promise<FetchArgs> {
       const pathname = `/native/v1/offer/report/reasons`
       let secureOptions = Object.assign(options, { credentials: 'omit' })
-      // authentication JWTAuth required
+// authentication JWTAuth required
       secureOptions = Object.assign(secureOptions, { credentials: 'include' })
       const localVarRequestOptions = Object.assign({ method: 'GET' }, secureOptions)
       const localVarHeaderParameter = await getAuthenticationHeaders(secureOptions)
@@ -3644,6 +3651,24 @@ export const DefaultApiFetchParamCreator = function (configuration?: Configurati
     async getnativev1subcategoriesv2(options: any = {}): Promise<FetchArgs> {
       const pathname = `/native/v1/subcategories/v2`
       let secureOptions = Object.assign(options, { credentials: 'omit' })
+      const localVarRequestOptions = Object.assign({ method: 'GET' }, secureOptions)
+      const localVarHeaderParameter = await getAuthenticationHeaders(secureOptions)
+      localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers)
+      return {
+        url: pathname,
+        options: localVarRequestOptions,
+      }
+    },
+    /**
+     * @summary get_activity_types <GET>
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async getNativeV1SubscriptionActivityTypes(options: any = {}): Promise<FetchArgs> {
+      const pathname = `/native/v1/subscription/activity_types`
+      let secureOptions = Object.assign(options, { credentials: 'omit' })
+      // authentication JWTAuth required
+      secureOptions = Object.assign(secureOptions, { credentials: 'include' })
       const localVarRequestOptions = Object.assign({ method: 'GET' }, secureOptions)
       const localVarHeaderParameter = await getAuthenticationHeaders(secureOptions)
       localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers)
@@ -4079,7 +4104,7 @@ export const DefaultApiFetchParamCreator = function (configuration?: Configurati
     async postnativev1profileemailUpdateconfirm(body?: ChangeBeneficiaryEmailBody, options: any = {}): Promise<FetchArgs> {
       const pathname = `/native/v1/profile/email_update/confirm`
       let secureOptions = Object.assign(options, { credentials: 'omit' })
-      // authentication JWTAuth required
+// authentication JWTAuth required
       secureOptions = Object.assign(secureOptions, { credentials: 'include' })
       const localVarRequestOptions = Object.assign({ method: 'POST' }, secureOptions)
       const localVarHeaderParameter = await getAuthenticationHeaders(secureOptions)
@@ -4556,7 +4581,7 @@ export const DefaultApiFp = function(api: DefaultApi, configuration?: Configurat
     /**
      * 
      * @summary get_offer <GET>
-     * @param {number} offer_id 
+* @param {number} offer_id 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
@@ -4568,7 +4593,7 @@ export const DefaultApiFp = function(api: DefaultApi, configuration?: Configurat
     /**
      * 
      * @summary report_offer_reasons <GET>
-     * @param {*} [options] Override http request option.
+          * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
     async getnativev1offerreportreasons(options?: any): Promise<OfferReportReasons> {
@@ -4650,6 +4675,17 @@ export const DefaultApiFp = function(api: DefaultApi, configuration?: Configurat
      */
     async getnativev1subcategoriesv2(options?: any): Promise<SubcategoriesResponseModelv2> {
       const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).getnativev1subcategoriesv2(options)
+      const response = await safeFetch(configuration?.basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
+      return handleGeneratedApiResponse(response)
+    },
+    /**
+     * 
+     * @summary get_activity_types <GET>
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async getNativeV1SubscriptionActivityTypes(options?: any): Promise<ActivityTypesResponse> {
+      const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).getNativeV1SubscriptionActivityTypes(options)
       const response = await safeFetch(configuration?.basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
       return handleGeneratedApiResponse(response)
     },
@@ -5204,7 +5240,7 @@ export class DefaultApi extends BaseAPI {
   /**
     * 
     * @summary get_offer <GET>
-    * @param {number} offer_id 
+* @param {number} offer_id 
     * @param {*} [options] Override http request option.
     * @throws {RequiredError}
     * @memberof DefaultApi
@@ -5216,7 +5252,7 @@ export class DefaultApi extends BaseAPI {
   /**
     * 
     * @summary report_offer_reasons <GET>
-    * @param {*} [options] Override http request option.
+        * @param {*} [options] Override http request option.
     * @throws {RequiredError}
     * @memberof DefaultApi
     */
@@ -5300,6 +5336,17 @@ export class DefaultApi extends BaseAPI {
   public async getnativev1subcategoriesv2(options?: any) {
     const configuration = await this.getConfiguration()
     return DefaultApiFp(this, configuration).getnativev1subcategoriesv2(options)
+  }
+  /**
+    * 
+    * @summary get_activity_types <GET>
+    * @param {*} [options] Override http request option.
+    * @throws {RequiredError}
+    * @memberof DefaultApi
+    */
+  public async getNativeV1SubscriptionActivityTypes(options?: any) {
+    const configuration = await this.getConfiguration()
+    return DefaultApiFp(this, configuration).getNativeV1SubscriptionActivityTypes(options)
   }
   /**
     * 
