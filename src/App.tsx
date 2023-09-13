@@ -32,6 +32,7 @@ import { firebaseAnalytics } from 'libs/firebase/analytics'
 import { RemoteConfigProvider } from 'libs/firebase/remoteConfig'
 import { LocationWrapper } from 'libs/geolocation'
 import { eventMonitoring } from 'libs/monitoring'
+import { ReactNavigationInstrumentation } from 'libs/monitoring/sentry'
 import { NetInfoWrapper } from 'libs/network/NetInfoWrapper'
 import { OfflineModeContainer } from 'libs/network/OfflineModeContainer'
 import { BatchMessaging, BatchPush } from 'libs/react-native-batch'
@@ -51,6 +52,8 @@ LogBox.ignoreLogs([
   'Cannot update a component',
   'EventEmitter.removeListener',
 ])
+
+const routingInstrumentation = new ReactNavigationInstrumentation()
 
 const App: FunctionComponent = function () {
   useEffect(() => {
@@ -72,6 +75,8 @@ const App: FunctionComponent = function () {
     BatchPush.requestNotificationAuthorization() //  For iOS and Android 13
     BatchMessaging.setFontOverride('Montserrat-Regular', 'Montserrat-Bold', 'Montserrat-Italic')
   }, [])
+
+  const navigation = React.useRef()
 
   return (
     <RemoteConfigProvider>
@@ -97,7 +102,15 @@ const App: FunctionComponent = function () {
                                           <OnboardingWrapper>
                                             <OfflineModeContainer>
                                               <ScreenErrorProvider>
-                                                <AppNavigationContainer />
+                                                <AppNavigationContainer
+                                                  ref={navigation}
+                                                  onReady={() => {
+                                                    // Register the navigation container with the instrumentation
+                                                    routingInstrumentation.registerNavigationContainer(
+                                                      navigation
+                                                    )
+                                                  }}
+                                                />
                                               </ScreenErrorProvider>
                                             </OfflineModeContainer>
                                           </OnboardingWrapper>
@@ -124,6 +137,16 @@ const App: FunctionComponent = function () {
 }
 
 const config = env.ENV !== 'production' ? AutoImmediate : NextResume
-const AppWithCodepush = __DEV__ ? App : CodePush(config)(App)
+const AppWithoutMonitoring = App
+const AppWithMonitoring = eventMonitoring.wrap(AppWithoutMonitoring) as React.ComponentType<{
+  tab?: string
+}>
+const AppWithCodepush = __DEV__ ? AppWithMonitoring : CodePush(config)(AppWithMonitoring)
 
-export { AppWithCodepush as App }
+/**
+ * We have an import bug in the test file App.native.test.tsx with the new eventMonitoring wrapper : WEIRD !!! :
+ * Element type is invalid: expected a string (for built-in components) or a class/function (for composite components)
+ * but got: undefined. You likely forgot to export your component from the file it's defined in, or you might have mixed up default and named imports.
+ * So we define the old App wrapper for the test to pass
+ */
+export { AppWithCodepush as App, AppWithoutMonitoring }
