@@ -21,9 +21,6 @@ jest.mock('libs/firebase/firestore/featureFlags/useFeatureFlag')
 
 describe('<Home/>', () => {
   describe('Accessibility', () => {
-    beforeEach(() => {
-      jest.spyOn(console, 'warn').mockImplementation()
-    })
     it('should not have basic accessibility issues', async () => {
       mockUseHomepageData.mockReturnValueOnce({
         modules: [formattedBusinessModule],

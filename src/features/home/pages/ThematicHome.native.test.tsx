@@ -34,9 +34,6 @@ const mockedHighlightHeaderData = {
 }
 
 describe('ThematicHome', () => {
-  beforeEach(() => {
-    jest.spyOn(console, 'warn').mockImplementation()
-  })
   useRoute.mockReturnValue({ params: { entryId: 'fakeEntryId' } })
 
   mockUseHomepageData.mockReturnValue({

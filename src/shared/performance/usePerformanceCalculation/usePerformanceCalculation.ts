@@ -1,5 +1,6 @@
 import { Transaction } from '@sentry/types'
 
+import { eventMonitoring } from 'libs/monitoring'
 import {
   getTransactionFromName,
   startTransaction,
@@ -24,8 +25,9 @@ export function usePerformanceCalculation() {
           transactions.push(transaction)
         }
       } else {
-        console.warn(
-          `Transaction with name ${name} already exists. Please check your function calls.`
+        eventMonitoring.captureMessage(
+          `Transaction with name ${name} already exists. Please check your function calls.`,
+          'info'
         )
       }
     },
@@ -37,8 +39,9 @@ export function usePerformanceCalculation() {
         const transactionIndex = transactions.findIndex((item) => item.name === name)
         transactions.splice(transactionIndex, 1)
       } else {
-        console.warn(
-          `Transaction with name ${name} does not exist. Please check your function calls.`
+        eventMonitoring.captureMessage(
+          `Transaction with name ${name} does not exist. Please check your function calls.`,
+          'info'
         )
       }
     },
