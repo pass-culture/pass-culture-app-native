@@ -2,7 +2,7 @@ import React, { useCallback } from 'react'
 import styled from 'styled-components/native'
 
 import { openUrl } from 'features/navigation/helpers'
-import { NonEligible, Tutorial } from 'features/tutorial/enums'
+import { NonEligible, TutorialTypes } from 'features/tutorial/enums'
 import { getModalInfoForNonEligible } from 'features/tutorial/helpers/getModalInfoForNonEligible'
 import { env } from 'libs/environment'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
@@ -15,7 +15,7 @@ type Props = {
   visible: boolean
   hideModal: () => void
   userStatus: NonEligible
-  type: Tutorial
+  type: TutorialTypes
 }
 
 export const NonEligibleModal = ({ visible, hideModal, userStatus, type }: Props) => {

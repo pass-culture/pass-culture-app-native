@@ -7,7 +7,7 @@ import { AgeCreditBlock } from 'features/tutorial/components/AgeCreditBlock'
 import { CreditBlock } from 'features/tutorial/components/CreditBlock'
 import { OnboardingCreditBlockTitle } from 'features/tutorial/components/onboarding/OnboardingCreditBlockTitle'
 import { ProfileTutorialCreditBlockTitle } from 'features/tutorial/components/profileTutorial/ProfileTutorialCreditBlockTitle'
-import { CreditStatus, Tutorial } from 'features/tutorial/enums'
+import { CreditStatus, TutorialTypes } from 'features/tutorial/enums'
 import { getCreditStatusFromAge } from 'features/tutorial/helpers/getCreditStatusFromAge'
 import { getStepperIconFromCreditStatus } from 'features/tutorial/helpers/getStepperIconFromCreditStatus'
 import { getStepperVariantFromCreditStatus } from 'features/tutorial/helpers/getStepperVariantFromCreditStatus'
@@ -47,10 +47,10 @@ export const CreditTimeline = ({ stepperProps, age, type, testID }: Props) => {
     [17, seventeenYearsOldDeposit],
     [18, eighteenYearsOldDeposit],
   ])
-  const SpaceBetweenBlock = type === Tutorial.ONBOARDING ? 1 : 3
+  const SpaceBetweenBlock = type === TutorialTypes.ONBOARDING ? 1 : 3
 
   const CreditBlockTitle =
-    type === Tutorial.ONBOARDING ? OnboardingCreditBlockTitle : ProfileTutorialCreditBlockTitle
+    type === TutorialTypes.ONBOARDING ? OnboardingCreditBlockTitle : ProfileTutorialCreditBlockTitle
 
   return (
     <Container testID={testID}>

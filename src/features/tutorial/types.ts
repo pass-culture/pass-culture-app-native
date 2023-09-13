@@ -1,6 +1,6 @@
 import { FunctionComponent } from 'react'
 
-import { Tutorial } from 'features/tutorial/enums'
+import { TutorialTypes } from 'features/tutorial/enums'
 import { InternalNavigationProps } from 'ui/components/touchableLink/types'
 import { IconInterface } from 'ui/svg/icons/types'
 
@@ -19,5 +19,5 @@ export interface AgeButtonProps {
 }
 
 export interface TutorialType {
-  type: Tutorial.ONBOARDING | Tutorial.PROFILE_TUTORIAL
+  type: TutorialTypes.ONBOARDING | TutorialTypes.PROFILE_TUTORIAL
 }

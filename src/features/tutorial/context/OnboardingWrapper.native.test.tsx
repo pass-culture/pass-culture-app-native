@@ -2,7 +2,7 @@ import {
   OnboardingWrapper,
   useOnboardingContext,
 } from 'features/tutorial/context/OnboardingWrapper'
-import { NonEligible, Tutorial } from 'features/tutorial/enums'
+import { NonEligible, TutorialTypes } from 'features/tutorial/enums'
 import { renderHook, act } from 'tests/utils'
 
 const mockShowModal = jest.fn()
@@ -22,7 +22,7 @@ describe('useOnboardingContext()', () => {
       const { result } = renderOnboardingHook()
 
       act(() => {
-        result.current.showNonEligibleModal(userStatus, Tutorial.ONBOARDING)
+        result.current.showNonEligibleModal(userStatus, TutorialTypes.ONBOARDING)
       })
 
       expect(mockShowModal).toHaveBeenCalledTimes(1)

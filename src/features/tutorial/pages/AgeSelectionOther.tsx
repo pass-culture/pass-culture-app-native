@@ -11,7 +11,7 @@ import {
 import { homeNavConfig } from 'features/navigation/TabBar/helpers'
 import { AgeButtonOther } from 'features/tutorial/components/AgeButtonOther'
 import { useOnboardingContext } from 'features/tutorial/context/OnboardingWrapper'
-import { NonEligible, Tutorial } from 'features/tutorial/enums'
+import { NonEligible, TutorialTypes } from 'features/tutorial/enums'
 import { TutorialPage } from 'features/tutorial/pages/TutorialPage'
 import { analytics } from 'libs/analytics'
 import { storage } from 'libs/storage'
@@ -27,27 +27,28 @@ export const AgeSelectionOther: FunctionComponent<Props> = ({ route }: Props) =>
   const { reset } = useNavigation<UseNavigationType>()
 
   const onUnder15Press = useCallback(async () => {
-    analytics.logSelectAge({ age: NonEligible.UNDER_15, from: type })
+    analytics.logSelectAge({ userStatus: NonEligible.UNDER_15, from: type })
     showNonEligibleModal(NonEligible.UNDER_15, type)
 
-    if (type === Tutorial.ONBOARDING) {
+    if (type === TutorialTypes.ONBOARDING) {
       reset({ index: 0, routes: [{ name: homeNavConfig[0] }] })
       await storage.saveObject('user_age', NonEligible.UNDER_15)
     }
   }, [type, showNonEligibleModal, reset])
 
   const onOver18Press = useCallback(async () => {
-    analytics.logSelectAge({ age: NonEligible.OVER_18, from: type })
+    analytics.logSelectAge({ userStatus: NonEligible.OVER_18, from: type })
     showNonEligibleModal(NonEligible.OVER_18, type)
 
-    if (type === Tutorial.ONBOARDING) {
+    if (type === TutorialTypes.ONBOARDING) {
       reset({ index: 0, routes: [{ name: homeNavConfig[0] }] })
       await storage.saveObject('user_age', NonEligible.OVER_18)
     }
   }, [type, showNonEligibleModal, reset])
 
-  const title = type === Tutorial.ONBOARDING ? 'Quel âge as-tu\u00a0?' : 'Comment ça marche\u00a0?'
-  const startButtonTitle = type === Tutorial.ONBOARDING ? 'j’ai' : 'à'
+  const title =
+    type === TutorialTypes.ONBOARDING ? 'Quel âge as-tu\u00a0?' : 'Comment ça marche\u00a0?'
+  const startButtonTitle = type === TutorialTypes.ONBOARDING ? 'j’ai' : 'à'
 
   return (
     <TutorialPage title={title}>

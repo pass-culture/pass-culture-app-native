@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { NonEligible, Tutorial } from 'features/tutorial/enums'
+import { NonEligible, TutorialTypes } from 'features/tutorial/enums'
 import { render, checkAccessibilityFor } from 'tests/utils/web'
 
 import { NonEligibleModal } from './NonEligibleModal'
@@ -13,7 +13,7 @@ describe('<NonEligibleModal/>', () => {
           visible
           hideModal={jest.fn()}
           userStatus={NonEligible.UNDER_15}
-          type={Tutorial.ONBOARDING}
+          type={TutorialTypes.ONBOARDING}
         />
       )
 
@@ -28,7 +28,7 @@ describe('<NonEligibleModal/>', () => {
           visible
           hideModal={jest.fn()}
           userStatus={NonEligible.UNDER_15}
-          type={Tutorial.PROFILE_TUTORIAL}
+          type={TutorialTypes.PROFILE_TUTORIAL}
         />
       )
 
@@ -43,7 +43,7 @@ describe('<NonEligibleModal/>', () => {
           visible
           hideModal={jest.fn()}
           userStatus={NonEligible.OVER_18}
-          type={Tutorial.ONBOARDING}
+          type={TutorialTypes.ONBOARDING}
         />
       )
 
@@ -58,7 +58,7 @@ describe('<NonEligibleModal/>', () => {
           visible
           hideModal={jest.fn()}
           userStatus={NonEligible.OVER_18}
-          type={Tutorial.PROFILE_TUTORIAL}
+          type={TutorialTypes.PROFILE_TUTORIAL}
         />
       )
 

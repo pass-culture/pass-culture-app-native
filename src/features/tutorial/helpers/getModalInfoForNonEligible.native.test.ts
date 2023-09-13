@@ -1,9 +1,12 @@
-import { NonEligible, Tutorial } from 'features/tutorial/enums'
+import { NonEligible, TutorialTypes } from 'features/tutorial/enums'
 import { getModalInfoForNonEligible } from 'features/tutorial/helpers/getModalInfoForNonEligible'
 
 describe('getModalInfoForNonEligible', () => {
   it('should have FAQ link for onboarding non-eligible under 15', () => {
-    const { withFAQLink } = getModalInfoForNonEligible(NonEligible.UNDER_15, Tutorial.ONBOARDING)
+    const { withFAQLink } = getModalInfoForNonEligible(
+      NonEligible.UNDER_15,
+      TutorialTypes.ONBOARDING
+    )
 
     expect(withFAQLink).toBeTruthy()
   })
@@ -11,14 +14,17 @@ describe('getModalInfoForNonEligible', () => {
   it('should not have FAQ link for profile tutorial non-eligible over 18', () => {
     const { withFAQLink } = getModalInfoForNonEligible(
       NonEligible.OVER_18,
-      Tutorial.PROFILE_TUTORIAL
+      TutorialTypes.PROFILE_TUTORIAL
     )
 
     expect(withFAQLink).toBeFalsy()
   })
 
   it('should not have FAQ link for oboarding non-eligible over 18', () => {
-    const { withFAQLink } = getModalInfoForNonEligible(NonEligible.OVER_18, Tutorial.ONBOARDING)
+    const { withFAQLink } = getModalInfoForNonEligible(
+      NonEligible.OVER_18,
+      TutorialTypes.ONBOARDING
+    )
 
     expect(withFAQLink).toBeFalsy()
   })

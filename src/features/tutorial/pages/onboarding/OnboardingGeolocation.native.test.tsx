@@ -1,7 +1,7 @@
 import React from 'react'
 
 import { navigate } from '__mocks__/@react-navigation/native'
-import { Tutorial } from 'features/tutorial/enums'
+import { TutorialTypes } from 'features/tutorial/enums'
 import { OnboardingGeolocation } from 'features/tutorial/pages/onboarding/OnboardingGeolocation'
 import { analytics } from 'libs/analytics'
 import { fireEvent, render } from 'tests/utils'
@@ -23,7 +23,7 @@ describe('OnboardingGeolocation', () => {
     const button = getByLabelText('Aller à l’écran suivant')
     fireEvent.press(button)
 
-    expect(navigate).toHaveBeenCalledWith('AgeSelection', { type: Tutorial.ONBOARDING })
+    expect(navigate).toHaveBeenCalledWith('AgeSelection', { type: TutorialTypes.ONBOARDING })
   })
 
   it('should request geoloc permission when "Utiliser ma position" is clicked', async () => {

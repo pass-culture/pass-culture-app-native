@@ -5,7 +5,7 @@ import { CreditComponentProps, CreditTimeline } from 'features/tutorial/componen
 import { EighteenBlockDescription } from 'features/tutorial/components/profileTutorial/EighteenBlockDescription'
 import { InformationStepContent } from 'features/tutorial/components/profileTutorial/InformationStepContent'
 import { UnderageBlockDescription } from 'features/tutorial/components/profileTutorial/UnderageBlockDescription'
-import { Tutorial } from 'features/tutorial/enums'
+import { TutorialTypes } from 'features/tutorial/enums'
 import { useDepositAmountsByAge } from 'shared/user/useDepositAmountsByAge'
 import { Warning } from 'ui/svg/icons/BicolorWarning'
 import { Offers } from 'ui/svg/icons/Offers'
@@ -53,7 +53,7 @@ export const TutorialTimelineSeventeen = ({ activatedAt }: Props) => {
     <CreditTimeline
       age={17}
       stepperProps={fullStepperProps}
-      type={Tutorial.PROFILE_TUTORIAL}
+      type={TutorialTypes.PROFILE_TUTORIAL}
       testID="seventeen-timeline"
     />
   )

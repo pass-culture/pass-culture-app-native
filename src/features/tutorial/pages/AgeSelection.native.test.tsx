@@ -3,7 +3,7 @@ import React from 'react'
 
 import { navigate, useRoute } from '__mocks__/@react-navigation/native'
 import { TutorialRootStackParamList } from 'features/navigation/RootNavigator/types'
-import { Tutorial } from 'features/tutorial/enums'
+import { TutorialTypes } from 'features/tutorial/enums'
 import { analytics } from 'libs/analytics'
 import { storage } from 'libs/storage'
 import { fireEvent, render, screen, waitFor } from 'tests/utils'
@@ -21,7 +21,7 @@ describe('AgeSelection', () => {
 
   describe('onboarding', () => {
     it('should render correctly', () => {
-      renderAgeSelection({ type: Tutorial.ONBOARDING })
+      renderAgeSelection({ type: TutorialTypes.ONBOARDING })
 
       expect(screen).toMatchSnapshot()
     })
@@ -29,7 +29,7 @@ describe('AgeSelection', () => {
     it.each(AGES)(
       'should navigate to OnboardingAgeInformation page with params age=%s when pressing "j’ai %s ans"',
       async (age) => {
-        renderAgeSelection({ type: Tutorial.ONBOARDING })
+        renderAgeSelection({ type: TutorialTypes.ONBOARDING })
 
         const button = screen.getByText(`${age} ans`)
         fireEvent.press(button)
@@ -41,42 +41,47 @@ describe('AgeSelection', () => {
     )
 
     it('should navigate to AgeSelectionOther page when pressing "Autre"', async () => {
-      useRoute.mockReturnValueOnce({ params: { type: Tutorial.ONBOARDING } })
-      renderAgeSelection({ type: Tutorial.ONBOARDING })
+      useRoute.mockReturnValueOnce({ params: { type: TutorialTypes.ONBOARDING } })
+      renderAgeSelection({ type: TutorialTypes.ONBOARDING })
 
       const button = screen.getByText('Autre')
       fireEvent.press(button)
 
       await waitFor(() => {
-        expect(navigate).toHaveBeenCalledWith('AgeSelectionOther', { type: Tutorial.ONBOARDING })
+        expect(navigate).toHaveBeenCalledWith('AgeSelectionOther', {
+          type: TutorialTypes.ONBOARDING,
+        })
       })
     })
 
     it.each(AGES)('should log analytics with params age=%s when pressing "j’ai %s ans"', (age) => {
-      renderAgeSelection({ type: Tutorial.ONBOARDING })
+      renderAgeSelection({ type: TutorialTypes.ONBOARDING })
 
       const button = screen.getByText(`${age} ans`)
       fireEvent.press(button)
 
-      expect(analytics.logSelectAge).toHaveBeenCalledWith({ age, from: Tutorial.ONBOARDING })
+      expect(analytics.logSelectAge).toHaveBeenCalledWith({
+        userStatus: age,
+        from: TutorialTypes.ONBOARDING,
+      })
     })
 
     it('should log analytics when pressing "Autre"', () => {
-      renderAgeSelection({ type: Tutorial.ONBOARDING })
+      renderAgeSelection({ type: TutorialTypes.ONBOARDING })
 
       const button = screen.getByText('Autre')
       fireEvent.press(button)
 
       expect(analytics.logSelectAge).toHaveBeenCalledWith({
-        age: 'other',
-        from: Tutorial.ONBOARDING,
+        userStatus: 'other',
+        from: TutorialTypes.ONBOARDING,
       })
     })
 
     it.each(AGES)(
       'should set user age to %s in local storage  when pressing "j’ai %s ans"',
       async (age) => {
-        renderAgeSelection({ type: Tutorial.ONBOARDING })
+        renderAgeSelection({ type: TutorialTypes.ONBOARDING })
 
         const button = screen.getByText(`${age} ans`)
         fireEvent.press(button)
@@ -89,18 +94,21 @@ describe('AgeSelection', () => {
 
   describe('profileTutorial', () => {
     it('should render correctly', () => {
-      renderAgeSelection({ type: Tutorial.PROFILE_TUTORIAL })
+      renderAgeSelection({ type: TutorialTypes.PROFILE_TUTORIAL })
 
       expect(screen).toMatchSnapshot()
     })
 
     it.each(AGES)('should log analytics with params age=%s when pressing "j’ai %s ans"', (age) => {
-      renderAgeSelection({ type: Tutorial.PROFILE_TUTORIAL })
+      renderAgeSelection({ type: TutorialTypes.PROFILE_TUTORIAL })
 
       const button = screen.getByText(`${age} ans`)
       fireEvent.press(button)
 
-      expect(analytics.logSelectAge).toHaveBeenCalledWith({ age, from: Tutorial.PROFILE_TUTORIAL })
+      expect(analytics.logSelectAge).toHaveBeenCalledWith({
+        userStatus: age,
+        from: TutorialTypes.PROFILE_TUTORIAL,
+      })
     })
   })
 })

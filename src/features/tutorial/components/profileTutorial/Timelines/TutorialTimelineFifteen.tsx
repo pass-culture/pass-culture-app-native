@@ -6,7 +6,7 @@ import { CreditComponentProps, CreditTimeline } from 'features/tutorial/componen
 import { EighteenBlockDescription } from 'features/tutorial/components/profileTutorial/EighteenBlockDescription'
 import { InformationStepContent } from 'features/tutorial/components/profileTutorial/InformationStepContent'
 import { UnderageBlockDescription } from 'features/tutorial/components/profileTutorial/UnderageBlockDescription'
-import { Tutorial } from 'features/tutorial/enums'
+import { TutorialTypes } from 'features/tutorial/enums'
 import { Warning } from 'ui/svg/icons/BicolorWarning'
 import { Offers } from 'ui/svg/icons/Offers'
 
@@ -15,7 +15,7 @@ export const TutorialTimelineFifteen: () => React.ReactElement = () => {
     <CreditTimeline
       age={15}
       stepperProps={FifteenStepperProps}
-      type={Tutorial.PROFILE_TUTORIAL}
+      type={TutorialTypes.PROFILE_TUTORIAL}
       testID="fifteen-timeline"
     />
   )

@@ -16,7 +16,7 @@ export enum UserOnboardingRole {
   UNKNOWN = 'unknown',
 }
 
-export enum Tutorial {
+export enum TutorialTypes {
   ONBOARDING = 'onboarding',
   PROFILE_TUTORIAL = 'profileTutorial',
 }

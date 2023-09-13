@@ -4,7 +4,7 @@ import { ScrollView, StatusBar } from 'react-native'
 import styled from 'styled-components/native'
 
 import { LinkToComponent } from 'features/internal/cheatcodes/components/LinkToComponent'
-import { Tutorial } from 'features/tutorial/enums'
+import { TutorialTypes } from 'features/tutorial/enums'
 import { PageHeaderSecondary } from 'ui/components/headers/PageHeaderSecondary'
 import { Spacer } from 'ui/theme'
 
@@ -22,10 +22,13 @@ export function NavigationOnboarding(): React.JSX.Element {
       <StyledContainer>
         <LinkToComponent name="OnboardingWelcome" />
         <LinkToComponent name="OnboardingGeolocation" />
-        <LinkToComponent name="AgeSelection" navigationParams={{ type: Tutorial.ONBOARDING }} />
+        <LinkToComponent
+          name="AgeSelection"
+          navigationParams={{ type: TutorialTypes.ONBOARDING }}
+        />
         <LinkToComponent
           name="AgeSelectionOther"
-          navigationParams={{ type: Tutorial.ONBOARDING }}
+          navigationParams={{ type: TutorialTypes.ONBOARDING }}
         />
         <LinkToComponent
           name="OnboardingAgeInformation"

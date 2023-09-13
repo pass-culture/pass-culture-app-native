@@ -4,7 +4,7 @@ import styled from 'styled-components/native'
 
 import { TutorialRootStackParamList } from 'features/navigation/RootNavigator/types'
 import { AgeButton } from 'features/tutorial/components/AgeButton'
-import { Tutorial } from 'features/tutorial/enums'
+import { TutorialTypes } from 'features/tutorial/enums'
 import { TutorialPage } from 'features/tutorial/pages/TutorialPage'
 import { EligibleAges } from 'features/tutorial/types'
 import { analytics } from 'libs/analytics'
@@ -26,8 +26,8 @@ const ageButtons: { age?: EligibleAges }[] = [
   { age: undefined },
 ]
 
-const onBeforeNavigate = async (type: Tutorial, age?: EligibleAges) => {
-  analytics.logSelectAge({ age: age ?? OTHER, from: type })
+const onBeforeNavigate = async (type: TutorialTypes, age?: EligibleAges) => {
+  analytics.logSelectAge({ userStatus: age ?? OTHER, from: type })
   age && (await storage.saveObject('user_age', age))
 }
 
@@ -35,7 +35,7 @@ export const AgeSelection: FunctionComponent<Props> = ({ route }: Props) => {
   const type = route.params.type
 
   const AgeSelectionButtons = ageButtons.map(({ age }) => {
-    const startButtonTitle = type === Tutorial.ONBOARDING ? 'j’ai' : 'à'
+    const startButtonTitle = type === TutorialTypes.ONBOARDING ? 'j’ai' : 'à'
 
     return (
       <AgeButton
@@ -70,12 +70,12 @@ export const AgeSelection: FunctionComponent<Props> = ({ route }: Props) => {
   })
 
   const title =
-    type === Tutorial.ONBOARDING
+    type === TutorialTypes.ONBOARDING
       ? 'Pour commencer, peux-tu nous dire ton âge\u00a0?'
       : 'Comment ça marche\u00a0?'
 
   const subtitle =
-    type === Tutorial.ONBOARDING
+    type === TutorialTypes.ONBOARDING
       ? 'Cela permet de savoir si tu peux bénéficier du pass Culture.'
       : 'De 15 à 18 ans, le pass Culture offre un crédit à dépenser dans l’application pour des activités culturelles.'
 

@@ -1,7 +1,7 @@
 import React from 'react'
 
 import * as NavigationHelpers from 'features/navigation/helpers/openUrl'
-import { NonEligible, Tutorial } from 'features/tutorial/enums'
+import { NonEligible, TutorialTypes } from 'features/tutorial/enums'
 import { NonEligibleModal } from 'features/tutorial/pages/NonEligibleModal'
 import { env } from 'libs/environment/__mocks__/envFixtures'
 import { fireEvent, render } from 'tests/utils'
@@ -11,25 +11,25 @@ const hideModal = jest.fn()
 
 describe('NonEligibleModal', () => {
   it('should render correctly for onboarding non-eligible under 15', () => {
-    const renderAPI = renderNonEligibleModal(NonEligible.UNDER_15, Tutorial.ONBOARDING)
+    const renderAPI = renderNonEligibleModal(NonEligible.UNDER_15, TutorialTypes.ONBOARDING)
 
     expect(renderAPI).toMatchSnapshot()
   })
 
   it('should render correctly for profile tutorial non-eligible under 15 ', () => {
-    const renderAPI = renderNonEligibleModal(NonEligible.UNDER_15, Tutorial.PROFILE_TUTORIAL)
+    const renderAPI = renderNonEligibleModal(NonEligible.UNDER_15, TutorialTypes.PROFILE_TUTORIAL)
 
     expect(renderAPI).toMatchSnapshot()
   })
 
   it('should render correctly for onboarding non-eligible over 18 ', () => {
-    const renderAPI = renderNonEligibleModal(NonEligible.OVER_18, Tutorial.ONBOARDING)
+    const renderAPI = renderNonEligibleModal(NonEligible.OVER_18, TutorialTypes.ONBOARDING)
 
     expect(renderAPI).toMatchSnapshot()
   })
 
   it('should render correctly for profile tutorial non-eligible over 18 ', () => {
-    const renderAPI = renderNonEligibleModal(NonEligible.OVER_18, Tutorial.PROFILE_TUTORIAL)
+    const renderAPI = renderNonEligibleModal(NonEligible.OVER_18, TutorialTypes.PROFILE_TUTORIAL)
 
     expect(renderAPI).toMatchSnapshot()
   })
@@ -37,7 +37,7 @@ describe('NonEligibleModal', () => {
   it.each(Object.values(NonEligible))(
     'should close modal when pressing right header icon',
     (userStatus) => {
-      const { getByTestId } = renderNonEligibleModal(userStatus, Tutorial.ONBOARDING)
+      const { getByTestId } = renderNonEligibleModal(userStatus, TutorialTypes.ONBOARDING)
 
       fireEvent.press(getByTestId('Fermer la modale'))
       expect(hideModal).toHaveBeenCalledTimes(1)
@@ -47,7 +47,7 @@ describe('NonEligibleModal', () => {
   it.each(Object.values(NonEligible))(
     'should close modal when pressing "j’ai compris"',
     (userStatus) => {
-      const { getByText } = renderNonEligibleModal(userStatus, Tutorial.ONBOARDING)
+      const { getByText } = renderNonEligibleModal(userStatus, TutorialTypes.ONBOARDING)
 
       const button = getByText('Explorer l’application')
       fireEvent.press(button)
@@ -57,7 +57,7 @@ describe('NonEligibleModal', () => {
   )
 
   it('should redirect to FAQ when pressing "comment ça marche ?" for underage non-eligible', () => {
-    const { getByText } = renderNonEligibleModal(NonEligible.UNDER_15, Tutorial.ONBOARDING)
+    const { getByText } = renderNonEligibleModal(NonEligible.UNDER_15, TutorialTypes.ONBOARDING)
     const button = getByText('comment ça marche\u00a0?')
 
     fireEvent.press(button)
@@ -65,7 +65,7 @@ describe('NonEligibleModal', () => {
   })
 })
 
-const renderNonEligibleModal = (userStatus: NonEligible, type: Tutorial) => {
+const renderNonEligibleModal = (userStatus: NonEligible, type: TutorialTypes) => {
   return render(
     <NonEligibleModal visible hideModal={hideModal} userStatus={userStatus} type={type} />
   )
