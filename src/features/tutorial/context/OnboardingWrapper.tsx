@@ -18,12 +18,12 @@ interface Props {
 
 export const OnboardingWrapper = memo(function OnboardingWrapper({ children }: Props) {
   const { showModal, ...modalProps } = useModal(false)
-  const [age, setAge] = useState(NonEligible.UNDER_15)
+  const [userStatus, setUserStatus] = useState(NonEligible.UNDER_15)
   const [type, setType] = useState(Tutorial.ONBOARDING)
 
   const showNonEligibleModal = useCallback(
-    (age: NonEligible, type: Tutorial) => {
-      setAge(age)
+    (userStatus: NonEligible, type: Tutorial) => {
+      setUserStatus(userStatus)
       setType(type)
       showModal()
     },
@@ -40,7 +40,7 @@ export const OnboardingWrapper = memo(function OnboardingWrapper({ children }: P
   return (
     <OnboardingContext.Provider value={value}>
       {children}
-      <NonEligibleModal age={age} type={type} {...modalProps} />
+      <NonEligibleModal userStatus={userStatus} type={type} {...modalProps} />
     </OnboardingContext.Provider>
   )
 })

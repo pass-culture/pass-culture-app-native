@@ -18,11 +18,11 @@ jest.mock('ui/components/modals/useModal', () => ({
 describe('useOnboardingContext()', () => {
   it.each(Object.values(NonEligible))(
     'should show modal when showNonEligibleModal is called',
-    (age) => {
+    (userStatus) => {
       const { result } = renderOnboardingHook()
 
       act(() => {
-        result.current.showNonEligibleModal(age, Tutorial.ONBOARDING)
+        result.current.showNonEligibleModal(userStatus, Tutorial.ONBOARDING)
       })
 
       expect(mockShowModal).toHaveBeenCalledTimes(1)

@@ -36,8 +36,8 @@ describe('NonEligibleModal', () => {
 
   it.each(Object.values(NonEligible))(
     'should close modal when pressing right header icon',
-    (modalType) => {
-      const { getByTestId } = renderNonEligibleModal(modalType, Tutorial.ONBOARDING)
+    (userStatus) => {
+      const { getByTestId } = renderNonEligibleModal(userStatus, Tutorial.ONBOARDING)
 
       fireEvent.press(getByTestId('Fermer la modale'))
       expect(hideModal).toHaveBeenCalledTimes(1)
@@ -46,8 +46,8 @@ describe('NonEligibleModal', () => {
 
   it.each(Object.values(NonEligible))(
     'should close modal when pressing "j’ai compris"',
-    (modalType) => {
-      const { getByText } = renderNonEligibleModal(modalType, Tutorial.ONBOARDING)
+    (userStatus) => {
+      const { getByText } = renderNonEligibleModal(userStatus, Tutorial.ONBOARDING)
 
       const button = getByText('Explorer l’application')
       fireEvent.press(button)
@@ -65,6 +65,8 @@ describe('NonEligibleModal', () => {
   })
 })
 
-const renderNonEligibleModal = (modalType: NonEligible, type: Tutorial) => {
-  return render(<NonEligibleModal visible hideModal={hideModal} age={modalType} type={type} />)
+const renderNonEligibleModal = (userStatus: NonEligible, type: Tutorial) => {
+  return render(
+    <NonEligibleModal visible hideModal={hideModal} userStatus={userStatus} type={type} />
+  )
 }

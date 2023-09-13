@@ -12,7 +12,7 @@ describe('<NonEligibleModal/>', () => {
         <NonEligibleModal
           visible
           hideModal={jest.fn()}
-          age={NonEligible.UNDER_15}
+          userStatus={NonEligible.UNDER_15}
           type={Tutorial.ONBOARDING}
         />
       )
@@ -27,7 +27,7 @@ describe('<NonEligibleModal/>', () => {
         <NonEligibleModal
           visible
           hideModal={jest.fn()}
-          age={NonEligible.UNDER_15}
+          userStatus={NonEligible.UNDER_15}
           type={Tutorial.PROFILE_TUTORIAL}
         />
       )
@@ -42,7 +42,7 @@ describe('<NonEligibleModal/>', () => {
         <NonEligibleModal
           visible
           hideModal={jest.fn()}
-          age={NonEligible.OVER_18}
+          userStatus={NonEligible.OVER_18}
           type={Tutorial.ONBOARDING}
         />
       )
@@ -57,7 +57,7 @@ describe('<NonEligibleModal/>', () => {
         <NonEligibleModal
           visible
           hideModal={jest.fn()}
-          age={NonEligible.OVER_18}
+          userStatus={NonEligible.OVER_18}
           type={Tutorial.PROFILE_TUTORIAL}
         />
       )

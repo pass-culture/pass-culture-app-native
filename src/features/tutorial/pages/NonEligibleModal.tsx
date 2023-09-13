@@ -14,13 +14,13 @@ import { Spacer, Typo } from 'ui/theme'
 type Props = {
   visible: boolean
   hideModal: () => void
-  age: NonEligible
+  userStatus: NonEligible
   type: Tutorial
 }
 
-export const NonEligibleModal = ({ visible, hideModal, age, type }: Props) => {
+export const NonEligibleModal = ({ visible, hideModal, userStatus, type }: Props) => {
   const { title, firstParagraph, secondParagraph, withFAQLink, Illustration } =
-    getModalInfoForNonEligible(age, type)
+    getModalInfoForNonEligible(userStatus, type)
 
   const StyledIllustration = styled(Illustration).attrs(({ theme }) => ({
     size: theme.illustrations.sizes.fullPage,
