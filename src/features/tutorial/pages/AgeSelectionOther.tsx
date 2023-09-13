@@ -3,7 +3,6 @@ import { StackScreenProps } from '@react-navigation/stack'
 import React, { FunctionComponent, useCallback } from 'react'
 import styled from 'styled-components/native'
 
-import { navigateToHomeConfig } from 'features/navigation/helpers'
 import {
   UseNavigationType,
   TutorialRootStackParamList,
@@ -61,10 +60,6 @@ export const AgeSelectionOther: FunctionComponent<Props> = ({ route }: Props) =>
         <OnboardingAgeButtonOther
           type={type}
           onBeforeNavigate={onUnder15Press}
-          navigateTo={navigateToHomeConfig}
-          // We disable navigation because we reset the navigation before,
-          // but we still want to use a link (not just a button) for accessibility reason
-          enableNavigate={false}
           accessibilityLabel={accessibilityLabelUnder15}>
           <AgeButtonContent
             startButtonTitle={startButtonTitle}
@@ -87,10 +82,6 @@ export const AgeSelectionOther: FunctionComponent<Props> = ({ route }: Props) =>
         <OnboardingAgeButtonOther
           type={type}
           onBeforeNavigate={onOver18Press}
-          navigateTo={navigateToHomeConfig}
-          // We disable navigation because we reset the navigation before,
-          // but we still want to use a link (not just a button) for accessibility reason
-          enableNavigate={false}
           accessibilityLabel={accessibilityLabelOver18}>
           <AgeButtonContent
             startButtonTitle={startButtonTitle}
