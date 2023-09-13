@@ -4,7 +4,7 @@ import { Venue } from 'features/venue/types'
 import { SuggestedPlace } from 'libs/place'
 import { checkAccessibilityFor, render } from 'tests/utils/web'
 
-import { SuggestedPlaces } from './SuggestedPlaces'
+import { SuggestedPlacesOrVenues } from './SuggestedPlacesOrVenues'
 
 const mockPlaces: SuggestedPlace[] = []
 const mockVenues: Venue[] = []
@@ -16,11 +16,14 @@ jest.mock('libs/place', () => ({
 
 const mockSetSelectedPlaceOrVenue = jest.fn()
 
-describe('<SuggestedPlaces/>', () => {
+describe('<SuggestedPlacesOrVenues/>', () => {
   describe('Accessibility', () => {
     it('should not have basic accessibility issues', async () => {
       const { container } = render(
-        <SuggestedPlaces query="paris" setSelectedPlaceOrVenue={mockSetSelectedPlaceOrVenue} />
+        <SuggestedPlacesOrVenues
+          query="paris"
+          setSelectedPlaceOrVenue={mockSetSelectedPlaceOrVenue}
+        />
       )
       const results = await checkAccessibilityFor(container)
 

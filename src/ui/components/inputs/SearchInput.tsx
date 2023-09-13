@@ -65,13 +65,12 @@ const WithRefSearchInput: React.ForwardRefRenderFunction<RNTextInput, SearchInpu
         inputHeight={props.inputHeight}
         isFocus={isFocus}
         style={inputContainerStyle}>
-        <Spacer.Row numberOfSpaces={1} />
         {LeftIcon ? (
           <React.Fragment>
             <LeftIconContainer>
               <LeftIcon />
             </LeftIconContainer>
-            <Spacer.Row numberOfSpaces={1} />
+            <Spacer.Row numberOfSpaces={2} />
           </React.Fragment>
         ) : null}
         <BaseTextInput

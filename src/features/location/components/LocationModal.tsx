@@ -1,15 +1,19 @@
-import React, { useEffect, useRef } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import styled from 'styled-components/native'
 
 import { LocationModalButton } from 'features/location/components/LocationModalButton'
 import { LocationOption } from 'features/location/enums'
+import { SuggestedPlaces } from 'features/search/pages/SuggestedPlacesOrVenues/SuggestedPlaces'
 import { GeolocPermissionState, useLocation } from 'libs/geolocation'
 import { theme } from 'theme'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
+import { SearchInput } from 'ui/components/inputs/SearchInput'
 import { AppModal } from 'ui/components/modals/AppModal'
 import { Separator } from 'ui/components/Separator'
 import { Spacer } from 'ui/components/spacer/Spacer'
+import { useDebounceValue } from 'ui/hooks/useDebounceValue'
 import { Close } from 'ui/svg/icons/Close'
+import { MagnifyingGlass } from 'ui/svg/icons/MagnifyingGlass'
 import { MagnifyingGlassFilled } from 'ui/svg/icons/MagnifyingGlassFilled'
 import { PositionFilled } from 'ui/svg/icons/PositionFilled'
 
@@ -18,6 +22,8 @@ interface LocationModalProps {
   dismissModal: () => void
 }
 
+const LOCATION_PLACEHOLDER = 'Ville, code postal, adresse'
+
 export const LocationModal = ({ visible, dismissModal }: LocationModalProps) => {
   const { userPosition, permissionState, requestGeolocPermission, showGeolocPermissionModal } =
     useLocation()
@@ -25,6 +31,8 @@ export const LocationModal = ({ visible, dismissModal }: LocationModalProps) => 
   const isGeolocated = !!userPosition
   const defaultOption = isGeolocated ? LocationOption.GEOLOCATION : LocationOption.NONE
   const [selectedOption, setSelectedOption] = React.useState<LocationOption>(defaultOption)
+  const [placeQuery, setPlaceQuery] = useState('')
+  const debouncedPlaceQuery = useDebounceValue(placeQuery, 500)
 
   const onHideRef = useRef<() => void>()
 
@@ -76,6 +84,7 @@ export const LocationModal = ({ visible, dismissModal }: LocationModalProps) => 
       isUpToStatusBar
       scrollEnabled={false}
       onModalHide={onHideRef.current}>
+      <Spacer.Column numberOfSpaces={6} />
       <LocationModalButton
         onPress={onButtonPressed(LocationOption.GEOLOCATION)}
         icon={PositionFilled}
@@ -85,7 +94,9 @@ export const LocationModal = ({ visible, dismissModal }: LocationModalProps) => 
         title={'Utiliser ma position actuelle'}
         subtitle={isGeolocated ? undefined : 'Géolocalisation désactivée'}
       />
+      <Spacer.Column numberOfSpaces={6} />
       <Separator />
+      <Spacer.Column numberOfSpaces={6} />
       <LocationModalButton
         onPress={onButtonPressed(LocationOption.CUSTOM_POSITION)}
         icon={MagnifyingGlassFilled}
@@ -95,9 +106,21 @@ export const LocationModal = ({ visible, dismissModal }: LocationModalProps) => 
             : theme.colors.black
         }
         title={'Choisir une localisation'}
-        subtitle={'Ville, adresse, code postal'}
+        subtitle={LOCATION_PLACEHOLDER}
       />
-      <Spacer.Column numberOfSpaces={2} />
+      <Spacer.Column numberOfSpaces={4} />
+      <SearchInput
+        LeftIcon={StyledMagnifyingGlass}
+        inputHeight="regular"
+        onChangeText={setPlaceQuery}
+        placeholder={LOCATION_PLACEHOLDER}
+        value={placeQuery}
+      />
+      <React.Fragment>
+        <Spacer.Column numberOfSpaces={4} />
+        <SuggestedPlaces query={debouncedPlaceQuery} setSelectedPlace={() => null} />
+      </React.Fragment>
+      <Spacer.Column numberOfSpaces={8} />
       <ButtonContainer>
         <ButtonPrimary
           wording={'Valider la localisation'}
@@ -112,3 +135,7 @@ export const LocationModal = ({ visible, dismissModal }: LocationModalProps) => 
 const ButtonContainer = styled.View({
   alignItems: 'center',
 })
+
+const StyledMagnifyingGlass = styled(MagnifyingGlass).attrs(({ theme }) => ({
+  size: theme.icons.sizes.small,
+}))``

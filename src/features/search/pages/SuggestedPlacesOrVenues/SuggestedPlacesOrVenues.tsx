@@ -68,7 +68,10 @@ type Props = {
   setSelectedPlaceOrVenue: (placeOrVenue: SuggestedPlace | Venue) => void
 }
 
-export const SuggestedPlaces: FunctionComponent<Props> = ({ query, setSelectedPlaceOrVenue }) => {
+export const SuggestedPlacesOrVenues: FunctionComponent<Props> = ({
+  query,
+  setSelectedPlaceOrVenue,
+}) => {
   const { data: places = [], isLoading: isLoadingPlaces } = usePlaces({ query })
   const { data: venues = [], isLoading: isLoadingVenues } = useVenues(query)
 
@@ -86,7 +89,9 @@ export const SuggestedPlaces: FunctionComponent<Props> = ({ query, setSelectedPl
         show={filteredPlaces.length > 0 && !isLoading}
       />
       <View accessibilityRole={AccessibilityRole.STATUS}>
-        <NoSuggestedPlaces show={filteredPlaces.length === 0 && query.length > 0 && !isLoading} />
+        <NoSuggestedPlacesOrVenues
+          show={filteredPlaces.length === 0 && query.length > 0 && !isLoading}
+        />
       </View>
       {filteredPlaces.length > 0 && (
         <React.Fragment>
@@ -117,7 +122,7 @@ const NumberOfResults = ({ nbHits, show }: { nbHits: number; show: boolean }) =>
   )
 }
 
-const NoSuggestedPlaces = ({ show }: { show: boolean }) =>
+const NoSuggestedPlacesOrVenues = ({ show }: { show: boolean }) =>
   show ? (
     <DescriptionErrorTextContainer>
       <StyledBody accessibilityLiveRegion="assertive">
