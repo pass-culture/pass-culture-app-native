@@ -23,18 +23,19 @@ export async function getSentryConfig() {
     release += `+codepush:${update.label}`
   }
   const dist = `${build}-${Platform.OS}`
+
   return {
     dsn: env.SENTRY_DSN,
     environment: __DEV__ ? 'development' : env.ENV,
     release,
     dist,
-    tracesSampleRate: 0.01,
+    tracesSampleRate: env.SENTRY_TRACES_SAMPLE_RATE as unknown as number,
     attachScreenshot: true,
     integrations: [new SentryModule.ReactNativeTracing({ routingInstrumentation })],
     _experiments: {
       // profilesSampleRate is relative to tracesSampleRate.
       // Here, we'll capture profiles for 1% of transactions.
-      profilesSampleRate: 0.01,
+      profilesSampleRate: env.SENTRY_PROFILES_SAMPLE_RATE as unknown as number,
     },
   }
 }

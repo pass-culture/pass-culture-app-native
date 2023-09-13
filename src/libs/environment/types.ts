@@ -55,6 +55,8 @@ export interface Environment {
   RECOMMENDATION_TOKEN: string
   RESIZE_IMAGE_ON_DEMAND_URL: string
   SENTRY_DSN: string
+  SENTRY_PROFILES_SAMPLE_RATE: string
+  SENTRY_TRACES_SAMPLE_RATE: string
   SIGNIN_IDENTIFIER: string
   SIGNIN_PASSWORD: string
   SIGNUP_POSTAL_CODE: string
