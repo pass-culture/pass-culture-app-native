@@ -42,7 +42,7 @@ export const AgeSelection: FunctionComponent<Props> = ({ route }: Props) => {
         key={age}
         icon={age ? BicolorAll : undefined}
         dense={!age}
-        onPress={async () => onBeforeNavigate(type, age)}
+        onBeforeNavigate={async () => onBeforeNavigate(type, age)}
         navigateTo={
           age
             ? { screen: 'OnboardingAgeInformation', params: { age } }

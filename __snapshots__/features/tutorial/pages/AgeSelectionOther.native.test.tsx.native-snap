@@ -673,7 +673,8 @@ exports[`AgeSelectionOther onboarding should render correctly 1`] = `
                     ]
                   }
                 >
-                   moins de 15 ans
+                   
+                  moins de 15 ans
                 </Text>
               </Text>
             </View>
@@ -795,7 +796,8 @@ exports[`AgeSelectionOther onboarding should render correctly 1`] = `
                     ]
                   }
                 >
-                   plus de 18 ans
+                   
+                  plus de 18 ans
                 </Text>
               </Text>
             </View>
@@ -1058,7 +1060,8 @@ exports[`AgeSelectionOther profileTutorial should render correctly 1`] = `
                     ]
                   }
                 >
-                   moins de 15 ans
+                   
+                  moins de 15 ans
                 </Text>
               </Text>
             </View>
@@ -1163,7 +1166,8 @@ exports[`AgeSelectionOther profileTutorial should render correctly 1`] = `
                     ]
                   }
                 >
-                   plus de 18 ans
+                   
+                  plus de 18 ans
                 </Text>
               </Text>
             </View>

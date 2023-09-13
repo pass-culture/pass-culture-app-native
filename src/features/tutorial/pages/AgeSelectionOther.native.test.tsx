@@ -32,7 +32,7 @@ describe('AgeSelectionOther', () => {
       expect(screen).toMatchSnapshot()
     })
 
-    it('should show modal when pressing "j’ai moins de 15 ans"', () => {
+    it('should show modal when pressing "j’ai moins de 15 ans"', async () => {
       renderAgeSelectionOther({ type: TutorialTypes.ONBOARDING })
       const button = screen.getByText('moins de 15 ans')
 
@@ -208,7 +208,7 @@ describe('AgeSelectionOther', () => {
   })
 })
 
-const renderAgeSelectionOther = (navigationParams: { type: string }) => {
+const renderAgeSelectionOther = (navigationParams: { type: TutorialTypes }) => {
   const navProps = { route: { params: navigationParams } } as StackScreenProps<
     TutorialRootStackParamList,
     'AgeSelection'
