@@ -1,5 +1,4 @@
 import React, { FunctionComponent, ReactNode } from 'react'
-import { ScrollView } from 'react-native'
 import styled from 'styled-components/native'
 
 import { customEaseInOut, DURATION_IN_MS } from 'features/tutorial/helpers/animationProps'
@@ -47,7 +46,7 @@ export const TutorialPage: FunctionComponent<Props> = ({
           <BackButton onGoBack={onGoBack} />
         </GoBackContainer>
       </HeaderContainer>
-      <ScrollView>
+      <StyledScrollView>
         <Container>
           {!!title && (
             <React.Fragment>
@@ -67,7 +66,7 @@ export const TutorialPage: FunctionComponent<Props> = ({
           {children}
         </Container>
         {!buttons && <Spacer.Column numberOfSpaces={6} />}
-      </ScrollView>
+      </StyledScrollView>
       {!!buttons && (
         <ButtonsContainer
           animation={buttonsContainerAnimation}
@@ -103,6 +102,14 @@ const GoBackContainer = styled.View({
   height: HEADER_HEIGHT,
   paddingHorizontal: getSpacing(3),
 })
+
+const StyledScrollView = styled.ScrollView.attrs(({ theme }) => ({
+  contentContainerStyle: {
+    maxWidth: theme.contentPage.maxWidth,
+    width: '100%',
+    alignSelf: 'center',
+  },
+}))``
 
 const Container = styled.View(({ theme }) => ({
   marginHorizontal: theme.contentPage.marginHorizontal,
