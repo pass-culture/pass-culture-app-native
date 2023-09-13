@@ -18,7 +18,7 @@ import { locationSchema } from 'features/search/helpers/schema/locationSchema/lo
 import { useGetFullscreenModalSliderLength } from 'features/search/helpers/useGetFullscreenModalSliderLength'
 import { useSetFocusWithCondition } from 'features/search/helpers/useSetFocusWithCondition/useSetFocusWithCondition'
 import { SuggestedPlaces } from 'features/search/pages/SuggestedPlaces/SuggestedPlaces'
-import { SearchState } from 'features/search/types'
+import { SearchState, SearchView } from 'features/search/types'
 import { Venue } from 'features/venue/types'
 import { analytics } from 'libs/analytics'
 import { GeolocPermissionState, useLocation } from 'libs/geolocation'
@@ -233,6 +233,9 @@ export const LocationModal: FunctionComponent<LocationModalProps> = ({
           break
         }
         case FilterBehaviour.APPLY_WITHOUT_SEARCHING: {
+          if (searchState.view === SearchView.Landing) {
+            navigate(...getTabNavConfig('Search', additionalSearchState))
+          }
           dispatch({ type: 'SET_STATE', payload: additionalSearchState })
           break
         }
