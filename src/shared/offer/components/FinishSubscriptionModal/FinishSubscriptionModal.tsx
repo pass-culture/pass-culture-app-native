@@ -4,7 +4,6 @@ import styled from 'styled-components/native'
 
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
-import { analytics } from 'libs/analytics'
 import { useGetDepositAmountsByAge } from 'shared/user/useGetDepositAmountsByAge'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { AppModalWithIllustration } from 'ui/components/modals/AppModalWithIllustration'
@@ -15,23 +14,17 @@ import { LINE_BREAK, SPACE } from 'ui/theme/constants'
 type Props = {
   visible: boolean
   hideModal: () => void
-  offerId: number
   children?: never
 }
 
-export const FinishSubscriptionModal: FunctionComponent<Props> = ({
-  visible,
-  hideModal,
-  offerId,
-}) => {
+export const FinishSubscriptionModal: FunctionComponent<Props> = ({ visible, hideModal }) => {
   const { user } = useAuthContext()
   const { navigate } = useNavigation<UseNavigationType>()
 
   const navigateToProfile = useCallback(() => {
-    analytics.logGoToProfil({ from: 'FinishSubscriptionModal', offerId })
     hideModal()
     navigate('Stepper')
-  }, [offerId, hideModal, navigate])
+  }, [hideModal, navigate])
 
   const title = 'Débloque ton crédit' + LINE_BREAK + 'pour réserver cette offre'
 
