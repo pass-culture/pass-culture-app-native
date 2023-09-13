@@ -138,7 +138,7 @@ jobs:
         # The jira edit command uses .jira.d/templates/edit template by default
         run: |
           echo "issue:" >> $HOME/.jira.d/config.yml
-          jira edit --query='"Numéro de commit[Number]" > ${{ steps.get_previous_commit_number.outputs.value }}' --override $IMPROPRE_FIELD=true --noedit
+          jira edit --query='"Numéro de commit[Number]" > ${{ steps.get_previous_commit_number.outputs.value }} AND "Repository[Short text]" ~ "pass-culture-app-native"' --override $IMPROPRE_FIELD=true --noedit
 
       - name: Push commit number and commit hash to jira issue
         env:
