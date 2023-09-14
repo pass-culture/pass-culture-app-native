@@ -17,6 +17,7 @@ import { useSpaceBarAction } from 'ui/hooks/useSpaceBarAction'
 import { ArrowDown as DefaultArrowDown } from 'ui/svg/icons/ArrowDown'
 import { Close } from 'ui/svg/icons/Close'
 import { Validate } from 'ui/svg/icons/Validate'
+import { ValidateOff } from 'ui/svg/icons/ValidateOff'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 
 interface Props {
@@ -37,7 +38,8 @@ export const CountryPicker: React.FC<Props> = ({ selectedCountry, onSelect }) =>
   }
 
   const Item = ({ item }: { item: Country }) => {
-    const itemTitle = `${item.name} (${formatCallingCode(item.callingCode)})`
+    const itemTitle = item.name
+    const countryCallingCode = formatCallingCode(item.callingCode)
     const selected = item.id === selectedCountry.id
     const onPress = () => onCountrySelect(item)
     const { onFocus, onBlur, isFocus } = useHandleFocus()
@@ -52,12 +54,9 @@ export const CountryPicker: React.FC<Props> = ({ selectedCountry, onSelect }) =>
         onBlur={onBlur}
         onPress={onPress}>
         <CountryContainer ref={containerRef}>
-          <Typo.Body>{itemTitle}</Typo.Body>
-          {!!selected && (
-            <IconContainer>
-              <ValidateIcon />
-            </IconContainer>
-          )}
+          <IconContainer>{selected ? <ValidateIcon /> : <ValidateOffIcon />}</IconContainer>
+          <CountryName>{itemTitle}</CountryName>
+          <CountryCallingCode>{countryCallingCode}</CountryCallingCode>
         </CountryContainer>
       </TouchableOpacity>
     )
@@ -93,19 +92,29 @@ export const CountryPicker: React.FC<Props> = ({ selectedCountry, onSelect }) =>
 const CountryContainer = styled.View({
   flexDirection: 'row',
   alignItems: 'center',
-  paddingVertical: getSpacing(2),
+  paddingVertical: getSpacing(3),
   paddingHorizontal: getSpacing(1),
 })
 
 const IconContainer = styled.View({
-  flex: 1,
-  alignItems: 'flex-end',
-  paddingHorizontal: getSpacing(2),
+  marginRight: getSpacing(2),
 })
+
+const CountryName = styled(Typo.ButtonText)({
+  marginRight: getSpacing(1),
+})
+const CountryCallingCode = styled(Typo.ButtonText)(({ theme }) => ({
+  fontFamily: theme.fontFamily.medium,
+}))
 
 const ValidateIcon = styled(Validate).attrs(({ theme }) => ({
   color: theme.colors.primary,
-  size: theme.icons.sizes.small,
+  size: theme.icons.sizes.smaller,
+}))``
+
+const ValidateOffIcon = styled(ValidateOff).attrs(({ theme }) => ({
+  color: theme.colors.greySemiDark,
+  size: theme.icons.sizes.smaller,
 }))``
 
 const focusStyle =
