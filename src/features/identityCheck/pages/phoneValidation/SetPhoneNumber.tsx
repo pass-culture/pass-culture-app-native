@@ -103,10 +103,9 @@ export const SetPhoneNumber = () => {
 
   async function requestSendPhoneValidationCode() {
     analytics.logHasRequestedCode()
-    const callingCode = country.callingCode
-    if (isContinueButtonEnabled && callingCode) {
+    if (isContinueButtonEnabled) {
       setInvalidPhoneNumberMessage('')
-      const phoneNumberWithPrefix = formatPhoneNumberWithPrefix(phoneNumber, callingCode)
+      const phoneNumberWithPrefix = formatPhoneNumberWithPrefix(phoneNumber, country.callingCode)
       sendPhoneValidationCode(phoneNumberWithPrefix)
     }
 
