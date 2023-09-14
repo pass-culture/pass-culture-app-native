@@ -16,7 +16,9 @@ export const EighteenBlockDescription: FunctionComponent<Props> = ({ ongoingCred
   <React.Fragment>
     <CreditProgressBar progress={1} />
     <Spacer.Column numberOfSpaces={2} />
-    <StyledCaption>dont 100€ en offres numériques (streaming, presse en ligne, …)</StyledCaption>
+    <StyledCaption>
+      dont 100&nbsp;€ en offres numériques (streaming, presse en ligne, …)
+    </StyledCaption>
     <Spacer.Column numberOfSpaces={4} />
     <AccessibilityList
       Separator={<Spacer.Column numberOfSpaces={4} />}
@@ -40,7 +42,8 @@ export const EighteenBlockDescription: FunctionComponent<Props> = ({ ongoingCred
             <SmallNumeric bicolor={ongoingCredit} />
           </IconContainer>
           <StyledCaption>
-            La limite de 100€ est là pour t’encourager à tester des offres culturelles variées.
+            La limite de 100&nbsp;€ est là pour t’encourager à tester des offres culturelles
+            variées.
           </StyledCaption>
         </ItemContainer>,
       ]}

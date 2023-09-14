@@ -1919,7 +1919,7 @@ exports[`<ProfileTutorialAgeInformation /> should display not logged in version 
                     ]
                   }
                 >
-                  dont 100€ en offres numériques (streaming, presse en ligne, …)
+                  dont 100 € en offres numériques (streaming, presse en ligne, …)
                 </Text>
                 <View
                   numberOfSpaces={4}
@@ -2133,7 +2133,7 @@ exports[`<ProfileTutorialAgeInformation /> should display not logged in version 
                           ]
                         }
                       >
-                        La limite de 100€ est là pour t’encourager à tester des offres culturelles variées.
+                        La limite de 100 € est là pour t’encourager à tester des offres culturelles variées.
                       </Text>
                     </View>
                   </View>
@@ -4950,7 +4950,7 @@ exports[`<ProfileTutorialAgeInformation /> should render correctly when logged i
                     ]
                   }
                 >
-                  dont 100€ en offres numériques (streaming, presse en ligne, …)
+                  dont 100 € en offres numériques (streaming, presse en ligne, …)
                 </Text>
                 <View
                   numberOfSpaces={4}
@@ -5164,7 +5164,7 @@ exports[`<ProfileTutorialAgeInformation /> should render correctly when logged i
                           ]
                         }
                       >
-                        La limite de 100€ est là pour t’encourager à tester des offres culturelles variées.
+                        La limite de 100 € est là pour t’encourager à tester des offres culturelles variées.
                       </Text>
                     </View>
                   </View>
