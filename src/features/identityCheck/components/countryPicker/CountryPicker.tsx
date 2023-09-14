@@ -23,13 +23,13 @@ interface Props {
   onSelect: (country: Country) => void
 }
 
+const formatCallingCode = (code: string) => `+${code}`
 
 export const CountryPicker: React.FC<Props> = (props) => {
   const { visible, showModal, hideModal } = useModal(false)
 
   const [country, setCountry] = useState<Country>(props.initialCountry)
 
-  const formatCallingCode = (code: string) => `+${code}`
   const callingCode = formatCallingCode(country.callingCode)
 
   function onSelect(selectedCountry: Country) {
