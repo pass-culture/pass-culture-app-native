@@ -37,11 +37,11 @@ export const CountryPicker: React.FC<Props> = ({ selectedCountry, onSelect }) =>
     hideModal()
   }
 
-  const Item = ({ item }: { item: Country }) => {
-    const itemTitle = item.name
-    const countryCallingCode = formatCallingCode(item.callingCode)
-    const selected = item.id === selectedCountry.id
-    const onPress = () => onCountrySelect(item)
+  const Item = ({ country }: { country: Country }) => {
+    const itemTitle = country.name
+    const countryCallingCode = formatCallingCode(country.callingCode)
+    const selected = country.id === selectedCountry.id
+    const onPress = () => onCountrySelect(country)
     const { onFocus, onBlur, isFocus } = useHandleFocus()
     const containerRef = useRef(null)
     useArrowNavigationForRadioButton(containerRef)
@@ -49,7 +49,7 @@ export const CountryPicker: React.FC<Props> = ({ selectedCountry, onSelect }) =>
     return (
       <TouchableOpacity
         {...accessibleRadioProps({ checked: selected, label: itemTitle })}
-        key={item.id}
+        key={country.id}
         onFocus={onFocus}
         onBlur={onBlur}
         onPress={onPress}>
@@ -81,7 +81,7 @@ export const CountryPicker: React.FC<Props> = ({ selectedCountry, onSelect }) =>
         onRightIconPress={hideModal}>
         <View accessibilityRole={AccessibilityRole.RADIOGROUP}>
           {COUNTRIES.map((country) => (
-            <Item key={country.id} item={country} />
+            <Item key={country.id} country={country} />
           ))}
         </View>
       </AppModal>
