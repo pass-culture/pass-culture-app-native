@@ -55,6 +55,7 @@ export const AccountSecurity = () => {
             token: params.reset_password_token,
             email: params.email,
             expiration_timestamp: params.reset_token_expiration_timestamp,
+            from: 'suspiciouslogin',
           },
         }}
         as={ButtonPrimary}

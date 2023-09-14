@@ -302,8 +302,13 @@ export const logEventAnalytics = {
         type: sortBy,
       }
     ),
-  logHasChangedPassword: (reason: 'changePassword' | 'resetPassword') =>
-    analytics.logEvent({ firebase: AnalyticsEvent.HAS_CHANGED_PASSWORD }, { reason }),
+  logHasChangedPassword: ({
+    from,
+    reason,
+  }: {
+    from: Referrals
+    reason: 'changePassword' | 'resetPassword'
+  }) => analytics.logEvent({ firebase: AnalyticsEvent.HAS_CHANGED_PASSWORD }, { from, reason }),
   logHasClickedMissingCode: () =>
     analytics.logEvent({ firebase: AnalyticsEvent.HAS_CLICKED_MISSING_CODE }),
   logHasCorrectedEmail: ({ from }: { from: Referrals }) =>

@@ -36,6 +36,7 @@ describe('<AccountSecurity/>', () => {
       email: ROUTE_PARAMS.email,
       expiration_timestamp: ROUTE_PARAMS.reset_token_expiration_timestamp,
       token: ROUTE_PARAMS.reset_password_token,
+      from: 'suspiciouslogin',
     })
   })
 

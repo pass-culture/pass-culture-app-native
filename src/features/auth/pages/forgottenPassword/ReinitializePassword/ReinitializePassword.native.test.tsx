@@ -7,6 +7,7 @@ import { api } from 'api/api'
 import { AccountState } from 'api/gen'
 import * as LoginRoutine from 'features/auth/helpers/useLoginRoutine'
 import { navigateToHome } from 'features/navigation/helpers'
+import { Referrals } from 'features/navigation/RootNavigator/types'
 import { analytics } from 'libs/analytics'
 import * as datesLib from 'libs/dates'
 import { env } from 'libs/environment'
@@ -21,12 +22,6 @@ import { ReinitializePassword } from './ReinitializePassword'
 
 jest.mock('features/navigation/helpers')
 
-const ROUTE_PARAMS = {
-  email: 'john@.example.com',
-  token: 'reerereskjlmkdlsf',
-  expiration_timestamp: 45465546445,
-}
-
 const mockShowSuccessSnackBar = jest.fn()
 const mockShowErrorSnackBar = jest.fn()
 jest.mock('ui/components/snackBar/SnackBarContext', () => ({
@@ -36,7 +31,6 @@ jest.mock('ui/components/snackBar/SnackBarContext', () => ({
   }),
 }))
 
-useRoute.mockReturnValue({ params: ROUTE_PARAMS })
 const loginRoutine = jest.fn()
 const mockLoginRoutine = jest.spyOn(LoginRoutine, 'useLoginRoutine')
 mockLoginRoutine.mockImplementation(() => loginRoutine)
@@ -105,7 +99,7 @@ describe('ReinitializePassword Page', () => {
 
     expect(apiReinitializePasswordSpy).toHaveBeenCalledWith({
       newPassword: 'user@AZERTY123',
-      resetPasswordToken: ROUTE_PARAMS.token,
+      resetPasswordToken: tokenFromParams,
       deviceInfo: undefined,
     })
   })
@@ -130,7 +124,7 @@ describe('ReinitializePassword Page', () => {
 
     expect(apiReinitializePasswordSpy).toHaveBeenCalledWith({
       newPassword: 'user@AZERTY123',
-      resetPasswordToken: ROUTE_PARAMS.token,
+      resetPasswordToken: tokenFromParams,
       deviceInfo: {
         deviceId: 'ad7b7b5a169641e27cadbdb35adad9c4ca23099a',
         os: 'iOS',
@@ -192,7 +186,7 @@ describe('ReinitializePassword Page', () => {
     expect(navigateToHome).toHaveBeenCalledTimes(1)
   })
 
-  it('should log analytics when password is successfully reset', async () => {
+  it('should log analytics with default from value "forgottenpassword" when password is successfully reset', async () => {
     renderReinitializePassword()
     const passwordInput = screen.getByPlaceholderText('Ton mot de passe')
     const confirmationInput = screen.getByPlaceholderText('Confirmer le mot de passe')
@@ -206,7 +200,31 @@ describe('ReinitializePassword Page', () => {
       fireEvent.press(screen.getByText('Se connecter'))
     })
 
-    expect(analytics.logHasChangedPassword).toBeCalledWith('resetPassword')
+    expect(analytics.logHasChangedPassword).toBeCalledWith({
+      from: 'forgottenpassword',
+      reason: 'resetPassword',
+    })
+  })
+
+  it('should log analytics with from params value when password is successfully reset', async () => {
+    const from = 'accountsecurity'
+    renderReinitializePassword(from)
+    const passwordInput = screen.getByPlaceholderText('Ton mot de passe')
+    const confirmationInput = screen.getByPlaceholderText('Confirmer le mot de passe')
+    await act(async () => {
+      fireEvent.changeText(passwordInput, 'user@AZERTY123')
+    })
+    await act(async () => {
+      fireEvent.changeText(confirmationInput, 'user@AZERTY123')
+    })
+    await act(async () => {
+      fireEvent.press(screen.getByText('Se connecter'))
+    })
+
+    expect(analytics.logHasChangedPassword).toBeCalledWith({
+      from,
+      reason: 'resetPassword',
+    })
   })
 
   it('should show success snack bar when password is successfully reset', async () => {
@@ -257,12 +275,23 @@ describe('ReinitializePassword Page', () => {
     await act(async () => {})
 
     expect(replace).toHaveBeenNthCalledWith(1, 'ResetPasswordExpiredLink', {
-      email: ROUTE_PARAMS.email,
+      email: emailFromParams,
     })
   })
 })
 
-function renderReinitializePassword() {
+const emailFromParams = 'john@.example.com'
+const tokenFromParams = 'reerereskjlmkdlsf'
+
+function renderReinitializePassword(from?: Referrals) {
+  useRoute.mockImplementation(() => ({
+    params: {
+      email: emailFromParams,
+      token: tokenFromParams,
+      expiration_timestamp: 45465546445,
+      from,
+    },
+  }))
   return render(
     // eslint-disable-next-line local-rules/no-react-query-provider-hoc
     reactQueryProviderHOC(<ReinitializePassword />)
