@@ -3250,6 +3250,15 @@ exports[`<ProfileTutorialAgeInformation /> should render correctly when logged i
               }
             />
             <View
+              accessibilityState={
+                {
+                  "busy": undefined,
+                  "checked": undefined,
+                  "disabled": undefined,
+                  "expanded": undefined,
+                  "selected": undefined,
+                }
+              }
               accessible={true}
               collapsable={false}
               focusable={true}
@@ -3781,6 +3790,15 @@ exports[`<ProfileTutorialAgeInformation /> should render correctly when logged i
               }
             />
             <View
+              accessibilityState={
+                {
+                  "busy": undefined,
+                  "checked": undefined,
+                  "disabled": undefined,
+                  "expanded": undefined,
+                  "selected": undefined,
+                }
+              }
               accessible={true}
               focusable={true}
               onClick={[Function]}
@@ -4160,6 +4178,15 @@ exports[`<ProfileTutorialAgeInformation /> should render correctly when logged i
               }
             />
             <View
+              accessibilityState={
+                {
+                  "busy": undefined,
+                  "checked": undefined,
+                  "disabled": undefined,
+                  "expanded": undefined,
+                  "selected": undefined,
+                }
+              }
               accessible={true}
               focusable={true}
               onClick={[Function]}
@@ -4711,6 +4738,15 @@ exports[`<ProfileTutorialAgeInformation /> should render correctly when logged i
               }
             />
             <View
+              accessibilityState={
+                {
+                  "busy": undefined,
+                  "checked": undefined,
+                  "disabled": undefined,
+                  "expanded": undefined,
+                  "selected": undefined,
+                }
+              }
               accessible={true}
               focusable={true}
               onClick={[Function]}
