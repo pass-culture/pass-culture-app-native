@@ -112,8 +112,6 @@ export const SetPhoneNumber = () => {
     analytics.logPhoneNumberClicked()
   }
 
-  const LeftCountryPicker = <CountryPicker selectedCountry={country} onSelect={setCountry} />
-
   return (
     <PageWithHeader
       title="Numéro de téléphone"
@@ -140,7 +138,7 @@ export const SetPhoneNumber = () => {
                   textContentType="none" // disable autofill on iOS
                   onSubmitEditing={requestSendPhoneValidationCode}
                   accessibilityDescribedBy={phoneNumberInputErrorId}
-                  leftComponent={LeftCountryPicker}
+                  leftComponent={<CountryPicker selectedCountry={country} onSelect={setCountry} />}
                   testID="Entrée pour le numéro de téléphone"
                 />
               </InputContainer>
