@@ -29,6 +29,10 @@ const defaultAuthContext = {
   isUserLoading: false,
 }
 
+const fifteenUser = {
+  ...beneficiaryUser,
+  birthDate: format(FIFTEEN_YEARS_OLD_FIRST_DAY_DATE, 'yyyy-MM-dd'),
+}
 const sixteenUser = { ...beneficiaryUser, birthDate: format(SIXTEEN_AGE_DATE, 'yyyy-MM-dd') }
 const seventeenUser = {
   ...beneficiaryUser,
@@ -57,7 +61,6 @@ describe('<ProfileTutorialAgeInformation />', () => {
     mockdate.set(CURRENT_DATE)
   })
   it('should render correctly when logged in at 15', () => {
-    const fifteenUser = { ...beneficiaryUser, birthdate: FIFTEEN_YEARS_OLD_FIRST_DAY_DATE }
     mockUseAuthContext.mockReturnValueOnce({ ...defaultAuthContext, user: fifteenUser })
     render(<ProfileTutorialAgeInformation {...navProps} />)
 
