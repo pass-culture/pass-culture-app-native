@@ -20,17 +20,13 @@ describe('<CountryPicker />', () => {
     fireEvent.press(
       await screen.findByTestId('Ouvrir la modale de choix de l’indicatif téléphonique')
     )
-    fireEvent.press(screen.getByText('Guadeloupe (+590)'))
+    fireEvent.press(screen.getByLabelText('Guadeloupe +590'))
 
     await act(async () => {
       expect(onSelectCountry).toBeCalledWith({
-        callingCode: '590',
-        cca2: 'GP',
-        currency: ['EUR'],
-        flag: 'flag-gp',
+        id: 'GP',
         name: 'Guadeloupe',
-        region: 'Americas',
-        subregion: 'Caribbean',
+        callingCode: '590',
       })
     })
   })
