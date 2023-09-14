@@ -415,11 +415,12 @@ describe('<BookingOfferModalComponent />', () => {
       })
 
       it.each`
-        code                     | message
-        ${undefined}             | ${'En raison d’une erreur technique, l’offre n’a pas pu être réservée'}
-        ${'INSUFFICIENT_CREDIT'} | ${'Attention, ton crédit est insuffisant pour pouvoir réserver cette offre\u00a0!'}
-        ${'ALREADY_BOOKED'}      | ${'Attention, il est impossible de réserver plusieurs fois la même offre\u00a0!'}
-        ${'STOCK_NOT_BOOKABLE'}  | ${'Oups, cette offre n’est plus disponible\u00a0!'}
+        code                         | message
+        ${undefined}                 | ${'En raison d’une erreur technique, l’offre n’a pas pu être réservée'}
+        ${'INSUFFICIENT_CREDIT'}     | ${'Attention, ton crédit est insuffisant pour pouvoir réserver cette offre\u00a0!'}
+        ${'ALREADY_BOOKED'}          | ${'Attention, il est impossible de réserver plusieurs fois la même offre\u00a0!'}
+        ${'STOCK_NOT_BOOKABLE'}      | ${'Oups, cette offre n’est plus disponible\u00a0!'}
+        ${'PROVIDER_STOCK_SOLD_OUT'} | ${'Oups, cette offre n’est plus disponible\u00a0!'}
       `(
         'should show the error snackbar with message="$message" for errorCode="code" if booking an offer fails',
         ({ code, message }: { code: string | undefined; message: string }) => {
