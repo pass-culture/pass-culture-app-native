@@ -554,7 +554,7 @@ describe('<LocationModal/>', () => {
       })
     })
 
-    it('should update search state when pressing submit button, when we are in general filter page', async () => {
+    it('should update search state when pressing submit button from location filter modal to general filter page', async () => {
       mockSearchState = searchState
       mockSearchState.view = SearchView.Results
       renderLocationModal({
@@ -585,7 +585,7 @@ describe('<LocationModal/>', () => {
       })
     })
 
-    it('should navigate when pressing location button on landing page ', async () => {
+    it('should navigate when pressing submit button from location filter modal to landing page', async () => {
       mockSearchState = searchState
       mockSearchState.view = SearchView.Landing
       renderLocationModal({
