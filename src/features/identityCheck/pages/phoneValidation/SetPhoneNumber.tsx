@@ -112,7 +112,7 @@ export const SetPhoneNumber = () => {
     analytics.logPhoneNumberClicked()
   }
 
-  const LeftCountryPicker = <CountryPicker initialCountry={INITIAL_COUNTRY} onSelect={setCountry} />
+  const LeftCountryPicker = <CountryPicker selectedCountry={country} onSelect={setCountry} />
 
   return (
     <PageWithHeader

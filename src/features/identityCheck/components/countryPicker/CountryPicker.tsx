@@ -1,3 +1,4 @@
+import React, { useRef } from 'react'
 import { Platform, View } from 'react-native'
 import styled from 'styled-components/native'
 
@@ -19,28 +20,26 @@ import { Validate } from 'ui/svg/icons/Validate'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 
 interface Props {
-  initialCountry: Country
+  selectedCountry: Country
   onSelect: (country: Country) => void
 }
 
 const formatCallingCode = (code: string) => `+${code}`
 
-export const CountryPicker: React.FC<Props> = (props) => {
+export const CountryPicker: React.FC<Props> = ({ selectedCountry, onSelect }) => {
   const { visible, showModal, hideModal } = useModal(false)
 
-  const [country, setCountry] = useState<Country>(props.initialCountry)
+  const callingCode = formatCallingCode(selectedCountry.callingCode)
 
-  const callingCode = formatCallingCode(country.callingCode)
-
-  function onSelect(selectedCountry: Country) {
-    props.onSelect(selectedCountry)
+  function onCountrySelect(country: Country) {
+    onSelect(country)
     hideModal()
   }
 
   const Item = ({ item }: { item: Country }) => {
     const itemTitle = `${item.name} (${formatCallingCode(item.callingCode)})`
     const selected = item.id === selectedCountry.id
-    const onPress = () => onSelect(item)
+    const onPress = () => onCountrySelect(item)
     const { onFocus, onBlur, isFocus } = useHandleFocus()
     const containerRef = useRef(null)
     useArrowNavigationForRadioButton(containerRef)

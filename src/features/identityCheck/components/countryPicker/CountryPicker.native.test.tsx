@@ -8,14 +8,14 @@ const onSelectCountry = jest.fn()
 
 describe('<CountryPicker />', () => {
   it('should render correctly', async () => {
-    render(<CountryPicker initialCountry={METROPOLITAN_FRANCE} onSelect={onSelectCountry} />)
+    render(<CountryPicker selectedCountry={METROPOLITAN_FRANCE} onSelect={onSelectCountry} />)
     await screen.findByTestId('Ouvrir la modale de choix de l’indicatif téléphonique')
 
     expect(screen).toMatchSnapshot()
   })
 
   it('should select the correct country calling code when the user select a calling code', async () => {
-    render(<CountryPicker initialCountry={METROPOLITAN_FRANCE} onSelect={onSelectCountry} />)
+    render(<CountryPicker selectedCountry={METROPOLITAN_FRANCE} onSelect={onSelectCountry} />)
 
     fireEvent.press(
       await screen.findByTestId('Ouvrir la modale de choix de l’indicatif téléphonique')
