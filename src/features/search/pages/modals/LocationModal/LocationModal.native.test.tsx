@@ -554,7 +554,9 @@ describe('<LocationModal/>', () => {
       })
     })
 
-    it('should update search state when pressing submit button', async () => {
+    it('should update search state when pressing submit button, when we are in general filter page', async () => {
+      mockSearchState = searchState
+      mockSearchState.view = SearchView.Results
       renderLocationModal({
         filterBehaviour: FilterBehaviour.APPLY_WITHOUT_SEARCHING,
       })
@@ -580,6 +582,39 @@ describe('<LocationModal/>', () => {
       expect(mockDispatch).toHaveBeenCalledWith({
         type: 'SET_STATE',
         payload: expectedSearchParams,
+      })
+    })
+
+    it('should navigate when pressing location button on landing page ', async () => {
+      mockSearchState = searchState
+      mockSearchState.view = SearchView.Landing
+      renderLocationModal({
+        filterBehaviour: FilterBehaviour.APPLY_WITHOUT_SEARCHING,
+      })
+
+      await act(async () => {
+        fireEvent.press(screen.getByText('Autour de moi'))
+      })
+
+      await waitFor(() => {
+        expect(screen.getByLabelText('Appliquer le filtre')).toBeEnabled()
+      })
+
+      const searchButton = screen.getByText('Appliquer le filtre')
+      await act(async () => {
+        fireEvent.press(searchButton)
+      })
+
+      expect(navigate).toHaveBeenCalledWith('TabNavigator', {
+        params: {
+          ...mockSearchState,
+          locationFilter: {
+            aroundRadius: 100,
+            locationType: 'AROUND_ME',
+          },
+          view: SearchView.Landing,
+        },
+        screen: 'Search',
       })
     })
   })

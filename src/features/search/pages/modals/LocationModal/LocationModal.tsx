@@ -233,8 +233,12 @@ export const LocationModal: FunctionComponent<LocationModalProps> = ({
           break
         }
         case FilterBehaviour.APPLY_WITHOUT_SEARCHING: {
+          // Workaround: When on the search page and applying filters while entering a search query
+          // or selecting an autocomplete item, the filter wasn't being applied correctly.
+          // So, we navigate to the Search page and set the filter state with the location param.
           if (searchState.view === SearchView.Landing) {
             navigate(...getTabNavConfig('Search', additionalSearchState))
+            break
           }
           dispatch({ type: 'SET_STATE', payload: additionalSearchState })
           break
