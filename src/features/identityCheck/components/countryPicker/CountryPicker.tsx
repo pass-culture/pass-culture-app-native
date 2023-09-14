@@ -53,8 +53,10 @@ export const CountryPicker: React.FC<Props> = ({ selectedCountry, onSelect }) =>
         onBlur={onBlur}
         onPress={onPress}>
         <CountryContainer ref={containerRef}>
-          <IconContainer>{selected ? <ValidateIcon /> : <ValidateOffIcon />}</IconContainer>
-          <CountryName>{itemTitle}</CountryName>
+          {selected ? <ValidateIcon /> : <ValidateOffIcon />}
+          <Spacer.Row numberOfSpaces={2} />
+          <Typo.ButtonText>{itemTitle}</Typo.ButtonText>
+          <Spacer.Row numberOfSpaces={1} />
           <CountryCallingCode>{countryCallingCode}</CountryCallingCode>
         </CountryContainer>
       </TouchableOpacity>
@@ -95,13 +97,6 @@ const CountryContainer = styled.View({
   paddingHorizontal: getSpacing(1),
 })
 
-const IconContainer = styled.View({
-  marginRight: getSpacing(2),
-})
-
-const CountryName = styled(Typo.ButtonText)({
-  marginRight: getSpacing(1),
-})
 const CountryCallingCode = styled(Typo.ButtonText)(({ theme }) => ({
   fontFamily: theme.fontFamily.medium,
 }))
