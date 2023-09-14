@@ -19,9 +19,7 @@ export const useSeventeenFirstStepperProps = (
   const pastNoCreditStep: CreditComponentProps = {
     creditStep: 'pastStep',
     children: (
-      <PastStepBlock
-        text={'Les crédits précédents ne sont plus disponibles car tu as plus de 16\u00a0ans.'}
-      />
+      <PastStepBlock text="Les crédits précédents ne sont plus disponibles car tu as plus de 16&nbsp;ans." />
     ),
   }
 
