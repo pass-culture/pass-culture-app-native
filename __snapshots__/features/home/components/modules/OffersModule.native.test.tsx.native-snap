@@ -767,6 +767,14 @@ exports[`OffersModule component should render correctly 1`] = `
                     <View
                       accessibilityLabel="Offre Un lit sous une rivière de la catégorie Concert,  le 17 novembre 2020, prix 34 €. Possibilité de réserver 2 places."
                       accessibilityRole="link"
+                      accessibilityValue={
+                        {
+                          "max": undefined,
+                          "min": undefined,
+                          "now": undefined,
+                          "text": undefined,
+                        }
+                      }
                       accessible={true}
                       focusable={true}
                       onClick={[Function]}
@@ -1046,6 +1054,14 @@ exports[`OffersModule component should render correctly 1`] = `
                     <View
                       accessibilityLabel="Offre I want something more de la catégorie Concert,   prix 23 €. "
                       accessibilityRole="link"
+                      accessibilityValue={
+                        {
+                          "max": undefined,
+                          "min": undefined,
+                          "now": undefined,
+                          "text": undefined,
+                        }
+                      }
                       accessible={true}
                       focusable={true}
                       onClick={[Function]}
@@ -1310,6 +1326,14 @@ exports[`OffersModule component should render correctly 1`] = `
                     <View
                       accessibilityLabel="Offre La nuit des temps de la catégorie Livre,   prix 28 €. "
                       accessibilityRole="link"
+                      accessibilityValue={
+                        {
+                          "max": undefined,
+                          "min": undefined,
+                          "now": undefined,
+                          "text": undefined,
+                        }
+                      }
                       accessible={true}
                       focusable={true}
                       onClick={[Function]}
@@ -1572,6 +1596,14 @@ exports[`OffersModule component should render correctly 1`] = `
                     <View
                       accessibilityLabel="Offre I want something more de la catégorie Concert,   prix 28 €. "
                       accessibilityRole="link"
+                      accessibilityValue={
+                        {
+                          "max": undefined,
+                          "min": undefined,
+                          "now": undefined,
+                          "text": undefined,
+                        }
+                      }
                       accessible={true}
                       focusable={true}
                       onClick={[Function]}
@@ -1784,6 +1816,14 @@ exports[`OffersModule component should render correctly 1`] = `
                 <View
                   accessibilityLabel="Offre I want something more de la catégorie Concert,   prix 23 €. "
                   accessibilityRole="link"
+                  accessibilityValue={
+                    {
+                      "max": undefined,
+                      "min": undefined,
+                      "now": undefined,
+                      "text": undefined,
+                    }
+                  }
                   accessible={true}
                   focusable={true}
                   onClick={[Function]}

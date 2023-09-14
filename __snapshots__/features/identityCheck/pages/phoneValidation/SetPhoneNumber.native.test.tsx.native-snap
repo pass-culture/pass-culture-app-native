@@ -74,6 +74,23 @@ exports[`SetPhoneNumber should match snapshot without modal appearance 1`] = `
           <View
             accessibilityLabel="Revenir en arrière"
             accessibilityRole="button"
+            accessibilityState={
+              {
+                "busy": undefined,
+                "checked": undefined,
+                "disabled": undefined,
+                "expanded": undefined,
+                "selected": undefined,
+              }
+            }
+            accessibilityValue={
+              {
+                "max": undefined,
+                "min": undefined,
+                "now": undefined,
+                "text": undefined,
+              }
+            }
             accessible={true}
             collapsable={false}
             focusable={true}
@@ -409,6 +426,23 @@ exports[`SetPhoneNumber should match snapshot without modal appearance 1`] = `
                       <View
                         accessibilityLabel="Ouvrir la modale de choix de l’indicatif téléphonique"
                         accessibilityRole="button"
+                        accessibilityState={
+                          {
+                            "busy": undefined,
+                            "checked": undefined,
+                            "disabled": undefined,
+                            "expanded": undefined,
+                            "selected": undefined,
+                          }
+                        }
+                        accessibilityValue={
+                          {
+                            "max": undefined,
+                            "min": undefined,
+                            "now": undefined,
+                            "text": undefined,
+                          }
+                        }
                         accessible={true}
                         collapsable={false}
                         focusable={true}
@@ -695,7 +729,19 @@ exports[`SetPhoneNumber should match snapshot without modal appearance 1`] = `
               accessibilityLabel="Continuer"
               accessibilityState={
                 {
+                  "busy": undefined,
+                  "checked": undefined,
                   "disabled": true,
+                  "expanded": undefined,
+                  "selected": undefined,
+                }
+              }
+              accessibilityValue={
+                {
+                  "max": undefined,
+                  "min": undefined,
+                  "now": undefined,
+                  "text": undefined,
                 }
               }
               accessible={true}

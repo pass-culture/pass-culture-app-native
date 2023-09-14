@@ -119,7 +119,19 @@ exports[`NotConnectedFavorites component should render not connected favorites 1
         accessibilityRole="link"
         accessibilityState={
           {
+            "busy": undefined,
+            "checked": undefined,
             "disabled": false,
+            "expanded": undefined,
+            "selected": undefined,
+          }
+        }
+        accessibilityValue={
+          {
+            "max": undefined,
+            "min": undefined,
+            "now": undefined,
+            "text": undefined,
           }
         }
         accessible={true}
@@ -239,6 +251,23 @@ exports[`NotConnectedFavorites component should render not connected favorites 1
             <View
               accessibilityLabel="Se connecter"
               accessibilityRole="link"
+              accessibilityState={
+                {
+                  "busy": undefined,
+                  "checked": undefined,
+                  "disabled": undefined,
+                  "expanded": undefined,
+                  "selected": undefined,
+                }
+              }
+              accessibilityValue={
+                {
+                  "max": undefined,
+                  "min": undefined,
+                  "now": undefined,
+                  "text": undefined,
+                }
+              }
               accessible={true}
               collapsable={false}
               focusable={true}

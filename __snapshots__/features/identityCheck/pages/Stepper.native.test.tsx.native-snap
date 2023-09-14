@@ -230,7 +230,19 @@ exports[`Stepper navigation should render correctly 1`] = `
               accessibilityRole="link"
               accessibilityState={
                 {
+                  "busy": undefined,
+                  "checked": undefined,
                   "disabled": true,
+                  "expanded": undefined,
+                  "selected": undefined,
+                }
+              }
+              accessibilityValue={
+                {
+                  "max": undefined,
+                  "min": undefined,
+                  "now": undefined,
+                  "text": undefined,
                 }
               }
               accessible={true}
@@ -263,6 +275,7 @@ exports[`Stepper navigation should render correctly 1`] = `
                       "borderRadius": 8,
                       "borderWidth": 1,
                       "flexDirection": "row",
+                      "marginTop": 8,
                     },
                     {
                       "borderColor": "#F1F1F4",
@@ -459,7 +472,19 @@ exports[`Stepper navigation should render correctly 1`] = `
               accessibilityRole="link"
               accessibilityState={
                 {
+                  "busy": undefined,
+                  "checked": undefined,
                   "disabled": false,
+                  "expanded": undefined,
+                  "selected": undefined,
+                }
+              }
+              accessibilityValue={
+                {
+                  "max": undefined,
+                  "min": undefined,
+                  "now": undefined,
+                  "text": undefined,
                 }
               }
               accessible={true}
@@ -722,7 +747,19 @@ exports[`Stepper navigation should render correctly 1`] = `
               accessibilityRole="link"
               accessibilityState={
                 {
+                  "busy": undefined,
+                  "checked": undefined,
                   "disabled": true,
+                  "expanded": undefined,
+                  "selected": undefined,
+                }
+              }
+              accessibilityValue={
+                {
+                  "max": undefined,
+                  "min": undefined,
+                  "now": undefined,
+                  "text": undefined,
                 }
               }
               accessible={true}
@@ -755,6 +792,7 @@ exports[`Stepper navigation should render correctly 1`] = `
                       "borderRadius": 8,
                       "borderWidth": 1,
                       "flexDirection": "row",
+                      "marginTop": 8,
                     },
                     {
                       "borderColor": "#CBCDD2",
@@ -948,7 +986,19 @@ exports[`Stepper navigation should render correctly 1`] = `
               accessibilityRole="link"
               accessibilityState={
                 {
+                  "busy": undefined,
+                  "checked": undefined,
                   "disabled": true,
+                  "expanded": undefined,
+                  "selected": undefined,
+                }
+              }
+              accessibilityValue={
+                {
+                  "max": undefined,
+                  "min": undefined,
+                  "now": undefined,
+                  "text": undefined,
                 }
               }
               accessible={true}
@@ -981,6 +1031,7 @@ exports[`Stepper navigation should render correctly 1`] = `
                       "borderRadius": 8,
                       "borderWidth": 1,
                       "flexDirection": "row",
+                      "marginTop": 8,
                     },
                     {
                       "borderColor": "#CBCDD2",
@@ -1058,6 +1109,23 @@ exports[`Stepper navigation should render correctly 1`] = `
     />
     <View
       accessibilityLabel="Abandonner"
+      accessibilityState={
+        {
+          "busy": undefined,
+          "checked": undefined,
+          "disabled": undefined,
+          "expanded": undefined,
+          "selected": undefined,
+        }
+      }
+      accessibilityValue={
+        {
+          "max": undefined,
+          "min": undefined,
+          "now": undefined,
+          "text": undefined,
+        }
+      }
       accessible={true}
       collapsable={false}
       focusable={true}

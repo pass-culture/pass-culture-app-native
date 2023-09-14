@@ -100,7 +100,19 @@ exports[`<TicketWithContent/> should render properly 1`] = `
           accessibilityRole="button"
           accessibilityState={
             {
+              "busy": undefined,
+              "checked": undefined,
               "disabled": true,
+              "expanded": undefined,
+              "selected": undefined,
+            }
+          }
+          accessibilityValue={
+            {
+              "max": undefined,
+              "min": undefined,
+              "now": undefined,
+              "text": undefined,
             }
           }
           accessible={false}

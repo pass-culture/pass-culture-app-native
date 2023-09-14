@@ -1,5 +1,5 @@
 import React, { FunctionComponent } from 'react'
-import { StyleProp, ViewStyle } from 'react-native'
+import { StyleProp, View, ViewStyle } from 'react-native'
 import styled from 'styled-components/native'
 
 import { StepButtonState, StepDetails } from 'features/identityCheck/types'
@@ -71,7 +71,8 @@ export const StepButton = ({ step, navigateTo, onPress }: Props) => {
   )
 }
 
-const BaseStyleComponent = styled.View(({ theme }) => ({
+const BaseStyleComponent = styled(View)(({ theme }) => ({
+  marginTop: getSpacing(2),
   backgroundColor: theme.colors.white,
   borderRadius: theme.borderRadius.radius,
   flexDirection: 'row',

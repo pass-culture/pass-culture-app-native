@@ -212,6 +212,23 @@ Tu peux faire une nouvelle demande de modification dans ton profil.
     >
       <View
         accessibilityLabel="Faire une nouvelle demande"
+        accessibilityState={
+          {
+            "busy": undefined,
+            "checked": undefined,
+            "disabled": undefined,
+            "expanded": undefined,
+            "selected": undefined,
+          }
+        }
+        accessibilityValue={
+          {
+            "max": undefined,
+            "min": undefined,
+            "now": undefined,
+            "text": undefined,
+          }
+        }
         accessible={true}
         collapsable={false}
         focusable={true}
@@ -273,6 +290,23 @@ Tu peux faire une nouvelle demande de modification dans ton profil.
       />
       <View
         accessibilityLabel="Retourner à l’accueil"
+        accessibilityState={
+          {
+            "busy": undefined,
+            "checked": undefined,
+            "disabled": undefined,
+            "expanded": undefined,
+            "selected": undefined,
+          }
+        }
+        accessibilityValue={
+          {
+            "max": undefined,
+            "min": undefined,
+            "now": undefined,
+            "text": undefined,
+          }
+        }
         accessible={true}
         collapsable={false}
         focusable={true}
@@ -569,6 +603,23 @@ Connecte-toi avec ton ancienne adresse e-mail pour faire une nouvelle demande de
     >
       <View
         accessibilityLabel="Se connecter"
+        accessibilityState={
+          {
+            "busy": undefined,
+            "checked": undefined,
+            "disabled": undefined,
+            "expanded": undefined,
+            "selected": undefined,
+          }
+        }
+        accessibilityValue={
+          {
+            "max": undefined,
+            "min": undefined,
+            "now": undefined,
+            "text": undefined,
+          }
+        }
         accessible={true}
         collapsable={false}
         focusable={true}
@@ -630,6 +681,23 @@ Connecte-toi avec ton ancienne adresse e-mail pour faire une nouvelle demande de
       />
       <View
         accessibilityLabel="Retourner à l’accueil"
+        accessibilityState={
+          {
+            "busy": undefined,
+            "checked": undefined,
+            "disabled": undefined,
+            "expanded": undefined,
+            "selected": undefined,
+          }
+        }
+        accessibilityValue={
+          {
+            "max": undefined,
+            "min": undefined,
+            "now": undefined,
+            "text": undefined,
+          }
+        }
         accessible={true}
         collapsable={false}
         focusable={true}

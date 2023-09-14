@@ -12,11 +12,11 @@ export const ScrollToTopButton = ({
   transition,
   onPress,
 }: {
-  transition: Animated.AnimatedInterpolation
+  transition: Animated.AnimatedInterpolation<string | number>
   onPress: () => void
 }) => {
   const [disabled, setDisabled] = useState(true)
-  transition.addListener((opacity) => {
+  transition.addListener((opacity: { value: number }) => {
     setDisabled(opacity.value === 0)
   })
   return (

@@ -183,6 +183,15 @@ exports[`<ProfileTutorialAgeInformation /> should display not logged in version 
               }
             />
             <View
+              accessibilityState={
+                {
+                  "busy": undefined,
+                  "checked": undefined,
+                  "disabled": undefined,
+                  "expanded": undefined,
+                  "selected": undefined,
+                }
+              }
               accessible={true}
               collapsable={false}
               focusable={true}
@@ -714,6 +723,15 @@ exports[`<ProfileTutorialAgeInformation /> should display not logged in version 
               }
             />
             <View
+              accessibilityState={
+                {
+                  "busy": undefined,
+                  "checked": undefined,
+                  "disabled": undefined,
+                  "expanded": undefined,
+                  "selected": undefined,
+                }
+              }
               accessible={true}
               focusable={true}
               onClick={[Function]}
@@ -1093,6 +1111,15 @@ exports[`<ProfileTutorialAgeInformation /> should display not logged in version 
               }
             />
             <View
+              accessibilityState={
+                {
+                  "busy": undefined,
+                  "checked": undefined,
+                  "disabled": undefined,
+                  "expanded": undefined,
+                  "selected": undefined,
+                }
+              }
               accessible={true}
               focusable={true}
               onClick={[Function]}
@@ -1644,6 +1671,15 @@ exports[`<ProfileTutorialAgeInformation /> should display not logged in version 
               }
             />
             <View
+              accessibilityState={
+                {
+                  "busy": undefined,
+                  "checked": undefined,
+                  "disabled": undefined,
+                  "expanded": undefined,
+                  "selected": undefined,
+                }
+              }
               accessible={true}
               focusable={true}
               onClick={[Function]}
@@ -2391,6 +2427,23 @@ exports[`<ProfileTutorialAgeInformation /> should display not logged in version 
           />
           <View
             accessibilityLabel="Donner mon avis"
+            accessibilityState={
+              {
+                "busy": undefined,
+                "checked": undefined,
+                "disabled": undefined,
+                "expanded": undefined,
+                "selected": undefined,
+              }
+            }
+            accessibilityValue={
+              {
+                "max": undefined,
+                "min": undefined,
+                "now": undefined,
+                "text": undefined,
+              }
+            }
             accessible={true}
             collapsable={false}
             focusable={true}
@@ -2488,7 +2541,19 @@ exports[`<ProfileTutorialAgeInformation /> should display not logged in version 
           accessibilityRole="link"
           accessibilityState={
             {
+              "busy": undefined,
+              "checked": undefined,
               "disabled": false,
+              "expanded": undefined,
+              "selected": undefined,
+            }
+          }
+          accessibilityValue={
+            {
+              "max": undefined,
+              "min": undefined,
+              "now": undefined,
+              "text": undefined,
             }
           }
           accessible={true}
@@ -2608,6 +2673,23 @@ exports[`<ProfileTutorialAgeInformation /> should display not logged in version 
               <View
                 accessibilityLabel="Se connecter"
                 accessibilityRole="link"
+                accessibilityState={
+                  {
+                    "busy": undefined,
+                    "checked": undefined,
+                    "disabled": undefined,
+                    "expanded": undefined,
+                    "selected": undefined,
+                  }
+                }
+                accessibilityValue={
+                  {
+                    "max": undefined,
+                    "min": undefined,
+                    "now": undefined,
+                    "text": undefined,
+                  }
+                }
                 accessible={true}
                 collapsable={false}
                 focusable={true}
@@ -2791,6 +2873,23 @@ exports[`<ProfileTutorialAgeInformation /> should display not logged in version 
       <View
         accessibilityLabel="Revenir en arrière"
         accessibilityRole="button"
+        accessibilityState={
+          {
+            "busy": undefined,
+            "checked": undefined,
+            "disabled": undefined,
+            "expanded": undefined,
+            "selected": undefined,
+          }
+        }
+        accessibilityValue={
+          {
+            "max": undefined,
+            "min": undefined,
+            "now": undefined,
+            "text": undefined,
+          }
+        }
         accessible={true}
         collapsable={false}
         focusable={true}
@@ -3099,6 +3198,23 @@ exports[`<ProfileTutorialAgeInformation /> should render correctly when logged i
           />
           <View
             accessibilityLabel="Donner mon avis"
+            accessibilityState={
+              {
+                "busy": undefined,
+                "checked": undefined,
+                "disabled": undefined,
+                "expanded": undefined,
+                "selected": undefined,
+              }
+            }
+            accessibilityValue={
+              {
+                "max": undefined,
+                "min": undefined,
+                "now": undefined,
+                "text": undefined,
+              }
+            }
             accessible={true}
             collapsable={false}
             focusable={true}
@@ -3283,6 +3399,23 @@ exports[`<ProfileTutorialAgeInformation /> should render correctly when logged i
       <View
         accessibilityLabel="Revenir en arrière"
         accessibilityRole="button"
+        accessibilityState={
+          {
+            "busy": undefined,
+            "checked": undefined,
+            "disabled": undefined,
+            "expanded": undefined,
+            "selected": undefined,
+          }
+        }
+        accessibilityValue={
+          {
+            "max": undefined,
+            "min": undefined,
+            "now": undefined,
+            "text": undefined,
+          }
+        }
         accessible={true}
         collapsable={false}
         focusable={true}

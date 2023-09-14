@@ -33,6 +33,15 @@ exports[`<AuthenticationModal /> should match previous snapshot 1`] = `
   visible={true}
 >
   <View
+    accessibilityState={
+      {
+        "busy": undefined,
+        "checked": undefined,
+        "disabled": undefined,
+        "expanded": undefined,
+        "selected": undefined,
+      }
+    }
     accessible={true}
     collapsable={false}
     focusable={true}
@@ -213,6 +222,23 @@ pour réserver l’offre
           <View
             accessibilityLabel="Fermer la modale"
             accessibilityRole="button"
+            accessibilityState={
+              {
+                "busy": undefined,
+                "checked": undefined,
+                "disabled": undefined,
+                "expanded": undefined,
+                "selected": undefined,
+              }
+            }
+            accessibilityValue={
+              {
+                "max": undefined,
+                "min": undefined,
+                "now": undefined,
+                "text": undefined,
+              }
+            }
             accessible={true}
             collapsable={false}
             focusable={true}
@@ -369,7 +395,19 @@ pour réserver l’offre
                   accessibilityRole="link"
                   accessibilityState={
                     {
+                      "busy": undefined,
+                      "checked": undefined,
                       "disabled": false,
+                      "expanded": undefined,
+                      "selected": undefined,
+                    }
+                  }
+                  accessibilityValue={
+                    {
+                      "max": undefined,
+                      "min": undefined,
+                      "now": undefined,
+                      "text": undefined,
                     }
                   }
                   accessible={true}
@@ -490,6 +528,23 @@ pour réserver l’offre
                     <View
                       accessibilityLabel="Se connecter"
                       accessibilityRole="link"
+                      accessibilityState={
+                        {
+                          "busy": undefined,
+                          "checked": undefined,
+                          "disabled": undefined,
+                          "expanded": undefined,
+                          "selected": undefined,
+                        }
+                      }
+                      accessibilityValue={
+                        {
+                          "max": undefined,
+                          "min": undefined,
+                          "now": undefined,
+                          "text": undefined,
+                        }
+                      }
                       accessible={true}
                       collapsable={false}
                       focusable={true}

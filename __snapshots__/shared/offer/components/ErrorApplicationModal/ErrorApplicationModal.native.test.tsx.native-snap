@@ -33,6 +33,15 @@ exports[`<ErrorApplicationModal /> should match previous snapshot 1`] = `
   visible={true}
 >
   <View
+    accessibilityState={
+      {
+        "busy": undefined,
+        "checked": undefined,
+        "disabled": undefined,
+        "expanded": undefined,
+        "selected": undefined,
+      }
+    }
     accessible={true}
     collapsable={false}
     focusable={true}
@@ -213,6 +222,23 @@ ton crédit
           <View
             accessibilityLabel="Fermer la modale"
             accessibilityRole="button"
+            accessibilityState={
+              {
+                "busy": undefined,
+                "checked": undefined,
+                "disabled": undefined,
+                "expanded": undefined,
+                "selected": undefined,
+              }
+            }
+            accessibilityValue={
+              {
+                "max": undefined,
+                "min": undefined,
+                "now": undefined,
+                "text": undefined,
+              }
+            }
             accessible={true}
             collapsable={false}
             focusable={true}
@@ -337,6 +363,23 @@ ton crédit
               />
               <View
                 accessibilityLabel="Aller vers la section profil"
+                accessibilityState={
+                  {
+                    "busy": undefined,
+                    "checked": undefined,
+                    "disabled": undefined,
+                    "expanded": undefined,
+                    "selected": undefined,
+                  }
+                }
+                accessibilityValue={
+                  {
+                    "max": undefined,
+                    "min": undefined,
+                    "now": undefined,
+                    "text": undefined,
+                  }
+                }
                 accessible={true}
                 collapsable={false}
                 focusable={true}
@@ -398,6 +441,23 @@ ton crédit
               />
               <View
                 accessibilityLabel="Mettre en favori"
+                accessibilityState={
+                  {
+                    "busy": undefined,
+                    "checked": undefined,
+                    "disabled": undefined,
+                    "expanded": undefined,
+                    "selected": undefined,
+                  }
+                }
+                accessibilityValue={
+                  {
+                    "max": undefined,
+                    "min": undefined,
+                    "now": undefined,
+                    "text": undefined,
+                  }
+                }
                 accessible={true}
                 collapsable={false}
                 focusable={true}

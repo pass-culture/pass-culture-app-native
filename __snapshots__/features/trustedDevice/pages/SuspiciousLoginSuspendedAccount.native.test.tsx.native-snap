@@ -218,6 +218,23 @@ exports[`<SuspiciousLoginSuspendedAccount/> should match snapshot 1`] = `
     >
       <View
         accessibilityLabel="Ouvrir le gestionnaire mail pour contacter le service fraude"
+        accessibilityState={
+          {
+            "busy": undefined,
+            "checked": undefined,
+            "disabled": undefined,
+            "expanded": undefined,
+            "selected": undefined,
+          }
+        }
+        accessibilityValue={
+          {
+            "max": undefined,
+            "min": undefined,
+            "now": undefined,
+            "text": undefined,
+          }
+        }
         accessible={true}
         collapsable={false}
         focusable={true}
@@ -298,6 +315,23 @@ exports[`<SuspiciousLoginSuspendedAccount/> should match snapshot 1`] = `
       />
       <View
         accessibilityLabel="Retourner à l’accueil"
+        accessibilityState={
+          {
+            "busy": undefined,
+            "checked": undefined,
+            "disabled": undefined,
+            "expanded": undefined,
+            "selected": undefined,
+          }
+        }
+        accessibilityValue={
+          {
+            "max": undefined,
+            "min": undefined,
+            "now": undefined,
+            "text": undefined,
+          }
+        }
         accessible={true}
         collapsable={false}
         focusable={true}

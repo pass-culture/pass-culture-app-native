@@ -33,6 +33,15 @@ exports[`<FinishSubscriptionModal /> should display correct body when user needs
   visible={true}
 >
   <View
+    accessibilityState={
+      {
+        "busy": undefined,
+        "checked": undefined,
+        "disabled": undefined,
+        "expanded": undefined,
+        "selected": undefined,
+      }
+    }
     accessible={true}
     collapsable={false}
     focusable={true}
@@ -213,6 +222,23 @@ pour réserver cette offre
           <View
             accessibilityLabel="Fermer la modale"
             accessibilityRole="button"
+            accessibilityState={
+              {
+                "busy": undefined,
+                "checked": undefined,
+                "disabled": undefined,
+                "expanded": undefined,
+                "selected": undefined,
+              }
+            }
+            accessibilityValue={
+              {
+                "max": undefined,
+                "min": undefined,
+                "now": undefined,
+                "text": undefined,
+              }
+            }
             accessible={true}
             collapsable={false}
             focusable={true}
@@ -390,6 +416,23 @@ pour réserver cette offre
               />
               <View
                 accessibilityLabel="Aller vers la section profil"
+                accessibilityState={
+                  {
+                    "busy": undefined,
+                    "checked": undefined,
+                    "disabled": undefined,
+                    "expanded": undefined,
+                    "selected": undefined,
+                  }
+                }
+                accessibilityValue={
+                  {
+                    "max": undefined,
+                    "min": undefined,
+                    "now": undefined,
+                    "text": undefined,
+                  }
+                }
                 accessible={true}
                 collapsable={false}
                 focusable={true}
@@ -481,6 +524,15 @@ exports[`<FinishSubscriptionModal /> should render correctly with eighteen years
   visible={true}
 >
   <View
+    accessibilityState={
+      {
+        "busy": undefined,
+        "checked": undefined,
+        "disabled": undefined,
+        "expanded": undefined,
+        "selected": undefined,
+      }
+    }
     accessible={true}
     collapsable={false}
     focusable={true}
@@ -661,6 +713,23 @@ pour réserver cette offre
           <View
             accessibilityLabel="Fermer la modale"
             accessibilityRole="button"
+            accessibilityState={
+              {
+                "busy": undefined,
+                "checked": undefined,
+                "disabled": undefined,
+                "expanded": undefined,
+                "selected": undefined,
+              }
+            }
+            accessibilityValue={
+              {
+                "max": undefined,
+                "min": undefined,
+                "now": undefined,
+                "text": undefined,
+              }
+            }
             accessible={true}
             collapsable={false}
             focusable={true}
@@ -838,6 +907,23 @@ pour réserver cette offre
               />
               <View
                 accessibilityLabel="Aller vers la section profil"
+                accessibilityState={
+                  {
+                    "busy": undefined,
+                    "checked": undefined,
+                    "disabled": undefined,
+                    "expanded": undefined,
+                    "selected": undefined,
+                  }
+                }
+                accessibilityValue={
+                  {
+                    "max": undefined,
+                    "min": undefined,
+                    "now": undefined,
+                    "text": undefined,
+                  }
+                }
                 accessible={true}
                 collapsable={false}
                 focusable={true}
@@ -929,6 +1015,15 @@ exports[`<FinishSubscriptionModal /> should render correctly with undefined depo
   visible={true}
 >
   <View
+    accessibilityState={
+      {
+        "busy": undefined,
+        "checked": undefined,
+        "disabled": undefined,
+        "expanded": undefined,
+        "selected": undefined,
+      }
+    }
     accessible={true}
     collapsable={false}
     focusable={true}
@@ -1109,6 +1204,23 @@ pour réserver cette offre
           <View
             accessibilityLabel="Fermer la modale"
             accessibilityRole="button"
+            accessibilityState={
+              {
+                "busy": undefined,
+                "checked": undefined,
+                "disabled": undefined,
+                "expanded": undefined,
+                "selected": undefined,
+              }
+            }
+            accessibilityValue={
+              {
+                "max": undefined,
+                "min": undefined,
+                "now": undefined,
+                "text": undefined,
+              }
+            }
             accessible={true}
             collapsable={false}
             focusable={true}
@@ -1256,6 +1368,23 @@ pour réserver cette offre
               />
               <View
                 accessibilityLabel="Aller vers la section profil"
+                accessibilityState={
+                  {
+                    "busy": undefined,
+                    "checked": undefined,
+                    "disabled": undefined,
+                    "expanded": undefined,
+                    "selected": undefined,
+                  }
+                }
+                accessibilityValue={
+                  {
+                    "max": undefined,
+                    "min": undefined,
+                    "now": undefined,
+                    "text": undefined,
+                  }
+                }
                 accessible={true}
                 collapsable={false}
                 focusable={true}

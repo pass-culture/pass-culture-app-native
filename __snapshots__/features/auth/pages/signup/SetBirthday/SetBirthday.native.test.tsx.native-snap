@@ -270,7 +270,19 @@ exports[`<SetBirthday /> should render correctly 1`] = `
       accessibilityLabel="Continuer"
       accessibilityState={
         {
+          "busy": undefined,
+          "checked": undefined,
           "disabled": true,
+          "expanded": undefined,
+          "selected": undefined,
+        }
+      }
+      accessibilityValue={
+        {
+          "max": undefined,
+          "min": undefined,
+          "now": undefined,
+          "text": undefined,
         }
       }
       accessible={true}

@@ -33,6 +33,15 @@ exports[`ReportOffer General modal behavior Report offer snapshots should displa
   visible={true}
 >
   <View
+    accessibilityState={
+      {
+        "busy": undefined,
+        "checked": undefined,
+        "disabled": undefined,
+        "expanded": undefined,
+        "selected": undefined,
+      }
+    }
     accessible={true}
     collapsable={false}
     focusable={true}
@@ -212,6 +221,23 @@ exports[`ReportOffer General modal behavior Report offer snapshots should displa
           <View
             accessibilityLabel="Fermer la modale"
             accessibilityRole="button"
+            accessibilityState={
+              {
+                "busy": undefined,
+                "checked": undefined,
+                "disabled": undefined,
+                "expanded": undefined,
+                "selected": undefined,
+              }
+            }
+            accessibilityValue={
+              {
+                "max": undefined,
+                "min": undefined,
+                "now": undefined,
+                "text": undefined,
+              }
+            }
             accessible={true}
             collapsable={false}
             focusable={true}
@@ -425,6 +451,23 @@ exports[`ReportOffer General modal behavior Report offer snapshots should displa
               />
               <View
                 accessibilityLabel="Signaler l’offre"
+                accessibilityState={
+                  {
+                    "busy": undefined,
+                    "checked": undefined,
+                    "disabled": undefined,
+                    "expanded": undefined,
+                    "selected": undefined,
+                  }
+                }
+                accessibilityValue={
+                  {
+                    "max": undefined,
+                    "min": undefined,
+                    "now": undefined,
+                    "text": undefined,
+                  }
+                }
                 accessible={true}
                 collapsable={false}
                 focusable={true}

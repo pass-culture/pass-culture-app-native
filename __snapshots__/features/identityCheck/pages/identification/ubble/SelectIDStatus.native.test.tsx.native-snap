@@ -74,6 +74,23 @@ exports[`SelectIDStatus should render SelectIDStatus page correctly 1`] = `
           <View
             accessibilityLabel="Revenir en arrière"
             accessibilityRole="button"
+            accessibilityState={
+              {
+                "busy": undefined,
+                "checked": undefined,
+                "disabled": undefined,
+                "expanded": undefined,
+                "selected": undefined,
+              }
+            }
+            accessibilityValue={
+              {
+                "max": undefined,
+                "min": undefined,
+                "now": undefined,
+                "text": undefined,
+              }
+            }
             accessible={true}
             collapsable={false}
             focusable={true}
@@ -369,6 +386,23 @@ exports[`SelectIDStatus should render SelectIDStatus page correctly 1`] = `
               />
               <View
                 accessibilityRole="link"
+                accessibilityState={
+                  {
+                    "busy": undefined,
+                    "checked": undefined,
+                    "disabled": undefined,
+                    "expanded": undefined,
+                    "selected": undefined,
+                  }
+                }
+                accessibilityValue={
+                  {
+                    "max": undefined,
+                    "min": undefined,
+                    "now": undefined,
+                    "text": undefined,
+                  }
+                }
                 accessible={false}
                 collapsable={false}
                 focusable={true}
@@ -599,7 +633,19 @@ exports[`SelectIDStatus should render SelectIDStatus page correctly 1`] = `
                     accessibilityRole="link"
                     accessibilityState={
                       {
+                        "busy": undefined,
+                        "checked": undefined,
                         "disabled": false,
+                        "expanded": undefined,
+                        "selected": undefined,
+                      }
+                    }
+                    accessibilityValue={
+                      {
+                        "max": undefined,
+                        "min": undefined,
+                        "now": undefined,
+                        "text": undefined,
                       }
                     }
                     accessible={true}
@@ -725,7 +771,19 @@ exports[`SelectIDStatus should render SelectIDStatus page correctly 1`] = `
                     accessibilityRole="link"
                     accessibilityState={
                       {
+                        "busy": undefined,
+                        "checked": undefined,
                         "disabled": false,
+                        "expanded": undefined,
+                        "selected": undefined,
+                      }
+                    }
+                    accessibilityValue={
+                      {
+                        "max": undefined,
+                        "min": undefined,
+                        "now": undefined,
+                        "text": undefined,
                       }
                     }
                     accessible={true}

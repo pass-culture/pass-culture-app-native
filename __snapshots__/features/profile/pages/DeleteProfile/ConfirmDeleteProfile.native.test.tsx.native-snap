@@ -5,6 +5,23 @@ exports[`ConfirmDeleteProfile component should render confirm delete profile 1`]
   <View
     accessibilityLabel="Revenir en arrière"
     accessibilityRole="button"
+    accessibilityState={
+      {
+        "busy": undefined,
+        "checked": undefined,
+        "disabled": undefined,
+        "expanded": undefined,
+        "selected": undefined,
+      }
+    }
+    accessibilityValue={
+      {
+        "max": undefined,
+        "min": undefined,
+        "now": undefined,
+        "text": undefined,
+      }
+    }
     accessible={true}
     collapsable={false}
     focusable={true}
@@ -212,6 +229,23 @@ exports[`ConfirmDeleteProfile component should render confirm delete profile 1`]
                 <View
                   accessibilityLabel="conditions générales d’utilisation"
                   accessibilityRole="link"
+                  accessibilityState={
+                    {
+                      "busy": undefined,
+                      "checked": undefined,
+                      "disabled": undefined,
+                      "expanded": undefined,
+                      "selected": undefined,
+                    }
+                  }
+                  accessibilityValue={
+                    {
+                      "max": undefined,
+                      "min": undefined,
+                      "now": undefined,
+                      "text": undefined,
+                    }
+                  }
                   accessible={true}
                   collapsable={false}
                   focusable={true}
@@ -468,6 +502,23 @@ exports[`ConfirmDeleteProfile component should render confirm delete profile 1`]
       >
         <View
           accessibilityLabel="Supprimer mon compte"
+          accessibilityState={
+            {
+              "busy": undefined,
+              "checked": undefined,
+              "disabled": undefined,
+              "expanded": undefined,
+              "selected": undefined,
+            }
+          }
+          accessibilityValue={
+            {
+              "max": undefined,
+              "min": undefined,
+              "now": undefined,
+              "text": undefined,
+            }
+          }
           accessible={true}
           collapsable={false}
           focusable={true}
@@ -529,6 +580,23 @@ exports[`ConfirmDeleteProfile component should render confirm delete profile 1`]
         />
         <View
           accessibilityLabel="Consulter l’article d’aide"
+          accessibilityState={
+            {
+              "busy": undefined,
+              "checked": undefined,
+              "disabled": undefined,
+              "expanded": undefined,
+              "selected": undefined,
+            }
+          }
+          accessibilityValue={
+            {
+              "max": undefined,
+              "min": undefined,
+              "now": undefined,
+              "text": undefined,
+            }
+          }
           accessible={true}
           collapsable={false}
           focusable={true}

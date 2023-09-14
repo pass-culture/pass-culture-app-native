@@ -77,7 +77,9 @@ jest.mock('libs/subcategories/useSubcategories', () => ({
 
 const canOpenURLSpy = jest.spyOn(Linking, 'canOpenURL')
 const mockShareSingle = jest.spyOn(Share, 'shareSingle')
-const mockNativeShare = jest.spyOn(NativeShare, 'share')
+const mockNativeShare = jest
+  .spyOn(NativeShare, 'share')
+  .mockResolvedValue({ action: NativeShare.sharedAction })
 
 const mockUseOffer = jest.fn().mockReturnValue({ data: mockOffer })
 jest.mock('features/offer/api/useOffer', () => ({

@@ -218,7 +218,7 @@ const MinMaxValue = styled(Typo.Caption)(({ theme }) => ({
   color: theme.colors.greyDark,
 }))
 
-const SliderWrapper = styled.View<{ shouldShowMinMaxValues?: boolean }>(
+const SliderWrapper = styled(View)<{ shouldShowMinMaxValues?: boolean }>(
   ({ shouldShowMinMaxValues, theme }) => ({
     ...(shouldShowMinMaxValues && { paddingLeft: theme.slider.markerSize / 2 }),
   })

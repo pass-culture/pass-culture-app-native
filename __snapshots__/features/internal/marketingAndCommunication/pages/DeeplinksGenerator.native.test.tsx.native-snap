@@ -87,6 +87,23 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
             <View
               accessibilityLabel="Revenir en arrière"
               accessibilityRole="button"
+              accessibilityState={
+                {
+                  "busy": undefined,
+                  "checked": undefined,
+                  "disabled": undefined,
+                  "expanded": undefined,
+                  "selected": undefined,
+                }
+              }
+              accessibilityValue={
+                {
+                  "max": undefined,
+                  "min": undefined,
+                  "now": undefined,
+                  "text": undefined,
+                }
+              }
               accessible={true}
               collapsable={false}
               focusable={true}
@@ -256,7 +273,19 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
               accessibilityRole="button"
               accessibilityState={
                 {
+                  "busy": undefined,
+                  "checked": undefined,
+                  "disabled": undefined,
                   "expanded": true,
+                  "selected": undefined,
+                }
+              }
+              accessibilityValue={
+                {
+                  "max": undefined,
+                  "min": undefined,
+                  "now": undefined,
+                  "text": undefined,
                 }
               }
               accessible={false}
@@ -382,7 +411,19 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                 accessibilityRole="radio"
                 accessibilityState={
                   {
+                    "busy": undefined,
                     "checked": false,
+                    "disabled": undefined,
+                    "expanded": undefined,
+                    "selected": undefined,
+                  }
+                }
+                accessibilityValue={
+                  {
+                    "max": undefined,
+                    "min": undefined,
+                    "now": undefined,
+                    "text": undefined,
                   }
                 }
                 accessible={true}
@@ -511,7 +552,19 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                 accessibilityRole="radio"
                 accessibilityState={
                   {
+                    "busy": undefined,
                     "checked": false,
+                    "disabled": undefined,
+                    "expanded": undefined,
+                    "selected": undefined,
+                  }
+                }
+                accessibilityValue={
+                  {
+                    "max": undefined,
+                    "min": undefined,
+                    "now": undefined,
+                    "text": undefined,
                   }
                 }
                 accessible={true}
@@ -640,7 +693,19 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                 accessibilityRole="radio"
                 accessibilityState={
                   {
+                    "busy": undefined,
                     "checked": true,
+                    "disabled": undefined,
+                    "expanded": undefined,
+                    "selected": undefined,
+                  }
+                }
+                accessibilityValue={
+                  {
+                    "max": undefined,
+                    "min": undefined,
+                    "now": undefined,
+                    "text": undefined,
                   }
                 }
                 accessible={true}
@@ -769,7 +834,19 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                 accessibilityRole="radio"
                 accessibilityState={
                   {
+                    "busy": undefined,
                     "checked": false,
+                    "disabled": undefined,
+                    "expanded": undefined,
+                    "selected": undefined,
+                  }
+                }
+                accessibilityValue={
+                  {
+                    "max": undefined,
+                    "min": undefined,
+                    "now": undefined,
+                    "text": undefined,
                   }
                 }
                 accessible={true}
@@ -898,7 +975,19 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                 accessibilityRole="radio"
                 accessibilityState={
                   {
+                    "busy": undefined,
                     "checked": false,
+                    "disabled": undefined,
+                    "expanded": undefined,
+                    "selected": undefined,
+                  }
+                }
+                accessibilityValue={
+                  {
+                    "max": undefined,
+                    "min": undefined,
+                    "now": undefined,
+                    "text": undefined,
                   }
                 }
                 accessible={true}
@@ -1027,7 +1116,19 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                 accessibilityRole="radio"
                 accessibilityState={
                   {
+                    "busy": undefined,
                     "checked": false,
+                    "disabled": undefined,
+                    "expanded": undefined,
+                    "selected": undefined,
+                  }
+                }
+                accessibilityValue={
+                  {
+                    "max": undefined,
+                    "min": undefined,
+                    "now": undefined,
+                    "text": undefined,
                   }
                 }
                 accessible={true}
@@ -1156,7 +1257,19 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                 accessibilityRole="radio"
                 accessibilityState={
                   {
+                    "busy": undefined,
                     "checked": false,
+                    "disabled": undefined,
+                    "expanded": undefined,
+                    "selected": undefined,
+                  }
+                }
+                accessibilityValue={
+                  {
+                    "max": undefined,
+                    "min": undefined,
+                    "now": undefined,
+                    "text": undefined,
                   }
                 }
                 accessible={true}
@@ -1285,7 +1398,19 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                 accessibilityRole="radio"
                 accessibilityState={
                   {
+                    "busy": undefined,
                     "checked": false,
+                    "disabled": undefined,
+                    "expanded": undefined,
+                    "selected": undefined,
+                  }
+                }
+                accessibilityValue={
+                  {
+                    "max": undefined,
+                    "min": undefined,
+                    "now": undefined,
+                    "text": undefined,
                   }
                 }
                 accessible={true}
@@ -1415,7 +1540,19 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
               accessibilityRole="button"
               accessibilityState={
                 {
+                  "busy": undefined,
+                  "checked": undefined,
+                  "disabled": undefined,
                   "expanded": true,
+                  "selected": undefined,
+                }
+              }
+              accessibilityValue={
+                {
+                  "max": undefined,
+                  "min": undefined,
+                  "now": undefined,
+                  "text": undefined,
                 }
               }
               accessible={false}
@@ -1660,7 +1797,19 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
               accessibilityRole="button"
               accessibilityState={
                 {
+                  "busy": undefined,
+                  "checked": undefined,
+                  "disabled": undefined,
                   "expanded": true,
+                  "selected": undefined,
+                }
+              }
+              accessibilityValue={
+                {
+                  "max": undefined,
+                  "min": undefined,
+                  "now": undefined,
+                  "text": undefined,
                 }
               }
               accessible={false}
@@ -2259,7 +2408,19 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
               accessibilityRole="button"
               accessibilityState={
                 {
+                  "busy": undefined,
+                  "checked": undefined,
+                  "disabled": undefined,
                   "expanded": false,
+                  "selected": undefined,
+                }
+              }
+              accessibilityValue={
+                {
+                  "max": undefined,
+                  "min": undefined,
+                  "now": undefined,
+                  "text": undefined,
                 }
               }
               accessible={false}
@@ -2551,7 +2712,19 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
           accessibilityLabel="Générer le lien"
           accessibilityState={
             {
+              "busy": undefined,
+              "checked": undefined,
               "disabled": false,
+              "expanded": undefined,
+              "selected": undefined,
+            }
+          }
+          accessibilityValue={
+            {
+              "max": undefined,
+              "min": undefined,
+              "now": undefined,
+              "text": undefined,
             }
           }
           accessible={true}
@@ -2826,6 +2999,23 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
           }
         >
           <View
+            accessibilityState={
+              {
+                "busy": undefined,
+                "checked": undefined,
+                "disabled": undefined,
+                "expanded": undefined,
+                "selected": undefined,
+              }
+            }
+            accessibilityValue={
+              {
+                "max": undefined,
+                "min": undefined,
+                "now": undefined,
+                "text": undefined,
+              }
+            }
             accessible={false}
             collapsable={false}
             focusable={false}
@@ -2852,7 +3042,19 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
               accessibilityRole="checkbox"
               accessibilityState={
                 {
+                  "busy": undefined,
                   "checked": false,
+                  "disabled": undefined,
+                  "expanded": undefined,
+                  "selected": undefined,
+                }
+              }
+              accessibilityValue={
+                {
+                  "max": undefined,
+                  "min": undefined,
+                  "now": undefined,
+                  "text": undefined,
                 }
               }
               accessible={true}

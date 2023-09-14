@@ -55,49 +55,52 @@ export const getAlgoliaRelatedProducts = async (
   queryParameters: RecommendSearchOptions,
   fallbackParameters: RecommendSearchOptions
 ) => {
-  const relatedProducts = await getRelatedProducts({
-    recommendClient,
-    indexName,
-    objectIDs: [String(offerId)],
-    queryParameters,
-    fallbackParameters,
-  })
-    .then((response) => response.recommendations)
-    .then((recommendations) => recommendations.map((recommendation) => recommendation.objectID))
-    .catch(eventMonitoring.captureException)
-
-  return typeof relatedProducts === 'string' ? [relatedProducts] : relatedProducts || []
+  try {
+    const relatedProducts = await getRelatedProducts({
+      recommendClient,
+      indexName,
+      objectIDs: [String(offerId)],
+      queryParameters,
+      fallbackParameters,
+    })
+    const recommendations = relatedProducts.recommendations
+    const objectIDs = recommendations.map((recommendation) => recommendation.objectID)
+    return typeof objectIDs === 'string' ? [objectIDs] : objectIDs || []
+  } catch (e) {
+    eventMonitoring.captureException(e)
+    return []
+  }
 }
 
 export const getAlgoliaFrequentlyBoughtTogether = async (
   offerId: string,
   queryParameters: RecommendSearchOptions
 ) => {
-  const frequentlyBoughtTogether = await getFrequentlyBoughtTogether({
-    recommendClient,
-    indexName,
-    objectIDs: [String(offerId)],
-    queryParameters,
-  })
-    .then((response) => response.recommendations)
-    .then((recommendations) => recommendations.map((recommendation) => recommendation.objectID))
-    .catch(eventMonitoring.captureException)
-
-  return typeof frequentlyBoughtTogether === 'string'
-    ? [frequentlyBoughtTogether]
-    : frequentlyBoughtTogether || []
+  try {
+    const frequentlyBoughtTogether = await getFrequentlyBoughtTogether({
+      recommendClient,
+      indexName,
+      objectIDs: [String(offerId)],
+      queryParameters,
+    })
+    const recommendations = frequentlyBoughtTogether.recommendations
+    const objectIDs = recommendations.map((recommendation) => recommendation.objectID)
+    return typeof objectIDs === 'string' ? [objectIDs] : objectIDs || []
+  } catch (e) {
+    eventMonitoring.captureException(e)
+    return []
+  }
 }
 
 export const getApiRecoSimilarOffers = async (similarOffersEndpoint: string) => {
-  const similarOffers = await fetch(similarOffersEndpoint)
-    .then((response) => response.json())
-    .then((data: SimilarOffersResponse) => data)
-    .catch((e) => {
-      eventMonitoring.captureException(e)
-      return undefined
-    })
-
-  return similarOffers
+  try {
+    const similarOffers = await fetch(similarOffersEndpoint)
+    const json: SimilarOffersResponse = await similarOffers.json()
+    return json
+  } catch (e) {
+    eventMonitoring.captureException(e)
+    return undefined
+  }
 }
 
 export const getCategories = (

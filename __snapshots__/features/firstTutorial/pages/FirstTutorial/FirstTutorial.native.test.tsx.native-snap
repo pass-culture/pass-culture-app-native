@@ -51,6 +51,23 @@ exports[`FirstTutorial page should render first tutorial 1`] = `
     >
       <View
         accessibilityLabel="Tout passer"
+        accessibilityState={
+          {
+            "busy": undefined,
+            "checked": undefined,
+            "disabled": undefined,
+            "expanded": undefined,
+            "selected": undefined,
+          }
+        }
+        accessibilityValue={
+          {
+            "max": undefined,
+            "min": undefined,
+            "now": undefined,
+            "text": undefined,
+          }
+        }
         accessible={true}
         collapsable={false}
         focusable={true}
@@ -321,6 +338,23 @@ c’est...
                   >
                     <View
                       accessibilityLabel="Continuer vers l’étape 2 sur 4"
+                      accessibilityState={
+                        {
+                          "busy": undefined,
+                          "checked": undefined,
+                          "disabled": undefined,
+                          "expanded": undefined,
+                          "selected": undefined,
+                        }
+                      }
+                      accessibilityValue={
+                        {
+                          "max": undefined,
+                          "min": undefined,
+                          "now": undefined,
+                          "text": undefined,
+                        }
+                      }
                       accessible={true}
                       collapsable={false}
                       focusable={true}
@@ -1575,6 +1609,23 @@ quotidiennes
                 <View
                   accessibilityLabel="Continuer vers l’étape suivante"
                   accessibilityRole="button"
+                  accessibilityState={
+                    {
+                      "busy": undefined,
+                      "checked": undefined,
+                      "disabled": undefined,
+                      "expanded": undefined,
+                      "selected": undefined,
+                    }
+                  }
+                  accessibilityValue={
+                    {
+                      "max": undefined,
+                      "min": undefined,
+                      "now": undefined,
+                      "text": undefined,
+                    }
+                  }
                   accessible={true}
                   collapsable={false}
                   focusable={true}
