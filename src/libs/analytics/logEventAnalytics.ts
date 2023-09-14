@@ -223,6 +223,8 @@ export const logEventAnalytics = {
     analytics.logEvent({ firebase: AnalyticsEvent.CONSULT_WHOLE_OFFER }, { offerId }),
   logConsultWithdrawal: (params: OfferIdOrVenueId) =>
     analytics.logEvent({ firebase: AnalyticsEvent.CONSULT_WITHDRAWAL_MODALITIES }, params),
+  logContactFraudTeam: ({ from }: { from: Referrals }) =>
+    analytics.logEvent({ firebase: AnalyticsEvent.CONTACT_FRAUD_TEAM }, { from }),
   logContinueCGU: () =>
     analytics.logEvent({
       amplitude: AmplitudeEvent.ACCEPT_CGU_CLICKED,

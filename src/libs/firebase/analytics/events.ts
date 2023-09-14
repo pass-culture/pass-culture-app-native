@@ -48,6 +48,7 @@ export enum AnalyticsEvent {
   CONSULT_VIDEO = 'ConsultVideo',
   CONSULT_WHOLE_OFFER = 'ConsultWholeOffer',
   CONSULT_WITHDRAWAL_MODALITIES = 'ConsultWithdrawalModalities',
+  CONTACT_FRAUD_TEAM = 'ContactFraudTeam',
   CONTINUE_CGU = 'ContinueCGU',
   CONTINUE_IDENTITY_CHECK = 'ContinueIdentityCheck',
   CONTINUE_SET_BIRTHDAY = 'ContinueSetBirthday',
