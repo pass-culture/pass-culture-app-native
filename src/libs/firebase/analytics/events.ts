@@ -56,6 +56,7 @@ export enum AnalyticsEvent {
   CONTINUE_SIGNUP = 'ContinueSignup',
   CULTURAL_SURVEY_SCROLLED_TO_BOTTOM = 'CulturalSurveyScrolledToBottom',
   DISCOVER_OFFERS = 'DiscoverOffers',
+  DISMISS_ACCOUNT_SECURITY = 'DismissAccountSecurity',
   DISMISS_NOTIFICATIONS = 'DismissNotifications',
   DISMISS_SHARE_APP = 'DismissShareApp',
   ERROR_SAVING_NEW_EMAIL = 'ErrorSavingNewMail',

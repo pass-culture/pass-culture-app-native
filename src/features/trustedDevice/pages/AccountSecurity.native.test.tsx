@@ -3,6 +3,7 @@ import React from 'react'
 import { navigate, useRoute } from '__mocks__/@react-navigation/native'
 import { navigateToHome } from 'features/navigation/helpers'
 import { ROUTE_PARAMS } from 'features/trustedDevice/fixtures/fixtures'
+import { analytics } from 'libs/analytics'
 import { fireEvent, render, screen } from 'tests/utils'
 
 import { AccountSecurity } from './AccountSecurity'
@@ -19,6 +20,7 @@ describe('<AccountSecurity/>', () => {
 
   it('should match snapshot with valid token', () => {
     useRoute.mockReturnValueOnce({ params: ROUTE_PARAMS })
+
     render(<AccountSecurity />)
 
     expect(screen).toMatchSnapshot()
@@ -27,6 +29,7 @@ describe('<AccountSecurity/>', () => {
   it('should navigate to reinitialize password when choosing this option', () => {
     useRoute.mockReturnValueOnce({ params: ROUTE_PARAMS })
     render(<AccountSecurity />)
+
     fireEvent.press(screen.getByText('Modifier mon mot de passe'))
 
     expect(navigate).toHaveBeenCalledWith('ReinitializePassword', {
@@ -38,9 +41,18 @@ describe('<AccountSecurity/>', () => {
 
   it('should navigate to home password when choosing no security', () => {
     render(<AccountSecurity />)
+
     fireEvent.press(screen.getByText('Ne pas sécuriser mon compte'))
 
     expect(navigateToHome).toHaveBeenCalledTimes(1)
+  })
+
+  it('should log analytics when choosing no security', () => {
+    render(<AccountSecurity />)
+
+    fireEvent.press(screen.getByText('Ne pas sécuriser mon compte'))
+
+    expect(analytics.logDismissAccountSecurity).toHaveBeenCalledTimes(1)
   })
 
   it('should navigate to account suspension confirmation when choosing this option', () => {
@@ -48,6 +60,7 @@ describe('<AccountSecurity/>', () => {
       params: ROUTE_PARAMS,
     })
     render(<AccountSecurity />)
+
     fireEvent.press(screen.getByText('Suspendre mon compte'))
 
     expect(navigate).toHaveBeenCalledWith('SuspensionChoice', { token: ROUTE_PARAMS.token })

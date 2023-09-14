@@ -6,6 +6,7 @@ import { UseRouteType } from 'features/navigation/RootNavigator/types'
 import { DeviceInformationsBanner } from 'features/trustedDevice/components/DeviceInformationsBanner'
 import { formatTokenInfo } from 'features/trustedDevice/helpers/formatTokenInfo'
 import { getTokenInfo } from 'features/trustedDevice/helpers/getTokenInfo'
+import { analytics } from 'libs/analytics'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { ButtonSecondary } from 'ui/components/buttons/ButtonSecondary'
 import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
@@ -18,6 +19,11 @@ import { Spacer, Typo } from 'ui/theme'
 export const AccountSecurity = () => {
   const { params } = useRoute<UseRouteType<'AccountSecurity'>>()
   const { location, osAndSource, loginDate } = formatTokenInfo(getTokenInfo(params.token))
+
+  const onPressDismissAccountSecurity = () => {
+    analytics.logDismissAccountSecurity()
+    navigateToHome()
+  }
 
   return (
     <GenericInfoPageWhite
@@ -63,7 +69,7 @@ export const AccountSecurity = () => {
       <ButtonTertiaryBlack
         wording="Ne pas sécuriser mon compte"
         icon={Invalidate}
-        onPress={navigateToHome}
+        onPress={onPressDismissAccountSecurity}
       />
     </GenericInfoPageWhite>
   )

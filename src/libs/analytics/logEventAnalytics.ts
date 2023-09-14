@@ -250,6 +250,8 @@ export const logEventAnalytics = {
     analytics.logEvent({ firebase: AnalyticsEvent.CULTURAL_SURVEY_SCROLLED_TO_BOTTOM }, params),
   logDiscoverOffers: (from: Referrals) =>
     analytics.logEvent({ firebase: AnalyticsEvent.DISCOVER_OFFERS }, { from }),
+  logDismissAccountSecurity: () =>
+    analytics.logEvent({ firebase: AnalyticsEvent.DISMISS_ACCOUNT_SECURITY }),
   logDismissNotifications: () =>
     analytics.logEvent({ firebase: AnalyticsEvent.DISMISS_NOTIFICATIONS }),
   logDismissShareApp: (type: ShareAppModalType) =>
