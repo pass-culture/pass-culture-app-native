@@ -13,7 +13,14 @@ import { Email } from 'ui/svg/icons/Email'
 import { PlainArrowPrevious } from 'ui/svg/icons/PlainArrowPrevious'
 import { UserBlocked } from 'ui/svg/icons/UserBlocked'
 
-export const GenericSuspendedAccount: React.FC<PropsWithChildren> = ({ children }) => {
+type Props = PropsWithChildren<{
+  onBeforeNavigateContactFraudTeam: () => void
+}>
+
+export const GenericSuspendedAccount: React.FC<Props> = ({
+  children,
+  onBeforeNavigateContactFraudTeam,
+}) => {
   const signOut = useLogoutRoutine()
 
   return (
@@ -25,6 +32,7 @@ export const GenericSuspendedAccount: React.FC<PropsWithChildren> = ({ children 
           key={1}
           as={ButtonPrimaryWhite}
           wording="Contacter le service fraude"
+          onBeforeNavigate={onBeforeNavigateContactFraudTeam}
           accessibilityLabel="Ouvrir le gestionnaire mail pour contacter le service fraude"
           externalNav={{ url: `mailto:${env.FRAUD_EMAIL_ADDRESS}` }}
           icon={Email}

@@ -81,7 +81,7 @@ describe('<SuspensionChoice/>', () => {
     })
   })
 
-  it('should log analytics when clicking on "Contacter le support" button', () => {
+  it('should log analytics when clicking on "Contacter le service fraude" button', () => {
     renderSuspensionChoice()
 
     const contactSupportButton = screen.getByText('Contacter le service fraude')
