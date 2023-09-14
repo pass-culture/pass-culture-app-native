@@ -3,9 +3,9 @@ import { TouchableWithoutFeedback, View } from 'react-native'
 import styled from 'styled-components/native'
 
 import { CreditStatusTag } from 'features/tutorial/components/CreditStatusTag'
-import { DURATION_IN_MS, customEaseInOut } from 'features/tutorial/helpers/animationProps'
+import { CreditStatus } from 'features/tutorial/enums'
+import { customEaseInOut, DURATION_IN_MS } from 'features/tutorial/helpers/animationProps'
 import { getBackgroundColor } from 'features/tutorial/helpers/getBackgroundColor'
-import { CreditStatus } from 'features/tutorial/types'
 import { AnimatedView, NAV_DELAY_IN_MS } from 'libs/react-native-animatable'
 import { getSpacing } from 'ui/theme'
 

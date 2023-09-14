@@ -1,21 +1,8 @@
 import React, { FunctionComponent } from 'react'
-import styled from 'styled-components/native'
 
-import { GenericBanner } from 'ui/components/ModuleBanner/GenericBanner'
+import { AgeButtonContainer } from 'features/tutorial/components/AgeButtonContainer'
+import { AgeButtonProps } from 'features/tutorial/types'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
-import { InternalNavigationProps } from 'ui/components/touchableLink/types'
-import { IconInterface } from 'ui/svg/icons/types'
-import { getSpacing } from 'ui/theme'
-
-type AgeButtonProps = {
-  accessibilityLabel: string
-  dense?: boolean
-  enableNavigate?: boolean
-  icon?: FunctionComponent<IconInterface>
-  navigateTo: InternalNavigationProps['navigateTo']
-  onBeforeNavigate?: () => void
-  children: React.ReactNode
-}
 
 export const AgeButton: FunctionComponent<AgeButtonProps> = ({
   dense,
@@ -32,13 +19,9 @@ export const AgeButton: FunctionComponent<AgeButtonProps> = ({
       onBeforeNavigate={onBeforeNavigate}
       navigateTo={navigateTo}
       accessibilityLabel={accessibilityLabel}>
-      <StyledBanner dense={dense} LeftIcon={icon}>
+      <AgeButtonContainer dense={dense} LeftIcon={icon}>
         {children}
-      </StyledBanner>
+      </AgeButtonContainer>
     </InternalTouchableLink>
   )
 }
-
-const StyledBanner = styled(GenericBanner)<{ dense?: boolean }>(({ dense }) => ({
-  paddingVertical: getSpacing(dense ? 4 : 6),
-}))

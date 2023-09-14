@@ -16,6 +16,7 @@ import { FavoritesWrapper } from 'features/favorites/context/FavoritesWrapper'
 import { SubscriptionContextProvider } from 'features/identityCheck/context/SubscriptionContextProvider'
 import { AppNavigationContainer } from 'features/navigation/NavigationContainer'
 import { SearchWrapper } from 'features/search/context/SearchWrapper'
+import { OnboardingWrapper } from 'features/tutorial/context/OnboardingWrapper'
 import { initAlgoliaAnalytics } from 'libs/algolia/analytics/initAlgoliaAnalytics'
 import { SearchAnalyticsWrapper } from 'libs/algolia/analytics/SearchAnalyticsWrapper'
 import { AppWebHead } from 'libs/appWebHead'
@@ -64,11 +65,13 @@ export function App() {
                                   <CulturalSurveyContextProvider>
                                     <SubscriptionContextProvider>
                                       <AppWebHead />
-                                      <ScreenErrorProvider>
-                                        <Suspense fallback={<LoadingPage />}>
-                                          <AppNavigationContainer />
-                                        </Suspense>
-                                      </ScreenErrorProvider>
+                                      <OnboardingWrapper>
+                                        <ScreenErrorProvider>
+                                          <Suspense fallback={<LoadingPage />}>
+                                            <AppNavigationContainer />
+                                          </Suspense>
+                                        </ScreenErrorProvider>
+                                      </OnboardingWrapper>
                                     </SubscriptionContextProvider>
                                   </CulturalSurveyContextProvider>
                                 </SnackBarProvider>

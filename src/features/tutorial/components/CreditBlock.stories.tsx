@@ -1,7 +1,7 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react'
 import React from 'react'
 
-import { CreditStatus } from 'features/tutorial/types'
+import { CreditStatus } from 'features/tutorial/enums'
 import { Typo } from 'ui/theme'
 
 import { CreditBlock } from './CreditBlock'

@@ -3,6 +3,7 @@ import { ScrollView } from 'react-native'
 import styled from 'styled-components/native'
 
 import { LinkToComponent } from 'features/internal/cheatcodes/components/LinkToComponent'
+import { TutorialTypes } from 'features/tutorial/enums'
 import { PageHeaderSecondary } from 'ui/components/headers/PageHeaderSecondary'
 import { Spacer } from 'ui/theme'
 
@@ -11,8 +12,14 @@ export function NavigationProfileTutorial(): React.JSX.Element {
     <ScrollView>
       <PageHeaderSecondary title="Tutoriel profil" />
       <StyledContainer>
-        <LinkToComponent name="AgeSelection" navigationParams={{ type: 'profileTutorial' }} />
-        <LinkToComponent name="AgeSelectionOther" navigationParams={{ type: 'profileTutorial' }} />
+        <LinkToComponent
+          name="AgeSelection"
+          navigationParams={{ type: TutorialTypes.PROFILE_TUTORIAL }}
+        />
+        <LinkToComponent
+          name="AgeSelectionOther"
+          navigationParams={{ type: TutorialTypes.PROFILE_TUTORIAL }}
+        />
         <LinkToComponent
           name="ProfileTutorialAgeInformation"
           title="Page 15 ans"

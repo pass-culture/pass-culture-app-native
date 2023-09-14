@@ -112,7 +112,20 @@ exports[`TutorialPage should render correctly 1`] = `
       </View>
     </View>
   </View>,
-  <RCTScrollView>
+  <RCTScrollView
+    contentContainerStyle={
+      {
+        "alignSelf": "center",
+        "maxWidth": 500,
+        "width": "100%",
+      }
+    }
+    style={
+      [
+        {},
+      ]
+    }
+  >
     <View>
       <View
         style={

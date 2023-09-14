@@ -4,6 +4,7 @@ import styled from 'styled-components/native'
 
 import { TutorialRootStackParamList } from 'features/navigation/RootNavigator/types'
 import { AgeButton } from 'features/tutorial/components/AgeButton'
+import { TutorialTypes } from 'features/tutorial/enums'
 import { TutorialPage } from 'features/tutorial/pages/TutorialPage'
 import { EligibleAges } from 'features/tutorial/types'
 import { analytics } from 'libs/analytics'
@@ -25,8 +26,8 @@ const ageButtons: { age?: EligibleAges }[] = [
   { age: undefined },
 ]
 
-const onBeforeNavigate = async (age?: EligibleAges) => {
-  analytics.logSelectAge(age ?? OTHER)
+const onBeforeNavigate = async (type: TutorialTypes, age?: EligibleAges) => {
+  analytics.logSelectAge({ userStatus: age ?? OTHER, from: type })
   age && (await storage.saveObject('user_age', age))
 }
 
@@ -34,14 +35,14 @@ export const AgeSelection: FunctionComponent<Props> = ({ route }: Props) => {
   const type = route.params.type
 
   const AgeSelectionButtons = ageButtons.map(({ age }) => {
-    const startButtonTitle = type === 'onboarding' ? 'j’ai' : 'à'
+    const startButtonTitle = type === TutorialTypes.ONBOARDING ? 'j’ai' : 'à'
 
     return (
       <AgeButton
         key={age}
         icon={age ? BicolorAll : undefined}
         dense={!age}
-        onBeforeNavigate={async () => onBeforeNavigate(age)}
+        onBeforeNavigate={async () => onBeforeNavigate(type, age)}
         navigateTo={
           age
             ? { screen: 'OnboardingAgeInformation', params: { age } }
@@ -69,12 +70,12 @@ export const AgeSelection: FunctionComponent<Props> = ({ route }: Props) => {
   })
 
   const title =
-    type === 'onboarding'
+    type === TutorialTypes.ONBOARDING
       ? 'Pour commencer, peux-tu nous dire ton âge\u00a0?'
       : 'Comment ça marche\u00a0?'
 
   const subtitle =
-    type === 'onboarding'
+    type === TutorialTypes.ONBOARDING
       ? 'Cela permet de savoir si tu peux bénéficier du pass Culture.'
       : 'De 15 à 18 ans, le pass Culture offre un crédit à dépenser dans l’application pour des activités culturelles.'
 

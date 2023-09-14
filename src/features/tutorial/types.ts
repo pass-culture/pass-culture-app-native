@@ -1,21 +1,29 @@
-export enum CreditStatus {
-  GONE = 'passé',
-  ONGOING = 'cette année',
-  COMING = 'à venir',
-}
+import { FunctionComponent } from 'react'
 
-export enum NonEligible {
-  UNDER_15 = 'under_15',
-  OVER_18 = 'over_18',
-}
-
-export enum UserOnboardingRole {
-  UNDERAGE = 'underage',
-  EIGHTEEN = 'eighteen',
-  NON_ELIGIBLE = 'non_eligible',
-  UNKNOWN = 'unknown',
-}
+import { TutorialTypes } from 'features/tutorial/enums'
+import { InternalNavigationProps } from 'ui/components/touchableLink/types'
+import { IconInterface } from 'ui/svg/icons/types'
 
 const eligibleAgesList = [15, 16, 17, 18] as const
 type EligibleAgesList = typeof eligibleAgesList
 export type EligibleAges = EligibleAgesList[number]
+
+export interface AgeButtonProps {
+  accessibilityLabel: string
+  dense?: boolean
+  enableNavigate?: boolean
+  icon?: FunctionComponent<IconInterface>
+  navigateTo: InternalNavigationProps['navigateTo']
+  onBeforeNavigate?: () => void
+  children: React.ReactNode
+}
+
+export interface ProfileTutorialAgeButtonOtherProps {
+  accessibilityLabel: string
+  onPress?: () => void
+  children: React.ReactNode
+}
+
+export interface TutorialType {
+  type: TutorialTypes.ONBOARDING | TutorialTypes.PROFILE_TUTORIAL
+}

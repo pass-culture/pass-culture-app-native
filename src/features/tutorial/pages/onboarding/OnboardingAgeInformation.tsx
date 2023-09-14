@@ -9,6 +9,7 @@ import {
 } from 'features/navigation/RootNavigator/types'
 import { homeNavConfig } from 'features/navigation/TabBar/helpers'
 import { OnboardingTimeline } from 'features/tutorial/components/OnboardingTimeline'
+import { TutorialTypes } from 'features/tutorial/enums'
 import { TutorialPage } from 'features/tutorial/pages/TutorialPage'
 import { analytics } from 'libs/analytics'
 import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
@@ -22,7 +23,7 @@ type Props = StackScreenProps<TutorialRootStackParamList, 'OnboardingAgeInformat
 
 const onSignupPress = () => {
   analytics.logOnboardingAgeInformationClicked({ type: 'account_creation' })
-  analytics.logSignUpClicked({ from: 'onboarding' })
+  analytics.logSignUpClicked({ from: TutorialTypes.ONBOARDING })
 }
 
 export const OnboardingAgeInformation = ({ route }: Props): React.JSX.Element => {

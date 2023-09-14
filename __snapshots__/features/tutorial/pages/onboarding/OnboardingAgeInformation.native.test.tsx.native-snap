@@ -112,7 +112,20 @@ exports[`OnboardingAgeInformation should render correctly for 15-year-old 1`] = 
       </View>
     </View>
   </View>,
-  <RCTScrollView>
+  <RCTScrollView
+    contentContainerStyle={
+      {
+        "alignSelf": "center",
+        "maxWidth": 500,
+        "width": "100%",
+      }
+    }
+    style={
+      [
+        {},
+      ]
+    }
+  >
     <View>
       <View
         style={
@@ -1687,7 +1700,20 @@ exports[`OnboardingAgeInformation should render correctly for 16-year-old 1`] = 
       </View>
     </View>
   </View>,
-  <RCTScrollView>
+  <RCTScrollView
+    contentContainerStyle={
+      {
+        "alignSelf": "center",
+        "maxWidth": 500,
+        "width": "100%",
+      }
+    }
+    style={
+      [
+        {},
+      ]
+    }
+  >
     <View>
       <View
         style={
@@ -3249,7 +3275,20 @@ exports[`OnboardingAgeInformation should render correctly for 17-year-old 1`] = 
       </View>
     </View>
   </View>,
-  <RCTScrollView>
+  <RCTScrollView
+    contentContainerStyle={
+      {
+        "alignSelf": "center",
+        "maxWidth": 500,
+        "width": "100%",
+      }
+    }
+    style={
+      [
+        {},
+      ]
+    }
+  >
     <View>
       <View
         style={
@@ -4798,7 +4837,20 @@ exports[`OnboardingAgeInformation should render correctly for 18-year-old 1`] = 
       </View>
     </View>
   </View>,
-  <RCTScrollView>
+  <RCTScrollView
+    contentContainerStyle={
+      {
+        "alignSelf": "center",
+        "maxWidth": 500,
+        "width": "100%",
+      }
+    }
+    style={
+      [
+        {},
+      ]
+    }
+  >
     <View>
       <View
         style={

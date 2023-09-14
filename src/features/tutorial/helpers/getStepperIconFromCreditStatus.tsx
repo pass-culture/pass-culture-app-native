@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components/native'
 
-import { CreditStatus } from 'features/tutorial/types'
+import { CreditStatus } from 'features/tutorial/enums'
 import LottieView from 'libs/lottie'
 import OnboardingUnlock from 'ui/animations/onboarding_unlock.json'
 import { Lock } from 'ui/svg/icons/Lock'

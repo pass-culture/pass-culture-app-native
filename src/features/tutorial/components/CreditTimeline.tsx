@@ -7,10 +7,11 @@ import { AgeCreditBlock } from 'features/tutorial/components/AgeCreditBlock'
 import { CreditBlock } from 'features/tutorial/components/CreditBlock'
 import { OnboardingCreditBlockTitle } from 'features/tutorial/components/onboarding/OnboardingCreditBlockTitle'
 import { ProfileTutorialCreditBlockTitle } from 'features/tutorial/components/profileTutorial/ProfileTutorialCreditBlockTitle'
+import { CreditStatus, TutorialTypes } from 'features/tutorial/enums'
 import { getCreditStatusFromAge } from 'features/tutorial/helpers/getCreditStatusFromAge'
 import { getStepperIconFromCreditStatus } from 'features/tutorial/helpers/getStepperIconFromCreditStatus'
 import { getStepperVariantFromCreditStatus } from 'features/tutorial/helpers/getStepperVariantFromCreditStatus'
-import { CreditStatus } from 'features/tutorial/types'
+import { TutorialType } from 'features/tutorial/types'
 import { analytics } from 'libs/analytics'
 import { useDepositAmountsByAge } from 'shared/user/useDepositAmountsByAge'
 import { Warning } from 'ui/svg/icons/BicolorWarning'
@@ -26,10 +27,9 @@ export type CreditComponentProps = {
   children?: React.ReactNode
 }
 
-type Props = {
+interface Props extends TutorialType {
   age: Age
   stepperProps: CreditComponentProps[]
-  type: 'onboarding' | 'profileTutorial'
   testID?: string
 }
 
@@ -47,10 +47,10 @@ export const CreditTimeline = ({ stepperProps, age, type, testID }: Props) => {
     [17, seventeenYearsOldDeposit],
     [18, eighteenYearsOldDeposit],
   ])
-  const SpaceBetweenBlock = type === 'onboarding' ? 1 : 3
+  const SpaceBetweenBlock = type === TutorialTypes.ONBOARDING ? 1 : 3
 
   const CreditBlockTitle =
-    type === 'onboarding' ? OnboardingCreditBlockTitle : ProfileTutorialCreditBlockTitle
+    type === TutorialTypes.ONBOARDING ? OnboardingCreditBlockTitle : ProfileTutorialCreditBlockTitle
 
   return (
     <Container testID={testID}>
