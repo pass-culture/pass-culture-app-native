@@ -10,6 +10,7 @@ import {
   UseNavigationType,
 } from 'features/navigation/RootNavigator/types'
 import { useDepositActivationAge } from 'features/profile/helpers/useDepositActivationAge'
+import { TutorialTimelineEighteen } from 'features/tutorial/components/profileTutorial/Timelines/TutorialTimelineEighteen'
 import { TutorialTimelineFifteen } from 'features/tutorial/components/profileTutorial/Timelines/TutorialTimelineFifteen'
 import { TutorialTimelineSeventeen } from 'features/tutorial/components/profileTutorial/Timelines/TutorialTimelineSeventeen'
 import { TutorialTimelineSixteen } from 'features/tutorial/components/profileTutorial/Timelines/TutorialTimelineSixteen'
@@ -101,6 +102,8 @@ const Timeline = ({
       return <TutorialTimelineSixteen activatedAt={activationAge} />
     case 17:
       return <TutorialTimelineSeventeen activatedAt={activationAge} />
+    case 18:
+      return <TutorialTimelineEighteen activatedAt={activationAge} />
     default:
       return null
   }

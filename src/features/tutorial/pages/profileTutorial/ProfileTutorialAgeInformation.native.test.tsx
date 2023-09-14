@@ -6,6 +6,7 @@ import React from 'react'
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import {
   CURRENT_DATE,
+  EIGHTEEN_AGE_DATE,
   FIFTEEN_YEARS_OLD_FIRST_DAY_DATE,
   SEVENTEEN_AGE_DATE,
   SIXTEEN_AGE_DATE,
@@ -38,6 +39,10 @@ const seventeenUser = {
   ...beneficiaryUser,
   birthDate: format(SEVENTEEN_AGE_DATE, 'yyyy-MM-dd'),
 }
+const eighteenUser = {
+  ...beneficiaryUser,
+  birthDate: format(EIGHTEEN_AGE_DATE, 'yyyy-MM-dd'),
+}
 
 const openUrl = jest.spyOn(NavigationHelpers, 'openUrl')
 
@@ -52,6 +57,10 @@ const navPropsSixteenSelected = { route: { params: { selectedAge: 16 } } } as St
 >
 
 const navPropsSeventeenSelected = { route: { params: { selectedAge: 17 } } } as StackScreenProps<
+  TutorialRootStackParamList,
+  'ProfileTutorialAgeInformation'
+>
+const navPropsEighteenSelected = { route: { params: { selectedAge: 18 } } } as StackScreenProps<
   TutorialRootStackParamList,
   'ProfileTutorialAgeInformation'
 >
@@ -81,6 +90,13 @@ describe('<ProfileTutorialAgeInformation />', () => {
     expect(screen.getByTestId('seventeen-timeline')).toBeOnTheScreen()
   })
 
+  it('should display 18 timeline when logged in at 18', () => {
+    mockUseAuthContext.mockReturnValueOnce({ ...defaultAuthContext, user: eighteenUser })
+    render(<ProfileTutorialAgeInformation {...navProps} />)
+
+    expect(screen.getByTestId('eighteen-timeline')).toBeOnTheScreen()
+  })
+
   it('should display that the user has activated credit at 15 when logged in at 16', () => {
     mockUseAuthContext.mockReturnValueOnce({
       ...defaultAuthContext,
@@ -101,6 +117,15 @@ describe('<ProfileTutorialAgeInformation />', () => {
 
     expect(
       screen.getByText(' Le crédit précédent n’est plus disponible car tu as plus de 15 ans.')
+    ).toBeOnTheScreen()
+  })
+
+  it('should display that the user couldn‘t have 17 credit if more than 17 years old', () => {
+    mockUseAuthContext.mockReturnValueOnce({ ...defaultAuthContext, isLoggedIn: false })
+    render(<ProfileTutorialAgeInformation {...navPropsEighteenSelected} />)
+
+    expect(
+      screen.getByText('Les crédits précédents ne sont plus disponibles car tu as plus de 17 ans.')
     ).toBeOnTheScreen()
   })
 
