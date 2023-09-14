@@ -4,12 +4,13 @@ import styled from 'styled-components/native'
 import { CreditBarWithSeparator } from 'features/profile/components/CreditInfo/CreditBarWithSeparator'
 import { CreditComponentProps, CreditTimeline } from 'features/tutorial/components/CreditTimeline'
 import { EighteenBlockDescription } from 'features/tutorial/components/profileTutorial/EighteenBlockDescription'
-import { InformationStepContent } from 'features/tutorial/components/profileTutorial/InformationStepContent'
+import {
+  eighteenSeparatorStep,
+  lastStep,
+} from 'features/tutorial/components/profileTutorial/Timelines/CommonSteps'
 import { UnderageBlockDescription } from 'features/tutorial/components/profileTutorial/UnderageBlockDescription'
 import { TutorialTypes } from 'features/tutorial/enums'
 import { useDepositAmountsByAge } from 'shared/user/useDepositAmountsByAge'
-import { Warning } from 'ui/svg/icons/BicolorWarning'
-import { Offers } from 'ui/svg/icons/Offers'
 import { Spacer, Typo } from 'ui/theme'
 
 interface Props {
@@ -37,14 +38,6 @@ export const TutorialTimelineSixteen = ({ activatedAt }: Props) => {
   )
 }
 
-const GreyOffers = styled(Offers).attrs(({ theme }) => ({
-  color: theme.colors.greySemiDark,
-}))``
-
-const GreyWarning = styled(Warning).attrs(({ theme }) => ({
-  color: theme.colors.greySemiDark,
-}))``
-
 const StyledCaption = styled(Typo.Caption)(({ theme }) => ({
   color: theme.colors.greyDark,
 }))
@@ -62,22 +55,7 @@ const FirstBlock = ({ text }: { text: string }) => {
 const SixteenStepperProps: CreditComponentProps[] = [
   { creditStep: 16, children: <UnderageBlockDescription /> },
   { creditStep: 17, children: <CreditBarWithSeparator currentStep={2} totalStep={3} /> },
-  {
-    creditStep: 'information',
-    iconComponent: <GreyWarning />,
-    children: (
-      <InformationStepContent title="La veille de tes 18 ans" subtitle="Ton crédit est remis à 0" />
-    ),
-  },
+  eighteenSeparatorStep,
   { creditStep: 18, children: <EighteenBlockDescription /> },
-  {
-    creditStep: 'information',
-    iconComponent: <GreyOffers />,
-    children: (
-      <InformationStepContent
-        title="Au bout de 2 ans, ton crédit expire… Mais l’aventure continue&nbsp;!"
-        subtitle="Tu peux continuer à réserver des offres gratuites autour de chez toi."
-      />
-    ),
-  },
+  lastStep,
 ]
