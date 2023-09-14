@@ -38,7 +38,6 @@ export const CountryPicker: React.FC<Props> = ({ selectedCountry, onSelect }) =>
   }
 
   const Item = ({ country }: { country: Country }) => {
-    const itemTitle = country.name
     const countryCallingCode = formatCallingCode(country.callingCode)
     const selected = country.id === selectedCountry.id
     const onPress = () => onCountrySelect(country)
@@ -46,16 +45,19 @@ export const CountryPicker: React.FC<Props> = ({ selectedCountry, onSelect }) =>
     const containerRef = useRef(null)
     useArrowNavigationForRadioButton(containerRef)
     useSpaceBarAction(isFocus ? onPress : undefined)
+
+    const a11yLabel = `${country.name} ${formatCallingCode(country.callingCode)}`
+
     return (
       <TouchableOpacity
-        {...accessibleRadioProps({ checked: selected, label: itemTitle })}
+        {...accessibleRadioProps({ checked: selected, label: a11yLabel })}
         onFocus={onFocus}
         onBlur={onBlur}
         onPress={onPress}>
         <CountryContainer ref={containerRef}>
           {selected ? <ValidateIcon /> : <ValidateOffIcon />}
           <Spacer.Row numberOfSpaces={2} />
-          <Typo.ButtonText>{itemTitle}</Typo.ButtonText>
+          <Typo.ButtonText>{country.name}</Typo.ButtonText>
           <Spacer.Row numberOfSpaces={1} />
           <CountryCallingCode>{countryCallingCode}</CountryCallingCode>
         </CountryContainer>
