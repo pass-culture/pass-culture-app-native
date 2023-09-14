@@ -24,7 +24,7 @@ describe('<CountryPicker />', () => {
 
     await act(async () => {
       expect(onSelectCountry).toBeCalledWith({
-        callingCode: ['590'],
+        callingCode: '590',
         cca2: 'GP',
         currency: ['EUR'],
         flag: 'flag-gp',

@@ -1,16 +1,8 @@
-import React, { useState, useEffect, useRef, ComponentProps } from 'react'
-import { ListRenderItem, LogBox, Platform } from 'react-native'
-import ReactNativeCountryPicker, {
-  Country,
-  CountryList,
-  getAllCountries,
-} from 'react-native-country-picker-modal'
+import { Platform, View } from 'react-native'
 import styled from 'styled-components/native'
 
-import {
-  ALLOWED_COUNTRY_CODES,
-  FLAG_TYPE,
-} from 'features/identityCheck/components/countryPicker/constants'
+import { COUNTRIES } from 'features/identityCheck/components/countryPicker/constants'
+import { Country } from 'features/identityCheck/components/countryPicker/types'
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { useHandleFocus } from 'libs/hooks/useHandleFocus'
 import { accessibleRadioProps } from 'shared/accessibilityProps/accessibleRadioProps'
@@ -26,46 +18,28 @@ import { Close } from 'ui/svg/icons/Close'
 import { Validate } from 'ui/svg/icons/Validate'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 
-type ReactNativeCountryPickerProps = ComponentProps<typeof ReactNativeCountryPicker>
-type ReactNativeCountryListProps = ComponentProps<typeof CountryList>
-
-const translation: ReactNativeCountryPickerProps['translation'] = 'fra'
-
 interface Props {
   initialCountry: Country
   onSelect: (country: Country) => void
 }
 
-async function getAllowedCountries() {
-  return getAllCountries(FLAG_TYPE, translation, undefined, undefined, ALLOWED_COUNTRY_CODES)
-}
 
 export const CountryPicker: React.FC<Props> = (props) => {
   const { visible, showModal, hideModal } = useModal(false)
 
-  const [countries, setCountries] = useState<Country[]>([])
   const [country, setCountry] = useState<Country>(props.initialCountry)
 
   const formatCallingCode = (code: string) => `+${code}`
-  const callingCode = formatCallingCode(country.callingCode[0])
-
-  useEffect(() => {
-    getAllowedCountries().then(setCountries)
-    // We disabled the scroll of the ScrollView (`scrollEnabled=false`) of AppModal,
-    // since CountryList is a FlatList, so we should be ok to ignore the log :
-    // 'VirtualizedLists should never be nested inside plain ScrollViews'
-    LogBox.ignoreLogs(['VirtualizedLists should'])
-  }, [])
+  const callingCode = formatCallingCode(country.callingCode)
 
   function onSelect(selectedCountry: Country) {
-    setCountry(selectedCountry)
     props.onSelect(selectedCountry)
     hideModal()
   }
 
   const Item = ({ item }: { item: Country }) => {
-    const itemTitle = `${item.name} (${formatCallingCode(item.callingCode[0])})`
-    const selected = item.cca2 === country.cca2
+    const itemTitle = `${item.name} (${formatCallingCode(item.callingCode)})`
+    const selected = item.id === selectedCountry.id
     const onPress = () => onSelect(item)
     const { onFocus, onBlur, isFocus } = useHandleFocus()
     const containerRef = useRef(null)
@@ -74,7 +48,7 @@ export const CountryPicker: React.FC<Props> = (props) => {
     return (
       <TouchableOpacity
         {...accessibleRadioProps({ checked: selected, label: itemTitle })}
-        key={item.cca2}
+        key={item.id}
         onFocus={onFocus}
         onBlur={onBlur}
         onPress={onPress}>
@@ -88,17 +62,6 @@ export const CountryPicker: React.FC<Props> = (props) => {
         </CountryContainer>
       </TouchableOpacity>
     )
-  }
-
-  const renderItem: ListRenderItem<Country> = ({ item }: { item: Country }) => {
-    return <Item item={item} />
-  }
-
-  const countryListFlatListProps: ReactNativeCountryListProps['flatListProps'] = {
-    style: { height: 350 },
-    renderItem,
-    data: countries,
-    accessibilityRole: AccessibilityRole.RADIOGROUP,
   }
 
   return (
@@ -115,15 +78,14 @@ export const CountryPicker: React.FC<Props> = (props) => {
       <AppModal
         title="Choix de l’indicatif téléphonique"
         visible={visible}
-        scrollEnabled={false}
         rightIconAccessibilityLabel="Fermer la modale de choix de l’indicatif téléphonique"
         rightIcon={Close}
         onRightIconPress={hideModal}>
-        <CountryList
-          data={countries}
-          onSelect={onSelect}
-          flatListProps={countryListFlatListProps}
-        />
+        <View accessibilityRole={AccessibilityRole.RADIOGROUP}>
+          {COUNTRIES.map((country) => (
+            <Item key={country.id} item={country} />
+          ))}
+        </View>
       </AppModal>
     </React.Fragment>
   )
