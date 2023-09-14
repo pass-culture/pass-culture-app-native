@@ -49,7 +49,6 @@ export const CountryPicker: React.FC<Props> = ({ selectedCountry, onSelect }) =>
     return (
       <TouchableOpacity
         {...accessibleRadioProps({ checked: selected, label: itemTitle })}
-        key={country.id}
         onFocus={onFocus}
         onBlur={onBlur}
         onPress={onPress}>
