@@ -9,7 +9,7 @@ import {
   SubcategoryIdEnumv2,
 } from 'api/gen'
 import { DATE_FILTER_OPTIONS, LocationType } from 'features/search/enums'
-import { Venue } from 'features/venue/types'
+import { GTLLevel, Venue } from 'features/venue/types'
 import { AlgoliaHit } from 'libs/algolia'
 import { Geoloc as AlgoliaGeoloc, HighlightResult } from 'libs/algolia/algolia.d'
 import { transformOfferHit } from 'libs/algolia/fetchAlgolia/transformOfferHit'
@@ -43,32 +43,33 @@ export type SearchQueryParameters = {
   date: SelectedDate | null
   endingDatetime?: string
   hitsPerPage: number | null
+  isOnline?: boolean
   locationFilter?: LocationFilter
+  maxPossiblePrice?: string
+  maxPrice?: string
+  minBookingsThreshold?: number
+  minPrice?: string
+  noFocus?: boolean
   offerCategories: SearchGroupNameEnumv2[]
   offerGenreTypes?: OfferGenreType[]
-  offerNativeCategories?: NativeCategoryIdEnumv2[]
-  offerSubcategories: SubcategoryIdEnumv2[]
+  offerGtlLabel?: string
+  offerGtlLevel?: GTLLevel
   offerIsDuo: boolean
   offerIsFree?: boolean
   offerIsNew: boolean
+  offerNativeCategories?: NativeCategoryIdEnumv2[]
+  offerSubcategories: SubcategoryIdEnumv2[]
   offerTypes: {
     isDigital: boolean
     isEvent: boolean
     isThing: boolean
   }
-  priceRange: Range<number> | null
-  timeRange: Range<number> | null
-  tags: string[]
-  query: string
-  noFocus?: boolean
-  minPrice?: string
-  maxPrice?: string
-  searchId?: string
-  maxPossiblePrice?: string
-  isOnline?: boolean
-  minBookingsThreshold?: number
-
   page?: number
+  priceRange: Range<number> | null
+  query: string
+  searchId?: string
+  tags: string[]
+  timeRange: Range<number> | null
 }
 
 export const transformHit = transformOfferHit

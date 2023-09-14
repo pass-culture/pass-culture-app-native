@@ -10,7 +10,7 @@ import { env } from 'libs/environment'
 import { Position } from 'libs/geolocation'
 import { Offer } from 'shared/offer/types'
 
-type FetchMultipleOffersArgs = {
+export type FetchMultipleOffersArgs = {
   paramsList: SearchQueryParameters[]
   userLocation: Position
   isUserUnderage: boolean

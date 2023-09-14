@@ -3,6 +3,7 @@ import React, { FunctionComponent, useEffect } from 'react'
 import styled from 'styled-components/native'
 
 import { UseRouteType } from 'features/navigation/RootNavigator/types'
+import { useGTLPlaylists } from 'features/venue/api/useGTLPlaylists'
 import { useVenue } from 'features/venue/api/useVenue'
 import { VenueBody } from 'features/venue/components/VenueBody/VenueBody'
 import { VenueHeader } from 'features/venue/components/VenueHeader/VenueHeader'
@@ -26,6 +27,8 @@ export const Venue: FunctionComponent = () => {
     },
   })
 
+  const gtlPlaylistData = useGTLPlaylists()
+
   useEffect(() => {
     if (params.from === 'deeplink' && venue?.id) {
       analytics.logConsultVenue({ venueId: venue.id, from: params.from })
@@ -45,7 +48,7 @@ export const Venue: FunctionComponent = () => {
   return (
     <Container>
       <VenueWebHeader venue={venue} />
-      <VenueBody venueId={params.id} onScroll={onScroll} />
+      <VenueBody venueId={params.id} onScroll={onScroll} playlists={gtlPlaylistData} />
       {/* VenueHeader is called after Body to implement the BlurView for iOS */}
       <VenueHeader
         headerTransition={headerTransition}

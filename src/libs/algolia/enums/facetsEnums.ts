@@ -17,6 +17,7 @@ export enum FACETS_FILTERS_ENUM {
   OFFER_ID_FORBIDDEN_TO_UNDERAGE = 'offer.isForbiddenToUnderage',
   OFFER_TAGS = 'offer.tags',
   VENUE_ID = 'venue.id',
+  OFFER_GTL_LEVEL = 'offer.gtl_levelXX',
 }
 
 export enum NUMERIC_FILTERS_ENUM {
