@@ -12,7 +12,6 @@ import { useSubscriptionContext } from 'features/identityCheck/context/Subscript
 import { useNavigateForwardToStepper } from 'features/identityCheck/helpers/useNavigateForwardToStepper'
 import { useSaveStep } from 'features/identityCheck/pages/helpers/useSaveStep'
 import { IdentityCheckStep } from 'features/identityCheck/types'
-import { useIsUserUnderage } from 'features/profile/helpers/useIsUserUnderage'
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { analytics } from 'libs/analytics'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
@@ -29,7 +28,6 @@ type StatusForm = {
 export const SetStatus = () => {
   const { activities } = useActivityTypes()
   const { dispatch, profile } = useSubscriptionContext()
-  const isUserUnderage = useIsUserUnderage()
   const saveStep = useSaveStep()
   const { mutateAsync: patchProfile, isLoading } = usePatchProfile()
   const { navigateForwardToStepper } = useNavigateForwardToStepper()
@@ -46,11 +44,6 @@ export const SetStatus = () => {
   }, [])
 
   const selectedStatus = watch('selectedStatus')
-
-  // TODO(PC-12410): déléguer la responsabilité au back de faire cette filtration, remplacer filteredActivities par activities
-  const filteredActivities = isUserUnderage
-    ? activities
-    : activities?.filter((activity) => activity.id !== ActivityIdEnum.MIDDLE_SCHOOL_STUDENT)
 
   const submitStatus = useCallback(
     async (formValues: StatusForm) => {
@@ -80,7 +73,7 @@ export const SetStatus = () => {
               name="selectedStatus"
               render={({ field: { value, onChange } }) => (
                 <VerticalUl>
-                  {filteredActivities?.map((activity) => (
+                  {activities?.map((activity) => (
                     <Li key={activity.label}>
                       <RadioSelector
                         checked={activity.id === value}
