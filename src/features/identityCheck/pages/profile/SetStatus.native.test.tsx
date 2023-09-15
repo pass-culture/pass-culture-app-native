@@ -1,7 +1,7 @@
 import { rest } from 'msw'
 import React from 'react'
 
-import { CommonActions, dispatch, navigate } from '__mocks__/@react-navigation/native'
+import { CommonActions, dispatch } from '__mocks__/@react-navigation/native'
 import { ActivityIdEnum } from 'api/gen'
 import { initialSubscriptionState as mockState } from 'features/identityCheck/context/reducer'
 import { SchoolTypesSnap } from 'features/identityCheck/pages/profile/fixtures/mockedSchoolTypes'
@@ -92,21 +92,6 @@ describe('<SetStatus/>', () => {
         index: 1,
         routes: [{ name: 'TabNavigator' }, { name: 'Stepper' }],
       })
-    })
-  })
-
-  it('should navigate to SetSchoolType on press "Continuer" when user should select school type', async () => {
-    mockedUseIsUserUnderage.mockReturnValueOnce(true)
-    mockedUseIsUserUnderage.mockReturnValueOnce(true)
-    mockStatus = SchoolTypesSnap.activities[1].id
-
-    renderSetStatus()
-
-    fireEvent.press(screen.getByText(SchoolTypesSnap.activities[1].label)) // select high school status
-    fireEvent.press(screen.getByText('Continuer'))
-
-    await waitFor(() => {
-      expect(navigate).toHaveBeenCalledWith('SetSchoolType')
     })
   })
 

@@ -1,12 +1,11 @@
-import { useNavigation } from '@react-navigation/native'
 import React, { useCallback, useEffect } from 'react'
 import { useForm, Controller } from 'react-hook-form'
 import { View } from 'react-native'
 import { v4 as uuidv4 } from 'uuid'
 
 import { ActivityIdEnum } from 'api/gen'
-import { usePatchProfile } from 'features/identityCheck/api/usePatchProfile'
 import { useActivityTypes } from 'features/identityCheck/api/useActivityTypes'
+import { usePatchProfile } from 'features/identityCheck/api/usePatchProfile'
 import { CenteredTitle } from 'features/identityCheck/components/CenteredTitle'
 import { PageWithHeader } from 'features/identityCheck/components/layout/PageWithHeader'
 import { useSubscriptionContext } from 'features/identityCheck/context/SubscriptionContextProvider'
@@ -14,7 +13,6 @@ import { useNavigateForwardToStepper } from 'features/identityCheck/helpers/useN
 import { useSaveStep } from 'features/identityCheck/pages/helpers/useSaveStep'
 import { activityHasSchoolTypes } from 'features/identityCheck/pages/profile/helpers/schoolTypes'
 import { IdentityCheckStep } from 'features/identityCheck/types'
-import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { useIsUserUnderage } from 'features/profile/helpers/useIsUserUnderage'
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { analytics } from 'libs/analytics'
@@ -35,7 +33,6 @@ export const SetStatus = () => {
   const isUserUnderage = useIsUserUnderage()
   const saveStep = useSaveStep()
   const { mutateAsync: patchProfile, isLoading } = usePatchProfile()
-  const { navigate } = useNavigation<UseNavigationType>()
   const { navigateForwardToStepper } = useNavigateForwardToStepper()
   const titleID = uuidv4()
   const { control, handleSubmit, watch } = useForm<StatusForm>({
@@ -75,15 +72,11 @@ export const SetStatus = () => {
       await dispatch({ type: 'SET_STATUS', payload: formValues.selectedStatus })
       analytics.logSetStatusClicked()
 
-      if (hasSchoolTypes) {
-        navigate('SetSchoolType')
-      } else {
-        await patchProfile()
-        await saveStep(IdentityCheckStep.PROFILE)
-        navigateForwardToStepper()
-      }
+      await patchProfile()
+      await saveStep(IdentityCheckStep.PROFILE)
+      navigateForwardToStepper()
     },
-    [dispatch, hasSchoolTypes, navigate, patchProfile, saveStep, navigateForwardToStepper]
+    [dispatch, patchProfile, saveStep, navigateForwardToStepper]
   )
 
   return (
