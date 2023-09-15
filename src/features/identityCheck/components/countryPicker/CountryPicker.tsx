@@ -82,11 +82,13 @@ export const CountryPicker: React.FC<Props> = ({ selectedCountry, onSelect }) =>
         rightIconAccessibilityLabel="Fermer la modale de choix de l’indicatif téléphonique"
         rightIcon={Close}
         onRightIconPress={hideModal}>
-        <View accessibilityRole={AccessibilityRole.RADIOGROUP}>
-          {COUNTRIES.map((country) => (
-            <Item key={country.id} country={country} />
-          ))}
-        </View>
+        {COUNTRIES.length > 0 && (
+          <View accessibilityRole={AccessibilityRole.RADIOGROUP}>
+            {COUNTRIES.map((country) => (
+              <Item key={country.id} country={country} />
+            ))}
+          </View>
+        )}
       </AppModal>
     </React.Fragment>
   )
