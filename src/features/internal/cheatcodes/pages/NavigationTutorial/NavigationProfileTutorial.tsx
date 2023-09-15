@@ -35,6 +35,11 @@ export function NavigationProfileTutorial(): React.JSX.Element {
           title="Page 17 ans"
           navigationParams={{ selectedAge: 17 }}
         />
+        <LinkToComponent
+          name="ProfileTutorialAgeInformation"
+          title="Page 18 ans"
+          navigationParams={{ selectedAge: 18 }}
+        />
       </StyledContainer>
       <Spacer.BottomScreen />
     </ScrollView>

@@ -6,6 +6,7 @@ import React from 'react'
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import {
   CURRENT_DATE,
+  EIGHTEEN_AGE_DATE,
   FIFTEEN_YEARS_OLD_FIRST_DAY_DATE,
   SEVENTEEN_AGE_DATE,
   SIXTEEN_AGE_DATE,
@@ -29,10 +30,18 @@ const defaultAuthContext = {
   isUserLoading: false,
 }
 
+const fifteenUser = {
+  ...beneficiaryUser,
+  birthDate: format(FIFTEEN_YEARS_OLD_FIRST_DAY_DATE, 'yyyy-MM-dd'),
+}
 const sixteenUser = { ...beneficiaryUser, birthDate: format(SIXTEEN_AGE_DATE, 'yyyy-MM-dd') }
 const seventeenUser = {
   ...beneficiaryUser,
   birthDate: format(SEVENTEEN_AGE_DATE, 'yyyy-MM-dd'),
+}
+const eighteenUser = {
+  ...beneficiaryUser,
+  birthDate: format(EIGHTEEN_AGE_DATE, 'yyyy-MM-dd'),
 }
 
 const openUrl = jest.spyOn(NavigationHelpers, 'openUrl')
@@ -51,13 +60,16 @@ const navPropsSeventeenSelected = { route: { params: { selectedAge: 17 } } } as 
   TutorialRootStackParamList,
   'ProfileTutorialAgeInformation'
 >
+const navPropsEighteenSelected = { route: { params: { selectedAge: 18 } } } as StackScreenProps<
+  TutorialRootStackParamList,
+  'ProfileTutorialAgeInformation'
+>
 
 describe('<ProfileTutorialAgeInformation />', () => {
   beforeEach(() => {
     mockdate.set(CURRENT_DATE)
   })
   it('should render correctly when logged in at 15', () => {
-    const fifteenUser = { ...beneficiaryUser, birthdate: FIFTEEN_YEARS_OLD_FIRST_DAY_DATE }
     mockUseAuthContext.mockReturnValueOnce({ ...defaultAuthContext, user: fifteenUser })
     render(<ProfileTutorialAgeInformation {...navProps} />)
 
@@ -76,6 +88,13 @@ describe('<ProfileTutorialAgeInformation />', () => {
     render(<ProfileTutorialAgeInformation {...navProps} />)
 
     expect(screen.getByTestId('seventeen-timeline')).toBeOnTheScreen()
+  })
+
+  it('should display 18 timeline when logged in at 18', () => {
+    mockUseAuthContext.mockReturnValueOnce({ ...defaultAuthContext, user: eighteenUser })
+    render(<ProfileTutorialAgeInformation {...navProps} />)
+
+    expect(screen.getByTestId('eighteen-timeline')).toBeOnTheScreen()
   })
 
   it('should display that the user has activated credit at 15 when logged in at 16', () => {
@@ -98,6 +117,15 @@ describe('<ProfileTutorialAgeInformation />', () => {
 
     expect(
       screen.getByText(' Le crédit précédent n’est plus disponible car tu as plus de 15 ans.')
+    ).toBeOnTheScreen()
+  })
+
+  it('should display that the user couldn‘t have 17 credit if more than 17 years old', () => {
+    mockUseAuthContext.mockReturnValueOnce({ ...defaultAuthContext, isLoggedIn: false })
+    render(<ProfileTutorialAgeInformation {...navPropsEighteenSelected} />)
+
+    expect(
+      screen.getByText('Les crédits précédents ne sont plus disponibles car tu as plus de 17 ans.')
     ).toBeOnTheScreen()
   })
 
