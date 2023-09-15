@@ -35,9 +35,9 @@ jest.mock('features/identityCheck/context/SubscriptionContextProvider', () => ({
 
 const mockSchoolTypes = SchoolTypesSnap.school_types
 const mockActivities = SchoolTypesSnap.activities
-jest.mock('features/identityCheck/api/useProfileOptions', () => {
+jest.mock('features/identityCheck/api/useActivityTypes', () => {
   return {
-    useProfileOptions: jest.fn(() => {
+    useActivityTypes: jest.fn(() => {
       return {
         schoolTypes: mockSchoolTypes,
         activities: mockActivities,

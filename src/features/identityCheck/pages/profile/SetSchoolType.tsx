@@ -4,7 +4,7 @@ import { v4 as uuidv4 } from 'uuid'
 
 import { ActivityIdEnum, SchoolTypesIdEnum } from 'api/gen'
 import { usePatchProfile } from 'features/identityCheck/api/usePatchProfile'
-import { useProfileOptions } from 'features/identityCheck/api/useProfileOptions'
+import { useActivityTypes } from 'features/identityCheck/api/useActivityTypes'
 import { CenteredTitle } from 'features/identityCheck/components/CenteredTitle'
 import { PageWithHeader } from 'features/identityCheck/components/layout/PageWithHeader'
 import { useSubscriptionContext } from 'features/identityCheck/context/SubscriptionContextProvider'
@@ -25,7 +25,7 @@ import { VerticalUl } from 'ui/components/Ul'
 import { Spacer } from 'ui/theme'
 
 export const SetSchoolType = () => {
-  const { schoolTypes, activities } = useProfileOptions()
+  const { schoolTypes, activities } = useActivityTypes()
   const saveStep = useSaveStep()
   const { mutateAsync: patchProfile, isLoading } = usePatchProfile()
   const { navigateForwardToStepper } = useNavigateForwardToStepper()
