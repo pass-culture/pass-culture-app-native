@@ -30,7 +30,7 @@ import { mockDefaultSettings } from 'features/auth/context/__mocks__/SettingsCon
 import { bookingsSnap } from 'features/bookings/fixtures/bookingsSnap'
 import { paginatedFavoritesResponseSnap } from 'features/favorites/fixtures/paginatedFavoritesResponseSnap'
 import { SubscriptionStepperResponseFixture } from 'features/identityCheck/pages/helpers/stepperInfo.fixture'
-import { SchoolTypesSnap } from 'features/identityCheck/pages/profile/fixtures/mockedSchoolTypes'
+import { ActivityTypesSnap } from 'features/identityCheck/pages/profile/fixtures/mockedActivityTypes'
 import { offerResponseSnap } from 'features/offer/fixtures/offerResponse'
 import { venueResponseSnap } from 'features/venue/fixtures/venueResponseSnap'
 import { beneficiaryUser } from 'fixtures/user'
@@ -163,7 +163,7 @@ export const server = setupServer(
       return res(
         ctx.status(200),
         ctx.json({
-          activities: SchoolTypesSnap.activities,
+          activities: ActivityTypesSnap.activities,
         })
       )
     }

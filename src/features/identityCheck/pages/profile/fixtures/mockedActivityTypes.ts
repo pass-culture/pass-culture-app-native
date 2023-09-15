@@ -1,6 +1,6 @@
 import { ActivityIdEnum, ActivityTypesResponse } from 'api/gen'
 
-export const SchoolTypesSnap: ActivityTypesResponse = {
+export const ActivityTypesSnap: ActivityTypesResponse = {
   activities: [
     {
       description: null,
