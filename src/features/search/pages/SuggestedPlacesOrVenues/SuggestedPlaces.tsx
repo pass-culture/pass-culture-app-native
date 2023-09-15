@@ -13,8 +13,8 @@ import { Li } from 'ui/components/Li'
 import { TouchableOpacity } from 'ui/components/TouchableOpacity'
 import { VerticalUl } from 'ui/components/Ul'
 import { useArrowNavigationForRadioButton } from 'ui/hooks/useArrowNavigationForRadioButton'
-import { LocationPointerNotFilled as DefaultLocationPointerNotFilled } from 'ui/svg/icons/LocationPointerNotFilled'
-import { Spacer, Typo } from 'ui/theme'
+import { LocationPointer as DefaultLocationPointer } from 'ui/svg/icons/LocationPointer'
+import { Spacer, Typo, getSpacing } from 'ui/theme'
 
 const keyExtractor = (hit: SuggestedPlace) => {
   const { label, info } = hit
@@ -28,8 +28,13 @@ const keyExtractor = (hit: SuggestedPlace) => {
 
 const MAXIMUM_RESULTS = 5
 
+const Icon = () => (
+  <ListIconWrapper>
+    <ListLocationPointer />
+  </ListIconWrapper>
+)
+
 const Hit: React.FC<{ hit: SuggestedPlace; onPress: () => void }> = ({ hit, onPress }) => {
-  const Icon = () => <BicolorLocationPointer />
   const containerRef = useRef(null)
   const { onFocus, onBlur } = useHandleFocus()
   useArrowNavigationForRadioButton(containerRef)
@@ -44,7 +49,7 @@ const Hit: React.FC<{ hit: SuggestedPlace; onPress: () => void }> = ({ hit, onPr
       accessibilityLabel={accessibilityLabel}>
       <RefContainer ref={containerRef}>
         <Icon />
-        <Spacer.Row numberOfSpaces={4} />
+        <Spacer.Row numberOfSpaces={1} />
         <Text>
           <Typo.ButtonText>{hit.label}</Typo.ButtonText>
           <Spacer.Row numberOfSpaces={1} />
@@ -114,8 +119,13 @@ const NoSuggestedPlaces = ({ show }: { show: boolean }) =>
 
 const RefContainer = styled.View({
   flexDirection: 'row',
-  alignItems: 'center',
+  alignItems: 'flex-start',
 })
+
+const ListIconWrapper = styled.View(({ theme }) => ({
+  marginTop: (theme.typography.body.fontSize * 15) / 100,
+  marginRight: getSpacing(0.5),
+}))
 
 const Text = styled.Text.attrs({
   numberOfLines: 2,
@@ -128,6 +138,6 @@ const StyledBody = styled(Typo.Body)(({ theme }) => ({
   color: theme.colors.greyDark,
 }))
 
-const BicolorLocationPointer = styled(DefaultLocationPointerNotFilled).attrs(({ theme }) => ({
+const ListLocationPointer = styled(DefaultLocationPointer).attrs(({ theme }) => ({
   size: theme.icons.sizes.extraSmall,
 }))``
