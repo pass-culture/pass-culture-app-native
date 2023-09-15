@@ -13,7 +13,7 @@
   "typescript.tsdk": "node_modules/typescript/lib",
   "eslint.lintTask.options": ". --ext .js,.ts,.tsx --cache",
   "eslint.options": {
-    "configFile": ".eslintrc.js"
+    "overrideConfigFile": ".eslintrc.js"
   },
   "editor.codeActionsOnSave": {
     "source.fixAll.eslint": true
