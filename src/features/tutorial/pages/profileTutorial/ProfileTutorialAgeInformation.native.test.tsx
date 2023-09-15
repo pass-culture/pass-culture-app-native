@@ -3,6 +3,7 @@ import { format } from 'date-fns'
 import mockdate from 'mockdate'
 import React from 'react'
 
+import { SubscriptionStatus, YoungStatusType } from 'api/gen'
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import {
   CURRENT_DATE,
@@ -13,7 +14,7 @@ import {
 } from 'features/auth/fixtures/fixtures'
 import * as NavigationHelpers from 'features/navigation/helpers/openUrl'
 import { TutorialRootStackParamList } from 'features/navigation/RootNavigator/types'
-import { beneficiaryUser } from 'fixtures/user'
+import { beneficiaryUser, nonBeneficiaryUser } from 'fixtures/user'
 import { env } from 'libs/environment'
 import { fireEvent, render, screen } from 'tests/utils'
 
@@ -159,5 +160,21 @@ describe('<ProfileTutorialAgeInformation />', () => {
     fireEvent.press(link)
 
     expect(openUrl).toHaveBeenCalledWith(env.TUTORIAL_FEEDBACK_LINK, undefined, true)
+  })
+
+  it('should display verify eligibility when user is eligible', () => {
+    mockUseAuthContext.mockReturnValueOnce({
+      ...defaultAuthContext,
+      user: {
+        ...nonBeneficiaryUser,
+        status: {
+          statusType: YoungStatusType.eligible,
+          subscriptionStatus: SubscriptionStatus.has_to_complete_subscription,
+        },
+      },
+    })
+    render(<ProfileTutorialAgeInformation {...navProps} />)
+
+    expect(screen.getByText('Activer mon crédit')).toBeOnTheScreen()
   })
 })
