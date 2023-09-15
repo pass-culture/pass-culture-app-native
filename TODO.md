@@ -17,15 +17,17 @@
   - [x] éviter d'écrire en italique dans l'input
   - [x] s’inspirer de ce qui est fait dans l’actuelle LocationModal et dans SuggestedPlacesOrVenues
     - [x] notamment le message si l'adresse ne correspond à aucune localisation ( en cours) -> justifier à gauche
-  - [ ] quand une localisation est sélectionnée, on l’affiche en button text dans l’input
-  - [ ] changer les règles de validation du formulaire : si aucune adresse n'est sélectionne, le bouton est disabled
-  - [ ] Au clic sur “Choisir une localisation”, faire apparaître l’input de recherche
+  - [x] quand une localisation est sélectionnée, on l’affiche en button text dans l’input
+  - [/] changer les règles de validation du formulaire : si aucune adresse n'est sélectionne, le bouton est disabled
+  - [x] Au clic sur “Choisir une localisation”, faire apparaître l’input de recherche
   - [ ] mettre à jour le texte d'erreur
   - [x] remettre à 0 le nombre de caractères minimum pour lancer la recherche
   - [ ] renommer le Hit de SuggestedPlaces
   - [x] regarder / créer un ticket, pour cleaner l'icone Loupe : 16 px du bord à gauche (marge gauche de l'icone dans l'input paraît plus grande que dans la maquette -> garder comme l'existant)
-  - [ ] icon du pin est filled dans la maquette mais pas dans le code -> utiliser le nouvel écart dans la modale de la recherche de localisation
+  - [x] icon du pin est filled dans la maquette mais pas dans le code -> utiliser le nouvel écart dans la modale de la recherche de localisation
   - [x] marges entre input et sous titre à calibrer ( suppression marge vertical donc verif location button)
+  - [ ] Sauvegarder le nom de la position utilisateur dans le context ainsi que les coordonnées
+  - [ ] A l'affichage de la modale, remplir le champ input avec le nom de la postion utilisateur
 
 ### Questions pour Agathe
 
