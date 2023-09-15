@@ -20,6 +20,7 @@ jobs:
         uses: android-actions/setup-android@v2
       - run: ls ~/.cache/yarn/v6/*
       - run: du -sh .
+      - run: yarn cache list
       - run: yarn install 
   bundle-install:
     runs-on: [self-hosted, linux, x64]
