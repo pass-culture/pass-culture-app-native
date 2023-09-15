@@ -8,7 +8,7 @@ const STALE_TIME_PROFILE_OPTIONS = 5 * 60 * 1000
 
 function useActivityTypesResponse() {
   return useQuery<ActivityTypesResponse>(
-    [QueryKeys.SCHOOL_TYPES],
+    [QueryKeys.ACTIVITY_TYPES],
     () => api.getNativeV1SubscriptionActivityTypes(),
     { staleTime: STALE_TIME_PROFILE_OPTIONS }
   )
