@@ -11,6 +11,7 @@ import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { ButtonSecondary } from 'ui/components/buttons/ButtonSecondary'
 import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
+import { TouchableLink } from 'ui/components/touchableLink/TouchableLink'
 import { GenericInfoPageWhite } from 'ui/pages/GenericInfoPageWhite'
 import { Invalidate } from 'ui/svg/icons/Invalidate'
 import { BicolorUserBlocked } from 'ui/svg/icons/UserBlocked'
@@ -67,10 +68,11 @@ export const AccountSecurity = () => {
         as={ButtonSecondary}
       />
       <Spacer.Column numberOfSpaces={2} />
-      <ButtonTertiaryBlack
+      <TouchableLink
+        as={ButtonTertiaryBlack}
         wording="Ne pas sécuriser mon compte"
         icon={Invalidate}
-        onPress={onPressDismissAccountSecurity}
+        handleNavigation={onPressDismissAccountSecurity}
       />
     </GenericInfoPageWhite>
   )
