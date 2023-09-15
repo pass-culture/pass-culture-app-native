@@ -3,6 +3,7 @@ import React from 'react'
 import { CreditComponentProps, CreditTimeline } from 'features/tutorial/components/CreditTimeline'
 import { EighteenBlockDescription } from 'features/tutorial/components/profileTutorial/EighteenBlockDescription'
 import { lastStep } from 'features/tutorial/components/profileTutorial/Timelines/CommonSteps'
+import { TutorialTypes } from 'features/tutorial/enums'
 import { useEighteenFirstStepperProps } from 'features/tutorial/helpers/useEighteenFirstStepperProps'
 
 type Props = {
@@ -16,7 +17,7 @@ export const TutorialTimelineEighteen = ({ activatedAt }: Props) => {
     <CreditTimeline
       age={18}
       stepperProps={fullStepperProps}
-      type="profileTutorial"
+      type={TutorialTypes.PROFILE_TUTORIAL}
       testID="eighteen-timeline"
     />
   )
