@@ -50,10 +50,6 @@ export const SuspensionChoice = () => {
     suspendAccountForSuspiciousLogin({ token: params.token })
   }, [params.token, suspendAccountForSuspiciousLogin])
 
-  const onPressContactFraudTeam = () => {
-    analytics.logContactFraudTeam({ from: 'suspensionchoice' })
-  }
-
   return (
     <GenericInfoPageWhite
       headerGoBack
@@ -102,6 +98,10 @@ export const SuspensionChoice = () => {
       </ButtonContainer>
     </GenericInfoPageWhite>
   )
+}
+
+const onPressContactFraudTeam = () => {
+  analytics.logContactFraudTeam({ from: 'suspensionchoice' })
 }
 
 const ButtonContainer = styled.View({
