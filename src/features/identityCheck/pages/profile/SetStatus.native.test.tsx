@@ -47,13 +47,11 @@ server.use(
   })
 )
 
-const mockSchoolTypes = ActivityTypesSnap.school_types
 const mockActivities = ActivityTypesSnap.activities
 jest.mock('features/identityCheck/api/useActivityTypes', () => {
   return {
     useActivityTypes: jest.fn(() => {
       return {
-        schoolTypes: mockSchoolTypes,
         activities: mockActivities,
       }
     }),
@@ -71,15 +69,7 @@ describe('<SetStatus/>', () => {
     await waitFor(() => expect(screen).toMatchSnapshot())
   })
 
-  // TODO(PC-12410): déléguer la responsabilité au back de faire cette filtration
-  it('should render with no Collégien status if user is over 18', async () => {
-    mockedUseIsUserUnderage.mockReturnValueOnce(false)
-    renderSetStatus()
-
-    await waitFor(() => expect(screen.queryByText(SchoolTypesSnap.activities[0].label)).toBe(null))
-  })
-
-  it('should navigate to stepper on press "Continuer" when user should not select school type', async () => {
+  it('should navigate to stepper on press "Continuer"', async () => {
     mockStatus = ActivityTypesSnap.activities[2].id
     renderSetStatus()
 
