@@ -520,8 +520,6 @@ export const logEventAnalytics = {
     analytics.logEvent({ amplitude: AmplitudeEvent.SCREEN_VIEW_SET_PHONE_NUMBER }),
   logScreenViewSetPhoneValidationCode: () =>
     analytics.logEvent({ amplitude: AmplitudeEvent.SCREEN_VIEW_SET_PHONE_VALIDATION_CODE }),
-  logScreenViewSetSchoolType: () =>
-    analytics.logEvent({ amplitude: AmplitudeEvent.SCREEN_VIEW_SET_SCHOOL_TYPE }),
   logScreenViewSetStatus: () =>
     analytics.logEvent({ amplitude: AmplitudeEvent.SCREEN_VIEW_SET_STATUS }),
   logScreenshot: (params: { from: string; id?: number }) =>
@@ -553,8 +551,6 @@ export const logEventAnalytics = {
   logSetNameClicked: () => analytics.logEvent({ amplitude: AmplitudeEvent.SET_NAME_CLICKED }),
   logSetPostalCodeClicked: () =>
     analytics.logEvent({ amplitude: AmplitudeEvent.SET_POSTAL_CODE_CLICKED }),
-  logSetSchoolTypeClicked: () =>
-    analytics.logEvent({ amplitude: AmplitudeEvent.SET_SCHOOL_TYPE_CLICKED }),
   logSetStatusClicked: () => analytics.logEvent({ amplitude: AmplitudeEvent.SET_STATUS_CLICKED }),
   logShare: (params: {
     type: 'App' | 'Offer' | 'Venue'
