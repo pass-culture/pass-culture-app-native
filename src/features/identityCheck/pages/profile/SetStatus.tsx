@@ -6,7 +6,7 @@ import { v4 as uuidv4 } from 'uuid'
 
 import { ActivityIdEnum } from 'api/gen'
 import { usePatchProfile } from 'features/identityCheck/api/usePatchProfile'
-import { useProfileOptions } from 'features/identityCheck/api/useProfileOptions'
+import { useActivityTypes } from 'features/identityCheck/api/useActivityTypes'
 import { CenteredTitle } from 'features/identityCheck/components/CenteredTitle'
 import { PageWithHeader } from 'features/identityCheck/components/layout/PageWithHeader'
 import { useSubscriptionContext } from 'features/identityCheck/context/SubscriptionContextProvider'
@@ -30,7 +30,7 @@ type StatusForm = {
 }
 
 export const SetStatus = () => {
-  const { activities } = useProfileOptions()
+  const { activities } = useActivityTypes()
   const { dispatch, profile } = useSubscriptionContext()
   const isUserUnderage = useIsUserUnderage()
   const saveStep = useSaveStep()

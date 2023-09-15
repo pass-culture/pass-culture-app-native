@@ -6,7 +6,7 @@ import { QueryKeys } from 'libs/queryKeys'
 
 const STALE_TIME_PROFILE_OPTIONS = 5 * 60 * 1000
 
-function useProfileOptionsResponse() {
+function useActivityTypesResponse() {
   return useQuery<ProfileOptionsResponse>(
     [QueryKeys.SCHOOL_TYPES],
     () => api.getnativev1subscriptionprofileOptions(),
@@ -14,8 +14,8 @@ function useProfileOptionsResponse() {
   )
 }
 
-export const useProfileOptions = () => {
-  const { data } = useProfileOptionsResponse()
+export const useActivityTypes = () => {
+  const { data } = useActivityTypesResponse()
   const schoolTypes = data?.school_types
   const activities = data?.activities
   return { schoolTypes, activities }
