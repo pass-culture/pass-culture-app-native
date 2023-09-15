@@ -1,8 +1,5 @@
 import React, { ReactNode } from 'react'
-import {
-  DefaultTheme as DefaultThemeWeb,
-  ThemeProvider as ThemeProviderWeb,
-} from 'styled-components'
+import { ThemeProvider as ThemeProviderWeb } from 'styled-components'
 
 import { useComputedTheme } from 'libs/styled/useComputedTheme'
 
@@ -15,7 +12,7 @@ type Props = {
 }
 
 export function ThemeProvider({ children, theme }: Props) {
-  const computedTheme = useComputedTheme<DefaultThemeWeb>(theme)
+  const computedTheme = useComputedTheme(theme)
   return (
     <ThemeProviderWeb theme={computedTheme}>
       <ThemeProviderNative theme={computedTheme}>{children}</ThemeProviderNative>

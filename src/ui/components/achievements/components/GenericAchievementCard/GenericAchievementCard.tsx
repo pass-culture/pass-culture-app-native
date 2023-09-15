@@ -138,7 +138,7 @@ export const GenericAchievementCard: FunctionComponent<AchievementCardProps> = (
       </ContentContainer>
       <Spacer.Flex flex={2} />
       <BottomButtonsContainer
-        isSmallScreen={isSmallScreen}
+        isSmallScreen={!!isSmallScreen}
         paddingBottom={getSpacing(
           props.ignoreBottomPadding ? grid({ default: 10, sm: 2, md: 5 }, 'height') : 10
         )}>

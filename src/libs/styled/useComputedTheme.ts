@@ -1,10 +1,10 @@
 import { useMemo } from 'react'
 import { useWindowDimensions } from 'react-native'
-import { DefaultTheme as DefaultThemeNative } from 'styled-components/native'
 
 import { useMediaQuery } from 'libs/react-responsive/useMediaQuery'
+import { BaseAppThemeType, AppThemeType } from 'theme'
 
-export function useComputedTheme<A extends DefaultThemeNative>(theme: A) {
+export function useComputedTheme(theme: BaseAppThemeType) {
   const { width: windowWidth } = useWindowDimensions()
   const tabletMinWidth = theme.breakpoints.md
   const desktopMinWidth = theme.breakpoints.lg
@@ -19,7 +19,7 @@ export function useComputedTheme<A extends DefaultThemeNative>(theme: A) {
   const showTabBar = theme.isTouch || !!isMobileViewport
   const appContentWidth = Math.min(desktopMinWidth, windowWidth)
 
-  return useMemo<A>(
+  return useMemo<AppThemeType>(
     () => ({
       ...theme,
       tabBar: {

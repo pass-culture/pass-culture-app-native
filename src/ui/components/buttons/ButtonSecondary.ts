@@ -42,7 +42,7 @@ export const ButtonSecondary = styledButton(AppButton).attrs<BaseButtonProps>(
   }
 )(({ theme, isLoading, disabled }) => {
   const borderWidth = theme.buttons.secondary.borderWidth
-  let borderColor = theme.buttons.secondary.borderColor
+  let borderColor: string = theme.buttons.secondary.borderColor
 
   if (isLoading) {
     borderColor = theme.buttons.loading.secondary.borderColor
@@ -50,14 +50,14 @@ export const ButtonSecondary = styledButton(AppButton).attrs<BaseButtonProps>(
     borderColor = theme.buttons.disabled.secondary.borderColor
   }
 
-  let webOnly = {}
-  if (Platform.OS === 'web') {
-    webOnly = {
-      ['&:disabled']: {
-        borderColor: theme.buttons.disabled.secondary.borderColor,
-      },
-    }
-  }
+  const webOnly =
+    Platform.OS === 'web'
+      ? {
+          ['&:disabled']: {
+            borderColor: theme.buttons.disabled.secondary.borderColor,
+          },
+        }
+      : {}
 
   return {
     borderStyle: 'solid',

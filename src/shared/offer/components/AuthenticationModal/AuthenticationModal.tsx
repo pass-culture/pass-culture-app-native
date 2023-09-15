@@ -1,10 +1,9 @@
 import React, { FunctionComponent, useCallback } from 'react'
-import styled from 'styled-components/native'
+import styled, { useTheme } from 'styled-components/native'
 
 import { AuthenticationButton } from 'features/auth/components/AuthenticationButton/AuthenticationButton'
 import { analytics } from 'libs/analytics'
 import { From } from 'shared/offer/enums'
-import { theme } from 'theme'
 import { ButtonWithLinearGradient } from 'ui/components/buttons/buttonWithLinearGradient/ButtonWithLinearGradient'
 import { AppModalWithIllustration } from 'ui/components/modals/AppModalWithIllustration'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
@@ -26,6 +25,8 @@ export const AuthenticationModal: FunctionComponent<Props> = ({
   offerId,
   from,
 }) => {
+  const theme = useTheme()
+
   const closeModal = useCallback(() => {
     analytics.logQuitAuthenticationModal(offerId)
     hideModal()
