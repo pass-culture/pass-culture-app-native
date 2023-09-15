@@ -31,6 +31,7 @@ export const LocationModal = ({ visible, dismissModal }: LocationModalProps) => 
   const isGeolocated = !!userPosition
   const defaultOption = isGeolocated ? LocationOption.GEOLOCATION : LocationOption.NONE
   const [selectedOption, setSelectedOption] = React.useState<LocationOption>(defaultOption)
+  const [place, setPlace] = useState(null)
   const [placeQuery, setPlaceQuery] = useState('')
   const debouncedPlaceQuery = useDebounceValue(placeQuery, 500)
 
@@ -38,6 +39,8 @@ export const LocationModal = ({ visible, dismissModal }: LocationModalProps) => 
 
   useEffect(() => {
     if (visible) {
+      setPlaceQuery('')
+      setPlace(null)
       setSelectedOption(defaultOption)
       onHideRef.current = undefined
     }
@@ -74,6 +77,23 @@ export const LocationModal = ({ visible, dismissModal }: LocationModalProps) => 
     setSelectedOption(option)
   }
 
+  const onResetPlace = () => {
+    setPlace(null)
+    setPlaceQuery('')
+  }
+  const onChangePlace = (text: string) => {
+    setPlace(null)
+    setPlaceQuery(text)
+  }
+
+  const onSetSelectedPlace = (place: SuggestedPlace) => {
+    setPlaceQuery(place.label)
+    setPlace(place)
+  }
+
+  const cannotSubmit = place === null
+  const showUserLocation = selectedOption === LocationOption.CUSTOM_POSITION
+
   return (
     <AppModal
       visible={visible}
@@ -108,23 +128,30 @@ export const LocationModal = ({ visible, dismissModal }: LocationModalProps) => 
         title={'Choisir une localisation'}
         subtitle={LOCATION_PLACEHOLDER}
       />
-      <Spacer.Column numberOfSpaces={4} />
-      <SearchInput
-        LeftIcon={StyledMagnifyingGlass}
-        inputHeight="regular"
-        onChangeText={setPlaceQuery}
-        placeholder={LOCATION_PLACEHOLDER}
-        value={placeQuery}
-      />
-      <React.Fragment>
-        <Spacer.Column numberOfSpaces={4} />
-        <SuggestedPlaces query={debouncedPlaceQuery} setSelectedPlace={() => null} />
-      </React.Fragment>
+      {!!showUserLocation && (
+        <React.Fragment>
+          <Spacer.Column numberOfSpaces={4} />
+          <SearchInput
+            LeftIcon={StyledMagnifyingGlass}
+            inputHeight="regular"
+            onChangeText={onChangePlace}
+            onPressRightIcon={onResetPlace}
+            placeholder={LOCATION_PLACEHOLDER}
+            value={placeQuery}
+          />
+          {!place && (
+            <React.Fragment>
+              <Spacer.Column numberOfSpaces={4} />
+              <SuggestedPlaces query={debouncedPlaceQuery} setSelectedPlace={onSetSelectedPlace} />
+            </React.Fragment>
+          )}
+        </React.Fragment>
+      )}
       <Spacer.Column numberOfSpaces={8} />
       <ButtonContainer>
         <ButtonPrimary
           wording={'Valider la localisation'}
-          disabled={selectedOption === LocationOption.NONE}
+          disabled={cannotSubmit}
           onPress={onSubmit}
         />
       </ButtonContainer>
