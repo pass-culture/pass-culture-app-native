@@ -19,8 +19,7 @@ jobs:
       - name: Setup Android SDK
         uses: android-actions/setup-android@v2
       - run: ls ~/.cache/yarn/v6/*
-      - run: du -sh .
-      - run: yarn cache list
+      - run: ls -altr ~/.cache/yarn/offline-module
       - run: yarn config set yarn-offline-mirror ~/.cache/yarn/offline-module
       - run: yarn install --prefer-offline
   bundle-install:
