@@ -20,7 +20,6 @@ export function VenueSelectionListItem({
       isSelected={isSelected}
       testID="venue-selection-list-item"
       render={({ isHover }) => <VenueDetails {...props} isHover={isHover} />}
-      hasDistanceTag={!!props.distance}
     />
   )
 }

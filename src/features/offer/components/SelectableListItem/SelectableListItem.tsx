@@ -18,14 +18,12 @@ interface SelectableListItemProps extends Omit<TouchableOpacityProps, 'children'
   isSelected?: boolean
   onSelect: VoidFunction
   render: (props: ChildrenProps) => ReactNode
-  hasDistanceTag?: boolean
 }
 
 export function SelectableListItem({
   isSelected,
   onSelect,
   render,
-  hasDistanceTag,
   ...props
 }: SelectableListItemProps) {
   const { onFocus, onBlur, isFocus } = useHandleFocus()
@@ -39,7 +37,6 @@ export function SelectableListItem({
       onPress={onSelect}
       isFocus={isFocus}
       isSelected={isSelected}
-      hasDistanceTag={hasDistanceTag}
       // @ts-ignore It exists but not recognized by TypeScript
       onMouseEnter={onMouseEnter}
       onMouseLeave={onMouseLeave}
@@ -68,10 +65,8 @@ const unselectedStyles = (theme: DefaultTheme, disabled?: boolean): CSSPropertie
 const Wrapper = styled(TouchableOpacity)<{
   isFocus?: boolean
   isSelected?: boolean
-  hasDistanceTag?: boolean
-}>(({ theme, isFocus, isSelected, disabled, hasDistanceTag }) => {
+}>(({ theme, isFocus, isSelected, disabled }) => {
   return {
-    height: hasDistanceTag ? getSpacing(32) : getSpacing(23),
     backgroundColor: disabled ? theme.colors.greyLight : theme.colors.white,
     borderRadius: getSpacing(2),
     borderStyle: 'solid',
