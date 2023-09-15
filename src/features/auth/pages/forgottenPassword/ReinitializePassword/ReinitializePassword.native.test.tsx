@@ -20,6 +20,18 @@ import { SnackBarHelperSettings } from 'ui/components/snackBar/types'
 
 import { ReinitializePassword } from './ReinitializePassword'
 
+const ROUTE_PARAMS: {
+  email: string
+  token: string
+  expiration_timestamp: number
+  from?: Referrals
+} = {
+  email: 'john@.example.com',
+  token: 'reerereskjlmkdlsf',
+  expiration_timestamp: 45465546445,
+  from: undefined,
+}
+
 jest.mock('features/navigation/helpers')
 
 const mockShowSuccessSnackBar = jest.fn()
@@ -42,6 +54,10 @@ jest.spyOn(DeviceInfo, 'getModel').mockReturnValue('iPhone 13')
 jest.spyOn(DeviceInfo, 'getSystemName').mockReturnValue('iOS')
 
 describe('ReinitializePassword Page', () => {
+  beforeEach(() => {
+    useRoute.mockReturnValue({ params: ROUTE_PARAMS })
+  })
+
   it('should match snapshot', async () => {
     renderReinitializePassword()
 
@@ -99,7 +115,7 @@ describe('ReinitializePassword Page', () => {
 
     expect(apiReinitializePasswordSpy).toHaveBeenCalledWith({
       newPassword: 'user@AZERTY123',
-      resetPasswordToken: tokenFromParams,
+      resetPasswordToken: ROUTE_PARAMS.token,
       deviceInfo: undefined,
     })
   })
@@ -124,7 +140,7 @@ describe('ReinitializePassword Page', () => {
 
     expect(apiReinitializePasswordSpy).toHaveBeenCalledWith({
       newPassword: 'user@AZERTY123',
-      resetPasswordToken: tokenFromParams,
+      resetPasswordToken: ROUTE_PARAMS.token,
       deviceInfo: {
         deviceId: 'ad7b7b5a169641e27cadbdb35adad9c4ca23099a',
         os: 'iOS',
@@ -135,6 +151,7 @@ describe('ReinitializePassword Page', () => {
     // eslint-disable-next-line local-rules/independent-mocks
     useFeatureFlagSpy.mockReturnValue(false)
   })
+
   it('should connect the user when password is successfully reset', async () => {
     server.use(
       rest.post(env.API_BASE_URL + '/native/v1/reset_password', async (_, res, ctx) =>
@@ -207,8 +224,8 @@ describe('ReinitializePassword Page', () => {
   })
 
   it('should log analytics with from params value when password is successfully reset', async () => {
-    const from = 'accountsecurity'
-    renderReinitializePassword(from)
+    ROUTE_PARAMS.from = 'accountsecurity'
+    renderReinitializePassword()
     const passwordInput = screen.getByPlaceholderText('Ton mot de passe')
     const confirmationInput = screen.getByPlaceholderText('Confirmer le mot de passe')
     await act(async () => {
@@ -222,7 +239,7 @@ describe('ReinitializePassword Page', () => {
     })
 
     expect(analytics.logHasChangedPassword).toBeCalledWith({
-      from,
+      from: 'accountsecurity',
       reason: 'resetPassword',
     })
   })
@@ -275,23 +292,12 @@ describe('ReinitializePassword Page', () => {
     await act(async () => {})
 
     expect(replace).toHaveBeenNthCalledWith(1, 'ResetPasswordExpiredLink', {
-      email: emailFromParams,
+      email: ROUTE_PARAMS.email,
     })
   })
 })
 
-const emailFromParams = 'john@.example.com'
-const tokenFromParams = 'reerereskjlmkdlsf'
-
-function renderReinitializePassword(from?: Referrals) {
-  useRoute.mockImplementation(() => ({
-    params: {
-      email: emailFromParams,
-      token: tokenFromParams,
-      expiration_timestamp: 45465546445,
-      from,
-    },
-  }))
+function renderReinitializePassword() {
   return render(
     // eslint-disable-next-line local-rules/no-react-query-provider-hoc
     reactQueryProviderHOC(<ReinitializePassword />)
