@@ -3,6 +3,7 @@ import { setupServer } from 'msw/node'
 
 import {
   AccountState,
+  ActivityTypesResponse,
   BannerResponse,
   BookingsResponse,
   CookieConsentRequest,
@@ -11,7 +12,6 @@ import {
   NextSubscriptionStepResponse,
   OfferResponse,
   PhoneValidationRemainingAttemptsRequest,
-  ProfileOptionsResponse,
   Reason,
   RequestPasswordResetRequest,
   ResetPasswordRequest,
@@ -164,14 +164,13 @@ export const server = setupServer(
       )
     }
   ),
-  rest.get<ProfileOptionsResponse>(
-    env.API_BASE_URL + '/native/v1/subscription/profile_options',
+  rest.get<ActivityTypesResponse>(
+    env.API_BASE_URL + '/native/v1/subscription/activity_types',
     (req, res, ctx) => {
       return res(
         ctx.status(200),
         ctx.json({
           activities: SchoolTypesSnap.activities,
-          school_types: SchoolTypesSnap.school_types,
         })
       )
     }
