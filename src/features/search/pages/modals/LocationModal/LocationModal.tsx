@@ -18,7 +18,7 @@ import { locationSchema } from 'features/search/helpers/schema/locationSchema/lo
 import { useGetFullscreenModalSliderLength } from 'features/search/helpers/useGetFullscreenModalSliderLength'
 import { useSetFocusWithCondition } from 'features/search/helpers/useSetFocusWithCondition/useSetFocusWithCondition'
 import { SuggestedPlaces } from 'features/search/pages/SuggestedPlaces/SuggestedPlaces'
-import { SearchState } from 'features/search/types'
+import { SearchState, SearchView } from 'features/search/types'
 import { Venue } from 'features/venue/types'
 import { analytics } from 'libs/analytics'
 import { GeolocPermissionState, useLocation } from 'libs/geolocation'
@@ -233,6 +233,13 @@ export const LocationModal: FunctionComponent<LocationModalProps> = ({
           break
         }
         case FilterBehaviour.APPLY_WITHOUT_SEARCHING: {
+          // Workaround: When on the search page and applying filters while entering a search query
+          // or selecting an autocomplete item, the filter wasn't being applied correctly.
+          // So, we navigate to the Search page and set the filter state with the location param.
+          if (searchState.view === SearchView.Landing) {
+            navigate(...getTabNavConfig('Search', additionalSearchState))
+            break
+          }
           dispatch({ type: 'SET_STATE', payload: additionalSearchState })
           break
         }
