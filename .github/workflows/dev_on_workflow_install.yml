@@ -5,7 +5,7 @@ on:
 
 jobs:
   yarn-install:
-    runs-on: [self-hosted, linux, x64]
+    runs-on: yarn-cache
     steps:
       - uses: actions/checkout@v3
       - uses: actions/setup-node@v3
@@ -18,15 +18,6 @@ jobs:
           distribution: 'temurin'
       - name: Setup Android SDK
         uses: android-actions/setup-android@v2
-      - uses: actions/cache@v3
-        id: yarn-modules-cache
-        with:
-          path: |
-            node_modules
-            ~/.cache/yarn
-          key: v1-yarn-dependency-cache-${{ hashFiles('**/yarn.lock') }}
-          restore-keys: |
-            v1-yarn-dependency-cache-${{ hashFiles('**/yarn.lock') }}
       - run: yarn install 
   bundle-install:
     runs-on: [self-hosted, linux, x64]
