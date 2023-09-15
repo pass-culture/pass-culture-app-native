@@ -11,7 +11,6 @@ import { PageWithHeader } from 'features/identityCheck/components/layout/PageWit
 import { useSubscriptionContext } from 'features/identityCheck/context/SubscriptionContextProvider'
 import { useNavigateForwardToStepper } from 'features/identityCheck/helpers/useNavigateForwardToStepper'
 import { useSaveStep } from 'features/identityCheck/pages/helpers/useSaveStep'
-import { activityHasSchoolTypes } from 'features/identityCheck/pages/profile/helpers/schoolTypes'
 import { IdentityCheckStep } from 'features/identityCheck/types'
 import { useIsUserUnderage } from 'features/profile/helpers/useIsUserUnderage'
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
@@ -52,17 +51,6 @@ export const SetStatus = () => {
   const filteredActivities = isUserUnderage
     ? activities
     : activities?.filter((activity) => activity.id !== ActivityIdEnum.MIDDLE_SCHOOL_STUDENT)
-
-  // TODO(PC-12410): déléguer la responsabilité au back de vider l'array de school_types associé à l'activity (le statut)
-  const hasSchoolTypes =
-    isUserUnderage && !!filteredActivities && !!selectedStatus
-      ? activityHasSchoolTypes(selectedStatus, filteredActivities)
-      : false
-
-  useEffect(() => {
-    dispatch({ type: 'SET_HAS_SCHOOL_TYPES', payload: hasSchoolTypes })
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [hasSchoolTypes])
 
   const submitStatus = useCallback(
     async (formValues: StatusForm) => {
