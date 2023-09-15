@@ -4,7 +4,7 @@ import React from 'react'
 import { CommonActions, dispatch } from '__mocks__/@react-navigation/native'
 import { ActivityIdEnum } from 'api/gen'
 import { initialSubscriptionState as mockState } from 'features/identityCheck/context/reducer'
-import { SchoolTypesSnap } from 'features/identityCheck/pages/profile/fixtures/mockedSchoolTypes'
+import { ActivityTypesSnap } from 'features/identityCheck/pages/profile/fixtures/mockedActivityTypes'
 import { SetStatus } from 'features/identityCheck/pages/profile/SetStatus'
 import * as UnderageUserAPI from 'features/profile/helpers/useIsUserUnderage'
 import { analytics } from 'libs/analytics'
@@ -47,8 +47,8 @@ server.use(
   })
 )
 
-const mockSchoolTypes = SchoolTypesSnap.school_types
-const mockActivities = SchoolTypesSnap.activities
+const mockSchoolTypes = ActivityTypesSnap.school_types
+const mockActivities = ActivityTypesSnap.activities
 jest.mock('features/identityCheck/api/useActivityTypes', () => {
   return {
     useActivityTypes: jest.fn(() => {
@@ -80,10 +80,10 @@ describe('<SetStatus/>', () => {
   })
 
   it('should navigate to stepper on press "Continuer" when user should not select school type', async () => {
-    mockStatus = SchoolTypesSnap.activities[2].id
+    mockStatus = ActivityTypesSnap.activities[2].id
     renderSetStatus()
 
-    fireEvent.press(screen.getByText(SchoolTypesSnap.activities[2].label)) // select student status
+    fireEvent.press(screen.getByText(ActivityTypesSnap.activities[2].label)) // select student status
     fireEvent.press(screen.getByText('Continuer'))
 
     await waitFor(() => {
@@ -104,7 +104,7 @@ describe('<SetStatus/>', () => {
   it('should log analytics on press Continuer', async () => {
     renderSetStatus()
 
-    fireEvent.press(screen.getByText(SchoolTypesSnap.activities[1].label))
+    fireEvent.press(screen.getByText(ActivityTypesSnap.activities[1].label))
     fireEvent.press(screen.getByText('Continuer'))
 
     await waitFor(() => {
