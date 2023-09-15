@@ -40,8 +40,6 @@ export const SubscriptionReducer = (
       return { ...state, profile: { ...state.profile, status: action.payload } }
     case 'SET_CITY':
       return { ...state, profile: { ...state.profile, city: action.payload } }
-    case 'SET_SCHOOL_TYPE':
-      return { ...state, profile: { ...state.profile, schoolType: action.payload } }
     case 'SET_ADDRESS':
       return { ...state, profile: { ...state.profile, address: action.payload } }
     case 'SET_IDENTIFICATION':
