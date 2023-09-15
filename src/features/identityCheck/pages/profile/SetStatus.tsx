@@ -94,9 +94,9 @@ export const SetStatus = () => {
         <ButtonPrimary
           type="submit"
           onPress={handleSubmit(submitStatus)}
-          wording={!selectedStatus ? 'Choisis ton statut' : 'Continuer'}
+          wording={selectedStatus ? 'Continuer' : 'Choisis ton statut'}
           accessibilityLabel={
-            !selectedStatus ? 'Choisis ton statut' : 'Continuer vers l’étape suivante'
+            selectedStatus ? 'Continuer vers l’étape suivante' : 'Choisis ton statut'
           }
           isLoading={isLoading}
           disabled={!selectedStatus}
