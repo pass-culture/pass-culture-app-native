@@ -5,6 +5,7 @@ import { LocationModalButton } from 'features/location/components/LocationModalB
 import { LocationOption } from 'features/location/enums'
 import { SuggestedPlaces } from 'features/search/pages/SuggestedPlacesOrVenues/SuggestedPlaces'
 import { GeolocPermissionState, useLocation } from 'libs/geolocation'
+import { SuggestedPlace } from 'libs/place'
 import { theme } from 'theme'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { SearchInput } from 'ui/components/inputs/SearchInput'
@@ -16,7 +17,6 @@ import { Close } from 'ui/svg/icons/Close'
 import { MagnifyingGlass } from 'ui/svg/icons/MagnifyingGlass'
 import { MagnifyingGlassFilled } from 'ui/svg/icons/MagnifyingGlassFilled'
 import { PositionFilled } from 'ui/svg/icons/PositionFilled'
-
 interface LocationModalProps {
   visible: boolean
   dismissModal: () => void
