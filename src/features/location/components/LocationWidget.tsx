@@ -23,9 +23,8 @@ export const LocationWidget: React.FC = () => {
   const [widgetWidth, setWidgetWidth] = React.useState<number | undefined>()
   const { isSplashScreenHidden } = useSplashScreenContext()
 
-  const { userPosition } = useLocation()
-  const isGeolocated = !!userPosition
-  const locationTitle = isGeolocated ? 'Ma position' : 'Me localiser'
+  const { getLocationTitle, isGeolocated, isCustomPosition } = useLocation()
+  const locationTitle = getLocationTitle({ is: 'Ma position', isnot: 'Me localiser' })
 
   const hideTooltip = useCallback(() => setIsTooltipVisible(false), [setIsTooltipVisible])
 
@@ -76,7 +75,11 @@ export const LocationWidget: React.FC = () => {
         accessibilityLabel="Ouvrir la modale de localisation"
         onLayout={onWidgetLayout}>
         <IconContainer isActive={isGeolocated}>
-          {isGeolocated ? <LocationPointerFilled /> : <LocationPointerNotFilled />}
+          {isGeolocated || isCustomPosition ? (
+            <LocationPointerFilled />
+          ) : (
+            <LocationPointerNotFilled />
+          )}
         </IconContainer>
         <StyledCaption numberOfLines={1}>{locationTitle}</StyledCaption>
       </StyledTouchable>
