@@ -26,8 +26,8 @@
   - [x] regarder / créer un ticket, pour cleaner l'icone Loupe : 16 px du bord à gauche (marge gauche de l'icone dans l'input paraît plus grande que dans la maquette -> garder comme l'existant)
   - [x] icon du pin est filled dans la maquette mais pas dans le code -> utiliser le nouvel écart dans la modale de la recherche de localisation
   - [x] marges entre input et sous titre à calibrer ( suppression marge vertical donc verif location button)
-  - [ ] Sauvegarder le nom de la position utilisateur dans le context ainsi que les coordonnées
-  - [ ] A l'affichage de la modale, remplir le champ input avec le nom de la postion utilisateur
+  - [x] Sauvegarder le nom de la position utilisateur dans le context ainsi que les coordonnées
+  - [x] A l'affichage de la modale, remplir le champ input avec le nom de la postion utilisateur
 
 ### Questions pour Agathe
 
