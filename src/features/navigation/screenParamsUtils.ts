@@ -112,6 +112,7 @@ export const screenParamsParser: ParamsParsers = {
     token: identityFn,
     email: decodeURIComponent,
     expiration_timestamp: Number,
+    from: identityFn,
   },
   ResetPasswordExpiredLink: {
     email: decodeURIComponent,

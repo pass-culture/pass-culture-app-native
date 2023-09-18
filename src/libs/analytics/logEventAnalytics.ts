@@ -223,6 +223,8 @@ export const logEventAnalytics = {
     analytics.logEvent({ firebase: AnalyticsEvent.CONSULT_WHOLE_OFFER }, { offerId }),
   logConsultWithdrawal: (params: OfferIdOrVenueId) =>
     analytics.logEvent({ firebase: AnalyticsEvent.CONSULT_WITHDRAWAL_MODALITIES }, params),
+  logContactFraudTeam: ({ from }: { from: Referrals }) =>
+    analytics.logEvent({ firebase: AnalyticsEvent.CONTACT_FRAUD_TEAM }, { from }),
   logContinueCGU: () =>
     analytics.logEvent({
       amplitude: AmplitudeEvent.ACCEPT_CGU_CLICKED,
@@ -250,6 +252,8 @@ export const logEventAnalytics = {
     analytics.logEvent({ firebase: AnalyticsEvent.CULTURAL_SURVEY_SCROLLED_TO_BOTTOM }, params),
   logDiscoverOffers: (from: Referrals) =>
     analytics.logEvent({ firebase: AnalyticsEvent.DISCOVER_OFFERS }, { from }),
+  logDismissAccountSecurity: () =>
+    analytics.logEvent({ firebase: AnalyticsEvent.DISMISS_ACCOUNT_SECURITY }),
   logDismissNotifications: () =>
     analytics.logEvent({ firebase: AnalyticsEvent.DISMISS_NOTIFICATIONS }),
   logDismissShareApp: (type: ShareAppModalType) =>
@@ -298,8 +302,13 @@ export const logEventAnalytics = {
         type: sortBy,
       }
     ),
-  logHasChangedPassword: (reason: 'changePassword' | 'resetPassword') =>
-    analytics.logEvent({ firebase: AnalyticsEvent.HAS_CHANGED_PASSWORD }, { reason }),
+  logHasChangedPassword: ({
+    from,
+    reason,
+  }: {
+    from: Referrals
+    reason: 'changePassword' | 'resetPassword'
+  }) => analytics.logEvent({ firebase: AnalyticsEvent.HAS_CHANGED_PASSWORD }, { from, reason }),
   logHasClickedMissingCode: () =>
     analytics.logEvent({ firebase: AnalyticsEvent.HAS_CLICKED_MISSING_CODE }),
   logHasCorrectedEmail: ({ from }: { from: Referrals }) =>

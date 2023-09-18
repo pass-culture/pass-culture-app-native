@@ -80,7 +80,10 @@ export const ReinitializePassword = () => {
         message: 'Ton mot de passe est modifié\u00a0!',
         timeout: SNACK_BAR_TIME_OUT,
       })
-      analytics.logHasChangedPassword('resetPassword')
+      analytics.logHasChangedPassword({
+        from: route.params.from ?? 'forgottenpassword',
+        reason: 'resetPassword',
+      })
       loginRoutine(
         {
           accessToken: response.accessToken,

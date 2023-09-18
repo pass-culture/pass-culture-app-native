@@ -209,7 +209,12 @@ export type RootStackParamList = {
   OfferDescription: { id: number }
   SuspendAccountConfirmation: { token: string }
   SuspensionScreen: undefined
-  ReinitializePassword: { email: string; token: string; expiration_timestamp: number }
+  ReinitializePassword: {
+    email: string
+    token: string
+    expiration_timestamp: number
+    from?: Referrals
+  }
   ResetPasswordEmailSent: { email: string }
   ResetPasswordExpiredLink: { email: string }
   LegalNotices: undefined
