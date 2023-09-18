@@ -4,7 +4,7 @@ import styled from 'styled-components/native'
 
 import { DistanceTag } from 'features/offer/components/DistanceTag/DistanceTag'
 import { VenueDetail } from 'features/offer/types'
-import { Spacer, Typo } from 'ui/theme'
+import { getSpacing, Spacer, Typo } from 'ui/theme'
 import { getHoverStyle } from 'ui/theme/getHoverStyle/getHoverStyle'
 
 export interface VenueDetailsProps extends VenueDetail, ViewProps {
@@ -16,9 +16,16 @@ export interface VenueDetailsProps extends VenueDetail, ViewProps {
   isHover?: boolean
 }
 
+enum Size {
+  Small = 'smallSize',
+  Large = 'largeSize',
+}
+
 export function VenueDetails({ title, address, distance, isHover, ...props }: VenueDetailsProps) {
+  const height = distance ? Size.Large : Size.Small
+
   return (
-    <Wrapper {...props}>
+    <Wrapper height={height} {...props}>
       <View>
         <Title isHover={isHover}>{title}</Title>
         <Spacer.Column numberOfSpaces={1} />
@@ -35,11 +42,12 @@ export function VenueDetails({ title, address, distance, isHover, ...props }: Ve
   )
 }
 
-const Wrapper = styled(View)({
+const Wrapper = styled(View)<{ height: Size }>((props) => ({
   justifyContent: 'center',
   flexGrow: 1,
   flexShrink: 1,
-})
+  height: props.height === Size.Large ? getSpacing(23.5) : getSpacing(14.5),
+}));
 
 const Title = styled(Typo.ButtonText).attrs({
   numberOfLines: 1,
