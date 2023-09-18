@@ -3,7 +3,7 @@ import { View } from 'react-native'
 import styled from 'styled-components/native'
 
 import { SearchBox } from 'features/search/components/SearchBox/SearchBox'
-import { SearchView } from 'features/search/types'
+import { HistoryItem, SearchView } from 'features/search/types'
 import { InputLabel } from 'ui/components/InputLabel/InputLabel'
 import { styledInputLabel } from 'ui/components/InputLabel/styledInputLabel'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
@@ -11,10 +11,17 @@ import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 type Props = {
   searchInputID: string
+  addSearchHistory: (item: HistoryItem) => void
+  searchInHistory: (search: string) => void
   searchView?: SearchView
 }
 
-export const SearchHeader = memo(function SearchHeader({ searchInputID, searchView }: Props) {
+export const SearchHeader = memo(function SearchHeader({
+  searchInputID,
+  searchView,
+  addSearchHistory,
+  searchInHistory,
+}: Props) {
   const subtitle = 'Toutes les offres à portée de main'
   const shouldDisplaySubtitle = !searchView || searchView === SearchView.Landing
 
@@ -28,7 +35,11 @@ export const SearchHeader = memo(function SearchHeader({ searchInputID, searchVi
         {shouldDisplaySubtitle ? <CaptionSubtitle>{subtitle}</CaptionSubtitle> : null}
         <Spacer.Column numberOfSpaces={4} />
         <View>
-          <SearchBox searchInputID={searchInputID} />
+          <SearchBox
+            searchInputID={searchInputID}
+            addSearchHistory={addSearchHistory}
+            searchInHistory={searchInHistory}
+          />
         </View>
       </SearchBoxContainer>
     </React.Fragment>
