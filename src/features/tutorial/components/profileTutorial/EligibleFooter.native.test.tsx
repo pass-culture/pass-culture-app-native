@@ -9,7 +9,7 @@ describe('<EligibleFooter />', () => {
     render(<EligibleFooter age={15} />)
 
     expect(
-      screen.getByText('Vérifie ton identité et active tes 20 € de crédit dès maintenant\u00a0!')
+      screen.getByText('Vérifie ton identité et active tes 20 € de crédit dès maintenant !')
     ).toBeOnTheScreen()
   })
 
@@ -17,15 +17,15 @@ describe('<EligibleFooter />', () => {
     render(<EligibleFooter age={18} />)
 
     expect(
-      screen.getByText('Vérifie ton identité et active tes 300 € de crédit dès maintenant\u00a0!')
+      screen.getByText('Vérifie ton identité et active tes 300 € de crédit dès maintenant !')
     ).toBeOnTheScreen()
   })
 
-  it('should navigate to VerifyEligibility when user press "Activer mon crédit"', () => {
+  it('should navigate to Stepper when user press "Activer mon crédit"', () => {
     render(<EligibleFooter age={18} />)
 
     fireEvent.press(screen.getByText('Activer mon crédit'))
 
-    expect(navigate).toHaveBeenCalledWith('Stepper')
+    expect(navigate).toHaveBeenCalledWith('Stepper', undefined)
   })
 })
