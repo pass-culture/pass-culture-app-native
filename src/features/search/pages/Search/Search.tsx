@@ -11,7 +11,9 @@ import { AutocompleteOffer } from 'features/search/components/AutocompleteOffer/
 import { AutocompleteVenue } from 'features/search/components/AutocompleteVenue/AutocompleteVenue'
 import { BodySearch } from 'features/search/components/BodySearch/BodySearch'
 import { SearchHeader } from 'features/search/components/SearchHeader/SearchHeader'
+import { SearchHistory } from 'features/search/components/SearchHistory/SearchHistory'
 import { useSearch } from 'features/search/context/SearchWrapper'
+import { useSearchHistory } from 'features/search/helpers/useSearchHistory/useSearchHistory'
 import { SearchView } from 'features/search/types'
 import { InsightsMiddleware } from 'libs/algolia/analytics/InsightsMiddleware'
 import { client } from 'libs/algolia/fetchAlgolia/clients'
@@ -56,7 +58,7 @@ export function Search() {
   const { params } = useRoute<UseRouteType<'Search'>>()
   const { dispatch } = useSearch()
   const { userPosition } = useLocation()
-  const { history, addToHistory, removeFromHistory, search } = useSearchHistory()
+  const { history, queryHistory, addToHistory, removeFromHistory, search } = useSearchHistory()
 
   useEffect(() => {
     dispatch({ type: 'SET_STATE', payload: params ?? { view: SearchView.Landing } })
@@ -101,6 +103,11 @@ export function Search() {
               onScroll={Keyboard.dismiss}
               scrollEventThrottle={400}>
               <Spacer.Column numberOfSpaces={4} />
+              <SearchHistory
+                history={history}
+                queryHistory={queryHistory}
+                removeItem={removeFromHistory}
+              />
               <AutocompleteOffer addSearchHistory={addToHistory} />
               <FeatureFlag
                 featureFlag={RemoteStoreFeatureFlags.WIP_ENABLE_VENUES_IN_SEARCH_RESULTS}>

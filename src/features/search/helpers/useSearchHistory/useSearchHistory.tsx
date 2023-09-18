@@ -7,6 +7,7 @@ import { useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 export function useSearchHistory() {
   const { showErrorSnackBar } = useSnackBarContext()
   const [history, setHistory] = useState<HistoryItem[]>([])
+  const [queryHistory, setQueryHistory] = useState<string>('')
 
   const getHistoryFromStorage = useMemo(
     () => async () => {
@@ -92,6 +93,7 @@ export function useSearchHistory() {
 
   const search = useCallback(
     async (query: string) => {
+      setQueryHistory(query)
       const currentHistory = await getHistoryFromStorage()
       if (query.trim() === '') {
         setHistory(currentHistory)
@@ -106,6 +108,7 @@ export function useSearchHistory() {
 
   return {
     history,
+    queryHistory,
     addToHistory,
     removeFromHistory,
     search,
