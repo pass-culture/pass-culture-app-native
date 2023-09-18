@@ -56,6 +56,7 @@ export function Search() {
   const { params } = useRoute<UseRouteType<'Search'>>()
   const { dispatch } = useSearch()
   const { userPosition } = useLocation()
+  const { history, addToHistory, removeFromHistory, search } = useSearchHistory()
 
   useEffect(() => {
     dispatch({ type: 'SET_STATE', payload: params ?? { view: SearchView.Landing } })
@@ -95,7 +96,7 @@ export function Search() {
               onScroll={Keyboard.dismiss}
               scrollEventThrottle={400}>
               <Spacer.Column numberOfSpaces={4} />
-              <AutocompleteOffer />
+              <AutocompleteOffer addSearchHistory={addToHistory} />
               <FeatureFlag
                 featureFlag={RemoteStoreFeatureFlags.WIP_ENABLE_VENUES_IN_SEARCH_RESULTS}>
                 <Index indexName={currentVenuesIndex}>

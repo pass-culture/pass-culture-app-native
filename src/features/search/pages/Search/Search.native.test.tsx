@@ -60,6 +60,14 @@ const mockSettings = jest.fn().mockReturnValue({ data: {} })
 jest.mock('features/auth/context/SettingsContext', () => ({
   useSettingsContext: jest.fn(() => mockSettings()),
 }))
+jest.mock('features/search/helpers/useSearchHistory/useSearchHistory', () => ({
+  useSearchHistory: () => ({
+    history: [],
+    addToHistory: jest.fn(),
+    removeFromHistory: jest.fn(),
+    search: jest.fn(),
+  }),
+}))
 
 const mockHits = [
   {
@@ -262,9 +270,10 @@ describe('<Search/>', () => {
   )
 
   describe('When offline', () => {
-    it('should display offline page', () => {
+    it('should display offline page', async () => {
       mockUseNetInfoContext.mockReturnValueOnce({ isConnected: false })
       const renderAPI = render(<Search />)
+      await act(async () => {})
       expect(renderAPI.getByText('Pas de réseau internet')).toBeOnTheScreen()
     })
   })
