@@ -74,8 +74,6 @@ jobs:
           projectBaseDir: .
   yarn_test_proxy:
     runs-on: [self-hosted, linux, x64]
-    container:
-      image: node:16
     steps:
       - uses: actions/checkout@v3
       - uses: actions/cache@v3
