@@ -180,7 +180,7 @@ describe('GenericHome page - Analytics', () => {
 
     await act(async () => {
       const scrollView = screen.queryByTestId('homeBodyScrollView')
-      scrollView && scrollView.props.onScroll(scrollEventBottom)
+      scrollView?.props.onScroll(scrollEventBottom)
     })
 
     expect(await screen.findByTestId('spinner')).toBeOnTheScreen()

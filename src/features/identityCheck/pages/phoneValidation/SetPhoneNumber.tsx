@@ -1,7 +1,6 @@
 import { useNavigation } from '@react-navigation/native'
 import React, { useEffect, useState } from 'react'
 import { View } from 'react-native'
-import { Country } from 'react-native-country-picker-modal'
 import styled from 'styled-components/native'
 import { v4 as uuidv4 } from 'uuid'
 
@@ -11,6 +10,7 @@ import { useSendPhoneValidationMutation } from 'features/identityCheck/api/useSe
 import { CenteredTitle } from 'features/identityCheck/components/CenteredTitle'
 import { METROPOLITAN_FRANCE } from 'features/identityCheck/components/countryPicker/constants'
 import { CountryPicker } from 'features/identityCheck/components/countryPicker/CountryPicker'
+import { Country } from 'features/identityCheck/components/countryPicker/types'
 import { PageWithHeader } from 'features/identityCheck/components/layout/PageWithHeader'
 import { useSubscriptionContext } from 'features/identityCheck/context/SubscriptionContextProvider'
 import { useSaveStep } from 'features/identityCheck/pages/helpers/useSaveStep'
@@ -77,7 +77,7 @@ export const SetPhoneNumber = () => {
         type: 'SET_PHONE_NUMBER',
         payload: {
           phoneNumber,
-          country: { countryCode: country.cca2, callingCodes: country.callingCode },
+          country: { countryCode: country.id, callingCode: country.callingCode },
         },
       })
       saveStep(IdentityCheckStep.PHONE_VALIDATION)
@@ -89,7 +89,7 @@ export const SetPhoneNumber = () => {
         type: 'SET_PHONE_NUMBER',
         payload: {
           phoneNumber,
-          country: { countryCode: country.cca2, callingCodes: country.callingCode },
+          country: { countryCode: country.id, callingCode: country.callingCode },
         },
       })
       if (isApiError(error) && error.content?.code === 'TOO_MANY_SMS_SENT') {
@@ -103,17 +103,14 @@ export const SetPhoneNumber = () => {
 
   async function requestSendPhoneValidationCode() {
     analytics.logHasRequestedCode()
-    const callingCode = country.callingCode[0]
-    if (isContinueButtonEnabled && callingCode) {
+    if (isContinueButtonEnabled) {
       setInvalidPhoneNumberMessage('')
-      const phoneNumberWithPrefix = formatPhoneNumberWithPrefix(phoneNumber, callingCode)
+      const phoneNumberWithPrefix = formatPhoneNumberWithPrefix(phoneNumber, country.callingCode)
       sendPhoneValidationCode(phoneNumberWithPrefix)
     }
 
     analytics.logPhoneNumberClicked()
   }
-
-  const LeftCountryPicker = <CountryPicker initialCountry={INITIAL_COUNTRY} onSelect={setCountry} />
 
   return (
     <PageWithHeader
@@ -141,7 +138,7 @@ export const SetPhoneNumber = () => {
                   textContentType="none" // disable autofill on iOS
                   onSubmitEditing={requestSendPhoneValidationCode}
                   accessibilityDescribedBy={phoneNumberInputErrorId}
-                  leftComponent={LeftCountryPicker}
+                  leftComponent={<CountryPicker selectedCountry={country} onSelect={setCountry} />}
                   testID="Entrée pour le numéro de téléphone"
                 />
               </InputContainer>
