@@ -133,7 +133,10 @@ export const LocationWrapper = memo(function LocationWrapper({
     hideGeolocPermissionModal()
   }, [hideGeolocPermissionModal])
 
-  const isLocation = useCallback((target: string) => selectedOption === target, [selectedOption])
+  const isLocationMode = useCallback(
+    (target: LocationOption) => selectedOption === target,
+    [selectedOption]
+  )
   const noPlace = place === null
 
   const saveAllPositionChanges = useCallback(() => {
@@ -163,17 +166,17 @@ export const LocationWrapper = memo(function LocationWrapper({
         onAcceptance: selectGeoLocationOption,
       })
     }
-  }, [permissionState, showGeolocPermissionModal])
+  }, [permissionState, setPlace, showGeolocPermissionModal])
 
   const getLocationTitle = useCallback(
-    ({ is, isnot }) => {
+    ({ isGeolocatedTitle, isNotGeolocatedTitle }) => {
       if (place !== null) {
         return place.label
       }
       if (userPosition !== null) {
-        return is
+        return isGeolocatedTitle
       }
-      return isnot
+      return isNotGeolocatedTitle
     },
     [place, userPosition]
   )
@@ -191,7 +194,7 @@ export const LocationWrapper = memo(function LocationWrapper({
       onModalHideRef,
       getLocationTitle,
       saveAllPositionChanges,
-      isLocation,
+      isLocationMode,
       requestGeolocPermission: contextualRequestGeolocPermission,
       triggerPositionUpdate,
       onPressGeolocPermissionModalButton,
@@ -213,7 +216,7 @@ export const LocationWrapper = memo(function LocationWrapper({
       noPlace,
       getLocationTitle,
       saveAllPositionChanges,
-      isLocation,
+      isLocationMode,
       setCustomPosition,
       contextualRequestGeolocPermission,
       triggerPositionUpdate,

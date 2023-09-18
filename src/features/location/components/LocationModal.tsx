@@ -17,6 +17,7 @@ import { Close } from 'ui/svg/icons/Close'
 import { MagnifyingGlass } from 'ui/svg/icons/MagnifyingGlass'
 import { MagnifyingGlassFilled } from 'ui/svg/icons/MagnifyingGlassFilled'
 import { PositionFilled } from 'ui/svg/icons/PositionFilled'
+
 interface LocationModalProps {
   visible: boolean
   dismissModal: () => void
@@ -27,7 +28,7 @@ const LOCATION_PLACEHOLDER = 'Ville, code postal, adresse'
 export const LocationModal = ({ visible, dismissModal }: LocationModalProps) => {
   const {
     isGeolocated,
-    isLocation,
+    isCurrentLocationMode,
     noPlace,
     runGeolocationDialogs,
     setPlace,
@@ -47,8 +48,9 @@ export const LocationModal = ({ visible, dismissModal }: LocationModalProps) => 
   }, [visible, initialize])
 
   const colorForGeolocationMode = React.useMemo(
-    () => (isLocation(LocationOption.GEOLOCATION) ? theme.colors.primary : theme.colors.black),
-    [isLocation]
+    () =>
+      isCurrentLocationMode(LocationOption.GEOLOCATION) ? theme.colors.primary : theme.colors.black,
+    [isCurrentLocationMode]
   )
 
   const selectLocationOption = React.useCallback(
@@ -62,9 +64,12 @@ export const LocationModal = ({ visible, dismissModal }: LocationModalProps) => 
     [dismissModal, runGeolocationDialogs, setSelectedOption]
   )
 
-  const colorForUserLocationMode = React.useMemo(
-    () => (isLocation(LocationOption.CUSTOM_POSITION) ? theme.colors.primary : theme.colors.black),
-    [isLocation]
+  const colorForCustomLocationMode = React.useMemo(
+    () =>
+      isCurrentLocationMode(LocationOption.CUSTOM_POSITION)
+        ? theme.colors.primary
+        : theme.colors.black,
+    [isCurrentLocationMode]
   )
 
   const onResetPlace = () => {
@@ -114,11 +119,11 @@ export const LocationModal = ({ visible, dismissModal }: LocationModalProps) => 
       <LocationModalButton
         onPress={selectLocationOption(LocationOption.CUSTOM_POSITION)}
         icon={MagnifyingGlassFilled}
-        color={colorForUserLocationMode}
+        color={colorForCustomLocationMode}
         title={'Choisir une localisation'}
         subtitle={LOCATION_PLACEHOLDER}
       />
-      {!!isLocation(LocationOption.CUSTOM_POSITION) && (
+      {!!isCurrentLocationMode(LocationOption.CUSTOM_POSITION) && (
         <React.Fragment>
           <Spacer.Column numberOfSpaces={4} />
           <SearchInput
