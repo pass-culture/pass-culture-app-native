@@ -5,6 +5,7 @@ import styled from 'styled-components/native'
 
 import { OfferExtraData, OfferResponse } from 'api/gen'
 import { UseRouteType } from 'features/navigation/RootNavigator/types'
+import { useGoBack } from 'features/navigation/useGoBack'
 import { useOffer } from 'features/offer/api/useOffer'
 import { highlightLinks, ParsedDescription } from 'libs/parsers/highlightLinks'
 import { PageHeaderSecondary } from 'ui/components/headers/PageHeaderSecondary'
@@ -113,11 +114,13 @@ export const OfferDescription = () => {
   const { description = '', extraData = {}, image, name = '' } = offerResponse ?? {}
   const photoCredit = image?.credit
 
+  const { goBack } = useGoBack('Offer', params)
+
   const helmetTitle = `Détails de l’offre ${name} | pass Culture`
   return (
     <Container>
       <Helmet title={helmetTitle} />
-      <PageHeaderSecondary title="Description" />
+      <PageHeaderSecondary title="Description" onGoBack={goBack} />
       <React.Fragment>
         <Spacer.Column numberOfSpaces={2} />
         <FlatList
