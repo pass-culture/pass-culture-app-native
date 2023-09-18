@@ -3,6 +3,7 @@ import { StackNavigationProp } from '@react-navigation/stack'
 import { ComponentType } from 'react'
 
 import { CulturalSurveyQuestionEnum } from 'api/gen/api'
+import { PlaylistType } from 'features/offer/enums'
 import { SearchState } from 'features/search/types'
 import { TutorialType } from 'features/tutorial/types'
 import { Venue } from 'features/venue/types'
@@ -205,6 +206,7 @@ export type RootStackParamList = {
     openModalOnNavigation?: boolean
     searchId?: string
     apiRecoParams?: string
+    playlistType?: PlaylistType
   }
   OfferDescription: { id: number }
   SuspendAccountConfirmation: { token: string }
