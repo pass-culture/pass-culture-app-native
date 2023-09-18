@@ -3,6 +3,7 @@ import { StackScreenProps } from '@react-navigation/stack'
 import React, { FunctionComponent } from 'react'
 import styled from 'styled-components/native'
 
+import { SubscriptionStatus, YoungStatusType } from 'api/gen'
 import { AuthenticationButton } from 'features/auth/components/AuthenticationButton/AuthenticationButton'
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import {
@@ -10,6 +11,7 @@ import {
   UseNavigationType,
 } from 'features/navigation/RootNavigator/types'
 import { useDepositActivationAge } from 'features/profile/helpers/useDepositActivationAge'
+import { EligibleFooter } from 'features/tutorial/components/profileTutorial/EligibleFooter'
 import { TutorialTimelineEighteen } from 'features/tutorial/components/profileTutorial/Timelines/TutorialTimelineEighteen'
 import { TutorialTimelineFifteen } from 'features/tutorial/components/profileTutorial/Timelines/TutorialTimelineFifteen'
 import { TutorialTimelineSeventeen } from 'features/tutorial/components/profileTutorial/Timelines/TutorialTimelineSeventeen'
@@ -40,6 +42,11 @@ export const ProfileTutorialAgeInformation: FunctionComponent<Props> = ({ route 
   const age = isLoggedIn && user?.birthDate ? getAge(user.birthDate) : defaultAge
 
   const activationAge = useDepositActivationAge()
+
+  const isEligible = isLoggedIn && user?.status.statusType === YoungStatusType.eligible
+  const isEligibleWithoutSubscription =
+    isEligible &&
+    user?.status.subscriptionStatus === SubscriptionStatus.has_to_complete_subscription
 
   const headerTitle = isLoggedIn ? 'Comment ça marche\u00a0?' : `Le pass Culture à ${age} ans`
 
@@ -76,6 +83,12 @@ export const ProfileTutorialAgeInformation: FunctionComponent<Props> = ({ route 
             <Spacer.Column numberOfSpaces={4} />
             <StyledLoginButton />
           </Container>
+        ) : null}
+        {isEligibleWithoutSubscription && age ? (
+          <React.Fragment>
+            <Spacer.Column numberOfSpaces={10} />
+            <EligibleFooter age={age} />
+          </React.Fragment>
         ) : null}
         <Spacer.Column numberOfSpaces={8} />
       </StyledScrollView>
