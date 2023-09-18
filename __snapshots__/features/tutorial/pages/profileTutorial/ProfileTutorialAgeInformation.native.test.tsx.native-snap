@@ -2527,6 +2527,31 @@ exports[`<ProfileTutorialAgeInformation /> should display not logged in version 
         }
       >
         <View
+          numberOfSpaces={10}
+          style={
+            [
+              {
+                "height": 40,
+              },
+            ]
+          }
+        />
+        <Text
+          style={
+            [
+              {
+                "color": "#161617",
+                "fontFamily": "Montserrat-Regular",
+                "fontSize": 15,
+                "lineHeight": 20,
+                "textAlign": "center",
+              },
+            ]
+          }
+        >
+          Identifie-toi pour bénéficier de ton crédit pass Culture
+        </Text>
+        <View
           numberOfSpaces={4}
           style={
             [

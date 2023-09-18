@@ -74,6 +74,8 @@ export const ProfileTutorialAgeInformation: FunctionComponent<Props> = ({ route 
         </InfoBanner>
         {!isLoggedIn ? (
           <Container>
+            <Spacer.Column numberOfSpaces={10} />
+            <StyledBody>Identifie-toi pour bénéficier de ton crédit pass Culture</StyledBody>
             <Spacer.Column numberOfSpaces={4} />
             <InternalTouchableLink
               as={ButtonWithLinearGradient}
@@ -143,3 +145,7 @@ const Container = styled.View({
 const Placeholder = styled.View<{ height: number }>(({ height }) => ({
   height,
 }))
+
+const StyledBody = styled(Typo.Body)({
+  textAlign: 'center',
+})
