@@ -120,14 +120,26 @@ describe('SearchBox component', () => {
   const searchInputID = uuidv4()
 
   it('should render SearchBox', async () => {
-    const renderAPI = render(<SearchBox searchInputID={searchInputID} />)
+    const renderAPI = render(
+      <SearchBox
+        searchInputID={searchInputID}
+        addSearchHistory={jest.fn()}
+        searchInHistory={jest.fn()}
+      />
+    )
     await act(async () => {})
 
     expect(renderAPI).toMatchSnapshot()
   })
 
   it('should call navigate on submit', async () => {
-    const { getByPlaceholderText } = render(<SearchBox searchInputID={searchInputID} />)
+    const { getByPlaceholderText } = render(
+      <SearchBox
+        searchInputID={searchInputID}
+        addSearchHistory={jest.fn()}
+        searchInHistory={jest.fn()}
+      />
+    )
     const searchInput = getByPlaceholderText('Offre, artiste, point de vente...')
 
     await act(async () => {
@@ -148,7 +160,13 @@ describe('SearchBox component', () => {
 
   it('should not show back button when being on the search landing view', async () => {
     useRoute.mockReturnValueOnce({ params: { view: SearchView.Landing } })
-    const { queryByTestId } = render(<SearchBox searchInputID={searchInputID} />)
+    const { queryByTestId } = render(
+      <SearchBox
+        searchInputID={searchInputID}
+        addSearchHistory={jest.fn()}
+        searchInHistory={jest.fn()}
+      />
+    )
     const previousButton = queryByTestId('Revenir en arrière')
 
     await act(async () => {
@@ -158,7 +176,13 @@ describe('SearchBox component', () => {
 
   it('should show back button when being on the search results view', async () => {
     useRoute.mockReturnValueOnce({ params: { view: SearchView.Results } })
-    const { getByTestId } = render(<SearchBox searchInputID={searchInputID} />)
+    const { getByTestId } = render(
+      <SearchBox
+        searchInputID={searchInputID}
+        addSearchHistory={jest.fn()}
+        searchInHistory={jest.fn()}
+      />
+    )
     const previousButton = getByTestId('Revenir en arrière')
 
     await act(async () => {
@@ -168,7 +192,13 @@ describe('SearchBox component', () => {
 
   it('should show back button when being on the suggestions view', async () => {
     useRoute.mockReturnValueOnce({ params: { view: SearchView.Suggestions } })
-    const { getByTestId } = render(<SearchBox searchInputID={searchInputID} />)
+    const { getByTestId } = render(
+      <SearchBox
+        searchInputID={searchInputID}
+        addSearchHistory={jest.fn()}
+        searchInHistory={jest.fn()}
+      />
+    )
     const previousButton = getByTestId('Revenir en arrière')
 
     await act(async () => {
@@ -177,7 +207,13 @@ describe('SearchBox component', () => {
   })
 
   it('should show the text typed by the user', async () => {
-    const { getByPlaceholderText } = render(<SearchBox searchInputID={searchInputID} />)
+    const { getByPlaceholderText } = render(
+      <SearchBox
+        searchInputID={searchInputID}
+        addSearchHistory={jest.fn()}
+        searchInHistory={jest.fn()}
+      />
+    )
 
     const searchInput = getByPlaceholderText('Offre, artiste, point de vente...')
     await act(async () => {
@@ -188,7 +224,13 @@ describe('SearchBox component', () => {
   })
 
   it('should not execute a search if input is empty', async () => {
-    const { getByPlaceholderText } = render(<SearchBox searchInputID={searchInputID} />)
+    const { getByPlaceholderText } = render(
+      <SearchBox
+        searchInputID={searchInputID}
+        addSearchHistory={jest.fn()}
+        searchInHistory={jest.fn()}
+      />
+    )
     const searchInput = getByPlaceholderText('Offre, artiste, point de vente...')
 
     await act(async () => {
@@ -208,7 +250,13 @@ describe('SearchBox component', () => {
         params: { view: SearchView.Suggestions, previousView: SearchView.Results },
       })
 
-      const { getByTestId } = render(<SearchBox searchInputID={searchInputID} />)
+      const { getByTestId } = render(
+        <SearchBox
+          searchInputID={searchInputID}
+          addSearchHistory={jest.fn()}
+          searchInHistory={jest.fn()}
+        />
+      )
 
       const previousButton = getByTestId('Revenir en arrière')
 
@@ -231,7 +279,13 @@ describe('SearchBox component', () => {
       'should redirect on landing view when being on the suggestions view and press back button and previous view is %s view',
       async (previousView) => {
         useRoute.mockReturnValueOnce({ params: { view: SearchView.Suggestions, previousView } })
-        const { getByTestId } = render(<SearchBox searchInputID={searchInputID} />)
+        const { getByTestId } = render(
+          <SearchBox
+            searchInputID={searchInputID}
+            addSearchHistory={jest.fn()}
+            searchInHistory={jest.fn()}
+          />
+        )
         const previousButton = getByTestId('Revenir en arrière')
 
         await act(async () => {
@@ -250,7 +304,13 @@ describe('SearchBox component', () => {
       useRoute.mockReturnValueOnce({
         params: { view: SearchView.Results, previousView: SearchView.Results },
       })
-      render(<SearchBox searchInputID={searchInputID} />)
+      render(
+        <SearchBox
+          searchInputID={searchInputID}
+          addSearchHistory={jest.fn()}
+          searchInHistory={jest.fn()}
+        />
+      )
       const previousButton = screen.getByTestId('Revenir en arrière')
 
       await act(async () => {
@@ -264,7 +324,13 @@ describe('SearchBox component', () => {
       useRoute.mockReturnValueOnce({
         params: { view: SearchView.Results, previousView: SearchView.Results },
       })
-      render(<SearchBox searchInputID={searchInputID} />)
+      render(
+        <SearchBox
+          searchInputID={searchInputID}
+          addSearchHistory={jest.fn()}
+          searchInHistory={jest.fn()}
+        />
+      )
       const previousButton = screen.getByTestId('Revenir en arrière')
 
       await act(async () => {
@@ -276,7 +342,13 @@ describe('SearchBox component', () => {
 
     it('should stay on the current view when focusing search input and being on the suggestions', async () => {
       useRoute.mockReturnValueOnce({ params: { view: SearchView.Suggestions } })
-      const { getByPlaceholderText } = render(<SearchBox searchInputID={searchInputID} />)
+      const { getByPlaceholderText } = render(
+        <SearchBox
+          searchInputID={searchInputID}
+          addSearchHistory={jest.fn()}
+          searchInHistory={jest.fn()}
+        />
+      )
       const searchInput = getByPlaceholderText('Offre, artiste, point de vente...')
 
       await act(async () => {
@@ -290,7 +362,13 @@ describe('SearchBox component', () => {
       'should reset input when user click on reset icon when being on the search %s view',
       async (view) => {
         useRoute.mockReturnValueOnce({ params: { view, query: 'Some text' } })
-        const { getByTestId } = render(<SearchBox searchInputID={searchInputID} />)
+        const { getByTestId } = render(
+          <SearchBox
+            searchInputID={searchInputID}
+            addSearchHistory={jest.fn()}
+            searchInHistory={jest.fn()}
+          />
+        )
 
         const resetIcon = getByTestId('Réinitialiser la recherche')
         await act(async () => {
@@ -318,7 +396,13 @@ describe('SearchBox component', () => {
       'should stay on the current view when focusing search input and being on the %s view',
       async (view) => {
         useRoute.mockReturnValueOnce({ params: { view } })
-        const { getByPlaceholderText } = render(<SearchBox searchInputID={searchInputID} />)
+        const { getByPlaceholderText } = render(
+          <SearchBox
+            searchInputID={searchInputID}
+            addSearchHistory={jest.fn()}
+            searchInHistory={jest.fn()}
+          />
+        )
         const searchInput = getByPlaceholderText('Offre, artiste, point de vente...')
 
         await act(async () => {
@@ -333,7 +417,13 @@ describe('SearchBox component', () => {
       'should reset input when user click on reset icon when being on the search %s view',
       async (view) => {
         useRoute.mockReturnValueOnce({ params: { view, query: 'Some text' } })
-        const { getByTestId } = render(<SearchBox searchInputID={searchInputID} />)
+        const { getByTestId } = render(
+          <SearchBox
+            searchInputID={searchInputID}
+            addSearchHistory={jest.fn()}
+            searchInHistory={jest.fn()}
+          />
+        )
 
         const resetIcon = getByTestId('Réinitialiser la recherche')
         await act(async () => {
@@ -353,7 +443,13 @@ describe('SearchBox component', () => {
   })
 
   it('should execute a search if input is not empty', async () => {
-    const { getByPlaceholderText } = render(<SearchBox searchInputID={searchInputID} />)
+    const { getByPlaceholderText } = render(
+      <SearchBox
+        searchInputID={searchInputID}
+        addSearchHistory={jest.fn()}
+        searchInHistory={jest.fn()}
+      />
+    )
     const searchInput = getByPlaceholderText('Offre, artiste, point de vente...')
 
     await act(async () => {
@@ -381,7 +477,13 @@ describe('SearchBox component', () => {
       toggleModal: jest.fn(),
     })
     useRoute.mockReturnValueOnce({ params: { view: SearchView.Landing } })
-    const { getByTestId } = render(<SearchBox searchInputID={searchInputID} />)
+    const { getByTestId } = render(
+      <SearchBox
+        searchInputID={searchInputID}
+        addSearchHistory={jest.fn()}
+        searchInHistory={jest.fn()}
+      />
+    )
 
     const locationButton = getByTestId('Partout')
 
@@ -393,7 +495,13 @@ describe('SearchBox component', () => {
   })
 
   it('should display suggestions view when focusing search input and no search executed', async () => {
-    const { getByPlaceholderText } = render(<SearchBox searchInputID={searchInputID} />)
+    const { getByPlaceholderText } = render(
+      <SearchBox
+        searchInputID={searchInputID}
+        addSearchHistory={jest.fn()}
+        searchInHistory={jest.fn()}
+      />
+    )
     const searchInput = getByPlaceholderText('Offre, artiste, point de vente...')
 
     await act(async () => {
@@ -412,7 +520,13 @@ describe('SearchBox component', () => {
 
   it('should display the search filter button when showing results', async () => {
     useRoute.mockReturnValueOnce({ params: { view: SearchView.Results, query: 'la fnac' } })
-    const { queryByTestId } = render(<SearchBox searchInputID={searchInputID} />)
+    const { queryByTestId } = render(
+      <SearchBox
+        searchInputID={searchInputID}
+        addSearchHistory={jest.fn()}
+        searchInHistory={jest.fn()}
+      />
+    )
 
     await act(async () => {
       expect(queryByTestId('Voir tous les filtres\u00a0: 3 filtres actifs')).toBeOnTheScreen()
@@ -423,7 +537,13 @@ describe('SearchBox component', () => {
     'should hide the search filter button when being on the %s view',
     async (view) => {
       useRoute.mockReturnValueOnce({ params: { view, query: 'la fnac' } })
-      const { queryByTestId } = render(<SearchBox searchInputID={searchInputID} />)
+      const { queryByTestId } = render(
+        <SearchBox
+          searchInputID={searchInputID}
+          addSearchHistory={jest.fn()}
+          searchInHistory={jest.fn()}
+        />
+      )
 
       await act(async () => {
         expect(queryByTestId(/Voir tous les filtres/)).not.toBeOnTheScreen()
@@ -434,7 +554,13 @@ describe('SearchBox component', () => {
   it('should display filter button with the number of active filters', async () => {
     useRoute.mockReturnValueOnce({ params: { view: SearchView.Results } })
 
-    const renderAPI = render(<SearchBox searchInputID={searchInputID} />)
+    const renderAPI = render(
+      <SearchBox
+        searchInputID={searchInputID}
+        addSearchHistory={jest.fn()}
+        searchInHistory={jest.fn()}
+      />
+    )
     let filterButton
     await act(async () => {
       filterButton = renderAPI.getByTestId('searchFilterBadge')
@@ -466,7 +592,13 @@ describe('SearchBox component', () => {
       mockSearchState = { ...initialSearchState, locationFilter }
       mockPosition = position
       useRoute.mockReturnValueOnce({ params: { view: SearchView.Landing, locationFilter } })
-      const { queryByText } = render(<SearchBox searchInputID={searchInputID} />)
+      const { queryByText } = render(
+        <SearchBox
+          searchInputID={searchInputID}
+          addSearchHistory={jest.fn()}
+          searchInHistory={jest.fn()}
+        />
+      )
       await act(async () => {})
 
       expect(queryByText(locationButtonLabel)).toBeOnTheScreen()
@@ -491,7 +623,13 @@ describe('SearchBox component with venue previous route', () => {
     useRoute.mockReturnValueOnce({
       params: { view: SearchView.Results, previousView: SearchView.Results },
     })
-    render(<SearchBox searchInputID={searchInputID} />)
+    render(
+      <SearchBox
+        searchInputID={searchInputID}
+        addSearchHistory={jest.fn()}
+        searchInHistory={jest.fn()}
+      />
+    )
     const previousButton = screen.getByTestId('Revenir en arrière')
 
     await act(async () => {
@@ -505,7 +643,13 @@ describe('SearchBox component with venue previous route', () => {
     useRoute.mockReturnValueOnce({
       params: { view: SearchView.Results, previousView: SearchView.Results },
     })
-    render(<SearchBox searchInputID={searchInputID} />)
+    render(
+      <SearchBox
+        searchInputID={searchInputID}
+        addSearchHistory={jest.fn()}
+        searchInHistory={jest.fn()}
+      />
+    )
     const previousButton = screen.getByTestId('Revenir en arrière')
 
     await act(async () => {

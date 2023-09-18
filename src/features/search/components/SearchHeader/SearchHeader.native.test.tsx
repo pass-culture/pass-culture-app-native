@@ -43,7 +43,13 @@ describe('SearchHeader component', () => {
   const searchInputID = uuidv4()
 
   it('should render SearchHeader', async () => {
-    render(<SearchHeader searchInputID={searchInputID} />)
+    render(
+      <SearchHeader
+        searchInputID={searchInputID}
+        addSearchHistory={jest.fn()}
+        searchInHistory={jest.fn()}
+      />
+    )
 
     await screen.findByText('Rechercher')
 

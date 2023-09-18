@@ -28,7 +28,13 @@ describe('SearchHeader component', () => {
     'should contain a button to go to the search suggestions view',
     async (view) => {
       useRoute.mockReturnValueOnce({ params: { view } })
-      render(<SearchHeader searchInputID={searchInputID} />)
+      render(
+        <SearchHeader
+          searchInputID={searchInputID}
+          addSearchHistory={jest.fn()}
+          searchInHistory={jest.fn()}
+        />
+      )
       await act(async () => {})
 
       expect(await screen.findByText('Recherche par mots-clés')).toBeInTheDocument()
@@ -37,7 +43,13 @@ describe('SearchHeader component', () => {
 
   it('should navigate to the search suggestion view when focusing then activating the button', async () => {
     useRoute.mockReturnValueOnce({ params: { view: SearchView.Landing } })
-    render(<SearchHeader searchInputID={searchInputID} />)
+    render(
+      <SearchHeader
+        searchInputID={searchInputID}
+        addSearchHistory={jest.fn()}
+        searchInHistory={jest.fn()}
+      />
+    )
 
     await act(async () => {
       await userEvent.tab()
@@ -56,7 +68,13 @@ describe('SearchHeader component', () => {
 
   it('should not render a button to go to the search suggestion view when not on landing or result', async () => {
     useRoute.mockReturnValueOnce({ params: { view: SearchView.Suggestions, query: 'la fnac' } })
-    render(<SearchHeader searchInputID={searchInputID} />)
+    render(
+      <SearchHeader
+        searchInputID={searchInputID}
+        addSearchHistory={jest.fn()}
+        searchInHistory={jest.fn()}
+      />
+    )
     await act(async () => {})
 
     await waitFor(() => {
@@ -68,7 +86,13 @@ describe('SearchHeader component', () => {
     'should not have focus on search main input',
     async (view) => {
       useRoute.mockReturnValueOnce({ params: { view } }).mockReturnValueOnce({ params: { view } })
-      render(<SearchHeader searchInputID={searchInputID} />)
+      render(
+        <SearchHeader
+          searchInputID={searchInputID}
+          addSearchHistory={jest.fn()}
+          searchInHistory={jest.fn()}
+        />
+      )
 
       await act(async () => {
         await userEvent.tab()
@@ -84,7 +108,13 @@ describe('SearchHeader component', () => {
     useRoute
       .mockReturnValueOnce({ params: { view: SearchView.Landing } })
       .mockReturnValueOnce({ params: { view: SearchView.Landing } })
-    render(<SearchHeader searchInputID={searchInputID} />)
+    render(
+      <SearchHeader
+        searchInputID={searchInputID}
+        addSearchHistory={jest.fn()}
+        searchInHistory={jest.fn()}
+      />
+    )
 
     await act(async () => {
       await userEvent.tab()

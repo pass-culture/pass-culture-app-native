@@ -88,7 +88,12 @@ export function Search() {
         <InstantSearch searchClient={searchClient} indexName={suggestionsIndex}>
           <Configure hitsPerPage={5} clickAnalytics />
           <InsightsMiddleware />
-          <SearchHeader searchInputID={searchInputID} searchView={currentView} />
+          <SearchHeader
+            searchInputID={searchInputID}
+            searchView={currentView}
+            addSearchHistory={addToHistory}
+            searchInHistory={search}
+          />
           {currentView === SearchView.Suggestions ? (
             <StyledScrollView
               testID="autocompleteScrollView"
