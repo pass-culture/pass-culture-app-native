@@ -2296,6 +2296,11 @@ export interface SigninRequest {
    * @memberof SigninRequest
    */
   password: string
+  /**
+   * @type {string}
+   * @memberof SigninRequest
+   */
+  token?: string | null
 }
 /**
  * @export
