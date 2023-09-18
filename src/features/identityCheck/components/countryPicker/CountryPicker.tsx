@@ -1,31 +1,24 @@
-import React, { useRef } from 'react'
+import React from 'react'
 import { Platform, View } from 'react-native'
 import styled from 'styled-components/native'
 
 import { COUNTRIES } from 'features/identityCheck/components/countryPicker/constants'
+import { CountryButton } from 'features/identityCheck/components/countryPicker/CountryButton'
+import { formatCallingCode } from 'features/identityCheck/components/countryPicker/formatCallingCode'
 import { Country } from 'features/identityCheck/components/countryPicker/types'
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
-import { useHandleFocus } from 'libs/hooks/useHandleFocus'
-import { accessibleRadioProps } from 'shared/accessibilityProps/accessibleRadioProps'
 import { styledButton } from 'ui/components/buttons/styledButton'
 import { AppModal } from 'ui/components/modals/AppModal'
 import { useModal } from 'ui/components/modals/useModal'
 import { Touchable } from 'ui/components/touchable/Touchable'
-import { TouchableOpacity } from 'ui/components/TouchableOpacity'
-import { useArrowNavigationForRadioButton } from 'ui/hooks/useArrowNavigationForRadioButton'
-import { useSpaceBarAction } from 'ui/hooks/useSpaceBarAction'
 import { ArrowDown as DefaultArrowDown } from 'ui/svg/icons/ArrowDown'
 import { Close } from 'ui/svg/icons/Close'
-import { Validate } from 'ui/svg/icons/Validate'
-import { ValidateOff } from 'ui/svg/icons/ValidateOff'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 
 interface Props {
   selectedCountry: Country
   onSelect: (country: Country) => void
 }
-
-const formatCallingCode = (code: string) => `+${code}`
 
 export const CountryPicker: React.FC<Props> = ({ selectedCountry, onSelect }) => {
   const { visible, showModal, hideModal } = useModal(false)
@@ -35,34 +28,6 @@ export const CountryPicker: React.FC<Props> = ({ selectedCountry, onSelect }) =>
   function onCountrySelect(country: Country) {
     onSelect(country)
     hideModal()
-  }
-
-  const Item = ({ country }: { country: Country }) => {
-    const countryCallingCode = formatCallingCode(country.callingCode)
-    const selected = country.id === selectedCountry.id
-    const onPress = () => onCountrySelect(country)
-    const { onFocus, onBlur, isFocus } = useHandleFocus()
-    const containerRef = useRef(null)
-    useArrowNavigationForRadioButton(containerRef)
-    useSpaceBarAction(isFocus ? onPress : undefined)
-
-    const a11yLabel = `${country.name} ${formatCallingCode(country.callingCode)}`
-
-    return (
-      <TouchableOpacity
-        {...accessibleRadioProps({ checked: selected, label: a11yLabel })}
-        onFocus={onFocus}
-        onBlur={onBlur}
-        onPress={onPress}>
-        <CountryContainer ref={containerRef}>
-          {selected ? <ValidateIcon /> : <ValidateOffIcon />}
-          <Spacer.Row numberOfSpaces={2} />
-          <Typo.ButtonText>{country.name}</Typo.ButtonText>
-          <Spacer.Row numberOfSpaces={1} />
-          <CountryCallingCode>{countryCallingCode}</CountryCallingCode>
-        </CountryContainer>
-      </TouchableOpacity>
-    )
   }
 
   return (
@@ -85,7 +50,12 @@ export const CountryPicker: React.FC<Props> = ({ selectedCountry, onSelect }) =>
         {COUNTRIES.length > 0 && (
           <View accessibilityRole={AccessibilityRole.RADIOGROUP}>
             {COUNTRIES.map((country) => (
-              <Item key={country.id} country={country} />
+              <CountryButton
+                key={country.id}
+                country={country}
+                selectedCountry={selectedCountry}
+                onCountrySelect={onCountrySelect}
+              />
             ))}
           </View>
         )}
@@ -93,27 +63,6 @@ export const CountryPicker: React.FC<Props> = ({ selectedCountry, onSelect }) =>
     </React.Fragment>
   )
 }
-
-const CountryContainer = styled.View({
-  flexDirection: 'row',
-  alignItems: 'center',
-  paddingVertical: getSpacing(3),
-  paddingHorizontal: getSpacing(1),
-})
-
-const CountryCallingCode = styled(Typo.ButtonText)(({ theme }) => ({
-  fontFamily: theme.fontFamily.medium,
-}))
-
-const ValidateIcon = styled(Validate).attrs(({ theme }) => ({
-  color: theme.colors.primary,
-  size: theme.icons.sizes.smaller,
-}))``
-
-const ValidateOffIcon = styled(ValidateOff).attrs(({ theme }) => ({
-  color: theme.colors.greySemiDark,
-  size: theme.icons.sizes.smaller,
-}))``
 
 const focusStyle =
   Platform.OS === 'web'
