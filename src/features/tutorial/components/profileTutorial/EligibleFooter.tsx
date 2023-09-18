@@ -33,7 +33,7 @@ export const EligibleFooter: FunctionComponent<Props> = ({ age }) => {
       <InternalTouchableLink
         as={ButtonWithLinearGradient}
         navigateTo={{ screen: 'Stepper' }}
-        wording={'Activer mon crédit'}
+        wording="Activer mon crédit"
       />
     </React.Fragment>
   )
