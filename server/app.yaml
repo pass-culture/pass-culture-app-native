@@ -4,7 +4,7 @@
 #-- Additional details from server: App Engine APIs are not enabled, please add app_engine_apis: true to your app.yaml to enable.
 app_engine_apis: true
 
-# Set the service name matching the one instanciated in terraform
+# Set the service name matching the one instantiated in terraform
 service: web-proxy
 
 runtime: nodejs18
