@@ -1,7 +1,8 @@
-import { Dispatch, SetStateAction } from 'react'
+import { LocationOption } from 'features/location/enums'
+import { SuggestedPlace } from 'libs/place'
+import { Dispatch, MutableRefObject, SetStateAction } from 'react'
 
 import { GeolocPermissionState, GeolocPositionError } from './enums'
-import {LocationOptions}
 
 export type GeolocationError = {
   type: GeolocPositionError
@@ -26,16 +27,19 @@ export type ReadGeolocPermission = () => Promise<GeolocPermissionState>
 
 export type ILocationContext = {
   isGeolocated: boolean
-  isCustomPosition: boolean
-  isLocation: (target: LocationOption) => boolean
+  isCustomPosition?: boolean
+  isCurrentLocationMode: (target: LocationOption) => boolean
   noPlace: boolean
   runGeolocationDialogs: () => void
-  setPlace: (place: SuggestedPlace) => void
+  setPlace: (place: SuggestedPlace | null) => void
   setSelectedOption: (location: LocationOption) => void
   saveAllPositionChanges: () => void
   initialize: () => void
-  onModalHideRef: RefObject<() => void>
-  getLocationTitle: ({ isGeolocatedTitle: string, isNotGeolocatedTitle: string }) => string
+  onModalHideRef: MutableRefObject<(() => void) | undefined>
+  getLocationTitle: (defaultTitle: {
+    isGeolocatedTitle: string
+    isNotGeolocatedTitle: string
+  }) => string
   userPosition: Position
   customPosition: Position
   setCustomPosition: Dispatch<SetStateAction<Position>>

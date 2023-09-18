@@ -43,7 +43,7 @@ export const LocationModal = ({ visible, dismissModal }: LocationModalProps) => 
 
   useEffect(() => {
     if (visible) {
-      initialize(setPlaceQuery)
+      initialize()
     }
   }, [visible, initialize])
 

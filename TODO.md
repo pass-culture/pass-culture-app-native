@@ -25,11 +25,12 @@
   - [x] icon du pin est filled dans la maquette mais pas dans le code -> utiliser le nouvel écart dans la modale de la recherche de localisation
   - [x] marges entre input et sous titre à calibrer ( suppression marge vertical donc verif location button)
   - [x] Sauvegarder le nom de la position utilisateur dans le context ainsi que les coordonnées
-  - [x] A l'affichage de la modale, remplir le champ input avec le nom de la postion utilisateur
+  - [x] A l'affichage de la modale, remplir le champ input avec le nom de la position utilisateur
   - [ ] renommer le Hit de SuggestedPlaces
-  - [ ] mettre à jour le texte d'erreur
   - [ ] Fixer les erreurs de Typescript
-  - [ ] Renommer les éléments
+    - src/features/location/components/LocationModal.native.test.tsx
+    - src/libs/geolocation/**mocks**/index.ts
+  - [ ] Renommer les éléments : <https://vscode.dev/github/pass-culture/pass-culture-app-native/blob/PC-23701-add-design-to-location-modal/src/features/search/pages/SuggestedPlacesOrVenues/SuggestedPlaces.tsx#L87>
 
 ### Questions pour Agathe
 
