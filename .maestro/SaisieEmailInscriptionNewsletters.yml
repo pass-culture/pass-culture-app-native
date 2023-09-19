@@ -1,5 +1,8 @@
 appId: app.passculture.staging
 ---
+
+#Penser à désactiver le reCaptcha
+#ENABLE_NATIVE_APP_RECAPTCHA
 # Launch App
 - runFlow: reusableFlows/LaunchApp.yml
 
@@ -43,3 +46,8 @@ appId: app.passculture.staging
 
 # Stepper Page
 - runFlow: reusableFlows/StepperPage.yml
+
+#Number Phone
+- runFlow: reusableFlows/NumberPhone.yml
+
+#ValidationCodePhone

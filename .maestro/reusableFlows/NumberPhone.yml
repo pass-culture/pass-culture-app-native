@@ -1,0 +1,43 @@
+appId: app.passculture.staging
+---
+#NumberPhone
+- tapOn: "Numéro de téléphone"
+- assertVisible: "Quelques conseils"
+- assertVisible: "Pour que la validation de ton numéro de téléphone se passe au mieux\_\
+    :"
+- assertVisible:
+    id: "BicolorSignal"
+- assertVisible: "Vérifie que tu as un bon réseau"
+- assertVisible: "Tu vas recevoir un code de validation par SMS"
+- assertVisible:
+    id: "BicolorSmartphone"
+- assertVisible: "Assure-toi d’indiquer ton numéro de téléphone personnel"
+- assertVisible: "Il ne peut être associé qu’à un seul compte"
+
+- assertVisible:
+    id: "J’ai compris"
+- tapOn:
+    id: "J’ai compris"
+
+- assertVisible:
+      text: "Numéro de téléphone"
+      index: 0
+- assertVisible: "Quel est ton numéro de téléphone\_?"
+- assertVisible: "Tu vas recevoir un code de validation pour confirmer ton numéro."
+- assertVisible:
+      text: "Numéro de téléphone"
+      index: 1
+- assertVisible: "+33"
+- tapOn:
+    id: "Entrée pour le numéro de téléphone"
+- assertVisible:
+      id: "Entrée pour le numéro de téléphone"
+- inputText: ${NUMBER_PHONE}
+
+- assertVisible: "Il te reste "
+- assertVisible: "5 demandes "
+- assertVisible: "de code de validation"
+- assertVisible:
+      id: "Continuer"
+
+- tapOn: "Continuer"

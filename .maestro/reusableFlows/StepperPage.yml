@@ -2,8 +2,8 @@
 appId: app.passculture.staging
 ---
 #StepperPage
-- assertVisible: "C'est très rapide !"
-- assertVisible: "Pour débloquer tes 300€ tu dois suivre les étapes suivantes :"
+- assertVisible: "C'est très rapide\_!"
+- assertVisible: "Pour débloquer tes 300€ tu dois suivre les étapes suivantes\_:"
 
 - assertVisible:
         id: "Numéro de téléphone non complété"
@@ -26,5 +26,5 @@ appId: app.passculture.staging
 - assertVisible:
         id: "Abandonner"
 
-- tapOn:
-        id: "Abandonner"
+#- tapOn:
+  #      id: "Abandonner"

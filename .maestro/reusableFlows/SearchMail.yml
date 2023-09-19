@@ -1,16 +1,13 @@
 appId: app.passculture.staging
 ---
 #SearchMail
-
-- swipe: # refresh mail
-    start: 50%, 16%
-    end: 50%, 16%
-
 - tapOn: "Ouvrir le panneau de navigation"
-- tapOn: "STAGING"
 
-- swipe: # refresh mail
-    start: 50%, 16%
-    end: 50%, 16%
+- runFlow:
+    when:
+      visible:
+        text: "STAGING"
+        index: 0
+    file: "LibelleMail.yml"
 
 - tapOn: "Confirme ton email"

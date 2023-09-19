@@ -1,0 +1,51 @@
+appId: app.passculture.staging
+---
+#ValidationCodePhone
+- assertVisible: "Numéro de téléphone"
+- assertVisible: "Valide ton numéro de téléphone"
+#- assertVisible: "Saisis le code reçu au +33\_6\_33\_25\_65\_35."
+- assertVisible: "Code de validation"
+- assertVisible: "Format\_: 6 chiffres"
+- assertVisible: "Code de validation"
+- assertVisible:
+    id: "Entrée pour le code reçu par sms"
+- assertVisible: "Code non reçu\_?"
+- assertVisible:
+    id: "Continuer"
+
+#Récupération du numéro de téléphone
+- tapOn:
+    id: "com.android.systemui:id/recent_apps"
+- tapOn:
+    id: "com.sec.android.app.launcher:id/snapshot"
+    index: 0
+- tapOn: "Revenir en haut de la page"
+- assertVisible: "Code de validation du téléphone"
+- tapOn: "Code de validation du téléphone"
+- assertVisible: "Le contenu suivant serait envoyé par sms au numéro +33633256535"
+#- assertVisible: "541550 est ton code de confirmation pass Culture"
+
+- tapOn:
+    id: "com.android.systemui:id/recent_apps"
+- tapOn:
+    id: "com.sec.android.app.launcher:id/snapshot"
+    index: 0
+- tapOn: "Revenir en haut de la page"
+- assertVisible: "Code de validation du téléphone"
+- tapOn: "Code de validation du téléphone"
+- assertVisible: "Le contenu suivant serait envoyé par sms au numéro +33633256535"
+
+# tapOn: .*substring.*#
+
+#- assertVisible: "541550 est ton code de confirmation pass Culture"
+#- assertVisible: ${CODE_PHONE} est ton code de confirmation pass Culture"
+- tapOn: "Applications récentes"
+- tapOn:
+    id: "com.sec.android.app.launcher:id/snapshot"
+    index: 0
+- tapOn:
+    id: "Entrée pour le code reçu par sms"
+
+- assertVisible:
+    id: "Entrée pour le code reçu par sms"
+- inputText: ${CODE_PHONE}
