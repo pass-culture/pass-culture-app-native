@@ -315,7 +315,7 @@ export enum BookingCancellationReasons {
   'EXPIRED' = 'EXPIRED',
   'FRAUD' = 'FRAUD',
   'REFUSED_BY_INSTITUTE' = 'REFUSED_BY_INSTITUTE',
-  }
+}
 /**
  * @export
  * @interface BookingDisplayStatusRequest
