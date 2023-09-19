@@ -3,21 +3,21 @@ import { Linking } from 'react-native'
 
 import { LocationOption } from 'features/location/enums'
 import { useAppStateChange } from 'libs/appState'
+import { getPosition } from 'libs/geolocation/getPosition'
+import { requestGeolocPermission } from 'libs/geolocation/requestGeolocPermission'
 import { useSafeState } from 'libs/hooks'
+import { SuggestedPlace } from 'libs/place'
 import { useModal } from 'ui/components/modals/useModal'
 
 import { checkGeolocPermission } from './checkGeolocPermission'
 import { GeolocationActivationModal } from './components/GeolocationActivationModal'
 import { GeolocPermissionState } from './enums'
-import { getPosition } from './getPosition'
-import { requestGeolocPermission } from './requestGeolocPermission'
 import {
   GeolocationError,
   ILocationContext,
   RequestGeolocPermissionParams,
   Position,
 } from './types'
-import { SuggestedPlace } from 'libs/place'
 
 const LocationContext = React.createContext<ILocationContext>({
   userPosition: undefined,
