@@ -2,6 +2,16 @@ name: Install runtime environment and dependencies
 
 on:
   workflow_call:
+    secrets:
+      GCP_EHP_SERVICE_ACCOUNT:
+        required: true
+      GCP_EHP_WORKLOAD_IDENTITY_PROVIDER:
+        required: true
+
+env:
+  GCP_PROJECT_ID: passculture-infra-prod
+  GCP_REGISTRY_ID: pass-culture-npmjs-remote
+  GCP_ZONE: europe-west1
 
 jobs:
   yarn-install:
@@ -18,16 +28,36 @@ jobs:
           distribution: 'temurin'
       - name: Setup Android SDK
         uses: android-actions/setup-android@v2
-      - uses: actions/cache@v3
-        id: yarn-modules-cache
+      - name: yarn.lock switch to GCP artifact registry 
+        run: sed -i -e "s#https://registry.yarnpkg.com/#https://${{ env.GCP_ZONE }}-npm.pkg.dev/${{ env.GCP_PROJECT_ID }}/${{ env.GCP_REGISTRY_ID }}/#g" yarn.lock
+      ## TODO: see if we want to keep this cache with @stephane
+      # - uses: actions/cache@v3
+      #   id: yarn-modules-cache
+      #   with:
+      #     path: |
+      #       node_modules
+      #       ~/.cache/yarn
+      #     key: v1-yarn-dependency-cache-${{ hashFiles('**/yarn.lock') }}
+      #     restore-keys: |
+      #       v1-yarn-dependency-cache-${{ hashFiles('**/yarn.lock') }}
+      - id: openid-auth
+        name: "OpenID Connect Authentication"
+        uses: 'google-github-actions/auth@v1'
         with:
-          path: |
-            node_modules
-            ~/.cache/yarn
-          key: v1-yarn-dependency-cache-${{ hashFiles('**/yarn.lock') }}
-          restore-keys: |
-            v1-yarn-dependency-cache-${{ hashFiles('**/yarn.lock') }}
-      - run: yarn install 
+          token_format: 'access_token'
+          workload_identity_provider: ${{ secrets.GCP_EHP_WORKLOAD_IDENTITY_PROVIDER }}
+          service_account: ${{ secrets.GCP_EHP_SERVICE_ACCOUNT }}
+      - name: Create .npmrc
+
+        run: |
+          cat << EOF > .npmrc
+            registry=https://${{ env.GCP_ZONE }}-npm.pkg.dev/${{ env.GCP_PROJECT_ID }}/${{ env.GCP_REGISTRY_ID }}/
+            //${{ env.GCP_ZONE }}-npm.pkg.dev/${{ env.GCP_PROJECT_ID }}/${{ env.GCP_REGISTRY_ID }}/:_authToken="${{ steps.openid-auth.outputs.access_token }}"
+            //${{ env.GCP_ZONE }}-npm.pkg.dev/${{ env.GCP_PROJECT_ID }}/${{ env.GCP_REGISTRY_ID }}/:always-auth=true
+          EOF
+      - name: Install dependencies
+        run: yarn install
+
   bundle-install:
     runs-on: [self-hosted, linux, x64]
     steps:
