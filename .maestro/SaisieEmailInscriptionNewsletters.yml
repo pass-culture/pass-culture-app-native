@@ -1,0 +1,45 @@
+appId: app.passculture.staging
+---
+# Launch App
+- runFlow: reusableFlows/LaunchApp.yml
+
+# First Launch
+- runFlow: reusableFlows/FirstLaunch.yml
+
+- tapOn: "Mes favoris"
+# Creation Page
+- runFlow: reusableFlows/AccountCreationPage.yml
+
+# Cgu Page
+- runFlow: reusableFlows/CguPage.yml
+
+# ConfirmationEmail Page
+- runFlow: reusableFlows/ConfirmationEmailPage.yml
+
+# Stop App
+#- runFlow: reusableFlows/StopApp.yml
+
+- runFlow:
+      when:
+          visible: "Revenir en haut de la page"
+      file: "reusableFlows/MailNative.yml"
+
+# SearchMail Page
+- runFlow: reusableFlows/SearchMail.yml
+
+- runFlow:
+      when:
+          visible: "Afficher le texte des messages précédents"
+      file: "reusableFlows/DoublonsMail.yml"
+
+- scrollUntilVisible:
+    element: "confirmation de l'email"
+    direction: DOWN
+
+- tapOn: "Confirmer mon adresse email"
+
+# IdCheck Page
+- runFlow: reusableFlows/IdCheckPage.yml
+
+# Stepper Page
+- runFlow: reusableFlows/StepperPage.yml

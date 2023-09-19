@@ -1,0 +1,30 @@
+
+appId: app.passculture.staging
+---
+#StepperPage
+- assertVisible: "C'est très rapide !"
+- assertVisible: "Pour débloquer tes 300€ tu dois suivre les étapes suivantes :"
+
+- assertVisible:
+        id: "Numéro de téléphone non complété"
+- assertVisible:
+        id: "vertical-stepper-in_progress"
+
+- assertVisible: "Profil"
+- assertVisible:
+        id: "vertical-stepper-future"
+        index: 0
+- assertVisible: "Identification"
+- assertVisible:
+        id: "vertical-stepper-future"
+        index: 1
+- assertVisible: "Confirmation"
+- assertVisible:
+        id: "vertical-stepper-future"
+        index: 0
+
+- assertVisible:
+        id: "Abandonner"
+
+- tapOn:
+        id: "Abandonner"
