@@ -102,6 +102,7 @@ export const screenParamsParser: ParamsParsers = {
     openModalOnNavigation: identityFn,
     searchId: identityFn,
     apiRecoParams: identityFn,
+    playlistType: identityFn,
   },
   Home: {
     latitude: Number,

@@ -12,6 +12,7 @@ import { mockDigitalOffer, mockOffer } from 'features/bookOffer/fixtures/offer'
 import * as ReportedOffersAPI from 'features/offer/api/useReportedOffers'
 import { OfferBody } from 'features/offer/components/OfferBody/OfferBody'
 import { VenueListItem } from 'features/offer/components/VenueSelectionList/VenueSelectionList'
+import { PlaylistType } from 'features/offer/enums'
 import { getOfferUrl } from 'features/share/helpers/getOfferUrl'
 import { beneficiaryUser, nonBeneficiaryUser } from 'fixtures/user'
 import {
@@ -227,6 +228,7 @@ describe('<OfferBody />', () => {
           from: 'offer',
           fromOfferId: offerId,
           id: 102280,
+          playlistType: PlaylistType.SAME_CATEGORY_SIMILAR_OFFERS,
         })
       })
     })
@@ -244,6 +246,7 @@ describe('<OfferBody />', () => {
           from: 'offer',
           fromOfferId: offerId,
           id: 102280,
+          playlistType: PlaylistType.OTHER_CATEGORIES_SIMILAR_OFFERS,
         })
       })
     })
