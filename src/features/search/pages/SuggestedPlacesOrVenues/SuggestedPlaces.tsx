@@ -16,11 +16,11 @@ import { useArrowNavigationForRadioButton } from 'ui/hooks/useArrowNavigationFor
 import { LocationPointer as DefaultLocationPointer } from 'ui/svg/icons/LocationPointer'
 import { Spacer, Typo, getSpacing } from 'ui/theme'
 
-const keyExtractor = (hit: SuggestedPlace) => {
-  const { label, info } = hit
+const keyExtractor = (place: SuggestedPlace) => {
+  const { label, info } = place
   const prefix = 'place'
-  const suffix = hit.geolocation
-    ? `${hit.geolocation.latitude}-${hit.geolocation.longitude}`
+  const suffix = place.geolocation
+    ? `${place.geolocation.latitude}-${place.geolocation.longitude}`
     : 'no-geolocation'
 
   return `${prefix}-${label}-${info}-${suffix}`
@@ -34,12 +34,12 @@ const Icon = () => (
   </ListIconWrapper>
 )
 
-const Hit: React.FC<{ hit: SuggestedPlace; onPress: () => void }> = ({ hit, onPress }) => {
+const PlaceResult: React.FC<{ place: SuggestedPlace; onPress: () => void }> = ({ place, onPress }) => {
   const containerRef = useRef(null)
   const { onFocus, onBlur } = useHandleFocus()
   useArrowNavigationForRadioButton(containerRef)
 
-  const accessibilityLabel = `${hit.label} ${hit.info}`
+  const accessibilityLabel = `${place.label} ${place.info}`
   return (
     <TouchableOpacity
       accessibilityRole={AccessibilityRole.BUTTON}
@@ -51,9 +51,9 @@ const Hit: React.FC<{ hit: SuggestedPlace; onPress: () => void }> = ({ hit, onPr
         <Icon />
         <Spacer.Row numberOfSpaces={1} />
         <Text>
-          <Typo.ButtonText>{hit.label}</Typo.ButtonText>
+          <Typo.ButtonText>{place.label}</Typo.ButtonText>
           <Spacer.Row numberOfSpaces={1} />
-          <Typo.Body>{hit.info}</Typo.Body>
+          <Typo.Body>{place.info}</Typo.Body>
         </Text>
       </RefContainer>
     </TouchableOpacity>
@@ -72,8 +72,8 @@ export const SuggestedPlaces: FunctionComponent<Props> = ({ query, setSelectedPl
 
   return (
     <React.Fragment>
-      <NumberOfResults
-        nbHits={filteredPlaces.length}
+      <HiddenAccessibleResultNumber
+        nbResults={filteredPlaces.length}
         show={filteredPlaces.length > 0 && !isLoading}
       />
       <View accessibilityRole={AccessibilityRole.STATUS}>
@@ -84,7 +84,7 @@ export const SuggestedPlaces: FunctionComponent<Props> = ({ query, setSelectedPl
           <VerticalUl>
             {filteredPlaces.map((item, index) => (
               <Li key={keyExtractor(item)}>
-                <Hit hit={item} onPress={() => setSelectedPlace(item)} />
+                <PlaceResult place={item} onPress={() => setSelectedPlace(item)} />
                 {index + 1 < filteredPlaces.length && <Spacer.Column numberOfSpaces={4} />}
               </Li>
             ))}
@@ -95,8 +95,8 @@ export const SuggestedPlaces: FunctionComponent<Props> = ({ query, setSelectedPl
   )
 }
 
-const NumberOfResults = ({ nbHits, show }: { nbHits: number; show: boolean }) => {
-  const numberOfResults = plural(nbHits, {
+const HiddenAccessibleResultNumber = ({ nbResults, show }: { nbResults: number; show: boolean }) => {
+  const numberOfResults = plural(nbResults, {
     one: '# résultat',
     other: '# résultats',
   })
