@@ -33,11 +33,21 @@ const LocationContext = React.createContext<ILocationContext>({
   onPressGeolocPermissionModalButton: () => null,
   isCurrentLocationMode: () => false,
   noPlace: true,
-  runGeolocationDialogs: () => {},
-  setPlace: () => {},
-  setSelectedOption: () => {},
-  saveAllPositionChanges: () => {},
-  initialize: () => {},
+  runGeolocationDialogs: () => {
+    // nothing
+  },
+  setPlace: () => {
+    // nothing
+  },
+  setSelectedOption: () => {
+    // nothing
+  },
+  saveAllPositionChanges: () => {
+    // nothing
+  },
+  initialize: () => {
+    // nothing
+  },
   getLocationTitle: () => '',
   onModalHideRef: { current: undefined },
   isGeolocated: false,
@@ -165,7 +175,6 @@ export const LocationWrapper = memo(function LocationWrapper({
 
   const runGeolocationDialogs = React.useCallback(async () => {
     const selectGeoLocationOption = () => setSelectedOption(LocationOption.GEOLOCATION)
-
     if (permissionState === GeolocPermissionState.GRANTED) {
       selectGeoLocationOption()
       setPlace(null)
@@ -177,7 +186,7 @@ export const LocationWrapper = memo(function LocationWrapper({
         onAcceptance: selectGeoLocationOption,
       })
     }
-  }, [permissionState, setPlace, showGeolocPermissionModal])
+  }, [contextualRequestGeolocPermission, permissionState, setPlace, showGeolocPermissionModal])
 
   const getLocationTitle: ILocationContext['getLocationTitle'] = useCallback(
     ({ isGeolocatedTitle, isNotGeolocatedTitle }) => {
