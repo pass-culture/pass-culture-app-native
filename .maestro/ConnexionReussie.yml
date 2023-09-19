@@ -4,8 +4,7 @@ appId: app.passculture.staging
 - runFlow: reusableFlows/LaunchApp.yml
 # First Launch
 - runFlow: reusableFlows/FirstLaunch.yml
-- tapOn:
-      id: "Mon profil"
+
 # Se connecter
 - runFlow: reusableFlows/ToLogin.yml
 - tapOn: "Se connecter"
@@ -19,10 +18,10 @@ appId: app.passculture.staging
     id: "Mon profil"
 
 - scrollUntilVisible:
-    element: "Version\_1.254.1"
+    element: "Version\_1.256.0"
     direction: DOWN
 
-- assertVisible: "Version\_1.254.1"
+- assertVisible: "Version\_1.256.0"
 
 # Stop App
 - runFlow: reusableFlows/StopApp.yml

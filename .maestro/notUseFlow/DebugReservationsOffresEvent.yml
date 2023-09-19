@@ -1,0 +1,122 @@
+appId: app.passculture.staging
+---
+# Launch App
+- runFlow: reusableFlows/LaunchApp.yml
+# First Launch
+- runFlow: reusableFlows/FirstLaunch.yml
+- tapOn:
+    id: "Mon profil"
+- runFlow: reusableFlows/ToLogin.yml
+
+- tapOn: "Se connecter"
+#pour sortir de la saisie
+- tapOn:
+    id: "Se connecter"
+
+- tapOn: "Plus tard"
+- tapOn:
+    id: "Rechercher des offres"
+- tapOn: "Rechercher des offres"
+- tapOn: "Films, séries, cinéma"
+- tapOn: "Dates & heures"
+- tapOn:
+    id: "Interrupteur date"
+
+- tapOn: "Cette semaine"
+- tapOn: "Rechercher"
+
+- tapOn:
+    point: "49%,84%"
+- tapOn:
+    point: "49%,84%"
+- assertVisible:
+    id: "Voir les disponibilités"
+- tapOn:
+    id: "Voir les disponibilités"
+- tapOn:
+    point: "37%,59%"
+#- tapOn:
+#    point: "76%,65%"
+- assertVisible:
+    id: "Valider la date"
+- tapOn: "Valider la date"
+- assertVisible: "Choix des options"
+- assertVisible: "Horaire"
+- tapOn:
+    point: "50%,75%"
+- assertVisible: "Valider lʼhoraire"
+- tapOn: "Valider lʼhoraire"
+- assertVisible: "Choix des options"
+- tapOn: "Nombre de places"
+- assertVisible: "Solo"
+- assertVisible: "Duo"
+- tapOn:
+    point: "19%,74%"
+- assertVisible: "Finaliser ma réservation"
+- tapOn: "Finaliser ma réservation"
+- assertVisible: "Détails de la réservation"
+- assertVisible: "Les biens acquis ou réservés sur le pass Culture sont destinés à\
+    \ un usage strictement personnel et ne peuvent faire l’objet de revente."
+- assertVisible: "Informations"
+- assertVisible: "Lieu de l’événement"
+- assertVisible: "Conditions d’annulation"
+- assertVisible:
+    id: "Confirmer la réservation"
+- tapOn: "Confirmer la réservation"
+- assertVisible: "Réservation confirmée\_!"
+- assertVisible: "Tu peux retrouver toutes les informations concernant ta réservation\
+    \ sur l’application."
+- assertVisible:
+    id: "Voir ma réservation"
+- assertVisible:
+    id: "Partager l’offre"
+- assertVisible:
+    id: "Retourner à l’accueil"
+- tapOn: "Voir ma réservation"
+- scrollUntilVisible:
+      element: "Annuler ma réservation"
+      direction: DOWN
+#- assertVisible:
+#    id: "cancel-annulation-message"
+- tapOn: "Voir le détail de l’offre"
+
+
+#- tapOn:
+#      point: "49%,32%"
+#- tapOn:
+#      point: "50%,34%"
+#- tapOn: "Réserver l’offre"
+##PreBookingReservation
+#- runFlow: reusableFlows/PreBookingPage.yml
+#
+#- tapOn: "Confirmer la réservation"
+##BookingConfirmationPage
+#- runFlow: reusableFlows/BookingConfirmationPage.yml
+- tapOn: "Voir ma réservation"
+- assertVisible: "Pour profiter de ta réservation, tu dois présenter ta carte d’identité\
+    \ et ce code à 6 caractères. N’oublie pas que tu n’as pas le droit de le revendre\
+    \ ou le céder."
+- assertVisible: "Ma réservation"
+- tapOn:
+      id: "final-animated-icon-back"
+- assertVisible:
+      text: "Mes réservations"
+      index: 0
+- assertVisible: "Mes réservations"
+
+- tapOn:
+      point: "61%,16%"
+
+- scrollUntilVisible:
+      element: "Annuler ma réservation"
+      direction: DOWN
+
+- tapOn: "Annuler ma réservation"
+##BookingCancellationPage
+- runFlow: reusableFlows/BookingCancellationPage.yml
+#
+- tapOn: "Annuler ma réservation"
+- assertVisible: "Réservations terminées"
+
+# Stop App
+#- runFlow: reusableFlows/StopApp.yml
