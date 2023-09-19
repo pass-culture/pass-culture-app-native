@@ -47,7 +47,7 @@ const Wrapper = styled(View)<{ height: Size }>((props) => ({
   flexGrow: 1,
   flexShrink: 1,
   height: props.height === Size.Large ? getSpacing(23.5) : getSpacing(14.5),
-}));
+}))
 
 const Title = styled(Typo.ButtonText).attrs({
   numberOfLines: 1,
