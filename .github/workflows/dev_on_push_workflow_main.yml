@@ -10,6 +10,11 @@ permissions:
 jobs:
   yarn-install:
     uses: ./.github/workflows/dev_on_workflow_install.yml
+    secrets:
+      GCP_EHP_REGISTRY_SERVICE_ACCOUNT: ${{ secrets.ARTIFACT_REGISTRY_SERVICE_ACCOUNT }}
+      GCP_EHP_REGISTRY_WORKLOAD_IDENTITY_PROVIDER: ${{ secrets.GCP_INFRA_WORKLOAD_IDENTITY_PROVIDER }}
+      GCP_EHP_SERVICE_ACCOUNT: ${{ secrets.GCP_EHP_SERVICE_ACCOUNT }}
+      GCP_EHP_WORKLOAD_IDENTITY_PROVIDER: ${{ secrets.GCP_EHP_WORKLOAD_IDENTITY_PROVIDER }}
   check-server-folder-changes:
     name: Check server folder changes
     uses: ./.github/workflows/dev_on_workflow_check_folder_change.yml
