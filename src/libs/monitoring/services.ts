@@ -14,6 +14,9 @@ type EventMonitoring = {
   configureScope: typeof SentryModule.configureScope
   init: ({ enabled }: { enabled: boolean }) => Promise<void>
   setUser: (user: User | Record<string, unknown> | null) => void
+  startTransaction: typeof SentryModule.startTransaction
+  withProfiler: typeof SentryModule.withProfiler
+  wrap: typeof SentryModule.wrap
 }
 
 export const eventMonitoring: EventMonitoring = {
@@ -23,6 +26,9 @@ export const eventMonitoring: EventMonitoring = {
   captureMessage: SentryModule.captureMessage,
   configureScope: SentryModule.configureScope,
   setUser: SentryModule.setUser,
+  startTransaction: SentryModule.startTransaction,
+  withProfiler: SentryModule.withProfiler,
+  wrap: SentryModule.wrap,
   async init({ enabled } = { enabled: true }) {
     if (!enabled) return
     const config = await getSentryConfig()

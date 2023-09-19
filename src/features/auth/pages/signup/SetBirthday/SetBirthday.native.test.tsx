@@ -6,7 +6,7 @@ import {
   DEFAULT_SELECTED_DATE,
   ELIGIBLE_AGE_DATE,
 } from 'features/auth/fixtures/fixtures'
-import { NonEligible } from 'features/tutorial/types'
+import { NonEligible } from 'features/tutorial/enums'
 import { formatDateToISOStringWithoutTime } from 'libs/parsers'
 import { storage } from 'libs/storage'
 import { fireEvent, render, screen } from 'tests/utils'

@@ -16,7 +16,7 @@ const { analytics } = jest.requireActual('libs/analytics')
 
 describe('analytics - logEvent', () => {
   it('should cast offerId and bookingId from number to string', () => {
-    analytics.logBookingConfirmation(123456, 789)
+    analytics.logBookingConfirmation({ offerId: 123456, bookingId: 789 })
     expect(mockLogEvent).toHaveBeenCalledWith(AnalyticsEvent.BOOKING_CONFIRMATION, {
       agentType: AgentType.agent_mobile,
       offerId: '123456',

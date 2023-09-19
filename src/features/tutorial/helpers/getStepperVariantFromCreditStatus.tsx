@@ -1,5 +1,5 @@
 import { StepVariant } from 'features/profile/components/VerticalStepper/types'
-import { CreditStatus } from 'features/tutorial/types'
+import { CreditStatus } from 'features/tutorial/enums'
 
 export const getStepperVariantFromCreditStatus = (creditStatus: CreditStatus): StepVariant => {
   switch (creditStatus) {

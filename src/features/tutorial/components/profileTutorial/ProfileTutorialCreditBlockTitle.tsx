@@ -15,15 +15,16 @@ export const ProfileTutorialCreditBlockTitle = ({
   userAge,
   deposit,
 }: Props): React.ReactElement => {
+  if (age === userAge) {
+    return <TitleSecondary>{`Tu reçois ${deposit}`}</TitleSecondary>
+  }
+
   if (age === 18) {
     return (
       <StyledButtonText>
         Tu reçois <ButtonTextSecondary>{deposit}</ButtonTextSecondary>
       </StyledButtonText>
     )
-  }
-  if (age === userAge) {
-    return <TitleSecondary>{`Tu reçois ${deposit}`}</TitleSecondary>
   }
 
   if (age > userAge) {

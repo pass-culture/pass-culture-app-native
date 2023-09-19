@@ -1,7 +1,7 @@
 import colorAlpha from 'color-alpha'
 import { DefaultTheme } from 'styled-components/native'
 
-import { CreditStatus } from 'features/tutorial/types'
+import { CreditStatus } from 'features/tutorial/enums'
 
 export const getBackgroundColor = (theme: DefaultTheme, status: CreditStatus) => {
   switch (status) {

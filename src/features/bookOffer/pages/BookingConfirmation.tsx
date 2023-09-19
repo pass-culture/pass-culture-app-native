@@ -23,7 +23,7 @@ import { getSpacing, Spacer, Typo } from 'ui/theme'
 
 export function BookingConfirmation() {
   const { params } = useRoute<UseRouteType<'BookingConfirmation'>>()
-  const { share: shareOffer, shareContent } = useShareOffer(params.offerId)
+  const { share: shareOffer, shareContent } = useShareOffer(params.offerId, 'post_booking')
   const { reset } = useNavigation<UseNavigationType>()
   const credit = useAvailableCredit()
   const amountLeft = credit && !credit.isExpired ? credit.amount : 0

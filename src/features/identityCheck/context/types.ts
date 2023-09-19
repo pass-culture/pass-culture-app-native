@@ -1,6 +1,5 @@
-import { Country } from 'react-native-country-picker-modal'
-
 import { ActivityIdEnum, IdentityCheckMethod, SchoolTypesIdEnum } from 'api/gen'
+import { Country } from 'features/identityCheck/components/countryPicker/types'
 import { DeprecatedIdentityCheckStep, IdentityCheckStep } from 'features/identityCheck/types'
 import { SuggestedCity } from 'libs/place'
 
@@ -12,8 +11,8 @@ interface Name {
 interface PhoneNumber {
   phoneNumber: string
   country: {
-    callingCodes: Country['callingCode']
-    countryCode: Country['cca2']
+    callingCode: Country['callingCode']
+    countryCode: Country['id']
   }
 }
 

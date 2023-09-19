@@ -7,6 +7,7 @@ import { api } from 'api/api'
 import { AccountState } from 'api/gen'
 import * as LoginRoutine from 'features/auth/helpers/useLoginRoutine'
 import { navigateToHome } from 'features/navigation/helpers'
+import { Referrals } from 'features/navigation/RootNavigator/types'
 import { analytics } from 'libs/analytics'
 import * as datesLib from 'libs/dates'
 import { env } from 'libs/environment'
@@ -19,13 +20,19 @@ import { SnackBarHelperSettings } from 'ui/components/snackBar/types'
 
 import { ReinitializePassword } from './ReinitializePassword'
 
-jest.mock('features/navigation/helpers')
-
-const ROUTE_PARAMS = {
+const ROUTE_PARAMS: {
+  email: string
+  token: string
+  expiration_timestamp: number
+  from?: Referrals
+} = {
   email: 'john@.example.com',
   token: 'reerereskjlmkdlsf',
   expiration_timestamp: 45465546445,
+  from: undefined,
 }
+
+jest.mock('features/navigation/helpers')
 
 const mockShowSuccessSnackBar = jest.fn()
 const mockShowErrorSnackBar = jest.fn()
@@ -36,7 +43,6 @@ jest.mock('ui/components/snackBar/SnackBarContext', () => ({
   }),
 }))
 
-useRoute.mockReturnValue({ params: ROUTE_PARAMS })
 const loginRoutine = jest.fn()
 const mockLoginRoutine = jest.spyOn(LoginRoutine, 'useLoginRoutine')
 mockLoginRoutine.mockImplementation(() => loginRoutine)
@@ -48,6 +54,10 @@ jest.spyOn(DeviceInfo, 'getModel').mockReturnValue('iPhone 13')
 jest.spyOn(DeviceInfo, 'getSystemName').mockReturnValue('iOS')
 
 describe('ReinitializePassword Page', () => {
+  beforeEach(() => {
+    useRoute.mockReturnValue({ params: ROUTE_PARAMS })
+  })
+
   it('should match snapshot', async () => {
     renderReinitializePassword()
 
@@ -141,6 +151,7 @@ describe('ReinitializePassword Page', () => {
     // eslint-disable-next-line local-rules/independent-mocks
     useFeatureFlagSpy.mockReturnValue(false)
   })
+
   it('should connect the user when password is successfully reset', async () => {
     server.use(
       rest.post(env.API_BASE_URL + '/native/v1/reset_password', async (_, res, ctx) =>
@@ -192,7 +203,7 @@ describe('ReinitializePassword Page', () => {
     expect(navigateToHome).toHaveBeenCalledTimes(1)
   })
 
-  it('should log analytics when password is successfully reset', async () => {
+  it('should log analytics with default from value "forgottenpassword" when password is successfully reset', async () => {
     renderReinitializePassword()
     const passwordInput = screen.getByPlaceholderText('Ton mot de passe')
     const confirmationInput = screen.getByPlaceholderText('Confirmer le mot de passe')
@@ -206,7 +217,31 @@ describe('ReinitializePassword Page', () => {
       fireEvent.press(screen.getByText('Se connecter'))
     })
 
-    expect(analytics.logHasChangedPassword).toBeCalledWith('resetPassword')
+    expect(analytics.logHasChangedPassword).toBeCalledWith({
+      from: 'forgottenpassword',
+      reason: 'resetPassword',
+    })
+  })
+
+  it('should log analytics with from params value when password is successfully reset', async () => {
+    ROUTE_PARAMS.from = 'accountsecurity'
+    renderReinitializePassword()
+    const passwordInput = screen.getByPlaceholderText('Ton mot de passe')
+    const confirmationInput = screen.getByPlaceholderText('Confirmer le mot de passe')
+    await act(async () => {
+      fireEvent.changeText(passwordInput, 'user@AZERTY123')
+    })
+    await act(async () => {
+      fireEvent.changeText(confirmationInput, 'user@AZERTY123')
+    })
+    await act(async () => {
+      fireEvent.press(screen.getByText('Se connecter'))
+    })
+
+    expect(analytics.logHasChangedPassword).toBeCalledWith({
+      from: 'accountsecurity',
+      reason: 'resetPassword',
+    })
   })
 
   it('should show success snack bar when password is successfully reset', async () => {

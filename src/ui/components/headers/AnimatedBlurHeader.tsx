@@ -17,7 +17,7 @@ type Props = {
 
 type AnimatedBlurHeaderFullProps = {
   headerTitle: string
-  headerTransition: Animated.AnimatedInterpolation
+  headerTransition: Animated.AnimatedInterpolation<string | number>
   onBackPress: () => void
   titleTestID?: string
   RightButton?: React.ReactNode

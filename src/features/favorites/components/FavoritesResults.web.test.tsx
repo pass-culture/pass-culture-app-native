@@ -59,8 +59,8 @@ describe('FavoritesResults component', () => {
     const button = await screen.findByText('Découvrir le catalogue')
     const sortByButton = screen.queryByText('Trier')
 
-    expect(button).toBeTruthy()
-    expect(sortByButton).toBeFalsy()
+    expect(button).toBeInTheDocument()
+    expect(sortByButton).not.toBeInTheDocument()
   })
 
   it('should show favorite placeholder on init', async () => {
@@ -74,7 +74,7 @@ describe('FavoritesResults component', () => {
 
     await act(async () => {}) // Warning: An update to FavoritesResults inside a test was not wrapped in act(...).
 
-    expect(await screen.findByTestId('FavoritesResultsPlaceHolder')).toBeTruthy()
+    expect(await screen.findByTestId('FavoritesResultsPlaceHolder')).toBeInTheDocument()
   })
 
   it('should show number of result and sortBy button', async () => {
@@ -98,8 +98,8 @@ describe('FavoritesResults component', () => {
     const paginatedFavorites = await screen.findByText(`4 favoris`)
     const sortButton = screen.queryByText('Trier')
 
-    expect(paginatedFavorites).toBeTruthy()
-    expect(sortButton).toBeTruthy()
+    expect(paginatedFavorites).toBeInTheDocument()
+    expect(sortButton).toBeInTheDocument()
   })
 })
 

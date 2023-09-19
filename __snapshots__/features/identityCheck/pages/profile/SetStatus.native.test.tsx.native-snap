@@ -74,6 +74,23 @@ exports[`<SetStatus/> should render correctly 1`] = `
           <View
             accessibilityLabel="Revenir en arrière"
             accessibilityRole="button"
+            accessibilityState={
+              {
+                "busy": undefined,
+                "checked": undefined,
+                "disabled": undefined,
+                "expanded": undefined,
+                "selected": undefined,
+              }
+            }
+            accessibilityValue={
+              {
+                "max": undefined,
+                "min": undefined,
+                "now": undefined,
+                "text": undefined,
+              }
+            }
             accessible={true}
             collapsable={false}
             focusable={true}
@@ -309,7 +326,19 @@ exports[`<SetStatus/> should render correctly 1`] = `
                       accessibilityRole="radio"
                       accessibilityState={
                         {
+                          "busy": undefined,
                           "checked": false,
+                          "disabled": undefined,
+                          "expanded": undefined,
+                          "selected": undefined,
+                        }
+                      }
+                      accessibilityValue={
+                        {
+                          "max": undefined,
+                          "min": undefined,
+                          "now": undefined,
+                          "text": undefined,
                         }
                       }
                       accessible={true}
@@ -332,7 +361,6 @@ exports[`<SetStatus/> should render correctly 1`] = `
                           "borderWidth": 1,
                           "flexDirection": "row",
                           "flexGrow": 1,
-                          "height": 92,
                           "opacity": 1,
                           "paddingBottom": 16,
                           "paddingLeft": 16,
@@ -467,7 +495,19 @@ exports[`<SetStatus/> should render correctly 1`] = `
                       accessibilityRole="radio"
                       accessibilityState={
                         {
+                          "busy": undefined,
                           "checked": false,
+                          "disabled": undefined,
+                          "expanded": undefined,
+                          "selected": undefined,
+                        }
+                      }
+                      accessibilityValue={
+                        {
+                          "max": undefined,
+                          "min": undefined,
+                          "now": undefined,
+                          "text": undefined,
                         }
                       }
                       accessible={true}
@@ -490,7 +530,6 @@ exports[`<SetStatus/> should render correctly 1`] = `
                           "borderWidth": 1,
                           "flexDirection": "row",
                           "flexGrow": 1,
-                          "height": 92,
                           "opacity": 1,
                           "paddingBottom": 16,
                           "paddingLeft": 16,
@@ -625,7 +664,19 @@ exports[`<SetStatus/> should render correctly 1`] = `
                       accessibilityRole="radio"
                       accessibilityState={
                         {
+                          "busy": undefined,
                           "checked": false,
+                          "disabled": undefined,
+                          "expanded": undefined,
+                          "selected": undefined,
+                        }
+                      }
+                      accessibilityValue={
+                        {
+                          "max": undefined,
+                          "min": undefined,
+                          "now": undefined,
+                          "text": undefined,
                         }
                       }
                       accessible={true}
@@ -648,7 +699,6 @@ exports[`<SetStatus/> should render correctly 1`] = `
                           "borderWidth": 1,
                           "flexDirection": "row",
                           "flexGrow": 1,
-                          "height": 92,
                           "opacity": 1,
                           "paddingBottom": 16,
                           "paddingLeft": 16,
@@ -783,7 +833,19 @@ exports[`<SetStatus/> should render correctly 1`] = `
                       accessibilityRole="radio"
                       accessibilityState={
                         {
+                          "busy": undefined,
                           "checked": false,
+                          "disabled": undefined,
+                          "expanded": undefined,
+                          "selected": undefined,
+                        }
+                      }
+                      accessibilityValue={
+                        {
+                          "max": undefined,
+                          "min": undefined,
+                          "now": undefined,
+                          "text": undefined,
                         }
                       }
                       accessible={true}
@@ -806,7 +868,6 @@ exports[`<SetStatus/> should render correctly 1`] = `
                           "borderWidth": 1,
                           "flexDirection": "row",
                           "flexGrow": 1,
-                          "height": 92,
                           "opacity": 1,
                           "paddingBottom": 16,
                           "paddingLeft": 16,
@@ -941,7 +1002,19 @@ exports[`<SetStatus/> should render correctly 1`] = `
                       accessibilityRole="radio"
                       accessibilityState={
                         {
+                          "busy": undefined,
                           "checked": false,
+                          "disabled": undefined,
+                          "expanded": undefined,
+                          "selected": undefined,
+                        }
+                      }
+                      accessibilityValue={
+                        {
+                          "max": undefined,
+                          "min": undefined,
+                          "now": undefined,
+                          "text": undefined,
                         }
                       }
                       accessible={true}
@@ -964,7 +1037,6 @@ exports[`<SetStatus/> should render correctly 1`] = `
                           "borderWidth": 1,
                           "flexDirection": "row",
                           "flexGrow": 1,
-                          "height": 92,
                           "opacity": 1,
                           "paddingBottom": 16,
                           "paddingLeft": 16,
@@ -1099,7 +1171,19 @@ exports[`<SetStatus/> should render correctly 1`] = `
                       accessibilityRole="radio"
                       accessibilityState={
                         {
+                          "busy": undefined,
                           "checked": false,
+                          "disabled": undefined,
+                          "expanded": undefined,
+                          "selected": undefined,
+                        }
+                      }
+                      accessibilityValue={
+                        {
+                          "max": undefined,
+                          "min": undefined,
+                          "now": undefined,
+                          "text": undefined,
                         }
                       }
                       accessible={true}
@@ -1122,7 +1206,6 @@ exports[`<SetStatus/> should render correctly 1`] = `
                           "borderWidth": 1,
                           "flexDirection": "row",
                           "flexGrow": 1,
-                          "height": 92,
                           "opacity": 1,
                           "paddingBottom": 16,
                           "paddingLeft": 16,
@@ -1257,7 +1340,19 @@ exports[`<SetStatus/> should render correctly 1`] = `
                       accessibilityRole="radio"
                       accessibilityState={
                         {
+                          "busy": undefined,
                           "checked": false,
+                          "disabled": undefined,
+                          "expanded": undefined,
+                          "selected": undefined,
+                        }
+                      }
+                      accessibilityValue={
+                        {
+                          "max": undefined,
+                          "min": undefined,
+                          "now": undefined,
+                          "text": undefined,
                         }
                       }
                       accessible={true}
@@ -1280,7 +1375,6 @@ exports[`<SetStatus/> should render correctly 1`] = `
                           "borderWidth": 1,
                           "flexDirection": "row",
                           "flexGrow": 1,
-                          "height": 92,
                           "opacity": 1,
                           "paddingBottom": 16,
                           "paddingLeft": 16,
@@ -1430,7 +1524,19 @@ exports[`<SetStatus/> should render correctly 1`] = `
                       accessibilityRole="radio"
                       accessibilityState={
                         {
+                          "busy": undefined,
                           "checked": false,
+                          "disabled": undefined,
+                          "expanded": undefined,
+                          "selected": undefined,
+                        }
+                      }
+                      accessibilityValue={
+                        {
+                          "max": undefined,
+                          "min": undefined,
+                          "now": undefined,
+                          "text": undefined,
                         }
                       }
                       accessible={true}
@@ -1453,7 +1559,6 @@ exports[`<SetStatus/> should render correctly 1`] = `
                           "borderWidth": 1,
                           "flexDirection": "row",
                           "flexGrow": 1,
-                          "height": 92,
                           "opacity": 1,
                           "paddingBottom": 16,
                           "paddingLeft": 16,
@@ -1603,7 +1708,19 @@ exports[`<SetStatus/> should render correctly 1`] = `
                       accessibilityRole="radio"
                       accessibilityState={
                         {
+                          "busy": undefined,
                           "checked": false,
+                          "disabled": undefined,
+                          "expanded": undefined,
+                          "selected": undefined,
+                        }
+                      }
+                      accessibilityValue={
+                        {
+                          "max": undefined,
+                          "min": undefined,
+                          "now": undefined,
+                          "text": undefined,
                         }
                       }
                       accessible={true}
@@ -1626,7 +1743,6 @@ exports[`<SetStatus/> should render correctly 1`] = `
                           "borderWidth": 1,
                           "flexDirection": "row",
                           "flexGrow": 1,
-                          "height": 92,
                           "opacity": 1,
                           "paddingBottom": 16,
                           "paddingLeft": 16,
@@ -1787,7 +1903,19 @@ exports[`<SetStatus/> should render correctly 1`] = `
             accessibilityLabel="Choisis ton statut"
             accessibilityState={
               {
+                "busy": undefined,
+                "checked": undefined,
                 "disabled": true,
+                "expanded": undefined,
+                "selected": undefined,
+              }
+            }
+            accessibilityValue={
+              {
+                "max": undefined,
+                "min": undefined,
+                "now": undefined,
+                "text": undefined,
               }
             }
             accessible={true}

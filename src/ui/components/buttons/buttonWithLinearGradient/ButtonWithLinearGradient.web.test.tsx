@@ -11,17 +11,17 @@ describe('<ButtonWithLinearGradient />', () => {
     render(<ButtonWithLinearGradient wording="Wording to display" onPress={onPress} />)
     const text = screen.queryByText('Wording to display')
 
-    expect(text?.closest('button')?.disabled).toBeFalsy()
+    expect(text?.closest('button')?.disabled).toBe(false)
     expect(text?.closest('button')?.type).toBe('button')
-    expect(text).toBeTruthy()
+    expect(text).toBeInTheDocument()
   })
 
   it('should render disabled', () => {
     render(<ButtonWithLinearGradient wording="Wording to display" onPress={onPress} isDisabled />)
     const text = screen.queryByText('Wording to display')
 
-    expect(text?.closest('button')?.disabled).toBeTruthy()
-    expect(text).toBeTruthy()
+    expect(text?.closest('button')?.disabled).toBe(true)
+    expect(text).toBeInTheDocument()
   })
 
   it('should render anchor tag without type if component is an anchor', () => {

@@ -101,6 +101,7 @@ export const screenParamsParser: ParamsParsers = {
     fromMultivenueOfferId: identityFn,
     openModalOnNavigation: identityFn,
     searchId: identityFn,
+    apiRecoParams: identityFn,
   },
   Home: {
     latitude: Number,
@@ -111,6 +112,7 @@ export const screenParamsParser: ParamsParsers = {
     token: identityFn,
     email: decodeURIComponent,
     expiration_timestamp: Number,
+    from: identityFn,
   },
   ResetPasswordExpiredLink: {
     email: decodeURIComponent,

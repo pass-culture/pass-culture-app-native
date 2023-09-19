@@ -13,6 +13,8 @@ import { fireEvent, render, screen } from 'tests/utils'
 
 import { OnGoingBookingItem } from './OnGoingBookingItem'
 
+const mockNativeShare = jest.spyOn(Share, 'share').mockResolvedValue({ action: Share.sharedAction })
+
 describe('OnGoingBookingItem', () => {
   const bookings = bookingsSnap.ongoing_bookings
   const initialBooking: Booking = bookingsSnap.ongoing_bookings[0]
@@ -165,7 +167,6 @@ describe('OnGoingBookingItem', () => {
   })
 
   it('should call share when press share icon', async () => {
-    const share = jest.spyOn(Share, 'share')
     renderOnGoingBookingItem(initialBooking, bookings)
 
     const shareButton = await screen.findByLabelText(
@@ -173,7 +174,7 @@ describe('OnGoingBookingItem', () => {
     )
     fireEvent.press(shareButton)
 
-    expect(share).toHaveBeenCalledTimes(1)
+    expect(mockNativeShare).toHaveBeenCalledTimes(1)
   })
 
   it('should log analytics when press share icon', async () => {

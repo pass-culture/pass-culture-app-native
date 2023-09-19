@@ -3,6 +3,7 @@ import React from 'react'
 
 import { navigate, useRoute } from '__mocks__/@react-navigation/native'
 import { TutorialRootStackParamList } from 'features/navigation/RootNavigator/types'
+import { TutorialTypes } from 'features/tutorial/enums'
 import { analytics } from 'libs/analytics'
 import { storage } from 'libs/storage'
 import { fireEvent, render, screen, waitFor } from 'tests/utils'
@@ -20,7 +21,7 @@ describe('AgeSelection', () => {
 
   describe('onboarding', () => {
     it('should render correctly', () => {
-      renderAgeSelection({ type: 'onboarding' })
+      renderAgeSelection({ type: TutorialTypes.ONBOARDING })
 
       expect(screen).toMatchSnapshot()
     })
@@ -28,7 +29,7 @@ describe('AgeSelection', () => {
     it.each(AGES)(
       'should navigate to OnboardingAgeInformation page with params age=%s when pressing "j’ai %s ans"',
       async (age) => {
-        renderAgeSelection({ type: 'onboarding' })
+        renderAgeSelection({ type: TutorialTypes.ONBOARDING })
 
         const button = screen.getByText(`${age} ans`)
         fireEvent.press(button)
@@ -40,39 +41,47 @@ describe('AgeSelection', () => {
     )
 
     it('should navigate to AgeSelectionOther page when pressing "Autre"', async () => {
-      useRoute.mockReturnValueOnce({ params: { type: 'onboarding' } })
-      renderAgeSelection({ type: 'onboarding' })
+      useRoute.mockReturnValueOnce({ params: { type: TutorialTypes.ONBOARDING } })
+      renderAgeSelection({ type: TutorialTypes.ONBOARDING })
 
       const button = screen.getByText('Autre')
       fireEvent.press(button)
 
       await waitFor(() => {
-        expect(navigate).toHaveBeenCalledWith('AgeSelectionOther', { type: 'onboarding' })
+        expect(navigate).toHaveBeenCalledWith('AgeSelectionOther', {
+          type: TutorialTypes.ONBOARDING,
+        })
       })
     })
 
     it.each(AGES)('should log analytics with params age=%s when pressing "j’ai %s ans"', (age) => {
-      renderAgeSelection({ type: 'onboarding' })
+      renderAgeSelection({ type: TutorialTypes.ONBOARDING })
 
       const button = screen.getByText(`${age} ans`)
       fireEvent.press(button)
 
-      expect(analytics.logSelectAge).toHaveBeenCalledWith(age)
+      expect(analytics.logSelectAge).toHaveBeenCalledWith({
+        userStatus: age,
+        from: TutorialTypes.ONBOARDING,
+      })
     })
 
     it('should log analytics when pressing "Autre"', () => {
-      renderAgeSelection({ type: 'onboarding' })
+      renderAgeSelection({ type: TutorialTypes.ONBOARDING })
 
       const button = screen.getByText('Autre')
       fireEvent.press(button)
 
-      expect(analytics.logSelectAge).toHaveBeenCalledWith('other')
+      expect(analytics.logSelectAge).toHaveBeenCalledWith({
+        userStatus: 'other',
+        from: TutorialTypes.ONBOARDING,
+      })
     })
 
     it.each(AGES)(
       'should set user age to %s in local storage  when pressing "j’ai %s ans"',
       async (age) => {
-        renderAgeSelection({ type: 'onboarding' })
+        renderAgeSelection({ type: TutorialTypes.ONBOARDING })
 
         const button = screen.getByText(`${age} ans`)
         fireEvent.press(button)
@@ -85,9 +94,21 @@ describe('AgeSelection', () => {
 
   describe('profileTutorial', () => {
     it('should render correctly', () => {
-      renderAgeSelection({ type: 'profileTutorial' })
+      renderAgeSelection({ type: TutorialTypes.PROFILE_TUTORIAL })
 
       expect(screen).toMatchSnapshot()
+    })
+
+    it.each(AGES)('should log analytics with params age=%s when pressing "j’ai %s ans"', (age) => {
+      renderAgeSelection({ type: TutorialTypes.PROFILE_TUTORIAL })
+
+      const button = screen.getByText(`${age} ans`)
+      fireEvent.press(button)
+
+      expect(analytics.logSelectAge).toHaveBeenCalledWith({
+        userStatus: age,
+        from: TutorialTypes.PROFILE_TUTORIAL,
+      })
     })
   })
 })

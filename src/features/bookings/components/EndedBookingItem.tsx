@@ -81,6 +81,7 @@ export const EndedBookingItem = ({ booking }: BookingItemProps) => {
     offerId: stock.offer.id,
     offerName: stock.offer.name,
     venueName: stock.offer.venue.name,
+    utmMedium: 'ended_booking',
   })
 
   const pressShareOffer = useCallback(() => {

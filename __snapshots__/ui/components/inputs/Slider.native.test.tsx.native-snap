@@ -195,6 +195,14 @@ exports[`<Slider /> should render correctly 1`] = `
               }
             >
               <View
+                accessibilityValue={
+                  {
+                    "max": undefined,
+                    "min": undefined,
+                    "now": undefined,
+                    "text": undefined,
+                  }
+                }
                 accessible={true}
                 focusable={false}
                 onClick={[Function]}
@@ -288,6 +296,14 @@ exports[`<Slider /> should render correctly 1`] = `
               }
             >
               <View
+                accessibilityValue={
+                  {
+                    "max": undefined,
+                    "min": undefined,
+                    "now": undefined,
+                    "text": undefined,
+                  }
+                }
                 accessible={true}
                 focusable={false}
                 onClick={[Function]}

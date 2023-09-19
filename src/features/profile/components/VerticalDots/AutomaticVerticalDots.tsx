@@ -1,5 +1,5 @@
 import React, { useCallback, useState } from 'react'
-import { LayoutChangeEvent, LayoutRectangle } from 'react-native'
+import { LayoutChangeEvent, LayoutRectangle, View } from 'react-native'
 import styled from 'styled-components/native'
 
 import type { VerticalDotsProps } from './VerticalDots'
@@ -28,7 +28,7 @@ export function AutomaticVerticalDots(props: AutomaticVerticalDotsProps) {
   )
 }
 
-const Wrapper = styled.View({
+const Wrapper = styled(View)({
   flex: 1,
   height: 0,
 })

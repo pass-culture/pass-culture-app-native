@@ -57,6 +57,7 @@ export const SearchResults: React.FC = () => {
     isFetching,
     isFetchingNextPage,
     userData,
+    venuesUserData,
   } = useSearchResults()
   const { searchState } = useSearch()
   const showSkeleton = useIsFalseWithDelay(isLoading, ANIMATION_DURATION)
@@ -127,8 +128,9 @@ export const SearchResults: React.FC = () => {
   const onEndReached = useCallback(() => {
     if (data && hasNextPage) {
       const [lastPage] = data.pages.slice(-1)
-      if (lastPage.page > 0) {
-        analytics.logSearchScrollToPage(lastPage.page, params?.searchId)
+
+      if (lastPage.offers.page > 0) {
+        analytics.logSearchScrollToPage(lastPage.offers.page, params?.searchId)
       }
       fetchNextPage()
     }
@@ -259,6 +261,7 @@ export const SearchResults: React.FC = () => {
           onRefresh={refetch}
           onPress={handlePressFooter}
           userData={userData}
+          venuesUserData={venuesUserData}
         />
       </Container>
       {nbHits > 0 && (

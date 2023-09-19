@@ -1,12 +1,12 @@
 import { NavigationContainer } from '@react-navigation/native'
 import React, { NamedExoticComponent } from 'react'
+import { Share } from 'react-native'
 
 import * as Auth from 'features/auth/context/AuthContext'
 import { FavoritesWrapper } from 'features/favorites/context/FavoritesWrapper'
 import { initialFavoritesState } from 'features/favorites/context/reducer'
 import * as NavigationHelpers from 'features/navigation/helpers/openUrl'
 import { TabStack } from 'features/navigation/TabBar/Stack'
-import * as Share from 'features/share/helpers/shareApp'
 import { nonBeneficiaryUser } from 'fixtures/user'
 import { analytics } from 'libs/analytics'
 import { env } from 'libs/environment'
@@ -92,7 +92,7 @@ const mockUseNetInfoContext = useNetInfoContextDefault as jest.Mock
 
 const useVersionSpy = jest.spyOn(useVersion, 'useVersion').mockReturnValue('Version\u00A01.10.5')
 
-const shareApp = jest.spyOn(Share, 'shareApp')
+const shareSpy = jest.spyOn(Share, 'share').mockResolvedValue({ action: Share.sharedAction })
 
 describe('Profile component', () => {
   mockUseNetInfoContext.mockReturnValue({ isConnected: true })
@@ -265,7 +265,7 @@ describe('Profile component', () => {
       const shareButton = screen.getByText('Partage le pass Culture')
       fireEvent.press(shareButton)
 
-      expect(shareApp).toHaveBeenCalledTimes(1)
+      expect(shareSpy).toHaveBeenCalledTimes(1)
     })
   })
 

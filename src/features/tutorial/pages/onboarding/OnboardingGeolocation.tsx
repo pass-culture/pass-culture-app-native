@@ -3,6 +3,7 @@ import React, { useCallback } from 'react'
 import styled from 'styled-components/native'
 
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
+import { TutorialTypes } from 'features/tutorial/enums'
 import { analytics } from 'libs/analytics'
 import { useLocation } from 'libs/geolocation'
 import GeolocationAnimation from 'ui/animations/geolocalisation.json'
@@ -16,13 +17,13 @@ export const OnboardingGeolocation = () => {
 
   const onSkip = useCallback(() => {
     analytics.logOnboardingGeolocationClicked({ type: 'skipped' })
-    navigate('AgeSelection', { type: 'onboarding' })
+    navigate('AgeSelection', { type: TutorialTypes.ONBOARDING })
   }, [navigate])
 
   const onGeolocationButtonPress = useCallback(async () => {
     analytics.logOnboardingGeolocationClicked({ type: 'use_my_position' })
     await requestGeolocPermission({
-      onSubmit: () => navigate('AgeSelection', { type: 'onboarding' }),
+      onSubmit: () => navigate('AgeSelection', { type: TutorialTypes.ONBOARDING }),
       onAcceptance: analytics.logHasActivateGeolocFromTutorial,
     })
   }, [navigate, requestGeolocPermission])

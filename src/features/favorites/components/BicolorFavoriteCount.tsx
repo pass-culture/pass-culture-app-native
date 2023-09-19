@@ -57,8 +57,10 @@ export const BicolorFavoriteCount: React.FC<BicolorIconInterface> = ({
           showTabBar={showTabBar}
           accessibilityLabel={accessibilityLabel}
           accessibilityLiveRegion="polite">
-          <Count {...pastilleDimensions}>{count}</Count>
-          <Plus {...pastilleDimensions}>{plusSign}</Plus>
+          <TextContainer height={pastilleDimensions.height}>
+            <Count>{count}</Count>
+            <Plus>{plusSign}</Plus>
+          </TextContainer>
         </PastilleContent>
       </StyledAnimatedView>
     </Container>
@@ -98,15 +100,18 @@ const PastilleContent = styled.View<{ height: number; width: number; showTabBar:
   })
 )
 
-const Plus = styled(Typo.Caption)<{ height: number }>(({ height, theme }) => ({
+const TextContainer = styled.Text<{ height: number }>(({ height }) => ({
+  height: height + getSpacing(1),
+  textAlign: 'center',
+}))
+
+const Plus = styled(Typo.Caption)(({ theme }) => ({
   fontSize: theme.showTabBar ? theme.tabBar.fontSize : 8,
-  height: Platform.select<number>({ web: height, default: height + getSpacing(1) }),
   color: theme.colors.white,
 }))
 
-const Count = styled(Typo.Caption)<{ height: number }>(({ height, theme }) => ({
+const Count = styled(Typo.Caption)(({ theme }) => ({
   fontSize: theme.showTabBar ? theme.tabBar.fontSize : 9,
-  height: Platform.select<number>({ web: height, default: height + getSpacing(1) }),
   color: theme.colors.white,
 }))
 

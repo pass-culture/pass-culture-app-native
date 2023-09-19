@@ -11,14 +11,14 @@ import { StepButton } from 'features/identityCheck/components/StepButton'
 import { useRehydrateProfile } from 'features/identityCheck/pages/helpers/useRehydrateProfile'
 import { useSetSubscriptionStepAndMethod } from 'features/identityCheck/pages/helpers/useSetCurrentSubscriptionStep'
 import { useStepperInfo } from 'features/identityCheck/pages/helpers/useStepperInfo'
+import { StepButtonState } from 'features/identityCheck/types'
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
+import { StepList } from 'features/profile/components/StepList/StepList'
 import { analytics } from 'libs/analytics'
 import { hasOngoingCredit } from 'shared/user/useAvailableCredit'
 import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
-import { Li } from 'ui/components/Li'
 import { useModal } from 'ui/components/modals/useModal'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
-import { VerticalUl } from 'ui/components/Ul'
 import { Invalidate } from 'ui/svg/icons/Invalidate'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
@@ -33,6 +33,10 @@ export const Stepper = () => {
     subtitle: stepperSubtitle,
     errorMessage,
   } = useStepperInfo()
+
+  const activeStepIndex = steps.findIndex(
+    (step) => step.stepState === StepButtonState.CURRENT || step.stepState === StepButtonState.RETRY
+  )
 
   const { subscription } = useSetSubscriptionStepAndMethod()
   const { showErrorSnackBar } = useSnackBarContext()
@@ -77,21 +81,20 @@ export const Stepper = () => {
   }, [subscription])
 
   const stepList = (
-    <VerticalUl>
-      {steps.map((step) => (
-        <Li key={step.name}>
-          <StepButtonContainer>
-            <StepButton
-              step={step}
-              navigateTo={{ screen: step.firstScreen }}
-              onPress={() => {
-                analytics.logIdentityCheckStep(step.name)
-              }}
-            />
-          </StepButtonContainer>
-        </Li>
+    <StepList activeStepIndex={activeStepIndex}>
+      {steps.map((step, index) => (
+        <StepButtonContainer key={step.name}>
+          <StepButton
+            step={step}
+            navigateTo={{ screen: step.firstScreen }}
+            onPress={() => {
+              analytics.logIdentityCheckStep(step.name)
+            }}
+          />
+          {index === steps.length - 1 ? null : <Spacer.Column numberOfSpaces={2} />}
+        </StepButtonContainer>
       ))}
-    </VerticalUl>
+    </StepList>
   )
 
   return (

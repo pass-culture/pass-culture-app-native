@@ -4,8 +4,8 @@ import React from 'react'
 import { navigate, reset } from '__mocks__/@react-navigation/native'
 import { TutorialRootStackParamList } from 'features/navigation/RootNavigator/types'
 import { homeNavConfig } from 'features/navigation/TabBar/helpers'
+import { CreditStatus, TutorialTypes } from 'features/tutorial/enums'
 import { OnboardingAgeInformation } from 'features/tutorial/pages/onboarding/OnboardingAgeInformation'
-import { CreditStatus } from 'features/tutorial/types'
 import { analytics } from 'libs/analytics'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { fireEvent, render, waitFor } from 'tests/utils'
@@ -83,7 +83,7 @@ describe('OnboardingAgeInformation', () => {
       type: 'account_creation',
     })
     expect(analytics.logSignUpClicked).toHaveBeenNthCalledWith(1, {
-      from: 'onboarding',
+      from: TutorialTypes.ONBOARDING,
     })
   })
 

@@ -1,22 +1,21 @@
-import { env } from 'libs/environment'
+import { WEBAPP_V2_URL } from 'libs/environment'
 import { share } from 'libs/share'
 
-const testUrl =
-  'https://app.testing.passculture.team/accueil?utm_campaign=test_growth&utm_source=in-app&utm_medium=in-app'
-const url = env.FEATURE_FLIPPING_ONLY_VISIBLE_ON_TESTING
-  ? testUrl
-  : 'https://passculture.onelink.me/SmRf/xthbokjg'
-
-const message = `Profite toi aussi de tous les bons plans du pass Culture\u00a0: \n${url}`
-
-const shareAppContent = {
-  title: 'Profite toi aussi de tous les bons plans du pass Culture',
-  message,
-}
+const shareAppTitle = 'Profite toi aussi de tous les bons plans du pass Culture'
 
 const shareOptions = {
-  subject: shareAppContent.title, // iOS only
-  dialogTitle: shareAppContent.title, // android only
+  subject: shareAppTitle, // iOS only
+  dialogTitle: shareAppTitle, // android only
 }
 
-export const shareApp = () => share(shareAppContent, shareOptions, true)
+export const shareApp = (utmMedium: string) => {
+  const url = `${WEBAPP_V2_URL}/accueil`
+  const urlWithUtmParams = `${url}?utm_campaign=share_app&utm_medium=${utmMedium}`
+  const message = `Profite toi aussi de tous les bons plans du pass Culture\u00a0: \n${urlWithUtmParams}`
+
+  const shareAppContent = {
+    title: shareAppTitle,
+    message,
+  }
+  return share(shareAppContent, shareOptions, true)
+}

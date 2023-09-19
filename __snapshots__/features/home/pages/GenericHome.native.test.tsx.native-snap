@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`GenericHome should display real content 1`] = `
+exports[`GenericHome With not displayed skeleton by default should display real content 1`] = `
 <View
   style={
     [
@@ -124,6 +124,7 @@ exports[`GenericHome should display real content 1`] = `
           </Text>
         </View>
         <View
+          onFocusCapture={[Function]}
           onLayout={[Function]}
           style={null}
         />
@@ -158,7 +159,7 @@ exports[`GenericHome should display real content 1`] = `
 </View>
 `;
 
-exports[`GenericHome should display skeleton 1`] = `
+exports[`GenericHome With not displayed skeleton by default should display skeleton 1`] = `
 <View
   style={
     [
@@ -282,6 +283,7 @@ exports[`GenericHome should display skeleton 1`] = `
           </Text>
         </View>
         <View
+          onFocusCapture={[Function]}
           onLayout={[Function]}
           style={null}
         />

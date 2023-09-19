@@ -1,6 +1,6 @@
 import { yupResolver } from '@hookform/resolvers/yup'
 import { useNavigation, useRoute } from '@react-navigation/native'
-import React, { FunctionComponent, memo, useCallback, useEffect } from 'react'
+import React, { FunctionComponent, memo, useCallback, useEffect, useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { Keyboard } from 'react-native'
 import styled from 'styled-components/native'
@@ -9,18 +9,21 @@ import { api } from 'api/api'
 import { AccountState, FavoriteResponse } from 'api/gen'
 import { useSignIn } from 'features/auth/api/useSignIn'
 import { AuthenticationButton } from 'features/auth/components/AuthenticationButton/AuthenticationButton'
+import { useSettingsContext } from 'features/auth/context/SettingsContext'
 import { loginSchema } from 'features/auth/pages/login/schema/loginSchema'
 import { SignInResponseFailure } from 'features/auth/types'
 import { useAddFavorite } from 'features/favorites/api'
 import { navigateToHome } from 'features/navigation/helpers'
 import { UseNavigationType, UseRouteType } from 'features/navigation/RootNavigator/types'
-import { From } from 'features/offer/components/AuthenticationModal/fromEnum'
 import { analytics } from 'libs/analytics'
 import { useSafeState } from 'libs/hooks'
+import { eventMonitoring } from 'libs/monitoring'
+import { ReCaptcha } from 'libs/recaptcha/ReCaptcha'
 import { storage } from 'libs/storage'
 import { shouldShowCulturalSurvey } from 'shared/culturalSurvey/shouldShowCulturalSurvey'
 import { EmailInputController } from 'shared/forms/controllers/EmailInputController'
 import { PasswordInputController } from 'shared/forms/controllers/PasswordInputController'
+import { From } from 'shared/offer/enums'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
 import { Form } from 'ui/components/Form'
@@ -42,9 +45,12 @@ type Props = {
 }
 
 export const Login: FunctionComponent<Props> = memo(function Login(props) {
+  const { data: settings } = useSettingsContext()
   const { params } = useRoute<UseRouteType<'Login'>>()
   const { navigate } = useNavigation<UseNavigationType>()
   const { showInfoSnackBar } = useSnackBarContext()
+  const [isDoingReCaptchaChallenge, setIsDoingReCaptchaChallenge] = useState(false)
+  const isRecaptchaEnabled = settings?.isRecaptchaEnabled
 
   const {
     handleSubmit,
@@ -153,17 +159,50 @@ export const Login: FunctionComponent<Props> = memo(function Login(props) {
     onFailure: handleSigninFailure,
   })
 
-  const shouldDisableLoginButton = !isValid || isLoading
+  const shouldDisableLoginButton = !isValid || isLoading || isDoingReCaptchaChallenge
+
+  const openReCaptchaChallenge = useCallback(() => {
+    setIsDoingReCaptchaChallenge(true)
+    setErrorMessage(null)
+  }, [setErrorMessage])
+
+  const onReCaptchaClose = useCallback(() => {
+    setIsDoingReCaptchaChallenge(false)
+  }, [])
+
+  const onReCaptchaError = useCallback(
+    (error: string) => {
+      setIsDoingReCaptchaChallenge(false)
+      setErrorMessage('Un problème est survenu, réessaie plus tard.')
+      eventMonitoring.captureMessage(`Login Recaptcha Error: ${error}`, 'info')
+    },
+    [setErrorMessage]
+  )
+
+  const onReCaptchaExpire = useCallback(() => {
+    setIsDoingReCaptchaChallenge(false)
+    setErrorMessage('Le token reCAPTCHA a expiré, tu peux réessayer.')
+  }, [setErrorMessage])
+
+  const onReCaptchaSuccess = useCallback(
+    (token: string) => {
+      setIsDoingReCaptchaChallenge(false)
+      handleSubmit((data) => signIn({ identifier: data.email, password: data.password, token }))()
+    },
+    [handleSubmit, signIn]
+  )
 
   const onSubmit = useCallback(
     async (data: LoginFormData) => {
       if (!shouldDisableLoginButton) {
         setErrorMessage('')
         Keyboard.dismiss()
-        signIn({ identifier: data.email, password: data.password })
+        isRecaptchaEnabled
+          ? openReCaptchaChallenge()
+          : signIn({ identifier: data.email, password: data.password })
       }
     },
-    [shouldDisableLoginButton, signIn, setErrorMessage]
+    [shouldDisableLoginButton, isRecaptchaEnabled, setErrorMessage, openReCaptchaChallenge, signIn]
   )
 
   const onForgottenPasswordClick = useCallback(() => {
@@ -175,45 +214,56 @@ export const Login: FunctionComponent<Props> = memo(function Login(props) {
   }, [])
 
   return (
-    <SecondaryPageWithBlurHeader headerTitle="Connexion" shouldDisplayBackButton>
-      <Spacer.Column numberOfSpaces={6} />
-      <Typo.Title3 {...getHeadingAttrs(1)}>Connecte-toi</Typo.Title3>
-      <Spacer.Column numberOfSpaces={2} />
-      <Form.MaxWidth>
-        <InputError
-          visible={!!errorMessage}
-          messageId={errorMessage}
-          numberOfSpacesTop={5}
-          centered
+    <React.Fragment>
+      {!!isRecaptchaEnabled && (
+        <ReCaptcha
+          onClose={onReCaptchaClose}
+          onError={onReCaptchaError}
+          onExpire={onReCaptchaExpire}
+          onSuccess={onReCaptchaSuccess}
+          isVisible={isDoingReCaptchaChallenge}
         />
-        <Spacer.Column numberOfSpaces={7} />
-        <EmailInputController name="email" control={control} autoFocus isRequiredField />
+      )}
+      <SecondaryPageWithBlurHeader headerTitle="Connexion" shouldDisplayBackButton>
         <Spacer.Column numberOfSpaces={6} />
-        <PasswordInputController
-          name="password"
-          control={control}
-          onSubmitEditing={handleSubmit(onSubmit)}
-          isRequiredField
-        />
-        <Spacer.Column numberOfSpaces={5} />
-        <ButtonContainer>
-          <ButtonTertiaryBlack
-            wording="Mot de passe oublié&nbsp;?"
-            onPress={onForgottenPasswordClick}
-            icon={Key}
-            inline
+        <Typo.Title3 {...getHeadingAttrs(1)}>Connecte-toi</Typo.Title3>
+        <Spacer.Column numberOfSpaces={2} />
+        <Form.MaxWidth>
+          <InputError
+            visible={!!errorMessage}
+            messageId={errorMessage}
+            numberOfSpacesTop={5}
+            centered
           />
-        </ButtonContainer>
+          <Spacer.Column numberOfSpaces={7} />
+          <EmailInputController name="email" control={control} autoFocus isRequiredField />
+          <Spacer.Column numberOfSpaces={6} />
+          <PasswordInputController
+            name="password"
+            control={control}
+            onSubmitEditing={handleSubmit(onSubmit)}
+            isRequiredField
+          />
+          <Spacer.Column numberOfSpaces={5} />
+          <ButtonContainer>
+            <ButtonTertiaryBlack
+              wording="Mot de passe oublié&nbsp;?"
+              onPress={onForgottenPasswordClick}
+              icon={Key}
+              inline
+            />
+          </ButtonContainer>
+          <Spacer.Column numberOfSpaces={8} />
+          <ButtonPrimary
+            wording="Se connecter"
+            onPress={handleSubmit(onSubmit)}
+            disabled={shouldDisableLoginButton}
+          />
+        </Form.MaxWidth>
         <Spacer.Column numberOfSpaces={8} />
-        <ButtonPrimary
-          wording="Se connecter"
-          onPress={handleSubmit(onSubmit)}
-          disabled={shouldDisableLoginButton}
-        />
-      </Form.MaxWidth>
-      <Spacer.Column numberOfSpaces={8} />
-      <SignUpButton onAdditionalPress={onLogSignUpAnalytics} />
-    </SecondaryPageWithBlurHeader>
+        <SignUpButton onAdditionalPress={onLogSignUpAnalytics} />
+      </SecondaryPageWithBlurHeader>
+    </React.Fragment>
   )
 })
 

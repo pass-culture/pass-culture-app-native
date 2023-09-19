@@ -15,9 +15,9 @@ describe('<EduConnectValidation />', () => {
 
   it('should display user infos with props given', () => {
     render(<EduConnectValidation />)
-    expect(screen.getByText('John')).toBeTruthy()
-    expect(screen.getByText('Doe')).toBeTruthy()
-    expect(screen.getByText('28/01/1993')).toBeTruthy()
+    expect(screen.getByText('John')).toBeInTheDocument()
+    expect(screen.getByText('Doe')).toBeInTheDocument()
+    expect(screen.getByText('28/01/1993')).toBeInTheDocument()
   })
 
   describe('Accessibility', () => {

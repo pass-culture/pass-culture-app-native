@@ -36,7 +36,7 @@ describe('useGoBack()', () => {
     it('should return true if canGoBack = true', () => {
       mockCanGoBack = true
       const { result } = renderUseGoBack()
-      expect(result.current.canGoBack()).toBeTruthy()
+      expect(result.current.canGoBack()).toBe(true)
     })
 
     it.each([1, 2, 3])(

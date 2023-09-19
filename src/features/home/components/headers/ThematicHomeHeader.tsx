@@ -13,7 +13,7 @@ import { useCustomSafeInsets } from 'ui/theme/useCustomSafeInsets'
 
 type Props = {
   title?: string
-  headerTransition: Animated.AnimatedInterpolation
+  headerTransition: Animated.AnimatedInterpolation<string | number>
 }
 
 export const useGetThematicHeaderHeight = () => {

@@ -48,7 +48,7 @@ describe('<RootNavigator />', () => {
     renderRootNavigator()
     await act(async () => {}) // Warning: An update to BicolorFavoriteCount inside a test was not wrapped in act(...).
     const privacyPolicyTitle = screen.queryByText('Respect de ta vie privée')
-    expect(privacyPolicyTitle).toBeFalsy()
+    expect(privacyPolicyTitle).not.toBeInTheDocument()
   })
 
   it('should display PrivacyPolicy if splash screen is hidden', async () => {
@@ -57,7 +57,7 @@ describe('<RootNavigator />', () => {
     renderRootNavigator()
 
     const privacyPolicyTitle = await screen.findByText('Respect de ta vie privée')
-    expect(privacyPolicyTitle).toBeTruthy()
+    expect(privacyPolicyTitle).toBeInTheDocument()
   })
 
   it('should display quick access button if show tabBar and current route is TabNavigator', async () => {
@@ -65,7 +65,7 @@ describe('<RootNavigator />', () => {
 
     renderRootNavigator()
     await act(async () => {})
-    expect(await screen.findByText('Accéder au menu de navigation')).toBeTruthy()
+    expect(await screen.findByText('Accéder au menu de navigation')).toBeInTheDocument()
   })
 
   it('should not display quick access button if current route is not TabNavigator', async () => {
@@ -77,7 +77,7 @@ describe('<RootNavigator />', () => {
     await screen.findByText('Respect de ta vie privée')
 
     const quickAccessButton = screen.queryByText('Accéder au menu de navigation')
-    expect(quickAccessButton).toBeNull()
+    expect(quickAccessButton).not.toBeInTheDocument()
   })
 })
 

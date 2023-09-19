@@ -4,6 +4,7 @@ import styled from 'styled-components/native'
 
 import { UseNavigationType, UseRouteType } from 'features/navigation/RootNavigator/types'
 import { useSuspendForSuspiciousLoginMutation } from 'features/trustedDevice/helpers/useSuspendForSuspiciousLoginMutation'
+import { analytics } from 'libs/analytics'
 import { env } from 'libs/environment'
 import { eventMonitoring } from 'libs/monitoring'
 import { BulletListItem } from 'ui/components/BulletListItem'
@@ -91,11 +92,16 @@ export const SuspensionChoice = () => {
           wording="Contacter le service fraude"
           accessibilityLabel="Ouvrir le gestionnaire mail pour contacter le service fraude"
           icon={EmailFilled}
+          onBeforeNavigate={onPressContactFraudTeam}
           externalNav={{ url: `mailto:${env.FRAUD_EMAIL_ADDRESS}` }}
         />
       </ButtonContainer>
     </GenericInfoPageWhite>
   )
+}
+
+const onPressContactFraudTeam = () => {
+  analytics.logContactFraudTeam({ from: 'suspensionchoice' })
 }
 
 const ButtonContainer = styled.View({

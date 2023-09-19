@@ -4,19 +4,18 @@
 #-- Additional details from server: App Engine APIs are not enabled, please add app_engine_apis: true to your app.yaml to enable.
 app_engine_apis: true
 
-# Set the service name matching the one instanciated in terraform
+# Set the service name matching the one instantiated in terraform
 service: web-proxy
 
-runtime: nodejs16
+runtime: nodejs18
 
 instance_class: F2
 
 # Add secure: always to have the HTTPS
 handlers:
-- url: .*
-  secure: always
-  script: auto
+  - url: .*
+    secure: always
+    script: auto
 
 automatic_scaling:
   max_instances: 20
-

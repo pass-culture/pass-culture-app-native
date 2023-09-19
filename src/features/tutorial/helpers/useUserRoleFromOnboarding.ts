@@ -1,6 +1,6 @@
 import { useState } from 'react'
 
-import { NonEligible, UserOnboardingRole } from 'features/tutorial/types'
+import { NonEligible, UserOnboardingRole } from 'features/tutorial/enums'
 import { storage } from 'libs/storage'
 
 export const useUserRoleFromOnboarding = () => {

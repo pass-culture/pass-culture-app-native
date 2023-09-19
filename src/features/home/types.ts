@@ -41,8 +41,8 @@ export type HighlightThematicHeader = {
   endingDate: Date
   introductionTitle?: string
   introductionParagraph?: string
-  gradientTranslation?: Animated.AnimatedInterpolation
-  imageAnimatedHeight?: Animated.AnimatedInterpolation
+  gradientTranslation?: Animated.AnimatedInterpolation<string | number>
+  imageAnimatedHeight?: Animated.AnimatedInterpolation<string | number>
 }
 
 export type CategoryThematicHeader = {

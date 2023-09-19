@@ -8,8 +8,6 @@ updates:
       - dependency-name: 'react-native'
       - dependency-name: 'react'
       - dependency-name: 'react-native-web'
-      - dependency-name: '*'
-        update-types: ['version-update:semver-major']
     commit-message:
       prefix: '(BSR) chore(deps):'
     reviewers:
@@ -21,9 +19,6 @@ updates:
     directory: '/'
     schedule:
       interval: 'weekly'
-    ignore:
-      - dependency-name: '*'
-        update-types: ['version-update:semver-major']
     commit-message:
       prefix: '(BSR) chore(deps):'
     reviewers:

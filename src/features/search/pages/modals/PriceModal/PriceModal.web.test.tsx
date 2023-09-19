@@ -24,7 +24,7 @@ describe('<PriceModal/>', () => {
     const pageHeader = screen.getByTestId('pageHeader')
 
     await act(async () => {
-      expect(pageHeader).toBeTruthy()
+      expect(pageHeader).toBeInTheDocument()
     })
   })
 

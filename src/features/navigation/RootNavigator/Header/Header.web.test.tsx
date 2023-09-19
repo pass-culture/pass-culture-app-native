@@ -41,20 +41,20 @@ jest.mock('features/navigation/RootNavigator/routes', () => ({
 describe('Header', () => {
   it('should render Header without Bookings item for non-beneficiary and logged out users', () => {
     renderHeader({ isLoggedIn: false, isBeneficiary: false })
-    expect(screen.queryByText('Accueil')).toBeTruthy()
-    expect(screen.queryByText('Recherche')).toBeTruthy()
-    expect(screen.queryByText('Réservations')).toBeFalsy()
-    expect(screen.queryByText('Favoris')).toBeTruthy()
-    expect(screen.queryByText('Profil')).toBeTruthy()
+    expect(screen.queryByText('Accueil')).toBeInTheDocument()
+    expect(screen.queryByText('Recherche')).toBeInTheDocument()
+    expect(screen.queryByText('Réservations')).not.toBeInTheDocument()
+    expect(screen.queryByText('Favoris')).toBeInTheDocument()
+    expect(screen.queryByText('Profil')).toBeInTheDocument()
   })
 
   it('should render Header without Bookings item for non-beneficiary and logged in users', () => {
     renderHeader({ isLoggedIn: false, isBeneficiary: false })
-    expect(screen.queryByText('Accueil')).toBeTruthy()
-    expect(screen.queryByText('Recherche')).toBeTruthy()
-    expect(screen.queryByText('Réservations')).toBeFalsy()
-    expect(screen.queryByText('Favoris')).toBeTruthy()
-    expect(screen.queryByText('Profil')).toBeTruthy()
+    expect(screen.queryByText('Accueil')).toBeInTheDocument()
+    expect(screen.queryByText('Recherche')).toBeInTheDocument()
+    expect(screen.queryByText('Réservations')).not.toBeInTheDocument()
+    expect(screen.queryByText('Favoris')).toBeInTheDocument()
+    expect(screen.queryByText('Profil')).toBeInTheDocument()
   })
 
   it('should render Header for beneficiary and logged in users', async () => {
@@ -62,11 +62,11 @@ describe('Header', () => {
 
     await act(async () => {}) // Warning: An update to BicolorFavoriteCount inside a test was not wrapped in act(...).
 
-    expect(screen.getByText('Accueil')).toBeTruthy()
-    expect(screen.getByText('Recherche')).toBeTruthy()
-    expect(screen.getByText('Réservations')).toBeTruthy()
-    expect(screen.getByText('Favoris')).toBeTruthy()
-    expect(screen.getByText('Profil')).toBeTruthy()
+    expect(screen.getByText('Accueil')).toBeInTheDocument()
+    expect(screen.getByText('Recherche')).toBeInTheDocument()
+    expect(screen.getByText('Réservations')).toBeInTheDocument()
+    expect(screen.getByText('Favoris')).toBeInTheDocument()
+    expect(screen.getByText('Profil')).toBeInTheDocument()
   })
 
   it('should identify one tab as current page', async () => {

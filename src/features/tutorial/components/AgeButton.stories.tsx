@@ -3,6 +3,7 @@ import { ComponentMeta, ComponentStory } from '@storybook/react'
 import React from 'react'
 import styled from 'styled-components/native'
 
+import { TutorialTypes } from 'features/tutorial/enums'
 import { selectArgTypeFromObject } from 'libs/storybook/selectArgTypeFromObject'
 import { All } from 'ui/svg/icons/bicolor/All'
 import { Spacer, Typo } from 'ui/theme'
@@ -61,7 +62,7 @@ const WithIcon = Template.bind({})
 WithIcon.args = {
   children: TextExample({}),
   icon: BicolorAll,
-  navigateTo: { screen: 'AgeSelection', params: { type: 'onboarding' } },
+  navigateTo: { screen: 'AgeSelection', params: { type: TutorialTypes.ONBOARDING } },
 }
 
 // TODO(PC-17931): Fix this story
@@ -69,7 +70,7 @@ const WithoutIcon = Template.bind({})
 WithoutIcon.args = {
   children: TextExample({}),
   icon: undefined,
-  navigateTo: { screen: 'AgeSelection', params: { type: 'onboarding' } },
+  navigateTo: { screen: 'AgeSelection', params: { type: TutorialTypes.ONBOARDING } },
 }
 
 // TODO(PC-17931): Fix this story
@@ -77,7 +78,7 @@ const WithSubtitle = Template.bind({})
 WithSubtitle.args = {
   children: TextExample({ withSubtitle: true }),
   icon: BicolorAll,
-  navigateTo: { screen: 'AgeSelection', params: { type: 'onboarding' } },
+  navigateTo: { screen: 'AgeSelection', params: { type: TutorialTypes.ONBOARDING } },
 }
 
 // TODO(PC-17931): Fix this story
@@ -86,7 +87,7 @@ Dense.args = {
   children: TextExample({}),
   icon: BicolorAll,
   dense: true,
-  navigateTo: { screen: 'AgeSelection', params: { type: 'onboarding' } },
+  navigateTo: { screen: 'AgeSelection', params: { type: TutorialTypes.ONBOARDING } },
 }
 
 // TODO(PC-17931): Fix this story
@@ -95,7 +96,7 @@ DenseWithSubtitle.args = {
   children: TextExample({ withSubtitle: true }),
   icon: BicolorAll,
   dense: true,
-  navigateTo: { screen: 'AgeSelection', params: { type: 'onboarding' } },
+  navigateTo: { screen: 'AgeSelection', params: { type: TutorialTypes.ONBOARDING } },
 }
 
 // TODO(PC-17931): Fix this story
@@ -104,5 +105,5 @@ DenseWithoutIcon.args = {
   children: TextExample({}),
   dense: true,
   icon: undefined,
-  navigateTo: { screen: 'AgeSelection', params: { type: 'onboarding' } },
+  navigateTo: { screen: 'AgeSelection', params: { type: TutorialTypes.ONBOARDING } },
 }
