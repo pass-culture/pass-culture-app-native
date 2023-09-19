@@ -6,10 +6,9 @@ import { Coordinates, SearchGroupNameEnumv2, SearchGroupResponseModelv2 } from '
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { useAlgoliaSimilarOffers } from 'features/offer/api/useAlgoliaSimilarOffers'
 import { getAlgoliaRecommendParams } from 'features/offer/helpers/getAlgoliaRecommendParams/getAlgoliaRecommendParams'
+import { getIsLoadedOfferPosition } from 'features/offer/helpers/getIsLoadedOfferPosition/getIsLoadedOfferPosition'
 import { SimilarOffersResponse } from 'features/offer/types'
 import { env } from 'libs/environment'
-// eslint-disable-next-line no-restricted-imports
-import { firebaseAnalytics } from 'libs/firebase/analytics'
 import { eventMonitoring } from 'libs/monitoring'
 import { useSubcategories } from 'libs/subcategories/useSubcategories'
 
@@ -56,52 +55,52 @@ export const getAlgoliaRelatedProducts = async (
   queryParameters: RecommendSearchOptions,
   fallbackParameters: RecommendSearchOptions
 ) => {
-  const relatedProducts = await getRelatedProducts({
-    recommendClient,
-    indexName,
-    objectIDs: [String(offerId)],
-    queryParameters,
-    fallbackParameters,
-  })
-    .then((response) => response.recommendations)
-    .then((recommendations) => recommendations.map((recommendation) => recommendation.objectID))
-    .catch(eventMonitoring.captureException)
-
-  return typeof relatedProducts === 'string' ? [relatedProducts] : relatedProducts || []
+  try {
+    const relatedProducts = await getRelatedProducts({
+      recommendClient,
+      indexName,
+      objectIDs: [String(offerId)],
+      queryParameters,
+      fallbackParameters,
+    })
+    const recommendations = relatedProducts.recommendations
+    const objectIDs = recommendations.map((recommendation) => recommendation.objectID)
+    return typeof objectIDs === 'string' ? [objectIDs] : objectIDs || []
+  } catch (e) {
+    eventMonitoring.captureException(e)
+    return []
+  }
 }
 
 export const getAlgoliaFrequentlyBoughtTogether = async (
   offerId: string,
   queryParameters: RecommendSearchOptions
 ) => {
-  const frequentlyBoughtTogether = await getFrequentlyBoughtTogether({
-    recommendClient,
-    indexName,
-    objectIDs: [String(offerId)],
-    queryParameters,
-  })
-    .then((response) => response.recommendations)
-    .then((recommendations) => recommendations.map((recommendation) => recommendation.objectID))
-    .catch(eventMonitoring.captureException)
-
-  return typeof frequentlyBoughtTogether === 'string'
-    ? [frequentlyBoughtTogether]
-    : frequentlyBoughtTogether || []
+  try {
+    const frequentlyBoughtTogether = await getFrequentlyBoughtTogether({
+      recommendClient,
+      indexName,
+      objectIDs: [String(offerId)],
+      queryParameters,
+    })
+    const recommendations = frequentlyBoughtTogether.recommendations
+    const objectIDs = recommendations.map((recommendation) => recommendation.objectID)
+    return typeof objectIDs === 'string' ? [objectIDs] : objectIDs || []
+  } catch (e) {
+    eventMonitoring.captureException(e)
+    return []
+  }
 }
 
 export const getApiRecoSimilarOffers = async (similarOffersEndpoint: string) => {
-  const similarOffers = await fetch(similarOffersEndpoint)
-    .then((response) => response.json())
-    .then((data: SimilarOffersResponse) => {
-      firebaseAnalytics.setDefaultEventParameters(data.params)
-      return data.results
-    })
-    .catch((e) => {
-      eventMonitoring.captureException(e)
-      return undefined
-    })
-
-  return similarOffers
+  try {
+    const similarOffers = await fetch(similarOffersEndpoint)
+    const json: SimilarOffersResponse = await similarOffers.json()
+    return json
+  } catch (e) {
+    eventMonitoring.captureException(e)
+    return undefined
+  }
 }
 
 export const getCategories = (
@@ -141,11 +140,10 @@ export const useSimilarOffers = ({
 
   const { user: profile } = useAuthContext()
   // API called when offer position loaded
-  const isLoadedOfferPosition = Boolean(
-    position?.latitude !== undefined && position?.longitude !== undefined
-  )
+  const isLoadedOfferPosition = getIsLoadedOfferPosition(position)
   const similarOffersEndpoint = getSimilarOffersEndpoint(offerId, profile?.id, position, categories)
   const [similarOffersIds, setSimilarOffersIds] = useState<string[]>()
+  const [apiRecoResponse, setApiRecoResponse] = useState<SimilarOffersResponse>()
 
   const fetchAlgolia = useCallback(async () => {
     if (!offerId || (categoryIncluded && !isLoadedOfferPosition)) return
@@ -159,7 +157,7 @@ export const useSimilarOffers = ({
 
   const fetchApiReco = useCallback(async () => {
     if (!similarOffersEndpoint || !isLoadedOfferPosition) return
-    setSimilarOffersIds(await getApiRecoSimilarOffers(similarOffersEndpoint))
+    setApiRecoResponse(await getApiRecoSimilarOffers(similarOffersEndpoint))
   }, [isLoadedOfferPosition, similarOffersEndpoint])
 
   useEffect(() => {
@@ -174,5 +172,11 @@ export const useSimilarOffers = ({
     fetchSimilarOffers()
   }, [fetchAlgolia, fetchApiReco, shouldUseAlgoliaRecommend])
 
-  return useAlgoliaSimilarOffers(similarOffersIds ?? [], true)
+  return {
+    similarOffers: useAlgoliaSimilarOffers(
+      (shouldUseAlgoliaRecommend ? similarOffersIds : apiRecoResponse?.results) ?? [],
+      true
+    ),
+    apiRecoParams: apiRecoResponse?.params,
+  }
 }

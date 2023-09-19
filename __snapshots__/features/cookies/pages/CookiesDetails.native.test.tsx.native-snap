@@ -26,7 +26,19 @@ exports[`<CookiesDetails/> should render correctly 1`] = `
         accessibilityRole="button"
         accessibilityState={
           {
+            "busy": undefined,
+            "checked": undefined,
+            "disabled": undefined,
             "expanded": false,
+            "selected": undefined,
+          }
+        }
+        accessibilityValue={
+          {
+            "max": undefined,
+            "min": undefined,
+            "now": undefined,
+            "text": undefined,
           }
         }
         accessible={false}
@@ -297,8 +309,19 @@ exports[`<CookiesDetails/> should render correctly 1`] = `
           accessibilityRole="checkbox"
           accessibilityState={
             {
+              "busy": undefined,
               "checked": false,
               "disabled": false,
+              "expanded": undefined,
+              "selected": undefined,
+            }
+          }
+          accessibilityValue={
+            {
+              "max": undefined,
+              "min": undefined,
+              "now": undefined,
+              "text": undefined,
             }
           }
           accessible={false}
@@ -425,8 +448,19 @@ exports[`<CookiesDetails/> should render correctly 1`] = `
           accessibilityRole="checkbox"
           accessibilityState={
             {
+              "busy": undefined,
               "checked": false,
               "disabled": false,
+              "expanded": undefined,
+              "selected": undefined,
+            }
+          }
+          accessibilityValue={
+            {
+              "max": undefined,
+              "min": undefined,
+              "now": undefined,
+              "text": undefined,
             }
           }
           accessible={false}
@@ -502,7 +536,19 @@ exports[`<CookiesDetails/> should render correctly 1`] = `
       accessibilityRole="button"
       accessibilityState={
         {
+          "busy": undefined,
+          "checked": undefined,
+          "disabled": undefined,
           "expanded": false,
+          "selected": undefined,
+        }
+      }
+      accessibilityValue={
+        {
+          "max": undefined,
+          "min": undefined,
+          "now": undefined,
+          "text": undefined,
         }
       }
       accessible={false}
@@ -768,8 +814,19 @@ exports[`<CookiesDetails/> should render correctly 1`] = `
           accessibilityRole="checkbox"
           accessibilityState={
             {
+              "busy": undefined,
               "checked": false,
               "disabled": false,
+              "expanded": undefined,
+              "selected": undefined,
+            }
+          }
+          accessibilityValue={
+            {
+              "max": undefined,
+              "min": undefined,
+              "now": undefined,
+              "text": undefined,
             }
           }
           accessible={false}
@@ -845,7 +902,19 @@ exports[`<CookiesDetails/> should render correctly 1`] = `
       accessibilityRole="button"
       accessibilityState={
         {
+          "busy": undefined,
+          "checked": undefined,
+          "disabled": undefined,
           "expanded": false,
+          "selected": undefined,
+        }
+      }
+      accessibilityValue={
+        {
+          "max": undefined,
+          "min": undefined,
+          "now": undefined,
+          "text": undefined,
         }
       }
       accessible={false}
@@ -1111,8 +1180,19 @@ exports[`<CookiesDetails/> should render correctly 1`] = `
           accessibilityRole="checkbox"
           accessibilityState={
             {
+              "busy": undefined,
               "checked": false,
               "disabled": false,
+              "expanded": undefined,
+              "selected": undefined,
+            }
+          }
+          accessibilityValue={
+            {
+              "max": undefined,
+              "min": undefined,
+              "now": undefined,
+              "text": undefined,
             }
           }
           accessible={false}
@@ -1188,7 +1268,19 @@ exports[`<CookiesDetails/> should render correctly 1`] = `
       accessibilityRole="button"
       accessibilityState={
         {
+          "busy": undefined,
+          "checked": undefined,
+          "disabled": undefined,
           "expanded": false,
+          "selected": undefined,
+        }
+      }
+      accessibilityValue={
+        {
+          "max": undefined,
+          "min": undefined,
+          "now": undefined,
+          "text": undefined,
         }
       }
       accessible={false}
@@ -1454,8 +1546,19 @@ exports[`<CookiesDetails/> should render correctly 1`] = `
           accessibilityRole="checkbox"
           accessibilityState={
             {
+              "busy": undefined,
               "checked": true,
               "disabled": true,
+              "expanded": undefined,
+              "selected": undefined,
+            }
+          }
+          accessibilityValue={
+            {
+              "max": undefined,
+              "min": undefined,
+              "now": undefined,
+              "text": undefined,
             }
           }
           accessible={false}
@@ -1534,7 +1637,19 @@ exports[`<CookiesDetails/> should render correctly 1`] = `
       accessibilityRole="button"
       accessibilityState={
         {
+          "busy": undefined,
+          "checked": undefined,
+          "disabled": undefined,
           "expanded": false,
+          "selected": undefined,
+        }
+      }
+      accessibilityValue={
+        {
+          "max": undefined,
+          "min": undefined,
+          "now": undefined,
+          "text": undefined,
         }
       }
       accessible={false}
@@ -1855,6 +1970,23 @@ exports[`<CookiesDetails/> should render correctly 1`] = `
       <View
         accessibilityLabel="Politique de gestion des cookies"
         accessibilityRole="link"
+        accessibilityState={
+          {
+            "busy": undefined,
+            "checked": undefined,
+            "disabled": undefined,
+            "expanded": undefined,
+            "selected": undefined,
+          }
+        }
+        accessibilityValue={
+          {
+            "max": undefined,
+            "min": undefined,
+            "now": undefined,
+            "text": undefined,
+          }
+        }
         accessible={true}
         collapsable={false}
         focusable={true}

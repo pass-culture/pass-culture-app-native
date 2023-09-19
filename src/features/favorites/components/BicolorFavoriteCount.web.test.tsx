@@ -20,34 +20,34 @@ const mockUseNetInfoContext = useNetInfoContextDefault as jest.Mock
 describe('BicolorFavoriteCount component', () => {
   it('should render non connected icon', async () => {
     renderBicolorFavoriteCount({ isLoggedIn: false })
-    expect(screen.queryByTestId('bicolor-favorite-count')).toBeFalsy()
+    expect(screen.queryByTestId('bicolor-favorite-count')).not.toBeInTheDocument()
   })
 
   it('should render connected icon', async () => {
     renderBicolorFavoriteCount({ isLoggedIn: true })
     await waitFor(() => {
-      expect(screen.getByTestId('bicolor-favorite-count')).toBeTruthy()
+      expect(screen.getByTestId('bicolor-favorite-count')).toBeInTheDocument()
     })
   })
 
   it('should show 99+ badge when nbFavorites is greater than or equal to 100', async () => {
     renderBicolorFavoriteCount({ isLoggedIn: true, count: 10000 })
     await waitFor(() => {
-      expect(screen.getByText('99')).toBeTruthy()
+      expect(screen.getByText('99')).toBeInTheDocument()
     })
   })
 
   it('should show nbFavorites within badge', async () => {
     renderBicolorFavoriteCount({ isLoggedIn: true })
     await waitFor(() => {
-      expect(screen.getByText(defaultOptions.count.toString())).toBeTruthy()
+      expect(screen.getByText(defaultOptions.count.toString())).toBeInTheDocument()
     })
   })
 
   it('should show 0 within badge when no favorite', async () => {
     renderBicolorFavoriteCount({ isLoggedIn: true, count: 0 })
     await waitFor(() => {
-      expect(screen.getByText('0')).toBeTruthy()
+      expect(screen.getByText('0')).toBeInTheDocument()
     })
   })
 
@@ -55,7 +55,7 @@ describe('BicolorFavoriteCount component', () => {
     mockUseNetInfoContext.mockReturnValueOnce({ isConnected: false })
     mockUseNetInfoContext.mockReturnValueOnce({ isConnected: false })
     renderBicolorFavoriteCount({ isLoggedIn: true, count: 10 })
-    expect(screen.queryByTestId('bicolor-favorite-count')).toBeFalsy()
+    expect(screen.queryByTestId('bicolor-favorite-count')).not.toBeInTheDocument()
   })
 })
 

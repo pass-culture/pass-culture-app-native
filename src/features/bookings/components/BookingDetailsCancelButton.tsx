@@ -32,7 +32,7 @@ export const BookingDetailsCancelButton = (props: BookingDetailsCancelButtonProp
   const isDigitalBooking = booking.stock.offer.isDigital === true && !booking.expirationDate
   const isFreeOfferToArchive =
     FREE_OFFER_CATEGORIES_TO_ARCHIVE.includes(booking.stock.offer.subcategoryId) &&
-    booking.stock.price === 0
+    booking.totalAmount === 0
 
   const renderButton = () => {
     if (properties.hasActivationCode) {

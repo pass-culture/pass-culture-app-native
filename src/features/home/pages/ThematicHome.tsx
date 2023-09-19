@@ -18,7 +18,7 @@ import { Spacer } from 'ui/theme'
 
 const ANIMATED_HEADER_PLACEHOLDER_HEIGHT = 76
 interface Props {
-  headerTransition: Animated.AnimatedInterpolation
+  headerTransition: Animated.AnimatedInterpolation<string | number>
   thematicHeader?: ThematicHeader
 }
 

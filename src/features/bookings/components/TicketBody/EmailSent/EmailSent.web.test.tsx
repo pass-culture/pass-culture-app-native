@@ -9,7 +9,7 @@ describe('<EmailSent/>', () => {
   it('should not display the button "Consulter mes e-mails"', async () => {
     render(<EmailSent offerDate={offerDate} />)
     await waitFor(() => {
-      expect(screen.queryByTestId('Consulter mes e-mails')).toBeFalsy()
+      expect(screen.queryByTestId('Consulter mes e-mails')).not.toBeInTheDocument()
     })
   })
 })

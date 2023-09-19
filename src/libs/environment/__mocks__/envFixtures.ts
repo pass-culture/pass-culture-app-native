@@ -60,6 +60,8 @@ export const env: Environment = {
   RECOMMENDATION_TOKEN: 'recommmendation-token',
   RESIZE_IMAGE_ON_DEMAND_URL: 'https://image-resizing-dot-passculture-metier-ehp.ew.r.appspot.com',
   SENTRY_DSN: 'SENTRY_DSN',
+  SENTRY_PROFILES_SAMPLE_RATE: '1.0',
+  SENTRY_TRACES_SAMPLE_RATE: '1.0',
   SIGNIN_IDENTIFIER: '',
   SIGNIN_PASSWORD: '',
   SIGNUP_POSTAL_CODE: '',

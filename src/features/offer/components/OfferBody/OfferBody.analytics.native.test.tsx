@@ -1,5 +1,5 @@
 import React from 'react'
-import { Linking } from 'react-native'
+import { Linking, Share } from 'react-native'
 import { ReactTestInstance } from 'react-test-renderer'
 
 import { SubcategoryIdEnum } from 'api/gen'
@@ -19,6 +19,8 @@ import { act, fireEvent, render, screen } from 'tests/utils'
 import { Network } from 'ui/components/ShareMessagingApp'
 
 const canOpenURLSpy = jest.spyOn(Linking, 'canOpenURL')
+
+jest.spyOn(Share, 'share').mockResolvedValue({ action: Share.sharedAction })
 
 jest.mock('features/auth/context/AuthContext')
 

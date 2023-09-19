@@ -164,23 +164,49 @@ describe('<BookingDetailsCancelButton />', () => {
   })
 
   describe("When it's a free offer category to archieve", () => {
-    it('should display expiration date message', () => {
+    it('should display expiration date message when current price and price at booking time is 0', () => {
       const booking = { ...bookingsSnap.ongoing_bookings[0] }
       booking.confirmationDate = null
       booking.stock.offer.isDigital = false
       booking.stock.offer.subcategoryId = SubcategoryIdEnum.ABO_MUSEE
       booking.stock.price = 0
+      booking.totalAmount = 0
 
       renderBookingDetailsCancelButton(booking)
       expect(screen.getByText('Ta réservation sera archivée le 17/03/2021')).toBeOnTheScreen()
     })
 
-    it('should not display cancel button', () => {
+    it('should not display cancel button when current price and price at booking time is 0', () => {
       const booking = { ...bookingsSnap.ongoing_bookings[0] }
       booking.confirmationDate = null
       booking.stock.offer.isDigital = false
       booking.stock.offer.subcategoryId = SubcategoryIdEnum.ABO_MUSEE
       booking.stock.price = 0
+      booking.totalAmount = 0
+
+      renderBookingDetailsCancelButton(booking)
+      expect(screen.queryByTestId('Annuler ma réservation')).not.toBeOnTheScreen()
+    })
+
+    it('should display expiration date message when current price > 0 and price at booking is 0', () => {
+      const booking = { ...bookingsSnap.ongoing_bookings[0] }
+      booking.confirmationDate = null
+      booking.stock.offer.isDigital = false
+      booking.stock.offer.subcategoryId = SubcategoryIdEnum.ABO_MUSEE
+      booking.stock.price = 1000
+      booking.totalAmount = 0
+
+      renderBookingDetailsCancelButton(booking)
+      expect(screen.getByText('Ta réservation sera archivée le 17/03/2021')).toBeOnTheScreen()
+    })
+
+    it('should not display cancel button when current price > 0 and price at booking is 0', () => {
+      const booking = { ...bookingsSnap.ongoing_bookings[0] }
+      booking.confirmationDate = null
+      booking.stock.offer.isDigital = false
+      booking.stock.offer.subcategoryId = SubcategoryIdEnum.ABO_MUSEE
+      booking.stock.price = 1000
+      booking.totalAmount = 0
 
       renderBookingDetailsCancelButton(booking)
       expect(screen.queryByTestId('Annuler ma réservation')).not.toBeOnTheScreen()

@@ -1,9 +1,8 @@
 import React, { FunctionComponent } from 'react'
-import styled from 'styled-components/native'
+import styled, { useTheme } from 'styled-components/native'
 
 import { AuthenticationButton } from 'features/auth/components/AuthenticationButton/AuthenticationButton'
 import { analytics } from 'libs/analytics'
-import { theme } from 'theme'
 import { ButtonWithLinearGradient } from 'ui/components/buttons/buttonWithLinearGradient/ButtonWithLinearGradient'
 import { AppModalWithIllustration } from 'ui/components/modals/AppModalWithIllustration'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
@@ -22,6 +21,8 @@ export const SignUpSignInChoiceOfferModal: FunctionComponent<Props> = ({
   offerId,
   dismissModal,
 }) => {
+  const theme = useTheme()
+
   return (
     <AppModalWithIllustration
       visible={visible}

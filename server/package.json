@@ -14,7 +14,7 @@
     "url": "https://github.com/pass-culture/pass-culture-app-native.git"
   },
   "engines": {
-    "node": "16"
+    "node": "18"
   },
   "scripts": {
     "build": "tsc --build",
@@ -59,7 +59,7 @@
     "eslint-plugin-import": "^2.22.1",
     "eslint-plugin-local-rules": "^1.1.0",
     "eslint-plugin-prettier": "^3.1.4",
-    "eslint-plugin-typescript-sort-keys": "^1.8.0",
+    "eslint-plugin-typescript-sort-keys": "^2.3.0",
     "jest": "^27.5.1",
     "msw": "^0.49.0",
     "node-dev": "^7.4.2",

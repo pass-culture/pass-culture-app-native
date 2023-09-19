@@ -5,6 +5,23 @@ exports[`VenueTile component should render correctly 1`] = `
   <View
     accessibilityLabel="Lieu Le Petit Rintintin 1 du type Salle de projections, "
     accessibilityRole="link"
+    accessibilityState={
+      {
+        "busy": undefined,
+        "checked": undefined,
+        "disabled": undefined,
+        "expanded": undefined,
+        "selected": undefined,
+      }
+    }
+    accessibilityValue={
+      {
+        "max": undefined,
+        "min": undefined,
+        "now": undefined,
+        "text": undefined,
+      }
+    }
     accessible={true}
     collapsable={false}
     focusable={true}

@@ -190,6 +190,23 @@ exports[`<EighteenBirthdayCard /> should render eighteen birthday card 1`] = `
     >
       <View
         accessibilityLabel="Confirmer mes informations"
+        accessibilityState={
+          {
+            "busy": undefined,
+            "checked": undefined,
+            "disabled": undefined,
+            "expanded": undefined,
+            "selected": undefined,
+          }
+        }
+        accessibilityValue={
+          {
+            "max": undefined,
+            "min": undefined,
+            "now": undefined,
+            "text": undefined,
+          }
+        }
         accessible={true}
         collapsable={false}
         focusable={true}
@@ -253,6 +270,23 @@ exports[`<EighteenBirthdayCard /> should render eighteen birthday card 1`] = `
     >
       <View
         accessibilityLabel="Plus tard"
+        accessibilityState={
+          {
+            "busy": undefined,
+            "checked": undefined,
+            "disabled": undefined,
+            "expanded": undefined,
+            "selected": undefined,
+          }
+        }
+        accessibilityValue={
+          {
+            "max": undefined,
+            "min": undefined,
+            "now": undefined,
+            "text": undefined,
+          }
+        }
         accessible={true}
         collapsable={false}
         focusable={false}

@@ -41,21 +41,21 @@ describe('Bookings', () => {
   it('should display the right number of ongoing bookings', async () => {
     renderBookings(bookingsSnap)
 
-    expect(await screen.findByText('2 réservations en cours')).toBeTruthy()
+    expect(await screen.findByText('2 réservations en cours')).toBeInTheDocument()
   })
 
   it('should display the empty bookings dedicated view', async () => {
     renderBookings(emptyBookingsSnap)
 
-    expect(await screen.findByText('Découvrir le catalogue')).toBeTruthy()
+    expect(await screen.findByText('Découvrir le catalogue')).toBeInTheDocument()
   })
 
   it('should display ended bookings CTA with the right number', async () => {
     renderBookings(bookingsSnap)
 
     await waitFor(() => {
-      expect(screen.queryByText('1')).toBeTruthy()
-      expect(screen.queryByText('Réservation terminée')).toBeTruthy()
+      expect(screen.queryByText('1')).toBeInTheDocument()
+      expect(screen.queryByText('Réservation terminée')).toBeInTheDocument()
     })
   })
 

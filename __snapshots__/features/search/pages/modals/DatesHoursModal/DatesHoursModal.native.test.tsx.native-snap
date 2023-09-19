@@ -33,6 +33,15 @@ exports[`<DatesHoursModal/> should render modal correctly after animation and wi
   visible={true}
 >
   <View
+    accessibilityState={
+      {
+        "busy": undefined,
+        "checked": undefined,
+        "disabled": undefined,
+        "expanded": undefined,
+        "selected": undefined,
+      }
+    }
     accessible={true}
     collapsable={false}
     focusable={true}
@@ -267,6 +276,23 @@ exports[`<DatesHoursModal/> should render modal correctly after animation and wi
                   <View
                     accessibilityLabel="Fermer"
                     accessibilityRole="button"
+                    accessibilityState={
+                      {
+                        "busy": undefined,
+                        "checked": undefined,
+                        "disabled": undefined,
+                        "expanded": undefined,
+                        "selected": undefined,
+                      }
+                    }
+                    accessibilityValue={
+                      {
+                        "max": undefined,
+                        "min": undefined,
+                        "now": undefined,
+                        "text": undefined,
+                      }
+                    }
                     accessible={true}
                     collapsable={false}
                     focusable={true}
@@ -471,8 +497,19 @@ exports[`<DatesHoursModal/> should render modal correctly after animation and wi
                       accessibilityRole="checkbox"
                       accessibilityState={
                         {
+                          "busy": undefined,
                           "checked": false,
                           "disabled": false,
+                          "expanded": undefined,
+                          "selected": undefined,
+                        }
+                      }
+                      accessibilityValue={
+                        {
+                          "max": undefined,
+                          "min": undefined,
+                          "now": undefined,
+                          "text": undefined,
                         }
                       }
                       accessible={false}
@@ -676,8 +713,19 @@ exports[`<DatesHoursModal/> should render modal correctly after animation and wi
                       accessibilityRole="checkbox"
                       accessibilityState={
                         {
+                          "busy": undefined,
                           "checked": false,
                           "disabled": false,
+                          "expanded": undefined,
+                          "selected": undefined,
+                        }
+                      }
+                      accessibilityValue={
+                        {
+                          "max": undefined,
+                          "min": undefined,
+                          "now": undefined,
+                          "text": undefined,
                         }
                       }
                       accessible={false}
@@ -808,6 +856,23 @@ exports[`<DatesHoursModal/> should render modal correctly after animation and wi
           >
             <View
               accessibilityLabel="Réinitialiser"
+              accessibilityState={
+                {
+                  "busy": undefined,
+                  "checked": undefined,
+                  "disabled": undefined,
+                  "expanded": undefined,
+                  "selected": undefined,
+                }
+              }
+              accessibilityValue={
+                {
+                  "max": undefined,
+                  "min": undefined,
+                  "now": undefined,
+                  "text": undefined,
+                }
+              }
               accessible={true}
               collapsable={false}
               focusable={true}
@@ -891,7 +956,19 @@ exports[`<DatesHoursModal/> should render modal correctly after animation and wi
               accessibilityLabel="Rechercher"
               accessibilityState={
                 {
+                  "busy": undefined,
+                  "checked": undefined,
                   "disabled": false,
+                  "expanded": undefined,
+                  "selected": undefined,
+                }
+              }
+              accessibilityValue={
+                {
+                  "max": undefined,
+                  "min": undefined,
+                  "now": undefined,
+                  "text": undefined,
                 }
               }
               accessible={true}

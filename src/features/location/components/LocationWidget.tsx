@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useCallback, useEffect } from 'react'
 import { Animated, LayoutChangeEvent } from 'react-native'
 import styled from 'styled-components/native'
 
@@ -27,7 +27,7 @@ export const LocationWidget: React.FC = () => {
   const isGeolocated = !!userPosition
   const locationTitle = isGeolocated ? 'Ma position' : 'Me localiser'
 
-  const hideTooltip = () => setIsTooltipVisible(false)
+  const hideTooltip = useCallback(() => setIsTooltipVisible(false), [setIsTooltipVisible])
 
   function onWidgetLayout(event: LayoutChangeEvent) {
     const { width } = event.nativeEvent.layout

@@ -41,7 +41,6 @@ module.exports = {
       '|react-native-swipe-gestures' +
       '|react-native-permissions' +
       '|react-native-qrcode-svg' +
-      '|react-native-country-picker-modal' +
       '|instantsearch.js' +
       ')',
   ],

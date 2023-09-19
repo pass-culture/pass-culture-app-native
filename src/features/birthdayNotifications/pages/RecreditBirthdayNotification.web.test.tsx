@@ -16,7 +16,7 @@ describe('<RecreditBirthdayNotification/>', () => {
       expect(results).toHaveNoViolations()
       expect(
         screen.queryByText('Tu as jusqu’à la veille de tes 18 ans pour profiter de ton crédit.')
-      ).toBeTruthy()
+      ).toBeInTheDocument()
     })
   })
 })

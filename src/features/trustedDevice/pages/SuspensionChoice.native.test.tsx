@@ -3,6 +3,7 @@ import React from 'react'
 
 import { navigate } from '__mocks__/@react-navigation/native'
 import * as NavigationHelpers from 'features/navigation/helpers/openUrl'
+import { analytics } from 'libs/analytics'
 import { env } from 'libs/environment'
 import { eventMonitoring, MonitoringError } from 'libs/monitoring'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
@@ -69,13 +70,24 @@ describe('<SuspensionChoice/>', () => {
     expect(eventMonitoring.captureException).toHaveBeenCalledWith(error, undefined)
   })
 
-  it('should open mail app when clicking on "Contacter le support" button', () => {
+  it('should open mail app when clicking on "Contacter le support" button', async () => {
     renderSuspensionChoice()
 
     const contactSupportButton = screen.getByText('Contacter le service fraude')
     fireEvent.press(contactSupportButton)
 
-    expect(openUrl).toBeCalledWith(`mailto:service.fraude@test.passculture.app`, undefined, true)
+    await waitFor(() => {
+      expect(openUrl).toBeCalledWith(`mailto:service.fraude@test.passculture.app`, undefined, true)
+    })
+  })
+
+  it('should log analytics when clicking on "Contacter le service fraude" button', () => {
+    renderSuspensionChoice()
+
+    const contactSupportButton = screen.getByText('Contacter le service fraude')
+    fireEvent.press(contactSupportButton)
+
+    expect(analytics.logContactFraudTeam).toHaveBeenCalledWith({ from: 'suspensionchoice' })
   })
 
   it('should open CGU url when clicking on "conditions générales d’utilisation" button', () => {

@@ -22,18 +22,18 @@ describe('<DateInput />', () => {
       jest.spyOn(global.console, 'warn').mockImplementationOnce(() => null)
 
       render(<DateInput {...props} />, { theme: { isTouch: true } })
-      expect(screen.queryByTestId('date-picker-spinner-touch')).toBeTruthy()
-      expect(screen.queryByTestId('date-picker-spinner-native')).toBeFalsy()
-      expect(screen.queryByTestId('date-picker-dropdown')).toBeFalsy()
+      expect(screen.queryByTestId('date-picker-spinner-touch')).toBeInTheDocument()
+      expect(screen.queryByTestId('date-picker-spinner-native')).not.toBeInTheDocument()
+      expect(screen.queryByTestId('date-picker-dropdown')).not.toBeInTheDocument()
     })
   })
 
   describe('no touch device', () => {
     it('should render correctly', () => {
       render(<DateInput {...props} />, { theme: { isTouch: false } })
-      expect(screen.queryByTestId('date-picker-dropdown')).toBeTruthy()
-      expect(screen.queryByTestId('date-picker-spinner-native')).toBeFalsy()
-      expect(screen.queryByTestId('date-picker-spinner-touch')).toBeFalsy()
+      expect(screen.queryByTestId('date-picker-dropdown')).toBeInTheDocument()
+      expect(screen.queryByTestId('date-picker-spinner-native')).not.toBeInTheDocument()
+      expect(screen.queryByTestId('date-picker-spinner-touch')).not.toBeInTheDocument()
     })
   })
 })

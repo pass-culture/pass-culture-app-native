@@ -698,6 +698,14 @@ exports[`<VenueOffers /> should render correctly 1`] = `
                       <View
                         accessibilityLabel="Offre Bac Nord - VF de la catégorie Cinéma,   Dès le 18 août 2021, Gratuit. Possibilité de réserver 2 places."
                         accessibilityRole="link"
+                        accessibilityValue={
+                          {
+                            "max": undefined,
+                            "min": undefined,
+                            "now": undefined,
+                            "text": undefined,
+                          }
+                        }
                         accessible={true}
                         focusable={true}
                         onClick={[Function]}
@@ -973,6 +981,14 @@ exports[`<VenueOffers /> should render correctly 1`] = `
                       <View
                         accessibilityLabel="Offre Black Widow - VF de la catégorie Cinéma,   Dès le 18 août 2021, Gratuit. Possibilité de réserver 2 places."
                         accessibilityRole="link"
+                        accessibilityValue={
+                          {
+                            "max": undefined,
+                            "min": undefined,
+                            "now": undefined,
+                            "text": undefined,
+                          }
+                        }
                         accessible={true}
                         focusable={true}
                         onClick={[Function]}
@@ -1226,6 +1242,14 @@ exports[`<VenueOffers /> should render correctly 1`] = `
                       <View
                         accessibilityLabel="Offre Titane - VF de la catégorie Cinéma,   Dès le 18 août 2021, Gratuit. Possibilité de réserver 2 places."
                         accessibilityRole="link"
+                        accessibilityValue={
+                          {
+                            "max": undefined,
+                            "min": undefined,
+                            "now": undefined,
+                            "text": undefined,
+                          }
+                        }
                         accessible={true}
                         focusable={true}
                         onClick={[Function]}
@@ -1524,6 +1548,23 @@ exports[`<VenueOffers /> should render correctly 1`] = `
                       <View
                         accessibilityLabel="En voir plus"
                         accessibilityRole="link"
+                        accessibilityState={
+                          {
+                            "busy": undefined,
+                            "checked": undefined,
+                            "disabled": undefined,
+                            "expanded": undefined,
+                            "selected": undefined,
+                          }
+                        }
+                        accessibilityValue={
+                          {
+                            "max": undefined,
+                            "min": undefined,
+                            "now": undefined,
+                            "text": undefined,
+                          }
+                        }
                         accessible={true}
                         collapsable={false}
                         focusable={true}
@@ -1685,6 +1726,14 @@ exports[`<VenueOffers /> should render correctly 1`] = `
                   <View
                     accessibilityLabel="Offre Bac Nord - VF de la catégorie Cinéma,   Dès le 18 août 2021, Gratuit. Possibilité de réserver 2 places."
                     accessibilityRole="link"
+                    accessibilityValue={
+                      {
+                        "max": undefined,
+                        "min": undefined,
+                        "now": undefined,
+                        "text": undefined,
+                      }
+                    }
                     accessible={true}
                     focusable={true}
                     onClick={[Function]}
@@ -1891,7 +1940,19 @@ exports[`<VenueOffers /> should render correctly 1`] = `
       accessibilityRole="link"
       accessibilityState={
         {
+          "busy": undefined,
+          "checked": undefined,
           "disabled": false,
+          "expanded": undefined,
+          "selected": undefined,
+        }
+      }
+      accessibilityValue={
+        {
+          "max": undefined,
+          "min": undefined,
+          "now": undefined,
+          "text": undefined,
         }
       }
       accessible={true}

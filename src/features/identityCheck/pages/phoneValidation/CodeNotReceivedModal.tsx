@@ -55,13 +55,13 @@ export const CodeNotReceivedModal: FunctionComponent<CodeNotReceivedModalProps> 
 
   const requestSendPhoneValidationCode = useCallback(async () => {
     analytics.logHasRequestedCode()
-    const callingCode = phoneValidation?.country.callingCodes[0]
+    const callingCode = phoneValidation?.country.callingCode
     const phoneNumber = phoneValidation?.phoneNumber
     if (callingCode && phoneNumber) {
       const phoneNumberWithPrefix = formatPhoneNumberWithPrefix(phoneNumber, callingCode)
       sendPhoneValidationCode(phoneNumberWithPrefix)
     }
-  }, [phoneValidation?.country.callingCodes, phoneValidation?.phoneNumber, sendPhoneValidationCode])
+  }, [phoneValidation?.country.callingCode, phoneValidation?.phoneNumber, sendPhoneValidationCode])
 
   return (
     <AppModal

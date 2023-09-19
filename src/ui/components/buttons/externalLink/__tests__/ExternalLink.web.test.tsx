@@ -43,13 +43,13 @@ describe('ExternalLink', () => {
   it('should display url with non breaking space when no text provided', () => {
     render(<ExternalLink url={someUrl} />)
 
-    expect(screen.queryByText(someUrl)).toBeTruthy()
+    expect(screen.queryByText(someUrl)).toBeInTheDocument()
   })
 
   it('should display splitted text with non breaking space on first word', () => {
     render(<ExternalLink text="some text with several words" url={someUrl} />)
 
-    expect(screen.queryByText('some')).toBeTruthy()
-    expect(screen.queryByText('text with several words')).toBeTruthy()
+    expect(screen.queryByText('some')).toBeInTheDocument()
+    expect(screen.queryByText('text with several words')).toBeInTheDocument()
   })
 })

@@ -24,6 +24,6 @@ describe('<Profile/>', () => {
   it('should not display app share banner', () => {
     render(<Profile />)
 
-    expect(screen.queryByText('Partage le pass Culture')).toBeNull()
+    expect(screen.queryByText('Partage le pass Culture')).not.toBeInTheDocument()
   })
 })

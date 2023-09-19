@@ -5,7 +5,7 @@ import { isMobileDeviceDetectOnWeb, isTabletDeviceDetectOnWeb } from 'libs/react
 // eslint-disable-next-line no-restricted-imports
 import { ModalSpacing } from 'ui/components/modals/enum'
 import { getSpacing, getSpacingString } from 'ui/theme'
-import { buttonHeights, ButtonHeightsType } from 'ui/theme/buttonHeights'
+import { buttonHeights } from 'ui/theme/buttonHeights'
 // eslint-disable-next-line no-restricted-imports
 import { ACTIVE_OPACITY, ColorsEnum, UniqueColors } from 'ui/theme/colors'
 import {
@@ -16,8 +16,8 @@ import {
   TAB_BAR_COMP_HEIGHT,
 } from 'ui/theme/constants'
 import { BorderRadiusEnum, Breakpoints } from 'ui/theme/grid'
-import { IconSizesType, iconSizes } from 'ui/theme/iconSizes'
-import { IllustrationSizesType, illustrationSizes } from 'ui/theme/illustrationSizes'
+import { iconSizes } from 'ui/theme/iconSizes'
+import { illustrationSizes } from 'ui/theme/illustrationSizes'
 // eslint-disable-next-line no-restricted-imports
 import { zIndex } from 'ui/theme/layers'
 
@@ -25,422 +25,7 @@ const isNative = Platform.OS === 'ios' || Platform.OS === 'android'
 const isTouchWeb = Platform.OS === 'web' && (isMobileDeviceDetectOnWeb || isTabletDeviceDetectOnWeb)
 const isTouch = isNative || isTouchWeb
 
-interface Typography {
-  fontFamily: string
-  fontSize: number
-  lineHeight: string
-  fontWeight?: number
-  color: ColorsEnum
-}
-
-export interface AppThemeType {
-  appContentWidth: number // computed dynamically in ThemeProvider.tsx
-  minScreenHeight: number
-  appBarHeight: number
-  navTopHeight: number
-  inputs: {
-    height: {
-      small: number
-      regular: number
-      tall: number
-    }
-  }
-  isMobileViewport?: boolean // computed dynamically in ThemeProvider.tsx
-  isTabletViewport?: boolean // computed dynamically in ThemeProvider.tsx
-  isDesktopViewport?: boolean // computed dynamically in ThemeProvider.tsx
-  isTouch: boolean
-  isNative: boolean
-  isSmallScreen: boolean // computed dynamically in ThemeProvider.tsx
-  showTabBar: boolean // computed dynamically in ThemeProvider.tsx
-  activeOpacity: number
-  controlComponent: {
-    size: number
-  }
-  forms: { maxWidth: number }
-  fontFamily: {
-    regular: string
-    italic: string
-    medium: string
-    semiBold: string
-    bold: string
-    black: string
-  }
-  outline: {
-    width: number
-    color: ColorsEnum
-    style: string
-    offSet: number
-  }
-  tabBar: {
-    height: number
-    iconSize: number
-    fontSize: number
-    labelMinScreenWidth: number
-    showLabels: boolean // computed dynamically in ThemeProvider.tsx
-  }
-  ticket: {
-    maxWidth: number
-    minHeight: number
-    qrCodeSize: number
-    backgroundColor: ColorsEnum
-    borderColor: ColorsEnum
-    sizeRatio: number
-  }
-  tiles: {
-    borderRadius: number
-    sizes: {
-      small: {
-        width: number
-        height: number
-      }
-      medium: {
-        width: number
-        height: number
-      }
-      tall: {
-        width: number
-        height: number
-      }
-      large: {
-        width: number
-        height: number
-      }
-    }
-  }
-  typography: {
-    hero: Typography
-    title1: Typography
-    title2: Typography
-    title3: Typography
-    title4: Typography
-    buttonText: Typography
-    body: Typography
-    caption: Typography
-    hint: Typography
-    placeholder: Typography
-  }
-  colors: {
-    accent: ColorsEnum
-    attention: ColorsEnum
-    black: ColorsEnum
-    error: ColorsEnum
-    errorLight: ColorsEnum
-    greenValid: ColorsEnum
-    greenLight: ColorsEnum
-    greyDark: ColorsEnum
-    greySemiDark: ColorsEnum
-    greyMedium: ColorsEnum
-    greyLight: ColorsEnum
-    primary: ColorsEnum
-    primaryDisabled: ColorsEnum
-    primaryDark: ColorsEnum
-    secondary: ColorsEnum
-    secondaryLight: ColorsEnum
-    tertiary: ColorsEnum
-    transparent: ColorsEnum
-    white: ColorsEnum
-    gold: ColorsEnum
-    goldLight: ColorsEnum
-    aquamarine: ColorsEnum
-    aquamarineLight: ColorsEnum
-    skyBlue: ColorsEnum
-    skyBlueLight: ColorsEnum
-    deepPink: ColorsEnum
-    deepPinkLight: ColorsEnum
-    coral: ColorsEnum
-    coralLight: ColorsEnum
-    lilac: ColorsEnum
-    lilacLight: ColorsEnum
-  }
-  uniqueColors: {
-    tabBar: UniqueColors
-    greyOverlay: UniqueColors
-    backgroundColor: UniqueColors
-    backgroundSurface: UniqueColors
-    foregroundColor: UniqueColors
-    brand: UniqueColors
-    brandDark: UniqueColors
-    greenDisabled: UniqueColors
-  }
-  breakpoints: {
-    xxs: Breakpoints
-    xs: Breakpoints
-    sm: Breakpoints
-    md: Breakpoints
-    lg: Breakpoints
-    xl: Breakpoints
-    xxl: Breakpoints
-  }
-  borderRadius: {
-    button: BorderRadiusEnum
-    radius: BorderRadiusEnum
-    checkbox: BorderRadiusEnum
-  }
-  zIndex: {
-    background: number
-    cheatCodeButton: number
-    favoritePastilleContent: number
-    floatingButton: number
-    homeOfferCoverIcons: number
-    header: number
-    locationWidget: number
-    modalHeader: number
-    progressbar: number
-    playlistsButton: number
-    progressbarIcon: number
-    tabBar: number
-    headerNav: number
-    snackbar: number
-  }
-  offlineMode: {
-    banner: {
-      backgroundColor: ColorsEnum
-      textColor: ColorsEnum
-    }
-  }
-  contentPage: {
-    marginHorizontal: number
-    mediumWidth: number
-    maxWidth: number
-    bottom: { offsetTopHeightDesktopTablet: number }
-  }
-  icons: { sizes: IconSizesType }
-  illustrations: { sizes: IllustrationSizesType }
-  buttons: {
-    maxWidth: number
-    buttonHeights: ButtonHeightsType
-    outlineColor: ColorsEnum
-    loading: {
-      primary: {
-        backgroundColor: ColorsEnum
-      }
-      secondary: {
-        borderColor: ColorsEnum
-      }
-      secondaryWhite: {
-        borderColor: ColorsEnum
-      }
-    }
-    disabled: {
-      primary: {
-        backgroundColor: ColorsEnum
-        iconColor: ColorsEnum
-        textColor: ColorsEnum
-      }
-      primaryWhite: {
-        iconColor: ColorsEnum
-        textColor: ColorsEnum
-      }
-      secondary: {
-        borderColor: ColorsEnum
-        textColor: ColorsEnum
-        iconColor: ColorsEnum
-      }
-      secondaryWhite: {
-        backgroundColor: ColorsEnum
-        borderColor: ColorsEnum
-        textColor: ColorsEnum
-        iconColor: ColorsEnum
-      }
-      tertiary: {
-        textColor: ColorsEnum
-        iconColor: ColorsEnum
-      }
-      tertiaryBlack: {
-        textColor: ColorsEnum
-        iconColor: ColorsEnum
-      }
-      tertiaryWhite: {
-        textColor: ColorsEnum
-        iconColor: ColorsEnum
-      }
-      tertiaryNeutralInfo: {
-        textColor: ColorsEnum
-        iconColor: ColorsEnum
-      }
-      tertiarySecondary: {
-        textColor: ColorsEnum
-        iconColor: ColorsEnum
-      }
-      quaternaryPrimary: {
-        iconColor: ColorsEnum
-        textColor: ColorsEnum
-      }
-      quaternaryBlack: {
-        iconColor: ColorsEnum
-        textColor: ColorsEnum
-      }
-      quaternarySecondary: {
-        iconColor: ColorsEnum
-        textColor: ColorsEnum
-      }
-      quaternaryNeutralInfo: {
-        iconColor: ColorsEnum
-        textColor: ColorsEnum
-      }
-      linearGradient: {
-        backgroundColor: ColorsEnum
-        iconColor: ColorsEnum
-        textColor: ColorsEnum
-      }
-    }
-    primary: {
-      marginLeft: number
-      marginLeftWithIcon: number
-      loadingIconColor: ColorsEnum
-      iconColor: ColorsEnum
-      iconSize: number
-      textColor: ColorsEnum
-      backgroundColor?: ColorsEnum
-    }
-    primaryWhite: {
-      marginLeft: number
-      marginLeftWithIcon: number
-      loadingIconColor: ColorsEnum
-      iconColor: ColorsEnum
-      iconSize: number
-      textColor: ColorsEnum
-      backgroundColor: ColorsEnum
-      outlineColor: ColorsEnum
-    }
-    secondary: {
-      marginLeft: number
-      marginLeftWithIcon: number
-      loadingIconColor: ColorsEnum
-      iconColor: ColorsEnum
-      iconSize: number
-      textColor: ColorsEnum
-      backgroundColor: ColorsEnum
-      borderColor: ColorsEnum
-      borderWidth: number
-    }
-    secondaryWhite: {
-      marginLeft: number
-      marginLeftWithIcon: number
-      loadingIconColor: ColorsEnum
-      iconColor: ColorsEnum
-      iconSize: number
-      textColor: ColorsEnum
-      backgroundColor: ColorsEnum
-      borderColor: ColorsEnum
-      borderWidth: number
-      outlineColor: ColorsEnum
-    }
-    tertiary: {
-      marginLeft: number
-      marginLeftWithIcon: number
-      textColor: ColorsEnum
-      backgroundColor: ColorsEnum
-      loadingIconColor: ColorsEnum
-      iconColor: ColorsEnum
-      iconSize: number
-    }
-    tertiaryBlack: {
-      marginLeft: number
-      marginLeftWithIcon: number
-      textColor: ColorsEnum
-      backgroundColor: ColorsEnum
-      loadingIconColor: ColorsEnum
-      iconColor: ColorsEnum
-      iconSize: number
-    }
-    tertiaryWhite: {
-      marginLeft: number
-      marginLeftWithIcon: number
-      textColor: ColorsEnum
-      backgroundColor: ColorsEnum
-      loadingIconColor: ColorsEnum
-      iconColor: ColorsEnum
-      iconSize: number
-      outlineColor: ColorsEnum
-    }
-    tertiaryNeutralInfo: {
-      marginLeft: number
-      marginLeftWithIcon: number
-      textColor: ColorsEnum
-      backgroundColor: ColorsEnum
-      loadingIconColor: ColorsEnum
-      iconColor: ColorsEnum
-      iconSize: number
-    }
-    tertiarySecondary: {
-      marginLeft: number
-      marginLeftWithIcon: number
-      textColor: ColorsEnum
-      backgroundColor: ColorsEnum
-      loadingIconColor: ColorsEnum
-      iconColor: ColorsEnum
-      iconSize: number
-    }
-    quaternaryPrimary: {
-      marginLeft: number
-      marginLeftWithIcon: number
-      loadingIconColor: ColorsEnum
-      iconColor: ColorsEnum
-      iconSize: number
-      textColor: ColorsEnum
-      backgroundColor: ColorsEnum
-    }
-    quaternaryBlack: {
-      marginLeft: number
-      marginLeftWithIcon: number
-      loadingIconColor: ColorsEnum
-      iconColor: ColorsEnum
-      iconSize: number
-      textColor: ColorsEnum
-      backgroundColor: ColorsEnum
-    }
-    quaternarySecondary: {
-      marginLeft: number
-      marginLeftWithIcon: number
-      loadingIconColor: ColorsEnum
-      iconColor: ColorsEnum
-      iconSize: number
-      textColor: ColorsEnum
-      backgroundColor: ColorsEnum
-    }
-    quaternaryNeutralInfo: {
-      marginLeft: number
-      marginLeftWithIcon: number
-      loadingIconColor: ColorsEnum
-      iconColor: ColorsEnum
-      iconSize: number
-      textColor: ColorsEnum
-      backgroundColor: ColorsEnum
-    }
-    linearGradient: {
-      iconSize: number
-      iconColor: ColorsEnum
-      textColor: ColorsEnum
-    }
-    scrollButton: {
-      size: number
-      borderWidth: number
-      borderColor: ColorsEnum
-      backgroundColor: ColorsEnum
-    }
-    roundedButton: {
-      size: number
-    }
-  }
-  slider: {
-    markerSize: number
-    trackHeight: number
-  }
-  modal: {
-    desktopMaxWidth: number
-    spacing: {
-      SM: number
-      MD: number
-      LG: number
-    }
-  }
-  home: {
-    spaceBetweenModules: number
-  }
-}
-
-export const theme: AppThemeType = {
+export const theme = {
   appContentWidth: getSpacing(100),
   minScreenHeight: getSpacing(142),
   appBarHeight: getSpacing(16),
@@ -454,8 +39,8 @@ export const theme: AppThemeType = {
   },
   isTouch,
   isNative,
-  isSmallScreen: false, // default value, the actual value is computed dynamically in ThemeProvider.tsx
-  showTabBar: true, // default value, the actual value is computed dynamically in ThemeProvider.tsx
+  isSmallScreen: false as boolean | undefined, // default value, the actual value is computed dynamically in ThemeProvider.tsx
+  showTabBar: true as boolean | undefined, // default value, the actual value is computed dynamically in ThemeProvider.tsx
   activeOpacity: ACTIVE_OPACITY,
   fontFamily: {
     regular: 'Montserrat-Regular',
@@ -480,7 +65,7 @@ export const theme: AppThemeType = {
     iconSize: getSpacing(7),
     fontSize: getSpacing(2.5),
     labelMinScreenWidth: 375,
-    showLabels: true, // default value, the actual value is computed dynamically in ThemeProvider.tsx
+    showLabels: true as boolean | undefined, // default value, the actual value is computed dynamically in ThemeProvider.tsx
   },
   ticket: {
     maxWidth: 300,
@@ -894,3 +479,16 @@ export const theme: AppThemeType = {
     spaceBetweenModules: getSpacing(6),
   },
 } as const
+
+export type BaseAppThemeType = typeof theme
+export type AppThemeType = BaseAppThemeType & {
+  isMobileViewport?: boolean
+  isTabletViewport?: boolean
+  isDesktopViewport?: boolean
+  isSmallScreen?: boolean
+  showTabBar: boolean
+  appContentWidth: number
+  tabBar: BaseAppThemeType['tabBar'] & {
+    showLabels?: boolean
+  }
+}

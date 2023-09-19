@@ -40,7 +40,19 @@ exports[`<OfferCategoryChoices /> should match snapshot 1`] = `
         accessibilityRole="checkbox"
         accessibilityState={
           {
+            "busy": undefined,
             "checked": false,
+            "disabled": undefined,
+            "expanded": undefined,
+            "selected": undefined,
+          }
+        }
+        accessibilityValue={
+          {
+            "max": undefined,
+            "min": undefined,
+            "now": undefined,
+            "text": undefined,
           }
         }
         accessible={true}
@@ -125,7 +137,19 @@ exports[`<OfferCategoryChoices /> should match snapshot 1`] = `
         accessibilityRole="checkbox"
         accessibilityState={
           {
+            "busy": undefined,
             "checked": false,
+            "disabled": undefined,
+            "expanded": undefined,
+            "selected": undefined,
+          }
+        }
+        accessibilityValue={
+          {
+            "max": undefined,
+            "min": undefined,
+            "now": undefined,
+            "text": undefined,
           }
         }
         accessible={true}
@@ -210,7 +234,19 @@ exports[`<OfferCategoryChoices /> should match snapshot 1`] = `
         accessibilityRole="checkbox"
         accessibilityState={
           {
+            "busy": undefined,
             "checked": false,
+            "disabled": undefined,
+            "expanded": undefined,
+            "selected": undefined,
+          }
+        }
+        accessibilityValue={
+          {
+            "max": undefined,
+            "min": undefined,
+            "now": undefined,
+            "text": undefined,
           }
         }
         accessible={true}
@@ -295,7 +331,19 @@ exports[`<OfferCategoryChoices /> should match snapshot 1`] = `
         accessibilityRole="checkbox"
         accessibilityState={
           {
+            "busy": undefined,
             "checked": false,
+            "disabled": undefined,
+            "expanded": undefined,
+            "selected": undefined,
+          }
+        }
+        accessibilityValue={
+          {
+            "max": undefined,
+            "min": undefined,
+            "now": undefined,
+            "text": undefined,
           }
         }
         accessible={true}
@@ -380,7 +428,19 @@ exports[`<OfferCategoryChoices /> should match snapshot 1`] = `
         accessibilityRole="checkbox"
         accessibilityState={
           {
+            "busy": undefined,
             "checked": false,
+            "disabled": undefined,
+            "expanded": undefined,
+            "selected": undefined,
+          }
+        }
+        accessibilityValue={
+          {
+            "max": undefined,
+            "min": undefined,
+            "now": undefined,
+            "text": undefined,
           }
         }
         accessible={true}
@@ -465,7 +525,19 @@ exports[`<OfferCategoryChoices /> should match snapshot 1`] = `
         accessibilityRole="checkbox"
         accessibilityState={
           {
+            "busy": undefined,
             "checked": false,
+            "disabled": undefined,
+            "expanded": undefined,
+            "selected": undefined,
+          }
+        }
+        accessibilityValue={
+          {
+            "max": undefined,
+            "min": undefined,
+            "now": undefined,
+            "text": undefined,
           }
         }
         accessible={true}
@@ -550,7 +622,19 @@ exports[`<OfferCategoryChoices /> should match snapshot 1`] = `
         accessibilityRole="checkbox"
         accessibilityState={
           {
+            "busy": undefined,
             "checked": false,
+            "disabled": undefined,
+            "expanded": undefined,
+            "selected": undefined,
+          }
+        }
+        accessibilityValue={
+          {
+            "max": undefined,
+            "min": undefined,
+            "now": undefined,
+            "text": undefined,
           }
         }
         accessible={true}
@@ -635,7 +719,19 @@ exports[`<OfferCategoryChoices /> should match snapshot 1`] = `
         accessibilityRole="checkbox"
         accessibilityState={
           {
+            "busy": undefined,
             "checked": false,
+            "disabled": undefined,
+            "expanded": undefined,
+            "selected": undefined,
+          }
+        }
+        accessibilityValue={
+          {
+            "max": undefined,
+            "min": undefined,
+            "now": undefined,
+            "text": undefined,
           }
         }
         accessible={true}
@@ -720,7 +816,19 @@ exports[`<OfferCategoryChoices /> should match snapshot 1`] = `
         accessibilityRole="checkbox"
         accessibilityState={
           {
+            "busy": undefined,
             "checked": false,
+            "disabled": undefined,
+            "expanded": undefined,
+            "selected": undefined,
+          }
+        }
+        accessibilityValue={
+          {
+            "max": undefined,
+            "min": undefined,
+            "now": undefined,
+            "text": undefined,
           }
         }
         accessible={true}
@@ -805,7 +913,19 @@ exports[`<OfferCategoryChoices /> should match snapshot 1`] = `
         accessibilityRole="checkbox"
         accessibilityState={
           {
+            "busy": undefined,
             "checked": false,
+            "disabled": undefined,
+            "expanded": undefined,
+            "selected": undefined,
+          }
+        }
+        accessibilityValue={
+          {
+            "max": undefined,
+            "min": undefined,
+            "now": undefined,
+            "text": undefined,
           }
         }
         accessible={true}
@@ -890,7 +1010,19 @@ exports[`<OfferCategoryChoices /> should match snapshot 1`] = `
         accessibilityRole="checkbox"
         accessibilityState={
           {
+            "busy": undefined,
             "checked": false,
+            "disabled": undefined,
+            "expanded": undefined,
+            "selected": undefined,
+          }
+        }
+        accessibilityValue={
+          {
+            "max": undefined,
+            "min": undefined,
+            "now": undefined,
+            "text": undefined,
           }
         }
         accessible={true}
@@ -975,7 +1107,19 @@ exports[`<OfferCategoryChoices /> should match snapshot 1`] = `
         accessibilityRole="checkbox"
         accessibilityState={
           {
+            "busy": undefined,
             "checked": false,
+            "disabled": undefined,
+            "expanded": undefined,
+            "selected": undefined,
+          }
+        }
+        accessibilityValue={
+          {
+            "max": undefined,
+            "min": undefined,
+            "now": undefined,
+            "text": undefined,
           }
         }
         accessible={true}
@@ -1060,7 +1204,19 @@ exports[`<OfferCategoryChoices /> should match snapshot 1`] = `
         accessibilityRole="checkbox"
         accessibilityState={
           {
+            "busy": undefined,
             "checked": false,
+            "disabled": undefined,
+            "expanded": undefined,
+            "selected": undefined,
+          }
+        }
+        accessibilityValue={
+          {
+            "max": undefined,
+            "min": undefined,
+            "now": undefined,
+            "text": undefined,
           }
         }
         accessible={true}
@@ -1145,7 +1301,19 @@ exports[`<OfferCategoryChoices /> should match snapshot 1`] = `
         accessibilityRole="checkbox"
         accessibilityState={
           {
+            "busy": undefined,
             "checked": false,
+            "disabled": undefined,
+            "expanded": undefined,
+            "selected": undefined,
+          }
+        }
+        accessibilityValue={
+          {
+            "max": undefined,
+            "min": undefined,
+            "now": undefined,
+            "text": undefined,
           }
         }
         accessible={true}

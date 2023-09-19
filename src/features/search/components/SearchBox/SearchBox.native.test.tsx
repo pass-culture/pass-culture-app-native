@@ -128,7 +128,7 @@ describe('SearchBox component', () => {
 
   it('should call navigate on submit', async () => {
     const { getByPlaceholderText } = render(<SearchBox searchInputID={searchInputID} />)
-    const searchInput = getByPlaceholderText('Offre, artiste...')
+    const searchInput = getByPlaceholderText('Offre, artiste, point de vente...')
 
     await act(async () => {
       fireEvent(searchInput, 'onSubmitEditing', { nativeEvent: { text: 'jazzaza' } })
@@ -179,7 +179,7 @@ describe('SearchBox component', () => {
   it('should show the text typed by the user', async () => {
     const { getByPlaceholderText } = render(<SearchBox searchInputID={searchInputID} />)
 
-    const searchInput = getByPlaceholderText('Offre, artiste...')
+    const searchInput = getByPlaceholderText('Offre, artiste, point de vente...')
     await act(async () => {
       fireEvent(searchInput, 'onChangeText', 'Some text')
     })
@@ -189,7 +189,7 @@ describe('SearchBox component', () => {
 
   it('should not execute a search if input is empty', async () => {
     const { getByPlaceholderText } = render(<SearchBox searchInputID={searchInputID} />)
-    const searchInput = getByPlaceholderText('Offre, artiste...')
+    const searchInput = getByPlaceholderText('Offre, artiste, point de vente...')
 
     await act(async () => {
       fireEvent(searchInput, 'onSubmitEditing', { nativeEvent: { text: '' } })
@@ -277,7 +277,7 @@ describe('SearchBox component', () => {
     it('should stay on the current view when focusing search input and being on the suggestions', async () => {
       useRoute.mockReturnValueOnce({ params: { view: SearchView.Suggestions } })
       const { getByPlaceholderText } = render(<SearchBox searchInputID={searchInputID} />)
-      const searchInput = getByPlaceholderText('Offre, artiste...')
+      const searchInput = getByPlaceholderText('Offre, artiste, point de vente...')
 
       await act(async () => {
         fireEvent(searchInput, 'onFocus')
@@ -319,7 +319,7 @@ describe('SearchBox component', () => {
       async (view) => {
         useRoute.mockReturnValueOnce({ params: { view } })
         const { getByPlaceholderText } = render(<SearchBox searchInputID={searchInputID} />)
-        const searchInput = getByPlaceholderText('Offre, artiste...')
+        const searchInput = getByPlaceholderText('Offre, artiste, point de vente...')
 
         await act(async () => {
           fireEvent(searchInput, 'onFocus')
@@ -354,7 +354,7 @@ describe('SearchBox component', () => {
 
   it('should execute a search if input is not empty', async () => {
     const { getByPlaceholderText } = render(<SearchBox searchInputID={searchInputID} />)
-    const searchInput = getByPlaceholderText('Offre, artiste...')
+    const searchInput = getByPlaceholderText('Offre, artiste, point de vente...')
 
     await act(async () => {
       fireEvent(searchInput, 'onSubmitEditing', { nativeEvent: { text: 'jazzaza' } })
@@ -394,7 +394,7 @@ describe('SearchBox component', () => {
 
   it('should display suggestions view when focusing search input and no search executed', async () => {
     const { getByPlaceholderText } = render(<SearchBox searchInputID={searchInputID} />)
-    const searchInput = getByPlaceholderText('Offre, artiste...')
+    const searchInput = getByPlaceholderText('Offre, artiste, point de vente...')
 
     await act(async () => {
       fireEvent(searchInput, 'onFocus')

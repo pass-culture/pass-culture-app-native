@@ -6,10 +6,12 @@ import { UseRouteType } from 'features/navigation/RootNavigator/types'
 import { DeviceInformationsBanner } from 'features/trustedDevice/components/DeviceInformationsBanner'
 import { formatTokenInfo } from 'features/trustedDevice/helpers/formatTokenInfo'
 import { getTokenInfo } from 'features/trustedDevice/helpers/getTokenInfo'
+import { analytics } from 'libs/analytics'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { ButtonSecondary } from 'ui/components/buttons/ButtonSecondary'
 import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
+import { TouchableLink } from 'ui/components/touchableLink/TouchableLink'
 import { GenericInfoPageWhite } from 'ui/pages/GenericInfoPageWhite'
 import { Invalidate } from 'ui/svg/icons/Invalidate'
 import { BicolorUserBlocked } from 'ui/svg/icons/UserBlocked'
@@ -18,6 +20,11 @@ import { Spacer, Typo } from 'ui/theme'
 export const AccountSecurity = () => {
   const { params } = useRoute<UseRouteType<'AccountSecurity'>>()
   const { location, osAndSource, loginDate } = formatTokenInfo(getTokenInfo(params.token))
+
+  const onPressDismissAccountSecurity = () => {
+    analytics.logDismissAccountSecurity()
+    navigateToHome()
+  }
 
   return (
     <GenericInfoPageWhite
@@ -49,6 +56,7 @@ export const AccountSecurity = () => {
             token: params.reset_password_token,
             email: params.email,
             expiration_timestamp: params.reset_token_expiration_timestamp,
+            from: 'suspiciouslogin',
           },
         }}
         as={ButtonPrimary}
@@ -60,10 +68,11 @@ export const AccountSecurity = () => {
         as={ButtonSecondary}
       />
       <Spacer.Column numberOfSpaces={2} />
-      <ButtonTertiaryBlack
+      <TouchableLink
+        as={ButtonTertiaryBlack}
         wording="Ne pas sécuriser mon compte"
         icon={Invalidate}
-        onPress={navigateToHome}
+        handleNavigation={onPressDismissAccountSecurity}
       />
     </GenericInfoPageWhite>
   )

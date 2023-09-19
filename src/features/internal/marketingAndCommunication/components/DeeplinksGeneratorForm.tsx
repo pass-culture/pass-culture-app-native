@@ -50,14 +50,10 @@ export function getDefaultScreenParams(screenName: ScreensUsedByMarketing) {
       view: SearchView.Results,
       locationFilter: { locationType: LocationType.EVERYWHERE },
       noFocus: true,
-    }
-  } else if (screenName === 'Venue') {
-    return {
       from: 'deeplink',
     }
   }
-
-  return {}
+  return { from: 'deeplink' }
 }
 
 export const DeeplinksGeneratorForm = ({ onCreate }: Props) => {

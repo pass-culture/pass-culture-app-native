@@ -22,9 +22,9 @@ import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/S
 interface Props {
   offerId: number
   animationState?: {
-    iconBackgroundColor: Animated.AnimatedInterpolation
-    iconBorderColor: Animated.AnimatedInterpolation
-    transition: Animated.AnimatedInterpolation
+    iconBackgroundColor: Animated.AnimatedInterpolation<string | number>
+    iconBorderColor: Animated.AnimatedInterpolation<string | number>
+    transition: Animated.AnimatedInterpolation<string | number>
   }
   analyticsParams?: OfferAnalyticsParams
 }

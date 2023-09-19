@@ -5,7 +5,7 @@ import { GenericSuspendedAccount } from 'features/auth/pages/suspendedAccount/Ge
 import { navigateToHomeConfig } from 'features/navigation/helpers'
 import * as NavigationHelpers from 'features/navigation/helpers/openUrl'
 import { env } from 'libs/environment'
-import { act, fireEvent, render, screen } from 'tests/utils'
+import { act, fireEvent, render, screen, waitFor } from 'tests/utils'
 
 const openUrl = jest.spyOn(NavigationHelpers, 'openUrl')
 
@@ -15,17 +15,19 @@ jest.mock('features/auth/helpers/useLogoutRoutine', () => ({
 }))
 
 describe('<GenericSuspendedAccount />', () => {
-  it('should open mail app when clicking on "Contacter le support" button', () => {
-    render(<GenericSuspendedAccount />)
+  it('should open mail app when clicking on "Contacter le support" button', async () => {
+    render(<GenericSuspendedAccount onBeforeNavigateContactFraudTeam={jest.fn()} />)
 
     const contactSupportButton = screen.getByText('Contacter le service fraude')
     fireEvent.press(contactSupportButton)
 
-    expect(openUrl).toBeCalledWith(`mailto:${env.FRAUD_EMAIL_ADDRESS}`, undefined, true)
+    await waitFor(() => {
+      expect(openUrl).toBeCalledWith(`mailto:${env.FRAUD_EMAIL_ADDRESS}`, undefined, true)
+    })
   })
 
   it('should go to home page when clicking on go to home button', async () => {
-    render(<GenericSuspendedAccount />)
+    render(<GenericSuspendedAccount onBeforeNavigateContactFraudTeam={jest.fn()} />)
 
     const homeButton = screen.getByText('Retourner à l’accueil')
     await act(async () => fireEvent.press(homeButton))

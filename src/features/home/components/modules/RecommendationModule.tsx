@@ -73,6 +73,7 @@ export const RecommendationModule = (props: RecommendationModuleProps) => {
           moduleId={moduleId}
           width={width}
           height={height}
+          homeEntryId={homeEntryId}
         />
       )
     },

@@ -7,7 +7,7 @@ import { ColorsEnum } from '../theme/colors'
 
 interface Props {
   Icon: React.FC<IconInterface>
-  transition: Animated.AnimatedInterpolation
+  transition: Animated.AnimatedInterpolation<string | number>
   size: number
   initialColor: ColorsEnum
   finalColor: ColorsEnum

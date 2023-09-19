@@ -98,7 +98,10 @@ describe('ChangePassword', () => {
       timeout: SNACK_BAR_TIME_OUT,
     })
     expect(navigate).toHaveBeenCalledWith('TabNavigator', { screen: 'Profile' })
-    expect(analytics.logHasChangedPassword).toHaveBeenCalledWith('changePassword')
+    expect(analytics.logHasChangedPassword).toHaveBeenCalledWith({
+      from: 'personaldata',
+      reason: 'changePassword',
+    })
   })
 
   it('display error when the password failed to updated', async () => {

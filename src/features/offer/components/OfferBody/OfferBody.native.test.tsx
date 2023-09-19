@@ -18,6 +18,7 @@ import {
   mockedAlgoliaResponse,
   moreHitsForSimilarOffersPlaylist,
 } from 'libs/algolia/__mocks__/mockedAlgoliaResponse'
+import { analytics } from 'libs/analytics'
 import * as useFeatureFlag from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { NetInfoWrapper } from 'libs/network/NetInfoWrapper'
 import { placeholderData } from 'libs/subcategories/placeholderData'
@@ -76,7 +77,9 @@ jest.mock('libs/subcategories/useSubcategories', () => ({
 
 const canOpenURLSpy = jest.spyOn(Linking, 'canOpenURL')
 const mockShareSingle = jest.spyOn(Share, 'shareSingle')
-const mockNativeShare = jest.spyOn(NativeShare, 'share')
+const mockNativeShare = jest
+  .spyOn(NativeShare, 'share')
+  .mockResolvedValue({ action: NativeShare.sharedAction })
 
 const mockUseOffer = jest.fn().mockReturnValue({ data: mockOffer })
 jest.mock('features/offer/api/useOffer', () => ({
@@ -265,12 +268,12 @@ describe('<OfferBody />', () => {
         fireEvent.press(socialMediumButton)
       })
 
+      const expectedUrl = `${getOfferUrl(offerId, 'social_media')}&utm_source=${Network.instagram}`
+
       expect(mockShareSingle).toHaveBeenCalledWith({
         social: Social.Instagram,
         message: encodeURI(
-          `Retrouve "${mockOffer.name}" chez "${
-            mockOffer.venue.name
-          }" sur le pass Culture\n${getOfferUrl(offerId)}`
+          `Retrouve "${mockOffer.name}" chez "${mockOffer.venue.name}" sur le pass Culture\n${expectedUrl}`
         ),
         type: 'text',
         url: undefined,
@@ -631,6 +634,39 @@ describe('<OfferBody />', () => {
         fromOfferId: offerId,
         id: 2,
         fromMultivenueOfferId: offerId,
+      })
+    })
+
+    it('should log ConsultOffer when new offer venue is selected', async () => {
+      const mockShowModal = jest.fn()
+      jest.spyOn(useModalAPI, 'useModal').mockReturnValueOnce({
+        visible: true,
+        showModal: mockShowModal,
+        hideModal: jest.fn(),
+        toggleModal: jest.fn(),
+      })
+      mockUseOffer.mockReturnValueOnce({
+        data: {
+          ...mockOffer,
+          subcategoryId: SubcategoryIdEnum.LIVRE_PAPIER,
+          extraData: { ean: '2765410054' },
+        },
+      })
+      mockNbVenueItems = 2
+      mockVenueList = offerVenues
+
+      renderOfferBody()
+      await screen.findByTestId('offer-container')
+
+      fireEvent.press(screen.getByText('Le Livre Éclaire'))
+      fireEvent.press(screen.getByText('Choisir ce lieu'))
+
+      expect(analytics.logConsultOffer).toHaveBeenCalledTimes(1)
+      expect(analytics.logConsultOffer).toHaveBeenCalledWith({
+        from: 'offer',
+        fromMultivenueOfferId: 146112,
+        offerId: 2,
+        shouldUseAlgoliaRecommend: undefined,
       })
     })
   })

@@ -12,6 +12,7 @@ import { Referrals } from 'features/navigation/RootNavigator/types'
 import { PlaylistType } from 'features/offer/enums'
 import { SearchState } from 'features/search/types'
 import { ShareAppModalType } from 'features/share/helpers/shareAppModalInformations'
+import { TutorialTypes } from 'features/tutorial/enums'
 import { AmplitudeEvent } from 'libs/amplitude/events'
 import { analytics, buildPerformSearchState, urlWithValueMaxLength } from 'libs/analytics'
 import { ContentTypes } from 'libs/contentful/types'
@@ -70,21 +71,12 @@ export const logEventAnalytics = {
     analytics.logEvent({ firebase: AnalyticsEvent.ALL_TILES_SEEN }, params),
   logBackToHomeFromEduconnectError: (params: { fromError: string }) =>
     analytics.logEvent({ firebase: AnalyticsEvent.BACK_TO_HOME_FROM_EDUCONNECT_ERROR }, params),
-  logBookingConfirmation: (
-    offerId: number,
-    bookingId: number,
-    fromOfferId?: number,
+  logBookingConfirmation: (params: {
+    offerId: number
+    bookingId: number
+    fromOfferId?: number
     fromMultivenueOfferId?: number
-  ) =>
-    analytics.logEvent(
-      { firebase: AnalyticsEvent.BOOKING_CONFIRMATION },
-      {
-        bookingId,
-        fromMultivenueOfferId,
-        fromOfferId,
-        offerId,
-      }
-    ),
+  }) => analytics.logEvent({ firebase: AnalyticsEvent.BOOKING_CONFIRMATION }, params),
   logBookingDetailsScrolledToBottom: (offerId: number) =>
     analytics.logEvent(
       { firebase: AnalyticsEvent.BOOKING_DETAILS_SCROLLED_TO_BOTTOM },
@@ -231,6 +223,8 @@ export const logEventAnalytics = {
     analytics.logEvent({ firebase: AnalyticsEvent.CONSULT_WHOLE_OFFER }, { offerId }),
   logConsultWithdrawal: (params: OfferIdOrVenueId) =>
     analytics.logEvent({ firebase: AnalyticsEvent.CONSULT_WITHDRAWAL_MODALITIES }, params),
+  logContactFraudTeam: ({ from }: { from: Referrals }) =>
+    analytics.logEvent({ firebase: AnalyticsEvent.CONTACT_FRAUD_TEAM }, { from }),
   logContinueCGU: () =>
     analytics.logEvent({
       amplitude: AmplitudeEvent.ACCEPT_CGU_CLICKED,
@@ -258,6 +252,8 @@ export const logEventAnalytics = {
     analytics.logEvent({ firebase: AnalyticsEvent.CULTURAL_SURVEY_SCROLLED_TO_BOTTOM }, params),
   logDiscoverOffers: (from: Referrals) =>
     analytics.logEvent({ firebase: AnalyticsEvent.DISCOVER_OFFERS }, { from }),
+  logDismissAccountSecurity: () =>
+    analytics.logEvent({ firebase: AnalyticsEvent.DISMISS_ACCOUNT_SECURITY }),
   logDismissNotifications: () =>
     analytics.logEvent({ firebase: AnalyticsEvent.DISMISS_NOTIFICATIONS }),
   logDismissShareApp: (type: ShareAppModalType) =>
@@ -306,8 +302,13 @@ export const logEventAnalytics = {
         type: sortBy,
       }
     ),
-  logHasChangedPassword: (reason: 'changePassword' | 'resetPassword') =>
-    analytics.logEvent({ firebase: AnalyticsEvent.HAS_CHANGED_PASSWORD }, { reason }),
+  logHasChangedPassword: ({
+    from,
+    reason,
+  }: {
+    from: Referrals
+    reason: 'changePassword' | 'resetPassword'
+  }) => analytics.logEvent({ firebase: AnalyticsEvent.HAS_CHANGED_PASSWORD }, { from, reason }),
   logHasClickedMissingCode: () =>
     analytics.logEvent({ firebase: AnalyticsEvent.HAS_CLICKED_MISSING_CODE }),
   logHasCorrectedEmail: ({ from }: { from: Referrals }) =>
@@ -528,13 +529,13 @@ export const logEventAnalytics = {
     analytics.logEvent({ firebase: AnalyticsEvent.SEARCH_SCROLL_TO_PAGE }, { page, searchId }),
   logSeeMyBooking: (offerId: number) =>
     analytics.logEvent({ firebase: AnalyticsEvent.SEE_MY_BOOKING }, { offerId }),
-  logSelectAge: (age: number | string) =>
+  logSelectAge: ({ userStatus, from }: { userStatus: number | string; from: TutorialTypes }) =>
     analytics.logEvent(
       {
         amplitude: AmplitudeEvent.ONBOARDING_AGE_SELECTION_CLICKED,
         firebase: AnalyticsEvent.SELECT_AGE,
       },
-      { age }
+      { from, userStatus }
     ),
   logSelectIdStatusClicked: (type: IDStatus) =>
     analytics.logEvent({ amplitude: AmplitudeEvent.SELECT_ID_STATUS_CLICKED }, { type }),

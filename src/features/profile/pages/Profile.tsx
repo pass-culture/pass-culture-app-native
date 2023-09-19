@@ -110,7 +110,7 @@ const OnlineProfile: React.FC = () => {
 
   const onShareBannerPress = useCallback(() => {
     analytics.logShareApp({ from: 'profile' })
-    shareApp()
+    shareApp('profile_banner')
   }, [])
 
   return (

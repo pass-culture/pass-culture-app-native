@@ -2,25 +2,29 @@ import React, { useCallback } from 'react'
 import styled from 'styled-components/native'
 
 import { openUrl } from 'features/navigation/helpers'
+import { NonEligible, TutorialTypes } from 'features/tutorial/enums'
 import { getModalInfoForNonEligible } from 'features/tutorial/helpers/getModalInfoForNonEligible'
-import { NonEligible } from 'features/tutorial/types'
 import { env } from 'libs/environment'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
 import { AppInformationModal } from 'ui/components/modals/AppInformationModal'
-import { BicolorBirthdayCake } from 'ui/svg/icons/BicolorBirthdayCake'
 import { ExternalSiteFilled } from 'ui/svg/icons/ExternalSiteFilled'
 import { Spacer, Typo } from 'ui/theme'
 
 type Props = {
   visible: boolean
   hideModal: () => void
-  modalType: NonEligible
+  userStatus: NonEligible
+  type: TutorialTypes
 }
 
-export const NonEligibleModal = ({ visible, hideModal, modalType }: Props) => {
-  const { title, firstParagraph, secondParagraph, withFAQLink } =
-    getModalInfoForNonEligible(modalType)
+export const NonEligibleModal = ({ visible, hideModal, userStatus, type }: Props) => {
+  const { title, firstParagraph, secondParagraph, withFAQLink, Illustration } =
+    getModalInfoForNonEligible(userStatus, type)
+
+  const StyledIllustration = styled(Illustration).attrs(({ theme }) => ({
+    size: theme.illustrations.sizes.fullPage,
+  }))``
 
   const onPress = useCallback(() => {
     openUrl(env.FAQ_LINK_CREDIT)
@@ -29,7 +33,7 @@ export const NonEligibleModal = ({ visible, hideModal, modalType }: Props) => {
   return (
     <AppInformationModal visible={visible} title={title} onCloseIconPress={hideModal}>
       <Spacer.Column numberOfSpaces={2} />
-      <BirthdayCake />
+      <StyledIllustration />
       <Spacer.Column numberOfSpaces={4} />
       <StyledBody>{firstParagraph}</StyledBody>
       {!!withFAQLink && (
@@ -49,10 +53,6 @@ export const NonEligibleModal = ({ visible, hideModal, modalType }: Props) => {
     </AppInformationModal>
   )
 }
-
-const BirthdayCake = styled(BicolorBirthdayCake).attrs(({ theme }) => ({
-  size: theme.illustrations.sizes.fullPage,
-}))``
 
 const StyledBody = styled(Typo.Body)({
   textAlign: 'center',

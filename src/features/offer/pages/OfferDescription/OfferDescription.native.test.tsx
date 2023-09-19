@@ -1,9 +1,10 @@
 import React from 'react'
 
+import { navigate, useRoute } from '__mocks__/@react-navigation/native'
 import { OfferResponse } from 'api/gen'
 import { offerResponseSnap } from 'features/offer/fixtures/offerResponse'
 import { ParsedDescription } from 'libs/parsers/highlightLinks'
-import { render, screen, waitFor } from 'tests/utils'
+import { fireEvent, render, screen, waitFor } from 'tests/utils'
 
 import {
   OfferDescription,
@@ -18,6 +19,10 @@ jest.mock('features/offer/api/useOffer', () => ({
     data: mockedOffer,
   }),
 }))
+
+jest.unmock('features/navigation/useGoBack')
+
+useRoute.mockReturnValue({ params: { id: offerResponseSnap.id } })
 
 describe('<OfferDescription />', () => {
   it('should render', async () => {
@@ -86,6 +91,13 @@ describe('<OfferDescription />', () => {
       expect(screen.queryByText('EAN')).not.toBeOnTheScreen()
       expect(screen.queryByText('VISA')).not.toBeOnTheScreen()
     })
+  })
+
+  it('should navigate to offer when clicking on go back', () => {
+    render(<OfferDescription />)
+
+    fireEvent.press(screen.getByLabelText('Revenir en arrière'))
+    expect(navigate).toHaveBeenCalledWith('Offer', { id: offerResponseSnap.id })
   })
 })
 

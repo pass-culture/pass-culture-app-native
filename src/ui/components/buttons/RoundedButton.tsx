@@ -22,9 +22,9 @@ interface Props {
   onPress: () => void
   scaleAnimatedValue?: Animated.Value
   animationState?: {
-    iconBackgroundColor: Animated.AnimatedInterpolation
-    iconBorderColor: Animated.AnimatedInterpolation
-    transition: Animated.AnimatedInterpolation
+    iconBackgroundColor: Animated.AnimatedInterpolation<ColorsEnum>
+    iconBorderColor: Animated.AnimatedInterpolation<ColorsEnum>
+    transition: Animated.AnimatedInterpolation<string | number>
   }
   accessibilityRole?: AccessibilityRole
   accessibilityChecked?: boolean

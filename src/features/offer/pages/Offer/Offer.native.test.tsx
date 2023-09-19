@@ -8,6 +8,7 @@ import * as useSimilarOffers from 'features/offer/api/useSimilarOffers'
 import { PlaylistType } from 'features/offer/enums'
 import { offerResponseSnap } from 'features/offer/fixtures/offerResponse'
 import { offerId, renderOfferPage } from 'features/offer/helpers/renderOfferPageTestUtil'
+import { SimilarOffersResponseParams } from 'features/offer/types'
 import { beneficiaryUser } from 'fixtures/user'
 import { mockedAlgoliaResponse } from 'libs/algolia/__mocks__/mockedAlgoliaResponse'
 import { analytics } from 'libs/analytics'
@@ -20,7 +21,10 @@ import { SNACK_BAR_TIME_OUT } from 'ui/components/snackBar/SnackBarContext'
 jest.mock('features/auth/context/AuthContext')
 const mockUseAuthContext = useAuthContext as jest.MockedFunction<typeof useAuthContext>
 
-const useSimilarOffersSpy = jest.spyOn(useSimilarOffers, 'useSimilarOffers').mockImplementation()
+const useSimilarOffersSpy = jest
+  .spyOn(useSimilarOffers, 'useSimilarOffers')
+  .mockImplementation()
+  .mockReturnValue({ similarOffers: undefined, apiRecoParams: undefined })
 
 let mockShouldUseAlgoliaRecommend = false
 jest.mock('libs/firebase/remoteConfig/RemoteConfigProvider', () => ({
@@ -40,6 +44,16 @@ jest.mock('features/navigation/helpers/openUrl')
 const mockedOpenUrl = openUrl as jest.MockedFunction<typeof openUrl>
 
 jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockReturnValue(true)
+
+const apiRecoParams: SimilarOffersResponseParams = {
+  call_id: '1',
+  filtered: true,
+  geo_located: false,
+  model_endpoint: 'default',
+  model_name: 'similar_offers_default_prod',
+  model_version: 'similar_offers_clicks_v2_1_prod_v_20230317T173445',
+  reco_origin: 'default',
+}
 
 const offerDigitalAndFree = {
   isDigital: true,
@@ -139,8 +153,14 @@ describe('<Offer />', () => {
     })
 
     it('should log two logPlaylistVerticalScroll events when scrolling vertical and reaching the bottom when there are 2 playlists', async () => {
-      useSimilarOffersSpy.mockReturnValueOnce(mockedAlgoliaResponse.hits)
-      useSimilarOffersSpy.mockReturnValueOnce(mockedAlgoliaResponse.hits)
+      useSimilarOffersSpy.mockReturnValueOnce({
+        similarOffers: mockedAlgoliaResponse.hits,
+        apiRecoParams,
+      })
+      useSimilarOffersSpy.mockReturnValueOnce({
+        similarOffers: mockedAlgoliaResponse.hits,
+        apiRecoParams,
+      })
 
       const { getByTestId } = renderOfferPage()
       const scrollView = getByTestId('offer-container')
@@ -150,12 +170,14 @@ describe('<Offer />', () => {
       })
 
       expect(analytics.logPlaylistVerticalScroll).toHaveBeenNthCalledWith(1, {
+        ...apiRecoParams,
         fromOfferId: undefined,
         offerId: 116656,
         playlistType: PlaylistType.SAME_CATEGORY_SIMILAR_OFFERS,
         shouldUseAlgoliaRecommend: false,
       })
       expect(analytics.logPlaylistVerticalScroll).toHaveBeenNthCalledWith(2, {
+        ...apiRecoParams,
         fromOfferId: undefined,
         offerId: 116656,
         playlistType: PlaylistType.OTHER_CATEGORIES_SIMILAR_OFFERS,
@@ -164,8 +186,8 @@ describe('<Offer />', () => {
     })
 
     it('should not log two logPlaylistVerticalScroll events when scrolling vertical and reaching the bottom when playlist are empty', async () => {
-      useSimilarOffersSpy.mockReturnValueOnce([])
-      useSimilarOffersSpy.mockReturnValueOnce([])
+      useSimilarOffersSpy.mockReturnValueOnce({ similarOffers: [], apiRecoParams })
+      useSimilarOffersSpy.mockReturnValueOnce({ similarOffers: [], apiRecoParams })
       const { getByTestId } = renderOfferPage()
       const scrollView = getByTestId('offer-container')
 
@@ -175,12 +197,14 @@ describe('<Offer />', () => {
 
       await waitFor(() => {
         expect(analytics.logPlaylistVerticalScroll).not.toHaveBeenNthCalledWith(1, {
+          ...apiRecoParams,
           fromOfferId: undefined,
           offerId: 116656,
           playlistType: PlaylistType.SAME_CATEGORY_SIMILAR_OFFERS,
           shouldUseAlgoliaRecommend: false,
         })
         expect(analytics.logPlaylistVerticalScroll).not.toHaveBeenNthCalledWith(2, {
+          ...apiRecoParams,
           fromOfferId: undefined,
           offerId: 116656,
           playlistType: PlaylistType.OTHER_CATEGORIES_SIMILAR_OFFERS,
@@ -191,8 +215,11 @@ describe('<Offer />', () => {
 
     describe('When there is only same category similar offers playlist', () => {
       beforeAll(() => {
-        useSimilarOffersSpy.mockReturnValueOnce(mockedAlgoliaResponse.hits)
-        useSimilarOffersSpy.mockReturnValueOnce([])
+        useSimilarOffersSpy.mockReturnValueOnce({
+          similarOffers: mockedAlgoliaResponse.hits,
+          apiRecoParams,
+        })
+        useSimilarOffersSpy.mockReturnValueOnce({ similarOffers: [], apiRecoParams })
       })
 
       it('should log logPlaylistVerticalScroll event with same category similar offers playlist param when scrolling vertical and reaching the bottom ', async () => {
@@ -204,6 +231,7 @@ describe('<Offer />', () => {
         })
 
         expect(analytics.logPlaylistVerticalScroll).toHaveBeenNthCalledWith(1, {
+          ...apiRecoParams,
           fromOfferId: undefined,
           offerId: 116656,
           playlistType: PlaylistType.SAME_CATEGORY_SIMILAR_OFFERS,
@@ -230,8 +258,11 @@ describe('<Offer />', () => {
 
     describe('When there is only other categories similar offers playlist', () => {
       beforeAll(() => {
-        useSimilarOffersSpy.mockReturnValueOnce([])
-        useSimilarOffersSpy.mockReturnValueOnce(mockedAlgoliaResponse.hits)
+        useSimilarOffersSpy.mockReturnValueOnce({ similarOffers: [], apiRecoParams })
+        useSimilarOffersSpy.mockReturnValueOnce({
+          similarOffers: mockedAlgoliaResponse.hits,
+          apiRecoParams,
+        })
       })
 
       it('should log logPlaylistVerticalScroll event with other categories similar offers playlist param when scrolling vertical and reaching the bottom', async () => {
@@ -243,6 +274,7 @@ describe('<Offer />', () => {
         })
 
         expect(analytics.logPlaylistVerticalScroll).toHaveBeenNthCalledWith(1, {
+          ...apiRecoParams,
           fromOfferId: undefined,
           offerId: 116656,
           playlistType: PlaylistType.OTHER_CATEGORIES_SIMILAR_OFFERS,
@@ -268,8 +300,14 @@ describe('<Offer />', () => {
     })
 
     it('should not log logPlaylistVerticalScroll event when scrolling vertical and not reaching the bottom', async () => {
-      useSimilarOffersSpy.mockReturnValueOnce(mockedAlgoliaResponse.hits)
-      useSimilarOffersSpy.mockReturnValueOnce(mockedAlgoliaResponse.hits)
+      useSimilarOffersSpy.mockReturnValueOnce({
+        similarOffers: mockedAlgoliaResponse.hits,
+        apiRecoParams,
+      })
+      useSimilarOffersSpy.mockReturnValueOnce({
+        similarOffers: mockedAlgoliaResponse.hits,
+        apiRecoParams,
+      })
       renderOfferPage()
       const scrollView = screen.getByTestId('offer-container')
 
@@ -278,12 +316,14 @@ describe('<Offer />', () => {
       })
 
       expect(analytics.logPlaylistVerticalScroll).not.toHaveBeenNthCalledWith(1, {
+        ...apiRecoParams,
         fromOfferId: undefined,
         offerId: 116656,
         playlistType: PlaylistType.SAME_CATEGORY_SIMILAR_OFFERS,
         shouldUseAlgoliaRecommend: false,
       })
       expect(analytics.logPlaylistVerticalScroll).not.toHaveBeenNthCalledWith(2, {
+        ...apiRecoParams,
         fromOfferId: undefined,
         offerId: 116656,
         playlistType: PlaylistType.OTHER_CATEGORIES_SIMILAR_OFFERS,
@@ -292,8 +332,14 @@ describe('<Offer />', () => {
     })
 
     it('should log logPlaylistVerticalScroll with the event param fromOfferId & offerId', async () => {
-      useSimilarOffersSpy.mockReturnValueOnce(mockedAlgoliaResponse.hits)
-      useSimilarOffersSpy.mockReturnValueOnce(mockedAlgoliaResponse.hits)
+      useSimilarOffersSpy.mockReturnValueOnce({
+        similarOffers: mockedAlgoliaResponse.hits,
+        apiRecoParams,
+      })
+      useSimilarOffersSpy.mockReturnValueOnce({
+        similarOffers: mockedAlgoliaResponse.hits,
+        apiRecoParams,
+      })
       const fromOfferId = 1
       const offerId = 116656
       renderOfferPage(fromOfferId)
@@ -304,12 +350,14 @@ describe('<Offer />', () => {
       })
 
       expect(analytics.logPlaylistVerticalScroll).toHaveBeenNthCalledWith(1, {
+        ...apiRecoParams,
         fromOfferId,
         offerId,
         playlistType: PlaylistType.SAME_CATEGORY_SIMILAR_OFFERS,
         shouldUseAlgoliaRecommend: false,
       })
       expect(analytics.logPlaylistVerticalScroll).toHaveBeenNthCalledWith(2, {
+        ...apiRecoParams,
         fromOfferId,
         offerId,
         playlistType: PlaylistType.OTHER_CATEGORIES_SIMILAR_OFFERS,
@@ -322,8 +370,14 @@ describe('<Offer />', () => {
         mockShouldUseAlgoliaRecommend = true
       })
       it('should log two logPlaylistVerticalScroll events when scrolling vertical and reaching the bottom when there are 2 playlists when A/B Testing activated', async () => {
-        useSimilarOffersSpy.mockReturnValueOnce(mockedAlgoliaResponse.hits)
-        useSimilarOffersSpy.mockReturnValueOnce(mockedAlgoliaResponse.hits)
+        useSimilarOffersSpy.mockReturnValueOnce({
+          similarOffers: mockedAlgoliaResponse.hits,
+          apiRecoParams,
+        })
+        useSimilarOffersSpy.mockReturnValueOnce({
+          similarOffers: mockedAlgoliaResponse.hits,
+          apiRecoParams,
+        })
         const { getByTestId } = renderOfferPage()
         const scrollView = getByTestId('offer-container')
 
@@ -332,12 +386,14 @@ describe('<Offer />', () => {
         })
 
         expect(analytics.logPlaylistVerticalScroll).toHaveBeenNthCalledWith(1, {
+          ...apiRecoParams,
           fromOfferId: undefined,
           offerId: 116656,
           playlistType: PlaylistType.SAME_CATEGORY_SIMILAR_OFFERS,
           shouldUseAlgoliaRecommend: true,
         })
         expect(analytics.logPlaylistVerticalScroll).toHaveBeenNthCalledWith(2, {
+          ...apiRecoParams,
           fromOfferId: undefined,
           offerId: 116656,
           playlistType: PlaylistType.OTHER_CATEGORIES_SIMILAR_OFFERS,

@@ -16,7 +16,7 @@ jest.mock('features/identityCheck/context/SubscriptionContextProvider', () => ({
     dispatch: jest.fn(),
     phoneValidation: {
       phoneNumber: '0612345678',
-      country: { callingCodes: ['33'], countryCode: 'FR' },
+      country: { callingCode: '33', countryCode: 'FR' },
     },
   }),
 }))

@@ -1,14 +1,70 @@
 import React from 'react'
 
-import { NonEligibleModal } from 'features/tutorial/pages/NonEligibleModal'
-import { NonEligible } from 'features/tutorial/types'
-import { render } from 'tests/utils/web'
+import { NonEligible, TutorialTypes } from 'features/tutorial/enums'
+import { render, checkAccessibilityFor } from 'tests/utils/web'
 
-describe('NonEligibleModal', () => {
-  it.each(Object.values(NonEligible))('should render null in web', (modalType) => {
-    const { container } = render(
-      <NonEligibleModal visible hideModal={jest.fn()} modalType={modalType} />
-    )
-    expect(container).toBeEmptyDOMElement()
+import { NonEligibleModal } from './NonEligibleModal'
+
+describe('<NonEligibleModal/>', () => {
+  describe('Accessibility', () => {
+    it('should render correctly for onboarding non-eligible under 15', async () => {
+      const { container } = render(
+        <NonEligibleModal
+          visible
+          hideModal={jest.fn()}
+          userStatus={NonEligible.UNDER_15}
+          type={TutorialTypes.ONBOARDING}
+        />
+      )
+
+      const results = await checkAccessibilityFor(container)
+
+      expect(results).toHaveNoViolations()
+    })
+
+    it('should render correctly for profile tutorial non-eligible under 15 ', async () => {
+      const { container } = render(
+        <NonEligibleModal
+          visible
+          hideModal={jest.fn()}
+          userStatus={NonEligible.UNDER_15}
+          type={TutorialTypes.PROFILE_TUTORIAL}
+        />
+      )
+
+      const results = await checkAccessibilityFor(container)
+
+      expect(results).toHaveNoViolations()
+    })
+
+    it('should render correctly for onboarding non-eligible over 18 ', async () => {
+      const { container } = render(
+        <NonEligibleModal
+          visible
+          hideModal={jest.fn()}
+          userStatus={NonEligible.OVER_18}
+          type={TutorialTypes.ONBOARDING}
+        />
+      )
+
+      const results = await checkAccessibilityFor(container)
+
+      expect(results).toHaveNoViolations()
+    })
+
+    it('should render correctly for profile tutorial non-eligible over 18 ', async () => {
+      const { container } = render(
+        <NonEligibleModal
+          visible
+          hideModal={jest.fn()}
+          userStatus={NonEligible.OVER_18}
+          type={TutorialTypes.PROFILE_TUTORIAL}
+        />
+      )
+
+      const results = await checkAccessibilityFor(container)
+
+      expect(results).toHaveNoViolations()
+    })
   })
 })

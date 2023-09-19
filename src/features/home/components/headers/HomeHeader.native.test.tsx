@@ -1,3 +1,4 @@
+import { NavigationContainer } from '@react-navigation/native'
 import mockdate from 'mockdate'
 import { rest } from 'msw'
 import React from 'react'
@@ -20,6 +21,8 @@ import { server } from 'tests/server'
 import { act, render, screen, waitFor } from 'tests/utils'
 
 import { HomeHeader } from './HomeHeader'
+
+jest.unmock('@react-navigation/native')
 
 const mockUseAuthContext = jest.spyOn(Auth, 'useAuthContext')
 
@@ -243,10 +246,17 @@ describe('HomeHeader', () => {
 })
 
 function renderHomeHeader(isDesktopViewport?: boolean) {
-  // eslint-disable-next-line local-rules/no-react-query-provider-hoc
-  return render(reactQueryProviderHOC(<HomeHeader />), {
-    theme: { isDesktopViewport: isDesktopViewport ?? false },
-  })
+  return render(
+    // eslint-disable-next-line local-rules/no-react-query-provider-hoc
+    reactQueryProviderHOC(
+      <NavigationContainer>
+        <HomeHeader />
+      </NavigationContainer>
+    ),
+    {
+      theme: { isDesktopViewport: isDesktopViewport ?? false },
+    }
+  )
 }
 
 function mockGeolocBannerFromBackend() {
