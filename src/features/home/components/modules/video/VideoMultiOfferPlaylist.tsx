@@ -1,3 +1,4 @@
+import { slice } from 'lodash'
 import React, { FunctionComponent } from 'react'
 
 import { VideoMultiOfferTile } from 'features/home/components/modules/video/VideoMultiOfferTile'
@@ -29,10 +30,12 @@ export const VideoMultiOfferPlaylist: FunctionComponent<Props> = ({
     )
   }
 
+  const offersToDisplay = slice(offers, 0, 10)
+
   return (
     <Playlist
       testID="video-multi-offers-module-list"
-      data={offers}
+      data={offersToDisplay}
       itemHeight={PLAYLIST_ITEM_HEIGHT}
       itemWidth={PLAYLIST_ITEM_WIDTH}
       renderItem={renderItem}
