@@ -35,7 +35,8 @@ const WrappedTemplate: ComponentStory<typeof VenueSelectionListItem> = (props) =
 export const WithNoTag = Template.bind({})
 WithNoTag.args = {
   title: 'Title',
-  address: 'Ivry-sur-Seine 94200, 16 rue Gabriel Peri Ivry-sur-Seine 94200, 16 rue Gabriel Peri Ivry-sur-Seine 94200, 16 rue Gabriel Peri',
+  address:
+    'Ivry-sur-Seine 94200, 16 rue Gabriel Peri Ivry-sur-Seine 94200, 16 rue Gabriel Peri Ivry-sur-Seine 94200, 16 rue Gabriel Peri',
   isSelected: false,
   onSelect: action('select'),
 }
@@ -51,7 +52,8 @@ WithNoTagAndSmallDescription.args = {
 export const WithTag = Template.bind({})
 WithTag.args = {
   title: 'Title',
-  address: 'Ivry-sur-Seine 94200, 16 rue Gabriel Peri Ivry-sur-Seine 94200, 16 rue Gabriel Peri Ivry-sur-Seine 94200, 16 rue Gabriel Peri',
+  address:
+    'Ivry-sur-Seine 94200, 16 rue Gabriel Peri Ivry-sur-Seine 94200, 16 rue Gabriel Peri Ivry-sur-Seine 94200, 16 rue Gabriel Peri',
   distance: '500m',
   isSelected: false,
   onSelect: action('select'),
