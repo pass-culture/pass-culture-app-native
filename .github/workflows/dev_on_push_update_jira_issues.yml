@@ -14,6 +14,7 @@ env:
   COMMIT_NUMBER_FIELD: customfield_10059
   COMMIT_HASH_FIELD: customfield_10060
   REPOSITORY_FIELD: customfield_10085
+  JIRA_BASE_URL: https://passculture.atlassian.net/
 
 jobs:
   issue-number:
@@ -57,7 +58,7 @@ jobs:
       - name: Login
         uses: atlassian/gajira-login@master
         env:
-          JIRA_BASE_URL: https://passculture.atlassian.net/
+          JIRA_BASE_URL: $JIRA_BASE_URL
           JIRA_USER_EMAIL: ${{ steps.secrets.outputs.JIRA_USER_EMAIL }}
           JIRA_API_TOKEN: ${{ steps.secrets.outputs.JIRA_API_TOKEN }}
 
@@ -114,7 +115,7 @@ jobs:
       - name: Login
         uses: atlassian/gajira-login@master
         env:
-          JIRA_BASE_URL: https://passculture.atlassian.net/
+          JIRA_BASE_URL: $JIRA_BASE_URL
           JIRA_USER_EMAIL: ${{ steps.secrets.outputs.JIRA_USER_EMAIL }}
           JIRA_API_TOKEN: ${{ steps.secrets.outputs.JIRA_API_TOKEN }}
 
