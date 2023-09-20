@@ -6,8 +6,8 @@ on:
       - master
 
 permissions:
-  contents: 'read'
-  id-token: 'write'
+  contents: read
+  id-token: write
 
 env:
   IMPROPRE_FIELD: customfield_10044
