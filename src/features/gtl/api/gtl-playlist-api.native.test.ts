@@ -369,7 +369,7 @@ describe('GTL Playlist API', () => {
               '_geoloc',
               'venue',
             ],
-            facetFilters: [['offer.isEducational:false']],
+            facetFilters: [['offer.isEducational:false'], ['offer.gtl_level1:Littérature']],
             hitsPerPage: 20,
             numericFilters: [['offer.prices: 0 TO 300']],
           },
