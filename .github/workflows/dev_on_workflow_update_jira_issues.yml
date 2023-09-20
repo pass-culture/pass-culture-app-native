@@ -57,7 +57,7 @@ jobs:
       - name: Login
         uses: atlassian/gajira-login@master
         env:
-          JIRA_BASE_URL: $JIRA_BASE_URL
+          JIRA_BASE_URL: ${{ env.JIRA_BASE_URL }}
           JIRA_USER_EMAIL: ${{ steps.secrets.outputs.JIRA_USER_EMAIL }}
           JIRA_API_TOKEN: ${{ steps.secrets.outputs.JIRA_API_TOKEN }}
 
@@ -114,7 +114,7 @@ jobs:
       - name: Login
         uses: atlassian/gajira-login@master
         env:
-          JIRA_BASE_URL: $JIRA_BASE_URL
+          JIRA_BASE_URL: ${{ env.JIRA_BASE_URL }}
           JIRA_USER_EMAIL: ${{ steps.secrets.outputs.JIRA_USER_EMAIL }}
           JIRA_API_TOKEN: ${{ steps.secrets.outputs.JIRA_API_TOKEN }}
 
