@@ -1,13 +1,12 @@
 name: Update jira issues
 
 on:
-  push:
-    branches:
-      - master
-
-permissions:
-  contents: read
-  id-token: write
+  workflow_call:
+    secrets:
+      GCP_EHP_SERVICE_ACCOUNT:
+        required: true
+      GCP_EHP_WORKLOAD_IDENTITY_PROVIDER:
+        required: true
 
 env:
   IMPROPRE_FIELD: customfield_10044
