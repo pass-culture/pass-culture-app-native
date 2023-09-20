@@ -1,7 +1,9 @@
-import React, { FunctionComponent, useRef } from 'react'
+import React, { useRef } from 'react'
 import { ScrollView } from 'react-native'
 import styled from 'styled-components/native'
 
+import { GTLPlaylistResponse } from 'features/gtl/api/gtl-playlist-api'
+import { GtlPlaylist } from 'features/gtl/components/GtlPlaylist'
 import { useVenue } from 'features/venue/api/useVenue'
 import { useVenueOffers } from 'features/venue/api/useVenueOffers'
 import { VenueIconCaptions } from 'features/venue/components/VenueIconCaptions/VenueIconCaptions'
@@ -26,9 +28,10 @@ import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 interface Props {
   venueId: number
   onScroll: () => void
+  playlists?: GTLPlaylistResponse
 }
 
-export const VenueBody: FunctionComponent<Props> = ({ venueId, onScroll }) => {
+export function VenueBody({ venueId, onScroll, playlists }: Props) {
   const { data: venue } = useVenue(venueId)
   const { data: offers } = useVenueOffers(venueId)
   const scrollViewRef = useRef<ScrollView | null>(null)
@@ -164,6 +167,14 @@ export const VenueBody: FunctionComponent<Props> = ({ venueId, onScroll }) => {
       <SectionWithDivider visible={shouldShowContact} onLayout={setContactAccordionPosition}>
         <AccordionItem title="Contact" onOpen={contactScrollsTo}>
           <ContactBlock venueId={venueId} />
+        </AccordionItem>
+      </SectionWithDivider>
+
+      <SectionWithDivider visible={Boolean(playlists?.length)}>
+        <AccordionItem title="Playlists">
+          {playlists?.map((playlist) => (
+            <GtlPlaylist key={playlist.title} venue={venue} playlist={playlist} />
+          )) ?? <React.Fragment />}
         </AccordionItem>
       </SectionWithDivider>
 
