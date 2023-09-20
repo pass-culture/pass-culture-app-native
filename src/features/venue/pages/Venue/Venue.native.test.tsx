@@ -1,13 +1,16 @@
+import { SearchResponse } from '@algolia/client-search'
 import mockdate from 'mockdate'
 import React from 'react'
 
 import { useRoute } from '__mocks__/@react-navigation/native'
+import * as useGTLPlaylistsLibrary from 'features/gtl/api/gtl-playlist-api'
 import { Referrals } from 'features/navigation/RootNavigator/types'
 import { venueResponseSnap } from 'features/venue/fixtures/venueResponseSnap'
 import { Venue } from 'features/venue/pages/Venue/Venue'
 import { analytics } from 'libs/analytics'
 import { BatchEvent, BatchUser } from 'libs/react-native-batch'
 import { placeholderData } from 'libs/subcategories/placeholderData'
+import { Offer } from 'shared/offer/types'
 import {
   render,
   screen,
@@ -36,6 +39,29 @@ jest.mock('libs/subcategories/useSubcategories', () => ({
 const venueId = venueResponseSnap.id
 
 const BATCH_TRIGGER_DELAY_IN_MS = 5000
+
+jest.mock('features/home/helpers/useHomePosition', () => ({
+  useHomePosition: jest.fn().mockReturnValue({
+    position: {
+      latitude: 2,
+      longitude: 2,
+    },
+  }),
+}))
+
+jest.mock('features/profile/helpers/useIsUserUnderage', () => ({
+  useIsUserUnderage: jest.fn().mockReturnValue(false),
+}))
+
+jest.spyOn(useGTLPlaylistsLibrary, 'fetchGTLPlaylists').mockResolvedValue([
+  {
+    title: 'Test',
+    offers: {
+      hits: [],
+    } as unknown as SearchResponse<Offer>,
+    layout: 'one-item-medium',
+  },
+])
 
 jest.useFakeTimers({ legacyFakeTimers: true })
 

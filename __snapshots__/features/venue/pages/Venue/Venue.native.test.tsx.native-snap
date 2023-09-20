@@ -964,9 +964,9 @@ exports[`<Venue /> should match snapshot 1`] = `
                         "dataFooter": true,
                       },
                     ],
-                    "_firstIndexToProcess": 0,
+                    "_firstIndexToProcess": 3,
                     "_hasStableIds": true,
-                    "_requiresDataChangeHandling": false,
+                    "_requiresDataChangeHandling": true,
                     "_size": 4,
                     "getStableId": [Function],
                     "rowHasChanged": [Function],
@@ -4817,6 +4817,579 @@ d’options
                 >
                   Site internet
                 </Text>
+              </View>
+            </View>
+          </View>
+        </View>
+      </View>
+      <View>
+        <View
+          style={
+            [
+              {
+                "backgroundColor": "#F1F1F4",
+                "height": 8,
+              },
+            ]
+          }
+        />
+        <View
+          style={
+            [
+              {
+                "alignItems": "center",
+                "flexDirection": "row",
+              },
+            ]
+          }
+        >
+          <View
+            accessibilityRole="button"
+            accessibilityState={
+              {
+                "busy": undefined,
+                "checked": undefined,
+                "disabled": undefined,
+                "expanded": false,
+                "selected": undefined,
+              }
+            }
+            accessibilityValue={
+              {
+                "max": undefined,
+                "min": undefined,
+                "now": undefined,
+                "text": undefined,
+              }
+            }
+            accessible={false}
+            collapsable={false}
+            focusable={true}
+            onClick={[Function]}
+            onResponderGrant={[Function]}
+            onResponderMove={[Function]}
+            onResponderRelease={[Function]}
+            onResponderTerminate={[Function]}
+            onResponderTerminationRequest={[Function]}
+            onStartShouldSetResponder={[Function]}
+            style={
+              {
+                "flexBasis": 0,
+                "flexGrow": 1,
+                "flexShrink": 1,
+                "opacity": 1,
+                "userSelect": "auto",
+              }
+            }
+            testID="accordionTouchable"
+          >
+            <View
+              nativeID="testUuidV4"
+              style={
+                [
+                  {
+                    "alignItems": "center",
+                    "flexDirection": "row",
+                    "justifyContent": "space-between",
+                    "paddingHorizontal": 24,
+                    "paddingVertical": 20,
+                  },
+                  undefined,
+                ]
+              }
+            >
+              <Text
+                style={
+                  [
+                    {
+                      "color": "#161617",
+                      "flexBasis": 0,
+                      "flexGrow": 0.9,
+                      "flexShrink": 1,
+                      "fontFamily": "Montserrat-Medium",
+                      "fontSize": 18,
+                      "lineHeight": 22,
+                    },
+                  ]
+                }
+              >
+                Playlists
+              </Text>
+              <View
+                collapsable={false}
+                style={
+                  {
+                    "transform": [
+                      {
+                        "rotateZ": "1.5707963267948966rad",
+                      },
+                    ],
+                  }
+                }
+                testID="accordionArrow"
+              >
+                <View
+                  height={20}
+                  width={20}
+                >
+                  <Text>
+                    undefined-SVG-Mock
+                  </Text>
+                </View>
+              </View>
+            </View>
+          </View>
+        </View>
+        <View
+          collapsable={false}
+          style={
+            {
+              "height": 0,
+              "overflow": "hidden",
+            }
+          }
+          testID="accordionBody"
+        >
+          <View
+            accessibilityLabelledBy="testUuidV4"
+            hidden={true}
+            nativeID="testUuidV4"
+            onLayout={[Function]}
+            style={
+              [
+                {
+                  "bottom": 0,
+                  "display": "none",
+                  "paddingBottom": 24,
+                  "paddingHorizontal": 24,
+                  "paddingTop": 0,
+                  "position": "absolute",
+                  "width": "100%",
+                },
+              ]
+            }
+            testID="accordionBodyContainer"
+          >
+            <View
+              style={
+                [
+                  {
+                    "paddingBottom": 24,
+                  },
+                ]
+              }
+            >
+              <View
+                style={
+                  [
+                    {
+                      "maxHeight": 68,
+                      "overflow": "hidden",
+                    },
+                  ]
+                }
+              >
+                <View
+                  style={
+                    [
+                      {
+                        "alignItems": "center",
+                        "flexDirection": "row",
+                        "marginHorizontal": 24,
+                      },
+                    ]
+                  }
+                >
+                  <Text
+                    numberOfLines={2}
+                    style={
+                      [
+                        {
+                          "color": "#161617",
+                          "fontFamily": "Montserrat-Bold",
+                          "fontSize": 20,
+                          "lineHeight": 24,
+                        },
+                      ]
+                    }
+                    testID="playlistTitle"
+                  >
+                    Test
+                  </Text>
+                </View>
+              </View>
+              <View
+                numberOfSpaces={4}
+                style={
+                  [
+                    {
+                      "height": 16,
+                    },
+                  ]
+                }
+              />
+              <View
+                style={
+                  [
+                    {
+                      "position": "relative",
+                      "width": "100%",
+                    },
+                  ]
+                }
+              >
+                <View
+                  style={{}}
+                >
+                  <RCTScrollView
+                    ItemSeparatorComponent={
+                      {
+                        "$$typeof": Symbol(react.forward_ref),
+                        "attrs": [],
+                        "inlineStyle": InlineStyle {
+                          "rules": [
+                            "width: 16px;",
+                          ],
+                        },
+                        "render": [Function],
+                        "shouldForwardProp": undefined,
+                        "styledComponentId": "StyledNativeComponent",
+                        "target": [Function],
+                        "withComponent": [Function],
+                      }
+                    }
+                    ListFooterComponent={
+                      {
+                        "$$typeof": Symbol(react.forward_ref),
+                        "attrs": [],
+                        "inlineStyle": InlineStyle {
+                          "rules": [
+                            "width: 24px;",
+                          ],
+                        },
+                        "render": [Function],
+                        "shouldForwardProp": undefined,
+                        "styledComponentId": "StyledNativeComponent",
+                        "target": [Function],
+                        "withComponent": [Function],
+                      }
+                    }
+                    ListHeaderComponent={
+                      {
+                        "$$typeof": Symbol(react.forward_ref),
+                        "attrs": [],
+                        "inlineStyle": InlineStyle {
+                          "rules": [
+                            "width: 24px;",
+                          ],
+                        },
+                        "render": [Function],
+                        "shouldForwardProp": undefined,
+                        "styledComponentId": "StyledNativeComponent",
+                        "target": [Function],
+                        "withComponent": [Function],
+                      }
+                    }
+                    applyWindowCorrection={[Function]}
+                    canChangeSize={true}
+                    contentContainerStyle={
+                      {
+                        "backgroundColor": undefined,
+                        "minHeight": 1,
+                        "minWidth": 1,
+                        "paddingBottom": 0,
+                        "paddingTop": 0,
+                      }
+                    }
+                    contentHeight={250}
+                    contentWidth={0}
+                    data={[]}
+                    dataProvider={
+                      DataProvider {
+                        "_data": [],
+                        "_firstIndexToProcess": 0,
+                        "_hasStableIds": true,
+                        "_requiresDataChangeHandling": false,
+                        "_size": 0,
+                        "getStableId": [Function],
+                        "rowHasChanged": [Function],
+                      }
+                    }
+                    disableRecycling={false}
+                    estimatedItemSize={192}
+                    extendedState={{}}
+                    externalScrollView={[Function]}
+                    finalRenderAheadOffset={187.5}
+                    forceNonDeterministicRendering={true}
+                    getItemLayout={[Function]}
+                    horizontal={true}
+                    initialOffset={0}
+                    initialRenderIndex={0}
+                    isHorizontal={true}
+                    keyExtractor={[Function]}
+                    layoutProvider={
+                      GridLayoutProviderWithProps {
+                        "_acceptableRelayoutDelta": 1,
+                        "_getHeightOrWidth": [Function],
+                        "_getLayoutTypeForIndex": [Function],
+                        "_getSpan": [Function],
+                        "_hasExpired": false,
+                        "_isHorizontal": true,
+                        "_lastLayoutManager": GridLayoutManager {
+                          "_acceptableRelayoutDelta": 1,
+                          "_getSpan": [Function],
+                          "_isGridHorizontal": true,
+                          "_isHorizontal": true,
+                          "_layoutProvider": [Circular],
+                          "_layouts": [],
+                          "_maxSpan": 1,
+                          "_renderWindowSize": {
+                            "height": 250,
+                            "width": 800,
+                          },
+                          "_totalHeight": 250,
+                          "_totalWidth": 0,
+                          "_window": {
+                            "height": 250,
+                            "width": 800,
+                          },
+                        },
+                        "_maxSpan": 1,
+                        "_renderWindowSize": {
+                          "height": 250,
+                          "width": 800,
+                        },
+                        "_setLayoutForType": [Function],
+                        "_tempDim": {
+                          "height": 0,
+                          "width": 0,
+                        },
+                        "averageWindow": AverageWindow {
+                          "currentAverage": 192,
+                          "currentCount": 1,
+                          "inputValues": [
+                            192,
+                            ,
+                            ,
+                            ,
+                            ,
+                            ,
+                            ,
+                            ,
+                          ],
+                          "nextIndex": 1,
+                        },
+                        "defaultEstimatedItemSize": 100,
+                        "layoutObject": {
+                          "size": undefined,
+                          "span": undefined,
+                        },
+                        "props": {
+                          "ItemSeparatorComponent": {
+                            "$$typeof": Symbol(react.forward_ref),
+                            "attrs": [],
+                            "inlineStyle": InlineStyle {
+                              "rules": [
+                                "width: 16px;",
+                              ],
+                            },
+                            "render": [Function],
+                            "shouldForwardProp": undefined,
+                            "styledComponentId": "StyledNativeComponent",
+                            "target": [Function],
+                            "withComponent": [Function],
+                          },
+                          "ListFooterComponent": {
+                            "$$typeof": Symbol(react.forward_ref),
+                            "attrs": [],
+                            "inlineStyle": InlineStyle {
+                              "rules": [
+                                "width: 24px;",
+                              ],
+                            },
+                            "render": [Function],
+                            "shouldForwardProp": undefined,
+                            "styledComponentId": "StyledNativeComponent",
+                            "target": [Function],
+                            "withComponent": [Function],
+                          },
+                          "ListHeaderComponent": {
+                            "$$typeof": Symbol(react.forward_ref),
+                            "attrs": [],
+                            "inlineStyle": InlineStyle {
+                              "rules": [
+                                "width: 24px;",
+                              ],
+                            },
+                            "render": [Function],
+                            "shouldForwardProp": undefined,
+                            "styledComponentId": "StyledNativeComponent",
+                            "target": [Function],
+                            "withComponent": [Function],
+                          },
+                          "data": [],
+                          "drawDistance": 187.5,
+                          "estimatedItemSize": 192,
+                          "getItemLayout": [Function],
+                          "horizontal": true,
+                          "keyExtractor": [Function],
+                          "numColumns": 1,
+                          "onEndReached": undefined,
+                          "onEndReachedThreshold": 0.2,
+                          "onLayout": [Function],
+                          "renderItem": [Function],
+                          "scrollEnabled": true,
+                          "scrollEventThrottle": 200,
+                          "showsHorizontalScrollIndicator": false,
+                          "testID": "offersModuleList",
+                        },
+                        "renderWindowInsets": {
+                          "height": 0,
+                          "width": 0,
+                        },
+                        "shouldRefreshWithAnchoring": true,
+                      }
+                    }
+                    maxRenderAhead={562.5}
+                    numColumns={1}
+                    onEndReached={[Function]}
+                    onEndReachedThreshold={0}
+                    onEndReachedThresholdRelative={0.2}
+                    onItemLayout={[Function]}
+                    onLayout={[Function]}
+                    onScroll={[Function]}
+                    onScrollBeginDrag={[Function]}
+                    onSizeChanged={[Function]}
+                    onVisibleIndicesChanged={[Function]}
+                    removeClippedSubviews={false}
+                    renderAheadOffset={0}
+                    renderAheadStep={187.5}
+                    renderContentContainer={[Function]}
+                    renderItem={[Function]}
+                    renderItemContainer={[Function]}
+                    rowRenderer={[Function]}
+                    scrollEnabled={true}
+                    scrollEventThrottle={200}
+                    scrollThrottle={16}
+                    scrollViewProps={
+                      {
+                        "contentContainerStyle": {
+                          "backgroundColor": undefined,
+                          "minHeight": 1,
+                          "minWidth": 1,
+                          "paddingBottom": 0,
+                          "paddingTop": 0,
+                        },
+                        "onLayout": [Function],
+                        "onScrollBeginDrag": [Function],
+                        "refreshControl": undefined,
+                        "style": {
+                          "minHeight": 1,
+                          "minWidth": 1,
+                        },
+                      }
+                    }
+                    showsHorizontalScrollIndicator={false}
+                    style={
+                      {
+                        "minHeight": 1,
+                        "minWidth": 1,
+                      }
+                    }
+                    suppressBoundedSizeException={true}
+                    testID="offersModuleList"
+                    windowCorrectionConfig={
+                      {
+                        "applyToInitialOffset": true,
+                        "applyToItemScroll": true,
+                        "value": {
+                          "endCorrection": 0,
+                          "startCorrection": 0,
+                          "windowShift": -1,
+                        },
+                      }
+                    }
+                  >
+                    <View>
+                      <View
+                        style={
+                          {
+                            "flexDirection": "row",
+                          }
+                        }
+                      >
+                        <View
+                          style={
+                            {
+                              "paddingLeft": 0,
+                              "paddingTop": 0,
+                            }
+                          }
+                        />
+                        <View
+                          style={
+                            [
+                              undefined,
+                              undefined,
+                            ]
+                          }
+                        >
+                          <View
+                            style={
+                              [
+                                {
+                                  "width": 24,
+                                },
+                              ]
+                            }
+                          />
+                        </View>
+                        <AutoLayoutView
+                          enableInstrumentation={false}
+                          horizontal={true}
+                          onBlankAreaEvent={[Function]}
+                          onLayout={[Function]}
+                          renderAheadOffset={0}
+                          scrollOffset={0}
+                          style={
+                            {
+                              "height": 250,
+                              "width": 0,
+                            }
+                          }
+                          windowSize={800}
+                        />
+                        <CellContainer
+                          index={-1}
+                          style={
+                            [
+                              undefined,
+                              undefined,
+                            ]
+                          }
+                        >
+                          <View
+                            style={
+                              [
+                                {
+                                  "width": 24,
+                                },
+                              ]
+                            }
+                          />
+                        </CellContainer>
+                        <View
+                          style={
+                            {
+                              "paddingBottom": 0,
+                              "paddingRight": 0,
+                            }
+                          }
+                        />
+                      </View>
+                    </View>
+                  </RCTScrollView>
+                </View>
               </View>
             </View>
           </View>
