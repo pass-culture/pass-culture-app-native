@@ -11,7 +11,7 @@ interface MutationOptions {
 export function useSuspendForSuspiciousLoginMutation({ onSuccess, onError }: MutationOptions) {
   return useMutation(
     (body: SuspendAccountForSuspiciousLoginRequest) =>
-      api.postnativev1accountsuspendForSuspiciousLogin(body),
+      api.postNativeV1AccountSuspendForSuspiciousLogin(body),
     {
       onSuccess,
       onError,

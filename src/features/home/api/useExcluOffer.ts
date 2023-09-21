@@ -11,7 +11,7 @@ export const useExcluOffer = (id: number) => {
     [QueryKeys.OFFER, id],
     async () => {
       try {
-        return await api.getnativev1offerofferId(id)
+        return await api.getNativeV1OfferofferId(id)
       } catch (error) {
         // do nothing as an offer in contentful may not be in the backend
         return null

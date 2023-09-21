@@ -14,7 +14,7 @@ export const useReportedOffers = () => {
 
   return useQuery<UserReportedOffersResponse>(
     [QueryKeys.REPORTED_OFFERS],
-    () => api.getnativev1offersreports(),
+    () => api.getNativeV1OffersReports(),
     {
       enabled: !!netInfo.isConnected && !!netInfo.isInternetReachable && isLoggedIn,
       staleTime: STALE_TIME_REPORTED_OFFERS,

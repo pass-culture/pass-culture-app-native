@@ -37,7 +37,7 @@ export const SCREENS_CONFIG: {
       type: 'string',
       required: true,
       description: 'Identifiant unique de l’offre.',
-      serverValidator: (value: unknown) => api.getnativev1offerofferId(Number(value)),
+      serverValidator: (value: unknown) => api.getNativeV1OfferofferId(Number(value)),
     },
   },
   Venue: {
@@ -45,7 +45,7 @@ export const SCREENS_CONFIG: {
       type: 'string',
       required: true,
       description: 'Identifiant unique de lieu.',
-      serverValidator: (value: unknown) => api.getnativev1venuevenueId(Number(value)),
+      serverValidator: (value: unknown) => api.getNativeV1VenuevenueId(Number(value)),
     },
   },
   Home: {

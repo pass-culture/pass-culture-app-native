@@ -22,7 +22,7 @@ export const useSignIn = ({
 
   return useMutation(
     (body: SigninRequest) =>
-      api.postnativev1signin(
+      api.postNativeV1Signin(
         { ...body, deviceInfo: enableTrustedDevice ? deviceInfo : undefined },
         { credentials: 'omit' }
       ),

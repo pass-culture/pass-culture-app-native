@@ -11,7 +11,7 @@ interface Props {
 
 export function useReportOfferMutation({ offerId, onSuccess, onError }: Props) {
   return useMutation(
-    (body?: OfferReportRequest) => api.postnativev1offerofferIdreport(offerId, body),
+    (body?: OfferReportRequest) => api.postNativeV1OfferofferIdReport(offerId, body),
     {
       onSuccess,
       onError,

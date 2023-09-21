@@ -9,7 +9,7 @@ export const useCheckHasCurrentEmailChange = () => {
 
   const { data: currentEmailChangeTimestampResponse } = useQuery(
     [QueryKeys.EMAIL_CHANGE_EXPIRATION_TIMESTAMP],
-    () => api.getnativev1profiletokenExpiration(),
+    () => api.getNativeV1ProfileTokenExpiration(),
     { enabled: !!netInfo.isConnected }
   )
   const hasCurrentEmailChange = !!currentEmailChangeTimestampResponse?.expiration

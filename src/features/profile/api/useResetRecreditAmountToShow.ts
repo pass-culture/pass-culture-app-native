@@ -7,7 +7,7 @@ export function useResetRecreditAmountToShow({
   onSuccess,
   onError,
 }: ResetRecreditAmountToShowMutationOptions) {
-  return useMutation(() => api.postnativev1resetRecreditAmountToShow(), {
+  return useMutation(() => api.postNativeV1ResetRecreditAmountToShow(), {
     onSuccess,
     onError,
   })
