@@ -84,6 +84,7 @@ describe('VenueOfferTile component', () => {
       subcategoryId: offer.subcategoryId,
       venue: { coordinates: {} },
       isEducational: false,
+      metadata: undefined,
     })
   })
 })

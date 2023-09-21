@@ -6,7 +6,6 @@ import {
   BannerResponse,
   BookingsResponse,
   CookieConsentRequest,
-  CulturalSurveyRequest,
   FavoriteResponse,
   NextSubscriptionStepResponse,
   OfferResponse,
@@ -79,12 +78,6 @@ export const server = setupServer(
   rest.get<VenueResponse>(
     env.API_BASE_URL + '/native/v1/venue/' + venueResponseSnap.id,
     (_req, res, ctx) => res(ctx.status(200), ctx.json(venueResponseSnap))
-  ),
-  rest.post<CulturalSurveyRequest, EmptyResponse>(
-    env.API_BASE_URL + '/native/v1/me/cultural_survey',
-    (_req, res, ctx) => {
-      return res(ctx.status(200), ctx.json({}))
-    }
   ),
   rest.get<BookingsResponse>(env.API_BASE_URL + '/native/v1/bookings', (_req, res, ctx) => {
     return res(ctx.status(200), ctx.json(bookingsSnap))

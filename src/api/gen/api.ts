@@ -180,14 +180,15 @@ export interface ActivityResponseModel {
   label: string
 }
 /**
- * An enumeration.
  * @export
- * @enum {string}
+ * @interface ActivityTypesResponse
  */
-export enum AgentType {
-  'browser_computer' = 'browser_computer',
-  'browser_mobile' = 'browser_mobile',
-  'agent_mobile' = 'agent_mobile',
+export interface ActivityTypesResponse {
+  /**
+   * @type {Array<ActivityResponseModel>}
+   * @memberof ActivityTypesResponse
+   */
+  activities: Array<ActivityResponseModel>
 }
 /**
  * @export
@@ -308,6 +309,7 @@ export enum BookingCancellationReasons {
   'EXPIRED' = 'EXPIRED',
   'FRAUD' = 'FRAUD',
   'REFUSED_BY_INSTITUTE' = 'REFUSED_BY_INSTITUTE',
+  'FINANCE_INCIDENT' = 'FINANCE_INCIDENT',
 }
 /**
  * @export
@@ -645,10 +647,31 @@ export enum CategoryIdEnum {
  */
 export interface ChangeBeneficiaryEmailBody {
   /**
+   * @type {TrustedDevice}
+   * @memberof ChangeBeneficiaryEmailBody
+   */
+  deviceInfo?: TrustedDevice | null
+  /**
    * @type {string}
    * @memberof ChangeBeneficiaryEmailBody
    */
   token: string
+}
+/**
+ * @export
+ * @interface ChangeBeneficiaryEmailResponse
+ */
+export interface ChangeBeneficiaryEmailResponse {
+  /**
+   * @type {string}
+   * @memberof ChangeBeneficiaryEmailResponse
+   */
+  accessToken: string
+  /**
+   * @type {string}
+   * @memberof ChangeBeneficiaryEmailResponse
+   */
+  refreshToken: string
 }
 /**
  * @export
@@ -877,22 +900,6 @@ export interface CulturalSurveyQuestionsResponse {
 }
 /**
  * @export
- * @interface CulturalSurveyRequest
- */
-export interface CulturalSurveyRequest {
-  /**
-   * @type {string}
-   * @memberof CulturalSurveyRequest
-   */
-  culturalSurveyId?: string | null
-  /**
-   * @type {boolean}
-   * @memberof CulturalSurveyRequest
-   */
-  needsToFillCulturalSurvey: boolean
-}
-/**
- * @export
  * @interface CulturalSurveyUserAnswer
  */
 export interface CulturalSurveyUserAnswer {
@@ -1006,6 +1013,22 @@ export interface EmailUpdateStatus {
    * @memberof EmailUpdateStatus
    */
   status: EmailHistoryEventTypeEnum
+}
+/**
+ * @export
+ * @interface EmailValidationRemainingResendsResponse
+ */
+export interface EmailValidationRemainingResendsResponse {
+  /**
+   * @type {string}
+   * @memberof EmailValidationRemainingResendsResponse
+   */
+  counterResetDatetime?: string | null
+  /**
+   * @type {number}
+   * @memberof EmailValidationRemainingResendsResponse
+   */
+  remainingResends: number
 }
 /**
  * An enumeration.
@@ -1673,6 +1696,11 @@ export interface OfferResponse {
    * @memberof OfferResponse
    */
   isSoldOut: boolean
+  /**
+   * @type {any}
+   * @memberof OfferResponse
+   */
+  metadata: any
   /**
    * @type {string}
    * @memberof OfferResponse
@@ -2735,6 +2763,11 @@ export interface SubscriptionStepperResponse {
    */
   errorMessage?: string | null
   /**
+   * @type {MaintenancePageType}
+   * @memberof SubscriptionStepperResponse
+   */
+  maintenancePageType?: MaintenancePageType | null
+  /**
    * @type {Array<SubscriptionStepDetailsResponse>}
    * @memberof SubscriptionStepperResponse
    */
@@ -2824,11 +2857,6 @@ export interface UserProfileResponse {
    * @memberof UserProfileResponse
    */
   bookedOffers: { [key: string]: number; }
-  /**
-   * @type {string}
-   * @memberof UserProfileResponse
-   */
-  dateOfBirth?: string | null
   /**
    * @type {string}
    * @memberof UserProfileResponse
@@ -2971,6 +2999,7 @@ export enum UserRole {
   'ADMIN' = 'ADMIN',
   'BENEFICIARY' = 'BENEFICIARY',
   'PRO' = 'PRO',
+  'NON_ATTACHED_PRO' = 'NON_ATTACHED_PRO',
   'UNDERAGE_BENEFICIARY' = 'UNDERAGE_BENEFICIARY',
   'TEST' = 'TEST',
 }
@@ -3227,7 +3256,6 @@ export enum VenueTypeCodeKey {
   'CREATIVE_ARTS_STORE' = 'CREATIVE_ARTS_STORE',
   'CULTURAL_CENTRE' = 'CULTURAL_CENTRE',
   'DIGITAL' = 'DIGITAL',
-
   'FESTIVAL' = 'FESTIVAL',
   'GAMES' = 'GAMES',
   'LIBRARY' = 'LIBRARY',
