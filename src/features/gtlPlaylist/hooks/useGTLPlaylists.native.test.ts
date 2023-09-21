@@ -1,9 +1,9 @@
 import { SearchResponse } from '@algolia/client-search'
 
 import { Offer } from 'shared/offer/types'
-import { flushAllPromisesWithAct, renderHook } from 'tests/utils'
+import { renderHook, waitFor } from 'tests/utils'
 
-import * as useGTLPlaylistsLibrary from '../api/gtl-playlist-api'
+import * as useGTLPlaylistsLibrary from '../api/gtlPlaylistApi'
 
 import { useGTLPlaylists } from './useGTLPlaylists'
 
@@ -31,29 +31,33 @@ jest.spyOn(useGTLPlaylistsLibrary, 'fetchGTLPlaylists').mockResolvedValue([
 ])
 
 describe('useGTLPlaylists', () => {
-  it('should return correct data based on fetch api return', async () => {
+  it('should fetch GTL playlists', async () => {
+    renderHook(useGTLPlaylists)
+
+    await waitFor(() => {
+      expect(useGTLPlaylistsLibrary.fetchGTLPlaylists).toHaveBeenNthCalledWith(1, {
+        isUserUnderage: false,
+        position: {
+          latitude: 2,
+          longitude: 2,
+        },
+      })
+    })
+  })
+
+  it('should return playlists information', async () => {
     const { result } = renderHook(useGTLPlaylists)
 
-    expect(result.current).toEqual([])
-
-    await flushAllPromisesWithAct()
-
-    expect(result.current).toEqual([
-      {
-        title: 'Test',
-        offers: {
-          hits: [],
+    await waitFor(() => {
+      expect(result.current).toEqual([
+        {
+          title: 'Test',
+          offers: {
+            hits: [],
+          },
+          layout: 'one-item-medium',
         },
-        layout: 'one-item-medium',
-      },
-    ])
-
-    expect(useGTLPlaylistsLibrary.fetchGTLPlaylists).toHaveBeenNthCalledWith(1, {
-      isUserUnderage: false,
-      position: {
-        latitude: 2,
-        longitude: 2,
-      },
+      ])
     })
   })
 })

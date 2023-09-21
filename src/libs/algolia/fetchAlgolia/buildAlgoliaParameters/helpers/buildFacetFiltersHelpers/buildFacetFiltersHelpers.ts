@@ -4,7 +4,7 @@ import {
   SearchGroupNameEnumv2,
   SubcategoryIdEnumv2,
 } from 'api/gen'
-import { GTLLevel } from 'features/gtl/types'
+import { GTLLevel } from 'features/gtlPlaylist/types'
 import { OfferGenreType } from 'features/search/types'
 import { FACETS_FILTERS_ENUM } from 'libs/algolia/enums'
 import { FiltersArray, SearchQueryParameters } from 'libs/algolia/types'

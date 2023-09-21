@@ -1,6 +1,6 @@
 import resolveResponse from 'contentful-resolve-response'
 
-import { ContentfulGtlPlaylistResponse } from 'features/gtl/types'
+import { ContentfulGtlPlaylistResponse } from 'features/gtlPlaylist/types'
 import { SearchQueryParameters } from 'libs/algolia'
 import { buildOfferSearchParameters } from 'libs/algolia/fetchAlgolia/buildAlgoliaParameters/buildOfferSearchParameters'
 import { offerAttributesToRetrieve } from 'libs/algolia/fetchAlgolia/buildAlgoliaParameters/offerAttributesToRetrieve'
@@ -16,13 +16,15 @@ export const BASE_URL = `${CONTENTFUL_BASE_URL}/spaces/${env.CONTENTFUL_SPACE_ID
 const PARAMS = `?content_type=gtlPlaylist&access_token=${env.CONTENTFUL_ACCESS_TOKEN}`
 const URL = `${BASE_URL}/entries${PARAMS}`
 
+export type FetchOffersFromGTLPlaylistProps = {
+  position: Position
+  isUserUnderage: boolean
+}
+
 export async function fetchGTLPlaylists({
   position,
   isUserUnderage,
-}: {
-  position: Position
-  isUserUnderage: boolean
-}) {
+}: FetchOffersFromGTLPlaylistProps) {
   const json = await getExternal(URL)
   const jsonResponse = resolveResponse(json) as ContentfulGtlPlaylistResponse
 
@@ -33,7 +35,7 @@ export type GTLPlaylistResponse = Awaited<ReturnType<typeof fetchGTLPlaylists>>
 
 export async function fetchOffersFromGTLPlaylist(
   data: ContentfulGtlPlaylistResponse,
-  { position, isUserUnderage }: { position: Position; isUserUnderage: boolean }
+  { position, isUserUnderage }: FetchOffersFromGTLPlaylistProps
 ) {
   // Build parameters list from Contentful algolia parameters for algolia
   const paramList = data.map(

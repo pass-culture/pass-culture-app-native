@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 
-import { fetchGTLPlaylists, GTLPlaylistResponse } from 'features/gtl/api/gtl-playlist-api'
+import { fetchGTLPlaylists, GTLPlaylistResponse } from 'features/gtlPlaylist/api/gtlPlaylistApi'
 import { useHomePosition } from 'features/home/helpers/useHomePosition'
 import { useIsUserUnderage } from 'features/profile/helpers/useIsUserUnderage'
 

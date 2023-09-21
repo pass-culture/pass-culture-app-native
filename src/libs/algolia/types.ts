@@ -8,7 +8,7 @@ import {
   SearchGroupNameEnumv2,
   SubcategoryIdEnumv2,
 } from 'api/gen'
-import { GTLLevel } from 'features/gtl/types'
+import { GTLLevel } from 'features/gtlPlaylist/types'
 import { DATE_FILTER_OPTIONS, LocationType } from 'features/search/enums'
 import { Venue } from 'features/venue/types'
 import { AlgoliaHit } from 'libs/algolia'
