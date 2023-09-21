@@ -73,7 +73,7 @@
     "test:unit:full": "TZ=UTC JEST=true jest --collect-coverage",
     "test:unit:web": "TZ=UTC JEST=true node --no-compilation-cache --expose-gc ./node_modules/.bin/jest --config jest.web.config.js --forceExit  --logHeapUsage",
     "test:unit:web:ci": "yarn test:unit:web --maxWorkers=6 --coverage --ci --reporters=default --reporters=jest-junit",
-    "tracker:add": "python3 scripts/add_tracker.py",
+    "add:tracker": "python3 scripts/add_tracker.py",
     "trigger:production:deploy": "./scripts/deploy_new_production_version.sh",
     "trigger:production:deploy:ios": "./scripts/deploy.sh -o ios -t hard -e production",
     "trigger:staging:deploy": "./scripts/release_staging_minor.sh && ./scripts/deploy_new_version.sh testing/v minor",
