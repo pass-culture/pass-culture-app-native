@@ -10,6 +10,7 @@ import { EligibleAges } from 'features/tutorial/types'
 import { analytics } from 'libs/analytics'
 import { storage } from 'libs/storage'
 import { AccessibilityList } from 'ui/components/accessibility/AccessibilityList'
+import { InternalNavigationProps } from 'ui/components/touchableLink/types'
 import { All } from 'ui/svg/icons/bicolor/All'
 import { Spacer, Typo } from 'ui/theme'
 import { getNoHeadingAttrs } from 'ui/theme/typographyAttrs/getNoHeadingAttrs'
@@ -35,38 +36,44 @@ export const AgeSelection: FunctionComponent<Props> = ({ route }: Props) => {
   const type = route.params.type
 
   const AgeSelectionButtons = ageButtons.map(({ age }) => {
-    const startButtonTitle = type === TutorialTypes.ONBOARDING ? 'j’ai' : 'à'
+    const isOnboarding = type === TutorialTypes.ONBOARDING
+    const startButtonTitle = isOnboarding ? 'j’ai' : 'à'
+    const AgeInformationNavigateTo: InternalNavigationProps['navigateTo'] = isOnboarding
+      ? { screen: 'OnboardingAgeInformation', params: { age } }
+      : { screen: 'ProfileTutorialAgeInformation', params: { selectedAge: age } }
 
-    return (
-      <AgeButton
-        key={age}
-        icon={age ? BicolorAll : undefined}
-        dense={!age}
-        onBeforeNavigate={async () => onBeforeNavigate(type, age)}
-        navigateTo={
-          age
-            ? { screen: 'OnboardingAgeInformation', params: { age } }
-            : { screen: 'AgeSelectionOther', params: { type } }
-        }
-        accessibilityLabel={`${startButtonTitle} ${age} ans`}>
-        {age ? (
+    if (age) {
+      return (
+        <AgeButton
+          key={age}
+          icon={BicolorAll}
+          onBeforeNavigate={async () => onBeforeNavigate(type, age)}
+          navigateTo={AgeInformationNavigateTo}
+          accessibilityLabel={`${startButtonTitle} ${age} ans`}>
           <Title4Text>
             {startButtonTitle}
             <Title3Text> {age} ans</Title3Text>
           </Title4Text>
-        ) : (
+        </AgeButton>
+      )
+    } else {
+      return (
+        <AgeButton
+          key={'other'}
+          dense
+          onBeforeNavigate={async () => onBeforeNavigate(type)}
+          navigateTo={{ screen: 'AgeSelectionOther', params: { type } }}
+          accessibilityLabel={`${startButtonTitle} moins de 15 ans ou plus de 18 ans`}>
           <Title4Text>Autre</Title4Text>
-        )}
-        {!age && (
           <React.Fragment>
             <Spacer.Column numberOfSpaces={1} />
             <Typo.CaptionNeutralInfo numberOfLines={2}>
               {startButtonTitle} moins de 15 ans ou plus de 18 ans
             </Typo.CaptionNeutralInfo>
           </React.Fragment>
-        )}
-      </AgeButton>
-    )
+        </AgeButton>
+      )
+    }
   })
 
   const title =
