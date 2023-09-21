@@ -4,7 +4,7 @@ import { NativeScrollEvent } from 'react-native'
 import styled from 'styled-components/native'
 
 import { NativeCategoryIdEnumv2, SearchGroupNameEnumv2 } from 'api/gen'
-import { UseRouteType } from 'features/navigation/RootNavigator/types'
+import { StepperOrigin, UseRouteType } from 'features/navigation/RootNavigator/types'
 import { useOffer } from 'features/offer/api/useOffer'
 import { useSimilarOffers } from 'features/offer/api/useSimilarOffers'
 import { BottomBanner } from 'features/offer/components/BottomBanner/BottomBanner'
@@ -169,6 +169,7 @@ export const Offer: FunctionComponent = () => {
     modalToDisplay,
     offerId,
     isEndedUsedBooking,
+    from: StepperOrigin.OFFER,
   })
 
   useFocusEffect(

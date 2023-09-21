@@ -7,6 +7,7 @@ import { useRemoveFavorite } from 'features/favorites/api'
 import { getBookingButtonProperties } from 'features/favorites/helpers/getBookingButtonProperties'
 import { getFavoriteDisplayPrice } from 'features/favorites/helpers/getFavoriteDisplayPrice'
 import { useFavoriteFormattedDate } from 'features/favorites/helpers/useFavoriteFormattedDate'
+import { StepperOrigin } from 'features/navigation/RootNavigator/types'
 import { getShareOffer } from 'features/share/helpers/useShareOffer'
 import { WebShareModal } from 'features/share/pages/WebShareModal'
 import { analytics } from 'libs/analytics'
@@ -60,6 +61,7 @@ export const Favorite: React.FC<Props> = (props) => {
   const { OfferModal: BookOfferModal, showModal: showBookOfferModal } = useBookOfferModal({
     modalToDisplay,
     offerId: offer.id,
+    from: StepperOrigin.FAVORITE,
   })
 
   const { mutate: removeFavorite, isLoading } = useRemoveFavorite({
