@@ -8,7 +8,7 @@ import { FavoriteSortBy } from 'features/favorites/types'
 import { IDOrigin } from 'features/identityCheck/pages/identification/ubble/SelectIDOrigin'
 import { IDStatus } from 'features/identityCheck/pages/identification/ubble/SelectIDStatus'
 import { DeprecatedIdentityCheckStep, IdentityCheckStep } from 'features/identityCheck/types'
-import { Referrals } from 'features/navigation/RootNavigator/types'
+import { Referrals, StepperOrigin } from 'features/navigation/RootNavigator/types'
 import { PlaylistType } from 'features/offer/enums'
 import { SearchState } from 'features/search/types'
 import { ShareAppModalType } from 'features/share/helpers/shareAppModalInformations'
@@ -595,6 +595,8 @@ export const logEventAnalytics = {
     analytics.logEvent({ firebase: AnalyticsEvent.SIGN_UP_TOO_YOUNG }, { age }),
   logStartDMSTransmission: () =>
     analytics.logEvent({ firebase: AnalyticsEvent.START_DMS_TRANSMISSION }),
+  logStepperDisplayed: (from: StepperOrigin, step: IdentityCheckStep) =>
+    analytics.logEvent({ firebase: AnalyticsEvent.STEPPER_DISPLAYED }, { from, step }),
   logTrySelectDeposit: (age: number) =>
     analytics.logEvent({ firebase: AnalyticsEvent.TRY_SELECT_DEPOSIT }, { age }),
   logVenueContact: (params: { type: keyof VenueContactModel; venueId: number }) =>
