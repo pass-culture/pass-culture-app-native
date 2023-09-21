@@ -136,16 +136,8 @@ In order to launch the app in the Simulator or on your external Apple device, yo
 
 ### 😤 Troubleshooting
 
-<<<<<<< HEAD
 <details>
   <summary>env: node: No such file or directory
-=======
-### 😤 Troubleshooting
-
-<br />
-<details>
-  <summary>env: node: No such file or directory 
->>>>>>> dfb668535 ((BSR) doc(devtools): add some troubleshootings)
   Command PhaseScriptExecution failed with a nonzero exit code</summary>
 
 If this error pops up while trying to build with Xcode it means that Xcode can’t find Node because the sym-link to Node is not made.
@@ -189,10 +181,6 @@ If it is installed but you still have the error, maybe Xcode doesn't find it: ru
 
 </details>
 
-<<<<<<< HEAD
-=======
-<br />
->>>>>>> dfb668535 ((BSR) doc(devtools): add some troubleshootings)
 <details>
   <summary>No binary rubies available for: osx/13.5/arm64/ruby-3.0.0.
 Continuing with compilation.</summary>
@@ -201,7 +189,6 @@ https://stackoverflow.com/questions/42735805/what-does-no-binary-rubies-availabl
 
 </details>
 
-<<<<<<< HEAD
 <details>
   <summary> After the `bundle exec fastlane ios download_certificates --env testing` command, you gave the SSH git repository link and it's not doing anything.</summary>
     It might be an issue with your ssh (for example if you only cloned the repository through http), try to clone the repository elsewhere using ssh and try again.
@@ -211,29 +198,12 @@ https://stackoverflow.com/questions/42735805/what-does-no-binary-rubies-availabl
   <summary>`/.rvm/gems/ruby-2.7.5/gems/nap-1.1.0/lib/rest/error.rb:76:in 'require': cannot load such file -- openssl (LoadError)`
   </summary>
 Try to change the openssl version you're on:
-=======
-<br />
-<details>
-  <summary> After the 'bundle exec fastlane ios download_certificates --env testing' command, you gave the SSH git repository link and it's not doing anything.</summary>
-    It might be an issue with your ssh (for exemple if you only cloned the repository through http), try to clone the repository elswhere and try again.
-</details>
-
- <br />
-<details>
-  <summary>/.rvm/gems/ruby-2.7.5/gems/nap-1.1.0/lib/rest/error.rb:76:in `require': cannot load such file -- openssl (LoadError)
-  </summary>
-Try to change the openssl version you're on :
->>>>>>> dfb668535 ((BSR) doc(devtools): add some troubleshootings)
 
 ```sh
 openssl version
 ```
 
-<<<<<<< HEAD
 if it's not 1.1:
-=======
-if it's not 1.1 :
->>>>>>> dfb668535 ((BSR) doc(devtools): add some troubleshootings)
 
 ```sh
 brew install openssl@1.1
@@ -247,24 +217,10 @@ brew unlink openssl@3
 brew link openssl@1.1
 ```
 
-<<<<<<< HEAD
 check if the link worked:
-=======
-check if the link worked :
->>>>>>> dfb668535 ((BSR) doc(devtools): add some troubleshootings)
 
 ```sh
 brew link openssl@1.1
 ```
 
 </details>
-
-<<<<<<< HEAD
-```
-
-```
-=======
-[1]: ./setup.md
-[2]: https://bundler.io/bundle_install.html
-[3]: https://developer.apple.com/download/all/?q=xcode%2014.2
->>>>>>> dfb668535 ((BSR) doc(devtools): add some troubleshootings)
