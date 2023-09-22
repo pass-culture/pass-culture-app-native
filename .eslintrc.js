@@ -167,6 +167,12 @@ module.exports = {
             message:
               'If images come from our backend, use libs/resizing-image-on-demand/FastImage instead. Otherwise you can use react-native-fast-image',
           },
+          {
+            name: 'lodash',
+            importNames: ['cloneDeep'],
+            message:
+              'Do not use lodash cloneDeep, use structuredClone instead, as it is included in JS now',
+          },
         ],
         patterns: [
           {

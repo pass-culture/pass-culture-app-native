@@ -23,7 +23,7 @@ export function AfterSignupEmailValidationBuffer() {
   const enableTrustedDevice = useFeatureFlag(RemoteStoreFeatureFlags.WIP_ENABLE_TRUSTED_DEVICE)
   const deviceInfo = useDeviceInfo()
   const { replace } = useNavigation<UseNavigationType>()
-  const delayedReplace: typeof replace = (...args: Parameters<typeof replace>) => {
+  const delayedReplace: typeof replace = (...args) => {
     setTimeout(() => {
       replace(...args)
     }, 2000)

@@ -19,7 +19,7 @@ export const NotEligibleEduConnect = ({
   error: { message },
   resetErrorBoundary,
 }: ScreenErrorProps) => {
-  const timer = useRef<number>()
+  const timer = useRef<NodeJS.Timeout>()
   const {
     title,
     description,
