@@ -10,6 +10,7 @@ import { SuggestedPlace, usePlaces } from 'libs/place'
 import { plural } from 'libs/plural'
 import { HiddenAccessibleText } from 'ui/components/HiddenAccessibleText'
 import { Li } from 'ui/components/Li'
+import { Spinner } from 'ui/components/Spinner'
 import { TouchableOpacity } from 'ui/components/TouchableOpacity'
 import { VerticalUl } from 'ui/components/Ul'
 import { useArrowNavigationForRadioButton } from 'ui/hooks/useArrowNavigationForRadioButton'
@@ -73,14 +74,18 @@ export const SuggestedPlaces: FunctionComponent<Props> = ({ query, setSelectedPl
 
   const filteredPlaces: SuggestedPlace[] = [...uniqWith(places.slice(0, MAXIMUM_RESULTS), isEqual)]
 
+  if (isLoading) {
+    return <Spinner />
+  }
+
   return (
     <React.Fragment>
       <HiddenAccessibleResultNumber
         nbResults={filteredPlaces.length}
-        show={filteredPlaces.length > 0 && !isLoading}
+        show={filteredPlaces.length > 0}
       />
       <View accessibilityRole={AccessibilityRole.STATUS}>
-        <NoSuggestedPlaces show={filteredPlaces.length === 0 && query.length > 0 && !isLoading} />
+        <NoSuggestedPlaces show={filteredPlaces.length === 0 && query.length > 0} />
       </View>
       {filteredPlaces.length > 0 && (
         <React.Fragment>
