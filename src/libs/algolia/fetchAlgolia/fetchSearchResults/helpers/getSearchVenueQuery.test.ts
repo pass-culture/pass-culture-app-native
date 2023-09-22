@@ -1,5 +1,5 @@
 import { NativeCategoryIdEnumv2, SearchGroupNameEnumv2 } from 'api/gen'
-import { getSearchVenueQuery } from 'libs/algolia/fetchAlgolia/fetchOffersAndVenues/helpers/getSearchVenueQuery'
+import { getSearchVenueQuery } from 'libs/algolia/fetchAlgolia/fetchSearchResults/helpers/getSearchVenueQuery'
 import { SearchQueryParametersFixture } from 'libs/algolia/fixtures'
 
 describe('getVenuesQuery', () => {

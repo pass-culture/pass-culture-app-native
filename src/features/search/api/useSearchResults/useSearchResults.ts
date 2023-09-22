@@ -8,21 +8,24 @@ import { useSearch } from 'features/search/context/SearchWrapper'
 import { SearchState } from 'features/search/types'
 import { AlgoliaVenue } from 'libs/algolia'
 import { useSearchAnalyticsState } from 'libs/algolia/analytics/SearchAnalyticsWrapper'
-import { fetchOffersAndVenues } from 'libs/algolia/fetchAlgolia/fetchOffersAndVenues/fetchOffersAndVenues'
+
 import { useTransformOfferHits } from 'libs/algolia/fetchAlgolia/transformOfferHit'
 import { analytics } from 'libs/analytics'
 import { useLocation } from 'libs/geolocation'
 import { QueryKeys } from 'libs/queryKeys'
 import { Offer } from 'shared/offer/types'
+import { fetchSearchResults } from 'libs/algolia/fetchAlgolia/fetchSearchResults/fetchSearchResults'
 
 export type SearchOfferResponse = {
   offers: Pick<SearchResponse<Offer>, 'hits' | 'nbHits' | 'page' | 'nbPages' | 'userData'>
   venues: Pick<SearchResponse<AlgoliaVenue>, 'hits' | 'nbHits' | 'page' | 'nbPages' | 'userData'>
+  facets: Pick<SearchResponse<Offer>, 'facets'>
 }
 
 export type SearchOfferHits = {
   offers: Offer[]
   venues: AlgoliaVenue[]
+  facets?: Record<string, Record<string, number>>
 }
 
 export const useSearchInfiniteQuery = (searchState: SearchState) => {
@@ -35,7 +38,7 @@ export const useSearchInfiniteQuery = (searchState: SearchState) => {
   const { data, ...infiniteQuery } = useInfiniteQuery<SearchOfferResponse>(
     [QueryKeys.SEARCH_RESULTS, { ...searchState, view: undefined }],
     async ({ pageParam: page = 0 }) => {
-      const { offersResponse, venuesResponse } = await fetchOffersAndVenues({
+      const { offersResponse, venuesResponse, facetsResponse } = await fetchSearchResults({
         parameters: { page, ...searchState },
         userLocation: position,
         isUserUnderage,
@@ -46,7 +49,7 @@ export const useSearchInfiniteQuery = (searchState: SearchState) => {
       analytics.logPerformSearch(searchState, offersResponse.nbHits)
 
       previousPageObjectIds.current = offersResponse.hits.map((hit: Hit<Offer>) => hit.objectID)
-      return { offers: offersResponse, venues: venuesResponse }
+      return { offers: offersResponse, venues: venuesResponse, facets: facetsResponse }
     },
     // first page is 0
     {
@@ -68,8 +71,9 @@ export const useSearchInfiniteQuery = (searchState: SearchState) => {
 
   const { nbHits, userData } = data?.pages[0].offers ?? { nbHits: 0, userData: [] }
   const venuesUserData = data?.pages?.[0]?.venues?.userData
+  const facets = data?.pages?.[0]?.facets.facets
 
-  return { data, hits, nbHits, userData, venuesUserData, ...infiniteQuery }
+  return { data, hits, nbHits, userData, venuesUserData, facets, ...infiniteQuery }
 }
 
 export const useSearchResults = () => {

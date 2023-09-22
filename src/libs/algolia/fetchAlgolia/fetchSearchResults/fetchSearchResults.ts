@@ -3,8 +3,8 @@ import { Hit, SearchResponse } from '@algolia/client-search'
 import { captureAlgoliaError } from 'libs/algolia/fetchAlgolia/AlgoliaError'
 import { buildOfferSearchParameters } from 'libs/algolia/fetchAlgolia/buildAlgoliaParameters/buildOfferSearchParameters'
 import { offerAttributesToRetrieve } from 'libs/algolia/fetchAlgolia/buildAlgoliaParameters/offerAttributesToRetrieve'
-import { buildSearchVenuePosition } from 'libs/algolia/fetchAlgolia/fetchOffersAndVenues/helpers/buildSearchVenuePosition'
-import { getSearchVenueQuery } from 'libs/algolia/fetchAlgolia/fetchOffersAndVenues/helpers/getSearchVenueQuery'
+import { buildSearchVenuePosition } from 'libs/algolia/fetchAlgolia/fetchSearchResults/helpers/buildSearchVenuePosition'
+import { getSearchVenueQuery } from 'libs/algolia/fetchAlgolia/fetchSearchResults/helpers/getSearchVenueQuery'
 import { getCurrentVenuesIndex } from 'libs/algolia/fetchAlgolia/helpers/getCurrentVenuesIndex'
 import { multipleQueries } from 'libs/algolia/fetchAlgolia/multipleQueries'
 import { buildHitsPerPage } from 'libs/algolia/fetchAlgolia/utils'
@@ -23,7 +23,7 @@ type FetchOfferAndVenuesArgs = {
   venuesIndex?: string
 }
 
-export const fetchOffersAndVenues = async ({
+export const fetchSearchResults = async ({
   parameters,
   userLocation,
   isUserUnderage,
@@ -38,6 +38,7 @@ export const fetchOffersAndVenues = async ({
   )
 
   const queries = [
+    // Offers
     {
       indexName: offersIndex,
       query: parameters.query || '',
@@ -52,6 +53,7 @@ export const fetchOffersAndVenues = async ({
         clickAnalytics: true,
       },
     },
+    // Venues
     {
       indexName: currentVenuesIndex,
       query: getSearchVenueQuery(parameters),
@@ -62,16 +64,28 @@ export const fetchOffersAndVenues = async ({
         clickAnalytics: true,
       },
     },
+    // Facets
+    {
+      indexName: offersIndex,
+      page: 0,
+      facets: [
+        'offer.bookMacroSection',
+        'offer.movieGenres',
+        'offer.musicType',
+        'offer.nativeCategoryId',
+        'offer.showType',
+      ],
+    },
   ]
 
   try {
-    const [offersResponse, venuesResponse] = (await multipleQueries<Offer | AlgoliaVenue>(
-      queries
-    )) as [SearchResponse<Offer>, SearchResponse<AlgoliaVenue>]
+    const [offersResponse, venuesResponse, facetsResponse] = (await multipleQueries<
+      Offer | AlgoliaVenue
+    >(queries)) as [SearchResponse<Offer>, SearchResponse<AlgoliaVenue>, SearchResponse<Offer>]
 
     if (storeQueryID) storeQueryID(offersResponse.queryID)
 
-    return { offersResponse, venuesResponse }
+    return { offersResponse, venuesResponse, facetsResponse }
   } catch (error) {
     captureAlgoliaError(error)
     return {
@@ -83,6 +97,7 @@ export const fetchOffersAndVenues = async ({
         nbPages: 0,
         userData: null,
       },
+      facetsResponse: {},
     }
   }
 }
