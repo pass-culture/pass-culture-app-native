@@ -1,6 +1,7 @@
 import * as React from 'react'
 import styled from 'styled-components/native'
 
+import { useResendEmailValidation } from 'features/auth/api/useResendEmailValidation'
 import { analytics } from 'libs/analytics'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { AppModal } from 'ui/components/modals/AppModal'
@@ -8,13 +9,23 @@ import { Close } from 'ui/svg/icons/Close'
 import { Spacer, Typo } from 'ui/theme'
 
 interface Props {
+  email: string
   visible: boolean
   onDismiss: () => void
 }
 
-const onResendPress = () => analytics.logResendEmailValidation()
+export const EmailResendModal = ({ email, visible, onDismiss }: Props) => {
+  const { mutate: resendEmail } = useResendEmailValidation({
+    onError: () => {
+      return
+    },
+  })
 
-export const EmailResendModal = ({ visible, onDismiss }: Props) => {
+  const onResendPress = () => {
+    resendEmail({ email })
+    analytics.logResendEmailValidation()
+  }
+
   return (
     <AppModal
       visible={visible}
