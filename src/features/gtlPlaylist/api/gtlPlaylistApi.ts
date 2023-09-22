@@ -1,6 +1,8 @@
 import resolveResponse from 'contentful-resolve-response'
 
+import { VenueResponse } from 'api/gen'
 import { ContentfulGtlPlaylistResponse } from 'features/gtlPlaylist/types'
+import { LocationType } from 'features/search/enums'
 import { SearchQueryParameters } from 'libs/algolia'
 import { buildOfferSearchParameters } from 'libs/algolia/fetchAlgolia/buildAlgoliaParameters/buildOfferSearchParameters'
 import { offerAttributesToRetrieve } from 'libs/algolia/fetchAlgolia/buildAlgoliaParameters/offerAttributesToRetrieve'
@@ -19,23 +21,25 @@ const URL = `${BASE_URL}/entries${PARAMS}`
 export type FetchOffersFromGTLPlaylistProps = {
   position: Position
   isUserUnderage: boolean
+  venue: VenueResponse
 }
 
 export async function fetchGTLPlaylists({
   position,
   isUserUnderage,
+  venue,
 }: FetchOffersFromGTLPlaylistProps) {
   const json = await getExternal(URL)
   const jsonResponse = resolveResponse(json) as ContentfulGtlPlaylistResponse
 
-  return fetchOffersFromGTLPlaylist(jsonResponse, { position, isUserUnderage })
+  return fetchOffersFromGTLPlaylist(jsonResponse, { position, isUserUnderage, venue })
 }
 
 export type GTLPlaylistResponse = Awaited<ReturnType<typeof fetchGTLPlaylists>>
 
 export async function fetchOffersFromGTLPlaylist(
   data: ContentfulGtlPlaylistResponse,
-  { position, isUserUnderage }: FetchOffersFromGTLPlaylistProps
+  { position, isUserUnderage, venue }: FetchOffersFromGTLPlaylistProps
 ) {
   // Build parameters list from Contentful algolia parameters for algolia
   const paramList = data.map(
@@ -53,7 +57,21 @@ export async function fetchOffersFromGTLPlaylist(
     query: params.query,
     params: {
       ...buildHitsPerPage(params.hitsPerPage),
-      ...buildOfferSearchParameters(params, position, isUserUnderage),
+      ...buildOfferSearchParameters(
+        {
+          ...params,
+          locationFilter: {
+            locationType: LocationType.VENUE,
+            venue: {
+              venueId: venue.id,
+              info: venue.city ?? '',
+              label: venue.name,
+            },
+          },
+        },
+        position,
+        isUserUnderage
+      ),
       attributesToHighlight: [], // We disable highlighting because we don't need it
       attributesToRetrieve: offerAttributesToRetrieve,
     },

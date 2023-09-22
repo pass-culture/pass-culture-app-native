@@ -41,7 +41,7 @@ export const Venue: FunctionComponent = () => {
     return () => clearTimeout(timeoutId)
   }, [triggerBatch])
 
-  const gtlPlaylists = useGTLPlaylists()
+  const gtlPlaylists = useGTLPlaylists({ venue })
 
   if (!venue) return <React.Fragment></React.Fragment>
 
