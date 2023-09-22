@@ -2483,7 +2483,7 @@ export enum SubcategoryIdEnum {
   'SPECTACLE_VENTE_DISTANCE' = 'SPECTACLE_VENTE_DISTANCE',
   'SUPPORT_PHYSIQUE_FILM' = 'SUPPORT_PHYSIQUE_FILM',
   'SUPPORT_PHYSIQUE_MUSIQUE' = 'SUPPORT_PHYSIQUE_MUSIQUE',
-    'TELECHARGEMENT_LIVRE_AUDIO' = 'TELECHARGEMENT_LIVRE_AUDIO',
+  'TELECHARGEMENT_LIVRE_AUDIO' = 'TELECHARGEMENT_LIVRE_AUDIO',
   'TELECHARGEMENT_MUSIQUE' = 'TELECHARGEMENT_MUSIQUE',
   'VISITE_GUIDEE' = 'VISITE_GUIDEE',
   'VISITE_VIRTUELLE' = 'VISITE_VIRTUELLE',
@@ -2563,7 +2563,7 @@ export enum SubcategoryIdEnumv2 {
   'SPECTACLE_VENTE_DISTANCE' = 'SPECTACLE_VENTE_DISTANCE',
   'SUPPORT_PHYSIQUE_FILM' = 'SUPPORT_PHYSIQUE_FILM',
   'SUPPORT_PHYSIQUE_MUSIQUE' = 'SUPPORT_PHYSIQUE_MUSIQUE',
-    'TELECHARGEMENT_LIVRE_AUDIO' = 'TELECHARGEMENT_LIVRE_AUDIO',
+  'TELECHARGEMENT_LIVRE_AUDIO' = 'TELECHARGEMENT_LIVRE_AUDIO',
   'TELECHARGEMENT_MUSIQUE' = 'TELECHARGEMENT_MUSIQUE',
   'VISITE_GUIDEE' = 'VISITE_GUIDEE',
   'VISITE_VIRTUELLE' = 'VISITE_VIRTUELLE',
@@ -2864,7 +2864,7 @@ export interface UserProfileResponse {
    * @memberof UserProfileResponse
    */
   bookedOffers: { [key: string]: number; }
-/**
+  /**
    * @type {string}
    * @memberof UserProfileResponse
    */
@@ -3284,7 +3284,7 @@ export enum VenueTypeCodeKey {
  */
 export enum WithdrawalTypeEnum {
   'by_email' = 'by_email',
-    'no_ticket' = 'no_ticket',
+  'no_ticket' = 'no_ticket',
   'on_site' = 'on_site',
 }
 /**
@@ -3569,7 +3569,7 @@ export const DefaultApiFetchParamCreator = function (configuration?: Configurati
     },
     /**
      * @summary get_offer <GET>
-* @param {number} offer_id 
+     * @param {number} offer_id 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
@@ -3586,7 +3586,7 @@ export const DefaultApiFetchParamCreator = function (configuration?: Configurati
         encodeURIComponent(String(offer_id))
       )
       let secureOptions = Object.assign(options, { credentials: 'omit' })
-            const localVarRequestOptions = Object.assign({ method: 'GET' }, secureOptions)
+      const localVarRequestOptions = Object.assign({ method: 'GET' }, secureOptions)
       const localVarHeaderParameter = await getAuthenticationHeaders(secureOptions)
       localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers)
       return {
@@ -4657,7 +4657,7 @@ export const DefaultApiFp = function(api: DefaultApi, configuration?: Configurat
     /**
      * 
      * @summary get_offer <GET>
-* @param {number} offer_id 
+     * @param {number} offer_id 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
@@ -5328,7 +5328,7 @@ export class DefaultApi extends BaseAPI {
   /**
     * 
     * @summary get_offer <GET>
-* @param {number} offer_id 
+    * @param {number} offer_id 
     * @param {*} [options] Override http request option.
     * @throws {RequiredError}
     * @memberof DefaultApi
