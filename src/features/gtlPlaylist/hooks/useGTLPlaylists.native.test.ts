@@ -1,5 +1,6 @@
 import { SearchResponse } from '@algolia/client-search'
 
+import { VenueResponse } from 'api/gen'
 import { Offer } from 'shared/offer/types'
 import { renderHook, waitFor } from 'tests/utils'
 
@@ -31,8 +32,13 @@ jest.spyOn(useGTLPlaylistsLibrary, 'fetchGTLPlaylists').mockResolvedValue([
 ])
 
 describe('useGTLPlaylists', () => {
+  const renderHookWithParams = () =>
+    renderHook(() =>
+      useGTLPlaylists({ venue: { name: 'Une librairie', city: 'Jest', id: 123 } as VenueResponse })
+    )
+
   it('should fetch GTL playlists', async () => {
-    renderHook(useGTLPlaylists)
+    renderHookWithParams()
 
     await waitFor(() => {
       expect(useGTLPlaylistsLibrary.fetchGTLPlaylists).toHaveBeenNthCalledWith(1, {
@@ -41,12 +47,13 @@ describe('useGTLPlaylists', () => {
           latitude: 2,
           longitude: 2,
         },
+        venue: { name: 'Une librairie', city: 'Jest', id: 123 },
       })
     })
   })
 
   it('should return playlists information', async () => {
-    const { result } = renderHook(useGTLPlaylists)
+    const { result } = renderHookWithParams()
 
     await waitFor(() => {
       expect(result.current).toEqual([

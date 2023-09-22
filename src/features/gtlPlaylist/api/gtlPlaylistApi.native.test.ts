@@ -1,6 +1,7 @@
 import { SearchResponse } from '@algolia/client-search'
 import { rest } from 'msw'
 
+import { VenueResponse } from 'api/gen'
 import {
   BASE_URL,
   fetchGTLPlaylists,
@@ -28,6 +29,11 @@ describe('GTL Playlist API', () => {
           longitude: 2,
         },
         isUserUnderage: false,
+        venue: {
+          name: 'Une librairie',
+          id: 123,
+          city: 'Jest',
+        } as VenueResponse,
       })
 
       expect(result).toEqual([
@@ -71,6 +77,11 @@ describe('GTL Playlist API', () => {
           latitude: 2,
           longitude: 2,
         },
+        venue: {
+          name: 'Une librairie',
+          id: 123,
+          city: 'Jest',
+        } as VenueResponse,
       },
     ]
 
@@ -81,8 +92,6 @@ describe('GTL Playlist API', () => {
         {
           indexName: 'algoliaOffersIndexName',
           params: {
-            aroundLatLng: '2, 2',
-            aroundRadius: 100000,
             attributesToHighlight: [],
             attributesToRetrieve: [
               'offer.dates',
@@ -97,7 +106,11 @@ describe('GTL Playlist API', () => {
               '_geoloc',
               'venue',
             ],
-            facetFilters: [['offer.isEducational:false'], ['offer.gtl_level1:Littérature']],
+            facetFilters: [
+              ['offer.isEducational:false'],
+              ['offer.gtl_level1:Littérature'],
+              ['venue.id:123'],
+            ],
             hitsPerPage: 20,
             numericFilters: [['offer.prices: 0 TO 300']],
           },
