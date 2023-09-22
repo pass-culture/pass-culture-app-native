@@ -32,7 +32,7 @@ export function SuspendAccountConfirmation({
   const [isLoading, setIsLoading] = useState(false)
 
   const mutate = useCallback(async () => {
-    return api.postnativev1profileemailUpdatecancel({
+    return api.postNativeV1ProfileEmailUpdateCancel({
       token: params?.token,
     })
   }, [params?.token])

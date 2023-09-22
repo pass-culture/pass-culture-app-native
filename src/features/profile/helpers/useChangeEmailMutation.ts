@@ -35,7 +35,7 @@ export const useChangeEmailMutation = ({
   }
 
   const { mutate: changeEmail, isLoading } = useMutation(
-    (body: ChangeEmailRequest) => api.postnativev1profileupdateEmail(body),
+    (body: ChangeEmailRequest) => api.postNativeV1ProfileUpdateEmail(body),
     {
       onSuccess: () => {
         showSuccessSnackBar({

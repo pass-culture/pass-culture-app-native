@@ -7,7 +7,7 @@ export function useValidateEmailMutation(
   onSuccess: (response: ValidateEmailResponse) => void,
   onError: (error: unknown) => void
 ) {
-  return useMutation((body: ValidateEmailRequest) => api.postnativev1validateEmail(body), {
+  return useMutation((body: ValidateEmailRequest) => api.postNativeV1ValidateEmail(body), {
     onSuccess,
     onError,
   })

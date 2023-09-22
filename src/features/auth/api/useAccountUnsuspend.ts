@@ -6,7 +6,7 @@ import { QueryKeys } from 'libs/queryKeys'
 export function useAccountUnsuspend(onSuccess: () => void, onError: (error: unknown) => void) {
   const queryClient = useQueryClient()
 
-  return useMutation(() => api.postnativev1accountunsuspend(), {
+  return useMutation(() => api.postNativeV1AccountUnsuspend(), {
     onSuccess: () => {
       queriesToInvalidateOnUnsuspend.forEach((queryKey) =>
         queryClient.invalidateQueries([queryKey])

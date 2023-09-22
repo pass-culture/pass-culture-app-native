@@ -2,6 +2,7 @@ import { useRoute } from '@react-navigation/native'
 import React, { FunctionComponent, useEffect } from 'react'
 import styled from 'styled-components/native'
 
+import { useGTLPlaylists } from 'features/gtlPlaylist/hooks/useGTLPlaylists'
 import { UseRouteType } from 'features/navigation/RootNavigator/types'
 import { useVenue } from 'features/venue/api/useVenue'
 import { VenueBody } from 'features/venue/components/VenueBody/VenueBody'
@@ -40,12 +41,14 @@ export const Venue: FunctionComponent = () => {
     return () => clearTimeout(timeoutId)
   }, [triggerBatch])
 
+  const gtlPlaylists = useGTLPlaylists({ venue })
+
   if (!venue) return <React.Fragment></React.Fragment>
 
   return (
     <Container>
       <VenueWebHeader venue={venue} />
-      <VenueBody venueId={params.id} onScroll={onScroll} />
+      <VenueBody venueId={params.id} onScroll={onScroll} playlists={gtlPlaylists} />
       {/* VenueHeader is called after Body to implement the BlurView for iOS */}
       <VenueHeader
         headerTransition={headerTransition}

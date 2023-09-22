@@ -57,7 +57,7 @@ server.use(
   )
 )
 
-const apiSignInSpy = jest.spyOn(API.api, 'postnativev1signin')
+const apiSignInSpy = jest.spyOn(API.api, 'postNativeV1Signin')
 const getModelSpy = jest.spyOn(DeviceInfo, 'getModel')
 const getSystemNameSpy = jest.spyOn(DeviceInfo, 'getSystemName')
 const useFeatureFlagSpy = jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockReturnValue(false)

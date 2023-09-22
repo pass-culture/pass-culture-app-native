@@ -11,15 +11,13 @@ I have:
 
 ## Screenshots
 
-**delete** *if no UI change*
+**delete** _if no UI change_
 
-| Platform         | Before | After |
-| :--------------- | :----: | :---: |
-| iOS              |        |       |
-| Android          |        |       |
-| Phone - Chrome   |        |       |
-| Tablet - Chrome  |        |       |
-| Desktop - Chrome |        |       |
-| Desktop - Safari |        |       |
+| Platform         | Mockup/Before | After |
+| :--------------- | :-----------: | :---: |
+| iOS              |               |       |
+| Android          |               |       |
+| Phone - Chrome   |               |       |
+| Desktop - Chrome |               |       |
 
 [1]: https://www.notion.so/passcultureapp/R-solution-de-probl-mes-sur-les-bugs-5dd6df8f6a754e6887066cf613467d0a

@@ -22,7 +22,7 @@ const getModelSpy = jest.spyOn(DeviceInfo, 'getModel')
 const getSystemNameSpy = jest.spyOn(DeviceInfo, 'getSystemName')
 
 const useFeatureFlagSpy = jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockReturnValue(false)
-const apiSignUpSpy = jest.spyOn(api, 'postnativev1account')
+const apiSignUpSpy = jest.spyOn(api, 'postNativeV1Account')
 
 const realUseState = React.useState
 const mockUseState = jest.spyOn(React, 'useState')

@@ -69,7 +69,7 @@ export function AfterSignupEmailValidationBuffer() {
     )
 
     try {
-      const user = await api.getnativev1me()
+      const user = await api.getNativeV1Me()
       const firebasePseudoId = await firebaseAnalytics.getAppInstanceId()
       await campaignTracker.logEvent(CampaignEvents.COMPLETE_REGISTRATION, {
         af_firebase_pseudo_id: firebasePseudoId,

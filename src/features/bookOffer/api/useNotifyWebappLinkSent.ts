@@ -5,8 +5,8 @@ import { api } from 'api/api'
 export const useNotifyWebappLinkSent = () => {
   return useMutation((offerId: number) => {
     return Promise.all([
-      api.postnativev1sendOfferWebappLinkByEmailofferId(offerId),
-      api.postnativev1sendOfferLinkByPushofferId(offerId),
+      api.postNativeV1SendOfferWebappLinkByEmailofferId(offerId),
+      api.postNativeV1SendOfferLinkByPushofferId(offerId),
     ])
   })
 }

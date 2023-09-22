@@ -382,7 +382,7 @@ describe('<OfferBody />', () => {
       renderOfferBody()
 
       await waitFor(() => {
-        expect(api.getnativev1offersreports).toHaveBeenCalledTimes(1)
+        expect(api.getNativeV1OffersReports).toHaveBeenCalledTimes(1)
       })
     })
 
@@ -394,7 +394,7 @@ describe('<OfferBody />', () => {
       renderOfferBody()
       await screen.findByTestId('offer-container')
 
-      expect(api.getnativev1offersreports).not.toHaveBeenCalled()
+      expect(api.getNativeV1OffersReports).not.toHaveBeenCalled()
     })
 
     it('should not request /native/v1/offers/reports if user is not logged in and connected', async () => {
@@ -403,7 +403,7 @@ describe('<OfferBody />', () => {
       renderOfferBody()
       await screen.findByTestId('offer-container')
 
-      expect(api.getnativev1offersreports).not.toBeCalled()
+      expect(api.getNativeV1OffersReports).not.toBeCalled()
     })
   })
 
