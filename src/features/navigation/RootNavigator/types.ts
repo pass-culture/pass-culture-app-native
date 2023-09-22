@@ -96,6 +96,14 @@ export type TrustedDeviceRootStackParamList = {
   TrustedDeviceInfos: undefined
 }
 
+export enum StepperOrigin {
+  HOME = 'home',
+  FAVORITE = 'favorite',
+  PROFILE = 'profile',
+  DEEPLINK = 'deeplink',
+  OFFER = 'offer',
+}
+
 export type SubscriptionRootStackParamList = {
   // Cheatcodes
   NavigationErrors: undefined
@@ -104,7 +112,7 @@ export type SubscriptionRootStackParamList = {
   NavigationSignUp: undefined
   NewIdentificationFlow: undefined
   // Stepper
-  Stepper: undefined
+  Stepper: { from: StepperOrigin } | undefined
   // PhoneValidation
   SetPhoneNumber: undefined
   SetPhoneValidationCode: undefined
