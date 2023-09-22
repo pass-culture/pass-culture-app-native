@@ -34,7 +34,10 @@ const Icon = () => (
   </ListIconWrapper>
 )
 
-const PlaceResult: React.FC<{ place: SuggestedPlace; onPress: () => void }> = ({ place, onPress }) => {
+const PlaceResult: React.FC<{ place: SuggestedPlace; onPress: () => void }> = ({
+  place,
+  onPress,
+}) => {
   const containerRef = useRef(null)
   const { onFocus, onBlur } = useHandleFocus()
   useArrowNavigationForRadioButton(containerRef)
@@ -95,7 +98,13 @@ export const SuggestedPlaces: FunctionComponent<Props> = ({ query, setSelectedPl
   )
 }
 
-const HiddenAccessibleResultNumber = ({ nbResults, show }: { nbResults: number; show: boolean }) => {
+const HiddenAccessibleResultNumber = ({
+  nbResults,
+  show,
+}: {
+  nbResults: number
+  show: boolean
+}) => {
   const numberOfResults = plural(nbResults, {
     one: '# résultat',
     other: '# résultats',
