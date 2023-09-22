@@ -17,7 +17,6 @@ import { TutorialTimelineFifteen } from 'features/tutorial/components/profileTut
 import { TutorialTimelineSeventeen } from 'features/tutorial/components/profileTutorial/Timelines/TutorialTimelineSeventeen'
 import { TutorialTimelineSixteen } from 'features/tutorial/components/profileTutorial/Timelines/TutorialTimelineSixteen'
 import { env } from 'libs/environment'
-import { getAge } from 'shared/user/getAge'
 import { useOpacityTransition } from 'ui/animations/helpers/useOpacityTransition'
 import { ButtonQuaternarySecondary } from 'ui/components/buttons/ButtonQuarternarySecondary'
 import { ButtonWithLinearGradient } from 'ui/components/buttons/buttonWithLinearGradient/ButtonWithLinearGradient'
@@ -38,8 +37,7 @@ export const ProfileTutorialAgeInformation: FunctionComponent<Props> = ({ route 
   const { onScroll, headerTransition } = useOpacityTransition()
   const headerHeight = useGetHeaderHeight()
 
-  const defaultAge = route.params.age ?? 15
-  const age = isLoggedIn && user?.birthDate ? getAge(user.birthDate) : defaultAge
+  const age = route.params.age
 
   const activationAge = useDepositActivationAge()
 
