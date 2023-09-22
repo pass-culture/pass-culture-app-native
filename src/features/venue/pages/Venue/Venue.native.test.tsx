@@ -3,6 +3,7 @@ import mockdate from 'mockdate'
 import React from 'react'
 
 import { useRoute } from '__mocks__/@react-navigation/native'
+import { SubcategoryIdEnum } from 'api/gen'
 import * as useGTLPlaylistsLibrary from 'features/gtlPlaylist/api/gtlPlaylistApi'
 import { Referrals } from 'features/navigation/RootNavigator/types'
 import { venueResponseSnap } from 'features/venue/fixtures/venueResponseSnap'
@@ -12,12 +13,12 @@ import { BatchEvent, BatchUser } from 'libs/react-native-batch'
 import { placeholderData } from 'libs/subcategories/placeholderData'
 import { Offer } from 'shared/offer/types'
 import {
-  render,
-  screen,
   bottomScrollEvent,
-  waitFor,
   fireEvent,
   middleScrollEvent,
+  render,
+  screen,
+  waitFor,
 } from 'tests/utils'
 
 mockdate.set(new Date('2021-08-15T00:00:00Z'))
@@ -57,8 +58,24 @@ jest.spyOn(useGTLPlaylistsLibrary, 'fetchGTLPlaylists').mockResolvedValue([
   {
     title: 'Test',
     offers: {
-      hits: [],
-    } as unknown as SearchResponse<Offer>,
+      hits: [
+        {
+          offer: {
+            name: 'Test',
+            subcategoryId: SubcategoryIdEnum.ABO_BIBLIOTHEQUE,
+          },
+          venue: {
+            address: 'Avenue des Tests',
+            city: 'Jest',
+          },
+          _geoloc: {
+            lat: 2,
+            lng: 2,
+          },
+          objectID: '12',
+        },
+      ],
+    } as SearchResponse<Offer>,
     layout: 'one-item-medium',
   },
 ])
