@@ -109,7 +109,7 @@ describe('AgeSelection', () => {
 
         await waitFor(() => {
           expect(navigate).toHaveBeenCalledWith('ProfileTutorialAgeInformation', {
-            selectedAge: age,
+            age,
           })
         })
       }

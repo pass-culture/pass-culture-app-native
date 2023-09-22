@@ -40,7 +40,7 @@ export const AgeSelection: FunctionComponent<Props> = ({ route }: Props) => {
     const startButtonTitle = isOnboarding ? 'j’ai' : 'à'
     const AgeInformationNavigateTo: InternalNavigationProps['navigateTo'] = isOnboarding
       ? { screen: 'OnboardingAgeInformation', params: { age } }
-      : { screen: 'ProfileTutorialAgeInformation', params: { selectedAge: age } }
+      : { screen: 'ProfileTutorialAgeInformation', params: { age } }
 
     if (age) {
       return (

@@ -203,7 +203,7 @@ describe('Profile component', () => {
   })
 
   describe('help section', () => {
-    it.only('should navigate to AgeSelection when tutorial row is clicked and user is not logged in', async () => {
+    it('should navigate to AgeSelection when tutorial row is clicked and user is not logged in', async () => {
       mockedUseAuthContext.mockReturnValueOnce({ isLoggedIn: false })
       renderProfile()
 
@@ -225,7 +225,7 @@ describe('Profile component', () => {
       fireEvent.press(howItWorkButton)
 
       await waitFor(() => {
-        expect(mockNavigate).toBeCalledWith('ProfileTutorialAgeInformation', { selectedAge: 18 })
+        expect(mockNavigate).toBeCalledWith('ProfileTutorialAgeInformation', { age: 18 })
       })
     })
 

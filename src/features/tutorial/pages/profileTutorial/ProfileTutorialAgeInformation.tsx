@@ -38,7 +38,7 @@ export const ProfileTutorialAgeInformation: FunctionComponent<Props> = ({ route 
   const { onScroll, headerTransition } = useOpacityTransition()
   const headerHeight = useGetHeaderHeight()
 
-  const defaultAge = route.params.selectedAge ?? 15
+  const defaultAge = route.params.age ?? 15
   const age = isLoggedIn && user?.birthDate ? getAge(user.birthDate) : defaultAge
 
   const activationAge = useDepositActivationAge()

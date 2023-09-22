@@ -47,21 +47,21 @@ const eighteenUser = {
 
 const openUrl = jest.spyOn(NavigationHelpers, 'openUrl')
 
-const navProps = { route: { params: { selectedAge: 15 } } } as StackScreenProps<
+const navProps = { route: { params: { age: 15 } } } as StackScreenProps<
   TutorialRootStackParamList,
   'ProfileTutorialAgeInformation'
 >
 
-const navPropsSixteenSelected = { route: { params: { selectedAge: 16 } } } as StackScreenProps<
+const navPropsSixteenSelected = { route: { params: { age: 16 } } } as StackScreenProps<
   TutorialRootStackParamList,
   'ProfileTutorialAgeInformation'
 >
 
-const navPropsSeventeenSelected = { route: { params: { selectedAge: 17 } } } as StackScreenProps<
+const navPropsSeventeenSelected = { route: { params: { age: 17 } } } as StackScreenProps<
   TutorialRootStackParamList,
   'ProfileTutorialAgeInformation'
 >
-const navPropsEighteenSelected = { route: { params: { selectedAge: 18 } } } as StackScreenProps<
+const navPropsEighteenSelected = { route: { params: { age: 18 } } } as StackScreenProps<
   TutorialRootStackParamList,
   'ProfileTutorialAgeInformation'
 >
