@@ -128,12 +128,12 @@ export const LocationModal = ({ visible, dismissModal }: LocationModalProps) => 
             placeholder={LOCATION_PLACEHOLDER}
             value={placeQuery}
           />
-          {!!noPlace && (
+          {!!placeQuery && !!debouncedPlaceQuery && !!noPlace ? (
             <React.Fragment>
               <Spacer.Column numberOfSpaces={4} />
               <SuggestedPlaces query={debouncedPlaceQuery} setSelectedPlace={onSetSelectedPlace} />
             </React.Fragment>
-          )}
+          ) : null}
         </React.Fragment>
       )}
       <Spacer.Column numberOfSpaces={8} />
