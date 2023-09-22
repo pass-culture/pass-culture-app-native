@@ -18,7 +18,7 @@ export function useGTLPlaylists({ venue }: UseGTLPlaylistsProps) {
     if (!venue) return
 
     fetchGTLPlaylists({ position, isUserUnderage, venue }).then((response) => {
-      setGtlPlaylists(response)
+      setGtlPlaylists(response.filter((playlist) => Boolean(playlist.offers.hits.length)))
     })
   }, [isUserUnderage, position, venue])
 
