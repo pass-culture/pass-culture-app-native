@@ -4,6 +4,7 @@ import { openInbox } from 'react-native-email-link'
 import { contactSupport } from 'features/auth/helpers/contactSupport'
 import { usePreviousRoute, openUrl } from 'features/navigation/helpers'
 import { analytics } from 'libs/analytics'
+import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { act, fireEvent, render, screen } from 'tests/utils'
 
 import { SignupConfirmationEmailSent } from './SignupConfirmationEmailSent'
@@ -11,6 +12,8 @@ import { SignupConfirmationEmailSent } from './SignupConfirmationEmailSent'
 const mockUsePreviousRoute = usePreviousRoute as jest.MockedFunction<typeof usePreviousRoute>
 jest.mock('features/navigation/helpers')
 const mockedOpenUrl = openUrl as jest.MockedFunction<typeof openUrl>
+
+const useFeatureFlagSpy = jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockReturnValue(true)
 
 describe('<SignupConfirmationEmailSent />', () => {
   beforeEach(() => {
@@ -47,5 +50,18 @@ describe('<SignupConfirmationEmailSent />', () => {
     await act(async () => fireEvent.press(checkEmailsButton))
 
     expect(analytics.logEmailConfirmationConsultEmailClicked).toHaveBeenCalledTimes(1)
+  })
+
+  it('should display resend button when feature flag is active', async () => {
+    render(<SignupConfirmationEmailSent email="john.doe@gmail.com" />)
+
+    expect(screen.getByText('Recevoir un nouveau lien')).toBeOnTheScreen()
+  })
+
+  it('should hide resend button when feature flag is disabled', async () => {
+    useFeatureFlagSpy.mockReturnValueOnce(false)
+    render(<SignupConfirmationEmailSent email="john.doe@gmail.com" />)
+
+    expect(screen.queryByText('Recevoir un nouveau lien')).not.toBeOnTheScreen()
   })
 })

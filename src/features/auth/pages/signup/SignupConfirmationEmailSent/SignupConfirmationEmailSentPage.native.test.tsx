@@ -3,11 +3,14 @@ import React from 'react'
 
 import { SignupConfirmationEmailSentPage } from 'features/auth/pages/signup/SignupConfirmationEmailSent/SignupConfirmationEmailSentPage'
 import { RootStackParamList } from 'features/navigation/RootNavigator/types'
+import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { render, screen } from 'tests/utils'
 
 const navigationProps = {
   route: { params: { email: 'john.doe@gmail.com' } },
 } as StackScreenProps<RootStackParamList, 'SignupConfirmationEmailSent'>
+
+jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockReturnValue(true)
 
 describe('<SignupConfirmationEmailSentPage />', () => {
   it('should render correctly', () => {
