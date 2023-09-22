@@ -171,11 +171,11 @@ export function VenueBody({ venueId, onScroll, playlists }: Props) {
       </SectionWithDivider>
 
       <SectionWithDivider visible={Boolean(playlists?.length)}>
-        <AccordionItem title="Playlists">
+        <GtlPlaylistWrapper>
           {playlists?.map((playlist) => (
             <GtlPlaylist key={playlist.title} venue={venue} playlist={playlist} />
           )) ?? <React.Fragment />}
-        </AccordionItem>
+        </GtlPlaylistWrapper>
       </SectionWithDivider>
 
       <SectionWithDivider visible>
@@ -215,4 +215,8 @@ const IconContainer = styled.View({
 const StyledText = styled(Typo.Caption)({
   flexShrink: 1,
   textTransform: 'capitalize',
+})
+
+const GtlPlaylistWrapper = styled.View({
+  paddingTop: getSpacing(6),
 })
