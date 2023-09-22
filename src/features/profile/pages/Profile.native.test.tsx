@@ -1,12 +1,15 @@
 import { NavigationContainer } from '@react-navigation/native'
+import mockdate from 'mockdate'
 import React, { NamedExoticComponent } from 'react'
 import { Share } from 'react-native'
 
 import * as Auth from 'features/auth/context/AuthContext'
+import { CURRENT_DATE } from 'features/auth/fixtures/fixtures'
 import { FavoritesWrapper } from 'features/favorites/context/FavoritesWrapper'
 import { initialFavoritesState } from 'features/favorites/context/reducer'
 import * as NavigationHelpers from 'features/navigation/helpers/openUrl'
 import { TabStack } from 'features/navigation/TabBar/Stack'
+import { TutorialTypes } from 'features/tutorial/enums'
 import { nonBeneficiaryUser } from 'fixtures/user'
 import { analytics } from 'libs/analytics'
 import { env } from 'libs/environment'
@@ -200,14 +203,29 @@ describe('Profile component', () => {
   })
 
   describe('help section', () => {
-    it('should navigate when the how-it-works row is clicked', async () => {
+    it.only('should navigate to AgeSelection when tutorial row is clicked and user is not logged in', async () => {
+      mockedUseAuthContext.mockReturnValueOnce({ isLoggedIn: false })
       renderProfile()
 
       const howItWorkButton = screen.getByText('Comment ça marche\u00a0?')
       fireEvent.press(howItWorkButton)
 
       await waitFor(() => {
-        expect(mockNavigate).toBeCalledWith('FirstTutorial', { shouldCloseAppOnBackAction: false })
+        expect(mockNavigate).toBeCalledWith('AgeSelection', {
+          type: TutorialTypes.PROFILE_TUTORIAL,
+        })
+      })
+    })
+
+    it('should navigate to Age Information when tutorial row is clicked and user is logged in', async () => {
+      mockdate.set(CURRENT_DATE)
+      renderProfile()
+
+      const howItWorkButton = screen.getByText('Comment ça marche\u00a0?')
+      fireEvent.press(howItWorkButton)
+
+      await waitFor(() => {
+        expect(mockNavigate).toBeCalledWith('ProfileTutorialAgeInformation', { selectedAge: 18 })
       })
     })
 
