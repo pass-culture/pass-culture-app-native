@@ -159,11 +159,6 @@ export enum ActivityIdEnum {
  */
 export interface ActivityResponseModel {
   /**
-   * @type {Array<SchoolTypesIdEnum>}
-   * @memberof ActivityResponseModel
-   */
-  associatedSchoolTypesIds?: Array<SchoolTypesIdEnum> | null
-  /**
    * @type {string}
    * @memberof ActivityResponseModel
    */
@@ -178,6 +173,18 @@ export interface ActivityResponseModel {
    * @memberof ActivityResponseModel
    */
   label: string
+}
+
+/**
+ * @export
+ * @interface ActivityTypesResponse
+ */
+export interface ActivityTypesResponse {
+  /**
+   * @type {Array<ActivityResponseModel>}
+   * @memberof ActivityTypesResponse
+   */
+  activities: Array<ActivityResponseModel>
 }
 /**
  * @export
