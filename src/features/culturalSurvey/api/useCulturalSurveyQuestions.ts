@@ -16,7 +16,7 @@ export function useCulturalSurveyQuestions() {
 
   return useQuery<CulturalSurveyQuestionsResponse>(
     [QueryKeys.CULTURAL_SURVEY_QUESTIONS],
-    () => api.getnativev1culturalSurveyquestions(),
+    () => api.getNativeV1CulturalSurveyQuestions(),
     {
       staleTime: STALE_TIME_CULTURAL_SURVEY_QUESTIONS,
       enabled: !!netInfo.isConnected && shouldRequestCulturalSurveyQuestions,

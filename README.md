@@ -117,7 +117,7 @@ If the file `src/api/gen/.swagger-codegen/VERSION` changes, make sure you locall
 <details>
   <summary>To develop with a local API</summary>
   
-See [the docs](./doc/development/localApi.md) to learn how to develop with a local API "superficially".
+See [the docs](./doc/development/how-to/run-local-api.md) to learn how to develop with a local API "superficially".
 
 The other option, more complex, is to create a specific scheme 'Development' with a `.env.development` file :
 copy the `.env.testing` configuration and update the `API_BASE_URL` setting with you local server address.

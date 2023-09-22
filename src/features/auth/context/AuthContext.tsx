@@ -161,7 +161,7 @@ export const AuthWrapper = memo(function AuthWrapper({
 const STALE_TIME_USER_PROFILE = 5 * 60 * 1000
 function useUserProfileInfo(isLoggedIn: boolean, options = {}) {
   const netInfo = useNetInfoContext()
-  return usePersistQuery<UserProfileResponse>([QueryKeys.USER_PROFILE], () => api.getnativev1me(), {
+  return usePersistQuery<UserProfileResponse>([QueryKeys.USER_PROFILE], () => api.getNativeV1Me(), {
     enabled: !!netInfo.isConnected && isLoggedIn,
     staleTime: STALE_TIME_USER_PROFILE,
     ...options,

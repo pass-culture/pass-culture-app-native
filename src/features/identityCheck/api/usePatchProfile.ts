@@ -12,7 +12,7 @@ export function usePatchProfile() {
   return useMutation(
     () => {
       const body = getCompleteProfile(profile)
-      return body ? api.postnativev1subscriptionprofile(body) : Promise.reject()
+      return body ? api.postNativeV1SubscriptionProfile(body) : Promise.reject()
     },
     {
       onError: () =>

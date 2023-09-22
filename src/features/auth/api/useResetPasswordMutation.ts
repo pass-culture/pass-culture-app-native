@@ -9,7 +9,7 @@ interface MutationOptions {
 }
 
 export const useResetPasswordMutation = ({ onSuccess, onError }: MutationOptions) => {
-  return useMutation((body: ResetPasswordRequest) => api.postnativev1resetPassword(body), {
+  return useMutation((body: ResetPasswordRequest) => api.postNativeV1ResetPassword(body), {
     onSuccess,
     onError,
   })

@@ -10,7 +10,7 @@ export function useAccountSuspensionDate() {
     [QueryKeys.ACCOUNT_SUSPENSION_DATE],
     async () => {
       try {
-        return await api.getnativev1accountsuspensionDate()
+        return await api.getNativeV1AccountSuspensionDate()
       } catch {
         return null
       }
