@@ -10,7 +10,6 @@ import { EligibleAges } from 'features/tutorial/types'
 import { analytics } from 'libs/analytics'
 import { storage } from 'libs/storage'
 import { AccessibilityList } from 'ui/components/accessibility/AccessibilityList'
-import { InternalNavigationProps } from 'ui/components/touchableLink/types'
 import { All } from 'ui/svg/icons/bicolor/All'
 import { Spacer, Typo } from 'ui/theme'
 import { getNoHeadingAttrs } from 'ui/theme/typographyAttrs/getNoHeadingAttrs'
@@ -38,9 +37,9 @@ export const AgeSelection: FunctionComponent<Props> = ({ route }: Props) => {
   const AgeSelectionButtons = ageButtons.map(({ age }) => {
     const isOnboarding = type === TutorialTypes.ONBOARDING
     const startButtonTitle = isOnboarding ? 'j’ai' : 'à'
-    const AgeInformationNavigateTo: InternalNavigationProps['navigateTo'] = isOnboarding
-      ? { screen: 'OnboardingAgeInformation', params: { age } }
-      : { screen: 'ProfileTutorialAgeInformation', params: { age } }
+    const AgeInformationScreen = isOnboarding
+      ? 'OnboardingAgeInformation'
+      : 'ProfileTutorialAgeInformation'
 
     if (age) {
       return (
@@ -48,7 +47,7 @@ export const AgeSelection: FunctionComponent<Props> = ({ route }: Props) => {
           key={age}
           icon={BicolorAll}
           onBeforeNavigate={async () => onBeforeNavigate(type, age)}
-          navigateTo={AgeInformationNavigateTo}
+          navigateTo={{ screen: AgeInformationScreen, params: { age } }}
           accessibilityLabel={`${startButtonTitle} ${age} ans`}>
           <Title4Text>
             {startButtonTitle}
