@@ -11,7 +11,7 @@ import { NoOffer } from 'ui/svg/icons/NoOffer'
 import { Typo } from 'ui/theme'
 
 export const OfferNotFound = ({ resetErrorBoundary }: ScreenErrorProps) => {
-  const timer = useRef<number>()
+  const timer = useRef<NodeJS.Timeout>()
 
   useEffect(
     () => () => {

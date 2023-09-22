@@ -6,7 +6,7 @@ import { QueryKeys } from 'libs/queryKeys'
 export const ANIMATION_DELAY = 700 // Time for the skeleton animation to finish
 
 const useShowSkeletonFromFetchingCount = (fetchingCount: number) => {
-  const timer = useRef<number>()
+  const timer = useRef<NodeJS.Timeout>()
   const [showSkeleton, setShowSkeleton] = useState(true)
 
   useEffect(() => {

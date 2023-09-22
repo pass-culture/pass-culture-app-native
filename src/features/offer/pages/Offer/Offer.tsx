@@ -181,7 +181,7 @@ export const Offer: FunctionComponent = () => {
   )
 
   useEffect(() => {
-    let timeoutId: number
+    let timeoutId: NodeJS.Timeout
     if (shouldTriggerBatchSurveyEvent) {
       timeoutId = setTimeout(() => {
         trackEventHasSeenOfferForSurveyOnce()
