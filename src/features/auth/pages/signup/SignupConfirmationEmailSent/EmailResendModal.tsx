@@ -1,6 +1,7 @@
 import * as React from 'react'
 import styled from 'styled-components/native'
 
+import { analytics } from 'libs/analytics'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { AppModal } from 'ui/components/modals/AppModal'
 import { Close } from 'ui/svg/icons/Close'
@@ -10,6 +11,8 @@ interface Props {
   visible: boolean
   onDismiss: () => void
 }
+
+const onResendPress = () => analytics.logResendEmailValidation()
 
 export const EmailResendModal = ({ visible, onDismiss }: Props) => {
   return (
@@ -25,7 +28,7 @@ export const EmailResendModal = ({ visible, onDismiss }: Props) => {
           un nouveau.
         </StyledBody>
         <Spacer.Column numberOfSpaces={6} />
-        <ButtonPrimary wording="Demander un nouveau lien" />
+        <ButtonPrimary wording="Demander un nouveau lien" onPress={onResendPress} />
       </ModalContent>
     </AppModal>
   )

@@ -491,6 +491,8 @@ export const logEventAnalytics = {
     analytics.logEvent({
       firebase: AnalyticsEvent.RESEND_EMAIL_SIGNUP_CONFIRMATION_EXPIRED_LINK,
     }),
+  logResendEmailValidation: () =>
+    analytics.logEvent({ firebase: AnalyticsEvent.RESEND_EMAIL_VALIDATION }),
   logSaveNewMail: () => analytics.logEvent({ firebase: AnalyticsEvent.SAVE_NEW_MAIL }),
   logScreenViewComeBackLater: () =>
     analytics.logEvent({ amplitude: AmplitudeEvent.SCREEN_VIEW_COME_BACK_LATER }),

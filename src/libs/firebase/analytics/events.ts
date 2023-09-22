@@ -120,6 +120,7 @@ export enum AnalyticsEvent {
   REINITIALIZE_FILTERS = 'ReinitializeFilters',
   RESEND_EMAIL_RESET_PASSWORD_EXPIRED_LINK = 'ResendEmailResetPasswordExpiredLink',
   RESEND_EMAIL_SIGNUP_CONFIRMATION_EXPIRED_LINK = 'ResendEmailSignupConfirmationExpiredLink',
+  RESEND_EMAIL_VALIDATION = 'ResendEmailValidation',
   SAVE_NEW_MAIL = 'SaveNewMail',
   SCREEN_VIEW = 'screen_view',
   SCREENSHOT = 'Screenshot',
