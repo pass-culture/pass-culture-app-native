@@ -65,6 +65,8 @@ export const LocationWidget: React.FC = () => {
     hideModal: hideLocationModal,
   } = useModal()
 
+  const isWidgetHighlighted = isGeolocated || !!isCustomPosition
+
   return (
     <React.Fragment>
       <StyledTooltip
@@ -77,12 +79,8 @@ export const LocationWidget: React.FC = () => {
         onPress={showLocationModal}
         accessibilityLabel="Ouvrir la modale de localisation"
         onLayout={onWidgetLayout}>
-        <IconContainer isActive={isGeolocated}>
-          {isGeolocated || isCustomPosition ? (
-            <LocationPointerFilled />
-          ) : (
-            <LocationPointerNotFilled />
-          )}
+        <IconContainer isActive={isWidgetHighlighted}>
+          {isWidgetHighlighted ? <LocationPointerFilled /> : <LocationPointerNotFilled />}
         </IconContainer>
         <StyledCaption numberOfLines={1}>{locationTitle}</StyledCaption>
       </StyledTouchable>
