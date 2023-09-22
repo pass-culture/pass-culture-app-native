@@ -3,7 +3,7 @@ import { useRoute } from '@react-navigation/native'
 import React, { useCallback } from 'react'
 
 import { VenueResponse } from 'api/gen'
-import { GTLPlaylistResponse } from 'features/gtl/api/gtl-playlist-api'
+import { GTLPlaylistResponse } from 'features/gtlPlaylist/api/gtlPlaylistApi'
 import { UseRouteType } from 'features/navigation/RootNavigator/types'
 import { VenueOfferTile } from 'features/venue/components/VenueOfferTile/VenueOfferTile'
 import { useTransformOfferHits } from 'libs/algolia/fetchAlgolia/transformOfferHit'

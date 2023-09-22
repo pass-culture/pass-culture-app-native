@@ -2,7 +2,7 @@ import { useRoute } from '@react-navigation/native'
 import React, { FunctionComponent, useEffect } from 'react'
 import styled from 'styled-components/native'
 
-import { useGTLPlaylists } from 'features/gtl/hooks/useGTLPlaylists'
+import { useGTLPlaylists } from 'features/gtlPlaylist/hooks/useGTLPlaylists'
 import { UseRouteType } from 'features/navigation/RootNavigator/types'
 import { useVenue } from 'features/venue/api/useVenue'
 import { VenueBody } from 'features/venue/components/VenueBody/VenueBody'

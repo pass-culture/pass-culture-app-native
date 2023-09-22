@@ -3,7 +3,7 @@ import mockdate from 'mockdate'
 import React from 'react'
 
 import { useRoute } from '__mocks__/@react-navigation/native'
-import * as useGTLPlaylistsLibrary from 'features/gtl/api/gtl-playlist-api'
+import * as useGTLPlaylistsLibrary from 'features/gtlPlaylist/api/gtlPlaylistApi'
 import { Referrals } from 'features/navigation/RootNavigator/types'
 import { venueResponseSnap } from 'features/venue/fixtures/venueResponseSnap'
 import { Venue } from 'features/venue/pages/Venue/Venue'
