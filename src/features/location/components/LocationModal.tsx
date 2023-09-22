@@ -62,13 +62,9 @@ export const LocationModal = ({ visible, dismissModal }: LocationModalProps) => 
     [dismissModal, runGeolocationDialogs, setSelectedOption]
   )
 
-  const colorForCustomLocationMode = React.useMemo(
-    () =>
-      isCurrentLocationMode(LocationOption.CUSTOM_POSITION)
-        ? theme.colors.primary
-        : theme.colors.black,
-    [isCurrentLocationMode]
-  )
+  const colorForCustomLocationMode = isCurrentLocationMode(LocationOption.CUSTOM_POSITION)
+    ? theme.colors.primary
+    : theme.colors.black
 
   const onResetPlace = () => {
     setPlace(null)
