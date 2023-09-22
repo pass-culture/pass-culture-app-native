@@ -63,7 +63,7 @@ describe('<ProfileTutorialAgeInformation />', () => {
     expect(screen.getByTestId('sixteen-timeline')).toBeOnTheScreen()
   })
 
-  it('should display 16 timeline when logged in at 17', () => {
+  it('should display 17 timeline when logged in at 17', () => {
     render(<ProfileTutorialAgeInformation {...navPropsSeventeenSelected} />)
 
     expect(screen.getByTestId('seventeen-timeline')).toBeOnTheScreen()
