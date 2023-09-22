@@ -73,7 +73,7 @@ export type TutorialRootStackParamList = {
   OnboardingAgeInformation: { age: 15 | 16 | 17 | 18 }
   OnboardingGeolocation: undefined
   OnboardingWelcome: undefined
-  ProfileTutorialAgeInformation: { selectedAge: 15 | 16 | 17 | 18 }
+  ProfileTutorialAgeInformation: { age: 15 | 16 | 17 | 18 }
 }
 
 export type TrustedDeviceRootStackParamList = {
