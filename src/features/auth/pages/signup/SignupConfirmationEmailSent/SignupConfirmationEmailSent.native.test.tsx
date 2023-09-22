@@ -64,4 +64,12 @@ describe('<SignupConfirmationEmailSent />', () => {
 
     expect(screen.queryByText('Recevoir un nouveau lien')).not.toBeOnTheScreen()
   })
+
+  it('should show modal when resend button is pressed', async () => {
+    render(<SignupConfirmationEmailSent email="john.doe@gmail.com" />)
+
+    fireEvent.press(screen.getByText('Recevoir un nouveau lien'))
+
+    expect(screen.getByText('Demander un nouveau lien')).toBeOnTheScreen()
+  })
 })
