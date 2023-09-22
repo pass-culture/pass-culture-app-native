@@ -47,11 +47,9 @@ export const LocationModal = ({ visible, dismissModal }: LocationModalProps) => 
     }
   }, [visible, initialize])
 
-  const colorForGeolocationMode = React.useMemo(
-    () =>
-      isCurrentLocationMode(LocationOption.GEOLOCATION) ? theme.colors.primary : theme.colors.black,
-    [isCurrentLocationMode]
-  )
+  const colorForGeolocationMode = isCurrentLocationMode(LocationOption.GEOLOCATION)
+    ? theme.colors.primary
+    : theme.colors.black
 
   const selectLocationOption = React.useCallback(
     (option: LocationOption) => () => {
