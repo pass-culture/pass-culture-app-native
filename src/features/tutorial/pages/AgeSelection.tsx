@@ -55,24 +55,23 @@ export const AgeSelection: FunctionComponent<Props> = ({ route }: Props) => {
           </Title4Text>
         </AgeButton>
       )
-    } else {
-      return (
-        <AgeButton
-          key={'other'}
-          dense
-          onBeforeNavigate={async () => onBeforeNavigate(type)}
-          navigateTo={{ screen: 'AgeSelectionOther', params: { type } }}
-          accessibilityLabel={`${startButtonTitle} moins de 15 ans ou plus de 18 ans`}>
-          <Title4Text>Autre</Title4Text>
-          <React.Fragment>
-            <Spacer.Column numberOfSpaces={1} />
-            <Typo.CaptionNeutralInfo numberOfLines={2}>
-              {startButtonTitle} moins de 15 ans ou plus de 18 ans
-            </Typo.CaptionNeutralInfo>
-          </React.Fragment>
-        </AgeButton>
-      )
     }
+    return (
+      <AgeButton
+        key="other"
+        dense
+        onBeforeNavigate={async () => onBeforeNavigate(type)}
+        navigateTo={{ screen: 'AgeSelectionOther', params: { type } }}
+        accessibilityLabel={`${startButtonTitle} moins de 15 ans ou plus de 18 ans`}>
+        <Title4Text>Autre</Title4Text>
+        <React.Fragment>
+          <Spacer.Column numberOfSpaces={1} />
+          <Typo.CaptionNeutralInfo numberOfLines={2}>
+            {startButtonTitle} moins de 15 ans ou plus de 18 ans
+          </Typo.CaptionNeutralInfo>
+        </React.Fragment>
+      </AgeButton>
+    )
   })
 
   const title =
