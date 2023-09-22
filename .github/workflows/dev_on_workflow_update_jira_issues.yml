@@ -87,10 +87,10 @@ jobs:
     if: needs.issue-number.outputs.status != null
     steps:
       - name: Checkout 🛎️
-        uses: actions/checkout@v2.3.4
+        uses: actions/checkout@v3
         with:
           persist-credentials: false
-          fetch-depth: 0 # Fetch all history for "git rev-list --count HEAD" info
+          fetch-depth: 1
 
       - name: Setup gajira cli
         uses: atlassian/gajira-cli@master
