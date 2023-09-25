@@ -2,6 +2,7 @@ import React, { memo } from 'react'
 import { View } from 'react-native'
 import styled, { useTheme } from 'styled-components/native'
 
+import { LocationWidget } from 'features/location/components/LocationWidget'
 import { SearchBox } from 'features/search/components/SearchBox/SearchBox'
 import { CreateHistoryItem, SearchView } from 'features/search/types'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
@@ -34,11 +35,16 @@ export const SearchHeader = memo(function SearchHeader({
   return (
     <React.Fragment>
       <Spacer.TopScreen />
-      <SearchBoxContainer>
-        <View {...getHeadingAttrs(1)}>
-          <StyledTitle1 htmlFor={searchInputID}>Rechercher</StyledTitle1>
-        </View>
-        {shouldDisplaySubtitle ? <CaptionSubtitle>{subtitle}</CaptionSubtitle> : null}
+      <HeaderContainer>
+        <TitleAndWidgetContainer>
+          <TitleContainer>
+            <View {...getHeadingAttrs(1)}>
+              <StyledTitle1 htmlFor={searchInputID}>Rechercher</StyledTitle1>
+            </View>
+            {!!shouldDisplaySubtitle && <CaptionSubtitle>{subtitle}</CaptionSubtitle>}
+          </TitleContainer>
+          {!!shouldDisplayLocationWidget && <LocationWidget enableTooltip={false} />}
+        </TitleAndWidgetContainer>
         <Spacer.Column numberOfSpaces={4} />
         <View>
           <SearchBox
@@ -47,16 +53,16 @@ export const SearchHeader = memo(function SearchHeader({
             searchInHistory={searchInHistory}
           />
         </View>
-      </SearchBoxContainer>
+      </HeaderContainer>
     </React.Fragment>
   )
 })
 
-const SearchBoxContainer = styled.View({
+const HeaderContainer = styled.View(({ theme }) => ({
   marginTop: getSpacing(6),
-  zIndex: 1,
+  zIndex: theme.zIndex.header,
   paddingHorizontal: getSpacing(6),
-})
+}))
 
 const StyledTitle1 = styledInputLabel(InputLabel)(({ theme }) => ({
   ...theme.typography.title1,
@@ -66,3 +72,12 @@ const CaptionSubtitle = styled(Typo.Caption)(({ theme }) => ({
   marginTop: getSpacing(1),
   color: theme.colors.greyDark,
 }))
+
+const TitleAndWidgetContainer = styled.View({
+  flexDirection: 'row',
+  justifyContent: 'space-between',
+})
+
+const TitleContainer = styled.View({
+  flexShrink: 1,
+})
