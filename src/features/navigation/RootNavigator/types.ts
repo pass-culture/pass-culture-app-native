@@ -241,7 +241,6 @@ export type RootStackParamList = {
   VerifyEligibility: undefined
   NotYetUnderageEligibility: { eligibilityStartDatetime: string }
   Tutorial?: { selectedAge?: 15 | 16 | 17 | 18 }
-  FirstTutorial?: { shouldCloseAppOnBackAction: boolean }
   EighteenBirthday: undefined
   RecreditBirthdayNotification: undefined
   PageNotFound: undefined
