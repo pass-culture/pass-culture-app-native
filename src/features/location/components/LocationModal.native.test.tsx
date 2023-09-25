@@ -1,12 +1,11 @@
 import React from 'react'
 import { Button } from 'react-native'
-import { act } from 'react-test-renderer'
 
 import { LocationModal } from 'features/location/components/LocationModal'
 import { checkGeolocPermission, GeolocPermissionState, LocationWrapper } from 'libs/geolocation'
 import { getPosition } from 'libs/geolocation/getPosition'
 import { requestGeolocPermission } from 'libs/geolocation/requestGeolocPermission'
-import { fireEvent, render, screen, waitForModalToHide, waitForModalToShow } from 'tests/utils'
+import { fireEvent, render, screen, waitForModalToHide, waitForModalToShow, act } from 'tests/utils'
 
 const hideModalMock = jest.fn()
 
