@@ -206,9 +206,3 @@ jobs:
       GCP_EHP_WORKLOAD_IDENTITY_PROVIDER: ${{ secrets.GCP_EHP_WORKLOAD_IDENTITY_PROVIDER }}
       GCP_PROD_SERVICE_ACCOUNT: ${{ secrets.GCP_PROD_SERVICE_ACCOUNT }}
       GCP_PROD_WORKLOAD_IDENTITY_PROVIDER: ${{ secrets.GCP_PROD_WORKLOAD_IDENTITY_PROVIDER }}
-  update-jira-issues:
-    if: github.ref == 'refs/heads/master'
-    uses: ./.github/workflows/dev_on_workflow_update_jira_issues.yml
-    secrets:
-      GCP_EHP_SERVICE_ACCOUNT: ${{ secrets.GCP_EHP_SERVICE_ACCOUNT }}
-      GCP_EHP_WORKLOAD_IDENTITY_PROVIDER: ${{ secrets.GCP_EHP_WORKLOAD_IDENTITY_PROVIDER }}
