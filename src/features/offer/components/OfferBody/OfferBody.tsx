@@ -18,7 +18,7 @@ import { VenueSelectionModal } from 'features/offer/components/VenueSelectionMod
 import { PlaylistType } from 'features/offer/enums'
 import { getVenueSectionTitle } from 'features/offer/helpers/getVenueSectionTitle/getVenueSectionTitle'
 import { useTrackOfferSeenDuration } from 'features/offer/helpers/useTrackOfferSeenDuration'
-import { SimilarOffersResponseParams } from 'features/offer/types'
+import { RecommendationAPIParams } from 'features/offer/types'
 import { ANIMATION_DURATION } from 'features/venue/components/VenuePartialAccordionDescription/VenuePartialAccordionDescription'
 import { accessibilityAndTestId } from 'libs/accessibilityAndTestId'
 import {
@@ -56,9 +56,9 @@ interface Props {
   offerId: number
   onScroll: () => void
   sameCategorySimilarOffers?: Offer[]
-  apiRecoParamsSameCategory?: SimilarOffersResponseParams
+  apiRecoParamsSameCategory?: RecommendationAPIParams
   otherCategoriesSimilarOffers?: Offer[]
-  apiRecoParamsOtherCategories?: SimilarOffersResponseParams
+  apiRecoParamsOtherCategories?: RecommendationAPIParams
   shouldUseAlgoliaRecommend?: boolean
 }
 
@@ -157,7 +157,7 @@ export const OfferBody: FunctionComponent<Props> = ({
         height: number
         playlistType?: PlaylistType
       },
-      apiRecoParams?: SimilarOffersResponseParams
+      apiRecoParams?: RecommendationAPIParams
     ) => {
       const timestampsInMillis = item.offer.dates?.map((timestampInSec) => timestampInSec * 1000)
       return (

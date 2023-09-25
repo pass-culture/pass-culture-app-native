@@ -26,10 +26,10 @@ export interface OfferTileProps {
   shouldUseAlgoliaRecommend?: boolean
   playlistType?: PlaylistType
   searchId?: string
-  apiRecoParams?: SimilarOffersResponseParams
+  apiRecoParams?: RecommendationAPIParams
 }
 
-export interface SimilarOffersResponseParams {
+export interface RecommendationAPIParams {
   call_id?: string
   filtered?: boolean
   geo_located?: boolean
@@ -41,7 +41,7 @@ export interface SimilarOffersResponseParams {
 
 export interface SimilarOffersResponse {
   results: string[]
-  params: SimilarOffersResponseParams
+  params: RecommendationAPIParams
 }
 
 export interface VenueDetail {

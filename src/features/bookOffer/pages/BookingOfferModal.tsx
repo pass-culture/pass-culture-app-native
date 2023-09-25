@@ -16,7 +16,7 @@ import { useBookingStock } from 'features/bookOffer/helpers/useBookingStock'
 import { useModalContent } from 'features/bookOffer/helpers/useModalContent'
 import { UseNavigationType, UseRouteType } from 'features/navigation/RootNavigator/types'
 import { useOffer } from 'features/offer/api/useOffer'
-import { SimilarOffersResponseParams } from 'features/offer/types'
+import { RecommendationAPIParams } from 'features/offer/types'
 import { useLogOfferConversion } from 'libs/algolia/analytics/logOfferConversion'
 import { analytics } from 'libs/analytics'
 import { CampaignEvents, campaignTracker } from 'libs/campaign'
@@ -61,7 +61,7 @@ export const BookingOfferModalComponent: React.FC<BookingOfferModalComponentProp
   const fromOfferId = route.params?.fromOfferId
   const fromMultivenueOfferId = route.params?.fromMultivenueOfferId
   const algoliaOfferId = offerId?.toString()
-  const apiRecoParams: SimilarOffersResponseParams = route.params?.apiRecoParams
+  const apiRecoParams: RecommendationAPIParams = route.params?.apiRecoParams
     ? JSON.parse(route.params?.apiRecoParams)
     : undefined
   const playlistType = route.params?.playlistType

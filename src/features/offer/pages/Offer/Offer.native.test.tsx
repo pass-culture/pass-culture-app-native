@@ -8,7 +8,7 @@ import * as useSimilarOffers from 'features/offer/api/useSimilarOffers'
 import { PlaylistType } from 'features/offer/enums'
 import { offerResponseSnap } from 'features/offer/fixtures/offerResponse'
 import { offerId, renderOfferPage } from 'features/offer/helpers/renderOfferPageTestUtil'
-import { SimilarOffersResponseParams } from 'features/offer/types'
+import { RecommendationAPIParams } from 'features/offer/types'
 import { beneficiaryUser } from 'fixtures/user'
 import { mockedAlgoliaResponse } from 'libs/algolia/__mocks__/mockedAlgoliaResponse'
 import { analytics } from 'libs/analytics'
@@ -45,7 +45,7 @@ const mockedOpenUrl = openUrl as jest.MockedFunction<typeof openUrl>
 
 jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockReturnValue(true)
 
-const apiRecoParams: SimilarOffersResponseParams = {
+const apiRecoParams: RecommendationAPIParams = {
   call_id: '1',
   filtered: true,
   geo_located: false,

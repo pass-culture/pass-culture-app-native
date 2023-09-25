@@ -5,7 +5,7 @@ import { push } from '__mocks__/@react-navigation/native'
 import { CategoryIdEnum, HomepageLabelNameEnum } from 'api/gen'
 import { Referrals } from 'features/navigation/RootNavigator/types'
 import { PlaylistType } from 'features/offer/enums'
-import { SimilarOffersResponseParams } from 'features/offer/types'
+import { RecommendationAPIParams } from 'features/offer/types'
 import { mockedAlgoliaResponse } from 'libs/algolia/__mocks__/mockedAlgoliaResponse'
 import { analytics } from 'libs/analytics'
 import { queryCache, reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
@@ -17,7 +17,7 @@ const offer = mockedAlgoliaResponse.hits[0].offer
 const offerId = 116656
 const searchId = uuidv4()
 
-const apiRecoParams: SimilarOffersResponseParams = {
+const apiRecoParams: RecommendationAPIParams = {
   call_id: '1',
   filtered: true,
   geo_located: false,

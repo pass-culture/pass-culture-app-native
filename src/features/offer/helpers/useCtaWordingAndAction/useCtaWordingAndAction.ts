@@ -24,7 +24,7 @@ import { openUrl } from 'features/navigation/helpers'
 import { Referrals, UseRouteType } from 'features/navigation/RootNavigator/types'
 import { getBookingOfferId } from 'features/offer/helpers/getBookingOfferId/getBookingOfferId'
 import { getIsFreeDigitalOffer } from 'features/offer/helpers/getIsFreeDigitalOffer/getIsFreeDigitalOffer'
-import { SimilarOffersResponseParams } from 'features/offer/types'
+import { RecommendationAPIParams } from 'features/offer/types'
 import { isUserUnderageBeneficiary } from 'features/profile/helpers/isUserUnderageBeneficiary'
 import { analytics } from 'libs/analytics'
 import { useSubcategoriesMapping } from 'libs/subcategories'
@@ -250,7 +250,7 @@ export const useCtaWordingAndAction = (props: {
   const { data: endedBooking } = useEndedBookingFromOfferId(offerId)
   const { showErrorSnackBar } = useSnackBarContext()
   const route = useRoute<UseRouteType<'Offer'>>()
-  const apiRecoParams: SimilarOffersResponseParams = route.params?.apiRecoParams
+  const apiRecoParams: RecommendationAPIParams = route.params?.apiRecoParams
     ? JSON.parse(route.params?.apiRecoParams)
     : undefined
   const playlistType = route.params?.playlistType

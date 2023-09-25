@@ -11,7 +11,7 @@ import { mockStocks } from 'features/bookOffer/fixtures/stocks'
 import { IBookingContext } from 'features/bookOffer/types'
 import { VenueListItem } from 'features/offer/components/VenueSelectionList/VenueSelectionList'
 import { PlaylistType } from 'features/offer/enums'
-import { SimilarOffersResponseParams } from 'features/offer/types'
+import { RecommendationAPIParams } from 'features/offer/types'
 import { beneficiaryUser } from 'fixtures/user'
 import * as logOfferConversionAPI from 'libs/algolia/analytics/logOfferConversion'
 import { analytics } from 'libs/analytics'
@@ -121,7 +121,7 @@ jest.mock('api/useSearchVenuesOffer/useSearchVenueOffers', () => ({
   }),
 }))
 
-const apiRecoParams: SimilarOffersResponseParams = {
+const apiRecoParams: RecommendationAPIParams = {
   call_id: '1',
   filtered: true,
   geo_located: false,
