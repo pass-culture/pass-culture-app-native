@@ -24,38 +24,175 @@ exports[`SearchHeader component should render SearchHeader 1`] = `
       ]
     }
   >
-    <View>
-      <Text
-        htmlFor="testUuidV4"
-        style={
-          [
-            {
-              "color": "#161617",
-              "fontFamily": "Montserrat-Black",
-              "fontSize": 26,
-              "lineHeight": 34,
-            },
-          ]
-        }
-      >
-        Rechercher
-      </Text>
-    </View>
-    <Text
+    <View
       style={
         [
           {
-            "color": "#696A6F",
-            "fontFamily": "Montserrat-SemiBold",
-            "fontSize": 12,
-            "lineHeight": 16,
-            "marginTop": 4,
+            "flexDirection": "row",
+            "justifyContent": "space-between",
           },
         ]
       }
     >
-      Toutes les offres à portée de main
-    </Text>
+      <View
+        style={
+          [
+            {
+              "flexShrink": 1,
+            },
+          ]
+        }
+      >
+        <View>
+          <Text
+            htmlFor="testUuidV4"
+            style={
+              [
+                {
+                  "color": "#161617",
+                  "fontFamily": "Montserrat-Black",
+                  "fontSize": 26,
+                  "lineHeight": 34,
+                },
+              ]
+            }
+          >
+            Rechercher
+          </Text>
+        </View>
+        <Text
+          style={
+            [
+              {
+                "color": "#696A6F",
+                "fontFamily": "Montserrat-SemiBold",
+                "fontSize": 12,
+                "lineHeight": 16,
+                "marginTop": 4,
+              },
+            ]
+          }
+        >
+          Toutes les offres à portée de main
+        </Text>
+      </View>
+      <View
+        accessibilityLabel="Ouvrir la modale de localisation"
+        accessibilityRole="button"
+        accessibilityState={
+          {
+            "busy": undefined,
+            "checked": undefined,
+            "disabled": undefined,
+            "expanded": undefined,
+            "selected": undefined,
+          }
+        }
+        accessibilityValue={
+          {
+            "max": undefined,
+            "min": undefined,
+            "now": undefined,
+            "text": undefined,
+          }
+        }
+        accessible={true}
+        collapsable={false}
+        focusable={true}
+        onClick={[Function]}
+        onLayout={[Function]}
+        onResponderGrant={[Function]}
+        onResponderMove={[Function]}
+        onResponderRelease={[Function]}
+        onResponderTerminate={[Function]}
+        onResponderTerminationRequest={[Function]}
+        onStartShouldSetResponder={[Function]}
+        style={
+          {
+            "alignItems": "center",
+            "marginLeft": 8,
+            "opacity": 1,
+            "userSelect": "auto",
+          }
+        }
+        testID="Ouvrir la modale de localisation"
+      >
+        <View
+          collapsable={false}
+          isActive={false}
+          style={
+            {
+              "alignItems": "center",
+              "borderColor": "#696A6F",
+              "borderRadius": 40,
+              "borderStyle": "solid",
+              "borderWidth": 1,
+              "height": 40,
+              "justifyContent": "center",
+              "width": 40,
+            }
+          }
+        >
+          <View
+            height={24}
+            testID="BicolorLocationPointer"
+            width={24}
+          >
+            <Text>
+              BicolorLocationPointer-SVG-Mock
+            </Text>
+          </View>
+        </View>
+        <Text
+          numberOfLines={1}
+          style={
+            [
+              {
+                "color": "#161617",
+                "fontFamily": "Montserrat-SemiBold",
+                "fontSize": 12,
+                "lineHeight": 16,
+                "maxWidth": 80,
+                "paddingTop": 4,
+              },
+            ]
+          }
+        >
+          Ma position
+        </Text>
+      </View>
+      <Modal
+        accessibilityLabelledBy="testUuidV4"
+        accessibilityModal={true}
+        accessibilityRole="none"
+        animationType="none"
+        deviceHeight={1334}
+        deviceWidth={750}
+        hardwareAccelerated={false}
+        hideModalContentWhileAnimating={false}
+        onBackdropPress={[Function]}
+        onModalHide={[Function]}
+        onModalWillHide={[Function]}
+        onModalWillShow={[Function]}
+        onRequestClose={[Function]}
+        panResponderThreshold={4}
+        scrollHorizontal={false}
+        scrollOffset={0}
+        scrollOffsetMax={0}
+        scrollTo={null}
+        statusBarTranslucent={true}
+        supportedOrientations={
+          [
+            "portrait",
+            "landscape",
+          ]
+        }
+        swipeThreshold={100}
+        testID="modal"
+        transparent={true}
+        visible={false}
+      />
+    </View>
     <View
       numberOfSpaces={4}
       style={

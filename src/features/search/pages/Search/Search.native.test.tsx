@@ -169,7 +169,7 @@ jest.mock('libs/subcategories/useSubcategories', () => ({
   }),
 }))
 
-const useFeatureFlagSpy = jest.spyOn(useFeatureFlag, 'useFeatureFlag')
+const useFeatureFlagSpy = jest.spyOn(useFeatureFlag, 'useFeatureFlag').mockReturnValue(false)
 
 const TODAY_DATE = new Date('2023-09-25T00:00:00.000Z')
 
@@ -208,6 +208,7 @@ describe('<Search/>', () => {
 
   describe('When search view is suggestions', () => {
     beforeEach(() => {
+      useFeatureFlagSpy.mockReturnValue(true)
       useRoute.mockReturnValue({ params: { view: SearchView.Suggestions } })
     })
 
@@ -220,7 +221,8 @@ describe('<Search/>', () => {
     })
 
     it('should not display venue suggestions when wipEnableVenuesInSearchResults feature flag deactivated', async () => {
-      useFeatureFlagSpy.mockReturnValueOnce(false)
+      // eslint-disable-next-line local-rules/independent-mocks
+      useFeatureFlagSpy.mockReturnValue(false)
       render(<Search />)
       await act(async () => {})
 
