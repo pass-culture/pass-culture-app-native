@@ -89,6 +89,9 @@ export const LocationModal = ({ visible, dismissModal }: LocationModalProps) => 
     dismissModal()
   }
 
+  const isQueryProvided = !!placeQuery && !!debouncedPlaceQuery
+  const shouldShowSuggestedPlaces = isQueryProvided && !!noPlace
+
   return (
     <AppModal
       visible={visible}
@@ -128,7 +131,7 @@ export const LocationModal = ({ visible, dismissModal }: LocationModalProps) => 
             placeholder={LOCATION_PLACEHOLDER}
             value={placeQuery}
           />
-          {!!placeQuery && !!debouncedPlaceQuery && !!noPlace ? (
+          {shouldShowSuggestedPlaces ? (
             <React.Fragment>
               <Spacer.Column numberOfSpaces={4} />
               <SuggestedPlaces query={debouncedPlaceQuery} setSelectedPlace={onSetSelectedPlace} />
