@@ -46,7 +46,7 @@ export const FilterRow = ({
         </React.Fragment>
       )}
       <TextContainer>
-        <TitleAndDescriptionContainer hasComplement={!!complement}>
+        <TitleAndDescriptionContainer>
           <Title numberOfLines={1}>{title}</Title>
           {!!description && <Description numberOfLines={1}>{description}</Description>}
         </TitleAndDescriptionContainer>
@@ -69,7 +69,6 @@ const LocationContentContainer = styledButton(Touchable)({
 })
 
 const TextContainer = styled.View({
-  justifyContent: 'space-between',
   flexDirection: 'row',
   flex: 1,
 })
@@ -86,12 +85,10 @@ const ArrowNext = styled(DefaultArrowNext).attrs(({ theme }) => ({
   size: theme.icons.sizes.smaller,
 }))``
 
-const TitleAndDescriptionContainer = styled.View<{ hasComplement: boolean }>(
-  ({ hasComplement }) => ({
-    flex: hasComplement ? 0.7 : 1,
-    alignItems: 'flex-start',
-  })
-)
+const TitleAndDescriptionContainer = styled.View(({ theme }) => ({
+  flex: theme.isMobileViewport ? 0.7 : undefined,
+  alignItems: 'flex-start',
+}))
 
 const ComplementContainer = styled.View({
   flex: 0.3,
