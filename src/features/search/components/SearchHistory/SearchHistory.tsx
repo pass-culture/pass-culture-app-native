@@ -59,7 +59,6 @@ const Container = styled.View({
 })
 
 const DeleteButton = styledButton(Touchable)({
-  flexGrow: 1,
   maxWidth: getSpacing(10),
   justifyContent: 'center',
   alignItems: 'center',
