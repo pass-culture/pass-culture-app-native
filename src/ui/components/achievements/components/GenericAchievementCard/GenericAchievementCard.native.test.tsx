@@ -71,7 +71,7 @@ describe('<GenericAchievementCard />', () => {
 
   it('should call card analytics on active index', () => {
     render(
-      <GenericAchievement screenName="FirstTutorial">
+      <GenericAchievement screenName="EighteenBirthday">
         <GenericAchievementCard
           buttonText={buttonText}
           animation={animation}
@@ -99,11 +99,11 @@ describe('<GenericAchievementCard />', () => {
       </GenericAchievement>
     )
 
-    expect(analytics.logScreenView).toHaveBeenNthCalledWith(1, 'FirstTutorial1')
+    expect(analytics.logScreenView).toHaveBeenNthCalledWith(1, 'EighteenBirthday1')
 
     fireEvent.press(screen.getByTestId('Continuer vers l’étape suivante'))
 
-    expect(analytics.logScreenView).toHaveBeenNthCalledWith(2, 'FirstTutorial2')
+    expect(analytics.logScreenView).toHaveBeenNthCalledWith(2, 'EighteenBirthday2')
   })
 
   it('should have a button available on active index', () => {
@@ -312,7 +312,7 @@ describe('<GenericAchievementCard />', () => {
 
 function renderGenericAchievementCardComponent(props: AchievementCardProps) {
   return render(
-    <GenericAchievement screenName="FirstTutorial">
+    <GenericAchievement screenName="EighteenBirthday">
       <GenericAchievementCard {...props} />
     </GenericAchievement>
   )
