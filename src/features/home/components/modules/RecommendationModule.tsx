@@ -1,7 +1,7 @@
 import React, { useCallback, useEffect } from 'react'
 
 import { useAuthContext } from 'features/auth/context/AuthContext'
-import { useHomeRecommendedHits } from 'features/home/api/useHomeRecommendedHits'
+import { useHomeRecommendedOffers } from 'features/home/api/useHomeRecommendedOffers'
 import { HomeOfferTile } from 'features/home/components/HomeOfferTile'
 import { useHomePosition } from 'features/home/helpers/useHomePosition'
 import { RecommendedOffersModule } from 'features/home/types'
@@ -32,13 +32,13 @@ export const RecommendationModule = (props: RecommendationModuleProps) => {
   const mapping = useCategoryIdMapping()
   const labelMapping = useCategoryHomeLabelMapping()
 
-  const hits = useHomeRecommendedHits(profile?.id, position, moduleId, recommendationParameters)
-  const nbHits = hits?.length ?? 0
-  const shouldModuleBeDisplayed = nbHits > displayParameters.minOffers
+  const offers = useHomeRecommendedOffers(profile?.id, position, moduleId, recommendationParameters)
+  const nbOffers = offers?.length ?? 0
+  const shouldModuleBeDisplayed = nbOffers > displayParameters.minOffers
 
   const moduleName = displayParameters.title
   const logHasSeenAllTilesOnce = useFunctionOnce(() =>
-    analytics.logAllTilesSeen({ moduleName, numberOfTiles: nbHits })
+    analytics.logAllTilesSeen({ moduleName, numberOfTiles: nbOffers })
   )
 
   useEffect(() => {
@@ -89,7 +89,7 @@ export const RecommendationModule = (props: RecommendationModuleProps) => {
       testID="recommendationModuleList"
       title={displayParameters.title}
       subtitle={displayParameters.subtitle}
-      data={hits ?? []}
+      data={offers ?? []}
       itemHeight={itemHeight}
       itemWidth={itemWidth}
       renderItem={renderItem}

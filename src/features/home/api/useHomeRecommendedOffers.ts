@@ -12,7 +12,7 @@ import { useSubcategoryLabelMapping } from 'libs/subcategories/mappings'
 import { SubcategoryLabelMapping } from 'libs/subcategories/types'
 import { Offer } from 'shared/offer/types'
 
-import { useAlgoliaRecommendedHits } from './useAlgoliaRecommendedHits'
+import { useAlgoliaRecommendedOffers } from './useAlgoliaRecommendedOffers'
 
 export function getRecommendationParameters(
   parameters: RecommendedOffersModule['recommendationParameters'] | undefined,
@@ -49,7 +49,7 @@ export function getRecommendationParameters(
   }
 }
 
-export const useHomeRecommendedHits = (
+export const useHomeRecommendedOffers = (
   userId: number | undefined,
   position: Position,
   moduleId: string,
@@ -78,5 +78,5 @@ export const useHomeRecommendedHits = (
     )
   }, [getRecommendedIds, recommendationParameters, recommendationEndpoint, subcategoryLabelMapping])
 
-  return useAlgoliaRecommendedHits(recommendedIds ?? [], moduleId, true)
+  return useAlgoliaRecommendedOffers(recommendedIds ?? [], moduleId, true)
 }

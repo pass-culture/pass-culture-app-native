@@ -1,4 +1,4 @@
-import { useAlgoliaRecommendedHits } from 'features/home/api/useAlgoliaRecommendedHits'
+import { useAlgoliaRecommendedOffers } from 'features/home/api/useAlgoliaRecommendedOffers'
 import { mockedAlgoliaResponse } from 'libs/algolia/__mocks__/mockedAlgoliaResponse'
 import * as fetchOffersByIdsAPI from 'libs/algolia/fetchAlgolia/fetchOffersByIds'
 import * as filterOfferHitAPI from 'libs/algolia/fetchAlgolia/transformOfferHit'
@@ -12,7 +12,7 @@ const getSimilarOffersInOrderSpy = jest.spyOn(
 )
 
 const ids = ['102280', '102272', '102249', '102310']
-describe('useAlgoliaRecommendedHits', () => {
+describe('useAlgoliaRecommendedOffers', () => {
   const mockFetchAlgoliaHits = jest.fn().mockResolvedValue(mockedAlgoliaResponse.hits)
   const fetchAlgoliaHitsSpy = jest
     .spyOn(fetchOffersByIdsAPI, 'fetchOffersByIds')
@@ -23,7 +23,7 @@ describe('useAlgoliaRecommendedHits', () => {
     .mockImplementation(jest.fn())
 
   it('should fetch algolia when ids are provided', async () => {
-    renderHook(() => useAlgoliaRecommendedHits(ids, 'abcd'), {
+    renderHook(() => useAlgoliaRecommendedOffers(ids, 'abcd'), {
       // eslint-disable-next-line local-rules/no-react-query-provider-hoc
       wrapper: ({ children }) => reactQueryProviderHOC(children),
     })
@@ -33,7 +33,7 @@ describe('useAlgoliaRecommendedHits', () => {
   })
 
   it('should filter algolia hits', async () => {
-    renderHook(() => useAlgoliaRecommendedHits(ids, 'abcd'), {
+    renderHook(() => useAlgoliaRecommendedOffers(ids, 'abcd'), {
       // eslint-disable-next-line local-rules/no-react-query-provider-hoc
       wrapper: ({ children }) => reactQueryProviderHOC(children),
     })
@@ -44,7 +44,7 @@ describe('useAlgoliaRecommendedHits', () => {
 
   it('should return undefined when algolia does not return any hit', async () => {
     jest.spyOn(fetchOffersByIdsAPI, 'fetchOffersByIds').mockResolvedValueOnce([])
-    const { result } = renderHook(() => useAlgoliaRecommendedHits(ids, 'abcd'), {
+    const { result } = renderHook(() => useAlgoliaRecommendedOffers(ids, 'abcd'), {
       // eslint-disable-next-line local-rules/no-react-query-provider-hoc
       wrapper: ({ children }) => reactQueryProviderHOC(children),
     })
@@ -55,7 +55,7 @@ describe('useAlgoliaRecommendedHits', () => {
   })
 
   it('should return undefined when ids are not provided', async () => {
-    const { result } = renderHook(() => useAlgoliaRecommendedHits([], 'abcd'), {
+    const { result } = renderHook(() => useAlgoliaRecommendedOffers([], 'abcd'), {
       // eslint-disable-next-line local-rules/no-react-query-provider-hoc
       wrapper: ({ children }) => reactQueryProviderHOC(children),
     })
@@ -63,7 +63,7 @@ describe('useAlgoliaRecommendedHits', () => {
   })
 
   it('should call function to preserve ids offer order when shouldPreserveIdsOrder is true', async () => {
-    renderHook(() => useAlgoliaRecommendedHits(ids, 'abcd', true), {
+    renderHook(() => useAlgoliaRecommendedOffers(ids, 'abcd', true), {
       // eslint-disable-next-line local-rules/no-react-query-provider-hoc
       wrapper: ({ children }) => reactQueryProviderHOC(children),
     })
@@ -72,7 +72,7 @@ describe('useAlgoliaRecommendedHits', () => {
   })
 
   it('should not call function to preserve ids offer order when shouldPreserveIdsOrder is undefined', async () => {
-    renderHook(() => useAlgoliaRecommendedHits(ids, 'abcd'), {
+    renderHook(() => useAlgoliaRecommendedOffers(ids, 'abcd'), {
       // eslint-disable-next-line local-rules/no-react-query-provider-hoc
       wrapper: ({ children }) => reactQueryProviderHOC(children),
     })
@@ -81,7 +81,7 @@ describe('useAlgoliaRecommendedHits', () => {
   })
 
   it('should not call function to preserve ids offer order when shouldPreserveIdsOrder is false', async () => {
-    renderHook(() => useAlgoliaRecommendedHits(ids, 'abcd', false), {
+    renderHook(() => useAlgoliaRecommendedOffers(ids, 'abcd', false), {
       // eslint-disable-next-line local-rules/no-react-query-provider-hoc
       wrapper: ({ children }) => reactQueryProviderHOC(children),
     })
