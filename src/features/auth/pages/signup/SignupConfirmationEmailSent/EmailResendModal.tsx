@@ -30,7 +30,7 @@ export const EmailResendModal = ({ email, visible, onDismiss }: Props) => {
     eventMonitoring.captureMessage(`Could not resend validation email: ${error.content}`, 'info')
   }
 
-  const { mutate: resendEmail } = useResendEmailValidation({ onError })
+  const { mutate: resendEmail, isLoading } = useResendEmailValidation({ onError })
 
   const onResendPress = () => {
     setErrorMessage(undefined)
@@ -51,7 +51,11 @@ export const EmailResendModal = ({ email, visible, onDismiss }: Props) => {
           un nouveau.
         </StyledBody>
         <Spacer.Column numberOfSpaces={6} />
-        <ButtonPrimary wording="Demander un nouveau lien" onPress={onResendPress} />
+        <ButtonPrimary
+          wording="Demander un nouveau lien"
+          onPress={onResendPress}
+          disabled={isLoading}
+        />
         {!!errorMessage && (
           <React.Fragment>
             <Spacer.Column numberOfSpaces={2} />

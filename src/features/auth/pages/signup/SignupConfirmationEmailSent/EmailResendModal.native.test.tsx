@@ -2,6 +2,7 @@ import React from 'react'
 
 import { api } from 'api/api'
 import { ApiError } from 'api/apiHelpers'
+import * as ResendEmailValidationMutationAPI from 'features/auth/api/useResendEmailValidation'
 import { analytics } from 'libs/analytics'
 import { eventMonitoring } from 'libs/monitoring'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
@@ -10,6 +11,10 @@ import { act, fireEvent, render, screen } from 'tests/utils'
 import { EmailResendModal } from './EmailResendModal'
 
 const resendEmailValidationSpy = jest.spyOn(api, 'postNativeV1ResendEmailValidation')
+const resendEmailMutationSpy = jest.spyOn(
+  ResendEmailValidationMutationAPI,
+  'useResendEmailValidation'
+) as jest.Mock
 
 describe('<EmailResendModal />', () => {
   it('should render correctly', () => {
@@ -90,6 +95,15 @@ describe('<EmailResendModal />', () => {
         'Une erreur s’est produite lors de l’envoi du nouveau lien. Réessaie plus tard.'
       )
     ).not.toBeOnTheScreen()
+  })
+
+  it('should disable resend button when there is an ongoing resend request', async () => {
+    resendEmailMutationSpy.mockReturnValueOnce({ isLoading: true, mutate: () => {} })
+    renderEmailResendModal()
+
+    await act(() => fireEvent.press(screen.getByText('Demander un nouveau lien')))
+
+    expect(screen.getByText('Demander un nouveau lien')).toBeDisabled()
   })
 })
 
