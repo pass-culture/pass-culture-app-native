@@ -1,7 +1,6 @@
 import React, { memo, useCallback, useContext, useEffect, useMemo, useRef } from 'react'
 import { Linking } from 'react-native'
 
-import { LocationOption } from 'features/location/enums'
 import { useAppStateChange } from 'libs/appState'
 import { getPosition } from 'libs/geolocation/getPosition'
 import { requestGeolocPermission } from 'libs/geolocation/requestGeolocPermission'
@@ -30,12 +29,8 @@ const LocationContext = React.createContext<ILocationContext>({
   triggerPositionUpdate: () => null,
   showGeolocPermissionModal: () => null,
   onPressGeolocPermissionModalButton: () => null,
-  isCurrentLocationMode: () => false,
-  runGeolocationDialogs: () => {},
+  place: null,
   setPlace: () => {},
-  setSelectedOption: () => {},
-  initialize: () => {},
-  getLocationTitle: () => '',
   onModalHideRef: { current: undefined },
   isGeolocated: false,
 })
@@ -55,9 +50,7 @@ export const LocationWrapper = memo(function LocationWrapper({
   )
   const isGeolocated = !!userPosition
   const isCustomPosition = !!customPosition
-  const defaultOption = isGeolocated ? LocationOption.GEOLOCATION : LocationOption.NONE
   const onModalHideRef = useRef<() => void>()
-  const [selectedOption, setSelectedOption] = React.useState<LocationOption>(defaultOption)
 
   const {
     visible: isGeolocPermissionModalVisible,
@@ -142,51 +135,9 @@ export const LocationWrapper = memo(function LocationWrapper({
     hideGeolocPermissionModal()
   }, [hideGeolocPermissionModal])
 
-  const isCurrentLocationMode = useCallback(
-    (target: LocationOption) => selectedOption === target,
-    [selectedOption]
-  )
-
   useEffect(() => {
     setCustomPosition(place?.geolocation)
   }, [place?.geolocation, setCustomPosition])
-
-  const initialize = useCallback(() => {
-    onModalHideRef.current = undefined
-    if (place === null) {
-      setSelectedOption(defaultOption)
-    } else {
-      setSelectedOption(LocationOption.CUSTOM_POSITION)
-    }
-  }, [place, defaultOption])
-
-  const runGeolocationDialogs = React.useCallback(async () => {
-    const selectGeoLocationOption = () => setSelectedOption(LocationOption.GEOLOCATION)
-    if (permissionState === GeolocPermissionState.GRANTED) {
-      selectGeoLocationOption()
-      setPlace(null)
-    } else if (permissionState === GeolocPermissionState.NEVER_ASK_AGAIN) {
-      setPlace(null)
-      onModalHideRef.current = showGeolocPermissionModal
-    } else {
-      await contextualRequestGeolocPermission({
-        onAcceptance: selectGeoLocationOption,
-      })
-    }
-  }, [contextualRequestGeolocPermission, permissionState, setPlace, showGeolocPermissionModal])
-
-  const getLocationTitle: ILocationContext['getLocationTitle'] = useCallback(
-    ({ isGeolocatedTitle, isNotGeolocatedTitle }) => {
-      if (place !== null) {
-        return place.label
-      }
-      if (userPosition !== null) {
-        return isGeolocatedTitle
-      }
-      return isNotGeolocatedTitle
-    },
-    [place, userPosition]
-  )
 
   const value = useMemo(
     () => ({
@@ -196,18 +147,13 @@ export const LocationWrapper = memo(function LocationWrapper({
       permissionState,
       isGeolocated,
       isCustomPosition,
-      defaultOption,
       onModalHideRef,
-      getLocationTitle,
-      isCurrentLocationMode,
       requestGeolocPermission: contextualRequestGeolocPermission,
       triggerPositionUpdate,
       onPressGeolocPermissionModalButton,
       setCustomPosition,
-      runGeolocationDialogs,
+      place,
       setPlace,
-      initialize,
-      setSelectedOption,
       showGeolocPermissionModal,
     }),
     [
@@ -217,16 +163,12 @@ export const LocationWrapper = memo(function LocationWrapper({
       permissionState,
       isGeolocated,
       isCustomPosition,
-      defaultOption,
-      getLocationTitle,
-      isCurrentLocationMode,
       setCustomPosition,
       contextualRequestGeolocPermission,
       triggerPositionUpdate,
       onPressGeolocPermissionModalButton,
-      runGeolocationDialogs,
+      place,
       setPlace,
-      initialize,
       showGeolocPermissionModal,
     ]
   )

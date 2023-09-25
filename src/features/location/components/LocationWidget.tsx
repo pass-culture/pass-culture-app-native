@@ -25,11 +25,18 @@ export const LocationWidget: React.FC = () => {
   const [widgetWidth, setWidgetWidth] = React.useState<number | undefined>()
   const { isSplashScreenHidden } = useSplashScreenContext()
 
-  const { getLocationTitle, isGeolocated, isCustomPosition, userPosition } = useLocation()
-  const locationTitle = getLocationTitle({
-    isGeolocatedTitle: 'Ma position',
-    isNotGeolocatedTitle: 'Me localiser',
-  })
+  const { isGeolocated, isCustomPosition, userPosition, place } = useLocation()
+  const getLocationTitle = useCallback(() => {
+    if (place !== null) {
+      return place.label
+    }
+    if (userPosition !== null) {
+      return 'Ma position'
+    }
+    return 'Me localiser'
+  }, [place, userPosition])
+
+  const locationTitle = getLocationTitle()
 
   const hideTooltip = useCallback(() => setIsTooltipVisible(false), [setIsTooltipVisible])
 

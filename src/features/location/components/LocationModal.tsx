@@ -1,10 +1,10 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, useCallback } from 'react'
 import styled from 'styled-components/native'
 
 import { LocationModalButton } from 'features/location/components/LocationModalButton'
 import { LocationOption } from 'features/location/enums'
 import { SuggestedPlaces } from 'features/search/pages/SuggestedPlacesOrVenues/SuggestedPlaces'
-import { useLocation } from 'libs/geolocation'
+import { GeolocPermissionState, useLocation } from 'libs/geolocation'
 import { SuggestedPlace } from 'libs/place'
 import { theme } from 'theme'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
@@ -28,27 +28,64 @@ const LOCATION_PLACEHOLDER = 'Ville, code postal, adresse'
 export const LocationModal = ({ visible, dismissModal }: LocationModalProps) => {
   const {
     isGeolocated,
-    isCurrentLocationMode,
-    runGeolocationDialogs,
+    isCustomPosition,
     setPlace: setPlaceGlobally,
-    setSelectedOption,
-    initialize,
     onModalHideRef,
+    permissionState,
+    requestGeolocPermission,
+    showGeolocPermissionModal,
   } = useLocation()
 
   const [placeQuery, setPlaceQuery] = useState('')
   const debouncedPlaceQuery = useDebounceValue(placeQuery, 500)
   const [selectedPlace, setSelectedPlace] = useState<SuggestedPlace | null>(null)
+  const defaultOption = isGeolocated ? LocationOption.GEOLOCATION : LocationOption.NONE
+  const [selectedOption, setSelectedOption] = React.useState<LocationOption>(defaultOption)
+
+  const initializeLocationMode = useCallback(() => {
+    onModalHideRef.current = undefined
+    if (isCustomPosition) {
+      setSelectedOption(LocationOption.CUSTOM_POSITION)
+    } else {
+      setSelectedOption(defaultOption)
+    }
+  }, [onModalHideRef, isCustomPosition, setSelectedOption, defaultOption])
+
+  const isCurrentLocationMode = useCallback(
+    (target: LocationOption) => selectedOption === target,
+    [selectedOption]
+  )
 
   useEffect(() => {
     if (visible) {
-      initialize()
+      initializeLocationMode()
     }
-  }, [visible, initialize])
+  }, [visible, initializeLocationMode])
 
   const colorForGeolocationMode = isCurrentLocationMode(LocationOption.GEOLOCATION)
     ? theme.colors.primary
     : theme.colors.black
+
+  const runGeolocationDialogs = React.useCallback(async () => {
+    const selectGeoLocationOption = () => setSelectedOption(LocationOption.GEOLOCATION)
+    if (permissionState === GeolocPermissionState.GRANTED) {
+      selectGeoLocationOption()
+      setPlaceGlobally(null)
+    } else if (permissionState === GeolocPermissionState.NEVER_ASK_AGAIN) {
+      setPlaceGlobally(null)
+      onModalHideRef.current = showGeolocPermissionModal
+    } else {
+      await requestGeolocPermission({
+        onAcceptance: selectGeoLocationOption,
+      })
+    }
+  }, [
+    permissionState,
+    setPlaceGlobally,
+    onModalHideRef,
+    showGeolocPermissionModal,
+    requestGeolocPermission,
+  ])
 
   const selectLocationOption = React.useCallback(
     (option: LocationOption) => () => {
