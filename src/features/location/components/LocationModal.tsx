@@ -29,17 +29,16 @@ export const LocationModal = ({ visible, dismissModal }: LocationModalProps) => 
   const {
     isGeolocated,
     isCurrentLocationMode,
-    hasNoSelectedPlace,
     runGeolocationDialogs,
-    setPlace,
+    setPlace: setPlaceGlobally,
     setSelectedOption,
-    saveAllPositionChanges,
     initialize,
     onModalHideRef,
   } = useLocation()
 
   const [placeQuery, setPlaceQuery] = useState('')
   const debouncedPlaceQuery = useDebounceValue(placeQuery, 500)
+  const [selectedPlace, setSelectedPlace] = useState<SuggestedPlace | null>(null)
 
   useEffect(() => {
     if (visible) {
@@ -67,21 +66,21 @@ export const LocationModal = ({ visible, dismissModal }: LocationModalProps) => 
     : theme.colors.black
 
   const onResetPlace = () => {
-    setPlace(null)
+    setSelectedPlace(null)
     setPlaceQuery('')
   }
   const onChangePlace = (text: string) => {
-    setPlace(null)
+    setSelectedPlace(null)
     setPlaceQuery(text)
   }
 
   const onSetSelectedPlace = (place: SuggestedPlace) => {
-    setPlace(place)
+    setSelectedPlace(place)
     setPlaceQuery(place.label)
   }
 
   const onSubmit = () => {
-    saveAllPositionChanges()
+    setPlaceGlobally(selectedPlace)
     dismissModal()
   }
 
@@ -90,7 +89,7 @@ export const LocationModal = ({ visible, dismissModal }: LocationModalProps) => 
   }
 
   const isQueryProvided = !!placeQuery && !!debouncedPlaceQuery
-  const shouldShowSuggestedPlaces = isQueryProvided && !!hasNoSelectedPlace
+  const shouldShowSuggestedPlaces = isQueryProvided && !selectedPlace
 
   return (
     <AppModal
@@ -143,7 +142,7 @@ export const LocationModal = ({ visible, dismissModal }: LocationModalProps) => 
       <ButtonContainer>
         <ButtonPrimary
           wording={'Valider la localisation'}
-          disabled={hasNoSelectedPlace}
+          disabled={!selectedPlace}
           onPress={onSubmit}
         />
       </ButtonContainer>

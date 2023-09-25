@@ -160,7 +160,7 @@ export const LocationWrapper = memo(function LocationWrapper({
   )
   const hasNoSelectedPlace = place === null
 
-  const saveAllPositionChanges = useCallback(() => {
+  useEffect(() => {
     setCustomPosition(place?.geolocation)
   }, [place?.geolocation, setCustomPosition])
 
