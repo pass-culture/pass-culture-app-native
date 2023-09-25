@@ -19,35 +19,27 @@ import {
   Position,
 } from './types'
 
+/* eslint-disable @typescript-eslint/no-empty-function */
 const LocationContext = React.createContext<ILocationContext>({
   userPosition: undefined,
   customPosition: undefined,
   setCustomPosition: () => null,
   userPositionError: null,
   permissionState: undefined,
-  requestGeolocPermission: async () => {
-    // nothing
-  },
+  requestGeolocPermission: async () => {},
   triggerPositionUpdate: () => null,
   showGeolocPermissionModal: () => null,
   onPressGeolocPermissionModalButton: () => null,
   isCurrentLocationMode: () => false,
-  runGeolocationDialogs: () => {
-    // nothing
-  },
-  setPlace: () => {
-    // nothing
-  },
-  setSelectedOption: () => {
-    // nothing
-  },
-  initialize: () => {
-    // nothing
-  },
+  runGeolocationDialogs: () => {},
+  setPlace: () => {},
+  setSelectedOption: () => {},
+  initialize: () => {},
   getLocationTitle: () => '',
   onModalHideRef: { current: undefined },
   isGeolocated: false,
 })
+/* eslint-enable @typescript-eslint/no-empty-function */
 
 export const LocationWrapper = memo(function LocationWrapper({
   children,
