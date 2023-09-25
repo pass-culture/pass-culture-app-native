@@ -5,7 +5,7 @@ import { styledButton } from 'ui/components/buttons/styledButton'
 import { Touchable } from 'ui/components/touchable/Touchable'
 import { ArrowNext as DefaultArrowNext } from 'ui/svg/icons/ArrowNext'
 import { AccessibleIcon } from 'ui/svg/icons/types'
-import { Typo, Spacer } from 'ui/theme'
+import { Typo, Spacer, getSpacing } from 'ui/theme'
 
 interface Props {
   icon?: React.FunctionComponent<AccessibleIcon>
@@ -14,6 +14,7 @@ interface Props {
   captionId?: string
   onPress: VoidFunction
   shouldColorIcon?: boolean
+  complement?: string
 }
 
 export const FilterRow = ({
@@ -23,6 +24,7 @@ export const FilterRow = ({
   captionId,
   onPress,
   shouldColorIcon,
+  complement,
 }: Props) => {
   const StyledIcon = Icon
     ? styled(Icon).attrs(({ theme }) => ({
@@ -44,10 +46,16 @@ export const FilterRow = ({
         </React.Fragment>
       )}
       <TextContainer>
-        <Title numberOfLines={1}>{title}</Title>
-        {!!description && <Description numberOfLines={1}>{description}</Description>}
+        <TitleAndDescriptionContainer hasComplement={!!complement}>
+          <Title numberOfLines={1}>{title}</Title>
+          {!!description && <Description numberOfLines={1}>{description}</Description>}
+        </TitleAndDescriptionContainer>
+        {!!complement && (
+          <ComplementContainer>
+            <ComplementLabel numberOfLines={1}>{complement}</ComplementLabel>
+          </ComplementContainer>
+        )}
       </TextContainer>
-      <Spacer.Flex />
 
       <ArrowNext accessibilityLabel="Affiner la recherche" />
     </LocationContentContainer>
@@ -56,13 +64,14 @@ export const FilterRow = ({
 
 const LocationContentContainer = styledButton(Touchable)({
   flexDirection: 'row',
-  justifyContent: 'space-between',
   alignItems: 'center',
+  flex: 1,
 })
 
 const TextContainer = styled.View({
-  flexDirection: 'column',
-  alignItems: 'flex-start',
+  justifyContent: 'space-between',
+  flexDirection: 'row',
+  flex: 1,
 })
 
 const Title = styled(Typo.ButtonText)({
@@ -76,3 +85,20 @@ const Description = styled(Typo.CaptionNeutralInfo)({
 const ArrowNext = styled(DefaultArrowNext).attrs(({ theme }) => ({
   size: theme.icons.sizes.smaller,
 }))``
+
+const TitleAndDescriptionContainer = styled.View<{ hasComplement: boolean }>(
+  ({ hasComplement }) => ({
+    flex: hasComplement ? 0.7 : 1,
+    alignItems: 'flex-start',
+  })
+)
+
+const ComplementContainer = styled.View({
+  flex: 0.3,
+  justifyContent: 'center',
+})
+
+const ComplementLabel = styled(Typo.Caption)(({ theme }) => ({
+  color: theme.colors.greyDark,
+  marginLeft: getSpacing(1),
+}))

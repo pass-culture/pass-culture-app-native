@@ -3,7 +3,10 @@ import styled from 'styled-components/native'
 
 import { SearchGroupNameEnumv2 } from 'api/gen'
 import { FilterRow } from 'features/search/components/FilterRow/FilterRow'
-import { getDescription } from 'features/search/helpers/categoriesHelpers/categoriesHelpers'
+import {
+  getDescription,
+  getNbResultsFacetLabel,
+} from 'features/search/helpers/categoriesHelpers/categoriesHelpers'
 import {
   MappedGenreTypes,
   MappedNativeCategories,
@@ -82,6 +85,7 @@ export function CategoriesSection<
             // eslint-disable-next-line @typescript-eslint/no-explicit-any
             const shouldHideArrow = !(item as any).children
             const key = k as N
+            const nbResultsFacet = getNbResultsFacetLabel(item.nbResultsFacet)
 
             return (
               <ListItem key={k}>
@@ -93,6 +97,7 @@ export function CategoriesSection<
                     isSelected={key === value}
                     onSelect={() => handleSelect(key)}
                     icon={handleGetIcon(k as SearchGroupNameEnumv2)}
+                    complement={nbResultsFacet}
                   />
                 ) : (
                   <FilterRow
@@ -102,6 +107,7 @@ export function CategoriesSection<
                     description={getDescription(subcategoriesData, descriptionContext, k)}
                     onPress={() => handleSelect(key)}
                     captionId={k}
+                    complement={nbResultsFacet}
                   />
                 )}
                 <Spacer.Column numberOfSpaces={3} />

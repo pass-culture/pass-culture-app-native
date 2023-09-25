@@ -39,6 +39,7 @@ export interface CategoriesModalProps {
   hideModal: VoidFunction
   filterBehaviour: FilterBehaviour
   onClose?: VoidFunction
+  facets?: Record<string, Record<string, number>>
 }
 
 export type CategoriesModalFormProps = {
@@ -54,6 +55,7 @@ export const CategoriesModal = ({
   isVisible = false,
   hideModal,
   onClose,
+  facets,
 }: CategoriesModalProps) => {
   const { data } = useSubcategories()
   const { navigate } = useNavigation<UseNavigationType>()
@@ -61,8 +63,8 @@ export const CategoriesModal = ({
   const { dispatch, searchState } = useSearch()
 
   const tree = useMemo(() => {
-    return createMappingTree(data)
-  }, [data])
+    return createMappingTree(data, facets)
+  }, [data, facets])
 
   const {
     formState: { isSubmitting },

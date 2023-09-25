@@ -368,3 +368,14 @@ export function getFacetTypeFromGenreTypeKey(genreTypeKey: GenreType) {
       return ''
   }
 }
+
+export function getNbResultsFacetLabel(nbResultsFacet: number) {
+  if (nbResultsFacet > 100) {
+    return `+100 résultats`
+  } else if (nbResultsFacet > 1) {
+    return `${nbResultsFacet} résultats`
+  } else if (nbResultsFacet <= 1) {
+    return `${nbResultsFacet} résultat`
+  }
+  return undefined
+}
