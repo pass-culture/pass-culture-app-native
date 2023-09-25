@@ -1,6 +1,7 @@
 import AsyncStorage from '@react-native-async-storage/async-storage'
 import { useCallback, useEffect, useMemo, useState } from 'react'
 
+import { getHistoryLessThan30Days } from 'features/search/helpers/useSearchHistory/helpers/getHistoryLessThan30Days'
 import { HistoryItem } from 'features/search/types'
 import { useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 
@@ -8,28 +9,6 @@ export function useSearchHistory() {
   const { showErrorSnackBar } = useSnackBarContext()
   const [history, setHistory] = useState<HistoryItem[]>([])
   const [queryHistory, setQueryHistory] = useState<string>('')
-
-  const getHistoryFromStorage = useMemo(
-    () => async () => {
-      try {
-        const items = (await AsyncStorage.getItem('search_history')) ?? '[]'
-        const history: HistoryItem[] = JSON.parse(items)
-        return history
-      } catch (error) {
-        return []
-      }
-    },
-    []
-  )
-
-  useEffect(() => {
-    const fetchHistory = async () => {
-      const historyData = await getHistoryFromStorage()
-      setHistory(historyData)
-    }
-
-    fetchHistory()
-  }, [getHistoryFromStorage])
 
   const setHistoryItems = useCallback(
     async (newItems: HistoryItem[]) => {
@@ -46,30 +25,31 @@ export function useSearchHistory() {
     [showErrorSnackBar]
   )
 
-  const addToHistory = useCallback(
-    async (item: HistoryItem) => {
+  const getHistoryFromStorage = useMemo(
+    () => async () => {
       try {
-        const currentHistory = await getHistoryFromStorage()
-        if (
-          !currentHistory.some(
-            (i) =>
-              i.query === item.query &&
-              i.nativeCategory === item.nativeCategory &&
-              i.category === item.category
-          )
-        ) {
-          const newItems = [item, ...currentHistory]
-          await setHistoryItems(newItems)
-          setHistory(newItems)
-        }
+        const items = (await AsyncStorage.getItem('search_history')) ?? '[]'
+        const history: HistoryItem[] = JSON.parse(items)
+
+        const historyLessThan30Days = getHistoryLessThan30Days(history)
+        await setHistoryItems(historyLessThan30Days)
+
+        return historyLessThan30Days
       } catch (error) {
-        showErrorSnackBar({
-          message: 'Impossible d’ajouter l’entrée à l’historique',
-        })
+        return []
       }
     },
-    [getHistoryFromStorage, showErrorSnackBar, setHistoryItems]
+    [setHistoryItems]
   )
+
+  useEffect(() => {
+    const fetchHistory = async () => {
+      const historyData = await getHistoryFromStorage()
+      setHistory(historyData)
+    }
+
+    fetchHistory()
+  }, [getHistoryFromStorage])
 
   const removeFromHistory = useCallback(
     async (item: HistoryItem) => {
@@ -89,6 +69,34 @@ export function useSearchHistory() {
       }
     },
     [getHistoryFromStorage, showErrorSnackBar, setHistoryItems]
+  )
+
+  const addToHistory = useCallback(
+    async (item: HistoryItem) => {
+      try {
+        let currentHistory = await getHistoryFromStorage()
+        if (
+          currentHistory.some(
+            (i) =>
+              i.query === item.query &&
+              i.nativeCategory === item.nativeCategory &&
+              i.category === item.category
+          )
+        ) {
+          await removeFromHistory(item)
+          currentHistory = await getHistoryFromStorage()
+        }
+
+        const newItems = [item, ...currentHistory]
+        await setHistoryItems(newItems)
+        setHistory(newItems)
+      } catch (error) {
+        showErrorSnackBar({
+          message: 'Impossible d’ajouter l’entrée à l’historique',
+        })
+      }
+    },
+    [getHistoryFromStorage, setHistoryItems, removeFromHistory, showErrorSnackBar]
   )
 
   const search = useCallback(
