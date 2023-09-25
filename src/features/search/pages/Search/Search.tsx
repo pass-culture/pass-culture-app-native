@@ -121,6 +121,7 @@ export function Search() {
                   <AutocompleteVenue onItemPress={onVenuePress} />
                 </Index>
               </FeatureFlag>
+              <Spacer.Column numberOfSpaces={3} />
             </StyledScrollView>
           ) : (
             <BodySearch view={params?.view} />
@@ -131,7 +132,9 @@ export function Search() {
   )
 }
 
-const StyledScrollView = styled.ScrollView({
+const StyledScrollView = styled.ScrollView(({ theme }) => ({
+  flex: 1,
   paddingLeft: getSpacing(6),
   paddingRight: getSpacing(6),
-})
+  ...(theme.isMobileViewport ? { marginBottom: theme.tabBar.height } : {}),
+}))
