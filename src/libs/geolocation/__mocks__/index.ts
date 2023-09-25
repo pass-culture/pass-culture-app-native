@@ -15,7 +15,6 @@ export const setCustomPosition = jest.fn()
 const initialize = jest.fn()
 const isCurrentLocationMode = jest.fn().mockReturnValue(true)
 const runGeolocationDialogs = jest.fn()
-const saveAllPositionChanges = jest.fn()
 const setPlace = jest.fn()
 const setSelectedOption = jest.fn()
 
@@ -33,9 +32,7 @@ const locationContext: ILocationContext = {
   initialize,
   isCurrentLocationMode,
   isGeolocated: true,
-  hasNoSelectedPlace: false,
   runGeolocationDialogs,
-  saveAllPositionChanges,
   onModalHideRef: { current: undefined },
   setPlace,
   setSelectedOption,

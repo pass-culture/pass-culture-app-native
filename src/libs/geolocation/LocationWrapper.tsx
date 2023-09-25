@@ -32,7 +32,6 @@ const LocationContext = React.createContext<ILocationContext>({
   showGeolocPermissionModal: () => null,
   onPressGeolocPermissionModalButton: () => null,
   isCurrentLocationMode: () => false,
-  hasNoSelectedPlace: true,
   runGeolocationDialogs: () => {
     // nothing
   },
@@ -40,9 +39,6 @@ const LocationContext = React.createContext<ILocationContext>({
     // nothing
   },
   setSelectedOption: () => {
-    // nothing
-  },
-  saveAllPositionChanges: () => {
     // nothing
   },
   initialize: () => {
@@ -158,7 +154,6 @@ export const LocationWrapper = memo(function LocationWrapper({
     (target: LocationOption) => selectedOption === target,
     [selectedOption]
   )
-  const hasNoSelectedPlace = place === null
 
   useEffect(() => {
     setCustomPosition(place?.geolocation)
@@ -210,10 +205,8 @@ export const LocationWrapper = memo(function LocationWrapper({
       isGeolocated,
       isCustomPosition,
       defaultOption,
-      hasNoSelectedPlace,
       onModalHideRef,
       getLocationTitle,
-      saveAllPositionChanges,
       isCurrentLocationMode,
       requestGeolocPermission: contextualRequestGeolocPermission,
       triggerPositionUpdate,
@@ -233,9 +226,7 @@ export const LocationWrapper = memo(function LocationWrapper({
       isGeolocated,
       isCustomPosition,
       defaultOption,
-      hasNoSelectedPlace,
       getLocationTitle,
-      saveAllPositionChanges,
       isCurrentLocationMode,
       setCustomPosition,
       contextualRequestGeolocPermission,

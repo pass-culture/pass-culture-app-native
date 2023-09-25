@@ -30,11 +30,9 @@ export type ILocationContext = {
   isGeolocated: boolean
   isCustomPosition?: boolean
   isCurrentLocationMode: (target: LocationOption) => boolean
-  hasNoSelectedPlace: boolean
   runGeolocationDialogs: () => void
   setPlace: (place: SuggestedPlace | null) => void
   setSelectedOption: (location: LocationOption) => void
-  saveAllPositionChanges: () => void
   initialize: () => void
   onModalHideRef: MutableRefObject<(() => void) | undefined>
   getLocationTitle: (defaultTitle: {
