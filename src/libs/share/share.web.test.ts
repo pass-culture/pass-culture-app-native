@@ -2,7 +2,7 @@ import { Share } from 'react-native'
 
 import { share } from 'libs/share'
 
-const defaultContent = { message: 'Message' }
+const defaultContent = { message: 'Message', messageWithoutLink: 'Message' }
 const defaultOptions = {}
 const shareMock = jest.spyOn(Share, 'share')
 

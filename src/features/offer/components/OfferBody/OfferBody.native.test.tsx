@@ -1,6 +1,6 @@
 import mockdate from 'mockdate'
 import React from 'react'
-import { Linking, Share as NativeShare } from 'react-native'
+import { Linking, Platform, Share as NativeShare } from 'react-native'
 import Share, { Social } from 'react-native-share'
 import { UseQueryResult } from 'react-query'
 
@@ -280,6 +280,36 @@ describe('<OfferBody />', () => {
         ),
         type: 'text',
         url: undefined,
+      })
+    })
+
+    describe('on Android', () => {
+      beforeAll(() => (Platform.OS = 'android'))
+      afterAll(() => (Platform.OS = 'ios'))
+
+      it('should open social medium on share button press using correct message', async () => {
+        // FIXME(PC-21174): This warning comes from android 'Expected style "elevation: 16px" to be unitless' due to shadow style
+        jest.spyOn(global.console, 'warn').mockImplementationOnce(() => null)
+        canOpenURLSpy.mockResolvedValueOnce(true)
+        renderOfferBody()
+
+        await act(async () => {
+          const socialMediumButton = await screen.findByText(`Envoyer sur ${[Network.instagram]}`)
+          fireEvent.press(socialMediumButton)
+        })
+
+        const expectedUrl = `${getOfferUrl(offerId, 'social_media')}&utm_source=${
+          Network.instagram
+        }`
+
+        expect(mockShareSingle).toHaveBeenCalledWith({
+          social: Social.Instagram,
+          message: encodeURI(
+            `Retrouve "${mockOffer.name}" chez "${mockOffer.venue.name}" sur le pass Culture\n${expectedUrl}`
+          ),
+          type: 'text',
+          url: undefined,
+        })
       })
     })
 
