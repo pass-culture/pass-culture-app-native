@@ -62,7 +62,7 @@ export const LocationWrapper = memo(function LocationWrapper({
     undefined
   )
   const isGeolocated = !!userPosition
-  const isCustomPosition = place !== null
+  const isCustomPosition = !!customPosition
   const defaultOption = isGeolocated ? LocationOption.GEOLOCATION : LocationOption.NONE
   const onModalHideRef = useRef<() => void>()
   const [selectedOption, setSelectedOption] = React.useState<LocationOption>(defaultOption)
