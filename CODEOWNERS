@@ -6,7 +6,7 @@ src/features/cookies/                                @pass-culture/jeunes-acquis
 src/features/culturalSurvey/                         @pass-culture/jeunes-activation
 src/features/deeplinks/                              @pass-culture/jeunes-retention
 src/features/favorites/                              @pass-culture/jeunes-retention
-src/features/firstTutorial/                          @pass-culture/jeunes-acquisition
+src/features/tutorial/                               @pass-culture/jeunes-acquisition
 src/features/home/                                   @pass-culture/jeunes-activation
 src/features/identityCheck/                          @pass-culture/jeunes-activation
 src/features/internal/marketingAndCommunication/     @pass-culture/jeunes-retention
