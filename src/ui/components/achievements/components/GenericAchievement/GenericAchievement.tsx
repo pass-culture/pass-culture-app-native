@@ -32,16 +32,9 @@ const DotComponentForSwiper: React.ComponentType<DotComponentPropsForSwiper> = D
 export type Props = {
   screenName: ScreenNames
   children: Array<ReactElement<AchievementCardKeyProps>> | ReactElement<AchievementCardKeyProps>
-  onFirstCardBackAction?: () => void
-  skip?: () => void
 }
 
-export const GenericAchievement: FunctionComponent<Props> = ({
-  screenName,
-  children,
-  onFirstCardBackAction,
-  skip,
-}: Props) => {
+export const GenericAchievement: FunctionComponent<Props> = ({ screenName, children }: Props) => {
   const navigation = useNavigation<UseNavigationType>()
   const swiperRef = React.useRef<Swiper>(null)
   const skipButtonRef = React.useRef<View>(null)
@@ -57,7 +50,6 @@ export const GenericAchievement: FunctionComponent<Props> = ({
     const unsubscribeFromNavigationListener = navigation.addListener('beforeRemove', (event) => {
       onRemoveScreenAction({
         swiperRefValue: swiperRef?.current,
-        onFirstCardBackAction: onFirstCardBackAction,
         event,
       })
     })
@@ -68,10 +60,6 @@ export const GenericAchievement: FunctionComponent<Props> = ({
     if (swiperRef?.current) {
       const index = swiperRef.current.getActiveIndex()
       analytics.logHasSkippedTutorial(`${screenName}${index + 1}`)
-    }
-    if (skip) {
-      skip()
-      return
     }
     navigation.reset({ index: 0, routes: [{ name: homeNavConfig[0] }] })
   }
@@ -134,11 +122,9 @@ export const GenericAchievement: FunctionComponent<Props> = ({
 
 export function onRemoveScreenAction({
   swiperRefValue,
-  onFirstCardBackAction,
   event,
 }: {
   swiperRefValue: Swiper | null
-  onFirstCardBackAction?: () => void
   event: EventArg<
     'beforeRemove',
     true,
@@ -157,10 +143,7 @@ export function onRemoveScreenAction({
     return // Remove screen
   }
   const activeIndex = swiperRefValue.getActiveIndex()
-  if (activeIndex === 0 && onFirstCardBackAction) {
-    onFirstCardBackAction()
-    event.preventDefault() // Do not remove screen
-  } else if (activeIndex === 0) {
+  if (activeIndex === 0) {
     return // Remove screen
   } else {
     swiperRefValue.goToPrev()
