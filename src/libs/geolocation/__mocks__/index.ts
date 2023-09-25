@@ -33,7 +33,7 @@ const locationContext: ILocationContext = {
   initialize,
   isCurrentLocationMode,
   isGeolocated: true,
-  noPlace: false,
+  hasNoSelectedPlace: false,
   runGeolocationDialogs,
   saveAllPositionChanges,
   onModalHideRef: { current: undefined },

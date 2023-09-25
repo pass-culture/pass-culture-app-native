@@ -30,7 +30,7 @@ export type ILocationContext = {
   isGeolocated: boolean
   isCustomPosition?: boolean
   isCurrentLocationMode: (target: LocationOption) => boolean
-  noPlace: boolean
+  hasNoSelectedPlace: boolean
   runGeolocationDialogs: () => void
   setPlace: (place: SuggestedPlace | null) => void
   setSelectedOption: (location: LocationOption) => void

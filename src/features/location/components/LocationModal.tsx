@@ -29,7 +29,7 @@ export const LocationModal = ({ visible, dismissModal }: LocationModalProps) => 
   const {
     isGeolocated,
     isCurrentLocationMode,
-    noPlace,
+    hasNoSelectedPlace,
     runGeolocationDialogs,
     setPlace,
     setSelectedOption,
@@ -90,7 +90,7 @@ export const LocationModal = ({ visible, dismissModal }: LocationModalProps) => 
   }
 
   const isQueryProvided = !!placeQuery && !!debouncedPlaceQuery
-  const shouldShowSuggestedPlaces = isQueryProvided && !!noPlace
+  const shouldShowSuggestedPlaces = isQueryProvided && !!hasNoSelectedPlace
 
   return (
     <AppModal
@@ -141,7 +141,11 @@ export const LocationModal = ({ visible, dismissModal }: LocationModalProps) => 
       )}
       <Spacer.Column numberOfSpaces={8} />
       <ButtonContainer>
-        <ButtonPrimary wording={'Valider la localisation'} disabled={noPlace} onPress={onSubmit} />
+        <ButtonPrimary
+          wording={'Valider la localisation'}
+          disabled={hasNoSelectedPlace}
+          onPress={onSubmit}
+        />
       </ButtonContainer>
     </AppModal>
   )
