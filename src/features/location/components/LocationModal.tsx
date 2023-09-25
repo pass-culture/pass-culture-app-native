@@ -29,6 +29,7 @@ export const LocationModal = ({ visible, dismissModal }: LocationModalProps) => 
   const {
     isGeolocated,
     isCustomPosition,
+    place,
     setPlace: setPlaceGlobally,
     onModalHideRef,
     permissionState,
@@ -60,6 +61,11 @@ export const LocationModal = ({ visible, dismissModal }: LocationModalProps) => 
   useEffect(() => {
     if (visible) {
       initializeLocationMode()
+      if (place) {
+        onSetSelectedPlace(place)
+      } else {
+        onResetPlace()
+      }
     }
   }, [visible, initializeLocationMode])
 
