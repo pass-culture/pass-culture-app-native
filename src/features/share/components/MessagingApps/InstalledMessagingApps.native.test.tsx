@@ -56,7 +56,7 @@ describe('<InstalledMessagingApps />', () => {
 
     expect(mockShareSingle).toHaveBeenCalledWith({
       social: Social.Instagram,
-      message: encodeURI(
+      message: encodeURIComponent(
         'Retrouve cette offre sur le passCulture\nhttps://passculture.app/accueil?utm_campaign=share_offer&utm_source=Instagram'
       ),
       type: 'text',

@@ -275,7 +275,7 @@ describe('<OfferBody />', () => {
 
       expect(mockShareSingle).toHaveBeenCalledWith({
         social: Social.Instagram,
-        message: encodeURI(
+        message: encodeURIComponent(
           `Retrouve "${mockOffer.name}" chez "${mockOffer.venue.name}" sur le pass Culture\n${expectedUrl}`
         ),
         type: 'text',
@@ -304,7 +304,7 @@ describe('<OfferBody />', () => {
 
         expect(mockShareSingle).toHaveBeenCalledWith({
           social: Social.Instagram,
-          message: encodeURI(
+          message: encodeURIComponent(
             `Retrouve "${mockOffer.name}" chez "${mockOffer.venue.name}" sur le pass Culture\n${expectedUrl}`
           ),
           type: 'text',
