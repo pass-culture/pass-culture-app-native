@@ -5,6 +5,7 @@ import { contactSupport } from 'features/auth/helpers/contactSupport'
 import { usePreviousRoute, openUrl } from 'features/navigation/helpers'
 import { analytics } from 'libs/analytics'
 import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
+import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, fireEvent, render, screen } from 'tests/utils'
 
 import { SignupConfirmationEmailSent } from './SignupConfirmationEmailSent'
@@ -21,7 +22,7 @@ describe('<SignupConfirmationEmailSent />', () => {
   })
 
   it('should open faq webpage when clicking on consult help support', async () => {
-    render(<SignupConfirmationEmailSent email="john.doe@gmail.com" />)
+    renderSignupConfirmationEmailSent()
 
     const consultHelpSupportButton = screen.getByText('Consulter notre centre d’aide')
     await act(async () => fireEvent.press(consultHelpSupportButton))
@@ -35,7 +36,7 @@ describe('<SignupConfirmationEmailSent />', () => {
   })
 
   it('should open mail app when clicking on check email button', () => {
-    render(<SignupConfirmationEmailSent email="john.doe@gmail.com" />)
+    renderSignupConfirmationEmailSent()
 
     const checkEmailsButton = screen.getByText('Consulter mes e-mails')
     fireEvent.press(checkEmailsButton)
@@ -44,7 +45,7 @@ describe('<SignupConfirmationEmailSent />', () => {
   })
 
   it('should log analytics when clicking on check email button', async () => {
-    render(<SignupConfirmationEmailSent email="john.doe@gmail.com" />)
+    renderSignupConfirmationEmailSent()
 
     const checkEmailsButton = screen.getByText('Consulter mes e-mails')
     await act(async () => fireEvent.press(checkEmailsButton))
@@ -53,23 +54,29 @@ describe('<SignupConfirmationEmailSent />', () => {
   })
 
   it('should display resend button when feature flag is active', async () => {
-    render(<SignupConfirmationEmailSent email="john.doe@gmail.com" />)
+    renderSignupConfirmationEmailSent()
 
     expect(screen.getByText('Recevoir un nouveau lien')).toBeOnTheScreen()
   })
 
   it('should hide resend button when feature flag is disabled', async () => {
     useFeatureFlagSpy.mockReturnValueOnce(false)
-    render(<SignupConfirmationEmailSent email="john.doe@gmail.com" />)
+    renderSignupConfirmationEmailSent()
 
     expect(screen.queryByText('Recevoir un nouveau lien')).not.toBeOnTheScreen()
   })
 
   it('should show modal when resend button is pressed', async () => {
-    render(<SignupConfirmationEmailSent email="john.doe@gmail.com" />)
+    renderSignupConfirmationEmailSent()
 
     fireEvent.press(screen.getByText('Recevoir un nouveau lien'))
 
     expect(screen.getByText('Demander un nouveau lien')).toBeOnTheScreen()
   })
 })
+
+const renderSignupConfirmationEmailSent = () =>
+  render(
+    // eslint-disable-next-line local-rules/no-react-query-provider-hoc
+    reactQueryProviderHOC(<SignupConfirmationEmailSent email="john.doe@gmail.com" />)
+  )

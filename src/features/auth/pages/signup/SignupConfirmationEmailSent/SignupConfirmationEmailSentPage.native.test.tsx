@@ -4,6 +4,7 @@ import React from 'react'
 import { SignupConfirmationEmailSentPage } from 'features/auth/pages/signup/SignupConfirmationEmailSent/SignupConfirmationEmailSentPage'
 import { RootStackParamList } from 'features/navigation/RootNavigator/types'
 import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
+import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { render, screen } from 'tests/utils'
 
 const navigationProps = {
@@ -14,7 +15,8 @@ jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockReturnValue(true)
 
 describe('<SignupConfirmationEmailSentPage />', () => {
   it('should render correctly', () => {
-    render(<SignupConfirmationEmailSentPage {...navigationProps} />)
+    // eslint-disable-next-line local-rules/no-react-query-provider-hoc
+    render(reactQueryProviderHOC(<SignupConfirmationEmailSentPage {...navigationProps} />))
     expect(screen).toMatchSnapshot()
   })
 })

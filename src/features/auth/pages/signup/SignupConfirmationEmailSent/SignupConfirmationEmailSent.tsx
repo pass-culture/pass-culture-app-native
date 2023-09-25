@@ -39,7 +39,7 @@ export const SignupConfirmationEmailSent: FunctionComponent<Props> = ({ email })
         openInBoxAnalytics={analytics.logEmailConfirmationConsultEmailClicked}
         additionalCTA={additionalCTA}
       />
-      <EmailResendModal visible={visible} onDismiss={hideModal} />
+      <EmailResendModal email={email} visible={visible} onDismiss={hideModal} />
     </React.Fragment>
   )
 }
