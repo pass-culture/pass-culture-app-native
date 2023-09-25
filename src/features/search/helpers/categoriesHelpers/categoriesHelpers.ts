@@ -1,4 +1,5 @@
 import {
+  GenreType,
   NativeCategoryIdEnumv2,
   NativeCategoryResponseModelv2,
   OnlineOfflinePlatformChoicesEnumv2,
@@ -10,6 +11,7 @@ import { CategoriesModalView, CATEGORY_CRITERIA } from 'features/search/enums'
 import { MappingTree } from 'features/search/helpers/categoriesHelpers/mapping-tree'
 import { CategoriesModalFormProps } from 'features/search/pages/modals/CategoriesModal/CategoriesModal'
 import { DescriptionContext, SearchState } from 'features/search/types'
+import { FACETS_FILTERS_ENUM } from 'libs/algolia/enums'
 
 type Item = SearchGroupNameEnumv2 | NativeCategoryIdEnumv2 | string | null
 
@@ -349,5 +351,20 @@ export function getDefaultFormValues(
     nativeCategory: searchState.offerNativeCategories?.[0] ?? null,
     genreType: searchState.offerGenreTypes?.[0]?.name ?? null,
     currentView: getDefaultFormView(tree, searchState),
+  }
+}
+
+export function getFacetTypeFromGenreTypeKey(genreTypeKey: GenreType) {
+  switch (genreTypeKey) {
+    case 'BOOK':
+      return FACETS_FILTERS_ENUM.OFFER_BOOK_TYPE
+    case 'MUSIC':
+      return FACETS_FILTERS_ENUM.OFFER_MUSIC_TYPE
+    case 'SHOW':
+      return FACETS_FILTERS_ENUM.OFFER_SHOW_TYPE
+    case 'MOVIE':
+      return FACETS_FILTERS_ENUM.OFFER_MOVIE_GENRES
+    default:
+      return ''
   }
 }

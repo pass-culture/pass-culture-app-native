@@ -6,14 +6,19 @@ import {
   SubcategoriesResponseModelv2,
 } from 'api/gen'
 import { CATEGORY_CRITERIA } from 'features/search/enums'
-import { getNativeCategories } from 'features/search/helpers/categoriesHelpers/categoriesHelpers'
+import {
+  getFacetTypeFromGenreTypeKey,
+  getNativeCategories,
+} from 'features/search/helpers/categoriesHelpers/categoriesHelpers'
 
 type MappedGenreType = {
   label: string
+  nbResultsFacet: number
 }
 export type MappedGenreTypes = Record<string, MappedGenreType>
 type MappedNativeCategory = {
   label: string
+  nbResultsFacet?: number
   genreTypeKey?: GenreType
   children?: MappedGenreTypes
 }
@@ -26,7 +31,8 @@ export type MappingTree = Record<SearchGroupNameEnumv2, MappedCategory>
 
 function getNativeCategoryGenreTypes(
   data: SubcategoriesResponseModelv2,
-  nativeCategory: NativeCategoryResponseModelv2
+  nativeCategory: NativeCategoryResponseModelv2,
+  facetsData?: Record<string, Record<string, number>>
 ): Omit<MappedNativeCategory, 'label'> | undefined {
   const genreType = data.genreTypes.find((genreType) => genreType.name === nativeCategory.genreType)
   if (!genreType) return undefined
@@ -36,6 +42,8 @@ function getNativeCategoryGenreTypes(
     children: genreType.values.reduce<MappedGenreTypes>((res, genreTypeValue) => {
       res[genreTypeValue.name] = {
         label: genreTypeValue.value,
+        nbResultsFacet:
+          facetsData?.[getFacetTypeFromGenreTypeKey(genreType.name)]?.[genreTypeValue.name] ?? 0,
       }
 
       return res
@@ -43,9 +51,11 @@ function getNativeCategoryGenreTypes(
   }
 }
 
-export function createMappingTree(data?: SubcategoriesResponseModelv2) {
+export function createMappingTree(
+  data?: SubcategoriesResponseModelv2,
+  facetsData?: Record<string, Record<string, number>>
+) {
   if (!data) return {} as MappingTree
-
   /**
    * We want to create a mapping tree that looks like this:
    * {
@@ -84,7 +94,8 @@ export function createMappingTree(data?: SubcategoriesResponseModelv2) {
             (nativeCategoriesResult, nativeCategory) => {
               nativeCategoriesResult[nativeCategory.name] = {
                 label: nativeCategory.value ?? 'Tout',
-                ...(getNativeCategoryGenreTypes(data, nativeCategory) || {}),
+                nbResultsFacet: facetsData?.['offer.nativeCategoryId']?.[nativeCategory.name] ?? 0,
+                ...(getNativeCategoryGenreTypes(data, nativeCategory, facetsData) || {}),
               }
 
               return nativeCategoriesResult
