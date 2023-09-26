@@ -196,12 +196,12 @@ describe('[Analytics utils]', () => {
     it('with a native category filter', () => {
       const partialSearchState = buildPerformSearchState({
         ...initialSearchState,
-        offerNativeCategories: [NativeCategoryIdEnumv2.CD_VINYLES],
+        offerNativeCategories: [NativeCategoryIdEnumv2.CD],
         view: SearchView.Results,
       })
       expect(partialSearchState).toEqual({
         searchLocationFilter: JSON.stringify(initialSearchState.locationFilter),
-        searchNativeCategories: JSON.stringify([NativeCategoryIdEnumv2.CD_VINYLES]),
+        searchNativeCategories: JSON.stringify([NativeCategoryIdEnumv2.CD]),
         searchView: SearchView.Results,
       })
     })

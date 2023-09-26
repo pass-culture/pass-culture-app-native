@@ -336,8 +336,13 @@ describe('MappingTree', () => {
       [SearchGroupNameEnumv2.CD_VINYLE_MUSIQUE_EN_LIGNE]: {
         label: 'CD, vinyles, musique en ligne',
         children: {
-          [NativeCategoryIdEnumv2.CD_VINYLES]: {
-            label: 'CD, vinyles',
+          [NativeCategoryIdEnumv2.CD]: {
+            label: 'CD',
+            genreTypeKey: GenreType.MUSIC,
+            children: MUSIC,
+          },
+          [NativeCategoryIdEnumv2.VINYLES]: {
+            label: 'Vinyles',
             genreTypeKey: GenreType.MUSIC,
             children: MUSIC,
           },
