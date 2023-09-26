@@ -70,7 +70,11 @@ export const LocationModal = ({ visible, dismissModal }: LocationModalProps) => 
     }
   }, [visible, initializeLocationMode])
 
-  const colorForGeolocationMode = isCurrentLocationMode(LocationMode.GEOLOCATION)
+  const geolocationModeColor = isCurrentLocationMode(LocationMode.GEOLOCATION)
+    ? theme.colors.primary
+    : theme.colors.black
+
+  const customLocationModeColor = isCurrentLocationMode(LocationMode.CUSTOM_POSITION)
     ? theme.colors.primary
     : theme.colors.black
 
@@ -105,10 +109,6 @@ export const LocationModal = ({ visible, dismissModal }: LocationModalProps) => 
     },
     [dismissModal, runGeolocationDialogs, setSelectedLocationMode]
   )
-
-  const colorForCustomLocationMode = isCurrentLocationMode(LocationMode.CUSTOM_POSITION)
-    ? theme.colors.primary
-    : theme.colors.black
 
   const onResetPlace = () => {
     setSelectedPlace(null)
@@ -150,7 +150,7 @@ export const LocationModal = ({ visible, dismissModal }: LocationModalProps) => 
       <LocationModalButton
         onPress={selectLocationMode(LocationMode.GEOLOCATION)}
         icon={PositionFilled}
-        color={colorForGeolocationMode}
+        color={geolocationModeColor}
         title={'Utiliser ma position actuelle'}
         subtitle={isGeolocated ? undefined : 'Géolocalisation désactivée'}
       />
@@ -160,7 +160,7 @@ export const LocationModal = ({ visible, dismissModal }: LocationModalProps) => 
       <LocationModalButton
         onPress={selectLocationMode(LocationMode.CUSTOM_POSITION)}
         icon={MagnifyingGlassFilled}
-        color={colorForCustomLocationMode}
+        color={customLocationModeColor}
         title={'Choisir une localisation'}
         subtitle={LOCATION_PLACEHOLDER}
       />
