@@ -18,7 +18,6 @@ import { VenueSelectionModal } from 'features/offer/components/VenueSelectionMod
 import { PlaylistType } from 'features/offer/enums'
 import { getVenueSectionTitle } from 'features/offer/helpers/getVenueSectionTitle/getVenueSectionTitle'
 import { useTrackOfferSeenDuration } from 'features/offer/helpers/useTrackOfferSeenDuration'
-import { RecommendationAPIParams } from 'features/offer/types'
 import { ANIMATION_DURATION } from 'features/venue/components/VenuePartialAccordionDescription/VenuePartialAccordionDescription'
 import { accessibilityAndTestId } from 'libs/accessibilityAndTestId'
 import {
@@ -39,6 +38,7 @@ import {
   useCategoryIdMapping,
   useSubcategoriesMapping,
 } from 'libs/subcategories'
+import { RecommendationAPIParams } from 'shared/offer/types'
 import { Offer } from 'shared/offer/types'
 import { useOpacityTransition } from 'ui/animations/helpers/useOpacityTransition'
 import { AccessibilityBlock } from 'ui/components/accessibility/AccessibilityBlock'

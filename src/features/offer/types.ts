@@ -1,6 +1,7 @@
 import { CategoryIdEnum, SubcategoryIdEnum } from 'api/gen'
 import { Referrals } from 'features/navigation/RootNavigator/types'
 import { PlaylistType } from 'features/offer/enums'
+import { RecommendationAPIParams } from 'shared/offer/types'
 
 export interface OfferTileProps {
   categoryId: CategoryIdEnum | null | undefined
@@ -27,16 +28,6 @@ export interface OfferTileProps {
   playlistType?: PlaylistType
   searchId?: string
   apiRecoParams?: RecommendationAPIParams
-}
-
-export interface RecommendationAPIParams {
-  call_id?: string
-  filtered?: boolean
-  geo_located?: boolean
-  model_endpoint?: string
-  model_name?: string
-  model_version?: string
-  reco_origin?: string
 }
 
 export interface SimilarOffersResponse {
