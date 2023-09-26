@@ -1,12 +1,11 @@
 import React, { useEffect, useState, useCallback } from 'react'
-import styled from 'styled-components/native'
+import styled, { useTheme } from 'styled-components/native'
 
 import { LocationModalButton } from 'features/location/components/LocationModalButton'
 import { LocationMode } from 'features/location/enums'
 import { SuggestedPlaces } from 'features/search/pages/SuggestedPlacesOrVenues/SuggestedPlaces'
 import { GeolocPermissionState, useLocation } from 'libs/geolocation'
 import { SuggestedPlace } from 'libs/place'
-import { theme } from 'theme'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { SearchInput } from 'ui/components/inputs/SearchInput'
 import { AppModal } from 'ui/components/modals/AppModal'
@@ -36,6 +35,8 @@ export const LocationModal = ({ visible, dismissModal }: LocationModalProps) => 
     requestGeolocPermission,
     showGeolocPermissionModal,
   } = useLocation()
+
+  const theme = useTheme()
 
   const [placeQuery, setPlaceQuery] = useState('')
   const debouncedPlaceQuery = useDebounceValue(placeQuery, 500)
@@ -173,6 +174,7 @@ export const LocationModal = ({ visible, dismissModal }: LocationModalProps) => 
             onPressRightIcon={onResetPlace}
             placeholder={LOCATION_PLACEHOLDER}
             value={placeQuery}
+            textStyle={selectedPlace ? theme.typography.buttonText : theme.typography.body}
           />
           {shouldShowSuggestedPlaces ? (
             <React.Fragment>
