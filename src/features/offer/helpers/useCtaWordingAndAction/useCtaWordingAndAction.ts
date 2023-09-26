@@ -1,3 +1,4 @@
+import { useRoute } from '@react-navigation/native'
 import { UseMutateFunction } from 'react-query'
 
 import { ApiError } from 'api/apiHelpers'
@@ -20,9 +21,10 @@ import {
 } from 'features/bookings/api'
 import { useBookOfferMutation } from 'features/bookOffer/api/useBookOfferMutation'
 import { openUrl } from 'features/navigation/helpers'
-import { Referrals } from 'features/navigation/RootNavigator/types'
+import { Referrals, UseRouteType } from 'features/navigation/RootNavigator/types'
 import { getBookingOfferId } from 'features/offer/helpers/getBookingOfferId/getBookingOfferId'
 import { getIsFreeDigitalOffer } from 'features/offer/helpers/getIsFreeDigitalOffer/getIsFreeDigitalOffer'
+import { SimilarOffersResponseParams } from 'features/offer/types'
 import { isUserUnderageBeneficiary } from 'features/profile/helpers/isUserUnderageBeneficiary'
 import { analytics } from 'libs/analytics'
 import { useSubcategoriesMapping } from 'libs/subcategories'
@@ -247,6 +249,13 @@ export const useCtaWordingAndAction = (props: {
   const mapping = useSubcategoriesMapping()
   const { data: endedBooking } = useEndedBookingFromOfferId(offerId)
   const { showErrorSnackBar } = useSnackBarContext()
+  const route = useRoute<UseRouteType<'Offer'>>()
+  const apiRecoParams: SimilarOffersResponseParams = route.params?.apiRecoParams
+    ? JSON.parse(route.params?.apiRecoParams)
+    : undefined
+  const playlistType = route.params?.playlistType
+  const fromOfferId = route.params?.fromOfferId
+  const fromMultivenueOfferId = route.params?.fromMultivenueOfferId
 
   const { refetch: getBookings } = useBookings()
 
@@ -264,6 +273,15 @@ export const useCtaWordingAndAction = (props: {
 
   const { mutate: bookOffer, isLoading: isBookingLoading } = useBookOfferMutation({
     onSuccess(data) {
+      analytics.logBookingConfirmation({
+        ...apiRecoParams,
+        offerId,
+        bookingId: data.bookingId,
+        fromOfferId,
+        fromMultivenueOfferId,
+        playlistType,
+      })
+
       redirectToBookingAction(data)
     },
     onError() {
