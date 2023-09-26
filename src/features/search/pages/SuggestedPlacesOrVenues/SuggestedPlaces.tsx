@@ -72,22 +72,22 @@ type Props = {
 export const SuggestedPlaces: FunctionComponent<Props> = ({ query, setSelectedPlace }) => {
   const { data: places = [], isLoading } = usePlaces({ query })
 
-  const filteredPlaces: SuggestedPlace[] = [...uniqWith(places.slice(0, MAXIMUM_RESULTS), isEqual)]
-
   if (isLoading) {
     return <Spinner />
   }
 
+  const isQueryProvided = query.length > 0
+
+  const filteredPlaces: SuggestedPlace[] = [...uniqWith(places.slice(0, MAXIMUM_RESULTS), isEqual)]
+  const hasResults = filteredPlaces.length > 0
+
   return (
     <React.Fragment>
-      <HiddenAccessibleResultNumber
-        nbResults={filteredPlaces.length}
-        show={filteredPlaces.length > 0}
-      />
+      <HiddenAccessibleResultNumber nbResults={filteredPlaces.length} show={hasResults} />
       <View accessibilityRole={AccessibilityRole.STATUS}>
-        <NoSuggestedPlaces show={filteredPlaces.length === 0 && query.length > 0} />
+        <NoSuggestedPlaces show={!hasResults && isQueryProvided} />
       </View>
-      {filteredPlaces.length > 0 && (
+      {!!hasResults && (
         <React.Fragment>
           <VerticalUl>
             {filteredPlaces.map((item, index) => (
