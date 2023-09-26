@@ -3,6 +3,7 @@ import { useCallback, useEffect, useMemo, useState } from 'react'
 
 import { getHistoryLessThan30Days } from 'features/search/helpers/useSearchHistory/helpers/getHistoryLessThan30Days'
 import { HistoryItem } from 'features/search/types'
+import { eventMonitoring } from 'libs/monitoring'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 
 export function useSearchHistory() {
@@ -10,21 +11,9 @@ export function useSearchHistory() {
   const [history, setHistory] = useState<HistoryItem[]>([])
   const [queryHistory, setQueryHistory] = useState<string>('')
 
-  const setHistoryItems = useCallback(
-    async (newItems: HistoryItem[]) => {
-      try {
-        await AsyncStorage.setItem('search_history', JSON.stringify(newItems))
-      } catch (error) {
-        if (error instanceof Error) {
-          showErrorSnackBar({
-            message: 'Impossible de mettre à jour l’historique',
-            timeout: SNACK_BAR_TIME_OUT,
-          })
-        }
-      }
-    },
-    [showErrorSnackBar]
-  )
+  const setHistoryItems = useCallback(async (newItems: HistoryItem[]) => {
+    return AsyncStorage.setItem('search_history', JSON.stringify(newItems))
+  }, [])
 
   const getHistoryFromStorage = useMemo(
     () => async () => {
@@ -62,12 +51,10 @@ export function useSearchHistory() {
           setHistory(filteredItems)
         }
       } catch (error) {
-        if (error instanceof Error) {
-          showErrorSnackBar({
-            message: 'Impossible de supprimer l’entrée de l’historique',
-            timeout: SNACK_BAR_TIME_OUT,
-          })
-        }
+        showErrorSnackBar({
+          message: 'Impossible de supprimer l’entrée de l’historique',
+          timeout: SNACK_BAR_TIME_OUT,
+        })
       }
     },
     [getHistoryFromStorage, showErrorSnackBar, setHistoryItems]
@@ -93,13 +80,10 @@ export function useSearchHistory() {
         await setHistoryItems(newItems)
         setHistory(newItems)
       } catch (error) {
-        showErrorSnackBar({
-          message: 'Impossible d’ajouter l’entrée à l’historique',
-          timeout: SNACK_BAR_TIME_OUT,
-        })
+        eventMonitoring.captureMessage('Impossible d’ajouter l’entrée à l’historique', 'info')
       }
     },
-    [getHistoryFromStorage, setHistoryItems, removeFromHistory, showErrorSnackBar]
+    [getHistoryFromStorage, setHistoryItems, removeFromHistory]
   )
 
   const search = useCallback(
