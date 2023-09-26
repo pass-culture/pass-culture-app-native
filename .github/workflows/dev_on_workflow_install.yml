@@ -2,6 +2,14 @@ name: Install runtime environment and dependencies
 
 on:
   workflow_call:
+    secrets:
+      GCP_EHP_SERVICE_ACCOUNT:
+        required: true
+      GCP_EHP_WORKLOAD_IDENTITY_PROVIDER:
+        required: true
+
+env:
+  GCP_BUCKET_ID: passculture-infra-prod-github-runner-cache
 
 jobs:
   yarn-install:
@@ -18,16 +26,40 @@ jobs:
           distribution: 'temurin'
       - name: Setup Android SDK
         uses: android-actions/setup-android@v2
-      - uses: actions/cache@v3
-        id: yarn-modules-cache
+      - name: "OpenID Connect Authentication"
+        uses: 'google-github-actions/auth@v1'
         with:
-          path: |
-            node_modules
-            ~/.cache/yarn
-          key: v1-yarn-dependency-cache-${{ hashFiles('**/yarn.lock') }}
-          restore-keys: |
-            v1-yarn-dependency-cache-${{ hashFiles('**/yarn.lock') }}
-      - run: yarn install 
+          workload_identity_provider: ${{ secrets.GCP_EHP_WORKLOAD_IDENTITY_PROVIDER }}
+          service_account: ${{ secrets.GCP_EHP_SERVICE_ACCOUNT }}
+      - name: Set up Cloud SDK to get gsutils
+        uses: 'google-github-actions/setup-gcloud@v1.1.0'
+        with:
+          version: '>= 416.0.0'
+      - id: cache-key
+        name: Create cache key
+        run: echo "cache_key=v1-yarn-dependency-cache-${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}" >> $GITHUB_OUTPUT
+      - id: has-cache
+        name: Check if cache exist
+        run: gsutil ls gs://${{ env.GCP_BUCKET_ID }}/${{ steps.cache-key.outputs.cache_key }}.tgz
+        continue-on-error: true
+      - name: Restore cache if existing
+        uses: mango-chutney/mango-actions-google-cache@releases/v1
+        if: ${{ steps.has-cache.outcome == 'success' }}
+        with:
+          type: restore
+          bucket: ${{ env.GCP_BUCKET_ID }}
+          key: ${{ steps.cache-key.outputs.cache_key }}
+      - name: Install dependencies
+        run: yarn install
+      - name: Create cache if not existing
+        uses: mango-chutney/mango-actions-google-cache@releases/v1
+        if: ${{ steps.has-cache.outcome == 'failure' }}
+        with:
+          type: save
+          bucket: ${{ env.GCP_BUCKET_ID }}
+          key: ${{ steps.cache-key.outputs.cache_key }}
+          paths: 'node_modules /home/runner/.cache/yarn'
+
   bundle-install:
     runs-on: [self-hosted, linux, x64]
     steps:
