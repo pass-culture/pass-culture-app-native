@@ -75,7 +75,7 @@ export const BookingOfferModalComponent: React.FC<BookingOfferModalComponentProp
           ...apiRecoParams,
           offerId,
           bookingId,
-          fromOfferId,
+          fromOfferId: fromMultivenueOfferId ? undefined : fromOfferId,
           fromMultivenueOfferId,
           playlistType,
         })
