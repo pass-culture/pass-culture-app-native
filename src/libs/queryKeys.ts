@@ -25,8 +25,6 @@ export enum QueryKeys {
   PLACES = 'places',
   RECOMMENDATION_HITS = 'recommendationHits',
   RECOMMENDATION_OFFER_IDS = 'recommendationOfferIds',
-  REPORTED_OFFERS = 'reportedOffers',
-  REPORT_OFFER_REASONS = 'reportOfferReasons',
   RESET_PASSWORD_EXPIRED_LINK = 'resetPasswordExpiredLink',
   STEPPER_INFO = 'stepperInfo',
   ACTIVITY_TYPES = 'activityTypes',
