@@ -10,6 +10,8 @@ import {
   getFacetTypeFromGenreTypeKey,
   getNativeCategories,
 } from 'features/search/helpers/categoriesHelpers/categoriesHelpers'
+import { FacetData, GenreTypeFacetData, NativeCategoryFacetData } from 'libs/algolia'
+import { FACETS_FILTERS_ENUM } from 'libs/algolia/enums'
 
 type MappedGenreType = {
   label: string
@@ -32,7 +34,7 @@ export type MappingTree = Record<SearchGroupNameEnumv2, MappedCategory>
 function getNativeCategoryGenreTypes(
   data: SubcategoriesResponseModelv2,
   nativeCategory: NativeCategoryResponseModelv2,
-  facetsData?: Record<string, Record<string, number>>
+  facetsData?: FacetData
 ): Omit<MappedNativeCategory, 'label'> | undefined {
   const genreType = data.genreTypes.find((genreType) => genreType.name === nativeCategory.genreType)
   if (!genreType) return undefined
@@ -43,7 +45,9 @@ function getNativeCategoryGenreTypes(
       res[genreTypeValue.name] = {
         label: genreTypeValue.value,
         nbResultsFacet:
-          facetsData?.[getFacetTypeFromGenreTypeKey(genreType.name)]?.[genreTypeValue.name] ?? 0,
+          (facetsData as GenreTypeFacetData)?.[getFacetTypeFromGenreTypeKey(genreType.name)]?.[
+            genreTypeValue.name as GenreType
+          ] ?? 0,
       }
 
       return res
@@ -51,10 +55,7 @@ function getNativeCategoryGenreTypes(
   }
 }
 
-export function createMappingTree(
-  data?: SubcategoriesResponseModelv2,
-  facetsData?: Record<string, Record<string, number>>
-) {
+export function createMappingTree(data?: SubcategoriesResponseModelv2, facetsData?: FacetData) {
   if (!data) return {} as MappingTree
   /**
    * We want to create a mapping tree that looks like this:
@@ -94,7 +95,10 @@ export function createMappingTree(
             (nativeCategoriesResult, nativeCategory) => {
               nativeCategoriesResult[nativeCategory.name] = {
                 label: nativeCategory.value ?? 'Tout',
-                nbResultsFacet: facetsData?.['offer.nativeCategoryId']?.[nativeCategory.name] ?? 0,
+                nbResultsFacet:
+                  (facetsData as NativeCategoryFacetData)?.[
+                    FACETS_FILTERS_ENUM.OFFER_NATIVE_CATEGORY
+                  ]?.[nativeCategory.name] ?? 0,
                 ...(getNativeCategoryGenreTypes(data, nativeCategory, facetsData) || {}),
               }
 

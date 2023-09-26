@@ -6,7 +6,7 @@ import { useInfiniteQuery } from 'react-query'
 import { useIsUserUnderage } from 'features/profile/helpers/useIsUserUnderage'
 import { useSearch } from 'features/search/context/SearchWrapper'
 import { SearchState } from 'features/search/types'
-import { AlgoliaVenue } from 'libs/algolia'
+import { AlgoliaVenue, FacetData } from 'libs/algolia'
 import { useSearchAnalyticsState } from 'libs/algolia/analytics/SearchAnalyticsWrapper'
 import { fetchSearchResults } from 'libs/algolia/fetchAlgolia/fetchSearchResults/fetchSearchResults'
 import { useTransformOfferHits } from 'libs/algolia/fetchAlgolia/transformOfferHit'
@@ -24,7 +24,6 @@ export type SearchOfferResponse = {
 export type SearchOfferHits = {
   offers: Offer[]
   venues: AlgoliaVenue[]
-  facets?: Record<string, Record<string, number>>
 }
 
 export const useSearchInfiniteQuery = (searchState: SearchState) => {
@@ -70,7 +69,7 @@ export const useSearchInfiniteQuery = (searchState: SearchState) => {
 
   const { nbHits, userData } = data?.pages[0].offers ?? { nbHits: 0, userData: [] }
   const venuesUserData = data?.pages?.[0]?.venues?.userData
-  const facets = data?.pages?.[0]?.facets.facets
+  const facets = data?.pages?.[0]?.facets.facets as FacetData
 
   return { data, hits, nbHits, userData, venuesUserData, facets, ...infiniteQuery }
 }

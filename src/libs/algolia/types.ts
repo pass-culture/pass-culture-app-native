@@ -13,6 +13,7 @@ import { DATE_FILTER_OPTIONS, LocationType } from 'features/search/enums'
 import { Venue } from 'features/venue/types'
 import { AlgoliaHit } from 'libs/algolia'
 import { Geoloc as AlgoliaGeoloc, HighlightResult } from 'libs/algolia/algolia.d'
+import { FACETS_FILTERS_ENUM } from 'libs/algolia/enums'
 import { transformOfferHit } from 'libs/algolia/fetchAlgolia/transformOfferHit'
 import { Position } from 'libs/geolocation'
 import { VenueTypeCode } from 'libs/parsers'
@@ -156,3 +157,21 @@ export interface AlgoliaVenue {
   _geoloc: Geoloc
   _highlightResult?: AlgoliaVenueHighlightResult
 }
+
+type FacetKeys =
+  | FACETS_FILTERS_ENUM.OFFER_BOOK_TYPE
+  | FACETS_FILTERS_ENUM.OFFER_MOVIE_GENRES
+  | FACETS_FILTERS_ENUM.OFFER_MUSIC_TYPE
+  | FACETS_FILTERS_ENUM.OFFER_NATIVE_CATEGORY
+  | FACETS_FILTERS_ENUM.OFFER_SHOW_TYPE
+
+type NativeCategoryFacets = Record<NativeCategoryIdEnumv2, number>
+type GenreTypeFacets = Record<GenreType, number>
+
+export type NativeCategoryFacetData = Record<
+  FACETS_FILTERS_ENUM.OFFER_NATIVE_CATEGORY,
+  NativeCategoryFacets
+>
+export type GenreTypeFacetData = Record<FacetKeys, GenreTypeFacets>
+
+export type FacetData = NativeCategoryFacetData | GenreTypeFacetData

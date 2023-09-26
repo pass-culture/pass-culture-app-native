@@ -354,7 +354,7 @@ describe('categoriesHelpers', () => {
       expect(result).toEqual('1 résultat')
     })
 
-    it('should return "{nbResultsFacet} résultat" for nbResultsFacet < 1', () => {
+    it('should return "{nbResultsFacet} résultat" for nbResultsFacet = 0', () => {
       const result = getNbResultsFacetLabel(0)
       expect(result).toEqual('0 résultat')
     })

@@ -1,5 +1,6 @@
 import { GenreType, NativeCategoryIdEnumv2, SearchGroupNameEnumv2 } from 'api/gen'
 import { createMappingTree } from 'features/search/helpers/categoriesHelpers/mapping-tree'
+import { FacetData } from 'libs/algolia'
 import { mockedFacets } from 'libs/algolia/__mocks__/mockedFacets'
 import { placeholderData } from 'libs/subcategories/placeholderData'
 
@@ -671,6 +672,8 @@ describe('MappingTree', () => {
       },
     }
 
-    expect(createMappingTree(placeholderData, mockedFacets.facets)).toEqual(expectedResult)
+    expect(createMappingTree(placeholderData, mockedFacets.facets as FacetData)).toEqual(
+      expectedResult
+    )
   })
 })

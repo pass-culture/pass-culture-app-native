@@ -6,6 +6,7 @@ import { GenreType, NativeCategoryIdEnumv2, SearchGroupNameEnumv2 } from 'api/ge
 import { initialSearchState } from 'features/search/context/reducer'
 import { FilterBehaviour } from 'features/search/enums'
 import { SearchState } from 'features/search/types'
+import { FacetData } from 'libs/algolia'
 import { mockedFacets } from 'libs/algolia/__mocks__/mockedFacets'
 import { placeholderData } from 'libs/subcategories/placeholderData'
 import { fireEvent, render, screen, waitFor } from 'tests/utils'
@@ -479,7 +480,7 @@ function renderCategories({
       hideModal={mockHideModal}
       filterBehaviour={filterBehaviour}
       onClose={onClose}
-      facets={mockedFacets.facets}
+      facets={mockedFacets.facets as FacetData}
       {...props}
     />
   )

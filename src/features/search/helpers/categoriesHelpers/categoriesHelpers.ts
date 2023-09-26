@@ -356,22 +356,21 @@ export function getDefaultFormValues(
 
 export function getFacetTypeFromGenreTypeKey(genreTypeKey: GenreType) {
   switch (genreTypeKey) {
-    case 'BOOK':
+    case GenreType.BOOK:
       return FACETS_FILTERS_ENUM.OFFER_BOOK_TYPE
-    case 'MUSIC':
+    case GenreType.MUSIC:
       return FACETS_FILTERS_ENUM.OFFER_MUSIC_TYPE
-    case 'SHOW':
+    case GenreType.SHOW:
       return FACETS_FILTERS_ENUM.OFFER_SHOW_TYPE
-    case 'MOVIE':
-      return FACETS_FILTERS_ENUM.OFFER_MOVIE_GENRES
+    case GenreType.MOVIE:
     default:
-      return ''
+      return FACETS_FILTERS_ENUM.OFFER_MOVIE_GENRES
   }
 }
 
 export function getNbResultsFacetLabel(nbResultsFacet: number) {
   if (nbResultsFacet > 100) {
-    return `+100 résultats`
+    return '+100 résultats'
   } else if (nbResultsFacet > 1) {
     return `${nbResultsFacet} résultats`
   } else if (nbResultsFacet <= 1) {
