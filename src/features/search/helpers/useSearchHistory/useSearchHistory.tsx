@@ -3,7 +3,7 @@ import { useCallback, useEffect, useMemo, useState } from 'react'
 
 import { getHistoryLessThan30Days } from 'features/search/helpers/useSearchHistory/helpers/getHistoryLessThan30Days'
 import { HistoryItem } from 'features/search/types'
-import { useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
+import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 
 export function useSearchHistory() {
   const { showErrorSnackBar } = useSnackBarContext()
@@ -18,6 +18,7 @@ export function useSearchHistory() {
         if (error instanceof Error) {
           showErrorSnackBar({
             message: 'Impossible de mettre à jour l’historique',
+            timeout: SNACK_BAR_TIME_OUT,
           })
         }
       }
@@ -64,6 +65,7 @@ export function useSearchHistory() {
         if (error instanceof Error) {
           showErrorSnackBar({
             message: 'Impossible de supprimer l’entrée de l’historique',
+            timeout: SNACK_BAR_TIME_OUT,
           })
         }
       }
@@ -93,6 +95,7 @@ export function useSearchHistory() {
       } catch (error) {
         showErrorSnackBar({
           message: 'Impossible d’ajouter l’entrée à l’historique',
+          timeout: SNACK_BAR_TIME_OUT,
         })
       }
     },
