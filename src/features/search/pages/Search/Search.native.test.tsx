@@ -1,3 +1,4 @@
+import mockdate from 'mockdate'
 import React from 'react'
 import { Keyboard } from 'react-native'
 
@@ -6,6 +7,7 @@ import { NativeCategoryIdEnumv2, SearchGroupNameEnumv2 } from 'api/gen'
 import { initialSearchState } from 'features/search/context/reducer'
 import { SearchWrapper } from 'features/search/context/SearchWrapper'
 import { LocationType } from 'features/search/enums'
+import { mockedSearchHistory } from 'features/search/fixtures/mockedSearchHistory'
 import * as useFilterCountAPI from 'features/search/helpers/useFilterCount/useFilterCount'
 import * as useShowResultsForCategory from 'features/search/helpers/useShowResultsForCategory/useShowResultsForCategory'
 import { Search } from 'features/search/pages/Search/Search'
@@ -169,6 +171,20 @@ jest.mock('libs/subcategories/useSubcategories', () => ({
 
 const useFeatureFlagSpy = jest.spyOn(useFeatureFlag, 'useFeatureFlag')
 
+const TODAY_DATE = new Date('2023-09-25T00:00:00.000Z')
+
+const mockUseSearchHistory = jest.fn()
+jest.mock('features/search/helpers/useSearchHistory/useSearchHistory', () => ({
+  useSearchHistory: jest.fn(() => mockUseSearchHistory()),
+}))
+mockUseSearchHistory.mockReturnValue({
+  history: mockedSearchHistory,
+  queryHistory: '',
+  addToHistory: jest.fn(),
+  removeFromHistory: jest.fn(),
+  search: jest.fn(),
+})
+
 describe('<Search/>', () => {
   mockUseNetInfoContext.mockReturnValue({ isConnected: true })
 
@@ -254,6 +270,29 @@ describe('<Search/>', () => {
       scrollView.props.onScroll(scrollEventBottom)
 
       expect(keyboardDismissSpy).toHaveBeenCalledTimes(1)
+    })
+
+    it('should display search history when it has items', async () => {
+      mockdate.set(TODAY_DATE)
+      render(<Search />)
+      await act(async () => {})
+
+      expect(screen.getByText('Historique de recherches')).toBeOnTheScreen()
+    })
+
+    it('should not display search history when it has not items', async () => {
+      mockdate.set(TODAY_DATE)
+      mockUseSearchHistory.mockReturnValueOnce({
+        history: [],
+        queryHistory: '',
+        addToHistory: jest.fn(),
+        removeFromHistory: jest.fn(),
+        search: jest.fn(),
+      })
+      render(<Search />)
+      await act(async () => {})
+
+      expect(screen.queryByText('Historique de recherches')).not.toBeOnTheScreen()
     })
   })
 

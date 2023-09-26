@@ -25,7 +25,7 @@ export function SearchHistory({ history, queryHistory, removeItem }: Props) {
 
       <StyledVerticalUl>
         {history.slice(0, nbHistoryResults).map((item) => (
-          <Container key={item.addedDate}>
+          <Container key={item.addedDate} testID="searchHistoryItem">
             <SearchHistoryItem item={item} />
             {queryHistory === '' && (
               <DeleteButton
