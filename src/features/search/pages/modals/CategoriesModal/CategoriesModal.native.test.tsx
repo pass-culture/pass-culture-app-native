@@ -6,11 +6,11 @@ import { GenreType, NativeCategoryIdEnumv2, SearchGroupNameEnumv2 } from 'api/ge
 import { initialSearchState } from 'features/search/context/reducer'
 import { FilterBehaviour } from 'features/search/enums'
 import { SearchState } from 'features/search/types'
+import { mockedFacets } from 'libs/algolia/__mocks__/mockedFacets'
 import { placeholderData } from 'libs/subcategories/placeholderData'
 import { fireEvent, render, screen, waitFor } from 'tests/utils'
 
 import { CategoriesModal, CategoriesModalProps } from './CategoriesModal'
-import { mockedFacets } from 'libs/algolia/__mocks__/mockedFacets'
 
 const searchId = uuidv4()
 const searchState = { ...initialSearchState, searchId }

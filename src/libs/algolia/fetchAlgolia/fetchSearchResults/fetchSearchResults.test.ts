@@ -4,7 +4,6 @@ import { LocationType } from 'features/search/enums'
 import { MAX_RADIUS } from 'features/search/helpers/reducer.helpers'
 import { Venue } from 'features/venue/types'
 import { fetchSearchResults } from 'libs/algolia/fetchAlgolia/fetchSearchResults/fetchSearchResults'
-
 import { SearchQueryParameters } from 'libs/algolia/types'
 import { env } from 'libs/environment'
 import { SuggestedPlace } from 'libs/place'

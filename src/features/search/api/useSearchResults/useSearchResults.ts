@@ -8,13 +8,12 @@ import { useSearch } from 'features/search/context/SearchWrapper'
 import { SearchState } from 'features/search/types'
 import { AlgoliaVenue } from 'libs/algolia'
 import { useSearchAnalyticsState } from 'libs/algolia/analytics/SearchAnalyticsWrapper'
-
+import { fetchSearchResults } from 'libs/algolia/fetchAlgolia/fetchSearchResults/fetchSearchResults'
 import { useTransformOfferHits } from 'libs/algolia/fetchAlgolia/transformOfferHit'
 import { analytics } from 'libs/analytics'
 import { useLocation } from 'libs/geolocation'
 import { QueryKeys } from 'libs/queryKeys'
 import { Offer } from 'shared/offer/types'
-import { fetchSearchResults } from 'libs/algolia/fetchAlgolia/fetchSearchResults/fetchSearchResults'
 
 export type SearchOfferResponse = {
   offers: Pick<SearchResponse<Offer>, 'hits' | 'nbHits' | 'page' | 'nbPages' | 'userData'>

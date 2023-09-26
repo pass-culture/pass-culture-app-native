@@ -1,4 +1,5 @@
 import { SearchResponse } from '@algolia/client-search'
+
 import { Offer } from 'shared/offer/types'
 
 export const mockedFacets: SearchResponse<Offer> = {

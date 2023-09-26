@@ -5,11 +5,11 @@ import {
   mockedAlgoliaVenueResponse,
   mockedAlgoliaResponse,
 } from 'libs/algolia/__mocks__/mockedAlgoliaResponse'
+import { mockedFacets } from 'libs/algolia/__mocks__/mockedFacets'
 import * as fetchSearchResults from 'libs/algolia/fetchAlgolia/fetchSearchResults/fetchSearchResults'
 import { analytics } from 'libs/analytics'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { flushAllPromisesWithAct, renderHook } from 'tests/utils'
-import { mockedFacets } from 'libs/algolia/__mocks__/mockedFacets'
 
 describe('useSearchResults', () => {
   describe('useSearchInfiniteQuery', () => {
