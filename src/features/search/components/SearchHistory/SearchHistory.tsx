@@ -26,11 +26,11 @@ export function SearchHistory({ history, queryHistory, removeItem }: Props) {
           <Container key={item.createdAt} testID="searchHistoryItem">
             <SearchHistoryItem item={item} />
             {queryHistory === '' && (
-              <DeleteButton
-                accessibilityLabel="Supprimer la ligne de l’historique"
+              <RemoveButton
+                accessibilityLabel={`Supprimer ${item.label} de l’historique`}
                 onPress={() => removeItem(item)}>
                 <Close />
-              </DeleteButton>
+              </RemoveButton>
             )}
           </Container>
         ))}
@@ -56,7 +56,7 @@ const Container = styled.View({
   marginBottom: getSpacing(4),
 })
 
-const DeleteButton = styledButton(Touchable)({
+const RemoveButton = styledButton(Touchable)({
   maxWidth: getSpacing(10),
   justifyContent: 'center',
   alignItems: 'center',
