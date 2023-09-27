@@ -364,16 +364,6 @@ exports[`<SetAddress/> should render correctly 1`] = `
                 }
                 testID="styled-input-container"
               >
-                <View
-                  numberOfSpaces={1}
-                  style={
-                    [
-                      {
-                        "width": 4,
-                      },
-                    ]
-                  }
-                />
                 <TextInput
                   accessibilityDescribedBy="testUuidV4"
                   accessibilityHidden={false}

@@ -2,8 +2,9 @@ import React, { FunctionComponent } from 'react'
 import styled from 'styled-components/native'
 
 import { theme } from 'theme'
+import { TouchableOpacity } from 'ui/components/TouchableOpacity'
 import { IconInterface } from 'ui/svg/icons/types'
-import { Spacer, Typo, getSpacing } from 'ui/theme'
+import { Spacer, Typo } from 'ui/theme'
 // eslint-disable-next-line no-restricted-imports
 import { ColorsEnum } from 'ui/theme/colors'
 
@@ -23,7 +24,7 @@ export const LocationModalButton = ({
   onPress,
 }: LocationModalButtonProps) => {
   return (
-    <StyledTouchableOpacity onPress={onPress} accessibilityRole="button">
+    <TouchableOpacity onPress={onPress} accessibilityRole="button">
       <TopContainer>
         <Icon color={color} size={theme.icons.sizes.small} />
         <Spacer.Row numberOfSpaces={2} />
@@ -35,13 +36,9 @@ export const LocationModalButton = ({
           <StyledCaption>{subtitle}</StyledCaption>
         </React.Fragment>
       )}
-    </StyledTouchableOpacity>
+    </TouchableOpacity>
   )
 }
-
-const StyledTouchableOpacity = styled.TouchableOpacity({
-  marginVertical: getSpacing(6),
-})
 
 const TopContainer = styled.View({
   flexDirection: 'row',

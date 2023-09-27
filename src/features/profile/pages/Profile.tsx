@@ -38,7 +38,7 @@ import { ExternalSite } from 'ui/svg/icons/ExternalSite'
 import { HandicapMental } from 'ui/svg/icons/HandicapMental'
 import { LegalNotices } from 'ui/svg/icons/LegalNotices'
 import { LifeBuoy } from 'ui/svg/icons/LifeBuoy'
-import { LocationPointerNotFilled } from 'ui/svg/icons/LocationPointerNotFilled'
+import { LocationPointer } from 'ui/svg/icons/LocationPointer'
 import { SignOut } from 'ui/svg/icons/SignOut'
 import { LogoMinistere } from 'ui/svg/LogoMinistere'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
@@ -155,7 +155,7 @@ const OnlineProfile: React.FC = () => {
               </Li>
               <Li>
                 <SectionWithSwitch
-                  icon={LocationPointerNotFilled}
+                  icon={LocationPointer}
                   iconSize={SECTION_ROW_ICON_SIZE}
                   title="Partager ma position"
                   active={isGeolocSwitchActive}

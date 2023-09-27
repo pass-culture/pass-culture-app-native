@@ -17,7 +17,7 @@ import { MAX_RADIUS } from 'features/search/helpers/reducer.helpers'
 import { locationSchema } from 'features/search/helpers/schema/locationSchema/locationSchema'
 import { useGetFullscreenModalSliderLength } from 'features/search/helpers/useGetFullscreenModalSliderLength'
 import { useSetFocusWithCondition } from 'features/search/helpers/useSetFocusWithCondition/useSetFocusWithCondition'
-import { SuggestedPlaces } from 'features/search/pages/SuggestedPlaces/SuggestedPlaces'
+import { SuggestedPlacesOrVenues } from 'features/search/pages/SuggestedPlacesOrVenues/SuggestedPlacesOrVenues'
 import { SearchState, SearchView } from 'features/search/types'
 import { Venue } from 'features/venue/types'
 import { analytics } from 'libs/analytics'
@@ -445,7 +445,7 @@ export const LocationModal: FunctionComponent<LocationModalProps> = ({
                           {isSearchInputFocused ? (
                             <React.Fragment>
                               <Spacer.Column numberOfSpaces={4} />
-                              <SuggestedPlaces
+                              <SuggestedPlacesOrVenues
                                 query={debouncedSearchPlaceOrVenue}
                                 setSelectedPlaceOrVenue={handlePlaceOrVenueSelect}
                               />

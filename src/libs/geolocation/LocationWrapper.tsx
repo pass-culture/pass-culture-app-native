@@ -1,15 +1,16 @@
-import React, { memo, useCallback, useContext, useEffect, useMemo } from 'react'
+import React, { memo, useCallback, useContext, useEffect, useMemo, useRef } from 'react'
 import { Linking } from 'react-native'
 
 import { useAppStateChange } from 'libs/appState'
+import { getPosition } from 'libs/geolocation/getPosition'
+import { requestGeolocPermission } from 'libs/geolocation/requestGeolocPermission'
 import { useSafeState } from 'libs/hooks'
+import { SuggestedPlace } from 'libs/place'
 import { useModal } from 'ui/components/modals/useModal'
 
 import { checkGeolocPermission } from './checkGeolocPermission'
 import { GeolocationActivationModal } from './components/GeolocationActivationModal'
 import { GeolocPermissionState } from './enums'
-import { getPosition } from './getPosition'
-import { requestGeolocPermission } from './requestGeolocPermission'
 import {
   GeolocationError,
   ILocationContext,
@@ -17,19 +18,23 @@ import {
   Position,
 } from './types'
 
+/* eslint-disable @typescript-eslint/no-empty-function */
 const LocationContext = React.createContext<ILocationContext>({
   userPosition: undefined,
   customPosition: undefined,
   setCustomPosition: () => null,
   userPositionError: null,
   permissionState: undefined,
-  requestGeolocPermission: async () => {
-    // nothing
-  },
+  requestGeolocPermission: async () => {},
   triggerPositionUpdate: () => null,
   showGeolocPermissionModal: () => null,
   onPressGeolocPermissionModalButton: () => null,
+  place: null,
+  setPlace: () => {},
+  onModalHideRef: { current: undefined },
+  isGeolocated: false,
 })
+/* eslint-enable @typescript-eslint/no-empty-function */
 
 export const LocationWrapper = memo(function LocationWrapper({
   children,
@@ -38,10 +43,14 @@ export const LocationWrapper = memo(function LocationWrapper({
 }) {
   const [userPosition, setUserPosition] = useSafeState<Position>(undefined)
   const [customPosition, setCustomPosition] = useSafeState<Position>(undefined)
+  const [place, setPlace] = useSafeState<SuggestedPlace | null>(null)
   const [userPositionError, setUserPositionError] = useSafeState<GeolocationError | null>(null)
   const [permissionState, setPermissionState] = useSafeState<GeolocPermissionState | undefined>(
     undefined
   )
+  const isGeolocated = !!userPosition
+  const isCustomPosition = !!customPosition
+  const onModalHideRef = useRef<() => void>()
 
   const {
     visible: isGeolocPermissionModalVisible,
@@ -126,28 +135,41 @@ export const LocationWrapper = memo(function LocationWrapper({
     hideGeolocPermissionModal()
   }, [hideGeolocPermissionModal])
 
+  useEffect(() => {
+    setCustomPosition(place?.geolocation)
+  }, [place?.geolocation, setCustomPosition])
+
   const value = useMemo(
     () => ({
       userPosition,
       userPositionError,
       customPosition,
-      setCustomPosition,
       permissionState,
+      isGeolocated,
+      isCustomPosition,
+      onModalHideRef,
       requestGeolocPermission: contextualRequestGeolocPermission,
       triggerPositionUpdate,
-      showGeolocPermissionModal,
       onPressGeolocPermissionModalButton,
+      setCustomPosition,
+      place,
+      setPlace,
+      showGeolocPermissionModal,
     }),
     [
-      setCustomPosition,
-      customPosition,
-      contextualRequestGeolocPermission,
-      permissionState,
       userPosition,
       userPositionError,
-      showGeolocPermissionModal,
+      customPosition,
+      permissionState,
+      isGeolocated,
+      isCustomPosition,
+      setCustomPosition,
+      contextualRequestGeolocPermission,
       triggerPositionUpdate,
       onPressGeolocPermissionModalButton,
+      place,
+      setPlace,
+      showGeolocPermissionModal,
     ]
   )
   return (
