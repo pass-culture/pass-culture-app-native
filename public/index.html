@@ -427,6 +427,7 @@
         })
       }
 
+      let hasSmartBannerBeenDisplayed = false
       const smartBannerContainer = document.getElementById("smartBannerContainer")
       const observer = new MutationObserver(changeFooterStyle)
       observer.observe(smartBannerContainer, { childList: true })
@@ -436,9 +437,13 @@
         const footer = document.querySelector("[role='contentinfo']")
 
         if (smartBannerIsDisplayed) {
+          hasSmartBannerBeenDisplayed = true
           footer.style.marginBottom = smartBannerContainer.firstChild.style.height
         } else {
           footer.style.marginBottom = 0
+          if (hasSmartBannerBeenDisplayed) {
+            observer.disconnect()
+          }
         }
       }
 
