@@ -22,7 +22,6 @@ import { BookingConfirmation } from 'features/bookOffer/pages/BookingConfirmatio
 import { withAsyncErrorBoundary } from 'features/errors/hocs/withAsyncErrorBoundary'
 import { BannedCountryError } from 'features/errors/pages/BannedCountryError'
 import { FavoritesSorts } from 'features/favorites/pages/FavoritesSorts'
-import { FirstTutorial } from 'features/firstTutorial/pages/FirstTutorial/FirstTutorial'
 import { ThematicHome } from 'features/home/pages/ThematicHome'
 import { AppComponents } from 'features/internal/cheatcodes/pages/AppComponents/AppComponents'
 import { CheatCodes } from 'features/internal/cheatcodes/pages/CheatCodes/CheatCodes'
@@ -387,12 +386,6 @@ export const routes: Route[] = [
     component: ProfileTutorialAgeInformation,
     path: 'comment-ca-marche',
     options: { title: 'Tutoriel "Comment ça marche"' },
-  },
-  {
-    name: 'FirstTutorial',
-    component: FirstTutorial,
-    path: 'introduction-tutoriel',
-    options: { title: 'Étape 1 sur 4 | Tutoriel "Comment ça marche"' },
   },
   {
     name: 'Venue',
