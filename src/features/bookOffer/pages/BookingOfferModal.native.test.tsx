@@ -313,7 +313,7 @@ describe('<BookingOfferModalComponent />', () => {
           ...apiRecoParams,
           bookingId: 1,
           fromMultivenueOfferId: 1,
-          fromOfferId: 1,
+          fromOfferId: undefined,
           offerId: 20,
           playlistType: PlaylistType.SAME_CATEGORY_SIMILAR_OFFERS,
         })
