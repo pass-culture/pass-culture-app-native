@@ -92,6 +92,24 @@ export const mockOffer: OfferResponse = {
     isPermanent: true,
   },
   withdrawalDetails: null,
+  metadata: {
+    '@context': 'https://schema.org',
+    '@type': 'Product',
+    name: 'Je ne sais pas ce que je dis',
+    image:
+      'https://storage.googleapis.com/passculture-metier-ehp-staging-assets-fine-grained/thumbs/mediations/HE',
+    location: {
+      '@type': 'Place',
+      name: 'Cinéma de la fin',
+      address: {
+        '@type': 'PostalAddress',
+        streetAddress: 'RUE DE CALI',
+        postalCode: '97310',
+        addressLocality: 'Kourou',
+      },
+      geo: { '@type': 'GeoCoordinates', latitude: 5.15839, longitude: -52.63741 },
+    },
+  },
 }
 
 export const mockDigitalOffer: OfferResponse = {
@@ -162,4 +180,22 @@ export const mockDigitalOffer: OfferResponse = {
     isPermanent: true,
   },
   withdrawalDetails: null,
+  metadata: {
+    '@context': 'https://schema.org',
+    '@type': 'Product',
+    name: 'Je ne sais pas ce que je dis',
+    image:
+      'https://storage.googleapis.com/passculture-metier-ehp-staging-assets-fine-grained/thumbs/mediations/HE',
+    location: {
+      '@type': 'Place',
+      name: 'Cinéma de la fin',
+      address: {
+        '@type': 'PostalAddress',
+        streetAddress: 'RUE DE CALI',
+        postalCode: '97310',
+        addressLocality: 'Kourou',
+      },
+      geo: { '@type': 'GeoCoordinates', latitude: 5.15839, longitude: -52.63741 },
+    },
+  },
 }

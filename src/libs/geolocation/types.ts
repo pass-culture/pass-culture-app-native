@@ -1,4 +1,6 @@
-import { Dispatch, SetStateAction } from 'react'
+import { Dispatch, MutableRefObject, SetStateAction } from 'react'
+
+import { SuggestedPlace } from 'libs/place'
 
 import { GeolocPermissionState, GeolocPositionError } from './enums'
 
@@ -24,6 +26,11 @@ export type AskGeolocPermission = () => Promise<GeolocPermissionState>
 export type ReadGeolocPermission = () => Promise<GeolocPermissionState>
 
 export type ILocationContext = {
+  isGeolocated: boolean
+  isCustomPosition?: boolean
+  place: SuggestedPlace | null
+  setPlace: (place: SuggestedPlace | null) => void
+  onModalHideRef: MutableRefObject<(() => void) | undefined>
   userPosition: Position
   customPosition: Position
   setCustomPosition: Dispatch<SetStateAction<Position>>

@@ -288,6 +288,16 @@ exports[`LocationModal should render correctly if modal visible 1`] = `
         testID="fullscreenModalView"
       >
         <View
+          numberOfSpaces={6}
+          style={
+            [
+              {
+                "height": 24,
+              },
+            ]
+          }
+        />
+        <View
           accessibilityRole="button"
           accessibilityState={
             {
@@ -306,7 +316,7 @@ exports[`LocationModal should render correctly if modal visible 1`] = `
               "text": undefined,
             }
           }
-          accessible={true}
+          accessible={false}
           collapsable={false}
           focusable={true}
           onClick={[Function]}
@@ -318,8 +328,8 @@ exports[`LocationModal should render correctly if modal visible 1`] = `
           onStartShouldSetResponder={[Function]}
           style={
             {
-              "marginVertical": 24,
               "opacity": 1,
+              "userSelect": "auto",
             }
           }
         >
@@ -353,11 +363,11 @@ exports[`LocationModal should render correctly if modal visible 1`] = `
               }
             />
             <Text
-              color="#161617"
+              color="#eb0055"
               style={
                 [
                   {
-                    "color": "#161617",
+                    "color": "#eb0055",
                     "fontFamily": "Montserrat-Bold",
                     "fontSize": 15,
                     "lineHeight": 20,
@@ -368,31 +378,17 @@ exports[`LocationModal should render correctly if modal visible 1`] = `
               Utiliser ma position actuelle
             </Text>
           </View>
-          <View
-            numberOfSpaces={1}
-            style={
-              [
-                {
-                  "height": 4,
-                },
-              ]
-            }
-          />
-          <Text
-            style={
-              [
-                {
-                  "color": "#696A6F",
-                  "fontFamily": "Montserrat-SemiBold",
-                  "fontSize": 12,
-                  "lineHeight": 16,
-                },
-              ]
-            }
-          >
-            Géolocalisation désactivée
-          </Text>
         </View>
+        <View
+          numberOfSpaces={6}
+          style={
+            [
+              {
+                "height": 24,
+              },
+            ]
+          }
+        />
         <View
           style={
             [
@@ -400,6 +396,16 @@ exports[`LocationModal should render correctly if modal visible 1`] = `
                 "backgroundColor": "#F1F1F4",
                 "height": 1,
                 "width": "100%",
+              },
+            ]
+          }
+        />
+        <View
+          numberOfSpaces={6}
+          style={
+            [
+              {
+                "height": 24,
               },
             ]
           }
@@ -423,7 +429,7 @@ exports[`LocationModal should render correctly if modal visible 1`] = `
               "text": undefined,
             }
           }
-          accessible={true}
+          accessible={false}
           collapsable={false}
           focusable={true}
           onClick={[Function]}
@@ -435,8 +441,8 @@ exports[`LocationModal should render correctly if modal visible 1`] = `
           onStartShouldSetResponder={[Function]}
           style={
             {
-              "marginVertical": 24,
               "opacity": 1,
+              "userSelect": "auto",
             }
           }
         >
@@ -507,15 +513,15 @@ exports[`LocationModal should render correctly if modal visible 1`] = `
               ]
             }
           >
-            Ville, adresse, code postal
+            Ville, code postal, adresse
           </Text>
         </View>
         <View
-          numberOfSpaces={2}
+          numberOfSpaces={8}
           style={
             [
               {
-                "height": 8,
+                "height": 32,
               },
             ]
           }

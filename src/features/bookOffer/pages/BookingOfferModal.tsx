@@ -64,6 +64,7 @@ export const BookingOfferModalComponent: React.FC<BookingOfferModalComponentProp
   const apiRecoParams: SimilarOffersResponseParams = route.params?.apiRecoParams
     ? JSON.parse(route.params?.apiRecoParams)
     : undefined
+  const playlistType = route.params?.playlistType
 
   const onBookOfferSuccess = useCallback(
     ({ bookingId }: { bookingId: number }) => {
@@ -74,8 +75,9 @@ export const BookingOfferModalComponent: React.FC<BookingOfferModalComponentProp
           ...apiRecoParams,
           offerId,
           bookingId,
-          fromOfferId,
+          fromOfferId: fromMultivenueOfferId ? undefined : fromOfferId,
           fromMultivenueOfferId,
+          playlistType,
         })
         if (isFromSearch && algoliaOfferId) {
           logOfferConversion(algoliaOfferId)
@@ -98,6 +100,7 @@ export const BookingOfferModalComponent: React.FC<BookingOfferModalComponentProp
       apiRecoParams,
       fromOfferId,
       fromMultivenueOfferId,
+      playlistType,
       isFromSearch,
       algoliaOfferId,
       selectedStock,

@@ -8,6 +8,7 @@ import { ActivationBanner } from 'features/home/components/banners/ActivationBan
 import { GeolocationBanner } from 'features/home/components/banners/GeolocationBanner'
 import { SignupBanner } from 'features/home/components/banners/SignupBanner'
 import { LocationWidget } from 'features/location/components/LocationWidget'
+import { StepperOrigin } from 'features/navigation/RootNavigator/types'
 import { isUserBeneficiary } from 'features/profile/helpers/isUserBeneficiary'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
@@ -66,6 +67,7 @@ export const HomeHeader: FunctionComponent = function () {
             title={homeBanner.title}
             subtitle={homeBanner.text}
             icon={BicolorUnlock}
+            from={StepperOrigin.HOME}
           />
         </BannerContainer>
       )
@@ -80,7 +82,12 @@ export const HomeHeader: FunctionComponent = function () {
     if (homeBanner?.name === BannerName.retry_identity_check_banner)
       return (
         <BannerContainer>
-          <ActivationBanner title={homeBanner.title} subtitle={homeBanner.text} icon={ArrowAgain} />
+          <ActivationBanner
+            title={homeBanner.title}
+            subtitle={homeBanner.text}
+            icon={ArrowAgain}
+            from={StepperOrigin.HOME}
+          />
         </BannerContainer>
       )
 
@@ -91,6 +98,7 @@ export const HomeHeader: FunctionComponent = function () {
             title={homeBanner.title}
             subtitle={homeBanner.text}
             icon={BirthdayCake}
+            from={StepperOrigin.HOME}
           />
         </BannerContainer>
       )

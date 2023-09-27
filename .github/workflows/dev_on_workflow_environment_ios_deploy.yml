@@ -77,6 +77,10 @@ jobs:
           MATCH_PASSWORD: ${{ steps.secrets.outputs.MATCH_PASSWORD }}
           MATCH_USERNAME: ${{ steps.secrets.outputs.MATCH_USERNAME }}
           MATCH_GIT_URL: ${{ steps.secrets.outputs.MATCH_GIT_URL }}
+      - name: Create Sentry sourcemaps
+        if: ${{ inputs.TYPE == 'hard'}}
+        run: bash -c 'source scripts/upload_sourcemaps_to_sentry.sh;upload_sourcemaps "ios ${{ inputs.ENV }}'
+
   slack_notify:
     runs-on: [self-hosted, linux, x64]
     if: ${{ always() }}

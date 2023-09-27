@@ -114,7 +114,7 @@ export const SearchListHeader: React.FC<SearchListHeaderProps> = ({
     !shouldDisplayAvailableUserDataMessage
 
   return (
-    <React.Fragment>
+    <View testID="searchListHeader">
       {!!shouldDisplayGeolocationButton && (
         <React.Fragment>
           <Spacer.Column numberOfSpaces={3} />
@@ -166,7 +166,7 @@ export const SearchListHeader: React.FC<SearchListHeaderProps> = ({
       <Spacer.Column numberOfSpaces={5} />
       <Title>{offerTitle}</Title>
       <NumberOfResults nbHits={nbHits} />
-    </React.Fragment>
+    </View>
   )
 }
 

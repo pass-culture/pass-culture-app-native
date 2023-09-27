@@ -59,4 +59,24 @@ export const offerResponseSnap: OfferResponse = {
     isPermanent: true,
   },
   withdrawalDetails: 'How to withdraw, https://test.com',
+  metadata: {
+    '@context': 'https://schema.org',
+    '@type': 'Event',
+    name: 'Sous les étoiles de Paris - VF',
+    description:
+      'Depuis de nombreuses années, Christine vit sous un pont, isolée de toute famille et amis. Par une nuit comme il n’en existe que dans les contes, un jeune garçon de 8 ans fait irruption devant son abri. Suli ne parle pas français, il est perdu, séparé de sa mère…\nTous les détails du film sur AlloCiné: https://www.allocine.fr/film/fichefilm_gen_cfilm=199293.html',
+    image:
+      'https://storage.gra.cloud.ovh.net/v1/AUTH_688df1e25bd84a48a3804e7fa8938085/storage-pc-dev/thumbs/products/CHSYS',
+    location: {
+      '@type': 'Place',
+      name: 'PATHE BEAUGRENELLE',
+      address: {
+        '@type': 'PostalAddress',
+        streetAddress: '2 RUE LAMENNAIS',
+        postalCode: '75008',
+        addressLocality: 'PARIS 8',
+      },
+      geo: { '@type': 'GeoCoordinates', latitude: 20, longitude: 2 },
+    },
+  },
 }

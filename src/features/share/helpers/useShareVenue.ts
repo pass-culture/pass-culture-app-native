@@ -35,6 +35,7 @@ export const useShareVenue = (venueId: number, utmMedium: string): ShareOutput =
   const shareContent = {
     url: shareUrl,
     message: shareMessage,
+    messageWithoutLink: shareTitle,
     title: shareTitle,
   }
 

@@ -6,7 +6,7 @@ import styled from 'styled-components/native'
 import { LinkToComponent } from 'features/internal/cheatcodes/components/LinkToComponent'
 import { Row } from 'features/internal/cheatcodes/components/Row'
 import { useSomeOfferId } from 'features/internal/cheatcodes/hooks/useSomeOfferId'
-import { UseNavigationType } from 'features/navigation/RootNavigator/types'
+import { StepperOrigin, UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { ApplicationProcessingModal } from 'shared/offer/components/ApplicationProcessingModal/ApplicationProcessingModal'
 import { AuthenticationModal } from 'shared/offer/components/AuthenticationModal/AuthenticationModal'
 import { ErrorApplicationModal } from 'shared/offer/components/ErrorApplicationModal/ErrorApplicationModal'
@@ -93,7 +93,7 @@ export function NavigationSignUp(): React.JSX.Element {
           <FinishSubscriptionModal
             visible={finishSubscriptionModalVisible}
             hideModal={hideFinishSubscriptionModal}
-            offerId={offerId}
+            from={StepperOrigin.OFFER}
           />
         </Row>
         <Row half>

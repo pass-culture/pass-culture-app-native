@@ -1,4 +1,4 @@
-import { useNavigation } from '@react-navigation/native'
+import { useNavigation, useRoute } from '@react-navigation/native'
 import React, { useEffect } from 'react'
 import styled, { useTheme } from 'styled-components/native'
 
@@ -12,7 +12,7 @@ import { useRehydrateProfile } from 'features/identityCheck/pages/helpers/useReh
 import { useSetSubscriptionStepAndMethod } from 'features/identityCheck/pages/helpers/useSetCurrentSubscriptionStep'
 import { useStepperInfo } from 'features/identityCheck/pages/helpers/useStepperInfo'
 import { StepButtonState } from 'features/identityCheck/types'
-import { UseNavigationType } from 'features/navigation/RootNavigator/types'
+import { UseNavigationType, UseRouteType } from 'features/navigation/RootNavigator/types'
 import { StepList } from 'features/profile/components/StepList/StepList'
 import { analytics } from 'libs/analytics'
 import { hasOngoingCredit } from 'shared/user/useAvailableCredit'
@@ -26,6 +26,7 @@ import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 export const Stepper = () => {
   const theme = useTheme()
   const { navigate } = useNavigation<UseNavigationType>()
+  const { params } = useRoute<UseRouteType<'Stepper'>>()
 
   const {
     stepsDetails: steps,
@@ -37,6 +38,7 @@ export const Stepper = () => {
   const activeStepIndex = steps.findIndex(
     (step) => step.stepState === StepButtonState.CURRENT || step.stepState === StepButtonState.RETRY
   )
+  const stepToComplete = steps[activeStepIndex]
 
   const { subscription } = useSetSubscriptionStepAndMethod()
   const { showErrorSnackBar } = useSnackBarContext()
@@ -79,6 +81,12 @@ export const Stepper = () => {
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [subscription])
+
+  useEffect(() => {
+    if (params?.from && stepToComplete?.name) {
+      analytics.logStepperDisplayed(params.from, stepToComplete.name)
+    }
+  }, [params?.from, stepToComplete?.name])
 
   const stepList = (
     <StepList activeStepIndex={activeStepIndex}>

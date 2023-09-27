@@ -15,6 +15,7 @@ type Props = {
   title: string
   email: string
   consultFaq: ExternalTouchableLinkProps['externalNav']
+  additionalCTA?: React.ReactNode
   consultFaqAnalytics?: () => Promise<void>
   openInBoxAnalytics?: () => Promise<void>
 }
@@ -23,6 +24,7 @@ export const EmailSentGeneric: FunctionComponent<Props> = ({
   title,
   email,
   consultFaq,
+  additionalCTA,
   consultFaqAnalytics,
   openInBoxAnalytics,
 }) => {
@@ -51,7 +53,8 @@ export const EmailSentGeneric: FunctionComponent<Props> = ({
         icon={ExternalSiteFilled}
         justifyContent="flex-start"
       />
-      <Spacer.Column numberOfSpaces={10} />
+      {additionalCTA}
+      <Spacer.Column numberOfSpaces={additionalCTA ? 6 : 10} />
       <OpenInboxButton onAdditionalPress={openInBoxAnalytics} />
     </React.Fragment>
   )

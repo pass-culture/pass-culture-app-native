@@ -91,7 +91,7 @@ const OnlineHome: FunctionComponent<GenericHomeProps> = ({
   const [maxIndex, setMaxIndex] = useState(initialNumToRender)
   const [isLoading, setIsLoading] = useState(false)
   const { height: screenHeight } = useWindowDimensions()
-  const modulesIntervalId = useRef(0)
+  const modulesIntervalId = useRef<NodeJS.Timeout>()
   const theme = useTheme()
 
   const flatListHeaderStyle = { zIndex: theme.zIndex.header }
@@ -166,7 +166,7 @@ const OnlineHome: FunctionComponent<GenericHomeProps> = ({
 
     return () => {
       clearInterval(modulesIntervalId.current)
-      modulesIntervalId.current = 0
+      modulesIntervalId.current = undefined
     }
   }, [modules.length, isLoading, maxIndex])
 

@@ -10,6 +10,7 @@ import { mockOffer as baseOffer } from 'features/bookOffer/fixtures/offer'
 import { mockStocks } from 'features/bookOffer/fixtures/stocks'
 import { IBookingContext } from 'features/bookOffer/types'
 import { VenueListItem } from 'features/offer/components/VenueSelectionList/VenueSelectionList'
+import { PlaylistType } from 'features/offer/enums'
 import { SimilarOffersResponseParams } from 'features/offer/types'
 import { beneficiaryUser } from 'fixtures/user'
 import * as logOfferConversionAPI from 'libs/algolia/analytics/logOfferConversion'
@@ -303,6 +304,7 @@ describe('<BookingOfferModalComponent />', () => {
             fromOfferId: 1,
             fromMultivenueOfferId: 1,
             apiRecoParams: JSON.stringify(apiRecoParams),
+            playlistType: PlaylistType.SAME_CATEGORY_SIMILAR_OFFERS,
           },
         })
         render(<BookingOfferModalComponent visible offerId={20} />)
@@ -311,8 +313,9 @@ describe('<BookingOfferModalComponent />', () => {
           ...apiRecoParams,
           bookingId: 1,
           fromMultivenueOfferId: 1,
-          fromOfferId: 1,
+          fromOfferId: undefined,
           offerId: 20,
+          playlistType: PlaylistType.SAME_CATEGORY_SIMILAR_OFFERS,
         })
       })
 

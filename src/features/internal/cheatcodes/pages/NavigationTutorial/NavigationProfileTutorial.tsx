@@ -23,22 +23,22 @@ export function NavigationProfileTutorial(): React.JSX.Element {
         <LinkToComponent
           name="ProfileTutorialAgeInformation"
           title="Page 15 ans"
-          navigationParams={{ selectedAge: 15 }}
+          navigationParams={{ age: 15 }}
         />
         <LinkToComponent
           name="ProfileTutorialAgeInformation"
           title="Page 16 ans"
-          navigationParams={{ selectedAge: 16 }}
+          navigationParams={{ age: 16 }}
         />
         <LinkToComponent
           name="ProfileTutorialAgeInformation"
           title="Page 17 ans"
-          navigationParams={{ selectedAge: 17 }}
+          navigationParams={{ age: 17 }}
         />
         <LinkToComponent
           name="ProfileTutorialAgeInformation"
           title="Page 18 ans"
-          navigationParams={{ selectedAge: 18 }}
+          navigationParams={{ age: 18 }}
         />
       </StyledContainer>
       <Spacer.BottomScreen />

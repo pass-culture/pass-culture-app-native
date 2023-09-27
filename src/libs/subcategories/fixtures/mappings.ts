@@ -676,7 +676,7 @@ export const subcategoriesMappingSnap = {
     categoryId: 'MUSIQUE_ENREGISTREE',
     homepageLabelName: 'MUSIQUE',
     isEvent: false,
-    nativeCategoryId: 'CD_VINYLES',
+    nativeCategoryId: 'VINYLES',
     onlineOfflinePlatform: 'OFFLINE',
     searchGroupName: 'CD_VINYLE_MUSIQUE_EN_LIGNE',
   },

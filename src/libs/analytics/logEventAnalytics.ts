@@ -8,7 +8,7 @@ import { FavoriteSortBy } from 'features/favorites/types'
 import { IDOrigin } from 'features/identityCheck/pages/identification/ubble/SelectIDOrigin'
 import { IDStatus } from 'features/identityCheck/pages/identification/ubble/SelectIDStatus'
 import { DeprecatedIdentityCheckStep, IdentityCheckStep } from 'features/identityCheck/types'
-import { Referrals } from 'features/navigation/RootNavigator/types'
+import { Referrals, StepperOrigin } from 'features/navigation/RootNavigator/types'
 import { PlaylistType } from 'features/offer/enums'
 import { SearchState } from 'features/search/types'
 import { ShareAppModalType } from 'features/share/helpers/shareAppModalInformations'
@@ -76,6 +76,7 @@ export const logEventAnalytics = {
     bookingId: number
     fromOfferId?: number
     fromMultivenueOfferId?: number
+    playlistType?: PlaylistType
   }) => analytics.logEvent({ firebase: AnalyticsEvent.BOOKING_CONFIRMATION }, params),
   logBookingDetailsScrolledToBottom: (offerId: number) =>
     analytics.logEvent(
@@ -490,6 +491,8 @@ export const logEventAnalytics = {
     analytics.logEvent({
       firebase: AnalyticsEvent.RESEND_EMAIL_SIGNUP_CONFIRMATION_EXPIRED_LINK,
     }),
+  logResendEmailValidation: () =>
+    analytics.logEvent({ firebase: AnalyticsEvent.RESEND_EMAIL_VALIDATION }),
   logSaveNewMail: () => analytics.logEvent({ firebase: AnalyticsEvent.SAVE_NEW_MAIL }),
   logScreenViewComeBackLater: () =>
     analytics.logEvent({ amplitude: AmplitudeEvent.SCREEN_VIEW_COME_BACK_LATER }),
@@ -519,8 +522,6 @@ export const logEventAnalytics = {
     analytics.logEvent({ amplitude: AmplitudeEvent.SCREEN_VIEW_SET_PHONE_NUMBER }),
   logScreenViewSetPhoneValidationCode: () =>
     analytics.logEvent({ amplitude: AmplitudeEvent.SCREEN_VIEW_SET_PHONE_VALIDATION_CODE }),
-  logScreenViewSetSchoolType: () =>
-    analytics.logEvent({ amplitude: AmplitudeEvent.SCREEN_VIEW_SET_SCHOOL_TYPE }),
   logScreenViewSetStatus: () =>
     analytics.logEvent({ amplitude: AmplitudeEvent.SCREEN_VIEW_SET_STATUS }),
   logScreenshot: (params: { from: string; id?: number }) =>
@@ -552,8 +553,6 @@ export const logEventAnalytics = {
   logSetNameClicked: () => analytics.logEvent({ amplitude: AmplitudeEvent.SET_NAME_CLICKED }),
   logSetPostalCodeClicked: () =>
     analytics.logEvent({ amplitude: AmplitudeEvent.SET_POSTAL_CODE_CLICKED }),
-  logSetSchoolTypeClicked: () =>
-    analytics.logEvent({ amplitude: AmplitudeEvent.SET_SCHOOL_TYPE_CLICKED }),
   logSetStatusClicked: () => analytics.logEvent({ amplitude: AmplitudeEvent.SET_STATUS_CLICKED }),
   logShare: (params: {
     type: 'App' | 'Offer' | 'Venue'
@@ -596,6 +595,8 @@ export const logEventAnalytics = {
     analytics.logEvent({ firebase: AnalyticsEvent.SIGN_UP_TOO_YOUNG }, { age }),
   logStartDMSTransmission: () =>
     analytics.logEvent({ firebase: AnalyticsEvent.START_DMS_TRANSMISSION }),
+  logStepperDisplayed: (from: StepperOrigin, step: IdentityCheckStep) =>
+    analytics.logEvent({ firebase: AnalyticsEvent.STEPPER_DISPLAYED }, { from, step }),
   logTrySelectDeposit: (age: number) =>
     analytics.logEvent({ firebase: AnalyticsEvent.TRY_SELECT_DEPOSIT }, { age }),
   logVenueContact: (params: { type: keyof VenueContactModel; venueId: number }) =>

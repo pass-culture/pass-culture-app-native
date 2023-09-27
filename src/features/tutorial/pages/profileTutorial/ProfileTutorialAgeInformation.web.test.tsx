@@ -7,7 +7,7 @@ import { render, checkAccessibilityFor } from 'tests/utils/web'
 
 import { ProfileTutorialAgeInformation } from './ProfileTutorialAgeInformation'
 
-const navProps = { route: { params: { selectedAge: 15 } } } as StackScreenProps<
+const navProps = { route: { params: { age: 15 } } } as StackScreenProps<
   TutorialRootStackParamList,
   'ProfileTutorialAgeInformation'
 >

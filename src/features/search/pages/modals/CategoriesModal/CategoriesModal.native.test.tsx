@@ -6,6 +6,8 @@ import { GenreType, NativeCategoryIdEnumv2, SearchGroupNameEnumv2 } from 'api/ge
 import { initialSearchState } from 'features/search/context/reducer'
 import { FilterBehaviour } from 'features/search/enums'
 import { SearchState } from 'features/search/types'
+import { FacetData } from 'libs/algolia'
+import { mockedFacets } from 'libs/algolia/__mocks__/mockedFacets'
 import { placeholderData } from 'libs/subcategories/placeholderData'
 import { fireEvent, render, screen, waitFor } from 'tests/utils'
 
@@ -247,6 +249,17 @@ describe('<CategoriesModal/>', () => {
         expect(defaultCategoryFilterCheckbox).toHaveProp('isSelected', true)
       })
     })
+
+    it('should display number of results on each category', () => {
+      renderCategories()
+
+      // Festivals du livre + Livres audio physiques
+      expect(screen.getAllByText('0 résultat')).toHaveLength(2)
+      // Livres numériques & audio
+      expect(screen.getByText('23 résultats')).toBeOnTheScreen()
+      // Livre Papiers
+      expect(screen.getByText('+100 résultats')).toBeOnTheScreen()
+    })
   })
 
   describe('With genre types view', () => {
@@ -370,6 +383,15 @@ describe('<CategoriesModal/>', () => {
         })
       })
     })
+
+    it('should display number of results on each genre type', () => {
+      renderCategories()
+
+      // Loisirs
+      expect(screen.getByText('7 résultats')).toBeOnTheScreen()
+      // Littérature française'
+      expect(screen.getByText('6 résultats')).toBeOnTheScreen()
+    })
   })
 
   describe('with "Appliquer le filtre" button', () => {
@@ -458,6 +480,7 @@ function renderCategories({
       hideModal={mockHideModal}
       filterBehaviour={filterBehaviour}
       onClose={onClose}
+      facets={mockedFacets.facets as FacetData}
       {...props}
     />
   )

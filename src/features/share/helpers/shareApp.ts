@@ -11,11 +11,13 @@ const shareOptions = {
 export const shareApp = (utmMedium: string) => {
   const url = `${WEBAPP_V2_URL}/accueil`
   const urlWithUtmParams = `${url}?utm_campaign=share_app&utm_medium=${utmMedium}`
-  const message = `Profite toi aussi de tous les bons plans du pass Culture\u00a0: \n${urlWithUtmParams}`
+  const messageWithoutLink = 'Profite toi aussi de tous les bons plans du pass Culture'
+  const message = `${messageWithoutLink}\u00a0: \n${urlWithUtmParams}`
 
   const shareAppContent = {
     title: shareAppTitle,
     message,
+    messageWithoutLink,
   }
   return share(shareAppContent, shareOptions, true)
 }

@@ -250,9 +250,6 @@ exports[`<SetCity/> should render correctly 1`] = `
                     class="css-view-175oi2r r-alignItems-1awozwy r-backgroundColor-14lw9ot r-borderColor-w7parf r-borderStyle-1phboty r-borderWidth-rs99b7 r-flexDirection-18u37iz r-height-eu3ka r-paddingBottom-1mdbw0j r-paddingLeft-1937ghh r-paddingRight-145ew9a r-paddingTop-wk8lta r-width-13qz1uu r-borderRadius-1fuqb1j r-outlineOffset-2fw26j"
                     data-testid="styled-input-container"
                   >
-                    <div
-                      class="css-view-175oi2r r-width-10g5efv"
-                    />
                     <input
                       autocapitalize="sentences"
                       autocomplete="on"
@@ -561,9 +558,6 @@ exports[`<SetCity/> should render correctly 1`] = `
                   class="css-view-175oi2r r-alignItems-1awozwy r-backgroundColor-14lw9ot r-borderColor-w7parf r-borderStyle-1phboty r-borderWidth-rs99b7 r-flexDirection-18u37iz r-height-eu3ka r-paddingBottom-1mdbw0j r-paddingLeft-1937ghh r-paddingRight-145ew9a r-paddingTop-wk8lta r-width-13qz1uu r-borderRadius-1fuqb1j r-outlineOffset-2fw26j"
                   data-testid="styled-input-container"
                 >
-                  <div
-                    class="css-view-175oi2r r-width-10g5efv"
-                  />
                   <input
                     autocapitalize="sentences"
                     autocomplete="on"

@@ -99,7 +99,7 @@ export const Login: FunctionComponent<Props> = memo(function Login(props) {
           return navigate('SuspensionScreen')
         }
 
-        const user = await api.getnativev1me()
+        const user = await api.getNativeV1Me()
         const hasSeenEligibleCard = !!(await storage.readObject('has_seen_eligible_card'))
 
         if (user?.recreditAmountToShow) {

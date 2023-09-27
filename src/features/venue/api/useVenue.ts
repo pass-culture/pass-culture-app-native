@@ -9,7 +9,7 @@ import { QueryKeys } from 'libs/queryKeys'
 const getVenueById = async (venueId: number | null) => {
   if (typeof venueId !== 'number') return
   try {
-    return await api.getnativev1venuevenueId(venueId)
+    return await api.getNativeV1VenuevenueId(venueId)
   } catch (error) {
     throw new VenueNotFoundError(venueId, { Screen: VenueNotFound })
   }

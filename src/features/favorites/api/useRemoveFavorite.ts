@@ -12,7 +12,7 @@ interface RemoveFavorite {
 export function useRemoveFavorite({ onError }: RemoveFavorite) {
   const queryClient = useQueryClient()
 
-  return useMutation((favoriteId: number) => api.deletenativev1mefavoritesfavoriteId(favoriteId), {
+  return useMutation((favoriteId: number) => api.deleteNativeV1MeFavoritesfavoriteId(favoriteId), {
     onMutate: async (favoriteId) => {
       await queryClient.cancelQueries([QueryKeys.FAVORITES])
       // Snapshot the previous value
