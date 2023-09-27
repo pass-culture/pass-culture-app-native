@@ -1,7 +1,6 @@
 import { useEffect } from 'react'
 import { useQuery } from 'react-query'
 
-import { useAuthContext } from 'features/auth/context/AuthContext'
 import { mapOffersDataAndModules } from 'features/home/api/helpers/mapOffersDataAndModules'
 import { useHomePosition } from 'features/home/helpers/useHomePosition'
 import { OffersModule, OfferModuleParamsInfo } from 'features/home/types'
@@ -26,7 +25,6 @@ export const useGetOffersData = (modules: OffersModule[]) => {
 
   const adaptPlaylistParameters = useAdaptOffersPlaylistParameters()
   const isUserUnderage = useIsUserUnderage()
-  const { user } = useAuthContext()
   const netInfo = useNetInfoContext()
 
   const offersModuleIds: string[] = []
@@ -68,7 +66,7 @@ export const useGetOffersData = (modules: OffersModule[]) => {
       return
     })
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [!!position, user?.isBeneficiary])
+  }, [!!position])
 
   const offersModulesData = mapOffersDataAndModules({
     results: offersResultList,
