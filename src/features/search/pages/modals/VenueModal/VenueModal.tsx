@@ -5,6 +5,7 @@ import { SuggestedVenues } from 'features/search/pages/SuggestedPlacesOrVenues/S
 import { Venue } from 'features/venue/types'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { SearchInput } from 'ui/components/inputs/SearchInput'
+import { useForHeightKeyboardEvents } from 'ui/components/keyboard/useKeyboardEvents'
 import { AppModal } from 'ui/components/modals/AppModal'
 import { Spacer } from 'ui/components/spacer/Spacer'
 import { useDebounceValue } from 'ui/hooks/useDebounceValue'
@@ -22,6 +23,9 @@ export const VenueModal = ({ visible, dismissModal }: Props) => {
   const [venueQuery, setVenueQuery] = useState('')
   const debouncedVenueQuery = useDebounceValue(venueQuery, 500)
   const [selectedVenue, setSelectedVenue] = useState<Venue | null>(null)
+
+  const [keyboardHeight, setKeyboardHeight] = useState(0)
+  useForHeightKeyboardEvents(setKeyboardHeight)
 
   const onChangeVenue = (text: string) => {
     setVenueQuery(text)
@@ -51,11 +55,14 @@ export const VenueModal = ({ visible, dismissModal }: Props) => {
       isUpToStatusBar
       scrollEnabled={false}
       fixedModalBottom={
+        <React.Fragment>
           <ButtonPrimary
             wording={'Valider le point de vente'}
             disabled={!selectedVenue}
             onPress={dismissModal}
           />
+          <KeyboardPlaceholder keyboardHeight={keyboardHeight} />
+        </React.Fragment>
       }>
       <Spacer.Column numberOfSpaces={10} />
       <SubtitleContainer>
@@ -95,3 +102,7 @@ const SearchIcon = styled(MagnifyingGlassFilled).attrs(({ theme }) => ({
 const StyledMagnifyingGlass = styled(MagnifyingGlass).attrs(({ theme }) => ({
   size: theme.icons.sizes.small,
 }))``
+
+const KeyboardPlaceholder = styled.View<{ keyboardHeight: number }>(({ keyboardHeight }) => ({
+  height: keyboardHeight,
+}))
