@@ -36,7 +36,7 @@ export function TouchableLink({
   const TouchableComponent = (
     highlight ? StyledTouchableHighlight : StyledTouchableOpacity
   ) as ElementType
-  const TouchableLinkComponent = Tag ? Tag : TouchableComponent
+  const TouchableLinkComponent = Tag || TouchableComponent
   const linkRef = createRef<HTMLAnchorElement>()
   const { onFocus: onFocusDefault, onBlur: onBlurDefault, isFocus } = useHandleFocus()
   const { onMouseEnter, onMouseLeave, isHover } = useHandleHover()
