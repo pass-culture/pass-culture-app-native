@@ -58,11 +58,11 @@ export function SearchHistoryItem({ item }: Props) {
           <ClockFilledIcon />
         </ClockIconContainer>
         <StyledText numberOfLines={1}>
-          <ItalicBodyText>{item.query}</ItalicBodyText>
+          <ItalicText>{item.query}</ItalicText>
           {!!shouldDisplaySearchGroupOrNativeCategory && (
             <React.Fragment>
-              <ItalicBodyText> dans </ItalicBodyText>
-              <ItalicButtonText>{nativeCategoryLabel ?? searchGroupLabel}</ItalicButtonText>
+              <ItalicText> dans </ItalicText>
+              <BoldItalicText>{nativeCategoryLabel ?? searchGroupLabel}</BoldItalicText>
             </React.Fragment>
           )}
         </StyledText>
@@ -85,14 +85,12 @@ const StyledText = styled(Text)({
   flex: 1,
 })
 
-const ItalicBodyText = styled(Typo.Body)(({ theme }) => ({
+const ItalicText = styled(Typo.Body)(({ theme }) => ({
   ...theme.typography.placeholder,
   color: theme.colors.black,
 }))
 
-const ItalicButtonText = styled(Typo.ButtonText)({
-  fontStyle: 'italic',
-})
+const BoldItalicText = styled(Typo.Body)(({ theme }) => theme.typography.bodyBoldItalic)
 
 const ClockIconContainer = styled.View({ flexShrink: 0 })
 

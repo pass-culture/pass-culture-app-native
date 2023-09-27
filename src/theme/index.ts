@@ -49,6 +49,7 @@ export const theme = {
     semiBold: 'Montserrat-SemiBold',
     bold: 'Montserrat-Bold',
     black: 'Montserrat-Black',
+    boldItalic: 'Montserrat-BoldItalic',
   },
   forms: { maxWidth: DESKTOP_CONTENT_MAX_WIDTH },
   controlComponent: {
@@ -156,6 +157,12 @@ export const theme = {
       fontSize: getSpacing(3.75),
       lineHeight: getSpacingString(5),
       color: ColorsEnum.GREY_DARK,
+    },
+    bodyBoldItalic: {
+      fontFamily: 'Montserrat-BoldItalic',
+      fontSize: getSpacing(3.75),
+      lineHeight: getSpacingString(5),
+      color: ColorsEnum.BLACK,
     },
   },
   colors: {
