@@ -30,7 +30,7 @@ import { useHasPosition } from 'features/search/helpers/useHasPosition/useHasPos
 import { useLocationChoice } from 'features/search/helpers/useLocationChoice/useLocationChoice'
 import { useLocationType } from 'features/search/helpers/useLocationType/useLocationType'
 import { LocationModal } from 'features/search/pages/modals/LocationModal/LocationModal'
-import { SearchState, SearchView } from 'features/search/types'
+import { CreateHistoryItem, SearchState, SearchView } from 'features/search/types'
 import { BackButton } from 'ui/components/headers/BackButton'
 import { HiddenAccessibleText } from 'ui/components/HiddenAccessibleText'
 import { useModal } from 'ui/components/modals/useModal'
@@ -41,6 +41,8 @@ const SEARCH_DEBOUNCE_MS = 500
 
 type Props = UseSearchBoxProps & {
   searchInputID: string
+  addSearchHistory: (item: CreateHistoryItem) => void
+  searchInHistory: (search: string) => void
   accessibleHiddenTitle?: string
 }
 
@@ -49,6 +51,8 @@ const accessibilityDescribedBy = uuidv4()
 export const SearchBox: React.FunctionComponent<Props> = ({
   searchInputID,
   accessibleHiddenTitle,
+  addSearchHistory,
+  searchInHistory,
   ...props
 }) => {
   const { params } = useRoute<UseRouteType<'Search'>>()
@@ -99,6 +103,7 @@ export const SearchBox: React.FunctionComponent<Props> = ({
   useEffect(() => {
     if (autocompleteQuery !== query && appEnableAutocomplete) {
       debounceSetAutocompleteQuery(query)
+      searchInHistory(query)
     }
     // avoid conflicts when local autocomplete query state is updating
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -132,9 +137,10 @@ export const SearchBox: React.FunctionComponent<Props> = ({
     inputRef.current?.focus()
     clear()
     setQuery('')
+    searchInHistory('')
     const view = appEnableAutocomplete ? SearchView.Suggestions : SearchView.Results
     pushWithSearch({ query: '', view })
-  }, [clear, appEnableAutocomplete, pushWithSearch])
+  }, [clear, appEnableAutocomplete, pushWithSearch, searchInHistory])
 
   const onPressArrowBack = useCallback(() => {
     // To force remove focus on search input
@@ -185,6 +191,7 @@ export const SearchBox: React.FunctionComponent<Props> = ({
       // these are the two potentially 'staged' filters that we want to commit to the global search state.
       // We also want to commit the price filter, as beneficiary users may have access to different offer
       // price range depending on their available credit.
+      addSearchHistory({ query: queryText })
       const { offerCategories, priceRange } = searchState
       const searchId = uuidv4()
       const partialSearchState: Partial<SearchState> = {
@@ -198,7 +205,7 @@ export const SearchBox: React.FunctionComponent<Props> = ({
       }
       pushWithSearch(partialSearchState)
     },
-    [locationFilter, pushWithSearch, searchState]
+    [addSearchHistory, locationFilter, pushWithSearch, searchState]
   )
 
   const paramsWithoutView = useMemo(() => omit(params, ['view']), [params])
@@ -210,6 +217,7 @@ export const SearchBox: React.FunctionComponent<Props> = ({
     // or suggestions view if it's the current view when feature flag desactivated
     if (hasEditableSearchInput && !appEnableAutocomplete) return
 
+    searchInHistory(params?.query ?? '')
     pushWithSearch({
       ...paramsWithoutView,
       view: SearchView.Suggestions,
@@ -218,9 +226,11 @@ export const SearchBox: React.FunctionComponent<Props> = ({
   }, [
     appEnableAutocomplete,
     hasEditableSearchInput,
+    params?.query,
     params?.view,
     paramsWithoutView,
     pushWithSearch,
+    searchInHistory,
   ])
 
   return (

@@ -172,12 +172,21 @@ describe('AutocompleteOfferItem component', () => {
 
   it('should render AutocompleteOfferItem', () => {
     expect(
-      render(<AutocompleteOfferItem hit={mockHit} sendEvent={mockSendEvent} shouldShowCategory />)
+      render(
+        <AutocompleteOfferItem
+          hit={mockHit}
+          sendEvent={mockSendEvent}
+          shouldShowCategory
+          addSearchHistory={jest.fn()}
+        />
+      )
     ).toMatchSnapshot()
   })
 
   it('should create a suggestion clicked event when pressing a hit', async () => {
-    render(<AutocompleteOfferItem hit={mockHit} sendEvent={mockSendEvent} />)
+    render(
+      <AutocompleteOfferItem hit={mockHit} sendEvent={mockSendEvent} addSearchHistory={jest.fn()} />
+    )
     await fireEvent.press(screen.getByTestId('autocompleteOfferItem_1'))
 
     expect(mockSendEvent).toHaveBeenCalledTimes(1)
@@ -185,7 +194,13 @@ describe('AutocompleteOfferItem component', () => {
 
   describe('when item is not in the first three suggestions', () => {
     it('should execute a search with the query suggestion on hit click', async () => {
-      render(<AutocompleteOfferItem hit={mockHit} sendEvent={mockSendEvent} />)
+      render(
+        <AutocompleteOfferItem
+          hit={mockHit}
+          sendEvent={mockSendEvent}
+          addSearchHistory={jest.fn()}
+        />
+      )
       await fireEvent.press(screen.getByTestId('autocompleteOfferItem_1'))
 
       expect(navigate).toBeCalledWith(
@@ -202,7 +217,13 @@ describe('AutocompleteOfferItem component', () => {
     })
 
     it('should not display the most popular native category of the query suggestion', async () => {
-      render(<AutocompleteOfferItem hit={mockHit} sendEvent={mockSendEvent} />)
+      render(
+        <AutocompleteOfferItem
+          hit={mockHit}
+          sendEvent={mockSendEvent}
+          addSearchHistory={jest.fn()}
+        />
+      )
 
       expect(screen.queryByText('Séances de cinéma')).not.toBeOnTheScreen()
     })
@@ -216,7 +237,13 @@ describe('AutocompleteOfferItem component', () => {
           { key: GenreType.BOOK, name: 'Bandes dessinées', value: 'Bandes dessinées' },
         ],
       }
-      render(<AutocompleteOfferItem hit={mockHit} sendEvent={mockSendEvent} />)
+      render(
+        <AutocompleteOfferItem
+          hit={mockHit}
+          sendEvent={mockSendEvent}
+          addSearchHistory={jest.fn()}
+        />
+      )
       await fireEvent.press(screen.getByTestId('autocompleteOfferItem_1'))
 
       expect(navigate).toBeCalledWith(
@@ -238,7 +265,14 @@ describe('AutocompleteOfferItem component', () => {
   describe('when item is in the first three suggestions', () => {
     describe('should execute a search with the query suggestion and', () => {
       it('its most popular native category when it associated to only one category on hit click ', async () => {
-        render(<AutocompleteOfferItem hit={mockHit} sendEvent={mockSendEvent} shouldShowCategory />)
+        render(
+          <AutocompleteOfferItem
+            hit={mockHit}
+            sendEvent={mockSendEvent}
+            shouldShowCategory
+            addSearchHistory={jest.fn()}
+          />
+        )
         await fireEvent.press(screen.getByTestId('autocompleteOfferItem_1'))
 
         expect(navigate).toBeCalledWith(
@@ -262,6 +296,7 @@ describe('AutocompleteOfferItem component', () => {
             hit={mockHitSeveralCategoriesWithAssociationToNativeCategory}
             sendEvent={mockSendEvent}
             shouldShowCategory
+            addSearchHistory={jest.fn()}
           />
         )
         await fireEvent.press(screen.getByTestId('autocompleteOfferItem_1'))
@@ -287,6 +322,7 @@ describe('AutocompleteOfferItem component', () => {
             hit={mockHitSeveraCategoriesWithoutAssociationToNativeCategory}
             sendEvent={mockSendEvent}
             shouldShowCategory
+            addSearchHistory={jest.fn()}
           />
         )
         await fireEvent.press(screen.getByTestId('autocompleteOfferItem_1'))
@@ -311,6 +347,7 @@ describe('AutocompleteOfferItem component', () => {
             hit={mockHitWithOnlyCategory}
             sendEvent={mockSendEvent}
             shouldShowCategory
+            addSearchHistory={jest.fn()}
           />
         )
         await fireEvent.press(screen.getByTestId('autocompleteOfferItem_1'))
@@ -332,7 +369,14 @@ describe('AutocompleteOfferItem component', () => {
 
     describe('should display the most popular native category of the query suggestion', () => {
       it('when it associated to only one category', async () => {
-        render(<AutocompleteOfferItem hit={mockHit} sendEvent={mockSendEvent} shouldShowCategory />)
+        render(
+          <AutocompleteOfferItem
+            hit={mockHit}
+            sendEvent={mockSendEvent}
+            shouldShowCategory
+            addSearchHistory={jest.fn()}
+          />
+        )
 
         expect(screen.getByText('Séances de cinéma')).toBeOnTheScreen()
       })
@@ -343,6 +387,7 @@ describe('AutocompleteOfferItem component', () => {
             hit={mockHitSeveralCategoriesWithAssociationToNativeCategory}
             sendEvent={mockSendEvent}
             shouldShowCategory
+            addSearchHistory={jest.fn()}
           />
         )
 
@@ -356,6 +401,7 @@ describe('AutocompleteOfferItem component', () => {
           hit={mockHitWithoutCategoryAndNativeCategory}
           sendEvent={mockSendEvent}
           shouldShowCategory
+          addSearchHistory={jest.fn()}
         />
       )
 
@@ -368,6 +414,7 @@ describe('AutocompleteOfferItem component', () => {
           hit={mockHitSeveraCategoriesWithoutAssociationToNativeCategory}
           sendEvent={mockSendEvent}
           shouldShowCategory
+          addSearchHistory={jest.fn()}
         />
       )
 
@@ -376,7 +423,14 @@ describe('AutocompleteOfferItem component', () => {
 
     describe('should not display the most popular category of the query suggestion when native category', () => {
       it('associated to only one category', async () => {
-        render(<AutocompleteOfferItem hit={mockHit} sendEvent={mockSendEvent} shouldShowCategory />)
+        render(
+          <AutocompleteOfferItem
+            hit={mockHit}
+            sendEvent={mockSendEvent}
+            shouldShowCategory
+            addSearchHistory={jest.fn()}
+          />
+        )
 
         expect(screen.queryByText('Films, séries, cinéma')).not.toBeOnTheScreen()
       })
@@ -387,6 +441,7 @@ describe('AutocompleteOfferItem component', () => {
             hit={mockHitSeveralCategoriesWithAssociationToNativeCategory}
             sendEvent={mockSendEvent}
             shouldShowCategory
+            addSearchHistory={jest.fn()}
           />
         )
 
@@ -401,6 +456,7 @@ describe('AutocompleteOfferItem component', () => {
             hit={mockHitSeveraCategoriesWithoutAssociationToNativeCategory}
             sendEvent={mockSendEvent}
             shouldShowCategory
+            addSearchHistory={jest.fn()}
           />
         )
 
@@ -413,6 +469,7 @@ describe('AutocompleteOfferItem component', () => {
             hit={mockHitWithOnlyCategory}
             sendEvent={mockSendEvent}
             shouldShowCategory
+            addSearchHistory={jest.fn()}
           />
         )
 

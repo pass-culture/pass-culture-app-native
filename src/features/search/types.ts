@@ -133,3 +133,13 @@ export type AnalyticsParams = {
   moduleId?: string
   homeEntryId?: string
 }
+
+export type CreateHistoryItem = {
+  query: string
+  nativeCategory?: NativeCategoryIdEnumv2
+  category?: SearchGroupNameEnumv2
+}
+
+export type HistoryItem = CreateHistoryItem & {
+  createdAt: number
+}

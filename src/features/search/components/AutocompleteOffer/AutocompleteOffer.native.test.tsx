@@ -27,11 +27,11 @@ describe('AutocompleteOffer component', () => {
     })
 
     it('should render AutocompleteOffer', () => {
-      expect(render(<AutocompleteOffer />)).toMatchSnapshot()
+      expect(render(<AutocompleteOffer addSearchHistory={jest.fn()} />)).toMatchSnapshot()
     })
 
     it('should display "Suggestions"', () => {
-      render(<AutocompleteOffer />)
+      render(<AutocompleteOffer addSearchHistory={jest.fn()} />)
       expect(screen.getByText('Suggestions')).toBeOnTheScreen()
     })
   })
@@ -42,7 +42,7 @@ describe('AutocompleteOffer component', () => {
     })
 
     it('should not display "Suggestions"', () => {
-      render(<AutocompleteOffer />)
+      render(<AutocompleteOffer addSearchHistory={jest.fn()} />)
       expect(screen.queryByText('Suggestions')).not.toBeOnTheScreen()
     })
   })
