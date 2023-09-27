@@ -6,11 +6,11 @@ import { getRecommendationEndpoint } from 'features/home/api/helpers/getRecommen
 import { RecommendedOffersModule } from 'features/home/types'
 import { getCategoriesFacetFilters } from 'libs/algolia/fetchAlgolia/buildAlgoliaParameters/getCategoriesFacetFilters'
 import { Position } from 'libs/geolocation'
-import { RecommendedIdsRequest } from 'libs/recommendation/types'
+import { RecommendedIdsRequest, RecommendedIdsResponse } from 'libs/recommendation/types'
 import { useHomeRecommendedIdsMutation } from 'libs/recommendation/useHomeRecommendedIdsMutation'
 import { useSubcategoryLabelMapping } from 'libs/subcategories/mappings'
 import { SubcategoryLabelMapping } from 'libs/subcategories/types'
-import { Offer } from 'shared/offer/types'
+import { Offer, RecommendationAPIParams } from 'shared/offer/types'
 
 import { useAlgoliaRecommendedOffers } from './useAlgoliaRecommendedOffers'
 
@@ -54,13 +54,13 @@ export const useHomeRecommendedOffers = (
   position: Position,
   moduleId: string,
   recommendationParameters?: RecommendedOffersModule['recommendationParameters']
-): Offer[] | undefined => {
+): { offers?: Offer[]; recommendationAPIParams?: RecommendationAPIParams } => {
   const recommendationEndpoint = getRecommendationEndpoint({
     userId,
     position,
     modelEndpoint: recommendationParameters?.modelEndpoint,
   })
-  const [recommendedIds, setRecommendedIds] = useState<string[]>()
+  const [recommendedIdsResponse, setRecommendedIdsResponse] = useState<RecommendedIdsResponse>()
   const { mutate: getRecommendedIds } = useHomeRecommendedIdsMutation()
   const subcategoryLabelMapping = useSubcategoryLabelMapping()
 
@@ -73,10 +73,17 @@ export const useHomeRecommendedOffers = (
     getRecommendedIds(
       { ...requestParameters, endpointUrl: recommendationEndpoint },
       {
-        onSuccess: (response) => setRecommendedIds(response.playlist_recommended_offers),
+        onSuccess: (response) => setRecommendedIdsResponse(response),
       }
     )
   }, [getRecommendedIds, recommendationParameters, recommendationEndpoint, subcategoryLabelMapping])
 
-  return useAlgoliaRecommendedOffers(recommendedIds ?? [], moduleId, true)
+  return {
+    offers: useAlgoliaRecommendedOffers(
+      recommendedIdsResponse?.playlist_recommended_offers ?? [],
+      moduleId,
+      true
+    ),
+    recommendationAPIParams: recommendedIdsResponse?.params,
+  }
 }

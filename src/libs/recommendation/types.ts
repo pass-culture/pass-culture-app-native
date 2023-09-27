@@ -2,7 +2,7 @@ import { GenreType } from 'api/gen'
 
 export interface RecommendedIdsResponse {
   playlist_recommended_offers: string[]
-  params: {
+  params?: {
     reco_origin?: string
     model_name?: string
     model_version?: string
