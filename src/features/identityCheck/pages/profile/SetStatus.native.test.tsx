@@ -1,10 +1,10 @@
 import { rest } from 'msw'
 import React from 'react'
 
-import { CommonActions, dispatch, navigate } from '__mocks__/@react-navigation/native'
+import { CommonActions, dispatch } from '__mocks__/@react-navigation/native'
 import { ActivityIdEnum } from 'api/gen'
 import { initialSubscriptionState as mockState } from 'features/identityCheck/context/reducer'
-import { SchoolTypesSnap } from 'features/identityCheck/pages/profile/fixtures/mockedSchoolTypes'
+import { ActivityTypesSnap } from 'features/identityCheck/pages/profile/fixtures/mockedActivityTypes'
 import { SetStatus } from 'features/identityCheck/pages/profile/SetStatus'
 import * as UnderageUserAPI from 'features/profile/helpers/useIsUserUnderage'
 import { analytics } from 'libs/analytics'
@@ -47,13 +47,11 @@ server.use(
   })
 )
 
-const mockSchoolTypes = SchoolTypesSnap.school_types
-const mockActivities = SchoolTypesSnap.activities
-jest.mock('features/identityCheck/api/useProfileOptions', () => {
+const mockActivities = ActivityTypesSnap.activities
+jest.mock('features/identityCheck/api/useActivityTypes', () => {
   return {
-    useProfileOptions: jest.fn(() => {
+    useActivityTypes: jest.fn(() => {
       return {
-        schoolTypes: mockSchoolTypes,
         activities: mockActivities,
       }
     }),
@@ -71,19 +69,11 @@ describe('<SetStatus/>', () => {
     await waitFor(() => expect(screen).toMatchSnapshot())
   })
 
-  // TODO(PC-12410): déléguer la responsabilité au back de faire cette filtration
-  it('should render with no Collégien status if user is over 18', async () => {
-    mockedUseIsUserUnderage.mockReturnValueOnce(false)
+  it('should navigate to stepper on press "Continuer"', async () => {
+    mockStatus = ActivityTypesSnap.activities[2].id
     renderSetStatus()
 
-    await waitFor(() => expect(screen.queryByText(SchoolTypesSnap.activities[0].label)).toBe(null))
-  })
-
-  it('should navigate to stepper on press "Continuer" when user should not select school type', async () => {
-    mockStatus = SchoolTypesSnap.activities[2].id
-    renderSetStatus()
-
-    fireEvent.press(screen.getByText(SchoolTypesSnap.activities[2].label)) // select student status
+    fireEvent.press(screen.getByText(ActivityTypesSnap.activities[2].label)) // select student status
     fireEvent.press(screen.getByText('Continuer'))
 
     await waitFor(() => {
@@ -92,21 +82,6 @@ describe('<SetStatus/>', () => {
         index: 1,
         routes: [{ name: 'TabNavigator' }, { name: 'Stepper' }],
       })
-    })
-  })
-
-  it('should navigate to SetSchoolType on press "Continuer" when user should select school type', async () => {
-    mockedUseIsUserUnderage.mockReturnValueOnce(true)
-    mockedUseIsUserUnderage.mockReturnValueOnce(true)
-    mockStatus = SchoolTypesSnap.activities[1].id
-
-    renderSetStatus()
-
-    fireEvent.press(screen.getByText(SchoolTypesSnap.activities[1].label)) // select high school status
-    fireEvent.press(screen.getByText('Continuer'))
-
-    await waitFor(() => {
-      expect(navigate).toHaveBeenCalledWith('SetSchoolType')
     })
   })
 
@@ -119,7 +94,7 @@ describe('<SetStatus/>', () => {
   it('should log analytics on press Continuer', async () => {
     renderSetStatus()
 
-    fireEvent.press(screen.getByText(SchoolTypesSnap.activities[1].label))
+    fireEvent.press(screen.getByText(ActivityTypesSnap.activities[1].label))
     fireEvent.press(screen.getByText('Continuer'))
 
     await waitFor(() => {

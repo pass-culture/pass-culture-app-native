@@ -9,7 +9,7 @@ export function useUpdateProfileMutation(
   onErrorCallback: (error: unknown) => void
 ) {
   const client = useQueryClient()
-  return useMutation((body: UserProfileUpdateRequest) => api.postnativev1profile(body), {
+  return useMutation((body: UserProfileUpdateRequest) => api.postNativeV1Profile(body), {
     onSuccess(response: UserProfileResponse) {
       client.setQueryData([QueryKeys.USER_PROFILE], (old: UserProfileResponse | undefined) => ({
         ...(old ?? {}),

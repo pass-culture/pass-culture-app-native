@@ -25,7 +25,6 @@ import { SetPhoneValidationCode } from 'features/identityCheck/pages/phoneValida
 import { SetAddress } from 'features/identityCheck/pages/profile/SetAddress'
 import { SetCity } from 'features/identityCheck/pages/profile/SetCity'
 import { SetName } from 'features/identityCheck/pages/profile/SetName'
-import { SetSchoolType } from 'features/identityCheck/pages/profile/SetSchoolType'
 import { SetStatus } from 'features/identityCheck/pages/profile/SetStatus'
 import { Stepper } from 'features/identityCheck/pages/Stepper'
 import { NavigationErrors } from 'features/internal/cheatcodes/pages/NavigationErrors/NavigationErrors'
@@ -128,13 +127,6 @@ export const subscriptionRoutes: GenericRoute<SubscriptionRootStackParamList>[] 
     component: SetStatus,
     path: 'verification-identite/profil/statut',
     options: { title: 'Ton statut | Profil' },
-    secure: true,
-  },
-  {
-    name: 'SetSchoolType',
-    component: SetSchoolType,
-    path: 'verification-identite/profil/type-etablissement',
-    options: { title: 'Ton établissement | Profil' },
     secure: true,
   },
   // Identification

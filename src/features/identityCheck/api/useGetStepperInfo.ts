@@ -11,7 +11,7 @@ export const useGetStepperInfo = (): {
   errorMessage?: SubscriptionStepperResponse['errorMessage'] | null
   identificationMethods?: SubscriptionStepperResponse['allowedIdentityCheckMethods'] | null
 } => {
-  const { data } = useQuery([QueryKeys.STEPPER_INFO], () => api.getnativev1subscriptionstepper())
+  const { data } = useQuery([QueryKeys.STEPPER_INFO], () => api.getNativeV1SubscriptionStepper())
   if (data === undefined) {
     return { stepToDisplay: [], title: '' }
   }

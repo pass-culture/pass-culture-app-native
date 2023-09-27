@@ -90,7 +90,7 @@ to_insert_code = (
     f"  log{tracker_name}: () => analytics.logEvent({{ {provider}: {provider_prefix}.{event_enum_name} }}),\n"
 )
 to_insert_mock = f"  log{tracker_name}: jest.fn(),\n"
-to_insert_event = f"  {event_enum_name}='{PROVIDERS[provider]['event_name_formatter'](tracker_name)}',\n"
+to_insert_event = f"  {event_enum_name} = '{PROVIDERS[provider]['event_name_formatter'](tracker_name)}',\n"
 
 insert_line(code_folder / FILENAME, to_insert_code, "  log")
 insert_line(mock_folder / FILENAME, to_insert_mock, "  log")

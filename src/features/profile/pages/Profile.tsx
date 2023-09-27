@@ -14,18 +14,21 @@ import { SectionWithSwitch } from 'features/profile/components/SectionWithSwitch
 import { SocialNetwork } from 'features/profile/components/SocialNetwork/SocialNetwork'
 import { SHARE_APP_BANNER_IMAGE_SOURCE } from 'features/share/components/shareAppBannerImage'
 import { shareApp } from 'features/share/helpers/shareApp'
+import { TutorialTypes } from 'features/tutorial/enums'
 import { analytics, isCloseToBottom } from 'libs/analytics'
 import { env } from 'libs/environment'
 import { GeolocPermissionState, useLocation } from 'libs/geolocation'
 import useFunctionOnce from 'libs/hooks/useFunctionOnce'
 import { useNetInfoContext } from 'libs/network/NetInfoWrapper'
 import { OfflinePage } from 'libs/network/OfflinePage'
+import { getAge } from 'shared/user/getAge'
 import { InputError } from 'ui/components/inputs/InputError'
 import { Li } from 'ui/components/Li'
 import { BannerWithBackground } from 'ui/components/ModuleBanner/BannerWithBackground'
 import { Section } from 'ui/components/Section'
 import { SectionRow } from 'ui/components/SectionRow'
 import { StatusBarBlurredBackground } from 'ui/components/statusBar/statusBarBlurredBackground'
+import { InternalNavigationProps } from 'ui/components/touchableLink/types'
 import { VerticalUl } from 'ui/components/Ul'
 import { useVersion } from 'ui/hooks/useVersion'
 import { Bell } from 'ui/svg/icons/Bell'
@@ -50,12 +53,18 @@ const OnlineProfile: React.FC = () => {
   const version = useVersion()
   const scrollViewRef = useRef<ScrollView | null>(null)
   const locationActivationErrorId = uuidv4()
+  const userAge = user?.birthDate ? getAge(user.birthDate) : undefined
 
   const { userPositionError, permissionState, requestGeolocPermission, showGeolocPermissionModal } =
     useLocation()
   const [isGeolocSwitchActive, setIsGeolocSwitchActive] = useState<boolean>(
     permissionState === GeolocPermissionState.GRANTED
   )
+
+  const tutorialNavigateTo: InternalNavigationProps['navigateTo'] =
+    userAge && userAge < 19 && userAge > 14
+      ? { screen: 'ProfileTutorialAgeInformation', params: { age: userAge } }
+      : { screen: 'AgeSelection', params: { type: TutorialTypes.PROFILE_TUTORIAL } }
 
   useFocusEffect(
     useCallback(() => {
@@ -172,10 +181,7 @@ const OnlineProfile: React.FC = () => {
                 <Row
                   title="Comment ça marche&nbsp;?"
                   type="navigable"
-                  navigateTo={{
-                    screen: 'FirstTutorial',
-                    params: { shouldCloseAppOnBackAction: false },
-                  }}
+                  navigateTo={tutorialNavigateTo}
                   onPress={() => analytics.logConsultTutorial('profile')}
                   icon={LifeBuoy}
                 />

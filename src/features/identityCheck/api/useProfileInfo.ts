@@ -6,7 +6,7 @@ import { QueryKeys } from 'libs/queryKeys'
 
 async function getProfileInfo() {
   try {
-    return await api.getnativev1subscriptionprofile()
+    return await api.getNativeV1SubscriptionProfile()
   } catch {
     return null
   }

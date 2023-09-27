@@ -11,7 +11,7 @@ interface Props {
 export const useCulturalSurveyAnswersMutation = ({ onSuccess, onError }: Props) => {
   return useMutation(
     (answers: CulturalSurveyAnswersRequest) => {
-      return api.postnativev1culturalSurveyanswers(answers)
+      return api.postNativeV1CulturalSurveyAnswers(answers)
     },
     {
       onSuccess,

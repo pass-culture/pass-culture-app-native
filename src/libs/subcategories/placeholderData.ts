@@ -679,7 +679,17 @@ export const placeholderData: SubcategoriesResponseModelv2 = {
       homepageLabelName: HomepageLabelNameEnumv2.MUSIQUE,
       isEvent: false,
       onlineOfflinePlatform: OnlineOfflinePlatformChoicesEnumv2.OFFLINE,
-      nativeCategoryId: NativeCategoryIdEnumv2.CD_VINYLES,
+      nativeCategoryId: NativeCategoryIdEnumv2.CD,
+    },
+    {
+      id: SubcategoryIdEnumv2.SUPPORT_PHYSIQUE_MUSIQUE,
+      categoryId: CategoryIdEnum.MUSIQUE_ENREGISTREE,
+      appLabel: 'Support physique (CD, vinyle...)',
+      searchGroupName: SearchGroupNameEnumv2.CD_VINYLE_MUSIQUE_EN_LIGNE,
+      homepageLabelName: HomepageLabelNameEnumv2.MUSIQUE,
+      isEvent: false,
+      onlineOfflinePlatform: OnlineOfflinePlatformChoicesEnumv2.OFFLINE,
+      nativeCategoryId: NativeCategoryIdEnumv2.VINYLES,
     },
     {
       id: SubcategoryIdEnumv2.TELECHARGEMENT_LIVRE_AUDIO,
@@ -1319,8 +1329,13 @@ export const placeholderData: SubcategoriesResponseModelv2 = {
       genreType: null,
     },
     {
-      name: NativeCategoryIdEnumv2.CD_VINYLES,
-      value: 'CD, vinyles',
+      name: NativeCategoryIdEnumv2.CD,
+      value: 'CD',
+      genreType: GenreType.MUSIC,
+    },
+    {
+      name: NativeCategoryIdEnumv2.VINYLES,
+      value: 'Vinyles',
       genreType: GenreType.MUSIC,
     },
     {

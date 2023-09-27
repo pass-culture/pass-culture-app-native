@@ -34,6 +34,7 @@ const mergeOfferData =
     accessibility: {},
     subcategoryId: offer.subcategoryId,
     venue: { coordinates: {} } as OfferVenueResponse,
+    metadata: prevData?.metadata,
     ...(prevData ?? {}),
   })
 

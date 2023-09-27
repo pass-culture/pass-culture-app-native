@@ -5,6 +5,7 @@ import {
   buildObjectIdsPredicate,
   buildOfferCategoriesPredicate,
   buildOfferGenreTypesPredicate,
+  buildOfferGtl,
   buildOfferIsDuoPredicate,
   buildOfferNativeCategoriesPredicate,
   buildOfferSubcategoriesPredicate,
@@ -17,22 +18,26 @@ const underageFilter = [[`${FACETS_FILTERS_ENUM.OFFER_ID_FORBIDDEN_TO_UNDERAGE}:
 const defaultFilter = [[`${FACETS_FILTERS_ENUM.OFFER_IS_EDUCATIONAL}:false`]]
 
 export const buildFacetFilters = ({
+  eanList,
   isUserUnderage,
   locationFilter,
   objectIds,
   offerCategories,
   offerGenreTypes,
+  offerGtlLabel,
+  offerGtlLevel,
   offerIsDuo,
   offerNativeCategories,
   offerSubcategories,
   offerTypes,
   tags,
-  eanList,
 }: Pick<
   SearchQueryParameters,
   | 'locationFilter'
   | 'offerCategories'
   | 'offerGenreTypes'
+  | 'offerGtlLabel'
+  | 'offerGtlLevel'
   | 'offerIsDuo'
   | 'offerNativeCategories'
   | 'offerSubcategories'
@@ -50,6 +55,10 @@ export const buildFacetFilters = ({
   if (offerCategories.length > 0) {
     const categoriesPredicate = buildOfferCategoriesPredicate(offerCategories)
     facetFilters.push(categoriesPredicate)
+  }
+
+  if (offerGtlLabel && offerGtlLevel) {
+    facetFilters.push(buildOfferGtl(offerGtlLevel, offerGtlLabel))
   }
 
   if (offerSubcategories.length > 0) {

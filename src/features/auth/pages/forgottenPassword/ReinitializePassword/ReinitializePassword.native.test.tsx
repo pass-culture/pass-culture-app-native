@@ -47,7 +47,7 @@ const loginRoutine = jest.fn()
 const mockLoginRoutine = jest.spyOn(LoginRoutine, 'useLoginRoutine')
 mockLoginRoutine.mockImplementation(() => loginRoutine)
 
-const apiReinitializePasswordSpy = jest.spyOn(api, 'postnativev1resetPassword')
+const apiReinitializePasswordSpy = jest.spyOn(api, 'postNativeV1ResetPassword')
 
 const useFeatureFlagSpy = jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockReturnValue(false)
 jest.spyOn(DeviceInfo, 'getModel').mockReturnValue('iPhone 13')

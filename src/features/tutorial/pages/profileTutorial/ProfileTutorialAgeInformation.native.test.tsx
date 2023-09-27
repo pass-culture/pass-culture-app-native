@@ -5,13 +5,7 @@ import React from 'react'
 
 import { SubscriptionStatus, YoungStatusType } from 'api/gen'
 import { useAuthContext } from 'features/auth/context/AuthContext'
-import {
-  CURRENT_DATE,
-  EIGHTEEN_AGE_DATE,
-  FIFTEEN_YEARS_OLD_FIRST_DAY_DATE,
-  SEVENTEEN_AGE_DATE,
-  SIXTEEN_AGE_DATE,
-} from 'features/auth/fixtures/fixtures'
+import { CURRENT_DATE, SIXTEEN_AGE_DATE } from 'features/auth/fixtures/fixtures'
 import * as NavigationHelpers from 'features/navigation/helpers/openUrl'
 import { TutorialRootStackParamList } from 'features/navigation/RootNavigator/types'
 import { beneficiaryUser, nonBeneficiaryUser } from 'fixtures/user'
@@ -30,38 +24,25 @@ const defaultAuthContext = {
   refetchUser: jest.fn(),
   isUserLoading: false,
 }
-
-const fifteenUser = {
-  ...beneficiaryUser,
-  birthDate: format(FIFTEEN_YEARS_OLD_FIRST_DAY_DATE, 'yyyy-MM-dd'),
-}
 const sixteenUser = { ...beneficiaryUser, birthDate: format(SIXTEEN_AGE_DATE, 'yyyy-MM-dd') }
-const seventeenUser = {
-  ...beneficiaryUser,
-  birthDate: format(SEVENTEEN_AGE_DATE, 'yyyy-MM-dd'),
-}
-const eighteenUser = {
-  ...beneficiaryUser,
-  birthDate: format(EIGHTEEN_AGE_DATE, 'yyyy-MM-dd'),
-}
 
 const openUrl = jest.spyOn(NavigationHelpers, 'openUrl')
 
-const navProps = { route: { params: { selectedAge: 15 } } } as StackScreenProps<
+const navProps = { route: { params: { age: 15 } } } as StackScreenProps<
   TutorialRootStackParamList,
   'ProfileTutorialAgeInformation'
 >
 
-const navPropsSixteenSelected = { route: { params: { selectedAge: 16 } } } as StackScreenProps<
+const navPropsSixteenSelected = { route: { params: { age: 16 } } } as StackScreenProps<
   TutorialRootStackParamList,
   'ProfileTutorialAgeInformation'
 >
 
-const navPropsSeventeenSelected = { route: { params: { selectedAge: 17 } } } as StackScreenProps<
+const navPropsSeventeenSelected = { route: { params: { age: 17 } } } as StackScreenProps<
   TutorialRootStackParamList,
   'ProfileTutorialAgeInformation'
 >
-const navPropsEighteenSelected = { route: { params: { selectedAge: 18 } } } as StackScreenProps<
+const navPropsEighteenSelected = { route: { params: { age: 18 } } } as StackScreenProps<
   TutorialRootStackParamList,
   'ProfileTutorialAgeInformation'
 >
@@ -71,29 +52,25 @@ describe('<ProfileTutorialAgeInformation />', () => {
     mockdate.set(CURRENT_DATE)
   })
   it('should render correctly when logged in at 15', () => {
-    mockUseAuthContext.mockReturnValueOnce({ ...defaultAuthContext, user: fifteenUser })
     render(<ProfileTutorialAgeInformation {...navProps} />)
 
     expect(screen).toMatchSnapshot()
   })
 
   it('should display 16 timeline when logged in at 16', () => {
-    mockUseAuthContext.mockReturnValueOnce({ ...defaultAuthContext, user: sixteenUser })
-    render(<ProfileTutorialAgeInformation {...navProps} />)
+    render(<ProfileTutorialAgeInformation {...navPropsSixteenSelected} />)
 
     expect(screen.getByTestId('sixteen-timeline')).toBeOnTheScreen()
   })
 
-  it('should display 16 timeline when logged in at 17', () => {
-    mockUseAuthContext.mockReturnValueOnce({ ...defaultAuthContext, user: seventeenUser })
-    render(<ProfileTutorialAgeInformation {...navProps} />)
+  it('should display 17 timeline when logged in at 17', () => {
+    render(<ProfileTutorialAgeInformation {...navPropsSeventeenSelected} />)
 
     expect(screen.getByTestId('seventeen-timeline')).toBeOnTheScreen()
   })
 
   it('should display 18 timeline when logged in at 18', () => {
-    mockUseAuthContext.mockReturnValueOnce({ ...defaultAuthContext, user: eighteenUser })
-    render(<ProfileTutorialAgeInformation {...navProps} />)
+    render(<ProfileTutorialAgeInformation {...navPropsEighteenSelected} />)
 
     expect(screen.getByTestId('eighteen-timeline')).toBeOnTheScreen()
   })
@@ -107,7 +84,7 @@ describe('<ProfileTutorialAgeInformation />', () => {
       ...defaultAuthContext,
       user: { ...sixteenUser, depositActivationDate: '2019-12-01T00:00:00.000Z' },
     }) // for the useDepositActivationAge hook call
-    render(<ProfileTutorialAgeInformation {...navProps} />)
+    render(<ProfileTutorialAgeInformation {...navPropsSixteenSelected} />)
 
     expect(screen.getByText('Tu as reçu 20 € à 15 ans')).toBeOnTheScreen()
   })

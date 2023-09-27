@@ -42,12 +42,14 @@ export const SearchList: React.FC<SearchListProps> = forwardRef<FlatList<Offer>,
         data={hits.offers}
         keyExtractor={keyExtractor}
         ListHeaderComponent={
-          <SearchListHeader
-            nbHits={nbHits}
-            userData={userData}
-            venues={hits.venues}
-            venuesUserData={venuesUserData}
-          />
+          nbHits > 0 ? (
+            <SearchListHeader
+              nbHits={nbHits}
+              userData={userData}
+              venues={hits.venues}
+              venuesUserData={venuesUserData}
+            />
+          ) : undefined
         }
         ItemSeparatorComponent={Separator}
         ListFooterComponent={

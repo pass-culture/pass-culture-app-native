@@ -45,8 +45,6 @@ export type Action =
   | { type: 'SET_PHONE_NUMBER'; payload: PhoneNumber }
   | { type: 'SET_NAME'; payload: Name | null }
   | { type: 'SET_STATUS'; payload: ActivityIdEnum | null }
-  | { type: 'SET_HAS_SCHOOL_TYPES'; payload: boolean }
-  | { type: 'SET_SCHOOL_TYPE'; payload: SchoolTypesIdEnum | null }
   | { type: 'SET_CITY'; payload: SuggestedCity | null }
   | { type: 'SET_ADDRESS'; payload: string | null }
   | {

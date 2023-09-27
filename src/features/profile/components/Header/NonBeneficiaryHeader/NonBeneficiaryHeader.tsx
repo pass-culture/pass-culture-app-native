@@ -5,6 +5,7 @@ import { BannerName } from 'api/gen'
 import { useNextSubscriptionStep } from 'features/auth/api/useNextSubscriptionStep'
 import { useHomeBanner } from 'features/home/api/useHomeBanner'
 import { ActivationBanner } from 'features/home/components/banners/ActivationBanner'
+import { StepperOrigin } from 'features/navigation/RootNavigator/types'
 import { IdentityCheckPendingBadge } from 'features/profile/components/Badges/IdentityCheckPendingBadge'
 import { SubscriptionMessageBadge } from 'features/profile/components/Badges/SubscriptionMessageBadge'
 import { YoungerBadge } from 'features/profile/components/Badges/YoungerBadge'
@@ -70,6 +71,7 @@ function NonBeneficiaryHeaderComponent({
             title={homeBanner.title}
             subtitle={homeBanner.text}
             icon={BicolorUnlock}
+            from={StepperOrigin.PROFILE}
           />
         </BannerContainer>
       )
@@ -83,6 +85,7 @@ function NonBeneficiaryHeaderComponent({
             title={homeBanner.title}
             subtitle={homeBanner.text}
             icon={BirthdayCake}
+            from={StepperOrigin.PROFILE}
           />
         </BannerContainer>
       )

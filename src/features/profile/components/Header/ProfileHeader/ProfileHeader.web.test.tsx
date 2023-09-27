@@ -11,7 +11,7 @@ const user: UserProfileResponse = {
   email: 'email2@domain.ext',
   firstName: 'Jean',
   isBeneficiary: true,
-  dateOfBirth: '2003-01-01',
+  birthDate: '2003-01-01',
   depositExpirationDate: '2023-02-09T11:17:14.786670',
   domainsCredit: domains_credit_v1,
   lastName: '93 HNMM 2',

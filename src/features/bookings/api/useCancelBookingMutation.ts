@@ -11,7 +11,7 @@ interface Props {
 export const useCancelBookingMutation = ({ onSuccess, onError }: Props) => {
   const queryClient = useQueryClient()
 
-  return useMutation((bookingId: number) => api.postnativev1bookingsbookingIdcancel(bookingId), {
+  return useMutation((bookingId: number) => api.postNativeV1BookingsbookingIdCancel(bookingId), {
     onSuccess: () => {
       queryClient.invalidateQueries([QueryKeys.USER_PROFILE])
       queryClient.invalidateQueries([QueryKeys.BOOKINGS])

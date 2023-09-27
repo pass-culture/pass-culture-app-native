@@ -99,6 +99,22 @@ describe('AgeSelection', () => {
       expect(screen).toMatchSnapshot()
     })
 
+    it.each(AGES)(
+      'should navigate to ProfileTutorialAgeInformation page with params age=%s when pressing "à %s ans"',
+      async (age) => {
+        renderAgeSelection({ type: TutorialTypes.PROFILE_TUTORIAL })
+
+        const button = screen.getByText(`à ${age} ans`)
+        fireEvent.press(button)
+
+        await waitFor(() => {
+          expect(navigate).toHaveBeenCalledWith('ProfileTutorialAgeInformation', {
+            age,
+          })
+        })
+      }
+    )
+
     it.each(AGES)('should log analytics with params age=%s when pressing "j’ai %s ans"', (age) => {
       renderAgeSelection({ type: TutorialTypes.PROFILE_TUTORIAL })
 

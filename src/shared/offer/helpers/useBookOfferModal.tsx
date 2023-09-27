@@ -1,6 +1,7 @@
 import React, { ReactElement } from 'react'
 
 import { BookingOfferModal } from 'features/bookOffer/pages/BookingOfferModal'
+import { StepperOrigin } from 'features/navigation/RootNavigator/types'
 import { ApplicationProcessingModal } from 'shared/offer/components/ApplicationProcessingModal/ApplicationProcessingModal'
 import { AuthenticationModal } from 'shared/offer/components/AuthenticationModal/AuthenticationModal'
 import { ErrorApplicationModal } from 'shared/offer/components/ErrorApplicationModal/ErrorApplicationModal'
@@ -12,6 +13,7 @@ export type OfferModalProps = {
   modalToDisplay?: OfferModal
   offerId: number
   isEndedUsedBooking?: boolean
+  from: StepperOrigin
 }
 
 type Output = {
@@ -23,6 +25,7 @@ export const useBookOfferModal = ({
   modalToDisplay,
   offerId,
   isEndedUsedBooking,
+  from,
 }: OfferModalProps): Output => {
   const { visible, showModal, hideModal } = useModal(false)
 
@@ -71,9 +74,7 @@ export const useBookOfferModal = ({
 
     case OfferModal.FINISH_SUBSCRIPTION:
       return {
-        OfferModal: (
-          <FinishSubscriptionModal visible={visible} hideModal={hideModal} offerId={offerId} />
-        ),
+        OfferModal: <FinishSubscriptionModal visible={visible} hideModal={hideModal} from={from} />,
         showModal,
       }
 
