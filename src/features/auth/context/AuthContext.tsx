@@ -68,7 +68,7 @@ export const AuthWrapper = memo(function AuthWrapper({
 }: {
   children: React.JSX.Element
 }) {
-  const timeoutRef = useRef<number>()
+  const timeoutRef = useRef<NodeJS.Timeout>()
   const [loading, setLoading] = useState(true)
   const [isLoggedIn, setIsLoggedIn] = useState(false)
   const connectServicesRequiringUserId = useConnectServicesRequiringUserId()
@@ -161,7 +161,7 @@ export const AuthWrapper = memo(function AuthWrapper({
 const STALE_TIME_USER_PROFILE = 5 * 60 * 1000
 function useUserProfileInfo(isLoggedIn: boolean, options = {}) {
   const netInfo = useNetInfoContext()
-  return usePersistQuery<UserProfileResponse>([QueryKeys.USER_PROFILE], () => api.getnativev1me(), {
+  return usePersistQuery<UserProfileResponse>([QueryKeys.USER_PROFILE], () => api.getNativeV1Me(), {
     enabled: !!netInfo.isConnected && isLoggedIn,
     staleTime: STALE_TIME_USER_PROFILE,
     ...options,

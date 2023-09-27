@@ -5,7 +5,8 @@ import {
   mockedAlgoliaVenueResponse,
   mockedAlgoliaResponse,
 } from 'libs/algolia/__mocks__/mockedAlgoliaResponse'
-import * as fetchAlgoliaOffersAndVenues from 'libs/algolia/fetchAlgolia/fetchOffersAndVenues/fetchOffersAndVenues'
+import { mockedFacets } from 'libs/algolia/__mocks__/mockedFacets'
+import * as fetchSearchResults from 'libs/algolia/fetchAlgolia/fetchSearchResults/fetchSearchResults'
 import { analytics } from 'libs/analytics'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { flushAllPromisesWithAct, renderHook } from 'tests/utils'
@@ -13,13 +14,14 @@ import { flushAllPromisesWithAct, renderHook } from 'tests/utils'
 describe('useSearchResults', () => {
   describe('useSearchInfiniteQuery', () => {
     const fetchAlgoliaOffersAndVenuesSpy = jest
-      .spyOn(fetchAlgoliaOffersAndVenues, 'fetchOffersAndVenues')
+      .spyOn(fetchSearchResults, 'fetchSearchResults')
       .mockResolvedValue({
         offersResponse: mockedAlgoliaResponse,
         venuesResponse: mockedAlgoliaVenueResponse,
+        facetsResponse: mockedFacets,
       })
 
-    it('should fetch offers and venues', async () => {
+    it('should fetch offers, venues and all facets', async () => {
       renderHook(useSearchInfiniteQuery, {
         // eslint-disable-next-line local-rules/no-react-query-provider-hoc
         wrapper: ({ children }) => reactQueryProviderHOC(children),

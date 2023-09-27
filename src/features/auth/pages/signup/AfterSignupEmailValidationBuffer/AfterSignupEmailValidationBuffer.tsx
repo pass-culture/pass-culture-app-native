@@ -23,7 +23,7 @@ export function AfterSignupEmailValidationBuffer() {
   const enableTrustedDevice = useFeatureFlag(RemoteStoreFeatureFlags.WIP_ENABLE_TRUSTED_DEVICE)
   const deviceInfo = useDeviceInfo()
   const { replace } = useNavigation<UseNavigationType>()
-  const delayedReplace: typeof replace = (...args: Parameters<typeof replace>) => {
+  const delayedReplace: typeof replace = (...args) => {
     setTimeout(() => {
       replace(...args)
     }, 2000)
@@ -69,7 +69,7 @@ export function AfterSignupEmailValidationBuffer() {
     )
 
     try {
-      const user = await api.getnativev1me()
+      const user = await api.getNativeV1Me()
       const firebasePseudoId = await firebaseAnalytics.getAppInstanceId()
       await campaignTracker.logEvent(CampaignEvents.COMPLETE_REGISTRATION, {
         af_firebase_pseudo_id: firebasePseudoId,

@@ -1,5 +1,4 @@
 import { NavigationState } from '@react-navigation/native'
-import cloneDeep from 'lodash/cloneDeep'
 
 function limitStateSize(newState: Writable<NavigationState>) {
   newState.routes = [newState.routes[newState.index]]
@@ -8,5 +7,5 @@ function limitStateSize(newState: Writable<NavigationState>) {
 }
 
 export function sanitizeNavigationState(state: NavigationState) {
-  return limitStateSize(cloneDeep(state))
+  return limitStateSize(structuredClone(state))
 }

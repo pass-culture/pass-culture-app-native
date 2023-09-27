@@ -25,6 +25,7 @@ const shareMessage =
 
 const shareContentIos = {
   message: shareMessage,
+  messageWithoutLink: shareMessage,
   url: `${WEBAPP_V2_URL}/offre/146112?utm_campaign=share_offer&utm_medium=utm_medium`,
   title: shareTitle,
 }
@@ -34,6 +35,7 @@ const shareContentAndroid = {
     shareMessage +
     DOUBLE_LINE_BREAK +
     `${WEBAPP_V2_URL}/offre/146112?utm_campaign=share_offer&utm_medium=utm_medium`,
+  messageWithoutLink: shareMessage,
   url: `${WEBAPP_V2_URL}/offre/146112?utm_campaign=share_offer&utm_medium=utm_medium`,
   title: shareTitle,
 }
@@ -122,6 +124,8 @@ describe('getShareOffer', () => {
         {
           message:
             'Retrouve "Donjons & Dragons : L’Honneur des voleurs - VO" chez "L’Orange Bleue*" sur le pass Culture',
+          messageWithoutLink:
+            'Retrouve "Donjons & Dragons : L’Honneur des voleurs - VO" chez "L’Orange Bleue*" sur le pass Culture',
           url: `${WEBAPP_V2_URL}/offre/146112?utm_campaign=share_offer&utm_medium=utm_medium`,
           title: shareTitle,
         },
@@ -147,6 +151,8 @@ describe('getShareOffer', () => {
         1,
         {
           message: `Retrouve "Donjons & Dragons : L’Honneur des voleurs - VO" chez "L’Orange Bleue*" sur le pass Culture\n\n${WEBAPP_V2_URL}/offre/146112?utm_campaign=share_offer&utm_medium=utm_medium`,
+          messageWithoutLink:
+            'Retrouve "Donjons & Dragons : L’Honneur des voleurs - VO" chez "L’Orange Bleue*" sur le pass Culture',
           url: `${WEBAPP_V2_URL}/offre/146112?utm_campaign=share_offer&utm_medium=utm_medium`,
           title: shareTitle,
         },

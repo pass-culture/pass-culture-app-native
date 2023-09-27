@@ -9,7 +9,7 @@ import { QueryKeys } from 'libs/queryKeys'
 
 export async function getEmailUpdateStatus() {
   try {
-    return await api.getnativev1profileemailUpdatestatus()
+    return await api.getNativeV1ProfileEmailUpdateStatus()
   } catch (err) {
     const error = err as ApiError
     if (error?.statusCode !== 404 && !isAPIExceptionCapturedAsInfo(error?.statusCode)) {

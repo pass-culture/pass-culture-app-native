@@ -12,7 +12,7 @@ import { NoBookings } from 'ui/svg/icons/NoBookings'
 import { Typo } from 'ui/theme'
 
 export const BookingNotFound = ({ resetErrorBoundary }: ScreenErrorProps) => {
-  const timer = useRef<number>()
+  const timer = useRef<NodeJS.Timeout>()
 
   useEffect(
     () => () => {

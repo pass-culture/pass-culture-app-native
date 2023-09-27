@@ -30,7 +30,7 @@ export function ValidateEmailChange({ route: { params }, navigation }: ValidateE
   const signOut = useLogoutRoutine()
 
   const mutate = useCallback(async () => {
-    return api.putnativev1profileemailUpdatevalidate({
+    return api.putNativeV1ProfileEmailUpdateValidate({
       token: params?.token,
     })
   }, [params?.token])

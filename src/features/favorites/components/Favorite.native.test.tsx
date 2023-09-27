@@ -76,7 +76,7 @@ describe('<Favorite /> component', () => {
   })
 
   it('should delete favorite on button click', async () => {
-    const deleteFavoriteSpy = jest.spyOn(api, 'deletenativev1mefavoritesfavoriteId')
+    const deleteFavoriteSpy = jest.spyOn(api, 'deleteNativeV1MeFavoritesfavoriteId')
     simulateBackend()
     mockDistance = '10 km'
     renderFavorite()
@@ -90,7 +90,7 @@ describe('<Favorite /> component', () => {
   })
 
   it('should fail to delete favorite on button click', async () => {
-    const deleteFavoriteSpy = jest.spyOn(api, 'deletenativev1mefavoritesfavoriteId')
+    const deleteFavoriteSpy = jest.spyOn(api, 'deleteNativeV1MeFavoritesfavoriteId')
     const id = 0
     simulateBackend({ id, hasRemoveFavoriteError: true })
     mockDistance = '10 km'

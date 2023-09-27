@@ -12,6 +12,7 @@ export const triggerPositionUpdate = jest.fn()
 export const showGeolocPermissionModal = jest.fn()
 export const onPressGeolocPermissionModalButton = jest.fn()
 export const setCustomPosition = jest.fn()
+const setPlace = jest.fn()
 
 const locationContext: ILocationContext = {
   userPosition: { longitude: 90, latitude: 90 },
@@ -23,6 +24,10 @@ const locationContext: ILocationContext = {
   triggerPositionUpdate,
   showGeolocPermissionModal,
   onPressGeolocPermissionModalButton,
+  isGeolocated: true,
+  onModalHideRef: { current: undefined },
+  place: null,
+  setPlace,
 }
 
 export const useLocation = jest.fn().mockReturnValue(locationContext)

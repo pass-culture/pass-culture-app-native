@@ -16,3 +16,9 @@ export interface AnalyticsProvider {
   logLogin: ({ method }: { method: LoginRoutineMethod }) => Promise<void>
   logEvent: (name: AnalyticsEvent, params?: Record<string, unknown>) => Promise<void>
 }
+
+export enum AgentType {
+  'browser_computer' = 'browser_computer',
+  'browser_mobile' = 'browser_mobile',
+  'agent_mobile' = 'agent_mobile',
+}

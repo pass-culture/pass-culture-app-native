@@ -500,6 +500,8 @@ exports[`<LocationModal/> should render modal correctly after animation and with
                         style={
                           [
                             {
+                              "flexBasis": 0,
+                              "flexGrow": 1,
                               "flexShrink": 1,
                             },
                           ]
@@ -680,6 +682,8 @@ exports[`<LocationModal/> should render modal correctly after animation and with
                         style={
                           [
                             {
+                              "flexBasis": 0,
+                              "flexGrow": 1,
                               "flexShrink": 1,
                             },
                           ]
@@ -860,6 +864,8 @@ exports[`<LocationModal/> should render modal correctly after animation and with
                         style={
                           [
                             {
+                              "flexBasis": 0,
+                              "flexGrow": 1,
                               "flexShrink": 1,
                             },
                           ]

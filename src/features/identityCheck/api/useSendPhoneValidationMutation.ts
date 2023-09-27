@@ -5,7 +5,7 @@ import { MutationOptions } from 'features/identityCheck/api/types'
 
 export function useSendPhoneValidationMutation({ onSuccess, onError }: MutationOptions) {
   return useMutation(
-    (phoneNumber: string) => api.postnativev1sendPhoneValidationCode({ phoneNumber }),
+    (phoneNumber: string) => api.postNativeV1SendPhoneValidationCode({ phoneNumber }),
     {
       onSuccess,
       onError,

@@ -28,7 +28,7 @@ const useEmailUpdateStatusSpy = jest
   } as UseEmailUpdateStatusMock)
 
 const emailUpdateConfirmSpy = jest
-  .spyOn(API.api, 'postnativev1profileemailUpdateconfirm')
+  .spyOn(API.api, 'postNativeV1ProfileEmailUpdateConfirm')
   .mockImplementation()
 
 const mockShowErrorSnackbar = jest.fn()

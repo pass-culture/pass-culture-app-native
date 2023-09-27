@@ -51,7 +51,7 @@ const mockUseAuthContext = jest.spyOn(Auth, 'useAuthContext').mockReturnValue({
 })
 
 const emailUpdateValidateSpy = jest
-  .spyOn(API.api, 'putnativev1profileemailUpdatevalidate')
+  .spyOn(API.api, 'putNativeV1ProfileEmailUpdateValidate')
   .mockImplementation()
 
 describe('ValidateEmailChange', () => {

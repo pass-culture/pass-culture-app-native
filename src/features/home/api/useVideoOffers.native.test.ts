@@ -1,6 +1,7 @@
 import { useVideoOffers } from 'features/home/api/useVideoOffers'
 import { OffersModuleParameters } from 'features/home/types'
 import { mockedAlgoliaResponse } from 'libs/algolia/__mocks__/mockedAlgoliaResponse'
+import { fetchMultipleOffers } from 'libs/algolia/fetchAlgolia/fetchMultipleOffers/fetchMultipleOffers'
 import { fetchOffersByEan } from 'libs/algolia/fetchAlgolia/fetchOffersByEan'
 import { fetchOffersByIds } from 'libs/algolia/fetchAlgolia/fetchOffersByIds'
 import { offersFixture } from 'shared/offer/offer.fixture'
@@ -17,6 +18,13 @@ jest.mock('libs/algolia/fetchAlgolia/fetchOffersByEan', () => ({
   fetchOffersByEan: jest.fn(),
 }))
 const mockFetchOffersByEan = fetchOffersByEan as jest.MockedFunction<typeof fetchOffersByEan>
+
+jest.mock('libs/algolia/fetchAlgolia/fetchMultipleOffers/fetchMultipleOffers', () => ({
+  fetchMultipleOffers: jest.fn(),
+}))
+const mockFetchMultipleOffers = fetchMultipleOffers as jest.MockedFunction<
+  typeof fetchMultipleOffers
+>
 
 const mockOffers: Offer[] = mockedAlgoliaResponse.hits
 
@@ -49,5 +57,19 @@ describe('useVideoOffers', () => {
 
     await act(async () => {})
     expect(result.current.offers).toEqual([offersFixture[0], offersFixture[1]])
+  })
+  it('should return offers when only OffersModuleParameters are provided', async () => {
+    mockFetchMultipleOffers.mockResolvedValueOnce({ hits: mockOffers, nbHits: 6 })
+
+    const { result } = renderHook(
+      () => useVideoOffers([{}] as OffersModuleParameters[], 'moduleId', undefined, undefined),
+      {
+        // eslint-disable-next-line local-rules/no-react-query-provider-hoc
+        wrapper: ({ children }) => reactQueryProviderHOC(children),
+      }
+    )
+
+    await act(async () => {})
+    expect(result.current.offers).toEqual(offersFixture)
   })
 })

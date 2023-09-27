@@ -15,6 +15,7 @@ import { env } from 'libs/environment'
 import { EmptyResponse } from 'libs/fetch'
 import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { eventMonitoring } from 'libs/monitoring'
+import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { server } from 'tests/server'
 import { act, fireEvent, render, screen } from 'tests/utils'
 
@@ -22,7 +23,7 @@ const getModelSpy = jest.spyOn(DeviceInfo, 'getModel')
 const getSystemNameSpy = jest.spyOn(DeviceInfo, 'getSystemName')
 
 const useFeatureFlagSpy = jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockReturnValue(false)
-const apiSignUpSpy = jest.spyOn(api, 'postnativev1account')
+const apiSignUpSpy = jest.spyOn(api, 'postNativeV1Account')
 
 const realUseState = React.useState
 const mockUseState = jest.spyOn(React, 'useState')
@@ -39,7 +40,7 @@ describe('Signup Form', () => {
   `('should render correctly for $component', async ({ stepIndex }) => {
     mockUseState.mockImplementationOnce(() => realUseState(stepIndex))
     mockUseState.mockImplementationOnce(() => realUseState(stepIndex))
-    render(<SignupForm />)
+    renderSignupForm()
 
     await screen.findByText('Inscription')
 
@@ -47,7 +48,7 @@ describe('Signup Form', () => {
   })
 
   it('should have accessibility label indicating current step and total steps', async () => {
-    render(<SignupForm />)
+    renderSignupForm()
 
     expect(
       await screen.findByText('Étape 1 sur 5', { includeHiddenElements: true })
@@ -56,7 +57,7 @@ describe('Signup Form', () => {
 
   describe('Quit button', () => {
     it('should not display quit button on firstStep', async () => {
-      render(<SignupForm />)
+      renderSignupForm()
 
       await screen.findByText('Crée-toi un compte')
 
@@ -65,7 +66,7 @@ describe('Signup Form', () => {
     })
 
     it('should open quit modal when pressing quit button on second step', async () => {
-      render(<SignupForm />)
+      renderSignupForm()
 
       const emailInput = screen.getByPlaceholderText('tonadresse@email.com')
       fireEvent.changeText(emailInput, 'email@gmail.com')
@@ -78,7 +79,7 @@ describe('Signup Form', () => {
 
     it('should go back to home when pressing close button on email confirmation sent', async () => {
       simulateSignupSuccess()
-      render(<SignupForm />)
+      renderSignupForm()
 
       const emailInput = screen.getByPlaceholderText('tonadresse@email.com')
       fireEvent.changeText(emailInput, 'email@gmail.com')
@@ -110,7 +111,7 @@ describe('Signup Form', () => {
     })
 
     it('should log analytics when clicking on close icon', async () => {
-      render(<SignupForm />)
+      renderSignupForm()
 
       const emailInput = screen.getByPlaceholderText('tonadresse@email.com')
       fireEvent.changeText(emailInput, 'email@gmail.com')
@@ -127,7 +128,7 @@ describe('Signup Form', () => {
     })
 
     it('should call logCancelSignup with Email when quitting after signup modal', async () => {
-      render(<SignupForm />)
+      renderSignupForm()
 
       const emailInput = screen.getByPlaceholderText('tonadresse@email.com')
       fireEvent.changeText(emailInput, 'email@gmail.com')
@@ -144,7 +145,7 @@ describe('Signup Form', () => {
 
   describe('Go back button', () => {
     it('should call goBack() when left icon is pressed from first step', async () => {
-      render(<SignupForm />)
+      renderSignupForm()
 
       const goBackButton = await screen.findByTestId('Revenir en arrière')
       fireEvent.press(goBackButton)
@@ -153,7 +154,7 @@ describe('Signup Form', () => {
     })
 
     it('should go to the previous step when go back icon is press from second step', async () => {
-      render(<SignupForm />)
+      renderSignupForm()
 
       const emailInput = screen.getByPlaceholderText('tonadresse@email.com')
       fireEvent.changeText(emailInput, 'email@gmail.com')
@@ -174,7 +175,7 @@ describe('Signup Form', () => {
 
     it('should not display backButton on confirmation email sent page', async () => {
       simulateSignupSuccess()
-      render(<SignupForm />)
+      renderSignupForm()
 
       const emailInput = screen.getByPlaceholderText('tonadresse@email.com')
       fireEvent.changeText(emailInput, 'email@gmail.com')
@@ -198,7 +199,7 @@ describe('Signup Form', () => {
 
   it('should show email sent confirmation on signup success', async () => {
     simulateSignupSuccess()
-    render(<SignupForm />)
+    renderSignupForm()
 
     const emailInput = screen.getByPlaceholderText('tonadresse@email.com')
     fireEvent.changeText(emailInput, 'email@gmail.com')
@@ -220,7 +221,7 @@ describe('Signup Form', () => {
   })
 
   it('should call logContinueSetEmail when clicking on next step from SetEmail', async () => {
-    render(<SignupForm />)
+    renderSignupForm()
 
     const emailInput = screen.getByPlaceholderText('tonadresse@email.com')
     fireEvent.changeText(emailInput, 'email@gmail.com')
@@ -230,7 +231,7 @@ describe('Signup Form', () => {
   })
 
   it('should call logContinueSetPassword when clicking on next step from SetPassword', async () => {
-    render(<SignupForm />)
+    renderSignupForm()
 
     const emailInput = screen.getByPlaceholderText('tonadresse@email.com')
     fireEvent.changeText(emailInput, 'email@gmail.com')
@@ -248,7 +249,7 @@ describe('Signup Form', () => {
   })
 
   it('should call logContinueSetEmail twice if user goes back to SetEmail and clicks on next step again', async () => {
-    render(<SignupForm />)
+    renderSignupForm()
 
     const emailInput = screen.getByPlaceholderText('tonadresse@email.com')
     fireEvent.changeText(emailInput, 'email@gmail.com')
@@ -263,7 +264,7 @@ describe('Signup Form', () => {
   })
 
   it('should call logContinueSetBirthday when clicking on next step from SetBirthday', async () => {
-    render(<SignupForm />)
+    renderSignupForm()
 
     const emailInput = screen.getByPlaceholderText('tonadresse@email.com')
     fireEvent.changeText(emailInput, 'email@gmail.com')
@@ -301,7 +302,7 @@ describe('Signup Form', () => {
       getModelSpy.mockReturnValueOnce('iPhone 13')
       getSystemNameSpy.mockReturnValueOnce('iOS')
 
-      render(<SignupForm />)
+      renderSignupForm()
 
       const emailInput = screen.getByPlaceholderText('tonadresse@email.com')
       fireEvent.changeText(emailInput, 'email@gmail.com')
@@ -345,7 +346,7 @@ describe('Signup Form', () => {
 
     it('should create account when clicking on AcceptCgu button without trustedDevice when feature flag is disabled', async () => {
       simulateSignupSuccess()
-      render(<SignupForm />)
+      renderSignupForm()
 
       const emailInput = screen.getByPlaceholderText('tonadresse@email.com')
       fireEvent.changeText(emailInput, 'email@gmail.com')
@@ -393,7 +394,7 @@ describe('Signup Form', () => {
         )
       )
 
-      render(<SignupForm />)
+      renderSignupForm()
 
       const emailInput = screen.getByPlaceholderText('tonadresse@email.com')
       fireEvent.changeText(emailInput, 'email@gmail.com')
@@ -428,3 +429,6 @@ const simulateSignupSuccess = () =>
       return res.once(ctx.status(200), ctx.json({}))
     })
   )
+
+// eslint-disable-next-line local-rules/no-react-query-provider-hoc
+const renderSignupForm = () => render(reactQueryProviderHOC(<SignupForm />))

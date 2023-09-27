@@ -11,7 +11,7 @@ export function useAccountSuspensionStatus() {
     [QueryKeys.ACCOUNT_SUSPENSION_STATUS],
     async () => {
       try {
-        return await api.getnativev1accountsuspensionStatus()
+        return await api.getNativeV1AccountSuspensionStatus()
       } catch {
         return null
       }

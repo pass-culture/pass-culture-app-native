@@ -40,7 +40,7 @@ export const MessagingApps = ({ title, shareContent, share, messagingAppAnalytic
       <IconsWrapper>
         <StyledUl>
           <InstalledMessagingApps
-            shareMessage={shareContent.message}
+            shareMessage={shareContent.messageWithoutLink}
             shareUrl={shareContent.url}
             messagingAppAnalytics={messagingAppAnalytics}
           />

@@ -1,5 +1,5 @@
 import React, { FunctionComponent, useCallback } from 'react'
-import styled, { useTheme } from 'styled-components/native'
+import styled from 'styled-components/native'
 
 import { AuthenticationButton } from 'features/auth/components/AuthenticationButton/AuthenticationButton'
 import { analytics } from 'libs/analytics'
@@ -25,8 +25,6 @@ export const AuthenticationModal: FunctionComponent<Props> = ({
   offerId,
   from,
 }) => {
-  const theme = useTheme()
-
   const closeModal = useCallback(() => {
     analytics.logQuitAuthenticationModal(offerId)
     hideModal()
@@ -64,7 +62,6 @@ export const AuthenticationModal: FunctionComponent<Props> = ({
             params: { preventCancellation: true, offerId, from },
           }}
           onBeforeNavigate={signUp}
-          fitContentWidth={theme.isDesktopViewport}
         />
       </StyledButtonContainer>
       <Spacer.Column numberOfSpaces={4} />

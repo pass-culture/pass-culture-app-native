@@ -75,6 +75,7 @@ const UnmemoizedOfferTile = (props: OfferTileProps) => {
             fromOfferId,
             searchId,
             apiRecoParams: JSON.stringify(apiRecoParams),
+            playlistType,
           },
           withPush: true,
         }}

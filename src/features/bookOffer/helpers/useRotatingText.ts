@@ -24,7 +24,7 @@ export function useRotatingText<T extends RotatingTextOptions[]>(
   shouldRun = true
 ): T[number]['message'] {
   const [currentIndex, setCurrentIndex] = useState(0)
-  const intervalRef = useRef<number>()
+  const intervalRef = useRef<NodeJS.Timeout>()
   const messagesRef = useRef(messages) // assuming the messages will never change, so perfs are great.
 
   const currentMessage = messagesRef.current[currentIndex]

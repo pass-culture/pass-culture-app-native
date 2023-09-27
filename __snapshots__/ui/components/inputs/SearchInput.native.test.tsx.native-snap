@@ -31,16 +31,6 @@ exports[`SearchInput component should render SearchInput 1`] = `
   }
   testID="styled-input-container"
 >
-  <View
-    numberOfSpaces={1}
-    style={
-      [
-        {
-          "width": 4,
-        },
-      ]
-    }
-  />
   <TextInput
     accessibilityHidden={false}
     autoCorrect={false}

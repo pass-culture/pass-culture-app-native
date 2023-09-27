@@ -50,18 +50,19 @@ export const getShareOffer = ({
     }
   }
 
-  const message = formatShareOfferMessage({
+  const messageWithoutLink = formatShareOfferMessage({
     offerName,
     venueName,
   })
 
   const shareUrl = getOfferUrl(offerId, utmMedium)
-  const shareAndroidMessage = message + DOUBLE_LINE_BREAK + shareUrl
+  const messageWithLink = messageWithoutLink + DOUBLE_LINE_BREAK + shareUrl
   // url share content param is only for iOS, so we add url in message for android
-  const shareMessage = Platform.OS === 'android' ? shareAndroidMessage : message
+  const shareMessage = Platform.OS === 'android' ? messageWithLink : messageWithoutLink
 
   const shareContent = {
     url: shareUrl,
+    messageWithoutLink,
     message: shareMessage,
     title: shareTitle,
   }

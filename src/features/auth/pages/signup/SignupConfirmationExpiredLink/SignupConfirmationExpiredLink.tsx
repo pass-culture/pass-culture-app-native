@@ -29,7 +29,7 @@ export function SignupConfirmationExpiredLink(props: Props) {
   async function signupConfirmationExpiredLink() {
     try {
       analytics.logResendEmailSignupConfirmationExpiredLink()
-      const result = await api.postnativev1resendEmailValidation({ email })
+      const result = await api.postNativeV1ResendEmailValidation({ email })
       navigate('SignupConfirmationEmailSent', { email })
       return result
     } catch (err) {

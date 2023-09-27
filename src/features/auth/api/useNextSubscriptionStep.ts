@@ -13,7 +13,7 @@ export function useNextSubscriptionStep(setError?: (error: Error) => void) {
     [QueryKeys.NEXT_SUBSCRIPTION_STEP],
     async () => {
       try {
-        return await api.getnativev1subscriptionnextStep()
+        return await api.getNativeV1SubscriptionNextStep()
       } catch (e) {
         e instanceof Error && setError && setError(e)
         return

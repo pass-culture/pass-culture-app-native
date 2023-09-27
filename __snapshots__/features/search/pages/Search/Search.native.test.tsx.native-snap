@@ -159,16 +159,6 @@ exports[`<Search/> should render Search 1`] = `
                 testID="styled-input-container"
               >
                 <View
-                  numberOfSpaces={1}
-                  style={
-                    [
-                      {
-                        "width": 4,
-                      },
-                    ]
-                  }
-                />
-                <View
                   style={
                     [
                       {
@@ -187,11 +177,11 @@ exports[`<Search/> should render Search 1`] = `
                   </View>
                 </View>
                 <View
-                  numberOfSpaces={1}
+                  numberOfSpaces={2}
                   style={
                     [
                       {
-                        "width": 4,
+                        "width": 8,
                       },
                     ]
                   }

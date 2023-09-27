@@ -23,10 +23,6 @@ export function NavigationTutorial(): React.JSX.Element {
           title="ProfileTutorial 👤"
           onPress={() => navigate('CheatcodeNavigationProfileTutorial')}
         />
-        <LinkToComponent
-          title="FirstTutorial [DEPRECATED]"
-          onPress={() => navigate('FirstTutorial', { shouldCloseAppOnBackAction: false })}
-        />
       </StyledContainer>
       <Spacer.BottomScreen />
     </ScrollView>
