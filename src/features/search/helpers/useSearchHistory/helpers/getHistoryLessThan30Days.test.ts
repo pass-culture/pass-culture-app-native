@@ -11,16 +11,19 @@ const history: HistoryItem[] = [
     createdAt: new Date('2023-09-20T00:00:00.000Z').getTime(),
     category: SearchGroupNameEnumv2.LIVRES,
     query: 'one piece',
+    label: 'one piece dans Livres',
   },
   {
     createdAt: new Date('2023-09-15T00:00:00.000Z').getTime(),
     category: SearchGroupNameEnumv2.LIVRES,
     query: 'harry potter',
+    label: 'harry potter dans Livres',
   },
   {
     createdAt: new Date('2023-08-25T00:00:00.000Z').getTime(),
     category: SearchGroupNameEnumv2.LIVRES,
     query: 'pack lastman',
+    label: 'pack lastman dans Livres',
   },
 ]
 
@@ -36,11 +39,13 @@ describe('getHistoryLessThan30Days', () => {
         createdAt: new Date('2023-09-20T00:00:00.000Z').getTime(),
         category: SearchGroupNameEnumv2.LIVRES,
         query: 'one piece',
+        label: 'one piece dans Livres',
       },
       {
         createdAt: new Date('2023-09-15T00:00:00.000Z').getTime(),
         category: SearchGroupNameEnumv2.LIVRES,
         query: 'harry potter',
+        label: 'harry potter dans Livres',
       },
     ])
   })

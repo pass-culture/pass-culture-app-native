@@ -69,6 +69,7 @@ describe('useSearchHistory', () => {
     const item: CreateHistoryItem = {
       query: 'one piece',
       category: SearchGroupNameEnumv2.LIVRES,
+      label: 'one piece dans Livres',
     }
     await act(async () => {
       await result.current.addToHistory(item)
@@ -83,6 +84,7 @@ describe('useSearchHistory', () => {
     const item: CreateHistoryItem = {
       query: 'one piece',
       category: SearchGroupNameEnumv2.LIVRES,
+      label: 'one piece dans Livres',
     }
     await act(async () => {
       await result.current.addToHistory(item)
@@ -98,6 +100,7 @@ describe('useSearchHistory', () => {
     const item: CreateHistoryItem = {
       query: 'one piece',
       category: SearchGroupNameEnumv2.LIVRES,
+      label: 'one piece dans Livres',
     }
 
     await act(async () => {
@@ -117,6 +120,7 @@ describe('useSearchHistory', () => {
     const item: CreateHistoryItem = {
       query: 'one piece',
       category: SearchGroupNameEnumv2.LIVRES,
+      label: 'one piece dans Livres',
     }
     await act(async () => {
       await result.current.addToHistory(item)
@@ -141,6 +145,7 @@ describe('useSearchHistory', () => {
     const item: CreateHistoryItem = {
       query: 'one piece',
       category: SearchGroupNameEnumv2.LIVRES,
+      label: 'one piece dans Livres',
     }
     await act(async () => {
       await result.current.addToHistory(item)
@@ -157,6 +162,7 @@ describe('useSearchHistory', () => {
       createdAt: new Date('2023-09-26T09:00:00.000Z').getTime(),
       query: 'one piece',
       category: SearchGroupNameEnumv2.LIVRES,
+      label: 'one piece dans Livres',
     }
     await AsyncStorage.setItem(HISTORY_KEY, JSON.stringify([item]))
     const { result } = renderHook(useSearchHistory)
@@ -175,6 +181,7 @@ describe('useSearchHistory', () => {
       createdAt: new Date('2023-09-26T09:00:00.000Z').getTime(),
       query: 'one piece',
       category: SearchGroupNameEnumv2.LIVRES,
+      label: 'one piece dans Livres',
     }
     await AsyncStorage.setItem(HISTORY_KEY, JSON.stringify([item]))
     // Set current history
@@ -194,6 +201,7 @@ describe('useSearchHistory', () => {
       createdAt: new Date('2023-09-26T09:00:00.000Z').getTime(),
       query: 'one piece',
       category: SearchGroupNameEnumv2.LIVRES,
+      label: 'one piece dans Livres',
     }
     await AsyncStorage.setItem(HISTORY_KEY, JSON.stringify([item]))
     // Set initial history
@@ -219,6 +227,7 @@ describe('useSearchHistory', () => {
       createdAt: new Date('2023-09-26T09:00:00.000Z').getTime(),
       query: 'one piece',
       category: SearchGroupNameEnumv2.LIVRES,
+      label: 'one piece dans Livres',
     }
 
     await AsyncStorage.setItem(HISTORY_KEY, JSON.stringify([item]))
@@ -243,6 +252,7 @@ describe('useSearchHistory', () => {
       {
         createdAt: new Date('2023-09-25T09:02:00.000Z').getTime(),
         query: 'vinyle',
+        label: 'vinyle',
       },
     ])
   })

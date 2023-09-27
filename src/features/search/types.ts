@@ -136,6 +136,7 @@ export type AnalyticsParams = {
 
 export type CreateHistoryItem = {
   query: string
+  label: string
   nativeCategory?: NativeCategoryIdEnumv2
   category?: SearchGroupNameEnumv2
 }
