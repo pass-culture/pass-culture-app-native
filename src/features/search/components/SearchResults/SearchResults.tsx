@@ -58,6 +58,7 @@ export const SearchResults: React.FC = () => {
     isFetchingNextPage,
     userData,
     venuesUserData,
+    facets,
   } = useSearchResults()
   const { searchState } = useSearch()
   const showSkeleton = useIsFalseWithDelay(isLoading, ANIMATION_DURATION)
@@ -280,6 +281,7 @@ export const SearchResults: React.FC = () => {
         isVisible={categoriesModalVisible}
         hideModal={hideCategoriesModal}
         filterBehaviour={FilterBehaviour.SEARCH}
+        facets={facets}
       />
       <PriceModal
         title="Prix"

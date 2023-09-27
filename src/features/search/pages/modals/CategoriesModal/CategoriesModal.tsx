@@ -25,6 +25,7 @@ import {
 } from 'features/search/helpers/categoriesHelpers/mapping-tree'
 import { CategoriesSection } from 'features/search/pages/modals/CategoriesModal/CategoriesSection'
 import { SearchState } from 'features/search/types'
+import { FacetData } from 'libs/algolia'
 import { useSubcategories } from 'libs/subcategories/useSubcategories'
 import { Form } from 'ui/components/Form'
 import { AppModal } from 'ui/components/modals/AppModal'
@@ -39,6 +40,7 @@ export interface CategoriesModalProps {
   hideModal: VoidFunction
   filterBehaviour: FilterBehaviour
   onClose?: VoidFunction
+  facets?: FacetData
 }
 
 export type CategoriesModalFormProps = {
@@ -54,6 +56,7 @@ export const CategoriesModal = ({
   isVisible = false,
   hideModal,
   onClose,
+  facets,
 }: CategoriesModalProps) => {
   const { data } = useSubcategories()
   const { navigate } = useNavigation<UseNavigationType>()
@@ -61,8 +64,8 @@ export const CategoriesModal = ({
   const { dispatch, searchState } = useSearch()
 
   const tree = useMemo(() => {
-    return createMappingTree(data)
-  }, [data])
+    return createMappingTree(data, facets)
+  }, [data, facets])
 
   const {
     formState: { isSubmitting },

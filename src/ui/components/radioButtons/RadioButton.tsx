@@ -15,6 +15,7 @@ import { getSpacing, Spacer, Typo } from 'ui/theme'
 interface RadioButtonProps {
   label: string
   description?: string
+  complement?: string
   onSelect: (value: string) => void
   isSelected: boolean
   icon?: FunctionComponent<IconInterface>
@@ -71,7 +72,8 @@ export function RadioButton(props: RadioButtonProps) {
       onPress={onPress}
       onFocus={onFocus}
       onBlur={onBlur}
-      marginVertical={props.marginVertical ?? 0}>
+      marginVertical={props.marginVertical ?? 0}
+      {...props}>
       <LabelContainer ref={containerRef}>
         {!!StyledIcon && (
           <React.Fragment>
@@ -82,9 +84,21 @@ export function RadioButton(props: RadioButtonProps) {
           </React.Fragment>
         )}
         <LabelWrapper>
-          <Label isSelected={props.isSelected} numberOfLines={2}>
-            {props.label}
-          </Label>
+          {props.complement ? (
+            <ContainerWithComplement>
+              <Label isSelected={props.isSelected} numberOfLines={1}>
+                {props.label}
+              </Label>
+              <ComplementLabel isSelected={props.isSelected} numberOfLines={1}>
+                {props.complement}
+              </ComplementLabel>
+            </ContainerWithComplement>
+          ) : (
+            <Label isSelected={props.isSelected} numberOfLines={2}>
+              {props.label}
+            </Label>
+          )}
+
           {!!props.description && (
             <Typo.CaptionNeutralInfo>{props.description}</Typo.CaptionNeutralInfo>
           )}
@@ -121,10 +135,14 @@ const StyledTouchableOpacity = styled(TouchableOpacity)<{ marginVertical: number
   })
 )
 
-const Label = styled(Typo.ButtonText).attrs({
-  numberOfLines: 2,
-})<{ isSelected: boolean }>(({ isSelected, theme }) => ({
+const Label = styled(Typo.ButtonText)<{ isSelected: boolean }>(({ isSelected, theme }) => ({
   color: isSelected ? theme.colors.primary : theme.colors.black,
+}))
+
+const ComplementLabel = styled(Typo.Caption)<{ isSelected: boolean }>(({ isSelected, theme }) => ({
+  color: isSelected ? theme.colors.primary : theme.colors.greyDark,
+  flexShrink: 0,
+  marginLeft: getSpacing(1),
 }))
 
 const IconContainer = styled.View(({ theme }) => ({
@@ -146,9 +164,15 @@ const ValidateOffIcon = styled(ValidateOff).attrs(({ theme }) => ({
 }))``
 
 const LabelWrapper = styled.View({
-  flexShrink: 1,
+  flex: 1,
 })
 
 const IconWrapper = styled.View({
   flexShrink: 0,
+})
+
+const ContainerWithComplement = styled.View({
+  flexDirection: 'row',
+  alignItems: 'center',
+  justifyContent: 'space-between',
 })

@@ -3,8 +3,10 @@ import { initialSearchState } from 'features/search/context/reducer'
 import { CategoriesModalView } from 'features/search/enums'
 import {
   getDefaultFormView,
+  getFacetTypeFromGenreTypeKey,
   getNativeCategories,
   getNativeCategoryFromEnum,
+  getNbResultsFacetLabel,
   getSearchGroupsEnumArrayFromNativeCategoryEnum,
   isNativeCategoryOfCategory,
   isOnlyOnline,
@@ -12,6 +14,7 @@ import {
 } from 'features/search/helpers/categoriesHelpers/categoriesHelpers'
 import { createMappingTree } from 'features/search/helpers/categoriesHelpers/mapping-tree'
 import { SearchState } from 'features/search/types'
+import { FACETS_FILTERS_ENUM } from 'libs/algolia/enums'
 import { placeholderData as mockData } from 'libs/subcategories/placeholderData'
 
 let mockSearchState: SearchState = {
@@ -310,6 +313,50 @@ describe('categoriesHelpers', () => {
 
         expect(getDefaultFormView(tree, mockSearchState)).toEqual(CategoriesModalView.GENRES)
       })
+    })
+  })
+
+  describe('getFacetTypeFromGenreTypeKey', () => {
+    it('should return OFFER_BOOK_TYPE for "BOOK"', () => {
+      const result = getFacetTypeFromGenreTypeKey(GenreType.BOOK)
+      expect(result).toEqual(FACETS_FILTERS_ENUM.OFFER_BOOK_TYPE)
+    })
+
+    it('should return OFFER_MUSIC_TYPE for "MUSIC"', () => {
+      const result = getFacetTypeFromGenreTypeKey(GenreType.MUSIC)
+      expect(result).toEqual(FACETS_FILTERS_ENUM.OFFER_MUSIC_TYPE)
+    })
+
+    it('should return OFFER_SHOW_TYPE for "SHOW"', () => {
+      const result = getFacetTypeFromGenreTypeKey(GenreType.SHOW)
+      expect(result).toEqual(FACETS_FILTERS_ENUM.OFFER_SHOW_TYPE)
+    })
+
+    it('should return OFFER_MOVIE_GENRES for "MOVIE"', () => {
+      const result = getFacetTypeFromGenreTypeKey(GenreType.MOVIE)
+      expect(result).toEqual(FACETS_FILTERS_ENUM.OFFER_MOVIE_GENRES)
+    })
+  })
+
+  describe('getNbResultsFacetLabel', () => {
+    it('should return "+100 résultats" for nbResultsFacet > 100', () => {
+      const result = getNbResultsFacetLabel(101)
+      expect(result).toEqual('+100 résultats')
+    })
+
+    it('should return "{nbResultsFacet} résultats" for nbResultsFacet > 1', () => {
+      const result = getNbResultsFacetLabel(5)
+      expect(result).toEqual('5 résultats')
+    })
+
+    it('should return "{nbResultsFacet} résultat" for nbResultsFacet === 1', () => {
+      const result = getNbResultsFacetLabel(1)
+      expect(result).toEqual('1 résultat')
+    })
+
+    it('should return "{nbResultsFacet} résultat" for nbResultsFacet = 0', () => {
+      const result = getNbResultsFacetLabel(0)
+      expect(result).toEqual('0 résultat')
     })
   })
 })

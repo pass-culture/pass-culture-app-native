@@ -3,7 +3,7 @@ import algoliasearch from 'algoliasearch'
 import { LocationType } from 'features/search/enums'
 import { MAX_RADIUS } from 'features/search/helpers/reducer.helpers'
 import { Venue } from 'features/venue/types'
-import { fetchOffersAndVenues } from 'libs/algolia/fetchAlgolia/fetchOffersAndVenues/fetchOffersAndVenues'
+import { fetchSearchResults } from 'libs/algolia/fetchAlgolia/fetchSearchResults/fetchSearchResults'
 import { SearchQueryParameters } from 'libs/algolia/types'
 import { env } from 'libs/environment'
 import { SuggestedPlace } from 'libs/place'
@@ -22,11 +22,11 @@ const kourou: SuggestedPlace = {
 }
 const venue: Venue = mockedSuggestedVenues[0]
 
-describe('fetchOffersAndVenues', () => {
+describe('fetchSearchResultss', () => {
   it('should execute multi query with venues playlist search newest index when there is not location filter', () => {
     const query = 'searched query'
 
-    fetchOffersAndVenues({
+    fetchSearchResults({
       parameters: { query } as SearchQueryParameters,
       userLocation: null,
       isUserUnderage: false,
@@ -62,6 +62,17 @@ describe('fetchOffersAndVenues', () => {
         params: { aroundRadius: 'all', clickAnalytics: true, hitsPerPage: 35, page: 0 },
         query: 'searched query',
       },
+      {
+        facets: [
+          'offer.bookMacroSection',
+          'offer.movieGenres',
+          'offer.musicType',
+          'offer.nativeCategoryId',
+          'offer.showType',
+        ],
+        indexName: env.ALGOLIA_OFFERS_INDEX_NAME,
+        page: 0,
+      },
     ]
 
     expect(mockMultipleQueries).toHaveBeenCalledWith(expectedResult)
@@ -70,7 +81,7 @@ describe('fetchOffersAndVenues', () => {
   it('should execute multi query with venues playlist search newest index when location type is EVERYWHERE and user not share his position', () => {
     const query = 'searched query'
 
-    fetchOffersAndVenues({
+    fetchSearchResults({
       parameters: {
         query,
         locationFilter: { locationType: LocationType.EVERYWHERE },
@@ -109,6 +120,17 @@ describe('fetchOffersAndVenues', () => {
         params: { aroundRadius: 'all', clickAnalytics: true, hitsPerPage: 35, page: 0 },
         query: 'searched query',
       },
+      {
+        facets: [
+          'offer.bookMacroSection',
+          'offer.movieGenres',
+          'offer.musicType',
+          'offer.nativeCategoryId',
+          'offer.showType',
+        ],
+        indexName: 'algoliaOffersIndexName',
+        page: 0,
+      },
     ]
 
     expect(mockMultipleQueries).toHaveBeenCalledWith(expectedResult)
@@ -117,7 +139,7 @@ describe('fetchOffersAndVenues', () => {
   it('should execute multi query with venues playlist search index when location type is EVERYWHERE and user shares his position', () => {
     const query = 'searched query'
 
-    fetchOffersAndVenues({
+    fetchSearchResults({
       parameters: {
         query,
         locationFilter: { locationType: LocationType.EVERYWHERE },
@@ -164,6 +186,17 @@ describe('fetchOffersAndVenues', () => {
         },
         query: 'searched query',
       },
+      {
+        facets: [
+          'offer.bookMacroSection',
+          'offer.movieGenres',
+          'offer.musicType',
+          'offer.nativeCategoryId',
+          'offer.showType',
+        ],
+        indexName: env.ALGOLIA_OFFERS_INDEX_NAME,
+        page: 0,
+      },
     ]
 
     expect(mockMultipleQueries).toHaveBeenCalledWith(expectedResult)
@@ -172,7 +205,7 @@ describe('fetchOffersAndVenues', () => {
   it('should execute multi query with venues playlist search index when location type is AROUND_ME and user shares his position', () => {
     const query = 'searched query'
 
-    fetchOffersAndVenues({
+    fetchSearchResults({
       parameters: {
         query,
         locationFilter: { locationType: LocationType.AROUND_ME, aroundRadius: MAX_RADIUS },
@@ -219,6 +252,17 @@ describe('fetchOffersAndVenues', () => {
         },
         query: 'searched query',
       },
+      {
+        facets: [
+          'offer.bookMacroSection',
+          'offer.movieGenres',
+          'offer.musicType',
+          'offer.nativeCategoryId',
+          'offer.showType',
+        ],
+        indexName: env.ALGOLIA_OFFERS_INDEX_NAME,
+        page: 0,
+      },
     ]
 
     expect(mockMultipleQueries).toHaveBeenCalledWith(expectedResult)
@@ -227,7 +271,7 @@ describe('fetchOffersAndVenues', () => {
   it('should execute multi query with venues playlist search index when location type is PLACE and user shares his position', () => {
     const query = 'searched query'
 
-    fetchOffersAndVenues({
+    fetchSearchResults({
       parameters: {
         query,
         locationFilter: {
@@ -277,6 +321,17 @@ describe('fetchOffersAndVenues', () => {
           page: 0,
         },
         query: 'searched query',
+      },
+      {
+        facets: [
+          'offer.bookMacroSection',
+          'offer.movieGenres',
+          'offer.musicType',
+          'offer.nativeCategoryId',
+          'offer.showType',
+        ],
+        indexName: env.ALGOLIA_OFFERS_INDEX_NAME,
+        page: 0,
       },
     ]
 
@@ -286,7 +341,7 @@ describe('fetchOffersAndVenues', () => {
   it('should execute multi query with venues playlist search index when location type is PLACE and user not share his position', () => {
     const query = 'searched query'
 
-    fetchOffersAndVenues({
+    fetchSearchResults({
       parameters: {
         query,
         locationFilter: {
@@ -337,6 +392,17 @@ describe('fetchOffersAndVenues', () => {
         },
         query: 'searched query',
       },
+      {
+        facets: [
+          'offer.bookMacroSection',
+          'offer.movieGenres',
+          'offer.musicType',
+          'offer.nativeCategoryId',
+          'offer.showType',
+        ],
+        indexName: env.ALGOLIA_OFFERS_INDEX_NAME,
+        page: 0,
+      },
     ]
 
     expect(mockMultipleQueries).toHaveBeenCalledWith(expectedResult)
@@ -345,7 +411,7 @@ describe('fetchOffersAndVenues', () => {
   it('should execute multi query with venues playlist search index when location type is VENUE and user shares his position', () => {
     const query = 'searched query'
 
-    fetchOffersAndVenues({
+    fetchSearchResults({
       parameters: {
         query,
         locationFilter: {
@@ -393,6 +459,17 @@ describe('fetchOffersAndVenues', () => {
         },
         query: 'searched query',
       },
+      {
+        facets: [
+          'offer.bookMacroSection',
+          'offer.movieGenres',
+          'offer.musicType',
+          'offer.nativeCategoryId',
+          'offer.showType',
+        ],
+        indexName: 'algoliaOffersIndexName',
+        page: 0,
+      },
     ]
 
     expect(mockMultipleQueries).toHaveBeenCalledWith(expectedResult)
@@ -401,7 +478,7 @@ describe('fetchOffersAndVenues', () => {
   it('should execute multi query with venues playlist search index when location type is VENUE and user not share his position', () => {
     const query = 'searched query'
 
-    fetchOffersAndVenues({
+    fetchSearchResults({
       parameters: {
         query,
         locationFilter: {
@@ -448,6 +525,17 @@ describe('fetchOffersAndVenues', () => {
           page: 0,
         },
         query: 'searched query',
+      },
+      {
+        facets: [
+          'offer.bookMacroSection',
+          'offer.movieGenres',
+          'offer.musicType',
+          'offer.nativeCategoryId',
+          'offer.showType',
+        ],
+        indexName: 'algoliaOffersIndexName',
+        page: 0,
       },
     ]
 
