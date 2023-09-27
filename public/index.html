@@ -342,6 +342,7 @@
       <h3>Oups !</h3>
       Vous devez activer JavaScript pour utiliser %TITLE%.
     </noscript>
+    <div id="smartBannerContainer"></div>
     <div id="root">
       <!-- root will be overridden when react app initialize -->
       <script>
@@ -403,7 +404,45 @@
     </div>
     <script defer>
       !function(t,e,n,s,a,c,i,o,p){t.AppsFlyerSdkObject=a,t.AF=t.AF||function(){(t.AF.q=t.AF.q||[]).push([Date.now()].concat(Array.prototype.slice.call(arguments)))},t.AF.id=t.AF.id||i,t.AF.plugins={},o=e.createElement(n),p=e.getElementsByTagName(n)[0],o.async=1,o.src="https://websdk.appsflyer.com?"+(c.length>0?"st="+c.split(",").sort().join(",")+"&":"")+(i.length>0?"af_id="+i:""),p.parentNode.insertBefore(o,p)}(window,document,"script",0,"AF","banners",{banners: {key: "%APPS_FLYER_WEB_KEY%"}});
-      AF('banners', 'showBanner')
+      AF('banners', 'showBanner', { bannerContainerQuery: '#smartBannerContainer' })
+    </script>
+    <script defer>
+      function waitForElementToExist(selector) {
+        return new Promise(resolve => {
+          if (document.querySelector(selector)) {
+            return resolve(document.querySelector(selector))
+          }
+
+          const observer = new MutationObserver(() => {
+            if (document.querySelector(selector)) {
+              observer.disconnect()
+              resolve(document.querySelector(selector))
+            }
+          });
+
+          observer.observe(document.body, {
+            subtree: true,
+            childList: true,
+          })
+        })
+      }
+
+      const smartBannerContainer = document.getElementById("smartBannerContainer")
+      const observer = new MutationObserver(changeFooterStyle)
+      observer.observe(smartBannerContainer, { childList: true })
+
+      function changeFooterStyle() {
+        const smartBannerIsDisplayed = smartBannerContainer?.children.length > 0
+        const footer = document.querySelector("[role='contentinfo']")
+
+        if (smartBannerIsDisplayed) {
+          footer.style.marginBottom = smartBannerContainer.firstChild.style.height
+        } else {
+          footer.style.marginBottom = 0
+        }
+      }
+
+      waitForElementToExist("[role='contentinfo']").then(changeFooterStyle)
     </script>
   </body>
 </html>
