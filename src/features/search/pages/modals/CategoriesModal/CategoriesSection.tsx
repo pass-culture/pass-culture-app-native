@@ -82,8 +82,7 @@ export function CategoriesSection<
 
       {data
         ? Object.entries(data).map(([k, item]) => {
-            // eslint-disable-next-line @typescript-eslint/no-explicit-any
-            const shouldHideArrow = !(item as any).children
+            const shouldHideArrow = !item.children
             const key = k as N
             const nbResultsFacet = getNbResultsFacetLabel(item.nbResultsFacet)
 
