@@ -100,6 +100,10 @@ jobs:
           bundle exec fastlane android deploy --env ${{ inputs.ENV }} --verbose
         env:
           ANDROID_APPCENTER_API_TOKEN: ${{ steps.secrets.outputs.ANDROID_APPCENTER_API_TOKEN }}
+      - name: Create Sentry sourcemaps
+        if: ${{ inputs.TYPE == 'hard'}}
+        run: bash -c 'source scripts/upload_sourcemaps_to_sentry.sh;upload_sourcemaps "android" ${{ inputs.ENV }}'
+
   slack_notify:
     runs-on: [self-hosted, linux, x64]
     if: ${{ always() }}

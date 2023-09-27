@@ -163,6 +163,7 @@ describe('OfferTile component', () => {
       subcategoryId: offer.subcategoryId,
       venue: { coordinates: {} },
       isEducational: false,
+      metadata: undefined,
     })
   })
 })

@@ -17,7 +17,7 @@ export const useArchiveBookingMutation = ({
   const queryClient = useQueryClient()
 
   return useMutation(
-    () => api.postnativev1bookingsbookingIdtoggleDisplay(bookingId, { ended: true }),
+    () => api.postNativeV1BookingsbookingIdToggleDisplay(bookingId, { ended: true }),
     {
       onSuccess: () => {
         queryClient.invalidateQueries([QueryKeys.BOOKINGS])

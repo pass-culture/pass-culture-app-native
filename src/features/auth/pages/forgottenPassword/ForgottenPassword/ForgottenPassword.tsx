@@ -127,7 +127,7 @@ const useForgottenPasswordForm = (settings: UseQueryResult<SettingsResponse, unk
       clearErrors()
       try {
         setValue('isFetching', true)
-        await api.postnativev1requestPasswordReset({
+        await api.postNativeV1RequestPasswordReset({
           email,
           token: settings?.isRecaptchaEnabled ? token : undefined,
         })

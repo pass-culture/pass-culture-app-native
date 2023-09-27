@@ -1,7 +1,7 @@
 import mockdate from 'mockdate'
 import React from 'react'
 
-import { navigate } from '__mocks__/@react-navigation/native'
+import { navigate, useRoute } from '__mocks__/@react-navigation/native'
 import { SubscriptionStep, UserProfileResponse } from 'api/gen'
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { useSubscriptionContext } from 'features/identityCheck/context/SubscriptionContextProvider'
@@ -14,6 +14,7 @@ import {
   IdentityCheckStep,
   StepButtonState,
 } from 'features/identityCheck/types'
+import { StepperOrigin } from 'features/navigation/RootNavigator/types'
 import { analytics } from 'libs/analytics'
 import * as useFeatureFlag from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { fireEvent, render, waitFor, screen } from 'tests/utils'
@@ -72,6 +73,7 @@ describe('Stepper navigation', () => {
     render(<Stepper />)
     expect(screen).toMatchSnapshot()
   })
+
   it('should display an error message if the identification step failed', () => {
     mockUseStepperInfo.mockReturnValueOnce({
       stepsDetails: stepsDetailsFixture,
@@ -174,4 +176,36 @@ describe('Stepper navigation', () => {
       expect(analytics.logIdentityCheckStep).toHaveBeenNthCalledWith(1, eventParam)
     }
   )
+
+  it('should trigger StepperDisplayed tracker when route contains a from parameter and user has a step to complete', () => {
+    useRoute.mockReturnValueOnce({ params: { from: StepperOrigin.HOME } })
+
+    mockUseStepperInfo.mockReturnValueOnce({
+      stepsDetails: stepsDetailsFixture,
+      title: 'Vas-y',
+      errorMessage: 'Le document que tu as présenté est expiré.',
+    })
+
+    render(<Stepper />)
+
+    expect(analytics.logStepperDisplayed).toHaveBeenNthCalledWith(
+      1,
+      StepperOrigin.HOME,
+      IdentityCheckStep.IDENTIFICATION
+    )
+  })
+
+  it('should not trigger StepperDisplayed tracker when route does not contain a from parameter', () => {
+    useRoute.mockReturnValueOnce({ params: undefined })
+
+    mockUseStepperInfo.mockReturnValueOnce({
+      stepsDetails: stepsDetailsFixture,
+      title: 'Vas-y',
+      errorMessage: 'Le document que tu as présenté est expiré.',
+    })
+
+    render(<Stepper />)
+
+    expect(analytics.logStepperDisplayed).not.toHaveBeenCalled()
+  })
 })

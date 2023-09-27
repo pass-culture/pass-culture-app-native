@@ -22,14 +22,14 @@ interface BookOffer {
 export function useBookOfferMutation({ onSuccess, onError }: BookOffer) {
   const queryClient = useQueryClient()
 
-  return useMutation((body: BookOfferRequest) => api.postnativev1bookings(body), {
+  return useMutation((body: BookOfferRequest) => api.postNativeV1Bookings(body), {
     onSuccess: async (data: BookOfferResponse) => {
       queryClient.invalidateQueries([QueryKeys.USER_PROFILE])
 
       try {
         // NOTE: In react-query, to force refetch, invalidateQueries is not reliable, staleTime is not reliable, and underlying function such as refetch are not.
         // TODO(kopax): dig why and take actions
-        const bookings: BookingsResponse = await api.getnativev1bookings()
+        const bookings: BookingsResponse = await api.getNativeV1Bookings()
         queryClient.setQueryData([QueryKeys.BOOKINGS], bookings)
       } catch (error) {
         if (

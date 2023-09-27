@@ -116,7 +116,7 @@ const usePersistCookieConsent = () => {
 
     try {
       if (cookiesChoice.consent) {
-        await api.postnativev1cookiesConsent(omit(cookiesChoice, ['buildVersion']))
+        await api.postNativeV1CookiesConsent(omit(cookiesChoice, ['buildVersion']))
       }
     } catch (error) {
       eventMonitoring.captureMessage(

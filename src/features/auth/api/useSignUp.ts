@@ -24,7 +24,7 @@ export function useSignUp(): (data: appAccountRequest) => Promise<SignUpResponse
     try {
       const appsFlyerUserId = await campaignTracker.getUserId()
 
-      const response = await api.postnativev1account(
+      const response = await api.postNativeV1Account(
         { ...body, appsFlyerPlatform: Platform.OS, appsFlyerUserId },
         { credentials: 'omit' }
       )

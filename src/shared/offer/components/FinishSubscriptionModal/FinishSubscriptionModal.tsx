@@ -3,8 +3,7 @@ import React, { FunctionComponent, useCallback } from 'react'
 import styled from 'styled-components/native'
 
 import { useAuthContext } from 'features/auth/context/AuthContext'
-import { UseNavigationType } from 'features/navigation/RootNavigator/types'
-import { analytics } from 'libs/analytics'
+import { StepperOrigin, UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { useGetDepositAmountsByAge } from 'shared/user/useGetDepositAmountsByAge'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { AppModalWithIllustration } from 'ui/components/modals/AppModalWithIllustration'
@@ -15,23 +14,18 @@ import { LINE_BREAK, SPACE } from 'ui/theme/constants'
 type Props = {
   visible: boolean
   hideModal: () => void
-  offerId: number
+  from: StepperOrigin
   children?: never
 }
 
-export const FinishSubscriptionModal: FunctionComponent<Props> = ({
-  visible,
-  hideModal,
-  offerId,
-}) => {
+export const FinishSubscriptionModal: FunctionComponent<Props> = ({ visible, hideModal, from }) => {
   const { user } = useAuthContext()
   const { navigate } = useNavigation<UseNavigationType>()
 
-  const navigateToProfile = useCallback(() => {
-    analytics.logGoToProfil({ from: 'FinishSubscriptionModal', offerId })
+  const navigateToStepper = useCallback(() => {
     hideModal()
-    navigate('Stepper')
-  }, [offerId, hideModal, navigate])
+    navigate('Stepper', { from })
+  }, [hideModal, navigate, from])
 
   const title = 'Débloque ton crédit' + LINE_BREAK + 'pour réserver cette offre'
 
@@ -68,7 +62,7 @@ export const FinishSubscriptionModal: FunctionComponent<Props> = ({
       <ButtonPrimary
         wording={buttonLabel}
         accessibilityLabel="Aller vers la section profil"
-        onPress={navigateToProfile}
+        onPress={navigateToStepper}
       />
     </AppModalWithIllustration>
   )

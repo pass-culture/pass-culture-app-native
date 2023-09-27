@@ -16,7 +16,7 @@ export function useAddFavorite({ onSuccess }: { onSuccess?: (data?: FavoriteResp
   const queryClient = useQueryClient()
   const { showErrorSnackBar } = useSnackBarContext()
 
-  return useMutation((body: FavoriteRequest) => api.postnativev1mefavorites(body), {
+  return useMutation((body: FavoriteRequest) => api.postNativeV1MeFavorites(body), {
     onSuccess: (data: FavoriteResponse) => {
       const previousFavorites = queryClient.getQueryData<PaginatedFavoritesResponse>([
         QueryKeys.FAVORITES,

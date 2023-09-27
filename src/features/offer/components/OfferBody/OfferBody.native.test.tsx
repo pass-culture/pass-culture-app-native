@@ -2,14 +2,11 @@ import mockdate from 'mockdate'
 import React from 'react'
 import { Linking, Share as NativeShare } from 'react-native'
 import Share, { Social } from 'react-native-share'
-import { UseQueryResult } from 'react-query'
 
 import { push } from '__mocks__/@react-navigation/native'
 import { navigate } from '__mocks__/@react-navigation/native'
-import { api } from 'api/api'
-import { SubcategoryIdEnum, UserReportedOffersResponse } from 'api/gen'
+import { SubcategoryIdEnum } from 'api/gen'
 import { mockDigitalOffer, mockOffer } from 'features/bookOffer/fixtures/offer'
-import * as ReportedOffersAPI from 'features/offer/api/useReportedOffers'
 import { OfferBody } from 'features/offer/components/OfferBody/OfferBody'
 import { VenueListItem } from 'features/offer/components/VenueSelectionList/VenueSelectionList'
 import { PlaylistType } from 'features/offer/enums'
@@ -36,30 +33,7 @@ jest.mock('features/auth/context/AuthContext')
 jest.mock('features/offer/api/useOffer')
 jest.mock('features/offer/helpers/useTrackOfferSeenDuration')
 jest.mock('libs/address/useFormatFullAddress')
-jest.mock('features/offer/helpers/useReasonsForReporting/useReasonsForReporting', () => ({
-  useReasonsForReporting: jest.fn(() => ({
-    data: {
-      reasons: {
-        IMPROPER: {
-          description: 'La date ne correspond pas, mauvaise description...',
-          title: 'La description est non conforme',
-        },
-        INAPPROPRIATE: {
-          description: 'violence, incitation à la haine, nudité...',
-          title: 'Le contenu est inapproprié',
-        },
-        OTHER: {
-          description: '',
-          title: 'Autre',
-        },
-        PRICE_TOO_HIGH: {
-          description: 'comparé à l’offre public',
-          title: 'Le tarif est trop élevé',
-        },
-      },
-    },
-  })),
-}))
+
 let mockSearchHits: Offer[] = []
 jest.mock('features/offer/api/useSimilarOffers', () => ({
   useSimilarOffers: jest.fn(() => mockSearchHits),
@@ -91,8 +65,6 @@ const mockUseAuthContext = jest.fn().mockReturnValue({ isLoggedIn: true, user: b
 jest.mock('features/auth/context/AuthContext', () => ({
   useAuthContext: () => mockUseAuthContext(),
 }))
-
-const useReportedOffersMock = jest.spyOn(ReportedOffersAPI, 'useReportedOffers')
 
 const mockUseNetInfo = jest.fn().mockReturnValue({ isConnected: true, isInternetReachable: true })
 jest.mock('libs/network/useNetInfo', () => ({
@@ -172,10 +144,6 @@ describe('<OfferBody />', () => {
   })
 
   it('should match snapshot for digital offer', async () => {
-    // Mock useReportedOffer to avoid re-render
-    useReportedOffersMock.mockReturnValueOnce({
-      data: { reportedOffers: [] },
-    } as unknown as UseQueryResult<UserReportedOffersResponse>)
     mockUseOffer.mockReturnValueOnce({ data: mockDigitalOffer })
     renderOfferBody()
     await screen.findByTestId('offer-container')
@@ -343,10 +311,6 @@ describe('<OfferBody />', () => {
   })
 
   it('should not display distance when no address and go to button', async () => {
-    // Mock useReportedOffer to avoid re-render
-    useReportedOffersMock.mockReturnValueOnce({
-      data: { reportedOffers: [] },
-    } as unknown as UseQueryResult<UserReportedOffersResponse>)
     const venueWithoutAddress = {
       id: 1,
       offerer: { name: 'PATHE BEAUGRENELLE' },
@@ -368,52 +332,9 @@ describe('<OfferBody />', () => {
     expect(screen.queryByText('Distance')).not.toBeOnTheScreen()
   })
 
-  describe('report offer', () => {
-    it("should open the report modal upon clicking on 'signaler l'offre'", async () => {
-      renderOfferBody()
-
-      const reportOfferButton = await screen.findByTestId('Signaler l’offre')
-
-      fireEvent.press(reportOfferButton)
-      expect(screen).toMatchSnapshot()
-    })
-
-    it('should request /native/v1/offers/reports if user is logged in and connected', async () => {
-      renderOfferBody()
-
-      await waitFor(() => {
-        expect(api.getnativev1offersreports).toHaveBeenCalledTimes(1)
-      })
-    })
-
-    it('should not request /native/v1/offers/reports if user is logged in and not connected', async () => {
-      mockUseNetInfo.mockReturnValueOnce({
-        isConnected: false,
-        isInternetReachable: false,
-      })
-      renderOfferBody()
-      await screen.findByTestId('offer-container')
-
-      expect(api.getnativev1offersreports).not.toHaveBeenCalled()
-    })
-
-    it('should not request /native/v1/offers/reports if user is not logged in and connected', async () => {
-      mockUseAuthContext.mockReturnValueOnce({ isLoggedIn: false, user: undefined }) // First mock for call in OfferBody
-      mockUseAuthContext.mockReturnValueOnce({ isLoggedIn: false, user: undefined }) // Second mock for call in useReportedOffers
-      renderOfferBody()
-      await screen.findByTestId('offer-container')
-
-      expect(api.getnativev1offersreports).not.toBeCalled()
-    })
-  })
-
   describe('When wipEnableMultivenueOffer feature flag deactivated', () => {
     beforeEach(() => {
       useFeatureFlagSpy.mockReturnValueOnce(false)
-      // Mock useReportedOffer to avoid re-render
-      useReportedOffersMock.mockReturnValueOnce({
-        data: { reportedOffers: [] },
-      } as unknown as UseQueryResult<UserReportedOffersResponse>)
     })
 
     it('should not display other venues available button when offer subcategory is "Livres audio physiques" and offer has an EAN', async () => {
@@ -470,10 +391,6 @@ describe('<OfferBody />', () => {
   describe('When wipEnableMultivenueOffer feature flag activated', () => {
     beforeEach(() => {
       useFeatureFlagSpy.mockReturnValueOnce(true)
-      // Mock useReportedOffer to avoid re-render
-      useReportedOffersMock.mockReturnValueOnce({
-        data: { reportedOffers: [] },
-      } as unknown as UseQueryResult<UserReportedOffersResponse>)
     })
 
     it('should display other venues available button when offer subcategory is "Livres audio physiques", offer has an EAN and that there are other venues offering the same offer', async () => {

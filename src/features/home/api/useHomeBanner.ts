@@ -11,7 +11,7 @@ export function useHomeBanner(isGeolocated: boolean) {
 
   return useQuery(
     [QueryKeys.HOME_BANNER, isGeolocated],
-    () => api.getnativev1banner(isGeolocated),
+    () => api.getNativeV1Banner(isGeolocated),
     {
       enabled: !!netInfo.isConnected && isLoggedIn,
     }

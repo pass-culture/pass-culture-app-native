@@ -1,5 +1,5 @@
-import { AgentType } from 'api/gen'
 import { AnalyticsEvent } from 'libs/firebase/analytics/events'
+import { AgentType } from 'libs/firebase/analytics/types'
 
 const mockLogEvent = jest.fn()
 jest.mock('@react-native-firebase/analytics', () => () => ({

@@ -57,7 +57,7 @@ export const CheatCodes: FunctionComponent<Props> = function () {
 
   async function fetchMe() {
     try {
-      const response = await api.getnativev1me()
+      const response = await api.getNativeV1Me()
       setUserEmail(response.email)
     } catch {
       //

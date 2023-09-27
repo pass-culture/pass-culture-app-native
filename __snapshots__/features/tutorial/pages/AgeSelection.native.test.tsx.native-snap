@@ -835,7 +835,7 @@ exports[`AgeSelection onboarding should render correctly 1`] = `
             }
           >
             <View
-              accessibilityLabel="j’ai undefined ans"
+              accessibilityLabel="j’ai moins de 15 ans ou plus de 18 ans"
               accessibilityRole="link"
               accessibilityState={
                 {
@@ -870,7 +870,7 @@ exports[`AgeSelection onboarding should render correctly 1`] = `
                   "userSelect": "auto",
                 }
               }
-              testID="j’ai undefined ans"
+              testID="j’ai moins de 15 ans ou plus de 18 ans"
             >
               <View
                 style={
@@ -1822,7 +1822,7 @@ exports[`AgeSelection profileTutorial should render correctly 1`] = `
             }
           >
             <View
-              accessibilityLabel="à undefined ans"
+              accessibilityLabel="à moins de 15 ans ou plus de 18 ans"
               accessibilityRole="link"
               accessibilityState={
                 {
@@ -1857,7 +1857,7 @@ exports[`AgeSelection profileTutorial should render correctly 1`] = `
                   "userSelect": "auto",
                 }
               }
-              testID="à undefined ans"
+              testID="à moins de 15 ans ou plus de 18 ans"
             >
               <View
                 style={

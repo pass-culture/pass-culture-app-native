@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`ReportOffer General modal behavior Report offer snapshots should display report offer modal if isVisible is true 1`] = `
+exports[`<EmailResendModal /> should render correctly 1`] = `
 <Modal
   accessibilityLabelledBy="testUuidV4"
   accessibilityModal={true}
@@ -201,7 +201,7 @@ exports[`ReportOffer General modal behavior Report offer snapshots should displa
             }
             testID="modalHeaderTitle"
           >
-            Signaler une offre
+            Recevoir un nouveau lien
           </Text>
         </View>
         <View
@@ -307,6 +307,7 @@ exports[`ReportOffer General modal behavior Report offer snapshots should displa
               style={
                 [
                   {
+                    "alignItems": "center",
                     "width": "100%",
                   },
                 ]
@@ -325,137 +326,25 @@ exports[`ReportOffer General modal behavior Report offer snapshots should displa
                   ]
                 }
               >
-                Bien que l’ensemble du catalogue soit vérifié par nos soins, il n’est pas impossible que certaines offres ne respectent pas les CGU.
+                Si après 5 minutes tu n’as pas reçu ton lien de validation par e-mail, tu peux en demander un nouveau.
               </Text>
               <View
-                numberOfSpaces={8}
+                numberOfSpaces={6}
                 style={
                   [
                     {
-                      "height": 32,
+                      "height": 24,
                     },
                   ]
                 }
               />
               <View
-                style={
-                  [
-                    {
-                      "alignItems": "center",
-                      "flexDirection": "row",
-                    },
-                  ]
-                }
-              >
-                <View
-                  height={24}
-                  width={24}
-                >
-                  <Text>
-                    undefined-SVG-Mock
-                  </Text>
-                </View>
-                <View
-                  numberOfSpaces={3.75}
-                  style={
-                    [
-                      {
-                        "width": 15,
-                      },
-                    ]
-                  }
-                />
-                <Text
-                  style={
-                    [
-                      {
-                        "color": "#161617",
-                        "flexBasis": 0,
-                        "flexGrow": 1,
-                        "flexShrink": 1,
-                        "fontFamily": "Montserrat-Regular",
-                        "fontSize": 15,
-                        "lineHeight": 20,
-                      },
-                    ]
-                  }
-                >
-                  Il est interdit pour un acteur culturel de proposer des offres qui ne correspondent pas à nos valeurs.
-                </Text>
-              </View>
-              <View
-                numberOfSpaces={8}
-                style={
-                  [
-                    {
-                      "height": 32,
-                    },
-                  ]
-                }
-              />
-              <View
-                style={
-                  [
-                    {
-                      "alignItems": "center",
-                      "flexDirection": "row",
-                    },
-                  ]
-                }
-              >
-                <View
-                  height={24}
-                  width={24}
-                >
-                  <Text>
-                    undefined-SVG-Mock
-                  </Text>
-                </View>
-                <View
-                  numberOfSpaces={3.75}
-                  style={
-                    [
-                      {
-                        "width": 15,
-                      },
-                    ]
-                  }
-                />
-                <Text
-                  style={
-                    [
-                      {
-                        "color": "#161617",
-                        "flexBasis": 0,
-                        "flexGrow": 1,
-                        "flexShrink": 1,
-                        "fontFamily": "Montserrat-Regular",
-                        "fontSize": 15,
-                        "lineHeight": 20,
-                      },
-                    ]
-                  }
-                >
-                  Ton identité restera anonyme auprès des acteurs culturels.
-                </Text>
-              </View>
-              <View
-                numberOfSpaces={13}
-                style={
-                  [
-                    {
-                      "height": 52,
-                    },
-                  ]
-                }
-              />
-              <View
-                accessibilityLabel="Signaler l’offre"
+                accessibilityLabel="Demander un nouveau lien"
                 accessibilityState={
                   {
                     "busy": undefined,
                     "checked": undefined,
-                    "disabled": undefined,
+                    "disabled": false,
                     "expanded": undefined,
                     "selected": undefined,
                   }
@@ -496,7 +385,7 @@ exports[`ReportOffer General modal behavior Report offer snapshots should displa
                     "width": "100%",
                   }
                 }
-                testID="Signaler l’offre"
+                testID="Demander un nouveau lien"
               >
                 <Text
                   adjustsFontSizeToFit={false}
@@ -514,7 +403,7 @@ exports[`ReportOffer General modal behavior Report offer snapshots should displa
                     ]
                   }
                 >
-                  Signaler l’offre
+                  Demander un nouveau lien
                 </Text>
               </View>
             </View>
@@ -524,38 +413,4 @@ exports[`ReportOffer General modal behavior Report offer snapshots should displa
     </View>
   </View>
 </Modal>
-`;
-
-exports[`ReportOffer General modal behavior Report offer snapshots should not display report offer modal if isVisible is false 1`] = `
-<Modal
-  accessibilityLabelledBy="testUuidV4"
-  accessibilityModal={true}
-  accessibilityRole="none"
-  animationType="none"
-  deviceHeight={1334}
-  deviceWidth={750}
-  hardwareAccelerated={false}
-  hideModalContentWhileAnimating={false}
-  onBackdropPress={[MockFunction]}
-  onModalHide={[Function]}
-  onModalWillHide={[Function]}
-  onModalWillShow={[Function]}
-  onRequestClose={[Function]}
-  panResponderThreshold={4}
-  scrollHorizontal={false}
-  scrollOffset={0}
-  scrollOffsetMax={0}
-  scrollTo={null}
-  statusBarTranslucent={true}
-  supportedOrientations={
-    [
-      "portrait",
-      "landscape",
-    ]
-  }
-  swipeThreshold={100}
-  testID="modal"
-  transparent={true}
-  visible={false}
-/>
 `;
