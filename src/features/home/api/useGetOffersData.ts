@@ -66,7 +66,7 @@ export const useGetOffersData = (modules: OffersModule[]) => {
       return
     })
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [!!position])
+  }, [position?.latitude, position?.longitude])
 
   const offersModulesData = mapOffersDataAndModules({
     results: offersResultList,

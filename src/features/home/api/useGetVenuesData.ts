@@ -41,7 +41,7 @@ export const useGetVenuesData = (modules: VenuesModule[]) => {
       return
     })
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [!!position])
+  }, [position?.latitude, position?.longitude])
 
   const venuesModulesData = mapVenuesDataAndModules(venuesResultList)
 

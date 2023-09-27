@@ -84,7 +84,14 @@ export const RecommendationModule = (props: RecommendationModuleProps) => {
       )
     },
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    [position, profile?.isBeneficiary, labelMapping, mapping, RecommendationApiParams]
+    [
+      position?.longitude,
+      position?.latitude,
+      profile?.isBeneficiary,
+      labelMapping,
+      mapping,
+      RecommendationApiParams,
+    ]
   )
 
   const { itemWidth, itemHeight } = getPlaylistItemDimensionsFromLayout(displayParameters.layout)
