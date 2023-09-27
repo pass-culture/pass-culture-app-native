@@ -58,7 +58,8 @@ export function Search() {
   const { params } = useRoute<UseRouteType<'Search'>>()
   const { dispatch } = useSearch()
   const { userPosition } = useLocation()
-  const { history, queryHistory, addToHistory, removeFromHistory, search } = useSearchHistory()
+  const { queryHistory, setQueryHistory, addToHistory, removeFromHistory, filteredHistory } =
+    useSearchHistory()
 
   useEffect(() => {
     dispatch({ type: 'SET_STATE', payload: params ?? { view: SearchView.Landing } })
@@ -94,7 +95,7 @@ export function Search() {
             searchInputID={searchInputID}
             searchView={currentView}
             addSearchHistory={addToHistory}
-            searchInHistory={search}
+            searchInHistory={(query: string) => setQueryHistory(query)}
           />
           {currentView === SearchView.Suggestions ? (
             <StyledScrollView
@@ -104,7 +105,7 @@ export function Search() {
               scrollEventThrottle={400}>
               <Spacer.Column numberOfSpaces={4} />
               <SearchHistory
-                history={history}
+                history={filteredHistory}
                 queryHistory={queryHistory}
                 removeItem={removeFromHistory}
               />

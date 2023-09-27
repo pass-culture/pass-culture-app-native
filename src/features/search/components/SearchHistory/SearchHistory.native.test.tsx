@@ -3,6 +3,7 @@ import React from 'react'
 
 import { SearchHistory } from 'features/search/components/SearchHistory/SearchHistory'
 import { mockedSearchHistory } from 'features/search/fixtures/mockedSearchHistory'
+import { MAX_HISTORY_RESULTS } from 'features/search/helpers/useSearchHistory/useSearchHistory'
 import { fireEvent, render, screen } from 'tests/utils'
 
 const TODAY_DATE = new Date('2023-09-26T00:00:00.000Z')
@@ -10,6 +11,8 @@ const TODAY_DATE = new Date('2023-09-26T00:00:00.000Z')
 const mockRemoveItem = jest.fn()
 
 jest.mock('react-query')
+
+const mockHistory = mockedSearchHistory.slice(0, MAX_HISTORY_RESULTS)
 
 describe('SearchHistory', () => {
   beforeEach(() => {
@@ -22,34 +25,14 @@ describe('SearchHistory', () => {
     expect(screen.queryByText('Historique de recherches')).not.toBeOnTheScreen()
   })
 
-  it('should display 20 items maximum in the history when queryHistory is an empty string', () => {
-    render(
-      <SearchHistory history={mockedSearchHistory} queryHistory="" removeItem={mockRemoveItem} />
-    )
-
-    expect(screen.getAllByTestId('searchHistoryItem').length).toEqual(20)
-  })
-
-  it('should display 3 items maximum in the history when queryHistory is not an empty string', () => {
-    render(
-      <SearchHistory history={mockedSearchHistory} queryHistory="a" removeItem={mockRemoveItem} />
-    )
-
-    expect(screen.getAllByTestId('searchHistoryItem').length).toEqual(3)
-  })
-
   it('should display delete button in history item when queryHistory is an empty string', () => {
-    render(
-      <SearchHistory history={mockedSearchHistory} queryHistory="" removeItem={mockRemoveItem} />
-    )
+    render(<SearchHistory history={mockHistory} queryHistory="" removeItem={mockRemoveItem} />)
 
     expect(screen.getAllByTestId('Supprimer la ligne de l’historique').length).toEqual(20)
   })
 
   it('should execute remove history item when pressing delete button', () => {
-    render(
-      <SearchHistory history={mockedSearchHistory} queryHistory="" removeItem={mockRemoveItem} />
-    )
+    render(<SearchHistory history={mockHistory} queryHistory="" removeItem={mockRemoveItem} />)
 
     fireEvent.press(screen.getAllByTestId('Supprimer la ligne de l’historique')[0])
 
@@ -57,9 +40,7 @@ describe('SearchHistory', () => {
   })
 
   it('should not display delete button in history item when queryHistory is not an empty string', () => {
-    render(
-      <SearchHistory history={mockedSearchHistory} queryHistory="a" removeItem={mockRemoveItem} />
-    )
+    render(<SearchHistory history={mockHistory} queryHistory="a" removeItem={mockRemoveItem} />)
 
     expect(screen.queryAllByTestId('Supprimer la ligne de l’historique').length).toEqual(0)
   })

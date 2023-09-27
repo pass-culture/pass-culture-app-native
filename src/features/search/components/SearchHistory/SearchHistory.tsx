@@ -17,15 +17,13 @@ type Props = {
 }
 
 export function SearchHistory({ history, queryHistory, removeItem }: Props) {
-  const nbHistoryResults = queryHistory === '' ? 20 : 3
-
   return history.length > 0 ? (
     <React.Fragment>
-      <SearchHistoryTitleText>Historique de recherches</SearchHistoryTitleText>
+      <SearchHistoryTitleText>Historique de recherche</SearchHistoryTitleText>
 
       <StyledVerticalUl>
-        {history.slice(0, nbHistoryResults).map((item) => (
-          <Container key={item.addedDate} testID="searchHistoryItem">
+        {history.map((item) => (
+          <Container key={item.createdAt} testID="searchHistoryItem">
             <SearchHistoryItem item={item} />
             {queryHistory === '' && (
               <DeleteButton

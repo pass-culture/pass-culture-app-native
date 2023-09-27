@@ -8,17 +8,17 @@ const TODAY_DATE = new Date('2023-09-25T00:00:00.000Z')
 
 const history: HistoryItem[] = [
   {
-    addedDate: new Date('2023-09-20T00:00:00.000Z').getTime(),
+    createdAt: new Date('2023-09-20T00:00:00.000Z').getTime(),
     category: SearchGroupNameEnumv2.LIVRES,
     query: 'one piece',
   },
   {
-    addedDate: new Date('2023-09-15T00:00:00.000Z').getTime(),
+    createdAt: new Date('2023-09-15T00:00:00.000Z').getTime(),
     category: SearchGroupNameEnumv2.LIVRES,
     query: 'harry potter',
   },
   {
-    addedDate: new Date('2023-08-25T00:00:00.000Z').getTime(),
+    createdAt: new Date('2023-08-25T00:00:00.000Z').getTime(),
     category: SearchGroupNameEnumv2.LIVRES,
     query: 'pack lastman',
   },
@@ -33,12 +33,12 @@ describe('getHistoryLessThan30Days', () => {
     const historyLessThan30Days = getHistoryLessThan30Days(history)
     expect(historyLessThan30Days).toEqual([
       {
-        addedDate: new Date('2023-09-20T00:00:00.000Z').getTime(),
+        createdAt: new Date('2023-09-20T00:00:00.000Z').getTime(),
         category: SearchGroupNameEnumv2.LIVRES,
         query: 'one piece',
       },
       {
-        addedDate: new Date('2023-09-15T00:00:00.000Z').getTime(),
+        createdAt: new Date('2023-09-15T00:00:00.000Z').getTime(),
         category: SearchGroupNameEnumv2.LIVRES,
         query: 'harry potter',
       },

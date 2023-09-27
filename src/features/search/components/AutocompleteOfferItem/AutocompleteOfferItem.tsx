@@ -15,7 +15,7 @@ import {
   getSearchGroupsEnumArrayFromNativeCategoryEnum,
   isNativeCategoryOfCategory,
 } from 'features/search/helpers/categoriesHelpers/categoriesHelpers'
-import { HistoryItem, SearchState, SearchView } from 'features/search/types'
+import { CreateHistoryItem, SearchState, SearchView } from 'features/search/types'
 import { AlgoliaSuggestionHit } from 'libs/algolia'
 import { env } from 'libs/environment'
 import { useSearchGroupLabel } from 'libs/subcategories'
@@ -26,7 +26,7 @@ import { getSpacing, Typo } from 'ui/theme'
 type AutocompleteOfferItemProps = {
   hit: AlgoliaSuggestionHit
   sendEvent: SendEventForHits
-  addSearchHistory: (item: HistoryItem) => void
+  addSearchHistory: (item: CreateHistoryItem) => void
   shouldShowCategory?: boolean
 }
 
@@ -104,7 +104,6 @@ export function AutocompleteOfferItem({
     }
     addSearchHistory({
       query,
-      addedDate: new Date().getTime(),
       nativeCategory: shouldFilteredOnNativeCategory ? nativeCategories[0].value : undefined,
       category: shouldShowCategory ? mostPopularCategory[0] : undefined,
     })

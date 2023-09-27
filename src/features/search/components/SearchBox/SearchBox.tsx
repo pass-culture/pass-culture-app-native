@@ -30,7 +30,7 @@ import { useHasPosition } from 'features/search/helpers/useHasPosition/useHasPos
 import { useLocationChoice } from 'features/search/helpers/useLocationChoice/useLocationChoice'
 import { useLocationType } from 'features/search/helpers/useLocationType/useLocationType'
 import { LocationModal } from 'features/search/pages/modals/LocationModal/LocationModal'
-import { HistoryItem, SearchState, SearchView } from 'features/search/types'
+import { CreateHistoryItem, SearchState, SearchView } from 'features/search/types'
 import { BackButton } from 'ui/components/headers/BackButton'
 import { HiddenAccessibleText } from 'ui/components/HiddenAccessibleText'
 import { useModal } from 'ui/components/modals/useModal'
@@ -41,7 +41,7 @@ const SEARCH_DEBOUNCE_MS = 500
 
 type Props = UseSearchBoxProps & {
   searchInputID: string
-  addSearchHistory: (item: HistoryItem) => void
+  addSearchHistory: (item: CreateHistoryItem) => void
   searchInHistory: (search: string) => void
   accessibleHiddenTitle?: string
 }
@@ -191,7 +191,7 @@ export const SearchBox: React.FunctionComponent<Props> = ({
       // these are the two potentially 'staged' filters that we want to commit to the global search state.
       // We also want to commit the price filter, as beneficiary users may have access to different offer
       // price range depending on their available credit.
-      addSearchHistory({ query: queryText, addedDate: new Date().getTime() })
+      addSearchHistory({ query: queryText })
       const { offerCategories, priceRange } = searchState
       const searchId = uuidv4()
       const partialSearchState: Partial<SearchState> = {

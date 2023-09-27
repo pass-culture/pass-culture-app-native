@@ -134,9 +134,12 @@ export type AnalyticsParams = {
   homeEntryId?: string
 }
 
-export type HistoryItem = {
+export type CreateHistoryItem = {
   query: string
-  addedDate: number
   nativeCategory?: NativeCategoryIdEnumv2
   category?: SearchGroupNameEnumv2
+}
+
+export type HistoryItem = CreateHistoryItem & {
+  createdAt: number
 }

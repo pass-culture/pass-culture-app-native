@@ -28,7 +28,7 @@ export function SearchHistoryItem({ item }: Props) {
     item.category ? item.category : SearchGroupNameEnumv2.NONE
   )
   const nativeCategoryLabel = getNativeCategoryFromEnum(data, item.nativeCategory)?.value
-  const shouldDisplaySearchGroupOrNativeCategory = !!(item.nativeCategory || item.category)
+  const shouldDisplaySearchGroupOrNativeCategory = Boolean(item.nativeCategory || item.category)
 
   const onPress = () => {
     Keyboard.dismiss()

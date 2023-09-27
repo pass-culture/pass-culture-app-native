@@ -3,7 +3,7 @@ import { View } from 'react-native'
 import styled from 'styled-components/native'
 
 import { SearchBox } from 'features/search/components/SearchBox/SearchBox'
-import { HistoryItem, SearchView } from 'features/search/types'
+import { CreateHistoryItem, SearchView } from 'features/search/types'
 import { InputLabel } from 'ui/components/InputLabel/InputLabel'
 import { styledInputLabel } from 'ui/components/InputLabel/styledInputLabel'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
@@ -11,7 +11,7 @@ import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 type Props = {
   searchInputID: string
-  addSearchHistory: (item: HistoryItem) => void
+  addSearchHistory: (item: CreateHistoryItem) => void
   searchInHistory: (search: string) => void
   searchView?: SearchView
 }

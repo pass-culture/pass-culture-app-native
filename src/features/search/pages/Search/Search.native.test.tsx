@@ -64,7 +64,7 @@ jest.mock('features/auth/context/SettingsContext', () => ({
 }))
 jest.mock('features/search/helpers/useSearchHistory/useSearchHistory', () => ({
   useSearchHistory: () => ({
-    history: [],
+    filteredHistory: [],
     addToHistory: jest.fn(),
     removeFromHistory: jest.fn(),
     search: jest.fn(),
@@ -178,7 +178,7 @@ jest.mock('features/search/helpers/useSearchHistory/useSearchHistory', () => ({
   useSearchHistory: jest.fn(() => mockUseSearchHistory()),
 }))
 mockUseSearchHistory.mockReturnValue({
-  history: mockedSearchHistory,
+  filteredHistory: mockedSearchHistory,
   queryHistory: '',
   addToHistory: jest.fn(),
   removeFromHistory: jest.fn(),
@@ -277,13 +277,13 @@ describe('<Search/>', () => {
       render(<Search />)
       await act(async () => {})
 
-      expect(screen.getByText('Historique de recherches')).toBeOnTheScreen()
+      expect(screen.getByText('Historique de recherche')).toBeOnTheScreen()
     })
 
     it('should not display search history when it has not items', async () => {
       mockdate.set(TODAY_DATE)
       mockUseSearchHistory.mockReturnValueOnce({
-        history: [],
+        filteredHistory: [],
         queryHistory: '',
         addToHistory: jest.fn(),
         removeFromHistory: jest.fn(),
@@ -292,7 +292,7 @@ describe('<Search/>', () => {
       render(<Search />)
       await act(async () => {})
 
-      expect(screen.queryByText('Historique de recherches')).not.toBeOnTheScreen()
+      expect(screen.queryByText('Historique de recherche')).not.toBeOnTheScreen()
     })
   })
 
