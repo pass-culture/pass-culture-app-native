@@ -428,17 +428,22 @@
       }
 
       let hasSmartBannerBeenDisplayed = false
-      const smartBannerContainer = document.getElementById("smartBannerContainer")
-      const observer = new MutationObserver(changeFooterStyle)
-      observer.observe(smartBannerContainer, { childList: true })
 
-      function changeFooterStyle() {
-        const smartBannerIsDisplayed = smartBannerContainer?.children.length > 0
-        const footer = document.querySelector("[role='contentinfo']")
+      function watchSmartBannerAndAdaptFooterStyle(footer) {
+        const smartBannerContainer = document.getElementById("smartBannerContainer")
+        const observer = new MutationObserver(() => changeFooterStyle(footer, smartBannerContainer))
+        observer.observe(smartBannerContainer, { childList: true })
+
+        // Adapt footer in case smartbanner was already displayed before being watch
+        changeFooterStyle(footer, smartBannerContainer)
+      }
+
+      function changeFooterStyle(footer, smartbanner) {
+        const smartBannerIsDisplayed = smartbanner.children.length > 0
 
         if (smartBannerIsDisplayed) {
           hasSmartBannerBeenDisplayed = true
-          footer.style.marginBottom = smartBannerContainer.firstChild.style.height
+          footer.style.marginBottom = smartbanner.firstChild.style.height
         } else {
           footer.style.marginBottom = 0
           if (hasSmartBannerBeenDisplayed) {
@@ -447,7 +452,7 @@
         }
       }
 
-      waitForElementToExist("[role='contentinfo']").then(changeFooterStyle)
+      waitForElementToExist("[role='contentinfo']").then(watchSmartBannerAndAdaptFooterStyle)
     </script>
   </body>
 </html>
