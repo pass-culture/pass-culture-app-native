@@ -7,6 +7,7 @@ import * as useFilterCountAPI from 'features/search/helpers/useFilterCount/useFi
 import { Search } from 'features/search/pages/Search/Search'
 import { SearchState } from 'features/search/types'
 import { Venue } from 'features/venue/types'
+import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { useNetInfoContext as useNetInfoContextDefault } from 'libs/network/NetInfoWrapper'
 import { mockedSuggestedVenues } from 'libs/venue/fixtures/mockedSuggestedVenues'
 import { checkAccessibilityFor, render, act } from 'tests/utils/web'
@@ -82,6 +83,9 @@ jest.mock('uuid', () => ({
   v1: jest.fn(),
   v4: jest.fn(mockV4),
 }))
+
+// mockUseNetInfoContext.mockReturnValue({ isConnected: true })
+jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockReturnValue(true)
 
 describe('<Search/>', () => {
   describe('Accessibility', () => {
