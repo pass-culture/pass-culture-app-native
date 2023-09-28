@@ -431,14 +431,14 @@
 
       function watchSmartBannerAndAdaptFooterStyle(footer) {
         const smartBannerContainer = document.getElementById("smartBannerContainer")
-        const observer = new MutationObserver(() => changeFooterStyle(footer, smartBannerContainer))
+        const observer = new MutationObserver((_, observer) => changeFooterStyle(footer, smartBannerContainer, observer))
         observer.observe(smartBannerContainer, { childList: true })
 
         // Adapt footer in case smartbanner was already displayed before being watch
-        changeFooterStyle(footer, smartBannerContainer)
+        changeFooterStyle(footer, smartBannerContainer, observer)
       }
 
-      function changeFooterStyle(footer, smartbanner) {
+      function changeFooterStyle(footer, smartbanner, observer) {
         const smartBannerIsDisplayed = smartbanner.children.length > 0
 
         if (smartBannerIsDisplayed) {
