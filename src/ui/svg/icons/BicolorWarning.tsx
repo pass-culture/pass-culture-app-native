@@ -61,10 +61,8 @@ export const BicolorWarning = React.memo(
   }))``
 )
 
-export const Warning = React.memo(
-  styled(NotMemoizedBicolorWarning).attrs(({ color, size, theme }) => ({
-    color: color ?? theme.colors.black,
-    color2: color ?? theme.colors.black,
-    size: size ?? theme.icons.sizes.standard,
-  }))``
-)
+export const Warning = styled(NotMemoizedBicolorWarning).attrs(({ color, size, theme }) => ({
+  color: color ?? theme.colors.black,
+  color2: color ?? theme.colors.black,
+  size: size ?? theme.icons.sizes.standard,
+}))``

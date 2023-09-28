@@ -1,6 +1,7 @@
 export enum ColorsEnum {
   ACCENT = '#0066ff',
   ATTENTION = '#ffea00',
+  ATTENTION_LIGHT = '#fff7cf',
   BLACK = '#161617',
   ERROR = '#b60025',
   ERROR_LIGHT = '#fce8ec',
