@@ -29,7 +29,7 @@ export interface Offer {
   }
 }
 
-export interface RecommendationAPIParams {
+export interface RecommendationApiParams {
   call_id?: string
   filtered?: boolean
   geo_located?: boolean

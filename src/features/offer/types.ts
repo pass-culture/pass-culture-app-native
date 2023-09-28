@@ -1,7 +1,7 @@
 import { CategoryIdEnum, SubcategoryIdEnum } from 'api/gen'
 import { Referrals } from 'features/navigation/RootNavigator/types'
 import { PlaylistType } from 'features/offer/enums'
-import { RecommendationAPIParams } from 'shared/offer/types'
+import { RecommendationApiParams } from 'shared/offer/types'
 
 export interface OfferTileProps {
   categoryId: CategoryIdEnum | null | undefined
@@ -27,12 +27,12 @@ export interface OfferTileProps {
   shouldUseAlgoliaRecommend?: boolean
   playlistType?: PlaylistType
   searchId?: string
-  apiRecoParams?: RecommendationAPIParams
+  apiRecoParams?: RecommendationApiParams
 }
 
 export interface SimilarOffersResponse {
   results: string[]
-  params: RecommendationAPIParams
+  params: RecommendationApiParams
 }
 
 export interface VenueDetail {

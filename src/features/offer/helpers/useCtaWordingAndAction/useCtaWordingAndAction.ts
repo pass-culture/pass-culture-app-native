@@ -30,7 +30,7 @@ import { useSubcategoriesMapping } from 'libs/subcategories'
 import { Subcategory } from 'libs/subcategories/types'
 import { getDigitalOfferBookingWording } from 'shared/getDigitalOfferBookingWording/getDigitalOfferBookingWording'
 import { OfferModal } from 'shared/offer/enums'
-import { RecommendationAPIParams } from 'shared/offer/types'
+import { RecommendationApiParams } from 'shared/offer/types'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 import { ExternalNavigationProps, InternalNavigationProps } from 'ui/components/touchableLink/types'
 
@@ -250,7 +250,7 @@ export const useCtaWordingAndAction = (props: {
   const { data: endedBooking } = useEndedBookingFromOfferId(offerId)
   const { showErrorSnackBar } = useSnackBarContext()
   const route = useRoute<UseRouteType<'Offer'>>()
-  const apiRecoParams: RecommendationAPIParams = route.params?.apiRecoParams
+  const apiRecoParams: RecommendationApiParams = route.params?.apiRecoParams
     ? JSON.parse(route.params?.apiRecoParams)
     : undefined
   const playlistType = route.params?.playlistType

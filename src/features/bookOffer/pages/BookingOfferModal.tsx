@@ -21,7 +21,7 @@ import { analytics } from 'libs/analytics'
 import { CampaignEvents, campaignTracker } from 'libs/campaign'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
-import { RecommendationAPIParams } from 'shared/offer/types'
+import { RecommendationApiParams } from 'shared/offer/types'
 import { AppModal } from 'ui/components/modals/AppModal'
 import { ModalLeftIconProps } from 'ui/components/modals/types'
 import { useModal } from 'ui/components/modals/useModal'
@@ -61,7 +61,7 @@ export const BookingOfferModalComponent: React.FC<BookingOfferModalComponentProp
   const fromOfferId = route.params?.fromOfferId
   const fromMultivenueOfferId = route.params?.fromMultivenueOfferId
   const algoliaOfferId = offerId?.toString()
-  const apiRecoParams: RecommendationAPIParams = route.params?.apiRecoParams
+  const apiRecoParams: RecommendationApiParams = route.params?.apiRecoParams
     ? JSON.parse(route.params?.apiRecoParams)
     : undefined
   const playlistType = route.params?.playlistType

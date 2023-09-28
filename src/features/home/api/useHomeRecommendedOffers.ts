@@ -10,7 +10,7 @@ import { RecommendedIdsRequest, RecommendedIdsResponse } from 'libs/recommendati
 import { useHomeRecommendedIdsMutation } from 'libs/recommendation/useHomeRecommendedIdsMutation'
 import { useSubcategoryLabelMapping } from 'libs/subcategories/mappings'
 import { SubcategoryLabelMapping } from 'libs/subcategories/types'
-import { Offer, RecommendationAPIParams } from 'shared/offer/types'
+import { Offer, RecommendationApiParams } from 'shared/offer/types'
 
 import { useAlgoliaRecommendedOffers } from './useAlgoliaRecommendedOffers'
 
@@ -54,7 +54,7 @@ export const useHomeRecommendedOffers = (
   position: Position,
   moduleId: string,
   recommendationParameters?: RecommendedOffersModule['recommendationParameters']
-): { offers?: Offer[]; recommendationAPIParams?: RecommendationAPIParams } => {
+): { offers?: Offer[]; RecommendationApiParams?: RecommendationApiParams } => {
   const recommendationEndpoint = getRecommendationEndpoint({
     userId,
     position,
@@ -84,6 +84,6 @@ export const useHomeRecommendedOffers = (
       moduleId,
       true
     ),
-    recommendationAPIParams: recommendedIdsResponse?.params,
+    RecommendationApiParams: recommendedIdsResponse?.params,
   }
 }

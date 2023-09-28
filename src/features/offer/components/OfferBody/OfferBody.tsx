@@ -38,7 +38,7 @@ import {
   useCategoryIdMapping,
   useSubcategoriesMapping,
 } from 'libs/subcategories'
-import { RecommendationAPIParams } from 'shared/offer/types'
+import { RecommendationApiParams } from 'shared/offer/types'
 import { Offer } from 'shared/offer/types'
 import { useOpacityTransition } from 'ui/animations/helpers/useOpacityTransition'
 import { AccessibilityBlock } from 'ui/components/accessibility/AccessibilityBlock'
@@ -56,9 +56,9 @@ interface Props {
   offerId: number
   onScroll: () => void
   sameCategorySimilarOffers?: Offer[]
-  apiRecoParamsSameCategory?: RecommendationAPIParams
+  apiRecoParamsSameCategory?: RecommendationApiParams
   otherCategoriesSimilarOffers?: Offer[]
-  apiRecoParamsOtherCategories?: RecommendationAPIParams
+  apiRecoParamsOtherCategories?: RecommendationApiParams
   shouldUseAlgoliaRecommend?: boolean
 }
 
@@ -157,7 +157,7 @@ export const OfferBody: FunctionComponent<Props> = ({
         height: number
         playlistType?: PlaylistType
       },
-      apiRecoParams?: RecommendationAPIParams
+      apiRecoParams?: RecommendationApiParams
     ) => {
       const timestampsInMillis = item.offer.dates?.map((timestampInSec) => timestampInSec * 1000)
       return (

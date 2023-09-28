@@ -17,7 +17,7 @@ import { analytics } from 'libs/analytics'
 import { CampaignEvents, campaignTracker } from 'libs/campaign'
 import * as useFeatureFlag from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { placeholderData as mockSubcategoriesData } from 'libs/subcategories/placeholderData'
-import { RecommendationAPIParams } from 'shared/offer/types'
+import { RecommendationApiParams } from 'shared/offer/types'
 import { fireEvent, render, screen } from 'tests/utils'
 import { SnackBarHelperSettings } from 'ui/components/snackBar/types'
 
@@ -121,7 +121,7 @@ jest.mock('api/useSearchVenuesOffer/useSearchVenueOffers', () => ({
   }),
 }))
 
-const apiRecoParams: RecommendationAPIParams = {
+const apiRecoParams: RecommendationApiParams = {
   call_id: '1',
   filtered: true,
   geo_located: false,

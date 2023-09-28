@@ -7,7 +7,7 @@ import { Referrals } from 'features/navigation/RootNavigator/types'
 import { PlaylistType } from 'features/offer/enums'
 import { mockedAlgoliaResponse } from 'libs/algolia/__mocks__/mockedAlgoliaResponse'
 import { analytics } from 'libs/analytics'
-import { RecommendationAPIParams } from 'shared/offer/types'
+import { RecommendationApiParams } from 'shared/offer/types'
 import { queryCache, reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { fireEvent, render, screen } from 'tests/utils'
 
@@ -17,7 +17,7 @@ const offer = mockedAlgoliaResponse.hits[0].offer
 const offerId = 116656
 const searchId = uuidv4()
 
-const apiRecoParams: RecommendationAPIParams = {
+const apiRecoParams: RecommendationApiParams = {
   call_id: '1',
   filtered: true,
   geo_located: false,
