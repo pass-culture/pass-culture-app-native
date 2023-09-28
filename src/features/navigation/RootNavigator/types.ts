@@ -102,6 +102,7 @@ export enum StepperOrigin {
   PROFILE = 'profile',
   DEEPLINK = 'deeplink',
   OFFER = 'offer',
+  VERIFY_ELIGIBILITY = 'verifyEligibility',
 }
 
 export type SubscriptionRootStackParamList = {
