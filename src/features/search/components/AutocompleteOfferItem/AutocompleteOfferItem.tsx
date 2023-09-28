@@ -15,7 +15,6 @@ import {
   getSearchGroupsEnumArrayFromNativeCategoryEnum,
   isNativeCategoryOfCategory,
 } from 'features/search/helpers/categoriesHelpers/categoriesHelpers'
-import { getHistoryItemLabel } from 'features/search/helpers/getHistoryItemLabel/getHistoryItemLabel'
 import { CreateHistoryItem, SearchState, SearchView } from 'features/search/types'
 import { AlgoliaSuggestionHit } from 'libs/algolia'
 import { env } from 'libs/environment'
@@ -103,17 +102,10 @@ export function AutocompleteOfferItem({
         : undefined,
       offerCategories: shouldShowCategory ? mostPopularCategory : [],
     }
-    const nativeCategory = shouldFilteredOnNativeCategory ? nativeCategories[0].value : undefined
-    const category = shouldShowCategory ? mostPopularCategory[0] : undefined
     addSearchHistory({
       query,
-      nativeCategory,
-      category,
-      label: getHistoryItemLabel({
-        query,
-        category: searchGroupLabel,
-        nativeCategory: mostPopularNativeCategoryValue ?? undefined,
-      }),
+      nativeCategory: shouldFilteredOnNativeCategory ? nativeCategories[0].value : undefined,
+      category: shouldShowCategory ? mostPopularCategory[0] : undefined,
     })
 
     navigate(...getTabNavConfig('Search', newSearchState))

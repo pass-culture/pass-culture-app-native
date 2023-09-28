@@ -136,11 +136,11 @@ export type AnalyticsParams = {
 
 export type CreateHistoryItem = {
   query: string
-  label: string
   nativeCategory?: NativeCategoryIdEnumv2
   category?: SearchGroupNameEnumv2
 }
 
 export type HistoryItem = CreateHistoryItem & {
   createdAt: number
+  label: string
 }

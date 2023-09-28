@@ -24,7 +24,6 @@ import { SearchMainInput } from 'features/search/components/SearchMainInput/Sear
 import { initialSearchState } from 'features/search/context/reducer'
 import { useSearch } from 'features/search/context/SearchWrapper'
 import { FilterBehaviour, LocationType } from 'features/search/enums'
-import { getHistoryItemLabel } from 'features/search/helpers/getHistoryItemLabel/getHistoryItemLabel'
 import { getIsSearchPreviousRoute } from 'features/search/helpers/getIsSearchPreviousRoute/getIsSearchPreviousRoute'
 import { useFilterCount } from 'features/search/helpers/useFilterCount/useFilterCount'
 import { useHasPosition } from 'features/search/helpers/useHasPosition/useHasPosition'
@@ -192,7 +191,7 @@ export const SearchBox: React.FunctionComponent<Props> = ({
       // these are the two potentially 'staged' filters that we want to commit to the global search state.
       // We also want to commit the price filter, as beneficiary users may have access to different offer
       // price range depending on their available credit.
-      addSearchHistory({ query: queryText, label: getHistoryItemLabel({ query: queryText }) })
+      addSearchHistory({ query: queryText })
       const { offerCategories, priceRange } = searchState
       const searchId = uuidv4()
       const partialSearchState: Partial<SearchState> = {
