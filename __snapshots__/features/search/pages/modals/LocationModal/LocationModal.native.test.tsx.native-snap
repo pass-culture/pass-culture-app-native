@@ -514,6 +514,8 @@ exports[`<LocationModal/> should render modal correctly after animation and with
                             [
                               {
                                 "color": "#161617",
+                                "flexGrow": 1,
+                                "flexShrink": 1,
                                 "fontFamily": "Montserrat-Bold",
                                 "fontSize": 15,
                                 "lineHeight": 20,
@@ -696,6 +698,8 @@ exports[`<LocationModal/> should render modal correctly after animation and with
                             [
                               {
                                 "color": "#161617",
+                                "flexGrow": 1,
+                                "flexShrink": 1,
                                 "fontFamily": "Montserrat-Bold",
                                 "fontSize": 15,
                                 "lineHeight": 20,
@@ -878,6 +882,8 @@ exports[`<LocationModal/> should render modal correctly after animation and with
                             [
                               {
                                 "color": "#eb0055",
+                                "flexGrow": 1,
+                                "flexShrink": 1,
                                 "fontFamily": "Montserrat-Bold",
                                 "fontSize": 15,
                                 "lineHeight": 20,
