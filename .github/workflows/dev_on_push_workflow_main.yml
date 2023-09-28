@@ -10,6 +10,11 @@ permissions:
 jobs:
   yarn-install:
     uses: ./.github/workflows/dev_on_workflow_install.yml
+    with:
+      CACHE_BUCKET_NAME: passculture-infra-prod-github-runner-cache
+    secrets:
+      GCP_EHP_SERVICE_ACCOUNT: ${{ secrets.GCP_EHP_SERVICE_ACCOUNT }}
+      GCP_EHP_WORKLOAD_IDENTITY_PROVIDER: ${{ secrets.GCP_EHP_WORKLOAD_IDENTITY_PROVIDER }}
   check-server-folder-changes:
     name: Check server folder changes
     uses: ./.github/workflows/dev_on_workflow_check_folder_change.yml
@@ -25,12 +30,24 @@ jobs:
   yarn-linter:
     needs: yarn-install
     uses: ./.github/workflows/dev_on_workflow_linter_ts.yml
+    with:
+      CACHE_BUCKET_NAME: passculture-infra-prod-github-runner-cache
+    secrets:
+      GCP_EHP_SERVICE_ACCOUNT: ${{ secrets.GCP_EHP_SERVICE_ACCOUNT }}
+      GCP_EHP_WORKLOAD_IDENTITY_PROVIDER: ${{ secrets.GCP_EHP_WORKLOAD_IDENTITY_PROVIDER }}
   yarn-ts-prune:
     needs: yarn-install
     uses: ./.github/workflows/dev_on_workflow_ts_prune.yml
+    with:
+      CACHE_BUCKET_NAME: passculture-infra-prod-github-runner-cache
+    secrets:
+      GCP_EHP_SERVICE_ACCOUNT: ${{ secrets.GCP_EHP_SERVICE_ACCOUNT }}
+      GCP_EHP_WORKLOAD_IDENTITY_PROVIDER: ${{ secrets.GCP_EHP_WORKLOAD_IDENTITY_PROVIDER }}
   yarn-tester:
     needs: yarn-linter
     uses: ./.github/workflows/dev_on_workflow_tester.yml
+    with:
+      CACHE_BUCKET_NAME: passculture-infra-prod-github-runner-cache
     secrets:
       GCP_EHP_SERVICE_ACCOUNT: ${{ secrets.GCP_EHP_SERVICE_ACCOUNT }}
       GCP_EHP_WORKLOAD_IDENTITY_PROVIDER: ${{ secrets.GCP_EHP_WORKLOAD_IDENTITY_PROVIDER }}
@@ -136,6 +153,7 @@ jobs:
     with:
       ENV: testing
       BUCKET_NAME: passculture-metier-ehp-testing-decliweb
+      CACHE_BUCKET_NAME: passculture-infra-prod-github-runner-cache
     secrets:
       GCP_EHP_SERVICE_ACCOUNT: ${{ secrets.GCP_EHP_SERVICE_ACCOUNT }}
       GCP_EHP_WORKLOAD_IDENTITY_PROVIDER: ${{ secrets.GCP_EHP_WORKLOAD_IDENTITY_PROVIDER }}
@@ -145,6 +163,7 @@ jobs:
     with:
       ENV: staging
       BUCKET_NAME: passculture-metier-ehp-staging-decliweb
+      CACHE_BUCKET_NAME: passculture-infra-prod-github-runner-cache
     secrets:
       GCP_EHP_SERVICE_ACCOUNT: ${{ secrets.GCP_EHP_SERVICE_ACCOUNT }}
       GCP_EHP_WORKLOAD_IDENTITY_PROVIDER: ${{ secrets.GCP_EHP_WORKLOAD_IDENTITY_PROVIDER }}
@@ -154,6 +173,7 @@ jobs:
     uses: ./.github/workflows/dev_on_workflow_web_proxy_deploy.yml
     with:
       ENV: testing
+      CACHE_BUCKET_NAME: passculture-infra-prod-github-runner-cache
     secrets:
       GCP_EHP_SERVICE_ACCOUNT: ${{ secrets.GCP_EHP_SERVICE_ACCOUNT }}
       GCP_EHP_WORKLOAD_IDENTITY_PROVIDER: ${{ secrets.GCP_EHP_WORKLOAD_IDENTITY_PROVIDER }}
@@ -163,6 +183,7 @@ jobs:
     uses: ./.github/workflows/dev_on_workflow_web_proxy_deploy.yml
     with:
       ENV: staging
+      CACHE_BUCKET_NAME: passculture-infra-prod-github-runner-cache
     secrets:
       GCP_EHP_SERVICE_ACCOUNT: ${{ secrets.GCP_EHP_SERVICE_ACCOUNT }}
       GCP_EHP_WORKLOAD_IDENTITY_PROVIDER: ${{ secrets.GCP_EHP_WORKLOAD_IDENTITY_PROVIDER }}
@@ -173,6 +194,7 @@ jobs:
     with:
       ENV: integration
       BUCKET_NAME: passculture-metier-ehp-integration-decliweb
+      CACHE_BUCKET_NAME: passculture-infra-prod-github-runner-cache
     secrets:
       GCP_EHP_SERVICE_ACCOUNT: ${{ secrets.GCP_EHP_SERVICE_ACCOUNT }}
       GCP_EHP_WORKLOAD_IDENTITY_PROVIDER: ${{ secrets.GCP_EHP_WORKLOAD_IDENTITY_PROVIDER }}
@@ -182,6 +204,7 @@ jobs:
     uses: ./.github/workflows/dev_on_workflow_web_proxy_deploy.yml
     with:
       ENV: integration
+      CACHE_BUCKET_NAME: passculture-infra-prod-github-runner-cache
     secrets:
       GCP_EHP_SERVICE_ACCOUNT: ${{ secrets.GCP_EHP_SERVICE_ACCOUNT }}
       GCP_EHP_WORKLOAD_IDENTITY_PROVIDER: ${{ secrets.GCP_EHP_WORKLOAD_IDENTITY_PROVIDER }}
@@ -192,6 +215,7 @@ jobs:
     with:
       ENV: production
       BUCKET_NAME: passculture-metier-prod-production-decliweb
+      CACHE_BUCKET_NAME: passculture-infra-prod-github-runner-cache
     secrets:
       GCP_EHP_SERVICE_ACCOUNT: ${{ secrets.GCP_EHP_SERVICE_ACCOUNT }}
       GCP_EHP_WORKLOAD_IDENTITY_PROVIDER: ${{ secrets.GCP_EHP_WORKLOAD_IDENTITY_PROVIDER }}
@@ -201,6 +225,7 @@ jobs:
     uses: ./.github/workflows/dev_on_workflow_web_proxy_deploy.yml
     with:
       ENV: production
+      CACHE_BUCKET_NAME: passculture-infra-prod-github-runner-cache
     secrets:
       GCP_EHP_SERVICE_ACCOUNT: ${{ secrets.GCP_EHP_SERVICE_ACCOUNT }}
       GCP_EHP_WORKLOAD_IDENTITY_PROVIDER: ${{ secrets.GCP_EHP_WORKLOAD_IDENTITY_PROVIDER }}
