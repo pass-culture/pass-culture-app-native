@@ -72,6 +72,7 @@ export const VenueModal = ({ visible, dismissModal }: Props) => {
       </SubtitleContainer>
       <Spacer.Column numberOfSpaces={4} />
       <SearchInput
+        autoFocus
         LeftIcon={StyledMagnifyingGlass}
         inputHeight="regular"
         onChangeText={onChangeVenue}
