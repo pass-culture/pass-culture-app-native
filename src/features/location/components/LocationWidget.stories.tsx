@@ -17,6 +17,6 @@ const meta: ComponentMeta<typeof LocationWidget> = {
 }
 export default meta
 
-const Template: ComponentStory<typeof LocationWidget> = () => <LocationWidget />
+const Template: ComponentStory<typeof LocationWidget> = () => <LocationWidget enableTooltip />
 
 export const Default = Template.bind({})

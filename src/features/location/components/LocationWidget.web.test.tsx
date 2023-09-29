@@ -18,7 +18,7 @@ describe('LocationWidget', () => {
     jest.useFakeTimers()
     render(
       <NavigationContainer>
-        <LocationWidget />
+        <LocationWidget enableTooltip />
       </NavigationContainer>
     )
 

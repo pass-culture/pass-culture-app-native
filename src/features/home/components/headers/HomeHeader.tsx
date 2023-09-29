@@ -111,7 +111,7 @@ export const HomeHeader: FunctionComponent = function () {
   return (
     <React.Fragment>
       <PageHeader title={welcomeTitle} subtitle={getSubtitle()} numberOfLines={2}>
-        {shouldDisplayLocationWidget ? <LocationWidget /> : null}
+        {shouldDisplayLocationWidget ? <LocationWidget enableTooltip /> : null}
       </PageHeader>
       <PageContent>
         <Spacer.Column numberOfSpaces={6} />

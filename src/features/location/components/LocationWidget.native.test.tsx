@@ -74,7 +74,7 @@ describe('LocationWidget', () => {
 const renderLocationWidget = () => {
   render(
     <NavigationContainer>
-      <LocationWidget />
+      <LocationWidget enableTooltip />
     </NavigationContainer>
   )
 }
