@@ -54,6 +54,12 @@ type ShareParams = { from: Referrals; social?: Social | 'Other' } & (
   | { type: 'App' }
 )
 
+type ScreenshotParams = { from: string } & (
+  | { offer_id?: number }
+  | { venue_id?: number }
+  | { booking_id?: number }
+)
+
 export type OfferAnalyticsData = {
   offerId?: number
 }
@@ -530,7 +536,7 @@ export const logEventAnalytics = {
     analytics.logEvent({ amplitude: AmplitudeEvent.SCREEN_VIEW_SET_PHONE_VALIDATION_CODE }),
   logScreenViewSetStatus: () =>
     analytics.logEvent({ amplitude: AmplitudeEvent.SCREEN_VIEW_SET_STATUS }),
-  logScreenshot: (params: { from: string; id?: number }) =>
+  logScreenshot: (params: ScreenshotParams) =>
     analytics.logEvent({ firebase: AnalyticsEvent.SCREENSHOT }, params),
   logSearchScrollToPage: (page: number, searchId?: string) =>
     analytics.logEvent({ firebase: AnalyticsEvent.SEARCH_SCROLL_TO_PAGE }, { page, searchId }),
