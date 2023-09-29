@@ -75,12 +75,15 @@ export const SuggestedVenues: FunctionComponent<Props> = ({ query, setSelectedVe
       </View>
       {!!hasResults && (
         <VerticalUl>
-          {filteredVenues.map((item, index) => (
-            <Li key={keyExtractor(item)}>
-              <VenueResult venue={item} onPress={() => setSelectedVenue(item)} />
-              {index + 1 < filteredVenues.length && <Spacer.Column numberOfSpaces={4} />}
-            </Li>
-          ))}
+          {filteredVenues.map((item, index) => {
+            const isLast = index === filteredVenues.length - 1
+            return (
+              <Li key={keyExtractor(item)}>
+                <VenueResult venue={item} onPress={() => setSelectedVenue(item)} />
+                {!isLast && <Spacer.Column numberOfSpaces={4} />}
+              </Li>
+            )
+          })}
         </VerticalUl>
       )}
     </React.Fragment>
