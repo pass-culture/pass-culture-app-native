@@ -8,6 +8,7 @@ import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { useHandleFocus } from 'libs/hooks/useHandleFocus'
 import { useVenues } from 'libs/place'
 import { Li } from 'ui/components/Li'
+import { Spinner } from 'ui/components/Spinner'
 import { TouchableOpacity } from 'ui/components/TouchableOpacity'
 import { VerticalUl } from 'ui/components/Ul'
 import { useArrowNavigationForRadioButton } from 'ui/hooks/useArrowNavigationForRadioButton'
@@ -57,16 +58,20 @@ type Props = {
 export const SuggestedVenues: FunctionComponent<Props> = ({ query, setSelectedVenue }) => {
   const { data: venues = [], isLoading } = useVenues(query)
 
+  if (isLoading) {
+    return <Spinner />
+  }
+
   const filteredVenues: Venue[] = venues.slice(0, MAXIMUM_RESULTS)
 
   return (
     <React.Fragment>
       <HiddenAccessibleResultNumber
         nbResults={filteredVenues.length}
-        show={filteredVenues.length > 0 && !isLoading}
+        show={filteredVenues.length > 0}
       />
       <View accessibilityRole={AccessibilityRole.STATUS}>
-        <NoSuggestedVenues show={filteredVenues.length === 0 && query.length > 0 && !isLoading} />
+        <NoSuggestedVenues show={filteredVenues.length === 0 && query.length > 0} />
       </View>
       {filteredVenues.length > 0 && (
         <VerticalUl>
