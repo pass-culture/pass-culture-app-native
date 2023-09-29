@@ -7,6 +7,7 @@ import { storage, StorageKey } from 'libs/storage'
 
 const UTM_PARAMS = {
   utm_campaign: 'test',
+  utm_gen: 'marketing',
   utm_medium: 'test',
   utm_source: 'test',
   campaign_date: new Date().toISOString(),
@@ -14,6 +15,7 @@ const UTM_PARAMS = {
 
 const EXPECTED_STORAGE: { [key in StorageKey]?: string } = {
   traffic_campaign: UTM_PARAMS.utm_campaign,
+  traffic_gen: UTM_PARAMS.utm_gen,
   traffic_medium: UTM_PARAMS.utm_medium,
   traffic_source: UTM_PARAMS.utm_source,
   campaign_date: UTM_PARAMS.campaign_date,
