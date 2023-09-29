@@ -338,6 +338,44 @@ exports[`<EmailResendModal /> should render correctly 1`] = `
                   ]
                 }
               />
+              <Text
+                style={
+                  [
+                    {
+                      "color": "#696A6F",
+                      "fontFamily": "Montserrat-SemiBold",
+                      "fontSize": 12,
+                      "lineHeight": 16,
+                    },
+                  ]
+                }
+              >
+                Attention, il te reste : 
+                <Text
+                  style={
+                    [
+                      {
+                        "color": "#161617",
+                        "fontFamily": "Montserrat-SemiBold",
+                        "fontSize": 12,
+                        "lineHeight": 16,
+                      },
+                    ]
+                  }
+                >
+                  3 demandes
+                </Text>
+              </Text>
+              <View
+                numberOfSpaces={2}
+                style={
+                  [
+                    {
+                      "height": 8,
+                    },
+                  ]
+                }
+              />
               <View
                 accessibilityLabel="Demander un nouveau lien"
                 accessibilityState={

@@ -120,6 +120,28 @@ describe('<EmailResendModal />', () => {
       )
     ).not.toBeOnTheScreen()
   })
+
+  it('should display alert banner when there is no attempt left', async () => {
+    server.use(
+      rest.get(
+        `${env.API_BASE_URL}/native/v1/email_validation_remaining_resends/john.doe%40example.com`,
+        (_req, res, ctx) =>
+          res(
+            ctx.status(200),
+            ctx.json({ remainingResends: 0, counterResetDatetime: '2023-09-30T12:58:04.065652Z' })
+          )
+      )
+    )
+    renderEmailResendModal({})
+
+    await waitFor(() => {
+      expect(
+        screen.queryByText(
+          'Tu as dépassé le nombre de 3 demandes de lien autorisées. Tu pourras réessayer le 30/09/2023'
+        )
+      ).not.toBeOnTheScreen()
+    })
+  })
 })
 
 const onDismissMock = jest.fn()
@@ -130,11 +152,7 @@ const renderEmailResendModal = ({ emailResendErrorCode }: { emailResendErrorCode
     ),
     rest.get(
       `${env.API_BASE_URL}/native/v1/email_validation_remaining_resends/john.doe%40example.com`,
-      (_req, res, ctx) =>
-        res(
-          ctx.status(200),
-          ctx.json({ remainingResends: 3, counterResetDatetime: '2023-09-30T12:58:04.065652Z' })
-        )
+      (_req, res, ctx) => res(ctx.status(200), ctx.json({ remainingResends: 3 }))
     )
   )
   render(

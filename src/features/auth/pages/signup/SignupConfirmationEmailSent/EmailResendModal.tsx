@@ -2,9 +2,13 @@ import * as React from 'react'
 import styled from 'styled-components/native'
 
 import { ApiError } from 'api/apiHelpers'
+import { useEmailValidationRemainingResends } from 'features/auth/api/useEmailValidationRemainingResend'
 import { useResendEmailValidation } from 'features/auth/api/useResendEmailValidation'
+import { EmailAttemptsLeft } from 'features/auth/pages/signup/SignupConfirmationEmailSent/EmailAttemptsLeft'
 import { analytics } from 'libs/analytics'
+import { formatToSlashedFrenchDate } from 'libs/dates'
 import { eventMonitoring } from 'libs/monitoring'
+import { AlertBanner } from 'ui/components/banners/AlertBanner'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { AppModal } from 'ui/components/modals/AppModal'
 import { Close } from 'ui/svg/icons/Close'
@@ -30,13 +34,30 @@ export const EmailResendModal = ({ email, visible, onDismiss }: Props) => {
     eventMonitoring.captureMessage(`Could not resend validation email: ${error.content}`, 'info')
   }
 
-  const { mutate: resendEmail, isLoading } = useResendEmailValidation({ onError })
+  const { data: remainingResendsResponse, refetch: refetchRemainingResends } =
+    useEmailValidationRemainingResends({
+      email,
+      onError,
+    })
+  const { mutate: resendEmail, isLoading } = useResendEmailValidation({
+    onError,
+    onSuccess: refetchRemainingResends,
+  })
+
+  const retryMessage = remainingResendsResponse?.counterResetDatetime
+    ? ` Tu pourras réessayer le ${formatToSlashedFrenchDate(
+        remainingResendsResponse?.counterResetDatetime
+      )}.`
+    : ''
 
   const onResendPress = () => {
     setErrorMessage(undefined)
     resendEmail({ email })
     analytics.logResendEmailValidation()
   }
+
+  const hasAttemptsLeft =
+    !!remainingResendsResponse?.remainingResends && remainingResendsResponse.remainingResends > 0
 
   return (
     <AppModal
@@ -46,15 +67,28 @@ export const EmailResendModal = ({ email, visible, onDismiss }: Props) => {
       onRightIconPress={onDismiss}
       rightIconAccessibilityLabel="Fermer la modale">
       <ModalContent>
-        <StyledBody>
-          Si après 5 minutes tu n’as pas reçu ton lien de validation par e-mail, tu peux en demander
-          un nouveau.
-        </StyledBody>
-        <Spacer.Column numberOfSpaces={6} />
+        {hasAttemptsLeft ? (
+          <React.Fragment>
+            <StyledBody>
+              Si après 5 minutes tu n’as pas reçu ton lien de validation par e-mail, tu peux en
+              demander un nouveau.
+            </StyledBody>
+            <Spacer.Column numberOfSpaces={6} />
+            <EmailAttemptsLeft attemptsLeft={remainingResendsResponse?.remainingResends} />
+            <Spacer.Column numberOfSpaces={2} />
+          </React.Fragment>
+        ) : (
+          <React.Fragment>
+            <AlertBanner
+              message={`Tu as dépassé le nombre de 3 demandes de lien autorisées.${retryMessage}`}
+            />
+            <Spacer.Column numberOfSpaces={6} />
+          </React.Fragment>
+        )}
         <ButtonPrimary
           wording="Demander un nouveau lien"
           onPress={onResendPress}
-          disabled={isLoading}
+          disabled={isLoading || !hasAttemptsLeft}
         />
         {!!errorMessage && (
           <React.Fragment>
