@@ -148,7 +148,7 @@ const onDismissMock = jest.fn()
 const renderEmailResendModal = ({ emailResendErrorCode }: { emailResendErrorCode?: number }) => {
   server.use(
     rest.post(`${env.API_BASE_URL}/native/v1/resend_email_validation`, (_req, res, ctx) =>
-      res(ctx.status(emailResendErrorCode ?? 200), ctx.text('error'))
+      res(ctx.status(emailResendErrorCode ?? 200), ctx.text(emailResendErrorCode ? 'error' : ''))
     ),
     rest.get(
       `${env.API_BASE_URL}/native/v1/email_validation_remaining_resends/john.doe%40example.com`,
