@@ -49,7 +49,7 @@ export const OfferHeader: React.FC<Props> = (props) => {
   )
 
   const pressShareOffer = useCallback(() => {
-    analytics.logShare({ type: 'Offer', from: 'offer', id: offerId })
+    analytics.logShare({ type: 'Offer', from: 'offer', offer_id: offerId })
     shareOffer()
     showShareOfferModal()
   }, [offerId, shareOffer, showShareOfferModal])
