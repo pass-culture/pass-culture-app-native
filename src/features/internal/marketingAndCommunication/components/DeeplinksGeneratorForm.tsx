@@ -59,14 +59,16 @@ export function getDefaultScreenParams(screenName: ScreensUsedByMarketing) {
 export const DeeplinksGeneratorForm = ({ onCreate }: Props) => {
   const { appContentWidth, isMobileViewport } = useTheme()
   const [selectedScreen, setSelectedScreen] = useState<ScreensUsedByMarketing>('Home')
-  const [screenParams, setScreenParams] = useState<Record<string, unknown>>({})
+  const [screenParams, setScreenParams] = useState<Record<string, unknown>>({
+    utm_gen: 'marketing',
+  })
 
   const { showErrorSnackBar } = useSnackBarContext()
 
   const renderScreenItem = (screenName: ScreensUsedByMarketing) => {
     const onSelectScreenName = () => {
       setSelectedScreen(screenName)
-      setScreenParams(getDefaultScreenParams(screenName))
+      setScreenParams((prev) => ({ ...getDefaultScreenParams(screenName), utm_gen: prev.utm_gen }))
     }
 
     return (
@@ -189,7 +191,6 @@ export const DeeplinksGeneratorForm = ({ onCreate }: Props) => {
 
     const placeholder = config.required ? `${name} (*)` : name
     const sliderLength = appContentWidth / (isMobileViewport ? 1 : 2) - getSpacing(2 * 2 * 6)
-
     return (
       <React.Fragment key={name}>
         <Spacer.Column numberOfSpaces={2} />
@@ -198,6 +199,7 @@ export const DeeplinksGeneratorForm = ({ onCreate }: Props) => {
             placeholder={placeholder}
             onBlur={onBlurValidate}
             onChangeText={onChangeText}
+            defaultValue={screenParams[name] ? String(screenParams[name]) : undefined}
           />
         )}
         {config.type === 'stringArray' && (
