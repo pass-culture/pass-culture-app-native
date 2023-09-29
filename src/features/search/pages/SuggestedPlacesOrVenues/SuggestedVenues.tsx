@@ -62,18 +62,18 @@ export const SuggestedVenues: FunctionComponent<Props> = ({ query, setSelectedVe
     return <Spinner />
   }
 
+  const isQueryProvided = query.length > 0
+
   const filteredVenues: Venue[] = venues.slice(0, MAXIMUM_RESULTS)
+  const hasResults = filteredVenues.length > 0
 
   return (
     <React.Fragment>
-      <HiddenAccessibleResultNumber
-        nbResults={filteredVenues.length}
-        show={filteredVenues.length > 0}
-      />
+      <HiddenAccessibleResultNumber nbResults={filteredVenues.length} show={hasResults} />
       <View accessibilityRole={AccessibilityRole.STATUS}>
-        <NoSuggestedVenues show={filteredVenues.length === 0 && query.length > 0} />
+        <NoSuggestedVenues show={!hasResults && isQueryProvided} />
       </View>
-      {filteredVenues.length > 0 && (
+      {!!hasResults && (
         <VerticalUl>
           {filteredVenues.map((item, index) => (
             <Li key={keyExtractor(item)}>
