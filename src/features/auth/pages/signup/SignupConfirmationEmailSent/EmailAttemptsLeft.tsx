@@ -21,17 +21,13 @@ export const EmailAttemptsLeft: FunctionComponent<Props> = ({ attemptsLeft }) =>
   }
   return (
     <StyledCaption>
-      Attention, il te reste&nbsp;: <StyledInfoText>{`${attemptsLeft} demandes`}</StyledInfoText>
+      Attention, il te reste&nbsp;: <Typo.Caption>{`${attemptsLeft} demandes`}</Typo.Caption>
     </StyledCaption>
   )
 }
 
 const StyledCaption = styled(Typo.Caption)(({ theme }) => ({
   color: theme.colors.greyDark,
-}))
-
-const StyledInfoText = styled(Typo.Caption)(({ theme }) => ({
-  color: theme.colors.black,
 }))
 
 const StyledErrorText = styled(Typo.Caption)(({ theme }) => ({
