@@ -1,7 +1,7 @@
 import isEqual from 'lodash/isEqual'
 import uniqWith from 'lodash/uniqWith'
 import React, { FunctionComponent, useRef } from 'react'
-import { View } from 'react-native'
+import { Platform, View } from 'react-native'
 import styled from 'styled-components/native'
 
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
@@ -46,6 +46,8 @@ const PlaceResult: React.FC<{ place: SuggestedPlace; onPress: () => void }> = ({
   const accessibilityLabel = `${place.label} ${place.info}`
   return (
     <TouchableOpacity
+      // so that the user can press it without dismissing the keyboard
+      {...Platform.select({ default: { shouldUseGestureHandler: true }, web: undefined })}
       accessibilityRole={AccessibilityRole.BUTTON}
       onFocus={onFocus}
       onBlur={onBlur}
