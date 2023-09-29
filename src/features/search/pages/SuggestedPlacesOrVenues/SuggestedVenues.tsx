@@ -15,21 +15,21 @@ import { useArrowNavigationForRadioButton } from 'ui/hooks/useArrowNavigationFor
 import { LocationBuildingFilled } from 'ui/svg/icons/LocationBuildingFilled'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 
-const keyExtractor = (hit: Venue) => {
-  const { label, info } = hit
-  const prefix = `venue-${hit.venueId}`
+const keyExtractor = (venue: Venue) => {
+  const { label, info } = venue
+  const prefix = `venue-${venue.venueId}`
 
   return `${prefix}-${label}-${info}`
 }
 
 const MAXIMUM_RESULTS = 5
 
-const Hit: React.FC<{ hit: Venue; onPress: () => void }> = ({ hit, onPress }) => {
+const VenueResult: React.FC<{ venue: Venue; onPress: () => void }> = ({ venue, onPress }) => {
   const containerRef = useRef(null)
   const { onFocus, onBlur } = useHandleFocus()
   useArrowNavigationForRadioButton(containerRef)
 
-  const accessibilityLabel = `${hit.label} ${hit.info}`
+  const accessibilityLabel = `${venue.label} ${venue.info}`
   return (
     <TouchableOpacity
       accessibilityRole={AccessibilityRole.BUTTON}
@@ -41,9 +41,9 @@ const Hit: React.FC<{ hit: Venue; onPress: () => void }> = ({ hit, onPress }) =>
         <BuildingIcon />
         <Spacer.Row numberOfSpaces={1} />
         <Text>
-          <Typo.ButtonText>{hit.label}</Typo.ButtonText>
+          <Typo.ButtonText>{venue.label}</Typo.ButtonText>
           <Spacer.Row numberOfSpaces={1} />
-          <Typo.Body>{hit.info}</Typo.Body>
+          <Typo.Body>{venue.info}</Typo.Body>
         </Text>
       </RefContainer>
     </TouchableOpacity>
@@ -75,7 +75,7 @@ export const SuggestedVenues: FunctionComponent<Props> = ({ query, setSelectedVe
         <VerticalUl>
           {filteredPlaces.map((item, index) => (
             <Li key={keyExtractor(item)}>
-              <Hit hit={item} onPress={() => setSelectedVenue(item)} />
+              <VenueResult venue={item} onPress={() => setSelectedVenue(item)} />
               {index + 1 < filteredPlaces.length && <Spacer.Column numberOfSpaces={4} />}
             </Li>
           ))}
