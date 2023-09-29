@@ -217,6 +217,30 @@ exports[`<UTMParameters /> should render correctly 1`] = `
       }
     >
       <Text>
+        traffic_gen: 
+      </Text>
+    </View>
+    <View
+      numberOfSpaces={2}
+      style={
+        [
+          {
+            "height": 8,
+          },
+        ]
+      }
+    />
+    <View
+      style={
+        [
+          {
+            "alignItems": "center",
+            "flexDirection": "row",
+          },
+        ]
+      }
+    >
+      <Text>
         traffic_campaign: 
       </Text>
     </View>
