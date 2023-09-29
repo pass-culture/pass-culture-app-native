@@ -1,17 +1,15 @@
-import React, { FunctionComponent, useRef } from 'react'
+import React, { FunctionComponent } from 'react'
 import { View } from 'react-native'
 import styled from 'styled-components/native'
 
 import { HiddenAccessibleResultNumber } from 'features/search/pages/SuggestedPlacesOrVenues/HiddenAccessibleResultNumber'
+import { SuggestedResult } from 'features/search/pages/SuggestedPlacesOrVenues/SuggestedResult'
 import { Venue } from 'features/venue/types'
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
-import { useHandleFocus } from 'libs/hooks/useHandleFocus'
 import { useVenues } from 'libs/place'
 import { Li } from 'ui/components/Li'
 import { Spinner } from 'ui/components/Spinner'
-import { TouchableOpacity } from 'ui/components/TouchableOpacity'
 import { VerticalUl } from 'ui/components/Ul'
-import { useArrowNavigationForRadioButton } from 'ui/hooks/useArrowNavigationForRadioButton'
 import { LocationBuildingFilled } from 'ui/svg/icons/LocationBuildingFilled'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 
@@ -23,32 +21,6 @@ const keyExtractor = (venue: Venue) => {
 }
 
 const MAXIMUM_RESULTS = 5
-
-const VenueResult: React.FC<{ venue: Venue; onPress: () => void }> = ({ venue, onPress }) => {
-  const containerRef = useRef(null)
-  const { onFocus, onBlur } = useHandleFocus()
-  useArrowNavigationForRadioButton(containerRef)
-
-  const accessibilityLabel = `${venue.label} ${venue.info}`
-  return (
-    <TouchableOpacity
-      accessibilityRole={AccessibilityRole.BUTTON}
-      onFocus={onFocus}
-      onBlur={onBlur}
-      onPress={onPress}
-      accessibilityLabel={accessibilityLabel}>
-      <RefContainer ref={containerRef}>
-        <BuildingIcon />
-        <Spacer.Row numberOfSpaces={1} />
-        <Text>
-          <Typo.ButtonText>{venue.label}</Typo.ButtonText>
-          <Spacer.Row numberOfSpaces={1} />
-          <Typo.Body>{venue.info}</Typo.Body>
-        </Text>
-      </RefContainer>
-    </TouchableOpacity>
-  )
-}
 
 type Props = {
   query: string
@@ -79,7 +51,12 @@ export const SuggestedVenues: FunctionComponent<Props> = ({ query, setSelectedVe
             const isLast = index === filteredVenues.length - 1
             return (
               <Li key={keyExtractor(item)}>
-                <VenueResult venue={item} onPress={() => setSelectedVenue(item)} />
+                <SuggestedResult
+                  label={item.label}
+                  info={item.info}
+                  Icon={BuildingIcon}
+                  onPress={() => setSelectedVenue(item)}
+                />
                 {!isLast && <Spacer.Column numberOfSpaces={4} />}
               </Li>
             )
@@ -100,18 +77,6 @@ const NoSuggestedVenues = ({ show }: { show: boolean }) =>
   ) : (
     <React.Fragment />
   )
-
-const RefContainer = styled.View({
-  flexDirection: 'row',
-  alignItems: 'center',
-})
-
-const Text = styled.Text.attrs({
-  numberOfLines: 2,
-})(({ theme }) => ({
-  color: theme.colors.black,
-  flex: 1,
-}))
 
 const DescriptionErrorTextContainer = styled(Typo.Body)({
   marginTop: getSpacing(6),
