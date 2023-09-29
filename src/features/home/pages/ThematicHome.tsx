@@ -49,7 +49,7 @@ export const ThematicHome: FunctionComponent = () => {
   const { params } = useRoute<UseRouteType<'ThematicHome'>>()
   const { modules, id, thematicHeader } = useHomepageData(params.homeId) || {}
 
-  const AnimatedHeader = Animated.createAnimatedComponent(HeaderContainer)
+  const AnimatedHeader = Animated.createAnimatedComponent(AnimatedHeaderContainer)
 
   const { onScroll, headerTransition, imageAnimatedHeight, gradientTranslation, viewTranslation } =
     useOpacityTransition()
@@ -95,7 +95,7 @@ export const ThematicHome: FunctionComponent = () => {
   )
 }
 
-const HeaderContainer = styled.View({
+const AnimatedHeaderContainer = styled.View({
   position: 'absolute',
   top: 0,
   left: 0,
