@@ -1,9 +1,13 @@
 import AsyncStorage from '@react-native-async-storage/async-storage'
 import { useCallback, useEffect, useMemo, useState } from 'react'
 
+import { getNativeCategoryFromEnum } from 'features/search/helpers/categoriesHelpers/categoriesHelpers'
+import { getHistoryItemLabel } from 'features/search/helpers/getHistoryItemLabel/getHistoryItemLabel'
 import { getHistoryLessThan30Days } from 'features/search/helpers/useSearchHistory/helpers/getHistoryLessThan30Days'
 import { CreateHistoryItem, HistoryItem } from 'features/search/types'
 import { eventMonitoring } from 'libs/monitoring'
+import { useSearchGroupLabelMapping } from 'libs/subcategories/mappings'
+import { useSubcategories } from 'libs/subcategories/useSubcategories'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 
 export const HISTORY_KEY = 'search_history'
@@ -12,6 +16,8 @@ export const MIN_HISTORY_RESULTS = 3
 
 export function useSearchHistory() {
   const { showErrorSnackBar } = useSnackBarContext()
+  const { data: subcategoriesData } = useSubcategories()
+  const searchGroupLabelMapping = useSearchGroupLabelMapping()
   const [history, setHistory] = useState<HistoryItem[]>([])
   const [queryHistory, setQueryHistory] = useState<string>('')
 
@@ -86,14 +92,35 @@ export function useSearchHistory() {
           currentHistory = await getHistoryFromStorage()
         }
 
-        const newItems = [{ ...item, createdAt: new Date().getTime() }, ...currentHistory]
+        const categoryLabel = item.category ? searchGroupLabelMapping[item.category] : undefined
+        const nativeCategoryLabel =
+          getNativeCategoryFromEnum(subcategoriesData, item.nativeCategory)?.value ?? undefined
+
+        const newItems = [
+          {
+            ...item,
+            createdAt: new Date().getTime(),
+            label: getHistoryItemLabel({
+              query: item.query,
+              category: categoryLabel,
+              nativeCategory: nativeCategoryLabel,
+            }),
+          },
+          ...currentHistory,
+        ]
         await setHistoryItems(newItems)
         setHistory(newItems)
       } catch (error) {
         eventMonitoring.captureMessage('Impossible d’ajouter l’entrée à l’historique', 'info')
       }
     },
-    [getHistoryFromStorage, setHistoryItems, internalRemoveFromHistory]
+    [
+      getHistoryFromStorage,
+      searchGroupLabelMapping,
+      subcategoriesData,
+      setHistoryItems,
+      internalRemoveFromHistory,
+    ]
   )
 
   const filteredHistory = useMemo(() => {

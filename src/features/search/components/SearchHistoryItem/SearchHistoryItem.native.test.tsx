@@ -28,6 +28,7 @@ jest.mock('features/search/context/SearchWrapper', () => ({
 const defaultItem: HistoryItem = {
   createdAt: new Date('2023-09-25T09:01:00.000Z').getTime(),
   query: 'manga',
+  label: 'manga',
 }
 
 const searchId = uuidv4()

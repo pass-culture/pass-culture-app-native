@@ -142,4 +142,5 @@ export type CreateHistoryItem = {
 
 export type HistoryItem = CreateHistoryItem & {
   createdAt: number
+  label: string
 }

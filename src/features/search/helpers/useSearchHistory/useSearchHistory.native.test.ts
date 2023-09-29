@@ -10,6 +10,7 @@ import {
 } from 'features/search/helpers/useSearchHistory/useSearchHistory'
 import { CreateHistoryItem, HistoryItem } from 'features/search/types'
 import { eventMonitoring } from 'libs/monitoring'
+import { placeholderData as mockData } from 'libs/subcategories/placeholderData'
 import { act, renderHook } from 'tests/utils'
 import { SNACK_BAR_TIME_OUT } from 'ui/components/snackBar/SnackBarContext'
 import { SnackBarHelperSettings } from 'ui/components/snackBar/types'
@@ -20,6 +21,12 @@ const mockShowErrorSnackBar = jest.fn()
 jest.mock('ui/components/snackBar/SnackBarContext', () => ({
   useSnackBarContext: () => ({
     showErrorSnackBar: jest.fn((props: SnackBarHelperSettings) => mockShowErrorSnackBar(props)),
+  }),
+}))
+
+jest.mock('libs/subcategories/useSubcategories', () => ({
+  useSubcategories: () => ({
+    data: mockData,
   }),
 }))
 
@@ -74,7 +81,9 @@ describe('useSearchHistory', () => {
       await result.current.addToHistory(item)
     })
 
-    expect(result.current.filteredHistory).toEqual([{ ...item, createdAt: TODAY_DATE.getTime() }])
+    expect(result.current.filteredHistory).toEqual([
+      { ...item, createdAt: TODAY_DATE.getTime(), label: 'one piece dans Livres' },
+    ])
   })
 
   it('should not capture a message in Sentry when adding to history does not fail', async () => {
@@ -131,7 +140,7 @@ describe('useSearchHistory', () => {
     })
 
     expect(result.current.filteredHistory).toEqual([
-      { ...item, createdAt: TODAY_DATE.getTime() + 1000 },
+      { ...item, createdAt: TODAY_DATE.getTime() + 1000, label: 'one piece dans Livres' },
     ])
   })
 
@@ -148,7 +157,7 @@ describe('useSearchHistory', () => {
 
     expect(AsyncStorage.setItem).toHaveBeenLastCalledWith(
       HISTORY_KEY,
-      JSON.stringify([{ ...item, createdAt: TODAY_DATE.getTime() }])
+      JSON.stringify([{ ...item, createdAt: TODAY_DATE.getTime(), label: 'one piece dans Livres' }])
     )
   })
 
@@ -157,6 +166,7 @@ describe('useSearchHistory', () => {
       createdAt: new Date('2023-09-26T09:00:00.000Z').getTime(),
       query: 'one piece',
       category: SearchGroupNameEnumv2.LIVRES,
+      label: 'one piece dans Livres',
     }
     await AsyncStorage.setItem(HISTORY_KEY, JSON.stringify([item]))
     const { result } = renderHook(useSearchHistory)
@@ -175,6 +185,7 @@ describe('useSearchHistory', () => {
       createdAt: new Date('2023-09-26T09:00:00.000Z').getTime(),
       query: 'one piece',
       category: SearchGroupNameEnumv2.LIVRES,
+      label: 'one piece dans Livres',
     }
     await AsyncStorage.setItem(HISTORY_KEY, JSON.stringify([item]))
     // Set current history
@@ -194,6 +205,7 @@ describe('useSearchHistory', () => {
       createdAt: new Date('2023-09-26T09:00:00.000Z').getTime(),
       query: 'one piece',
       category: SearchGroupNameEnumv2.LIVRES,
+      label: 'one piece dans Livres',
     }
     await AsyncStorage.setItem(HISTORY_KEY, JSON.stringify([item]))
     // Set initial history
@@ -219,6 +231,7 @@ describe('useSearchHistory', () => {
       createdAt: new Date('2023-09-26T09:00:00.000Z').getTime(),
       query: 'one piece',
       category: SearchGroupNameEnumv2.LIVRES,
+      label: 'one piece dans Livres',
     }
 
     await AsyncStorage.setItem(HISTORY_KEY, JSON.stringify([item]))
@@ -243,6 +256,7 @@ describe('useSearchHistory', () => {
       {
         createdAt: new Date('2023-09-25T09:02:00.000Z').getTime(),
         query: 'vinyle',
+        label: 'vinyle',
       },
     ])
   })
