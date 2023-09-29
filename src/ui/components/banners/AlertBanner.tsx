@@ -13,12 +13,11 @@ type Props = {
 
 export const AlertBanner: FunctionComponent<Props> = ({ message, testID, children }) => {
   const theme = useTheme()
-  const Icon = GreyWarning
 
   return (
     <GenericColoredBanner
       message={message}
-      Icon={Icon}
+      Icon={GreyWarning}
       backgroundColor={theme.colors.attentionLight}
       textColor={theme.colors.black}
       testID={testID}>
