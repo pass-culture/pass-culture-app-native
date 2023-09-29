@@ -57,25 +57,23 @@ type Props = {
 export const SuggestedVenues: FunctionComponent<Props> = ({ query, setSelectedVenue }) => {
   const { data: venues = [], isLoading } = useVenues(query)
 
-  const filteredPlaces: Venue[] = venues.slice(0, MAXIMUM_RESULTS)
+  const filteredVenues: Venue[] = venues.slice(0, MAXIMUM_RESULTS)
 
   return (
     <React.Fragment>
       <HiddenAccessibleResultNumber
-        nbResults={filteredPlaces.length}
-        show={filteredPlaces.length > 0 && !isLoading}
+        nbResults={filteredVenues.length}
+        show={filteredVenues.length > 0 && !isLoading}
       />
       <View accessibilityRole={AccessibilityRole.STATUS}>
-        <NoSuggestedPlacesOrVenues
-          show={filteredPlaces.length === 0 && query.length > 0 && !isLoading}
-        />
+        <NoSuggestedVenues show={filteredVenues.length === 0 && query.length > 0 && !isLoading} />
       </View>
-      {filteredPlaces.length > 0 && (
+      {filteredVenues.length > 0 && (
         <VerticalUl>
-          {filteredPlaces.map((item, index) => (
+          {filteredVenues.map((item, index) => (
             <Li key={keyExtractor(item)}>
               <VenueResult venue={item} onPress={() => setSelectedVenue(item)} />
-              {index + 1 < filteredPlaces.length && <Spacer.Column numberOfSpaces={4} />}
+              {index + 1 < filteredVenues.length && <Spacer.Column numberOfSpaces={4} />}
             </Li>
           ))}
         </VerticalUl>
@@ -84,7 +82,7 @@ export const SuggestedVenues: FunctionComponent<Props> = ({ query, setSelectedVe
   )
 }
 
-const NoSuggestedPlacesOrVenues = ({ show }: { show: boolean }) =>
+const NoSuggestedVenues = ({ show }: { show: boolean }) =>
   show ? (
     <DescriptionErrorTextContainer>
       <StyledBody accessibilityLiveRegion="assertive">
