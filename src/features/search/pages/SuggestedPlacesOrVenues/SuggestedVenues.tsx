@@ -2,12 +2,11 @@ import React, { FunctionComponent, useRef } from 'react'
 import { View } from 'react-native'
 import styled from 'styled-components/native'
 
+import { HiddenAccessibleResultNumber } from 'features/search/pages/SuggestedPlacesOrVenues/HiddenAccessibleResultNumber'
 import { Venue } from 'features/venue/types'
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { useHandleFocus } from 'libs/hooks/useHandleFocus'
 import { useVenues } from 'libs/place'
-import { plural } from 'libs/plural'
-import { HiddenAccessibleText } from 'ui/components/HiddenAccessibleText'
 import { Li } from 'ui/components/Li'
 import { TouchableOpacity } from 'ui/components/TouchableOpacity'
 import { VerticalUl } from 'ui/components/Ul'
@@ -62,8 +61,8 @@ export const SuggestedVenues: FunctionComponent<Props> = ({ query, setSelectedVe
 
   return (
     <React.Fragment>
-      <NumberOfResults
-        nbHits={filteredPlaces.length}
+      <HiddenAccessibleResultNumber
+        nbResults={filteredPlaces.length}
         show={filteredPlaces.length > 0 && !isLoading}
       />
       <View accessibilityRole={AccessibilityRole.STATUS}>
@@ -82,19 +81,6 @@ export const SuggestedVenues: FunctionComponent<Props> = ({ query, setSelectedVe
         </VerticalUl>
       )}
     </React.Fragment>
-  )
-}
-
-const NumberOfResults = ({ nbHits, show }: { nbHits: number; show: boolean }) => {
-  const numberOfResults = plural(nbHits, {
-    one: '# résultat',
-    other: '# résultats',
-  })
-
-  return (
-    <HiddenAccessibleText accessibilityRole={AccessibilityRole.STATUS}>
-      {show ? numberOfResults : ''}
-    </HiddenAccessibleText>
   )
 }
 

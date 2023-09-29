@@ -4,11 +4,10 @@ import React, { FunctionComponent, useRef } from 'react'
 import { Platform, View } from 'react-native'
 import styled from 'styled-components/native'
 
+import { HiddenAccessibleResultNumber } from 'features/search/pages/SuggestedPlacesOrVenues/HiddenAccessibleResultNumber'
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { useHandleFocus } from 'libs/hooks/useHandleFocus'
 import { SuggestedPlace, usePlaces } from 'libs/place'
-import { plural } from 'libs/plural'
-import { HiddenAccessibleText } from 'ui/components/HiddenAccessibleText'
 import { Li } from 'ui/components/Li'
 import { Spinner } from 'ui/components/Spinner'
 import { TouchableOpacity } from 'ui/components/TouchableOpacity'
@@ -102,25 +101,6 @@ export const SuggestedPlaces: FunctionComponent<Props> = ({ query, setSelectedPl
         </React.Fragment>
       )}
     </React.Fragment>
-  )
-}
-
-const HiddenAccessibleResultNumber = ({
-  nbResults,
-  show,
-}: {
-  nbResults: number
-  show: boolean
-}) => {
-  const numberOfResults = plural(nbResults, {
-    one: '# résultat',
-    other: '# résultats',
-  })
-
-  return (
-    <HiddenAccessibleText accessibilityRole={AccessibilityRole.STATUS}>
-      {show ? numberOfResults : ''}
-    </HiddenAccessibleText>
   )
 }
 
