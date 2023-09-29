@@ -56,7 +56,7 @@ jobs:
           secrets: |-
             SENTRY_AUTH_TOKEN:passculture-metier-ehp/passculture-app-native-sentry-token
       - name: Switch to google prod account for prod
-        if: ${{ inputs.ENV }} == 'production'
+        if: ${{ inputs.ENV == 'production' }}
         uses: 'google-github-actions/auth@v1'
         with:
           workload_identity_provider: ${{ secrets.GCP_PROD_WORKLOAD_IDENTITY_PROVIDER }}
