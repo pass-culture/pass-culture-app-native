@@ -55,18 +55,20 @@ describe('getStateFromPath()', () => {
 
       it('should save utm parameters in storage if available - offers', async () => {
         customGetStateFromPath(
-          'offre/1188?utm_campaign=push_offre_local&utm_medium=batch&utm_source=push',
+          'offre/1188?utm_campaign=push_offre_local&utm_gen=marketing&utm_medium=batch&utm_source=push',
           linking.config
         )
 
         await waitFor(() => {
           expect(storeUtmParams).toBeCalledWith({
             campaign: 'push_offre_local',
+            gen: 'marketing',
             source: 'push',
             medium: 'batch',
           })
           expect(firebaseAnalytics.setDefaultEventParameters).toBeCalledWith({
             traffic_campaign: 'push_offre_local',
+            traffic_gen: 'marketing',
             traffic_source: 'push',
             traffic_medium: 'batch',
           })
@@ -74,12 +76,19 @@ describe('getStateFromPath()', () => {
       })
 
       it('should save utm parameters in storage if available - search', async () => {
-        customGetStateFromPath('recherche/?isDuo=true&utm_campaign=push_offre', linking.config)
+        customGetStateFromPath(
+          'recherche/?isDuo=true&utm_campaign=push_offre&utm_gen=marketing',
+          linking.config
+        )
 
         await waitFor(() => {
-          expect(storeUtmParams).toBeCalledWith({ campaign: 'push_offre' })
+          expect(storeUtmParams).toBeCalledWith({
+            campaign: 'push_offre',
+            gen: 'marketing',
+          })
           expect(firebaseAnalytics.setDefaultEventParameters).toBeCalledWith({
             traffic_campaign: 'push_offre',
+            traffic_gen: 'marketing',
             traffic_source: undefined,
             traffic_medium: undefined,
           })
@@ -93,6 +102,7 @@ describe('getStateFromPath()', () => {
           expect(storeUtmParams).not.toBeCalled()
           expect(firebaseAnalytics.setDefaultEventParameters).toBeCalledWith({
             traffic_campaign: undefined,
+            traffic_gen: undefined,
             traffic_source: undefined,
             traffic_medium: undefined,
           })
@@ -113,7 +123,7 @@ describe('getStateFromPath()', () => {
 
       it('should not save utm parameters in storage', async () => {
         customGetStateFromPath(
-          'offre/1188?utm_campaign=push_offre_local&utm_medium=batch&utm_source=push',
+          'offre/1188?utm_campaign=push_offre_local&utm_gen=marketing&utm_medium=batch&utm_source=push',
           linking.config
         )
 
@@ -121,6 +131,7 @@ describe('getStateFromPath()', () => {
           expect(storeUtmParams).not.toHaveBeenCalled()
           expect(firebaseAnalytics.setDefaultEventParameters).toBeCalledWith({
             traffic_campaign: undefined,
+            traffic_gen: undefined,
             traffic_source: undefined,
             traffic_medium: undefined,
           })
