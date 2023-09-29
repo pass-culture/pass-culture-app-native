@@ -38,8 +38,7 @@ import {
   useCategoryIdMapping,
   useSubcategoriesMapping,
 } from 'libs/subcategories'
-import { RecommendationApiParams } from 'shared/offer/types'
-import { Offer } from 'shared/offer/types'
+import { Offer, RecommendationApiParams } from 'shared/offer/types'
 import { useOpacityTransition } from 'ui/animations/helpers/useOpacityTransition'
 import { AccessibilityBlock } from 'ui/components/accessibility/AccessibilityBlock'
 import { AccordionItem } from 'ui/components/AccordionItem'
