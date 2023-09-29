@@ -55,8 +55,9 @@ export type RNTextInputProps = Pick<
   | 'autoCorrect'
   | 'autoFocus'
   | 'blurOnSubmit'
-  | 'editable'
+  | 'defaultValue'
   | 'disabled'
+  | 'editable'
   | 'focusable'
   | 'keyboardType'
   | 'maxLength'
@@ -128,6 +129,7 @@ export function getRNTextInputProps(props: TextInputProps): RNTextInputProps {
     autoCorrect: props.autoCorrect,
     autoFocus: props.autoFocus,
     blurOnSubmit: props.blurOnSubmit,
+    defaultValue: props.defaultValue,
     disabled: props.disabled,
     editable: props.editable,
     keyboardType: props.keyboardType,

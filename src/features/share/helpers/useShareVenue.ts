@@ -13,7 +13,7 @@ const doNothingFn = () => {
 
 function getVenueUrl(id: number, utmMedium: string) {
   const path = getScreenPath('Venue', { id })
-  return `${WEBAPP_V2_URL}${path}?utm_campaign=share_venue&utm_medium=${utmMedium}`
+  return `${WEBAPP_V2_URL}${path}?utm_gen=product&utm_campaign=share_venue&utm_medium=${utmMedium}`
 }
 
 export const useShareVenue = (venueId: number, utmMedium: string): ShareOutput => {

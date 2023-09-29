@@ -1004,7 +1004,7 @@ SPEC CHECKSUMS:
   Base64: cecfb41a004124895a7bcee567a89bae5a89d49b
   Batch: 0a7afbf8bcbc2f1a97c7a599760ad998e5ee4ebb
   BatchFirebaseDispatcher: 6758d8dc969b75c667908d922b708ab942690fc0
-  boost: a7c83b31436843459a1961bfd74b96033dc77234
+  boost: 57d2868c099736d80fcd648bf211b4431e51a558
   BVLinearGradient: e3aad03778a456d77928f594a649e96995f1c872
   CocoaAsyncSocket: 065fd1e645c7abab64f7a6a2007a48038fdc6a99
   CodePush: 255d7607f428dcbec39085f81a206b170e01d012
@@ -1047,7 +1047,7 @@ SPEC CHECKSUMS:
   Permission-LocationWhenInUse: 1c80e4797ae587642a83125e80b86686cefeba53
   Permission-Notifications: aa91ec29236626ff59cb60e08389c0a59a9d32c5
   PromisesObjC: c50d2056b5253dadbd6c2bea79b0674bd5a52fa4
-  RCT-Folly: 0080d0a6ebf2577475bda044aa59e2ca1f909cda
+  RCT-Folly: 424b8c9a7a0b9ab2886ffe9c3b041ef628fd4fb1
   RCTRequired: c20235648eeb64a874f55459ceae6b081956318d
   RCTTypeSafety: ca004f1fe0b76f7936f7fe7dfd761a4386cf72f5
   React: b27df2b1da30335cf1bf1909056c4e1c3a3603ae

@@ -9,7 +9,7 @@ import { ScreensUsedByMarketing } from 'features/internal/marketingAndCommunicat
 import { LocationType } from 'features/search/enums'
 import { SearchView } from 'features/search/types'
 import { placeholderData as mockData } from 'libs/subcategories/placeholderData'
-import { render, fireEvent } from 'tests/utils'
+import { fireEvent, render, screen } from 'tests/utils'
 
 jest.mock('libs/subcategories/useSubcategories', () => ({
   useSubcategories: () => ({
@@ -20,7 +20,7 @@ jest.mock('libs/subcategories/useSubcategories', () => ({
 mockdate.set(new Date('2022-08-09T00:00:00Z'))
 
 describe('<DeeplinksGeneratorForm />', () => {
-  it('should render deeplink generator form', () => {
+  it('should render deeplink generator form with marketing as default utm_gen', () => {
     const onCreate = jest.fn()
     const renderAPI = render(<DeeplinksGeneratorForm onCreate={onCreate} />)
     const generateButton = renderAPI.getByTestId('Générer le lien')
@@ -33,8 +33,8 @@ describe('<DeeplinksGeneratorForm />', () => {
 
     expect(onCreate).toHaveBeenNthCalledWith(1, {
       firebaseLink:
-        'https://passcultureapptesting.page.link/?link=https%3A%2F%2Fwebapp-v2.example.com%2Faccueil%3Ffrom%3Ddeeplink&apn=app.android&isi=1557887412&ibi=app.ios&efr=1',
-      universalLink: 'https://webapp-v2.example.com/accueil?from=deeplink',
+        'https://passcultureapptesting.page.link/?link=https%3A%2F%2Fwebapp-v2.example.com%2Faccueil%3Ffrom%3Ddeeplink%26utm_gen%3Dmarketing&apn=app.android&isi=1557887412&ibi=app.ios&efr=1',
+      universalLink: 'https://webapp-v2.example.com/accueil?from=deeplink&utm_gen=marketing',
     })
 
     fireEvent.press(profile)
@@ -42,8 +42,26 @@ describe('<DeeplinksGeneratorForm />', () => {
     fireEvent.press(generateButton)
     expect(onCreate).toHaveBeenNthCalledWith(2, {
       firebaseLink:
-        'https://passcultureapptesting.page.link/?link=https%3A%2F%2Fwebapp-v2.example.com%2Fprofil%3Ffrom%3Ddeeplink&apn=app.android&isi=1557887412&ibi=app.ios&efr=1',
-      universalLink: 'https://webapp-v2.example.com/profil?from=deeplink',
+        'https://passcultureapptesting.page.link/?link=https%3A%2F%2Fwebapp-v2.example.com%2Fprofil%3Ffrom%3Ddeeplink%26utm_gen%3Dmarketing&apn=app.android&isi=1557887412&ibi=app.ios&efr=1',
+      universalLink: 'https://webapp-v2.example.com/profil?from=deeplink&utm_gen=marketing',
+    })
+  })
+
+  it('should create url with utm params', () => {
+    const onCreate = jest.fn()
+    render(<DeeplinksGeneratorForm onCreate={onCreate} />)
+
+    fireEvent.changeText(screen.getByPlaceholderText('utm_gen (*)'), 'product')
+    fireEvent.changeText(screen.getByPlaceholderText('utm_campaign'), 'campaign')
+    fireEvent.changeText(screen.getByPlaceholderText('utm_source'), 'source')
+    fireEvent.changeText(screen.getByPlaceholderText('utm_medium'), 'medium')
+    fireEvent.press(screen.getByText('Générer le lien'))
+
+    expect(onCreate).toHaveBeenNthCalledWith(1, {
+      firebaseLink:
+        'https://passcultureapptesting.page.link/?link=https%3A%2F%2Fwebapp-v2.example.com%2Faccueil%3Futm_gen%3Dproduct%26utm_campaign%3Dcampaign%26utm_source%3Dsource%26utm_medium%3Dmedium&apn=app.android&isi=1557887412&ibi=app.ios&efr=1',
+      universalLink:
+        'https://webapp-v2.example.com/accueil?utm_gen=product&utm_campaign=campaign&utm_source=source&utm_medium=medium',
     })
   })
 
@@ -59,9 +77,9 @@ describe('<DeeplinksGeneratorForm />', () => {
 
     expect(onCreate).toHaveBeenNthCalledWith(1, {
       firebaseLink:
-        'https://passcultureapptesting.page.link/?link=https%3A%2F%2Fwebapp-v2.example.com%2Frecherche%3Fview%3D%2522Results%2522%26showResults%3Dtrue%26locationFilter%3D%257B%2522locationType%2522%253A%2522EVERYWHERE%2522%257D%26noFocus%3Dtrue%26from%3Ddeeplink%26beginningDatetime%3D%25222022-08-09T00%253A00%253A00.000Z%2522%26endingDatetime%3D%25222022-08-09T00%253A00%253A00.000Z%2522&apn=app.android&isi=1557887412&ibi=app.ios&efr=1',
+        'https://passcultureapptesting.page.link/?link=https%3A%2F%2Fwebapp-v2.example.com%2Frecherche%3Fview%3D%2522Results%2522%26showResults%3Dtrue%26locationFilter%3D%257B%2522locationType%2522%253A%2522EVERYWHERE%2522%257D%26noFocus%3Dtrue%26from%3Ddeeplink%26beginningDatetime%3D%25222022-08-09T00%253A00%253A00.000Z%2522%26endingDatetime%3D%25222022-08-09T00%253A00%253A00.000Z%2522%26utm_gen%3Dmarketing&apn=app.android&isi=1557887412&ibi=app.ios&efr=1',
       universalLink:
-        'https://webapp-v2.example.com/recherche?view=%22Results%22&showResults=true&locationFilter=%7B%22locationType%22%3A%22EVERYWHERE%22%7D&noFocus=true&from=deeplink&beginningDatetime=%222022-08-09T00%3A00%3A00.000Z%22&endingDatetime=%222022-08-09T00%3A00%3A00.000Z%22',
+        'https://webapp-v2.example.com/recherche?view=%22Results%22&showResults=true&locationFilter=%7B%22locationType%22%3A%22EVERYWHERE%22%7D&noFocus=true&from=deeplink&beginningDatetime=%222022-08-09T00%3A00%3A00.000Z%22&endingDatetime=%222022-08-09T00%3A00%3A00.000Z%22&utm_gen=marketing',
     })
   })
 
@@ -83,9 +101,9 @@ describe('<DeeplinksGeneratorForm />', () => {
 
     expect(onCreate).toHaveBeenNthCalledWith(1, {
       firebaseLink:
-        'https://passcultureapptesting.page.link/?link=https%3A%2F%2Fwebapp-v2.example.com%2Frecherche%3Fview%3D%2522Results%2522%26showResults%3Dtrue%26locationFilter%3D%257B%2522locationType%2522%253A%2522EVERYWHERE%2522%257D%26noFocus%3Dtrue%26from%3Ddeeplink%26beginningDatetime%3D%25222022-08-09T00%253A00%253A00.000Z%2522%26endingDatetime%3D%25222022-08-09T00%253A00%253A00.000Z%2522%26offerCategories%3D%255B%2522ARTS_LOISIRS_CREATIFS%2522%255D%26offerNativeCategories%3D%255B%2522ARTS_VISUELS%2522%255D&apn=app.android&isi=1557887412&ibi=app.ios&efr=1',
+        'https://passcultureapptesting.page.link/?link=https%3A%2F%2Fwebapp-v2.example.com%2Frecherche%3Fview%3D%2522Results%2522%26showResults%3Dtrue%26locationFilter%3D%257B%2522locationType%2522%253A%2522EVERYWHERE%2522%257D%26noFocus%3Dtrue%26from%3Ddeeplink%26beginningDatetime%3D%25222022-08-09T00%253A00%253A00.000Z%2522%26endingDatetime%3D%25222022-08-09T00%253A00%253A00.000Z%2522%26offerCategories%3D%255B%2522ARTS_LOISIRS_CREATIFS%2522%255D%26offerNativeCategories%3D%255B%2522ARTS_VISUELS%2522%255D%26utm_gen%3Dmarketing&apn=app.android&isi=1557887412&ibi=app.ios&efr=1',
       universalLink:
-        'https://webapp-v2.example.com/recherche?view=%22Results%22&showResults=true&locationFilter=%7B%22locationType%22%3A%22EVERYWHERE%22%7D&noFocus=true&from=deeplink&beginningDatetime=%222022-08-09T00%3A00%3A00.000Z%22&endingDatetime=%222022-08-09T00%3A00%3A00.000Z%22&offerCategories=%5B%22ARTS_LOISIRS_CREATIFS%22%5D&offerNativeCategories=%5B%22ARTS_VISUELS%22%5D',
+        'https://webapp-v2.example.com/recherche?view=%22Results%22&showResults=true&locationFilter=%7B%22locationType%22%3A%22EVERYWHERE%22%7D&noFocus=true&from=deeplink&beginningDatetime=%222022-08-09T00%3A00%3A00.000Z%22&endingDatetime=%222022-08-09T00%3A00%3A00.000Z%22&offerCategories=%5B%22ARTS_LOISIRS_CREATIFS%22%5D&offerNativeCategories=%5B%22ARTS_VISUELS%22%5D&utm_gen=marketing',
     })
 
     categoryButton = getByText('Concerts & festivals')
@@ -96,9 +114,9 @@ describe('<DeeplinksGeneratorForm />', () => {
 
     expect(onCreate).toHaveBeenNthCalledWith(2, {
       firebaseLink:
-        'https://passcultureapptesting.page.link/?link=https%3A%2F%2Fwebapp-v2.example.com%2Frecherche%3Fview%3D%2522Results%2522%26showResults%3Dtrue%26locationFilter%3D%257B%2522locationType%2522%253A%2522EVERYWHERE%2522%257D%26noFocus%3Dtrue%26from%3Ddeeplink%26beginningDatetime%3D%25222022-08-09T00%253A00%253A00.000Z%2522%26endingDatetime%3D%25222022-08-09T00%253A00%253A00.000Z%2522%26offerCategories%3D%255B%2522CONCERTS_FESTIVALS%2522%255D&apn=app.android&isi=1557887412&ibi=app.ios&efr=1',
+        'https://passcultureapptesting.page.link/?link=https%3A%2F%2Fwebapp-v2.example.com%2Frecherche%3Fview%3D%2522Results%2522%26showResults%3Dtrue%26locationFilter%3D%257B%2522locationType%2522%253A%2522EVERYWHERE%2522%257D%26noFocus%3Dtrue%26from%3Ddeeplink%26beginningDatetime%3D%25222022-08-09T00%253A00%253A00.000Z%2522%26endingDatetime%3D%25222022-08-09T00%253A00%253A00.000Z%2522%26offerCategories%3D%255B%2522CONCERTS_FESTIVALS%2522%255D%26utm_gen%3Dmarketing&apn=app.android&isi=1557887412&ibi=app.ios&efr=1',
       universalLink:
-        'https://webapp-v2.example.com/recherche?view=%22Results%22&showResults=true&locationFilter=%7B%22locationType%22%3A%22EVERYWHERE%22%7D&noFocus=true&from=deeplink&beginningDatetime=%222022-08-09T00%3A00%3A00.000Z%22&endingDatetime=%222022-08-09T00%3A00%3A00.000Z%22&offerCategories=%5B%22CONCERTS_FESTIVALS%22%5D',
+        'https://webapp-v2.example.com/recherche?view=%22Results%22&showResults=true&locationFilter=%7B%22locationType%22%3A%22EVERYWHERE%22%7D&noFocus=true&from=deeplink&beginningDatetime=%222022-08-09T00%3A00%3A00.000Z%22&endingDatetime=%222022-08-09T00%3A00%3A00.000Z%22&offerCategories=%5B%22CONCERTS_FESTIVALS%22%5D&utm_gen=marketing',
     })
   })
 })
