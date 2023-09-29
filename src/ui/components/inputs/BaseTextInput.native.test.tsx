@@ -1,7 +1,7 @@
 import React from 'react'
 import { TextInput as RNTextInput } from 'react-native'
 
-import { render } from 'tests/utils'
+import { render, screen } from 'tests/utils'
 
 import { BaseTextInput } from './BaseTextInput'
 
@@ -30,21 +30,9 @@ describe('<BaseTextInput />', () => {
     expect(ref.current?.focus).toBeCalledTimes(1)
   })
 
-  it('should use native autoFocus when prop nativeAutoFocus and autoFocus is true', () => {
-    const ref = React.createRef<RNTextInput>()
-    const renderAPI = render(
-      <BaseTextInput
-        autoFocus
-        placeholder={'placeholder'}
-        value={'value'}
-        ref={ref}
-        nativeAutoFocus
-      />
-    )
+  it('should use default value when provided', () => {
+    render(<BaseTextInput defaultValue="defaultValue" />)
 
-    const nativeTextInput = renderAPI.getByPlaceholderText('placeholder')
-
-    expect(nativeTextInput.props.autoFocus).toBe(true)
-    expect(ref.current?.focus).toBeCalledTimes(0)
+    expect(screen.getByDisplayValue('defaultValue')).toBeTruthy()
   })
 })
