@@ -72,16 +72,14 @@ export const SuggestedVenues: FunctionComponent<Props> = ({ query, setSelectedVe
         />
       </View>
       {filteredPlaces.length > 0 && (
-        <React.Fragment>
-          <VerticalUl>
-            {filteredPlaces.map((item, index) => (
-              <Li key={keyExtractor(item)}>
-                <Hit hit={item} onPress={() => setSelectedVenue(item)} />
-                {index + 1 < filteredPlaces.length && <Spacer.Column numberOfSpaces={4} />}
-              </Li>
-            ))}
-          </VerticalUl>
-        </React.Fragment>
+        <VerticalUl>
+          {filteredPlaces.map((item, index) => (
+            <Li key={keyExtractor(item)}>
+              <Hit hit={item} onPress={() => setSelectedVenue(item)} />
+              {index + 1 < filteredPlaces.length && <Spacer.Column numberOfSpaces={4} />}
+            </Li>
+          ))}
+        </VerticalUl>
       )}
     </React.Fragment>
   )
