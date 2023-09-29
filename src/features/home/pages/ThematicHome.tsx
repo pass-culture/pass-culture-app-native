@@ -17,12 +17,8 @@ import { useOpacityTransition } from 'ui/animations/helpers/useOpacityTransition
 import { Spacer } from 'ui/theme'
 
 const ANIMATED_HEADER_PLACEHOLDER_HEIGHT = 76
-interface Props {
-  headerTransition: Animated.AnimatedInterpolation<string | number>
-  thematicHeader?: ThematicHeader
-}
 
-const SubHeader: FunctionComponent<Props> = ({ thematicHeader }) => {
+const SubHeader: FunctionComponent<{ thematicHeader?: ThematicHeader }> = ({ thematicHeader }) => {
   if (thematicHeader?.type === ThematicHeaderType.Highlight)
     if (Platform.OS === 'ios') {
       return <Spacer.Column numberOfSpaces={ANIMATED_HEADER_PLACEHOLDER_HEIGHT} />
@@ -74,7 +70,7 @@ export const ThematicHome: FunctionComponent = () => {
       <GenericHome
         modules={modules}
         homeId={id}
-        Header={<SubHeader thematicHeader={thematicHeader} headerTransition={headerTransition} />}
+        Header={<SubHeader thematicHeader={thematicHeader} />}
         shouldDisplayScrollToTop
         onScroll={onScroll}
         videoModuleId={params.videoModuleId}
