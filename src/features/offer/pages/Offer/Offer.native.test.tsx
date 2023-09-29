@@ -8,12 +8,12 @@ import * as useSimilarOffers from 'features/offer/api/useSimilarOffers'
 import { PlaylistType } from 'features/offer/enums'
 import { offerResponseSnap } from 'features/offer/fixtures/offerResponse'
 import { offerId, renderOfferPage } from 'features/offer/helpers/renderOfferPageTestUtil'
-import { SimilarOffersResponseParams } from 'features/offer/types'
 import { beneficiaryUser } from 'fixtures/user'
 import { mockedAlgoliaResponse } from 'libs/algolia/__mocks__/mockedAlgoliaResponse'
 import { analytics } from 'libs/analytics'
 import { env } from 'libs/environment'
 import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
+import { RecommendationApiParams } from 'shared/offer/types'
 import { server } from 'tests/server'
 import { act, fireEvent, screen, waitFor } from 'tests/utils'
 import { SNACK_BAR_TIME_OUT } from 'ui/components/snackBar/SnackBarContext'
@@ -45,7 +45,7 @@ const mockedOpenUrl = openUrl as jest.MockedFunction<typeof openUrl>
 
 jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockReturnValue(true)
 
-const apiRecoParams: SimilarOffersResponseParams = {
+const apiRecoParams: RecommendationApiParams = {
   call_id: '1',
   filtered: true,
   geo_located: false,

@@ -24,13 +24,13 @@ import { openUrl } from 'features/navigation/helpers'
 import { Referrals, UseRouteType } from 'features/navigation/RootNavigator/types'
 import { getBookingOfferId } from 'features/offer/helpers/getBookingOfferId/getBookingOfferId'
 import { getIsFreeDigitalOffer } from 'features/offer/helpers/getIsFreeDigitalOffer/getIsFreeDigitalOffer'
-import { SimilarOffersResponseParams } from 'features/offer/types'
 import { isUserUnderageBeneficiary } from 'features/profile/helpers/isUserUnderageBeneficiary'
 import { analytics } from 'libs/analytics'
 import { useSubcategoriesMapping } from 'libs/subcategories'
 import { Subcategory } from 'libs/subcategories/types'
 import { getDigitalOfferBookingWording } from 'shared/getDigitalOfferBookingWording/getDigitalOfferBookingWording'
 import { OfferModal } from 'shared/offer/enums'
+import { RecommendationApiParams } from 'shared/offer/types'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 import { ExternalNavigationProps, InternalNavigationProps } from 'ui/components/touchableLink/types'
 
@@ -250,7 +250,7 @@ export const useCtaWordingAndAction = (props: {
   const { data: endedBooking } = useEndedBookingFromOfferId(offerId)
   const { showErrorSnackBar } = useSnackBarContext()
   const route = useRoute<UseRouteType<'Offer'>>()
-  const apiRecoParams: SimilarOffersResponseParams = route.params?.apiRecoParams
+  const apiRecoParams: RecommendationApiParams = route.params?.apiRecoParams
     ? JSON.parse(route.params?.apiRecoParams)
     : undefined
   const playlistType = route.params?.playlistType
