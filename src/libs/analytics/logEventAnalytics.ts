@@ -48,6 +48,18 @@ type ConsultHomeParams =
   | CategoryBlockThematicHome
   | HighlightThematicBlockThematicHome
 
+type ShareParams = { from: Referrals; social?: Social | 'Other' } & (
+  | { type: 'Offer'; offer_id: number }
+  | { type: 'Venue'; venue_id: number }
+  | { type: 'App' }
+)
+
+type ScreenshotParams = { from: string } & (
+  | { offer_id?: number }
+  | { venue_id?: number }
+  | { booking_id?: number }
+)
+
 export type OfferAnalyticsData = {
   offerId?: number
 }
@@ -524,7 +536,7 @@ export const logEventAnalytics = {
     analytics.logEvent({ amplitude: AmplitudeEvent.SCREEN_VIEW_SET_PHONE_VALIDATION_CODE }),
   logScreenViewSetStatus: () =>
     analytics.logEvent({ amplitude: AmplitudeEvent.SCREEN_VIEW_SET_STATUS }),
-  logScreenshot: (params: { from: string; id?: number }) =>
+  logScreenshot: (params: ScreenshotParams) =>
     analytics.logEvent({ firebase: AnalyticsEvent.SCREENSHOT }, params),
   logSearchScrollToPage: (page: number, searchId?: string) =>
     analytics.logEvent({ firebase: AnalyticsEvent.SEARCH_SCROLL_TO_PAGE }, { page, searchId }),
@@ -554,12 +566,7 @@ export const logEventAnalytics = {
   logSetPostalCodeClicked: () =>
     analytics.logEvent({ amplitude: AmplitudeEvent.SET_POSTAL_CODE_CLICKED }),
   logSetStatusClicked: () => analytics.logEvent({ amplitude: AmplitudeEvent.SET_STATUS_CLICKED }),
-  logShare: (params: {
-    type: 'App' | 'Offer' | 'Venue'
-    from: Referrals
-    id: number
-    social?: Social | 'Other'
-  }) => analytics.logEvent({ firebase: AnalyticsEvent.SHARE }, params),
+  logShare: (params: ShareParams) => analytics.logEvent({ firebase: AnalyticsEvent.SHARE }, params),
   logShareApp: ({ from, type }: { from?: Referrals; type?: ShareAppModalType }) =>
     analytics.logEvent({ firebase: AnalyticsEvent.SHARE_APP }, { from, type }),
   logShowParentInformationModal: () =>

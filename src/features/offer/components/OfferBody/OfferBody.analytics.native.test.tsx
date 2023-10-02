@@ -137,7 +137,7 @@ describe('<OfferBody /> - Analytics', () => {
     expect(analytics.logShare).toHaveBeenNthCalledWith(1, {
       type: 'Offer',
       from: 'offer',
-      id: offerId,
+      offer_id: offerId,
       social: Network.instagram,
     })
   })
@@ -151,7 +151,7 @@ describe('<OfferBody /> - Analytics', () => {
     expect(analytics.logShare).toHaveBeenNthCalledWith(1, {
       type: 'Offer',
       from: 'offer',
-      id: offerId,
+      offer_id: offerId,
       social: 'Other',
     })
   })

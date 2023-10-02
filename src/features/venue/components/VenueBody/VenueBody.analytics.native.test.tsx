@@ -75,7 +75,7 @@ it('should log when the user shares the offer on a certain medium', async () => 
   expect(analytics.logShare).toHaveBeenNthCalledWith(1, {
     type: 'Venue',
     from: 'venue',
-    id: venueId,
+    venue_id: venueId,
     social: Network.instagram,
   })
 })
