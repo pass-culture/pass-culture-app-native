@@ -13,6 +13,8 @@ import {
   MappingTree,
 } from 'features/search/helpers/categoriesHelpers/mapping-tree'
 import { DescriptionContext } from 'features/search/types'
+import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
+import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { useSubcategories } from 'libs/subcategories/useSubcategories'
 import { Li } from 'ui/components/Li'
 import { RadioButton } from 'ui/components/radioButtons/RadioButton'
@@ -52,6 +54,9 @@ export function CategoriesSection<
   value,
 }: CategoriesSectionProps<T, N>) {
   const { data: subcategoriesData } = useSubcategories()
+  const displaySearchNbFacetResults = useFeatureFlag(
+    RemoteStoreFeatureFlags.WIP_DISPLAY_SEARCH_NB_FACET_RESULTS
+  )
 
   const handleGetIcon = (category: SearchGroupNameEnumv2) => {
     if (getIcon) {
@@ -85,7 +90,6 @@ export function CategoriesSection<
             const shouldHideArrow = !item.children
             const key = k as N
             const nbResultsFacet = getNbResultsFacetLabel(item.nbResultsFacet)
-
             return (
               <ListItem key={k}>
                 <Spacer.Column numberOfSpaces={3} />
@@ -96,7 +100,7 @@ export function CategoriesSection<
                     isSelected={key === value}
                     onSelect={() => handleSelect(key)}
                     icon={handleGetIcon(k as SearchGroupNameEnumv2)}
-                    complement={nbResultsFacet}
+                    complement={displaySearchNbFacetResults ? nbResultsFacet : undefined}
                   />
                 ) : (
                   <FilterRow
@@ -106,7 +110,7 @@ export function CategoriesSection<
                     description={getDescription(subcategoriesData, descriptionContext, k)}
                     onPress={() => handleSelect(key)}
                     captionId={k}
-                    complement={nbResultsFacet}
+                    complement={displaySearchNbFacetResults ? nbResultsFacet : undefined}
                   />
                 )}
                 <Spacer.Column numberOfSpaces={3} />
