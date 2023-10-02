@@ -59,7 +59,7 @@ exports[`<EmailResendModal /> should render correctly 1`] = `
         "bottom": 0,
         "height": 1334,
         "left": 0,
-        "opacity": 0,
+        "opacity": 0.7,
         "position": "absolute",
         "right": 0,
         "top": 0,
@@ -100,7 +100,7 @@ exports[`<EmailResendModal /> should render correctly 1`] = `
         "top": "auto",
         "transform": [
           {
-            "translateY": 1334,
+            "translateY": 0,
           },
         ],
       }
@@ -334,6 +334,44 @@ exports[`<EmailResendModal /> should render correctly 1`] = `
                   [
                     {
                       "height": 24,
+                    },
+                  ]
+                }
+              />
+              <Text
+                style={
+                  [
+                    {
+                      "color": "#696A6F",
+                      "fontFamily": "Montserrat-SemiBold",
+                      "fontSize": 12,
+                      "lineHeight": 16,
+                    },
+                  ]
+                }
+              >
+                Attention, il te reste : 
+                <Text
+                  style={
+                    [
+                      {
+                        "color": "#161617",
+                        "fontFamily": "Montserrat-SemiBold",
+                        "fontSize": 12,
+                        "lineHeight": 16,
+                      },
+                    ]
+                  }
+                >
+                  3 demandes
+                </Text>
+              </Text>
+              <View
+                numberOfSpaces={2}
+                style={
+                  [
+                    {
+                      "height": 8,
                     },
                   ]
                 }

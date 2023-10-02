@@ -9,6 +9,7 @@ export enum QueryKeys {
   CULTURAL_SURVEY_QUESTIONS = 'culturalSurveyQuestions',
   EMAIL_CHANGE_EXPIRATION_TIMESTAMP = 'emailChangeExpirationTimestamp',
   EMAIL_UPDATE_STATUS = 'emailUpdateStatus',
+  EMAIL_VALIDATION_REMAINING_ATTEMPTS = 'emailValidationRemainingAttempts',
   ERROR_ASYNC = 'errorAsync',
   FAVORITES = 'favorites',
   FAVORITES_COUNT = 'favoritesCount',
