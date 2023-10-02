@@ -14,8 +14,10 @@ const displayParameters: DisplayParametersFields = {
 }
 
 jest.mock('react-query')
-jest.mock('features/home/api/useHomeRecommendedHits', () => ({
-  useHomeRecommendedHits: jest.fn(() => mockedAlgoliaResponse.hits),
+jest.mock('features/home/api/useHomeRecommendedOffers', () => ({
+  useHomeRecommendedOffers: jest.fn(() => ({
+    offers: mockedAlgoliaResponse.hits,
+  })),
 }))
 
 describe('RecommendationModule', () => {

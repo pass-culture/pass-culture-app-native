@@ -311,7 +311,7 @@ exports[`NonEligibleModal should render correctly for onboarding non-eligible ov
         }
       />
       <View
-        accessibilityLabel="Explorer l’application"
+        accessibilityLabel="Explorer le catalogue"
         accessibilityState={
           {
             "busy": undefined,
@@ -357,7 +357,7 @@ exports[`NonEligibleModal should render correctly for onboarding non-eligible ov
             "width": "100%",
           }
         }
-        testID="Explorer l’application"
+        testID="Explorer le catalogue"
       >
         <Text
           adjustsFontSizeToFit={false}
@@ -375,7 +375,7 @@ exports[`NonEligibleModal should render correctly for onboarding non-eligible ov
             ]
           }
         >
-          Explorer l’application
+          Explorer le catalogue
         </Text>
       </View>
     </View>
@@ -803,7 +803,7 @@ exports[`NonEligibleModal should render correctly for onboarding non-eligible un
         }
       />
       <View
-        accessibilityLabel="Explorer l’application"
+        accessibilityLabel="Explorer le catalogue"
         accessibilityState={
           {
             "busy": undefined,
@@ -849,7 +849,7 @@ exports[`NonEligibleModal should render correctly for onboarding non-eligible un
             "width": "100%",
           }
         }
-        testID="Explorer l’application"
+        testID="Explorer le catalogue"
       >
         <Text
           adjustsFontSizeToFit={false}
@@ -867,7 +867,7 @@ exports[`NonEligibleModal should render correctly for onboarding non-eligible un
             ]
           }
         >
-          Explorer l’application
+          Explorer le catalogue
         </Text>
       </View>
     </View>
@@ -1198,7 +1198,7 @@ exports[`NonEligibleModal should render correctly for profile tutorial non-eligi
         }
       />
       <View
-        accessibilityLabel="Explorer l’application"
+        accessibilityLabel="Explorer le catalogue"
         accessibilityState={
           {
             "busy": undefined,
@@ -1244,7 +1244,7 @@ exports[`NonEligibleModal should render correctly for profile tutorial non-eligi
             "width": "100%",
           }
         }
-        testID="Explorer l’application"
+        testID="Explorer le catalogue"
       >
         <Text
           adjustsFontSizeToFit={false}
@@ -1262,7 +1262,7 @@ exports[`NonEligibleModal should render correctly for profile tutorial non-eligi
             ]
           }
         >
-          Explorer l’application
+          Explorer le catalogue
         </Text>
       </View>
     </View>
@@ -1592,7 +1592,7 @@ exports[`NonEligibleModal should render correctly for profile tutorial non-eligi
         }
       />
       <View
-        accessibilityLabel="Explorer l’application"
+        accessibilityLabel="Explorer le catalogue"
         accessibilityState={
           {
             "busy": undefined,
@@ -1638,7 +1638,7 @@ exports[`NonEligibleModal should render correctly for profile tutorial non-eligi
             "width": "100%",
           }
         }
-        testID="Explorer l’application"
+        testID="Explorer le catalogue"
       >
         <Text
           adjustsFontSizeToFit={false}
@@ -1656,7 +1656,7 @@ exports[`NonEligibleModal should render correctly for profile tutorial non-eligi
             ]
           }
         >
-          Explorer l’application
+          Explorer le catalogue
         </Text>
       </View>
     </View>

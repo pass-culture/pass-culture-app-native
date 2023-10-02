@@ -19,7 +19,11 @@ const WIDGET_HEIGHT = getSpacing(10 + 1 + 4) // roundedButton + padding + captio
 const TOOLTIP_WIDTH = getSpacing(58)
 const TOOLTIP_POINTER_DISTANCE_FROM_RIGHT = getSpacing(5)
 
-export const LocationWidget: React.FC = () => {
+interface LocationWidgetProps {
+  enableTooltip: boolean
+}
+
+export const LocationWidget = ({ enableTooltip }: LocationWidgetProps) => {
   const touchableRef = React.useRef<HTMLButtonElement>()
   const [isTooltipVisible, setIsTooltipVisible] = React.useState(false)
   const [widgetWidth, setWidgetWidth] = React.useState<number | undefined>()
@@ -55,7 +59,7 @@ export const LocationWidget: React.FC = () => {
   }, [])
 
   useEffect(() => {
-    if (!isSplashScreenHidden) return
+    if (!isSplashScreenHidden || !enableTooltip) return
 
     const displayTooltipIfNeeded = async () => {
       const timesLocationTooltipHasBeenDisplayed = Number(
@@ -87,12 +91,14 @@ export const LocationWidget: React.FC = () => {
 
   return (
     <React.Fragment>
-      <StyledTooltip
-        label="Configure ta position et découvre les offres dans la zone géographique de ton choix."
-        isVisible={isTooltipVisible}
-        onHide={hideTooltip}
-        widgetWidth={widgetWidth}
-      />
+      {enableTooltip ? (
+        <StyledTooltip
+          label="Configure ta position et découvre les offres dans la zone géographique de ton choix."
+          isVisible={isTooltipVisible}
+          onHide={hideTooltip}
+          widgetWidth={widgetWidth}
+        />
+      ) : null}
       <StyledTouchable
         onPress={showLocationModal}
         accessibilityLabel="Ouvrir la modale de localisation"

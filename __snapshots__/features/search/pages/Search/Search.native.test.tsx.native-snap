@@ -34,38 +34,59 @@ exports[`<Search/> should render Search 1`] = `
       ]
     }
   >
-    <View>
-      <Text
-        htmlFor="testUuidV4"
-        style={
-          [
-            {
-              "color": "#161617",
-              "fontFamily": "Montserrat-Black",
-              "fontSize": 26,
-              "lineHeight": 34,
-            },
-          ]
-        }
-      >
-        Rechercher
-      </Text>
-    </View>
-    <Text
+    <View
       style={
         [
           {
-            "color": "#696A6F",
-            "fontFamily": "Montserrat-SemiBold",
-            "fontSize": 12,
-            "lineHeight": 16,
-            "marginTop": 4,
+            "flexDirection": "row",
+            "justifyContent": "space-between",
           },
         ]
       }
     >
-      Toutes les offres à portée de main
-    </Text>
+      <View
+        style={
+          [
+            {
+              "flexShrink": 1,
+            },
+          ]
+        }
+      >
+        <View>
+          <Text
+            htmlFor="testUuidV4"
+            style={
+              [
+                {
+                  "color": "#161617",
+                  "fontFamily": "Montserrat-Black",
+                  "fontSize": 26,
+                  "lineHeight": 34,
+                },
+              ]
+            }
+          >
+            Rechercher
+          </Text>
+        </View>
+        <Text
+          style={
+            [
+              {
+                "color": "#696A6F",
+                "fontFamily": "Montserrat-SemiBold",
+                "fontSize": 12,
+                "lineHeight": 16,
+                "marginTop": 4,
+              },
+            ]
+          }
+        >
+          Toutes les offres à portée de main
+        </Text>
+      </View>
+    </View>
     <View
       numberOfSpaces={4}
       style={

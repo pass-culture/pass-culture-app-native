@@ -168,6 +168,7 @@ export const LocationModal = ({ visible, dismissModal }: LocationModalProps) => 
         <React.Fragment>
           <Spacer.Column numberOfSpaces={4} />
           <SearchInput
+            autoFocus
             LeftIcon={StyledMagnifyingGlass}
             inputHeight="regular"
             onChangeText={onChangePlace}

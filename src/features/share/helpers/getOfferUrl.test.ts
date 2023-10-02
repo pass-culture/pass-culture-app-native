@@ -8,7 +8,7 @@ describe('getOfferUrl', () => {
     const offerUrl = getOfferUrl(mockOffer.id, 'utm_medium')
 
     expect(offerUrl).toEqual(
-      `${WEBAPP_V2_URL}/offre/146112?utm_campaign=share_offer&utm_medium=utm_medium`
+      `${WEBAPP_V2_URL}/offre/146112?utm_gen=product&utm_campaign=share_offer&utm_medium=utm_medium`
     )
   })
 })

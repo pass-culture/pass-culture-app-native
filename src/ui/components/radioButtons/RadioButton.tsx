@@ -137,11 +137,12 @@ const StyledTouchableOpacity = styled(TouchableOpacity)<{ marginVertical: number
 
 const Label = styled(Typo.ButtonText)<{ isSelected: boolean }>(({ isSelected, theme }) => ({
   color: isSelected ? theme.colors.primary : theme.colors.black,
+  flexGrow: 1,
+  flexShrink: 1,
 }))
 
 const ComplementLabel = styled(Typo.Caption)<{ isSelected: boolean }>(({ isSelected, theme }) => ({
   color: isSelected ? theme.colors.primary : theme.colors.greyDark,
-  flexShrink: 0,
   marginLeft: getSpacing(1),
 }))
 
@@ -175,4 +176,5 @@ const ContainerWithComplement = styled.View({
   flexDirection: 'row',
   alignItems: 'center',
   justifyContent: 'space-between',
+  flex: 1,
 })

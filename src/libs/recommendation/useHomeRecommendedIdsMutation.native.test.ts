@@ -1,8 +1,6 @@
 /* eslint-disable local-rules/no-react-query-provider-hoc */
 import { rest } from 'msw'
 
-// eslint-disable-next-line no-restricted-imports
-import { firebaseAnalytics } from 'libs/firebase/analytics'
 import { eventMonitoring } from 'libs/monitoring'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { server } from 'tests/server'
@@ -54,32 +52,5 @@ describe('useHomeRecommendedIdsMutation', () => {
     await act(async () => {})
 
     expect(result.current.data).toEqual(body)
-  })
-
-  it('should log response body parameters on firebase when fetch call succeeds', async () => {
-    const params = {
-      reco_origin: 'cold_start',
-      model_name: 'awesome_model',
-      model_version: 'awesome_model_V202201010001',
-      geo_located: true,
-      ab_test: 'A',
-      filtered: true,
-    }
-    const body = { playlist_recommended_offers: ['102280', '102272', '102249', '102310'], params }
-    mockFetch.mockResolvedValueOnce(
-      new Response(JSON.stringify(body), {
-        headers: {
-          'content-type': 'application/json',
-        },
-        status: 200,
-      })
-    )
-    const { result } = renderHook(() => useHomeRecommendedIdsMutation(), {
-      wrapper: ({ children }) => reactQueryProviderHOC(children),
-    })
-    result.current.mutate({ endpointUrl: 'http://passculture.reco' })
-    await waitFor(() => {
-      expect(firebaseAnalytics.setDefaultEventParameters).toHaveBeenCalledWith(params)
-    })
   })
 })

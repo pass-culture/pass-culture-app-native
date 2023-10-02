@@ -16,6 +16,7 @@ const cookiesNameEnumUTM =
 
 export const generateUTMKeys = [
   'traffic_campaign',
+  'traffic_gen',
   'traffic_medium',
   'traffic_source',
   'campaign_date',
