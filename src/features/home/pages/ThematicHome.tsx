@@ -8,6 +8,7 @@ import { GeolocationBanner } from 'features/home/components/banners/GeolocationB
 import { AnimatedHighlightThematicHomeHeader } from 'features/home/components/headers/AnimatedHighlightThematicHomeHeader'
 import { CategoryThematicHomeHeader } from 'features/home/components/headers/CategoryThematicHomeHeader'
 import { DefaultThematicHomeHeader } from 'features/home/components/headers/DefaultThematicHomeHeader'
+import { Introduction } from 'features/home/components/headers/highlightThematic/Introduction'
 import { HighlightThematicHomeHeader } from 'features/home/components/headers/HighlightThematicHomeHeader'
 import { ThematicHomeHeader } from 'features/home/components/headers/ThematicHomeHeader'
 import { useHomePosition } from 'features/home/helpers/useHomePosition'
@@ -23,7 +24,17 @@ const ANIMATED_HEADER_PLACEHOLDER_HEIGHT = 76
 const SubHeader: FunctionComponent<{ thematicHeader?: ThematicHeader }> = ({ thematicHeader }) => {
   if (thematicHeader?.type === ThematicHeaderType.Highlight) {
     if (Platform.OS === 'ios') {
-      return <Spacer.Column numberOfSpaces={ANIMATED_HEADER_PLACEHOLDER_HEIGHT} />
+      return (
+        <React.Fragment>
+          <Spacer.Column numberOfSpaces={ANIMATED_HEADER_PLACEHOLDER_HEIGHT} />
+          {!!(thematicHeader.introductionTitle && thematicHeader.introductionParagraph) && (
+            <Introduction
+              title={thematicHeader.introductionTitle}
+              paragraph={thematicHeader.introductionParagraph}
+            />
+          )}
+        </React.Fragment>
+      )
     }
     return <HighlightThematicHomeHeader {...thematicHeader} />
   }

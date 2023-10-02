@@ -5,7 +5,6 @@ import styled from 'styled-components/native'
 import { BlackGradient } from 'features/home/components/BlackGradient'
 import { HEADER_BLACK_BACKGROUND_HEIGHT } from 'features/home/components/constants'
 import { BlackBackground } from 'features/home/components/headers/BlackBackground'
-import { Introduction } from 'features/home/components/headers/highlightThematic/Introduction'
 import { computeDateRangeDisplay } from 'features/home/components/helpers/computeDateRangeDisplay'
 import { HighlightThematicHeader } from 'features/home/types'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
@@ -23,16 +22,12 @@ export const AnimatedHighlightThematicHomeHeader: FunctionComponent<
   imageUrl,
   beginningDate,
   endingDate,
-  introductionTitle,
-  introductionParagraph,
   gradientTranslation,
   imageAnimatedHeight,
 }) => {
   const { top } = useCustomSafeInsets()
 
   const dateRange = computeDateRangeDisplay(beginningDate, endingDate)
-
-  const shouldShowIntroduction = !!introductionTitle && !!introductionParagraph
 
   const AnimatedImage = Animated.createAnimatedComponent(StyledImage)
   const AnimatedBlackBackground = Animated.createAnimatedComponent(BlackBackground)
@@ -59,9 +54,6 @@ export const AnimatedHighlightThematicHomeHeader: FunctionComponent<
           <Title numberOfLines={2}>{title}</Title>
         </AnimatedBlackBackground>
       </TextContainer>
-      {shouldShowIntroduction ? (
-        <Introduction title={introductionTitle} paragraph={introductionParagraph} />
-      ) : null}
     </Container>
   )
 }
