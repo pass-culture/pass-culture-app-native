@@ -1,11 +1,13 @@
 import React from 'react'
 
+import { navigateToHome } from 'features/navigation/helpers'
 import * as NavigationHelpers from 'features/navigation/helpers/openUrl'
 import { NonEligible, TutorialTypes } from 'features/tutorial/enums'
 import { NonEligibleModal } from 'features/tutorial/pages/NonEligibleModal'
 import { env } from 'libs/environment/__mocks__/envFixtures'
 import { fireEvent, render } from 'tests/utils'
 
+jest.mock('features/navigation/helpers/navigateToHome')
 const openUrl = jest.spyOn(NavigationHelpers, 'openUrl')
 const hideModal = jest.fn()
 
@@ -45,14 +47,38 @@ describe('NonEligibleModal', () => {
   )
 
   it.each(Object.values(NonEligible))(
-    'should close modal when pressing "j’ai compris"',
+    'should close modal when pressing "Explorer le catalogue"',
     (userStatus) => {
       const { getByText } = renderNonEligibleModal(userStatus, TutorialTypes.ONBOARDING)
 
-      const button = getByText('Explorer l’application')
+      const button = getByText('Explorer le catalogue')
       fireEvent.press(button)
 
       expect(hideModal).toHaveBeenCalledTimes(1)
+    }
+  )
+
+  it.each(Object.values(NonEligible))(
+    'should navigate to home when pressing "Explorer le catalogue" on profile tutorial',
+    (userStatus) => {
+      const { getByText } = renderNonEligibleModal(userStatus, TutorialTypes.PROFILE_TUTORIAL)
+
+      const button = getByText('Explorer le catalogue')
+      fireEvent.press(button)
+
+      expect(navigateToHome).toHaveBeenCalledTimes(1)
+    }
+  )
+
+  it.each(Object.values(NonEligible))(
+    'should not navigate to home when pressing "Explorer le catalogue" on onboarding',
+    (userStatus) => {
+      const { getByText } = renderNonEligibleModal(userStatus, TutorialTypes.ONBOARDING)
+
+      const button = getByText('Explorer le catalogue')
+      fireEvent.press(button)
+
+      expect(navigateToHome).not.toHaveBeenCalled()
     }
   )
 

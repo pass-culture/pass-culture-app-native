@@ -1,7 +1,7 @@
 import React, { useCallback } from 'react'
 import styled from 'styled-components/native'
 
-import { openUrl } from 'features/navigation/helpers'
+import { navigateToHome, openUrl } from 'features/navigation/helpers'
 import { NonEligible, TutorialTypes } from 'features/tutorial/enums'
 import { getModalInfoForNonEligible } from 'features/tutorial/helpers/getModalInfoForNonEligible'
 import { env } from 'libs/environment'
@@ -30,6 +30,11 @@ export const NonEligibleModal = ({ visible, hideModal, userStatus, type }: Props
     openUrl(env.FAQ_LINK_CREDIT)
   }, [])
 
+  const onButtonPress = () => {
+    hideModal()
+    if (type === TutorialTypes.PROFILE_TUTORIAL) navigateToHome()
+  }
+
   return (
     <AppInformationModal visible={visible} title={title} onCloseIconPress={hideModal}>
       <Spacer.Column numberOfSpaces={2} />
@@ -49,7 +54,7 @@ export const NonEligibleModal = ({ visible, hideModal, userStatus, type }: Props
       <Spacer.Column numberOfSpaces={4} />
       <StyledBody>{secondParagraph}</StyledBody>
       <Spacer.Column numberOfSpaces={8} />
-      <ButtonPrimary onPress={hideModal} wording={'Explorer l’application'} />
+      <ButtonPrimary onPress={onButtonPress} wording="Explorer le catalogue" />
     </AppInformationModal>
   )
 }
