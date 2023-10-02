@@ -13,7 +13,7 @@ type Typography = ValueOf<AppThemeType['typography']>
 type Props = RNTextInputProps & { textStyle?: Typography }
 
 export const BaseTextInput = forwardRef<RNTextInput, Props>(function BaseTextInput(
-  { nativeAutoFocus, autoFocus, testID, ...props },
+  { nativeAutoFocus, autoFocus, testID, defaultValue, ...props },
   forwardedRef
 ) {
   const inputRef = useRef<RNTextInput>(null)
@@ -61,6 +61,7 @@ export const BaseTextInput = forwardRef<RNTextInput, Props>(function BaseTextInp
       isEmpty={!props.value}
       placeholder={props.placeholder || ''}
       returnKeyType={props.returnKeyType ?? 'next'}
+      defaultValue={defaultValue}
       ref={(ref) => {
         if (ref) {
           /* @ts-expect-error Conflicts between types */

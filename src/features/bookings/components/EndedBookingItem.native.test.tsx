@@ -137,7 +137,7 @@ describe('EndedBookingItem', () => {
     expect(analytics.logShare).toHaveBeenNthCalledWith(1, {
       type: 'Offer',
       from: 'endedbookings',
-      id: bookingsSnap.ended_bookings[0].stock.offer.id,
+      offer_id: bookingsSnap.ended_bookings[0].stock.offer.id,
     })
   })
 })

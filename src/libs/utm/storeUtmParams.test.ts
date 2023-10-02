@@ -7,7 +7,12 @@ import { storeUtmParams } from 'libs/utm/storeUtmParams'
 const COOKIES_CONSENT_KEY = 'cookies'
 const Today = new Date(2022, 9, 29)
 mockdate.set(Today)
-const expectedParams = { campaign: 'campaign', medium: 'medium', source: 'source' }
+const expectedParams = {
+  campaign: 'campaign',
+  gen: 'marketing',
+  medium: 'medium',
+  source: 'source',
+}
 
 describe('storeUtmParams', () => {
   beforeEach(async () => {
@@ -20,6 +25,7 @@ describe('storeUtmParams', () => {
 
     expect(utmParams).toEqual({
       campaign: null,
+      gen: null,
       medium: null,
       source: null,
       campaignDate: null,
@@ -35,14 +41,16 @@ describe('storeUtmParams', () => {
 })
 
 const getUtmParamsFromStorage = async () => {
-  const [campaign, medium, source, campaignDate] = await storage.readMultiString([
+  const [campaign, gen, medium, source, campaignDate] = await storage.readMultiString([
     CookieNameEnum.TRAFFIC_CAMPAIGN,
+    CookieNameEnum.TRAFFIC_GEN,
     CookieNameEnum.TRAFFIC_MEDIUM,
     CookieNameEnum.TRAFFIC_SOURCE,
     CookieNameEnum.CAMPAIGN_DATE,
   ])
   return {
     campaign: campaign[1],
+    gen: gen[1],
     medium: medium[1],
     source: source[1],
     campaignDate: campaignDate[1],

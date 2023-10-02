@@ -131,7 +131,7 @@ describe('<Favorite /> component', () => {
     expect(analytics.logShare).toHaveBeenNthCalledWith(1, {
       type: 'Offer',
       from: 'favorites',
-      id: favorite.offer.id,
+      offer_id: favorite.offer.id,
     })
   })
 })

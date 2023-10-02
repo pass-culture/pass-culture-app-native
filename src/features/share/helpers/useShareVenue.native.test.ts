@@ -23,7 +23,7 @@ const shareOptions = {
 const shareContentIos = {
   message: shareTitle,
   messageWithoutLink: shareTitle,
-  url: `${WEBAPP_V2_URL}/lieu/5543?utm_campaign=share_venue&utm_medium=utm_medium`,
+  url: `${WEBAPP_V2_URL}/lieu/5543?utm_gen=product&utm_campaign=share_venue&utm_medium=utm_medium`,
   title: shareTitle,
 }
 
@@ -31,9 +31,9 @@ const shareContentAndroid = {
   message:
     shareTitle +
     DOUBLE_LINE_BREAK +
-    `${WEBAPP_V2_URL}/lieu/5543?utm_campaign=share_venue&utm_medium=utm_medium`,
+    `${WEBAPP_V2_URL}/lieu/5543?utm_gen=product&utm_campaign=share_venue&utm_medium=utm_medium`,
   messageWithoutLink: shareTitle,
-  url: `${WEBAPP_V2_URL}/lieu/5543?utm_campaign=share_venue&utm_medium=utm_medium`,
+  url: `${WEBAPP_V2_URL}/lieu/5543?utm_gen=product&utm_campaign=share_venue&utm_medium=utm_medium`,
   title: shareTitle,
 }
 

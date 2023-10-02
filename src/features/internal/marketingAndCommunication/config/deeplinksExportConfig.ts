@@ -136,7 +136,7 @@ export const SCREENS_CONFIG: {
   Stepper: {},
 }
 
-type MarketingParams = 'utm_campaign' | 'utm_source' | 'utm_medium' | 'utm_content'
+type MarketingParams = 'utm_campaign' | 'utm_source' | 'utm_medium' | 'utm_content' | 'utm_gen'
 
 type MarketingConfig = {
   [Param in MarketingParams]: ParamConfig
@@ -161,6 +161,11 @@ export const MARKETING_CONFIG: MarketingConfig = {
   utm_content: {
     type: 'string',
     description: 'Visuel de la campagne si elle en compte plusieurs (1, 2, 3, a , b, c...).',
+  },
+  utm_gen: {
+    type: 'string',
+    description: 'Type de campagne\u00a0: marketing ou product.',
+    required: true,
   },
 }
 

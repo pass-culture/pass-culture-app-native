@@ -6,13 +6,13 @@ import { getRecommendationEndpoint } from 'features/home/api/helpers/getRecommen
 import { RecommendedOffersModule } from 'features/home/types'
 import { getCategoriesFacetFilters } from 'libs/algolia/fetchAlgolia/buildAlgoliaParameters/getCategoriesFacetFilters'
 import { Position } from 'libs/geolocation'
-import { RecommendedIdsRequest } from 'libs/recommendation/types'
+import { RecommendedIdsRequest, RecommendedIdsResponse } from 'libs/recommendation/types'
 import { useHomeRecommendedIdsMutation } from 'libs/recommendation/useHomeRecommendedIdsMutation'
 import { useSubcategoryLabelMapping } from 'libs/subcategories/mappings'
 import { SubcategoryLabelMapping } from 'libs/subcategories/types'
-import { Offer } from 'shared/offer/types'
+import { Offer, RecommendationApiParams } from 'shared/offer/types'
 
-import { useAlgoliaRecommendedHits } from './useAlgoliaRecommendedHits'
+import { useAlgoliaRecommendedOffers } from './useAlgoliaRecommendedOffers'
 
 export function getRecommendationParameters(
   parameters: RecommendedOffersModule['recommendationParameters'] | undefined,
@@ -49,18 +49,18 @@ export function getRecommendationParameters(
   }
 }
 
-export const useHomeRecommendedHits = (
+export const useHomeRecommendedOffers = (
   userId: number | undefined,
   position: Position,
   moduleId: string,
   recommendationParameters?: RecommendedOffersModule['recommendationParameters']
-): Offer[] | undefined => {
+): { offers?: Offer[]; RecommendationApiParams?: RecommendationApiParams } => {
   const recommendationEndpoint = getRecommendationEndpoint({
     userId,
     position,
     modelEndpoint: recommendationParameters?.modelEndpoint,
   })
-  const [recommendedIds, setRecommendedIds] = useState<string[]>()
+  const [recommendedIdsResponse, setRecommendedIdsResponse] = useState<RecommendedIdsResponse>()
   const { mutate: getRecommendedIds } = useHomeRecommendedIdsMutation()
   const subcategoryLabelMapping = useSubcategoryLabelMapping()
 
@@ -73,10 +73,17 @@ export const useHomeRecommendedHits = (
     getRecommendedIds(
       { ...requestParameters, endpointUrl: recommendationEndpoint },
       {
-        onSuccess: (response) => setRecommendedIds(response.playlist_recommended_offers),
+        onSuccess: (response) => setRecommendedIdsResponse(response),
       }
     )
   }, [getRecommendedIds, recommendationParameters, recommendationEndpoint, subcategoryLabelMapping])
 
-  return useAlgoliaRecommendedHits(recommendedIds ?? [], moduleId, true)
+  return {
+    offers: useAlgoliaRecommendedOffers(
+      recommendedIdsResponse?.playlist_recommended_offers ?? [],
+      moduleId,
+      true
+    ),
+    RecommendationApiParams: recommendedIdsResponse?.params,
+  }
 }

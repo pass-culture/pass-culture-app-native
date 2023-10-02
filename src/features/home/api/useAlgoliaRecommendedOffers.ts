@@ -9,7 +9,7 @@ import { QueryKeys } from 'libs/queryKeys'
 import { getSimilarOrRecoOffersInOrder } from 'shared/offer/getSimilarOrRecoOffersInOrder'
 import { Offer } from 'shared/offer/types'
 
-export const useAlgoliaRecommendedHits = (
+export const useAlgoliaRecommendedOffers = (
   ids: string[],
   moduleId: string,
   shouldPreserveIdsOrder?: boolean

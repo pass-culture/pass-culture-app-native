@@ -57,7 +57,7 @@ export const OnGoingBookingItem = ({ booking, eligibleBookingsForArchive }: Book
   })
 
   const pressShareOffer = useCallback(() => {
-    analytics.logShare({ type: 'Offer', from: 'bookings', id: stock.offer.id })
+    analytics.logShare({ type: 'Offer', from: 'bookings', offer_id: stock.offer.id })
     shareOffer()
     showShareOfferModal()
   }, [stock.offer.id, shareOffer, showShareOfferModal])

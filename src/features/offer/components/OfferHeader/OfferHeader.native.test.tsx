@@ -92,7 +92,7 @@ describe('<OfferHeader />', () => {
     expect(analytics.logShare).toHaveBeenNthCalledWith(1, {
       type: 'Offer',
       from: 'offer',
-      id: offerId,
+      offer_id: offerId,
     })
   })
 })

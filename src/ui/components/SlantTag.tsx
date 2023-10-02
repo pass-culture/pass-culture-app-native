@@ -14,12 +14,8 @@ interface Props {
 
 export const SlantTag: React.FC<Props> = ({ text, width, height, testID, slantAngle }) => {
   return (
-    <SlantTagContainer
-      testID={testID}
-      tagWidth={width ? width : undefined}
-      tagHeight={height ? height : undefined}
-      tagAngle={slantAngle ? slantAngle : undefined}>
-      <StyledPrice tagAngle={slantAngle ? slantAngle : undefined}>{text}</StyledPrice>
+    <SlantTagContainer testID={testID} tagWidth={width} tagHeight={height} tagAngle={slantAngle}>
+      <StyledPrice tagAngle={slantAngle}>{text}</StyledPrice>
     </SlantTagContainer>
   )
 }
@@ -40,8 +36,8 @@ const SlantTagContainer = styled.View<{
   backgroundColor: theme.colors.secondary,
   justifyContent: 'center',
   borderRadius: theme.borderRadius.checkbox,
-  width: tagWidth ? tagWidth : 'auto',
-  height: tagHeight ? tagHeight : 'auto',
+  width: tagWidth || 'auto',
+  height: tagHeight || 'auto',
   paddingVertical: tagHeight ? 0 : getSpacing(0.5),
   paddingHorizontal: tagWidth ? 0 : getSpacing(2.5),
   transform: tagAngle ? `rotate(${tagAngle}deg)` : `rotate(-4.34deg)`,

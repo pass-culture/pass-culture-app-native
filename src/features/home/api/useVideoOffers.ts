@@ -97,7 +97,7 @@ export const useVideoOffers = (
       return
     })
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [!!position])
+  }, [position?.latitude, position?.longitude])
 
   const hits = (data?.map(transformHits) as Offer[]) ?? []
 

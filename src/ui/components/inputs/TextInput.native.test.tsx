@@ -5,7 +5,9 @@ import { render } from 'tests/utils'
 
 import { TextInput } from './TextInput'
 
-const NormalStateTextInput = <TextInput placeholder="placeholder" onChangeText={doNothingFn} />
+const NormalStateTextInput = (
+  <TextInput placeholder="placeholder" defaultValue="defaultValue" onChangeText={doNothingFn} />
+)
 
 describe('<TextInput />', () => {
   it('should render correctly when NOT focused', () => {

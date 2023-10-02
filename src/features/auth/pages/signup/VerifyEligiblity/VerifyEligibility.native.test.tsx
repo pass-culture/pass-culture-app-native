@@ -3,6 +3,7 @@ import React from 'react'
 import { navigate } from '__mocks__/@react-navigation/native'
 import { navigateToHomeConfig } from 'features/navigation/helpers'
 import { navigateFromRef } from 'features/navigation/navigationRef'
+import { StepperOrigin } from 'features/navigation/RootNavigator/types'
 import { render, fireEvent, screen } from 'tests/utils'
 
 import { VerifyEligibility } from './VerifyEligibility'
@@ -34,6 +35,6 @@ describe('<VerifyEligibility />', () => {
     const startButton = screen.getByText('Commencer la vérification')
     fireEvent.press(startButton)
 
-    expect(navigate).toHaveBeenCalledWith('Stepper', undefined)
+    expect(navigate).toHaveBeenCalledWith('Stepper', { from: StepperOrigin.VERIFY_ELIGIBILITY })
   })
 })
