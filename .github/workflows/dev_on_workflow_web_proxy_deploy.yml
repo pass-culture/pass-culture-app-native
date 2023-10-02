@@ -6,9 +6,6 @@ on:
       ENV:
         type: string
         required: true
-      CACHE_BUCKET_NAME:
-        type: string
-        required: true
     secrets:
       GCP_EHP_SERVICE_ACCOUNT:
         required: true
@@ -30,25 +27,23 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version-file: 'server/.nvmrc'
-      - name: "OpenID Connect Authentication"
+      - uses: actions/cache@v3
+        id: yarn-modules-cache
+        with:
+          path: |
+            node_modules
+            ~/.cache/yarn
+          key: v1-yarn-proxy-dependency-cache-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: |
+            v1-yarn-proxy-dependency-cache-${{ hashFiles('**/yarn.lock') }}
+      - run: yarn install
+      - name: Install package for proxy
+        run: yarn install --immutable --cwd server
+      - name: Authentification to Google
         uses: 'google-github-actions/auth@v1'
         with:
           workload_identity_provider: ${{ secrets.GCP_EHP_WORKLOAD_IDENTITY_PROVIDER }}
           service_account: ${{ secrets.GCP_EHP_SERVICE_ACCOUNT }}
-      - name: Cache the proxy node_modules
-        id: yarn-modules-cache-proxy
-        uses: mansagroup/gcs-cache-action@867797f1a78d69e008ad0a321c1459ddd619e9fd
-        with:
-          bucket: ${{ inputs.CACHE_BUCKET_NAME }}
-          path: |
-            node_modules
-            ~/.cache/yarn
-          key: v1-yarn-proxy-dependency-cache-${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
-          restore-keys: |
-            v1-yarn-proxy-dependency-cache-${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
-      - run: yarn install
-      - name: Install package for proxy
-        run: yarn install --immutable --cwd server
       - name: Get Secret
         id: 'secrets'
         uses: 'google-github-actions/get-secretmanager-secrets@v1'
