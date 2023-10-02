@@ -1,19 +1,16 @@
 import isEqual from 'lodash/isEqual'
 import uniqWith from 'lodash/uniqWith'
-import React, { FunctionComponent, useRef } from 'react'
-import { Platform, View } from 'react-native'
+import React, { FunctionComponent } from 'react'
+import { View } from 'react-native'
 import styled from 'styled-components/native'
 
+import { HiddenAccessibleResultNumber } from 'features/search/pages/SuggestedPlacesOrVenues/HiddenAccessibleResultNumber'
+import { SuggestedResult } from 'features/search/pages/SuggestedPlacesOrVenues/SuggestedResult'
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
-import { useHandleFocus } from 'libs/hooks/useHandleFocus'
 import { SuggestedPlace, usePlaces } from 'libs/place'
-import { plural } from 'libs/plural'
-import { HiddenAccessibleText } from 'ui/components/HiddenAccessibleText'
 import { Li } from 'ui/components/Li'
 import { Spinner } from 'ui/components/Spinner'
-import { TouchableOpacity } from 'ui/components/TouchableOpacity'
 import { VerticalUl } from 'ui/components/Ul'
-import { useArrowNavigationForRadioButton } from 'ui/hooks/useArrowNavigationForRadioButton'
 import { LocationPointer as DefaultLocationPointer } from 'ui/svg/icons/LocationPointer'
 import { Spacer, Typo, getSpacing } from 'ui/theme'
 
@@ -34,37 +31,6 @@ const Icon = () => (
     <ListLocationPointer />
   </ListIconWrapper>
 )
-
-const PlaceResult: React.FC<{ place: SuggestedPlace; onPress: () => void }> = ({
-  place,
-  onPress,
-}) => {
-  const containerRef = useRef(null)
-  const { onFocus, onBlur } = useHandleFocus()
-  useArrowNavigationForRadioButton(containerRef)
-
-  const accessibilityLabel = `${place.label} ${place.info}`
-  return (
-    <TouchableOpacity
-      // so that the user can press it without dismissing the keyboard
-      {...Platform.select({ default: { shouldUseGestureHandler: true }, web: undefined })}
-      accessibilityRole={AccessibilityRole.BUTTON}
-      onFocus={onFocus}
-      onBlur={onBlur}
-      onPress={onPress}
-      accessibilityLabel={accessibilityLabel}>
-      <RefContainer ref={containerRef}>
-        <Icon />
-        <Spacer.Row numberOfSpaces={1} />
-        <Text>
-          <Typo.ButtonText>{place.label}</Typo.ButtonText>
-          <Spacer.Row numberOfSpaces={1} />
-          <Typo.Body>{place.info}</Typo.Body>
-        </Text>
-      </RefContainer>
-    </TouchableOpacity>
-  )
-}
 
 type Props = {
   query: string
@@ -94,7 +60,12 @@ export const SuggestedPlaces: FunctionComponent<Props> = ({ query, setSelectedPl
           <VerticalUl>
             {filteredPlaces.map((item, index) => (
               <Li key={keyExtractor(item)}>
-                <PlaceResult place={item} onPress={() => setSelectedPlace(item)} />
+                <SuggestedResult
+                  label={item.label}
+                  info={item.info}
+                  Icon={Icon}
+                  onPress={() => setSelectedPlace(item)}
+                />
                 {index + 1 < filteredPlaces.length && <Spacer.Column numberOfSpaces={4} />}
               </Li>
             ))}
@@ -102,25 +73,6 @@ export const SuggestedPlaces: FunctionComponent<Props> = ({ query, setSelectedPl
         </React.Fragment>
       )}
     </React.Fragment>
-  )
-}
-
-const HiddenAccessibleResultNumber = ({
-  nbResults,
-  show,
-}: {
-  nbResults: number
-  show: boolean
-}) => {
-  const numberOfResults = plural(nbResults, {
-    one: '# résultat',
-    other: '# résultats',
-  })
-
-  return (
-    <HiddenAccessibleText accessibilityRole={AccessibilityRole.STATUS}>
-      {show ? numberOfResults : ''}
-    </HiddenAccessibleText>
   )
 }
 
@@ -133,21 +85,9 @@ const NoSuggestedPlaces = ({ show }: { show: boolean }) =>
     <React.Fragment />
   )
 
-const RefContainer = styled.View({
-  flexDirection: 'row',
-  alignItems: 'flex-start',
-})
-
 const ListIconWrapper = styled.View(({ theme }) => ({
   marginTop: (theme.typography.body.fontSize * 15) / 100,
   marginRight: getSpacing(0.5),
-}))
-
-const Text = styled.Text.attrs({
-  numberOfLines: 2,
-})(({ theme }) => ({
-  color: theme.colors.black,
-  flex: 1,
 }))
 
 const StyledBody = styled(Typo.Body)(({ theme }) => ({
