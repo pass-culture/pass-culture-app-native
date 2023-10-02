@@ -10,12 +10,12 @@ import { HighlightThematicHeader } from 'features/home/types'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 import { useCustomSafeInsets } from 'ui/theme/useCustomSafeInsets'
 
-type HighligthThematicHeaderProps = Omit<HighlightThematicHeader, 'type'>
+type HighlightThematicHeaderProps = Omit<HighlightThematicHeader, 'type'>
 
 const MOBILE_HEADER_HEIGHT = getSpacing(70)
 
 export const AnimatedHighlightThematicHomeHeader: FunctionComponent<
-  HighligthThematicHeaderProps
+  HighlightThematicHeaderProps
 > = ({
   title,
   subtitle,
