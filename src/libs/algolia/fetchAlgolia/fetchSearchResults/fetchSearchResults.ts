@@ -65,9 +65,24 @@ export const fetchSearchResults = async ({
       },
     },
     // Facets
+    // this request should be reworked because we have a problem on genreType view
     {
       indexName: offersIndex,
-      page: 0,
+      query: parameters.query || '',
+      params: {
+        page: 0,
+        ...buildHitsPerPage(parameters.hitsPerPage),
+        ...buildOfferSearchParameters(
+          {
+            ...parameters,
+            offerCategories: [],
+            offerNativeCategories: undefined,
+            offerGenreTypes: undefined,
+          },
+          userLocation,
+          isUserUnderage
+        ),
+      },
       facets: [
         'offer.bookMacroSection',
         'offer.movieGenres',

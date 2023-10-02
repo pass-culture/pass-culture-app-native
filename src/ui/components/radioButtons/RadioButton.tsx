@@ -144,6 +144,7 @@ const Label = styled(Typo.ButtonText)<{ isSelected: boolean }>(({ isSelected, th
 const ComplementLabel = styled(Typo.Caption)<{ isSelected: boolean }>(({ isSelected, theme }) => ({
   color: isSelected ? theme.colors.primary : theme.colors.greyDark,
   marginLeft: getSpacing(1),
+  flexShrink: 0,
 }))
 
 const IconContainer = styled.View(({ theme }) => ({
