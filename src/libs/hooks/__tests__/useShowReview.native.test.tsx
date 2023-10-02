@@ -92,17 +92,17 @@ describe('useShowReview', () => {
       mockRequestInAppReview.mockResolvedValueOnce(undefined)
     })
 
-    it('should not show the review when we disabled store review', () => {
+    it('should show the review when we enable store review', () => {
       useFeatureFlagSpy.mockReturnValueOnce(false)
 
       renderHook(useShowReview)
 
       jest.advanceTimersByTime(3000)
 
-      expect(mockRequestInAppReview).toHaveBeenCalledWith()
+      expect(mockRequestInAppReview).toHaveBeenCalledTimes(1)
     })
 
-    it('should not show review when we enabled store review', () => {
+    it('should not show review when we disable store review', () => {
       useFeatureFlagSpy.mockReturnValueOnce(true)
 
       renderHook(useShowReview)
