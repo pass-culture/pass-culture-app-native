@@ -5,17 +5,13 @@ import styled from 'styled-components/native'
 import { BlackGradient } from 'features/home/components/BlackGradient'
 import { HEADER_BLACK_BACKGROUND_HEIGHT } from 'features/home/components/constants'
 import { BlackBackground } from 'features/home/components/headers/BlackBackground'
+import { Introduction } from 'features/home/components/headers/highlightThematic/Introduction'
 import { computeDateRangeDisplay } from 'features/home/components/helpers/computeDateRangeDisplay'
 import { HighlightThematicHeader } from 'features/home/types'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 import { useCustomSafeInsets } from 'ui/theme/useCustomSafeInsets'
 
 type HighligthThematicHeaderProps = Omit<HighlightThematicHeader, 'type'>
-
-type IntroductionProps = {
-  title: string
-  paragraph: string
-}
 
 const MOBILE_HEADER_HEIGHT = getSpacing(70)
 
@@ -70,19 +66,6 @@ export const AnimatedHighlightThematicHomeHeader: FunctionComponent<
   )
 }
 
-const Introduction = ({ title, paragraph }: IntroductionProps) => (
-  <React.Fragment>
-    <IntroductionContainer>
-      <Typo.Title4 numberOfLines={3}>{title}</Typo.Title4>
-      <Spacer.Column numberOfSpaces={4} />
-      <Typo.Body>{paragraph}</Typo.Body>
-    </IntroductionContainer>
-    <Spacer.Column numberOfSpaces={6} />
-    <Divider />
-    <Spacer.Column numberOfSpaces={6} />
-  </React.Fragment>
-)
-
 const Container = styled.View({
   position: 'absolute',
   top: 0,
@@ -125,13 +108,4 @@ const Subtitle = styled(Typo.Title4)(({ theme }) => ({
 
 const Title = styled(Typo.Title1)(({ theme }) => ({
   color: theme.colors.white,
-}))
-
-const IntroductionContainer = styled.View({
-  paddingHorizontal: getSpacing(6),
-})
-
-const Divider = styled.View(({ theme }) => ({
-  height: getSpacing(1),
-  backgroundColor: theme.colors.greyLight,
 }))
