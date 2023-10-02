@@ -137,7 +137,7 @@ describe('<EmailResendModal />', () => {
     await waitFor(() => {
       expect(
         screen.queryByText(
-          'Tu as dépassé le nombre de 3 demandes de lien autorisées. Tu pourras réessayer le 30/09/2023'
+          'Tu as dépassé le nombre de 3 demandes de lien autorisées. Tu pourras réessayer le 30/09/2023 à 12h58.'
         )
       ).not.toBeOnTheScreen()
     })

@@ -8,6 +8,7 @@ import { EmailAttemptsLeft } from 'features/auth/pages/signup/SignupConfirmation
 import { analytics } from 'libs/analytics'
 import { formatToSlashedFrenchDate } from 'libs/dates'
 import { eventMonitoring } from 'libs/monitoring'
+import { formatToHour } from 'libs/parsers'
 import { AlertBanner } from 'ui/components/banners/AlertBanner'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { AppModal } from 'ui/components/modals/AppModal'
@@ -47,7 +48,7 @@ export const EmailResendModal = ({ email, visible, onDismiss }: Props) => {
   const retryMessage = remainingResendsResponse?.counterResetDatetime
     ? ` Tu pourras réessayer le ${formatToSlashedFrenchDate(
         remainingResendsResponse?.counterResetDatetime
-      )}.`
+      )} à ${formatToHour(new Date(remainingResendsResponse?.counterResetDatetime))}.`
     : ''
 
   const onResendPress = () => {
