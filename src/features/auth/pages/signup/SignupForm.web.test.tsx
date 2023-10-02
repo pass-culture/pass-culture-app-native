@@ -24,6 +24,7 @@ describe('<SignupForm/>', () => {
   describe('Accessibility', () => {
     it('should not have basic accessibility issues for SetEmail', async () => {
       const { container } = renderSignupForm()
+      await act(async () => {})
 
       await waitFor(() => {
         expect(screen.getByTestId('Entrée pour l’email')).toHaveFocus()

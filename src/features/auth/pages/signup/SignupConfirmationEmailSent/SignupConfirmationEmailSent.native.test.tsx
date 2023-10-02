@@ -1,11 +1,14 @@
+import { rest } from 'msw'
 import React from 'react'
 import { openInbox } from 'react-native-email-link'
 
 import { contactSupport } from 'features/auth/helpers/contactSupport'
 import { usePreviousRoute, openUrl } from 'features/navigation/helpers'
 import { analytics } from 'libs/analytics'
+import { env } from 'libs/environment'
 import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
+import { server } from 'tests/server'
 import { act, fireEvent, render, screen } from 'tests/utils'
 
 import { SignupConfirmationEmailSent } from './SignupConfirmationEmailSent'
@@ -15,6 +18,13 @@ jest.mock('features/navigation/helpers')
 const mockedOpenUrl = openUrl as jest.MockedFunction<typeof openUrl>
 
 const useFeatureFlagSpy = jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockReturnValue(true)
+
+server.use(
+  rest.get(
+    `${env.API_BASE_URL}/native/v1/email_validation_remaining_resends/john.doe%40gmail.com`,
+    (_req, res, ctx) => res(ctx.status(200), ctx.json({ remainingResends: 3 }))
+  )
+)
 
 describe('<SignupConfirmationEmailSent />', () => {
   beforeEach(() => {
@@ -35,8 +45,9 @@ describe('<SignupConfirmationEmailSent />', () => {
     )
   })
 
-  it('should open mail app when clicking on check email button', () => {
+  it('should open mail app when clicking on check email button', async () => {
     renderSignupConfirmationEmailSent()
+    await act(async () => {})
 
     const checkEmailsButton = screen.getByText('Consulter mes e-mails')
     fireEvent.press(checkEmailsButton)
@@ -55,6 +66,7 @@ describe('<SignupConfirmationEmailSent />', () => {
 
   it('should display resend button when feature flag is active', async () => {
     renderSignupConfirmationEmailSent()
+    await act(async () => {})
 
     expect(screen.getByText('Recevoir un nouveau lien')).toBeOnTheScreen()
   })
@@ -62,6 +74,7 @@ describe('<SignupConfirmationEmailSent />', () => {
   it('should hide resend button when feature flag is disabled', async () => {
     useFeatureFlagSpy.mockReturnValueOnce(false)
     renderSignupConfirmationEmailSent()
+    await act(async () => {})
 
     expect(screen.queryByText('Recevoir un nouveau lien')).not.toBeOnTheScreen()
   })
@@ -69,7 +82,9 @@ describe('<SignupConfirmationEmailSent />', () => {
   it('should show modal when resend button is pressed', async () => {
     renderSignupConfirmationEmailSent()
 
-    fireEvent.press(screen.getByText('Recevoir un nouveau lien'))
+    await act(async () => {
+      fireEvent.press(screen.getByText('Recevoir un nouveau lien'))
+    })
 
     expect(screen.getByText('Demander un nouveau lien')).toBeOnTheScreen()
   })
