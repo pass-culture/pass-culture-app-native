@@ -112,6 +112,7 @@ export const LocationModal: FunctionComponent<LocationModalProps> = ({
     requestGeolocPermission,
     onPressGeolocPermissionModalButton: onPressGeolocPermissionModalButtonDefault,
   } = useLocation()
+  const isGeolocated = !!position
   const searchPlaceOrVenueInputRef = useRef<RNTextInput | null>(null)
   const { sliderLength } = useGetFullscreenModalSliderLength()
 
@@ -264,12 +265,12 @@ export const LocationModal: FunctionComponent<LocationModalProps> = ({
 
   const onResetPress = useCallback(() => {
     reset({
-      locationChoice: position ? RadioButtonLocation.AROUND_ME : RadioButtonLocation.EVERYWHERE,
+      locationChoice: isGeolocated ? RadioButtonLocation.AROUND_ME : RadioButtonLocation.EVERYWHERE,
       aroundRadius: MAX_RADIUS,
       searchPlaceOrVenue: '',
       selectedPlaceOrVenue: undefined,
     })
-  }, [position, reset])
+  }, [isGeolocated, reset])
 
   const onSubmit = handleSubmit(search)
 

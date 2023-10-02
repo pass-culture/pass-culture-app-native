@@ -1,7 +1,6 @@
 import { useEffect } from 'react'
 import { useQuery } from 'react-query'
 
-import { useAuthContext } from 'features/auth/context/AuthContext'
 import { mapVenuesDataAndModules } from 'features/home/api/helpers/mapVenuesDataAndModules'
 import { useHomePosition } from 'features/home/helpers/useHomePosition'
 import { VenuesModule, VenuesModuleParameters } from 'features/home/types'
@@ -12,7 +11,6 @@ import { QueryKeys } from 'libs/queryKeys'
 export const useGetVenuesData = (modules: VenuesModule[]) => {
   const { position } = useHomePosition()
 
-  const { user } = useAuthContext()
   const netInfo = useNetInfoContext()
 
   const venuesParameters: VenuesModuleParameters[] = []
@@ -43,7 +41,7 @@ export const useGetVenuesData = (modules: VenuesModule[]) => {
       return
     })
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [!!position, user?.isBeneficiary])
+  }, [position?.latitude, position?.longitude])
 
   const venuesModulesData = mapVenuesDataAndModules(venuesResultList)
 
