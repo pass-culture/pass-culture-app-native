@@ -16,18 +16,12 @@ If you encounter errors during this setup, refer to the Troubleshooting section 
   nvm use
   ```
 
-  - **AND** with Brew to have XCode build's steps (`Bundle React Native code and images` and `Upload Debug Symbols to Sentry`) working
+  - then we will use node and put it by default in the project pass-culture-app-native :
 
   ```sh
-  brew install node
-  ```
-
-  - then we will use node v16 and put it by default:
-
-  ```
-  nvm install v16
-  nvm use v16
-  nvm alias default v16
+  nvm install
+  nvm use
+  nvm alias default <version in .nvmrc>
   ```
 
 - **install RVM (Ruby Version Manager) and Ruby**
@@ -55,7 +49,7 @@ If you encounter errors during this setup, refer to the Troubleshooting section 
   gem install bundler
   ```
 
-  - Now you can install CocoaPods, that will install the gems, with:
+  - Now you can install CocoaPods in the project `pass-culture-app-native`, that will install the gems, with:
 
   ```sh
   bundle install
@@ -64,17 +58,17 @@ If you encounter errors during this setup, refer to the Troubleshooting section 
 - **install the pods, and create the Pods folder**
 
   ```sh
-  pushd ios
+  cd ios
   bundle exec pod install
-  popd
+  cd ..
   ```
 
   you may be asked to run:
 
   ```sh
-  pushd ios
+  cd ios
   bundle exec pod repo update
-  popd
+  cd ..
   ```
 
 If `bundle exec pod install` didn't work, check in Xcode -> Settings -> Locations if you have a Command line tools installed, then revalidate the Command line tools by clicking it.
