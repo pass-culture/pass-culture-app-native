@@ -11,11 +11,15 @@ describe('<VenueModal/>', () => {
     it('should not have basic accessibility issues', async () => {
       const { container } = render(<VenueModal visible dismissModal={dismissModalMock} />)
 
-      await waitForModalToShow()
-      const results = await checkAccessibilityFor(container)
-      await act(async () => {})
+      let results
+      await act(async () => {
+        await waitForModalToShow()
 
+        results = await checkAccessibilityFor(container)
+      })
+      await act(async () => {})
       expect(results).toHaveNoViolations()
+      await act(async () => {})
     })
   })
 })
