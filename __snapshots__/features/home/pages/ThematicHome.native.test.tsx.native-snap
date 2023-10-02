@@ -581,17 +581,6 @@ exports[`ThematicHome should render correctly 1`] = `
         </View>
       </View>
       <View
-        numberOfSpaces={13}
-        style={
-          [
-            {
-              "width": 52,
-            },
-          ]
-        }
-        testID="leftShareIconPlaceholder"
-      />
-      <View
         style={
           [
             {
@@ -614,7 +603,6 @@ exports[`ThematicHome should render correctly 1`] = `
             "textAlign": "center",
           }
         }
-        testID="offerHeaderName"
       >
         <Text
           style={
@@ -643,15 +631,14 @@ exports[`ThematicHome should render correctly 1`] = `
         }
       />
       <View
-        numberOfSpaces={25}
+        numberOfSpaces={16}
         style={
           [
             {
-              "width": 100,
+              "width": 64,
             },
           ]
         }
-        testID="rightSpacer"
       />
     </View>
     <View
