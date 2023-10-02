@@ -63,6 +63,11 @@ describe('fetchSearchResultss', () => {
         query: 'searched query',
       },
       {
+        params: {
+          facetFilters: [['offer.isEducational:false']],
+          numericFilters: [['offer.prices: 0 TO 300']],
+          page: 0,
+        },
         facets: [
           'offer.bookMacroSection',
           'offer.movieGenres',
@@ -71,7 +76,7 @@ describe('fetchSearchResultss', () => {
           'offer.showType',
         ],
         indexName: env.ALGOLIA_OFFERS_INDEX_NAME,
-        page: 0,
+        query: 'searched query',
       },
     ]
 
@@ -121,6 +126,11 @@ describe('fetchSearchResultss', () => {
         query: 'searched query',
       },
       {
+        params: {
+          facetFilters: [['offer.isEducational:false']],
+          numericFilters: [['offer.prices: 0 TO 300']],
+          page: 0,
+        },
         facets: [
           'offer.bookMacroSection',
           'offer.movieGenres',
@@ -129,7 +139,7 @@ describe('fetchSearchResultss', () => {
           'offer.showType',
         ],
         indexName: 'algoliaOffersIndexName',
-        page: 0,
+        query: 'searched query',
       },
     ]
 
@@ -187,6 +197,13 @@ describe('fetchSearchResultss', () => {
         query: 'searched query',
       },
       {
+        params: {
+          facetFilters: [['offer.isEducational:false']],
+          numericFilters: [['offer.prices: 0 TO 300']],
+          page: 0,
+          aroundRadius: 'all',
+          aroundLatLng: '42, 43',
+        },
         facets: [
           'offer.bookMacroSection',
           'offer.movieGenres',
@@ -195,7 +212,7 @@ describe('fetchSearchResultss', () => {
           'offer.showType',
         ],
         indexName: env.ALGOLIA_OFFERS_INDEX_NAME,
-        page: 0,
+        query: 'searched query',
       },
     ]
 
@@ -253,6 +270,13 @@ describe('fetchSearchResultss', () => {
         query: 'searched query',
       },
       {
+        params: {
+          facetFilters: [['offer.isEducational:false']],
+          numericFilters: [['offer.prices: 0 TO 300']],
+          page: 0,
+          aroundRadius: 100000,
+          aroundLatLng: '42, 43',
+        },
         facets: [
           'offer.bookMacroSection',
           'offer.movieGenres',
@@ -261,7 +285,7 @@ describe('fetchSearchResultss', () => {
           'offer.showType',
         ],
         indexName: env.ALGOLIA_OFFERS_INDEX_NAME,
-        page: 0,
+        query: 'searched query',
       },
     ]
 
@@ -323,6 +347,13 @@ describe('fetchSearchResultss', () => {
         query: 'searched query',
       },
       {
+        params: {
+          facetFilters: [['offer.isEducational:false']],
+          numericFilters: [['offer.prices: 0 TO 300']],
+          page: 0,
+          aroundRadius: 100000,
+          aroundLatLng: '5.16176, -52.669726',
+        },
         facets: [
           'offer.bookMacroSection',
           'offer.movieGenres',
@@ -331,7 +362,7 @@ describe('fetchSearchResultss', () => {
           'offer.showType',
         ],
         indexName: env.ALGOLIA_OFFERS_INDEX_NAME,
-        page: 0,
+        query: 'searched query',
       },
     ]
 
@@ -393,6 +424,13 @@ describe('fetchSearchResultss', () => {
         query: 'searched query',
       },
       {
+        params: {
+          facetFilters: [['offer.isEducational:false']],
+          numericFilters: [['offer.prices: 0 TO 300']],
+          page: 0,
+          aroundRadius: 100000,
+          aroundLatLng: '5.16176, -52.669726',
+        },
         facets: [
           'offer.bookMacroSection',
           'offer.movieGenres',
@@ -401,7 +439,7 @@ describe('fetchSearchResultss', () => {
           'offer.showType',
         ],
         indexName: env.ALGOLIA_OFFERS_INDEX_NAME,
-        page: 0,
+        query: 'searched query',
       },
     ]
 
@@ -460,6 +498,11 @@ describe('fetchSearchResultss', () => {
         query: 'searched query',
       },
       {
+        params: {
+          facetFilters: [['offer.isEducational:false'], ['venue.id:5543']],
+          numericFilters: [['offer.prices: 0 TO 300']],
+          page: 0,
+        },
         facets: [
           'offer.bookMacroSection',
           'offer.movieGenres',
@@ -468,7 +511,7 @@ describe('fetchSearchResultss', () => {
           'offer.showType',
         ],
         indexName: 'algoliaOffersIndexName',
-        page: 0,
+        query: 'searched query',
       },
     ]
 
@@ -527,6 +570,11 @@ describe('fetchSearchResultss', () => {
         query: 'searched query',
       },
       {
+        params: {
+          facetFilters: [['offer.isEducational:false'], ['venue.id:5543']],
+          numericFilters: [['offer.prices: 0 TO 300']],
+          page: 0,
+        },
         facets: [
           'offer.bookMacroSection',
           'offer.movieGenres',
@@ -535,7 +583,7 @@ describe('fetchSearchResultss', () => {
           'offer.showType',
         ],
         indexName: 'algoliaOffersIndexName',
-        page: 0,
+        query: 'searched query',
       },
     ]
 

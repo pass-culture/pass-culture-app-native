@@ -323,8 +323,7 @@ exports[`<SearchFilter/> should render correctly 1`] = `
                   [
                     {
                       "alignItems": "flex-start",
-                      "flexBasis": 0,
-                      "flexGrow": 0.7,
+                      "flexGrow": 1,
                       "flexShrink": 1,
                     },
                   ]
@@ -528,8 +527,7 @@ exports[`<SearchFilter/> should render correctly 1`] = `
                   [
                     {
                       "alignItems": "flex-start",
-                      "flexBasis": 0,
-                      "flexGrow": 0.7,
+                      "flexGrow": 1,
                       "flexShrink": 1,
                     },
                   ]
@@ -718,8 +716,7 @@ exports[`<SearchFilter/> should render correctly 1`] = `
                   [
                     {
                       "alignItems": "flex-start",
-                      "flexBasis": 0,
-                      "flexGrow": 0.7,
+                      "flexGrow": 1,
                       "flexShrink": 1,
                     },
                   ]
@@ -888,8 +885,7 @@ exports[`<SearchFilter/> should render correctly 1`] = `
                   [
                     {
                       "alignItems": "flex-start",
-                      "flexBasis": 0,
-                      "flexGrow": 0.7,
+                      "flexGrow": 1,
                       "flexShrink": 1,
                     },
                   ]
