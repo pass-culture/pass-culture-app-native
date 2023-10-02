@@ -253,7 +253,7 @@ describe('<CategoriesModal/>', () => {
       })
     })
 
-    describe('When wipDisplaySearchNbFacetResults feature flag is enable', () => {
+    describe('When wipDisplaySearchNbFacetResults feature flag is activated', () => {
       beforeAll(() => {
         mockUseFeatureFlag.mockReturnValue(true)
       })
@@ -270,7 +270,7 @@ describe('<CategoriesModal/>', () => {
       })
     })
 
-    describe('When wipDisplaySearchNbFacetResults feature flag is disable', () => {
+    describe('When wipDisplaySearchNbFacetResults feature flag is not activated', () => {
       beforeAll(() => {
         mockUseFeatureFlag.mockReturnValue(false)
       })
@@ -411,7 +411,7 @@ describe('<CategoriesModal/>', () => {
       })
     })
 
-    describe('When wipDisplaySearchNbFacetResults feature flag is enable', () => {
+    describe('When wipDisplaySearchNbFacetResults feature flag is activated', () => {
       beforeAll(() => {
         mockUseFeatureFlag.mockReturnValue(true)
       })
@@ -426,7 +426,7 @@ describe('<CategoriesModal/>', () => {
       })
     })
 
-    describe('When wipDisplaySearchNbFacetResults feature flag is disable', () => {
+    describe('When wipDisplaySearchNbFacetResults feature flag is not activated', () => {
       beforeAll(() => {
         mockUseFeatureFlag.mockReturnValue(false)
       })

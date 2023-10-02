@@ -3,7 +3,7 @@ import React from 'react'
 import { GenreType, NativeCategoryIdEnumv2, SearchGroupNameEnumv2 } from 'api/gen'
 import { initialSearchState } from 'features/search/context/reducer'
 import { placeholderData as mockData } from 'libs/subcategories/placeholderData'
-import { fireEvent, render } from 'tests/utils'
+import { act, fireEvent, render } from 'tests/utils'
 
 import { Category } from './Category'
 
@@ -68,6 +68,8 @@ describe('Category component', () => {
     const categoryButton = getByTestId('FilterRow')
 
     await fireEvent.press(categoryButton)
+
+    await act(async () => {})
 
     const fullscreenModalScrollView = getByTestId('fullscreenModalScrollView')
 
