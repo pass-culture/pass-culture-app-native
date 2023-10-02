@@ -119,9 +119,10 @@ describe('<Offer /> - Analytics', () => {
       fireEvent.scroll(screen.getByTestId('offer-container'), bottomScrollEvent)
       jest.advanceTimersByTime(BATCH_TRIGGER_DELAY_IN_MS)
 
-      expect(BatchUser.trackEvent).toHaveBeenCalledTimes(2) // Two different Batch events are triggered on this page
+      expect(BatchUser.trackEvent).toHaveBeenCalledTimes(3) // Three different Batch events are triggered on this page
       expect(BatchUser.trackEvent).toHaveBeenCalledWith(BatchEvent.hasSeenOffer)
       expect(BatchUser.trackEvent).toHaveBeenCalledWith(BatchEvent.hasSeenOfferForSurvey)
+      expect(BatchUser.trackEvent).toHaveBeenCalledWith(BatchEvent.hasSeenCinemaOfferForSurvey)
     })
 
     it.each([
@@ -138,6 +139,25 @@ describe('<Offer /> - Analytics', () => {
         jest.advanceTimersByTime(BATCH_TRIGGER_DELAY_IN_MS)
 
         expect(BatchUser.trackEvent).not.toHaveBeenCalledWith(BatchEvent.hasSeenOfferForSurvey)
+      }
+    )
+
+    it.each`
+      subcategoryId                       | expectedBatchEvent
+      ${SubcategoryIdEnum.CINE_PLEIN_AIR} | ${BatchEvent.hasSeenCinemaOfferForSurvey}
+      ${SubcategoryIdEnum.VISITE}         | ${BatchEvent.hasSeenCulturalVisitForSurvey}
+      ${SubcategoryIdEnum.LIVRE_PAPIER}   | ${BatchEvent.hasSeenBookOfferForSurvey}
+      ${SubcategoryIdEnum.CONCERT}        | ${BatchEvent.hasSeenConcertForSurvey}
+    `(
+      'should trigger has_seen_offer_for_survey and specific batch event for offer type $subcategoryId',
+      async ({ subcategoryId, expectedBatchEvent }) => {
+        renderOfferPage(undefined, { subcategoryId })
+
+        await act(() => {})
+        jest.advanceTimersByTime(BATCH_TRIGGER_DELAY_IN_MS)
+
+        expect(BatchUser.trackEvent).toHaveBeenCalledWith(BatchEvent.hasSeenOfferForSurvey)
+        expect(BatchUser.trackEvent).toHaveBeenCalledWith(expectedBatchEvent)
       }
     )
   })
