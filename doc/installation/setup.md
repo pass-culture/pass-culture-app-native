@@ -22,11 +22,11 @@ Read [jq documentation](https://github.com/stedolan/jq)
 
 ### Android
 
-Follow the steps [here](/doc/installation/android.md).
+Follow the steps [here](/doc/installation/Android.md).
 
 ### iOS
 
-Follow the steps [here](/doc/installation/ios.md).
+Follow the steps [here](/doc/installation/iOS.md).
 
 ### Test setup
 
