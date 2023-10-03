@@ -3,17 +3,14 @@ import styled, { useTheme } from 'styled-components/native'
 
 import { LocationModalButton } from 'features/location/components/LocationModalButton'
 import { LocationMode } from 'features/location/enums'
-import { SuggestedPlaces } from 'features/search/pages/SuggestedPlacesOrVenues/SuggestedPlaces'
 import { GeolocPermissionState, useLocation } from 'libs/geolocation'
 import { SuggestedPlace } from 'libs/place'
+import { LocationSearchInput } from 'shared/location/LocationSearchInput'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
-import { SearchInput } from 'ui/components/inputs/SearchInput'
 import { AppModal } from 'ui/components/modals/AppModal'
 import { Separator } from 'ui/components/Separator'
 import { Spacer } from 'ui/components/spacer/Spacer'
-import { useDebounceValue } from 'ui/hooks/useDebounceValue'
 import { Close } from 'ui/svg/icons/Close'
-import { MagnifyingGlass } from 'ui/svg/icons/MagnifyingGlass'
 import { MagnifyingGlassFilled } from 'ui/svg/icons/MagnifyingGlassFilled'
 import { PositionFilled } from 'ui/svg/icons/PositionFilled'
 
@@ -39,7 +36,6 @@ export const LocationModal = ({ visible, dismissModal }: LocationModalProps) => 
   const theme = useTheme()
 
   const [placeQuery, setPlaceQuery] = useState('')
-  const debouncedPlaceQuery = useDebounceValue(placeQuery, 500)
   const [selectedPlace, setSelectedPlace] = useState<SuggestedPlace | null>(null)
   const defaultLocationMode = isGeolocated ? LocationMode.GEOLOCATION : LocationMode.NONE
   const [selectedLocationMode, setSelectedLocationMode] =
@@ -112,10 +108,6 @@ export const LocationModal = ({ visible, dismissModal }: LocationModalProps) => 
     setSelectedPlace(null)
     setPlaceQuery('')
   }
-  const onChangePlace = (text: string) => {
-    setSelectedPlace(null)
-    setPlaceQuery(text)
-  }
 
   const onSetSelectedPlace = (place: SuggestedPlace) => {
     setSelectedPlace(place)
@@ -130,9 +122,6 @@ export const LocationModal = ({ visible, dismissModal }: LocationModalProps) => 
   const onClose = () => {
     dismissModal()
   }
-
-  const isQueryProvided = !!placeQuery && !!debouncedPlaceQuery
-  const shouldShowSuggestedPlaces = isQueryProvided && !selectedPlace
 
   return (
     <AppModal
@@ -163,25 +152,14 @@ export const LocationModal = ({ visible, dismissModal }: LocationModalProps) => 
         subtitle={LOCATION_PLACEHOLDER}
       />
       {!!isCurrentLocationMode(LocationMode.CUSTOM_POSITION) && (
-        <React.Fragment>
-          <Spacer.Column numberOfSpaces={4} />
-          <SearchInput
-            autoFocus
-            LeftIcon={StyledMagnifyingGlass}
-            inputHeight="regular"
-            onChangeText={onChangePlace}
-            onPressRightIcon={onResetPlace}
-            placeholder={LOCATION_PLACEHOLDER}
-            value={placeQuery}
-            textStyle={selectedPlace ? theme.typography.buttonText : theme.typography.body}
-          />
-          {shouldShowSuggestedPlaces ? (
-            <React.Fragment>
-              <Spacer.Column numberOfSpaces={4} />
-              <SuggestedPlaces query={debouncedPlaceQuery} setSelectedPlace={onSetSelectedPlace} />
-            </React.Fragment>
-          ) : null}
-        </React.Fragment>
+        <LocationSearchInput
+          selectedPlace={selectedPlace}
+          setSelectedPlace={setSelectedPlace}
+          placeQuery={placeQuery}
+          setPlaceQuery={setPlaceQuery}
+          onResetPlace={onResetPlace}
+          onSetSelectedPlace={onSetSelectedPlace}
+        />
       )}
       <Spacer.Column numberOfSpaces={8} />
       <ButtonContainer>
@@ -198,7 +176,3 @@ export const LocationModal = ({ visible, dismissModal }: LocationModalProps) => 
 const ButtonContainer = styled.View({
   alignItems: 'center',
 })
-
-const StyledMagnifyingGlass = styled(MagnifyingGlass).attrs(({ theme }) => ({
-  size: theme.icons.sizes.small,
-}))``
