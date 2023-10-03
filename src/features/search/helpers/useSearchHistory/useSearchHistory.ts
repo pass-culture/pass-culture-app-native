@@ -40,12 +40,7 @@ export function useSearchHistory() {
   }, [setHistoryItems])
 
   useEffect(() => {
-    const fetchHistory = async () => {
-      const historyData = await getHistoryFromStorage()
-      setHistory(historyData)
-    }
-
-    fetchHistory()
+    getHistoryFromStorage().then(setHistory)
   }, [getHistoryFromStorage])
 
   const internalRemoveFromHistory = useCallback(
