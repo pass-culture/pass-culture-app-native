@@ -1,5 +1,4 @@
 import React, { FunctionComponent, useRef } from 'react'
-import { Platform } from 'react-native'
 import styled from 'styled-components/native'
 
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
@@ -25,7 +24,7 @@ export const SuggestedResult: FunctionComponent<Props> = ({ label, info, Icon, o
   return (
     <TouchableOpacity
       // so that an iOS user can press it without dismissing the keyboard
-      {...Platform.select({ default: { shouldUseGestureHandler: true }, web: undefined })}
+      shouldUseGestureHandler
       accessibilityRole={AccessibilityRole.BUTTON}
       onFocus={onFocus}
       onBlur={onBlur}

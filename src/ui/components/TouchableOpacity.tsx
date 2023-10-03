@@ -1,6 +1,7 @@
 import React from 'react'
 import {
   NativeSyntheticEvent,
+  Platform,
   TargetedEvent,
   // eslint-disable-next-line no-restricted-imports
   TouchableOpacity as RNTouchableOpacity,
@@ -36,8 +37,17 @@ export function TouchableOpacity({
     onBlur?.(e)
   }
 
+  // only available on iOS because:
+  // - on Android, onPress doesn't work
+  // - on web, the a11y is broken
+  const isGestureHandlerAvailable = Platform.select({
+    ios: true,
+    default: false,
+  })
   const InternalTouchableOpacity: React.FC<TouchableOpacityProps & StyledProps> =
-    shouldUseGestureHandler ? StyledGestureTouchableOpacity : StyledRNTouchableOpacity
+    shouldUseGestureHandler && isGestureHandlerAvailable
+      ? StyledGestureTouchableOpacity
+      : StyledRNTouchableOpacity
 
   return (
     <InternalTouchableOpacity
