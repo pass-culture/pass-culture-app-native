@@ -5,6 +5,7 @@ import styled from 'styled-components/native'
 
 import { useHomepageData } from 'features/home/api/useHomepageData'
 import { GeolocationBanner } from 'features/home/components/banners/GeolocationBanner'
+import { AnimatedCategoryThematicHomeHeader } from 'features/home/components/headers/AnimatedCategoryThematicHomeHeader'
 import { AnimatedHighlightThematicHomeHeader } from 'features/home/components/headers/AnimatedHighlightThematicHomeHeader'
 import { CategoryThematicHomeHeader } from 'features/home/components/headers/CategoryThematicHomeHeader'
 import { DefaultThematicHomeHeader } from 'features/home/components/headers/DefaultThematicHomeHeader'
@@ -19,14 +20,15 @@ import { analytics } from 'libs/analytics'
 import { useOpacityTransition } from 'ui/animations/helpers/useOpacityTransition'
 import { getSpacing, Spacer } from 'ui/theme'
 
-const ANIMATED_HEADER_PLACEHOLDER_HEIGHT = 76
+const ANIMATED_HIGHLIGHT_HEADER_PLACEHOLDER_HEIGHT = 76
+const ANIMATED_CATEGORY_HEADER_PLACEHOLDER_HEIGHT = 52
 
 const SubHeader: FunctionComponent<{ thematicHeader?: ThematicHeader }> = ({ thematicHeader }) => {
   if (thematicHeader?.type === ThematicHeaderType.Highlight) {
     if (Platform.OS === 'ios') {
       return (
         <React.Fragment>
-          <Spacer.Column numberOfSpaces={ANIMATED_HEADER_PLACEHOLDER_HEIGHT} />
+          <Spacer.Column numberOfSpaces={ANIMATED_HIGHLIGHT_HEADER_PLACEHOLDER_HEIGHT} />
           {!!(thematicHeader.introductionTitle && thematicHeader.introductionParagraph) && (
             <Introduction
               title={thematicHeader.introductionTitle}
@@ -41,7 +43,7 @@ const SubHeader: FunctionComponent<{ thematicHeader?: ThematicHeader }> = ({ the
 
   if (thematicHeader?.type === ThematicHeaderType.Category) {
     if (Platform.OS === 'ios') {
-      return <Spacer.Column numberOfSpaces={ANIMATED_HEADER_PLACEHOLDER_HEIGHT} />
+      return <Spacer.Column numberOfSpaces={ANIMATED_CATEGORY_HEADER_PLACEHOLDER_HEIGHT} />
     }
 
     return (
@@ -122,6 +124,15 @@ export const ThematicHome: FunctionComponent = () => {
           {thematicHeader?.type === ThematicHeaderType.Highlight && (
             <AnimatedHeader style={{ transform: [{ translateY: viewTranslation }] }}>
               <AnimatedHighlightThematicHomeHeader
+                {...thematicHeader}
+                gradientTranslation={gradientTranslation}
+                imageAnimatedHeight={imageAnimatedHeight}
+              />
+            </AnimatedHeader>
+          )}
+          {thematicHeader?.type === ThematicHeaderType.Category && (
+            <AnimatedHeader style={{ transform: [{ translateY: viewTranslation }] }}>
+              <AnimatedCategoryThematicHomeHeader
                 {...thematicHeader}
                 gradientTranslation={gradientTranslation}
                 imageAnimatedHeight={imageAnimatedHeight}
