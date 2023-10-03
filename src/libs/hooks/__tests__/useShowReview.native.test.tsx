@@ -1,3 +1,4 @@
+import { AppState } from 'react-native'
 import InAppReview from 'react-native-in-app-review'
 
 import { useReviewInAppInformation } from 'features/bookOffer/helpers/useReviewInAppInformation'
@@ -6,6 +7,9 @@ import { useShowReview } from 'libs/hooks/useShowReview'
 import { renderHook, waitFor } from 'tests/utils'
 
 const useFeatureFlagSpy = jest.spyOn(useFeatureFlag, 'useFeatureFlag').mockReturnValue(false)
+
+jest.unmock('libs/appState')
+const appStateSpy = jest.spyOn(AppState, 'addEventListener')
 
 jest.mock('react-native-in-app-review')
 const mockIsAvailable = InAppReview.isAvailable as jest.Mock
@@ -100,6 +104,20 @@ describe('useShowReview', () => {
       jest.advanceTimersByTime(3000)
 
       expect(mockRequestInAppReview).toHaveBeenCalledTimes(1)
+    })
+
+    it('should not show the review when app is running in the background', () => {
+      useFeatureFlagSpy.mockReturnValueOnce(false)
+
+      renderHook(useShowReview)
+
+      const mockCurrentAppState = appStateSpy.mock.calls[0][1]
+      mockCurrentAppState('active')
+      mockCurrentAppState('background')
+      jest.advanceTimersByTime(3000)
+
+      expect(clearTimeout).toHaveBeenCalledTimes(1)
+      expect(mockRequestInAppReview).not.toHaveBeenCalled()
     })
 
     it('should not show review when we disable store review', () => {
