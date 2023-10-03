@@ -1,12 +1,15 @@
-import React from 'react'
+import { AppState } from 'react-native'
 import InAppReview from 'react-native-in-app-review'
 
 import { useReviewInAppInformation } from 'features/bookOffer/helpers/useReviewInAppInformation'
 import * as useFeatureFlag from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { useShowReview } from 'libs/hooks/useShowReview'
-import { render, waitFor } from 'tests/utils'
+import { renderHook, waitFor } from 'tests/utils'
 
 const useFeatureFlagSpy = jest.spyOn(useFeatureFlag, 'useFeatureFlag').mockReturnValue(false)
+
+jest.unmock('libs/appState')
+const appStateSpy = jest.spyOn(AppState, 'addEventListener')
 
 jest.mock('react-native-in-app-review')
 const mockIsAvailable = InAppReview.isAvailable as jest.Mock
@@ -17,11 +20,6 @@ const mockUseReviewInAppInformation = useReviewInAppInformation as jest.Mock
 
 const mockUpdateInformationWhenReviewHasBeenRequested = jest.fn()
 
-const TestReviewComponent = () => {
-  useShowReview()
-  return null
-}
-
 jest.useFakeTimers({ legacyFakeTimers: true })
 
 describe('useShowReview', () => {
@@ -30,7 +28,7 @@ describe('useShowReview', () => {
     mockUseReviewInAppInformation.mockReturnValueOnce({ shouldReviewBeRequested: true })
     mockRequestInAppReview.mockResolvedValueOnce(undefined)
 
-    render(<TestReviewComponent />)
+    renderHook(useShowReview)
 
     jest.advanceTimersByTime(3000)
 
@@ -41,7 +39,7 @@ describe('useShowReview', () => {
     mockIsAvailable.mockReturnValueOnce(false)
     mockUseReviewInAppInformation.mockReturnValueOnce({ shouldReviewBeRequested: true })
 
-    render(<TestReviewComponent />)
+    renderHook(useShowReview)
 
     jest.advanceTimersByTime(3000)
 
@@ -52,7 +50,7 @@ describe('useShowReview', () => {
     mockIsAvailable.mockReturnValueOnce(true)
     mockUseReviewInAppInformation.mockReturnValueOnce({ shouldReviewBeRequested: false })
 
-    render(<TestReviewComponent />)
+    renderHook(useShowReview)
 
     jest.advanceTimersByTime(3000)
 
@@ -67,7 +65,7 @@ describe('useShowReview', () => {
     })
     mockRequestInAppReview.mockResolvedValueOnce(true)
 
-    render(<TestReviewComponent />)
+    renderHook(useShowReview)
 
     jest.advanceTimersByTime(3000)
 
@@ -84,7 +82,7 @@ describe('useShowReview', () => {
     })
     mockRequestInAppReview.mockResolvedValueOnce(false)
 
-    render(<TestReviewComponent />)
+    renderHook(useShowReview)
 
     jest.advanceTimersByTime(3000)
 
@@ -98,20 +96,34 @@ describe('useShowReview', () => {
       mockRequestInAppReview.mockResolvedValueOnce(undefined)
     })
 
-    it('should not show the review when we disabled store review', () => {
+    it('should show the review when we enable store review', () => {
       useFeatureFlagSpy.mockReturnValueOnce(false)
 
-      render(<TestReviewComponent />)
+      renderHook(useShowReview)
 
       jest.advanceTimersByTime(3000)
 
-      expect(mockRequestInAppReview).toHaveBeenCalledWith()
+      expect(mockRequestInAppReview).toHaveBeenCalledTimes(1)
     })
 
-    it('should not show review when we enabled store review', () => {
+    it('should not show the review when app is running in the background', () => {
+      useFeatureFlagSpy.mockReturnValueOnce(false)
+
+      renderHook(useShowReview)
+
+      const mockCurrentAppState = appStateSpy.mock.calls[0][1]
+      mockCurrentAppState('active')
+      mockCurrentAppState('background')
+      jest.advanceTimersByTime(3000)
+
+      expect(clearTimeout).toHaveBeenCalledTimes(1)
+      expect(mockRequestInAppReview).not.toHaveBeenCalled()
+    })
+
+    it('should not show review when we disable store review', () => {
       useFeatureFlagSpy.mockReturnValueOnce(true)
 
-      render(<TestReviewComponent />)
+      renderHook(useShowReview)
 
       jest.advanceTimersByTime(3000)
 
