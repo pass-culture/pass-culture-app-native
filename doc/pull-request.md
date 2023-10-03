@@ -33,8 +33,8 @@ The commits of the PR won't be on master, but are still useful for PR readiness 
 
 Available types: `build`, `ci`, `docs`, `feat`, `fix`, `perf`, `refactor` and `test`.
 
-- GitHub action to ensure that the PR title is in the right format: [pr-title-checker.yml](../../.github/workflows/pr-title-checker.yml)
-- Test of the regex used in the GitHub action: [pr-title-checker.test.ts](../../.github/pr-title-checker.test.ts)
+- GitHub action to ensure that the PR title is in the right format: [dev_on_pull_request_title_checker.yml](../.github/workflows/dev_on_pull_request_title_checker.yml)
+- Test of the regex used in the GitHub action: [pr-title-checker.test.ts](../.github/pr-title-checker.test.ts)
 
 ### Resources
 

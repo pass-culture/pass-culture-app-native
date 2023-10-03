@@ -46,22 +46,20 @@ To run the web app on your browser, follow the steps [here](./doc/installation/w
 
 Access to the [storybook](https://master--61fd537ecf081f003a135235.chromatic.com/).
 
-To run the storybook on your browser, follow the steps [here](./doc/storybook.md)
-
----
+To run the storybook on your browser, follow the steps [here](./doc/development/tests/storybook.md)
 
 ## Development
 
 ### Debugging
 
-We use [Flipper](https://fbflipper.com/) to debug the network logs, `react-query` usage, layout, perfs... More info [here](./doc/development/debugging.md).
+We use [Flipper](https://fbflipper.com/) to debug the network logs, `react-query` usage, layout, perfs... More info [here](./doc/development/how-to/debugging.md).
 
 ### Standards
 
 In the `doc/` folder you will find the `dev standards` the team members follow:
 
-- [code structure](./doc/development/codeStructure.md).
-- [error and crash management](./doc/development/errorManagement.md).
+- [code structure](./doc/development/code-structure.md).
+- [error and crash management](./doc/development/error-management.md).
 - [variable naming](./doc/development/naming.md).
 - [testing strategy](./doc/development/tests/unit-test/).
 - [PR title format](./doc/pull-request.md).
@@ -146,11 +144,11 @@ For the **staging** app, use these links for [iOS][4] and [Android][5].
 
 ## Deployment
 
-See doc about deployment process [here](./doc/deployment/deployment.md) for the mobile application.
+See doc about deployment process [here](./doc/ci-cd/deployment.md) for the mobile application.
 
 [1]: https://start.1password.com/signin
 [2]: https://appcenter.ms/orgs/pass-Culture/apps/passculture-testing-ios
 [3]: https://appcenter.ms/orgs/pass-Culture/apps/passculture-testing-android
 [4]: https://appcenter.ms/orgs/pass-Culture/apps/passculture-staging-ios
 [5]: https://appcenter.ms/orgs/pass-Culture/apps/passculture-staging-android
-[6]: https://www.notion.so/passcultureapp/d1b6c73219ad4784af8769243f0339f3?v=8c038f65ec4d45e59e5d7fe0d744dffe
+[6]: https://developer.apple.com/account/resources/devices/list
