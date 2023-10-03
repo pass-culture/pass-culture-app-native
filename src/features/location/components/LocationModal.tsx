@@ -65,6 +65,7 @@ export const LocationModal = ({ visible, dismissModal }: LocationModalProps) => 
         onResetPlace()
       }
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [visible, initializeLocationMode])
 
   const geolocationModeColor = isCurrentLocationMode(LocationMode.GEOLOCATION)
