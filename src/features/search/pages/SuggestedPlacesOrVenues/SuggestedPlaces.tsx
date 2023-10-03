@@ -96,4 +96,5 @@ const StyledBody = styled(Typo.Body)(({ theme }) => ({
 
 const ListLocationPointer = styled(DefaultLocationPointer).attrs(({ theme }) => ({
   size: theme.icons.sizes.extraSmall,
+  color: theme.colors.greyDark,
 }))``
