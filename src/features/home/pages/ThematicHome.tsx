@@ -39,7 +39,11 @@ const SubHeader: FunctionComponent<{ thematicHeader?: ThematicHeader }> = ({ the
     return <HighlightThematicHomeHeader {...thematicHeader} />
   }
 
-  if (thematicHeader?.type === ThematicHeaderType.Category)
+  if (thematicHeader?.type === ThematicHeaderType.Category) {
+    if (Platform.OS === 'ios') {
+      return <Spacer.Column numberOfSpaces={ANIMATED_HEADER_PLACEHOLDER_HEIGHT} />
+    }
+
     return (
       <CategoryThematicHomeHeader
         title={thematicHeader?.title}
@@ -47,6 +51,7 @@ const SubHeader: FunctionComponent<{ thematicHeader?: ThematicHeader }> = ({ the
         imageUrl={thematicHeader?.imageUrl}
       />
     )
+  }
 
   return (
     <ListHeaderContainer>
