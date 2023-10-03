@@ -1,3 +1,4 @@
+import { getHighlightedQuery } from 'features/search/helpers/getHighlightedQuery/getHighlightedQuery'
 import { Highlighted, HistoryItem } from 'features/search/types'
 
 type HighlightParams<TItem> = {
@@ -9,12 +10,7 @@ export function addHighlightedAttribute<TItem extends HistoryItem>({
   item,
   query,
 }: HighlightParams<TItem>): Highlighted<TItem> {
-  const valueToHighlight = query
-    ? item.query.replace(
-        new RegExp(query.replace(/[\\^$*+?.()|[\]{}]/g, '\\$&'), 'gi'),
-        '<mark>$&</mark>'
-      )
-    : item.query
+  const valueToHighlight = query ? getHighlightedQuery(item.query, query) : item.query
 
   return {
     ...item,
