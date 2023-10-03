@@ -2,12 +2,9 @@ import AsyncStorage from '@react-native-async-storage/async-storage'
 import mockdate from 'mockdate'
 
 import { SearchGroupNameEnumv2 } from 'api/gen'
+import { HISTORY_KEY, MAX_HISTORY_RESULTS } from 'features/search/constants'
 import { mockedSearchHistory } from 'features/search/fixtures/mockedSearchHistory'
-import {
-  HISTORY_KEY,
-  MAX_HISTORY_RESULTS,
-  useSearchHistory,
-} from 'features/search/helpers/useSearchHistory/useSearchHistory'
+import { useSearchHistory } from 'features/search/helpers/useSearchHistory/useSearchHistory'
 import { CreateHistoryItem, HistoryItem } from 'features/search/types'
 import { eventMonitoring } from 'libs/monitoring'
 import { placeholderData as mockData } from 'libs/subcategories/placeholderData'
