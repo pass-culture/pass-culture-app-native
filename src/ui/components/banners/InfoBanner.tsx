@@ -2,7 +2,7 @@ import React, { FunctionComponent, ReactNode } from 'react'
 import { useTheme } from 'styled-components'
 import styled from 'styled-components/native'
 
-import { GenericColoredBanner } from 'ui/components/GenericColoredBanner'
+import { GenericColoredBanner } from 'ui/components/banners/GenericColoredBanner'
 import { IconInterface } from 'ui/svg/icons/types'
 
 type ColorMessageProps = {

@@ -168,6 +168,7 @@ export const theme = {
   colors: {
     accent: ColorsEnum.ACCENT,
     attention: ColorsEnum.ATTENTION,
+    attentionLight: ColorsEnum.ATTENTION_LIGHT,
     black: ColorsEnum.BLACK,
     error: ColorsEnum.ERROR,
     errorLight: ColorsEnum.ERROR_LIGHT,

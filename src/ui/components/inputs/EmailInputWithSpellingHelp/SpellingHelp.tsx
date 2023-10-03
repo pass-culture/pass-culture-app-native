@@ -2,8 +2,8 @@ import { MailSuggestion } from '@zootools/email-spell-checker/dist/lib/types'
 import React, { useCallback, useEffect, useState } from 'react'
 import styled from 'styled-components/native'
 
+import { InfoBanner } from 'ui/components/banners/InfoBanner'
 import { ButtonQuaternarySecondary } from 'ui/components/buttons/ButtonQuarternarySecondary'
-import { InfoBanner } from 'ui/components/InfoBanner'
 import { PlainArrowNext } from 'ui/svg/icons/PlainArrowNext'
 import { Spacer } from 'ui/theme'
 

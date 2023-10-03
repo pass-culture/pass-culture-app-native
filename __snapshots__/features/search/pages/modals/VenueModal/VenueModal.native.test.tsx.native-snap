@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<EmailResendModal /> should render correctly 1`] = `
+exports[`VenueModal should render correctly 1`] = `
 <Modal
   accessibilityLabelledBy="testUuidV4"
   accessibilityModal={true}
@@ -114,7 +114,9 @@ exports[`<EmailResendModal /> should render correctly 1`] = `
     swipeThreshold={100}
   >
     <View
-      height={428}
+      desktopMaxHeight={1000.5}
+      height={1318}
+      maxHeight={1334}
       style={
         [
           {
@@ -129,9 +131,9 @@ exports[`<EmailResendModal /> should render correctly 1`] = `
             "borderTopRightRadius": 20,
             "borderTopStartRadius": 16,
             "flexDirection": "column",
-            "height": 428,
+            "height": 1318,
             "justifyContent": "center",
-            "maxHeight": 650,
+            "maxHeight": 1334,
             "maxWidth": 960,
             "paddingBottom": 32,
             "paddingLeft": 24,
@@ -201,7 +203,7 @@ exports[`<EmailResendModal /> should render correctly 1`] = `
             }
             testID="modalHeaderTitle"
           >
-            Recevoir un nouveau lien
+            Point de vente
           </Text>
         </View>
         <View
@@ -276,178 +278,285 @@ exports[`<EmailResendModal /> should render correctly 1`] = `
         style={
           [
             {
-              "height": 20,
-            },
-          ]
-        }
-        testID="spacerBetweenHeaderAndContent"
-      />
-      <View
-        backdropColor="#00000080"
-        paddingBottom={8}
-        style={
-          [
-            {
-              "maxHeight": "100%",
-              "maxWidth": 480,
-              "paddingBottom": 8,
+              "flexBasis": 0,
+              "flexGrow": 1,
+              "flexShrink": 1,
               "width": "100%",
             },
           ]
         }
+        testID="fullscreenModalView"
       >
-        <RCTScrollView
-          contentContainerStyle={{}}
-          onContentSizeChange={[Function]}
-          scrollEnabled={true}
-          testID="modalScrollView"
+        <View
+          numberOfSpaces={10}
+          style={
+            [
+              {
+                "height": 40,
+              },
+            ]
+          }
+        />
+        <View
+          style={
+            [
+              {
+                "alignItems": "center",
+                "flexDirection": "row",
+              },
+            ]
+          }
         >
-          <View>
+          <View
+            fill="none"
+            height={24}
+            width={24}
+          >
+            <Text>
+              undefined-SVG-Mock
+            </Text>
+          </View>
+          <View
+            numberOfSpaces={2}
+            style={
+              [
+                {
+                  "width": 8,
+                },
+              ]
+            }
+          />
+          <Text
+            style={
+              [
+                {
+                  "color": "#161617",
+                  "fontFamily": "Montserrat-Bold",
+                  "fontSize": 15,
+                  "lineHeight": 20,
+                },
+              ]
+            }
+          >
+            Trouver un point de vente 
+          </Text>
+        </View>
+        <View
+          numberOfSpaces={4}
+          style={
+            [
+              {
+                "height": 16,
+              },
+            ]
+          }
+        />
+        <View
+          height="regular"
+          isDisabled={false}
+          isError={false}
+          isFocus={false}
+          style={
+            [
+              {
+                "alignItems": "center",
+                "backgroundColor": "#ffffff",
+                "borderColor": "#90949D",
+                "borderRadius": 22,
+                "borderStyle": "solid",
+                "borderWidth": 1,
+                "flexDirection": "row",
+                "height": 48,
+                "paddingBottom": 0,
+                "paddingLeft": 17,
+                "paddingRight": 17,
+                "paddingTop": 0,
+                "width": "100%",
+              },
+              {
+                "borderRadius": 24,
+                "outlineOffset": 0,
+              },
+            ]
+          }
+          testID="styled-input-container"
+        >
+          <View
+            style={
+              [
+                {
+                  "flexShrink": 0,
+                },
+              ]
+            }
+          >
             <View
-              style={
-                [
-                  {
-                    "alignItems": "center",
-                    "width": "100%",
-                  },
-                ]
-              }
+              height={24}
+              width={24}
             >
-              <Text
-                style={
-                  [
-                    {
-                      "color": "#161617",
-                      "fontFamily": "Montserrat-Regular",
-                      "fontSize": 15,
-                      "lineHeight": 20,
-                      "textAlign": "center",
-                    },
-                  ]
-                }
-              >
-                Si après 5 minutes tu n’as pas reçu ton lien de validation par e-mail, tu peux en demander un nouveau.
+              <Text>
+                undefined-SVG-Mock
               </Text>
-              <View
-                numberOfSpaces={6}
-                style={
-                  [
-                    {
-                      "height": 24,
-                    },
-                  ]
-                }
-              />
-              <Text
-                style={
-                  [
-                    {
-                      "color": "#696A6F",
-                      "fontFamily": "Montserrat-SemiBold",
-                      "fontSize": 12,
-                      "lineHeight": 16,
-                    },
-                  ]
-                }
-              >
-                Attention, il te reste : 
-                <Text
-                  style={
-                    [
-                      {
-                        "color": "#161617",
-                        "fontFamily": "Montserrat-SemiBold",
-                        "fontSize": 12,
-                        "lineHeight": 16,
-                      },
-                    ]
-                  }
-                >
-                  3 demandes
-                </Text>
-              </Text>
-              <View
-                numberOfSpaces={2}
-                style={
-                  [
-                    {
-                      "height": 8,
-                    },
-                  ]
-                }
-              />
-              <View
-                accessibilityLabel="Demander un nouveau lien"
-                accessibilityState={
-                  {
-                    "busy": undefined,
-                    "checked": undefined,
-                    "disabled": false,
-                    "expanded": undefined,
-                    "selected": undefined,
-                  }
-                }
-                accessibilityValue={
-                  {
-                    "max": undefined,
-                    "min": undefined,
-                    "now": undefined,
-                    "text": undefined,
-                  }
-                }
-                accessible={true}
-                collapsable={false}
-                focusable={true}
-                onClick={[Function]}
-                onResponderGrant={[Function]}
-                onResponderMove={[Function]}
-                onResponderRelease={[Function]}
-                onResponderTerminate={[Function]}
-                onResponderTerminationRequest={[Function]}
-                onStartShouldSetResponder={[Function]}
-                style={
-                  {
-                    "alignItems": "center",
-                    "backgroundColor": "#eb0055",
-                    "borderRadius": 24,
-                    "flexDirection": "row",
-                    "justifyContent": "center",
-                    "maxWidth": 500,
-                    "minHeight": 40,
-                    "opacity": 1,
-                    "paddingBottom": 2,
-                    "paddingLeft": 20,
-                    "paddingRight": 20,
-                    "paddingTop": 2,
-                    "userSelect": "auto",
-                    "width": "100%",
-                  }
-                }
-                testID="Demander un nouveau lien"
-              >
-                <Text
-                  adjustsFontSizeToFit={false}
-                  numberOfLines={1}
-                  style={
-                    [
-                      {
-                        "color": "#ffffff",
-                        "fontFamily": "Montserrat-Bold",
-                        "fontSize": 15,
-                        "lineHeight": 20,
-                        "marginLeft": 0,
-                        "maxWidth": "100%",
-                      },
-                    ]
-                  }
-                >
-                  Demander un nouveau lien
-                </Text>
-              </View>
             </View>
           </View>
-        </RCTScrollView>
+          <View
+            numberOfSpaces={2}
+            style={
+              [
+                {
+                  "width": 8,
+                },
+              ]
+            }
+          />
+          <TextInput
+            accessibilityHidden={false}
+            autoCorrect={false}
+            editable={true}
+            enablesReturnKeyAutomatically={true}
+            focusable={true}
+            isEmpty={true}
+            nativeID="testUuidV4"
+            onBlur={[Function]}
+            onChangeText={[Function]}
+            onFocus={[Function]}
+            placeholder="Cinéma, librairie, magasin…"
+            placeholderTextColor="#696A6F"
+            returnKeyType="search"
+            selectionColor="#696A6F"
+            style={
+              [
+                {
+                  "color": "#696A6F",
+                  "flexBasis": 0,
+                  "flexGrow": 1,
+                  "flexShrink": 1,
+                  "fontFamily": "Montserrat-Italic",
+                  "fontSize": 15,
+                  "height": "100%",
+                  "paddingBottom": 0,
+                  "paddingLeft": 0,
+                  "paddingRight": 0,
+                  "paddingTop": 0,
+                },
+                {},
+              ]
+            }
+            testID="searchInput"
+            value=""
+          />
+        </View>
+        <View
+          numberOfSpaces={4}
+          style={
+            [
+              {
+                "height": 16,
+              },
+            ]
+          }
+        />
       </View>
+      <View
+        style={
+          [
+            {
+              "width": "100%",
+            },
+          ]
+        }
+        testID="fixedModalBottom"
+      >
+        <View
+          accessibilityLabel="Valider le point de vente"
+          accessibilityState={
+            {
+              "busy": undefined,
+              "checked": undefined,
+              "disabled": true,
+              "expanded": undefined,
+              "selected": undefined,
+            }
+          }
+          accessibilityValue={
+            {
+              "max": undefined,
+              "min": undefined,
+              "now": undefined,
+              "text": undefined,
+            }
+          }
+          accessible={true}
+          collapsable={false}
+          focusable={false}
+          onClick={[Function]}
+          onResponderGrant={[Function]}
+          onResponderMove={[Function]}
+          onResponderRelease={[Function]}
+          onResponderTerminate={[Function]}
+          onResponderTerminationRequest={[Function]}
+          onStartShouldSetResponder={[Function]}
+          style={
+            {
+              "alignItems": "center",
+              "backgroundColor": "#F1F1F4",
+              "borderRadius": 24,
+              "flexDirection": "row",
+              "justifyContent": "center",
+              "maxWidth": 500,
+              "minHeight": 40,
+              "opacity": 1,
+              "paddingBottom": 2,
+              "paddingLeft": 20,
+              "paddingRight": 20,
+              "paddingTop": 2,
+              "userSelect": "auto",
+              "width": "100%",
+            }
+          }
+          testID="Valider le point de vente"
+        >
+          <Text
+            adjustsFontSizeToFit={false}
+            numberOfLines={1}
+            style={
+              [
+                {
+                  "color": "#696A6F",
+                  "fontFamily": "Montserrat-Bold",
+                  "fontSize": 15,
+                  "lineHeight": 20,
+                  "marginLeft": 0,
+                  "maxWidth": "100%",
+                },
+              ]
+            }
+          >
+            Valider le point de vente
+          </Text>
+        </View>
+        <View
+          keyboardHeight={0}
+          style={
+            [
+              {
+                "height": 0,
+              },
+            ]
+          }
+        />
+      </View>
+      <View
+        customHeight={8}
+        enable={true}
+        style={
+          [
+            {
+              "height": 8,
+            },
+          ]
+        }
+      />
     </View>
   </View>
 </Modal>

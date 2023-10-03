@@ -42,8 +42,8 @@ exports[`ThematicHome should render correctly 1`] = `
           />
         }
         ListHeaderComponent={
-          <SubHeader
-            headerTransition={0}
+          <ThematicHeaderWithGeolocBanner
+            isLocated={true}
             thematicHeader={
               {
                 "subtitle": "HeaderSubtitle",

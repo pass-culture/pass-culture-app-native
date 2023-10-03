@@ -1,37 +1,45 @@
+import { rest } from 'msw'
 import React from 'react'
 
 import { api } from 'api/api'
-import { ApiError } from 'api/apiHelpers'
-import * as ResendEmailValidationMutationAPI from 'features/auth/api/useResendEmailValidation'
 import { analytics } from 'libs/analytics'
+import { env } from 'libs/environment'
 import { eventMonitoring } from 'libs/monitoring'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { act, fireEvent, render, screen } from 'tests/utils'
+import { server } from 'tests/server'
+import { act, fireEvent, render, screen, waitFor, waitForModalToShow } from 'tests/utils'
 
 import { EmailResendModal } from './EmailResendModal'
 
 const resendEmailValidationSpy = jest.spyOn(api, 'postNativeV1ResendEmailValidation')
-const resendEmailMutationSpy = jest.spyOn(
-  ResendEmailValidationMutationAPI,
-  'useResendEmailValidation'
-) as jest.Mock
 
 describe('<EmailResendModal />', () => {
-  it('should render correctly', () => {
-    renderEmailResendModal()
+  it('should render correctly', async () => {
+    renderEmailResendModal({})
+    await waitFor(() => {
+      expect(screen.getByText('Demander un nouveau lien')).toBeEnabled()
+    })
+    await waitForModalToShow()
+
     expect(screen).toMatchSnapshot()
   })
 
-  it('should dismiss modal when close icon is pressed', () => {
-    renderEmailResendModal()
+  it('should dismiss modal when close icon is pressed', async () => {
+    renderEmailResendModal({})
 
-    fireEvent.press(screen.getByLabelText('Fermer la modale'))
+    await act(async () => {
+      fireEvent.press(screen.getByLabelText('Fermer la modale'))
+    })
 
     expect(onDismissMock).toHaveBeenCalledTimes(1)
   })
 
   it('should log analytics when resend email button is clicked', async () => {
-    renderEmailResendModal()
+    renderEmailResendModal({})
+
+    await waitFor(() => {
+      expect(screen.getByText('Demander un nouveau lien')).toBeEnabled()
+    })
 
     await act(async () => {
       fireEvent.press(screen.getByLabelText('Demander un nouveau lien'))
@@ -41,7 +49,10 @@ describe('<EmailResendModal />', () => {
   })
 
   it('should resend email when resend email button is clicked', async () => {
-    renderEmailResendModal()
+    renderEmailResendModal({})
+    await waitFor(() => {
+      expect(screen.getByText('Demander un nouveau lien')).toBeEnabled()
+    })
 
     await act(async () => fireEvent.press(screen.getByText('Demander un nouveau lien')))
 
@@ -49,8 +60,10 @@ describe('<EmailResendModal />', () => {
   })
 
   it('should display error message when email resend fails', async () => {
-    resendEmailValidationSpy.mockRejectedValueOnce(new ApiError(500, 'error'))
-    renderEmailResendModal()
+    renderEmailResendModal({ emailResendErrorCode: 500 })
+    await waitFor(() => {
+      expect(screen.getByText('Demander un nouveau lien')).toBeEnabled()
+    })
 
     await act(async () => fireEvent.press(screen.getByText('Demander un nouveau lien')))
 
@@ -62,8 +75,10 @@ describe('<EmailResendModal />', () => {
   })
 
   it('should display error message when maximum number of resends is reached', async () => {
-    resendEmailValidationSpy.mockRejectedValueOnce(new ApiError(429, 'error'))
-    renderEmailResendModal()
+    renderEmailResendModal({ emailResendErrorCode: 429 })
+    await waitFor(() => {
+      expect(screen.getByText('Demander un nouveau lien')).toBeEnabled()
+    })
 
     await act(async () => fireEvent.press(screen.getByText('Demander un nouveau lien')))
 
@@ -71,8 +86,10 @@ describe('<EmailResendModal />', () => {
   })
 
   it('should log to Sentry on error', async () => {
-    resendEmailValidationSpy.mockRejectedValueOnce(new ApiError(500, 'error'))
-    renderEmailResendModal()
+    renderEmailResendModal({ emailResendErrorCode: 500 })
+    await waitFor(() => {
+      expect(screen.getByText('Demander un nouveau lien')).toBeEnabled()
+    })
 
     await act(async () => fireEvent.press(screen.getByText('Demander un nouveau lien')))
 
@@ -83,8 +100,15 @@ describe('<EmailResendModal />', () => {
   })
 
   it('should reset error message when another resend attempt is made', async () => {
-    resendEmailValidationSpy.mockRejectedValueOnce(new ApiError(500, 'error'))
-    renderEmailResendModal()
+    server.use(
+      rest.post(`${env.API_BASE_URL}/native/v1/resend_email_validation`, (_req, res, ctx) =>
+        res.once(ctx.status(500), ctx.text('error'))
+      )
+    )
+    renderEmailResendModal({})
+    await waitFor(() => {
+      expect(screen.getByText('Demander un nouveau lien')).toBeEnabled()
+    })
 
     await act(async () => fireEvent.press(screen.getByText('Demander un nouveau lien')))
 
@@ -97,21 +121,44 @@ describe('<EmailResendModal />', () => {
     ).not.toBeOnTheScreen()
   })
 
-  it('should disable resend button when there is an ongoing resend request', async () => {
-    resendEmailMutationSpy.mockReturnValueOnce({ isLoading: true, mutate: () => {} })
-    renderEmailResendModal()
+  it('should display alert banner when there is no attempt left', async () => {
+    server.use(
+      rest.get(
+        `${env.API_BASE_URL}/native/v1/email_validation_remaining_resends/john.doe%40example.com`,
+        (_req, res, ctx) =>
+          res(
+            ctx.status(200),
+            ctx.json({ remainingResends: 0, counterResetDatetime: '2023-09-30T12:58:04.065652Z' })
+          )
+      )
+    )
+    renderEmailResendModal({})
 
-    await act(() => fireEvent.press(screen.getByText('Demander un nouveau lien')))
-
-    expect(screen.getByText('Demander un nouveau lien')).toBeDisabled()
+    await waitFor(() => {
+      expect(
+        screen.queryByText(
+          'Tu as dépassé le nombre de 3 demandes de lien autorisées. Tu pourras réessayer le 30/09/2023 à 12h58.'
+        )
+      ).not.toBeOnTheScreen()
+    })
   })
 })
 
 const onDismissMock = jest.fn()
-const renderEmailResendModal = () =>
+const renderEmailResendModal = ({ emailResendErrorCode }: { emailResendErrorCode?: number }) => {
+  server.use(
+    rest.post(`${env.API_BASE_URL}/native/v1/resend_email_validation`, (_req, res, ctx) =>
+      res(ctx.status(emailResendErrorCode ?? 200), ctx.text(emailResendErrorCode ? 'error' : ''))
+    ),
+    rest.get(
+      `${env.API_BASE_URL}/native/v1/email_validation_remaining_resends/john.doe%40example.com`,
+      (_req, res, ctx) => res(ctx.status(200), ctx.json({ remainingResends: 3 }))
+    )
+  )
   render(
     // eslint-disable-next-line local-rules/no-react-query-provider-hoc
     reactQueryProviderHOC(
       <EmailResendModal email="john.doe@example.com" visible onDismiss={onDismissMock} />
     )
   )
+}

@@ -54,10 +54,7 @@ export const LocationModal = ({ visible, dismissModal }: LocationModalProps) => 
     }
   }, [onModalHideRef, isCustomPosition, setSelectedLocationMode, defaultLocationMode])
 
-  const isCurrentLocationMode = useCallback(
-    (target: LocationMode) => selectedLocationMode === target,
-    [selectedLocationMode]
-  )
+  const isCurrentLocationMode = (target: LocationMode) => selectedLocationMode === target
 
   useEffect(() => {
     if (visible) {
