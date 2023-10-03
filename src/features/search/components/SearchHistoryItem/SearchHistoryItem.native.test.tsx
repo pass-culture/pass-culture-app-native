@@ -7,7 +7,7 @@ import { NativeCategoryIdEnumv2, SearchGroupNameEnumv2 } from 'api/gen'
 import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
 import { SearchHistoryItem } from 'features/search/components/SearchHistoryItem/SearchHistoryItem'
 import { initialSearchState } from 'features/search/context/reducer'
-import { HistoryItem, SearchView } from 'features/search/types'
+import { Highlighted, HistoryItem, SearchView } from 'features/search/types'
 import { placeholderData as mockSubcategoriesData } from 'libs/subcategories/placeholderData'
 import { fireEvent, render, screen } from 'tests/utils'
 
@@ -25,24 +25,25 @@ jest.mock('features/search/context/SearchWrapper', () => ({
   }),
 }))
 
-const defaultItem: HistoryItem = {
+const defaultItem: Highlighted<HistoryItem> = {
   createdAt: new Date('2023-09-25T09:01:00.000Z').getTime(),
   query: 'manga',
   label: 'manga',
+  _highlightResult: { query: { value: 'manga' } },
 }
 
 const searchId = uuidv4()
 
 describe('SearchHistoryItem', () => {
   it('should not display "dans" a category or a native category when item has not it', () => {
-    render(<SearchHistoryItem item={defaultItem} />)
+    render(<SearchHistoryItem item={defaultItem} queryHistory="" />)
 
     expect(screen.queryByText('dans')).not.toBeOnTheScreen()
   })
 
   it('should display "dans" a category when item has it and not has a native category', () => {
     const mockItem = { ...defaultItem, category: SearchGroupNameEnumv2.LIVRES }
-    render(<SearchHistoryItem item={mockItem} />)
+    render(<SearchHistoryItem item={mockItem} queryHistory="" />)
 
     expect(screen.getByText('dans')).toBeOnTheScreen()
     expect(screen.getByText('Livres')).toBeOnTheScreen()
@@ -50,7 +51,7 @@ describe('SearchHistoryItem', () => {
 
   it('should display "dans" a native category when item has it and not has a category', () => {
     const mockItem = { ...defaultItem, nativeCategory: NativeCategoryIdEnumv2.LIVRES_PAPIER }
-    render(<SearchHistoryItem item={mockItem} />)
+    render(<SearchHistoryItem item={mockItem} queryHistory="" />)
 
     expect(screen.getByText('dans')).toBeOnTheScreen()
     expect(screen.getByText('Livres papier')).toBeOnTheScreen()
@@ -62,7 +63,7 @@ describe('SearchHistoryItem', () => {
       category: SearchGroupNameEnumv2.LIVRES,
       nativeCategory: NativeCategoryIdEnumv2.LIVRES_PAPIER,
     }
-    render(<SearchHistoryItem item={mockItem} />)
+    render(<SearchHistoryItem item={mockItem} queryHistory="" />)
 
     expect(screen.getByText('dans')).toBeOnTheScreen()
     expect(screen.getByText('Livres papier')).toBeOnTheScreen()
@@ -70,7 +71,7 @@ describe('SearchHistoryItem', () => {
 
   it('should dismiss the keyboard when pressing item', () => {
     const keyboardDismissSpy = jest.spyOn(Keyboard, 'dismiss')
-    render(<SearchHistoryItem item={defaultItem} />)
+    render(<SearchHistoryItem item={defaultItem} queryHistory="" />)
 
     fireEvent.press(screen.getByText('manga'))
 
@@ -79,7 +80,7 @@ describe('SearchHistoryItem', () => {
 
   describe('should navigate and execute the search with the item', () => {
     it('When it has not category and native category', () => {
-      render(<SearchHistoryItem item={defaultItem} />)
+      render(<SearchHistoryItem item={defaultItem} queryHistory="" />)
 
       fireEvent.press(screen.getByText('manga'))
 
@@ -104,7 +105,7 @@ describe('SearchHistoryItem', () => {
         category: SearchGroupNameEnumv2.LIVRES,
         nativeCategory: NativeCategoryIdEnumv2.LIVRES_PAPIER,
       }
-      render(<SearchHistoryItem item={mockItem} />)
+      render(<SearchHistoryItem item={mockItem} queryHistory="" />)
 
       fireEvent.press(screen.getByText('manga'))
 
@@ -128,7 +129,7 @@ describe('SearchHistoryItem', () => {
         ...defaultItem,
         category: SearchGroupNameEnumv2.LIVRES,
       }
-      render(<SearchHistoryItem item={mockItem} />)
+      render(<SearchHistoryItem item={mockItem} queryHistory="" />)
 
       fireEvent.press(screen.getByText('manga'))
 
@@ -152,7 +153,7 @@ describe('SearchHistoryItem', () => {
         ...defaultItem,
         nativeCategory: NativeCategoryIdEnumv2.LIVRES_PAPIER,
       }
-      render(<SearchHistoryItem item={mockItem} />)
+      render(<SearchHistoryItem item={mockItem} queryHistory="" />)
 
       fireEvent.press(screen.getByText('manga'))
 
@@ -170,5 +171,22 @@ describe('SearchHistoryItem', () => {
         })
       )
     })
+  })
+
+  it('should not use highlighting when query history is an empty string', () => {
+    render(<SearchHistoryItem item={defaultItem} queryHistory="" />)
+
+    expect(screen.getByTestId('withoutUsingHighlight')).toBeOnTheScreen()
+    expect(screen.queryByTestId('highlightedHistoryItemText')).not.toBeOnTheScreen()
+    expect(screen.queryByTestId('nonHighlightedHistoryItemText')).not.toBeOnTheScreen()
+  })
+
+  it('should use highlighting when query history is not an empty string', () => {
+    const item = { ...defaultItem, _highlightResult: { query: { value: '<mark>man</mark>ga' } } }
+    render(<SearchHistoryItem item={item} queryHistory="man" />)
+
+    expect(screen.getByTestId('highlightedHistoryItemText')).toBeOnTheScreen()
+    expect(screen.getByTestId('nonHighlightedHistoryItemText')).toBeOnTheScreen()
+    expect(screen.queryByTestId('withoutUsingHighlight')).not.toBeOnTheScreen()
   })
 })

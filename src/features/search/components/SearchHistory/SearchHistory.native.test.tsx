@@ -39,7 +39,7 @@ describe('SearchHistory', () => {
   })
 
   it('should not display delete button in history item when queryHistory is not an empty string', () => {
-    render(<SearchHistory history={mockHistory} queryHistory="a" removeItem={mockRemoveItem} />)
+    render(<SearchHistory history={mockHistory} queryHistory="man" removeItem={mockRemoveItem} />)
 
     expect(screen.queryByTestId('Supprimer manga de l’historique')).not.toBeOnTheScreen()
   })

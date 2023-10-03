@@ -7,9 +7,10 @@ import { v4 as uuidv4 } from 'uuid'
 import { SearchGroupNameEnumv2 } from 'api/gen'
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
+import { Highlight } from 'features/search/components/Highlight/Highlight'
 import { useSearch } from 'features/search/context/SearchWrapper'
 import { getNativeCategoryFromEnum } from 'features/search/helpers/categoriesHelpers/categoriesHelpers'
-import { HistoryItem, SearchState, SearchView } from 'features/search/types'
+import { Highlighted, HistoryItem, SearchState, SearchView } from 'features/search/types'
 import { useSearchGroupLabel } from 'libs/subcategories'
 import { useSubcategories } from 'libs/subcategories/useSubcategories'
 import { Li } from 'ui/components/Li'
@@ -17,10 +18,11 @@ import { ClockFilled } from 'ui/svg/icons/ClockFilled'
 import { Typo, getSpacing } from 'ui/theme'
 
 type Props = {
-  item: HistoryItem
+  item: Highlighted<HistoryItem>
+  queryHistory: string
 }
 
-export function SearchHistoryItem({ item }: Props) {
+export function SearchHistoryItem({ item, queryHistory }: Props) {
   const { data } = useSubcategories()
   const { searchState } = useSearch()
   const { navigate } = useNavigation<UseNavigationType>()
@@ -58,7 +60,11 @@ export function SearchHistoryItem({ item }: Props) {
           <ClockFilledIcon />
         </ClockIconContainer>
         <StyledText numberOfLines={1}>
-          <ItalicText>{item.query}</ItalicText>
+          {queryHistory === '' ? (
+            <ItalicText testID="withoutUsingHighlight">{item.query}</ItalicText>
+          ) : (
+            <Highlight historyItem={item} />
+          )}
           {!!shouldDisplaySearchGroupOrNativeCategory && (
             <React.Fragment>
               <ItalicText> dans </ItalicText>

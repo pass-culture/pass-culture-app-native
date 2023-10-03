@@ -2,6 +2,7 @@ import React from 'react'
 import styled from 'styled-components/native'
 
 import { SearchHistoryItem } from 'features/search/components/SearchHistoryItem/SearchHistoryItem'
+import { addHighlightedAttribute } from 'features/search/helpers/addHighlightedAttribute/addHighlightedAttribute'
 import { HistoryItem } from 'features/search/types'
 import { styledButton } from 'ui/components/buttons/styledButton'
 import { Touchable } from 'ui/components/touchable/Touchable'
@@ -24,7 +25,10 @@ export function SearchHistory({ history, queryHistory, removeItem }: Props) {
       <StyledVerticalUl>
         {history.map((item) => (
           <Container key={item.createdAt} testID="searchHistoryItem">
-            <SearchHistoryItem item={item} />
+            <SearchHistoryItem
+              item={addHighlightedAttribute({ item, query: queryHistory })}
+              queryHistory={queryHistory}
+            />
             {queryHistory === '' && (
               <RemoveButton
                 accessibilityLabel={`Supprimer ${item.label} de l’historique`}
