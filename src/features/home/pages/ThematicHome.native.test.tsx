@@ -81,6 +81,26 @@ describe('ThematicHome', () => {
     expect(screen.getByTestId('animated-thematic-header')).toBeOnTheScreen()
   })
 
+  it('should show highlight thematic introduction when provided and platform is iOS', async () => {
+    Platform.OS = 'ios'
+
+    const mockedHighlightHeaderDataWithIntroduction = {
+      ...mockedHighlightHeaderData,
+      thematicHeader: {
+        ...mockedHighlightHeaderData.thematicHeader,
+        introductionTitle: 'IntroductionTitle',
+        introductionParagraph: 'IntroductionParagraph',
+      },
+    }
+    mockUseHomepageData.mockReturnValueOnce(mockedHighlightHeaderDataWithIntroduction)
+
+    renderThematicHome()
+    await act(async () => {})
+
+    expect(screen.getByText('IntroductionTitle')).toBeOnTheScreen()
+    expect(screen.getByText('IntroductionParagraph')).toBeOnTheScreen()
+  })
+
   it('should not show highlight animated header when provided and platform is Android', async () => {
     Platform.OS = 'android'
 

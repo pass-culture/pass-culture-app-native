@@ -10,33 +10,24 @@ import { HighlightThematicHeader } from 'features/home/types'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 import { useCustomSafeInsets } from 'ui/theme/useCustomSafeInsets'
 
-type HighligthThematicHeaderProps = Omit<HighlightThematicHeader, 'type'>
-
-type IntroductionProps = {
-  title: string
-  paragraph: string
-}
+type HighlightThematicHeaderProps = Omit<HighlightThematicHeader, 'type'>
 
 const MOBILE_HEADER_HEIGHT = getSpacing(70)
 
 export const AnimatedHighlightThematicHomeHeader: FunctionComponent<
-  HighligthThematicHeaderProps
+  HighlightThematicHeaderProps
 > = ({
   title,
   subtitle,
   imageUrl,
   beginningDate,
   endingDate,
-  introductionTitle,
-  introductionParagraph,
   gradientTranslation,
   imageAnimatedHeight,
 }) => {
   const { top } = useCustomSafeInsets()
 
   const dateRange = computeDateRangeDisplay(beginningDate, endingDate)
-
-  const shouldShowIntroduction = !!introductionTitle && !!introductionParagraph
 
   const AnimatedImage = Animated.createAnimatedComponent(StyledImage)
   const AnimatedBlackBackground = Animated.createAnimatedComponent(BlackBackground)
@@ -63,25 +54,9 @@ export const AnimatedHighlightThematicHomeHeader: FunctionComponent<
           <Title numberOfLines={2}>{title}</Title>
         </AnimatedBlackBackground>
       </TextContainer>
-      {shouldShowIntroduction ? (
-        <Introduction title={introductionTitle} paragraph={introductionParagraph} />
-      ) : null}
     </Container>
   )
 }
-
-const Introduction = ({ title, paragraph }: IntroductionProps) => (
-  <React.Fragment>
-    <IntroductionContainer>
-      <Typo.Title4 numberOfLines={3}>{title}</Typo.Title4>
-      <Spacer.Column numberOfSpaces={4} />
-      <Typo.Body>{paragraph}</Typo.Body>
-    </IntroductionContainer>
-    <Spacer.Column numberOfSpaces={6} />
-    <Divider />
-    <Spacer.Column numberOfSpaces={6} />
-  </React.Fragment>
-)
 
 const Container = styled.View({
   position: 'absolute',
@@ -125,13 +100,4 @@ const Subtitle = styled(Typo.Title4)(({ theme }) => ({
 
 const Title = styled(Typo.Title1)(({ theme }) => ({
   color: theme.colors.white,
-}))
-
-const IntroductionContainer = styled.View({
-  paddingHorizontal: getSpacing(6),
-})
-
-const Divider = styled.View(({ theme }) => ({
-  height: getSpacing(1),
-  backgroundColor: theme.colors.greyLight,
 }))
