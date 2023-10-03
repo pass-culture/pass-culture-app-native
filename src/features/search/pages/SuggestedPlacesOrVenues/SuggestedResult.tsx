@@ -24,7 +24,7 @@ export const SuggestedResult: FunctionComponent<Props> = ({ label, info, Icon, o
   const accessibilityLabel = `${label} ${info}`
   return (
     <TouchableOpacity
-      // so that the user can press it without dismissing the keyboard
+      // so that an iOS user can press it without dismissing the keyboard
       {...Platform.select({ default: { shouldUseGestureHandler: true }, web: undefined })}
       accessibilityRole={AccessibilityRole.BUTTON}
       onFocus={onFocus}
