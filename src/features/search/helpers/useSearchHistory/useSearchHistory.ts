@@ -97,6 +97,8 @@ export function useSearchHistory() {
               category: categoryLabel,
               nativeCategory: nativeCategoryLabel,
             }),
+            categoryLabel,
+            nativeCategoryLabel,
           },
           ...currentHistory,
         ]

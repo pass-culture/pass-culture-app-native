@@ -79,7 +79,12 @@ describe('useSearchHistory', () => {
     })
 
     expect(result.current.filteredHistory).toEqual([
-      { ...item, createdAt: TODAY_DATE.getTime(), label: 'one piece dans Livres' },
+      {
+        ...item,
+        createdAt: TODAY_DATE.getTime(),
+        label: 'one piece dans Livres',
+        categoryLabel: 'Livres',
+      },
     ])
   })
 
@@ -137,7 +142,12 @@ describe('useSearchHistory', () => {
     })
 
     expect(result.current.filteredHistory).toEqual([
-      { ...item, createdAt: TODAY_DATE.getTime() + 1000, label: 'one piece dans Livres' },
+      {
+        ...item,
+        createdAt: TODAY_DATE.getTime() + 1000,
+        label: 'one piece dans Livres',
+        categoryLabel: 'Livres',
+      },
     ])
   })
 
@@ -154,7 +164,14 @@ describe('useSearchHistory', () => {
 
     expect(AsyncStorage.setItem).toHaveBeenLastCalledWith(
       HISTORY_KEY,
-      JSON.stringify([{ ...item, createdAt: TODAY_DATE.getTime(), label: 'one piece dans Livres' }])
+      JSON.stringify([
+        {
+          ...item,
+          createdAt: TODAY_DATE.getTime(),
+          label: 'one piece dans Livres',
+          categoryLabel: 'Livres',
+        },
+      ])
     )
   })
 
