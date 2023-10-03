@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 
-export const useTimer = (initialValue: number) => {
-  const [timeLeft, setTimeLeft] = useState(initialValue)
+export const useTimer = (initialValueInSeconds: number) => {
+  const [timeLeft, setTimeLeft] = useState(initialValueInSeconds)
 
   useEffect(() => {
     let timerId: NodeJS.Timeout
