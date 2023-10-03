@@ -1,7 +1,7 @@
 import React from 'react'
 
 import { formatToSlashedFrenchDate } from 'libs/dates'
-import { InfoBanner } from 'ui/components/InfoBanner'
+import { InfoBanner } from 'ui/components/banners/InfoBanner'
 import { BicolorClock } from 'ui/svg/icons/BicolorClock'
 
 export function YoungerBadge(props: { eligibilityStartDatetime: Date }) {

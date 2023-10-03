@@ -30,6 +30,13 @@ const mockUseState = jest.spyOn(React, 'useState')
 
 mockdate.set(CURRENT_DATE)
 
+server.use(
+  rest.get(
+    `${env.API_BASE_URL}/native/v1/email_validation_remaining_resends/email%40gmail.com`,
+    (_req, res, ctx) => res(ctx.status(200), ctx.json({ remainingResends: 3 }))
+  )
+)
+
 describe('Signup Form', () => {
   it.each`
     stepIndex | component

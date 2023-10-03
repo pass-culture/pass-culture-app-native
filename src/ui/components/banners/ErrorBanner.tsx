@@ -2,7 +2,7 @@ import React, { FunctionComponent } from 'react'
 import { useTheme } from 'styled-components'
 import styled from 'styled-components/native'
 
-import { GenericColoredBanner } from 'ui/components/GenericColoredBanner'
+import { GenericColoredBanner } from 'ui/components/banners/GenericColoredBanner'
 import { Error } from 'ui/svg/icons/Error'
 
 type Props = {

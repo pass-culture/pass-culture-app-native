@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components/native'
 
-import { InfoBanner } from 'ui/components/InfoBanner'
+import { InfoBanner } from 'ui/components/banners/InfoBanner'
 import { Info } from 'ui/svg/icons/Info'
 import { Typo } from 'ui/theme'
 import { LINE_BREAK } from 'ui/theme/constants'

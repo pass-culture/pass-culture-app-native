@@ -24,6 +24,8 @@ describe('<SignupForm/>', () => {
   describe('Accessibility', () => {
     it('should not have basic accessibility issues for SetEmail', async () => {
       const { container } = renderSignupForm()
+      await act(async () => {})
+
       await waitFor(() => {
         expect(screen.getByTestId('Entrée pour l’email')).toHaveFocus()
       })
@@ -34,10 +36,9 @@ describe('<SignupForm/>', () => {
 
     it.each`
       stepIndex | component
-      ${1}      | ${'SetEmail'}
-      ${2}      | ${'SetPassword'}
-      ${3}      | ${'SetBirthday'}
-      ${4}      | ${'AcceptCgu'}
+      ${1}      | ${'SetPassword'}
+      ${2}      | ${'SetBirthday'}
+      ${3}      | ${'AcceptCgu'}
     `('should not have basic accessibility issues for $component', async ({ stepIndex }) => {
       mockUseState.mockImplementationOnce(() => realUseState(stepIndex))
       mockUseState.mockImplementationOnce(() => realUseState(stepIndex))

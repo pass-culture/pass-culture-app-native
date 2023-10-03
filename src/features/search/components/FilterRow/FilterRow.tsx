@@ -86,13 +86,15 @@ const ArrowNext = styled(DefaultArrowNext).attrs(({ theme }) => ({
 }))``
 
 const TitleAndDescriptionContainer = styled.View(({ theme }) => ({
-  flex: theme.isMobileViewport ? 0.7 : undefined,
+  flexGrow: theme.isMobileViewport ? 1 : undefined,
+  flexShrink: 1,
   alignItems: 'flex-start',
 }))
 
 const ComplementContainer = styled.View({
-  flex: 0.3,
+  flexShrink: 0,
   justifyContent: 'center',
+  marginRight: getSpacing(3),
 })
 
 const ComplementLabel = styled(Typo.Caption)(({ theme }) => ({

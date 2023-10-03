@@ -104,6 +104,14 @@ function customRender(ui: React.ReactElement<any>, options?: CustomRenderOptions
   })
 }
 
+export async function waitForModalToShow() {
+  await act(async () => {
+    const sleep = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms))
+    await sleep(300)
+  })
+}
+export const waitForModalToHide = waitForModalToShow
+
 // eslint-disable-next-line no-restricted-imports
 export * from '@testing-library/react'
 
