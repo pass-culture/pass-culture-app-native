@@ -1,33 +1,21 @@
 appId: app.passculture.staging
 ---
-# Launch App
-- runFlow: reusableFlows/LaunchApp.yml
-# First Launch
-- runFlow: src/features/identityCheck/FirstLaunch.yml
+- runFlow: reusableFlows/LaunchApp.yml # Launch App
+- runFlow: src/features/identityCheck/FirstLaunch.yml # First Launch
 
-- tapOn:
-      id: "Rechercher des offres"
 - tapOn: "Rechercher des offres"
+- tapOn: "Rechercher des offres" # pour sortir de la saisie
 - tapOn: "Films, séries, cinéma"
 - tapOn:
     point: "50%,71%"
-- tapOn:
-      id: "Réserver l’offre"
-# Se connecter
-- runFlow: src/features/auth/ToLogin.yml
-
+- tapOn: "Réserver l’offre"
+- runFlow: src/features/auth/ToLogin.yml # Se connecter
 - tapOn: "Se connecter"
-#pour sortir de la saisie
-- tapOn:
-    id: "Se connecter"
-
+- tapOn: "Se connecter" #pour sortir de la saisie
 - tapOn: "Plus tard"
-
 - tapOn: "Rechercher des offres"
-
 - tapOn: "Dates & heures"
-- tapOn:
-    id: "Interrupteur date"
+- tapOn: "Interrupteur date"
 - assertVisible: "Date"
 - assertVisible:
     text: "Seules les sorties seront affichées"
@@ -93,5 +81,4 @@ appId: app.passculture.staging
 - tapOn:
       id: "icon-back"
 
-# Stop App
-- runFlow: reusableFlows/StopApp.yml
+- runFlow: reusableFlows/StopApp.yml # Stop App

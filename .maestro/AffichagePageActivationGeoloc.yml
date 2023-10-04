@@ -1,7 +1,6 @@
 appId: app.passculture.staging
 ---
-# Launch App
-- runFlow: reusableFlows/LaunchApp.yml
+- runFlow: reusableFlows/LaunchApp.yml # Launch App
 - tapOn: "Tout accepter"
 - tapOn: "C’est parti\_!"
 - tapOn: "Utiliser ma position"
@@ -12,6 +11,4 @@ appId: app.passculture.staging
               id: "com.android.permissioncontroller:id/permission_allow_foreground_only_button"
       file: "src/features/location/GeolocApp.yml"
 
-
-# Stop App
-- runFlow: reusableFlows/StopApp.yml
+- runFlow: reusableFlows/StopApp.yml # Stop App

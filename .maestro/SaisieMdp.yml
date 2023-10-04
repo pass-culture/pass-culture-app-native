@@ -1,13 +1,10 @@
 appId: app.passculture.staging
 ---
-# Launch App
-- runFlow: reusableFlows/LaunchApp.yml
-# First Launch
-- runFlow: src/features/identityCheck/FirstLaunch.yml
+- runFlow: reusableFlows/LaunchApp.yml # Launch App
+- runFlow: src/features/identityCheck/FirstLaunch.yml # First Launch
 
 - tapOn: "Mes favoris"
-- tapOn:
-    id: "Créer un compte"
+- tapOn: "Créer un compte"
 - assertVisible: "Crée-toi un compte"
 - inputText: ${USERNAME}
 - tapOn: "J’accepte de recevoir les newsletters, bons plans et recommandations personnalisé\
@@ -21,5 +18,5 @@ appId: app.passculture.staging
       point: "50%,40%"
 - tapOn: "Continuer vers l’étape Date de naissance"
 
-# Stop App
-- runFlow: reusableFlows/StopApp.yml
+
+- runFlow: reusableFlows/StopApp.yml # Stop App

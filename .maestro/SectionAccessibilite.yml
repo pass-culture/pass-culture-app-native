@@ -1,9 +1,7 @@
 appId: app.passculture.staging
 ---
-# Launch App
-- runFlow: reusableFlows/LaunchApp.yml
-# First Launch
-- runFlow: src/features/identityCheck/FirstLaunch.yml
+- runFlow: reusableFlows/LaunchApp.yml # Launch App
+- runFlow: src/features/identityCheck/FirstLaunch.yml # First Launch
 - tapOn: "Mon profil"
 - scrollUntilVisible:
     element: "Accessibilité"
@@ -19,5 +17,4 @@ appId: app.passculture.staging
 - tapOn: "Revenir en arrière"
 - tapOn: "Revenir en arrière"
 
-# Stop App
-- runFlow: reusableFlows/StopApp.yml
+- runFlow: reusableFlows/StopApp.yml # Stop App

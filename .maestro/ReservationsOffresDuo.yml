@@ -1,12 +1,9 @@
 appId: app.passculture.staging
 ---
-# Launch App
-- runFlow: reusableFlows/LaunchApp.yml
-# First Launch
-- runFlow: src/features/identityCheck/FirstLaunch.yml
+- runFlow: reusableFlows/LaunchApp.yml # Launch App
+- runFlow: src/features/identityCheck/FirstLaunch.yml # First Launch
 
-- tapOn:
-      id: "Rechercher des offres"
+- tapOn: "Rechercher des offres"
 #- tapOn:
 #    id: "Revenir en arrière"
 - tapOn: "Rechercher des offres"
@@ -14,22 +11,16 @@ appId: app.passculture.staging
 #- TODO trouver une solution pour cliquer sans passer par la position.
 - tapOn:
       point: "50%,71%"
-- tapOn:
-    id: "Réserver l’offre"
-# Se connecter
-- runFlow: src/features/auth/ToLogin.yml
+- tapOn: "Réserver l’offre"
 
+- runFlow: src/features/auth/ToLogin.yml # Se connecter
 - tapOn: "Se connecter"
-#pour sortir de la saisie
-- tapOn:
-    id: "Se connecter"
+- tapOn: "Se connecter" # pour sortir de la saisie
 
 - tapOn: "Plus tard"
-
 - tapOn: "Rechercher des offres"
 
-#Filtre offre Duo
-- tapOn: "Duo"
+- tapOn: "Duo" # Filtre offre Duo
 - assertVisible: "Uniquement les offres duo"
 - assertVisible: "Seules les sorties seront affichées"
 - tapOn:
@@ -94,5 +85,4 @@ appId: app.passculture.staging
 
 - assertVisible: "Réservations terminées"
 
-# Stop App
-- runFlow: reusableFlows/StopApp.yml
+- runFlow: reusableFlows/StopApp.yml # Stop App

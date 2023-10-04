@@ -1,9 +1,7 @@
 appId: app.passculture.staging
 ---
-# Launch App
-- runFlow: reusableFlows/LaunchApp.yml
-# First Launch
-- runFlow: src/features/identityCheck/FirstLaunch.yml
+- runFlow: reusableFlows/LaunchApp.yml # Launch App
+- runFlow: src/features/identityCheck/FirstLaunch.yml # First Launch
 
 - tapOn: "Mon profil"
 - scrollUntilVisible:
@@ -21,5 +19,4 @@ appId: app.passculture.staging
     id: "com.sec.android.app.launcher:id/snapshot"
     index: 0
 
-# Stop App
-- runFlow: reusableFlows/StopApp.yml
+- runFlow: reusableFlows/StopApp.yml # Stop App

@@ -1,9 +1,7 @@
 appId: app.passculture.staging
 ---
-# Launch App
-- runFlow: reusableFlows/LaunchApp.yml
-# First Launch
-- runFlow: src/features/identityCheck/FirstLaunch.yml
+- runFlow: reusableFlows/LaunchApp.yml # Launch App
+- runFlow: src/features/identityCheck/FirstLaunch.yml # First Launch
 
 - tapOn: "Rechercher des offres"
 - tapOn: "Rechercher des offres"
@@ -11,11 +9,8 @@ appId: app.passculture.staging
 - tapOn:
     point: "50%,71%"
 - tapOn: "Réserver l’offre"
-# Se connecter
-- runFlow: src/features/auth/ToLogin.yml
-
-- tapOn: "Se connecter"
-#pour sortir de la saisie
+- runFlow: src/features/auth/ToLogin.yml # Se connecter
+- tapOn: "Se connecter" #pour sortir de la saisie
 - tapOn: "Se connecter"
 - tapOn: "Plus tard"
 
@@ -68,7 +63,7 @@ appId: app.passculture.staging
 - assertVisible: "Informations"
 - assertVisible: "Lieu de l’événement"
 - assertVisible: "Conditions d’annulation"
-- assertVisible: "Confirmer la réservation
+- assertVisible: "Confirmer la réservation"
 - tapOn: "Confirmer la réservation"
 - assertVisible: "Réservation confirmée\_!"
 - assertVisible: "Tu peux retrouver toutes les informations concernant ta réservation\
@@ -85,18 +80,15 @@ appId: app.passculture.staging
 #    id: "cancel-annulation-message"
 - tapOn: "Voir le détail de l’offre"
 
-
 - tapOn:
       point: "49%,32%"
 - tapOn:
       point: "50%,34%"
 - tapOn: "Réserver l’offre"
-#PreBookingReservation
-- runFlow: src/features/bookOffer/PreBookingPage.yml
 
+- runFlow: src/features/bookOffer/PreBookingPage.yml #PreBookingReservation
 - tapOn: "Confirmer la réservation"
-#BookingConfirmationPage
-- runFlow: src/features/bookOffer/BookingConfirmationPage.yml
+- runFlow: src/features/bookOffer/BookingConfirmationPage.yml #BookingConfirmationPage
 - tapOn: "Voir ma réservation"
 - assertVisible: "Pour profiter de ta réservation, tu dois présenter ta carte d’identité\
     \ et ce code à 6 caractères. N’oublie pas que tu n’as pas le droit de le revendre\
@@ -117,11 +109,8 @@ appId: app.passculture.staging
       direction: DOWN
 
 - tapOn: "Annuler ma réservation"
-##BookingCancellationPage
-- runFlow: src/features/bookings/BookingCancellationPage.yml
-#
+- runFlow: src/features/bookings/BookingCancellationPage.yml # BookingCancellationPage
 - tapOn: "Annuler ma réservation"
 - assertVisible: "Réservations terminées"
 
-# Stop App
-- runFlow: reusableFlows/StopApp.yml
+- runFlow: reusableFlows/StopApp.yml # Stop App

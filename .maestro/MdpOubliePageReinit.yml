@@ -1,9 +1,7 @@
 appId: app.passculture.staging
 ---
-# Launch App
-- runFlow: reusableFlows/LaunchApp.yml
-# First Launch
-- runFlow: src/features/identityCheck/FirstLaunch.yml
+- runFlow: reusableFlows/LaunchApp.yml # Launch App
+- runFlow: src/features/identityCheck/FirstLaunch.yml # First Launch
 - tapOn: "Mon profil"
 - tapOn: "Se connecter"
 - assertVisible: "Connecte-toi"
@@ -16,8 +14,7 @@ appId: app.passculture.staging
 - assertVisible: "Adresse e-mail"
 
 - inputText: ${USERNAME}
-- tapOn: "Valider"
+- tapOn: "Valider" #
 - tapOn: "Valider"
 
-# Stop App
-- runFlow: reusableFlows/StopApp.yml
+- runFlow: reusableFlows/StopApp.yml # Stop App

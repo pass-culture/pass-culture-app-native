@@ -1,17 +1,12 @@
 appId: app.passculture.staging
 ---
-# Launch App
-- runFlow: reusableFlows/LaunchApp.yml
-# First Launch
-- runFlow: src/features/identityCheck/FirstLaunch.yml
 
-# Se connecter
-- runFlow: src/features/auth/ToLogin.yml
+- runFlow: reusableFlows/LaunchApp.yml # Launch App
+- runFlow: src/features/identityCheck/FirstLaunch.yml # First Launch
+
+- runFlow: src/features/auth/ToLogin.yml # Se connecter
 - tapOn: "Se connecter"
-
-#pour sortir de la saisie
-- tapOn:
-    id: "Se connecter"
+- tapOn: "Se connecter" # pour sortir de la saisie
 
 - tapOn: "Plus tard"
 - tapOn: "Mon profil"
@@ -22,5 +17,4 @@ appId: app.passculture.staging
 
 - assertVisible: "Version\_1.256.0"
 
-# Stop App
-- runFlow: reusableFlows/StopApp.yml
+- runFlow: reusableFlows/StopApp.yml # Stop App

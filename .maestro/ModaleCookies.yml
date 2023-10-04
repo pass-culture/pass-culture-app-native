@@ -1,20 +1,12 @@
 appId: app.passculture.staging
 ---
-# Launch App
-- runFlow: reusableFlows/LaunchApp.yml
-
+- runFlow: reusableFlows/LaunchApp.yml # Launch App
 - tapOn: "Choisir les cookies"
-- tapOn:
-    id: "Interrupteur Tout accepter"
-- tapOn:
-    id: "Interrupteur Tout accepter"
-- tapOn:
-    id: "Interrupteur Personnaliser ta navigation"
-- tapOn:
-    id: "Interrupteur Enregistrer des statistiques de navigation"
-- tapOn:
-    id: "Interrupteur Mesurer l’efficacité de nos publicités"
+- tapOn: "Interrupteur Tout accepter"
+- tapOn: "Interrupteur Tout accepter"
+- tapOn: "Interrupteur Personnaliser ta navigation"
+- tapOn: "Interrupteur Enregistrer des statistiques de navigation"
+- tapOn: "Interrupteur Mesurer l’efficacité de nos publicités"
 - tapOn: "Enregistrer mes choix"
 
-# Stop App
-- runFlow: reusableFlows/StopApp.yml
+- runFlow: reusableFlows/StopApp.yml # Stop App

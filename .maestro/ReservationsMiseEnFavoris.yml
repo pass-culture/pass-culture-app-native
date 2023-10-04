@@ -1,28 +1,22 @@
 appId: app.passculture.staging
 ---
-# Launch App
-- runFlow: reusableFlows/LaunchApp.yml
-# First Launch
-- runFlow: src/features/identityCheck/FirstLaunch.yml
 
-- tapOn:
-      id: "Rechercher des offres"
-- tapOn:
-    id: "Revenir en arrière"
+- runFlow: reusableFlows/LaunchApp.yml # Launch App
+- runFlow: src/features/identityCheck/FirstLaunch.yml # First Launch
+
+- tapOn: "Rechercher des offres"
+- tapOn: "Revenir en arrière"
 - tapOn: "Rechercher des offres"
 - tapOn: "Films, séries, cinéma"
 #- TODO trouver une solution pour cliquer sans passer par la position.
 - tapOn:
     point: "50%,71%"
-#Mise en favoris
+# Mise en favoris
 - tapOn:
     id: "animated-icon-favorite"
-# Se connecter
-- runFlow: src/features/auth/ToLogin.yml
+- runFlow: src/features/auth/ToLogin.yml # Se connecter
 - tapOn: "Se connecter"
-#pour sortir de la saisie
-- tapOn:
-    id: "Se connecter"
+- tapOn: "Se connecter" #pour sortir de la saisie
 - tapOn: "Plus tard"
 
 - tapOn: "Rechercher des offres"
@@ -40,7 +34,6 @@ appId: app.passculture.staging
     id: "animated-icon-favorite-filled"
 - tapOn:
     id: "animated-icon-favorite"
-
 - tapOn:
     id: "animated-icon-back"
 - tapOn: "Mes favoris"
@@ -59,5 +52,4 @@ appId: app.passculture.staging
 - tapOn: "Découvrir le catalogue"
 - assertVisible: "Rechercher des offres"
 
-# Stop App
-- runFlow: reusableFlows/StopApp.yml
+- runFlow: reusableFlows/StopApp.yml # Stop App
