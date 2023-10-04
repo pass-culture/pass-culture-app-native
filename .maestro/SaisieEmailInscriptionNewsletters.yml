@@ -20,7 +20,7 @@ appId: app.passculture.staging
 - runFlow: src/features/auth/ConfirmationEmailPage.yml
 
 # Stop App
-#- runFlow: reusableFlows/StopApp.yml
+- runFlow: reusableFlows/StopApp.yml
 
 - runFlow:
       when:
