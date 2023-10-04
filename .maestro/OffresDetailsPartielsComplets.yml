@@ -7,8 +7,6 @@ appId: app.passculture.staging
 
 - tapOn:
       id: "Rechercher des offres"
-#- tapOn:
-#    id: "Revenir en arrière"
 - tapOn: "Rechercher des offres"
 - tapOn: "Films, séries, cinéma"
 - tapOn:
@@ -96,4 +94,4 @@ appId: app.passculture.staging
       id: "icon-back"
 
 # Stop App
-#- runFlow: reusableFlows/StopApp.yml
+- runFlow: reusableFlows/StopApp.yml
