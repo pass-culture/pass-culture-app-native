@@ -21,7 +21,7 @@ interface LocationModalProps {
 
 const LOCATION_PLACEHOLDER = 'Ville, code postal, adresse'
 
-export const LocationModal = ({ visible, dismissModal }: LocationModalProps) => {
+export const HomeLocationModal = ({ visible, dismissModal }: LocationModalProps) => {
   const {
     isGeolocated,
     isCustomPosition,
