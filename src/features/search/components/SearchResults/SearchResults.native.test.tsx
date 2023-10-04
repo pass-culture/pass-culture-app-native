@@ -556,4 +556,23 @@ describe('SearchResults component', () => {
       expect(screen.queryByText('Offre non disponible sur le pass Culture.')).not.toBeOnTheScreen()
     })
   })
+
+  describe('Main filter button', () => {
+    it('should display filter button with the number of active filters', async () => {
+      mockSearchState = {
+        ...searchState,
+        priceRange: [5, 300],
+        offerIsDuo: true,
+      }
+
+      render(<SearchResults />)
+      let filterButton
+      await act(async () => {
+        filterButton = screen.getByLabelText('Voir tous les filtres\u00a0: 2 filtres actifs')
+      })
+
+      expect(filterButton).toBeOnTheScreen()
+      expect(filterButton).toHaveTextContent('2')
+    })
+  })
 })
