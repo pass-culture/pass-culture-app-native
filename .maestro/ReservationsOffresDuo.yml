@@ -65,8 +65,6 @@ appId: app.passculture.staging
 - tapOn: "Nombre de places"
 - assertVisible: "Solo"
 - assertVisible: "Duo"
-#- tapOn:
-#   point: "19%,74%"
 - tapOn:
     point: "53%,72%"
 - assertVisible: "Finaliser ma réservation"
@@ -95,6 +93,7 @@ appId: app.passculture.staging
     direction: DOWN
 - tapOn: "Annuler ma réservation"
 - tapOn: "Annuler ma réservation"
+#- TODO : comprendre pourauoi le wording n'est pas détecté par MAESTRO
 #- assertVisible:
 #    id: "cancel-annulation-message"
 
