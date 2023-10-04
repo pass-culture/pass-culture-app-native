@@ -20,7 +20,6 @@ appId: app.passculture.staging
 - assertVisible: "Suivre le pass Culture"
 
 - tapOn: "Informations légales"
-#- tapOn: "Informations légales"
 
 - scrollUntilVisible:
       element: "Conditions Générales d’Utilisation"
