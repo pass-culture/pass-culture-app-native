@@ -39,8 +39,9 @@ const supportedBrowsers: Array<{
   { browser: 'Opera', active: DeviceDetect.isOpera && DeviceDetect.isDesktop, version: 80 },
   { browser: 'Samsung', active: DeviceDetect.isSamsungBrowser, version: 5 },
   { browser: 'Instagram', active: DeviceDetect.browserName === 'Instagram', version: 200 },
+  { browser: 'Brave', active: DeviceDetect.browserName === 'Brave', version: 98 },
   {
-    browser: 'Les navigateurs basés sur Chromium (autre que Chrome)',
+    browser: 'Les navigateurs basés sur Chromium (autre que Chrome et Brave)',
     active: DeviceDetect.isChromium,
     version: 0,
   },
