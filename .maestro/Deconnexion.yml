@@ -10,10 +10,6 @@ appId: app.passculture.staging
 - runFlow: src/features/auth/ToLogin.yml
 - tapOn:
     point: "91%,89%"
-#- tapOn: "Se connecter"
-#pour sortir de la saisie
-#- tapOn:
-#    id: "Se connecter"
 - tapOn: "Plus tard"
 - tapOn:
     id: "Mon profil"

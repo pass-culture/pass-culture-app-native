@@ -7,7 +7,10 @@ appId: app.passculture.staging
 
 - tapOn: "Mon profil"
 - tapOn: "Nouvelle fenêtre\_: Centre d’aide"
-#- assertVisible: "aide.passculture.app"
+# TODO : comprendre pourquoi maestro ne détecte pas le texte   "aide.passculture.app" - assertVisible: "aide.passculture.app"
+- assertVisible:
+    id: "main-content"
+
 - tapOn: "Applications récentes"
 - tapOn:
     id: "com.sec.android.app.launcher:id/snapshot"
