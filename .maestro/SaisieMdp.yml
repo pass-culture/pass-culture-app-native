@@ -12,9 +12,8 @@ appId: app.passculture.staging
 - inputText: ${USERNAME}
 - tapOn: "J’accepte de recevoir les newsletters, bons plans et recommandations personnalisé\
     es du pass Culture."
-- tapOn:
-    id: "J’accepte de recevoir les newsletters, bons plans et recommandations personnalisé\
-      es du pass Culture."
+- tapOn: "J’accepte de recevoir les newsletters, bons plans et recommandations personnalisé\
+    es du pass Culture."
 - tapOn: "Continuer vers l’étape Mot de passe"
 - inputText: ${PASSWORD}
 #- TODO trouver une solution pour cliquer sans passer par la position.

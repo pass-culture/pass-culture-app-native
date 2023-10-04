@@ -5,29 +5,24 @@ appId: app.passculture.staging
 # First Launch
 - runFlow: src/features/identityCheck/FirstLaunch.yml
 
-- tapOn:
-      id: "Rechercher des offres"
+- tapOn: "Rechercher des offres"
 - tapOn: "Rechercher des offres"
 - tapOn: "Films, séries, cinéma"
 - tapOn:
     point: "50%,71%"
-- tapOn:
-    id: "Réserver l’offre"
+- tapOn: "Réserver l’offre"
 # Se connecter
 - runFlow: src/features/auth/ToLogin.yml
 
 - tapOn: "Se connecter"
 #pour sortir de la saisie
-- tapOn:
-    id: "Se connecter"
-
+- tapOn: "Se connecter"
 - tapOn: "Plus tard"
 
 - tapOn: "Rechercher des offres"
 
 - tapOn: "Dates & heures"
-- tapOn:
-    id: "Interrupteur date"
+- tapOn: "Interrupteur date"
 - assertVisible: "Date"
 - assertVisible:
     text: "Seules les sorties seront affichées"
@@ -47,14 +42,11 @@ appId: app.passculture.staging
     point: "49%,84%"
 - tapOn:
     point: "49%,84%"
-- assertVisible:
-    id: "Voir les disponibilités"
-- tapOn:
-    id: "Voir les disponibilités"
+- assertVisible: "Voir les disponibilités"
+- tapOn: "Voir les disponibilités"
 - tapOn:
     point: "37%,59%"
-- assertVisible:
-    id: "Valider la date"
+- assertVisible: "Valider la date"
 - tapOn: "Valider la date"
 - assertVisible: "Choix des options"
 - assertVisible: "Horaire"
@@ -76,18 +68,14 @@ appId: app.passculture.staging
 - assertVisible: "Informations"
 - assertVisible: "Lieu de l’événement"
 - assertVisible: "Conditions d’annulation"
-- assertVisible:
-    id: "Confirmer la réservation"
+- assertVisible: "Confirmer la réservation
 - tapOn: "Confirmer la réservation"
 - assertVisible: "Réservation confirmée\_!"
 - assertVisible: "Tu peux retrouver toutes les informations concernant ta réservation\
     \ sur l’application."
-- assertVisible:
-    id: "Voir ma réservation"
-- assertVisible:
-    id: "Partager l’offre"
-- assertVisible:
-    id: "Retourner à l’accueil"
+- assertVisible: "Voir ma réservation"
+- assertVisible: "Partager l’offre"
+- assertVisible: "Retourner à l’accueil"
 - tapOn: "Voir ma réservation"
 - scrollUntilVisible:
       element: "Annuler ma réservation"

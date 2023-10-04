@@ -20,8 +20,7 @@ appId: app.passculture.staging
       element: "Enregistrer mes choix"
       direction: DOWN
 - tapOn: "Enregistrer mes choix"
-- assertVisible:
-    id: "Confidentialité"
+- assertVisible: "Confidentialité"
 
 # Stop App
 - runFlow: reusableFlows/StopApp.yml

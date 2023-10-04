@@ -45,15 +45,12 @@ appId: app.passculture.staging
     point: "49%,84%"
 - tapOn:
     point: "49%,84%"
-- assertVisible:
-    id: "Voir les disponibilités"
-- tapOn:
-    id: "Voir les disponibilités"
+- assertVisible: "Voir les disponibilités"
+- tapOn: "Voir les disponibilités"
 #- TODO trouver une solution pour cliquer sans passer par la position.
 - tapOn:
     point: "37%,72%"
-- assertVisible:
-    id: "Valider la date"
+- assertVisible: "Valider la date"
 - tapOn: "Valider la date"
 - assertVisible: "Choix des options"
 - assertVisible: "Horaire"
@@ -77,18 +74,14 @@ appId: app.passculture.staging
 - assertVisible: "Informations"
 - assertVisible: "Lieu de l’événement"
 - assertVisible: "Conditions d’annulation"
-- assertVisible:
-    id: "Confirmer la réservation"
+- assertVisible: "Confirmer la réservation"
 - tapOn: "Confirmer la réservation"
 - assertVisible: "Réservation confirmée\_!"
 - assertVisible: "Tu peux retrouver toutes les informations concernant ta réservation\
     \ sur l’application."
-- assertVisible:
-    id: "Voir ma réservation"
-- assertVisible:
-    id: "Partager l’offre"
-- assertVisible:
-    id: "Retourner à l’accueil"
+- assertVisible: "Voir ma réservation"
+- assertVisible: "Partager l’offre"
+- assertVisible: "Retourner à l’accueil"
 - tapOn: "Voir ma réservation"
 - scrollUntilVisible:
     element: "Annuler ma réservation"
