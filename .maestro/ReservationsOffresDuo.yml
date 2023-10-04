@@ -3,7 +3,7 @@ appId: app.passculture.staging
 # Launch App
 - runFlow: reusableFlows/LaunchApp.yml
 # First Launch
-- runFlow: reusableFlows/FirstLaunch.yml
+- runFlow: src/features/identityCheck/FirstLaunch.yml
 
 - tapOn:
       id: "Rechercher des offres"
