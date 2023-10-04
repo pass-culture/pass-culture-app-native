@@ -1,6 +1,6 @@
 import { useFocusEffect, useRoute } from '@react-navigation/native'
 import React, { FunctionComponent, useCallback, useEffect } from 'react'
-import { NativeScrollEvent } from 'react-native'
+import { NativeScrollEvent, NativeSyntheticEvent } from 'react-native'
 import styled from 'styled-components/native'
 
 import { NativeCategoryIdEnumv2, SearchGroupNameEnumv2 } from 'api/gen'
@@ -27,13 +27,11 @@ import { getSpacing, Spacer } from 'ui/theme'
 
 const trackEventHasSeenOffer = () => BatchUser.trackEvent(BatchEvent.hasSeenOffer)
 
-const OFFER_SEARCH_GROUPS_ELIGIBLE_FOR_SURVEY = [
-  SearchGroupNameEnumv2.CONCERTS_FESTIVALS,
-  SearchGroupNameEnumv2.LIVRES,
-]
 const OFFER_NATIVE_CATEGORIES_ELIGIBLE_FOR_SURVEY = [
   NativeCategoryIdEnumv2.SEANCES_DE_CINEMA,
   NativeCategoryIdEnumv2.VISITES_CULTURELLES,
+  NativeCategoryIdEnumv2.LIVRES_PAPIER,
+  NativeCategoryIdEnumv2.CONCERTS_EVENEMENTS,
 ]
 const trackEventHasSeenOfferForSurvey = () => BatchUser.trackEvent(BatchEvent.hasSeenOfferForSurvey)
 
@@ -50,6 +48,19 @@ export const Offer: FunctionComponent = () => {
   const offerId = route.params?.id
   const searchId = route.params?.searchId
   const from = route.params?.from
+
+  const trackBookOfferForSurveyOnce = useFunctionOnce(() => {
+    BatchUser.trackEvent(BatchEvent.hasSeenBookOfferForSurvey)
+  })
+  const trackCinemaOfferForSurveyOnce = useFunctionOnce(() => {
+    BatchUser.trackEvent(BatchEvent.hasSeenCinemaOfferForSurvey)
+  })
+  const trackCulturalVisitOfferForSurveyOnce = useFunctionOnce(() => {
+    BatchUser.trackEvent(BatchEvent.hasSeenCulturalVisitForSurvey)
+  })
+  const trackConcertOfferForSurveyOnce = useFunctionOnce(() => {
+    BatchUser.trackEvent(BatchEvent.hasSeenConcertForSurvey)
+  })
 
   const { data: offerResponse } = useOffer({ offerId })
 
@@ -90,8 +101,7 @@ export const Offer: FunctionComponent = () => {
   const isFreeDigitalOffer = getIsFreeDigitalOffer(offer)
 
   const shouldTriggerBatchSurveyEvent =
-    (searchGroupName && OFFER_SEARCH_GROUPS_ELIGIBLE_FOR_SURVEY.includes(searchGroupName)) ||
-    (nativeCategory && OFFER_NATIVE_CATEGORIES_ELIGIBLE_FOR_SURVEY.includes(nativeCategory))
+    nativeCategory && OFFER_NATIVE_CATEGORIES_ELIGIBLE_FOR_SURVEY.includes(nativeCategory)
 
   const logSameCategoryPlaylistVerticalScroll = useFunctionOnce(() => {
     return analytics.logPlaylistVerticalScroll({
@@ -113,46 +123,91 @@ export const Offer: FunctionComponent = () => {
     })
   })
 
-  const { headerTransition, onScroll } = useOpacityTransition({
-    listener: ({ nativeEvent }) => {
+  const trackBatchEvent = useCallback(() => {
+    trackEventHasSeenOfferForSurveyOnce()
+
+    if (nativeCategory === NativeCategoryIdEnumv2.LIVRES_PAPIER) {
+      trackBookOfferForSurveyOnce()
+    }
+
+    if (nativeCategory === NativeCategoryIdEnumv2.VISITES_CULTURELLES) {
+      trackCulturalVisitOfferForSurveyOnce()
+    }
+
+    if (nativeCategory === NativeCategoryIdEnumv2.CONCERTS_EVENEMENTS) {
+      trackConcertOfferForSurveyOnce()
+    }
+
+    if (nativeCategory === NativeCategoryIdEnumv2.SEANCES_DE_CINEMA) {
+      trackCinemaOfferForSurveyOnce()
+    }
+  }, [
+    nativeCategory,
+    trackBookOfferForSurveyOnce,
+    trackCinemaOfferForSurveyOnce,
+    trackConcertOfferForSurveyOnce,
+    trackCulturalVisitOfferForSurveyOnce,
+    trackEventHasSeenOfferForSurveyOnce,
+  ])
+
+  const handleLogPlaylistVerticalScroll = useCallback(
+    (nativeEvent: NativeScrollEvent) => {
+      // The log event is triggered when the similar offer playlist is visible
+      const hasTwoSimilarOffersPlaylist =
+        hasSameCategorySimilarOffers && hasOtherCategoriesSimilarOffers
+
+      if (
+        isCloseToBottom({
+          ...nativeEvent,
+          padding: getPlaylistsHeight(2),
+        }) &&
+        hasTwoSimilarOffersPlaylist
+      ) {
+        logSameCategoryPlaylistVerticalScroll()
+      }
+
+      if (
+        isCloseToBottom({
+          ...nativeEvent,
+          padding: getPlaylistsHeight(1),
+        })
+      ) {
+        if (hasTwoSimilarOffersPlaylist || hasOtherCategoriesSimilarOffers) {
+          logOtherCategoriesPlaylistVerticalScroll()
+        } else if (!hasTwoSimilarOffersPlaylist && hasSameCategorySimilarOffers) {
+          logSameCategoryPlaylistVerticalScroll()
+        }
+      }
+    },
+    [
+      hasOtherCategoriesSimilarOffers,
+      hasSameCategorySimilarOffers,
+      logOtherCategoriesPlaylistVerticalScroll,
+      logSameCategoryPlaylistVerticalScroll,
+    ]
+  )
+
+  const scrollEventListener = useCallback(
+    ({ nativeEvent }: NativeSyntheticEvent<NativeScrollEvent>) => {
       if (isCloseToBottom(nativeEvent)) {
         logConsultWholeOffer()
         if (shouldTriggerBatchSurveyEvent) {
-          trackEventHasSeenOfferForSurveyOnce()
+          trackBatchEvent()
         }
       }
       handleLogPlaylistVerticalScroll(nativeEvent)
     },
+    [
+      handleLogPlaylistVerticalScroll,
+      logConsultWholeOffer,
+      shouldTriggerBatchSurveyEvent,
+      trackBatchEvent,
+    ]
+  )
+
+  const { headerTransition, onScroll } = useOpacityTransition({
+    listener: scrollEventListener,
   })
-
-  const handleLogPlaylistVerticalScroll = (nativeEvent: NativeScrollEvent) => {
-    // The log event is triggered when the similar offer playlist is visible
-    const hasTwoSimilarOffersPlaylist =
-      hasSameCategorySimilarOffers && hasOtherCategoriesSimilarOffers
-
-    if (
-      isCloseToBottom({
-        ...nativeEvent,
-        padding: getPlaylistsHeight(2),
-      }) &&
-      hasTwoSimilarOffersPlaylist
-    ) {
-      logSameCategoryPlaylistVerticalScroll()
-    }
-
-    if (
-      isCloseToBottom({
-        ...nativeEvent,
-        padding: getPlaylistsHeight(1),
-      })
-    ) {
-      if (hasTwoSimilarOffersPlaylist || hasOtherCategoriesSimilarOffers) {
-        logOtherCategoriesPlaylistVerticalScroll()
-      } else if (!hasTwoSimilarOffersPlaylist && hasSameCategorySimilarOffers) {
-        logSameCategoryPlaylistVerticalScroll()
-      }
-    }
-  }
 
   const {
     wording,
@@ -185,12 +240,12 @@ export const Offer: FunctionComponent = () => {
     let timeoutId: NodeJS.Timeout
     if (shouldTriggerBatchSurveyEvent) {
       timeoutId = setTimeout(() => {
-        trackEventHasSeenOfferForSurveyOnce()
+        trackBatchEvent()
       }, 5000)
     }
 
     return () => clearTimeout(timeoutId)
-  }, [shouldTriggerBatchSurveyEvent, trackEventHasSeenOfferForSurveyOnce])
+  }, [shouldTriggerBatchSurveyEvent, trackBatchEvent])
 
   const onPress = () => {
     onPressCTA?.()
