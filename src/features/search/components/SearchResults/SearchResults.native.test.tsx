@@ -200,10 +200,10 @@ describe('SearchResults component', () => {
       expect(categoryButtonIcon).toBeOnTheScreen()
 
       const categoryButton = screen.getByTestId('Catégories\u00a0: Filtre sélectionné')
-      expect(categoryButton).toHaveStyle({ borderColor: theme.colors.primary })
-
-      const categoryButtonLabel = screen.getByTestId('categoryButtonLabel')
-      expect(categoryButtonLabel).toHaveStyle({ color: theme.colors.primary })
+      expect(categoryButton).toHaveStyle({
+        borderWidth: 2,
+        backgroundColor: theme.colors.greyLight,
+      })
     })
   })
 
@@ -239,10 +239,7 @@ describe('SearchResults component', () => {
       expect(priceButtonIcon).toBeOnTheScreen()
 
       const priceButton = screen.getByTestId('Prix\u00a0: Filtre sélectionné')
-      expect(priceButton).toHaveStyle({ borderColor: theme.colors.primary })
-
-      const priceButtonLabel = screen.getByTestId('priceButtonLabel')
-      expect(priceButtonLabel).toHaveStyle({ color: theme.colors.primary })
+      expect(priceButton).toHaveStyle({ borderWidth: 2, backgroundColor: theme.colors.greyLight })
     })
   })
 
@@ -451,10 +448,10 @@ describe('SearchResults component', () => {
         expect(datesHoursButtonIcon).toBeOnTheScreen()
 
         const datesHoursButton = screen.getByTestId('Dates & heures\u00a0: Filtre sélectionné')
-        expect(datesHoursButton).toHaveStyle({ borderColor: theme.colors.primary })
-
-        const datesHoursButtonLabel = screen.getByTestId('datesHoursButtonLabel')
-        expect(datesHoursButtonLabel).toHaveStyle({ color: theme.colors.primary })
+        expect(datesHoursButton).toHaveStyle({
+          borderWidth: 2,
+          backgroundColor: theme.colors.greyLight,
+        })
       }
     )
   })
