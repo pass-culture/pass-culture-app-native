@@ -117,6 +117,9 @@ describe('SearchResults component', () => {
   afterEach(() => {
     mockHits = []
     mockNbHits = 0
+    mockSearchState = searchState
+    mockPosition = DEFAULT_POSITION
+    mockUserData = []
   })
 
   it('should render correctly', async () => {
@@ -371,6 +374,8 @@ describe('SearchResults component', () => {
 
   describe('Location filter', () => {
     it('should display location filter button', async () => {
+      mockPosition = null
+
       render(<SearchResults />)
       await act(async () => {})
 
