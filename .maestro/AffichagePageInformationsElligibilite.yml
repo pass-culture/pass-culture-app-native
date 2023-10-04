@@ -30,14 +30,14 @@ appId: app.passculture.staging
     id: "j’ai 15 ans"
 - tapOn: "Plus tard"
 
-#- tapOn: "Mon profil"
-#- tapOn: "Se connecter"
-#- assertVisible: "Connecte-toi"
-#- tapOn:
-#    id: "icon-back"
-#- tapOn: "Créer un compte"
-#- assertVisible: "Crée-toi un compte"
-#- tapOn: "Revenir en arrière"
+- tapOn: "Mon profil"
+- tapOn: "Se connecter"
+- assertVisible: "Connecte-toi"
+- tapOn:
+    id: "icon-back"
+- tapOn: "Créer un compte"
+- assertVisible: "Crée-toi un compte"
+- tapOn: "Revenir en arrière"
 
 # Stop App
-#- runFlow: reusableFlows/StopApp.yml
+- runFlow: reusableFlows/StopApp.yml
