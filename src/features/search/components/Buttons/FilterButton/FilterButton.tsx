@@ -7,7 +7,7 @@ import { useSearch } from 'features/search/context/SearchWrapper'
 import { plural } from 'libs/plural'
 import { Badge } from 'ui/components/Badge'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
-import { Filter as FilterIconDefault } from 'ui/svg/icons/Filter'
+import { Filter as FilterIcon } from 'ui/svg/icons/Filter'
 import { getSpacing } from 'ui/theme'
 
 type Props = {
@@ -37,7 +37,7 @@ export const FilterButton: FunctionComponent<Props> = ({ activeFilters }) => {
       title={accessibilityLabel}
       accessibilityLabel={accessibilityLabel}>
       <RoundContainer>
-        <FilterIconDefault size={16} />
+        <StyledFilterIcon />
       </RoundContainer>
       {activeFilters > 0 && <FloatingBadge value={activeFilters} testID="searchFilterBadge" />}
     </StyledTouchableLink>
@@ -58,6 +58,10 @@ const RoundContainer = styled.View({
   borderRadius: getSpacing(4),
   borderWidth: 1,
 })
+
+const StyledFilterIcon = styled(FilterIcon).attrs(({ theme }) => ({
+  size: theme.icons.sizes.extraSmall,
+}))``
 
 const FloatingBadge = styled(Badge)(({ theme }) => ({
   position: 'absolute',
