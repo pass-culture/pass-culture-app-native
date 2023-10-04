@@ -14,7 +14,6 @@ appId: app.passculture.staging
 - tapOn: "Applications récentes"
 - tapOn: "Tout fermer"
 
-#- tapOn: "pass Culture S"
 - launchApp:
       appId: 'app.passculture.staging'
       clearState: false
