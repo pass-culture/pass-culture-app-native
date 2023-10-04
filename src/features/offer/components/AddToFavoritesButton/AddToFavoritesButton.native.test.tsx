@@ -65,9 +65,9 @@ const renderButton = (options?: Options) => {
     hasAddFavoriteError,
   })
   if (hasAddFavoriteError) {
-    mockServer.post('/native/v1/me/favorites', { statuscode: 415 })
+    mockServer.postAPIV1('/native/v1/me/favorites', { statuscode: 415 })
   } else {
-    mockServer.post('/native/v1/me/favorites', favoriteResponseSnap)
+    mockServer.postAPIV1('/native/v1/me/favorites', favoriteResponseSnap)
   }
   // eslint-disable-next-line local-rules/no-react-query-provider-hoc
   return render(reactQueryProviderHOC(<AddToFavoritesButton offerId={offerId} />))

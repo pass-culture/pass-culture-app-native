@@ -20,7 +20,7 @@ const defaultParams: Params = {
 
 describe('OfferPartialDescription', () => {
   beforeEach(() => {
-    mockServer.get<OfferResponse>(`/native/v1/offer/${offerId}`, offerResponseSnap)
+    mockServer.getAPIV1<OfferResponse>(`/native/v1/offer/${offerId}`, offerResponseSnap)
   })
   it('centers CTA when provided description is empty', async () => {
     renderOfferDescription({
@@ -58,14 +58,14 @@ describe('OfferPartialDescription', () => {
 
   describe('SeeMore button', () => {
     const simulateOfferResponseWithNoDataInDescriptionPage = () => {
-      mockServer.get(`/native/v1/offer/${offerId}`, {
+      mockServer.getAPIV1(`/native/v1/offer/${offerId}`, {
         ...offerResponseSnap,
         image: {},
         extraData: {},
       })
     }
     const simulateOfferResponseWithOnlyImageInDescriptionPage = () => {
-      mockServer.get(`/native/v1/offer/${offerId}`, {
+      mockServer.getAPIV1(`/native/v1/offer/${offerId}`, {
         ...offerResponseSnap,
         extraData: {},
       })
@@ -119,7 +119,7 @@ describe('OfferPartialDescription', () => {
       })
 
       it('when there is extraData on the description page', async () => {
-        mockServer.get(`/native/v1/offer/${offerId}`, {
+        mockServer.getAPIV1(`/native/v1/offer/${offerId}`, {
           ...offerResponseSnap,
           image: {},
           extraData: {

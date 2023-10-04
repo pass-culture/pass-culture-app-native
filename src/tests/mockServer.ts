@@ -2,19 +2,19 @@ export interface MockServerInterface<BodyType, HeadersType, RequestBody> {
   baseUrl: string
   mode: MockServerMode
   delay: number
-  get<TResponse extends BodyType>(
+  getAPIV1<TResponse extends BodyType>(
     url: string,
     options: TResponse | MockOptions<HeadersType, TResponse, RequestBody>
   ): MockReturnType
-  post<TResponse extends BodyType>(
+  postAPIV1<TResponse extends BodyType>(
     url: string,
     options: TResponse | MockOptions<HeadersType, TResponse, RequestBody>
   ): MockReturnType
-  delete<TResponse extends BodyType>(
+  deleteAPIV1<TResponse extends BodyType>(
     url: string,
     options: TResponse | MockOptions<HeadersType, TResponse, RequestBody>
   ): MockReturnType
-  put<TResponse extends BodyType>(
+  putAPIV1<TResponse extends BodyType>(
     url: string,
     options: TResponse | MockOptions<HeadersType, TResponse, RequestBody>
   ): MockReturnType

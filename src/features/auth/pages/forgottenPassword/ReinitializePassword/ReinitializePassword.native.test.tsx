@@ -151,7 +151,7 @@ describe('ReinitializePassword Page', () => {
   })
 
   it('should connect the user when password is successfully reset', async () => {
-    mockServer.post('/native/v1/reset_password', {
+    mockServer.postAPIV1('/native/v1/reset_password', {
       accessToken: 'accessToken',
       refreshToken: 'refreshToken',
     })
@@ -181,7 +181,7 @@ describe('ReinitializePassword Page', () => {
   })
 
   it('should redirect to home page when password is successfully reset', async () => {
-    mockServer.post('/native/v1/reset_password', {
+    mockServer.postAPIV1('/native/v1/reset_password', {
       accessToken: 'accessToken',
       refreshToken: 'refreshToken',
     })
@@ -202,7 +202,7 @@ describe('ReinitializePassword Page', () => {
   })
 
   it('should log analytics with default from value "forgottenpassword" when password is successfully reset', async () => {
-    mockServer.post('/native/v1/reset_password', {
+    mockServer.postAPIV1('/native/v1/reset_password', {
       accessToken: 'accessToken',
       refreshToken: 'refreshToken',
     })
@@ -247,7 +247,7 @@ describe('ReinitializePassword Page', () => {
   })
 
   it('should show success snack bar when password is successfully reset', async () => {
-    mockServer.post('/native/v1/reset_password', {
+    mockServer.postAPIV1('/native/v1/reset_password', {
       accessToken: 'accessToken',
       refreshToken: 'refreshToken',
     })
@@ -271,7 +271,7 @@ describe('ReinitializePassword Page', () => {
   })
 
   it('should show error snack bar when reinitialize password request fails', async () => {
-    mockServer.post('/native/v1/reset_password', { responseOptions: { statusCode: 400 } })
+    mockServer.postAPIV1('/native/v1/reset_password', { responseOptions: { statusCode: 400 } })
     renderReinitializePassword()
     const passwordInput = screen.getByPlaceholderText('Ton mot de passe')
     const confirmationInput = screen.getByPlaceholderText('Confirmer le mot de passe')

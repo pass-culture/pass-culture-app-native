@@ -250,7 +250,7 @@ export class MswMockServer
     )
   }
 
-  get<TResponse extends DefaultBodyType>(
+  getAPIV1<TResponse extends DefaultBodyType>(
     url: string,
     options: TResponse | MockOptions<string, TResponse, string | RegExp | Buffer>
   ): MockReturnType {
@@ -272,7 +272,7 @@ export class MswMockServer
     }
   }
 
-  post<TResponse extends DefaultBodyType>(
+  postAPIV1<TResponse extends DefaultBodyType>(
     url: string,
     options: TResponse | MockOptions<string, TResponse, string | RegExp | Buffer>
   ): MockReturnType {
@@ -293,7 +293,7 @@ export class MswMockServer
       this.mswServer.use(handler)
     }
   }
-  delete<TResponse extends DefaultBodyType>(
+  deleteAPIV1<TResponse extends DefaultBodyType>(
     url: string,
     options: TResponse | MockOptions<string, TResponse, string | RegExp | Buffer>
   ): MockReturnType {
@@ -314,7 +314,7 @@ export class MswMockServer
     }
   }
 
-  put<TResponse extends DefaultBodyType>(
+  putAPIV1<TResponse extends DefaultBodyType>(
     url: string,
     options: TResponse | MockOptions<string, TResponse, string | RegExp | Buffer>
   ): MockReturnType {

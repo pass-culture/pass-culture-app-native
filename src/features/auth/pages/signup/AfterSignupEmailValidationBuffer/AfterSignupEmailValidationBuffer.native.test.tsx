@@ -59,7 +59,7 @@ describe('<AfterSignupEmailValidationBuffer />', () => {
 
   describe('when timestamp is NOT expired', () => {
     it('should redirect to AccountCreated when isEligibleForBeneficiaryUpgrade is false', async () => {
-      mockServer.get('/native/v1/me', {
+      mockServer.getAPIV1('/native/v1/me', {
         email: 'email@domain.ext',
         firstName: 'Jean',
         eligibility: 'age-18',
@@ -79,7 +79,7 @@ describe('<AfterSignupEmailValidationBuffer />', () => {
     })
 
     it('should redirect to Verify Eligibility when isEligibleForBeneficiaryUpgrade and user is 18 yo', async () => {
-      mockServer.get('/native/v1/me', {
+      mockServer.getAPIV1('/native/v1/me', {
         email: 'email@domain.ext',
         firstName: 'Jean',
         eligibility: 'age-18',
@@ -99,7 +99,7 @@ describe('<AfterSignupEmailValidationBuffer />', () => {
       loginRoutine.mockRestore()
     })
     it('should redirect to AccountCreated when not isEligibleForBeneficiaryUpgrade and user is not future eligible', async () => {
-      mockServer.get('/native/v1/me', {
+      mockServer.getAPIV1('/native/v1/me', {
         email: 'email@domain.ext',
         firstName: 'Jean',
         eligibility: 'age-18',
@@ -137,7 +137,7 @@ describe('<AfterSignupEmailValidationBuffer />', () => {
     })
 
     it('should redirect to NotYetUnderageEligibility when not isEligibleForBeneficiaryUpgrade and user is future eligible', async () => {
-      mockServer.get('/native/v1/me', {
+      mockServer.getAPIV1('/native/v1/me', {
         email: 'email@domain.ext',
         firstName: 'Jean',
         eligibility: 'age-18',
@@ -156,7 +156,7 @@ describe('<AfterSignupEmailValidationBuffer />', () => {
     it('should redirect to Home with a snackbar message on error', async () => {
       // eslint-disable-next-line local-rules/independent-mocks
       jest.spyOn(datesLib, 'isTimestampExpired').mockReturnValue(false)
-      mockServer.post('/native/v1/validate_email', {
+      mockServer.postAPIV1('/native/v1/validate_email', {
         responseOptions: { statusCode: 400, data: {} },
       })
 

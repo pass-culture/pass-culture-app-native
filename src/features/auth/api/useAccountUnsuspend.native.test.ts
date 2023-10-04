@@ -8,11 +8,11 @@ const onSuccess = jest.fn()
 const onError = jest.fn()
 
 function simulateUnsuspension() {
-  mockServer.post('/native/v1/account/unsuspend', {})
+  mockServer.postAPIV1('/native/v1/account/unsuspend', {})
 }
 
 function simulateUnsuspensionError() {
-  mockServer.post('/native/v1/account/unsuspend', { responseOptions: { statusCode: 400 } })
+  mockServer.postAPIV1('/native/v1/account/unsuspend', { responseOptions: { statusCode: 400 } })
 }
 
 describe('useAccountUnsuspend', () => {

@@ -6,11 +6,13 @@ import { act, renderHook } from 'tests/utils'
 
 const expectedResponse = { status: AccountState.SUSPENDED }
 function simulateSuspensionStatus200() {
-  mockServer.get('/native/v1/account/suspension_status', expectedResponse)
+  mockServer.getAPIV1('/native/v1/account/suspension_status', expectedResponse)
 }
 
 function simulateSuspensionStatusError() {
-  mockServer.get('/native/v1/account/suspension_status', { responseOptions: { statusCode: 400 } })
+  mockServer.getAPIV1('/native/v1/account/suspension_status', {
+    responseOptions: { statusCode: 400 },
+  })
 }
 
 describe('useAccountSuspensionStatus', () => {

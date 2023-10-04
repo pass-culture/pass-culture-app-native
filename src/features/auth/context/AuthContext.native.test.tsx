@@ -31,7 +31,7 @@ const decodeTokenSpy = jest.spyOn(jwt, 'default')
 
 jest.useFakeTimers({ legacyFakeTimers: true })
 const mockUserProfileInfo = (user = beneficiaryUser) => {
-  mockServer.get('/native/v1/me', user)
+  mockServer.getAPIV1('/native/v1/me', user)
 }
 
 describe('AuthContext', () => {
@@ -124,7 +124,7 @@ describe('AuthContext', () => {
     })
 
     it('should not set user properties to Amplitude events when user is not logged in', async () => {
-      mockServer.get('/native/v1/me', nonBeneficiaryUser)
+      mockServer.getAPIV1('/native/v1/me', nonBeneficiaryUser)
 
       renderUseAuthContext()
 
@@ -134,7 +134,7 @@ describe('AuthContext', () => {
     })
 
     it('should set user id when user is logged in', async () => {
-      mockServer.get('/native/v1/me', nonBeneficiaryUser)
+      mockServer.getAPIV1('/native/v1/me', nonBeneficiaryUser)
 
       await saveRefreshToken('token')
 

@@ -5,11 +5,13 @@ import { act, renderHook } from 'tests/utils'
 
 const expectedResponse = { date: '2022-05-11T10:29:25.332786Z' }
 function simulateSuspensionDate200() {
-  mockServer.get('/native/v1/account/suspension_date', expectedResponse)
+  mockServer.getAPIV1('/native/v1/account/suspension_date', expectedResponse)
 }
 
 function simulateSuspensionDateActiveAccount() {
-  mockServer.get('/native/v1/account/suspension_date', { responseOptions: { statusCode: 403 } })
+  mockServer.getAPIV1('/native/v1/account/suspension_date', {
+    responseOptions: { statusCode: 403 },
+  })
 }
 
 describe('useAccountSuspensionDate', () => {

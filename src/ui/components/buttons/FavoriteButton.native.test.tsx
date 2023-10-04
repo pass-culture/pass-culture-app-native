@@ -295,27 +295,27 @@ function renderFavoriteButton(options: Options = defaultOptions) {
     ...options,
   }
 
-  mockServer.get<OfferResponse>(`/native/v1/offer/${id}`, offerResponseSnap)
+  mockServer.getAPIV1<OfferResponse>(`/native/v1/offer/${id}`, offerResponseSnap)
 
   if (hasAddFavoriteError) {
-    mockServer.post('/native/v1/me/favorites', { responseOptions: { statusCode: 415 } })
+    mockServer.postAPIV1('/native/v1/me/favorites', { responseOptions: { statusCode: 415 } })
   } else if (hasTooManyFavorites) {
-    mockServer.post('/native/v1/me/favorites', {
+    mockServer.postAPIV1('/native/v1/me/favorites', {
       responseOptions: { statusCode: 400, data: { code: 'MAX_FAVORITES_REACHED' } },
     })
   } else {
-    mockServer.post('/native/v1/me/favorites', favoriteResponseSnap)
+    mockServer.postAPIV1('/native/v1/me/favorites', favoriteResponseSnap)
   }
 
   if (hasRemoveFavoriteError) {
-    mockServer.delete(
+    mockServer.deleteAPIV1(
       `/native/v1/me/favorites/${
         paginatedFavoritesResponseSnap.favorites.find((f) => f.offer.id === id)?.id
       }`,
       { responseOptions: { statusCode: 204 } }
     )
   } else {
-    mockServer.delete(
+    mockServer.deleteAPIV1(
       `/native/v1/me/favorites/${
         paginatedFavoritesResponseSnap.favorites.find((f) => f.offer.id === id)?.id
       }`,

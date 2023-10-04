@@ -20,7 +20,7 @@ const useFeatureFlagSpy = jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockRe
 describe('<SignupConfirmationEmailSent />', () => {
   beforeEach(() => {
     mockUsePreviousRoute.mockReturnValue({ name: 'SomeScreen', key: 'key' })
-    mockServer.get('/native/v1/email_validation_remaining_resends/john.doe%40gmail.com', {
+    mockServer.getAPIV1('/native/v1/email_validation_remaining_resends/john.doe%40gmail.com', {
       remainingResends: 3,
     })
   })

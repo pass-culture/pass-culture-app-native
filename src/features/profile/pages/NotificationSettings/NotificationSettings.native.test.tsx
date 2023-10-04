@@ -269,7 +269,7 @@ function renderNotificationSettings(
 }
 
 const mockApiUpdateProfile = (user?: UserProfileResponse) => {
-  mockServer.post('/native/v1/profile', {
+  mockServer.postAPIV1('/native/v1/profile', {
     responseOptions: { data: user },
     requestOptions: { persist: true },
   })

@@ -10,7 +10,7 @@ import { UbbleWebview } from './UbbleWebview'
 describe('<UbbleWebview/>', () => {
   describe('Accessibility', () => {
     it('should not have basic accessibility issues', async () => {
-      mockServer.post<IdentificationSessionResponse>('/native/v1/ubble_identification', {
+      mockServer.postAPIV1<IdentificationSessionResponse>('/native/v1/ubble_identification', {
         identificationUrl: 'http://ubble.webview.com',
       })
 

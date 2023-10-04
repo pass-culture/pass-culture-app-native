@@ -52,7 +52,7 @@ jest.useFakeTimers({ legacyFakeTimers: true })
 
 describe('<Login/>', () => {
   beforeEach(() => {
-    mockServer.post('/native/v1/me/favorites', paginatedFavoritesResponseSnap)
+    mockServer.postAPIV1('/native/v1/me/favorites', paginatedFavoritesResponseSnap)
   })
   it('should render correctly', async () => {
     mockUsePreviousRoute.mockReturnValueOnce(null)
@@ -64,7 +64,7 @@ describe('<Login/>', () => {
   })
 
   beforeEach(() => {
-    mockServer.post('/native/v1/me/favorites', paginatedFavoritesResponseSnap)
+    mockServer.postAPIV1('/native/v1/me/favorites', paginatedFavoritesResponseSnap)
     simulateSignin200()
     mockMeApiCall({
       needsToFillCulturalSurvey: false,
@@ -585,15 +585,15 @@ function renderLogin() {
 }
 
 function mockMeApiCall(response: UserProfileResponse) {
-  mockServer.get<UserProfileResponse>('/native/v1/me', response)
+  mockServer.getAPIV1<UserProfileResponse>('/native/v1/me', response)
 }
 
 function mockSuspensionStatusApiCall(status: string) {
-  mockServer.get('/native/v1/account/suspension_status', status)
+  mockServer.getAPIV1('/native/v1/account/suspension_status', status)
 }
 
 function simulateSignin200(accountState = AccountState.ACTIVE) {
-  mockServer.post<SigninResponse>('/native/v1/signin', {
+  mockServer.postAPIV1<SigninResponse>('/native/v1/signin', {
     accessToken: 'accessToken',
     refreshToken: 'refreshToken',
     accountState,
@@ -601,7 +601,7 @@ function simulateSignin200(accountState = AccountState.ACTIVE) {
 }
 
 function simulateSigninWrongCredentials() {
-  mockServer.post('/native/v1/signin', {
+  mockServer.postAPIV1('/native/v1/signin', {
     responseOptions: {
       statusCode: 400,
       data: {
@@ -612,7 +612,7 @@ function simulateSigninWrongCredentials() {
 }
 
 function simulateSigninRateLimitExceeded() {
-  mockServer.post('/native/v1/signin', {
+  mockServer.postAPIV1('/native/v1/signin', {
     responseOptions: {
       statusCode: 429,
       data: {
@@ -623,7 +623,7 @@ function simulateSigninRateLimitExceeded() {
 }
 
 function simulateSigninEmailNotValidated() {
-  mockServer.post('/native/v1/signin', {
+  mockServer.postAPIV1('/native/v1/signin', {
     responseOptions: {
       statusCode: 400,
       data: {
@@ -635,7 +635,7 @@ function simulateSigninEmailNotValidated() {
 }
 
 function simulateSigninNetworkFailure() {
-  mockServer.post('/native/v1/signin', {
+  mockServer.postAPIV1('/native/v1/signin', {
     responseOptions: {
       statusCode: 'network-error',
       data: 'Network request failed',
@@ -644,5 +644,5 @@ function simulateSigninNetworkFailure() {
 }
 
 function simulateAddToFavorites() {
-  mockServer.post('/native/v1/me/favorites', { favoriteResponseSnap })
+  mockServer.postAPIV1('/native/v1/me/favorites', { favoriteResponseSnap })
 }

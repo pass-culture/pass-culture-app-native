@@ -27,21 +27,21 @@ export function simulateBackend(options: Options = defaultOptions) {
   }
   const offerFavId = paginatedFavoritesResponseSnap.favorites.find((f) => f.offer.id === id)?.id
 
-  mockServer.get<OfferResponse>(`/native/v1/offer/${id}`, offerResponseSnap)
+  mockServer.getAPIV1<OfferResponse>(`/native/v1/offer/${id}`, offerResponseSnap)
   if (hasTooManyFavorites) {
-    mockServer.post('/native/v1/me/favorites', {
+    mockServer.postAPIV1('/native/v1/me/favorites', {
       responseOptions: { statusCode: 400, data: { code: 'MAX_FAVORITES_REACHED' } },
     })
   } else if (hasAddFavoriteError) {
-    mockServer.post('/native/v1/me/favorites', { responseOptions: { statusCode: 422 } })
+    mockServer.postAPIV1('/native/v1/me/favorites', { responseOptions: { statusCode: 422 } })
   } else {
-    mockServer.post('/native/v1/me/favorites', favoriteResponseSnap)
+    mockServer.postAPIV1('/native/v1/me/favorites', favoriteResponseSnap)
   }
   if (hasRemoveFavoriteError) {
-    mockServer.delete(`/native/v1/me/favorites/${offerFavId}`, {
+    mockServer.deleteAPIV1(`/native/v1/me/favorites/${offerFavId}`, {
       responseOptions: { statusCode: 422 },
     })
   } else {
-    mockServer.delete(`/native/v1/me/favorites/${offerFavId}`, {})
+    mockServer.deleteAPIV1(`/native/v1/me/favorites/${offerFavId}`, {})
   }
 }

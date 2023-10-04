@@ -122,7 +122,7 @@ describe('[api] helpers', () => {
     })
 
     it('needs authentication response when refresh token fails', async () => {
-      mockServer.post<RefreshResponse>('/native/v1/refresh_access_token', {
+      mockServer.postAPIV1<RefreshResponse>('/native/v1/refresh_access_token', {
         requestOptions: { persist: true },
         responseOptions: { statusCode: 400 },
       })

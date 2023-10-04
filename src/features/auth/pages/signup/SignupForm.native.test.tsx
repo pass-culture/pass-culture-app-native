@@ -28,7 +28,7 @@ const mockUseState = jest.spyOn(React, 'useState')
 mockdate.set(CURRENT_DATE)
 describe('Signup Form', () => {
   beforeEach(() => {
-    mockServer.get('/native/v1/email_validation_remaining_resends/email%40gmail.com', {
+    mockServer.getAPIV1('/native/v1/email_validation_remaining_resends/email%40gmail.com', {
       remainingResends: 3,
     })
   })
@@ -386,7 +386,7 @@ describe('Signup Form', () => {
     })
 
     it('should log to sentry on API error', async () => {
-      mockServer.post('/native/v1/account', { responseOptions: { statusCode: 400, data: {} } })
+      mockServer.postAPIV1('/native/v1/account', { responseOptions: { statusCode: 400, data: {} } })
 
       renderSignupForm()
 
@@ -417,7 +417,7 @@ describe('Signup Form', () => {
   })
 })
 
-const simulateSignupSuccess = () => mockServer.post('/native/v1/account', {})
+const simulateSignupSuccess = () => mockServer.postAPIV1('/native/v1/account', {})
 
 // eslint-disable-next-line local-rules/no-react-query-provider-hoc
 const renderSignupForm = () => render(reactQueryProviderHOC(<SignupForm />))

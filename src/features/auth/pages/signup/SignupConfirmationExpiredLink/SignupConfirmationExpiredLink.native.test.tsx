@@ -61,7 +61,9 @@ describe('<SignupConfirmationExpiredLink/>', () => {
   })
 
   it('should NOT redirect to signup confirmation email sent page WHEN clicking on resend email and response is failure', async () => {
-    mockServer.post('/native/v1/resend_email_validation', { responseOptions: { statusCode: 400 } })
+    mockServer.postAPIV1('/native/v1/resend_email_validation', {
+      responseOptions: { statusCode: 400 },
+    })
     renderSignupConfirmationExpiredLink()
 
     await act(async () => {

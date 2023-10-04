@@ -62,7 +62,7 @@ describe('<NonBeneficiaryHeader/>', () => {
       mockNextSubscriptionStep = mockStep
     })
     it('should render the activation banner when user is eligible and api call returns activation banner', async () => {
-      mockServer.get<BannerResponse>('/native/v1/banner', {
+      mockServer.getAPIV1<BannerResponse>('/native/v1/banner', {
         banner: {
           name: BannerName.activation_banner,
           text: 'à dépenser sur l’application',
@@ -83,7 +83,7 @@ describe('<NonBeneficiaryHeader/>', () => {
     })
 
     it("should render the transition 17 to 18 banner when beneficiary's user is now 18", async () => {
-      mockServer.get<BannerResponse>('/native/v1/banner', {
+      mockServer.getAPIV1<BannerResponse>('/native/v1/banner', {
         banner: {
           name: BannerName.transition_17_18_banner,
           text: 'à dépenser sur l’application',

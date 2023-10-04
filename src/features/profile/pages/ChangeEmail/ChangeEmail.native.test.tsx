@@ -27,7 +27,7 @@ jest.mock('ui/components/snackBar/SnackBarContext', () => ({
 
 describe('<ChangeEmail/>', () => {
   beforeEach(() => {
-    mockServer.get<UpdateEmailTokenExpiration>('/native/v1/profile/token_expiration', {
+    mockServer.getAPIV1<UpdateEmailTokenExpiration>('/native/v1/profile/token_expiration', {
       expiration: undefined,
     })
     simulateUpdateEmailSuccess()
@@ -242,17 +242,17 @@ const submitForm = async () => {
 }
 
 function simulateUpdateEmailSuccess() {
-  mockServer.post('/native/v1/profile/update_email', {})
+  mockServer.postAPIV1('/native/v1/profile/update_email', {})
 }
 
 function simulateUpdateEmailError(code: CHANGE_EMAIL_ERROR_CODE) {
-  mockServer.post('/native/v1/profile/update_email', {
+  mockServer.postAPIV1('/native/v1/profile/update_email', {
     responseOptions: { statusCode: 400, data: { code } },
   })
 }
 
 function simulateCurrentEmailChange() {
-  mockServer.get('/native/v1/profile/token_expiration', {
+  mockServer.getAPIV1('/native/v1/profile/token_expiration', {
     expiration: '2021-12-07T13:45:05.812190',
   })
 }

@@ -107,13 +107,13 @@ function renderSuspensionChoice() {
 }
 
 function simulateSuspendForSuspiciousLoginSuccess() {
-  mockServer.post('/native/v1/account/suspend_for_suspicious_login', {
+  mockServer.postAPIV1('/native/v1/account/suspend_for_suspicious_login', {
     responseOptions: { statusCode: 200 },
   })
 }
 
 function simulateSuspendForSuspiciousLoginError() {
-  mockServer.post('/native/v1/account/suspend_for_suspicious_login', {
+  mockServer.postAPIV1('/native/v1/account/suspend_for_suspicious_login', {
     responseOptions: { statusCode: 400 },
   })
 }

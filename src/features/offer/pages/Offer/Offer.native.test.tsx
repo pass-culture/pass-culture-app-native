@@ -391,11 +391,7 @@ describe('<Offer />', () => {
       ongoing_bookings: [],
     }
 
-    server.use(
-      rest.get(env.API_BASE_URL + '/native/v1/bookings', async (_, res, ctx) =>
-        res(ctx.status(200), ctx.json(expectedResponse))
-      )
-    )
+    mockServer.getAPIV1('/native/v1/bookings', expectedResponse)
 
     renderOfferPage(mockedBookingApi.id)
 
@@ -424,8 +420,8 @@ describe('<Offer />', () => {
     }
     describe('When booking API response is success', () => {
       it('should directly book and redirect to the offer when pressing button to book the offer', async () => {
-        mockServer.get('/native/v1/bookings', expectedResponse)
-        mockServer.post('/native/v1/bookings', { bookingId: 123 })
+        mockServer.getAPIV1('/native/v1/bookings', expectedResponse)
+        mockServer.postAPIV1('/native/v1/bookings', { bookingId: 123 })
 
         // Multiple renders force us to mock auth context as loggedIn user in this test
         // eslint-disable-next-line local-rules/independent-mocks
@@ -450,8 +446,8 @@ describe('<Offer />', () => {
       })
 
       it('should not display an error message when pressing button to book the offer', async () => {
-        mockServer.get('/native/v1/bookings', expectedResponse)
-        mockServer.post('/native/v1/bookings', { bookingId: 123 })
+        mockServer.getAPIV1('/native/v1/bookings', expectedResponse)
+        mockServer.postAPIV1('/native/v1/bookings', { bookingId: 123 })
 
         renderOfferPage(undefined, offerDigitalAndFree)
 
@@ -491,8 +487,8 @@ describe('<Offer />', () => {
 
     describe('When booking API response is error', () => {
       it('should not direclty redirect to the offer when pressing button to book the offer', async () => {
-        mockServer.get('/native/v1/bookings', expectedResponse)
-        mockServer.post('/native/v1/bookings', { responseOptions: { statusCode: 400 } })
+        mockServer.getAPIV1('/native/v1/bookings', expectedResponse)
+        mockServer.postAPIV1('/native/v1/bookings', { responseOptions: { statusCode: 400 } })
 
         // Multiple renders force us to mock auth context as loggedIn user in this test
         // eslint-disable-next-line local-rules/independent-mocks
@@ -517,8 +513,8 @@ describe('<Offer />', () => {
       })
 
       it('should display an error message when pressing button to book the offer', async () => {
-        mockServer.get('/native/v1/bookings', expectedResponse)
-        mockServer.post('/native/v1/bookings', { responseOptions: { statusCode: 400 } })
+        mockServer.getAPIV1('/native/v1/bookings', expectedResponse)
+        mockServer.postAPIV1('/native/v1/bookings', { responseOptions: { statusCode: 400 } })
 
         // Multiple renders force us to mock auth context as loggedIn user in this test
         // eslint-disable-next-line local-rules/independent-mocks
@@ -561,7 +557,7 @@ describe('<Offer />', () => {
     }
 
     it('should directly redirect to the offer when pressing offer access button', async () => {
-      mockServer.get('/native/v1/bookings', expectedResponse)
+      mockServer.getAPIV1('/native/v1/bookings', expectedResponse)
 
       server.use(
         rest.post(env.API_BASE_URL + '/native/v1/bookings', (req, res, ctx) => res(ctx.status(400)))

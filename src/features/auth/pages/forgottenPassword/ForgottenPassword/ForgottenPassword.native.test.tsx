@@ -21,7 +21,7 @@ const mockUseNetInfoContext = useNetInfoContextDefault as jest.Mock
 
 beforeEach(() => {
   simulateConnectedNetwork()
-  mockServer.post('/native/v1/request_password_reset', {
+  mockServer.postAPIV1('/native/v1/request_password_reset', {
     responseOptions: { statusCode: 204, data: {} },
   })
 })
@@ -158,7 +158,7 @@ describe('<ForgottenPassword />', () => {
   })
 
   it('should NOT redirect to ResetPasswordEmailSent when reset password request API call has failed', async () => {
-    mockServer.post('/native/v1/request_password_reset', {
+    mockServer.postAPIV1('/native/v1/request_password_reset', {
       responseOptions: { statusCode: 400, data: {} },
     })
     renderForgottenPassword()
@@ -194,7 +194,7 @@ describe('<ForgottenPassword />', () => {
   ])(
     'should capture an info in Sentry when reset password request API call has failed and error code is %s',
     async (statusCode) => {
-      mockServer.post('/native/v1/request_password_reset', {
+      mockServer.postAPIV1('/native/v1/request_password_reset', {
         responseOptions: { statusCode: statusCode, data: {} },
       })
       renderForgottenPassword()
@@ -216,7 +216,7 @@ describe('<ForgottenPassword />', () => {
   )
 
   it('should not capture an in Sentry when reset password request API call has failed and error code is 400', async () => {
-    mockServer.post('/native/v1/request_password_reset', {
+    mockServer.postAPIV1('/native/v1/request_password_reset', {
       responseOptions: { statusCode: 400, data: {} },
     })
     renderForgottenPassword()

@@ -78,7 +78,7 @@ const defaultOptions = {
 
 function renderBicolorFavoriteCount(options: Options = defaultOptions) {
   const { isLoggedIn, count } = { ...defaultOptions, ...options }
-  mockServer.get('/native/v1/me/favorites/count', {
+  mockServer.getAPIV1('/native/v1/me/favorites/count', {
     responseOptions: { data: { count } },
   })
   mockUseAuthContext.mockReturnValue({

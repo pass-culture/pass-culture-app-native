@@ -9,7 +9,7 @@ import { act, renderHook } from 'tests/utils'
 
 describe('useGetStepperInfo', () => {
   it('should get stepsToDisplay from the back', async () => {
-    mockServer.get('/native/v1/subscription/stepper', SubscriptionStepperResponseFixture)
+    mockServer.getAPIV1('/native/v1/subscription/stepper', SubscriptionStepperResponseFixture)
     const result = renderGetStepperInfo()
     await act(async () => {})
     expect(result.result.current).toEqual({
@@ -20,7 +20,7 @@ describe('useGetStepperInfo', () => {
     })
   })
   it('should return an errorMessage', async () => {
-    mockServer.get('/native/v1/subscription/stepper', SubscriptionStepperErrorResponseFixture)
+    mockServer.getAPIV1('/native/v1/subscription/stepper', SubscriptionStepperErrorResponseFixture)
 
     const result = renderGetStepperInfo()
     await act(async () => {})
@@ -34,7 +34,7 @@ describe('useGetStepperInfo', () => {
   })
 
   it('should return empty stepsToDisplay list and titles if the data is undefined', async () => {
-    mockServer.get('/native/v1/subscription/stepper', { responseOptions: { data: undefined } })
+    mockServer.getAPIV1('/native/v1/subscription/stepper', { responseOptions: { data: undefined } })
 
     const result = renderGetStepperInfo()
     await act(async () => {})

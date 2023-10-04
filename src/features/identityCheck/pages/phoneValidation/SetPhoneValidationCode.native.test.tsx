@@ -35,7 +35,7 @@ jest.mock('features/identityCheck/api/usePhoneValidationRemainingAttempts', () =
 describe('SetPhoneValidationCode', () => {
   const mockFetch = jest.spyOn(global, 'fetch')
   beforeEach(() => {
-    mockServer.post('/native/v1/validate_phone_number', {})
+    mockServer.postAPIV1('/native/v1/validate_phone_number', {})
   })
 
   it('should match snapshot', () => {

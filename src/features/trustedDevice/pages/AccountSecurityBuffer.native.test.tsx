@@ -34,7 +34,7 @@ describe('<AccountSecurityBuffer/>', () => {
   })
 
   it('should display loading page when is loading', async () => {
-    mockServer.get(`/native/v1/account/suspend/token_validation/${ROUTE_PARAMS.token}`, {
+    mockServer.getAPIV1(`/native/v1/account/suspend/token_validation/${ROUTE_PARAMS.token}`, {
       responseOptions: { delay: 1000, statusCode: 200, data: {} },
     })
     renderAccountSecurityBuffer()
@@ -44,7 +44,7 @@ describe('<AccountSecurityBuffer/>', () => {
   })
 
   it('should navigate to SuspensionChoiceExpiredLink screen when expired token', async () => {
-    mockServer.get(`/native/v1/account/suspend/token_validation/${ROUTE_PARAMS.token}`, {
+    mockServer.getAPIV1(`/native/v1/account/suspend/token_validation/${ROUTE_PARAMS.token}`, {
       responseOptions: { statusCode: 401 },
     })
     renderAccountSecurityBuffer()
@@ -55,7 +55,7 @@ describe('<AccountSecurityBuffer/>', () => {
   })
 
   it('should navigate to Home when invalid token', async () => {
-    mockServer.get(`/native/v1/account/suspend/token_validation/${ROUTE_PARAMS.token}`, {
+    mockServer.getAPIV1(`/native/v1/account/suspend/token_validation/${ROUTE_PARAMS.token}`, {
       responseOptions: { statusCode: 400 },
     })
     renderAccountSecurityBuffer()
@@ -66,7 +66,7 @@ describe('<AccountSecurityBuffer/>', () => {
   })
 
   it('should navigate to AccountSecurity screen when valid token', async () => {
-    mockServer.get(`/native/v1/account/suspend/token_validation/${ROUTE_PARAMS.token}`, {})
+    mockServer.getAPIV1(`/native/v1/account/suspend/token_validation/${ROUTE_PARAMS.token}`, {})
     renderAccountSecurityBuffer()
 
     await waitFor(() => {
@@ -75,7 +75,7 @@ describe('<AccountSecurityBuffer/>', () => {
   })
 
   it('should throw error when unexpected error happens while validating token', async () => {
-    mockServer.get(`/native/v1/account/suspend/token_validation/${ROUTE_PARAMS.token}`, {
+    mockServer.getAPIV1(`/native/v1/account/suspend/token_validation/${ROUTE_PARAMS.token}`, {
       responseOptions: { statusCode: 500 },
     })
     const spy = jest.fn()

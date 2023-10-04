@@ -30,7 +30,7 @@ describe('<IdentityCheckHonor/>', () => {
     mockUseAuthContext.mockReturnValue({ user: nonBeneficiaryUser })
   })
   beforeEach(() => {
-    mockServer.post('/native/v1/subscription/honor_statement', {})
+    mockServer.postAPIV1('/native/v1/subscription/honor_statement', {})
   })
 
   it('should render correctly', () => {

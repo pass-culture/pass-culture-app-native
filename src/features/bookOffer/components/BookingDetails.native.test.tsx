@@ -147,7 +147,7 @@ describe('<BookingDetails />', () => {
         dismissModal: mockDismissModal,
         dispatch: mockDispatch,
       })
-      mockServer.get<OfferResponse>(`/native/v1/offer/${mockOfferId}`, offerResponseSnap)
+      mockServer.getAPIV1<OfferResponse>(`/native/v1/offer/${mockOfferId}`, offerResponseSnap)
     })
 
     it('should initialize correctly state when offer isDigital', async () => {
@@ -279,7 +279,7 @@ describe('<BookingDetails />', () => {
         dismissModal: mockDismissModal,
         dispatch: mockDispatch,
       })
-      mockServer.get<OfferResponse>(`/native/v1/offer/${mockOfferId}`, offerResponseSnap)
+      mockServer.getAPIV1<OfferResponse>(`/native/v1/offer/${mockOfferId}`, offerResponseSnap)
     })
 
     it('should not display the Duo selector when the offer is duo but is an event', () => {
@@ -450,7 +450,7 @@ describe('<BookingDetails />', () => {
   describe('When WIP_ENABLE_MULTIVENUE_OFFER feature flag activated', () => {
     beforeEach(() => {
       jest.spyOn(useFeatureFlag, 'useFeatureFlag').mockReturnValueOnce(true)
-      mockServer.get<OfferResponse>(`/native/v1/offer/${mockOfferId}`, offerResponseSnap)
+      mockServer.getAPIV1<OfferResponse>(`/native/v1/offer/${mockOfferId}`, offerResponseSnap)
     })
 
     it('should not display venue address in information section', async () => {

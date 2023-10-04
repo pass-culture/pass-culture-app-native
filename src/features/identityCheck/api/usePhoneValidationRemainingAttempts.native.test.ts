@@ -8,7 +8,7 @@ const phoneValidationRemainingAttemptsAPIResponse: PhoneValidationRemainingAttem
   remainingAttempts: 5,
   counterResetDatetime: 'time',
 }
-mockServer.get(
+mockServer.getAPIV1(
   '/native/v1/phone_validation/remaining_attempts',
   phoneValidationRemainingAttemptsAPIResponse
 )

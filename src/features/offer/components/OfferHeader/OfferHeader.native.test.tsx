@@ -98,7 +98,7 @@ describe('<OfferHeader />', () => {
 const offerId = 116656
 
 function renderOfferHeader() {
-  mockServer.get<OfferResponse>(`/native/v1/offer/${offerId}`, offerResponseSnap)
+  mockServer.getAPIV1<OfferResponse>(`/native/v1/offer/${offerId}`, offerResponseSnap)
 
   const animatedValue = new Animated.Value(0)
   render(

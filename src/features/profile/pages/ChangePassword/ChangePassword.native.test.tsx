@@ -62,7 +62,7 @@ describe('ChangePassword', () => {
   })
 
   it('should display success snackbar and navigate to Profile when the password is updated', async () => {
-    mockServer.post('/native/v1/change_password', {})
+    mockServer.postAPIV1('/native/v1/change_password', {})
 
     mockedUseSnackBarContext.mockImplementationOnce(() => ({
       showSuccessSnackBar,
@@ -96,7 +96,7 @@ describe('ChangePassword', () => {
   })
 
   it('display error when the password failed to updated', async () => {
-    mockServer.post('/native/v1/change_password', {
+    mockServer.postAPIV1('/native/v1/change_password', {
       responseOptions: { statusCode: 400, data: {} },
     })
 

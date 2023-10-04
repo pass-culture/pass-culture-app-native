@@ -18,7 +18,7 @@ jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag').mockReturnValue(true)
 describe('<SignupConfirmationEmailSentPage/>', () => {
   describe('Accessibility', () => {
     it('should not have basic accessibility issues', async () => {
-      mockServer.get('/native/v1/email_validation_remaining_resends/john.doe%40gmail.com', {
+      mockServer.getAPIV1('/native/v1/email_validation_remaining_resends/john.doe%40gmail.com', {
         remainingResends: 3,
       })
       const { container } = render(

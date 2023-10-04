@@ -48,7 +48,7 @@ describe('<ResetPasswordExpiredLink/>', () => {
   })
 
   it('should NOT redirect to reset password link sent page WHEN clicking on resend email and response is failure', async () => {
-    mockServer.post('/native/v1/request_password_reset', {
+    mockServer.postAPIV1('/native/v1/request_password_reset', {
       responseOptions: { statusCode: 401, data: {} },
     })
 

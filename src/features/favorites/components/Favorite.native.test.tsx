@@ -146,12 +146,12 @@ const DEFAULT_GET_FAVORITE_OPTIONS = {
 function simulateBackend(options: Options = DEFAULT_GET_FAVORITE_OPTIONS) {
   const { id, hasRemoveFavoriteError } = { ...DEFAULT_GET_FAVORITE_OPTIONS, ...options }
   if (hasRemoveFavoriteError) {
-    mockServer.delete(`/native/v1/me/favorites/${id}`, {
+    mockServer.deleteAPIV1(`/native/v1/me/favorites/${id}`, {
       responseOptions: { statusCode: 422 },
       requestOptions: { persist: true },
     })
   } else {
-    mockServer.delete(`/native/v1/me/favorites/${id}`, {
+    mockServer.deleteAPIV1(`/native/v1/me/favorites/${id}`, {
       responseOptions: { data: {}, statusCode: 204 },
       requestOptions: { persist: true },
     })

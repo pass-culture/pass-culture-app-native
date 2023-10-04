@@ -149,7 +149,7 @@ describe('HomeHeader', () => {
   })
 
   it('should display activation banner with BicolorUnlock icon when banner api call return activation banner', async () => {
-    mockServer.get<BannerResponse>('/native/v1/banner', {
+    mockServer.getAPIV1<BannerResponse>('/native/v1/banner', {
       banner: {
         name: BannerName.activation_banner,
         text: 'à dépenser sur l’application',
@@ -165,7 +165,7 @@ describe('HomeHeader', () => {
   })
 
   it('should display activation banner with ArrowAgain icon when banner api call return retry_identity_check_banner', async () => {
-    mockServer.get<BannerResponse>('/native/v1/banner', {
+    mockServer.getAPIV1<BannerResponse>('/native/v1/banner', {
       banner: {
         name: BannerName.retry_identity_check_banner,
         title: 'Retente ubble',
@@ -181,7 +181,7 @@ describe('HomeHeader', () => {
   })
 
   it('should display activation banner with BirthdayCake icon when banner api call return transition_17_18_banner', async () => {
-    mockServer.get<BannerResponse>('/native/v1/banner', {
+    mockServer.getAPIV1<BannerResponse>('/native/v1/banner', {
       banner: {
         name: BannerName.transition_17_18_banner,
         title: 'Débloque tes 600\u00a0€',
@@ -237,7 +237,7 @@ function renderHomeHeader(isDesktopViewport?: boolean) {
 }
 
 function mockGeolocBannerFromBackend() {
-  mockServer.get<BannerResponse>('/native/v1/banner', {
+  mockServer.getAPIV1<BannerResponse>('/native/v1/banner', {
     responseOptions: {
       data: {
         banner: {

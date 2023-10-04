@@ -46,7 +46,7 @@ describe('<BookingImpossible />', () => {
         nbFavorites: 1,
         favorites: [favoriteResponseSnap],
       }
-      mockServer.get<PaginatedFavoritesResponse>(
+      mockServer.getAPIV1<PaginatedFavoritesResponse>(
         '/native/v1/me/favorites',
         favoritesResponseWithOfferIn
       )
@@ -82,9 +82,9 @@ describe('<BookingImpossible />', () => {
   describe('When offer is not yet favorite', () => {
     beforeEach(() => {
       const favoriteResponse: FavoriteResponse = favoriteResponseSnap
-      mockServer.post('/native/v1/me/favorites', favoriteResponse)
-      mockServer.post(`/native/v1/send_offer_link_by_push/${mockOfferId}`, {})
-      mockServer.post(`/native/v1/send_offer_webapp_link_by_email/${mockOfferId}`, {
+      mockServer.postAPIV1('/native/v1/me/favorites', favoriteResponse)
+      mockServer.postAPIV1(`/native/v1/send_offer_link_by_push/${mockOfferId}`, {})
+      mockServer.postAPIV1(`/native/v1/send_offer_webapp_link_by_email/${mockOfferId}`, {
         favoriteResponse,
       })
     })
