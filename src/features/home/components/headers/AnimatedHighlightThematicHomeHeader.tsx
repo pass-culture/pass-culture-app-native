@@ -12,7 +12,7 @@ import { useCustomSafeInsets } from 'ui/theme/useCustomSafeInsets'
 
 type HighlightThematicHeaderProps = Omit<HighlightThematicHeader, 'type'>
 
-const MOBILE_HEADER_HEIGHT = getSpacing(70)
+export const MOBILE_HEADER_HEIGHT = 70
 
 export const AnimatedHighlightThematicHomeHeader: FunctionComponent<
   HighlightThematicHeaderProps
@@ -63,7 +63,7 @@ const Container = styled.View({
   top: 0,
   left: 0,
   right: 0,
-  height: MOBILE_HEADER_HEIGHT,
+  height: getSpacing(MOBILE_HEADER_HEIGHT),
 })
 
 const StyledImage = styled.Image<{

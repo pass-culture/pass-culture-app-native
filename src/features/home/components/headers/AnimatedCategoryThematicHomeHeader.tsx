@@ -3,14 +3,13 @@ import { Animated } from 'react-native'
 import styled from 'styled-components/native'
 
 import { BlackGradient } from 'features/home/components/BlackGradient'
-import { HEADER_BLACK_BACKGROUND_HEIGHT } from 'features/home/components/constants'
 import { BlackBackground } from 'features/home/components/headers/BlackBackground'
 import { CategoryThematicHeader } from 'features/home/types'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 
 type CategoryThematicHeaderProps = Omit<CategoryThematicHeader, 'type'>
 
-const MOBILE_HEADER_HEIGHT = getSpacing(70)
+export const MOBILE_HEADER_HEIGHT = 52
 
 export const AnimatedCategoryThematicHomeHeader: FunctionComponent<CategoryThematicHeaderProps> = ({
   title,
@@ -28,7 +27,7 @@ export const AnimatedCategoryThematicHomeHeader: FunctionComponent<CategoryThema
       <AnimatedImage source={{ uri: imageUrl }} height={imageAnimatedHeight} />
       <TextContainer>
         <AnimatedBlackGradient
-          height={HEADER_BLACK_BACKGROUND_HEIGHT}
+          height={getSpacing(MOBILE_HEADER_HEIGHT)}
           style={{ transform: [{ translateY: gradientTranslation }] }}
         />
         <AnimatedBlackBackground style={{ transform: [{ translateY: gradientTranslation }] }}>
@@ -50,7 +49,7 @@ const Container = styled.View({
   top: 0,
   left: 0,
   right: 0,
-  height: MOBILE_HEADER_HEIGHT,
+  height: getSpacing(MOBILE_HEADER_HEIGHT),
 })
 
 const StyledImage = styled.Image<{
