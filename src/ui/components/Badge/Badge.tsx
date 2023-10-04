@@ -23,7 +23,7 @@ const Container = styled.View(({ theme }) => ({
   borderStyle: 'solid',
   borderColor: theme.colors.white,
   borderRadius: getSpacing(3),
-  background: theme.colors.primary,
+  backgroundColor: theme.colors.primary,
 }))
 
 const Wrapper = styled.View({
