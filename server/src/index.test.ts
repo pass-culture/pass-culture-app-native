@@ -29,6 +29,7 @@ describe('express server', () => {
     const scriptWithChunkRegExp = /\/(\d|main)\.[0-9a-f]+(\.chunk\.js)/gm
     const chunkInScriptRegExp = /return .+?static\/js\/.+?\.chunk\.js.+?"/gm
     const commitHashRegExp = /<meta name="commit-hash".*?>/gm
+    const cspRegExp = /<meta http-equiv="Content-Security-Policy".*?>/gm
     const versionRegExp = /<meta name="version" content=".+?"\/>/gm
     const canonicalLinkRegExp = /<link rel="canonical".*?>/gm
     const response = await fetch(env.APP_PUBLIC_URL)
@@ -36,6 +37,7 @@ describe('express server', () => {
       .replace(scriptWithChunkRegExp, '/$1$2')
       .replace(chunkInScriptRegExp, '')
       .replace(commitHashRegExp, '')
+      .replace(cspRegExp, '<meta http-equiv="Content-Security-Policy">')
       .replace(versionRegExp, '')
       .replace(canonicalLinkRegExp, '')
     const responseProxy = await fetch(env.APP_BUCKET_URL)
@@ -43,6 +45,7 @@ describe('express server', () => {
       .replace(scriptWithChunkRegExp, '/$1$2')
       .replace(chunkInScriptRegExp, '')
       .replace(commitHashRegExp, '')
+      .replace(cspRegExp, '<meta http-equiv="Content-Security-Policy">')
       .replace(versionRegExp, '')
       .replace(canonicalLinkRegExp, '')
     expect(html).toEqual(htmlProxy)
