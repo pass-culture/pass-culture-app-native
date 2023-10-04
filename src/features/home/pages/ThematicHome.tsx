@@ -5,8 +5,14 @@ import styled from 'styled-components/native'
 
 import { useHomepageData } from 'features/home/api/useHomepageData'
 import { GeolocationBanner } from 'features/home/components/banners/GeolocationBanner'
-import { AnimatedCategoryThematicHomeHeader } from 'features/home/components/headers/AnimatedCategoryThematicHomeHeader'
-import { AnimatedHighlightThematicHomeHeader } from 'features/home/components/headers/AnimatedHighlightThematicHomeHeader'
+import {
+  AnimatedCategoryThematicHomeHeader,
+  MOBILE_HEADER_HEIGHT as ANIMATED_CATEGORY_HEADER_PLACEHOLDER_HEIGHT,
+} from 'features/home/components/headers/AnimatedCategoryThematicHomeHeader'
+import {
+  AnimatedHighlightThematicHomeHeader,
+  MOBILE_HEADER_HEIGHT as ANIMATED_HIGHLIGHT_HEADER_PLACEHOLDER_HEIGHT,
+} from 'features/home/components/headers/AnimatedHighlightThematicHomeHeader'
 import { CategoryThematicHomeHeader } from 'features/home/components/headers/CategoryThematicHomeHeader'
 import { DefaultThematicHomeHeader } from 'features/home/components/headers/DefaultThematicHomeHeader'
 import { Introduction } from 'features/home/components/headers/highlightThematic/Introduction'
@@ -19,9 +25,6 @@ import { UseRouteType } from 'features/navigation/RootNavigator/types'
 import { analytics } from 'libs/analytics'
 import { useOpacityTransition } from 'ui/animations/helpers/useOpacityTransition'
 import { getSpacing, Spacer } from 'ui/theme'
-
-const ANIMATED_HIGHLIGHT_HEADER_PLACEHOLDER_HEIGHT = 76
-const ANIMATED_CATEGORY_HEADER_PLACEHOLDER_HEIGHT = 52
 
 const SubHeader: FunctionComponent<{ thematicHeader?: ThematicHeader }> = ({ thematicHeader }) => {
   if (thematicHeader?.type === ThematicHeaderType.Highlight) {
@@ -91,7 +94,12 @@ export const ThematicHome: FunctionComponent = () => {
   const AnimatedHeader = Animated.createAnimatedComponent(AnimatedHeaderContainer)
 
   const { onScroll, headerTransition, imageAnimatedHeight, gradientTranslation, viewTranslation } =
-    useOpacityTransition()
+    useOpacityTransition({
+      headerHeight:
+        thematicHeader?.type === ThematicHeaderType.Highlight
+          ? getSpacing(ANIMATED_HIGHLIGHT_HEADER_PLACEHOLDER_HEIGHT)
+          : getSpacing(ANIMATED_CATEGORY_HEADER_PLACEHOLDER_HEIGHT),
+    })
 
   useEffect(() => {
     if (id) {
