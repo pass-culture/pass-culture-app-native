@@ -26,12 +26,16 @@ import { analytics } from 'libs/analytics'
 import { useOpacityTransition } from 'ui/animations/helpers/useOpacityTransition'
 import { getSpacing, Spacer } from 'ui/theme'
 
+const MARGIN_TOP_HEADER = 6
+
 const SubHeader: FunctionComponent<{ thematicHeader?: ThematicHeader }> = ({ thematicHeader }) => {
   if (thematicHeader?.type === ThematicHeaderType.Highlight) {
     if (Platform.OS === 'ios') {
       return (
         <React.Fragment>
-          <Spacer.Column numberOfSpaces={ANIMATED_HIGHLIGHT_HEADER_PLACEHOLDER_HEIGHT} />
+          <Spacer.Column
+            numberOfSpaces={ANIMATED_HIGHLIGHT_HEADER_PLACEHOLDER_HEIGHT + MARGIN_TOP_HEADER}
+          />
           {!!(thematicHeader.introductionTitle && thematicHeader.introductionParagraph) && (
             <Introduction
               title={thematicHeader.introductionTitle}
@@ -46,7 +50,11 @@ const SubHeader: FunctionComponent<{ thematicHeader?: ThematicHeader }> = ({ the
 
   if (thematicHeader?.type === ThematicHeaderType.Category) {
     if (Platform.OS === 'ios') {
-      return <Spacer.Column numberOfSpaces={ANIMATED_CATEGORY_HEADER_PLACEHOLDER_HEIGHT} />
+      return (
+        <Spacer.Column
+          numberOfSpaces={ANIMATED_CATEGORY_HEADER_PLACEHOLDER_HEIGHT + MARGIN_TOP_HEADER}
+        />
+      )
     }
 
     return (
