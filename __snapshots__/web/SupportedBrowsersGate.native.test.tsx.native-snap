@@ -388,7 +388,36 @@ exports[`SupportedBrowsersGate render correctly 1`] = `
               ]
             }
           >
-            - Les navigateurs basés sur Chromium (autre que Chrome)
+            - Brave (version &gt; 98)
+          </Text>
+        </View>
+        <View
+          accessibilityRole="none"
+          style={
+            [
+              {
+                "display": "flex",
+              },
+            ]
+          }
+        >
+          <Text
+            style={
+              [
+                {
+                  "color": "#161617",
+                  "fontFamily": "Montserrat-Regular",
+                  "fontSize": 15,
+                  "lineHeight": 20,
+                  "paddingBottom": 20,
+                  "paddingLeft": 20,
+                  "paddingRight": 20,
+                  "paddingTop": 20,
+                },
+              ]
+            }
+          >
+            - Les navigateurs basés sur Chromium (autre que Chrome et Brave)
           </Text>
         </View>
       </View>
