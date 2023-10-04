@@ -36,6 +36,7 @@ describe('<AccountSecurityBuffer/>', () => {
   it('should display loading page when is loading', async () => {
     mockServer.getAPIV1(`/native/v1/account/suspend/token_validation/${ROUTE_PARAMS.token}`, {
       responseOptions: { delay: 1000, statusCode: 200, data: {} },
+      requestOptions: { persist: true },
     })
     renderAccountSecurityBuffer()
 
@@ -45,7 +46,7 @@ describe('<AccountSecurityBuffer/>', () => {
 
   it('should navigate to SuspensionChoiceExpiredLink screen when expired token', async () => {
     mockServer.getAPIV1(`/native/v1/account/suspend/token_validation/${ROUTE_PARAMS.token}`, {
-      responseOptions: { statusCode: 401 },
+      responseOptions: { statusCode: 401, data: {} },
     })
     renderAccountSecurityBuffer()
 
@@ -56,7 +57,7 @@ describe('<AccountSecurityBuffer/>', () => {
 
   it('should navigate to Home when invalid token', async () => {
     mockServer.getAPIV1(`/native/v1/account/suspend/token_validation/${ROUTE_PARAMS.token}`, {
-      responseOptions: { statusCode: 400 },
+      responseOptions: { statusCode: 400, data: {} },
     })
     renderAccountSecurityBuffer()
 
@@ -76,7 +77,7 @@ describe('<AccountSecurityBuffer/>', () => {
 
   it('should throw error when unexpected error happens while validating token', async () => {
     mockServer.getAPIV1(`/native/v1/account/suspend/token_validation/${ROUTE_PARAMS.token}`, {
-      responseOptions: { statusCode: 500 },
+      responseOptions: { statusCode: 500, data: {} },
     })
     const spy = jest.fn()
 
