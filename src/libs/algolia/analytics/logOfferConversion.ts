@@ -8,9 +8,9 @@ import { env } from 'libs/environment'
 import { captureMonitoringError } from 'libs/monitoring'
 
 export const logOfferConversion = (queryID?: string) => async (objectID: string) => {
-  const hasAcceptedAlogliaInsights = await getAcceptedCookieConsent(CookieNameEnum.ALGOLIA_INSIGHTS)
+  const hasAcceptedAlgoliaInsights = await getAcceptedCookieConsent(CookieNameEnum.ALGOLIA_INSIGHTS)
 
-  if (!hasAcceptedAlogliaInsights) return
+  if (!hasAcceptedAlgoliaInsights) return
 
   if (queryID === undefined) {
     captureMonitoringError(

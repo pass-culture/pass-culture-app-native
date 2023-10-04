@@ -33,15 +33,15 @@ const mockUseNetInfoContext = useNetInfoContextDefault as jest.Mock
 
 describe('<SetAddress/>', () => {
   mockUseNetInfoContext.mockReturnValue({ isConnected: true, isInternetReachable: true })
-  mockServer.universalGet(
-    'https://api-adresse.data.gouv.fr/search?q=1%20rue%20Poissonni%C3%A8re&limit=10',
-    {
-      responseOptions: { data: mockedSuggestedPlaces },
-      requestOptions: { persist: true },
-    }
-  )
   beforeEach(() => {
     mockServer.getAPIV1('/native/v1/settings', mockDefaultSettings)
+    mockServer.universalGet(
+      'https://api-adresse.data.gouv.fr/search?q=1%20rue%20Poissonni%C3%A8re&limit=10',
+      {
+        responseOptions: { data: mockedSuggestedPlaces },
+        requestOptions: { persist: true },
+      }
+    )
   })
 
   it('should render correctly', async () => {

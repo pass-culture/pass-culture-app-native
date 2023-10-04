@@ -26,7 +26,12 @@ describe('<Offer /> - Analytics', () => {
     mockServer.universalGet(
       `https://recommmendation-endpoint/similar_offers/${offerResponseSnap.id}`,
       {
-        hits: [],
+        responseOptions: {
+          data: {
+            hits: [],
+          },
+        },
+        requestOptions: { persist: true },
       }
     )
   })

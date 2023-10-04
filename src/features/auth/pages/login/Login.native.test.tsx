@@ -5,7 +5,7 @@ import { navigate, useRoute } from '__mocks__/@react-navigation/native'
 import { FAKE_USER_ID } from '__mocks__/jwt-decode'
 import { BatchUser } from '__mocks__/libs/react-native-batch'
 import * as API from 'api/api'
-import { AccountState, SigninResponse, UserProfileResponse } from 'api/gen'
+import { AccountState, FavoriteResponse, SigninResponse, UserProfileResponse } from 'api/gen'
 import { mockDefaultSettings } from 'features/auth/context/__mocks__/SettingsContext'
 import { AuthContext } from 'features/auth/context/AuthContext'
 import * as SettingsContextAPI from 'features/auth/context/SettingsContext'
@@ -41,7 +41,7 @@ jest.mock('features/identityCheck/context/SubscriptionContextProvider', () => ({
 
 const mockUsePreviousRoute = usePreviousRoute as jest.Mock
 
-const mockPostFavorite = jest.fn()
+const mockPostFavorite = jest.spyOn(API.api, 'postNativeV1MeFavorites')
 
 const apiSignInSpy = jest.spyOn(API.api, 'postNativeV1Signin')
 const getModelSpy = jest.spyOn(DeviceInfo, 'getModel')
@@ -644,5 +644,5 @@ function simulateSigninNetworkFailure() {
 }
 
 function simulateAddToFavorites() {
-  mockServer.postAPIV1('/native/v1/me/favorites', { favoriteResponseSnap })
+  mockServer.postAPIV1<FavoriteResponse>('/native/v1/me/favorites', favoriteResponseSnap)
 }

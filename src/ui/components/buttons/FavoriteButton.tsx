@@ -100,6 +100,7 @@ export const FavoriteButton: React.FC<Props> = (props) => {
     showFavoriteListOfferModal,
     showSignInModal,
   ])
+
   return (
     <React.Fragment>
       <RoundedButton

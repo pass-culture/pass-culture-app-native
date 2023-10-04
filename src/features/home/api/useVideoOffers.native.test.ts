@@ -7,21 +7,17 @@ import { fetchOffersByIds } from 'libs/algolia/fetchAlgolia/fetchOffersByIds'
 import { offersFixture } from 'shared/offer/offer.fixture'
 import { Offer } from 'shared/offer/types'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { renderHook, act } from 'tests/utils'
+import { renderHook, waitFor } from 'tests/utils'
 
-jest.mock('libs/algolia/fetchAlgolia/fetchOffersByIds', () => ({
-  fetchOffersByIds: jest.fn(),
-}))
-const mockfetchOffersByIds = fetchOffersByIds as jest.MockedFunction<typeof fetchOffersByIds>
+jest.mock('features/auth/context/AuthContext')
 
-jest.mock('libs/algolia/fetchAlgolia/fetchOffersByEan', () => ({
-  fetchOffersByEan: jest.fn(),
-}))
+jest.mock('libs/algolia/fetchAlgolia/fetchOffersByIds')
+const mockFetchOffersByIds = fetchOffersByIds as jest.MockedFunction<typeof fetchOffersByIds>
+
+jest.mock('libs/algolia/fetchAlgolia/fetchOffersByEan')
 const mockFetchOffersByEan = fetchOffersByEan as jest.MockedFunction<typeof fetchOffersByEan>
 
-jest.mock('libs/algolia/fetchAlgolia/fetchMultipleOffers/fetchMultipleOffers', () => ({
-  fetchMultipleOffers: jest.fn(),
-}))
+jest.mock('libs/algolia/fetchAlgolia/fetchMultipleOffers/fetchMultipleOffers')
 const mockFetchMultipleOffers = fetchMultipleOffers as jest.MockedFunction<
   typeof fetchMultipleOffers
 >
@@ -30,7 +26,7 @@ const mockOffers: Offer[] = mockedAlgoliaResponse.hits
 
 describe('useVideoOffers', () => {
   it('should return offers when asking for specific ids', async () => {
-    mockfetchOffersByIds.mockResolvedValueOnce([mockOffers[0], mockOffers[1]])
+    mockFetchOffersByIds.mockResolvedValueOnce([mockOffers[0], mockOffers[1]])
 
     const { result } = renderHook(
       () => useVideoOffers([{}] as OffersModuleParameters[], 'moduleId', ['offerId1', 'offerId2']),
@@ -40,8 +36,9 @@ describe('useVideoOffers', () => {
       }
     )
 
-    await act(async () => {})
-    expect(result.current.offers).toEqual([offersFixture[0], offersFixture[1]])
+    await waitFor(() => {
+      expect(result.current.offers).toEqual([offersFixture[0], offersFixture[1]])
+    })
   })
   it('should return offers when asking for specific EANs', async () => {
     mockFetchOffersByEan.mockResolvedValueOnce([mockOffers[0], mockOffers[1]])
@@ -55,8 +52,9 @@ describe('useVideoOffers', () => {
       }
     )
 
-    await act(async () => {})
-    expect(result.current.offers).toEqual([offersFixture[0], offersFixture[1]])
+    await waitFor(() => {
+      expect(result.current.offers).toEqual([offersFixture[0], offersFixture[1]])
+    })
   })
   it('should return offers when only OffersModuleParameters are provided', async () => {
     mockFetchMultipleOffers.mockResolvedValueOnce({ hits: mockOffers, nbHits: 6 })
@@ -69,7 +67,8 @@ describe('useVideoOffers', () => {
       }
     )
 
-    await act(async () => {})
-    expect(result.current.offers).toEqual(offersFixture)
+    await waitFor(() => {
+      expect(result.current.offers).toEqual(offersFixture)
+    })
   })
 })

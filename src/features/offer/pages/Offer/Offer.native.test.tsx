@@ -1,5 +1,3 @@
-import { rest } from 'msw'
-
 import { mockedBookingApi } from '__mocks__/fixtures/booking'
 import { BookingsResponse, SearchGroupNameEnumv2 } from 'api/gen'
 import { useAuthContext } from 'features/auth/context/AuthContext'
@@ -11,10 +9,9 @@ import { offerId, renderOfferPage } from 'features/offer/helpers/renderOfferPage
 import { beneficiaryUser } from 'fixtures/user'
 import { mockedAlgoliaResponse } from 'libs/algolia/__mocks__/mockedAlgoliaResponse'
 import { analytics } from 'libs/analytics'
-import { env } from 'libs/environment'
 import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RecommendationApiParams } from 'shared/offer/types'
-import { server } from 'tests/server'
+import { mockServer } from 'tests/mswServer'
 import { act, fireEvent, screen, waitFor } from 'tests/utils'
 import { SNACK_BAR_TIME_OUT } from 'ui/components/snackBar/SnackBarContext'
 
@@ -78,10 +75,11 @@ describe('<Offer />', () => {
 
   it('animates on scroll', async () => {
     renderOfferPage()
+    await act(async () => {})
     expect(screen.getByTestId('offerHeaderName').props.style.opacity).toBe(0)
-    const scrollContainer = screen.getByTestId('offer-container')
 
     await act(async () => {
+      const scrollContainer = screen.getByTestId('offer-container')
       fireEvent.scroll(scrollContainer, scrollEvent)
     })
 
@@ -98,6 +96,7 @@ describe('<Offer />', () => {
     })
 
     renderOfferPage()
+    await act(async () => {})
 
     const bookingOfferButton = await screen.findByText('Réserver l’offre')
     await act(async () => {
@@ -116,6 +115,7 @@ describe('<Offer />', () => {
     }))
 
     renderOfferPage()
+    await act(async () => {})
 
     const bookingOfferButton = await screen.findByText('Réserver l’offre')
     await act(async () => {
@@ -128,7 +128,6 @@ describe('<Offer />', () => {
   describe('with similar offers', () => {
     it('should pass offer venue position to `useSimilarOffers`', async () => {
       renderOfferPage()
-
       await act(async () => {})
 
       expect(useSimilarOffersSpy).toHaveBeenNthCalledWith(1, {
@@ -357,8 +356,8 @@ describe('<Offer />', () => {
     // eslint-disable-next-line local-rules/independent-mocks
     mockUseAuthContext.mockReturnValue(newLocal)
     const fromOfferId = 1
+    mockServer.getAPIV1('/native/v1/bookings', {})
     renderOfferPage(fromOfferId, undefined, true)
-
     await act(async () => {})
 
     expect(await screen.findByText('Valider la date')).toBeOnTheScreen()
@@ -419,10 +418,17 @@ describe('<Offer />', () => {
       ],
     }
     describe('When booking API response is success', () => {
+      beforeEach(() => {
+        mockServer.getAPIV1('/native/v1/bookings', {
+          responseOptions: { data: expectedResponse },
+          requestOptions: { persist: true },
+        })
+        mockServer.postAPIV1('/native/v1/bookings', {
+          responseOptions: { data: { bookingId: 123 } },
+          requestOptions: { persist: true },
+        })
+      })
       it('should directly book and redirect to the offer when pressing button to book the offer', async () => {
-        mockServer.getAPIV1('/native/v1/bookings', expectedResponse)
-        mockServer.postAPIV1('/native/v1/bookings', { bookingId: 123 })
-
         // Multiple renders force us to mock auth context as loggedIn user in this test
         // eslint-disable-next-line local-rules/independent-mocks
         const newLocal = {
@@ -445,9 +451,19 @@ describe('<Offer />', () => {
         expect(mockedOpenUrl).toHaveBeenNthCalledWith(1, 'https://www.google.fr/')
       })
 
-      it('should not display an error message when pressing button to book the offer', async () => {
-        mockServer.getAPIV1('/native/v1/bookings', expectedResponse)
-        mockServer.postAPIV1('/native/v1/bookings', { bookingId: 123 })
+      it('should log BookingConfirmation when pressing button to book the offer', async () => {
+        // Multiple renders force us to mock auth context as loggedIn user in this test
+        // eslint-disable-next-line local-rules/independent-mocks
+        const newLocal = {
+          isLoggedIn: true,
+          setIsLoggedIn: jest.fn(),
+          isUserLoading: false,
+          refetchUser: jest.fn(),
+          user: beneficiaryUser,
+        }
+        // Multiple renders force us to mock auth context as loggedIn user in this test
+        // eslint-disable-next-line local-rules/independent-mocks
+        mockUseAuthContext.mockReturnValue(newLocal)
 
         renderOfferPage(undefined, offerDigitalAndFree)
 
@@ -512,7 +528,7 @@ describe('<Offer />', () => {
         expect(mockedOpenUrl).not.toHaveBeenCalled()
       })
 
-      it('should display an error message when pressing button to book the offer', async () => {
+      it('should not log BookingConfirmation when pressing button to book the offer', async () => {
         mockServer.getAPIV1('/native/v1/bookings', expectedResponse)
         mockServer.postAPIV1('/native/v1/bookings', { responseOptions: { statusCode: 400 } })
 
@@ -539,29 +555,9 @@ describe('<Offer />', () => {
       })
     })
 
-  describe('When offer is digital and free and already booked', () => {
-    const expectedResponse: BookingsResponse = {
-      ended_bookings: [],
-      hasBookingsAfter18: false,
-      ongoing_bookings: [
-        {
-          ...mockedBookingApi,
-          stock: {
-            ...mockedBookingApi.stock,
-            offer: { ...mockedBookingApi.stock.offer, ...offerDigitalAndFree },
-          },
-          dateUsed: '2023-02-14T10:10:08.800599Z',
-          completedUrl: 'https://www.google.fr/',
-        },
-      ],
-    }
-
-    it('should directly redirect to the offer when pressing offer access button', async () => {
+    it('should display an error message when pressing button to book the offer', async () => {
       mockServer.getAPIV1('/native/v1/bookings', expectedResponse)
-
-      server.use(
-        rest.post(env.API_BASE_URL + '/native/v1/bookings', (req, res, ctx) => res(ctx.status(400)))
-      )
+      mockServer.postAPIV1('/native/v1/bookings', { responseOptions: { statusCode: 400 } })
 
       // Multiple renders force us to mock auth context as loggedIn user in this test
       // eslint-disable-next-line local-rules/independent-mocks
@@ -608,11 +604,7 @@ describe('When offer is digital and free and already booked', () => {
   }
 
   it('should directly redirect to the offer when pressing offer access button', async () => {
-    server.use(
-      rest.get(env.API_BASE_URL + '/native/v1/bookings', async (_, res, ctx) =>
-        res(ctx.status(200), ctx.json(expectedResponse))
-      )
-    )
+    mockServer.getAPIV1('/native/v1/bookings', expectedResponse)
 
     // Multiple renders force us to mock auth context as loggedIn user in this test
     // eslint-disable-next-line local-rules/independent-mocks

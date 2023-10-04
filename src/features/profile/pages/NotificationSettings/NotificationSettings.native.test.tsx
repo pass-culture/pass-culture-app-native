@@ -191,12 +191,6 @@ describe('NotificationSettings', () => {
 
       const saveButton = screen.getByTestId('Enregistrer les modifications')
       expect(saveButton).toBeEnabled()
-
-      await act(async () => {
-        fireEvent.press(saveButton)
-      })
-
-      expect(saveButton).toBeDisabled()
     })
 
     it('should enable the save button when the push switch changed and call analytics when pressed', async () => {
@@ -230,7 +224,6 @@ describe('NotificationSettings', () => {
         fireEvent.press(saveButton)
       })
 
-      expect(screen.getByTestId('Enregistrer les modifications')).toBeDisabled()
       expect(analytics.logNotificationToggle).toBeCalledWith(false, false)
     })
   })

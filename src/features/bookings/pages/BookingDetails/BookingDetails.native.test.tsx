@@ -13,7 +13,7 @@ import { analytics } from 'libs/analytics'
 import * as OpenItinerary from 'libs/itinerary/useOpenItinerary'
 import { useNetInfoContext as useNetInfoContextDefault } from 'libs/network/NetInfoWrapper'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { act, fireEvent, render, screen } from 'tests/utils'
+import { act, fireEvent, render, screen, waitFor } from 'tests/utils'
 import { SNACK_BAR_TIME_OUT } from 'ui/components/snackBar/SnackBarContext'
 
 import { BookingDetails as BookingDetailsDefault } from './BookingDetails'
@@ -75,8 +75,6 @@ describe('BookingDetails', () => {
     const booking = bookingsSnap.ongoing_bookings[0]
     renderBookingDetails(booking)
 
-    await act(async () => {})
-
     expect(useOngoingOrEndedBooking).toBeCalledWith(456)
   })
 
@@ -94,7 +92,6 @@ describe('BookingDetails', () => {
     it('should display booking token', async () => {
       const booking = bookingsSnap.ongoing_bookings[0]
       renderBookingDetails(booking)
-      await act(async () => {})
 
       expect(await screen.findByText('352UW4')).toBeOnTheScreen()
     })
@@ -107,26 +104,24 @@ describe('BookingDetails', () => {
       renderBookingDetails(booking)
 
       const offerButton = screen.getByText('Accéder à l’offre en ligne')
-      await act(async () => {
-        fireEvent.press(offerButton)
-      })
+      fireEvent.press(offerButton)
 
-      expect(mockedOpenUrl).toHaveBeenCalledWith(
-        booking.completedUrl,
-        {
-          analyticsData: {
-            offerId: booking.stock.offer.id,
+      await waitFor(() => {
+        expect(mockedOpenUrl).toHaveBeenCalledWith(
+          booking.completedUrl,
+          {
+            analyticsData: {
+              offerId: booking.stock.offer.id,
+            },
           },
-        },
-        true
-      )
+          true
+        )
+      })
     })
 
     it('should not display offer link button if no url', async () => {
       const booking = bookingsSnap.ongoing_bookings[0]
       renderBookingDetails(booking)
-
-      await act(async () => {})
 
       expect(screen.queryByText('Accéder à l’offre')).not.toBeOnTheScreen()
     })
@@ -136,8 +131,6 @@ describe('BookingDetails', () => {
       booking.stock.offer.isDigital = false
       renderBookingDetails(booking)
 
-      await act(async () => {})
-
       expect(await screen.findByTestId('qr-code')).toBeOnTheScreen()
     })
 
@@ -145,8 +138,6 @@ describe('BookingDetails', () => {
       const booking = structuredClone(bookingsSnap.ongoing_bookings[0])
       booking.stock.offer.subcategoryId = SubcategoryIdEnum.LIVRE_PAPIER
       renderBookingDetails(booking)
-
-      await act(async () => {})
 
       expect(await screen.findByText('123456789')).toBeOnTheScreen()
     })
@@ -158,8 +149,6 @@ describe('BookingDetails', () => {
       booking.stock.offer.isDigital = true
 
       renderBookingDetails(booking)
-
-      await act(async () => {})
 
       expect(
         await screen.findByText(
@@ -176,8 +165,6 @@ describe('BookingDetails', () => {
       }
 
       renderBookingDetails(booking)
-
-      await act(async () => {})
 
       expect(
         await screen.findByText(
@@ -203,8 +190,6 @@ describe('BookingDetails', () => {
 
         renderBookingDetails(booking)
 
-        await act(async () => {})
-
         expect(
           await screen.findByText(
             'Pour profiter de ta réservation, tu dois présenter ta carte d’identité et ce code à 6 caractères. N’oublie pas que tu n’as pas le droit de le revendre ou le céder.'
@@ -220,8 +205,6 @@ describe('BookingDetails', () => {
       booking.stock.offer.withdrawalDetails = 'Voici comment récupérer ton bien'
       renderBookingDetails(booking)
 
-      await act(async () => {})
-
       expect(screen.queryByText('Modalités de retrait')).toBeOnTheScreen()
       expect(screen.queryByText('Voici comment récupérer ton bien')).toBeOnTheScreen()
     })
@@ -230,7 +213,6 @@ describe('BookingDetails', () => {
       const booking = bookingsSnap.ongoing_bookings[0]
       booking.stock.offer.withdrawalDetails = undefined
       renderBookingDetails(booking)
-      await act(async () => {})
 
       const title = screen.queryByText('Modalités de retrait')
       const withdrawalText = screen.queryByTestId('withdrawalDetails')
@@ -245,24 +227,25 @@ describe('BookingDetails', () => {
       const booking = bookingsSnap.ongoing_bookings[0]
       booking.stock.offer.bookingContact = 'bookingContactTest@email.com'
       renderBookingDetails(booking)
-      await act(async () => {})
 
       expect(screen.getByText('Contact organisateur')).toBeOnTheScreen()
       expect(screen.getByText('Envoyer un e-mail')).toBeOnTheScreen()
     })
+
     it('should not display booking email contact when there is no booking contact email', async () => {
       const booking = bookingsSnap.ongoing_bookings[0]
       booking.stock.offer.bookingContact = undefined
       renderBookingDetails(booking)
-      await act(async () => {})
+
       expect(screen.queryByText('Contact Organisateur')).not.toBeOnTheScreen()
       expect(screen.queryByText('Envoyer un e-mail')).not.toBeOnTheScreen()
     })
+
     it('should open mail app when clicking on "Envoyer un e-mail"', async () => {
       const booking = bookingsSnap.ongoing_bookings[0]
       booking.stock.offer.bookingContact = 'bookingContactTest@email.com'
       renderBookingDetails(booking)
-      await act(async () => {})
+
       fireEvent.press(screen.getByText('Envoyer un e-mail'))
       expect(mockedOpenUrl).toHaveBeenCalledWith(
         `mailto:bookingContactTest@email.com`,
@@ -277,17 +260,17 @@ describe('BookingDetails', () => {
     renderBookingDetails(booking)
 
     const text = screen.getByText('Voir le détail de l’offre')
-    await act(async () => {
-      fireEvent.press(text)
-    })
+
+    fireEvent.press(text)
 
     const offerId = booking.stock.offer.id
-
-    expect(navigate).toBeCalledWith('Offer', {
-      id: offerId,
-      from: 'bookingdetails',
+    await waitFor(() => {
+      expect(navigate).toBeCalledWith('Offer', {
+        id: offerId,
+        from: 'bookingdetails',
+      })
+      expect(analytics.logConsultOffer).toHaveBeenCalledWith({ offerId, from: 'bookings' })
     })
-    expect(analytics.logConsultOffer).toHaveBeenCalledWith({ offerId, from: 'bookings' })
   })
 
   it('should not redirect to the Offer and showSnackBarError when not connected', async () => {
@@ -296,15 +279,15 @@ describe('BookingDetails', () => {
     renderBookingDetails(booking)
 
     const text = screen.getByText('Voir le détail de l’offre')
-    await act(async () => {
-      fireEvent.press(text)
-    })
+    fireEvent.press(text)
 
     const offerId = booking.stock.offer.id
 
-    expect(navigate).not.toBeCalledWith('Offer', {
-      id: offerId,
-      from: 'bookingdetails',
+    await waitFor(() => {
+      expect(navigate).not.toBeCalledWith('Offer', {
+        id: offerId,
+        from: 'bookingdetails',
+      })
     })
     expect(analytics.logConsultOffer).not.toHaveBeenCalledWith({ offerId, from: 'bookings' })
     expect(mockShowErrorSnackBar).toHaveBeenCalledWith({
@@ -322,9 +305,7 @@ describe('BookingDetails', () => {
       renderBookingDetails(booking)
 
       const cancelButton = screen.getAllByTestId('Annuler ma réservation')[0]
-      await act(async () => {
-        fireEvent.press(cancelButton)
-      })
+      fireEvent.press(cancelButton)
 
       expect(analytics.logCancelBooking).toHaveBeenCalledWith(booking.stock.offer.id)
     })
@@ -353,8 +334,6 @@ describe('BookingDetails', () => {
 
         const nameCanceledBooking = booking.stock.offer.name
         renderBookingDetails(booking)
-
-        await act(async () => {})
 
         expect(mockShowInfoSnackBar).toHaveBeenCalledWith({
           message: `Ta réservation "${nameCanceledBooking}" a été annulée`,
@@ -473,7 +452,6 @@ describe('BookingDetails', () => {
 
       const booking = bookingsSnap.ongoing_bookings[0]
       renderBookingDetails(booking)
-      await act(async () => {})
 
       const itineraryButton = await screen.findByText('Voir l’itinéraire')
       expect(itineraryButton).toBeOnTheScreen()
@@ -507,7 +485,6 @@ describe('BookingDetails', () => {
 
         const booking = bookingsSnap.ongoing_bookings[0]
         renderBookingDetails(booking)
-        await act(async () => {})
 
         const itineraryButton = screen.queryByText('Voir l’itinéraire')
 
@@ -545,8 +522,9 @@ describe('BookingDetails', () => {
       await act(async () => {
         await scrollView.props.onScroll({ nativeEvent: nativeEventBottom })
       })
-
-      expect(analytics.logBookingDetailsScrolledToBottom).toHaveBeenCalledTimes(1)
+      await waitFor(() => {
+        expect(analytics.logBookingDetailsScrolledToBottom).toHaveBeenCalledTimes(1)
+      })
     })
   })
 })

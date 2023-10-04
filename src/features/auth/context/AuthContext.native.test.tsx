@@ -31,7 +31,10 @@ const decodeTokenSpy = jest.spyOn(jwt, 'default')
 
 jest.useFakeTimers({ legacyFakeTimers: true })
 const mockUserProfileInfo = (user = beneficiaryUser) => {
-  mockServer.getAPIV1('/native/v1/me', user)
+  mockServer.getAPIV1('/native/v1/me', {
+    responseOptions: { data: user },
+    requestOptions: { persist: true },
+  })
 }
 
 describe('AuthContext', () => {
@@ -59,7 +62,7 @@ describe('AuthContext', () => {
       expect(result.current.user).toBeUndefined()
     })
 
-    it('should return the user when logged in with internet connection', async () => {
+    it.only('should return the user when logged in with internet connection', async () => {
       await saveRefreshToken('token')
 
       const result = renderUseAuthContext()

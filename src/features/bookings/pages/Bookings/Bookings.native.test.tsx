@@ -28,8 +28,7 @@ describe('Bookings', () => {
     renderBookings()
     await act(async () => {})
 
-    //Due to multiple renders useBookings is called twice
-    expect(useBookingsSpy).toHaveBeenCalledTimes(2)
+    expect(useBookingsSpy).toHaveBeenCalledTimes(1)
   })
 
   it('should display the right number of ongoing bookings', async () => {

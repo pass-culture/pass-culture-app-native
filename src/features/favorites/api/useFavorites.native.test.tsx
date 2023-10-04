@@ -6,6 +6,7 @@ import { FavoritesWrapper } from 'features/favorites/context/FavoritesWrapper'
 import { paginatedFavoritesResponseSnap } from 'features/favorites/fixtures/paginatedFavoritesResponseSnap'
 import { simulateBackend } from 'features/favorites/helpers/simulateBackend'
 import { useNetInfoContext as useNetInfoContextDefault } from 'libs/network/NetInfoWrapper'
+import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, renderHook } from 'tests/utils'
 
@@ -20,6 +21,9 @@ jest.unmock('react-query')
 
 describe('useFavorites hook', () => {
   mockUseNetInfoContext.mockReturnValue({ isConnected: true, isInternetReachable: true })
+  beforeEach(() => {
+    mockServer.getAPIV1('/native/v1/me/favorites', paginatedFavoritesResponseSnap)
+  })
 
   it('should retrieve favorite data when logged in', async () => {
     simulateBackend()
