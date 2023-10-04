@@ -9,6 +9,7 @@ import { useAuthContext } from 'features/auth/context/AuthContext'
 import { UseRouteType } from 'features/navigation/RootNavigator/types'
 import { useSearchResults } from 'features/search/api/useSearchResults/useSearchResults'
 import { AutoScrollSwitch } from 'features/search/components/AutoScrollSwitch/AutoScrollSwitch'
+import { FilterButton } from 'features/search/components/Buttons/FilterButton/FilterButton'
 import { SingleFilterButton } from 'features/search/components/Buttons/SingleFilterButton/SingleFilterButton'
 import { SearchList } from 'features/search/components/SearchList/SearchList'
 import { useSearch } from 'features/search/context/SearchWrapper'
@@ -17,6 +18,7 @@ import {
   FILTER_TYPES,
   useAppliedFilters,
 } from 'features/search/helpers/useAppliedFilters/useAppliedFilters'
+import { useFilterCount } from 'features/search/helpers/useFilterCount/useFilterCount'
 import { useHasPosition } from 'features/search/helpers/useHasPosition/useHasPosition'
 import { useLocationChoice } from 'features/search/helpers/useLocationChoice/useLocationChoice'
 import { useLocationType } from 'features/search/helpers/useLocationType/useLocationType'
@@ -100,6 +102,8 @@ export const SearchResults: React.FC = () => {
     hideModal: hideDatesHoursModal,
   } = useModal(false)
   const hasPosition = useHasPosition()
+
+  const activeFilters = useFilterCount(searchState)
 
   // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(
@@ -197,6 +201,9 @@ export const SearchResults: React.FC = () => {
         <ScrollView horizontal showsHorizontalScrollIndicator={false}>
           <Spacer.Row numberOfSpaces={5} />
           <Ul>
+            <StyledLi>
+              <FilterButton activeFilters={activeFilters} />
+            </StyledLi>
             <StyledLi>
               <SingleFilterButton
                 label={hasPosition ? locationLabel : 'Localisation'}
