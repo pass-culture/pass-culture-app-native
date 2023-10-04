@@ -1,4 +1,3 @@
-import { rest } from 'msw'
 import * as React from 'react'
 
 import { api } from 'api/api'
@@ -6,9 +5,8 @@ import { FavoriteResponse, PaginatedFavoritesResponse } from 'api/gen'
 import { initialBookingState, Step } from 'features/bookOffer/context/reducer'
 import { favoriteResponseSnap } from 'features/favorites/fixtures/favoriteResponseSnap'
 import { analytics } from 'libs/analytics'
-import { env } from 'libs/environment'
+import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { server } from 'tests/server'
 import { act, fireEvent, render, screen, waitFor } from 'tests/utils'
 
 import { BookingImpossible } from './BookingImpossible'
@@ -42,21 +40,16 @@ const mockPostNativeV1SendOfferLinkByPushofferId = jest.spyOn(
 
 describe('<BookingImpossible />', () => {
   describe('When offer is already favorite', () => {
-    beforeAll(() => {
+    beforeEach(() => {
       const favoritesResponseWithOfferIn: PaginatedFavoritesResponse = {
         page: 1,
         nbFavorites: 1,
         favorites: [favoriteResponseSnap],
       }
-      server.use(
-        rest.get<Array<FavoriteResponse>>(
-          `${env.API_BASE_URL}/native/v1/me/favorites`,
-          (_req, res, ctx) => res(ctx.status(200), ctx.json(favoritesResponseWithOfferIn))
-        )
+      mockServer.get<PaginatedFavoritesResponse>(
+        '/native/v1/me/favorites',
+        favoritesResponseWithOfferIn
       )
-    })
-    afterAll(() => {
-      server.resetHandlers()
     })
     it('should render without CTAs', async () => {
       // eslint-disable-next-line local-rules/no-react-query-provider-hoc
@@ -87,22 +80,13 @@ describe('<BookingImpossible />', () => {
   })
 
   describe('When offer is not yet favorite', () => {
-    beforeAll(() => {
+    beforeEach(() => {
       const favoriteResponse: FavoriteResponse = favoriteResponseSnap
-
-      server.use(
-        rest.post(`${env.API_BASE_URL}/native/v1/me/favorites`, (_req, res, ctx) =>
-          res(ctx.status(200), ctx.json(favoriteResponse))
-        ),
-        rest.post(
-          `${env.API_BASE_URL}/native/v1/send_offer_link_by_push/${mockOfferId}`,
-          (_req, res, ctx) => res(ctx.status(200), ctx.json({}))
-        ),
-        rest.post(
-          `${env.API_BASE_URL}/native/v1/send_offer_webapp_link_by_email/${mockOfferId}`,
-          (_req, res, ctx) => res(ctx.status(200), ctx.json({}))
-        )
-      )
+      mockServer.post('/native/v1/me/favorites', favoriteResponse)
+      mockServer.post(`/native/v1/send_offer_link_by_push/${mockOfferId}`, {})
+      mockServer.post(`/native/v1/send_offer_webapp_link_by_email/${mockOfferId}`, {
+        favoriteResponse,
+      })
     })
 
     it('should render with CTAs', async () => {

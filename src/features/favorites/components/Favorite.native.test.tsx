@@ -1,4 +1,3 @@
-import { rest } from 'msw'
 import React from 'react'
 import { Share } from 'react-native'
 
@@ -8,11 +7,9 @@ import { ExpenseDomain, FavoriteResponse, UserProfileResponse, YoungStatusType }
 import { initialFavoritesState } from 'features/favorites/context/reducer'
 import { favoriteResponseSnap as favorite } from 'features/favorites/fixtures/favoriteResponseSnap'
 import { analytics } from 'libs/analytics'
-import { env } from 'libs/environment'
-import { EmptyResponse } from 'libs/fetch'
 import { Credit } from 'shared/user/useAvailableCredit'
+import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { server } from 'tests/server'
 import { fireEvent, render, waitFor, screen, act } from 'tests/utils'
 import { SNACK_BAR_TIME_OUT } from 'ui/components/snackBar/SnackBarContext'
 import { SnackBarHelperSettings } from 'ui/components/snackBar/types'
@@ -148,13 +145,17 @@ const DEFAULT_GET_FAVORITE_OPTIONS = {
 
 function simulateBackend(options: Options = DEFAULT_GET_FAVORITE_OPTIONS) {
   const { id, hasRemoveFavoriteError } = { ...DEFAULT_GET_FAVORITE_OPTIONS, ...options }
-  server.use(
-    rest.delete<EmptyResponse>(
-      `${env.API_BASE_URL}/native/v1/me/favorites/${id}`,
-      (req, res, ctx) =>
-        !hasRemoveFavoriteError ? res(ctx.status(204)) : res(ctx.status(422), ctx.json({}))
-    )
-  )
+  if (hasRemoveFavoriteError) {
+    mockServer.delete(`/native/v1/me/favorites/${id}`, {
+      responseOptions: { statusCode: 422 },
+      requestOptions: { persist: true },
+    })
+  } else {
+    mockServer.delete(`/native/v1/me/favorites/${id}`, {
+      responseOptions: { data: {}, statusCode: 204 },
+      requestOptions: { persist: true },
+    })
+  }
 }
 
 const DEFAULT_PROPS = {

@@ -1,13 +1,12 @@
-import { rest } from 'msw'
 import React from 'react'
 
+import * as API from 'api/api'
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { favoriteResponseSnap } from 'features/favorites/fixtures/favoriteResponseSnap'
+import { simulateBackend } from 'features/favorites/helpers/simulateBackend'
 import { AddToFavoritesButton } from 'features/offer/components/AddToFavoritesButton/AddToFavoritesButton'
-import { env } from 'libs/environment'
-import { EmptyResponse } from 'libs/fetch'
+import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { server } from 'tests/server'
 import { fireEvent, waitFor, render, screen } from 'tests/utils'
 
 jest.mock('features/auth/context/AuthContext')
@@ -18,8 +17,7 @@ mockUseAuthContext.mockReturnValue({
   refetchUser: jest.fn(),
   isUserLoading: false,
 })
-
-const mockPostFavorite = jest.fn()
+const apiPostFavoritesSpy = jest.spyOn(API.api, 'postNativeV1MeFavorites')
 
 describe('<AddToFavoriteButton />', () => {
   it('should render nothing when offer already in favorite', async () => {
@@ -39,7 +37,7 @@ describe('<AddToFavoriteButton />', () => {
     fireEvent.press(screen.getByText('Mettre en favori'))
 
     await waitFor(() => {
-      expect(mockPostFavorite).toHaveBeenCalledTimes(1)
+      expect(apiPostFavoritesSpy).toHaveBeenCalledTimes(1)
     })
   })
 })
@@ -62,16 +60,15 @@ const renderButton = (options?: Options) => {
     ...options,
   }
 
-  server.use(
-    rest.post<EmptyResponse>(`${env.API_BASE_URL}/native/v1/me/favorites`, (_req, res, ctx) => {
-      if (hasAddFavoriteError) {
-        return res(ctx.status(415), ctx.json({}))
-      } else {
-        mockPostFavorite()
-        return res(ctx.status(200), ctx.json(favoriteResponseSnap))
-      }
-    })
-  )
+  simulateBackend({
+    id: offerId,
+    hasAddFavoriteError,
+  })
+  if (hasAddFavoriteError) {
+    mockServer.post('/native/v1/me/favorites', { statuscode: 415 })
+  } else {
+    mockServer.post('/native/v1/me/favorites', favoriteResponseSnap)
+  }
   // eslint-disable-next-line local-rules/no-react-query-provider-hoc
   return render(reactQueryProviderHOC(<AddToFavoritesButton offerId={offerId} />))
 }

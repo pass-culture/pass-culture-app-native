@@ -1,9 +1,6 @@
-import { rest } from 'msw'
-
 import { EmailHistoryEventTypeEnum, EmailUpdateStatus } from 'api/gen'
-import { env } from 'libs/environment'
 import { eventMonitoring } from 'libs/monitoring'
-import { server } from 'tests/server'
+import { mockServer } from 'tests/mswServer'
 
 import { getEmailUpdateStatus } from './useEmailUpdateStatus'
 
@@ -14,12 +11,9 @@ const emailUpdateStatus: EmailUpdateStatus = {
 }
 
 function simulateEmailUpdateStatusError(code: number) {
-  server.use(
-    rest.get<EmailUpdateStatus>(
-      env.API_BASE_URL + '/native/v1/profile/email_update/status',
-      (req, res, ctx) => res(ctx.status(code), ctx.json(emailUpdateStatus))
-    )
-  )
+  mockServer.get<EmailUpdateStatus>('/native/v1/profile/email_update/status', {
+    responseOptions: { statusCode: code, data: emailUpdateStatus },
+  })
 }
 
 describe('getEmailUpdateStatus', () => {

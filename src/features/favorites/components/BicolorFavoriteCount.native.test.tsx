@@ -1,12 +1,9 @@
-import { rest } from 'msw'
 import React from 'react'
 
-import { FavoriteResponse } from 'api/gen'
 import { useAuthContext } from 'features/auth/context/AuthContext'
-import { env } from 'libs/environment'
 import { useNetInfoContext as useNetInfoContextDefault } from 'libs/network/NetInfoWrapper'
+import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { server } from 'tests/server'
 import { act, render, waitFor, screen } from 'tests/utils'
 
 import { BicolorFavoriteCount } from './BicolorFavoriteCount'
@@ -81,12 +78,9 @@ const defaultOptions = {
 
 function renderBicolorFavoriteCount(options: Options = defaultOptions) {
   const { isLoggedIn, count } = { ...defaultOptions, ...options }
-  server.use(
-    rest.get<Array<FavoriteResponse>>(
-      `${env.API_BASE_URL}/native/v1/me/favorites/count`,
-      (req, res, ctx) => res(ctx.status(200), ctx.json({ count }))
-    )
-  )
+  mockServer.get('/native/v1/me/favorites/count', {
+    responseOptions: { data: { count } },
+  })
   mockUseAuthContext.mockReturnValue({
     isLoggedIn,
     setIsLoggedIn: jest.fn(),

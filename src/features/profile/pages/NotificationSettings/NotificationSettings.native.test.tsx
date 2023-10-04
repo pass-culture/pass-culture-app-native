@@ -1,6 +1,5 @@
 import { NavigationContainer, createNavigationContainerRef } from '@react-navigation/native'
 import { createStackNavigator } from '@react-navigation/stack'
-import { rest } from 'msw'
 import React from 'react'
 import { Platform } from 'react-native'
 import * as RNP from 'react-native-permissions'
@@ -11,9 +10,8 @@ import { UserProfileResponse } from 'api/gen'
 import * as Auth from 'features/auth/context/AuthContext'
 import { RootStackParamList } from 'features/navigation/RootNavigator/types'
 import { analytics } from 'libs/analytics'
-import { env } from 'libs/environment'
+import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { server } from 'tests/server'
 import { fireEvent, render, screen, act } from 'tests/utils'
 
 import { NotificationSettings } from './NotificationSettings'
@@ -271,10 +269,9 @@ function renderNotificationSettings(
 }
 
 const mockApiUpdateProfile = (user?: UserProfileResponse) => {
-  server.use(
-    rest.post(env.API_BASE_URL + '/native/v1/profile', (_req, res, ctx) => {
-      mockUseAuthContext.mockReturnValueOnce({ isLoggedIn: true, user } as Auth.IAuthContext)
-      return res.once(ctx.status(200), ctx.json(user))
-    })
-  )
+  mockServer.post('/native/v1/profile', {
+    responseOptions: { data: user },
+    requestOptions: { persist: true },
+  })
+  mockUseAuthContext.mockReturnValueOnce({ isLoggedIn: true, user } as Auth.IAuthContext)
 }

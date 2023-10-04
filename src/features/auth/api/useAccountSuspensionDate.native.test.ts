@@ -1,26 +1,15 @@
-import { rest } from 'msw'
-
 import { useAccountSuspensionDate } from 'features/auth/api/useAccountSuspensionDate'
-import { env } from 'libs/environment'
+import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { server } from 'tests/server'
 import { act, renderHook } from 'tests/utils'
 
 const expectedResponse = { date: '2022-05-11T10:29:25.332786Z' }
 function simulateSuspensionDate200() {
-  server.use(
-    rest.get(env.API_BASE_URL + '/native/v1/account/suspension_date', async (_, res, ctx) =>
-      res(ctx.status(200), ctx.json(expectedResponse))
-    )
-  )
+  mockServer.get('/native/v1/account/suspension_date', expectedResponse)
 }
 
 function simulateSuspensionDateActiveAccount() {
-  server.use(
-    rest.get(env.API_BASE_URL + '/native/v1/account/suspension_date', async (_, res, ctx) =>
-      res(ctx.status(403))
-    )
-  )
+  mockServer.get('/native/v1/account/suspension_date', { responseOptions: { statusCode: 403 } })
 }
 
 describe('useAccountSuspensionDate', () => {

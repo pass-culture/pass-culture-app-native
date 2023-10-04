@@ -1,23 +1,20 @@
 import mockdate from 'mockdate'
-import { rest } from 'msw'
 import React from 'react'
 import DeviceInfo from 'react-native-device-info'
 
 import { navigate } from '__mocks__/@react-navigation/native'
 import { api } from 'api/api'
-import { AccountRequest } from 'api/gen'
 import { CURRENT_DATE, ELIGIBLE_AGE_DATE } from 'features/auth/fixtures/fixtures'
-import { SignupForm } from 'features/auth/pages/signup/SignupForm'
 import { mockGoBack } from 'features/navigation/__mocks__/useGoBack'
 import { navigateToHomeConfig } from 'features/navigation/helpers'
 import { analytics } from 'libs/analytics'
-import { env } from 'libs/environment'
-import { EmptyResponse } from 'libs/fetch'
 import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { eventMonitoring } from 'libs/monitoring'
+import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { server } from 'tests/server'
 import { act, fireEvent, render, screen } from 'tests/utils'
+
+import { SignupForm } from './SignupForm'
 
 const getModelSpy = jest.spyOn(DeviceInfo, 'getModel')
 const getSystemNameSpy = jest.spyOn(DeviceInfo, 'getSystemName')
@@ -29,15 +26,12 @@ const realUseState = React.useState
 const mockUseState = jest.spyOn(React, 'useState')
 
 mockdate.set(CURRENT_DATE)
-
-server.use(
-  rest.get(
-    `${env.API_BASE_URL}/native/v1/email_validation_remaining_resends/email%40gmail.com`,
-    (_req, res, ctx) => res(ctx.status(200), ctx.json({ remainingResends: 3 }))
-  )
-)
-
 describe('Signup Form', () => {
+  beforeEach(() => {
+    mockServer.get('/native/v1/email_validation_remaining_resends/email%40gmail.com', {
+      remainingResends: 3,
+    })
+  })
   it.each`
     stepIndex | component
     ${0}      | ${'SetEmail'}
@@ -392,14 +386,7 @@ describe('Signup Form', () => {
     })
 
     it('should log to sentry on API error', async () => {
-      server.use(
-        rest.post<AccountRequest, EmptyResponse>(
-          env.API_BASE_URL + '/native/v1/account',
-          (_req, res, ctx) => {
-            return res.once(ctx.status(400))
-          }
-        )
-      )
+      mockServer.post('/native/v1/account', { responseOptions: { statusCode: 400, data: {} } })
 
       renderSignupForm()
 
@@ -430,12 +417,7 @@ describe('Signup Form', () => {
   })
 })
 
-const simulateSignupSuccess = () =>
-  server.use(
-    rest.post(env.API_BASE_URL + '/native/v1/account', (_req, res, ctx) => {
-      return res.once(ctx.status(200), ctx.json({}))
-    })
-  )
+const simulateSignupSuccess = () => mockServer.post('/native/v1/account', {})
 
 // eslint-disable-next-line local-rules/no-react-query-provider-hoc
 const renderSignupForm = () => render(reactQueryProviderHOC(<SignupForm />))

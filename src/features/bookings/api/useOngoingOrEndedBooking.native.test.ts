@@ -1,23 +1,14 @@
-import { rest } from 'msw'
-
 import { BookingsResponse } from 'api/gen'
 import { useOngoingOrEndedBooking } from 'features/bookings/api'
 import { bookingsSnap } from 'features/bookings/fixtures/bookingsSnap'
-import { env } from 'libs/environment'
 import { useNetInfoContext as useNetInfoContextDefault } from 'libs/network/NetInfoWrapper'
+import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { server } from 'tests/server'
-import { act, renderHook } from 'tests/utils'
+import { renderHook, act } from 'tests/utils'
 
 jest.mock('libs/react-query/usePersistQuery', () => ({
   usePersistQuery: jest.requireActual('react-query').useQuery,
 }))
-
-server.use(
-  rest.get<BookingsResponse>(`${env.API_BASE_URL}/native/v1/bookings`, (req, res, ctx) =>
-    res(ctx.status(200), ctx.json(bookingsSnap))
-  )
-)
 
 jest.mock('libs/network/useNetInfo', () => jest.requireMock('@react-native-community/netinfo'))
 const mockUseNetInfoContext = useNetInfoContextDefault as jest.Mock
@@ -28,6 +19,17 @@ jest.mock('features/auth/context/AuthContext', () => ({
 }))
 
 describe('useOngoingOrEndedBooking', () => {
+  beforeEach(() => {
+    mockServer.get<BookingsResponse>('/native/v1/bookings', {
+      requestOptions: {
+        persist: true,
+      },
+      responseOptions: {
+        statusCode: 200,
+        data: bookingsSnap,
+      },
+    })
+  })
   it('should return ongoing_bookings when there is one', async () => {
     const booking = bookingsSnap.ongoing_bookings[0]
     const { result } = renderHook(() => useOngoingOrEndedBooking(booking.id), {

@@ -1,4 +1,3 @@
-import { rest } from 'msw'
 import React from 'react'
 
 import { OfferResponse, SubcategoryIdEnum } from 'api/gen'
@@ -12,11 +11,10 @@ import { offerResponseSnap } from 'features/offer/fixtures/offerResponse'
 import { offerStockResponseSnap } from 'features/offer/fixtures/offerStockResponse'
 import * as UnderageUserAPI from 'features/profile/helpers/useIsUserUnderage'
 import * as logOfferConversionAPI from 'libs/algolia/analytics/logOfferConversion'
-import { env } from 'libs/environment'
 import * as useFeatureFlag from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
+import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { server } from 'tests/server'
-import { act, fireEvent, render, screen } from 'tests/utils'
+import { fireEvent, render, screen, act } from 'tests/utils'
 import * as useModalAPI from 'ui/components/modals/useModal'
 import { SnackBarHelperSettings } from 'ui/components/snackBar/types'
 
@@ -80,11 +78,6 @@ jest
   .spyOn(logOfferConversionAPI, 'useLogOfferConversion')
   .mockReturnValue({ logOfferConversion: spyLogOfferConversion })
 
-server.use(
-  rest.get<OfferResponse>(`${env.API_BASE_URL}/native/v1/offer/${mockOfferId}`, (req, res, ctx) =>
-    res(ctx.status(200), ctx.json(offerResponseSnap))
-  )
-)
 const mockOnPressBookOffer = jest.fn()
 
 const offerVenues = [
@@ -154,6 +147,7 @@ describe('<BookingDetails />', () => {
         dismissModal: mockDismissModal,
         dispatch: mockDispatch,
       })
+      mockServer.get<OfferResponse>(`/native/v1/offer/${mockOfferId}`, offerResponseSnap)
     })
 
     it('should initialize correctly state when offer isDigital', async () => {
@@ -285,6 +279,7 @@ describe('<BookingDetails />', () => {
         dismissModal: mockDismissModal,
         dispatch: mockDispatch,
       })
+      mockServer.get<OfferResponse>(`/native/v1/offer/${mockOfferId}`, offerResponseSnap)
     })
 
     it('should not display the Duo selector when the offer is duo but is an event', () => {
@@ -314,6 +309,9 @@ describe('<BookingDetails />', () => {
   })
 
   describe('When WIP_ENABLE_MULTIVENUE_OFFER feature flag deactivated', () => {
+    beforeEach(() => {
+      mockServer.getAPIV1<OfferResponse>(`/native/v1/offer/${mockOfferId}`, offerResponseSnap)
+    })
     it('should display venue address in information section', async () => {
       mockUseBookingOffer.mockReturnValueOnce({ ...mockOffer, isDuo: true })
 
@@ -452,6 +450,7 @@ describe('<BookingDetails />', () => {
   describe('When WIP_ENABLE_MULTIVENUE_OFFER feature flag activated', () => {
     beforeEach(() => {
       jest.spyOn(useFeatureFlag, 'useFeatureFlag').mockReturnValueOnce(true)
+      mockServer.get<OfferResponse>(`/native/v1/offer/${mockOfferId}`, offerResponseSnap)
     })
 
     it('should not display venue address in information section', async () => {

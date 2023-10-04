@@ -1,13 +1,9 @@
-import { rest } from 'msw'
 import React from 'react'
 
 import { navigate } from '__mocks__/@react-navigation/native'
-import { ChangePasswordRequest } from 'api/gen'
 import { analytics } from 'libs/analytics'
-import { env } from 'libs/environment'
-import { EmptyResponse } from 'libs/fetch'
+import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { server } from 'tests/server'
 import { render, fireEvent, act, screen } from 'tests/utils'
 import { showSuccessSnackBar } from 'ui/components/snackBar/__mocks__/SnackBarContext'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
@@ -66,12 +62,8 @@ describe('ChangePassword', () => {
   })
 
   it('should display success snackbar and navigate to Profile when the password is updated', async () => {
-    server.use(
-      rest.post<ChangePasswordRequest, EmptyResponse>(
-        env.API_BASE_URL + '/native/v1/change_password',
-        (_req, res, ctx) => res.once(ctx.status(200), ctx.json({}))
-      )
-    )
+    mockServer.post('/native/v1/change_password', {})
+
     mockedUseSnackBarContext.mockImplementationOnce(() => ({
       showSuccessSnackBar,
     }))
@@ -104,12 +96,10 @@ describe('ChangePassword', () => {
   })
 
   it('display error when the password failed to updated', async () => {
-    server.use(
-      rest.post<ChangePasswordRequest, EmptyResponse>(
-        env.API_BASE_URL + '/native/v1/change_password',
-        (_req, res, ctx) => res.once(ctx.status(400), ctx.json({}))
-      )
-    )
+    mockServer.post('/native/v1/change_password', {
+      responseOptions: { statusCode: 400, data: {} },
+    })
+
     renderChangePassword()
 
     const currentPasswordInput = screen.getByPlaceholderText('Ton mot de passe actuel')

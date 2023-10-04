@@ -1,4 +1,3 @@
-import { rest } from 'msw'
 import React from 'react'
 import { Animated } from 'react-native'
 
@@ -7,9 +6,8 @@ import { useAuthContext } from 'features/auth/context/AuthContext'
 import { mockGoBack } from 'features/navigation/__mocks__/useGoBack'
 import { offerResponseSnap } from 'features/offer/fixtures/offerResponse'
 import { analytics } from 'libs/analytics'
-import { env } from 'libs/environment'
+import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { server } from 'tests/server'
 import { act, fireEvent, render, screen, waitFor } from 'tests/utils'
 import {
   showSuccessSnackBar,
@@ -100,11 +98,7 @@ describe('<OfferHeader />', () => {
 const offerId = 116656
 
 function renderOfferHeader() {
-  server.use(
-    rest.get<OfferResponse>(`${env.API_BASE_URL}/native/v1/offer/${offerId}`, (_req, res, ctx) =>
-      res(ctx.status(200), ctx.json(offerResponseSnap))
-    )
-  )
+  mockServer.get<OfferResponse>(`/native/v1/offer/${offerId}`, offerResponseSnap)
 
   const animatedValue = new Animated.Value(0)
   render(

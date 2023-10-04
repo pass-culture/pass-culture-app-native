@@ -1,11 +1,9 @@
-import { rest } from 'msw'
 import React from 'react'
 
 import { OfferResponse } from 'api/gen'
 import { offerResponseSnap } from 'features/offer/fixtures/offerResponse'
-import { env } from 'libs/environment'
+import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { server } from 'tests/server'
 import { act, render, screen } from 'tests/utils'
 
 import { OfferPartialDescription } from './OfferPartialDescription'
@@ -20,13 +18,10 @@ const defaultParams: Params = {
   description: defaultDescription,
 }
 
-server.use(
-  rest.get<OfferResponse>(`${env.API_BASE_URL}/native/v1/offer/${offerId}`, (req, res, ctx) =>
-    res(ctx.status(200), ctx.json(offerResponseSnap))
-  )
-)
-
 describe('OfferPartialDescription', () => {
+  beforeEach(() => {
+    mockServer.get<OfferResponse>(`/native/v1/offer/${offerId}`, offerResponseSnap)
+  })
   it('centers CTA when provided description is empty', async () => {
     renderOfferDescription({
       ...defaultParams,
@@ -63,37 +58,17 @@ describe('OfferPartialDescription', () => {
 
   describe('SeeMore button', () => {
     const simulateOfferResponseWithNoDataInDescriptionPage = () => {
-      server.use(
-        rest.get<OfferResponse>(
-          `${env.API_BASE_URL}/native/v1/offer/${offerId}`,
-          (req, res, ctx) => {
-            return res.once(
-              ctx.status(200),
-              ctx.json({
-                ...offerResponseSnap,
-                image: {},
-                extraData: {},
-              })
-            )
-          }
-        )
-      )
+      mockServer.get(`/native/v1/offer/${offerId}`, {
+        ...offerResponseSnap,
+        image: {},
+        extraData: {},
+      })
     }
     const simulateOfferResponseWithOnlyImageInDescriptionPage = () => {
-      server.use(
-        rest.get<OfferResponse>(
-          `${env.API_BASE_URL}/native/v1/offer/${offerId}`,
-          (req, res, ctx) => {
-            return res.once(
-              ctx.status(200),
-              ctx.json({
-                ...offerResponseSnap,
-                extraData: {},
-              })
-            )
-          }
-        )
-      )
+      mockServer.get(`/native/v1/offer/${offerId}`, {
+        ...offerResponseSnap,
+        extraData: {},
+      })
     }
 
     it('should be rendered when there is some content on the description page', async () => {
@@ -144,21 +119,16 @@ describe('OfferPartialDescription', () => {
       })
 
       it('when there is extraData on the description page', async () => {
-        server.use(
-          rest.get<OfferResponse>(
-            `${env.API_BASE_URL}/native/v1/offer/${offerId}`,
-            (req, res, ctx) => {
-              return res.once(
-                ctx.status(200),
-                ctx.json({
-                  ...offerResponseSnap,
-                  image: {},
-                  extraData: { author: 'John Lang' },
-                })
-              )
-            }
-          )
-        )
+        mockServer.get(`/native/v1/offer/${offerId}`, {
+          ...offerResponseSnap,
+          image: {},
+          extraData: {
+            ...offerResponseSnap,
+            image: {},
+            extraData: { author: 'John Lang' },
+          },
+        })
+
         renderOfferDescription({
           ...defaultParams,
           description: undefined,

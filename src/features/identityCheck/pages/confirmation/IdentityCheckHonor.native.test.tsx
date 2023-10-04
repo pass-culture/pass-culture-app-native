@@ -1,5 +1,4 @@
 import mockdate from 'mockdate'
-import { rest } from 'msw'
 import React from 'react'
 
 import { navigate } from '__mocks__/@react-navigation/native'
@@ -7,9 +6,8 @@ import { useAuthContext } from 'features/auth/context/AuthContext'
 import { IdentityCheckHonor } from 'features/identityCheck/pages/confirmation/IdentityCheckHonor'
 import { beneficiaryUser, nonBeneficiaryUser } from 'fixtures/user'
 import { analytics } from 'libs/analytics'
-import { env } from 'libs/environment'
+import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { server } from 'tests/server'
 import { fireEvent, render, waitFor, screen } from 'tests/utils'
 
 mockdate.set(new Date('2020-12-01T00:00:00.000Z'))
@@ -27,15 +25,12 @@ jest.mock('features/identityCheck/context/SubscriptionContextProvider', () => ({
   }),
 }))
 
-server.use(
-  rest.post(env.API_BASE_URL + '/native/v1/subscription/honor_statement', async (_, res, ctx) =>
-    res(ctx.status(200))
-  )
-)
-
 describe('<IdentityCheckHonor/>', () => {
   beforeAll(() => {
     mockUseAuthContext.mockReturnValue({ user: nonBeneficiaryUser })
+  })
+  beforeEach(() => {
+    mockServer.post('/native/v1/subscription/honor_statement', {})
   })
 
   it('should render correctly', () => {

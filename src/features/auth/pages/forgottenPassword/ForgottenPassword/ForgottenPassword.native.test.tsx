@@ -4,8 +4,8 @@ import { navigate, replace } from '__mocks__/@react-navigation/native'
 import { captureMonitoringError, eventMonitoring } from 'libs/monitoring'
 import { useNetInfoContext as useNetInfoContextDefault } from 'libs/network/NetInfoWrapper'
 import { NetworkErrorFixture, UnknownErrorFixture } from 'libs/recaptcha/fixtures'
+import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { requestPasswordResetFail, requestPasswordResetSuccess, server } from 'tests/server'
 import { simulateWebviewMessage, fireEvent, render, waitFor, screen, act } from 'tests/utils'
 import * as emailCheck from 'ui/components/inputs/emailCheck'
 import { SUGGESTION_DELAY_IN_MS } from 'ui/components/inputs/EmailInputWithSpellingHelp/useEmailSpellingHelp'
@@ -21,7 +21,9 @@ const mockUseNetInfoContext = useNetInfoContextDefault as jest.Mock
 
 beforeEach(() => {
   simulateConnectedNetwork()
-  server.use(requestPasswordResetSuccess())
+  mockServer.post('/native/v1/request_password_reset', {
+    responseOptions: { statusCode: 204, data: {} },
+  })
 })
 
 describe('<ForgottenPassword />', () => {
@@ -156,7 +158,9 @@ describe('<ForgottenPassword />', () => {
   })
 
   it('should NOT redirect to ResetPasswordEmailSent when reset password request API call has failed', async () => {
-    server.use(requestPasswordResetFail())
+    mockServer.post('/native/v1/request_password_reset', {
+      responseOptions: { statusCode: 400, data: {} },
+    })
     renderForgottenPassword()
 
     const emailInput = screen.getByPlaceholderText('tonadresse@email.com')
@@ -190,7 +194,9 @@ describe('<ForgottenPassword />', () => {
   ])(
     'should capture an info in Sentry when reset password request API call has failed and error code is %s',
     async (statusCode) => {
-      server.use(requestPasswordResetFail(statusCode))
+      mockServer.post('/native/v1/request_password_reset', {
+        responseOptions: { statusCode: statusCode, data: {} },
+      })
       renderForgottenPassword()
 
       const emailInput = screen.getByPlaceholderText('tonadresse@email.com')
@@ -210,7 +216,9 @@ describe('<ForgottenPassword />', () => {
   )
 
   it('should not capture an in Sentry when reset password request API call has failed and error code is 400', async () => {
-    server.use(requestPasswordResetFail())
+    mockServer.post('/native/v1/request_password_reset', {
+      responseOptions: { statusCode: 400, data: {} },
+    })
     renderForgottenPassword()
 
     const emailInput = screen.getByPlaceholderText('tonadresse@email.com')

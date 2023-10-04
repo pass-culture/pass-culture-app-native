@@ -1,23 +1,20 @@
 import mockdate from 'mockdate'
-import { rest } from 'msw'
 import React from 'react'
 import DeviceInfo from 'react-native-device-info'
 
 import { navigate, replace, useRoute } from '__mocks__/@react-navigation/native'
 import { api } from 'api/api'
-import { UserProfileResponse } from 'api/gen'
 import * as Login from 'features/auth/helpers/useLoginRoutine'
 import { homeNavConfig } from 'features/navigation/TabBar/helpers'
 import { nonBeneficiaryUser } from 'fixtures/user'
 import { analytics } from 'libs/analytics'
 import { CampaignEvents, campaignTracker } from 'libs/campaign'
 import * as datesLib from 'libs/dates'
-import { env } from 'libs/environment'
 // eslint-disable-next-line no-restricted-imports
 import { firebaseAnalytics } from 'libs/firebase/analytics'
 import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
+import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { server } from 'tests/server'
 import { act, render, waitFor } from 'tests/utils'
 import { SNACK_BAR_TIME_OUT } from 'ui/components/snackBar/SnackBarContext'
 import { SnackBarHelperSettings } from 'ui/components/snackBar/types'
@@ -62,19 +59,12 @@ describe('<AfterSignupEmailValidationBuffer />', () => {
 
   describe('when timestamp is NOT expired', () => {
     it('should redirect to AccountCreated when isEligibleForBeneficiaryUpgrade is false', async () => {
-      server.use(
-        rest.get<UserProfileResponse>(env.API_BASE_URL + '/native/v1/me', (_req, res, ctx) =>
-          res.once(
-            ctx.status(200),
-            ctx.json({
-              email: 'email@domain.ext',
-              firstName: 'Jean',
-              eligibility: 'age-18',
-              isEligibleForBeneficiaryUpgrade: false,
-            })
-          )
-        )
-      )
+      mockServer.get('/native/v1/me', {
+        email: 'email@domain.ext',
+        firstName: 'Jean',
+        eligibility: 'age-18',
+        isEligibleForBeneficiaryUpgrade: false,
+      })
       mockLoginRoutine.mockImplementationOnce(() => loginRoutine)
       mockLoginRoutine.mockImplementationOnce(() => loginRoutine) // second render because of useDeviceInfo
 
@@ -89,19 +79,13 @@ describe('<AfterSignupEmailValidationBuffer />', () => {
     })
 
     it('should redirect to Verify Eligibility when isEligibleForBeneficiaryUpgrade and user is 18 yo', async () => {
-      server.use(
-        rest.get<UserProfileResponse>(env.API_BASE_URL + '/native/v1/me', (_req, res, ctx) =>
-          res.once(
-            ctx.status(200),
-            ctx.json({
-              email: 'email@domain.ext',
-              firstName: 'Jean',
-              eligibility: 'age-18',
-              isEligibleForBeneficiaryUpgrade: true,
-            })
-          )
-        )
-      )
+      mockServer.get('/native/v1/me', {
+        email: 'email@domain.ext',
+        firstName: 'Jean',
+        eligibility: 'age-18',
+        isEligibleForBeneficiaryUpgrade: true,
+      })
+
       mockLoginRoutine.mockImplementationOnce(() => loginRoutine)
       mockLoginRoutine.mockImplementationOnce(() => loginRoutine) // second render because of useDeviceInfo
 
@@ -115,19 +99,13 @@ describe('<AfterSignupEmailValidationBuffer />', () => {
       loginRoutine.mockRestore()
     })
     it('should redirect to AccountCreated when not isEligibleForBeneficiaryUpgrade and user is not future eligible', async () => {
-      server.use(
-        rest.get<UserProfileResponse>(env.API_BASE_URL + '/native/v1/me', (_req, res, ctx) =>
-          res.once(
-            ctx.status(200),
-            ctx.json({
-              email: 'email@domain.ext',
-              firstName: 'Jean',
-              isEligibleForBeneficiaryUpgrade: false,
-              eligibilityStartDatetime: '2019-12-01T00:00:00Z',
-            })
-          )
-        )
-      )
+      mockServer.get('/native/v1/me', {
+        email: 'email@domain.ext',
+        firstName: 'Jean',
+        eligibility: 'age-18',
+        isEligibleForBeneficiaryUpgrade: false,
+        eligibilityStartDatetime: '2019-12-01T00:00:00Z',
+      })
       renderPage()
 
       await waitFor(() => {
@@ -159,19 +137,13 @@ describe('<AfterSignupEmailValidationBuffer />', () => {
     })
 
     it('should redirect to NotYetUnderageEligibility when not isEligibleForBeneficiaryUpgrade and user is future eligible', async () => {
-      server.use(
-        rest.get<UserProfileResponse>(env.API_BASE_URL + '/native/v1/me', (_req, res, ctx) =>
-          res.once(
-            ctx.status(200),
-            ctx.json({
-              email: 'email@domain.ext',
-              firstName: 'Jean',
-              isEligibleForBeneficiaryUpgrade: false,
-              eligibilityStartDatetime: '2021-12-01T00:00:00Z',
-            })
-          )
-        )
-      )
+      mockServer.get('/native/v1/me', {
+        email: 'email@domain.ext',
+        firstName: 'Jean',
+        eligibility: 'age-18',
+        isEligibleForBeneficiaryUpgrade: false,
+        eligibilityStartDatetime: '2021-12-01T00:00:00Z',
+      })
       renderPage()
 
       await waitFor(() => {
@@ -184,11 +156,9 @@ describe('<AfterSignupEmailValidationBuffer />', () => {
     it('should redirect to Home with a snackbar message on error', async () => {
       // eslint-disable-next-line local-rules/independent-mocks
       jest.spyOn(datesLib, 'isTimestampExpired').mockReturnValue(false)
-      server.use(
-        rest.post(env.API_BASE_URL + '/native/v1/validate_email', (_req, res, ctx) =>
-          res(ctx.status(400), ctx.json({}))
-        )
-      )
+      mockServer.post('/native/v1/validate_email', {
+        responseOptions: { statusCode: 400, data: {} },
+      })
 
       renderPage()
 

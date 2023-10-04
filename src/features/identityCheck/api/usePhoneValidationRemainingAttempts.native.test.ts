@@ -1,23 +1,16 @@
-import { rest } from 'msw'
-
 import { PhoneValidationRemainingAttemptsRequest } from 'api/gen'
 import { usePhoneValidationRemainingAttempts } from 'features/identityCheck/api/usePhoneValidationRemainingAttempts'
-import { env } from 'libs/environment'
+import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { server } from 'tests/server'
 import { act, renderHook } from 'tests/utils'
 
-const phoneValidationApiMock = jest.fn()
 const phoneValidationRemainingAttemptsAPIResponse: PhoneValidationRemainingAttemptsRequest = {
   remainingAttempts: 5,
   counterResetDatetime: 'time',
 }
-
-server.use(
-  rest.get(env.API_BASE_URL + '/native/v1/phone_validation/remaining_attempts', (req, res, ctx) => {
-    phoneValidationApiMock()
-    return res(ctx.status(200), ctx.json(phoneValidationRemainingAttemptsAPIResponse))
-  })
+mockServer.get(
+  '/native/v1/phone_validation/remaining_attempts',
+  phoneValidationRemainingAttemptsAPIResponse
 )
 
 describe('usePhoneValidationRemainingAttempts', () => {
@@ -36,6 +29,5 @@ describe('usePhoneValidationRemainingAttempts', () => {
       phoneValidationRemainingAttemptsAPIResponse.counterResetDatetime
     )
     expect(result.current.isLastAttempt).toEqual(false)
-    expect(phoneValidationApiMock).toHaveBeenCalledTimes(1)
   })
 })

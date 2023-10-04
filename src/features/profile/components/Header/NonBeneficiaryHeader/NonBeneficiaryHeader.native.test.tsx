@@ -1,5 +1,4 @@
 import mockdate from 'mockdate'
-import { rest } from 'msw'
 import React from 'react'
 
 import {
@@ -11,10 +10,19 @@ import {
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { nextSubscriptionStepFixture as mockStep } from 'features/identityCheck/fixtures/nextSubscriptionStepFixture'
 import { NonBeneficiaryHeader } from 'features/profile/components/Header/NonBeneficiaryHeader/NonBeneficiaryHeader'
-import { env } from 'libs/environment'
+import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { server } from 'tests/server'
-import { act, render, screen } from 'tests/utils'
+import { render, screen, act } from 'tests/utils'
+
+const mockedNavigate = jest.fn()
+jest.mock('@react-navigation/native', () => {
+  const actualNav = jest.requireActual('@react-navigation/native')
+  return {
+    ...actualNav,
+    useNavigation: () => ({ navigate: mockedNavigate }),
+    useFocusEffect: jest.fn(),
+  }
+})
 
 jest.mock('features/auth/context/AuthContext')
 const mockUseAuthContext = useAuthContext as jest.Mock
@@ -54,20 +62,13 @@ describe('<NonBeneficiaryHeader/>', () => {
       mockNextSubscriptionStep = mockStep
     })
     it('should render the activation banner when user is eligible and api call returns activation banner', async () => {
-      server.use(
-        rest.get<BannerResponse>(env.API_BASE_URL + '/native/v1/banner', (_req, res, ctx) =>
-          res.once(
-            ctx.status(200),
-            ctx.json({
-              banner: {
-                name: BannerName.activation_banner,
-                text: 'à dépenser sur l’application',
-                title: 'Débloque tes 1000\u00a0€',
-              },
-            })
-          )
-        )
-      )
+      mockServer.get<BannerResponse>('/native/v1/banner', {
+        banner: {
+          name: BannerName.activation_banner,
+          text: 'à dépenser sur l’application',
+          title: 'Débloque tes 1000\u00a0€',
+        },
+      })
 
       renderNonBeneficiaryHeader({
         startDatetime: '2021-03-30T00:00Z',
@@ -82,20 +83,13 @@ describe('<NonBeneficiaryHeader/>', () => {
     })
 
     it("should render the transition 17 to 18 banner when beneficiary's user is now 18", async () => {
-      server.use(
-        rest.get<BannerResponse>(env.API_BASE_URL + '/native/v1/banner', (_req, res, ctx) =>
-          res.once(
-            ctx.status(200),
-            ctx.json({
-              banner: {
-                name: BannerName.transition_17_18_banner,
-                text: 'à dépenser sur l’application',
-                title: 'Débloque tes 400\u00a0€',
-              },
-            })
-          )
-        )
-      )
+      mockServer.get<BannerResponse>('/native/v1/banner', {
+        banner: {
+          name: BannerName.transition_17_18_banner,
+          text: 'à dépenser sur l’application',
+          title: 'Débloque tes 400\u00a0€',
+        },
+      })
 
       renderNonBeneficiaryHeader({
         startDatetime: '2021-03-30T00:00Z',

@@ -1,12 +1,10 @@
 import { NavigationContainer } from '@react-navigation/native'
-import { rest } from 'msw'
 import React from 'react'
 
 import { useCurrentRoute } from 'features/navigation/helpers'
-import { env } from 'libs/environment'
 import { useSplashScreenContext } from 'libs/splashscreen'
+import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { server } from 'tests/server'
 import { act, render, screen } from 'tests/utils/web'
 
 import { RootNavigator } from './RootNavigator'
@@ -32,15 +30,10 @@ jest.mock('features/navigation/helpers')
 jest.mock('features/navigation/navigationRef')
 jest.mock('libs/splashscreen')
 
-server.use(
-  rest.get(env.API_BASE_URL + '/native/v1/me/favorites/count', (_req, res, ctx) =>
-    res(ctx.status(200), ctx.json({ count: 2 }))
-  )
-)
-
 describe('<RootNavigator />', () => {
   beforeEach(() => {
     mockUseCurrentRoute.mockReturnValue({ name: 'TabNavigator', key: 'key' })
+    mockServer.get('/native/v1/me/favorites/count', { count: 2 })
   })
 
   it('should NOT display PrivacyPolicy if splash screen is not yet hidden', async () => {

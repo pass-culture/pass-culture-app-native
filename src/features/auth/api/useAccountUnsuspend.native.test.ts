@@ -1,8 +1,5 @@
-import { rest } from 'msw'
-
-import { env } from 'libs/environment'
+import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { server } from 'tests/server'
 import { renderHook, waitFor } from 'tests/utils'
 
 import { useAccountUnsuspend } from './useAccountUnsuspend'
@@ -11,19 +8,11 @@ const onSuccess = jest.fn()
 const onError = jest.fn()
 
 function simulateUnsuspension() {
-  server.use(
-    rest.post(env.API_BASE_URL + '/native/v1/account/unsuspend', async (_, res, ctx) =>
-      res(ctx.status(200))
-    )
-  )
+  mockServer.post('/native/v1/account/unsuspend', {})
 }
 
 function simulateUnsuspensionError() {
-  server.use(
-    rest.post(env.API_BASE_URL + '/native/v1/account/unsuspend', async (_, res, ctx) =>
-      res(ctx.status(400))
-    )
-  )
+  mockServer.post('/native/v1/account/unsuspend', { responseOptions: { statusCode: 400 } })
 }
 
 describe('useAccountUnsuspend', () => {

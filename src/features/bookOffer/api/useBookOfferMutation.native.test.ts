@@ -1,10 +1,8 @@
-import { rest } from 'msw'
 import { QueryClient } from 'react-query'
 
 import { useBookOfferMutation } from 'features/bookOffer/api/useBookOfferMutation'
-import { env } from 'libs/environment'
+import { mockServer } from 'tests/mswServer'
 import { queryCache, reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { server } from 'tests/server'
 import { renderHook, waitFor } from 'tests/utils'
 
 const props = { onError: jest.fn(), onSuccess: jest.fn() }
@@ -17,9 +15,7 @@ const setup = (queryClient: QueryClient) => {
 
 describe('useBookOfferMutation', () => {
   it('invalidates userProfile after successfully booking an offer', async () => {
-    server.use(
-      rest.post(env.API_BASE_URL + '/native/v1/bookings', (req, res, ctx) => res(ctx.status(204)))
-    )
+    mockServer.post('/native/v1/bookings', {})
 
     const { result } = renderUseBookOfferMutation()
 
@@ -36,11 +32,7 @@ describe('useBookOfferMutation', () => {
   })
 
   it('does not invalidates userProfile if error on booking an offer', async () => {
-    server.use(
-      rest.post(env.API_BASE_URL + '/native/v1/bookings', (req, res, ctx) =>
-        res(ctx.status(400), ctx.json({}))
-      )
-    )
+    mockServer.post('/native/v1/bookings', { responseOptions: { statusCode: 400, data: {} } })
 
     const { result } = renderUseBookOfferMutation()
 
